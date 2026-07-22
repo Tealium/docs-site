@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/client-side-tags/audienceone-discovery-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、AudienceOne Discovery Tagタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、AudienceOne Discovery Tagタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/client-side-tags/audienceone-discovery-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/client-side-tags/audienceone-discovery-tag/
 
 | 変数              | 説明                             |
 |:------------------|:----------------------------------|
-| `account_id`      | &lt;ul&gt;&lt;li&gt;アカウントID&lt;/li&gt;&lt;/ul&gt;      |
-| `tealium_account` | &lt;ul&gt;&lt;li&gt;Tealiumアカウント&lt;/li&gt;&lt;/ul&gt; |
-| `tealium_profile` | &lt;ul&gt;&lt;li&gt;Tealiumプロファイル&lt;/li&gt;&lt;/ul&gt; |
+| `account_id`      | <ul><li>アカウントID</li></ul>      |
+| `tealium_account` | <ul><li>Tealiumアカウント</li></ul> |
+| `tealium_profile` | <ul><li>Tealiumプロファイル</li></ul> |
 

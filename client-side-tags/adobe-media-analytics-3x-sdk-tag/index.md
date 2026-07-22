@@ -8,11 +8,11 @@ Adobe Media Analytics provides support for tracking video and ad metrics, includ
 ## Tag Tips
 
 * Adobe Media Analytics requires the Adobe Experience Cloud ID Service as well as AppMeasurement for JS to be loaded first, preferably bundled.
-* This tag is fired with `utag.track(&#39;video&#39;, data);` which should be implemented in your video event handlers.
+* This tag is fired with `utag.track('video', data);` which should be implemented in your video event handlers.
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Adobe Media Analytics (3.x SDK) tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the Adobe Media Analytics (3.x SDK) tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -25,7 +25,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

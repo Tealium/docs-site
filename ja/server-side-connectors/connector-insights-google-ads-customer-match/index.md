@@ -7,25 +7,25 @@ Google Ads カスタマーマッチコネクターインサイトは、Google Ad
 
 ## コネクターインサイトの概要
 
-Google Ads カスタマーマッチコネクターのインサイトは、Googleによって受信されたユーザーリストデータを要約します。これらのインサイトは、ユーザーリストの名前とそのサイズの要約で提示されます。
+Google Ads カスタマーマッチコネクターのインサイトは、Googleによって受信されたユーザーリストデータを要約して表示します。これらのインサイトは、ユーザーリストの名前とそのサイズの要約で提示されます。
 
 ## カスタムオーディエンスパラメータ
 
 Google Ads カスタマーマッチインサイトは、コネクターアクションで構成されたGoogle Adsリストについて、以下の情報を提供します：
 
-* **ディスプレイ用サイズ** は、このリストに含まれるユーザーの数をGoogleディスプレイネットワーク上で推定します。
-* **検索用サイズ** は、Googleドメインにおけるこのリストのユーザー数を推定し、Google Ads検索キャンペーンでターゲティング可能です。
+* **ディスプレイ用サイズ** は、このリストのGoogleディスプレイネットワーク上のユーザー数を推定します。
+* **検索用サイズ** は、Googleドメインのこのリストのユーザー数を推定し、Google Ads検索キャンペーンでのターゲティングに利用可能です。
 * **マッチ率パーセンテージ** は、このリストのユーザーがGoogleユーザーと一致する割合を表示します。
 
 ユーザー数がまだ確定していない場合、これらの値はnullです。
 
-![](/images/server-side-connectors/connector-insights-google-ads-customer-match.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-google-ads-customer-match.png)
 
-## コネクターインサイトの使用
+## コネクターインサイトの使用方法
 
-コネクターインサイトにアクセスするには、**Connect &gt; Audience Connectors** に移動し、**Google Ads Customer Match (Tealium-Provided Credentials) Connector** コネクターを検索して **Insights** をクリックします。
+**Connect > Connectors** に移動し、**Google Ads Customer Match (Tealium-Provided Credentials) Connector** を見つけ、アクションを選択します。アクション画面で、**Insights** タブをクリックします。
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 ## Google Ads カスタムオーディエンスインサイトの理解
 
@@ -43,11 +43,11 @@ Google Ads カスタマーマッチインサイトは、構成されたオーデ
 
 ジョブIDの概要は、Google Adsプラットフォームでのレコードの処理状況を示します：
 
-![](/images/server-side-connectors/connector-insights-google-ads-customer-match-offline-user-data-jobs.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-google-ads-customer-match-offline-user-data-jobs.png)
 
 ## 追加リソース
 
 * [カスタマーマッチについて - Google Ads ヘルプ](https://support.google.com/google-ads/answer/6379332?hl=ja)
-* [カスタマーマッチオーディエンス - Display &amp; Video 360 ヘルプ](https://support.google.com/displayvideo/answer/9539301)
+* [カスタマーマッチオーディエンス - Display & Video 360 ヘルプ](https://support.google.com/displayvideo/answer/9539301)
 * [Google Ads API: user_list](https://developers.google.com/google-ads/api/fields/v14/user_list)
-* [Google Ads カスタマーマッチ (Tealium提供の資格情報) コネクター構成ガイド]()
+* [Google Ads カスタマーマッチ (Tealium-Provided Credentials) コネクター構成ガイド](https://docs.tealium.com/google-ads-customer-match-connector/)

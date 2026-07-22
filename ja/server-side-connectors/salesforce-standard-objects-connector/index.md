@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-standard-obje
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -28,8 +28,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-standard-obje
 
 |**パラメータ**| **説明**|
 |---| ---|
-|更新戦略|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;適用可能な更新戦略を選択します。&lt;/li&gt;&lt;li&gt;作成のみ  &lt;ul&gt;&lt;li&gt;ルックアップなしで新しい標準オブジェクトを作成します。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;更新のみ  &lt;ul&gt;&lt;li&gt;既存の標準オブジェクトを検索し、それを更新します。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;作成または更新  &lt;ul&gt;&lt;li&gt;既存の標準オブジェクトを検索し、見つかった場合はそれを更新し、見つからない場合は新しいアイテムを作成します。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|標準オブジェクト|  &lt;ul&gt;&lt;li&gt;作成または更新する適用可能な標準オブジェクトを選択します。&lt;/li&gt;&lt;/ul&gt; |
+|更新戦略|  <ul><li>必須</li><li>適用可能な更新戦略を選択します。</li><li>作成のみ  <ul><li>ルックアップなしで新しい標準オブジェクトを作成します。</li></ul> </li><li>更新のみ  <ul><li>既存の標準オブジェクトを検索し、それを更新します。</li></ul> </li><li>作成または更新  <ul><li>既存の標準オブジェクトを検索し、見つかった場合はそれを更新し、見つからない場合は新しいアイテムを作成します。</li></ul> </li></ul> |
+|標準オブジェクト|  <ul><li>作成または更新する適用可能な標準オブジェクトを選択します。</li></ul> |
 
 ### アクション - 標準オブジェクトの削除
 
@@ -37,5 +37,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-standard-obje
 
 |**パラメータ**| **説明**|
 |---| ---|
-|標準オブジェクト|  &lt;ul&gt;&lt;li&gt;削除する標準オブジェクトインスタンスのタイプ。&lt;/li&gt;&lt;/ul&gt; |
+|標準オブジェクト|  <ul><li>削除する標準オブジェクトインスタンスのタイプ。</li></ul> |
 

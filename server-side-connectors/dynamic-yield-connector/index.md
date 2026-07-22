@@ -17,7 +17,7 @@ url: https://docs.tealium.com/server-side-connectors/dynamic-yield-connector/
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -64,7 +64,7 @@ The following section lists the supported parameters for each action.
 | Quantity | The total number of items that were added to cart. Valid fields are: `add-to-cart-v1`, `remove-from-cart-v1`. |
 | Unique Transaction ID | Ensures that only one purchase is recorded for the transaction ID, even if duplicate events are reported. Valid fields are: `purchase-v1`. |
 | CUID | User identifier value. Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`. |
-| CUID Type | User identifier value type. Use this value to identify users across devices. &lt;ul&gt;&lt;li&gt;For example, `customer_id`, `account_id`, or `email`.&lt;/li&gt;&lt;li&gt;Note: Do not include any personal identifying information in this value.&lt;/li&gt;&lt;li&gt;Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`.&lt;/li&gt;&lt;/ul&gt; |
+| CUID Type | User identifier value type. Use this value to identify users across devices. <ul><li>For example, `customer_id`, `account_id`, or `email`.</li><li>Note: Do not include any personal identifying information in this value.</li><li>Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`.</li></ul> |
 | Hashed Email | SHA-256 encoding of the lowercase email address. You can use this identifier type instead of `cuid` and `cuidType`. Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optout-v1`. |
 | Phone Number | Use this identifier type to identify users for the SMS channel in Reconnect campaigns. Valid fields are: `login-v1`. |
 | Plain Text Email | A valid plain text email address. Use either `plainTextEmail` or `externalId`. Valid fields are: `message-optin-v1`. |
@@ -82,7 +82,7 @@ The following section lists the supported parameters for each action.
 | Item ID | ID that matches an item ID in the content feed. Valid fields are: `video-watch-v1`. |
 | Categories | Array of video categories. Valid fields are: `video-watch-v1`. |
 | Autoplay | Indicates whether the video played automatically (`true`) or due to a user action (`false`). The default is `false`. Valid fields are: `video-watch-v1` |
-| Progress | Describes the amount of video played. Possible values: &lt;ul&gt;&lt;li&gt;`VIDEO_STARTED`: The video started playing. Does not indicate if the video was played until the end or any specific time marker.&lt;/li&gt;&lt;li&gt;`PREROLL_FINISHED`: The pre-roll finished playing.&lt;/li&gt;&lt;li&gt;`VIDEO_FINISHED`: The video finished playing whether or not pre-roll was included.&lt;/li&gt;&lt;li&gt;`VIDEO_PROGRESS`: If the client can periodically report fine-grained progress in percentages within the video, use this value together with the `progressPercent` property.&lt;/li&gt;&lt;li&gt;The default is `VIDEO_STARTED`.&lt;/li&gt;&lt;li&gt;Valid fields are: `video-watch-v1`.&lt;/li&gt;&lt;/ul&gt; |
+| Progress | Describes the amount of video played. Possible values: <ul><li>`VIDEO_STARTED`: The video started playing. Does not indicate if the video was played until the end or any specific time marker.</li><li>`PREROLL_FINISHED`: The pre-roll finished playing.</li><li>`VIDEO_FINISHED`: The video finished playing whether or not pre-roll was included.</li><li>`VIDEO_PROGRESS`: If the client can periodically report fine-grained progress in percentages within the video, use this value together with the `progressPercent` property.</li><li>The default is `VIDEO_STARTED`.</li><li>Valid fields are: `video-watch-v1`.</li></ul> |
 | Progress percent | Indicates how much of a video was watched as a percentage. Valid fields are: `video-watch-v1`. |
 | Product IDs | Array of product identifiers. |
 | Quantities | Array of product quantities. |
@@ -98,7 +98,7 @@ The following section lists the supported parameters for each action.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10
 * Max time since oldest request: 5 minutes
@@ -119,7 +119,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Quantity | The total number of items that were added to cart. Valid fields are: `add-to-cart-v1`, `remove-from-cart-v1`. |
 | Unique Transaction ID | Ensures that only one purchase is recorded for the transaction ID, even if duplicate events are reported. Valid fields are: `purchase-v1` |
 | CUID | User identifier value. Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`. |
-| CUID Type | User identifier value type. Use this value to identify users across devices. &lt;ul&gt;&lt;li&gt;For example, `customer_id`, `account_id`, or `email`.&lt;/li&gt;&lt;li&gt;Note: Do not include any personal identifying information in this value.&lt;/li&gt;&lt;li&gt;Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`.&lt;/li&gt;&lt;/ul&gt; |
+| CUID Type | User identifier value type. Use this value to identify users across devices. <ul><li>For example, `customer_id`, `account_id`, or `email`.</li><li>Note: Do not include any personal identifying information in this value.</li><li>Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`.</li></ul> |
 | Hashed Email | SHA-256 encoding of the lowercase email address. You can use this identifier type instead of `cuid` and `cuidType`. Valid fields are: `identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optout-v1`. |
 | Phone Number | Use this identifier type to identify users for the SMS channel in Reconnect campaigns. Valid fields are: `login-v1`. |
 | Plain Text Email | A valid plain text email address. Use either `plainTextEmail` or `externalId`. Valid fields are: `message-optin-v1`. |
@@ -137,7 +137,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Item ID | ID that matches an item ID in the content feed. Valid fields are: `video-watch-v1`. |
 | Categories | Array of video categories. Valid fields are: `video-watch-v1`. |
 | Autoplay | Indicates whether the video played automatically (`true`) or due to a user action (`false`). The default is `false`. Valid fields are: `video-watch-v1`. |
-| Progress | Describes the amount of video played. Possible values: &lt;ul&gt;&lt;li&gt;`VIDEO_STARTED`: The video started playing. Does not indicate if the video was played until the end or any specific time marker.&lt;/li&gt;&lt;li&gt;`PREROLL_FINISHED`: The pre-roll finished playing.&lt;/li&gt;&lt;li&gt;`VIDEO_FINISHED`: The video finished playing whether or not pre-roll was included.&lt;/li&gt;&lt;li&gt;`VIDEO_PROGRESS`: If the client can periodically report fine-grained progress in percentages within the video, use this value together with the `progressPercent` property.&lt;/li&gt;&lt;li&gt;The default is `VIDEO_STARTED`.&lt;/li&gt;&lt;li&gt;Valid fields are: `video-watch-v1`.&lt;/li&gt;&lt;/ul&gt; |
+| Progress | Describes the amount of video played. Possible values: <ul><li>`VIDEO_STARTED`: The video started playing. Does not indicate if the video was played until the end or any specific time marker.</li><li>`PREROLL_FINISHED`: The pre-roll finished playing.</li><li>`VIDEO_FINISHED`: The video finished playing whether or not pre-roll was included.</li><li>`VIDEO_PROGRESS`: If the client can periodically report fine-grained progress in percentages within the video, use this value together with the `progressPercent` property.</li><li>The default is `VIDEO_STARTED`.</li><li>Valid fields are: `video-watch-v1`.</li></ul> |
 | Progress percent | Indicates how much of a video was watched as a percentage. Valid fields are: `video-watch-v1`. |
 | Product IDs | Array of product identifiers. |
 | Quantities | Array of product quantities. |
@@ -158,7 +158,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | User ID | The unique user ID. Valid values are `dyid` or `dyid_server`. |
 | Session identifier generated by Dynamic Yield | Pass the value of the `_dyjsession` cookie if it exists. Otherwise, a new session identifier will be created by Dynamic Yield and returned in the response. |
 | Device IP | The client IP address, for IP filtering. If not passed, the IP of the caller is used. |
-| Type | (Required) The engagement type.&lt;ul&gt;&lt;li&gt;Use CLICK or IMP (impressions) for API custom code campaigns.&lt;/li&gt;&lt;li&gt;Use `SLOT_CLICK` for API recommendation campaigns.&lt;/li&gt;&lt;li&gt;`SLOT_IMP` for QSR recommendation campaigns.&lt;/li&gt;&lt;/ul&gt; |
+| Type | (Required) The engagement type.<ul><li>Use CLICK or IMP (impressions) for API custom code campaigns.</li><li>Use `SLOT_CLICK` for API recommendation campaigns.</li><li>`SLOT_IMP` for QSR recommendation campaigns.</li></ul> |
 | Decision ID | The unique decision ID as returned from the chosen endpoint. Required for reporting CLICK or IMP. Decision ID must be an array in base64 format. |
 | Variations | The array of multiple variation IDs the user has seen. Required only for reporting explicitly impressions over custom campaigns that return multiple variations on each decision. For example, a slider. |
 | Slot ID | The slot ID for the specific clicked product as returned from the chosen endpoint. Not used for custom API campaigns. Required for reporting a click on an API recommendations campaign. |
@@ -168,7 +168,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10
 * Max time since oldest request: 1 minutes
@@ -181,7 +181,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | User ID | The unique user ID. Valid values are `dyid` or `dyid_server`. |
 | Session identifier generated by Dynamic Yield | Pass the value of the `_dyjsession` cookie if it exists. Otherwise, a new session identifier will be created by Dynamic Yield and returned in the response. |
 | Device IP | The client IP address, for IP filtering. If not passed, the IP of the caller is used. |
-| Type | (Required) The engagement type.&lt;ul&gt;&lt;li&gt;Use CLICK or IMP (impressions) for API custom code campaigns.&lt;/li&gt;&lt;li&gt;Use `SLOT_CLICK` for API recommendation campaigns.&lt;/li&gt;&lt;li&gt;`SLOT_IMP` for QSR recommendation campaigns.&lt;/li&gt;&lt;/ul&gt; |
+| Type | (Required) The engagement type.<ul><li>Use CLICK or IMP (impressions) for API custom code campaigns.</li><li>Use `SLOT_CLICK` for API recommendation campaigns.</li><li>`SLOT_IMP` for QSR recommendation campaigns.</li></ul> |
 | Decision ID | The unique decision ID as returned from the chosen endpoint. Required for reporting CLICK or IMP. Decision ID must be an array in base64 format. |
 | Variations | The array of multiple variation IDs the user has seen. Required only for reporting explicitly impressions over custom campaigns that return multiple variations on each decision. For example, a slider. |
 | Slot ID | The slot ID for the specific clicked product as returned from the chosen endpoint. Not used for custom API campaigns. Required for reporting a click on an API recommendations campaign. |
@@ -193,7 +193,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Feed Key | The data feed ID. You can get the ID of an existing data feed by going to **Assets › Data Feeds** in Experience OS, and looking in the ID column. If you don&#39;t see the ID column, you can add it using the Column dropdown. |
+| Feed Key | The data feed ID. You can get the ID of an existing data feed by going to **Assets › Data Feeds** in Experience OS, and looking in the ID column. If you don't see the ID column, you can add it using the Column dropdown. |
 | Action | `upsert` or `delete`. The default is `delete`. |
 | CUID | User identifier value. |
 | CUID Type | User identifier value type. Use this value to identify users across devices. Use `ihe` for hashed email addresses or use your custom identifier type. |
@@ -204,7 +204,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
@@ -214,7 +214,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Feed Key | The data feed ID. You can get the ID of an existing data feed by going to **Assets › Data Feeds** in Experience OS, and looking in the ID column. If you don&#39;t see the ID column, you can add it using the column dropdown. |
+| Feed Key | The data feed ID. You can get the ID of an existing data feed by going to **Assets › Data Feeds** in Experience OS, and looking in the ID column. If you don't see the ID column, you can add it using the column dropdown. |
 | Action | `upsert` or `delete`. The default is `delete`. |
 | CUID | User identifier value. |
 | CUID Type | User identifier value type. Use this value to identify users across devices. Use `ihe` for hashed email addresses or use your custom identifier type. |

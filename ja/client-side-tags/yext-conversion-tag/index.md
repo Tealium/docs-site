@@ -9,12 +9,12 @@ url: https://docs.tealium.com/ja/client-side-tags/yext-conversion-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/yext-conversion-tag/
 
 |変数| 説明|
 |---| ---|
-|`optin`|  &lt;ul&gt;&lt;li&gt;オプトイン&lt;/li&gt;&lt;/ul&gt; |
-|`cid`|  &lt;ul&gt;&lt;li&gt;顧客識別番号（CID）&lt;/li&gt;&lt;/ul&gt; |
-|`value`|  &lt;ul&gt;&lt;li&gt;値&lt;/li&gt;&lt;/ul&gt; |
+|`optin`|  <ul><li>オプトイン</li></ul> |
+|`cid`|  <ul><li>顧客識別番号（CID）</li></ul> |
+|`value`|  <ul><li>値</li></ul> |
 

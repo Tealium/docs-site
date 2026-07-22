@@ -3,7 +3,7 @@ title: TealiumツールOptimizelyヘルパー
 url: https://docs.tealium.com/ja/server-side/connectors/optimizely-helper/
 ---### Tealiumツールのインストール
 
-最新版のTealiumツールがインストールされていることを確認してください。このGoogle Chrome拡張機能は、Optimizelyヘルパーを含むさまざまなツールを提供します。詳細については、[Tealiumツールブラウザ拡張機能]()を参照してください。
+最新版のTealiumツールがインストールされていることを確認してください。このGoogle Chrome拡張機能は、Optimizelyヘルパーを含むさまざまなツールを提供します。詳細については、[Tealiumツールブラウザ拡張機能](https://docs.tealium.com/tealium-tools-browser-extension/)を参照してください。
 
 ### Optimizelyアカウントの接続
 
@@ -15,7 +15,7 @@ Tealiumツールをインストールした後、OptimizelyからのAPIトーク
 1. **Optimizelyヘルパー**を選択します。
 1. APIトークンを**トークン**フィールドに貼り付けます。
 1. AudienceStreamのオーディエンスをマップしたいプロジェクトに移動し、プロジェクトIDをコピーします。プロジェクトIDは、プロジェクトページの右上隅にある**プロジェクトコード**ドロップダウンメニューから利用できます。  
-    ![](/images/server-side/optimizely-helper-project-id.png)
+    ![](https://docs.tealium.com/images/server-side/optimizely-helper-project-id.png)
 1. Optimizelyヘルパーで、プロジェクトIDを**プロジェクトID**フィールドに貼り付けます。
 1. このOptimizelyプロジェクトに関連付けたいTealiumアカウントとプロファイルの名前を入力します。
 1. **オーディエンスデータをインポート**をクリックします。
@@ -29,10 +29,10 @@ Optimizelyヘルパーには、Optimizelyで新規または既存のオーディ
 1. **オーディエンスを作成**をクリックして確認します。
 1. 追加のオーディエンスマッピングを作成するには、上記の手順を繰り返します。
 
-オーディエンスをマッピングした後、**コードスニペットを生成**をクリックします。このコードはutag.sync.jsファイルに追加する必要があります。&lt;br&gt;
-![](/images/server-side/optimizely-helper-code-snippet.png)
+オーディエンスをマッピングした後、**コードスニペットを生成**をクリックします。このコードはutag.sync.jsファイルに追加する必要があります。<br>
+![](https://docs.tealium.com/images/server-side/optimizely-helper-code-snippet.png)
 
-コードをutag.sync.jsテンプレートに追加するには、**コードスニペットをクリップボードにコピー**をクリックします。詳細については、[utag.sync.jsスクリプトの使用]()を参照してください。
+コードをutag.sync.jsテンプレートに追加するには、**コードスニペットをクリップボードにコピー**をクリックします。詳細については、[utag.sync.jsスクリプトの使用](https://docs.tealium.com/utag-sync/)を参照してください。
 
 ### オーディエンスベースの実験を作成
 
@@ -40,7 +40,7 @@ Optimizelyヘルパーには、Optimizelyで新規または既存のオーディ
 
 1. 新しい実験を作成するか、既存の実験を編集し、**オーディエンスターゲティング**をクリックします。
 1. **保存されたオーディエンスを追加**をクリックし、AudienceStreamのバッジまたはオーディエンスを選択します。
-    ![](/images/server-side/audiencebasedexperiments.png)
+    ![](https://docs.tealium.com/images/server-side/audiencebasedexperiments.png)
 1. 実験を保存します。
 
 Optimizelyでのオーディエンスターゲティングについての詳細は、[Optimizely知識ベースの記事](https://help.optimizely.com/hc/en-us/articles/200039685#changes)を参照してください。

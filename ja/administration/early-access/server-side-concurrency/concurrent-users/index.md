@@ -3,7 +3,11 @@ title: 同時アクセスユーザー
 description: この記事では、Tealiumが同時アクセスユーザーからのサーバーサイド変更をどのように管理しているかについて説明します。
 url: https://docs.tealium.com/ja/administration/early-access/server-side-concurrency/concurrent-users/
 ---
+
+<blockquote>
 サーバーサイドの同時実行はEarly Access中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
+
 
 ## 概要
 
@@ -25,7 +29,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 同時ユーザーからの変更を予期してログインしている場合、どのバージョンで作業しているかを知ることが重要です。現在のバージョンは、アカウントとプロファイルの下にある見出しに表示されます：
 
-![](/images/server-side/save-publish/server-side-concurrency-heading.png)
+![](https://docs.tealium.com/images/server-side/save-publish/server-side-concurrency-heading.png)
 
 変更を加えたい場合は、プロファイルスイッチャーを使用して現在公開されているバージョンを読み込み、計画された変更のために新しいバージョンを作成します。新しいバージョンにすべての構成変更を加えます。変更が完了し、テストされたら、新しいバージョンを本番環境に公開します。
 
@@ -35,19 +39,19 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 ログインすると、作業している製品エリアが左のナビゲーションバーで青く強調表示されます。別のユーザーがログインしており、あなたのバージョンでアクティブな場合、そのユーザーのイニシャルが画面上部に独自の背景色の円として表示されます。同じ独自の色が、その他のユーザーが現在作業している製品のエリアを強調表示するために使用されます。次の例を参照してください：
 
-![](/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
+![](https://docs.tealium.com/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
 
 ## 別のユーザーが変更を開始
 
 別のユーザーが使用しているバージョンに変更を加え始めると、進行中の未保存の変更についてのメッセージが通知されます：
 
-![](/images/server-side/save-publish/another-user-is-making-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-is-making-changes.png)
 
 **了解**をクリックしてメッセージを確認します。
 
 **保存**をクリックして、そのユーザーの変更をあなたの作業に統合します。変更に関する情報が含まれる新しいダイアログが開きます：
 
-![](/images/server-side/save-publish/review-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
 **保存される変更**または**公開される変更**の表には、以下の情報が含まれます：
 
@@ -56,10 +60,14 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 * そのオブジェクトに対するアクション（更新、作成、削除）。
 * 変更を加えたユーザー。
 
+
+<blockquote>
 あなたの変更と最新の公開バージョンが同じアイテムを変更した場合、あなたのバージョンを公開すると、公開バージョンの既存のアイテムがあなたのものに置き換えられます。
+</blockquote>
+
 
 ## 別のユーザーが公開
 
 別のユーザーがバージョンを公開すると、あなたがどのバージョンにいても、その公開についてのメッセージが表示されます：
 
-![](/images/server-side/save-publish/another-user-published.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-published.png)

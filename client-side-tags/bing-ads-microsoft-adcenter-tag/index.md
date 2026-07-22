@@ -4,7 +4,11 @@ description: This article describes how to set up the Bing Ads - Microsoft adCen
 url: https://docs.tealium.com/client-side-tags/bing-ads-microsoft-adcenter-tag/
 ---
 
-Bing Ads has deprecated this tag and recommends replacing it with the [Bing Ads Universal Event Tracking Tag](/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/).
+
+<blockquote>
+Bing Ads has deprecated this tag and recommends replacing it with the [Bing Ads Universal Event Tracking Tag](https://docs.tealium.com/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/).
+</blockquote>
+
 
 ## Tag Tips
 
@@ -17,7 +21,7 @@ Bing Ads has deprecated this tag and recommends replacing it with the [Bing Ads 
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Bing Ads - Microsoft adCenter tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the Bing Ads - Microsoft adCenter tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -31,7 +35,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

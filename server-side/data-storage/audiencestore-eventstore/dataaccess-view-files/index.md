@@ -9,16 +9,20 @@ You can browse the files associated with each audience or event feed using the D
 
 The list of files will be empty immediately after configuring EventStore or AudienceStore. Use the following steps to access files in the DataAccess Console:
 
-1. In the sidebar, go to **Store &gt; EventStore** or **Store &gt; AudienceStore.**
+1. In the sidebar, go to **Store > EventStore** or **Store > AudienceStore.**
 1. Select the number of weeks of data to display (1 to 4 weeks, the default is 1 week).
-1. Select the name of an Event Feed or an AudienceStore Action.&lt;br&gt;For EventStore, the list only displays feeds that are enabled for EventStore. For AudienceStore, files can be JSON or CSV, depending on the configured action.
+1. Select the name of an Event Feed or an AudienceStore Action.<br>For EventStore, the list only displays feeds that are enabled for EventStore. For AudienceStore, files can be JSON or CSV, depending on the configured action.
 1. Click **Reload**.  
     * For EventStore, a list a files is displayed. Click a date to see file details.  
     * For AudienceStore, files are grouped by date (there may be multiple files for a date) and are listed from earliest creation date to latest. Click the date to see the list of files for that date.
 1. To download a file, click **Download**.  
   The `.gzip` file is saved to your computer. Use a decompression utility to open the file and extract the content.
 
+
+<blockquote>
 Files cannot be deleted from EventStore. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged.  Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged. The expiration time is determined by the EventStore retention time. The default retention time is 390 days (13 months). For more information, see [Server-Side Account Settings]().
+</blockquote>
+
 
 ## Use third-party tools to view files
 
@@ -28,15 +32,19 @@ You can also access files using third-party tools such as an FTP client or the A
 
 To get the Amazon S3 access key:
 
-1. In the sidebar, go to **Store &gt; EventStore** or **Store &gt; AudienceStore.**
+1. In the sidebar, go to **Store > EventStore** or **Store > AudienceStore.**
 1. Click **Get Amazon Access Key**. The following fields are displayed:
     * Access Key ID
     * Secret Access Key
     * Path
 
-For security purposes, the secret access key is only displayed once, so it&#39;s important to store it securely for later use.
+For security purposes, the secret access key is only displayed once, so it's important to store it securely for later use.
 
+
+<blockquote>
 If you lose the access key, you can generate a new one. However, generating a new key invalidates all previous connections that use the previous access key.
+</blockquote>
+
 
 ### FTP clients with Amazon S3 support
 
@@ -51,7 +59,7 @@ The primary benefit of using a GUI-based FTP client with S3 support is that you 
 
 The following screen capture of Cyberduck shows how to configure the connection. Note that the configuration wizard does not have a field for the Secret Access Key. You are prompted for the Secret Access Key upon a connection attempt. The Secret Access Key is saved for future use.
 
-![](/images/server-side/cyberduck.png)
+![](https://docs.tealium.com/images/server-side/cyberduck.png)
 
 ## View files using the AWS command line interface
 
@@ -77,31 +85,31 @@ The `list-objects` method lists objects in your S3 directory. This is needed to 
 #### List all objects in the root folder:
 
 ```
-aws s3 ls s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/
+aws s3 ls s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/
 ```
 
 #### List all event feeds
 
 ```
-aws s3 ls s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/events/
+aws s3 ls s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/events/
 ```
 
 #### List all objects in a specific events folder
 
 ```
-aws s3 ls s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/events/&lt;feed-id&gt;/
+aws s3 ls s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/events/<feed-id>/
 ```
 
 #### List all audiences
 
 ```
-aws s3 ls s3://dataaccess-eu-west-1.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/audiences/
+aws s3 ls s3://dataaccess-eu-west-1.tealiumiq.com/<account>/<profile>/audiences/
 ```
 
 #### List all objects in a specific audiences folder
 
 ```
-aws s3 ls s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/&lt;action-id&gt;/
+aws s3 ls s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/<action-id>/
 ```
 
 #### Get a single events object
@@ -109,7 +117,7 @@ aws s3 ls s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profi
 The `get-object` method downloads one specific remote key to a local location on your desktop or server.
 
 ```
-aws s3 cp s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/events/{feed-id}/{filename}.gz ./
+aws s3 cp s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/events/{feed-id}/{filename}.gz ./
 
 ```
 
@@ -118,7 +126,7 @@ aws s3 cp s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profi
 The `get-object` method downloads one specific remote key to a local location on your desktop or server.
 
 ```
-aws s3 cp s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/audiences/{action-id}/{filename}.gz ./
+aws s3 cp s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/audiences/{action-id}/{filename}.gz ./
 
 ```
 
@@ -126,16 +134,20 @@ aws s3 cp s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profi
 
 The `sync` method takes a remote folder on Amazon S3 and synchronizes it with a local folder on your desktop or server. The following example synchronizes a specific remote EventStream or AudienceStream folder to a local folder on the desktop.
 
+
+<blockquote>
 The `--dryrun` argument shows you what files would actually sync, without actually doing the download. To execute the actual download, remove the `--dryrun` argument.
+</blockquote>
+
 
 ```
 aws s3 sync s3://uconnect.tealiumiq.com/{account}/{profile}/audiences// \
     ~/Desktop/temp --dryrun
 ```
 
-Lastly, you can also filter the `sync` method to only download files matching a specific filter. In this example, only the files that match the wildcard filter of &#34;\*2015.06.14\*&#34; are downloaded.
+Lastly, you can also filter the `sync` method to only download files matching a specific filter. In this example, only the files that match the wildcard filter of "\*2015.06.14\*" are downloaded.
 
 ```
 aws s3 sync s3://uconnect.tealiumiq.com/{account}/{profile}/events// \
-    ~/Desktop/temp --exclude &#34;*&#34; --include &#34;*2015.06.14*&#34; --dryrun
+    ~/Desktop/temp --exclude "*" --include "*2015.06.14*" --dryrun
 ```

@@ -5,24 +5,28 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 ---
 ## ユーザーの追加
 
+
+<blockquote>
 新しいユーザーを追加するには、**アカウントの管理**と**ユーザーの管理**の権限が必要です。
+</blockquote>
+
 
 以下の手順で新しいユーザーを追加し、権限を割り当てます：
 
 1. 管理メニューで、**ユーザーの管理**をクリックします。
-1. **ユーザーマネージャー**ダイアログで、**&#43; ユーザーを追加**をクリックします。
+1. **ユーザーマネージャー**ダイアログで、**+ ユーザーを追加**をクリックします。
 1. **新規ユーザー作成**ダイアログで、**新規ユーザーメール**フィールドにユーザーのメールアドレスを入力し、**次へ**をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-managign-user-permissions-in-tiq-create-new-user-dialog.jpg)
-1. このユーザーのアカウント権限を選択し、**次へ**をクリックします。&lt;br&gt;
-    ![](/images/iq-tag-management/select-account-permissions..png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managign-user-permissions-in-tiq-create-new-user-dialog.jpg)
+1. このユーザーのアカウント権限を選択し、**次へ**をクリックします。<br>
+    ![](https://docs.tealium.com/images/iq-tag-management/select-account-permissions..png)
 
 1. **プロファイルを選択**を選択します。  
 アクセス可能なプロファイルのリストが**プロファイルリスト**に表示されます。複数のプロファイルを選択した場合、各プロファイルに対して個別に権限を構成することも、選択したすべてのプロファイルに対して同じ権限を適用することもできます。
 1. **プロファイルリスト**で、ユーザーに権限を割り当てたいプロファイルを選択し、**次へ**をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-user-permissions-in-tiq-create-new-user-dialog.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-user-permissions-in-tiq-create-new-user-dialog.jpg)
 1. ユーザーに割り当てるプロファイル権限を1つ以上選択するか、**すべての権限を選択**を選択します。  
 複数のプロファイルを選択した場合、各プロファイルをクリックして権限を構成できます。選択したすべてのプロファイルに対して同じ権限を構成するには、1つのプロファイルに対して権限を構成し、**選択したプロファイルに権限を適用**をクリックします。  
-    ![](/images/iq-tag-management/tiqapplypermissionstoselectedprofiles.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/tiqapplypermissionstoselectedprofiles.jpg)
 1. プロファイル権限の選択が終わったら、**次へ**をクリックします。
 1. 選択した権限と公開環境が正しいことを確認し、**完了**をクリックします。  
 ユーザーのメールアドレスにアクティベーションメールが送信されます。
@@ -31,7 +35,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 
 ## ユーザー権限の変更
 
+
+<blockquote>
 ユーザーを変更するには、**アカウントの管理**と**ユーザーの管理**の権限が必要です。
+</blockquote>
+
 
 ユーザーの権限を編集するプロセスは、権限の追加や削除とは別のプロセスです。以下のセクションでは、ユーザー権限の編集方法について説明します：
 
@@ -49,7 +57,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 1. **プロファイルを選択**をクリックします。
 1. **プロファイルリスト**で、権限を変更する必要があるプロファイルを選択し、**次へ**をクリックします。
 1. ユーザーのプロファイルレベルの権限を編集し、**次へ**をクリックします。  
+
+<blockquote>
 選択されていない権限は、選択したユーザーから削除されます。
+</blockquote>
+
 1. 更新されたプロファイルレベルの権限が正しいことを確認し、**完了**をクリックします。
 1. **閉じる**をクリックします。
 
@@ -64,7 +76,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 **プロファイルを選択**を選択した場合、**プロファイルリスト**で1つ以上のプロファイルを選択します。
 1. **次へ**をクリックします。
 1. ユーザーアカウントに追加する権限を選択するか、**すべての権限を選択**を選択し、**次へ**をクリックします。  
+
+<blockquote>
 権限のチェックボックスを空白にしたり、権限の選択を解除したりしても、その権限は選択したユーザーから削除されません。
+</blockquote>
+
 1. 選択した権限が正しいことを確認し、**完了**をクリックします。
 1. **閉じる**をクリックします。
 
@@ -75,13 +91,21 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 1. 管理メニューで、**ユーザーの管理**をクリックします。
 1. **ユーザーマネージャー**ダイアログで、権限を削除したいユーザーアカウントを選択します。
 1. **その他**をクリックし、**プロファイル権限を削除**を選択します。  
+
+<blockquote>
 この手順では、**すべての現在と未来のプロファイル**の権限は削除されません。**プロファイルから削除**をクリックすると、このプロファイルからのみユーザーが削除されます。
+</blockquote>
+
 1. **プロファイルを選択**を選択します。  
 **すべてのプロファイル**を選択して、アクセス可能なすべてのプロファイルに対するユーザーの権限を削除します。ユーザーが**すべての現在と未来のプロファイル**の権限を持っている場合、このオプションを選択すると、すべての現在と未来のプロファイルから権限が削除されます。
 1. ユーザーアカウントから削除するプロファイルレベルの権限を選択し、**次へ**をクリックします。  
 削除するために選択された権限は赤で強調表示されます。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-user-permissions-in-tiq-remove-profile-level-permissions-red-highlight.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-user-permissions-in-tiq-remove-profile-level-permissions-red-highlight.png)  
+
+<blockquote>
 権限を選択しないで残したり、権限の選択を解除したりしても、その権限はユーザーアカウントから削除されません。
+</blockquote>
+
 1. 削除するべき選択した権限を確認し、**完了**をクリックします。
 1. **閉じる**をクリックします。
 

@@ -13,7 +13,7 @@ url: https://docs.tealium.com/client-side-tags/kochava-mobile-remote-command-tag
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Kochava Mobile Remote Command tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the Kochava Mobile Remote Command tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -22,7 +22,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -30,10 +30,10 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`app_guid`|  &lt;ul&gt;&lt;li&gt;App ID&lt;/li&gt;&lt;/ul&gt; |
-|`app_tracking_transparency_enabled`|  &lt;ul&gt;&lt;li&gt;App Tracking Transparency Enabled&lt;/li&gt;&lt;li&gt;Value are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`identity_link_ids`|  &lt;ul&gt;&lt;li&gt;Identity Link IDs&lt;/li&gt;&lt;/ul&gt; |
-|`log_level`|  &lt;ul&gt;&lt;li&gt;Log Level&lt;/li&gt;&lt;/ul&gt; |
+|`app_guid`|  <ul><li>App ID</li></ul> |
+|`app_tracking_transparency_enabled`|  <ul><li>App Tracking Transparency Enabled</li><li>Value are `true` or `false`.</li></ul> |
+|`identity_link_ids`|  <ul><li>Identity Link IDs</li></ul> |
+|`log_level`|  <ul><li>Log Level</li></ul> |
 
 ### Events
 

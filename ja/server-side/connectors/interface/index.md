@@ -11,30 +11,30 @@ url: https://docs.tealium.com/ja/server-side/connectors/interface/
 
 コネクターにアクセスすると、**コネクター概要**画面に現在のサーバーサイドコネクターのリストが表示されます。
 
-![](/images/server-side/connectors/overview-screen.png)
+![](https://docs.tealium.com/images/server-side/connectors/overview-screen.png)
 
 ## コネクターを見つける
 
 検索を使用して、ベンダー名やコネクター名に含まれる単語を入力することで、素早くコネクターを見つけることができます。検索語に一致するコネクターが入力と同時に表示され、必要なコネクターを簡単に見つけて選択できます。
 
-![](/images/server-side/connectors/spotlight-search.png)
+![](https://docs.tealium.com/images/server-side/connectors/spotlight-search.png)
 
 ## お気に入り
 
 フィルターメニューを使用してすぐにアクセスできるように、コネクターをお気に入りに登録します。これは、頻繁に使用するか、最も重要なコネクターに使用します。
 
-![](/images/server-side/connectors/connectors-favorite-filter-view.png)
+![](https://docs.tealium.com/images/server-side/connectors/connectors-favorite-filter-view.png)
 
 ## コネクターの概要
 
 マーケットプレイスでコネクターを選択すると、**コネクターの概要**には、サポートされているデータタイプ（イベントデータまたは訪問データ）、要件、サポートされているアクション、およびコネクターに関連する内部および外部リソースが表示されます。
 
-![](/images/server-side/connectors/connector-summary.png)
+![](https://docs.tealium.com/images/server-side/connectors/connector-summary.png)
 
 ## アクションの有効化または無効化
 
-![](/images/server-side/connectors/connectors-active-label.png)
-![](/images/server-side/connectors/connectors-inactive-label.png)
+![](https://docs.tealium.com/images/server-side/connectors/connectors-active-label.png)
+![](https://docs.tealium.com/images/server-side/connectors/connectors-inactive-label.png)
 
 コネクターや個々のアクションを有効化または無効化します。アクションを有効化する前に、コネクターを有効化する必要があります。
 
@@ -50,9 +50,9 @@ url: https://docs.tealium.com/ja/server-side/connectors/interface/
 
 エンリッチメントされたエディターを使用して、コネクターテンプレートを作成および編集します。構文のハイライト表示、自動補完などを活用して、カスタム統合を迅速に作成します。
 
-![](/images/server-side/connectors/connector-templates-custom-json.png)
+![](https://docs.tealium.com/images/server-side/connectors/connector-templates-custom-json.png)
 
-詳細については、を参照してください。
+詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。
 
 ## レポート
 

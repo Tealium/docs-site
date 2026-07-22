@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/facebook-buttons-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Facebook Buttons tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Facebook Buttons tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -47,7 +47,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -55,46 +55,46 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`action`|  &lt;ul&gt;&lt;li&gt;Action&lt;/li&gt;&lt;/ul&gt; |
-|`language`|  &lt;ul&gt;&lt;li&gt;Language&lt;/li&gt;&lt;/ul&gt; |
-|`href`|  &lt;ul&gt;&lt;li&gt;Href Link&lt;/li&gt;&lt;/ul&gt; |
-|`config.colorscheme`|  &lt;ul&gt;&lt;li&gt;Color Scheme&lt;/li&gt;&lt;li&gt;Values are `light` or `dark`&lt;/li&gt;&lt;/ul&gt; |
-|`appId`|  &lt;ul&gt;&lt;li&gt;App ID&lt;/li&gt;&lt;/ul&gt; |
-|`config.size`|  &lt;ul&gt;&lt;li&gt;Size&lt;/li&gt;&lt;/ul&gt; |
-|`config.width`|  &lt;ul&gt;&lt;li&gt;Width&lt;/li&gt;&lt;/ul&gt; |
+|`action`|  <ul><li>Action</li></ul> |
+|`language`|  <ul><li>Language</li></ul> |
+|`href`|  <ul><li>Href Link</li></ul> |
+|`config.colorscheme`|  <ul><li>Color Scheme</li><li>Values are `light` or `dark`</li></ul> |
+|`appId`|  <ul><li>App ID</li></ul> |
+|`config.size`|  <ul><li>Size</li></ul> |
+|`config.width`|  <ul><li>Width</li></ul> |
 
 ### Like
 
 |Variable| Description|
 |---| ---|
-|`like.layout`|  &lt;ul&gt;&lt;li&gt;Layout&lt;/li&gt;&lt;/ul&gt; |
-|`like.show_faces`|  &lt;ul&gt;&lt;li&gt;Show Faces&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`like.kid_directed`|  &lt;ul&gt;&lt;li&gt;Kid Directed Site&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`like.color_scheme`|  &lt;ul&gt;&lt;li&gt;Color Scheme&lt;/li&gt;&lt;li&gt;Values are `light` or `dark`.&lt;/li&gt;&lt;/ul&gt; |
-|`like.###`|  &lt;ul&gt;&lt;li&gt;Custom Like Value&lt;/li&gt;&lt;/ul&gt; |
+|`like.layout`|  <ul><li>Layout</li></ul> |
+|`like.show_faces`|  <ul><li>Show Faces</li><li>Values are `true` or `false`.</li></ul> |
+|`like.kid_directed`|  <ul><li>Kid Directed Site</li><li>Values are `true` or `false`.</li></ul> |
+|`like.color_scheme`|  <ul><li>Color Scheme</li><li>Values are `light` or `dark`.</li></ul> |
+|`like.###`|  <ul><li>Custom Like Value</li></ul> |
 
 ### Recommend
 
 |Variable| Description|
 |---| ---|
-|`rec.layout`|  &lt;ul&gt;&lt;li&gt;Layout&lt;/li&gt;&lt;/ul&gt; |
-|`rec.show_faces`|  &lt;ul&gt;&lt;li&gt;Show Faces&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`rec.kid_directed`|  &lt;ul&gt;&lt;li&gt;Kid Directed Site&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`rec.color_scheme`|  &lt;ul&gt;&lt;li&gt;Color Scheme&lt;/li&gt;&lt;li&gt;Values are `light` or `dark`.&lt;/li&gt;&lt;/ul&gt; |
-| `rec.###` |  &lt;ul&gt;&lt;li&gt;Custom Recommend Value&lt;/li&gt;&lt;/ul&gt; |
+|`rec.layout`|  <ul><li>Layout</li></ul> |
+|`rec.show_faces`|  <ul><li>Show Faces</li><li>Values are `true` or `false`.</li></ul> |
+|`rec.kid_directed`|  <ul><li>Kid Directed Site</li><li>Values are `true` or `false`.</li></ul> |
+|`rec.color_scheme`|  <ul><li>Color Scheme</li><li>Values are `light` or `dark`.</li></ul> |
+| `rec.###` |  <ul><li>Custom Recommend Value</li></ul> |
 
 ### Share
 
 |Variable| Description|
 |---| ---|
-|`share.layout`|  &lt;ul&gt;&lt;li&gt;Layout&lt;/li&gt;&lt;/ul&gt; |
-|`share.kid_directed`|  &lt;ul&gt;&lt;li&gt;Kid Directed Site&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-| `share.###` |  &lt;ul&gt;&lt;li&gt;Custom Share Value&lt;/li&gt;&lt;/ul&gt; |
+|`share.layout`|  <ul><li>Layout</li></ul> |
+|`share.kid_directed`|  <ul><li>Kid Directed Site</li><li>Values are `true` or `false`.</li></ul> |
+| `share.###` |  <ul><li>Custom Share Value</li></ul> |
 
 ### Send
 
 |Variable| Description|
 |---| ---|
-|`send.kid_directed`|  &lt;ul&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`send.color_scheme`|  &lt;ul&gt;&lt;li&gt;Values are `light` or `dark`.&lt;/li&gt;&lt;/ul&gt; |
-|`send.###`|  &lt;ul&gt;&lt;li&gt;Custom Send Value&lt;/li&gt;&lt;/ul&gt; |
+|`send.kid_directed`|  <ul><li>Values are `true` or `false`.</li></ul> |
+|`send.color_scheme`|  <ul><li>Values are `light` or `dark`.</li></ul> |
+|`send.###`|  <ul><li>Custom Send Value</li></ul> |

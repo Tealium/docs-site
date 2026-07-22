@@ -13,13 +13,13 @@ The insight for the Facebook Audiences connector provides a summary of the custo
 
 The parameter summary shows the custom audience data received by Facebook from the connector for one audience. The parameter summary displays the **Custom Audience Name/ID**, each custom audience parameter collected by Facebook, and value for each parameter.
 
-![](/images/server-side-connectors/2022-03-28-09-56-45.png)
+![](https://docs.tealium.com/images/server-side-connectors/2022-03-28-09-56-45.png)
 
 ## Using Connector Insights
 
-To access Connector Insights, navigate to **AudienceStream &amp;gt; Audience Connectors**, find the Facebook Audience connector, and click **Insights**.&lt;br&gt;
+Go to **Connect > Connectors**, find the **Facebook Audiences** connector, and select an action. On the action screen, click the **Insights** tab.
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 ## Understanding Facebook Custom Audiences Insights
 
@@ -35,4 +35,4 @@ The Facebook Custom Audiences insight uses the [Facebook Graph API for Audiences
 ## Additional Resources
 
 * [Facebook Graph API](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/)
-* [Facebook Audiences Connector Setup Guide](/server-side-connectors/facebook-audiences-connector/)
+* [Facebook Audiences Connector Setup Guide](https://docs.tealium.com/server-side-connectors/facebook-audiences-connector/)

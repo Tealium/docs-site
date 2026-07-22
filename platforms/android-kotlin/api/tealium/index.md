@@ -35,7 +35,7 @@ The `Tealium` class provides methods for tracking screen views and events. The f
 Cancels a previously started timed event. The timed event is not tracked.
 
 ```java
-tealium.cancelTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium.cancelTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | Parameters | Type     | Description                 |
@@ -44,7 +44,7 @@ tealium.cancelTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
 
 ### `consentManager`
 
-Lets you set your current consent status and categories, and see the current policy enforced. Learn more in the [consent management](/platforms/android-kotlin/consent-management/) guide.
+Lets you set your current consent status and categories, and see the current policy enforced. Learn more in the [consent management](https://docs.tealium.com/platforms/android-kotlin/consent-management/) guide.
 
 ```java
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
@@ -52,10 +52,10 @@ tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 
 ### `dataLayer`
 
-Provides persistent storage on the device for key-value pairs, while also allowing you to set expiry times. Each entry is also added to every dispatch that you send through the [`track()`](#track) method. Learn more in the [Data Management](/platforms/android-kotlin/data-layer/) guide.
+Provides persistent storage on the device for key-value pairs, while also allowing you to set expiry times. Each entry is also added to every dispatch that you send through the [`track()`](#track) method. Learn more in the [Data Management](https://docs.tealium.com/platforms/android-kotlin/data-layer/) guide.
 
 ```java
-tealium.dataLayer.putString(&#34;key&#34;, &#34;value&#34;, Expiry.FOREVER)
+tealium.dataLayer.putString("key", "value", Expiry.FOREVER)
 ```
 
 ### `endTraceVisitorSession()`
@@ -63,7 +63,7 @@ tealium.dataLayer.putString(&#34;key&#34;, &#34;value&#34;, Expiry.FOREVER)
 Ends the visitor session remotely. Does not terminate the SDK session or reset the session ID.
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.endTraceVisitorSession()
+Tealium["INSTANCE_NAME"]?.endTraceVisitorSession()
 ```
 
 ### `events`
@@ -86,7 +86,7 @@ tealium.events.subscribe(object: UserConsentPreferencesUpdatedListener {
 Retrieves track data from data layer and Collectors.
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.gatherTrackData()
+Tealium["INSTANCE_NAME"]?.gatherTrackData()
 ```
 
 ### `joinTrace()`
@@ -94,7 +94,7 @@ Tealium[&#34;INSTANCE_NAME&#34;]?.gatherTrackData()
 Adds the supplied trace ID to the data layer for the current session.
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.joinTrace(traceId)
+Tealium["INSTANCE_NAME"]?.joinTrace(traceId)
 ```
 
 | Parameters | Type     | Description |
@@ -107,7 +107,7 @@ Tealium[&#34;INSTANCE_NAME&#34;]?.joinTrace(traceId)
 Leaves the trace by removing the trace ID.
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.leaveTrace()
+Tealium["INSTANCE_NAME"]?.leaveTrace()
 ```
 
 ### `linkEcidToKnownIdentifier()`
@@ -119,7 +119,7 @@ linkEcidToKnownIdentifier(
   knownId: String,
   adobeDataProviderId: String,
   authState: Int?,
-  adobeResponseListener: ResponseListener&lt;AdobeVisitor&gt;?
+  adobeResponseListener: ResponseListener<AdobeVisitor>?
   )
 ```
 
@@ -128,7 +128,7 @@ linkEcidToKnownIdentifier(
 | `knownId`               | `String`                         | The known identifier.               |
 | `adobeDataProviderId`   | `String`                         | The Adobe data provider identifier. |
 | `authState`             | `Int`                            | The authenticated state.            |
-| `adobeResponseListener` | `ResponseListener&lt;AdobeVisitor&gt;` | The Adobe response listener.        |
+| `adobeResponseListener` | `ResponseListener<AdobeVisitor>` | The Adobe response listener.        |
 
 
 Example:
@@ -138,8 +138,8 @@ var tealium: Tealium?
 ...
 
 tealium.adobeVisitorApi?.linkEcidToKnownIdentifier(
-  &#34;myidentifier&#34;,
-  &#34;123456&#34;,
+  "myidentifier",
+  "123456",
   AdobeAuthState.AUTH_STATE_AUTHENTICATED,
   null
   )
@@ -193,20 +193,20 @@ Starts a timed event with the given name. If this method is called again with th
 If optional data is passed along with the event name, it is added to the track call when the timer is stopped with the [`stopTimedEvent()`](#stoptimedevent) call.
 
 ```java
-tealium.startTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;, mapOf(&#34;custom_value&#34; to &#34;custom_key&#34;))
+tealium.startTimedEvent(name: "TIMED_EVENT_NAME", mapOf("custom_value" to "custom_key"))
 ```
 
 | Parameters                              | Type     | Description                                                                 |
 |:----------------------------------------|:---------|:----------------------------------------------------------------------------|
 | `name`                                  | `String` | The name of the timed event                                                 |
-| `mapOf(&#34;custom_key&#34; to &#34;custom_value&#34;)` | `Map`    | (Optional) An object of key-value pair data to be tracked in the data layer |
+| `mapOf("custom_key" to "custom_value")` | `Map`    | (Optional) An object of key-value pair data to be tracked in the data layer |
 
 ### `stopTimedEvent()`
 
 Stops the timer for a timed event which triggers the `timed_event` tracking call.
 
 ```java
-tealium.stopTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium.stopTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | Parameters | Type     | Description                 |
@@ -224,23 +224,23 @@ val config = TealiumConfig(key, config);
 
 | Parameters | Type             | Description                            | Example         |
 |:-----------|:-----------------|:---------------------------------------|:----------------|
-| `key`      | `String`         | New Tealium instance name              | `&#34;abc123&#34;`      |
+| `key`      | `String`         | New Tealium instance name              | `"abc123"`      |
 | `config`   | `Tealium.Config` | The configuration for the new instance | `tealConfigObj` |
 
 
 ```java
 // Assuming execution is within Application.onCreate()
-val config = TealiumConfig(this, &#34;ACCOUNT_NAME&#34;, &#34;PROFILE_NAME&#34;, Environment.PROD)
-val tealium = Tealium.create(&#34;main&#34;, config)
+val config = TealiumConfig(this, "ACCOUNT_NAME", "PROFILE_NAME", Environment.PROD)
+val tealium = Tealium.create("main", config)
 ```
 
 Modules are initialized on a background Thread and therefore may not be ready directly after creation of the Tealium object. Add a completion block to add any subsequent required configuration as soon as the instance is ready:
 
 ```java
-val tealium = Tealium.create(&#34;main&#34;, config) {
+val tealium = Tealium.create("main", config) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            Logger.dev(&#34;--&#34;, &#34;VisitorProfile updated: $visitorProfile&#34;)
+            Logger.dev("--", "VisitorProfile updated: $visitorProfile")
         }
     })
 }
@@ -262,12 +262,12 @@ To track events, pass a [`TealiumView`](#class-tealiumview) or [`TealiumEvent`](
 
 ```java
 val tealiumlEvent = TealiumView(
-  &#34;purchase&#34;, 
+  "purchase", 
   mutableMapOf(
-    &#34;customer_id&#34; to &#34;abc123&#34;, 
-    &#34;order_total&#34; to 10.00, 
-    &#34;product_id&#34; to listOf(&#34;PROD123&#34;, &#34;PROD456&#34;),
-    &#34;order_id&#34; to &#34;0123456789&#34;
+    "customer_id" to "abc123", 
+    "order_total" to 10.00, 
+    "product_id" to listOf("PROD123", "PROD456"),
+    "order_id" to "0123456789"
   )
 )
 tealium.track(tealiumlEvent);
@@ -280,7 +280,7 @@ Returns the full AdobeVisitor instance.
 ```java
 var tealium: Tealium?
 //...
-val visitor = tealium.adobeVisitorApi?.visitor?.let { visitor -&gt;
+val visitor = tealium.adobeVisitorApi?.visitor?.let { visitor ->
     val ecid = visitor.experienceCloudId
     val nextRefresh = visitor.nextRefresh
     val blob = visitor.blob
@@ -303,7 +303,7 @@ An interface that defines the type of dispatch to be tracked. The following clas
 
 ### Class: `TealiumEvent`
 
-To track a user&#39;s interaction with a screen, pass an instance of `TealiumEvent(tealiumEvent, eventData)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional mutable map.
+To track a user's interaction with a screen, pass an instance of `TealiumEvent(tealiumEvent, eventData)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional mutable map.
 
 ```java
 val tealiumEvent = TealiumEvent(tealiumEvent, eventData)
@@ -313,17 +313,17 @@ tealium.track(tealiumEvent);
 | Parameters  | Type    | Description      |
 |:------------|:--------|:-----------------|
 | `tealiumEvent` | `string` | The event name, passed as the `tealium_event` attribute.  |
-| `eventData` | `MutableMap&lt;String, Any&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `eventData` | `MutableMap<String, Any>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```java
 val tealiumEvent = TealiumEvent(
-  &#34;cart_add&#34;, 
+  "cart_add", 
   mutableMapOf(
-    &#34;customer_id&#34; to &#34;abc123&#34;, 
-    &#34;product_id&#34; to listOf(&#34;PROD123&#34;, &#34;PROD456&#34;),
-    &#34;product_price&#34; to listOf(4.00, 6.00)
+    "customer_id" to "abc123", 
+    "product_id" to listOf("PROD123", "PROD456"),
+    "product_price" to listOf(4.00, 6.00)
   )
 )
 tealium.track(tealiumEvent);
@@ -341,18 +341,18 @@ tealium.track(tealiumView);
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent`  | `string`| `tealium_event` name of view event or screen.          | 
-| `eventData` | `MutableMap&lt;String, Any&gt;` | (Optional) Data to be sent with the event in key-value format. |
+| `eventData` | `MutableMap<String, Any>` | (Optional) Data to be sent with the event in key-value format. |
 
 Example:
 
 ```java
 val tealiumView = TealiumView(
-  &#34;purchase&#34;, 
+  "purchase", 
   mutableMapOf(
-    &#34;customer_id&#34; to &#34;abc123&#34;, 
-    &#34;order_total&#34; to 10.00, 
-    &#34;product_id&#34; to listOf(&#34;PROD123&#34;, &#34;PROD456&#34;),
-    &#34;order_id&#34; to &#34;0123456789&#34;
+    "customer_id" to "abc123", 
+    "order_total" to 10.00, 
+    "product_id" to listOf("PROD123", "PROD456"),
+    "order_id" to "0123456789"
   )
 )
 tealium.track(tealiumView);

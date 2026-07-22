@@ -27,24 +27,24 @@ RichRelevance powers personalized shopping experiences for the world’s largest
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **API Key**: Your RichRelevance API Key.
 * **Page Type**: The **Home Page** (`home`) is typically any generic page that does not have a specific product or product category associated to it. Use data mappings to override this selection. The **Page Type** will automatically be set to **Purchase Complete Page** (`purchase`) when an **Order ID** is set.
 * **Test Domains**: A comma-separated list of domain names for pre-production sites, for example, `dev.mydomain.com` or `qa.mydomain.com`. Calls to RichRelevance from these domains will go to `integration.richrelevance.com` instead of `recs.richrelevance.com`.
-* **Force Dev Mode**: Forces the recommendation engine to ignore the current user&#39;s behavior. For use only in Dev and QA environments.
+* **Force Dev Mode**: Forces the recommendation engine to ignore the current user's behavior. For use only in Dev and QA environments.
 * **Force Display**: Overrides the **Display recommendations onsite** configuration. Use **Force Display** in a development environment to see recommendations when the customer-facing site is not ready for recommendation display. For use only in Dev and QA environments.
-* **Use Dummy Data**: A method for using random products from the product cache to provide recommendations for a merchant. If the product cache is empty, a static recommendation set (not from the merchant&#39;s catalog) is used.
+* **Use Dummy Data**: A method for using random products from the product cache to provide recommendations for a merchant. If the product cache is empty, a static recommendation set (not from the merchant's catalog) is used.
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -77,7 +77,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 | Variable                               | Description     |
 |:---------------------------------------|:----------------|
@@ -97,7 +97,7 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 | Variable                               | Description     |
 |:---------------------------------------|:----------------|

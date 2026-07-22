@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/app-extensions/
 
 **今日の拡張機能**は、デバイスの「今日」画面に表示されるウィジェットです。これらのアプリ拡張機能はOSによって非常に限られたリソースが許可されており、メモリや処理能力を多く消費すると終了される可能性があります。
 
-Today Extension内でSwiftライブラリを通常通り使用しますが、メモリの使用量を低く保つために、データを送信する[Collectモジュール](/ja/platforms/ios-swift/module-list/collect/)のみを使用することをお勧めします。[Tag Managementモジュール](/ja/platforms/ios-swift/module-list/tag-management/)はリソースを多く消費するため、ウィジェットが終了する可能性があります。
+Today Extension内でSwiftライブラリを通常通り使用しますが、メモリの使用量を低く保つために、データを送信する[Collectモジュール](https://docs.tealium.com/ja/platforms/ios-swift/module-list/collect/)のみを使用することをお勧めします。[Tag Managementモジュール](https://docs.tealium.com/ja/platforms/ios-swift/module-list/tag-management/)はリソースを多く消費するため、ウィジェットが終了する可能性があります。
 
 選択したオプションに関わらず、ウィジェットが期待通りに動作するかどうかを徹底的にテストし、確認することが重要です。ウィジェットに組み込むTealiumモジュールを少なくすることで、パフォーマンスが向上し、メモリの使用量が低くなります。
 
@@ -34,16 +34,16 @@ class TealiumHelper {
 	var tealium: Tealium?
 	// ...
 	// iOSアプリのTealium Swiftライブラリから現在の訪問IDを返す
-	func getVisitorId() -&gt; String? {
+	func getVisitorId() -> String? {
 		return self.tealium.visitorId
 	}
 
 	// アプリ拡張機能で、iOSアプリから取得したIDを構成オブジェクトに渡す
 	private func initTealium(existingVisitorId id: String) {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
- 	       		                 profile: &#34;PROFILE&#34;,
-        	   	                 environment: &#34;ENVIRONMENT&#34;,
-           		                 datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+ 	       		                 profile: "PROFILE",
+        	   	                 environment: "ENVIRONMENT",
+           		                 datasource: "DATASOURCE")
 
 		// アプリ拡張機能で第一者IDとして使用される既存のID
         config.existingVisitorId = id
@@ -54,4 +54,7 @@ class TealiumHelper {
 
 または、訪問IDを中央で生成し、初期化時に各Tealiumインスタンスに渡すことをお勧めします。UUIDの使用が推奨されます。
 
+
+<blockquote>
 最初のパーティ訪問IDには、メールアドレスのような単純なIDを使用しないでください。
+</blockquote>

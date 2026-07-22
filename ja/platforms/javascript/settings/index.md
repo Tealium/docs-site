@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/javascript/settings/
 ---
 ## 動作原理
 
-`utag.js`の多くの挙動は、`utag.cfg`オブジェクト内の構成で制御されます。これらのデフォルトの挙動は、`utag_cfg_ovrd`という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、`utag.js`の読み込み前にページコード内で構成するか、**Pre Loader**にスコープされた[JavaScript Code Extension]()内で以下のように構成します：
+`utag.js`の多くの挙動は、`utag.cfg`オブジェクト内の構成で制御されます。これらのデフォルトの挙動は、`utag_cfg_ovrd`という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、`utag.js`の読み込み前にページコード内で構成するか、**Pre Loader**にスコープされた[JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)内で以下のように構成します：
 
 ```js
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
@@ -36,7 +36,7 @@ window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
 | [`nonblocking_tags`](#nonblocking_tags) | すべてのタグを非ブロッキングにして、極端なケースでのパフォーマンスとInteraction to Next Paint (INP)スコアを向上させます。デフォルト：`false`。 |
 | [`path`](#path) | 公開パスを指定します。 |
 | [`readywait`](#readywait) | DOM-readyブラウザイベントまで操作を停止します。 |
-| [`secure_cookie`](#secure_cookie) | [Persist Data Values extension]()および[`utag.loader.SC`](/ja/platforms/javascript/api/cookie-functions/#utagloadersc)メソッドによって構成されるすべての`utag_main`クッキーの属性文字列を`secure`に構成します。 |
+| [`secure_cookie`](#secure_cookie) | [Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/)および[`utag.loader.SC`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utagloadersc)メソッドによって構成されるすべての`utag_main`クッキーの属性文字列を`secure`に構成します。 |
 | [`session_timeout`](#session_timeout)| セッションの有効期限（ミリ秒単位）を構成します。 |
 | [`split_cookie`](#split_cookie)| `utag_main`クッキーをスタンドアロンのクッキーに分割します。デフォルト：`true` |
 | [`split_cookie_allowlist`](#split_cookie_allowlist)| 許可された`utag_main`サブクッキーまたはスタンドアロンクッキーの配列。 |
@@ -46,7 +46,7 @@ window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
 ### `always_set_v_id`
 
 **`utag.js`に`utag_main_v_id`クッキーまたは`utag_main`の`v_id`コンポーネントを構成させる**  
-([`utag.js` 4.50](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
+([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
 `utag_main`の`v_id`変数は、データプライバシーと同意目的に準拠するためにTealium Collectタグによって構成されます。これを`true`に構成すると、すべての訪問に対してこのクッキーを構成するよう`utag.js`に強制します。（デフォルト：`false`）
 
 ```js
@@ -59,7 +59,7 @@ window.utag_cfg_ovrd.always_set_v_id = true;
 同意管理クッキーの名前をカスタマイズします。同じドメイン名で複数のプロファイルを持っている場合は、クッキー間の競合や潜在的なデータ漏洩を防ぐために、各プロファイルに固有の同意管理クッキー名を付けます。
 
 ```js
-window.utag_cfg_ovrd.cmcookiens = &#34;CONSENTMGR_NL-CMB-CG1&#34;;
+window.utag_cfg_ovrd.cmcookiens = "CONSENTMGR_NL-CMB-CG1";
 ```
 
 ### `consentPeriod`
@@ -75,7 +75,7 @@ window.utag_cfg_ovrd.consentPeriod = 60;
 
 **システム定義の属性の上書きを防ぐ**  
 
-([`utag.js` 4.54](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22)で新規導入)
+([`utag.js` 4.54](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22)で新規導入)
 
 `true`に構成すると、この構成は受信データが`tealium_visitor_id`などの`tealium_`で始まるシステム定義の属性を上書きするのをブロックします。
 
@@ -102,7 +102,7 @@ window.utag_cfg_ovrd.dom_complete = true;
 `utag_main`クッキーが構成されるドメインを構成します。たとえば、クッキーを受け入れないルートドメインのサイトの場合、`amazonaws.com`などです。（デフォルト：`location.hostname`のトップレベルドメイン）
 
 ```js
-window.utag_cfg_ovrd.domain = &#34;mysite.amazonaws.com&#34;;
+window.utag_cfg_ovrd.domain = "mysite.amazonaws.com";
 ```
 
 ### `gdprDLRef`
@@ -114,10 +114,14 @@ window.utag_cfg_ovrd.domain = &#34;mysite.amazonaws.com&#34;;
 
 ```js
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
-window.utag_cfg_ovrd.gdprDLRef = &#34;site_language&#34;;
+window.utag_cfg_ovrd.gdprDLRef = "site_language";
 ```
 
+
+<blockquote>
 言語コードを直接構成しないでください。この上書き構成は変数名を期待しており、言語コード値ではありません。
+</blockquote>
+
 
 ### `ignoreLocalStorage`
 
@@ -164,12 +168,12 @@ window.utag_cfg_ovrd.load_rules_at_wait = true;
 
 例のメタタグ：
 ```html
-&lt;meta content=&#34;Tag Management&#34; property=&#34;Article:Section&#34;&gt;
+<meta content="Tag Management" property="Article:Section">
 ```
 
 結果の値：
 ```js
-utag.data[&#39;meta.article:section&#39;]=&#34;iq tag management&#34;
+utag.data['meta.article:section']="iq tag management"
 ```
 
 ```js
@@ -180,8 +184,8 @@ window.utag_cfg_ovrd.lowermeta = true;
 **クエリ文字列パラメータ名と値を小文字にする（レガシー）**  
 すべてのクエリ文字列変数名と値を小文字にします。これは、`utag.js` バージョン4.2x以前の動作を再現します。（デフォルト：`false`）
 
-例えばクエリ文字列パラメータ： `&amp;RefId=Abc123`
-結果の値： `utag.data[&#39;qp.refid&#39;]=&#34;abc123&#34;`
+例えばクエリ文字列パラメータ： `&RefId=Abc123`
+結果の値： `utag.data['qp.refid']="abc123"`
 
 ```js
 window.utag_cfg_ovrd.lowerqp = true;
@@ -209,9 +213,13 @@ window.utag_cfg_ovrd.noview = true;
 
 **Cookieのオプトアウト**  
 訪問がすべてのCookieの使用を明示的にオプトアウトした場合のみ、このオプションを構成してください。（デフォルト：`false`）
-このオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問が「シングルページセッション」のように見えるようになります。
 
-このオプションは、`utag.js` によって構成されるすべてのCookieの保存を無効にし、[Persist Data Value extension]()で構成されるCookieやセッションCookieも含まれます。また、Cookieが利用できない場合には、`ut.visitor_id`、`tealium_visitor_id`、`cp.utag_main_v_id` の変数に新しいタイムスタンプを構成します。
+<blockquote>
+このオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問が「シングルページセッション」のように見えるようになります。
+</blockquote>
+
+
+このオプションは、`utag.js` によって構成されるすべてのCookieの保存を無効にし、[Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/)で構成されるCookieやセッションCookieも含まれます。また、Cookieが利用できない場合には、`ut.visitor_id`、`tealium_visitor_id`、`cp.utag_main_v_id` の変数に新しいタイムスタンプを構成します。
 
 ```js
 window.utag_cfg_ovrd.nocookie = true
@@ -220,7 +228,7 @@ window.utag_cfg_ovrd.nocookie = true
 ### `nonblocking_tags`
 
 **非同期でタグをロード**  
-([`utag.js` 4.52](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
+([`utag.js` 4.52](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
 このオプションは、すべてのタグの非ブロッキング動作を有効にし、INPスコアと全体的なページパフォーマンスを向上させることができます。ユーザーのインタラクションを遅くし、INPスコアを低下させるリソース集約型のタグがあるページでこの構成を使用してくださいが、出口リンクのトラッキングを徹底的にテストすることを確認してください。（デフォルト：`false`）
 
 ```js
@@ -241,7 +249,7 @@ window.utag_cfg_ovrd.nonblocking_tags = true;
 タグテンプレートの公開URLパスを構成し、指定されている場合は[公開構成ダイアログ]()の公開URLフィールドを上書きします。公開URLパスの構成は、自己ホスティングおよび[First Party Domains]()の顧客にとって有用です。
 
 ```js
-window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod&#39;;
+window.utag_cfg_ovrd.path = '//tags.example.com/main/prod';
 ```
 
 ### `readywait`
@@ -256,8 +264,8 @@ window.utag_cfg_ovrd.readywait = true;
 ### `secure_cookie`
 
 **セキュアCookie**  
-([`utag.js` 4.48](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01)で新規導入)  
-[Persist Data Values extension]()および[`SC()`](/ja/platforms/javascript/api/cookie-functions/#utag-loader-sc)関数によって構成されるすべての`utag_main`クッキーに対して、属性文字列を`secure`に構成します。セキュアクッキーはHTTPSページでのみ構成およびアクセスが可能です。（デフォルト：`false`）
+([`utag.js` 4.48](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01)で新規導入)  
+[Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/)および[`SC()`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utag-loader-sc)関数によって構成されるすべての`utag_main`クッキーに対して、属性文字列を`secure`に構成します。セキュアクッキーはHTTPSページでのみ構成およびアクセスが可能です。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.secure_cookie = true;
@@ -276,8 +284,8 @@ window.utag_cfg_ovrd.session_timeout = 900000;
 ### `split_cookie`
 
 **スタンドアロンクッキー**  
-([`utag.js` 4.50](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
-`utag_`名前空間のクッキー（組み込みの`utag_main`クッキーなど）がマルチバリュークッキーとして書き込まれるか、[`utag.loader.SC`](/ja/platforms/javascript/api/cookie-functions/#utagloadersc)によってスタンドアロンクッキーとして書き込まれるかを決定します。（デフォルト：`true`）
+([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
+`utag_`名前空間のクッキー（組み込みの`utag_main`クッキーなど）がマルチバリュークッキーとして書き込まれるか、[`utag.loader.SC`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utagloadersc)によってスタンドアロンクッキーとして書き込まれるかを決定します。（デフォルト：`true`）
 
 ```js
 window.utag_cfg_ovrd.split_cookie = false;
@@ -286,7 +294,7 @@ window.utag_cfg_ovrd.split_cookie = false;
 ### `split_cookie_allowlist`
 
 **`utag_main`サブクッキー**  
-([`utag.js` 4.50](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
+([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
 許可された`utag_main`サブクッキーの配列を指定します。許可リストは、`split_cookie`が`true`に構成されている場合にのみ適用されます。これは、バージョン4.50以降のデフォルト構成です。
 
 `split_cookie_allowlist`が定義されており、アクティブである場合、以下が適用されます：
@@ -296,18 +304,22 @@ window.utag_cfg_ovrd.split_cookie = false;
 
 `split_cookie_allowlist`が定義されていない場合、または`split_cookie`が`true`でない場合、すべての`utag_`名前空間のクッキーが許可されます。
 
+
+<blockquote>
 `ses_id`、`_st`、`_ss`を許可せずにこのオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問がシングルページセッションのように見えるようになります。
+</blockquote>
+
 
 ```js
-window.utag_cfg_ovrd.split_cookie_allowlist = [&#34;v_id&#34;, &#34;_ss&#34;, &#34;_st&#34;, &#34;ses_id&#34;];
+window.utag_cfg_ovrd.split_cookie_allowlist = ["v_id", "_ss", "_st", "ses_id"];
 ```
 
 ### `suppress_before_load_rules_with_uids`
 
 **UIDによるトラッキングタグの場合、Before Load Rules拡張機能をスキップ**  
-([`utag.js` 4.52](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
+([`utag.js` 4.52](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
 
-デフォルトでは、**Before Load Rules**にスコープされた拡張機能は、[UIDによるトラッキングタグ]()の場合でもすべてのトラッキングコールに対して実行されます。以前は、UIDによるトラッキングタグの場合、これらの拡張機能は実行されませんでした。
+デフォルトでは、**Before Load Rules**にスコープされた拡張機能は、[UIDによるトラッキングタグ](https://docs.tealium.com/tracking-functions/)の場合でもすべてのトラッキングコールに対して実行されます。以前は、UIDによるトラッキングタグの場合、これらの拡張機能は実行されませんでした。
 
 このオプションを`true`に構成すると、UIDによるトラッキングタグの場合、**Before Load Rules**にスコープされた拡張機能をスキップします（レガシー動作）。（デフォルト：`false`）
 

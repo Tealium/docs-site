@@ -10,28 +10,28 @@ url: https://docs.tealium.com/ja/platforms/amp/track/
 この追跡に使用されるデータレイヤーをカスタマイズするには、変数のキーと値のペアで[extra URL Params](https://amp.dev/documentation/components/amp-analytics/?format=websites#extra-url-params) ブロック `extraUrlParams` を追加します：
 
 ```html
-&lt;amp-analytics type=&#34;tealiumcollect&#34;&gt;
-&lt;script type=&#34;application/json&#34;&gt;
+<amp-analytics type="tealiumcollect">
+<script type="application/json">
 {
-  &#34;vars&#34;: {
-    &#34;account&#34;: &#34;ACCOUNT&#34;,
-    &#34;profile&#34;: &#34;PROFILE&#34;,
-    &#34;datasource&#34;: &#34;DATASOURCE&#34;
+  "vars": {
+    "account": "ACCOUNT",
+    "profile": "PROFILE",
+    "datasource": "DATASOURCE"
   },
-  &#34;extraUrlParams&#34;: {
-    &#34;example_param1&#34;: &#34;abc&#34;,
-    &#34;example_param2&#34;: 123
+  "extraUrlParams": {
+    "example_param1": "abc",
+    "example_param2": 123
   }
 }     
-&lt;/script&gt;
-&lt;/amp-analytics&gt;
+</script>
+</amp-analytics>
 ```
 
 | パラメータ | タイプ | 説明 |例 |
 | --- | --- | --- | --- |
-| `account` | `String` |Tealiumのアカウント名 | `&#34;companyXYZ&#34;` |
-| `profile` | `String` |Tealiumのプロファイル名 | `&#34;main&#34;`  |
-| `datasource` | `String` | データソースのキー  | `&#34;abc123&#34;` |
+| `account` | `String` |Tealiumのアカウント名 | `"companyXYZ"` |
+| `profile` | `String` |Tealiumのプロファイル名 | `"main"`  |
+| `datasource` | `String` | データソースのキー  | `"abc123"` |
 
 
 ## イベントの追跡
@@ -41,16 +41,16 @@ url: https://docs.tealium.com/ja/platforms/amp/track/
 以下はトリガーの例です：
 
 ```json
-&#34;triggers&#34;: {
-  &#34;trigger_name&#34;: {
-    &#34;on&#34;: &#34;VALUE&#34;,
-    &#34;selector&#34;: &#34;VALUE&#34;,
-    &#34;request&#34;: &#34;VALUE&#34;,
-    &#34;vars&#34;: {
-      &#34;tealium_event&#34;: &#34;VALUE&#34;
+"triggers": {
+  "trigger_name": {
+    "on": "VALUE",
+    "selector": "VALUE",
+    "request": "VALUE",
+    "vars": {
+      "tealium_event": "VALUE"
     }
-    &#34;extraUrlParams&#34;: {
-      &#34;extra_var&#34;: &#34;${extraVar}&#34;
+    "extraUrlParams": {
+      "extra_var": "${extraVar}"
     }
   }
 }
@@ -63,19 +63,19 @@ AMPは以下の[`amp-analytics` triggers](https://www.ampproject.org/docs/refere
 
 イベントタイプ `visible` と `click`（`on` プロパティで使用）では、HTML5の要素属性を使用して `data-vars-*` の形式で動的追跡変数が渡されます。この方法で渡された変数はキャメルケースの命名に変換されます。
 
-例えば、プロパティ `data-vars-link-name=&#34;register&#34;` は、トリガーの `extraUrlParams` ブロックで参照される変数 `${linkName}` になります。
+例えば、プロパティ `data-vars-link-name="register"` は、トリガーの `extraUrlParams` ブロックで参照される変数 `${linkName}` になります。
 
 ```json
-&#34;triggers&#34;: {
-  &#34;custom_click&#34;: {
-    &#34;on&#34;: &#34;click&#34;,
-    &#34;selector&#34;: &#34;#the-button&#34;,
-    &#34;request&#34;: &#34;event&#34;,
-    &#34;vars&#34;: {
-      &#34;tealium_event&#34;: &#34;custom_click&#34;
+"triggers": {
+  "custom_click": {
+    "on": "click",
+    "selector": "#the-button",
+    "request": "event",
+    "vars": {
+      "tealium_event": "custom_click"
     }
-    &#34;extraUrlParams&#34;: {
-      &#34;link_name&#34;: &#34;${linkName}&#34;
+    "extraUrlParams": {
+      "link_name": "${linkName}"
     }
   }
 }
@@ -86,7 +86,7 @@ AMPは以下の[`amp-analytics` extra URL params](https://amp.dev/documentation/
 ボタンのHTML例：
 
 ```html
-&lt;span id=&#34;the-button&#34; data-vars-link-name=&#34;register&#34;&gt;
+<span id="the-button" data-vars-link-name="register">
 ボタンテキスト
-&lt;/span&gt;
+</span>
 ```

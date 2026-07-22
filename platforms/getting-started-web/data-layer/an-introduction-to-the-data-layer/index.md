@@ -9,7 +9,7 @@ A data layer is a specification for the customer interaction tracking that flows
 
 The definition of your data layer starts with identifying the most important activity of your visitors, called _events_. Events encompass everything from page views and site searches to logins, purchases, or any customer action that informs your critical business decisions. Each event contains contextual information, called _event attributes_. The data layer comprises a list of these events and their corresponding attributes.
 
-The Tealium data layer uses a variable named `tealium_event` to identify the events you track. You can define your own event names, but we have a [standard set of events](/platforms/getting-started-web/data-layer/definitions/) to get you started.
+The Tealium data layer uses a variable named `tealium_event` to identify the events you track. You can define your own event names, but we have a [standard set of events](https://docs.tealium.com/platforms/getting-started-web/data-layer/definitions/) to get you started.
 
 Here are a few examples of events that are common to many data layer definitions:
 
@@ -66,7 +66,7 @@ We recommend a naming convention that is simple and easy to understand. Some exa
 |`order_id`| The unique ID of a completed order.| `1234`|
 |`order_total`| The total amount paid for the order.| `123.45`|
 |`customer_id`| A unique ID for the visitor.| `0123456789`|
-|`customer_zip`| The visitor&#39;s zip code.| `92101`|
+|`customer_zip`| The visitor's zip code.| `92101`|
 
 These attributes can be sent to your third-party vendors in the format that they require. This process is made simple with the Tealium Customer Data Hub.
 
@@ -79,4 +79,4 @@ As an example, the attribute named `order_id` is referenced by vendors using sev
 | | | `pid`| X (Formerly Twitter) Conversions|
 | | | `oid`| Conversant|
 
-![](/images/platforms/getting-started-web/data-layer-data-to-vendors.png)
+![](https://docs.tealium.com/images/platforms/getting-started-web/data-layer-data-to-vendors.png)

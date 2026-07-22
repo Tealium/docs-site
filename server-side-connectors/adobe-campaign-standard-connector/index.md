@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-campaign-standard-con
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -26,7 +26,7 @@ After adding the connector, configure the following settings:
 
 * **Tenant ID**
   * The Tenant ID can be found in your Adobe Marketing Cloud URL.
-  * Example: &lt;https://yourtenantid.experiencecloud.adobe.com/campaign.html&gt;
+  * Example: <https://yourtenantid.experiencecloud.adobe.com/campaign.html>
 
 * **API Key**
   * The API Key (Client ID) can be found in the [Adobe I/O Console](https://console.adobe.io/).
@@ -54,14 +54,14 @@ The API endpoint used to send a transactional event varies depending on your con
 
 |**Parameter**| **Description**|
 |---| ---|
-|Email|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the recipient.&lt;/li&gt;&lt;/ul&gt; |
-|Event ID|  &lt;ul&gt;&lt;li&gt;(Required) The type of event you want to send.&lt;/li&gt;&lt;li&gt;This ID is generated when creating the event definition.&lt;/li&gt;&lt;li&gt;For additional information, see the [Adobe Campaign Documentation](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html).&lt;/li&gt;&lt;/ul&gt; |
-|Expiration Date|  &lt;ul&gt;&lt;li&gt;(Optional) The sending of the transactional event will be cancelled after this date.&lt;/li&gt;&lt;/ul&gt; |
-|Scheduled Send Date|  &lt;ul&gt;&lt;li&gt;(Optional) The transactional event will be processed and the transactional message will be sent at this date.&lt;/li&gt;&lt;/ul&gt; |
-|Template Name|  &lt;ul&gt;&lt;li&gt;If using a template to pass data, input with &#34;Transactional Message Content Template&#34; and enter name of main template.&lt;/li&gt;&lt;li&gt;Do not include double curly braces in name, for example, use `SomeTemplateName` not `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
-|Template Variables|  &lt;ul&gt;&lt;li&gt;Provide template variables as data input for &#34;Transactional Message Content Template&#34;.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation.&lt;/li&gt;&lt;li&gt;Example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Transactional Message Content Template|  &lt;ul&gt;&lt;li&gt;Template describing enriched transactional message content.&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields.&lt;/li&gt;&lt;li&gt;For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;li&gt;For additional information about using enriched message content, see Adobe&#39;s [Campaign Documentation.](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html)&lt;/li&gt;&lt;/ul&gt; |
-| Transactional API Endpoint |  &lt;ul&gt;&lt;li&gt;(Optional) Specify to override default value of &#34; `mc`&#34; followed by Tenant ID from connector configuration.&lt;/li&gt;&lt;li&gt;This is typically applicable when working in your stage instance.&lt;/li&gt;&lt;li&gt;Example: If stage Tenant ID is &#34;`geometrixx-mkt-stage3`&#34;, then override Transactional API Endpoint to &#34;`geometrixx`&#34;.&lt;/li&gt;&lt;/ul&gt; |
+|Email|  <ul><li>(Required) The email address of the recipient.</li></ul> |
+|Event ID|  <ul><li>(Required) The type of event you want to send.</li><li>This ID is generated when creating the event definition.</li><li>For additional information, see the [Adobe Campaign Documentation](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html).</li></ul> |
+|Expiration Date|  <ul><li>(Optional) The sending of the transactional event will be cancelled after this date.</li></ul> |
+|Scheduled Send Date|  <ul><li>(Optional) The transactional event will be processed and the transactional message will be sent at this date.</li></ul> |
+|Template Name|  <ul><li>If using a template to pass data, input with "Transactional Message Content Template" and enter name of main template.</li><li>Do not include double curly braces in name, for example, use `SomeTemplateName` not `{{SomeTemplateName}}`.</li></ul> |
+|Template Variables|  <ul><li>Provide template variables as data input for "Transactional Message Content Template".</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation.</li><li>Example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Transactional Message Content Template|  <ul><li>Template describing enriched transactional message content.</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>For example, `{{SomeTemplateName}}`.</li><li>For additional information about using enriched message content, see Adobe's [Campaign Documentation.](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html)</li></ul> |
+| Transactional API Endpoint |  <ul><li>(Optional) Specify to override default value of " `mc`" followed by Tenant ID from connector configuration.</li><li>This is typically applicable when working in your stage instance.</li><li>Example: If stage Tenant ID is "`geometrixx-mkt-stage3`", then override Transactional API Endpoint to "`geometrixx`".</li></ul> |
 
 ### Action - Trigger Signal Activity
 
@@ -73,9 +73,9 @@ To trigger signal activity, the REST workflow/execution API is used.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Workflow ID|  &lt;ul&gt;&lt;li&gt;The ID of the workflow configured in your Adobe console.&lt;/li&gt;&lt;/ul&gt; |
-|Source|  &lt;ul&gt;&lt;li&gt;Used to indicate the triggering request source.&lt;/li&gt;&lt;/ul&gt; |
-|Parameter Map|  &lt;ul&gt;&lt;li&gt;It is possible to call a workflow with parameters.&lt;/li&gt;&lt;li&gt;Map a parameter&#39;s value to it&#39;s name.&lt;/li&gt;&lt;li&gt;String, Number, Boolean, and Date/Time types are supported.&lt;/li&gt;&lt;/ul&gt; |
+|Workflow ID|  <ul><li>The ID of the workflow configured in your Adobe console.</li></ul> |
+|Source|  <ul><li>Used to indicate the triggering request source.</li></ul> |
+|Parameter Map|  <ul><li>It is possible to call a workflow with parameters.</li><li>Map a parameter's value to it's name.</li><li>String, Number, Boolean, and Date/Time types are supported.</li></ul> |
 
 ### Action - Create or Update Profile
 
@@ -87,8 +87,8 @@ For more information, see [Creating Profiles with APIs,](https://experienceleagu
 
 |**Parameter**| **Description**|
 |---| ---|
-|Update Strategy|  &lt;ul&gt;&lt;li&gt;(Required) Select applicable update strategy.  &lt;ul&gt;&lt;li&gt;**Create Only** — Look up an existing profile and if not found, create a new profile.&lt;/li&gt;&lt;li&gt;**Update Only** — Look up an existing profile and update it.&lt;/li&gt;&lt;li&gt;**Create or Update** — Look up an existing profile and if found, update it, otherwise create a new profile.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|Filter|  &lt;ul&gt;&lt;li&gt;Required when Update Strategy is **Create Or Update** or **Update Only**.&lt;/li&gt;&lt;li&gt;It is strongly recommended to select filters that return unique results.&lt;/li&gt;&lt;li&gt;For additional information, see: [Composite Identification Key](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en).&lt;/li&gt;&lt;li&gt;If the search result returns multiple profiles, only the first one is updated.&lt;/li&gt;&lt;/ul&gt; |
-|Is Custom Filter|  &lt;ul&gt;&lt;li&gt;See [about custom filters.](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters)&lt;/li&gt;&lt;/ul&gt; |
-|Template Variables|  &lt;ul&gt;&lt;li&gt;Provide template variables as data input.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation.&lt;/li&gt;&lt;li&gt;Example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Templates|  &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields.&lt;/li&gt;&lt;li&gt;For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+|Update Strategy|  <ul><li>(Required) Select applicable update strategy.  <ul><li>**Create Only** — Look up an existing profile and if not found, create a new profile.</li><li>**Update Only** — Look up an existing profile and update it.</li><li>**Create or Update** — Look up an existing profile and if found, update it, otherwise create a new profile.</li></ul> </li></ul> |
+|Filter|  <ul><li>Required when Update Strategy is **Create Or Update** or **Update Only**.</li><li>It is strongly recommended to select filters that return unique results.</li><li>For additional information, see: [Composite Identification Key](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en).</li><li>If the search result returns multiple profiles, only the first one is updated.</li></ul> |
+|Is Custom Filter|  <ul><li>See [about custom filters.](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters)</li></ul> |
+|Template Variables|  <ul><li>Provide template variables as data input.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation.</li><li>Example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Templates|  <ul><li>Provide templates to be referenced in Body Data.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>For example, `{{SomeTemplateName}}`.</li></ul> |

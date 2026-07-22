@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
   
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1,000
 * Max time since oldest request: 60 minutes
@@ -29,8 +29,12 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
-When you add this connector, you are prompted to accept the vendor&#39;s data platform policy.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+
+<blockquote>
+When you add this connector, you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -45,11 +49,15 @@ After adding the connector, configure the following settings:
 | **Parameter** | **Description** |
 | --- | --- |
 | Audience | The audience to which the user will be added. |
-| User Identifier Type | User identifiers can be one of the following types: `Email Address`, `MAID`, or `Email &amp; MAID`. |
-| User Identifier | The identifier for the user. Normalize email addresses by trimming leading and trailing whitespace and converting all characters to lower case before hashing. All values must be SHA-256 hashed. If **User Identifier Type** is `Email &amp; MAID`, the first value must be Email and the second value must be MAID. |
+| User Identifier Type | User identifiers can be one of the following types: `Email Address`, `MAID`, or `Email & MAID`. |
+| User Identifier | The identifier for the user. Normalize email addresses by trimming leading and trailing whitespace and converting all characters to lower case before hashing. All values must be SHA-256 hashed. If **User Identifier Type** is `Email & MAID`, the first value must be Email and the second value must be MAID. |
 | User Identifier Already Hashed | Select the checkbox if the user identifier is already hashed. |
 
- If you do not see your newly-created audience in the **Audience** drop-down list, copy the **Audience ID** (usually in format `ca.xxxxxxxxxxx`) from the **Reddit Audience Manager** page and paste it in the **Audience** section of the connector to send data. 
+
+<blockquote>
+If you do not see your newly-created audience in the **Audience** drop-down list, copy the **Audience ID** (usually in format `ca.xxxxxxxxxxx`) from the **Reddit Audience Manager** page and paste it in the **Audience** section of the connector to send data.
+</blockquote>
+
 
 ### Remove User from Custom Audience
 
@@ -58,8 +66,11 @@ After adding the connector, configure the following settings:
 | **Parameter** | **Description** |
 | --- | --- |
 | Audience | This is the audience from which the user will be removed. |
-| User Identifier Type | User identifiers can be one of the following types: `Email Address`, `MAID`, or `Email &amp; MAID`. |
-| User Identifier | The identifier for the user. Normalize email addresses by trimming leading and trailing whitespace and converting all characters to lower case before hashing. All values must be SHA-256 hashed. If **User Identifier Type** is `Email &amp; MAID`, the first value must be Email and the second value must be MAID. |
+| User Identifier Type | User identifiers can be one of the following types: `Email Address`, `MAID`, or `Email & MAID`. |
+| User Identifier | The identifier for the user. Normalize email addresses by trimming leading and trailing whitespace and converting all characters to lower case before hashing. All values must be SHA-256 hashed. If **User Identifier Type** is `Email & MAID`, the first value must be Email and the second value must be MAID. |
 | User Identifier Already Hashed | Select the checkbox if the user identifier is already hashed. |
 
- If you do not see your newly-created audience in the **Audience** drop-down list, copy the **Audience ID** (usually in format `ca.xxxxxxxxxxx`) from the **Reddit Audience Manager** page and paste it in the **Audience** section of the connector to send data. 
+
+<blockquote>
+If you do not see your newly-created audience in the **Audience** drop-down list, copy the **Audience ID** (usually in format `ca.xxxxxxxxxxx`) from the **Reddit Audience Manager** page and paste it in the **Audience** section of the connector to send data.
+</blockquote>

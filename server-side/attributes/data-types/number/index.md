@@ -21,7 +21,7 @@ Numeric values are stored as decimals or integers. Choose the type that matches 
 
 The number attribute is available in the following scopes: Event, Visit, Visitor.
 
-![](/images/server-side/scope-3checks.png)
+![](https://docs.tealium.com/images/server-side/scope-3checks.png)
 
 ### Size Limits
 
@@ -35,7 +35,7 @@ Number attributes are also limited by the maximum size of the profile after encr
 
 This enrichment modifies a number with a positive value (increment) or a negative value (decrement). The modifying value can be a separate number attribute or a constant value.
 
-For example, to calculate the Lifetime Total Value (LTV) of a visitor&#39;s orders use this enrichment to increment the attribute with the value of the `order_total` attribute each time the `purchase` event occurs.
+For example, to calculate the Lifetime Total Value (LTV) of a visitor's orders use this enrichment to increment the attribute with the value of the `order_total` attribute each time the `purchase` event occurs.
 
 **Attribute Name**: Lifetime Total Value
 
@@ -124,20 +124,24 @@ The difference is always stored as a positive value, so the dates can be set in 
 
 For example, to calculate Days Since Last Purchase as the difference in days between Last Purchase Date and Current Visit Date.
 
+
+<blockquote>
 While date attributes are stored as Unix timestamps, these examples use formatted dates for readability.
+</blockquote>
+
 
 **Attribute Name**: Days Since Last Purchase
 
 * **Initial**: ---
 * **Enriched With**:  
-Last Purchase Date: `&#34;2018/10/30&#34;`  
-Current Visit Date: `&#34;2019/11/01&#34;`
+Last Purchase Date: `"2018/10/30"`  
+Current Visit Date: `"2019/11/01"`
 * **Result**: `367`
 
 ### Set rolling average based on timeline
 (AudienceStream only)
 
-The rolling average is the arithmetic mean of numerical values captured over time. These values come from number and [tally]() attributes that are collected as entries in a [timeline](). The timeline&#39;s expiration determines which entries can be factored into the final average. If there is not an expiration date, it is a simple average solution.
+The rolling average is the arithmetic mean of numerical values captured over time. These values come from number and [tally]() attributes that are collected as entries in a [timeline](). The timeline's expiration determines which entries can be factored into the final average. If there is not an expiration date, it is a simple average solution.
 
 **Attribute Name**: Average Order Value
 
@@ -148,7 +152,7 @@ The rolling average is the arithmetic mean of numerical values captured over tim
 ### Set rolling sum based on timeline
 (AudienceStream only)
 
-A rolling sum is the aggregate of numerical values in a number or [tally]() attribute that are captured as entries in a [timeline](). The timeline&#39;s expiration determines which entries can be factored in during the aggregation.
+A rolling sum is the aggregate of numerical values in a number or [tally](https://docs.tealium.com/tally-attribute/) attribute that are captured as entries in a [timeline](https://docs.tealium.com/timeline-attribute/). The timeline's expiration determines which entries can be factored in during the aggregation.
 
 **Attribute Name**: Total Order Value
 
@@ -169,12 +173,12 @@ Set the number to the number of entries in a timeline.
 ### Set number to tally value
 (AudienceStream only)
 
-Set the number to a specific value within the tally. Specify the tally attribute and the name of the entry in the tally. For example, a tally for Site Category Views might have an entry for &#34;Shoes&#34;.
+Set the number to a specific value within the tally. Specify the tally attribute and the name of the entry in the tally. For example, a tally for Site Category Views might have an entry for "Shoes".
 
 **Attribute Name**: Shoe Category View Count
 
 * **Initial**: ---
-* **Enriched With**: Site Category Views: `{&#34;Shoes&#34;: 42}`
+* **Enriched With**: Site Category Views: `{"Shoes": 42}`
 * **Result**: `42`
 
 ### Set number to the count of items in tally
@@ -188,9 +192,9 @@ Set the attribute to the number of entries in a tally. For example, a tally for 
 * **Enriched With**:  
 ``` 
 {  
-  &#34;Shoes&#34;: 42,  
-  &#34;Shirts&#34;: 11,  
-  &#34;Pants&#34;: 8
+  "Shoes": 42,  
+  "Shirts": 11,  
+  "Pants": 8
 } 
 ``` 
 * **Result**: `3.00`
@@ -203,10 +207,10 @@ Set the number to the count of items in a set of strings. For example, a set of 
 **Attribute Name**: Number of Active Browser Types
 
 * **Initial**: ---
-* **Enriched With**: `[&#34;Firefox&#34;, &#34;Safari&#34;, &#34;Chrome&#34;]`
+* **Enriched With**: `["Firefox", "Safari", "Chrome"]`
 * **Result**: `3.00`
 
-### Set number to tally&#39;s rolling max based on a timeline
+### Set number to tally's rolling max based on a timeline
 (AudienceStream only)
 
 Set the number to the rolling maximum of another number in a tally captured within a timeline.
@@ -245,8 +249,8 @@ The change in date can be expressed as one of the following:
 
 * **Initial**: 
 * **Enriched With**:  
-Last Purchase Date (last event): `&#34;10/31/2019&#34;`  
-Last Purchase Date (this event): `&#34;12/31/2019&#34;` 
+Last Purchase Date (last event): `"10/31/2019"`  
+Last Purchase Date (this event): `"12/31/2019"` 
 * **Result**: 2 (months)
 
 ### Set To Number Based On Average of An Array of Numbers
@@ -289,5 +293,5 @@ Set to the number of items in an array. For example, to store the number of prod
 **Attribute Name**: `num_cart_items`
 
 * **Initial**: ---
-* **Enriched With**: product_id: `[&#34;prod123&#34;, &#34;prod456&#34;]`
+* **Enriched With**: product_id: `["prod123", "prod456"]`
 * **Result**: `2.00`

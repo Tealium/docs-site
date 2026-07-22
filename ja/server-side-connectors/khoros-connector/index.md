@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/khoros-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。詳細については、[コネクタ概要]()を参照してください。
+コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。詳細については、[コネクタ概要](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

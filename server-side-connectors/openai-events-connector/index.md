@@ -13,12 +13,12 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **OpenAI Events API Key**: Required. The Bearer token used to authenticate requests to the OpenAI Events API. This key is sent in the Authorization header as a Bearer token. Your OpenAI account team can provision this value.
-* **Pixel ID**: Required. Your OpenAI Pixel ID (`pid`). This value is appended to the API endpoint as a query parameter. Find your Pixel ID in **OpenAI Ads &gt; Settings &gt; Conversions**. Each conversion event you intend to send (for example, `page_viewed`, `items_added`, `order_created`) must be registered there for the pixel before live events count toward reporting.
+* **Pixel ID**: Required. Your OpenAI Pixel ID (`pid`). This value is appended to the API endpoint as a query parameter. Find your Pixel ID in **OpenAI Ads > Settings > Conversions**. Each conversion event you intend to send (for example, `page_viewed`, `items_added`, `order_created`) must be registered there for the pixel before live events count toward reporting.
 * **Default Action Source**: Select the default source of the conversion event. Defaults to **Web**. Override this per action using the Action Source parameter.
 * **Base URL Override**: The default is `https://bzr.openai.com`. Override only if directed by OpenAI for sandbox or staging environments.
 
@@ -35,8 +35,8 @@ After adding the connector, configure the following settings:
 
 | Parameter | Description |
 | --- | --- |
-| Event Type | Required. Select the type of event to send to OpenAI.&lt;br&gt;Supported event types: **Appointment Scheduled**, **Checkout Started**, **Contents Viewed**, **Custom**, **Items Added**, **Lead Created**, **Order Created**, **Page Viewed**, **Registration Completed**, **Subscription Created**, **Trial Started**. |
-| Custom Event Name | Required when Event Type is **Custom**. Provide a custom name for the event.&lt;br&gt;This value is ignored for all other event types. |
+| Event Type | Required. Select the type of event to send to OpenAI.<br>Supported event types: **Appointment Scheduled**, **Checkout Started**, **Contents Viewed**, **Custom**, **Items Added**, **Lead Created**, **Order Created**, **Page Viewed**, **Registration Completed**, **Subscription Created**, **Trial Started**. |
+| Custom Event Name | Required when Event Type is **Custom**. Provide a custom name for the event.<br>This value is ignored for all other event types. |
 
 #### Event Data
 
@@ -71,7 +71,7 @@ Map applicable user identifiers to improve attribution accuracy. You may either 
 | Zip code (already SHA256 hashed) | Provide a zip or postal code which has been SHA256 hashed. |
 | External ID (raw) | A unique ID, such as a loyalty card ID or another identifier. Sent without hashing. |
 | IP Address | The IP address of the device. |
-| User Agent | The user agent string of the user&#39;s web browser. |
+| User Agent | The user agent string of the user's web browser. |
 
 #### E-Commerce
 
@@ -102,7 +102,7 @@ Optional. Override the connector-level API Key for this action. If provided, the
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1,000
 * Max time since oldest request: 5 minutes

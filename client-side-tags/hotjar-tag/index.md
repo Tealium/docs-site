@@ -9,7 +9,7 @@ Use mapping to dynamically override the standard config values.
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Hotjar tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Hotjar tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -21,19 +21,19 @@ After adding the tag, configure the following settings:
 
 ### Add Tag from Code (Optional)
 
-Use the following steps to add the Hotjar tag from code&#34;
+Use the following steps to add the Hotjar tag from code"
 
 1. Log in to your Hotjar account.
 1. From the account dashboard, click **Install code manually**.
 1. Click **Copy to clipboard**.
-1. Log in to Tealium iQ Tag Management, go to **iQ Tag Management &amp;gt; Tags**.
+1. Log in to Tealium iQ Tag Management, go to **iQ Tag Management &gt; Tags**.
 1. Click **Add Tag**.
 1. Click **Detect Tag from Code**.
 1. Paste the code you copied in Step 3.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -41,5 +41,5 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`hjid`|  &lt;ul&gt;&lt;li&gt;Hotjar ID&lt;/li&gt;&lt;/ul&gt; |
-| `hjsv` |  &lt;ul&gt;&lt;li&gt;Hotjar Snippet Version&lt;/li&gt;&lt;/ul&gt; |
+|`hjid`|  <ul><li>Hotjar ID</li></ul> |
+| `hjsv` |  <ul><li>Hotjar Snippet Version</li></ul> |

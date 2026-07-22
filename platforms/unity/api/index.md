@@ -13,8 +13,8 @@ The following summarizes the commonly used methods of the `Tealium` class for th
 | [`AddToDataLayer()`](#addtodatalayer)                       | Adds data to persistent data layer.                                           |
 | [`GatherTrackData()`](#gathertrackdata)                     | Gathers all track data from collectors and data layer                         |
 | [`GetFromDataLayer()`](#getfromdatalayer)                   | Gets a specified value from the data layer.                                   |
-| [`GetConsentCategories()`](#getConsentCategories)           | Gets the user&#39;s consented categories.                                         |
-| [`GetConsentStatus()`](#getConsentStatus)                   | Gets the user&#39;s consent status.                                               |
+| [`GetConsentCategories()`](#getConsentCategories)           | Gets the user's consented categories.                                         |
+| [`GetConsentStatus()`](#getConsentStatus)                   | Gets the user's consent status.                                               |
 | [`GetVisitorId()`](#getVisitorId)                           | Gets the current visitor ID.                                                  |
 | [`Initialize()`](#initialize)                               | Initializes Tealium with configuration parameters.                            |
 | [`JoinTrace()`](#joinTrace)                                 | Joins a trace with the given ID.                                              |
@@ -26,7 +26,7 @@ The following summarizes the commonly used methods of the `Tealium` class for th
 | [`SetConsentStatus()`](#setConsentStatus)                   | Sets the consent status of a user.                                            |
 | [`SetVisitorServiceListener()`](#setVisitorServiceListener) | Sets the visitor service listener or callback.                                |
 | [`Terminate()`](#terminate)                                 | Disables and destroys the Tealium instance.                                   |
-| [`Track()`](#track)                                         | Track a user&#39;s interaction with a game or a game view.                        |
+| [`Track()`](#track)                                         | Track a user's interaction with a game or a game view.                        |
 
 ### `AddRemoteCommand()`
 
@@ -38,17 +38,17 @@ TealiumUnityPlugin.AddRemoteCommand(id, callback);
 
 | Parameters | Type             | Description                                                                                                                                                     | Example          |
 |:-----------|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
-| `id`       | `string`         | Name of the command ID from the tag configuration.                                                                                                              | `&#34;test_command&#34;` |
-| `callback` | `Action&lt;string&gt;` | A callback function to execute after the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example)    |
+| `id`       | `string`         | Name of the command ID from the tag configuration.                                                                                                              | `"test_command"` |
+| `callback` | `Action<string>` | A callback function to execute after the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example)    |
 
 Example:
 
 ```swift
-TealiumUnityPlugin.AddRemoteCommand(&#34;firebase&#34;, (payload) =&gt; {
+TealiumUnityPlugin.AddRemoteCommand("firebase", (payload) => {
 
-  string? eventName = (string)payload[&#34;firebase_event_name&#34;];
-  Dictionary&lt;string, object&gt;? eventProperties =
-      (Dictionary&lt;string, object&gt;)payload[&#34;firebase_event_properties&#34;];
+  string? eventName = (string)payload["firebase_event_name"];
+  Dictionary<string, object>? eventProperties =
+      (Dictionary<string, object>)payload["firebase_event_properties"];
 
   if (eventName != null) {
     analytics().logEvent(eventName, eventProperties);
@@ -66,12 +66,12 @@ TealiumUnityPlugin.AddToDataLayer(data, expiry);
 
 | Parameters | Type                         | Description                                                                                                    | Example                                             |
 |:-----------|:-----------------------------|:---------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|
-| `data`     | `Dictionary&lt;string, object&gt;` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings. | `new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}}` |
+| `data`     | `Dictionary<string, object>` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings. | `new Dictionary<string, object> {{"KEY", "VALUE"}}` |
 | `expiry`   | [`Expiry`](#expiry)          | Length of time for which to persist the data.                                                                  | `Expiry.Forever`                                    |
 
 ### `Collectors`
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors. Default collectors are denoted by a `*` next to the collector name.
 
@@ -138,7 +138,11 @@ Dispatchers are modules that send the data from your data layer and send it to a
 | `RemoteCommands` | `Dispatchers.RemoteCommands` |
 | `TagManagement`  | `Dispatchers.TagManagement`  |
 
+
+<blockquote>
 At least one dispatcher is required. If no dispatchers are specified, your data is not sent to the data layer.
+</blockquote>
+
 
 ### `Expiry`
 
@@ -170,10 +174,10 @@ Tealium.GatherTrackData(callback);
 Example:
 
 ```javascript
-Tealium.GatherTrackData(callback =&gt; {
+Tealium.GatherTrackData(callback => {
   string? serializedPayload = JsonConvert.SerializeObject(callback);
   if (serializedPayload != null) {
-      TealiumLogger.Log($&#34;Track Data: {serializedPayload}&#34;);
+      TealiumLogger.Log($"Track Data: {serializedPayload}");
   }
 });
 ```
@@ -195,12 +199,12 @@ Example:
 
 ```bash
 string? stringValue =
-    (string)TealiumUnityPlugin.GetFromDataLayer(&#34;test_string&#34;);
+    (string)TealiumUnityPlugin.GetFromDataLayer("test_string");
 ```
 
 ### `GetConsentCategories()`
 
-Gets the user&#39;s consented categories.
+Gets the user's consented categories.
 
 ```javascript
 TealiumUnityPlugin.GetConsentCategories();
@@ -208,20 +212,20 @@ TealiumUnityPlugin.GetConsentCategories();
 
 | Return Type               | Description                                                     |
 |:--------------------------|:----------------------------------------------------------------|
-| `List&lt;ConsentCategories&gt;` | A list of `ConsentCategories` for which the user has consented. |
+| `List<ConsentCategories>` | A list of `ConsentCategories` for which the user has consented. |
 
 Example:
 
 ```javascript
-List&lt;string&gt; caetgories = TealiumUnityPlugin.GetConsentCategories();
-TealiumLogger.Log(&#34;Consent Categories: &#34;);
-caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value &#43; &#34; &#34;));
+List<string> caetgories = TealiumUnityPlugin.GetConsentCategories();
+TealiumLogger.Log("Consent Categories: ");
+caetgories.ForEach(category => TealiumLogger.Log(category.Value + " "));
 ```
 
 
 ### `GetConsentStatus()`
 
-Gets the user&#39;s consent status.
+Gets the user's consent status.
 
 ```javascript
 TealiumUnityPlugin.GetConsentStatus();
@@ -229,17 +233,17 @@ TealiumUnityPlugin.GetConsentStatus();
 
 | Return Type     | Description                |
 |:----------------|:---------------------------|
-| `ConsentStatus` | The user&#39;s consent status. |
+| `ConsentStatus` | The user's consent status. |
 Example:
 
 ```javascript
-TealiumLogger.Log(&#34;Consent Status: &#34;
-    &#43; TealiumUnityPlugin.GetConsentStatus().Value);
+TealiumLogger.Log("Consent Status: "
+    + TealiumUnityPlugin.GetConsentStatus().Value);
 ```
 
 ### `GetVisitorId()`
 
-Gets the user&#39;s visitor ID.
+Gets the user's visitor ID.
 
 ```javascript
 TealiumUnityPlugin.GetVisitorId()
@@ -252,12 +256,12 @@ TealiumUnityPlugin.GetVisitorId()
 Example:
 
 ```javascript
-TealiumLogger.Log(&#34;Visitor Id: &#34; &#43; TealiumUnityPlugin.GetVisitorId())
+TealiumLogger.Log("Visitor Id: " + TealiumUnityPlugin.GetVisitorId())
 ```
 
 ### `Initialize()`
 
-Initialize Tealium before calling any other method. Optionally, pass in an `Action&lt;bool&gt;` callback that executes after the Tealium’s initialization is complete
+Initialize Tealium before calling any other method. Optionally, pass in an `Action<bool>` callback that executes after the Tealium’s initialization is complete
 
 ```javascript
 TealiumUnityPlugin.Initialize(config, callback);
@@ -266,21 +270,21 @@ TealiumUnityPlugin.Initialize(config, callback);
 | Parameters | Type                                    | Description                                                                                  |
 |:-----------|:----------------------------------------|:---------------------------------------------------------------------------------------------|
 | `config`   | [`TealiumConfig`](#class-tealiumconfig) | Tealium configuration parameters.                                                            |
-| `callback` | `Action&lt;bool&gt;`                          | Returns `true` if the Tealium initialization is successful and `false` if there is an error. |
+| `callback` | `Action<bool>`                          | Returns `true` if the Tealium initialization is successful and `false` if there is an error. |
 
 
 Example:
 
 ```javascript
 private TealiumConfig config =
-      new TealiumConfig(&#34;tealiummobile&#34;,
-      &#34;demo&#34;,
+      new TealiumConfig("tealiummobile",
+      "demo",
       TealiumEnvironment.DEV,
-      new List&lt;Dispatchers&gt; {
+      new List<Dispatchers> {
         Dispatchers.TagManagement,
         Dispatchers.Collect,
         Dispatchers.RemoteCommands },
-      new List&lt;Collectors&gt; {
+      new List<Collectors> {
         Collectors.AppData,
         Collectors.DeviceData,
         Collectors.Lifecycle,
@@ -288,21 +292,21 @@ private TealiumConfig config =
       consentPolicy: ConsentPolicy.GDPR,
       consentExpiry: new ConsentExpiry(10, TimeUnit.Minutes));
 
-TealiumUnityPlugin.Initialize(config, success =&gt; {
+TealiumUnityPlugin.Initialize(config, success => {
     if (success) {
-        TealiumLogger.Log(&#34;TealiumUnityPlugin Initialized&#34;);
+        TealiumLogger.Log("TealiumUnityPlugin Initialized");
         TealiumUnityPlugin.SetConsentStatus(ConsentStatus.Consented);
-        TealiumUnityPlugin.SetConsentExpiryListener(() =&gt;
-            TealiumLogger.Log(&#34;Consent Expired!!&#34;));
+        TealiumUnityPlugin.SetConsentExpiryListener(() =>
+            TealiumLogger.Log("Consent Expired!!"));
     } else {
-        TealiumLogger.Log(&#34;TealiumUnityPlugin Failed to Initialize&#34;);
+        TealiumLogger.Log("TealiumUnityPlugin Failed to Initialize");
     }
 });
 ```
 
 ### `JoinTrace()()`
 
-Joins a trace with the specified ID. Learn more about the [Trace]() feature in the Tealium Customer Data Hub.
+Joins a trace with the specified ID. Learn more about the [Trace](https://docs.tealium.com/manage-traces/) feature in the Tealium Customer Data Hub.
 
 ```javascript
 TealiumUnityPlugin.JoinTrace(id);
@@ -347,12 +351,12 @@ TealiumUnityPlugin.setConsentCategories(categories);
 
 | Parameters   | Type                      | Description                      | Example                                                        |
 |:-------------|:--------------------------|:---------------------------------|:---------------------------------------------------------------|
-| `categories` | `List&lt;ConsentCategories&gt;` | Array of user consent categories | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `List<ConsentCategories>` | Array of user consent categories | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 Example:
 
 ```javascript
-TealiumUnityPlugin.SetConsentCategories(new List&lt;ConsentCategories&gt;(){ConsentCategories.Analytics, ConsentCategories.Email});
+TealiumUnityPlugin.SetConsentCategories(new List<ConsentCategories>(){ConsentCategories.Analytics, ConsentCategories.Email});
 ```
 
 #### ConsentCategories
@@ -377,7 +381,7 @@ TealiumUnityPlugin.SetConsentCategories(new List&lt;ConsentCategories&gt;(){Cons
 
 ### `SetConsentExpiryListener()`
 
-Defines a callback to execute after the user&#39;s consent preferences have expired according the [`ConsentExpiry`](#consentexpiry). It is recommended to define this listener in the Initialization callback to ensure Tealium is fully initialized.
+Defines a callback to execute after the user's consent preferences have expired according the [`ConsentExpiry`](#consentexpiry). It is recommended to define this listener in the Initialization callback to ensure Tealium is fully initialized.
 
 ```javascript
 TealiumUnityPlugin.SetConsentExpiryListener(callback);
@@ -391,7 +395,7 @@ Example:
 
 ```javascript
 TealiumUnityPlugin.SetConsentExpiryListener(()
-    =&gt; TealiumLogger.Log(&#34;Consent Expired!!&#34;));
+    => TealiumLogger.Log("Consent Expired!!"));
 ```
 
 ### `SetConsentStatus()`
@@ -424,7 +428,7 @@ TealiumUnityPlugin.SetConsentStatus(ConsentStatus.Consented);
 
 Defines a callback to execute when the visitor profile has been updated. The updated [`VisitorProfile`](#visitorprofile) is provided in the callback response.
 
-The VisitorService module implements the [Data Layer Enrichment]() feature of the Tealium Customer Data Hub.
+The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
 Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
 
@@ -434,12 +438,12 @@ TealiumUnityPlugin.setVisitorServiceListener(callback);
 
 | Parameters | Type                                 | Description                                                    |
 |:-----------|:-------------------------------------|:---------------------------------------------------------------|
-| `callback` | `Action&lt;Dictionary&lt;string, object&gt;&gt;` | Code to execute after the updated visitor profile is returned. |
+| `callback` | `Action<Dictionary<string, object>>` | Code to execute after the updated visitor profile is returned. |
 
 Example:
 
 ```javascript
-TealiumUnityPlugin.setVisitorServiceListener((profile) =&gt; {
+TealiumUnityPlugin.setVisitorServiceListener((profile) => {
   string? serializedProfile = JsonConvert.SerializeObject(profile);
   if (serializedProfile != null) {
       TealiumLogger.Log(serializedProfile);
@@ -457,7 +461,7 @@ TealiumUnityPlugin.RemoveFromDataLayer(keys);
 
 | Parameters | Type           | Description         | Example                            |
 |:-----------|:---------------|:--------------------|:-----------------------------------|
-| `keys`     | `List&lt;string&gt;` | Array of key names. | `new List&lt;string&gt;(){&#34;foo&#34;, &#34;bar&#34;}` |
+| `keys`     | `List<string>` | Array of key names. | `new List<string>(){"foo", "bar"}` |
 
 ### `RemoveRemoteCommand()`
 
@@ -474,13 +478,13 @@ TealiumUnityPlugin.RemoveRemoteCommand(id);
 Example:
 
 ```javascript
-TealiumUnityPlugin.RemoveRemoteCommand(&#34;firebase&#34;);
+TealiumUnityPlugin.RemoveRemoteCommand("firebase");
 ```
 
 
 ### `Track()`
 
-Track a user&#39;s interaction with a game or a game view.
+Track a user's interaction with a game or a game view.
 
 ```javascript
 TealiumUnityPlugin.Track(dispatch);
@@ -488,19 +492,19 @@ TealiumUnityPlugin.Track(dispatch);
 
 | Parameters | Type                                            | Description                                          | Example                        |
 |:-----------|:------------------------------------------------|:-----------------------------------------------------|:-------------------------------|
-| `dispatch` | [`TealiumDispatch`](#interface-tealiumdispatch) | Tealium dispatch with the event name and data layer. | `TealiumEvent(&#34;button_click&#34;)` |
+| `dispatch` | [`TealiumDispatch`](#interface-tealiumdispatch) | Tealium dispatch with the event name and data layer. | `TealiumEvent("button_click")` |
 
 To track game events, create a [`TealiumEvent`](#class-tealiumevent) object, and pass it to the `track()` method:
 
 ```javascript
-TealiumEvent event = TealiumEvent(&#39;GAME_EVENT_NAME&#39;, new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}});
+TealiumEvent event = TealiumEvent('GAME_EVENT_NAME', new Dictionary<string, object> {{"KEY", "VALUE"}});
 TealiumUnityPlugin.Track(event);
 ```
 
 To track game screen views, create a [`TealiumView`](#class-tealiumview) object, and pass it to the `track()` method:  
 
 ```javascript
-TealiumView view = new TealiumView(&#34;VIEW_NAME&#34;, new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}})
+TealiumView view = new TealiumView("VIEW_NAME", new Dictionary<string, object> {{"KEY", "VALUE"}})
 TealiumUnityPlugin.Track(view);
 ```
 
@@ -520,19 +524,19 @@ The visitor profile is an object that contains friendly names for each attribute
 
 | Parameters         | Properties                                                                                                       | Value                                                                                                                             |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
-| `arraysOfBooleans` | id: `string`, value: `bool`                                                                                      | id: &#34;5129&#34; value: [true,false,true,true]                                                                                         |
-| `arraysOfNumbers`  | id: `string`, value: `double[]`                                                                                  | `id: &#34;57&#34;, value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
-| `arraysOfStrings`  | id: `string`, value: `string[]`                                                                                  | `id: &#34;5213&#34;, value: [&#34;green shirts&#34;, &#34;green shirts&#34;, &#34;blue shirts&#34;]`                                                              |
-| `audiences`        | id: string, value: string                                                                                        | `id: &#34;tealiummobile\_demo\_103&#34;, value: &#34;iOS Users&#34;`                                                                              |
-| `badges`           | id: `string`, value: `bool`                                                                                      | `id: &#34;2815&#34;, value: true`                                                                                                         |
-| `booleans`         | id: `string`, value: `bool`                                                                                      | `id: &#34;4868&#34;, value: true`                                                                                                         |
-| `currentVisit`     | All attributes for current visit visitorProfile. The current visit profile does not contain Audiences or Badges. | `TealiumCurrentVisitProfile(dates: [&#34;5376&#34;: 1567536668080, &#34;10&#34;: 1567536668000], booleans: [&#34;4530&#34;: true], numbers: [&#34;32&#34;: 3.8])` |
-| `dates`            | id: `string`, value: `int`                                                                                       | `id: &#34;22&#34;, value: 1567120112000`                                                                                                  |
-| `numbers`          | id: `string`, value: `double`                                                                                    | `id: &#34;5728&#34;, value: 4.82125`                                                                                                      |
-| `setOfStrings`     | id: `string`, value: `string[]`                                                                                  | `id: &#34;5211&#34;, value: [&#34;green shirts&#34;, &#34;red shirts&#34;, &#34;blue shirts&#34;]`                                                                |
-| `string`           | id: `string`, value: `string`                                                                                    | `id: &#34;5380&#34;, value: &#34;green shirts&#34;`                                                                                               |
-| `tallies`          | id: `string`, value: `Dictionary&lt;string, float&gt;`                                                                 | `&#34;57&#34;: [[&#34;category 1&#34;: 2.0], &#34;category 2&#34;: 1.0]]`                                                                                 |
-| `tallyValue`       | id: `string`, value: `float`                                                                                     | `[&#34;category 1&#34;: 2.0]`                                                                                                             |
+| `arraysOfBooleans` | id: `string`, value: `bool`                                                                                      | id: "5129" value: [true,false,true,true]                                                                                         |
+| `arraysOfNumbers`  | id: `string`, value: `double[]`                                                                                  | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
+| `arraysOfStrings`  | id: `string`, value: `string[]`                                                                                  | `id: "5213", value: ["green shirts", "green shirts", "blue shirts"]`                                                              |
+| `audiences`        | id: string, value: string                                                                                        | `id: "tealiummobile\_demo\_103", value: "iOS Users"`                                                                              |
+| `badges`           | id: `string`, value: `bool`                                                                                      | `id: "2815", value: true`                                                                                                         |
+| `booleans`         | id: `string`, value: `bool`                                                                                      | `id: "4868", value: true`                                                                                                         |
+| `currentVisit`     | All attributes for current visit visitorProfile. The current visit profile does not contain Audiences or Badges. | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
+| `dates`            | id: `string`, value: `int`                                                                                       | `id: "22", value: 1567120112000`                                                                                                  |
+| `numbers`          | id: `string`, value: `double`                                                                                    | `id: "5728", value: 4.82125`                                                                                                      |
+| `setOfStrings`     | id: `string`, value: `string[]`                                                                                  | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`                                                                |
+| `string`           | id: `string`, value: `string`                                                                                    | `id: "5380", value: "green shirts"`                                                                                               |
+| `tallies`          | id: `string`, value: `Dictionary<string, float>`                                                                 | `"57": [["category 1": 2.0], "category 2": 1.0]]`                                                                                 |
+| `tallyValue`       | id: `string`, value: `float`                                                                                     | `["category 1": 2.0]`                                                                                                             |
 
 ## Class: `TealiumConfig`
 
@@ -544,8 +548,8 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `profile`                      | `string`                                          | (Required) Tealium profile name.                                                                                                                                                                                                                             | `main`                                       |
 | `environment`                  | [`TealiumEnvironment`](#class-tealiumenvironment) | (Required) Tealium environment name.                                                                                                                                                                                                                         | `TealiumEnvironment.Dev`                     |
 | `dataSource`                   | `string`                                          | CDH data source key.                                                                                                                                                                                                                                         | `abc123`                                     |
-| `collectors`                   | `List&lt;Collectors&gt;`                                | (Required) Sets the list of [`Collectors`](#collectors) to initialize the Tealium library with.                                                                                                                                                              | `new List&lt;Collectors&gt;(){Collectors.AppData}` |
-| `dispatchers`                  | `List&lt;Dispatchers&gt;`                               | (Required) Sets the list of [`Dispatchers`](#dispatchers) to initialize the Tealium library with.                                                                                                                                                            | `new List&lt;Collectors&gt;(){Dispatchers.Collec}` |
+| `collectors`                   | `List<Collectors>`                                | (Required) Sets the list of [`Collectors`](#collectors) to initialize the Tealium library with.                                                                                                                                                              | `new List<Collectors>(){Collectors.AppData}` |
+| `dispatchers`                  | `List<Dispatchers>`                               | (Required) Sets the list of [`Dispatchers`](#dispatchers) to initialize the Tealium library with.                                                                                                                                                            | `new List<Collectors>(){Dispatchers.Collec}` |
 | `customVisitorId`              | `string`                                          | Sets a custom visitor ID.                                                                                                                                                                                                                                    | `ALK2398LSDKJ3289SLKJ3298SLKJ3`              |
 | `memoryReportingEnabled`       | `bool`                                            | Enables or disables memory reporting in the DeviceData module (default: disabled).                                                                                                                                                                           | `true`                                       |
 | `overrideCollectURL`           | `string`                                          | Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the `overrideCollectBatchURL` property.                                                                                           | `https://custom-domain.com/event`            |
@@ -554,15 +558,15 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `custom-profile`                                                                                              |
 | `overrideLibrarySettingsURL`   | `string`                                          | Overrides the publish settings URL.                                                                                                                                                                                                                          | `https://custom-domain.com/mobile.html`      |
 | `overrideTagManagementURL`     | `string`                                          | Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.                                                                                                                           | `https://custom-domain.com/path/env/utag.js` |
-| `deepLinkTrackingEnabled`      | `bool`                                            | Enables or disables [automatic tracking of standard deep links](/platforms/getting-started-mobile/deep-linking/#readout), such as links to the app from Facebook or other sources, as well as QR trace (default: enabled).                                          | `false`                                      |
-| `qrTraceEnabled`               | `bool`                                            | Enables or disables [QR trace](/platforms/getting-started-mobile/trace/#how-it-works). (default: enabled)                                                                                                                                                            | `false`                                      |
+| `deepLinkTrackingEnabled`      | `bool`                                            | Enables or disables [automatic tracking of standard deep links](https://docs.tealium.com/platforms/getting-started-mobile/deep-linking/#readout), such as links to the app from Facebook or other sources, as well as QR trace (default: enabled).                                          | `false`                                      |
+| `qrTraceEnabled`               | `bool`                                            | Enables or disables [QR trace](https://docs.tealium.com/platforms/getting-started-mobile/trace/#how-it-works). (default: enabled)                                                                                                                                                            | `false`                                      |
 | `loglevel`                     | [`LogLevel`](#loglevel)                           | Sets the log level property, which controls how much information is logged (default: silent).                                                                                                                                                                | `LogLevel.dev`                               |
-| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)                 | Sets the expiration of the user&#39;s consent preferences. (defaults dependent upon policy)                                                                                                                                                                      | `ConsentExpiry(90, TimeUnit.days)`           |
-| `consentLoggingEnabled`        | `bool`                                            | Enables the [Consent Logging]() feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)    | `true`                                       |
+| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)                 | Sets the expiration of the user's consent preferences. (defaults dependent upon policy)                                                                                                                                                                      | `ConsentExpiry(90, TimeUnit.days)`           |
+| `consentLoggingEnabled`        | `bool`                                            | Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)    | `true`                                       |
 | `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)                 | Sets the consent policy to either CCPA or GDPR. Consent manager is only enabled if this property is set.                                                                                                                                                     | `ConsentPolicy.GDPR`                         |
 | `lifecycleAutotrackingEnabled` | `bool`                                            | Enables or disables lifecycle auto tracking (default: enabled).                                                                                                                                                                                              | `false`                                      |
-| `useRemoteLibrarySettings`     | `bool`                                            | Enables or disables the [Mobile Publish Settings]() (default: enabled). Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`                                      |
-| `visitorServiceEnabled`        | `bool`                                            | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API]() (default: disabled).                                | `true`                                       |
+| `useRemoteLibrarySettings`     | `bool`                                            | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: enabled). Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`                                      |
+| `visitorServiceEnabled`        | `bool`                                            | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled).                                | `true`                                       |
 | `sessionCountingEnabled`       | `Boolean`                                   | Enables or disables session counting for Tealium iQ accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled)                                                                                                            | `false`                                                                                                        |
 
 
@@ -591,7 +595,7 @@ An interface that defines the type of dispatch to be tracked. The following clas
 
 ### Class: `TealiumEvent`
 
-To track a user&#39;s interaction with a game or game view, pass an instance of `TealiumEvent(eventName, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` is comprised of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
+To track a user's interaction with a game or game view, pass an instance of `TealiumEvent(eventName, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` is comprised of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
 
 ```javascript
 TealiumEvent(viewName, dataLayer)
@@ -600,13 +604,13 @@ TealiumEvent(viewName, dataLayer)
 | Parameters  | Type                         | Description                                | Example                                                                                           |
 |:------------|:-----------------------------|:-------------------------------------------|:--------------------------------------------------------------------------------------------------|
 | `eventName` | `string`                     | Name of game event.                        | `level_completed`                                                                                 |
-| `dataLayer` | `Dictionary&lt;string, object&gt;` | (Optional) Data to be sent with the event. | `new Dictionary&lt;string, object&gt; {{&#34;user_id&#34;, &#34;gamer123&#34;}, {&#34;level&#34;: 2}, {&#34;total_points&#34;: 17500}}` |
+| `dataLayer` | `Dictionary<string, object>` | (Optional) Data to be sent with the event. | `new Dictionary<string, object> {{"user_id", "gamer123"}, {"level": 2}, {"total_points": 17500}}` |
 
 Example:
 
 ```javascript
-TealiumEvent event = TealiumEvent(&#39;EVENT_NAME&#39;,
-    new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}});
+TealiumEvent event = TealiumEvent('EVENT_NAME',
+    new Dictionary<string, object> {{"KEY", "VALUE"}});
 TealiumUnityPlugin.Track(event);
 ```
 
@@ -621,12 +625,12 @@ TealiumView(viewName, dataLayer)
 | Parameters  | Type                         | Description                                | Example                                                      |
 |:------------|:-----------------------------|:-------------------------------------------|:-------------------------------------------------------------|
 | `viewName`  | `string`                     | Name of view or screen in a game.          | `login_view`                                                 |
-| `dataLayer` | `Dictionary&lt;string, object&gt;` | (Optional) Data to be sent with the event. | `new Dictionary&lt;string, object&gt; {{&#34;customer_id&#34;, &#34;abc123&#34;}}` |
+| `dataLayer` | `Dictionary<string, object>` | (Optional) Data to be sent with the event. | `new Dictionary<string, object> {{"customer_id", "abc123"}}` |
 
 Example:
 
 ```javascript
-TealiumView view = new TealiumView(&#34;VIEW_NAME&#34;,
-    new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}})
+TealiumView view = new TealiumView("VIEW_NAME",
+    new Dictionary<string, object> {{"KEY", "VALUE"}})
 TealiumUnityPlugin.Track(view);
 ```

@@ -18,7 +18,11 @@ url: https://docs.tealium.com/ja/administration/account-org/permissions-system-m
 1. ユーザーとの保存および公開権限をテストします。
 1. 必要に応じて権限グループと管理者ロールを調整します。
 
+
+<blockquote>
 このプロセスに関して支援が必要な場合は、Tealium Supportにご連絡ください。
+</blockquote>
+
 
 ## 移行の提案
 

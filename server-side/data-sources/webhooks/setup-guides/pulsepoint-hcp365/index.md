@@ -18,18 +18,18 @@ PulsePoint HCP365 offers webhook functionality that can be configured to send ou
 
 To configure the PulsePoint data source, perform the following steps:
 
-1. Navigate to **Connect &gt; Data Sources**.
-1. Click **&#43;Add Data Source**.
+1. Navigate to **Connect > Data Sources**.
+1. Click **+Add Data Source**.
 1. On the **Select a Platform** screen, select **Pharma** under **Categories**, and then select **PulsePoint HCP365**.
 1. In the **Name** field under **Summary**, enter a name and click **Continue**.
 1. Click **Continue**.
-1. Select the `pulsepoint_hcp_identity` event specification under the **Pharma** category and click **Continue**: ![](/images/server-side/data-sources/webhooks/pulsepoint1.png)
+1. Select the `pulsepoint_hcp_identity` event specification under the **Pharma** category and click **Continue**: ![](https://docs.tealium.com/images/server-side/data-sources/webhooks/pulsepoint1.png)
 1. (Optional) To download installation instructions, including the data source key, base code, and event tracking code, click **Download as PDF**.
-1. Click **Save &amp; Continue**.
+1. Click **Save & Continue**.
 A summary of the data source appears.
 1. Click **Close**.
 
-For more information, see [Create a data source]().
+For more information, see [Create a data source](https://docs.tealium.com/create-data-source/).
 
 The PulsePoint data source generates a unique URL to use as the HTTP GET OR POST URL in your PulsePoint configuration. The generated URL uses the following format:
 

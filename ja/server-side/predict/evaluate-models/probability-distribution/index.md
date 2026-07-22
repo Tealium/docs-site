@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/predict/evaluate-models/probability
 ---
 任意のバージョンの訓練済みモデルのトレーニング詳細画面には、トレーニング中にモデルが行った予測の確率分布が表示されます。
 
-![](/images/predict/predictv2-probability-distribution.png)
+![](https://docs.tealium.com/images/predict/predictv2-probability-distribution.png)
 
 このチャートの2つの色付き曲線は、モデルがトレーニング中に行った真実と偽の予測の分布を表しています。モデルの訓練プロセスは歴史的なデータを使用し、各訪問が目標とする行動を実際に行ったかどうかを知っているため、歴史的な訪問に対する予測と実際の結果を比較してモデルをテストすることが可能です。この比較の目的は、訓練データセットの一部をテストサブセットとして確保することです。
 

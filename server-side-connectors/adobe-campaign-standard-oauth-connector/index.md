@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Tenant ID**  
@@ -40,11 +40,11 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Update Strategy | &lt;ul&gt;&lt;li&gt;(Required) Select applicable update strategy.&lt;/li&gt;&lt;li&gt;**Create Only**: Look up an existing profile and if not found, create a new profile.&lt;/li&gt;&lt;li&gt;**Update Only**: Look up an existing profile and update it.&lt;/li&gt;&lt;li&gt;**Create or Update**: Look up an existing profile and if found, update it, otherwise create a new profile.&lt;/li&gt;&lt;/ul&gt; |
-| Profile Data | &lt;ul&gt;&lt;li&gt;Profile Field names and corresponding values.
-.&lt;/li&gt;&lt;/ul&gt; |
-| Filter | &lt;ul&gt;&lt;li&gt;Required when **Update Strategy** is `Create Or Update` or `Update Only`.&lt;/lil&gt;&lt;li&gt;We recommend choosing filters that return unique results.&lt;/li&gt;&lt;li&gt;For more information, see [Campaign: Calling a resource using a composite identification key](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en).&lt;/li&gt;&lt;li&gt;If the search result returns multiple profiles, only the first one is updated.&lt;/li&gt;&lt;/ul&gt;  |
-| Is Custom Filter | &lt;ul&gt;&lt;li&gt;Select this option if the chosen filter is custom.&lt;/li&gt;&lt;li&gt;For more information, see [Campaign: Custom filters](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters).&lt;/li&gt;&lt;/ul&gt; |
-| Filter Parameters | &lt;ul&gt;&lt;li&gt;Filter parameters used in search.&lt;/li&gt;&lt;/ul&gt; |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example, `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in body data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Update Strategy | <ul><li>(Required) Select applicable update strategy.</li><li>**Create Only**: Look up an existing profile and if not found, create a new profile.</li><li>**Update Only**: Look up an existing profile and update it.</li><li>**Create or Update**: Look up an existing profile and if found, update it, otherwise create a new profile.</li></ul> |
+| Profile Data | <ul><li>Profile Field names and corresponding values.
+.</li></ul> |
+| Filter | <ul><li>Required when **Update Strategy** is `Create Or Update` or `Update Only`.</lil><li>We recommend choosing filters that return unique results.</li><li>For more information, see [Campaign: Calling a resource using a composite identification key](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en).</li><li>If the search result returns multiple profiles, only the first one is updated.</li></ul>  |
+| Is Custom Filter | <ul><li>Select this option if the chosen filter is custom.</li><li>For more information, see [Campaign: Custom filters](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters).</li></ul> |
+| Filter Parameters | <ul><li>Filter parameters used in search.</li></ul> |
+| Template Variables | <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example, `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in body data. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul> |

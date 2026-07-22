@@ -18,7 +18,7 @@ The following summarizes the commonly used methods of the iOS (Swift) `Tealium` 
 
 ### `joinTrace()`
 
-Joins a trace with the specified ID. The trace remains active for the duration of the app session until `leaveTrace()` is called. [Learn more]() about the Trace feature in the Tealium Customer Data Hub.
+Joins a trace with the specified ID. The trace remains active for the duration of the app session until `leaveTrace()` is called. [Learn more](https://docs.tealium.com/manage-traces/) about the Trace feature in the Tealium Customer Data Hub.
 
 ```swift
 joinTrace(traceId: String)
@@ -26,7 +26,7 @@ joinTrace(traceId: String)
 
 | Parameters | Type                 | Description              | Example |
 |------------|----------------------|-----------------| ---- |
-| `traceId`  | `String` | The trace ID acquired from the Trace tool | `&#34;12345&#34;` |
+| `traceId`  | `String` | The trace ID acquired from the Trace tool | `"12345"` |
 
 
 ### `leaveTrace()`
@@ -51,7 +51,7 @@ Tealium(config: TealiumConfig, completion: Closure)
 | Parameters | Type                 | Description                                                                                |
 |------------|----------------------|--------------------------------------------------------------------------------------------|
 | `config`| `TealiumConfig` | Initialize the Tealium object with a `TealiumConfig` object containing your account details. |
-| `completion`  | `Closure` | (Optional) Completion closure to be called on init completion`()-&gt; Void )?` |
+| `completion`  | `Closure` | (Optional) Completion closure to be called on init completion`()-> Void )?` |
 
 
 ### `track()`
@@ -64,8 +64,8 @@ track(title:String, data:[String:Any], completion:ClosureType)
 
 | Parameters    | Type          | Description      | Example |
 |---------------|---------------|------------------| --- |
-| `title`| `String`             | The name of the event to be tracked     | `title: &#34;Buy Now&#34;` |
-| `data`| `Dictionary`          | An object of key-value pairs with data associated with the event to be tracked | `data: data: [&#34;product_id&#34; : [&#34;widget123&#34;]]` |
+| `title`| `String`             | The name of the event to be tracked     | `title: "Buy Now"` |
+| `data`| `Dictionary`          | An object of key-value pairs with data associated with the event to be tracked | `data: data: ["product_id" : ["widget123"]]` |
 | `completion`| `ClosureType`   | A function to execute upon completion of the tracking call (use `nil` if none) | `nil` |
 
 
@@ -78,8 +78,8 @@ trackView(title:String, data:[String:Any], completion:ClosureType)
 
 | Parameters    | Type          | Description      | Example |
 |---------------|---------------|------------------| --- |
-| `title`| `String`             | The name of the screen view to be tracked     | `title: &#34;Homescreen&#34;` |
-| `data`| `Dictionary`          | An object of key-value pairs with data associated with the event to be tracked | `data: [&#34;customer_id&#34;: &#34;1234567890-a&#34;]` |
+| `title`| `String`             | The name of the screen view to be tracked     | `title: "Homescreen"` |
+| `data`| `Dictionary`          | An object of key-value pairs with data associated with the event to be tracked | `data: ["customer_id": "1234567890-a"]` |
 | `completion`| `ClosureType`   | A function to execute upon completion of the tracking call (use `nil` if none) | `nil` |
 
 

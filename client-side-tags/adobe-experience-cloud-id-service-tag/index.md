@@ -3,7 +3,11 @@ title: Adobe Experience Cloud ID Service Tag Setup Guide
 description: Adobe's Experience Cloud ID Service tag generates unique identifiers, called Cloud ID, for your site visitors. A Cloud ID makes it possible to share and track data for a visitor across your Experience Cloud Solutions. This article describes how to configure the tag in your iQ Tag Management (TiQ) profile.
 url: https://docs.tealium.com/client-side-tags/adobe-experience-cloud-id-service-tag/
 ---
+
+<blockquote>
 It is crucial to load the Cloud ID Service tag prior to other Adobe tags (such as Appmeasurement, JavaScript, and Heartbeat) that require Cloud ID. Bundle the tag on all pages and place it above all other Adobe tags in the Tags tab. This is the best way to ensure that the Cloud ID is accessible before other Adobe tags load on the page.
+</blockquote>
+
 
 ## Supported Versions
 
@@ -24,7 +28,7 @@ If you are using version 4.0 or newer of the Experience Cloud ID Service tag, th
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Experience Cloud ID Service tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the Experience Cloud ID Service tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the tag, configure the following settings:
 
@@ -45,17 +49,21 @@ After adding the tag, configure the following settings:
 * **Code Version**
   * (Required) Version 3.0 and later no longer support Internet Explorer versions 6 through 9.
 
+
+<blockquote>
 Use Data Mappings (see below) if you prefer to configure the tag settings dynamically.
+</blockquote>
+
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **Load on all pages**.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [Data Layer Variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings]().
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/manage-data-mappings/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/manage-data-mappings/).
 
 The destination variables for the Cloud ID Service tag are built into its Data Mapping tab. Available categories are:
 
@@ -63,9 +71,9 @@ The destination variables for the Cloud ID Service tag are built into its Data M
 
 | **Variable** |**Destination Name**| **Description**|
 |---| ---| --- |
-|`adobe_org_id`| Adobe Org ID|  Alphanumeric ID assigned to your company&#39;s Experience Cloud Solution. |
+|`adobe_org_id`| Adobe Org ID|  Alphanumeric ID assigned to your company's Experience Cloud Solution. |
 |`config.trackingServer`|Tracking Server|  Data collection server URL. |
-|`config.trackingServerSecure`| Tracking Server Secure| Data collection secure server URL.&lt;/li&gt;&lt;/ul&gt; |
+|`config.trackingServerSecure`| Tracking Server Secure| Data collection secure server URL.</li></ul> |
 |`config.marketingCloudServer`|Experience Cloud Server|  Data Collection server URL if CNAME is enabled. |
 | config.marketingCloudServerSecure |Experience Cloud Server Secure|  Data Collection server URL if CNAME is enabled. |
 
@@ -82,10 +90,10 @@ The property is sent when your supplied value is found in the data layer.
 |**Property Name**| **Type** | **Description**|
 |:------------|:------------|:------------|
 |`ID`|  String | Additional ID for the same visitor. |
-|`authState`| Integer |  Indicates the authentication status. Possible values are:  &lt;ul&gt;&lt;li&gt;`0` for unknown or not authenticated&lt;/li&gt;&lt;li&gt;`1` for authenticated&lt;/li&gt;&lt;li&gt;`2` for logged out&lt;/li&gt;&lt;/ul&gt; |
+|`authState`| Integer |  Indicates the authentication status. Possible values are:  <ul><li>`0` for unknown or not authenticated</li><li>`1` for authenticated</li><li>`2` for logged out</li></ul> |
 
 ### Events
-To map events, refer to [Create an Event Mapping]()
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)
 
 | **Variable** | **Type** | **Description** |
 |:---------|:------------|:------------|
@@ -95,19 +103,19 @@ To map events, refer to [Create an Event Mapping]()
 
 If you are using version 4.0 or newer of the Experience Cloud ID Service tag, the `doesOptInApply` option must be set to `true` for event data to be sent to Tealium. To set `doesOptInApply`, create a JavaScript extension scoped to the Adobe Experience Cloud ID Service Tag, as follows:
 
-1. Go to **Tag Management &gt; Extensions**.
-1. Click the **Advanced** tab and click **&#43; Add** for **JavaScript Code**.
+1. Go to **Tag Management > Extensions**.
+1. Click the **Advanced** tab and click **+ Add** for **JavaScript Code**.
 1. For **Scope**, select **Tag Scoped Extensions**, then select **Adobe Experience Cloud ID Service**.
 1. Under **Configuration**, enter the following code:  
     ```js
     u.data.config = u.data.config || {};
-    u.data.config[&#39;doesOptInApply&#39;] = true;
-    u.data.config[&#39;preOptInApprovals&#39;] = [&#39;aa&#39;, &#39;ecid&#39;];
-    u.data.config[&#39;isIabContext&#39;] = false;
-    u.data.config[&#39;optInStorageExpiry&#39;] = 34128000; 
+    u.data.config['doesOptInApply'] = true;
+    u.data.config['preOptInApprovals'] = ['aa', 'ecid'];
+    u.data.config['isIabContext'] = false;
+    u.data.config['optInStorageExpiry'] = 34128000; 
     ```  
     The following figure shows an example configuration of an extension that enables the Adobe Opt-in module:  
-    ![](/images/client-side-tags/adobe-enable-optin-module-extension-example.png)
+    ![](https://docs.tealium.com/images/client-side-tags/adobe-enable-optin-module-extension-example.png)
 1. Save and publish.
 
 You can validate that the Opt-in service is working as expected using developer tools in your browser. For more information, see the Adobe documentation about [Validating Opt-in Service](https://experienceleague.adobe.com/en/docs/id-service/using/implementation/opt-in-service/testing-optin-and-iab-plugin).

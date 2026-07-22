@@ -3,7 +3,11 @@ title: TikTok Audiences Connector Setup Guide
 description: This article describes how to set up the TikTok Audiences connector.
 url: https://docs.tealium.com/server-side-connectors/tiktok-audiences-connector-setup-guide/
 ---
- This connector has been deprecated. We recommend that you use the [TikTok Audiences (Tealium-Provided Credentials) Connector]() instead. 
+
+<blockquote>
+This connector has been deprecated. We recommend that you use the [TikTok Audiences (Tealium-Provided Credentials) Connector](https://docs.tealium.com/tiktok-audiences-tealium-provided-credentials-connector/) instead.
+</blockquote>
+
 
 ## API information
 
@@ -16,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 30 minutes
@@ -24,7 +28,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 

@@ -2,7 +2,7 @@
 title: Xandr Seller Tag Setup Guide
 description: This article describes how to set up the Xandr Seller tag in your Tealium iQ Tag Management account.
 url: https://docs.tealium.com/client-side-tags/xandr-seller-tag/
----Xandr Seller Tag (AST) is a single tag that handles multiple placements per page &amp; supports different ad formats.
+---Xandr Seller Tag (AST) is a single tag that handles multiple placements per page & supports different ad formats.
 
 ## Tag tips
 
@@ -12,7 +12,7 @@ url: https://docs.tealium.com/client-side-tags/xandr-seller-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -23,7 +23,7 @@ The Impression Bus endpoint to which ad requests are made.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

@@ -7,17 +7,17 @@ url: https://docs.tealium.com/server-side/data-sources/cloud-data/manage/
 
 The configuration for cloud data sources is nearly the same for every vendor. For vendor-specific configuration details, see the following:
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/)
+* [Snowflake](https://docs.tealium.com/about-snowflake-cloud-data-source/)
 
 ## Create a cloud data source
 
 To create a cloud data source, use the following steps:
 
-1. Go to **Connect &gt; Data Sources**.
-1. Click **&#43; Add Data Source**.
+1. Go to **Connect > Data Sources**.
+1. Click **+ Add Data Source**.
 1. Under **Categories**, click **Data Warehouse** and select a vendor.
 1. In the **Name** field, enter a unique name for the data source related to your use case.
 1. Click **Continue**.
@@ -26,16 +26,16 @@ To create a cloud data source, use the following steps:
 
 Before you configure the data to import, you must establish a connection to your cloud data source. A connection is the reusable configuration of your vendor credentials that connects Tealium to your cloud data source.
 
-1. On the **Connection Configuration** screen, confirm the name of the data source, then select an existing connection from the list or create a connection by clicking the **&#43;** icon. 
+1. On the **Connection Configuration** screen, confirm the name of the data source, then select an existing connection from the list or create a connection by clicking the **+** icon. 
 1. For a new connection, enter your connection information and then click **Save** to return to the **Connection Configuration** screen.
 1. Click **Establish Connection**.
 
 For more information about connecting to your vendor, see:
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#create-a-connection)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#create-a-connection)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#create-a-connection)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#create-a-connection)
 
 ## Set processing
 
@@ -88,7 +88,7 @@ In Advanced mode, use the SQL editor to enter valid, read-only SQL queries and c
 * **Calculated fields**  
 The Advanced SQL query supports calculated (derived) fields. Calculated values are re-evaluated on each batch fetch and may behave differently depending on your vendor. Using calculated fields in query mode columns (timestamp, incrementing, or timestamp and incrementing) may lead to errors in importing data (for example, skipped rows or loops in ingestion). We recommend avoiding calculated fields for query mode columns.
 * **LIMIT clauses**  
-Due to the streaming nature of Tealium data sources, LIMIT clauses do not reduce the total volume of data imported. To change the number of records you want to process for testing, use a WHERE clause or use End-to-End Testing. For more information, see [Test configuration]().
+Due to the streaming nature of Tealium data sources, LIMIT clauses do not reduce the total volume of data imported. To change the number of records you want to process for testing, use a WHERE clause or use End-to-End Testing. For more information, see [Test configuration](https://docs.tealium.com/manage-cloud-data-source/#test-configuration).
 * **Read-only**  
 Only read-only SQL queries are supported. Ensure that your queries do not modify schema or data (for example, using `DELETE`, `UPDATE`, `INSERT`, `DROP`, `ALTER`).
 
@@ -98,7 +98,7 @@ When you are done, click **Continue to Query Mode**.
 
 The query mode determines how to select new rows, modified rows, or both for import.
 
-* If you select **Timestamp &#43; Incrementing** (recommended) you must select two columns, a timestamp column and a strictly incrementing column. 
+* If you select **Timestamp + Incrementing** (recommended) you must select two columns, a timestamp column and a strictly incrementing column. 
 * If you select **Timestamp** or **Incrementing**, you must select a column to use to detect either new and modified rows or new rows only.
 
 For more information, see .
@@ -136,7 +136,11 @@ For each column label, select the corresponding event attribute from the list.
 
 To use your cloud data source with AudienceStream, map a column to a visitor ID attribute. Select a column that represents a visitor ID and map it to the corresponding visitor ID attribute.
 
+
+<blockquote>
 **Visitor ID Mapping in AudienceStream** is enabled by default. Disabling visitor ID mapping may cause errors in visitor stitching. For more information, see [Visitor Identification using Tealium Data Sources]().
+</blockquote>
+
 
 ## Summary
 
@@ -150,7 +154,7 @@ In this final step, view the summary, make any needed corrections, and then save
 
 To see import activity, navigate to **Data Sources** and expand the data source.
 
-![](/images/server-side/data-sources/cloud-data-source-status-line.png)
+![](https://docs.tealium.com/images/server-side/data-sources/cloud-data-source-status-line.png)
 
 ## Statuses
 
@@ -172,7 +176,7 @@ We recommend that you test the data source and query before enabling data source
 
 To test your data source configuration, use the following steps:
 
-![](/images/early-access/cloudstream/cloudstream_test_configuration.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_configuration.png)
 
 1. Locate your data source in the Data Sources screen and click the edit icon.
 1. Click the action button in the upper-right corner of a data source window, and then click **End-to-End Testing**.
@@ -185,16 +189,16 @@ To test your data source configuration, use the following steps:
 1. Under **From Table**, select the table you want to query. The **Select Columns** box will update with the table’s columns.
 1. Under **Where**, enter the SQL query to perform on the table.
 1. Click **Check Query** to validate the SQL and verify that required fields are set.
-1. The results will appear in a table under the **Query Result Preview** tab: ![](/images/early-access/cloudstream/cloudstream_test_check_query.png)
+1. The results will appear in a table under the **Query Result Preview** tab: ![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_check_query.png)
 1. Click **Start Test** to start the configuration test.
 
 The right sidebar will display a progress bar that estimates the amount of time to finish the test and status messages to let you know if the test has encountered any errors. 
 
-![](/images/early-access/cloudstream/cloudstream_test_output.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_output.png)
 
 When the test is complete, the results are displayed.
 
-![](/images/early-access/cloudstream/cloudstream_test_results.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_results.png)
 
 * If you want to watch the test run in a trace, click **Join Trace**.
 * If the test fails, you can do the following:
@@ -210,14 +214,14 @@ For example, suppose a recent mailing list activation contained an error and pro
 You can only manage the start point if the following conditions are true:
 
 * The current profile is published.
-* The query mode is **Timestamp &#43; Incrementing (Recommended)**, **Timestamp**, or **Incrementing**. You cannot manage the start point for **Full Resync** query mode.
+* The query mode is **Timestamp + Incrementing (Recommended)**, **Timestamp**, or **Incrementing**. You cannot manage the start point for **Full Resync** query mode.
 * The data source is stopped.
     * If the data source status is running, scheduled, or failed, you cannot edit the start point. Only information about the current start point is available.
     * If the status is initializing, inactive, or there is a connection error, the start point is not available.
 
 To manage the start point for the data source, use the following steps:
 
-![](/images/early-access/cloudstream/manage_offset.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/manage_offset.png)
 
 1. Locate your data source in the **Data Sources** screen and click the edit icon.
 1. Click the action button in the upper-right corner of the data source details window and then click **Set Processing Start**.
@@ -233,7 +237,7 @@ To manage the start point for the data source, use the following steps:
 
 Click **Validate Processing Start Changes** to preview the data that will be imported from the new start point. The table shows sample rows. It also provides an estimate of how many rows will be processed after you adjust the start point.
 
-![](/images/early-access/cloudstream/validate_offset.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/validate_offset.png)
 
 Click **Done** to confirm the new start point settings. Click **Cancel** to discard your changes.
 Restart the data source after changing the start point.

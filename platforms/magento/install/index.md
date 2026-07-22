@@ -14,7 +14,7 @@ The following items are required:
 
 ## How it Works
 
-The Tealium for Magento extension provides a robust implementation of minimal boilerplate code to implement and extend universal data objects (UDOs) across various page types. Leveraging Magento&#39;s prescribed dependency injection and layout systems, the module simplifies the process of creating and extending UDOs.
+The Tealium for Magento extension provides a robust implementation of minimal boilerplate code to implement and extend universal data objects (UDOs) across various page types. Leveraging Magento's prescribed dependency injection and layout systems, the module simplifies the process of creating and extending UDOs.
 
 The extension includes a simple script that scaffolds out boilerplate code when creating a new UDO. It lets you specify any UDOs that it may extend and which pages of the site the new UDO should appear on. When finished, you will have a scaffolded template that needs to be filled in with any data-specific logic for your particular use case.
 
@@ -22,7 +22,11 @@ For more information about Magento, see [Magento Documentation](http://devdocs.m
 
 ## Install
 
- The following prodecure uses commands for an Ubuntu server environment. For other server environments, adjust the commands accordingly. 
+
+<blockquote>
+The following prodecure uses commands for an Ubuntu server environment. For other server environments, adjust the commands accordingly.
+</blockquote>
+
 
 To install Tealium in your Magneto system:
 
@@ -47,7 +51,7 @@ To install Tealium in your Magneto system:
 
 To configure Magento 2, perform the following steps:
 
-1. In the admin panel, go to **Stores &gt; Configuration &gt; Tealium &gt; Tag Management**.
+1. In the admin panel, go to **Stores > Configuration > Tealium > Tag Management**.
 1. Enable the extension and enter your Tealium iQ account, profile, and environment.
 1. If you are using a first-party domain, enter your client domain in the **First Party Domain** field.
 1. To allow plain text customer email addresses, select **No** under the **Allow plain text customer email** drop-down list. Otherwise, email addresses will be encrypted using a SHA-256 hash.

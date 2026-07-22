@@ -10,7 +10,7 @@ url: https://docs.tealium.com/client-side-tags/criteo-adblock-tag/
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Criteo Adblock Tag to your profile ([how to add a tag]()).
+First, go to the tag marketplace and add the Criteo Adblock Tag to your profile ([how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the below settings:
 
@@ -21,13 +21,13 @@ After adding the tag, configure the below settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **Load on all pages**.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Criteo Adblock Tag are built into its Data Mapping tab. Available categories are:
 

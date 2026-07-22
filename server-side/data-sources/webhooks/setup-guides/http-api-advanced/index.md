@@ -11,9 +11,9 @@ This data source is similar to the HTTP API data source, but with additional sup
 
 Events sent using HTTP POST with a complex JSON object will be flattened as follows:
 
-* Event attribute names are created by lower-casing and joining the object properties with an underscore (&#34;\_&#34;). For example:  
-Source data: `&#34;alpha&#34; : { &#34;beta&#34; : true }`  
-Flattened event attribute: `&#34;alpha_beta&#34; : true`
+* Event attribute names are created by lower-casing and joining the object properties with an underscore ("\_"). For example:  
+Source data: `"alpha" : { "beta" : true }`  
+Flattened event attribute: `"alpha_beta" : true`
 * Numbers, booleans, and strings inside of an array are preserved.
 * Objects and arrays inside of an array are stringified.
 
@@ -39,11 +39,15 @@ For example, if you send:
 
 If you exceed the rate limit, Tealium will send an HTTP 429 response indicating too many requests.
 
+
+<blockquote>
 If your business needs require higher event limits, contact your Tealium account manager.
+</blockquote>
+
 
 ## POST method
 
-The HTTP API - Advanced data source supports the POST method. For GET method requests, use the [HTTP API]().
+The HTTP API - Advanced data source supports the POST method. For GET method requests, use the [HTTP API](https://docs.tealium.com/platforms/http-api/endpoint-spec/).
 
 Use the following endpoint to access the HTTP API - Advanced data source:
 
@@ -51,9 +55,13 @@ Use the following endpoint to access the HTTP API - Advanced data source:
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-Use the optional `tealium_trace_id` query parameter (`tealium_trace_id=TRACEID`) to support debugging with the Trace tool. For more information about using a trace, see [About Trace]().
+Use the optional `tealium_trace_id` query parameter (`tealium_trace_id=TRACEID`) to support debugging with the Trace tool. For more information about using a trace, see [About Trace](https://docs.tealium.com/about-trace/).
 
+
+<blockquote>
 To find your data source key, navigate to the **Data Sources** dashboard, click the data source you want to use, and copy the key from the **Data Source Key** field.
+</blockquote>
+
 
 ## Visitor identifiers
 
@@ -76,9 +84,13 @@ Depending on your business case, you can use anonymous values or values based on
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) &gt; Data Layer]().
+If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
+
+<blockquote>
 If you are using Adobe Launch or Google Tag Manager, then the value needs to match the `v` part of the **TEAL** cookie.
+</blockquote>
+
 
 #### Known-visitors server-to-server
 
@@ -91,7 +103,11 @@ When sending data for known visitors (when a value exists for a visitor ID attri
 * Account
 * Profile  
 Including the profile name ensures the `tealium_visitor_id` is unique to each server-side profile, which is essential when the same visitor profile is sent to multiple server-side profiles within a region.
-* Visitor ID attribute ID and value You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes]().
+* Visitor ID attribute ID and value 
+<blockquote>
+You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes](https://docs.tealium.com/about-attributes/#attribute-ids).
+</blockquote>
+
 * Value in the `tealium_visitor_id` parameter
 
 For example, for the following values:
@@ -104,25 +120,33 @@ For example, for the following values:
 you would concatenate these values in the following way:
 
 ```
-tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
+tealium_visitor_id":"__my-account_main__7688_45653454__"
 ```
 
- Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+
+<blockquote>
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+</blockquote>
+
 
 Example JSON:
 
 ```json
 {
-    &#34;tealium_account&#34;    : &#34;my-account&#34;,
-    &#34;tealium_profile&#34;    : &#34;main&#34;,
-    &#34;tealium_event&#34;      : &#34;user_login&#34;,
-    &#34;email_address&#34;      : &#34;user@example.com&#34;,
-    &#34;customer_number&#34;    : &#34;45653454&#34;, 
-    &#34;tealium_visitor_id&#34; : &#34;__my-account_main__7688_45653454__&#34;
+    "tealium_account"    : "my-account",
+    "tealium_profile"    : "main",
+    "tealium_event"      : "user_login",
+    "email_address"      : "user@example.com",
+    "customer_number"    : "45653454", 
+    "tealium_visitor_id" : "__my-account_main__7688_45653454__"
 }
 ```
 
- Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent `tealium_visitor_id`, each event will generate a new visit and visitor stitching will not be possible.
+
+<blockquote>
+Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent `tealium_visitor_id`, each event will generate a new visit and visitor stitching will not be possible.
+</blockquote>
+
 
 ### User Identifiers
 
@@ -130,7 +154,7 @@ When using AudienceStream, you can pass a known user identifier with a tracking 
 
 A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes]().
+In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ## Adding the data source
 
@@ -138,9 +162,13 @@ This section provides guidance on how to add the HTTP API - Advanced data source
 
 Add the HTTP API - Advanced data source before proceeding, then copy the generated endpoint for use in an external system.
 
-The HTTP API - Advanced endpoint is not active until you add the data source and publish the profile. 
 
-Related: [How to Add a Data Source]()
+<blockquote>
+The HTTP API - Advanced endpoint is not active until you add the data source and publish the profile.
+</blockquote>
+
+
+Related: [How to Add a Data Source](https://docs.tealium.com/about-data-sources/)
 
 ## Response codes
 
@@ -161,17 +189,17 @@ If you pass a JSON array as the entire payload, it will be treated as several ev
 ```json
 [
   {
-    &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-    &#34;my_string&#34;: &#34;12345a&#34;,
-    &#34;Detail&#34;: {
-      &#34;Name&#34;: &#34;Event A&#34;
+    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+    "my_string": "12345a",
+    "Detail": {
+      "Name": "Event A"
     }
   },
   {
-    &#34;tealium_visitor_id&#34;: &#34;e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629&#34;,
-    &#34;my_string&#34;: &#34;12345b&#34;,
-    &#34;Detail&#34;: {
-      &#34;Name&#34;: &#34;Event B&#34;
+    "tealium_visitor_id": "e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629",
+    "my_string": "12345b",
+    "Detail": {
+      "Name": "Event B"
     }
   }
 ]
@@ -182,16 +210,16 @@ This payload will be transformed into several events:
 ```json
 // First Event
   {
-    &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-    &#34;my_string&#34;: &#34;12345a&#34;,
-    &#34;detail_name&#34;:  &#34;Event A&#34;
+    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+    "my_string": "12345a",
+    "detail_name":  "Event A"
   }
 
   // Second Event
   {
-    &#34;tealium_visitor_id&#34;: &#34;e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629&#34;,
-    &#34;my_string&#34;: &#34;12345b&#34;,
-    &#34;detail_name&#34;:  &#34;Event B&#34;
+    "tealium_visitor_id": "e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629",
+    "my_string": "12345b",
+    "detail_name":  "Event B"
   }
 ```
 
@@ -203,21 +231,21 @@ For example, the following array:
 
 ```json
 {
-   &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-   &#34;my_string&#34;: &#34;12345a&#34;,
-   &#34;detail_name&#34;: &#34;Event A&#34;,
-   &#34;events&#34;: [
+   "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+   "my_string": "12345a",
+   "detail_name": "Event A",
+   "events": [
        {
-           &#34;id&#34;: &#34;1&#34;,
-           &#34;name&#34;: &#34;Event A&#34;
+           "id": "1",
+           "name": "Event A"
        },
        {
-           &#34;id&#34;: &#34;2&#34;,
-           &#34;name&#34;: &#34;Event B&#34;
+           "id": "2",
+           "name": "Event B"
        },
        {
-           &#34;id&#34;: &#34;3&#34;,
-           &#34;name&#34;: &#34;Event C&#34;
+           "id": "3",
+           "name": "Event C"
        }
    ]
 }
@@ -228,19 +256,19 @@ will be flattened into the following array of strings:
 
 ```json
 {
-   &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-   &#34;my_string&#34;: &#34;12345a&#34;,
-   &#34;detail_name&#34;: &#34;Event A&#34;,
-       &#34;events&#34;: [
-        &#34;{\&#34;id\&#34;:\&#34;1\&#34;,\&#34;name\&#34;:\&#34;Event A\&#34;}&#34;,
-        &#34;{\&#34;id\&#34;:\&#34;2\&#34;,\&#34;name\&#34;:\&#34;Event B\&#34;}&#34;,
-        &#34;{\&#34;id\&#34;:\&#34;3\&#34;,\&#34;name\&#34;:\&#34;Event C\&#34;}&#34;
+   "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+   "my_string": "12345a",
+   "detail_name": "Event A",
+       "events": [
+        "{\"id\":\"1\",\"name\":\"Event A\"}",
+        "{\"id\":\"2\",\"name\":\"Event B\"}",
+        "{\"id\":\"3\",\"name\":\"Event C\"}"
     ]
 }
 
 ```
 
-For complex business cases or requirements, consider using the [Tealium Event Transformation functions]() in addition to, or instead of, the HTTP API - Advanced endpoint.
+For complex business cases or requirements, consider using the [Tealium Event Transformation functions](https://docs.tealium.com/about-data-transformation-functions/) in addition to, or instead of, the HTTP API - Advanced endpoint.
 
 ## Complex object
 
@@ -252,32 +280,32 @@ The following purchase event example shows how client-side e-commerce events wit
 
 ```json
 {
-   &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-   &#34;my_string&#34;: &#34;12345a&#34;,
-   &#34;detail_name&#34;: &#34;Event A&#34;,
-  &#34;ecommerce&#34;: {
-    &#34;event&#34;: &#34;purchase&#34;,
-    &#34;purchase&#34;: {
-      &#34;customer&#34;: {
-        &#34;id&#34;: &#34;8237572&#34;,
-        &#34;email&#34;: &#34;john.smith@example.com&#34;,
-        &#34;city&#34;: &#34;San Diego&#34;,
-        &#34;state&#34;: &#34;CA&#34;,
-        &#34;country&#34;: &#34;United States&#34;
+   "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+   "my_string": "12345a",
+   "detail_name": "Event A",
+  "ecommerce": {
+    "event": "purchase",
+    "purchase": {
+      "customer": {
+        "id": "8237572",
+        "email": "john.smith@example.com",
+        "city": "San Diego",
+        "state": "CA",
+        "country": "United States"
       },
-      &#34;order&#34;: {
-        &#34;id&#34;: &#34;ORD123456&#34;,
-        &#34;store&#34;: &#34;mobile web&#34;,
-        &#34;subtotal&#34;: &#34;2524.00&#34;,
-        &#34;total&#34;: &#34;2549.00&#34;
+      "order": {
+        "id": "ORD123456",
+        "store": "mobile web",
+        "subtotal": "2524.00",
+        "total": "2549.00"
       },
-      &#34;product&#34;: {
-          &#34;name&#34;: [&#34;Product One&#34;, &#34;Product Two&#34;],
-          &#34;id&#34;: [&#34;PROD123&#34;,&#34;PROD456&#34;],
-          &#34;price&#34;: [&#34;12.00&#34;,&#34;1250.00&#34;],
-          &#34;brand&#34;: [&#34;Ralph Lauren&#34;,&#34;Lucky&#34;],
-          &#34;category&#34;: [&#34;Apparel&#34;,&#34;Apparel&#34;],
-          &#34;quantity&#34;: [1,1]
+      "product": {
+          "name": ["Product One", "Product Two"],
+          "id": ["PROD123","PROD456"],
+          "price": ["12.00","1250.00"],
+          "brand": ["Ralph Lauren","Lucky"],
+          "category": ["Apparel","Apparel"],
+          "quantity": [1,1]
         }
     }
   }
@@ -291,25 +319,25 @@ After flattening, the purchase event becomes:
 
 ```json
 {
-   &#34;tealium_visitor_id&#34;: &#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;,
-   &#34;my_string&#34;: &#34;12345a&#34;,
-   &#34;detail_name&#34;: &#34;Event A&#34;,
-    &#34;ecommerce_event&#34;: &#34;purchase&#34;,
-    &#34;ecommerce_purchase_customer_id&#34;: &#34;8237572&#34;,
-    &#34;ecommerce_purchase_customer_email&#34;: &#34;john.smith@example.com&#34;,
-    &#34;ecommerce_purchase_customer_city&#34;: &#34;San Diego&#34;,
-    &#34;ecommerce_purchase_customer_state&#34;: &#34;CA&#34;,
-    &#34;ecommerce_purchase_customer_country&#34;: &#34;United States&#34;,
-    &#34;ecommerce_purchase_order_id&#34;: &#34;ORD123456&#34;,
-    &#34;ecommerce_purchase_order_store&#34;: &#34;mobile web&#34;,
-    &#34;ecommerce_purchase_order_subtotal&#34;: &#34;2524.00&#34;,
-    &#34;ecommerce_purchase_order_total&#34;: &#34;2549.00&#34;,
-    &#34;ecommerce_purchase_product_name&#34;: [&#34;Product One&#34;, &#34;Product Two&#34;],
-    &#34;ecommerce_purchase_product_id&#34;: [&#34;PROD123&#34;,&#34;PROD456&#34;],
-    &#34;ecommerce_purchase_product_price&#34;: [&#34;12.00&#34;,&#34;1250.00&#34;],
-    &#34;ecommerce_purchase_product_brand&#34;: [&#34;Ralph Lauren&#34;,&#34;Lucky&#34;],
-    &#34;ecommerce_purchase_product_category&#34;: [&#34;Apparel&#34;,&#34;Apparel&#34;],
-    &#34;ecommerce_purchase_product_quantity&#34;: [1,1]
+   "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
+   "my_string": "12345a",
+   "detail_name": "Event A",
+    "ecommerce_event": "purchase",
+    "ecommerce_purchase_customer_id": "8237572",
+    "ecommerce_purchase_customer_email": "john.smith@example.com",
+    "ecommerce_purchase_customer_city": "San Diego",
+    "ecommerce_purchase_customer_state": "CA",
+    "ecommerce_purchase_customer_country": "United States",
+    "ecommerce_purchase_order_id": "ORD123456",
+    "ecommerce_purchase_order_store": "mobile web",
+    "ecommerce_purchase_order_subtotal": "2524.00",
+    "ecommerce_purchase_order_total": "2549.00",
+    "ecommerce_purchase_product_name": ["Product One", "Product Two"],
+    "ecommerce_purchase_product_id": ["PROD123","PROD456"],
+    "ecommerce_purchase_product_price": ["12.00","1250.00"],
+    "ecommerce_purchase_product_brand": ["Ralph Lauren","Lucky"],
+    "ecommerce_purchase_product_category": ["Apparel","Apparel"],
+    "ecommerce_purchase_product_quantity": [1,1]
 }
 
 ```

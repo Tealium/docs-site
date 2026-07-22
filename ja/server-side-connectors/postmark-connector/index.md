@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/postmark-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -34,19 +34,19 @@ url: https://docs.tealium.com/ja/server-side-connectors/postmark-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|From|  &lt;ul&gt;&lt;li&gt;送信者のメールアドレス。&lt;/li&gt;&lt;li&gt;登録済みで確認済みの送信者署名が必要です。&lt;/li&gt;&lt;li&gt;このエンドポイントについての詳細は、&lt;https://postmarkapp.com/developer/api/email-api#send-a-single-email&gt;を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|To|  &lt;ul&gt;&lt;li&gt;受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|CC|  &lt;ul&gt;&lt;li&gt;CC受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|BCC|  &lt;ul&gt;&lt;li&gt;BCC受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|Subject|  &lt;ul&gt;&lt;li&gt;メールの件名。&lt;/li&gt;&lt;/ul&gt; |
-|Tag|  &lt;ul&gt;&lt;li&gt;送信メールをカテゴライズし、詳細な統計を取得するためのメールタグ。&lt;/li&gt;&lt;/ul&gt; |
-|HTML Body|  &lt;ul&gt;&lt;li&gt;Text Bodyが指定されていない場合は必須です。&lt;/li&gt;&lt;/ul&gt; |
-|Text Body|  &lt;ul&gt;&lt;li&gt;HTML Bodyが指定されていない場合は必須です。&lt;/li&gt;&lt;/ul&gt; |
-|Reply To|  &lt;ul&gt;&lt;li&gt;返信先のメールアドレスを上書きします。&lt;/li&gt;&lt;li&gt;送信者署名で構成された返信先にデフォルト構成されます。&lt;/li&gt;&lt;/ul&gt; |
-|Headers|  &lt;ul&gt;&lt;li&gt;含めるカスタムヘッダーのリスト。&lt;/li&gt;&lt;/ul&gt; |
-|Track Opens|  &lt;ul&gt;&lt;li&gt;真または偽。&lt;/li&gt;&lt;li&gt;このメールの開封トラッキングを有効にします。&lt;/li&gt;&lt;/ul&gt; |
-|Track Links|  &lt;ul&gt;&lt;li&gt;このメールのHTMLまたはテキスト本文のリンクのリンクトラッキングを有効にします。&lt;/li&gt;&lt;li&gt;可能なオプション: **なし**, **HtmlAndText**, **HtmlOnly**, **TextOnly**。&lt;/li&gt;&lt;/ul&gt; |
-|Metadata|  &lt;ul&gt;&lt;li&gt;カスタムメタデータのキーと値のペア。&lt;/li&gt;&lt;/ul&gt; |
+|From|  <ul><li>送信者のメールアドレス。</li><li>登録済みで確認済みの送信者署名が必要です。</li><li>このエンドポイントについての詳細は、<https://postmarkapp.com/developer/api/email-api#send-a-single-email>を参照してください。</li></ul> |
+|To|  <ul><li>受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|CC|  <ul><li>CC受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|BCC|  <ul><li>BCC受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|Subject|  <ul><li>メールの件名。</li></ul> |
+|Tag|  <ul><li>送信メールをカテゴライズし、詳細な統計を取得するためのメールタグ。</li></ul> |
+|HTML Body|  <ul><li>Text Bodyが指定されていない場合は必須です。</li></ul> |
+|Text Body|  <ul><li>HTML Bodyが指定されていない場合は必須です。</li></ul> |
+|Reply To|  <ul><li>返信先のメールアドレスを上書きします。</li><li>送信者署名で構成された返信先にデフォルト構成されます。</li></ul> |
+|Headers|  <ul><li>含めるカスタムヘッダーのリスト。</li></ul> |
+|Track Opens|  <ul><li>真または偽。</li><li>このメールの開封トラッキングを有効にします。</li></ul> |
+|Track Links|  <ul><li>このメールのHTMLまたはテキスト本文のリンクのリンクトラッキングを有効にします。</li><li>可能なオプション: **なし**, **HtmlAndText**, **HtmlOnly**, **TextOnly**。</li></ul> |
+|Metadata|  <ul><li>カスタムメタデータのキーと値のペア。</li></ul> |
 
 ### アクション - テンプレートを使用してメールを送る
 
@@ -54,16 +54,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/postmark-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Template ID|  &lt;ul&gt;&lt;li&gt;メッセージの送信時に使用するテンプレート。&lt;/li&gt;&lt;li&gt;Template Aliasが指定されていない場合は必須です。&lt;/li&gt;&lt;li&gt;このエンドポイントについての詳細は、&lt;https://postmarkapp.com/developer/api/templates-api#email-with-template&gt;を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|Template Alias|  &lt;ul&gt;&lt;li&gt;このメッセージの送信時に使用するテンプレートのエイリアス。&lt;/li&gt;&lt;li&gt;Template IDが指定されていない場合は必須です。&lt;/li&gt;&lt;/ul&gt; |
-|Template Model|  &lt;ul&gt;&lt;li&gt;指定されたテンプレートに適用するモデルで、HTML Body、Text Body、およびSubjectを生成します。&lt;/li&gt;&lt;/ul&gt; |
-|Inline CSS|  &lt;ul&gt;&lt;li&gt;真または偽。&lt;/li&gt;&lt;li&gt;デフォルトでは、指定されたテンプレートにHTML Bodyが含まれている場合、スタイルブロックはレンダリングされたHTMLコンテンツのインライン属性として適用されます。&lt;/li&gt;&lt;li&gt;このリクエストフィールドに`false`を渡すことで、この動作をオプトアウトできます。&lt;/li&gt;&lt;/ul&gt; |
-|From|  &lt;ul&gt;&lt;li&gt;送信者のメールアドレス。&lt;/li&gt;&lt;li&gt;登録済みで確認済みの送信者署名が必要です。&lt;/li&gt;&lt;/ul&gt; |
-|To|  &lt;ul&gt;&lt;li&gt;受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|CC|  &lt;ul&gt;&lt;li&gt;CC受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|BCC|  &lt;ul&gt;&lt;li&gt;BCC受信者のメールアドレス。&lt;/li&gt;&lt;li&gt;アドレスの最大数は50です。&lt;/li&gt;&lt;/ul&gt; |
-|Tag|  &lt;ul&gt;&lt;li&gt;送信メールをカテゴライズし、詳細な統計を取得するためのメールタグ。&lt;/li&gt;&lt;/ul&gt; |
-|Reply To|  &lt;ul&gt;&lt;li&gt;返信先のメールアドレスを上書きします。&lt;/li&gt;&lt;li&gt;送信者署名で構成された**返信先**にデフォルト構成されます。&lt;/li&gt;&lt;/ul&gt; |
-|Headers|  &lt;ul&gt;&lt;li&gt;含めるカスタムヘッダーのリスト。&lt;/li&gt;&lt;/ul&gt; |
-|Track Opens|  &lt;ul&gt;&lt;li&gt;真または偽。&lt;/li&gt;&lt;li&gt;このメールの開封トラッキングを有効にします。&lt;/li&gt;&lt;/ul&gt; |
-|Track Links|  &lt;ul&gt;&lt;li&gt;このメールのHTMLまたはテキスト本文のリンクのリンクトラッキングを有効にします。&lt;/li&gt;&lt;li&gt;可能なオプション: **なし**, **HtmlAndText**, **HtmlOnly**, **TextOnly**。&lt;/li&gt;&lt;/ul&gt; |
+|Template ID|  <ul><li>メッセージの送信時に使用するテンプレート。</li><li>Template Aliasが指定されていない場合は必須です。</li><li>このエンドポイントについての詳細は、<https://postmarkapp.com/developer/api/templates-api#email-with-template>を参照してください。</li></ul> |
+|Template Alias|  <ul><li>このメッセージの送信時に使用するテンプレートのエイリアス。</li><li>Template IDが指定されていない場合は必須です。</li></ul> |
+|Template Model|  <ul><li>指定されたテンプレートに適用するモデルで、HTML Body、Text Body、およびSubjectを生成します。</li></ul> |
+|Inline CSS|  <ul><li>真または偽。</li><li>デフォルトでは、指定されたテンプレートにHTML Bodyが含まれている場合、スタイルブロックはレンダリングされたHTMLコンテンツのインライン属性として適用されます。</li><li>このリクエストフィールドに`false`を渡すことで、この動作をオプトアウトできます。</li></ul> |
+|From|  <ul><li>送信者のメールアドレス。</li><li>登録済みで確認済みの送信者署名が必要です。</li></ul> |
+|To|  <ul><li>受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|CC|  <ul><li>CC受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|BCC|  <ul><li>BCC受信者のメールアドレス。</li><li>アドレスの最大数は50です。</li></ul> |
+|Tag|  <ul><li>送信メールをカテゴライズし、詳細な統計を取得するためのメールタグ。</li></ul> |
+|Reply To|  <ul><li>返信先のメールアドレスを上書きします。</li><li>送信者署名で構成された**返信先**にデフォルト構成されます。</li></ul> |
+|Headers|  <ul><li>含めるカスタムヘッダーのリスト。</li></ul> |
+|Track Opens|  <ul><li>真または偽。</li><li>このメールの開封トラッキングを有効にします。</li></ul> |
+|Track Links|  <ul><li>このメールのHTMLまたはテキスト本文のリンクのリンクトラッキングを有効にします。</li><li>可能なオプション: **なし**, **HtmlAndText**, **HtmlOnly**, **TextOnly**。</li></ul> |

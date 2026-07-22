@@ -11,7 +11,7 @@ This tag adds the Fathom Analytics script to your site. The script tracks page v
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -19,11 +19,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -48,15 +48,15 @@ For more information
 
 | Variable | Type | Description |
 |:---------|:------------|:------------|
-|  `load_option`  | String | Load option. &lt;ul&gt;&lt;li&gt;`defer`: Defer loading of the script until after the site loads.&lt;/li&gt;&lt;li&gt;`async`: Load the script asynchronously.&lt;/li&gt;&lt;/ul&gt; | 
+|  `load_option`  | String | Load option. <ul><li>`defer`: Defer loading of the script until after the site loads.</li><li>`async`: Load the script asynchronously.</li></ul> | 
 |  `data_auto`  | String | Disable automatic tracking. Available values are `true` and `false`. |
 |  `data_canonical`  | String | Ignore canonical URLs. Available values are `true` and `false`. | 
 |  `data_excluded_domains`  | String | A comma-separated list of domains to exclude from data collection. |
-|  `data_spa`  | String | Set single page application mode. &lt;ul&gt;&lt;li&gt;`auto`: Automatically check if the HTML5 History API is available, otherwise use hash-based routing.&lt;/li&gt;&lt;li&gt;`history`: Use the HTML5 History API.&lt;/li&gt;&lt;li&gt;`hash`: Use hash-based routing.&lt;/li&gt;&lt;/ul&gt; |
+|  `data_spa`  | String | Set single page application mode. <ul><li>`auto`: Automatically check if the HTML5 History API is available, otherwise use hash-based routing.</li><li>`history`: Use the HTML5 History API.</li><li>`hash`: Use hash-based routing.</li></ul> |
 
 ### Events
 
-For more information on mapping events, see [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|
@@ -64,7 +64,7 @@ For more information on mapping events, see [Create an Event Mapping](/iq-tag-ma
 |  `trackGoal` | Track Goal |
 
 ### Event-specific Parameters
-For more information on mapping events, see [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|

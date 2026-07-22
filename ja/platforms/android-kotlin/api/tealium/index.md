@@ -35,7 +35,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/
 以前に開始されたタイムドイベントをキャンセルします。タイムドイベントは追跡されません。
 
 ```java
-tealium.cancelTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium.cancelTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | パラメータ | タイプ     | 説明                 |
@@ -44,7 +44,7 @@ tealium.cancelTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
 
 ### `consentManager`
 
-現在の同意ステータスとカテゴリを構成し、現在施行されているポリシーを確認することができます。[同意管理](/ja/platforms/android-kotlin/consent-management/)ガイドで詳細を学びましょう。
+現在の同意ステータスとカテゴリを構成し、現在施行されているポリシーを確認することができます。[同意管理](https://docs.tealium.com/ja/platforms/android-kotlin/consent-management/)ガイドで詳細を学びましょう。
 
 ```java
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
@@ -52,10 +52,10 @@ tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 
 ### `dataLayer`
 
-キーバリューペアのためのデバイス上の永続的な保存を提供し、有効期限の構成も可能です。各エントリは、[`track()`](#track) メソッドを通じて送信するすべてのディスパッチにも追加されます。[データ管理](/ja/platforms/android-kotlin/data-layer/)ガイドで詳細を学びましょう。
+キーバリューペアのためのデバイス上の永続的な保存を提供し、有効期限の構成も可能です。各エントリは、[`track()`](#track) メソッドを通じて送信するすべてのディスパッチにも追加されます。[データ管理](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/)ガイドで詳細を学びましょう。
 
 ```java
-tealium.dataLayer.putString(&#34;key&#34;, &#34;value&#34;, Expiry.FOREVER)
+tealium.dataLayer.putString("key", "value", Expiry.FOREVER)
 ```
 
 ### `endTraceVisitorSession()`
@@ -63,7 +63,7 @@ tealium.dataLayer.putString(&#34;key&#34;, &#34;value&#34;, Expiry.FOREVER)
 リモートで訪問セッションを終了します。SDKセッションを終了させたり、セッションIDをリセットしたりすることはありません。
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.endTraceVisitorSession()
+Tealium["INSTANCE_NAME"]?.endTraceVisitorSession()
 ```
 
 ### `events`
@@ -86,7 +86,7 @@ tealium.events.subscribe(object: UserConsentPreferencesUpdatedListener {
 データレイヤーとコレクターからトラックデータを取得します。
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.gatherTrackData()
+Tealium["INSTANCE_NAME"]?.gatherTrackData()
 ```
 
 ### `joinTrace()`
@@ -94,7 +94,7 @@ Tealium[&#34;INSTANCE_NAME&#34;]?.gatherTrackData()
 現在のセッションのデータレイヤーに提供されたトレースIDを追加します。
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.joinTrace(traceId)
+Tealium["INSTANCE_NAME"]?.joinTrace(traceId)
 ```
 
 | パラメータ | タイプ     | 説明 |
@@ -107,7 +107,7 @@ Tealium[&#34;INSTANCE_NAME&#34;]?.joinTrace(traceId)
 トレースIDを削除してトレースを離脱します。
 
 ```java
-Tealium[&#34;INSTANCE_NAME&#34;]?.leaveTrace()
+Tealium["INSTANCE_NAME"]?.leaveTrace()
 ```
 
 ### `linkEcidToKnownIdentifier()`
@@ -119,7 +119,7 @@ linkEcidToKnownIdentifier(
   knownId: String,
   adobeDataProviderId: String,
   authState: Int?,
-  adobeResponseListener: ResponseListener&lt;AdobeVisitor&gt;?
+  adobeResponseListener: ResponseListener<AdobeVisitor>?
   )
 ```
 
@@ -128,7 +128,7 @@ linkEcidToKnownIdentifier(
 | `knownId`               | `String`                         | 既知の識別子。               |
 | `adobeDataProviderId`   | `String`                         | Adobeデータプロバイダー識別子。 |
 | `authState`             | `Int`                            | 認証状態。            |
-| `adobeResponseListener` | `ResponseListener&lt;AdobeVisitor&gt;` | Adobeレスポンスリスナー。        |
+| `adobeResponseListener` | `ResponseListener<AdobeVisitor>` | Adobeレスポンスリスナー。        |
 
 
 例:
@@ -138,8 +138,8 @@ var tealium: Tealium?
 ...
 
 tealium.adobeVisitorApi?.linkEcidToKnownIdentifier(
-  &#34;myidentifier&#34;,
-  &#34;123456&#34;,
+  "myidentifier",
+  "123456",
   AdobeAuthState.AUTH_STATE_AUTHENTICATED,
   null
   )
@@ -191,20 +191,20 @@ val sessionId = tealium.session.id
 イベント名とともにオプショナルデータが渡された場合、タイマーが[`stopTimedEvent()`](#stoptimedevent)呼び出しで停止されたときにトラックコールに追加されます。
 
 ```java
-tealium.startTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;, mapOf(&#34;custom_value&#34; to &#34;custom_key&#34;))
+tealium.startTimedEvent(name: "TIMED_EVENT_NAME", mapOf("custom_value" to "custom_key"))
 ```
 
 | パラメータ                              | タイプ     | 説明                                                                 |
 |:----------------------------------------|:---------|:----------------------------------------------------------------------------|
 | `name`                                  | `String` | タイムドイベントの名前                                                 |
-| `mapOf(&#34;custom_key&#34; to &#34;custom_value&#34;)` | `Map`    | (オプショナル) データレイヤーで追跡されるキー値ペアデータのオブジェクト |
+| `mapOf("custom_key" to "custom_value")` | `Map`    | (オプショナル) データレイヤーで追跡されるキー値ペアデータのオブジェクト |
 
 ### `stopTimedEvent()`
 
 タイムドイベントのタイマーを停止し、`timed_event`トラッキングコールをトリガーします。
 
 ```java
-tealium.stopTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium.stopTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | パラメータ | タイプ     | 説明                 |
@@ -221,22 +221,22 @@ val config = TealiumConfig(key, config);
 
 | パラメータ | タイプ             | 説明                            | 例         |
 |:-----------|:-----------------|:---------------------------------------|:----------------|
-| `key`      | `String`         | 新しいTealiumインスタンスの名前              | `&#34;abc123&#34;`      |
+| `key`      | `String`         | 新しいTealiumインスタンスの名前              | `"abc123"`      |
 | `config`   | `Tealium.Config` | 新しいインスタンスの構成 | `tealConfigObj` |
 
 ```java
 // Assuming execution is within Application.onCreate()
-val config = TealiumConfig(this, &#34;ACCOUNT_NAME&#34;, &#34;PROFILE_NAME&#34;, Environment.PROD)
-val tealium = Tealium.create(&#34;main&#34;, config)
+val config = TealiumConfig(this, "ACCOUNT_NAME", "PROFILE_NAME", Environment.PROD)
+val tealium = Tealium.create("main", config)
 ```
 
 モジュールはバックグラウンドスレッドで初期化されるため、Tealiumオブジェクトの作成直後には準備が整っていない場合があります。インスタンスが準備でき次第、必要な追加構成を追加するために完了ブロックを追加します：
 
 ```java
-val tealium = Tealium.create(&#34;main&#34;, config) {
+val tealium = Tealium.create("main", config) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            Logger.dev(&#34;--&#34;, &#34;VisitorProfile updated: $visitorProfile&#34;)
+            Logger.dev("--", "VisitorProfile updated: $visitorProfile")
         }
     })
 }
@@ -258,12 +258,12 @@ tealium.track(tealiumlEvent)
 
 ```java
 val tealiumlEvent = TealiumView(
-  &#34;purchase&#34;, 
+  "purchase", 
   mutableMapOf(
-    &#34;customer_id&#34; to &#34;abc123&#34;, 
-    &#34;order_total&#34; to 10.00, 
-    &#34;product_id&#34; to listOf(&#34;PROD123&#34;, &#34;PROD456&#34;),
-    &#34;order_id&#34; to &#34;0123456789&#34;
+    "customer_id" to "abc123", 
+    "order_total" to 10.00, 
+    "product_id" to listOf("PROD123", "PROD456"),
+    "order_id" to "0123456789"
   )
 )
 tealium.track(tealiumlEvent);
@@ -276,7 +276,7 @@ tealium.track(tealiumlEvent);
 ```java
 var tealium: Tealium?
 //...
-val visitor = tealium.adobeVisitorApi?.visitor?.let { visitor -&gt;
+val visitor = tealium.adobeVisitorApi?.visitor?.let { visitor ->
     val ecid = visitor.experienceCloudId
     val nextRefresh = visitor.nextRefresh
     val blob = visitor.blob

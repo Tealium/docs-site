@@ -21,7 +21,7 @@ For more information, see [NPM: Crypto-ES](https://www.npmjs.com/package/crypto-
 To import the Tealium crypto library, add the following line to your code:
 
 ```js
-import C from &#34;tealium/crypto&#34;;
+import C from "tealium/crypto";
 ```
 
 ### Import modules
@@ -31,60 +31,60 @@ The Tealium Crypto library is organized into modules, each providing a separate 
 The list of available modules:
 
 ```js
-import { SHA384Algo } from &#39;tealium/crypto/lib/sha384.js&#39;;
-import { SHA512Algo } from &#39;tealium/crypto/lib/sha512.js&#39;;
-import { SHA3Algo } from &#39;tealium/crypto/lib/sha3.js&#39;;
-import { RIPEMD160Algo } from &#39;tealium/crypto/lib/ripemd160.js&#39;;
-import { PBKDF2Algo } from &#39;tealium/crypto/lib/pbkdf2.js&#39;;
-import { EvpKDFAlgo } from &#39;tealium/crypto/lib/evpkdf.js&#39;;
-import { AESAlgo } from &#39;tealium/crypto/lib/aes.js&#39;;
-import { DESAlgo } from &#39;tealium/crypto/lib/tripledes.js&#39;;
-import { TripleDESAlgo } from &#39;tealium/crypto/lib/tripledes.js&#39;;
-import { RabbitAlgo } from &#39;tealium/crypto/lib/rabbit.js&#39;;
-import { RabbitLegacyAlgo } from &#39;tealium/crypto/lib/rabbit-legacy.js&#39;;
-import { RC4Algo } from &#39;tealium/crypto/lib/rc4.js&#39;;
-import { RC4DropAlgo } from &#39;tealium/crypto/lib/rc4.js&#39;;
-import { CBC } from &#39;tealium/crypto/lib/mode-cbc.js&#39;;
-import { CFB } from &#39;tealium/crypto/lib/mode-cfb.js&#39;;
-import { CTR } from &#39;tealium/crypto/lib/mode-ctr.js&#39;;
-import { ECB } from &#39;tealium/crypto/lib/mode-ecb.js&#39;;
-import { OFB } from &#39;tealium/crypto/lib/mode-ofb.js&#39;;
-import { GCM } from &#39;tealium/crypto/lib/mode-gcm.js&#39;;
-import { AnsiX923 } from &#39;tealium/crypto/lib/pad-ansix923.js&#39;;
-import { Iso10126 } from &#39;tealium/crypto/lib/pad-iso10126.js&#39;;
-import { Iso97971 } from &#39;tealium/crypto/lib/pad-iso97971.js&#39;;
-import { NoPadding } from &#39;tealium/crypto/lib/pad-nopadding.js&#39;;
-import { ZeroPadding } from &#39;tealium/crypto/lib/pad-zeropadding.js&#39;;
-import { Pkcs7 } from &#39;tealium/crypto/lib/pad-pkcs7.js&#39;;
-import { OpenSSLFormatter } from &#34;tealium/crypto/lib/cipher/OpenSSLFormatter.js&#34;;
-import { HexFormatter } from &#39;tealium/crypto/lib/format-hex.js&#39;;
-import { OpenSSLKdf } from &#34;tealium/crypto/lib/cipher/OpenSSLKdf.js&#34;;
-import { MD5 } from &#39;tealium/crypto/lib/md5.js&#39;;
-import { HmacMD5 } from &#39;tealium/crypto/lib/md5.js&#39;;
-import { SHA1 } from &#39;tealium/crypto/lib/sha1.js&#39;;
-import { HmacSHA1 } from &#39;tealium/crypto/lib/sha1.js&#39;;
-import { SHA224 } from &#39;tealium/crypto/lib/sha224.js&#39;;
-import { HmacSHA224 } from &#39;tealium/crypto/lib/sha224.js&#39;;
-import { SHA256 } from &#39;tealium/crypto/lib/sha256.js&#39;;
-import { HmacSHA256 } from &#39;tealium/crypto/lib/sha256.js&#39;;
-import { SHA384 } from &#39;tealium/crypto/lib/sha384.js&#39;;
-import { HmacSHA384 } from &#39;tealium/crypto/lib/sha384.js&#39;;
-import { SHA512 } from &#39;tealium/crypto/lib/sha512.js&#39;;
-import { HmacSHA512 } from &#39;tealium/crypto/lib/sha512.js&#39;;
-import { SHA3 } from &#39;tealium/crypto/lib/sha3.js&#39;;
-import { HmacSHA3 } from &#39;tealium/crypto/lib/sha3.js&#39;;
-import { RIPEMD160 } from &#39;tealium/crypto/lib/ripemd160.js&#39;;
-import { HmacRIPEMD160 } from &#39;tealium/crypto/lib/ripemd160.js&#39;;
-import { PBKDF2 } from &#39;tealium/crypto/lib/pbkdf2.js&#39;;
-import { EvpKDF } from &#39;tealium/crypto/lib/evpkdf.js&#39;;
-import { AES } from &#39;tealium/crypto/lib/aes.js&#39;;
-import { DES } from &#39;tealium/crypto/lib/tripledes.js&#39;;
-import { TripleDES } from &#39;tealium/crypto/lib/tripledes.js&#39;;
-import { Rabbit } from &#39;tealium/crypto/lib/rabbit.js&#39;;
-import { RabbitLegacy } from &#39;tealium/crypto/lib/rabbit-legacy.js&#39;;
-import { RC4 } from &#39;tealium/crypto/lib/rc4.js&#39;;
-import { RC4Drop } from &#39;tealium/crypto/lib/rc4.js&#39;;
-import { CRC32 } from &#39;tealium/crypto/lib/crc32.js&#39;;
+import { SHA384Algo } from 'tealium/crypto/lib/sha384.js';
+import { SHA512Algo } from 'tealium/crypto/lib/sha512.js';
+import { SHA3Algo } from 'tealium/crypto/lib/sha3.js';
+import { RIPEMD160Algo } from 'tealium/crypto/lib/ripemd160.js';
+import { PBKDF2Algo } from 'tealium/crypto/lib/pbkdf2.js';
+import { EvpKDFAlgo } from 'tealium/crypto/lib/evpkdf.js';
+import { AESAlgo } from 'tealium/crypto/lib/aes.js';
+import { DESAlgo } from 'tealium/crypto/lib/tripledes.js';
+import { TripleDESAlgo } from 'tealium/crypto/lib/tripledes.js';
+import { RabbitAlgo } from 'tealium/crypto/lib/rabbit.js';
+import { RabbitLegacyAlgo } from 'tealium/crypto/lib/rabbit-legacy.js';
+import { RC4Algo } from 'tealium/crypto/lib/rc4.js';
+import { RC4DropAlgo } from 'tealium/crypto/lib/rc4.js';
+import { CBC } from 'tealium/crypto/lib/mode-cbc.js';
+import { CFB } from 'tealium/crypto/lib/mode-cfb.js';
+import { CTR } from 'tealium/crypto/lib/mode-ctr.js';
+import { ECB } from 'tealium/crypto/lib/mode-ecb.js';
+import { OFB } from 'tealium/crypto/lib/mode-ofb.js';
+import { GCM } from 'tealium/crypto/lib/mode-gcm.js';
+import { AnsiX923 } from 'tealium/crypto/lib/pad-ansix923.js';
+import { Iso10126 } from 'tealium/crypto/lib/pad-iso10126.js';
+import { Iso97971 } from 'tealium/crypto/lib/pad-iso97971.js';
+import { NoPadding } from 'tealium/crypto/lib/pad-nopadding.js';
+import { ZeroPadding } from 'tealium/crypto/lib/pad-zeropadding.js';
+import { Pkcs7 } from 'tealium/crypto/lib/pad-pkcs7.js';
+import { OpenSSLFormatter } from "tealium/crypto/lib/cipher/OpenSSLFormatter.js";
+import { HexFormatter } from 'tealium/crypto/lib/format-hex.js';
+import { OpenSSLKdf } from "tealium/crypto/lib/cipher/OpenSSLKdf.js";
+import { MD5 } from 'tealium/crypto/lib/md5.js';
+import { HmacMD5 } from 'tealium/crypto/lib/md5.js';
+import { SHA1 } from 'tealium/crypto/lib/sha1.js';
+import { HmacSHA1 } from 'tealium/crypto/lib/sha1.js';
+import { SHA224 } from 'tealium/crypto/lib/sha224.js';
+import { HmacSHA224 } from 'tealium/crypto/lib/sha224.js';
+import { SHA256 } from 'tealium/crypto/lib/sha256.js';
+import { HmacSHA256 } from 'tealium/crypto/lib/sha256.js';
+import { SHA384 } from 'tealium/crypto/lib/sha384.js';
+import { HmacSHA384 } from 'tealium/crypto/lib/sha384.js';
+import { SHA512 } from 'tealium/crypto/lib/sha512.js';
+import { HmacSHA512 } from 'tealium/crypto/lib/sha512.js';
+import { SHA3 } from 'tealium/crypto/lib/sha3.js';
+import { HmacSHA3 } from 'tealium/crypto/lib/sha3.js';
+import { RIPEMD160 } from 'tealium/crypto/lib/ripemd160.js';
+import { HmacRIPEMD160 } from 'tealium/crypto/lib/ripemd160.js';
+import { PBKDF2 } from 'tealium/crypto/lib/pbkdf2.js';
+import { EvpKDF } from 'tealium/crypto/lib/evpkdf.js';
+import { AES } from 'tealium/crypto/lib/aes.js';
+import { DES } from 'tealium/crypto/lib/tripledes.js';
+import { TripleDES } from 'tealium/crypto/lib/tripledes.js';
+import { Rabbit } from 'tealium/crypto/lib/rabbit.js';
+import { RabbitLegacy } from 'tealium/crypto/lib/rabbit-legacy.js';
+import { RC4 } from 'tealium/crypto/lib/rc4.js';
+import { RC4Drop } from 'tealium/crypto/lib/rc4.js';
+import { CRC32 } from 'tealium/crypto/lib/crc32.js';
 ```
 
 ### Examples
@@ -94,11 +94,11 @@ import { CRC32 } from &#39;tealium/crypto/lib/crc32.js&#39;;
 Galois/Counter mode is provided in place of CTRGladman mode. Use `C.mode.GCM` with the AES cipher:
 
 ```js
-import C from &#34;tealium/crypto&#34;;
-const msg = &#34;message&#34;;
+import C from "tealium/crypto";
+const msg = "message";
 const key = C.enc.Hex.parse(
-&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;);
-const iv = C.enc.Hex.parse(&#34;0102030405060708090A0B0C&#34;);
+"0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
 const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding });
 const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding });
 ```
@@ -106,12 +106,12 @@ const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding:
 Additional authentication data and tag length can be passed as parameters:
 
 ```js
-import C from &#34;tealium/crypto&#34;;
-const msg = &#34;message&#34;;
+import C from "tealium/crypto";
+const msg = "message";
 const key = C.enc.Hex.parse(
-&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;);
-const iv = C.enc.Hex.parse(&#34;0102030405060708090A0B0C&#34;);
-const aad = C.enc.Utf8.parse(&#34;additional authentication data&#34;);
+"0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
+const aad = C.enc.Utf8.parse("additional authentication data");
 const tagLength = 128; // bits
 const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
 const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
@@ -120,11 +120,11 @@ const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding:
 The `GCM.mac` method is not provided, but the encrypted output also contains the tag concatenated with the hash:
 
 ```js
-import C from &#34;tealium/crypto&#34;;
-const msg = &#34;message&#34;;
+import C from "tealium/crypto";
+const msg = "message";
 const key = C.enc.Hex.parse(
-&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;);
-const iv = C.enc.Hex.parse(&#34;0102030405060708090A0B0C&#34;);
+"0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
 const tagLength = 128; // bits
 const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, tagLength });
 const sEncrypted = encrypted.ciphertext.toString();
@@ -135,18 +135,18 @@ const hash = sEncrypted.slice(0, sEncrypted.length - tag.length);
 To decrypt the message, the hash and tag must be concatenated:
 
 ```js
-import C from &#34;tealium/crypto&#34;;
-import CryptoES from &#34;crypto-es&#34;;
-const msg = &#34;message&#34;;
-const key = C.enc.Hex.parse(&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;);
-const iv = C.enc.Hex.parse(&#34;0102030405060708090A0B0C&#34;);
-const aad = C.enc.Utf8.parse(&#34;additional authentication data&#34;);
+import C from "tealium/crypto";
+import CryptoES from "crypto-es";
+const msg = "message";
+const key = C.enc.Hex.parse("0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
+const aad = C.enc.Utf8.parse("additional authentication data");
 const tagLength = 120;
 // encrypt with third-party
 const encrypted = CryptoES.AES.encrypt(msg, key, { iv, mode: CryptoES.mode.GCM, padding: CryptoES.pad.NoPadding });
 const tag = CryptoES.mode.GCM.mac(CryptoES.algo.AES, key, encrypted.iv, aad, encrypted.ciphertext, tagLength / 8);
 // decrypt with tealium/crypto
-const decrypted = C.AES.decrypt(C.lib.CipherParams.create({ ciphertext: C.enc.Hex.parse(encrypted.ciphertext.toString() &#43; tag) }), key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
+const decrypted = C.AES.decrypt(C.lib.CipherParams.create({ ciphertext: C.enc.Hex.parse(encrypted.ciphertext.toString() + tag) }), key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
 ```
 
 #### CRC32
@@ -154,14 +154,14 @@ const decrypted = C.AES.decrypt(C.lib.CipherParams.create({ ciphertext: C.enc.He
 CRC32 is added as an extension to `crypto-es` and is available under `index.js` or as a named import:
 
 ```js
-import C from &#34;tealium/crypto&#34;; // C.CRC32
-import { CRC32 } from &#34;tealium/crypto/lib/crc32.js&#34;;
+import C from "tealium/crypto"; // C.CRC32
+import { CRC32 } from "tealium/crypto/lib/crc32.js";
 ```
 
 In both cases, the function takes an argument representing data:
 
 * `CRC32.buf(byte array)`: Expects a sequence of 8-bit unsigned integers (Uint8Array or array of bytes).
-* `CRC32.bstr(binary string)`: Expects a binary string where byte i is the low byte of the UCS-2 char: `str.charCodeAt(i) &amp; 0xFF`
+* `CRC32.bstr(binary string)`: Expects a binary string where byte i is the low byte of the UCS-2 char: `str.charCodeAt(i) & 0xFF`
 * `CRC32.str(string)`: Expects a standard JavaScript string and calculates the hash of the UTF-8 encoding.
 * `CRC32.reset()`: The instance is stateful and requires manual reset after a hash calculation.
 * `CRC32.valueOf()`: Returns a 32-bit signed integer representation of the state.
@@ -169,21 +169,21 @@ In both cases, the function takes an argument representing data:
 Usage:
 
 ```js
-import { CRC32 } from &#34;tealium/crypto/lib/crc32.js&#34;;
+import { CRC32 } from "tealium/crypto/lib/crc32.js";
 // single iteration
-const hash1 = CRC32.str(&#34;input&#34;).valueOf();
+const hash1 = CRC32.str("input").valueOf();
 CRC32.reset();
 // multiple
 const hash2 = CRC32
     .buf([11, 111, 88])
-    .str(&#34;try&#34;)
-    .bstr(&#34;more&#34;)
+    .str("try")
+    .bstr("more")
     .valueOf();
 CRC32.reset();
 // convert to unsigned
-const uHash1 = hash1 &gt;&gt;&gt; 0;
+const uHash1 = hash1 >>> 0;
 // convert to hex
-const hHash1 = (hash1 &gt;&gt;&gt; 0).toString(16);
+const hHash1 = (hash1 >>> 0).toString(16);
 ```
 
 ### Error messages
@@ -209,24 +209,28 @@ Duplicate the function in a sandbox environment and update the imports to use `t
 * **Run a `tealium/crypto` version in parallel with the existing function**  
 Create a copy of the function and update the imports to use `tealium/crypto`. Route a portion of traffic to it for direct comparison under real-world conditions. This approach enables 1:1 output and performance validation but may increase resource usage and cost. Turn off the duplicate after testing to avoid unnecessary system load.
 
-Avoid using the **Test** tab with test payloads, as it doesn&#39;t simulate production load or provide reliable performance insights.
+Avoid using the **Test** tab with test payloads, as it doesn't simulate production load or provide reliable performance insights.
 
 After validation, you can migrate fully and turn off or delete the previous version using `crypto-es`.
 
 ## Crypto-ES.js (legacy)
 
+
+<blockquote>
 This is a legacy version of the crypto library. For new use cases, see the [Tealium crypto library](#crypto) library, which offers the same interface with improved performance and modular imports.
+</blockquote>
+
 
 Crypto-ES.js is a library of encryption algorithms available that provides hashing, encoding, and cipher algorithms. For more information, see [NPM: Crypto-ES](https://www.npmjs.com/package/crypto-es/v/1.2.7).
 
 The following example shows how to encrypt and decrypt text:
 
 ```js
-import CryptoES from &#39;crypto-es&#39;;
+import CryptoES from 'crypto-es';
 
-var encrypted = CryptoES.AES.encrypt(&#34;Message&#34;, &#34;Secret Passphrase&#34;);
+var encrypted = CryptoES.AES.encrypt("Message", "Secret Passphrase");
 console.log(encrypted);
-var decrypted = CryptoES.AES.decrypt(encrypted, &#34;Secret Passphrase&#34;);
+var decrypted = CryptoES.AES.decrypt(encrypted, "Secret Passphrase");
 console.log(CryptoES.enc.Utf8.stringify(decrypted));
 ```
 
@@ -236,25 +240,25 @@ The Crypto-ES library supports GCM mode for AES encryption. The following exampl
 
 ```js
 // import as part of crypto-es lib
-import CryptoES from &#34;crypto-es&#34;;
-// import as named export to safe computing resources (doesn&#39;t work if whole library is imported as above)
-import { GCM } from &#34;crypto-es/lib/mode-gcm.js&#34;;
+import CryptoES from "crypto-es";
+// import as named export to safe computing resources (doesn't work if whole library is imported as above)
+import { GCM } from "crypto-es/lib/mode-gcm.js";
 
 // Encrypt
-const msg = &#34;Original Message&#34;;
-const key = CryptoES.enc.Hex.parse(&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;);
-const iv = CryptoES.enc.Hex.parse(&#34;0102030405060708090A0B0C&#34;);
-const authData = CryptoES.enc.Utf8.parse(&#34;Additional authentication data&#34;);
+const msg = "Original Message";
+const key = CryptoES.enc.Hex.parse("0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = CryptoES.enc.Hex.parse("0102030405060708090A0B0C");
+const authData = CryptoES.enc.Utf8.parse("Additional authentication data");
 const encrypted = CryptoES.AES.encrypt(msg, key, { iv, mode: CryptoES.mode.GCM });
 const authTag = CryptoES.mode.GCM.mac(CryptoES.algo.AES, key, encrypted.iv,  authData, encrypted.ciphertext, 16);
-const enveloped = encrypted.iv.toString() &#43; encrypted.ciphertext.toString() &#43; authTag.toString();
-console.log(&#34;encrypted: &#34;, encrypted);
-console.log(&#34;authTag: &#34;, authTag);
-console.log(&#34;enveloped: &#34;, enveloped);
+const enveloped = encrypted.iv.toString() + encrypted.ciphertext.toString() + authTag.toString();
+console.log("encrypted: ", encrypted);
+console.log("authTag: ", authTag);
+console.log("enveloped: ", enveloped);
 
 // Decrypt
 const decrypted = CryptoES.AES.decrypt(encrypted, key, { iv, mode: CryptoES.mode.GCM });
-console.log(&#34;decrypted: &#34;, decrypted.toString(CryptoES.enc.Utf8));
+console.log("decrypted: ", decrypted.toString(CryptoES.enc.Utf8));
 ```
 
 ### SHA3 algorithm
@@ -262,27 +266,27 @@ console.log(&#34;decrypted: &#34;, decrypted.toString(CryptoES.enc.Utf8));
 The crypto-ES library provides the original SHA3 algorithm. The following example shows how to use the SHA3 algorithm:
 
 ```js
-import { SHA3 } from &#34;crypto-es/lib/sha3-original.js&#34;;
+import { SHA3 } from "crypto-es/lib/sha3-original.js";
 
-const hash = SHA3(&#34;Original Message&#34;, { outputLength: 256 });
-console.log(&#34;hash: &#34;, hash);
+const hash = SHA3("Original Message", { outputLength: 256 });
+console.log("hash: ", hash);
 ```
 
 ### CRC32 algorithm
 
 The crypto-ES library provides the CRC32 algorithm. Each CRC32 function takes an argument representing data and an optional second argument representing the starting seed (for rolling CRC). The return value is a signed 32-bit integer. The supported functions are as follows:
 
-* `CRC32.buf(byte array[, seed])` &amp;ndash; The first argument is a sequence of 8-bit unsigned integers (`Uint8Array` or array of bytes).
-* `CRC32.bstr(binary string[, seed])` &amp;ndash; The first argument is a binary string where byte `i` is the low byte of the UCS-2 char: `str.charCodeAt(i) &amp; 0xFF`
-* `CRC32.str(string[, seed])` &amp;ndash; The first argument is a standard JS string and calculates the hash of the UTF-8 encoding.
+* `CRC32.buf(byte array[, seed])` &ndash; The first argument is a sequence of 8-bit unsigned integers (`Uint8Array` or array of bytes).
+* `CRC32.bstr(binary string[, seed])` &ndash; The first argument is a binary string where byte `i` is the low byte of the UCS-2 char: `str.charCodeAt(i) & 0xFF`
+* `CRC32.str(string[, seed])` &ndash; The first argument is a standard JS string and calculates the hash of the UTF-8 encoding.
 
 The following example shows how to use the CRC32 algorithm:
 
 ```js
-import CRC32 from &#34;crypto-es/lib/crc32.js&#34;;
+import CRC32 from "crypto-es/lib/crc32.js";
 
-const hash = CRC32.str(&#34;Original Message&#34;);
-console.log(&#34;hex value: &#34;, (hash &gt;&gt;&gt; 0).toString(16));
+const hash = CRC32.str("Original Message");
+console.log("hex value: ", (hash >>> 0).toString(16));
 ```
 
 ## TweetNaCl.js
@@ -291,7 +295,7 @@ TweetNaCl is a crypto library that implements secret-key authenticated encryptio
 
 Import the TweetNaCl.js module into your event or visitor function as follows:
 
-`import nacl from &#39;tweetnacl&#39;;`
+`import nacl from 'tweetnacl';`
 
 For more information, see [NPM TweetNaCl.js](https://www.npmjs.com/package/tweetnacl).
 
@@ -301,10 +305,14 @@ Use the JavaScript console functions to write messages and errors to the log.
 
 `console.log()` , `console.info(),` and `console.debug()` log messages go to the info output stream. `console.warn()` and `console.error()` log messages go to the error output stream.
 
-The info and error output streams are each limited to 10 Kb of data per function invocation. If log messages exceed this limit, the log file will contain the first 10 Kb of data and end with the following message:&lt;br&gt;
-`Output was too large and has been truncated.`
 
-The console object provides other methods that are supported by functions. For more information, refer to any JavaScript [specification](https://developer.mozilla.org/en-US/docs/Web/API/Console &#34;https://developer.mozilla.org/en-US/docs/Web/API/Console&#34;) for the console object. The following additional console methods are supported:
+<blockquote>
+The info and error output streams are each limited to 10 Kb of data per function invocation. If log messages exceed this limit, the log file will contain the first 10 Kb of data and end with the following message:<br>
+`Output was too large and has been truncated.`
+</blockquote>
+
+
+The console object provides other methods that are supported by functions. For more information, refer to any JavaScript [specification](https://developer.mozilla.org/en-US/docs/Web/API/Console "https://developer.mozilla.org/en-US/docs/Web/API/Console") for the console object. The following additional console methods are supported:
 
 * `assert()`
 * `count()`
@@ -339,7 +347,7 @@ Error - variable not defined
 If a function is triggered on EventStream and `console.assert()` is called as follows:
 
 ```
-console.assert(visitor, &#34;visitor not defined&#34;);
+console.assert(visitor, "visitor not defined");
 ```
 
 The `visitor` object is only defined when the trigger is AudienceStream, so the assertion is false and the output is as follows:
@@ -355,9 +363,9 @@ Assertion failed: visitor not defined
 If the function code contains the following:
 
 ```js
-console.group(&#34;Event info:&#34;);
-console.log(&#34;Account: &#34;, event.account);
-console.log(&#34;Visitor ID: &#34;, event.visitor_id);
+console.group("Event info:");
+console.log("Account: ", event.account);
+console.log("Visitor ID: ", event.visitor_id);
 console.groupEnd();
 ```
 
@@ -371,7 +379,7 @@ Event info:
 
 ### console.time() and console.timeLog()
 
-When a function calls `console.time()`, there is no output. The time that `console.time()` was called with that string is noted. When `console.timeLog()` is called with the same string, `&#34;Current Time: &#34;` in this example, the output is the specified string followed by the time elapsed since `console.time()` was called:
+When a function calls `console.time()`, there is no output. The time that `console.time()` was called with that string is noted. When `console.timeLog()` is called with the same string, `"Current Time: "` in this example, the output is the specified string followed by the time elapsed since `console.time()` was called:
 
 ```
 Current Time: : 1ms
@@ -381,7 +389,7 @@ After a function calls `console.timeEnd()`, `console.timeLog()` cannot be called
 
 ### console.count() and console.countReset()
 
-Each time `console.count()` is called with the same string, the count is incremented. The output of `console.count()` is the string followed by the count. If `console.count(&#34;Current count: &#34;); ` is called twice, the output is as follows:
+Each time `console.count()` is called with the same string, the count is incremented. The output of `console.count()` is the string followed by the count. If `console.count("Current count: "); ` is called twice, the output is as follows:
 
 ```
 Current count: : 1

@@ -3,7 +3,7 @@ title: RemoteCommands Module
 description: Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
 url: https://docs.tealium.com/platforms/ios-swift-v1/module-list/remote-commands/
 ---
-[Learn more](/platforms/remote-commands/) about remote commands.
+[Learn more](https://docs.tealium.com/platforms/remote-commands/) about remote commands.
 
 ## Requirements
 
@@ -21,16 +21,16 @@ Install the RemoteCommands module with CocoaPods or Carthage.
 
 To install the RemoteCommands module with CocoaPods, add the following pod to your Podfile:  
 ```ruby
-pod &#39;tealium-swift/TealiumRemoteCommands&#39;
+pod 'tealium-swift/TealiumRemoteCommands'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 ### Carthage
 
 To install the RemoteCommands module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
       ```ruby
@@ -41,7 +41,7 @@ To install the RemoteCommands module with Carthage, following these steps:
       import TealiumRemoteCommands
       ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 ## Example
 
@@ -52,10 +52,10 @@ class TealiumHelper {
 	var tealium: Tealium?
 	// ...
 	private func initTealium() {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
- 	       		                 profile: &#34;PROFILE&#34;,
-        	   	                 environment: &#34;ENVIRONMENT&#34;,
-           		                 datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+ 	       		                 profile: "PROFILE",
+        	   	                 environment: "ENVIRONMENT",
+           		                 datasource: "DATASOURCE")
     	guard let remoteCommands = self?.tealium?.remoteCommands() else {
           return
         }
@@ -79,26 +79,30 @@ Creates a new remote command object ready to be passed to the `add` command.
 
 | Parameter   | Description                                       | Example       |
 |-------------|---------------------------------------------------|--------------------|
-| `commandId`   | Required String identifier for the remote command | `&#34;logger&#34; `       |
-| `description` | Optional String description of the remote command | `&#34;Log Response object to console&#34;` |
+| `commandId`   | Required String identifier for the remote command | `"logger" `       |
+| `description` | Optional String description of the remote command | `"Log Response object to console"` |
 | `queue`       | Queue on which to trigger the code block          | `DispatchQueue.main` |
 | `completion`  | The block of code to trigger                      |                   |
 
 The following is a usage example:
 
 ```swift
-let customCommand = TealiumRemoteCommand(commandId: &#34;logger&#34;,
-                                        description: &#34;Log Response object to console&#34;,
+let customCommand = TealiumRemoteCommand(commandId: "logger",
+                                        description: "Log Response object to console",
                                         queue: DispatchQueue.main)
                                         { (response) in
                                             // code to execute
-                                            print(&#34;Custom command response: (response)&#34;)
+                                            print("Custom command response: (response)")
                                         })
 ```
 
 ### `add()`
 
-As of 1.6.5, we recommend adding Remote Commands using the `TealiumConfig` [`addRemoteCommand()`](/platforms/ios-swift-v1/api/tealium-config/#addremotecommand) method 
+
+<blockquote>
+As of 1.6.5, we recommend adding Remote Commands using the `TealiumConfig` [`addRemoteCommand()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-config/#addremotecommand) method
+</blockquote>
+
 
 Registers a specified remote command with Tealium for later triggering. Tealium must have been initialized before adding a new Remote Command.
 
@@ -110,17 +114,17 @@ The following is a usage example:
 
 ```swift
 var tealium: Tealium?
-let customCommand = TealiumRemoteCommand(commandId: &#34;logger&#34;,
+let customCommand = TealiumRemoteCommand(commandId: "logger",
     description: nil,
     queue: DispatchQueue.main)
     { response in
         // code to execute
-        print(&#34;Custom command response: (response)&#34;)
+        print("Custom command response: (response)")
     })
 if let remoteCommands = self.tealium?.remoteCommands() {
         remoteCommands.add(customCommand)
 } else {
-print(&#34;Remote commands not available&#34;)
+print("Remote commands not available")
 }
 ```
 
@@ -132,8 +136,8 @@ remove(commandWithId: String)
 ```
 
 ```swift
-// assumes &#34;tealium&#34; previously instantiated
-tealium?.remoteCommands()?.remove(commandWithId: &#34;logger&#34;)
+// assumes "tealium" previously instantiated
+tealium?.remoteCommands()?.remove(commandWithId: "logger")
 ```
 
 ### `disableRemoteCommands()`
@@ -147,7 +151,7 @@ disableRemoteCommands()
 The following is a usage example:
 
 ```swift
-// assumes &#34;tealium&#34; previously instantiated
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.disableRemoteCommands()
 ```
 
@@ -162,7 +166,7 @@ enabledRemoteCommands()
 The following is a usage example:
 
 ```swift
-// assumes &#34;tealium&#34; previously instantiated
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.enableRemoteCommands()
 ```
 
@@ -176,7 +180,7 @@ disableRemoteHTTPCommand()
 The following is a usage example:
 
 ```swift
-// assumes &#34;tealium&#34; previously instantiated
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.disableRemoteHTTPCommand()
 ```
 
@@ -190,7 +194,7 @@ enableRemoteHTTPCommand()`
 The following is a usage example:
 
 ```swift
-// assumes &#34;tealium&#34; previously instantiated
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.enableRemoteHTTPCommand()
 ```
 
@@ -203,10 +207,10 @@ This is a reserved internal command with identifier `_http` which triggers an HT
 | --- | --- |
 | `url` | (Required) The URL of the request you want to trigger. |
 |`method`| (Required) The HTTP method you want to call. PUT, GET and POST are currently the only supported methods.v
-|`headers` |(Optional) A JavaScript object (JSON) containing the header key-value pairs to pass along with the request. For example, `{&#34;Content-Type&#34;: &#34;application/json&#34;}`).|
+|`headers` |(Optional) A JavaScript object (JSON) containing the header key-value pairs to pass along with the request. For example, `{"Content-Type": "application/json"}`).|
 |`callback_function`| (Optional) A JavaScript function to be invoked when the command has completed. The callback function is passed 2 parameters: `code` is the HTTP response code such as 404 or 200, and `body`, which is the response body from the request. |
 
-Here&#39;s a sample callback function:
+Here's a sample callback function:
 
 ```swift
 var my_callback = function(code, body) {

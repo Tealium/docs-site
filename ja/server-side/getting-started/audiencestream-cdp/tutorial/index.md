@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## Tealium AudienceStreamとは何ですか？
 
-![](/images/tutorials/audiencestream-customer-evolution.jpg)
+![](https://docs.tealium.com/images/tutorials/audiencestream-customer-evolution.jpg)
 
 Tealium AudienceStreamは、ID解決、データエンリッチメント機能、および強力なオーディエンス管理を提供するカスタマーデータプラットフォーム（CDP）です。これは、最も価値のあるファーストパーティデータを表す訪問プロファイルを作成し、共有行動によってセグメント化されたオーディエンスを作成し、リアルタイムのコネクタを介してマーケティング技術スタックに燃料を供給するために使用されます。
 
@@ -27,7 +27,7 @@ Tealium AudienceStreamは以下の利点を提供します：
 
 ## ユーザーインターフェースを探索する
 
-&lt;https://my.tealiumiq.com/&gt;にアクセスし、Tealiumにログインしてインターフェースを探索します。
+<https://my.tealiumiq.com/>にアクセスし、Tealiumにログインしてインターフェースを探索します。
 
 AudienceStreamは以下のエリアに分かれています：
 

@@ -23,13 +23,13 @@ Adding the Insider data source to your Tealium Customer Data Hub profile generat
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-To add the Insider data source to your Tealium Customer Data Hub profile, see [Data Sources](). After adding and connecting the data source, save and publish your profile.
+To add the Insider data source to your Tealium Customer Data Hub profile, see [Data Sources](https://docs.tealium.com/about-data-sources/). After adding and connecting the data source, save and publish your profile.
 
 ## Insider setup
 
 After you connect Insider to your Tealium Customer Data Hub profile, configure the webhook using the following steps:
 
-1. Notify your Insider account manager that you want to configure the [Tealium Collect API](/platforms/http-api/endpoint/) to collect Insider channel events.
+1. Notify your Insider account manager that you want to configure the [Tealium Collect API](https://docs.tealium.com/platforms/http-api/endpoint/) to collect Insider channel events.
 1. The Insider team will configure your Tealium data source within Insider.
 1. In Tealium, enter the custom endpoint URL created when you added the Insider data source to your Tealium profile. For example,
 
@@ -49,8 +49,8 @@ The following table describes common Insider event attributes and examples of wh
 |---|---|---|
 | `insider_event_group_id` | String | `ORDER123` |
 | `insider_product_id` | String | `AGH210070 `|
-| `insider_name` | String | `iPhone 11&#43;` |
-| `insider_taxonomy` | Strings | `[&#34;Electronic&#34;,&#34;Phone&#34;]` |
+| `insider_name` | String | `iPhone 11+` |
+| `insider_taxonomy` | Strings | `["Electronic","Phone"]` |
 | `insider_currency` | String | `USD` |
 | `insider_unit_price` | Number | `990.9` |
 | `insider_unit_sale_price` | Number | `890.8` |
@@ -83,7 +83,7 @@ The following table describes common Insider event attributes and examples of wh
 | `insider_message` | String | `Your push content goes here `|
 | `insider_title` | String | `Your push notification title goes here `|
 | `insider_attr_email` | String | `test@test.com `|
-| `insider_attr_phone` | String | `&#43;14401231234` |
+| `insider_attr_phone` | String | `+14401231234` |
 | `insider_hook_id` | String | `442811` |
 | `insider_insider_id` | String | `a00d8092-0ba7-41f5-b07d-7ae64231dac3d` |
 

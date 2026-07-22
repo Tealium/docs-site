@@ -7,13 +7,17 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 複数のオーディエンスで使用できるオーディエンスセグメントを作成するには、以下の手順を使用します：
 
-1. **Activate &gt; Audiences** に移動します。
-1. **SEGMENTS** タブをクリックし、**&#43; New Segment** をクリックします。
-1. セグメントの**名前**を入力します。[DataAccess]()製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでない場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。
+1. **Activate > Audiences** に移動します。
+1. **SEGMENTS** タブをクリックし、**+ New Segment** をクリックします。
+1. セグメントの**名前**を入力します。
+<blockquote>
+[DataAccess](https://docs.tealium.com/about-dataaccess/)製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでない場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。
+</blockquote>
+
 1. 条件を追加するには、属性、演算子、および値を選択します。
     * セグメントの推定可能なサイズが表示されます。詳細については、[潜在的なサイズ](#potential-size)を参照してください。
     * 時間枠を指定する演算子の場合、値と時間枠を選択します。
-1. 別の条件を追加するには、**&#43; Add Condition** をクリックします。
+1. 別の条件を追加するには、**+ Add Condition** をクリックします。
     * 条件を編集または追加するときに、潜在的なサイズを更新するには、**Calculate** をクリックします。
 1. **Done** をクリックします。
 保存して公開する必要はありません。
@@ -33,7 +37,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 お気に入りにセグメントを保存するには、以下の手順を使用します：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. **SEGMENTS** タブをクリックします。
 1. セグメント名の隣の星をクリックします。
 
@@ -41,18 +45,22 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 セグメントリストをラベルまたはお気に入りでフィルタリングするには、以下の手順を使用します：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. **SEGMENTS** タブをクリックします。
 1. 特定のラベルでフィルタリングするには、**Labels** をクリックしてラベルを選択します。
 1. お気に入りのセグメントのみを表示するには、**Favorite** をクリックして **Favorite** を選択します。
 
 ## セグメントの編集
 
+
+<blockquote>
 現在、オーディエンスで使用中のセグメントは編集できません。
+</blockquote>
+
 
 セグメントを編集するには、以下の手順を使用します：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. **SEGMENTS** タブをクリックし、編集するセグメントを選択します。
 1. **Edit** をクリックします。
     * 必要に応じて条件を追加または編集します。
@@ -61,10 +69,14 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 ## セグメントの削除
 
+
+<blockquote>
 オーディエンスで使用中のセグメントは削除できません。
+</blockquote>
+
 
 セグメントを削除するには、以下の手順を使用します：
 
-1. **Activate &gt; Audiences** に移動し、**SEGMENTS** タブをクリックします。
+1. **Activate > Audiences** に移動し、**SEGMENTS** タブをクリックします。
 1. セグメントのメニューをクリックし、**Delete** を選択します。
 セグメントは削除されます。保存して公開する必要はありません。

@@ -15,24 +15,24 @@ The `llms.txt` format is a structured, machine-readable index that lists documen
 
 The main llms.txt file is a top-level directory of all documentation areas. It lists each area with a description and a link to its section index.
 
-* [/llms.txt](/llms.txt)
+* [/llms.txt](https://docs.tealium.com/llms.txt)
 
 ### Section indexes
 
 Each documentation area has its own llms.txt file containing a full index of pages within that area:
 
-* [Tag Management](/iq-tag-management/llms.txt): Client-side tag management documentation.
-* [Server-Side](/server-side/llms.txt): Server-side documentation including events, audiences, functions, data sources, and insights.
-* [APIs](/api/llms.txt): Developer API documentation and reference guides.
-* [Web Install](/platforms/web-install/llms.txt): Web platform installation guides including JavaScript library and tag manager integrations.
-* [Mobile Install](/platforms/mobile-install/llms.txt): Mobile platform installation guides including iOS SDK, Android SDK, and cross-platform frameworks.
-* [Client-Side Tags](/client-side-tags/llms.txt): Documentation for individual client-side tags and vendor integrations.
-* [Server-Side Connectors](/server-side-connectors/llms.txt): Documentation for individual server-side connectors and vendor integrations.
-* [Administration](/administration/llms.txt): Platform administration including user access, permissions, and security settings.
-* [Consent](/consent/llms.txt): Consent capture, interpretation, and enforcement across client-side and server-side environments.
-* [Guides](/guides/llms.txt): Practical guides and strategies for using Tealium effectively.
-* [Predict](/server-side/llms.txt): Predict ML documentation for machine learning-powered audience predictions.
-* [Partners and Industries](/partners-and-industries/llms.txt): Industry-specific integrations and partnership documentation.
+* [Tag Management](https://docs.tealium.com/iq-tag-management/llms.txt): Client-side tag management documentation.
+* [Server-Side](https://docs.tealium.com/server-side/llms.txt): Server-side documentation including events, audiences, functions, data sources, and insights.
+* [APIs](https://docs.tealium.com/api/llms.txt): Developer API documentation and reference guides.
+* [Web Install](https://docs.tealium.com/platforms/web-install/llms.txt): Web platform installation guides including JavaScript library and tag manager integrations.
+* [Mobile Install](https://docs.tealium.com/platforms/mobile-install/llms.txt): Mobile platform installation guides including iOS SDK, Android SDK, and cross-platform frameworks.
+* [Client-Side Tags](https://docs.tealium.com/client-side-tags/llms.txt): Documentation for individual client-side tags and vendor integrations.
+* [Server-Side Connectors](https://docs.tealium.com/server-side-connectors/llms.txt): Documentation for individual server-side connectors and vendor integrations.
+* [Administration](https://docs.tealium.com/administration/llms.txt): Platform administration including user access, permissions, and security settings.
+* [Consent](https://docs.tealium.com/consent/llms.txt): Consent capture, interpretation, and enforcement across client-side and server-side environments.
+* [Guides](https://docs.tealium.com/guides/llms.txt): Practical guides and strategies for using Tealium effectively.
+* [Predict](https://docs.tealium.com/server-side/llms.txt): Predict ML documentation for machine learning-powered audience predictions.
+* [Partners and Industries](https://docs.tealium.com/partners-and-industries/llms.txt): Industry-specific integrations and partnership documentation.
 
 ## Markdown
 
@@ -51,8 +51,8 @@ To access the markdown version of any documentation page, append `/index.md` to 
 
 Example:
 
-* HTML version: [/iq-tag-management/getting-started/what-is-tealium-iq/](/iq-tag-management/getting-started/what-is-tealium-iq/)
-* Markdown version: [/iq-tag-management/getting-started/what-is-tealium-iq/index.md](/iq-tag-management/getting-started/what-is-tealium-iq/index.md)
+* HTML version: [/iq-tag-management/getting-started/what-is-tealium-iq/](https://docs.tealium.com/iq-tag-management/getting-started/what-is-tealium-iq/)
+* Markdown version: [/iq-tag-management/getting-started/what-is-tealium-iq/index.md](https://docs.tealium.com/iq-tag-management/getting-started/what-is-tealium-iq/index.md)
 
 ## Language support
 
@@ -60,8 +60,8 @@ All llms.txt indexes and markdown pages are available in English and Japanese.
 
 For llms.txt indexes:
 
-* English main index: [/llms.txt](/llms.txt)
-* Japanese main index: [/ja/llms.txt](/ja/llms.txt)
+* English main index: [/llms.txt](https://docs.tealium.com/llms.txt)
+* Japanese main index: [/ja/llms.txt](https://docs.tealium.com/ja/llms.txt)
 
 Section indexes follow the same pattern:
 

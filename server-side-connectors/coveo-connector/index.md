@@ -24,7 +24,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -64,9 +64,9 @@ The following section describes how to set up parameters and options for each ac
 |User Agent|
 |User Display Name|
 |Username|
-|Custom Data| The user-defined dimensions and their values.&lt;br&gt; Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.&lt;br&gt; The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.&lt;br&gt; We highly recommend that you create your custom dimension before adding custom data.|
-|Custom Data Template Variables| Provide template variables as data input. For more information, see .&lt;br&gt; Name nested template variables with dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Custom Data| The user-defined dimensions and their values.<br> Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.<br> The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.<br> We highly recommend that you create your custom dimension before adding custom data.|
+|Custom Data Template Variables| Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.|
+|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ### Action — Log Search Event via POST
 
@@ -106,15 +106,15 @@ The following section describes how to set up parameters and options for each ac
 |Title| The facet title.|
 |Value Position| The 1-based position of the value in the facet.|
 |User Groups| The groups that the end-user performing the event is a member of. If the request is authenticated with a search token, the service also attempts to extract the **userGroups** value from the access token that authenticated the log search event request, and logs those groups as well.|
-|Custom Data| The user-defined dimensions and their values.&lt;br&gt; Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.&lt;br&gt; The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.&lt;br&gt; We highly recommend that you create your custom dimension before adding custom data.|
-|Custom Data Template Variables| Provide template variables as data input. For more information, see .&lt;br&gt; Name nested template variables with dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Custom Data Templates| Provide templates to be referenced in Custom Data.  For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Custom Data| The user-defined dimensions and their values.<br> Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.<br> The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.<br> We highly recommend that you create your custom dimension before adding custom data.|
+|Custom Data Template Variables| Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.|
+|Custom Data Templates| Provide templates to be referenced in Custom Data.  For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ### Action — Log Search Event Batch via POST
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 60 minutes
@@ -156,9 +156,9 @@ This action uses batched requests to support high-volume data transfers to the v
 |Title| The facet title.|
 |Value Position| The 1-based position of the value in the facet.|
 |User Groups| The groups that the end-user performing the event is a member of. If the request is authenticated with a search token, the service also attempts to extract the **userGroups** value from the access token that authenticated the log search event request, and logs those groups as well.|
-|Custom Data| The user-defined dimensions and their values.&lt;br&gt; Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.&lt;br&gt; The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.&lt;br&gt; We highly recommend that you create your custom dimension before adding custom data.|
-|Custom Data Template Variables| Provide template variables as data input. For more information, see .&lt;br&gt; Name nested template variables with dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Custom Data| The user-defined dimensions and their values.<br> Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.<br> The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.<br> We highly recommend that you create your custom dimension before adding custom data.|
+|Custom Data Template Variables| Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.|
+|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ### Action — Log Custom Event via POST
 
@@ -182,9 +182,9 @@ This action uses batched requests to support high-volume data transfers to the v
 |User Agent|
 |User Display Name|
 |Username|
-|Custom Data| The user defined dimensions and their values.&lt;br&gt; Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.&lt;br&gt; The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.&lt;br&gt; We highly recommend that you create your custom dimension before adding custom data.|
-|Custom Data Template Variables| Provide template variables as data input. For more information, see .&lt;br&gt; Name nested template variables with dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Custom Data| The user defined dimensions and their values.<br> Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.<br> The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.<br> We highly recommend that you create your custom dimension before adding custom data.|
+|Custom Data Template Variables| Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.|
+|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ### Action — Log Click Event via POST
 
@@ -218,6 +218,6 @@ This action uses batched requests to support high-volume data transfers to the v
 |User Agent|
 |User Display Name|
 |Username|
-|Custom Data| The user defined dimensions and their values.&lt;br&gt; Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.&lt;br&gt; The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.&lt;br&gt; We highly recommend that you create your custom dimension before adding custom data.|
-|Custom Data Template Variables| Provide template variables as data input. For more information, see .&lt;br&gt; Name nested template variables with dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Custom Data| The user defined dimensions and their values.<br> Keys can only contain alphanumeric or underscore characters. Whitespaces in keys are converted to underscores. Uppercase characters in keys are converted to lowercase characters.<br> The value could be any valid JSON. The value is converted to a string data type when passed to Coveo usage analytics.<br> We highly recommend that you create your custom dimension before adding custom data.|
+|Custom Data Template Variables| Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.|
+|Custom Data Templates| Provide templates to be referenced in Custom Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|

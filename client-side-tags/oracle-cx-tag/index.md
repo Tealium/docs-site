@@ -25,7 +25,7 @@ url: https://docs.tealium.com/client-side-tags/oracle-cx-tag/
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Oracle CX Tag tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the Oracle CX Tag tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -42,7 +42,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -95,7 +95,7 @@ The available categories are:
 |`wt.si_n`| Scenario Name|
 |`wt.si_p`| Scenario Step Name|
 |`wt.si_x`| Scenario Step Number|
-|`wt.tx_cartid`|  &lt;ul&gt;&lt;li&gt;Cart ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
+|`wt.tx_cartid`|  <ul><li>Cart ID</li><li>Overrides `_corder`.</li></ul> |
 |`wt.tx_s`| Transaction Subtotal|
 |`wt.tx_u`| Units|
 |`wt.tx_e`| Transaction Event Type|

@@ -11,13 +11,13 @@ Use the GET method to retrieve SCIM audit log entries:
 GET /admin/scim-sync/logs
 ```
 
-For more information about SCIM audit logging, see [SCIM audit logs]().
+For more information about SCIM audit logging, see [SCIM audit logs](https://docs.tealium.com/scim-audit-logs/).
 
 ## Authentication
 
 The OAuth bearer token is used to authenticate all API calls, not the API key.
 
-For more information, see [Authentication]().
+For more information, see [Authentication](https://docs.tealium.com/about-scim-api/#authentication).
 
 ## GET operation parameters
 
@@ -31,7 +31,7 @@ This endpoint requires Account Admin or User Admin permissions and takes the fol
 | `status` | String | Optional | Filter by outcome. Valid values: `SUCCESS`, `ERROR`. |
 | `action` | String | Optional | Filter by action type. Case-sensitive. Valid values: `User Creation`, `User Update`, `User Patch`, `User Retrieval`, `User Deletion`. |
 | `source` | String | Optional | Filter by event source. Case-sensitive. Valid values: `SCIM_API`, `UI`, `INTERNAL_API`, `SYSTEM`. |
-| `userEmail` | String | Optional | Case-insensitive substring match on the target user&#39;s email address. |
+| `userEmail` | String | Optional | Case-insensitive substring match on the target user's email address. |
 | `correlationId` | String | Optional | Exact match on correlation ID. |
 | `format` | String | Optional | Response format. Valid values: `csv` (default), `json`. |
 | `limit` | Integer | Optional | Maximum number of log entries to return. Default is `1000`. Maximum is `5000`. |
@@ -39,8 +39,8 @@ This endpoint requires Account Admin or User Admin permissions and takes the fol
 ### Example cURL request
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&amp;from=2025-01-01T00:00:00Z&amp;to=2025-01-31T23:59:59Z&amp;format=json&amp;status=ERROR&#39; \
---header &#39;Authorization: Bearer {TOKEN}&#39;
+curl --location 'https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&from=2025-01-01T00:00:00Z&to=2025-01-31T23:59:59Z&format=json&status=ERROR' \
+--header 'Authorization: Bearer {TOKEN}'
 ```
 
 ### Example response
@@ -62,12 +62,12 @@ Potential error messages for this endpoint:
 
 | Error code | Error message |
 | --- | --- |
-| 400 | `{&#34;message&#34;: &#34;Account parameter is required.&#34;}` |
-| 400 | `{&#34;message&#34;: &#34;Invalid date format. Use ISO-8601 format (e.g., 2023-01-01T00:00:00Z).&#34;}` |
-| 400 | `{&#34;message&#34;: &#34;Invalid date range: &#39;from&#39; must be before &#39;to&#39;.&#34;}` |
-| 400 | `{&#34;message&#34;: &#34;Limit must be between 1 and 5000.&#34;}` |
-| 400 | `{&#34;message&#34;: &#34;Invalid status. Must be SUCCESS or ERROR.&#34;}` |
-| 400 | `{&#34;message&#34;: &#34;Invalid source. Must be SCIM_API, UI, INTERNAL_API, or SYSTEM.&#34;}` |
-| 403 | `{&#34;message&#34;: &#34;Unauthorized access.&#34;}` |
-| 405 | `{&#34;message&#34;: &#34;Method is not allowed on this endpoint. Allowed methods: GET.&#34;}` |
-| 500 | `{&#34;message&#34;: &#34;Error processing request.&#34;}` |
+| 400 | `{"message": "Account parameter is required."}` |
+| 400 | `{"message": "Invalid date format. Use ISO-8601 format (e.g., 2023-01-01T00:00:00Z)."}` |
+| 400 | `{"message": "Invalid date range: 'from' must be before 'to'."}` |
+| 400 | `{"message": "Limit must be between 1 and 5000."}` |
+| 400 | `{"message": "Invalid status. Must be SUCCESS or ERROR."}` |
+| 400 | `{"message": "Invalid source. Must be SCIM_API, UI, INTERNAL_API, or SYSTEM."}` |
+| 403 | `{"message": "Unauthorized access."}` |
+| 405 | `{"message": "Method is not allowed on this endpoint. Allowed methods: GET."}` |
+| 500 | `{"message": "Error processing request."}` |

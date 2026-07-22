@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-
 
 オプトアウト同意マネージャーの構成を開始するには、以下の手順に従ってください：
 
-1. 左サイドバーから **クライアントサイドツール &gt; 同意管理** へ移動します。  
+1. 左サイドバーから **クライアントサイドツール > 同意管理** へ移動します。  
 オプトアウトモデルのバナーとポップアップが既に構成されている場合、この画面からオンまたはオフに切り替えることができます。
 1. **オプトアウトモデル** セクションで、**開始** をクリックして構成モーダルを起動します。
 
@@ -17,11 +17,11 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-
 
 * **バナーとポップアップ（推奨）** 
 このオプションは、ページにクッキーバナーを表示します。メッセージとリンクを構成し、同意マネージャーが構成に基づいてページにバナーを表示します。バナーには、ユーザーが **販売しない** 構成を行うポップアップを開くリンクが含まれています。
-    ![](/images/iq-tag-management/ccpa-banner-popup.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-banner-popup.png)
 
 * **ポップアップのみ**  
 サイトに既にクッキーバナーを表示している場合は、このオプションを選択します。このオプションは、バナー内のリンクに追加するJavaScriptメソッドを使用してポップアップを利用可能にします。
-    ![](/images/iq-tag-management/ccpa-popup.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-popup.png)
 
 ### コンテンツ
 
@@ -70,30 +70,34 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-
 パラメータを使用したサンプルHTMLコード：
 
 ```html
-&lt;div class=&#34;privacy_prompt consent_doNotSell&#34;&gt;
-  &lt;div class=&#34;privacy_prompt_content&#34;&gt;
-    &lt;h1&gt;{{title}}&lt;/h1&gt;
-    &lt;img src=&#34;{{company_logo_url}}&#34; class=&#34;logo&#34;&gt;
-    &lt;p&gt;{{message}}&lt;/p&gt;
-    &lt;input id=&#39;consent_doNotSell_checkbox&#39; type=&#39;checkbox&#39; /&gt;
+<div class="privacy_prompt consent_doNotSell">
+  <div class="privacy_prompt_content">
+    <h1>{{title}}</h1>
+    <img src="{{company_logo_url}}" class="logo">
+    <p>{{message}}</p>
+    <input id='consent_doNotSell_checkbox' type='checkbox' />
     {{do_not_sell_description}}
-  &lt;/div&gt;
-  &lt;div class=&#34;privacy_prompt_footer&#34;&gt;
-    &lt;div class=&#34;button right&#34; id=&#34;consent_doNotSell_submit&#34;&gt;{{confirmation_button}}&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&#34;close_btn_thick&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
+  </div>
+  <div class="privacy_prompt_footer">
+    <div class="button right" id="consent_doNotSell_submit">{{confirmation_button}}</div>
+  </div>
+  <div class="close_btn_thick"></div>
+</div>
 ```
 
 #### カスタムパラメータ
 
 カスタムパラメータを追加して、同意マネージャーをさらにカスタマイズすることができます。これらのパラメータは、標準パラメータ内やテンプレート内で参照することができます。
 
+
+<blockquote>
 ベストプラクティス：HTMLやJavaScriptに直接翻訳可能なテキストを入れないでください。代わりに `{{parameters}}` を使用してコードを構築し、カスタムパラメータを使用して値を定義します。
+</blockquote>
+
 
 カスタムパラメータを追加するには：
 
-1. カスタムパラメータセクションまでスクロールダウンし、**&#43; パラメータ追加** をクリックします。  
+1. カスタムパラメータセクションまでスクロールダウンし、**+ パラメータ追加** をクリックします。  
 **カスタムパラメータ** ダイアログが表示されます。
 1. パラメータの名前を入力します。
 1. **適用** をクリックします。  
@@ -121,7 +125,7 @@ window.utag_cfg_ovrd.gdprDLRef = utag_data.site_language;
 
 言語を追加するには：
 
-1. **言語** サイドパネルで、**&#43; 追加** をクリックします。  
+1. **言語** サイドパネルで、**+ 追加** をクリックします。  
 **言語追加** ダイアログが表示されます。
 1. 言語を選択し、**適用** をクリックします。  
 新しい言語がサイドパネルに表示されます。
@@ -134,13 +138,13 @@ window.utag_cfg_ovrd.gdprDLRef = utag_data.site_language;
 デフォルト言語は、ユーザーの検出されたブラウザ言語に対応する言語が構成されていない場合に同意マネージャーを表示するために使用されます。
 
 デフォルト言語を構成するには、言語タイトルバーにある **デフォルト言語に構成** チェックボックスを選択します。  
-    ![](/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
 
 ### カスタマイズ（CSS、HTML、JavaScript）
 
 **カスタマイズ** 画面では、バナーとポップアップの背後にあるコード—CSS、HTML、およびJavaScript—が表示されます。このコードは、ウェブサイトと顧客のニーズに合わせてバナーとポップアップの外観とデザインを調整するために編集することができます。
 
-JavaScriptコードは、`utag.js` ファイルに公開される前に圧縮されます。圧縮プロセスが何らかの理由（構文エラーなど）で失敗した場合、公開プロセスは停止し、Tealium iQで警告メッセージが返されます。公開が成功すると、`utag.js` がページ上で実行される際に、同意マネージャーのJavaScriptコードがページの `&lt;head&gt;` に注入されます。
+JavaScriptコードは、`utag.js` ファイルに公開される前に圧縮されます。圧縮プロセスが何らかの理由（構文エラーなど）で失敗した場合、公開プロセスは停止し、Tealium iQで警告メッセージが返されます。公開が成功すると、`utag.js` がページ上で実行される際に、同意マネージャーのJavaScriptコードがページの `<head>` に注入されます。
 
 ### 影響を受けるタグ
 
@@ -155,10 +159,10 @@ JavaScriptコードは、`utag.js` ファイルに公開される前に圧縮さ
 
 ### 施行ルール
 
-**施行ルール** 画面で、同意を施行するタイミングを決定するロードルールを選択します。既存のロードルールを選択するか、法的基準を満たすために新しいものを作成することができます。詳細については、[ロードルール]()を参照してください。
+**施行ルール** 画面で、同意を施行するタイミングを決定するロードルールを選択します。既存のロードルールを選択するか、法的基準を満たすために新しいものを作成することができます。詳細については、[ロードルール](https://docs.tealium.com/about-load-rules/)を参照してください。
 ### 同意クッキー
 
-このプロンプトは `CONSENTMGR` という名前のクッキーに依存しています。このクッキーの存在とそれが含む値は、プロンプトの振る舞いを決定し、訪問の選択の状態を反映します。キーと値のペアはパイプ (&#34;|&#34;) 文字で区切られます。
+このプロンプトは `CONSENTMGR` という名前のクッキーに依存しています。このクッキーの存在とそれが含む値は、プロンプトの振る舞いを決定し、訪問の選択の状態を反映します。キーと値のペアはパイプ ("|") 文字で区切られます。
 
 `CONSENTMGR` クッキーは、Do Not Sellプロンプトに関連する以下のキーと値のペアを保存します：
 
@@ -170,7 +174,11 @@ JavaScriptコードは、`utag.js` ファイルに公開される前に圧縮さ
 
 `CONSENTMGR` クッキーの例：`ts:1525369619|dns:true`
 
+
+<blockquote>
 このクッキーは構成または変更されてから13ヶ月のデフォルト有効期限があります。
+</blockquote>
+
 
 ## JavaScript関数
 
@@ -178,12 +186,12 @@ JavaScriptコードは、`utag.js` ファイルに公開される前に圧縮さ
 
 ### utag.gdpr.showDoNotSellBanner()
 
-[オプトアウト](/ja/glossary/#opt-out-model-consent) モデルバナーを表示します。デフォルトでは、表示ルールが `true` と評価されたときにこの関数が呼び出されます。
+[オプトアウト](https://docs.tealium.com/ja/glossary/#opt-out-model-consent) モデルバナーを表示します。デフォルトでは、表示ルールが `true` と評価されたときにこの関数が呼び出されます。
 
 関数を呼び出す際に言語をパラメータとして構成することもできます。これにより、他の言語検出ロジックがすべて上書きされます。
 
 ```js
-utag.gdpr.showDoNotSellBanner(&#34;EN&#34;);
+utag.gdpr.showDoNotSellBanner("EN");
 ```
 
 ### utag.gdpr.showDoNotSellPrompt()
@@ -195,7 +203,7 @@ utag.gdpr.showDoNotSellBanner(&#34;EN&#34;);
 例：
 
 ```html
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt(&#39;EN&#39;)&#34;&gt;同意を変更&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt('EN')">同意を変更</a>
 ```
 
 ### utag.gdpr.dns.getDnsState()
@@ -211,7 +219,7 @@ true
 
 ### utag.gdpr.dns.setDnsState()
 
-`dns` 同意クッキーの値を構成します。認識される値：`true`, `false`, `1`, `0`, `&#34;true&#34;`, `&#34;false&#34;`。
+`dns` 同意クッキーの値を構成します。認識される値：`true`, `false`, `1`, `0`, `"true"`, `"false"`。
 
 例：
 
@@ -222,15 +230,15 @@ utag.gdpr.dns.setDnsState(true);
 
 ### utag.gdpr.getCookieValues()
 
-`CONSENTMGR` クッキーからキーと値のペアのオブジェクトを返します。これはデータレイヤーオブジェクトの `utag.data[&#39;cp.CONSENTMGR&#39;]` でアクセス可能です。
+`CONSENTMGR` クッキーからキーと値のペアのオブジェクトを返します。これはデータレイヤーオブジェクトの `utag.data['cp.CONSENTMGR']` でアクセス可能です。
 
 同意が拒否された例：
 
 ```js
 utag.gdpr.getCookieValues()
 {
-  ts: &#34;1525369619&#34;,
-  consent: &#34;true&#34;,
-  dns: &#34;false&#34;
+  ts: "1525369619",
+  consent: "true",
+  dns: "false"
 }
 ```

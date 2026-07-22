@@ -2,7 +2,11 @@
 title: API reference
 description: Reference guide for classes and methods provided by Tealium for Flutter.
 url: https://docs.tealium.com/platforms/flutter-v1/api/
----This is the previous version (1.x) of Tealium for Flutter. For the latest version, see [Tealium for Flutter](/platforms/flutter/).
+---
+<blockquote>
+This is the previous version (1.x) of Tealium for Flutter. For the latest version, see [Tealium for Flutter](https://docs.tealium.com/platforms/flutter/).
+</blockquote>
+
 
 ## Class: `Tealium`
 
@@ -44,17 +48,17 @@ Tealium.addRemoteCommand(commandID, description, callback);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `commandID` | `String` | Name of the command ID from the tag configuration | `&#34;test_command&#34;` |
-| `description` | `String ` | Description of the remote command | `&#34;Firebase remote command&#34;` |
+| `commandID` | `String` | Name of the command ID from the tag configuration | `"test_command"` |
+| `description` | `String ` | Description of the remote command | `"Firebase remote command"` |
 | `callback` | `Function ` | A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```dart
-Tealium.addRemoteCommand(&#34;firebase&#34;, &#34;Firebase Remote Command&#34;, (payload) {
+Tealium.addRemoteCommand("firebase", "Firebase Remote Command", (payload) {
 
-  final eventName = payload[&#34;firebase_event_name&#34;];
-  final eventProperties = payload[&#34;firebase_event_properties&#34;];
+  final eventName = payload["firebase_event_name"];
+  final eventProperties = payload["firebase_event_properties"];
 
   analytics.logEvent(name: eventName, parameters: eventProperties);
 });
@@ -70,18 +74,18 @@ Tealium.addRemoteCommandForInstance(instanceName, commandID, description, callba
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `commandID` | `String` | Name of the command ID from the tag configuration | `&#34;test_command&#34;` |
-| `description` | `String ` | Description of the remote command | `&#34;Firebase remote command&#34;` |
+| `instanceName` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `commandID` | `String` | Name of the command ID from the tag configuration | `"test_command"` |
+| `description` | `String ` | Description of the remote command | `"Firebase remote command"` |
 | `callback` | `Function ` | A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```dart
-Tealium.addRemoteCommandForInstance(&#34;instance-2&#34;, &#34;verify_email&#34;, &#34;Verify User Email&#34;, (user) {
+Tealium.addRemoteCommandForInstance("instance-2", "verify_email", "Verify User Email", (user) {
 
-	print(&#39;Howdy, ${user.name}!&#39;);
-	print(&#39;We sent the verification link to ${user.email}.&#39;);
+	print('Howdy, ${user.name}!');
+	print('We sent the verification link to ${user.email}.');
 
 	// Send data to email service to send email to user
 	// ...
@@ -98,7 +102,7 @@ Tealium.getPersistentData(key)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `key` | `String` | Key name | `&#34;key1&#34;` |
+| `key` | `String` | Key name | `"key1"` |
 
 ### `getPersistentDataForInstance()`
 
@@ -110,8 +114,8 @@ Tealium.getPersistentDataForInstance(instance, key)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `key` | `String` | Key name | `&#34;key1&#34;` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `key` | `String` | Key name | `"key1"` |
 
 ### `getVolatileData()`
 
@@ -123,7 +127,7 @@ Tealium.getVolatileData(key)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `key` | `String` | Key name | `&#34;key1&#34;` |
+| `key` | `String` | Key name | `"key1"` |
 
 ### `getVolatileDataForInstance()`
 
@@ -135,8 +139,8 @@ Tealium.getVolatileDataForInstance(instance, key)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `key` | `String` | Key name | `&#34;key1&#34;` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `key` | `String` | Key name | `"key1"` |
 
 ### `initialize()`
 
@@ -150,12 +154,12 @@ Tealium.initialize(account, profile, environment,
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealium account name |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealium profile name |  `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealium account name |  `"companyXYZ"` |
+| `profile` | `String` | Tealium profile name |  `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `"abc123"` |
 | `androidDataSource` | `String` | (Optional) The Android data source key (Set to `null` if none) |  `null` |
-| `instance` | `String` | (Optional) Tealium instance name (default: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (Optional) Tealium instance name (default: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (Optional) Enable lifecycle tracking events (default: `true`)|  [`true`, `false`] |
 
 
@@ -178,12 +182,12 @@ The following additional parameters are included with this method call:
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealium account name |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealium profile name |  `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealium account name |  `"companyXYZ"` |
+| `profile` | `String` | Tealium profile name |  `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `"abc123"` |
 | `androidDataSource` | `String` | (Optional) The Android data source key (Set to `null` if none) |  `null` |
-| `instance` | `String` | (Optional) Tealium instance name (default: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (Optional) Tealium instance name (default: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (Optional) Enable lifecycle tracking events (default: `true`)|  [`true`, `false`] |
 | `overridePublishSettingsUrl` | `String` | (Optional) String representing the custom publish settings URL if overriding (Set to `null` if none)| |
 | `overrideTagManagementUrl` | `String` | (Optional) String representing the custom tag management URL if overriding (Set to `null` if none)| |
@@ -202,12 +206,12 @@ Tealium.initializeWithConsentManager(account, profile, environment,
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealium account name |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealium profile name |  `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealium account name |  `"companyXYZ"` |
+| `profile` | `String` | Tealium profile name |  `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (Optional) data source key  (Set to `null` if none) |  `"abc123"` |
 | `androidDataSource` | `String` | (Optional) The Android data source key (Set to `null` if none) |  `null` |
-| `instance` | `String` | (Optional) Tealium instance name (default: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (Optional) Tealium instance name (default: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (Optional) Enable lifecycle tracking events (default: `true`)|  [`true`, `false`] |
 
 ### `removePersistentData()`
@@ -220,7 +224,7 @@ Tealium.removePersistentData(keys)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | List with String key names | `[&#34;persistent_var&#34;, &#34;persistent_var2&#34;]` |
+| `keys` | `List<String>` | List with String key names | `["persistent_var", "persistent_var2"]` |
 
 ### `removePersistentDataForInstance()`
 
@@ -232,8 +236,8 @@ Tealium.removePersistentDataForInstance(instance, keys)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `keys` | `List&lt;String&gt;` | List with String key names | `[&#34;persistent_var&#34;, &#34;persistent_var2&#34;]` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `keys` | `List<String>` | List with String key names | `["persistent_var", "persistent_var2"]` |
 
 ### `removeRemoteCommand()`
 
@@ -245,12 +249,12 @@ Tealium.removeRemoteCommand(commandID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `commandID ` | `String` | Name of command ID to remove  | `&#34;test_command&#34;` |
+| `commandID ` | `String` | Name of command ID to remove  | `"test_command"` |
 
 Example:
 
 ```dart
-Tealium.removeRemoteCommand(&#34;firebase&#34;);
+Tealium.removeRemoteCommand("firebase");
 ```
 
 
@@ -264,11 +268,11 @@ Tealium.removeRemoteCommandForInstance(instanceName, commandID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `commandID ` | `String` | Name of the command ID to remove  | `&#34;test_command&#34;` |
+| `instanceName` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `commandID ` | `String` | Name of the command ID to remove  | `"test_command"` |
 
 ```dart
-Tealium.removeRemoteCommandForInstance(&#34;instance-2&#34;, &#34;firebase&#34;);
+Tealium.removeRemoteCommandForInstance("instance-2", "firebase");
 ```
 
 ### `removeVolatileData()`
@@ -281,7 +285,7 @@ Tealium.removeVolatileData(keys)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | List with String key names | `[&#34;volatile_var1&#34;, &#34;volatile_var2&#34;]` |
+| `keys` | `List<String>` | List with String key names | `["volatile_var1", "volatile_var2"]` |
 
 ### `removeVolatileDataForInstance()`
 
@@ -293,8 +297,8 @@ Tealium.removeVolatileDataForInstance(instance, keys)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `keys` | `List&lt;String&gt;` | List with String key names | `[&#34;volatile_var1&#34;, &#34;volatile_var2&#34;]` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `keys` | `List<String>` | List with String key names | `["volatile_var1", "volatile_var2"]` |
 
 ### `setPersistentData()`
 
@@ -306,7 +310,7 @@ Tealium.setPersistentData(data)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `data` | `Map&lt;String, dynamic&gt;` | Persistent data as key-value pairs | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `data` | `Map<String, dynamic>` | Persistent data as key-value pairs | `{"key1": "value1"}` |
 
 ### `setPersistentDataForInstance()`
 
@@ -318,8 +322,8 @@ Tealium.setPersistentDataForInstance(instance, data)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | Persistent data as key-value pairs | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `data` | `Map<String, dynamic>` | Persistent data as key-value pairs | `{"key1": "value1"}` |
 
 ### `setVolatileData()`
 
@@ -331,7 +335,7 @@ Tealium.setVolatileData(data)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `data` | `Map&lt;String, dynamic&gt;` | Volatile data as key-value pairs | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `data` | `Map<String, dynamic>` | Volatile data as key-value pairs | `{"key1": "value1"}` |
 
 ### `setVolatileDataForInstance()`
 
@@ -343,8 +347,8 @@ Tealium.setVolatileDataForInstance(instance, data)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | Specific Tealium instance name | `&#34;instance123&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | Volatile data as key-value pairs | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance`  | `String` | Specific Tealium instance name | `"instance123"` |
+| `data` | `Map<String, dynamic>` | Volatile data as key-value pairs | `{"key1": "value1"}` |
 
 
 ### `trackEvent()`
@@ -357,8 +361,8 @@ Tealium.trackEvent(eventName, data)
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `eventName` | `String` | Name to identify the event |  `&#34;Event button click&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (Optional) Event data as key-value pairs |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `eventName` | `String` | Name to identify the event |  `"Event button click"` |
+| `data` | `Map<String, dynamic>` | (Optional) Event data as key-value pairs |  `{"key1": "value1"}` |
 
 
 ### `trackEventForInstance()`
@@ -370,9 +374,9 @@ Tealium.trackEventForInstance(instance, eventName, data)
 ```
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance` | `String` | Tealium instance name | `&#34;instance123&#34;` |
-| `eventName` | `String` | Name to identify the event | `&#34;Event button click&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (Optional) Event data as key-value pairs |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance` | `String` | Tealium instance name | `"instance123"` |
+| `eventName` | `String` | Name to identify the event | `"Event button click"` |
+| `data` | `Map<String, dynamic>` | (Optional) Event data as key-value pairs |  `{"key1": "value1"}` |
 
 
 ### `trackView()`
@@ -385,8 +389,8 @@ Tealium.trackView(viewName, data)
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `viewName` | `String` | Name to identify screen view | `&#34;View screen&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (Optional) Event data as key-value pairs|  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `viewName` | `String` | Name to identify screen view | `"View screen"` |
+| `data` | `Map<String, dynamic>` | (Optional) Event data as key-value pairs|  `{"key1": "value1"}` |
 
 ### `trackViewForInstance()`
 
@@ -397,6 +401,6 @@ Tealium.trackViewForInstance(instance, viewName, data)
 ```
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `instance` | `String` | Tealium instance name | `&#34;instance123&#34;` |
-| `viewName` | `String` | Name to identify the view | `&#34;View screen&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (Optional) Event data as key-value pairs |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance` | `String` | Tealium instance name | `"instance123"` |
+| `viewName` | `String` | Name to identify the view | `"View screen"` |
+| `data` | `Map<String, dynamic>` | (Optional) Event data as key-value pairs |  `{"key1": "value1"}` |

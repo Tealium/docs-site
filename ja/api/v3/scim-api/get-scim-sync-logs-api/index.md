@@ -15,7 +15,7 @@ GET /admin/scim-sync/logs
 
 すべてのAPI呼び出しにはJSESSIONID値が使用され、APIキーは使用されません。APIキーは認証呼び出しでのみ使用されます。
 
-詳細については、[認証]()を参照してください。
+詳細については、[認証](https://docs.tealium.com/about-scim-api/#authentication)を参照してください。
 
 ## GET操作のパラメータ
 
@@ -38,7 +38,7 @@ GET /admin/scim-sync/logs
 ### 例 cURLリクエスト
 
 ```bash
-curl --location --request GET &#39;https://my.tealiumiq.com/urest/admin/scim-sync/logs?account={ACCOUNT}&amp;from=2023-10-01T00:00:00Z&amp;to=2023-10-31T23:59:59Z&amp;limit=100&amp;format=json&amp;utk=01234567890012345678901234567890&#39;
+curl --location --request GET 'https://my.tealiumiq.com/urest/admin/scim-sync/logs?account={ACCOUNT}&from=2023-10-01T00:00:00Z&to=2023-10-31T23:59:59Z&limit=100&format=json&utk=01234567890012345678901234567890'
 ```
 
 ### 例 応答
@@ -61,8 +61,8 @@ curl --location --request GET &#39;https://my.tealiumiq.com/urest/admin/scim-syn
 
 | エラーコード | エラーメッセージ |
 | --- | --- |
-| 400 | `400 Bad Request: &#34;message&#34;: &#34;Account parameter is required.&#34;` |
-| 401 | `400 Bad Request: &#34;message&#34;: &#34;Authentication failed&#34;` |
-| 403 | `403 Forbidden &#34;message&#34;: &#34;Unauthorized access.&#34;` |
-| 405 | `405 Invalid Method &#34;message&#34;: &#34;Method is not allowed on this endpoint. Allowed methods: GET.&#34;`|
-| 500 | `500 Internal Server Error &#34;message&#34;: &#34;Error processing json for extension - account {ACCOUNT}&#34;`|
+| 400 | `400 Bad Request: "message": "Account parameter is required."` |
+| 401 | `400 Bad Request: "message": "Authentication failed"` |
+| 403 | `403 Forbidden "message": "Unauthorized access."` |
+| 405 | `405 Invalid Method "message": "Method is not allowed on this endpoint. Allowed methods: GET."`|
+| 500 | `500 Internal Server Error "message": "Error processing json for extension - account {ACCOUNT}"`|

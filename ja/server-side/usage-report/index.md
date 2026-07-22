@@ -17,15 +17,19 @@ Tealium AudienceStream、Tealium AudienceDB、Tealium AudienceStore、およびT
 
 Tealium Customer Data Hubへのエントリーポイントでの各イベントは、総量にカウントされ、同等に課金されます。
 
-使用レポートは、可視性のためにオーディエンスフィルイベントを追跡しますが、フィルイベントは契約されたイベント量にはカウントされません。詳細については、[オーディエンスを埋める]()を参照してください。
+使用レポートは、可視性のためにオーディエンスフィルイベントを追跡しますが、フィルイベントは契約されたイベント量にはカウントされません。詳細については、[オーディエンスを埋める](https://docs.tealium.com/about-audiences/#fill-an-audience)を参照してください。
 
+
+<blockquote>
 使用レポートは請求または価格情報を提供しません。最終的な使用コストは、イベント量、契約条件、および実装構成の組み合わせによって決定されます。請求および価格に関するすべての問い合わせはアカウントマネージャーに連絡してください。
+</blockquote>
+
 
 ## グラフ形式
 
 レポートは折れ線グラフとして表示されます。日付範囲は水平軸にプロットされ、メトリックは垂直軸にプロットされ、ドットでマークされます。ドットにカーソルを合わせると、集計されたメトリック値とそれが集計された日が表示されます。
 
-![](/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg)
 
 ## 利用可能なレポート
 
@@ -67,7 +71,7 @@ AudienceStoreに格納された訪問レコードの数。
 * **総受信イベント**  
 リアルタイムおよびファイルインポートイベントの総数。EventStreamのデータ使用コストは、**総受信イベント**レポートに基づいて計算されます。
 * **総リアルタイムイベント**  
-指定された日付範囲でウェブサイトまたはモバイルアプリから[Tealium Collect]()タグによってキャプチャされたイベントの数。詳細については、[ライブイベントとフィード]()を参照してください。
+指定された日付範囲でウェブサイトまたはモバイルアプリから[Tealium Collect](https://docs.tealium.com/tealium-collect-tag/)タグによってキャプチャされたイベントの数。詳細については、[ライブイベントとフィード](https://docs.tealium.com/about-live-events/)を参照してください。
 * **総ファイルインポートイベント**  
 AudienceStreamにインポートされた[ファイルインポート]()の行または行数。
 * **総オムニチャネルイベント**  
@@ -84,13 +88,17 @@ AudienceStreamに受信されたオフラインおよびバルクイベントの
 リアルタイムイベントの数は、次のいずれかの予想される理由により、AudienceStreamイベントの数と一致しない場合があります：
 
 * **フィルターされたイベント**  
-[AudienceStreamイベントフィルター]()が構成されている場合、フィルターに一致するイベントのみが処理されます。
+[AudienceStreamイベントフィルター](https://docs.tealium.com/server-side-account-settings/#general-settings)が構成されている場合、フィルターに一致するイベントのみが処理されます。
 * **同意**  
 同意が使用されている場合、訪問がCDP同意カテゴリに同意しない限り、AudienceStreamはイベントを処理しません。詳細については、を参照してください。
 * **データサイズ制限を超える**  
 プラットフォームの安定性を確保するため、指定されたサイズ制限を超えるイベントまたは訪問データは処理されない場合があります。これらの措置は、すべての顧客に最適なパフォーマンスを維持するためにシステムの過負荷を防ぐためです。詳細については、を参照してください。
 
+
+<blockquote>
 AudienceStreamのデータ使用コストは、**総AudienceStreamイベント**レポートに基づいて計算されます。
+</blockquote>
+
 
 ### データコネクトレポート
 
@@ -137,18 +145,18 @@ Insightsアカウントに割り当てられたリーダーロールの数。
 * **合計閲覧通過追跡読み取り数**  
 閲覧通過追跡サービスによって行われた読み取りの数です。
 
-詳細については、を参照してください。
+詳細については、[view-through-tracking-extension](https://docs.tealium.com/view-through-tracking-extension/)を参照してください。
 
 ## レポートの閲覧
 
-使用レポートを閲覧するには、**分析 &gt; 使用状況**に移動します。デフォルトのビューはすべてのプロファイルとすべての製品機能に対してです。
+使用レポートを閲覧するには、**分析 > 使用状況**に移動します。デフォルトのビューはすべてのプロファイルとすべての製品機能に対してです。
 
-![](/images/server-side/usage-reports.png)
+![](https://docs.tealium.com/images/server-side/usage-reports.png)
 
 特定のプロファイル、機能、または日付範囲のレポートを表示するには：
 
 1. ドロップダウンリストからプロファイルと機能タイプを選択します。  
-      ![](/images/server-side/usage-reports-report-selector.png)
+      ![](https://docs.tealium.com/images/server-side/usage-reports-report-selector.png)
 1. レポートの日付範囲を調整するために開始日または終了日をクリックします。  
 デフォルトの日付範囲は現在の年の1月1日から現在の日付までに構成されています。デフォルトを変更するには、アカウント管理者に連絡してください。
 1. **レポートを取得**をクリックします。

@@ -8,7 +8,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |---| ---| ---| ---|
 |`aircraft_capacity`| 航空機の座席数| `148`| 文字列|
 |`aircraft_type`| 航空機のタイプ| `A320`| 文字列|
-|`avg_room_rate`| 各部屋の平均料金の配列| `[&#34;100.00&#34;]`| 配列|
+|`avg_room_rate`| 各部屋の平均料金の配列| `["100.00"]`| 配列|
 |`cancellation_id`| 予約キャンセル時に与えられるID| `987654654`| 文字列|
 |`checkout_step`| チェックアウトプロセス中のステップ番号を指定| `3`| 文字列|
 |`country_code`| 国コード| `us`| 文字列|
@@ -26,22 +26,22 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`customer_state`| 顧客の居住州を含む| `CA`| 文字列|
 |`customer_type`| 顧客のタイプを指定| `Web member`| 文字列|
 |`days_to_trip_start`| 今日から旅行開始日までの日数| `20`| 文字列|
-|`displayed_properties`| ホテル選択ページでリストされた各プロパティのIDの配列| `[&#34;234234&#34;,&#34;234256&#34;]`| 配列|
+|`displayed_properties`| ホテル選択ページでリストされた各プロパティのIDの配列| `["234234","234256"]`| 配列|
 |`displayed_rate_amount`| 部屋選択ページで表示される料金額| `100.00`| 文字列|
-|`displayed_rate_codes`| ホテル選択ページでリストされた各プロパティの料金コードの配列| `[&#34;AAA&#34;,&#34;Corporate&#34;]`| 配列|
-|`displayed_room_rates`| 部屋タイプ別にグループ化された表示料金の配列| `[&#34;100.00&#34;,&#34;75.00&#34;]`| 配列|
-|`displayed_room_types`| 部屋選択ページで表示される部屋タイプの配列| `[&#34;2QueenBeds&#34;,&#34;studio&#34;]`| 配列|
+|`displayed_rate_codes`| ホテル選択ページでリストされた各プロパティの料金コードの配列| `["AAA","Corporate"]`| 配列|
+|`displayed_room_rates`| 部屋タイプ別にグループ化された表示料金の配列| `["100.00","75.00"]`| 配列|
+|`displayed_room_types`| 部屋選択ページで表示される部屋タイプの配列| `["2QueenBeds","studio"]`| 配列|
 |`ecommerce_action`| eコマースイベントのアクションを指定| `detail`| 文字列|
-|`error_message`| ユーザーに表示されるエラーテキスト| `Destination City doesn&#39;t match Departure on return`| 文字列|
+|`error_message`| ユーザーに表示されるエラーテキスト| `Destination City doesn't match Departure on return`| 文字列|
 |`fare_class`| 運賃クラスを指定| `Class L`| 文字列|
 |`favorite_property_id`| 「お気に入り」としてキャプチャされたプロパティID| `79865`| 文字列|
-|`filter_amenities`| 適用された選択の配列| `[&#34;pool&#34;,&#34;microwave&#34;]`| 配列|
+|`filter_amenities`| 適用された選択の配列| `["pool","microwave"]`| 配列|
 |`filter_distance`| イベントからのフィルター距離| `20`| 文字列|
-|`filter_hotel_type`| ユーザーによってフィルターされたホテルタイプの配列| `[&#34;economy&#34;,&#34;luxury&#34;,&#34;brand&#34;]`| 配列|
+|`filter_hotel_type`| ユーザーによってフィルターされたホテルタイプの配列| `["economy","luxury","brand"]`| 配列|
 |`filter_max_rate`| 適用された料金をキャプチャ| `150`| 文字列|
-|`filter_rating`| ユーザー、サイト、トリップアドバイザーなどによってフィルターされた評価の配列| `[&#34;3&#34;,&#34;4&#34;,&#34;5&#34;]`| 配列|
+|`filter_rating`| ユーザー、サイト、トリップアドバイザーなどによってフィルターされた評価の配列| `["3","4","5"]`| 配列|
 |`flight_route`| ルート| `SAN-CUN,CUN-SAN`| 文字列|
-|`flight_sku`| 製品SKUの配列| `[&#34;Y123&#34;,&#34;Z456&#34;]`| 配列|
+|`flight_sku`| 製品SKUの配列| `["Y123","Z456"]`| 配列|
 |`flight_type`| 往復、片道| `Round`| 文字列|
 |`language_code`| 言語コード| `en`| 文字列|
 |`link_action`| クリック追跡イベント中、クリックされた要素のアクション| `View Image`| 文字列|
@@ -58,8 +58,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`num_child_passengers`| 予約に含まれる子供の乗客数| `1`| 文字列|
 |`num_of_nights`| 宿泊数の合計| `4`| 文字列|
 |`num_of_rooms`| 部屋数の合計| `2`| 文字列|
-|`occupancy_detail`| 検索された各部屋の総占有率の配列| `[&#34;3&#34;,&#34;3&#34;]`| 配列|
-|`order_cancellation_policy`| 注文の各部屋のキャンセルポリシーの配列| `[&#34;24 Hours&#34;,&#34;No Cancellation&#34;]`| 配列|
+|`occupancy_detail`| 検索された各部屋の総占有率の配列| `["3","3"]`| 配列|
+|`order_cancellation_policy`| 注文の各部屋のキャンセルポリシーの配列| `["24 Hours","No Cancellation"]`| 配列|
 |`order_corp_id`| 注文に添付された企業ID（ある場合）| `32132465475`| 文字列|
 |`order_discount_amount`| 注文レベルの割引額を含む| `10.00`| 文字列|
 |`order_grand_total`| 税金と送料を含むがすべての割引を除いた注文の総額を数字と小数点のみの文字列で| `54.47`| 文字列|
@@ -68,40 +68,40 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`order_payment_type`| 支払いタイプを含む| `Paypal`| 文字列|
 |`order_points_used`| 注文の各部屋の総ポイント量の配列| `2000`| 文字列|
 |`order_promo_code`| コンマ区切りのプロモーションコードの文字列リスト| `MEX30`| 文字列|
-|`order_rate_code`| 注文の各部屋で予約された料金コードの配列| `[&#34;AAA&#34;]`| 配列|
+|`order_rate_code`| 注文の各部屋で予約された料金コードの配列| `["AAA"]`| 配列|
 |`order_special_requests`| 「特別リクエスト」フィールドに入力されたフリーテキスト（部屋ごと）| `No Feathers`| 文字列|
 |`order_store`| ストアタイプのID| `mobile web`| 文字列|
 |`order_subtotal`| すべての商品の価格を含むが、税金と送料を除く数字と小数点のみの文字列| `45.98`| 文字列|
 |`order_tax_amount`| この注文の総税額を数字と小数点のみの文字列で| `2.50`| 文字列|
 |`order_total_occupancy`| 予約時の注文の総占有率| `6`| 文字列|
-|`origin_flight_route`| 出発フライト| `[&#34;SAN-CUN&#34;]`| 配列|
+|`origin_flight_route`| 出発フライト| `["SAN-CUN"]`| 配列|
 |`page_name`| ページ名を識別するTealium変数| `Homepage`| 文字列|
 |`page_type`| ページのタイプ| `home`| 文字列|
-|`passenger_name`| 乗客名の配列| `[&#34;Steve&#34;,&#34;Jack&#34;]`| 配列|
-|`passenger_price`| 予約に含まれる各乗客の価格| `[&#34;100.00&#34;,&#34;120.00&#34;]`| 配列|
-|`product_impression_category`| インプレッション内の製品のカテゴリを指定（付帯サービスまたはフライト）| `[&#34;Flight&#34;]`| 配列|
-|`product_impression_id`| インプレッション内の製品のIDを指定| `[&#34;Y1234&#34;]`| 配列|
-|`product_impression_name`| インプレッション内の製品の名前を指定| `[&#34;CUN-MEX&#34;]`| 配列|
-|`product_impression_position`| インプレッション内の製品の位置を指定| `[&#34;1&#34;]`| 配列|
-|`product_impression_price`| インプレッション内の製品の価格を指定| `[&#34;12.99&#34;]`| 配列|
-|`product_impression_variant`| インプレッション内の製品のバリアントを指定| `[&#34;1A&#34;]`| 配列|
-|`product_name`| 製品名| `[&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;]`| 配列|
-|`product_price`| 製品価格| `[&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;]`| 配列|
+|`passenger_name`| 乗客名の配列| `["Steve","Jack"]`| 配列|
+|`passenger_price`| 予約に含まれる各乗客の価格| `["100.00","120.00"]`| 配列|
+|`product_impression_category`| インプレッション内の製品のカテゴリを指定（付帯サービスまたはフライト）| `["Flight"]`| 配列|
+|`product_impression_id`| インプレッション内の製品のIDを指定| `["Y1234"]`| 配列|
+|`product_impression_name`| インプレッション内の製品の名前を指定| `["CUN-MEX"]`| 配列|
+|`product_impression_position`| インプレッション内の製品の位置を指定| `["1"]`| 配列|
+|`product_impression_price`| インプレッション内の製品の価格を指定| `["12.99"]`| 配列|
+|`product_impression_variant`| インプレッション内の製品のバリアントを指定| `["1A"]`| 配列|
+|`product_name`| 製品名| `["Seat","Room","Car"]`| 配列|
+|`product_price`| 製品価格| `["123.00","250.00","59.30"]`| 配列|
 |`promo_registration_page`| プロモーション登録が行われたページ| `Promo`| 文字列|
 |`promotion_creative`| プロモーションのクリエイティブ名を指定| `Fall Sale`| 文字列|
 |`promotion_name`| プロモーション内の製品の名前を指定| `Promo One`| 文字列|
-|`property_brand`| プロパティのブランド名| `[&#34;Rest Eazy&#34;,&#34;Best Motels&#34;]`| 配列|
-|`property_city`| プロパティが位置する都市| `[&#34;San Francisco&#34;,&#34;Monterey Bay&#34;]`| 配列|
-|`property_country`| プロパティが位置する国| `[&#34;San Francisco&#34;,&#34;Monterey&#34;]`| 配列|
-|`property_id`| プロパティ番号の配列| `[&#34;HI456767&#34;,&#34;BW123&#34;]`| 配列|
-|`property_name`| プロパティ名の配列| `[&#34;Holiday Inn SF&#34;,&#34;Mont. Best Motels&#34;]`| 配列|
-|`property_postal_code`| プロパティの郵便番号の配列| `[&#34;99999&#34;,&#34;11111&#34;]`| 配列|
-|`property_room_occupancy`| 注文の各部屋の総占有率の配列| `[&#34;3&#34;,&#34;3&#34;]`| 配列|
-|`property_room_type`| 各部屋の予約された部屋の配列 | `[&#34;economy&#34;]`| 配列|
-|`property_state`| 物件が位置する州の配列 | `[&#34;CA&#34;,&#34;CA&#34;]`| 配列|
-|`proximity`| 市中心部と物件の位置の距離（マイル）の配列 | `[&#34;20&#34;,&#34;30&#34;]`| 配列|
-|`quantity`| 各製品の数量の配列 | `[&#34;2&#34;,&#34;2&#34;]`| 配列|
-|`returning_flight_route`| 帰りのフライト | `[&#34;CUN-SAN&#34;]`| 配列|
+|`property_brand`| プロパティのブランド名| `["Rest Eazy","Best Motels"]`| 配列|
+|`property_city`| プロパティが位置する都市| `["San Francisco","Monterey Bay"]`| 配列|
+|`property_country`| プロパティが位置する国| `["San Francisco","Monterey"]`| 配列|
+|`property_id`| プロパティ番号の配列| `["HI456767","BW123"]`| 配列|
+|`property_name`| プロパティ名の配列| `["Holiday Inn SF","Mont. Best Motels"]`| 配列|
+|`property_postal_code`| プロパティの郵便番号の配列| `["99999","11111"]`| 配列|
+|`property_room_occupancy`| 注文の各部屋の総占有率の配列| `["3","3"]`| 配列|
+|`property_room_type`| 各部屋の予約された部屋の配列 | `["economy"]`| 配列|
+|`property_state`| 物件が位置する州の配列 | `["CA","CA"]`| 配列|
+|`proximity`| 市中心部と物件の位置の距離（マイル）の配列 | `["20","30"]`| 配列|
+|`quantity`| 各製品の数量の配列 | `["2","2"]`| 配列|
+|`returning_flight_route`| 帰りのフライト | `["CUN-SAN"]`| 配列|
 |`search_city`| 検索された目的地の都市 | `Cancun`| 文字列|
 |`search_country`| 検索された目的地の国 | `USA`| 文字列|
 |`search_rate`| 予約ウィジェットのレート選択ドロップダウンメニューから選択されたレート | `105`| 文字列|
@@ -118,7 +118,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`transactionAffiliation`| 支払いに使用された支払いタイプを指定 | `Visa`| 文字列|
 |`trip_end_date`| ユーザーのホテルまたは車の出発日、航空会社の到着日 | `03/12/2017`| 文字列|
 |`trip_start_date`| ユーザーのホテルまたは車の到着日、航空会社の出発日 | `03/02/2017`| 文字列|
-|`variant`| 座席番号またはエクストラ | `[&#34;14F&#34;,&#34;15D&#34;,&#34;baggage&#34;,&#34;car&#34;]`| 配列|
+|`variant`| 座席番号またはエクストラ | `["14F","15D","baggage","car"]`| 配列|
 |`video_action`| 現在ビデオで行われているアクション | `play`| 文字列|
 |`video_content_type`| 視聴されたビデオのタイプ | `hotel promo`| 文字列|
 |`video_name`| 視聴されたビデオの名前 | `Stay the Night`| 文字列|
@@ -135,14 +135,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;       : &#34;USD&#34;,
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;page_name&#34;      : &#34;Homepage&#34;,
-    &#34;page_type&#34;      : &#34;home&#34;,
-    &#34;site_section&#34;   : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;  : &#34;page_view&#34;
+    "currency"       : "USD",
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "login_status"   : "logged in",
+    "page_name"      : "Homepage",
+    "page_type"      : "home",
+    "site_section"   : "Loyalty",
+    "tealium_event"  : "page_view"
 }
 ```
 
@@ -155,30 +155,30 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;                    : &#34;USD&#34;,
-    &#34;customer_email&#34;              : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;                 : &#34;8237572&#34;,
-    &#34;days_to_trip_start&#34;          : &#34;20&#34;,
-    &#34;fare_class&#34;                  : &#34;Class L&#34;,
-    &#34;flight_route&#34;                : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_type&#34;                 : &#34;Round&#34;,
-    &#34;login_status&#34;               : &#34;logged in&#34;,
-    &#34;num_adult_passengers&#34;        : &#34;1&#34;,
-    &#34;num_child_passengers&#34;        : &#34;1&#34;,
-    &#34;page_name&#34;                   : &#34;Homepage&#34;,
-    &#34;page_type&#34;                   : &#34;flight&#34;,
-    &#34;product_impression_category&#34; : [&#34;Flight&#34;],
-    &#34;product_impression_id&#34;       : [&#34;Y1234&#34;],
-    &#34;product_impression_name&#34;     : [&#34;CUN-MEX&#34;],
-    &#34;product_impression_position&#34; : [&#34;1&#34;],
-    &#34;product_impression_price&#34;    : [&#34;12.99&#34;],
-    &#34;product_impression_variant&#34;  : [&#34;1A&#34;],
-    &#34;product_name&#34;                : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;               : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;site_section&#34;                : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;               : &#34;page_view&#34;,
-    &#34;trip_end_date&#34;               : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;             : &#34;03/02/2017&#34;
+    "currency"                    : "USD",
+    "customer_email"              : "johnsmith@example.com",
+    "customer_id"                 : "8237572",
+    "days_to_trip_start"          : "20",
+    "fare_class"                  : "Class L",
+    "flight_route"                : "SAN-CUN,CUN-SAN",
+    "flight_type"                 : "Round",
+    "login_status"               : "logged in",
+    "num_adult_passengers"        : "1",
+    "num_child_passengers"        : "1",
+    "page_name"                   : "Homepage",
+    "page_type"                   : "flight",
+    "product_impression_category" : ["Flight"],
+    "product_impression_id"       : ["Y1234"],
+    "product_impression_name"     : ["CUN-MEX"],
+    "product_impression_position" : ["1"],
+    "product_impression_price"    : ["12.99"],
+    "product_impression_variant"  : ["1A"],
+    "product_name"                : ["Seat","Room","Car"],
+    "product_price"               : ["123.00","250.00","59.30"],
+    "site_section"                : "Loyalty",
+    "tealium_event"               : "page_view",
+    "trip_end_date"               : "03/12/2017",
+    "trip_start_date"             : "03/02/2017"
 }
 ```
 
@@ -191,48 +191,48 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;                    : &#34;USD&#34;,
-    &#34;customer_email&#34;              : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;                 : &#34;8237572&#34;,
-    &#34;displayed_properties&#34;        : [&#34;234234&#34;,&#34;234256&#34;],
-    &#34;displayed_rate_amount&#34;       : &#34;100.00&#34;,
-    &#34;displayed_rate_codes&#34;        : [&#34;AAA&#34;,&#34;Corporate&#34;],
-    &#34;displayed_room_rates&#34;        : [&#34;100.00&#34;,&#34;75.00&#34;],
-    &#34;displayed_room_types&#34;        : [&#34;2QueenBeds&#34;,&#34;studio&#34;],
-    &#34;filter_amenities&#34;            : [&#34;pool&#34;,&#34;microwave&#34;],
-    &#34;filter_distance&#34;             : &#34;20&#34;,
-    &#34;filter_hotel_type&#34;           : [&#34;economy&#34;,&#34;luxury&#34;,&#34;brand&#34;],
-    &#34;filter_max_rate&#34;             : &#34;150&#34;,
-    &#34;filter_rating&#34;               : [&#34;3&#34;,&#34;4&#34;,&#34;5&#34;],
-    &#34;login_status&#34;                : &#34;logged in&#34;,
-    &#34;num_adult_occupants&#34;         : &#34;3&#34;,
-    &#34;num_child_occupants&#34;         : &#34;3&#34;,
-    &#34;num_of_nights&#34;               : &#34;4&#34;,
-    &#34;page_name&#34;                   : &#34;Homepage&#34;,
-    &#34;page_type&#34;                   : &#34;lodging&#34;,
-    &#34;product_impression_category&#34; : [&#34;Flight&#34;],
-    &#34;product_impression_id&#34;       : [&#34;Y1234&#34;],
-    &#34;product_impression_name&#34;     : [&#34;CUN-MEX&#34;],
-    &#34;product_impression_position&#34; : [&#34;1&#34;],
-    &#34;product_impression_price&#34;    : [&#34;12.99&#34;],
-    &#34;product_impression_variant&#34;  : [&#34;1A&#34;],
-    &#34;product_name&#34;                : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;               : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;property_brand&#34;              : [&#34;Rest Eazy&#34;,&#34;Best Motels&#34;],
-    &#34;property_city&#34;               : [&#34;San Francisco&#34;,&#34;Monterey Bay&#34;],
-    &#34;property_country&#34;            : [&#34;San Francisco&#34;,&#34;Monterey&#34;],
-    &#34;property_id&#34;                 : [&#34;HI456767&#34;,&#34;BW123&#34;],
-    &#34;property_name&#34;               : [&#34;Rest Eazy SF&#34;,&#34;Best Motels Mont&#34;],
-    &#34;property_postal_code&#34;        : [&#34;99999&#34;,&#34;11111&#34;],
-    &#34;property_room_occupancy&#34;     : [&#34;3&#34;,&#34;3&#34;],
-    &#34;property_room_type&#34;          : [&#34;economy&#34;],
-    &#34;property_state&#34;              : [&#34;CA&#34;,&#34;CA&#34;],
-    &#34;proximity&#34;                   : [&#34;20&#34;,&#34;30&#34;],
-    &#34;quantity&#34;                    : [&#34;2&#34;,&#34;2&#34;],
-    &#34;site_section&#34;                : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;               : &#34;page_view&#34;,
-    &#34;trip_end_date&#34;               : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;             : &#34;03/02/2017&#34;
+    "currency"                    : "USD",
+    "customer_email"              : "johnsmith@example.com",
+    "customer_id"                 : "8237572",
+    "displayed_properties"        : ["234234","234256"],
+    "displayed_rate_amount"       : "100.00",
+    "displayed_rate_codes"        : ["AAA","Corporate"],
+    "displayed_room_rates"        : ["100.00","75.00"],
+    "displayed_room_types"        : ["2QueenBeds","studio"],
+    "filter_amenities"            : ["pool","microwave"],
+    "filter_distance"             : "20",
+    "filter_hotel_type"           : ["economy","luxury","brand"],
+    "filter_max_rate"             : "150",
+    "filter_rating"               : ["3","4","5"],
+    "login_status"                : "logged in",
+    "num_adult_occupants"         : "3",
+    "num_child_occupants"         : "3",
+    "num_of_nights"               : "4",
+    "page_name"                   : "Homepage",
+    "page_type"                   : "lodging",
+    "product_impression_category" : ["Flight"],
+    "product_impression_id"       : ["Y1234"],
+    "product_impression_name"     : ["CUN-MEX"],
+    "product_impression_position" : ["1"],
+    "product_impression_price"    : ["12.99"],
+    "product_impression_variant"  : ["1A"],
+    "product_name"                : ["Seat","Room","Car"],
+    "product_price"               : ["123.00","250.00","59.30"],
+    "property_brand"              : ["Rest Eazy","Best Motels"],
+    "property_city"               : ["San Francisco","Monterey Bay"],
+    "property_country"            : ["San Francisco","Monterey"],
+    "property_id"                 : ["HI456767","BW123"],
+    "property_name"               : ["Rest Eazy SF","Best Motels Mont"],
+    "property_postal_code"        : ["99999","11111"],
+    "property_room_occupancy"     : ["3","3"],
+    "property_room_type"          : ["economy"],
+    "property_state"              : ["CA","CA"],
+    "proximity"                   : ["20","30"],
+    "quantity"                    : ["2","2"],
+    "site_section"                : "Loyalty",
+    "tealium_event"               : "page_view",
+    "trip_end_date"               : "03/12/2017",
+    "trip_start_date"             : "03/02/2017"
 }
 ```
 
@@ -245,26 +245,26 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;                    : &#34;USD&#34;,
-    &#34;customer_email&#34;              : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;                 : &#34;8237572&#34;,
-    &#34;login_status&#34;                : &#34;logged in&#34;,
-    &#34;num_of_nights&#34;               : &#34;4&#34;,
-    &#34;page_name&#34;                   : &#34;Homepage&#34;,
-    &#34;page_type&#34;                   : &#34;rental&#34;,
-    &#34;product_impression_category&#34; : [&#34;Flight&#34;],
-    &#34;product_impression_id&#34;       : [&#34;Y1234&#34;],
-    &#34;product_impression_name&#34;     : [&#34;CUN-MEX&#34;],
-    &#34;product_impression_position&#34; : [&#34;1&#34;],
-    &#34;product_impression_price&#34;    : [&#34;12.99&#34;],
-    &#34;product_impression_variant&#34;  : [&#34;1A&#34;],
-    &#34;product_name&#34;                : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;               : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;quantity&#34;                    : [&#34;2&#34;,&#34;2&#34;],
-    &#34;site_section&#34;                : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;               : &#34;page_view&#34;,
-    &#34;trip_end_date&#34;               : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;             : &#34;03/02/2017&#34;
+    "currency"                    : "USD",
+    "customer_email"              : "johnsmith@example.com",
+    "customer_id"                 : "8237572",
+    "login_status"                : "logged in",
+    "num_of_nights"               : "4",
+    "page_name"                   : "Homepage",
+    "page_type"                   : "rental",
+    "product_impression_category" : ["Flight"],
+    "product_impression_id"       : ["Y1234"],
+    "product_impression_name"     : ["CUN-MEX"],
+    "product_impression_position" : ["1"],
+    "product_impression_price"    : ["12.99"],
+    "product_impression_variant"  : ["1A"],
+    "product_name"                : ["Seat","Room","Car"],
+    "product_price"               : ["123.00","250.00","59.30"],
+    "quantity"                    : ["2","2"],
+    "site_section"                : "Loyalty",
+    "tealium_event"               : "page_view",
+    "trip_end_date"               : "03/12/2017",
+    "trip_start_date"             : "03/02/2017"
 }
 ```
 ### 検索ページ
@@ -276,35 +276,35 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;               : &#34;3&#34;,
-    &#34;currency&#34;                    : &#34;USD&#34;,
-    &#34;customer_email&#34;              : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;                 : &#34;8237572&#34;,
-    &#34;customer_type&#34;               : &#34;Web member&#34;,
-    &#34;days_to_trip_start&#34;          : &#34;20&#34;,
-    &#34;flight_route&#34;                : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_type&#34;                 : &#34;Round&#34;,
-    &#34;login_status&#34;                : &#34;logged in&#34;,
-    &#34;num_adult_passengers&#34;        : &#34;1&#34;,
-    &#34;num_child_passengers&#34;        : &#34;1&#34;,
-    &#34;origin_flight_route&#34;         : [&#34;SAN-CUN&#34;],
-    &#34;page_name&#34;                   : &#34;Homepage&#34;,
-    &#34;page_type&#34;                   : &#34;search&#34;,
-    &#34;product_impression_category&#34; : [&#34;Flight&#34;],
-    &#34;product_impression_id&#34;       : [&#34;Y1234&#34;],
-    &#34;product_impression_name&#34;     : [&#34;CUN-MEX&#34;],
-    &#34;product_impression_position&#34; : [&#34;1&#34;],
-    &#34;product_impression_price&#34;    : [&#34;12.99&#34;],
-    &#34;product_impression_variant&#34;  : [&#34;1A&#34;],
-    &#34;product_name&#34;                : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;               : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;returning_flight_route&#34;      : [&#34;CUN-SAN&#34;],
-    &#34;site_section&#34;                : &#34;Loyalty&#34;,
-    &#34;sort_by&#34;                     : &#34;distance&#34;,
-    &#34;tealium_event&#34;               : &#34;search&#34;,
-    &#34;total_passengers&#34;            : &#34;3&#34;,
-    &#34;trip_end_date&#34;               : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;             : &#34;03/02/2017&#34;
+    "checkout_step"               : "3",
+    "currency"                    : "USD",
+    "customer_email"              : "johnsmith@example.com",
+    "customer_id"                 : "8237572",
+    "customer_type"               : "Web member",
+    "days_to_trip_start"          : "20",
+    "flight_route"                : "SAN-CUN,CUN-SAN",
+    "flight_type"                 : "Round",
+    "login_status"                : "logged in",
+    "num_adult_passengers"        : "1",
+    "num_child_passengers"        : "1",
+    "origin_flight_route"         : ["SAN-CUN"],
+    "page_name"                   : "Homepage",
+    "page_type"                   : "search",
+    "product_impression_category" : ["Flight"],
+    "product_impression_id"       : ["Y1234"],
+    "product_impression_name"     : ["CUN-MEX"],
+    "product_impression_position" : ["1"],
+    "product_impression_price"    : ["12.99"],
+    "product_impression_variant"  : ["1A"],
+    "product_name"                : ["Seat","Room","Car"],
+    "product_price"               : ["123.00","250.00","59.30"],
+    "returning_flight_route"      : ["CUN-SAN"],
+    "site_section"                : "Loyalty",
+    "sort_by"                     : "distance",
+    "tealium_event"               : "search",
+    "total_passengers"            : "3",
+    "trip_end_date"               : "03/12/2017",
+    "trip_start_date"             : "03/02/2017"
 }
 ```
 
@@ -317,34 +317,34 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;          : &#34;3&#34;,
-    &#34;currency&#34;               : &#34;USD&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_type&#34;          : &#34;Web member&#34;,
-    &#34;fare_class&#34;             : &#34;Class L&#34;,
-    &#34;flight_route&#34;           : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_sku&#34;             : [&#34;Y123&#34;,&#34;Z456&#34;],
-    &#34;flight_type&#34;            : &#34;Round&#34;,
-    &#34;login_status&#34;           : &#34;logged in&#34;,
-    &#34;loyalty_id&#34;             : &#34;46794561&#34;,
-    &#34;num_adult_passengers&#34;   : &#34;1&#34;,
-    &#34;num_child_passengers&#34;   : &#34;1&#34;,
-    &#34;origin_flight_route&#34;    : [&#34;SAN-CUN&#34;],
-    &#34;page_name&#34;              : &#34;Homepage&#34;,
-    &#34;page_type&#34;              : &#34;booking_flow&#34;,
-    &#34;passenger_name&#34;         : [&#34;Steve&#34;,&#34;jack&#34;],
-    &#34;passenger_price&#34;        : [&#34;100.00&#34;,&#34;120.00&#34;],
-    &#34;product_name&#34;           : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;          : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;quantity&#34;               : [&#34;2&#34;,&#34;2&#34;],
-    &#34;returning_flight_route&#34; : [&#34;CUN-SAN&#34;],
-    &#34;site_section&#34;           : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;          : &#34;page_view&#34;,
-    &#34;total_passengers&#34;       : &#34;3&#34;,
-    &#34;trip_end_date&#34;          : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;        : &#34;03/02/2017&#34;,
-    &#34;variant&#34;                : [&#34;14F&#34;,&#34;15D&#34;,&#34;baggage&#34;,&#34;car&#34;]
+    "checkout_step"          : "3",
+    "currency"               : "USD",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_id"            : "8237572",
+    "customer_type"          : "Web member",
+    "fare_class"             : "Class L",
+    "flight_route"           : "SAN-CUN,CUN-SAN",
+    "flight_sku"             : ["Y123","Z456"],
+    "flight_type"            : "Round",
+    "login_status"           : "logged in",
+    "loyalty_id"             : "46794561",
+    "num_adult_passengers"   : "1",
+    "num_child_passengers"   : "1",
+    "origin_flight_route"    : ["SAN-CUN"],
+    "page_name"              : "Homepage",
+    "page_type"              : "booking_flow",
+    "passenger_name"         : ["Steve","jack"],
+    "passenger_price"        : ["100.00","120.00"],
+    "product_name"           : ["Seat","Room","Car"],
+    "product_price"          : ["123.00","250.00","59.30"],
+    "quantity"               : ["2","2"],
+    "returning_flight_route" : ["CUN-SAN"],
+    "site_section"           : "Loyalty",
+    "tealium_event"          : "page_view",
+    "total_passengers"       : "3",
+    "trip_end_date"          : "03/12/2017",
+    "trip_start_date"        : "03/02/2017",
+    "variant"                : ["14F","15D","baggage","car"]
 }
 ```
 
@@ -357,44 +357,44 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;aircraft_capacity&#34;         : &#34;148&#34;,
-    &#34;aircraft_type&#34;             : &#34;A320&#34;,
-    &#34;checkout_step&#34;             : &#34;3&#34;,
-    &#34;currency&#34;                  : &#34;USD&#34;,
-    &#34;customer_email&#34;            : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;               : &#34;8237572&#34;,
-    &#34;customer_type&#34;             : &#34;Web member&#34;,
-    &#34;fare_class&#34;                : &#34;Class L&#34;,
-    &#34;flight_route&#34;              : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_sku&#34;                : [&#34;Y123&#34;,&#34;Z456&#34;],
-    &#34;flight_type&#34;               : &#34;Round&#34;,
-    &#34;login_status&#34;              : &#34;logged in&#34;,
-    &#34;loyalty_id&#34;               : &#34;46794561&#34;,
-    &#34;num_adult_passengers&#34;      : &#34;1&#34;,
-    &#34;num_child_passengers&#34;      : &#34;1&#34;,
-    &#34;occupancy_detail&#34;          : [&#34;3&#34;,&#34;3&#34;],
-    &#34;order_cancellation_policy&#34; : [&#34;24 Hours&#34;,&#34;No Cancellation&#34;],
-    &#34;order_grand_total&#34;         : &#34;54.47&#34;,
-    &#34;order_id&#34;                  : &#34;132133&#34;,
-    &#34;order_payment_type&#34;        : &#34;paypal&#34;,
-    &#34;order_promo_code&#34;          : &#34;MEX30&#34;,
-    &#34;order_store&#34;               : &#34;mobile web&#34;,
-    &#34;order_subtotal&#34;            : &#34;45.98&#34;,
-    &#34;order_tax_amount&#34;          : &#34;2.50&#34;,
-    &#34;origin_flight_route&#34;       : [&#34;SAN-CUN&#34;],
-    &#34;page_name&#34;                 : &#34;Homepage&#34;,
-    &#34;page_type&#34;                 : &#34;order&#34;,
-    &#34;passenger_name&#34;            : [&#34;Steve&#34;,&#34;jack&#34;],
-    &#34;passenger_price&#34;           : [&#34;100.00&#34;,&#34;120.00&#34;],
-    &#34;quantity&#34;                  : [&#34;2&#34;,&#34;2&#34;],
-    &#34;returning_flight_route&#34;    : [&#34;CUN-SAN&#34;],
-    &#34;site_section&#34;              : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;             : &#34;purchase&#34;,
-    &#34;total_passengers&#34;          : &#34;3&#34;,
-    &#34;transactionAffiliation&#34;    : &#34;Visa&#34;,
-    &#34;trip_end_date&#34;             : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;           : &#34;03/02/2017&#34;,
-    &#34;variant&#34;                   : [&#34;14F&#34;,&#34;15D&#34;,&#34;baggage&#34;,&#34;car&#34;]
+    "aircraft_capacity"         : "148",
+    "aircraft_type"             : "A320",
+    "checkout_step"             : "3",
+    "currency"                  : "USD",
+    "customer_email"            : "johnsmith@example.com",
+    "customer_id"               : "8237572",
+    "customer_type"             : "Web member",
+    "fare_class"                : "Class L",
+    "flight_route"              : "SAN-CUN,CUN-SAN",
+    "flight_sku"                : ["Y123","Z456"],
+    "flight_type"               : "Round",
+    "login_status"              : "logged in",
+    "loyalty_id"               : "46794561",
+    "num_adult_passengers"      : "1",
+    "num_child_passengers"      : "1",
+    "occupancy_detail"          : ["3","3"],
+    "order_cancellation_policy" : ["24 Hours","No Cancellation"],
+    "order_grand_total"         : "54.47",
+    "order_id"                  : "132133",
+    "order_payment_type"        : "paypal",
+    "order_promo_code"          : "MEX30",
+    "order_store"               : "mobile web",
+    "order_subtotal"            : "45.98",
+    "order_tax_amount"          : "2.50",
+    "origin_flight_route"       : ["SAN-CUN"],
+    "page_name"                 : "Homepage",
+    "page_type"                 : "order",
+    "passenger_name"            : ["Steve","jack"],
+    "passenger_price"           : ["100.00","120.00"],
+    "quantity"                  : ["2","2"],
+    "returning_flight_route"    : ["CUN-SAN"],
+    "site_section"              : "Loyalty",
+    "tealium_event"             : "purchase",
+    "total_passengers"          : "3",
+    "transactionAffiliation"    : "Visa",
+    "trip_end_date"             : "03/12/2017",
+    "trip_start_date"           : "03/02/2017",
+    "variant"                   : ["14F","15D","baggage","car"]
 }
 ```
 
@@ -407,16 +407,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;       : &#34;USD&#34;,
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;fare_class&#34;     : &#34;Class L&#34;,
-    &#34;flight_type&#34;    : &#34;Round&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;page_name&#34;      : &#34;Homepage&#34;,
-    &#34;page_type&#34;      : &#34;manage_your_booking&#34;,
-    &#34;site_section&#34;   : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;  : &#34;page_view&#34;
+    "currency"       : "USD",
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "fare_class"     : "Class L",
+    "flight_type"    : "Round",
+    "login_status"   : "logged in",
+    "page_name"      : "Homepage",
+    "page_type"      : "manage_your_booking",
+    "site_section"   : "Loyalty",
+    "tealium_event"  : "page_view"
 }
 ```
 
@@ -429,24 +429,24 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;          : &#34;3&#34;,
-    &#34;currency&#34;               : &#34;USD&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;fare_class&#34;             : &#34;Class L&#34;,
-    &#34;flight_route&#34;           : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_sku&#34;             : [&#34;Y123&#34;,&#34;Z456&#34;],
-    &#34;flight_type&#34;            : &#34;Round&#34;,
-    &#34;login_status&#34;           : &#34;logged in&#34;,
-    &#34;origin_flight_route&#34;    : [&#34;SAN-CUN&#34;],
-    &#34;page_name&#34;              : &#34;Homepage&#34;,
-    &#34;page_type&#34;              : &#34;check_in&#34;,
-    &#34;passenger_name&#34;         : [&#34;Steve&#34;,&#34;jack&#34;],
-    &#34;returning_flight_route&#34; : [&#34;CUN-SAN&#34;],
-    &#34;site_section&#34;           : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;          : &#34;page_view&#34;,
-    &#34;trip_end_date&#34;          : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;        : &#34;03/02/2017&#34;
+    "checkout_step"          : "3",
+    "currency"               : "USD",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_id"            : "8237572",
+    "fare_class"             : "Class L",
+    "flight_route"           : "SAN-CUN,CUN-SAN",
+    "flight_sku"             : ["Y123","Z456"],
+    "flight_type"            : "Round",
+    "login_status"           : "logged in",
+    "origin_flight_route"    : ["SAN-CUN"],
+    "page_name"              : "Homepage",
+    "page_type"              : "check_in",
+    "passenger_name"         : ["Steve","jack"],
+    "returning_flight_route" : ["CUN-SAN"],
+    "site_section"           : "Loyalty",
+    "tealium_event"          : "page_view",
+    "trip_end_date"          : "03/12/2017",
+    "trip_start_date"        : "03/02/2017"
 }
 ```
 
@@ -459,17 +459,17 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;  : &#34;3&#34;,
-    &#34;currency&#34;       : &#34;USD&#34;,
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;customer_type&#34;  : &#34;Web member&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;loyalty_id&#34;     : &#34;46794561&#34;,
-    &#34;page_name&#34;      : &#34;Homepage&#34;,
-    &#34;page_type&#34;      : &#34;account&#34;,
-    &#34;site_section&#34;   : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;  : &#34;page_view&#34;
+    "checkout_step"  : "3",
+    "currency"       : "USD",
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "customer_type"  : "Web member",
+    "login_status"   : "logged in",
+    "loyalty_id"     : "46794561",
+    "page_name"      : "Homepage",
+    "page_type"      : "account",
+    "site_section"   : "Loyalty",
+    "tealium_event"  : "page_view"
 }
 ```
 
@@ -482,14 +482,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;       : &#34;USD&#34;,
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;page_name&#34;      : &#34;Homepage&#34;,
-    &#34;page_type&#34;      : &#34;landing&#34;,
-    &#34;site_section&#34;   : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;  : &#34;page_view&#34;
+    "currency"       : "USD",
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "login_status"   : "logged in",
+    "page_name"      : "Homepage",
+    "page_type"      : "landing",
+    "site_section"   : "Loyalty",
+    "tealium_event"  : "page_view"
 }
 ```
 
@@ -502,14 +502,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;       : &#34;USD&#34;,
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;page_name&#34;      : &#34;Other Page&#34;,
-    &#34;page_type&#34;      : &#34;content&#34;,
-    &#34;site_section&#34;   : &#34;Loyalty&#34;,
-    &#34;tealium_event&#34;  : &#34;page_view&#34;
+    "currency"       : "USD",
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "login_status"   : "logged in",
+    "page_name"      : "Other Page",
+    "page_type"      : "content",
+    "site_section"   : "Loyalty",
+    "tealium_event"  : "page_view"
 }
 ```
 
@@ -523,34 +523,34 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;avg_room_rate&#34;           : [&#34;100.00&#34;],
-    &#34;checkout_step&#34;           : &#34;3&#34;,
-    &#34;customer_type&#34;           : &#34;Web member&#34;,
-    &#34;days_to_trip_start&#34;      : &#34;20&#34;,
-    &#34;ecommerce_action&#34;        : &#34;detail&#34;,
-    &#34;num_adult_occupants&#34;     : &#34;3&#34;,
-    &#34;num_adult_passengers&#34;    : &#34;1&#34;,
-    &#34;num_child_occupants&#34;     : &#34;3&#34;,
-    &#34;num_child_passengers&#34;    : &#34;1&#34;,
-    &#34;num_of_nights&#34;           : &#34;4&#34;,
-    &#34;num_of_rooms&#34;            : &#34;2&#34;,
-    &#34;origin_flight_route&#34;     : [&#34;SAN-CUN&#34;],
-    &#34;product_name&#34;            : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;           : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;property_id&#34;             : [&#34;HI456767&#34;,&#34;BW123&#34;],
-    &#34;property_name&#34;           : [&#34;Rest Eazy&#34;,&#34;Best Motels&#34;],
-    &#34;property_postal_code&#34;    : [&#34;99999&#34;,&#34;11111&#34;],
-    &#34;property_room_occupancy&#34; : [&#34;3&#34;,&#34;3&#34;],
-    &#34;property_room_type&#34;      : [&#34;economy&#34;],
-    &#34;property_state&#34;          : [&#34;CA&#34;,&#34;CA&#34;],
-    &#34;proximity&#34;               : [&#34;20&#34;,&#34;30&#34;],
-    &#34;quantity&#34;                : [&#34;2&#34;,&#34;2&#34;],
-    &#34;returning_flight_route&#34;  : [&#34;CUN-SAN&#34;],
-    &#34;tealium_event&#34;           : &#34;cart_add&#34;,
-    &#34;total_passengers&#34;        : &#34;3&#34;,
-    &#34;trip_end_date&#34;           : &#34;03/12/2017&#34;,
-    &#34;trip_start_date&#34;         : &#34;03/02/2017&#34;,
-    &#34;variant&#34;                 : [&#34;14F&#34;,&#34;15D&#34;,&#34;baggage&#34;,&#34;car&#34;]
+    "avg_room_rate"           : ["100.00"],
+    "checkout_step"           : "3",
+    "customer_type"           : "Web member",
+    "days_to_trip_start"      : "20",
+    "ecommerce_action"        : "detail",
+    "num_adult_occupants"     : "3",
+    "num_adult_passengers"    : "1",
+    "num_child_occupants"     : "3",
+    "num_child_passengers"    : "1",
+    "num_of_nights"           : "4",
+    "num_of_rooms"            : "2",
+    "origin_flight_route"     : ["SAN-CUN"],
+    "product_name"            : ["Seat","Room","Car"],
+    "product_price"           : ["123.00","250.00","59.30"],
+    "property_id"             : ["HI456767","BW123"],
+    "property_name"           : ["Rest Eazy","Best Motels"],
+    "property_postal_code"    : ["99999","11111"],
+    "property_room_occupancy" : ["3","3"],
+    "property_room_type"      : ["economy"],
+    "property_state"          : ["CA","CA"],
+    "proximity"               : ["20","30"],
+    "quantity"                : ["2","2"],
+    "returning_flight_route"  : ["CUN-SAN"],
+    "tealium_event"           : "cart_add",
+    "total_passengers"        : "3",
+    "trip_end_date"           : "03/12/2017",
+    "trip_start_date"         : "03/02/2017",
+    "variant"                 : ["14F","15D","baggage","car"]
 }
 ```
 
@@ -563,16 +563,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;          : &#34;3&#34;,
-    &#34;customer_type&#34;          : &#34;Web member&#34;,
-    &#34;days_to_trip_start&#34;     : &#34;20&#34;,
-    &#34;ecommerce_action&#34;       : &#34;detail&#34;,
-    &#34;origin_flight_route&#34;    : [&#34;SAN-CUN&#34;],
-    &#34;product_name&#34;           : [&#34;Seat&#34;,&#34;Room&#34;,&#34;Car&#34;],
-    &#34;product_price&#34;          : [&#34;123.00&#34;,&#34;250.00&#34;,&#34;59.30&#34;],
-    &#34;quantity&#34;               : [&#34;2&#34;,&#34;2&#34;],
-    &#34;returning_flight_route&#34; : [&#34;CUN-SAN&#34;],
-    &#34;tealium_event&#34;          : &#34;cart_remove&#34;
+    "checkout_step"          : "3",
+    "customer_type"          : "Web member",
+    "days_to_trip_start"     : "20",
+    "ecommerce_action"       : "detail",
+    "origin_flight_route"    : ["SAN-CUN"],
+    "product_name"           : ["Seat","Room","Car"],
+    "product_price"          : ["123.00","250.00","59.30"],
+    "quantity"               : ["2","2"],
+    "returning_flight_route" : ["CUN-SAN"],
+    "tealium_event"          : "cart_remove"
 }
 ```
 
@@ -585,10 +585,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;tealium_event&#34;  : &#34;user_login&#34;
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "login_status"   : "logged in",
+    "tealium_event"  : "user_login"
 }
 ```
 
@@ -601,10 +601,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;tealium_event&#34;  : &#34;user_logout&#34;
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "login_status"   : "logged in",
+    "tealium_event"  : "user_logout"
 }
 ```
 
@@ -617,9 +617,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;tealium_event&#34;  : &#34;user_register&#34;
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "tealium_event"  : "user_register"
 }
 ```
 
@@ -632,9 +632,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;customer_id&#34;    : &#34;8237572&#34;,
-    &#34;tealium_event&#34;  : &#34;user_update&#34;
+    "customer_email" : "johnsmith@example.com",
+    "customer_id"    : "8237572",
+    "tealium_event"  : "user_update"
 }
 ```
 
@@ -647,8 +647,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;johnsmith@example.com&#34;,
-    &#34;tealium_event&#34;  : &#34;email_signup&#34;
+    "customer_email" : "johnsmith@example.com",
+    "tealium_event"  : "email_signup"
 }
 ```
 
@@ -661,11 +661,11 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;link_action&#34;   : &#34;View Image&#34;,
-    &#34;link_category&#34; : &#34;Header&#34;,
-    &#34;link_name&#34;     : &#34;Login&#34;,
-    &#34;link_value&#34;    : &#34;10&#34;,
-    &#34;tealium_event&#34; : &#34;custom_click&#34;
+    "link_action"   : "View Image",
+    "link_category" : "Header",
+    "link_name"     : "Login",
+    "link_value"    : "10",
+    "tealium_event" : "custom_click"
 }
 ```
 
@@ -678,9 +678,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;ecommerce_action&#34; : &#34;detail&#34;,
-    &#34;fare_class&#34;       : &#34;Class L&#34;,
-    &#34;tealium_event&#34;    : &#34;product_click&#34;
+    "ecommerce_action" : "detail",
+    "fare_class"       : "Class L",
+    "tealium_event"    : "product_click"
 }
 ```
 
@@ -693,10 +693,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;ecommerce_action&#34;        : &#34;detail&#34;,
-    &#34;promo_registration_page&#34; : &#34;&#34;,
-    &#34;promotion_name&#34;          : &#34;Promo One&#34;,
-    &#34;tealium_event&#34;           : &#34;promo_click&#34;
+    "ecommerce_action"        : "detail",
+    "promo_registration_page" : "",
+    "promotion_name"          : "Promo One",
+    "tealium_event"           : "promo_click"
 }
 ```
 
@@ -709,15 +709,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;checkout_step&#34;          : &#34;3&#34;,
-    &#34;error_mesage&#34;           : &#34;Destination City doesn&#39;t match Departure on return&#34;,
-    &#34;flight_route&#34;           : &#34;SAN-CUN,CUN-SAN&#34;,
-    &#34;flight_type&#34;            : &#34;Round&#34;,
-    &#34;origin_flight_route&#34;    : [&#34;SAN-CUN&#34;],
-    &#34;page_name&#34;              : &#34;Homepage&#34;,
-    &#34;returning_flight_route&#34; : [&#34;CUN-SAN&#34;],
-    &#34;tealium_event&#34;          : &#34;error_message&#34;,
-    &#34;total_passengers&#34;       : &#34;3&#34;
+    "checkout_step"          : "3",
+    "error_mesage"           : "Destination City doesn't match Departure on return",
+    "flight_route"           : "SAN-CUN,CUN-SAN",
+    "flight_type"            : "Round",
+    "origin_flight_route"    : ["SAN-CUN"],
+    "page_name"              : "Homepage",
+    "returning_flight_route" : ["CUN-SAN"],
+    "tealium_event"          : "error_message",
+    "total_passengers"       : "3"
 }
 ```
 
@@ -730,10 +730,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;tealium_event&#34;      : &#34;video&#34;,
-    &#34;video_action&#34;       : &#34;play&#34;,
-    &#34;video_content_type&#34; : &#34;hotel promo&#34;,
-    &#34;video_name&#34;         : &#34;Stay the Night&#34;,
-    &#34;video_segments&#34;     : &#34;50&#34;
+    "tealium_event"      : "video",
+    "video_action"       : "play",
+    "video_content_type" : "hotel promo",
+    "video_name"         : "Stay the Night",
+    "video_segments"     : "50"
 }
 ```

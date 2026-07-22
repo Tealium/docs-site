@@ -15,7 +15,7 @@ The browser requests the page located at a URL and the raw page content (HTML) i
     * The browser begins to parse the HTML document, from the top to the bottom. It must process various elements as they are encountered, such as images, links, text, or scripts like the Universal Tag (`utag.js`).
     * The browser continues to download these elements as it encounters them while it downloads the HTML document itself. 
     * Synchronous scripts force the browser to stop and interpret the script before continuing. Asynchronous scripts, like utag.js, allow the browser to continue processing while the script is loaded.
-    * When the browser is done building the HTML of the page it is commonly called the &#34;DOM Ready&#34; event.
+    * When the browser is done building the HTML of the page it is commonly called the "DOM Ready" event.
 1. **Render**  
 The browser renders the web page (DOM) on the screen.
 
@@ -38,7 +38,11 @@ The default order of operations:
 
 The following sections provide a step-by-step overview of the order of operations of the Universal Tag (`utag.js`) to show how it processes the data layer and executes extensions and tags.
 
+
+<blockquote>
 Within each scope, tags and extensions run in the order that they appear in the [Load Order Manager]().
+</blockquote>
+
 
 ### utag Sync (Optional)
 
@@ -88,11 +92,11 @@ After the tags are run the extensions scoped to **After Tags** are run.
 
 ### About single page applications
 
-When you use `utag.view()` to track screen views manually, load rules are re-evaluated upon each call. [`utag.js` versions 4.26](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01) and later. Versions of the Universal Tag prior to 4.26 do not re-evaluate load rules when calling `utag.view()` .
+When you use `utag.view()` to track screen views manually, load rules are re-evaluated upon each call. [`utag.js` versions 4.26](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01) and later. Versions of the Universal Tag prior to 4.26 do not re-evaluate load rules when calling `utag.view()` .
 
-Additionally, the behavior of load rules can be controlled using a configuration option called `load_rules_at_wait`, available in versions 4.26 and later of the Universal Tag. This is a legacy customization and we recommend that you contact your customer success manager before implementing it.
+Additionally, the behavior of load rules can be controlled using a configuration option called [`load_rules_at_wait`](https://docs.tealium.com/platforms/javascript/settings/#load_rules_at_wait), available in versions 4.26 and later of the Universal Tag.
 
-Learn more about the [configuration settings of the Universal Tag](/platforms/javascript/settings/).
+Learn more about the [configuration settings of the Universal Tag](https://docs.tealium.com/platforms/javascript/settings/).
 
 ## Glossary of terms
 
@@ -122,12 +126,12 @@ Learn more about [advanced tag settings]().
 
 The `utag.view()` function is used to track page view events. When the utag.js file loads on a page, it automatically calls this function to track the initial page load as a page view event.
 
-![](/images/iq-tag-management/utag.js-order-of-operations-simplified.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/utag.js-order-of-operations-simplified.jpg)
 
-#### utag Waterfall - Tag Timing = &#34;Prioritized&#34;
+#### utag Waterfall - Tag Timing = "Prioritized"
 
-![](/images/iq-tag-management/utag-waterfall-non-ready-wait.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-waterfall-non-ready-wait.png)
 
-#### utag Waterfall - Tag Timing = &#34;DOM Ready&#34;
+#### utag Waterfall - Tag Timing = "DOM Ready"
 
-![](/images/iq-tag-management/utag-waterfall-with-ready-wait.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-waterfall-with-ready-wait.png)

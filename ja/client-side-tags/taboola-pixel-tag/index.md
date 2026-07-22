@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/client-side-tags/taboola-pixel-tag/
 
 ## タグの構成
 
-まず、TealiumのタグマーケットプレイスにアクセスしてTaboola Pixelタグを追加します（[タグの追加方法についてはこちら]()を参照）。
+まず、TealiumのタグマーケットプレイスにアクセスしてTaboola Pixelタグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照）。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/client-side-tags/taboola-pixel-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -54,7 +54,7 @@ url: https://docs.tealium.com/ja/client-side-tags/taboola-pixel-tag/
 
 ### イベントパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
 
 |変数| 説明|
 |---| ---|
@@ -81,7 +81,7 @@ url: https://docs.tealium.com/ja/client-side-tags/taboola-pixel-tag/
 
 ### Eコマースイベントパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
 
 | イベント | 説明 |
 |:------|:------------|

@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quicklizard-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Quicklizardタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Quicklizardタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -28,7 +28,7 @@ Quicklizardから提供されるキー。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -36,4 +36,4 @@ Quicklizardから提供されるキー。
 
 |変数| 説明|
 |---| ---|
-|カスタム|  &lt;ul&gt;&lt;li&gt;カスタム宛先を追加&lt;/li&gt;&lt;/ul&gt; |
+|カスタム|  <ul><li>カスタム宛先を追加</li></ul> |

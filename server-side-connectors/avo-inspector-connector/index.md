@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 30
 * Max time since oldest request: 5 minutes
@@ -29,7 +29,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -53,8 +53,8 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Event Type | Type of event. Either `event` or `sessionStarted`. |
-| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;br&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;br&gt;Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in Event Parameters. For more information, see .&lt;br&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.|
+| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br>Name nested template variables with the dot notation. Example: `items.name.`<br>Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in Event Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.|
 
 ### Send Event Data (Batched)
 
@@ -63,5 +63,5 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Event Type | Type of event. Either `event` or `sessionStarted`. |
-| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;br&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;br&gt;Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in Event Parameters. For more information, see .&lt;br&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.|
+| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br>Name nested template variables with the dot notation. Example: `items.name.`<br>Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in Event Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.|

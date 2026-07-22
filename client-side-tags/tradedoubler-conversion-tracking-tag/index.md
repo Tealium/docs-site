@@ -5,11 +5,15 @@ url: https://docs.tealium.com/client-side-tags/tradedoubler-conversion-tracking-
 ---
 ## Migrating from the legacy Trackback tag
 
- The Trackback Tag is now deprecated in favor of the new Conversion Tracking version and no longer offered in the tag marketplace. Be sure to deactivate any Trackback Tag instances before adding the new Conversion Tracking Tag. 
+
+<blockquote>
+The Trackback Tag is now deprecated in favor of the new Conversion Tracking version and no longer offered in the tag marketplace. Be sure to deactivate any Trackback Tag instances before adding the new Conversion Tracking Tag.
+</blockquote>
+
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see .
+Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 After adding the tag, configure the following settings:
 
@@ -24,7 +28,7 @@ After adding the tag, configure the following settings:
 
 ## Load rules
 
-[Load Rules]() determine when and where to load an instance of this Tag. The **Load on All Pages** rule is the default Rule. If you prefer to load this Tag on a specific page, create a new rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag. The **Load on All Pages** rule is the default Rule. If you prefer to load this Tag on a specific page, create a new rule with the relevant conditions.
 
 ### Best practices
 
@@ -34,7 +38,7 @@ After adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Tradedoubler Conversion Tracking Tag are built into its Data Mapping tab.
 
@@ -61,7 +65,7 @@ The destination variables for the Tradedoubler Conversion Tracking Tag are built
 
 ### E-commerce
 
-Because the Tradedoubler Conversion Tracking Tag is e-commerce enabled, it will automatically use the default [E-Commerce Extension]() mappings. Manually mapping in this category is generally not needed unless:
+Because the Tradedoubler Conversion Tracking Tag is e-commerce enabled, it will automatically use the default [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) mappings. Manually mapping in this category is generally not needed unless:
 
 * You want to override any extension mappings.
 * An e-commerce variable you want is not offered in the extension.

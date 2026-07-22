@@ -11,7 +11,7 @@ This connector uses the following vendor API:
 * API Version: v1
 * API Endpoint: `https://advertising-api.amazon.com`
 * Documentation: [Amazon Ads Events API](https://advertising.amazon.com/API/docs/en-us/guides/events/events)
-* Tag Documentation: [Amazon Advertising Tag]()
+* Tag Documentation: [Amazon Advertising Tag](https://docs.tealium.com/amazon-advertising-tag/)
 
 ## Connector tips
 
@@ -19,7 +19,7 @@ We recommend a hybrid setup using both a tag and a connector. This configuration
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -34,15 +34,15 @@ To configure this connector to deduplicate events from the Amazon Ads Server tag
 amazon_event_id_{EVENT_NAME}_{TAG_UID}
 ```
 
-You can find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/amazon-ad-server-tag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/amazon-ad-server-tag-uid.png)
 
 For example, a checkout event from a tag with UID of `170` would send the following attribute value:
 
 ```json
 {
-  &#34;amazon_event_id_checkout_170&#34;: &#34;028b2ade7478...&#34;
+  "amazon_event_id_checkout_170": "028b2ade7478..."
 }
 ```
 
@@ -50,7 +50,7 @@ A page view event from the same tag would send the following attribute and value
 
 ```json
 {
-  &#34;amazon_event_id_pageView_170&#34;: &#34;028b2ade7478...&#34;
+  "amazon_event_id_pageView_170": "028b2ade7478..."
 }
 ```
 
@@ -59,7 +59,7 @@ Use a separate action for each type of event. Map the event-specific event ID at
 | Tealium attribute  | Amazon Parameter  |
 |:-------------------------|:-------------------|
 | `amazon_event_id_checkout_170` (attribute)   | Event ID           |
-| `&#34;Checkout&#34;` (custom text) | Event Name         |
+| `"Checkout"` (custom text) | Event Name         |
 
 ### Automatic deduplication
 
@@ -68,7 +68,7 @@ When the **Automatic Deduplication** value is populated, the connector looks for
 The connector follows this order of operations:
 
 * If **Automatic Deduplication** is populated, and the value is found in the data layer (for example: `amazon_event_id_checkout_170`), this value supersedes anything mapped in `Event ID`.
-* If **Automatic Deduplication** is populated, but the value isn&#39;t found, the mapped `Event ID` is used, if it is populated.
+* If **Automatic Deduplication** is populated, but the value isn't found, the mapped `Event ID` is used, if it is populated.
 
 ## Actions
 
@@ -85,7 +85,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 500
 * Max time since oldest request: 10 minutes
@@ -164,7 +164,11 @@ For more information about formatting and normalization requirements, see [Forma
 
 ### Send Conversion (deprecated)
 
+
+<blockquote>
 This action is now deprecated and can no longer be added. For the current action, see [Send Conversion](#send-conversion).
+</blockquote>
+
 
 #### API information
 
@@ -192,7 +196,7 @@ Be sure to accept the terms and conditions, either in the Ads data manager conso
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 10 minutes

@@ -9,7 +9,7 @@ You can easily add, implement, and manage the Akamai mPulse JavaScript tag throu
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -22,7 +22,11 @@ These settings are not required for most tags, but are needed for Akamai.
   * Set **Tag Timing** to **Prioritized**.  
 Determines the timing of the tag firing. Prioritized tags fire immediately as `utag.js` loads.
   * Set **Synchronous Load Type** to **No**.  
+
+<blockquote>
 If set to **Yes**, the tag will not fire.
+</blockquote>
+
 
 ## Load rules
 
@@ -39,12 +43,16 @@ This step is required to enable the tag to be bundled when configuring the Publi
 Use the following steps to configure and publish settings that will optimize tag performance:
 
 1. In the admin menu, click **Configure Publish Settings**. The **Publish Configuration** dialog appears.
+
+<blockquote>
 There are many Publish Settings options described on the Tealium support site. For Akamai mPulse, activate the following two optional settings for Akamai to improve tag performance.
+</blockquote>
+
 
 1. From the **Publish Configurations** dialog, click the **General Publishing** tab.
 1. Scroll down to **Performance Optimization** and set the **Minify Tag Templates** and **Bundle Tags Loaded on All Pages** toggles to **ON**.
     * Setting the **Performance Optimization** option to **On** ensures that any tags that load on the All Pages load rule are included inline in your `utag.js `file instead of in a separate, numbered file. Although your `utag.js` file will be larger, it will remove one http request (server call) as the page loads.
-    * Setting the **Minify Tag Templates** option to **On** applies &#34;minification&#34; to the generated JavaScript, which removes unnecessary whitespace so that the file size downloaded is smaller.
+    * Setting the **Minify Tag Templates** option to **On** applies "minification" to the generated JavaScript, which removes unnecessary whitespace so that the file size downloaded is smaller.
 
 1. Click **Apply** to close the **Publish Settings** dialog.  
 
@@ -52,8 +60,12 @@ There are many Publish Settings options described on the Tealium support site. F
 
 As a final step, publish and test your new tag as follows:
 
-1. In the **Save/Publish dialog**, do not select the **Overwrite current version** checkbox. Using **Save As** saves your change as a new version, which enables you to roll back your changes if needed.After the updated `utag.js` is loaded to the CDN, Akamai tag will appear in the browser.
-1. Use a tag monitor, such as Ghostery, to test that the tag is performing as expected, such as Ghostery. You can use your browser&#39;s network monitoring tool. You will know that the tag is firing correctly if you see the following request: ![](/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png)
+1. In the **Save/Publish dialog**, do not select the **Overwrite current version** checkbox. 
+<blockquote>
+Using **Save As** saves your change as a new version, which enables you to roll back your changes if needed.
+</blockquote>
+After the updated `utag.js` is loaded to the CDN, Akamai tag will appear in the browser.
+1. Use a tag monitor, such as Ghostery, to test that the tag is performing as expected, such as Ghostery. You can use your browser's network monitoring tool. You will know that the tag is firing correctly if you see the following request: ![](https://docs.tealium.com/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png)
 1. Monitor the request at `http://c.go-mpulse.net/boomerang`.
 
 The key displayed will match the API key you entered when you configured the Akamai mPulse tag.

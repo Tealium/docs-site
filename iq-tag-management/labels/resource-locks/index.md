@@ -5,7 +5,7 @@ url: https://docs.tealium.com/iq-tag-management/labels/resource-locks/
 ---
 ## About resource locks
 
-When an element has a resource lock applied to it, only users added to that label may edit the element. However, that element is still available for use by others. For example, if a load rule has a resource lock applied to it, users can still apply that load rule to a tag without being a member of that load rule&#39;s resource lock.
+When an element has a resource lock applied to it, only users added to that label may edit the element. However, that element is still available for use by others. For example, if a load rule has a resource lock applied to it, users can still apply that load rule to a tag without being a member of that load rule's resource lock.
 
 ### Required permissions
 
@@ -26,13 +26,17 @@ You may want to use a naming convention to indicate this label is a resource loc
 1. Select a color for the label.
 1. Set the **Enable as Resource Lock** toggle to **Yes**.
 1. Select the users you want to assign to this resource lock.  
-    ![](/images/iq-tag-management/resource-lock-select-users.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/resource-lock-select-users.png)
 1. Click **Save Changes**.  
-To create another resource lock, click **Save &amp; Add Another**.
+To create another resource lock, click **Save & Add Another**.
 
 Your new resource lock appears in the list of labels, and you can now apply it to elements. The icon for resource locks contains a lock to differentiate resource locks from labels. You may apply more than one resource lock to an element, but a user only needs to be assigned to one of the resource locks to edit the element.
 
+
+<blockquote>
 If you convert a resource lock back into a regular label, you will lose the list of users you assigned to it.
+</blockquote>
+
 
 ### Copying and inheriting resource locks
 

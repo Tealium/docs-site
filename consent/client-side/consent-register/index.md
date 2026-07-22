@@ -4,7 +4,7 @@ description: This article provides an overview of Tealium consent register.
 url: https://docs.tealium.com/consent/client-side/consent-register/
 ---
 
-Tealium consent register is used by client-side [consent integrations]() and [consent manager]() to expose consent signals across your website code. It also gives the Google consent mode tag direct access to those signals, enabling appropriate reactions.
+Tealium consent register is used by client-side [consent integrations](https://docs.tealium.com/about-consent-integrations/) and [consent manager](https://docs.tealium.com/about-consent-management/) to expose consent signals across your website code. It also gives the Google consent mode tag direct access to those signals, enabling appropriate reactions.
 
 ## Key features
 
@@ -15,19 +15,19 @@ Tealium consent register is used by client-side [consent integrations]() and [co
 
 ## How it works
 
-The consent register improves consent management by allowing consent decisions to be shared across your website&#39;s code. This allows functionalities like Google consent mode to access these decisions for appropriate actions. It acts as a standardization layer for consent signals, and makes those standardized consent signals easily available on your webpage.
+The consent register improves consent management by allowing consent decisions to be shared across your website's code. This allows functionalities like Google consent mode to access these decisions for appropriate actions. It acts as a standardization layer for consent signals, and makes those standardized consent signals easily available on your webpage.
 
 ## Google consent mode
 
-For essential background and context, see [Google consent mode](). It&#39;s important to consult with your leadership and legal team regarding the appropriate timing and method for integrating Google tags into your page.
+For essential background and context, see [Google consent mode](https://docs.tealium.com/google-consent-mode/). It's important to consult with your leadership and legal team regarding the appropriate timing and method for integrating Google tags into your page.
 
 ### Prerequisites
 
 * Deactivate any existing consent mode features from your CMP to prevent conflicts.
 * Update to the latest version of either the consent integrations framework or the consent manager `cmGeneral` template, based on your use case.
-* Add a JavaScript extension for consent mode mappings. For details, see [consent purpose mapping]().
-* Install the [Google consent mode tag](). No additional mappings are required when using the variable names from the consent purpose mapping extension.
-* Categorize the consent mode tag (and all related Google tags) appropriately. Ensure that they are always allowed to fire if you&#39;re implementing advanced consent mode, or only allowed to fire with appropriate consent, depending on the approach your organization is taking.
+* Add a JavaScript extension for consent mode mappings. For details, see [consent purpose mapping](https://docs.tealium.com/google-consent-mode/#consent-purpose-mapping).
+* Install the [Google consent mode tag](https://docs.tealium.com/google-consent-mode-tag/). No additional mappings are required when using the variable names from the consent purpose mapping extension.
+* Categorize the consent mode tag (and all related Google tags) appropriately. Ensure that they are always allowed to fire if you're implementing advanced consent mode, or only allowed to fire with appropriate consent, depending on the approach your organization is taking.
 
 ## Advanced use cases
 
@@ -53,7 +53,7 @@ var allDecisionsOnThisPage = window.tealiumConsentRegister.decisions
 
 In this example, we start in the opt-in model (implicit decision), then opt in and opt out for illustration.
 
-![](/images/iq-tag-management/consent-register-and-consent-integrations.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-integrations.png)
 
 ### Monitor consent changes
 
@@ -63,20 +63,24 @@ The consent register emits events when `implicit` or `explicit` consent signals 
 // Set example event listeners to surface consent changes
 
 // Can be implemented to run once per page code - You an use Pre Loader or DOM Ready, depending on the use case
-window.addEventListener(&#39;consent_loaded&#39;, (event) =&gt; {
-  console.log(&#39;Consent loaded:&#39;, event.detail.decision);
+window.addEventListener('consent_loaded', (event) => {
+  console.log('Consent loaded:', event.detail.decision);
 });
 
-window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
-  console.log(&#39;Consent updated:&#39;, event.detail.decision);
+window.addEventListener('consent_updated', (event) => {
+  console.log('Consent updated:', event.detail.decision);
 });
 ```
 
 **Consent manager example of a European user opting in on initial landing**
 
-![](/images/iq-tag-management/consent-register-and-consent-manager.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-manager.png)
 
- For transparency, these decisions always includes an `always_on` category, since `omitted` tags are always allowed. 
+
+<blockquote>
+For transparency, these decisions always includes an `always_on` category, since `omitted` tags are always allowed.
+</blockquote>
+
 
 ### Check if a tag is allowed to fire
 
@@ -86,10 +90,10 @@ The `isTagAllowed` method lets you check if a specific Tealium iQ tag is permitt
 window.tealiumConsentRegister.isTagAllowed(tagId);
 ```
 
-* `tagId` (integer or string): The UID of the tag to check, shown on the tag in Tealium iQ. This method accepts a number or a string that can be converted to a number (for example, &#34;7&#34;).
-* Returns a boolean: `true` if the tag has the required consent, `false` if the tag is not allowed, doesn’t exist, or consent isn&#39;t granted.
+* `tagId` (integer or string): The UID of the tag to check, shown on the tag in Tealium iQ. This method accepts a number or a string that can be converted to a number (for example, "7").
+* Returns a boolean: `true` if the tag has the required consent, `false` if the tag is not allowed, doesn’t exist, or consent isn't granted.
   
-  If neither condition applies, or if the `tagId` doesn&#39;t exist, the method returns `false`.
+  If neither condition applies, or if the `tagId` doesn't exist, the method returns `false`.
 
 #### Opt-out handling
 
@@ -108,11 +112,11 @@ Add these callbacks in a tag-scoped extension or directly in the tag template.
 // Make sure to only add the callback once (use a new tag-scoped boolean)
 if (!u.consent_callback_initialized) {
   u.consent_callback_initialized = true;
-  window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
-    var exists = window.tealiumConsentRegister &amp;&amp;
-                 typeof window.tealiumConsentRegister.isTagAllowed === &#34;function&#34;;
-    if (exists &amp;&amp; !window.tealiumConsentRegister.isTagAllowed(7)) {
-      console.log(&#34;Opt-out signal triggered for tag 7.&#34;);
+  window.addEventListener('consent_updated', (event) => {
+    var exists = window.tealiumConsentRegister &&
+                 typeof window.tealiumConsentRegister.isTagAllowed === "function";
+    if (exists && !window.tealiumConsentRegister.isTagAllowed(7)) {
+      console.log("Opt-out signal triggered for tag 7.");
       // Implement appropriate, vendor-specific opt-out logic here,
       // deduplicating if needed
     }
@@ -122,17 +126,21 @@ if (!u.consent_callback_initialized) {
 
 #### Example integration within a tag (template code, dynamic UID)
 
-The string `##UTID##` is a dynamic placeholder that represents the tag&#39;s unique ID. This value is automatically replaced by Tealium with the actual tag ID at runtime. You do not need to manually replace `##UTID##` with your own value.
+
+<blockquote>
+The string `##UTID##` is a dynamic placeholder that represents the tag's unique ID. This value is automatically replaced by Tealium with the actual tag ID at runtime. You do not need to manually replace `##UTID##` with your own value.
+</blockquote>
+
 
 ```javascript
 // Make sure to only add the callback once (use a new tag-scoped boolean)
 if (!u.consent_callback_initialized) {
   u.consent_callback_initialized = true;
-  window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
-    var exists = window.tealiumConsentRegister &amp;&amp;
-                 typeof window.tealiumConsentRegister.isTagAllowed === &#34;function&#34;;
-    if (exists &amp;&amp; !window.tealiumConsentRegister.isTagAllowed(&#34;##UTID##&#34;)) {
-      console.log(&#34;Opt-out signal triggered for tag &#34; &#43; &#34;##UTID##&#34;);
+  window.addEventListener('consent_updated', (event) => {
+    var exists = window.tealiumConsentRegister &&
+                 typeof window.tealiumConsentRegister.isTagAllowed === "function";
+    if (exists && !window.tealiumConsentRegister.isTagAllowed("##UTID##")) {
+      console.log("Opt-out signal triggered for tag " + "##UTID##");
       // Implement appropriate, vendor-specific opt-out logic here,
       // deduplicating if needed
     }
@@ -144,7 +152,7 @@ if (!u.consent_callback_initialized) {
 
 A simplified overview of the flows to illustrate the new events and listeners.
 
-![](/images/iq-tag-management/consent-register-flow.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-register-flow.png)
 
 ## Suppress the consent register
 
@@ -157,4 +165,8 @@ window.tealiumCmpIntegration = window.tealiumCmpIntegration || {};
 window.tealiumCmpIntegration.suppressConsentRegister = true;
 ```
 
+
+<blockquote>
 Use this setting cautiously, as it will suppress **all** consent register functionalities.
+</blockquote>
+

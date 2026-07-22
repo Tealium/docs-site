@@ -17,9 +17,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/listrak-connector/
 |連絡先の購読解除| ✓| ✗|
 |トランザクションメッセージの送信| ✓| ✗|
 
-## 構成の構成&lt;br&gt;
+## 構成の構成<br>
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[Connector Overview]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[Connector Overview](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -45,13 +45,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/listrak-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|連絡先リスト|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;更新する場合は連絡先が所属するリスト、作成する場合は連絡先を追加するリスト。&lt;/li&gt;&lt;/ul&gt; |
-|連絡先メール|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|ダブルオプトイン|  &lt;ul&gt;&lt;li&gt;新しい連絡先が作成される場合、ダブルオプトインメールを送信するかどうか。&lt;/li&gt;&lt;/ul&gt; |
-|イベント|  &lt;ul&gt;&lt;li&gt;連絡先が作成または更新された後に発生するべきイベント。&lt;/li&gt;&lt;/ul&gt; |
-|新しいメール|  &lt;ul&gt;&lt;li&gt;既存の連絡先を更新する場合、連絡先のメールアドレスはこの値に変更されます。&lt;/li&gt;&lt;/ul&gt; |
-|更新タイプ|  &lt;ul&gt;&lt;li&gt;既存の連絡先を更新する場合、提出されたセグメンテーションフィールドに対して実行される更新のタイプ。&lt;/li&gt;&lt;li&gt;構成されていない場合、デフォルト値は`Update`です。&lt;/li&gt;&lt;/ul&gt; |
-|セグメンテーショングループ|  &lt;ul&gt;&lt;li&gt;セグメンテーションフィールドのリストを含むセグメンテーショングループ。&lt;/li&gt;&lt;/ul&gt; |
+|連絡先リスト|  <ul><li>必須。</li><li>更新する場合は連絡先が所属するリスト、作成する場合は連絡先を追加するリスト。</li></ul> |
+|連絡先メール|  <ul><li>必須。</li><li>連絡先のメールアドレス。</li></ul> |
+|ダブルオプトイン|  <ul><li>新しい連絡先が作成される場合、ダブルオプトインメールを送信するかどうか。</li></ul> |
+|イベント|  <ul><li>連絡先が作成または更新された後に発生するべきイベント。</li></ul> |
+|新しいメール|  <ul><li>既存の連絡先を更新する場合、連絡先のメールアドレスはこの値に変更されます。</li></ul> |
+|更新タイプ|  <ul><li>既存の連絡先を更新する場合、提出されたセグメンテーションフィールドに対して実行される更新のタイプ。</li><li>構成されていない場合、デフォルト値は`Update`です。</li></ul> |
+|セグメンテーショングループ|  <ul><li>セグメンテーションフィールドのリストを含むセグメンテーショングループ。</li></ul> |
 
 ### アクション - 連絡先の購読
 
@@ -59,9 +59,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/listrak-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|連絡先リスト|  &lt;ul&gt;&lt;li&gt;必須**。**&lt;/li&gt;&lt;li&gt;連絡先が所属するリスト。&lt;/li&gt;&lt;/ul&gt; |
-|連絡先メール|  &lt;ul&gt;&lt;li&gt;必須**。**&lt;/li&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|イベント|  &lt;ul&gt;&lt;li&gt;連絡先が購読した後に発生するべきイベント。&lt;/li&gt;&lt;/ul&gt; |
+|連絡先リスト|  <ul><li>必須**。**</li><li>連絡先が所属するリスト。</li></ul> |
+|連絡先メール|  <ul><li>必須**。**</li><li>連絡先のメールアドレス。</li></ul> |
+|イベント|  <ul><li>連絡先が購読した後に発生するべきイベント。</li></ul> |
 
 ### アクション - 連絡先の購読解除
 
@@ -69,9 +69,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/listrak-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|連絡先リスト|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先が所属するリスト。&lt;/li&gt;&lt;/ul&gt; |
-|連絡先メール|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|イベント|  &lt;ul&gt;&lt;li&gt;連絡先が購読解除した後に発生するべきイベント。&lt;/li&gt;&lt;/ul&gt; |
+|連絡先リスト|  <ul><li>必須。</li><li>連絡先が所属するリスト。</li></ul> |
+|連絡先メール|  <ul><li>必須。</li><li>連絡先のメールアドレス。</li></ul> |
+|イベント|  <ul><li>連絡先が購読解除した後に発生するべきイベント。</li></ul> |
 
 ### アクション - トランザクションメッセージの送信
 
@@ -79,10 +79,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/listrak-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|連絡先リスト|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先が所属するリスト。&lt;/li&gt;&lt;/ul&gt; |
-|連絡先メール|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|トランザクションメッセージ|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;連絡先に送信するメッセージ。&lt;/li&gt;&lt;/ul&gt; |
-|セグメンテーショングループ|  &lt;ul&gt;&lt;li&gt;セグメンテーションフィールドのリストを含むセグメンテーショングループ。&lt;/li&gt;&lt;/ul&gt; |
+|連絡先リスト|  <ul><li>必須。</li><li>連絡先が所属するリスト。</li></ul> |
+|連絡先メール|  <ul><li>必須。</li><li>連絡先のメールアドレス。</li></ul> |
+|トランザクションメッセージ|  <ul><li>必須。</li><li>連絡先に送信するメッセージ。</li></ul> |
+|セグメンテーショングループ|  <ul><li>セグメンテーションフィールドのリストを含むセグメンテーショングループ。</li></ul> |
 
 ## ベンダー文書
 

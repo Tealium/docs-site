@@ -5,9 +5,9 @@ url: https://docs.tealium.com/platforms/android-java/wear/
 ---
 ## Requirements
 
-* AndroidWear app with [Tealium for Android](/platforms/android-java/)
-* Android (KitKat/4.4&#43; / API Level 20&#43; for Android Wear)
-* [Tealium Customer Data Hub account]()
+* AndroidWear app with [Tealium for Android](https://docs.tealium.com/platforms/android-java/)
+* Android (KitKat/4.4+ / API Level 20+ for Android Wear)
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
 ## API Reference
@@ -27,17 +27,21 @@ Install the Tealium library for your Android Wear app:
 
 1. Download and install [Tealium for Android Wear](https://github.com/Tealium/tealium-android/tree/master/Modules/AndroidWear).
 
-2. Add `tealium.mobile-5.x.x.aar` to your application&#39;s dependencies.
+2. Add `tealium.mobile-5.x.x.aar` to your application's dependencies.
 
-      For non-wearable Android applications, no additional code is necessary.
+      
+<blockquote>
+For non-wearable Android applications, no additional code is necessary.
+</blockquote>
 
-3. Create a subclass of the `Application` class, and add the `TealiumWear`&#39;s initialization code in the app&#39;s `onCreate()` method, as shown in the following example:
+
+3. Create a subclass of the `Application` class, and add the `TealiumWear`'s initialization code in the app's `onCreate()` method, as shown in the following example:
 
       ```java
       public class WearApp extends Application {
 
             // Instance name from main app
-            public static final String TEALIUM_MAIN = &#34;INSTANCE_NAME&#34;;
+            public static final String TEALIUM_MAIN = "INSTANCE_NAME";
 
             @Override
             public void onCreate() {
@@ -54,10 +58,10 @@ Install the Tealium library for your Android Wear app:
 
       ```java  
       // Main application initialization
-      Tealium.createInstance(&#34;INSTANCE_NAME&#34;, config);
+      Tealium.createInstance("INSTANCE_NAME", config);
 
       // WearApp initialization
-      public static final String TEALIUM_MAIN = &#34;INSTANCE_NAME&#34;;
+      public static final String TEALIUM_MAIN = "INSTANCE_NAME";
       ```
 
 ## Tracking
@@ -66,23 +70,23 @@ Install the Tealium library for your Android Wear app:
 
 Tracking on the wearable is similar to the handheld side. The only difference is in how to pass custom data to the tracking calls. The wearable side uses a [`DataMap`](https://developers.google.com/android/reference/com/google/android/gms/wearable/DataMap) object, rather than a `Map`:
 
-The [`trackView()`](/platforms/android-java/api/tealium/#trackview) method tracks screen views, as shown in the following example:
+The [`trackView()`](https://docs.tealium.com/platforms/android-java/api/tealium/#trackview) method tracks screen views, as shown in the following example:
 
 ```java
 final DataMap data = new DataMap();
 // ...
 TealiumWear.getInstance(WearApp.TEALIUM_MAIN)
-    .trackView(&#34;SCREEN_NAME&#34;, data);
+    .trackView("SCREEN_NAME", data);
 ```
 
 
 ### Track Events
 
-The [`trackEvent()`](/platforms/android-java/api/tealium/#trackevent) method tracks non-view events, as shown in the following example:
+The [`trackEvent()`](https://docs.tealium.com/platforms/android-java/api/tealium/#trackevent) method tracks non-view events, as shown in the following example:
 
 ```java
 final DataMap data = new DataMap();
 // ...
 TealiumWear.getInstance(WearApp.TEALIUM_MAIN)
-    .trackEvent(&#34;EVENT_NAME&#34;, data);
+    .trackEvent("EVENT_NAME", data);
 ```

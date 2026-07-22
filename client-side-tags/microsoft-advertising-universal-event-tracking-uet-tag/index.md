@@ -27,19 +27,23 @@ url: https://docs.tealium.com/client-side-tags/microsoft-advertising-universal-e
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see [About tags]().
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Tag ID**: Your Microsoft Advertising tag identifier.
-* **ID Sync Beacon**: Persist internal user IDs to Microsoft third-party cookie IDs. Recommended when using the [Microsoft UET Conversion API connector]().
+* **ID Sync Beacon**: Persist internal user IDs to Microsoft third-party cookie IDs. Recommended when using the [Microsoft UET Conversion API connector](https://docs.tealium.com/microsoft-uet-conversion-api-connector/).
 * **Ad Storage Consent**: Set the default consent for Ad Storage. Dynamically update this value by mapping the `ad_storage` parameter in the **Data Mappings** section.
-* **Automatically read from Tealium Consent Cookie**: If set to `true`, consent is set based on the [Tealium consent manager](). 
-* **Generate Event ID**: Automatically generate an event ID for every tracking event. Recommended for deduplication when using the [Microsoft UET Conversion API connector]()
+* **Automatically read from Tealium Consent Cookie**: If set to `true`, consent is set based on the [Tealium consent manager](https://docs.tealium.com/about-consent-management/). 
+* **Generate Event ID**: Automatically generate an event ID for every tracking event. Recommended for deduplication when using the [Microsoft UET Conversion API connector](https://docs.tealium.com/microsoft-uet-conversion-api-connector/)
 
 ### Conversions API
 
- This feature requires an active [Tealium Collect tag](). 
+
+<blockquote>
+This feature requires an active [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+</blockquote>
+
 
 To support the Microsoft UET Conversion API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Microsoft UET Conversion API connector and passes it to the Microsoft Advertising UET tag in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
@@ -53,7 +57,7 @@ For example, a purchase event from tag #88 would send the following attribute an
 
 ```json
 {
-  &#34;microsoft_event_id_purchase_88&#34;: &#34;028b2ade7478...&#34;
+  "microsoft_event_id_purchase_88": "028b2ade7478..."
 }
 ```
 
@@ -61,7 +65,7 @@ A page load event from the same tag would send the following attribute and value
 
 ```json
 {
-  &#34;microsoft_event_id_pageload_88&#34;: &#34;084b1cda7461...&#34;
+  "microsoft_event_id_pageload_88": "084b1cda7461..."
 }
 ```
 #### Deduplication
@@ -70,19 +74,19 @@ To ensure proper event deduplication, the event ID from the Microsoft Advertisin
 
 * From the **Tag Timing** drop-down, select **Prioritized**.
 * Set the **Bundle Flag** toggle to `On`.
-* Use the [Load Order Manager screen]() to fire the Microsoft Advertising UET tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last.
-For information on using these event ID attributes, see [Microsoft UET Conversion API connector: Deduplication]().
+* Use the [Load Order Manager screen](https://docs.tealium.com/load-order-manager/) to fire the Microsoft Advertising UET tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last.
+For information on using these event ID attributes, see [Microsoft UET Conversion API connector: Deduplication](https://docs.tealium.com/microsoft-uet-conversion-api-connector/#deduplication).
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Consent mode
 
 There are two options to implement consent mode for this tag:
 
-* Use [client-side consent management]() and automatically read the Tealium consent cookie.
-* Add a [JavaScript Code extension]() to map consent choices and category mappings from your consent management platform (CMP) to this tag.
+* Use [client-side consent management](https://docs.tealium.com/about-consent-management/) and automatically read the Tealium consent cookie.
+* Add a [JavaScript Code extension](https://docs.tealium.com/javascript-code-extension/) to map consent choices and category mappings from your consent management platform (CMP) to this tag.
 
 As visitors make their consent choices, the tag will choose the appropriate approach for first and third-party cookies:
 
@@ -101,22 +105,22 @@ To map end-user consent choices to Microsoft consent mode settings, use the Java
 * Set **Occurrence** to **Run Always**
 * Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing `CUSTOM_LOGIC` with the logic for your vendor.
 ```js
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? 'granted' : 'denied';
 ```
 
 For example, the following code is for OneTrust.
 ```js
 // After Load Rules - Run Always
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1  ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? 'granted' : 'denied';
 ```
 
 If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the `ad_storage` parameter to attributes for your specific case.  
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -124,28 +128,28 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`tagid`|  &lt;ul&gt;&lt;li&gt;Tag ID.&lt;/li&gt;&lt;li&gt;Your tag identifier provided by Microsoft Advertising.&lt;/li&gt;&lt;/ul&gt; |
-|`event_category`|  &lt;ul&gt;&lt;li&gt;Event category.&lt;/li&gt;&lt;li&gt;Sends information about the element or object being tracked.&lt;/li&gt;&lt;li&gt;Example: `Button`.&lt;/li&gt;&lt;/ul&gt; |
-|`event_action`|  &lt;ul&gt;&lt;li&gt;Event action.&lt;/li&gt;&lt;li&gt;Sends user actions.&lt;/li&gt;&lt;li&gt;Example: `click`, `mousedown`.&lt;/li&gt;&lt;/ul&gt; |
-|`event_label`|  &lt;ul&gt;&lt;li&gt;Event label.&lt;/li&gt;&lt;li&gt;Sends informative labels or details about the event goal.&lt;/li&gt;&lt;li&gt;Example: `Product demo`.&lt;/li&gt;&lt;/ul&gt; |
-|`event_value`|  &lt;ul&gt;&lt;li&gt;Event value.&lt;/li&gt;&lt;li&gt;Sends the numerical value of the event goal.&lt;/li&gt;&lt;/ul&gt; |
-|`description`|  &lt;ul&gt;&lt;li&gt;Error description.&lt;/li&gt;&lt;li&gt;The description with the error experienced by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`fatal`|  &lt;ul&gt;&lt;li&gt;Error fatal.&lt;/li&gt;&lt;li&gt;Whether the error experienced by the user is fatal.&lt;/li&gt;&lt;/ul&gt; |
-|`method`|  &lt;ul&gt;&lt;li&gt;Method.&lt;/li&gt;&lt;li&gt;The method associated with the user&#39;s action.&lt;/li&gt;&lt;/ul&gt; |
-|`screen_name`|  &lt;ul&gt;&lt;li&gt;Screen name.&lt;/li&gt;&lt;li&gt;The name associated with the screen the user is currently viewing.&lt;/li&gt;&lt;/ul&gt; |
-|`search_term`|  &lt;ul&gt;&lt;li&gt;Search term.&lt;/li&gt;&lt;li&gt;The term used in the user&#39;s search.&lt;/li&gt;&lt;/ul&gt; |
-|`content_type`|  &lt;ul&gt;&lt;li&gt;Content type.&lt;/li&gt;&lt;li&gt;The type of content selected by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`content_id`|  &lt;ul&gt;&lt;li&gt;Content ID.&lt;/li&gt;&lt;li&gt;The ID of the content selected by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_creative_name`|  &lt;ul&gt;&lt;li&gt;List of promotion creative names.&lt;/li&gt;&lt;li&gt;An array of creative names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_creative_slot`|  &lt;ul&gt;&lt;li&gt;List of promotion creative slots.&lt;/li&gt;&lt;li&gt;An array of creative slot names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_id`|  &lt;ul&gt;&lt;li&gt;List of promotion IDs.&lt;/li&gt;&lt;li&gt;An array of promotion IDs used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_name`|  &lt;ul&gt;&lt;li&gt;List of promotion names.&lt;/li&gt;&lt;li&gt;An array of promotion names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
+|`tagid`|  <ul><li>Tag ID.</li><li>Your tag identifier provided by Microsoft Advertising.</li></ul> |
+|`event_category`|  <ul><li>Event category.</li><li>Sends information about the element or object being tracked.</li><li>Example: `Button`.</li></ul> |
+|`event_action`|  <ul><li>Event action.</li><li>Sends user actions.</li><li>Example: `click`, `mousedown`.</li></ul> |
+|`event_label`|  <ul><li>Event label.</li><li>Sends informative labels or details about the event goal.</li><li>Example: `Product demo`.</li></ul> |
+|`event_value`|  <ul><li>Event value.</li><li>Sends the numerical value of the event goal.</li></ul> |
+|`description`|  <ul><li>Error description.</li><li>The description with the error experienced by the user.</li></ul> |
+|`fatal`|  <ul><li>Error fatal.</li><li>Whether the error experienced by the user is fatal.</li></ul> |
+|`method`|  <ul><li>Method.</li><li>The method associated with the user's action.</li></ul> |
+|`screen_name`|  <ul><li>Screen name.</li><li>The name associated with the screen the user is currently viewing.</li></ul> |
+|`search_term`|  <ul><li>Search term.</li><li>The term used in the user's search.</li></ul> |
+|`content_type`|  <ul><li>Content type.</li><li>The type of content selected by the user.</li></ul> |
+|`content_id`|  <ul><li>Content ID.</li><li>The ID of the content selected by the user.</li></ul> |
+|`promotion_creative_name`|  <ul><li>List of promotion creative names.</li><li>An array of creative names used in the promotion.</li></ul> |
+|`promotion_creative_slot`|  <ul><li>List of promotion creative slots.</li><li>An array of creative slot names used in the promotion.</li></ul> |
+|`promotion_id`|  <ul><li>List of promotion IDs.</li><li>An array of promotion IDs used in the promotion.</li></ul> |
+|`promotion_name`|  <ul><li>List of promotion names.</li><li>An array of promotion names used in the promotion.</li></ul> |
 | `enableAutoSpaTracking` | Enable automatic SPA tracking. |
 | `id_sync_beacon` | ID sync beacon. |
 | `customer_id` | Microsoft customer ID. |
 | `visitor_id` | Visitor ID. |
 | `user_id` | User ID. |
-|`custom.myvar`|  &lt;ul&gt;&lt;li&gt;Custom property/parameter.&lt;/li&gt;&lt;li&gt;A custom property for your events.&lt;/li&gt;&lt;li&gt;Sent with all events, use Event Parameters to set properties for specific events.&lt;/li&gt;&lt;li&gt;Replace `myvar` with the name of your property.&lt;/li&gt;&lt;/ul&gt; |
+|`custom.myvar`|  <ul><li>Custom property/parameter.</li><li>A custom property for your events.</li><li>Sent with all events, use Event Parameters to set properties for specific events.</li><li>Replace `myvar` with the name of your property.</li></ul> |
 | `generate_event_id` | `Boolean` | Generate event IDs. |
 | `event_id` | `String` | Event ID. |
 
@@ -153,23 +157,23 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`checkout_step`|  &lt;ul&gt;&lt;li&gt;Checkout step.&lt;/li&gt;&lt;li&gt;The current step of the checkout process the user is on.&lt;/li&gt;&lt;/ul&gt; |
-|`checkout_option`|  &lt;ul&gt;&lt;li&gt;Checkout option.&lt;/li&gt;&lt;li&gt;The current checkout option chosen by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub total.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping amount.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax amount.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;Currency.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;Promo code.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of product IDs.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of names.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_brand`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of brands.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cbrand`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of categories.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of quantities.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of prices.&lt;/li&gt;&lt;li&gt;Use to override the default e-commerce value `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-| List of Product Creative Names |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;An array of creative names used for the product.&lt;/li&gt;&lt;/ul&gt; |
-| List of Product Creative Slots |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;An array of creative slots used for the product.&lt;/li&gt;&lt;/ul&gt; |
-| List of Product Location IDs |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;An array of location IDs used for the product.&lt;/li&gt;&lt;/ul&gt; |
+|`checkout_step`|  <ul><li>Checkout step.</li><li>The current step of the checkout process the user is on.</li></ul> |
+|`checkout_option`|  <ul><li>Checkout option.</li><li>The current checkout option chosen by the user.</li></ul> |
+|`order_id`|  <ul><li>Order ID.</li><li>Use to override the default e-commerce value `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub total.</li><li>Use to override the default e-commerce value `_csubtotal`.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping amount.</li><li>Use to override the default e-commerce value `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax amount.</li><li>Use to override the default e-commerce value `_ctax`.</li></ul> |
+|`order_currency`|  <ul><li>Currency.</li><li>Use to override the default e-commerce value `_ccurrency`.</li></ul> |
+|`order_coupon_code`|  <ul><li>Promo code.</li><li>Use to override the default e-commerce value `_cpromo`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of product IDs.</li><li>Use to override the default e-commerce value `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of names.</li><li>Use to override the default e-commerce value `_cprodname`.</li></ul> |
+|`product_brand`|  <ul><li>Array</li><li>List of brands.</li><li>Use to override the default e-commerce value `_cbrand`.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of categories.</li><li>Use to override the default e-commerce value `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of quantities.</li><li>Use to override the default e-commerce value `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of prices.</li><li>Use to override the default e-commerce value `_cprice`.</li></ul> |
+| List of Product Creative Names |  <ul><li>Array</li><li>An array of creative names used for the product.</li></ul> |
+| List of Product Creative Slots |  <ul><li>Array</li><li>An array of creative slots used for the product.</li></ul> |
+| List of Product Location IDs |  <ul><li>Array</li><li>An array of location IDs used for the product.</li></ul> |
 
 ### Events and engagements
 
@@ -182,37 +186,37 @@ Choose from the predefined list, or create a custom event.
   * For a custom event, enter a name with which to identify it.
 
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the plus sign (**&#43;**) and repeat Steps 1 and 2.
+1. To map more events, click the plus sign (**+**) and repeat Steps 1 and 2.
 1. Click **Apply**.  
 The event triggers when the value supplied is found in the data layer.
 
 |Variable| Description|
 |---| ---|
-|`add_payment_info`|  &lt;ul&gt;&lt;li&gt;Add payment info.&lt;/li&gt;&lt;li&gt;User has added new payment information to the transaction.&lt;/li&gt;&lt;/ul&gt; |
-|`add_to_cart`|  &lt;ul&gt;&lt;li&gt;Add to cart.&lt;/li&gt;&lt;li&gt;User has added one or more items to a shopping cart.&lt;/li&gt;&lt;/ul&gt; |
-|`add_to_wishlist`|  &lt;ul&gt;&lt;li&gt;Add to wishlist.&lt;/li&gt;&lt;li&gt;User has added one or more items to a wish list.&lt;/li&gt;&lt;/ul&gt; |
-|`begin_checkout`|  &lt;ul&gt;&lt;li&gt;Begin checkout.&lt;/li&gt;&lt;li&gt;User has begun the checkout process.&lt;/li&gt;&lt;/ul&gt; |
-|`checkout_progress`|  &lt;ul&gt;&lt;li&gt;Checkout progress.&lt;/li&gt;&lt;li&gt;User has exchanged steps in the checkout progress.&lt;/li&gt;&lt;/ul&gt; |
-|`exception`|  &lt;ul&gt;&lt;li&gt;Exception.&lt;/li&gt;&lt;li&gt;The user has encountered an exception.&lt;/li&gt;&lt;/ul&gt; |
-|`generate_lead`|  &lt;ul&gt;&lt;li&gt;Generate lead.&lt;/li&gt;&lt;li&gt;The user&#39;s action has generated a lead.&lt;/li&gt;&lt;/ul&gt; |
-|`login`|  &lt;ul&gt;&lt;li&gt;Login.&lt;/li&gt;&lt;li&gt;The user has logged in.&lt;/li&gt;&lt;/ul&gt; |
-|`page_view`|  &lt;ul&gt;&lt;li&gt;Page view.&lt;/li&gt;&lt;li&gt;The user has viewed a page.&lt;/li&gt;&lt;/ul&gt; |
-|`purchase`|  &lt;ul&gt;&lt;li&gt;Purchase.&lt;/li&gt;&lt;li&gt;The user has completed a purchase of one or more products.&lt;/li&gt;&lt;/ul&gt; |
-|`refund`|  &lt;ul&gt;&lt;li&gt;Refund.&lt;/li&gt;&lt;li&gt;The user has requested a refund on one or more products.&lt;/li&gt;&lt;/ul&gt; |
-|`remove_from_cart`|  &lt;ul&gt;&lt;li&gt;Remove from cart.&lt;/li&gt;&lt;li&gt;The user has removed one or more items from a shopping cart.&lt;/li&gt;&lt;/ul&gt; |
-|`screen_view`|  &lt;ul&gt;&lt;li&gt;Screen view.&lt;/li&gt;&lt;li&gt;The user has viewed a screen.&lt;/li&gt;&lt;/ul&gt; |
-|`search`|  &lt;ul&gt;&lt;li&gt;Search.&lt;/li&gt;&lt;li&gt;The user has searched.&lt;/li&gt;&lt;/ul&gt; |
-|`select_content`|  &lt;ul&gt;&lt;li&gt;Select content.&lt;/li&gt;&lt;li&gt;The user has selected on one or more content items.&lt;/li&gt;&lt;/ul&gt; |
-|`set_checkout_option`|  &lt;ul&gt;&lt;li&gt;Set checkout option.&lt;/li&gt;&lt;li&gt;The user has selected a checkout option for the current checkout step.&lt;/li&gt;&lt;/ul&gt; |
-|`share`|  &lt;ul&gt;&lt;li&gt;Share&lt;/li&gt;&lt;li&gt;The user has shared content.&lt;/li&gt;&lt;/ul&gt; |
-|`sign_up`|  &lt;ul&gt;&lt;li&gt;Sign up.&lt;/li&gt;&lt;li&gt;The user has signed up.&lt;/li&gt;&lt;/ul&gt; |
-|`timing_complete`|  &lt;ul&gt;&lt;li&gt;Timing complete.&lt;/li&gt;&lt;li&gt;The timing information for the user&#39;s page load.&lt;/li&gt;&lt;/ul&gt; |
-|`view_item`|  &lt;ul&gt;&lt;li&gt;View item.&lt;/li&gt;&lt;li&gt;The user has viewed a singular item, often a detail page.&lt;/li&gt;&lt;/ul&gt; |
-|`view_item_list`|  &lt;ul&gt;&lt;li&gt;View item list.&lt;/li&gt;&lt;li&gt;The user has viewed a list page with one or more items.&lt;/li&gt;&lt;/ul&gt; |
-|`view_promotion`|  &lt;ul&gt;&lt;li&gt;View promotion.&lt;/li&gt;&lt;li&gt;The user has clicked on a promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`view_search_results`|  &lt;ul&gt;&lt;li&gt;View search results.&lt;/li&gt;&lt;li&gt;The user has viewed the results of a search.&lt;/li&gt;&lt;/ul&gt; |
-| `update_consent` | &lt;ul&gt;&lt;li&gt;Update consent.&lt;/li&gt;&lt;/ul&gt;  |
-|`custom`|  &lt;ul&gt;&lt;li&gt;Custom event.&lt;/li&gt;&lt;li&gt;The user has initiated action related to a custom event.&lt;/li&gt;&lt;/ul&gt; |
+|`add_payment_info`|  <ul><li>Add payment info.</li><li>User has added new payment information to the transaction.</li></ul> |
+|`add_to_cart`|  <ul><li>Add to cart.</li><li>User has added one or more items to a shopping cart.</li></ul> |
+|`add_to_wishlist`|  <ul><li>Add to wishlist.</li><li>User has added one or more items to a wish list.</li></ul> |
+|`begin_checkout`|  <ul><li>Begin checkout.</li><li>User has begun the checkout process.</li></ul> |
+|`checkout_progress`|  <ul><li>Checkout progress.</li><li>User has exchanged steps in the checkout progress.</li></ul> |
+|`exception`|  <ul><li>Exception.</li><li>The user has encountered an exception.</li></ul> |
+|`generate_lead`|  <ul><li>Generate lead.</li><li>The user's action has generated a lead.</li></ul> |
+|`login`|  <ul><li>Login.</li><li>The user has logged in.</li></ul> |
+|`page_view`|  <ul><li>Page view.</li><li>The user has viewed a page.</li></ul> |
+|`purchase`|  <ul><li>Purchase.</li><li>The user has completed a purchase of one or more products.</li></ul> |
+|`refund`|  <ul><li>Refund.</li><li>The user has requested a refund on one or more products.</li></ul> |
+|`remove_from_cart`|  <ul><li>Remove from cart.</li><li>The user has removed one or more items from a shopping cart.</li></ul> |
+|`screen_view`|  <ul><li>Screen view.</li><li>The user has viewed a screen.</li></ul> |
+|`search`|  <ul><li>Search.</li><li>The user has searched.</li></ul> |
+|`select_content`|  <ul><li>Select content.</li><li>The user has selected on one or more content items.</li></ul> |
+|`set_checkout_option`|  <ul><li>Set checkout option.</li><li>The user has selected a checkout option for the current checkout step.</li></ul> |
+|`share`|  <ul><li>Share</li><li>The user has shared content.</li></ul> |
+|`sign_up`|  <ul><li>Sign up.</li><li>The user has signed up.</li></ul> |
+|`timing_complete`|  <ul><li>Timing complete.</li><li>The timing information for the user's page load.</li></ul> |
+|`view_item`|  <ul><li>View item.</li><li>The user has viewed a singular item, often a detail page.</li></ul> |
+|`view_item_list`|  <ul><li>View item list.</li><li>The user has viewed a list page with one or more items.</li></ul> |
+|`view_promotion`|  <ul><li>View promotion.</li><li>The user has clicked on a promotion.</li></ul> |
+|`view_search_results`|  <ul><li>View search results.</li><li>The user has viewed the results of a search.</li></ul> |
+| `update_consent` | <ul><li>Update consent.</li></ul>  |
+|`custom`|  <ul><li>Custom event.</li><li>The user has initiated action related to a custom event.</li></ul> |
 
 ### Product audience events
 
@@ -225,15 +229,15 @@ Choose from the predefined list, or create a custom event.
   * For a custom event, enter a name with which to identify it.
 
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the plus sign (**&#43;**) and repeat Steps 1 and 2.
+1. To map more events, click the plus sign (**+**) and repeat Steps 1 and 2.
 1. Click **Apply**.  
 The event triggers when the value supplied is found in the data layer.
 
 |Variable| Description|
 |---| ---|
-|`retail`|  &lt;ul&gt;&lt;li&gt;Retail.&lt;/li&gt;&lt;li&gt;Send data for retail-based marketing.&lt;/li&gt;&lt;/ul&gt; |
-|`travel`|  &lt;ul&gt;&lt;li&gt;Travel.&lt;/li&gt;&lt;li&gt;Send data for travel-based marketing.&lt;/li&gt;&lt;/ul&gt; |
-|`hotel`|  &lt;ul&gt;&lt;li&gt;Hotel.&lt;/li&gt;&lt;li&gt;Send data for hotel-based marketing.&lt;/li&gt;&lt;/ul&gt; |
+|`retail`|  <ul><li>Retail.</li><li>Send data for retail-based marketing.</li></ul> |
+|`travel`|  <ul><li>Travel.</li><li>Send data for travel-based marketing.</li></ul> |
+|`hotel`|  <ul><li>Hotel.</li><li>Send data for hotel-based marketing.</li></ul> |
 
 ### Enhanced conversion data
 
@@ -252,7 +256,11 @@ The event triggers when the value supplied is found in the data layer.
 
 Map to these destinations if you want to pass additional data with events mapped earlier.
 
+
+<blockquote>
 Parameters are only used with predefined events. For more information on how to pass a parameter with a custom event, see .
+</blockquote>
+
 
 Use the following steps to pass a parameter with a predefined event:
 
@@ -263,45 +271,49 @@ If using a custom parameter, enter a name with which to identify it.
 
 |Variable| Description|
 |---| ---|
-|`event_category`|  &lt;ul&gt;&lt;li&gt;Event category.&lt;/li&gt;&lt;li&gt;The category of the current event.&lt;/li&gt;&lt;li&gt;Sends information about the element or object, such as a button being clicked on.&lt;/li&gt;&lt;/ul&gt; |
-|`event_action`|  &lt;ul&gt;&lt;li&gt;Event action.&lt;/li&gt;&lt;li&gt;The action name of the current event.&lt;/li&gt;&lt;li&gt;Sends user actions, such as click or mousedown.&lt;/li&gt;&lt;/ul&gt; |
-|`event_label`|  &lt;ul&gt;&lt;li&gt;Event label.&lt;/li&gt;&lt;li&gt;The label of the current event.&lt;/li&gt;&lt;li&gt;Sends informative labels or details, such as product demo, about the product goal.&lt;/li&gt;&lt;/ul&gt; |
-|`event_value`|  &lt;ul&gt;&lt;li&gt;Event value.&lt;/li&gt;&lt;li&gt;Send the numerical value of the event goal for the current event.&lt;/li&gt;&lt;/ul&gt; |
-|`custom`|  &lt;ul&gt;&lt;li&gt;Custom property/parameter.&lt;/li&gt;&lt;li&gt;A custom property associated with the current event.&lt;/li&gt;&lt;/ul&gt; |
-|`description`|  &lt;ul&gt;&lt;li&gt;Error description.&lt;/li&gt;&lt;li&gt;The description of the error experienced by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`fatal`|  &lt;ul&gt;&lt;li&gt;Error fatal.&lt;/li&gt;&lt;li&gt;Whether or not the error experienced by the user is fatal.&lt;/li&gt;&lt;/ul&gt; |
-|`method`|  &lt;ul&gt;&lt;li&gt;Method.&lt;/li&gt;&lt;li&gt;The method associated with the user&#39;s action.&lt;/li&gt;&lt;/ul&gt; |
-|`screen_name`|  &lt;ul&gt;&lt;li&gt;Screen name.&lt;/li&gt;&lt;li&gt;The name associated with the current screen the user is viewing.&lt;/li&gt;&lt;/ul&gt; |
-|`search_term`|  &lt;ul&gt;&lt;li&gt;Search term.&lt;/li&gt;&lt;li&gt;The term used in the user&#39;s search.&lt;/li&gt;&lt;/ul&gt; |
-|`content_type`|  &lt;ul&gt;&lt;li&gt;Content type.&lt;/li&gt;&lt;li&gt;The type of content selected by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`content_id`|  &lt;ul&gt;&lt;li&gt;Content ID.&lt;/li&gt;&lt;li&gt;The ID of the content selected by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`checkout_step`|  &lt;ul&gt;&lt;li&gt;Checkout step.&lt;/li&gt;&lt;li&gt;The current step of the checkout process the user is on&lt;/li&gt;&lt;/ul&gt; |
-|`checkout_option`|  &lt;ul&gt;&lt;li&gt;Checkout option.&lt;/li&gt;&lt;li&gt;The current checkout option chosen by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;Order total.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_ctotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub total.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping amount.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax amount.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;Currency.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;Promo code.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;List of product IDs.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;List of names.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_brand`|  &lt;ul&gt;&lt;li&gt;List of brands.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cbrand`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;List of categories.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;List of quantities.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;List of prices.&lt;/li&gt;&lt;li&gt;Use this to override the default e-commerce value `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_creative_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of product creative names.&lt;/li&gt;&lt;li&gt;An array of creative names used for the product.&lt;/li&gt;&lt;/ul&gt; |
-|`product_creative_slot`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of product creative slots.&lt;/li&gt;&lt;li&gt;An array of creative slots used for the product.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_creative_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of promotion creative names.&lt;/li&gt;&lt;li&gt;An array of creative names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_creative_slot`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of promotion creative slots.&lt;/li&gt;&lt;li&gt;An array of creative slot names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of promotion IDs.&lt;/li&gt;&lt;li&gt;An array of promotion IDs used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
-|`promotion_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion names.&lt;/li&gt;&lt;li&gt;An array of promotion names used in the promotion.&lt;/li&gt;&lt;/ul&gt; |
+|`event_category`|  <ul><li>Event category.</li><li>The category of the current event.</li><li>Sends information about the element or object, such as a button being clicked on.</li></ul> |
+|`event_action`|  <ul><li>Event action.</li><li>The action name of the current event.</li><li>Sends user actions, such as click or mousedown.</li></ul> |
+|`event_label`|  <ul><li>Event label.</li><li>The label of the current event.</li><li>Sends informative labels or details, such as product demo, about the product goal.</li></ul> |
+|`event_value`|  <ul><li>Event value.</li><li>Send the numerical value of the event goal for the current event.</li></ul> |
+|`custom`|  <ul><li>Custom property/parameter.</li><li>A custom property associated with the current event.</li></ul> |
+|`description`|  <ul><li>Error description.</li><li>The description of the error experienced by the user.</li></ul> |
+|`fatal`|  <ul><li>Error fatal.</li><li>Whether or not the error experienced by the user is fatal.</li></ul> |
+|`method`|  <ul><li>Method.</li><li>The method associated with the user's action.</li></ul> |
+|`screen_name`|  <ul><li>Screen name.</li><li>The name associated with the current screen the user is viewing.</li></ul> |
+|`search_term`|  <ul><li>Search term.</li><li>The term used in the user's search.</li></ul> |
+|`content_type`|  <ul><li>Content type.</li><li>The type of content selected by the user.</li></ul> |
+|`content_id`|  <ul><li>Content ID.</li><li>The ID of the content selected by the user.</li></ul> |
+|`checkout_step`|  <ul><li>Checkout step.</li><li>The current step of the checkout process the user is on</li></ul> |
+|`checkout_option`|  <ul><li>Checkout option.</li><li>The current checkout option chosen by the user.</li></ul> |
+|`order_id`|  <ul><li>Order ID.</li><li>Use this to override the default e-commerce value `_corder`.</li></ul> |
+|`order_total`|  <ul><li>Order total.</li><li>Use this to override the default e-commerce value `_ctotal`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub total.</li><li>Use this to override the default e-commerce value `_csubtotal`.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping amount.</li><li>Use this to override the default e-commerce value `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax amount.</li><li>Use this to override the default e-commerce value `_ctax`.</li></ul> |
+|`order_currency`|  <ul><li>Currency.</li><li>Use this to override the default e-commerce value `_ccurrency`.</li></ul> |
+|`order_coupon_code`|  <ul><li>Promo code.</li><li>Use this to override the default e-commerce value `_cpromo`.</li></ul> |
+|`product_id`|  <ul><li>List of product IDs.</li><li>Use this to override the default e-commerce value `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>List of names.</li><li>Use this to override the default e-commerce value `_cprodname`.</li></ul> |
+|`product_brand`|  <ul><li>List of brands.</li><li>Use this to override the default e-commerce value `_cbrand`.</li></ul> |
+|`product_category`|  <ul><li>List of categories.</li><li>Use this to override the default e-commerce value `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>List of quantities.</li><li>Use this to override the default e-commerce value `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>List of prices.</li><li>Use this to override the default e-commerce value `_cprice`.</li></ul> |
+|`product_creative_name`|  <ul><li>Array</li><li>List of product creative names.</li><li>An array of creative names used for the product.</li></ul> |
+|`product_creative_slot`|  <ul><li>Array</li><li>List of product creative slots.</li><li>An array of creative slots used for the product.</li></ul> |
+|`promotion_creative_name`|  <ul><li>Array</li><li>List of promotion creative names.</li><li>An array of creative names used in the promotion.</li></ul> |
+|`promotion_creative_slot`|  <ul><li>Array</li><li>List of promotion creative slots.</li><li>An array of creative slot names used in the promotion.</li></ul> |
+|`promotion_id`|  <ul><li>Array</li><li>List of promotion IDs.</li><li>An array of promotion IDs used in the promotion.</li></ul> |
+|`promotion_name`|  <ul><li>Array</li><li>Promotion names.</li><li>An array of promotion names used in the promotion.</li></ul> |
 
 ### Product audience parameters
 
 Map to these destinations if you want to pass additional data with events mapped earlier.
 
+
+<blockquote>
 Parameters are only used with predefined events. For more information on how to pass a parameter with a custom event, see .
+</blockquote>
+
 
 Use the following steps to pass a parameter with a predefined event:
 
@@ -312,56 +324,56 @@ If using a custom parameter, enter a name with which to identify it.
 
 |Variable| Description|
 |---| ---|
-|`ecomm_prodid`|  &lt;ul&gt;&lt;li&gt;Product ID.&lt;/li&gt;&lt;li&gt;One or more IDs currently visible to or selected by the user.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm_pagetype`|  &lt;ul&gt;&lt;li&gt;Page type.&lt;/li&gt;&lt;li&gt;The current page type visible to the user.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm_totalvalue`|  &lt;ul&gt;&lt;li&gt;Total value.&lt;/li&gt;&lt;li&gt;The total value currently associated with the user.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm_category`|  &lt;ul&gt;&lt;li&gt;Category.&lt;/li&gt;&lt;li&gt;The current category visible to the user.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_destid`|  &lt;ul&gt;&lt;li&gt;Destination ID.&lt;/li&gt;&lt;li&gt;The ID for the destination the user has selected.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_originid`|  &lt;ul&gt;&lt;li&gt;Origin ID.&lt;/li&gt;&lt;li&gt;The ID for the user&#39;s origin location.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_startdate`|  &lt;ul&gt;&lt;li&gt;Start date.&lt;/li&gt;&lt;li&gt;The date the user wants to start travel.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_enddate`|  &lt;ul&gt;&lt;li&gt;End date.&lt;/li&gt;&lt;li&gt;The date the user wants to end travel.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_totalvalue`|  &lt;ul&gt;&lt;li&gt;Total value.&lt;/li&gt;&lt;li&gt;The total value of the travel the user wants to embark on.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_bpr`|  &lt;ul&gt;&lt;li&gt;Hotel base price.&lt;/li&gt;&lt;li&gt;The base price of the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_tpr`|  &lt;ul&gt;&lt;li&gt;Hotel total price.&lt;/li&gt;&lt;li&gt;The total price, including tax and discounts, of the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_bid`|  &lt;ul&gt;&lt;li&gt;Hotel booking ID.&lt;/li&gt;&lt;li&gt;The ID for the user&#39;s booking.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_cid`|  &lt;ul&gt;&lt;li&gt;Hotel check-in date.&lt;/li&gt;&lt;li&gt;The check-in date for the user&#39;s stay.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_cod`|  &lt;ul&gt;&lt;li&gt;Hotel checkout date.&lt;/li&gt;&lt;li&gt;The checkout date for the user&#39;s stay.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_los`|  &lt;ul&gt;&lt;li&gt;Hotel length of stay.&lt;/li&gt;&lt;li&gt;The total length of the user&#39;s stay.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_pid`|  &lt;ul&gt;&lt;li&gt;Hotel partner ID.&lt;/li&gt;&lt;li&gt;The partner ID for the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_pagetype`|  &lt;ul&gt;&lt;li&gt;Hotel page type.&lt;/li&gt;&lt;li&gt;The current page type visible to the user.&lt;/li&gt;&lt;/ul&gt; |
+|`ecomm_prodid`|  <ul><li>Product ID.</li><li>One or more IDs currently visible to or selected by the user.</li></ul> |
+|`ecomm_pagetype`|  <ul><li>Page type.</li><li>The current page type visible to the user.</li></ul> |
+|`ecomm_totalvalue`|  <ul><li>Total value.</li><li>The total value currently associated with the user.</li></ul> |
+|`ecomm_category`|  <ul><li>Category.</li><li>The current category visible to the user.</li></ul> |
+|`travel_destid`|  <ul><li>Destination ID.</li><li>The ID for the destination the user has selected.</li></ul> |
+|`travel_originid`|  <ul><li>Origin ID.</li><li>The ID for the user's origin location.</li></ul> |
+|`travel_startdate`|  <ul><li>Start date.</li><li>The date the user wants to start travel.</li></ul> |
+|`travel_enddate`|  <ul><li>End date.</li><li>The date the user wants to end travel.</li></ul> |
+|`travel_totalvalue`|  <ul><li>Total value.</li><li>The total value of the travel the user wants to embark on.</li></ul> |
+|`hct_bpr`|  <ul><li>Hotel base price.</li><li>The base price of the hotel the user wants to book.</li></ul> |
+|`hct_tpr`|  <ul><li>Hotel total price.</li><li>The total price, including tax and discounts, of the hotel the user wants to book.</li></ul> |
+|`hct_bid`|  <ul><li>Hotel booking ID.</li><li>The ID for the user's booking.</li></ul> |
+|`hct_cid`|  <ul><li>Hotel check-in date.</li><li>The check-in date for the user's stay.</li></ul> |
+|`hct_cod`|  <ul><li>Hotel checkout date.</li><li>The checkout date for the user's stay.</li></ul> |
+|`hct_los`|  <ul><li>Hotel length of stay.</li><li>The total length of the user's stay.</li></ul> |
+|`hct_pid`|  <ul><li>Hotel partner ID.</li><li>The partner ID for the hotel the user wants to book.</li></ul> |
+|`hct_pagetype`|  <ul><li>Hotel page type.</li><li>The current page type visible to the user.</li></ul> |
 
 ### Product audience - Retail
 
 | Variable           | Description             |
 | ------------------ | --------------- |
-| `ecomm_prodid`     | &lt;ul&gt;&lt;li&gt;Product ID.&lt;/li&gt;&lt;li&gt;One or more IDs currently visible to or selected by the user.&lt;/li&gt;&lt;/ul&gt;      |
-| `ecomm_pagetype`   | &lt;ul&gt;&lt;li&gt;Page type.&lt;/li&gt;&lt;li&gt;The current page type visible to the user.&lt;/li&gt;&lt;li&gt;One of `home`, `searchresults`, `category`, `product`, `cart`, `purchase`, or `other`.&lt;/li&gt;&lt;/ul&gt; |
-| `ecomm_totalvalue` | &lt;ul&gt;&lt;li&gt;Total value.&lt;/li&gt;&lt;li&gt;The total value currently associated with the user.&lt;/li&gt;&lt;/ul&gt;            |
-| `ecomm_category`   | &lt;ul&gt;&lt;li&gt;Category.&lt;/li&gt;&lt;li&gt;The current category visible to the user.&lt;/li&gt;&lt;/ul&gt;   |
+| `ecomm_prodid`     | <ul><li>Product ID.</li><li>One or more IDs currently visible to or selected by the user.</li></ul>      |
+| `ecomm_pagetype`   | <ul><li>Page type.</li><li>The current page type visible to the user.</li><li>One of `home`, `searchresults`, `category`, `product`, `cart`, `purchase`, or `other`.</li></ul> |
+| `ecomm_totalvalue` | <ul><li>Total value.</li><li>The total value currently associated with the user.</li></ul>            |
+| `ecomm_category`   | <ul><li>Category.</li><li>The current category visible to the user.</li></ul>   |
 
 ### Product audience - Travel
 
 |Variable| Description|
 |---| ---|
-|`travel_destid`|  &lt;ul&gt;&lt;li&gt;Destination ID.&lt;/li&gt;&lt;li&gt;The ID for the destination the user has selected.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_originid`|  &lt;ul&gt;&lt;li&gt;Origin ID.&lt;/li&gt;&lt;li&gt;The ID for the user&#39;s origin location.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_pagetype`|  &lt;ul&gt;&lt;li&gt;Page type.&lt;/li&gt;&lt;li&gt;The current page type visible to the user.&lt;/li&gt;&lt;li&gt;One of `home`, `searchresults`, `offerdetail`, `conversionintent`, `conversion`, `cancel`, or `other`.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_startdate`|  &lt;ul&gt;&lt;li&gt;Start date.&lt;/li&gt;&lt;li&gt;The date the user wants to start travel.&lt;/li&gt;&lt;li&gt;Date format is `YYYY-MM-DD`.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_enddate`|  &lt;ul&gt;&lt;li&gt;End date.&lt;/li&gt;&lt;li&gt;The date the user wants to end travel.&lt;/li&gt;&lt;li&gt;Date format is `YYYY-MM-DD`.&lt;/li&gt;&lt;/ul&gt; |
-|`travel_totalvalue`|  &lt;ul&gt;&lt;li&gt;Total value.&lt;/li&gt;&lt;li&gt;The total value of the travel the user wants to embark on.&lt;/li&gt;&lt;/ul&gt; |
+|`travel_destid`|  <ul><li>Destination ID.</li><li>The ID for the destination the user has selected.</li></ul> |
+|`travel_originid`|  <ul><li>Origin ID.</li><li>The ID for the user's origin location.</li></ul> |
+|`travel_pagetype`|  <ul><li>Page type.</li><li>The current page type visible to the user.</li><li>One of `home`, `searchresults`, `offerdetail`, `conversionintent`, `conversion`, `cancel`, or `other`.</li></ul> |
+|`travel_startdate`|  <ul><li>Start date.</li><li>The date the user wants to start travel.</li><li>Date format is `YYYY-MM-DD`.</li></ul> |
+|`travel_enddate`|  <ul><li>End date.</li><li>The date the user wants to end travel.</li><li>Date format is `YYYY-MM-DD`.</li></ul> |
+|`travel_totalvalue`|  <ul><li>Total value.</li><li>The total value of the travel the user wants to embark on.</li></ul> |
 
 ### Product audience - Hotel
 
 |Variable| Description|
 |---| ---|
-|`hct_base_price`|  &lt;ul&gt;&lt;li&gt;Hotel base price.&lt;/li&gt;&lt;li&gt;The base price of the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_total_price`|  &lt;ul&gt;&lt;li&gt;Hotel total price.&lt;/li&gt;&lt;li&gt;The total price, including tax and discounts, of the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-| `hct_checkin_date` |  &lt;ul&gt;&lt;li&gt;Hotel check in date.&lt;/li&gt;&lt;li&gt;The check in date for the user&#39;s stay.&lt;/li&gt;&lt;li&gt;Date format is `YYYY-MM-DD`.&lt;/li&gt;&lt;/ul&gt; |
-| `hct_checkout_date` |  &lt;ul&gt;&lt;li&gt;Hotel checkout date.&lt;/li&gt;&lt;li&gt;The checkout date for the user&#39;s stay.&lt;/li&gt;&lt;li&gt;Date format is `YYYY-MM-DD`.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_length_of_stay`|  &lt;ul&gt;&lt;li&gt;Hotel length of stay.&lt;/li&gt;&lt;li&gt;The total length of the user&#39;s stay.&lt;/li&gt;&lt;/ul&gt; |
-|`hct_partner_hotel_id`|  &lt;ul&gt;&lt;li&gt;Hotel partner ID.&lt;/li&gt;&lt;li&gt;The partner ID for the hotel the user wants to book.&lt;/li&gt;&lt;/ul&gt; |
-| `hct_booking_ref` |  &lt;ul&gt;&lt;li&gt;Obfuscated booking reference number.&lt;/li&gt;&lt;/ul&gt; |
-| `hct_pagetype` |  &lt;ul&gt;&lt;li&gt;Hotel page type.&lt;/li&gt;&lt;li&gt;The current page type visible to the user.&lt;/li&gt;&lt;li&gt;One of `home`, `searchresults`, `property`, `cart`, `purchase`, `cancel`, or `other`.&lt;/li&gt;&lt;/ul&gt; |
+|`hct_base_price`|  <ul><li>Hotel base price.</li><li>The base price of the hotel the user wants to book.</li></ul> |
+|`hct_total_price`|  <ul><li>Hotel total price.</li><li>The total price, including tax and discounts, of the hotel the user wants to book.</li></ul> |
+| `hct_checkin_date` |  <ul><li>Hotel check in date.</li><li>The check in date for the user's stay.</li><li>Date format is `YYYY-MM-DD`.</li></ul> |
+| `hct_checkout_date` |  <ul><li>Hotel checkout date.</li><li>The checkout date for the user's stay.</li><li>Date format is `YYYY-MM-DD`.</li></ul> |
+|`hct_length_of_stay`|  <ul><li>Hotel length of stay.</li><li>The total length of the user's stay.</li></ul> |
+|`hct_partner_hotel_id`|  <ul><li>Hotel partner ID.</li><li>The partner ID for the hotel the user wants to book.</li></ul> |
+| `hct_booking_ref` |  <ul><li>Obfuscated booking reference number.</li></ul> |
+| `hct_pagetype` |  <ul><li>Hotel page type.</li><li>The current page type visible to the user.</li><li>One of `home`, `searchresults`, `property`, `cart`, `purchase`, `cancel`, or `other`.</li></ul> |
 
 ## Vendor documentation
 

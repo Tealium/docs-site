@@ -39,15 +39,15 @@ CocoaPodsで接続性モジュールをインストールするには：
 
 1. Podfileに以下のpodを追加します：  
     ```ruby
-    pod &#39;tealium-swift/TealiumConnectivity&#39;
+    pod 'tealium-swift/TealiumConnectivity'
     ```
 
 2. ディスパッチを永続化するための接続性モジュールを使用する際に必要なpodを追加します：  
     ```ruby
-    pod &#39;tealium-swift/TealiumDispatchQueue&#39;
+    pod 'tealium-swift/TealiumDispatchQueue'
     ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しています。iOSのCocoaPodsインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しています。iOSのCocoaPodsインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
 
 
 ### Carthage
@@ -62,7 +62,7 @@ Carthageで接続性モジュールをインストールするには、以下の
     TealiumDispatchQueue.framework
     ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しています。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しています。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
 
 
 ## データレイヤー
@@ -70,7 +70,7 @@ Carthageで接続性モジュールをインストールするには、以下の
 
 | 変数   | 説明                                                                                                                      | 例  |
 |------------|----------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `was_queued` | トラッキングコールが接続性がないためにキューに入れられたかどうかを示します。キューに入れられたイベントのみに存在し、他のすべてのイベントでは存在しません | [`&#34;true&#34;`, `&#34;false&#34;`]   |
+| `was_queued` | トラッキングコールが接続性がないためにキューに入れられたかどうかを示します。キューに入れられたイベントのみに存在し、他のすべてのイベントでは存在しません | [`"true"`, `"false"`]   |
 | `queue_reason` | このイベントがキューに入れられた理由を示します（現在は`connectivity`または`consent`） | connectivity          |
-| `network_connection_type`   | 現在の接続タイプ                                                               | [`&#34;wifi&#34;`, `&#34;cellular&#34;`]             |
+| `network_connection_type`   | 現在の接続タイプ                                                               | [`"wifi"`, `"cellular"`]             |
 

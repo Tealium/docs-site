@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：60分
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
 
 ## 構成
 
-コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、Googleに認証するために以下の手順を使用します：
 
@@ -33,8 +33,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
         1. Googleアカウントを選択し、TealiumがGoogleアカウントにアクセスすることを許可します。
         1. **プロジェクトID**フィールドの下の**リロード**をクリックします。
     * **プライベートキーJSONファイル**：（このオプションはレガシーコネクタインターフェースでは利用できません。）
-        1. **IAM &amp; Admin &gt; サービスアカウント &gt; サービスアカウントの作成（オプション）**に移動します。
-        1. サービスアカウントのアクションメニュー（三つの点）をクリックし、**キーの管理 &gt; キーの追加 &gt; 新しいキーの作成 &gt; JSON &gt; 作成**を選択します。
+        1. **IAM & Admin > サービスアカウント > サービスアカウントの作成（オプション）**に移動します。
+        1. サービスアカウントのアクションメニュー（三つの点）をクリックし、**キーの管理 > キーの追加 > 新しいキーの作成 > JSON > 作成**を選択します。
         1. サービスアカウント用に生成されたJSONキーの内容を貼り付けます。詳細については、[Google: サーバー間アプリケーション用のOAuth 2.0の使用](https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount)を参照してください。
 1. 接続する**プロジェクトID**を選択します。
 1. **完了**をクリックします。
@@ -74,7 +74,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：60分
@@ -95,7 +95,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：500
 * 最古のリクエストからの最大時間：10分
@@ -113,17 +113,17 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-bigquery-connecto
 
 まず、属性をプレースホルダーにマッピングします：
 
-![](/images/server-side-connectors/bigquery-custom-sql-map-values.png)
+![](https://docs.tealium.com/images/server-side-connectors/bigquery-custom-sql-map-values.png)
 
 次に、プレースホルダーにデータタイプをマッピングします：
 
-![](/images/server-side-connectors/bigquery-custom-sql-map-types.png)
+![](https://docs.tealium.com/images/server-side-connectors/bigquery-custom-sql-map-types.png)
 
 その後、それらのプレースホルダーを参照するSQLステートメントを書きます：
 
 ```none
 INSERT INTO bigquery_table (my_string_col, my_bool_col)
-VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
+VALUES ('@MY_STRING_PARAM', @MY_BOOLEAN_PARAM);
 ```
 
 #### パラメータ
@@ -140,7 +140,7 @@ VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：60分
@@ -163,7 +163,7 @@ VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * リクエストの最大数：100,000
 * 最も古いリクエストからの最大時間：60分

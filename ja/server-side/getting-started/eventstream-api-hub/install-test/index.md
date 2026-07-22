@@ -12,25 +12,25 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ```none
 https://collect.tealiumiq.com/event?
 tealium_account=your_account
-&amp;tealium_profile=your_profile
-&amp;tealium_datasource=abc123
-&amp;tealium_event=search
+&tealium_profile=your_profile
+&tealium_datasource=abc123
+&tealium_event=search
 ```
 
 対応するSwift（iOS）のコードは次のようになるかもしれません：
 
 ```swift
 var tealConfig = TealiumConfig(
-    account: &#34;your_account&#34;,
-    profile: &#34;your_profile&#34;,
-    environment: &#34;prod&#34;,
-    datasource: &#34;abc123&#34;)
+    account: "your_account",
+    profile: "your_profile",
+    environment: "prod",
+    datasource: "abc123")
 
 let tealium = Tealium(config: tealConfig)
 
-// トラッキングされたイベント &#34;search&#34; は自動的に以下の結果を生み出します：
-// tealium_event : &#34;search&#34; in the event data
-tealium?.trackEventWithTitle(&#34;search&#34;, dataSources: [:])
+// トラッキングされたイベント "search" は自動的に以下の結果を生み出します：
+// tealium_event : "search" in the event data
+tealium?.trackEventWithTitle("search", dataSources: [:])
 ```
 
 次のステップに進んで、**Live Events**画面でこれらのテストイベントをどのように観察するかを見てみましょう。

@@ -5,13 +5,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 ---
 たとえば、DevまたはQA環境でバージョンをテストしており、それがProd環境にマージする準備が整った場合です。この組み込み機能を使用して、DevまたはQAバージョンから変更を選択し、現在のバージョンにマージし、通常どおり保存して公開を続けることができます。
 
-![](/images/iq-tag-management/merge-version-dropdown.png)
+![](https://docs.tealium.com/images/iq-tag-management/merge-version-dropdown.png)
 
 ## バージョン関係の表示
 
 **バージョン**タブの**バージョン関係を表示**チェックボックスはデフォルトでオンになっており、起源のパスを強調表示します。この機能は、各バージョンが公開履歴の他のバージョンとどのように関連しているかを示します。これは、どのバージョンをマージできるか、またはマージできないかを判断するための視覚的ガイドです。
 
-![](/images/iq-tag-management/show-relationship.png)
+![](https://docs.tealium.com/images/iq-tag-management/show-relationship.png)
 
 ## 動作方法
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 
 こちらは公開履歴のサンプルで、2が現在のバージョンです。
 
-![](/images/iq-tag-management/example-screenshots.png)
+![](https://docs.tealium.com/images/iq-tag-management/example-screenshots.png)
 
 ご覧の通り：
 
@@ -30,16 +30,20 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 
 タグテンプレートは標準的なマージ動作に従いません。あるバージョンを別のバージョンにマージする場合、アクティブなバージョンのタグテンプレートが優先されます。マージされたバージョンからのタグテンプレートの変更は破棄されます。別のバージョンからタグテンプレートをマージしたい場合は、そのバージョンに切り替えてから元のバージョンにタグテンプレートをマージしてください。
 
-タグテンプレートについての詳細は、をご覧ください。
+タグテンプレートについての詳細は、[about-templates](https://docs.tealium.com/about-templates/)をご覧ください。
 
 ## 現在のセッションへの変更のマージ
 
 現在のバージョンに他のバージョンから変更をマージするには：
 
 1. **現在のセッションに変更をマージ**ドロップダウンリストから、このセッションにマージしたいバージョンを選択します。
-    来るバージョンと現在のバージョンが異なる起源パスにあることを確認してください。
+    
+<blockquote>
+来るバージョンと現在のバージョンが異なる起源パスにあることを確認してください。
+</blockquote>
+
 1. 次のウィンドウで、現在のバージョンに追加、更新、または削除したい変更を選択します。
-    ![](/images/iq-tag-management/incoming-changes-merge-versions.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/incoming-changes-merge-versions.png)
 1. 変更を確認してから、**マージ**ボタンをクリックしてマージを完了します。
 1. 現在のバージョンを**保存/公開**します。新しいバージョンとして保存（Save As）するか、既存のバージョンを上書きする（Save）オプションがあります。
 
@@ -54,11 +58,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 **マージ変更**ウィンドウから競合を解決するには：
 
 1. 競合する変更を表示するために目のアイコンをクリックします。
-    ![](/images/iq-tag-management/use-this-slider.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/use-this-slider.png)  
 
 1. 構成を読んで、どちらのインスタンスを保持するかを決定します。
 1. 変更を**Accepted**列に移動するために**Use this**バーをクリックします。受け入れられない変更はマージ前に破棄されます。
-    ![](/images/iq-tag-management/accepted-column.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/accepted-column.png)  
 
 1. **Next**をクリックして最終変更を確認し、マージを完了します。
 1. **マージ**をクリックして、バージョンを保存/公開します。
@@ -93,7 +97,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 
 **解決策**：アカウント管理者に**リソースロックの管理**権限を付与してもらってください。
 
-![](/images/iq-tag-management/labels-perm-missing.png)
+![](https://docs.tealium.com/images/iq-tag-management/labels-perm-missing.png)
 
 ### アラートメッセージ：「保留中の変更があります」
 
@@ -111,10 +115,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/merging-versions
 
 バージョンAがライブラリ1にリンクされており、バージョンBがライブラリ1の古いバージョンにリンクされている場合、バージョンAとバージョンBの間のマージは失敗します。これを解決するには、バージョンBに移動し、ライブラリ1からの更新をバージョンBに上書きするか、ライブラリ1からの更新を含む新しいバージョン（バージョンC）として保存します。これで、各プロファイルバージョンが同じライブラリバージョンにリンクされているため、マージは成功します。
 
-![](/images/iq-tag-management/save-publish/merge-libraries-diagram-1.png)
+![](https://docs.tealium.com/images/iq-tag-management/save-publish/merge-libraries-diagram-1.png)
 
 #### 例：リンクされていないライブラリ
 
 バージョンAがライブラリ1とライブラリ2にリンクされており、バージョンBがライブラリ1にのみリンクされている場合、バージョンAとバージョンBの間のマージは失敗します。これを解決するには、バージョンBに移動し、ライブラリ2にリンクします。その後、バージョンBを上書きするか、ライブラリ1とライブラリ2へのリンクを含む新しいバージョン（バージョンC）として保存します。これで、各プロファイルバージョンが他のプロファイルバージョンと同じライブラリバージョンにリンクされているため、マージは成功します。
 
-![](/images/iq-tag-management/save-publish/merge-libraries-diagram-2.png)
+![](https://docs.tealium.com/images/iq-tag-management/save-publish/merge-libraries-diagram-2.png)

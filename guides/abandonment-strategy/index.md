@@ -28,7 +28,7 @@ There are several types of abandonment you might want to address:
 
 ### Cart abandonment
 
-Cart abandonment happens when a visitor adds products to their cart but doesn&#39;t complete the purchase. Retargeting these visitors works well because they&#39;ve already shown interest in your brand and you know which products caught their attention.
+Cart abandonment happens when a visitor adds products to their cart but doesn't complete the purchase. Retargeting these visitors works well because they've already shown interest in your brand and you know which products caught their attention.
 
 Cart abandonment campaigns often generate strong returns because they are timely, relevant, and offer compelling incentives. These campaigns are especially effective for existing customers who are already familiar with your brand, high-intent shoppers who have looked at products repeatedly, and discount shoppers who are looking for a deal.
 
@@ -69,7 +69,7 @@ External factors such as receiving a phone call, losing internet connection, or 
 * **Lack of payment options**  
 Limited payment options or the absence of preferred payment methods can discourage visitors from completing their purchase. Followup messaging can detail all of the payment options provided that would fit their needs.
 * **Indecision or window shopping**  
-Visitors may add items to their cart without the intention to purchase, using it as a temporary storage while they browse or consider their options. A retargeting campaign can help nudge these visitors into purchasing the items they&#39;ve stashed in the cart.
+Visitors may add items to their cart without the intention to purchase, using it as a temporary storage while they browse or consider their options. A retargeting campaign can help nudge these visitors into purchasing the items they've stashed in the cart.
 * **Shipping and delivery issues**  
 Concerns about delivery time, shipping options, or availability to receive the package can lead visitors to abandon their carts, especially if the shipping costs are high or delivery options are limited.
 
@@ -92,7 +92,11 @@ Analyze user behavior and abandonment rates across different devices and browser
 * **User feedback and surveys**  
 Collect feedback from users through surveys, feedback forms, or user testing sessions to understand their reasons for abandonment directly. Qualitative insights from users can complement quantitative metrics and provide deeper understanding.
 
- For some of these metrics, you will need both AudienceStream and AudienceDB activated on your account. Also, you will need to add visit and visitor attributes, and then create audiences based on those attributes.
+
+<blockquote>
+For some of these metrics, you will need both AudienceStream and AudienceDB activated on your account. Also, you will need to add visit and visitor attributes, and then create audiences based on those attributes.
+</blockquote>
+
 
 These additional metrics, beyond the scope of Tealium, can also help to measure the effectiveness of your site:
 
@@ -120,21 +124,25 @@ Use multiple methods of contacting the visitor. Combine email, SMS, push notific
 * **Segmentation**  
 People abandon their carts, searches, and sites for various reasons. After you have run your visitors through AudienceStream to build up audience numbers and determine that you have an actionable number of abandoners, you can further segment your abandoners based on their behavior patterns to customize the engagement methods to fit their needs.
 
- If you launch segmentation too early, your audiences and segments may not be large enough for integrated vendors to activate and retarget. 
+
+<blockquote>
+If you launch segmentation too early, your audiences and segments may not be large enough for integrated vendors to activate and retarget.
+</blockquote>
+
 
 ## Abandoner segments
 
 There are many ways you can use Tealium to further segment your abandoners into specific audiences:
 
 * **How often do they abandon the site?**  
-If they abandon the site frequently, ponder offering them a loyalty discount or a reminder service to bring them back to the site. If it&#39;s a rare event, a simple reminder email should bring them back.
+If they abandon the site frequently, ponder offering them a loyalty discount or a reminder service to bring them back to the site. If it's a rare event, a simple reminder email should bring them back.
 * **How much did they abandon?**  
 If a person is abandoning a cart with high-value items, you will want to spend more effort and attention on that visitor than someone who abandoned a search for an inexpensive low-margin item.
 * **When did they abandon the effort?**  
 Visitors who abandon a cart right before purchase may need just a little bit of extra effort to get them to convert, while those who abandon the process earlier during a search will need more information or incentive to continue their shopping.
 * **What other items have they bought?**  
-With the visitor&#39;s past purchase history, you can determine their preferences and adjust the messaging to fit their needs. If they bought similar items, offer them related products or other recommendations.
+With the visitor's past purchase history, you can determine their preferences and adjust the messaging to fit their needs. If they bought similar items, offer them related products or other recommendations.
 
 ## Next steps
 
-* 
+* [cart-abandonment-guide](https://docs.tealium.com/cart-abandonment-guide/)

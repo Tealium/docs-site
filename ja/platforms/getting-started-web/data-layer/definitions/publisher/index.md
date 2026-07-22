@@ -51,20 +51,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/home&#34;,
-    &#34;page_name&#34;              : &#34;Homepage&#34;,
-    &#34;page_type&#34;              : &#34;home&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Home&#34;,
-    &#34;tealium_event&#34;          : &#34;page_view&#34;
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/home",
+    "page_name"              : "Homepage",
+    "page_type"              : "home",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Home",
+    "tealium_event"          : "page_view"
 }
 ```
 
@@ -77,20 +77,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/travel&#34;,
-    &#34;page_name&#34;              : &#34;Travel Home&#34;,
-    &#34;page_type&#34;              : &#34;section&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Travel&#34;,
-    &#34;tealium_event&#34;          : &#34;page_view&#34;
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/travel",
+    "page_name"              : "Travel Home",
+    "page_type"              : "section",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Travel",
+    "tealium_event"          : "page_view"
 }
 ```
 
@@ -103,25 +103,25 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/travel/national_parks/yosemite_camping&#34;,
-    &#34;page_name&#34;              : &#34;Homepage&#34;,
-    &#34;page_number&#34;            : &#34;2&#34;,
-    &#34;page_type&#34;              : &#34;category&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Travel&#34;,
-    &#34;site_subsection1&#34;       : &#34;National Parks&#34;,
-    &#34;site_subsection2&#34;       : &#34;California&#34;,
-    &#34;site_subsection3&#34;       : &#34;Yosemite&#34;,
-    &#34;site_subsection4&#34;       : &#34;Camping&#34;,
-    &#34;tealium_event&#34;          : &#34;category_view&#34;
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/travel/national_parks/yosemite_camping",
+    "page_name"              : "Homepage",
+    "page_number"            : "2",
+    "page_type"              : "category",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Travel",
+    "site_subsection1"       : "National Parks",
+    "site_subsection2"       : "California",
+    "site_subsection3"       : "Yosemite",
+    "site_subsection4"       : "Camping",
+    "tealium_event"          : "category_view"
 }
 ```
 
@@ -134,28 +134,28 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;content_author&#34;         : &#34;Sue Smith&#34;,
-    &#34;content_id&#34;             : &#34;38121&#34;,
-    &#34;content_publish_date&#34;   : &#34;2015/02/09&#34;,
-    &#34;content_title&#34;          : &#34;Top 7 Outdoor Sleeping Bags&#34;,
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/travel/parks/ca/gear/bags.html&#34;,
-    &#34;page_name&#34;              : &#34;Camping Gear: Top Sleeping Bags&#34;,
-    &#34;page_type&#34;              : &#34;content&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Travel&#34;,
-    &#34;site_subsection1&#34;       : &#34;National Parks&#34;,
-    &#34;site_subsection2&#34;       : &#34;California&#34;,
-    &#34;site_subsection3&#34;       : &#34;Yosemite&#34;,
-    &#34;site_subsection4&#34;       : &#34;Camping&#34;,
-    &#34;tealium_event&#34;          : &#34;content_view&#34;
+    "content_author"         : "Sue Smith",
+    "content_id"             : "38121",
+    "content_publish_date"   : "2015/02/09",
+    "content_title"          : "Top 7 Outdoor Sleeping Bags",
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/travel/parks/ca/gear/bags.html",
+    "page_name"              : "Camping Gear: Top Sleeping Bags",
+    "page_type"              : "content",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Travel",
+    "site_subsection1"       : "National Parks",
+    "site_subsection2"       : "California",
+    "site_subsection3"       : "Yosemite",
+    "site_subsection4"       : "Camping",
+    "tealium_event"          : "content_view"
 }
 ```
 ### ギャラリーページ
@@ -167,23 +167,23 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/travel/national_parks&#34;,
-    &#34;page_name&#34;              : &#34;Top Parks Gallery&#34;,
-    &#34;page_number&#34;            : &#34;2&#34;,
-    &#34;page_type&#34;              : &#34;gallery&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Travel&#34;,
-    &#34;site_subsection1&#34;       : &#34;National Parks&#34;,
-    &#34;slide_title&#34;            : &#34;#2 Yellowstone&#34;,
-    &#34;tealium_event&#34;          : &#34;content_view&#34;
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/travel/national_parks",
+    "page_name"              : "Top Parks Gallery",
+    "page_number"            : "2",
+    "page_type"              : "gallery",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Travel",
+    "site_subsection1"       : "National Parks",
+    "slide_title"            : "#2 Yellowstone",
+    "tealium_event"          : "content_view"
 }
 ```
 
@@ -196,23 +196,23 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;country_code&#34;           : &#34;us&#34;,
-    &#34;customer_email&#34;         : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;    : &#34;John&#34;,
-    &#34;customer_id&#34;            : &#34;8237572&#34;,
-    &#34;customer_is_logged_in&#34;  : &#34;1&#34;,
-    &#34;customer_last_name&#34;     : &#34;Smith&#34;,
-    &#34;customer_type&#34;          : &#34;registered&#34;,
-    &#34;language_code&#34;          : &#34;en&#34;,
-    &#34;page_friendly_url&#34;      : &#34;/search/napa_valley/&#34;,
-    &#34;page_name&#34;              : &#34;Search results for: napa valley&#34;,
-    &#34;page_number&#34;            : &#34;1&#34;,
-    &#34;page_type&#34;              : &#34;search&#34;,
-    &#34;search_keyword&#34;         : &#34;napa valley&#34;,
-    &#34;search_results&#34;         : &#34;42&#34;,
-    &#34;site_display_format&#34;    : &#34;desktop&#34;,
-    &#34;site_section&#34;           : &#34;Travel&#34;,
-    &#34;tealium_event&#34;          : &#34;search&#34;
+    "country_code"           : "us",
+    "customer_email"         : "johnsmith@example.com",
+    "customer_first_name"    : "John",
+    "customer_id"            : "8237572",
+    "customer_is_logged_in"  : "1",
+    "customer_last_name"     : "Smith",
+    "customer_type"          : "registered",
+    "language_code"          : "en",
+    "page_friendly_url"      : "/search/napa_valley/",
+    "page_name"              : "Search results for: napa valley",
+    "page_number"            : "1",
+    "page_type"              : "search",
+    "search_keyword"         : "napa valley",
+    "search_results"         : "42",
+    "site_display_format"    : "desktop",
+    "site_section"           : "Travel",
+    "tealium_event"          : "search"
 }
 ```
 
@@ -227,15 +227,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_login&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_login"
 }
 ```
 
@@ -248,15 +248,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_logout&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_logout"
 }
 ```
 
@@ -269,15 +269,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_register&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_register"
 }
 ```
 ### ユーザー情報更新
@@ -289,15 +289,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_update&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_update"
 }
 ```
 ### メールサインアップ
@@ -309,8 +309,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34;  : &#34;john.smith@example.com&#34;,
-    &#34;tealium_event&#34;   : &#34;email_signup&#34;
+    "customer_email"  : "john.smith@example.com",
+    "tealium_event"   : "email_signup"
 }
 ```
 
@@ -323,9 +323,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;link_category&#34;  : &#34;Header&#34;,
-    &#34;link_name&#34;      : &#34;Login&#34;,
-    &#34;tealium_event&#34;  : &#34;custom_click&#34;
+    "link_category"  : "Header",
+    "link_name"      : "Login",
+    "tealium_event"  : "custom_click"
 }
 ```
 ### ソーシャルシェア
@@ -337,10 +337,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;content_id&#34;        : &#34;38121&#34;,
-    &#34;page_friendly_url&#34; : &#34;/travel/national_parks&#34;,
-    &#34;page_name&#34;         : &#34;Travel: National Parks&#34;,
-    &#34;social_network&#34;    : &#34;facebook&#34;,
-    &#34;tealium_event&#34;     : &#34;social_share&#34;
+    "content_id"        : "38121",
+    "page_friendly_url" : "/travel/national_parks",
+    "page_name"         : "Travel: National Parks",
+    "social_network"    : "facebook",
+    "tealium_event"     : "social_share"
 }
 ```

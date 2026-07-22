@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10,000
 * Max time since oldest request: 60 minutes
@@ -22,9 +22,13 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
-When you add this connector you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -48,7 +52,11 @@ If you have already created an account and profile segment for the taxonomy file
 1. Click **Add Audience to Taxonomy**.
 1. Enter the audience **Name**.
 1. (Optional) Enter a **Description**.
-1. Click **Add Audience**.  Yahoo’s process for setting up taxonomy segments can take up to 45 minutes. If you begin sending data during this window, it is not accepted and gives an error because the segments do not yet exist in Yahoo. 
+1. Click **Add Audience**. 
+<blockquote>
+Yahoo’s process for setting up taxonomy segments can take up to 45 minutes. If you begin sending data during this window, it is not accepted and gives an error because the segments do not yet exist in Yahoo.
+</blockquote>
+
 
 ## Actions
 
@@ -67,7 +75,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| URN Type | (Required) The user identifier (URN) type.&lt;ul&gt;&lt;li&gt;DXID&lt;/li&gt;&lt;li&gt;ZIP4&lt;/li&gt;&lt;li&gt;IXID&lt;/li&gt;&lt;li&gt;IDFA (iOS ID for Advertisers)&lt;/li&gt;&lt;li&gt;GPADVID (Google Play Advertising ID)&lt;/li&gt;&lt;li&gt;Email (apply SHA256 hash)&lt;/li&gt;&lt;li&gt;Email (already SHA256 hashed)&lt;/li&gt;&lt;/ul&gt; To create new taxonomy segments, click **Create New Taxonomy Segment** and follow the on-screen instructions. |
+| URN Type | (Required) The user identifier (URN) type.<ul><li>DXID</li><li>ZIP4</li><li>IXID</li><li>IDFA (iOS ID for Advertisers)</li><li>GPADVID (Google Play Advertising ID)</li><li>Email (apply SHA256 hash)</li><li>Email (already SHA256 hashed)</li></ul> To create new taxonomy segments, click **Create New Taxonomy Segment** and follow the on-screen instructions. |
 | URN Value | (Required) The user identifier (URN) value. |
 | Taxonomy ID | (Required) The ID of a taxonomy. |
 
@@ -77,7 +85,7 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Timestamp | Timestamp associated with this qualification in UNIX epoch time, measured in seconds. For example: `1376244670`. This value must represent a time in the past. |
 | Expiration Timestamp | Timestamp when the qualification expires in UNIX epoch time, measured in seconds. For example: `1379234569`. |
-| GDPR | Supported values: &lt;ul&gt;&lt;li&gt;**true**: European audience data. The data provider indicates that the data is subject to GDPR regulations.&lt;/li&gt;&lt;li&gt;**false**: The rest of the world. The data provider indicates that the data is not subject to GDPR regulations.&lt;/li&gt;&lt;/ul&gt; |
+| GDPR | Supported values: <ul><li>**true**: European audience data. The data provider indicates that the data is subject to GDPR regulations.</li><li>**false**: The rest of the world. The data provider indicates that the data is not subject to GDPR regulations.</li></ul> |
 
 ### Opt Out
 

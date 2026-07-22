@@ -18,7 +18,7 @@ The **Change Password** screen lets you change your password according to the pa
 Use the following steps to change your password:
 
 1. In the admin menu, click **Edit/View User Settings**. The **User Overview** information and profile permissions for your account appears.
-1. In the right panel, click **Change Password**. The **Create New Password** dialog appears with the password requirements that your account administrator has configured: ![](/images/iq-tag-management/administration/create-a-new-password-dialog.png)
+1. In the right panel, click **Change Password**. The **Create New Password** dialog appears with the password requirements that your account administrator has configured: ![](https://docs.tealium.com/images/iq-tag-management/administration/create-a-new-password-dialog.png)
 
 1. In the **Current password** field, enter your current password
 1. In the **New password** field, enter your new password according to the password requirements on the screen.

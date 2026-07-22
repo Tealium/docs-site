@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/save-publish/concurrent-users/
 ---
 ## Requirements
 
-* [Platform permissions]() enabled on the account.
+* [Platform permissions](https://docs.tealium.com/about-platform-permissions/) enabled on the account.
 
 ## Overview
 
@@ -32,9 +32,9 @@ To enable concurrency on a profile, use the following steps:
 
 ## How it works
 
-When you are logged in and anticipate changes from concurrent users, it&#39;s important to know which version you are working in. The current version is displayed in the heading, below the account and profile:
+When you are logged in and anticipate changes from concurrent users, it's important to know which version you are working in. The current version is displayed in the heading, below the account and profile:
 
-![](/images/server-side/save-publish/server-side-concurrency-heading.png)
+![](https://docs.tealium.com/images/server-side/save-publish/server-side-concurrency-heading.png)
 
 When you want to start a new long-term project, load the currently published version using the profile switcher and perform a **Save As** to create a new version for your planned changes. Make all configuration changes to the new version. When the changes are completed and tested, publish the new version to production.
 
@@ -42,15 +42,15 @@ When you make changes to a version, logged-in users who have that version loaded
 
 ## Viewing other active users
 
-When you log in, the product area that you are working in is highlighted in blue in the left navigation bar. If another user is also logged in and active on your version, that user&#39;s initials appear as a circle with a unique background color at the top of the screen. The same unique color is used to highlight which area of the product the other user is currently working in, as shown in the following example:
+When you log in, the product area that you are working in is highlighted in blue in the left navigation bar. If another user is also logged in and active on your version, that user's initials appear as a circle with a unique background color at the top of the screen. The same unique color is used to highlight which area of the product the other user is currently working in, as shown in the following example:
 
-![](/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
+![](https://docs.tealium.com/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
 
 ## Another user starts a change
 
 If another user starts making changes to the version you are using, a message notifies you of unsaved changes in progress:
 
-![](/images/server-side/save-publish/another-user-is-making-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-is-making-changes.png)
 
 Click **Got it** to acknowledge the message.
 
@@ -62,19 +62,19 @@ When another user saves changes to a version you are working on, you will receiv
 
 If you have not made any changes, the following notification appears:
 
-![](/images/server-side/save-publish/concurrency-notification-nochangesmade.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrency-notification-nochangesmade.png)
 
-Click **Update** to refresh the screen and load the other user&#39;s saved changes.
+Click **Update** to refresh the screen and load the other user's saved changes.
 
 ### You have made changes
 
 If you have made changes, the following notification appears:
 
-![](/images/server-side/save-publish/concurrency-notification-changesmade.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrency-notification-changesmade.png)
 
 Click **Save** to integrate the other user’s changes into your work. A new dialog opens that contains information about the save:
 
-![](/images/server-side/save-publish/review-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
 The **Changes to be saved** or **Changes to be published** table contains the following information:
 
@@ -85,7 +85,7 @@ The **Changes to be saved** or **Changes to be published** table contains the fo
 
 If both your changes and those in the latest published version have altered the same item and the system cannot reconcile the changes, an **Overwrite** badge will appear next to it.
 
-![](/images/server-side/save-publish/concurrent-user-publish-conflict.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrent-user-publish-conflict.png)
 
 Publishing your version replaces the existing items in the published version with yours.
 
@@ -93,6 +93,6 @@ Publishing your version replaces the existing items in the published version wit
 
 When another user publishes a version, regardless of the version you are on, a message appears to inform you of that publish:
 
-![](/images/server-side/save-publish/another-user-published.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-published.png)
 
-We recommend that you save and include those changes to keep your version up to date. For more information, see [Save and Publish]().
+We recommend that you save and include those changes to keep your version up to date. For more information, see [Save and Publish](https://docs.tealium.com/ss-save-and-publish/#save-or-publish-changes).

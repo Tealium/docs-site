@@ -24,6 +24,6 @@ Here is a simple example where `page_name` is used. It shows what value to expec
 
 Once the extension is added, the following configuration option is available:
 
-* **Page Value**: Select the data layer variable that contains the page&#39;s name.
+* **Page Value**: Select the data layer variable that contains the page's name.
 
 The extension automatically saves the value of this variable and sets it to `previous_page_name` on the next page view.

@@ -51,90 +51,90 @@ visitor_id
 
 |オブジェクト名| タイプ| 説明|
 |---| ---| ---|
-| メインオブジェクト | object|  各属性データタイプのサブオブジェクトを持つ訪問オブジェクト：&lt;ul&gt;&lt;li&gt;ステッチされた訪問ID: `replaces : [ ]`&lt;/li&gt;&lt;li&gt;数字/数字の配列: `&#34;metrics&#34; : { }, &#34;metric_lists&#34; : { }`&lt;/li&gt;&lt;li&gt;文字列/文字列の配列/文字列のセット: `&#34;properties&#34; : { }, &#34;property_lists&#34; : { }, &#34;property_sets&#34; : { }`&lt;/li&gt;&lt;li&gt;ブール値/ブール値の配列: `&#34;flags&#34; : { }, &#34;flag_lists&#34; : { }`&lt;/li&gt;&lt;li&gt;日付: `&#34;dates&#34; : { }`&lt;/li&gt;&lt;li&gt;バッジ: `&#34;badges&#34; : { }`&lt;/li&gt;&lt;li&gt;集計: `&#34;metric_sets&#34; : { }`&lt;/li&gt;&lt;li&gt;タイムライン: `&#34;sequences&#34; : { }`&lt;/li&gt;&lt;li&gt;ファネル: `&#34;funnels&#34; : { }`&lt;/li&gt;&lt;/ul&gt; |
-| `current_visit` | オブジェクト|  &lt;ul&gt;&lt;li&gt;最後のイベント `last_event: { }`&lt;/li&gt;&lt;li&gt;イベント `events: [ {}, {}, ...]`&lt;/li&gt;&lt;/ul&gt; |
+| メインオブジェクト | object|  各属性データタイプのサブオブジェクトを持つ訪問オブジェクト：<ul><li>ステッチされた訪問ID: `replaces : [ ]`</li><li>数字/数字の配列: `"metrics" : { }, "metric_lists" : { }`</li><li>文字列/文字列の配列/文字列のセット: `"properties" : { }, "property_lists" : { }, "property_sets" : { }`</li><li>ブール値/ブール値の配列: `"flags" : { }, "flag_lists" : { }`</li><li>日付: `"dates" : { }`</li><li>バッジ: `"badges" : { }`</li><li>集計: `"metric_sets" : { }`</li><li>タイムライン: `"sequences" : { }`</li><li>ファネル: `"funnels" : { }`</li></ul> |
+| `current_visit` | オブジェクト|  <ul><li>最後のイベント `last_event: { }`</li><li>イベント `events: [ {}, {}, ...]`</li></ul> |
 ## JSONファイルテンプレート
 
 ```json
 // 訪問記録
 {
     // 数値属性（訪問スコープ）
-    &#34;metrics&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: NUMERIC_VALUE,
+    "metrics": {
+        "ATTRIBUTE_NAME": NUMERIC_VALUE,
         ...
     },
 
     // 日付属性（訪問スコープ）
-    &#34;dates&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: UNIX_TIMESTAMP,
-        &#34;audience_ACCOUNT_PROFILE_ID_count_ts&#34;: UNIX_TIMESTAMP,
+    "dates": {
+        "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
+        "audience_ACCOUNT_PROFILE_ID_count_ts": UNIX_TIMESTAMP,
         ...
     },
 
     // 文字列属性（訪問スコープ）
-    &#34;properties&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;,
+    "properties": {
+        "ATTRIBUTE_NAME": "STRING_VALUE",
         ...
     },
 
     // 文字列の配列属性（訪問スコープ）
-    &#34;property_lists&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [&#34;STRING_VALUE&#34;, ...],
+    "property_lists": {
+        "ATTRIBUTE_NAME": ["STRING_VALUE", ...],
         ...
     },
 
     // 文字列のセット属性（訪問スコープ）
-    &#34;property_sets&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;STRING_VALUE&#34;: 1,
+    "property_sets": {
+        "ATTRIBUTE_NAME": {
+            "STRING_VALUE": 1,
             ...
         },
         ...
     },
 
     // ブール属性（訪問スコープ）
-    &#34;flags&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: true|false,
+    "flags": {
+        "ATTRIBUTE_NAME": true|false,
         ...
     },
 
     // 訪問スティッチング
-    &#34;replaces&#34;: [&#34;45-CHAR-ALPHANUMERIC&#34;, &#34;__ACCOUNT_PROFILE__ATTRIBUTE_ID_VALUE__&#34;, ...],
+    "replaces": ["45-CHAR-ALPHANUMERIC", "__ACCOUNT_PROFILE__ATTRIBUTE_ID_VALUE__", ...],
 
     // オーディエンス
-    &#34;audiences&#34;: [&#34;AUDIENCE_NAME&#34;, ...],
+    "audiences": ["AUDIENCE_NAME", ...],
 
     // バッジ
-    &#34;badges&#34;: [&#34;BADGE_NAME&#34;, ...],
+    "badges": ["BADGE_NAME", ...],
 
-    &#34;preloaded&#34;: false,
+    "preloaded": false,
 
     // 数値の配列
-    &#34;metric_lists&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [VALUE, ...],
+    "metric_lists": {
+        "ATTRIBUTE_NAME": [VALUE, ...],
         ...
     },
 
     // 集計（訪問スコープ）
-    &#34;metric_sets&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;ENTRY_NAME&#34;: VALUE,
+    "metric_sets": {
+        "ATTRIBUTE_NAME": {
+            "ENTRY_NAME": VALUE,
             ...
         },
         ...
     },
-    &#34;creation_ts&#34;: UNIX_TIMESTAMP,
-    &#34;_id&#34;: &#34;GUID&#34;,
-    &#34;_partition&#34;: NUMBER,
-    &#34;shard_token&#34;: NUMBER,
+    "creation_ts": UNIX_TIMESTAMP,
+    "_id": "GUID",
+    "_partition": NUMBER,
+    "shard_token": NUMBER,
 
     // タイムライン（訪問スコープ）
-    &#34;sequences&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [
+    "sequences": {
+        "ATTRIBUTE_NAME": [
             {
-                &#34;timestamp&#34;: UNIX_TIMESTAMP,
-                &#34;snapshot&#34;: {
-                    &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;
+                "timestamp": UNIX_TIMESTAMP,
+                "snapshot": {
+                    "ATTRIBUTE_NAME": "STRING_VALUE"
                 }
             },
             ...
@@ -142,18 +142,18 @@ visitor_id
     },
 
     // ファネル（訪問スコープ）
-    &#34;funnels&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;completed&#34;: true|false,
-            &#34;steps&#34;: {
-                &#34;1&#34;: {
-                    &#34;timestamp&#34;: UNIX_TIMESTAMP,
-                    &#34;snapshot&#34;: {
-                        &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;
+    "funnels": {
+        "ATTRIBUTE_NAME": {
+            "completed": true|false,
+            "steps": {
+                "1": {
+                    "timestamp": UNIX_TIMESTAMP,
+                    "snapshot": {
+                        "ATTRIBUTE_NAME": "STRING_VALUE"
                     }
                 },
-                &#34;2&#34;: {
-                    &#34;timestamp&#34;: UNIX_TIMESTAMP
+                "2": {
+                    "timestamp": UNIX_TIMESTAMP
                 },
                 ...
             }
@@ -161,273 +161,273 @@ visitor_id
     },
 
     // 現在の訪問記録
-    &#34;current_visit&#34;: {
+    "current_visit": {
         // 数値属性（訪問スコープ）
-        &#34;metrics&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: NUMERIC_VALUE,
+        "metrics": {
+            "ATTRIBUTE_NAME": NUMERIC_VALUE,
             ...
         },
 
         // 日付属性（訪問スコープ）
-        &#34;dates&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: UNIX_TIMESTAMP,
+        "dates": {
+            "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
             ...
-            &#34;last_event_ts&#34;: UNIX_TIMESTAMP
+            "last_event_ts": UNIX_TIMESTAMP
         },
 
         // 文字列属性（訪問スコープ）
-        &#34;properties&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;,
+        "properties": {
+            "ATTRIBUTE_NAME": "STRING_VALUE",
             ...
         },
 
         // ブール属性（訪問スコープ）
-        &#34;flags&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: true|false,
+        "flags": {
+            "ATTRIBUTE_NAME": true|false,
             ...
         },
 
         // 現在の訪問からのイベント
-        &#34;events&#34;: [{
-            &#34;account&#34;: &#34;ACCOUNT&#34;,
-            &#34;profile&#34;: &#34;PROFILE&#34;,
-            &#34;selector&#34;: &#34;2&#34;,
-            &#34;env&#34;: &#34;prod&#34;,
-            &#34;tags&#34;: {
-                &#34;TAG_UID&#34;: {
-                    &#34;executed&#34;: true|false,
-                    &#34;type&#34;: VENDOR_ID,
-                    &#34;profile&#34;: &#34;PROFILE&#34;
+        "events": [{
+            "account": "ACCOUNT",
+            "profile": "PROFILE",
+            "selector": "2",
+            "env": "prod",
+            "tags": {
+                "TAG_UID": {
+                    "executed": true|false,
+                    "type": VENDOR_ID,
+                    "profile": "PROFILE"
                 },
                 ...
             }
-            &#34;data&#34;: {
+            "data": {
                 // 組み込みDOM変数
-                &#34;dom&#34;: {
-                    &#34;viewport_height&#34;: 976,
-                    &#34;referrer&#34;: &#34;https://www.google.com/&#34;,
-                    &#34;viewport_width&#34;: 1680,
-                    &#34;domain&#34;: &#34;example.com&#34;,
-                    &#34;title&#34;: &#34;PAGE_TITLE&#34;,
-                    &#34;query_string&#34;: &#34;&#34;,
-                    &#34;hash&#34;: &#34;&#34;,
-                    &#34;url&#34;: &#34;FULL_URL&#34;,
-                    &#34;pathname&#34;: &#34;/&#34;
+                "dom": {
+                    "viewport_height": 976,
+                    "referrer": "https://www.google.com/",
+                    "viewport_width": 1680,
+                    "domain": "example.com",
+                    "title": "PAGE_TITLE",
+                    "query_string": "",
+                    "hash": "",
+                    "url": "FULL_URL",
+                    "pathname": "/"
                 },
 
                 // ユニバーサルデータオブジェクト変数
-                &#34;udo&#34;: {
-                    &#34;UDO_VARIABLE_NAME&#34; : &#34;VALUE&#34;,
+                "udo": {
+                    "UDO_VARIABLE_NAME" : "VALUE",
                     ...
-                    &#34;tealium_account&#34;: &#34;ACCOUNT&#34;,
-                    &#34;tealium_datasource&#34;: &#34;DATA_SOURCE_KEY&#34;,
-                    &#34;tealium_environment&#34;: &#34;prod&#34;,
-                    &#34;tealium_event&#34;: &#34;view&#34;,
-                    &#34;tealium_firstparty_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;tealium_library_name&#34;: &#34;utag.js&#34;,
-                    &#34;tealium_library_version&#34;: &#34;4.44.0&#34;,
-                    &#34;tealium_profile&#34;: &#34;PROFILE&#34;
-                    &#34;tealium_random&#34;: &#34;MATH_RANDOM&#34;,
-                    &#34;tealium_session_id&#34;: &#34;UNIX_TIMESTAMP&#34;,
-                    &#34;tealium_timestamp_epoch&#34;: UNIX_TIMESTAMP,
-                    &#34;tealium_timestamp_local&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmm&#34;,
-                    &#34;tealium_timestamp_utc&#34;: &#34;2017-10-29T23:10:24.363Z&#34;,
-                    &#34;tealium_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;
+                    "tealium_account": "ACCOUNT",
+                    "tealium_datasource": "DATA_SOURCE_KEY",
+                    "tealium_environment": "prod",
+                    "tealium_event": "view",
+                    "tealium_firstparty_visitor_id": "45-CHAR-ALPHANUMERIC",
+                    "tealium_library_name": "utag.js",
+                    "tealium_library_version": "4.44.0",
+                    "tealium_profile": "PROFILE"
+                    "tealium_random": "MATH_RANDOM",
+                    "tealium_session_id": "UNIX_TIMESTAMP",
+                    "tealium_timestamp_epoch": UNIX_TIMESTAMP,
+                    "tealium_timestamp_local": "YYYY-MM-DDTHH:MM:SS.mmm",
+                    "tealium_timestamp_utc": "2017-10-29T23:10:24.363Z",
+                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
 
                 // JavaScriptページ変数
-                &#34;js&#34;: {
-                    &#34;VARIABLE_NAME&#34;: VALUE,
+                "js": {
+                    "VARIABLE_NAME": VALUE,
                     ...
                 },
 
                 // クッキー
-                &#34;firstparty_tealium_cookies&#34;: {
-                    &#34;utag_main_v_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;COOKIE_NAME&#34; : VALUE,
+                "firstparty_tealium_cookies": {
+                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
+                    "COOKIE_NAME" : VALUE,
                     ...
                 },
 
                 // メタデータ変数
-                &#34;meta&#34;: {
-                    &#34;META_TAG_NAME&#34;: VALUE,
+                "meta": {
+                    "META_TAG_NAME": VALUE,
                     ...
                 }
             },
-            &#34;type&#34;: &#34;LIVE&#34;,
-            &#34;enrichmentOnly&#34;: false,
-            &#34;event_id&#34;: &#34;GUID&#34;,
-            &#34;visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-            &#34;post_time&#34;: UNIX_TIMESTAMP,
-            &#34;page_url&#34;: {
-                &#34;full_url&#34;: &#34;URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "type": "LIVE",
+            "enrichmentOnly": false,
+            "event_id": "GUID",
+            "visitor_id": "45-CHAR-ALPHANUMERIC",
+            "post_time": UNIX_TIMESTAMP,
+            "page_url": {
+                "full_url": "URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;referrer_url&#34;: {
-                &#34;full_url&#34;: &#34;FULL_URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "referrer_url": {
+                "full_url": "FULL_URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;useragent&#34;: &#34;USER_AGENT&#34;,
-            &#34;client_ip&#34;: &#34;IP_ADDRESS&#34;,
-            &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER&#34;, ...],
-            &#34;new_visitor&#34;: true|false
+            "useragent": "USER_AGENT",
+            "client_ip": "IP_ADDRESS",
+            "_dctrace": ["COLLECTION_SERVER", ...],
+            "new_visitor": true|false
         }],
 
         // 文字列のセット
-        &#34;property_sets&#34;: {
-            &#34;SET_NAME&#34;: [&#34;VALUE&#34;, ...],
+        "property_sets": {
+            "SET_NAME": ["VALUE", ...],
             ...
         },
-        &#34;creation_ts&#34;: UNIX_TIMESTAMP,
-        &#34;_id&#34;: &#34;GUID&#34;,
-        &#34;shard_token&#34;: NUMERIC_VALUE,
-        &#34;last_event&#34;: {
-            &#34;account&#34;: &#34;ACCOUNT&#34;,
-            &#34;profile&#34;: &#34;PROFILE&#34;,
-            &#34;selector&#34;: &#34;2&#34;,
-            &#34;env&#34;: &#34;prod&#34;,
-            &#34;tags&#34;: {
-                &#34;TAG_UID&#34;: {
-                    &#34;executed&#34;: true|false,
-                    &#34;type&#34;: VENDOR_ID,
-                    &#34;profile&#34;: &#34;PROFILE&#34;
+        "creation_ts": UNIX_TIMESTAMP,
+        "_id": "GUID",
+        "shard_token": NUMERIC_VALUE,
+        "last_event": {
+            "account": "ACCOUNT",
+            "profile": "PROFILE",
+            "selector": "2",
+            "env": "prod",
+            "tags": {
+                "TAG_UID": {
+                    "executed": true|false,
+                    "type": VENDOR_ID,
+                    "profile": "PROFILE"
                 },
                 ...
             },
-            &#34;data&#34;: {
+            "data": {
                 // 組み込みDOM変数
-                &#34;dom&#34;: {
-                    &#34;viewport_height&#34;: 976,
-                    &#34;referrer&#34;: &#34;https://www.google.com/&#34;,
-                    &#34;viewport_width&#34;: 1680,
-                    &#34;domain&#34;: &#34;example.com&#34;,
-                    &#34;title&#34;: &#34;PAGE_TITLE&#34;,
-                    &#34;query_string&#34;: &#34;&#34;,
-                    &#34;hash&#34;: &#34;&#34;,
-                    &#34;url&#34;: &#34;FULL_URL&#34;,
-                    &#34;pathname&#34;: &#34;/&#34;
+                "dom": {
+                    "viewport_height": 976,
+                    "referrer": "https://www.google.com/",
+                    "viewport_width": 1680,
+                    "domain": "example.com",
+                    "title": "PAGE_TITLE",
+                    "query_string": "",
+                    "hash": "",
+                    "url": "FULL_URL",
+                    "pathname": "/"
                 },
                 // ユニバーサルデータオブジェクト変数
-                &#34;udo&#34;: {
-                    &#34;UDO_VARIABLE_NAME&#34; : &#34;VALUE&#34;,
+                "udo": {
+                    "UDO_VARIABLE_NAME" : "VALUE",
                     ...
-                    &#34;tealium_account&#34;: &#34;ACCOUNT&#34;,
-                    &#34;tealium_datasource&#34;: &#34;DATA_SOURCE_KEY&#34;,
-                    &#34;tealium_environment&#34;: &#34;prod&#34;,
-                    &#34;tealium_event&#34;: &#34;view&#34;,
-                    &#34;tealium_firstparty_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;tealium_library_name&#34;: &#34;utag.js&#34;,
-                    &#34;tealium_library_version&#34;: &#34;4.44.0&#34;,
-                    &#34;tealium_profile&#34;: &#34;PROFILE&#34;
-                    &#34;tealium_random&#34;: &#34;MATH_RANDOM&#34;,
-                    &#34;tealium_session_id&#34;: &#34;UNIX_TIMESTAMP&#34;,
-                    &#34;tealium_timestamp_epoch&#34;: UNIX_TIMESTAMP,
-                    &#34;tealium_timestamp_local&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmm&#34;,
-                    &#34;tealium_timestamp_utc&#34;: &#34;2017-10-29T23:10:24.363Z&#34;,
-                    &#34;tealium_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;
+                    "tealium_account": "ACCOUNT",
+                    "tealium_datasource": "DATA_SOURCE_KEY",
+                    "tealium_environment": "prod",
+                    "tealium_event": "view",
+                    "tealium_firstparty_visitor_id": "45-CHAR-ALPHANUMERIC",
+                    "tealium_library_name": "utag.js",
+                    "tealium_library_version": "4.44.0",
+                    "tealium_profile": "PROFILE"
+                    "tealium_random": "MATH_RANDOM",
+                    "tealium_session_id": "UNIX_TIMESTAMP",
+                    "tealium_timestamp_epoch": UNIX_TIMESTAMP,
+                    "tealium_timestamp_local": "YYYY-MM-DDTHH:MM:SS.mmm",
+                    "tealium_timestamp_utc": "2017-10-29T23:10:24.363Z",
+                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
 
                 // JavaScriptページ変数
-                &#34;js&#34;: {
-                    &#34;VARIABLE_NAME&#34;: VALUE,
+                "js": {
+                    "VARIABLE_NAME": VALUE,
                     ...
                 },
 
                 // クッキー
-                &#34;firstparty_tealium_cookies&#34;: {
-                    &#34;utag_main_v_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;COOKIE_NAME&#34; : VALUE,
+                "firstparty_tealium_cookies": {
+                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
+                    "COOKIE_NAME" : VALUE,
                     ...
                 },
 
                 // メタデータ変数
-                &#34;meta&#34;: {
-                    &#34;META_TAG_NAME&#34;: VALUE,
+                "meta": {
+                    "META_TAG_NAME": VALUE,
                     ...
                 }
             },
-            &#34;type&#34;: &#34;LIVE&#34;,
-            &#34;enrichmentOnly&#34;: false,
-            &#34;event_id&#34;: &#34;GUID&#34;,
-            &#34;visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-            &#34;post_time&#34;: UNIX_TIMESTAMP,
-            &#34;page_url&#34;: {
-                &#34;full_url&#34;: &#34;URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "type": "LIVE",
+            "enrichmentOnly": false,
+            "event_id": "GUID",
+            "visitor_id": "45-CHAR-ALPHANUMERIC",
+            "post_time": UNIX_TIMESTAMP,
+            "page_url": {
+                "full_url": "URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;referrer_url&#34;: {
-                &#34;full_url&#34;: &#34;FULL_URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "referrer_url": {
+                "full_url": "FULL_URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;useragent&#34;: &#34;USER_AGENT&#34;,
-            &#34;client_ip&#34;: &#34;IP_ADDRESS&#34;,
-            &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER&#34;, ...],
-            &#34;new_visitor&#34;: true|false
+            "useragent": "USER_AGENT",
+            "client_ip": "IP_ADDRESS",
+            "_dctrace": ["COLLECTION_SERVER", ...],
+            "new_visitor": true|false
         }],
 
 ```
-                    &#34;tealium_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;
+                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
                 // Javascriptページ変数
-                &#34;js&#34;: {
-                    &#34;VARIABLE_NAME&#34;: VALUE,
+                "js": {
+                    "VARIABLE_NAME": VALUE,
                     ...
                 },
                 // クッキー
-                &#34;firstparty_tealium_cookies&#34;: {
-                    &#34;utag_main_v_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;COOKIE_NAME&#34; : VALUE,
+                "firstparty_tealium_cookies": {
+                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
+                    "COOKIE_NAME" : VALUE,
                     ...
                 },
                 // メタデータ変数
-                &#34;meta&#34;: {
-                    &#34;META_TAG_NAME&#34;: VALUE,
+                "meta": {
+                    "META_TAG_NAME": VALUE,
                     ...
                 }
             },
-            &#34;type&#34;: &#34;LIVE&#34;,
-            &#34;enrichmentOnly&#34;: true|false,
-            &#34;event_id&#34;: &#34;GUID&#34;,
-            &#34;visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-            &#34;post_time&#34;: UNIX_TIMESTAMP,
-            &#34;page_url&#34;: {
-                &#34;full_url&#34;: &#34;URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "type": "LIVE",
+            "enrichmentOnly": true|false,
+            "event_id": "GUID",
+            "visitor_id": "45-CHAR-ALPHANUMERIC",
+            "post_time": UNIX_TIMESTAMP,
+            "page_url": {
+                "full_url": "URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;referrer_url&#34;: {
-                &#34;full_url&#34;: &#34;FULL_URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "referrer_url": {
+                "full_url": "FULL_URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;useragent&#34;: &#34;USER_AGENT&#34;,
-            &#34;client_ip&#34;: &#34;IP_ADDRESS&#34;,
-            &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER&#34;, ...],
-            &#34;new_visitor&#34;: true|false
+            "useragent": "USER_AGENT",
+            "client_ip": "IP_ADDRESS",
+            "_dctrace": ["COLLECTION_SERVER", ...],
+            "new_visitor": true|false
         },
-        &#34;_dc_ttl_&#34;: 1800000,
-        &#34;total_event_count&#34;: 2,
-        &#34;events_compressed&#34;: false
+        "_dc_ttl_": 1800000,
+        "total_event_count": 2,
+        "events_compressed": false
     },
-    &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER_ID&#34;, ...],
-    &#34;new_visitor&#34;: true|false,
-    &#34;audiences_joined_at&#34;: {
-        &#34;ACCOUNT_PROFILE_AUDIENCE_ID&#34;: {
-            &#34;$date&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmmZ&#34;
+    "_dctrace": ["COLLECTION_SERVER_ID", ...],
+    "new_visitor": true|false,
+    "audiences_joined_at": {
+        "ACCOUNT_PROFILE_AUDIENCE_ID": {
+            "$date": "YYYY-MM-DDTHH:MM:SS.mmmZ"
         },
         ...
     },
-    &#34;last_visit_id&#34;: &#34;GUID&#34;
+    "last_visit_id": "GUID"
 },
 // 追加の訪問記録
 ...

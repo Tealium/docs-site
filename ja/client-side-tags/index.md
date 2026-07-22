@@ -4,7 +4,7 @@ description: Tealiumは数百のクライアントサイドタグと統合して
 url: https://docs.tealium.com/ja/client-side-tags/
 ---
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### スタートガイド
 
@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/client-side-tags/
 
 
 
-![](/images/icons/icon-cubes.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
 #### データマッピング
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/client-side-tags/
 
 
 
-![](/images/icons/icon-timer.svg)
+![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
 #### 最近のタグ
 
@@ -30,25 +30,25 @@ url: https://docs.tealium.com/ja/client-side-tags/
 ## Tealiumタグ
 
 
-![](/images/icons/icon-tag.svg)
+![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
 Tealium Collect
 
 
 
-![](/images/icons/icon-tag.svg)
+![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
 Tealiumカスタムコンテナ
 
 
 
-![](/images/icons/icon-tag.svg)
+![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
 Tealiumジェネリックタグ
 
 
 
-![](/images/icons/icon-tag.svg)
+![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
 Tealiumピクセルコンテナ
 
@@ -56,61 +56,61 @@ Tealiumピクセルコンテナ
 ## 人気のタグ
 
 
-![](/images/integrations/google-analytics.png)
+![](https://docs.tealium.com/images/integrations/google-analytics.png)
 
 Google Analytics 4
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebook Pixel
 
 
 
-![](/images/integrations/adobe-analytics.png)
+![](https://docs.tealium.com/images/integrations/adobe-analytics.png)
 
 Adobe Experience Platform Web SDK
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Ads (gtag.js)
 
 
 
-![](/images/integrations/reddit.svg)
+![](https://docs.tealium.com/images/integrations/reddit.svg)
 
 Reddit Pixel
 
 
 
-![](/images/integrations/tiktok.png)
+![](https://docs.tealium.com/images/integrations/tiktok.png)
 
 TikTok Pixel
 
 
 
-![](/images/integrations/amazon.png)
+![](https://docs.tealium.com/images/integrations/amazon.png)
 
 Amazon Advertising
 
 
 
-![](/images/integrations/microsoft.svg)
+![](https://docs.tealium.com/images/integrations/microsoft.svg)
 
 Microsoft Advertising Universal Event Tracking (UET)
 
 
 
-![](/images/integrations/floodlight.png)
+![](https://docs.tealium.com/images/integrations/floodlight.png)
 
 Floodlight (gtag.js)
 
 
 
-![](/images/integrations/thetradedesk-icon.jpg)
+![](https://docs.tealium.com/images/integrations/thetradedesk-icon.jpg)
 
 The Trade Desk Universal Pixel
 

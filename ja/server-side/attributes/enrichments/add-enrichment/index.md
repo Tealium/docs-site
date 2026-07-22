@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/add-enrichme
 ---
 エンリッチメントは、属性の値をカスタマイズするために追加されます。エンリッチしたい属性を見つけて、以下の手順を完了してください：
 
-左のナビゲーションバーから **Transform &gt; Visitor / Visit Attributes** に移動して、属性を表示します。左側の利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックしてその詳細を表示します。
+左のナビゲーションバーから **Transform > Visitor / Visit Attributes** に移動して、属性を表示します。左側の利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックしてその詳細を表示します。
 
-![](/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png)
+![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png)
 
 1. **Add Attribute** ダイアログで、**Add Enrichment** をクリックし、追加したいエンリッチメントを選択します。
 1. 構成はエンリッチメントの種類によって異なります。
@@ -17,10 +17,10 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/add-enrichme
     * **New Visit** – 訪問が新たに訪問したときに発生します。
     * **Any Event** – 任意のイベントが発生したときに発生します。
     * **Visit Ended** – 訪問が終了したときに発生します。以下の非活動時間に基づきます：
-        * Webセッション：30分（イベントが1つだけ受信された場合は10分）()
+        * Webセッション：30分（イベントが1つだけ受信された場合は10分）(https://docs.tealium.com/single-event-visitor/)
         * モバイルアプリセッション：2分
         * オムニチャネルセッション：1分
 
-1. 既存の **Rule** 条件を選択するか、新しいルールを作成します。詳細については、[エンリッチメントルールについて]()を参照してください。
+1. 既存の **Rule** 条件を選択するか、新しいルールを作成します。詳細については、[エンリッチメントルールについて](https://docs.tealium.com/about-enrichment-rules/)を参照してください。
 1. **Finish** をクリックします。
 1. プロファイルを保存して公開し、変更を適用します。

@@ -23,17 +23,21 @@ Use the following cURL command to execute this task:
 
 ```bash
 curl -X POST https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers/{datalayer id}} \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39; \
--H &#39;Content-Type: application/json&#39; \
--d &#39;{ &#34;key1&#34; : &#34;value1&#34;, &#34;key2&#34; : &#34;value2&#34; }&#39;
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{ "key1" : "value1", "key2" : "value2" }'
 ```
 
+
+<blockquote>
 When passing files to the `-d` parameter using the cURL command, the file name must be prefixed with the `@` character.
+</blockquote>
+
 
 ### Example response
 
-The following example shows a typical response generated from the cURL command. Request rates vary up to a maximum of 100 requests per second, depending on network traffic. It may take up to one hour for changes to be reflected by Tealium&#39;s servers.
+The following example shows a typical response generated from the cURL command. Request rates vary up to a maximum of 100 requests per second, depending on network traffic. It may take up to one hour for changes to be reflected by Tealium's servers.
 
 `Status 200 OK`
 
@@ -43,8 +47,8 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---|---| ---|
-| 400 Bad request |``` {    &#34;returnCode&#34; : 1400,    &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```|  This error occurs when one of the following is true: The JSON key contains a period; The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The request body is empty; Bad or invalid JSON; JSON data exceeds 1MB; Or the file-type parameter contains a value other than &#34;json&#34; or &#34;javascript&#34;.  |
-| 401 Unauthorized | ``` {    &#34;returnCode&#34; : 1469,    &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34; }  ```|  This error occurs when the user lacks the appropriate permissions or there is a typographical error in the account/profile name.  |
+| 400 Bad request |``` {    "returnCode" : 1400,    "message" : "Invalid request submission. Please check supplied parameters or request body." } ```|  This error occurs when one of the following is true: The JSON key contains a period; The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The request body is empty; Bad or invalid JSON; JSON data exceeds 1MB; Or the file-type parameter contains a value other than "json" or "javascript".  |
+| 401 Unauthorized | ``` {    "returnCode" : 1469,    "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions" }  ```|  This error occurs when the user lacks the appropriate permissions or there is a typographical error in the account/profile name.  |
 
 ## PUT (Update) a Hosted Data Layer object or JSON file
 
@@ -66,10 +70,10 @@ Use the following cURL command to execute this task:
 
 ```bash
 curl -X PUT https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers/{datalayer id} \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39; \
--H &#39;Content-Type: application/json&#39; \
--d &#39;{ &#34;key1&#34; : &#34;value1&#34;, &#34;key2&#34; : &#34;value2&#34; }&#39;
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{ "key1" : "value1", "key2" : "value2" }'
 ```
 
 ### Example response
@@ -78,7 +82,11 @@ The following example shows a typical response generated from the cURL command:
 
 `Status 200 OK`
 
-It may take up to one hour for changes to be reflected by Tealium&#39;s servers.
+
+<blockquote>
+It may take up to one hour for changes to be reflected by Tealium's servers.
+</blockquote>
+
 
 ### Error messages
 
@@ -86,7 +94,7 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---| ---| ---|
-|400 Bad request| ``` {    &#34;returnCode&#34; : 1400,    &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```| This error occurs when one of the following is true: The JSON key contains a period; The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The request body is empty; Bad or invalid JSON; JSON data exceeds 1MB; The file-type parameter contains a value other than &#34;json&#34; or &#34;javascript&#34;.  |
+|400 Bad request| ``` {    "returnCode" : 1400,    "message" : "Invalid request submission. Please check supplied parameters or request body." } ```| This error occurs when one of the following is true: The JSON key contains a period; The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The request body is empty; Bad or invalid JSON; JSON data exceeds 1MB; The file-type parameter contains a value other than "json" or "javascript".  |
 
 ## DELETE a Hosted Data Layer object or JSON file
 
@@ -108,13 +116,13 @@ Use the following cURL command to execute this task:
 
 ```bash
 curl -X DELETE https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers/{datalayer id} \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39;
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json'
 ```
 
 ### Example response
 
-The following example shows a typical response generated from the cURL command. Request rates vary up to a maximum of 100 requests per second, depending on network traffic. It may take up to one hour for changes to be reflected by Tealium&#39;s servers.
+The following example shows a typical response generated from the cURL command. Request rates vary up to a maximum of 100 requests per second, depending on network traffic. It may take up to one hour for changes to be reflected by Tealium's servers.
 
 `Status 200 OK`
 
@@ -124,8 +132,8 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---|--- | ---|
-| 400 Bad request | ``` {    &#34;returnCode&#34; : 1400,    &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```|  This error occurs when one of the following is true: The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The file-type parameter contains a value other than &#34;json&#34; or &#34;javascript&#34;.  |
-| 401 Unauthorized | ``` {    &#34;returnCode&#34; : 1469,    &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34; } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
+| 400 Bad request | ``` {    "returnCode" : 1400,    "message" : "Invalid request submission. Please check supplied parameters or request body." } ```|  This error occurs when one of the following is true: The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The file-type parameter contains a value other than "json" or "javascript".  |
+| 401 Unauthorized | ``` {    "returnCode" : 1469,    "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions" } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
 
 ## GET file metadata
 
@@ -154,8 +162,8 @@ Use the following cURL command to execute this task:
 
 ```bash
 curl -X GET https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers/{datalayer id} \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39;
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json'
 ```
 
 ### Example response
@@ -164,9 +172,9 @@ The following example shows a typical response generated from the cURL command:
 
 ```json
 {
-  &#34;file&#34;: &#34;dle/tealium/main/datalayer1.js&#34;,
-  &#34;lastModified&#34;: &#34;2017-04-07T02:41:24&#43;0000&#34;,
-  &#34;size&#34;: 70
+  "file": "dle/tealium/main/datalayer1.js",
+  "lastModified": "2017-04-07T02:41:24+0000",
+  "size": 70
 }
 ```
 
@@ -176,9 +184,9 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---|---| ---|
-| 404 Not Found | ``` {   &#34;returnCode&#34; : 1404,   &#34;message&#34; : &#34;Could not locate data layer identified by {datalayer_id}&#34; } ```| This error occurs when the supplied `datalayer_id` does not exist.  |
-| 400 Bad request | ``` {    &#34;returnCode&#34; : 1400,    &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```| This error occurs when one of the following is true: The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The file-type parameter contains a value other than &#34;json&#34; or &#34;javascript&#34;.  |
-| 401 Unauthorized | ``` {    &#34;returnCode&#34; : 1469,    &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34; } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
+| 404 Not Found | ``` {   "returnCode" : 1404,   "message" : "Could not locate data layer identified by {datalayer_id}" } ```| This error occurs when the supplied `datalayer_id` does not exist.  |
+| 400 Bad request | ``` {    "returnCode" : 1400,    "message" : "Invalid request submission. Please check supplied parameters or request body." } ```| This error occurs when one of the following is true: The combination of account, profile, and `datalayer_id` exceeds 250 characters; The `datalayer_id` contains restricted characters; There is a typographical error in the account/profile name; The file-type parameter contains a value other than "json" or "javascript".  |
+| 401 Unauthorized | ``` {    "returnCode" : 1469,    "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions" } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
 
 ## GET a list of Data Layer objects and JSON files
 
@@ -195,17 +203,17 @@ Use one of the following cURL commands to execute this task:
 #### Example cURL request (No continuation token)
 
 ```bash
-curl -X GET &#39;https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers&#39; \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39;
+curl -X GET 'https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers' \
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json'
 ```
 
 #### Example cURL request (With continuation token)
 
 ```bash
-curl -X GET &#39;https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers?continuationToken={continuation_token}&#39; \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39;
+curl -X GET 'https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/datalayers?continuationToken={continuation_token}' \
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json'
 ```
 
 ### Example responses
@@ -216,22 +224,22 @@ The following examples show typical responses generated from the cURL command:
 
 ```json
 {
-  &#34;isTruncated&#34;: false,
-  &#34;fileStatuses&#34;: [
+  "isTruncated": false,
+  "fileStatuses": [
     {
-      &#34;file&#34;: &#34;dle/tealium/main/datalayer1.js&#34;,
-      &#34;lastModified&#34;: &#34;2017-04-07T02:41:24&#43;0000&#34;,
-      &#34;size&#34;: 70
+      "file": "dle/tealium/main/datalayer1.js",
+      "lastModified": "2017-04-07T02:41:24+0000",
+      "size": 70
     },
     {
-      &#34;file&#34;: &#34;dle/tealium/main/datalayer2.js&#34;,
-      &#34;lastModified&#34;: &#34;2017-04-06T23:37:17&#43;0000&#34;,
-      &#34;size&#34;: 69
+      "file": "dle/tealium/main/datalayer2.js",
+      "lastModified": "2017-04-06T23:37:17+0000",
+      "size": 69
     },
     {
-      &#34;file&#34;: &#34;dle/tealium/main/datalayer3.json&#34;,
-      &#34;lastModified&#34;: &#34;2017-04-07T02:40:30&#43;0000&#34;,
-      &#34;size&#34;: 86
+      "file": "dle/tealium/main/datalayer3.json",
+      "lastModified": "2017-04-07T02:40:30+0000",
+      "size": 86
     },
     ...
   ]
@@ -242,23 +250,23 @@ The following examples show typical responses generated from the cURL command:
 
 ```json
 {
- &#34;isTruncated&#34;: true,
- &#34;continuationToken&#34;:&#34;1bQZQPYomjLBOQxhZhMazJVoPcrW9iEtOcPhcRQVlMZWx9IssfpisOKt0Kb85bVlRDbkR7NR%2BZd3eUgB0vnx5eomAoz5KX0K2qgcNMOwiJXdbN5CtD4A%2B%2FLK%2B%2Fj0AJ1eYXEu2l%2F9Z%2FGk%3D&#34;,
- &#34;fileStatuses&#34;: [
+ "isTruncated": true,
+ "continuationToken":"1bQZQPYomjLBOQxhZhMazJVoPcrW9iEtOcPhcRQVlMZWx9IssfpisOKt0Kb85bVlRDbkR7NR%2BZd3eUgB0vnx5eomAoz5KX0K2qgcNMOwiJXdbN5CtD4A%2B%2FLK%2B%2Fj0AJ1eYXEu2l%2F9Z%2FGk%3D",
+ "fileStatuses": [
    {
-     &#34;file&#34;: &#34;dle/tealium/main/datalayer1.js&#34;,
-     &#34;lastModified&#34;: &#34;2017-04-07T02:41:24&#43;0000&#34;,
-     &#34;size&#34;: 70
+     "file": "dle/tealium/main/datalayer1.js",
+     "lastModified": "2017-04-07T02:41:24+0000",
+     "size": 70
    },
    {
-     &#34;file&#34;: &#34;dle/tealium/main/datalayer2.js&#34;,
-     &#34;lastModified&#34;: &#34;2017-04-06T23:37:17&#43;0000&#34;,
-     &#34;size&#34;: 69
+     "file": "dle/tealium/main/datalayer2.js",
+     "lastModified": "2017-04-06T23:37:17+0000",
+     "size": 69
    },
    {
-     &#34;file&#34;: &#34;dle/tealium/main/datalayer3.json&#34;,
-     &#34;lastModified&#34;: &#34;2017-04-07T02:40:30&#43;0000&#34;,
-     &#34;size&#34;: 86
+     "file": "dle/tealium/main/datalayer3.json",
+     "lastModified": "2017-04-07T02:40:30+0000",
+     "size": 86
    },
    ...
  ]
@@ -271,15 +279,15 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---|---| ---|
-| 400 Bad request | ``` {   &#34;returnCode&#34; : 1400,   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```| This error occurs due to a typographical error in the account/profile name.  |
-| 401 Unauthorized | ``` {    &#34;returnCode&#34; : 1469,    &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34; } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
+| 400 Bad request | ``` {   "returnCode" : 1400,   "message" : "Invalid request submission. Please check supplied parameters or request body." } ```| This error occurs due to a typographical error in the account/profile name.  |
+| 401 Unauthorized | ``` {    "returnCode" : 1469,    "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions" } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
 
 ## GET failed uploads
 
 Use the following command to query for failed uploads:
 
 ```bash
-GET /v2/dle/accounts/{account}/profiles/{profile}/failed-uploads?start-date={start_date}&amp;amp;end-date={end_date}
+GET /v2/dle/accounts/{account}/profiles/{profile}/failed-uploads?start-date={start_date}&amp;end-date={end_date}
 ```
 
 * The results returned contain a maximum of 5,000 records and are not paginated.
@@ -298,9 +306,9 @@ Results can be filtered using the following date range parameters with an expect
 Use the following cURL command to execute this task:
 
 ```bash
-curl -X GET &#39;https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/failed-uploads?start-date={YYYY-MM-DDThh:mm:ssZ}&amp;amp;end-date={YYYY-MM-DDThh:mm:ssZ}&#39; \
--H &#39;Authorization: Bearer {token}&#39; \
--H &#39;Accept: application/json&#39;
+curl -X GET 'https://api.tealiumiq.com/v2/dle/accounts/{account}/profiles/{profile}/failed-uploads?start-date={YYYY-MM-DDThh:mm:ssZ}&amp;end-date={YYYY-MM-DDThh:mm:ssZ}' \
+-H 'Authorization: Bearer {token}' \
+-H 'Accept: application/json'
 ```
 
 ### Example response
@@ -310,17 +318,17 @@ The following example shows a typical response generated from the cURL command:
 ```json
 Status 200 OK
 {
-  &#34;account&#34;: &#34;your_account&#34;,
-  &#34;profile&#34;: &#34;main&#34;,
-  &#34;count&#34;: 2,
-  &#34;failedUploads&#34;: [
+  "account": "your_account",
+  "profile": "main",
+  "count": 2,
+  "failedUploads": [
     {
-      &#34;file&#34;: &#34;/dle/your_account/main/forremoval2.js&#34;,
-      &#34;date&#34;: &#34;2017-05-20T17:22:00&#43;0000&#34;
+      "file": "/dle/your_account/main/forremoval2.js",
+      "date": "2017-05-20T17:22:00+0000"
     },
     {
-      &#34;file&#34;: &#34;/dle/your_account/main/forremoval.js&#34;,
-      &#34;date&#34;: &#34;2017-05-20T17:22:00&#43;0000&#34;
+      "file": "/dle/your_account/main/forremoval.js",
+      "date": "2017-05-20T17:22:00+0000"
     }
   ]
 }
@@ -332,5 +340,5 @@ The following table describes potential error messages for this task:
 
 |Error Code| Error Message | Description|
 |---|---| ---|
-| 400 Bad request | ``` {   &#34;returnCode&#34; : 1400,   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34; } ```| This error occurs when there is a typographical error in the account/profile name.  |
-| 401 Unauthorized | ``` {   &#34;returnCode&#34; : 1469,   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34; } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |
+| 400 Bad request | ``` {   "returnCode" : 1400,   "message" : "Invalid request submission. Please check supplied parameters or request body." } ```| This error occurs when there is a typographical error in the account/profile name.  |
+| 401 Unauthorized | ``` {   "returnCode" : 1469,   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions" } ```| This error occurs due to a lack of appropriate permissions or a typographical error in the account/profile name.  |

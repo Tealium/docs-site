@@ -3,13 +3,21 @@ title: OpenAI Connector Setup Guide
 description: Set up the OpenAI connector to send a prompt with Tealium event or visitor data and return model responses for real-time enrichment.
 url: https://docs.tealium.com/server-side-connectors/openai-connector/
 ---
-For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions]().
+
+<blockquote>
+For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 ## How it works
 
 This connector invokes an OpenAI model with your custom prompt and mapped Tealium data, then sends the response as a JSON event to Tealium Collect for real-time enrichment.
 
+
+<blockquote>
 Use the OpenAI connector for targeted, high-value interactions rather than high-volume events. Excessive usage may result in rate limits or increased API costs in your OpenAI account and add to your inbound Tealium event volume.
+</blockquote>
+
 
 ## Usage and cost considerations
 
@@ -47,7 +55,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**: The OpenAI API key used to authenticate requests. The key must have permission to create responses (model inference) with either **All** or **Restricted** permission. It cannot have **Read Only** permission. For more information, see [OpenAI: Assign API Key Permissions](https://help.openai.com/en/articles/8867743-assign-api-key-permissions).
@@ -67,7 +75,7 @@ This action sends your custom prompt and mapped Tealium data to an OpenAI model.
 
 | Parameter | Description |
 | --- | --- |
-| Model | Select the OpenAI model to use for this prompt, for example **gpt-4.1-mini** or **gpt-4.1**.&lt;br&gt;We recommend using a model optimized for structured output (JSON) that meets your performance and cost requirements. |
+| Model | Select the OpenAI model to use for this prompt, for example **gpt-4.1-mini** or **gpt-4.1**.<br>We recommend using a model optimized for structured output (JSON) that meets your performance and cost requirements. |
 
 #### Tealium Context
 
@@ -100,7 +108,7 @@ Enter the prompt to send to the selected model.
 * Reference mapped placeholder names using double curly braces, such as `{{review_text}}`, `{{product_name}}`.
 * Reference `{{event_payload}}` after you enable **Add Event Payload**.
 * Describe how the model determines and sets each output field.
-* Do not include JSON formatting instructions (for example, &#34;Return only JSON&#34;). The connector enforces the JSON structure automatically through the **Structured Output** mapping.
+* Do not include JSON formatting instructions (for example, "Return only JSON"). The connector enforces the JSON structure automatically through the **Structured Output** mapping.
 
 #### Advanced Model Settings
 
@@ -163,7 +171,7 @@ A customer submitted a review for {{product_name}}:
 
 {{review_text}}
 
-Classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;. Provide a confidence score between 0 and 1.
+Classify the customer's sentiment as one of: "dissatisfied", "neutral", or "satisfied". Provide a confidence score between 0 and 1.
 ```
 
 **Structured Output (JSON Schema)**:
@@ -173,7 +181,7 @@ Classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;ne
 | Required | string | `ai_review_sentiment` |
 | Required | number | `ai_confidence_score` |
 
-**Result**: The connector returns a JSON event to Tealium Collect containing `tealium_event: &#34;ai_response&#34;`, `ai_review_sentiment`, and `ai_confidence_score`. Create matching event attributes to capture these values for enrichment.
+**Result**: The connector returns a JSON event to Tealium Collect containing `tealium_event: "ai_response"`, `ai_review_sentiment`, and `ai_confidence_score`. Create matching event attributes to capture these values for enrichment.
 
 ### Send Prompt to OpenAI (Deprecated)
 
@@ -183,11 +191,11 @@ This action invokes an OpenAI model with your custom prompt and mapped Tealium d
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Model | Select the OpenAI model to use for this prompt, for example **gpt-4.1-mini** or **gpt-4.1**.&lt;br&gt;We recommend using a model optimized for structured output (JSON) that supports your performance and cost requirements. For more information, see [OpenAI Developers: Production best practices](https://developers.openai.com/api/docs/guides/production-best-practices). |
+| Model | Select the OpenAI model to use for this prompt, for example **gpt-4.1-mini** or **gpt-4.1**.<br>We recommend using a model optimized for structured output (JSON) that supports your performance and cost requirements. For more information, see [OpenAI Developers: Production best practices](https://developers.openai.com/api/docs/guides/production-best-practices). |
 | Add Event Payload | (Available for event actions) Check this box to include the event payload for use in the prompt template as variable `{{event_payload}}`. |
 | Add Visitor Profile | (Available for audience actions) Check this box to include the visitor profile for use in the prompt template as variable `{{visitor_profile}}`. |
 | Add Current Visit | (Available for audience actions) Check this box to include the current visit within the variable `{{visitor_profile}}`. |
-| Prompt | Enter the prompt to send to the selected OpenAI model. Follow these guidelines to ensure consistent and machine-readable output:&lt;br&gt;&lt;br&gt;Use **double curly braces** (`{{ }}`) to reference mapped parameters, for example: `{{tealium_account}}`, `{{tealium_visitor_id}}`, `{{visitor_profile}}`.&lt;br&gt;&lt;br&gt;Use `{{event_payload}}` to include the event payload in the prompt after first enabling the **Add Event Payload** checkbox.&lt;br&gt;&lt;br&gt;Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.&lt;br&gt;&lt;br&gt;Define a valid Tealium event JSON object to be returned in the response. Explicitly instruct the model to include `tealium_account`, `tealium_profile`, and `tealium_visitor_id` and your output variable in this event JSON so the connector can forward the event to the Tealium Collect endpoint.&lt;br&gt;&lt;br&gt;The connector automatically includes instructions in the prompt to force the model to return JSON.&lt;br&gt;&lt;br&gt;For example prompts, see [How it works](#how-it-works).|
+| Prompt | Enter the prompt to send to the selected OpenAI model. Follow these guidelines to ensure consistent and machine-readable output:<br><br>Use **double curly braces** (`{{ }}`) to reference mapped parameters, for example: `{{tealium_account}}`, `{{tealium_visitor_id}}`, `{{visitor_profile}}`.<br><br>Use `{{event_payload}}` to include the event payload in the prompt after first enabling the **Add Event Payload** checkbox.<br><br>Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.<br><br>Define a valid Tealium event JSON object to be returned in the response. Explicitly instruct the model to include `tealium_account`, `tealium_profile`, and `tealium_visitor_id` and your output variable in this event JSON so the connector can forward the event to the Tealium Collect endpoint.<br><br>The connector automatically includes instructions in the prompt to force the model to return JSON.<br><br>For example prompts, see [How it works](#how-it-works).|
 
 #### Advanced Model Settings
 

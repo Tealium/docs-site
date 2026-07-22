@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/element-vi
 
 要素の可視性イベントは、訪問者がページ上の特定の要素を見たときにトラッキングします。要素が訪問者に見えると、トラッキングコールがトリガーされます。
 
-イベントリスナーを追加する方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーを追加する方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/element-vi
 
 ### 要素セレクター
 
-要素セレクターは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクター]()を参照してください。
+要素セレクターは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクター](https://docs.tealium.com/event-element-selector/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -42,16 +42,16 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/element-vi
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;element_visible&#34;`| 訪問者が指定した要素を一定の可視性のパーセンテージと最小時間で表示しました。|
+|`tealium_event="element_visible"`| 訪問者が指定した要素を一定の可視性のパーセンテージと最小時間で表示しました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;element_visible&#34;,
-   &#34;percent_visible&#34; : &#34;100&#34;,
-   &#34;duration&#34; : &#34;5&#34;,
-   &#34;iq_event_id:&#34; : &#34;element_visibility_events_1&#34;
+   "tealium_event"  : "element_visible",
+   "percent_visible" : "100",
+   "duration" : "5",
+   "iq_event_id:" : "element_visibility_events_1"
 }
 
 ```

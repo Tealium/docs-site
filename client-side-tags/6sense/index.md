@@ -3,7 +3,7 @@ title: 6sense Tag
 description: This article describes how to set up the 6sense tag.
 url: https://docs.tealium.com/client-side-tags/6sense/
 ---
-6sense empowers marketing and sales teams with 100 percent visibility into their buyers&#39; identities, needs, and timing.
+6sense empowers marketing and sales teams with 100 percent visibility into their buyers' identities, needs, and timing.
 
 ## Tag tips
 
@@ -11,11 +11,11 @@ Use mapping to:
 
 * Override standard config values.
 * Set custom parameters and attributes.
-* To track events for only specific tags, map **Manually Tracked Tags** (for example, `[&#39;A&#39;, &#39;BUTTON&#39;]`).
+* To track events for only specific tags, map **Manually Tracked Tags** (for example, `['A', 'BUTTON']`).
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -25,11 +25,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

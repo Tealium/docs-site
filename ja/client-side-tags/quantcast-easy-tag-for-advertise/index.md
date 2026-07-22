@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-adverti
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Quantcast Easy Tag for Advertiseタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Quantcast Easy Tag for Advertiseタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-adverti
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは次のとおりです：
 
@@ -37,17 +37,17 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-adverti
 
 |変数| 説明|
 |---| ---|
-|`qacct`|  &lt;ul&gt;&lt;li&gt;アカウントコード（P-code）。&lt;/li&gt;&lt;li&gt;`p-`で始まる13文字の大文字小文字を区別する英数字のコード。&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.event`|  &lt;ul&gt;&lt;li&gt;イベント&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.channel`|  &lt;ul&gt;&lt;li&gt;チャンネル&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.subchannel`|  &lt;ul&gt;&lt;li&gt;サブチャンネル&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.customer`|  &lt;ul&gt;&lt;li&gt;顧客&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.pcat`|  &lt;ul&gt;&lt;li&gt;商品カテゴリー&lt;/li&gt;&lt;/ul&gt; |
-|`mylabel`|  &lt;ul&gt;&lt;li&gt;カスタムラベル&lt;/li&gt;&lt;/ul&gt; |
+|`qacct`|  <ul><li>アカウントコード（P-code）。</li><li>`p-`で始まる13文字の大文字小文字を区別する英数字のコード。</li></ul> |
+|`_fp.event`|  <ul><li>イベント</li></ul> |
+|`_fp.channel`|  <ul><li>チャンネル</li></ul> |
+|`_fp.subchannel`|  <ul><li>サブチャンネル</li></ul> |
+|`_fp.customer`|  <ul><li>顧客</li></ul> |
+|`_fp.pcat`|  <ul><li>商品カテゴリー</li></ul> |
+|`mylabel`|  <ul><li>カスタムラベル</li></ul> |
 
 ### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|`orderid`|  &lt;ul&gt;&lt;li&gt;注文ID。&lt;/li&gt;&lt;li&gt;E-Comm注文IDを上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`revenue`|  &lt;ul&gt;&lt;li&gt;収益。&lt;/li&gt;&lt;li&gt;E-Comm注文小計を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`orderid`|  <ul><li>注文ID。</li><li>E-Comm注文IDを上書きします。</li></ul> |
+|`revenue`|  <ul><li>収益。</li><li>E-Comm注文小計を上書きします。</li></ul> |

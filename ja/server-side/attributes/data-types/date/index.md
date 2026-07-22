@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 
 日付属性はイベント、訪問、および訪問のスコープで利用可能です。
 
-![](/images/server-side/attribute-scopes-table-all.png)
+![](https://docs.tealium.com/images/server-side/attribute-scopes-table-all.png)
 
 ## 日付フォーマッター
 
@@ -30,13 +30,17 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 | S      | 秒の中のミリ秒, 0-999           | SSS       |
 | a      | 午前/午後マーカー                           | AM, PM    |
 | z      | タイムゾーン                              | PST, EST  |
-| Z      | RFC 822 タイムゾーン                      | -0800, &#43;0530   |
-| &#39;      | テキスト区切りのエスケープ    |         |
-| &#39;      | シングルクォート                 |         |
+| Z      | RFC 822 タイムゾーン                      | -0800, +0530   |
+| '      | テキスト区切りのエスケープ    |         |
+| '      | シングルクォート                 |         |
 
 詳細については、[Oracle: SimpleDateFormat Java Class](https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html)を参照してください。
 
- 文字列に `T` が含まれている場合は、式の `T` の前後にシングルクォートを含めてください。例えば、`2024-08-22T10:24:58.905` の文字列は `yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS` の式を使用します。クォートを省略すると、例えば `yyyy-MM-ddTHH:mm:ss.SSS` を使用すると、解析エラーが発生します。 
+
+<blockquote>
+文字列に `T` が含まれている場合は、式の `T` の前後にシングルクォートを含めてください。例えば、`2024-08-22T10:24:58.905` の文字列は `yyyy-MM-dd'T'HH:mm:ss.SSS` の式を使用します。クォートを省略すると、例えば `yyyy-MM-ddTHH:mm:ss.SSS` を使用すると、解析エラーが発生します。
+</blockquote>
+
 
 ### 文字列属性として日付値を収集する
 
@@ -46,7 +50,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 
 サインアップ日を文字列としてキャプチャし、日付属性をエンリッチするために、次の手順を使用します：
 
-1. `&#34;2023-10-15&#34;` のような文字列として `Signup Date` イベント属性を作成します。
+1. `"2023-10-15"` のような文字列として `Signup Date` イベント属性を作成します。
 1. 日付として `Signup Date` 訪問属性を作成します。
 1. 訪問属性の文字列を日付属性に変換するために、[Set Date enrichment](#set-date) を使用します。フォーマットは `yyyy-MM-dd` を使用します。
 
@@ -55,7 +59,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 各日付属性のサイズは次の範囲に制限されます：
 
 * 最小: `-292275055-05-16T16:47:04.192Z`
-* 最大: `&#43;292278994-08-17T07:12:55.807Z`
+* 最大: `+292278994-08-17T07:12:55.807Z`
 
 これらの属性は、暗号化および圧縮後のプロファイルの最大サイズ（400 KB）によっても制限されます。
 
@@ -69,7 +73,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 
 **属性名:** 最後の購入日
 
-* **開始値**: `&#34;&#34;`
+* **開始値**: `""`
 * **エンリッチされた値**:
 * **結果の値**: `1491233145706`
 
@@ -79,7 +83,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 
 **属性名**: 最後の購入日
 
-* **開始値**: `&#34;&#34;`
+* **開始値**: `""`
 * **文字列でエンリッチされた**: `01/04/2019`
 * **使用するフォーマット**: `dd/MM/yyyy` (このフォーマットは、文字列を解析するための日、月、年の順序を指定します。)
 
@@ -87,7 +91,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/date/
 * **構成する日付**: 値を構成したい日付属性。この例では、`date_of_birth`。
 * **日付フォーマットで**: 任意のプレースホルダーを入力します。例えば、`x`。
 
-![](/images/server-side/attributes/set_date_enrichment_example.png)
+![](https://docs.tealium.com/images/server-side/attributes/set_date_enrichment_example.png)
 
 ### 日付の削除
 

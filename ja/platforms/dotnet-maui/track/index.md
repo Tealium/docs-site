@@ -5,25 +5,25 @@ url: https://docs.tealium.com/ja/platforms/dotnet-maui/track/
 ---
 ## ビューの追跡
 
-画面ビューを追跡するには、`TealiumView(tealiumEvent:new Dictionary&lt;string, object&gt;:)` のインスタンスを [`track()`](/ja/platforms/dotnet-maui/api/#track) メソッドに渡します。`TealiumView` はビュー名を含み、追跡呼び出しで `tealium_event` として表示され、オプションのデータ辞書も含まれます。
+画面ビューを追跡するには、`TealiumView(tealiumEvent:new Dictionary<string, object>:)` のインスタンスを [`track()`](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#track) メソッドに渡します。`TealiumView` はビュー名を含み、追跡呼び出しで `tealium_event` として表示され、オプションのデータ辞書も含まれます。
 
 ```csharp
-tealium.Track(new TealiumView(&#34;purchase&#34;, new Dictionary&lt;string, object&gt; {
-    { &#34;customer_id&#34;, &#34;abc123&#34; },
-    { &#34;order_total&#34;, 10.00 },
-    { &#34;product_id&#34;, new[] {&#34;PROD123&#34;, &#34;PROD456&#34;} },
-    { &#34;order_id&#34;, &#34;0123456789&#34; }
+tealium.Track(new TealiumView("purchase", new Dictionary<string, object> {
+    { "customer_id", "abc123" },
+    { "order_total", 10.00 },
+    { "product_id", new[] {"PROD123", "PROD456"} },
+    { "order_id", "0123456789" }
 }));
 ```
 
 ## イベントの追跡
 
-ビュー以外のイベントを追跡するには、`TealiumEvent(tealiumEvent:new Dictionary&lt;string, object&gt;:)` のインスタンスを [`track()`](/ja/platforms/dotnet-maui/api/#track) メソッドに渡します。`TealiumEvent` はイベント名を含み、追跡呼び出しで `tealium_event` として表示され、オプションのデータ辞書も含まれます。
+ビュー以外のイベントを追跡するには、`TealiumEvent(tealiumEvent:new Dictionary<string, object>:)` のインスタンスを [`track()`](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#track) メソッドに渡します。`TealiumEvent` はイベント名を含み、追跡呼び出しで `tealium_event` として表示され、オプションのデータ辞書も含まれます。
 
 ```csharp
-tealium.Track(new TealiumEvent(&#34;cart_add&#34;, new Dictionary&lt;string, object&gt; {
-    { &#34;customer_id&#34;, &#34;abc123&#34; }, 
-    { &#34;product_id&#34;, new[] {&#34;PROD123&#34;, &#34;PROD456&#34;} },
-    { &#34;product_price&#34;, new[] {4.00, 6.00} }
+tealium.Track(new TealiumEvent("cart_add", new Dictionary<string, object> {
+    { "customer_id", "abc123" }, 
+    { "product_id", new[] {"PROD123", "PROD456"} },
+    { "product_price", new[] {4.00, 6.00} }
 }));
 ```

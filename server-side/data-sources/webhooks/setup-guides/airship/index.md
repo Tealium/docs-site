@@ -23,15 +23,19 @@ Adding the Airship data source to your Tealium Customer Data Hub profile generat
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-To add the Airship data source to your Tealium Customer Data Hub profile, see [Data Sources](). After adding and connecting the data source, save and publish your profile.
+To add the Airship data source to your Tealium Customer Data Hub profile, see [Data Sources](https://docs.tealium.com/about-data-sources/). After adding and connecting the data source, save and publish your profile.
 
 ## Airship setup
 
 After you connect Airship to your Tealium Customer Data Hub profile, configure the webhook using the following steps:
 
-1. Log in to your Airship account and navigate to **Settings &amp;gt; Project Configuration** and click **Manage** to configure your Real-Time Data Streaming integrations.
+1. Log in to your Airship account and navigate to **Settings &gt; Project Configuration** and click **Manage** to configure your Real-Time Data Streaming integrations.
 1. Under **Real-Time Data Streaming**, click **Tealium**.  
-      Previously configured integrations are listed under **Enabled Integrations**.
+      
+<blockquote>
+Previously configured integrations are listed under **Enabled Integrations**.
+</blockquote>
+
 
 1. Enter a name and description.
 1. Enter the custom endpoint URL created by adding the Airship data source to your Tealium profile. For example
@@ -53,21 +57,21 @@ The Airship webhook API sends flattened JSON objects to Tealium as shown in the 
 
 ```json
 {
-  &#34;airship_id&#34;: &#34;62f3b7ac-4048-4f22-a0b5-22c01ef172a9&#34;,
-  &#34;airship_offset&#34;: &#34;1000022265027&#34;,
-  &#34;airship_occurred&#34;: &#34;2021-10-01T16:52:07.131Z&#34;,
-  &#34;airship_processed&#34;: &#34;2019-04-01T13:00:23.456Z&#34;,
-  &#34;airship_device_channel&#34;: &#34;6b46c724-494b-4491-9fe7-1b903d266110&#34;,
-  &#34;airship_device_device_type&#34;: &#34;EMAIL&#34;,
-  &#34;airship_device_named_user_id&#34;: &#34;Tealium&#34;,
-  &#34;airship_device_delivery_address&#34;: &#34;test1@tealium.com&#34;,
-  &#34;airship_body_event_type&#34;: &#34;registration&#34;,
-  &#34;airship_body_identifiers_address&#34;: &#34;new.subscription@emaildomain.com&#34;,
-  &#34;airship_body_properties_commercial_opted_in&#34;: &#34;2019-01-04T20:56:00.000Z&#34;,
-  &#34;airship_body_properties_transactional_opted_in&#34;: &#34;2019-01-04T20:56:00.000Z&#34;,
-  &#34;airship_type&#34;: &#34;SUBSCRIPTION&#34;,
-  &#34;tealium_timestamp_epoch&#34;: 1634740696399,
-  &#34;tealium_event&#34;: &#34;airship_subscription&#34;
+  "airship_id": "62f3b7ac-4048-4f22-a0b5-22c01ef172a9",
+  "airship_offset": "1000022265027",
+  "airship_occurred": "2021-10-01T16:52:07.131Z",
+  "airship_processed": "2019-04-01T13:00:23.456Z",
+  "airship_device_channel": "6b46c724-494b-4491-9fe7-1b903d266110",
+  "airship_device_device_type": "EMAIL",
+  "airship_device_named_user_id": "Tealium",
+  "airship_device_delivery_address": "test1@tealium.com",
+  "airship_body_event_type": "registration",
+  "airship_body_identifiers_address": "new.subscription@emaildomain.com",
+  "airship_body_properties_commercial_opted_in": "2019-01-04T20:56:00.000Z",
+  "airship_body_properties_transactional_opted_in": "2019-01-04T20:56:00.000Z",
+  "airship_type": "SUBSCRIPTION",
+  "tealium_timestamp_epoch": 1634740696399,
+  "tealium_event": "airship_subscription"
 }
 ```
 

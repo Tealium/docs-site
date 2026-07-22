@@ -12,9 +12,9 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/data-bundles/
 
 変数バンドルタイプにアクセスするには、次の手順を使用します：
 
-1. **&#43; 変数を追加** ボタンのドロップダウンリストをクリックします。
+1. **+ 変数を追加** ボタンのドロップダウンリストをクリックします。
 1. **一般的な変数を追加** をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-addcommonvariables-dropdownlist.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-addcommonvariables-dropdownlist.png)
 
 ## バンドルのインポート
 
@@ -22,6 +22,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/data-bundles/
 
 1. 左側のカテゴリーから、データレイヤーにインポートしたいバンドルを選択します。
 1. **このバンドルをインポート** をクリックします。  
-    バンドルを追加しても、既存のデータレイヤー変数は上書きされません。
+    
+<blockquote>
+バンドルを追加しても、既存のデータレイヤー変数は上書きされません。
+</blockquote>
+
 
 1. 新しく追加された変数を表示するために、**Data Layer** タブに移動します。

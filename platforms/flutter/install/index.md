@@ -3,16 +3,20 @@ title: Install
 description: Learn to install Tealium for Flutter.
 url: https://docs.tealium.com/platforms/flutter/install/
 ---
-Tealium for Flutter lets you use the Tealium native mobile libraries for [Android](/platforms/android-kotlin/) or [iOS](/platforms/ios-swift/) in your Flutter application.
+Tealium for Flutter lets you use the Tealium native mobile libraries for [Android](https://docs.tealium.com/platforms/android-kotlin/) or [iOS](https://docs.tealium.com/platforms/ios-swift/) in your Flutter application.
 
 ## Requirements
 
 * [Flutter](https://flutter.dev/) application development framework
 * IDE such as [Android Studio](https://developer.android.com/studio) or [VS Code](https://code.visualstudio.com/)
 * Flutter plugin installed on the IDE
-* Dart SDK `&gt;=2.18.0 &lt;4.0.0`
+* Dart SDK `>=2.18.0 <4.0.0`
 
- Tealium for Flutter is not compatible with Flutter web applications. To track Flutter web applications, use [Tealium for JavaScript](/platforms/javascript/).
+
+<blockquote>
+Tealium for Flutter is not compatible with Flutter web applications. To track Flutter web applications, use [Tealium for JavaScript](https://docs.tealium.com/platforms/javascript/).
+</blockquote>
+
 
 ## Sample app
 
@@ -27,7 +31,7 @@ To install the Tealium library for Flutter:
       dependencies:
         flutter:
           sdk: flutter
-        tealium: &#39;3.0.1&#39;
+        tealium: '3.0.1'
       ```
 
 1. To pull the Tealium Flutter plugin dependency in your project, run the following command:   
@@ -37,20 +41,20 @@ To install the Tealium library for Flutter:
 
 1. Import the Dart code to your project:
       ```dart
-      import &#39;package:tealium/common.dart&#39;;
-      import &#39;package:tealium/tealium.dart&#39;;
+      import 'package:tealium/common.dart';
+      import 'package:tealium/tealium.dart';
       ```
 
 Use the Tealium APIs in your Flutter project.
 
 ## Initialize
 
-Initialize the Tealium instance with the [`initialize()`](/platforms/flutter/api/tealium/#initialize) method, as shown in the following example:
+Initialize the Tealium instance with the [`initialize()`](https://docs.tealium.com/platforms/flutter/api/tealium/#initialize) method, as shown in the following example:
 
 ```dart
 final config = TealiumConfig(
-    &#39;ACCOUNT&#39;,
-    &#39;PROFILE&#39;,
+    'ACCOUNT',
+    'PROFILE',
     TealiumEnvironment.dev,
     [
       Collectors.AppData,
@@ -69,4 +73,4 @@ final config = TealiumConfig(
 await Tealium.initialize(config);
 ```
 
-See the [Flutter API](/platforms/flutter/api/) to learn more about initialization options.
+See the [Flutter API](https://docs.tealium.com/platforms/flutter/api/) to learn more about initialization options.

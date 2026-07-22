@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 50
 * Maximum time since oldest request: 5 minutes
@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -34,7 +34,7 @@ After adding the connector, configure the following settings:
 To configure this connector to receive event IDs from the TikTok Pixel tag in your Tealium iQ Tag Management account, look for event attributes using the following naming convention:
 
 ```nohl
-tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;
+tiktok_event_id_<TIKTOK_EVENT>_<TAG_UID>
 ```
 
 For example, an event from a tag with a UID of `174` sends the following attribute:
@@ -45,7 +45,7 @@ tiktok_event_id_Checkout_174
 
 Find your tag UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/tiktok-pixel-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/tiktok-pixel-uid.png)
 
 For each event ID that matches this event ID format, configure a separate action. Map the event-specific event ID attribute to `Event ID` and map the corresponding event name to `Event Name`.
 
@@ -56,7 +56,7 @@ For example:
 | `tiktok_event_id_Checkout_174` | Event ID |
 | `Checkout` (Custom Text) | Event Name |
 
-For more information, see [TikTok Pixel Tag Setup Guide]().
+For more information, see [TikTok Pixel Tag Setup Guide](https://docs.tealium.com/tiktok-pixel-tag/).
 
 ### Automatic deduplication
 
@@ -82,14 +82,14 @@ The following section describes how to set up parameters and options for each ac
 
 | Parameter | Description |
 | --- | --- |
-| Event Source | Select the event source. Possible values are: &lt;ul&gt;&lt;li&gt;`WEB`&lt;/li&gt;&lt;li&gt;`APP`&lt;/li&gt;&lt;li&gt;`OFFLINE`&lt;/li&gt;&lt;li&gt;`CRM`&lt;/li&gt;&lt;/ul&gt; |
-| Event Type | The conversion event name. Possible values are: &lt;ul&gt;&lt;li&gt;`Achieve a Level`&lt;/li&gt;&lt;li&gt;`Add Payment Information`&lt;/li&gt;&lt;li&gt;`Add to Cart`&lt;/li&gt;&lt;li&gt;`Add to Wishlist`&lt;/li&gt;&lt;li&gt;`Check Out`&lt;/li&gt;&lt;li&gt;`Click Button`&lt;/li&gt;&lt;li&gt;`Complete Payment`&lt;/li&gt;&lt;li&gt;`Complete Registration`&lt;/li&gt;&lt;li&gt;`Complete the Tutorial`&lt;/li&gt;&lt;li&gt;`Contact`&lt;/li&gt;&lt;li&gt;`Create a Group`&lt;/li&gt;&lt;li&gt;`Create a Role`&lt;/li&gt;&lt;li&gt;`Custom`&lt;/li&gt;&lt;li&gt;`Download`&lt;/li&gt;&lt;li&gt;`Generate a Lead`&lt;/li&gt;&lt;li&gt;`Initiate Checkout`&lt;/li&gt;&lt;li&gt;`Install the App`&lt;/li&gt;&lt;li&gt;`In-app AD Click`&lt;/li&gt;&lt;li&gt;`In-app AD Impression`&lt;/li&gt;&lt;li&gt;`Join a Group`&lt;/li&gt;&lt;li&gt;`Launch the App`&lt;/li&gt;&lt;li&gt;`Load an Application`&lt;/li&gt;&lt;li&gt;`Loan is Approved`&lt;/li&gt;&lt;li&gt;`Loan is Disbursed`&lt;/li&gt;&lt;li&gt;`Log in Successfully`&lt;/li&gt;&lt;li&gt;`Place an Order`&lt;/li&gt;&lt;li&gt;`Purchase`&lt;/li&gt;&lt;li&gt;`Rate`&lt;/li&gt;&lt;li&gt;`Search`&lt;/li&gt;&lt;li&gt;`Spend Credits`&lt;/li&gt;&lt;li&gt;`Start the Trial`&lt;/li&gt;&lt;li&gt;`Submit Form`&lt;/li&gt;&lt;li&gt;`Subscribe`&lt;/li&gt;&lt;li&gt;`Unlock an Achievement`&lt;/li&gt;&lt;li&gt;`View Content`&lt;/li&gt;&lt;/ul&gt; |
-| Event Source ID | (Required) An ID to track events. &lt;ul&gt;&lt;li&gt;If `event_source` is `web`, specify a pixel code in this field.&lt;/li&gt;&lt;li&gt;If `event_source` is `offline`, specify an offline event ID in this field.&lt;/li&gt;&lt;li&gt;If `event_source` is `app`, specify a TikTok App ID in this field.&lt;/li&gt;&lt;li&gt;If `event_source` is `crm`, specify a CRM event  ID in this field. To obtain a CRM event ID, use `/crm/list/`.&lt;/li&gt;&lt;/ul&gt;|
+| Event Source | Select the event source. Possible values are: <ul><li>`WEB`</li><li>`APP`</li><li>`OFFLINE`</li><li>`CRM`</li></ul> |
+| Event Type | The conversion event name. Possible values are: <ul><li>`Achieve a Level`</li><li>`Add Payment Information`</li><li>`Add to Cart`</li><li>`Add to Wishlist`</li><li>`Check Out`</li><li>`Click Button`</li><li>`Complete Payment`</li><li>`Complete Registration`</li><li>`Complete the Tutorial`</li><li>`Contact`</li><li>`Create a Group`</li><li>`Create a Role`</li><li>`Custom`</li><li>`Download`</li><li>`Generate a Lead`</li><li>`Initiate Checkout`</li><li>`Install the App`</li><li>`In-app AD Click`</li><li>`In-app AD Impression`</li><li>`Join a Group`</li><li>`Launch the App`</li><li>`Load an Application`</li><li>`Loan is Approved`</li><li>`Loan is Disbursed`</li><li>`Log in Successfully`</li><li>`Place an Order`</li><li>`Purchase`</li><li>`Rate`</li><li>`Search`</li><li>`Spend Credits`</li><li>`Start the Trial`</li><li>`Submit Form`</li><li>`Subscribe`</li><li>`Unlock an Achievement`</li><li>`View Content`</li></ul> |
+| Event Source ID | (Required) An ID to track events. <ul><li>If `event_source` is `web`, specify a pixel code in this field.</li><li>If `event_source` is `offline`, specify an offline event ID in this field.</li><li>If `event_source` is `app`, specify a TikTok App ID in this field.</li><li>If `event_source` is `crm`, specify a CRM event  ID in this field. To obtain a CRM event ID, use `/crm/list/`.</li></ul>|
 | Event Time  | (Required) The timestamp when the event took place in Unix epoch format, measured in seconds. If you do not provide a timestamp, the connector uses the current timestamp. |
 | Custom Event Name | The custom event name. Required when choosing **Custom** from the **Event Type** drop-down. |
 | Pixel ID Override  | Pixel ID that can be found in the **TikTok Events Manager**. This setting overrides **Pixel ID** used in the **Configuration** section. |
 | Access Token Override | A custom access token to override the value in the configuration. |
-| Event ID  | Any hashed ID that can identify a unique user or session. For example, `SessionID_RandomNumber`. If you set [Generate Event ID in the TikTok Pixel tag]() to `true`, this ID is automatically generated for every TikTok tracking event. |
+| Event ID  | Any hashed ID that can identify a unique user or session. For example, `SessionID_RandomNumber`. If you set [Generate Event ID in the TikTok Pixel tag](https://docs.tealium.com/tiktok-pixel-tag/) to `true`, this ID is automatically generated for every TikTok tracking event. |
 | Limited Data Use | This field is only supported when the Event Source is `WEB` or `APP`. Limited data processing setting. To learn more about the Limited Data Use Feature, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1771101204435970). |
 | Test Event Code | Send test events to exclude them from production data in TikTok Events Manager (`TTEM`). Retrieve the `test_event_code` in the `Test Events` tab of `TTEM`. |
 
@@ -117,12 +117,12 @@ The following section describes how to set up parameters and options for each ac
 
 | Parameter | Description |
 | --- | --- |
-| User Email | Recommended. The user&#39;s email address, hashed with SHA256. |
-| User Phone Number | Recommended. The user&#39;s phone number, hashed with SHA256. Include country code with `&#43;` and remove any other characters (spaces, `-`) between numbers (for example, for the USA: `&#43;12125551212`). If the country code is `86`, do not include country code (for example: `13800000000`). |
+| User Email | Recommended. The user's email address, hashed with SHA256. |
+| User Phone Number | Recommended. The user's phone number, hashed with SHA256. Include country code with `+` and remove any other characters (spaces, `-`) between numbers (for example, for the USA: `+12125551212`). If the country code is `86`, do not include country code (for example: `13800000000`). |
 | User External ID | Recommended. The external user ID, hashed with SHA256. |
 | Cookie ID  | The ID of the cookie.  |
 | IP | The non-hashed public IP address of the browser. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both **IP** and **User Agent**. |
-| User Agent | The non-hashed user agent from the user&#39;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both **IP** and **User Agent**. Unless you disable automapping, this parameter is automapped to the **User Agent** of the visitor. |
+| User Agent | The non-hashed user agent from the user's device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both **IP** and **User Agent**. Unless you disable automapping, this parameter is automapped to the **User Agent** of the visitor. |
 | IDFA |  The iOS identifier for advertisers. |
 | IDFV |  The iOS identifier for vendors. |
 | GAID |  The Google Advertising ID.|
@@ -180,8 +180,8 @@ The following section describes how to set up parameters and options for each ac
 | City | Destination city location. |
 | Region | Destination region. |
 | Country | Destination country. |
-| Travel Start | The start date of the user&#39;s trip. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`. For example, `20180623`, `2018-06-23`, `2017-06-23T15:30GMT`, `2017-06-23T15:30:00GMT`. |
-| Travel End | The end date of the user&#39;s trip. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`. For example, `20180623`, `2018-06-23`, `2017-06-23T15:30GMT`, `2017-06-23T15:30:00GMT`. |
+| Travel Start | The start date of the user's trip. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`. For example, `20180623`, `2018-06-23`, `2017-06-23T15:30GMT`, `2017-06-23T15:30:00GMT`. |
+| Travel End | The end date of the user's trip. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`. For example, `20180623`, `2018-06-23`, `2017-06-23T15:30GMT`, `2017-06-23T15:30:00GMT`. |
 | Number of Adults | Number of adults. |
 | Number of Children | Number of children. |
 | Number of Infants | Number of infants. |
@@ -231,4 +231,4 @@ To disable automapping, set **Disable Automapping** to `true`. Any automatically
 To select a custom event for this connector:
 
 1. Under the **Event Type** category, select `Custom` for the **Conversion event name**.
-1. In the **Custom Event Name** field, enter the custom event name and click **&#43; Add Mapping**.
+1. In the **Custom Event Name** field, enter the custom event name and click **+ Add Mapping**.

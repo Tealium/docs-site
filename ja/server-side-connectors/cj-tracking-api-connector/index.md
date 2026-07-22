@@ -17,7 +17,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数: 10,000
 * 最古のリクエストからの最大時間: 10分
@@ -33,7 +33,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 
 ## 構成の構成
 
-コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -87,7 +87,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 | カードカテゴリ | `cardCategory`  | カードカテゴリの名前。     |
 | 車オプション | `carOptions`  | 取引中に選択されたその他の車オプション。例：`insurance`。     |
 | キャッシュアドバンス手数料  | `cashAdvanceFee`  | この商品に関連するキャッシュアドバンス手数料。      |
-| カテゴリ  | `category`  | 商品のカテゴリ。例えば、顧客がパーソナルキャッシュバッククレジットカードを申し込む場合：`service_type=cc&amp;item_type=personal&amp;category=cashback`）。  |
+| カテゴリ  | `category`  | 商品のカテゴリ。例えば、顧客がパーソナルキャッシュバッククレジットカードを申し込む場合：`service_type=cc&item_type=personal&category=cashback`）。  |
 | 市  | `city`  | ホテルまたはイベントの場所の都市名。     |
 | クラス | `class` | 予約または購入された商品のクラス評価。     |
 | 確認番号 | `confirmationNumber`  | プロバイダーの確認番号。例えば、航空会社からのフライト確認番号。   |
@@ -128,7 +128,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 | 紹介APR期間 | `introductoryAprTime` | 紹介APRの期間（月）。      |
 | 商品ID | `itemId`  | 購入された商品のID。複数の商品がある場合、パラメータはコンマ区切りのリストを使用します。   |
 | 商品名 | `itemName`  | 購入された商品の名前。     |
-| 商品タイプ | `itemType`  | 商品のタイプ。例えば、顧客がパーソナルキャッシュバッククレジットカードを申し込む場合：`service_type=cc&amp;item_type=personal&amp;category=cashback`）。 |
+| 商品タイプ | `itemType`  | 商品のタイプ。例えば、顧客がパーソナルキャッシュバッククレジットカードを申し込む場合：`service_type=cc&item_type=personal&category=cashback`）。 |
 | 旅程ID  | `itineraryId` | 予約の旅程ID。     |
 | ライフステージ | `lifestage` | 一般的な人口統計（新しい移動者、学生、小規模企業など）で、カードがどのように、なぜ使用されるかを示します。  |
 | 場所  | `location`  | 広告主固有のIDまたは名前で、顧客が訪れるか訪れた店舗または場所を特定するために使用できます。  |
@@ -159,7 +159,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 | 前払い | `prepaid` | 顧客が取引を前払いした場合、`yes`または`no`。     |
 | 事前承認  | `prequalify`  | 申込者がカードに事前承認された場合。      |
 | プロモーション | `promotion` | 適用されたプロモーション。例：`summer sale`。     |
-| プロモーション金額  | `promotionAmount` | プロモーションに関連する数値額。例：プロモーションが$500キャッシュバックの場合、この値は`promotion=dollars&amp;promotion_amt=500`） |
+| プロモーション金額  | `promotionAmount` | プロモーションに関連する数値額。例：プロモーションが$500キャッシュバックの場合、この値は`promotion=dollars&promotion_amt=500`） |
 | プロモーション条件閾値 | `promotionConditionThreshold` | 割引を得るために必要な閾値。     |
 | プロモーション条件タイプ  | `promotionConditionType`  | プロモーション条件のタイプ。      |
 | プロモーション終了  | `promotionEnds` | プロモーションが終了する日付。ISO 8601標準を使用してフォーマットされます。例：`2022-12-25T15:30:50.111Z`。    |
@@ -203,9 +203,9 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 | アイテム                      | `items`             | 任意  | 配列内にアイテムが存在する場合、値はnullにできません。 |
 | クーポンコード                | `coupon`            | 任意  | 注文に適用されたクーポンコード。 |
 | 通貨                   | `currency`          | 任意  | 注文に使用された通貨。例：`USD`。 |
-| バイパスチャネル             | `bypassChannel`     | 任意  | トランザクションの帰属プロセスをカスタマイズします。例：`Channel=CJ`。値は次のいずれかになります：&lt;ul&gt;&lt;li&gt;`CJ`&lt;/li&gt;&lt;li&gt;`Direct`&lt;/li&gt;&lt;li&gt;`Affiliate_other`&lt;/li&gt;&lt;li&gt;`Display`&lt;/li&gt;&lt;li&gt;`Social`&lt;/li&gt;&lt;li&gt;`Search`&lt;/li&gt;&lt;li&gt;`Email`&lt;/li&gt;&lt;li&gt;`Other`&lt;/li&gt;&lt;/ul&gt; |
+| バイパスチャネル             | `bypassChannel`     | 任意  | トランザクションの帰属プロセスをカスタマイズします。例：`Channel=CJ`。値は次のいずれかになります：<ul><li>`CJ`</li><li>`Direct`</li><li>`Affiliate_other`</li><li>`Display`</li><li>`Social`</li><li>`Search`</li><li>`Email`</li><li>`Other`</li></ul> |
 | ステータス                     | `status`            | 任意  | 注文のステータス。値は`Pending`または`Accepted`になります。 |
-| 訂正の理由      | `correctionReason`  | 任意  | 値は次のいずれかになります：&lt;ul&gt;&lt;li&gt;`InvalidCreditCard`&lt;/li&gt;&lt;li&gt;`UnqualifiedLead`&lt;/li&gt;&lt;li&gt;`CannotShipSoldOut`&lt;/li&gt;&lt;li&gt;`DuplicateOrder`&lt;/li&gt;&lt;li&gt;`ReturnedMerchandise`&lt;/li&gt;&lt;li&gt;`Other`&lt;/li&gt;&lt;/ul&gt; |
+| 訂正の理由      | `correctionReason`  | 任意  | 値は次のいずれかになります：<ul><li>`InvalidCreditCard`</li><li>`UnqualifiedLead`</li><li>`CannotShipSoldOut`</li><li>`DuplicateOrder`</li><li>`ReturnedMerchandise`</li><li>`Other`</li></ul> |
 
 ### アクション - 注文キャンセルの送信
 
@@ -218,7 +218,7 @@ CJでは、ウェブトラッキングイベントに対して Universal Tag と
 | アクショントラッカーID | `actionTrackerId` | 必須      | 行動に対してCJのクライアント統合チームが与える静的な値。 |
 | 注文ID               | `orderId`         | 必須      | クライアントが定義する注文識別子。 |
 | 更新時間             | `updateTime`      | 必須      | UTC ISO 8601形式の日時で、UTCオフセットのゾーン指定子として`Z`が使用され、JSONでは文字列として表現されます。例：`1970-03-27T12:13:14-05:00`または`1970-03-27T12:18:14Z`。 |
-| キャンセル理由       | `correctionReason`| 任意      | 値は以下のいずれかになります：&lt;ul&gt;&lt;li&gt;`InvalidCreditCard`&lt;/li&gt;&lt;li&gt;`UnqualifiedLead`&lt;/li&gt;&lt;li&gt;`CannotShipSoldOut`&lt;/li&gt;&lt;li&gt;`DuplicateOrder`&lt;/li&gt;&lt;li&gt;`ReturnedMerchandise`&lt;/li&gt;&lt;li&gt;`Other`&lt;/li&gt;&lt;/ul&gt; |
+| キャンセル理由       | `correctionReason`| 任意      | 値は以下のいずれかになります：<ul><li>`InvalidCreditCard`</li><li>`UnqualifiedLead`</li><li>`CannotShipSoldOut`</li><li>`DuplicateOrder`</li><li>`ReturnedMerchandise`</li><li>`Other`</li></ul> |
 | ステータス           | `status`          | 任意      | キャンセルを要求する注文がオープンエンドロックを使用している場合、ステータスを`Declined`に構成する必要があります。 |
 
 ## ベンダー文書

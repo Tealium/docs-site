@@ -6,7 +6,7 @@ url: https://docs.tealium.com/iq-tag-management/extensions/extensions-list/curre
 ## Requirements
 
 * utag v4.38 or later. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
-* [Tealium Currency Converter Tag]() (can be scoped to All Tags or any specific tag)
+* [Tealium Currency Converter Tag](https://docs.tealium.com/tealium-currency-converter-tag/) (can be scoped to All Tags or any specific tag)
 
 ## How it works
 
@@ -33,13 +33,13 @@ On your site, customers can make purchases in any currency, but one tag vendor a
   [
     [
       {
-        &#34;input&#34;: &#34;site_currency&#34;,
-        &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-        &#34;filter&#34;: &#34;GBP&#34;
+        "input": "site_currency",
+        "operator": "equals (ignore case)",
+        "filter": "GBP"
       }
     ]
   ]
   
     
 * **Currency Converter Extension**: Add a currency conversion for each currency that your site supports and for each data layer variable that needs to be converted. Notice how this example is scoped to the specific tag that requires all values be sent in USD.  
-    ![](/images/iq-tag-management/iq-currency-extension.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/iq-currency-extension.jpg)

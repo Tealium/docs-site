@@ -14,9 +14,13 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
-When you add this connector you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 * **Organization ID**  
@@ -56,13 +60,13 @@ Use this to send the lead source.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Interest | The customer&#39;s interest type in a vehicle. Accepted values: `buy`, `lease`, `sell`, `trade-in`, `test-drive`.|
+| Interest | The customer's interest type in a vehicle. Accepted values: `buy`, `lease`, `sell`, `trade-in`, `test-drive`.|
 | Status | Identify vehicle as `new` or `used`. |
 | Year | Model year of the vehicle. |
 | Make | Manufacturer of vehicle. |
 | Model | Model of vehicle. |
 | VIN | Vehicle Identification Number of the vehicle. |
-| Stock | Vendor&#39;s stock number for vehicle. |
+| Stock | Vendor's stock number for vehicle. |
 | Trim | Trim description. |
 | Units | The unit of measurement of the odometer: `mi` for miles or `km` for kilometers. |
 | Value | The reading on the odometer. |

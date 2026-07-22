@@ -16,9 +16,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/install/utag-
 
 始める前に、同期（sync）と非同期（async）のJavaScriptの違いと、それがiQタグ管理インストールにどのように関連しているかを学ぶことが重要です。([詳細を学ぶ](https://support.tealiumiq.com/en/support/solutions/articles/36000363409-synchronous-vs-asynchronous-javascript-sync-vs-async-))。
 
-この記事で説明されている`utag.sync.js`スクリプトは、Adobe TargetやOptimizelyなどのA/Bおよび多変量テストタグをサポートするためにページに追加できる追加ファイルです。このスクリプトはページコードの`&lt;head&gt;`セクションに配置され、最も一般的なベンダー要件に準拠して同期的にロードされます。ファイルの内容はiQタグ管理で管理されます。
+この記事で説明されている`utag.sync.js`スクリプトは、Adobe TargetやOptimizelyなどのA/Bおよび多変量テストタグをサポートするためにページに追加できる追加ファイルです。このスクリプトはページコードの`<head>`セクションに配置され、最も一般的なベンダー要件に準拠して同期的にロードされます。ファイルの内容はiQタグ管理で管理されます。
 
+
+<blockquote>
 この機能は、TealiumのフリッカーフリーAdobe Targetソリューションを使用する際に必要です。
+</blockquote>
+
 
 ## utag.sync.jsの有効化
 
@@ -29,19 +33,23 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/install/utag-
 1. **保存/公開**をクリックします。
 1. **構成公開構成**をクリックします。
 1. 一般公開タブから、実装セクションまでスクロールダウンし、**utag.sync.jsファイルを生成**オプションを**オン**に切り替えます。  
-    ![](/images/iq-tag-management/utag-sync-toggle-on.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/utag-sync-toggle-on.png)
 1. **保存**をクリックします。
 1. 変更を希望する環境に保存して公開します。  
+
+<blockquote>
 このプロファイルの最新バージョンをすべての公開環境に公開する必要があります。そうしないと、`utag.sync.js`ファイルを参照するページがロードされなくなります。
+</blockquote>
+
  有効にすると、utag Syncの範囲がJavaScriptまたはAdvanced JavaScript拡張機能の範囲ドロップダウンリストに表示されます。  
-![](/images/iq-tag-management/utag-sync-enabled-in-dropdown.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-sync-enabled-in-dropdown.png)
 
 ## utag.sync.jsファイルの編集
 
 次のいずれかの方法でコードを追加できます：
 
-* 推奨：[utag **Sync**範囲の拡張セット]()を使用する
-* [タグテンプレート]()を編集する。
+* 推奨：[utag **Sync**範囲の拡張セット](https://docs.tealium.com/about-extensions/)を使用する
+* [タグテンプレート](https://docs.tealium.com/manage-templates/)を編集する。
 
 `utag.sync.js`ファイルの内容を次のように追加、編集、または変更します：
 
@@ -49,12 +57,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/install/utag-
 1. 拡張機能の名前をクリックして展開します。
 1. **範囲**ドロップダウンリストから**utag Sync**を選択します。
 1. **構成**セクションで、編集ボックスにカーソルを置き、必要に応じて内容を追加、編集、または変更します。  
-    ![](/images/iq-tag-management/edit-utag-sync-js-file-option.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/edit-utag-sync-js-file-option.png)
 1. 変更を保存して公開します。
 
 ## サイトにutag.sync.jsを追加する
 
-`utag.sync.js`スクリプトは、ページがレンダリングされる際に最適なユーザーエクスペリエンスを提供するために、ページの`&lt;head&gt;`セクションに配置するよう設計されています。ベンダーコードがページの内容より先にロードされるように、通常ベンダーコードがロードされる場所と同じ場所にスクリプトを配置する必要があります。
+`utag.sync.js`スクリプトは、ページがレンダリングされる際に最適なユーザーエクスペリエンスを提供するために、ページの`<head>`セクションに配置するよう設計されています。ベンダーコードがページの内容より先にロードされるように、通常ベンダーコードがロードされる場所と同じ場所にスクリプトを配置する必要があります。
 
 `utag.sync.js`ファイルへのパスには次のパラメータが含まれます：
 
@@ -68,14 +76,14 @@ iQタグ管理アカウント内のプロファイルの名前。デフォルト
 例：
 
 ```html
-&lt;script src=&#34;https://tags.tiqcdn.com/utag/[account]/[profile]/[env]/utag.sync.js&#34;&gt;&lt;/script&gt;
+<script src="https://tags.tiqcdn.com/utag/[account]/[profile]/[env]/utag.sync.js"></script>
 ```
 
-アカウントの[環境管理]()画面から特定のスクリプトを取得するには、次の手順に従います：
+アカウントの[環境管理](https://docs.tealium.com/manage-environments/)画面から特定のスクリプトを取得するには、次の手順に従います：
 
 1. 管理メニューで**環境管理**をクリックします。**環境管理**ダイアログが表示されます。
 1. **Tealiumスクリプト**タブには、ファイルにコピーして貼り付けるためのコードが表示されます。  
-    ![](/images/iq-tag-management/code-center-utag-sync.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/code-center-utag-sync.png)
 1. **サンプルHTML**タブをクリックして、`utag.sync.js`の配置のサンプルHTMLを表示します。
 1. 必要に応じてサンプルHTMLをコピーしてページに使用します。
 1. **OK**をクリックし、次に**キャンセル**をクリックしてウィンドウを閉じます。

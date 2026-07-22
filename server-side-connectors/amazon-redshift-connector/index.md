@@ -10,17 +10,17 @@ The [**Send Entire Visitor Data** actions](#send-entire-visitor-data-micro-batch
 To avoid this issue, follow these guidelines:
 
 * **Use Send Entire Visitor Data for small visitor profiles.**  
-Visitor profiles larger than a few kilobytes increase the risk of exceeding the limit. Use this action if your visitor profiles are well under the 100 kB limit. Use [visitor search]() to fetch full profiles and evaluate their size.
+Visitor profiles larger than a few kilobytes increase the risk of exceeding the limit. Use this action if your visitor profiles are well under the 100 kB limit. Use [visitor search](https://docs.tealium.com/visitor-search/) to fetch full profiles and evaluate their size.
 * **Send mapped attributes instead of the entire profile.**  
 Use a [**Send Custom Visitor Data**](#send-custom-visitor-data-micro-batch) action to select only the attributes you need, rather than sending the full visitor JSON.
 * **Use S3 and Redshift for bulk or historical loads.**  
-For large visitor JSON payloads or one-off bulk uploads, send visitor data to the [S3 connector](), then load data into Redshift using the COPY command. For more information, see [Amazon Redshift: Using the COPY command to load from Amazon S3](https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html).
+For large visitor JSON payloads or one-off bulk uploads, send visitor data to the [S3 connector](https://docs.tealium.com/amazon-s3-connector/), then load data into Redshift using the COPY command. For more information, see [Amazon Redshift: Using the COPY command to load from Amazon S3](https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html).
 * **Use the Webhook (JDBC) connector for large payloads.**
-The [Webhook (JDBC) connector]() connects directly to Redshift over JDBC, bypassing the Redshift Data API 100 kB limit. Use this option when your visitor profiles exceed 100 kB.
+The [Webhook (JDBC) connector](https://docs.tealium.com/webhook-jdbc/) connects directly to Redshift over JDBC, bypassing the Redshift Data API 100 kB limit. Use this option when your visitor profiles exceed 100 kB.
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -47,9 +47,9 @@ After adding the connector, configure the following settings:
 * **Secret Name**  
   * (Optional) If you are using the AWS Secrets Manager method to access Redshift,  provide your Secret Name so Tealium can dynamically pull the Secret ARN to use on the Redshift connection.
 * **Workgroup Name**  
-  * Required if **Cluster Identifier** isn&#39;t provided. If you are accessing a Redshift SERVERLESS instance, provide your workgroup name.
+  * Required if **Cluster Identifier** isn't provided. If you are accessing a Redshift SERVERLESS instance, provide your workgroup name.
 * **Cluster Identifier**  
-  * Required if **Workgroup Name** isn&#39;t provided. If you are using a Redshift Cluster, provide the cluster identifier.
+  * Required if **Workgroup Name** isn't provided. If you are using a Redshift Cluster, provide the cluster identifier.
 * **Database Name**  
   * (Optional) Provide your database name. Default value: `dev`.
 
@@ -89,17 +89,17 @@ To find your STS credentials:
     * Set the `EXTERNAL_ID` value for the connection to Tealium. The ID can be up to 256 characters long and can include alphanumeric characters (`A-Z`, `a-z`, `0-9`) and symbols, such as hyphens (`-`), underscores (`_`), and periods (`.`).
     ```json
     {
-      &#34;Version&#34;: &#34;2012-10-17&#34;,
-      &#34;Statement&#34;: [
+      "Version": "2012-10-17",
+      "Statement": [
         {
-          &#34;Effect&#34;: &#34;Allow&#34;,
-          &#34;Principal&#34;: {
-            &#34;AWS&#34;: &#34;arn:aws:iam::757913464184:root&#34;
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::757913464184:root"
           },
-          &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
-          &#34;Condition&#34;: {
-            &#34;StringEquals&#34;: {
-              &#34;sts:ExternalId&#34;: &#34;EXTERNAL_ID&#34;
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "EXTERNAL_ID"
             }
           }
         }
@@ -118,39 +118,39 @@ To attach the policies:
         * To restrict access to a specific cluster, create a policy similar to the following example. In the example, `YOUR_CLUSTER_ARN` is the cluster that Tealium would use to insert event and audience data into your `YOUR_DATABASE_ARN` Redshift tables:
         ```json
         {
-          &#34;Version&#34;: &#34;2012-10-17&#34;,
-          &#34;Statement&#34;: [
+          "Version": "2012-10-17",
+          "Statement": [
             {
-              &#34;Sid&#34;: &#34;RedshiftClusterManagement&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;redshift:DescribeClusters&#34;,
-                &#34;redshift:GetClusterCredentials&#34;,
-                &#34;redshift:GetClusterCredentialsWithIAM&#34;
+              "Sid": "RedshiftClusterManagement",
+              "Effect": "Allow",
+              "Action": [
+                "redshift:DescribeClusters",
+                "redshift:GetClusterCredentials",
+                "redshift:GetClusterCredentialsWithIAM"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:cluster/YOUR_CLUSTER_ARN&#34;
+              "Resource": "arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:cluster/YOUR_CLUSTER_ARN"
             },
             {
-              &#34;Sid&#34;: &#34;RedshiftDataAPI&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;redshift-data:ExecuteStatement&#34;,
-                &#34;redshift-data:BatchExecuteStatement&#34;,
-                &#34;redshift-data:DescribeStatement&#34;,
-                &#34;redshift-data:GetStatementResult&#34;,
-                &#34;redshift-data:ListStatements&#34;
+              "Sid": "RedshiftDataAPI",
+              "Effect": "Allow",
+              "Action": [
+                "redshift-data:ExecuteStatement",
+                "redshift-data:BatchExecuteStatement",
+                "redshift-data:DescribeStatement",
+                "redshift-data:GetStatementResult",
+                "redshift-data:ListStatements"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:database/YOUR_DATABASE_ARN&#34;
+              "Resource": "arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:database/YOUR_DATABASE_ARN"
             },
             {
-              &#34;Sid&#34;: &#34;SecretsManagerAccess&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;secretsmanager:GetSecretValue&#34;,
-                &#34;secretsmanager:DescribeSecret&#34;,
-                &#34;secretsmanager:ListSecrets&#34;
+              "Sid": "SecretsManagerAccess",
+              "Effect": "Allow",
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecrets"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret/YOUR_SECRET_ARN&#34;
+              "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret/YOUR_SECRET_ARN"
             }
           ]
         }
@@ -160,39 +160,39 @@ To attach the policies:
 
         ```json
         {
-          &#34;Version&#34;: &#34;2012-10-17&#34;,
-          &#34;Statement&#34;: [
+          "Version": "2012-10-17",
+          "Statement": [
             {
-              &#34;Sid&#34;: &#34;RedshiftServerlessAccess&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;redshift-serverless:GetWorkgroup&#34;,
-                &#34;redshift-serverless:GetCredentials&#34;,
-                &#34;redshift-serverless:ListWorkgroups&#34;
+              "Sid": "RedshiftServerlessAccess",
+              "Effect": "Allow",
+              "Action": [
+                "redshift-serverless:GetWorkgroup",
+                "redshift-serverless:GetCredentials",
+                "redshift-serverless:ListWorkgroups"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:redshift-serverless:YOUR_REGION:YOUR_ACCOUNT_ID:workgroup/YOUR_WORKGROUP_ARN&#34;
+              "Resource": "arn:aws:redshift-serverless:YOUR_REGION:YOUR_ACCOUNT_ID:workgroup/YOUR_WORKGROUP_ARN"
             },
             {
-              &#34;Sid&#34;: &#34;RedshiftDataAPI&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;redshift-data:ExecuteStatement&#34;,
-                &#34;redshift-data:BatchExecuteStatement&#34;,
-                &#34;redshift-data:DescribeStatement&#34;,
-                &#34;redshift-data:GetStatementResult&#34;,
-                &#34;redshift-data:ListStatements&#34;
+              "Sid": "RedshiftDataAPI",
+              "Effect": "Allow",
+              "Action": [
+                "redshift-data:ExecuteStatement",
+                "redshift-data:BatchExecuteStatement",
+                "redshift-data:DescribeStatement",
+                "redshift-data:GetStatementResult",
+                "redshift-data:ListStatements"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:database/YOUR_DATABASE_ARN&#34;
+              "Resource": "arn:aws:redshift:YOUR_REGION:YOUR_ACCOUNT_ID:database/YOUR_DATABASE_ARN"
             },
             {
-              &#34;Sid&#34;: &#34;SecretsManagerAccess&#34;,
-              &#34;Effect&#34;: &#34;Allow&#34;,
-              &#34;Action&#34;: [
-                &#34;secretsmanager:GetSecretValue&#34;,
-                &#34;secretsmanager:DescribeSecret&#34;,
-                &#34;secretsmanager:ListSecrets&#34;
+              "Sid": "SecretsManagerAccess",
+              "Effect": "Allow",
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecrets"
               ],
-              &#34;Resource&#34;: &#34;arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret/YOUR_SECRET_ARN&#34;
+              "Resource": "arn:aws:secretsmanager:YOUR_REGION:YOUR_ACCOUNT_ID:secret/YOUR_SECRET_ARN"
             }
           ]
         }
@@ -222,7 +222,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes
@@ -242,7 +242,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2,000
 * Max time since oldest request: 60 minutes
@@ -262,7 +262,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes
@@ -281,7 +281,7 @@ Map attributes to columns of the table.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2,000
 * Max time since oldest request: 60 minutes
@@ -299,13 +299,15 @@ Map attributes to columns of the table.
 ### Send Entire Visitor Data (Micro-batch)
 
 
+<blockquote>
 The Redshift Data API limits SQL statements to 100 kB. If visitor JSON payloads exceed this limit, the connector action fails.
 For guidelines on avoiding this issue, see [Working with large visitor profiles](#working-with-large-visitor-profiles).
+</blockquote>
 
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes
@@ -325,13 +327,15 @@ This action uses batched requests to support high-volume data transfers to the v
 ### Send Entire Visitor Data (Batch)
 
 
+<blockquote>
 The Redshift Data API limits SQL statements to 100 kB. If visitor JSON payloads exceed this limit, the connector action fails.
 For guidelines on avoiding this issue, see [Working with large visitor profiles](#working-with-large-visitor-profiles).
+</blockquote>
 
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2,000
 * Max time since oldest request: 60 minutes
@@ -352,7 +356,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes
@@ -371,7 +375,7 @@ Map attributes to columns of the table.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2,000
 * Max time since oldest request: 60 minutes
@@ -390,7 +394,7 @@ Map attributes to columns of the table.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 40
 * Max time since oldest request: 60 minutes
@@ -413,12 +417,12 @@ Example query where the following query parameters have been mapped: `MY_STRING_
 
 ```sql
 INSERT INTO redshift_table
-  (key1, key2) VALUES (&#39;:MY_STRING_PARAM&#39;, :MY_BOOLEAN_PARAM);
+  (key1, key2) VALUES (':MY_STRING_PARAM', :MY_BOOLEAN_PARAM);
 UPDATE redshift_table SET
-  key1 = &#39;:MY_STRING_PARAM&#39;,
+  key1 = ':MY_STRING_PARAM',
   key2 = :MY_BOOLEAN_PARAM
 WHERE
-  key3 = &#39;:ANOTHER_PARAM&#39;;
+  key3 = ':ANOTHER_PARAM';
 UPDATE redshift_table
   SET key2 = (SELECT new_key2 FROM source_table WHERE source_table.key1 = redshift_table.key1)
 WHERE EXISTS
@@ -431,7 +435,7 @@ If Tealium returns successful responses but data does not appear in Redshift, th
 
 To investigate:
 
-1. Run a [trace]() and note the ID from the response body of a successful call.
+1. Run a [trace](https://docs.tealium.com/about-trace/) and note the ID from the response body of a successful call.
 1. Use the [Amazon Redshift Data API](https://docs.aws.amazon.com/redshift-data/latest/APIReference/API_DescribeStatement.html) to check the details of the SQL statement.
 
 Send the following request, replacing the `Id` value with the ID from your trace:
@@ -445,7 +449,7 @@ Authorization: AUTHORIZATION_HEADER
 X-Amz-Date: TIMESTAMP
 
 {
-    &#34;Id&#34;: &#34;37eb2735-b467-4852-884b-0f536970bf7e&#34;
+    "Id": "37eb2735-b467-4852-884b-0f536970bf7e"
 }
 ```
 
@@ -455,7 +459,7 @@ The response includes the statement status and any error message returned by Red
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes
@@ -474,7 +478,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 50
 * Max time since oldest request: 16 minutes

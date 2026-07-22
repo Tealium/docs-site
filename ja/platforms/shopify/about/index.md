@@ -35,7 +35,7 @@ Tealiumアプリには標準データレイヤーが含まれており、Shopify
 | `purchase` | 購入を完了した顧客。 |
 | `search` | 検索を実行した顧客。 |
 
-詳細については、を参照してください。
+詳細については、[data-layer-and-events](https://docs.tealium.com/data-layer-and-events/)を参照してください。
 
 ニュースレターのサインアップイベントや割引イベントは、各店舗でカスタマイズする必要があります。
 
@@ -87,4 +87,4 @@ Tealiumアプリには標準データレイヤーが含まれており、Shopify
 
 現在、Tealium iQタグ管理でShopifyチェックアウトを追跡するための最良のオプションはカスタムピクセルです。Tealium Shopifyアプリのインストールプロセスには、カスタムピクセルを構成するオプションが含まれています。
 
-詳細については、[Tealium Shopifyアプリのインストール]()を参照してください。
+詳細については、[Tealium Shopifyアプリのインストール](https://docs.tealium.com/install-tealium-shopify-app/#configure-the-checkout-pixel)を参照してください。

@@ -14,10 +14,14 @@ url: https://docs.tealium.com/ja/partners-and-industries/tech-partners/tealium-l
 
 Leanplumは、データをユーザーのニーズと欲求の理解に変換することで、先見の明を持つブランドが顧客のリアルタイムのニーズを満たすのに役立ちます。エンゲージメントキャンペーンを最適化し、複数のコミュニケーションチャネルを使用することで、Leanplumプラットフォームはタイムリーで、テスト済みで、関連性のある統一された体験を提供し、顧客のロイヤルティを築き、ビジネスの成長を促進します。
 
-詳細については、[Tealium &#43; Leanplum Technology Partnership Overview](https://tealium.com/technology-partner/leanplum/)をご覧ください。
+詳細については、[Tealium + Leanplum Technology Partnership Overview](https://tealium.com/technology-partner/leanplum/)をご覧ください。
 
 
- Leanplumコネクタを構成する際には、各アクションで使用されるエンドポイントとAPIバージョンを指定する必要があります。
+
+<blockquote>
+Leanplumコネクタを構成する際には、各アクションで使用されるエンドポイントとAPIバージョンを指定する必要があります。
+</blockquote>
+
 
 ## APIバージョン
 
@@ -33,4 +37,4 @@ Leanplumは、データをユーザーのニーズと欲求の理解に変換す
 
 * [Leanplum](https://www.leanplum.com/)
 * [Tealium and Leanplum Partner Brief](https://tealium.com/assets/pdf/Partner_Brief_Leanplum-Tealium.pdf)
-* [Leanplum Connector Setup Guide]()
+* [Leanplum Connector Setup Guide](https://docs.tealium.com/leanplum-connector/)

@@ -12,7 +12,7 @@ The interface displays orange visual cues to alert you of unsaved changes. Click
 
 | Sidebar | Individual Items | Save/Publish Button |
 | --- | --- | --- |
-| ![](/images/iq-tag-management/getting-started-iq-unsaved-changes-asterisk.png) | ![](/images/iq-tag-management/getting-started-iq-unsaved-changes.png) |![](/images/iq-tag-management/getting-started-iq-unsaved-changes-button.png) |
+| ![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes-asterisk.png) | ![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes.png) |![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes-button.png) |
 
 After you save your changes, you can log out or close the window and your configuration is preserved for you or the next user that logs into the account.
 
@@ -25,4 +25,4 @@ A version is created when you perform a **Save As** action. A version has a name
 * **Overwritten versions**  
 An overwritten version is created within the current version when you use the **Overwrite current version** option. Overwriten versions are typically used for minor changes. You cannot undo overwrites of a version.
 
-View your save and publish history by going to [**Client-Side Versions**](). 
+View your save and publish history by going to [**Client-Side Versions**](https://docs.tealium.com/client-side-versions/). 

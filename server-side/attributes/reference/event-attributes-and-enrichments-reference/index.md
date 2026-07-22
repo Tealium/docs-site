@@ -22,54 +22,54 @@ This reference uses the following icons for attribute types:
 * Event-level attribute
 * Can be used in a webhook
 * Example: `A String`
-* For more information, see [String Attribute]().
+* For more information, see [String Attribute](https://docs.tealium.com/string-attribute/).
 
 #### Enrichments
 
 |Enrichment| Source Values|
 |---| ---|
-|Set string|  ![](/images/server-side/untitled-drawing-(1).png) |
+|Set string|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
 |Split (assign to randomly distributed values)| |
 |Remove|
 |Lowercase|
-|Join with delimiter|  ![](/images/server-side/untitled-drawing-(1).png) |
-|Set string to date|   ![](/images/server-side/untitled-drawing-(1).png)|
+|Join with delimiter|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Set string to date|   ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 
 #### Rule Conditions
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Contains&lt;br&gt; Contains [ignore case]&lt;br&gt; Does not contain&lt;br&gt; Does not contain [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Equals &lt;br&gt; Equals [ignore case]&lt;br&gt; Does not equal&lt;br&gt; Does not equal [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Starts/ends with&lt;br&gt; Starts/ends with [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Is assigned&lt;br&gt; Is not assigned|
+|Contains<br> Contains [ignore case]<br> Does not contain<br> Does not contain [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Equals <br> Equals [ignore case]<br> Does not equal<br> Does not equal [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Starts/ends with<br> Starts/ends with [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Is assigned<br> Is not assigned|
 |Matches regex| |
 
 ## Array of Strings
 
 * Event-level attribute
 * Can be used in a webhook
-* Example: `[&#34;Hello&#34;, &#34;&#34;, &#34;Mark&#34;]` (empty string will be stored in place)
+* Example: `["Hello", "", "Mark"]` (empty string will be stored in place)
 * For more information, see [Attribute Data Type: Arrays]().
 
 #### Enrichments
 
 |Enrichment| Source Values|
 |---| ---|
-|Add String to array|  ![](/images/server-side/untitled-drawing-(1).png) |
-|Add an array of strings| ![](/images/server-side/untitled-drawing-(1).png)|
-|Set to difference between two other Arrays| ![](/images/server-side/untitled-drawing-(1).png)|
+|Add String to array|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Add an array of strings| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Set to difference between two other Arrays| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 |Reset (remove all values)|
 |Lowercase all entries|
-|Remove first/last/all entries of|  ![](/images/server-side/untitled-drawing-(1).png)|
+|Remove first/last/all entries of|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 
 #### Rule Conditions
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Contains [partial string] &lt;br&gt; Contains [partial string] [ignore case]|      ![](/images/server-side/untitled-drawing-(1).png) |
-|Does not contain (key) &lt;br&gt; Does not contain (key) [ignore case]|     ![](/images/server-side/untitled-drawing-(1).png) |
-|Starts/ends with&lt;br&gt; Starts/ends with [ignore case]|     ![](/images/server-side/untitled-drawing-(1).png) |
+|Contains [partial string] <br> Contains [partial string] [ignore case]|      ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Does not contain (key) <br> Does not contain (key) [ignore case]|     ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Starts/ends with<br> Starts/ends with [ignore case]|     ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
 
 ## Number
 
@@ -83,9 +83,9 @@ This reference uses the following icons for attribute types:
 
 |Enrichment| Source Values|
 |---| ---|
-|Increment/Decrement| ![](/images/server-side/untitled-drawing-(1).png)|
-|Ratio/Product/Difference/Sum| ![](/images/server-side/untitled-drawing-(1).png)|
-|Set Number| ![](/images/server-side/untitled-drawing-(1).png)|
+|Increment/Decrement| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Ratio/Product/Difference/Sum| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Set Number| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 |Aggregate of array of numbers (Average, Minimum, Maximum)| |
 |Set to number of Items in array| |
 
@@ -93,32 +93,32 @@ This reference uses the following icons for attribute types:
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Equals&lt;br&gt; Does not equal| ![](/images/server-side/untitled-drawing-(1).png)|
-|Is assigned&lt;br&gt; Is not assigned|
-|Greater than or equal to&lt;br&gt; Less than or equal to|  ![](/images/server-side/untitled-drawing-(1).png) |
+|Equals<br> Does not equal| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Is assigned<br> Is not assigned|
+|Greater than or equal to<br> Less than or equal to|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
 
 ## Array of Numbers
 
 * Event-level attribute
 * Can be used in a webhook
-* Example: `[&#34;1&#34;, &#34;&#34;, &#34;3&#34;, &#34;4&#34;]` will output `[1, 0, 3, 4]`
+* Example: `["1", "", "3", "4"]` will output `[1, 0, 3, 4]`
 * For more information, see [Attribute Data Type: Arrays]().
 
 #### Enrichments
 
 |Enrichment| Source Values|
 |---| ---|
-|Add Number to array| ![](/images/server-side/untitled-drawing-(1).png)|
-|Add an array of numbers| ![](/images/server-side/untitled-drawing-(1).png)|
-|Set to difference between two other arrays| ![](/images/server-side/untitled-drawing-(1).png)|
+|Add Number to array| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Add an array of numbers| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Set to difference between two other arrays| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 |Reset (remove all values)|
 
 #### Rule Conditions
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned| ![](/images/server-side/untitled-drawing-(1).png)|
-|Contains number| ![](/images/server-side/untitled-drawing-(1).png)|
+|Is assigned<br> Is not assigned| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Contains number| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 
 ## Boolean
 
@@ -150,71 +150,71 @@ This reference uses the following icons for attribute types:
 
 |Enrichment| Source Values|
 |---| ---|
-|Add a boolean|  ![](/images/server-side/untitled-drawing-(1).png) |
-|Add an array of booleans| ![](/images/server-side/untitled-drawing-(1).png)|
+|Add a boolean|  ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Add an array of booleans| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
 |Reset (remove all values)|
 
 #### Rule Conditions
 
 |Rule Conditions|
 |---|
-|Contains boolean&lt;br&gt; Contains only boolean|  |
-|Is assigned&lt;br&gt; Is not assigned|  |
+|Contains boolean<br> Contains only boolean|  |
+|Is assigned<br> Is not assigned|  |
 
 ## Date
 
 * Event-level attribute
 * Can be used in a webhook
-* Control the input format by using the &#34;Convert From Date Format&#34; enrichment. For example, if this enrichment is set to `ddMMYY`, pass `31122020` for December 31, 2020 as input.
+* Control the input format by using the "Convert From Date Format" enrichment. For example, if this enrichment is set to `ddMMYY`, pass `31122020` for December 31, 2020 as input.
 * For more information, see [Date Attribute]().
 
 #### Enrichments
 
 |Enrichment| Source Values|
 |---| ---|
-|Convert from Date Format&lt;br&gt; (Set expected date format for event variable input.)|
+|Convert from Date Format<br> (Set expected date format for event variable input.)|
 |Set to current date|
-|Set date&lt;br&gt; (Use &#34;xxx&#34; for date format.)| |
-|Set date based on date format from | ![](/images/server-side/untitled-drawing-(1).png)|
-|Set date based on epoch milliseconds.&lt;br&gt; (Use &#34;xxx&#34; for date format.)| ![](/images/server-side/untitled-drawing-(1).png) |
+|Set date<br> (Use "xxx" for date format.)| |
+|Set date based on date format from | ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png)|
+|Set date based on epoch milliseconds.<br> (Use "xxx" for date format.)| ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
 
 #### Rule Conditions
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Greater than or equal to&lt;br&gt; Less than or equal to&lt;br&gt; (You can compare with the current time either directly or with future or past timeframe in seconds, minutes, hours, days, weeks or months.)| |
-|Is assigned&lt;br&gt; Is not assigned|
+|Greater than or equal to<br> Less than or equal to<br> (You can compare with the current time either directly or with future or past timeframe in seconds, minutes, hours, days, weeks or months.)| |
+|Is assigned<br> Is not assigned|
 
 ## iQ Attribute and Omnichannel Attribute
 
 * Event-level attribute
 * Can be used in a webhook
 * Any data format
-* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)]().
+* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/).
 
 #### Rule Conditions
 
 |Rule Conditions|
 |---|
-|Contains&lt;br&gt; Contains [ignore case]&lt;br&gt; Does not contain&lt;br&gt; Does not contain [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Array does contain&lt;br&gt; Array does not contain|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Equals &lt;br&gt; Equals [ignore case]&lt;br&gt; Does not equal&lt;br&gt; Does not equal [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Starts/ends with&lt;br&gt; Starts/ends with [ignore case]|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Less than | Greater than or equal to|    ![](/images/server-side/untitled-drawing-(1).png) |
-|Is assigned&lt;br&gt; Is not assigned|
-|Is empty&lt;br&gt; Is not empty|
+|Contains<br> Contains [ignore case]<br> Does not contain<br> Does not contain [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Array does contain<br> Array does not contain|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Equals <br> Equals [ignore case]<br> Does not equal<br> Does not equal [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Starts/ends with<br> Starts/ends with [ignore case]|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Less than | Greater than or equal to|    ![](https://docs.tealium.com/images/server-side/untitled-drawing-(1).png) |
+|Is assigned<br> Is not assigned|
+|Is empty<br> Is not empty|
 
 ## Omnichannel Date
 
 * Event-level attribute
 * Can be used in a webhook
 * Uses the Java Simple Date Format
-* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)]().
+* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/).
 
 #### Rule Conditions
 
 |Rule Conditions| Source Values|
 |---| ---|
-|Greater than or equal to&lt;br&gt; Less than or equal to| |
-|Is assigned&lt;br&gt; Is not assigned|
+|Greater than or equal to<br> Less than or equal to| |
+|Is assigned<br> Is not assigned|
 |Occurred more/less than X minutes, hours, days, weeks, months ago| |

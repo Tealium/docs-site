@@ -29,16 +29,16 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 データソースの例：
 
-![](/images/tutorials/eventstream-getting-started-data-source-key.png)
+![](https://docs.tealium.com/images/tutorials/eventstream-getting-started-data-source-key.png)
 
 インストールコードの例：
 
 ```swift
 var tealConfig = TealiumConfig(
-    account: &#34;your_account&#34;,
-    profile: &#34;your_profile&#34;,
-    environment: &#34;prod&#34;,
-    datasource: &#34;abc123&#34;)
+    account: "your_account",
+    profile: "your_profile",
+    environment: "prod",
+    datasource: "abc123")
 
 let tealium = Tealium(config: tealConfig)
 ```

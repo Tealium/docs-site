@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendpulse-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -36,8 +36,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendpulse-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;ユーザーを追加するメーリングリストのID。&lt;/li&gt;&lt;li&gt;詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;リストに追加するユーザーのメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>ユーザーを追加するメーリングリストのID。</li><li>詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。</li></ul> |
+|メール|  <ul><li>リストに追加するユーザーのメールアドレス。</li></ul> |
 
 ### アクション - メーリングリストにメールを追加（ダブルオプトイン）
 
@@ -45,9 +45,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendpulse-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;ユーザーを追加するメーリングリストのID。&lt;/li&gt;&lt;li&gt;詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|送信者メール|  &lt;ul&gt;&lt;li&gt;あなたの送信者メール。&lt;/li&gt;&lt;li&gt;送信者メールアドレスは、SendPulseアカウントの**メール &gt; サービス構成 &gt; 送信元アドレス**メニューで有効化する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;リストに追加するユーザーのメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>ユーザーを追加するメーリングリストのID。</li><li>詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。</li></ul> |
+|送信者メール|  <ul><li>あなたの送信者メール。</li><li>送信者メールアドレスは、SendPulseアカウントの**メール > サービス構成 > 送信元アドレス**メニューで有効化する必要があります。</li></ul> |
+|メール|  <ul><li>リストに追加するユーザーのメールアドレス。</li></ul> |
 
 ### アクション - メーリングリストからメールを削除
 
@@ -55,5 +55,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendpulse-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;連絡先を削除するリストのID。&lt;/li&gt;&lt;li&gt;詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;リストから削除するメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>連絡先を削除するリストのID。</li><li>詳細については、[SendPulseのドキュメンテーション](https://sendpulse.com/integrations/api/bulk-email)を参照してください。</li></ul> |
+|メール|  <ul><li>リストから削除するメールアドレス。</li></ul> |

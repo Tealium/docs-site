@@ -10,9 +10,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ho
 
 ## 要件
 
-* ユニバーサルタグ (`utag.js`) のバージョン4.43以上が必要です。詳細は [最新のutag.jsにアップグレードする]()を参照してください。
+* ユニバーサルタグ (`utag.js`) のバージョン4.43以上が必要です。詳細は [最新のutag.jsにアップグレードする](https://docs.tealium.com/template-status-checker/)を参照してください。
 * ルックアップ変数 - ルックアップ変数は、ページ上のデータレイヤーと補足データを含むホストされたデータレイヤーオブジェクトとの間のリンクです。   
+
+<blockquote>
 ルックアップ変数の値は、ホストされたデータレイヤーオブジェクトの名前になります。
+</blockquote>
+
 
 ## 仕組み
 
@@ -39,14 +43,18 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ho
 詳細な手順については、[拡張を追加する方法]()を参照してください。
 1. **Title**フィールドに、説明的なタイトルを入力します。
 1. **Scope and Execution**フィールドはデフォルトで構成されており、拡張がロードルールの評価前にすべてのタグに対して実行できるようにします。
-1. **&#43;Add Variable**をクリックします。
+1. **+Add Variable**をクリックします。
 1. ドロップダウンリストから適切な変数を選択します。
 1. 追加が完了するまでこれらの手順を繰り返します。 
-    拡張は順序に従ってルックアップを実行します。以下の例の構成では、まず`page_name`が検索され、次に`product_sku`、最後に`customer_zip`が検索されます。 
-    ![](/images/iq-tag-management/configuration.png)
+    
+<blockquote>
+拡張は順序に従ってルックアップを実行します。以下の例の構成では、まず`page_name`が検索され、次に`product_sku`、最後に`customer_zip`が検索されます。
+</blockquote>
+ 
+    ![](https://docs.tealium.com/images/iq-tag-management/configuration.png)
 1. **Overwrite on Merge**構成はデフォルトで**Yes**に構成されています。入力と受信者のデータレイヤーの両方にキーが存在する場合、デフォルトでは入力のキー値が既存のインスタンスを上書きします。既存のキー値インスタンスを保持することを希望する場合は、この構成を**NO**に切り替えます。
 1. デフォルトの**Timeout**（秒）構成は30秒です。マージを完了するまでの推定時間に応じて、この構成を変更することができます。
-1. 完了したら、**Save &amp; Publish**をクリックしてプロファイルを保存および公開します。
+1. 完了したら、**Save & Publish**をクリックしてプロファイルを保存および公開します。
 
 ## FAQ
 
@@ -54,7 +62,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ho
 
 ルックアップが失敗するのは2つの理由があります：ホストされたデータレイヤーオブジェクトの名前が間違って定義されているか、まったく定義されていないかのどちらかです。いずれの理由であっても、拡張は空のオブジェクトを受け取り、エンリッチメントはありません。
 
+
+<blockquote>
 ページ上のデータレイヤーのルックアップ変数の値がTealiumにアップロードされたホストされたデータレイヤーオブジェクトの名前と一致することを確認してください。ホストされたデータレイヤーAPIを使用して、予想されるホストされたデータレイヤーオブジェクトがTealiumにアップロードされていることを確認してください。
+</blockquote>
+
 
 #### ルックアップ変数がページ上のデータレイヤーにない場合はどうなりますか？
 
@@ -64,11 +76,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ho
 
 | Original Data  | Incoming Variables  |
 |:---------------|:--------------------|
-| `{ &#34;product_category&#34; : &#34;shoes&#34;     &#34;product_sku&#34;      : &#34;GEN-PRD-BLU&#34; }` | `{     &#34;product_category&#34;   : &#34;boots&#34;     &#34;has_instore_pickup&#34; : &#34;1&#34; } ` |
+| `{ "product_category" : "shoes"     "product_sku"      : "GEN-PRD-BLU" }` | `{     "product_category"   : "boots"     "has_instore_pickup" : "1" } ` |
 
 | After Merging: Overwrite YES| After Merging: Overwrite NO|
 |:-----------------------------|:--------------------------|
-| `{    &#34;product_category&#34;   : &#34;boots&#34;    &#34;product_sku&#34;        : &#34;GEN-PRD-BLU&#34;    &#34;has_instore_pickup&#34; : &#34;1&#34;  } ` | `{     &#34;product_category&#34;   : &#34;shoes&#34;     &#34;product_sku&#34;        : &#34;GEN-PRD-BLU&#34;     &#34;has_instore_pickup&#34; : &#34;1&#34;    }` |
+| `{    "product_category"   : "boots"    "product_sku"        : "GEN-PRD-BLU"    "has_instore_pickup" : "1"  } ` | `{     "product_category"   : "shoes"     "product_sku"        : "GEN-PRD-BLU"     "has_instore_pickup" : "1"    }` |
 
 #### APIコンポーネントなしでこの拡張を使用できますか？
 
@@ -92,7 +104,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ho
 
 #### この拡張はモバイルインストールで使用できますか？
 
-はい。モバイル用のホストされたデータレイヤー機能については、[ホストされたデータレイヤー](/ja/platforms/getting-started-mobile/hosted-data-layer/)を参照してください。
+はい。モバイル用のホストされたデータレイヤー機能については、[ホストされたデータレイヤー](https://docs.tealium.com/ja/platforms/getting-started-mobile/hosted-data-layer/)を参照してください。
 
 #### 拡張が目標のデータレイヤーオブジェクトを見つけることができなかった場合はどうなりますか？
 

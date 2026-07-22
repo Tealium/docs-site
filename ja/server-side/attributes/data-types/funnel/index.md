@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 ---
 ファネル属性は、訪問と訪問のスコープで利用可能です。
 
-![](/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
 
 ほとんどの使用例では、訪問スコープ属性としてファネル属性を構成することをお勧めします。これは、各サイト訪問の終了時にファネルがリセットされ、各セッションで顧客のアクションを新たに評価することを意味します。
 
@@ -82,9 +82,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 
 ファネルの各ステップを記録するだけでなく、ステップが発生したときに1つ以上の属性の値をキャプチャすることもできます。キャプチャされたデータは、ステップが発生したときの訪問の状態に関するより多くの情報を提供します。
 
-ファネル属性はAudienceStoreでアクセス可能ですが、AudienceDBやデータレイヤーのエンリッチメントでは使用できません。
 
-![](/images/server-side/attributes/capture_values_of_funnel_attribute.png)
+<blockquote>
+ファネル属性はAudienceStoreでアクセス可能ですが、AudienceDBやデータレイヤーのエンリッチメントでは使用できません。
+</blockquote>
+
+
+![](https://docs.tealium.com/images/server-side/attributes/capture_values_of_funnel_attribute.png)
 
 ## エンリッチメント
 
@@ -118,9 +122,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;product_view&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "product_view"
     }  
   ]  
 ]
@@ -134,9 +138,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;cart_view&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "cart_view"
     }  
   ]  
 ]
@@ -150,9 +154,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "checkout"
     }  
   ]  
 ]
@@ -166,9 +170,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }  
   ]  
 ]
@@ -180,24 +184,28 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 
 **Conversion Funnel** という名前のファネル属性を作成します。次に、ファネルの各ステップに対して **ステップを作成** をクリックします。
 
-![](/images/server-side/attributes/add_funnel_attribute.png)
+![](https://docs.tealium.com/images/server-side/attributes/add_funnel_attribute.png)
 
 #### ステップ1 - 製品を閲覧
 
-![](/images/server-side/attributes/funnel_step_1_viewed_a_product.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_1_viewed_a_product.png)
 
 #### ステップ2 - カートページを閲覧
 
- このステップを並べ替えて、UIコンテナを前のステップの下にドラッグする必要があります。属性はUIで表示される順序に従います。 
 
-![](/images/server-side/attributes/funnel_step_2_viewed_cart_page.png)
+<blockquote>
+このステップを並べ替えて、UIコンテナを前のステップの下にドラッグする必要があります。属性はUIで表示される順序に従います。
+</blockquote>
+
+
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_2_viewed_cart_page.png)
 
 
 #### ステップ3 - チェックアウトページの閲覧
 
 このステップはオプションで、ユーザーがすでにログインしている可能性があります。
 
-![](/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png)
 
 以下のステップはすべて必須で、ステップ2と同じロジックを使用します。
 
@@ -207,9 +215,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;billing&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "billing"
     }
   ]  
 ]
@@ -221,9 +229,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;shipping_method&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "shipping_method"
     }
   ]  
 ]
@@ -235,9 +243,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;payment&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "payment"
     }
   ]  
 ]
@@ -249,14 +257,14 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;review&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "review"
     },
     {
-      &#34;input&#34;: &#34;page_type&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "page_type",
+      "operator": "equals",
+      "filter": "checkout"
     }  
   ]  
 ]
@@ -268,13 +276,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;cart success&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "cart success"
     },
     {
-      &#34;input&#34;: &#34;order_id&#34;,
-      &#34;operator&#34;: &#34;IS ASSIGNED&#34;
+      "input": "order_id",
+      "operator": "IS ASSIGNED"
     }  
   ]  
 ]
@@ -286,27 +294,27 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 
 まず、ファネルの各ステップに対していくつかのルールを作成する必要があります。例えば、ルール **Conversion Funnel - Step 1 Complete** は **Step 1 - Product** が完了したかどうかをチェックします。
 
-![](/images/server-side/attributes/conversion_funnel_step_1_complete.png)
+![](https://docs.tealium.com/images/server-side/attributes/conversion_funnel_step_1_complete.png)
 
 次に、**Conversion Funnel - Last Step Completed** という文字列属性を作成します。この文字列属性はファネルの各ステップに対するエンリッチメントを持ち、上記のルールを使用して各ステップが完了したかどうかをチェックします。
 
-![](/images/server-side/attributes/conversion_funnel_last_step_completed.png)
+![](https://docs.tealium.com/images/server-side/attributes/conversion_funnel_last_step_completed.png)
 
 #### 放棄
 
 セッションの終了時に放棄を決定する必要があります。これは、訪問の終わりにファネルを見て、ファネルが開始されたが完了していないかどうかをチェックすることで行うことができます。
 
-![](/images/server-side/attributes/assign_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/assign_cart_abandoner_badge.png)
 
 また、ファネルが完了したときに **Page View** イベントでバッジを削除することも望ましいです。
 
-![](/images/server-side/attributes/remove_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/remove_cart_abandoner_badge.png)
 
 #### オーディエンス
 
 新しく作成されたバッジを使用してオーディエンスを追加することができます。オーディエンス条件は、メールアドレスのようなユーザー識別子があることを検証し、ターゲットにすることができます。
 
-![](/images/server-side/attributes/audience_using_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/audience_using_cart_abandoner_badge.png)
 
 #### アクション
 
@@ -316,7 +324,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/funnel/
 
 **何を**: ベンダーに訪問がカートを放棄し、どのステップで放棄したかを伝えます。
 
-![](/images/server-side/attributes/funnel_audience_conversion_action.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_audience_conversion_action.png)
 
 #### トレース
 

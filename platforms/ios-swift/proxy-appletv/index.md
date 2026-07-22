@@ -14,27 +14,35 @@ url: https://docs.tealium.com/platforms/ios-swift/proxy-appletv/
 
 ### Configuring Charles Proxy
 
-1. Navigate to the **Proxy &gt; Proxy Settings...** menu.
+1. Navigate to the **Proxy > Proxy Settings...** menu.
 2. On the **Proxies** tab in the **HTTP Proxy Port** field, enter `8888`.  
-![](/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice1.jpeg)
-3. Navigate to the **Proxy &gt; SSL Proxying Settings...** menu.
+![](https://docs.tealium.com/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice1.jpeg)
+3. Navigate to the **Proxy > SSL Proxying Settings...** menu.
 4. On the **SSL Proxying** tab, select the **Enable SSL Proxying** checkbox.  
-![](/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice2.jpeg)
-5. Navigate to **Help &gt; SSL Proxying &gt; Install Charles Root Certification a Mobile Device or Remote Browser...**.  
- The IP address listed on the dialog will be used later in the **Apple Configurator setup**.   
-![](/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice3.jpeg)
+![](https://docs.tealium.com/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice2.jpeg)
+5. Navigate to **Help > SSL Proxying > Install Charles Root Certification a Mobile Device or Remote Browser...**.  
+
+<blockquote>
+The IP address listed on the dialog will be used later in the **Apple Configurator setup**.
+</blockquote>
+  
+![](https://docs.tealium.com/images/platforms/ios-swift/charles-proxy/charles-proxy-iosdevice3.jpeg)
 6. Navigate to [https://charlesproxy.com/getssl](https://charlesproxy.com/getssl) to download the SSL certificate.
 
- Note the download location of the certificate. 
+
+<blockquote>
+Note the download location of the certificate.
+</blockquote>
+
 
 ### Export the Charles certificate
 
 To export the Charles certificate:
 
 1. Open **Keychain Access**.
-1. Navigate to **File &gt; Add Keychain** and select the certificate downloaded in step 6 above.
+1. Navigate to **File > Add Keychain** and select the certificate downloaded in step 6 above.
 1. Select the **Charles Proxy Custom Root Certificate** checkbox.
-1. Navigate to **File &gt; Export Items** and export the certificate as a `.cer` file to a location on your local drive, noting the location.
+1. Navigate to **File > Export Items** and export the certificate as a `.cer` file to a location on your local drive, noting the location.
 
 ## Apple Configurator Setup
 
@@ -42,15 +50,15 @@ To export the Charles certificate:
 
 To create a configuration profile using Apple Configurator:
 
-1. Navigate to **Open &gt; New Profile**.
+1. Navigate to **Open > New Profile**.
 2. Enter a name and unique identifier for this profile.
 3. From the left menu, click **Global HTTP Proxy**.
 4. Under **Proxy Server and Port**, enter the IP address and port from Configuring Charles Proxy step 5 above.
 
-![](/images/platforms/ios-swift/appleconfigurator1.jpeg)
+![](https://docs.tealium.com/images/platforms/ios-swift/appleconfigurator1.jpeg)
 
 5. Select **Certificates** from the left menu and select the `.cer `file you previously exported through **Keychain Access**.
-6. Select **File &gt; Save** to save the profile to your Mac, noting the location of the file.
+6. Select **File > Save** to save the profile to your Mac, noting the location of the file.
 
 ## Set up Apple TV
 
@@ -67,4 +75,4 @@ After debugging, you must remove the profile from the Apple TV to stop proxying.
 
 1. In Configurator, double click the device.
 1. From the left menu, click **Profiles**.
-1. Select your configuration profile and select **Edit &gt; Delete**.
+1. Select your configuration profile and select **Edit > Delete**.

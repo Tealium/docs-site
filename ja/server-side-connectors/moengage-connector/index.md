@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/moengage-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加したら、次の構成を構成します：
 
@@ -106,7 +106,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/moengage-connector/
 | アプリバージョン | イベントが発生したアプリのバージョン。 |
 | ローカル時間 | イベントが発生したローカル時間（秒）。 |
 | UTC時間 | イベントが発生したUTC時間（秒）。 |
-| ユーザータイムゾーンオフセット | -54000から54000までの秒数で値を持つべきです。例えば、IST（UTC&#43;0530）の場合、**ユーザータイムゾーンオフセット**は19800になります。 |
+| ユーザータイムゾーンオフセット | -54000から54000までの秒数で値を持つべきです。例えば、IST（UTC+0530）の場合、**ユーザータイムゾーンオフセット**は19800になります。 |
 
 ### イベントの追跡 (バッチ処理)
 
@@ -129,7 +129,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/moengage-connector/
 | アプリバージョン | イベントが発生したアプリのバージョン。 |
 | ローカル時間 | イベントが発生したローカル時間（秒）。 |
 | UTC時間 | イベントが発生したUTC時間（秒）。 |
-| ユーザータイムゾーンオフセット | -54000から54000までの秒数で値を持つべきです。例えば、IST（UTC&#43;0530）の場合、**ユーザータイムゾーンオフセット**は19800になります。 |
+| ユーザータイムゾーンオフセット | -54000から54000までの秒数で値を持つべきです。例えば、IST（UTC+0530）の場合、**ユーザータイムゾーンオフセット**は19800になります。 |
 
 ### ユーザーをオーディエンス/コホートに追加
 
@@ -143,7 +143,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/moengage-connector/
 | コホート名 | コホートの名前。この構成は、**Tealium Audience**セクションで選択されたTealium Audience名を上書きします。 |
 | コホートID | コホートのID。この構成は、**Tealium Audience**セクションで選択されたTealium Audience IDを上書きします。 |
 | コホートの説明 | コホートの説明。 |
-| Tealium Audience | Tealium Audienceを選択して、Tealium Audience IDとTealium Audience名をMoEngageコホートのIDと名前として使用します。&lt;br&gt; |
+| Tealium Audience | Tealium Audienceを選択して、Tealium Audience IDとTealium Audience名をMoEngageコホートのIDと名前として使用します。<br> |
 
 ### ユーザーをオーディエンス/コホートから削除
 

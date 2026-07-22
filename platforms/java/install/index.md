@@ -5,9 +5,9 @@ url: https://docs.tealium.com/platforms/java/install/
 ---
 ## Requirements
 
-* [Tealium Customer Data Hub account]()
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 * Java IDE such as Eclipse or NetBeans
-* Java JDK 7&#43;
+* Java JDK 7+
 
 ## Install
 
@@ -19,17 +19,17 @@ To install the Tealium library for Java with Maven, make the following changes t
 
 1. Add the repository:
       ```xml
-      &lt;repository&gt;    
-        &lt;id&gt;maven-tealium&lt;/id&gt;
-        &lt;url&gt;https://maven.tealiumiq.com/java/releases/&lt;/url&gt;
-      &lt;/repository&gt;
+      <repository>    
+        <id>maven-tealium</id>
+        <url>https://maven.tealiumiq.com/java/releases/</url>
+      </repository>
       ```
 
 2. Add the dependency:
       ```xml
-      &lt;groupId&gt;com.tealium&lt;/groupId&gt;
-      &lt;artifactId&gt;java&lt;/artifactId&gt;
-      &lt;version&gt;1.4.0&lt;/version&gt;
+      <groupId>com.tealium</groupId>
+      <artifactId>java</artifactId>
+      <version>1.4.0</version>
       ```
 
 ### Manual
@@ -47,11 +47,11 @@ To install the Tealium library for Java manually:
 
 ## Initialize
 
-To initialize the `Tealium` instance with the [`Builder()`](/platforms/java/api/#builder) method, add the following code to your `main` or `util` class and ensure that it initializes before any calls to it are made:
+To initialize the `Tealium` instance with the [`Builder()`](https://docs.tealium.com/platforms/java/api/#builder) method, add the following code to your `main` or `util` class and ensure that it initializes before any calls to it are made:
 
 ```java
-Tealium tealium = new Tealium.Builder(&#34;ACCOUNT&#34;, &#34;PROFILE&#34;)
-    .setEnvironment(&#34;ENVIRONMENT&#34;)
-    .setDatasource(&#34;DATASOURCE&#34;)
+Tealium tealium = new Tealium.Builder("ACCOUNT", "PROFILE")
+    .setEnvironment("ENVIRONMENT")
+    .setDatasource("DATASOURCE")
     .build();
 ```

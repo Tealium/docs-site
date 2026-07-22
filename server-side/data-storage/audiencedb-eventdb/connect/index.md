@@ -18,17 +18,21 @@ Third-party tools with PostgreSQL support require authentication credentials to 
 
 Database Credentials are now generated for each user. Previously, all users shared the credentials generated for an account and profile. If someone regenerated global credentials, all user connections were terminated, and all users had to reconnect.
 
-For user-specific credentials, the generated credentials are based on the account, profile, and the user&#39;s email address. Users can regenerate their own credentials without terminating other connections. You can remove access for a specific user without terminating other connections. To deactivate a specific user&#39;s credentials, contact Tealium Support.
+For user-specific credentials, the generated credentials are based on the account, profile, and the user's email address. Users can regenerate their own credentials without terminating other connections. You can remove access for a specific user without terminating other connections. To deactivate a specific user's credentials, contact Tealium Support.
 
+
+<blockquote>
 Previously-generated global credentials can still be used, but cannot be regenerated.
+</blockquote>
+
 
 Use the following steps to get database authentication credentials:
 
-1. Navigate to **Store &gt; EventDB** or **Store &gt; AudienceDB**.
+1. Navigate to **Store > EventDB** or **Store > AudienceDB**.
 1. Click **Get DB Connection Details**.
 1. Click **Regenerate DB Credentials**.  
 You need to regenerate credentials even if this is your first time getting credentials.  
-      ![](/images/server-side/connection-details.png)
+      ![](https://docs.tealium.com/images/server-side/connection-details.png)
 1. Click **Yes** to confirm that you want to delete your existing credentials and generate new ones.  
 The **DB Connection Details** screen displays the following fields:
     * **Username**  
@@ -45,21 +49,21 @@ The **DB Connection Details** screen displays the following fields:
 
 ### Browse the Redshift database
 
-After you have your database authentication credentials, you can connect to the database using a third-party tool. The following example uses SQL Workbench/J, which is a freeware application (see [Connecting to EventDB with SQL Workbench]()). The schema naming convention is `account__profile`.
+After you have your database authentication credentials, you can connect to the database using a third-party tool. The following example uses SQL Workbench/J, which is a freeware application (see [Connecting to EventDB with SQL Workbench](https://docs.tealium.com/connecting-sql-workbench/)). The schema naming convention is `account__profile`.
 
 The example below shows a view that joins all the related tables and columns.
 
-![](/images/server-side/sql-workbench-db-explorer.jpg)
+![](https://docs.tealium.com/images/server-side/sql-workbench-db-explorer.jpg)
 
 This example shows a raw data table view. The column names are in the same positions in each table, regardless of the view. The main difference between these two views is the readability of the entry.
 
-![](/images/server-side/sql-workbench-columns.jpg)
+![](https://docs.tealium.com/images/server-side/sql-workbench-columns.jpg)
 
 ## Writing SQL queries
 
 The following articles provide best practices and examples of useful queries:
 
-* [Connecting to EventDB and AudienceDB with SQL Workbench/J]()
+* [Connecting to EventDB and AudienceDB with SQL Workbench/J](https://docs.tealium.com/connecting-sql-workbench/)
 * [Best Practices for Writing Queries for EventDB and AudienceDB](https://support.tealiumiq.com/en/support/solutions/articles/36000363364-best-practices-for-writing-queries-for-eventdb-and-audiencedb/preview)
 * [Helpful SQL Queries for EventDB and AudienceDB](https://support.tealiumiq.com/en/support/solutions/articles/36000363427-helpful-sql-queries-for-eventdb-and-audiencedb)
 

@@ -39,10 +39,14 @@ Use the following steps to enable Workflow Management for your profile:
 
 1. In the admin menu, click **Configure Publish Settings**. The **Publish Configuration** dialog appears.
 1. In the **Version Workflow** section, scroll down to **Workflow Management** and click **On**.  
-    ![](/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-publish-configuration-dialog.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-publish-configuration-dialog.png)
 1. Click **Save**. The **Save/Publish** dialog appears.
 1. Click **Save As**.  
-    It is important for the approver that the submitter uses **Save As** versus **Save**. If the submitter selects **Save**, the current version becomes locked for all submitters.
+    
+<blockquote>
+It is important for the approver that the submitter uses **Save As** versus **Save**. If the submitter selects **Save**, the current version becomes locked for all submitters.
+</blockquote>
+
 
 1. Enter a new title and descriptive notes.
 1. Select one or more publish environments.  
@@ -60,14 +64,14 @@ Use the following steps to adjust user permissions for a submitter:
 
 1. In the admin menu, click **Manage Users**. The **User Manager** dialog appears.
 1. Click a checkbox to select an existing user or add a user, and then click **Edit/View User Permissions**.  
-    ![](/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-clickeditviewuserpermissions.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-clickeditviewuserpermissions.png)  
 A new dialog appears.
 1. Select the **Select Profiles** radio button and leave the default value of the current profile in the profile list.  
-    ![](/images/iq-tag-management/whiteui-tiq-editviewuserpermissions-selectprofiles-editprofilelist.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-editviewuserpermissions-selectprofiles-editprofilelist.png)
 1. Click **Next**.
 1. Ensure that **Publish to Dev/Custom Environment** and **Publish to QA Environment** remain checked.
 1. Uncheck **Publish to Prod Environment** and then click **Next.**  
-    ![](/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-editviewuerpermissions-uncheck-publish-to-prod.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-editviewuerpermissions-uncheck-publish-to-prod.png)
 1. Click **Finish**.
 1. Click **Close** to close the **Edit/View User Permissions** dialog.
 1. Save and Publish your changes.
@@ -103,7 +107,7 @@ A submitter uses the following steps to submit a request to publish to Prod:
 1. In the **Publish Locations** section, select **Prod - Approval Required**.
 1. Click **Publish**.  
 A red box appears next to the **Save/Publish** button indicating that the publish is pending approval.
-    ![](/images/iq-tag-management/approver-request.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/approver-request.png)
     
 After a **Save as** and a request to publish to Prod has been sent, submitters may no longer make changes to that pending version until the request has been approved or declined.
 
@@ -111,7 +115,7 @@ After a **Save as** and a request to publish to Prod has been sent, submitters m
 
 After a user has submitted a publish request, all approvers receive an email similar to the following regarding the request. Follow the instructions in the email and then navigate to the console to review the request.
 
-![](/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-tealiumiqnotification-for-approver.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-publishworkflowmanagement-tealiumiqnotification-for-approver.png)
 
 Use the following steps to approve or decline a publish request:
 
@@ -121,7 +125,7 @@ The **Pending Requests** dialog appears.
 1. Click an entry to approve or decline.  
 The publish notes and action buttons appears.
 1. Hover over any request to view the version notes.  
-    ![](/images/iq-tag-management/no-title-1069i79af8402c68e0f63.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/no-title-1069i79af8402c68e0f63.png)
 1. Click **Approve** or **Decline**.
     * If you click **Approve**, the **Save/Publish** window appears and prompts you to save and publish as normal. Ensure that you select the **Prod** environment before publishing.
     * If you click **Decline**, the request is declined and an email is sent to the requestor for further action.

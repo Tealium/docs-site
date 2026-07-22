@@ -2,7 +2,11 @@
 title: Optimizely 非同期タグ構成ガイド
 description: Tealiumのベストプラクティスは、すべてのタグを非同期でロードすることです。この投稿では、Optimizelyを実装する際にTealiumのベストプラクティスに従う方法を説明します。
 url: https://docs.tealium.com/ja/client-side-tags/optimizely-asynchronous-tag/
---- Optimizelyを同期的に実装するオプションについては、この[POST]()を参照してください。 
+---
+<blockquote>
+Optimizelyを同期的に実装するオプションについては、この[POST](https://docs.tealium.com/optimizely-synchronous-implementation/)を参照してください。
+</blockquote>
+
 
 Optimizely非同期タグを実装する方法は2つあります。サイトの内容とテスト要件によって、どちらのアプローチを使用するかが決まります。この投稿に記載されている順序で2つの方法を試すことをお勧めします。
 
@@ -19,36 +23,44 @@ Optimizely非同期タグを実装する方法は2つあります。サイトの
 
 ### ステップ2: Optimizely非同期タグを追加して構成する
 
-このタグはTealiumのタグマーケットプレイスで利用可能です。詳細については、[Tag Marketplace]()を参照して、Tealium iQプロファイルにタグを追加する方法を学んでください。
+このタグはTealiumのタグマーケットプレイスで利用可能です。詳細については、[Tag Marketplace](https://docs.tealium.com/about-tag-marketplace/)を参照して、Tealium iQプロファイルにタグを追加する方法を学んでください。
 
 
 
 構成する手順は以下の通りです：
 
 1. プロジェクトIDを入力します。これはOptimizelyが送信するスクリプトタグの最後の数字です。
- 例：`&lt;script src=&#34;//cdn.optimizely.com/js/123456789.js&#34;&gt;&lt;/script&gt;`
+ 例：`<script src="//cdn.optimizely.com/js/123456789.js"></script>`
 1. **詳細構成**リストから**Wait Flag = No**を選択します。
 1. **ロードルール**タブに進み、デフォルトの**すべてのページでロード**ルールを確認します。
-1. **データマッピング**タブに進み、データを送信したい先をマップします。詳細については、[Data Mappings]()を参照して、データソースをタグの宛先にマッピングする方法を学んでください。
+1. **データマッピング**タブに進み、データを送信したい先をマップします。詳細については、[Data Mappings](https://docs.tealium.com/about-data-mappings/)を参照して、データソースをタグの宛先にマッピングする方法を学んでください。
 
- 非同期タグでEコマースデータを追跡する予定の場合、[E-Commerce Extension]()を使用してそのデータを自動的にマッピングすることをお勧めします。 
+
+<blockquote>
+非同期タグでEコマースデータを追跡する予定の場合、[E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/)を使用してそのデータを自動的にマッピングすることをお勧めします。
+</blockquote>
+
 
 | 宛先名           | 宛先変数            | 説明                                                         | Eコマース拡張マッピング（推奨）                |
 |:-----------------|:---------------------|:--------------------------------------------------------------|:-----------------------------------------------|
 | プロジェクトID   | `projectId`          | Optimizelyによって提供されるプロジェクト識別子               | N/A                                            |
 | 注文ID           | `orderId`            | 注文に割り当てられた一意の識別子                             | `_corder`変数がこの宛先にマッピングされます    |
 | 収益（セント）   | `revenue`            | 注文の小計額（セント単位）                                   | `_csubtotal`変数がこの宛先にマッピングされます |
-| イベント名       | `eventName`          | 変換イベントの名前/タイプ&lt;br&gt; デフォルトイベントは`purchase` | N/A                                            |
+| イベント名       | `eventName`          | 変換イベントの名前/タイプ<br> デフォルトイベントは`purchase` | N/A                                            |
 
 ### ステップ3: プロファイルを保存/公開する。
 
-**重要**: 非同期タグができるだけ早く発火するように、`utag.js`ファイルをページの可能な限り上部にコード化することをお勧めします。HTML &amp;lt;body&amp;gt;タグの先頭にutag.jsを配置することを推奨します。TealiumはOptimizelyのJavaScriptファイルをロードし、残りの処理を行います。
+**重要**: 非同期タグができるだけ早く発火するように、`utag.js`ファイルをページの可能な限り上部にコード化することをお勧めします。HTML &lt;body&gt;タグの先頭にutag.jsを配置することを推奨します。TealiumはOptimizelyのJavaScriptファイルをロードし、残りの処理を行います。
 
 ## 方法2: Optimizelyをブロッキングタグとして実行
 
-Optimizelyは通常、ページ上で「より早く」実行され、他のもの（例えば、あなたのアナリティクスツール）が実行される前にテストを決定するために、同期的に実行されることを好みます。しかし、Optimizelyが十分に早く実行され、それでも非同期である唯一の方法は、その`.js`ライブラリを別の場所から提供することです。これにより、Optimizely非同期タグはブロッキングタグとなり、その後の非同期スクリプト（例えば、`utag.10.js`）は、[blocking Tag]()が完了するまでロードされません。
+Optimizelyは通常、ページ上で「より早く」実行され、他のもの（例えば、あなたのアナリティクスツール）が実行される前にテストを決定するために、同期的に実行されることを好みます。しかし、Optimizelyが十分に早く実行され、それでも非同期である唯一の方法は、その`.js`ライブラリを別の場所から提供することです。これにより、Optimizely非同期タグはブロッキングタグとなり、その後の非同期スクリプト（例えば、`utag.10.js`）は、[blocking Tag](https://docs.tealium.com/manage-templates/)が完了するまでロードされません。
 
- 最新のものを使用していない場合は、`utag.js`のバージョンをアップグレードしてください。詳細については、[utag.jsリリースノート](/ja/release-notes/?filter=tealium-universal-tag)を参照してください。 
+
+<blockquote>
+最新のものを使用していない場合は、`utag.js`のバージョンをアップグレードしてください。詳細については、[utag.jsリリースノート](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag)を参照してください。
+</blockquote>
+
 
 1. 上記のステップ#2を繰り返して、Optimizely非同期タグを追加して構成します。
 1. **詳細構成**を下にドロップし、`.js`ライブラリの場所を**カスタムスクリプトソース**フィールドに入力します。

@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

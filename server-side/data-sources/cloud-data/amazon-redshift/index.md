@@ -3,7 +3,7 @@ title: Amazon Redshift cloud data source
 description: This article describes how to set up the Amazon Redshift cloud data source.
 url: https://docs.tealium.com/server-side/data-sources/cloud-data/amazon-redshift/
 ---
-For a general overview of setting up a cloud data source, see .
+For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## Data types
 

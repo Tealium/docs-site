@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/upsellit-tag/
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -29,15 +29,19 @@ The Site ID for the Confirmation Pixel. For example: `1234`.
 * **Product ID**:  
 The Product ID for the Confirmation Pixel. For example: `12`.
 
- The Launch File for the Upsellit tag can be retrieved directly from your Upsellit account dashboard. You can access it by logging into your Upsellit account and navigating to the **Integration** or **Implementation** section. Download or copy the provided JavaScript library URL and associated account details, such as the Account ID and Site ID. For further assistance, contact your Upsellit account representative. 
+
+<blockquote>
+The Launch File for the Upsellit tag can be retrieved directly from your Upsellit account dashboard. You can access it by logging into your Upsellit account and navigating to the **Integration** or **Implementation** section. Download or copy the provided JavaScript library URL and associated account details, such as the Account ID and Site ID. For further assistance, contact your Upsellit account representative.
+</blockquote>
+
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

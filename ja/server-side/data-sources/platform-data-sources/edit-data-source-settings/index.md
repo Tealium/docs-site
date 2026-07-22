@@ -10,13 +10,21 @@ url: https://docs.tealium.com/ja/server-side/data-sources/platform-data-sources/
 1. データソースの名前をクリックして、そのデータソースの詳細を展開します。
 1. データソースの右下に表示されるツールバーの鉛筆アイコンをクリックします。  
 **データソース構成**ダイアログが表示されます。 
-      ロゴの上にマウスを置くと、ロゴの上に鉛筆アイコンが表示されるので、それをクリックすることもできます。 
-      ![](/images/server-side/whiteui-editdatasource.png)  
+      
+<blockquote>
+ロゴの上にマウスを置くと、ロゴの上に鉛筆アイコンが表示されるので、それをクリックすることもできます。
+</blockquote>
+ 
+      ![](https://docs.tealium.com/images/server-side/whiteui-editdatasource.png)  
 1. **メモ**フィールドに、データソースに関連する役立つメモを入力します。
 1. ラベルを編集するには、**ラベルを追加**をクリックします。
 1. **カスタムロゴURL**フィールドに、カスタムロゴを表示するための有効なURLを入力します。  
-      ロゴファイルの名前は.jpg、.png、または.gifで終わらなければなりません。
+      
+<blockquote>
+ロゴファイルの名前は.jpg、.png、または.gifで終わらなければなりません。
       ロゴのURLは`https://`で始まる必要があります。
+</blockquote>
+
 1. **カスタムホームページURL**フィールドに、ホームページの有効なURLを入力します。
 1. **保存**をクリックします。
 1. **完了**をクリックします。

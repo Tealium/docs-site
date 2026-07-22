@@ -16,13 +16,13 @@ Tealium Data Enrichment拡張機能をインストールするには、以下の
       * **Endpoint**：（オプション）デフォルトのエンドポイントを独自のカスタムファーストパーティエンドポイント（例：`https://visitor-service.collect.example.co.uk`）で上書きします。
 1. Adobe Launchでローカル保存のデータを読み取るデータエレメントを追加します。詳細については、[Adobe: Data Elements](https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements)を参照してください。
 
-[data layer enrichment object]()は、`localStorage`の`teal_adobe_enrichment_data`キーの下に保存されます。このキーを取得すると、データレイヤーエンリッチメントオブジェクトが返されます。
+[data layer enrichment object](https://docs.tealium.com/enable-data-layer-enrichment/)は、`localStorage`の`teal_adobe_enrichment_data`キーの下に保存されます。このキーを取得すると、データレイヤーエンリッチメントオブジェクトが返されます。
 
 次の例では、`localStorage`からデータレイヤーエンリッチメントオブジェクトを取得し、すべてのオーディエンスを配列に保存します：
 
 ```javascript
 var dle_object = JSON.parse(localStorage.getItem(
-   &#34;teal_adobe_enrichment_data&#34;));
+   "teal_adobe_enrichment_data"));
 
 var data = {audiences: []};
 if (dle_object.audiences) {
@@ -34,6 +34,10 @@ if (dle_object.audiences) {
 }
 ```
 
+
+<blockquote>
 データレイヤーエンリッチメントオブジェクトにネストされた値が含まれている場合、Tealium Collectエンドポイントに送信される前に自動的にフラット化されます。
+</blockquote>
+
 
 詳細については、[Adobe: Adobe Experience Platform Launch object reference](https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo)を参照してください。

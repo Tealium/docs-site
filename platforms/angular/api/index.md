@@ -24,7 +24,7 @@ link(data? : any)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | JSON Object | Page view data as key-value pairs | `{&#34;tealium_event&#34; : &#34;user_login&#34;, &#34;customer_id&#34; : &#34;0123456789&#34;}` |
+| `data` | JSON Object | Page view data as key-value pairs | `{"tealium_event" : "user_login", "customer_id" : "0123456789"}` |
 
 ### `setConfig()`
 
@@ -36,9 +36,9 @@ setConfig(config : {account, profile, environment})
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `string` | Tealium account name | `&#34;companyXYZ&#34;` |
-| `profile` | `string` | Tealium profile name | `&#34;main&#34; ` |
-| `environment` | `string` | Tealium environment name | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `account` | `string` | Tealium account name | `"companyXYZ"` |
+| `profile` | `string` | Tealium profile name | `"main" ` |
+| `environment` | `string` | Tealium environment name | [`"dev"`, `"qa"`, `"prod"`] |
 
 ### `view()`
 
@@ -50,4 +50,4 @@ view(data? : any)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | JSON Object | Event data as key-value pairs | `{&#34;tealium_event&#34; : &#34;product_view&#34;, &#34;page_type&#34; : &#34;product&#34;, &#34;product_id&#34; : [&#34;PROD123&#34;]}` |
+| `data` | JSON Object | Event data as key-value pairs | `{"tealium_event" : "product_view", "page_type" : "product", "product_id" : ["PROD123"]}` |

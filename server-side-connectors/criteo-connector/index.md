@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/criteo-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -27,9 +27,9 @@ This section describes how to set up parameters and options for each action.
 
 ### Automatic Deduplication
 
-Use the Automatic Deduplication action to send a unique identifier generated from your [Criteo OneTag tag]() with the event dataset. Ensure that you have enabled **Generate Page View ID** in your Criteo OneTag tag configuration. The event attribute uses the following naming convention:
+Use the Automatic Deduplication action to send a unique identifier generated from your [Criteo OneTag tag](https://docs.tealium.com/criteo-onetag-tag/) with the event dataset. Ensure that you have enabled **Generate Page View ID** in your Criteo OneTag tag configuration. The event attribute uses the following naming convention:
 
-`criteo_page_view_id_&lt;TAG_UID&gt;`
+`criteo_page_view_id_<TAG_UID>`
 
 For example, a page view event from a tag with UID of `171` would send the following attribute value:
 
@@ -37,9 +37,9 @@ For example, a page view event from a tag with UID of `171` would send the follo
 criteo_page_view_id_171
 ```
 
-You can find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/criteo-onetag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/criteo-onetag-uid.png)
 
 To configure automatic deduplication, in the **Automatic Deduplication** section, select **Add Mapping**. In the mapping, provide the Criteo OneTag tag ID and map it to the **Tealium iQ Tag ID**. 
 
@@ -74,15 +74,15 @@ Criteo recommends mapping both a Mapped User ID and email where possible. Provid
 |**Parameter**| **Description**|
 |---| ---|
 |GUM ID| The Criteo salted user ID (GUM ID) returned by the GUM call. For more information, see [Criteo Server to Server - Criteo GUM Call](https://guides.criteotilt.com/onetag/s2s/#criteo-gum-call).|
-|GAID| Google&#39;s advertising identifier.|
-|IDFA| Apple&#39;s identifier for Advertisers unique identifier.|
-|Email Raw| The user&#39;s raw email address. The first non-empty email parameter is used. |
-|Email MD5 (apply MD5 hash)| The user&#39;s unhashed email address.|
-|Email MD5 (already MD5 hashed)| The user&#39;s email address hashed with MD5.|
-|Email SHA256 (apply SHA256 hash)| The user&#39;s unhashed email address.|
-|Email SHA256 (already SHA256 hashed)| The user&#39;s email address hashed with SHA256.|
-|Email SHA256 MD5 (apply SHA256 MD5 hash)| The user&#39;s unhashed email address.|
-|Email SHA256 MD5 (already SHA256 MD5 hashed)| The user&#39;s email address hashed with MD5 and SHA256.|
+|GAID| Google's advertising identifier.|
+|IDFA| Apple's identifier for Advertisers unique identifier.|
+|Email Raw| The user's raw email address. The first non-empty email parameter is used. |
+|Email MD5 (apply MD5 hash)| The user's unhashed email address.|
+|Email MD5 (already MD5 hashed)| The user's email address hashed with MD5.|
+|Email SHA256 (apply SHA256 hash)| The user's unhashed email address.|
+|Email SHA256 (already SHA256 hashed)| The user's email address hashed with SHA256.|
+|Email SHA256 MD5 (apply SHA256 MD5 hash)| The user's unhashed email address.|
+|Email SHA256 MD5 (already SHA256 MD5 hashed)| The user's email address hashed with MD5 and SHA256.|
 
 #### Event Parameters
 
@@ -91,11 +91,11 @@ Criteo recommends mapping both a Mapped User ID and email where possible. Provid
 | ID | The order ID used to identify a given order. |
 | Item (Top 3 Products) | An array of the top 3 products on the listing page a user visited. |
 | Item (Product Id) | The product ID of the product the user looked at. |
-| Items Id (String or Array) | The product ID, the unit price, the quantity of the products in the cart. Values could be string with comma (&#34;,&#34;), separation, or array. |
+| Items Id (String or Array) | The product ID, the unit price, the quantity of the products in the cart. Values could be string with comma (","), separation, or array. |
 | Items Price (String or Array) | The unit price of the products in the cart. Values can be comma-separated strings, or an array. |
 | Items Quantity (String or Array) | The quantity of the products in the cart. Values can be comma-separated strings, or an array. |
-| Items Price (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{&#34;PID1&#34;:1.99,&#34;PID2&#34;:3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
-| Items Quantity (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{&#34;PID1&#34;:1.99,&#34;PID2&#34;:3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
+| Items Price (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{"PID1":1.99,"PID2":3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
+| Items Quantity (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{"PID1":1.99,"PID2":3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
 | Currency | The ISO code of the currency being passed to the tags. |
 | Timestamp | The timestamp the event happened for the user in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If no timestamp is provided, the current timestamp is used. |
 | Checkin Date | The check-in date the user submitted in format `YYYY-MM-DD`. |
@@ -151,15 +151,15 @@ Criteo recommends mapping both a Mapped User ID and email where possible. Provid
 |**Parameter**| **Description**|
 |---| ---|
 |GUM ID| The Criteo salted user ID (GUM ID) returned by the GUM call. For more information, see [Criteo Server to Server - Criteo GUM Call](https://guides.criteotilt.com/onetag/s2s/#criteo-gum-call).|
-|GAID| Google&#39;s advertising identifier.|
-|IDFA| Apple&#39;s identifier for Advertisers unique identifier.|
-|Email Raw| The user&#39;s raw email address. The first non-empty email parameter is used. |
-|Email MD5 (apply MD5 hash)| The user&#39;s unhashed email address.|
-|Email MD5 (already MD5 hashed)| The user&#39;s email address hashed with MD5.|
-|Email SHA256 (apply SHA256 hash)| The user&#39;s unhashed email address.|
-|Email SHA256 (already SHA256 hashed)| The user&#39;s email address hashed with SHA256.|
-|Email SHA256 MD5 (apply SHA256 MD5 hash)| The user&#39;s unhashed email address.|
-|Email SHA256 MD5 (already SHA256 MD5 hashed)| The user&#39;s email address hashed with MD5 and SHA256.|
+|GAID| Google's advertising identifier.|
+|IDFA| Apple's identifier for Advertisers unique identifier.|
+|Email Raw| The user's raw email address. The first non-empty email parameter is used. |
+|Email MD5 (apply MD5 hash)| The user's unhashed email address.|
+|Email MD5 (already MD5 hashed)| The user's email address hashed with MD5.|
+|Email SHA256 (apply SHA256 hash)| The user's unhashed email address.|
+|Email SHA256 (already SHA256 hashed)| The user's email address hashed with SHA256.|
+|Email SHA256 MD5 (apply SHA256 MD5 hash)| The user's unhashed email address.|
+|Email SHA256 MD5 (already SHA256 MD5 hashed)| The user's email address hashed with MD5 and SHA256.|
 
 #### Event Parameters
 
@@ -171,8 +171,8 @@ Criteo recommends mapping both a Mapped User ID and email where possible. Provid
 | Items Id (String or Array) | The product ID, the unit price, the quantity of the products in the cart. Values can be comma-separated strings, or an array. |
 | Items Price (String or Array) | The unit price of the products in the cart. Values can be comma-separated strings, or an array. |
 | Items Quantity (String or Array) | The quantity of the products in the cart. Values can be comma-separated strings, or an array. |
-| Items Price (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{&#34;PID1&#34;:1.99,&#34;PID2&#34;:3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
-| Items Quantity (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{&#34;PID1&#34;:1.99,&#34;PID2&#34;:3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
+| Items Price (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{"PID1":1.99,"PID2":3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
+| Items Quantity (Tail) | Tally or a string attribute containing a valid JSON map of item ID(s) to number values. For example, `{"PID1":1.99,"PID2":3.99}`. For each tally configured, ensure the item ID is used as the tally key and the property value as the tally value. |
 | Currency | The ISO code of the currency being passed to the tags. |
 | Timestamp | The timestamp of the user event in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If no timestamp is provided, the current timestamp is used. |
 | Checkin Date | The check-in date the user submitted in format `YYYY-MM-DD`. |

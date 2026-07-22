@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/browser-hi
 
 ブラウザ履歴変更イベントリスナーは、ブラウザの履歴APIの`history.pushState()`および`history.replaceState()`関数を監視します。これらの2つの関数は、SPAでフルページのリロードなしにナビゲーションを管理するために使用されます。訪問がアプリ内の新しいページに移動したり、戻ったりすると、トラッキングコールがトリガーされます。
 
-イベントリスナーを追加する方法についての詳細は、[イベントの管理]()をご覧ください。
+イベントリスナーを追加する方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)をご覧ください。
 
 ## イベントトリガー
 
@@ -28,7 +28,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/browser-hi
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;history_change&#34;`| 訪問がアプリ内の新しいページに移動したか、ページを戻しました。|
+|`tealium_event="history_change"`| 訪問がアプリ内の新しいページに移動したか、ページを戻しました。|
 
 ## イベントトリガー変数
 
@@ -43,7 +43,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/browser-hi
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;history_change&#34;,
-   &#34;iq_event_id:&#34; : &#34;history_change_events_1&#34;
+   "tealium_event"  : "history_change",
+   "iq_event_id:" : "history_change_events_1"
 }
 ```

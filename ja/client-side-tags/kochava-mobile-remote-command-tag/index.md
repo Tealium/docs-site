@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/client-side-tags/kochava-mobile-remote-command-
 
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスしてKochavaモバイルリモートコマンドタグを追加します（タグの追加方法については[こちら]()を参照してください）。
+まず、タグマーケットプレイスにアクセスしてKochavaモバイルリモートコマンドタグを追加します（タグの追加方法については[こちら](https://docs.tealium.com/manage-tags/)を参照してください）。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/kochava-mobile-remote-command-
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -30,10 +30,10 @@ url: https://docs.tealium.com/ja/client-side-tags/kochava-mobile-remote-command-
 
 |変数| 説明|
 |---| ---|
-|`app_guid`|  &lt;ul&gt;&lt;li&gt;アプリID&lt;/li&gt;&lt;/ul&gt; |
-|`app_tracking_transparency_enabled`|  &lt;ul&gt;&lt;li&gt;アプリトラッキング透明性有効&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`identity_link_ids`|  &lt;ul&gt;&lt;li&gt;アイデンティティリンクID&lt;/li&gt;&lt;/ul&gt; |
-|`log_level`|  &lt;ul&gt;&lt;li&gt;ログレベル&lt;/li&gt;&lt;/ul&gt; |
+|`app_guid`|  <ul><li>アプリID</li></ul> |
+|`app_tracking_transparency_enabled`|  <ul><li>アプリトラッキング透明性有効</li><li>値は `true` または `false`。</li></ul> |
+|`identity_link_ids`|  <ul><li>アイデンティティリンクID</li></ul> |
+|`log_level`|  <ul><li>ログレベル</li></ul> |
 
 ### イベント
 

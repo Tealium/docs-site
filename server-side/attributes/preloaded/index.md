@@ -5,9 +5,13 @@ url: https://docs.tealium.com/server-side/attributes/preloaded/
 ---
 ## How it works
 
-For your convenience, AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes. Each attribute is configured to collect statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional data beyond the standard event data from the [Tealium Collect tag]().
+For your convenience, AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes. Each attribute is configured to collect statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional data beyond the standard event data from the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
- Preloaded attributes cannot be modified, but you can duplicate them and modify the copy. The duplicate contains all of the enrichments and rules from the original. 
+
+<blockquote>
+Preloaded attributes cannot be modified, but you can duplicate them and modify the copy. The duplicate contains all of the enrichments and rules from the original.
+</blockquote>
+
 
 ## Visitor attributes
 
@@ -31,7 +35,7 @@ For your convenience, AudienceStream and EventStream contain a set of preloaded 
 |Lifetime operating systems used (favorite) | 58 | String|  The favorite item out of the Lifetime operating systems used attribute| Automatically generated from Lifetime operating systems used. |
 |Lifetime platforms used |61 | Tally| A tally of platforms used.| For tally `Lifetime platforms used` increment all values by `1` if found in `Active platforms` when visit ended. |
 |Lifetime platforms used (favorite) | 60 | String | The favorite item out of the Lifetime platforms used attribute.| Automatically generated from Lifetime platforms used.|
-|Lifetime visit count | 21  |Number | Total number of times user has visited site.| &lt;ul&gt;&lt;li&gt;Set ratio `Average visit duration in minutes` to `Total time spent on site in minutes` divided by `Lifetime visit count` when visit ended.&lt;/li&gt;&lt;li&gt;Set ratio `Average visits per week` to `Lifetime visit count` divided by `Weeks since first visit` when new visit if `Weeks since first visit` is greater than or equal to `1`.&lt;/li&gt;&lt;/ul&gt; |
+|Lifetime visit count | 21  |Number | Total number of times user has visited site.| <ul><li>Set ratio `Average visit duration in minutes` to `Total time spent on site in minutes` divided by `Lifetime visit count` when visit ended.</li><li>Set ratio `Average visits per week` to `Lifetime visit count` divided by `Weeks since first visit` when new visit if `Weeks since first visit` is greater than or equal to `1`.</li></ul> |
 |Returning visitor| 27 | Boolean| The visitor is a returning visitor.| Set `Returning visitor` to `true` when new visit `Lifetime visit count` is greater than `1`. |
 |Total direct visits| 15 | Number | The total number of direct visits.| Increment number `Total direct visits` by `1` when new visit if `Referring URL` is empty or `Referring URL` equals `Current URL`. |
 |Total referred visits |16 | Number | The total number of referred visits.| Increment number `Total referred visits` by `1` when new visit if `Referring URL` is not empty and `Referring URL` does not equal `Current URL`.|
@@ -43,7 +47,7 @@ For your convenience, AudienceStream and EventStream contain a set of preloaded 
 
 | Visit attributes |  ID |  Type |  Description| Enrichments|
 |-----|-----|-----|-----|-----|
-|Active browser type |44 | String|  The browser actively being used by the visitor.| &lt;ul&gt;&lt;li&gt;Set string `Active browser version` to `Active browser type` when any event if `User Agent` does not contain `Firefox` and `User Agent` does not contain `Safari` and `User Agent` does not contain `MSIE` and `User Agent` does not contain `Edg` and `User Agent` does not contain Opera.&lt;/li&gt;&lt;li&gt;Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Chrome`.&lt;/li&gt;&lt;li&gt;Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Firefox`.&lt;/li&gt;&lt;li&gt;Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Opera`.&lt;/li&gt;&lt;li&gt;For `Set of Strings` Active browser types add `Active browser type` when any event.&lt;/li&gt;&lt;/ul&gt; |
+|Active browser type |44 | String|  The browser actively being used by the visitor.| <ul><li>Set string `Active browser version` to `Active browser type` when any event if `User Agent` does not contain `Firefox` and `User Agent` does not contain `Safari` and `User Agent` does not contain `MSIE` and `User Agent` does not contain `Edg` and `User Agent` does not contain Opera.</li><li>Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Chrome`.</li><li>Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Firefox`.</li><li>Set string `Active browser version` to `Active browser type` when any event `User Agent` is `Opera`.</li><li>For `Set of Strings` Active browser types add `Active browser type` when any event.</li></ul> |
 |Active browser types  |49  |Set of strings|  A deduplicated list of browser types used this visit.| For tally `Lifetime browser types used` increment all values by `1` if found in `Active browser types when visit ended.` |
 |Active browser version| 48|  String|  The browser version actively being used by the visitor.| For set of strings `Active browser versions` add `Active browser version` when any event. |
 |Active browser versions| 53|  Set of strings|  A deduplicated list of browser versions this visit.| For tally `Lifetime browser versions used` increment all values by `1` if found in `Active browser versions` when visit ended. |
@@ -68,10 +72,10 @@ For your convenience, AudienceStream and EventStream contain a set of preloaded 
 |-----|-----|-----|-----|-----|
 |Client IP|74|String|The IPv4 address of the visitor.| |
 |Client IPv6|83|String|The IPv6 address of the visitor. The visitor must have an IPv6 address and their network infrastructure must be able to transmit the address. For more information, see [Support for IPv6](#support-for-ipv6).| |
-|Current URL|4|String|The URL of the current page. | &lt;ul&gt;&lt;li&gt;Set string `Entry URL` to `Current URL` when new visit.&lt;/li&gt;&lt;li&gt;Set string `Exit URL` to `Current URL` when visit ended.&lt;/li&gt;&lt;li&gt;Set string `Last event URL` to `Current URL` when any event.&lt;/li&gt;&lt;/ul&gt; |
+|Current URL|4|String|The URL of the current page. | <ul><li>Set string `Entry URL` to `Current URL` when new visit.</li><li>Set string `Exit URL` to `Current URL` when visit ended.</li><li>Set string `Last event URL` to `Current URL` when any event.</li></ul> |
 |Domain|35|String|The domain of the current page.| |
 |event_name|64|String|This attribute is deprecated; use `tealium_event` instead.|
-|Last event timestamp|8|String|The timestamp of the last event.| &lt;ul&gt;&lt;li&gt;Set date `Visit start` to `Last event timestamp` when new visit.&lt;/li&gt;&lt;li&gt;Set date `Visit end` to `Last event timestamp` when any event.&lt;/li&gt;&lt;li&gt;Set date `First visit` to `Last event timestamp` when new visitor.&lt;/li&gt;&lt;li&gt;Set date `Last visit` to `Last event timestamp` when visit ended.&lt;/li&gt;&lt;/ul&gt;|
+|Last event timestamp|8|String|The timestamp of the last event.| <ul><li>Set date `Visit start` to `Last event timestamp` when new visit.</li><li>Set date `Visit end` to `Last event timestamp` when any event.</li><li>Set date `First visit` to `Last event timestamp` when new visitor.</li><li>Set date `Last visit` to `Last event timestamp` when visit ended.</li></ul>|
 |Page Title|38|String|The title of the current page.| |
 |Pathname|36|String|The pathname of the current page.| |
 |platform|40|String|The platform of the client.| |
@@ -110,13 +114,13 @@ This section shows which components support IPv6 and how to set a fallback when 
 IPv6 support for first-party domains depends on when the configuration was created:  
 
 * Configurations created before the release of the first-party domain feature support IPv6.  
-* Configurations created through the product UI after the feature was released do not support IPv6 by default. To enable IPv6, add an AAAA DNS record that points to the same distribution as the domain&#39;s A record.
+* Configurations created through the product UI after the feature was released do not support IPv6 by default. To enable IPv6, add an AAAA DNS record that points to the same distribution as the domain's A record.
 
 **Other components**
 
 The following components do not support IPv6:  
 
-* Tealium Collect tag and Collect HTTP API (`collect.tealiumiq.com` and `collect-&lt;region&gt;.tealiumiq.com`)  
+* Tealium Collect tag and Collect HTTP API (`collect.tealiumiq.com` and `collect-<region>.tealiumiq.com`)  
 * First-party Collect domains  
 * Tealium v1, v2, and v3 APIs (`platform.tealiumapis.com`)  
 * Connectors and external file imports  
@@ -127,6 +131,6 @@ To create an attribute that uses the IPv4 address as a fallback when the IPv6 ad
 
 The following examples demonstrate how you can use preloaded attributes:
 
-* Use the **Frequent visitor** badge to create an audience, and then action that audience with a connector to send email to those visitors that says &#34;Thank you for being a regular visitor.&#34;
+* Use the **Frequent visitor** badge to create an audience, and then action that audience with a connector to send email to those visitors that says "Thank you for being a regular visitor."
 * Use the **Lifetime operating systems used (favorite)** attribute to change the placement of specific downloads on a page, making more relevant apps appear first.
 * Use **Total Direct Visits** and **Total Referred Visits** to calculate the ratio of  direct to referred visits for a visitor to understand each visitor or visit.

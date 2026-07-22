@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/bazaarvoice-pixel-tag/
 ---
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Bazaarvoice Pixel tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the Bazaarvoice Pixel tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the tag, configure the below settings:
 
@@ -16,13 +16,13 @@ After adding the tag, configure the below settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: All Pages
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Bazaarvoice Pixel tag are built into its **Data Mapping** tab. Available categories are:
 
@@ -92,7 +92,7 @@ Map to these destinations for triggering specific events on a page. To trigger a
 
 1. Select an event from the dropdown list. You may choose from the predefined list or create a Custom event. For a Custom event, enter a name with which to identify it.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the **&#43;** button and repeat steps 1 and 2.
+1. To map more events, click the **+** button and repeat steps 1 and 2.
 1. Click **Apply**.
 
 The event triggers when the supplied value is found in the data layer.
@@ -131,15 +131,15 @@ To pass a Parameter with a pre-defined Event:
 1. **Event** - Select a BazaarVoice event from the drop-down list.
 1. **Parameter** - Select a BazaarVoice Parameter from the dropdown list.
 1. For a Custom parameter, enter a name with which to identify it.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 | **Destination Name**                       | **Description**                                                                                                         |
 |:-------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|
 | Content Container ID (`containerId`)       | ID of the HTML element containing the consumer-generated content                                                        |
 | Page Type (`type`)                         | For view events - the type of page currently being viewed. For Feature events - defaults to `Used` if there is no value |
 | Product ID (`productId`)                   | ID of the currently viewed product                                                                                      |
-| Category ID (`categoryId`)                 | ID of the currently viewed product or page&#39;s category                                                                   |
-| Root Category ID (`rootCategoryId`)        | ID of the top level category of the currently viewed product or page&#39;s category                                         |
+| Category ID (`categoryId`)                 | ID of the currently viewed product or page's category                                                                   |
+| Root Category ID (`rootCategoryId`)        | ID of the top level category of the currently viewed product or page's category                                         |
 | Brand Name (`brand`)                       | Name of the brand of the currently viewed product or page                                                               |
 | HTML Control Name (`name`)                 | Used to describe the purpose of the HTML control                                                                        |
 | Number of Reviews (`numReviews`)           | The total number of reviews on the current page                                                                         |
@@ -161,7 +161,7 @@ To map a Custom Event Data variable:
 
 1. **Event Action** - Enter the name of the Custom Event exactly as specified in the Events tab.
 1. **Parameter** - Enter the name of the Parameter you want to send.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 ## Vendor Documentation
 

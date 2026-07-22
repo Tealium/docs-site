@@ -2,7 +2,7 @@
 title: コネクタ
 description: コネクタは、Tealiumと他のベンダーとの間の統合であり、データを送信するために使用されます。コネクタには、ベンダーがサポートするAPIを表すアクションが含まれています。
 url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub/connectors/
----![](/images/server-side/as-getting-started-connectors.jpg)
+---![](https://docs.tealium.com/images/server-side/as-getting-started-connectors.jpg)
 
 ここではその動作について説明します：
 

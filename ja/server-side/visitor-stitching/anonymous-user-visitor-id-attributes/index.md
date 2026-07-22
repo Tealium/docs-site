@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/anonymous-user-vi
 ---
 ## 匿名ID
 
-&lt;div style=&#34;float: right&#34;&gt;
-    ![](/images/server-side/icon-user-anonymous.png)
-&lt;/div&gt;
+<div style="float: right">
+    ![](https://docs.tealium.com/images/server-side/icon-user-anonymous.png)
+</div>
 
 匿名IDは、サイトを訪れるたびやアプリを使用するたびに訪問に一意かつ匿名の値が割り当てられるものです。この値はTealium Collectによって生成され、`utag_main_v_id`という名前のファーストパーティクッキーに保存され、Tealium EventStream API Hubでは`tealium_visitor_id`として受け取られます。Tealiumの匿名IDは、同じブラウザやアプリからの複数の訪問を追跡しますが、異なるブラウザやデバイス間では追跡しません。
 
@@ -17,9 +17,9 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/anonymous-user-vi
 
 ## ユーザー識別子
 
-&lt;div style=&#34;float: right&#34;&gt;
-   ![](/images/server-side/icon-user-identifiers-circle.png)
-&lt;/div&gt;
+<div style="float: right">
+   ![](https://docs.tealium.com/images/server-side/icon-user-identifiers-circle.png)
+</div>
 
 ユーザー識別子は、デバイス、プラットフォーム、ブラウザ間で既知のユーザーを一意に識別するTealiumインストールで使用されるデータレイヤー変数またはイベント、訪問、訪問属性です。
 
@@ -43,8 +43,12 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/anonymous-user-vi
 
 訪問ID属性はAudienceStreamによって自動的に作成されません。AudienceStreamで訪問ID属性を作成し、それらを構成するユーザー識別子を選択する必要があります。詳細については、[訪問ID属性]()を参照してください。
 
+
+<blockquote>
 訪問ID属性が構成されると、その値は変更できません。
+</blockquote>
+
 
 ユーザー識別子`email_address_hash`（イベント属性）によって構成される訪問ID属性`Hashed Email`の例：
 
-![](/images/server-side/email-addr-hash-vistor-id-attr.png)
+![](https://docs.tealium.com/images/server-side/email-addr-hash-vistor-id-attr.png)

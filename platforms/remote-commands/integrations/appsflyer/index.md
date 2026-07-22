@@ -7,12 +7,12 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/appsflyer/
 
 * AppsFlyer [app ID](https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store) and [dev key](https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key)
 * One of these mobile libraries:
-  * [Tealium for Android-Kotlin](/platforms/android-kotlin/) (1.0.0 or later)
-  * [Tealium for Android-Java](/platforms/android-java/) (5.9.0 or later for AppsFlyer 1.0.0 or later, or 5.9.0 or earlier for previous versions)
-  * [Tealium for iOS-Swift](/platforms/ios-swift/)
-  * [Tealium for React Native](/platforms/react-native/)
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0 or later)
+  * [Tealium for Android-Java](https://docs.tealium.com/platforms/android-java/) (5.9.0 or later for AppsFlyer 1.0.0 or later, or 5.9.0 or earlier for previous versions)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
+  * [Tealium for React Native](https://docs.tealium.com/platforms/react-native/)
 * One of these remote command integrations:
-  * [AppsFlyer Remote Command JSON File](/platforms/remote-commands/integrations/appsflyer/#json-template) (Requires Android-Kotlin 1.0.0 or later, or iOS-Swift 2.1.0 or later)
+  * [AppsFlyer Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/appsflyer/#json-template) (Requires Android-Kotlin 1.0.0 or later, or iOS-Swift 2.1.0 or later)
   * AppsFlyer Remote Command tag in Tealium iQ Tag Management
 
 ## How It Works
@@ -25,7 +25,7 @@ The AppsFlyer integration uses three items:
 
 Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 
@@ -34,7 +34,7 @@ There are two remote command options: A JSON configuration file, or using iQ Tag
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**.
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**.
 1. Enter the repository URL: `https://github.com/tealium/tealium-ios-appsflyer-remote-command`.
 1. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumAppsFlyer` version does not appear in the list, then reset your Swift package cache.
 1. Select the `TealiumAppsFlyer` module to install, and select the app target you want the module to be installed in.
@@ -45,22 +45,22 @@ To install `TealiumAppsFlyer` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 1. In your Xcode project, select the app target under the **TARGETS** section.
-1. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and select the `TealiumAppsFlyer` module to add it to your app target.
+1. Navigate to **General > Frameworks, Libraries & Embedded Content** and select the `TealiumAppsFlyer` module to add it to your app target.
 
-To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
-
-
+To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
 
 
-1. Remove `tealium-swift` and `pod &#34;AppsFlyerFramework&#34;` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAppsFlyer` framework.
+
+
+1. Remove `tealium-swift` and `pod "AppsFlyerFramework"` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAppsFlyer` framework.
 2. Add the following dependency to your Podfile:  
       ```ruby
-      pod &#34;TealiumAppsFlyer&#34;
+      pod "TealiumAppsFlyer"
       ```  
       The `TealiumAppsFlyer` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#39;tealium-swift/Core&#39;
-      &#39;tealium-swift/RemoteCommands&#39;
+      'tealium-swift/Core'
+      'tealium-swift/RemoteCommands'
       ```
 
 3. Import the modules `TealiumSwift` and `TealiumAppsFlyer` in your `TealiumHelper` file, and any other files that access the `Tealium` class, or the AppsFlyer remote command.
@@ -73,15 +73,18 @@ To install AppsFlyer remote commands for iOS using Carthage:
 1. Remove `tealium-swift` from your Cartfile. The dependency for `tealium-swift` is already included in the `TealiumAppsFlyer` framework.
 2. Remove the following line if it exists in your Cartfile:  
       ```bash
-      `binary &#34;https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json&#34;`
+      `binary "https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json"`
       ```
 
 3.  Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-appsflyer-remote-command&#34;
+      github "tealium/tealium-ios-appsflyer-remote-command"
       ```
 
+
+<blockquote>
 Tealium for Swift SDK (version 1.x) and `TealiumAppsFlyer` version 1.x requires the `TealiumDelegate` module to be included with your installation.
+</blockquote>
 
 
 
@@ -89,29 +92,30 @@ Tealium for Swift SDK (version 1.x) and `TealiumAppsFlyer` version 1.x requires 
 
 
 
-1. Install [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+
+1. Install [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
 
       ```groovy
       allprojects {
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import both the AppsFlyer SDK and Tealium-AppsFlyer remote commands by adding the following dependencies in your app project&#39;s `build.gradle` file:  
+2. Import both the AppsFlyer SDK and Tealium-AppsFlyer remote commands by adding the following dependencies in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-      implementation &#39;com.tealium.remotecommands:appsflyer:1.0.0&#39;
+      implementation 'com.tealium.remotecommands:appsflyer:1.0.0'
       }
       ```
 
 
 
-Follow the installation instructions for the main [Tealium React Native library](/platforms/react-native) installation. Ensure you have installed version 2.2.0 or newer.
+Follow the installation instructions for the main [Tealium React Native library](https://docs.tealium.com/platforms/react-native) installation. Ensure you have installed version 2.2.0 or newer.
 
 Navigate to the root of your React Native project.
 
@@ -128,16 +132,16 @@ Install the AppsFlyer Remote Command package
 
 
 
-The manual installation for AppsFlyer remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the AppsFlyer remote commands for your iOS project:
+The manual installation for AppsFlyer remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the AppsFlyer remote commands for your iOS project:
 
-1. Install the [AppsFlyer SDK](https://github.com/AppsFlyerSDK/AppsFlyerFramework), if you haven&#39;t already done so.
+1. Install the [AppsFlyer SDK](https://github.com/AppsFlyerSDK/AppsFlyerFramework), if you haven't already done so.
 1. Clone the [Tealium iOS AppsFlyer remote command](https://github.com/tealium/tealium-ios-appsflyer-remote-command) repo and drag the files within the `Sources` folder into your project.
-1. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
+1. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
 
 
 
 
-The manual installation for AppsFlyer remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed. To install the AppsFlyer remote commands for your Android project:
+The manual installation for AppsFlyer remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed. To install the AppsFlyer remote commands for your Android project:
 
 1. Add `flatDir` to your project root `build.gradle` file:  
       ```groovy
@@ -145,18 +149,18 @@ The manual installation for AppsFlyer remote commands requires [Tealium for Andr
             repositories {
               mavenCentral()
               flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
               }
             }
       }
       ```
 
-2. Add `tealium-appsflyer.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-appsflyer.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-appsflyer&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-appsflyer', ext:'aar')
       }
       ```
 
@@ -170,21 +174,21 @@ For all Tealium libraries, register the AppsFlyer Remote Command when you initia
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s iOS (Swift) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's iOS (Swift) library:
 ```swift
 // Sets up a config object and creates a Tealium instance
-    let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                               profile: &#34;PROFILE&#34;,
-                               environment: &#34;ENVIRONMENT&#34;)
+    let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT")
     
     // Webview Tag
     let appsFlyerRemoteCommand = AppsFlyerRemoteCommand()
 
     // Local JSON
-    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .local(file: &#34;appsflyer&#34;))
+    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .local(file: "appsflyer"))
 
     // Remote JSON
-    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .remote(url: &#34;https://some.domain.com/path/to/appsflyer.json&#34;))
+    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .remote(url: "https://some.domain.com/path/to/appsflyer.json"))
 
     config.remoteAPIEnabled = true
     config.collectors = [Collectors.Lifecycle]
@@ -196,11 +200,11 @@ Initialize remote commands with a JSON configuration file or the Remote Command 
 ```
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Android (Kotlin) library:  
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Android (Kotlin) library:  
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 val appsFlyer = AppsFlyerRemoteCommand(applicationm, appsFlyerDevKey = devKey);
@@ -211,19 +215,19 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(appsFlyer); 
 
     // Local JSON
-    //remoteCommands?.add(appsFlyer, filename = &#34;appsFlyer.json&#34;);
+    //remoteCommands?.add(appsFlyer, filename = "appsFlyer.json");
 
     // Remote JSON
-    //remoteCommands?.add(appsFlyer, remoteUrl = &#34;https://some.domain.com/appsFlyer.json&#34;);
+    //remoteCommands?.add(appsFlyer, remoteUrl = "https://some.domain.com/appsFlyer.json");
 }
 ```
 
 
 
-Initialize remote commands with the Remote Command tag for Tealium&#39;s Android (Java) library:  
+Initialize remote commands with the Remote Command tag for Tealium's Android (Java) library:  
 ```java
 // Sets up a config object and creates a Tealium instance
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 // New code to add the AppsFlyer Remote Command
@@ -233,7 +237,7 @@ teal.addRemoteCommand(appsFlyer);
 
 
 ```js
-import AppsflyerRemoteCommand from &#39;tealium-react-appsflyer&#39;;
+import AppsflyerRemoteCommand from 'tealium-react-appsflyer';
 
 AppsflyerRemoteCommand.initialize();
 
@@ -242,12 +246,12 @@ let config = TealiumConfig {
     remoteCommands: [{
         id: AppsflyerRemoteCommand.name,
         // Optional - path to local JSON mappings
-        // path: &#34;appsflyer.json&#34;
+        // path: "appsflyer.json"
         // Optional - path to remote JSON mappings
-        // url: &#34;https://some.domain.com/appsflyer.json&#34;
+        // url: "https://some.domain.com/appsflyer.json"
     }]
 }
-Tealium.initialize(config, success =&gt; {});
+Tealium.initialize(config, success => {});
 ```
 
 
@@ -258,74 +262,74 @@ In TealiumAppsFlyer SDK for iOS version 3.0.0, we removed support for the `Teali
 
 ## JSON Template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-    &#34;config&#34;: {
-        &#34;app_id&#34;: &#34;YOUR_APP_ID&#34;,
-        &#34;app_dev_key&#34;: &#34;YOUR_APPSFLYER_DEV_KEY&#34;,
-        &#34;settings&#34;: {
-            &#34;custom_data&#34;: {&#34;custom_key&#34;: &#34;custom_value&#34;},
-            &#34;debug&#34;: true,
-            &#34;disable_ad_tracking&#34;: false,
-            &#34;disable_apple_ad_tracking&#34;: false,
-            &#34;time_between_sessions&#34;: 30,
-            &#34;anonymize_user&#34;: false,
-            &#34;collect_device_name&#34;: false
+    "config": {
+        "app_id": "YOUR_APP_ID",
+        "app_dev_key": "YOUR_APPSFLYER_DEV_KEY",
+        "settings": {
+            "custom_data": {"custom_key": "custom_value"},
+            "debug": true,
+            "disable_ad_tracking": false,
+            "disable_apple_ad_tracking": false,
+            "time_between_sessions": 30,
+            "anonymize_user": false,
+            "collect_device_name": false
         }
     },
-    &#34;mappings&#34;: {
-        &#34;latitude&#34;: &#34;af_lat&#34;,
-        &#34;longitude&#34;: &#34;af_long&#34;,
-        &#34;customer_email&#34;: &#34;customer_emails&#34;,
-        &#34;hash_type&#34;: &#34;email_hash_type&#34;,
-        &#34;currency_code&#34;: &#34;af_currency&#34;,
-        &#34;customer_id&#34;: &#34;af_customer_user_id&#34;,
-        &#34;signup_method&#34;: &#34;event.signup_method&#34;,
-        &#34;achievement_id&#34;: &#34;event.achievement_id&#34;,
-        &#34;checkout_option&#34;: &#34;event.checkout_option&#34;,
-        &#34;checkout_step&#34;: &#34;event.checkout_step&#34;,
-        &#34;content&#34;: &#34;event.content&#34;,
-        &#34;content_type&#34;: &#34;event.content_type&#34;,
-        &#34;coupon&#34;: &#34;event.coupon&#34;,
-        &#34;product_brand&#34;: &#34;event.product_brand&#34;,
-        &#34;product_category&#34;: &#34;event.product_category&#34;,
-        &#34;product_id&#34;: &#34;event.af_content_id&#34;,
-        &#34;product_list&#34;: &#34;event.product_list&#34;,
-        &#34;product_location_id&#34;: &#34;event.product_location_id&#34;,
-        &#34;product_name&#34;: &#34;event.product_name&#34;,
-        &#34;product_variant&#34;: &#34;event.product_variant&#34;,
-        &#34;product_unit_price&#34;: &#34;event.af_price&#34;,
-        &#34;product_quantity&#34;: &#34;event.af_quantity&#34;,
-        &#34;current_level&#34;: &#34;event.level&#34;,
-        &#34;score&#34;: &#34;event.score&#34;,
-        &#34;search_keyword&#34;: &#34;event.search_keyword&#34;,
-        &#34;order_shipping_amount&#34;: &#34;event.order_shipping&#34;,
-        &#34;order_tax_amount&#34;: &#34;event.order_tax&#34;,
-        &#34;order_id&#34;: &#34;event.af_order_id&#34;,
-        &#34;order_total&#34;: &#34;event.af_revenue&#34;,
-        &#34;currency_type&#34;: &#34;event.currency_type&#34;,
+    "mappings": {
+        "latitude": "af_lat",
+        "longitude": "af_long",
+        "customer_email": "customer_emails",
+        "hash_type": "email_hash_type",
+        "currency_code": "af_currency",
+        "customer_id": "af_customer_user_id",
+        "signup_method": "event.signup_method",
+        "achievement_id": "event.achievement_id",
+        "checkout_option": "event.checkout_option",
+        "checkout_step": "event.checkout_step",
+        "content": "event.content",
+        "content_type": "event.content_type",
+        "coupon": "event.coupon",
+        "product_brand": "event.product_brand",
+        "product_category": "event.product_category",
+        "product_id": "event.af_content_id",
+        "product_list": "event.product_list",
+        "product_location_id": "event.product_location_id",
+        "product_name": "event.product_name",
+        "product_variant": "event.product_variant",
+        "product_unit_price": "event.af_price",
+        "product_quantity": "event.af_quantity",
+        "current_level": "event.level",
+        "score": "event.score",
+        "search_keyword": "event.search_keyword",
+        "order_shipping_amount": "event.order_shipping",
+        "order_tax_amount": "event.order_tax",
+        "order_id": "event.af_order_id",
+        "order_total": "event.af_revenue",
+        "currency_type": "event.currency_type",
     },
-    &#34;commands&#34;: {
-        &#34;launch&#34;: &#34;initialize,launch&#34;,
-        &#34;geofence_entered&#34;: &#34;tracklocation&#34;,
-        &#34;geofence_exited&#34;: &#34;tracklocation&#34;,
-        &#34;user_login&#34;: &#34;login&#34;,
-        &#34;user_register&#34;: &#34;setuseremails,setcustomerid,completeregistration&#34;,
-        &#34;show_offers&#34;: &#34;adclick&#34;,
-        &#34;cart_add&#34;: &#34;addtocart&#34;,
-        &#34;wishlist_add&#34;: &#34;addtowishlist&#34;,
-        &#34;payment&#34;: &#34;addpaymentinfo&#34;,
-        &#34;unlock_achievement&#34;: &#34;unlockachievement&#34;,
-        &#34;level_up&#34;: &#34;achievelevel,customersegment&#34;,
-        &#34;email_signup&#34;: &#34;subscribe&#34;,
-        &#34;product&#34;: &#34;viewedcontent&#34;,
-        &#34;category&#34;: &#34;listview&#34;,
-        &#34;share&#34;: &#34;share&#34;,
-        &#34;search&#34;: &#34;search&#34;,
-        &#34;checkout&#34;: &#34;initiatecheckout&#34;,
-        &#34;order&#34;:&#34;purchase&#34;
+    "commands": {
+        "launch": "initialize,launch",
+        "geofence_entered": "tracklocation",
+        "geofence_exited": "tracklocation",
+        "user_login": "login",
+        "user_register": "setuseremails,setcustomerid,completeregistration",
+        "show_offers": "adclick",
+        "cart_add": "addtocart",
+        "wishlist_add": "addtowishlist",
+        "payment": "addpaymentinfo",
+        "unlock_achievement": "unlockachievement",
+        "level_up": "achievelevel,customersegment",
+        "email_signup": "subscribe",
+        "product": "viewedcontent",
+        "category": "listview",
+        "share": "share",
+        "search": "search",
+        "checkout": "initiatecheckout",
+        "order":"purchase"
     }
 }
 ```
@@ -353,34 +357,38 @@ The following is a list of standard event names supported with the `trackEvent` 
 
 | Remote Command | AppsFlyer Event Name |
 | :-- | :-- |
-|`achievedLevel`| `&#34;af_level_achieved&#34;`|
-|`addPaymentInfo`| `&#34;af_add_payment_info&#34;`|
-|`addToCart`| `&#34;af_add_to_cart&#34;`|
-|`addToWishlist`| `&#34;af_add_to_wishlist&#34;`|
-|`completeRegistration`| `&#34;af_complete_registration&#34;`|
-|`completeTutorial`| `&#34;af_tutorial_completion&#34;`|
-|`initiateCheckout`| `&#34;af_initiated_checkout&#34;`|
-|`purchase`| `&#34;af_purchase&#34;`|
-|`subscribe`| `&#34;af_subscribe&#34;`|
-|`startTrial`| `&#34;af_start_trial&#34;`|
-|`rate`| `&#34;af_rate&#34;`|
-|`search`| `&#34;af_search&#34;`|
-|`spentCredits`| `&#34;af_spent_credits&#34;`|
-|`unlockAchievement`| `&#34;af_achievement_unlocked&#34;`|
-|`contentView`| `&#34;af_content_view&#34;`|
-|`listView`| `&#34;af_list_view&#34;`|
-|`adClick`| `&#34;af_ad_click&#34;`|
-|`adView`| `&#34;af_ad_view&#34;`|
-|`travelBooking`| `&#34;af_travel_booking&#34;`|
-|`share`| `&#34;af_share`&#34;|
-|`invite`| `&#34;af_invite&#34;`|
-|`reEngage`| `&#34;af_re_engage&#34;`|
-|`update`| `&#34;af_update&#34;`|
-|`login`| `&#34;af_login&#34;`|
-|`customerSegment`| `&#34;af_customer_segment&#34;`|
-|`pushNotificationOpened`| `&#34;af_opened_from_push_notification&#34;`|
+|`achievedLevel`| `"af_level_achieved"`|
+|`addPaymentInfo`| `"af_add_payment_info"`|
+|`addToCart`| `"af_add_to_cart"`|
+|`addToWishlist`| `"af_add_to_wishlist"`|
+|`completeRegistration`| `"af_complete_registration"`|
+|`completeTutorial`| `"af_tutorial_completion"`|
+|`initiateCheckout`| `"af_initiated_checkout"`|
+|`purchase`| `"af_purchase"`|
+|`subscribe`| `"af_subscribe"`|
+|`startTrial`| `"af_start_trial"`|
+|`rate`| `"af_rate"`|
+|`search`| `"af_search"`|
+|`spentCredits`| `"af_spent_credits"`|
+|`unlockAchievement`| `"af_achievement_unlocked"`|
+|`contentView`| `"af_content_view"`|
+|`listView`| `"af_list_view"`|
+|`adClick`| `"af_ad_click"`|
+|`adView`| `"af_ad_view"`|
+|`travelBooking`| `"af_travel_booking"`|
+|`share`| `"af_share`"|
+|`invite`| `"af_invite"`|
+|`reEngage`| `"af_re_engage"`|
+|`update`| `"af_update"`|
+|`login`| `"af_login"`|
+|`customerSegment`| `"af_customer_segment"`|
+|`pushNotificationOpened`| `"af_opened_from_push_notification"`|
 
+
+<blockquote>
 Because the AppsFlyer SDK is installed alongside the Tealium SDK, you are able to trigger any native AppsFlyer functionality given the corresponding tag configuration.
+</blockquote>
+
 
 ### SDK Setup
 
@@ -416,7 +424,7 @@ AppsFlyer Developer Guide: Additional APIs
 
 ##### OnReady (iOS)
 
-Use this method when you need to use the `AppsFlyerLib` but you don&#39;t know if it has been initialized yet.
+Use this method when you need to use the `AppsFlyerLib` but you don't know if it has been initialized yet.
 The completion will be called immediately, if `AppsFlyerLib` has already been initialized, or it will wait until it is initialized.
 
 This can be useful when a client is using the remote command configuration to initialize the library and, therefore, the `AppsFlyerLib` is initialized asynchronously. 
@@ -442,7 +450,11 @@ appsFlyerRemoteCommand.onReady { appsFlyer in
 |  `latitude` (required) | `Bool` |
 |  `longitude` (required) | `Bool` |
 
+
+<blockquote>
 If you have the location module installed, the latitude and longitude are sent with every event.
+</blockquote>
+
 
 AppsFlyer API Reference: Location Tracking
 

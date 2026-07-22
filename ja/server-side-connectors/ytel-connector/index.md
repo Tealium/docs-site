@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/ytel-connector/
 
 ## 構成を構成する
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -36,9 +36,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/ytel-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                                                                                   |
 |:--------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 送信元          | &lt;ul&gt;&lt;li&gt;通話を開始したE.164形式の10桁のSMS対応Ytel番号。&lt;/li&gt;&lt;li&gt;詳細については、[リクエスト形式](https://docs.ytel.com/reference/sms#sendsms)を参照してください。&lt;/li&gt;&lt;/ul&gt;                                                                                                                |
-| 宛先            | &lt;ul&gt;&lt;li&gt;メッセージを受け取る10桁の電話番号（E.164形式）。&lt;/li&gt;&lt;li&gt;詳細については、[リクエスト形式](https://docs.ytel.com/reference/sms#sendsms)を参照してください。&lt;/li&gt;&lt;/ul&gt;                                                                                                                        |
-| 本文          | &lt;ul&gt;&lt;li&gt;テキストで送信する本文メッセージ。&lt;/li&gt;&lt;li&gt;GSM-7メッセージの最大長はメッセージあたり160文字。&lt;/li&gt;&lt;li&gt;Unicodeメッセージの最大長はメッセージあたり70文字。&lt;/li&gt;&lt;li&gt;最大メッセージ長を超えるテキストを送信するためには、追加のメッセージが自動的に作成されます。&lt;/li&gt;&lt;/ul&gt; |
+| 送信元          | <ul><li>通話を開始したE.164形式の10桁のSMS対応Ytel番号。</li><li>詳細については、[リクエスト形式](https://docs.ytel.com/reference/sms#sendsms)を参照してください。</li></ul>                                                                                                                |
+| 宛先            | <ul><li>メッセージを受け取る10桁の電話番号（E.164形式）。</li><li>詳細については、[リクエスト形式](https://docs.ytel.com/reference/sms#sendsms)を参照してください。</li></ul>                                                                                                                        |
+| 本文          | <ul><li>テキストで送信する本文メッセージ。</li><li>GSM-7メッセージの最大長はメッセージあたり160文字。</li><li>Unicodeメッセージの最大長はメッセージあたり70文字。</li><li>最大メッセージ長を超えるテキストを送信するためには、追加のメッセージが自動的に作成されます。</li></ul> |
 
 ### アクション - メールを送信
 
@@ -46,10 +46,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/ytel-connector/
 
 | **パラメータ** | **説明**                                                                                                                                           |
 |:--------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 宛先            | &lt;ul&gt;&lt;li&gt;メールを受け取る有効なアドレス。&lt;/li&gt;&lt;li&gt;詳細については、[メール送信](https://docs.ytel.com/reference#sendemail)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| タイプ          | &lt;ul&gt;&lt;li&gt;送信するメールのタイプを指定します。&lt;/li&gt;&lt;li&gt;値は`text`または`HTML`です。&lt;/li&gt;&lt;/ul&gt;                                                            |
-| 件名           | &lt;ul&gt;&lt;li&gt;メールの件名。&lt;/li&gt;&lt;li&gt;有効な文字列でなければなりません。&lt;/li&gt;&lt;/ul&gt;                                                                                |
-| メッセージ       | &lt;ul&gt;&lt;li&gt;テキストで送信するメールメッセージ。&lt;/li&gt;&lt;/ul&gt;                                                                                       |
-| 送信元          | &lt;ul&gt;&lt;li&gt;メールを送信する有効なアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                                               |
-| CC            | &lt;ul&gt;&lt;li&gt;カーボンコピー。&lt;/li&gt;&lt;li&gt;メールを受け取る有効なアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                       |
-| BCC           | &lt;ul&gt;&lt;li&gt;ブラインドカーボンコピー。&lt;/li&gt;&lt;li&gt;メールを受け取る有効なアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                 |
+| 宛先            | <ul><li>メールを受け取る有効なアドレス。</li><li>詳細については、[メール送信](https://docs.ytel.com/reference#sendemail)を参照してください。</li></ul> |
+| タイプ          | <ul><li>送信するメールのタイプを指定します。</li><li>値は`text`または`HTML`です。</li></ul>                                                            |
+| 件名           | <ul><li>メールの件名。</li><li>有効な文字列でなければなりません。</li></ul>                                                                                |
+| メッセージ       | <ul><li>テキストで送信するメールメッセージ。</li></ul>                                                                                       |
+| 送信元          | <ul><li>メールを送信する有効なアドレス。</li></ul>                                                                                               |
+| CC            | <ul><li>カーボンコピー。</li><li>メールを受け取る有効なアドレス。</li></ul>                                                                       |
+| BCC           | <ul><li>ブラインドカーボンコピー。</li><li>メールを受け取る有効なアドレス。</li></ul>                                                                 |

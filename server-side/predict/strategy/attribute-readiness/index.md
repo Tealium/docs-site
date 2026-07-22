@@ -3,9 +3,9 @@ title: Attribute readiness
 description: This article describes how to select the right target attribute to use in your models.
 url: https://docs.tealium.com/server-side/predict/strategy/attribute-readiness/
 ---
-When you create a model using Tealium Predict, you can choose from a list of potential target attributes from your AudienceStream dataset. Each attribute is given a rating of **Ready** or **Not Ready** to signify whether the attribute is ready for training. The readiness of an attribute displays next to each attribute in the drop-down list of available attributes when you click **&#43; New Model**. This feature helps you determine, in advance, whether an attribute candidate is a **Ready** or **Not Ready** to use as a target output attribute, as shown in the following example.
+When you create a model using Tealium Predict, you can choose from a list of potential target attributes from your AudienceStream dataset. Each attribute is given a rating of **Ready** or **Not Ready** to signify whether the attribute is ready for training. The readiness of an attribute displays next to each attribute in the drop-down list of available attributes when you click **+ New Model**. This feature helps you determine, in advance, whether an attribute candidate is a **Ready** or **Not Ready** to use as a target output attribute, as shown in the following example.
 
-![](/images/predict/predict-v2-target-attr-ready.png)
+![](https://docs.tealium.com/images/predict/predict-v2-target-attr-ready.png)
 
 Machine learning technology requires a high volume of data to succeed and machine learning models provide better results when trained on a large amount of data.
 

@@ -16,7 +16,7 @@ url: https://docs.tealium.com/server-side-connectors/moengage-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -106,7 +106,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | App Version | App version of the app on which the event originated. |
 | Local Time | Local time at which the event happened in seconds. |
 | UTC Time | UTC time at which the event happened in seconds. |
-| User Timezone Offset | Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC&#43;0530), **User Timezone Offset** will be 19800. |
+| User Timezone Offset | Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC+0530), **User Timezone Offset** will be 19800. |
 
 ### Track Event (Batched)
 
@@ -129,7 +129,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | App Version | App version of the app on which the event originated. |
 | Local Time | Local time at which the event happened in seconds. |
 | UTC Time | UTC Time at which the event happened in seconds. |
-| User Timezone Offset | Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC&#43;0530), **User Timezone Offset** will be 19800. |
+| User Timezone Offset | Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC+0530), **User Timezone Offset** will be 19800. |
 
 ### Add User to Audience/Cohort
 
@@ -143,7 +143,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cohort Name | Name of the cohort. This setting overrides Tealium Audience name selected in the **Tealium Audience** section. |
 | Cohort ID | ID of the cohort. This setting overrides Tealium Audience ID selected in the **Tealium Audience** section. |
 | Cohort Description | Description of the cohort. |
-| Tealium Audience | Select Tealium Audience to use Tealium Audience ID and Tealium Audience name as ID and name of the MoEngage cohort.&lt;br&gt; |
+| Tealium Audience | Select Tealium Audience to use Tealium Audience ID and Tealium Audience name as ID and name of the MoEngage cohort.<br> |
 
 ### Remove User from Audience/Cohort
 

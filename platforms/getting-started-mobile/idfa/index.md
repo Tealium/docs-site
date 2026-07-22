@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/idfa/
 ---
 ## How it works
 
-When an app first launches, Apple privacy rules require that explicit consent must appear as a mandatory &#34;permission to track&#34; modal dialog on the user&#39;s device.
+When an app first launches, Apple privacy rules require that explicit consent must appear as a mandatory "permission to track" modal dialog on the user's device.
 
 If a user declines consent, their IDFA is not available to the app. Not having the IDFA available makes it difficult for you to track important metrics, such as the effectiveness of ad campaigns. Also, the user will see less relevant ads.
 
@@ -14,14 +14,14 @@ If a user declines consent, their IDFA is not available to the app. Not having t
 This document uses the following terms:
 
 * **IDFA**  
-The IDFA is the Apple identifier for advertisers. Marketers can access the IDFA to identify a user, but they can only access it with a user&#39;s explicit consent.
+The IDFA is the Apple identifier for advertisers. Marketers can access the IDFA to identify a user, but they can only access it with a user's explicit consent.
 * **AppTrackingTransparency**  
-AppTrackingTransparency is the Apple framework that requires apps to request and receive explicit user consent before tracking their activity across other companies&#39; apps and websites. You must obtain explicit user consent through this framework when tracking users through an IDFA and linking their data with third-party sources, such as SDKs, ad networks, or data brokers like Oracle Bluekai, Lotame, and MediaMath.
+AppTrackingTransparency is the Apple framework that requires apps to request and receive explicit user consent before tracking their activity across other companies' apps and websites. You must obtain explicit user consent through this framework when tracking users through an IDFA and linking their data with third-party sources, such as SDKs, ad networks, or data brokers like Oracle Bluekai, Lotame, and MediaMath.
 * **SKAdNetwork**  
 SKAdNetwork is the Apple framework for tracking installs and campaign performance at an aggregated and anonymous level. It allows advertisers to measure ad performance, even if the user has denied consent through AppTrackingTransparency or Tealium consent management.
 * **Tracking**  
 Apple defines tracking as:
-    &gt; Tracking refers to the act of linking user or device data collected from your app with user or device data collected from other companies&#39; apps, websites, or offline properties for targeted advertising or advertising measurement purposes. Tracking also refers to sharing user or device data with data brokers.
+    > Tracking refers to the act of linking user or device data collected from your app with user or device data collected from other companies' apps, websites, or offline properties for targeted advertising or advertising measurement purposes. Tracking also refers to sharing user or device data with data brokers.
 
 For more information, see [Apple: App Store User privacy and data use](https://developer.apple.com/app-store/user-privacy-and-data-use/).
 
@@ -33,15 +33,15 @@ In the rare case that you are using the AudienceStream platform to build visitor
 
 ## Tealium and visitor identification
 
-We recommend using a known first-party identifier to identify visitors, such as a hashed email address. For more information, see .
+We recommend using a known first-party identifier to identify visitors, such as a hashed email address. For more information, see [anonymous-user-visitor-id-attributes](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
-We do not recommend using IDFA as a visitor identifier. The Tealium for iOS library does not collect the IDFA by default. Tealium offers an [optional Attribution module](/platforms/ios-swift/module-list/attribution/) that can collect the IDFA if you need it. However, if your users opt out of tracking, you will no longer have access to it.
+We do not recommend using IDFA as a visitor identifier. The Tealium for iOS library does not collect the IDFA by default. Tealium offers an [optional Attribution module](https://docs.tealium.com/platforms/ios-swift/module-list/attribution/) that can collect the IDFA if you need it. However, if your users opt out of tracking, you will no longer have access to it.
 
 If you are sending the IDFA to any third-party tools using connectors or tags, these integrations may stop functioning correctly if a user opts out of tracking. We recommend checking if any of the connectors or tags in your Tealium account are using the IDFA. If the vendor is using the IDFA and complies with Apple AppTrackingTransparency guidelines, contact the vendor and find out what they recommend to do when users opt out of tracking.
 
 ## AppTrackingTransparency framework
 
-The following scenarios explain when to use the AppTrackingTransparency framework with the Tealium SDK. These are general guidelines. Consult your company&#39;s legal team to ensure your app complies with all requirements to avoid rejection during app store submission.
+The following scenarios explain when to use the AppTrackingTransparency framework with the Tealium SDK. These are general guidelines. Consult your company's legal team to ensure your app complies with all requirements to avoid rejection during app store submission.
 
 | Platform |  Scenario | Is Permission Required? | 
 | --- | --- | --- |
@@ -56,7 +56,7 @@ The following scenarios explain when to use the AppTrackingTransparency framewor
 
 ## Privacy legislation
 
-The AppTrackingTransparency framework works alongside existing privacy requirements, but using this framework alone does not guarantee compliance with local privacy laws, such as GDPR and CCPA. [client-side consent management]() is available for both iOS and Android to manage your app users&#39; consent settings at a granular level. It also supports GDPR and CCPA, and it is extensible to accommodate future privacy laws.
+The AppTrackingTransparency framework works alongside existing privacy requirements, but using this framework alone does not guarantee compliance with local privacy laws, such as GDPR and CCPA. [client-side consent management](https://docs.tealium.com/about-consent-management/) is available for both iOS and Android to manage your app users' consent settings at a granular level. It also supports GDPR and CCPA, and it is extensible to accommodate future privacy laws.
 
 Depending on the requirements of the active consent policy, Tealium consent management allows your users to opt in and opt out of all tracking, or a customizable category-based opt out.
 
@@ -76,4 +76,4 @@ When your app reports a conversion event, it calls the `SKAdNetwork` with an int
 
 When the last timer expires, the conversion event will be reported any time between zero and 24 hours later If the user uses your app multiple times and increases the conversion value, it could be several days before the conversion finally gets attributed. This additional delay is random every time, so the only guarantee you have is that it will be within 24 hours. Note that the time taken to report back to the ad network will increase, so it may take longer to see how successful your campaign has been.
 
-For more information about Tealium and `SKAdNetwork` attribution, see [Tealium for iOS: Attribution module](/platforms/ios-swift/module-list/attribution/).
+For more information about Tealium and `SKAdNetwork` attribution, see [Tealium for iOS: Attribution module](https://docs.tealium.com/platforms/ios-swift/module-list/attribution/).

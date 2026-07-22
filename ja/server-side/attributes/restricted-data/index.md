@@ -17,18 +17,22 @@ url: https://docs.tealium.com/ja/server-side/attributes/restricted-data/
 
 左側のナビゲーションパネルのフィルターを使用して、リストに表示したい属性のタイプを選択できます。制限されたデータを持つ属性を特定するには、**制限されたデータ**のチェックボックスをクリックします。
 
-![](/images/server-side/restricted-attributes-filter.png)
+![](https://docs.tealium.com/images/server-side/restricted-attributes-filter.png)
 
 属性の詳細を編集するとき、該当する場合にはプロパティセクションに**制限されたデータ**フィールドが表示されます。属性を制限されたデータとしてマークする場合は、このボックスをチェックします。
 
-![](/images/server-side/restricted-attributes-checkbox-example.png)
+![](https://docs.tealium.com/images/server-side/restricted-attributes-checkbox-example.png)
 
 ## 制限された属性
 
 制限されたデータの構成は、以下のサービスに適用されます：
 
 * **EventStoreとEventDB**  
-デフォルトでは、制限された属性はイベントフィードから省略されます。この動作は、各フィードの構成で変更することができます。 データソースとしてイベントフィードを使用するコネクタは、イベントフィードの構成に関係なく、常に制限された属性を受け取ります。
+デフォルトでは、制限された属性はイベントフィードから省略されます。この動作は、各フィードの構成で変更することができます。
+<blockquote>
+データソースとしてイベントフィードを使用するコネクタは、イベントフィードの構成に関係なく、常に制限された属性を受け取ります。
+</blockquote>
+
 * **Data Layer Enrichment**  
 デフォルトでは、制限された属性は、AudienceStreamを介したデータレイヤーのエンリッチメントによって、ページ上のデータレイヤーに返される訪問の属性から省略されます。Tealium Collectタグが最新の訪問プロファイルを要求すると、AudienceStreamは制限されていない属性を返します。この動作は変更できません。
 
@@ -38,7 +42,11 @@ url: https://docs.tealium.com/ja/server-side/attributes/restricted-data/
 デフォルトでは、制限された属性は常に含まれており、それらがAudienceDBに送信されるか、AudienceStoreコネクタを使用してエクスポートされるかに関係なくです。この動作は変更できません。
 * **コネクタ（Webhookを含む）**  
 デフォルトでは、制限された属性は常に含まれており、それらをマッピングを通じてベンダーに送信するか、訪問プロファイルの一部として送信するかに関係なくです。この動作は変更できません。
+
+<blockquote>
 コネクタのリクエストに1つ以上の制限された属性が含まれている場合、警告メッセージが表示されます。
+</blockquote>
+
 
 ## まとめ
 

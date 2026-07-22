@@ -37,36 +37,36 @@ Tealium.addRemoteCommand(id, callback);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `id` | `String` | Name of the remote command ID from the tag configuration | `&#34;test_command&#34;` |
+| `id` | `String` | Name of the remote command ID from the tag configuration | `"test_command"` |
 | `callback` | `Function ` | A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```javascript
-Tealium.addRemoteCommand(&#39;mycommand&#39;, (result: any): void =&gt; {
-	console.log(result[&#34;payload&#34;][&#34;command_id&#34;]);            // logs &#34;mycommand&#34;
-	console.log(result[&#34;payload&#34;][&#34;my_remote_command_key&#34;]); // logs value for key &#34;my_remote_command_key&#34;
+Tealium.addRemoteCommand('mycommand', (result: any): void => {
+	console.log(result["payload"]["command_id"]);            // logs "mycommand"
+	console.log(result["payload"]["my_remote_command_key"]); // logs value for key "my_remote_command_key"
 });
 ```
 
 ### `addData()`
 
-Adds data to the persistent data storage for the given [expiration time](/platforms/nativescript/api/tealium-config/#expiry).
+Adds data to the persistent data storage for the given [expiration time](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#expiry).
 
 ```javascript
 Tealium.addData(data, expiry);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Object` | Map of key-value pairs, where keys are strings and the values are either a string or array of strings | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
-| `expiry` | [`Expiry`](/platforms/nativescript/api/tealium-config/#expiry) | Length of time for which to persist the data | `Expiry.forever` |
+| `data` | `Object` | Map of key-value pairs, where keys are strings and the values are either a string or array of strings | `{"persistent_key2" : "persistent_val2"}` |
+| `expiry` | [`Expiry`](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#expiry) | Length of time for which to persist the data | `Expiry.forever` |
 
 Example:
 
 ```javascript
-let data: Map&lt;string, any&gt; = new Map([[&#39;test_session_data&#39;, &#39;test&#39;]]);
-data.set(&#39;my_test_value&#39;, 1);
-data[&#39;my_test_value&#39;] = 1;
+let data: Map<string, any> = new Map([['test_session_data', 'test']]);
+data.set('my_test_value', 1);
+data['my_test_value'] = 1;
 Tealium.addData(data, Expiry.session);
 ```
 
@@ -84,15 +84,15 @@ The following expiry options are available:
 
 ### `consentCategories`
 
-Gets or sets the user&#39;s consent categories.
+Gets or sets the user's consent categories.
 
-To set the user&#39;s consent categories:
+To set the user's consent categories:
 
 ```javascript
 Tealium.consentCategories = categories
 ```
 
-To get the user&#39;s consent categories:  
+To get the user's consent categories:  
 ```javascript
 let categories = Tealium.consentCategories
 ```
@@ -130,14 +130,14 @@ The following consent categories are available:
 
 ### `consentStatus`
 
-Gets or sets the user&#39;s consent status. Default is `.unknown` until changed.
+Gets or sets the user's consent status. Default is `.unknown` until changed.
 
-To set the user&#39;s consent status:  
+To set the user's consent status:  
 ```javascript
 Tealium.consentStatus = status;
 ```
 
-To get the user&#39;s consent status:  
+To get the user's consent status:  
 ```javascript
 let status = Tealium.consentStatus
 ```
@@ -169,10 +169,10 @@ let data = Tealium.getData(key);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `key` | `String` | The key of the data to retrieve | `&#34;KEY&#34;` |
+| `key` | `String` | The key of the data to retrieve | `"KEY"` |
 
 ```javascript
-let data: Tealium.getData(&#34;KEY&#34;)
+let data: Tealium.getData("KEY")
 ```
 
 ### `initialize()`
@@ -185,15 +185,15 @@ Tealium.initialize(config);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `config` | [`TealiumConfig`](/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealium configuration parameters | (see example) |
+| `config` | [`TealiumConfig`](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealium configuration parameters | (see example) |
 
 Example:
 
 ```javascript
 let config: TealiumConfig =
 {
-	account: &#39;ACCOUNT&#39;,
-	profile: &#39;PROFILE&#39;,
+	account: 'ACCOUNT',
+	profile: 'PROFILE',
 	environment: TealiumEnvironment.dev,
 	dispatchers: [Dispatchers.Collect,
 	 			  Dispatchers.TagManagement,
@@ -212,7 +212,7 @@ Tealium.initialize(config);
 
 ### `joinTrace()`
 
-Joins a trace with the specified ID. Learn more about the [Trace]() feature in the Tealium Customer Data Hub.
+Joins a trace with the specified ID. Learn more about the [Trace](https://docs.tealium.com/manage-traces/) feature in the Tealium Customer Data Hub.
 
 ```javascript
 Tealium.joinTrace(id);
@@ -225,7 +225,7 @@ Tealium.joinTrace(id);
 Example:
 
 ```javascript
-Tealium.joinTrace(&#34;abc123xy&#34;);
+Tealium.joinTrace("abc123xy");
 ```
 
 ### `leaveTrace()`
@@ -246,12 +246,12 @@ Tealium.removeData(keys);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `keys` | `String[]` | Array of key names  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `String[]` | Array of key names  | `["foo", "bar"]` |
 
 Example:
 
 ```javascript
-Tealium.removeData([&#34;foo&#34;, &#34;bar&#34;]);
+Tealium.removeData(["foo", "bar"]);
 ```
 
 ### `gatherTrackData()`
@@ -259,7 +259,7 @@ Gathers all data from all collectors and data layer.
 
 Example:
 ```javascript
-Tealium.gatherTrackData((response: Map&lt;string, any&gt;): void =&gt; {				
+Tealium.gatherTrackData((response: Map<string, any>): void => {				
 	console.log(response);
 });
 ```
@@ -274,18 +274,18 @@ Tealium.removeRemoteCommand(id);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `id ` | `String` | Name of the command ID to remove  | `&#34;test_command&#34;` |
+| `id ` | `String` | Name of the command ID to remove  | `"test_command"` |
 
 Example:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;test_command&#34;);
+Tealium.removeRemoteCommand("test_command");
 ```
 
 ### `setVisitorServiceListener()`
-Defines a callback to execute when the visitor profile has been updated. The updated [`VisitorProfile`](/platforms/nativescript/api/tealium-config/#visitorprofile) is provided in the callback response.
+Defines a callback to execute when the visitor profile has been updated. The updated [`VisitorProfile`](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#visitorprofile) is provided in the callback response.
 
-The VisitorService module implements the [Data Layer Enrichment]() feature of the Tealium Customer Data Hub.
+The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
 Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
 
@@ -297,12 +297,12 @@ Tealium.setVisitorServiceListener(callback);
 | --- | --- | --- | --- |
 | `callback` | `Function` | Code to execute once the updated visitor profile is returned | (see example) |
 
-The following example logs the visitor&#39;s audiences and badges to the console:  
+The following example logs the visitor's audiences and badges to the console:  
 
 ```javascript
-Tealium.setVisitorServiceListener(profile =&gt; {
-    console.log(profile[&#34;audiences&#34;]);
-    console.log(profile[&#34;badges&#34;]);
+Tealium.setVisitorServiceListener(profile => {
+    console.log(profile["audiences"]);
+    console.log(profile["badges"]);
 });
 ```
 
@@ -324,18 +324,18 @@ tealium?.track(tealEvent)
 
 | Parameters | Type  | Description | 
 |:-----------|:------|:------------|
-| `tealEvent` | string | [TealiumDispatch](/platforms/nativescript/api/tealium-config/#dispatchers) with the event name, passed as the `tealium_event` attribute, and an optional event data object. |
+| `tealEvent` | string | [TealiumDispatch](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#dispatchers) with the event name, passed as the `tealium_event` attribute, and an optional event data object. |
 
 To track events, pass an instance of [`TealiumEvent`](#class-tealiumevent) to the `track()` method:
 
 ```javascript
 let tealEvent = new TealiumEvent(
-	&#34;cart_add&#34;, 
+	"cart_add", 
 	new Map([
 		[
-			&#34;customer_id&#34;: &#34;abc123&#34;, 
-			&#34;product_id&#34;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#34;product_price&#34;: [4.00, 6.00]
+			"customer_id": "abc123", 
+			"product_id": ["PROD123", "PROD456"], 
+			"product_price": [4.00, 6.00]
 		]
 	])
 );
@@ -356,7 +356,7 @@ An interface that defines the type of dispatch to be tracked. The following clas
 
 ### Class: `TealiumEvent`
 
-To track a user&#39;s interaction with a screen or a screen view, pass an instance of `TealiumEvent(tealiumEvent, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
+To track a user's interaction with a screen or a screen view, pass an instance of `TealiumEvent(tealiumEvent, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
 
 ```javascript
 let tealEvent = new TealiumEvent(tealiumEvent, eventData);
@@ -366,18 +366,18 @@ Tealium.track(tealEvent);
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent` | `string` | The event name, passed as the `tealium_event` attribute  |
-| `eventData` | `&lt;string, object&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `eventData` | `<string, object>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```javascript
 let tealEvent = new TealiumEvent(
-	&#34;cart_add&#34;, 
+	"cart_add", 
 	new Map([
 		[
-			&#34;customer_id&#34;: &#34;abc123&#34;, 
-			&#34;product_id&#34;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#34;product_price&#34;: [4.00, 6.00]
+			"customer_id": "abc123", 
+			"product_id": ["PROD123", "PROD456"], 
+			"product_price": [4.00, 6.00]
 		]
 	)
 );
@@ -396,19 +396,19 @@ Tealium.track(screenView);
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent`  | `string`| The event name, passed as the `tealium_event` attribute.          | 
-| `eventData` | `Dictionary&lt;string, object&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `eventData` | `Dictionary<string, object>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```javascript
 let screenView = new TealiumView(
-	&#39;purchase&#39;, 
+	'purchase', 
 	new Map([
 		[
-			&#39;customer_id&#39;, &#39;abc123&#39;, 
-			&#39;order_total&#39;, 10.00, 
-			&#39;product_id&#39;, [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#39;order_id&#39;: &#34;0123456789&#34;
+			'customer_id', 'abc123', 
+			'order_total', 10.00, 
+			'product_id', ["PROD123", "PROD456"], 
+			'order_id': "0123456789"
 		]
 	])
 );

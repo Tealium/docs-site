@@ -12,14 +12,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/klenty-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
 * **APIキー**  
 Kenty REST APIにアクセスするには、APIキーを生成するKlentyアカウントが必要です。このAPIキーを取得するには、次の手順を使用します：
   * Klentyアカウントにログインします。
-  * **構成 &gt; ユーザー構成 &gt; Klenty APIキー**に移動します。
+  * **構成 > ユーザー構成 > Klenty APIキー**に移動します。
   * **APIキー生成**キーアイコンをクリックします。
   * 詳細については、[KlentyのAPIドキュメンテーション](http://support.klenty.com/articles/2530207-klenty-api)を参照してください。
 
@@ -35,22 +35,22 @@ Kenty REST APIにアクセスするには、APIキーを生成するKlentyアカ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザー名|  &lt;ul&gt;&lt;li&gt;アカウントに関連付けられたユーザー名。&lt;/li&gt;&lt;li&gt;詳細については、[Klentyのドキュメンテーション](http://support.klenty.com/articles/2530207-klenty-api)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;見込み客のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|名|  &lt;ul&gt;&lt;li&gt;見込み客の名前。&lt;/li&gt;&lt;/ul&gt; |
-|電話|  &lt;ul&gt;&lt;li&gt;見込み客の電話番号。&lt;/li&gt;&lt;/ul&gt; |
-|会社|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた会社。&lt;/li&gt;&lt;/ul&gt; |
-|フルネーム|  &lt;ul&gt;&lt;li&gt;見込み客のフルネーム。&lt;/li&gt;&lt;/ul&gt; |
-|姓|  &lt;ul&gt;&lt;li&gt;見込み客の姓。&lt;/li&gt;&lt;/ul&gt; |
-|ミドルネーム|  &lt;ul&gt;&lt;li&gt;見込み客のミドルネーム。&lt;/li&gt;&lt;/ul&gt; |
-|部門|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた部門。&lt;/li&gt;&lt;/ul&gt; |
-|会社ドメイン|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた会社のドメイン。&lt;/li&gt;&lt;/ul&gt; |
-|タイトル|  &lt;ul&gt;&lt;li&gt;見込み客のタイトル。&lt;/li&gt;&lt;/ul&gt; |
-|場所|  &lt;ul&gt;&lt;li&gt;見込み客の場所。&lt;/li&gt;&lt;/ul&gt; |
-|市区町村|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた市区町村。&lt;/li&gt;&lt;/ul&gt; |
-|国|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた国。&lt;/li&gt;&lt;/ul&gt; |
-|リスト|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられたリスト。&lt;/li&gt;&lt;/ul&gt; |
-|タグ|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられたタグ。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザー名|  <ul><li>アカウントに関連付けられたユーザー名。</li><li>詳細については、[Klentyのドキュメンテーション](http://support.klenty.com/articles/2530207-klenty-api)を参照してください。</li></ul> |
+|メール|  <ul><li>見込み客のメールアドレス。</li></ul> |
+|名|  <ul><li>見込み客の名前。</li></ul> |
+|電話|  <ul><li>見込み客の電話番号。</li></ul> |
+|会社|  <ul><li>見込み客に関連付けられた会社。</li></ul> |
+|フルネーム|  <ul><li>見込み客のフルネーム。</li></ul> |
+|姓|  <ul><li>見込み客の姓。</li></ul> |
+|ミドルネーム|  <ul><li>見込み客のミドルネーム。</li></ul> |
+|部門|  <ul><li>見込み客に関連付けられた部門。</li></ul> |
+|会社ドメイン|  <ul><li>見込み客に関連付けられた会社のドメイン。</li></ul> |
+|タイトル|  <ul><li>見込み客のタイトル。</li></ul> |
+|場所|  <ul><li>見込み客の場所。</li></ul> |
+|市区町村|  <ul><li>見込み客に関連付けられた市区町村。</li></ul> |
+|国|  <ul><li>見込み客に関連付けられた国。</li></ul> |
+|リスト|  <ul><li>見込み客に関連付けられたリスト。</li></ul> |
+|タグ|  <ul><li>見込み客に関連付けられたタグ。</li></ul> |
 
 ### アクション - 見込み客更新
 
@@ -58,20 +58,20 @@ Kenty REST APIにアクセスするには、APIキーを生成するKlentyアカ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザー名|  &lt;ul&gt;&lt;li&gt;アカウントに関連付けられたユーザー名。&lt;/li&gt;&lt;li&gt;詳細については、[Klentyのドキュメンテーション](http://support.klenty.com/articles/2530207-klenty-api)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|見込み客識別子|  &lt;ul&gt;&lt;li&gt;見込み客の識別子、通常はメール。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;見込み客のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|名|  &lt;ul&gt;&lt;li&gt;見込み客の名前。&lt;/li&gt;&lt;/ul&gt; |
-|電話|  &lt;ul&gt;&lt;li&gt;見込み客の電話番号。&lt;/li&gt;&lt;/ul&gt; |
-|会社|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた会社。&lt;/li&gt;&lt;/ul&gt; |
-|フルネーム|  &lt;ul&gt;&lt;li&gt;見込み客のフルネーム。&lt;/li&gt;&lt;/ul&gt; |
-|姓|  &lt;ul&gt;&lt;li&gt;見込み客の姓。&lt;/li&gt;&lt;/ul&gt; |
-|ミドルネーム|  &lt;ul&gt;&lt;li&gt;見込み客のミドルネーム。&lt;/li&gt;&lt;/ul&gt; |
-|部門|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた部門。&lt;/li&gt;&lt;/ul&gt; |
-|会社ドメイン|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた会社のドメイン。&lt;/li&gt;&lt;/ul&gt; |
-|タイトル|  &lt;ul&gt;&lt;li&gt;見込み客のタイトル。&lt;/li&gt;&lt;/ul&gt; |
-|場所|  &lt;ul&gt;&lt;li&gt;見込み客の場所。&lt;/li&gt;&lt;/ul&gt; |
-|市区町村|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた市区町村。&lt;/li&gt;&lt;/ul&gt; |
-|国|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられた国。&lt;/li&gt;&lt;/ul&gt; |
-|リスト|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられたリスト。&lt;/li&gt;&lt;/ul&gt; |
-|タグ|  &lt;ul&gt;&lt;li&gt;見込み客に関連付けられたタグ。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザー名|  <ul><li>アカウントに関連付けられたユーザー名。</li><li>詳細については、[Klentyのドキュメンテーション](http://support.klenty.com/articles/2530207-klenty-api)を参照してください。</li></ul> |
+|見込み客識別子|  <ul><li>見込み客の識別子、通常はメール。</li></ul> |
+|メール|  <ul><li>見込み客のメールアドレス。</li></ul> |
+|名|  <ul><li>見込み客の名前。</li></ul> |
+|電話|  <ul><li>見込み客の電話番号。</li></ul> |
+|会社|  <ul><li>見込み客に関連付けられた会社。</li></ul> |
+|フルネーム|  <ul><li>見込み客のフルネーム。</li></ul> |
+|姓|  <ul><li>見込み客の姓。</li></ul> |
+|ミドルネーム|  <ul><li>見込み客のミドルネーム。</li></ul> |
+|部門|  <ul><li>見込み客に関連付けられた部門。</li></ul> |
+|会社ドメイン|  <ul><li>見込み客に関連付けられた会社のドメイン。</li></ul> |
+|タイトル|  <ul><li>見込み客のタイトル。</li></ul> |
+|場所|  <ul><li>見込み客の場所。</li></ul> |
+|市区町村|  <ul><li>見込み客に関連付けられた市区町村。</li></ul> |
+|国|  <ul><li>見込み客に関連付けられた国。</li></ul> |
+|リスト|  <ul><li>見込み客に関連付けられたリスト。</li></ul> |
+|タグ|  <ul><li>見込み客に関連付けられたタグ。</li></ul> |

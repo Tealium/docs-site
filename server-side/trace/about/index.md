@@ -10,7 +10,11 @@ The following items are required to use trace:
 * Tealium EventStream or AudienceStream  
 * [Tealium Tools Browser Extension](https://chrome.google.com/webstore/detail/tealium-tools/gidnphnamcemailggkemcgclnjeeokaa)  
 
-Do not add trace IDs to bulk events.&lt;br&gt;Do not add trace IDs as a permanent parameter to monitor production data.
+
+<blockquote>
+Do not add trace IDs to bulk events.<br>Do not add trace IDs as a permanent parameter to monitor production data.
+</blockquote>
+
 
 ## How it works
 
@@ -27,7 +31,11 @@ The trace interface supports the following actions:
 * View the details of an event or processing step
 * View snapshots of visitor profiles
 
+
+<blockquote>
 Invalid trace IDs are removed from the event data.
+</blockquote>
+
 
 ## Limits
 

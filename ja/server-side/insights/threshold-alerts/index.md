@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/server-side/insights/threshold-alerts/
 
 ## アラートの作成
 
-1. **Insights &gt; Dashboards** に移動します。
+1. **Insights > Dashboards** に移動します。
 1. ダッシュボードを選択します。
 1. ツールバーの **Alerts** アイコンをクリックします。
 1. **Create alert** をクリックします。
@@ -52,11 +52,11 @@ url: https://docs.tealium.com/ja/server-side/insights/threshold-alerts/
 
 既存のアラートを表示および管理するには：
 
-1. **Insights &gt; Dashboards** に移動します。
+1. **Insights > Dashboards** に移動します。
 1. ダッシュボードを選択します。
 1. ツールバーの **Alerts** アイコンをクリックします。
    **Manage alerts** パネルにはアラートがリストされており、各アラートはその条件と通知の頻度を表示し、有効または無効にするトグルが含まれています。
-   ![](/images/server-side/data-insights/manage-alerts.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/manage-alerts.png)
 1. アラートを編集、履歴を表示、または削除するには、アラートの三点リーダーメニューをクリックしてオプションを選択します。
 1. 別のアラートを作成するには、**Create alert** をクリックします。
 
@@ -66,18 +66,18 @@ url: https://docs.tealium.com/ja/server-side/insights/threshold-alerts/
 
 ### エラー数のためのゲージビジュアルを追加する
 
-1. **Insights &gt; Dashboards &gt; Analysis** に移動します。
+1. **Insights > Dashboards > Analysis** に移動します。
 1. **Connectors Analysis** を開きます。
-   ![](/images/server-side/data-insights/threshold-alerts-connectors-analysis.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-connectors-analysis.png)
 1. **2. Connector and Action Errors** タブを開きます。
 1. **Failed connector counts over time** ビジュアルを探します。
-1. 三点リーダーメニューをクリックし、**Duplicate visual to &gt; This sheet** を選択して、既存のエラー数カウントフィルターを保持します。
-   ![](/images/server-side/data-insights/threshold-alerts-duplicate-visual.png)
+1. 三点リーダーメニューをクリックし、**Duplicate visual to > This sheet** を選択して、既存のエラー数カウントフィルターを保持します。
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-duplicate-visual.png)
 1. 複製されたビジュアルの名前を変更して元のビジュアルと区別します。
 1. ビジュアルタイプを **Gauge** に更新して、トータルエラー数を表示します。
-   ![](/images/server-side/data-insights/threshold-alerts-gauge-type.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-gauge-type.png)
 1. (オプション) ゲージチャートのサイズを変更するには、境界サイズハンドルをドラッグします。
-   ![](/images/server-side/data-insights/threshold-alerts-gauge-visual.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-gauge-visual.png)
 
 ### 公開してアラートを構成する
 
@@ -86,42 +86,46 @@ url: https://docs.tealium.com/ja/server-side/insights/threshold-alerts/
 1. **Dashboard name** フィールドにダッシュボードの名前を入力します。
 1. **Select sheets** ドロップダウンから **All sheets** を選択します。
 1. **Publish Dashboard** をクリックします。
-   ![](/images/server-side/data-insights/threshold-alerts-publish-dashboard.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-publish-dashboard.png)
 1. **Connector and Action Errors** シートを開きます。
 1. ゲージビジュアルを探します。
 1. **Alerts** アイコンをクリックします。
 1. ビジュアルを選択し、アラートを構成します。フィールドの説明については、[Create an alert](#create-an-alert) を参照してください。
 1. **Save** をクリックします。
-   ![](/images/server-side/data-insights/threshold-alerts-create-connector-alert.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-create-connector-alert.png)
 
 ## 例：トータルイベント量のアラートを構成する
 
-1. **Insights &gt; Dashboards &gt; Dashboards** に移動します。
-   ![](/images/server-side/data-insights/threshold-alerts-dashboards-list.png)
+1. **Insights > Dashboards > Dashboards** に移動します。
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-dashboards-list.png)
 1. **Total events count** ダッシュボードを選択します。
 1. **Total events count for all time** チャートを探します。
 1. チャートを選択します。
 1. **Alerts** アイコンをクリックします。
-   ![](/images/server-side/data-insights/threshold-alerts-total-events-chart.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-total-events-chart.png)
 1. アラートを構成します。フィールドの説明については、[Create an alert](#create-an-alert) を参照してください。
-   ![](/images/server-side/data-insights/threshold-alerts-create-events-alert.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-create-events-alert.png)
 1. **Save** をクリックします。
-   ![](/images/server-side/data-insights/threshold-alerts-events-alert-configured.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-events-alert-configured.png)
 
 ## 例：異なる日付範囲フィルターでアラートを追加する
 
 各日付範囲フィルターには独自のアラートが必要です。フィルターはアラートを作成するときに固定されます。
 
-1. **Insights &gt; Dashboards &gt; Dashboards** に移動します。
+1. **Insights > Dashboards > Dashboards** に移動します。
 1. **Total events count** ダッシュボードを選択します。
 1. **Controls** パネルを展開します。
 1. **Date range** フィルターの値を監視したい範囲に変更します。たとえば、**Last number of days** を選択して `90` を入力します。
-   ![](/images/server-side/data-insights/threshold-alerts-date-range-filter.png)
+   ![](https://docs.tealium.com/images/server-side/data-insights/threshold-alerts-date-range-filter.png)
 1. **Total events count for all time** チャートを選択します。
 1. **Alerts** アイコンをクリックします。
 1. **Create alert** をクリックします。
 1. **Name** フィールドに、チャートのタイトルとフィルター値を反映した名前を入力します。たとえば、`Total events count last 90 days`。
-   フィルター値をアラート名に含めます。アラート名は、それを作成するために使用されたフィルター構成の唯一の記録です。
+   
+<blockquote>
+フィルター値をアラート名に含めます。アラート名は、それを作成するために使用されたフィルター構成の唯一の記録です。
+</blockquote>
+
 1. アラートを構成します。フィールドの説明については、[Create an alert](#create-an-alert) を参照してください。
 1. **Save** をクリックします。
    **Manage alerts** パネルは、同じチャートの両方のアラートを表示し、それぞれに独自の日付範囲フィルターと閾値があります。

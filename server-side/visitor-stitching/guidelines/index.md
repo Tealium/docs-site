@@ -8,7 +8,7 @@ The following are important guidelines for visitor ID attributes and visitor sti
 * **Uniqueness**  
 A visitor ID attribute must have at least 3 unique characters and be at least 6 characters long.  
 Learn more about [visitor ID attribute requirements]().
-* **Case sensitive**&lt;br&gt;
+* **Case sensitive**<br>
 Visitor ID attribute values are case sensitive so, `UserName@example.com` is different from `username@example.com`. If the attribute values contain these variations, use the [lower-case enrichment]() to normalize them.
 * **Multiple IDs**  
 Multiple visitor ID attributes are evaluated as an OR condition in order of attribute ID from lowest to highest (oldest to newest).

@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -52,7 +52,7 @@ The following section describes how to set up parameters and options for each ac
 | Bucket | Select the bucket where you want to create the objects. |
 | Object Path | Specify the path to the object where you want the data to be appended. |
 | Object Path Suffix | Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Object | If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single object containing the payload with the data being forwarded from Tealium. |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
@@ -72,10 +72,10 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Event Attribute | Define custom mappings between event attributes and vendor parameters. |
 | Object Path Suffix | Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Object | If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in the Message Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in the Message Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.</li></ul>|
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
 ### Send Entire Visitor Data
@@ -87,7 +87,7 @@ The following section describes how to set up parameters and options for each ac
 | Bucket | Select the bucket where you want to create the objects. |
 | Object Path | Specify the path to the object where you want the data to be appended. |
 | Object Path Suffix | Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Object | If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single object containing the payload with the data being forwarded from Tealium. |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Include Current Visit Data with Visitor Data | Select this option to include current visit data with visitor data. |
@@ -107,10 +107,10 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Object Path Suffix | Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Object | If the object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in the Message Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in the Message Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.</li></ul>|
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
 ### Send Log Event
@@ -128,15 +128,15 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Event Attribute | Define custom mappings between event attributes and vendor parameters. |
 | Object Path Suffix | Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Object | If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in the Message Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in the Message Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.</li></ul>|
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
 ### Send Entire Log Event
 
-Send connector error logs to this vendor. For more information, see .
+Send connector error logs to this vendor. For more information, see [connector-error-logging](https://docs.tealium.com/connector-error-logging/).
 
 #### Parameters
 

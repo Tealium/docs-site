@@ -15,18 +15,18 @@ Install the Ad Identifier module with Maven (Recommended) or manually.
 
 To install the module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
 
-2. In your project module&#39;s `build.gradle` file, add the following Maven dependency:
+2. In your project module's `build.gradle` file, add the following Maven dependency:
       ```groovy
       dependencies{
-            implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-            implementation &#39;com.tealium:kotlin-ad-identifier:1.1.1&#39;
+            implementation 'com.tealium:kotlin-core:1.6.0'
+            implementation 'com.tealium:kotlin-ad-identifier:1.1.1'
       }
       ```
 
@@ -42,18 +42,18 @@ To install the Ad Identifier module manually:
             repositories {
             mavenCentral()
             flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
             }
             }
       }
       ```
 
-3. Copy the file `tealium.adidentifier-1.1.1.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+3. Copy the file `tealium.adidentifier-1.1.1.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 4. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
-            implementation (name:&#39;tealium-kotlin.adidentifier-1.1.1&#39;, ext:&#39;aar&#39;)
+            implementation (name:'tealium-kotlin.adidentifier-1.1.1', ext:'aar')
       }
       ```
 
@@ -63,8 +63,8 @@ Initialize the Ad Identifier module, as shown in the following example:
 
 ```kotlin
 val config = TealiumConfig(application,
-              &#34;ACCOUNT&#34;,
-              &#34;PROFILE&#34;,
+              "ACCOUNT",
+              "PROFILE",
               ENVIRONMENT,
               modules = mutableSetOf(Modules.AdIdentifier), // Ad Identifier module
               dispatchers = mutableSetOf(Dispatchers.Collect,

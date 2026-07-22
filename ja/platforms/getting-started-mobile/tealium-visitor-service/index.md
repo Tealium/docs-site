@@ -5,8 +5,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/tealium-visito
 ---
 ## 対応プラットフォーム
 
-* [Tealium for Android: 訪問サービスモジュール](/ja/platforms/android-kotlin/module-list/visitor-service/)
-* [Tealium for iOS: 訪問サービスモジュール](/ja/platforms/ios-swift/module-list/visitor-service/)
+* [Tealium for Android: 訪問サービスモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/visitor-service/)
+* [Tealium for iOS: 訪問サービスモジュール](https://docs.tealium.com/ja/platforms/ios-swift/module-list/visitor-service/)
 
 ## 動作原理
 
@@ -21,12 +21,12 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/tealium-visito
 
 ## 訪問プロファイルの構造
 
-訪問プロファイルは、AudienceStreamの**属性ID**によってキーされた属性を含むオブジェクトです。属性IDは数値の文字列です（例えば、Lifetime Event Countのための`&#34;22&#34;`）。オーディエンスはオーディエンスIDによってキーされ、値としてオーディエンス名が使用されます。
+訪問プロファイルは、AudienceStreamの**属性ID**によってキーされた属性を含むオブジェクトです。属性IDは数値の文字列です（例えば、Lifetime Event Countのための`"22"`）。オーディエンスはオーディエンスIDによってキーされ、値としてオーディエンス名が使用されます。
 
 属性タイプと使用例の完全なリストについては、プラットフォーム固有のリファレンスを参照してください：
 
-* [Tealium for Android: VisitorProfile](/ja/platforms/android-kotlin/api/visitor-profile/)
-* [Tealium for iOS: Visitor Data Object](/ja/platforms/ios-swift/module-list/visitor-service/#visitor-data-object)
+* [Tealium for Android: VisitorProfile](https://docs.tealium.com/ja/platforms/android-kotlin/api/visitor-profile/)
+* [Tealium for iOS: Visitor Data Object](https://docs.tealium.com/ja/platforms/ios-swift/module-list/visitor-service/#visitor-data-object)
 
 ## 例
 
@@ -39,8 +39,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/tealium-visito
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, tealiumConfig) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            visitorProfile.audiences?.let { audiences -&gt;
-                if (audiences.containsValue(&#34;Premium User&#34;)) {
+            visitorProfile.audiences?.let { audiences ->
+                if (audiences.containsValue("Premium User")) {
                     // プレミアム機能を有効にする
                 }
             }
@@ -58,7 +58,7 @@ extension TealiumHelper: VisitorServiceDelegate {
         guard let audiences = visitorProfile.audiences else {
             return
         }
-        if audiences.contains(where: { $0.value == &#34;Premium User&#34; }) {
+        if audiences.contains(where: { $0.value == "Premium User" }) {
             // プレミアム機能を有効にする
         }
     }
@@ -77,9 +77,9 @@ extension TealiumHelper: VisitorServiceDelegate {
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, tealiumConfig) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            visitorProfile.numbers?.let { numbers -&gt;
-                numbers[&#34;5057&#34;]?.let { sessionCount -&gt;
-                    if (sessionCount &gt; 5) {
+            visitorProfile.numbers?.let { numbers ->
+                numbers["5057"]?.let { sessionCount ->
+                    if (sessionCount > 5) {
                         // リピーター向けのアクションを取る
                     }
                 }
@@ -98,8 +98,8 @@ extension TealiumHelper: VisitorServiceDelegate {
         guard let numbers are visitorProfile.numbers else {
             return
         }
-        if let sessionCount = numbers[&#34;5057&#34;] {
-            if sessionCount &gt; 5 {
+        if let sessionCount = numbers["5057"] {
+            if sessionCount > 5 {
                 // リピーター向けのアクションを取る
             }
         }

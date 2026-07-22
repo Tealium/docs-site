@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 文字列の配列は、次のスコープで利用可能です：イベント、訪問、訪問。
 
-![](/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
 
 ### 文字列の追加
 
@@ -17,9 +17,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Pants&#34;]`
-* **エンリッチされた値**: `&#34;Shirts&#34;` 
-* **結果の値**: `[&#34;Pants&#34;, &#34;Shirts&#34;]` 
+* **初期値**: `["Pants"]`
+* **エンリッチされた値**: `"Shirts"` 
+* **結果の値**: `["Pants", "Shirts"]` 
 
 ### 文字列の配列の追加
 
@@ -27,9 +27,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Pants&#34;]`
-* **エンリッチされた値**: `[&#34;Shirts&#34;, &#34;Shoes&#34;]`
-* **結果の値**: `[&#34;Pants&#34;, &#34;Shirts&#34;, &#34;Shoes&#34;]`
+* **初期値**: `["Pants"]`
+* **エンリッチされた値**: `["Shirts", "Shoes"]`
+* **結果の値**: `["Pants", "Shirts", "Shoes"]`
 
 ### 二つの配列の違い
 
@@ -39,8 +39,8 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 * **初期値**: `[]`
 * **エンリッチされた値**:  
-違い: Wishlist Products  `[&#34;Pants&#34;, &#34;Shirt&#34;, &#34;Shoes&#34;, &#34;Belt&#34;]` と Purchased Products `[&#34;Pants&#34;, &#34;Shirt&#34;]` 
-* **結果の値**: `[&#34;Shoes&#34;, &#34;Belt&#34;]`
+違い: Wishlist Products  `["Pants", "Shirt", "Shoes", "Belt"]` と Purchased Products `["Pants", "Shirt"]` 
+* **結果の値**: `["Shoes", "Belt"]`
 
 この例は、結果の属性値が置き換えられ、追加されず、最初の配列の繰り返し値が削除されることを示しています。
 
@@ -54,7 +54,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Shoes&#34;, &#34;Belt&#34;]`
+* **初期値**: `["Shoes", "Belt"]`
 * **エンリッチされた値**:
 * **結果の値**: (削除されました)
 
@@ -64,9 +64,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Shoes&#34;, &#34;BELT&#34;]`
+* **初期値**: `["Shoes", "BELT"]`
 * **エンリッチされた値**:
-* **結果の値**: `[&#34;shoes&#34;, &#34;belt&#34;]`
+* **結果の値**: `["shoes", "belt"]`
 
 ### 文字列のセットに構成
 
@@ -74,9 +74,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `アクティブブラウザタイプ`
 
-* **初期値**: `[&#34;IE&#34;]`
-* **エンリッチされた値**: `[&#34;Chrome&#34;, &#34;FireFox&#34;, &#34;Opera&#34;]`
-* **結果の値**: `[&#34;Chrome&#34;, &#34;FireFox&#34;, &#34;Opera&#34;]`
+* **初期値**: `["IE"]`
+* **エンリッチされた値**: `["Chrome", "FireFox", "Opera"]`
+* **結果の値**: `["Chrome", "FireFox", "Opera"]`
 
 ### 文字列のセットの追加
 
@@ -84,9 +84,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Pants&#34;]`
-* **エンリッチされた値**: `[&#34;Pants&#34;, &#34;Shoes&#34;, &#34;Ties&#34;]`
-* **結果の値**: `[&#34;Pants&#34;, &#34;Pants&#34;, &#34;Shoes&#34;, &#34;Ties&#34;]`
+* **初期値**: `["Pants"]`
+* **エンリッチされた値**: `["Pants", "Shoes", "Ties"]`
+* **結果の値**: `["Pants", "Pants", "Shoes", "Ties"]`
 
 ### 配列から文字列を削除
 
@@ -94,6 +94,6 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/arrays
 
 **属性名**: `product_name`
 
-* **初期値**: `[&#34;Pants&#34;, &#34;Pants&#34;, &#34;Shoes&#34;, &#34;Ties&#34;]`
-* **エンリッチされた値**: `&#34;Pants&#34;`
-* **結果の値**: `[&#34;Shoes&#34;, &#34;Ties&#34;]`
+* **初期値**: `["Pants", "Pants", "Shoes", "Ties"]`
+* **エンリッチされた値**: `"Pants"`
+* **結果の値**: `["Shoes", "Ties"]`

@@ -32,14 +32,14 @@ url: https://docs.tealium.com/ja/iq-tag-management/templates/template-status-che
 
 | シンボル | ステータス| 説明 |
 |:------:|:------|:------------|
-| ![](/images/iq-tag-management/tag-status-new-version-available.png) | 新しいバージョンが利用可能 | テンプレートの新しいバージョンが利用可能であることを示します。|
-| ![](/images/iq-tag-management/tag-status-latest-version.png)        | 最新バージョン       | このテンプレートが利用可能な最新のシステムバージョンと一致していることを示します。|
-| ![](/images/iq-tag-management/tag-status-not-customized.png)        | カスタマイズされていない        | テンプレートが追加されたときの元の状態から変更されていないことを示します。|
-| ![](/images/iq-tag-management/tag-status-customized.png)            | カスタマイズされた            | ユーザーによって元の状態から編集されたテンプレートであることを示します。|
-| ![](/images/iq-tag-management/tag-status-deprecated.png)            | 非推奨            | このバージョンのテンプレートはもはやサポートされておらず、提供されていないことを示します。新しいバージョンのテンプレートがこのバージョンを置き換えるためにリリースされた可能性があります。 |
-| ![](/images/iq-tag-management/tag-status-version-mismatch.png)      | バージョン不一致      | テンプレートがタグ構成の現在選択されているバージョンと一致していないことを示します。|
-| ![](/images/iq-tag-management/tag-status-unknown.png)               | 不明               | システムがテンプレートの現在の状態を特定できないことを示します。|
-| ![](/images/iq-tag-management/template-status-unsaved.png)          | 未保存の変更       | このテンプレートにプロファイルに保存されていない変更が保留されていることを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-new-version-available.png) | 新しいバージョンが利用可能 | テンプレートの新しいバージョンが利用可能であることを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-latest-version.png)        | 最新バージョン       | このテンプレートが利用可能な最新のシステムバージョンと一致していることを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-not-customized.png)        | カスタマイズされていない        | テンプレートが追加されたときの元の状態から変更されていないことを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-customized.png)            | カスタマイズされた            | ユーザーによって元の状態から編集されたテンプレートであることを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-deprecated.png)            | 非推奨            | このバージョンのテンプレートはもはやサポートされておらず、提供されていないことを示します。新しいバージョンのテンプレートがこのバージョンを置き換えるためにリリースされた可能性があります。 |
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-version-mismatch.png)      | バージョン不一致      | テンプレートがタグ構成の現在選択されているバージョンと一致していないことを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-unknown.png)               | 不明               | システムがテンプレートの現在の状態を特定できないことを示します。|
+| ![](https://docs.tealium.com/images/iq-tag-management/template-status-unsaved.png)          | 未保存の変更       | このテンプレートにプロファイルに保存されていない変更が保留されていることを示します。|
 
 ## テンプレートステータスチェッカーの使用方法
 
@@ -54,10 +54,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/templates/template-status-che
 
 **タグ**画面からテンプレートのステータスを確認するには、次の手順に従います：
 
-1. **タグ管理 &gt; タグ**に移動します。
+1. **タグ管理 > タグ**に移動します。
 1. ヘッダーツールバーで**テンプレートステータスチェッカーを実行**をクリックします。
 1. タグのリストに**ステータス**列が表示され、各テンプレートのステータスが色付きのインジケータで表示されます。  
-    ![](/images/iq-tag-management/template-status-checker-column.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-checker-column.png)
 
 ### 管理メニューから
 
@@ -74,7 +74,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/templates/template-status-che
 
 1. **スキャン**をクリックします。  
 **テンプレートステータスチェッカー**ウィンドウが結果を表示します。  
-    ![](/images/iq-tag-management/template-status-checker-report.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-checker-report.png)
 1. 表の行をクリックしてそのテンプレートを表示します。
 
 ### ステータスでフィルター
@@ -84,6 +84,6 @@ url: https://docs.tealium.com/ja/iq-tag-management/templates/template-status-che
 テンプレートステータスでタグリストをフィルタリングするには、次の手順に従います：
 
 1. **テンプレートステータス**ドロップダウンリストを選択し、ステータスをクリックします。  
-    ![](/images/iq-tag-management/template-status-filter.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-filter.png)  
     タグのリストがそれに応じて調整されます。
 1. （オプション）**再実行**をクリックしてツールを再度実行します。

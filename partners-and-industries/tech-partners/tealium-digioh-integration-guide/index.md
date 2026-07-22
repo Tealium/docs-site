@@ -22,13 +22,13 @@ There are two parts to setting up your account to receive events from Digioh: a 
 
 To add a data source for use with your Digioh integration, add an instance of the **HTTP API** data source. When you finish, copy the data source key generated for that data source to use in a static field mapping in your Digioh configuration.
 
-Learn more about [connecting to a data source]().
+Learn more about [connecting to a data source](https://docs.tealium.com/about-data-sources/).
 
 ### Event specification
 
 Create an event specification to define the Digioh event name and its required and optional attributes. Use the event specification name in the **Event** parameter in your Digioh configuration.
 
-For more information, see [About event specifications]().
+For more information, see [About event specifications](https://docs.tealium.com/about-event-specifications/).
 
 ## Digioh setup
 
@@ -55,7 +55,11 @@ To add the data source key as a field:
 
 Digioh allows for additional form fields to include in the event. Use the **Map Fields** configuration to select Digioh fields and the matching Tealium attribute name. For example, you might map ` [PHONE]` to `customer_phone`.
 
+
+<blockquote>
 The Digioh field `[EMAIL]` is mapped to the Tealium attribute `email` automatically, but you can edit this mapping.
+</blockquote>
+
 
 Here is a list of standard fields:
 

@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/bronto-ecommerce-connect
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいBronto ECommerceコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいBronto ECommerceコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)記事を参照してください。
 
 ベンダーを構成するには、次の手順に従います：
 

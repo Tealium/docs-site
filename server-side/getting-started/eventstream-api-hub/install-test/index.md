@@ -12,25 +12,25 @@ Using the `GET` method, our test event URL looks like this (line breaks added fo
 ```none
 https://collect.tealiumiq.com/event?
 tealium_account=your_account
-&amp;tealium_profile=your_profile
-&amp;tealium_datasource=abc123
-&amp;tealium_event=search
+&tealium_profile=your_profile
+&tealium_datasource=abc123
+&tealium_event=search
 ```
 
 The corresponding code in Swift (iOS) might look like this:
 
 ```swift
 var tealConfig = TealiumConfig(
-    account: &#34;your_account&#34;,
-    profile: &#34;your_profile&#34;,
-    environment: &#34;prod&#34;,
-    datasource: &#34;abc123&#34;)
+    account: "your_account",
+    profile: "your_profile",
+    environment: "prod",
+    datasource: "abc123")
 
 let tealium = Tealium(config: tealConfig)
 
-// Tracked event &#34;search&#34; automatically results in:
-// tealium_event : &#34;search&#34; in the event data
-tealium?.trackEventWithTitle(&#34;search&#34;, dataSources: [:])
+// Tracked event "search" automatically results in:
+// tealium_event : "search" in the event data
+tealium?.trackEventWithTitle("search", dataSources: [:])
 ```
 
-Let&#39;s go to the next step to see how to observe those test events on the **Live Events** screen.
+Let's go to the next step to see how to observe those test events on the **Live Events** screen.

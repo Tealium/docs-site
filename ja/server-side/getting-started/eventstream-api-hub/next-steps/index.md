@@ -7,19 +7,19 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 Tealium EventStreamについてさらに学ぶために、以下のドキュメントを参照してください：
 
-* [データソース]()
-* [イベント仕様]()
-* [ライブイベント]()
-* [イベントフィード]()
-* [コネクタ]()
-* [トレース]()
-* [保存と公開]()
-* [ユーザー権限の管理]()
+* [データソース](https://docs.tealium.com/about-data-sources/)
+* [イベント仕様](https://docs.tealium.com/about-event-specifications/)
+* [ライブイベント](https://docs.tealium.com/about-live-events/)
+* [イベントフィード](https://docs.tealium.com/about-event-feeds/)
+* [コネクタ](https://docs.tealium.com/about-connectors/)
+* [トレース](https://docs.tealium.com/about-trace/)
+* [保存と公開](https://docs.tealium.com/about-save-publish/)
+* [ユーザー権限の管理](https://docs.tealium.com/about-managing-server-side-user-permissions/)
 
 ## さらなるガイド
 
-* [iQタグ管理の入門]()
-* [AudienceStreamの入門]()
+* [iQタグ管理の入門](https://docs.tealium.com/what-is-tealium-iq/)
+* [AudienceStreamの入門](https://docs.tealium.com/audiencestream-tutorial/)
 
 ## さらなるリソース
 

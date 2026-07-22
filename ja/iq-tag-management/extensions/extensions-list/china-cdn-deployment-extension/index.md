@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
 ---
 この拡張は、ウェブサイトのソースコードを変更してユーザーの位置を決定するロジックを追加できない場合に使用できます。この拡張は、主に中国外部からコンテンツを提供するプロファイルが中国内部から少量のトラフィックを受け取る場合にも役立ちます。
 
- あなたのトラフィックの大部分が中国からであり、ウェブサイトのソースコードを変更できる場合、`.cn`ドメイン専用のプロファイルを作成し、各ページに貼り付けるHTMLコードにカスタマイズされたスクリプトを追加することをお勧めします。詳細については、[ウェブサイトのコードを更新する]()を参照してください。 
+
+<blockquote>
+あなたのトラフィックの大部分が中国からであり、ウェブサイトのソースコードを変更できる場合、`.cn`ドメイン専用のプロファイルを作成し、各ページに貼り付けるHTMLコードにカスタマイズされたスクリプトを追加することをお勧めします。詳細については、[ウェブサイトのコードを更新する](https://docs.tealium.com/load-utag-china/#update-the-code-for-your-website)を参照してください。
+</blockquote>
+ 
 
 ## 前提条件
 
@@ -20,7 +24,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
 
 その後のすべてのサイト訪問では、クッキーの値が存在する場合にはそれを読み取り、最も指定されたCDNからすべてのutagコンテンツを取得します。プリローダースコープでクッキーを構成することで、初期のページリクエストが適切なCDNから提供されます。
 
+
+<blockquote>
 コンテンツが中国ネットワーク外部から中国に配信されると、ページの読み込み速度に影響が出ます。しかし、初回のページ読み込みとCDNクッキーの構成後、拡張機能は利用可能なリソースを中国CDNから中国ベースのユーザーに配信し、そのリクエストを高速化します。
+</blockquote>
+
 
 ## 拡張機能の構成
 
@@ -32,7 +40,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
 
 ```js
 domainMap = {
-    &#39;www.yourwebsite.cn&#39;: &#39;cn&#39;
+    'www.yourwebsite.cn': 'cn'
 },
 ```
 
@@ -42,10 +50,10 @@ domainMap = {
 
 ```js
 languageMap = {
-    &#39;zh&#39;: &#39;cn&#39;,
-    &#39;zh-HK&#39;: &#39;cn&#39;,
-    &#39;zh-CN&#39;: &#39;cn&#39;,
-    &#39;zh-TW&#39;: &#39;cn&#39;
+    'zh': 'cn',
+    'zh-HK': 'cn',
+    'zh-CN': 'cn',
+    'zh-TW': 'cn'
 },
 ```
 
@@ -55,7 +63,7 @@ languageMap = {
 
 ```js
 gmtMap = {
-    &#39;-480&#39;: &#39;cn&#39;
+    '-480': 'cn'
 },
 ```
 
@@ -64,7 +72,7 @@ gmtMap = {
 すべての定義済み変数のデフォルトの`matchLogic`変数は、それらすべてが真であることを要求します。いくつかの変数だけが真である必要がある場合は、それを`or`に構成します。
 
 ```js
-matchLogic = &#39;and&#39;; // &#39;or&#39;
+matchLogic = 'and'; // 'or'
 ```
 
 ### IP位置検出のオンまたはオフ

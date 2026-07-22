@@ -15,11 +15,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/amplitude-identify-conne
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を行います：
 * **APIキー**  
-  * プロジェクトのAPIキー。APIキーはAmplitudeインスタンスの**構成 &gt; プロジェクト**の下にあります。
+  * プロジェクトのAPIキー。APIキーはAmplitudeインスタンスの**構成 > プロジェクト**の下にあります。
 * **エンドポイント**  
   * エンドポイントを選択するか、エンドポイントURLを入力します。
   * 標準サーバー：`https://api2.amplitude.com/identify`.
@@ -46,13 +46,21 @@ url: https://docs.tealium.com/ja/server-side-connectors/amplitude-identify-conne
 | `device_id` | デバイス固有の識別子、例えばiOSのベンダーの識別子（`IDFV`）。 |
 | `app_version` | ユーザーが使用しているアプリのバージョン。 |
 | `start_version` | ユーザーが最初に使用していたアプリのバージョン。 |
-| `groups` | ユーザーグループを表すキーと値のペアの辞書。グループを構成することで、アカウントレベルのレポーティングを使用できます。最大`5`種類のユニークなグループタイプと`10`の合計グループを追跡できます。詳細については、[Amplitudeのアカウントレベルレポーティング](https://amplitude.com/docs/analytics/account-level-reporting)を参照してください。この機能は、アカウント追加オプションを購入したエンタープライズ顧客のみが利用可能です。 |
+| `groups` | ユーザーグループを表すキーと値のペアの辞書。グループを構成することで、アカウントレベルのレポーティングを使用できます。最大`5`種類のユニークなグループタイプと`10`の合計グループを追跡できます。詳細については、[Amplitudeのアカウントレベルレポーティング](https://amplitude.com/docs/analytics/account-level-reporting)を参照してください。
+<blockquote>
+この機能は、アカウント追加オプションを購入したエンタープライズ顧客のみが利用可能です。
+</blockquote>
+ |
 | `language` | ユーザーが構成した言語。 |
 | `paying` | ユーザーが支払いを行っているかどうかを指定します。 |
 
 #### 地理的なパラメータ
 
+
+<blockquote>
 以下のすべてのフィールドを一緒に更新する必要があります。これらのフィールドのいずれかを構成すると、同じ識別呼び出しで明示的に構成されていない他のフィールドは自動的にリセットされます。
+</blockquote>
+
 
 | **パラメータ** | **説明** |
 | --- | --- |
@@ -72,7 +80,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/amplitude-identify-conne
 * `device_model`
 * `carrier`
 
+
+<blockquote>
 上記のフィールドのいずれかを構成すると、同じ識別呼び出しで明示的に構成されていない他のプロパティ値はすべてnullにリセットされます。それ以外の場合、プロパティ値は値が異なる文字列に変更されない限り、またはすべての値が`null`として渡されない限り、後続のイベントに持続します。Amplitudeは`device_brand`、`device_manufacturer`、`device_model`を使用して対応するデバイスタイプをマッピングしようとします。
+</blockquote>
+
 
 | **パラメータ** | **説明** |
 | --- | --- |

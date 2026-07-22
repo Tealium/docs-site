@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -40,7 +40,7 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Action Source | (Required) The source of the event. For example: `Website`, `App`, or `Offline`. |
-| Pixel ID | (Required) The integration&#39;s Pixel ID, created in Yahoo DSP. |
+| Pixel ID | (Required) The integration's Pixel ID, created in Yahoo DSP. |
 | Action Source URL | The website URL. |
 | Event Time | The time the event occurred, in epoch milliseconds UTC. If no **Event Time** is mapped, the current timestamp will be sent. |
 

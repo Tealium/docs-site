@@ -9,10 +9,10 @@ As mentioned in earlier tutorials, events are identified by the `tealium_event` 
 
 Event specifications define and standardize the events you want to collect in your EventStream implementation.
 
-Here&#39;s how it works:
+Here's how it works:
 
 * **Event name and attributes**  
-An event specification has a name and a list of required/optional attributes. The name is the value set in the `tealium_event` attribute. For example, an event that tracks when a user performs a search would be represented by `tealium_event=&#34;search&#34;` and would have required attributes `search_term` and `search_results` containing the searched term and the number of results returned respectively.
+An event specification has a name and a list of required/optional attributes. The name is the value set in the `tealium_event` attribute. For example, an event that tracks when a user performs a search would be represented by `tealium_event="search"` and would have required attributes `search_term` and `search_results` containing the searched term and the number of results returned respectively.
 * **Data sources**  
 After you add specifications, they can be associated to data sources. Specs are platform neutral, so a standard event such as `search` should be implemented the same in each platform. However, not all specifications apply to every type of data source. On the **Data Sources** screen, you associate specifications to the data sources that implement them.
 * **Get code and installation guide**  
@@ -22,14 +22,14 @@ The **Live Events** screen now reflects the quality of your data based on the ev
 
 ## Example event specification
 
-![](/images/server-side/eventstream-getting-started-spec.png)
+![](https://docs.tealium.com/images/server-side/eventstream-getting-started-spec.png)
 
 ```json
 {
-    &#34;tealium_event&#34;   : &#34;search&#34;,
-    &#34;search_keyword&#34;  : &#34;STRING&#34;,  // the searched term
-    &#34;search_results&#34;  : NUMBER,    // number of results
-    &#34;product_on_page&#34; : [&#34;STRING&#34;] // array of product strings
+    "tealium_event"   : "search",
+    "search_keyword"  : "STRING",  // the searched term
+    "search_results"  : NUMBER,    // number of results
+    "product_on_page" : ["STRING"] // array of product strings
 }
 ```
 

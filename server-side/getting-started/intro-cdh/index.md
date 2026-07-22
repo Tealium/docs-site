@@ -22,33 +22,33 @@ This wide range of functionality is enabled through the use of the following pro
 
 ## Manage client-side data and tags
 
-Configure and manage your client-side data and vendor tags using iQ Tag Management. Whether it&#39;s activating a data privacy policy, deploying new vendor tags, or customizing your data layer, iQ Tag Management can handle all of your client-side needs. Of course, the most important part of tag management is having a well-defined data layer to keep your data consistent and easy to understand from one implementation to the next. Your data layer is the foundation of your Customer Data Hub solution.
+Configure and manage your client-side data and vendor tags using iQ Tag Management. Whether it's activating a data privacy policy, deploying new vendor tags, or customizing your data layer, iQ Tag Management can handle all of your client-side needs. Of course, the most important part of tag management is having a well-defined data layer to keep your data consistent and easy to understand from one implementation to the next. Your data layer is the foundation of your Customer Data Hub solution.
 
 Further reading:
 
-* [Introduction to iQ Tag Management]()
-* [iQ Tag Management Concepts]()
-* [Introduction to the Data Layer]()
+* [Introduction to iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
+* [iQ Tag Management Concepts](https://docs.tealium.com/tag-basics/)
+* [Introduction to the Data Layer](https://docs.tealium.com/about-the-data-layer/)
 
 ## Collect data with Tealium Collect
 
-It all starts with the data. Collecting data across all of your customer touch-points is the first step towards unlocking the power of Customer Data Hub. Your customers&#39; engagements with your brand are valuable sources of data. Whether it&#39;s your desktop website, native mobile app, connected device, or custom application, they can all send customer data seamlessly to Customer Data Hub using one of the Tealium installation libraries. Tealium iQ users can get started with sending data to Customer Data Hub even faster with the official Tealium Collect Tag available from the tag marketplace.
+It all starts with the data. Collecting data across all of your customer touch-points is the first step towards unlocking the power of Customer Data Hub. Your customers' engagements with your brand are valuable sources of data. Whether it's your desktop website, native mobile app, connected device, or custom application, they can all send customer data seamlessly to Customer Data Hub using one of the Tealium installation libraries. Tealium iQ users can get started with sending data to Customer Data Hub even faster with the official Tealium Collect Tag available from the tag marketplace.
 
 Further reading:
 
-* [Tealium Installation Libraries]()
-* [Tealium Collect]()
+* [Tealium Installation Libraries](https://docs.tealium.com/publish-configuration/#mobile-library-publishing)
+* [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/)
 
 ## Enrich data with attributes and enrichments
 
-Once your data is flowing into Customer Data Hub, you have the ability to enrich it. An enrichment is the application of business logic that transforms data from a static value into a dynamic one. Enriched data are the building blocks for the rest of your Customer Data Hub solution. This enriched data also serves the critical role of creating a unified profile of your visitors across all platforms. Using a specialized attribute called a badge, you can construct a detailed picture of your visitors. As more data flows into Customer Data Hub, your visitors&#39; profiles become richer as they accumulate more attributes that characterize their behavior.
+Once your data is flowing into Customer Data Hub, you have the ability to enrich it. An enrichment is the application of business logic that transforms data from a static value into a dynamic one. Enriched data are the building blocks for the rest of your Customer Data Hub solution. This enriched data also serves the critical role of creating a unified profile of your visitors across all platforms. Using a specialized attribute called a badge, you can construct a detailed picture of your visitors. As more data flows into Customer Data Hub, your visitors' profiles become richer as they accumulate more attributes that characterize their behavior.
 
 Further reading:
 
-* [Introduction to EventStream]()
-* [Using Attributes]()
-* [Using Enrichments]()
-* [Badge Attribute]()
+* [Introduction to EventStream](https://docs.tealium.com/introduction-to-eventstream/)
+* [Using Attributes](https://docs.tealium.com/about-attributes/)
+* [Using Enrichments](https://docs.tealium.com/about-enrichments/)
+* [Badge Attribute](https://docs.tealium.com/badge-attribute/)
 
 ## Discover audiences
 
@@ -56,24 +56,24 @@ An audience is a collection of visitor profiles that have acquired a shared set 
 
 Further reading:
 
-* [Introduction to AudienceStream]()
-* [Building an Audience]()
-* [Audience Sizing]()
+* [Introduction to AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/)
+* [Building an Audience](https://docs.tealium.com/manage-audiences/)
+* [Audience Sizing](https://docs.tealium.com/about-audience-sizing/)
 
 ## Send data with connectors
 
-Now that you have all this data flowing through Customer Data Hub, it&#39;s time take action and start powering your digital marketing stack with connectors. A connector is a technical integration between a vendor and Tealium to transmit data in real-time. There are two types of data handled by connectors: audience and event. Customer Data Hub makes it easy to configure a connector to send the specific data needed by the vendor.
+Now that you have all this data flowing through Customer Data Hub, it's time take action and start powering your digital marketing stack with connectors. A connector is a technical integration between a vendor and Tealium to transmit data in real-time. There are two types of data handled by connectors: audience and event. Customer Data Hub makes it easy to configure a connector to send the specific data needed by the vendor.
 
 Further reading:
 
-* [About Connectors]()
-* [EventStream Connectors]()
+* [About Connectors](https://docs.tealium.com/about-connectors/)
+* [EventStream Connectors](https://docs.tealium.com/server-side-connectors/)
 
 ## Store data with DataAccess
 
-While the Customer Data Hub handles the flow of data in and out of the system, we think it&#39;s important to remember that you own this data and should have direct access to it. For the specific purpose of providing longer-term storage of your valuable data, we offer DataAccess as an enterprise-class solution. The same audience and event data that fuels your connectors can also be stored as structured data in a database or as semi-structured data in log files.
+While the Customer Data Hub handles the flow of data in and out of the system, we think it's important to remember that you own this data and should have direct access to it. For the specific purpose of providing longer-term storage of your valuable data, we offer DataAccess as an enterprise-class solution. The same audience and event data that fuels your connectors can also be stored as structured data in a database or as semi-structured data in log files.
 
 Further reading:
 
-* [Introduction to DataAccess]()
-* [Working with AudienceDB/EventDB]()
+* [Introduction to DataAccess](https://docs.tealium.com/about-dataaccess/)
+* [Working with AudienceDB/EventDB](https://docs.tealium.com/audiencedb-and-eventdb/)

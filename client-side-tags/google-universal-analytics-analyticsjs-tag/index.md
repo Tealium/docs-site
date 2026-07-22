@@ -3,20 +3,24 @@ title: Google Universal Analytics (analytics.js) Tag Setup Guide
 description: This article describes how to configure the Google Universal Analytics tag in your iQ Tag Management account.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-analyticsjs-tag/
 ---
- As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](). 
+
+<blockquote>
+As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/).
+</blockquote>
+
 
 Google Analytics (analytics.js) introduces a set of features that change the way data is collected and organized in your Google Analytics account.
 
 ## Tag tips
 
-* For more information about Google Analytics (analytics.js), see [About Universal Analytics](http://support.google.com/analytics/bin/answer.py?hl=en&amp;answer=2790010&amp;topic=2790009).
+* For more information about Google Analytics (analytics.js), see [About Universal Analytics](http://support.google.com/analytics/bin/answer.py?hl=en&answer=2790010&topic=2790009).
 * To use the Tealium implementation for this tag, use mapping instead of Google API functions
 * For display advertising support information, see [About Advertising Features](http://support.google.com/analytics/answer/3450482).
 * Automatically-generated tracker names take the format of `tealium_X` for the number of accounts defined.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -42,16 +46,16 @@ When adding the tag, configure the following settings:
 * **Global Object**
   * Not required for most implementations.
   * The name of the Global Object used for the event queue,.
-  * If not specified &#34;**ga**&#34; is used.
+  * If not specified "**ga**" is used.
 * **Cross-Tracking Domains**
   * (Optional) Cross-Domain Tracking must be set to **true** for this list to be used.
   * A comma-separated list of domains to use with Cross-Domain Tracking (setAllowLinker).
-  * You must use the fully-qualified domain name, such as &#34;my.tealiumiq.com&#34;, not the top level domain &#34;tealiumiq.com&#34;.
+  * You must use the fully-qualified domain name, such as "my.tealiumiq.com", not the top level domain "tealiumiq.com".
 * **Cross-Domain Tracking**
   * (Optional) Select **On** to enable cross-domain tracking.
   * A comma-separated list of domains to use with Cross-Domain Tracking (setAllowLinker).
-  * Sets the value for &#34;setAllowLinker&#34; and enables the cross-domain tracking plugin.
-  * One or more domains must be specified in the &#34;Cross-Tracking Domains&#34; field or mapped to &#34;crossDomainTrack&#34; to use this feature.
+  * Sets the value for "setAllowLinker" and enables the cross-domain tracking plugin.
+  * One or more domains must be specified in the "Cross-Tracking Domains" field or mapped to "crossDomainTrack" to use this feature.
 * **Transport**
   * Specifies the transport mechanism with which hits are sent.
 * **Enhanced Ecommerce**
@@ -67,7 +71,7 @@ When adding the tag, configure the following settings:
     * `promo_click`
     * `refund`
   * For more information, see the Google [Enhanced E-Commerce](http://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) documentation.
-  * For more information about how to setup enhanced E-Commerce actions through Tealium iQ Tag Management, see [Google Universal Analytics Tag: Enhanced E-Commerce](/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/).
+  * For more information about how to setup enhanced E-Commerce actions through Tealium iQ Tag Management, see [Google Universal Analytics Tag: Enhanced E-Commerce](https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/).
 * **Enhanced Link Attribution**
   * (Optional) When enabled, a request will be made for `linkid.js` on each page.
   * Use the default (**false**) if you are not sure.
@@ -76,7 +80,7 @@ When adding the tag, configure the following settings:
   * (Optional) Enables Google Analytics to collect data about your traffic through the DoubleClick cookie in addition to data collected through the standard Google Analytics implementation.
   * Select **On** to enable GUA to collect data about your traffic through the DoubleClick cookie, in addition to data collected through your standard GUA implementation.
 * **Track Screen Views**
-  * (Optional) Select **On** to enable GUA&#39;s [App/Screen tracking](https://developers.google.com/analytics/devguides/collection/analyticsjs/screens) functionality.
+  * (Optional) Select **On** to enable GUA's [App/Screen tracking](https://developers.google.com/analytics/devguides/collection/analyticsjs/screens) functionality.
   * When enabled, a separate screenview request will be sent after the initial pageview.
   * Enabling allows this tag to track the content that visitors viewed using an app.
 * **Anonymize IP**
@@ -85,7 +89,7 @@ When adding the tag, configure the following settings:
   * This will slightly reduce the accuracy of geographic reporting.
 * **Enable create before Extensions**
   * Optional.
-  * Select **On** to enable to initialize a Tracking ID using GA&#39;s &#34;create&#34; method before extensions run.
+  * Select **On** to enable to initialize a Tracking ID using GA's "create" method before extensions run.
   * Not applicable when Tracking ID is configured with a mapping.
 * **Autofill E-Commerce values**
   * (Optional) Populates product name, unit price and quantity, if not defined.
@@ -111,18 +115,22 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
+
+<blockquote>
 Analytics tags such as Google Universal Analytics are intended to be loaded on all pages, so the default **All Pages** load rule should be selected.
+</blockquote>
+
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
-* If you are tracking e-commerce data, then we recommend that you add and configure the [E-Commerce Extension](). Mapping to e-commerce destinations in the mapping toolbox overrides the e-commerce extension&#39;s mappings.
+* If you are tracking e-commerce data, then we recommend that you add and configure the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/). Mapping to e-commerce destinations in the mapping toolbox overrides the e-commerce extension's mappings.
 * For Google Analytics, additional mapping is not required for basic page tracking. The tag automatically tracks basic page data. Event tracking, campaign tracking, social interaction measurement, content groups, and custom variables are not automatically sent; you must map these manually.
 
-For more information on mapping to Google Universal Analytics, see the [Google Universal Analytics Tag: Advanced Mapping](/client-side-tags/google-universal-analytics-tag-advanced-mapping/) article.
+For more information on mapping to Google Universal Analytics, see the [Google Universal Analytics Tag: Advanced Mapping](https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-advanced-mapping/) article.
 
 The available categories are:
 
@@ -130,86 +138,86 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`tid`|  &lt;ul&gt;&lt;li&gt;Tracking ID&lt;/li&gt;&lt;li&gt;Tracking ID of the Google Analytics property to which you want to send data&lt;/li&gt;&lt;li&gt;Example: **UA-12345678-1**&lt;/li&gt;&lt;li&gt;Use a comma-separated list to send data for multiple properties.&lt;/li&gt;&lt;li&gt;Override Default.&lt;/li&gt;&lt;/ul&gt; |
-|`name`|  &lt;ul&gt;&lt;li&gt;Tracker Name.&lt;/li&gt;&lt;li&gt;Override Default.&lt;/li&gt;&lt;/ul&gt; |
-|`page`|  &lt;ul&gt;&lt;li&gt;Page&lt;/li&gt;&lt;/ul&gt; |
-|`title`|  &lt;ul&gt;&lt;li&gt;Title&lt;/li&gt;&lt;/ul&gt; |
-|`location`|  &lt;ul&gt;&lt;li&gt;Location&lt;/li&gt;&lt;/ul&gt; |
-|`uid`|  &lt;ul&gt;&lt;li&gt;UID&lt;/li&gt;&lt;/ul&gt; |
-|`transport`|  &lt;ul&gt;&lt;li&gt;Transport&lt;/li&gt;&lt;/ul&gt; |
-|`cookieDomain`|  &lt;ul&gt;&lt;li&gt;Cookie Domain&lt;/li&gt;&lt;li&gt;Override Default.&lt;/li&gt;&lt;/ul&gt; |
-|`cookieExpires`|  &lt;ul&gt;&lt;li&gt;Cookie Expires&lt;/li&gt;&lt;/ul&gt; |
-|`legacyCookieDomain`|  &lt;ul&gt;&lt;li&gt;Legacy Cookie Domain&lt;/li&gt;&lt;/ul&gt; |
-|`legacyHistoryImport`|  &lt;ul&gt;&lt;li&gt;Legacy History Import&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`nonInteraction`|  &lt;ul&gt;&lt;li&gt;Non-Interaction&lt;/li&gt;&lt;/ul&gt; |
-|`enhancedLinkAttribution`|  &lt;ul&gt;&lt;li&gt;Enhanced Link Attribution&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`allowLinker`|  &lt;ul&gt;&lt;li&gt;Set Allow Linker&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`crossDomainTrack`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Cross-Domain Tracking&lt;/li&gt;&lt;li&gt;Auto Linking Domains&lt;/li&gt;&lt;li&gt;Sets the value for `setAllowLinker` and enables the cross-domain tracking plug-in.&lt;/li&gt;&lt;li&gt;To use this feature, one or more domains must be specified in the &#34;Cross-Tracking Domains&#34; field or be mapped to `crossDomainTrack`.&lt;/li&gt;&lt;li&gt;Use a comma-separated list for more than one domain.&lt;/li&gt;&lt;/ul&gt; |
-|`siteSpeedSampleRate`|  &lt;ul&gt;&lt;li&gt;Site Speed Sample Rate&lt;/li&gt;&lt;/ul&gt; |
-|`sampleRate`|  &lt;ul&gt;&lt;li&gt;Sample Rate&lt;/li&gt;&lt;/ul&gt; |
-|`autofill_params`|  &lt;ul&gt;&lt;li&gt;Autofill E-Commerce Params&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`optimizely`|  &lt;ul&gt;&lt;li&gt;Optimizely Integration&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`init_before_extensions`|  &lt;ul&gt;&lt;li&gt;Initialize Tracker before Extensions&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`sessionControl`|  &lt;ul&gt;&lt;li&gt;Session control&lt;/li&gt;&lt;li&gt;Values are **start** or **end**.&lt;/li&gt;&lt;/ul&gt; |
-|`anonymizeIp`|  &lt;ul&gt;&lt;li&gt;Anonymize IP&lt;/li&gt;&lt;li&gt;Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.&lt;/li&gt;&lt;li&gt;Slightly reduces the accuracy of geographic reporting.&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`dataSource`|  &lt;ul&gt;&lt;li&gt;Data Source&lt;/li&gt;&lt;li&gt;Examples: web, mobile.&lt;/li&gt;&lt;/ul&gt; |
-|`clear_global_vars`|  &lt;ul&gt;&lt;li&gt;Clear Vars&lt;/li&gt;&lt;li&gt;Clears items usually set for the lifetime of the tracker after each tracking request.&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`clientId`|  &lt;ul&gt;&lt;li&gt;Client ID&lt;/li&gt;&lt;/ul&gt; |
-|`useAmpClientId`|  &lt;ul&gt;&lt;li&gt;Use AMP Client ID&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`set.###`|  &lt;ul&gt;&lt;li&gt;Custom Set Command&lt;/li&gt;&lt;/ul&gt; |
+|`tid`|  <ul><li>Tracking ID</li><li>Tracking ID of the Google Analytics property to which you want to send data</li><li>Example: **UA-12345678-1**</li><li>Use a comma-separated list to send data for multiple properties.</li><li>Override Default.</li></ul> |
+|`name`|  <ul><li>Tracker Name.</li><li>Override Default.</li></ul> |
+|`page`|  <ul><li>Page</li></ul> |
+|`title`|  <ul><li>Title</li></ul> |
+|`location`|  <ul><li>Location</li></ul> |
+|`uid`|  <ul><li>UID</li></ul> |
+|`transport`|  <ul><li>Transport</li></ul> |
+|`cookieDomain`|  <ul><li>Cookie Domain</li><li>Override Default.</li></ul> |
+|`cookieExpires`|  <ul><li>Cookie Expires</li></ul> |
+|`legacyCookieDomain`|  <ul><li>Legacy Cookie Domain</li></ul> |
+|`legacyHistoryImport`|  <ul><li>Legacy History Import</li><li>Values are **true** or **false**.</li></ul> |
+|`nonInteraction`|  <ul><li>Non-Interaction</li></ul> |
+|`enhancedLinkAttribution`|  <ul><li>Enhanced Link Attribution</li><li>Values are **true** or **false**.</li></ul> |
+|`allowLinker`|  <ul><li>Set Allow Linker</li><li>Values are **true** or **false**.</li></ul> |
+|`crossDomainTrack`|  <ul><li>Boolean</li><li>Cross-Domain Tracking</li><li>Auto Linking Domains</li><li>Sets the value for `setAllowLinker` and enables the cross-domain tracking plug-in.</li><li>To use this feature, one or more domains must be specified in the "Cross-Tracking Domains" field or be mapped to `crossDomainTrack`.</li><li>Use a comma-separated list for more than one domain.</li></ul> |
+|`siteSpeedSampleRate`|  <ul><li>Site Speed Sample Rate</li></ul> |
+|`sampleRate`|  <ul><li>Sample Rate</li></ul> |
+|`autofill_params`|  <ul><li>Autofill E-Commerce Params</li><li>Values are **true** or **false**.</li></ul> |
+|`optimizely`|  <ul><li>Optimizely Integration</li><li>Values are **true** or **false**.</li></ul> |
+|`init_before_extensions`|  <ul><li>Initialize Tracker before Extensions</li><li>Values are **true** or **false**.</li></ul> |
+|`sessionControl`|  <ul><li>Session control</li><li>Values are **start** or **end**.</li></ul> |
+|`anonymizeIp`|  <ul><li>Anonymize IP</li><li>Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.</li><li>Slightly reduces the accuracy of geographic reporting.</li><li>Values are **true** or **false**.</li></ul> |
+|`dataSource`|  <ul><li>Data Source</li><li>Examples: web, mobile.</li></ul> |
+|`clear_global_vars`|  <ul><li>Clear Vars</li><li>Clears items usually set for the lifetime of the tracker after each tracking request.</li><li>Values are **true** or **false**.</li></ul> |
+|`clientId`|  <ul><li>Client ID</li></ul> |
+|`useAmpClientId`|  <ul><li>Use AMP Client ID</li><li>Values are **true** or **false**.</li></ul> |
+|`set.###`|  <ul><li>Custom Set Command</li></ul> |
 
 ### Event
 
 |Variable| Description|
 |---| ---|
-|`eventCategory`|  &lt;ul&gt;&lt;li&gt;(Required) Event Category.&lt;/li&gt;&lt;/ul&gt; |
-|`eventAction`|  &lt;ul&gt;&lt;li&gt;(Required) Event Action.&lt;/li&gt;&lt;/ul&gt; |
-|`eventLabel`|  &lt;ul&gt;&lt;li&gt;Event Label&lt;/li&gt;&lt;/ul&gt; |
-|`eventValue`|  &lt;ul&gt;&lt;li&gt;Event Value&lt;/li&gt;&lt;/ul&gt; |
-|`ga_events`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;GA Event Array&lt;/li&gt;&lt;/ul&gt; |
-|`global_event_cb`|  &lt;ul&gt;&lt;li&gt;Global View Callback&lt;/li&gt;&lt;/ul&gt; |
-|`standard_event_cb`|  &lt;ul&gt;&lt;li&gt;Standard Event Callback&lt;/li&gt;&lt;/ul&gt; |
+|`eventCategory`|  <ul><li>(Required) Event Category.</li></ul> |
+|`eventAction`|  <ul><li>(Required) Event Action.</li></ul> |
+|`eventLabel`|  <ul><li>Event Label</li></ul> |
+|`eventValue`|  <ul><li>Event Value</li></ul> |
+|`ga_events`|  <ul><li>Array</li><li>GA Event Array</li></ul> |
+|`global_event_cb`|  <ul><li>Global View Callback</li></ul> |
+|`standard_event_cb`|  <ul><li>Standard Event Callback</li></ul> |
 
 ### Campaign
 
 |Variable| Description|
 |---| ---|
-|`campaignId`|  &lt;ul&gt;&lt;li&gt;Campaign ID&lt;/li&gt;&lt;/ul&gt; |
-|`campaignName`|  &lt;ul&gt;&lt;li&gt;Campaign Name&lt;/li&gt;&lt;/ul&gt; |
-|`campaignSource`|  &lt;ul&gt;&lt;li&gt;Campaign Source&lt;/li&gt;&lt;/ul&gt; |
-|`campaignMedium`|  &lt;ul&gt;&lt;li&gt;Campaign Medium&lt;/li&gt;&lt;/ul&gt; |
-|`campaignContent`|  &lt;ul&gt;&lt;li&gt;Campaign Content&lt;/li&gt;&lt;/ul&gt; |
-|`campaignKeyword`|  &lt;ul&gt;&lt;li&gt;Campaign Keyword&lt;/li&gt;&lt;/ul&gt; |
+|`campaignId`|  <ul><li>Campaign ID</li></ul> |
+|`campaignName`|  <ul><li>Campaign Name</li></ul> |
+|`campaignSource`|  <ul><li>Campaign Source</li></ul> |
+|`campaignMedium`|  <ul><li>Campaign Medium</li></ul> |
+|`campaignContent`|  <ul><li>Campaign Content</li></ul> |
+|`campaignKeyword`|  <ul><li>Campaign Keyword</li></ul> |
 
 ### Social
 
 |Variable| Description|
 |---| ---|
-|`socialNetwork`|  &lt;ul&gt;&lt;li&gt;Social Network&lt;/li&gt;&lt;/ul&gt; |
-|`socialAction`|  &lt;ul&gt;&lt;li&gt;Social Action&lt;/li&gt;&lt;/ul&gt; |
-|`socialTarget`|  &lt;ul&gt;&lt;li&gt;Social Target&lt;/li&gt;&lt;/ul&gt; |
+|`socialNetwork`|  <ul><li>Social Network</li></ul> |
+|`socialAction`|  <ul><li>Social Action</li></ul> |
+|`socialTarget`|  <ul><li>Social Target</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Transaction ID&lt;/li&gt;&lt;/ul&gt; |
-|`affiliation`|  &lt;ul&gt;&lt;li&gt;Store Name/ID&lt;/li&gt;&lt;/ul&gt; |
-|`revenue`|  &lt;ul&gt;&lt;li&gt;Grand Total&lt;/li&gt;&lt;/ul&gt; |
-|`shipping`|  &lt;ul&gt;&lt;li&gt;Shipping&lt;/li&gt;&lt;/ul&gt; |
-|`tax`|  &lt;ul&gt;&lt;li&gt;Tax&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Transaction ID</li></ul> |
+|`affiliation`|  <ul><li>Store Name/ID</li></ul> |
+|`revenue`|  <ul><li>Grand Total</li></ul> |
+|`shipping`|  <ul><li>Shipping</li></ul> |
+|`tax`|  <ul><li>Tax</li></ul> |
 
 ### App / Screen Tracking
 
 |Variable| Description|
 |---| ---|
-|`screenView`|  &lt;ul&gt;&lt;li&gt;Track Screen Views&lt;/li&gt;&lt;li&gt;Enables App/Screen tracking.&lt;/li&gt;&lt;li&gt;When enabled, a separate screenview request is sent after the initial pageview.&lt;/li&gt;&lt;/ul&gt; |
-| `appName` |  &lt;ul&gt;&lt;li&gt;Application Name&lt;/li&gt;&lt;/ul&gt; |
-| `appId` |  &lt;ul&gt;&lt;li&gt;Application ID&lt;/li&gt;&lt;/ul&gt; |
-| `appVersion` |  &lt;ul&gt;&lt;li&gt;Application Version&lt;/li&gt;&lt;/ul&gt; |
-|`appInstallerId`|  &lt;ul&gt;&lt;li&gt;Application Installer ID&lt;/li&gt;&lt;/ul&gt; |
-|`screenName`|  &lt;ul&gt;&lt;li&gt;Screen Name&lt;/li&gt;&lt;/ul&gt; |
-|`exception_reason`|  &lt;ul&gt;&lt;li&gt;Exception description&lt;/li&gt;&lt;/ul&gt; |
+|`screenView`|  <ul><li>Track Screen Views</li><li>Enables App/Screen tracking.</li><li>When enabled, a separate screenview request is sent after the initial pageview.</li></ul> |
+| `appName` |  <ul><li>Application Name</li></ul> |
+| `appId` |  <ul><li>Application ID</li></ul> |
+| `appVersion` |  <ul><li>Application Version</li></ul> |
+|`appInstallerId`|  <ul><li>Application Installer ID</li></ul> |
+|`screenName`|  <ul><li>Screen Name</li></ul> |
+|`exception_reason`|  <ul><li>Exception description</li></ul> |
 
 ### Content Groups
 
@@ -279,44 +287,44 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`enh_action`|  &lt;ul&gt;&lt;li&gt;E-Commerce Action&lt;/li&gt;&lt;/ul&gt; |
-| `enh_event_cb` |  &lt;ul&gt;&lt;li&gt;E-Commerce Event Callback&lt;/li&gt;&lt;/ul&gt; |
-| `enh_checkout_step` |  &lt;ul&gt;&lt;li&gt;Checkout step&lt;/li&gt;&lt;/ul&gt; |
-| `enh_checkout_option` |  &lt;ul&gt;&lt;li&gt;Checkout option&lt;/li&gt;&lt;/ul&gt; |
-| `order_id` |  &lt;ul&gt;&lt;li&gt;Transaction ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-| `affiliation` |  &lt;ul&gt;&lt;li&gt;Store Name/ID&lt;/li&gt;&lt;li&gt;Overrides `_cstore`.&lt;/li&gt;&lt;/ul&gt; |
-| `revenue` |  &lt;ul&gt;&lt;li&gt;Grand Total&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;/ul&gt; |
-| `shipping` |  &lt;ul&gt;&lt;li&gt;Shipping&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-| `tax` |  &lt;ul&gt;&lt;li&gt;Tax&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-| `coupon` |  &lt;ul&gt;&lt;li&gt;Coupon&lt;/li&gt;&lt;li&gt;Overrides `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-| `product_id` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of IDs&lt;/li&gt;&lt;/ul&gt; |
-| `product_name` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names&lt;/li&gt;&lt;/ul&gt; |
-| `product_category` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories&lt;/li&gt;&lt;/ul&gt; |
-| `product_brand` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Brands&lt;/li&gt;&lt;/ul&gt; |
-| `product_variant` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Variants&lt;/li&gt;&lt;/ul&gt; |
-| `product_unit_price` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;/ul&gt; |
-| `product_quantity` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;/ul&gt; |
-| `product_discount` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Discounts&lt;/li&gt;&lt;/ul&gt; |
-| `product_action_list` |  &lt;ul&gt;&lt;li&gt;Product Action List&lt;/li&gt;&lt;/ul&gt; |
-| `product_position` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Position&lt;/li&gt;&lt;/ul&gt; |
+|`enh_action`|  <ul><li>E-Commerce Action</li></ul> |
+| `enh_event_cb` |  <ul><li>E-Commerce Event Callback</li></ul> |
+| `enh_checkout_step` |  <ul><li>Checkout step</li></ul> |
+| `enh_checkout_option` |  <ul><li>Checkout option</li></ul> |
+| `order_id` |  <ul><li>Transaction ID</li><li>Overrides `_corder`.</li></ul> |
+| `affiliation` |  <ul><li>Store Name/ID</li><li>Overrides `_cstore`.</li></ul> |
+| `revenue` |  <ul><li>Grand Total</li><li>Overrides `_ctotal`.</li></ul> |
+| `shipping` |  <ul><li>Shipping</li><li>Overrides `_cship`.</li></ul> |
+| `tax` |  <ul><li>Tax</li><li>Overrides `_ctax`.</li></ul> |
+| `coupon` |  <ul><li>Coupon</li><li>Overrides `_cpromo`.</li></ul> |
+| `product_id` |  <ul><li>Array</li><li>List of IDs</li></ul> |
+| `product_name` |  <ul><li>Array</li><li>List of Names</li></ul> |
+| `product_category` |  <ul><li>Array</li><li>List of Categories</li></ul> |
+| `product_brand` |  <ul><li>Array</li><li>List of Brands</li></ul> |
+| `product_variant` |  <ul><li>Array</li><li>List of Variants</li></ul> |
+| `product_unit_price` |  <ul><li>Array</li><li>List of Prices</li></ul> |
+| `product_quantity` |  <ul><li>Array</li><li>List of Quantities</li></ul> |
+| `product_discount` |  <ul><li>Array</li><li>List of Discounts</li></ul> |
+| `product_action_list` |  <ul><li>Product Action List</li></ul> |
+| `product_position` |  <ul><li>Array</li><li>Product Position</li></ul> |
 
 ### Enh E-Comm: Impressions/Promo
 
 |Variable| Description|
 |---| ---|
-|`enh_impression_id`|  &lt;ul&gt;&lt;/ul&gt; |
-|`enh_impression_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Name&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Category&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_brand`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Brand&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_variant`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Variant&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Price&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_list`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression List&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_position`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Position&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion ID&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Name&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_creative`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Creative&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_position`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Position&lt;/li&gt;&lt;/ul&gt; |
+|`enh_impression_id`|  <ul></ul> |
+|`enh_impression_name`|  <ul><li>Array</li><li>Product Impression Name</li></ul> |
+|`enh_impression_category`|  <ul><li>Array</li><li>Product Impression Category</li></ul> |
+|`enh_impression_brand`|  <ul><li>Array</li><li>Product Impression Brand</li></ul> |
+|`enh_impression_variant`|  <ul><li>Array</li><li>Product Impression Variant</li></ul> |
+|`enh_impression_price`|  <ul><li>Array</li><li>Product Impression Price</li></ul> |
+|`enh_impression_list`|  <ul><li>Array</li><li>Product Impression List</li></ul> |
+|`enh_impression_position`|  <ul><li>Array</li><li>Product Impression Position</li></ul> |
+|`enh_promo_id`|  <ul><li>Array</li><li>Promotion ID</li></ul> |
+|`enh_promo_name`|  <ul><li>Array</li><li>Promotion Name</li></ul> |
+|`enh_promo_creative`|  <ul><li>Array</li><li>Promotion Creative</li></ul> |
+|`enh_promo_position`|  <ul><li>Array</li><li>Promotion Position</li></ul> |
 
 ## Vendor documentation
 
-* [Adding analytics.js to Your Site (**Google Analytics** &amp;gt; **Tracking**)](https://developers.google.com/analytics/devguides/collection/analyticsjs/)
+* [Adding analytics.js to Your Site (**Google Analytics** &gt; **Tracking**)](https://developers.google.com/analytics/devguides/collection/analyticsjs/)

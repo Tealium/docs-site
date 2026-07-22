@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/client-side-tags/oracle-cx-tag/
 
 ## タグの構成
 
-まず、タグマーケットプレイスに移動し、Oracle CXタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、タグマーケットプレイスに移動し、Oracle CXタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います:
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/client-side-tags/oracle-cx-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです:
 
@@ -95,7 +95,7 @@ url: https://docs.tealium.com/ja/client-side-tags/oracle-cx-tag/
 |`wt.si_n`| シナリオ名|
 |`wt.si_p`| シナリオステップ名|
 |`wt.si_x`| シナリオステップ番号|
-|`wt.tx_cartid`|  &lt;ul&gt;&lt;li&gt;カートID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`wt.tx_cartid`|  <ul><li>カートID</li><li>`_corder`を上書きします。</li></ul> |
 |`wt.tx_s`| トランザクション小計|
 |`wt.tx_u`| 単位|
 |`wt.tx_e`| トランザクションイベントタイプ|

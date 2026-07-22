@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/client-side-tags/lytics-tag/
 
 ## タグの構成
 
-まず、タグマーケットプレイスに移動し、Lyticsタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、タグマーケットプレイスに移動し、Lyticsタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/lytics-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からのデータをベンダータグの対応する宛先変数に送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からのデータをベンダータグの対応する宛先変数に送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

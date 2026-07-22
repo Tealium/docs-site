@@ -19,7 +19,7 @@ url: https://docs.tealium.com/client-side-tags/fullstory-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,7 +30,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -38,39 +38,39 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`fs_debug`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Enable FullStory Debugging&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`get_fs_session_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Get FullStory Session ID&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`get_tealium_session_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Get Tealium Session ID&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`get_tealium_visitor_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Get Tealium Visitor ID&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`fs_consent`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;User Tracking Consent&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`fs_script`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Script URL&lt;/li&gt;&lt;/ul&gt; |
+|`fs_debug`|  <ul><li>String</li><li>Enable FullStory Debugging</li><li>Values are **true** or **false**.</li></ul> |
+|`get_fs_session_id`|  <ul><li>String</li><li>Get FullStory Session ID</li><li>Values are **true** or **false**.</li></ul> |
+|`get_tealium_session_id`|  <ul><li>String</li><li>Get Tealium Session ID</li><li>Values are **true** or **false**.</li></ul> |
+|`get_tealium_visitor_id`|  <ul><li>String</li><li>Get Tealium Visitor ID</li><li>Values are **true** or **false**.</li></ul> |
+|`fs_consent`|  <ul><li>String</li><li>User Tracking Consent</li><li>Values are **true** or **false**.</li></ul> |
+|`fs_script`|  <ul><li>String</li><li>Script URL</li></ul> |
 
 ### User Parameters
 
 |Variable| Description|
 |---| ---|
-|`uid`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;User ID&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.displayName`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;User Display Name&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.email`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;User Email&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.custom`|  &lt;ul&gt;&lt;li&gt;Custom User Var&lt;/li&gt;&lt;/ul&gt; |
+|`uid`|  <ul><li>String</li><li>User ID</li></ul> |
+|`uservars.displayName`|  <ul><li>String</li><li>User Display Name</li></ul> |
+|`uservars.email`|  <ul><li>String</li><li>User Email</li></ul> |
+|`uservars.custom`|  <ul><li>Custom User Var</li></ul> |
 
 ### Events
 
 |Variable| Description|
 |---| ---|
-|`fs_event_name`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Event Name&lt;/li&gt;&lt;/ul&gt; |
-|`fs_event_source`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Event Source&lt;/li&gt;&lt;/ul&gt; |
-|`s_event.custom`|  &lt;ul&gt;&lt;li&gt;Individual Custom Event Parameter&lt;/li&gt;&lt;/ul&gt; |
-|`fs_event_object`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;Full Event Object&lt;/li&gt;&lt;/ul&gt; |
+|`fs_event_name`|  <ul><li>String</li><li>Event Name</li></ul> |
+|`fs_event_source`|  <ul><li>String</li><li>Event Source</li></ul> |
+|`s_event.custom`|  <ul><li>Individual Custom Event Parameter</li></ul> |
+|`fs_event_object`|  <ul><li>Object</li><li>Full Event Object</li></ul> |
 
 ### Page Events
 
 |Variable| Description|
 |---| ---|
-|`fs_page.pageName`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Page Name&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.category`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Page Category&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.title`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Page Title&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.url`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Page URL&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.image_url`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Page Image URL&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.custom`|  &lt;ul&gt;&lt;li&gt;Individual Custom Page Parameter&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page_object`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;Full Page Object&lt;/li&gt;&lt;/ul&gt; |
+|`fs_page.pageName`|  <ul><li>String</li><li>Page Name</li></ul> |
+|`fs_page.category`|  <ul><li>String</li><li>Page Category</li></ul> |
+|`fs_page.title`|  <ul><li>String</li><li>Page Title</li></ul> |
+|`fs_page.url`|  <ul><li>String</li><li>Page URL</li></ul> |
+|`fs_page.image_url`|  <ul><li>String</li><li>Page Image URL</li></ul> |
+|`fs_page.custom`|  <ul><li>Individual Custom Page Parameter</li></ul> |
+|`fs_page_object`|  <ul><li>Object</li><li>Full Page Object</li></ul> |

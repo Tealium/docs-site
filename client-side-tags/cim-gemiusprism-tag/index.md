@@ -20,12 +20,12 @@ url: https://docs.tealium.com/client-side-tags/cim-gemiusprism-tag/
 * The vertical bar (**|**) and the equal sign (**=**) symbols are not allowed in parameters.
 * The slash (**/**) character can be used as a separator between levels of the structure and therefore cannot be used in the name of one node of the tree
 * Letters with accent marks (á, ą, â, ă, ä, etc.) are not allowed and must be changed to Latin letters
-* The following characters are not allowed in the values of parameters &#39;lan&#39; and &#39;key&#39;
-  * \{ \} [ ] ()&#34; &#39; ~ \` ! @ # $ % ^ &amp; \* ? ; , : / | =
+* The following characters are not allowed in the values of parameters 'lan' and 'key'
+  * \{ \} [ ] ()" ' ~ \` ! @ # $ % ^ & \* ? ; , : / | =
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -38,7 +38,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/awin-tag/
 ---
 ## Tag Tips
 
-* We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see [Awin Conversions Connector]().
+* We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see [Awin Conversions Connector](https://docs.tealium.com/awin-conversions-connector/).
 * Use mapping to:  
   * Override the standard config values. 
   * Override the E-Commerce extension values.
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/client-side-tags/awin-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Awin tag. For more information, see [Manage tags]()).
+First, go to Tealium's tag marketplace and add the Awin tag. For more information, see [Manage tags](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -37,7 +37,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

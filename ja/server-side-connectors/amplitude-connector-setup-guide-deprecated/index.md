@@ -3,7 +3,11 @@ title: Amplitudeコネクタ構成ガイド（廃止）
 description: この記事では、Customer Data HubアカウントでAmplitudeコネクタを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/amplitude-connector-setup-guide-deprecated/
 ---
-このコネクタは現在廃止され、コネクタマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Amplitude Connector]()を参照してください。
+
+<blockquote>
+このコネクタは現在廃止され、コネクタマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Amplitude Connector](https://docs.tealium.com/amplitude-connector/)を参照してください。
+</blockquote>
+
 
 ## コネクタのアクション
 
@@ -13,12 +17,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/amplitude-connector-setu
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **APIキー**  
-**構成 &amp;gt; プロジェクト**の下にあります。
+**構成 &gt; プロジェクト**の下にあります。
 
 ## アクション構成 - パラメータとオプション
 
@@ -32,7 +36,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amplitude-connector-setu
 
 | **パラメータ**    | **説明**                                                                                                                                                                                                                                                                                                                       |
 |:-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| イベントプロパティ | &lt;ul&gt;&lt;li&gt;オプション。&lt;/li&gt;&lt;li&gt;イベントと一緒に送信される追加データを表すキーと値のペアの辞書。&lt;/li&gt;&lt;li&gt;空の値はスキップされ、含まれません。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                |
-| ユーザープロパティ  | &lt;ul&gt;&lt;li&gt;オプション。&lt;/li&gt;&lt;li&gt;ユーザーに関連する追加データを表すキーと値のペアの辞書。&lt;/li&gt;&lt;li&gt;各異なる値はAmplitudeダッシュボード上でユーザーセグメントとして表示されます。&lt;/li&gt;&lt;li&gt;空の値はスキップされ、含まれません。&lt;/li&gt;&lt;/ul&gt;                                                                             |
-| グループ           | &lt;ul&gt;&lt;li&gt;オプション。&lt;/li&gt;&lt;li&gt;エンタープライズ専用。&lt;/li&gt;&lt;li&gt;ユーザーグループを表すキーと値のペアの辞書。&lt;/li&gt;&lt;li&gt;グループについての詳細は、次の[ JavaScript SDK excerpt](https://github.com/amplitude/Amplitude-Javascript#setting-groups)を参照してください。&lt;/li&gt;&lt;li&gt;空の値はスキップされ、含まれません。&lt;/li&gt;&lt;/ul&gt; |
+| イベントプロパティ | <ul><li>オプション。</li><li>イベントと一緒に送信される追加データを表すキーと値のペアの辞書。</li><li>空の値はスキップされ、含まれません。</li></ul>                                                                                                                                                |
+| ユーザープロパティ  | <ul><li>オプション。</li><li>ユーザーに関連する追加データを表すキーと値のペアの辞書。</li><li>各異なる値はAmplitudeダッシュボード上でユーザーセグメントとして表示されます。</li><li>空の値はスキップされ、含まれません。</li></ul>                                                                             |
+| グループ           | <ul><li>オプション。</li><li>エンタープライズ専用。</li><li>ユーザーグループを表すキーと値のペアの辞書。</li><li>グループについての詳細は、次の[ JavaScript SDK excerpt](https://github.com/amplitude/Amplitude-Javascript#setting-groups)を参照してください。</li><li>空の値はスキップされ、含まれません。</li></ul> |
 

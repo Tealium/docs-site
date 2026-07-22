@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/uplift-tag/
 
 ### Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -20,7 +20,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -28,5 +28,5 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`acct`|  &lt;ul&gt;&lt;li&gt;UP Code&lt;/li&gt;&lt;/ul&gt; |
-|`domain`|  &lt;ul&gt;&lt;li&gt;Domain&lt;/li&gt;&lt;li&gt;Deprecated&lt;/li&gt;&lt;/ul&gt; |
+|`acct`|  <ul><li>UP Code</li></ul> |
+|`domain`|  <ul><li>Domain</li><li>Deprecated</li></ul> |

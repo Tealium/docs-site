@@ -3,9 +3,13 @@ title: Webhook OAuth2 2-legged mTLS コネクタ
 description: Tealiumが生成した相互TLSクライアント証明書を使用してエンドポイントで認証するためのWebhookコネクタを構成します。
 url: https://docs.tealium.com/ja/administration/early-access/server-side-connectors/webhook-oauth2-2-legged-mtls/
 --- 
-Webhook OAuth2 2-legged mTLSコネクタは現在Early Access中で、選ばれた顧客のみが利用可能です。開始するにはTealiumサポート担当者に連絡してください。
 
-Webhook OAuth2 2-legged mTLSコネクタは、[OAuth2 2-legged webhook認証]()に相互TLS（mTLS）を拡張します。クライアントシークレットを使用する代わりに、TealiumはTLSハンドシェイク中にエンドポイントにDigiCert発行のクライアント証明書を提示します。
+<blockquote>
+Webhook OAuth2 2-legged mTLSコネクタは現在Early Access中で、選ばれた顧客のみが利用可能です。開始するにはTealiumサポート担当者に連絡してください。
+</blockquote>
+
+
+Webhook OAuth2 2-legged mTLSコネクタは、[OAuth2 2-legged webhook認証](https://docs.tealium.com/webhook-authentication/#oauth2-2-legged)に相互TLS（mTLS）を拡張します。クライアントシークレットを使用する代わりに、TealiumはTLSハンドシェイク中にエンドポイントにDigiCert発行のクライアント証明書を提示します。
 
 ## 動作方法
 
@@ -34,4 +38,4 @@ WebhookコネクタのmTLS認証を構成するには：
 1. **キーアルゴリズム** を選択し、**生成** をクリックします。
 1. **証明書をダウンロード** をクリックし、APIゲートウェイまたはサーバーの管理者に証明書を提供します。
 
-その他のWebhook構成については、を参照してください。
+その他のWebhook構成については、[webhook-actions](https://docs.tealium.com/webhook-actions/)を参照してください。

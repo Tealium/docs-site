@@ -10,7 +10,7 @@ url: https://docs.tealium.com/client-side-tags/agilone-webtag-tag/
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the AgilOne Web Tag Tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the AgilOne Web Tag Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the Tag, configure the below settings:
 
@@ -18,13 +18,13 @@ After adding the Tag, configure the below settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this Tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag on your site.
 
 Recommended Load Rule: **Load on all pages**
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [Data Layer Variable]() to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see Data Mappings.
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see Data Mappings.
 
 The destination variables for the AgilOne Web Tag Tag are built into its Data Mapping tab. Available categories are:
 
@@ -40,7 +40,11 @@ The destination variables for the AgilOne Web Tag Tag are built into its Data Ma
 |Event Entity Time| (Optional) timestamp of when the event is triggered. AgilOne recommends sending this value ONLY if the timestamp does not equal the time when the event is sent.|
 |Event Entity Custom Data*| Additional data to send with the Event Entity|
 
+
+<blockquote>
 The Event Entity Custom Data is not the same as the Event Custom Data category.
+</blockquote>
+
 
 ### E-Commerce
 
@@ -82,8 +86,8 @@ Since the AgilOne Web Tag Tag is e-commerce enabled, it will automatically use t
 
 |**Destination Name**| **Description**|
 |---| ---|
-|Customer Email| Customer&#39;s email address|
-|Customer UUID| Customer&#39;s UUID|
+|Customer Email| Customer's email address|
+|Customer UUID| Customer's UUID|
 |Customer Preference DNE| Email opt-out value|
 |Customer Preference DNM| Postal opt-out value|
 |Customer Preference DNC| Phone opt-out value|
@@ -99,7 +103,11 @@ Map to these destinations to send data for the current cart items.
 |Current Cart Quantity| Quantity of each item in the cart|
 |Current Cart Custom Data| Custom data associated each item in the cart|
 
+
+<blockquote>
 To send data for cart updates (addition or removal), use the `_cprod` E-Commerce mapping. Refer to the [Sending Cart Updates section](#sending-cart-updates) for more.
+</blockquote>
+
 
 ### Event Custom Data
 
@@ -116,7 +124,7 @@ Use these mappings to send additional data for [standard events](#triggering-sta
 
 ## Triggering Standard Events
 
-Standard events supported by AgilOne are triggered through the [Tealium Events Extension](). That means you don&#39;t have to map the event name or trigger value for any event that is supported through the Extension. The Extension introduces standardized event names into your solution, along with a new Data Layer Variable called `tealium_event`. Each event is assigned a custom condition that matches your data layer implementation. When an event condition evaluates to `true`, the `tealium_event` is set to a pre-defined event value. Tealium&#39;s AgilOne Webtag template reads the predefined value and accordingly fires the event. For example, when the condition for &#34;Add to Cart&#34; evalutes to `true`, `tealium_event` will be set to `cart_add` and the cart event fires on the cart page.
+Standard events supported by AgilOne are triggered through the [Tealium Events Extension](https://docs.tealium.com/tealium-events-extension/). That means you don't have to map the event name or trigger value for any event that is supported through the Extension. The Extension introduces standardized event names into your solution, along with a new Data Layer Variable called `tealium_event`. Each event is assigned a custom condition that matches your data layer implementation. When an event condition evaluates to `true`, the `tealium_event` is set to a pre-defined event value. Tealium's AgilOne Webtag template reads the predefined value and accordingly fires the event. For example, when the condition for "Add to Cart" evalutes to `true`, `tealium_event` will be set to `cart_add` and the cart event fires on the cart page.
 
 Full list of events supported for AgilOne through Tealium Events Extension:
 
@@ -133,7 +141,11 @@ Full list of events supported for AgilOne through Tealium Events Extension:
 |Empty Cart| `cart_empty`| Tealium Events|
 |Checkout| `checkout`| Tealium Events|
 
+
+<blockquote>
 To send additional custom data with a standard event, map in the [Event Custom Data mappings under Standard Category](#event-custom-data).
+</blockquote>
+
 
 ### Triggering Non-standard Events
 
@@ -141,28 +153,36 @@ If the event you want to trigger is not offered in the Tealium Events Extension,
 
 The Brand View event is an example of a non-standard event. Follow these steps to trigger the event:
 
-1. [Add and configure a new Set Data Values Extension]() from the Extension marketplace.
+1. [Add and configure a new Set Data Values Extension](https://docs.tealium.com/set-data-values-extension/) from the Extension marketplace.
 
 1. Scope it to AgilOne Webtag.
 
 1. Set the `event_name` Data Variable to the text `brand_view`. Remember: the `brand_view` value is predefined in the template and cannot be changed.
 
-1. Add an event condition to evaluate the customer&#39;s brand view action. For example, `event_type` equals `brand_view`.
-If you don&#39;t find the Variable you are looking, you may add it on the fly.
+1. Add an event condition to evaluate the customer's brand view action. For example, `event_type` equals `brand_view`.
 
-1. Go to the Tag&#39;s Data Mappings tab and map the `event_name` Variable to the Event Name destination (Standard category).
+<blockquote>
+If you don't find the Variable you are looking, you may add it on the fly.
+</blockquote>
+
+
+1. Go to the Tag's Data Mappings tab and map the `event_name` Variable to the Event Name destination (Standard category).
 
 ### Sending Cart Updates
 
 Adding and removing items from a cart are treated as standard events and, therefore, easily triggered by the Tealium Events Extension. Sending data for the final cart (including the added or removed items) is a three-step process:
 
 1. Configure the Tealium Events Extension to trigger the cart addition/removal event.
-1. Go to the Tag&#39;s Current Cart mappings and map to the destinations of choice.
+1. Go to the Tag's Current Cart mappings and map to the destinations of choice.
 1. Go to the E-Commerce Extension and map the newly added or removed cart item to `_cprod`. This will capture the updated cart items separately.
 
 When the add-to-cart/remove-from-cart event fires on a page, our Tag template will automatically piece together the added/removed item(s) with the current cart data and send the complete cart list.
 
+
+<blockquote>
 To correctly identify a removed cart item, you must map it to both E-Commerce `cprod` and Current Cart.
+</blockquote>
+
 
 ### Vendor Documentation
 

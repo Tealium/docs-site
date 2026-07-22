@@ -14,11 +14,15 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
-* **Access Token**: (Required) Access Token of the Facebook System User.  When authenticating the connector using an Access Token, we recommend that you use a Business System User access token. Unlike User access tokens, which expire frequently and require regeneration every few hours, Business System User tokens offer extended validity (typically up to 60 days) providing a more stable and reliable authentication method. To obtain a Business System User access token, you must create a System User in your Facebook Business Manager, assign the necessary assets and permissions, and then generate a token in the Facebook App dashboard. For detailed instructions, see [WhatsApp: Get System User Access Tokens for the WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#system-user-access-token). 
+* **Access Token**: (Required) Access Token of the Facebook System User. 
+<blockquote>
+When authenticating the connector using an Access Token, we recommend that you use a Business System User access token. Unlike User access tokens, which expire frequently and require regeneration every few hours, Business System User tokens offer extended validity (typically up to 60 days) providing a more stable and reliable authentication method. To obtain a Business System User access token, you must create a System User in your Facebook Business Manager, assign the necessary assets and permissions, and then generate a token in the Facebook App dashboard. For detailed instructions, see [WhatsApp: Get System User Access Tokens for the WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#system-user-access-token).
+</blockquote>
+
 
 Click **Done** when you are finished configuring the connector.
 
@@ -62,5 +66,5 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Send From| Phone Number ID you want to send a message from.|
 |Send To| WhatsApp ID or phone number you want to send a message to. For more information, see [WhatsApp: Phone Numbers, Formatting](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/phone-numbers#formatting).|
-|Message Template| Provide the message template. For usage examples, see [WhatsApp: Send Message Templates](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates).&lt;br&gt; The template expects a valid JSON object format.&lt;br&gt; You can use template variables specified in the **Message Template Variables** section. For more information, see .|
-|Message Template Variables| Provide template variables as data input for the **Message Template**. For more information, see .&lt;br&gt; Name nested template variables with the dot notation (Example: `items.name`).&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
+|Message Template| Provide the message template. For usage examples, see [WhatsApp: Send Message Templates](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates).<br> The template expects a valid JSON object format.<br> You can use template variables specified in the **Message Template Variables** section. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).|
+|Message Template Variables| Provide template variables as data input for the **Message Template**. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation (Example: `items.name`).<br> Nested template variables are typically built from data layer list attributes.|

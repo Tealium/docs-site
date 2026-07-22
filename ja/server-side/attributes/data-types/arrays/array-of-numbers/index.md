@@ -19,9 +19,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/array-
 
 数値の配列は、次のスコープで利用可能です：イベント、訪問、訪問。
 
-![](/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
 
+
+<blockquote>
 数値の文字列表現（`0`, `123`, `12.95`）は数値に変換されます。その他の非数値は無視されます。
+</blockquote>
+
 
 ## エンリッチメント
 

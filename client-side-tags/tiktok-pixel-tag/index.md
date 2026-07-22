@@ -9,35 +9,39 @@ url: https://docs.tealium.com/client-side-tags/tiktok-pixel-tag/
 *   By default, the tag template detects if mapped product parameters contain a single or multiple products per event. If a single product is detected, the individual TikTok product variables (`content_id`, `content_category`, `content_name`) are used. If multiple products are detected, the `contents` array is automatically populated and used.
 *   By default, the `Identify` method is automatically sent for each event where user data (hashed or un-hashed email or phone number) is populated. Disable this in the tag configuration. As a best practice, TikTok automatically hashes raw customer information with SHA256 before the value enters their servers for matching.
 *   For TikTok to collect an unhashed email, it must detect the `@` character in the value and it must end with a domain designation.
-*   For TikTok to collect an unhashed phone number, the values must follow the E.164 format: `&#43;{country code}{phone number}`. For example, `&#43;14135552671` (US), `&#43;442071838750` (GB), and `&#43;551155256325` (BR).
+*   For TikTok to collect an unhashed phone number, the values must follow the E.164 format: `+{country code}{phone number}`. For example, `+14135552671` (US), `+442071838750` (GB), and `+551155256325` (BR).
 *   Use the Crypto Extension to encrypt and populate the hashed email and phone number values.
 *   The `value` parameter is automatically calculated and set based on product prices and quantities.
 *   By default, the TikTok pixel base code tracks a `Pageview` event on every page. Disable this in the tag configuration or with a data mapping for `auto_page_tracking`.
 *   By default, the `CompletePayment` event occurs when an order ID is populated. Disable this in the tag configuration or with a data mapping for `auto_purchase_tracking`.
 
-  Custom or non-standard parameters are not processed by TikTok. Advertisers can request a custom report from their TikTok account representative to calculate metrics for the custom parameters.
+  
+<blockquote>
+Custom or non-standard parameters are not processed by TikTok. Advertisers can request a custom report from their TikTok account representative to calculate metrics for the custom parameters.
+</blockquote>
+
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Pixel ID**: Your TikTok Pixel ID.
 * **Content Type**: Sets `content_type` to determine how to track products based on the format of your product catalog. Select `Product` to track events associated with individual products (commonly formatted as a SKU) or select `Product Group` to track events associated with product groups (often a prefix in the product ID). For more information, see [TikTok: About parameters](https://ads.tiktok.com/help/article/about-parameters?lang=en).
-* **Generate Event ID**: If enabled, use with the [TikTok Events connector]() and map the event ID parameter in the connector to synchronize web and server based integrations. This feature requires an active Tealium Collect tag.
+* **Generate Event ID**: If enabled, use with the [TikTok Events connector](https://docs.tealium.com/tiktok-events-connector/) and map the event ID parameter in the connector to synchronize web and server based integrations. This feature requires an active Tealium Collect tag.
 * **Automatic Pageview Tracking**: Automatically track the `Pageview` event on every page. Override this setting by mapping `auto_page_tracking`.
 * **Automatic Purchase Tracking**: Automatically track the `CompletePayment` event when an order ID is detected. Override this setting by mapping `auto_purchase_tracking`.
 * **Automatic Identity Tracking**: Enable the TikTok Advanced Matching feature that helps you match customer information such as email, phone number, and other identifiers with actions people take on your website. When enabled, the tag calls `ttq.identify()` for every event where user data (email or phone number) is detected. For more information, see [TiKTok: About advanced matching for web](https://ads.tiktok.com/help/article/advanced-matching-web).
-* **Limited Data Use**: A feature to help facilitate advertiser&#39;s compliance with the right to opt-out of sale and sharing of personal data under certain U.S. state privacy laws. For more information, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1770092377990145).
+* **Limited Data Use**: A feature to help facilitate advertiser's compliance with the right to opt-out of sale and sharing of personal data under certain U.S. state privacy laws. For more information, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1770092377990145).
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -81,7 +85,7 @@ The available categories are:
 
 ### Events
 
-For more information about mapping events, see [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information about mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|
@@ -144,8 +148,8 @@ For more information about mapping events, see [Create an Event Mapping](/iq-tag
 | `destination.city` | `String` | Destination city location |
 | `destination.region` | `String` | Destination region |
 | `destination.country` | `String` | Destination country |
-| `destination.travel_start` | `String` | The start date of user&#39;s trip. Accepted date formats: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, and `YYYY-MM-DDThh:mm:ssTZD`. Examples: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, and `2025-06-23T15:30:00GMT`. |
-| `destination.travel_end` | `String` | The end date of user&#39;s trip. Accepted date formats: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, and `YYYY-MM-DDThh:mm:ssTZD`. Examples: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, and `2025-06-23T15:30:00GMT`. |
+| `destination.travel_start` | `String` | The start date of user's trip. Accepted date formats: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, and `YYYY-MM-DDThh:mm:ssTZD`. Examples: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, and `2025-06-23T15:30:00GMT`. |
+| `destination.travel_end` | `String` | The end date of user's trip. Accepted date formats: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, and `YYYY-MM-DDThh:mm:ssTZD`. Examples: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, and `2025-06-23T15:30:00GMT`. |
 | `destination.num_adults` | `Number` | Number of people |
 | `destination.num_children` | `Number` | Number of children |
 | `destination.num_infants` | `Number` | Number of infants |

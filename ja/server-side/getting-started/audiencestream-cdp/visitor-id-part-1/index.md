@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 このステップでは、すでに `email_address` のイベント属性と、それを送信する `user_register` というイベントがあることを前提としています。ここから、メールアドレスのための文字列訪問属性を作成し、オーディエンスディスカバリーでテストした後、最終的な訪問ID属性を作成します。
 
-1. **Transform &gt; Visitor / Visit Attributes** に移動し、**&#43; Add Attribute** をクリックします。
+1. **Transform > Visitor / Visit Attributes** に移動し、**+ Add Attribute** をクリックします。
 1. スコープを **Visitor** に構成し、**Continue** をクリックします。
 1. データタイプ **String** を選択し、**Continue** をクリックします。
 1. 属性名に `Email Address` を入力します。
@@ -20,9 +20,9 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;user_register&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "user_register"
     }
   ]
 ]

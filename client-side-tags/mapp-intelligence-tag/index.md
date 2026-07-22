@@ -14,7 +14,7 @@ Mapp Intelligence offers analysts and marketers in depth analyses and valuable i
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -42,11 +42,11 @@ When adding the tag, configure the following settings:
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -219,7 +219,7 @@ The available categories are:
 | Custom Parameter 49                             |             |
 | Custom Parameter 50                             |             |
 
-### Search &amp; Form Tracking
+### Search & Form Tracking
 
 | Variable                                           | Description      |
 |:---------------------------------------------------|:-----------------|
@@ -315,12 +315,12 @@ The available categories are:
 | Order Total (`order_total`)             | (Overrides `_ctotal` )                                        |
 | Currency (`order_currency`)             | (Overrides `_ccurrency` )                                     |
 | Coupon Value (`order_couponValue`)      |                                                               |
-| List of Names (`product_name`)          | [Array]&lt;br&gt; (Overrides `_cprodname` )                         |
-| List of Quantities (`product_quantity`) | [Array]&lt;br&gt; (Overrides `_cquan` )                             |
-| List of Prices (`product_unit_price`)   | [Array] &lt;br&gt; (Overrides `_cprice` )                           |
-| productCategory (`product_category`)    | [Array] &lt;br&gt; List of Categories &lt;br&gt; (Overrides `_ccat` )     |
-| productCategory (`product_brand`)       | [Array]&lt;br&gt; List of Brands &lt;br&gt; (Overrides `_cbrand` )        |
-| productCategory (`product_subcategory`) | [Array]&lt;br&gt; List of Sub Categories &lt;br&gt; (Overrides `_ccat2` ) |
+| List of Names (`product_name`)          | [Array]<br> (Overrides `_cprodname` )                         |
+| List of Quantities (`product_quantity`) | [Array]<br> (Overrides `_cquan` )                             |
+| List of Prices (`product_unit_price`)   | [Array] <br> (Overrides `_cprice` )                           |
+| productCategory (`product_category`)    | [Array] <br> List of Categories <br> (Overrides `_ccat` )     |
+| productCategory (`product_brand`)       | [Array]<br> List of Brands <br> (Overrides `_cbrand` )        |
+| productCategory (`product_subcategory`) | [Array]<br> List of Sub Categories <br> (Overrides `_ccat2` ) |
 | Product Status (`productStatus`)        |                                                               |
 | Payment Method (`paymentMethod`)        | [String]                                                      |
 | Shipping Service (`shippingService`)    | [String]                                                      |

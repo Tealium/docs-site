@@ -14,29 +14,29 @@ Version labels are organized at the account level. This means that any changes t
 
 ## Managing version labels
 
-There are three version labels initially available for any profile: **Waiting to Verify**, **Verified Success**, and **Verified Failure**. You may delete these at your convenience. Keep in mind that deleting a label automatically removes it from any versions you&#39;ve applied it to. To manage your version labels, click the **Manage** link in the **Version Labels** area.
+There are three version labels initially available for any profile: **Waiting to Verify**, **Verified Success**, and **Verified Failure**. You may delete these at your convenience. Keep in mind that deleting a label automatically removes it from any versions you've applied it to. To manage your version labels, click the **Manage** link in the **Version Labels** area.
 
-![](/images/iq-tag-management/no-title-1652ic6bbb75313e91a90.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-1652ic6bbb75313e91a90.png)
 
 ### Adding labels
 
 Adding a new label is a simple process:
 
 1. From the **Manage Version Labels** modal, click on the swatch drop-down to select the color you want to assign to your new label. **Note:** You can reuse a color for multiple labels.
-1. Enter the name of your new label. **Note:** The label&#39;s name cannot exceed 40 characters or contain special characters, nor can you use the same name twice.
+1. Enter the name of your new label. **Note:** The label's name cannot exceed 40 characters or contain special characters, nor can you use the same name twice.
 1. Click the **Save** button.
 
-![](/images/iq-tag-management/no-title-1653i7c507566c876a5c8.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-1653i7c507566c876a5c8.png)
 
-Once you&#39;ve created a label, all other users in the account can use it. Note that they will not necessarily be able to edit, add, or delete these labels though.
+Once you've created a label, all other users in the account can use it. Note that they will not necessarily be able to edit, add, or delete these labels though.
 
 ### Removing labels
 
 To remove labels:
 
-1. From the **Manage Versions Labels** modal, click the **X** next to the label you want to remove. The label&#39;s name will appear in red.
+1. From the **Manage Versions Labels** modal, click the **X** next to the label you want to remove. The label's name will appear in red.
 
-    ![](/images/iq-tag-management/no-title-1654i309f77c9d2aff410.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/no-title-1654i309f77c9d2aff410.png)
 
 1. Click **Save**.
 

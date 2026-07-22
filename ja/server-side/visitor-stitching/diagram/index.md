@@ -9,18 +9,18 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/diagram/
 1. 匿名IDが訪問に割り当てられ、プロファイルAが作成されます。匿名IDにより、複数の訪問に対して一つのプロファイルを維持することができます。
 1. 訪問がこれまでに見たことのないメールアドレス、user@example.comで認証すると、そのメールアドレスがユーザー識別子に割り当てられます。
 1. プロファイルAの訪問ID属性がユーザー識別子（メールアドレス）の値で豊かになります。
-![](/images/server-side/visitor-stitching-example-first-visit.png)
+![](https://docs.tealium.com/images/server-side/visitor-stitching-example-first-visit.png)
 
 ## 二回目の訪問
 
 翌日、同じ人が自分のタブレットからあなたのウェブサイトを訪れます。
 1. 匿名IDが訪問に割り当てられ、プロファイルBが作成されます。
 1. 訪問がプロファイルAに保存されている同じメールアドレス、user@example.comを使用してウェブサイトにログインします。
-![](/images/server-side/visitor-stitching-example-second-visit.png)  
+![](https://docs.tealium.com/images/server-side/visitor-stitching-example-second-visit.png)  
     プロファイルBの訪問ID属性がメールアドレス、user@example.comに構成されます。
 1. AudienceStreamはメールアドレスに対して訪問IDのルックアップを実行します。プロファイルAとプロファイルBは同じメールアドレスに構成された訪問ID属性を持っており、プロファイルが関連していると判断されます。
 1. AudienceStreamはプロファイルAとBをスティッチングし、プロファイルCを作成します。  
-![](/images/server-side/visitor-stitching-profile-c-created.png)
+![](https://docs.tealium.com/images/server-side/visitor-stitching-profile-c-created.png)
     * プロファイルCはデスクトップとタブレットの両方で使用され、以下を含みます：
         * プロファイルAとBからのすべてのイベントと履歴データ。
         * プロファイルAとBへのリンクを含む`replaces`配列。
@@ -33,9 +33,9 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/diagram/
 1. ユーザーは自分の携帯電話でメールを開き、あなたのウェブサイトへのリンクをタップします。
 1. メールアドレスがURLのクエリストリングパラメーターで渡され、AudienceStreamがページの読み込み時にユーザーを識別できるようになります。
 1. メールアドレスが構成されたユーザー識別子でプロファイルDが作成されます。  
-![](/images/server-side/visitor-stitching-third-visit-profile-d-created.png)  
+![](https://docs.tealium.com/images/server-side/visitor-stitching-third-visit-profile-d-created.png)  
     プロファイルDのメールアドレスはプロファイルCの訪問ID属性のメールアドレスと一致し、2つのプロファイルがスティッチングされ、プロファイルEが作成されます。
-![](/images/server-side/visitor-stitching-profile-e-created.png)
+![](https://docs.tealium.com/images/server-side/visitor-stitching-profile-e-created.png)
     * プロファイルEはデスクトップ、タブレット、携帯電話のすべてで使用され、以下を含みます：
         * プロファイルCとDからのすべてのイベントと履歴データ。
         * プロファイルCとDへのリンクを含む`replaces`配列。

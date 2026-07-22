@@ -13,14 +13,14 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Account Name**  
   * Access the API using a base URL that is specific to your account.
-  * Go to ActiveCampaign and click **Settings &amp;gt; Developer** to get your API URL.
+  * Go to ActiveCampaign and click **Settings &gt; Developer** to get your API URL.
 * **API Token**  
-  * Go to ActiveCampaign and click **Settings &amp;gt; Developer** to get your API token.
+  * Go to ActiveCampaign and click **Settings &gt; Developer** to get your API token.
   * Each user in your ActiveCampaign account has their own unique API token.
 
 ## Actions
@@ -81,7 +81,7 @@ An array of the contact’s field values. Customer field values are referenced b
 | Parameter | Description |
 | --- | --- |
 | List ID | (Required) The ID of the list to subscribe the contact to. |
-| Contact ID | &lt;ul&gt;&lt;li&gt;Either **Contact ID** or **Email** is required. ID of the contact to subscribe to the list.&lt;/li&gt;&lt;/ul&gt; |
-| Email Address |  &lt;ul&gt;&lt;li&gt;Either **Contact ID** or **Email** is required.&lt;/li&gt;&lt;li&gt;The email of the contact.&lt;/li&gt;&lt;li&gt;This field is necessary if the user does not store the **Contact ID** in Tealium. If they do not use the **Contact ID**, search for the user’s email address through a API call and use the **ID** field in the response as the **Contact ID**.&lt;/li&gt;&lt;/ul&gt; |
-| Status | &lt;ul&gt;&lt;li&gt;(Required) Set to `1` to subscribe the contact to the list.&lt;/li&gt;&lt;li&gt;Set to `2` to unsubscribe the contact from the list.&lt;/li&gt;&lt;li&gt;WARNING: If you change a status from unsubscribed to active, you can re-subscribe a contact to a list from which they had manually unsubscribed.&lt;/li&gt;&lt;/ul&gt; |
-| Source ID | &lt;ul&gt;&lt;li&gt;(Optional) A unique identifier associated with the contact&#39;s origin.&lt;/li&gt;&lt;li&gt;Set to `4` when re-subscribing a contact to a list.&lt;/li&gt;&lt;/ul&gt; |
+| Contact ID | <ul><li>Either **Contact ID** or **Email** is required. ID of the contact to subscribe to the list.</li></ul> |
+| Email Address |  <ul><li>Either **Contact ID** or **Email** is required.</li><li>The email of the contact.</li><li>This field is necessary if the user does not store the **Contact ID** in Tealium. If they do not use the **Contact ID**, search for the user’s email address through a API call and use the **ID** field in the response as the **Contact ID**.</li></ul> |
+| Status | <ul><li>(Required) Set to `1` to subscribe the contact to the list.</li><li>Set to `2` to unsubscribe the contact from the list.</li><li>WARNING: If you change a status from unsubscribed to active, you can re-subscribe a contact to a list from which they had manually unsubscribed.</li></ul> |
+| Source ID | <ul><li>(Optional) A unique identifier associated with the contact's origin.</li><li>Set to `4` when re-subscribing a contact to a list.</li></ul> |

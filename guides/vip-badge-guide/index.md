@@ -5,7 +5,7 @@ url: https://docs.tealium.com/guides/vip-badge-guide/
 ---
 ## How it works
 
-![](/images/server-side/getting-started-audiencestream-badge-vip.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-badge-vip.png)
 
 A VIP is a high-valued customer who keeps returning to the site and purchasing. VIPs are a great audience to target because they are more likely to purchase from you than others and they are not going to be as price sensitive as other audiences.
 
@@ -14,7 +14,7 @@ A VIP is a high-valued customer who keeps returning to the site and purchasing. 
 The metrics that determine a VIP visitor vary depending on your industry. Here are some examples of what a VIP visitor might mean to your business:
 
 * **Travel**: you might measure a VIP by miles traveled, amount of money spent, or number of cities or countries traveled to.
-* **Finance**: you might measure a VIP by the total amount of a person&#39;s assets held by the institution.
+* **Finance**: you might measure a VIP by the total amount of a person's assets held by the institution.
 * **Media**: you might measure VIP status by the amount of money a customer spends on premium services or subscriptions, or the amount spent on on-demand products.
 * **Tech**: you might measure VIP status by the amount of money a customer spends on the latest products and services.
 
@@ -22,7 +22,7 @@ In addition, you can decide how and when to measure the key VIP metrics:
 
 * **Accumulation thresholds**: A total order value, total miles traveled, or total loyalty points.
 * **Time-based thresholds**: Totals over a particular time frame.
-* **Social engagement thresholds**: Interactions with your brand through social media, such as the number of likes on the visitor&#39;s posts about your brand.
+* **Social engagement thresholds**: Interactions with your brand through social media, such as the number of likes on the visitor's posts about your brand.
 * **Feedback and review engagement thresholds**: Visitors who provide positive feedback and reviews.
 
 The great thing about Tealium AudienceStream is that you can create multiple VIP audiences with differing criteria and thresholds, and tailor experiences to each VIP audience.
@@ -60,57 +60,57 @@ In the following example, we create a VIP badge for customers who have spent ove
 
 ### Step 1 - Create attributes
 
-First, create a visitor number attribute named &#34;Lifetime order total&#34; with the following enrichment:
+First, create a visitor number attribute named "Lifetime order total" with the following enrichment:
 
 ```
-Increment or Decrement Number by &#34;order_subtotal&#34;
+Increment or Decrement Number by "order_subtotal"
 WHEN: Any event
-Rule &#34;tealium_event&#34; equals (ignore case) &#34;purchase&#34;
-Rule &#34;order_id&#34; is assigned
+Rule "tealium_event" equals (ignore case) "purchase"
+Rule "order_id" is assigned
 ```
 
-![](/images/guides/lifetime-order-total-attribute.png)
+![](https://docs.tealium.com/images/guides/lifetime-order-total-attribute.png)
 
-Next, create a visitor string attribute named &#34;Customer email&#34; to collect the visitor&#39;s email address:
+Next, create a visitor string attribute named "Customer email" to collect the visitor's email address:
 
 ```
 Set String to customer_email
 WHEN: Any event
-Rule &#34;customer_email&#34; is assigned.
-Rule &#34;customer_email&#34; contains &#34;@&#34;
+Rule "customer_email" is assigned.
+Rule "customer_email" contains "@"
 ```
 
-![](/images/guides/customer-email-attribute-assigned.png)
+![](https://docs.tealium.com/images/guides/customer-email-attribute-assigned.png)
 
-For more information about adding attributes, see [Add an attribute]().
+For more information about adding attributes, see [Add an attribute](https://docs.tealium.com/manage-as-attributes/#add-an-attribute).
 
 ### Step 2 - Create VIP badge
 
 Now that we can measure the total amount a visitor has spent and whether they have an email address, we can create the VIP badge based on those attributes.
 
-Create a visitor badge attribute named &#34;Customer VIP&#34; with the following enrichment:
+Create a visitor badge attribute named "Customer VIP" with the following enrichment:
 
 ```
 Assign this badge to visitor
 WHEN: Any event
-Rule &#34;Lifetime Order Total&#34; greater than or equal to &#34;10000&#34;
-Rule &#34;Customer email&#34; is assigned
+Rule "Lifetime Order Total" greater than or equal to "10000"
+Rule "Customer email" is assigned
 ```
 
-![](/images/guides/customer-vip-badge-lifetime-total.png)
+![](https://docs.tealium.com/images/guides/customer-vip-badge-lifetime-total.png)
 
 ### Step 3 - Create the audience
 
 Now we can create an audience based on the VIP badge:
 
 1. Go to **Audiences**.
-1. Click **&#43; New Audience**.
+1. Click **+ New Audience**.
 1. In the **Title** field, enter `VIP`.
 1. From the **Where** drop-down list, select **Customer VIP**.
 1. Select **is assigned**.
 1. Click **Done**.
 
-![](/images/guides/vip-badge-audience.png)
+![](https://docs.tealium.com/images/guides/vip-badge-audience.png)
 
 For more information, see .
 
@@ -120,76 +120,76 @@ In the following example, we create a VIP badge for customers who have made $10,
 
 ### Step 1 - Create attributes
 
-First, create a visitor timeline attribute named &#34;Order subtotals in past 90 days&#34; with the following two enrichments:
+First, create a visitor timeline attribute named "Order subtotals in past 90 days" with the following two enrichments:
 
 ```
 Set each event in timeline Order subtotals in past 90 days to expire after 90 days
 WHEN: Any event
 
 Record an event for timeline Order subtotals in past 90 days
-Capture data for &#34;order_subtotal&#34;
+Capture data for "order_subtotal"
 WHEN: New visit
 ```
 
-![](/images/guides/order-subtotals-in-past-90-days.png)
+![](https://docs.tealium.com/images/guides/order-subtotals-in-past-90-days.png)
 
-Next, create a visitor string attribute named &#34;Customer email&#34; to collect the visitor&#39;s email address:
+Next, create a visitor string attribute named "Customer email" to collect the visitor's email address:
 
 ```
 Set String to customer_email
 WHEN: Any event
-Rule &#34;customer_email&#34; is assigned.
-Rule &#34;customer_email&#34; contains &#34;@&#34;
+Rule "customer_email" is assigned.
+Rule "customer_email" contains "@"
 ```
 
-![](/images/guides/customer-email-attribute-assigned.png)
+![](https://docs.tealium.com/images/guides/customer-email-attribute-assigned.png)
 
-Then, create a visitor number attribute named &#34;Rolling order total for past 90 days&#34; with the following enrichment:
+Then, create a visitor number attribute named "Rolling order total for past 90 days" with the following enrichment:
 
 ```
 Set Number Rolling order total for past 90 days to the rolling sum of order_subtotal captures in timeline Order subtotals in past 90 days
 WHEN Any event
 ```
 
-![](/images/guides/rolling-order-total-for-past-90-days.png)
+![](https://docs.tealium.com/images/guides/rolling-order-total-for-past-90-days.png)
 
 ### Step 2 - Create VIP badge
 
 Now that we can measure the total amount a visitor has spent and whether they have an email address, we can create the VIP badge based on those attributes.
 
-Create a visitor badge attribute named &#34;Customer VIP&#34; with the following enrichment:
+Create a visitor badge attribute named "Customer VIP" with the following enrichment:
 
 ```
 Assign this badge to visitor
 WHEN: Any event
-Rule &#34;Rolling order total for past 90 days&#34; greater than or equal to &#34;10000&#34;
+Rule "Rolling order total for past 90 days" greater than or equal to "10000"
 
 Remove this badge to visitor
 WHEN: Any event
-Rule &#34;Rolling order total for past 90 days&#34; less than &#34;10000&#34;
+Rule "Rolling order total for past 90 days" less than "10000"
 ```
 
-![](/images/guides/customer-vip-rolling-total.png)
+![](https://docs.tealium.com/images/guides/customer-vip-rolling-total.png)
 
 ### Step 3 - Create the audience
 
 Now we can create an audience based on the VIP badge:
 
 1. Go to **Audiences**.
-1. Click **&#43; New Audience**.
+1. Click **+ New Audience**.
 1. In the **Title** field, enter `VIP`.
 1. From the **Where** drop-down list, select **Customer VIP**.
 1. Select **is assigned**.
 1. Under **Options**, select a 90 day retention time.
 1. Click **Done**.
 
-![](/images/guides/vip-badge-audience.png)
+![](https://docs.tealium.com/images/guides/vip-badge-audience.png)
 
 For more information, see .
 
 ## Activate the audience
 
-At this point, you&#39;re ready to activate the audience through any of our hundreds of vendor integrations.
+At this point, you're ready to activate the audience through any of our hundreds of vendor integrations.
 
 How can you target VIP customers?
 

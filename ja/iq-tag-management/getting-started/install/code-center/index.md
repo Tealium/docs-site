@@ -3,15 +3,19 @@ title: コードセンター
 description: コードセンターは、ウェブサイトにユニバーサルタグ（utag.js）を追加するためのコードを取得する場所です。
 url: https://docs.tealium.com/ja/iq-tag-management/getting-started/install/code-center/
 ---
- コードセンター画面は、[プラットフォーム権限]()を持つアカウントでは[環境管理]()画面に置き換えられました。レガシー権限を使用するアカウントは引き続きコードセンター画面を使用します。
 
-ウェブサイトにTealiumをインストールする詳細については、[ウェブ用クイックスタートガイド]()を参照してください。
+<blockquote>
+コードセンター画面は、[プラットフォーム権限](https://docs.tealium.com/about-platform-permissions/)を持つアカウントでは[環境管理](https://docs.tealium.com/manage-environments/)画面に置き換えられました。レガシー権限を使用するアカウントは引き続きコードセンター画面を使用します。
+</blockquote>
+
+
+ウェブサイトにTealiumをインストールする詳細については、[ウェブ用クイックスタートガイド](https://docs.tealium.com/getting-started-web/)を参照してください。
 
 ## コードセンターへのアクセス
 
 1. 管理メニューで**コードセンター**をクリックします。**コードセンター**ダイアログが表示されます。
 1. サイドパネルで希望の環境を選択します。  
-    ![](/images/platforms/getting-started-web/iq-code-center.png)
+    ![](https://docs.tealium.com/images/platforms/getting-started-web/iq-code-center.png)
 1. **OK**をクリックしてコードセンターを閉じます。
 
 ## コードセンターの構成
@@ -31,30 +35,34 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/install/code-
 
 **Tealiumスクリプト**タブでは、選択に基づいてコードが表示されます。このコードには、ユニバーサルデータオブジェクト（`utag_data`のサンプル）とユニバーサルタグコード（`utag.js`）が含まれています。ここに表示されるユニバーサルデータオブジェクトは、データレイヤーで定義された変数から生成されます。
 
+
+<blockquote>
 コードセンターで見られるユニバーサルデータオブジェクトはプレースホルダーに過ぎません。実際の値で動的にそれを埋めてタグにデータを送信する必要があります。
+</blockquote>
+
 
 コードスニペットをコピーするには、次の手順を実行します：
 
 1. テキストボックスに表示されるコードを次のいずれかの方法で選択します：
     * クリックしてドラッグしてすべてのコードを選択します。
     * コードの上にマウスを移動すると表示される**すべて選択**ボタンをクリックします。  
-        ![](/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
 
 1. コードをコピーします。
 1. サイトの作成ツールやバックエンドシステムにコードを貼り付けます。
 
 ### サンプルHTML
 
-**サンプルHTML**タブは、ウェブページにコードを追加した場合の見本を提供します。サンプルコードは、ベストプラクティスに従って、開始`&lt;body&gt;`タグの後に表示されます。
+**サンプルHTML**タブは、ウェブページにコードを追加した場合の見本を提供します。サンプルコードは、ベストプラクティスに従って、開始`<body>`タグの後に表示されます。
 
 ## カスタム公開環境
 
 カスタム公開環境は、使用するために有効にする必要がある機能です。
 
-詳細については、[カスタム公開環境]()を参照してください。
+詳細については、[カスタム公開環境](https://docs.tealium.com/custom-publish-environments/)を参照してください。
 
 ## 中国CDN
 
 Tealiumは、中国ネットワーク内でファイルを提供するための別のCDNドメインを提供しています。
 
-詳細については、[中国ネットワークでユニバーサルタグをロードする]()を参照してください。
+詳細については、[中国ネットワークでユニバーサルタグをロードする](https://docs.tealium.com/load-utag-china/)を参照してください。

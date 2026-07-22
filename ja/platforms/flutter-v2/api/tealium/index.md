@@ -2,7 +2,11 @@
 title: Tealium
 description: Tealiumクラスは、すべてのモジュールのための主要なAPIエントリーポイントとして機能します。
 url: https://docs.tealium.com/ja/platforms/flutter-v2/api/tealium/
----これはFlutter用Tealiumの以前のバージョン（2.x）です。最新バージョンについては、[Flutter用Tealium](/ja/platforms/flutter/)をご覧ください。
+---
+<blockquote>
+これはFlutter用Tealiumの以前のバージョン（2.x）です。最新バージョンについては、[Flutter用Tealium](https://docs.tealium.com/ja/platforms/flutter/)をご覧ください。
+</blockquote>
+
 
 ## クラス: `Tealium`
 
@@ -43,13 +47,13 @@ Tealium.addCustomRemoteCommand(id, callback);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `id` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
+| `id` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```dart
-Tealium.addCustomRemoteCommand(&#39;CUSTOM_COMMAND_ID&#39;, (payload) {
+Tealium.addCustomRemoteCommand('CUSTOM_COMMAND_ID', (payload) {
   print(JsonEncoder().convert(payload));
 });
 ```
@@ -69,8 +73,8 @@ Tealium.addRemoteCommand(remoteCommand);
 例:
 
 ```dart
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: &#34;firebase.json&#34;)); // local
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: &#34;www.tealium.com/path_to_remote_command/firebase.json&#34;)); // remote
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: "firebase.json")); // local
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: "www.tealium.com/path_to_remote_command/firebase.json")); // remote
 Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName)); // webview
 ```
 
@@ -84,7 +88,7 @@ Tealium.addToDataLayer(data, expiry);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Object&gt;` | 文字列のキーと文字列または文字列の配列の値を持つJSONオブジェクト | `{&#39;persistent_key&#39; : &#39;persistent_val&#39;}` |
+| `data` | `Map<String, Object>` | 文字列のキーと文字列または文字列の配列の値を持つJSONオブジェクト | `{'persistent_key' : 'persistent_val'}` |
 | `expiry` | `Expiry` | データを永続させる期間 | `Expiry.forever` |
 
 ### `clearStoredVisitorIds()`
@@ -106,13 +110,13 @@ Tealium.getFromDataLayer(key);
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
 | `key` | `String` | データレイヤーから取得するキー|
-| `N/A` | `Future&lt;dynamic&gt;` | `Tealium.dataLayer`から値が正常に取得された後にFutureが成功します |
+| `N/A` | `Future<dynamic>` | `Tealium.dataLayer`から値が正常に取得された後にFutureが成功します |
 
 例:
 
 ```dart
-Tealium.getFromDataLayer(&#39;key&#39;)
-    .then((value) =&gt; print(&#39;Value From data layer: $value&#39;));
+Tealium.getFromDataLayer('key')
+    .then((value) => print('Value From data layer: $value'));
 ```
 
 
@@ -126,14 +130,14 @@ Tealium.getConsentCategories();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;List&lt;dynamic&gt;&gt;` | `Tealium.ConsentManager`から同意カテゴリが正常に取得された後にFutureが完了します |
+| `N/A` | `Future<List<dynamic>>` | `Tealium.ConsentManager`から同意カテゴリが正常に取得された後にFutureが完了します |
 
 例:
 
 ```dart
 Tealium.getConsentCategories()
-  .then((categories) =&gt;
-      print(&#39;Consent Categories: &#39; &#43; categories.join(&#34;,&#34;)));
+  .then((categories) =>
+      print('Consent Categories: ' + categories.join(",")));
 ```
 
 
@@ -147,13 +151,13 @@ Tealium.getConsentStatus();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | `Tealium.ConsentManager`から同意状態が正常に取得された後にFutureが完了します |
+| `N/A` | `Future<String>` | `Tealium.ConsentManager`から同意状態が正常に取得された後にFutureが完了します |
 
 例:
 
 ```dart
 Tealium.getConsentStatus()
-  .then((status) =&gt; print(&#39;Consent Status: $status&#39;));
+  .then((status) => print('Consent Status: $status'));
 ```
 
 ### `getVisitorId()`
@@ -166,7 +170,7 @@ Tealium.getVisitorId();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | `Tealium.visitorId`が正常に取得された後にFutureが返されます |
+| `N/A` | `Future<String>` | `Tealium.visitorId`が正常に取得された後にFutureが返されます |
 
 ### `initialize()`
 
@@ -179,15 +183,15 @@ Tealium.initialize(config);
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
 | `config`  | `TealiumConfig` | 構成 |
-| `N/A` | `Future&lt;bool&gt;` | Tealiumの初期化が成功した後にFutureが完了します |
+| `N/A` | `Future<bool>` | Tealiumの初期化が成功した後にFutureが完了します |
 
 
 例:
 
 ```dart
 final config = TealiumConfig(
-    &#39;ACCOUNT&#39;,
-    &#39;PROFILE&#39;,
+    'ACCOUNT',
+    'PROFILE',
     TealiumEnvironment.dev,
     [
         Collectors.AppData,
@@ -206,16 +210,16 @@ final config = TealiumConfig(
     visitorServiceEnabled: true);
 
 Tealium.initialize(config).then((_) {
-    print(&#39;Tealium Initialized&#39;);
+    print('Tealium Initialized');
     Tealium.setConsentStatus(ConsentStatus.consented);
-    Tealium.setConsentExpiryListener(() =&gt; print(&#39;Consent Expired&#39;));
+    Tealium.setConsentExpiryListener(() => print('Consent Expired'));
 });
 ```
 
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。[Trace](/ja/platforms/getting-started-mobile/trace/)についてもっと学びましょう。
+指定されたIDでトレースに参加します。[Trace](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/)についてもっと学びましょう。
 
 ```dart
 Tealium.joinTrace(id);
@@ -223,7 +227,7 @@ Tealium.joinTrace(id);
 
 | パラメータ | タイプ | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | CDHから取得したトレースID |  `&#34;abc123xy&#34;` |
+| `id` | `String` | CDHから取得したトレースID |  `"abc123xy"` |
 
 ### `leaveTrace()`
 
@@ -242,7 +246,7 @@ Tealium.removeFromDataLayer(keys);
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | キー名の配列 |  `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `keys` | `List<String>` | キー名の配列 |  `["key1", "key2"]` |
 
 ### `removeRemoteCommand()`
 
@@ -254,12 +258,12 @@ Tealium.removeRemoteCommand(id);
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | 削除するコマンドIDの名前 |  `&#34;test_command&#34;` |
+| `id` | `String` | 削除するコマンドIDの名前 |  `"test_command"` |
 
 例:
 
 ```dart
-Tealium.removeRemoteCommand(&#39;test_command&#39;);
+Tealium.removeRemoteCommand('test_command');
 ```
 
 ### `resetVisitorId()`
@@ -280,7 +284,7 @@ Tealium.setConsentCategories(categories);
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `categories` | `List&lt;ConsentCategories&gt;` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `List<ConsentCategories>` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 例:
 
@@ -324,7 +328,7 @@ Tealium.setConsentExpiryListener(callback);
 
 ```dart
 Tealium.setConsentExpiryListener(() {
-    print(&#39;Consent Expired&#39;);
+    print('Consent Expired');
 });
 ```
 
@@ -381,7 +385,7 @@ Tealium.setVisitorIdListener((newVisitorId) {
 
 訪問プロファイルが更新されたときに実行するコールバックを構成します。更新された`VisitorProfile`はコールバックのレスポンスで提供されます。
 
-訪問サービスモジュールはTealium Customer Data Hubの[Data Layer Enrichment]()機能を実装しています。
+訪問サービスモジュールはTealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
 
 このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、訪問プロファイルを使用してモバイルアプリケーションのユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
@@ -425,11 +429,11 @@ Tealium.track(tealEvent);
 
 ```dart
 final tealEvent = TealiumEvent(
-  &#39;cart_add&#39;,
+  'cart_add',
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;,
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#39;product_price&#39;: [4.00, 6.00]
+    'customer_id': 'abc123',
+    'product_id': ["PROD123", "PROD456"],
+    'product_price': [4.00, 6.00]
   }
 );
 Tealium.track(tealEvent);
@@ -443,7 +447,7 @@ Tealium.track(tealEvent);
 
 ```dart
 Tealium.gatherTrackData()
-  .then((data) =&gt; print(&#39;Gather track data: $data&#39;));
+  .then((data) => print('Gather track data: $data'));
 ```
 
 ## インターフェース: `TealiumDispatch`
@@ -462,17 +466,17 @@ Tealium.track(tealEvent);
 | パラメータ  | 型    | 説明      |
 |:------------|:--------|:-----------------|
 | `eventName` | `String` | `tealium_event`属性として渡されるイベント名。  |
-| `dataLayer` | `Map&lt;String, Object&gt;` | (オプション) イベントに送信されるキーと値の形式のデータ。 |
+| `dataLayer` | `Map<String, Object>` | (オプション) イベントに送信されるキーと値の形式のデータ。 |
 
 例:
 
 ```dart
 final tealEvent = TealiumEvent(
-  &#39;cart_add&#39;,
+  'cart_add',
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;,
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#39;product_price&#39;: [4.00, 6.00]
+    'customer_id': 'abc123',
+    'product_id': ["PROD123", "PROD456"],
+    'product_price': [4.00, 6.00]
   }
 );
 Tealium.track(tealEvent);
@@ -490,18 +494,18 @@ Tealium.track(screenView);
 | パラメータ  | 型    | 説明      |
 |:------------|:--------|:-----------------|
 | `viewName`  | `String`| `tealium_event`属性として渡されるビュー名。|
-| `dataLayer` | `Map&lt;String, Object&gt;` | (オプション) イベントに送信されるキーと値の形式のデータ。 |
+| `dataLayer` | `Map<String, Object>` | (オプション) イベントに送信されるキーと値の形式のデータ。 |
 
 例:
 
 ```dart
 final screenView = TealiumView(
-  &#39;purchase&#39;,
+  'purchase',
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;,
-    &#39;order_total&#39;: 10.00,
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#39;order_id&#39;: &#39;0123456789&#39;
+    'customer_id': 'abc123',
+    'order_total': 10.00,
+    'product_id': ["PROD123", "PROD456"],
+    'order_id': '0123456789'
   }
 );
 Tealium.track(screenView);

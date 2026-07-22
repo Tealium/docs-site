@@ -11,10 +11,10 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 |集計キー| 集計値|
 | --- | --- |
-|&#34;靴&#34;| 1|
-|&#34;パンツ&#34;| 3|
-|&#34;シャツ&#34;| 7|
-|&#34;ショーツ&#34;| 2|
+|"靴"| 1|
+|"パンツ"| 3|
+|"シャツ"| 7|
+|"ショーツ"| 2|
 
 * キーは発生したアイテムの名前を表します。例えば、`product_category` 属性の値「靴」。
 * 値はそれが発生した回数を表します。
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 集計属性は、次のスコープで利用可能です：訪問、訪問。
 
-![](/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
 
 ### 集計お気に入り
 
@@ -51,13 +51,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 ```
 // 受信イベント
-&#34;page_category&#34;: { [&#34;Apparel&#34;] }
+"page_category": { ["Apparel"] }
 
 // 結果
-&#34;page_category&#34;:{
-    &#34;Apparel&#34;: 1
+"page_category":{
+    "Apparel": 1
 },
-&#34;page_category_favorite&#34;: &#34;Apparel&#34;
+"page_category_favorite": "Apparel"
 ```
 
 **イベント2**
@@ -66,15 +66,15 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 ```
 // 受信イベント
-&#34;page_category&#34;: { [&#34;Apparel&#34;, &#34;Accessories&#34;] }
+"page_category": { ["Apparel", "Accessories"] }
 
 // 結果
-&#34;page_category&#34;: {
-    &#34;Books&#34;: 1,
-    &#34;Apparel&#34;: 1,
-    &#34;Accessories&#34;: 1
+"page_category": {
+    "Books": 1,
+    "Apparel": 1,
+    "Accessories": 1
 },
-&#34;page_category_favorite&#34;: &#34;Accessories&#34;
+"page_category_favorite": "Accessories"
 ```
 
 **イベント3**
@@ -83,15 +83,15 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 ```js
 // 受信イベント
-&#34;page_category&#34;: { [&#34;Apparel&#34;] }
+"page_category": { ["Apparel"] }
 
 // 結果
-&#34;page_category&#34;: {
-    &#34;Accessories&#34;: 1,
-    &#34;Apparel&#34;: 2,
-    &#34;Books&#34;: 1
+"page_category": {
+    "Accessories": 1,
+    "Apparel": 2,
+    "Books": 1
 },
-&#34;page_category_favorite&#34;: &#34;Apparel&#34;
+"page_category_favorite": "Apparel"
 ```
 
 ## 例
@@ -102,10 +102,10 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 |集計キー| 集計値|
 | --- | --- |
-|&#34;靴&#34;| 1|
-|&#34;パンツ&#34;| 3|
-|&#34;シャツ&#34;| 7|
-|&#34;ショーツ&#34;| 2|
+|"靴"| 1|
+|"パンツ"| 3|
+|"シャツ"| 7|
+|"ショーツ"| 2|
 |**文字列属性: 「商品カテゴリ購入（お気に入り）」**| **「シャツ」**|
 
 ## エンリッチメント
@@ -130,9 +130,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 **属性名**: 「商品カテゴリ表示」
 
-* **開始値**: `{&#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
-* **豊かにされたもの**: `product_category:&#34;Shoes&#34;`
-* **結果の値**: `{&#34;Shoes&#34;: 8, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
+* **開始値**: `{"Shoes": 7, "Pants": 1, "Shirts": 3}`
+* **豊かにされたもの**: `product_category:"Shoes"`
+* **結果の値**: `{"Shoes": 8, "Pants": 1, "Shirts": 3}`
 
 ### 集計値の増加
 
@@ -140,9 +140,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 **属性名**: 「商品カテゴリ検索」
 
-* **開始値**: `{&#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
-* **豊かにされたもの**: カスタムキー: `&#34;Did Not Search&#34;`&lt;br&gt; カスタムインクリメント: `1`
-* **結果の値**: `{&#34;Did Not Search&#34;: 1, &#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
+* **開始値**: `{"Shoes": 7, "Pants": 1, "Shirts": 3}`
+* **豊かにされたもの**: カスタムキー: `"Did Not Search"`<br> カスタムインクリメント: `1`
+* **結果の値**: `{"Did Not Search": 1, "Shoes": 7, "Pants": 1, "Shirts": 3}`
 
 ### 集計による集計の増加
 
@@ -150,9 +150,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 **属性名**: 「商品カテゴリ購入（生涯）」
 
-* **開始値**: `{&#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
-* **豊かにされたもの**: `{&#34;Shoes&#34;: 1, &#34;Shirts&#34;: 2, &#34;Dresses&#34;: 1}`
-* **結果の値**: `{&#34;Shoes&#34;: 8, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 5, &#34;Dresses&#34;: 1}`
+* **開始値**: `{"Shoes": 7, "Pants": 1, "Shirts": 3}`
+* **豊かにされたもの**: `{"Shoes": 1, "Shirts": 2, "Dresses": 1}`
+* **結果の値**: `{"Shoes": 8, "Pants": 1, "Shirts": 5, "Dresses": 1}`
 
 ### 文字列のセットによる集計の増加
 
@@ -160,9 +160,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 **属性名**: 「商品カテゴリ検索（生涯）」
 
-* **開始値**: `{&#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
-* **豊かにされたもの**: 商品カテゴリ検索 (訪問):`{&#34;Shoes&#34;, &#34;Pants&#34;, &#34;Hats&#34;}`
-* **結果の値**: `[&#34;Shoes&#34;: 8, &#34;Pants&#34;: 2, &#34;Shirts&#34;: 3, &#34;Hats&#34;: 1}`
+* **開始値**: `{"Shoes": 7, "Pants": 1, "Shirts": 3}`
+* **豊かにされたもの**: 商品カテゴリ検索 (訪問):`{"Shoes", "Pants", "Hats"}`
+* **結果の値**: `["Shoes": 8, "Pants": 2, "Shirts": 3, "Hats": 1}`
 
 ### タイムラインに基づいてローリング平均を構成
 
@@ -171,27 +171,27 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 **属性名**: 「平均商品カテゴリ購入金額」
 
 * **開始値**: `{}`
-* **豊かにされたもの**:  タイムラインエントリ: `{&#34;Shoes&#34;: 150.00, &#34;Pants&#34;: 75.00, &#34;Shirts&#34;: 30.00}`&lt;br&gt; タイムラインエントリ: `{&#34;Pants&#34;: 75.00, &#34;Shirts&#34;: 42.00}`&lt;br&gt; タイムラインエントリ: `{&#34;Shoes&#34;: 110.00, &#34;Shirts&#34;: 18.00 &#34;Hats&#34;: 25.00}` 
-* **結果の値**: `{&#34;Shoes&#34;: 130.00, &#34;Pants&#34;: 75.00, &#34;Shirts&#34;: 30.00, &#34;Hats&#34;: 25.00}`
+* **豊かにされたもの**:  タイムラインエントリ: `{"Shoes": 150.00, "Pants": 75.00, "Shirts": 30.00}`<br> タイムラインエントリ: `{"Pants": 75.00, "Shirts": 42.00}`<br> タイムラインエントリ: `{"Shoes": 110.00, "Shirts": 18.00 "Hats": 25.00}` 
+* **結果の値**: `{"Shoes": 130.00, "Pants": 75.00, "Shirts": 30.00, "Hats": 25.00}`
 ### タイムラインに基づいたローリングサムの構成
 
-ローリングサムは、[タイムライン]()に記録された数値または[集計]()属性の数値の合計です。タイムラインの有効期限が集計時に考慮されるエントリを決定します。
+ローリングサムは、[タイムライン](https://docs.tealium.com/timeline-attribute/)に記録された数値または[集計](https://docs.tealium.com/tally-attribute/)属性の数値の合計です。タイムラインの有効期限が集計時に考慮されるエントリを決定します。
 
-**属性名**: &#34;Sum Product Category Purchase Amounts&#34;
+**属性名**: "Sum Product Category Purchase Amounts"
 
 * **初期値**: `{}`
-* **追加データ**:  タイムラインエントリ: `{&#34;Shoes&#34;: 150.00, &#34;Pants&#34;: 75.00, &#34;Shirts&#34;: 30.00}`&lt;br&gt; タイムラインエントリ: `{&#34;Pants&#34;: 75.00, &#34;Shirts&#34;: 42.00}`&lt;br&gt; タイムラインエントリ: `{&#34;Shoes&#34;: 110.00, &#34;Shirts&#34;: 18.00 &#34;Hats&#34;: 25.00}` 
-* **結果値**: `{&#34;Shoes&#34;: 260.00, &#34;Pants&#34;: 150.00, &#34;Shirts&#34;: 90.00, &#34;Hats&#34;: 25.00}`
+* **追加データ**:  タイムラインエントリ: `{"Shoes": 150.00, "Pants": 75.00, "Shirts": 30.00}`<br> タイムラインエントリ: `{"Pants": 75.00, "Shirts": 42.00}`<br> タイムラインエントリ: `{"Shoes": 110.00, "Shirts": 18.00 "Hats": 25.00}` 
+* **結果値**: `{"Shoes": 260.00, "Pants": 150.00, "Shirts": 90.00, "Hats": 25.00}`
 
 ### 対応する配列による集計の構成
 
-二つの対応する配列で定義された値に基づいて集計を構成します。例えば、購入イベントが発生したときに `product_category` と `product_quantity` の二つの配列を使用して、購入された商品の数量を記録する &#34;Product Category Quantity Purchased&#34; という集計を使用します。
+二つの対応する配列で定義された値に基づいて集計を構成します。例えば、購入イベントが発生したときに `product_category` と `product_quantity` の二つの配列を使用して、購入された商品の数量を記録する "Product Category Quantity Purchased" という集計を使用します。
 
-**属性名**: &#34;Product Category Quantity Purchased&#34;
+**属性名**: "Product Category Quantity Purchased"
 
 * **初期値**: `{}`
-* **追加データ**:  `product_category: [&#34;Shoes&#34;, &#34;Pants&#34;, &#34;Shirts&#34;]`&lt;br&gt;`product_quantity: [1, 1, 3]` 
-* **結果値**: `{&#34;Shoes&#34;: 1, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
+* **追加データ**:  `product_category: ["Shoes", "Pants", "Shirts"]`<br>`product_quantity: [1, 1, 3]` 
+* **結果値**: `{"Shoes": 1, "Pants": 1, "Shirts": 3}`
 
 ### 集計の削除
 
@@ -201,26 +201,26 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/tally/
 
 **属性名**: reset tally to zero
 
-* **初期値**: `{&#34;Shoes&#34;: 1, &#34;Pants&#34;: 3}`
+* **初期値**: `{"Shoes": 1, "Pants": 3}`
 * **追加データ**: `Purchase event occurs`
 * **結果値**: (削除されました)
 
 ### 集計内のエントリの削除
 
-条件に基づいて集計内のエントリを削除します。例えば、訪問の商品検索（および潜在的な購入）を追跡するために &#34;Product Category Searched&#34; という集計を使用し、購入されたアイテムに一致する集計エントリをこのエンリッチメントで削除します。
+条件に基づいて集計内のエントリを削除します。例えば、訪問の商品検索（および潜在的な購入）を追跡するために "Product Category Searched" という集計を使用し、購入されたアイテムに一致する集計エントリをこのエンリッチメントで削除します。
 
-**属性名**: &#34;Product Category Searched (Not Purchased)&#34;
+**属性名**: "Product Category Searched (Not Purchased)"
 
-* **初期値**: `{&#34;Shoes&#34;: 7, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3, &#34;Jeans&#34;: 10}`
-* **追加データ**: `product_catgory : &#34;Shoes&#34;`
-* **結果値**: `{&#34;Pants&#34;: 1, &#34;Shirts&#34;: 3, &#34;Jeans&#34;: 10}`
+* **初期値**: `{"Shoes": 7, "Pants": 1, "Shirts": 3, "Jeans": 10}`
+* **追加データ**: `product_catgory : "Shoes"`
+* **結果値**: `{"Pants": 1, "Shirts": 3, "Jeans": 10}`
 
 ### 配列内の各アイテムに対して1を加算
 
-配列内の各アイテムに対して1を加算します。例えば、購入イベントが発生したときに配列属性 `product_category` を使用して &#34;Product Category Purchased&#34; という集計をエンリッチします。
+配列内の各アイテムに対して1を加算します。例えば、購入イベントが発生したときに配列属性 `product_category` を使用して "Product Category Purchased" という集計をエンリッチします。
 
-**属性名**: &#34;Product Category Purchased&#34;
+**属性名**: "Product Category Purchased"
 
-* **初期値**: `{&#34;Shoes&#34;: 1, &#34;Pants&#34;: 1, &#34;Shirts&#34;: 3}`
-* **追加データ**: `product_category : [&#34;Pants&#34;, &#34;Ties&#34;]`
-* **結果値**: `{&#34;Shoes&#34;: 1, &#34;Pants&#34;: 2, &#34;Shirts&#34;: 3, &#34;Ties&#34;: 1}`
+* **初期値**: `{"Shoes": 1, "Pants": 1, "Shirts": 3}`
+* **追加データ**: `product_category : ["Pants", "Ties"]`
+* **結果値**: `{"Shoes": 1, "Pants": 2, "Shirts": 3, "Ties": 1}`

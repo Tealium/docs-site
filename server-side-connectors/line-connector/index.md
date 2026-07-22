@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10,000
 * Max time since oldest request: 30 minutes
@@ -46,7 +46,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new LINE connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new LINE connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 To configure your vendor, follow these steps:
 
@@ -85,8 +85,8 @@ This section describes how to set up parameters and options for each action.
 | **Parameter** | **Description** |
 | --- | --- |
 | Contact ID | (Required) This parameter is the ID received from the webhook that is configured in the **Channel Console** in the LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.|
-| Message Data | (Required) The content of the message to send to the user. This field is limited to 2,000 characters, supports Unicode emoticons, and supports the Tealium template engine. For more information, see .|
-| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`.  For more information, see . |)
+| Message Data | (Required) The content of the message to send to the user. This field is limited to 2,000 characters, supports Unicode emoticons, and supports the Tealium template engine. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).|
+| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`.  For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). |)
 
 ### Action - Push Message - Image
 
@@ -197,7 +197,7 @@ The following parameters are required if you set a video to play on the imagemap
 | Contact ID | (Required) This parameter is the ID received from the webhook that is configured in the **Channel Console** in the LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.  |
 | Alternative Text | (Required) Alternative text for the message. The text must not exceed 400 characters. The text appears in notifications or chat lists. |
 | Template - Text | (Required) The message text. Text without an image or title must not exceed 400 characters, and text with an image or title must not exceed 60 characters. |
-| Template - Thumbnail Image URL | (Required) The URL of the image&#39;s thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
+| Template - Thumbnail Image URL | (Required) The URL of the image's thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
 | Template - Image Aspect Ratio | (Required) The aspect ratio of the image. Allowed values are `rectangle` or `square`. The default value is `rectangle`. |
 | Template - Image Size | (Required) The size of the image. Allowed values are `cover` or `contain`. The default value is `cover`. |
 | Template - Image Background Color | (Required) The background color of the image in hexadecimal format. The default value is `#FFFFFF` (white). |
@@ -295,11 +295,11 @@ All Template - Columns parameters are arrays.
 | **Parameter** | **Description** |
 | --- | --- |
 | Text | (Required) The message text. Text without an image or title must not exceed 120 characters, and text with an image or title must not exceed 60 characters. |
-| Thumbnail Image URL | Required. The URL of the image&#39;s thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
+| Thumbnail Image URL | Required. The URL of the image's thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
 | Image Background Color | Required. The background color of the image in hexadecimal format. The default value is `#FFFFFF` (white). |
 | Title | (Required) The title of the message. The title must not exceed 40 characters. |
 | Actions | (Required) The action to execute when the item is tapped. |
-| Templates | &lt;ul&gt;&lt;li&gt;Required. Provide templates to be referenced in the **Actions** parameter of the Template - Columns section. For more information, see [Templates Guide](/server-side/connectors/templates/about/)).&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Templates | <ul><li>Required. Provide templates to be referenced in the **Actions** parameter of the Template - Columns section. For more information, see [Templates Guide](https://docs.tealium.com/server-side/connectors/templates/about/)).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul> |
 
 #### Template - Columns - Default Action
 
@@ -322,7 +322,7 @@ All Template - Columns - Default Action parameters are arrays.
 | Fill In Text | (Required) When **Input Option** parameter is set to `openKeyboard` and the keyboard is opened, the default string in the input field.  |
 | Clipboard Text |(Required) For `clipboard` type actions, the text to copy to the clipboard. |
 | Rich Menu Alias ID | (Required) The rich menu alias ID to switch to. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;(Required) Provide template variables as data. These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables | <ul><li>(Required) Provide template variables as data. These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li></ul> |
 
 ### Push Message - Template message (Image carousel template)
 
@@ -339,7 +339,7 @@ All Template - Columns parameters are arrays.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Image URL | (Required) The URL of the image&#39;s thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
+| Image URL | (Required) The URL of the image's thumbnail. The URL must not exceed 2,000 characters and must use the HTTPS protocol. |
 | Action - Type  | (Required) The type of action. Allowed values are: `postback`, `message`, `uri`, `datetimepicker`, `camera`, `cameraRoll`, `location`, `richmenuswitch`, and `clipboard`. |
 | Action - Label | (Required) The label for the action. Specifications vary based on the object the action is set to. |
 | Action - Data | (Required) The string returned through the webhook in the `postback.data` property of the postback event. |
@@ -365,13 +365,13 @@ All Template - Columns parameters are arrays.
 | Contact ID | (Required) This parameter is the ID received from the webhook that is configured in the **Channel Console** in the LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL. |
 | Alternative Text | (Required) Alternative text for the base image. Maximum text length is 400 characters long. The alternative text appears in notifications or chat lists. |
 | Contents | (Required) The contents of the flex message container. |
-| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`. For more information, see . |
-| Templates | &lt;ul&gt;&lt;li&gt;(Required) Provide templates to be referenced in the Message Data section. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). |
+| Templates | <ul><li>(Required) Provide templates to be referenced in the Message Data section. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul> |
 | Contact ID | (Required) This parameter is the ID received from the webhook that is configured in the **Channel Console** in the LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL. |
 | Alternative Text | (Required) Alternative text for the base image. Maximum text length is 400 characters long. The alternative text appears in notifications or chat lists. |
 | Contents | (Required) The contents of the flex message container. |
-| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`. For more information, see . |
-| Templates | &lt;ul&gt;&lt;li&gt;(Required) Provide templates to be referenced in the Message Data section. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). |
+| Templates | <ul><li>(Required) Provide templates to be referenced in the Message Data section. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`.</li></ul> |
 
 ## Vendor Documentation
 
@@ -382,4 +382,4 @@ All Template - Columns parameters are arrays.
 
 ##### Additional References
 
-* .
+* [connector-template-variables](https://docs.tealium.com/connector-template-variables/).

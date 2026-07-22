@@ -51,8 +51,8 @@ Visitor records (profiles) are stored as JSON objects that contain the following
 
 |Object Name| Type| Description|
 |---| ---| ---|
-| Main Object | object|  The visitor object with sub-objects for each of the attribute data types: &lt;ul&gt;&lt;li&gt;Stitched Visitor IDs: `replaces : [ ]`&lt;/li&gt;&lt;li&gt;Numbers/Array of Numbers: `&#34;metrics&#34; : { }, &#34;metric_lists&#34; : { }`&lt;/li&gt;&lt;li&gt;Strings/Array of Strings/Set of Strings: `&#34;properties&#34; : { }, &#34;property_lists&#34; : { }, &#34;property_sets&#34; : { }`&lt;/li&gt;&lt;li&gt;Booleans/Array of Booleans: `&#34;flags&#34; : { }, &#34;flag_lists&#34; : { }`&lt;/li&gt;&lt;li&gt;Dates: `&#34;dates&#34; : { }`&lt;/li&gt;&lt;li&gt;Badges: `&#34;badges&#34; : { }`&lt;/li&gt;&lt;li&gt;Tallies: `&#34;metric_sets&#34; : { }`&lt;/li&gt;&lt;li&gt;Timelines: `&#34;sequences&#34; : { }`&lt;/li&gt;&lt;li&gt;Funnels: `&#34;funnels&#34; : { }`&lt;/li&gt;&lt;/ul&gt; |
-| `current_visit` | Object|  &lt;ul&gt;&lt;li&gt;Last Event `last_event: { }`&lt;/li&gt;&lt;li&gt;Events `events: [ {}, {}, ...]`&lt;/li&gt;&lt;/ul&gt; |
+| Main Object | object|  The visitor object with sub-objects for each of the attribute data types: <ul><li>Stitched Visitor IDs: `replaces : [ ]`</li><li>Numbers/Array of Numbers: `"metrics" : { }, "metric_lists" : { }`</li><li>Strings/Array of Strings/Set of Strings: `"properties" : { }, "property_lists" : { }, "property_sets" : { }`</li><li>Booleans/Array of Booleans: `"flags" : { }, "flag_lists" : { }`</li><li>Dates: `"dates" : { }`</li><li>Badges: `"badges" : { }`</li><li>Tallies: `"metric_sets" : { }`</li><li>Timelines: `"sequences" : { }`</li><li>Funnels: `"funnels" : { }`</li></ul> |
+| `current_visit` | Object|  <ul><li>Last Event `last_event: { }`</li><li>Events `events: [ {}, {}, ...]`</li></ul> |
 
 ## JSON file template
 
@@ -60,82 +60,82 @@ Visitor records (profiles) are stored as JSON objects that contain the following
 // Visitor Record
 {
     // Number attributes (Visitor Scope)
-    &#34;metrics&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: NUMERIC_VALUE,
+    "metrics": {
+        "ATTRIBUTE_NAME": NUMERIC_VALUE,
         ...
     },
 
     // Date attributes (Visitor Scope)
-    &#34;dates&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: UNIX_TIMESTAMP,
-        &#34;audience_ACCOUNT_PROFILE_ID_count_ts&#34;: UNIX_TIMESTAMP,
+    "dates": {
+        "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
+        "audience_ACCOUNT_PROFILE_ID_count_ts": UNIX_TIMESTAMP,
         ...
     },
 
     // String attributes (Visitor Scope)
-    &#34;properties&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;,
+    "properties": {
+        "ATTRIBUTE_NAME": "STRING_VALUE",
         ...
     },
 
     // Array of Strings attributes (Visitor Scope)
-    &#34;property_lists&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [&#34;STRING_VALUE&#34;, ...],
+    "property_lists": {
+        "ATTRIBUTE_NAME": ["STRING_VALUE", ...],
         ...
     },
 
     // Set of Strings attributes (Visitor Scope)
-    &#34;property_sets&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;STRING_VALUE&#34;: 1,
+    "property_sets": {
+        "ATTRIBUTE_NAME": {
+            "STRING_VALUE": 1,
             ...
         },
         ...
     },
 
     // Boolean attributes (Visitor Scope)
-    &#34;flags&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: true|false,
+    "flags": {
+        "ATTRIBUTE_NAME": true|false,
         ...
     },
 
     // Visitor Stitching
-    &#34;replaces&#34;: [&#34;45-CHAR-ALPHANUMERIC&#34;, &#34;__ACCOUNT_PROFILE__ATTRIBUTE_ID_VALUE__&#34;, ...],
+    "replaces": ["45-CHAR-ALPHANUMERIC", "__ACCOUNT_PROFILE__ATTRIBUTE_ID_VALUE__", ...],
 
     // Audiences
-    &#34;audiences&#34;: [&#34;AUDIENCE_NAME&#34;, ...],
+    "audiences": ["AUDIENCE_NAME", ...],
 
     // Badges
-    &#34;badges&#34;: [&#34;BADGE_NAME&#34;, ...],
+    "badges": ["BADGE_NAME", ...],
 
-    &#34;preloaded&#34;: false,
+    "preloaded": false,
 
     // Array of Numbers
-    &#34;metric_lists&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [VALUE, ...],
+    "metric_lists": {
+        "ATTRIBUTE_NAME": [VALUE, ...],
         ...
     },
 
     // Tallies (Visitor Scope)
-    &#34;metric_sets&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;ENTRY_NAME&#34;: VALUE,
+    "metric_sets": {
+        "ATTRIBUTE_NAME": {
+            "ENTRY_NAME": VALUE,
             ...
         },
         ...
     },
-    &#34;creation_ts&#34;: UNIX_TIMESTAMP,
-    &#34;_id&#34;: &#34;GUID&#34;,
-    &#34;_partition&#34;: NUMBER,
-    &#34;shard_token&#34;: NUMBER,
+    "creation_ts": UNIX_TIMESTAMP,
+    "_id": "GUID",
+    "_partition": NUMBER,
+    "shard_token": NUMBER,
 
     // Timelines (Visitor Scope)
-    &#34;sequences&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: [
+    "sequences": {
+        "ATTRIBUTE_NAME": [
             {
-                &#34;timestamp&#34;: UNIX_TIMESTAMP,
-                &#34;snapshot&#34;: {
-                    &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;
+                "timestamp": UNIX_TIMESTAMP,
+                "snapshot": {
+                    "ATTRIBUTE_NAME": "STRING_VALUE"
                 }
             },
             ...
@@ -143,18 +143,18 @@ Visitor records (profiles) are stored as JSON objects that contain the following
     },
 
     // Funnels (Visitor Scope)
-    &#34;funnels&#34;: {
-        &#34;ATTRIBUTE_NAME&#34;: {
-            &#34;completed&#34;: true|false,
-            &#34;steps&#34;: {
-                &#34;1&#34;: {
-                    &#34;timestamp&#34;: UNIX_TIMESTAMP,
-                    &#34;snapshot&#34;: {
-                        &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;
+    "funnels": {
+        "ATTRIBUTE_NAME": {
+            "completed": true|false,
+            "steps": {
+                "1": {
+                    "timestamp": UNIX_TIMESTAMP,
+                    "snapshot": {
+                        "ATTRIBUTE_NAME": "STRING_VALUE"
                     }
                 },
-                &#34;2&#34;: {
-                    &#34;timestamp&#34;: UNIX_TIMESTAMP
+                "2": {
+                    "timestamp": UNIX_TIMESTAMP
                 },
                 ...
             }
@@ -162,227 +162,227 @@ Visitor records (profiles) are stored as JSON objects that contain the following
     },
 
     // Current Visit Record
-    &#34;current_visit&#34;: {
+    "current_visit": {
         // Number attributes (Visit scope)
-        &#34;metrics&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: NUMERIC_VALUE,
+        "metrics": {
+            "ATTRIBUTE_NAME": NUMERIC_VALUE,
             ...
         },
 
         // Date attributes (Visit scope)
-        &#34;dates&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: UNIX_TIMESTAMP,
+        "dates": {
+            "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
             ...
-            &#34;last_event_ts&#34;: UNIX_TIMESTAMP
+            "last_event_ts": UNIX_TIMESTAMP
         },
 
         // String attributes (Visit scope)
-        &#34;properties&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: &#34;STRING_VALUE&#34;,
+        "properties": {
+            "ATTRIBUTE_NAME": "STRING_VALUE",
             ...
         },
 
         // Boolean attributes (Visitor Scope)
-        &#34;flags&#34;: {
-            &#34;ATTRIBUTE_NAME&#34;: true|false,
+        "flags": {
+            "ATTRIBUTE_NAME": true|false,
             ...
         },
 
         // Events From Current Visit
-        &#34;events&#34;: [{
-            &#34;account&#34;: &#34;ACCOUNT&#34;,
-            &#34;profile&#34;: &#34;PROFILE&#34;,
-            &#34;selector&#34;: &#34;2&#34;,
-            &#34;env&#34;: &#34;prod&#34;,
-            &#34;tags&#34;: {
-                &#34;TAG_UID&#34;: {
-                    &#34;executed&#34;: true|false,
-                    &#34;type&#34;: VENDOR_ID,
-                    &#34;profile&#34;: &#34;PROFILE&#34;
+        "events": [{
+            "account": "ACCOUNT",
+            "profile": "PROFILE",
+            "selector": "2",
+            "env": "prod",
+            "tags": {
+                "TAG_UID": {
+                    "executed": true|false,
+                    "type": VENDOR_ID,
+                    "profile": "PROFILE"
                 },
                 ...
             }
-            &#34;data&#34;: {
+            "data": {
                 // Built-In DOM Variables
-                &#34;dom&#34;: {
-                    &#34;viewport_height&#34;: 976,
-                    &#34;referrer&#34;: &#34;https://www.google.com/&#34;,
-                    &#34;viewport_width&#34;: 1680,
-                    &#34;domain&#34;: &#34;example.com&#34;,
-                    &#34;title&#34;: &#34;PAGE_TITLE&#34;,
-                    &#34;query_string&#34;: &#34;&#34;,
-                    &#34;hash&#34;: &#34;&#34;,
-                    &#34;url&#34;: &#34;FULL_URL&#34;,
-                    &#34;pathname&#34;: &#34;/&#34;
+                "dom": {
+                    "viewport_height": 976,
+                    "referrer": "https://www.google.com/",
+                    "viewport_width": 1680,
+                    "domain": "example.com",
+                    "title": "PAGE_TITLE",
+                    "query_string": "",
+                    "hash": "",
+                    "url": "FULL_URL",
+                    "pathname": "/"
                 },
 
                 // Universal Data Object variables
-                &#34;udo&#34;: {
-                    &#34;UDO_VARIABLE_NAME&#34; : &#34;VALUE&#34;,
+                "udo": {
+                    "UDO_VARIABLE_NAME" : "VALUE",
                     ...
-                    &#34;tealium_account&#34;: &#34;ACCOUNT&#34;,
-                    &#34;tealium_datasource&#34;: &#34;DATA_SOURCE_KEY&#34;,
-                    &#34;tealium_environment&#34;: &#34;prod&#34;,
-                    &#34;tealium_event&#34;: &#34;view&#34;,
-                    &#34;tealium_firstparty_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;tealium_library_name&#34;: &#34;utag.js&#34;,
-                    &#34;tealium_library_version&#34;: &#34;4.44.0&#34;,
-                    &#34;tealium_profile&#34;: &#34;PROFILE&#34;
-                    &#34;tealium_random&#34;: &#34;MATH_RANDOM&#34;,
-                    &#34;tealium_session_id&#34;: &#34;UNIX_TIMESTAMP&#34;,
-                    &#34;tealium_timestamp_epoch&#34;: UNIX_TIMESTAMP,
-                    &#34;tealium_timestamp_local&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmm&#34;,
-                    &#34;tealium_timestamp_utc&#34;: &#34;2017-10-29T23:10:24.363Z&#34;,
-                    &#34;tealium_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;
+                    "tealium_account": "ACCOUNT",
+                    "tealium_datasource": "DATA_SOURCE_KEY",
+                    "tealium_environment": "prod",
+                    "tealium_event": "view",
+                    "tealium_firstparty_visitor_id": "45-CHAR-ALPHANUMERIC",
+                    "tealium_library_name": "utag.js",
+                    "tealium_library_version": "4.44.0",
+                    "tealium_profile": "PROFILE"
+                    "tealium_random": "MATH_RANDOM",
+                    "tealium_session_id": "UNIX_TIMESTAMP",
+                    "tealium_timestamp_epoch": UNIX_TIMESTAMP,
+                    "tealium_timestamp_local": "YYYY-MM-DDTHH:MM:SS.mmm",
+                    "tealium_timestamp_utc": "2017-10-29T23:10:24.363Z",
+                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
 
                 // Javascript Page Variables
-                &#34;js&#34;: {
-                    &#34;VARIABLE_NAME&#34;: VALUE,
+                "js": {
+                    "VARIABLE_NAME": VALUE,
                     ...
                 },
 
                 // Cookies
-                &#34;firstparty_tealium_cookies&#34;: {
-                    &#34;utag_main_v_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;COOKIE_NAME&#34; : VALUE,
+                "firstparty_tealium_cookies": {
+                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
+                    "COOKIE_NAME" : VALUE,
                     ...
                 },
 
                 // Meta Data Variables
-                &#34;meta&#34;: {
-                    &#34;META_TAG_NAME&#34;: VALUE,
+                "meta": {
+                    "META_TAG_NAME": VALUE,
                     ...
                 }
             },
-            &#34;type&#34;: &#34;LIVE&#34;,
-            &#34;enrichmentOnly&#34;: false,
-            &#34;event_id&#34;: &#34;GUID&#34;,
-            &#34;visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-            &#34;post_time&#34;: UNIX_TIMESTAMP,
-            &#34;page_url&#34;: {
-                &#34;full_url&#34;: &#34;URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "type": "LIVE",
+            "enrichmentOnly": false,
+            "event_id": "GUID",
+            "visitor_id": "45-CHAR-ALPHANUMERIC",
+            "post_time": UNIX_TIMESTAMP,
+            "page_url": {
+                "full_url": "URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;referrer_url&#34;: {
-                &#34;full_url&#34;: &#34;FULL_URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "referrer_url": {
+                "full_url": "FULL_URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;useragent&#34;: &#34;USER_AGENT&#34;,
-            &#34;client_ip&#34;: &#34;IP_ADDRESS&#34;,
-            &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER&#34;, ...],
-            &#34;new_visitor&#34;: true|false
+            "useragent": "USER_AGENT",
+            "client_ip": "IP_ADDRESS",
+            "_dctrace": ["COLLECTION_SERVER", ...],
+            "new_visitor": true|false
         }],
 
         // Sets of Strings
-        &#34;property_sets&#34;: {
-            &#34;SET_NAME&#34;: [&#34;VALUE&#34;, ...],
+        "property_sets": {
+            "SET_NAME": ["VALUE", ...],
             ...
         },
-        &#34;creation_ts&#34;: UNIX_TIMESTAMP,
-        &#34;_id&#34;: &#34;GUID&#34;,
-        &#34;shard_token&#34;: NUMERIC_VALUE,
-        &#34;last_event&#34;: {
-            &#34;account&#34;: &#34;ACCOUNT&#34;,
-            &#34;profile&#34;: &#34;PROFILE&#34;,
-            &#34;selector&#34;: &#34;2&#34;,
-            &#34;env&#34;: &#34;prod&#34;,
-            &#34;tags&#34;: {
-                &#34;TAG_UID&#34;: {
-                    &#34;executed&#34;: true|false,
-                    &#34;type&#34;: VENDOR_ID,
-                    &#34;profile&#34;: &#34;PROFILE&#34;
+        "creation_ts": UNIX_TIMESTAMP,
+        "_id": "GUID",
+        "shard_token": NUMERIC_VALUE,
+        "last_event": {
+            "account": "ACCOUNT",
+            "profile": "PROFILE",
+            "selector": "2",
+            "env": "prod",
+            "tags": {
+                "TAG_UID": {
+                    "executed": true|false,
+                    "type": VENDOR_ID,
+                    "profile": "PROFILE"
                 },
                 ...
             },
-            &#34;data&#34;: {
+            "data": {
                 // Built-In DOM Variables
-                &#34;dom&#34;: {
-                    &#34;viewport_height&#34;: 976,
-                    &#34;referrer&#34;: &#34;https://www.google.com/&#34;,
-                    &#34;viewport_width&#34;: 1680,
-                    &#34;domain&#34;: &#34;example.com&#34;,
-                    &#34;title&#34;: &#34;PAGE_TITLE&#34;,
-                    &#34;query_string&#34;: &#34;&#34;,
-                    &#34;hash&#34;: &#34;&#34;,
-                    &#34;url&#34;: &#34;FULL_URL&#34;,
-                    &#34;pathname&#34;: &#34;/&#34;
+                "dom": {
+                    "viewport_height": 976,
+                    "referrer": "https://www.google.com/",
+                    "viewport_width": 1680,
+                    "domain": "example.com",
+                    "title": "PAGE_TITLE",
+                    "query_string": "",
+                    "hash": "",
+                    "url": "FULL_URL",
+                    "pathname": "/"
                 },
                 // Universal Data Object variables
-                &#34;udo&#34;: {
-                    &#34;UDO_VARIABLE_NAME&#34; : &#34;VALUE&#34;,
+                "udo": {
+                    "UDO_VARIABLE_NAME" : "VALUE",
                     ...
-                    &#34;tealium_account&#34;: &#34;ACCOUNT&#34;,
-                    &#34;tealium_datasource&#34;: &#34;DATA_SOURCE_KEY&#34;,
-                    &#34;tealium_environment&#34;: &#34;prod&#34;,
-                    &#34;tealium_event&#34;: &#34;view&#34;,
-                    &#34;tealium_firstparty_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;tealium_library_name&#34;: &#34;utag.js&#34;,
-                    &#34;tealium_library_version&#34;: &#34;4.44.0&#34;,
-                    &#34;tealium_profile&#34;: &#34;PROFILE&#34;
-                    &#34;tealium_random&#34;: &#34;MATH_RANDOM&#34;,
-                    &#34;tealium_session_id&#34;: &#34;UNIX_TIMESTAMP&#34;,
-                    &#34;tealium_timestamp_epoch&#34;: UNIX_TIMESTAMP,
-                    &#34;tealium_timestamp_local&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmm&#34;,
-                    &#34;tealium_timestamp_utc&#34;: &#34;2017-10-29T23:10:24.363Z&#34;,
-                    &#34;tealium_visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;
+                    "tealium_account": "ACCOUNT",
+                    "tealium_datasource": "DATA_SOURCE_KEY",
+                    "tealium_environment": "prod",
+                    "tealium_event": "view",
+                    "tealium_firstparty_visitor_id": "45-CHAR-ALPHANUMERIC",
+                    "tealium_library_name": "utag.js",
+                    "tealium_library_version": "4.44.0",
+                    "tealium_profile": "PROFILE"
+                    "tealium_random": "MATH_RANDOM",
+                    "tealium_session_id": "UNIX_TIMESTAMP",
+                    "tealium_timestamp_epoch": UNIX_TIMESTAMP,
+                    "tealium_timestamp_local": "YYYY-MM-DDTHH:MM:SS.mmm",
+                    "tealium_timestamp_utc": "2017-10-29T23:10:24.363Z",
+                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
                 // Javascript Page Variables
-                &#34;js&#34;: {
-                    &#34;VARIABLE_NAME&#34;: VALUE,
+                "js": {
+                    "VARIABLE_NAME": VALUE,
                     ...
                 },
                 // Cookies
-                &#34;firstparty_tealium_cookies&#34;: {
-                    &#34;utag_main_v_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-                    &#34;COOKIE_NAME&#34; : VALUE,
+                "firstparty_tealium_cookies": {
+                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
+                    "COOKIE_NAME" : VALUE,
                     ...
                 },
                 // Meta Data Variables
-                &#34;meta&#34;: {
-                    &#34;META_TAG_NAME&#34;: VALUE,
+                "meta": {
+                    "META_TAG_NAME": VALUE,
                     ...
                 }
             },
-            &#34;type&#34;: &#34;LIVE&#34;,
-            &#34;enrichmentOnly&#34;: true|false,
-            &#34;event_id&#34;: &#34;GUID&#34;,
-            &#34;visitor_id&#34;: &#34;45-CHAR-ALPHANUMERIC&#34;,
-            &#34;post_time&#34;: UNIX_TIMESTAMP,
-            &#34;page_url&#34;: {
-                &#34;full_url&#34;: &#34;URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "type": "LIVE",
+            "enrichmentOnly": true|false,
+            "event_id": "GUID",
+            "visitor_id": "45-CHAR-ALPHANUMERIC",
+            "post_time": UNIX_TIMESTAMP,
+            "page_url": {
+                "full_url": "URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;referrer_url&#34;: {
-                &#34;full_url&#34;: &#34;FULL_URL&#34;,
-                &#34;scheme&#34;: &#34;https&#34;,
-                &#34;domain&#34;: &#34;example.com&#34;,
-                &#34;path&#34;: &#34;/&#34;
+            "referrer_url": {
+                "full_url": "FULL_URL",
+                "scheme": "https",
+                "domain": "example.com",
+                "path": "/"
             },
-            &#34;useragent&#34;: &#34;USER_AGENT&#34;,
-            &#34;client_ip&#34;: &#34;IP_ADDRESS&#34;,
-            &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER&#34;, ...],
-            &#34;new_visitor&#34;: true|false
+            "useragent": "USER_AGENT",
+            "client_ip": "IP_ADDRESS",
+            "_dctrace": ["COLLECTION_SERVER", ...],
+            "new_visitor": true|false
         },
-        &#34;_dc_ttl_&#34;: 1800000,
-        &#34;total_event_count&#34;: 2,
-        &#34;events_compressed&#34;: false
+        "_dc_ttl_": 1800000,
+        "total_event_count": 2,
+        "events_compressed": false
     },
-    &#34;_dctrace&#34;: [&#34;COLLECTION_SERVER_ID&#34;, ...],
-    &#34;new_visitor&#34;: true|false,
-    &#34;audiences_joined_at&#34;: {
-        &#34;ACCOUNT_PROFILE_AUDIENCE_ID&#34;: {
-            &#34;$date&#34;: &#34;YYYY-MM-DDTHH:MM:SS.mmmZ&#34;
+    "_dctrace": ["COLLECTION_SERVER_ID", ...],
+    "new_visitor": true|false,
+    "audiences_joined_at": {
+        "ACCOUNT_PROFILE_AUDIENCE_ID": {
+            "$date": "YYYY-MM-DDTHH:MM:SS.mmmZ"
         },
         ...
     },
-    &#34;last_visit_id&#34;: &#34;GUID&#34;
+    "last_visit_id": "GUID"
 },
 // Additional Visitor Records
 ...

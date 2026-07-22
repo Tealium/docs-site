@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/appcues-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -31,8 +31,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/appcues-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;更新するプロファイルのエンドユーザーID。&lt;/li&gt;&lt;/ul&gt; |
-|プロパティ|  &lt;ul&gt;&lt;li&gt;ユーザーの保存されたプロファイルに更新する任意のキー値データを含むオブジェクト。&lt;/li&gt;&lt;li&gt;詳細については、[Appcues HTTP API (Developer)](http://docs.appcues.com/article/254-http-api)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザーID|  <ul><li>更新するプロファイルのエンドユーザーID。</li></ul> |
+|プロパティ|  <ul><li>ユーザーの保存されたプロファイルに更新する任意のキー値データを含むオブジェクト。</li><li>詳細については、[Appcues HTTP API (Developer)](http://docs.appcues.com/article/254-http-api)を参照してください。</li></ul> |
 
 ### アクション - ユーザーイベントの記録
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/appcues-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;更新するプロファイルのエンドユーザーID。&lt;/li&gt;&lt;/ul&gt; |
-|イベント名|  &lt;ul&gt;&lt;li&gt;イベント名。&lt;/li&gt;&lt;li&gt;最大127文字。&lt;/li&gt;&lt;li&gt;これは特定のイベントをグループ化し、ターゲティングする主なメカニズムです。&lt;/li&gt;&lt;li&gt;詳細については、[Appcues HTTP API (Developer)](http://docs.appcues.com/article/254-http-api)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|タイムスタンプ|  &lt;ul&gt;&lt;li&gt;イベントが発生した時間。&lt;/li&gt;&lt;li&gt;整数形式（Unix時間として）または文字列形式（ISO 8601準拠の日付、例えば **2016-01-13T13:05:22.000Z**）。&lt;/li&gt;&lt;/ul&gt; |
-|イベント属性|  &lt;ul&gt;&lt;li&gt;イベント属性&lt;/li&gt;&lt;/ul&gt; |
+|ユーザーID|  <ul><li>更新するプロファイルのエンドユーザーID。</li></ul> |
+|イベント名|  <ul><li>イベント名。</li><li>最大127文字。</li><li>これは特定のイベントをグループ化し、ターゲティングする主なメカニズムです。</li><li>詳細については、[Appcues HTTP API (Developer)](http://docs.appcues.com/article/254-http-api)を参照してください。</li></ul> |
+|タイムスタンプ|  <ul><li>イベントが発生した時間。</li><li>整数形式（Unix時間として）または文字列形式（ISO 8601準拠の日付、例えば **2016-01-13T13:05:22.000Z**）。</li></ul> |
+|イベント属性|  <ul><li>イベント属性</li></ul> |

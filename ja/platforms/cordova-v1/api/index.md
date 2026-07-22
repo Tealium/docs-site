@@ -3,8 +3,12 @@ title: API リファレンス
 description: TealiumのCordova用クラスとメソッドのリファレンスガイドです。
 url: https://docs.tealium.com/ja/platforms/cordova-v1/api/
 ---
+
+<blockquote>
 これはTealiumのCordova用の以前のバージョン（1.x）です。  
-現在のバージョンについては、[TealiumのCordova 2.x](/ja/platforms/cordova/)を参照してください。
+現在のバージョンについては、[TealiumのCordova 2.x](https://docs.tealium.com/ja/platforms/cordova/)を参照してください。
+</blockquote>
+
 
 ## クラス: `Tealium`
 
@@ -20,7 +24,7 @@ url: https://docs.tealium.com/ja/platforms/cordova-v1/api/
 | `getVolatile()`      | Tealiumの揮発性データストアから値を返します                                                                               |
 | `removePersistent()` | Tealiumの永続データストアからデータを削除します                                                                           |
 | `removeVolatile()`   | Tealiumの揮発性データストアから揮発性データを削除します                                                                   |
-| `track()`            | 最初の引数タイプとして`&#34;view&#34;`を渡すことでビューを追跡、または`&#34;link&#34;`を渡すことでイベントを追跡します                     |
+| `track()`            | 最初の引数タイプとして`"view"`を渡すことでビューを追跡、または`"link"`を渡すことでイベントを追跡します                     |
 | `trackEvent()`       | ビュー以外のすべてのアクティビティを追跡します                                                                             |
 | `trackView()`        | アプリ内でユーザーが画面を開いたり変更したりするたびに追跡します                                                           |
 
@@ -35,9 +39,9 @@ tealium.addPersistent(key, data, instance);
 
 | パラメータ  | タイプ                   | 説明                                                                     | 例                           |
 |:-----------|:-----------------------|:--------------------------------------------------------------------------------|:----------------------------------|
-| `key`      | `String`               | 永続化される値のキー名                                               | `&#34;user_hashed_email&#34;`             |
-| `data`     | `String` or `[String]` | このキーに対して永続化される値                                          | `[&#34;testpersist&#34;, &#34;testpersist2&#34;]` |
-| `instance` | `String`               | 特定のトラッキングインスタンスを参照するために使用される任意のインスタンス名 | `&#34;tealium_main&#34;`                  |
+| `key`      | `String`               | 永続化される値のキー名                                               | `"user_hashed_email"`             |
+| `data`     | `String` or `[String]` | このキーに対して永続化される値                                          | `["testpersist", "testpersist2"]` |
+| `instance` | `String`               | 特定のトラッキングインスタンスを参照するために使用される任意のインスタンス名 | `"tealium_main"`                  |
 
 ### `addVolatile()`
 
@@ -49,9 +53,9 @@ tealium.addVolatile(key, data, instance);
 
 | パラメータ  | タイプ                   | 説明                                                                     | 例                              |
 |:-----------|:-----------------------|:--------------------------------------------------------------------------------|:-------------------------------------|
-| `key`      | `String`               | 永続化される値のキー名                                               | `&#34;user_hashed_email&#34;`                |
-| `data`     | `String` or `[String]` | このキーに対して永続化される値                                          | `[&#34;testvolatile1&#34;, &#34;testvolatile2&#34;]` |
-| `instance` | `String`               | 特定のトラッキングインスタンスを参照するために使用される任意のインスタンス名 | `&#34;tealium_main&#34;`                     |
+| `key`      | `String`               | 永続化される値のキー名                                               | `"user_hashed_email"`                |
+| `data`     | `String` or `[String]` | このキーに対して永続化される値                                          | `["testvolatile1", "testvolatile2"]` |
+| `instance` | `String`               | 特定のトラッキングインスタンスを参照するために使用される任意のインスタンス名 | `"tealium_main"`                     |
 ### `init()`
 
 Tealium Cordovaプラグインを初期化します。
@@ -80,16 +84,16 @@ tealium.init({account, profile, environment, instance,
 
 | パラメータ                    | タイプ     | 説明                                                                                | 例                                                                                                                                                                   |
 |:-------------------------|:---------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `account`                | `String` | Tealiumのアカウント名                                                                       | `&#34;companyXYZ&#34;`                                                                                                                                                            |
-| `profile`                | `String` | Tealiumのプロファイル名                                                                       | `&#34;main&#34;`                                                                                                                                                                  |
-| `environment`            | `String` | Tealiumの環境名                                                                   | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`]                                                                                                                                               |
-| `instance`               | `String` | Tealiumのインスタンス名（複数インスタンス対応）                                       | `&#34;tealium_main&#34;`                                                                                                                                                           |
-| `isLifecycleEnabled`     | `String` | （オプション）ライフサイクル追跡を有効にするための文字列値 &#34;true&#34; または &#34;false&#34;（デフォルト：&#34;true&#34;） | [`&#34;true&#34;`, `&#34;false&#34;`]                                                                                                                                                     |
-| `collectDispatchURL`     | `String` | Tealium CollectエンドポイントのURLをオーバーライド                                             | `&#34;https: //collect. tealiumiq.com/ vdata/i.gif ?tealium_account =companyXYZ &amp;tealium_profile =main&#34;`                                                                      |
-| `collectDispatchProfile` | `String` | Tealium Collectエンドポイントで使用するプロファイルを構成                                     | `&#34;cordova-demo&#34;`                                                                                                                                                          |
-| `isCrashReporterEnabled` | `String` | （オプション、Androidのみ）クラッシュレポート（未捕捉例外ハンドラー）を有効にする        | [`&#34;true&#34;`, `&#34;false&#34;`]                                                                                                                                                     |
+| `account`                | `String` | Tealiumのアカウント名                                                                       | `"companyXYZ"`                                                                                                                                                            |
+| `profile`                | `String` | Tealiumのプロファイル名                                                                       | `"main"`                                                                                                                                                                  |
+| `environment`            | `String` | Tealiumの環境名                                                                   | [`"dev"`, `"qa"`, `"prod"`]                                                                                                                                               |
+| `instance`               | `String` | Tealiumのインスタンス名（複数インスタンス対応）                                       | `"tealium_main"`                                                                                                                                                           |
+| `isLifecycleEnabled`     | `String` | （オプション）ライフサイクル追跡を有効にするための文字列値 "true" または "false"（デフォルト："true"） | [`"true"`, `"false"`]                                                                                                                                                     |
+| `collectDispatchURL`     | `String` | Tealium CollectエンドポイントのURLをオーバーライド                                             | `"https: //collect. tealiumiq.com/ vdata/i.gif ?tealium_account =companyXYZ &tealium_profile =main"`                                                                      |
+| `collectDispatchProfile` | `String` | Tealium Collectエンドポイントで使用するプロファイルを構成                                     | `"cordova-demo"`                                                                                                                                                          |
+| `isCrashReporterEnabled` | `String` | （オプション、Androidのみ）クラッシュレポート（未捕捉例外ハンドラー）を有効にする        | [`"true"`, `"false"`]                                                                                                                                                     |
 | `logLevel`               | `String` | （オプション）ログレベルを構成（デフォルトは環境に依存）                                | `tealium.logLevels.DEV`（情報、警告、エラー）、`tealium.logLevels.QA`（警告、エラー）、`tealium.logLevels.PROD`（エラーのみ）、`tealium.logLevels.SILENT`（ログなし） |
-| `dataSourceId`           | `String` | （オプション）データソースキー                                                             | &#34;abc123&#34;                                                                                                                                                                  |
+| `dataSourceId`           | `String` | （オプション）データソースキー                                                             | "abc123"                                                                                                                                                                  |
 
 ### `getPersistent()`
 
@@ -101,8 +105,8 @@ tealium.getPersistent(key, instance, callback);
 
 | パラメータ  | タイプ       | 説明                                                                     | 例               |
 |:-----------|:-----------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String`   | 永続保存から取得する値のキー名                       | `&#34;user_hashed_email&#34;` |
-| `instance` | `String`   | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `&#34;tealium_main&#34;`      |
+| `key`      | `String`   | 永続保存から取得する値のキー名                       | `"user_hashed_email"` |
+| `instance` | `String`   | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `"tealium_main"`      |
 | `callback` | `Function` | 永続保存から要求された値を返すコールバックオブジェクト       | `null`                |
 
 ### `getVisitorID()`
@@ -123,8 +127,8 @@ tealium.getVolatile(key, instance, callback);
 
 | パラメータ  | タイプ       | 説明                                                                     | 例               |
 |:-----------|:-----------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String`   | 揮発性保存から取得する値のキー名                         | `&#34;user_hashed_email&#34;` |
-| `instance` | `String`   | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `&#34;tealium_main&#34;`      |
+| `key`      | `String`   | 揮発性保存から取得する値のキー名                         | `"user_hashed_email"` |
+| `instance` | `String`   | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `"tealium_main"`      |
 | `callback` | `Function` | 永続保存から要求された値を返すコールバックオブジェクト       | `null`                |
 
 ### `removePersistent()`
@@ -137,8 +141,8 @@ tealium.removePersistent(key, instance);
 
 | パラメータ  | タイプ     | 説明                                                                     | 例               |
 |:-----------|:---------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String` | 永続保存から削除する値のキー名                         | `&#34;user_hashed_email&#34;` |
-| `instance` | `String` | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `&#34;tealium_main&#34;`      |
+| `key`      | `String` | 永続保存から削除する値のキー名                         | `"user_hashed_email"` |
+| `instance` | `String` | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `"tealium_main"`      |
 
 ### `removeVolatile()`
 
@@ -150,11 +154,11 @@ tealium.removeVolatile(key, instance);
 
 | パラメータ  | タイプ     | 説明                                                                     | 例               |
 |:-----------|:---------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String` | 揮発性メモリから削除する値のキー名                            | `&#34;user_hashed_email&#34;` |
-| `instance` | `String` | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `&#34;tealium_main&#34;`      |
+| `key`      | `String` | 揮発性メモリから削除する値のキー名                            | `"user_hashed_email"` |
+| `instance` | `String` | 特定のトラッキングインスタンスを参照するための任意のインスタンス名 | `"tealium_main"`      |
 ### `track()`
 
-ビューを追跡するには、最初の引数タイプとして `&#34;view&#34;` を渡し、イベントを追跡するには `&#34;link&#34;` を渡します。
+ビューを追跡するには、最初の引数タイプとして `"view"` を渡し、イベントを追跡するには `"link"` を渡します。
 
 ```js
 tealium.track(type, data, instance);
@@ -162,9 +166,9 @@ tealium.track(type, data, instance);
 
 | パラメータ  | タイプ                   | 説明                                                                        | 例                               |
 |:-----------|:-----------------------|:----------------------------------------------------------------------------|:--------------------------------|
-| `type`     | `String`               | Tealium イベントタイプ名 - `&#34;link&#34;` (イベント) または `&#34;view&#34;` (画面ビュー) | [`&#34;link&#34;`, `&#34;view&#34;`]            |
-| `data`     | JavaScript/JSON オブジェクト | このトラッキングコールのデータレイヤーを指定されたキーバリューペアで構成します | `{&#34;tealium_event&#34; : &#34;page_view&#34;}` |
-| `instance` | `String`               | Tealium インスタンス名 - 特定のトラッキングインスタンスを指します           | `&#34;tealium_main&#34;`                |
+| `type`     | `String`               | Tealium イベントタイプ名 - `"link"` (イベント) または `"view"` (画面ビュー) | [`"link"`, `"view"`]            |
+| `data`     | JavaScript/JSON オブジェクト | このトラッキングコールのデータレイヤーを指定されたキーバリューペアで構成します | `{"tealium_event" : "page_view"}` |
+| `instance` | `String`               | Tealium インスタンス名 - 特定のトラッキングインスタンスを指します           | `"tealium_main"`                |
 
 ### `trackEvent()`
 
@@ -176,8 +180,8 @@ tealium.trackEvent(data, instance);
 
 | パラメータ  | タイプ                   | 説明                                                   | 例                             |
 |:-----------|:-----------------------|:------------------------------------------------------|:--------------------------------|
-| `data`     | JavaScript/JSON オブジェクト | イベントデータをキーバリューペアで指定します           | `{&#34;tealium_event&#34;: &#34;cart_add&#34;}` |
-| `instance` | `String`               | Tealium インスタンス名 - 特定のトラッキングインスタンスを指します | `&#34;tealium_main&#34;`                |
+| `data`     | JavaScript/JSON オブジェクト | イベントデータをキーバリューペアで指定します           | `{"tealium_event": "cart_add"}` |
+| `instance` | `String`               | Tealium インスタンス名 - 特定のトラッキングインスタンスを指します | `"tealium_main"`                |
 
 ### `trackView()`
 
@@ -189,5 +193,5 @@ tealium.trackView(data, instance);
 
 | パラメータ  | タイプ                   | 説明                   | 例                                                         |
 |:-----------|:-----------------------|:----------------------|:------------------------------------------------------------|
-| `data`     | JavaScript/JSON オブジェクト | ビューデータをキーバリューペアで指定します | `{tealium_event:&#34;screen_view&#34;, &#34;screen_name&#34;:&#34;Homescreen&#34;}` |
-| `instance` | `String`               | Tealium インスタンス名         | `&#34;tealium_main&#34;`                                            |
+| `data`     | JavaScript/JSON オブジェクト | ビューデータをキーバリューペアで指定します | `{tealium_event:"screen_view", "screen_name":"Homescreen"}` |
+| `instance` | `String`               | Tealium インスタンス名         | `"tealium_main"`                                            |

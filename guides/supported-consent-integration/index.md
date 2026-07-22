@@ -3,9 +3,9 @@ title: Consent integration
 description: This guide describes how to set up a supported vendor integration with Tealium iQ tag management system and verify your set up so that tags fire only when users have given their consent.
 url: https://docs.tealium.com/guides/supported-consent-integration/
 ---
-In this guide, we use OneTrust consent integration with Tealium iQ tag management system, but this setup can be applied to any of the [supported vendor integrations](). By the end of this guide, you’ll have successfully integrated OneTrust or any other supported Consent Management Platform (CMP) of your choice and the relevant enforcements in Tealium iQ to ensure your tags respect user preferences.
+In this guide, we use OneTrust consent integration with Tealium iQ tag management system, but this setup can be applied to any of the [supported vendor integrations](https://docs.tealium.com/vendor-specific-configuration/). By the end of this guide, you’ll have successfully integrated OneTrust or any other supported Consent Management Platform (CMP) of your choice and the relevant enforcements in Tealium iQ to ensure your tags respect user preferences.
 
-![](/images/guides/consent-integration-guide.png)
+![](https://docs.tealium.com/images/guides/consent-integration-guide.png)
 
 Complete the following steps to set up OneTrust consent integration in Tealium iQ:
 
@@ -19,7 +19,7 @@ Complete the following steps to set up OneTrust consent integration in Tealium i
 1. [Map tags to purposes](#step-4-map-tags-to-purposes)
 1. [Publish the configuration](#step-4-publish-the-configuration)
 
-Additionally, we&#39;ll verify and troubleshoot our setup with the following steps:
+Additionally, we'll verify and troubleshoot our setup with the following steps:
 
 1. [Check the data layer](#check-the-data-layer)
 1. [Verify your consent integration setup from the browser console](#verify-your-consent-integration-setup-from-the-browser-console)
@@ -37,14 +37,14 @@ To set up your integration, you’ll need the following vendor-specific informat
 * Vendor ID: Used by consent integrations to identify the CMP on the page.
 * Configured consent categories: Consent integrations refers to each of these as a purpose, and a collection of purposes from one CMP is called a purpose group.
 
-You can retrieve this information directly from the web page after accepting all tracking. For more details on how to obtain it, refer to [supported vendor integrations]().
+You can retrieve this information directly from the web page after accepting all tracking. For more details on how to obtain it, refer to [supported vendor integrations](https://docs.tealium.com/vendor-specific-configuration/#how-it-works).
 
 ## Load the CMP script
 
 To begin, we’ll inject the OneTrust CMP script into the website using either a **Pre Loader** or **DOM Ready** extension. For this setup, you’ll need your configured CMP script, which you can obtain from your CMP provider. In this example, we’ll use a OneTrust CMP script retrieved from the OneTrust console.
 
-1. Go to **Tag Management &gt; Extensions**.
-1. Click **&#43; Add Extension &gt; Advanced**.
+1. Go to **Tag Management > Extensions**.
+1. Click **+ Add Extension > Advanced**.
 1. Add a **Javascript Code** extension.
 1. Enter a **Title** to identify the extension.
 1. Under **Scope**, select **Pre Loader** or **DOM Ready Extensions**.
@@ -52,19 +52,19 @@ To begin, we’ll inject the OneTrust CMP script into the website using either a
     ```javascript
     // Define a function to load the Vendor CMP script
     window.addCmp = function () {
-      var domainId = &#39;12345678-1234-1234-1234-1234567890ab-test&#39;;
+      var domainId = '12345678-1234-1234-1234-1234567890ab-test';
 
-      var head = document.getElementsByTagName(&#39;head&#39;)[0];
-      var script = document.createElement(&#39;script&#39;);
-      script.type = &#39;text/javascript&#39;;
-      script.src = &#39;https://cdn.cookielaw.org/scripttemplates/otSDKStub.js&#39;;
-      script.setAttribute(&#34;data-domain-script&#34;, domainId);
-      // script.setAttribute(&#34;data-domain-script&#34;, b[&#39;OTDomainGUID&#39;]);
+      var head = document.getElementsByTagName('head')[0];
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+      script.setAttribute("data-domain-script", domainId);
+      // script.setAttribute("data-domain-script", b['OTDomainGUID']);
       script.async = true;
       head.appendChild(script);    
     };
 
-    // Immediately call the &#39;addCmp&#39; function to load the script
+    // Immediately call the 'addCmp' function to load the script
     window.addCmp();
     ```
 
@@ -74,7 +74,7 @@ Next, we’ll configure the integration to ensure tags fire only based on the co
 
 ### Step 1: Configure the integration
 
-1. Go to the **Tag Management &gt; Consent Integrations** section.
+1. Go to the **Tag Management > Consent Integrations** section.
 1. Click **Add Integration**.
 1. Enter a name for the integration that clearly identifies its purpose.
 1. Select **OneTrust** from the vendor drop-down list.
@@ -86,7 +86,7 @@ Next, we’ll configure the integration to ensure tags fire only based on the co
 
 **Enforcement Rules** determine when the consent signals captured by your CMP should be enforced. To make sure that consent is always enforced correctly, each page view or event on your website should trigger only one consent integration or exemption with no overlaps.
 
-1. Select **All Pages and Events** from the drop-down list because we&#39;re configuring only a single integration.
+1. Select **All Pages and Events** from the drop-down list because we're configuring only a single integration.
 1. Click **Next**.
 
 ### Step 3: Select publish location
@@ -119,7 +119,7 @@ The **Tealium iQ Purpose** screen lets you map Tealium iQ to a specific purpose,
 
 ### Step 7: Map tags to purposes
 
-The **Map Tags** screen lets you assign tags to specific purposes, ensuring that the correct tags fire based on the user&#39;s consent choices. It’s important to assign a purpose to every tag, as tags without a purpose will not fire. In this screen, you can also configure tag refiring, which enables a tag to refire if the user&#39;s consent is updated within the same event.
+The **Map Tags** screen lets you assign tags to specific purposes, ensuring that the correct tags fire based on the user's consent choices. It’s important to assign a purpose to every tag, as tags without a purpose will not fire. In this screen, you can also configure tag refiring, which enables a tag to refire if the user's consent is updated within the same event.
 
 1. Click the **Map Tags** tab.
 1. Assign each tag to an appropriate purpose.
@@ -134,12 +134,12 @@ You have now successfully configured the OneTrust integration within Tealium iQ.
 
 ## Test and troubleshoot 
 
-Now that we&#39;ve configured the consent integration, let&#39;s make sure it&#39;s working. In this section, we’ll validate that the OneTrust consent integration in Tealium iQ is functioning correctly. We&#39;ll check the data layer for the consent state and use the browser console to validate our setup.
+Now that we've configured the consent integration, let's make sure it's working. In this section, we’ll validate that the OneTrust consent integration in Tealium iQ is functioning correctly. We'll check the data layer for the consent state and use the browser console to validate our setup.
 
 Before you begin, ensure that:
 
 * Tealium iQ and OneTrust consent integration are up and running on your website.
-* You have access to the browser&#39;s developer console.
+* You have access to the browser's developer console.
 
 ### Check the data layer
 
@@ -150,11 +150,11 @@ The consent state is added to the data layer right before tags are fired. To ens
 * `tci.purposes_with_consent_unprocessed`: Contains all unprocessed consented purposes.
 * `tci.purposes_with_consent_processed`: Contains all processed consented purposes.
 
-The unprocessed and processed variables can be used to build logic to ensure EventStream and AudienceStream connectors don&#39;t fire multiple times for the same event.
+The unprocessed and processed variables can be used to build logic to ensure EventStream and AudienceStream connectors don't fire multiple times for the same event.
 
 ### Verify your consent integration setup
 
-After consent integrations are active, you can access the current consent integration details directly from the browser console. A set of [functions]() are available within the `tealiumCmpIntegration` window-scoped object for managing and interacting with the integration.
+After consent integrations are active, you can access the current consent integration details directly from the browser console. A set of [functions](https://docs.tealium.com/custom-cmp-integrations/#integration-functions) are available within the `tealiumCmpIntegration` window-scoped object for managing and interacting with the integration.
 
 To retrieve the relevant information from the web page follow these steps:
 
@@ -164,7 +164,7 @@ To retrieve the relevant information from the web page follow these steps:
 1. Paste the following snippet into your browser console.
 
     ```
-    var outputString = `${tealiumCmpIntegration.cmpName} - ${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
+    var outputString = `${tealiumCmpIntegration.cmpName} - ${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
 
     Checks:
     - vendor id:            ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
@@ -179,9 +179,9 @@ To retrieve the relevant information from the web page follow these steps:
 
 * **Before Consent**:
 
-    Here&#39;s an example of the script output before consent is granted.
+    Here's an example of the script output before consent is granted.
 
-    ![](/images/guides/consent-integration-before-consent.png)
+    ![](https://docs.tealium.com/images/guides/consent-integration-before-consent.png)
 
     As shown, the CMP has been detected with its operating mode. In this case, explicit consent from the user has not been provided, so only `C0001` (Necessary) purpose is permitted.
 
@@ -189,13 +189,13 @@ To retrieve the relevant information from the web page follow these steps:
 
     Now, let’s consent to some categories. After reloading the page, you can see the CMP and its operating mode again. This time, explicit consent has been granted, but only `C0001` (Necessary) and `C0002` (Performance) purposes are permitted.
     
-    ![](/images/guides/consent-integration-after-consent.png)
+    ![](https://docs.tealium.com/images/guides/consent-integration-after-consent.png)
 
 ### Use the debug mode to view additional information
 
-Consent integrations also adds additional information to the Tealium [debug mode](/platforms/javascript/debugging/).
+Consent integrations also adds additional information to the Tealium [debug mode](https://docs.tealium.com/platforms/javascript/debugging/).
 
-1. Enable the [debug mode](/platforms/javascript/debugging/) to view additional consent integration information.
+1. Enable the [debug mode](https://docs.tealium.com/platforms/javascript/debugging/) to view additional consent integration information.
 1. To make it easier to find the consent integration information in the debug mode output, filter the output using the regular expression `/SENDING|****/` to only show tag send and consent integration notifications.
 
 Using the debug mode filter isolates critical consent-related messages, enabling you to:
@@ -207,19 +207,19 @@ Here are a few scenarios you might encounter with the debug mode filter.
 
 #### Scenario 1: Blocking the CMP script
 
-![](/images/guides/consent-integration-blocked-cmp-script.png)
+![](https://docs.tealium.com/images/guides/consent-integration-blocked-cmp-script.png)
 In this scenario, the CMP script is blocked or unavailable. As shown in the debug output, consent integrations has prevented Tealium iQ from loading because there’s an active consent integration in place. The page view event is queued, but no further action occurs until the CMP script loads.
 
 #### Scenario 2: CMP in opt-in mode before cookies are accepted
 
-![](/images/guides/consent-integration-opt-in-mode-before-cookies.png)
+![](https://docs.tealium.com/images/guides/consent-integration-opt-in-mode-before-cookies.png)
 
 Here, the CMP is operating in opt-in mode, and the user has not yet provided explicit consent. Before the user accepts cookies, consent integrations detects implicit consent for purposes mapped to `Necessary` only, preventing other purposes from loading. Because we are in opt-in mode, the system continues to poll for an explicit consent decision.
 
 #### Scenario 3: CMP in opt-in mode after cookies are accepted
 
-![](/images/guides/consent-integration-opt-in-mode-after-cookies.png)
+![](https://docs.tealium.com/images/guides/consent-integration-opt-in-mode-after-cookies.png)
 
 In this scenario, after the user consents to cookies, consent integrations detects the explicit consent and reviews the newly consented purposes, excluding any that were already processed under implicit consent. It then checks for tags mapped to the newly consented purposes and queues them for firing. Note that any tags not mapped to a purpose remain blocked from loading.
 
-For more information, see [Validate and debug consent integrations]().
+For more information, see [Validate and debug consent integrations](https://docs.tealium.com/validate-and-debug-consent-integrations/).

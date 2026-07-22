@@ -5,23 +5,27 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 ---
 ## Googleシートを作成する
 
-この例では、Googleシートのコネクターを使用して、顧客プロファイルデータをスプレッドシートに記録する方法を示しますが、独自のベンダーを使用することもできます。このステップの準備として、&#34;AudienceStream Test&#34;という名前のGoogleシートのスプレッドシートを作成し、最初の2つの列に&#34;email&#34;と&#34;lifetime value&#34;という名前を付けてください。
+この例では、Googleシートのコネクターを使用して、顧客プロファイルデータをスプレッドシートに記録する方法を示しますが、独自のベンダーを使用することもできます。このステップの準備として、"AudienceStream Test"という名前のGoogleシートのスプレッドシートを作成し、最初の2つの列に"email"と"lifetime value"という名前を付けてください。
 
 スプレッドシートは次のようになります：
 
-![](/images/server-side/as-getting-started-sheet-name.jpg)
+![](https://docs.tealium.com/images/server-side/as-getting-started-sheet-name.jpg)
 
 ## Googleシートのコネクターを追加する
 
 Googleシートのコネクターを構成するには、以下の手順を使用します：
 
-1. **Connect &gt; Audience Connectors**に移動します。
-1. **&#43; Add Connector**ボタンをクリックします。
+1. **Connect > Audience Connectors**に移動します。
+1. **+ Add Connector**ボタンをクリックします。
 1. サイドナビゲーションパネルの**Categories**で**Big Data**をクリックして選択肢を絞ります。
 1. **Google Sheets**を選択し、**Continue**をクリックします。
 1. **Source**タブで、送信したいデータを選択します
     * **Audience from**
-        オーディエンスがドロップダウンリストに表示されない場合、あなたのアカウントはおそらくAudienceStreamが有効になっていません。アカウントマネージャーに連絡してサポートを求めてください。
+        
+<blockquote>
+オーディエンスがドロップダウンリストに表示されない場合、あなたのアカウントはおそらくAudienceStreamが有効になっていません。アカウントマネージャーに連絡してサポートを求めてください。
+</blockquote>
+
 
 1. トリガーとして**In Audience at end of visit**を選択します
 1. **Frequency Cap** - (On/Off, Default: Off) アクションがトリガーされる頻度を制御します
@@ -38,12 +42,12 @@ Googleアカウントの認証ダイアログが表示されます。
 新しい行を追加するだけの**Add Only**、既存の行を検索して更新する**Update Only**、既存の行を検索して見つかった場合は更新し、見つからなかった場合は新しい行を追加する**Add or Update**を選択します。
     * **Spreadsheet Name**  
 使用するスプレッドシートファイルの名前を特定します。  
-ドロップダウンからスプレッドシートの名前を選択するか、使用するスプレッドシートファイルの名前を入力します（例：&#34;AudienceStream Test&#34;）。 
-        ![](/images/server-side/spreadsheet.png)
+ドロップダウンからスプレッドシートの名前を選択するか、使用するスプレッドシートファイルの名前を入力します（例："AudienceStream Test"）。 
+        ![](https://docs.tealium.com/images/server-side/spreadsheet.png)
     * **Worksheet Name**  
 使用するスプレッドシート内のワークシートの名前を特定します。  
-ドロップダウンからワークシートの名前を選択するか、使用するワークシートの名前を入力します（例：&#34;Sheet1&#34;）。 
-        ![](/images/server-side/worksheet.png)
+ドロップダウンからワークシートの名前を選択するか、使用するワークシートの名前を入力します（例："Sheet1"）。 
+        ![](https://docs.tealium.com/images/server-side/worksheet.png)
     * **Row ID**  
 各イベントの一意の行IDを含む列を特定します。この場合、`Email Address`訪問属性はシートの`email`列名に対応します。  
 **Map**リストから属性を選択し、**To**フィールドに対応するスプレッドシートの列名（カスタム値）を入力します。アクションが発火すると、指定された列で属性値を検索し、次のように行います：  
@@ -51,7 +55,11 @@ Googleアカウントの認証ダイアログが表示されます。
         * 値が存在しない場合、新しい行が**Row ID**の値とRow Dataで指定された属性で作成されます。
     * **Row Data**  
 スプレッドシートに追加したい追加の属性をマップします。各属性には、スプレッドシート内に割り当てられた列名が必要です。この場合、`Lifetime Order Value`属性の値を`lifetime value`という名前のスプレッドシートの列に記録しています。  
-        ここに入力された名前は、上記の列名と完全に一致していなければなりません。
+        
+<blockquote>
+ここに入力された名前は、上記の列名と完全に一致していなければなりません。
+</blockquote>
+
     * **Exclude empty values when updating**  
 スプレッドシートの既存のデータを更新または上書きする際に、空の属性を除外したい場合は、このボックスをチェックします。
 

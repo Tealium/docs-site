@@ -3,7 +3,11 @@ title: Amplitude Connector Setup Guide (Deprecated)
 description: This article describes how to set up the Amplitude connector in your Customer Data Hub account.
 url: https://docs.tealium.com/server-side-connectors/amplitude-connector-setup-guide-deprecated/
 ---
-This connector is now deprecated and no longer available in the connector marketplace. For the current connector, see [Amplitude Connector]()
+
+<blockquote>
+This connector is now deprecated and no longer available in the connector marketplace. For the current connector, see [Amplitude Connector](https://docs.tealium.com/amplitude-connector/)
+</blockquote>
+
 
 ## Connector Actions
 
@@ -13,12 +17,12 @@ This connector is now deprecated and no longer available in the connector market
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
 * **API Key**  
-Located under **Settings &amp;gt; Projects**.
+Located under **Settings &gt; Projects**.
 
 ## Action Settings - Parameters and Options
 
@@ -32,6 +36,6 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter**    | **Description**                                                                                                                                                                                                                                                                                                                       |
 |:-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Event Properties | &lt;ul&gt;&lt;li&gt;(Optional) A dictionary of key-value pairs that represent additional data to be sent along with the event.&lt;/li&gt;&lt;li&gt;Empty values are skipped and not included.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                |
-| User Properties  | &lt;ul&gt;&lt;li&gt;(Optional) A dictionary of key-value pairs that represent additional data tied to the user.&lt;/li&gt;&lt;li&gt;Each distinct value display as a user segment on the Amplitude dashboard.&lt;/li&gt;&lt;li&gt;Empty values are skipped and not included.&lt;/li&gt;&lt;/ul&gt;                                                                             |
-| Groups           | &lt;ul&gt;&lt;li&gt;(Optional) Enterprise only.&lt;/li&gt;&lt;li&gt;A dictionary of key-value pairs that represent groups of users.&lt;/li&gt;&lt;li&gt;For more information on groups, see the following[ JavaScript SDK excerpt](https://github.com/amplitude/Amplitude-Javascript#setting-groups).&lt;/li&gt;&lt;li&gt;Empty values are skipped and not included.&lt;/li&gt;&lt;/ul&gt; |
+| Event Properties | <ul><li>(Optional) A dictionary of key-value pairs that represent additional data to be sent along with the event.</li><li>Empty values are skipped and not included.</li></ul>                                                                                                                                                |
+| User Properties  | <ul><li>(Optional) A dictionary of key-value pairs that represent additional data tied to the user.</li><li>Each distinct value display as a user segment on the Amplitude dashboard.</li><li>Empty values are skipped and not included.</li></ul>                                                                             |
+| Groups           | <ul><li>(Optional) Enterprise only.</li><li>A dictionary of key-value pairs that represent groups of users.</li><li>For more information on groups, see the following[ JavaScript SDK excerpt](https://github.com/amplitude/Amplitude-Javascript#setting-groups).</li><li>Empty values are skipped and not included.</li></ul> |

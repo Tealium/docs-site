@@ -2,11 +2,15 @@
 title: Data Layer
 description: A full list of the data layer variables provided by each module.
 url: https://docs.tealium.com/platforms/ios-swift-v1/data-layer/
----This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](/platforms/ios-swift/).
+---
+<blockquote>
+This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](https://docs.tealium.com/platforms/ios-swift/).
+</blockquote>
+
 
 ## AppData
 
-The following variables are added to the data layer by the [`AppData`](/platforms/ios-swift-v1/module-list/appdata/) module.
+The following variables are added to the data layer by the [`AppData`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/appdata/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -20,21 +24,21 @@ The following variables are added to the data layer by the [`AppData`](/platform
 
 ## Attribution
 
-The following variables are added to the data layer by the [`Attribution`](/platforms/ios-swift-v1/module-list/attribution/) module.
+The following variables are added to the data layer by the [`Attribution`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/attribution/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
-| `ad_campaign_id` | The corresponding ad&#39;s campaign ID | `1234567890` |
-| `ad_campaign_name` |  The corresponding ad&#39;s campaign name | `CampaignName` |
+| `ad_campaign_id` | The corresponding ad's campaign ID | `1234567890` |
+| `ad_campaign_name` |  The corresponding ad's campaign name | `CampaignName` |
 | `ad_creativeset_id` | The ID of the Creative Set which the corresponding ad was part of. | `456093` |
 | `ad_creativeset_name` | The name of the Creative Set which the corresponding ad was part of.| `Beast Images` |
-| `ad_group_id` |  The corresponding ad&#39;s campaign group ID | `1234567890` |
-| `ad_group_name` |  The corresponding ad&#39;s campaign group name| `AdGroupName` |
+| `ad_group_id` |  The corresponding ad's campaign group ID | `1234567890` |
+| `ad_group_name` |  The corresponding ad's campaign group name| `AdGroupName` |
 | `ad_keyword` | The keyword that drove the ad impression which led to the corresponding ad click| `Keyword` |
 | `ad_keyword_matchtype` | Either be Broad, Exact or Search Match. | `Exact` |
-| `ad_org_id` |  The corresponding ad&#39;s campaign organization ID | `OrgID` |
-| `ad_org_name` |  The corresponding ad&#39;s campaign organization name | `OrgName` |
-| `ad_purchase_date` | Date and time the user first downloaded your app. In the case where `iadconversion-type = &#34;Redownload&#34;`, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.| `2016-12-05T17:31:40Z` |
+| `ad_org_id` |  The corresponding ad's campaign organization ID | `OrgID` |
+| `ad_org_name` |  The corresponding ad's campaign organization name | `OrgName` |
+| `ad_purchase_date` | Date and time the user first downloaded your app. In the case where `iadconversion-type = "Redownload"`, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.| `2016-12-05T17:31:40Z` |
 | `ad_region` | Identifies the country or region associated with the campaign which drove this install. | `US` |
 | `ad_user_clicked_last_30_days` | Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download | [`true`, `false`] |
 | `ad_user_conversion _type` | Identifies new download or redownload of the app| `Download` |
@@ -46,7 +50,7 @@ The following variables are added to the data layer by the [`Attribution`](/plat
 
 ## Autotracking
 
-The following variables are added to the data layer by the [`Autotracking`](/platforms/ios-swift-v1/module-list/autotracking/) module.
+The following variables are added to the data layer by the [`Autotracking`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/autotracking/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -54,17 +58,17 @@ The following variables are added to the data layer by the [`Autotracking`](/pla
 
 ## ConsentManager
 
-The following variables are added to the data layer by the [`ConsentManager`](/platforms/ios-swift-v1/consent-management/) module.
+The following variables are added to the data layer by the [`ConsentManager`](https://docs.tealium.com/platforms/ios-swift-v1/consent-management/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
-| `consent_categories` | An array of the user&#39;s selected consent categories| [`&#34;analytics&#34;`, `&#34;cdp&#34;`] |
-| `consent_status` | The user&#39;s current consent status| [`consented`, `notConsented`] |
-| `policy` | Consent Policy| `&#34;gdpr&#34;` |
+| `consent_categories` | An array of the user's selected consent categories| [`"analytics"`, `"cdp"`] |
+| `consent_status` | The user's current consent status| [`consented`, `notConsented`] |
+| `policy` | Consent Policy| `"gdpr"` |
 
 ## Connectivity
 
-The following variables are added to the data layer by the [`Connectivity`](/platforms/ios-swift-v1/module-list/connectivity/) module.
+The following variables are added to the data layer by the [`Connectivity`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/connectivity/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -77,22 +81,22 @@ The following variables are added to the data layer by the `Core` module.
 
 | Variable Name | Description | Example |
 | --- | --- |  --- |
-| `enabled_modules` | List of all currently-enabled modules| `[&#34;tagmanagement&#34;, &#34;collect&#34;]` |
-| `screen_title` | Screen title passed to trackView call| `&#34;homescreen&#34; `|
-| `tealium_datasource` | Specifies the data source name (added to every dispatch)| `&#34;a1b2c3&#34;` |
-| `tealium_event` | The name of the event being tracked| `&#34;checkout&#34;` |
+| `enabled_modules` | List of all currently-enabled modules| `["tagmanagement", "collect"]` |
+| `screen_title` | Screen title passed to trackView call| `"homescreen" `|
+| `tealium_datasource` | Specifies the data source name (added to every dispatch)| `"a1b2c3"` |
+| `tealium_event` | The name of the event being tracked| `"checkout"` |
 
 
 ##  Crash Reporter
 
-The following variables are added to the data layer by the [`CrashReporter`](/platforms/ios-swift-v1/module-list/crash-reporter/) module.
+The following variables are added to the data layer by the [`CrashReporter`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/crash-reporter/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
 | `app_memory_usage` | Current memory used by the app on the device at the time of the crash| `143.57MB` |
 | `crash_cause` | Cause of the crash| `Crash Reason` |
 | `crash_name` | Friendly name of the crash, if available| `Crash Name` |
-| `crash_libraries` | List of loaded libraries at the time of the crash| `[{ &#34;baseAddress&#34;: &#34;0xa3e0000&#34;, &#34;codeType&#34;: { &#34;arch&#34;: 64, &#34;typeEncoding&#34;: &#34;Mach&#34;}, &#34;imageName&#34;: &#34;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&#34;, &#34;imageSize&#34;: 212992, &#34;imageUuid&#34;: &#34;4015e9b70bde&#34; }]` |
+| `crash_libraries` | List of loaded libraries at the time of the crash| `[{ "baseAddress": "0xa3e0000", "codeType": { "arch": 64, "typeEncoding": "Mach"}, "imageName": "/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim", "imageSize": 212992, "imageUuid": "4015e9b70bde" }]` |
 | `crash_process_id` | PID of the app at time of crash| `84351` |
 | `crash_process_path` | Path the app was running under| `/DemoApp.app/DemoApp` |
 | `crash_parent_process` | Parent process that launched the app| `launchd_sim` |
@@ -100,7 +104,7 @@ The following variables are added to the data layer by the [`CrashReporter`](/pl
 | `crash_signal_address` | Signal address of the crash| `4572945982` |
 | `crash_signal_code` | Signal code causing the crash| `#0` |
 | `crash_signal_name` | Signal name causing the crash| `SIGABRT` |
-| `crash_threads` | Returns all active threads at the time of the crash| `{&#34;crashed&#34;: 1,&#34;registers&#34;: {&#34;cs&#34;: &#34;0x07&#34;},&#34;stack&#34;: {&#34;instructionPointer&#34;: 4572945982,&#34;symbolInfo&#34;: {&#34;symbolName&#34;: &#34;&#34;,&#34;symbolStartAddr&#34;: 0},&#34;threadId&#34;: &#34;&#34;}}` |
+| `crash_threads` | Returns all active threads at the time of the crash| `{"crashed": 1,"registers": {"cs": "0x07"},"stack": {"instructionPointer": 4572945982,"symbolInfo": {"symbolName": "","symbolStartAddr": 0},"threadId": ""}}` |
 | `crash_uuid` | Unique identifier for this specific crash| `CC2DA0E9-E544-429A-AC5E-A268FC62F02A` |
 | `device_memory_usage` | Current memory used by the app on the device at the time of the crash| `143.57MB` |
 | `device_memory_available` | Free memory on device at the time of the crash| `1068.88MB` |
@@ -109,7 +113,7 @@ The following variables are added to the data layer by the [`CrashReporter`](/pl
 
 ## DeviceData
 
-The following variables are added to the data layer by the [`DeviceData`](/platforms/ios-swift-v1/module-list/device-data/) module.
+The following variables are added to the data layer by the [`DeviceData`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/device-data/) module.
 
 | Variable Name | Description  | Example |
 |---|---| --- |
@@ -155,7 +159,7 @@ The following variables are added to the data layer by the [`DeviceData`](/platf
 
 ## DispatchQueue
 
-The following variables are added to the data layer by the [`DispatchQueue`](/platforms/ios-swift-v1/module-list/dispatch-queue/) module.
+The following variables are added to the data layer by the [`DispatchQueue`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/dispatch-queue/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -164,7 +168,7 @@ The following variables are added to the data layer by the [`DispatchQueue`](/pl
 
 ## Lifecycle
 
-The following variables are added to the data layer by the [`Lifecycle`](/platforms/ios-swift-v1/module-list/lifecycle/) module.
+The following variables are added to the data layer by the [`Lifecycle`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/lifecycle/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -187,28 +191,28 @@ The following variables are added to the data layer by the [`Lifecycle`](/platfo
 | `lifecycle_totalcrashcount` | Total number of crashes counted since install (only reset if app deleted)| `21` |
 | `lifecycle_totallaunchcount` | Total number of launches since install (only reset if app deleted)| `3` |
 | `lifecycle_totalsecondsawake` | Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)| `36` |
-| `lifecycle_totalsleepcount` | Total number of times your app has gone into the background since app install (only reset if app deleted)| `&#34;400&#34;` |
-| `lifecycle_totalwakecount` | Total number of launches &#43; wakes since install (only reset if app deleted)| `&#34;563&#34;` |
-| `lifecycle_type` | Type of lifecycle call.| [`&#34;launch&#34;`, `&#34;wake&#34;`, `&#34;sleep&#34;` ]|
+| `lifecycle_totalsleepcount` | Total number of times your app has gone into the background since app install (only reset if app deleted)| `"400"` |
+| `lifecycle_totalwakecount` | Total number of launches + wakes since install (only reset if app deleted)| `"563"` |
+| `lifecycle_type` | Type of lifecycle call.| [`"launch"`, `"wake"`, `"sleep"` ]|
 | `lifecycle_updatelaunchdate` | GMT timestamp of first wake/launch after a version update has been detected| `2014-09-08T18:10:01Z` |
-| `lifecycle_wakecount` | Total number of launches &#43; wakes in this version of your app (resets if updated)| `&#34;29&#34;` |
+| `lifecycle_wakecount` | Total number of launches + wakes in this version of your app (resets if updated)| `"29"` |
 
 ## Location
 
-The following variables are added to the data layer by the [`Location`](/platforms/ios-swift-v1/module-list/location/) module.
+The following variables are added to the data layer by the [`Location`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/location/) module.
 
 | Variable  Name                     | Description| Example              |
 |------------------------------------|---------|----------------------|
-| `geofence_name`     | The name of the geofence region| `&#34;Tealium_San_Diego&#34;`|
-| `geofence_transition_type` | The type of geofence transition event| `&#34;entered&#34;` or `&#34;exited&#34;`|
-| `latitude`          | The latitude of the user&#39;s most recently recorded location| `&#34;32.906119&#34;`|
-| `location_timestamp` | The recorded date/time (GMT) the user entered/exited the geofence region| `&#34;2020-01-28 16:29:46 &#43;0000&#34;`|
-| `longitude`        | The longitude of the user&#39;s most recently recorded location| `&#34;-117.23791632509666&#34;`|
-| `movement_speed` | The instantaneous speed of the device, measured in meters per second| `&#34;1.0&#34;`|
+| `geofence_name`     | The name of the geofence region| `"Tealium_San_Diego"`|
+| `geofence_transition_type` | The type of geofence transition event| `"entered"` or `"exited"`|
+| `latitude`          | The latitude of the user's most recently recorded location| `"32.906119"`|
+| `location_timestamp` | The recorded date/time (GMT) the user entered/exited the geofence region| `"2020-01-28 16:29:46 +0000"`|
+| `longitude`        | The longitude of the user's most recently recorded location| `"-117.23791632509666"`|
+| `movement_speed` | The instantaneous speed of the device, measured in meters per second| `"1.0"`|
 
 ## TagManagement
 
-The following variables are added to the data layer by the [`TagManagement`](/platforms/ios-swift-v1/module-list/tag-management/) module.
+The following variables are added to the data layer by the [`TagManagement`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/tag-management/) module.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
@@ -216,7 +220,7 @@ The following variables are added to the data layer by the [`TagManagement`](/pl
 
 ## VolatileData
 
-The following variables are added to the data layer by the [`VolatileData`](/platforms/ios-swift-v1/module-list/volatile-data/) module.
+The following variables are added to the data layer by the [`VolatileData`](https://docs.tealium.com/platforms/ios-swift-v1/module-list/volatile-data/) module.
 
 | Variable Name                   | Description | Example |
 |---------------------------------|-------------| ---|

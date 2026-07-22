@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mapp-intelligence-connec
 
 ## 構成の構成
 
-コネクターマーケットプレイスにアクセスし、新しいコネクターを追加します。コネクターを追加する一般的な手順については、[コネクター概要]()の記事を参照してください。
+コネクターマーケットプレイスにアクセスし、新しいコネクターを追加します。コネクターを追加する一般的な手順については、[コネクター概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクターを追加した後、以下の構成を構成します：
 
@@ -50,6 +50,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/mapp-intelligence-connec
 |リファラー|
 |ユーザーエージェント|
 |ユーザーIP|
-|Eコマース製品パラメーター|  &lt;ul&gt;&lt;li&gt;Mappに渡すためのキーに配列とリストの値をマッピングします。&lt;/li&gt;&lt;li&gt;すべての配列とリストは同じ長さである必要があります。&lt;/li&gt;&lt;li&gt;単一値属性は、他のすべての配列と同じ長さの配列に展開され、値が繰り返されます。&lt;/li&gt;&lt;li&gt;Webtrekkに送信できるパラメーターのリストについては、[トラッキングパラメーターとJavaScriptキーの概要](https://docs.mapp.com/docs/which-parameters-can-be-sent-to-mapp-intelligence)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|テンプレート変数|  &lt;ul&gt;&lt;li&gt;メッセージデータのテンプレート変数を提供します。&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`items.name`のようにドット表記でネストされたテンプレート変数を名前付けします。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-|テンプレート|  &lt;ul&gt;&lt;li&gt;オプション：クエリパラメーターで参照されるテンプレートを提供します。&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt; |
+|Eコマース製品パラメーター|  <ul><li>Mappに渡すためのキーに配列とリストの値をマッピングします。</li><li>すべての配列とリストは同じ長さである必要があります。</li><li>単一値属性は、他のすべての配列と同じ長さの配列に展開され、値が繰り返されます。</li><li>Webtrekkに送信できるパラメーターのリストについては、[トラッキングパラメーターとJavaScriptキーの概要](https://docs.mapp.com/docs/which-parameters-can-be-sent-to-mapp-intelligence)を参照してください。</li></ul> |
+|テンプレート変数|  <ul><li>メッセージデータのテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例：`items.name`のようにドット表記でネストされたテンプレート変数を名前付けします。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+|テンプレート|  <ul><li>オプション：クエリパラメーターで参照されるテンプレートを提供します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。</li></ul> |

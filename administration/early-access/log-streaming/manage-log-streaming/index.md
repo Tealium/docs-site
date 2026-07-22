@@ -3,11 +3,15 @@ title: Manage log streaming
 description: This article explains how to configure, verify, and manage log streaming destinations and log sources.
 url: https://docs.tealium.com/administration/early-access/log-streaming/manage-log-streaming/
 ---
+
+<blockquote>
 Log streaming is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.
+</blockquote>
+
 
 ## Enable log streaming
 
-1. Go to **Server-Side Settings &gt; Log Streaming**.
+1. Go to **Server-Side Settings > Log Streaming**.
 1. Turn on **Enable Log Streaming**.
 1. Save and publish the profile.
 
@@ -22,7 +26,7 @@ For example:
 To create a destination:
 
 1. In the admin menu, click **Manage Log Streaming**.
-1. Click **&#43; New Destination**.
+1. Click **+ New Destination**.
 1. Select a connector and click **Next**.
 1. Turn on **Status** to enable the destination.
 1. Enter a **Name** for the destination.
@@ -31,17 +35,21 @@ To create a destination:
 1. Click **Test Connection** to verify connectivity.
 1. Click **Done**.
 
-Each destination has its own configuration requirements. Refer to the connector documentation for required fields and supported parameters. For a list of available connectors, see [Available destination connectors]().
+Each destination has its own configuration requirements. Refer to the connector documentation for required fields and supported parameters. For a list of available connectors, see [Available destination connectors](https://docs.tealium.com/about-log-streaming/#available-destination-connectors).
 
 ## Create a log source
 
+
+<blockquote>
 Log streaming counts toward your outbound event connector calls. Monitor only the connectors and actions necessary for your use case.
+</blockquote>
+
 
 To create a log source:
 
 1. Open the log source dialog using one of the following:
-   * From the **Manage Log Streaming** table, click **&#43; New Source** in the destination row.
-   * Select a destination, then click **&#43; New Source**.
+   * From the **Manage Log Streaming** table, click **+ New Source** in the destination row.
+   * Select a destination, then click **+ New Source**.
 
 1. In the **New Log Source** dialog:
    1. Enter a **Log Source Name**.
@@ -49,7 +57,7 @@ To create a log source:
       * **Send Entire Log Event**: Sends all log attributes in the payload.
       * **Send Log Event**: Sends only mapped attributes in the payload.
       
-      If only one option is available, it is selected by default. For more information, see [Available destination connectors]().
+      If only one option is available, it is selected by default. For more information, see [Available destination connectors](https://docs.tealium.com/about-log-streaming/#available-destination-connectors).
    1. The **Log Source Type** is set to **Connector Errors**.
    1. Review the sample payload on the right to understand the available fields.
    1. Click **Continue**.
@@ -73,7 +81,7 @@ To create a log source:
 
 After configuring a log source, map Tealium log attributes to the parameters required by your destination system in the log source **Settings** tab.
 
-For information about available vendor parameters, see the documentation for your [destination connector and action]() and the [connector log parameters]().
+For information about available vendor parameters, see the documentation for your [destination connector and action](https://docs.tealium.com/about-log-streaming/#available-destination-connectors) and the [connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters).
 
 ### How mapping works
 
@@ -92,7 +100,7 @@ Mapping involves two steps:
 
    At delivery time, the enrichment extracts the value from the log record and writes it to the event attribute.
 
-   For the full list of available log parameters, see [Connector log parameters]().
+   For the full list of available log parameters, see [Connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters).
 
 1. **Map event attributes to destination parameters**
 
@@ -124,11 +132,11 @@ Then map those event attributes to vendor parameters in the log source **Setting
 | `dd_content` | Content |
 | `dd_severity` | Severity |
 
-![](/images/early-access/log-streaming/log-streaming-mapping-attributes.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-mapping-attributes.png)
 
 Use the sample payload in the log source view to confirm that the fields you reference exist and contain expected values.
 
-For full parameter definitions, see [Connector log parameters]().
+For full parameter definitions, see [Connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters).
 
 ## Verify delivery
 
@@ -144,7 +152,7 @@ In Tealium, use the log streaming dashboard to confirm that logs are being sent 
 
 Use the **Manage Log Streaming** page to monitor delivery performance and manage destinations.
 
-![](/images/early-access/log-streaming/log-streaming-manage-table.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-manage-table.png)
 
 ### Summary metrics
 
@@ -180,7 +188,7 @@ Use this table to identify unusual patterns in volume or errors, then select a d
 
 ### View destination details
 
-![](/images/early-access/log-streaming/log-streaming-destination-details-overview.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-destination-details-overview.png)
 
 Select a destination to open its details. Use the following tabs:
 
@@ -188,7 +196,7 @@ Select a destination to open its details. Use the following tabs:
 * **Log Sources**: Log sources attached to this destination, with type, status, and statistics (total volume, successes, and errors) for each. Includes options to duplicate or delete individual sources.
 * **Settings**: Connector configuration (authentication fields, IDs, and connection parameters)
 
-![](/images/early-access/log-streaming/log-streaming-destination-log-sources-table.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-destination-log-sources-table.png)
 
 ### View log source details
 
@@ -198,7 +206,7 @@ Select a log source to open its details. Use the following tabs:
 * **Connectors**: Connectors and actions monitored by this log source.
 * **Settings**: Attribute mappings and sample payload. To reuse mappings across log sources, see [Copy mappings](#copy-mappings).
 
-![](/images/early-access/log-streaming/log-streaming-log-source-details-payload.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-log-source-details-payload.png)
 
 Use the sample payload to confirm that the fields you reference in mappings exist and contain expected values.
 
@@ -206,7 +214,7 @@ Use the sample payload to confirm that the fields you reference in mappings exis
 
 Use **Copy Mappings** to reuse configurations across log sources.
 
-![](/images/early-access/log-streaming/log-streaming-copy-mappings.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-copy-mappings.png)
 
 1. Open a log source.
 1. Go to the **Settings** tab.
@@ -220,10 +228,14 @@ Use **Copy Mappings** to reuse configurations across log sources.
 1. Apply filters or search to narrow the list of actions, then select the action.
 1. Click **Done**.
 
+
+<blockquote>
 If you want to send the same log source to multiple destinations, create the additional destinations, add the log sources, and then use the copy mappings option to duplicate the mappings from one log source to the others.
+</blockquote>
+
 
 ## Related resources
 
-* [Connector error logging]()
-* [About enrichments]()
-* [About log streaming]()
+* [Connector error logging](https://docs.tealium.com/connector-error-logging/)
+* [About enrichments](https://docs.tealium.com/about-enrichments/)
+* [About log streaming](https://docs.tealium.com/about-log-streaming/)

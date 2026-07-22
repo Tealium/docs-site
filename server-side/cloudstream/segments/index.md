@@ -11,9 +11,9 @@ When activated, the segment queries the data cloud and retrieves only those reco
 
 ## View segments
 
-Go to **CloudStream &gt; Segments** to view the **Segments Overview** page.
+Go to **CloudStream > Segments** to view the **Segments Overview** page.
 
-![](/images/early-access/cloudstream/cloudstream_segments_overview.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segments_overview.png)
 
 The **Segments Overview** table lists the following information about each segment:
 
@@ -37,7 +37,7 @@ Use one of two methods to build a segment:
 
 If you see the error, `Segment creation requires Cloud Stream Connectors to be enabled in Settings`, use the following steps to enable connectors on your profile:
 
-1. Go to **Admin menu** &gt; **Server-Side Settings** &gt; **CloudStream Connectors**.
+1. Go to **Admin menu** > **Server-Side Settings** > **CloudStream Connectors**.
 1. Toggle on **Activate CloudStream Connectors**.
 1. Click **Save**.
 
@@ -47,11 +47,11 @@ Click **Segment Builder**. The **Data Source Configuration** step appears.
 
 #### Data source configuration
 
-![](/images/early-access/cloudstream/cloudstream_data_source_selection.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_data_source_selection.png)
 
 Select a cloud data source for the segment.
 
-If you do not have any data sources configured, click **&#43; Add Cloud Data Source**. For more information about configuring a cloud data source, see .
+If you do not have any data sources configured, click **+ Add Cloud Data Source**. For more information about configuring a cloud data source, see [manage-cloudstream-datasources](https://docs.tealium.com/manage-cloudstream-datasources/).
 
 To duplicate a data source, select the data source and click **Duplicate**. Then enter a name for the new copy of the data source.
 
@@ -64,24 +64,24 @@ When you have finished setting up your data sources, click **Next**.
 
 #### Segment configuration
 
-![](/images/early-access/cloudstream/cloudstream_segment_configuration.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_configuration.png)
 
 Use the following steps to configure the segment:
 
 1. Enter a **Name** for the segment.
 1. To add a condition, select an attribute, an operator, and a value.  
 For operators that specify a time frame, select a value and the time frame.
-1. To add another condition, click **&#43; Add Condition**.
+1. To add another condition, click **+ Add Condition**.
 1. If you want to add labels or enter any notes about the segment, click **More Options** and make your changes.
 
 #### Segment activations
 
 You can activate a segment through a connector or a function.
 
-![](/images/early-access/cloudstream/cloudstream_segment_activation.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_activation.png)
 
-* To activate a segment through a connector, see .
-* To activate a segment through a function, see .
+* To activate a segment through a connector, see [add-connector](https://docs.tealium.com/add-connector/).
+* To activate a segment through a function, see [create-function](https://docs.tealium.com/create-function/).
 
 The **Segment Activations** table lists the actions that you have configured.
 
@@ -91,7 +91,7 @@ Click **Next**.
 
 The **Summary** page shows a diagram with the flow of data from the data sources to the segment you build and into the activations.
 
-![](/images/early-access/cloudstream/cloudstream_segment_summary.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_summary.png)
 
 Click the more arrow to see the individual actions and functions for each activation.
 
@@ -101,11 +101,11 @@ Click **Save**, and then save and publish your profile.
 
 To build a segment manually:
 
-1. Click **&#43; New Segment** to manually build a segment.
+1. Click **+ New Segment** to manually build a segment.
 1. Enter a **Name** for the segment.
 1. To add a condition, select an attribute, an operator, and a value.  
 For operators that specify a time frame, select a value and the time frame.
-1. To add another condition, click **&#43; Add Condition**.
+1. To add another condition, click **+ Add Condition**.
 1. If you want to add labels or enter any notes about the segment, click **More Options** and make your changes.
 1. Click **Done**.
 
@@ -115,7 +115,7 @@ You will need to manually add a data source, configure it, add an activation, an
 
 Click a segment to manage it.
 
-![](/images/early-access/cloudstream/cloudstream_segment_details.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_details.png)
 
 The **Segment Details** page lists the following information:
 
@@ -129,7 +129,7 @@ Click on any of the following tabs:
 
 The **Overview** window displays a data flow diagram which lists the data sources, the segments, and the activations. Click a data source to view the path from that data source through the segment to its connected activations:
 
-![](/images/early-access/cloudstream/cloudstream_segment_path.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_path.png)
 
 #### Manage data sources and activations
 

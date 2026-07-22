@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/salesforce-email-studio-oau
 Use the following steps to connect Tealium to ExactTarget using OAuth2 authentication scheme:
 
 1. Log into your ExactTarget account and from the top right menu, select **Setup**.
-1. Navigate to **Platform Tools &gt; Apps &gt; Installed Packages**.
+1. Navigate to **Platform Tools > Apps > Installed Packages**.
 1. At the top right of the **Installed Packages** panel, click **New** to create a new package.
 1. In the opened dialog box, name your package and click **Save**.
 1. In the newly created package, click **Add Component**.
@@ -23,14 +23,18 @@ Use the following steps to connect Tealium to ExactTarget using OAuth2 authentic
 When you create an installed package, it is enabled only for the Business Unit where it was created. To make the package available in additional Business Units:
    1. Go to the installed package’s configuration page.
    1. Under **Access**, select **Add Business Units**.
-   1. Select the checkboxes next to each MID (Business Unit) that require access to the package. If correct permissions are not provided, the integration may fail. Changing permissions after the package has been created may require some wait time for the permissions to apply. 
+   1. Select the checkboxes next to each MID (Business Unit) that require access to the package. 
+<blockquote>
+If correct permissions are not provided, the integration may fail. Changing permissions after the package has been created may require some wait time for the permissions to apply.
+</blockquote>
+ 
 1. Save your component. 
 In the package window, the component named **API Integration** displays the authentication information.
 1. Copy the following values to use later in the connector configuration:
    * **Client ID**
    * **Client Secret**
    * **SOAP Base URI**
-1. Also copy your account&#39;s **MID** value, found in the top menu bar.
+1. Also copy your account's **MID** value, found in the top menu bar.
 
 ## Connector Actions
 
@@ -48,11 +52,11 @@ In the package window, the component named **API Integration** displays the auth
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
-This connector requires the following information to connect to ExactTarget&#39;s SOAP protocol, upgraded with OAuth2 authentication scheme.
+This connector requires the following information to connect to ExactTarget's SOAP protocol, upgraded with OAuth2 authentication scheme.
 
 * **Market Cloud App Client ID**
   * (Required) Provide your app client ID.
@@ -76,7 +80,7 @@ This connector requires the following information to connect to ExactTarget&#39;
 
 Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
 
-See [Salesforce Marketing Cloud Email Studio]() for details about actions setup.
+See [Salesforce Marketing Cloud Email Studio](https://docs.tealium.com/salesforce-email-studio-connector-legacy/) for details about actions setup.
 
 This section describes how to set up parameters and options for each action.
 
@@ -85,24 +89,24 @@ This section describes how to set up parameters and options for each action.
 #### Parameters
 | **Parameter** | **Description** |
 |:-------|:--------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Triggered Send Email Interaction | &lt;ul&gt;&lt;li&gt;(Required) Select triggered send email interaction.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Lookup By Key | &lt;ul&gt;&lt;li&gt;(Required) Lookup existing subscriber by key to send them an email.&lt;/li&gt;&lt;/ul&gt; |
-| Disable Subscriber Lookup | &lt;ul&gt;&lt;li&gt;To disable lookup, check **Disable Subscriber Lookup** and configure the **&#34;Subscriber Email** section.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Email | &lt;ul&gt;&lt;li&gt;Provide email to send message to (required if subscriber lookup is disabled).&lt;/li&gt;&lt;li&gt;Email can be left blank to use looked-up subscriber&#39;s email instead.&lt;/li&gt;&lt;/ul&gt; |
-| Attributes to Add or Overwrite | &lt;ul&gt;&lt;li&gt;Map values to keys to include dynamic contents in your email and a sample input, see: [Passing Content to a Triggered Send Message at Send Time](https://salesforce.stackexchange.com/questions/222420/pass-content-to-a-triggered-send-message-at-send-time).&lt;/li&gt;&lt;li&gt;To manage your Profile Attributes, see: [Profile and Preference Attributes](https://help.salesforce.com/s/articleView?id=sf.mc_es_profile_pref_attributes.htm&amp;language=en_US&amp;type=5).&lt;/li&gt;&lt;/ul&gt; |
-| Don&#39;t Send Email to Subscriber with Status | &lt;ul&gt;&lt;li&gt;If looked-up subscriber has one of the following statuses then do not send the email.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;Check option to enable asynchronous processing. API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Triggered Send Email Interaction | <ul><li>(Required) Select triggered send email interaction.</li></ul> |
+| Subscriber Lookup By Key | <ul><li>(Required) Lookup existing subscriber by key to send them an email.</li></ul> |
+| Disable Subscriber Lookup | <ul><li>To disable lookup, check **Disable Subscriber Lookup** and configure the **"Subscriber Email** section.</li></ul> |
+| Subscriber Email | <ul><li>Provide email to send message to (required if subscriber lookup is disabled).</li><li>Email can be left blank to use looked-up subscriber's email instead.</li></ul> |
+| Attributes to Add or Overwrite | <ul><li>Map values to keys to include dynamic contents in your email and a sample input, see: [Passing Content to a Triggered Send Message at Send Time](https://salesforce.stackexchange.com/questions/222420/pass-content-to-a-triggered-send-message-at-send-time).</li><li>To manage your Profile Attributes, see: [Profile and Preference Attributes](https://help.salesforce.com/s/articleView?id=sf.mc_es_profile_pref_attributes.htm&language=en_US&type=5).</li></ul> |
+| Don't Send Email to Subscriber with Status | <ul><li>If looked-up subscriber has one of the following statuses then do not send the email.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>Check option to enable asynchronous processing. API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Add to Email List
 
 #### Parameters
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Email List | &lt;ul&gt;&lt;li&gt;(Required) Select email list.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Lookup By Key | &lt;ul&gt;&lt;li&gt;(Required) Provide subscriber key to find existing subscriber.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Email List | <ul><li>(Required) Select email list.</li></ul> |
+| Subscriber Lookup By Key | <ul><li>(Required) Provide subscriber key to find existing subscriber.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Remove from Email List
 
@@ -110,10 +114,10 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Email List | &lt;ul&gt;&lt;li&gt;(Required) Select email list.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Lookup By Key | &lt;ul&gt;&lt;li&gt;(Required) Provide subscriber key to find existing subscriber.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Email List | <ul><li>(Required) Select email list.</li></ul> |
+| Subscriber Lookup By Key | <ul><li>(Required) Provide subscriber key to find existing subscriber.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Upsert Subscriber and Add to Email List(s)
 
@@ -121,18 +125,18 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter** | **Description** |
 |:--------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Key | &lt;ul&gt;&lt;li&gt;Required.&lt;/li&gt;&lt;/ul&gt; |
-| Subscriber Email Address | &lt;ul&gt;&lt;li&gt;Required.&lt;/li&gt;&lt;/ul&gt; |
-| Add Subscriber to Email List(s) | &lt;ul&gt;&lt;li&gt;(Optional) Select one or more email lists to add subscriber to.&lt;/li&gt;&lt;/ul&gt; |
-| User Status | &lt;ul&gt;&lt;li&gt;(Optional) Select value to update user&#39;s status to.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Subscriber Key | <ul><li>Required.</li></ul> |
+| Subscriber Email Address | <ul><li>Required.</li></ul> |
+| Add Subscriber to Email List(s) | <ul><li>(Optional) Select one or more email lists to add subscriber to.</li></ul> |
+| User Status | <ul><li>(Optional) Select value to update user's status to.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Data Extension - Add Record
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -142,16 +146,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Data Extension | &lt;ul&gt;&lt;li&gt;(Required) Select data extension.&lt;/li&gt;&lt;li&gt;The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.&lt;/li&gt;&lt;ul&gt; |
-| Record Fields | &lt;ul&gt;&lt;li&gt;(Required) Map values to fields to add new record to data extension.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Data Extension | <ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li><ul> |
+| Record Fields | <ul><li>(Required) Map values to fields to add new record to data extension.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Data Extension - Add Multiple Records
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -161,16 +165,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Data Extension | &lt;ul&gt;&lt;li&gt;(Required) Select data extension.&lt;/li&gt;&lt;li&gt;The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.&lt;/li&gt;&lt;/ul&gt; |
-| Record Fields | &lt;ul&gt;&lt;li&gt;(Required) Map array type attributes to add multiple data extension records.&lt;/li&gt;&lt;li&gt;Array type attributes must be of equal length.&lt;/li&gt;&lt;li&gt;Single value attributes can be used and will apply to each record.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Data Extension | <ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul> |
+| Record Fields | <ul><li>(Required) Map array type attributes to add multiple data extension records.</li><li>Array type attributes must be of equal length.</li><li>Single value attributes can be used and will apply to each record.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Data Extension - Delete Record
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -180,16 +184,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Data Extension | &lt;ul&gt;&lt;li&gt;(Required) Select data extension.&lt;/li&gt;&lt;li&gt;The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.&lt;/li&gt;&lt;/ul&gt; |
-| Record Lookup | &lt;ul&gt;&lt;li&gt;(Required) Map values to record files by which to find existing record to delete.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Data Extension | <ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul> |
+| Record Lookup | <ul><li>(Required) Map values to record files by which to find existing record to delete.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Data Extension - Update Record
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -199,16 +203,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Data Extension | &lt;ul&gt;&lt;li&gt;(Required) Select data extension.&lt;/li&gt;&lt;li&gt;The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.&lt;/li&gt;&lt;/ul&gt; |
-| Record Lookup | &lt;ul&gt;&lt;li&gt;(Required) Map values to record fields by which to find existing record to update.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Data Extension | <ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul> |
+| Record Lookup | <ul><li>(Required) Map values to record fields by which to find existing record to update.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ### Action - Data Extension - Upsert Record
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -218,10 +222,10 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 |:-------|:-------|
-| Business Unit | &lt;ul&gt;&lt;li&gt;(Recommended) Select appropriate business unit.&lt;/li&gt;&lt;li&gt;If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.&lt;/li&gt;&lt;/ul&gt; |
-| Data Extension | &lt;ul&gt;&lt;li&gt;(Required) Select data extension.&lt;/li&gt;&lt;li&gt;The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.&lt;/li&gt;&lt;/ul&gt; |
-| Record Lookup | &lt;ul&gt;&lt;li&gt;(Required) Map values to record fields by which to find existing record to update.&lt;/li&gt;&lt;/ul&gt; |
-| Enable Asynchronous Processing | &lt;ul&gt;&lt;li&gt;(Optional) Check option to enable asynchronous processing.&lt;/li&gt;&lt;li&gt;API calls will be queued before being processed, rather than directly at the time the API call is received.&lt;/li&gt;&lt;li&gt;Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.&lt;/li&gt;&lt;li&gt;For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).&lt;/li&gt;&lt;/ul&gt; |
+| Business Unit | <ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul> |
+| Data Extension | <ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul> |
+| Record Lookup | <ul><li>(Required) Map values to record fields by which to find existing record to update.</li></ul> |
+| Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
 ## Vendor Documentation
 

@@ -4,7 +4,11 @@ description: This article provides detailed information about model scoring tech
 url: https://docs.tealium.com/server-side/predict/evaluate-models/strength-scores/
 ---Tealium Predict offers two types of strength ratings: static ratings for each trained version, and dynamic ratings for each deployed model. The strength rating assigned to each trained version of each model provides an easy way to understand rating of the quality of the training and the model which resulted from it.
 
+
+<blockquote>
 Models not yet deployed are not assigned a strength score. Training is a one-time event and each retraining results in a new version number. For example, when you retrain _Version 1_, the resulting version is _Version 2_. Each retraining is a new and separate event, which makes this type of strength rating static and specific to each version. The rating for a version does not change over time.
+</blockquote>
+
 
 ## Strength scores
 
@@ -12,11 +16,11 @@ The strength scores for each trained version of each model provides a rating of 
 
 **Strength scores for trained models**
 
-![](/images/predict/predictv2-training-strength-score.png)
+![](https://docs.tealium.com/images/predict/predictv2-training-strength-score.png)
 
 **Strength scores for deployed models**
 
-![](/images/predict/predictv2-live-scores.png)Each retraining represents a new and separate event, which makes this type of strength rating static and specific to each version. The rating for a version does not change over time.
+![](https://docs.tealium.com/images/predict/predictv2-live-scores.png)Each retraining represents a new and separate event, which makes this type of strength rating static and specific to each version. The rating for a version does not change over time.
 
 ### Recall
 
@@ -32,7 +36,7 @@ The proportion of predicted true cases that are actually true. For example, meas
 
 The weighted average of Precision and Recall. Measures the accuracy of a model. To calculate the F1 Score, Precision and Recall values are input into the following formula:
 
-`F1 Score = 2 * ( (Precision * Recall) / (Precision &#43; Recall) )`
+`F1 Score = 2 * ( (Precision * Recall) / (Precision + Recall) )`
 
 ### Accuracy
 

@@ -5,9 +5,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-display-video-360
 ---
 ## 要件
 
-Googleのオーディエンスを作成、リスト、更新するためのTealiumへのアクセスを許可するには、Google DV360インターフェースでアカウントをTealiumにリンクしてください（**Linked Accounts &gt; Link New Account &gt; External Data Partner &gt; Tealium**）。詳細については、[Google: 外部データ管理プラットフォームまたは顧客マッチアップローダーパートナーからのオーディエンスリストの共有](https://support.google.com/displayvideo/answer/9649053?hl=ja)を参照してください。
+Googleのオーディエンスを作成、リスト、更新するためのTealiumへのアクセスを許可するには、Google DV360インターフェースでアカウントをTealiumにリンクしてください（**Linked Accounts > Link New Account > External Data Partner > Tealium**）。詳細については、[Google: 外部データ管理プラットフォームまたは顧客マッチアップローダーパートナーからのオーディエンスリストの共有](https://support.google.com/displayvideo/answer/9649053?hl=ja)を参照してください。
 
- 以前は、このコネクタを使用するにはGoogleにアカウントを許可リストに追加するよう依頼する必要がありましたが、コネクタの最新バージョンではこの要件はありません。 
+
+<blockquote>
+以前は、このコネクタを使用するにはGoogleにアカウントを許可リストに追加するよう依頼する必要がありましたが、コネクタの最新バージョンではこの要件はありません。
+</blockquote>
+
 
 ## API情報
 
@@ -24,14 +28,22 @@ Googleのオーディエンスを作成、リスト、更新するためのTeali
   * APIエンドポイント：`https://cm.g.doubleclick.net/upload`
   * ドキュメント：[Google Authorized Buyers API](https://developers.google.com/authorized-buyers/rtb/bulk-uploader)
 
-コネクタが発火してから訪問が使用可能になるまで最大72時間かかる場合があります。&lt;br&gt;
-詳細については、[第三者のオーディエンスリストの使用に関するヒント](https://support.google.com/displayvideo/answer/6212219?hl=ja&amp;amp;ref_topic=2726036)を参照してください。
+
+<blockquote>
+コネクタが発火してから訪問が使用可能になるまで最大72時間かかる場合があります。<br>
+詳細については、[第三者のオーディエンスリストの使用に関するヒント](https://support.google.com/displayvideo/answer/6212219?hl=ja&amp;ref_topic=2726036)を参照してください。
+</blockquote>
+
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を読んでください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を読んでください。
 
+
+<blockquote>
 このコネクタを追加する際には、表示されるベンダーのデータプラットフォームポリシーを受け入れる必要があります。
+</blockquote>
+
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -50,12 +62,20 @@ AudienceStreamで新しいセグメントを作成するには、次の手順に
 
 1. **アクション**選択ドロップダウンリストの上部から**新しいセグメントを作成**をクリックします。
 2. **セグメント名**、**セグメントメンバー寿命**、**統合コード**、および**セグメント説明**を入力します。  
-![](/images/server-side-connectors/audiencestream-create-segment.jpg)
-[DataAccess]()製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字未満である必要があります。それ以外の場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。
+![](https://docs.tealium.com/images/server-side-connectors/audiencestream-create-segment.jpg)
+
+<blockquote>
+[DataAccess](https://docs.tealium.com/about-dataaccess/)製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字未満である必要があります。それ以外の場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。
+</blockquote>
+
 3. **セグメント作成**をクリックします。  
 統合コードは、ユーザーリスト販売者が自分のシステム上のIDを相関させるために使用するIDです。IDが利用できない場合は、`1`から`1000`の間のランダムな数字を手動で入力することができます。セグメントが作成されたことを確認するチェックマークがセグメント作成ボタンの隣に表示されます。
 
-新しいGoogle Display &amp;amp; Video 360オーディエンスをアクション内で使用する前に、3〜4時間待ってください。オーディエンスリストがGoogle Display &amp;amp; Video 360内に表示されたら、エラーなくオーディエンスを使用できます。詳細については、[Google Display &amp;amp; Videoヘルプ：オーディエンスリストターゲティング](https://support.google.com/displayvideo/answer/2949947?hl=ja)を参照してください。
+
+<blockquote>
+新しいGoogle Display &amp; Video 360オーディエンスをアクション内で使用する前に、3〜4時間待ってください。オーディエンスリストがGoogle Display &amp; Video 360内に表示されたら、エラーなくオーディエンスを使用できます。詳細については、[Google Display &amp; Videoヘルプ：オーディエンスリストターゲティング](https://support.google.com/displayvideo/answer/2949947?hl=ja)を参照してください。
+</blockquote>
+
 
 ## アクション
 
@@ -68,7 +88,11 @@ AudienceStreamで新しいセグメントを作成するには、次の手順に
 
 #### パラメータ
 
- 次のいずれかのIDパラメータを使用する必要があります：**パートナー提供ID（既にMD5ハッシュ化済み）**、**パートナー提供ID（MD5ハッシュを適用）**、**GoogleユーザーID**、**iOS広告ID**、**Android広告ID**、**RIDA**、**AFAI**、または**MSAI**。 
+
+<blockquote>
+次のいずれかのIDパラメータを使用する必要があります：**パートナー提供ID（既にMD5ハッシュ化済み）**、**パートナー提供ID（MD5ハッシュを適用）**、**GoogleユーザーID**、**iOS広告ID**、**Android広告ID**、**RIDA**、**AFAI**、または**MSAI**。
+</blockquote>
+
 
 | パラメータ | 説明 |
 |---| ---|

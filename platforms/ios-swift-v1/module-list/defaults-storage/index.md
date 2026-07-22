@@ -5,9 +5,13 @@ url: https://docs.tealium.com/platforms/ios-swift-v1/module-list/defaults-storag
 ---
 ## Usage
 
-If you are using Swift 1.8.0&#43;, this module is already included in the Core and you do not need to install it. For prior version, follow this guide to install the module. 
 
-The DefaultStorage Module provides persistent data storage, backed by UserDefaults. This module must be used in conjunction with the Swift Module: [PersistentData](/platforms/ios-swift-v1/module-list/persistent-data/).
+<blockquote>
+If you are using Swift 1.8.0+, this module is already included in the Core and you do not need to install it. For prior version, follow this guide to install the module.
+</blockquote>
+
+
+The DefaultStorage Module provides persistent data storage, backed by UserDefaults. This module must be used in conjunction with the Swift Module: [PersistentData](https://docs.tealium.com/platforms/ios-swift-v1/module-list/persistent-data/).
 
 If you are using the Persistent Data module (Recommended), you must also use either the Defaults Storage or File Storage module to make the data persist across app launches. Whether you choose Defaults Storage over File Storage is personal choice. If both FileStorage and DefaultsStorage are included and enabled, FileStorage take precedence and DefaultsStorage effectively becomes inactive.
 
@@ -26,17 +30,17 @@ Install the DefaultStorage module with CocoaPods or Carthage.
 
 To install the DefaultStorage module with CocoaPods, add the following pod to your Podfile:  
 ```ruby
-pod &#39;tealium-swift/TealiumDefaultsStorage&#39;
+pod 'tealium-swift/TealiumDefaultsStorage'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. It also bundles the PersistentData module. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. It also bundles the PersistentData module. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 
 ### Carthage
 
 To install the DefaultStorage module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
       ```ruby
@@ -47,7 +51,7 @@ To install the DefaultStorage module with Carthage, following these steps:
       import TealiumDefaultsStorage
       ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. It also bundles the PersistentData module. No additional import statements are necessary. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. It also bundles the PersistentData module. No additional import statements are necessary. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 
 

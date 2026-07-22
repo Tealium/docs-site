@@ -3,17 +3,21 @@ title: コネクターエラーログ
 description: この記事では、コネクターエラーログソースの構成方法、ログパラメータの確認方法、およびコネクターエラーのトラブルシューティング方法について説明します。
 url: https://docs.tealium.com/ja/administration/early-access/log-streaming/connector-error-logging/
 ---
+
+<blockquote>
 ログストリーミングはEarly Accessであり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
+
 
 ## 動作原理
 
 監視されたコネクターアクションがエラーを返すと、Tealiumは構造化されたJSONログレコードを生成し、ログソースを通じて関連する宛先コネクターに転送します。宛先プラットフォームはこれらのレコードをダッシュボード、アラート、および分析のためにインデックス付けします。
 
-宛先とログソースがどのように連携するかの概要については、[ログストリーミングについて]()を参照してください。
+宛先とログソースがどのように連携するかの概要については、[ログストリーミングについて](https://docs.tealium.com/about-log-streaming/)を参照してください。
 
 ## コネクターエラーログの構成
 
-ログソースを作成するには、[ログソースの作成]()を参照してください。
+ログソースを作成するには、[ログソースの作成](https://docs.tealium.com/manage-log-streaming/#create-a-log-source)を参照してください。
 
 **コネクターエラー**ログソースタイプを使用する場合：
 
@@ -31,7 +35,7 @@ url: https://docs.tealium.com/ja/administration/early-access/log-streaming/conne
 
 宛先の**ログソース**テーブルで任意のコネクターエラーログソースをクリックしてその詳細を表示します：
 
-![](/images/early-access/log-streaming/log-streaming-log-source-details-overview.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-log-source-details-overview.png)
 
 ### 概要タブ
 
@@ -66,11 +70,11 @@ url: https://docs.tealium.com/ja/administration/early-access/log-streaming/conne
 * 監視されているアクションの数
 * ラベル
 
-![](/images/early-access/log-streaming/log-streaming-log-source-details-connectors.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-log-source-details-connectors.png)
 
 各コネクター内で、個々のアクションを選択するか、構成されているすべてのアクションを監視することができます：
 
-![](/images/early-access/log-streaming/log-streaming-select-connector-actions.png)
+![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-select-connector-actions.png)
 
 ## ログを使用してコネクターエラーをトラブルシューティングする
 
@@ -181,7 +185,11 @@ url: https://docs.tealium.com/ja/administration/early-access/log-streaming/conne
 | `http.0.executionTimeMs` | HTTPリクエストの実行時間（ミリ秒） |
 | `result.failure.error.0.count` | 特定のエラータイプの発生回数 |
 
+
+<blockquote>
 パラメータ名の数字（例：`http.0.executionTimeMs`）は、実行中に行われたHTTPコールの順序を表します。複数のコールが発生する場合、各リクエストに対して数字が増加します：最初のコールは`http.0`、2回目のコールは`http.1`、以降同様です。
+</blockquote>
+
 ## 例示ログ
 
 コネクタエラーログエントリは、[OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp/) ResourceLogs JSON形式を使用します。ペイロードは以下のように構成されています：
@@ -195,163 +203,163 @@ url: https://docs.tealium.com/ja/administration/early-access/log-streaming/conne
 
 ```json
 {
-  &#34;resourceLogs&#34;: [
+  "resourceLogs": [
     {
-      &#34;resource&#34;: {
-        &#34;attributes&#34;: [
+      "resource": {
+        "attributes": [
           {
-            &#34;value&#34;: {
-              &#34;stringValue&#34;: &#34;connector-errors&#34;
+            "value": {
+              "stringValue": "connector-errors"
             },
-            &#34;key&#34;: &#34;logger&#34;
+            "key": "logger"
           },
           {
-            &#34;value&#34;: {
-              &#34;stringValue&#34;: &#34;ACCOUNT_NAME&#34;
+            "value": {
+              "stringValue": "ACCOUNT_NAME"
             },
-            &#34;key&#34;: &#34;account&#34;
+            "key": "account"
           },
           {
-            &#34;value&#34;: {
-              &#34;stringValue&#34;: &#34;PROFILE_NAME&#34;
+            "value": {
+              "stringValue": "PROFILE_NAME"
             },
-            &#34;key&#34;: &#34;profile&#34;
+            "key": "profile"
           },
           {
-            &#34;value&#34;: {
-              &#34;stringValue&#34;: &#34;12345678-1234-1234-1234-123456789012&#34;
+            "value": {
+              "stringValue": "12345678-1234-1234-1234-123456789012"
             },
-            &#34;key&#34;: &#34;customId&#34;
+            "key": "customId"
           }
         ]
       },
-      &#34;scopeLogs&#34;: [
+      "scopeLogs": [
         {
-          &#34;scope&#34;: {},
-          &#34;logRecords&#34;: [
+          "scope": {},
+          "logRecords": [
             {
-              &#34;severityNumber&#34;: 17,
-              &#34;severityText&#34;: &#34;ERROR&#34;,
-              &#34;attributes&#34;: [
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "attributes": [
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;webhook&#34;
+                  "value": {
+                    "stringValue": "webhook"
                   },
-                  &#34;key&#34;: &#34;connectorType&#34;
+                  "key": "connectorType"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;404 Not Found&#34;
+                  "value": {
+                    "stringValue": "404 Not Found"
                   },
-                  &#34;key&#34;: &#34;http.0.response.body&#34;
+                  "key": "http.0.response.body"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;Error: received non-successful http response status = 404&#34;
+                  "value": {
+                    "stringValue": "Error: received non-successful http response status = 404"
                   },
-                  &#34;key&#34;: &#34;result.failure.error.0.message&#34;
+                  "key": "result.failure.error.0.message"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;e71684df-90e6-4c4d-8cb2-695da67402a0&#34;
+                  "value": {
+                    "stringValue": "e71684df-90e6-4c4d-8cb2-695da67402a0"
                   },
-                  &#34;key&#34;: &#34;groupId&#34;
+                  "key": "groupId"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;368&#34;
+                  "value": {
+                    "intValue": "368"
                   },
-                  &#34;key&#34;: &#34;result.executionTimeMs&#34;
+                  "key": "result.executionTimeMs"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;1&#34;
+                  "value": {
+                    "intValue": "1"
                   },
-                  &#34;key&#34;: &#34;result.failure.error.0.count&#34;
+                  "key": "result.failure.error.0.count"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;FAILURE&#34;
+                  "value": {
+                    "stringValue": "FAILURE"
                   },
-                  &#34;key&#34;: &#34;result.status&#34;
+                  "key": "result.status"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;API Error&#34;
+                  "value": {
+                    "stringValue": "API Error"
                   },
-                  &#34;key&#34;: &#34;result.failure.code.name&#34;
+                  "key": "result.failure.code.name"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;404&#34;
+                  "value": {
+                    "intValue": "404"
                   },
-                  &#34;key&#34;: &#34;http.0.response.statusCode&#34;
+                  "key": "http.0.response.statusCode"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;1&#34;
+                  "value": {
+                    "intValue": "1"
                   },
-                  &#34;key&#34;: &#34;result.failure.code.id&#34;
+                  "key": "result.failure.code.id"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;send_events&#34;
+                  "value": {
+                    "stringValue": "send_events"
                   },
-                  &#34;key&#34;: &#34;actionType&#34;
+                  "key": "actionType"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;226&#34;
+                  "value": {
+                    "intValue": "226"
                   },
-                  &#34;key&#34;: &#34;http.0.executionTimeMs&#34;
+                  "key": "http.0.executionTimeMs"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;EVENT&#34;
+                  "value": {
+                    "stringValue": "EVENT"
                   },
-                  &#34;key&#34;: &#34;streamType&#34;
+                  "key": "streamType"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;1&#34;
+                  "value": {
+                    "intValue": "1"
                   },
-                  &#34;key&#34;: &#34;result.failure.errorsCount&#34;
+                  "key": "result.failure.errorsCount"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;An error occurred communicating with the vendor&#34;
+                  "value": {
+                    "stringValue": "An error occurred communicating with the vendor"
                   },
-                  &#34;key&#34;: &#34;result.failure.code.description&#34;
+                  "key": "result.failure.code.description"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;2024-12-03T19:26:44.921&#43;0000&#34;
+                  "value": {
+                    "stringValue": "2024-12-03T19:26:44.921+0000"
                   },
-                  &#34;key&#34;: &#34;recordSendDateTime&#34;
+                  "key": "recordSendDateTime"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;intValue&#34;: &#34;1&#34;
+                  "value": {
+                    "intValue": "1"
                   },
-                  &#34;key&#34;: &#34;actionsCount&#34;
+                  "key": "actionsCount"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;LOG_LEVEL_ERROR&#34;
+                  "value": {
+                    "stringValue": "LOG_LEVEL_ERROR"
                   },
-                  &#34;key&#34;: &#34;dimension&#34;
+                  "key": "dimension"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;2024-12-03T19:26:44.920978481Z&#34;
+                  "value": {
+                    "stringValue": "2024-12-03T19:26:44.920978481Z"
                   },
-                  &#34;key&#34;: &#34;timestamp&#34;
+                  "key": "timestamp"
                 },
                 {
-                  &#34;value&#34;: {
-                    &#34;stringValue&#34;: &#34;5be887275efa4ea08137f3ea8b253e59&#34;
+                  "value": {
+                    "stringValue": "5be887275efa4ea08137f3ea8b253e59"
                   },
-                  &#34;key&#34;: &#34;visitorId&#34;
+                  "key": "visitorId"
                 }
               ]
             }

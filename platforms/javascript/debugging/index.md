@@ -10,12 +10,12 @@ The functions `utag.view()` and `utag.link()` are used to track page views and e
 To enable debug mode, open the developer console in your browser and run the following command:
 
 ```js
-document.cookie=&#34;utagdb=true; path=/&#34;;
+document.cookie="utagdb=true; path=/";
 ```
 
 This cookie turns on debug mode which generates useful output to the console.
 
-![](/images/platforms/javascript/console-output.png)
+![](https://docs.tealium.com/images/platforms/javascript/console-output.png)
 
 When debug mode is enabled, log statements appear in the console when tracking calls occur. Look in the console output for these statements:
 
@@ -26,7 +26,7 @@ trigger: link
 
 The following example demonstrates how this looks in the console after an event is tracked:
 
-![](/images/platforms/javascript/debugging-console-utag-link.png)
+![](https://docs.tealium.com/images/platforms/javascript/debugging-console-utag-link.png)
 
 Click the line after `trigger:view` or `trigger:link` to expand and collapse the event data object.
 
@@ -38,15 +38,15 @@ To use Chrome DevTools to set a breakpoint:
 
 1. Open DevTools and go to the **Sources** tab, then open the file `utag.js`.
 1. Find the line with `return this.track(` and click the line number to set a breakpoint:  
-      ![](/images/platforms/javascript/debugging-utag-code.png)
+      ![](https://docs.tealium.com/images/platforms/javascript/debugging-utag-code.png)
 4. Return to the main window and perform an action to trigger a tracking call. When the tracking call runs, the code will pause on the breakpoint.
-5.  In the right panel, expand the **Watch** pane and click the **&#43;** sign to add a watch expression. Type `a` and click **Enter** to add a watch expression for this variable.
+5.  In the right panel, expand the **Watch** pane and click the **+** sign to add a watch expression. Type `a` and click **Enter** to add a watch expression for this variable.
 6.  Expand the object that is contained in parameter `a` to show the data that was passed to the tracking call. This data is available in extensions, load rules and data mappings. 
 7. In the right panel, expand the **Call Stack** pane to see where the tracking call originated.
 
 The following is an example of where to look for the location of a `utag.link()` call:
 
-![](/images/platforms/javascript/utag-link-call-stack.png)
+![](https://docs.tealium.com/images/platforms/javascript/utag-link-call-stack.png)
 
 This example shows the breakpoint in `utag.js` that was placed to debug the `utag.link()` call. Item (2), when clicked, shows the `utag.link()` call that is made within the source code (to the left). 
 
@@ -68,16 +68,16 @@ This following table describes some of the important debug statements that appea
 | ------------- | ----------- |
 | `Pre-INIT` | Extensions scoped to **Pre Loader** run. |
 | `PINIT` | Extensions scoped to **Before Load Rules** run, load rules are evaluated, and tags are loaded. |
-| `utag.loader.RD` |  Data layer variables are read from the page (see [data layer variable types](). |
+| `utag.loader.RD` |  Data layer variables are read from the page (see [data layer variable types](https://docs.tealium.com/data-layer-variables/). |
 | `utag.loader.INIT`| Extensions scoped to **After Load Rules** run and tags are loaded.  |
 | `All Tags EXTENSIONS`| Extensions scoped to **After Load Rules** run. |
-| `utag.loader.INIT: waiting &lt;UID&gt;` | The tag (UID) is set to load at DOM Ready and is added to the queue.  |
+| `utag.loader.INIT: waiting <UID>` | The tag (UID) is set to load at DOM Ready and is added to the queue.  |
 | `READY:utag.cfg.readywait` | DOM Ready occurs and `PINIT` runs. |
 | `READY:utag.cfg.wq` | DOM Ready occurs and queued tags are processed. |
 | `WQ: #` | The number of tags in the queue to wait for DOM Ready. |
 | `Attach to head` | Tag script is added into the source code.|
-| `utag.loader.LOAD &lt;UID&gt;` | The tag (UID) has loaded on the page. |
-| `Sending: &lt;UID&gt;` | The tag (UID) is triggering the call to the vendor. |
+| `utag.loader.LOAD <UID>` | The tag (UID) has loaded on the page. |
+| `Sending: <UID>` | The tag (UID) is triggering the call to the vendor. |
 | `trigger:view` | `utag.view()` was called. |
 | `trigger:link` | `utag.link()` was called. |
 | `trigger:called before tags loaded` | A tracking call occurred before the tags loaded on the page. The tracking call is queued and will run after the tags load.|

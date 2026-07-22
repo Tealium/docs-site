@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
   
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 60 minutes
@@ -22,13 +22,13 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Account ID**  
   * (Required) The ID of the Reddit Ad account that the conversion event belongs to.
-  * To find the Reddit Ad account ID, go to **Conversions Events &gt; Pixel ID** in the Reddit Ads UI.
+  * To find the Reddit Ad account ID, go to **Conversions Events > Pixel ID** in the Reddit Ads UI.
   * The Reddit Ad account must have the following permissions: `adsread`, `history`, `adsconversions`, and `adsleadgendownloader`.
   * For more information, see [Reddit: Authentication](https://ads-api.reddit.com/docs/v2/#section/Authentication).
 * **Conversion Access Token**  
@@ -36,27 +36,27 @@ After adding the connector, configure the following settings:
   * Any administrator for any ad account within your business can use this easily generated, shareable, long-lived access token.
   * Reddit recommends using a conversion access token over a developer access token / OAuth for Conversions API.
   * For more information, see [Reddit: Conversion Access Token](https://business.reddithelp.com/s/article/conversion-access-token).
-  * If you aren&#39;t using a conversion access token, use the **Establish Connection** button to initiate the OAuth authentication workflow.
+  * If you aren't using a conversion access token, use the **Establish Connection** button to initiate the OAuth authentication workflow.
   * To migrate from OAuth to conversion access token, enter the token in the conversion access token field and the connector uses that token instead of the OAuth token.
   * To override this token per event, map the **Conversion Access Token Override** field in the Send Conversion V3 action.
 
 ## Deduplication for web events
 
-To configure this connector to deduplicate events from the [Reddit Pixel tag](), use the event IDs sent as event attributes with the following naming convention:
+To configure this connector to deduplicate events from the [Reddit Pixel tag](https://docs.tealium.com/reddit-pixel-tag/), use the event IDs sent as event attributes with the following naming convention:
 
 ```nohl
 reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 ```
 
-You can find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/facebook-pixel-tag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/facebook-pixel-tag-uid.png)
 
 For example, a Purchase event from a tag with a UID of `168` would send the following attribute value:
 
 ```json
 {
-  &#34;reddit_pixel_event_id_Purchase_168&#34;: &#34;028b2ade7478...&#34;
+  "reddit_pixel_event_id_Purchase_168": "028b2ade7478..."
 }
 ```
 
@@ -64,7 +64,7 @@ An Add To Cart event from the same tag would send the following attribute value:
 
 ```json
 {
-  &#34;reddit_pixel_event_id_AddToCart_168&#34;: &#34;084b1cda7461...&#34;
+  "reddit_pixel_event_id_AddToCart_168": "084b1cda7461..."
 }
 ```
 
@@ -73,9 +73,13 @@ Use a separate action for each type of event. Map the event-specific event ID at
 | Tealium attribute  | Reddit parameter |
 |:-------------------------|:-------------------|
 | `reddit_pixel_event_id_Purchase_168` (attribute)   | Event ID           |
-| `&#34;Purchase&#34;` (custom text) | Event Name         |
+| `"Purchase"` (custom text) | Event Name         |
 
-If you&#39;re only receiving event ID attributes using the naming format `reddit_pixel_event_id_{REDDIT_EVENT}` (without the tag UID), we recommend updating your tag. For more information, see .
+
+<blockquote>
+If you're only receiving event ID attributes using the naming format `reddit_pixel_event_id_{REDDIT_EVENT}` (without the tag UID), we recommend updating your tag. For more information, see .
+</blockquote>
+
 
 ### Automatic deduplication
 
@@ -85,7 +89,7 @@ The connector follows this order of operations:
 
 * If **Automatic Deduplication** is populated and the value is found in the data layer, this value supersedes anything mapped in `Event ID`. For example, `reddit_pixel_event_id_Purchase_30`.
 * If **Automatic Deduplication** is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used. For example, `reddit_pixel_event_id_Purchase`.
-* If **Automatic Deduplication** is populated, but the value isn&#39;t found, the mapped `Event ID` is used, if it is populated.
+* If **Automatic Deduplication** is populated, but the value isn't found, the mapped `Event ID` is used, if it is populated.
 
 ## Actions
 
@@ -105,7 +109,7 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Event Type Data | The type of tracking for standard events: Add to Cart, Add to Wishlist, Lead, Page Visit, Purchase, Search, Sign Up, View Content, Custom. |
-| Custom Event Type | A custom event name when tracking type is set to `CUSTOM`. Free-form, case-sensitive, up to 64 characters including spaces. For example, `Promotion Event` and `PromotionEvent` are considered two distinct events. Reddit recommends setting this to a value that doesn&#39;t match pre-existing events. |
+| Custom Event Type | A custom event name when tracking type is set to `CUSTOM`. Free-form, case-sensitive, up to 64 characters including spaces. For example, `Promotion Event` and `PromotionEvent` are considered two distinct events. Reddit recommends setting this to a value that doesn't match pre-existing events. |
 | Event Testing | Enable testing by providing the Reddit Test ID. |
 
 #### Conversion Event Parameters
@@ -120,7 +124,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### User Data
 
-At least one attribution signal is required with each conversion event. Reddit recommends sending as many signals as possible to improve attribution accuracy and performance. One of these must be populated: Click ID, Email address, IP address &#43; user agent &#43; screen dimensions, IDFA, AAID.
+At least one attribution signal is required with each conversion event. Reddit recommends sending as many signals as possible to improve attribution accuracy and performance. One of these must be populated: Click ID, Email address, IP address + user agent + screen dimensions, IDFA, AAID.
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -128,12 +132,12 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Email Address | (apply SHA256 hash) Provide a plain text email address. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
 | Phone Number | (apply SHA256 hash) Provide a plain text phone number. The connector whitespace trims, normalizes, and hashes this value using SHA256. |
 | IP Address | The connector SHA256-hashes the mapped IP address. |
-| User Agent | The user agent of the user&#39;s browser. |
+| User Agent | The user agent of the user's browser. |
 | External ID | (apply SHA256 hash) An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| IDFA | (apply SHA256 hash) The IDFA of the user&#39;s device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| AAID | (apply SHA256 hash) The AAID of the user&#39;s device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| Screen Height | The height of the user&#39;s screen in pixels. |
-| Screen Width | The width of the user&#39;s screen in pixels. |
+| IDFA | (apply SHA256 hash) The IDFA of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| AAID | (apply SHA256 hash) The AAID of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| Screen Height | The height of the user's screen in pixels. |
+| Screen Width | The width of the user's screen in pixels. |
 | UUID | The value from the first-party pixel `_rdt_uuid` cookie on your domain. Use the full value or just the UUID portion. This value is not hashed. The connector automatically maps this value from the `_rdt_uuid` cookie unless you configure a mapping for this field. |
 
 #### Products Data
@@ -162,7 +166,11 @@ At least one attribution signal is required with each conversion event. Reddit r
 
 ### Send Conversion (deprecated)
 
+
+<blockquote>
 Reddit launched Conversions API v3, so this action is deprecated. We recommend using **Copy Mappings to an Action** to migrate your existing action mappings to the **Send Conversion V3** action.
+</blockquote>
+
 
 #### API information
 
@@ -190,16 +198,16 @@ This connector uses the following vendor API:
 | Email Address (already SHA256 hashed) | Provide an email address, already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using SHA256. |
 | IP Address | The connector SHA256-hashes the mapped IP address. |
-| User Agent | The user agent of the user&#39;s browser. |
+| User Agent | The user agent of the user's browser. |
 | External ID (already SHA256 hashed) | An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | External ID (apply SHA256 hash) | An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| IDFA (already SHA256 hashed) | The IDFA of the user&#39;s device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| IDFA (apply SHA256 hash) | The IDFA of the user&#39;s device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| AAID (already SHA256 hashed) | The AAID of the user&#39;s device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| AAID (apply SHA256 hash) | The AAID of the user&#39;s device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| IDFA (already SHA256 hashed) | The IDFA of the user's device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
+| IDFA (apply SHA256 hash) | The IDFA of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| AAID (already SHA256 hashed) | The AAID of the user's device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
+| AAID (apply SHA256 hash) | The AAID of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
 | Opt Out | A flag indicating whether the user has opted out of tracking. |
-| Screen Height | The height of the user&#39;s screen in pixels. If you do not set **Screen Height**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_height`. |
-| Screen Width | The width of the user&#39;s screen in pixels. If you do not set **Screen Width**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_width`. |
+| Screen Height | The height of the user's screen in pixels. If you do not set **Screen Height**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_height`. |
+| Screen Width | The width of the user's screen in pixels. If you do not set **Screen Width**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_width`. |
 | Account ID Override | The ID of the Reddit ad account associated with the conversion event. Use this mapping to dynamically override the account ID and, if needed, use multiple Reddit accounts with one instance of the connector. |
 
 #### Products Data

@@ -14,19 +14,23 @@ This connector uses the following vendor API:
 
 ## Requirements
 
-Before configuring this connector, add Tealium as a linked account in your Google Display &amp; Video 360 account.
+Before configuring this connector, add Tealium as a linked account in your Google Display & Video 360 account.
 
-For more information, see [Google Display &amp; Video 360: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=en).
+For more information, see [Google Display & Video 360: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=en).
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/manage-connectors/).
 
-When you add this connector, you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector, you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
-* **Customer ID**: (Required) Your Google DV360 Partner ID that is linked to Tealium. To find your Partner ID from the Google DV360 dashboard go to **Partner Settings &gt; Basic Details**.
+* **Customer ID**: (Required) Your Google DV360 Partner ID that is linked to Tealium. To find your Partner ID from the Google DV360 dashboard go to **Partner Settings > Basic Details**.
 * **Target Product**: (Required) The target product of the linked account.
 
 Click **Done** when you are finished configuring the connector.
@@ -38,7 +42,7 @@ To create a customer match list, click **Create Customer Match List** and enter 
 | **Parameter** | **Description** |
 | --- | --- |
 | List Name | (Required) Customer match list name. |
-| List Type | (Required) The List Type. This affects the type of user identification information to be used with this list:&lt;ul&gt;&lt;li&gt;Contact Info - members are matched from customer info such as email address, phone number, or physical address.&lt;/li&gt;&lt;li&gt;Mobile Advertising - members are matched from mobile advertising IDs.&lt;/li&gt;&lt;/ul&gt; |
+| List Type | (Required) The List Type. This affects the type of user identification information to be used with this list:<ul><li>Contact Info - members are matched from customer info such as email address, phone number, or physical address.</li><li>Mobile Advertising - members are matched from mobile advertising IDs.</li></ul> |
 | App ID | Required for Mobile Advertising list types. A string that uniquely identifies the mobile application from which the data was collected. |
 |  List Membership Lifespan | (Optional) The number of days a user stays on the list since their most recent addition to the list. Number must be between `0` and `540`. The default lifespan is 540 days. |
 | List Description | (Optional) List description. |
@@ -71,8 +75,8 @@ The following user identifier fields are supported:
 
 |User Identifier Field| Description|
 |---| ---|
-| `CONTACT_INFO` |  &lt;ul&gt;&lt;li&gt;Provide Hashed Email, Hashed Phone Number, or Address Info.&lt;/li&gt;&lt;li&gt;**Address Info: Country Code** - 2-letter country code for user&#39;s address in ISO 3166-1 alpha-2 format.&lt;/li&gt;&lt;li&gt;**Address Info: First Name (already SHA256 hashed)** - Provide first name, with whitespace trimmed, that has been lowercased and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Address Info: First Name (apply SHA256 hash)** - Provide a plain text first name. The connector hashes this value using SHA256 hash.&lt;/li&gt;&lt;li&gt;**Address Info: Last Name (already SHA256 hashed)** - Provide last name, with whitespace trimmed, that has been lowercased and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Address Info: Last Name (apply SHA256 hash)** - Provide a plain text last name. The connector hashes this value using SHA256 hash.&lt;/li&gt;&lt;li&gt;**Address Info: Postal Code** - Postal code of the user&#39;s address.&lt;/li&gt;&lt;li&gt;**Email Address (already SHA256 hashed)** - Provide an email address, with whitespace trimmed, that has been lowercased and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Email Address (apply SHA256 hash)** - Provide a plain text email address. The connector hashes this value using SHA256 hash.&lt;/li&gt;&lt;li&gt;**Phone Number (already SHA256 hashed)** - Provide a phone number, with whitespace trimmed, that has been SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Phone Number (apply SHA256 hash)** - Provide a plain text phone number. The connector hashes this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|`MOBILE_ADVERTISING_ID`|  &lt;ul&gt;&lt;li&gt;**Mobile ID** (Required) - Mobile device ID (advertising ID/IDFA).&lt;/li&gt;&lt;/ul&gt; |
+| `CONTACT_INFO` |  <ul><li>Provide Hashed Email, Hashed Phone Number, or Address Info.</li><li>**Address Info: Country Code** - 2-letter country code for user's address in ISO 3166-1 alpha-2 format.</li><li>**Address Info: First Name (already SHA256 hashed)** - Provide first name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: First Name (apply SHA256 hash)** - Provide a plain text first name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Last Name (already SHA256 hashed)** - Provide last name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: Last Name (apply SHA256 hash)** - Provide a plain text last name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Postal Code** - Postal code of the user's address.</li><li>**Email Address (already SHA256 hashed)** - Provide an email address, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Email Address (apply SHA256 hash)** - Provide a plain text email address. The connector hashes this value using SHA256 hash.</li><li>**Phone Number (already SHA256 hashed)** - Provide a phone number, with whitespace trimmed, that has been SHA256 hashed.</li><li>**Phone Number (apply SHA256 hash)** - Provide a plain text phone number. The connector hashes this value using SHA256 hash.</li></ul> |
+|`MOBILE_ADVERTISING_ID`|  <ul><li>**Mobile ID** (Required) - Mobile device ID (advertising ID/IDFA).</li></ul> |
 
 ### Add to Customer Match List (multiple identifiers)
 
@@ -87,7 +91,7 @@ This connector uses the following vendor API:
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 66,000
 * Max time since oldest request: 1440 minutes
@@ -110,7 +114,11 @@ For mapping options, see [Add to Customer Match List (multiple identifiers)](#ad
 
 ### Add to Customer Match List (Deprecated)
 
- Tealium retrieves list statistics directly from Google DV 360, which may cause a difference between matches and the total volume of connector requests in this connector and the [Google DV 360 Customer Match connector insight](). 
+
+<blockquote>
+Tealium retrieves list statistics directly from Google DV 360, which may cause a difference between matches and the total volume of connector requests in this connector and the [Google DV 360 Customer Match connector insight](https://docs.tealium.com/connector-insights-google-dv360-customer-match/).
+</blockquote>
+
 
 #### API information
 
@@ -123,7 +131,7 @@ This connector uses the following vendor API:
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100,000
 * Max time since oldest request: 1440 minutes
@@ -152,7 +160,7 @@ This connector uses the following vendor API:
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100,000
 * Max time since oldest request: 1440 minutes

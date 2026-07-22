@@ -13,7 +13,7 @@ Send Event DataまたはSend Visitor DataアクションでGETメソッドを使
 
 ```json
 {
-    &#34;foo&#34; : &#34;bar&#34;
+    "foo" : "bar"
 }
 ```
 
@@ -26,7 +26,7 @@ Send Event DataまたはSend Visitor DataアクションでGETメソッドを使
 `data=%7B%22foo%22%3A%22bar%22%7D`
 
 ```
-GET /webhook-service?data=%7B%22foo%22%3A%22bar%22%7D&amp;param1=value1
+GET /webhook-service?data=%7B%22foo%22%3A%22bar%22%7D&param1=value1
 
 VERSION: HTTP/1.1
 CONNECTION: close
@@ -57,7 +57,7 @@ USER-AGENT: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
 CONTENT-LENGTH: 13
 
 {
-    &#34;foo&#34;: &#34;bar&#34;
+    "foo": "bar"
 }
 
 ```

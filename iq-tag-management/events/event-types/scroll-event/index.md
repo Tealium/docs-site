@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/scroll-event/
 
 A scroll event tracks when a visitor scrolls through a screen. When a visitor performs the action, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -27,11 +27,15 @@ Set the following thresholds to control when to trigger each event:
 * **Percent** - Measure scroll distance by a percentage of the screen.
 * **Pixels** - Measure scroll distance by a number of pixels.
 
+
+<blockquote>
 Enter multiple values as a comma-separated list to trigger at different screen locations. For example, to measure percentages enter `25, 50, 75, 100`, or to measure pixels enter `2000, 5000`.
+</blockquote>
+
 
 ### Element selector
 
-The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector]().
+The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector](https://docs.tealium.com/event-element-selector/).
 
 ## Event trigger variables
 
@@ -51,17 +55,17 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;scroll&#34;`| The visitor scrolled through the screen in a specified direction and amount.|
+|`tealium_event="scroll"`| The visitor scrolled through the screen in a specified direction and amount.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;scroll&#34;,
-   &#34;scroll_depth&#34; : &#34;500&#34;,
-   &#34;scroll_depth_type&#34; : &#34;pixels&#34;,
-   &#34;scroll_direction&#34; : &#34;horizontal&#34;,
-   &#34;iq_event_id:&#34; : &#34;scroll_depth_events_1&#34;
+   "tealium_event"  : "scroll",
+   "scroll_depth" : "500",
+   "scroll_depth_type" : "pixels",
+   "scroll_direction" : "horizontal",
+   "iq_event_id:" : "scroll_depth_events_1"
 }
 ```
 
@@ -69,16 +73,16 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;scroll&#34;`| The visitor scrolled through the screen in a specified direction and amount.|
+|`tealium_event="scroll"`| The visitor scrolled through the screen in a specified direction and amount.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;scroll&#34;,
-   &#34;scroll_depth&#34; : &#34;50&#34;,
-   &#34;scroll_depth_type&#34; : &#34;percent&#34;,
-   &#34;scroll_direction&#34; : &#34;vertical&#34;,
-   &#34;iq_event_id:&#34; : &#34;scroll_depth_events_2&#34;
+   "tealium_event"  : "scroll",
+   "scroll_depth" : "50",
+   "scroll_depth_type" : "percent",
+   "scroll_direction" : "vertical",
+   "iq_event_id:" : "scroll_depth_events_2"
 }
 ```

@@ -6,11 +6,11 @@ url: https://docs.tealium.com/iq-tag-management/moments-iq/manage/
 ## Requirements
 
 * Moments iQ experiences can only be created on Tealium iQ profiles. They cannot be created on profile libraries.
-* If you have enabled [tag marketplace policy]() on your account, you also need to add the Moments iQ Experience tag to the **Show** list, otherwise the tag does not appear in the tag marketplace.
+* If you have enabled [tag marketplace policy](https://docs.tealium.com/tag-marketplace-policy/) on your account, you also need to add the Moments iQ Experience tag to the **Show** list, otherwise the tag does not appear in the tag marketplace.
 
 ## How it works
 
-To create a Moments iQ experience, go to the tag marketplace, click **Tealium Moments iQ**, and click **Continue**. For more information, see [About tags]().
+To create a Moments iQ experience, go to the tag marketplace, click **Tealium Moments iQ**, and click **Continue**. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ## Configuration
 
@@ -40,7 +40,7 @@ Configure the following settings:
   * **Before End**: Inside the page element, after its last child.
   * **After End:** After the page element.
   * **Replace:** Replace the page element.
-* **Z-index**: This value overrides the z-order positioning of the experience on the page. Higher values stack on top of lower values (for example, &#34;1&#34;, &#34;2&#34;, &#34;-1&#34;, or &#34;auto&#34;).
+* **Z-index**: This value overrides the z-order positioning of the experience on the page. Higher values stack on top of lower values (for example, "1", "2", "-1", or "auto").
 
 ### Experience tracking
 
@@ -97,7 +97,7 @@ Configure the question and answers with the following settings:
   * Leave the **Redirect URL** empty if no redirection is needed for that answer.
   If you enter a **Redirect URL** for any answer, the general **Redirect URL** setting is disabled.
   * The **Text** type ignores the **Answer** field, and **Button** type uses only the first two answers and their **Redirect URLs**.
-  * Click **&#43; Add** to include more answers.
+  * Click **+ Add** to include more answers.
 * **Redirect URL**: The URL to redirect the visitor to when no **Redirect URLs** are set for individual answers and the primary button is clicked.
 * **Primary Button Text**: The text label for the primary button. The default value is `Submit`.
 
@@ -116,14 +116,18 @@ You can set a fallback value that appears when no data is available to insert. F
 
 Moments iQ experiences have multiple customizable areas, each of which supports a specific set of style properties. The following image provides a visual reference for the configurable components and the associated CSS-style properties that can be applied to each one. Use this guide to understand which configuration fields control the appearance of text, buttons, layout, and container styling.
 
-![](/images/early-access/moments-iq/moments-components.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/moments-components.png)
 
 Configure this experience to match the appearance of your site. Select one of the following methods to configure the style of your experience:
 
 * **Config Field**: Enter style settings in a form for each element in the experience.
 * **Style Sheet**: Use a cascading style sheet (CSS) to apply styles to the experience.
 
- Changes made using the **Config Fields** method do not impact the **Style Sheet** method, and changes made using the **Style Sheet** method do not impact the **Config Fields** method. 
+
+<blockquote>
+Changes made using the **Config Fields** method do not impact the **Style Sheet** method, and changes made using the **Style Sheet** method do not impact the **Config Fields** method.
+</blockquote>
+
 
 If you have more than one Moments iQ experience tag, you must configure the style settings for each experience tag separately.
 
@@ -185,7 +189,7 @@ Configure the following settings for the primary and secondary buttons:
 
 Click **Style Sheet** to enter style settings in CSS format. A sample CSS file that contains all the available parameters and their default values is provided.
 
-![](/images/early-access/moments-iq/moments_iq_css.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/moments_iq_css.png)
 
 Guidelines for editing the CSS:
 
@@ -274,9 +278,13 @@ When you set an **Answer Type** of `Button` for a tag, uncomment the lines with 
 
 ## Rules and events
 
-Load the experience on all pages or set conditions for when your experience appears. For more information about load rules and events, see [Load Rules]() and [Events]().
+Load the experience on all pages or set conditions for when your experience appears. For more information about load rules and events, see [Load Rules](https://docs.tealium.com/about-load-rules/) and [Events](https://docs.tealium.com/about-events/).
 
- To avoid data collisions, only one Moments iQ experience can appear on a page at a time. If you have multiple experiences, configure the load rules to ensure that only one experience loads at any time. 
+
+<blockquote>
+To avoid data collisions, only one Moments iQ experience can appear on a page at a time. If you have multiple experiences, configure the load rules to ensure that only one experience loads at any time.
+</blockquote>
+
 
 ## Data mappings
 
@@ -383,7 +391,7 @@ Use the following mappings with extensions to get dynamic values in the configur
 
 ### Data layer variables
 
-The experience automatically adds the following variables to the data layer:
+The experience automatically adds the following variables to the data layer tab:
 
 ```
 momentsiq_id, UDO Variable
@@ -391,7 +399,6 @@ momentsiq_question1, UDO Variable
 momentsiq_question1_type, UDO Variable
 momentsiq_questions_answered, UDO Variable
 momentsiq_answer1, UDO Variable
-momentsiq_suppress, Local Storage Variable
 ```
 
 ## Client-side data persistence
@@ -400,9 +407,9 @@ If you want to personalize the visitor experience using the visitor responses to
 
 The following image demonstrates an example of such an extension:
 
-![](/images/early-access/moments-iq/manage-moments-persist-data-value.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/manage-moments-persist-data-value.png)
 
-For more information, see [Persist data value extension]().
+For more information, see [Persist data value extension](https://docs.tealium.com/persist-data-value-extension/).
 
 ## Server-side integration
 
@@ -412,12 +419,12 @@ To enrich server-side attributes, create a rule to ensure that `momentsiq_answer
 
 Example:
 
-![](/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png)
 
 Also, if you plan to leverage AudienceStream variables in Moments iQ rules, you need to enable data layer enrichment.
 
-For more information, see [About data layer enrichment]() and [Tealium Collect tag]().
+For more information, see [About data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/) and [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 ## Save and publish
 
-To test and release your experience, follow the same workflow for other tags. For more information, see [About tags]().
+To test and release your experience, follow the same workflow for other tags. For more information, see [About tags](https://docs.tealium.com/about-tags/).

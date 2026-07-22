@@ -9,7 +9,7 @@ Ipsos iris is a state-of-the-art hybrid methodology that combines a nationally r
 ## Tag tips
 
 * Use mappings to override or dynamically set the tag configurations.
-* Each website tag contains a unique section ID. If the user&#39;s website consists of more than one site section and the user wants to measure data for each section separately (for example, news, sports, weather, and so on).
+* Each website tag contains a unique section ID. If the user's website consists of more than one site section and the user wants to measure data for each section separately (for example, news, sports, weather, and so on).
 * Please note alphanumeric values throughout this document support the following:
   * Up to 20 character length
   * Lowercase characters
@@ -18,7 +18,7 @@ Ipsos iris is a state-of-the-art hybrid methodology that combines a nationally r
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -28,11 +28,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -46,7 +46,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 |Variable| Description|
 |---| ---|

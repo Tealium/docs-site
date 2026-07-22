@@ -11,7 +11,7 @@ Users must have the **Author** role to create a dataset. You can only create a d
 
 Use the following steps to create a new dataset:
 
-1. Go to **Insights &amp;gt; Dashboards**, and click **Datasets**.
+1. Go to **Insights &gt; Dashboards**, and click **Datasets**.
 1. Click **New dataset**.
 1. Select a data source **From Existing Data Sources**.
 1. In the confirmation dialog box, click **Create dataset**.
@@ -34,11 +34,11 @@ The dataset is saved immediately. Save and Publish is not required.
 
 Use the following steps to edit a dataset:
 
-1. Go to **Insights &amp;gt; Dashboards**, and click **Datasets**.
+1. Go to **Insights &gt; Dashboards**, and click **Datasets**.
 1. Click on a dataset, then click **EDIT DATASET**.  
 Add and remove fields as needed.
-1. Click **SAVE &amp; PUBLISH**.  
-To save the dataset and create a new analysis, click **PUBLISH &amp; VISUALIZE**.
+1. Click **SAVE & PUBLISH**.  
+To save the dataset and create a new analysis, click **PUBLISH & VISUALIZE**.
 
 ## Delete a dataset
 
@@ -46,7 +46,7 @@ Users must have the **Author** role to delete a dataset. You can only delete dat
 
 Use the following steps to delete a dataset:
 
-1. Go to **Insights &amp;gt; Dashboards**, and click **Datasets**.
+1. Go to **Insights &gt; Dashboards**, and click **Datasets**.
 1. Click the menu for a dataset, and select **Delete**.
 
 ## Update the dataset structure for a dashboard

@@ -8,14 +8,18 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-get-profile-api/
 Use the GET method to retrieve an account profile:
 
 ```bash
-GET /v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}?includes={INCLUDE}&amp;publishVersion={PUBLISH_VERSION}
+GET /v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}?includes={INCLUDE}&publishVersion={PUBLISH_VERSION}
 ```
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
 
-To learn about generating a bearer token from the API key, see [Authentication]().
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
+</blockquote>
+
+
+To learn about generating a bearer token from the API key, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).
 
 ## GET operation parameters
 
@@ -23,16 +27,20 @@ This command uses the following parameters:
 
 |Parameter| Type| Required| Description|
 |---| ---| ---| ---|
-|publishVersion| String| Optional| The version ID of the profile to retrieve. If you omit this parameter, the most recent version is retrieved.&lt;br&gt; Version IDs are in the format `YYYYMMDDhhmm`&lt;br&gt; Example: `&#34;202202111806&#34;`|
-|includes| Array| Optional| An array of the configuration components to include in the response. Add this query string parameter for each component to include.&lt;br&gt; For example, to get variables and extensions: `&amp;includes=variables&amp;includes=extensions` Default: none&lt;br&gt; Values: `loadRules`, `tags`, `tags.templateList`, `tags.template`, `extensions`, `variables`, `events` , and `versionIDs` |
+|publishVersion| String| Optional| The version ID of the profile to retrieve. If you omit this parameter, the most recent version is retrieved.<br> Version IDs are in the format `YYYYMMDDhhmm`<br> Example: `"202202111806"`|
+|includes| Array| Optional| An array of the configuration components to include in the response. Add this query string parameter for each component to include.<br> For example, to get variables and extensions: `&includes=variables&includes=extensions` Default: none<br> Values: `loadRules`, `tags`, `tags.templateList`, `tags.template`, `extensions`, `variables`, `events` , and `versionIDs` |
 
- To retrieve the list of tag templates for a profile, your GET request must include `tags` and `tags.templateList`. For example, `&amp;includes=tags&amp;includes=tags.templateList`.&lt;br&gt; To retrieve the tag templates themselves, include `tags` and `tags.template`. For example, `&amp;includes=tags&amp;includes=tags.template`. 
+
+<blockquote>
+To retrieve the list of tag templates for a profile, your GET request must include `tags` and `tags.templateList`. For example, `&includes=tags&includes=tags.templateList`.<br> To retrieve the tag templates themselves, include `tags` and `tags.template`. For example, `&includes=tags&includes=tags.template`.
+</blockquote>
+
 
 ### Example cURL request
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
-https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}?includes=loadRules&amp;includes=extensions&amp;includes=tags&amp;includes=tags.template&amp;includes=variables&amp;includes=events&amp;includes=versionIds&amp;publishVersion=202003161355
+curl -H 'Authorization: Bearer {token}' \
+https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}?includes=loadRules&includes=extensions&includes=tags&includes=tags.template&includes=variables&includes=events&includes=versionIds&publishVersion=202003161355
 ```
 
 ### Example response
@@ -41,276 +49,276 @@ https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}?in
 
 ```json
 {
-    &#34;account&#34;: &#34;my_account&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;versionTitle&#34;: &#34;Version 2022.03.22.2108&#34;,
-    &#34;version&#34;: &#34;202203222108&#34;,
-    &#34;minorVersion&#34;: &#34;202203222108&#34;,
-    &#34;parentVersion&#34;: &#34;202309191127&#34;,
-    &#34;creation&#34;: &#34;202201131654&#34;,
-    &#34;customTargets&#34;: null,
-    &#34;versionDetails&#34;: {
-        &#34;environmentVersions&#34;: {
-            &#34;qa&#34;: true,
-            &#34;prod&#34;: false,
-            &#34;dev&#34;: true
+    "account": "my_account",
+    "profile": "main",
+    "versionTitle": "Version 2022.03.22.2108",
+    "version": "202203222108",
+    "minorVersion": "202203222108",
+    "parentVersion": "202309191127",
+    "creation": "202201131654",
+    "customTargets": null,
+    "versionDetails": {
+        "environmentVersions": {
+            "qa": true,
+            "prod": false,
+            "dev": true
         },
-        &#34;user&#34;: &#34;user1@tealium.com&#34;,
-        &#34;notes&#34;: &#34;&#34;
+        "user": "user1@tealium.com",
+        "notes": ""
     },
-    &#34;environmentVersions&#34;: {
-        &#34;qa&#34;: &#34;202203222108&#34;,
-        &#34;prod&#34;: &#34;202203222108&#34;,
-        &#34;dev&#34;: &#34;202203222108&#34;
+    "environmentVersions": {
+        "qa": "202203222108",
+        "prod": "202203222108",
+        "dev": "202203222108"
     },
-    &#34;dataCloudLinkedProfiles&#34;: &#34;{}&#34;,
-    &#34;libraryType&#34;: &#34;NONE&#34;,
-    &#34;linkedProfiles&#34;: null,
-    &#34;linkedLibraries&#34;: [
+    "dataCloudLinkedProfiles": "{}",
+    "libraryType": "NONE",
+    "linkedProfiles": null,
+    "linkedLibraries": [
         {
-            &#34;environment&#34;: &#34;Dev&#34;,
-            &#34;name&#34;: &#34;LibraryName&#34;,
-            &#34;required&#34;: true
+            "environment": "Dev",
+            "name": "LibraryName",
+            "required": true
         },
         {
-            &#34;environment&#34;: &#34;Prod&#34;,
-            &#34;name&#34;: &#34;LibraryName&#34;,
-            &#34;required&#34;: true
+            "environment": "Prod",
+            "name": "LibraryName",
+            "required": true
         }
     ],
-    &#34;variables&#34;:[
+    "variables":[
         {
-            &#34;id&#34;: 37,
-            &#34;uniqueIdentifier&#34;: &#34;dom.viewport_height&#34;,
-            &#34;name&#34;: &#34;viewport_height&#34;,
-            &#34;alias&#34;: &#34;Viewport Height&#34;,
-            &#34;type&#34;: &#34;dom&#34;,
-            &#34;notes&#34;: null,
-            &#34;context&#34;: null,
-            &#34;library&#34;: null,
-            &#34;imported&#34;: null,
-            &#34;usedIn&#34;: {
-                &#34;tags&#34;: [],
-                &#34;events&#34;: [],
-                &#34;extensions&#34;: [],
-                &#34;consent&#34;: [],
-                &#34;loadRules&#34;: []
+            "id": 37,
+            "uniqueIdentifier": "dom.viewport_height",
+            "name": "viewport_height",
+            "alias": "Viewport Height",
+            "type": "dom",
+            "notes": null,
+            "context": null,
+            "library": null,
+            "imported": null,
+            "usedIn": {
+                "tags": [],
+                "events": [],
+                "extensions": [],
+                "consent": [],
+                "loadRules": []
             }
         }
     ],
-   &#34;loadRules&#34;:[
+   "loadRules":[
         {
-            &#34;id&#34;:2,
-            &#34;name&#34;:&#34;US Site Only&#34;,
-            &#34;status&#34;:&#34;active&#34;,
-            &#34;library&#34;: null,
-            &#34;notes&#34;: &#34;notes 1&#34;,
-            &#34;startDate&#34;: &#34;202203010000&#34;,
-            &#34;endDate&#34;: &#34;202203152359&#34;,
-            &#34;environmentVersions&#34;: {
-                &#34;qa&#34;: &#34;202203222108&#34;,
-                &#34;prod&#34;: &#34;202203222108&#34;,
-                &#34;dev&#34;: &#34;202203222108&#34;
+            "id":2,
+            "name":"US Site Only",
+            "status":"active",
+            "library": null,
+            "notes": "notes 1",
+            "startDate": "202203010000",
+            "endDate": "202203152359",
+            "environmentVersions": {
+                "qa": "202203222108",
+                "prod": "202203222108",
+                "dev": "202203222108"
             },
-            &#34;usedIn&#34;: {
-                &#34;tags&#34;: [],
-                &#34;extensions&#34;: [],
-                &#34;consent&#34;: [
-                   &#34;gdpr&#34;
+            "usedIn": {
+                "tags": [],
+                "extensions": [],
+                "consent": [
+                   "gdpr"
                 ],
-                &#34;loadRules&#34;: null
+                "loadRules": null
             },
-            &#34;loadRuleCondition&#34;: [
+            "loadRuleCondition": [
                 [
                     {
-                        &#34;variable&#34;: &#34;js.variable1&#34;,
-                        &#34;operator&#34;: &#34;contains&#34;,
-                        &#34;value&#34;: &#34;1&#34;
+                        "variable": "js.variable1",
+                        "operator": "contains",
+                        "value": "1"
                     },
                     {
-                        &#34;variable&#34;: &#34;js.order_discount&#34;,
-                        &#34;operator&#34;: &#34;does_not_equal&#34;,
-                        &#34;value&#34;: &#34;2&#34;
+                        "variable": "js.order_discount",
+                        "operator": "does_not_equal",
+                        "value": "2"
                     },
                 ],
                 [
                     {
-                        &#34;variable&#34;: &#34;dom.viewport_height&#34;,
-                        &#34;operator&#34;: &#34;does_not_end_with_ignore_case&#34;,
-                        &#34;value&#34;: &#34;3&#34;},
+                        "variable": "dom.viewport_height",
+                        "operator": "does_not_end_with_ignore_case",
+                        "value": "3"},
                     {
-                        &#34;variable&#34;: &#34;meta.metadata&#34;,
-                        &#34;operator&#34;: &#34;does_not_equal_ignore_case&#34;,
-                        &#34;value&#34;: &#34;7&#34;
+                        "variable": "meta.metadata",
+                        "operator": "does_not_equal_ignore_case",
+                        "value": "7"
                     }
                 ],
             ]
         }
     ],
-    &#34;extensions&#34;:[
+    "extensions":[
        {
-            &#34;id&#34;:4,
-            &#34;extensionId&#34;: 100036,
-            &#34;extenstionType&#34;: &#34;Javascript Code&#34;,
-            &#34;name&#34;: &#34;Build Data Layer&#34;,
-            &#34;library&#34;: &#34;synclib&#34;,
-            &#34;scope&#34;: &#34;Pre Loader&#34;,
-            &#34;occurrence&#34;: &#34;Run Always&#34;,
-            &#34;notes&#34;: &#34;&#34;,
-            &#34;loadRule&#34;: null,
-            &#34;status&#34;:&#34;active&#34;,
-            &#34;selectedTargets&#34;: {
-                &#34;qa&#34;: true,
-                &#34;prod&#34;: true,
-                &#34;dev&#34;: true
+            "id":4,
+            "extensionId": 100036,
+            "extenstionType": "Javascript Code",
+            "name": "Build Data Layer",
+            "library": "synclib",
+            "scope": "Pre Loader",
+            "occurrence": "Run Always",
+            "notes": "",
+            "loadRule": null,
+            "status":"active",
+            "selectedTargets": {
+                "qa": true,
+                "prod": true,
+                "dev": true
             },
-            &#34;environmentVersions&#34;: {
-                &#34;qa&#34;: &#34;202204072336&#34;,
-                &#34;prod&#34;: &#34;202204072336&#34;,
-                &#34;dev&#34;: &#34;202204072336&#34;
+            "environmentVersions": {
+                "qa": "202204072336",
+                "prod": "202204072336",
+                "dev": "202204072336"
             },
-            &#34;conditions&#34;:null,
-            &#34;configuration&#34;: []
+            "conditions":null,
+            "configuration": []
        },
        {
-            &#34;id&#34;:70,
-            &#34;extensionId&#34;: 100036,
-            &#34;type&#34;:&#34;Set Data Values&#34;,
-            &#34;name&#34;:&#34;Set Checkout Step 1 Complete Event&#34;,
-            &#34;library&#34;: &#34;synclib&#34;,
-            &#34;status&#34;:&#34;inactive&#34;,
-            &#34;scope&#34;:&#34;global&#34;,
-            &#34;occurrence&#34;: &#34;Run Always&#34;,
-            &#34;notes&#34;:&#34;&#34;,
-            &#34;loadRule&#34;: null,
-            &#34;selectedTargets&#34;: {
-                &#34;qa&#34;: true,
-                &#34;prod&#34;: true,
-                &#34;dev&#34;: true
+            "id":70,
+            "extensionId": 100036,
+            "type":"Set Data Values",
+            "name":"Set Checkout Step 1 Complete Event",
+            "library": "synclib",
+            "status":"inactive",
+            "scope":"global",
+            "occurrence": "Run Always",
+            "notes":"",
+            "loadRule": null,
+            "selectedTargets": {
+                "qa": true,
+                "prod": true,
+                "dev": true
             },
-            &#34;environmentVersions&#34;: {
-                &#34;qa&#34;: &#34;202204072336&#34;,
-                &#34;prod&#34;: &#34;202204072336&#34;,
-                &#34;dev&#34;: &#34;202204072336&#34;
+            "environmentVersions": {
+                "qa": "202204072336",
+                "prod": "202204072336",
+                "dev": "202204072336"
             },
-            &#34;conditions&#34;:null,
-            &#34;configuration&#34;: []
+            "conditions":null,
+            "configuration": []
        }
     ],
-    &#34;tags&#34;:[
+    "tags":[
         {
-            &#34;id&#34;: &#34;322&#34;,
-            &#34;tagId&#34;:&#34;20048&#34;,
-            &#34;tagName&#34;:&#34;Twitter&#34;,
-            &#34;name&#34;:&#34;Twitter&#34;,
-            &#34;library&#34;: null,
-            &#34;status&#34;:&#34;active&#34;,
-            &#34;notes&#34;:&#34;&#34;,
-            &#34;loadRule&#34;:&#34;50,3&#34;,
-            &#34;loadRuleJoinOperator&#34;:&#34;all&#34;,
-            &#34;dataMappings&#34;:[
+            "id": "322",
+            "tagId":"20048",
+            "tagName":"Twitter",
+            "name":"Twitter",
+            "library": null,
+            "status":"active",
+            "notes":"",
+            "loadRule":"50,3",
+            "loadRuleJoinOperator":"all",
+            "dataMappings":[
                 { 
-                    &#34;mappings&#34;: [
-                        &#34;a1&#34;,
-                        &#34;a2&#34;
+                    "mappings": [
+                        "a1",
+                        "a2"
                     ],
-                    &#34;type&#34;: &#34;dom&#34;,
-                    &#34;variable&#34;: &#34;title&#34;
+                    "type": "dom",
+                    "variable": "title"
                 },
                 {
-                    &#34;mappings&#34;: [
-                        &#34;a3&#34;,
-                        &#34;a4&#34;
+                    "mappings": [
+                        "a3",
+                        "a4"
                     ],
-                    &#34;type&#34;: &#34;static.text&#34;,
-                    &#34;variable&#34;: &#34;height&#34;
+                    "type": "static.text",
+                    "variable": "height"
                 }
             ],
-            &#34;selectedTargets&#34;: {
-                &#34;qa&#34;: true,
-                &#34;prod&#34;: true,
-                &#34;dev&#34;: true
+            "selectedTargets": {
+                "qa": true,
+                "prod": true,
+                "dev": true
             },
-            &#34;environmentVersions&#34;: {
-                &#34;qa&#34;: &#34;202203222108&#34;,
-                &#34;prod&#34;: &#34;202203222108&#34;,
-                &#34;dev&#34;: &#34;202203222108&#34;
+            "environmentVersions": {
+                "qa": "202203222108",
+                "prod": "202203222108",
+                "dev": "202203222108"
             },
-            &#34;advancedConfiguration&#34;: {
-                &#34;bundleFlag&#34;: false,
-                &#34;syncLoadType&#34;: true,
-                &#34;optOut&#34;: true,
-                &#34;sendFlag&#34;: true,
-                &#34;scriptSource&#34;: &#34;&#34;,
-                &#34;tagTiming&#34;: &#34;DOM Ready&#34;
+            "advancedConfiguration": {
+                "bundleFlag": false,
+                "syncLoadType": true,
+                "optOut": true,
+                "sendFlag": true,
+                "scriptSource": "",
+                "tagTiming": "DOM Ready"
             },
-            &#34;configuration&#34;: {
-                &#34;config_EMUserSecret&#34;: &#34;&#34;,
-                &#34;multipleLoadRules&#34;: &#34;3,2&#34;,
-                &#34;_multipleLoadRules&#34;: &#34;3,2&#34;
+            "configuration": {
+                "config_EMUserSecret": "",
+                "multipleLoadRules": "3,2",
+                "_multipleLoadRules": "3,2"
            },
-           &#34;rules&#34;: {
-               &#34;apply&#34;: null,
-               &#34;exclude&#34;: null
+           "rules": {
+               "apply": null,
+               "exclude": null
            },
-           &#34;template&#34;: null
+           "template": null
        }
     ],
-    &#34;events&#34;: [
+    "events": [
         {
-            &#34;id&#34;: 25,
-            &#34;eventId&#34;: 100045,
-            &#34;name&#34;: &#34;Home and Decor Homepage Click&#34;,
-            &#34;status&#34;: &#34;active&#34;,
-            &#34;eventType&#34;: &#34;mouseevents&#34;,
-            &#34;scope&#34;: &#34;DOM Ready&#34;,
-            &#34;trackingEvent&#34;: &#34;link&#34;,
-            &#34;notes&#34;: &#34;&#34;,
-            &#34;library&#34;: null,
-            &#34;eventLoadRuleList&#34;: &#34;all&#34;,
-            &#34;eventTrigger&#34;: {
-                &#34;object&#34;: &#34;mouseevents&#34;,
-                &#34;cssSelector&#34;: &#34;&#34;,
-                &#34;title&#34;: &#34;Mouse Events&#34;,
-                &#34;mouseEvent&#34;: &#34;mousedown&#34;,
-                &#34;triggerFrequency&#34;: &#34;runAlways&#34;
+            "id": 25,
+            "eventId": 100045,
+            "name": "Home and Decor Homepage Click",
+            "status": "active",
+            "eventType": "mouseevents",
+            "scope": "DOM Ready",
+            "trackingEvent": "link",
+            "notes": "",
+            "library": null,
+            "eventLoadRuleList": "all",
+            "eventTrigger": {
+                "object": "mouseevents",
+                "cssSelector": "",
+                "title": "Mouse Events",
+                "mouseEvent": "mousedown",
+                "triggerFrequency": "runAlways"
             },
-            &#34;selectedTargets&#34;: {
-                &#34;prod&#34;: true,
-                &#34;dev&#34;: true,
-                &#34;qa&#34;: true
+            "selectedTargets": {
+                "prod": true,
+                "dev": true,
+                "qa": true
             },
-            &#34;environmentVersions&#34;: {
-                &#34;qa&#34;: &#34;202301202252&#34;,
-                &#34;prod&#34;: &#34;202301202252&#34;,
-                &#34;dev&#34;: &#34;202301202252&#34;
+            "environmentVersions": {
+                "qa": "202301202252",
+                "prod": "202301202252",
+                "dev": "202301202252"
             },
-            &#34;eventVariables&#34;: [
+            "eventVariables": [
                 {
-                    &#34;variable&#34;: &#34;udo.tealium_event&#34;,
-                    &#34;type&#34;: &#34;text&#34;,
-                    &#34;value&#34;: &#34;mousedown&#34;
+                    "variable": "udo.tealium_event",
+                    "type": "text",
+                    "value": "mousedown"
                 }
             ],
-            &#34;rules&#34;: {
-                &#34;apply&#34;: null,
-                &#34;exclude&#34;: null
+            "rules": {
+                "apply": null,
+                "exclude": null
             },
-            &#34;usedIn&#34;: {
-                &#34;tags&#34;: [],
-                &#34;events&#34;: null,
-                &#34;extensions&#34;: null,
-                &#34;consent&#34;: null,
-                &#34;loadRules&#34;: null
+            "usedIn": {
+                "tags": [],
+                "events": null,
+                "extensions": null,
+                "consent": null,
+                "loadRules": null
             }
         }
     ],
-    &#34;versionIds&#34;: [
-        &#34;202309191128&#34;,
-        &#34;202309191127&#34;,
-        &#34;202309061342&#34;
+    "versionIds": [
+        "202309191128",
+        "202309191127",
+        "202309061342"
     ],
-    &#34;templateList&#34;: null
+    "templateList": null
 }
 ```
 
@@ -321,7 +329,7 @@ Potential error messages for this endpoint:
 
 |Error Code| Error Message|
 |---| ---|
-|400|  `&#34;Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;  `&#34;Variable validation failed - variableId: {VARIABLE ID} \| {ACCOUNT} \| profile: {PROFILE}. Cause: {cause}&#34;` |
-|404|  `&#34;Profile not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;   `&#34;Profile library not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;` &lt;br&gt;   `&#34;Profile (legacy) not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;` &lt;br&gt;      `Error in getting next extension id - {ACCOUNT} profile: {PROFILE}&#34;`  |
-|409|`&#34;Users are currently viewing the same account: {ACCOUNT} \| profile: {PROFILE}&#34;` &lt;br&gt;  `&#34;Conflict with profile extension: _id: {ID}, extType: {TYPE}, name: {NAME} - {ACCOUNT} \| profile: {PROFILE}&#34;` |
-|500|  `&#34;Error processing json for extension - account: {ACCOUNT} \| profile: {PROFILE}&#34;` |
+|400|  `"Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}"`<br>  `"Variable validation failed - variableId: {VARIABLE ID} \| {ACCOUNT} \| profile: {PROFILE}. Cause: {cause}"` |
+|404|  `"Profile not found - account: {ACCOUNT} \| profile: {PROFILE}"`<br>   `"Profile library not found - account: {ACCOUNT} \| profile: {PROFILE}"` <br>   `"Profile (legacy) not found - account: {ACCOUNT} \| profile: {PROFILE}"` <br>      `Error in getting next extension id - {ACCOUNT} profile: {PROFILE}"`  |
+|409|`"Users are currently viewing the same account: {ACCOUNT} \| profile: {PROFILE}"` <br>  `"Conflict with profile extension: _id: {ID}, extType: {TYPE}, name: {NAME} - {ACCOUNT} \| profile: {PROFILE}"` |
+|500|  `"Error processing json for extension - account: {ACCOUNT} \| profile: {PROFILE}"` |

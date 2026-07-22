@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/client-side-tags/cj-affiliate-formerly-commissi
 
 ### タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -37,7 +37,7 @@ url: https://docs.tealium.com/ja/client-side-tags/cj-affiliate-formerly-commissi
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -45,27 +45,27 @@ url: https://docs.tealium.com/ja/client-side-tags/cj-affiliate-formerly-commissi
 
 |**宛先名**| **説明**|
 |---| ---|
-|`cid`|  &lt;ul&gt;&lt;li&gt;クライアントID&lt;/li&gt;&lt;li&gt;この変数にマップしてクライアントIDを動的に構成します。&lt;/li&gt;&lt;/ul&gt; |
-|`aid`|  &lt;ul&gt;&lt;li&gt;アクションID&lt;/li&gt;&lt;li&gt;この変数にマップしてアクションIDを動的に構成します。これはクエリストリングの`TYPE`パラメータです。&lt;/li&gt;&lt;/ul&gt; |
-|`containerid`|  &lt;ul&gt;&lt;li&gt;コンテナタグID&lt;/li&gt;&lt;li&gt;この変数にマップしてコンテナタグIDを動的に構成します。&lt;/li&gt;&lt;/ul&gt; |
-|`name`|  &lt;ul&gt;&lt;li&gt;名前&lt;/li&gt;&lt;li&gt;この変数にマップして名前を動的に構成します。これはあなたのコンバージョンタグを一意に識別します。&lt;/li&gt;&lt;/ul&gt; |
-|`CJEVENT`|  &lt;ul&gt;&lt;li&gt;CJイベント&lt;/li&gt;&lt;/ul&gt; |
-|`referralperiod`|  &lt;ul&gt;&lt;li&gt;リファラル期間&lt;/li&gt;&lt;/ul&gt; |
+|`cid`|  <ul><li>クライアントID</li><li>この変数にマップしてクライアントIDを動的に構成します。</li></ul> |
+|`aid`|  <ul><li>アクションID</li><li>この変数にマップしてアクションIDを動的に構成します。これはクエリストリングの`TYPE`パラメータです。</li></ul> |
+|`containerid`|  <ul><li>コンテナタグID</li><li>この変数にマップしてコンテナタグIDを動的に構成します。</li></ul> |
+|`name`|  <ul><li>名前</li><li>この変数にマップして名前を動的に構成します。これはあなたのコンバージョンタグを一意に識別します。</li></ul> |
+|`CJEVENT`|  <ul><li>CJイベント</li></ul> |
+|`referralperiod`|  <ul><li>リファラル期間</li></ul> |
 
 
 ### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|`OID`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;この変数に注文のIDをマップします。&lt;/li&gt;&lt;/ul&gt; |
-|`AMOUNT`|  &lt;ul&gt;&lt;li&gt;注文合計。&lt;/li&gt;&lt;li&gt;この変数にマップして注文に適用される小計を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`CURRENCY`|  &lt;ul&gt;&lt;li&gt;注文通貨。&lt;/li&gt;&lt;li&gt;この変数にマップして注文に適用される通貨を上書きします。&lt;/li&gt;&lt;li&gt;デフォルトは**USD**です。&lt;/li&gt;&lt;/ul&gt; |
-|`DISCOUNT`|  &lt;ul&gt;&lt;li&gt;注文割引。&lt;/li&gt;&lt;li&gt;この変数にマップして注文に適用される割引を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`COUPON`|  &lt;ul&gt;&lt;li&gt;注文クーポン。&lt;/li&gt;&lt;li&gt;この変数に注文に適用されるクーポン名をマップします。&lt;/li&gt;&lt;/ul&gt; |
-|`ITEM`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品アイテム&lt;/li&gt;&lt;li&gt;この変数にマップして製品IDを上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`AMT`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品価格。&lt;/li&gt;&lt;li&gt;この変数にマップして製品価格を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`QTY`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品数量。&lt;/li&gt;&lt;li&gt;この変数にマップして製品数量を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`DCNT`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品割引。&lt;/li&gt;&lt;li&gt;この変数にマップして注文に適用される割引を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`OID`|  <ul><li>注文ID</li><li>この変数に注文のIDをマップします。</li></ul> |
+|`AMOUNT`|  <ul><li>注文合計。</li><li>この変数にマップして注文に適用される小計を上書きします。</li></ul> |
+|`CURRENCY`|  <ul><li>注文通貨。</li><li>この変数にマップして注文に適用される通貨を上書きします。</li><li>デフォルトは**USD**です。</li></ul> |
+|`DISCOUNT`|  <ul><li>注文割引。</li><li>この変数にマップして注文に適用される割引を上書きします。</li></ul> |
+|`COUPON`|  <ul><li>注文クーポン。</li><li>この変数に注文に適用されるクーポン名をマップします。</li></ul> |
+|`ITEM`|  <ul><li>配列</li><li>製品アイテム</li><li>この変数にマップして製品IDを上書きします。</li></ul> |
+|`AMT`|  <ul><li>配列</li><li>製品価格。</li><li>この変数にマップして製品価格を上書きします。</li></ul> |
+|`QTY`|  <ul><li>配列</li><li>製品数量。</li><li>この変数にマップして製品数量を上書きします。</li></ul> |
+|`DCNT`|  <ul><li>配列</li><li>製品割引。</li><li>この変数にマップして注文に適用される割引を上書きします。</li></ul> |
 
 ### アドバンスド
 
@@ -73,8 +73,8 @@ url: https://docs.tealium.com/ja/client-side-tags/cj-affiliate-formerly-commissi
 
 |**宛先名**| **説明**|
 |---| ---|
-|`CHANNEL`|  &lt;ul&gt;&lt;li&gt;チャネル&lt;/li&gt;&lt;li&gt;この変数に最後のクリックに帰属するチャネルをマップします。&lt;/li&gt;&lt;/ul&gt; |
-|`CHANNEL_TS`|  &lt;ul&gt;&lt;li&gt;チャネルTS&lt;/li&gt;&lt;li&gt;この変数に最後のクリックに帰属する日時スタンプをマップします。&lt;/li&gt;&lt;/ul&gt; |
+|`CHANNEL`|  <ul><li>チャネル</li><li>この変数に最後のクリックに帰属するチャネルをマップします。</li></ul> |
+|`CHANNEL_TS`|  <ul><li>チャネルTS</li><li>この変数に最後のクリックに帰属する日時スタンプをマップします。</li></ul> |
 
 ## ベンダーのドキュメンテーション
 

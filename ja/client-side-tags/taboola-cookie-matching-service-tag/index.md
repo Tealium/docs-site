@@ -3,7 +3,11 @@ title: Taboola Cookie Matching Service タグ構成ガイド
 description: この記事では、Tealium iQ タグ管理アカウントで Taboola Cookie Matching Service タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/taboola-cookie-matching-service-tag/
 ---
- このタグを `utag` バージョン 4.50 以降で使用する場合、`utag.js` の [`always_set_v_id` 構成]() を `true` に構成する必要があります。この構成により、訪問 ID が Cookie 同期のために利用可能になります。詳細については、[utag 4.50 リリースノート]() および [utag 4.50&#43; へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-) を参照してください。
+
+<blockquote>
+このタグを `utag` バージョン 4.50 以降で使用する場合、`utag.js` の [`always_set_v_id` 構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id) を `true` に構成する必要があります。この構成により、訪問 ID が Cookie 同期のために利用可能になります。詳細については、[utag 4.50 リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later) および [utag 4.50+ へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-) を参照してください。
+</blockquote>
+
 
 ## タグのヒント
 
@@ -11,11 +15,11 @@ url: https://docs.tealium.com/ja/client-side-tags/taboola-cookie-matching-servic
 * ファーストパーティドメインをサポートします。
 * このタグはセッションごとに一度だけ発火します。
 
-EventStream での Cookie マッチングについての詳細は、[EventStream での永続的な Cookie マッチングについての理解]() を参照してください。
+EventStream での Cookie マッチングについての詳細は、[EventStream での永続的な Cookie マッチングについての理解](https://docs.tealium.com/about-persistent-cookie-matching/) を参照してください。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要]() の記事を読んでください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/) の記事を読んでください。
 
 タグを追加する際に、以下の構成を構成します：
 
@@ -37,11 +41,11 @@ EventStream での Cookie マッチングについての詳細は、[EventStream
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール]() を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/) を参照してください。
 
 ## データマッピング
 
-データマッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信プロセスです。変数をタグ宛先にマッピングする方法についての指示は、[データマッピング](/ja/iq-tag-management/data-mappings/manage/) を参照してください。
+データマッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信プロセスです。変数をタグ宛先にマッピングする方法についての指示は、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/) を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

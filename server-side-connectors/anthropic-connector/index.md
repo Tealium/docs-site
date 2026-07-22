@@ -3,13 +3,21 @@ title: Anthropic Connector Setup Guide
 description: Set up the Anthropic connector to send a prompt with Tealium event or visitor data and return model responses for real-time enrichment.
 url: https://docs.tealium.com/server-side-connectors/anthropic-connector/
 ---
-For an overview of how AI connectors work and how to structure your prompts, see our guide to [AI connectors]().
+
+<blockquote>
+For an overview of how AI connectors work and how to structure your prompts, see our guide to [AI connectors](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 ## How it works
 
 This connector invokes an Anthropic model with your custom prompt and mapped Tealium data, then sends the response as a JSON event back to Tealium Collect for real-time enrichment.
 
+
+<blockquote>
 The connector should be used for targeted, high-value interactions rather than high-volume events. Excessive usage may result in rate limits or increased API costs in your vendor account and add to your inbound Tealium event volume.
+</blockquote>
+
 
 ## Usage and cost considerations
 
@@ -28,7 +36,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -42,7 +50,11 @@ After adding the connector, configure the following settings:
 
 ### Send Prompt to Anthropic
 
-For an overview of how AI connectors work and how to structure your prompts, see our guide to [AI connectors]().
+
+<blockquote>
+For an overview of how AI connectors work and how to structure your prompts, see our guide to [AI connectors](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 #### Mappings
 
@@ -66,7 +78,7 @@ These values are taken from the current event and do not need to be referenced i
 | Include Event Payload | (Available for event actions) Check this box to include the event payload for use in the prompt template as variable `{{event_payload}}`. |
 | Include Visitor Profile | (Available for audience actions) When enabled, the full visitor profile is made available to the prompt as `{{visitor_profile}}`. |
 | Include Current Visit | (Available for audience actions) When enabled, current visit attributes are added to the `{{visitor_profile}}` object (keyed by attribute name). |
-| Prompt | Enter the prompt to send to the selected Anthropic model. Use the guidelines below to ensure consistent and machine-readable output:&lt;br&gt;Use double curly braces for mapped parameters, for example: `{{product_id}}`, `{{event_value}}`.&lt;br&gt;For audience connector actions, reference `{{visitor_profile}}` after enabling `Include visitor profile`.&lt;br&gt;For event connector actions, reference `{{event_payload}}` after enabling `Include current event payload`.&lt;br&gt;Do not include JSON formatting instructions (for example, `Return only JSON`). The connector enforces the JSON structure automatically. |
+| Prompt | Enter the prompt to send to the selected Anthropic model. Use the guidelines below to ensure consistent and machine-readable output:<br>Use double curly braces for mapped parameters, for example: `{{product_id}}`, `{{event_value}}`.<br>For audience connector actions, reference `{{visitor_profile}}` after enabling `Include visitor profile`.<br>For event connector actions, reference `{{event_payload}}` after enabling `Include current event payload`.<br>Do not include JSON formatting instructions (for example, `Return only JSON`). The connector enforces the JSON structure automatically. |
 
 #### Advanced Model Settings
 
@@ -80,7 +92,11 @@ These values are taken from the current event and do not need to be referenced i
 
 Define the attributes to include in the AI response. These mappings determine the schema sent to Anthropic using `output_config` to ensure the response JSON matches the schema.
 
+
+<blockquote>
 Do not add JSON formatting instructions to your prompt. The schema derived from these mappings enforces the structure automatically.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |

@@ -34,7 +34,7 @@ The **Functions Overview** screen has two tabs, **Overview** and **Insights**. T
     * Dropped functions over time
 
 The following figure shows an example of the functions insights visuals.
-![](/images/server-side/functions-insights-tab.png)
+![](https://docs.tealium.com/images/server-side/functions-insights-tab.png)
 
 ## Turn on functions insights
 
@@ -48,7 +48,7 @@ After you turn on functions insights dashboards, it may take up to 2 hours for d
 
 ## View functions insights
 
-1. Go to **Transform &gt; Functions**.
+1. Go to **Transform > Functions**.
 1. Click the **Insights** tab.
 You may need to scroll down to see all the graphs.
 

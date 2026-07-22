@@ -7,9 +7,9 @@ url: https://docs.tealium.com/administration/account-org/permissions-system-migr
 
 Now that you have your planned list of users, permission groups, and admin roles, you’re ready to deploy your permissions structure.
 
-* For instructions on how to create a permission group, see [Permission Groups]().
-* For instructions on how to assign an admin role to a user, see [Admin Roles]().
-* For instructions on how to invite and manage users, see [Users]().
+* For instructions on how to create a permission group, see [Permission Groups](https://docs.tealium.com/permission-groups/).
+* For instructions on how to assign an admin role to a user, see [Admin Roles](https://docs.tealium.com/admin-roles/).
+* For instructions on how to invite and manage users, see [Users](https://docs.tealium.com/users/).
 
 The following examples describe strategies for deploying the platform permissions system:
 
@@ -27,11 +27,11 @@ To manage permissions through role-based permission groups for your account:
 1. Create permission groups for groups of users with identical needs and roles.
 1. Add users to the appropriate permission groups.
 1. Warn your users that you will be testing the platform permissions system and ask for feedback.
-1. Set the [Permissions Enforcement]() switches to **ON**.
+1. Set the [Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/) switches to **ON**.
 1. Gather feedback from your users, and implement any changes in permissions that are necessary.
 1. If there are too many permission and access issues to deal with quickly, set the **Permissions Enforcement** switch to **OFF** so you can revise your plans, permission groups, and admin roles before running another test.
 
-For more information about Permissions Enforcement, see [Permissions Enforcement]().
+For more information about Permissions Enforcement, see [Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/).
 
 ### Deployment Strategy 2 - Stacked granular permission groups
 
@@ -53,8 +53,11 @@ For example, if you create permission groups to manage publishing for three clie
 * Profile 3, Publish to QA
 * Profile 3, Publish to Prod
 
- This method becomes even more complex if the account uses custom publishing environments
- 
+
+<blockquote>
+This method becomes even more complex if the account uses custom publishing environments
+</blockquote>
+
 
 To manage permissions through stackable permission groups for your account:
 
@@ -72,4 +75,4 @@ To manage permissions through stackable permission groups for your account:
 1. Gather feedback from your users, and implement any changes in permissions that are necessary.
 1. If there are too many issues to deal with quickly, set the Permissions Enforcement switches to **OFF** so you can revise your plans, permission groups, and admin roles before running another test.
 
-For more information about Permissions Enforcement, see [Permissions Enforcement]().
+For more information about Permissions Enforcement, see [Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/).

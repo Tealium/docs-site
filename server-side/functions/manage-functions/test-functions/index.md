@@ -14,7 +14,7 @@ Follow these steps to test a function:
 1. To run the function, click **Run Test**.  
 The execution result is shown below **Test Input**. Execution **Output** and **Test Logs** are shown below the result.  
 For data transformation functions, running a test also verifies that the trigger rule matches the test payload. If the rule and payload do not match, the function cannot be triggered and the following message is displayed:
-      ![](/images/server-side/test-payload-warning.png)  
+      ![](https://docs.tealium.com/images/server-side/test-payload-warning.png)  
       Modify the rule or the payload so that they match and run the test again.
 1. To view a log, click **Test Logs**, then click a log in the list.
 
@@ -42,7 +42,11 @@ You can save a maximum of 10 test payloads.
 You may need to delete a test payload if you have already saved the maximum of 10 test payloads, and need to save another. Follow these steps to delete a test payload:
 
 1. Click the payload menu and then click **Delete**.  
-    Use caution when deleting saved test payloads. There is no confirmation dialog.
+    
+<blockquote>
+Use caution when deleting saved test payloads. There is no confirmation dialog.
+</blockquote>
+
 1. Click **Apply**.
 1. Click **Save/Publish**.
 
@@ -70,9 +74,9 @@ Follow these steps to write event and visitor data to the log file:
 1. Create a new function, then delete the example code and enter the following code, which writes the event and visitor data to the console log. 
 
 ```js
-import { event, visitor } from &#34;tealium&#34;;
-console.log(&#39;Event object:&#39; &#43; JSON.stringify(event));
-console.log(&#39;Visitor object:&#39; &#43;JSON.stringify(visitor));
+import { event, visitor } from "tealium";
+console.log('Event object:' + JSON.stringify(event));
+console.log('Visitor object:' +JSON.stringify(visitor));
 ```
 
 1. Click the **Configuration** tab, and set **Status** to **ON**.
@@ -92,14 +96,16 @@ Wait 1 to 2 minutes to allow the data to be collected.
 ### Get test data using trace
 
 
+<blockquote>
 When testing functions with trace, function calls are limited to 15 per minute.
+</blockquote>
 
 
 1. In the code editor, create any JavaScript code. For example:  
-`console.log(&#34;Hello World!&#34;);`
+`console.log("Hello World!");`
 1. Click the **Configuration** tab and set the **Status** to **ON**, then click **Done**.
 1. Save and publish.
-1. Start the Trace tool. For more information, see [Trace]().
+1. Start the Trace tool. For more information, see [Trace](https://docs.tealium.com/about-trace/).
 1. On your website, do the actions required to trigger the function.
 1. In the Trace tool, click the **Action Processed** notification, then locate the event or visitor object under **payload**, and copy the object.
 1. Go to the **Test** tab, delete the current code, and paste the event or visitor object into the **Test Input** editor.

@@ -11,26 +11,34 @@ The returned AudienceStream visitor profile differs from the typical visitor pro
 
 * Badges and audiences are returned as objects
 * Timelines and funnels have been removed
-* [Restricted attributes]() are not returned
+* [Restricted attributes](https://docs.tealium.com/data-layer-enrichment-object/) are not returned
 
 If the visitor profile of an active visitor is not yet available when you submit a GET request, the API will return an empty JSON object.
 
-For more information about JSON objects, see [Data Layer Enrichment API objects]().
+For more information about JSON objects, see [Data Layer Enrichment API objects](https://docs.tealium.com/data-layer-enrichment-object/).
 
- If you intend to use the Data Layer Enrichment API from a browser, you may need to set up an allow list. For more information, see [About Data Layer Enrichment - Domain Allow List](). 
+
+<blockquote>
+If you intend to use the Data Layer Enrichment API from a browser, you may need to set up an allow list. For more information, see [About Data Layer Enrichment - Domain Allow List](https://docs.tealium.com/about-data-layer-enrichment/).
+</blockquote>
+
 
 ### Combine with the Profile Definition API
 
-The API returns a visitor profile that includes any badge IDs associated with the visitor. To retrieve the corresponding names of these badges, use the [Profile Definition API](). 
+The API returns a visitor profile that includes any badge IDs associated with the visitor. To retrieve the corresponding names of these badges, use the [Profile Definition API](https://docs.tealium.com/get-profile-definition-api/). 
 
+
+<blockquote>
 The Profile Definition API returns badge and audience data associated with a Tealium profile and is not restricted to any specific visitor.
+</blockquote>
+
 
 For example, a request for a visitor profile that has two assigned badges will return the following using the Data Layer Enrichment Public API:
 
 ```json
 { 
-  &#34;badges&#34; : {
-    &#34;8879&#34;: true
+  "badges" : {
+    "8879": true
   }
 }
 ```
@@ -39,14 +47,14 @@ The Profile Definition API returns badge IDs and their names defined in the Teal
 
 ```json
 {
-    &#34;badges&#34; : [
+    "badges" : [
         {
-            &#34;id&#34; : 24935,
-            &#34;name&#34; : &#34;Cart abandoner&#34;
+            "id" : 24935,
+            "name" : "Cart abandoner"
         },
         {
-            &#34;id&#34; : 8879,
-            &#34;name&#34; : &#34;Frequent visitor&#34;
+            "id" : 8879,
+            "name" : "Frequent visitor"
         }
     ]
 }

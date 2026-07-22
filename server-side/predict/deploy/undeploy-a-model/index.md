@@ -6,9 +6,9 @@ url: https://docs.tealium.com/server-side/predict/deploy/undeploy-a-model/
 There are two ways to undeploy your model:
 
 1. From the **Model Dashboard**, click **Undeploy**.  
-      ![](/images/predict/predictv2-undeploy.png)
+      ![](https://docs.tealium.com/images/predict/predictv2-undeploy.png)
 1. From the **Training Details** screen, after reviewing the training details you can choose to undeploy.  
-      ![](/images/predict/predictv2-training-details-undeploy.png)
+      ![](https://docs.tealium.com/images/predict/predictv2-training-details-undeploy.png)
 
 After you select to undeploy your model, complete the following steps:
 

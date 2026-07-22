@@ -24,7 +24,7 @@ This connector uses the following vendor API:
 
 ### Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 *   Max number of requests: 1000
 *   Max time since oldest request: 10 minutes
@@ -32,12 +32,12 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
-*   **Partner Name**&lt;br&gt;Navigate to **Inone &gt; Inone Settings &gt; [Account Preferences](https://academy.useinsider.com/docs/account-preferences)** to copy and paste your partner name.
-*   **API Key**&lt;br&gt;An API key is required to authorize your request. For information on generating a token, see [API Authentication Tokens](https://academy.useinsider.com/docs/api-authentication-tokens).
+*   **Partner Name**<br>Navigate to **Inone > Inone Settings > [Account Preferences](https://academy.useinsider.com/docs/account-preferences)** to copy and paste your partner name.
+*   **API Key**<br>An API key is required to authorize your request. For information on generating a token, see [API Authentication Tokens](https://academy.useinsider.com/docs/api-authentication-tokens).
 
 When you are finished configuring the connector, click **Done**.
 
@@ -54,23 +54,23 @@ This section describes how to set up parameters and options for each action.
 | **Parameter** | **Description** |
 | --- | --- |
 |  | **User Identifiers** |
-| Email | User&#39;s email address. |
-| Phone Number | User&#39;s phone number in E.164 format. For example: &#43;6598765432. |
-| UUID | User&#39;s UUID parameter. |
-| User Custom Identifiers | User&#39;s custom identifier information. At least one default or custom user identifier must be provided. |
+| Email | User's email address. |
+| Phone Number | User's phone number in E.164 format. For example: +6598765432. |
+| UUID | User's UUID parameter. |
+| User Custom Identifiers | User's custom identifier information. At least one default or custom user identifier must be provided. |
 |  | **User Attributes** |
-| Email Opt In | User&#39;s permission for marketing emails. When true, emails allowed. When false, email not allowed. |
-| GDPR Opt In | User&#39;s permission for Insider campaigns, data collection and processing. When true or empty, Insider may interact with the user through personalization campaigns. When false, user will not see any Insider campaign or receive any message from any channel. |
-| SMS Opt In | User&#39;s permission for SMS messages. When true, SMS allowed. When false, SMS not allowed. |
-| WhatsApp Opt In | User&#39;s permission for WhatsApp Message. When true, WhatsApp Message allowed. When false, WhatsApp Message not allowed. |
-| Name | User&#39;s name. |
-| Surname | User&#39;s surname. |
-| Birthday | User&#39;s birthday in RFC 3339 format. For example: 1993-03-12T00:00:00Z. |
-| Gender | User&#39;s gender. |
-| Age | User&#39;s age. |
+| Email Opt In | User's permission for marketing emails. When true, emails allowed. When false, email not allowed. |
+| GDPR Opt In | User's permission for Insider campaigns, data collection and processing. When true or empty, Insider may interact with the user through personalization campaigns. When false, user will not see any Insider campaign or receive any message from any channel. |
+| SMS Opt In | User's permission for SMS messages. When true, SMS allowed. When false, SMS not allowed. |
+| WhatsApp Opt In | User's permission for WhatsApp Message. When true, WhatsApp Message allowed. When false, WhatsApp Message not allowed. |
+| Name | User's name. |
+| Surname | User's surname. |
+| Birthday | User's birthday in RFC 3339 format. For example: 1993-03-12T00:00:00Z. |
+| Gender | User's gender. |
+| Age | User's age. |
 | Language | Language information for the user. |
 | Country | Country information of the user in ISO 3166-1 alpha-2 format. |
-| City | User&#39;s city. |
+| City | User's city. |
 | List ID | Newsletter contact list IDs (users are added directly). |
 | User Custom Attributes | Select custom attributes. At least one default or custom user attribute or one event must be provided. |
 | | **Events Parameters** |
@@ -90,7 +90,7 @@ This section describes how to set up parameters and options for each action.
 | Events Custom Parameters | Select custom event parameters |
 | | To add multiple events, provide array attributes. Array type attributes must be of equal length. Events Parameters arrays and Events Custom Parameters arrays must be of equal length. Single value attributes can be used and apply to each event. |
 | | **Templates and Template Variables** |
-| Events Template Variables | Provide template variables as data input for **Events Template**. For more information and usage examples, see . Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes. |
+| Events Template Variables | Provide template variables as data input for **Events Template**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes. |
 | Events Template | To support nested objects, define a template, which is a JSON array of variables. Template variables mapped in the **Events Template Variables** section can be used in the template. When a template is defined, configuration in the **Events Parameters** and **Events Custom Parameters** sections is ignored. For more information on templates, see the [Templates Guide]().|
 
 ### Action — Delete Attribution (Batched or Real-Time)
@@ -100,10 +100,10 @@ This section describes how to set up parameters and options for each action.
 | **Parameter** | **Description** |
 | --- | --- |
 | | **User Identifiers** |
-| Email | User&#39;s email address. |
-| Phone Number | User&#39;s phone number in E.164 format. For example: &#43;6598765432. |
-| UUID | User&#39;s UUID parameter. |
-| User Custom Identifiers | Provide user&#39;s custom identifier information. At least one default or custom user identifier must be provided. |
+| Email | User's email address. |
+| Phone Number | User's phone number in E.164 format. For example: +6598765432. |
+| UUID | User's UUID parameter. |
+| User Custom Identifiers | Provide user's custom identifier information. At least one default or custom user identifier must be provided. |
 | | **User Attributes** |
 | Whole Delete Default User Attributes | Select default user attributes that are going to be deleted fully from the corresponding user.  |
 | Whole Delete Custom User Attributes | Select custom user attributes that are going to be deleted fully from the corresponding user. 
@@ -117,7 +117,7 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | User&#39;s email address. |
-| Phone Number | User&#39;s phone number in E.164 format. For example: &#43;6598765432. |
-| UUID | User&#39;s UUID parameter. |
-| User Custom Identifiers | Provide user&#39;s custom identifier information. At least one default or custom user identifier must be provided. |
+| Email | User's email address. |
+| Phone Number | User's phone number in E.164 format. For example: +6598765432. |
+| UUID | User's UUID parameter. |
+| User Custom Identifiers | Provide user's custom identifier information. At least one default or custom user identifier must be provided. |

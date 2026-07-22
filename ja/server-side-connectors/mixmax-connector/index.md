@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 ## 構成を構成する
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -35,13 +35,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                                                                                     |
 |:--------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| メール         | &lt;ul&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;li&gt;連絡先ごとに一意。&lt;/li&gt;&lt;li&gt;既存の連絡先と同じメールで新しい連絡先を作成すると、その連絡先とマージされます。&lt;/li&gt;&lt;li&gt;詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contacts-1)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| 名前          | &lt;ul&gt;&lt;li&gt;連絡先の名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                                                                                             |
-| 連絡先ID    | &lt;ul&gt;&lt;li&gt;このメールアドレスでGoogle連絡先に存在する場合、この連絡先が関連付けられているGoogle ID。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                               |
-| Salesforce ID | &lt;ul&gt;&lt;li&gt;このメールアドレスでSalesforceに存在する場合（連絡先またはリード）、この連絡先が関連付けられているSalesforce ID。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                     |
-| 使用済みとしてマーク  | &lt;ul&gt;&lt;li&gt;`True`または`false`。&lt;/li&gt;&lt;li&gt;メタフィールド&lt;/li&gt;&lt;li&gt;連絡先の`usedCount`を増加させ、タイムスタンプを現在の時間に構成します。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                         |
-| 情報を補完する        | &lt;ul&gt;&lt;li&gt;`True`または`false`。&lt;/li&gt;&lt;li&gt;メタフィールド&lt;/li&gt;&lt;li&gt;Trueの場合、Salesforceアカウントが接続されており、この連絡先のメールアドレスが一致する場合、Salesforceなどの第三者ソースから情報をマージします。&lt;/li&gt;&lt;/ul&gt;                                                                            |
-| メタ          | &lt;ul&gt;&lt;li&gt;Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                |
+| メール         | <ul><li>連絡先のメールアドレス。</li><li>連絡先ごとに一意。</li><li>既存の連絡先と同じメールで新しい連絡先を作成すると、その連絡先とマージされます。</li><li>詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contacts-1)を参照してください。</li></ul> |
+| 名前          | <ul><li>連絡先の名前。</li></ul>                                                                                                                                                                                                                                                                             |
+| 連絡先ID    | <ul><li>このメールアドレスでGoogle連絡先に存在する場合、この連絡先が関連付けられているGoogle ID。</li></ul>                                                                                                                                                                               |
+| Salesforce ID | <ul><li>このメールアドレスでSalesforceに存在する場合（連絡先またはリード）、この連絡先が関連付けられているSalesforce ID。</li></ul>                                                                                                                                                     |
+| 使用済みとしてマーク  | <ul><li>`True`または`false`。</li><li>メタフィールド</li><li>連絡先の`usedCount`を増加させ、タイムスタンプを現在の時間に構成します。</li></ul>                                                                                                                                                                         |
+| 情報を補完する        | <ul><li>`True`または`false`。</li><li>メタフィールド</li><li>Trueの場合、Salesforceアカウントが接続されており、この連絡先のメールアドレスが一致する場合、Salesforceなどの第三者ソースから情報をマージします。</li></ul>                                                                            |
+| メタ          | <ul><li>Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。</li></ul>                                                                                                                                                                                |
 
 ### アクション - 連絡先を更新する
 
@@ -49,12 +49,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                          |
 |:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID            | &lt;ul&gt;&lt;li&gt;更新する連絡先のID。&lt;/li&gt;&lt;li&gt;詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactsid-1)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| メール         | &lt;ul&gt;&lt;li&gt;連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                                                                     |
-| 名前          | &lt;ul&gt;&lt;li&gt;連絡先の名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                  |
-| 連絡先ID    | &lt;ul&gt;&lt;li&gt;このメールアドレスでGoogle連絡先に存在する場合、この連絡先が関連付けられているGoogle ID。&lt;/li&gt;&lt;/ul&gt;                                    |
-| Salesforce ID | &lt;ul&gt;&lt;li&gt;このメールアドレスでSalesforceに存在する場合（連絡先またはリード）、この連絡先が関連付けられているSalesforce ID。&lt;/li&gt;&lt;/ul&gt;          |
-| メタ          | &lt;ul&gt;&lt;li&gt;Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。&lt;/li&gt;&lt;/ul&gt;                                     |
+| ID            | <ul><li>更新する連絡先のID。</li><li>詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactsid-1)を参照してください。</li></ul> |
+| メール         | <ul><li>連絡先のメールアドレス。</li></ul>                                                                                                                     |
+| 名前          | <ul><li>連絡先の名前。</li></ul>                                                                                                                                  |
+| 連絡先ID    | <ul><li>このメールアドレスでGoogle連絡先に存在する場合、この連絡先が関連付けられているGoogle ID。</li></ul>                                    |
+| Salesforce ID | <ul><li>このメールアドレスでSalesforceに存在する場合（連絡先またはリード）、この連絡先が関連付けられているSalesforce ID。</li></ul>          |
+| メタ          | <ul><li>Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。</li></ul>                                     |
 
 ### アクション - 連絡先を削除する
 
@@ -62,7 +62,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                     |
 |:--------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID            | &lt;ul&gt;&lt;li&gt;削除する連絡先のID。&lt;/li&gt;&lt;li&gt;詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactsid-2)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+| ID            | <ul><li>削除する連絡先のID。</li><li>詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactsid-2)を参照してください。</li></ul> |
 
 ### アクション - 連絡先を連絡先グループに追加する
 
@@ -70,11 +70,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 | **パラメータ**    | **説明**                                                                                                                                                                                            |
 |:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 連絡先グループID | &lt;ul&gt;&lt;li&gt;連絡先が追加される連絡先グループのID。&lt;/li&gt;&lt;li&gt;詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactgroupsidcontacts-1)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| メール            | &lt;ul&gt;&lt;li&gt;追加する連絡先のメール。&lt;/li&gt;&lt;li&gt;ユーザーが所有する連絡先にメールを解決します。&lt;/li&gt;&lt;li&gt;`メール`または`連絡先ID`のいずれかを定義する必要があります。&lt;/li&gt;&lt;/ul&gt;                                          |
-| 連絡先ID       | &lt;ul&gt;&lt;li&gt;グループに追加する連絡先のID。&lt;/li&gt;&lt;li&gt;`メール`または`連絡先ID`のいずれかを定義する必要があります。&lt;/li&gt;&lt;/ul&gt;                                                                                       |
-| 名前             | &lt;ul&gt;&lt;li&gt;連絡先の名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                    |
-| メタ             | &lt;ul&gt;&lt;li&gt;Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。&lt;/li&gt;&lt;/ul&gt;                                                                       |
+| 連絡先グループID | <ul><li>連絡先が追加される連絡先グループのID。</li><li>詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactgroupsidcontacts-1)を参照してください。</li></ul> |
+| メール            | <ul><li>追加する連絡先のメール。</li><li>ユーザーが所有する連絡先にメールを解決します。</li><li>`メール`または`連絡先ID`のいずれかを定義する必要があります。</li></ul>                                          |
+| 連絡先ID       | <ul><li>グループに追加する連絡先のID。</li><li>`メール`または`連絡先ID`のいずれかを定義する必要があります。</li></ul>                                                                                       |
+| 名前             | <ul><li>連絡先の名前。</li></ul>                                                                                                                                                                    |
+| メタ             | <ul><li>Salesforceなどの任意のソースからの連絡先変数。これらはシーケンスとテンプレート変数の生成に使用されます。</li></ul>                                                                       |
 
 ### アクション - 連絡先を連絡先グループから削除する
 
@@ -82,5 +82,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/mixmax-connector/
 
 | **パラメータ**    | **説明**                                                                                                                                                                                                       |
 |:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 連絡先グループID | &lt;ul&gt;&lt;li&gt;連絡先が削除される連絡先グループのID。&lt;/li&gt;&lt;li&gt;詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactgroupsidcontactscontactid)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| 連絡先ID       | &lt;ul&gt;&lt;li&gt;グループから削除する連絡先のID。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                     |
+| 連絡先グループID | <ul><li>連絡先が削除される連絡先グループのID。</li><li>詳細については、[Mixmaxのドキュメンテーション](https://developer.mixmax.com/reference#contactgroupsidcontactscontactid)を参照してください。</li></ul> |
+| 連絡先ID       | <ul><li>グループから削除する連絡先のID。</li></ul>                                                                                                                                                     |

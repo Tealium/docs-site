@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/adform-connector/
 
 ## 構成の構成
 
-**Connector Marketplace**に移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview]()の記事を参照してください。
+**Connector Marketplace**に移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

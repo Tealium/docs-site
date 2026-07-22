@@ -15,13 +15,13 @@ Example types of data sources:
 * Server-side apps (Python, Java)
 * HTTP API
 
-To add Tealium to your website or app, you first create a data source to get the code and instructions to complete the installation. Each data source has a name, description, and data source key that uniquely identifies the platform where it&#39;s installed.
+To add Tealium to your website or app, you first create a data source to get the code and instructions to complete the installation. Each data source has a name, description, and data source key that uniquely identifies the platform where it's installed.
 
 ## How it works
 
 Data sources are used to easily identify and keep track of your sites and apps that send data to your account.
 
-Here&#39;s how it works:
+Here's how it works:
 
 1. Choose the platform you want to install on--such as Swift (iOS), Android, or JavaScript for Web--and give it a name such as `mydomain.com` or `MyBrandApp`.
 1. Copy the sample code and data source key from the installation instructions. The data source key uniquely identifies the data source you just created.
@@ -29,16 +29,16 @@ Here&#39;s how it works:
 
 Example data source:
 
-![](/images/tutorials/eventstream-getting-started-data-source-key.png)
+![](https://docs.tealium.com/images/tutorials/eventstream-getting-started-data-source-key.png)
 
 Example installation code:
 
 ```swift
 var tealConfig = TealiumConfig(
-    account: &#34;your_account&#34;,
-    profile: &#34;your_profile&#34;,
-    environment: &#34;prod&#34;,
-    datasource: &#34;abc123&#34;)
+    account: "your_account",
+    profile: "your_profile",
+    environment: "prod",
+    datasource: "abc123")
 
 let tealium = Tealium(config: tealConfig)
 ```

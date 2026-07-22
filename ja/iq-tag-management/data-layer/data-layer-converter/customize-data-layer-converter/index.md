@@ -11,12 +11,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/data-layer-convert
 例のオブジェクト：  
 ```js
 teal.ignore_keys = {
-  &#34;user&#34; : 1,
-  &#34;util&#34; : 1
+  "user" : 1,
+  "util" : 1
 };
 ```
 
-このアクションは、ソースデータオブジェクトからのすべてのキーが、文字列 &#34;user&#34; または &#34;util&#34; で始まる場合にスキップされる結果となります。
+このアクションは、ソースデータオブジェクトからのすべてのキーが、文字列 "user" または "util" で始まる場合にスキップされる結果となります。
 
 ### `teal.prefix`
 
@@ -24,8 +24,8 @@ teal.ignore_keys = {
 
 ```json
 {
-   &#34;dl_user.userInfo.sub_industry&#34; : &#34;data &amp; technical services&#34;,
-   &#34;dl_user.userInfo.web_site&#34;     : &#34;tealium.com&#34;
+   "dl_user.userInfo.sub_industry" : "data & technical services",
+   "dl_user.userInfo.web_site"     : "tealium.com"
 }
 ```
 
@@ -40,7 +40,7 @@ teal.ignore_keys = {
 例：  
 ```js
 teal.replace_keys = {
-    &#34;pageInfo&#34; : &#34;&#34;
+    "pageInfo" : ""
 };
 ```
 

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side-connectors/audiencestore-connector/
 ## Requirements
 
 * AudienceStore must be enabled for your account. Contact your Tealium Account Manager for more information.
-* Your account must have active audiences. For more information, see [Building an Audience]().
+* Your account must have active audiences. For more information, see [Building an Audience](https://docs.tealium.com/manage-audiences/).
 * Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.
 
 ## Connector Actions
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/server-side-connectors/audiencestore-connector/
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

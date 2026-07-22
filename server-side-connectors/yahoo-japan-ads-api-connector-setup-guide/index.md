@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](/server-side/connectors/manage/) article.
+Go to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
@@ -25,7 +25,7 @@ Click **Done** when you are finished configuring the connector.
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 200
 * Max time since oldest request: 360 minutes

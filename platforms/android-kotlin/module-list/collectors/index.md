@@ -11,8 +11,8 @@ To add a Collector module to your app implementation, add a `collectors` paramet
 
 ```kotlin
 val config = TealiumConfig(application,
-                 &#34;ACCOUNT&#34;,
-                 &#34;PROFILE&#34;,
+                 "ACCOUNT",
+                 "PROFILE",
                  Environment.DEV,
                  collectors = mutableSetOf(
                      Collectors.Tealium,
@@ -57,7 +57,7 @@ Gathers information about device network and carrier.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
-| `carrier` | The device&#39;s mobile carrier | `Verizon` |
+| `carrier` | The device's mobile carrier | `Verizon` |
 | `carrier_iso` | Carrier ISO country code| `gb` |
 | `carrier_mcc` | Mobile country code| `ITU-T Recommendation E.212` |
 | `carrier_mnc` | Mobile network code | `34` |
@@ -65,14 +65,14 @@ Gathers information about device network and carrier.
 
 ### Device Collector
 
-Gathers information about your user&#39;s device.
+Gathers information about your user's device.
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
-| `device` | Retail device name (manufacturer&#43;model) | `Google Pixel 8`, `Sony Xperia 1 V` |
+| `device` | Retail device name (manufacturer+model) | `Google Pixel 8`, `Sony Xperia 1 V` |
 | `device_android_runtime` | Android Runtime version | `2.1.0` |
 | `device_architecture` | Bit architecture of the device | `64` |
-| `device_battery_percent` | Integer percent representation of device&#39;s remaining power | `50` |
+| `device_battery_percent` | Integer percent representation of device's remaining power | `50` |
 | `device_cputype` | CPU type | `arm7s` |
 | `device_free_external_storage` | Total available external storage on device | |
 | `device_free_system_storage` | Total available storage on device |`273772544` |
@@ -97,6 +97,6 @@ Gathers timestamps information when a track call occurs.
 | --- | --- | --- |
 | `timestamp` | Timestamp to seconds of event occurrence [ISO 8601 at UTC] | `2013-07-11T19:57:47Z` |
 | `timestamp_local` | Local Timestamp to seconds of event occurrence (ISO 8601 without offset) | `2013-07-11T19:57:47` |
-| `timestamp_offset` | Local timezone offset of device&#39;s location in hours | `-3` |
+| `timestamp_offset` | Local timezone offset of device's location in hours | `-3` |
 | `timestamp_unix` | GMT/UTC Unix timestamp of event occurrence |`1373498679` |
 | `timestamp_unix_milliseconds` | 5.5.1 | GMT/UTC Unix timestamp in milliseconds of event occurrence | `1373498679123` |

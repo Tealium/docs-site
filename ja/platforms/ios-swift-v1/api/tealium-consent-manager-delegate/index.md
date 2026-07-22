@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-consent-mana
 | `userConsentedToTracking()` | 同意状態が `.consented` に変更されたときに呼び出されます |
 | `userOptedOutOfTracking()` | ユーザーが同意を拒否/取り消したときに呼び出されます |
 | `willDropTrackingCall()` | Consent Managerがトラッキングコールをドロップする予定のときに呼び出されます |
-| `willQueueTrackingCall()` | Consent Managerが `&#34;unknown&#34;` 状態にあり、ユーザーが同意を与えるか拒否するまでトラッキングコールがローカルでキューに入れられているときに呼び出されます |
+| `willQueueTrackingCall()` | Consent Managerが `"unknown"` 状態にあり、ユーザーが同意を与えるか拒否するまでトラッキングコールがローカルでキューに入れられているときに呼び出されます |
 | `willSendTrackingCall()` | ユーザーがトラッキングに同意し、トラッキングコールがConsent Managerをブロックせずに通過する予定のときに呼び出されます |
 
 ### `consentStatusChanged()`
@@ -71,7 +71,7 @@ willDropTrackingCall(request)
 
 ### `willQueueTrackingCall()`
 
-Consent Managerが `&#34;unknown&#34;` 状態にあり、ユーザーが同意を与えるか拒否するまでトラッキングコールがローカルでキューに入れられているときに呼び出されます。
+Consent Managerが `"unknown"` 状態にあり、ユーザーが同意を与えるか拒否するまでトラッキングコールがローカルでキューに入れられているときに呼び出されます。
 
 ```swift
 willQueueTrackingCall(request)

@@ -7,11 +7,11 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/usabilla/
 
 * Usabilla app ID and form ID
 * One of these mobile libraries:
-  * [Tealium for Android-Kotlin](/platforms/android-kotlin/) (1.0.0&#43;)
-  * [Tealium for Android-Java](/platforms/android-java/) (5.9.0&#43; for Usabilla 1.0.0&#43; or &lt;5.9.0 for previous versions)
-  * [Tealium for iOS-Swift](/platforms/ios-swift/)
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0+)
+  * [Tealium for Android-Java](https://docs.tealium.com/platforms/android-java/) (5.9.0+ for Usabilla 1.0.0+ or <5.9.0 for previous versions)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
 * One of these remote command integrations:
-  * [Usabilla Remote Command JSON File](/platforms/remote-commands/integrations/usabilla/#json-template) (Requires Android-Kotlin 1.0.0&#43; or iOS-Swift 2.1.0&#43;)
+  * [Usabilla Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/usabilla/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)
   * Usabilla Remote Command tag in Tealium iQ Tag Management
 
 ## How It Works
@@ -24,7 +24,7 @@ The Usabilla integration uses three items:
 
 Adding the Usabilla remote command module to your app automatically installs and builds the required Usabilla libraries. If you are using a dependency manager installation, there is no need to install the Usabilla SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 
@@ -33,7 +33,7 @@ There are two remote command options: A JSON configuration file, or using iQ Tag
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**.
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**.
 2. Enter the repository URL: `https://github.com/tealium/tealium-ios-usabilla-remote-command`.
 3. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumUsabilla` version does not appear in the list, then reset your Swift package cache.
 4. Select the `TealiumUsabilla` module to install, and select the app target you want the module to be installed in.
@@ -44,25 +44,25 @@ To install `TealiumUsabilla` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 2. In your Xcode project, select the app target under the **TARGETS** section.
-3. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and  select the `TealiumUsabilla` module to add it to your app target.
+3. Navigate to **General > Frameworks, Libraries & Embedded Content** and  select the `TealiumUsabilla` module to add it to your app target.
 
-To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
-
-
+To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
 
 
-1. Remove `tealium-swift` and `pod &#34;Usabilla&#34;` if they already exist your Podfile. The dependency for `tealium-swift` is already included in the `TealiumUsabilla` framework.
+
+
+1. Remove `tealium-swift` and `pod "Usabilla"` if they already exist your Podfile. The dependency for `tealium-swift` is already included in the `TealiumUsabilla` framework.
 
 2. Add the following dependency to your Podfile:  
       ```ruby
-      pod &#34;TealiumUsabilla&#34;
+      pod "TealiumUsabilla"
       ```  
       The `TealiumUsabilla` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#39;tealium-swift/Core&#39;
-      &#39;tealium-swift/TealiumDelegate&#39;
-      &#39;tealium-swift/RemoteCommands&#39;
-      &#39;tealium-swift/TagManagement&#39;
+      'tealium-swift/Core'
+      'tealium-swift/TealiumDelegate'
+      'tealium-swift/RemoteCommands'
+      'tealium-swift/TagManagement'
       ```
 
 3. Import the modules `TealiumSwift` and `TealiumUsabilla` in your `TealiumHelper` file, and any other files that access the `Tealium` class or the Usabilla remote command.
@@ -75,37 +75,41 @@ To add additional modules from the Tealium Swift library, follow the [Swift Pack
 
 2. Remove the following line if it exists in your Cartfile:  
       ```bash
-      github &#34;usabilla/usabilla-u4a-ios-swift-sdk&#34;
+      github "usabilla/usabilla-u4a-ios-swift-sdk"
       ```
 
 3. Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-usabilla-remote-command&#34;
+      github "tealium/tealium-ios-usabilla-remote-command"
       ```
 
-Tealium for Swift SDK (version 1.6.5&#43;) requires the `TealiumDelegate` module to be included with your installation.
+
+<blockquote>
+Tealium for Swift SDK (version 1.6.5+) requires the `TealiumDelegate` module to be included with your installation.
+</blockquote>
 
 
 
 
 
-1. Install [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+
+1. Install [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
 
       ```groovy
       allprojects {
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import the Tealium-Usabilla remote commands by adding the following dependency in your app project&#39;s `build.gradle` file:  
+2. Import the Tealium-Usabilla remote commands by adding the following dependency in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium.remotecommands:usabilla:1.0.0&#39;
+            implementation 'com.tealium.remotecommands:usabilla:1.0.0'
       }
       ```
 
@@ -116,18 +120,18 @@ Tealium for Swift SDK (version 1.6.5&#43;) requires the `TealiumDelegate` module
 
 
 
-The manual installation for Usabilla remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the Usabilla remote commands for your iOS project:
+The manual installation for Usabilla remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the Usabilla remote commands for your iOS project:
 
-1. Install the [Usabilla SDK](https://github.com/usabilla/usabilla-u4a-ios-swift-sdk), if you haven&#39;t already done so.
+1. Install the [Usabilla SDK](https://github.com/usabilla/usabilla-u4a-ios-swift-sdk), if you haven't already done so.
 
 2. Clone the [Tealium iOS Usabilla remote command](https://github.com/tealium/tealium-ios-usabilla-remote-command) repo and drag the files within the `Sources` folder into your project.
 
-3. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true.`
+3. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true.`
 
 
 
 
-The manual installation for Usabilla remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed.
+The manual installation for Usabilla remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed.
 
 To install the Branch remote commands for your Android project:
 
@@ -138,19 +142,19 @@ To install the Branch remote commands for your Android project:
             repositories {
               mavenCentral()
               flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
               }
             }
       }
       ```
 
-2. Add `tealium-usabilla.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-usabilla.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:
 
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-usabilla&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-usabilla', ext:'aar')
       }
       ```
 
@@ -164,14 +168,14 @@ For all Tealium libraries, you need to register the Usabilla remote command when
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s iOS (Swift) library:    
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's iOS (Swift) library:    
 ```swift
 
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                           profile: &#34;PROFILE&#34;,
-                           environment: &#34;ENVIRONMENT&#34;,
-                           dataSource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                           profile: "PROFILE",
+                           environment: "ENVIRONMENT",
+                           dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 config.remoteAPIEnabled = true // Required to use Remote Commands
 
@@ -184,10 +188,10 @@ tealium = Tealium(config: config) { _ in
     let usabilla = UsabillaRemoteCommand() 
 
     // Local JSON
-    //let usabilla = UsabillaRemoteCommand(type: .local(file: &#34;usabilla&#34;))
+    //let usabilla = UsabillaRemoteCommand(type: .local(file: "usabilla"))
 
     // Remote JSON
-    //let usabilla = UsabillaRemoteCommand(type: .remote(url: &#34;https://some.domain.com/usabilla.json&#34;))
+    //let usabilla = UsabillaRemoteCommand(type: .remote(url: "https://some.domain.com/usabilla.json"))
     remoteCommands.add(usabilla)
 }
 
@@ -195,11 +199,11 @@ tealium = Tealium(config: config) { _ in
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Android (Kotlin) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Android (Kotlin) library:
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 val usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
@@ -210,10 +214,10 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(usabilla);
 
     // Local JSON
-    //remoteCommands?.add(usabilla, filename = &#34;usabilla.json&#34;);
+    //remoteCommands?.add(usabilla, filename = "usabilla.json");
 
     // Remote JSON
-    //remoteCommands?.add(usabilla, remoteUrl = &#34;https://some.domain.com/usabilla.json&#34;);
+    //remoteCommands?.add(usabilla, remoteUrl = "https://some.domain.com/usabilla.json");
 }
 ```
 
@@ -224,7 +228,7 @@ Overrides the `HttpClient` object, which gives the possibility to inject a custo
 - `usabillaReadyCallback = null`  
 Overrides the `UsabillaReadyCallback` object, which is a callback used to communicate when the initialization process ends.
 - `autoFragmentManager = false`  
-Disables [passive feedback](https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback) (enabled by default). Passive feedback requires Android&#39;s `FragmentManager` to be kept up-to-date and monitored using `android.app.Application.ActivityLifecycleCallbacks`.
+Disables [passive feedback](https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback) (enabled by default). Passive feedback requires Android's `FragmentManager` to be kept up-to-date and monitored using `android.app.Application.ActivityLifecycleCallbacks`.
 - `autoFeedbackHandler = false`  
 Disables handling of event tracking for passive and [campaign](https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns) feedback forms as well as auto-removing forms that have been submitted or dismissed (enabled by default). Two `android.content.BroadcastReceiver`s are registered to listen for Usabilla events that handle both passive and campaign [feedback form closures](https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback).
 
@@ -240,9 +244,9 @@ val usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config,
 
 
 
-The JSON Remote Command file feature for Android is only available in the Kotlin SDK. Initialize the Remote Command tag for Tealium&#39;s Android (Java) library:     
+The JSON Remote Command file feature for Android is only available in the Kotlin SDK. Initialize the Remote Command tag for Tealium's Android (Java) library:     
 ```java
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 RemoteCommand usabilla = new UsabillaRemoteCommand(TEALIUM_MAIN, config);
@@ -256,7 +260,7 @@ Overrides the `HttpClient` object, which gives the possibility to inject a custo
 - `usabillaReadyCallback = null`  
 Overrides the `UsabillaReadyCallback` object, which is a callback used to communicate when the initialization process ends.
 - `autoFragmentManager = false`  
-Disables [passive feedback](https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback) (enabled by default). Passive feedback requires Android&#39;s `FragmentManager` to be kept up-to-date and monitored using `android.app.Application.ActivityLifecycleCallbacks`.
+Disables [passive feedback](https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback) (enabled by default). Passive feedback requires Android's `FragmentManager` to be kept up-to-date and monitored using `android.app.Application.ActivityLifecycleCallbacks`.
 - `autoFeedbackHandler = false`  
 Disables handling of event tracking for passive and [campaign](https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns) feedback forms as well as auto-removing forms that have been submitted or dismissed (enabled by default). Two `android.content.BroadcastReceiver`s are registered to listen for Usabilla events that handle both passive and campaign [feedback form closures](https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback).
 
@@ -274,30 +278,30 @@ RemoteCommand usabilla = new UsabillaRemoteCommand(TEALIUM_MAIN, config,
 
 ## JSON Template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-  &#34;config&#34;: {
-    &#34;appId&#34;: &#34;YOUR_APP_ID&#34;,
-    &#34;debugEnabled&#34;: true
+  "config": {
+    "appId": "YOUR_APP_ID",
+    "debugEnabled": true
   },
-  &#34;mappings&#34;: {
-      &#34;event_name&#34;: &#34;event&#34;,
-      &#34;display_campaigns&#34;: &#34;canDisplayCampaigns&#34;,
-      &#34;dismiss_automatically&#34;: &#34;dismissAutomatically&#34;,
-      &#34;form_id&#34;: &#34;formId&#34;,
-      &#34;form_ids&#34;: &#34;formIds&#34;,
-      &#34;customer_first_name&#34;: &#34;custom.customer_first_name&#34;
+  "mappings": {
+      "event_name": "event",
+      "display_campaigns": "canDisplayCampaigns",
+      "dismiss_automatically": "dismissAutomatically",
+      "form_id": "formId",
+      "form_ids": "formIds",
+      "customer_first_name": "custom.customer_first_name"
 },
-  &#34;commands&#34;: {
-    &#34;launch&#34;: &#34;initialize&#34;,
-    &#34;display_campaigns&#34;: &#34;candisplaycampaigns&#34;,
-    &#34;dismiss&#34;: &#34;dismissautomatically&#34;,
-    &#34;button_click&#34;: &#34;sendevent&#34;,
-    &#34;load_form&#34;: &#34;loadfeedbackform&#34;,
-    &#34;set_variables&#34;: &#34;setcustomvariable&#34;,
-    &#34;reset&#34;: &#34;resetcampaigndata&#34;
+  "commands": {
+    "launch": "initialize",
+    "display_campaigns": "candisplaycampaigns",
+    "dismiss": "dismissautomatically",
+    "button_click": "sendevent",
+    "load_form": "loadfeedbackform",
+    "set_variables": "setcustomvariable",
+    "reset": "resetcampaigndata"
   }
 }
 ```
@@ -323,7 +327,11 @@ We map a command to each Usabilla method or property. To trigger a Usabilla meth
 | `setcustomvariable`    | `customVariables`        |
 | `resetcampaigndata`    | `resetCampaignData()`    |
 
+
+<blockquote>
 Since the Usabilla SDK is integrated with the Tealium SDK, you may trigger any native Usabilla functionality given the corresponding tag configuration.
+</blockquote>
+
 
 ### SDK Setup
 
@@ -369,7 +377,11 @@ Usabilla Developer Guide: Campaign Toggling
 
 - [iOS](https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#campaign-toggling)
 
+
+<blockquote>
 Campaign toggling is not available for Android
+</blockquote>
+
 
 ### Targeting Options
 

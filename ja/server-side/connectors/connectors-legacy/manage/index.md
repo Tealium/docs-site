@@ -3,25 +3,29 @@ title: コネクターの管理（レガシー）
 description: この記事では、コネクターの管理方法について説明します。
 url: https://docs.tealium.com/ja/server-side/connectors/connectors-legacy/manage/
 ---
-これはコネクターインターフェースのレガシーバージョンであり、間もなく非推奨となります。新しいインターフェースについては、を参照してください。
+
+<blockquote>
+これはコネクターインターフェースのレガシーバージョンであり、間もなく非推奨となります。新しいインターフェースについては、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
+</blockquote>
+
 
 ## コネクターまたはアクションのオン/オフ
 
 **オン/オフ** トグルを使用して、コネクターまたはアクションをオンまたはオフにします。コネクターをオフにすると、そのコネクターに関連するすべてのアクションもオフになります。
 
-![](/images/server-side/toggle-on-off-connector-workflow.png)
+![](https://docs.tealium.com/images/server-side/toggle-on-off-connector-workflow.png)
 
 ## コネクターの複製
 
 コネクターと関連するアクションを複製するには、次の手順に従います：
 
 1. コネクターに移動し、メニューを展開して **複製** をクリックします。  
-      ![](/images/server-side/connectorduplicateoptions.png)  
-      新しい、同一のコネクターがコネクターのリストに表示され、関連するアクションも含まれます。コネクター名には &#39; - copy&#39; が追加されます。  
-      ![](/images/server-side/connectorduplicatecopy.png)
+      ![](https://docs.tealium.com/images/server-side/connectorduplicateoptions.png)  
+      新しい、同一のコネクターがコネクターのリストに表示され、関連するアクションも含まれます。コネクター名には ' - copy' が追加されます。  
+      ![](https://docs.tealium.com/images/server-side/connectorduplicatecopy.png)
 1. （推奨）もう一度メニューを展開し、**編集**をクリックします。
 1. コネクターの名前を変更し、**完了**をクリックします。
-1. （オプション）新しいコネクターに関連するアクションを追加または編集するには、**&#43; アクションを追加**をクリックします。
+1. （オプション）新しいコネクターに関連するアクションを追加または編集するには、**+ アクションを追加**をクリックします。
 1. 通常の手順に従ってアクションを追加し、**完了**をクリックします。
 1. 変更を保存して公開します。
 
@@ -45,7 +49,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/connectors-legacy/manage
 
 1. **コネクター**に移動します。
 1. コネクターのメニューを展開し、**コネクターIDを取得**をクリックします。  
-![](/images/server-side/connectormenu.png)
+![](https://docs.tealium.com/images/server-side/connectormenu.png)
 
 ## アクションIDのコピー
 
@@ -54,4 +58,4 @@ url: https://docs.tealium.com/ja/server-side/connectors/connectors-legacy/manage
 1. **コネクター**に移動します。
 1. アクションを選択し、**詳細**をクリックします。
 1. **アクションID**のコピー アイコンをクリックします。  
-![](/images/server-side/actioniddetails.png)
+![](https://docs.tealium.com/images/server-side/actioniddetails.png)

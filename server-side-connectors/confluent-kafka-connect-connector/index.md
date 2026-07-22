@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -45,7 +45,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
@@ -69,7 +69,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 #### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
@@ -90,8 +90,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Template Variables | Provide template variables as data input for templates.&lt;br&gt;For more information and usage examples, see [Template Variables Guide](/server-side/connectors/webhook-connectors/template-variables/).&lt;br&gt;Name nested template variables with the dot notation. For example: `items.name.`&lt;br&gt;Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](/server-side/connectors/webhook-connectors/trimou-templating-engine/).&lt;br&gt;Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
+| Template Variables | Provide template variables as data input for templates.<br>For more information and usage examples, see [Template Variables Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/template-variables/).<br>Name nested template variables with the dot notation. For example: `items.name.`<br>Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/trimou-templating-engine/).<br>Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `60` minutes. |
 | Enable Streaming Mode | Enable this option to use the Confluent streaming API when sending records, which can improve efficiency for high-volume traffic but does not change when events are sent to Confluent. |
 
@@ -99,7 +99,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 #### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
@@ -124,7 +124,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 #### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
@@ -145,8 +145,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Template Variables | Provide template variables as data input for templates.&lt;br&gt;For more information and usage examples, see [Template Variables Guide](/server-side/connectors/webhook-connectors/template-variables/).&lt;br&gt;Name nested template variables with the dot notation. For example: `items.name.`&lt;br&gt;Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](/server-side/connectors/webhook-connectors/trimou-templating-engine/).&lt;br&gt;Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
+| Template Variables | Provide template variables as data input for templates.<br>For more information and usage examples, see [Template Variables Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/template-variables/).<br>Name nested template variables with the dot notation. For example: `items.name.`<br>Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/trimou-templating-engine/).<br>Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `60` minutes. |
 
 ### Send Log Event
@@ -166,8 +166,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Template Variables | Provide template variables as data input for templates.&lt;br&gt;For more information and usage examples, see [Template Variables Guide](/server-side/connectors/webhook-connectors/template-variables/).&lt;br&gt;Name nested template variables with the dot notation. For example: `items.name.`&lt;br&gt;Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](/server-side/connectors/webhook-connectors/trimou-templating-engine/).&lt;br&gt;Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
+| Template Variables | Provide template variables as data input for templates.<br>For more information and usage examples, see [Template Variables Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/template-variables/).<br>Name nested template variables with the dot notation. For example: `items.name.`<br>Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in message data. For more information, see [Templates Guide](https://docs.tealium.com/server-side/connectors/webhook-connectors/trimou-templating-engine/).<br>Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`. |
 
 ### Send Entire Log Event
 

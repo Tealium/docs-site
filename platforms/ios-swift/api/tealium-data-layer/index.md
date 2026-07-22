@@ -18,7 +18,7 @@ The following summarizes the commonly used methods and properties of the iOS (Sw
 
 ### `add()`
 
-Adds data to the data layer, based on [expiration type](/platforms/ios-swift/data-layer/#data-expiration).  If the `expiry` parameter is not provided, the expiration type defaults to` .session`.
+Adds data to the data layer, based on [expiration type](https://docs.tealium.com/platforms/ios-swift/data-layer/#data-expiration).  If the `expiry` parameter is not provided, the expiration type defaults to` .session`.
 
 ```swift
 tealium?.dataLayer.add(key, value, expiry)
@@ -92,9 +92,9 @@ tealium?.dataLayer.deleteAll()
 Returns all event data stored in persistent storage.
 
 ```swift
-let data: Set&lt;DataLayerItem&gt; = tealium?.dataLayer.persistentDataStorage
+let data: Set<DataLayerItem> = tealium?.dataLayer.persistentDataStorage
 ```
 
 | Return Type | Description                       |
 |-------------|-----------------------------------|
-| `Set&lt;DataLayerItem&gt;`  | All event data stored in persistent storage |
+| `Set<DataLayerItem>`  | All event data stored in persistent storage |

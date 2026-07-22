@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/retently-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -31,11 +31,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/retently-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Email|  &lt;ul&gt;&lt;li&gt;顧客のメールアドレス。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://www.retently.com/api/#api-create-or-update-customers-post&gt;&lt;/li&gt;&lt;/ul&gt; |
-|First Name|  &lt;ul&gt;&lt;li&gt;顧客の名前。&lt;/li&gt;&lt;/ul&gt; |
-|Last Name|  &lt;ul&gt;&lt;li&gt;顧客の姓。&lt;/li&gt;&lt;/ul&gt; |
-|Company|  &lt;ul&gt;&lt;li&gt;顧客に割り当てられた会社名。&lt;/li&gt;&lt;/ul&gt; |
-|Tag|  &lt;ul&gt;&lt;li&gt;顧客に割り当てるタグ。&lt;/li&gt;&lt;/ul&gt; |
+|Email|  <ul><li>顧客のメールアドレス。</li><li>詳細については、次を参照してください：<https://www.retently.com/api/#api-create-or-update-customers-post></li></ul> |
+|First Name|  <ul><li>顧客の名前。</li></ul> |
+|Last Name|  <ul><li>顧客の姓。</li></ul> |
+|Company|  <ul><li>顧客に割り当てられた会社名。</li></ul> |
+|Tag|  <ul><li>顧客に割り当てるタグ。</li></ul> |
 
 ### アクション - 調査の送信
 
@@ -43,12 +43,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/retently-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Campaign|  &lt;ul&gt;&lt;li&gt;キャンペーン識別子。トランザクション型のキャンペーンでなければなりません。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://www.retently.com/api/#api-send-survey-post&gt;&lt;/li&gt;&lt;/ul&gt; |
-|Email|  &lt;ul&gt;&lt;li&gt;顧客のメールアドレス。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://www.retently.com/api/#api-create-or-update-customers-post&gt;&lt;/li&gt;&lt;/ul&gt; |
-|First Name|  &lt;ul&gt;&lt;li&gt;顧客の名前。&lt;/li&gt;&lt;/ul&gt; |
-|Last Name|  &lt;ul&gt;&lt;li&gt;顧客の姓。&lt;/li&gt;&lt;/ul&gt; |
-|Company|  &lt;ul&gt;&lt;li&gt;顧客に割り当てられた会社名。&lt;/li&gt;&lt;/ul&gt; |
-|Tag|  &lt;ul&gt;&lt;li&gt;顧客に割り当てるタグ。&lt;/li&gt;&lt;/ul&gt; |
+|Campaign|  <ul><li>キャンペーン識別子。トランザクション型のキャンペーンでなければなりません。</li><li>詳細については、次を参照してください：<https://www.retently.com/api/#api-send-survey-post></li></ul> |
+|Email|  <ul><li>顧客のメールアドレス。</li><li>詳細については、次を参照してください：<https://www.retently.com/api/#api-create-or-update-customers-post></li></ul> |
+|First Name|  <ul><li>顧客の名前。</li></ul> |
+|Last Name|  <ul><li>顧客の姓。</li></ul> |
+|Company|  <ul><li>顧客に割り当てられた会社名。</li></ul> |
+|Tag|  <ul><li>顧客に割り当てるタグ。</li></ul> |
 
 ### アクション - 顧客の退会
 
@@ -56,8 +56,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/retently-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Email|  &lt;ul&gt;&lt;li&gt;退会するメールアドレス。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://www.retently.com/api/#api-unsubscribe-customers-post&gt;&lt;/li&gt;&lt;/ul&gt; |
-|Message|  &lt;ul&gt;&lt;li&gt;オプトアウトメッセージ。&lt;/li&gt;&lt;/ul&gt; |
+|Email|  <ul><li>退会するメールアドレス。</li><li>詳細については、次を参照してください：<https://www.retently.com/api/#api-unsubscribe-customers-post></li></ul> |
+|Message|  <ul><li>オプトアウトメッセージ。</li></ul> |
 
 ### アクション - 顧客の削除
 
@@ -65,4 +65,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/retently-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Email|  &lt;ul&gt;&lt;li&gt;削除する顧客のメールアドレス。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://www.retently.com/api/#api-delete-customers-delete&gt;&lt;/li&gt;&lt;/ul&gt; |
+|Email|  <ul><li>削除する顧客のメールアドレス。</li><li>詳細については、次を参照してください：<https://www.retently.com/api/#api-delete-customers-delete></li></ul> |

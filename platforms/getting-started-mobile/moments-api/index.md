@@ -7,8 +7,8 @@ The Moments API provides a unique endpoint that can be integrated into your mobi
 
 ## Supported Platforms
 
-- [Tealium for Android](/platforms/android-kotlin/module-list/moments-api/)
-- [Tealium for iOS](/platforms/ios-swift/module-list/moments-api/)
+- [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/module-list/moments-api/)
+- [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/module-list/moments-api/)
 
 ## Prerequisites
 
@@ -41,9 +41,9 @@ Pass specific attributes from the visitor profile to other SDKs present in your 
 import TealiumCore
 import TealiumMomentsAPI
 
-let config = TealiumConfig(account: &#34;your_account&#34;,
-                           profile: &#34;your_profile&#34;,
-                           environment: &#34;dev&#34;,
+let config = TealiumConfig(account: "your_account",
+                           profile: "your_profile",
+                           environment: "dev",
                            modules: [Collectors.MomentsAPI])
 
 let tealium = Tealium(config: config)
@@ -59,12 +59,12 @@ import com.tealium.core.Environment
 import com.tealium.core.modules
 
 val config = TealiumConfig(application, 
-                           &#34;your_account&#34;,
-                           &#34;your_profile&#34;,
+                           "your_account",
+                           "your_profile",
                            Environment.DEV, 
                            modules = mutableSetOf(Modules.MomentsApi))
 
-val tealium = Tealium.create(&#34;your_instance_name&#34;, config)
+val tealium = Tealium.create("your_instance_name", config)
 ```
 
 
@@ -91,20 +91,24 @@ config.momentsApiRegion = MomentsApiRegion.UsEast // Example region
 
 
 
- The `Custom` option is for future use and should not be used without explicit instructions from your Tealium Account Manager. 
+
+<blockquote>
+The `Custom` option is for future use and should not be used without explicit instructions from your Tealium Account Manager.
+</blockquote>
+
 
 
 
 
 ```swift
-config.momentsAPIRegion = .custom(&#34;custom_region_placeholder&#34;)
+config.momentsAPIRegion = .custom("custom_region_placeholder")
 ```
 
 
 
 
 ```kotlin
-config.momentsApiRegion = MomentsApiRegion.Custom(&#34;custom_region_placeholder&#34;)
+config.momentsApiRegion = MomentsApiRegion.Custom("custom_region_placeholder")
 ```
 
 
@@ -126,20 +130,20 @@ The following table shows the available regions:
 
 ### Step 3: Set the Referrer for Added Security
 
-The referrer option can be used for added security. It must match the &#34;Domain Allow List&#34; in the Tealium UI.
+The referrer option can be used for added security. It must match the "Domain Allow List" in the Tealium UI.
 
 
 
 
 ```swift
-config.momentsAPIReferrer = &#34;https://your.custom.referrer.url&#34;
+config.momentsAPIReferrer = "https://your.custom.referrer.url"
 ```
 
 
 
 
 ```kotlin
-config.momentsApiReferrer = &#34;https://your.custom.referrer.url&#34;
+config.momentsApiReferrer = "https://your.custom.referrer.url"
 ```
 
 
@@ -149,7 +153,11 @@ config.momentsApiReferrer = &#34;https://your.custom.referrer.url&#34;
 
 Implement a function to fetch the Moments API engine response. Call this method any time you need to retrieve the latest information about the app user.
 
+
+<blockquote>
 The Tealium Visitor ID of the current app user is automatically sent as part of the Moments API request.
+</blockquote>
+
 
 
 
@@ -157,20 +165,20 @@ The Tealium Visitor ID of the current app user is automatically sent as part of 
 ```swift
 import TealiumMomentsAPI
 
-func fetchMoments(engineId: String, completion: @escaping (Result&lt;EngineResponse, Error&gt;) -&gt; Void) {
+func fetchMoments(engineId: String, completion: @escaping (Result<EngineResponse, Error>) -> Void) {
     tealium?.momentsAPI?.fetchEngineResponse(
         engineID: engineId,
         completion: { engineResponse in
             switch engineResponse {
             case .success(let response):
-                print(&#34;String attributes: \(response.strings ?? [])&#34;)
-                print(&#34;Boolean attributes: \(response.booleans ?? [])&#34;)
-                print(&#34;Audiences: \(response.audiences ?? [])&#34;)
-                print(&#34;Date attributes: \(response.dates ?? [:])&#34;)
-                print(&#34;Badges: \(response.badges ?? [])&#34;)
-                print(&#34;Numbers: \(response.numbers ?? [:])&#34;)
+                print("String attributes: \(response.strings ?? [])")
+                print("Boolean attributes: \(response.booleans ?? [])")
+                print("Audiences: \(response.audiences ?? [])")
+                print("Date attributes: \(response.dates ?? [:])")
+                print("Badges: \(response.badges ?? [])")
+                print("Numbers: \(response.numbers ?? [:])")
             case .failure(let error):
-                print(&#34;Error fetching moments: \(error.localizedDescription)&#34;)
+                print("Error fetching moments: \(error.localizedDescription)")
             }
             completion(engineResponse)
         }
@@ -188,22 +196,22 @@ import com.tealium.momentsapi.ErrorCode
 import com.tealium.momentsapi.ResponseListener
 import com.tealium.core.Tealium
 
-fun fetchMoments(engineId: String, responseListener: ResponseListener&lt;EngineResponse&gt;) {
-    val tealiumInstance = Tealium[&#34;your_instance_name&#34;]
-    tealiumInstance?.momentsApi?.fetchEngineResponse(engineId, object : ResponseListener&lt;EngineResponse&gt; {
+fun fetchMoments(engineId: String, responseListener: ResponseListener<EngineResponse>) {
+    val tealiumInstance = Tealium["your_instance_name"]
+    tealiumInstance?.momentsApi?.fetchEngineResponse(engineId, object : ResponseListener<EngineResponse> {
         override fun success(data: EngineResponse) {
-            Log.d(&#34;MomentsAPI&#34;, &#34;String attributes: ${data.strings}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Boolean attributes: ${data.booleans}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Audiences: ${data.audiences}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Date attributes: ${data.dates}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Badges: ${data.badges}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Numbers: ${data.numbers}&#34;)
+            Log.d("MomentsAPI", "String attributes: ${data.strings}")
+            Log.d("MomentsAPI", "Boolean attributes: ${data.booleans}")
+            Log.d("MomentsAPI", "Audiences: ${data.audiences}")
+            Log.d("MomentsAPI", "Date attributes: ${data.dates}")
+            Log.d("MomentsAPI", "Badges: ${data.badges}")
+            Log.d("MomentsAPI", "Numbers: ${data.numbers}")
 
             responseListener.success(data)
         }
 
         override fun failure(errorCode: ErrorCode, message: String) {
-            Log.e(&#34;MomentsAPI&#34;, &#34;Error fetching moments: $errorCode - $message&#34;)
+            Log.e("MomentsAPI", "Error fetching moments: $errorCode - $message")
             responseListener.failure(errorCode, message)
         }
     })

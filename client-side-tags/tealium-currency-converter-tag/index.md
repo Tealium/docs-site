@@ -8,7 +8,7 @@ url: https://docs.tealium.com/client-side-tags/tealium-currency-converter-tag/
 There are two components related to implementing currency conversion:
 
 * Tealium Currency Converter Tag
-* Currency Converter Extension ([Learn more]())
+* Currency Converter Extension ([Learn more](https://docs.tealium.com/currency-converter-extension/))
 
 ## Tealium Currency Converter Tag
 
@@ -18,19 +18,23 @@ The currency exchange rates are stored in this file:
 
 `https://tags.tiqcdn.com/utag/tiqapp/utag.currency.js`
 
+
+<blockquote>
 This is a blocking tag so, while it is still loaded asynchronously, it will prevent other Tealium tags from loading until it is loaded.
+</blockquote>
+
 
 ## Currency Converter Extension
 
-This extension makes it easy to configure the currency conversion to store a converted value in a data layer variable. Learn more about the [Currency Converter extension]().
+This extension makes it easy to configure the currency conversion to store a converted value in a data layer variable. Learn more about the [Currency Converter extension](https://docs.tealium.com/currency-converter-extension/).
 
 ## Add the Tag
 
 Use the following steps to add the Tealium Currency Converter tag:
 
-1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 1. Using the Tag wizard, give the Tag a specific title, enter any notes, and proceed to the load rules tab.
-1. Select any load rules you want to apply, then click **Finish**.![](/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
+1. Select any load rules you want to apply, then click **Finish**.![](https://docs.tealium.com/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
 
 ## Currency Convert Function
 
@@ -47,5 +51,5 @@ When the Currency Converter tag is loaded on the page, the following utility fun
 Example:
 
 ```
-var order_total_uk = tealiumiq_currency.convert(100, &#34;USD&#34;, &#34;GBP&#34;);
+var order_total_uk = tealiumiq_currency.convert(100, "USD", "GBP");
 ```

@@ -11,7 +11,7 @@ In the rare case where the payload size for 500 events is too large, the Tealium
 
 To use the **Repeat Action** loop:
 
-1. Click **&#43;** to see a list of actions.
+1. Click **+** to see a list of actions.
 1. Select **Repeat action**.
 1. Set the loop repeat mode to **Batch of items**.
 1. Set the **Batch size** to less than 500, but to as large as possible without getting the 413 error code. You need to determine this size by experimentation.

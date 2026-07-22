@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/new-relic-mobile-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -38,25 +38,25 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Mobile Application|  &lt;ul&gt;&lt;li&gt;Browser Application to provide metrics on. &lt;/li&gt;&lt;li&gt;Provide a custom name if the application is not yet in New Relic Insights, or it will not be created.&lt;/li&gt;&lt;li&gt;This will not create the application in the New Relic system, but will provide the ability to query the application in New Relic Insights.&lt;/li&gt;&lt;/ul&gt; |
-|Event Category|  &lt;ul&gt;&lt;li&gt;Event Category&lt;/li&gt;&lt;/ul&gt; |
-|Event Type|  &lt;ul&gt;&lt;li&gt;(Optional) The type of event this data will be saved under.&lt;/li&gt;&lt;li&gt;The default value is **Mobile Event**&lt;/li&gt;&lt;/ul&gt; |
-|Application Build Number|  &lt;ul&gt;&lt;li&gt;Application Build Number&lt;/li&gt;&lt;/ul&gt; |
-|New Relic Agent Version Number|  &lt;ul&gt;&lt;li&gt;New Relic Agent Version Number&lt;/li&gt;&lt;/ul&gt; |
-|City App is Located|  &lt;ul&gt;&lt;li&gt;City App is Located&lt;/li&gt;&lt;/ul&gt; |
-|Country App is Located|  &lt;ul&gt;&lt;li&gt;Country App is Located&lt;/li&gt;&lt;/ul&gt; |
-|Region App is Located|  &lt;ul&gt;&lt;li&gt;Region App is Located&lt;/li&gt;&lt;/ul&gt; |
-|Device Category|  &lt;ul&gt;&lt;li&gt;Device Category&lt;/li&gt;&lt;/ul&gt; |
-|Device Manufacturer|  &lt;ul&gt;&lt;li&gt;Device Manufacturer&lt;/li&gt;&lt;/ul&gt; |
-|Device Model Number|  &lt;ul&gt;&lt;li&gt;Device Model Number&lt;/li&gt;&lt;/ul&gt; |
-|Interaction Duration|  &lt;ul&gt;&lt;li&gt;Interaction Duration&lt;/li&gt;&lt;/ul&gt; |
-|Fresh App Install|  &lt;ul&gt;&lt;li&gt;Fresh App Install&lt;/li&gt;&lt;/ul&gt; |
-|Last Application Interaction|  &lt;ul&gt;&lt;li&gt;Last Application Interaction&lt;/li&gt;&lt;/ul&gt; |
-|Application Memory Usage|  &lt;ul&gt;&lt;li&gt;Application Memory Usage&lt;/li&gt;&lt;/ul&gt; |
-|User Session Duration|  &lt;ul&gt;&lt;li&gt;User Session Duration&lt;/li&gt;&lt;/ul&gt; |
-|User Session ID|  &lt;ul&gt;&lt;li&gt;User Session ID&lt;/li&gt;&lt;/ul&gt; |
-|Time Since Last Interaction|  &lt;ul&gt;&lt;li&gt;Time Since Last Interaction&lt;/li&gt;&lt;/ul&gt; |
-|Time Since Load|  &lt;ul&gt;&lt;li&gt;Time Since Load&lt;/li&gt;&lt;/ul&gt; |
-|Upgrade from Version|  &lt;ul&gt;&lt;li&gt;Upgrade from Version&lt;/li&gt;&lt;/ul&gt; |
-|New Relic Agent Version Number|  &lt;ul&gt;&lt;li&gt;New Relic Agent Version Number&lt;/li&gt;&lt;/ul&gt; |
-|Name of Interaction|  &lt;ul&gt;&lt;li&gt;Name of Interaction&lt;/li&gt;&lt;/ul&gt; |
+|Mobile Application|  <ul><li>Browser Application to provide metrics on. </li><li>Provide a custom name if the application is not yet in New Relic Insights, or it will not be created.</li><li>This will not create the application in the New Relic system, but will provide the ability to query the application in New Relic Insights.</li></ul> |
+|Event Category|  <ul><li>Event Category</li></ul> |
+|Event Type|  <ul><li>(Optional) The type of event this data will be saved under.</li><li>The default value is **Mobile Event**</li></ul> |
+|Application Build Number|  <ul><li>Application Build Number</li></ul> |
+|New Relic Agent Version Number|  <ul><li>New Relic Agent Version Number</li></ul> |
+|City App is Located|  <ul><li>City App is Located</li></ul> |
+|Country App is Located|  <ul><li>Country App is Located</li></ul> |
+|Region App is Located|  <ul><li>Region App is Located</li></ul> |
+|Device Category|  <ul><li>Device Category</li></ul> |
+|Device Manufacturer|  <ul><li>Device Manufacturer</li></ul> |
+|Device Model Number|  <ul><li>Device Model Number</li></ul> |
+|Interaction Duration|  <ul><li>Interaction Duration</li></ul> |
+|Fresh App Install|  <ul><li>Fresh App Install</li></ul> |
+|Last Application Interaction|  <ul><li>Last Application Interaction</li></ul> |
+|Application Memory Usage|  <ul><li>Application Memory Usage</li></ul> |
+|User Session Duration|  <ul><li>User Session Duration</li></ul> |
+|User Session ID|  <ul><li>User Session ID</li></ul> |
+|Time Since Last Interaction|  <ul><li>Time Since Last Interaction</li></ul> |
+|Time Since Load|  <ul><li>Time Since Load</li></ul> |
+|Upgrade from Version|  <ul><li>Upgrade from Version</li></ul> |
+|New Relic Agent Version Number|  <ul><li>New Relic Agent Version Number</li></ul> |
+|Name of Interaction|  <ul><li>Name of Interaction</li></ul> |

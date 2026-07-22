@@ -17,8 +17,8 @@ When SCIM is enabled for Tealium, user memberships are synced between Tealium an
 
 ## Prerequisites
 
-* [Account admin or user admin]() permissions.
-* Long-lived bearer token. For more information on how to generate the bearer token, see [Authentication]().
+* [Account admin or user admin](https://docs.tealium.com/admin-roles/) permissions.
+* Long-lived bearer token. For more information on how to generate the bearer token, see [Authentication](https://docs.tealium.com/about-scim-api/#authentication).
 
 ## Configure an identity provider
 
@@ -33,15 +33,19 @@ These providers are fully compatible. However, other IdPs may require additional
 
 The SAML application created for [Azure Active Directory](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/view-applications-portal) during SSO setup must be configured for SCIM.
 
+
+<blockquote>
 You must configure SCIM provisioning exactly as detailed in the following instructions. If misconfigured, you will encounter issues with user provisioning and sign in. If you have any trouble or questions with any step, contact Tealium support.
+</blockquote>
+
 
 To configure Microsoft Entra ID for SCIM:
 
 ### Add Tealium to Microsoft Entra ID
 
 1. Go to the [Azure Portal](https://portal.azure.com/).
-1. Go to **Microsoft Entra ID &gt; Enterprise applications**.
-1. Click **&#43; New application** and then click **Create your own application**.
+1. Go to **Microsoft Entra ID > Enterprise applications**.
+1. Click **+ New application** and then click **Create your own application**.
 1. Enter a **Name** (for example, Tealium), and choose **Integrate any other application you don’t find in the gallery**.
 1. Click **Create**.
 
@@ -57,7 +61,11 @@ To configure Microsoft Entra ID for SCIM:
 
 ### Configure user assignments
 
+
+<blockquote>
 SCIM group provisioning is not currently supported in Early Access.
+</blockquote>
+
 
 1. Click **Provisioning**.
 1. Set **Provisioning Status** to `ON`.
@@ -70,7 +78,7 @@ The following table lists the attribute mappings that you need to set for Tealiu
 | Microsoft Entra ID source attribute | `customappsso` target attribute | Matching precedence |
 |-------------------------------------------------------------------|-------------------|-----|
 | `userPrincipalName`                                               | `userName`        |  1  | 
-| `Switch([IsSoftDeleted], , &#34;False&#34;, &#34;True&#34;, &#34;True&#34;, &#34;False&#34;)` \*  | `active`          |     |
+| `Switch([IsSoftDeleted], , "False", "True", "True", "False")` \*  | `active`          |     |
 | `displayName`                                                     | `displayName`     |     |
 | `givenName`                                                       | `name.GivenName`  |     |
 | `surname`                                                         | `name.familyName` |     |
@@ -78,7 +86,11 @@ The following table lists the attribute mappings that you need to set for Tealiu
 
 \* This is an expression type, not a direct mapping. Select **Expression** from the **Mapping type** list.
 
+
+<blockquote>
 While Microsoft transitions from Azure Active Directory to Entra ID naming schemes, you might notice inconsistencies in your user interface. If you’re having trouble, contact Tealium Support.
+</blockquote>
+
 
 Each attribute mapping contains the following:
 
@@ -105,7 +117,7 @@ If a mapping is not listed in the table, use the Microsoft Entra ID defaults. Fo
 ### Assign users
 
 1. Go to **Users and groups**.
-1. Click **&#43; Add user/group**.
+1. Click **+ Add user/group**.
 1. Select the users or groups you want to sync.
 1. Click **Assign**.
 
@@ -118,14 +130,18 @@ Configure the following settings:
 1. Click **Save** to ensure all changes are saved.
 1. Go to **Provisioning** and click **Start provisioning**.
 
+
+<blockquote>
 Provisioning usually starts within a few minutes, but may take up to 40 minutes for the first sync.
+</blockquote>
+
 
 ## Configure Okta
 
 To configure Okta for SCIM:
 
 1. Log in to Okta.
-1. Go to  **Applications &gt; Applications**.
+1. Go to  **Applications > Applications**.
 1. Click **Browse App Catalog**.
 1. Select **SCIM 2.0 Test App (OAuth Bearer Token)** and click **Add Integration**.
 1. Click **Next** and **Done** to skip the **General Settings** and **Sign-On Options** pages.
@@ -160,12 +176,16 @@ On subsequent visits, new and existing users can access identity provider groups
 
 Remove or deactivate a user on the identity provider to remove their access.
 
-After the identity provider performs a sync based on its configured schedule, the identity provider revokes the user&#39;s membership and they lose access. 
+After the identity provider performs a sync based on its configured schedule, the identity provider revokes the user's membership and they lose access. 
 
+
+<blockquote>
 Removing or deactivating a user on the identity provider does not delete the Tealium user account. The Tealium user account is deactivated, and it can be reactivated by re-adding the user to the identity provider.
+</blockquote>
+
 
 ## Reactivate access
 
 After a user is removed or deactivated through SCIM, reactivate that user by adding them to the SCIM identity provider. 
 
-After the identity provider performs a sync based on its configured schedule, the identity provider reactivates the user&#39;s SCIM identity and restores their group memberships.
+After the identity provider performs a sync based on its configured schedule, the identity provider reactivates the user's SCIM identity and restores their group memberships.

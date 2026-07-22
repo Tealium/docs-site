@@ -12,11 +12,11 @@ url: https://docs.tealium.com/ja/client-side-tags/pepperjam-tag/
   * 価格のリスト
   * 数量のリスト
   * カテゴリのリスト
-* &#34;Standard Integration Type&#34;の値は、タグの統合値が&#34;Standard&#34;の場合にのみ適用されます。
+* "Standard Integration Type"の値は、タグの統合値が"Standard"の場合にのみ適用されます。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[Tag Overview]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -28,7 +28,7 @@ Pepperjamから提供されたID。
 
 ## データマッピング
 
-マッピングは、[data layer variable]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -36,21 +36,21 @@ Pepperjamから提供されたID。
 
 |変数| 説明|
 |---| ---|
-|`base_url`|  &lt;ul&gt;&lt;li&gt;ベースURL&lt;/li&gt;&lt;/ul&gt; |
-|`pid`|  &lt;ul&gt;&lt;li&gt;プログラムID&lt;/li&gt;&lt;/ul&gt; |
-|`integration`|  &lt;ul&gt;&lt;li&gt;統合&lt;/li&gt;&lt;li&gt;値は次の通りです：&lt;ul&gt;&lt;li&gt;STANDARD&lt;/li&gt;&lt;li&gt;DYNAMIC&lt;/li&gt;&lt;li&gt;ITEMIZED&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|`type`|  &lt;ul&gt;&lt;li&gt;Standard統合タイプ&lt;/li&gt;&lt;li&gt;値は**1**または**2**です。&lt;/li&gt;&lt;/ul&gt; |
-|`new_to_file`|  &lt;ul&gt;&lt;li&gt;新規ファイル&lt;/li&gt;&lt;li&gt;値は**1**です。&lt;/li&gt;&lt;/ul&gt; |
+|`base_url`|  <ul><li>ベースURL</li></ul> |
+|`pid`|  <ul><li>プログラムID</li></ul> |
+|`integration`|  <ul><li>統合</li><li>値は次の通りです：<ul><li>STANDARD</li><li>DYNAMIC</li><li>ITEMIZED</li></ul> </li></ul> |
+|`type`|  <ul><li>Standard統合タイプ</li><li>値は**1**または**2**です。</li></ul> |
+|`new_to_file`|  <ul><li>新規ファイル</li><li>値は**1**です。</li></ul> |
 
 ### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;プロモーションコード&lt;/li&gt;&lt;li&gt;`_cpromo`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品IDのリスト&lt;/li&gt;&lt;li&gt;`_cprod`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;カテゴリのリスト&lt;/li&gt;&lt;li&gt;`_ccat`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト&lt;/li&gt;&lt;li&gt;`_cquan`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;li&gt;`_cprice`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文ID</li><li>`_corder`を上書きします。</li></ul> |
+|`order_subtotal`|  <ul><li>小計</li><li>`_csubtotal`を上書きします。</li></ul> |
+|`order_coupon_code`|  <ul><li>プロモーションコード</li><li>`_cpromo`を上書きします。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>商品IDのリスト</li><li>`_cprod`を上書きします。</li></ul> |
+|`product_category`|  <ul><li>配列</li><li>カテゴリのリスト</li><li>`_ccat`を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量のリスト</li><li>`_cquan`を上書きします。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>価格のリスト</li><li>`_cprice`を上書きします。</li></ul> |
 

@@ -3,7 +3,7 @@ title: iQ Tag Template API
 description: The iQ Tag Template API uses a PATCH method to update profile tag templates.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-tag-templates-api/
 ---
-To learn more about this API and available object fields, see [iQ Profiles API]() and [iQ Profiles Objects]().
+To learn more about this API and available object fields, see [iQ Profiles API](https://docs.tealium.com/iq-profiles-v3-api/) and [iQ Profiles Objects](https://docs.tealium.com/iq-profiles-api-objects/).
 
 ## How it works
 
@@ -22,16 +22,20 @@ When you use the PATCH method, you are making changes to your profile tag templa
 ```bash
 curl --location --request PATCH \
   --url https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}/templates/79 \
-  --header &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9&#39; \
-  --header &#39;Content-Type: application/json&#39; \
-  --data &#39;
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9' \
+  --header 'Content-Type: application/json' \
+  --data '
 ```
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
 
-To learn about generating a bearer token from the API key, see [Authentication]().
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
+</blockquote>
+
+
+To learn about generating a bearer token from the API key, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).
 
 ## Profile fields
 
@@ -39,7 +43,7 @@ Profile tag templates are JSON objects that contain the following possible field
 
 | OBJECT | TYPE | REQUIRED | DESCRIPTION |
 | --- | --- | --- | --- |
-| `versionTitle` | String | Optional | The title of the resulting saved version.&lt;br&gt;Default with `saveType` set to `saveAs` : `API \| {TIMESTAMP}`&lt;br&gt;Default with `saveType` set to `save`: Existing version title |
+| `versionTitle` | String | Optional | The title of the resulting saved version.<br>Default with `saveType` set to `saveAs` : `API \| {TIMESTAMP}`<br>Default with `saveType` set to `save`: Existing version title |
 | `saveType` | String | Optional| The type of save to perform with the PATCH request: `save` or `saveAs`. Default is `saveAs`. |
 | `notes` | String | Required | Additional notes about the publish version. |
 | `templateData.content` | Object | Required | The tag template content you want to update.|
@@ -48,11 +52,11 @@ Profile tag templates are JSON objects that contain the following possible field
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;Version 2022.03.22.2108&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes&#34;,
-  &#34;templateData&#34;: {
-    &#34;content&#34;: &#34;testing a template update&#34;
+  "versionTitle": "Version 2022.03.22.2108",
+  "saveType": "saveAs",
+  "notes": "version notes",
+  "templateData": {
+    "content": "testing a template update"
   }
 }
 ```
@@ -69,11 +73,11 @@ This PATCH method takes a profile object and additional tag template fields.
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;test version&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes&#34;,
-  &#34;templateData&#34;: {
-    &#34;content&#34;: &#34;testing a template update&#34;
+  "versionTitle": "test version",
+  "saveType": "saveAs",
+  "notes": "version notes",
+  "templateData": {
+    "content": "testing a template update"
   }
 }
 ```
@@ -84,7 +88,7 @@ Potential error messages for this endpoint:
 
 | ERROR CODE | ERROR MESSAGE |
 | --- | --- |
-| 400 | `&#34;Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;patchProfile.arg2.notes: must not be empty&#34;`|
-| 404 | `&#34;Profile not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Profile library not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Profile (legacy) not found - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Users are currently viewing the same account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Latest version not found - {ACCOUNT} \| profile: {PROFILE}&#34;` |
-| 409 | `&#34;Error saving profile: {PROFILE} for account: {ACCOUNT}, duplicate versions: {VERSION}&#34;` |
-| 500 | `&#34;Profile: {PROFILE} inherits from library profile&#34;`&lt;br&gt;`&#34;Error saving profile metadata - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Error saving profile - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;`&#34;Error saving profile(legacy) - {ACCOUNT} \| profile: {PROFILE}&#34;`|
+| 400 | `"Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}"`<br>`"patchProfile.arg2.notes: must not be empty"`|
+| 404 | `"Profile not found - account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Profile library not found - account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Profile (legacy) not found - account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Users are currently viewing the same account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Latest version not found - {ACCOUNT} \| profile: {PROFILE}"` |
+| 409 | `"Error saving profile: {PROFILE} for account: {ACCOUNT}, duplicate versions: {VERSION}"` |
+| 500 | `"Profile: {PROFILE} inherits from library profile"`<br>`"Error saving profile metadata - account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Error saving profile - account: {ACCOUNT} \| profile: {PROFILE}"`<br>`"Error saving profile(legacy) - {ACCOUNT} \| profile: {PROFILE}"`|

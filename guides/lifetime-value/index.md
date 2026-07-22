@@ -53,7 +53,7 @@ Tracking LTV requires capturing and analyzing various visitor properties that pr
 The following visitor properties are required for LTV tracking:
 
 * **Demographic data**:  Information like age, gender, and location helps you understand customer preferences and tailor marketing efforts.
-* **Purchase history**: Data on past transactions, purchase frequency, and average order value gives insights into a customer&#39;s buying behavior.
+* **Purchase history**: Data on past transactions, purchase frequency, and average order value gives insights into a customer's buying behavior.
 
 ### Analyze key metrics
 
@@ -79,4 +79,4 @@ The following key metrics, logic, and formulas are commonly used to calculate LT
 
 By analyzing these key metrics and applying the respective formulas, you can calculate customer LTV accurately and gain valuable insights into the long-term revenue potential of your customer base.
 
-For a step-by-step example of how to track Customer Lifetime Value in AudienceStream, see [VIP Badge Guide]().
+For a step-by-step example of how to track Customer Lifetime Value in AudienceStream, see [VIP Badge Guide](https://docs.tealium.com/vip-badge-guide/).

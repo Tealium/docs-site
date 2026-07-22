@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/client-side-tags/iadvize-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[Tag Overview]()記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[Tag Overview](https://docs.tealium.com/about-tags/)記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/client-side-tags/iadvize-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応するデスティネーション変数にデータを送信するプロセスです。変数をタグのデスティネーションにマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応するデスティネーション変数にデータを送信するプロセスです。変数をタグのデスティネーションにマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは次のとおりです：
 
@@ -29,13 +29,13 @@ url: https://docs.tealium.com/ja/client-side-tags/iadvize-tag/
 
 |変数| 説明|
 |---| ---|
-|`sid`|  &lt;ul&gt;&lt;li&gt;サイトID&lt;/li&gt;&lt;/ul&gt; |
-|`lang`|  &lt;ul&gt;&lt;li&gt;言語&lt;/li&gt;&lt;/ul&gt; |
+|`sid`|  <ul><li>サイトID</li></ul> |
+|`lang`|  <ul><li>言語</li></ul> |
 
 ### E-コマース
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文/トランザクションID。&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計/カートの金額。&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文/トランザクションID。</li><li>`_corder`を上書きします。</li></ul> |
+|`order_subtotal`|  <ul><li>小計/カートの金額。</li><li>`_csubtotal`を上書きします。</li></ul> |
 

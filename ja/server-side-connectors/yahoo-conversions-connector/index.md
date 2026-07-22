@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/yahoo-conversions-connec
 
 ## 構成を構成する
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタの構成が完了したら、**完了**をクリックします。
 
@@ -28,7 +28,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/yahoo-conversions-connec
 |**パラメータ**| **説明**|
 |---| ---|
 |クリックID (`vmcid`)| (必須) クリックまたはサードパーティの広告サーバーから収集したピクセルコンテキストマクロの値。|
-|YahooクライアントID &lt;br&gt; (`dp`)| (必須) `tealium_`を先頭に付けた`dp`パラメータとして送信されるクライアントID。例えば、`tealium_123456789`。|
+|YahooクライアントID <br> (`dp`)| (必須) `tealium_`を先頭に付けた`dp`パラメータとして送信されるクライアントID。例えば、`tealium_123456789`。|
 |イベントID (`id`)| Tealiumが提供するユニークなイベントID。Yahooはこのパラメータを使用してレポートの重複を防ぎます。マッピングされていない場合、Tealiumはこの値のためにUUIDを生成します。|
 |イベント時間 (`et`)| イベントのビジネス時間（エポックUTCミリ秒）。マッピングされていない場合、現在のタイムスタンプで初期化されます。|
 |コンバージョン値 (`gv`)| 任意のコンバージョンの数値。デフォルトでは、値はアメリカドル（USD）とみなされます。値はDSPで動的コンバージョン値として報告され、NativeでROASを計算します。例えば、`12.25`（通貨記号なし）。|

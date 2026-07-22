@@ -8,7 +8,7 @@ Publishing is an optional and additional action during the save process. When yo
 
 The Tealium content delivery network (CDN) is optimized to refresh files immediately to minimize delays while publishing and testing.
 
-Time-to-live (TTL) settings and caching by your browser will cause your browser to load old versions of files. To resolve this, clear or disable your browser cache. For more information about Tealium and browser caching, see .
+Time-to-live (TTL) settings and caching by your browser will cause your browser to load old versions of files. To resolve this, clear or disable your browser cache. For more information about Tealium and browser caching, see [file-cache](https://docs.tealium.com/file-cache/).
 
 #### Updated immediately
 
@@ -52,4 +52,4 @@ The file from the QA environment should be installed on your non-production site
 https://tags.tiqcdn.com/utag/YOUR-ACCOUNT/main/qa/utag.js
 ```
 
-If you need additional environments, use [custom publish environments]().
+If you need additional environments, use [custom publish environments](https://docs.tealium.com/custom-publish-environments/).

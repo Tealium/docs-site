@@ -13,7 +13,7 @@ The data source, data source event specification, and data layer variable are us
 
 ## Create a `restock` variable
 
-Create a boolean data layer variable named `restock`. For more information about creating a data layer variable, see [Add a variable]().
+Create a boolean data layer variable named `restock`. For more information about creating a data layer variable, see [Add a variable](https://docs.tealium.com/manage-variables/#add-a-variable).
 
 ## Create event specifications
 
@@ -72,38 +72,38 @@ Create a `purchase` event specification and add the following universal data obj
 
 |Attribute Name|Data Type |Example Value|
 |---|-----|----|
-| `site_section`| String | &#34;order&#34; |
+| `site_section`| String | "order" |
 | `tealium_from_checkout`| integer | 1 |
-| `customer_country`| String| &#34;CA&#34; |
-| `customer_state`| String | &#34;AB&#34; |
-| `customer_city`| String | &#34;Calgary&#34; |
-| `customer_zip`| String | &#34;T2J 6P4&#34; |
-| `customer_id`| String | &#34;6691629760567&#34; |
-| `customer_logged_in`| Boolean | &#34;false&#34; |
-| `customer_email`| String | &#34;user.name@example.com&#34;|
-| `customer_first_name`| String | &#34;user&#34; |
-| `customer_last_name`| String | &#34;name&#34; |
-| `country_code`| String | &#34;CA&#34; |
-| `order_id`| String | &#34;5853792796727&#34;|
+| `customer_country`| String| "CA" |
+| `customer_state`| String | "AB" |
+| `customer_city`| String | "Calgary" |
+| `customer_zip`| String | "T2J 6P4" |
+| `customer_id`| String | "6691629760567" |
+| `customer_logged_in`| Boolean | "false" |
+| `customer_email`| String | "user.name@example.com"|
+| `customer_first_name`| String | "user" |
+| `customer_last_name`| String | "name" |
+| `country_code`| String | "CA" |
+| `order_id`| String | "5853792796727"|
 | `order_subtotal`| Number | 2400 |
 | `order_total`| Number | 2400 |
-| `order_currency`| String | &#34;CAD&#34; |
+| `order_currency`| String | "CAD" |
 | `order_tax`| Number | 0 |
 | `order_shipping`| Number | 0 |
-| `order_discount_amount` | String | &#34;&#34; |
-| `payment_gateway`| String | &#34;shopify_payments&#34; |
-| `product_id`| Array of Strings | [&#34;6933873000503&#34;] |
-| `product_on_page`| Array of Strings | [&#34;6933873000503&#34;] |
+| `order_discount_amount` | String | "" |
+| `payment_gateway`| String | "shopify_payments" |
+| `product_id`| Array of Strings | ["6933873000503"] |
+| `product_on_page`| Array of Strings | ["6933873000503"] |
 | `product_quantity`| Array of Numbers | [4] |
 | `product_unit_price`| Array of Numbers | [2400] |
-| `product_name`| Array of Strings | [&#34;Dress Shirts&#34;] |
-| `product_sku`| Array of Numbers | [&#34;40586935402551&#34;] |
-| `page_name`| String | &#34;Information - Tealiumapp - Checkout&#34;|
+| `product_name`| Array of Strings | ["Dress Shirts"] |
+| `product_sku`| Array of Numbers | ["40586935402551"] |
+| `page_name`| String | "Information - Tealiumapp - Checkout"|
 | `cart_total_items`| Number | 1 |
 | `cart_total_value`| Number | 2400 |
-| `page_type`| String | &#34;order&#34; |
-| `tealium_event` | String | &#34;purchase&#34; |
-| `tealium_visitor_id` | String | &#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34; |
+| `page_type`| String | "order" |
+| `tealium_event` | String | "purchase" |
+| `tealium_visitor_id` | String | "01902bf47c7200111b70236f67ee0506f004b06700fbe" |
 
 ## Create an HTTP API data source
 

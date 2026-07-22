@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-audience-manager-dcs-
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 To configure your vendor, follow these steps:
 
@@ -34,7 +34,11 @@ This section describes how to set up parameters and options for each action.
 1. **Region ID**: (Required) Provide region ID assigned to user sending the event. For more info see [Get User ID and Region](https://marketing.adobe.com/resources/help/en_US/aam/dcs-aam-ids.html) and [Regions and Hostname](https://marketing.adobe.com/resources/help/en_US/aam/dcs-regions.html).
 1. **Event Data**: (Required) Map Attribute(s) to event parameters (see: [Supported Event Parameters](https://marketing.adobe.com/resources/help/en_US/aam/dcs-keys.html)). Options `Data Provider ID `and `Data Provider User ID`/`Integration Code` are automatically combined with `%01` separator for `d_cid` and `d_cid_ic` parameters respectively (see: [CID and CID_IC](https://marketing.adobe.com/resources/help/en_US/aam/cid.html))
 
+
+<blockquote>
 For more information, see: [Making Event API Calls](https://marketing.adobe.com/resources/help/en_US/aam/dcs-s2s-calls.html)
+</blockquote>
+
 
 ## Vendor Documentation
 

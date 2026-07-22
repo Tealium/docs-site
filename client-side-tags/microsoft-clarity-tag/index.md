@@ -11,20 +11,20 @@ Microsoft Clarity is a free-to-use analytics product built to help website manag
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Project ID**: The Clarity project ID. You can find your project ID from your Clarity project URL. For example, `https://clarity.microsoft.com/projects/view/PROJECT_ID/`.
 * **Ad Storage Consent**: Set the default consent for Ad Storage. Dynamically update this value by mapping the `ad_storage` parameter in the **Data Mappings** section.
-* **Automatically read from Tealium Consent Cookie**: If set to true, consent is set based on the [Tealium consent manager](). 
+* **Automatically read from Tealium Consent Cookie**: If set to true, consent is set based on the [Tealium consent manager](https://docs.tealium.com/about-consent-management/). 
 
 ## Consent mode
 
 There are two options to implement consent mode for this tag:
 
-* Use [client-side consent management]() and automatically read the Tealium Consent cookie.
-* Add a [JavaScript Code extension]() to map consent choices and category mappings from your consent management platform (CMP) to this tag.
+* Use [client-side consent management](https://docs.tealium.com/about-consent-management/) and automatically read the Tealium Consent cookie.
+* Add a [JavaScript Code extension](https://docs.tealium.com/javascript-code-extension/) to map consent choices and category mappings from your consent management platform (CMP) to this tag.
 
 As visitors make their consent choices, the tag will choose the appropriate approach for first and third-party cookies:
 
@@ -43,26 +43,26 @@ To map end-user consent choices to Microsoft consent mode settings, use the Java
 * Set **Occurrence** to **Run Always**
 * Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing `CUSTOM_LOGIC` with the logic for your vendor.
 ```js
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? 'granted' : 'denied';
 ```
 
 For example, the following code is for OneTrust.
 ```js
 // After Load Rules - Run Always
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1  ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? 'granted' : 'denied';
 ```
 
 If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the `ad_storage` parameter to attributes for your specific case.
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -75,7 +75,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|

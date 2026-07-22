@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/data-connect/roles/
 ---
 Control how users access Data Connect recipes for each Tealium profile by assigning a role to that profile. Each profile can see only those recipes created in that profile. 
 
-For more information about editing user permissions, see [About server-side permissions]().
+For more information about editing user permissions, see [About server-side permissions](https://docs.tealium.com/about-managing-server-side-user-permissions/).
 
 ## Available roles
 

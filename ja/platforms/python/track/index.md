@@ -5,20 +5,20 @@ url: https://docs.tealium.com/ja/platforms/python/track/
 ---
 ## ビューの追跡
 
-[`trackEvent()`](/ja/platforms/python/api/#trackevent) メソッドは、以下の例に示すように、ビューの追跡に使用されます：
+[`trackEvent()`](https://docs.tealium.com/ja/platforms/python/api/#trackevent) メソッドは、以下の例に示すように、ビューの追跡に使用されます：
 
 ```python
-trackEvent(&#34;SCREEN_NAME&#34;, data, callback)
+trackEvent("SCREEN_NAME", data, callback)
 ```
 
 パラメータ `data` と `callback` はオプションです。
 
 ## イベントの追跡
 
-同じ [`trackEvent()`](/ja/platforms/python/api/#trackevent) メソッドは、以下の例に示すように、イベントの追跡にも使用されます：
+同じ [`trackEvent()`](https://docs.tealium.com/ja/platforms/python/api/#trackevent) メソッドは、以下の例に示すように、イベントの追跡にも使用されます：
 
 ```python
-trackEvent(&#34;EVENT_NAME&#34;, data, callback)
+trackEvent("EVENT_NAME", data, callback)
 ```
 
 パラメータ `data` と `callback` はオプションです。
@@ -32,8 +32,8 @@ def tealiumCallback(info, success, error=None):
         return
     print (info, success)
 
-eventData = {&#39;KEY&#39;: &#39;VALUE&#39;}
-teal.trackEvent(&#39;EVENT_NAME&#39;,
+eventData = {'KEY': 'VALUE'}
+teal.trackEvent('EVENT_NAME',
                 data=eventData,
                 callback=tealiumCallback) 
 ```

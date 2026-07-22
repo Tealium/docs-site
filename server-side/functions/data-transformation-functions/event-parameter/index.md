@@ -7,7 +7,11 @@ Data transformation functions for events from Tealium Collect have one parameter
 
 For more information, see [Event data object](#event-data-object).
 
- For transformation functions used with cloud data sources, see [Data record object]().
+
+<blockquote>
+For transformation functions used with cloud data sources, see [Data record object](https://docs.tealium.com/about-data-record-functions/#data-record-object).
+</blockquote>
+
 
 ## Event parameter object
 
@@ -19,14 +23,14 @@ The `event` parameter object contains the following properties:
 |`client_ip`| String| Client IP address.| No|
 |`data`| Object| See [Event Data Object](#event-data-object).| No|
 |`dataSourcePlatform`| String| Name of the data source platform.| No|
-|`enrichmentOnly`| Boolean| Always `false` for live events. If `false` DataAccess is enabled, the event can be sent to DataAccess. May be `true` for bulk import events (when `event.type=&#34;BULK_IMPORT&#34;`). If `true`, event data can be used only for enrichment. File import events are not supported for data transformation functions.| No|
+|`enrichmentOnly`| Boolean| Always `false` for live events. If `false` DataAccess is enabled, the event can be sent to DataAccess. May be `true` for bulk import events (when `event.type="BULK_IMPORT"`). If `true`, event data can be used only for enrichment. File import events are not supported for data transformation functions.| No|
 |`env`| String| Specifies the execution environment (dev or prod).| No|
 |`event_id`| String| Event ID.| No|
 |`new_visitor`| Boolean| `true` if this event is the first visit for the user, otherwise `false`.| No|
-|`page_url`| Object| An object of URL properties. See [URL Object.](#url-object)&lt;br&gt; Omitted for mobile events.| No|
+|`page_url`| Object| An object of URL properties. See [URL Object.](#url-object)<br> Omitted for mobile events.| No|
 |`post_time`| Number| Time stamp for the event.| No|
 |`profile`| String| Profile for the account.| No|
-|`referrer_url`| Object| An object of URL properties. See [URL Object.](#url-object)&lt;br&gt; Omitted for mobile events.| No|
+|`referrer_url`| Object| An object of URL properties. See [URL Object.](#url-object)<br> Omitted for mobile events.| No|
 |`type`| String| Specifies whether the event is from a live visit or a bulk import event. Values are `LIVE` or `BULK_IMPORT`. File import events are not currently supported for data transformation functions.| No|
 |`useragent`| String| Specifies the software the user is using, such as the web browser.| No|
 |`visitor_id`| String| Visitor ID.| No|
@@ -36,7 +40,11 @@ The `event` parameter object contains the following properties:
 
 The value of the `dataSourcePlatform` property can be one of the following: `default`, `adobe_launch`, `affirm`, `android`, `braze`, `cordova`, `cSharp`, `fileImport`, `googleAMP`, `google_tag_manager`, `http_api_flattened`, `hubspot_wf`, `intercom`, `iOS`, `iterable`, `java`, `javascript`, `mailchimp`, `python`, `RES`, `roku`, `salesforce`, `sendgrid`, `slack`, `swift`, `tiqJavascript`, `tvOS`, `watchOS`, `zapier`.
 
+
+<blockquote>
 File import events are not currently supported for data transformation functions.
+</blockquote>
+
 
 ## Event data object
 
@@ -45,9 +53,9 @@ The `event.data` object represents the incoming event and contains the `event.da
 | Property | Type | Description | Writable |
 |---| ---| ---| ---|
 |`dom`| Object| Contains information about the page on which the event occurred (domain, query string, etc.) Omitted for mobile events. For more information, see [Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).| No|
-|`firstparty_tealium_cookies`| Object| Object contains cookie properties specified in your data layer.&lt;br&gt; Omitted for mobile events.| No|
-|`js`| Object| Object contains JavaScript variable properties specified in your data layer.&lt;br&gt; Omitted for mobile events.| No|
-|`meta`| Object| Object contains metadata properties specified in your data layer.&lt;br&gt; Omitted for mobile events.| No|
+|`firstparty_tealium_cookies`| Object| Object contains cookie properties specified in your data layer.<br> Omitted for mobile events.| No|
+|`js`| Object| Object contains JavaScript variable properties specified in your data layer.<br> Omitted for mobile events.| No|
+|`meta`| Object| Object contains metadata properties specified in your data layer.<br> Omitted for mobile events.| No|
 |`udo`| Object| Object contains the properties of the incoming event. Some properties are read-only. See [Writable Properties](#writable-properties).| Yes|
 
 ### Writable properties
@@ -90,7 +98,7 @@ The URL object contains the following standard URL properties:
 |`domain`| String| Domain of the URL.| No|
 |`full_url`| String| Full URL.| No|
 |`path`| String| Path from the URL. May be empty.| No|
-|`query_params`| Object| An Object that contains one or more key.value pairs. Each key-value pair specifies a query string in the URL. For example:&lt;br&gt; ```&#34;query_params&#34;: { &#34;utm_medium&#34;: &#34;PPC&#34;, &#34;utm_source&#34;: &#34;LinkedIn&#34; }```| No|
+|`query_params`| Object| An Object that contains one or more key.value pairs. Each key-value pair specifies a query string in the URL. For example:<br> ```"query_params": { "utm_medium": "PPC", "utm_source": "LinkedIn" }```| No|
 |`querystring`| String| Query string from the URL.| No|
 |`scheme`| String| Specifies the protocol to use for the web site, such as HTTP or HTTPS.| No|
 
@@ -100,51 +108,51 @@ The following shows an example `event` parameter object:
 
 ```json
 {
-    &#34;account&#34;: &#34;XYZ_admin_acct&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;env&#34;: &#34;prod&#34;,
-    &#34;data&#34;: {
-        &#34;dom&#34;: {
-            &#34;url&#34;: &#34;https://www.example.com&#34;,
-            &#34;pathname&#34;: &#34;/&#34;,
-            &#34;domain&#34;: &#34;example.com&#34;,
-            &#34;hash&#34;: &#34;&#34;,
-            &#34;query_string&#34;: &#34;&#34;,
-            &#34;title&#34;: &#34;Homepage&#34;
+    "account": "XYZ_admin_acct",
+    "profile": "main",
+    "env": "prod",
+    "data": {
+        "dom": {
+            "url": "https://www.example.com",
+            "pathname": "/",
+            "domain": "example.com",
+            "hash": "",
+            "query_string": "",
+            "title": "Homepage"
         },
-	&#34;js&#34;: {},
-	&#34;meta&#34;: {},
-	&#34;udo&#34;: {
-            &#34;page_view&#34;: &#34;view&#34;,
-            &#34;tealium_account&#34;: &#34;XYZ_admin_acct&#34;,
-            &#34;tealium_profile&#34;: &#34;main&#34;,
-            &#34;page_name&#34;: &#34;Homepage&#34;,
-            &#34;page_type&#34;: &#34;main&#34;,
-            &#34;tealium_event&#34;: &#34;page_view&#34;,
-            &#34;user&#34;: {
-                &#34;browser_lang&#34;: &#34;en-us&#34;,
-                &#34;ipcinfo&#34;: &#34;en-us&#34;,
-                &#34;signedin&#34;: false,
-                &#34;city&#34;: &#34;san diego&#34;,
-                &#34;country&#34;: &#34;us&#34;,
-                &#34;country_name&#34;: &#34;united states&#34;,
-                &#34;registry_city&#34;: &#34;san diego&#34;,
-                &#34;registry_country_code&#34;: &#34;us&#34;,
-                &#34;registry_state&#34;: &#34;ca&#34;,
-                &#34;state&#34;: &#34;ca&#34;
+	"js": {},
+	"meta": {},
+	"udo": {
+            "page_view": "view",
+            "tealium_account": "XYZ_admin_acct",
+            "tealium_profile": "main",
+            "page_name": "Homepage",
+            "page_type": "main",
+            "tealium_event": "page_view",
+            "user": {
+                "browser_lang": "en-us",
+                "ipcinfo": "en-us",
+                "signedin": false,
+                "city": "san diego",
+                "country": "us",
+                "country_name": "united states",
+                "registry_city": "san diego",
+                "registry_country_code": "us",
+                "registry_state": "ca",
+                "state": "ca"
             }
         },
-        &#34;firstparty_tealium_cookies&#34;: {
-             &#34;trace_id&#34;: &#34;&#34;
+        "firstparty_tealium_cookies": {
+             "trace_id": ""
         }
     },
-    &#34;type&#34;: &#34;LIVE&#34;,
-    &#34;enrichmentOnly&#34;: false,
-    &#34;event_id&#34;: &#34;example-event-id&#34;,
-    &#34;visitor_id&#34;: &#34;example-visitor-id&#34;,
-    &#34;post_time&#34;: 1655410928993,
-    &#34;useragent&#34;: &#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36&#34;,
-    &#34;client_ip&#34;: &#34;&#34;,
-    &#34;new_visitor&#34;: false
+    "type": "LIVE",
+    "enrichmentOnly": false,
+    "event_id": "example-event-id",
+    "visitor_id": "example-visitor-id",
+    "post_time": 1655410928993,
+    "useragent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+    "client_ip": "",
+    "new_visitor": false
 }
 ```

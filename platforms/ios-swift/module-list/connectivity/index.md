@@ -19,15 +19,19 @@ This module is included as part of the Core library, and does not require separa
 
 ## Initialize
 
-To initialize the module, verify that it&#39;s specified on the `TealiumConfig` [`collectors`](/platforms/ios-swift/api/tealium-config/#collectors) property
+To initialize the module, verify that it's specified on the `TealiumConfig` [`collectors`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#collectors) property
 
 `config.collectors = [Collectors.Connectivity]`
 
-Review the [Collectors](/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
+
+<blockquote>
+Review the [Collectors](https://docs.tealium.com/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
+</blockquote>
+
 
 ## Data Layer
 The following variables are transmitted with each tracking call while the module is enabled:
 
 | Variable   | Description                                                                                                                      | Example  |
 |------------|----------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `connection_type`   | Current connection type                                                               | [`&#34;wifi&#34;`, `&#34;cellular&#34;`]             |
+| `connection_type`   | Current connection type                                                               | [`"wifi"`, `"cellular"`]             |

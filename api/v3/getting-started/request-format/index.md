@@ -38,5 +38,9 @@ Most responses are in JSON format. Documentation for each endpoint contains exam
 
 Tealium API endpoints serve different purposes and can vary in their rate limits. Check the specific API endpoint documentation for rate limit information. If you exceed the stated rate limit for any API endpoint, you can expect the HTTP `429 Too Many Requests` response code.
 
+
+<blockquote>
 If your business needs require higher limits, contact your Tealium account manager.
+</blockquote>
+
 

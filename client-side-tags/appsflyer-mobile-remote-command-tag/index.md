@@ -19,22 +19,22 @@ url: https://docs.tealium.com/client-side-tags/appsflyer-mobile-remote-command-t
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **App ID**:  The application ID.
-* **SDK Dev Key**: The Software Development Kit developer&#39;s key.
+* **SDK Dev Key**: The Software Development Kit developer's key.
 * **Enable Debug Mode**: The default is `False`.
 * **Enable Purchase Autotracking**: The default is `False`.
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -142,7 +142,7 @@ The available categories are:
 | `product_unit_price` | Array | List of Prices/Price  (Overrides `_cprice`)  |
 
 ### Events
-To map events, refer to [Create an Event Mapping]()
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/)
 
 | Variable | Description |
 |:---------|:------------|
@@ -182,7 +182,7 @@ To map events, refer to [Create an Event Mapping]()
 | `customersegment` | Customer Segment |
 
 ### Parameters
-To map events, refer to [Create an Event Mapping]()
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/)
 
 | Variable | Description |
 |:---------|:------------|

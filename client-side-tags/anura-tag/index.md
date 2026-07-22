@@ -4,11 +4,11 @@ description: This article describes how to set up the Anura tag in your Tealium 
 url: https://docs.tealium.com/client-side-tags/anura-tag/
 ---Anura is an ad fraud detection solution that analyzes your traffic to identify real users versus bots, malware, and fraudulent human users. This article describes how to configure the Anura marketplace tag for Tealium iQ Tag Management (TiQ).
 
-The Anura tag places your basic Anura response, such as &#34;good&#34;, &#34;suspect&#34;, etc. Response Variable Name in your requested Response Location. If you are using Script Response the Response Object Variable Name will be available in the default Anura window object.
+The Anura tag places your basic Anura response, such as "good", "suspect", etc. Response Variable Name in your requested Response Location. If you are using Script Response the Response Object Variable Name will be available in the default Anura window object.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -35,13 +35,13 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **Load on All Pages**
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Anura tag are built into its Data Mapping tab. Available categories are:
 
@@ -49,20 +49,20 @@ The destination variables for the Anura tag are built into its Data Mapping tab.
 
 |Tag Destination| Description| Variable|
 |---| ---| ---|
-|Instance|  &lt;ul&gt;&lt;li&gt;(Required) Your instance ID.&lt;/li&gt;&lt;/ul&gt; | `instance`|
-|Source Tracking ID|  &lt;ul&gt;&lt;li&gt;(Optional) A variable, declared by you, to identify source traffic within the Anura dashboard.&lt;/li&gt;&lt;li&gt;Maximum of 128 characters.&lt;/li&gt;&lt;li&gt;May not equal the following values: &#34;all sources&#34;, &#34;all campaigns&#34;, &#34;&amp;&#34;, &#34;\*&#34;, &#34;?&#34;, &#34;%&#34;.&lt;/li&gt;&lt;li&gt;Allowed to start with: &#34;$&#34;, &#34;\_&#34;, or &#34;a-z&#34; characters, followed by &#34;a-z&#34; and &#34;0-9&#34; characters.&lt;/li&gt;&lt;/ul&gt; | `source`|
-|Campaign Tracking ID|  &lt;ul&gt;&lt;li&gt;(Optional) A subset of the source variable, declared by you, to identify campaign traffic within the Anura dashboard.&lt;/li&gt;&lt;li&gt;Maximum of 128 characters.&lt;/li&gt;&lt;li&gt;May not equal the following values: &#34;all sources&#34;, &#34;all campaigns&#34;, &#34;&amp;&#34;, &#34;\*&#34;, &#34;?&#34;, &#34;%&#34;.&lt;/li&gt;&lt;/ul&gt; | `campaign`|
-|Unique External ID|  &lt;ul&gt;&lt;li&gt;(Optional) A unique external tracking ID, declared by you, that is used to query the result from Anura servers.&lt;/li&gt;&lt;li&gt;Maximum of 128 characters.&lt;/li&gt;&lt;/ul&gt; | `exid`|
-|Response Object Variable Name|  &lt;ul&gt;&lt;li&gt;(Optional) The variable name of the JavaScript object that response data will be assigned to.&lt;/li&gt;&lt;li&gt;This variable contains the response ID, in addition to other data, that lets you make real-time decisions.&lt;/li&gt;&lt;li&gt;Maximum of 128 characters.&lt;/li&gt;&lt;/ul&gt; | `variable`|
-|Result Method|  &lt;ul&gt;&lt;li&gt;(Optional) The result method.&lt;/li&gt;&lt;/ul&gt; | `result_method`|
-|Result Location|  &lt;ul&gt;&lt;li&gt;(Optional) The result location.&lt;/li&gt;&lt;/ul&gt; | `result_location`|
-|Response Variable Name|  &lt;ul&gt;&lt;li&gt;(Optional) The Response Variable Name.&lt;/li&gt;&lt;/ul&gt; | `response_variable`|
-|Visitor IP Address|  &lt;ul&gt;&lt;li&gt;(Required) The IP address of your visitor.&lt;/li&gt;&lt;li&gt;IPv6 addresses are also supported.&lt;/li&gt;&lt;/ul&gt; | `ip`|
-|Visitor User Agent|  &lt;ul&gt;&lt;li&gt;(Optional) The user agent string of your visitor.&lt;/li&gt;&lt;/ul&gt; | `ua`|
+|Instance|  <ul><li>(Required) Your instance ID.</li></ul> | `instance`|
+|Source Tracking ID|  <ul><li>(Optional) A variable, declared by you, to identify source traffic within the Anura dashboard.</li><li>Maximum of 128 characters.</li><li>May not equal the following values: "all sources", "all campaigns", "&", "\*", "?", "%".</li><li>Allowed to start with: "$", "\_", or "a-z" characters, followed by "a-z" and "0-9" characters.</li></ul> | `source`|
+|Campaign Tracking ID|  <ul><li>(Optional) A subset of the source variable, declared by you, to identify campaign traffic within the Anura dashboard.</li><li>Maximum of 128 characters.</li><li>May not equal the following values: "all sources", "all campaigns", "&", "\*", "?", "%".</li></ul> | `campaign`|
+|Unique External ID|  <ul><li>(Optional) A unique external tracking ID, declared by you, that is used to query the result from Anura servers.</li><li>Maximum of 128 characters.</li></ul> | `exid`|
+|Response Object Variable Name|  <ul><li>(Optional) The variable name of the JavaScript object that response data will be assigned to.</li><li>This variable contains the response ID, in addition to other data, that lets you make real-time decisions.</li><li>Maximum of 128 characters.</li></ul> | `variable`|
+|Result Method|  <ul><li>(Optional) The result method.</li></ul> | `result_method`|
+|Result Location|  <ul><li>(Optional) The result location.</li></ul> | `result_location`|
+|Response Variable Name|  <ul><li>(Optional) The Response Variable Name.</li></ul> | `response_variable`|
+|Visitor IP Address|  <ul><li>(Required) The IP address of your visitor.</li><li>IPv6 addresses are also supported.</li></ul> | `ip`|
+|Visitor User Agent|  <ul><li>(Optional) The user agent string of your visitor.</li></ul> | `ua`|
 
 ### E-Commerce
 
-Since the Anura tag is e-commerce enabled, it will automatically use the default [E-Commerce extension]() mappings. Manually mapping in this category is generally not needed unless you want to override extension mappings or an e-commerce variable is not offered in the extension.
+Since the Anura tag is e-commerce enabled, it will automatically use the default [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) mappings. Manually mapping in this category is generally not needed unless you want to override extension mappings or an e-commerce variable is not offered in the extension.
 
 |Destination| Description| E-Commerce Extension Variable|
 |---| ---| ---|

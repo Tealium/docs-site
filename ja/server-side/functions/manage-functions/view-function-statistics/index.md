@@ -11,9 +11,9 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/view-fun
 
 1. **関数概要**で、スロットルされた関数をクリックし、次に**モニタリング**タブをクリックします。  
 **モニタリング**タブには、エラーを示すグラフとレート制限された呼び出しを示すグラフの2つが表示されます。
-![](/images/server-side/functions-monitoring-tab.png)
+![](https://docs.tealium.com/images/server-side/functions-monitoring-tab.png)
 1. より詳細なレート制限情報を表示するには、**レート制限データを表示**をクリックします。  
-      ![](/images/server-side/functions-rate-limits-graph.png)
+      ![](https://docs.tealium.com/images/server-side/functions-rate-limits-graph.png)
 1. グラフに表示する時間枠を調整するには、グラフに含める時間（時間数または日数）を選択します。
 1. ログの詳細を表示するには、ログファイルをクリックします。  
 ログの拡大表示には、以下の情報が表示されます：
@@ -39,5 +39,5 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/view-fun
 
 関数統計を表示するには、次の手順に従ってください：
 
-1. **変換 &gt; 関数**に移動し、リストから関数をクリックします。
+1. **変換 > 関数**に移動し、リストから関数をクリックします。
 1. **モニタリング**タブをクリックして、関数統計のグラフを表示します。

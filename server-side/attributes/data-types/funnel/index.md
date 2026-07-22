@@ -5,18 +5,18 @@ url: https://docs.tealium.com/server-side/attributes/data-types/funnel/
 ---
 The funnel attribute is available in the following scopes: Visit and Visitor.
 
-![](/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
 
 In most use cases, we recommend that you set up the funnel attribute as a visit-scoped attribute. This means the funnel resets at the end of each site visit and evaluates customer actions as new for every session.
 
 This approach is beneficial because it tracks customer
 behavior on a visit-by-visit basis, which can then be used to dynamically inform audience segmentation.
 
-For example, on a customer&#39;s first visit, they complete up to step two, placing them in an audience segment for users who reached that stage. On a subsequent visit, the same customer progresses to step four of the funnel. As a result, they are removed from the step two audience and added to a new audience representing users who reached step four.
+For example, on a customer's first visit, they complete up to step two, placing them in an audience segment for users who reached that stage. On a subsequent visit, the same customer progresses to step four of the funnel. As a result, they are removed from the step two audience and added to a new audience representing users who reached step four.
 
 ## How it works
 
-The funnel attribute tracks a sequence of actions taken by the user as steps. These steps measure the visitor&#39;s progress from start to finish. A step is recorded when the configured rule occurs. When a step is recorded, attribute values can also be captured as a snapshot of information about the step. Funnel steps can be required or optional, except for the last step, which is always required.
+The funnel attribute tracks a sequence of actions taken by the user as steps. These steps measure the visitor's progress from start to finish. A step is recorded when the configured rule occurs. When a step is recorded, attribute values can also be captured as a snapshot of information about the step. Funnel steps can be required or optional, except for the last step, which is always required.
 
 Example funnels include: `Checkout Funnel`, `Purchase Funnel`, or a `Lead-Generator Funnel`.
 
@@ -54,17 +54,17 @@ Example funnel behavior with one optional step: Step #1, Step #2 (Optional), Ste
 |Step #2| Step #1, Step #3 (Step #2 not back-filled)|
 |Step #3| Step #1, Step #3|
 
-In funnel tracking, especially when using visit-level attributes to determine a user&#39;s progression, itʼs important to account for real-world behaviors, such as users leaving and re-entering the funnel at different stages.
+In funnel tracking, especially when using visit-level attributes to determine a user's progression, itʼs important to account for real-world behaviors, such as users leaving and re-entering the funnel at different stages.
 
 For example:
 
 1. Step #1: User visits the homepage `example.com`.
 1. Step #2: User navigates to `example.com/subpage`.  
-At this point, the user&#39;s funnel attribute is marked as &#34;Step #2&#34;, reflecting their last completed step.
+At this point, the user's funnel attribute is marked as "Step #2", reflecting their last completed step.
 1. The user leaves the site (exits the funnel).
 1. On a later visit, the user lands directly on `example.com/subpage`, skipping the homepage.
 
-In a funnel where step #1 is required, the system expects the user to re-complete it before advancing. Since they didn&#39;t re-enter through the homepage, the funnel logic halts and prevents them from being recognized as progressing through step #2 or beyond.
+In a funnel where step #1 is required, the system expects the user to re-complete it before advancing. Since they didn't re-enter through the homepage, the funnel logic halts and prevents them from being recognized as progressing through step #2 or beyond.
 
 **Why marking Step #1 as optional helps**  
 By marking step #1 as optional, the funnel logic does not require it to be re-triggered. This means the user can:
@@ -83,9 +83,13 @@ This configuration is particularly useful for the following scenarios:
 
 In addition to recording each step of a funnel, you can also capture the value of one or more attributes when a step occurs. Captured data provides more information about the state of the visitor when the step occurred.
 
-Funnel attributes are accessible in AudienceStore, but not in AudienceDB or in data layer enrichment.
 
-![](/images/server-side/attributes/capture_values_of_funnel_attribute.png)
+<blockquote>
+Funnel attributes are accessible in AudienceStore, but not in AudienceDB or in data layer enrichment.
+</blockquote>
+
+
+![](https://docs.tealium.com/images/server-side/attributes/capture_values_of_funnel_attribute.png)
 
 ## Enrichments
 
@@ -119,9 +123,9 @@ Capture data: `product_name`
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;product_view&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "product_view"
     }  
   ]  
 ]
@@ -135,9 +139,9 @@ Capture Data: none
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;cart_view&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "cart_view"
     }  
   ]  
 ]
@@ -151,9 +155,9 @@ Capture Data: none
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "checkout"
     }  
   ]  
 ]
@@ -167,9 +171,9 @@ Capture Data: `order_id` and `order_total`
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }  
   ]  
 ]
@@ -181,23 +185,27 @@ Each of the steps are required, and when a step is complete, it is immediately f
 
 Create a funnel attribute named **Conversion Funnel**. Then, click **Create a Step** for each step of the funnel.
 
-![](/images/server-side/attributes/add_funnel_attribute.png)
+![](https://docs.tealium.com/images/server-side/attributes/add_funnel_attribute.png)
 
 #### Step 1 - Viewed a Product
 
-![](/images/server-side/attributes/funnel_step_1_viewed_a_product.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_1_viewed_a_product.png)
 
 #### Step 2 - Viewed Cart Page
 
- You must reorder this step and drag the UI container below the previous step. The attribute will follow the steps in order as they appear in the UI. 
 
-![](/images/server-side/attributes/funnel_step_2_viewed_cart_page.png)
+<blockquote>
+You must reorder this step and drag the UI container below the previous step. The attribute will follow the steps in order as they appear in the UI.
+</blockquote>
+
+
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_2_viewed_cart_page.png)
 
 #### Step 3 - Viewed Checkout Page
 
 This step is optional because the user may already be logged in.
 
-![](/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png)
 
 The following steps are all required and use the same logic as step 2.
 
@@ -207,9 +215,9 @@ The following steps are all required and use the same logic as step 2.
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;billing&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "billing"
     }
   ]  
 ]
@@ -221,9 +229,9 @@ The following steps are all required and use the same logic as step 2.
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;shipping_method&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "shipping_method"
     }
   ]  
 ]
@@ -235,9 +243,9 @@ The following steps are all required and use the same logic as step 2.
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;payment&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "payment"
     }
   ]  
 ]
@@ -249,14 +257,14 @@ The following steps are all required and use the same logic as step 2.
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;review&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "review"
     },
     {
-      &#34;input&#34;: &#34;page_type&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "page_type",
+      "operator": "equals",
+      "filter": "checkout"
     }  
   ]  
 ]
@@ -268,13 +276,13 @@ The following steps are all required and use the same logic as step 2.
 [
   [
     {
-      &#34;input&#34;: &#34;page_name&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;cart success&#34;
+      "input": "page_name",
+      "operator": "equals",
+      "filter": "cart success"
     },
     {
-      &#34;input&#34;: &#34;order_id&#34;,
-      &#34;operator&#34;: &#34;IS ASSIGNED&#34;
+      "input": "order_id",
+      "operator": "IS ASSIGNED"
     }  
   ]  
 ]
@@ -286,27 +294,27 @@ Knowing where a user dropped from the funnel is an important piece to many marke
 
 First, several rules must be created for each step of the funnel. For example the rule **Conversion Funnel - Step 1 Complete** checks if **Step 1 - Product** has been completed.
 
-![](/images/server-side/attributes/conversion_funnel_step_1_complete.png)
+![](https://docs.tealium.com/images/server-side/attributes/conversion_funnel_step_1_complete.png)
 
 Then, create a string attribute named **Conversion Funnel - Last Step Completed**. This string attribute will have an enrichment for each step of the funnel and will check for each step of the funnel being completed using the rules above.
 
-![](/images/server-side/attributes/conversion_funnel_last_step_completed.png)
+![](https://docs.tealium.com/images/server-side/attributes/conversion_funnel_last_step_completed.png)
 
 #### Abandonment
 
 Abandonment must be determined at the end of the session to ensure that all page views have been accounted for. This can be done by creating a badge titled **Cart Abandoner** that looks at the conversion funnel at the end of the visit and checks to see if the funnel was started but not completed.
 
-![](/images/server-side/attributes/assign_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/assign_cart_abandoner_badge.png)
 
 We also want to remove the badge upon the **Page View** event when the conversion funnel is completed.
 
-![](/images/server-side/attributes/remove_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/remove_cart_abandoner_badge.png)
 
 #### Audience
 
 We can then add an audience that makes use of the newly created badge. The audience condition validates that we have a user identifier, such as email address, so that they can be targeted.
 
-![](/images/server-side/attributes/audience_using_cart_abandoner_badge.png)
+![](https://docs.tealium.com/images/server-side/attributes/audience_using_cart_abandoner_badge.png)
 
 #### Action
 
@@ -316,7 +324,7 @@ This audience can now be used to trigger any connector to help get the customer 
 
 **The what**: We are telling the vendor the visitor abandoned the cart and at which step.
 
-![](/images/server-side/attributes/funnel_audience_conversion_action.png)
+![](https://docs.tealium.com/images/server-side/attributes/funnel_audience_conversion_action.png)
 
 #### Trace
 

@@ -3,7 +3,11 @@ title: Insightly Connector Setup Guide (Deprecated)
 description: This article describes how to set up the Insightly connector in your Customer Data Hub account.
 url: https://docs.tealium.com/server-side-connectors/insightly-connector-deprecated/
 ---
-This connector is now deprecated and no longer available in the tag marketplace. For information about the Insightly CRM connector, see the [Insightly CRM Connector Setup Guide]().
+
+<blockquote>
+This connector is now deprecated and no longer available in the tag marketplace. For information about the Insightly CRM connector, see the [Insightly CRM Connector Setup Guide](https://docs.tealium.com/insightly-crm-connector/).
+</blockquote>
+
 
 ## Connector Actions
 
@@ -16,7 +20,7 @@ This connector is now deprecated and no longer available in the tag marketplace.
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -35,10 +39,10 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|First Name|  &lt;ul&gt;&lt;li&gt;First name of the contact.&lt;/li&gt;&lt;li&gt;Either first name or last name is required.&lt;/li&gt;&lt;/ul&gt; |
-|Last Name|  &lt;ul&gt;&lt;li&gt;Last name of the contact.&lt;/li&gt;&lt;li&gt;Either first name or last name is required.&lt;/li&gt;&lt;/ul&gt; |
-|Attributes|  &lt;ul&gt;&lt;li&gt;Additional attributes for the contact.&lt;/li&gt;&lt;li&gt;These parameters must exist within Insightly.&lt;/li&gt;&lt;li&gt;For a list of available attributes, see: [Insightly&#39;s documentation](https://api.insight.ly/v2.3/Help#!/Contacts/AddContact).&lt;/li&gt;&lt;/ul&gt; |
-|Tags|  &lt;ul&gt;&lt;li&gt;Tags to assign to the contact.&lt;/li&gt;&lt;/ul&gt; |
+|First Name|  <ul><li>First name of the contact.</li><li>Either first name or last name is required.</li></ul> |
+|Last Name|  <ul><li>Last name of the contact.</li><li>Either first name or last name is required.</li></ul> |
+|Attributes|  <ul><li>Additional attributes for the contact.</li><li>These parameters must exist within Insightly.</li><li>For a list of available attributes, see: [Insightly's documentation](https://api.insight.ly/v2.3/Help#!/Contacts/AddContact).</li></ul> |
+|Tags|  <ul><li>Tags to assign to the contact.</li></ul> |
 
 ### Action - Update a Contact
 
@@ -46,11 +50,11 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact ID|  &lt;ul&gt;&lt;li&gt;The ID of the contact to be updated.&lt;/li&gt;&lt;/ul&gt; |
-|First Name|  &lt;ul&gt;&lt;li&gt;The first name of the contact.&lt;/li&gt;&lt;li&gt;Either first name or last name is required.&lt;/li&gt;&lt;/ul&gt; |
-|Last Name|  &lt;ul&gt;&lt;li&gt;The last name of the contact.&lt;/li&gt;&lt;li&gt;Either first name or last name is required.&lt;/li&gt;&lt;/ul&gt; |
-|Attributes|  &lt;ul&gt;&lt;li&gt;Additional attributes to be updated.&lt;/li&gt;&lt;li&gt;For a list of available attributes, see: [Insightly&#39;s documentation](https://api.insight.ly/v2.3/Help#!/Contacts/UpdateContact).&lt;/li&gt;&lt;/ul&gt; |
-|Tags|  &lt;ul&gt;&lt;li&gt;Tags to be updated.&lt;/li&gt;&lt;/ul&gt; |
+|Contact ID|  <ul><li>The ID of the contact to be updated.</li></ul> |
+|First Name|  <ul><li>The first name of the contact.</li><li>Either first name or last name is required.</li></ul> |
+|Last Name|  <ul><li>The last name of the contact.</li><li>Either first name or last name is required.</li></ul> |
+|Attributes|  <ul><li>Additional attributes to be updated.</li><li>For a list of available attributes, see: [Insightly's documentation](https://api.insight.ly/v2.3/Help#!/Contacts/UpdateContact).</li></ul> |
+|Tags|  <ul><li>Tags to be updated.</li></ul> |
 
 ### Action - Add a Lead
 
@@ -58,10 +62,10 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Last Name|  &lt;ul&gt;&lt;li&gt;Last name of the lead.&lt;/li&gt;&lt;/ul&gt; |
-|First Name|  &lt;ul&gt;&lt;li&gt;First name of the lead.&lt;/li&gt;&lt;/ul&gt; |
-|Attributes|  &lt;ul&gt;&lt;li&gt;Additional attributes for the lead.&lt;/li&gt;&lt;li&gt;For a list of available attributes, see: [Insightly&#39;s documentation](https://api.insight.ly/v2.3/Help#!/Leads/AddLead).&lt;/li&gt;&lt;/ul&gt; |
-|Tags|  &lt;ul&gt;&lt;li&gt;Tags to assign to the lead.&lt;/li&gt;&lt;/ul&gt; |
+|Last Name|  <ul><li>Last name of the lead.</li></ul> |
+|First Name|  <ul><li>First name of the lead.</li></ul> |
+|Attributes|  <ul><li>Additional attributes for the lead.</li><li>For a list of available attributes, see: [Insightly's documentation](https://api.insight.ly/v2.3/Help#!/Leads/AddLead).</li></ul> |
+|Tags|  <ul><li>Tags to assign to the lead.</li></ul> |
 
 ### Action - Update a Lead
 
@@ -69,8 +73,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Lead ID|  &lt;ul&gt;&lt;li&gt;The ID of the lead to be updated.&lt;/li&gt;&lt;/ul&gt; |
-|Last Name|  &lt;ul&gt;&lt;li&gt;Last name of the lead.&lt;/li&gt;&lt;/ul&gt; |
-|First Name|  &lt;ul&gt;&lt;li&gt;First name of the lead.&lt;/li&gt;&lt;/ul&gt; |
-|Attributes|  &lt;ul&gt;&lt;li&gt;Additional attributes to be updated.&lt;/li&gt;&lt;li&gt;For a list of available attributes, see: [Insightly&#39;s documentation](https://api.insight.ly/v2.3/Help#!/Leads/UpdateLead).&lt;/li&gt;&lt;/ul&gt; |
-|Tags|  &lt;ul&gt;&lt;li&gt;Tags to be updated.&lt;/li&gt;&lt;/ul&gt; |
+|Lead ID|  <ul><li>The ID of the lead to be updated.</li></ul> |
+|Last Name|  <ul><li>Last name of the lead.</li></ul> |
+|First Name|  <ul><li>First name of the lead.</li></ul> |
+|Attributes|  <ul><li>Additional attributes to be updated.</li><li>For a list of available attributes, see: [Insightly's documentation](https://api.insight.ly/v2.3/Help#!/Leads/UpdateLead).</li></ul> |
+|Tags|  <ul><li>Tags to be updated.</li></ul> |

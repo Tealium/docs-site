@@ -11,37 +11,41 @@ In this event, the remaining users have the opportunity to salvage any changes t
 
 In this scenario, User A is editing a certain Version X and overwrites it with **Save/Publish** just when User B is also editing it. Version X now has an update, along with unsaved changes. What can User B do to salvage their changes? There are two options to saving changes:
 
-* **Merge the new version into your current work**: Keeps B&#39;s and A&#39;s changes together in a new version.
+* **Merge the new version into your current work**: Keeps B's and A's changes together in a new version.
 * **Continue working and save later**: User B continues to work and can save as a new version later.
 
-![](/images/iq-tag-management/save-publish/concurrent-user-profile-has-been-saved.png)
+![](https://docs.tealium.com/images/iq-tag-management/save-publish/concurrent-user-profile-has-been-saved.png)
 
 The **Concurrent Notification** alert message is a cue for you to take action. 
 
-### Merge your changes with another user&#39;s saved changes
+### Merge your changes with another user's saved changes
 
 To bring concurrent changes into your version:
 
 1. Select the **Merge the new version into your current work** option and then click **OK**
-1. In the next window, you are presented a list of the other user&#39;s changes that were saved ahead. Check the items you want to merge into your version. Unchecked items are NOT merged.
-    ![](/images/iq-tag-management/their-changes.png)
+1. In the next window, you are presented a list of the other user's changes that were saved ahead. Check the items you want to merge into your version. Unchecked items are NOT merged.
+    ![](https://docs.tealium.com/images/iq-tag-management/their-changes.png)
 1. Review the changes in the confirmation window and click **Merge** to complete.
-    ![](/images/iq-tag-management/confirm-their-changes.png)  
-1. **Save/Publish** to place all the changes into a new version. For more information, see [Save and Publish a Version]().
-    ![](/images/iq-tag-management/save-publish/save-publish-merge.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/confirm-their-changes.png)  
+1. **Save/Publish** to place all the changes into a new version. For more information, see [Save and Publish a Version](https://docs.tealium.com/save-publish-a-version/).
+    ![](https://docs.tealium.com/images/iq-tag-management/save-publish/save-publish-merge.png)
 
+
+<blockquote>
 Concurrent users will see an alert that announces your new version. If they want to view your new version, they should save their work in progress first.
+</blockquote>
+
 
 #### Save your changes without merge
 
-If you decide to keep only your changes and discard the other user&#39;s changes, perform a **Save As** without merging:
+If you decide to keep only your changes and discard the other user's changes, perform a **Save As** without merging:
 
 1. Select the **Continue working and save later** option and click **OK**.
 1. Click **Save/Publish** to save your changes into a new version.
 
-    ![](/images/iq-tag-management/save-publish/save-publish-merge.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/save-publish/save-publish-merge.png)
 
-1. Save your changes as a new version. For more information, see [Save and Publish a Version]().
+1. Save your changes as a new version. For more information, see [Save and Publish a Version](https://docs.tealium.com/save-publish-a-version/).
 
 ### Resolve conflicts before merge
 
@@ -50,11 +54,11 @@ Conflicts arise when you to attempt to merge the saved and unsaved instances of 
 To resolve a conflict from the **Merge Changes** window:
 
 1. Click the **eye icon** to reveal the conflicting changes.
-    ![](/images/iq-tag-management/conflict-their-and-yours.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/conflict-their-and-yours.png)  
 
 1. Read the configurations and determine which instance you want to keep.
 1. Click the **Use this** bar to move the change you want into the **Accepted Changes** column. Unaccepted changes will be discarded before merging.
-    ![](/images/iq-tag-management/accepted-column.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/accepted-column.png)  
 
 1. Proceed to merge then **Save/Publish** your version.
 

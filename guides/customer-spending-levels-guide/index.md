@@ -50,7 +50,7 @@ In general, the following event attributes will be helpful in tracking purchase 
 | `order_total` | `2549.00` |
 | `tealium_event` | `purchase` |
 
-For more information about the data layer definition for retail, see .
+For more information about the data layer definition for retail, see [retail](https://docs.tealium.com/retail/).
 
 ### Required AudienceStream Attributes
 
@@ -58,7 +58,7 @@ For more information about the data layer definition for retail, see .
 |----------------|--------|---------|-----------------------------------------------------------------------------------------------|
 | Purchased | Boolean | Visit | Indicates that a **Purchase** event has occurred.   |
 | Email Address | String | Visitor | Captures the email address of the visitor.   |
-| Lifetime Purchase Total | Number | Visitor | Collects the total of purchases during the visitor&#39;s lifetime. |
+| Lifetime Purchase Total | Number | Visitor | Collects the total of purchases during the visitor's lifetime. |
 | 30 Day Purchases | Timeline | Visitor | Collects the purchases by the visitor in the past 30 days. |
 | 60 Day Purchases | Timeline | Visitor | Collects the purchases by the visitor in the past 30 days. |
 | 30 Day Purchases Running Total | Number | Visitor | Counts the total of purchases by the visitor in the past 30 days. |
@@ -74,7 +74,7 @@ Create a string visitor attribute named `Email Address` with the following enric
 
 * Set to `customer_email` on **ANY EVENT** if `customer_email` is assigned.
 
-![](/images/guides/email_address_attribute.png)
+![](https://docs.tealium.com/images/guides/email_address_attribute.png)
 
 ### Create Purchased attribute
 
@@ -83,7 +83,7 @@ Create a boolean visit attribute named `Purchased` with the following enrichment
 * Set to `false` on **NEW VISIT**.
 * Set to `true` on **ANY EVENT** where `tealium_event` is **equal (ignore case)** to `purchase`.
 
-![](/images/guides/boolean_purchased.png)
+![](https://docs.tealium.com/images/guides/boolean_purchased.png)
 
 ### Create Lifetime Purchase Total attribute
 
@@ -91,7 +91,7 @@ Create a number visitor attribute named `Lifetime Purchase Total` with the follo
 
 * **Increment Number** by `order_total` on **ANY EVENT** where `Purchased` **is true** and `order_total` is assigned.
 
-![](/images/guides/lifetime_purchase_total_attribute.png)
+![](https://docs.tealium.com/images/guides/lifetime_purchase_total_attribute.png)
 
 ### Create 30 Day Purchases timeline attribute
 
@@ -100,7 +100,7 @@ Create a timeline visitor attribute named `30 Day Purchases timeline` with the f
 * **Set Expiration For Timeline Events** to `30 days`.
 * **Update Timeline** at the **Time of event received** and capture the attribute data for `order_total` where `Purchased` **is true** and `order_total` is assigned.
 
-![](/images/guides/30_day_purchases_timeline_attribute.png)
+![](https://docs.tealium.com/images/guides/30_day_purchases_timeline_attribute.png)
 
 ### Create 60 Day Purchases timeline attribute
 
@@ -109,7 +109,7 @@ Create a timeline visitor attribute named `60 Day Purchases timeline` with the f
 * **Set Expiration For Timeline Events** to `60 days`.
 * **Update Timeline** at the **Time of event received** on **ANY EVENT** and capture the attribute data for `order_total` where `Purchased` **is true** and `order_total` is assigned
 
-![](/images/guides/60_day_purchases_timeline_attribute.png)
+![](https://docs.tealium.com/images/guides/60_day_purchases_timeline_attribute.png)
 
 ### Create 30 Day Purchases Running Total attribute
 
@@ -117,7 +117,7 @@ Create a number visitor attribute named `30 Day Purchases Running Total` with th
 
 * **Set Number** 30 Day Purchases Running Total to the rolling sum of `order_total` captured in timeline `30 Day Purchases` on ANY EVENT.
 
-![](/images/guides/30_day_purchases_running_total_attribute.png)
+![](https://docs.tealium.com/images/guides/30_day_purchases_running_total_attribute.png)
 
 ### Create 60 Day Purchases Running Total attribute
 
@@ -125,7 +125,7 @@ Create a number visitor attribute named `60 Day Purchases Running Total` with th
 
 * **Set Number** 60 Day Purchases Running Total to the rolling sum of `order_total` captured in timeline `60 Day Purchases` on ANY EVENT.
 
-![](/images/guides/60_day_purchases_running_total_attribute.png)
+![](https://docs.tealium.com/images/guides/60_day_purchases_running_total_attribute.png)
 
 ## Step 2: Create audiences
 
@@ -138,7 +138,7 @@ Create a `High Value Lifetime` audience with the following conditions:
 * **Lifetime purchase total** is greater than or equal to `5000`
 * **Email Address** is assigned
 
-![](/images/guides/high_value_lifetime_audience.png) 
+![](https://docs.tealium.com/images/guides/high_value_lifetime_audience.png) 
 
 ### Create Low Value Lifetime audience
 
@@ -147,7 +147,7 @@ Create a `Low Value Lifetime` audience with the following conditions:
 * **Lifetime purchase total** is less than or equal to `1000`
 * **Email Address** is assigned
 
-![](/images/guides/low_value_lifetime_audience.png) 
+![](https://docs.tealium.com/images/guides/low_value_lifetime_audience.png) 
 
 ### Create High Value 30 Day audience
 
@@ -156,7 +156,7 @@ Create a `High Value Lifetime` audience with the following conditions:
 * **30 Day Purchases Running Total** is less than or equal to `1500`
 * **Email Address** is assigned
 
-![](/images/guides/high_value_30_day_audience.png) 
+![](https://docs.tealium.com/images/guides/high_value_30_day_audience.png) 
 
 ### Create High Value 60 Day audience
 
@@ -165,7 +165,7 @@ Create a `High Value Lifetime` audience with the following conditions:
 * **60 Day Purchases Running Total** is less than or equal to `3000`
 * **Email Address** is assigned
 
-![](/images/guides/high_value_60_day_audience.png) 
+![](https://docs.tealium.com/images/guides/high_value_60_day_audience.png) 
 
 ### Create Low Value 30 Day audience
 
@@ -174,7 +174,7 @@ Create a `Low Value Lifetime` audience with the following conditions:
 * **30 Day Purchases Running Total** is less than or equal to `100`
 * **Email Address** is assigned
 
-![](/images/guides/low_value_30_day_audience.png) 
+![](https://docs.tealium.com/images/guides/low_value_30_day_audience.png) 
 
 ### Create Low Value 60 Day audience
 
@@ -183,7 +183,7 @@ Create a `Low Value Lifetime` audience with the following conditions:
 * **60 Day Purchases Running Total** is less than or equal to `200`
 * **Email Address** is assigned
 
-![](/images/guides/low_value_60_day_audience.png) 
+![](https://docs.tealium.com/images/guides/low_value_60_day_audience.png) 
 
 ## Step 3: Configure a connector
 
@@ -191,16 +191,16 @@ With your attributes, badges, and audiences set up, you’re ready to connect th
 
 Some common connectors and actions for customer spending level campaigns include:
 
-* [Adobe Campaign Classic]()
-* [Iterable](): **Subscribe User to a List**, **Upsert User** action
-* [Marketo](): **Add Lead to List** action
-* [SendGrid](): **Upsert Contact** action
+* [Adobe Campaign Classic](https://docs.tealium.com/adobe-campaign-classic-connector/)
+* [Iterable](https://docs.tealium.com/iterable-connector/): **Subscribe User to a List**, **Upsert User** action
+* [Marketo](https://docs.tealium.com/marketo-connector/): **Add Lead to List** action
+* [SendGrid](https://docs.tealium.com/sendgrid-connector/): **Upsert Contact** action
 
 For example, you could set up the Marketo connector to add a visitor’s email address to a high-value customer spending list. Customize your connector actions to trigger only for when a visitor joins the High Value 60 Day audience or is in that audience at the end of the visit.
 
-![](/images/guides/customer_spending_levels_marketo_connector_1.png) 
+![](https://docs.tealium.com/images/guides/customer_spending_levels_marketo_connector_1.png) 
 
-![](/images/guides/customer_spending_levels_marketo_connector_1.png) 
+![](https://docs.tealium.com/images/guides/customer_spending_levels_marketo_connector_1.png) 
 
 For more information, see .
 
@@ -208,9 +208,13 @@ For more information, see .
 
 While you can often send out an email to a user right after they achieve a particular spending level to acknowledge their achievement and encourage them to spend more, you may have a higher chance of conversion by delaying the email for your target audience. Use delayed actions to set connector action delays in Tealium and then trigger your email workflows in your vendor of choice.
 
- We recommend that you set a delay for an hour to remarket visitors that have an interest in buying more. Also, most email marketing tools offer a feature that monitors the number of emails a customer has received so as not to overwhelm them with messages. 
 
-For detailed information about how to use delayed actions in Tealium, .
+<blockquote>
+We recommend that you set a delay for an hour to remarket visitors that have an interest in buying more. Also, most email marketing tools offer a feature that monitors the number of emails a customer has received so as not to overwhelm them with messages.
+</blockquote>
+
+
+For detailed information about how to use delayed actions in Tealium, [about-delayed-actions](https://docs.tealium.com/about-delayed-actions/).
 
 ## Next steps
 
@@ -221,4 +225,4 @@ This guide illustrates how to build a basic spending level-based campaign. You c
 | Average item price              | Number         | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.           |
 | Favorite categories             | Tally          | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.          |
 
-After creating attributes and audiences, you can further enhance campaigns by integrating additional customer behavior attributes or utilizing advanced personalization features like the Tealium Moments API. For more information, see [About Moments API]().
+After creating attributes and audiences, you can further enhance campaigns by integrating additional customer behavior attributes or utilizing advanced personalization features like the Tealium Moments API. For more information, see [About Moments API](https://docs.tealium.com/about-moments-api/).

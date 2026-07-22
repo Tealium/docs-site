@@ -19,9 +19,13 @@ Numeric values are stored as decimals or integers. Choose the type that matches 
 
 The array of numbers is available in the following scopes: Event, Visit, Visitor.
 
-![](/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
 
+
+<blockquote>
 String representations of numbers (`0`, `123`, `12.95`) are converted to their numeric values. All other non-numeric values are ignored.
+</blockquote>
+
 
 ## Enrichments
 

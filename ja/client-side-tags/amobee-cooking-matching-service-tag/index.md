@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/client-side-tags/amobee-cooking-matching-servic
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/client-side-tags/amobee-cooking-matching-servic
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -29,6 +29,6 @@ url: https://docs.tealium.com/ja/client-side-tags/amobee-cooking-matching-servic
 
 |変数| 説明|
 |---| ---|
-|`amobee_token`|  &lt;ul&gt;&lt;li&gt;Amobeeトークン&lt;/li&gt;&lt;li&gt;Amobeeから提供されるあなたのAmobeeトークン。&lt;/li&gt;&lt;/ul&gt; |
-|`tealium_account`|  &lt;ul&gt;&lt;li&gt;Tealiumアカウント名&lt;/li&gt;&lt;/ul&gt; |
-|`tealium_profile`|  &lt;ul&gt;&lt;li&gt;Tealiumプロファイル名&lt;/li&gt;&lt;/ul&gt; |
+|`amobee_token`|  <ul><li>Amobeeトークン</li><li>Amobeeから提供されるあなたのAmobeeトークン。</li></ul> |
+|`tealium_account`|  <ul><li>Tealiumアカウント名</li></ul> |
+|`tealium_profile`|  <ul><li>Tealiumプロファイル名</li></ul> |

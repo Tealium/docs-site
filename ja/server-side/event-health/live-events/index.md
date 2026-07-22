@@ -9,13 +9,13 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 ## ライブイベントの使用
 
-**Validate &gt; Live Events**にアクセスしてライブイベントにアクセスします。
+**Validate > Live Events**にアクセスしてライブイベントにアクセスします。
 
-![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventfeed.png)
 
 **Data Sources** および **Event Feeds** リストを使用して、チャートに表示されるイベントを制御します。デフォルトの選択は **All Data Sources** と **All Events** です。これらのメニューを調整すると、チャートが更新され、選択した組み合わせのイベント活動が表示されます。
 
-![](/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
 
 特定のイベントフィードのイベントを選択すると、チャートはそのイベントのデータのみを表示します。イベントフィードをすべてのイベントデータと比較するには、**Compare against All Events**をクリックします。たとえば、特定の国や地域のイベントフィードを作成し、その国や地域のイベントフィードをすべてのイベントと比較することができます。
 
@@ -30,7 +30,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 1. **Start Trace** をクリックし、指示に従います。
 1. 生成されたトレースIDをコピーして **Continue** をクリックします。
 1. テストするページを開いた新しいChromeブラウザウィンドウを開きます。
-1. **Tealium Tools &gt; Trace** を開き、トレースIDを入力します。
+1. **Tealium Tools > Trace** を開き、トレースIDを入力します。
 
 ライブイベントチャートは、トレースされたセッション中にトリガーされたイベントのみを表示するようになります。同じ手順に従って新しいトレースを開始するか、既存のトレースに再参加することができます。
 
@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 [イベント仕様]()が定義されている場合、ライブイベントは受信データの品質を表示します。チャートの各バーは適用されたイベント仕様のステータスに応じてセグメント化されます。次のフィルタはオンまたはオフに切り替えることができ、チャートの表示を調整します：
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-event-specification-filters.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-event-specification-filters.png)
 
 * **Valid Events**  
 これらのイベントはアクティブなイベント仕様の要件を満たしています。これは、イベントが `tealium_event` 属性の既知の値を持ち、仕様から必要な属性をすべて持っていることを意味します。有効なイベントが多く表示されるほど良いです。これは、インストールが仕様で期待されるデータを送信していることを意味します。
@@ -47,7 +47,11 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 * **No Spec**  
 これらのイベントには一致するイベント仕様がありません。これは、イベントが `tealium_event` 属性を持っていないか、その値に対応するイベント仕様がないことを意味します。
 
- イベント仕様はデータをフィルタリングしません。イベントが無効であっても、システムはイベントを処理します。 
+
+<blockquote>
+イベント仕様はデータをフィルタリングしません。イベントが無効であっても、システムはイベントを処理します。
+</blockquote>
+
 
 ## イベントの詳細を表示
 
@@ -55,13 +59,13 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 たとえば、有効な `cart_empty` イベント：
 
-![](/images/server-side/whiteui-eventstream-live-events-and-feeds-valid-events-details.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-live-events-and-feeds-valid-events-details.png)
 
 イベント属性の詳細は、次の属性タイプに整理されています：Universal Variable, JavaScript Page Variable, HTML Metadata, First-party Cookie, Query String Parameter, および Tealium提供。
 
 イベント仕様に一致しないため無効な `cart_empty` イベントは次のようになります：
 
-![](/images/server-side/whiteui-eventstream-eventspecifications-invalid-event.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-eventspecifications-invalid-event.png)
 
 ## 未知の属性を定義する
 
@@ -69,7 +73,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 イベントの詳細ビューでは、未知の属性は **Data Type** 列で `Unknown` と表示されます。
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
 
 未知の属性は、次のようにして画面から直接定義できます：
 
@@ -83,6 +87,10 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 `tealium_event` にカスタム値があるイベントは、関連するイベント仕様がない場合、イベントの詳細ビューで `Unknown` として表示されます。この場合、検出された `tealium_event` の値とイベントの属性に基づいて、イベントの詳細ビューから直接カスタムイベント仕様を作成します。
 
-ライブイベントからイベント仕様を作成する前に、未知の属性を定義することをお勧めします。詳細については、[未知の属性を定義する](#define-unknown-attributes)を参照してください。
 
-詳細については、[イベント仕様の管理]()を参照してください。
+<blockquote>
+ライブイベントからイベント仕様を作成する前に、未知の属性を定義することをお勧めします。詳細については、[未知の属性を定義する](#define-unknown-attributes)を参照してください。
+</blockquote>
+
+
+詳細については、[イベント仕様の管理](https://docs.tealium.com/manage-event-specifications/#create-an event-specification)を参照してください。

@@ -17,11 +17,15 @@ This connector uses the following vendor APIs:
   * [Custom Audience Import API](https://docs.rokt.com/developers/api-reference/custom-audience-import/)
   * [Event API](https://docs.rokt.com/developers/api-reference/event-api/)
 
- The send event actions support both v1 and v2 authentication methods. You can specify the API to use at the action level. However, the Update custom audience actions only support the v2 authentication method. For more information, see the [Rokt: Event API v1](https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret) or [Rokt: Event API v2](https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2) documentation. 
+
+<blockquote>
+The send event actions support both v1 and v2 authentication methods. You can specify the API to use at the action level. However, the Update custom audience actions only support the v2 authentication method. For more information, see the [Rokt: Event API v1](https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret) or [Rokt: Event API v2](https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2) documentation.
+</blockquote>
+
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 10 minutes
@@ -29,7 +33,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](/server-side/connectors/manage/).
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/server-side/connectors/manage/).
 
 After adding the connector, configure the following settings:
 

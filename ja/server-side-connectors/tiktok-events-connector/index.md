@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-events-connector/
 
 ## バッチ制限
 
-このコネクタはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：50
 * 最古のリクエストからの最大時間：5分
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-events-connector/
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-events-connector/
 このコネクタを構成して、Tealium iQタグ管理アカウントのTikTokピクセルタグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：
 
 ```nohl
-tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;
+tiktok_event_id_<TIKTOK_EVENT>_<TAG_UID>
 ```
 
 例えば、UIDが`174`のタグからのイベントは次の属性を送信します：
@@ -45,7 +45,7 @@ tiktok_event_id_Checkout_174
 
 Tealium iQの**タグ**テーブルまたはタグの詳細画面でタグUIDを見つけます：
 
-![](/images/server-side-connectors/tiktok-pixel-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/tiktok-pixel-uid.png)
 
 このイベントID形式に一致する各イベントIDについて、別のアクションを構成します。イベント固有のイベントID属性を`Event ID`にマッピングし、対応するイベント名を`Event Name`にマッピングします。
 
@@ -56,7 +56,7 @@ Tealium iQの**タグ**テーブルまたはタグの詳細画面でタグUIDを
 | `tiktok_event_id_Checkout_174` | Event ID |
 | `Checkout`（カスタムテキスト） | Event Name |
 
-詳細については、[TikTokピクセルタグ構成ガイド]()を参照してください。
+詳細については、[TikTokピクセルタグ構成ガイド](https://docs.tealium.com/tiktok-pixel-tag/)を参照してください。
 
 ### 自動重複排除
 
@@ -82,14 +82,14 @@ Tealium iQの**タグ**テーブルまたはタグの詳細画面でタグUIDを
 
 | パラメータ | 説明 |
 | --- | --- |
-| イベントソース | イベントソースを選択します。可能な値は次のとおりです：&lt;ul&gt;&lt;li&gt;`WEB`&lt;/li&gt;&lt;li&gt;`APP`&lt;/li&gt;&lt;li&gt;`OFFLINE`&lt;/li&gt;&lt;li&gt;`CRM`&lt;/li&gt;&lt;/ul&gt; |
-| イベントタイプ | 変換イベント名。可能な値は次のとおりです：&lt;ul&gt;&lt;li&gt;`レベル達成`&lt;/li&gt;&lt;li&gt;`支払情報の追加`&lt;/li&gt;&lt;li&gt;`カートに追加`&lt;/li&gt;&lt;li&gt;`ウィッシュリストに追加`&lt;/li&gt;&lt;li&gt;`チェックアウト`&lt;/li&gt;&lt;li&gt;`ボタンクリック`&lt;/li&gt;&lt;li&gt;`支払い完了`&lt;/li&gt;&lt;li&gt;`登録完了`&lt;/li&gt;&lt;li&gt;`チュートリアル完了`&lt;/li&gt;&lt;li&gt;`連絡`&lt;/li&gt;&lt;li&gt;`グループ作成`&lt;/li&gt;&lt;li&gt;`ロール作成`&lt;/li&gt;&lt;li&gt;`カスタム`&lt;/li&gt;&lt;li&gt;`ダウンロード`&lt;/li&gt;&lt;li&gt;`リード生成`&lt;/li&gt;&lt;li&gt;`チェックアウト開始`&lt;/li&gt;&lt;li&gt;`アプリインストール`&lt;/li&gt;&lt;li&gt;`アプリ内広告クリック`&lt;/li&gt;&lt;li&gt;`アプリ内広告表示`&lt;/li&gt;&lt;li&gt;`グループ参加`&lt;/li&gt;&lt;li&gt;`アプリ起動`&lt;/li&gt;&lt;li&gt;`アプリケーション読み込み`&lt;/li&gt;&lt;li&gt;`ローン承認`&lt;/li&gt;&lt;li&gt;`ローン支払い`&lt;/li&gt;&lt;li&gt;`ログイン成功`&lt;/li&gt;&lt;li&gt;`注文`&lt;/li&gt;&lt;li&gt;`購入`&lt;/li&gt;&lt;li&gt;`評価`&lt;/li&gt;&lt;li&gt;`検索`&lt;/li&gt;&lt;li&gt;`クレジット使用`&lt;/li&gt;&lt;li&gt;`トライアル開始`&lt;/li&gt;&lt;li&gt;`フォーム送信`&lt;/li&gt;&lt;li&gt;`サブスクライブ`&lt;/li&gt;&lt;li&gt;`実績解除`&lt;/li&gt;&lt;li&gt;`コンテンツ閲覧`&lt;/li&gt;&lt;/ul&gt; |
-| イベントソースID | (必須) イベントを追跡するためのID。&lt;ul&gt;&lt;li&gt;`event_source`が`web`の場合、このフィールドにピクセルコードを指定します。&lt;/li&gt;&lt;li&gt;`event_source`が`offline`の場合、このフィールドにオフラインイベントIDを指定します。&lt;/li&gt;&lt;li&gt;`event_source`が`app`の場合、このフィールドにTikTokアプリIDを指定します。&lt;/li&gt;&lt;li&gt;`event_source`が`crm`の場合、このフィールドにCRMイベントIDを指定します。CRMイベントIDを取得するには、`/crm/list/`を使用します。&lt;/li&gt;&lt;/ul&gt;|
+| イベントソース | イベントソースを選択します。可能な値は次のとおりです：<ul><li>`WEB`</li><li>`APP`</li><li>`OFFLINE`</li><li>`CRM`</li></ul> |
+| イベントタイプ | 変換イベント名。可能な値は次のとおりです：<ul><li>`レベル達成`</li><li>`支払情報の追加`</li><li>`カートに追加`</li><li>`ウィッシュリストに追加`</li><li>`チェックアウト`</li><li>`ボタンクリック`</li><li>`支払い完了`</li><li>`登録完了`</li><li>`チュートリアル完了`</li><li>`連絡`</li><li>`グループ作成`</li><li>`ロール作成`</li><li>`カスタム`</li><li>`ダウンロード`</li><li>`リード生成`</li><li>`チェックアウト開始`</li><li>`アプリインストール`</li><li>`アプリ内広告クリック`</li><li>`アプリ内広告表示`</li><li>`グループ参加`</li><li>`アプリ起動`</li><li>`アプリケーション読み込み`</li><li>`ローン承認`</li><li>`ローン支払い`</li><li>`ログイン成功`</li><li>`注文`</li><li>`購入`</li><li>`評価`</li><li>`検索`</li><li>`クレジット使用`</li><li>`トライアル開始`</li><li>`フォーム送信`</li><li>`サブスクライブ`</li><li>`実績解除`</li><li>`コンテンツ閲覧`</li></ul> |
+| イベントソースID | (必須) イベントを追跡するためのID。<ul><li>`event_source`が`web`の場合、このフィールドにピクセルコードを指定します。</li><li>`event_source`が`offline`の場合、このフィールドにオフラインイベントIDを指定します。</li><li>`event_source`が`app`の場合、このフィールドにTikTokアプリIDを指定します。</li><li>`event_source`が`crm`の場合、このフィールドにCRMイベントIDを指定します。CRMイベントIDを取得するには、`/crm/list/`を使用します。</li></ul>|
 | イベント時間  | (必須) イベントが発生した時のUnixエポック形式のタイムスタンプ（秒単位）。タイムスタンプを提供しない場合、コネクタは現在のタイムスタンプを使用します。 |
 | カスタムイベント名 | カスタムイベント名。**イベントタイプ**ドロップダウンから**カスタム**を選択した場合に必要です。 |
 | ピクセルIDオーバーライド  | **TikTokイベントマネージャー**で見つかるピクセルID。この構成は**構成**セクションで使用される**ピクセルID**を上書きします。 |
 | アクセストークンオーバーライド | 構成内の値を上書きするカスタムアクセストークン。 |
-| イベントID  | ユニークなユーザーまたはセッションを識別できる任意のハッシュID。例えば、`SessionID_RandomNumber`。[TikTokピクセルタグでイベントIDを生成する]()を`true`に構成すると、このIDはTikTokトラッキングイベントごとに自動的に生成されます。 |
+| イベントID  | ユニークなユーザーまたはセッションを識別できる任意のハッシュID。例えば、`SessionID_RandomNumber`。[TikTokピクセルタグでイベントIDを生成する](https://docs.tealium.com/tiktok-pixel-tag/)を`true`に構成すると、このIDはTikTokトラッキングイベントごとに自動的に生成されます。 |
 | データ使用制限 | このフィールドは、イベントソースが`WEB`または`APP`の場合にのみサポートされます。限定データ処理構成。限定データ使用機能について詳しくは、[TikTok: 限定データ使用](https://business-api.tiktok.com/portal/docs?id=1771101204435970)を参照してください。 |
 | テストイベントコード | テストイベントを送信して、TikTokイベントマネージャー(`TTEM`)の本番データから除外します。`test_event_code`は`TTEM`の`Test Events`タブで取得します。 |
 
@@ -117,7 +117,7 @@ Tealium iQの**タグ**テーブルまたはタグの詳細画面でタグUIDを
 | パラメータ | 説明 |
 | --- | --- |
 | ユーザーのメール | 推奨。ユーザーのメールアドレスをSHA256でハッシュ化。 |
-| ユーザーの電話番号 | 推奨。ユーザーの電話番号をSHA256でハッシュ化。国コードは`&#43;`を付け、他の文字（スペース、`-`）は削除（例：アメリカの場合は`&#43;12125551212`）。国コードが`86`の場合は国コードを含めない（例：`13800000000`）。 |
+| ユーザーの電話番号 | 推奨。ユーザーの電話番号をSHA256でハッシュ化。国コードは`+`を付け、他の文字（スペース、`-`）は削除（例：アメリカの場合は`+12125551212`）。国コードが`86`の場合は国コードを含めない（例：`13800000000`）。 |
 | ユーザー外部ID | 推奨。外部ユーザーIDをSHA256でハッシュ化。 |
 | Cookie ID  | CookieのID。 |
 | IP | ブラウザの非ハッシュ化された公開IPアドレス。TikTok広告とウェブサイト訪問イベントのマッチング確率を高めるため、**IP**と**User Agent**の両方を送信することを推奨。 |
@@ -230,4 +230,4 @@ Tealium iQの**タグ**テーブルまたはタグの詳細画面でタグUIDを
 このコネクタのカスタムイベントを選択するには：
 
 1. **イベントタイプ**カテゴリの下で、**変換イベント名**に`Custom`を選択します。
-1. **カスタムイベント名**フィールドにカスタムイベント名を入力し、**&#43; マッピング追加**をクリックします。
+1. **カスタムイベント名**フィールドにカスタムイベント名を入力し、**+ マッピング追加**をクリックします。

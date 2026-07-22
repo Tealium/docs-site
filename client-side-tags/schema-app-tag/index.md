@@ -5,11 +5,11 @@ url: https://docs.tealium.com/client-side-tags/schema-app-tag/
 ---
 ## Tag tips
 
-* The account ID can be found in the application under **Integrations &gt; JavaScript**.
+* The account ID can be found in the application under **Integrations > JavaScript**.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see .
+Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 After adding the tag, configure the following settings:
 
@@ -18,7 +18,7 @@ After adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

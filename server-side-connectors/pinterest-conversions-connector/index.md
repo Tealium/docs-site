@@ -8,9 +8,13 @@ url: https://docs.tealium.com/server-side-connectors/pinterest-conversions-conne
 * A Pinterest Ad Account with permissions to send conversion events.
 * The ability to send one of the following valid user identities in `user_data`:
     * Email (already SHA256 hashed) (`em`).
-    * Apple&#39;s Identifier for Advertisers (already SHA256 hashed) or Google Advertising ID (already SHA256 hashed) (`hashed_maids`).
+    * Apple's Identifier for Advertisers (already SHA256 hashed) or Google Advertising ID (already SHA256 hashed) (`hashed_maids`).
     * Client IP Address and Client User Agent (`client_ip_address` and `client_user_agent`).
-    * App ID (if applicable).  Pinterest requires at least one valid user identity for matching. Organizations with PII restrictions should obtain approvals before setting up this integration.
+    * App ID (if applicable). 
+<blockquote>
+Pinterest requires at least one valid user identity for matching. Organizations with PII restrictions should obtain approvals before setting up this integration.
+</blockquote>
+
 * For all offline events:
     * You must set the **Event Action Source** to `Offline` in the connector configuration.
     * Offline events must include all required event parameters. For more information, see [Pinterest: Format server event parameters](https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#format-server-event-parameters).
@@ -26,7 +30,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -55,12 +59,12 @@ Events that can be tracked include:
 
 ## Deduplication
 
-If redundant implementations exist (for example, the Pinterest API for Conversions and [Pinterest tag]()), deduplication is required to prevent double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions to be attributed than if the connector or tag solution is used independently.
+If redundant implementations exist (for example, the Pinterest API for Conversions and [Pinterest tag](https://docs.tealium.com/pinterest-tag/)), deduplication is required to prevent double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions to be attributed than if the connector or tag solution is used independently.
 
-The [Pinterest tag]() and Pinterest API for Conversions use the Event ID for deduplication. Ensure this value is included when multiple sources are used to track conversion data. To find your Event IDs, complete the following steps:
+The [Pinterest tag](https://docs.tealium.com/pinterest-tag/) and Pinterest API for Conversions use the Event ID for deduplication. Ensure this value is included when multiple sources are used to track conversion data. To find your Event IDs, complete the following steps:
 
 1. Log in to your [Pinterest business account](http://pinterest.com/business/create/).
-1. Navigate to  **Ads &gt; Reporting**.
+1. Navigate to  **Ads > Reporting**.
 1. Click the menu icon in the top-right above the table and select **Performance**.
 
 Depending on what event codes you’ve added to your site, they will be listed throughout the table along with the number of times they’ve happened during the selected timeframe.
@@ -80,7 +84,7 @@ Use a separate action for each type of event ID. Map the event-specific event ID
 | `pinterest_event_id_Checkout_32` | Event ID |
 | `Checkout` (dropdown selection) | Event Name |
 
-For more information, see the [Pinterest Tag Setup Guide]().
+For more information, see the [Pinterest Tag Setup Guide](https://docs.tealium.com/pinterest-tag/).
 
 ### Confirm deduplication
 
@@ -91,7 +95,7 @@ Pinterest does not display a deduplicated conversions metric. Instead, you confi
 
 To view `event_id` in Pinterest Ads Manager, use the following steps:
 
-1. Go to **Ads Manager &gt; Conversions &gt; Events**.
+1. Go to **Ads Manager > Conversions > Events**.
 1. Select your Ad Account.
 1. Select the event (for example, Checkout).
 1. Open **Event Diagnostics**.
@@ -108,20 +112,24 @@ To validate the connector action, use test event code as follows:
 1. In the **Send Conversion Event** action, select **Testing Mode**.
 1. Send a test event.
 1. In Pinterest, use the following steps:
-    * Go to **Conversions &gt; Events &gt; Test Events**.
+    * Go to **Conversions > Events > Test Events**.
     * Confirm receipt and payload integrity.
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
-When you add this connector, you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector, you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
-* **EULA Agreement**: (Required) Select the checkbox to accept Pinterest&#39;s data platform policy.
+* **EULA Agreement**: (Required) Select the checkbox to accept Pinterest's data platform policy.
 * **Access Token**: (Required) Access token generated through the Pinterest Ads Manager. For more information, see [Pinterest: Conversions Guide](https://developers.pinterest.com/docs/conversions/conversion-management/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint).
-* **Ad Account ID**: (Required) Unique identifier of an ad account. To locate your **Ad Account ID** in Pinterest, log in to the Pinterest account that owns your advertiser account and navigate to **Ads &gt; Overview**. The **Ad Account ID** is visible in the URL path. For example, `ads.pinterest.com/advertiser/{ad_account_id}/...` .
+* **Ad Account ID**: (Required) Unique identifier of an ad account. To locate your **Ad Account ID** in Pinterest, log in to the Pinterest account that owns your advertiser account and navigate to **Ads > Overview**. The **Ad Account ID** is visible in the URL path. For example, `ads.pinterest.com/advertiser/{ad_account_id}/...` .
 
 Click **Done** when you finish configuring the connector.
 
@@ -153,8 +161,8 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Event Name | (Required) The type of the user event to record. &lt;br&gt;Note: Events with custom event types will not be available to use in reporting.&lt;br&gt;**Add to Cart** - Items are added to shopping carts.&lt;br&gt;**Add to Wishlist** - Items are added to a wishlist.&lt;br&gt;**Checkout** - Completed transactions.&lt;br&gt;**Custom** - Use this event name to track a special event that you want to include in your conversion reporting.&lt;br&gt;**Initiate Checkout** - Checkout process starts. For example, a user clicks a checkout button.&lt;br&gt;**Lead** - Interest in product or service.&lt;br&gt;**Page Visit** - Views of primary pages, such as product pages and article pages.&lt;br&gt;**Search** - Searches on your website.&lt;br&gt;**Signup** - Signups for your products or services.&lt;br&gt;**Subscribe** - User subscribes to a service, such as content streaming or monthly emails, or a product offering, such as monthly deliveries.&lt;br&gt;**View Category** - Views of category pages.&lt;br&gt;**View Content** - User visits a web page related to your business, such as a product or landing page.&lt;br&gt;**Watch Video** - Video views. |
-| Event Action Source | (Required) Source indicating where the conversion event occurred. &lt;br&gt;**App Android** - Through mobile in-app events from an Android device.&lt;br&gt;**App iOS** - Through mobile in-app events from an iOS device.&lt;br&gt;**Offline** - Event is from offline.&lt;br&gt;**Web** - Through desktop web browsers as well as mobile web browsers. |
+| Event Name | (Required) The type of the user event to record. <br>Note: Events with custom event types will not be available to use in reporting.<br>**Add to Cart** - Items are added to shopping carts.<br>**Add to Wishlist** - Items are added to a wishlist.<br>**Checkout** - Completed transactions.<br>**Custom** - Use this event name to track a special event that you want to include in your conversion reporting.<br>**Initiate Checkout** - Checkout process starts. For example, a user clicks a checkout button.<br>**Lead** - Interest in product or service.<br>**Page Visit** - Views of primary pages, such as product pages and article pages.<br>**Search** - Searches on your website.<br>**Signup** - Signups for your products or services.<br>**Subscribe** - User subscribes to a service, such as content streaming or monthly emails, or a product offering, such as monthly deliveries.<br>**View Category** - Views of category pages.<br>**View Content** - User visits a web page related to your business, such as a product or landing page.<br>**Watch Video** - Video views. |
+| Event Action Source | (Required) Source indicating where the conversion event occurred. <br>**App Android** - Through mobile in-app events from an Android device.<br>**App iOS** - Through mobile in-app events from an iOS device.<br>**Offline** - Event is from offline.<br>**Web** - Through desktop web browsers as well as mobile web browsers. |
 
 #### Conversion Event Parameters
 
@@ -180,12 +188,12 @@ The following parameters are required:
 | --- | --- |
 | Email (already SHA256 hashed) | Provide an email address which has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Email (apply SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. |
-| Apple&#39;s Identifier for Advertisers (already SHA256 hashed) | Provide an Apple&#39;s Identifier for Advertisers which has already been whitespace trimmed and SHA256 hashed. |
-| Apple&#39;s Identifier for Advertisers (apply SHA256 hash) | Provide a plain text Apple&#39;s Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA256 hash. |
+| Apple's Identifier for Advertisers (already SHA256 hashed) | Provide an Apple's Identifier for Advertisers which has already been whitespace trimmed and SHA256 hashed. |
+| Apple's Identifier for Advertisers (apply SHA256 hash) | Provide a plain text Apple's Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA256 hash. |
 | Google Advertising ID (already SHA256 hashed) | Provide a Google Advertising ID which has already been whitespace trimmed and SHA256 hashed. |
 | Google Advertising ID (apply SHA256 hash) | Provide a plain text Google Advertising ID and the connector whitespace trims and hashes this value using SHA256 hash. |
-| Client IP Address | The user&#39;s IP address, which can be either in IPv4 or IPv6 format. |
-| Client User Agent | The user agent string of the user&#39;s web browser. |
+| Client IP Address | The user's IP address, which can be either in IPv4 or IPv6 format. |
+| Client User Agent | The user agent string of the user's web browser. |
 | Phone Number (already SHA256 hashed) | Provide a phone number which contains only numeric characters, has already been whitespace trimmed and SHA256 hashed. Remove leading zeros before hashing. |
 | Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector will remove all non-numeric characters and leading zeroes, whitespace trims, and hash this value using SHA256 hash. |
 | Gender (already SHA256 hashed) | Provide a gender which has already been whitespace trimmed, lowercased, and SHA256 hashed. |
@@ -206,13 +214,13 @@ The following parameters are required:
 | Country Code (apply SHA256 hash) | Provide a plain text country code and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. |
 | External ID (already SHA256 hashed) | Provide one or more external IDs, already whitespace trimmed and SHA256 hashed, and formatted as an array if there are multiple External IDs. For more information, see [Pinterest: What is an External ID?](https://developers.pinterest.com/docs/api-features/conversion-best-practices/#what-is-an-external-id).|
 | External ID (apply SHA256 hash) | Provide one or more plain text external IDs and the connector whitespace trims and hashes these values using SHA256 hash. If you provide multiple External IDs, format them as an array. |
-| Click ID  | The unique identifier stored in the `_epik` cookie on your domain or the `&amp;epik=` query parameter in the URL. This can improve reporting performance such as ROAS/CPA. |
+| Click ID  | The unique identifier stored in the `_epik` cookie on your domain or the `&epik=` query parameter in the URL. This can improve reporting performance such as ROAS/CPA. |
 
 #### Custom Data
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Currency | The ISO 4217 currency code. If not provided, Pinterest uses the advertiser&#39;s currency set during account creation. |
+| Currency | The ISO 4217 currency code. If not provided, Pinterest uses the advertiser's currency set during account creation. |
 | Value | The total value of the event. The connector accepts a string value and then parses it into a [double-precision number](https://en.wikipedia.org/wiki/Double-precision_floating-point_format). For a checkout event with multiple items, use the total price of all items. |
 | Content IDs | List of product IDs. |
 | Number of Items | Total number of products of the event. For example, the total number of items purchased in a checkout event. |
@@ -242,12 +250,12 @@ The following parameters are required:
 | App Name | Name of the app. |
 | App Version | Version of the app. |
 | Device Brand | Brand of the user device. |
-| Device Carrier | User device&#39;s mobile carrier. |
+| Device Carrier | User device's mobile carrier. |
 | Device Model | Model of the user device. |
 | Device Type | Type of the user device. |
 | OS Version | Version of the device operating system. |
 | WiFi | Whether the event occurred when the user device was connected to WiFi. |
-| Language | Two-character ISO 639-1 language code indicating the user&#39;s language. |
+| Language | Two-character ISO 639-1 language code indicating the user's language. |
 
 #### Automatic Deduplication
 

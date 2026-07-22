@@ -19,7 +19,10 @@ url: https://docs.tealium.com/ja/server-side/connectors/frequency-capping/about/
 
 頻度制限が有効になっていないアクションは独立してトリガーされ、クールダウングループの影響を受けません。
 
+
+<blockquote>
 同じクールダウングループ内の2つのアクションが同じ優先順位を持つ場合、1つのアクションのみがトリガーされます。両方のアクションをトリガーする必要がある場合は、異なるクールダウングループに割り当ててください。
+</blockquote>
 
 
 ## 頻度制限付きのクールダウン
@@ -36,7 +39,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/frequency-capping/about/
 
 次の図は、頻度制限と優先順位付けを有効にした場合のアクションの評価方法を示しています。
 
-![](/images/server-side/connectors/frequency-capping/action-priority-workflow.png)
+![](https://docs.tealium.com/images/server-side/connectors/frequency-capping/action-priority-workflow.png)
 
 ワークフローは以下の通りです：
 

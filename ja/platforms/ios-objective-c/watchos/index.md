@@ -4,10 +4,10 @@ description: Tealium for watchOSのインストール方法を学びましょう
 url: https://docs.tealium.com/ja/platforms/ios-objective-c/watchos/
 ---## 要件
 
-* Xcode 7&#43;
-* iOS 8.1&#43;
-* watchOS 2.0&#43;
-* ホストアプリに[Tealium for iOS](/ja/platforms/ios-swift/)がインストールされていること
+* Xcode 7+
+* iOS 8.1+
+* watchOS 2.0+
+* ホストアプリに[Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)がインストールされていること
 * `.ipa `ファイルサイズに400KBの利用可能なスペース（これはホストアプリに必要な`tealium-ios`ライブラリを含む）
 * [Bitcode準拠](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html)フレームワーク
 
@@ -32,7 +32,11 @@ Tealium for watchOSを、`TealiumIOS.framework`がホストアプリケーショ
     ```perl
     TealiumWATCHOSExtension.framework
     ```  
-Swiftプロジェクトの場合、ブリッジングヘッダーファイルに`&lt;TealiumWATCHOSExtension/TEALWKExtension.h&gt;`を追加します。  
+
+<blockquote>
+Swiftプロジェクトの場合、ブリッジングヘッダーファイルに`<TealiumWATCHOSExtension/TEALWKExtension.h>`を追加します。
+</blockquote>
+  
 
 3. **Projects: Target: Build Settings**の下ですべてのパスが期待通りであることを確認します。
 
@@ -48,7 +52,7 @@ Application Delegateまたはヘルパークラスのセットアップメソッ
 ```swift
 // Tealiumインスタンスを取得
 let config = TEALWKExtensionConfiguration.configuration()
-guard let tealium = TEALWKExtension.newInstanceForKey(&#34;[INSTANCE]&#34;) else {
+guard let tealium = TEALWKExtension.newInstanceForKey("[INSTANCE]") else {
     // ここで追加の失敗応答
     return
 }
@@ -57,12 +61,12 @@ guard let tealium = TEALWKExtension.newInstanceForKey(&#34;[INSTANCE]&#34;) else
 
 ```objc
 // インポートエリア
-#import &lt;TealiumWATCHOSExtension/TealiumWATCHOS.h&gt;
+#import <TealiumWATCHOSExtension/TealiumWATCHOS.h>
 
 // セットアップメソッド内
 TEALWKExtensionConfiguration *config = [TEALWKExtensionConfiguration configuration];
 config.logLevel = TEALLogLevelDev;
-[TEALWKExtension newInstanceForKey:@&#34;[INSTANCE]&#34; configuration:config]; 
+[TEALWKExtension newInstanceForKey:@"[INSTANCE]" configuration:config]; 
 ```
 
 
@@ -78,12 +82,12 @@ config.logLevel = TEALLogLevelDev;
 
 
 ```swift
-TEALWKExtension.instanceForKey(&#34;[hostTealiumInstanceKey]&#34;)?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [String:String]())
+TEALWKExtension.instanceForKey("[hostTealiumInstanceKey]")?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [String:String]())
 ```
 
 
 ```objc
-[[TEALWKExtension instanceForKey:@&#34;[INSTANCE]&#34;] trackViewWithTitle:NSStringFromClass([self class]) dataSources:@{}];
+[[TEALWKExtension instanceForKey:@"[INSTANCE]"] trackViewWithTitle:NSStringFromClass([self class]) dataSources:@{}];
 ```
 
 
@@ -97,12 +101,12 @@ TEALWKExtension.instanceForKey(&#34;[hostTealiumInstanceKey]&#34;)?.trackViewWit
 
 
 ```swift
-TEALWKExtension.instanceForKey(&#34;[INSTANCE]&#34;)?.trackEventwWithTitle(&#34;EVENT_NAME&#34;), dataSources: [String:String]())
+TEALWKExtension.instanceForKey("[INSTANCE]")?.trackEventwWithTitle("EVENT_NAME"), dataSources: [String:String]())
 ```
 
 
 ```objc
-[[Tealium instanceForKey:@&#34;[INSTANCE]&#34;] trackEventWithTitle:@&#34;EVENT_NAME&#34; dataSources:@{@&#34;optionalKey&#34;:@&#34;optionalValue&#34;}];
+[[Tealium instanceForKey:@"[INSTANCE]"] trackEventWithTitle:@"EVENT_NAME" dataSources:@{@"optionalKey":@"optionalValue"}];
 ```
 
 

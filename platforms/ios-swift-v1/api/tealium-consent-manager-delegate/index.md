@@ -14,7 +14,7 @@ The following summarizes the commonly used methods of the iOS (Swift) `TealiumIn
 | `userConsentedToTracking()` | Called when the consent state is changed to `.consented`|
 | `userOptedOutOfTracking()` | Called when the user declines/revokes consent |
 | `willDropTrackingCall()` | Called when the consent manager is going to drop a tracking call |
-| `willQueueTrackingCall()` | Called when the consent manager is in the `&#34;unknown&#34;` state, and tracking calls are being queued locally until the user grants or declines consent |
+| `willQueueTrackingCall()` | Called when the consent manager is in the `"unknown"` state, and tracking calls are being queued locally until the user grants or declines consent |
 | `willSendTrackingCall()` | Called when the user has consented to tracking, and a tracking call is about to pass through the consent manager without being blocked |
 
 ### `consentStatusChanged()`
@@ -72,7 +72,7 @@ willDropTrackingCall(request)
 
 ### `willQueueTrackingCall()`
 
-Called when the consent manager is in the `&#34;unknown&#34;` state, and tracking calls are being queued locally until the user grants or declines consent.
+Called when the consent manager is in the `"unknown"` state, and tracking calls are being queued locally until the user grants or declines consent.
 
 ```swift
 willQueueTrackingCall(request)

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/best-practices/
 
 ページコード内で、データレイヤーオブジェクト (`utag_data`) は、ユニバーサルタグ (`utag.js`) の参照よりも _前に_ 宣言される必要があります。これにより、ユニバーサルタグがロードルール、エクステンション、およびタグを評価するために必要なデータレイヤー変数をすべて持つことが保証されます。推奨されるコード配置の例は、コードセンターからアクセスできます。
 
-詳細については、[ユニバーサルタグ (utag.js) のインストール](/ja/platforms/javascript/install/#universal-tag-utag-js)を参照してください。
+詳細については、[ユニバーサルタグ (utag.js) のインストール](https://docs.tealium.com/ja/platforms/javascript/install/#universal-tag-utag-js)を参照してください。
 
 ## 命名規則
 
@@ -48,7 +48,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/best-practices/
 
 | | ブール値| 整数|
 |---| ---| ---|
-|正しい|  `is_registered : &#34;1&#34;` |  `order_total : &#34;1234.56&#34;` |
+|正しい|  `is_registered : "1"` |  `order_total : "1234.56"` |
 |間違い|  `is_registered : true` |  `order_total : 1234.56` |
 
 **長所**
@@ -67,13 +67,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/best-practices/
 配列（推奨）：
 
 ```javascript
-product_id : [&#34;prodID1&#34;,&#34;prodID2&#34;,&#34;prodID3&#34;]
+product_id : ["prodID1","prodID2","prodID3"]
 ```
 
 文字列：
 
 ```javascript
-product_id : &#34;prodID1,prodID2,prodID3&#34;
+product_id : "prodID1,prodID2,prodID3"
 ```
 
 **長所**
@@ -110,7 +110,7 @@ product_id : &#34;prodID1,prodID2,prodID3&#34;
 
 ## サードパーティのデータレイヤーオブジェクト
 
-すでにサイトにデータレイヤーオブジェクトが実装されている場合があります。たとえば、W3Cデータオブジェクトや独自のカスタムオブジェクトなどです。これらのオブジェクトは、利用可能な[データレイヤーコンバーター]()を使用して UDO `utag_data` 形式に変換することをお勧めします。
+すでにサイトにデータレイヤーオブジェクトが実装されている場合があります。たとえば、W3Cデータオブジェクトや独自のカスタムオブジェクトなどです。これらのオブジェクトは、利用可能な[データレイヤーコンバーター](https://docs.tealium.com/set-up-data-layer-converter/)を使用して UDO `utag_data` 形式に変換することをお勧めします。
 
 **長所**
 

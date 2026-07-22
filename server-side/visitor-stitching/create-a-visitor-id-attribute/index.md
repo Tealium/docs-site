@@ -15,16 +15,16 @@ This example uses `customer_id` as the user identifier and the `purchase` event 
 
 Before you create a visitor ID attribute, you must create a rule to specify when the value is assigned to a visitor ID attribute.
 
-Use the following steps to create a rule to set the visitor ID attribute to `customer_id` when `customer_id` is assigned and the value is not &#34;none&#34;.
+Use the following steps to create a rule to set the visitor ID attribute to `customer_id` when `customer_id` is assigned and the value is not "none".
 
-1. Go to **Server-Side Tools &amp;gt; Manage Rules**.
-1. Click **&#43; Add Rule**. The **Create Rule** dialog is displayed.
-1. Enter the **Title**, in this case &#34;customer_id is assigned&#34;.
-1. Click **&#43; Attribute Condition**.
+1. Go to **Server-Side Tools &gt; Manage Rules**.
+1. Click **+ Add Rule**. The **Create Rule** dialog is displayed.
+1. Enter the **Title**, in this case "customer_id is assigned".
+1. Click **+ Attribute Condition**.
 1. Select `customer_id` for the attribute and **is assigned** from the operator drop-down list.
-1. Click **&#43; Attribute Condition**, select `customer_id` for the attribute, select **does not equal (ignore case)** for the operator, enter `&#34;none&#34;` for the value.
+1. Click **+ Attribute Condition**, select `customer_id` for the attribute, select **does not equal (ignore case)** for the operator, enter `"none"` for the value.
 1. Click **Save**.  
-    ![](/images/server-side/as-create-rule-check-for-none.png)
+    ![](https://docs.tealium.com/images/server-side/as-create-rule-check-for-none.png)
 
 ## Step 2: Create a visitor string attribute
 
@@ -32,13 +32,13 @@ Create a temporary string attribute to use for verification in Audience Discover
 
 Use the following steps to create a string attribute:
 
-1. Go to **AudienceStream &amp;gt; Visitor/Visit Attributes**.
-1. Click **&#43; Add Attribute**.
+1. Go to **AudienceStream &gt; Visitor/Visit Attributes**.
+1. Click **+ Add Attribute**.
 1. In the Add Attribute dialog, select **Visitor** for scope, then click **Continue**.
 1. For **Choose a data type**, select **String**, then click **Continue**.  
-    ![](/images/server-side/as-add-attribute-2.png)
+    ![](https://docs.tealium.com/images/server-side/as-add-attribute-2.png)
 1. In the **Add Attribute** dialog, enter a **Title** and enter optional **Notes**.
-1. Click **Add Enrichment** and select **Set String**. ![](/images/server-side/as-addenrichment.png)
+1. Click **Add Enrichment** and select **Set String**. ![](https://docs.tealium.com/images/server-side/as-addenrichment.png)
 
 1. In the **Set String** dialog, select `customer_id` for **Set String to**.
 1. For **WHEN**, select **ANY EVENT**.
@@ -51,17 +51,17 @@ Save and publish the rule and attribute to production so that AudienceStream can
 
 ## Step 4: Verify data
 
-To verify that the chosen attribute is unique, use Audience Discovery to view the distribution of the attribute&#39;s values across your active visitors. For more information, see [Audience discovery]().
+To verify that the chosen attribute is unique, use Audience Discovery to view the distribution of the attribute's values across your active visitors. For more information, see [Audience discovery]().
 
 **Bad visitor string attributes**
 
 A bad visitor string attribute would be one where there are hundreds of users with the same value. If stitching was enabled, all these users would all be combined into a single visitor profile, which is obviously incorrect.
 
-For example, if you see multiple instances of &#34;unknown&#34;, you can add conditions to the rule to exclude those instances. If there are many visitors with the same value for the visitor string attribute, choose a different user identifier to populate the string attribute and verify the results again.
+For example, if you see multiple instances of "unknown", you can add conditions to the rule to exclude those instances. If there are many visitors with the same value for the visitor string attribute, choose a different user identifier to populate the string attribute and verify the results again.
 
 **Good visitor string attributes**
 
-In the case of a good visitor string attribute, only a small sample of users would have the same value. There may be multiple users with a value of &#34;none&#34;, which is normal because not every visitor has a value. It may be difficult to determine why visitors have the same value. When less than 1% of the visitors have two visitors assigned the same visitor string attribute, it is OK to use the chosen user identifier to populate a visitor ID attribute and enable visitor stitching.
+In the case of a good visitor string attribute, only a small sample of users would have the same value. There may be multiple users with a value of "none", which is normal because not every visitor has a value. It may be difficult to determine why visitors have the same value. When less than 1% of the visitors have two visitors assigned the same visitor string attribute, it is OK to use the chosen user identifier to populate a visitor ID attribute and enable visitor stitching.
 
 ## Step 5: Create a visitor ID attribute
 

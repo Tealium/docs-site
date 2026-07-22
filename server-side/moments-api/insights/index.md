@@ -21,11 +21,11 @@ The Moments API **Insights** tab displays the following visualizations and data:
 * Total data in bytes not written over time (due to write requests that exceeded the data limit)
 
 The following figure shows an example of the visualizations and data shown in the **Moments API Insights** tab:
-![](/images/server-side/moments-api-insights-tab-example.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-example.png)
 
 ### Write requests that exceed the data limit
 
-If a large number of audiences, badges, and attributes are specified for an engine, the size of an engine write can exceed the maximum amount of data that can be stored per visitor per engine. Using names for audiences, badges, and attributes can also increase the write size. For more information, see [Limits]().
+If a large number of audiences, badges, and attributes are specified for an engine, the size of an engine write can exceed the maximum amount of data that can be stored per visitor per engine. Using names for audiences, badges, and attributes can also increase the write size. For more information, see [Limits](https://docs.tealium.com/about-moments-api/#limits).
 
 If engine writes are exceeding the maximum amount of data per visitor per engine, you can reduce the write size in one of the following ways:
 
@@ -37,7 +37,7 @@ If engine writes are exceeding the maximum amount of data per visitor per engine
 The default **Date Range** for the data and visualizations is **Last 30 days**. To select a new **Date Range**, use the following steps:
 
 1. Click the **Controls** bar.  
-![](/images/server-side/moments-api-insights-tab-control-bar.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-control-bar.png)
 1. Click the current **Date range**.
 1. Do one of the following:  
     * To display data by weeks, months, quarters, or years, click **Relative by** and select an option.  
@@ -50,7 +50,7 @@ The default **Date Range** for the data and visualizations is **Last 30 days**. 
 The default **Engine** for the data and visualizations is **All**. To select a specific engine, use the following steps:
 
 1. Click the **Controls** bar.  
-![](/images/server-side/moments-api-insights-tab-control-bar.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-control-bar.png)
 1. Click the current **Engine** and select a new engine.  
 The display is refreshed with the new data.
 1. To close the list, click the **Controls** bar.
@@ -62,7 +62,7 @@ The visuals shown in the Moments API **Insights** tab are also available in Teal
 ### Update the Moments API Insights template
 
 The following message is displayed when the Moments API Insights template needs to be updated:
-![](/images/server-side/data-insights/datainsights-updates-available-message.png)
+![](https://docs.tealium.com/images/server-side/data-insights/datainsights-updates-available-message.png)
 
 To update the template, use the following steps:
 

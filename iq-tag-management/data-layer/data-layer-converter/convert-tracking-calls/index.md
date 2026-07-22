@@ -8,13 +8,13 @@ Example:
 
 ```js
 utag.link({
-    &#34;event&#34; : {
-        &#34;type&#34;: &#34;cart&#34;,
-        &#34;name&#34;: &#34;add to cart&#34;,
-        &#34;items&#34; : [{
-            &#34;id&#34;: &#34;prod123&#34;,
-            &#34;price&#34;: &#34;123.45&#34;,
-            &#34;qty&#34;: &#34;2&#34;
+    "event" : {
+        "type": "cart",
+        "name": "add to cart",
+        "items" : [{
+            "id": "prod123",
+            "price": "123.45",
+            "qty": "2"
         }]
     }
 });
@@ -24,7 +24,7 @@ utag.link({
 
 Use the following steps to convert data layer tracking calls:
 
-1. In the left sidebar, navigate to **Tag Management &gt; Extensions**.
+1. In the left sidebar, navigate to **Tag Management > Extensions**.
 1. Add a [JavaScript extension]().
 1. In the **Title** field, enter `Convert Tracking Calls`.
 1. In the **Draft Name** field, enter a name for your draft.

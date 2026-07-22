@@ -7,9 +7,9 @@ Live Events detects unknown events, and you can create a custom specification di
 
 ## How it works
 
-Any event specification, whether custom or from the marketplace, can be created from the event details view on the **Live Events** screen. In this example, you&#39;ll pick up where we left off with the `search` event.
+Any event specification, whether custom or from the marketplace, can be created from the event details view on the **Live Events** screen. In this example, you'll pick up where we left off with the `search` event.
 
-Here&#39;s how it works:
+Here's how it works:
 
 1. With an event detail in view, click **Create Event Specification**  
     * The event specification is pre-populated with the event’s attributes.

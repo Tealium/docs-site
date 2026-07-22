@@ -22,8 +22,8 @@ Examples of web integrations include:
 
 Learn More
 
-* [An Introduction to the Data Layer]()
-* [JavaScript Install](/platforms/javascript/install/)
+* [An Introduction to the Data Layer](https://docs.tealium.com/an-introduction-to-the-data-layer/)
+* [JavaScript Install](https://docs.tealium.com/platforms/javascript/install/)
 
 ## API
 
@@ -31,20 +31,20 @@ API based integrations use the Tealium Collect HTTP endpoint or a custom endpoin
 
 The following lists the available API data sources integrations:
 
-- [Affirm]()
-- [Airship]()
-- [Braze Currents]()
-- [Hubspot]()
-- [Intercom]()
-- [Iterable]()
-- [Mailchimp]() ([See example](#example-mailchimp))
+- [Affirm](https://docs.tealium.com/affirm-incoming-webhook-setup-guide/)
+- [Airship](https://docs.tealium.com/airship-incoming-webhook-setup-guide/)
+- [Braze Currents](https://docs.tealium.com/braze-currents-data-source-setup-guide/)
+- [Hubspot](https://docs.tealium.com/hubspot-workflow-incoming-webhook-setup-guide/)
+- [Intercom](https://docs.tealium.com/intercom-incoming-webhook-setup-guide/)
+- [Iterable](https://docs.tealium.com/iterable-incoming-webhook-setup-guide/)
+- [Mailchimp](https://docs.tealium.com/mailchimp-incoming-webhook-setup-guide/) ([See example](#example-mailchimp))
 - Salesforce
-- [SendGrid]()
+- [SendGrid](https://docs.tealium.com/sendgrid-incoming-webhook-setup-guide/)
 - Zapier
 
 Learn More
 
-* [Tealium HTTP API](/platforms/http-api/)
+* [Tealium HTTP API](https://docs.tealium.com/platforms/http-api/)
 
 
 ## Benefits
@@ -55,7 +55,11 @@ Benefits of data source integrations include:
 - Tealium users can identify the origin of all incoming data for a clearer understanding of their data supply chain.
 - Higher quality of incoming data.
 
-Tealium offers a [file import data source]() which processes CSV files from several cloud storage providers. However, file imports are not currently offered as an integration method for partners.
+
+<blockquote>
+Tealium offers a [file import data source](https://docs.tealium.com/about-file-import/) which processes CSV files from several cloud storage providers. However, file imports are not currently offered as an integration method for partners.
+</blockquote>
+
 
 
 ## Example: Mailchimp
@@ -64,31 +68,31 @@ Mailchimp is an all-in-one marketing platform that offers webhooks for common em
 
 ```
 {
-  &#34;type&#34;: &#34;subscribe&#34;,
-  &#34;fired_at&#34;: &#34;2009-03-26 21:35:57&#34;,
-  &#34;data[id]&#34;: &#34;8a25ff1d98&#34;,
-  &#34;data[list_id]&#34;: &#34;a6b5da1054&#34;,
-  &#34;data[email]&#34;: &#34;api@mailchimp.com&#34;,
-  &#34;data[email_type]&#34;: &#34;html&#34;,
-  &#34;data[merges][EMAIL]&#34;: &#34;api@mailchimp.com&#34;,
-  &#34;data[merges][FNAME]&#34;: &#34;Mailchimp&#34;,
-  &#34;data[merges][LNAME]&#34;: &#34;API&#34;,
-  &#34;data[merges][INTERESTS]&#34;: &#34;Group1,Group2&#34;,
-  &#34;data[ip_opt]&#34;: &#34;10.20.10.30&#34;,
-  &#34;data[ip_signup]&#34;: &#34;10.20.10.30&#34;
+  "type": "subscribe",
+  "fired_at": "2009-03-26 21:35:57",
+  "data[id]": "8a25ff1d98",
+  "data[list_id]": "a6b5da1054",
+  "data[email]": "api@mailchimp.com",
+  "data[email_type]": "html",
+  "data[merges][EMAIL]": "api@mailchimp.com",
+  "data[merges][FNAME]": "Mailchimp",
+  "data[merges][LNAME]": "API",
+  "data[merges][INTERESTS]": "Group1,Group2",
+  "data[ip_opt]": "10.20.10.30",
+  "data[ip_signup]": "10.20.10.30"
 }
 ```
 
-Tealium&#39;s official data source integration with Mailchimp offers these additional benefits from using the generic HTTP API:
+Tealium's official data source integration with Mailchimp offers these additional benefits from using the generic HTTP API:
 
 * **Dedicated Endpoint**  
 Tealium issues a customized endpoint for this data source. For example: `https://collect.tealiumiq.com/integration/event/my_account/main/abc123`.
 * **Variable Transposing**  
-Tealium flattens the JSON body and prepends `mailchimp_` to all field names to give all MailChimp data its own namespace. For example, `&#34;data[merges][EMAIL]&#34;` becomes `mailchimp_data_merges_email`.
+Tealium flattens the JSON body and prepends `mailchimp_` to all field names to give all MailChimp data its own namespace. For example, `"data[merges][EMAIL]"` becomes `mailchimp_data_merges_email`.
 
 These benefits provide improved data quality and governance for all downstream data enrichments and actions. By combining the MailChimp data source with other data sources and activations, Tealium users maintain a more accurate and up-to-date single view of their customers.
 
-Learn more: [MailChimp Incoming Webhook Setup Guide]()
+Learn more: [MailChimp Incoming Webhook Setup Guide](https://docs.tealium.com/mailchimp-incoming-webhook-setup-guide/)
 
 ## Become a Partner
 

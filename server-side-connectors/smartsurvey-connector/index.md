@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/smartsurvey-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](/server-side/connectors/manage/) article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -35,7 +35,7 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact list ID|  &lt;ul&gt;&lt;li&gt;The unique ID for the contact list.&lt;/li&gt;&lt;li&gt;For more information, see: [SmartSurvey&#39;s documentation](https://docs.smartsurvey.io/v1/reference#contactlists_contacts_insert)&lt;/li&gt;&lt;/ul&gt; |
-|Email|  &lt;ul&gt;&lt;li&gt;The email address for the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Name|  &lt;ul&gt;&lt;li&gt;The name of the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Custom Fields|  &lt;ul&gt;&lt;li&gt;Custom data fields pertaining to the contact.&lt;/li&gt;&lt;/ul&gt; |
+|Contact list ID|  <ul><li>The unique ID for the contact list.</li><li>For more information, see: [SmartSurvey's documentation](https://docs.smartsurvey.io/v1/reference#contactlists_contacts_insert)</li></ul> |
+|Email|  <ul><li>The email address for the contact.</li></ul> |
+|Name|  <ul><li>The name of the contact.</li></ul> |
+|Custom Fields|  <ul><li>Custom data fields pertaining to the contact.</li></ul> |

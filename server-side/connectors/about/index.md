@@ -16,7 +16,7 @@ A connector represents the connection to your vendor account. The connection is 
 * **Action**  
 An action is a vendor operation, such as triggering an email, building a custom audience, or managing leads. Actions vary depending on the vendor service. Multiple actions can be associated with a single connector.
 * **Frequency Cap**  
-A connector action performs in real-time, but some actions are designed to have a wait period before they are triggered. The frequency cap lets you set a downtime period for actions so that they do not trigger immediately. For more information, see .
+A connector action performs in real-time, but some actions are designed to have a wait period before they are triggered. The frequency cap lets you set a downtime period for actions so that they do not trigger immediately. For more information, see [action-frequency-capping-amp-prioritization](https://docs.tealium.com/action-frequency-capping-amp-prioritization/).
 * **Source**  
 Source indicates the origin of the data being acted upon. A source can be an audience or an event feed.
 
@@ -24,9 +24,9 @@ Source indicates the origin of the data being acted upon. A source can be an aud
 
 Each connector in the marketplace has one or more consent categories assigned for each available action. The consent information for a connector action is shown on the **Action Details** screen, under **Additional Details**. 
 
-![](/images/server-side/eventstream-connector-consent-categories.png)
+![](https://docs.tealium.com/images/server-side/eventstream-connector-consent-categories.png)
 
-AudienceStream is categorized in the **CDP** consent category and DataAccess is categorized in the **Big Data** consent category. For additional information about server-side consent, see [Consent Preferences Manager](/iq-tag-management/consent-management/consent-preferences-dialog/manage/).
+AudienceStream is categorized in the **CDP** consent category and DataAccess is categorized in the **Big Data** consent category. For additional information about server-side consent, see [Consent Preferences Manager](https://docs.tealium.com/iq-tag-management/consent-management/consent-preferences-dialog/manage/).
 
 ### Retries
 
@@ -41,7 +41,7 @@ A retry is attempted when any of the following error codes occur:
 * 503 – Service Unavailable
 * 504 – Gateway Timeout
 
-A retry is not attempted when a **Response Timeout - Vendor API did not respond within 5000 milliseconds** response is received. The request payload was sent, but the vendor did not send a response within our allowed time of five seconds. The request may have succeeded on the vendor&#39;s side, but because it took longer than five seconds to get a response, we treat it as a failure.
+A retry is not attempted when a **Response Timeout - Vendor API did not respond within 5000 milliseconds** response is received. The request payload was sent, but the vendor did not send a response within our allowed time of five seconds. The request may have succeeded on the vendor's side, but because it took longer than five seconds to get a response, we treat it as a failure.
 
 ### Overload protection
 
@@ -53,7 +53,7 @@ Tealium activates and adjusts the thresholds at the various levels as needed to 
 
 ### Restricted data
 
-Restricted data settings do not apply to connectors. Attributes marked as restricted data are always included, whether you are sending them through mappings or as part of the visitor profile. This cannot be changed. Learn more about [Restricted Data]().
+Restricted data settings do not apply to connectors. Attributes marked as restricted data are always included, whether you are sending them through mappings or as part of the visitor profile. This cannot be changed. Learn more about [Restricted Data](https://docs.tealium.com/about-restricted-data/).
 
 ### IP allow lists
 
@@ -61,7 +61,7 @@ If a connector you use has strict rules about which systems it accepts requests 
 
 ### Visitor identity synchronization
 
-To improve visitor identity matching between Tealium and third-party vendors, use a cookie matching tag. A cookie matching tag synchronizes visitor identifiers between Tealium and the vendor. It requests a third-party identifier, receives an anonymous ID, and saves it in a cookie. This enables more accurate tracking and enriched data for connector actions. For more information, see [About persistent cookie matching]().
+To improve visitor identity matching between Tealium and third-party vendors, use a cookie matching tag. A cookie matching tag synchronizes visitor identifiers between Tealium and the vendor. It requests a third-party identifier, receives an anonymous ID, and saves it in a cookie. This enables more accurate tracking and enriched data for connector actions. For more information, see [About persistent cookie matching](https://docs.tealium.com/about-persistent-cookie-matching/).
 
 ## Screen navigation
 
@@ -88,7 +88,7 @@ Export metrics (total volume, successes, errors, and retries) for all connectors
 
 Expand the menu for a connector to access additional actions: **Edit Labels**, **Duplicate**, and **Delete**:
 
-![](/images/server-side/connectors/connector-menu-expanded.png)
+![](https://docs.tealium.com/images/server-side/connectors/connector-menu-expanded.png)
 
 For more information, see [Add a connector]().
 
@@ -96,7 +96,7 @@ For more information, see [Add a connector]().
 
 When you click a connector action, the connector details screen appears. The **Overview** tab is displayed by default and shows information about action trends, including successful actions, actions with errors, and a graph of the delivery status.
 
-![](/images/server-side/connectors/connector-details-status.png)
+![](https://docs.tealium.com/images/server-side/connectors/connector-details-status.png)
 
 You can view the trends data for the **Past 24 hours**, **Past 7 days**, or **Past 30 days**. The default is the **Past 24 hours**. Successful actions are shown in green and errors are shown in blue. Click any part of the graph to view a summary of the data for that display.
 
@@ -104,7 +104,7 @@ You can view the trends data for the **Past 24 hours**, **Past 7 days**, or **Pa
 
 Use the following steps to view error information for a connector action:
 
-1. Go to **Connect &gt; Connectors**, then select a connector.
+1. Go to **Connect > Connectors**, then select a connector.
 1. Click the **Actions** tab, then select an action that has errors.  
 The **Action Details** screen is displayed.
 1. Under **Trends**, select **24 Hours**, **7 Days**, **30 Days**, or a custom date range.
@@ -116,7 +116,7 @@ The detailed view includes a sample of the affected code with a timestamp contai
 
 Use the following steps to export sampled errors for a connector:
 
-1. Go to **Connect &gt; Connectors**, then select a connector.
+1. Go to **Connect > Connectors**, then select a connector.
 1. Click the **Actions** tab, then select an action that has errors.  
 The **Action Details** screen is displayed.
 1. Click **Export Sampled Errors**.  
@@ -132,4 +132,4 @@ There are two types of deprecation, as follows:
 * **Functional Deprecation** – The connector or action is deprecated, and may be removed in the future, but is still working.
 * **Full Deprecation** – The connector or action is deprecated and no longer works. Actions for a fully deprecated connector are not executed.
 
-![](/images/server-side/connectors/deprecated-status.png)
+![](https://docs.tealium.com/images/server-side/connectors/deprecated-status.png)

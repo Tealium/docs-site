@@ -17,31 +17,35 @@ The Tealium SCIM integration uses a long-lived bearer token to authenticate with
 
 All SCIM API calls are authenticated with this bearer token.
 
+
+<blockquote>
 The API key and bearer token are linked to the user who generates them. Use a dedicated service user with the required Tealium permissions, for example `scim@example.com`. A service user is a user account not linked to a person that is used to manage resources. This approach prevents access issues if a regular user account becomes unavailable.
+</blockquote>
+
 
 To generate the bearer token:
 
 1. Log in to Tealium as a dedicated service user. 
-1. Generate an [API key]().
+1. Generate an [API key](https://docs.tealium.com/api-keys/).
 1. Call the long-lived token endpoint to generate a long-lived bearer token using the following cURL command. Replace the placeholders with your account name, profile name, dedicated username, and the API key:  
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/v2/auth-long-lived/token&#39; \
---header &#39;Content-Type: application/x-www-form-urlencoded&#39; \
---data-urlencode &#39;account={ACCOUNT}&#39; \
---data-urlencode &#39;profile=main&#39; \
---data-urlencode &#39;username={USERNAME@EXAMPLE.COM}&#39; \
---data-urlencode &#39;key={API_KEY}&#39;
+curl --location 'https://developer.tealiumapis.com/v2/auth-long-lived/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'account={ACCOUNT}' \
+--data-urlencode 'profile=main' \
+--data-urlencode 'username={USERNAME@EXAMPLE.COM}' \
+--data-urlencode 'key={API_KEY}'
 ```
 
 The token should resemble the following example:
 
 ```json
 {
-  &#34;access_token&#34;:&#34;eyJhbG...53UHg&#34;,
-  &#34;token_type&#34;: &#34;Bearer&#34;,
-  &#34;expires_in&#34;: 7776000,
-  &#34;scope&#34;: &#34;profile email&#34;
+  "access_token":"eyJhbG...53UHg",
+  "token_type": "Bearer",
+  "expires_in": 7776000,
+  "scope": "profile email"
 }
 ```
 
@@ -60,13 +64,13 @@ Revocation takes effect within seconds and is permanent. Revoking a token cannot
 To revoke a token, call the following endpoint using the same credentials used to generate it:
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/v2/auth-long-lived/revoke&#39; \
---header &#39;Content-Type: application/x-www-form-urlencoded&#39; \
---data-urlencode &#39;token={ACCESS_TOKEN}&#39; \
---data-urlencode &#39;account={ACCOUNT}&#39; \
---data-urlencode &#39;profile=main&#39; \
---data-urlencode &#39;username={USERNAME@EXAMPLE.COM}&#39; \
---data-urlencode &#39;key={API_KEY}&#39;
+curl --location 'https://developer.tealiumapis.com/v2/auth-long-lived/revoke' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'token={ACCESS_TOKEN}' \
+--data-urlencode 'account={ACCOUNT}' \
+--data-urlencode 'profile=main' \
+--data-urlencode 'username={USERNAME@EXAMPLE.COM}' \
+--data-urlencode 'key={API_KEY}'
 ```
 
 ### Revoke token parameters
@@ -78,7 +82,7 @@ curl --location &#39;https://developer.tealiumapis.com/v2/auth-long-lived/revoke
 | `profile` | Yes | String | Profile used to generate the token |
 | `username` | Yes | String | Username used to generate the token |
 | `key` | Yes | String | API key used to generate the token |
-| `token_type_hint` | No | String | Optional hint: &#34;access_token&#34; or &#34;refresh_token&#34; |
+| `token_type_hint` | No | String | Optional hint: "access_token" or "refresh_token" |
 
 ### Response
 
@@ -106,11 +110,11 @@ The Tealium implementation of SCIM supports the following HTTP methods:
 
 The SCIM API exposes two types of groups: built-in groups and custom groups.
 
-SCIM can create custom groups and manage group membership for both types, but it cannot change a group&#39;s permissions. You must use the Tealium UI to configure [group permissions]().
+SCIM can create custom groups and manage group membership for both types, but it cannot change a group's permissions. You must use the Tealium UI to configure [group permissions](https://docs.tealium.com/permission-groups/).
 
 ## Built-in groups
 
-Built-in groups are system-level groups that correspond to [Tealium admin roles](). They exist in every account and cannot be created, renamed, or deleted through SCIM.
+Built-in groups are system-level groups that correspond to [Tealium admin roles](https://docs.tealium.com/admin-roles/). They exist in every account and cannot be created, renamed, or deleted through SCIM.
 
 The following built-in groups are available with the SCIM `/Groups` endpoint:
 
@@ -123,7 +127,11 @@ The following built-in groups are available with the SCIM `/Groups` endpoint:
 | Profile Admins | Profile-level administration privileges |
 | Standard User | Basic read-only access (alias for Account Viewers) |
 
-The `Standard User` group is an alias for the internal `Account Viewers` group. Both groups share the same UUID. Filtering on `displayName eq &#34;Standard User&#34;` matches this group, but filtering on `Account Viewers` returns zero results.
+
+<blockquote>
+The `Standard User` group is an alias for the internal `Account Viewers` group. Both groups share the same UUID. Filtering on `displayName eq "Standard User"` matches this group, but filtering on `Account Viewers` returns zero results.
+</blockquote>
+
 
 ### Inherited groups
 
@@ -131,14 +139,18 @@ Adding a user to certain admin groups automatically grants membership in inherit
 
 | Add to Group | Automatically Added To |
 | --- | --- |
-| Account Admins | User Admins, Privacy Admins, Technical Admins, Profile Admins &#43; PII access |
-| User Admins | Technical Admins &#43; PII access |
+| Account Admins | User Admins, Privacy Admins, Technical Admins, Profile Admins + PII access |
+| User Admins | Technical Admins + PII access |
 | Privacy Admins | User Admins, Technical Admins and PII access |
 | Technical Admins | (none) |
 | Profile Admins | (none) |
 | Standard User | (none) |
 
+
+<blockquote>
 Membership in Account Admins, User Admins, or Privacy Admins automatically grants membership in internal PII groups (PII Admins/PII Viewers). For security purposes, these internal groups are not visible with the SCIM API.
+</blockquote>
+
 
 ### Group removal behavior
 
@@ -157,7 +169,11 @@ Built-in groups have the following restrictions:
 * Cannot be renamed with SCIM PATCH operations.
 * Cannot be deleted with SCIM DELETE operations.
 
-Creating or updating a custom group with a `displayName` that matches a built-in group returns an HTTP 400 error. 
+
+<blockquote>
+Creating or updating a custom group with a `displayName` that matches a built-in group returns an HTTP 400 error.
+</blockquote>
+
 
 ## Custom groups
 
@@ -170,5 +186,5 @@ SCIM supports the following operations on custom groups:
 * Rename a custom group (`PATCH`, `PUT`).
 * Delete a custom group (`DELETE`).
 
-SCIM cannot set or modify the permissions of a custom group. After creating a group through SCIM, use the Tealium UI to configure the [group permissions]().
+SCIM cannot set or modify the permissions of a custom group. After creating a group through SCIM, use the Tealium UI to configure the [group permissions](https://docs.tealium.com/permission-groups/).
 

@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/tag-marketplace/tag-mark
 
 タグマーケットプレイスポリシーにアクセスするには、管理メニューで**タグマーケットプレイスポリシーの管理**をクリックします。
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png)
 
 ### タグの管理
 
@@ -34,11 +34,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/tag-marketplace/tag-mark
 
 たとえば、「Tealium」で始まるタグのみを表示する場合：
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png)
 
 タグマーケットプレイスは現在、「Tealium」タグのみを提供し、タグマーケットプレイスポリシーが有効であることを示すバナーが表示されます：
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png)
 
 ### ポリシーのリセット
 

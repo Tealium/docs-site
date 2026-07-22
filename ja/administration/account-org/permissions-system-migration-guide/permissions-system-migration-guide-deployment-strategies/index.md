@@ -7,9 +7,9 @@ url: https://docs.tealium.com/ja/administration/account-org/permissions-system-m
 
 ユーザー、権限グループ、管理者ロールの計画リストができたら、権限構造のデプロイメントを開始できます。
 
-* 権限グループの作成方法については、[Permission Groups]()を参照してください。
-* ユーザーに管理者ロールを割り当てる方法については、[Admin Roles]()を参照してください。
-* ユーザーの招待と管理の方法については、[Users]()を参照してください。
+* 権限グループの作成方法については、[Permission Groups](https://docs.tealium.com/permission-groups/)を参照してください。
+* ユーザーに管理者ロールを割り当てる方法については、[Admin Roles](https://docs.tealium.com/admin-roles/)を参照してください。
+* ユーザーの招待と管理の方法については、[Users](https://docs.tealium.com/users/)を参照してください。
 
 以下の例は、プラットフォームの権限システムをデプロイするための戦略を説明しています：
 
@@ -27,11 +27,11 @@ url: https://docs.tealium.com/ja/administration/account-org/permissions-system-m
 1. 同一のニーズとロールを持つユーザーのグループのための権限グループを作成します。
 1. ユーザーを適切な権限グループに追加します。
 1. ユーザーに対して、プラットフォームの権限システムのテストを行う予定であることを警告し、フィードバックを求めます。
-1. [Permissions Enforcement]()のスイッチを**ON**に構成します。
+1. [Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/)のスイッチを**ON**に構成します。
 1. ユーザーからのフィードバックを収集し、必要な権限の変更を実施します。
 1. 対処するのに時間がかかる権限とアクセスの問題が多すぎる場合は、**Permissions Enforcement**スイッチを**OFF**に構成して、再テストを行う前に計画、権限グループ、管理者ロールを見直すことができます。
 
-Permissions Enforcementについての詳細は、[Permissions Enforcement]()を参照してください。
+Permissions Enforcementについての詳細は、[Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/)を参照してください。
 
 ### デプロイメント戦略2 - スタック可能な粒度の高い権限グループ
 
@@ -53,8 +53,11 @@ Permissions Enforcementについての詳細は、[Permissions Enforcement]()を
 * プロファイル3、QAへの公開
 * プロファイル3、Prodへの公開
 
- この方法は、アカウントがカスタムの公開環境を使用している場合、さらに複雑になります
- 
+
+<blockquote>
+この方法は、アカウントがカスタムの公開環境を使用している場合、さらに複雑になります
+</blockquote>
+
 
 スタック可能な権限グループを通じてアカウントの権限を管理するには：
 
@@ -72,4 +75,4 @@ Permissions Enforcementについての詳細は、[Permissions Enforcement]()を
 1. ユーザーからのフィードバックを収集し、必要な権限の変更を実施します。
 1. 対処するのに時間がかかる問題が多すぎる場合は、Permissions Enforcementスイッチを**OFF**に構成して、再テストを行う前に計画、権限グループ、管理者ロールを見直すことができます。
 
-Permissions Enforcementについての詳細は、[Permissions Enforcement]()を参照してください。
+Permissions Enforcementについての詳細は、[Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/)を参照してください。

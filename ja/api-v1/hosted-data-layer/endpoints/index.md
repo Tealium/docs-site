@@ -2,7 +2,7 @@
 title: ホストされたデータレイヤーAPIエンドポイント
 description: ホストされたデータレイヤーオブジェクトまたはJSONファイルを使用して、ホストされたデータレイヤーを管理します。
 url: https://docs.tealium.com/ja/api-v1/hosted-data-layer/endpoints/
----これは、[現行のTealiumホストデータレイヤーAPI]()の古いバージョンです。
+---これは、[現行のTealiumホストデータレイヤーAPI](https://docs.tealium.com/about-hosted-data-layer-api/)の古いバージョンです。
 
 ## アップロード
 
@@ -10,17 +10,25 @@ url: https://docs.tealium.com/ja/api-v1/hosted-data-layer/endpoints/
 
 `POST /v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}`
 
+
+<blockquote>
 POSTの代わりにPUTを使用すると、405 Method Not Allowedエラーが発生します。
+</blockquote>
+
 
 ### cURLリクエスト
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X POST -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X POST -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token} \
   -d @{dl_id}.json
 ```
 
+
+<blockquote>
 cURLコマンドを使用して`-d`パラメータにファイルを渡すとき、ファイル名は`@`文字で始まる必要があります。
+</blockquote>
+
 
 ### 例のレスポンス
 
@@ -28,11 +36,15 @@ cURLコマンドを使用して`-d`パラメータにファイルを渡すとき
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 ```
 
+
+<blockquote>
 変更がTealiumのサーバーに反映されるまでに5から10分かかる場合があります。ステータスが完了と表示されるまで、同じ`dl_id`に対して別の呼び出しを試みるのを待ちます。
+</blockquote>
+
 
 ### エラーメッセージ
 
@@ -42,8 +54,8 @@ cURLコマンドを使用して`-d`パラメータにファイルを渡すとき
 
 ```
 {
-   &#34;returnCode&#34; : 1464,
-   &#34;message&#34; : &#34;Resource already exists. Updates are not permitted via this type of request.&#34;
+   "returnCode" : 1464,
+   "message" : "Resource already exists. Updates are not permitted via this type of request."
 }
 
 ```
@@ -63,8 +75,8 @@ cURLコマンドを使用して`-d`パラメータにファイルを渡すとき
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -74,8 +86,8 @@ cURLコマンドを使用して`-d`パラメータにファイルを渡すとき
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -83,12 +95,16 @@ cURLコマンドを使用して`-d`パラメータにファイルを渡すとき
 
 ` PUT /v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}`
 
+
+<blockquote>
 POSTの代わりにPUTを使用すると、405 Method Not Allowedエラーが発生します。
+</blockquote>
+
 
 ### cURLリクエスト
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X PUT -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token} \
   -d @{dl_id}.json
 ```
@@ -99,12 +115,16 @@ cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 
 ```
 
+
+<blockquote>
 変更がTealiumのサーバーに反映されるまでに最大1時間かかる場合があります。ステータスが完了と表示されるまで、同じ`dl_id`に対して別の呼び出しを試みるのを待ちます。
+</blockquote>
+
 
 ### エラーメッセージ
 
@@ -123,8 +143,8 @@ cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -134,8 +154,8 @@ cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Could not locate data layer for supplied params ([account]/[profile]/[dl_id]).&#34;
+   "returnCode" : 1404,
+   "message" : "Could not locate data layer for supplied params ([account]/[profile]/[dl_id])."
 }
 ```
 
@@ -146,7 +166,7 @@ cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json
 ### cURLリクエスト
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X DELETE -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}
 ```
 
@@ -156,12 +176,16 @@ cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/j
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 
 ```
 
+
+<blockquote>
 変更がTealiumのサーバーに反映されるまでに最大1時間かかる場合があります。ステータスが完了と表示されるまで、同じ`dl_id`に対して別の呼び出しを試みるのを待ちます。
+</blockquote>
+
 
 ### エラーメッセージ
 
@@ -171,8 +195,8 @@ cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/j
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Could not locate data layer for supplied params ([account]/[profile]/[dl_id]).&#34;
+   "returnCode" : 1404,
+   "message" : "Could not locate data layer for supplied params ([account]/[profile]/[dl_id])."
 }
 
 ```
@@ -188,8 +212,8 @@ cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/j
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -199,8 +223,8 @@ cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/j
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -227,7 +251,7 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;status&#34;: &#34;completed&#34;
+   "status": "completed"
 }
 
 ```
@@ -240,8 +264,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Status unavailable. Please refer to documentation for request status retention period.&#34;
+   "returnCode" : 1404,
+   "message" : "Status unavailable. Please refer to documentation for request status retention period."
 }
 ```
 
@@ -256,8 +280,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -267,8 +291,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -292,7 +316,7 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   [&#34;demo_1&#34;,&#34;demo_2&#34;,&#34;demo_3&#34;]
+   ["demo_1","demo_2","demo_3"]
 }
 ```
 
@@ -304,8 +328,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 
 ```
@@ -316,8 +340,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Data layer list size exceeds maximum permissible (1000).&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Data layer list size exceeds maximum permissible (1000)."
 }
 
 ```
@@ -326,8 +350,8 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 
 ```

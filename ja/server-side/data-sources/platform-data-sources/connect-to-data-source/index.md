@@ -9,14 +9,14 @@ url: https://docs.tealium.com/ja/server-side/data-sources/platform-data-sources/
 
 データソースキーを取得するには：
 
-1. サイドバーで **接続 &gt; データソース** を選択します。
+1. サイドバーで **接続 > データソース** を選択します。
 1. インストールしたいデータソースの名前をクリックして詳細を展開します。
 1. 詳細ビューから **データソースキー** の値をコピーします。  
-      ![](/images/server-side/whiteui-viewdatasource-datasourcekey.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-viewdatasource-datasourcekey.png)
 1. プラットフォームのインストール手順に従って、データソースキーの値をコードに貼り付けます。
 1. データソースの詳細が展開された状態で、**コードを取得** をクリックします。  
-      ![](/images/server-side/whiteui-editdatasource-getcode.png)**コードを取得** ダイアログが表示されます。このダイアログから、インストール手順が記載されたPDFをダウンロードしたり、基本コードを表示してコピーしたり、イベント追跡コードを表示してコピーすることができます。  
-      ![](/images/server-side/whiteui-getcode.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-editdatasource-getcode.png)**コードを取得** ダイアログが表示されます。このダイアログから、インストール手順が記載されたPDFをダウンロードしたり、基本コードを表示してコピーしたり、イベント追跡コードを表示してコピーすることができます。  
+      ![](https://docs.tealium.com/images/server-side/whiteui-getcode.png)
 1. ウィンドウに表示されたコードをコピーします。
 1. プラットフォームのインストール手順に従ってコードをインストールします。
 1. **閉じる** をクリックして、コードを取得するダイアログを閉じます。

@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/element-visib
 
 A element visibility event tracks when a visitor sees a specific element on a page. When an element is visible to the visitor, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -24,7 +24,7 @@ The event default is the element visibility event trigger. You can set the follo
 
 ### Element selector
 
-The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector]().
+The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector](https://docs.tealium.com/event-element-selector/).
 
 ## Event trigger variables
 
@@ -42,16 +42,16 @@ Event trigger variables are the values the event sends with the tracking call. T
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;element_visible&#34;`| The visitor revealed the specified element by a certain percentage of visibility and for the minimum amount of time.|
+|`tealium_event="element_visible"`| The visitor revealed the specified element by a certain percentage of visibility and for the minimum amount of time.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;element_visible&#34;,
-   &#34;percent_visible&#34; : &#34;100&#34;,
-   &#34;duration&#34; : &#34;5&#34;,
-   &#34;iq_event_id:&#34; : &#34;element_visibility_events_1&#34;
+   "tealium_event"  : "element_visible",
+   "percent_visible" : "100",
+   "duration" : "5",
+   "iq_event_id:" : "element_visibility_events_1"
 }
 
 ```

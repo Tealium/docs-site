@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendgrid-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](/ja/server-side/connectors/manage/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/ja/server-side/connectors/manage/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

@@ -3,7 +3,11 @@ title: Page Load Event
 description: The page load event sends tracking data when a visitor loads a page.
 url: https://docs.tealium.com/iq-tag-management/events/event-types/page-load-event/
 ---
- The page load event listener replaces the deprecated [page view event listener](). 
+
+<blockquote>
+The page load event listener replaces the deprecated [page view event listener](https://docs.tealium.com/page-view-event/).
+</blockquote>
+
 
 ## Requirements
 
@@ -13,7 +17,7 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/page-load-eve
 
 The page load event tracks when a visitor loads a page. When a visitor performs the action, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ### Use case
 
@@ -36,7 +40,7 @@ You can set the following threshold for the trigger:
 
 ### Trigger frequency
 
-The trigger frequency determines how many times the event trigger will result in a tracking call. The page load event listener&#39;s frequency is configured to **Once**. For more information, see [Event triggers]().
+The trigger frequency determines how many times the event trigger will result in a tracking call. The page load event listener's frequency is configured to **Once**. For more information, see [Event triggers](https://docs.tealium.com/event-triggers/).
 
 ## Event trigger variables
 
@@ -46,15 +50,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;page_view&#34;`| The visitor loaded the specified page.|
+|`tealium_event="page_view"`| The visitor loaded the specified page.|
 |`iq_event_id` | The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;page_view&#34;,
-   &#34;iq_event_id:&#34; : &#34;page_view_events_1&#34;
+   "tealium_event"  : "page_view",
+   "iq_event_id:" : "page_view_events_1"
 }
 
 ```

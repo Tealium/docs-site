@@ -35,6 +35,10 @@ Save Existing Versions or Save as New Versions permission
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
 
-To learn about generating a bearer token from the API key, see [Authentication]().
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
+</blockquote>
+
+
+To learn about generating a bearer token from the API key, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).

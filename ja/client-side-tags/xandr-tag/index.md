@@ -3,7 +3,11 @@ title: Xandrタグ構成ガイド（廃止）
 description: この記事では、Tealium iQタグ管理アカウントでXandrタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/xandr-tag/
 ---
- Xandrタグは廃止され、サポートされていません。[Xandr Universal Pixel tag]()への移行をお勧めします。
+
+<blockquote>
+Xandrタグは廃止され、サポートされていません。[Xandr Universal Pixel tag](https://docs.tealium.com/xandr-universal-pixel-tag/)への移行をお勧めします。
+</blockquote>
+
 
 ## 必要条件
 
@@ -11,7 +15,7 @@ url: https://docs.tealium.com/ja/client-side-tags/xandr-tag/
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview]()記事を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview](https://docs.tealium.com/about-tags/)記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -22,11 +26,11 @@ url: https://docs.tealium.com/ja/client-side-tags/xandr-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]()のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
 
 ## データマッピング
 
-[Mapping]()は、データレイヤーのデータソースからベンダータグの対応する宛先変数にデータを送信するシンプルなプロセスです。
+[Mapping](https://docs.tealium.com/about-data-mappings/)は、データレイヤーのデータソースからベンダータグの対応する宛先変数にデータを送信するシンプルなプロセスです。
 
 以下の宛先変数にマッピングする必要があるのは、これらのタグ構成を動的に構成したい場合だけです。一方を構成する場合、他方を構成する必要はありません。
 

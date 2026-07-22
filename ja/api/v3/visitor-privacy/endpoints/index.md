@@ -5,25 +5,29 @@ url: https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/
 ---
 ## GET Visitor
 
-この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証]()を参照してください。
+
+<blockquote>
+この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
+</blockquote>
+
 
 以下のGETコマンドを使用して、ビジターレコードを取得します：
 
 ```bash
-GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&amp;attributeValue={attributeValue}&amp;prettyName={prettyName}
+GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&attributeValue={attributeValue}&prettyName={prettyName}
 ```
 
 このコマンドは以下のパラメータを使用します：
 
 * `attributeId`
-  * アカウントからの[ビジターID属性]()を表す数値ID。
+  * アカウントからの[ビジターID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
 * `attributeValue`
   * 検索する値。
   * 特殊文字を含む値はURLエンコードする必要があります。
 * `prettyName`
   * 属性キーがレスポンスにどのように表示されるかを示すブール値：
-    * **True** – 属性はユーザーフレンドリーな名前、例えば &#34;Lifetime Order Value&#34; として表示されます。
-    * **False** – 属性は数値ID、例えば &#34;28471&#34; として表示されます。
+    * **True** – 属性はユーザーフレンドリーな名前、例えば "Lifetime Order Value" として表示されます。
+    * **False** – 属性は数値ID、例えば "28471" として表示されます。
 
 ### 権限要件
 
@@ -33,12 +37,12 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attri
 ### 例：cURLリクエスト
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
  -G \
-&#39;https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main&#39; \
- --data-urlencode &#39;attributeId=86&#39; \
- --data-urlencode &#39;attributeValue=user@example.com&#39; \
- --data &#39;prettyName=true&#39;
+'https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
+ --data-urlencode 'attributeId=86' \
+ --data-urlencode 'attributeValue=user@example.com' \
+ --data 'prettyName=true'
 ```
 
 ### 例：レスポンス
@@ -51,49 +55,53 @@ curl -H &#39;Authorization: Bearer {token}&#39; \
 
 |エラーメッセージ| 説明|
 |---| ---|
-|400|  `{ &#34;message&#34;: &#34;属性IDまたは属性値が欠落しています&#34;}` |
-|401|  `{ &#34;message&#34;: &#34;認証されていません&#34;}` |
-| 404 | `システム内にビジターが見つかりません {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;リクエストが多すぎます&#34;}` |
-| 500 |`{ &#34;message&#34;: &#34;内部サーバーエラー&#34;}` |
+|400|  `{ "message": "属性IDまたは属性値が欠落しています"}` |
+|401|  `{ "message": "認証されていません"}` |
+| 404 | `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "リクエストが多すぎます"}` |
+| 500 |`{ "message": "内部サーバーエラー"}` |
 
 ## DELETE visitor
 
-この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証]()を参照してください。
+
+<blockquote>
+この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
+</blockquote>
+
 
 ビジターレコードを1つ以上削除する前に、以下の点を考慮してください：
 
 * ビジターレコードの削除リクエストは、ビジターID値に関連するすべてのデータの削除を引き起こします。これには、ステッチされたビジターレコードも含まれます。
 * 削除リクエストは処理のためにキューに入れられ、完了までに最大30日かかる場合があります。
 * ビジターが他のビジターに置き換えられた場合、または他のビジターに置き換えられた場合、ステッチされたすべてのビジターが削除されます。
-* DELETEコマンドへのパラメータは、クエリストリングパラメータではなく、コンテンツタイプ &#34; `application/x-www-form-urlencoded`&#34; を使用してURLエンコードされたフォームフィールドとして渡す必要があります。
+* DELETEコマンドへのパラメータは、クエリストリングパラメータではなく、コンテンツタイプ " `application/x-www-form-urlencoded`" を使用してURLエンコードされたフォームフィールドとして渡す必要があります。
 
 以下のDELETEコマンドを使用して、ビジターレコードを削除します：
 
 ```bash
-DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={value}&amp;attributeValue={value}
+DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={value}&attributeValue={value}
 ```
 
 このコマンドは以下のパラメータを使用します：
 
 * `attributeId`  
-アカウントからの[ビジターID属性]()を表す数値ID。
+アカウントからの[ビジターID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
 * `attributeValue`  
 検索する値。
 
 ### 権限要件
 
 * サーバーサイドのパブリッシャーレガシー権限、または
-* **View, Edit, &amp; Delete** ビジタールックアッププラットフォーム権限
+* **View, Edit, & Delete** ビジタールックアッププラットフォーム権限
 
 ### 例：cURLリクエスト
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 -X DELETE \
-&#39;https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main&#39; \
---data-urlencode &#34;attributeId=86&#34;
---data-urlencode &#34;attributeValue=user@example.com&#34;
+'https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
+--data-urlencode "attributeId=86"
+--data-urlencode "attributeValue=user@example.com"
 ```
 
 ### 例：レスポンス
@@ -104,7 +112,7 @@ curl -H &#39;Authorization: Bearer {token}&#39; \
 
 ```json
 {
-&#34;transactionId&#34; : &#34;{transactionId1}&#34;
+"transactionId" : "{transactionId1}"
 }
 ```
 
@@ -114,14 +122,18 @@ curl -H &#39;Authorization: Bearer {token}&#39; \
 
 |エラーメッセージ| 説明|
 |---| ---|
-|400|  `{ &#34;message&#34;: &#34;属性IDまたは属性値が欠落しています&#34;}` |
-|401|  `{ &#34;message&#34;: &#34;認証されていません&#34;}` |
-|404|  `システム内にビジターが見つかりません {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;リクエストが多すぎます&#34;}` |
+|400|  `{ "message": "属性IDまたは属性値が欠落しています"}` |
+|401|  `{ "message": "認証されていません"}` |
+|404|  `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "リクエストが多すぎます"}` |
 
 ## GET transaction
 
-この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証]()を参照してください。
+
+<blockquote>
+この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
+</blockquote>
+
 
 トランザクションとは、任意のDELETEビジターリクエストを指します。DELETEビジターリクエストは後で処理するためにキューに入れられます。これにより、`transaction_id`がそのリクエストの一意のレコードとなり、処理ステータスを確認するためのIDとして使用されます。
 
@@ -138,10 +150,10 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/transactions/{tran
 
 ### 例：cURLリクエスト
 
-APIキーからベアラートークンを生成する方法については、[認証]()を参照してください。ベアラートークンはAPIキーではなく、API呼び出しで使用されます。
+APIキーからベアラートークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。ベアラートークンはAPIキーではなく、API呼び出しで使用されます。
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/transactions/0123456789
 ```
 
@@ -151,7 +163,7 @@ https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_accoun
 
 ```json
 {
-  &#34;0123456789&#34; : &#34;SUCCESS&#34;
+  "0123456789" : "SUCCESS"
 }
 ```
 
@@ -161,9 +173,9 @@ https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_accoun
 
 |エラーメッセージ| 説明|
 |---| ---|
-|401|  `{ &#34;message&#34;: &#34;認証されていません&#34;}` |
-|404|  `システム内にビジターが見つかりません {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;リクエストが多すぎます&#34;}` |
+|401|  `{ "message": "認証されていません"}` |
+|404|  `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "リクエストが多すぎます"}` |
 
 ## GET Visitor ID Attributes
 
@@ -181,7 +193,7 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
 ### 例：cURLリクエスト
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/ids
 ```
 
@@ -191,8 +203,8 @@ https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles
 
 ```json
 {
-  &#34;43&#34; : &#34;Email Address&#34;,
-  &#34;57&#34; : &#34;Tax ID Number&#34;
+  "43" : "Email Address",
+  "57" : "Tax ID Number"
 }
 ```
 
@@ -202,7 +214,7 @@ https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles
 
 |エラーメッセージ| 説明|
 |---| ---|
-|401|  `{ &#34;message&#34;: &#34;認証されていません&#34;}` |
-|404|  `{ &#34;message&#34; : &#34;アカウントとプロファイルにビジターIDが見つかりませんでした&#34;}` |
-|429| `{ &#34;message&#34;: &#34;リクエストが多すぎます&#34;}` |
-|500|  `{ &#34;message&#34; : &#34;内部サーバーエラー&#34;}` |
+|401|  `{ "message": "認証されていません"}` |
+|404|  `{ "message" : "アカウントとプロファイルにビジターIDが見つかりませんでした"}` |
+|429| `{ "message": "リクエストが多すぎます"}` |
+|500|  `{ "message" : "内部サーバーエラー"}` |

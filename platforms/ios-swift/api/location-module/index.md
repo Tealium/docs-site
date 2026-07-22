@@ -5,13 +5,13 @@ url: https://docs.tealium.com/platforms/ios-swift/api/location-module/
 ---
 ## Class: LocationModule
 
-The `LocationModule` class provides methods for gathering location data, creating and monitoring geofences. The following summarizes methods of the `LocationModule` class for Tealium iOS (Swift) which can be used to make custom changes to the default behavior of the Location Module. For additional details, explore [Location](/platforms/ios-swift/module-list/location/).
+The `LocationModule` class provides methods for gathering location data, creating and monitoring geofences. The following summarizes methods of the `LocationModule` class for Tealium iOS (Swift) which can be used to make custom changes to the default behavior of the Location Module. For additional details, explore [Location](https://docs.tealium.com/platforms/ios-swift/module-list/location/).
 
 | Method | Description |
 | ----- | ------ |
 | [`clearMonitoredGeofences()`](#clearmonitoredgeofences) | Removes all currently monitored geofences from the location client |
 | [`getCreatedGeofences()`](#getcreatedgeofences) | Returns the names of all the created geofences (those currently being monitored and those that are not) |
-| [`getLastLocation()`](#getlastlocation) | Gets the last known location for a user&#39;s device |
+| [`getLastLocation()`](#getlastlocation) | Gets the last known location for a user's device |
 | [`getMonitoredGeofences()`](#getmonitoredgeofences) | Returns the names of all currently monitored geofences |
 | [`requestAuthorization()`](#requestauthorization) | Prompts the user to enable permission for location servies |
 | [`requestTemporaryFullAccuracyAuthorization()`](#requesttemporaryfullaccuracyauthorization) | Automatically requests temporary full accuracy if precise accuracy is disabled |
@@ -45,7 +45,7 @@ tealium.location?.getCreatedGeofences(completion: { createdGeofences in
 
 ### `getLastLocation()`
 
-Gets the last known location for a user&#39;s device.
+Gets the last known location for a user's device.
 
 ```swift
 tealium.location?.getLastLocation(completion: { lastLocation in
@@ -80,7 +80,7 @@ tealium.location?.requestAuthorization()
 Automatically requests temporary full accuracy if precise accuracy is disabled.
 
 ```swift
-let purposeKey = &#34;a key in the NSLocationTemporaryUsageDescriptionDictionary&#34;
+let purposeKey = "a key in the NSLocationTemporaryUsageDescriptionDictionary"
 tealium.location?.requestTemporaryFullAccuracyAuthorization(purposeKey: purposeKey)
 ```
 

@@ -23,7 +23,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Insightly Connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new Insightly Connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 To configure the connector, follow these steps:
 
@@ -36,7 +36,7 @@ To obtain this information, log in to your Insightly account and select the **Us
 
 ## Action Settings: Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It&#39;s where you&#39;ll set up actions to trigger.
+Click **Next** or go to the **Actions** tab. It's where you'll set up actions to trigger.
 
 This section describes how to set up parameters and options for each action.
 

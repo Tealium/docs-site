@@ -2,13 +2,17 @@
 title: Consent management
 description: Learn how to implement consent management.
 url: https://docs.tealium.com/platforms/xamarin-v1/consent-mangagement/
----For the current version, see [Tealium for Xamarin 2.x](/platforms/xamarin/).
+---
+<blockquote>
+For the current version, see [Tealium for Xamarin 2.x](https://docs.tealium.com/platforms/xamarin/).
+</blockquote>
+
 
 ## Usage
 
 Usage of this module is recommended, as it is automatically included in the library and enabled in the native code upon initialization. Android and iOS are both supported platforms.
 
-[Learn more](/platforms/getting-started-mobile/consent-management/) about consent management.
+[Learn more](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/) about consent management.
 
 ## Sample App
 
@@ -71,7 +75,7 @@ tealConfig.InitialUserConsentCategories = new ConsentCategory[]{
 
 Interact directly with consent management from the Tealium instance, through the `ConsentManager` property.
 
-If you need to update a user&#39;s consent selection, pass one of enum values available in the `ConsentManager.ConsentCategory` and `ConsentManager.ConsentStatus`, as shown in the following example:
+If you need to update a user's consent selection, pass one of enum values available in the `ConsentManager.ConsentCategory` and `ConsentManager.ConsentStatus`, as shown in the following example:
 
 ```csharp
 // if the user is in an Unknown state, then the following code triggers any queued events are sent after this:

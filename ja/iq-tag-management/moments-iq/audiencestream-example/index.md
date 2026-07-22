@@ -11,13 +11,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/audiencestream-exa
 
 * Moments iQ。
 * Tealium AudienceStream。
-* 最新バージョンの [Tealium Collect tag]()。
+* 最新バージョンの [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/)。
 
 ## ステップ 1: タグを作成する
 
 以下の体験はホームページに表示されます。
 
-[Create a Moments iQ experience]() を使用して、以下のプロパティを持つTealium Moments iQタグを追加することで、訪問との最初のエンゲージメントを作成します：
+[Create a Moments iQ experience](https://docs.tealium.com/manage-moments-iq/#create-a-moments-iq-tag) を使用して、以下のプロパティを持つTealium Moments iQタグを追加することで、訪問との最初のエンゲージメントを作成します：
 
 * **タイトル**: `訪問の専門知識`
 * **体験の配置**: `中央`
@@ -40,9 +40,9 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/audiencestream-exa
 [
   [
     {
-      &#34;input&#34;: &#34;js.page_type&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;home&#34;
+      "input": "js.page_type",
+      "operator": "equals (ignore case)",
+      "filter": "home"
     }
   ] 
 ]
@@ -67,12 +67,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/audiencestream-exa
 
 この例では、タグUIDは `123` です：
 
-![](/images/early-access/moments-iq/moments-iq-expertise-conditions.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/moments-iq-expertise-conditions.png)
 
 ## 結果
 
 訪問がホームページをロードすると、体験は `div.col-main` 要素の始まりに埋め込まれます。
 
-![](/images/moments-iq/momentsiq-example-home-theater.png)
+![](https://docs.tealium.com/images/moments-iq/momentsiq-example-home-theater.png)
 
 顧客が質問に答えると、その回答は訪問プロファイルに保存され、専門知識レベルに基づいてバッジが割り当てられます。

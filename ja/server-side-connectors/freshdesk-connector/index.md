@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/freshdesk-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

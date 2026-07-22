@@ -7,15 +7,23 @@ url: https://docs.tealium.com/consent/client-side/consent-management/consent-pre
 
 The Consent Preferences Manager works together with the [Consent Prompt Manager]() to present tracking options to your customers and replaces the functionality previously offered by the [Privacy Manager extension]().
 
-In newer versions of `cmGeneral`, the Consent Preferences Manager requires the Explicit Consent Prompt Manager because they share an enforcement rule. If the Explicit Consent Prompt is disabled, the Consent Preferences Manager won&#39;t work as expected. To use the Consent Preferences Manager without the Explicit Consent Prompt, see [Use the Consent Preferences Manager without showing the Explicit Consent Prompt](#use-the-consent-preferences-manager-without-showing-the-explicit-consent-prompt) section below.
+
+<blockquote>
+In newer versions of `cmGeneral`, the Consent Preferences Manager requires the Explicit Consent Prompt Manager because they share an enforcement rule. If the Explicit Consent Prompt is disabled, the Consent Preferences Manager won't work as expected. To use the Consent Preferences Manager without the Explicit Consent Prompt, see [Use the Consent Preferences Manager without showing the Explicit Consent Prompt](#use-the-consent-preferences-manager-without-showing-the-explicit-consent-prompt) section below.
+</blockquote>
+
 
 The consent preferences manager groups tags in categories based on their function and purpose, such as `Analytics`, `Display Ads`, or `Email Marketing`. These categories are presented to the customer and displayed as toggle buttons to allow or disallow that tracking to occur. For example, if a user opts out of the `Marketing` category, tags categorized in the marketing category are suppressed. If needed, customers can still access their preference selections about the types of tracking they allow by using the consent preferences popup.
 
+
+<blockquote>
 The Consent Preferences Manager automatically suppresses tags in opted-out categories from loading.
+</blockquote>
+
 
 Preferences popup example:
 
-![](/images/iq-tag-management/consent-preferences-prompt.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-preferences-prompt.png)
 
 The iQ Tag Management Consent Preferences Manager simplifies the creation and deployment of a tracking preferences prompt to your website using your existing installation. After published, add a simple JavaScript function call to your page code to trigger the popup.
 
@@ -30,28 +38,28 @@ To use the Consent Preferences Manager without showing the Explicit Consent Prom
 utag.gdpr.consent_prompt.noShow = true;
 
 function checkForLoadedConsent() { 
-    var foundDecision = window.tealiumConsentRegister &amp;&amp; window.tealiumConsentRegister.currentDecision; 
+    var foundDecision = window.tealiumConsentRegister && window.tealiumConsentRegister.currentDecision; 
     return !!foundDecision;
 }
 
 function checkForImplicitDecision() { 
     var foundDecision = checkForLoadedConsent(); 
-    var foundExplicitDecision = window.tealiumConsentRegister &amp;&amp; window.tealiumConsentRegister.currentDecision &amp;&amp; 
-        window.tealiumConsentRegister.currentDecision.type === &#39;explicit&#39;; 
-    return foundDecision &amp;&amp; !foundExplicitDecision; 
+    var foundExplicitDecision = window.tealiumConsentRegister && window.tealiumConsentRegister.currentDecision && 
+        window.tealiumConsentRegister.currentDecision.type === 'explicit'; 
+    return foundDecision && !foundExplicitDecision; 
 }
 
 function showPreferences() { 
-    return utag &amp;&amp; utag.gdpr &amp;&amp; utag.gdpr.showConsentPreferences &amp;&amp; utag.gdpr.showConsentPreferences(); 
+    return utag && utag.gdpr && utag.gdpr.showConsentPreferences && utag.gdpr.showConsentPreferences(); 
 }
 
 // If the decision is only implicit, pop up the Preferences Modal to prompt a decision  
 if (!checkForLoadedConsent()) { 
-    window.addEventListener(&#39;consent_loaded&#39;, (event) =&gt; { 
-        if (checkForImplicitDecision() &amp;&amp; utag.gdpr.getEnforcementMode() === &#39;opt-in&#39;) 
+    window.addEventListener('consent_loaded', (event) => { 
+        if (checkForImplicitDecision() && utag.gdpr.getEnforcementMode() === 'opt-in') 
             showPreferences(); 
     }); 
-} else if (checkForImplicitDecision() &amp;&amp; utag.gdpr.getEnforcementMode() === &#39;opt-in&#39;) { 
+} else if (checkForImplicitDecision() && utag.gdpr.getEnforcementMode() === 'opt-in') { 
     showPreferences(); 
 }
 ```
@@ -60,7 +68,7 @@ if (!checkForLoadedConsent()) {
 
 Changes in consent preferences are also honored by Tealium EventStream connectors. The consent category of a connector action is displayed on the **Action** configuration screen:
 
-![](/images/iq-tag-management/consent-categories-connector-action.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-categories-connector-action.png)
 
 When a customer sets consent category preferences, they are included in subsequent server-side requests. Only connector actions in the categories that the customer has opted into are triggered.
 
@@ -68,7 +76,7 @@ When a customer sets consent category preferences, they are included in subseque
 
 You have two connectors configured, one for `Analytics` and one for `Personalization`. A customer grants partial consent in the preference form by allowing `Analytics` tracking but not allowing `Personalization`.
 
-![](/images/iq-tag-management/consent-server-side-categories-example.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-server-side-categories-example.png)
 
 Only connector actions in the `Analytics` category are triggered. Any connector action categorized as `Personalization` is suppressed.
 
@@ -93,7 +101,11 @@ The Consent Preferences Manager offers the following features:
 
 All of the configuration is bundled with your existing installation of the JavaScript library (utag.js).
 
+
+<blockquote>
 After you activate and configure the preferences prompt, the changes are released in your next publish.
+</blockquote>
+
 
 ## Global settings
 

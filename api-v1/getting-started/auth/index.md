@@ -3,7 +3,11 @@ title: Authentication
 description: This article describes the authentication methods used in Tealium V1 APIs.
 url: https://docs.tealium.com/api-v1/getting-started/auth/
 ---
- This is an older version of [the current Tealium API](). 
+
+<blockquote>
+This is an older version of [the current Tealium API](https://docs.tealium.com/api-authentication/).
+</blockquote>
+
 
 The API can only be used by users with a valid Tealium account. The API supports authentication using an email address and password to verify user identity. Prior to accessing any of the API endpoints, you must authenticate to start a session. All subsequent calls use a session cookie and [CSRF token](https://en.wikipedia.org/wiki/Cross-site_request_forgery) for security purposes.
 
@@ -23,14 +27,14 @@ These values are then used to authenticate all subsequent API calls.
 cURL request:
 
 ```bash
-curl -i -d username=&#39;{email}&#39; -d password=&#39;{password}&#39; https://api.tealiumiq.com/v1/login
+curl -i -d username='{email}' -d password='{password}' https://api.tealiumiq.com/v1/login
 
 ```
 
 Example request:
 
 ```bash
-curl -i -d username=&#39;user@example.com&#39; -d password=&#39;password123&#39; https://api.tealiumiq.com/v1/login
+curl -i -d username='user@example.com' -d password='password123' https://api.tealiumiq.com/v1/login
 
 ```
 
@@ -53,7 +57,7 @@ Content-Length: 60
 Connection: keep-alive
 
 {
-   &#34;utk&#34;: &#34;65489FMSTJGF549870KSH&#34;,
+   "utk": "65489FMSTJGF549870KSH",
 }
 
 ```
@@ -69,21 +73,25 @@ From this response, you would make note of the following values for all subseque
 
 If the call fails, the API returns a `401 Authentication Failure` error. Here are the error messages you can expect to see:
 
-`{ &lt;br&gt;   &#34;returnCode&#34; : 1401,&lt;br&gt;  &#34;message&#34; : &#34;Authentication Failed&#34;&lt;br&gt;}`
+`{ <br>   "returnCode" : 1401,<br>  "message" : "Authentication Failed"<br>}`
 
-`{ &lt;br&gt;   &#34;returnCode&#34; : 1402,&lt;br&gt;  &#34;message&#34; : &#34;Too many unsuccessful login attempts. Please try again in 10 minutes&#34; &lt;br&gt;}`
+`{ <br>   "returnCode" : 1402,<br>  "message" : "Too many unsuccessful login attempts. Please try again in 10 minutes" <br>}`
 
-`{ &lt;br&gt;   &#34;returnCode&#34; : 1469,&lt;br&gt;  &#34;message&#34; : &#34;Although the user is authenticated, the request is denied due of lack of proper permissions&#34; &lt;br&gt;}`
+`{ <br>   "returnCode" : 1469,<br>  "message" : "Although the user is authenticated, the request is denied due of lack of proper permissions" <br>}`
 
 ## Logout
 
 Terminates the current session for the logged-in user.
 
- This API call is optional because a user is automatically logged out after their session expires.
+
+<blockquote>
+This API call is optional because a user is automatically logged out after their session expires.
+</blockquote>
+
 
 ### Resource URL
 
-POST &lt;https://api.tealiumiq.com/v1/logout&gt;
+POST <https://api.tealiumiq.com/v1/logout>
 
 ### Request header
 

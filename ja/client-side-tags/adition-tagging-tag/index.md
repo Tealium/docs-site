@@ -9,15 +9,15 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-tagging-tag/
 * Aditionとの契約に従ってドメインを構成します。
 
   * デフォルト値：`adfarm1.adition.com`
-  * AdfarmID：`ad&lt;id&gt;.adfarm1.adition.com`
-  * カスタム：`&lt;subdomain&gt;.&lt;domain&gt;.&lt;tld&gt;`
+  * AdfarmID：`ad<id>.adfarm1.adition.com`
+  * カスタム：`<subdomain>.<domain>.<tld>`
 
 * デフォルトの戻りタイプは`img`です。
 * マッピングでは`tag[key.subkey]`を`tag.key.subkey`としてマップします。
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Adition（タグ付け）タグを追加します。（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Adition（タグ付け）タグを追加します。（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-tagging-tag/
 
 ### データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは次のとおりです：
 

@@ -7,14 +7,18 @@ url: https://docs.tealium.com/platforms/cordova-v1/module-list/adid/
 
 To install the Ad Identifier module:
 
-1. Navigate to your Cordova app&#39;s directory in a terminal window
+1. Navigate to your Cordova app's directory in a terminal window
 
 2. Run the following command:
       ```bash
       cordova plugin add tealium-cordova-adidentifier
       ```
 
-The Ad Identifier module has a dependency on the Google Play Services Ads module. Add your [AdMob App ID](https://developers.google.com/admob/android/quick-start) to your app&#39;s `AndroidManifest.xml` file to prevent the app from crashing during startup.
+
+<blockquote>
+The Ad Identifier module has a dependency on the Google Play Services Ads module. Add your [AdMob App ID](https://developers.google.com/admob/android/quick-start) to your app's `AndroidManifest.xml` file to prevent the app from crashing during startup.
+</blockquote>
+
 
 ## Initialize
 
@@ -59,10 +63,10 @@ To uninstall the Ad Identifier module:
 2. Delete the Ad Identifier data from persistent storage:
       ```javascript
       // android only
-      tealium.removePersistent(&#34;google_adid&#34;, &lt;your tealium instance name&gt;);
+      tealium.removePersistent("google_adid", <your tealium instance name>);
 
       // ios only
-      tealium.removePersistent(&#34;device_advertising_id&#34;, &lt;your tealium instance name&gt;);
-      tealium.removePersistent(&#34;device_advertising_vendor_id&#34;, &lt;your tealium instance name&gt;);
-      tealium.removePersistent(&#34;device_advertising_enabled&#34;, &lt;your tealium instance name&gt;);
+      tealium.removePersistent("device_advertising_id", <your tealium instance name>);
+      tealium.removePersistent("device_advertising_vendor_id", <your tealium instance name>);
+      tealium.removePersistent("device_advertising_enabled", <your tealium instance name>);
       ```

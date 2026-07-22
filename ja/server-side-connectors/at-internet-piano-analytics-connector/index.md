@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/at-internet-piano-analyt
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を行います：
 
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/at-internet-piano-analyt
 
 ### バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100
 * 最古のリクエストからの最大時間：5分
@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/at-internet-piano-analyt
 
 |パラメータ| 説明|
 | --- | --- |
-|日付フォーマット| イベントプロパティを入力する際に[日付フォーマット](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date)を指定します。&lt;br&gt;エポックUTCからのミリ秒（またはCDH日付属性）のみがフォーマット可能で、それ以外の場合はアクションが失敗します。&lt;br&gt;有効な日付フォーマットは次のとおりです：`YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDTHH:mm:ssZ`, `UNIX`。|
+|日付フォーマット| イベントプロパティを入力する際に[日付フォーマット](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date)を指定します。<br>エポックUTCからのミリ秒（またはCDH日付属性）のみがフォーマット可能で、それ以外の場合はアクションが失敗します。<br>有効な日付フォーマットは次のとおりです：`YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDTHH:mm:ssZ`, `UNIX`。|
 
 #### 標準パラメータ
 

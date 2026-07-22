@@ -4,10 +4,10 @@ description: Learn to install Tealium for watchOS.
 url: https://docs.tealium.com/platforms/ios-objective-c/watchos/
 ---## Requirements
 
-* Xcode 7&#43;
-* iOS 8.1&#43;
-* watchOS 2.0&#43;
-* [Tealium for iOS](/platforms/ios-swift/) installed in the host app
+* Xcode 7+
+* iOS 8.1+
+* watchOS 2.0+
+* [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/) installed in the host app
 * 400KB available space in `.ipa `file size (this accounts for the `tealium-ios` library needed in the host app)
 * [Bitcode compliant](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html) framework
 
@@ -26,13 +26,17 @@ To abstract the Tealium implementation from the rest of your app, we recommend t
 Install Tealium for watchOS as an extension application where `TealiumIOS.framework` has been implemented in the host application. 
 
 
-1. Add `TealiumWATCHOSExtension.framework` to your project&#39;s watchOS Extension target, and copy the framework to the project in the resulting dialog box.
+1. Add `TealiumWATCHOSExtension.framework` to your project's watchOS Extension target, and copy the framework to the project in the resulting dialog box.
 
-2. In the target&#39;s **General: Embedded Binaries** section, add the framework:  
+2. In the target's **General: Embedded Binaries** section, add the framework:  
     ```perl
     TealiumWATCHOSExtension.framework
     ```  
-For Swift projects, add `&lt;TealiumWATCHOSExtension/TEALWKExtension.h&gt;` to your bridging header file.  
+
+<blockquote>
+For Swift projects, add `<TealiumWATCHOSExtension/TEALWKExtension.h>` to your bridging header file.
+</blockquote>
+  
 
 3. Make sure all paths are as expected under **Projects: Target: Build Settings**. 
 
@@ -48,7 +52,7 @@ In the Application Delegate, or within a helper class setup method, add the foll
 ```swift
 // Get Tealium instance
 let config = TEALWKExtensionConfiguration.configuration()
-guard let tealium = TEALWKExtension.newInstanceForKey(&#34;[INSTANCE]&#34;) else {
+guard let tealium = TEALWKExtension.newInstanceForKey("[INSTANCE]") else {
     // Any additional failure response here
     return
 }
@@ -57,12 +61,12 @@ guard let tealium = TEALWKExtension.newInstanceForKey(&#34;[INSTANCE]&#34;) else
 
 ```objc
 // Import area
-#import &lt;TealiumWATCHOSExtension/TealiumWATCHOS.h&gt;
+#import <TealiumWATCHOSExtension/TealiumWATCHOS.h>
 
 // Within a setup method
 TEALWKExtensionConfiguration *config = [TEALWKExtensionConfiguration configuration];
 config.logLevel = TEALLogLevelDev;
-[TEALWKExtension newInstanceForKey:@&#34;[INSTANCE]&#34; configuration:config]; 
+[TEALWKExtension newInstanceForKey:@"[INSTANCE]" configuration:config]; 
 ```
 
 
@@ -72,18 +76,18 @@ config.logLevel = TEALLogLevelDev;
 
 Track screen views by calling [`trackViewWithTitle()`](https://tealium.github.io/tealium-ios/Classes/Tealium.html#//api/name/trackViewWithTitle:dataSources:) with two parameters: the name of the screen and (optionally) contextual view data.
 
-In any UIViewController&#39;s [`viewDidAppear()`](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621423-viewdidappear) method, use this code:
+In any UIViewController's [`viewDidAppear()`](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621423-viewdidappear) method, use this code:
 
 
 
 
 ```swift
-TEALWKExtension.instanceForKey(&#34;[hostTealiumInstanceKey]&#34;)?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [String:String]())
+TEALWKExtension.instanceForKey("[hostTealiumInstanceKey]")?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [String:String]())
 ```
 
 
 ```objc
-[[TEALWKExtension instanceForKey:@&#34;[INSTANCE]&#34;] trackViewWithTitle:NSStringFromClass([self class]) dataSources:@{}];
+[[TEALWKExtension instanceForKey:@"[INSTANCE]"] trackViewWithTitle:NSStringFromClass([self class]) dataSources:@{}];
 ```
 
 
@@ -97,12 +101,12 @@ In any method that triggers or responds to an event trigger, use this code:
 
 
 ```swift
-TEALWKExtension.instanceForKey(&#34;[INSTANCE]&#34;)?.trackEventwWithTitle(&#34;EVENT_NAME&#34;), dataSources: [String:String]())
+TEALWKExtension.instanceForKey("[INSTANCE]")?.trackEventwWithTitle("EVENT_NAME"), dataSources: [String:String]())
 ```
 
 
 ```objc
-[[Tealium instanceForKey:@&#34;[INSTANCE]&#34;] trackEventWithTitle:@&#34;EVENT_NAME&#34; dataSources:@{@&#34;optionalKey&#34;:@&#34;optionalValue&#34;}];
+[[Tealium instanceForKey:@"[INSTANCE]"] trackEventWithTitle:@"EVENT_NAME" dataSources:@{@"optionalKey":@"optionalValue"}];
 ```
 
 

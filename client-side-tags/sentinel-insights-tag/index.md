@@ -11,11 +11,11 @@ Deploy the Sentinel Insights observer to detect tracking issues, data-layer anom
 * For full pre-`utag.js` coverage, copy the Sentinel loader stub from your account team into your `utag.sync.js` template via the iQ UI in addition to deploying this tag. The in-tag deployment captures everything from `utag.js` load onward.
 * Obtain your **Environment ID** from your Sentinel Insights account team. For multi-environment setups, configure **Environment ID (Dev / Test)** as well and override per fire using the `env_id` mapping destination, a Lookup Table, or per-environment load rules.
 * Use the **Configuration** tab to override `env_id` or `custom_page_name` per fire, for example in multi-brand profiles.
-* **Consent Logic** is a JavaScript function body that the SDK calls to read the current consent state. The function receives one argument (`utils`) that exposes `utils.getCookie(name)`, which reads `document.cookie` and returns the URL-decoded value, or an empty string if the cookie does not exist. Your snippet must return a string that Sentinel uses as the consent signal. Avoid embedding credentials in this field, because the tag configuration ships in the customer&#39;s `utag.js`.
+* **Consent Logic** is a JavaScript function body that the SDK calls to read the current consent state. The function receives one argument (`utils`) that exposes `utils.getCookie(name)`, which reads `document.cookie` and returns the URL-decoded value, or an empty string if the cookie does not exist. Your snippet must return a string that Sentinel uses as the consent signal. Avoid embedding credentials in this field, because the tag configuration ships in the customer's `utag.js`.
 
   ```javascript
-  var val = utils.getCookie(&#39;consent_status&#39;);
-  return val === &#39;granted&#39; || val === &#39;accepted&#39; ? &#39;granted&#39; : &#39;denied&#39;;
+  var val = utils.getCookie('consent_status');
+  return val === 'granted' || val === 'accepted' ? 'granted' : 'denied';
   ```
 * Use the **Cookie Consent** tab to map a data layer variable to `grant` or `revoke`. The tag then signals a consent update to Sentinel, which re-reads the **Consent Logic** function for the new state.
 * **Trigger toggles** control which Sentinel events fire: Data Layer Updates (default on), SPA Page Changes, and Resume Load. Pair the SPA toggles with customer-side extensions that fire `spa_page_change` or `spa_resume` Tealium events.
@@ -24,7 +24,7 @@ Deploy the Sentinel Insights observer to detect tracking issues, data-layer anom
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see .
+Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -40,11 +40,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

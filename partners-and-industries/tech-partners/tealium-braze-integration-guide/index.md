@@ -12,7 +12,7 @@ The following table lists descriptions and prerequisites for the client-side Bra
 
 |Integration Type| What to Expect from this Integration| Product Requirements| Setup Guides|
 |---| ---| ---| ---|
-|Braze Web SDK Tag|  With the Braze Web SDK, you can: &lt;ul&gt;&lt;li&gt;Collect session data&lt;/li&gt;&lt;li&gt;Identify users (with the Tealium unified data layer)&lt;/li&gt;&lt;li&gt;Record purchases and custom events through a web/mobile browser.&lt;/li&gt;&lt;/ul&gt; Implementing the Braze Web SDK enables you to create a more complete view of your users across web and mobile channels. You can also use the Web SDK to engage with your users by sending in-app web messages and web push notifications. |  Tealium iQ Tag Management |  [Braze Web SDK Tag Setup Guide]() |
+|Braze Web SDK Tag|  With the Braze Web SDK, you can: <ul><li>Collect session data</li><li>Identify users (with the Tealium unified data layer)</li><li>Record purchases and custom events through a web/mobile browser.</li></ul> Implementing the Braze Web SDK enables you to create a more complete view of your users across web and mobile channels. You can also use the Web SDK to engage with your users by sending in-app web messages and web push notifications. |  Tealium iQ Tag Management |  [Braze Web SDK Tag Setup Guide](https://docs.tealium.com/braze-web-sdk-tag/) |
 
 ## Server-side integration
 
@@ -20,7 +20,7 @@ The following table lists descriptions and prerequisites for the server-side Bra
 
 |Integration Type| What to Expect from this Integration| Product Requirements| Setup Guides|
 |---| ---| ---| ---|
-|Braze Connector|  This Braze integration lets you further enrich your Braze data through AudienceStream and/or EventStream to build real-time, personalized, omnichannel experiences with your customers. The **Track User** action contains functionality that is the same for AudienceStream and EventStream. As a best practice, we recommend using User Attribute features with AudienceStream and Event and Purchase features with EventStream. Use cases that do not fit these criteria may ignore this best practice. |  Tealium EventStream and/or Tealium AudienceStream |  [Braze Connector Setup Guide]() |
+|Braze Connector|  This Braze integration lets you further enrich your Braze data through AudienceStream and/or EventStream to build real-time, personalized, omnichannel experiences with your customers. The **Track User** action contains functionality that is the same for AudienceStream and EventStream. As a best practice, we recommend using User Attribute features with AudienceStream and Event and Purchase features with EventStream. Use cases that do not fit these criteria may ignore this best practice. |  Tealium EventStream and/or Tealium AudienceStream |  [Braze Connector Setup Guide](https://docs.tealium.com/braze-connector/) |
 
 ## Mobile Integration
 
@@ -28,4 +28,4 @@ The following table lists descriptions and prerequisites for mobile Braze integr
 
 |Integration Type| What to Expect from this Integration| Product Requirements| Setup Guides|
 |---| ---| ---| ---|
-|Braze Remote Commands|  This Braze integration uses the following: &lt;ul&gt;&lt;li&gt;**Native Braze SDK** - A remote command module that wraps the Braze methods.&lt;/li&gt;&lt;li&gt;**Braze Remote Command Tag** - A tag that translates event tracking into native Braze calls.&lt;/li&gt;&lt;/ul&gt; This solution leverages the convenience of Tag Management to configure a native Braze implementation without having to add vendor-specific code to your app. Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries. If you are using a dependency manager installation, there is no need to install the Braze SDK separately. |  Tealium iQ Tag Management |  [Remote Command: Braze](https://docs.tealium.com/platforms/remote-commands/integrations/braze/) |
+|Braze Remote Commands|  This Braze integration uses the following: <ul><li>**Native Braze SDK** - A remote command module that wraps the Braze methods.</li><li>**Braze Remote Command Tag** - A tag that translates event tracking into native Braze calls.</li></ul> This solution leverages the convenience of Tag Management to configure a native Braze implementation without having to add vendor-specific code to your app. Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries. If you are using a dependency manager installation, there is no need to install the Braze SDK separately. |  Tealium iQ Tag Management |  [Remote Command: Braze](https://docs.tealium.com/platforms/remote-commands/integrations/braze/) |

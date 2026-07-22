@@ -9,7 +9,7 @@ For additional information about the Session AI tag, see [Session AI Tealium Tag
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -24,11 +24,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Session AI recommends setting the Session AI SDK and tag load rules to **All Pages and Events** (default) for proper data collection and visitor interaction. For more information, see [About load rules]().
+Session AI recommends setting the Session AI SDK and tag load rules to **All Pages and Events** (default) for proper data collection and visitor interaction. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -37,7 +37,7 @@ The available categories are:
 | Variable | Data Type | Description |
 |---|---|---|
 | `customerId`  | String |Customer ID (Overrides `_ccustid`) |
-| `logged_in` | Boolean | Logged in status. &lt;br&gt; Available values are **Y** or **N**. |
+| `logged_in` | Boolean | Logged in status. <br> Available values are **Y** or **N**. |
 
 ### E-Commerce
 
@@ -109,7 +109,7 @@ For more information about e-commerce parameters, see [Ecommerce Event Schema](h
 
 
 ### Event Triggers
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |---|---|
@@ -146,14 +146,14 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 
 ### Event-specific Parameters
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Data Type | Description |
 |:---------|:----------|:------------|
 | `email`  | String | Unique email address |
 |`phone`  | String | Unique phone number |
 | `fb`  | String |  Facebook ID|
-| `logged_in` | Boolean |  Logged in status. &lt;br&gt; Available values are **Y** or **N**.  |
+| `logged_in` | Boolean |  Logged in status. <br> Available values are **Y** or **N**.  |
 | `category` | String | Category |
 | `product_id` | String | Product ID  |
 | `sku` | String | SKU |

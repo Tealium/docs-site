@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-ads-conversions-c
 * APIバージョン：v1
 * APIエンドポイント：`https://advertising-api.amazon.com`
 * ドキュメント：[Amazon Ads Events API](https://advertising.amazon.com/API/docs/en-us/guides/events/events)
-* タグドキュメント：[Amazon Advertising Tag]()
+* タグドキュメント：[Amazon Advertising Tag](https://docs.tealium.com/amazon-advertising-tag/)
 
 ## コネクタのヒント
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-ads-conversions-c
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors]()を参照してください。
+コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -36,13 +36,13 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 
 タグのUIDは、Tealium iQの**タグ**テーブルまたはタグ詳細画面で見つけることができます：
 
-![](/images/server-side-connectors/amazon-ad-server-tag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/amazon-ad-server-tag-uid.png)
 
 例えば、UIDが`170`のタグからのチェックアウトイベントは、次の属性値を送信します：
 
 ```json
 {
-  &#34;amazon_event_id_checkout_170&#34;: &#34;028b2ade7478...&#34;
+  "amazon_event_id_checkout_170": "028b2ade7478..."
 }
 ```
 
@@ -50,7 +50,7 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 
 ```json
 {
-  &#34;amazon_event_id_pageView_170&#34;: &#34;028b2ade7478...&#34;
+  "amazon_event_id_pageView_170": "028b2ade7478..."
 }
 ```
 
@@ -59,7 +59,7 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 | Tealium属性  | Amazonパラメータ  |
 |:-------------------------|:-------------------|
 | `amazon_event_id_checkout_170` (属性)   | Event ID           |
-| `&#34;Checkout&#34;` (カスタムテキスト) | Event Name         |
+| `"Checkout"` (カスタムテキスト) | Event Name         |
 
 ### 自動重複排除
 
@@ -85,7 +85,7 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。並行処理により、イベントがベンダーに順不同で到達する可能性があります。イベントの順序が重要な場合は、イベントにシーケンス値を追加します。詳細については、[Batched Actions]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。並行処理により、イベントがベンダーに順不同で到達する可能性があります。イベントの順序が重要な場合は、イベントにシーケンス値を追加します。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：500
 * 最古のリクエストからの最大時間：10分
@@ -165,7 +165,11 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 
 ### 送信変換（非推奨）
 
+
+<blockquote>
 このアクションは現在非推奨となっており、新たに追加することはできません。現在のアクションについては、[Send Conversion](#send-conversion)を参照してください。
+</blockquote>
+
 
 #### API情報
 
@@ -193,7 +197,7 @@ amazon_event_id_{EVENT_NAME}_{TAG_UID}
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[Batched Actions]()を参照してください。次のいずれかの閾値が満たされるか、プロファイルが公開されるまでリクエストはキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかの閾値が満たされるか、プロファイルが公開されるまでリクエストはキューに入れられます：
 
 * 最大リクエスト数：100
 * 最古のリクエストからの最大時間：10分

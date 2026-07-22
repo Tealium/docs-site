@@ -7,7 +7,7 @@ It is important to have a good understanding of the [order of operations]() befo
 
 The following image shows the available **Advanced Settings**, as displayed in the interface:
 
-![](/images/iq-tag-management/manage_tags/tag_advanced_settings.png)
+![](https://docs.tealium.com/images/iq-tag-management/manage_tags/tag_advanced_settings.png)
 
 ## Send Flag
 
@@ -21,15 +21,19 @@ Tags that use the **All Pages** load rule are automatically bundled when the **B
 
 The load order for bundled tags and those using the **All Pages** load rule is determined by the order in which they appear in the UI. Bundling affects the generated file (`utag.js`).
 
-Additional JavaScript files requested by the vendor tag will still load separately. 
+
+<blockquote>
+Additional JavaScript files requested by the vendor tag will still load separately.
+</blockquote>
+ 
 
 Loading Google Analytics before bundling: 
 
-![](/images/iq-tag-management/utag-google.png)  
+![](https://docs.tealium.com/images/iq-tag-management/utag-google.png)  
 
 Loading Google Analytics after bundling:
 
-![](/images/iq-tag-management/utag-google-bundled.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-google-bundled.png)
 
 ## Tag Timing
 
@@ -45,6 +49,10 @@ This setting determines whether the tag loads synchronously or asynchronously. I
 
 This setting lets you support a tag by using an external JavaScript file instead of a built-in tag template. Enter the URL of the `.js` file in the **Custom Script Source** field.
 
+
+<blockquote>
 Remove the `http:` or `https:` protocol from the URL and use a relative protocol. For example: `//[www.example.com/js/mylibrary.js](http://www.tealium.com/mylibrary.js)`
+</blockquote>
+
 
 Supporting a tag using a custom JavaScript turns it into a blocking tag, which prevents other tags from running until this tag has finished loading. Though this tag still loads asynchronously, it does not load subsequent asynchronous scripts (for example, `utag.10.js`) until the blocking tag is complete. To load custom JavaScript for a tag without turning the tag into a blocking tag, use the Tealium Generic Tag to load it. 

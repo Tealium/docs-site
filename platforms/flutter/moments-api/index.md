@@ -28,8 +28,8 @@ To install the Tealium library for Flutter:
     ```
 1. Import the following Dart code into your project:
     ```dart
-    import &#39;package:tealium_moments_api/common.dart&#39;;
-    import &#39;package:tealium_moments_api/tealium_moments_api.dart&#39;;
+    import 'package:tealium_moments_api/common.dart';
+    import 'package:tealium_moments_api/tealium_moments_api.dart';
     ```
 
 ## Initialize
@@ -45,14 +45,14 @@ Set the Moments API Region as specified in the Moments API interface. The follow
 * `TOKYO`
 * `HONG_KONG`
 
-If you are using the [domain allow list](), set the referrer to an allowed domain.
+If you are using the [domain allow list](https://docs.tealium.com/about-moments-api/#domain-allow-list), set the referrer to an allowed domain.
 
 The following example code uses the `US_EAST` region and `example.com` as the referrer to match the allowed domain:
 
 ```dart
 MomentsApiConfig config = MomentsApiConfig(
     MomentsApiRegion.US_EAST,   // required
-    &#34;https://example.com&#34;);     // optional
+    "https://example.com");     // optional
 
 // Configure the module
 TealiumMomentsApi.configure(config);
@@ -70,7 +70,7 @@ Retrieves the engine response for the given engine ID.
 
 ```dart
 TealiumMomentsApi.fetchEngineResponse(
-    engineId: &#34;ENGINEID&#34;,
+    engineId: "ENGINEID",
     callback: (response) {
         if (response is EngineResponse) {
             // handle success
@@ -96,9 +96,9 @@ The `EngineResponse` class contains the visitor data returned from the Moments A
 
 | Property | Type | Description |
 | ---- | ---- | ---- |
-| `audiences` | `List&lt;String&gt;?` | Audience IDs the visitor belongs to |
-| `badges` | `List&lt;String&gt;?` | Badges assigned to the visitor |
-| `strings` | `Map&lt;String, String&gt;?` | String attributes |
-| `booleans` | `Map&lt;String, bool&gt;?` | Boolean attributes |
-| `dates` | `Map&lt;String, int&gt;?` | Date attributes (as timestamps) |
-| `numbers` | `Map&lt;String, double&gt;?` | Numeric attributes |
+| `audiences` | `List<String>?` | Audience IDs the visitor belongs to |
+| `badges` | `List<String>?` | Badges assigned to the visitor |
+| `strings` | `Map<String, String>?` | String attributes |
+| `booleans` | `Map<String, bool>?` | Boolean attributes |
+| `dates` | `Map<String, int>?` | Date attributes (as timestamps) |
+| `numbers` | `Map<String, double>?` | Numeric attributes |

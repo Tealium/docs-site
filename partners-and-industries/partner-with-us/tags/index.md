@@ -9,7 +9,7 @@ Do you want your JavaScript tag offered in the Tealium tag marketplace? Do you w
 
 ## How Tags Work
 
-A tag in the tag marketplace provides a complete integration of the capabilities of your tag. This means that every option and tracked event expected by your tag is combined into a single configurable instance of the tag in a Tealium user&#39;s account.
+A tag in the tag marketplace provides a complete integration of the capabilities of your tag. This means that every option and tracked event expected by your tag is combined into a single configurable instance of the tag in a Tealium user's account.
 
 ### Configuration
 
@@ -19,13 +19,13 @@ A tag is managed in three parts:
 
 * **Settings**   
 Tag settings are set once per instance of the tag and usually do not vary from page to page.
-[Learn more about tag settings]().
+[Learn more about tag settings](https://docs.tealium.com/manage-templates/).
 * **Load Rule**  
 The load rule determines when the tag should load on a page or event. Load rule conditions are based on data layer values.
-[Learn more about load rules]().
+[Learn more about load rules](https://docs.tealium.com/about-load-rules/).
 * **Data Mappings**  
 Data mappings determine which dynamic values the tag needs from the data layer and the corresponding variable name used by the vendor. Mappings also determine how to track in-page events.
-[Learn more about data mappings](/iq-tag-management/data-mappings/manage/).
+[Learn more about data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 ### Loading in the Browser
 
@@ -33,13 +33,17 @@ Vendor tags are loaded by the Tealium Universal Tag (utag.js), a wrapper tag tha
 
 As a vendor, you can expect to see your same tag library or image pixel in the DOM of the page. At Tealium, we make every effort to load your tag exactly to your specifications. In rare cases where we must alter the code, we will ensure that the final tracking beacon matches your requirements.
 
+
+<blockquote>
 Tealium can also load synchronous JavaScript to support A/B and multi-variate testing vendors.
+</blockquote>
+
 
 ### E-Commerce Values
 
 For e-commerce tags that collect product and order data, Tealium offers a convenience feature, called the E-Commerce Extension, to ensure that all standard e-commerce data is automatically integrated with your tag. When the E-Commerce extension is configured in an account, it acts as a global data mapping to every tag that requires those values. This helps to minimize the amount of work needed to set up a tag of this type.
 
-[Learn more about the E-Commerce Extension]().
+[Learn more about the E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/).
 
 ## Tag Types
 
@@ -51,7 +55,7 @@ Nearly all tags follow the same convention: load a JavaScript file, initialize t
 
 ### Cookie Match
 
-The purpose of a cookie match tag is to use special requests to synchronize visitor identifiers between Tealium and your system. This lets you share your system&#39;s unique visitor ID with Tealium&#39;s server-side platform and receive Tealium&#39;s visitor ID in return. This type of integration is used _in addition to your standard tag_.
+The purpose of a cookie match tag is to use special requests to synchronize visitor identifiers between Tealium and your system. This lets you share your system's unique visitor ID with Tealium's server-side platform and receive Tealium's visitor ID in return. This type of integration is used _in addition to your standard tag_.
 
 #### Example
 
@@ -59,30 +63,30 @@ The following example demonstrates a cookie match request:
 
 ```http
 GET https://sync.example-dsp.net/get-userId?
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
+tealium_visitor_id=abxyz0909&
+tealium_account=my_account&
+tealium_profile=main&
 tealium_datasource=abc123 
 ```
 
-This request originates in the browser and sends the Tealium visitor ID to your system. The result is a forwarding request containing your system&#39;s visitor ID and Tealium&#39;s visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.
+This request originates in the browser and sends the Tealium visitor ID to your system. The result is a forwarding request containing your system's visitor ID and Tealium's visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.
 
 The following is an example redirect back to Tealium:
 
 ```http
 GET https://collect.tealiumiq.com/vdata?
-dsp_uid=4595-23423442&amp;
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
+dsp_uid=4595-23423442&
+tealium_visitor_id=abxyz0909&
+tealium_account=my_account&
+tealium_profile=main&
 tealium_datasource=abc123
 ```
 
-The following cookie match example passes the redirect request as a URL parameter, if the DSP&#39;s endpoint accepts it:
+The following cookie match example passes the redirect request as a URL parameter, if the DSP's endpoint accepts it:
 
 ```http
 GET https://sync.example-dsp.net/get-userId?
-redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123
+redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&tealium_visitor_id=abxyz0909&tealium_account=egbrand&tealium_profile=main&tealium_datasource=abc123
 ```
 
 ### Server-Side Enabled
@@ -93,19 +97,19 @@ The following example function sends data to the Tealium event endpoint:
 ```javascript
 window.tealium.sendEvent = function(event_data) {
     //Send Event to CDH event endpoint
-    event_data[&#39;tealium_event&#39;] = &#34;EVENT_NAME&#34;;
-    event_data[&#39;tealium_account&#39;] = b.tealium_account; // required
-    event_data[&#39;tealium_profile&#39;] = b.tealium_profile; // required
-    event_data[&#39;tealium_visitor_id&#39;] = b.tealium_visitor_id; // required
-    event_data[&#39;tealium_trace_id&#39;] = b[&#34;cp.trace_id&#34;]; // optional
-    event_data[&#39;tealium_datasource&#39;] = &#39;DATASOURCE_KEY&#39;; // optional
+    event_data['tealium_event'] = "EVENT_NAME";
+    event_data['tealium_account'] = b.tealium_account; // required
+    event_data['tealium_profile'] = b.tealium_profile; // required
+    event_data['tealium_visitor_id'] = b.tealium_visitor_id; // required
+    event_data['tealium_trace_id'] = b["cp.trace_id"]; // optional
+    event_data['tealium_datasource'] = 'DATASOURCE_KEY'; // optional
 
     var data = new FormData();
-    data.append(&#34;data&#34;, JSON.stringify(event_data));
+    data.append("data", JSON.stringify(event_data));
 
-    if (window.utag &amp;&amp; utag.data &amp;&amp; utag.data.tealium_account) {
+    if (window.utag && utag.data && utag.data.tealium_account) {
         var xhr = new XMLHttpRequest();
-        xhr.open(&#34;POST&#34;, &#34;https://collect.tealiumiq.com/event?&#34;);
+        xhr.open("POST", "https://collect.tealiumiq.com/event?");
         xhr.send(data);
         }
     return true;

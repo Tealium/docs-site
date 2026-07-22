@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-exchange-connec
 
 ## 構成の構成
 
-**コネクタマーケットプレイス**に移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+**コネクタマーケットプレイス**に移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -37,8 +37,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-exchange-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|チャネル|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントが観察されたチャネルを選択します。&lt;/li&gt;&lt;li&gt;詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|サブチャネル|  &lt;ul&gt;&lt;li&gt;推奨&lt;/li&gt;&lt;li&gt;イベントが観察された場所をさらに分類するためのサブチャネルを選択します。&lt;/li&gt;&lt;li&gt;選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。&lt;/li&gt;&lt;/ul&gt; |
+|チャネル|  <ul><li>必須</li><li>イベントが観察されたチャネルを選択します。</li><li>詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。</li></ul> |
+|サブチャネル|  <ul><li>推奨</li><li>イベントが観察された場所をさらに分類するためのサブチャネルを選択します。</li><li>選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。</li></ul> |
 
 ### アクション: カート購入イベントの公開
 
@@ -46,8 +46,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-exchange-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|チャネル|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントが観察されたチャネルを選択します。&lt;/li&gt;&lt;li&gt;詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|サブチャネル|  &lt;ul&gt;&lt;li&gt;推奨&lt;/li&gt;&lt;li&gt;イベントが観察された場所をさらに分類するためのサブチャネルを選択します。&lt;/li&gt;&lt;li&gt;選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。&lt;/li&gt;&lt;/ul&gt; |
+|チャネル|  <ul><li>必須</li><li>イベントが観察されたチャネルを選択します。</li><li>詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。</li></ul> |
+|サブチャネル|  <ul><li>推奨</li><li>イベントが観察された場所をさらに分類するためのサブチャネルを選択します。</li><li>選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。</li></ul> |
 
 ### アクション: イベントの公開
 
@@ -55,7 +55,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-exchange-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|イベントタイプ|  &lt;ul&gt;&lt;li&gt;必須: イベントタイプを選択します。&lt;/li&gt;&lt;li&gt;詳細と利用可能なイベントのリストについては、[ダイナミックイベントライブラリ](https://exchange-us-1.goacoustic.com/#/taxonomy)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|チャネル|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントが観察されたチャネルを選択します。&lt;/li&gt;&lt;li&gt;詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|サブチャネル|  &lt;ul&gt;&lt;li&gt;推奨&lt;/li&gt;&lt;li&gt;イベントが観察された場所をさらに分類するためのサブチャネルを選択します。&lt;/li&gt;&lt;li&gt;選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。&lt;/li&gt;&lt;/ul&gt; |
+|イベントタイプ|  <ul><li>必須: イベントタイプを選択します。</li><li>詳細と利用可能なイベントのリストについては、[ダイナミックイベントライブラリ](https://exchange-us-1.goacoustic.com/#/taxonomy)を参照してください。</li></ul> |
+|チャネル|  <ul><li>必須</li><li>イベントが観察されたチャネルを選択します。</li><li>詳細については、[イベントカタログ](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog)を参照してください。</li></ul> |
+|サブチャネル|  <ul><li>推奨</li><li>イベントが観察された場所をさらに分類するためのサブチャネルを選択します。</li><li>選択したチャネルに適切な事前定義されたサブチャネルがない場合は、カスタム値として手動で入力するか、空白のままにします。</li></ul> |
 

@@ -50,7 +50,7 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 
 プリロードされた属性は、AudienceStreamが有効なすべてのプロファイルに存在するシステム管理の属性です。スティッチングマージルールが有効になると、これらの属性は適切なリプレイ一貫性のあるマージルールを自動的に受け取り、選択肢は編集不可能です。これにより、組み込みのエンリッチメントとの一貫性が維持されます。
 
-詳細については、を参照してください。
+詳細については、[preloaded-attributes](https://docs.tealium.com/preloaded-attributes/)を参照してください。
 
 ### ファネル
 
@@ -86,14 +86,14 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 
 プロファイルでスティッチングマージルールを有効にするには：
 
-1. **管理 &gt; サーバーサイド構成**に移動します。
+1. **管理 > サーバーサイド構成**に移動します。
 1. **スティッチングマージルール**トグルをオンの位置にクリックします。
 1. **保存**をクリックします。
 1. プロファイルを公開します。
 
 スティッチングマージルールが有効になると、属性編集ビューに新しい構成が利用可能になります。属性にマージルールを適用するために構成を有効にし、リストからマージルールを選択します。
 
-![](/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png)
 
 
 ## 属性による利用可能なルール
@@ -124,11 +124,11 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 |----------------------|---------------|
 |  バッジ | 両方が `Assigned` の場合のみ `Assigned` に構成されます。 |
 |  ブーリアン | 両方が `true` の場合のみ `true` に構成されます。 |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **例**
 
-![](/images/server-side/merge-rules/rule-and-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-and-example.png)
 
 この例では、訪問のオンライン訪問がすべてPPCから来た場合にのみ、属性が `true` になります。これらのエンリッチメントに基づいて、両方の訪問が属性を `true` に構成している場合のみ、マージされた属性は `true` になります。どちらかの訪問が属性を `false` に構成している場合、すべてのオンライン訪問がPPCからではないため、マージされた属性値は `false` になります。正しいマージ値を得るために **And** ルールを使用します。
 
@@ -157,11 +157,11 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 |----------------------|---------------|
 |  バッジ | どちらかが `Assigned` の場合に `Assigned` に構成されます。 |
 |  ブーリアン | どちらかが `true` の場合に `true` に構成されます。 |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **例**
 
-![](/images/server-side/merge-rules/rule-or-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-or-example.png)
 
 この例では、訪問が一度きりのイベントを見た場合にバッジが割り当てられ、バッジは決して割り当て解除されません。
 
@@ -192,11 +192,11 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 |----------------------|---------------|
 |  数値 | より高い値を保持します。 |
 |  日付 | より遅い日付を保持します。 |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **例**
 
-![](/images/server-side/merge-rules/rule-max-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-max-example.png)
 
 この例では、マージされた訪問プロファイルからより新しい日付を選択するために **Max** マージルールを使用します。
 
@@ -208,11 +208,11 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 |----------------------|---------------|
 |  数値 | より低い値を保持します。 |
 |  日付 | より早い日付を保持します。 |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **例**
 
-![](/images/server-side/merge-rules/rule-min-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-min-example.png)
 
 この例では、マージされた訪問プロファイルからより早い日付を選択するために **Min** マージルールを使用します。
 
@@ -226,13 +226,13 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 | 対応データタイプ | ルールの動作 |
 |-------------|--------------------|
 | バッジ | 最も最近更新された状態（未割り当てを含む）を保持します。 |
-| ブール値&lt;br&gt;数値 | 最も最近更新された値を保持します。 |
+| ブール値<br>数値 | 最も最近更新された値を保持します。 |
 | 日付 | 最も最近更新された値（削除された値を含む）を保持します。これは、この日付属性が最後に豊かにされたときに基づいており、属性自体に格納されている日付値ではありません。 |
 | 文字列のセット | 最も最近更新された（削除を含む）文字列のセットを保持します。 |
 | 文字列 | 最も最近更新された値（削除された値を含む）を保持します。 |
 | 集計 | 最も最近更新された（削除を含む）集計を保持します。 |
-| ブール値の配列&lt;br&gt;数値の配列&lt;br&gt;文字列の配列 | 最も最近更新された（削除を含む）配列を保持します。 |
-{class=&#34;dt--fixed&#34;}
+| ブール値の配列<br>数値の配列<br>文字列の配列 | 最も最近更新された（削除を含む）配列を保持します。 |
+{class="dt--fixed"}
 
 **例**
 
@@ -242,18 +242,22 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 
 **古いルール**は、属性の値を更新するエンリッチメントが構成されたときに構成される内部タイムスタンプに基づいています。両方の属性に内部タイムスタンプが構成されていない場合は、各訪問の最後の訪問のタイムスタンプを使用して、どちらが最初に構成されたかを判断します。
 
+
+<blockquote>
 属性エンリッチメントが自己参照ルールを使用して一度だけ構成されることを保証しない場合、**古いルール**を使用しても必ずしも最初に構成された値が得られるわけではありません。
+</blockquote>
+
 
 | 対応データタイプ | ルールの動作 |
 |----------------------|---------------|
 | バッジ | 以前に更新された状態（未割り当てを含む）を保持します。 |
-| ブール値&lt;br&gt;数値 | 以前に更新された値を保持します。 |
+| ブール値<br>数値 | 以前に更新された値を保持します。 |
 | 日付 | 以前に更新された値（削除された値を含む）を保持します。これは、この日付属性が最後に豊かにされたときに基づいており、属性自体に格納されている日付値ではありません。 |
 | 文字列のセット | 以前に更新された（削除を含む）文字列のセットを保持します。 |
 | 文字列 | 以前に更新された値（削除された値を含む）を保持します。 |
 | 集計 | 以前に更新された（削除を含む）集計を保持します。 |
-| ブール値の配列&lt;br&gt;数値の配列&lt;br&gt;文字列の配列 | 以前に更新された（削除を含む）配列を保持します。 |
-{class=&#34;dt--fixed&#34;}
+| ブール値の配列<br>数値の配列<br>文字列の配列 | 以前に更新された（削除を含む）配列を保持します。 |
+{class="dt--fixed"}
 
 **例**
 
@@ -262,9 +266,9 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 | 対応データタイプ | ルールの動作 |
 |----------------------|---------------|
 | バッジ | 以前の状態を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行します。 |
-| ブール値&lt;br&gt;日付&lt;br&gt;数値 | 以前の値を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行します。 |
-| 文字列のセット&lt;br&gt;文字列&lt;br&gt;集計&lt;br&gt;ブール値の配列&lt;br&gt;数値の配列&lt;br&gt;文字列の配列 | 未割り当てから始め、最終的なマージされたプロファイルでエンリッチメントを実行します。 |
-{class=&#34;dt--fixed&#34;}
+| ブール値<br>日付<br>数値 | 以前の値を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行します。 |
+| 文字列のセット<br>文字列<br>集計<br>ブール値の配列<br>数値の配列<br>文字列の配列 | 未割り当てから始め、最終的なマージされたプロファイルでエンリッチメントを実行します。 |
+{class="dt--fixed"}
 
 **再計算**ルールは、属性の初期マージ値を破棄し、属性のエンリッチメントを再実行します。初期マージ値を破棄することで、再計算は未構成の値から始まり、値はエンリッチメントに基づいてのみ構成されます。
 
@@ -294,13 +298,13 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 | 対応データタイプ | ルールの振る舞い |
 |------------------|-----------------|
 |  バッジ | 以前の状態を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行し、いくつかの条件を`true`に強制します。 |
-|  ブール値&lt;br&gt; 日付&lt;br&gt; 数値 | 以前の値を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行し、いくつかの条件を`true`に強制します。 |
-|  文字列のセット&lt;br&gt; 文字列&lt;br&gt; 集計&lt;br&gt; ブール値の配列&lt;br&gt; 数値の配列&lt;br&gt; 文字列の配列 | 未割り当てから開始し、最終的なマージされたプロファイルでエンリッチメントを実行し、いくつかの条件を`true`に強制します。 |
-{class=&#34;dt--fixed&#34;}
+|  ブール値<br> 日付<br> 数値 | 以前の値を破棄し、最終的なマージされたプロファイルでエンリッチメントを実行し、いくつかの条件を`true`に強制します。 |
+|  文字列のセット<br> 文字列<br> 集計<br> ブール値の配列<br> 数値の配列<br> 文字列の配列 | 未割り当てから開始し、最終的なマージされたプロファイルでエンリッチメントを実行し、いくつかの条件を`true`に強制します。 |
+{class="dt--fixed"}
 
 **例**
 
-![](/images/server-side/merge-rules/rule-recalculate-force-end-visit.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-recalculate-force-end-visit.png)
 
 この例では、属性は別の訪問属性`Lifetime visit count`から派生しており、訪問が10回以上訪問した場合にバッジを割り当てます。しかし、エンリッチメントは`Visit Ended`で実行されるように構成されていますが、訪問のスティッチングが発生するときにこれが真であるとは限りませんので、**再計算（強制）**ルールを使用するとエンリッチメントがとにかく実行されます。
 
@@ -313,9 +317,9 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 | 対応データタイプ | ルールの振る舞い |
 |------------------|-----------------|
 |  数値 | 両方の訪問からの値を加算します。 |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
-![](/images/server-side/merge-rules/rule-sum-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-sum-example.png)
 
 この例では、訪問Aが$30を使い、訪問Bが$60を使った場合、マージされた訪問は$90を使っています。
 
@@ -326,12 +330,12 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 | 対応データタイプ | ルールの振る舞い |
 |------------------|-----------------|
 |  文字列のセット | 両方からの値を結合します。 |
-|  ブール値の配列&lt;br&gt; 数値の配列&lt;br&gt; 文字列の配列 | 両方からの値を結合し、配列全体で一貫した順序を保持します。 |
-{class=&#34;dt--fixed&#34;}
+|  ブール値の配列<br> 数値の配列<br> 文字列の配列 | 両方からの値を結合し、配列全体で一貫した順序を保持します。 |
+{class="dt--fixed"}
 
 **例：文字列のセット**
 
-![](/images/server-side/merge-rules/rule-union-set-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-set-example.png)
 
 この例では、**結合**ルールはエントリを結合し、文字列のセットではエントリが一意でなければならないため、水曜日の重複エントリを削除します。
 
@@ -339,19 +343,19 @@ url: https://docs.tealium.com/ja/administration/early-access/visitor-stitching/s
 
 ```json
 Visitor-A: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday"]
 }
 Visitor-B: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Wednesday", "Friday"]
 }
 Merged: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Friday"]
 }
 ```
 
 **例：配列**
 
-![](/images/server-side/merge-rules/rule-union-array-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-array-example.png)
 
 この例では、文字列の配列属性は訪問が注文確認ページを見た曜日を追跡します。文字列のセット属性とは異なり、2つの配列のマージされた値には重複した値が含まれることがあります。
 
@@ -359,13 +363,13 @@ Merged: {
 
 ```json
 Visitor-Older: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Monday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Monday"]
 }
 Visitor-Active: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Wednesday", "Friday"]
 }
 Merged: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Monday", "Wednesday", "Friday"]
 }
 ```
 
@@ -382,62 +386,62 @@ Merged: {
 
 **例: ユニオン合計**
 
-![](/images/server-side/merge-rules/rule-union-sum-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-sum-example.png)
 
 この例では、訪問が商品詳細ページで見た異なる商品カテゴリーの数を集計しています。**ユニオン合計**ルールを使用して、キーをマージし、一致するキーの値を加算します。
 
 ```json
 Visitor-A: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Accessories&#34;: 1,
-      &#34;Apparel&#34;: 2,
-      &#34;Books&#34;: 1
+  "Lifetime count of product categories": {
+      "Accessories": 1,
+      "Apparel": 2,
+      "Books": 1
   }
 }
 Visitor-B: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Apparel&#34;: 4,
-      &#34;Books&#34;: 3,
-      &#34;Electronics&#34;: 5    
+  "Lifetime count of product categories": {
+      "Apparel": 4,
+      "Books": 3,
+      "Electronics": 5    
   }
 }
 Merged: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Accessories&#34;: 1,
-      &#34;Apparel&#34;: 6,
-      &#34;Books&#34;: 4,
-      &#34;Electronics&#34;: 5    
+  "Lifetime count of product categories": {
+      "Accessories": 1,
+      "Apparel": 6,
+      "Books": 4,
+      "Electronics": 5    
   }
 }
 ```
 
 **例: ユニオン最大**
 
-![](/images/server-side/merge-rules/rule-union-max-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-max-example.png)
 
 この例では、商品カテゴリーが最後に見られた日付（エポックからのミリ秒単位）を集計しています。**ユニオン最大**ルールを使用して、キーをマージし、一致するキーに対して最も新しい値を保持します。
 
 ```json
 Visitor-A: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Accessories&#34;: 1702454863722,
-    &#34;Apparel&#34;: 1733414869787,
-    &#34;Books&#34;: 1731414884828
+  "Dates of last seen product categories": {
+    "Accessories": 1702454863722,
+    "Apparel": 1733414869787,
+    "Books": 1731414884828
   }
 }
 Visitor-B: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Apparel&#34;: 1732424969356,
-    &#34;Books&#34;: 1733414883367,
-    &#34;Electronics&#34;: 1721357252812
+  "Dates of last seen product categories": {
+    "Apparel": 1732424969356,
+    "Books": 1733414883367,
+    "Electronics": 1721357252812
   }
 }
 Merged: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Accessories&#34;: 1702454863722,
-    &#34;Apparel&#34;: 1733414869787,
-    &#34;Books&#34;: 1733414883367,
-    &#34;Electronics&#34;: 1721357252812
+  "Dates of last seen product categories": {
+    "Accessories": 1702454863722,
+    "Apparel": 1733414869787,
+    "Books": 1733414883367,
+    "Electronics": 1721357252812
   }
 }
 ```

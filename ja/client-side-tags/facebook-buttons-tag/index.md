@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-buttons-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Facebookボタンタグを追加します（[タグの追加方法]()について詳しくはこちらをご覧ください）。
+まず、Tealiumのタグマーケットプレイスに移動し、Facebookボタンタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちらをご覧ください）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -47,7 +47,7 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-buttons-tag/
 
 ## データマッピング
 
-マッピングとは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -55,46 +55,46 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-buttons-tag/
 
 |変数| 説明|
 |---| ---|
-|`action`|  &lt;ul&gt;&lt;li&gt;アクション&lt;/li&gt;&lt;/ul&gt; |
-|`language`|  &lt;ul&gt;&lt;li&gt;言語&lt;/li&gt;&lt;/ul&gt; |
-|`href`|  &lt;ul&gt;&lt;li&gt;Hrefリンク&lt;/li&gt;&lt;/ul&gt; |
-|`config.colorscheme`|  &lt;ul&gt;&lt;li&gt;カラースキーム&lt;/li&gt;&lt;li&gt;値は`light`または`dark`&lt;/li&gt;&lt;/ul&gt; |
-|`appId`|  &lt;ul&gt;&lt;li&gt;アプリID&lt;/li&gt;&lt;/ul&gt; |
-|`config.size`|  &lt;ul&gt;&lt;li&gt;サイズ&lt;/li&gt;&lt;/ul&gt; |
-|`config.width`|  &lt;ul&gt;&lt;li&gt;幅&lt;/li&gt;&lt;/ul&gt; |
+|`action`|  <ul><li>アクション</li></ul> |
+|`language`|  <ul><li>言語</li></ul> |
+|`href`|  <ul><li>Hrefリンク</li></ul> |
+|`config.colorscheme`|  <ul><li>カラースキーム</li><li>値は`light`または`dark`</li></ul> |
+|`appId`|  <ul><li>アプリID</li></ul> |
+|`config.size`|  <ul><li>サイズ</li></ul> |
+|`config.width`|  <ul><li>幅</li></ul> |
 
 ### Like
 
 |変数| 説明|
 |---| ---|
-|`like.layout`|  &lt;ul&gt;&lt;li&gt;レイアウト&lt;/li&gt;&lt;/ul&gt; |
-|`like.show_faces`|  &lt;ul&gt;&lt;li&gt;顔を表示&lt;/li&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-|`like.kid_directed`|  &lt;ul&gt;&lt;li&gt;子供向けサイト&lt;/li&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-|`like.color_scheme`|  &lt;ul&gt;&lt;li&gt;カラースキーム&lt;/li&gt;&lt;li&gt;値は`light`または`dark`。&lt;/li&gt;&lt;/ul&gt; |
-|`like.###`|  &lt;ul&gt;&lt;li&gt;カスタムLike値&lt;/li&gt;&lt;/ul&gt; |
+|`like.layout`|  <ul><li>レイアウト</li></ul> |
+|`like.show_faces`|  <ul><li>顔を表示</li><li>値は`true`または`false`。</li></ul> |
+|`like.kid_directed`|  <ul><li>子供向けサイト</li><li>値は`true`または`false`。</li></ul> |
+|`like.color_scheme`|  <ul><li>カラースキーム</li><li>値は`light`または`dark`。</li></ul> |
+|`like.###`|  <ul><li>カスタムLike値</li></ul> |
 
 ### Recommend
 
 |変数| 説明|
 |---| ---|
-|`rec.layout`|  &lt;ul&gt;&lt;li&gt;レイアウト&lt;/li&gt;&lt;/ul&gt; |
-|`rec.show_faces`|  &lt;ul&gt;&lt;li&gt;顔を表示&lt;/li&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-|`rec.kid_directed`|  &lt;ul&gt;&lt;li&gt;子供向けサイト&lt;/li&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-|`rec.color_scheme`|  &lt;ul&gt;&lt;li&gt;カラースキーム&lt;/li&gt;&lt;li&gt;値は`light`または`dark`。&lt;/li&gt;&lt;/ul&gt; |
-| `rec.###` |  &lt;ul&gt;&lt;li&gt;カスタムRecommend値&lt;/li&gt;&lt;/ul&gt; |
+|`rec.layout`|  <ul><li>レイアウト</li></ul> |
+|`rec.show_faces`|  <ul><li>顔を表示</li><li>値は`true`または`false`。</li></ul> |
+|`rec.kid_directed`|  <ul><li>子供向けサイト</li><li>値は`true`または`false`。</li></ul> |
+|`rec.color_scheme`|  <ul><li>カラースキーム</li><li>値は`light`または`dark`。</li></ul> |
+| `rec.###` |  <ul><li>カスタムRecommend値</li></ul> |
 
 ### Share
 
 |変数| 説明|
 |---| ---|
-|`share.layout`|  &lt;ul&gt;&lt;li&gt;レイアウト&lt;/li&gt;&lt;/ul&gt; |
-|`share.kid_directed`|  &lt;ul&gt;&lt;li&gt;子供向けサイト&lt;/li&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-| `share.###` |  &lt;ul&gt;&lt;li&gt;カスタムShare値&lt;/li&gt;&lt;/ul&gt; |
+|`share.layout`|  <ul><li>レイアウト</li></ul> |
+|`share.kid_directed`|  <ul><li>子供向けサイト</li><li>値は`true`または`false`。</li></ul> |
+| `share.###` |  <ul><li>カスタムShare値</li></ul> |
 
 ### Send
 
 |変数| 説明|
 |---| ---|
-|`send.kid_directed`|  &lt;ul&gt;&lt;li&gt;値は`true`または`false`。&lt;/li&gt;&lt;/ul&gt; |
-|`send.color_scheme`|  &lt;ul&gt;&lt;li&gt;値は`light`または`dark`。&lt;/li&gt;&lt;/ul&gt; |
-|`send.###`|  &lt;ul&gt;&lt;li&gt;カスタムSend値&lt;/li&gt;&lt;/ul&gt; |
+|`send.kid_directed`|  <ul><li>値は`true`または`false`。</li></ul> |
+|`send.color_scheme`|  <ul><li>値は`light`または`dark`。</li></ul> |
+|`send.###`|  <ul><li>カスタムSend値</li></ul> |

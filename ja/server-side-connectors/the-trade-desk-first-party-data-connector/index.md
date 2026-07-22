@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-first-par
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -23,7 +23,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-first-par
 
 ### 第一者広告主データを送信
 
+
+<blockquote>
 `TDID`パラメータまたは`UID2`パラメータのいずれかを使用してください。両方に値を構成するとコネクタエラーが発生する可能性があります。
+</blockquote>
+
 
 #### パラメータ
 
@@ -38,7 +42,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-first-par
 | 広告主ID | (必須) 広告主ID。利用可能なタイプは`DAID`、`TDID`、`UID2`、`EUID`、`IDL` (`RampID`)、`ID5`、`netID`です。IDは一つだけ必要です。 |
 | デバイス広告ID (DAID) | デバイス広告ID (`DAID`) |
 | Trade Desk ID (TDID) | Trade Desk ID (`TDID`) |
-| 統合ID (UID2 既にハッシュ化されている場合) | 統合ID (`UID2`)。既にハッシュ化されている場合は、**既にSHA256ハッシュ化されている**オプションを使用し、空白をトリムし、小文字に変換し、SHA256を使用してハッシュ化された値を提供します。詳細については、[UID2を生成する関数の使用]()を参照してください。 |
+| 統合ID (UID2 既にハッシュ化されている場合) | 統合ID (`UID2`)。既にハッシュ化されている場合は、**既にSHA256ハッシュ化されている**オプションを使用し、空白をトリムし、小文字に変換し、SHA256を使用してハッシュ化された値を提供します。詳細については、[UID2を生成する関数の使用](https://docs.tealium.com/use-visitor-function-uid20/)を参照してください。 |
 | UID2トークン (暗号化された広告トークン) | 暗号化されたUID2広告トークン。このトークンは大文字と小文字を区別します。 |
 | アイデンティティリンク (IDL) | アイデンティティリンク (`IDL`) |
 

@@ -54,4 +54,4 @@ consentCategoriesStringArrayToEnum(categories)
 
 | Parameters | Type |  Description | Example |
 | --- | --- | --- | --- |
-| `categories` | `[String]` | An array of strings to convert into an array of TealiumConsentCategories | `[&#34;analytics&#34;, &#34;bigData&#34;]` |
+| `categories` | `[String]` | An array of strings to convert into an array of TealiumConsentCategories | `["analytics", "bigData"]` |

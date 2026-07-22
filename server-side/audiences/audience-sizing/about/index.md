@@ -11,7 +11,7 @@ Visitors are sampled by capping the daily visitor count, which determines the sa
 
 The **Sample Size of Daily Visitors to Process** profile setting can only be modified by Tealium staff. To adjust this setting, contact your account representative.
 
-![](/images/server-side/daily-visitor-query-cap-setting.jpg)
+![](https://docs.tealium.com/images/server-side/daily-visitor-query-cap-setting.jpg)
 
 The default cap is 100,000. That means if your total visitor population is 1,000,000, the projections are performed on a random sample of a 100,000 visitors.
 
@@ -19,12 +19,12 @@ The default cap is 100,000. That means if your total visitor population is 1,000
 
 Overlapping conditions in the Venn diagram are called segments, and they represent combinations of rule conditions. To view the total number of visitors found for a segment in the Venn diagram, hover over the segment.
 
-You can send one or more segments for a one-time use with a connector action. To send an audience segment to a connector, click **Next** to create a job. For more information, see [Jobs]() and [Create a job]().
+You can send one or more segments for a one-time use with a connector action. To send an audience segment to a connector, click **Next** to create a job. For more information, see [Jobs]() and [Create a job](https://docs.tealium.com/manage-audience-sizing/#create-a-job).
 
 ## Jobs
 
-When you have selected rule conditions and the results have been displayed, you can create a job to send one or more audience segments to a connector. After you create a job, you must link it to a connector to activate it. For more information on creating a job and linking a job to a connector, see [Manage audience sizing]().
+When you have selected rule conditions and the results have been displayed, you can create a job to send one or more audience segments to a connector. After you create a job, you must link it to a connector to activate it. For more information on creating a job and linking a job to a connector, see [Manage audience sizing](https://docs.tealium.com/manage-audience-sizing/).
 
 An activated job is run only once. You cannot pause or restart an active job, which helps prevent duplication of jobs, especially jobs that send email to visitors.
 
-A completed job cannot be reused. You can view its configuration or remove it from the jobs list. To view a list of existing jobs, go to **Connect &gt; Audience Connectors &gt; Jobs**.
+A completed job cannot be reused. You can view its configuration or remove it from the jobs list. To view a list of existing jobs, go to **Connect > Audience Connectors > Jobs**.

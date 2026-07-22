@@ -3,7 +3,11 @@ title: About Data Connect
 description: This article provides an overview of Tealium Data Connect.
 url: https://docs.tealium.com/server-side/data-connect/about/
 ---
- Data Connect is an add-on feature for Tealium customers. If you are already a Tealium customer, contact your Customer Success Manager for a demo and to learn more about Data Connect. If you are a new customer, [contact us](https://tealium.com/products-real-time-data-collection-and-quality/tealium-data-connect/) to request a demo. 
+
+<blockquote>
+Data Connect is an add-on feature for Tealium customers. If you are already a Tealium customer, [contact support](https://docs.tealium.com/support/) for a demo and to learn more about Data Connect. If you are a new customer, [request a demo](https://tealium.com/products-real-time-data-collection-and-quality/tealium-data-connect/).
+</blockquote>
+
 
 Tealium Data Connect provides a fast, efficient, and scalable architecture to import valuable data from your SaaS applications, CRMs, and data warehouses to Tealium. Use Data Connect to integrate data from your enterprise systems into Tealium AudienceStream CDP or EventStream API Hub for enrichment and real-time personalization and activation.
 
@@ -18,7 +22,11 @@ With Data Connect, you can automate, schedule, and enhance your data workflows t
 
 * Tealium EventStream or AudienceStream
 
+
+<blockquote>
 Data Connect uses third-party iPaaS technology that requires third-party cookies to be enabled in your browser.
+</blockquote>
+
 
 ## How it works
 
@@ -26,11 +34,11 @@ Data Connect uses [Workato](https://www.workato.com/), a third-party iPaaS techn
 
 The following figure shows the flow of data from your internal systems to Tealium:
 
-![](/images/server-side/dc-events-workflow.png)
+![](https://docs.tealium.com/images/server-side/dc-events-workflow.png)
 
 Begin by selecting the app you want to connect to Tealium. By using the Data Connect Workato solution, you can then customize how and when you send event data to Tealium. To receive data from Workato, Data Connect uses the Tealium Connect data source with advanced Tealium Collect HTTP API logic specifically designed for Data Connect. You can then use these events in attribute enrichments or connectors in Tealium EventStream, AudienceStream, and Functions.
 
-For more information about Workato integrations, see [About Data Connect integrations]().
+For more information about Workato integrations, see [About Data Connect integrations](https://docs.tealium.com/about-data-connect-integrations/).
 
 ## Key benefits
 
@@ -53,11 +61,11 @@ Using recipes, you can add data translations into your automated workflow making
 
 Ready to get started with Data Connect?
 
-* Learn [Workato terms]() for recipes in Tealium.
+* Learn [Workato terms](https://docs.tealium.com/workato-glossary/) for recipes in Tealium.
 * Read the [Workato documentation](https://docs.workato.com/recipes/building-recipes.html) to learn about recipe design.
 * Use [Workato tutorials](https://docs.workato.com/getting-started/build-first-recipe.html) to build your first recipe.
 * Want to get more in depth training in Workato recipes? Sign up for a [Workato certification](https://docs.workato.com/training/automation-institute.html#what-is-automation-institute).
 
-When you’re ready, see [About Data Connect integrations](), for more information about recipe creation in Tealium.
+When you’re ready, see [About Data Connect integrations](https://docs.tealium.com/about-data-connect-integrations/), for more information about recipe creation in Tealium.
 
 

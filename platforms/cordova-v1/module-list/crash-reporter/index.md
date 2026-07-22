@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/cordova-v1/module-list/crash-reporter/
 
 To install the Crash Reporter module:
 
-1. Navigate to your Cordova app&#39;s directory in a terminal window.
+1. Navigate to your Cordova app's directory in a terminal window.
 
 2. Run the following command:
       ```bash
@@ -27,8 +27,8 @@ function tealiumInit(account, profile, environment, instance) {
        profile : profile,
        environment : environment,
        instance : instance,
-       isLifecycleEnabled: &#34;true&#34;,
-       isCrashReporterEnabled: &#34;true&#34;
+       isLifecycleEnabled: "true",
+       isCrashReporterEnabled: "true"
     });
 }
 ```
@@ -42,10 +42,10 @@ The JavaScript API exposes a method to force a crash to be triggered. To avoid a
 *   Crash Reporter module was successfully initialized
 *   The variable `forceCrash` is present in the data layer
 
-If the preceding conditions are met, trigger a crash by issuing a tracking call containing the variable `forceCrash` with the [`trackView()`](/platforms/cordova-v1/api/#trackview) method:
+If the preceding conditions are met, trigger a crash by issuing a tracking call containing the variable `forceCrash` with the [`trackView()`](https://docs.tealium.com/platforms/cordova-v1/api/#trackview) method:
 
 ```javascript
-tealium.trackView({&#34;forceCrash&#34;:&#34;true&#34;});
+tealium.trackView({"forceCrash":"true"});
 ```
 
 ## Uninstall

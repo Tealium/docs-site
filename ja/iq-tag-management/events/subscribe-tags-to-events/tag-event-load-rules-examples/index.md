@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * All Pages（全ページ）とイベントリスナーのロードルールを使用。
 * ページ上にTealium Collectタグが存在し、All PagesとEvents（イベント）のロードルールを使用します。
 
-![](/images/iq-tag-management/tc-all-pages.png)
+![](https://docs.tealium.com/images/iq-tag-management/tc-all-pages.png)
 
 **全ページ：**
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * All Pages（全ページ）とイベントリスナーのロードルールを使用。
 * ページ上にTealium Collectタグが存在し、Element visible（要素が可視）イベントにサブスクライブされています。
 
-![](/images/iq-tag-management/screen-shot-2022-09-19-at-15.39.47.png)
+![](https://docs.tealium.com/images/iq-tag-management/screen-shot-2022-09-19-at-15.39.47.png)
 
 **全ページ：**
 
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * 製品詳細ページのみにロードされるようにロードルールを使用。
 * ページ上にTealium Collectタグが存在し、All PagesとEvents（イベント）のロードルールを使用します。
 
-![](/images/iq-tag-management/tc-all-pages.png)
+![](https://docs.tealium.com/images/iq-tag-management/tc-all-pages.png)
 
 **製品ページ**
 
@@ -89,7 +89,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * 一度だけトリガー。
 * DOM Readyスコープを使用（デフォルト）。
 * 製品詳細ページのみにロードされるようにロードルールを使用。
-* Tealium CollectタグのルールとイベントリスナーにANDロジックで追加され、その他のタグルールとイベントリスナーは`true`と評価されます。![](/images/iq-tag-management/tag-and-logic.png)
+* Tealium CollectタグのルールとイベントリスナーにANDロジックで追加され、その他のタグルールとイベントリスナーは`true`と評価されます。![](https://docs.tealium.com/images/iq-tag-management/tag-and-logic.png)
 
 **製品ページ：**
 
@@ -113,7 +113,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * 一度だけトリガー。
 * DOM Readyスコープを使用（デフォルト）。
 * 製品詳細ページのみにロードされるようにロードルールを使用。
-* Tealium CollectタグのルールとイベントリスナーにORロジックで追加され、その他のタグルールとイベントリスナーは`true`と評価されます。![](/images/iq-tag-management/tag-or-logic.png)
+* Tealium CollectタグのルールとイベントリスナーにORロジックで追加され、その他のタグルールとイベントリスナーは`true`と評価されます。![](https://docs.tealium.com/images/iq-tag-management/tag-or-logic.png)
 
 **製品ページ：**
 
@@ -150,7 +150,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/subscribe-tags-to-even
 * DOM Readyスコープを使用（デフォルト）。
 * 製品詳細ページのみにロードされるようにロードルールを使用。
 * Tealium CollectタグのルールとイベントリスナーにORロジックで追加され、その他のタグルールとイベントリスナーは`true`と評価されます。
-![](/images/iq-tag-management/mat-multi-event.png)
+![](https://docs.tealium.com/images/iq-tag-management/mat-multi-event.png)
 
 **製品ページ：**
 

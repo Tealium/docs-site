@@ -15,18 +15,22 @@ Use the following replacement actions, which are based on the Google Data Manage
 * Add User to List (Data Manager API)
 * Remove User from List (Data Manager API)
 
-For more information, see the [Google Data Manager API migration guide]().
+For more information, see the [Google Data Manager API migration guide](https://docs.tealium.com/google-data-manager-api-migration-guide/).
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
-When you add this connector, you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector, you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
 * **Customer ID**: (Required) Provide the Ads account customer ID to manage.
-* **Manager Customer ID**: (Optional) If you&#39;re accessing a client customer, the Manager Customer ID must be set and have full access to the Ads account.
+* **Manager Customer ID**: (Optional) If you're accessing a client customer, the Manager Customer ID must be set and have full access to the Ads account.
 
 ### Create user list
 
@@ -35,7 +39,7 @@ To create a user list, click **Create User List** and enter the following inform
 | **Parameter** | **Description** |
 | --- | --- |
 | List Name | (Required) User list name. |
-| List Type | (Required) The list type. This affects the type of user identification information to be used with this list:&lt;ul&gt;&lt;li&gt;`CONTACT_INFO`: Users are matched from customer info such as email address, phone number, or physical address.&lt;/li&gt;&lt;li&gt;`CRM_ID`: Users are matched from advertiser generated and assigned user ID.&lt;/li&gt;&lt;li&gt;`MOBILE_ADVERTISING_ID`: Users are matched from mobile device ID (advertising ID/IDFA).&lt;/li&gt;&lt;/ul&gt; |
+| List Type | (Required) The list type. This affects the type of user identification information to be used with this list:<ul><li>`CONTACT_INFO`: Users are matched from customer info such as email address, phone number, or physical address.</li><li>`CRM_ID`: Users are matched from advertiser generated and assigned user ID.</li><li>`MOBILE_ADVERTISING_ID`: Users are matched from mobile device ID (advertising ID/IDFA).</li></ul> |
 | App ID | Required for mobile advertising list types. A string that uniquely identifies the mobile application from which data is being sent to Google Ads API. |
 | List Membership Lifespan | (Optional) The number of days a user stays on the list since their most recent addition to the list. Number must be between `0` and `540`. The default lifespan is 540 days. |
 | List Description | (Optional) List description. |
@@ -74,9 +78,9 @@ The following user identifier fields are supported:
 
 | User Identifier Field | Description |
 |---| ---|
-| `CONTACT_INFO` (Google Ads API)|  Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.&lt;ul&gt;&lt;li&gt;**Address Info: Country Code**: 2-letter country code, in ISO 3166-1 alpha-2 format, of the user&#39;s address.&lt;/li&gt;&lt;li&gt;**Address Info: First Name (already SHA256 hashed)**: Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Address Info: First Name (apply SHA256 hash)**: Provide a plain text first name and the connector hashes this value using SHA256 hash.&lt;/li&gt;&lt;li&gt;**Address Info: Last Name (already SHA256 hashed)**: Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Address Info: Last Name (apply SHA256 hash)**: Provide a plain text last name and the connector hashes this value using the SHA256 hash.&lt;/li&gt;&lt;li&gt;**Address Info: Postal Code**: Provide a postal code of the user&#39;s address.&lt;/li&gt;&lt;li&gt;**Email Address (already SHA256 hashed)**: Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Email Address (apply SHA256 hash)**: Provide a plain text email address or array of email addresses and the connector hashes these values using the SHA256 hash.&lt;/li&gt;&lt;li&gt;**Phone Number (already SHA256 hashed)**: Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.&lt;/li&gt;&lt;li&gt;**Phone Number (apply SHA256 hash)**: Provide a plain text phone number or array of phone numbers and the connector hashes the values using the SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|`CRM_ID` (Google Ads API)|  &lt;ul&gt;&lt;li&gt;**User ID**: (Required) Advertiser-assigned user ID for customer match upload.&lt;/li&gt;&lt;/ul&gt; |
-|`MOBILE_ADVERTISING_ID` (Google Ads API)|  &lt;ul&gt;&lt;li&gt;**Mobile ID**: (Required) Mobile device ID (advertising ID/IDFA).&lt;/li&gt;&lt;/ul&gt; |
+| `CONTACT_INFO` (Google Ads API)|  Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.<ul><li>**Address Info: Country Code**: 2-letter country code, in ISO 3166-1 alpha-2 format, of the user's address.</li><li>**Address Info: First Name (already SHA256 hashed)**: Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Address Info: First Name (apply SHA256 hash)**: Provide a plain text first name and the connector hashes this value using SHA256 hash.</li><li>**Address Info: Last Name (already SHA256 hashed)**: Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Address Info: Last Name (apply SHA256 hash)**: Provide a plain text last name and the connector hashes this value using the SHA256 hash.</li><li>**Address Info: Postal Code**: Provide a postal code of the user's address.</li><li>**Email Address (already SHA256 hashed)**: Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Email Address (apply SHA256 hash)**: Provide a plain text email address or array of email addresses and the connector hashes these values using the SHA256 hash.</li><li>**Phone Number (already SHA256 hashed)**: Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.</li><li>**Phone Number (apply SHA256 hash)**: Provide a plain text phone number or array of phone numbers and the connector hashes the values using the SHA256 hash.</li></ul> |
+|`CRM_ID` (Google Ads API)|  <ul><li>**User ID**: (Required) Advertiser-assigned user ID for customer match upload.</li></ul> |
+|`MOBILE_ADVERTISING_ID` (Google Ads API)|  <ul><li>**Mobile ID**: (Required) Mobile device ID (advertising ID/IDFA).</li></ul> |
 |`CONTACT_ID` (Data Manager API)| **Contact info**: Email address, phone number, and address. |
 |`MOBILE_ID` (Data Manager API)|  **Mobile ID**: Mobile device ID. |
 |`USER_ID` (Data Manager API)|  **User ID**: First-party identifier. |
@@ -94,7 +98,7 @@ This connector uses the following vendor API:
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10,000
 * Max time since oldest request: 60 minutes
@@ -121,7 +125,7 @@ For mapping options, see [Add User to List (Data Manager API)](#add-user-to-list
 
 #### Batch Limits
 
-This connector action can use batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector action can use batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 33,000
 * Max time since oldest request: 60 minutes

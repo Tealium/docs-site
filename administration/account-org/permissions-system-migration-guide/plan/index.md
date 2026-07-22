@@ -5,9 +5,13 @@ url: https://docs.tealium.com/administration/account-org/permissions-system-migr
 ---
 ## Export Users
 
-This feature requires Manage Account permissions on the account and Manage Users permissions on every profile. The file only contains users and legacy user permissions in profiles that the currently logged-in user has Manage Users permissions on. If permissions enforcement has been turned on, this button no longer appears.
 
-The export users feature lets you download a comma-separated value (CSV) file with the account&#39;s users, profiles, and legacy user permissions for each profile. This makes it easy to audit your users and their permissions to build permission groups and assign admin roles in the platform permissions system.
+<blockquote>
+This feature requires Manage Account permissions on the account and Manage Users permissions on every profile. The file only contains users and legacy user permissions in profiles that the currently logged-in user has Manage Users permissions on. If permissions enforcement has been turned on, this button no longer appears.
+</blockquote>
+
+
+The export users feature lets you download a comma-separated value (CSV) file with the account's users, profiles, and legacy user permissions for each profile. This makes it easy to audit your users and their permissions to build permission groups and assign admin roles in the platform permissions system.
 
 1. In the client-side admin menu, click **Manage Users**. The table displays a list of users on the account with their general permissions.
 2. Click **Export Users**.
@@ -18,9 +22,13 @@ The CSV file lists permission values as `TRUE` or `FALSE`.
 
 The following screenshot demonstrates a downloaded CSV file imported into a Google Sheet, with minor formatting adjustments on row 1 and `TRUE` and `FALSE` entries changes to `Y` and `N` for readability:
 
-![](/images/platform-permissions/permissionssystemmigrationguide-1.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-1.png)
 
+
+<blockquote>
 Manage Site Scans appears in the exported data. It is a legacy function, and you do not need it for migration purposes.
+</blockquote>
+
 
 In this example, **user3** appears three times in the **User** column. Unlike the other users, who have the same permission on all the profiles on the account, **user3** has different permissions on the profiles **Website A**, **Website B**, and **Website C**. Because of this, separate rows in the spreadsheet contain **user3**’s profile permissions.
 
@@ -62,7 +70,7 @@ Perform the following steps to export each users’ permissions on the client-si
 1. Click **Cancel**.
 1. Repeat this process for each user.
 
-![](/images/platform-permissions/permissionssystemmigrationguide-2.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-2.png)
 You now have all the client-side user permissions.
 
 ### Server-side
@@ -94,7 +102,7 @@ Also, be sure to remove any users who longer work for the company or require acc
 
 ## Add individual user needs to the spreadsheet
 
-Now that you have each user&#39;s profile rights on the spreadsheet, you need add some final product and data-level needs to the spreadsheet for each user:
+Now that you have each user's profile rights on the spreadsheet, you need add some final product and data-level needs to the spreadsheet for each user:
 
 * The level of access to PII data the user should have.
 * The products and product features each user should be able to access.
@@ -106,11 +114,15 @@ PII Permissions control who can see PII data and who can edit the **Restricted D
 
 * **No PII** – Users can view PII attributes, but cannot see the values of these attributes. PII is obscured wherever it is shown, including Trace and Live Events.
 * **View** – Users can view the values of PII attributes, data but cannot edit or manage PII data.
-* **Manage &amp; View** – Users can view, edit, and manage PII data.
+* **Manage & View** – Users can view, edit, and manage PII data.
 
-Note in your spreadsheet whether a user should have no access, View access, or Manage &amp; View access for PII.
+Note in your spreadsheet whether a user should have no access, View access, or Manage & View access for PII.
 
- In EA and EEA, PII permissions were managed by groups. In GA, PII permissions management moved from group-based management to user-based management. PII permissions set by group in EA and EEA will automatically migrate to user-based PII permissions.
+
+<blockquote>
+In EA and EEA, PII permissions were managed by groups. In GA, PII permissions management moved from group-based management to user-based management. PII permissions set by group in EA and EEA will automatically migrate to user-based PII permissions.
+</blockquote>
+
 
 ### Product and feature needs
 
@@ -118,26 +130,30 @@ Product access permissions specify the Tealium products and features that users 
 
 Product access permissions are divided into feature permissions, and may vary depending on the product permissions assigned to the group, as shown in the following table.
 
-Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permission also have **Save** permission.
+
+<blockquote>
+Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission also have **Save** permission.
+</blockquote>
+
 
 #### iQ Tag Management
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| JavaScript Extension|No Access, View, Edit &amp; Delete|
-| Advanced JavaScript Extension - Promote to Dev|No Access, View, Edit &amp; Delete|
-| Advanced JavaScript Extension - Promote to QA|No Access, View, Edit &amp; Delete|
-| Advanced JavaScript Extension - Promote to Prod|No Access, View, Edit &amp; Delete|
-| Publish to Dev/Custom|No Access, View, Edit &amp; Delete|
-| Publish to QA|No Access, View, Edit &amp; Delete|
-| Publish to Prod|No Access, View, Edit &amp; Delete|
-| Save|No Access, View, Edit &amp; Delete|
-| Publish Settings|No Access, View, Edit &amp; Delete|
-| Code Settings|No Access, View, Edit &amp; Delete|
-| Resource Lock|No Access, View, Edit &amp; Delete|
-| Client-Side Versions|No Access, View, View &amp; Edit|
-| Tag Templates|No Access, View, View &amp; Edit|
-| Tags, Extensions, Load Rules, Data Layer|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| JavaScript Extension|No Access, View, Edit & Delete|
+| Advanced JavaScript Extension - Promote to Dev|No Access, View, Edit & Delete|
+| Advanced JavaScript Extension - Promote to QA|No Access, View, Edit & Delete|
+| Advanced JavaScript Extension - Promote to Prod|No Access, View, Edit & Delete|
+| Publish to Dev/Custom|No Access, View, Edit & Delete|
+| Publish to QA|No Access, View, Edit & Delete|
+| Publish to Prod|No Access, View, Edit & Delete|
+| Save|No Access, View, Edit & Delete|
+| Publish Settings|No Access, View, Edit & Delete|
+| Code Settings|No Access, View, Edit & Delete|
+| Resource Lock|No Access, View, Edit & Delete|
+| Client-Side Versions|No Access, View, View & Edit|
+| Tag Templates|No Access, View, View & Edit|
+| Tags, Extensions, Load Rules, Data Layer|No Access, View, View & Edit, View Edit & Delete|
  
 #### AudienceStream
  
@@ -145,20 +161,20 @@ Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permi
 |-----------------------------------------------|:-----------------------------------------------------------| 
 | Dashboard|No Access, View|
 | Discovery/Sizing|No Access, View| 
-| Audiences|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Audience Connectors|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Visitor/Visit Attributes|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Audiences|No Access, View, View & Edit, View Edit & Delete|
+| Audience Connectors|No Access, View, View & Edit, View Edit & Delete|
+| Visitor/Visit Attributes|No Access, View, View & Edit, View Edit & Delete|
 
 #### EventStream
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| Data Sources|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Event Attributes|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Event Connectors|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Event Specs|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Live Events|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Omnichannel|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Data Sources|No Access, View, View & Edit, View Edit & Delete|
+| Event Attributes|No Access, View, View & Edit, View Edit & Delete|
+| Event Connectors|No Access, View, View & Edit, View Edit & Delete|
+| Event Specs|No Access, View, View & Edit, View Edit & Delete|
+| Live Events|No Access, View, View & Edit, View Edit & Delete|
+| Omnichannel|No Access, View, View & Edit, View Edit & Delete|
 
 #### DataAccess
 
@@ -167,39 +183,39 @@ Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permi
 | Access Keys|No Access, View|
 | Tealium Insights* | No Access, View|
 | EventStore Legacy| No Access, View|
-| AudienceDB|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| EventDB| No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| AudienceStore|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| EventStore|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| AudienceDB|No Access, View, View & Edit, View Edit & Delete|
+| EventDB| No Access, View, View & Edit, View Edit & Delete|
+| AudienceStore|No Access, View, View & Edit, View Edit & Delete|
+| EventStore|No Access, View, View & Edit, View Edit & Delete|
 
-\* Tealium Insights permissions can be set by user admins through the **Analyze &gt; Insights &gt; QuickSight Users** page. For more information, see [About Tealium Insights]().
+\* Tealium Insights permissions can be set by user admins through the **Analyze > Insights > QuickSight Users** page. For more information, see [About Tealium Insights](https://docs.tealium.com/about-data-insights/).
 
 #### Predict
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| All features|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| All features|No Access, View, View & Edit, View Edit & Delete|
 
 #### Functions
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| Credentials/Authentications, Global Variables|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Credentials/Authentications, Global Variables|No Access, View, View & Edit, View Edit & Delete|
 
 #### Server-Side Tools
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| Manage Rules|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Visitor Delete|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Visitor Search (formerly Visitor lookup)|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Manage Rules|No Access, View, View & Edit, View Edit & Delete|
+| Visitor Delete|No Access, View, View & Edit, View Edit & Delete|
+| Visitor Search (formerly Visitor lookup)|No Access, View, View & Edit, View Edit & Delete|
 | Live Visitors (formerly Visitor profile sampler)|No Access, View|
 
 #### Server-Side (Others)
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
-| Labels|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Labels|No Access, View, View & Edit, View Edit & Delete|
 | Trace|No Access, View|
 | Versions|No Access, View|
 
@@ -215,15 +231,15 @@ Carefully consider when you disable access to a feature or product. If you disab
 
 Create columns in the spreadsheet for each product and feature, and mark the level of access that the user should have on each.
 
-![](/images/platform-permissions/permissionssystemmigrationguide-3.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-3.png)
 
-Congratulations. You now have all your users&#39; individual needs in the spreadsheet.
+Congratulations. You now have all your users' individual needs in the spreadsheet.
 
 The next step is to organize the users into groups.
 
 ## Add organizational information
 
-Every organization has a unique structure, needs, and workflow. Setting permissions to match your organization&#39;s workflow can ensure that each person has access appropriate for their job role, and does not have access to data due to privacy regulations. So, you need to ask some questions about your users and organization to help sort them into groups.
+Every organization has a unique structure, needs, and workflow. Setting permissions to match your organization's workflow can ensure that each person has access appropriate for their job role, and does not have access to data due to privacy regulations. So, you need to ask some questions about your users and organization to help sort them into groups.
 
 Here are some suggestions:
 
@@ -232,9 +248,9 @@ Here are some suggestions:
 * Do you want to break down permission groups by region because your profiles and users are organized by geographic campaigns and sites, and different data storage and data privacy laws apply to them?
 * Do you want to break down permission groups by product (AudienceStream, EventStream, Customer Data Hub, et cetera)?
 
-For each Yes answer, add another column to the spreadsheet, and add notes in that column about how that question impacts that user&#39;s relationship to the organization and workflow.
+For each Yes answer, add another column to the spreadsheet, and add notes in that column about how that question impacts that user's relationship to the organization and workflow.
 
-![](/images/platform-permissions/permissionssystemmigrationguide-4.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-4.png)
 
 ### Profile audit
 
@@ -253,7 +269,7 @@ You can now organize those users into groups based on their common needs and acc
 * The level of access each group should have on each product feature.
 * Whether users should have access to PII data.
 * Whether users should be able to save and/or publish profiles on the client-side, server-side, or both.
-    * **Edit** access on a product or feature also grants **Save** permission for a user&#39;s changes to a profile.
+    * **Edit** access on a product or feature also grants **Save** permission for a user's changes to a profile.
     * Server-side publishing access includes full access to server-side products and features.
 
 You can break the users into smaller groups based on your organization’s other needs, such as managing users by department or job function, grouping them by geography, and so on.
@@ -262,7 +278,7 @@ These final groups of users are the permission groups you need to create.
 
 ## Add admin roles
 
-Now that you have the groups planned out, it&#39;s time to plan out the admin roles.
+Now that you have the groups planned out, it's time to plan out the admin roles.
 
 Looking at your spreadsheet, ask yourself some questions about the account itself:
 
@@ -281,8 +297,12 @@ The Admin and Profiles settings from the client-side inventory of user permissio
 * **Profile Admin** - This role manages access to profiles and libraries. Anyone who builds and organizes profiles on your account should have this role. This role does not include profile editing or publishing permissions; those are granted through rights in a permission group.
 * **Standard User** - This role receives all of its permissions through group permissions.
 
-For more information about admin roles, see [Admin Roles]().
+For more information about admin roles, see [Admin Roles](https://docs.tealium.com/admin-roles/).
 
+
+<blockquote>
 The **User Admin** admin role is especially useful for the migration process because these people can help you refine the permission groups as your users test the platform permission system.
+</blockquote>
+
 
 Congratulations. You now know the permission groups you need to create and the admin roles you need to assign.

@@ -11,13 +11,13 @@ Examples:
 
 |Attribute name| Values|
 |---| ---|
-|Product Categories Viewed| &#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Apparel&#34;, &#34;Kitchen&#34;|
-|Browsers Used| &#34;Chrome&#34;, &#34;Safari&#34;|
-|Cart Items| &#34;iPad&#34;, &#34;Screen Protector&#34;, &#34;Headphones&#34;|
+|Product Categories Viewed| "Home Improvement", "Electronics", "Apparel", "Kitchen"|
+|Browsers Used| "Chrome", "Safari"|
+|Cart Items| "iPad", "Screen Protector", "Headphones"|
 
 The set of strings attribute is available in the following scopes: Visit and Visitor.
 
-![](/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png)
 
 ### Size limits
 
@@ -31,11 +31,11 @@ Add a string value to a set of strings. Adds only unique strings.
 
 **Attribute Name**: `product_category`
 
-* **Starting Value**:  `&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;`
-* **Enriched With**: `&#34;Apparel&#34;, &#34;Electronics&#34;`
-* **Resulting Value**: `&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;, &#34;Apparel&#34;`
+* **Starting Value**:  `"Home Improvement", "Electronics", "Kitchen"`
+* **Enriched With**: `"Apparel", "Electronics"`
+* **Resulting Value**: `"Home Improvement", "Electronics", "Kitchen", "Apparel"`
 
-The result ignores the &#34;Electronics&#34; item because it exists already in the set of strings.
+The result ignores the "Electronics" item because it exists already in the set of strings.
 
 ### Store Array as Set of Strings
 
@@ -43,31 +43,31 @@ This enrichment is used to save the values from an array of strings attribute in
 
 **Attribute Name**: `Product Categories Viewed`
 
-* **Starting Value**:  `&#34;Kitchen&#34;`
-* **Enriched With**: `[&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;]`
-* **Resulting Value**: `&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;`
+* **Starting Value**:  `"Kitchen"`
+* **Enriched With**: `["Home Improvement", "Electronics", "Kitchen"]`
+* **Resulting Value**: `"Home Improvement", "Electronics", "Kitchen"`
 
 ### Update Set of Strings By Set of Strings
 
-This enrichment appends the values from another set of strings attribute into the set of strings. For example, to track the product categories that a visitor purchases from you might have two set of strings attributes named &#34;Categories Purchased&#34;, with one scoped to visit to capture when the purchase occurs and one scoped to visitor to store the master set.
+This enrichment appends the values from another set of strings attribute into the set of strings. For example, to track the product categories that a visitor purchases from you might have two set of strings attributes named "Categories Purchased", with one scoped to visit to capture when the purchase occurs and one scoped to visitor to store the master set.
 
 |**Visit: Categories Purchased**| **Visitor: Categories Purchased**|
 |---|---|
-|`&#34;Electronics&#34;`| `&#34;Electronics&#34;`|
-|`&#34;Kitchen&#34;, &#34;Apparel&#34;`| `&#34;Electronics&#34;, &#34;Kitchen&#34;, &#34;Apparel&#34;`|
-|`&#34;Kitchen&#34;, &#34;Electronics&#34;`| `&#34;Electronics&#34;, &#34;Kitchen&#34;, &#34;Apparel&#34;`|
+|`"Electronics"`| `"Electronics"`|
+|`"Kitchen", "Apparel"`| `"Electronics", "Kitchen", "Apparel"`|
+|`"Kitchen", "Electronics"`| `"Electronics", "Kitchen", "Apparel"`|
 
 While the set of strings scoped to visit is overwritten with new values each time, the enrichment copies those values into the set of strings scoped to visitor where the master list expands, storing each unique value encountered.
 
 **Attribute Name**: `Product Category Purchased`
 
-* **Starting Value**:  `&#34;Electronics&#34;`
-* **Enriched With**: `&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;`
-* **Resulting Value**: `&#34;Electronics&#34;, &#34;Home Improvement&#34;, &#34;Kitchen&#34;`
+* **Starting Value**:  `"Electronics"`
+* **Enriched With**: `"Home Improvement", "Electronics", "Kitchen"`
+* **Resulting Value**: `"Electronics", "Home Improvement", "Kitchen"`
 
 ### Difference Between Two Sets of Strings
 
-Create a new set of strings attribute that contains the items from one set of strings that do not appear in another set of strings. For example, to find the categories that a customer browsed, but did not purchase from, use this enrichment to find the difference between &#34;Categories Browsed&#34; and &#34;Categories Purchased&#34;.
+Create a new set of strings attribute that contains the items from one set of strings that do not appear in another set of strings. For example, to find the categories that a customer browsed, but did not purchase from, use this enrichment to find the difference between "Categories Browsed" and "Categories Purchased".
 
 Example:
 
@@ -76,8 +76,8 @@ Find values present in: `Categories Browsed` and that are not in: `Categories Pu
 **Attribute Name**: `Browsed Categories Not Purchased`
 
 * **Starting Value**:  
-* **Enriched With**:  &#34;Categories Browsed&#34;: `&#34;Home Improvement&#34;, &#34;Kitchen&#34;, &#34;Windows&#34;` &#34;Categories Purchased&#34;: `&#34;Home Improvement&#34;` 
-* **Resulting Value**: `&#34;Kitchen&#34;, &#34;Windows&#34;`
+* **Enriched With**:  "Categories Browsed": `"Home Improvement", "Kitchen", "Windows"` "Categories Purchased": `"Home Improvement"` 
+* **Resulting Value**: `"Kitchen", "Windows"`
 
 ### Remove Set of Strings
 
@@ -85,7 +85,7 @@ Remove a set of strings based on a set of conditions. This is the equivalent of 
 
 **Attribute Name**: `product_category`
 
-* **Starting Value**:  `&#34;Home Improvement&#34;, &#34;Kitchen&#34;, &#34;Windows&#34;`
+* **Starting Value**:  `"Home Improvement", "Kitchen", "Windows"`
 * **Resulting Value**: (Removed)
 
 ### Lowercase Set of Strings
@@ -94,8 +94,8 @@ Lowercase a set of strings based on a set of conditions.
 
 **Attribute Name**: `product_category`
 
-* **Starting Value**:  `&#34;Home Improvement&#34;, &#34;Electronics&#34;, &#34;Kitchen&#34;`
-* **Resulting Value**: `&#34;home improvement&#34;, &#34;electronics&#34;, &#34;kitchen&#34;`
+* **Starting Value**:  `"Home Improvement", "Electronics", "Kitchen"`
+* **Resulting Value**: `"home improvement", "electronics", "kitchen"`
 
 ### Set to Top Tally Items
 
@@ -104,25 +104,25 @@ Create a set of strings using the highest valued items from a tally. For example
 **Attribute Name**: `Top 3 Products Viewed`
 
 * **Starting Value**:  -- 
-* **Enriched With**: Top 3 Items in &#34;Viewed Products&#34;: &lt;br&gt; `{ &#34;AirPods Pro&#34; : 3 &#34;iPhone 10&#34; : 6 &#34;iPhone Case&#34; : 10 &#34;MacBook Pro&#34; : 1 &#34;iMac&#34; : 2 }`
-* **Resulting Value**: `&#34;iPhone Case&#34;, &#34;iPhone 10&#34;, &#34;AirPods Pro&#34;`
+* **Enriched With**: Top 3 Items in "Viewed Products": <br> `{ "AirPods Pro" : 3 "iPhone 10" : 6 "iPhone Case" : 10 "MacBook Pro" : 1 "iMac" : 2 }`
+* **Resulting Value**: `"iPhone Case", "iPhone 10", "AirPods Pro"`
 
 ### Set to Tally Items Above Target Value
 
 Create a set of strings using the items from a tally whose values are above a set threshold. For example, to track products that have been viewed more than 20 times, create a set of strings to capture the entries from a tally attribute that tracks the occurrences of viewed products.
 
-**Attribute Name**: `Products Viewed 20&#43; Times`
+**Attribute Name**: `Products Viewed 20+ Times`
 
 * **Starting Value**: --
-* **Enriched With**:  Items in &#34;Products Viewed&#34; that are greater than 20: &lt;br&gt;`{  &#34;AirPods Pro&#34; : 21,  &#34;iPhone 10&#34; : 35, &#34;iPhone Case&#34; : 12, &#34;MacBook Pro&#34; : 1 &#34;iMac&#34; : 2 }` 
-* **Resulting Value**:  `&#34;iPhone 10&#34;, &#34;AirPods Pro&#34;` 
+* **Enriched With**:  Items in "Products Viewed" that are greater than 20: <br>`{  "AirPods Pro" : 21,  "iPhone 10" : 35, "iPhone Case" : 12, "MacBook Pro" : 1 "iMac" : 2 }` 
+* **Resulting Value**:  `"iPhone 10", "AirPods Pro"` 
 
 ### Remove Entry from Set of Strings
 
-Remove an entry from a set of strings based on a set of conditions. For example, remove the entry &#34;iPhone Case&#34; from a set of strings that tracks a product wish list because it has been purchased.
+Remove an entry from a set of strings based on a set of conditions. For example, remove the entry "iPhone Case" from a set of strings that tracks a product wish list because it has been purchased.
 
 **Attribute Name**: `Product Wish List`
 
-* **Starting Value**:  `&#34;iPhone 10&#34;, &#34;AirPods Pro&#34;, &#34;iPhone Case&#34;`
-* **Enriched With**:  Remove `purchased_product` (value &#34;iPhone Case&#34;) 
-* **Resulting Value**: `&#34;iPhone 10&#34;, &#34;AirPods Pro&#34;`
+* **Starting Value**:  `"iPhone 10", "AirPods Pro", "iPhone Case"`
+* **Enriched With**:  Remove `purchased_product` (value "iPhone Case") 
+* **Resulting Value**: `"iPhone 10", "AirPods Pro"`

@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/podscribe-s2s-connector/
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法についての一般的な説明は、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法についての一般的な説明は、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 * **API キー**：リクエストを認証するために使用される Podscribe S2S API キー。
@@ -35,7 +35,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/podscribe-s2s-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| アクション | イベントのタイプ（例：ユーザーアクションやコンバージョン）。&lt;br&gt;view&lt;br&gt;signup&lt;br&gt;lead&lt;br&gt;purchase&lt;br&gt;install&lt;br&gt;offline_purchase |
+| アクション | イベントのタイプ（例：ユーザーアクションやコンバージョン）。<br>view<br>signup<br>lead<br>purchase<br>install<br>offline_purchase |
 
 #### イベントデータ
 

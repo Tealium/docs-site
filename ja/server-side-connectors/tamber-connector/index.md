@@ -11,19 +11,19 @@ url: https://docs.tealium.com/ja/server-side-connectors/tamber-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **プロジェクトキー**
   * ほとんどのリクエストはプロジェクトキーだけで行うことができます。
   * エンジンキーだけで全てのリクエストを行うことができます。プロジェクトは自動的に推測されます。
-  * 詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#authentication&amp;quot;&amp;gt;https://tamber.com/docs/api/#authentication)を参照してください。
+  * 詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#authentication&quot;&gt;https://tamber.com/docs/api/#authentication)を参照してください。
 
 * **エンジンキー**
   * ほとんどのリクエストはプロジェクトキーだけで行うことができます。
   * エンジンキーだけで全てのリクエストを行うことができます。プロジェクトは自動的に推測されます。
-  * 詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#authentication&amp;quot;&amp;gt;https://tamber.com/docs/api/#authentication)を参照してください。
+  * 詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#authentication&quot;&gt;https://tamber.com/docs/api/#authentication)を参照してください。
 
 ## アクション構成 - パラメータとオプション
 
@@ -37,10 +37,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/tamber-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                            |
 |:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユーザー          | &lt;ul&gt;&lt;li&gt;ユーザーの一意の識別子。&lt;/li&gt;&lt;li&gt;ユーザーがまだ存在しない場合、このアクションで作成します。&lt;/li&gt;&lt;li&gt;詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#event-track)を参照してください。&lt;/li&gt;&lt;/ul&gt;                               |
-| 行動      | &lt;ul&gt;&lt;li&gt;一意の行動名。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                                |
-| アイテム          | &lt;ul&gt;&lt;li&gt;イベントに関連するアイテム。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                          |
-| 量        | &lt;ul&gt;&lt;li&gt;行動が行われた量。&lt;/li&gt;&lt;li&gt;例：視聴した映画の割合、与えられた評価など。&lt;/li&gt;&lt;li&gt;値が提供されない場合、デフォルトで`1.0`になります。&lt;/li&gt;&lt;/ul&gt;                                                        |
-| 作成       | &lt;ul&gt;&lt;li&gt;イベントが発生した時間。&lt;/li&gt;&lt;li&gt;値が提供されない場合、デフォルトで現在の時間になります。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                |
-| ヒット           | &lt;ul&gt;&lt;li&gt;イベントが成功した推奨を表すために真に構成します。&lt;/li&gt;&lt;li&gt;例えば、イベントのアイテムがユーザーに推奨として提示されました。&lt;/li&gt;&lt;/ul&gt;                                                                 |
-| コンテキストデータ  | &lt;ul&gt;&lt;li&gt;イベントが発生したコンテキスト。&lt;/li&gt;&lt;li&gt;インターフェース要素や他のコンテキスト変数がユーザー行動に及ぼす影響を判断するためのイベントデータのセグメンテーションに役立ちます。&lt;/li&gt;&lt;li&gt;インターフェースの変更をA/Bテストするのにも役立ちます。&lt;/li&gt;&lt;/ul&gt; |
+| ユーザー          | <ul><li>ユーザーの一意の識別子。</li><li>ユーザーがまだ存在しない場合、このアクションで作成します。</li><li>詳細については、[Tamberのドキュメンテーション](https://tamber.com/docs/api/#event-track)を参照してください。</li></ul>                               |
+| 行動      | <ul><li>一意の行動名。</li></ul>                                                                                                                                                                                                                |
+| アイテム          | <ul><li>イベントに関連するアイテム。</li></ul>                                                                                                                                                                                                          |
+| 量        | <ul><li>行動が行われた量。</li><li>例：視聴した映画の割合、与えられた評価など。</li><li>値が提供されない場合、デフォルトで`1.0`になります。</li></ul>                                                        |
+| 作成       | <ul><li>イベントが発生した時間。</li><li>値が提供されない場合、デフォルトで現在の時間になります。</li></ul>                                                                                                                                                |
+| ヒット           | <ul><li>イベントが成功した推奨を表すために真に構成します。</li><li>例えば、イベントのアイテムがユーザーに推奨として提示されました。</li></ul>                                                                 |
+| コンテキストデータ  | <ul><li>イベントが発生したコンテキスト。</li><li>インターフェース要素や他のコンテキスト変数がユーザー行動に及ぼす影響を判断するためのイベントデータのセグメンテーションに役立ちます。</li><li>インターフェースの変更をA/Bテストするのにも役立ちます。</li></ul> |

@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/client-side-tags/eloqua-tag-set-up-guide/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに行き、Eloquaタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに行き、Eloquaタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/client-side-tags/eloqua-tag-set-up-guide/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -34,8 +34,8 @@ url: https://docs.tealium.com/ja/client-side-tags/eloqua-tag-set-up-guide/
 
 | 変数                 | 説明                                                        |
 |:---------------------|:-------------------------------------------------------------------|
-| `form_tracking`      | &lt;ul&gt;&lt;li&gt;フォームトラッキング。&lt;/li&gt;&lt;li&gt;値は `on` または `off`。&lt;/li&gt;&lt;/ul&gt; |
-| `elqFormName`        | &lt;ul&gt;&lt;li&gt;フォーム名。&lt;/li&gt;&lt;/ul&gt;                                       |
-| `elqFormGUIDElement` | &lt;ul&gt;&lt;li&gt;フォーム要素。&lt;/li&gt;&lt;/ul&gt;                                    |
-| `base_url`           | &lt;ul&gt;&lt;li&gt;JavaScriptファイルのURL。&lt;/li&gt;&lt;/ul&gt;                             |
-| `elqDomainName`      | &lt;ul&gt;&lt;li&gt;ファーストパーティクッキードメイン名&lt;/li&gt;&lt;/ul&gt;                   |
+| `form_tracking`      | <ul><li>フォームトラッキング。</li><li>値は `on` または `off`。</li></ul> |
+| `elqFormName`        | <ul><li>フォーム名。</li></ul>                                       |
+| `elqFormGUIDElement` | <ul><li>フォーム要素。</li></ul>                                    |
+| `base_url`           | <ul><li>JavaScriptファイルのURL。</li></ul>                             |
+| `elqDomainName`      | <ul><li>ファーストパーティクッキードメイン名</li></ul>                   |

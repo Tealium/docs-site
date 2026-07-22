@@ -11,7 +11,7 @@ The following summarizes the commonly used methods of the `ConsentCategory` clas
 | ----- | ------ |
 | [`ALL`](#all) | Returns the complete list of supported consent categories |
 | [`consentCategory(String)`](#consentcategory-string) | Returns the ConsentCategory relating to the given String; else null |
-| [`consentCategories(Set&lt;String&gt;)`](#consentcategories-set-string) | Returns the Set of `ConsentCategory` objects relating to the given Strings; invalid entries are ignored. |
+| [`consentCategories(Set<String>)`](#consentcategories-set-string) | Returns the Set of `ConsentCategory` objects relating to the given Strings; invalid entries are ignored. |
 
 
 ### `ALL`
@@ -49,14 +49,14 @@ setOf(
 Returns the relevant `ConsentCategory` for the given String. The parameter is case-insensitive.
 
 ```java
-ConsentCategory.consentCategory(&#34;cdp&#34;) // returns ConsentCategory.CDP
+ConsentCategory.consentCategory("cdp") // returns ConsentCategory.CDP
 ```
 
-### `consentCategories(Set&lt;String&gt;)`
+### `consentCategories(Set<String>)`
 
 Returns the set of relevant `ConsentCategory` object for the given Strings. The parameters are case-insensitive.
 
 ```java
-ConsentCategory.consentCategories(setOf(&#34;cdp&#34;, &#34;invalid&#34;, &#34;email&#34;))
+ConsentCategory.consentCategories(setOf("cdp", "invalid", "email"))
 // returns setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)
 ```

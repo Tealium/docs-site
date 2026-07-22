@@ -5,11 +5,11 @@ url: https://docs.tealium.com/ja/client-side-tags/schema-app-tag/
 ---
 ## タグのヒント
 
-* アカウントIDはアプリケーション内の **Integrations &gt; JavaScript** で見つけることができます。
+* アカウントIDはアプリケーション内の **Integrations > JavaScript** で見つけることができます。
 
 ## タグの構成
 
-タグマーケットプレイスに行って新しいタグを追加します。詳細については、を参照してください。
+タグマーケットプレイスに行って新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/schema-app-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 

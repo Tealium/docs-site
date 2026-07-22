@@ -16,8 +16,8 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/se
 
 拡張機能を追加すると、以下の構成オプションが利用可能になります：
 
-* **Set**: 値を割り当てたいデータレイヤー変数。変数のドロップダウンリストから選択するか、**&#43; Add Variable**ボタンをクリックして新しい変数を作成します。
-* **To**: 変数に割り当てる値。別の変数を構成するには**&#43;**ボタンをクリックし、拡張機能から変数を削除するには**-**ボタンをクリックします。
+* **Set**: 値を割り当てたいデータレイヤー変数。変数のドロップダウンリストから選択するか、**+ Add Variable**ボタンをクリックして新しい変数を作成します。
+* **To**: 変数に割り当てる値。別の変数を構成するには**+**ボタンをクリックし、拡張機能から変数を削除するには**-**ボタンをクリックします。
 値は以下のオプションのいずれかになります：
     * **Text**: タイプしたテキスト値に構成します。
     * **Variable**: 別のデータレイヤー変数の値に構成します。
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/se
     * 変数`q (js)`を選択します。
     * 条件を`is defined`に構成します。
 
-![](/images/iq-tag-management/setdatavalues-1.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-1.png)
 
 ### 変数値を構成する
 
@@ -54,14 +54,14 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/se
 1. **Add Condition**をクリックして以下を構成します：
     * 変数`page_name`を選択します。
     * 条件を`is not defined`に構成します。
-    * **Condition**ボックスの外にある**&#43;**をクリックして**Or**条件を追加します。
+    * **Condition**ボックスの外にある**+**をクリックして**Or**条件を追加します。
     * 変数`page_name`を選択します。
     * 条件を`is defined`に構成します。
-    * `is defined`テキストボックスの隣にある**&#43;**をクリックして**And**条件を追加します。
+    * `is defined`テキストボックスの隣にある**+**をクリックして**And**条件を追加します。
     * 変数`page_name`を選択します。
     * 条件を`is not populated`に構成します。
 
-![](/images/iq-tag-management/setdatavalues-2.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-2.png)
 
 ### JavaScriptコード値を構成する
 
@@ -71,10 +71,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/se
 1. **Title**に`Determine number of search results`を構成します。
 1. ドロップダウンメニューから変数**search_results**を選択します。
 1. 値のタイプを**JS Code**に構成します。
-1. テキストボックスにページ内でのJavaScriptコードをそのまま入力します（またはブラウザコンソールで）。この例では、シンプルなjQueryセレクタと`.length`プロパティを使用します：`$(&#39;.search-results a&#39;).length;`。
+1. テキストボックスにページ内でのJavaScriptコードをそのまま入力します（またはブラウザコンソールで）。この例では、シンプルなjQueryセレクタと`.length`プロパティを使用します：`$('.search-results a').length;`。
 1. **Add Condition**をクリックして以下を構成します：
     * 変数`page_type`を選択します。
     * 条件を`equals`に構成し、テキストボックスに`search`を入力します。
 
-![](/images/iq-tag-management/setdatavalues-3.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-3.png)
 

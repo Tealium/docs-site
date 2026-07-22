@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/awin-tag/
 ---
 ## タグのヒント
 
-* タグとコネクターを使用したハイブリッド構成をお勧めします。この構成により、データの耐久性が最大化され、サーバーサイドのシグナルとのイベントマッチングが改善され、リアルタイムのクライアントサイドシグナルを保持しながらデータフローの連続性が維持されます。詳細については、[Awin Conversions Connector]()を参照してください。
+* タグとコネクターを使用したハイブリッド構成をお勧めします。この構成により、データの耐久性が最大化され、サーバーサイドのシグナルとのイベントマッチングが改善され、リアルタイムのクライアントサイドシグナルを保持しながらデータフローの連続性が維持されます。詳細については、[Awin Conversions Connector](https://docs.tealium.com/awin-conversions-connector/)を参照してください。
 * マッピングを使用して：
   * 標準の構成値を上書きします。
   * E-Commerce拡張の値を上書きします。
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/client-side-tags/awin-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスして、Awinタグを追加します。詳細については、[タグの管理]()を参照してください。
+まず、Tealiumのタグマーケットプレイスにアクセスして、Awinタグを追加します。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加した後、次の構成を構成します：
 
@@ -37,7 +37,7 @@ url: https://docs.tealium.com/ja/client-side-tags/awin-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 

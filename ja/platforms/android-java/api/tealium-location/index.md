@@ -37,7 +37,7 @@ TealiumLocation.setupInstance(applicationContext, tealiumInstances);
 
 ### `setupInstanceWithConfig()`
 
-Tealium構成ファイルからの（Tealiumのホストデータレイヤーでホストされる）ジオフェンスを使用してTealiumジオロケーションインスタンスを構成します。`&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/geofences.json&#34;`の形式でカスタムURLを作成します。
+Tealium構成ファイルからの（Tealiumのホストデータレイヤーでホストされる）ジオフェンスを使用してTealiumジオロケーションインスタンスを構成します。`"https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/geofences.json"`の形式でカスタムURLを作成します。
 
 ```java
 TealiumLocation.setupInstanceWithConfig(this, tealiumInstances, mTealiumConfig);
@@ -48,7 +48,7 @@ TealiumLocation.setupInstanceWithConfig(this, tealiumInstances, mTealiumConfig);
 アセットのJSONファイルからのジオフェンスを使用してTealiumジオロケーションインスタンスを構成します。
 
 ```java
-TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.json&#34;);
+TealiumLocation.setupInstanceWithFile(this, tealiumInstances, "geofences.json");
 ```
 
 ### `setupInstanceWithUrl()`
@@ -61,7 +61,7 @@ TealiumLocation.setupInstanceWithUrl(this, tealiumInstances, url);
 
 | パラメータ | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `url` | `String` | ホスト型JSONファイル（`geofences.json`など）を指すURL| `&#34;https://DOMAIN/PATH/FILE.json&#34;`|
+| `url` | `String` | ホスト型JSONファイル（`geofences.json`など）を指すURL| `"https://DOMAIN/PATH/FILE.json"`|
 
 
 ### `startLocationUpdates()`

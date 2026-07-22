@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/simility-tag/
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Simility Tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the Simility Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the tag, configure the below settings:
 
@@ -18,15 +18,19 @@ After adding the tag, configure the below settings:
 1. **Simility Lite**: This is turned ON by default. If you turn it `OFF`, you must send additional user information such as geo-location, mouse movements, etc.
 1. **Simility Lite Level**: The numeric (decimal) value you received from the Simility support team.
 
+
+<blockquote>
 **Simility Lite** and **Simility Lite** Level settings are advanced configurations. For more details on these, please contact the Simility support team.
+</blockquote>
+
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [Data Layer Variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Simility Tag are built into its Data Mapping tab. Available categories are:
 
@@ -41,7 +45,11 @@ The destination variables for the Simility Tag are built into its Data Mapping t
 | Session ID           | (Required) Unique id of the user session                                                                               |
 | Event Types          | (Required) A comma-separated string of events associated with the user activity being tracked                          |
 
+
+<blockquote>
 Mapping to a Standard destination overrides its corresponding Tag Setting.
+</blockquote>
+
 
 #### Transaction Info
 
@@ -55,9 +63,9 @@ Lets you send transaction data (for example: user, orders, transactions, applica
 | Last Name           | Last name of the user                                                                                                                  |
 | User ID             | Username of the user                                                                                                                   |
 | Email               | Email id of the user                                                                                                                   |
-| Is First Order      | Boolean value (`true`/`false`) to determine whether it&#39;s the user&#39;s first order                                                        |
+| Is First Order      | Boolean value (`true`/`false`) to determine whether it's the user's first order                                                        |
 | Number Of Retries   | Number of attempts to place the order                                                                                                  |
-| Custom Field        | Custom data related to the user&#39;s transaction. Replace `custom` with your custom parameter name. For example, `field.order_categories` |
+| Custom Field        | Custom data related to the user's transaction. Replace `custom` with your custom parameter name. For example, `field.order_categories` |
 | Custom Nested Field | Send transaction data in a nested form. For example, `field.order_details.is_first_order`                                              |
 
 **Example Payload**
@@ -66,20 +74,20 @@ Notice how the transaction info mappings are wrapped in the `transaction_info` o
 
 ```javascript
 var similityContext = {
-    &#34;customer_id&#34;: &#34;acme&#34;,
-    &#34;session_id&#34;: &#34;1234&#34;,
-    &#34;user_id&#34; : &#34;user1234&#34;,
-    &#34;simility_lite&#34;: true,
-    &#34;transaction_info&#34;: [{
-      &#34;entity&#34;: &#34;orders&#34;,
-      &#34;id&#34;: &#34;xyz101&#34;,
-      &#34;fields&#34;: {
-          &#34;first_name&#34;: &#34;John&#34;,
-          &#34;last_name&#34;: &#34;Doe&#34;,
-          &#34;user_id&#34;: &#34;user1234&#34;,
-          &#34;email&#34;: &#34;johndoe@example.com&#34;,
-          &#34;order_categories&#34;: [&#34;123&#34;, &#34;456&#34;, &#34;789&#34;],
-          &#34;order_details&#34;: { &#34;is_first_order&#34;: true, &#34;num_retries&#34;: 1 },
+    "customer_id": "acme",
+    "session_id": "1234",
+    "user_id" : "user1234",
+    "simility_lite": true,
+    "transaction_info": [{
+      "entity": "orders",
+      "id": "xyz101",
+      "fields": {
+          "first_name": "John",
+          "last_name": "Doe",
+          "user_id": "user1234",
+          "email": "johndoe@example.com",
+          "order_categories": ["123", "456", "789"],
+          "order_details": { "is_first_order": true, "num_retries": 1 },
        }
    }]
   };

@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/naver-tag/
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -28,11 +28,11 @@ When adding the tag, configure the following settings:
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -50,7 +50,7 @@ The available categories are:
 |:---------|:-----|:------------|
 | `order_total` | `Number` | Order total (Overrides `_ctotal`). |
 | `type` | `String` | The type of the conversion event. |
-| `id` | `String` | Conversion ID or customer&#39;s action ID. |
+| `id` | `String` | Conversion ID or customer's action ID. |
 | `value` | `String` | Total price without shipping fees of all products and services in the order. |
 | `item_id` | `Array` | Item ID (Overrides `_cprod`). |
 | `name` | `Array` | Item name (Overrides `_cprodname`). |
@@ -61,7 +61,7 @@ The available categories are:
 
 ### Event Triggers
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|
@@ -92,13 +92,13 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 ### Event Specific Parameters
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|
 | `order_total` | Order total (Overrides `_ctotal`). |
 | `type` | The type of the conversion event. |
-| `id` | Conversion ID or customer&#39;s action ID. |
+| `id` | Conversion ID or customer's action ID. |
 | `value` | Total amount of multiple products or services. |
 | `item_id` | Item ID (Overrides `_cprod`). |
 | `name` | Item name (Overrides `_cprodname`). |

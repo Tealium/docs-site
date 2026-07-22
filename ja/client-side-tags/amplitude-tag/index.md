@@ -3,7 +3,11 @@ title: アンプリチュードタグの構成（廃止）
 description: この記事では、Tealium iQタグ管理（TiQ）アカウントでアンプリチュードタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/amplitude-tag/
 ---
-このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Amplitude Browser SDKタグ構成ガイド]()を参照してください。
+
+<blockquote>
+このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Amplitude Browser SDKタグ構成ガイド](https://docs.tealium.com/amplitude-browser-sdk-tag/)を参照してください。
+</blockquote>
+
 
 ## タグのヒント
 
@@ -18,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/amplitude-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグの概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -27,7 +31,7 @@ Amplitudeから提供されるAPIまたはプロジェクトキー。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からのデータをベンダータグの対応する宛先変数に送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からのデータをベンダータグの対応する宛先変数に送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -35,27 +39,27 @@ Amplitudeから提供されるAPIまたはプロジェクトキー。
 
 |変数| 説明|
 |---| ---|
-|`api_key`|  &lt;ul&gt;&lt;li&gt;Amplitudeから提供されるAPIまたはプロジェクトキー。&lt;/li&gt;&lt;/ul&gt; |
-|`batchEvents`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`cookieExpiration`|  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
-|`cookieName`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-|`deviceId`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-|`deviceIdFromUrlParam`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`domain`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-| `eventUploadPeriodMillis` |  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
-|`eventUploadThreshold`|  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
-|`forceHttps`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`includeGclid`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`includeReferrer`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-| `includeUtm` |  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`language`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-|`optOut`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`platform`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-|`saveEvents`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`savedMaxCount`|  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
-|`saveParamsReferrerOncePerSession`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-|`sessionTimeout`|  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
-|`uploadBatchSize`|  &lt;ul&gt;&lt;li&gt;数値&lt;/li&gt;&lt;/ul&gt; |
+|`api_key`|  <ul><li>Amplitudeから提供されるAPIまたはプロジェクトキー。</li></ul> |
+|`batchEvents`|  <ul><li>ブール値</li></ul> |
+|`cookieExpiration`|  <ul><li>数値</li></ul> |
+|`cookieName`|  <ul><li>文字列</li></ul> |
+|`deviceId`|  <ul><li>文字列</li></ul> |
+|`deviceIdFromUrlParam`|  <ul><li>ブール値</li></ul> |
+|`domain`|  <ul><li>文字列</li></ul> |
+| `eventUploadPeriodMillis` |  <ul><li>数値</li></ul> |
+|`eventUploadThreshold`|  <ul><li>数値</li></ul> |
+|`forceHttps`|  <ul><li>ブール値</li></ul> |
+|`includeGclid`|  <ul><li>ブール値</li></ul> |
+|`includeReferrer`|  <ul><li>ブール値</li></ul> |
+| `includeUtm` |  <ul><li>ブール値</li></ul> |
+|`language`|  <ul><li>文字列</li></ul> |
+|`optOut`|  <ul><li>ブール値</li></ul> |
+|`platform`|  <ul><li>文字列</li></ul> |
+|`saveEvents`|  <ul><li>ブール値</li></ul> |
+|`savedMaxCount`|  <ul><li>数値</li></ul> |
+|`saveParamsReferrerOncePerSession`|  <ul><li>ブール値</li></ul> |
+|`sessionTimeout`|  <ul><li>数値</li></ul> |
+|`uploadBatchSize`|  <ul><li>数値</li></ul> |
 
 ### ユーザープロパティ
 
@@ -85,9 +89,9 @@ Amplitudeから提供されるAPIまたはプロジェクトキー。
 
 |変数| 説明|
 |---| ---|
-| `order_id` |  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_type`|  &lt;ul&gt;&lt;li&gt;カートまたは注文タイプ&lt;/li&gt;&lt;li&gt;`_ctype`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;li&gt;`_ccustid`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品IDのリスト&lt;/li&gt;&lt;li&gt;`_cprod`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト&lt;/li&gt;&lt;li&gt;`_cquan`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt; &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;/ul&gt; &lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`_cprice`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+| `order_id` |  <ul><li>注文ID</li><li>`_corder`を上書きします。</li></ul> |
+|`order_type`|  <ul><li>カートまたは注文タイプ</li><li>`_ctype`を上書きします。</li></ul> |
+|`customer_id`|  <ul><li>顧客ID</li><li>`_ccustid`を上書きします。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>商品IDのリスト</li><li>`_cprod`を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量のリスト</li><li>`_cquan`を上書きします。</li></ul> |
+|`product_unit_price`|  <ul> <ul><li>配列</li><li>価格のリスト</li></ul> </ul> <ul><li>`_cprice`を上書きします。</li></ul> |

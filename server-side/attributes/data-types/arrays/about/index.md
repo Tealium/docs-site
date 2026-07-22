@@ -5,18 +5,22 @@ url: https://docs.tealium.com/server-side/attributes/data-types/arrays/about/
 ---
 ## How it works
 
-Arrays are used to store a list of values. Whereas a string or number attribute can only contain a single value, such as `&#34;Home Page&#34;` or `12.95`, an array can contain multiple values, such as `[&#34;Pants&#34;, &#34;Shirts&#34;]` or `[5.99, 12.95]`. Arrays are available for the [number](), [string](), and [boolean]() attribute data types.
+Arrays are used to store a list of values. Whereas a string or number attribute can only contain a single value, such as `"Home Page"` or `12.95`, an array can contain multiple values, such as `["Pants", "Shirts"]` or `[5.99, 12.95]`. Arrays are available for the [number](), [string](), and [boolean]() attribute data types.
 
 Arrays are represented in JSON format in all examples.
 
 ```json
-[&#34;Pants&#34;, &#34;Shirts&#34;, &#34;Shoes&#34;]
+["Pants", "Shirts", "Shoes"]
 [2, 4, 6]
 [true, false, false]
 []
 ```
 
+
+<blockquote>
 Arrays can contain duplicate values.
+</blockquote>
+
 
 ### Size limits
 

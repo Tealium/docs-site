@@ -3,7 +3,11 @@ title: Google Universal Analytics Tag Enhanced E-Commerce
 description: This article is an overview of setting up Enhanced Ecommerce tracking forthe Google Universal Analytics tag in Tealium iQ Tag Management.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/
 ---
- As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](). 
+
+<blockquote>
+As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/).
+</blockquote>
+
 
 ## Overview
 
@@ -11,21 +15,25 @@ Enhanced Ecommerce is an [advanced plugin for ecommerce tracking using Google Un
 
 ## How it works
 
-Enhanced Ecommerce tracking works with a combination of the [E-Commerce extension]() and [data mapping](/iq-tag-management/data-mappings/manage/) in the [Google Universal Analytics tag](). The E-Commerce extension handles the most common ecommerce data, while the more advanced data is sent using data mappings in the tag configuration. Enhanced Ecommerce actions are also mapped in the tag as events.
+Enhanced Ecommerce tracking works with a combination of the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) and [data mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) in the [Google Universal Analytics tag](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/). The E-Commerce extension handles the most common ecommerce data, while the more advanced data is sent using data mappings in the tag configuration. Enhanced Ecommerce actions are also mapped in the tag as events.
 
 ## Enhanced E-commerce data and actions
 
-The E-Commerce Extension settings cover many of the new Enhanced E-Commerce features. However, if your Universal Data Object (UDO) does not accommodate [the data required for Enhanced E-Commerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data), you will have to add variables to your website&#39;s data layer.
+The E-Commerce Extension settings cover many of the new Enhanced E-Commerce features. However, if your Universal Data Object (UDO) does not accommodate [the data required for Enhanced E-Commerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data), you will have to add variables to your website's data layer.
 
 Here is a recommended list of data layer variables to add, along with their matching variable in Enhanced Ecommerce.
 
-If a variable is marked as &#34;n/a&#34; in the E-Commerce Extension column, it must be added to the tag as a data mapping.
+
+<blockquote>
+If a variable is marked as "n/a" in the E-Commerce Extension column, it must be added to the tag as a data mapping.
+</blockquote>
+
 
 ## Impression data
 
 When impression data is mapped and populated in the UDO it is passed to Google Analytics using the `ec:addImpression` command.
 
-|Data Layer Variable| Google Key| E-Commerce&lt;br&gt; Extension|
+|Data Layer Variable| Google Key| E-Commerce<br> Extension|
 |---| ---| ---|
 |product\_impression\_id| id| n/a|
 |product\_impression\_name| name| n/a|
@@ -40,7 +48,7 @@ When impression data is mapped and populated in the UDO it is passed to Google A
 
 The product variables are used in any event that expects product data. The product data required by Enhanced Ecommerce is mapped automatically by the E-Commerce Extension (see table below). Product variables are passed to Google Analytics using the `ec:addProduct` command.
 
-|Data Layer Variable| Google Key| E-Commerce&lt;br&gt; Extension|
+|Data Layer Variable| Google Key| E-Commerce<br> Extension|
 |---| ---| ---|
 |product\_id| id| \_cprod|
 |product\_name| name| \_cprodname|
@@ -56,7 +64,7 @@ The product variables are used in any event that expects product data. The produ
 
 When promotion data is mapped and populated in the UDOit is passed to Google Analytics using the `ec:addPromo` command.
 
-|Data Layer Variable| Google Key| E-Commerce&lt;br&gt; Extension|
+|Data Layer Variable| Google Key| E-Commerce<br> Extension|
 |---| ---| ---|
 |promotion\_id| id| n/a|
 |promotion\_name| name| n/a|
@@ -67,7 +75,7 @@ When promotion data is mapped and populated in the UDOit is passed to Google Ana
 
 The action variables are populated in any event that expect order data. The order data required by Enhanced Ecommerce is automatically mapped by the E-Commerce Extension (see table below). Action variables are passed to Google Analytics using the `ec:setAction` command.
 
-|Data Layer Variable| Google Key| E-Commerce&lt;br&gt; Extension|
+|Data Layer Variable| Google Key| E-Commerce<br> Extension|
 |---| ---| ---|
 |order\_id| id| \_corder|
 |order\_store| affiliation| \_cstore|
@@ -76,7 +84,7 @@ The action variables are populated in any event that expect order data. The orde
 |order\_shipping\_amount| shipping| \_cship|
 |order\_promo\_code| coupon| \_cpromo|
 |checkout\_step| step| n/a |
-|shipping\_method,&lt;br&gt; shipping\_carrier,&lt;br&gt; payment\_method,&lt;br&gt; etc. &lt;br&gt; (various checkout options) | option| n/a |
+|shipping\_method,<br> shipping\_carrier,<br> payment\_method,<br> etc. <br> (various checkout options) | option| n/a |
 
 ## Data mapping
 
@@ -87,7 +95,7 @@ Typical event variables in your data layer would be: `tealium_event`, `page_type
 
 The following are suggested Tealium events that map onto the expected Enhanced Ecommerce actions:
 
-|Tealium Event/Page Type| Google Action&lt;br&gt; (enh\_action)|
+|Tealium Event/Page Type| Google Action<br> (enh\_action)|
 |---| ---|
 |product\_click| click|
 |product\_view| detail|
@@ -119,13 +127,13 @@ This event occurs on page load using `utag_data` or using `utag.view()` and trig
 ```js
 // EXAMPLE CODE: Product Detail Page View
 var utag_data = {
- &#34;product_impression_id&#34;       : [&#39;P12345&#39;, &#39;P67890&#39;],
- &#34;product_impression_name&#34;     : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
- &#34;product_impression_brand&#34;    : [&#39;Tealium&#39;, &#39;Tealium&#39;],
- &#34;product_impression_variant&#34;  : [&#39;black&#39;, &#39;blue&#39;],
- &#34;product_impression_category&#34; : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
- &#34;product_impression_list&#34;     : [&#39;Search Results&#39;, &#39;Search Results&#39;],
- &#34;product_impression_position&#34; : [1, 2]
+ "product_impression_id"       : ['P12345', 'P67890'],
+ "product_impression_name"     : ['DV T-Shirt', 'DV Water Bottle'],
+ "product_impression_brand"    : ['Tealium', 'Tealium'],
+ "product_impression_variant"  : ['black', 'blue'],
+ "product_impression_category" : ['Shirts', 'Home & Office'],
+ "product_impression_list"     : ['Search Results', 'Search Results'],
+ "product_impression_position" : [1, 2]
 };
 ```
 
@@ -145,13 +153,13 @@ This event is tracked using `utag.link()` and triggers the `ec:addProduct` and `
 ```js
 // EXAMPLE CODE: Product Click
 utag.link({
-  &#34;tealium_event&#34;    : &#34;product_click&#34;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_position&#34; : [1]
+  "tealium_event"    : "product_click",
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_position" : [1]
 });
 
 ```
@@ -171,12 +179,12 @@ This event is tracked on page load using `utag_data` or using `utag.view()` and 
 ```js
 // EXAMPLE CODE: Product Detail Page View
 var utag_data = {
-  &#34;tealium_event&#34;    : &#34;product_view&#34;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;]
+  "tealium_event"    : "product_view",
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts']
 };
 
 ```
@@ -200,14 +208,14 @@ This event is tracked using  `utag.link()` and triggers the `ec:addProduct` and 
 ```js
 // EXAMPLE CODE: Product Add
 utag.link({
-  &#34;tealium_event&#34;    : &#39;cart_add&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_price&#34;    : [&#39;23.49&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : 'cart_add',
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_price"    : ['23.49'],
+  "product_quantity" : [1]
 });
 
 ```
@@ -230,14 +238,14 @@ This event is tracked using  `utag.link()` and triggers the `ec:addProduct` and 
 ```js
 // EXAMPLE CODE: Product Cart Removal
 utag.link({
-  &#34;tealium_event&#34;    : &#39;cart_remove&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_price&#34;    : [&#39;23.49&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : 'cart_remove',
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_price"    : ['23.49'],
+  "product_quantity" : [1]
 });
 
 ```
@@ -263,22 +271,26 @@ This event is tracked on page load using `utag_data` or using `utag.view()` and 
 ```js
 // EXAMPLE CODE: Checkout
 var utag_data = {
-  &#34;tealium_event&#34;    : &#39;checkout&#39;,
-  &#34;product_id&#34;       : [&#39;P1235&#39;, &#39;P67890&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;, &#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;, &#39;blue&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
-  &#34;product_price&#34;    : [&#39;23.39&#39;, &#39;11.00&#39;],
-  &#34;product_quantity&#34; : [1, 2],
-  &#34;product_position&#34; : [1, 2],
-  &#34;checkout_step&#34;    : &#34;1&#34;,
-  &#34;shipping_carrier&#34; : &#39;FedEx&#39;
+  "tealium_event"    : 'checkout',
+  "product_id"       : ['P1235', 'P67890'],
+  "product_name"     : ['DV T-Shirt', 'DV Water Bottle'],
+  "product_brand"    : ['Tealium', 'Tealium'],
+  "product_variant"  : ['black', 'blue'],
+  "product_category" : ['Shirts', 'Home & Office'],
+  "product_price"    : ['23.39', '11.00'],
+  "product_quantity" : [1, 2],
+  "product_position" : [1, 2],
+  "checkout_step"    : "1",
+  "shipping_carrier" : 'FedEx'
 };
 
 ```
 
+
+<blockquote>
 Checkout steps can be assigned more descriptive names using the [Checkout Funnel Configuration](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-funnel) within your Google Analytics account.
+</blockquote>
+
 
 ### Checkout option
 
@@ -294,9 +306,9 @@ This event is tracked using  `utag.link()` and triggers the `ec:setAction` (chec
 ```js
 // EXAMPLE CODE: Checkout Option
 utag.link({
-  &#34;tealium_event&#34;    : &#34;checkout_option&#34;,
-  &#34;checkout_step&#34;    : &#34;2&#34;,
-  &#34;shipping_carrier&#34; : &#34;FedEx&#34;
+  "tealium_event"    : "checkout_option",
+  "checkout_step"    : "2",
+  "shipping_carrier" : "FedEx"
 });
 ```
 
@@ -324,19 +336,19 @@ This event is tracked on page load using `utag_data` or using `utag.view()` and 
 // EXAMPLE CODE: Checkout
 // The following information should be in the data object on page load
 var utag_data = {
-  &#34;tealium_event&#34;         : &#39;purchase&#39;,
-  &#34;order_id&#34;              : &#39;O1234567&#39;,
-  &#34;order_grand_total&#34;     : &#39;57.44&#39;,
-  &#34;order_tax_amount&#34;      : &#39;3.65&#39;,
-  &#34;order_shipping_amount&#34; : &#39;8.50&#39;,
-  &#34;order_promo_code&#34;      : &#39;SALE20&#39;,
-  &#34;product_id&#34;            : [&#39;P1235&#39;, &#39;P67890&#39;],
-  &#34;product_name&#34;          : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
-  &#34;product_brand&#34;         : [&#39;Tealium&#39;, &#39;Tealium&#39;],
-  &#34;product_variant&#34;       : [&#39;black&#39;, &#39;blue&#39;],
-  &#34;product_category&#34;      : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
-  &#34;product_price&#34;         : [&#39;23.39&#39;, &#39;11.00&#39;],
-  &#34;product_quantity&#34;      : [1, 2]
+  "tealium_event"         : 'purchase',
+  "order_id"              : 'O1234567',
+  "order_grand_total"     : '57.44',
+  "order_tax_amount"      : '3.65',
+  "order_shipping_amount" : '8.50',
+  "order_promo_code"      : 'SALE20',
+  "product_id"            : ['P1235', 'P67890'],
+  "product_name"          : ['DV T-Shirt', 'DV Water Bottle'],
+  "product_brand"         : ['Tealium', 'Tealium'],
+  "product_variant"       : ['black', 'blue'],
+  "product_category"      : ['Shirts', 'Home & Office'],
+  "product_price"         : ['23.39', '11.00'],
+  "product_quantity"      : [1, 2]
 };
 
 ```
@@ -355,11 +367,11 @@ This event is tracked using `utag.link()` and triggers the `ec:addPromo` and `ec
 ```js
 // EXAMPLE CODE: Promotion Click
 utag.link({
-  &#34;tealium_event&#34;      : &#34;promo_click&#34;,
-  &#34;promotion_id&#34;       : [&#39;DV18-EARLY-REG&#39;],
-  &#34;promotion_name&#34;     : [&#39;DV 2018 Early Registration&#39;],
-  &#34;promotion_creative&#34; : [&#39;early_reg_promo1&#39;],
-  &#34;promotion_position&#34; : [1]
+  "tealium_event"      : "promo_click",
+  "promotion_id"       : ['DV18-EARLY-REG'],
+  "promotion_name"     : ['DV 2018 Early Registration'],
+  "promotion_creative" : ['early_reg_promo1'],
+  "promotion_position" : [1]
 });
 
 ```
@@ -378,10 +390,10 @@ This event is tracked on page load using `utag_data` or using `utag.view()` and 
 ```js
 // EXAMPLE CODE: Refund
 var utag_data = {
-  &#34;tealium_event&#34;    : &#34;refund&#34;,
-  &#34;order_id&#34;         : &#39;O123456&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : "refund",
+  "order_id"         : 'O123456',
+  "product_id"       : ['P12345'],
+  "product_quantity" : [1]
 };
 ```
 

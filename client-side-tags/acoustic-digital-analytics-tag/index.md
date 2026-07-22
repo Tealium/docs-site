@@ -11,12 +11,12 @@ url: https://docs.tealium.com/client-side-tags/acoustic-digital-analytics-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Acoustic Digital Analytics tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Acoustic Digital Analytics tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
 * **Tag Version**: Use the External (default) option to load eluminate.js from the Acoustic-hosted CDN. This ensures you always have the latest library code from Acoustic.
-* **Client ID**: First parameter to the cmSetClientID function (for example, `89999999`&amp;#124;`SiteID`). This value can also be set with mapping.
+* **Client ID**: First parameter to the cmSetClientID function (for example, `89999999`&#124;`SiteID`). This value can also be set with mapping.
 * **Test Client ID**: This is the Client ID used when a match is found in the Test Domains list.
 * **Collection Method**: True indicates Client-Managed First-Party cookie. False indicates Acoustic-Managed First-Party or Third-Party as applicable.
 * **Collection Domain**: The target domain for Acoustic data collection requests.
@@ -26,11 +26,19 @@ After adding the tag, configure the following settings:
 
 ## Data Tags and Mappings
 
-Before you begin mapping data layer variables, be sure to add the [E-Commerce Extension](). This automatically maps the required e-commerce variables for events such as Product View, ShopAction5, and ShopAction9.
 
-Acoustic Digital Analytics&#39; Data Tags are functions that organize the data it receives. Custom metrics called &#34;Attributes&#34; are available for each function call. Attributes are stored in numbered variables (generally between 1-100) for most functions and will have a nomenclature of something like `pv_a1…pv_a100` (Page View Attributes 1-100) in the tracking call.
+<blockquote>
+Before you begin mapping data layer variables, be sure to add the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/). This automatically maps the required e-commerce variables for events such as Product View, ShopAction5, and ShopAction9.
+</blockquote>
 
+
+Acoustic Digital Analytics' Data Tags are functions that organize the data it receives. Custom metrics called "Attributes" are available for each function call. Attributes are stored in numbered variables (generally between 1-100) for most functions and will have a nomenclature of something like `pv_a1…pv_a100` (Page View Attributes 1-100) in the tracking call.
+
+
+<blockquote>
 Use the `tealium_event` variable from your data layer to identify which Acoustic Digital Analytics events to associate with your Tealium tracked events.
+</blockquote>
+
 
 ### Mapping Toolbox
 
@@ -45,9 +53,9 @@ To map events:
 1. Select the **Events** category.
 1. In the **Value** field, enter the value of the Tealium tracked event.
 1. From the **Trigger** drop-down, select the matching event.
-1. Click **&#43;Add**. Repeat these steps to add addition event mappings.
+1. Click **+Add**. Repeat these steps to add addition event mappings.
 
-![](/images/client-side-tags/ibm-digital-analytics-mapped-events.png)
+![](https://docs.tealium.com/images/client-side-tags/ibm-digital-analytics-mapped-events.png)
 
 #### Order
 
@@ -144,13 +152,13 @@ and these Order variables,
 
 **Tagging Function:** `cmCreateRegistrationTag()`
 
-**Description**: This Data Tag tracks registration events on the site and collects the visitor&#39;s demographic information (zipcode, city, state, et cetera.) and email address provided as part of the registration. If you don&#39;t use the E-Commerce Extension, Tealium uses either the value mapped to ShopAction9 Registration ID or the session ID from the `utag_main` cookie.
+**Description**: This Data Tag tracks registration events on the site and collects the visitor's demographic information (zipcode, city, state, et cetera.) and email address provided as part of the registration. If you don't use the E-Commerce Extension, Tealium uses either the value mapped to ShopAction9 Registration ID or the session ID from the `utag_main` cookie.
 
 **Mappings**: Use the Mapping toolkit to map the Registration Email (`em`) and all Extra Field (`rg1` through `rg10`) variables.
 
 The E-Commerce Extension, if configured, automatically maps:
 
-* `_ccustid` to Registration ID (`cd`). If you don&#39;t use the E-Commerce Extension, then Tealium uses either the value mapped to ShopAction9 Registration ID or the session ID from the `utag_main` cookie.
+* `_ccustid` to Registration ID (`cd`). If you don't use the E-Commerce Extension, then Tealium uses either the value mapped to ShopAction9 Registration ID or the session ID from the `utag_main` cookie.
 * `_ccity` to Registration City (`ct`)
 * `_cstate` to Registration State (`sa`)
 * `_czip` to Registartion Zip/Postcode (`zp`)
@@ -167,7 +175,7 @@ The E-Commerce Extension, if configured, automatically maps:
 **Mappings**: Use the Mapping toolkit to map these variables:
 
 * Conversion Event ID (`cid`) - unique identifier for the type of conversion
-* Conversion Event Action Type (`cat`) - conversion event&#39;s initiation or successful completed
+* Conversion Event Action Type (`cat`) - conversion event's initiation or successful completed
 * Conversion Event category ID (`ccid`) - category of Event IDs
 * Conversion Event Points (`cpt`) - points assigned to the conversion to measure its value
 * Attribute variables `c_a1` through `c_a10`
@@ -179,7 +187,7 @@ The E-Commerce Extension, if configured, automatically maps:
 
 **Tagging Function**: `cmCreateElementTag`
 
-**Description**: This Data Tag tracks visitors&#39; interaction with dynamic elements on your site. Examples of dynamic element include videos, hover-overs, error messages, feature selectors, et cetera.
+**Description**: This Data Tag tracks visitors' interaction with dynamic elements on your site. Examples of dynamic element include videos, hover-overs, error messages, feature selectors, et cetera.
 
 **Mappings**: Use the Mapping toolkit to map these variables:
 
@@ -198,7 +206,7 @@ This section applies to three different Data Tag functions: Manual Link Click, M
 
 **Description**: This Data Tag captures links clicks which are not automatically tracked. Examples include:
 
-* Links without `HREF=&#34;&#34;` attributes or which otherwise use JavaScript to create navigation at time of click.
+* Links without `HREF=""` attributes or which otherwise use JavaScript to create navigation at time of click.
 * Flash, Silverlight or other interactive application elements without HTML anchors.
 
 **Mappings**: Use the Mapping toolkit to map the Manual Link Click/Page View/Impression destination variables:
@@ -211,7 +219,7 @@ This section applies to three different Data Tag functions: Manual Link Click, M
 
 **Tagging Function**: `cmCreateManualPageviewTag()`
 
-**Description**: This Data Tag captures page view events that don&#39;t have a page load event (for example, modal pop-ups, et cetera.).
+**Description**: This Data Tag captures page view events that don't have a page load event (for example, modal pop-ups, et cetera.).
 
 * Manual Page View Destination URL (`ul`) - the destination URL
 * Manual Page View Referring URL (`rf`) - the referring URL
@@ -222,7 +230,7 @@ This section applies to three different Data Tag functions: Manual Link Click, M
 
 **Description**: This Data Tag captures ad impressions from a certain feature like a display ad tag.
 
-* Manual Impression Page ID (`pi`) - the impression&#39;s Page ID matching the Link Page ID(`pi`)
+* Manual Impression Page ID (`pi`) - the impression's Page ID matching the Link Page ID(`pi`)
 * Manual Impression Track Real Estate (`cm_re`) - Real Estate Impression with a valid `cm_re=` value: `version-_-area-_-link`
 * Manual Impression Track Site Promotion (`cm_sp`) - Site Promotion Impression with a valid `cm_sp=` value: `group-_-promotion-_-link`
 
@@ -231,13 +239,13 @@ This section applies to three different Data Tag functions: Manual Link Click, M
 This tab does not correspond to any Data Tag function. Instead, you can use it to dynamically set the Acoustic Digital Analytics Tag configuration settings connected to a Test site/environment.
 
 * Client ID (`ClientID`) - Acoustic Digital Analytics-assigned ID
-* Test Client ID (`TestClientID`) - test site&#39;s Client ID
-* Test Data Collection Method (`TestDataCollectionMethod`) - test site&#39;s Data Collection Method
-* Test Data Collection Domain (`TestDataCollectionDomain`) - test site&#39;s data collection domain
+* Test Client ID (`TestClientID`) - test site's Client ID
+* Test Data Collection Method (`TestDataCollectionMethod`) - test site's Data Collection Method
+* Test Data Collection Domain (`TestDataCollectionDomain`) - test site's data collection domain
 
 ## Data Mapping Reference
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

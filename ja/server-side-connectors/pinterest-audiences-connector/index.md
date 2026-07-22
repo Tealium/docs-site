@@ -3,7 +3,11 @@ title: Pinterest Audiences コネクタ構成ガイド
 description: この記事では、Pinterest Audiences コネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/pinterest-audiences-connector/
 ---
-この記事では、Pinterest Audiences コネクタの最新バージョンの使用に関する情報を提供します。以前のバージョンの Pinterest Audiences コネクタもまだ利用可能ですが、将来的には非推奨となります。&lt;br&gt;あなたの Pinterest Audiences コネクタを更新し、認証し、マッピングを再度追加してください。
+
+<blockquote>
+この記事では、Pinterest Audiences コネクタの最新バージョンの使用に関する情報を提供します。以前のバージョンの Pinterest Audiences コネクタもまだ利用可能ですが、将来的には非推奨となります。<br>あなたの Pinterest Audiences コネクタを更新し、認証し、マッピングを再度追加してください。
+</blockquote>
+
 
 ## API 情報
 
@@ -16,7 +20,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/pinterest-audiences-conn
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数: 10000
 * 最古のリクエストからの最大時間: 10分
@@ -24,19 +28,27 @@ url: https://docs.tealium.com/ja/server-side-connectors/pinterest-audiences-conn
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
+
+<blockquote>
 このコネクタを追加する際には、ベンダーのデータプラットフォームポリシーを受け入れるよう求められます。
+</blockquote>
+
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **広告アカウント ID**  
  (必須) 広告アカウントの一意の識別子です。この識別子は以下の方法で見つけることができます：
     * 広告主アカウントを所有する Pinterest アカウントにログインし、[https://ads.pinterest.com/](https://ads.pinterest.com) に移動します。上部ナビゲーションセクションで **Viewing** をクリックします。ドロップダウンリストの広告アカウント名の下に広告アカウント ID が表示されます。
-    * **Ads &gt; Overview** に移動し、URL パスで広告アカウント ID を探します。URL は次の形式を使用します：`ads.pinterest.com/advertiser/{ad_account_id}/?...`。
+    * **Ads > Overview** に移動し、URL パスで広告アカウント ID を探します。URL は次の形式を使用します：`ads.pinterest.com/advertiser/{ad_account_id}/?...`。
 
 **Establish Connection** をクリックして Pinterest に接続します。
 
- 認証トークンは 60 日後に期限切れになります。オーディエンス同期の中断を防ぐために、Tealium にログインして少なくとも 60 日に一度 **Establish Connection** をクリックしてください。
+
+<blockquote>
+認証トークンは 60 日後に期限切れになります。オーディエンス同期の中断を防ぐために、Tealium にログインして少なくとも 60 日に一度 **Establish Connection** をクリックしてください。
+</blockquote>
+
 
 ### 顧客リストの作成
 
@@ -77,7 +89,7 @@ Pinterest で顧客リストを作成するには：
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| 顧客リスト | レコードを追加するリストを選択します。&lt;br&gt;顧客リストはオーディエンスの一種です。詳細については、[Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) または広告管理ガイドの [Audiences](https://developers.pinterest.com/docs/ads/targeting/#Audiences) セクションを参照してください。 |
+| 顧客リスト | レコードを追加するリストを選択します。<br>顧客リストはオーディエンスの一種です。詳細については、[Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) または広告管理ガイドの [Audiences](https://developers.pinterest.com/docs/ads/targeting/#Audiences) セクションを参照してください。 |
 | メールアドレス (プレーンテキスト) | プレーンテキストのメールアドレスを提供します（`@`を含む必要があります）。 |
 | メールアドレス (既にハッシュ化されている) | 既に空白トリム、小文字化、MD5、SHA1、SHA256でハッシュ化されたメールアドレスを提供します。 |
 | メールアドレス (MD5 ハッシュを適用) | プレーンテキストのメールアドレス（`@`を含む必要があります）を提供し、コネクタがこの値を空白トリム、小文字化し、MD5 ハッシュを使用してハッシュ化します。 |
@@ -99,7 +111,7 @@ Pinterest で顧客リストを作成するには：
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| 顧客リスト | レコードを削除するリストを選択します。&lt;br&gt;顧客リストはオーディエンスの一種です。詳細については、[オーディエンスターゲティング](https://help.pinterest.com/en/business/article/audience-targeting)または広告管理ガイドの[オーディエンス](https://developers.pinterest.com/docs/ads/targeting/#Audiences)セクションを参照してください。 |
+| 顧客リスト | レコードを削除するリストを選択します。<br>顧客リストはオーディエンスの一種です。詳細については、[オーディエンスターゲティング](https://help.pinterest.com/en/business/article/audience-targeting)または広告管理ガイドの[オーディエンス](https://developers.pinterest.com/docs/ads/targeting/#Audiences)セクションを参照してください。 |
 | メールアドレス（プレーンテキスト） | プレーンテキストのメールアドレスを提供してください（`@`を含む必要があります）。 |
 | メールアドレス（既にハッシュ化） | 既に空白をトリムし、小文字に変換し、MD5、SHA1、またはSHA256でハッシュ化されたメールアドレスを提供してください。 |
 | メールアドレス（MD5ハッシュを適用） | プレーンテキストのメールアドレス（`@`を含む必要があります）を提供し、コネクタがこの値を空白トリム、小文字化し、MD5ハッシュを使用してハッシュ化します。 |

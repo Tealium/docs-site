@@ -14,8 +14,8 @@ url: https://docs.tealium.com/ja/client-side-tags/sentinel-insights-tag/
 * **同意ロジック**は、SDKが現在の同意状態を読み取るために呼び出すJavaScript関数本体です。この関数は引数（`utils`）を受け取り、`utils.getCookie(name)`を公開します。これは`document.cookie`を読み取り、URLデコードされた値を返すか、クッキーが存在しない場合は空の文字列を返します。あなたのスニペットは、センチネルが同意信号として使用する文字列を返さなければなりません。このフィールドに資格情報を埋め込まないでください。なぜなら、タグ構成は顧客の`utag.js`で配信されるからです。
 
   ```javascript
-  var val = utils.getCookie(&#39;consent_status&#39;);
-  return val === &#39;granted&#39; || val === &#39;accepted&#39; ? &#39;granted&#39; : &#39;denied&#39;;
+  var val = utils.getCookie('consent_status');
+  return val === 'granted' || val === 'accepted' ? 'granted' : 'denied';
   ```
 * **クッキー同意**タブを使用して、データレイヤー変数を`grant`または`revoke`にマッピングします。その後、タグはセンチネルに同意更新を通知し、新しい状態のために**同意ロジック**関数を再読み込みします。
 * **トリガートグル**は、どのセンチネルイベントが発火するかを制御します：データレイヤーアップデート（デフォルトでオン）、SPAページ変更、およびロード再開。SPAトグルを顧客側の拡張機能とペアリングして、`spa_page_change`または`spa_resume` Tealiumイベントを発火させます。
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/client-side-tags/sentinel-insights-tag/
 
 ## タグ構成
 
-タグマーケットプレースにアクセスして新しいタグを追加します。詳細については、を参照してください。
+タグマーケットプレースにアクセスして新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を構成します：
 
@@ -40,11 +40,11 @@ url: https://docs.tealium.com/ja/client-side-tags/sentinel-insights-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

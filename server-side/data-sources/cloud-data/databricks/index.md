@@ -3,7 +3,7 @@ title: Databricks cloud data source
 description: This article describes how to set up the Databricks cloud data source.
 url: https://docs.tealium.com/server-side/data-sources/cloud-data/databricks/
 ---
-For a general overview of setting up a cloud data source, see .
+For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## Data types
 
@@ -24,7 +24,11 @@ For more information, see Databricks: Data Types ([AWS](https://docs.databricks.
 
 Tealium uses a service principal to access your Databricks compute resource. Before you proceed, you must create a service principal in Databricks and generate an OAuth secret. For more information, see [Databricks: Authorize access with a service principal using OAuth](https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m).
 
- Databricks personal access tokens (PAT) are not supported. For more information, see Databricks: Authenticate with Databricks personal access token (legacy) ([AWS](https://docs.databricks.com/aws/en/dev-tools/auth/pat), [Azure](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat), [GCP](https://docs.databricks.com/gcp/en/dev-tools/auth/pat)). 
+
+<blockquote>
+Databricks personal access tokens (PAT) are not supported. For more information, see Databricks: Authenticate with Databricks personal access token (legacy) ([AWS](https://docs.databricks.com/aws/en/dev-tools/auth/pat), [Azure](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat), [GCP](https://docs.databricks.com/gcp/en/dev-tools/auth/pat)).
+</blockquote>
+
  
 To configure a new connection, enter the following connection details: 
 
@@ -35,8 +39,8 @@ To configure a new connection, enter the following connection details:
 * **HTTP Path**: The HTTP path to your compute resource. For example: `/sql/1.0/warehouses/3fbc78304284503a`. To find the HTTP Path, go to the **SQL Warehouses** screen in Databricks, select the warehouse where your table is located, and click **Connection details**.
 * **Catalog**: The name of the catalog for this connection.
 * **Schema**: The name of the schema for this connection.
-* **OAuth Client ID**: The service principal&#39;s UUID or Application ID.
-* **OAuth Client Secret**: The service principal&#39;s generated secret.
+* **OAuth Client ID**: The service principal's UUID or Application ID.
+* **OAuth Client Secret**: The service principal's generated secret.
 
 For more information, see Databricks: Compute settings ([AWS](https://docs.databricks.com/aws/en/integrations/jdbc/compute), [Azure](https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute), [GCP](https://docs.databricks.com/gcp/en/integrations/jdbc/compute)).
 
@@ -48,7 +52,7 @@ For a general overview, see .
 
 For Databricks, note the following requirements:
 
-* **Timestamp &#43; Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP`.  
+* **Timestamp + Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP`.  
 For more information, see Databricks: TIMESTAMP type ([AWS](https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type), [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type), [GCP](https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type)).
 * **Incrementing** query mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:
 
@@ -60,6 +64,6 @@ For more information, see Databricks `CREATE TABLE` ([AWS](https://docs.databric
 
 ## IP access list
 
-If your Databricks workspace is restricted by IP addresses, add the [Tealium IP addresses]() to your Databricks IP access list.
+If your Databricks workspace is restricted by IP addresses, add the [Tealium IP addresses](https://docs.tealium.com/ip-allow-list/) to your Databricks IP access list.
 
 For more information, see Databricks: Manage IP access list ([AWS](https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list), [Azure](https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list), [GCP](https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list)).

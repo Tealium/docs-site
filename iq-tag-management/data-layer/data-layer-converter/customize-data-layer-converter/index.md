@@ -11,12 +11,12 @@ Specify the strings of text that, if a key in the object starts with this text, 
 Example Object:  
 ```js
 teal.ignore_keys = {
-  &#34;user&#34; : 1,
-  &#34;util&#34; : 1
+  "user" : 1,
+  "util" : 1
 };
 ```
 
-This action will result in all keys from the source data object being skipped if they begin with the string &#34;user&#34; or &#34;util&#34;.
+This action will result in all keys from the source data object being skipped if they begin with the string "user" or "util".
 
 ### `teal.prefix`
 
@@ -24,8 +24,8 @@ Set the string to use to prefix all key names that are converted. For example, I
 
 ```json
 {
-   &#34;dl_user.userInfo.sub_industry&#34; : &#34;data &amp; technical services&#34;,
-   &#34;dl_user.userInfo.web_site&#34;     : &#34;tealium.com&#34;
+   "dl_user.userInfo.sub_industry" : "data & technical services",
+   "dl_user.userInfo.web_site"     : "tealium.com"
 }
 ```
 
@@ -40,7 +40,7 @@ Specify new names for converted keys. You can either replace a key name with a n
 Example:  
 ```js
 teal.replace_keys = {
-    &#34;pageInfo&#34; : &#34;&#34;
+    "pageInfo" : ""
 };
 ```
 

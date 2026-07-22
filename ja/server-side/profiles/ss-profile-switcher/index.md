@@ -7,9 +7,13 @@ url: https://docs.tealium.com/ja/server-side/profiles/ss-profile-switcher/
 
 各アカウントは複数のプロファイルを含むことができます。プロファイル切り替え機能を使用すると、アカウント、プロファイル、およびプロファイルのバージョンをすばやく切り替えることができます。
 
-![](/images/server-side/save-publish/ea-server-side-profile-switcher.png)
+![](https://docs.tealium.com/images/server-side/save-publish/ea-server-side-profile-switcher.png)
 
- クライアントサイドのプロファイルからサーバーサイドプラットフォームに切り替えると、最後に保存されたプロファイルのバージョンが読み込まれます。これは以前作業していたバージョンと同じではない可能性があります。 
+
+<blockquote>
+クライアントサイドのプロファイルからサーバーサイドプラットフォームに切り替えると、最後に保存されたプロファイルのバージョンが読み込まれます。これは以前作業していたバージョンと同じではない可能性があります。
+</blockquote>
+
 
 ### バージョンステータスメッセージ
 
@@ -22,7 +26,7 @@ url: https://docs.tealium.com/ja/server-side/profiles/ss-profile-switcher/
 * **公開バージョンより遅れています**  
 現在公開されているバージョンには、現在のバージョンにはない変更が含まれています。これらの変更を見るには、**最新の公開変更を表示**をクリックしてください。
 
-これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイド保存および公開について]()を参照してください。
+これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイド保存および公開について](https://docs.tealium.com/about-save-publish/)を参照してください。
 
 ## プロファイルとバージョンを切り替える
 
@@ -34,4 +38,4 @@ url: https://docs.tealium.com/ja/server-side/profiles/ss-profile-switcher/
 1. バージョンを選択すると、プロファイル切り替えは現在選択されているバージョンに加えられた変更を現在公開されているバージョンと比較します。
 1. **バージョンを読み込む**をクリックします。
 
-また、[バージョン履歴]()の**このバージョンを読み込む**オプションを使用してバージョンを切り替えることもできます。
+また、[バージョン履歴](https://docs.tealium.com/ss-version-history/)の**このバージョンを読み込む**オプションを使用してバージョンを切り替えることもできます。

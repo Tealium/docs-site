@@ -6,19 +6,19 @@ url: https://docs.tealium.com/ja/client-side-tags/yellowhammer-tag/
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法については、[タグ概要]()の記事を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を構成します：
 
-* パス (tr): 画像ピクセルの jump.omnitarget.com の直後の部分です。例えば、&lt;http://jump.omnitarget.com/tr123456&gt;? の `tr123456`。
+* パス (tr): 画像ピクセルの jump.omnitarget.com の直後の部分です。例えば、<http://jump.omnitarget.com/tr123456>? の `tr123456`。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール]()のドキュメントを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 YellowHammer (Omnitarget) タグの宛先変数は、その**データマッピング**タブに組み込まれています。利用可能なカテゴリーは以下の通りです：
 

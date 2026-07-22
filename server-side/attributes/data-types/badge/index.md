@@ -13,11 +13,11 @@ For example, you might be interested in the behavior of visitors who frequently 
 * **Showed Interest**: Has viewed a product details page or read an article.
 * **Did Not Convert**: Has not purchased or signed up for a service.
 
-This pattern of behavior could be configured as a badge attribute named &#34;Window Shopper&#34; to identify the visitors who match its behavior.
+This pattern of behavior could be configured as a badge attribute named "Window Shopper" to identify the visitors who match its behavior.
 
 The badge attribute is available in the following scopes: Visitor.
 
-![](/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png)
 
 ### Badge associations
 
@@ -33,28 +33,28 @@ Badges are assigned to and removed from visitors based on the logic of their rul
 
 Assigns the badge to a visitor when a set of conditions are met. All visitors are initially without a badge. For example, to assign the **Window Shopper** badge, it must be determined if the visitor navigated away from the site without purchasing.
 
-**Attribute Name**: &#34;Window Shopper&#34;
+**Attribute Name**: "Window Shopper"
 
-* **Starting Value**: `&#34;Unbadged&#34;`
-* **Resulting Value**: `&#34;Window Shopper&#34;`
+* **Starting Value**: `"Unbadged"`
+* **Resulting Value**: `"Window Shopper"`
 
 ### Remove badge
 
 Removes an assigned badge when the visitor no longer satisfies the conditions. For example, a **Window Shopper** badge is removed after the visitor makes a purchase.
 
-**Attribute Name**: &#34;Window Shopper&#34;
+**Attribute Name**: "Window Shopper"
 
-* **Starting Value**:  `&#34;Window Shopper&#34;`
-* **Resulting Value**: `&#34;Unbadged&#34;`
+* **Starting Value**:  `"Window Shopper"`
+* **Resulting Value**: `"Unbadged"`
 
 ### Assign badge from another badge
 
 Assigns a badge based on another badge. For example, a **Window Shopper** badge is replaced with a **Cart Abandoner** badge after the visitor abandons a cart. Of course, a visitor can have more than one badge, so a visitor can be a **Window Shopper** and a **Cart Abandoner**.
 
-**Attribute Name**: &#34;Cart Abandoner&#34;
+**Attribute Name**: "Cart Abandoner"
 
-* **Starting Value**:  `&#34;Window Shopper&#34;`
-* **Resulting Value**: `&#34;Cart Abandoner&#34;`
+* **Starting Value**:  `"Window Shopper"`
+* **Resulting Value**: `"Cart Abandoner"`
 
 ## Popular badges
 
@@ -62,24 +62,24 @@ The following table lists several popular badges. For a complete list of popular
 
 |Badge name| Description|
 |---| ---|
-|Known Visitor|  &lt;ul&gt;&lt;li&gt;Assigned when we capture an important identifier of the visitor&lt;/li&gt;&lt;li&gt;For example: Customer ID (client&#39;s ID), Customer Email, Facebook ID&lt;/li&gt;&lt;li&gt;Possible Action to take: none, but used in an Audience to ensure the visitor is targetable with a selected vendor API&lt;/li&gt;&lt;li&gt;These visitors are more commonly targeted through Email or Social Media.&lt;/li&gt;&lt;/ul&gt; |
-|Unknown Visitor|  &lt;ul&gt;&lt;li&gt;Assigned when the visitor has yet to authenticate on the website&lt;/li&gt;&lt;li&gt;Authentication does not necessarily mean they have logged in, if a visitor comes to the site from an email and the email is in the URL then we&#39;ve determined who the visitor is and they&#39;ve &#34;authenticated&#34;&lt;/li&gt;&lt;li&gt;Possible Action to take: display a modal to the visitor encouraging them to identify themselves&lt;/li&gt;&lt;li&gt;These visitors are more commonly targeted through Display Ad.&lt;/li&gt;&lt;/ul&gt; |
-|Window Shopper|  &lt;ul&gt;&lt;li&gt;A visitor who visits the site often but does not purchase&lt;/li&gt;&lt;li&gt;For example, a visitor who has been to the site three times in the last seven days, has viewed a product details page or read an article, and has not purchased or signed up for a service&lt;/li&gt;&lt;li&gt;Possible Action to take: determine their affinity to a category and change the landing page of the next session to personalize the experience&lt;/li&gt;&lt;/ul&gt; |
-|Purchaser|  &lt;ul&gt;&lt;li&gt;A visitor who has converted&lt;/li&gt;&lt;li&gt;For example: purchased a product or signed up for a service&lt;/li&gt;&lt;li&gt;Possible Action to take: email in 2 weeks with an offer enticing to make another purchase or an email showing related items for purchase. For example, if the visitor bought a baseball bat offer a baseball bag and batting gloves&lt;/li&gt;&lt;li&gt;Possible Action: remove visitor from retargeting campaign so they are not remarketed unnecessarily&lt;/li&gt;&lt;/ul&gt; |
-| Browse Abandoner |  &lt;ul&gt;&lt;li&gt;A visitor who has viewed a product and did not add an item to the cart. &lt;/li&gt;&lt;li&gt;Possible Action to take: if a Known Visitor and Facebook ID is known, send data to Facebook to retarget the brand to the visitor. &lt;/li&gt;&lt;/ul&gt; |
-| Cart Abandoner |  &lt;ul&gt;&lt;li&gt;A visitor who has added an item to the cart and did not purchase. &lt;/li&gt;&lt;li&gt;Possible Action to take: if email address is known, send a personalized email with the abandoned items. &lt;/li&gt;&lt;/ul&gt; |
-| Search Abandoner |  &lt;ul&gt;&lt;li&gt;A visitor who has landed on the site from a search engine and has not completed a qualifying action, such as three page views in the visit. &lt;/li&gt;&lt;/ul&gt; |
+|Known Visitor|  <ul><li>Assigned when we capture an important identifier of the visitor</li><li>For example: Customer ID (client's ID), Customer Email, Facebook ID</li><li>Possible Action to take: none, but used in an Audience to ensure the visitor is targetable with a selected vendor API</li><li>These visitors are more commonly targeted through Email or Social Media.</li></ul> |
+|Unknown Visitor|  <ul><li>Assigned when the visitor has yet to authenticate on the website</li><li>Authentication does not necessarily mean they have logged in, if a visitor comes to the site from an email and the email is in the URL then we've determined who the visitor is and they've "authenticated"</li><li>Possible Action to take: display a modal to the visitor encouraging them to identify themselves</li><li>These visitors are more commonly targeted through Display Ad.</li></ul> |
+|Window Shopper|  <ul><li>A visitor who visits the site often but does not purchase</li><li>For example, a visitor who has been to the site three times in the last seven days, has viewed a product details page or read an article, and has not purchased or signed up for a service</li><li>Possible Action to take: determine their affinity to a category and change the landing page of the next session to personalize the experience</li></ul> |
+|Purchaser|  <ul><li>A visitor who has converted</li><li>For example: purchased a product or signed up for a service</li><li>Possible Action to take: email in 2 weeks with an offer enticing to make another purchase or an email showing related items for purchase. For example, if the visitor bought a baseball bat offer a baseball bag and batting gloves</li><li>Possible Action: remove visitor from retargeting campaign so they are not remarketed unnecessarily</li></ul> |
+| Browse Abandoner |  <ul><li>A visitor who has viewed a product and did not add an item to the cart. </li><li>Possible Action to take: if a Known Visitor and Facebook ID is known, send data to Facebook to retarget the brand to the visitor. </li></ul> |
+| Cart Abandoner |  <ul><li>A visitor who has added an item to the cart and did not purchase. </li><li>Possible Action to take: if email address is known, send a personalized email with the abandoned items. </li></ul> |
+| Search Abandoner |  <ul><li>A visitor who has landed on the site from a search engine and has not completed a qualifying action, such as three page views in the visit. </li></ul> |
 
 ## Manage badge associations
 
 ### Create the enrichment (for new or existing badges)
 
-1. Go to **Attributes &gt; Visitor / Visit Attributes**.
+1. Go to **Attributes > Visitor / Visit Attributes**.
 1. Add a new badge or click the edit icon for the badge to which you want to append another badge or badges.
 1. Click **Add Enrichment** and select **Assign badge from another badge**.  
-![](/images/server-side/attributes/badge-enrichments.png)
+![](https://docs.tealium.com/images/server-side/attributes/badge-enrichments.png)
 1. From the drop-down list, select the badge you want to assign.
-![](/images/server-side/attributes/select-a-badge-to-associate.png)
+![](https://docs.tealium.com/images/server-side/attributes/select-a-badge-to-associate.png)
 1. Repeat steps 2-4 to assign more badges.  
 1. Click **Finish**.
 1. When you are done, save your profile to apply the changes.
@@ -88,19 +88,19 @@ The following table lists several popular badges. For a complete list of popular
 
 1. In the **Visitor / Visit Attributes** table, click the badge to which you want to assign.
 1. Click the Badge Association icon in the top-right corner of the panel.  
-![](/images/server-side/attributes/badge-association-icon.png)
+![](https://docs.tealium.com/images/server-side/attributes/badge-association-icon.png)
 
-1. Click the `&#43;` icon and select the badge that you want to assign.
+1. Click the `+` icon and select the badge that you want to assign.
 
-![](/images/server-side/attributes/badge-select.png)
+![](https://docs.tealium.com/images/server-side/attributes/badge-select.png)
 
 ### About the badge association wizard
 
-Click an existing badge to display the Badge Association wizard. The currently assigned badge is always in the center column with arrows on each side. The arrows always point in the direction of the recipient badge. You can assign any number of badges to the current and the recipient badge, but you can&#39;t reassign a recipient back to its source badge. Take a look at the example below.
+Click an existing badge to display the Badge Association wizard. The currently assigned badge is always in the center column with arrows on each side. The arrows always point in the direction of the recipient badge. You can assign any number of badges to the current and the recipient badge, but you can't reassign a recipient back to its source badge. Take a look at the example below.
 
-![](/images/server-side/attributes/car-badge-example.png)
+![](https://docs.tealium.com/images/server-side/attributes/car-badge-example.png)
 
-The **Car badge** in the center is currently assigned to qualifying visitors. Here&#39;s how the other badge assignments will trigger.
+The **Car badge** in the center is currently assigned to qualifying visitors. Here's how the other badge assignments will trigger.
 
 1. Qualifying visitors receive the **Car badge**.
 1. **Car badge** visitors are automatically assigned **Fancy cars** and **Electric** badges.

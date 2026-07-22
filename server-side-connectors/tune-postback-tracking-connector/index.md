@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/tune-postback-tracking-conn
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -40,7 +40,7 @@ The following section lists the supported parameters for each action.
 | Offer ID | Offer ID in TUNE |
 | Payout | Specified offer payout to the publisher |
 | Revenue | Specified offer revenue from advertiser |
-| Security Token | Advertiser&#39;s unique token string for conversion authentication |
+| Security Token | Advertiser's unique token string for conversion authentication |
 | Status | Conversion status. Allowed values are `approved`, `rejected`, or `pending`. |
 
 #### Mobile Parameters
@@ -74,10 +74,10 @@ The following section lists the supported parameters for each action.
 | Conversion Unique ID | Non-expiring unique IDs |
 | Goal ID | ID of goal for the offer |
 | Goal Ref | Reference ID of goal for the offer. This parameter only affects attribution when no goal ID is provided. |
-| Offer ID | Offer&#39;s ID in TUNE |
+| Offer ID | Offer's ID in TUNE |
 | Payout | Specified offer payout to the publisher |
 | Revenue | Specified offer revenue from advertiser |
-| Security Token | Advertiser&#39;s unique token string for conversion authentication |
+| Security Token | Advertiser's unique token string for conversion authentication |
 | Status | Conversion status. Allowed values are `approved`, `rejected`, or `pending`. |
 
 #### Mobile Parameters

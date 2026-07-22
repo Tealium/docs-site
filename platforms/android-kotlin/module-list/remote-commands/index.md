@@ -3,11 +3,11 @@ title: RemoteCommands Module
 description: Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
 url: https://docs.tealium.com/platforms/android-kotlin/module-list/remote-commands/
 ---
-Learn more about [remote commands](/platforms/remote-commands/).
+Learn more about [remote commands](https://docs.tealium.com/platforms/remote-commands/).
 
 ## Requirements
 
-* If using the `webview` remote command, the [Tag Management Dispatcher module](/platforms/android-kotlin/module-list/tag-management/) is required.
+* If using the `webview` remote command, the [Tag Management Dispatcher module](https://docs.tealium.com/platforms/android-kotlin/module-list/tag-management/) is required.
 * RemoteCommandDispatcher `1.4.0` and above requires `com.tealium:kotlin-core:1.6.0` as a minimum version.
 
 ## Install
@@ -18,19 +18,19 @@ Install the RemoteCommands Dispatcher module using Maven (Recommended) or manual
 
 To install the module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
 
-2. In your project module&#39;s `build.gradle` file, add the Maven dependencies for the RemoteCommands Dispatcher. This will pull in the Tealium Kotlin library.
+2. In your project module's `build.gradle` file, add the Maven dependencies for the RemoteCommands Dispatcher. This will pull in the Tealium Kotlin library.
       ```groovy
       dependencies {
-            implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-            implementation &#39;com.tealium:kotlin-remotecommand-dispatcher:1.4.0&#39;
-            implementation &#39;com.tealium:remotecommands:1.0.1&#39;
+            implementation 'com.tealium:kotlin-core:1.6.0'
+            implementation 'com.tealium:kotlin-remotecommand-dispatcher:1.4.0'
+            implementation 'com.tealium:remotecommands:1.0.1'
       }
       ```
 
@@ -40,12 +40,12 @@ To install the RemoteCommands Dispatcher manually:
 
 1. Download the Tealium [Collect Dispatcher](https://github.com/Tealium/tealium-kotlin/tree/master/collectdispatcher) module.
 
-2. Copy the file `tealium-kotlin.remotecommand-1.4.0.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+2. Copy the file `tealium-kotlin.remotecommand-1.4.0.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 3. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-kotlin.remotecommand-1.4.0&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-kotlin.remotecommand-1.4.0', ext:'aar')
       }
       ```
 
@@ -56,9 +56,9 @@ There are two configuration options for remote commands:
 * **JSON File**  
 A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.
 * **Remote Command Tag**  
-A tag in iQ Tag Management that offers configuration options for the vendor&#39;s API (for use with the Tag Management module).
+A tag in iQ Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
 
-See the [list of remote command vendor integrations](/platforms/remote-commands/integrations/).
+See the [list of remote command vendor integrations](https://docs.tealium.com/platforms/remote-commands/integrations/).
 
 ### Examples
 
@@ -70,8 +70,8 @@ The Remote Command tag is configurable in Tealium iQ Tag Management, with a JSON
 
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
@@ -86,13 +86,13 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
   val remoteCommands = RemoteCommand(this);
-  remoteCommands?.add(remoteCommands, filename = &#34;FILENAME.json&#34;);
+  remoteCommands?.add(remoteCommands, filename = "FILENAME.json");
 }
 ```
 
@@ -102,13 +102,13 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
   val remoteCommands = RemoteCommand(this);
-  remoteCommands?.add(remoteCommands, remoteUrl = &#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;);
+  remoteCommands?.add(remoteCommands, remoteUrl = "https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json");
 }
 ```
 
@@ -116,7 +116,7 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 
 
-After the JSON file has been configured and either added to your app or hosted on a server, learn about the different [JSON load options](/platforms/remote-commands/how-it-works/#load-options).
+After the JSON file has been configured and either added to your app or hosted on a server, learn about the different [JSON load options](https://docs.tealium.com/platforms/remote-commands/how-it-works/#load-options).
 
 
 ## Data Layer
@@ -129,17 +129,17 @@ No additional variables are introduced by this module.
 Creates a new remote command object ready to be passed to the `add` command.
 
 ```kotlin
-val remoteCommand = object : RemoteCommand(&#34;commandName&#34;, &#34;description&#34;) {
+val remoteCommand = object : RemoteCommand("commandName", "description") {
     override fun onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, &#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;)
+        Logger.dev(BuildConfig.TAG, "ResponsePayload for webView RemoteCommand ${response.requestPayload}")
     }
 }
 ```
 
 | Parameter     | Description                                       | Example         |
 |-------------- |-------------------------------------------------- |---------------- |
-| `commandName`  | Required String command name                      | `&#34;sample&#34;`     |
-| `description` | Optional String description of the remote command | `&#34;testing RCs&#34;` |
+| `commandName`  | Required String command name                      | `"sample"`     |
+| `description` | Optional String description of the remote command | `"testing RCs"` |
 
 
 ### `add()`
@@ -155,9 +155,9 @@ val tealium = Tealium.create(instanceName, config) {
 The following is a usage example:
 
 ```kotlin
-val remoteCommand = object : RemoteCommand(&#34;sample&#34;, &#34;testing RCs&#34;) {
+val remoteCommand = object : RemoteCommand("sample", "testing RCs") {
     override fun onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, &#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;)
+        Logger.dev(BuildConfig.TAG, "ResponsePayload for webView RemoteCommand ${response.requestPayload}")
     }
 }
 
@@ -171,7 +171,7 @@ Removes a previously registered remote command to prevent it from being triggere
 
 ```kotlin
 val tealium = Tealium.create(instanceName, config) {
-   remoteCommands?.remove(&#34;commandName&#34;)
+   remoteCommands?.remove("commandName")
 }
 ```
 

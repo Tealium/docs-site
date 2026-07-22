@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/persistiq-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -31,21 +31,21 @@ url: https://docs.tealium.com/ja/server-side-connectors/persistiq-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|重複|  &lt;ul&gt;&lt;li&gt;スキップまたは更新。デフォルトはスキップです。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#create-leads)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|作成者ID|  &lt;ul&gt;&lt;li&gt;リードを作成するユーザーのID。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;リードのメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|名|  &lt;ul&gt;&lt;li&gt;リードの名前。&lt;/li&gt;&lt;/ul&gt; |
-|姓|  &lt;ul&gt;&lt;li&gt;リードの姓。&lt;/li&gt;&lt;/ul&gt; |
-|住所|  &lt;ul&gt;&lt;li&gt;リードの住所。&lt;/li&gt;&lt;/ul&gt; |
-|市区町村|  &lt;ul&gt;&lt;li&gt;リードの市区町村。&lt;/li&gt;&lt;/ul&gt; |
-|州|  &lt;ul&gt;&lt;li&gt;リードの州。&lt;/li&gt;&lt;/ul&gt; |
-|会社名|  &lt;ul&gt;&lt;li&gt;リードに関連する会社名。&lt;/li&gt;&lt;/ul&gt; |
-|業界|  &lt;ul&gt;&lt;li&gt;リードの業界。&lt;/li&gt;&lt;/ul&gt; |
-|電話|  &lt;ul&gt;&lt;li&gt;リードの電話番号。&lt;/li&gt;&lt;/ul&gt; |
-|スニペット|  &lt;ul&gt;&lt;li&gt;リードに関する追加のメモ。&lt;/li&gt;&lt;/ul&gt; |
-|スニペット2|  &lt;ul&gt;&lt;li&gt;リードに関する追加のメモ。&lt;/li&gt;&lt;/ul&gt; |
-|スニペット3|  &lt;ul&gt;&lt;li&gt;リードに関する追加のメモ。&lt;/li&gt;&lt;/ul&gt; |
-|スニペット4|  &lt;ul&gt;&lt;li&gt;リードに関する追加のメモ。&lt;/li&gt;&lt;/ul&gt; |
+|重複|  <ul><li>スキップまたは更新。デフォルトはスキップです。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#create-leads)を参照してください。</li></ul> |
+|作成者ID|  <ul><li>リードを作成するユーザーのID。</li></ul> |
+|メール|  <ul><li>リードのメールアドレス。</li></ul> |
+|名|  <ul><li>リードの名前。</li></ul> |
+|姓|  <ul><li>リードの姓。</li></ul> |
+|住所|  <ul><li>リードの住所。</li></ul> |
+|市区町村|  <ul><li>リードの市区町村。</li></ul> |
+|州|  <ul><li>リードの州。</li></ul> |
+|会社名|  <ul><li>リードに関連する会社名。</li></ul> |
+|業界|  <ul><li>リードの業界。</li></ul> |
+|電話|  <ul><li>リードの電話番号。</li></ul> |
+|スニペット|  <ul><li>リードに関する追加のメモ。</li></ul> |
+|スニペット2|  <ul><li>リードに関する追加のメモ。</li></ul> |
+|スニペット3|  <ul><li>リードに関する追加のメモ。</li></ul> |
+|スニペット4|  <ul><li>リードに関する追加のメモ。</li></ul> |
 
 ### アクション - リードの更新
 
@@ -53,11 +53,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/persistiq-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ステータス|  &lt;ul&gt;&lt;li&gt;リードステータスの名前。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#update-a-lead)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|ステータスID|  &lt;ul&gt;&lt;li&gt;リードステータスのID。&lt;/li&gt;&lt;/ul&gt; |
-|バウンス|  &lt;ul&gt;&lt;li&gt;`True`または`false`。`True`はリードをバウンスとして構成します。&lt;/li&gt;&lt;/ul&gt; |
-|オプトアウト|  &lt;ul&gt;&lt;li&gt;`True`または`false`。`True`はリードをオプトアウトとして構成します。&lt;/li&gt;&lt;/ul&gt; |
-|データ|  &lt;ul&gt;&lt;li&gt;リードのデータ属性。&lt;/li&gt;&lt;/ul&gt; |
+|ステータス|  <ul><li>リードステータスの名前。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#update-a-lead)を参照してください。</li></ul> |
+|ステータスID|  <ul><li>リードステータスのID。</li></ul> |
+|バウンス|  <ul><li>`True`または`false`。`True`はリードをバウンスとして構成します。</li></ul> |
+|オプトアウト|  <ul><li>`True`または`false`。`True`はリードをオプトアウトとして構成します。</li></ul> |
+|データ|  <ul><li>リードのデータ属性。</li></ul> |
 
 ### アクション - キャンペーンへのリード追加
 
@@ -65,5 +65,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/persistiq-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;リードを追加したいキャンペーンのID。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#add-lead-to-a-campaign)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|リードID|  &lt;ul&gt;&lt;li&gt;キャンペーンに追加したいリードのID。&lt;/li&gt;&lt;/ul&gt; |
+|キャンペーンID|  <ul><li>リードを追加したいキャンペーンのID。このエンドポイントについての詳細は、[PersistIQのドキュメンテーション](http://apidocs.persistiq.com/#add-lead-to-a-campaign)を参照してください。</li></ul> |
+|リードID|  <ul><li>キャンペーンに追加したいリードのID。</li></ul> |

@@ -25,14 +25,18 @@ We have looked at countless tag vendor solutions and developed turn-key integrat
 * data mappings
 * load rules
 
-Each time you add a tag, you will go through these same three configuration steps. Behind the scenes of the user interface, our integrations will take care of the complicated specifics of each vendor&#39;s tagging code to ensure it runs as expected. This means you are free to focus on the high-level details of when and where to load tags and what data they should receive while the tag handles the technical details of the vendor&#39;s requirements.
+Each time you add a tag, you will go through these same three configuration steps. Behind the scenes of the user interface, our integrations will take care of the complicated specifics of each vendor's tagging code to ensure it runs as expected. This means you are free to focus on the high-level details of when and where to load tags and what data they should receive while the tag handles the technical details of the vendor's requirements.
 
 ## Data privacy and tracking
 
 The Tealium Universal Tag (`utag.js`) is a container tag for  loading other JavaScript files or running custom JavaScript code. The `tags.tiqcdn.com` domain does not collect the IP address or any data about the users of the sites where it is loaded.
 
-Users that block requests to `tags.tiqcdn.com` might experience broken site functionality.
 
-Only clients who have also implemented the [Tealium Collect tag]() will cause data to be collected by Tealium. To block data collection by Tealium, add a filter to block outgoing requests to `//collect*.tealiumiq.com`.
+<blockquote>
+Users that block requests to `tags.tiqcdn.com` might experience broken site functionality.
+</blockquote>
+
+
+Only clients who have also implemented the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) will cause data to be collected by Tealium. To block data collection by Tealium, add a filter to block outgoing requests to `//collect*.tealiumiq.com`.
 
 To block data collection by third-party vendors, add a filter specific to the data collection endpoint for that service.

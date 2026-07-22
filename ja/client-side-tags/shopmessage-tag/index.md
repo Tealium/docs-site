@@ -27,11 +27,11 @@ url: https://docs.tealium.com/ja/client-side-tags/shopmessage-tag/
   * 数量のリスト
   * 価格のリスト
 
-* 実装ガイド: &lt;https://help.shopmessage.me/en/articles/1443137-integrating-shopmessage-with-your-store&gt;
+* 実装ガイド: <https://help.shopmessage.me/en/articles/1443137-integrating-shopmessage-with-your-store>
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、ShopMessageタグを追加します（タグの追加方法の詳細については、[タグの追加方法]()を参照してください）。
+まず、Tealiumのタグマーケットプレイスに移動し、ShopMessageタグを追加します（タグの追加方法の詳細については、[タグの追加方法](https://docs.tealium.com/manage-tags/)を参照してください）。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/client-side-tags/shopmessage-tag/
 
 ### データマッピング
 
-マッピングとは、[データレイヤ変数]()からベンダータグの対応する変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法の詳細については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングとは、[データレイヤ変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法の詳細については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 

@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/about-saving/
 
 | サイドバー | 個々のアイテム | 保存/公開ボタン |
 | --- | --- | --- |
-| ![](/images/iq-tag-management/getting-started-iq-unsaved-changes-asterisk.png) | ![](/images/iq-tag-management/getting-started-iq-unsaved-changes.png) |![](/images/iq-tag-management/getting-started-iq-unsaved-changes-button.png) |
+| ![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes-asterisk.png) | ![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes.png) |![](https://docs.tealium.com/images/iq-tag-management/getting-started-iq-unsaved-changes-button.png) |
 
 変更を保存した後は、ログアウトしたりウィンドウを閉じたりしても、構成は保存され、次にアカウントにログインするユーザーにも利用できます。
 
@@ -25,5 +25,5 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/about-saving/
 * **上書きバージョン**  
 上書きバージョンは、**現在のバージョンを上書き** オプションを使用すると、現在のバージョン内に作成されます。上書きバージョンは通常、細かい変更に使用されます。バージョンの上書きは元に戻すことができません。
 
-保存と公開の履歴を表示するには、[**クライアントサイドバージョン**]()に移動します。
+保存と公開の履歴を表示するには、[**クライアントサイドバージョン**](https://docs.tealium.com/client-side-versions/)に移動します。
 

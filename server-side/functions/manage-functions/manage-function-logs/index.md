@@ -9,7 +9,7 @@ Use the **Logs** tab in the functions code editor to view, export, and download 
 
 Log files contain messages from the function, as well as any errors that occurred during execution. Use the following steps to see log files for the past 24 hours.
 
-1. Navigate to **Transform &gt; Functions**, and click a function in the list.
+1. Navigate to **Transform > Functions**, and click a function in the list.
 1. Click the **Logs** tab.
 
 ## Export logs
@@ -25,7 +25,7 @@ You can export logs for the following time frames:
 
 Use the following steps to export logs:
 
-1. Navigate to **Transform &gt; Functions**, and click a function in the list.
+1. Navigate to **Transform > Functions**, and click a function in the list.
 1. Click **Export Logs**.
 1. Select a time frame, or select **Custom** to choose the start and end date and time.
 1. If you chose **Custom**, click **Select a date and time range**, and do the following:
@@ -37,14 +37,14 @@ Use the following steps to export logs:
 There is a short delay while the logs are processed. Exported logs are stored for seven days after the export.
 
 When the exported logs are ready to download, a badge is displayed on the **Logs** tab to that indicates the number of log files available for download, as shown below.
-![](/images/server-side/exported-logs-badge.png)
+![](https://docs.tealium.com/images/server-side/exported-logs-badge.png)
 The following message is also displayed on the **Functions Overview** page:
-![](/images/server-side/exported-logs-msg.png)
+![](https://docs.tealium.com/images/server-side/exported-logs-msg.png)
 
 ## View and download exported logs
 
 Use the following steps to view the list of exported logs and download log files:
 
-1. Navigate to **Transform &gt; Functions**, and click a function in the list.
+1. Navigate to **Transform > Functions**, and click a function in the list.
 1. Click the **Logs** tab, then click **VIew Exported Logs**.
 1. Click **Download** for an exported logs file.

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/event-specs/
 ---
 ## 仕組み
 
-イベント仕様（「イベントスペック」とも呼ばれます）は、イベントのための[データレイヤー]()を表します。イベント仕様により、[ライブイベントチャート]()またはイベント仕様の詳細ビューを使用して、リアルタイムでイベントのデータ品質が検証されます。
+イベント仕様（「イベントスペック」とも呼ばれます）は、イベントのための[データレイヤー](https://docs.tealium.com/an-introduction-to-the-data-layer/)を表します。イベント仕様により、[ライブイベントチャート](https://docs.tealium.com/about-live-events/)またはイベント仕様の詳細ビューを使用して、リアルタイムでイベントのデータ品質が検証されます。
 
 イベント仕様には、以下の定義が含まれます：
 
@@ -22,17 +22,17 @@ url: https://docs.tealium.com/ja/server-side/event-health/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;  : &#34;video_complete&#34;, // イベントと仕様の名前
-    &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;   : 300,
-    &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34; : &#34;YouTube&#34;,
+    "tealium_event"  : "video_complete", // イベントと仕様の名前
+    "video_id"       : "xWlEk2i9r5Q",
+    "video_length"   : 300,
+    "video_name"     : "How to track videos in Tealium",
+    "video_platform" : "YouTube",
 }
 ```
 
 この `video_complete` イベントのためのイベント仕様には、以下が含まれます：
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 * `tealium_event` 属性は、イベントを `video_complete` として識別します。
 * **定義** テーブルは、イベントに関する文脈情報を提供し、必要な属性、それらの期待されるデータタイプ、および有効なイベントに必要かどうかを定義します。
@@ -46,7 +46,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/event-specs/
 
 ## イベント仕様の統計を表示
 
-![](/images/server-side/event-health-table.png)
+![](https://docs.tealium.com/images/server-side/event-health-table.png)
 
 **イベントヘルス** ウィンドウは、すべてのイベント仕様の総統計を表示します。テーブルは、個々のイベント仕様の統計を示しています。期間を選択して、その期間の統計を表示することができます。
 
@@ -77,10 +77,10 @@ url: https://docs.tealium.com/ja/server-side/event-health/event-specs/
 
 以下のコードサンプルは、`My iOS App` というデータソースの `video_complete` イベントのトラッキングコードを示しています：
 
-![](/images/server-side/whiteui-eventstream-eventspecifications-viewcode.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-eventspecifications-viewcode.png)
 
 ## ライブイベントでのイベント仕様
 
 イベント仕様が作成され、トラッキングコードが実装されると、ライブイベントチャートを使用してリアルタイムで受信イベントを表示し、そのデータ品質を評価します。
 
-詳細については、[ライブイベント]()を参照してください。
+詳細については、[ライブイベント](https://docs.tealium.com/about-live-events/#event-specification-display-filters)を参照してください。

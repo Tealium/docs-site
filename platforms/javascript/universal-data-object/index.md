@@ -5,28 +5,32 @@ url: https://docs.tealium.com/platforms/javascript/universal-data-object/
 ---
 ## Universal Data Object (UDO)
 
-The [data layer]() is the foundation of your Tealium solution and serves as the one true definition of your data across all digital assets and customer interactions. The data layer comprises all of the various [variables]() that are collected across your site and the visitor interactions and events that are tracked.
+The [data layer](https://docs.tealium.com/an-introduction-to-the-data-layer/) is the foundation of your Tealium solution and serves as the one true definition of your data across all digital assets and customer interactions. The data layer comprises all of the various [variables](https://docs.tealium.com/data-layer-variables/) that are collected across your site and the visitor interactions and events that are tracked.
 
 The data layer is implemented on your website as a JavaScript object called `utag_data` in which you expose data from the page to the Tealium tag. The properties in this object use plain, vendor neutral names that are tailored to your business.
 
 The following is an example declaration of `utag_data`:
 
 ```html
-&lt;script type=&#34;text/javascript&#34;&gt;
+<script type="text/javascript">
   var utag_data={
-      &#34;tealium_event&#34;  : &#34;search&#34;,
-      &#34;page_name&#34;      : &#34;Search Results&#34;,
-      &#34;search_results&#34; : &#34;42&#34;,
-      &#34;search_keyword&#34; : &#34;Tealium shirt&#34;};
-&lt;/script&gt;
+      "tealium_event"  : "search",
+      "page_name"      : "Search Results",
+      "search_results" : "42",
+      "search_keyword" : "Tealium shirt"};
+</script>
 ```
 
 
+
+<blockquote>
 Define and populate the `utag_data` object variable prior to loading the Universal Tag (`utag.js`).
+</blockquote>
+
 
 When `utag.js` loads in the page, it looks for the `utag_data` variable and uses the data to automatically trigger a page view tracking call with `utag.view()`. If you have a single page application, or are calling `utag.view()` manually, you might not need `utag_data`. 
 
-[Learn more](/platforms/javascript/page-tracking/) about page tracking options.
+[Learn more](https://docs.tealium.com/platforms/javascript/page-tracking/) about page tracking options.
 
 ### Syntax Guidelines
 
@@ -35,14 +39,14 @@ When implementing the UDO there are certain guidelines to follow, not only to av
 *   **String Values**  
 Use string values for all variables, including boolean and numeric data.
 *   **Escape Quotes**    
-    Enclose all values in double quotes or single quotes and escape any quotes that might appear in the value itself. For example, `utag_data.page_name = &#39;It\&#39;s All About the Data!&#39;;`.
+    Enclose all values in double quotes or single quotes and escape any quotes that might appear in the value itself. For example, `utag_data.page_name = 'It\'s All About the Data!';`.
 *   **Boolean Values**   
-    For boolean values use `&#34;1&#34;` and `&#34;0&#34;` to represent `true` and `false`. This is the simplest way to represent a boolean using strings.
+    For boolean values use `"1"` and `"0"` to represent `true` and `false`. This is the simplest way to represent a boolean using strings.
 *   **Amount Values**  
-    Use strings for all dollar amounts and exclude all currency symbols and commas. For example, `utag_data.order_total = &#34;1234.00&#34;;` instead of `&#34;$1,234.00&#34;`.  
+    Use strings for all dollar amounts and exclude all currency symbols and commas. For example, `utag_data.order_total = "1234.00";` instead of `"$1,234.00"`.  
 *   **Array Values**  
     Use array values for all product related variables. The Tealium library, and each vendor tag integration, is designed to use arrays for all product-related data. For example, ID, price, or quantity.   
-    `utag_data.product_id = [&#34;P1234&#34;, &#34;P4567&#34;, &#34;P7890&#34;];`
+    `utag_data.product_id = ["P1234", "P4567", "P7890"];`
 *   **Avoid Extra Code**  
     Do not add extra code to the UDO script block. If any code in the same script block fails, the UDO may not be defined correctly which might lead to unexpected data being passed to your vendor tags.
 
@@ -51,32 +55,32 @@ Use string values for all variables, including boolean and numeric data.
 
 ### Standard Page
 
-The following is a _sample_ UDO as it appears on a page. This specific example shows properties that might appear on a &#34;Shopping Cart&#34; page with two products in the cart.
+The following is a _sample_ UDO as it appears on a page. This specific example shows properties that might appear on a "Shopping Cart" page with two products in the cart.
 
 ```html
-&lt;script type=&#34;text/javascript&#34;&gt;
+<script type="text/javascript">
   var utag_data = {
-    &#34;tealium_event&#34;      : &#34;cart_add&#34;,
-    &#34;country_code&#34;       : &#34;US&#34;,    
-    &#34;currency_code&#34;      : &#34;USD&#34;,    
-    &#34;page_name&#34;          : &#34;Cart: View Shopping Bag&#34;,   
-    &#34;page_type&#34;          : &#34;cart&#34;,    
-    &#34;product_id&#34;         : [&#34;PROD123&#34;, &#34;PROD456&#34;],    
-    &#34;product_name&#34;       : [&#34;Red Shoes&#34;, &#34;Black Socks&#34;],
-    &#34;product_category&#34;   : [&#34;Footwear&#34;, &#34;Apparel&#34;],    
-    &#34;product_quantity&#34;   : [&#34;1&#34;, &#34;2&#34;],    
-    &#34;product_unit_price&#34; : [&#34;65.00&#34;, &#34;4.75&#34;],    
-    &#34;cart_total_items&#34;   : &#34;3&#34;,    
-    &#34;cart_subtotal&#34;      : &#34;74.00&#34;};
-&lt;/script&gt;
+    "tealium_event"      : "cart_add",
+    "country_code"       : "US",    
+    "currency_code"      : "USD",    
+    "page_name"          : "Cart: View Shopping Bag",   
+    "page_type"          : "cart",    
+    "product_id"         : ["PROD123", "PROD456"],    
+    "product_name"       : ["Red Shoes", "Black Socks"],
+    "product_category"   : ["Footwear", "Apparel"],    
+    "product_quantity"   : ["1", "2"],    
+    "product_unit_price" : ["65.00", "4.75"],    
+    "cart_total_items"   : "3",    
+    "cart_subtotal"      : "74.00"};
+</script>
 ```
 
 If needed, update the UDO with additional values outside of the declaration block, as long as the data gets set prior to loading `utag.js`. UDO variables set after loading `utag.js` are ignored.  
 
 ```html
-&lt;script type=&#34;text/javascript&#34;&gt;
-  utag_data[&#34;page_name&#34;] = &#34;View Cart&#34;;
-&lt;/script&gt;
+<script type="text/javascript">
+  utag_data["page_name"] = "View Cart";
+</script>
 ```
 
 ### Page Specific Data
@@ -84,13 +88,13 @@ If needed, update the UDO with additional values outside of the declaration bloc
 When populating the UDO, only include variables pertinent to the current page type. This reduces clutter in the page code and eliminates confusion about what data is expected. Below is an example of a search page UDO that omits unnecessary items such as product and order data.
 
 ```html
-&lt;script type=&#34;text/javascript&#34;&gt;
+<script type="text/javascript">
   var utag_data={
-      &#34;page_name&#34;      : &#34;Search Results&#34;,
-      &#34;page_type&#34;      : &#34;search&#34;,
-      &#34;search_results&#34; : &#34;42&#34;,
-      &#34;search_keyword&#34; : &#34;tennis shoes&#34;};
-&lt;/script&gt;
+      "page_name"      : "Search Results",
+      "page_type"      : "search",
+      "search_results" : "42",
+      "search_keyword" : "tennis shoes"};
+</script>
 ```
 
 
@@ -99,10 +103,10 @@ Product variables are to be populated as arrays, even when a single product is b
 
 ```javascript
 // Single product. For example, product detail page
-utag_data[&#34;product_id&#34;] = [&#34;PROD123&#34;];
+utag_data["product_id"] = ["PROD123"];
 
 // Multiple products. For example, cart page
-utag_data[&#34;product_id&#34;] = [&#34;PROD123&#34;, &#34;PROD456&#34;, &#34;PROD789&#34;];
+utag_data["product_id"] = ["PROD123", "PROD456", "PROD789"];
 ```
 
 ### Array Alignment
@@ -120,7 +124,7 @@ All product array variables must have the same number of elements to ensure data
 //   Price = 5.00
 //   QTY   = 1
 //
-utag_data[&#34;product_id&#34;]       = [&#34;PROD123&#34;, &#34;PROD456&#34;];
-utag_data[&#34;product_price&#34;]    = [&#34;3.00&#34;, &#34;5.00&#34;];
-utag_data[&#34;product_quantity&#34;] = [&#34;1&#34;, &#34;1&#34;];
+utag_data["product_id"]       = ["PROD123", "PROD456"];
+utag_data["product_price"]    = ["3.00", "5.00"];
+utag_data["product_quantity"] = ["1", "1"];
 ```

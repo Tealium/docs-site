@@ -17,7 +17,7 @@ When the tag marketplace policy is enabled, the policy hides all vendors by defa
 
 To access the tag marketplace policy, click **Manage Tag Marketplace Policy** in the admin menu.
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png)
 
 ### Manage tags
 
@@ -32,13 +32,13 @@ To manage tags in the tag marketplace:
 
 You do not need to save and publish after this step, the changes go into effect immediately.
 
-For example, if you show only tags that begin with &#34;Tealium&#34;:
+For example, if you show only tags that begin with "Tealium":
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png)
 
-The tag marketplace now only offers the &#34;Tealium&#34; tags and a banner is displayed indicating that the tag marketplace policy is enabled:
+The tag marketplace now only offers the "Tealium" tags and a banner is displayed indicating that the tag marketplace policy is enabled:
 
-![](/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png)
 
 ### Reset the policy
 

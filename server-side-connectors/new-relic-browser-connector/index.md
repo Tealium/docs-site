@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/new-relic-browser-connector
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -38,38 +38,38 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|New Relic Browser Application|  &lt;ul&gt;&lt;li&gt;Browser Application to provide metrics on. &lt;/li&gt;&lt;li&gt;Provide a custom name if the application is not yet in New Relic Insights, or it will not be created.&lt;/li&gt;&lt;li&gt;This will not create the application in the New Relic system, but will provide the ability to query the application in New Relic Insights.&lt;/li&gt;&lt;/ul&gt; |
-|Event Category|  &lt;ul&gt;&lt;li&gt;Event Category&lt;/li&gt;&lt;/ul&gt; |
-|New Relic Application ID|  &lt;ul&gt;&lt;li&gt;New Relic Application ID&lt;/li&gt;&lt;/ul&gt; |
-|Server Side Application Name|  &lt;ul&gt;&lt;li&gt;Server Side Application Name&lt;/li&gt;&lt;/ul&gt; |
-|Autonomous System Number|  &lt;ul&gt;&lt;li&gt;Autonomous System Number&lt;/li&gt;&lt;/ul&gt; |
-|Autonomous System Number Latitude|  &lt;ul&gt;&lt;li&gt;Autonomous System Number Latitude&lt;/li&gt;&lt;/ul&gt; |
-|Autonomous System Number Longitude|  &lt;ul&gt;&lt;li&gt;Autonomous System Number Longitude&lt;/li&gt;&lt;/ul&gt; |
-|Autonomous System Number Organization|  &lt;ul&gt;&lt;li&gt;Autonomous System Number Organization&lt;/li&gt;&lt;/ul&gt; |
-|Backend Response Time|  &lt;ul&gt;&lt;li&gt;Backend Response Time&lt;/li&gt;&lt;/ul&gt; |
-|Transaction Name|  &lt;ul&gt;&lt;li&gt;Transaction Name&lt;/li&gt;&lt;/ul&gt; |
-|City|  &lt;ul&gt;&lt;li&gt;City&lt;/li&gt;&lt;/ul&gt; |
-|Time to Establish Server Connection|  &lt;ul&gt;&lt;li&gt;Time to Establish Server Connection&lt;/li&gt;&lt;/ul&gt; |
-|Country Code|  &lt;ul&gt;&lt;li&gt;Country Code&lt;/li&gt;&lt;/ul&gt; |
-|Device Type|  &lt;ul&gt;&lt;li&gt;Device Type&lt;/li&gt;&lt;/ul&gt; |
-|Time to Resolve Top-Level DNS|  &lt;ul&gt;&lt;li&gt;Time to Resolve Top-Level DNS&lt;/li&gt;&lt;/ul&gt; |
-|Time to Process Page|  &lt;ul&gt;&lt;li&gt;Time to Process Page&lt;/li&gt;&lt;/ul&gt; |
-|Front-end Browser Response Time|  &lt;ul&gt;&lt;li&gt;Front-end Browser Response Time&lt;/li&gt;&lt;/ul&gt; |
-|Name of Server Side Transaction|  &lt;ul&gt;&lt;li&gt;Name of Server Side Transaction&lt;/li&gt;&lt;/ul&gt; |
-|Total Network Wait Time|  &lt;ul&gt;&lt;li&gt;Total Network Wait Time&lt;/li&gt;&lt;/ul&gt; |
-|Time to Render Page|  &lt;ul&gt;&lt;li&gt;Time to Render Page&lt;/li&gt;&lt;/ul&gt; |
-|Original PageView URL|  &lt;ul&gt;&lt;li&gt;Original PageView URL&lt;/li&gt;&lt;/ul&gt; |
-|Time Waiting for Service Initiation|  &lt;ul&gt;&lt;li&gt;Time Waiting for Service Initiation&lt;/li&gt;&lt;/ul&gt; |
-|Region Code|  &lt;ul&gt;&lt;li&gt;Region Code&lt;/li&gt;&lt;/ul&gt; |
-|Time to Setup TLS|  &lt;ul&gt;&lt;li&gt;Time to Setup TLS&lt;/li&gt;&lt;/ul&gt; |
-|Session ID|  &lt;ul&gt;&lt;li&gt;Session ID&lt;/li&gt;&lt;/ul&gt; |
-|User Agent Name|  &lt;ul&gt;&lt;li&gt;User Agent Name&lt;/li&gt;&lt;/ul&gt; |
-|User Agent Version|  &lt;ul&gt;&lt;li&gt;User Agent Version&lt;/li&gt;&lt;/ul&gt; |
-|User Agent OS|  &lt;ul&gt;&lt;li&gt;User Agent OS&lt;/li&gt;&lt;/ul&gt; |
-|Name of Interaction|  &lt;ul&gt;&lt;li&gt;Name of Interaction&lt;/li&gt;&lt;/ul&gt; |
-|Name of Page Action|  &lt;ul&gt;&lt;li&gt;Name of Page Action&lt;/li&gt;&lt;/ul&gt; |
-|Browser Height|  &lt;ul&gt;&lt;li&gt;Browser Height&lt;/li&gt;&lt;/ul&gt; |
-|Browser Width|  &lt;ul&gt;&lt;li&gt;Browser Width&lt;/li&gt;&lt;/ul&gt; |
-|Current URL|  &lt;ul&gt;&lt;li&gt;Current URL&lt;/li&gt;&lt;/ul&gt; |
-|Referrer URL|  &lt;ul&gt;&lt;li&gt;Referrer URL&lt;/li&gt;&lt;/ul&gt; |
-|Time between Page Requested and PageAction|  &lt;ul&gt;&lt;li&gt;Time between Page Requested and PageAction&lt;/li&gt;&lt;/ul&gt; |
+|New Relic Browser Application|  <ul><li>Browser Application to provide metrics on. </li><li>Provide a custom name if the application is not yet in New Relic Insights, or it will not be created.</li><li>This will not create the application in the New Relic system, but will provide the ability to query the application in New Relic Insights.</li></ul> |
+|Event Category|  <ul><li>Event Category</li></ul> |
+|New Relic Application ID|  <ul><li>New Relic Application ID</li></ul> |
+|Server Side Application Name|  <ul><li>Server Side Application Name</li></ul> |
+|Autonomous System Number|  <ul><li>Autonomous System Number</li></ul> |
+|Autonomous System Number Latitude|  <ul><li>Autonomous System Number Latitude</li></ul> |
+|Autonomous System Number Longitude|  <ul><li>Autonomous System Number Longitude</li></ul> |
+|Autonomous System Number Organization|  <ul><li>Autonomous System Number Organization</li></ul> |
+|Backend Response Time|  <ul><li>Backend Response Time</li></ul> |
+|Transaction Name|  <ul><li>Transaction Name</li></ul> |
+|City|  <ul><li>City</li></ul> |
+|Time to Establish Server Connection|  <ul><li>Time to Establish Server Connection</li></ul> |
+|Country Code|  <ul><li>Country Code</li></ul> |
+|Device Type|  <ul><li>Device Type</li></ul> |
+|Time to Resolve Top-Level DNS|  <ul><li>Time to Resolve Top-Level DNS</li></ul> |
+|Time to Process Page|  <ul><li>Time to Process Page</li></ul> |
+|Front-end Browser Response Time|  <ul><li>Front-end Browser Response Time</li></ul> |
+|Name of Server Side Transaction|  <ul><li>Name of Server Side Transaction</li></ul> |
+|Total Network Wait Time|  <ul><li>Total Network Wait Time</li></ul> |
+|Time to Render Page|  <ul><li>Time to Render Page</li></ul> |
+|Original PageView URL|  <ul><li>Original PageView URL</li></ul> |
+|Time Waiting for Service Initiation|  <ul><li>Time Waiting for Service Initiation</li></ul> |
+|Region Code|  <ul><li>Region Code</li></ul> |
+|Time to Setup TLS|  <ul><li>Time to Setup TLS</li></ul> |
+|Session ID|  <ul><li>Session ID</li></ul> |
+|User Agent Name|  <ul><li>User Agent Name</li></ul> |
+|User Agent Version|  <ul><li>User Agent Version</li></ul> |
+|User Agent OS|  <ul><li>User Agent OS</li></ul> |
+|Name of Interaction|  <ul><li>Name of Interaction</li></ul> |
+|Name of Page Action|  <ul><li>Name of Page Action</li></ul> |
+|Browser Height|  <ul><li>Browser Height</li></ul> |
+|Browser Width|  <ul><li>Browser Width</li></ul> |
+|Current URL|  <ul><li>Current URL</li></ul> |
+|Referrer URL|  <ul><li>Referrer URL</li></ul> |
+|Time between Page Requested and PageAction|  <ul><li>Time between Page Requested and PageAction</li></ul> |

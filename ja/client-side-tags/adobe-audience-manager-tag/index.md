@@ -6,12 +6,12 @@ url: https://docs.tealium.com/ja/client-side-tags/adobe-audience-manager-tag/
 ## タグのヒント
 
 * **Use E-Commerce Variables**の下で**On**を選択して、OrderとCustomerのE-Commerceデータを`c_`データに追加します
-* &#34;Custom c_ Object&#34;マッピングを使用して、自分のオブジェクトや追加のオブジェクトを`c_`データと一緒に送信します
+* "Custom c_ Object"マッピングを使用して、自分のオブジェクトや追加のオブジェクトを`c_`データと一緒に送信します
 * 現在のライブラリバージョン: 9.5
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Adobe Audience Managerタグを追加します([タグの追加方法]()について詳しくはこちら)。
+まず、Tealiumのタグマーケットプレイスに移動し、Adobe Audience Managerタグを追加します([タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら)。
 
 タグを追加したら、以下の構成を行います:
 
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adobe-audience-manager-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです:
 

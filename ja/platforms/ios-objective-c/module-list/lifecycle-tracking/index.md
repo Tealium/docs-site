@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/platforms/ios-objective-c/module-list/lifecycle
 CocoaPodsでライフサイクル追跡モジュールをインストールするには、Podfileに以下を追加してください：
 
 ```perl
-pod &#39;TealiumIOSLifecycle&#39;
+pod 'TealiumIOSLifecycle'
 ```
 
 ### 手動
@@ -61,19 +61,19 @@ pod &#39;TealiumIOSLifecycle&#39;
 `launch`イベントを手動で追跡するには、以下を呼び出します：
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] launch];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] launch];
 ```
 
 **スリープイベント**  
 `sleep`イベントを手動で追跡するには、以下を呼び出します：
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] sleep];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] sleep];
 ```
 
 **ウェイクイベント**  
 `wake`イベントを手動で追跡するには、以下を呼び出します：
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] wake];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] wake];
 ```

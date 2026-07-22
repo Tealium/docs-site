@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-app-analytics-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスし、Facebookアプリアナリティクスタグを追加します（[タグの追加方法についてはこちら]()を参照）。
+まず、Tealiumのタグマーケットプレイスにアクセスし、Facebookアプリアナリティクスタグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-app-analytics-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 
@@ -97,6 +97,6 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-app-analytics-tag/
 
 |変数| 説明|
 |---| ---|
-| `lmt_data.use_ldu` (LDU使用) |  &lt;ul&gt;&lt;li&gt;`true`の場合、Facebookの限定データ使用オプションを使用します&lt;/li&gt;&lt;li&gt;`false`の場合、Facebookの限定データ使用オプションを使用しません&lt;/li&gt;&lt;/ul&gt; |
-| `lmt_data.ldu_types.geolocate` (LDUはジオロケートするべき) |  &lt;ul&gt;&lt;li&gt;`true`の場合、LDUはユーザーをジオロケートします。&lt;/li&gt;&lt;li&gt;`false`の場合、LDUはユーザーをジオロケートしません。**LDU使用**が有効な場合、**LDUはジオロケートするべき**もデフォルトで有効になります。&lt;/li&gt;&lt;/ul&gt; |
-| `lmt_data.ldu_types.california` (LDUはカリフォルニア州) |  &lt;ul&gt;&lt;li&gt;`true`の場合、テンプレート内で州および国のカリフォルニア固有の値を構成します。ユーザーがカリフォルニアに位置しており、限定データ使用で処理する必要がある場合のみ、このオプションを有効にします。&lt;/li&gt;&lt;li&gt;`false`の場合、テンプレート内でユーザーの州および国のカリフォルニア固有の値を構成しません。&lt;/li&gt;&lt;/ul&gt; |
+| `lmt_data.use_ldu` (LDU使用) |  <ul><li>`true`の場合、Facebookの限定データ使用オプションを使用します</li><li>`false`の場合、Facebookの限定データ使用オプションを使用しません</li></ul> |
+| `lmt_data.ldu_types.geolocate` (LDUはジオロケートするべき) |  <ul><li>`true`の場合、LDUはユーザーをジオロケートします。</li><li>`false`の場合、LDUはユーザーをジオロケートしません。**LDU使用**が有効な場合、**LDUはジオロケートするべき**もデフォルトで有効になります。</li></ul> |
+| `lmt_data.ldu_types.california` (LDUはカリフォルニア州) |  <ul><li>`true`の場合、テンプレート内で州および国のカリフォルニア固有の値を構成します。ユーザーがカリフォルニアに位置しており、限定データ使用で処理する必要がある場合のみ、このオプションを有効にします。</li><li>`false`の場合、テンプレート内でユーザーの州および国のカリフォルニア固有の値を構成しません。</li></ul> |

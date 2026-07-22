@@ -12,11 +12,11 @@ Tealium EventStreamのGoogle SA360 エンリッチメントコンバージョン
 CM360の利用規約を承諾するには、以下の手順を実行します：
 
 1. CM360アカウントにログインし、エンリッチメントコンバージョンを実装したい広告主を選択します。
-1. 左側で、**Floodlight &gt; Configuration**に移動し、**Enhanced conversion section**の下のチェックボックスをチェックします。
+1. 左側で、**Floodlight > Configuration**に移動し、**Enhanced conversion section**の下のチェックボックスをチェックします。
 
 ### Floodlightタグのパラメータを特定する
 
-**Floodlight &gt; Activities**を開き、エンリッチメントコンバージョンのデータを受け取るために使用しているアクティビティを見つけるか作成します。重要なパラメータは次のとおりです：
+**Floodlight > Activities**を開き、エンリッチメントコンバージョンのデータを受け取るために使用しているアクティビティを見つけるか作成します。重要なパラメータは次のとおりです：
 
 * 広告主ID（**floodlight Configuration ID**または`floodlightConfigurationId`）
 * アクティビティID
@@ -30,7 +30,7 @@ CM360の利用規約を承諾するには、以下の手順を実行します：
 
 ## 要件 - Tealium iQタグ
 
-TiQ Floodlightタグの基本的な構成については、[Floodlight tag]()を参照してください。
+TiQ Floodlightタグの基本的な構成については、[Floodlight tag](https://docs.tealium.com/floodlight-gtagjs-tag/)を参照してください。
 
 上記でメモした構成値（広告主ID、アクティビティタグ文字列、グループタグ文字列、タイプ）を使用し、基本的なタグ構成でコンバージョンをトリガーするためのイベントマッピングとともに使用します。
 
@@ -43,7 +43,7 @@ Tealium iQライブラリが生成する`tealium_random`属性を使用します
 
 ## 要件 - Tealium EventStreamコネクタ
 
-[SA360 エンリッチメントコンバージョンコネクタ]()の実装手順は次のとおりです：
+[SA360 エンリッチメントコンバージョンコネクタ](https://docs.tealium.com/google-sa360-enhanced-conversions-connector/)の実装手順は次のとおりです：
 
 ### コネクタ構成
 
@@ -53,7 +53,7 @@ Tealium iQライブラリが生成する`tealium_random`属性を使用します
 
 #### アクションソース
 
-**Event Feed**：関連するFloodlightコンバージョンのための[event feed]()を作成し、このフィードをコネクタアクションのソースとして使用します。
+**Event Feed**：関連するFloodlightコンバージョンのための[event feed](https://docs.tealium.com/about-event-feeds/)を作成し、このフィードをコネクタアクションのソースとして使用します。
 
 #### アクション構成
 
@@ -82,5 +82,9 @@ Tealium iQライブラリが生成する`tealium_random`属性を使用します
 
 イベント属性のハッシュ状態に応じて、**apply SHA256 hash**または**already SHA256 hash**マッピングを選択します。イベントデータがすでにハッシュ化されている場合、ハッシュ化する前に小文字に変換、トリムし、`gmail.com`および`googlemail.com`のメールアドレスのドメイン名の前のピリオドを削除する必要があります。
 
- CM360 APIは、コンバージョンの更新を受け入れる前に120分の遅延が必要です。Tealium SA360コネクタにはこの遅延が組み込まれていますが、Traceを使用すると、コネクタはバッチング遅延をバイパスします。Traceを使用すると、コンバージョンがまだGoogleによってインデックスされていないため、APIの応答で`CONVERSION_NOT_FOUND`エラーが発生します。
+
+<blockquote>
+CM360 APIは、コンバージョンの更新を受け入れる前に120分の遅延が必要です。Tealium SA360コネクタにはこの遅延が組み込まれていますが、Traceを使用すると、コネクタはバッチング遅延をバイパスします。Traceを使用すると、コンバージョンがまだGoogleによってインデックスされていないため、APIの応答で`CONVERSION_NOT_FOUND`エラーが発生します。
+</blockquote>
+
 

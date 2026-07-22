@@ -8,13 +8,17 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/vimeo-event/
 * utag v4.38 or later. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
 * The Vimeo tracking API script.
 
+
+<blockquote>
 If a page with a Vimeo event listener does not already contain the Vimeo tracking API script, the script will be automatically loaded on the page.
+</blockquote>
+
 
 ## How it works
 
 A Vimeo event tracks when a visitor interacts with a Vimeo video. When a visitor performs the action, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -34,19 +38,19 @@ The milestones event trigger lets you set one of the following thresholds:
 
 ### Element selector
 
-The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector]().
+The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector](https://docs.tealium.com/event-element-selector/).
 
 ### Trigger frequency
 
-The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers]().
+The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers](https://docs.tealium.com/event-triggers/).
 
 ## Event trigger variables
 
-Event trigger variables are the values the event listener sends with the tracking call. In the **New Event &gt; Event Configuration** screen, navigate to the **Event Trigger Variables** table and click the trigger type to view or edit the trigger variables for your event.
+Event trigger variables are the values the event listener sends with the tracking call. In the **New Event > Event Configuration** screen, navigate to the **Event Trigger Variables** table and click the trigger type to view or edit the trigger variables for your event.
 
 For example, to view the variables for the pause trigger, click the **Pause** tab:
 
-![](/images/guides/iq/event_trigger_variables.png)
+![](https://docs.tealium.com/images/guides/iq/event_trigger_variables.png)
 
 The Vimeo event has the following default event trigger variables:
 
@@ -66,19 +70,19 @@ The Vimeo event has the following default event trigger variables:
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;video_play&#34;`| The visitor played the video.|
+|`tealium_event="video_play"`| The visitor played the video.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_play&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;How to track videos in Tealium&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;vimeo&#34;,
-   &#34;video_playhead&#34; : &#34;1&#34;,
-   &#34;iq_event_id:&#34; : &#34;vimeo_video_events_1&#34;
+   "tealium_event"  : "video_play",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "How to track videos in Tealium",
+   "video_length" : "300",
+   "video_platform" : "vimeo",
+   "video_playhead" : "1",
+   "iq_event_id:" : "vimeo_video_events_1"
 }
 ```
 
@@ -86,19 +90,19 @@ The Vimeo event has the following default event trigger variables:
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;video_pause&#34;`| The visitor paused the video during playback.|
+|`tealium_event="video_pause"`| The visitor paused the video during playback.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_pause&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;How to track videos in Tealium&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;vimeo&#34;,
-   &#34;video_playhead&#34; : &#34;30&#34;,
-   &#34;iq_event_id:&#34; : &#34;vimeo_video_events_2&#34;
+   "tealium_event"  : "video_pause",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "How to track videos in Tealium",
+   "video_length" : "300",
+   "video_platform" : "vimeo",
+   "video_playhead" : "30",
+   "iq_event_id:" : "vimeo_video_events_2"
 }
 ```
 
@@ -106,19 +110,19 @@ The Vimeo event has the following default event trigger variables:
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;video_buffer&#34;`| The visitor experienced buffering on the video.|
+|`tealium_event="video_buffer"`| The visitor experienced buffering on the video.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_buffer&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;How to track videos in Tealium&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;vimeo&#34;,
-   &#34;video_playhead&#34; : &#34;50&#34;,
-   &#34;iq_event_id:&#34; : &#34;vimeo_video_events_3&#34;
+   "tealium_event"  : "video_buffer",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "How to track videos in Tealium",
+   "video_length" : "300",
+   "video_platform" : "vimeo",
+   "video_playhead" : "50",
+   "iq_event_id:" : "vimeo_video_events_3"
 }
 ```
 
@@ -126,20 +130,20 @@ The Vimeo event has the following default event trigger variables:
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;video_milestone&#34;`| The visitor played the video to a percentage or duration milestone.|
+|`tealium_event="video_milestone"`| The visitor played the video to a percentage or duration milestone.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_milestone&#34;,
-   &#34;video_milestone&#34; : &#34;50&#34;,
-   &#34;milestone_type&#34; : &#34;percent&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;How to track videos in Tealium&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;vimeo&#34;,
-   &#34;video_playhead&#34; : &#34;151&#34;,
-   &#34;iq_event_id:&#34; : &#34;vimeo_video_events_4&#34;
+   "tealium_event"  : "video_milestone",
+   "video_milestone" : "50",
+   "milestone_type" : "percent",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "How to track videos in Tealium",
+   "video_length" : "300",
+   "video_platform" : "vimeo",
+   "video_playhead" : "151",
+   "iq_event_id:" : "vimeo_video_events_4"
 }
 ```

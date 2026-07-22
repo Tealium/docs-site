@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/data-layer/
 | [カスタム日付](#custom-date-data)         | `.after`        | 指定した日付で有効期限が切れます |
 | [カスタム期間](#custom-duration-data) | `.afterCustom`  | 指定した期間で有効期限が切れます。期間は次の時間単位で指定します：`.minutes`, `.hours`, `.days`, `.months`, `.years` |
 
-有効期限のタイプに基づいて、[add()](/ja/platforms/ios-swift/api/tealium-data-layer/#add)を使用してデータをデータレイヤーに保存します。
+有効期限のタイプに基づいて、[add()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#add)を使用してデータをデータレイヤーに保存します。
 
 #### セッションデータ
 
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/data-layer/
 
 セッションの後に有効期限が切れるデータレイヤーの値を永続化するには、次のようにします：  
 ```swift
-tealium?.dataLayer.add(key: &#34;mysessionvar&#34;, value: &#34;hello&#34;, expiry: .session)
+tealium?.dataLayer.add(key: "mysessionvar", value: "hello", expiry: .session)
 ```
 
 すべてのセッションデータを取得するには：  
@@ -43,7 +43,7 @@ let sessionData = tealium?.dataLayer.allSessionData
 
 次のアプリの再起動までデータレイヤーの値を永続化するには：  
 ```swift
-tealium?.dataLayer.add(key: &#34;myrestartvar&#34;, value: &#34;foo&#34;, expiry: .untilRestart)
+tealium?.dataLayer.add(key: "myrestartvar", value: "foo", expiry: .untilRestart)
 ```
 
 #### 永久データ
@@ -52,7 +52,7 @@ tealium?.dataLayer.add(key: &#34;myrestartvar&#34;, value: &#34;foo&#34;, expiry
 
 永久データを永続化するには：  
 ```swift
-tealium?.dataLayer.add(key: &#34;myforevervar&#34;, value: &#34;world&#34;, expiry: .forever)
+tealium?.dataLayer.add(key: "myforevervar", value: "world", expiry: .forever)
 ```
 
 #### カスタム日付データ
@@ -61,7 +61,7 @@ tealium?.dataLayer.add(key: &#34;myforevervar&#34;, value: &#34;world&#34;, expi
 
 カスタム日付の有効期限を持つデータレイヤーの値を永続化するには：  
 ```swift
-tealium?.dataLayer.add(key: &#34;customdate&#34;, value: &#34;bar&#34;, expiry: .after(yourDate))
+tealium?.dataLayer.add(key: "customdate", value: "bar", expiry: .after(yourDate))
 ```
 
 #### カスタム期間データ
@@ -70,32 +70,32 @@ tealium?.dataLayer.add(key: &#34;customdate&#34;, value: &#34;bar&#34;, expiry: 
 
 1日後に有効期限が切れるデータレイヤーの値を永続化するには：  
 ```swift
-tealium?.dataLayer.add(key: &#34;lengthoftime&#34;, value: &#34;days&#34;, expiry: .afterCustom((.days, 1)))
+tealium?.dataLayer.add(key: "lengthoftime", value: "days", expiry: .afterCustom((.days, 1)))
 ```
 
 1ヶ月後に有効期限が切れるデータレイヤーの値を永続化するには：  
 ```swift
-tealium?.dataLayer.add(key: &#34;lengthoftime&#34;, value: &#34;months&#34;, expiry: .afterCustom((.months, 1)))
+tealium?.dataLayer.add(key: "lengthoftime", value: "months", expiry: .afterCustom((.months, 1)))
 ```
 
 ### すべてのデータの取得
 
-データレイヤーに現在保存されているすべてのデータを取得するには、[all()](/ja/platforms/ios-swift/api/tealium-data-layer/#all)メソッドを使用します：  
+データレイヤーに現在保存されているすべてのデータを取得するには、[all()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#all)メソッドを使用します：  
 
 ```swift
 let data: [String: Any] = tealium?.dataLayer.all
 ```
 
-また、[`Tealium.gatherTrackData()`](/ja/platforms/ios-swift/api/tealium/#gathertrackdata)も参照してください。
+また、[`Tealium.gatherTrackData()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#gathertrackdata)も参照してください。
 
 ### データのクリア
 
-特定のキーのデータをクリアするには、[delete()](/ja/platforms/ios-swift/api/tealium-data-layer/#delete)メソッドを使用します：
+特定のキーのデータをクリアするには、[delete()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#delete)メソッドを使用します：
 
 - 複数のキー：`dataLayer.delete(forKeys:)`
 - 単一のキー：`dataLayer.delete(forKey:)`
 
-すべてのデータをクリアするには、[`deleteAll()`](/ja/platforms/ios-swift/api/tealium-data-layer/#delete)メソッドを使用します。
+すべてのデータをクリアするには、[`deleteAll()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#delete)メソッドを使用します。
 
 ### 例
 
@@ -107,17 +107,17 @@ class TealiumHelper {
 	tealium = Tealium(config: config) { [weak self] _ in
 		guard let self = self, let teal = self.tealium else { return }
 
-		teal.dataLayer.add(key: &#34;mysessionvar&#34;, value: 123456)
+		teal.dataLayer.add(key: "mysessionvar", value: 123456)
 
-		teal.dataLayer.add(key: &#34;myvarforever&#34;, value: &#34;hello&#34;, expiry: .forever)
+		teal.dataLayer.add(key: "myvarforever", value: "hello", expiry: .forever)
 
-		teal.dataLayer.add(key: &#34;campaign&#34;, value: &#34;summer&#34;, expiry: .afterCustom((.months, 3)))
+		teal.dataLayer.add(key: "campaign", value: "summer", expiry: .afterCustom((.months, 3)))
 
-		print(&#34;All event data: \(teal.dataLayer.all)&#34;)
-		print(&#34;All session data: \(teal.dataLayer.allSessionData)&#34;)
-		print(&#34;Single event data key `campaign`: \(teal.dataLayer.all[&#34;campaign&#34;])&#34;)
+		print("All event data: \(teal.dataLayer.all)")
+		print("All session data: \(teal.dataLayer.allSessionData)")
+		print("Single event data key `campaign`: \(teal.dataLayer.all["campaign"])")
 
-		teal.dataLayer.delete(forKeys: [&#34;myvarforever&#34;])
+		teal.dataLayer.delete(forKeys: ["myvarforever"])
 
 		teal.dataLayer.deleteAll()
 	}
@@ -128,7 +128,7 @@ class TealiumHelper {
 
 ### アプリデータコレクター
 
-以下の変数は、[`AppData`](/ja/platforms/ios-swift/module-list/appdata/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`AppData`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/appdata/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名        | 説明                                                                                                                                                  | 例 |
 |:---------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--|
@@ -142,7 +142,7 @@ class TealiumHelper {
 
 ### アトリビューションコレクター
 
-以下の変数は、[`Attribution`](/ja/platforms/ios-swift/module-list/attribution/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Attribution`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/attribution/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名                   | 説明                                                                                                                                                                                                            | 例 |
 |:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--|
@@ -156,7 +156,7 @@ class TealiumHelper {
 | `ad_keyword_matchtype`          | ブロード、エクサクト、または検索マッチのいずれかであるキーワードマッチタイプ                                                                                                                | `Exact` |
 | `ad_org_id`                     | 対応する広告のキャンペーン組織ID                                                                                                                                                                        | `OrgID` |
 | `ad_org_name`                   | 対応する広告のキャンペーン組織名                                                                                                                                                                      | `OrgName` |
-| `ad_purchase_date`              | ユーザーがアプリを初めてダウンロードした日時。`iadconversion-type = &#34;Redownload&#34;`の場合、これは元の購入日です。これはApple Search Adに関連付けられている場合もあります。 | `2016-12-05T17:31:40Z` |
+| `ad_purchase_date`              | ユーザーがアプリを初めてダウンロードした日時。`iadconversion-type = "Redownload"`の場合、これは元の購入日です。これはApple Search Adに関連付けられている場合もあります。 | `2016-12-05T17:31:40Z` |
 | `ad_region`                     | インストールを駆動したキャンペーンに関連付けられた国または地域を識別します。                                                                                                                                | `US` |
 | `ad_user_clicked_last_30_days`  | ユーザーがアプリのダウンロードの30日前にSearch Adsのインプレッションをクリックしたかどうかを示すブール値                                                                                                                     | `true` |
 | `ad_user_conversion _type`      | アプリの新規ダウンロードまたは再ダウンロードを識別します                                                                                                                                                                       | `Download` |
@@ -169,7 +169,7 @@ class TealiumHelper {
 
 ### オートトラッキングコレクター
 
-以下の変数は、[`Autotracking`](/ja/platforms/ios-swift/module-list/autotracking/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Autotracking`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/autotracking/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明                                                | 例 |
 |:--------------|:-----------------------------------------------------------|:--------|
@@ -177,7 +177,7 @@ class TealiumHelper {
 
 ### Collectディスパッチャー
 
-以下の変数は、[`Collect`](/ja/platforms/ios-swift/module-list/collect/)ディスパッチャーによってデータレイヤーに追加されます。
+以下の変数は、[`Collect`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/collect/)ディスパッチャーによってデータレイヤーに追加されます。
 
 | 変数名        | 説明                                                        | 例 |
 |:---------------------|:-------------------------------------------------------------------|:--|
@@ -186,11 +186,11 @@ class TealiumHelper {
 
 ### Consent Managerモジュール
 
-以下の変数は、[`ConsentManager`](/ja/platforms/ios-swift/consent-management/)モジュールが有効になっている場合にデータレイヤーに追加されます。
+以下の変数は、[`ConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift/consent-management/)モジュールが有効になっている場合にデータレイヤーに追加されます。
 
 | 変数名        | 説明                                                          | 例 |
 |:---------------------|:---------------------------------------------------------------------|:--|
-| `consent_categories` | ユーザーが選択した同意カテゴリの配列                   | `[&#34;analytics&#34;, &#34;cdp&#34;]` |
+| `consent_categories` | ユーザーが選択した同意カテゴリの配列                   | `["analytics", "cdp"]` |
 | `consent_status`     | ユーザーの現在の同意ステータス                                    | `consented`, `notConsented` |
 | `policy`             | 同意ポリシー                                                       | `gdpr`, `ccpa` |
 | `do_not_sell`        | ユーザーがデータの販売を希望しないかどうか（CCPAの場合のみ） | `true` |
@@ -228,14 +228,14 @@ class TealiumHelper {
 
 ### クラッシュコレクター
 
-以下の変数は、[`CrashReporter`](/ja/platforms/ios-swift/module-list/crash-reporter/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`CrashReporter`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/crash-reporter/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名             | 説明                                                           | 例 |
 |:--------------------------|:----------------------------------------------------------------------|:--|
 | `app_memory_usage`        | クラッシュ時のデバイス上のアプリの現在のメモリ使用量 | `143.57MB` |
 | `crash_cause`             | クラッシュの原因                                                    | `Crash Reason` |
 | `crash_name`              | クラッシュのフレンドリーな名前（利用可能な場合）                              | `Crash Name` |
-| `crash_libraries`         | クラッシュ時にロードされたライブラリのリスト                     | `{ &#34;baseAddress&#34;: &#34;0xa3e0000&#34;, &#34;codeType&#34;: { &#34;arch&#34;: 64, &#34;typeEncoding&#34;: &#34;Mach&#34;}, &#34;imageName&#34;: &#34;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&#34;, &#34;imageSize&#34;: 212992, &#34;imageUuid&#34;: &#34;4015e9b70bde&#34; }` |
+| `crash_libraries`         | クラッシュ時にロードされたライブラリのリスト                     | `{ "baseAddress": "0xa3e0000", "codeType": { "arch": 64, "typeEncoding": "Mach"}, "imageName": "/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim", "imageSize": 212992, "imageUuid": "4015e9b70bde" }` |
 | `crash_process_id`        | クラッシュ時のアプリのPID                                       | `84351` |
 | `crash_process_path`      | アプリが実行されているパス                                        | `/DemoApp.app/DemoApp` |
 | `crash_parent_process`    | アプリを起動した親プロセス                                  | `launchd_sim` |
@@ -243,7 +243,7 @@ class TealiumHelper {
 | `crash_signal_address`    | クラッシュのシグナルアドレス                                   | `4572945982` |
 | `crash_signal_code`       | クラッシュのシグナルコード                                     | `#0` |
 | `crash_signal_name`       | クラッシュのシグナル名                                         | `SIGABRT` |
-| `crash_threads`           | クラッシュ時のすべてのアクティブスレッドを返します。 | `{&#34;crashed&#34;: 1,&#34;registers&#34;: {&#34;cs&#34;: &#34;0x07&#34;},&#34;stack&#34;: {&#34;instructionPointer&#34;: 4572945982,&#34;symbolInfo&#34;: {&#34;symbolName&#34;: &#34;&#34;,&#34;symbolStartAddr&#34;: 0},&#34;threadId&#34;: &#34;&#34;}}` |
+| `crash_threads`           | クラッシュ時のすべてのアクティブスレッドを返します。 | `{"crashed": 1,"registers": {"cs": "0x07"},"stack": {"instructionPointer": 4572945982,"symbolInfo": {"symbolName": "","symbolStartAddr": 0},"threadId": ""}}` |
 | `crash_uuid`              | この特定のクラッシュの一意の識別子                             | `CC2DA0E9-E544-429A-AC5E-A268FC62F02A` |
 | `device_memory_usage`     | クラッシュ時のデバイス上のアプリの現在のメモリ使用量 | `143.57MB` |
 | `device_memory_available` | クラッシュ時のデバイス上の空きメモリ                        | `1068.88MB` |
@@ -252,7 +252,7 @@ class TealiumHelper {
 
 ### デバイスデータコレクター
 
-以下の変数は、[`DeviceData`](/ja/platforms/ios-swift/module-list/device-data/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`DeviceData`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/device-data/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名                 | 説明                                                                                                                                         | 例 |
 |:------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:--|
@@ -289,7 +289,7 @@ class TealiumHelper {
 
 ### ライフサイクルコレクター
 
-以下の変数は、[`Lifecycle`](/ja/platforms/ios-swift/module-list/lifecycle/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Lifecycle`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/lifecycle/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名                        | 説明                                                                                                                              | 例 |
 |:-------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:--|
@@ -313,20 +313,20 @@ class TealiumHelper {
 | `lifecycle_totallaunchcount`         | インストール以降の起動の合計回数（アプリが削除される場合のみリセットされます）                                                               | `3` |
 | `lifecycle_totalsecondsawake`        | アプリが起動している/アクティブな状態である秒数の合計（アプリが削除される場合のみリセットされます）                          | `36` |
 | `lifecycle_totalsleepcount`          | アプリがバックグラウンドに入った回数の合計（アプリが削除される場合のみリセットされます）                                                        | `400` |
-| `lifecycle_totalwakecount`           | インストール以降の起動&#43;起床の合計回数（アプリが削除される場合のみリセットされます）                                                               | `563` |
+| `lifecycle_totalwakecount`           | インストール以降の起動+起床の合計回数（アプリが削除される場合のみリセットされます）                                                               | `563` |
 | `lifecycle_type`                     | ライフサイクルコールのタイプ                                                                                                                  | `launch`, `wake`, `sleep` |
 | `lifecycle_updatelaunchdate`         | バージョンの更新が検出された後の最初の起動/起床のGMTタイムスタンプ                                                                 | `2014-09-08T18:10:01Z` |
-| `lifecycle_wakecount`                | このバージョンのアプリの起動&#43;起床の合計回数（更新される場合にリセットされます）                                                          | `29` |
+| `lifecycle_wakecount`                | このバージョンのアプリの起動+起床の合計回数（更新される場合にリセットされます）                                                          | `29` |
 
 ### ロケーションコレクター
 
-以下の変数は、[`Location`](/ja/platforms/ios-swift/module-list/location/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Location`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/location/)モジュールによってデータレイヤーに追加されます。
 
 | 変数  名             | 説明                                          | 例 |
 |:---------------------------|:-----------------------------------------|:--|
 | `geofence_name`            | ジオフェンス領域の名前                      | `Tealium_San_Diego` |
 | `geofence_transition_type` | ジオフェンスのトランジションイベントのタイプ | `entered`,`exited` |
-| `location_timestamp`       | ユーザーがジオフェンス領域に入った/出た日時（GMT） | `2020-01-28 16:29:46 &#43;0000` |
+| `location_timestamp`       | ユーザーがジオフェンス領域に入った/出た日時（GMT） | `2020-01-28 16:29:46 +0000` |
 | `latitude`                 | ユーザーの最新の位置の緯度                  | `32.906119` |
 | `longitude`                | ユーザーの最新の位置の経度                  | `-117.23791632509666` |
 | `movement_speed`           | デバイスの瞬間的な速度（メートル/秒）       | `1.0` |
@@ -334,7 +334,7 @@ class TealiumHelper {
 
 ### タグ管理
 
-以下の変数は、[`Tag Management`](/ja/platforms/ios-swift/module-list/tag-management/)モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Tag Management`](https://docs.tealium.com/ja/platforms/ios-swift/module-list/tag-management/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名        | 説明                                                        | 例 |
 |:---------------------|:-------------------------------------------------------------------|:--|

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-s3-connector/
 ---
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: 10 minutes
@@ -13,7 +13,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -45,7 +45,11 @@ Tealium requires a connection to an AWS S3 instance to display a list of buckets
 * Provide an Access Key and Access Secret.
 * Provide STS (Security Token Service) credentials.
 
- If the S3 objects are encrypted, you will need to add decrypt permission to the IAM user and KMS key policy. 
+
+<blockquote>
+If the S3 objects are encrypted, you will need to add decrypt permission to the IAM user and KMS key policy.
+</blockquote>
+
 
 #### Access Key and Secret credentials
 
@@ -59,31 +63,31 @@ To find your AWS Access Key and Secret:
     1. Search for and attach the `AmazonS3FullAccess` policy for full access. To restrict access to a specific bucket, create a policy similar to the following example. In the example, `YOUR_BUCKET_NAME` is the bucket that Tealium would use to upload event and audience data into S3 objects:
     ```json
     {
-      &#34;Version&#34;: &#34;2012-10-17&#34;,
-      &#34;Statement&#34;: [
+      "Version": "2012-10-17",
+      "Statement": [
           {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                   &#34;s3:ListBucket&#34;,
-                    &#34;s3:PutObject&#34;,
-                    &#34;s3:GetObject&#34;,
-                    &#34;s3:ListBucketMultipartUploads&#34;,
-                    &#34;s3:ListMultipartUploadParts&#34;
+                "Effect": "Allow",
+                "Action": [
+                   "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:ListBucketMultipartUploads",
+                    "s3:ListMultipartUploadParts"
                 ],
-                &#34;Resource&#34;: [
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Resource": [
+                    "arn:aws:s3:::YOUR_BUCKET_NAME",
+                    "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                 ]
             },
             // Add the following section if you are running on a private cloud
             // and require decryption
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                     &#34;kms:Decrypt&#34;,
-                     &#34;kms:GenerateDataKey&#34;
+                "Effect": "Allow",
+                "Action": [
+                     "kms:Decrypt",
+                     "kms:GenerateDataKey"
                 ],
-                 &#34;Resource&#34;: &#34;arn:aws:kms:YOUR_REGION:111879511226:key/YOUR_KEY_ID&#34;
+                 "Resource": "arn:aws:kms:YOUR_REGION:111879511226:key/YOUR_KEY_ID"
            }
         ]
     }
@@ -94,16 +98,16 @@ To find your AWS Access Key and Secret:
     1. If you are using a private cloud environment, add a statement to your key policy similar to the following:
     ```
     {
-        &#34;Sid&#34;: &#34;AllowDecryptFromIAMUser&#34;,
-        &#34;Effect&#34;: &#34;Allow&#34;,
-        &#34;Principal&#34;: {
-            &#34;AWS&#34;: &#34;arn:aws:iam::&lt;&lt;account-id&gt;&gt;:user/&lt;&lt;user-name&gt;&gt;&#34;
+        "Sid": "AllowDecryptFromIAMUser",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "arn:aws:iam::<<account-id>>:user/<<user-name>>"
         },
-        &#34;Action&#34;: [
-            &#34;kms:Decrypt&#34;,
-            &#34;kms:GenerateDataKey&#34;
+        "Action": [
+            "kms:Decrypt",
+            "kms:GenerateDataKey"
         ],
-        &#34;Resource&#34;: &#34;*&#34;
+        "Resource": "*"
     }
     ```
 
@@ -124,31 +128,31 @@ To find your STS credentials:
     1. Search for and attach the `AmazonS3FullAccess` policy for full access. To restrict access to a specific bucket, create a policy similar to the following example. In the example, `YOUR_BUCKET_NAME` is the bucket that Tealium would use to upload event and audience data into S3 objects:
     ```json
     {
-        &#34;Version&#34;: &#34;2012-10-17&#34;,
-        &#34;Statement&#34;: [
+        "Version": "2012-10-17",
+        "Statement": [
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                    &#34;s3:ListBucket&#34;,
-                    &#34;s3:PutObject&#34;,
-                    &#34;s3:GetObject&#34;,
-                    &#34;s3:ListBucketMultipartUploads&#34;,
-                    &#34;s3:ListMultipartUploadParts&#34;
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:ListBucketMultipartUploads",
+                    "s3:ListMultipartUploadParts"
                 ],
-                &#34;Resource&#34;: [
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Resource": [
+                    "arn:aws:s3:::YOUR_BUCKET_NAME",
+                    "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                 ]
             },
             // Add the following section if you are running on a private cloud
             // and require decryption
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Principal&#34;: {
-                &#34;AWS&#34;: &#34;arn:aws:iam::111879511226:user/YOUR_USER_NAME&#34;
+                "Effect": "Allow",
+                "Principal": {
+                "AWS": "arn:aws:iam::111879511226:user/YOUR_USER_NAME"
              },
-                &#34;Action&#34;: &#34;s3:GetObject&#34;,
-                &#34;Resource&#34;: &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
             }
         ]
     }
@@ -159,17 +163,17 @@ To find your STS credentials:
     1. Set the `EXTERNAL_ID` value for the connection to Tealium. The ID can be up to 256 characters long and can include alphanumeric characters (`A-Z`, `a-z`, `0-9`) and symbols, such as hyphens (`-`), underscores (`_`), and periods (`.`).
     ```json
         {
-            &#34;Version&#34;: &#34;2012-10-17&#34;,
-            &#34;Statement&#34;: [
+            "Version": "2012-10-17",
+            "Statement": [
                 {
-                    &#34;Effect&#34;: &#34;Allow&#34;,
-                    &#34;Principal&#34;: {
-                        &#34;AWS&#34;: &#34;arn:aws:iam::757913464184:root&#34;
+                    "Effect": "Allow",
+                    "Principal": {
+                        "AWS": "arn:aws:iam::757913464184:root"
                     },
-                    &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
-                    &#34;Condition&#34;: {
-                        &#34;StringEquals&#34;: {
-                            &#34;sts:ExternalId&#34;: &#34;EXTERNAL_ID&#34;
+                    "Action": "sts:AssumeRole",
+                    "Condition": {
+                        "StringEquals": {
+                            "sts:ExternalId": "EXTERNAL_ID"
                         }
                     }
                 }
@@ -209,7 +213,7 @@ The following section describes how to set up parameters and options for each ac
 | Bucket | Select the Amazon S3 bucket or provide a custom value. |
 | File Path | Specify the path to the S3 object where you want the data to be appended. |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
@@ -228,10 +232,10 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Event Attribute | Define custom mappings between event attributes and vendor parameters. |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**.  For more information and usage examples, see  .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Event Parameters. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**.  For more information and usage examples, see  [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in Event Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.</li></ul>|
 
 ### Send Entire Visitor Data
 
@@ -242,7 +246,7 @@ The following section describes how to set up parameters and options for each ac
 | Bucket | Select the Amazon S3 bucket or provide a custom value. |
 | File Path | Specify the path to the S3 object where you want the data to be appended. |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 | Include All Visitor Events | Select to include current visit data with visitor data. |
@@ -261,10 +265,10 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**.  For more information and usage examples, see  .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Event Parameters. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**.  For more information and usage examples, see  [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in Event Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.</li></ul>|
 
 ### Send Log Event
 
@@ -281,10 +285,10 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Event Attribute | Define custom mappings between event attributes and vendor parameters. |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**.  For more information and usage examples, see  .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Event Parameters. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**.  For more information and usage examples, see  [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in Event Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, for example: `{{SomeTemplateName}}`.</li></ul>|
 
 ### Send Entire Log Event
 
@@ -295,4 +299,4 @@ The following section describes how to set up parameters and options for each ac
 | Bucket | Select the Amazon S3 bucket or provide a custom value. |
 | File Path | Specify the path to the S3 object where you want the data to be appended. |
 | File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |

@@ -3,7 +3,11 @@ title: Webhook JDBC Connector Setup Guide
 description: Connect this webhook connector to a JDBC-compatible database to write event or visitor data directly into your tables, either by storing the full JSON payload or mapping individual attributes to specific columns.
 url: https://docs.tealium.com/server-side-connectors/webhook-jdbc/
 ---
-To use a webhook to send data to an HTTP API endpoint, see [About webhook connectors]().
+
+<blockquote>
+To use a webhook to send data to an HTTP API endpoint, see [About webhook connectors](https://docs.tealium.com/about-webhook-connectors/).
+</blockquote>
+
 
 This connector is compatible with the following databases:
 
@@ -23,18 +27,18 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
-* **Username**: The username to log into your database from Tealium. For security reasons, allow this user to connect only from these [IP addresses]().
+* **Username**: The username to log into your database from Tealium. For security reasons, allow this user to connect only from these [IP addresses](https://docs.tealium.com/ip-allow-list/).
 * **Password**: The password for the username provided.
-* **JDBC URL**: The fully qualified JDBC URL to establish the connection (for example, `jdbc:postgresql://host:5432/dbname?p1=a&amp;p2=b`).
+* **JDBC URL**: The fully qualified JDBC URL to establish the connection (for example, `jdbc:postgresql://host:5432/dbname?p1=a&p2=b`).
 * **Additional properties**: A set of comma-separated pairs to pass as properties when establishing the connection. For example, `prop1=a,prop2=b` results in the following adjustment to the connection:
 
     ```java
-    props.setProperty(&#34;prop1&#34;, &#34;a&#34;);
-    props.setProperty(&#34;prop2&#34;, &#34;b&#34;);
+    props.setProperty("prop1", "a");
+    props.setProperty("prop2", "b");
     Connection conn = DriverManager.getConnection(url, props);
     ```
 
@@ -94,7 +98,7 @@ Use this action to send specific event attributes to specific table columns.
 
 ### Send Entire Log Event
 
-For more information, see .
+For more information, see [connector-error-logging](https://docs.tealium.com/connector-error-logging/).
 
 #### Parameters
 
@@ -108,7 +112,7 @@ For more information, see .
 
 ### Send Log Event
 
-For more information, see .
+For more information, see [connector-error-logging](https://docs.tealium.com/connector-error-logging/).
 
 #### Parameters
 
@@ -172,7 +176,7 @@ Use this action to run custom SQL statements.
 
 Only `INSERT`, `UPDATE` or `MERGE` statements are allowed, but they can include `SELECT` sub-queries. Including multiple `INSERT`, `UPDATE` or `MERGE` statements within the same query causes an error.
 
-To use this feature, map your attributes to named placeholders, that you reference in your SQL using the `:MY_PLACEHOLDER` format. For example, if you map a boolean attribute to a placeholder named `:my_bool_param`, then reference `:my_bool_param` in the query where you want that value to be replaced by the mapped attribute&#39;s value.
+To use this feature, map your attributes to named placeholders, that you reference in your SQL using the `:MY_PLACEHOLDER` format. For example, if you map a boolean attribute to a placeholder named `:my_bool_param`, then reference `:my_bool_param` in the query where you want that value to be replaced by the mapped attribute's value.
 
 Examples:
 

@@ -11,7 +11,7 @@ Actions assigned to the same cooldown group share a cooldown period. When one ac
 
 When you create a cooldown group, it becomes available to all frequency-capped actions in your profile.
 
-![](/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png)
+![](https://docs.tealium.com/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png)
 
 To create a cooldown group:
 
@@ -25,7 +25,7 @@ To create a cooldown group:
 
 ## Using the default cooldown group
 
-![](/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png)
+![](https://docs.tealium.com/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png)
 
 The default cooldown group applies to frequency-capped actions when no other cooldown is configured in your profile. You can modify the color and duration settings of the default group, but you cannot change its name.
 
@@ -51,15 +51,19 @@ You can apply a cooldown group to one or more frequency-capped actions in the sa
 
 To apply a cooldown group to an existing action:
 
-1. In the sidebar, go to **Connectors &gt; Overview**.
+1. In the sidebar, go to **Connectors > Overview**.
 1. Click a connector to expand its details.  
 1. Select the **Actions** tab and choose the action to configure.
    The action must use visitor data and an audience source.
 1. Click the **Source** tab.
 1. Scroll to **Frequency Cap** and turn it on.
 1. Under **Action Priority**, use the up or down arrow to assign a priority number.  
-      Do not set this value to zero or a negative number. Assign the priorities in increments of 10 instead of consecutive numbers. This makes it easier to insert a new action later without having to update the priority values for other actions.
+      
+<blockquote>
+Do not set this value to zero or a negative number. Assign the priorities in increments of 10 instead of consecutive numbers. This makes it easier to insert a new action later without having to update the priority values for other actions.
+</blockquote>
+
 1. Under **Action Cooldown Group**, select the cooldown group.  
-      ![](/images/server-side/connectors/frequency-capping/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png)
+      ![](https://docs.tealium.com/images/server-side/connectors/frequency-capping/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png)
 1. Click **Done**.
 1. Save and publish your profile.

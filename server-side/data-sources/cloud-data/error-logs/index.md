@@ -30,4 +30,4 @@ Complete the following steps to export logs:
 1. Click **Request Export**.
 
 There is a short delay while the logs are processed. 
-You can view your exported logs from the past six days by navigating to **Error Logs&gt;View Exported Logs**. Logs are stored for 30 days.
+You can view your exported logs from the past six days by navigating to **Error Logs>View Exported Logs**. Logs are stored for 30 days.

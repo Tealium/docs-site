@@ -30,7 +30,11 @@ Triggers when thresholds are met that identify abnormal and potentially fraudule
 
 * **Ad Blocker Signal**  
 Identifies when or if certain files are blocked, which identifies that an ad-blocker is present.   
+
+<blockquote>
 You can optionally use signals from your EventStream event specifications and your AudienceStream visitor attributes.
+</blockquote>
+
 
 ## Tag tips
 
@@ -46,19 +50,19 @@ You can optionally use signals from your EventStream event specifications and yo
 
 ## Tag configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Clicktale Carmel tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Clicktale Carmel tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings in the Data Mappings section.
 
 ## Load rules
 
-[Load Rules]() determine when and where to load an instance of this tag. The &#39;Load on All Pages&#39; rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag. The 'Load on All Pages' rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
 
-* Load this tag on the page where you want to track the visitor&#39;s mouse movements.
+* Load this tag on the page where you want to track the visitor's mouse movements.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -66,31 +70,31 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-| `title` |  &lt;ul&gt;&lt;li&gt;(Required) Identifies the tag instance.&lt;/li&gt;&lt;li&gt;Clicktale Carmel is the default name.&lt;/li&gt;&lt;li&gt;When using multiple tags by the same vendor, assign a unique name.&lt;/li&gt;&lt;/ul&gt; |
-|`partition`|  &lt;ul&gt;&lt;li&gt;Partition.&lt;/li&gt;&lt;li&gt;The partition where data is sent.&lt;/li&gt;&lt;li&gt;Map to this variable to dynamically configure the server partition value.&lt;/li&gt;&lt;/ul&gt; |
-|`project_guid`|  &lt;ul&gt;&lt;li&gt;Project GUID.&lt;/li&gt;&lt;li&gt;Map to this variable to set the project guide field.&lt;/li&gt;&lt;/ul&gt; |
-|`send_replay_link`|  &lt;ul&gt;&lt;li&gt;Send Clicktale Replay Link&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`send_udh_audiences`|  &lt;ul&gt;&lt;li&gt;Send UDH Audiences.&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-|`tealium_account`|  &lt;ul&gt;&lt;li&gt;Tealium Account.&lt;/li&gt;&lt;/ul&gt; |
-|`tealium_profile`|  &lt;ul&gt;&lt;li&gt;Tealium Profile.&lt;/li&gt;&lt;/ul&gt; |
+| `title` |  <ul><li>(Required) Identifies the tag instance.</li><li>Clicktale Carmel is the default name.</li><li>When using multiple tags by the same vendor, assign a unique name.</li></ul> |
+|`partition`|  <ul><li>Partition.</li><li>The partition where data is sent.</li><li>Map to this variable to dynamically configure the server partition value.</li></ul> |
+|`project_guid`|  <ul><li>Project GUID.</li><li>Map to this variable to set the project guide field.</li></ul> |
+|`send_replay_link`|  <ul><li>Send Clicktale Replay Link</li><li>Values are **true** or **false**.</li></ul> |
+|`send_udh_audiences`|  <ul><li>Send UDH Audiences.</li><li>Values are **true** or **false**.</li></ul> |
+|`tealium_account`|  <ul><li>Tealium Account.</li></ul> |
+|`tealium_profile`|  <ul><li>Tealium Profile.</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;Order total.&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping amount.&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax amount.&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_sku`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of SKUs.&lt;/li&gt;&lt;li&gt;Overrides `_csku`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories.&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID.</li><li>Overrides `_corder`.</li><li>Required for transactions.</li></ul> |
+|`order_total`|  <ul><li>Order total.</li><li>Overrides `_ctotal`.</li><li>Required for transactions.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping amount.</li><li>Overrides `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax amount.</li><li>Overrides `_ctax`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li><li>Required for transactions.</li></ul> |
+|`product_sku`|  <ul><li>Array</li><li>List of SKUs.</li><li>Overrides `_csku`.</li><li>Required for transactions.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories.</li><li>Overrides `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li><li>Required for transactions.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li><li>Required for transactions.</li></ul> |
 
 ### Badges
 
 |Variable| Description|
 | --- | --- |
-| `title` |  &lt;ul&gt;&lt;li&gt;Badge Identifier.&lt;/li&gt;&lt;li&gt;To send the mapped badge to Clicktale, enter the name by which the badge will be identified in Clicktale.&lt;/li&gt;&lt;li&gt;Tealium automatically includes the badge title as a child property of a new object `send_udh_data`&lt;/li&gt;&lt;li&gt;Your badge name will appear as mapped to `send_udh_data`.&lt;/li&gt;&lt;/ul&gt; |
+| `title` |  <ul><li>Badge Identifier.</li><li>To send the mapped badge to Clicktale, enter the name by which the badge will be identified in Clicktale.</li><li>Tealium automatically includes the badge title as a child property of a new object `send_udh_data`</li><li>Your badge name will appear as mapped to `send_udh_data`.</li></ul> |

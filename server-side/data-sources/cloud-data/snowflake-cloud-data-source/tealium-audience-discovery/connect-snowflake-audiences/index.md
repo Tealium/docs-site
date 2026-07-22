@@ -7,7 +7,7 @@ After creating an audience in the app, connect it to Tealium to load audience re
 
 ## Requirements
 
-* An active audience in Tealium Audience Discovery for Snowflake. See [Create an audience]().
+* An active audience in Tealium Audience Discovery for Snowflake. See [Create an audience](https://docs.tealium.com/manage-discovery-audiences/).
 * A Tealium account with permission to configure data sources.
 * Access to the app and the Snowflake connection values configured during installation.
 * (Optional) To use webhook or other outbound integrations, your Snowflake administrator must configure a network rule and external access integration for the destination URL. Snowflake blocks outbound traffic by default.
@@ -23,11 +23,11 @@ After creating an audience in the app, connect it to Tealium to load audience re
    * **Audience view** — the fully qualified view name in `DATABASE.SCHEMA.VIEW_NAME` format
    * **Query** — a pre-built `SELECT` statement you can use when configuring the data source
 
-![](/images/server-side/data-sources/tealium-audience-discovery-share-dialog.png)
+![](https://docs.tealium.com/images/server-side/data-sources/tealium-audience-discovery-share-dialog.png)
 
 ## Create the Snowflake data source
 
-1. In Tealium, go to **Connect &gt; Data Sources**.
+1. In Tealium, go to **Connect > Data Sources**.
 1. Click **Add Data Source**.
 1. Select **Snowflake** under **Data Cloud**.
 
@@ -38,17 +38,19 @@ When configuring the connection, use the values from the app:
 * **Connection Role** — the role configured during installation (for example, `TEALIUM_AUDIENCE_DISCOVERY_EXTERNAL_ROLE`)
 * **Connection Warehouse** — the warehouse configured during installation (for example, `TEALIUM_AUDIENCE_DISCOVERY_WH`)
 
-For complete configuration steps, see [Snowflake cloud data source]().
+For complete configuration steps, see [Snowflake cloud data source](https://docs.tealium.com/about-snowflake-cloud-data-source/).
 
 
+<blockquote>
 If you have multiple audiences, reuse the same Snowflake connection configuration. Create a separate data source for each audience.
+</blockquote>
 
 
 ## Configure the query mode for audience tables
 
 Audience tables include system-managed control columns that track when records are added and updated.
 
-For audience tables, use **Timestamp &#43; Incrementing**. This configuration reliably loads new users as they are added to the audience.
+For audience tables, use **Timestamp + Incrementing**. This configuration reliably loads new users as they are added to the audience.
 
 Map the columns as follows:
 
@@ -74,7 +76,9 @@ This configuration ensures that Tealium:
 * Aligns with how the audience table is updated in Snowflake
 
 
+<blockquote>
 Set the data source schedule to match or be less frequent than the audience refresh schedule in the app. Running the data source more frequently results in empty loads.
+</blockquote>
 
 
 ## Complete the data source configuration
@@ -86,7 +90,7 @@ After setting the query mode, complete the remaining steps:
 1. Map columns to event attributes.
 1. Configure visitor ID mapping.
 
-These steps follow the standard Snowflake data source workflow. For details, see [Snowflake cloud data source]().
+These steps follow the standard Snowflake data source workflow. For details, see [Snowflake cloud data source](https://docs.tealium.com/about-snowflake-cloud-data-source/).
 
 ## Next steps
 

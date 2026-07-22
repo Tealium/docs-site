@@ -3,29 +3,33 @@ title: EventStream属性の管理
 description: この記事では、EventStream属性を管理する方法について説明します。
 url: https://docs.tealium.com/ja/administration/early-access/attributes-improvements/manage-es-attributes-early-access/
 ---
-&lt;!-- Remember to add aliases back in --&gt;
+<!-- Remember to add aliases back in -->
 
+
+<blockquote>
 新しい属性インターフェースはEarly Accessで提供されており、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
 
-**EventStream** &gt; **EventStream属性**に移動して、属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックしてその詳細を表示します。
 
-![](/images/server-side/ea-filter-es-attributes.png)
+**EventStream** > **EventStream属性**に移動して、属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックしてその詳細を表示します。
+
+![](https://docs.tealium.com/images/server-side/ea-filter-es-attributes.png)
 
 ## 属性を追加する
 
 イベント属性を追加するには、以下の手順を使用します：
 
-1. **&#43; 属性を追加**をクリックします。
+1. **+ 属性を追加**をクリックします。
 1. **属性を追加**ダイアログで、属性タイプを選択し、**続行**をクリックします。
     * **ユニバーサル変数**: このタイプは、データレイヤー内やリアルタイムで計算されるカスタムデータポイントが必要な場所で使用されます。これらは最も一般的な変数です。
     * **JavaScriptページ変数**: このタイプは、ブラウザインストール内のグローバルJavaScript変数の値を自動的にキャプチャします。
     * **HTMLメタデータ**: このタイプは、ブラウザインストール内のメタデータタグの値を自動的にキャプチャします。
     * **ファーストパーティクッキー**: このタイプは、ブラウザインストール内のクッキー変数の値を自動的にキャプチャします。
-    * **クエリ文字列パラメータ**: このタイプは、ブラウザインストール内の現在のページのURLクエリ文字列の値を自動的にキャプチャします。![](/images/server-side/ea-es-attribute-type.png)
-1. データタイプを選択し、**続行**をクリックします。データタイプの詳細については、を参照してください。
+    * **クエリ文字列パラメータ**: このタイプは、ブラウザインストール内の現在のページのURLクエリ文字列の値を自動的にキャプチャします。![](https://docs.tealium.com/images/server-side/ea-es-attribute-type.png)
+1. データタイプを選択し、**続行**をクリックします。データタイプの詳細については、[data-types](https://docs.tealium.com/data-types/)を参照してください。
 1. (必須) **タイトル**フィールドに説明的な名前を入力します。
 イベント属性の**タイトル**には、文字、数字、アンダースコア、ドル記号、角括弧、ピリオドのみを含めることができます。イベント属性の名前は、実装された変数の名前と一致する必要があります。
-      ![](/images/server-side/ea-form-es-attributes.png)
+      ![](https://docs.tealium.com/images/server-side/ea-form-es-attributes.png)
 1. **ノート**フィールドに、属性の目的やメカニズムを説明する役立つノートを入力します。
 1. (オプション) 訪問データにPIIデータが含まれている場合は、**制限されたデータ**を選択します。
 1. (オプション) データをEventDBに送信するには、**EventDB**を選択します。
@@ -37,18 +41,22 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 属性を複製するには、以下の手順を使用します：
 
 1. 複製したい属性をクリックし、その後で複製アイコンをクリックします。
-      ![](/images/server-side/duplicate-es-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/duplicate-es-attribute.png)
 1. 必要に応じて編集し、**保存**をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
 ## 属性を編集する
 
- 事前にロードされた属性は変更できませんが、それを複製してコピーを変更することができます。複製には元のものからすべてのエンリッチメントとルールが含まれます。
+
+<blockquote>
+事前にロードされた属性は変更できませんが、それを複製してコピーを変更することができます。複製には元のものからすべてのエンリッチメントとルールが含まれます。
+</blockquote>
+
 
 属性を編集するには、以下の手順を使用します：
 
 1. 編集したい属性をクリックし、鉛筆アイコンをクリックします。
-      ![](/images/server-side/edit-es-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/edit-es-attribute.png)
 1. 変更を行い、**保存**をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
@@ -58,9 +66,9 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 
 1. 削除したい属性をクリックします。
 1. 削除アイコンをクリックします。
-      ![](/images/server-side/delete-es-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/delete-es-attribute.png)
 属性を削除しようとすると、その属性がルール、エンリッチメント、またはオーディエンスに現在使用されている場合、次のメッセージが表示されます：
-      ![](/images/server-side/attribute-delete-in-use.png)
+      ![](https://docs.tealium.com/images/server-side/attribute-delete-in-use.png)
 属性を削除するには、ルール、エンリッチメント、またはオーディエンスから削除してから再試行してください。
 1. **属性を削除**ダイアログで**削除**をクリックして属性を削除します。
 1. 変更を適用するためにプロファイルを保存して公開します。

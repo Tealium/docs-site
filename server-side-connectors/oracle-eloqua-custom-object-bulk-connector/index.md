@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/oracle-eloqua-custom-object
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 15 minutes
@@ -25,7 +25,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following required settings:
 
@@ -45,7 +45,7 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Action Name|  &lt;ul&gt;&lt;li&gt;The name for this specific action&lt;/li&gt;&lt;/ul&gt; |
-|Action Categories|  &lt;ul&gt;&lt;li&gt;Example: Email&lt;/li&gt;&lt;li&gt;These categories are presented to your users through the consent prompt and consent preferences feature.&lt;/li&gt;&lt;li&gt;Users can opt-in or opt-out of tracking based on these categories&lt;/li&gt;&lt;/ul&gt; |
-|Source|  &lt;ul&gt;&lt;li&gt;Select data source&lt;/li&gt;&lt;/ul&gt; |
-|Custom Object|  &lt;ul&gt;&lt;li&gt;(Required) Select custom object.&lt;/li&gt;&lt;/ul&gt; |
+|Action Name|  <ul><li>The name for this specific action</li></ul> |
+|Action Categories|  <ul><li>Example: Email</li><li>These categories are presented to your users through the consent prompt and consent preferences feature.</li><li>Users can opt-in or opt-out of tracking based on these categories</li></ul> |
+|Source|  <ul><li>Select data source</li></ul> |
+|Custom Object|  <ul><li>(Required) Select custom object.</li></ul> |

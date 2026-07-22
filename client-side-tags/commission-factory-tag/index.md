@@ -5,12 +5,12 @@ url: https://docs.tealium.com/client-side-tags/commission-factory-tag/
 ---
 ## Requirements
 
-* The Commission Factory tag requires the [E-Commerce extension]().
+* The Commission Factory tag requires the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/).
 * You must add the extension and map the `_corder`, `_csubtotal`, `_csku`, `_cprice,` `_cquan` variables to their corresponding data sources.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -19,7 +19,7 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 

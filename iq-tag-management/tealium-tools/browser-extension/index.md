@@ -15,7 +15,7 @@ The Tealium Tools extension is built for the following browsers:
 To install the Tealium Tools extension on Google Chrome:
 
 1. In a new Chrome window, go to [Tealium Tools Chrome Extension](https://chrome.google.com/webstore/detail/tealium-tools/gidnphnamcemailggkemcgclnjeeokaa).
-1. Click **&#43; Add to Chrome**.
+1. Click **+ Add to Chrome**.
 1. Click **Add extension** to confirm.  
 Confirm that the button now displays **Added to Chrome** and that the Tealium icon displays on the upper right of the Chrome toolbar.
 1. Click the Tealium icon in the upper right of the Chrome window to open Tealium Tools and select a tool to use.
@@ -40,7 +40,7 @@ The Tealium Tools window is organized into two main tabs, with additional option
 
 * **Home**  
 Contains official Tealium built-in tools.  
-    ![](/images/iq-tag-management/tealium-tools-browser-extension.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-browser-extension.png)
 * **Tool Catalogue**  
 A catalogue of official Tealium built-in tools and community tools created by contributors from Tealium, our partners, and sometimes our clients. Please note that Tealium does not officially support community tools.
 
@@ -51,7 +51,7 @@ Click the user profile icon to access the following additional options:
 * **Login**  
   Manage login credentials and configure Single Sign-On (SSO). For more information, see [Using SSO](#using-sso).
 * **Settings**  
-  Customize tool behavior and set domain or environment preferences for tools like the Environment Switcher. For details, see [Using the Environment Switcher with custom domains or path overrides]().
+  Customize tool behavior and set domain or environment preferences for tools like the Environment Switcher. For details, see [Using the Environment Switcher with custom domains or path overrides](https://docs.tealium.com/environment-switcher/#using-the-environment-switcher-with-custom-domains-or-path-overrides).
 * **About**  
   View version details, build information, and learn about the Community tag used to label community tools.
 * **Feedback**  
@@ -69,7 +69,7 @@ To configure and use Single Sign-On (SSO):
 
 Return to **Login** settings and click **SSO Log In** to log in with Single Sign-On.
 
-![](/images/iq-tag-management/tealium-tools-sso-login.png)
+![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-sso-login.png)
 
 ## Official Tealium Tools
 
@@ -77,15 +77,15 @@ The following is a list of Tealium Tools that are built into the extension:
 
 * [**Tealium iQ**](https://my.tealiumiq.com)  
 A bookmark link to the iQ Tag Management interface.
-* [**Web Companion**]()  
+* [**Web Companion**](https://docs.tealium.com/web-companion/)  
 A browser tool used to audit your tag configuration, inspect data on your site, and create and test new configurations quickly and easily.
 * [**Tealium University**](https://university.tealium.com/)  
 A bookmark link to Tealium online learning portal, which includes self-paced courses, as well as access to In-person/Instructor-led training..
-* [**AudienceStream Trace**]()  
+* [**AudienceStream Trace**](https://docs.tealium.com/about-trace/)  
 Trace provides the necessary tools to put your Universal Data Hub configuration to the test. With Trace, you can observe every detail of a defined workflow, ensure attributes update correctly, rules are dialed in, and actions fire as expected. Trace works in real-time, so you know immediately what works and what needs adjusting.
-* [**Optimizely Helper**]()  
+* [**Optimizely Helper**](https://docs.tealium.com/optimizely-helper/)  
 Tealium AudienceStream enables marketers to discover audiences, enrich visitor profiles and stitch together customer interactions across digital touch points. Using both AudienceStream and Optimizely, users can leverage the audiences created in AudienceStream and build targeted experiments in Optimizely.
-* [**Environment Switcher**]()  
+* [**Environment Switcher**](https://docs.tealium.com/environment-switcher/)  
 The environment switcher is a powerful testing tool that lets you change the Tealium files (utag.js, utag.sync.js) that are loaded on a page by specifying an environment (Dev, QA, Prod, Custom) and/or an account and profile.
 * [**Tealium Docs**](/)
 A bookmark link to Tealium official documentation. This is a great starting point for implementers and developers.

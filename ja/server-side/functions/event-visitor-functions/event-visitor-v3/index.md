@@ -10,7 +10,7 @@ V3イベントまたは訪問関数を作成すると、関数コードエディ
 イベント関数には[`event object`](#event-object)と[`helper` object](#helper-object)があります。
 
 ```js
-activate(async ({ event, helper }) =&gt; {
+activate(async ({ event, helper }) => {
   ...
 });
 ```
@@ -18,7 +18,7 @@ activate(async ({ event, helper }) =&gt; {
 訪問関数には[`visitor` object](#visitor-object)、[`visit` object](#visit-object)、および[`helper` object](#helper-object)があります。
 
 ```js
-activate(async ({ visitor, visit, helper }) =&gt; {
+activate(async ({ visitor, visit, helper }) => {
   ...
 });
 ```
@@ -27,7 +27,11 @@ activate(async ({ visitor, visit, helper }) =&gt; {
 
 デフォルトコードの最初の行と最後の行の間のコードを必要に応じて変更してください。
 
+
+<blockquote>
 認証トークンはHTTPリクエスト内の関数からのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。
+</blockquote>
+
 
 ## track() 関数
 
@@ -42,7 +46,11 @@ activate(async ({ visitor, visit, helper }) =&gt; {
     * `tealium_datasource`：データソースキー。
     `tealium_account`、`tealium_profile`、および`tealium_datasource`フィールドが`data`オブジェクトに含まれている場合、`config`オブジェクトは必要ありません。
 
+
+<blockquote>
 各関数呼び出しは `track()` を最大6回まで呼び出すことができます。
+</blockquote>
+
 
 以下の例は、`data` と `config` パラメータで `track()` を呼び出しています：
 
@@ -50,9 +58,9 @@ activate(async ({ visitor, visit, helper }) =&gt; {
 track(data, {
             tealium_account: event.account,
             tealium_profile: event.profile,
-            tealium_datasource: &#39;x3p4b7&#39;
+            tealium_datasource: 'x3p4b7'
         })  
-        .then(response =&gt; {
+        .then(response => {
 
         // レスポンスを処理するコードはここに記述します
 
@@ -63,20 +71,24 @@ track(data, {
 
 ```js
 track(data)  
-  .then(response =&gt; {
+  .then(response => {
 
     // レスポンスを処理するコードはここに記述します
 
   })
 ```
 
-`track()` 関数の詳細な例については、[Tealium Collect HTTP APIにイベントを送信する]()を参照してください。
+`track()` 関数の詳細な例については、[Tealium Collect HTTP APIにイベントを送信する](https://docs.tealium.com/v3-event-visitor-function-examples/#send-an-event-to-the-tealium-collect-http-api)を参照してください。
 
 ## イベントオブジェクト
 
 `event` データオブジェクトはイベント関数で利用可能で、イベントデータを含んでいます。
 
-データパイプラインでイベント関数が実行される時点で、イベントデータオブジェクトの変更はシステムの他の部分には影響しません。データパイプラインに影響を与えるためにイベントデータを変更するには、イベント属性のエンリッチメントまたは[データ変換関数]()を使用してください。
+
+<blockquote>
+データパイプラインでイベント関数が実行される時点で、イベントデータオブジェクトの変更はシステムの他の部分には影響しません。データパイプラインに影響を与えるためにイベントデータを変更するには、イベント属性のエンリッチメントまたは[データ変換関数](https://docs.tealium.com/about-data-transformation-functions/)を使用してください。
+</blockquote>
+
 
 | プロパティ | データタイプ | 説明 |
 | --- | --- | --- |
@@ -107,51 +119,51 @@ track(data)
 
 ```json
 {
-  &#34;account&#34;: &#34;your-account&#34;,
-  &#34;profile&#34;: &#34;main&#34;,
-  &#34;event_id&#34;: &#34;run-test-event-id&#34;,
-  &#34;visitor_id&#34;: &#34;run-test-visitor-id&#34;,
-  &#34;data&#34;: {
-    &#34;dom&#34;: {
-      &#34;viewport_height&#34;: 766,
-      &#34;referrer&#34;: &#34;&#34;,
-      &#34;viewport_width&#34;: 1440,
-      &#34;domain&#34;: &#34;www.example.com&#34;,
-      &#34;title&#34;: &#34;Home Page&#34;,
-      &#34;query_string&#34;: &#34;q=help&#34;,
-      &#34;hash&#34;: &#34;&#34;,
-      &#34;url&#34;: &#34;https://www.example.com/?q=help&#34;,
-      &#34;pathname&#34;: &#34;/&#34;
+  "account": "your-account",
+  "profile": "main",
+  "event_id": "run-test-event-id",
+  "visitor_id": "run-test-visitor-id",
+  "data": {
+    "dom": {
+      "viewport_height": 766,
+      "referrer": "",
+      "viewport_width": 1440,
+      "domain": "www.example.com",
+      "title": "Home Page",
+      "query_string": "q=help",
+      "hash": "",
+      "url": "https://www.example.com/?q=help",
+      "pathname": "/"
     },
-    &#34;udo&#34;: {
-      &#34;tealium_event&#34;: &#34;page_view&#34;,
-      &#34;ut.account&#34;: &#34;your-account&#34;,
-      &#34;ut.visitor_id&#34;: &#34;0176cb4f3482110a5ba4702e147b0006d005a065104f2&#34;,
-      &#34;page_name&#34;: &#34;Home Page&#34;,
-      &#34;ut.event&#34;: &#34;view&#34;,
-      &#34;search_keyword&#34;: &#34;help&#34;,
-      &#34;ut.domain&#34;: &#34;example.com&#34;,
-      &#34;tealium_profile&#34;: &#34;main&#34;,
-      &#34;ut.version&#34;: &#34;ut4.46.202006020705&#34;,
-      &#34;tealium_session_id&#34;: &#34;1609910608323&#34;,
-      &#34;tealium_account&#34;: &#34;your-account&#34;,
-      &#34;ut.profile&#34;: &#34;main&#34;
+    "udo": {
+      "tealium_event": "page_view",
+      "ut.account": "your-account",
+      "ut.visitor_id": "0176cb4f3482110a5ba4702e147b0006d005a065104f2",
+      "page_name": "Home Page",
+      "ut.event": "view",
+      "search_keyword": "help",
+      "ut.domain": "example.com",
+      "tealium_profile": "main",
+      "ut.version": "ut4.46.202006020705",
+      "tealium_session_id": "1609910608323",
+      "tealium_account": "your-account",
+      "ut.profile": "main"
     },
-    &#34;firstparty_tealium_cookies&#34;: {
-      &#34;utag_main__sn&#34;: &#34;12&#34;,
-      &#34;utag_main_dc_visit&#34;: &#34;12&#34;,
-      &#34;utag_main_ses_id&#34;: &#34;1609910610822&#34;,
-      &#34;utag_main_dc_region&#34;: &#34;us-east-1&#34;,
-      &#34;utag_main__st&#34;: &#34;1609913306118&#34;,
-      &#34;utag_main_v_id&#34;: &#34;0176cb4f3482110a5ba4702e147b0006d005a065104f2&#34;,
-      &#34;utag_main__se&#34;: &#34;66&#34;,
-      &#34;utag_main__ss&#34;: &#34;0&#34;,
-      &#34;utag_main_dc_event&#34;: &#34;60&#34;,
-      &#34;utag_main__pn&#34;: &#34;5&#34;
+    "firstparty_tealium_cookies": {
+      "utag_main__sn": "12",
+      "utag_main_dc_visit": "12",
+      "utag_main_ses_id": "1609910610822",
+      "utag_main_dc_region": "us-east-1",
+      "utag_main__st": "1609913306118",
+      "utag_main_v_id": "0176cb4f3482110a5ba4702e147b0006d005a065104f2",
+      "utag_main__se": "66",
+      "utag_main__ss": "0",
+      "utag_main_dc_event": "60",
+      "utag_main__pn": "5"
     }
   },
-  &#34;env&#34;: &#34;prod&#34;,
-  &#34;post_time&#34;: 1537305808000
+  "env": "prod",
+  "post_time": 1537305808000
 }
 ```
 
@@ -159,7 +171,11 @@ track(data)
 
 `visitor` データオブジェクトは訪問関数で利用可能で、訪問データを含んでいます。
 
+
+<blockquote>
 データパイプラインで訪問関数が実行される時点で、訪問データオブジェクトの変更はシステムの他の部分には影響しません。システムに永続する訪問データオブジェクトの変更を行うには、訪問属性のエンリッチメントを使用してください。
+</blockquote>
+
 
 | **プロパティ** | **データタイプ** | **説明**  |
 | --- | --- | --- |
@@ -189,116 +205,116 @@ track(data)
 
 ```json
 {
-    &#34;metrics&#34;: {
-        &#34;Metric 1&#34;: 1,
-        &#34;Metric 2&#34;: 2
+    "metrics": {
+        "Metric 1": 1,
+        "Metric 2": 2
     },
-    &#34;dates&#34;: {
-        &#34;Date 1&#34;: 1603373790000,
-        &#34;Date 2&#34;: 1603373522000
+    "dates": {
+        "Date 1": 1603373790000,
+        "Date 2": 1603373522000
     },
-    &#34;properties&#34;: {
-        &#34;profile&#34;: &#34;username&#34;,
-        &#34;visitor_id&#34;: &#34;017560818b67001bc185a07f1cd703078003405000b7e&#34;,
-        &#34;account&#34;: &#34;user-account&#34;
+    "properties": {
+        "profile": "username",
+        "visitor_id": "017560818b67001bc185a07f1cd703078003405000b7e",
+        "account": "user-account"
     },
-    &#34;metrics_sets&#34;: {
-        &#34;Product Categories Purchased&#34;: {
-            &#34;Shoes&#34;: 1,
-            &#34;Pants&#34;: 3,
-            &#34;Shirts&#34;: 7,
-            &#34;Shorts&#34;: 2
+    "metrics_sets": {
+        "Product Categories Purchased": {
+            "Shoes": 1,
+            "Pants": 3,
+            "Shirts": 7,
+            "Shorts": 2
         }
     },
-    &#34;sequences&#34;: {
-        &#34;Hotel Search Timeline&#34;: [
+    "sequences": {
+        "Hotel Search Timeline": [
             {
-                &#34;timestamp&#34;: 1681858801598,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Paradise Island&#34;
+                "timestamp": 1681858801598,
+                "snapshot": {
+                    "Searched Hotel City": "Paradise Island"
                 }
             },
             {
-                &#34;timestamp&#34;: 1681860398985,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Skokie&#34;
+                "timestamp": 1681860398985,
+                "snapshot": {
+                    "Searched Hotel City": "Skokie"
                 }
             },
             {
-                &#34;timestamp&#34;: 1681860423335,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Las Vegas&#34;
+                "timestamp": 1681860423335,
+                "snapshot": {
+                    "Searched Hotel City": "Las Vegas"
                 }
             }
         ]
     },
-    &#34;funnels&#34;: {
-        &#34;Purchase Funnel&#34;: {
-            &#34;completed&#34;: true,
-            &#34;steps&#34;: {
-                &#34;1&#34;: {
-                    &#34;timestamp&#34;: 1636661624226,
-                    &#34;snapshot&#34;: {
-                        &#34;product_name&#34;: &#34;Skinny Jeans&#34;
+    "funnels": {
+        "Purchase Funnel": {
+            "completed": true,
+            "steps": {
+                "1": {
+                    "timestamp": 1636661624226,
+                    "snapshot": {
+                        "product_name": "Skinny Jeans"
                     }
                 },
-                &#34;2&#34;: {
-                    &#34;timestamp&#34;: 1636661624227
+                "2": {
+                    "timestamp": 1636661624227
                 },
-                &#34;3&#34;: {
-                    &#34;timestamp&#34;: 1636661624228
+                "3": {
+                    "timestamp": 1636661624228
                 },
-                &#34;4&#34;: {
-                    &#34;timestamp&#34;: 1636661624229,
-                    &#34;snapshot&#34;: {
-                        &#34;order_id&#34;: &#34;0123456789&#34;,
-                        &#34;order_total&#34;: &#34;34.98&#34;
+                "4": {
+                    "timestamp": 1636661624229,
+                    "snapshot": {
+                        "order_id": "0123456789",
+                        "order_total": "34.98"
                     }
                 }
             }
         }
     },
-    &#34;audiences&#34;: [
-        &#34;Audience 1&#34;,
-        &#34;Audience 2&#34;
+    "audiences": [
+        "Audience 1",
+        "Audience 2"
     ],
-    &#34;badges&#34;: [
-        &#34;Badge 1&#34;,
-        &#34;Badge 2&#34;
+    "badges": [
+        "Badge 1",
+        "Badge 2"
     ],
-    &#34;creation_ts&#34;: 1603373522000,
-    &#34;current_visit&#34;: {
-        &#34;metrics&#34;: {
-            &#34;Metric 1&#34;: 1.3,
-            &#34;Metric 2&#34;: 6
+    "creation_ts": 1603373522000,
+    "current_visit": {
+        "metrics": {
+            "Metric 1": 1.3,
+            "Metric 2": 6
         },
-        &#34;dates&#34;: {
-            &#34;Date 1&#34;: 1603373868000,
-            &#34;Date 2&#34;: 1603373790000
+        "dates": {
+            "Date 1": 1603373868000,
+            "Date 2": 1603373790000
         },
-        &#34;properties&#34;: {
-            &#34;Property 1&#34;: &#34;Chrome&#34;,
-            &#34;Property 2&#34;: &#34;https://URL-for-website &#34;
+        "properties": {
+            "Property 1": "Chrome",
+            "Property 2": "https://URL-for-website "
         },
-        &#34;flags&#34;: {
-            &#34;Flag 1&#34;: true,
-            &#34;Flag 2&#34;: false
+        "flags": {
+            "Flag 1": true,
+            "Flag 2": false
         },
-        &#34;property_sets&#34;: {
-            &#34;Property Set 1&#34;: [
-                &#34;Mac desktop&#34;
+        "property_sets": {
+            "Property Set 1": [
+                "Mac desktop"
             ],
-            &#34;Property Set 2&#34;: [
-                &#34;Chrome&#34;
+            "Property Set 2": [
+                "Chrome"
             ]
         },
-        &#34;creation_ts&#34;: 1603373790000,
-        &#34;total_event_count&#34;: 2,
-        &#34;events_compressed&#34;: false
+        "creation_ts": 1603373790000,
+        "total_event_count": 2,
+        "events_compressed": false
     },
-    &#34;audiences_joined_at&#34;: {
-        &#34;Audience 1&#34;: 1603363523014,
-        &#34;Audience 2&#34;: 1603363523014
+    "audiences_joined_at": {
+        "Audience 1": 1603363523014,
+        "Audience 2": 1603363523014
     }
 }
 ```
@@ -307,7 +323,11 @@ track(data)
 
 `visit` オブジェクトは訪問関数で利用可能で、現在の訪問のデータを含んでいます。
 
+
+<blockquote>
 データパイプラインで訪問関数が実行される時点で、訪問データオブジェクトへの変更はシステムの他の部分には影響しません。システムに永続する訪問データオブジェクトの変更を行うには、訪問属性のエンリッチメントを使用してください。
+</blockquote>
+
 
 | **プロパティ** | **データタイプ** | **説明** |
 | --- | --- | --- |
@@ -334,89 +354,89 @@ track(data)
 
 ```json
 {
-    &#34;metrics&#34;: {
-        &#34;Metric 1&#34;: 1.3,
-        &#34;Metric 2&#34;: 6
+    "metrics": {
+        "Metric 1": 1.3,
+        "Metric 2": 6
     },
-    &#34;dates&#34;: {
-        &#34;Date 1&#34;: 1603373868000,
-        &#34;Date 2&#34;: 1603373790000
+    "dates": {
+        "Date 1": 1603373868000,
+        "Date 2": 1603373790000
     },
-    &#34;properties&#34;: {
-        &#34;Property 1&#34;: &#34;Chrome&#34;,
-        &#34;Property 2&#34;: &#34;https://URL-for-website &#34;
+    "properties": {
+        "Property 1": "Chrome",
+        "Property 2": "https://URL-for-website "
     },
-    &#34;flags&#34;: {
-        &#34;Flag 1&#34;: true,
-        &#34;Flag 2&#34;: false
+    "flags": {
+        "Flag 1": true,
+        "Flag 2": false
     },
-    &#34;metrics_sets&#34;: {
-        &#34;Product Categories Purchased&#34;: {
-            &#34;Shoes&#34;: 1,
-            &#34;Pants&#34;: 3,
-            &#34;Shirts&#34;: 7,
-            &#34;Shorts&#34;: 2
+    "metrics_sets": {
+        "Product Categories Purchased": {
+            "Shoes": 1,
+            "Pants": 3,
+            "Shirts": 7,
+            "Shorts": 2
         }
     },
-    &#34;property_sets&#34;: {
-        &#34;Property Set 1&#34;: [
-            &#34;Mac desktop&#34;
+    "property_sets": {
+        "Property Set 1": [
+            "Mac desktop"
         ],
-        &#34;Property Set 2&#34;: [
-            &#34;Chrome&#34;
+        "Property Set 2": [
+            "Chrome"
         ]
     },
-    &#34;sequences&#34;: {
-        &#34;Hotel Search Timeline&#34;: [
+    "sequences": {
+        "Hotel Search Timeline": [
             {
-                &#34;timestamp&#34;: 1681858801598,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Paradise Island&#34;
+                "timestamp": 1681858801598,
+                "snapshot": {
+                    "Searched Hotel City": "Paradise Island"
                 }
             },
             {
-                &#34;timestamp&#34;: 1681860398985,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Skokie&#34;
+                "timestamp": 1681860398985,
+                "snapshot": {
+                    "Searched Hotel City": "Skokie"
                 }
             },
             {
-                &#34;timestamp&#34;: 1681860423335,
-                &#34;snapshot&#34;: {
-                    &#34;Searched Hotel City&#34;: &#34;Las Vegas&#34;
+                "timestamp": 1681860423335,
+                "snapshot": {
+                    "Searched Hotel City": "Las Vegas"
                 }
             }
         ]
     },
-    &#34;funnels&#34;: {
-        &#34;Purchase Funnel&#34;: {
-            &#34;completed&#34;: true,
-            &#34;steps&#34;: {
-                &#34;1&#34;: {
-                    &#34;timestamp&#34;: 1636661624226,
-                    &#34;snapshot&#34;: {
-                        &#34;product_name&#34;: &#34;Skinny Jeans&#34;
+    "funnels": {
+        "Purchase Funnel": {
+            "completed": true,
+            "steps": {
+                "1": {
+                    "timestamp": 1636661624226,
+                    "snapshot": {
+                        "product_name": "Skinny Jeans"
                     }
                 },
-                &#34;2&#34;: {
-                    &#34;timestamp&#34;: 1636661624227
+                "2": {
+                    "timestamp": 1636661624227
                 },
-                &#34;3&#34;: {
-                    &#34;timestamp&#34;: 1636661624228
+                "3": {
+                    "timestamp": 1636661624228
                 },
-                &#34;4&#34;: {
-                    &#34;timestamp&#34;: 1636661624229,
-                    &#34;snapshot&#34;: {
-                        &#34;order_id&#34;: &#34;0123456789&#34;,
-                        &#34;order_total&#34;: &#34;34.98&#34;
+                "4": {
+                    "timestamp": 1636661624229,
+                    "snapshot": {
+                        "order_id": "0123456789",
+                        "order_total": "34.98"
                     }
                 }
             }
         }
     },
-    &#34;creation_ts&#34;: 1603373790000,
-    &#34;total_event_count&#34;: 2,
-    &#34;events_compressed&#34;: false
+    "creation_ts": 1603373790000,
+    "total_event_count": 2,
+    "events_compressed": false
 }
 ```
 
@@ -431,8 +451,8 @@ track(data)
 グローバル変数を取得するには、パラメータとしてキーを渡します：
 
 ```
-activate(({ helper }) =&gt; {
-  console.log(helper.getGlobalVariable(&#34;TEST_GLOBAL_VAR&#34;));
+activate(({ helper }) => {
+  console.log(helper.getGlobalVariable("TEST_GLOBAL_VAR"));
 });
 ```
 
@@ -445,11 +465,14 @@ activate(({ helper }) =&gt; {
 認証を取得するには、認証トークンの名前をパラメータとして渡します：
 
 ```
-activate(({ helper }) =&gt; {
-    console.log(helper.getAuth(&#34;auth_token_name&#34;));
+activate(({ helper }) => {
+    console.log(helper.getAuth("auth_token_name"));
 })
 ```
 
 関数に認証を追加する方法についての情報は、[イベントまたは訪問関数に認証を追加する]()を参照してください。
 
+
+<blockquote>
 認証トークンはHTTPリクエスト内の関数によってのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。
+</blockquote>

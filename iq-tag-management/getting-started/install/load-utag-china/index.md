@@ -9,7 +9,11 @@ Use tags.tiqcdn.cn to expedite content delivery inside mainland China, as well a
 
 * **Choose one of the following methods for loading the universal tag**:
     * **Update the code for your website**: If you can modify the source code for your site and a large amount of traffic is from China, we recommend that you use `tags.tiqcdn.cn` in the code you add to your website.
-    * **Use the China CDN Deployment Extension**: If you cannot modify the source code for your site or a small amount of traffic is from China, use the [China CDN Deployment Extension]().  Only use one method. Do not use both. 
+    * **Use the China CDN Deployment Extension**: If you cannot modify the source code for your site or a small amount of traffic is from China, use the [China CDN Deployment Extension](https://docs.tealium.com/china-cdn-deployment-extension/). 
+<blockquote>
+Only use one method. Do not use both.
+</blockquote>
+
 * **Use a unique profile**  
 Use a unique profile for each of your websites. Using multiple profiles lets you tag each website and customize the delivery of all Tealium-based content for that website.
 * **tags.tiqcdn.cn**  
@@ -22,26 +26,26 @@ For all web content to be delivered in mainland China, your website requires a v
 
 To update the code on your website:
 
-1. Create a profile for the `.cn` domain. For more information, see [Manage Profiles]().
-    * Consider using [profile libraries]() to share configurations between profiles to make setting up the new dedicated `.cn`  domain profile easier.
+1. Create a profile for the `.cn` domain. For more information, see [Manage Profiles](https://docs.tealium.com/manage-profiles/).
+    * Consider using [profile libraries](https://docs.tealium.com/about-profile-libraries/) to share configurations between profiles to make setting up the new dedicated `.cn`  domain profile easier.
 2. Update the publishing URLs in **Publish Configuration** to specify the `.cn` CDN path. For example:  
     ```bash
     https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/dev/
     https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/qa/
     https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/
     ```
-    For more information, see [Publish Configuration]().
+    For more information, see [Publish Configuration](https://docs.tealium.com/publish-configuration/).
 3. Add the following JavaScript, which uses `tags.tiqcdn.cn`, to the HTML source.
     ```javascript
-    &lt;script type=&#34;text/javascript&#34;&gt;
+    <script type="text/javascript">
       (function(a,b,c,d){
-        a=&#39;https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/utag.js&#39;;
-        b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;&#43;c;d.async=true;
+        a='https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/utag.js';
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
         a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
       })();
-    &lt;/script&gt;
+    </script>
     ```
 
 ## Use the China CDN Deployment Extension
 
-Create and configure a China CDN Deployment Extension to determine the user&#39;s location and serve `utag.js` from the appropriate CDN. For more information on creating an extension, see [China CDN Deployment Extension]().
+Create and configure a China CDN Deployment Extension to determine the user's location and serve `utag.js` from the appropriate CDN. For more information on creating an extension, see [China CDN Deployment Extension](https://docs.tealium.com/china-cdn-deployment-extension/).

@@ -22,6 +22,6 @@ setupInstance(instanceId, config, isAutoTracking);
 
 | パラメータ  | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `instanceId` | `String` | Tealiumインスタンス名|  `&#34;abc123&#34;`  |
-| `config` | `Tealium.Config` | Tealium構成オブジェクト|  `&#34;configObject&#34;`  |     
-| `isAutoTracking` | `boolean` | 自動トラッキングが有効かどうか|  [`&#34;true&#34;`, `&#34;false&#34;`]|                      
+| `instanceId` | `String` | Tealiumインスタンス名|  `"abc123"`  |
+| `config` | `Tealium.Config` | Tealium構成オブジェクト|  `"configObject"`  |     
+| `isAutoTracking` | `boolean` | 自動トラッキングが有効かどうか|  [`"true"`, `"false"`]|                      

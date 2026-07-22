@@ -21,7 +21,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -56,7 +56,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 60 minutes
@@ -69,6 +69,6 @@ This action uses batched requests to support high-volume data transfers to the v
 | Address | (Required) The email address of the list. |
 | Member Address | (Required) The email address to add to the list. |
 | Member Name | The name of email address to add. |
-| Subscribe | &lt;ul&gt;&lt;li&gt;**yes**: Subscribe the new member.&lt;/li&gt;&lt;li&gt;**no**: Do not subscribe the new member.&lt;/li&gt;&lt;/ul&gt; |
-| Upsert | &lt;ul&gt;&lt;li&gt;**yes**: Update list member, if it exists in the list.&lt;/li&gt;&lt;li&gt;**no**: Add list member, even if it is a duplicate.&lt;/li&gt;&lt;/ul&gt; |
+| Subscribe | <ul><li>**yes**: Subscribe the new member.</li><li>**no**: Do not subscribe the new member.</li></ul> |
+| Upsert | <ul><li>**yes**: Update list member, if it exists in the list.</li><li>**no**: Add list member, even if it is a duplicate.</li></ul> |
 | Variables | Map attributes to pass additional member parameters. For more information, see [Mailgun API Reference](https://documentation.mailgun.com/en/latest/api-sending.html#sending). |

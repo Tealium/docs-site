@@ -12,10 +12,10 @@ url: https://docs.tealium.com/ja/server-side/insights/about-templates/
 **テンプレート詳細** 画面では、ダッシュボードの各ビジュアルの例と、テンプレートで使用される各データセットの情報の要約が表示されます。
 
 例えば、以下の **テンプレート詳細** の例は、トータルイベント数ダッシュボードのビジュアルを示しています：
-![](/images/server-side/data-insights/data-insights-template-details.png)
+![](https://docs.tealium.com/images/server-side/data-insights/data-insights-template-details.png)
 
 ビジュアルの後にデータセット情報が表示されます：
-![](/images/server-side/data-insights/data-insights-templates-dataset-info.png)
+![](https://docs.tealium.com/images/server-side/data-insights/data-insights-templates-dataset-info.png)
 
 ## 事前定義されたダッシュボードのテンプレート
 
@@ -32,6 +32,6 @@ url: https://docs.tealium.com/ja/server-side/insights/about-templates/
 ## テンプレートの状態
 
 **テンプレート** 画面にリストされているテンプレートには、以下のラベルのいずれかが付けられている場合があります：
-* **Generated** &amp;ndash; ダッシュボードが生成され、ダッシュボード画面で表示できます。例：![](/images/server-side/data-insights/generated-label.png)
+* **Generated** &ndash; ダッシュボードが生成され、ダッシュボード画面で表示できます。例：![](https://docs.tealium.com/images/server-side/data-insights/generated-label.png)
 
 テンプレートにラベルがない場合、ダッシュボードは生成されていません。

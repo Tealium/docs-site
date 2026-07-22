@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/global-p
 
 1. 管理メニューで、ドロップダウンメニューから**グローバル同意カスタマイズ**をクリックします。**グローバル同意カスタマイズ**ダイアログが表示されます。
 1. 管理したい機能のタブを選択します。**明示的同意プロンプト**または**同意構成ダイアログ**。
-    ![](/images/iq-tag-management/consent-manager-global-consent-customization.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-global-consent-customization.jpg)
 
 ### パラメータ値の構成
 
@@ -43,12 +43,16 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/global-p
 
 カスタムパラメータを追加してプロンプトをさらにカスタマイズすることができます。これらのパラメータは、組み込みパラメータ内やCSS/HTML/JavaScriptコード内で参照することができます。
 
+
+<blockquote>
 HTMLやJavaScript内に直接翻訳可能なテキストを入れるのは避け、`{{parameters}}`を使用してコードをカスタマイズし、カスタムパラメータを使用してその内容を定義することがベストプラクティスです。
+</blockquote>
+
 
 カスタムパラメータを追加するには、以下の手順を実行します：
 
-1. **カスタムパラメータ**セクションまでスクロールダウンし、**&#43; パラメータ追加**をクリックします。
-    ![](/images/iq-tag-management/consent-manager-custom-parameters.jpg)  
+1. **カスタムパラメータ**セクションまでスクロールダウンし、**+ パラメータ追加**をクリックします。
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-custom-parameters.jpg)  
 **カスタムパラメータ**ダイアログが表示されます。
 1. パラメータの名前を入力します。
 1. **適用**をクリックします。  
@@ -59,12 +63,12 @@ HTMLやJavaScript内に直接翻訳可能なテキストを入れるのは避け
 
 ### 言語の追加
 
-同意機能は自動言語検出を備えています。たとえば、ドイツ語の場合はブラウザで「de」という二文字の言語コードが検出されます。検出された言語が構成されている場合、このコードはプロンプトの対応するバージョンを表示します。プロンプトはデフォルトで英語（&#34;en&#34;）で構成されています。
+同意機能は自動言語検出を備えています。たとえば、ドイツ語の場合はブラウザで「de」という二文字の言語コードが検出されます。検出された言語が構成されている場合、このコードはプロンプトの対応するバージョンを表示します。プロンプトはデフォルトで英語（"en"）で構成されています。
 
 言語を追加するには、以下の手順を実行します：
 
-1. **言語**の横にあるサイドパネルで、**&#43; 追加**をクリックします。
-    ![](/images/iq-tag-management/consent-manager-make-default-language-checkbox.jpg)
+1. **言語**の横にあるサイドパネルで、**+ 追加**をクリックします。
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-make-default-language-checkbox.jpg)
 1. リストから言語を選択し、**適用**をクリックします。  
 新しい言語が**言語**サイドパネルの英語（en）の下に表示されます。
 1. 新しい言語をクリックしてその言語のコンテンツを構成します。
@@ -87,4 +91,7 @@ HTMLやJavaScript内に直接翻訳可能なテキストを入れるのは避け
 1. 更新を確認してプレビューウィンドウを閉じます。
 1. **保存/公開**をクリックし、Dev/QA/Prodへの公開に通常のリリースプロセスに従います。
 
+
+<blockquote>
 ステップ3から5は、グローバル同意パラメータを継承する各プロファイルで実行する必要があります。
+</blockquote>

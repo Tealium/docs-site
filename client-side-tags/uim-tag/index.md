@@ -8,24 +8,24 @@ url: https://docs.tealium.com/client-side-tags/uim-tag/
 * Use mappings to override or dynamically set tag configurations.
 * Use mappings to trigger events.
 * Supports the following E-Commerce extension parameters:
-    &#43; Order ID (Overrides `_corder`)
-    &#43; Order Items (Overrides `_cprod`)
-    &#43; Order Total (Overrides `_ctotal`)
-    &#43; Order Shipping (Overrides `_cship`)
-    &#43; Order Currency (Overrides `_ccurrency`)
-    &#43; Product ID (Overrides `_cprod`)
-    &#43; Product Name (Overrides `_cprodname`)
-    &#43; Product Price (Overrides` _cprice`)
-    &#43; Product Currency (Overrides `_ccurrency`)
-    &#43; Basket Total (Overrides `_ctotal`)
-    &#43; Basket Items (Overrides `_cprod`)
-    &#43; Basket Currency (Overrides `_ccurrency`)
+    + Order ID (Overrides `_corder`)
+    + Order Items (Overrides `_cprod`)
+    + Order Total (Overrides `_ctotal`)
+    + Order Shipping (Overrides `_cship`)
+    + Order Currency (Overrides `_ccurrency`)
+    + Product ID (Overrides `_cprod`)
+    + Product Name (Overrides `_cprodname`)
+    + Product Price (Overrides` _cprice`)
+    + Product Currency (Overrides `_ccurrency`)
+    + Basket Total (Overrides `_ctotal`)
+    + Basket Items (Overrides `_cprod`)
+    + Basket Currency (Overrides `_ccurrency`)
 
 
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -33,11 +33,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -71,7 +71,7 @@ The available categories are:
 |  `order_currency` (Overrides `_ccurrency`)  | String | Order Currency |
 
 ### Event Triggers
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -82,7 +82,7 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 | `checkout` | Checkout |
 
 ### Event-specific Parameters
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

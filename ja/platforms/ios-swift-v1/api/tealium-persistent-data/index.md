@@ -26,7 +26,7 @@ tealium?.persistentData()?.add(data: [String: Any])
 
 | パラメータ  | タイプ       | 説明       | 例 |
 |------------  |-----------|-------------------| --- |
-| `Any`| `[String: Any]`  | 追加するデータの辞書 | `data: [&#34;customer_id&#34;:&#34;1234567890-a&#34;]` |  
+| `Any`| `[String: Any]`  | 追加するデータの辞書 | `data: ["customer_id":"1234567890-a"]` |  
 
 
 ### `deleteAllData()`
@@ -48,7 +48,7 @@ tealium?.persistentData()?.deleteDate(forKeys: [String])
 
 | パラメータ  | タイプ       | 説明       | 例 |
 |------------  |-----------|-------------------| --- |
-| `forKeys`| `[String]`  | 削除するキーの配列 | `forKeys: [&#34;customer_id&#34;]` |  
+| `forKeys`| `[String]`  | 削除するキーの配列 | `forKeys: ["customer_id"]` |  
 
 
 ### `getData()`

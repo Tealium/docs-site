@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2,000
 * Max time since oldest request: 10 minutes
@@ -32,14 +32,14 @@ The connector sends the value of `GRANTED` for `adUserData` by default. To overr
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](/server-side/connectors/manage/) article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
 * **Customer ID**  
 (Required) Provide Ads account customer ID to manage.
 * **Manager Customer ID**  
-(Optional) If you are accessing the account on behalf of a client, the Manager Customer ID must be set. You can find your Customer ID by logging into Google Ads and going to **Preferences &gt; Access &amp; Security &gt; Manager**.
+(Optional) If you are accessing the account on behalf of a client, the Manager Customer ID must be set. You can find your Customer ID by logging into Google Ads and going to **Preferences > Access & Security > Manager**.
 
 Click **Done** when you are finished configuring the connector.
 
@@ -64,7 +64,7 @@ The following section describes how to set up parameters and options for each ac
 |Email Address (already SHA256 hashed)| Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses before hashing.|
 |Email Address (apply SHA256 hash)| Provide a plain text email address and the connector will remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses, whitespace trim, lowercase, and hash this value using SHA256 hash.|
 |Phone Number (already SHA256 hashed)| Provide a phone number according to the [E164 standard](https://en.wikipedia.org/wiki/E.164) that has been already whitespace trimmed and SHA256 hashed.|
-|Phone Number (apply SHA256 hash)| Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (`&#43;`), whitespace trim, and hash this value using SHA256 hash.|
+|Phone Number (apply SHA256 hash)| Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (`+`), whitespace trim, and hash this value using SHA256 hash.|
 |gclid| Google click ID (gclid) associated with the conversion. Note: If you provide `gclid` and `user_identifiers` (email/phone) for a conversion, Google Ads will ignore the `user_identifiers`.|
 | Address Info: First Name (already SHA256 hashed) | Provide a first name which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name and the connector will lowercase, trim whitespaces, and hash this value using SHA256 hash. |
@@ -83,7 +83,7 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Conversion Value| Monetary value of the conversion.|
 |Conversion Currency| Currency code of the conversion.|
-|Conversion Time| The date and time when the original conversion occurred. The time zone must be specified. The format is &lt;code&gt;yyyy-mm-dd hh:mm:ss&#43;&amp;#124;-hh:mm&lt;/code&gt;. For example, `2022-01-01 12:32:45-08:00` or `2022-01-01 12:32:45&#43;08:00`. If no value is mapped, the value is set to the current time.|
+|Conversion Time| The date and time when the original conversion occurred. The time zone must be specified. The format is <code>yyyy-mm-dd hh:mm:ss+&#124;-hh:mm</code>. For example, `2022-01-01 12:32:45-08:00` or `2022-01-01 12:32:45+08:00`. If no value is mapped, the value is set to the current time.|
 |Order ID| The order ID associated with the conversion. An order ID can only be used for one conversion per conversion action.|
 |Custom Variables| The custom variables associated with this conversion. Map the value to the custom variable ID. The connector will send `conversion_custom_variable` field in the following format: `customers/{customer_id}/conversionCustomVariables/{custom_variable_id}`.|
 

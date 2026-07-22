@@ -23,14 +23,14 @@ Config tealConfig = new Config(account, profile, environment,
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `string` | Tealiumのアカウント名  | `&#34;companyXYZ&#34;` |
-| `profile` | `string` |Tealiumのプロファイル名|  `&#34;main&#34;` |
-| `environment` | `string` |(オプション) Tealiumの環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `visitorID` | `string` |ユーザー、アプリインスタンス、またはデバイスに固有の32文字の英数字のID (`null`可) |  `&#34;t3aL...1uM&#34;` |
+| `account` | `string` | Tealiumのアカウント名  | `"companyXYZ"` |
+| `profile` | `string` |Tealiumのプロファイル名|  `"main"` |
+| `environment` | `string` |(オプション) Tealiumの環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `visitorID` | `string` |ユーザー、アプリインスタンス、またはデバイスに固有の32文字の英数字のID (`null`可) |  `"t3aL...1uM"` |
 | `modules` | `[string]` | (オプション) Collectライブラリで初期化するモジュール |  [利用可能なモジュール](#available-modules)を参照 |
-| `dataSourceKey` | `string` |(オプション) データソースキー |  `&#34;abc123&#34;` |
+| `dataSourceKey` | `string` |(オプション) データソースキー |  `"abc123"` |
 | `overrideCollectUrl` | `string` |(オプション) Collect URLを上書き (データのカスタム宛先URL) |   |
-| `optionalData` | `Dictionary&lt;string, object&gt;` |(オプション) モジュール使用のためのキーと値のペアとしてのデータ (`null`可 - ほとんどの構成では不要) | |
+| `optionalData` | `Dictionary<string, object>` |(オプション) モジュール使用のためのキーと値のペアとしてのデータ (`null`可 - ほとんどの構成では不要) | |
 | `method` | `Method` enum | (オプション) Tealium Collectエンドポイントへのデータ送信に使用するHTTPメソッドを決定 | [`Method.POST`, `Method.GET`] |
 
 ## クラス: `Tealium`
@@ -72,7 +72,7 @@ tealium.JoinTrace(traceId);
 
 | パラメータ | タイプ | 説明  | 例 |
 |----------- | ----------- | -----| ------- |
-| `traceId`  | `string` |参加するトレースID   | `&#34;12345&#34;` |
+| `traceId`  | `string` |参加するトレースID   | `"12345"` |
 
 ### `KillTraceSession()`
 
@@ -113,7 +113,7 @@ tealium.Track(title, customData, completion);
 | パラメータ | タイプ | 説明 |
 | --- | --- | ---  |
 | `title` | `string` | イベント識別子 |
-| `customData` | `Dictionary&lt;string, object&gt;` | (オプション)  イベントデータをキーと値のペアとして (ない場合は`null`に構成) |
+| `customData` | `Dictionary<string, object>` | (オプション)  イベントデータをキーと値のペアとして (ない場合は`null`に構成) |
 | `completion` | `TrackCompletion` (ない場合は`null`に構成)| (オプション) トラック呼び出し後にトリガーする完了ブロック |
 
 
@@ -134,5 +134,9 @@ config.Modules = new string[] { AppDataModule.Name,
 | `CollectModule` | 処理済みイベントをTealium Collectエンドポイントに配信 |
 | `LoggerModule` | デバッグ出力を提供 |
 
+
+<blockquote>
 各モジュールクラスの`.Name`定数を使用してください。
+</blockquote>
+
 

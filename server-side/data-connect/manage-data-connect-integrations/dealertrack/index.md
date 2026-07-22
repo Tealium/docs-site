@@ -30,32 +30,32 @@ Use the following steps to create a DealerTrack integration with Tealium Data Co
 
 ## Step 1: Set up a Tealium Connect data source
 
-Set up a Tealium Connect data source. For more information, see [Set up a Tealium Connect data source]().
+Set up a Tealium Connect data source. For more information, see [Set up a Tealium Connect data source](https://docs.tealium.com/tealium-connect-data-source/).
 
 ## Step 2: Establish a connection to the DealerTrack API
 
 To establish a connection to the DealerTrack API, perform the following steps:
 
-1. Go to **Connect &gt; Data Connect &gt; Integrations**.
+1. Go to **Connect > Data Connect > Integrations**.
 1. Click **Connections**, and then click **Create**.
 1. Select the **DealerTrack** connection.
 1. Under **Base URL**, enter `https://ot.dms.dealertrack.com`.
 1. Enter your **Username** and **Password**.
 1. Click **Connect**.
 
- ![](/images/server-side/data-connect/dealertrack-data-connect-integration-establish-connection1.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/dealertrack-data-connect-integration-establish-connection1.png)
 
- ![](/images/server-side/data-connect/dealertrack-data-connect-integration-establish-connection2.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/dealertrack-data-connect-integration-establish-connection2.png)
 
 ## Step 3: Create a recipe to send data from DealerTrack to Tealium
 
 To create a recipe to send data from DealerTrack to Tealium, perform the following steps:
 
-For more information on how to create a new recipe, see [Create a recipe in Data Connect]().
+For more information on how to create a new recipe, see [Create a recipe in Data Connect](https://docs.tealium.com/create-recipe-data-connect/).
 
-1. Go to **Connect &gt; Data Connect &gt; Integrations**.
-1. In the **Integrations** screen, click **Create &gt; Recipe**.
-1. Create a new recipe that triggers from the Schedule app. For information on how to create a recipe that triggers from an app, see [Create a recipe in Data Connect]().
+1. Go to **Connect > Data Connect > Integrations**.
+1. In the **Integrations** screen, click **Create > Recipe**.
+1. Create a new recipe that triggers from the Schedule app. For information on how to create a recipe that triggers from an app, see [Create a recipe in Data Connect](https://docs.tealium.com/create-recipe-data-connect/).
 
 The [Actions](#actions) section below contains details on what data is possible to retrieve from DealerTrack.
 
@@ -66,17 +66,17 @@ To send events to Tealium, perform the following steps:
 1. Go to **Send Events in Tealium Events V2**.
 1. Configure the data that you want to send to Tealium.
 
- ![](/images/server-side/data-connect/dealertrack-data-connect-integration-send-events.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/dealertrack-data-connect-integration-send-events.png)
 
-For additional information, see [Create a recipe: Configure an Action]().
+For additional information, see [Create a recipe: Configure an Action](https://docs.tealium.com/create-recipe-data-connect/#step-2-configure-an-action).
 
 ## Step 5: Set up an event feed for leads
 
- ![](/images/server-side/data-connect/dealertrack-data-connect-integration-event-feed.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/dealertrack-data-connect-integration-event-feed.png)
 
 Use the following steps to create an event feed:
 
-1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate > Live Events** and click **+ Add Event Feed**.
 1. In the **Create Event Feed** dialog, enter a **Title** and any **Notes**.
     * The event feed title is dependent on how lead events come into Data Connect.
 1. (Optional) Click **Add Label** to select labels to apply to this event feed.
@@ -94,7 +94,7 @@ Use the following steps to test with trace and activate the recipe:
 1. Go to **Trace**.
 1. Under **New Trace**, click **Start**. A dialog with a trace ID appears.
 1. Copy the trace ID and click **Continue**.
-1. Go to **Connect &gt; Data Connect &gt; Integrations**.
+1. Go to **Connect > Data Connect > Integrations**.
 1. In the **Integrations** screen, perform the following steps for recipes that send new leads from DealerTrack to Tealium:
     1. Select your recipe.
     1. Select the **Tealium events V2 action** to edit it.

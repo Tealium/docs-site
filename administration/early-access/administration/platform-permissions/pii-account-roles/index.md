@@ -3,17 +3,21 @@ title: PII Permissions and Server-Side Account Level Roles (Early Access)
 description: PII Permissions with server-side account level roles is an Early Access feature that introduces data privacy controls for server-side products.
 url: https://docs.tealium.com/administration/early-access/administration/platform-permissions/pii-account-roles/
 ---
-This feature is in Early Access and is only available to select customers. However, we are in the process of converting customers to the [Platform Permissions feature](), which manages access to products and features through permission groups and manages PII permissions through the Privacy Admin role and individual user settings. For more information, see [Platform Permissions](). &lt;br&gt;&lt;br&gt;When all accounts have migrated from legacy permissions to platform permissions, this Early Access feature will be deprecated.
+
+<blockquote>
+This feature is in Early Access and is only available to select customers. However, we are in the process of converting customers to the [Platform Permissions feature](https://docs.tealium.com/about-platform-permissions/), which manages access to products and features through permission groups and manages PII permissions through the Privacy Admin role and individual user settings. For more information, see [Platform Permissions](https://docs.tealium.com/about-platform-permissions/). <br><br>When all accounts have migrated from legacy permissions to platform permissions, this Early Access feature will be deprecated.
+</blockquote>
+
 
 ## About permissions and restricted data
 
-Today, PII data can be viewed throughout all the products and features in the server-side platform, such as Live Events, Trace, Visitor Sampler, and the Visitor Lookup Tool. Some users need to view PII so they can validate incoming event data and test data, but not all users require this level of permissions. If you allow more users to see PII data than necessary, your business is at risk because private customer data will be seen by users who shouldn&#39;t see it.
+Today, PII data can be viewed throughout all the products and features in the server-side platform, such as Live Events, Trace, Visitor Sampler, and the Visitor Lookup Tool. Some users need to view PII so they can validate incoming event data and test data, but not all users require this level of permissions. If you allow more users to see PII data than necessary, your business is at risk because private customer data will be seen by users who shouldn't see it.
 
 The **Restricted Data** property on attributes controls where sensitive data can flow through the data supply chain, but it does not limit who can view the values of those attributes.
 
 In addition, access to the server-side products can only be granted at the profile-level with a single role: **Reader**, **Editor**, or **Publisher**. PII data is still exposed throughout the application and can only be hidden from a user by restricting access to the entire profile. Also, the role of **Editor** often is not sufficient to serve the growing needs of large businesses that have many active users with various duties.
 
-## What&#39;s new
+## What's new
 
 PII permissions and server-side account level permission roles provide an easier way to manage user permissions and control who can access PII data.
 
@@ -28,7 +32,7 @@ With more granular permission roles, you can protect your most critical configur
 
 ### New account permission roles
 
-This feature introduces four permission roles related to PII and profile editing. Account permission roles are cumulative and can be combined to expand a user&#39;s access to the platform.
+This feature introduces four permission roles related to PII and profile editing. Account permission roles are cumulative and can be combined to expand a user's access to the platform.
 
 New account-level roles provide the following abilities:
 
@@ -44,19 +48,27 @@ The new account permission roles are:
 * **PII Admin**  
 Users assigned to this role can set the **Restricted Data** property for event, visit, or visitor attributes. These users cannot view PII data values unless also they are additionally granted the **PII Viewer** role.
 * **PII Viewer**  
-Users assigned to this role can view PII data values within the interface for profiles and areas of the product where they have access. These users cannot set the **Restricted Data** property unless they are additionally granted the **PII Admin** permission. A user without the **PII Viewer** role cannot view restricted data values in the application.
+Users assigned to this role can view PII data values within the interface for profiles and areas of the product where they have access. These users cannot set the **Restricted Data** property unless they are additionally granted the **PII Admin** permission. 
+<blockquote>
+A user without the **PII Viewer** role cannot view restricted data values in the application.
+</blockquote>
+
 * **Configuration Admin**  
 Users assigned to this role have access to edit the configuration of the profile, including the ability to create and edit attributes, enrichments, and rules.
 * **Data Warehouse Admin**  
-Users assigned to this role have access to DataAccess product features.![](/images/early-access/screen-shot-2021-06-27-at-10.11.15-pm.png) 
+Users assigned to this role have access to DataAccess product features.![](https://docs.tealium.com/images/early-access/screen-shot-2021-06-27-at-10.11.15-pm.png) 
 
+
+<blockquote>
 The new roles applies to all users, including server-side admins and users with access to the **Manage Users** menu for server-side products. User Admins must assign account-level roles to themselves to have the wider privileges throughout the application.
+</blockquote>
+
 
 ### What is a Standard User?
 
 A **standard user** is a term introduced with this feature to describe the default level of access that new users receive at the account level.
 
-Permissions are granted to standard users using the &#34;principle of least privilege&#34; with a new, minimal set of permissions that limits access to specific parts of the product. This is particularly important for features related to the setup and configuration of critical components in your profile.
+Permissions are granted to standard users using the "principle of least privilege" with a new, minimal set of permissions that limits access to specific parts of the product. This is particularly important for features related to the setup and configuration of critical components in your profile.
 
 By default, standard users have access to do the following:
 
@@ -112,7 +124,7 @@ To assign and configure account-level permissions for your users:
 
 1. In the admin menu, click **Manage Users**.
 1. Click the user to update.
-1. Go to **Account Permissions**. ![](/images/early-access/screen-shot-2021-06-27-at-10.30.25-pm.png)
+1. Go to **Account Permissions**. ![](https://docs.tealium.com/images/early-access/screen-shot-2021-06-27-at-10.30.25-pm.png)
 1. Select the roles that are appropriate for the user’s job function.
 1. Click **Save**.  
 Users in the account are not impacted until enforcement is enabled in the next step.
@@ -121,7 +133,7 @@ Users in the account are not impacted until enforcement is enabled in the next s
 
 After you assign permission roles to your users and are satisfied that the proper permissions are in place, click the enforcement toggle to the ON position.
 
-![](/images/early-access/screen-shot-2021-06-27-at-10.14.03-pm.png)
+![](https://docs.tealium.com/images/early-access/screen-shot-2021-06-27-at-10.14.03-pm.png)
 
 Enforcement is immediate and cascades to all account users. The persistent alert bar no longer displays and users in the account are now governed by the new permissions.
 
@@ -133,5 +145,5 @@ The new account level permission configurations are maintained, but are not enfo
 
 ## Additional information
 
-* [About Restricted Data]()
-* [Managing Server-Side User Permissions]()
+* [About Restricted Data](https://docs.tealium.com/about-restricted-data/)
+* [Managing Server-Side User Permissions](https://docs.tealium.com/about-managing-server-side-user-permissions/)

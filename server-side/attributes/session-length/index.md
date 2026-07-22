@@ -25,6 +25,9 @@ The platform is based on the reserved attribute named `platform` according to th
 
 ## Customize session length
 
-To customize the session length, set the data layer variable `_dc_ttl_` to a value in milliseconds on the first event of a session. The minimum value of `_dc_ttl_` is `5000` (5 seconds) and the maximum value of is `1800000` (30 minutes). For example, to set the session length to five minutes, add the following to the event: `&#34;_dc_ttl_&#34;: 300000`. The session length cannot be changed after it has been set.
+To customize the session length, set the data layer variable `_dc_ttl_` to a value in milliseconds on the first event of a session. The minimum value of `_dc_ttl_` is `5000` (5 seconds) and the maximum value of is `1800000` (30 minutes). For example, to set the session length to five minutes, add the following to the event: `"_dc_ttl_": 300000`. The session length cannot be changed after it has been set.
 
+
+<blockquote>
 To set a custom session length, do not set the `platform` variable. If you set a custom value for `platform`, the session length defaults to 30 minutes.
+</blockquote>

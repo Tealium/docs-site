@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/advanced-settings/
 
 次の画像は、インターフェースに表示される**高度な構成**を示しています：
 
-![](/images/iq-tag-management/manage_tags/tag_advanced_settings.png)
+![](https://docs.tealium.com/images/iq-tag-management/manage_tags/tag_advanced_settings.png)
 
 ## 送信フラグ
 
@@ -21,15 +21,19 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/advanced-settings/
 
 バンドルされたタグと**すべてのページ**のロードルールを使用するタグのロード順序は、UIに表示される順序によって決まります。バンドルは生成されたファイル（`utag.js`）に影響します。
 
-ベンダータグによって要求される追加のJavaScriptファイルは、別々にロードされます。 
+
+<blockquote>
+ベンダータグによって要求される追加のJavaScriptファイルは、別々にロードされます。
+</blockquote>
+ 
 
 バンドル前のGoogle Analyticsのロード：
 
-![](/images/iq-tag-management/utag-google.png)  
+![](https://docs.tealium.com/images/iq-tag-management/utag-google.png)  
 
 バンドル後のGoogle Analyticsのロード：
 
-![](/images/iq-tag-management/utag-google-bundled.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-google-bundled.png)
 
 ## タグのタイミング
 
@@ -45,6 +49,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/advanced-settings/
 
 この構成を使用すると、組み込みのタグテンプレートの代わりに外部のJavaScriptファイルを使用してタグをサポートできます。**カスタムスクリプトソース**フィールドに`.js`ファイルのURLを入力します。
 
+
+<blockquote>
 URLから`http:`または`https:`プロトコルを削除し、相対プロトコルを使用します。例：`//[www.example.com/js/mylibrary.js](http://www.tealium.com/mylibrary.js)`
+</blockquote>
+
 
 カスタムJavaScriptを使用してタグをサポートすると、このタグが完了するまで他のタグの実行をブロックするブロッキングタグになります。このタグは依然として非同期的にロードされますが、ブロッキングタグが完了するまで後続の非同期スクリプト（例えば、`utag.10.js`）はロードされません。タグをブロッキングタグにせずにカスタムJavaScriptをロードするには、Tealium Generic Tagを使用してロードします。

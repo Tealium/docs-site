@@ -39,7 +39,7 @@ tealium.consentManager?.userConsentStatus = .consented
 
 ### `resetUserConsentPreferences()`
 
-メモリと永続保存に現在保存されているすべての同意構成をクリアします。カテゴリなしの`&#34;unknown&#34;`同意状態に戻ります。
+メモリと永続保存に現在保存されているすべての同意構成をクリアします。カテゴリなしの`"unknown"`同意状態に戻ります。
 
 ```swift
 resetUserConsentPreferences()

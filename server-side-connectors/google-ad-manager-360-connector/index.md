@@ -5,9 +5,13 @@ url: https://docs.tealium.com/server-side-connectors/google-ad-manager-360-conne
 ---
 ## Requirements
 
-To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google Ad Manager interface (**Linked Accounts &gt; Link New Account &gt; External Data Partner &gt; Tealium**). For more information, see [Google: Use Customer Match partners to upload data](https://support.google.com/google-ads/answer/7361372?hl=en).
+To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google Ad Manager interface (**Linked Accounts > Link New Account > External Data Partner > Tealium**). For more information, see [Google: Use Customer Match partners to upload data](https://support.google.com/google-ads/answer/7361372?hl=en).
 
- Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement. 
+
+<blockquote>
+Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement.
+</blockquote>
+
 
 ## Connector actions
 
@@ -33,9 +37,13 @@ This connector uses the following vendor APIs:
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
-When you add this connector you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -58,8 +66,12 @@ Use the following steps to create a new segment in AudienceStream:
   * **Segment Member Lifespan**
   * **Integration Code**- Integration Code is an ID used by user list sellers to correlate IDs on their systems. If no ID is available, enter a random number between 1 and 1000.
   * **Segment Description**.
-  If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
-![](/images/server-side-connectors/audiencestream-create-segment.jpg)
+  
+<blockquote>
+If you use a [DataAccess](https://docs.tealium.com/about-dataaccess/) product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
+</blockquote>
+
+![](https://docs.tealium.com/images/server-side-connectors/audiencestream-create-segment.jpg)
 
 3. Click **Create Segment**.  
 Upon success, a check mark displays next to the **Create Segment** button.
@@ -77,7 +89,7 @@ The following section describes how to set up parameters and options for each ac
 |**Parameter**|  **Description** |
 |---| ---|
 |Select the Target User-list/Segment|  (Required) The user map identifier. Specifies the user that this operation applies to. This parameter specifies the target User-list/Segment where the user will be added to. |
-|User ID| &lt;ul&gt;&lt;li&gt;Google User ID - Returned from Google by the TiQ cookie-matching service tag&lt;/li&gt; &lt;li&gt;Partner Provided ID - Sent to Google by the [Google Cookie Matching Service for Google Ad Manager and DV360]() tag. The default cookie match tag implementation applies the MD5 hash to the Tealium Visitor ID. If you use the default option, map this attribute to the MD5 hash option.&lt;/li&gt;&lt;li&gt;iOS Advertising ID&lt;/li&gt; &lt;li&gt;Android Advertising ID&lt;/li&gt; &lt;li&gt;Roku ID (RIDA)&lt;/li&gt; &lt;li&gt;Amazon Fire TV ID (AFAI)&lt;/li&gt; &lt;li&gt;XBOX/Microsoft ID (MSAI)&lt;/li&gt;&lt;/ul&gt;|
+|User ID| <ul><li>Google User ID - Returned from Google by the TiQ cookie-matching service tag</li> <li>Partner Provided ID - Sent to Google by the [Google Cookie Matching Service for Google Ad Manager and DV360](https://docs.tealium.com/google-cookie-matching-service/) tag. The default cookie match tag implementation applies the MD5 hash to the Tealium Visitor ID. If you use the default option, map this attribute to the MD5 hash option.</li><li>iOS Advertising ID</li> <li>Android Advertising ID</li> <li>Roku ID (RIDA)</li> <li>Amazon Fire TV ID (AFAI)</li> <li>XBOX/Microsoft ID (MSAI)</li></ul>|
 |Data Source ID|  (Optional) An ID indicating the data source that contributed this membership. The ID must  be in the 1 to 1,000 range and any IDs outside of this range will result in the following error: `BAD_DATA_SOURCE_ID`. These IDs do not have any semantics for Google and are used only as labels for reporting purposes. |
 
 ##### Consent
@@ -91,5 +103,5 @@ When using the **Add Visitor to User List** action, the connector will send cons
 |**Parameter**| **Description**|
 |---| ---|
 |Select the Target User-list/Segment|  (Required) The user map identifier. Specifies the user that this operation applies to. This parameter specifies the target User-list/Segment from where the user will be removed. |
-|User ID|  &lt;ul&gt;&lt;li&gt;Google User ID - Returned from Google by the TiQ cookie-matching service tag&lt;/li&gt; &lt;li&gt;Partner Provided ID - Sent to Google by the [Google Cookie Matching Service for Google Ad Manager and DV360]() tag. The default cookie match tag implementation applies the MD5 hash to the Tealium Visitor ID. If you use the default option, map this attribute to the MD5 hash option.&lt;/li&gt;&lt;li&gt;iOS Advertising ID&lt;/li&gt; &lt;li&gt;Android Advertising ID&lt;/li&gt; &lt;li&gt;Roku ID (RIDA)&lt;/li&gt; &lt;li&gt;Amazon Fire TV ID (AFAI)&lt;/li&gt; &lt;li&gt;XBOX/Microsoft ID (MSAI)&lt;/li&gt;&lt;/ul&gt;|
+|User ID|  <ul><li>Google User ID - Returned from Google by the TiQ cookie-matching service tag</li> <li>Partner Provided ID - Sent to Google by the [Google Cookie Matching Service for Google Ad Manager and DV360](https://docs.tealium.com/google-cookie-matching-service/) tag. The default cookie match tag implementation applies the MD5 hash to the Tealium Visitor ID. If you use the default option, map this attribute to the MD5 hash option.</li><li>iOS Advertising ID</li> <li>Android Advertising ID</li> <li>Roku ID (RIDA)</li> <li>Amazon Fire TV ID (AFAI)</li> <li>XBOX/Microsoft ID (MSAI)</li></ul>|
 |Data Source ID|  (Optional) An ID indicating the data source that contributed this membership. The ID must  be in the 1 to 1,000 range and any IDs outside of this range will result in the following error: `BAD_DATA_SOURCE_ID`. These IDs do not have any semantics for Google and are used only as labels for reporting purposes. |

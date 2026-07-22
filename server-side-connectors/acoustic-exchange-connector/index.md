@@ -16,7 +16,7 @@ url: https://docs.tealium.com/server-side-connectors/acoustic-exchange-connector
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -37,8 +37,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Channel|  &lt;ul&gt;&lt;li&gt;(Required) Select channel where the event was observed.&lt;/li&gt;&lt;li&gt;For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).&lt;/li&gt;&lt;/ul&gt; |
-|Sub Channel|  &lt;ul&gt;(Recommended) Select sub channel to classify further where the event was observed.&lt;/li&gt;&lt;li&gt;If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.&lt;/li&gt;&lt;/ul&gt; |
+|Channel|  <ul><li>(Required) Select channel where the event was observed.</li><li>For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).</li></ul> |
+|Sub Channel|  <ul>(Recommended) Select sub channel to classify further where the event was observed.</li><li>If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.</li></ul> |
 
 ### Action: Publish Cart Purchase Events
 
@@ -46,8 +46,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Channel|  &lt;ul&gt;&lt;li&gt;(Required) Select channel where the event was observed.&lt;/li&gt;&lt;li&gt;For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).&lt;/li&gt;&lt;/ul&gt; |
-|Sub Channel|  &lt;ul&gt;&lt;li&gt;(Recommended) Select sub channel to classify further where the event was observed.&lt;/li&gt;&lt;li&gt;If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.&lt;/li&gt;&lt;/ul&gt; |
+|Channel|  <ul><li>(Required) Select channel where the event was observed.</li><li>For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).</li></ul> |
+|Sub Channel|  <ul><li>(Recommended) Select sub channel to classify further where the event was observed.</li><li>If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.</li></ul> |
 
 ### Action: Publish Event
 
@@ -55,6 +55,6 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Event Type|  &lt;ul&gt;&lt;li&gt;(Required) Select event type.&lt;/li&gt;&lt;li&gt;For more information and a list of available events, see [Dynamic Event Library](https://exchange-us-1.goacoustic.com/#/taxonomy).&lt;/li&gt;&lt;/ul&gt; |
-|Channel|  &lt;ul&gt;&lt;li&gt;(Required) Select channel where the event was observed.&lt;/li&gt;&lt;li&gt;For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).&lt;/li&gt;&lt;/ul&gt; |
-|Sub Channel|  &lt;ul&gt;&lt;li&gt;( Recommended) Select sub channel to classify further where the event was observed.&lt;/li&gt;&lt;li&gt;If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.&lt;/li&gt;&lt;/ul&gt; |
+|Event Type|  <ul><li>(Required) Select event type.</li><li>For more information and a list of available events, see [Dynamic Event Library](https://exchange-us-1.goacoustic.com/#/taxonomy).</li></ul> |
+|Channel|  <ul><li>(Required) Select channel where the event was observed.</li><li>For more information, see: [Event Catalog](https://developer.goacoustic.com/acoustic-exchange/docs/acoustic-exchange-event-catalog).</li></ul> |
+|Sub Channel|  <ul><li>( Recommended) Select sub channel to classify further where the event was observed.</li><li>If selected channel does not have a fitting predefined sub channel to choose from, enter one manually as a custom value or leave blank.</li></ul> |

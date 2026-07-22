@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/audiencestore-connector/
 ## 必要条件
 
 * AudienceStoreはあなたのアカウントで有効になっている必要があります。詳細については、Tealiumのアカウントマネージャーにお問い合わせください。
-* アカウントにはアクティブなオーディエンスが必要です。詳細については、[オーディエンスの作成]()を参照してください。
+* アカウントにはアクティブなオーディエンスが必要です。詳細については、[オーディエンスの作成](https://docs.tealium.com/manage-audiences/)を参照してください。
 * オーディエンスの名前は128文字以下でなければなりません。それ以外の場合、DataAccessはオーディエンスの名前を切り詰め、エラーが発生する可能性があります。
 
 ## コネクタアクション
@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/audiencestore-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

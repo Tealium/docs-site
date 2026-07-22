@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -31,7 +31,7 @@ After adding the connector, configure the following settings:
 To generate an API key in the Campaign Manager:
 
 1. Log in to the Campaign Manager and open the **Application* of your choice, or create one.
-1. Navigate to **Settings &gt; Developer settings**.
+1. Navigate to **Settings > Developer settings**.
 1. Click **Create API Key**.
 1. Enter a title for the key.
 1. Under **Do you want to use this API Key with a 3rd party service?**, select **Yes**.
@@ -46,7 +46,7 @@ To generate an API key in the Campaign Manager:
 To generate a Management API Key:
 
 1. Log in to the Campaign Manager.
-1. Navigate to **Account &gt; Management API keys**.
+1. Navigate to **Account > Management API keys**.
 1. Click **Create Key**.
 1. Enter a name for the key.
 1. Set an expiration date for the key.
@@ -70,9 +70,9 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Customer Profile ID | The integration ID of the customer profile. This is the unique identifier that is being applied to the visitor. It should be a visitor ID associated within Tealium. We recommend that you do not use an email address. If this field is not mapped, it will be auto-mapped to the Tealium Visitor ID. |
-| Run Rule Engine | Indicates whether to run the Rule Engine.&lt;ul&gt;&lt;li&gt;If `true`, the rules are run and their effects applied. Audience changes are applied.&lt;/li&gt;&lt;li&gt;If `false`, the rules are not executed, the response time improves, and audience changes are not applied.&lt;/li&gt;&lt;/ul&gt; |
-| Customer Profile Attributes | Set attributes of your choice to the values of your choice.&lt;ul&gt;&lt;li&gt;New attributes are created automatically.&lt;/li&gt;&lt;li&gt;Custom and enabled build-in attributes are displayed. All other built-in attributes must be enabled first in the attribute library.&lt;/li&gt;&lt;/ul&gt; |
+| Run Rule Engine | Indicates whether to run the Rule Engine.<ul><li>If `true`, the rules are run and their effects applied. Audience changes are applied.</li><li>If `false`, the rules are not executed, the response time improves, and audience changes are not applied.</li></ul> |
+| Customer Profile Attributes | Set attributes of your choice to the values of your choice.<ul><li>New attributes are created automatically.</li><li>Custom and enabled build-in attributes are displayed. All other built-in attributes must be enabled first in the attribute library.</li></ul> |
 | Audiences Add | The IDs of the audiences for the customer to join. |
 | Audiences Remove | The audience IDs of the audiences for the customer to leave. |
-| Template Variables | Provide template variables as data input for **Templates**.&lt;ul&gt;&lt;li&gt;Use the dot notation for the names of nested template variables (for example, `items.name`).&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt; |
-| Templates | Provide templates to be referenced in **Customer Parameters** and **Customer Profile Attributes** sections. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. For more information, see . |
+| Template Variables | Provide template variables as data input for **Templates**.<ul><li>Use the dot notation for the names of nested template variables (for example, `items.name`).</li><li>Nested template variables are typically built from data layer list attributes.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li></ul> |
+| Templates | Provide templates to be referenced in **Customer Parameters** and **Customer Profile Attributes** sections. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). |

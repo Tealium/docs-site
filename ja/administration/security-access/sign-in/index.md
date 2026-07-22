@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/administration/security-access/sign-in/
 
 ## メールアドレスとパスワードでサインイン
 
-![](/images/administration/sign-in-email-password-or-sso.png)
+![](https://docs.tealium.com/images/administration/sign-in-email-password-or-sso.png)
 
 1. **メールアドレス**フィールドにメールアドレスを入力します。
 1. **パスワード**フィールドにパスワードを入力します。
@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/administration/security-access/sign-in/
 
 アカウントでマルチファクタ認証（MFA）が必要な場合、パスワードを入力した後にTealiumが認証コードを求めます。
 
-構成とトラブルシューティングについては、を参照してください。
+構成とトラブルシューティングについては、[multi-factor-authentication-mfa](https://docs.tealium.com/multi-factor-authentication-mfa/)を参照してください。
 
 ### パスワードをリセットする
 
@@ -28,13 +28,17 @@ url: https://docs.tealium.com/ja/administration/security-access/sign-in/
 1. `noreply@tealium.com`からのメールを確認し、**パスワードをリセットする**リンクをクリックします。
 1. 新しいパスワードを入力し、確認します。
 
+
+<blockquote>
 SSOユーザーはこのフローを通じてパスワードをリセットできません。SSO認証情報をリセットするには、ご自身のIDプロバイダーに連絡してください。
+</blockquote>
+
 
 ## SSOでサインイン
 
 シングルサインオン（SSO）を使用すると、組織のIDプロバイダーを通じてTealiumにアクセスできます。
 
-![](/images/administration/sign-in-sso-primary-account.png)
+![](https://docs.tealium.com/images/administration/sign-in-sso-primary-account.png)
 
 SSOでサインインするには：
 
@@ -49,13 +53,13 @@ SSOでサインインするには：
 1. メールアドレスを入力してフォームを送信します。
 1. プライマリアカウント名が記載されたメールを確認します。
 
-組織のSSO構成についての情報は、を参照してください。
+組織のSSO構成についての情報は、[single-sign-on](https://docs.tealium.com/single-sign-on/)を参照してください。
 
 ## プロファイルを選択
 
 サインイン後、プロファイルセレクターが表示されます。
 
-![](/images/administration/sign-in-select-profile.png)
+![](https://docs.tealium.com/images/administration/sign-in-select-profile.png)
 
 ロードするプロファイルとバージョンを選択し、**続行**をクリックします。
 

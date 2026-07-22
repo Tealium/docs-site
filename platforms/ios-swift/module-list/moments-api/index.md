@@ -20,9 +20,9 @@ Install the Moments API module using Swift Package Manager, CocoaPods, or Cartha
 
 ### Swift Package Manager (Recommended)
 
-1. In your Xcode project, select **File &gt; Swift Packages &gt; Add Package Dependency**
+1. In your Xcode project, select **File > Swift Packages > Add Package Dependency**
 1. Enter the repository URL: `https://github.com/tealium/tealium-swift`
-1. Configure the version rules. Typically, `&#34;Up to next major&#34;` is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.
+1. Configure the version rules. Typically, `"Up to next major"` is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.
 1. Select the `TealiumMomentsAPI`, `TealiumCore`, and either `TealiumCollect` or `TealiumTagManagement` modules from the list of modules to install and add them to each of your app targets in your Xcode project, under **Frameworks and Libraries**.
 
 ### CocoaPods
@@ -30,14 +30,14 @@ Install the Moments API module using Swift Package Manager, CocoaPods, or Cartha
 Add the following pods to your Podfile:  
 
 ```perl
-pod &#39;tealium-swift/Core&#39;
-pod &#39;tealium-swift/Collect&#39; // or &#39;tealium-swift/TagManagement&#39;
-pod &#39;tealium-swift/MomentsAPI&#39;
+pod 'tealium-swift/Core'
+pod 'tealium-swift/Collect' // or 'tealium-swift/TagManagement'
+pod 'tealium-swift/MomentsAPI'
 ```
 
 ### Carthage
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 2. Add the following framework to the **Embedded Binaries** section:  
 
    ```
@@ -56,34 +56,38 @@ pod &#39;tealium-swift/MomentsAPI&#39;
 
 ### Initialize
 
-To initialize the module, ensure it&#39;s specified on the `TealiumConfig` `collectors` property.
+To initialize the module, ensure it's specified on the `TealiumConfig` `collectors` property.
 
 ```swift
 config.collectors = [Collectors.MomentsAPI]
 config.momentsAPIRegion = .us_east // See possible region options below
 ```
 
- Setting the region is mandatory. The Moments API module will not initialize if it&#39;s missing. 
+
+<blockquote>
+Setting the region is mandatory. The Moments API module will not initialize if it's missing.
+</blockquote>
+
 
 ### Fetch Visitor Data
 
 Call the `fetchEngineResponse` method to retrieve personalized visitor data. This should be called whenever updated visitor information is needed, for example, to power in-app personalization use cases.
 
 ```swift
-func fetchMoments(engineId: String, completion: @escaping (Result&lt;EngineResponse, Error&gt;) -&gt; Void) {
+func fetchMoments(engineId: String, completion: @escaping (Result<EngineResponse, Error>) -> Void) {
     tealium?.momentsAPI?.fetchEngineResponse(engineID: engineId) { engineResponse in
         switch engineResponse {
         case .success(let response):
-            print(&#34;String attributes:&#34;, response.strings ?? [])
-            print(&#34;Boolean attributes:&#34;, response.booleans ?? [])
-            print(&#34;Audiences:&#34;, response.audiences ?? [])
-            print(&#34;Date attributes:&#34;, response.dates ?? [:])
-            print(&#34;Badges:&#34;, response.badges ?? [])
-            print(&#34;Numbers:&#34;, response.numbers ?? [:])
+            print("String attributes:", response.strings ?? [])
+            print("Boolean attributes:", response.booleans ?? [])
+            print("Audiences:", response.audiences ?? [])
+            print("Date attributes:", response.dates ?? [:])
+            print("Badges:", response.badges ?? [])
+            print("Numbers:", response.numbers ?? [:])
         case .failure(let error):
-            print(&#34;Error fetching moments:&#34;, error.localizedDescription)
+            print("Error fetching moments:", error.localizedDescription)
             if let suggestion = (error as? LocalizedError)?.recoverySuggestion {
-                print(&#34;Recovery suggestion:&#34;, suggestion)
+                print("Recovery suggestion:", suggestion)
             }
         }
         completion(engineResponse)
@@ -118,17 +122,21 @@ Configure the Moments API region according to where your AudienceStream profile 
 | `.oregon`    | `us-west-2`       |
 | `.tokyo`     | `ap-northeast-1`  |
 | `.hong_kong` | `ap-east-1`       |
-| `.custom`    | `&lt;custom string&gt;` |
+| `.custom`    | `<custom string>` |
 
 ```swift
 config.momentsAPIRegion = .us_east
 ```
 
- The custom option allows for future expansion and should not be used unless directed. 
+
+<blockquote>
+The custom option allows for future expansion and should not be used unless directed.
+</blockquote>
+
 
 ### Referrer
 
-For added security, you can specify a referrer URL. This URL must match the &#34;Domain Allow List&#34; in the Tealium UI, or the Moments API will not return any data. The default referrer URL is:
+For added security, you can specify a referrer URL. This URL must match the "Domain Allow List" in the Tealium UI, or the Moments API will not return any data. The default referrer URL is:
 
 ```
 https://tags.tiqcdn.com/utag/{account}/{profile}/{environment}/mobile.html
@@ -138,11 +146,11 @@ Specify a custom referrer URL as shown below:
 
 ```swift
 let config = TealiumConfig(
-    account: &#34;tealiummobile&#34;,
-    profile: &#34;demo&#34;,
-    environment: &#34;prod&#34;
+    account: "tealiummobile",
+    profile: "demo",
+    environment: "prod"
 )
-config.momentsAPIReferrer = &#34;https://example.com/&#34;
+config.momentsAPIReferrer = "https://example.com/"
 tealium = Tealium(config: config) { _ in
     // Initialization complete
 }

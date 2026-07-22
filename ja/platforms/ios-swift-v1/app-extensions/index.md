@@ -2,13 +2,17 @@
 title: アプリ拡張機能
 description: アプリ拡張機能について学びましょう。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/app-extensions/
----これはTealium for iOS (Swift)の以前のバージョン（1.x）です。最新バージョンについては、[Tealium for iOS (Swift) 2.x](/ja/platforms/ios-swift/)をご覧ください。
+---
+<blockquote>
+これはTealium for iOS (Swift)の以前のバージョン（1.x）です。最新バージョンについては、[Tealium for iOS (Swift) 2.x](https://docs.tealium.com/ja/platforms/ios-swift/)をご覧ください。
+</blockquote>
+
 
 ## 今日の拡張機能
 
 **今日の拡張機能**はデバイスの「今日」画面に表示されるウィジェットです。これらのアプリ拡張機能はOSから非常に限られたリソースを許可されており、メモリや処理能力を多く消費すると終了される可能性があります。
 
-Today Extension内でSwiftライブラリを通常通り使用しますが、メモリの使用量を低く保つために、データ送信には[Collectモジュール](/ja/platforms/ios-swift-v1/module-list/collect/)のみを使用することをお勧めします。[Tag Managementモジュール](/ja/platforms/ios-swift-v1/module-list/tag-management/)はリソースを多く消費する可能性があり、ウィジェットが終了する原因となるかもしれません。
+Today Extension内でSwiftライブラリを通常通り使用しますが、メモリの使用量を低く保つために、データ送信には[Collectモジュール](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/collect/)のみを使用することをお勧めします。[Tag Managementモジュール](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/tag-management/)はリソースを多く消費する可能性があり、ウィジェットが終了する原因となるかもしれません。
 
 選択したオプションに関わらず、ウィジェットが期待通りに動作するかどうかを徹底的にテストし、確認することが重要です。ウィジェットにTealiumモジュールを少なく組み込むことで、パフォーマンスが向上し、メモリの使用量が低くなります。
 
@@ -32,16 +36,16 @@ class TealiumHelper {
 	// ...
 
 	// iOSアプリのTealium Swiftライブラリから現在の訪問IDを返す
-	func getVisitorId() -&gt; String? {
+	func getVisitorId() -> String? {
 		return self.tealium.visitorId
 	}
 
 	// アプリ拡張機能で、iOSアプリから取得したIDを構成オブジェクトに渡す
 	private func initTealium(existingVisitorId id: String) {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
- 	       		                 profile: &#34;PROFILE&#34;,
-        	   	                 environment: &#34;ENVIRONMENT&#34;,
-           		                 datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+ 	       		                 profile: "PROFILE",
+        	   	                 environment: "ENVIRONMENT",
+           		                 datasource: "DATASOURCE")
 
 		// 既存のIDはアプリ拡張機能で第一者IDとして使用される
         config.existingVisitorId = id
@@ -53,4 +57,7 @@ class TealiumHelper {
 
 代わりに、訪問IDを中央で生成し、初期化時に各Tealiumインスタンスに渡すことをお勧めします。UUIDの使用が推奨されます。
 
+
+<blockquote>
 最初の訪問IDに単純なID（例：メールアドレス）を使用しないでください。
+</blockquote>

@@ -31,4 +31,7 @@ Tealium browser support is as follows:
 * Support for two earlier versions or older only covers essential functionality of the product, not necessarily proper rendering of the intended look and feel.
 * Tablet or mobile device browsers are not directly supported.
 
+
+<blockquote>
 This browser support does not apply to the Universal Tag (`utag.js`), which has widespread browser support.
+</blockquote>

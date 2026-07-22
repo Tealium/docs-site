@@ -3,7 +3,7 @@ title: ユーザー権限について
 description: この記事では、Tealium iQタグ管理でのユーザー権限の仕組みについて説明します。
 url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissions/about/
 ---
-サーバーサイドの権限については、[サーバーサイドユーザー権限の管理](/ja/server-side/settings/user-permissions/manage/)を参照してください。
+サーバーサイドの権限については、[サーバーサイドユーザー権限の管理](https://docs.tealium.com/ja/server-side/settings/user-permissions/manage/)を参照してください。
 
 ## ユーザー権限の仕組み
 
@@ -15,10 +15,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 
 |権限| 説明|
 |---| ---|
-|アカウントの管理|  &lt;ul&gt;&lt;li&gt;他のユーザーに対してアカウントレベルの権限を割り当てることができます。&lt;/li&gt;&lt;/ul&gt; |
-|プロファイルの管理|  &lt;ul&gt;&lt;li&gt;このアカウントのプロファイルを作成、管理、名前変更することができます。&lt;/li&gt;&lt;/ul&gt; |
-|サイトスキャンの管理|  &lt;ul&gt;&lt;li&gt;サイトスキャンを実行および削除することができます。&lt;/li&gt;&lt;li&gt;すべてのユーザーがサイトスキャンを閲覧できます。&lt;/li&gt;&lt;/ul&gt; |
-| JavaScriptコード拡張の管理 |  &lt;ul&gt;&lt;li&gt;アカウントで構成されたJavaScriptコード拡張を編集することができます。&lt;/li&gt;&lt;li&gt;この権限は [JavaScriptコード拡張]()に適用され、[高度なJavaScriptコード拡張]()には適用されません。&lt;/li&gt;&lt;/ul&gt; |
+|アカウントの管理|  <ul><li>他のユーザーに対してアカウントレベルの権限を割り当てることができます。</li></ul> |
+|プロファイルの管理|  <ul><li>このアカウントのプロファイルを作成、管理、名前変更することができます。</li></ul> |
+|サイトスキャンの管理|  <ul><li>サイトスキャンを実行および削除することができます。</li><li>すべてのユーザーがサイトスキャンを閲覧できます。</li></ul> |
+| JavaScriptコード拡張の管理 |  <ul><li>アカウントで構成されたJavaScriptコード拡張を編集することができます。</li><li>この権限は [JavaScriptコード拡張]()に適用され、[高度なJavaScriptコード拡張]()には適用されません。</li></ul> |
 
 ### プロファイルレベルの権限
 
@@ -35,12 +35,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissio
 
 |権限| 説明|
 |---| ---|
-|ユーザーの管理|  &lt;ul&gt;&lt;li&gt;このプロファイルのユーザーとその権限を追加、編集、削除します。&lt;/li&gt;&lt;/ul&gt; |
-|タグテンプレートの管理|  &lt;ul&gt;&lt;li&gt;このプロファイルのすべてのタグテンプレートを編集および削除します。&lt;/li&gt;&lt;/ul&gt; |
-|リソースロックの管理|  &lt;ul&gt;&lt;li&gt;変数、タグ、ロードルール、拡張機能に対する[リソースロック]()を適用および管理します。&lt;/li&gt;&lt;/ul&gt; |
-|既存バージョンの保存|  &lt;ul&gt;&lt;li&gt;このプロファイルに対して**保存**を実行し、既存のバージョンの構成を新しい構成で上書きします。&lt;/li&gt; &lt;li&gt;変数、タグ、ロードルール、拡張機能に[ラベル]()を適用します。&lt;/li&gt;&lt;li&gt;注意: ユーザーには「保存」と「名前を付けて保存」の違いを理解してもらうことが重要です。&lt;/li&gt;&lt;/ul&gt; |
-|新しいバージョンとして保存|  &lt;ul&gt;&lt;li&gt;このプロファイルに対して**名前を付けて保存**を実行します。&lt;/li&gt;&lt;/ul&gt; |
-|JavaScriptドラフトの昇格|  &lt;ul&gt;&lt;li&gt;[高度なJavaScriptコード拡張]()のドラフトをDev、QA、またはProdに公開するために昇格します。&lt;/li&gt;&lt;/ul&gt; |
-|Dev環境への公開|  &lt;ul&gt;&lt;li&gt;Dev環境およびこのプロファイルに追加されたカスタム環境に公開します。&lt;/li&gt;&lt;li&gt;[カスタム公開環境]()に公開するために必要です。&lt;/li&gt;&lt;/ul&gt; |
-|QA環境への公開|  &lt;ul&gt;&lt;li&gt;QA環境に公開します。&lt;/li&gt;&lt;/ul&gt; |
-|Prod環境への公開|  &lt;ul&gt;&lt;li&gt;Prod環境に公開します。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザーの管理|  <ul><li>このプロファイルのユーザーとその権限を追加、編集、削除します。</li></ul> |
+|タグテンプレートの管理|  <ul><li>このプロファイルのすべてのタグテンプレートを編集および削除します。</li></ul> |
+|リソースロックの管理|  <ul><li>変数、タグ、ロードルール、拡張機能に対する[リソースロック]()を適用および管理します。</li></ul> |
+|既存バージョンの保存|  <ul><li>このプロファイルに対して**保存**を実行し、既存のバージョンの構成を新しい構成で上書きします。</li> <li>変数、タグ、ロードルール、拡張機能に[ラベル]()を適用します。</li><li>注意: ユーザーには「保存」と「名前を付けて保存」の違いを理解してもらうことが重要です。</li></ul> |
+|新しいバージョンとして保存|  <ul><li>このプロファイルに対して**名前を付けて保存**を実行します。</li></ul> |
+|JavaScriptドラフトの昇格|  <ul><li>[高度なJavaScriptコード拡張]()のドラフトをDev、QA、またはProdに公開するために昇格します。</li></ul> |
+|Dev環境への公開|  <ul><li>Dev環境およびこのプロファイルに追加されたカスタム環境に公開します。</li><li>[カスタム公開環境]()に公開するために必要です。</li></ul> |
+|QA環境への公開|  <ul><li>QA環境に公開します。</li></ul> |
+|Prod環境への公開|  <ul><li>Prod環境に公開します。</li></ul> |

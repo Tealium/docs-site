@@ -7,7 +7,11 @@ url: https://docs.tealium.com/server-side-connectors/adobe-analytics-2-connector
 
 The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.
 
+
+<blockquote>
 The end of life date for Adobe Analytics 1.4 is August 12, 2026, including WSSE authentication. Although the Data Insertion API will remain accessible beyond that date, it will not receive updates or active support. We recommend that you use the Adobe Analytics 2 connector instead.
+</blockquote>
+
 
 ## Adobe Analytics 2.0 connector differences
 
@@ -84,7 +88,7 @@ Configuring the Adobe Analytics 2.0 Connector requires the Client ID (API Key) a
 After you have obtained the Client ID and Client Secret, use the following steps in the interface to configure an Adobe Analytics connector:
 
 1. Go to the **Connector Marketplace** and add the Adobe Analytics connector.  
-For general instructions on how to add a connector, see [Connector Overview]().
+For general instructions on how to add a connector, see [Connector Overview](https://docs.tealium.com/about-connectors/).
 1. Select an **Audience** and a **Trigger**, then click **Continue**.
 1. Click **Add Connector**.
 1. Enter a **Name** for the connector.
@@ -98,13 +102,17 @@ The next step is [configuring an action]().
 
 Adobe Analytics 2.0 only allows a compressed file to be sent in each call, which means the connector cannot perform a real-time action. The connector performs a 30-second micro-batched action instead. 
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 250,000
 * Maximum time since oldest request: 30 minutes
 * Maximum size of requests: Compressed file 100 MB; Uncompressed file 300 MB
 
+
+<blockquote>
 If your requests exceed the size limits, create more connector actions with smaller batch sizes per action.
+</blockquote>
+
 
 ## Actions
 
@@ -119,27 +127,27 @@ Select an action, then configure the following parameters:
 
 | **Group**  | **Description** |
 |-------------|-----------------|
-| Event Parameters | &lt;ul&gt;&lt;li&gt;For more information, see [General Attributes](#general-attributes).&lt;/li&gt;&lt;/ul&gt; |
-| Context Data | &lt;ul&gt;&lt;li&gt;Specify keys using the dot format.&lt;/li&gt;&lt;li&gt;For example `my.a`.&lt;/li&gt;&lt;li&gt;Multiple key-value pairs can be specified.&lt;/li&gt;&lt;/ul&gt; |
-| eVars | &lt;ul&gt;&lt;li&gt;Specify the event eVars by mapping an attribute to a number.&lt;/li&gt;&lt;li&gt;For example: Map `event_count` to `1` for **eVar1**.&lt;/li&gt;&lt;li&gt;Valid range is `1` through `100`, `250` for Premium Accounts&lt;/li&gt;&lt;/ul&gt; |
-| Hierarchy | &lt;ul&gt;&lt;li&gt;A hierarchy string.&lt;/li&gt;&lt;li&gt;Select from `1` through `5`.&lt;/li&gt;&lt;/ul&gt; |
-| List | &lt;ul&gt;&lt;li&gt;A list of values that are passed into a variable, then reported as individual line items for reporting&lt;/li&gt;&lt;li&gt;Select from `1` through `3`.&lt;/li&gt;&lt;li&gt;Requires Array type in data layer.&lt;/li&gt;&lt;li&gt;Tealium will format the data correctly to be passed along&lt;/li&gt;&lt;/ul&gt; |
-| Properties | &lt;ul&gt;&lt;li&gt;Analytics property name.&lt;/li&gt;&lt;li&gt;Specify the name by mapping an attribute to a number.&lt;/li&gt;&lt;li&gt;For example: Map `lifetime_value` to `1` for **prop1**.&lt;/li&gt;&lt;/ul&gt; |
-| Events | &lt;ul&gt;&lt;li&gt;Specify a list of events, or comma-separated custom values.&lt;/li&gt;&lt;li&gt;For more information, see [Adobe Analytics Configure Events Implementation](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en)&lt;/li&gt;&lt;/ul&gt; |
-| Event Mapping | &lt;ul&gt;&lt;li&gt;Map a potential value contained in the Events Array to the Adobe Analytics Custom Event name.&lt;/li&gt;&lt;li&gt;For example: Mapping purchase to 3, will replace purchase with event3, so the final output based on the original Events example would change from event1,event2,event3,purchase to event1,event2,event3,event4.&lt;/li&gt;&lt;/ul&gt; |
-| Event Values | &lt;ul&gt;&lt;li&gt;Specify values for `Counter`, `Numeric`, and `Currency` events.&lt;/li&gt;&lt;li&gt;To specify an event, use a number.&lt;/li&gt;&lt;li&gt;For example, mapping 9.99 to 2 results in the following output: `event1,event2=9.99,event3,event4`.&lt;/li&gt;&lt;/ul&gt; |
-| Event Serialization | &lt;ul&gt;&lt;li&gt;Specifies event IDs to use to serialize events.&lt;/li&gt;&lt;li&gt;For more information see, [Event Serialization](https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/event-serialization#vars).&lt;/li&gt;&lt;li&gt;For example, mapping page_view to 3, results in the following output: `event1,event2,event3:page_view,event4`.&lt;/li&gt;&lt;/ul&gt; |
-| Products | &lt;ul&gt;&lt;li&gt;Specify product attributes (`Id`, `Category`, `Quantity`, `Price`)&lt;/li&gt;&lt;li&gt;All arrays must be equal-sized and order-aligned&lt;/li&gt;&lt;li&gt;For additional information, see [Adobe Analytics Product Implementation](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en)&lt;/li&gt;&lt;/ul&gt; |
-| Product eVars | &lt;ul&gt;&lt;li&gt;Specify product eVars values.&lt;/li&gt;&lt;li&gt;All arrays must be equal-sized to those in the **Product** section.&lt;/li&gt;&lt;li&gt;Empty values will be ignored.&lt;/li&gt;&lt;li&gt;Specify eVar mappings with a number.&lt;/li&gt;&lt;li&gt;As an example, `1` will be mapped to `eVar1`.&lt;/li&gt;&lt;/ul&gt; |
-| Product Events | &lt;ul&gt;&lt;li&gt;Specify product event values.&lt;/li&gt;&lt;li&gt;All arrays must be equal-sized to those in the **Product** section.&lt;/li&gt;&lt;li&gt;Empty values will be ignored.&lt;/li&gt;&lt;li&gt;Specify event mappings with a number.&lt;/li&gt;&lt;li&gt;As an example, `1` will be mapped to `event1`.&lt;/li&gt;&lt;/ul&gt; |
-| Brands | &lt;ul&gt;&lt;li&gt;Specify brand attributes.&lt;/li&gt;&lt;li&gt;Available attributes are **brand** and **version**.&lt;/li&gt;&lt;li&gt;All arrays must be equal-sized.&lt;/li&gt;&lt;/ul&gt; |
+| Event Parameters | <ul><li>For more information, see [General Attributes](#general-attributes).</li></ul> |
+| Context Data | <ul><li>Specify keys using the dot format.</li><li>For example `my.a`.</li><li>Multiple key-value pairs can be specified.</li></ul> |
+| eVars | <ul><li>Specify the event eVars by mapping an attribute to a number.</li><li>For example: Map `event_count` to `1` for **eVar1**.</li><li>Valid range is `1` through `100`, `250` for Premium Accounts</li></ul> |
+| Hierarchy | <ul><li>A hierarchy string.</li><li>Select from `1` through `5`.</li></ul> |
+| List | <ul><li>A list of values that are passed into a variable, then reported as individual line items for reporting</li><li>Select from `1` through `3`.</li><li>Requires Array type in data layer.</li><li>Tealium will format the data correctly to be passed along</li></ul> |
+| Properties | <ul><li>Analytics property name.</li><li>Specify the name by mapping an attribute to a number.</li><li>For example: Map `lifetime_value` to `1` for **prop1**.</li></ul> |
+| Events | <ul><li>Specify a list of events, or comma-separated custom values.</li><li>For more information, see [Adobe Analytics Configure Events Implementation](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en)</li></ul> |
+| Event Mapping | <ul><li>Map a potential value contained in the Events Array to the Adobe Analytics Custom Event name.</li><li>For example: Mapping purchase to 3, will replace purchase with event3, so the final output based on the original Events example would change from event1,event2,event3,purchase to event1,event2,event3,event4.</li></ul> |
+| Event Values | <ul><li>Specify values for `Counter`, `Numeric`, and `Currency` events.</li><li>To specify an event, use a number.</li><li>For example, mapping 9.99 to 2 results in the following output: `event1,event2=9.99,event3,event4`.</li></ul> |
+| Event Serialization | <ul><li>Specifies event IDs to use to serialize events.</li><li>For more information see, [Event Serialization](https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/event-serialization#vars).</li><li>For example, mapping page_view to 3, results in the following output: `event1,event2,event3:page_view,event4`.</li></ul> |
+| Products | <ul><li>Specify product attributes (`Id`, `Category`, `Quantity`, `Price`)</li><li>All arrays must be equal-sized and order-aligned</li><li>For additional information, see [Adobe Analytics Product Implementation](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en)</li></ul> |
+| Product eVars | <ul><li>Specify product eVars values.</li><li>All arrays must be equal-sized to those in the **Product** section.</li><li>Empty values will be ignored.</li><li>Specify eVar mappings with a number.</li><li>As an example, `1` will be mapped to `eVar1`.</li></ul> |
+| Product Events | <ul><li>Specify product event values.</li><li>All arrays must be equal-sized to those in the **Product** section.</li><li>Empty values will be ignored.</li><li>Specify event mappings with a number.</li><li>As an example, `1` will be mapped to `event1`.</li></ul> |
+| Brands | <ul><li>Specify brand attributes.</li><li>Available attributes are **brand** and **version**.</li><li>All arrays must be equal-sized.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `30` minutes. |
 
 When you are done configuring parameters, click **Save**, and then Save and Publish your changes.
 
 ## General attributes
 
-For a full reference of all attributes, including details on exactly what each field should contain, see [Adobe: API documentation](https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/reference/r_supported_tags.md) and the [Visitor &amp; Experience Cloud IDs](#visitor-and-experience-cloud-ids) section of this article.
+For a full reference of all attributes, including details on exactly what each field should contain, see [Adobe: API documentation](https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/reference/r_supported_tags.md) and the [Visitor & Experience Cloud IDs](#visitor-and-experience-cloud-ids) section of this article.
 
 ### User agent client hints
 
@@ -149,12 +157,12 @@ These mapping selections appear in the **Event Parameters** section.
 
 |Map From|Map To|Notes|Sample Connector Output|
 |----|----|----|----|
-| Server-side attribute containing the system architecture hint. | `hints.architecture` | &lt;ul&gt;&lt;li&gt;String value.&lt;/li&gt;&lt;li&gt;For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.&lt;/li&gt;&lt;/ul&gt; | `x64` |
-| Server-side attribute containing the number of bits that the application running uses. | `hints.bitness` | &lt;ul&gt;&lt;li&gt;String value.&lt;/li&gt;&lt;li&gt;For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.&lt;/li&gt;&lt;/ul&gt; | `64` |
-| Server-side attribute indicating whether the custom event occurred through a mobile connection. | `hints.mobile` | &lt;ul&gt;&lt;li&gt;Boolean value.&lt;/li&gt;&lt;li&gt;For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.&lt;/li&gt;&lt;/ul&gt;  | `true` |
-| Server-side attribute containing the platform hint. | `hints.platform` | &lt;ul&gt;&lt;li&gt;String value.&lt;/li&gt;&lt;/ul&gt; | `win` |
-| Server-side attribute containing the platform version hint. | `hints.platformVersion` | &lt;ul&gt;&lt;li&gt;String value.&lt;/li&gt;&lt;li&gt;For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.&lt;/li&gt;&lt;/ul&gt;  | `10` |
-| Server-side attribute containing an indicator that Windows is running the 32-bit subsystem. For more information, see [WoW64 at Wikipedia](https://en.wikipedia.org/wiki/WoW64) | `hints.wow64` | &lt;ul&gt;&lt;li&gt;Boolean value.&lt;/li&gt;&lt;li&gt;For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.&lt;/li&gt;&lt;/ul&gt; | `true` |
+| Server-side attribute containing the system architecture hint. | `hints.architecture` | <ul><li>String value.</li><li>For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.</li></ul> | `x64` |
+| Server-side attribute containing the number of bits that the application running uses. | `hints.bitness` | <ul><li>String value.</li><li>For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.</li></ul> | `64` |
+| Server-side attribute indicating whether the custom event occurred through a mobile connection. | `hints.mobile` | <ul><li>Boolean value.</li><li>For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.</li></ul>  | `true` |
+| Server-side attribute containing the platform hint. | `hints.platform` | <ul><li>String value.</li></ul> | `win` |
+| Server-side attribute containing the platform version hint. | `hints.platformVersion` | <ul><li>String value.</li><li>For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.</li></ul>  | `10` |
+| Server-side attribute containing an indicator that Windows is running the 32-bit subsystem. For more information, see [WoW64 at Wikipedia](https://en.wikipedia.org/wiki/WoW64) | `hints.wow64` | <ul><li>Boolean value.</li><li>For more information, see [User agent client hints](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html) at Adobe.</li></ul> | `true` |
 
 ### Context data
 
@@ -198,7 +206,7 @@ For example, mapping `purchase` to `4`, replaces `purchase` with `event4`, so th
 
 | Map From | Data Type | Map To | Example Input | Sample Connector Output  |
 |:---------|:----------|:-------|:--------------|:-------------------------|
-| Custom text value containing a string to look up in the Events array. | Name of event to trigger, for example, `event8`. | `[&#34;newsletter_registration&#34;, &#34;homepage_viewed&#34;]` | `newsletter_registration` |
+| Custom text value containing a string to look up in the Events array. | Name of event to trigger, for example, `event8`. | `["newsletter_registration", "homepage_viewed"]` | `newsletter_registration` |
 
 ### Event values
 
@@ -214,7 +222,7 @@ Configure event serialization by mapping an attribute that contains the event ID
 
 | Map From | Data Type | Map To | Example Input | Sample Connector Output  |
 |:---------|:----------|:-------|:--------------|:-------------------------|
-| Attribute representing an event ID. | String    | The event number. | Map `ABC123` to `1`,&lt;br&gt; Map `ABC123` to `2` | `event1:ABC123,event2:ABC123` |
+| Attribute representing an event ID. | String    | The event number. | Map `ABC123` to `1`,<br> Map `ABC123` to `2` | `event1:ABC123,event2:ABC123` |
 
 ### Products
 
@@ -224,10 +232,10 @@ Only server-side attributes with array data types may be used to populate the Pr
 
 | Map From | Data Type | Map To | Example Input Data | Sample Connector Output |
 |--------------|--------------|-------------|------------------------|-----------------------|
-| Server-side attribute representing Product Category | Array       | Products Category | `[&#34;Shoes&#34;, &#34;Shirts&#34;]`  | `Shoes;;;,Shirts;;;`  |
-| Server-side attribute representing Product ID       | Array       | Products ID       | `[&#34;ABC123&#34;, &#34;EFG234&#34;]` | `;ABC123;;,;EFG234;;` |
-| Server-side attribute representing Quantity         | Array       | Products Quantity | `[&#34;1&#34;, &#34;2&#34;]`           | `;;1;,;;2;;`          |
-| Server-side attribute representing Price            | Array       | Products Price    | `[&#34;149.99&#34;, &#34;79.80&#34;]`  | `;;;149.99,;;;79.80`  |
+| Server-side attribute representing Product Category | Array       | Products Category | `["Shoes", "Shirts"]`  | `Shoes;;;,Shirts;;;`  |
+| Server-side attribute representing Product ID       | Array       | Products ID       | `["ABC123", "EFG234"]` | `;ABC123;;,;EFG234;;` |
+| Server-side attribute representing Quantity         | Array       | Products Quantity | `["1", "2"]`           | `;;1;,;;2;;`          |
+| Server-side attribute representing Price            | Array       | Products Price    | `["149.99", "79.80"]`  | `;;;149.99,;;;79.80`  |
 
 ### Product events
 
@@ -238,13 +246,13 @@ If a simple variable is mapped (a singular value, or a custom text value), then 
 For these examples, assume the following product arrays are present as event attributes:
 
 ```
-Product Category: [&#34;Footwear&#34;, &#34;Apparel&#34;] Product ID: [&#34;Running Shoes&#34;, &#34;T-Shirt&#34;] Quantity: [&#34;1&#34;, &#34;1&#34;] Price: [&#34;99.99&#34;, &#34;49.99&#34;]
+Product Category: ["Footwear", "Apparel"] Product ID: ["Running Shoes", "T-Shirt"] Quantity: ["1", "1"] Price: ["99.99", "49.99"]
 ```
 
 | Map From  | Data Type | Map To  | Example Input Value | Sample Connector Output |
 |-----------|----------|----------|---------------------|-------------------------|
 | Custom text value containing a numerical value. | String   | Name of event to trigger. For example, `event8`. | `9.99` (custom value) | `Footwear;RunningShoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99` |
-| Server-side attribute representing numerical array. | Array    | Name of event to trigger. For example, `event12`. | `[&#34;1.99&#34;, &#34;4.99&#34;]`  | `Footwear;RunningShoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99` |
+| Server-side attribute representing numerical array. | Array    | Name of event to trigger. For example, `event12`. | `["1.99", "4.99"]`  | `Footwear;RunningShoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99` |
 
 ### Product eVars
 
@@ -255,11 +263,11 @@ These work in the same way as the **Product Events** field, described above.
 | Map From | Data Type | Map To | Example Input Value | Sample Connector Output |
 |--------------|---------------|------------|-----------------------|-------------------|
 | Custom text value containing a numerical value. | String | Name of event to trigger. For example, `event8`. | `9.99` (custom value) | `Footwear;RunningShoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99` |
-| Server-side attribute representing an array of numerical data. | Array | Name of event to trigger. For example, `event12`. | `[&#34;1.99&#34;, &#34;4.99&#34;]` | `Shoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99` |
+| Server-side attribute representing an array of numerical data. | Array | Name of event to trigger. For example, `event12`. | `["1.99", "4.99"]` | `Shoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99` |
 
 ### Hierarchy
 
-Page [Hierarchy](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en) helps to classify a page within your site/app&#39;s navigation structure. There are five available slots: `hier1` through `hier5`.
+Page [Hierarchy](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en) helps to classify a page within your site/app's navigation structure. There are five available slots: `hier1` through `hier5`.
 
 ### List data
 
@@ -279,7 +287,7 @@ For more information, refer to [Adobe Analytics 2.0 APIS](https://github.com/Ado
 
 * **customerIDType**: Specifies the type of Customer ID for which you want to provide values. For example, `email`.
 * **id**: The ID used in the Experience Cloud Identity Service `setCustomerIDs` method. Mapped to customerID.[customerIDType].id. For example, customerID.email.id ↔︎ Customer Email.
-* **isMCSeed**: An integer boolean that lets you use `customerID.[customerIDType].id` as the hit&#39;s identifier. Use `1` for true and `0` for false. 
+* **isMCSeed**: An integer boolean that lets you use `customerID.[customerIDType].id` as the hit's identifier. Use `1` for true and `0` for false. 
 * **authState**: The authState used in the Experience Cloud Identity Service `setCustomerIDs` method. String values are not case-sensitive. The supported values are as follows:
     * `0` or an empty string: Not logged in
     * `1` or `AUTHENTICATED`: Logged in
@@ -291,8 +299,8 @@ For more information, refer to [Adobe Analytics 2.0 APIS](https://github.com/Ado
 | ---------------  | --------------- |
 | `customerIDType` | Identifies the type of Customer ID for which you want to provide values. For example, `email`. |
 | `id`             | The ID used in the Experience Cloud Identity Service `setCustomerIDs` method. Mapped to `customerID.[customerIDType].id`. For example, `customerID.email.id` ↔︎ Customer Email. |
-| `isMCSeed`       | An integer boolean that lets you use `customerID.[customerIDType].id` as the hit&#39;s identifier. Use `1` for true and `0` for false. |
-| `authState`      | The `authState` used in the Experience Cloud Identity Service `setCustomerIDs` method. String values are not case-sensitive. The following values are supported: &lt;ul&gt;&lt;li&gt; `0` or an empty string - Not logged in&lt;/li&gt;&lt;li&gt;`1` or `AUTHENTICATED` - Logged in &lt;/li&gt;&lt;li&gt;`2` or `LOGGED_OUT` - Logged out&lt;/li&gt;&lt;/ul&gt; |
+| `isMCSeed`       | An integer boolean that lets you use `customerID.[customerIDType].id` as the hit's identifier. Use `1` for true and `0` for false. |
+| `authState`      | The `authState` used in the Experience Cloud Identity Service `setCustomerIDs` method. String values are not case-sensitive. The following values are supported: <ul><li> `0` or an empty string - Not logged in</li><li>`1` or `AUTHENTICATED` - Logged in </li><li>`2` or `LOGGED_OUT` - Logged out</li></ul> |
 
 ## Visitor and experience cloud IDs
 
@@ -304,45 +312,49 @@ If this is a brand new Adobe Analytics implementation, 100% server-side, you may
 
 ### Use Case 2: Migrating from existing Adobe Analytics client-side JavaScript
 
-If you are migrating from a JavaScript-based Adobe Analytics tag to the server-side connector, you need to keep a consistent visitor ID to avoid &#34;losing&#34; visitors when/if you migrate fully. You also need to migrate the visitor IDs if you are implementing the Adobe Analytics connector as a secondary collection mechanism (where you are still using the JavaScript tag on your web pages or in your apps as the primary collection mechanism).
+If you are migrating from a JavaScript-based Adobe Analytics tag to the server-side connector, you need to keep a consistent visitor ID to avoid "losing" visitors when/if you migrate fully. You also need to migrate the visitor IDs if you are implementing the Adobe Analytics connector as a secondary collection mechanism (where you are still using the JavaScript tag on your web pages or in your apps as the primary collection mechanism).
 
 To migrate from existing Adobe Analytics client-side JavaScript, use the following steps:
 
 #### Step 1: Configure the Adobe Experience Cloud ID tag
 
-Follow [these instructions]() to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.
+Follow [these instructions](https://docs.tealium.com/adobe-experience-cloud-id-service-tag/) to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.
 
 #### Step 2: Store the Adobe visitor IDs in a first-party cookie
 
 Storing the Adobe visitor IDs in a first-party cookie ensures that the value is transmitted to the server-side platform on each hit, without needing to re-request the value for the duration of the session.
 
 1. In iQ Tag Management, go to the Data Layer tab, and create two (2) new First Party Cookie variables called `utag_main_adobe_mcid` and `utag_main_aa_vid`.  
-    You may rename these variables if you want to, but be sure to retain the `utag_main_` prefix, which will save cookie space by stacking into the `utag_main` cookie. If you rename the variables, you will need to also update the JavaScript snippet below
+    
+<blockquote>
+You may rename these variables if you want to, but be sure to retain the `utag_main_` prefix, which will save cookie space by stacking into the `utag_main` cookie. If you rename the variables, you will need to also update the JavaScript snippet below
+</blockquote>
+
 1. Create a JavaScript Code extension, scoped to the Adobe Experience Cloud ID Service tag, and paste in the following code:  
     ```
-    if (typeof vAPI !== &#34;undefined&#34;) {
+    if (typeof vAPI !== "undefined") {
       vAPI.getInstance(u.data.adobe_org_id,
         function (visitor) {
           var mcID = visitor.getMarketingCloudVisitorID(),
           analyticsID = visitor.getAnalyticsVisitorID(),
-          sessionExpiry = &#34;;exp-session&#34;;
+          sessionExpiry = ";exp-session";
           // store Adobe IDs for the session duration
           if (!mcID) {
             // something went wrong - the visitor IDs could not be retrieved
-            utag.DB(&#34;MCID could not be returned&#34;);
+            utag.DB("MCID could not be returned");
           } else {
-            utag.loader.SC(&#34;utag_main&#34;,{&#34;adobe_mcid&#34; : mcID &#43; sessionExpiry, &#34;aa_vid&#34; : analyticsID &#43; sessionExpiry});
+            utag.loader.SC("utag_main",{"adobe_mcid" : mcID + sessionExpiry, "aa_vid" : analyticsID + sessionExpiry});
             // optionally, trigger an empty utag.link call to trigger sending the cookie values to UDH
             // if utag.track call is omitted (default), values will be sent on the next utag.link or utag.view call anyway
             // utag.track is used to avoid calling other third-party tags; only the collect tag should respond
-            // utag.track(&#34;adobe_vid_updated&#34;, {});
+            // utag.track("adobe_vid_updated", {});
           }
         },
         u.clearEmptyKeys(u.data.config), u.data.customer_ids);
     }
     ```
 
-    This creates a callback to the Adobe Visitor ID service that is called when the visitor ID(s) have been successfully retrieved from Adobe&#39;s servers, and stores the Visitor ID and Experience Cloud ID in Tealium&#39;s own first-party cookie (`utag_main`). The cookie expires at the end of the session in case the Visitor ID gets updated in future. To make the cookie persistent (non-expiring), set `sessionExpiry` to `&#34;&#34;` in the above code.
+    This creates a callback to the Adobe Visitor ID service that is called when the visitor ID(s) have been successfully retrieved from Adobe's servers, and stores the Visitor ID and Experience Cloud ID in Tealium's own first-party cookie (`utag_main`). The cookie expires at the end of the session in case the Visitor ID gets updated in future. To make the cookie persistent (non-expiring), set `sessionExpiry` to `""` in the above code.
 
 1. Add the following condition to the JavaScript extension to prevent the code from running again during this session.  
   
@@ -350,12 +362,12 @@ Storing the Adobe visitor IDs in a first-party cookie ensures that the value is 
       [
         [
           {
-            &#34;input&#34;: &#34;utag_main_adobe_mcid&#34;,
-            &#34;operator&#34;: &#34;is not defined&#34;
+            "input": "utag_main_adobe_mcid",
+            "operator": "is not defined"
           },
           {
-            &#34;input&#34;: &#34;utag_main_aa_vid&#34;,
-            &#34;operator&#34;: &#34;is not defined&#34;
+            "input": "utag_main_aa_vid",
+            "operator": "is not defined"
           }
         ]
       ]
@@ -370,11 +382,15 @@ Storing the Adobe visitor IDs in a first-party cookie ensures that the value is 
 
 ## Debugging common issues
 
-* To test the connector, we recommend using [trace](). While running a trace, look for the **HTTP Request Body** field, which shows a sample of the CSV header and the first line that will be sent to Adobe when the batch call is executed. You can compare the CSV output to the **Sample Connector Output** fields in the above tables to verify the output.
+* To test the connector, we recommend using [trace](https://docs.tealium.com/about-trace/). While running a trace, look for the **HTTP Request Body** field, which shows a sample of the CSV header and the first line that will be sent to Adobe when the batch call is executed. You can compare the CSV output to the **Sample Connector Output** fields in the above tables to verify the output.
 * Look for any errors in the response code being returned from Adobe. Anything other than HTTP Response Status: 200/Successful indicates that there was an error with the request.
-    You do not need to enter the full URL value into the connector configuration; Tealium auto-generates the URL based on the Data Insertion Domain value. You will only see the full URL when running a Trace session.
-* If Adobe Analytics is not receiving data, go to **Admin &gt; Report suites &gt;  Edit Settings &gt; General &gt; Timestamp configuration** and change the [Timestamps option](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/timestamp-optional) from `Timestamps not allowed` to `Timestamps optional` or `Timestamps required`. If timestamp is required, be sure to map a valid timestamp.
-* We highly recommend that you map to User Agent or Client Hints. Not mapping this value results in Adobe picking up the server&#39;s User Agent (for example, `Apache-HttpClient/4.5.5(Java/11.0.17`), which may be identified as bot traffic.
+    
+<blockquote>
+You do not need to enter the full URL value into the connector configuration; Tealium auto-generates the URL based on the Data Insertion Domain value. You will only see the full URL when running a Trace session.
+</blockquote>
+
+* If Adobe Analytics is not receiving data, go to **Admin > Report suites >  Edit Settings > General > Timestamp configuration** and change the [Timestamps option](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/timestamp-optional) from `Timestamps not allowed` to `Timestamps optional` or `Timestamps required`. If timestamp is required, be sure to map a valid timestamp.
+* We highly recommend that you map to User Agent or Client Hints. Not mapping this value results in Adobe picking up the server's User Agent (for example, `Apache-HttpClient/4.5.5(Java/11.0.17`), which may be identified as bot traffic.
 
 ## Migrator tool
 
@@ -399,6 +415,6 @@ To migrate Adobe Analytics 1.4 connectors, use the following steps:
     * Specific Adobe Analytics 1.4 connector
 1. Enter the Adobe Analytics **Client ID** and **Client secret** for the project.
 1. Click **Start**.  
-  The Migrator tool automatically migrates existing Adobe Analytics 1.4 connectors to new Adobe Analytics 2.0 connectors. The name of the connector will be the same, with the suffix &#34;2.0 (Migrated)&#34;.
+  The Migrator tool automatically migrates existing Adobe Analytics 1.4 connectors to new Adobe Analytics 2.0 connectors. The name of the connector will be the same, with the suffix "2.0 (Migrated)".
 1. Verify the new connector configurations and actions.
 1. Save and publish your profile.

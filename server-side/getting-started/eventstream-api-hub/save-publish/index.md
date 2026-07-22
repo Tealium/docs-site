@@ -9,17 +9,17 @@ When you add, edit, or delete an element in your account, you must save your cha
 
 The **Save/Publish** button turns orange to indicate that there are unsaved changes:
 
-![](/images/server-side/getting-started-save-publish-button.png)
+![](https://docs.tealium.com/images/server-side/getting-started-save-publish-button.png)
 
 In the **Save** dialog box you have the option to **Save As**, in which you must set a descriptive title for the new version.
 
-![](/images/server-side/getting-started-eventstream-save-publish.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-save-publish.png)
 
 Use this option to re-publish (rollback) to a previous version. If you only save your changes, you cannot revert to the state that existed prior to your changes.
 
 ## Publish
 
-After you save your changes, you can log out or close the browser. Your configuration is preserved for you or the next user that logs into the account. However, until you publish, your configuration won&#39;t be active.
+After you save your changes, you can log out or close the browser. Your configuration is preserved for you or the next user that logs into the account. However, until you publish, your configuration won't be active.
 
 Publishing affects your connectors and actions. For example, you could set up a new connector action and save it without publishing, and the action would not get triggered. But after you publish, the changes are activated, and connector actions begin triggering and sending data to your vendors.
 
@@ -34,6 +34,10 @@ To access your save and publish history, use the following methods:
 
 Your save history is organized into versions. When you use **Save As** to save a version, you create a new version and can revert back to a previous version. When you use **Save**, you create a new revision, typically intended for minor changes, and cannot revert back to a previous revision.
 
-Write descriptive notes when you save. It&#39;s a great habit to form that your co-workers will appreciate. Plus, it will remind you of what you did. You&#39;d be surprised how easily you can forget your own work!
+
+<blockquote>
+Write descriptive notes when you save. It's a great habit to form that your co-workers will appreciate. Plus, it will remind you of what you did. You'd be surprised how easily you can forget your own work!
+</blockquote>
+
 
 Well, that about wraps it up. The final page in the tutorial lists additional resources.

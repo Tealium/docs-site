@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-switcher/
 
 各アカウントには複数のプロファイルを含めることができます。プロファイル切り替えを使用すると、アカウント、プロファイル、プロファイルのバージョンを素早く切り替えることができます。
 
-![](/images/iq-tag-management/profiles/profile-switcher1.png)
+![](https://docs.tealium.com/images/iq-tag-management/profiles/profile-switcher1.png)
 
 プロファイル切り替えは、現在のプロファイルの最新バージョン、最近訪れたプロファイル、最後に訪れたプロファイルを表示します。
 
@@ -20,4 +20,4 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-switcher/
 1. **バージョン** ドロップダウンメニューから、切り替えたいプロファイルのバージョンを選択します。
 1. **バージョンを読み込む** をクリックします。
 
-また、[バージョン画面]()の **このバージョンに切り替える** オプションを使用してバージョンを切り替えることもできます。
+また、[バージョン画面](https://docs.tealium.com/client-side-versions/)の **このバージョンに切り替える** オプションを使用してバージョンを切り替えることもできます。

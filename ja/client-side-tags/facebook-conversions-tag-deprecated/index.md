@@ -3,7 +3,11 @@ title: Facebookコンバージョンタグ構成ガイド（廃止）
 description: この記事では、Facebookコンバージョンタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/facebook-conversions-tag-deprecated/
 ---
-このタグは廃止され、タグマーケットプレイスではもう利用できません。ユーザーは、カスタムオーディエンスとコンバージョントラッキング機能を組み合わせた[Facebook Pixelタグ]()にアップグレードできます。
+
+<blockquote>
+このタグは廃止され、タグマーケットプレイスではもう利用できません。ユーザーは、カスタムオーディエンスとコンバージョントラッキング機能を組み合わせた[Facebook Pixelタグ](https://docs.tealium.com/facebook-pixel-tag/)にアップグレードできます。
+</blockquote>
+
 
 ## 仕様と要件
 
@@ -25,7 +29,7 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-conversions-tag-depre
 
 ### タグの追加
 
-タグマーケットプレイスには多種多様なタグがあります。詳細は、[タグの管理]()を参照してください。
+タグマーケットプレイスには多種多様なタグがあります。詳細は、[タグの管理](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
 
 ### タグの構成
 
@@ -34,19 +38,27 @@ url: https://docs.tealium.com/ja/client-side-tags/facebook-conversions-tag-depre
 このパラメータを動的に構成するか、既存のIDを上書きする場合は、マッピングツールボックスで`pixel_id`にマップします。
 1. **コンバージョンタイプ**: これは最近のタグテンプレートでは廃止されています。ドロップダウンリストから選択しないでください。
 1. **コンバージョン値**: アカウント通貨でのコンバージョンタイプの値を入力します。  
+
+<blockquote>
 コンバージョン値を動的に構成するか、既存の値を上書きする場合は、マッピングツールボックスで`value`にマップします。
+</blockquote>
+
 
 ### ロードルールの適用
 
-[ロードルール]()は、このタグのインスタンスをいつ、どこでロードするかを決定します。**すべてのページに表示**ルールはデフォルトのロードルールです。このタグを特定のページでロードするには、関連する条件を持つ新しいロードルールを作成します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをいつ、どこでロードするかを決定します。**すべてのページに表示**ルールはデフォルトのロードルールです。このタグを特定のページでロードするには、関連する条件を持つ新しいロードルールを作成します。
 
 このタグは、コンバージョンイベントが発生するページでロードすることをお勧めします。例えば、チェックアウトイベントを追跡したい場合は、このタグをチェックアウトページでのみロードします。
 
 #### マッピングの構成
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
-このタグには、`_csubtotal`の値が自動的にマッチングタグの宛先に送信されるように、[E-Commerceデータレイヤー]()の構成をお勧めします。
+
+<blockquote>
+このタグには、`_csubtotal`の値が自動的にマッチングタグの宛先に送信されるように、[E-Commerceデータレイヤー](https://docs.tealium.com/e-commerce-extension/)の構成をお勧めします。
+</blockquote>
+
 
 * **ピクセルID** (`pixel_id`)  
 コンバージョンピクセルの数値識別子。  

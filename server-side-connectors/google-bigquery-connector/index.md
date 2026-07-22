@@ -16,7 +16,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: 60 minutes
@@ -24,7 +24,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, use the following steps to authenticate to Google:
 
@@ -33,8 +33,8 @@ After adding the connector, use the following steps to authenticate to Google:
         1. Select your Google account and allow Tealium to access your Google Account.
         1. Click **Reload** below the **Project ID** field.
     * **Private key JSON file**: (This option is not available in the legacy connectors interface.)
-        1. Navigate to **IAM &amp; Admin &gt; Service Accounts &gt; Create Service Account (optional)**.
-        1. Click the action menu (three dots) on the service account **Manage Keys &gt; Add Key &gt; Create New Key &gt; JSON &gt; Create**.
+        1. Navigate to **IAM & Admin > Service Accounts > Create Service Account (optional)**.
+        1. Click the action menu (three dots) on the service account **Manage Keys > Add Key > Create New Key > JSON > Create**.
         1. Paste the content of the JSON key generated for your Service Account. For more information, see [Google: Using OAuth 2.0 for Server to Server Applications](https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount). 
 1. Select the **Project ID** to connect to.
 1. Click **Done**.
@@ -74,7 +74,7 @@ The parameters available for mapping are dependent on the dataset and table sele
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: 60 minutes
@@ -95,7 +95,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 500
 * Maximum time since oldest request: 10 minutes
@@ -109,21 +109,21 @@ To use this feature, map your attributes to named placeholders, which you will r
 
 Finally, write your SQL statement using the placeholders to dynamically substitute your mapped values at runtime.
 
-Here&#39;s an example that shows how to execute an `INSERT` statement to add a row with a string value and a boolean value.
+Here's an example that shows how to execute an `INSERT` statement to add a row with a string value and a boolean value.
 
 First, map attributes to placeholders:
 
-![](/images/server-side-connectors/bigquery-custom-sql-map-values.png)
+![](https://docs.tealium.com/images/server-side-connectors/bigquery-custom-sql-map-values.png)
 
 Next, map data types to the placeholders:
 
-![](/images/server-side-connectors/bigquery-custom-sql-map-types.png)
+![](https://docs.tealium.com/images/server-side-connectors/bigquery-custom-sql-map-types.png)
 
 Then write a SQL statement that references those placeholders:
 
 ```none
 INSERT INTO bigquery_table (my_string_col, my_bool_col)
-VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
+VALUES ('@MY_STRING_PARAM', @MY_BOOLEAN_PARAM);
 ```
 
 #### Parameters
@@ -140,7 +140,7 @@ VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: 60 minutes
@@ -162,7 +162,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: 60 minutes

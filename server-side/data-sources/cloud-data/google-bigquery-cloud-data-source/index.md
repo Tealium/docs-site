@@ -2,7 +2,7 @@
 title: Google BigQuery cloud data source
 description: This article describes how to set up the Google BigQuery cloud data source.
 url: https://docs.tealium.com/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/
----For a general overview of setting up a cloud data source, see .
+---For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## Data types
 
@@ -31,8 +31,8 @@ The service account must have the following BigQuery IAM roles:
 
 To generate a public/private key pair:
 
-1. Go to **Google Cloud &gt; Service Accounts** and select a project or create one.
-1. Select your service account or create one, then go to the **Keys** tab and choose **Add key &gt; Create new key**.
+1. Go to **Google Cloud > Service Accounts** and select a project or create one.
+1. Select your service account or create one, then go to the **Keys** tab and choose **Add key > Create new key**.
 1. Select the **JSON** option and click **Create**.  
 Your private key is generated and downloaded to your machine.
 
@@ -49,7 +49,7 @@ For more information, see [Google for Developers: Using OAuth 2.0 for Server to 
 
 ## Query batch size
 
-The default query batch size is 1,000 records per batch. Changing the query batch size from the default may require additional permissions. To grant permissions to change the query size limit, go to **Google Cloud console &gt; IAM menu &gt; Select the appropriate service account &gt; Grant Access &gt; Add BigQuery Read Session User Role**. For example, enter `BigQuery Read Session User (roles/bigquery.readSessionUser)`. For more information, see [Google: BigQuery IAM roles and permissions](https://docs.cloud.google.com/bigquery/docs/access-control) and .
+The default query batch size is 1,000 records per batch. Changing the query batch size from the default may require additional permissions. To grant permissions to change the query size limit, go to **Google Cloud console > IAM menu > Select the appropriate service account > Grant Access > Add BigQuery Read Session User Role**. For example, enter `BigQuery Read Session User (roles/bigquery.readSessionUser)`. For more information, see [Google: BigQuery IAM roles and permissions](https://docs.cloud.google.com/bigquery/docs/access-control) and .
 
 ## Query configurations
 
@@ -70,13 +70,13 @@ BigQuery `STRUCT` columns cannot be imported directly into Tealium. To import da
 For example, you might have addresses defined as a `STRUCT`:
 
 ```sql
-shipping_address STRUCT&lt;
+shipping_address STRUCT<
   street STRING,
   city STRING,
   state STRING,
   postal_code STRING,
   country STRING
-&gt;
+>
 ```
 
 To create a view with these address fields flattened into separate columns, use a SQL statement like this:

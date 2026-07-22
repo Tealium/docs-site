@@ -17,15 +17,19 @@ The webhook connector sends event or visitor data to your vendor through HTTP re
 The following authentication methods are supported for HTTP-based webhook connectors:
 
 * **BasicAuth**: Authenticate webhook requests using a username and password sent with the request.
-* **OAuth2 3-Legged**: Authenticate webhook requests through a user-consent flow that issues access tokens on the user&#39;s behalf. Requires the user to log in to the service to obtain an access token.
+* **OAuth2 3-Legged**: Authenticate webhook requests through a user-consent flow that issues access tokens on the user's behalf. Requires the user to log in to the service to obtain an access token.
 * **OAuth2 2-Legged**: Authenticate webhook requests using server-to-server access tokens without any user involvement.
 * **JWT**: Authenticate webhook requests with a JSON web token.
 
 Webhook OAuth2 is used for services that explicitly require OAuth 2.0 authentication.
 
-For more information, see .
+For more information, see [webhook-authentication](https://docs.tealium.com/webhook-authentication/).
 
-To use a webhook to send data to a JDBC-compatible database, see [Webhook JDBC]().
+
+<blockquote>
+To use a webhook to send data to a JDBC-compatible database, see [Webhook JDBC](https://docs.tealium.com/webhook-jdbc/).
+</blockquote>
+
 
 ## Actions
 
@@ -37,7 +41,7 @@ To use a webhook to send data to a JDBC-compatible database, see [Webhook JDBC](
 | Send Batched Data via HTTP Request  | Sends the entire event object, either as a URL-encoded JSON string or a JSON payload.     | ✓      | ✓     |
 | Send Batched Customized Data via HTTP Request (Advanced) | Sends batched event/visitor attributes specified with mappings.    | ✓      | ✓          |
 
-For more information, see .
+For more information, see [webhook-actions](https://docs.tealium.com/webhook-actions/).
 
 ## HTTP response cookies
 

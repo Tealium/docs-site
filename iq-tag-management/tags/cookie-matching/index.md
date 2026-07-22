@@ -9,36 +9,40 @@ You can use the synchronized identifiers in connector actions for targeted adver
 
 ## How it works
 
-The third-party vendor sends an anonymous identifier back to Tealium to be associated to the visitor. That visitor data is then returned back to the website through [data layer enrichment](). This process allows events across multiple domains to be associated to the same visitor.
+The third-party vendor sends an anonymous identifier back to Tealium to be associated to the visitor. That visitor data is then returned back to the website through [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/). This process allows events across multiple domains to be associated to the same visitor.
 
-Here&#39;s how it works:
+Here's how it works:
 
 * In iQ Tag Management, a specific vendor cookie matching tag is added. When it runs in the page, it sends a request to the vendor asking for the visitor identifier and providing a return endpoint to which it can be sent.
 * The vendor then makes a request back to the Customer Data Hub with the requested identifier (cookie ID).
 * In the Customer Data Hub, the cookie matching request is received and the identifiers is saved to a Tealium third-party cookie.
 * In subsequent EventStream events collected, the third-party cookie values are made available as event attributes. This process continues until the cookie expires.  
+
+<blockquote>
 The Tealium Cookie Sync (TCS) cookie is valid for one (1) year, or when reaching the storage capacity of 4093 bytes.
+</blockquote>
+
  As an example scenario, the interaction between a TiQ cookie matching tag and the vendor might translate into something like this: 
 
 * **Tealium Cookie Matching Tag:**  
-&#34;Hi, I’m Tealium, can you give me the visitor ID so that I can later tell you who this person is and something about them in a way you will understand?&#34;
+"Hi, I’m Tealium, can you give me the visitor ID so that I can later tell you who this person is and something about them in a way you will understand?"
 * **Vendor:**  
-&#34;Sure. Here you go, this is the Visitor ID.&#34;
+"Sure. Here you go, this is the Visitor ID."
 * **Tealium Cookie Matching Tag**  
-&#34;Thanks. I&#39;ll take the Visitor IDs you provided and persist them in the Customer Data Hub. As useful data emerges, I&#39;ll leverage the data to your benefit and return it to you to use as needed.&#34;
+"Thanks. I'll take the Visitor IDs you provided and persist them in the Customer Data Hub. As useful data emerges, I'll leverage the data to your benefit and return it to you to use as needed."
 
 ### Flow diagram
 
 The following diagram describes the flow of data between the Tealium Customer Data Hub and the customer website.
 
-![](/images/server-side/cookie-sync-persistence-diagram-1.jpg)
+![](https://docs.tealium.com/images/server-side/cookie-sync-persistence-diagram-1.jpg)
 
 * **Standard Event Collection**  
 The Tealium Collect tag fires for actions that do not need cookie sync data.__ No third-party cookie sync data is attached at this point.
 * **Cookie Matching Requests**  
 A cookie sync request is sent from the customer site to the vendor cookie matching service.
 * **Cookie Match Response**  
-The cookie sync services sends a &#34;302&#34; redirect to the customer site.
+The cookie sync services sends a "302" redirect to the customer site.
 * **Customer Data Hub Saves Cookie**  
 The cookie sync redirect received by the customer site is forwarded to the Customer Data Hub where the matched identifier is saved in the third-party Tealium cookie.
 * **Tealium Third-Party Cookie Updated**  
@@ -54,21 +58,21 @@ The following table lists the callback method and callback formatting for Tealiu
 
 |Callback Method| Callback formatting| Tag Name|
 |---| ---| ---|
-|Calls [Visitor Data]()|  Uses a callback to make the vdata call. |  &lt;ul&gt;&lt;li&gt;[Criteo Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;[IBM UBX Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;[intelliAd Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;Yahoo Cookie Matching Service&lt;/li&gt;&lt;li&gt;[The Trade Desk Cookie Matching Service]()&lt;/li&gt;&lt;/ul&gt; |
-|Calls [Visitor Data]()| Formatted (`url&#43;vdata&#43;query-params`) |  &lt;ul&gt;&lt;li&gt;[XandrCookie Matching Service]()&lt;/li&gt;&lt;li&gt;Google Analytics Cookie Matching Service&lt;/li&gt;&lt;li&gt;Sizmek Cookie Matching Service&lt;/li&gt;&lt;/ul&gt; |
-|Does not call vdata| Copies an ID from one cookie to another|  &lt;ul&gt;&lt;li&gt;Adobe Analytics Cookie Matching Service&lt;/li&gt;&lt;li&gt;[Basis Technologies Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;[DataXu Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;[Google Cookie Matching Service for Doubleclick]()&lt;/li&gt;&lt;li&gt;[MediaMath Cookie Matching Service]()&lt;/li&gt;&lt;li&gt;RadiumOne Cookie Matching Service&lt;/li&gt;&lt;li&gt;Tapad Cookie Matching Service&lt;/li&gt;&lt;/ul&gt; |
+|Calls [Visitor Data]()|  Uses a callback to make the vdata call. |  <ul><li>[Criteo Cookie Matching Service]()</li><li>[IBM UBX Cookie Matching Service]()</li><li>[intelliAd Cookie Matching Service]()</li><li>Yahoo Cookie Matching Service</li><li>[The Trade Desk Cookie Matching Service]()</li></ul> |
+|Calls [Visitor Data]()| Formatted (`url+vdata+query-params`) |  <ul><li>[XandrCookie Matching Service](https://docs.tealium.com/xandr-cookie-matching-service-tag/)</li><li>Google Analytics Cookie Matching Service</li><li>Sizmek Cookie Matching Service</li></ul> |
+|Does not call vdata| Copies an ID from one cookie to another|  <ul><li>Adobe Analytics Cookie Matching Service</li><li>[Basis Technologies Cookie Matching Service](https://docs.tealium.com/basis-technologies-cookie-matching-service-tag/)</li><li>[DataXu Cookie Matching Service](https://docs.tealium.com/dataxu-cookie-matching-service-tag/)</li><li>[Google Cookie Matching Service for Doubleclick](https://docs.tealium.com/google-cookie-matching-service/)</li><li>[MediaMath Cookie Matching Service](https://docs.tealium.com/mediamath-tag-basic-configuration/)</li><li>RadiumOne Cookie Matching Service</li><li>Tapad Cookie Matching Service</li></ul> |
 
 ## Add a cookie matching tag
 
 Use the following steps to add a cookie matching tag:
 
 1. Log into iQ Tag Management (TiQ).
-1. In the left sidebar, go to the **Tag Management &gt; Tags**.
-1. Click **&#43; Add Tag**.
+1. In the left sidebar, go to the **Tag Management > Tags**.
+1. Click **+ Add Tag**.
 1. In the left panel, click **Cookie Match**.  
 A list of available marketplace tags supporting the cookie matching service displays.  
-![](/images/server-side/whiteui-tiq-add-tag-sort-by-cookie-match.jpg)
-1. Click **&#43; Add** next to the tag you want to add.
+![](https://docs.tealium.com/images/server-side/whiteui-tiq-add-tag-sort-by-cookie-match.jpg)
+1. Click **+ Add** next to the tag you want to add.
 1. Follow the onscreen instructions to configure your tag.
 1. Save and publish your changes.
 
@@ -77,4 +81,4 @@ A list of available marketplace tags supporting the cookie matching service disp
 
 To check if your tag is up to date, click the tag and check the **Tool Tips** section in the left navigation panel. If a newer version is available, the **Tool Tips** section contains a notification with instructions to disable the current version and add the new tag from the tag marketplace.
 
-[Learn more]() about adding and configuring tags from the tag marketplace.
+[Learn more](https://docs.tealium.com/manage-tags/) about adding and configuring tags from the tag marketplace.

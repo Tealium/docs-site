@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About connectors]().
+Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**: Provide your StackAdapt API Key. If you do not have an API key, contact your StackAdapt team.
@@ -40,7 +40,7 @@ Create or update a profile in StackAdapt and add it to an existing profile list.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Raw email | Customer&#39;s email address. |
+| Raw email | Customer's email address. |
 | Advertiser ID | Override the default advertiser ID set in the configuration. |
 | Is Opted In | Whether the profiles have opted into email marketing. |
 | Profile list ID | The ID of the profile list associated with the uploaded profile(s). |
@@ -61,7 +61,7 @@ Add a user to a profile list in StackAdapt.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Raw email | Customer&#39;s email address. |
+| Raw email | Customer's email address. |
 | Advertiser ID | Override the advertiser ID set in the configuration. |
 | List IDs | Profile list IDs to add the customer to. |
 
@@ -73,7 +73,7 @@ Add a user to a profile list in StackAdapt.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Raw email | Customer&#39;s email address. |
+| Raw email | Customer's email address. |
 | Advertiser ID | Override the advertiser ID set in the configuration. |
 | List IDs | Profile list IDs to add the customer to. |
 | Batch time to live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
@@ -86,7 +86,7 @@ Remove a user from a profile list in StackAdapt.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Raw email | Customer&#39;s email address. |
+| Raw email | Customer's email address. |
 | Advertiser ID | Override the advertiser ID set in the configuration. |
 | List IDs | Profile list IDs to add the customer to. |
 
@@ -98,7 +98,7 @@ Remove a user from a profile list in StackAdapt.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Raw email | Customer&#39;s email address. |
+| Raw email | Customer's email address. |
 | Advertiser ID | Override the advertiser ID set in the configuration. |
 | List IDs | Profile list IDs to add the customer to. |
 | Batch time to live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |

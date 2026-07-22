@@ -26,7 +26,7 @@ tealium?.persistentData()?.add(data: [String: Any])
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `Any`| `[String: Any]`  | Dictionary of data to add | `data: [&#34;customer_id&#34;:&#34;1234567890-a&#34;]` |  
+| `Any`| `[String: Any]`  | Dictionary of data to add | `data: ["customer_id":"1234567890-a"]` |  
 
 
 ### `deleteAllData()`
@@ -48,7 +48,7 @@ tealium?.persistentData()?.deleteDate(forKeys: [String])
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `forKeys`| `[String]`  | Array of keys to remove | `forKeys: [&#34;customer_id&#34;]` |  
+| `forKeys`| `[String]`  | Array of keys to remove | `forKeys: ["customer_id"]` |  
 
 
 ### `getData()`

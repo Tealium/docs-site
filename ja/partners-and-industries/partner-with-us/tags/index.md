@@ -33,7 +33,11 @@ url: https://docs.tealium.com/ja/partners-and-industries/partner-with-us/tags/
 
 ベンダーのタグライブラリや画像ピクセルは、ページのDOMに同じように表示されます。Tealiumでは、タグができる限り仕様どおりに読み込まれるように努めています。まれにコードの変更が必要になった場合も、最終的なトラッキングビーコンが要件に適合するよう確認しています。
 
+
+<blockquote>
 Tealiumで同期JavaScriptを読み込み、A/Bテストや多変量テストを行うベンダーをサポートすることもできます。
+</blockquote>
+
 
 ### eコマース値
 
@@ -59,9 +63,9 @@ Cookie照合タグの目的は、特殊なリクエストを使用して、Teali
 
 ```plain
 GET https://sync.example-dsp.net/get-userId?
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
+tealium_visitor_id=abxyz0909&
+tealium_account=my_account&
+tealium_profile=main&
 tealium_datasource=abc123
 ```
 
@@ -71,10 +75,10 @@ tealium_datasource=abc123
 
 ```plain
 GET https://collect.tealiumiq.com/vdata?
-dsp_uid=4595-23423442&amp;
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
+dsp_uid=4595-23423442&
+tealium_visitor_id=abxyz0909&
+tealium_account=my_account&
+tealium_profile=main&
 tealium_datasource=abc123
 ```
 
@@ -82,7 +86,7 @@ tealium_datasource=abc123
 
 ```plain
 GET https://sync.example-dsp.net/get-userId?
-redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123
+redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&tealium_visitor_id=abxyz0909&tealium_account=egbrand&tealium_profile=main&tealium_datasource=abc123
 ```
 
 ### サーバー側有効化
@@ -93,19 +97,19 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
 ```javascript
 window.tealium.sendEvent = function(event_data) {
     //Send Event to CDH event endpoint
-    event_data[&#39;tealium_event&#39;] = &#34;EVENT_NAME&#34;;
-    event_data[&#39;tealium_account&#39;] = b.tealium_account; // required
-    event_data[&#39;tealium_profile&#39;] = b.tealium_profile; // required
-    event_data[&#39;tealium_visitor_id&#39;] = b.tealium_visitor_id; // required
-    event_data[&#39;tealium_trace_id&#39;] = b[&#34;cp.trace_id&#34;]; // optional
-    event_data[&#39;tealium_datasource&#39;] = &#39;DATASOURCE_KEY&#39;; // optional
+    event_data['tealium_event'] = "EVENT_NAME";
+    event_data['tealium_account'] = b.tealium_account; // required
+    event_data['tealium_profile'] = b.tealium_profile; // required
+    event_data['tealium_visitor_id'] = b.tealium_visitor_id; // required
+    event_data['tealium_trace_id'] = b["cp.trace_id"]; // optional
+    event_data['tealium_datasource'] = 'DATASOURCE_KEY'; // optional
 
     var data = new FormData();
-    data.append(&#34;data&#34;, JSON.stringify(event_data));
+    data.append("data", JSON.stringify(event_data));
 
-    if (window.utag &amp;&amp; utag.data &amp;&amp; utag.data.tealium_account) {
+    if (window.utag && utag.data && utag.data.tealium_account) {
         var xhr = new XMLHttpRequest();
-        xhr.open(&#34;POST&#34;, &#34;https://collect.tealiumiq.com/event?&#34;);
+        xhr.open("POST", "https://collect.tealiumiq.com/event?");
         xhr.send(data);
         }
     return true;

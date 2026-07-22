@@ -32,7 +32,11 @@ Examples of attributes to consider excluding are:
   * Attributes based on dates of visit or dates of purchase. These attributes do not repeat their values outside of the training period.
   * Attributes based on other information, such as one-off campaign landing parameters, that do not repeat their values outside of the training period.
 
+
+<blockquote>
 The target attribute is automatically excluded and does not need to be added manually as an excluded attribute.
+</blockquote>
+
 
 ## Output attributes
 

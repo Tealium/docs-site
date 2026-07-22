@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/google-ads-customer-match-d
 ---
 ## What’s changing
 
-We are introducing two new actions for the [Google Ads Customer Match connector]() that use the Google Data Manager API:
+We are introducing two new actions for the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/) that use the Google Data Manager API:
 
 * Add User to List (Data Manager API)  
 * Remove User from List (Data Manager API)
@@ -27,7 +27,7 @@ Moving the connector to this API provides the following benefits:
 
 ## Deprecation of existing Google Ads API actions
 
-The existing Google Ads API Customer Match actions in the [Google Ads Customer Match connector]() will be deprecated in a future release.
+The existing Google Ads API Customer Match actions in the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/) will be deprecated in a future release.
 
 Until then, note the following:
 
@@ -37,7 +37,7 @@ Until then, note the following:
 
 ## About the new Data Manager API actions
 
-The new actions appear with your existing Google Ads Customer Match actions in the [Google Ads Customer Match connector]():
+The new actions appear with your existing Google Ads Customer Match actions in the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/):
 
 * Add User to List (Data Manager API)  
 * Remove User from List (Data Manager API)
@@ -61,7 +61,7 @@ If you already have a Google Ads Customer Match connector configured in Tealium,
 
 To re-authenticate:
 
-1. Open your existing [Google Ads Customer Match connector]().  
+1. Open your existing [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/).  
 1. Use the authentication controls (**Sign in With Google** button) to sign in again with your Google account.  
 1. During this process, the connector requests access that includes `https://www.googleapis.com/auth/datamanager` in addition to the existing Google Ads permissions.
 
@@ -90,7 +90,7 @@ The goal is to move each existing Google Ads Customer Match action to its Google
 
 ### Step 1: Re-authenticate and link
 
-For each account profile where you use the [Google Ads Customer Match connector]():
+For each account profile where you use the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/):
 
 1. Re-authenticate the connector so that it includes the Google Data Manager API scope.  
 1. Use the **Link Customer ID to Tealium** section to create the product link for the Google Ads customer ID used by each connector action. If you are using the customer ID override feature in your action, repeat the linking process here for each list-owning customer account ID.

@@ -17,7 +17,7 @@ Google Consent Modeタグを構成する際には、以下を行います：
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法については、[Tag Overview]()記事を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法については、[Tag Overview](https://docs.tealium.com/about-tags/)記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -36,7 +36,7 @@ Tealium Consent Managerとの統合が有効で、部分的な同意が与えら
 
 ## データマッピング
 
-マッピングは、[data layer variable]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[data mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[data mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

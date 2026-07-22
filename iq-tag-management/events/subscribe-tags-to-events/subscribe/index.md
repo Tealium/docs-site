@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/events/subscribe-tags-to-events/
 
 ## Compatibility between tags and events
 
-Be sure to coordinate the event listener&#39;s tracking event and publish locations with any tags that subscribe to the event.
+Be sure to coordinate the event listener's tracking event and publish locations with any tags that subscribe to the event.
 
 * If the event listener uses a tracking call that is not supported by a subscribed tag, the event will trigger, but the tag will not fire.
 * If a tag and event listener use different publish locations, the tag or event listener may not function for your developers, testers, or site visitors.

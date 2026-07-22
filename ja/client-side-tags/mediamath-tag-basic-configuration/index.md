@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/mediamath-tag-basic-configurat
 
 ## タグ構成
 
-まず、タグマーケットプレイスに移動し、MediaMath（Adroit Digital）タグをプロフィールに追加します（[タグを追加する]()を参照）。
+まず、タグマーケットプレイスに移動し、MediaMath（Adroit Digital）タグをプロフィールに追加します（[タグを追加する](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -18,15 +18,19 @@ url: https://docs.tealium.com/ja/client-side-tags/mediamath-tag-basic-configurat
 1. **ピクセルID**（旧イベントID）：MediaMathから受け取ったピクセル識別子を入力します。
 1. **タグタイプ**：読み込むMediaMathピクセルのタイプを選択します。デフォルトの選択はイメージです。
 
+
+<blockquote>
 これらの値を動的に構成する場合は、データマッピング（以下に記載）を使用します。ただし、マッピングはタグフィールドに入力された値よりも優先されます。
+</blockquote>
+
 
 ### ロードルール
 
-[ロードルール]()は、このタグのインスタンスをサイトのどこといつ読み込むかを決定します。デフォルトの**すべてのページ**ルールを使用して、サイトのすべてのページでこれを読み込むことができます。または、特定のページのみで読み込む場合は、カスタムロードルールを作成して適用します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをサイトのどこといつ読み込むかを決定します。デフォルトの**すべてのページ**ルールを使用して、サイトのすべてのページでこれを読み込むことができます。または、特定のページのみで読み込む場合は、カスタムロードルールを作成して適用します。
 
 ### データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 MediaMathタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは次のとおりです：
 

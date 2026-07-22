@@ -3,7 +3,7 @@ title: Databricksクラウドデータソース
 description: この記事では、Databricksクラウドデータソースの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/databricks/
 ---
-クラウドデータソースの構成の一般的な概要については、を参照してください。
+クラウドデータソースの構成の一般的な概要については、[manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/)を参照してください。
 
 ## データタイプ
 
@@ -24,7 +24,11 @@ Databricksデータソースは、すべてのDatabricksデータタイプをサ
 
 Tealiumはサービスプリンシパルを使用してDatabricksの計算リソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、[Databricks: OAuthを使用してサービスプリンシパルでアクセスを認証する](https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m)を参照してください。
 
- Databricksの個人アクセストークン（PAT）はサポートされていません。詳細については、Databricks: Databricks個人アクセストークンで認証する（レガシー） ([AWS](https://docs.databricks.com/aws/en/dev-tools/auth/pat), [Azure](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat), [GCP](https://docs.databricks.com/gcp/en/dev-tools/auth/pat))を参照してください。
+
+<blockquote>
+Databricksの個人アクセストークン（PAT）はサポートされていません。詳細については、Databricks: Databricks個人アクセストークンで認証する（レガシー） ([AWS](https://docs.databricks.com/aws/en/dev-tools/auth/pat), [Azure](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat), [GCP](https://docs.databricks.com/gcp/en/dev-tools/auth/pat))を参照してください。
+</blockquote>
+
 
 新しい接続を構成するには、次の接続詳細を入力します：
 
@@ -48,7 +52,7 @@ Databricksに接続した後、**テーブル選択**リストからデータソ
 
 Databricksについては、以下の要件に注意してください：
 
-* **タイムスタンプ &#43; インクリメント**および**タイムスタンプ**クエリモード：選択されたタイムスタンプ列は`TIMESTAMP`タイプでなければなりません。
+* **タイムスタンプ + インクリメント**および**タイムスタンプ**クエリモード：選択されたタイムスタンプ列は`TIMESTAMP`タイプでなければなりません。
 詳細については、Databricks: TIMESTAMPタイプ ([AWS](https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type), [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type), [GCP](https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type))を参照してください。
 * **インクリメント**クエリモード：選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：
 
@@ -60,6 +64,6 @@ COL1 BIGINT GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1)
 
 ## IPアクセスリスト
 
-DatabricksワークスペースがIPアドレスによって制限されている場合、[Tealium IPアドレス]()をDatabricksのIPアクセスリストに追加してください。
+DatabricksワークスペースがIPアドレスによって制限されている場合、[Tealium IPアドレス](https://docs.tealium.com/ip-allow-list/)をDatabricksのIPアクセスリストに追加してください。
 
 詳細については、Databricks: IPアクセスリストの管理 ([AWS](https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list), [Azure](https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list), [GCP](https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list))を参照してください。

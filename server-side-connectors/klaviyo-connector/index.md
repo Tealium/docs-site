@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -63,14 +63,14 @@ Optional parameters:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | The individual&#39;s email address. |
-| Phone Number | The individual&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+| Email | The individual's email address. |
+| Phone Number | The individual's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 | External ID | A unique identifier used to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. Format varies based on the external system. |
 | Anonymous ID | For mobile app profiles, if Klaviyo cannot associate the user with an email address, an anonymous mobile app ID will represent the iOS profile. |
-| First Name | Individual&#39;s first name. |
-| Last Name | Individual&#39;s last name. |
+| First Name | Individual's first name. |
+| Last Name | Individual's last name. |
 | Organization | Name of the company or organization within the company for whom the individual works. |
-| Title | Individual&#39;s job title. |
+| Title | Individual's job title. |
 | Image | URL pointing to the location of a profile image. |
 | Address 1 | First line of street address. |
 | Address 2 | Second line of street address. |
@@ -81,7 +81,7 @@ Optional parameters:
 | Region | Region within a country, such as a state or province. |
 | Zip | Zip code. |
 | Timezone | Time zone name. We recommend time zones from the [IANA Time Zone Database](https://www.iana.org/time-zones). |
-| Custom Properties | Map any custom properties assigned to this profile. Date attributes will be converted to ISO 8601 format. For example: `2021-09-15 13:34:08&#43;00:00`.|
+| Custom Properties | Map any custom properties assigned to this profile. Date attributes will be converted to ISO 8601 format. For example: `2021-09-15 13:34:08+00:00`.|
 
 ### Action - Add User to List (Real-Time)
 
@@ -106,7 +106,7 @@ Select one of the following identifiers to look up the user:
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 1000
 * Maximum time since oldest request: 10 minutes
@@ -152,7 +152,7 @@ Select one of the following identifiers to look up the user:
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 1000
 * Maximum time since oldest request: 10 minutes
@@ -181,14 +181,14 @@ Select one of the following identifiers to look up the user:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | The individual&#39;s email address. |
-| Phone Number | The individual&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+| Email | The individual's email address. |
+| Phone Number | The individual's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 | External ID | A unique identifier used to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. The format varies based on the external system. |
 | Anonymous ID | For mobile app profiles. If Klaviyo cannot associate the user with an email address, an anonymous mobile app ID represents the iOS profile. |
-| First Name | Individual&#39;s first name. |
-| Last Name | Individual&#39;s last name. |
+| First Name | Individual's first name. |
+| Last Name | Individual's last name. |
 | Organization | Name of the company or organization within the company for whom the individual works. |
-| Title | Individual&#39;s job title. |
+| Title | Individual's job title. |
 | Image | URL of a profile image. |
 | Address 1 | First line of street address. |
 | Address 2 | Second line of street address. |
@@ -199,7 +199,7 @@ Select one of the following identifiers to look up the user:
 | Region | Region within a country, such as a state or province. |
 | Zip | Zip code or postal code. |
 | Timezone | Time zone name. We recommend using time zone names from the [IANA Time Zone Database](https://www.iana.org/time-zones). |
-| Custom Properties | Map any custom properties assigned to this profile. Date attributes are converted to ISO 8601 format. For example: `2021-09-15 13:34:08&#43;00:00`.|
+| Custom Properties | Map any custom properties assigned to this profile. Date attributes are converted to ISO 8601 format. For example: `2021-09-15 13:34:08+00:00`.|
 
 ### Action - Create/Update Profile
 
@@ -208,16 +208,16 @@ Select one of the following identifiers to look up the user:
 | **Parameter** | **Description** |
 | --- | --- |
 | ID | Primary key that uniquely identifies this profile. Generated by Klaviyo. |
-| Email Address | Individual&#39;s email address. |
-| Phone Number |Individual&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+| Email Address | Individual's email address. |
+| Phone Number |Individual's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 | External ID | A unique identifier used to associate Klaviyo profiles with profiles in an external system, such as a point-of-sale system. Format varies based on the external system. | 
 | Anonymous ID| An ID that can be used to identify a profile when other identifiers are not available. | 
-| Exchange ID| Also known as the `exchange_id`, this is an encrypted identifier used for identifying a profile by Klaviyo&#39;s web tracking. You can use this field as a filter when retrieving profiles through the Get Profiles endpoint.| 
-| First Name| Individual&#39;s first name. | 
-| Last Name| Individual&#39;s last name. | 
+| Exchange ID| Also known as the `exchange_id`, this is an encrypted identifier used for identifying a profile by Klaviyo's web tracking. You can use this field as a filter when retrieving profiles through the Get Profiles endpoint.| 
+| First Name| Individual's first name. | 
+| Last Name| Individual's last name. | 
 | Organization | Name of the company or organization within the company for whom the individual works. | 
 | Locale | The locale of the profile, in the [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2). | 
-| Title | Individual&#39;s job title. | 
+| Title | Individual's job title. | 
 | Profile Image Address | URL pointing to the location of a profile image. | 
 | Address Line 1 | First line of street address. | 
 | Address Line 2 | Second line of street address. | 
@@ -229,7 +229,7 @@ Select one of the following identifiers to look up the user:
 | Zip Code| Zip code. | 
 | Timezone| Time zone name. We recommend using time zones from the [IANA Time Zone Database](https://www.iana.org/time-zones). | 
 | IP Address | IP Address. |
-| Custom Properties | Map any custom properties assigned to this profile. Date attributes are converted to ISO 8601 format. For example: `2021-09-1513:34:08&#43;00:00`. |
+| Custom Properties | Map any custom properties assigned to this profile. Date attributes are converted to ISO 8601 format. For example: `2021-09-1513:34:08+00:00`. |
 | Meta Append Properties | Select a simple value or values to append to this property array. |
 | Meta Unappend Properties | Select a simple value or values to remove from this property array. |
 | Meta Unset | Select a key or keys to completely remove from properties with their values. |

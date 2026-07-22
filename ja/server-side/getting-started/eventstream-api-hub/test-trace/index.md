@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 トレースでウェブページをテストする場合、以下が必要です：
 
-* [Tealium Toolsブラウザ拡張機能]()
+* [Tealium Toolsブラウザ拡張機能](https://docs.tealium.com/tealium-tools-browser-extension/)
 
 ## トレースの開始
 
@@ -21,12 +21,12 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
       * テストページへの新しいブラウザウィンドウを開きます。
       * Tealium Toolsブラウザ拡張機能をクリックし、**AudienceStream Trace**をクリックします。
       * ステップ2からのトレースIDを入力し、**Start Trace**をクリックします。   
-      ![](/images/server-side/es-getting-started-trace-tealium-tool.jpg)
+      ![](https://docs.tealium.com/images/server-side/es-getting-started-trace-tealium-tool.jpg)
     * **データレイヤー属性**
       * `tealium_trace_id`をコードインストールのデータレイヤーに追加し、その値をトレースIDの値に構成します。
-      * HTTP APIでは、これはクエリストリングパラメータを追加することを意味します：`&amp;tealium_trace_id=012345`
+      * HTTP APIでは、これはクエリストリングパラメータを追加することを意味します：`&tealium_trace_id=012345`
       * 例えばSwiftアプリでは、次のようになります：  
-      `tealium?.volatileData()?.add(data: [&#34;tealium_trace_id&#34;: &#34;012345&#34;])`
+      `tealium?.volatileData()?.add(data: ["tealium_trace_id": "012345"])`
 
 1. テストケースのワークフローを進めます。これには、ページの更新、いくつかのページを通過する、購入する、またはネイティブアプリのいくつかの画面を表示することが必要かもしれません。
 1. ログの詳細を調べるために**トレース**インターフェースに戻ります。
@@ -37,11 +37,11 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 以下のトレース画像は、**検索結果なし**の例を使用して、以前に構成したコンポーネントの検証を反映しています。
 
-![](/images/server-side/getting-started-eventstream-trace.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-trace.png)
 
 この場合：
 
-![](/images/server-side/beast-thumbsup-whistle-small.png)
+![](https://docs.tealium.com/images/server-side/beast-thumbsup-whistle-small.png)
 
 * ✓ `search`のイベント仕様は有効です。
 * ✓ イベントフィードが一致しました。

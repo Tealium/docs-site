@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/session-ai-connector/
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -20,7 +20,7 @@ After adding the connector, configure the following settings:
  (Required) Select the host associated with your environment.
 To point to the Session AI sandbox environment, use `https://csb.zineone.com`. To point to the production environment, use `https://cloud.zineone.com`.
 * **API KEY**  
-To generate an API key, create a channel in **Session AI &gt; Integrations &gt; Data Channel**.
+To generate an API key, create a channel in **Session AI > Integrations > Data Channel**.
 
 ## Actions
 
@@ -32,7 +32,7 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Opt-In Action | Possible values:&lt;ul&gt;&lt;li&gt;`true` - Select to make an opt-in request.&lt;/li&gt;&lt;li&gt;`false` - Select to make an opt-out request.&lt;/li&gt;&lt;/ul&gt; |
+| Opt-In Action | Possible values:<ul><li>`true` - Select to make an opt-in request.</li><li>`false` - Select to make an opt-out request.</li></ul> |
 
 #### User Identifier
 
@@ -76,7 +76,7 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| `logged_in` | (Required) Indicates whether the user is logged in.&lt;br&gt; Possible values: `Y`, `N`, or a mapped boolean type attribute.  |
+| `logged_in` | (Required) Indicates whether the user is logged in.<br> Possible values: `Y`, `N`, or a mapped boolean type attribute.  |
 | `pagename` | The page name where the event triggered. |
 | `pagepath` | The page path where the event triggered. |
 | `category` | The category of the product. |
@@ -165,5 +165,5 @@ The following section lists the supported parameters for each action.
 | `terms` | The terms and conditions of the coupon. |
 | `method` | The method of the coupon. |
 | Custom Event Attributes | Map optional custom attributes. |
-| Custom Event Attributes Template Variables | Use template names to create more complex data structures and provide template variables as data input.&lt;ul&gt;&lt;li&gt;Name nested template variables with the dot notation. For example, `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt; |
-| Custom Event Attributes Templates | Provide templates to be referenced in **Custom Event Attributes**.&lt;ul&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example `{{SomeTemplateName}}`.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt; |
+| Custom Event Attributes Template Variables | Use template names to create more complex data structures and provide template variables as data input.<ul><li>Name nested template variables with the dot notation. For example, `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li></ul> |
+| Custom Event Attributes Templates | Provide templates to be referenced in **Custom Event Attributes**.<ul><li>Templates are injected by name with double curly braces into supported fields. For example `{{SomeTemplateName}}`.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li></ul> |

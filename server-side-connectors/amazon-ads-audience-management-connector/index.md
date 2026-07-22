@@ -5,7 +5,11 @@ url: https://docs.tealium.com/server-side-connectors/amazon-ads-audience-managem
 ---
 Amazon Ads Audience Management streamlines the upload, management, and use of audiences within Amazon Marketing Cloud (AMC). Use the Amazon Ads Audience connector to create and upload audiences through the Audience Management Service. These audiences become eligible for follow-on actions through Amazon DSP, AMC user interface workflows, or API actions such as AMC rule-based audiences.
 
- This connector can add visitors to either AMC or DSP audiences. For AMC audiences, you must create an AMC connection during the [**Configuration**]() process. For DSP audiences, you must select an Advertiser ID when you [create the DSP audience](). 
+
+<blockquote>
+This connector can add visitors to either AMC or DSP audiences. For AMC audiences, you must create an AMC connection during the [**Configuration**]() process. For DSP audiences, you must select an Advertiser ID when you [create the DSP audience]().
+</blockquote>
+
 
 ## API information
 
@@ -17,7 +21,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 6,000
 * Max time since oldest request: 60 minutes
@@ -25,7 +29,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -75,8 +79,8 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience ID | The Audience ID to add a visitor to.&lt;ol&gt;&lt;li&gt; To create a new audience, click **Create Audience**.&lt;/li&gt;&lt;li&gt;In the **Create Audience** screen, select an **AMC Connection** from the list.&lt;/li&gt;&lt;li&gt;Enter an **Audience Name**.&lt;/li&gt;&lt;li&gt;Enter an audience description in the **Description** field.&lt;/li&gt;&lt;li&gt;Enter a **Country Code**. This is a 2-character string in the ISO 3166 format that represents where the user data in an audience is collected from. Default value **UNKNOWN** will be applied if not set.&lt;/li&gt;&lt;li&gt;Click **Done**.&lt;/li&gt;&lt;li&gt;Click **Verify Audience ID** to verify the audience ID.&lt;/li&gt;&lt;/ol&gt;Audiences that you create with this connector prepend the prefix `Tealium:` to the audience name before they are sent to Amazon. |
-| AMC Connection | (Required) Select an AMC connection.&lt;ul&gt;&lt;li&gt;If needed, create a new connection in the connector configuration screen.&lt;/li&gt;&lt;li&gt;The connection ID must match the one used when the audience was created.&lt;/li&gt;&lt;/ul&gt; |
+| Audience ID | The Audience ID to add a visitor to.<ol><li> To create a new audience, click **Create Audience**.</li><li>In the **Create Audience** screen, select an **AMC Connection** from the list.</li><li>Enter an **Audience Name**.</li><li>Enter an audience description in the **Description** field.</li><li>Enter a **Country Code**. This is a 2-character string in the ISO 3166 format that represents where the user data in an audience is collected from. Default value **UNKNOWN** will be applied if not set.</li><li>Click **Done**.</li><li>Click **Verify Audience ID** to verify the audience ID.</li></ol>Audiences that you create with this connector prepend the prefix `Tealium:` to the audience name before they are sent to Amazon. |
+| AMC Connection | (Required) Select an AMC connection.<ul><li>If needed, create a new connection in the connector configuration screen.</li><li>The connection ID must match the one used when the audience was created.</li></ul> |
 | External User ID | Select a non-Amazon user ID, such as a Tealium visitor ID attribute, or another internal customer ID that is known to be unique for each visitor. |
 | External ID (apply SHA256 hash) | Select this checkbox to apply a SHA256 hash to the External User ID. |
 | Country Code | Provide a two-character string in ISO 3166 format that indicates the country from which the data was collected. A country code added to records overrides the country code added to an audience. |
@@ -110,7 +114,7 @@ When using the **Add Visitor to AMC Audience** action, the connector sends the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience ID | The Audience ID to add a visitor to.&lt;ol&gt;&lt;li&gt;To create a new audience, click **Create Audience**. &lt;/li&gt;&lt;li&gt;In the **Create Audience** screen, select or enter a **DSP Advertiser** in the list.&lt;/li&gt;&lt;li&gt;Enter an **Audience Name**.&lt;/li&gt;&lt;li&gt;Enter an audience description in the **Description** field.&lt;/li&gt;&lt;li&gt;Enter a **Country Code**. This is a 2-character string in the ISO 3166 format that represents where the user data in an audience is collected from. Default value **UNKNOWN** will be applied if not set.&lt;/li&gt;&lt;li&gt;Click **Done**.&lt;/li&gt;&lt;li&gt;Click **Verify Audience ID** to verify the audience ID.&lt;/li&gt;&lt;/ol&gt; Audiences that you create with this connector prepend the prefix `Tealium:` to the audience name before they are sent to Amazon. |
+| Audience ID | The Audience ID to add a visitor to.<ol><li>To create a new audience, click **Create Audience**. </li><li>In the **Create Audience** screen, select or enter a **DSP Advertiser** in the list.</li><li>Enter an **Audience Name**.</li><li>Enter an audience description in the **Description** field.</li><li>Enter a **Country Code**. This is a 2-character string in the ISO 3166 format that represents where the user data in an audience is collected from. Default value **UNKNOWN** will be applied if not set.</li><li>Click **Done**.</li><li>Click **Verify Audience ID** to verify the audience ID.</li></ol> Audiences that you create with this connector prepend the prefix `Tealium:` to the audience name before they are sent to Amazon. |
 | External User ID | Select a non-Amazon user ID, such as a Tealium visitor ID attribute, or another internal customer ID that is known to be unique for each visitor. |
 | External ID (apply SHA256 hash) | Select this checkbox to apply a SHA256 hash to the External User ID. |
 
@@ -145,7 +149,7 @@ When using the **Add Visitor to DSP Audience** action, the connector sends the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Audience ID | To use an existing Tealium-created Amazon audience, enter its ID and click **Verify Audience ID** to verify that the audience is correct. You can copy the audience ID created in the **Add to Audience** action configuration. |
-| AMC Connection | (Required) Select an AMC connection.&lt;ul&gt;&lt;li&gt;If needed, create a new connection in the connector configuration screen.&lt;/li&gt;&lt;li&gt;The connection ID must match the one used when the audience was created.&lt;/li&gt;&lt;/ul&gt; |
+| AMC Connection | (Required) Select an AMC connection.<ul><li>If needed, create a new connection in the connector configuration screen.</li><li>The connection ID must match the one used when the audience was created.</li></ul> |
 | External User ID | Select a non-Amazon user ID, such as a Tealium visitor ID attribute, or another internal customer ID, known to be unique for each visitor. |
 
 #### User Identifiers

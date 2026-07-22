@@ -16,8 +16,8 @@ Use this extension to set the value of a data layer variable using text, another
 
 Once the extension is added, the following configuration options are available:
 
-* **Set**: The data layer variable you want to assign a value to. Select from a drop-down list of variables or create a new variable by clicking the **&#43; Add Variable** button.
-* **To**: The value to assign to the variable. Click the **&#43;** button to set another variable, or the **-** button to remove a variable from the extension.  
+* **Set**: The data layer variable you want to assign a value to. Select from a drop-down list of variables or create a new variable by clicking the **+ Add Variable** button.
+* **To**: The value to assign to the variable. Click the **+** button to set another variable, or the **-** button to remove a variable from the extension.  
 The value can be one of these options:  
     * **Text**: Set the value to a text value that you type.
     * **Variable**: Set to the value of another data layer variable.
@@ -40,7 +40,7 @@ This example shows how to set a variable to a text value. In this scenario, a co
     * Select the variable `q (js)`.
     * Set the condition to `is defined`.
 
-![](/images/iq-tag-management/setdatavalues-1.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-1.png)
 
 ### Set a variable value
 
@@ -54,14 +54,14 @@ This example shows how to set a variable to the value of another variable. In th
 1. Click **Add Condition** and set the following:
     * Select the variable `page_name`.
     * Set the condition to `is not defined`.
-    * Click **&#43;** outside of the **Condition** box to add an **Or** condition.
+    * Click **+** outside of the **Condition** box to add an **Or** condition.
     * Select the variable `page_name`.
     * Set the condition to `is defined`.
-    * Click **&#43;** next to the `is defined` text box to add an **And** condition.
+    * Click **+** next to the `is defined` text box to add an **And** condition.
     * Select the variable `page_name`.
     * Set the condition to` is not populated`.
 
-![](/images/iq-tag-management/setdatavalues-2.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-2.png)
 
 ### Set a JavaScript code value
 
@@ -71,9 +71,9 @@ This example shows how to set a variable to the value returned by a JavaScript s
 1. Set **Title** to `Determine number of search results`.
 1. Select the variable **search_results** from the drop-down menu.
 1. Set the value type to **JS Code**.
-1. In the text box, enter JavaScript code, exactly how it would appear in the page (or a browser console). This example uses a simple jQuery selector and the `.length` property: `$(&#39;.search-results a&#39;).length;`.
+1. In the text box, enter JavaScript code, exactly how it would appear in the page (or a browser console). This example uses a simple jQuery selector and the `.length` property: `$('.search-results a').length;`.
 1. Click **Add Condition** and set the following:
     * Select the variable `page_type`.
     * Set the condition to `equals` and enter `search` in the text box.
 
-![](/images/iq-tag-management/setdatavalues-3.png)
+![](https://docs.tealium.com/images/iq-tag-management/setdatavalues-3.png)

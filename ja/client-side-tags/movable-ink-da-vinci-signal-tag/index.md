@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/movable-ink-da-vinci-signal-ta
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグ概要]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います:
 
@@ -30,7 +30,7 @@ url: https://docs.tealium.com/ja/client-side-tags/movable-ink-da-vinci-signal-ta
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 イベントと予想されるイベント詳細についての詳細は、[Da Vinci Javascript SDKドキュメンテーション](https://help.coherentpath.com/guides/technical/javascript-sdk)を参照してください。ドキュメンテーションにアクセスするにはDa Vinciヘルプセンターにログインする必要があります。アクセスに問題がある場合は、Da Vinciアカウントチームに連絡してください。
 

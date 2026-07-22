@@ -3,7 +3,11 @@ title: Databricks Connector Setup Guide
 description: This article describes how to set up the Databricks connector.
 url: https://docs.tealium.com/server-side-connectors/databricks-customer-provided-storage-connector/
 ---
- This connector is only available by using [the new connectors interface]() available by clicking **Connectors** in the left navigation. 
+
+<blockquote>
+This connector is only available by using [the new connectors interface](https://docs.tealium.com/about-connectors/) available by clicking **Connectors** in the left navigation.
+</blockquote>
+
 
 ## Actions
 
@@ -52,7 +56,7 @@ To generate new OAuth credentials for your Databricks account:
 
 1. Log in to your Databricks instance.
 2. Go to your workspace.
-3. On the top-right corner of the screen, go to **Settings &gt; Identity and access &gt; Service principals**.
+3. On the top-right corner of the screen, go to **Settings > Identity and access > Service principals**.
 4. Create a new service principal or click on an existing one.
 5. Click the **Secrets** tab and click **Generate secret**.
 6. Click the **Permissions** tab and make sure that your service principal is assigned to the role **Service principal: User**.
@@ -71,20 +75,20 @@ To find your AWS Access Key and Secret:
     1. Search for and attach the `AmazonS3FullAccess` policy, for full access. If you want to restrict access to a specific bucket, you can write a policy similar to the example below. In this example, `YOUR_BUCKET_NAME` is the bucket that Tealium would use to upload event and audience data into S3 objects.
         ```json
         {
-            &#34;Version&#34;: &#34;2012-10-17&#34;,
-            &#34;Statement&#34;: [
+            "Version": "2012-10-17",
+            "Statement": [
                 {
-                    &#34;Effect&#34;: &#34;Allow&#34;,
-                    &#34;Action&#34;: [
-                        &#34;s3:ListBucket&#34;,
-                        &#34;s3:PutObject&#34;,
-                        &#34;s3:GetObject&#34;,
-                        &#34;s3:ListBucketMultipartUploads&#34;,
-                        &#34;s3:ListMultipartUploadParts&#34;
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket",
+                        "s3:PutObject",
+                        "s3:GetObject",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:ListMultipartUploadParts"
                     ],
-                    &#34;Resource&#34;: [
-                        &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                        &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                    "Resource": [
+                        "arn:aws:s3:::YOUR_BUCKET_NAME",
+                        "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                     ]
                 }
             ]
@@ -107,20 +111,20 @@ To find your AWS Access Key and Secret:
     1. Search for and attach the `AmazonS3FullAccess` policy, for full access. If you want to restrict access to a specific bucket, you can write a policy similar to the example below. In this example, `YOUR_BUCKET_NAME` is the bucket that Tealium would use to upload event and audience data into S3 objects.
         ```json
         {
-            &#34;Version&#34;: &#34;2012-10-17&#34;,
-            &#34;Statement&#34;: [
+            "Version": "2012-10-17",
+            "Statement": [
                 {
-                    &#34;Effect&#34;: &#34;Allow&#34;,
-                    &#34;Action&#34;: [
-                        &#34;s3:ListBucket&#34;,
-                        &#34;s3:PutObject&#34;,
-                        &#34;s3:GetObject&#34;,
-                        &#34;s3:ListBucketMultipartUploads&#34;,
-                        &#34;s3:ListMultipartUploadParts&#34;
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket",
+                        "s3:PutObject",
+                        "s3:GetObject",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:ListMultipartUploadParts"
                     ],
-                    &#34;Resource&#34;: [
-                        &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                        &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                    "Resource": [
+                        "arn:aws:s3:::YOUR_BUCKET_NAME",
+                        "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                     ]
                 }
             ]
@@ -133,17 +137,17 @@ To find your AWS Access Key and Secret:
     1. Set the `EXTERNAL_ID` value for the connection to Tealium. The ID can be up to 256 characters long and can include alphanumeric characters (`A-Z`, `a-z`, `0-9`) and symbols, such as hyphens (`-`), underscores (`_`), and periods (`.`).
 ```json
 {
-    &#34;Version&#34;: &#34;2012-10-17&#34;,
-    &#34;Statement&#34;: [
+    "Version": "2012-10-17",
+    "Statement": [
         {
-            &#34;Effect&#34;: &#34;Allow&#34;,
-            &#34;Principal&#34;: {
-                &#34;AWS&#34;: &#34;arn:aws:iam::757913464184:root&#34;
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::757913464184:root"
             },
-            &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
-            &#34;Condition&#34;: {
-                &#34;StringEquals&#34;: {
-                    &#34;sts:ExternalId&#34;: &#34;EXTERNAL_ID&#34;
+            "Action": "sts:AssumeRole",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "EXTERNAL_ID"
                 }
             }
         }
@@ -168,7 +172,7 @@ To retrieve the tenant ID, client ID, and client secret for an application in Az
 1. In the left menu, click **App registrations**.
 1. Locate your registered application.
 
-**Step 3: Find the Tenant ID &amp; Client ID**
+**Step 3: Find the Tenant ID & Client ID**
 
 1. Click your application.
 1. In the **Overview** section, locate the following information:
@@ -177,7 +181,7 @@ To retrieve the tenant ID, client ID, and client secret for an application in Az
 
 **Step 4: Generate Client Secret**
 
-1. In the left menu, go to **Certificates &amp; secrets**.
+1. In the left menu, go to **Certificates & secrets**.
 1. Under **Client secrets**, click **New client secret**.
 1. Provide a description and select an expiration time.
 1. Click **Add**.
@@ -201,7 +205,7 @@ To generate a Shared Access Signature (SAS) token in Azure, use the following st
 
 Option 1: Use the Azure Portal
 
-1. In the **Storage Account**, go to **Shared access signature** under the **Security &#43; networking** section.
+1. In the **Storage Account**, go to **Shared access signature** under the **Security + networking** section.
 1. Configure the permissions needed (`Read`, `Write`, `Delete`, `List`, etc.).
 1. Set the expiration date and time to define how long the token remains valid.
 1. Choose the allowed services (`Blob`, `File`, `Queue`, and `Table`).
@@ -221,9 +225,9 @@ Option 3: Use Azure CLI
 1. Run the following command in Azure CLI to generate a SAS token:
 ```sh
     az storage blob generate-sas \
-        --account-name &lt;your-storage-account&gt; \
-        --container-name &lt;your-container&gt; \
-        --name &lt;your-blob&gt; \
+        --account-name <your-storage-account> \
+        --container-name <your-container> \
+        --name <your-blob> \
         --permissions r \
         --expiry 2026-04-25T12:00:00Z \
         --output tsv
@@ -233,13 +237,13 @@ This will output a SAS token, which can be appended to the storage URL to provid
 
 ##### Authorization Code flow (SSO)
 
-When you click **Establish Connection**, you&#39;re initiating a secure authentication process known as the Authorization Code Flow. This allows your application to gain access to your Azure Blob Storage without requiring you to manually enter credentials, ensuring a seamless and secure experience.
+When you click **Establish Connection**, you're initiating a secure authentication process known as the Authorization Code Flow. This allows your application to gain access to your Azure Blob Storage without requiring you to manually enter credentials, ensuring a seamless and secure experience.
 
 You will see the following:
 
-1. **Redirect to Sign-In:** You&#39;re temporarily directed to your organization’s Identity Provider (IdP), such as Azure Active Directory, where you log in using your existing credentials.
-1. **Granting Consent**: After authenticating, you&#39;ll see a consent screen explaining the permissions that Tealium’s app is requesting—specifically, access to your Blob Storage.
-1. **Secure Access to Blob Storage**: Tealium’s application now has the permission to interact with your storage while maintaining Azure&#39;s security policies.
+1. **Redirect to Sign-In:** You're temporarily directed to your organization’s Identity Provider (IdP), such as Azure Active Directory, where you log in using your existing credentials.
+1. **Granting Consent**: After authenticating, you'll see a consent screen explaining the permissions that Tealium’s app is requesting—specifically, access to your Blob Storage.
+1. **Secure Access to Blob Storage**: Tealium’s application now has the permission to interact with your storage while maintaining Azure's security policies.
 
 #### Google Cloud Storage settings
 
@@ -274,7 +278,7 @@ After setting up the storage credentials, you must define an external location i
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 100,000
 * Maximum time since oldest request: You can set a custom TTL between 1 and 60 minutes. The default value is 10 minutes.
@@ -282,19 +286,23 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Cloud Solution**: Select the cloud solution you are using. Available options are `Databricks Unity Catalog Volume`, `AWS S3`, `Azure Blob Storage`, `Google Cloud Storage`.
 * **Databricks Host URL**: Provide the Databricks account URL. For example: `https://{ACCOUNT_NAME}.cloud.databricks.com`.
-* **Databricks Token**: Provide the Databricks access token. This parameter is optional if you are sending the data to a Databricks Unity Catalog Volume. To create an access token in Databricks, click the user avatar in Databricks and go to **Settings &gt; Developer &gt; Access Tokens &gt; Manage &gt; Generate New Token**.
+* **Databricks Token**: Provide the Databricks access token. This parameter is optional if you are sending the data to a Databricks Unity Catalog Volume. To create an access token in Databricks, click the user avatar in Databricks and go to **Settings > Developer > Access Tokens > Manage > Generate New Token**.
 
 Authentication settings vary based on the cloud solution you use:
 
 ### Databricks Unity Catalog Volume
 
+
+<blockquote>
 If you expect more than 1000 events per minute, use the batch actions.
+</blockquote>
+
 
 * **Authentication type**: Select the **Databricks OAuth** authentication type.
 * **Client ID**: The unique identifier assigned to your service principal secret.
@@ -346,7 +354,7 @@ Notebooks in Databricks are documents that contain executable code, visualizatio
 1. For **Notebook Path**, enter the absolute path of the notebook. For example: `/Users/user@example.com/project/NOTEBOOK_NAME`. 
     1. To locate the absolute path of the notebook in Databricks, go to your Databricks workspace and expand the **Users** section. 
     1. Click on the user and then expand the options menu. 
-    1. Click on **Copy URL/Path &gt; Full Path**. The path name will be in the following format: `/Workspace/Users/myemail@company.com`. Add the virtual folder and notebook name that you want separated by a slash `/`. For example, `/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook`.
+    1. Click on **Copy URL/Path > Full Path**. The path name will be in the following format: `/Workspace/Users/myemail@company.com`. Add the virtual folder and notebook name that you want separated by a slash `/`. For example, `/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook`.
 1. **Cloud Bucket / Volume**:
     1. For **Cloud Bucket**, select the Google Cloud Platform (GCP), Azure Blob Storage, or AWS S3 storage bucket to connect as your data destination.
     1. If you are using the **Databricks OAuth** authentication type, specify the Databricks Unity Catalog Volume instead.
@@ -363,7 +371,7 @@ Jobs in Databricks automate running notebooks on a schedule or based on specific
 1. For **Notebook Path**, enter the absolute path of the notebook. For example: `/Users/user@example.com/project/NOTEBOOK_NAME`. 
     1. To locate the absolute path of the notebook in Databricks, go to your Databricks workspace and expand the **Users** section. 
     1. Click on the user and then expand the options menu. 
-    1. Click on **Copy URL/Path &gt; Full Path**. The path name will be in the following format: `/Workspace/Users/myemail@company.com`. Add the virtual folder and notebook name that you want separated by a slash `/`. For example, `/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook`.
+    1. Click on **Copy URL/Path > Full Path**. The path name will be in the following format: `/Workspace/Users/myemail@company.com`. Add the virtual folder and notebook name that you want separated by a slash `/`. For example, `/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook`.
 1. For **Cloud Bucket** or **Volume**, select the cloud storage bucket or Databricks Unity Catalog Volume to connect to Databricks.
 1. For **Trigger Type**, select when to process the data. Available options are:
     * **File Arrived**: Process data every time a new file arrives.
@@ -375,7 +383,7 @@ Jobs in Databricks automate running notebooks on a schedule or based on specific
 
 ## Create a job and notebook
 
-To create a notebook and a job at the same time, click **Create Notebook &amp; Job**. Use the steps in the [Create a notebook](#create-a-notebook) and [Create a job](#create-a-job) sections.
+To create a notebook and a job at the same time, click **Create Notebook & Job**. Use the steps in the [Create a notebook](#create-a-notebook) and [Create a job](#create-a-job) sections.
 
 ## Actions
 

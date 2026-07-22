@@ -21,11 +21,11 @@ Moments APIの**Insights**タブでは、以下のビジュアライゼーショ
 * 時間経過による書き込まれなかった合計データ量（バイト）（データ制限を超えた書き込みリクエストによる）
 
 以下の図は、**Moments API Insights**タブに表示されるビジュアライゼーションとデータの例を示しています：
-![](/images/server-side/moments-api-insights-tab-example.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-example.png)
 
 ### データ制限を超える書き込みリクエスト
 
-エンジンに対して多数のオーディエンス、バッジ、属性が指定されている場合、エンジンの書き込みのサイズは、訪問ごとのエンジンごとに保存できるデータの最大量を超えることがあります。オーディエンス、バッジ、属性の名前を使用すると、書き込みのサイズも増加します。詳細については、[制限]()を参照してください。
+エンジンに対して多数のオーディエンス、バッジ、属性が指定されている場合、エンジンの書き込みのサイズは、訪問ごとのエンジンごとに保存できるデータの最大量を超えることがあります。オーディエンス、バッジ、属性の名前を使用すると、書き込みのサイズも増加します。詳細については、[制限](https://docs.tealium.com/about-moments-api/#limits)を参照してください。
 
 エンジンの書き込みが訪問ごとのエンジンごとのデータの最大量を超えている場合、以下の方法のいずれかで書き込みのサイズを減らすことができます：
 
@@ -37,7 +37,7 @@ Moments APIの**Insights**タブでは、以下のビジュアライゼーショ
 データとビジュアライゼーションのデフォルトの**日付範囲**は**過去30日間**です。新しい**日付範囲**を選択するには、以下の手順を使用します：
 
 1. **コントロール**バーをクリックします。  
-![](/images/server-side/moments-api-insights-tab-control-bar.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-control-bar.png)
 1. 現在の**日付範囲**をクリックします。
 1. 以下のいずれかを行います：  
     * データを週、月、四半期、年で表示するには、**Relative by**をクリックし、オプションを選択します。  
@@ -50,7 +50,7 @@ Moments APIの**Insights**タブでは、以下のビジュアライゼーショ
 データとビジュアライゼーションのデフォルトの**エンジン**は**すべて**です。特定のエンジンを選択するには、以下の手順を使用します：
 
 1. **コントロール**バーをクリックします。  
-![](/images/server-side/moments-api-insights-tab-control-bar.png)
+![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-control-bar.png)
 1. 現在の**エンジン**をクリックし、新しいエンジンを選択します。  
 表示は新しいデータで更新されます。
 1. リストを閉じるには、**コントロール**バーをクリックします。
@@ -62,7 +62,7 @@ Moments APIの**Insights**タブに表示されるビジュアルは、Tealium I
 ### Moments API Insightsテンプレートの更新
 
 Moments API Insightsテンプレートを更新する必要があるときには、以下のメッセージが表示されます：
-![](/images/server-side/data-insights/datainsights-updates-available-message.png)
+![](https://docs.tealium.com/images/server-side/data-insights/datainsights-updates-available-message.png)
 
 テンプレートを更新するには、以下の手順を使用します：
 

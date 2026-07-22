@@ -37,7 +37,7 @@ To set up a purchase event:
 1. Set the **When mapped variable equals** field to **Purchase**. This is the value `tealium_event` must equal to trigger a purchase.
 1. In the **Trigger event** drop-down list, select **Purchases** `(commerce.purchases)` under the **sendEvent: Commerce Events** section. This is the event that is triggered when `tealium_event` equals a purchase event.
 
-![](/images/client-side-tags/adobe-experience-web-sdk-mappings-example.png)
+![](https://docs.tealium.com/images/client-side-tags/adobe-experience-web-sdk-mappings-example.png)
 
 #### Use case: Purchase event with Event-specific Parameters
 
@@ -65,29 +65,29 @@ Non-XDM, or Target data, can also be set using event mapping. In this use case, 
 The following examples shows the resulting Adobe Web SDK call, including some default mappings from the E-Commerce extension. This example shows how the Adobe dot notation is broken out into a nested object for `commerce.purchases.xdm.commerce.order.purchaseOrderNumber`.
 
 ```javascript
-alloy(&#34;sendEvent&#34;,{
-  &#34;xdm&#34;:{
-    &#34;commerce&#34;:{
-      &#34;order&#34;:{
-        &#34;purchaseID&#34;:&#34;123456789&#34;,
-        &#34;currencyCode&#34;:&#34;USD&#34;,
-        &#34;priceTotal&#34;:39.98,
-        &#34;purchaseOrderNumer&#34;:&#34;A1234&#34;
+alloy("sendEvent",{
+  "xdm":{
+    "commerce":{
+      "order":{
+        "purchaseID":"123456789",
+        "currencyCode":"USD",
+        "priceTotal":39.98,
+        "purchaseOrderNumer":"A1234"
       }
     },
-    &#34;productListItems&#34;:[
+    "productListItems":[
       {
-        &#34;SKU&#34;:&#34;HT105&#34;,
-        &#34;name&#34;:&#34;The Big Floppy Hat&#34;,
-        &#34;priceTotal&#34;:29.99,
-        &#34;quantity&#34;:1
+        "SKU":"HT105",
+        "name":"The Big Floppy Hat",
+        "priceTotal":29.99,
+        "quantity":1
       }
     ]
   },
-  &#34;data&#34;:{
+  "data":{
     __adobe: {
       target: {
-        &#34;entity.brand&#34;: &#34;Acme&#34;
+        "entity.brand": "Acme"
       }
     }
   }
@@ -96,9 +96,9 @@ alloy(&#34;sendEvent&#34;,{
 
 ## Manage Flicker with Adobe Target
 
-Loading the Adobe Experience Platform Web SDK asynchronously can cause content flicker, as previously loaded content could be updated by Adobe Target. To minimize flicker, Adobe recommends adding a prehiding snippet. Add this snippet to the `utag.sync.js` template with a [JavaScript extension]().
+Loading the Adobe Experience Platform Web SDK asynchronously can cause content flicker, as previously loaded content could be updated by Adobe Target. To minimize flicker, Adobe recommends adding a prehiding snippet. Add this snippet to the `utag.sync.js` template with a [JavaScript extension](https://docs.tealium.com/javascript-code-extension/).
 
-For more information about `utag.sync.js`, see [How `utag.sync.js` works]().
+For more information about `utag.sync.js`, see [How `utag.sync.js` works](https://docs.tealium.com/utag-sync/).
 
 For information about the prehiding snippet, see [Manage Flicker](https://experienceleague.adobe.com/docs/experience-platform/edge/personalization/manage-flicker.html).
 
@@ -110,7 +110,7 @@ The solution consists of checking if consent has been given and, based on consen
 
 If you use a custom CMS external to Tealium, manage consent checking through that CMS platform.
 
-If you use the Tealium JavaScript extension, update the logic so that the function is triggered only if the consent cookie contains a specific value, representing the user consent for the cookie category to which the AEP Web SDK tag belongs (for example, the functional cookie&#39;s category).
+If you use the Tealium JavaScript extension, update the logic so that the function is triggered only if the consent cookie contains a specific value, representing the user consent for the cookie category to which the AEP Web SDK tag belongs (for example, the functional cookie's category).
 
 #### Example
 
@@ -118,25 +118,29 @@ In this example, the CMS sets a cookie called `mycms_cookie` that contains the v
 
 The following code checks for those values to trigger the prehiding snippet.
 
- There are comments in the example that identify lines of code that need to be modified for your configuration. 
+
+<blockquote>
+There are comments in the example that identify lines of code that need to be modified for your configuration.
+</blockquote>
+
 
 ```javascript
 !function(e,a,n,t){
   if (a) return;
-  //Check if the cookie exists, and if it does, get its value. Update the mycms_cookie bit with the actual name of your CMS&#39;s cookie.
-  var cms_cookie_value = (document.cookie.match(/^(?:.*;)?\s*mycms_cookie\s*=\s*([^;]&#43;)(?:.*)?$/)||[,null])[1];
+  //Check if the cookie exists, and if it does, get its value. Update the mycms_cookie bit with the actual name of your CMS's cookie.
+  var cms_cookie_value = (document.cookie.match(https://docs.tealium.com/^(?:.*;)?\s*mycms_cookie\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
   if(cms_cookie_value){
     //Add the accepted values to an array. In the example below, the cookie value must contain either all:1 or functional:1 to trigger the prehidding snippet.     
-    var accepted_values = [&#39;all:1&#39;,&#39;functional:1&#39;];
-    for(var i=0;i&lt;accepted_values.length;i&#43;&#43;){
+    var accepted_values = ['all:1','functional:1'];
+    for(var i=0;i<accepted_values.length;i++){
       if(cms_cookie_value.includes(accepted_values[i])){
         var x=e.head;
         if(x){
-          var o=e.createElement(&#34;style&#34;);
-          o.id=&#34;alloy-prehiding&#34;;
+          var o=e.createElement("style");
+          o.id="alloy-prehiding";
           o.innerText=n;
           x.appendChild(o);
-          setTimeout(function(){o.parentNode&amp;&amp;o.parentNode.removeChild(o)},t);
+          setTimeout(function(){o.parentNode&&o.parentNode.removeChild(o)},t);
           return;
         }
       }
@@ -144,10 +148,10 @@ The following code checks for those values to trigger the prehiding snippet.
   }
 }
 
-(document, document.location.href.indexOf(&#34;adobe_authoring_enabled&#34;) !== -1, &#34;body { opacity: 0 !important }&#34;, 3000);
+(document, document.location.href.indexOf("adobe_authoring_enabled") !== -1, "body { opacity: 0 !important }", 3000);
 ```
 
-Update the `&#34;body { opacity: 0 !important }&#34;` code with the element to target, such as a specific `div`. Otherwise, the default behavior of the code is to hide the whole body of the content.
+Update the `"body { opacity: 0 !important }"` code with the element to target, such as a specific `div`. Otherwise, the default behavior of the code is to hide the whole body of the content.
 
 ## Adobe Analytics migration guide
 
@@ -165,13 +169,13 @@ The following examples show the structural differences between calls in Adobe An
 // Load the AppMeasurement library
 var s = new AppMeasurement();
 // Set the report suite ID
-s.account = &#34;example-rsid&#34;;
+s.account = "example-rsid";
 // Set the page name
-s.pageName = &#34;Home Page&#34;;
+s.pageName = "Home Page";
 // Set other variables as needed
-s.prop1 = &#34;value1&#34;;
-s.eVar1 = &#34;value2&#34;;
-s.hellow = &#34;value3&#34;;
+s.prop1 = "value1";
+s.eVar1 = "value2";
+s.hellow = "value3";
 // Send the data to Adobe Analytics servers
 var s_code = s.t();
 if (s_code) document.write(s_code);
@@ -180,25 +184,25 @@ if (s_code) document.write(s_code);
 #### Adobe Experience Platform Web SDK
 
 ```javascript
-window.alloy(&#34;sendEvent&#34;, {
+window.alloy("sendEvent", {
     // Set the type of event
-    type: &#34;viewStart&#34;,
+    type: "viewStart",
     // Set the data for Adobe Analytics
     xdm: {
       web: {
         webPageDetails: {
           // Set the page name
-          name: &#34;Home Page&#34;
+          name: "Home Page"
         }
       },
       _experience: {
         analytics: {
           customDimensions: {
             props: {
-              prop1: &#34;value1&#34;
+              prop1: "value1"
             },
             eVars: {
-              eVar1: &#34;value2&#34;
+              eVar1: "value2"
             }
           }
         }
@@ -206,7 +210,7 @@ window.alloy(&#34;sendEvent&#34;, {
     },
     data: {
       // Set other variables as needed
-      hellow: &#34;value3&#34;,
+      hellow: "value3",
     }
   });
 ```
@@ -224,8 +228,8 @@ Before using the Migrator Tool, note the following limitations:
 
 Complete the following steps to migrate your Adobe Analytics tag using Tealium Tools:
 
-1. Add the Adobe Experience Platform Web SDK Migrator to your Tealium Tools using the JSON definition at the following URL: https://solutions.tealium.net/hosted/tealiumTools/aep_migrate/aep_migrate.json. For more information about adding custom tools, see [Manage Custom Tools]().
-1. Go to **Tag Management &gt; Tags** and launch the Adobe Experience Platform Web SDK Migrator tool.
+1. Add the Adobe Experience Platform Web SDK Migrator to your Tealium Tools using the JSON definition at the following URL: https://solutions.tealium.net/hosted/tealiumTools/aep_migrate/aep_migrate.json. For more information about adding custom tools, see [Manage Custom Tools](https://docs.tealium.com/tealium-tools-browser-extension/#add-a-custom-tool).
+1. Go to **Tag Management > Tags** and launch the Adobe Experience Platform Web SDK Migrator tool.
 1. To disable your existing Adobe Analytics tag as part of the migration, select **Disable existing tag**.
 1. Select the scope for the migration:
     * All AppMeasurement Tags
@@ -243,25 +247,25 @@ To migrate from the Adobe Analytics tag to the Adobe Experience Platform Web SDK
 
 This migration guide uses the following example data mappings in the Adobe Analytics tag:
 
-![](/images/client-side-tags/adobe-analytics-migration-example1.png)
+![](https://docs.tealium.com/images/client-side-tags/adobe-analytics-migration-example1.png)
 
-![](/images/client-side-tags/adobe-analytics-migration-example2.png)
+![](https://docs.tealium.com/images/client-side-tags/adobe-analytics-migration-example2.png)
 
-1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 1. Configure the following tag settings in Tealium:
     * **Org ID**: Your Adobe-assigned Experience Cloud organization ID. For example, `XXX@AdobeOrg`.
     * **Datastream ID**: Your Adobe-assigned datastream ID, which links the SDK to the appropriate accounts and configuration. Also referred to as the `edgeConfigId`.
 1. Configure the following settings in Adobe Experience Platform: 
     1. Go to **Datastreams** and select the datastream you want to use in the migration.
-    1. In your Datastream **Configure** screen, note the **Event Schema** used in your datastream and click **Save**. ![](/images/client-side-tags/adobe-experience-platform-datastreams.png)
-    1. In the Datastream details screen, ensure your Adobe Analytics service is enabled and select the service. ![](/images/client-side-tags/adobe-experience-platform-service.png)
-    1. In the **Adobe Analytics service** screen, enter the Adobe **Report Suite ID** that points to the appropriate data stores.![](/images/client-side-tags/adobe-experience-platform-aa-enable.png)
-    1. Go to **Data Management &gt; Schemas** and select the **Event Schema** that is linked to your datastream. 
-    1. Ensure that **Field Groups** includes the **Adobe Analytics ExperienceEvent Template** field group. ![](/images/client-side-tags/adobe-experience-platform-schemas.png)
-1. In this example, you would map the following legacy attributes, properties, and events to the Adobe Experience Platform Web SDK tag in Tealium. For more information, see [About data mappings]().
+    1. In your Datastream **Configure** screen, note the **Event Schema** used in your datastream and click **Save**. ![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-datastreams.png)
+    1. In the Datastream details screen, ensure your Adobe Analytics service is enabled and select the service. ![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-service.png)
+    1. In the **Adobe Analytics service** screen, enter the Adobe **Report Suite ID** that points to the appropriate data stores.![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-aa-enable.png)
+    1. Go to **Data Management > Schemas** and select the **Event Schema** that is linked to your datastream. 
+    1. Ensure that **Field Groups** includes the **Adobe Analytics ExperienceEvent Template** field group. ![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-schemas.png)
+1. In this example, you would map the following legacy attributes, properties, and events to the Adobe Experience Platform Web SDK tag in Tealium. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
     1. In the Adobe Experience Platform Web SDK tag, go to **Data Mappings**.
-    1. Select the **sf (js)** variable and map it to **Analytics eVars &gt; evar181** then click **Done**.
-    1. Select the **page_category (js)** variable and map to **Analytics Props &gt; prop5** and lick **Done**.
+    1. Select the **sf (js)** variable and map it to **Analytics eVars > evar181** then click **Done**.
+    1. Select the **page_category (js)** variable and map to **Analytics Props > prop5** and lick **Done**.
     1. Select the **medallia_custom_event(js)** variable and **XDM Event Trigger**. Configure the mapping using the following values and click **Done**:
         * Add `MDigital_Invite_Displayed:_experience.analytics.event101to200` as a custom destination.
         * When mapped variables equals: **MDigital_Invite_Displayed**
@@ -282,7 +286,7 @@ For more information about configuring Adobe Experience Platform Datastream, ser
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -298,11 +302,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -421,7 +425,7 @@ The available categories are:
 | `edgeConfigOverrides.com_adobe_analytics.reportSuites`  | [Array, String] | Adobe Analytics Report Suites. |
 | `edgeConfigOverrides.com_adobe_identity.idSyncContainerId`  | Number | Audience Manager ID Sync Container. |
 | `edgeConfigOverrides.com_adobe_target.propertyToken`  | String | Adobe Target Property Token. |
-| `edgeConfigOverrides.datastreamId`  | String | &lt;ul&gt;&lt;li&gt;Data Stream ID.&lt;/li&gt;&lt;li&gt;You can map multiple datastream IDs separated by a comma.&lt;/li&gt;&lt;li&gt;Each time a sendEvent call is made, the tag verifies if there are multiple datastream IDs in this variable.&lt;/li&gt;&lt;li&gt;If there are multiple datastream IDs, a separate sendEvent call is made for each datastream ID.&lt;/li&gt;&lt;li&gt;Note that `edgeConfigOverrides.datastreamId` overrides `edgeConfigID`, which overrides the datastream ID set in the configuration step.&lt;/li&gt;&lt;/l&gt; |
+| `edgeConfigOverrides.datastreamId`  | String | <ul><li>Data Stream ID.</li><li>You can map multiple datastream IDs separated by a comma.</li><li>Each time a sendEvent call is made, the tag verifies if there are multiple datastream IDs in this variable.</li><li>If there are multiple datastream IDs, a separate sendEvent call is made for each datastream ID.</li><li>Note that `edgeConfigOverrides.datastreamId` overrides `edgeConfigID`, which overrides the datastream ID set in the configuration step.</li></l> |
 
 ### XDM Event Triggers 
 

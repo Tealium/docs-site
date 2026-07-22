@@ -7,13 +7,17 @@ url: https://docs.tealium.com/server-side/audiences/manage-segments/
 
 To create an audience segment that can be used in multiple audiences, use the following steps:
 
-1. Go to **Activate &gt; Audiences**.
-1. Click the **SEGMENTS** tab, then click **&#43; New Segment**.
-1. Enter a **Name** for the segment. If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
+1. Go to **Activate > Audiences**.
+1. Click the **SEGMENTS** tab, then click **+ New Segment**.
+1. Enter a **Name** for the segment. 
+<blockquote>
+If you use a [DataAccess](https://docs.tealium.com/about-dataaccess/) product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
+</blockquote>
+
 1. To add a condition, select an attribute, an operator, and a value.
     * The estimated potential size for the segment is displayed. For more information, see [potential size](#potential-size).
     * For operators that specify a time frame, select a value and the time frame.
-1. To add another condition, click **&#43; Add Condition**.
+1. To add another condition, click **+ Add Condition**.
     * Click **Calculate** to update the potential size as you edit or add conditions.
 1. Click **Done**.
 Save and publish is not required.
@@ -33,7 +37,7 @@ Potential segment sizing is not available when a segment is built with the follo
 
 To save a segment to favorites, use the following steps:
 
-1. Go to **Activate &gt; Audiences**.
+1. Go to **Activate > Audiences**.
 1. Click the **SEGMENTS** tab.
 1. Click the star next to the segment name.
 
@@ -41,18 +45,22 @@ To save a segment to favorites, use the following steps:
 
 To filter the segments list by a label or by favorites, use the following steps:
 
-1. Go to **Activate &gt; Audiences**.
+1. Go to **Activate > Audiences**.
 1. Click the **SEGMENTS** tab.
 1. To filter by a specific label, click **Labels** and select a label.
 1. To see only your favorite segments, click **Favorite** and select **Favorite**.
 
 ## Edit a segment
 
+
+<blockquote>
 Currently, segments that are being used in an audience cannot be edited.
+</blockquote>
+
 
 To edit a segment, use the following steps:
 
-1. Go to **Activate &gt; Audiences**.
+1. Go to **Activate > Audiences**.
 1. Click the **SEGMENTS** tab, then select the segment to edit.
 1. Click **Edit**.
     * Add or edit conditions as needed.
@@ -61,10 +69,14 @@ To edit a segment, use the following steps:
 
 ## Delete a segment
 
+
+<blockquote>
 You cannot delete a segment that is in use in an audience.
+</blockquote>
+
 
 Use the following steps to delete a segment:
 
-1. Go to **Activate &gt; Audiences**, and click the **SEGMENTS** tab.
+1. Go to **Activate > Audiences**, and click the **SEGMENTS** tab.
 1. Click the menu for the segment, then select **Delete**.  
 The segment is deleted. Save and Publish is not required.

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ---
 チャートの色分けされたバーは、イベント仕様の検証に基づいてあなたのデータに対して区分されています。
 
-![](/images/server-side/getting-started-eventstream-live-events-all-filters.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-live-events-all-filters.png)
 
 イベント仕様の検証を持つLive Events：
 

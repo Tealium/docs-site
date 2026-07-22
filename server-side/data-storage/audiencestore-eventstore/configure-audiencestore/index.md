@@ -3,13 +3,21 @@ title: Configure AudienceStore
 description: This article provides information about configuring an AudienceStore connector.
 url: https://docs.tealium.com/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/
 ---
+
+<blockquote>
 To have AudienceStore enabled for your account and profile, contact your account manager.
+</blockquote>
+
 
 ## Configure an AudienceStore connector
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
- Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur. 
+
+<blockquote>
+Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.
+</blockquote>
+
 
 ## Actions
 
@@ -56,6 +64,10 @@ For more information, see the [AudienceStore Connector Setup Guide]().
 
 After the AudienceStore connector is configured, the details page for the connector lists the actions, how many times they have been triggered, and their status.
 
-If AudienceStore is later disabled, the AudienceStore connector will also be disabled. If AudienceStore is enabled again, the AudienceStore connector must be manually enabled.
 
-After configuring an Audience connector, go to **Store &gt; AudienceStore** to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see [View files]().
+<blockquote>
+If AudienceStore is later disabled, the AudienceStore connector will also be disabled. If AudienceStore is enabled again, the AudienceStore connector must be manually enabled.
+</blockquote>
+
+
+After configuring an Audience connector, go to **Store > AudienceStore** to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see [View files]().

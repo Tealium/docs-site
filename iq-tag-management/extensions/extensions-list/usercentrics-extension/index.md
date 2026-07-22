@@ -5,7 +5,7 @@ url: https://docs.tealium.com/iq-tag-management/extensions/extensions-list/userc
 ---
 ## How it works
 
-The Tealium iQ Tag Management Usercentrics extension is used to ensure that your CMP policy is enforced at the source level, thus blocking or firing tags according to the user&#39;s consent preferences.
+The Tealium iQ Tag Management Usercentrics extension is used to ensure that your CMP policy is enforced at the source level, thus blocking or firing tags according to the user's consent preferences.
 
 Simple bookmarklet functionality is used to import the Data Processing Services JSON object text to a bookmark in your browser, which is then used to create a mapping table.
 
@@ -36,9 +36,13 @@ To learn more, see the Usercentrics documentation, [Assign a data attribute](htt
 
 Use the following steps to implement the Usercentrics tag within Tealium iQ Tag Management using the JavaScript Code extension:
 
-1. Go to **Tag Management &gt; Extensions &gt; Add Extension** and select the **JavaScript Code** extension to add the script for Usercentrics V1 or Usercentrics V2.
+1. Go to **Tag Management > Extensions > Add Extension** and select the **JavaScript Code** extension to add the script for Usercentrics V1 or Usercentrics V2.
 1. Add the **JavaScript Code** extension.  
-    If you have not previously used the JavaScript Code extension and need to learn how, see JavaScript Code Extension.
+    
+<blockquote>
+If you have not previously used the JavaScript Code extension and need to learn how, see JavaScript Code Extension.
+</blockquote>
+
 
 1. Name the extension **Usercentrics Tag**, and set the scope to **Pre Loader**.
 1. Use the script from one of the following examples to create the extension:  
@@ -46,12 +50,12 @@ Use the following steps to implement the Usercentrics tag within Tealium iQ Tag 
         ```js
         (function(a, b, c, d) {
                     b = document;
-                    c = &#39;script&#39;;
+                    c = 'script';
                     d = b.createElement(c);
-                    d.src=&#34;XXXXXXXXXXX&#34;; // URL for Usercentrics CMP Version 1 Script.
-                    d.type = &#39;text/java&#39; &#43; c;
+                    d.src="XXXXXXXXXXX"; // URL for Usercentrics CMP Version 1 Script.
+                    d.type = 'text/java' + c;
                     d.async = true;
-                    d.id = &#39;XXXXXXXXX&#39;; // Usercentrics Settings-ID
+                    d.id = 'XXXXXXXXX'; // Usercentrics Settings-ID
                     a = b.getElementsByTagName(c)[0];
                     a.parentNode.insertBefore(d, a);
                 }
@@ -61,13 +65,13 @@ Use the following steps to implement the Usercentrics tag within Tealium iQ Tag 
         ```js
         (function(a, b, c, d) {
                     b = document;
-                    c = &#39;script&#39;;
+                    c = 'script';
                     d = b.createElement(c);
-                    d.src=&#34;XXXXXXXXXXX&#34;; // URL for Usercentrics CMP Version 2 Script.
-                    d.type = &#39;text/java&#39; &#43; c;
+                    d.src="XXXXXXXXXXX"; // URL for Usercentrics CMP Version 2 Script.
+                    d.type = 'text/java' + c;
                     d.async = true;
-                    d.id = &#39;usercentrics-cmp&#39;;
-                    d.setAttribute(&#39;data-settings-id&#39;, &#34;XXXXXXXXXXX&#34;); // Usercentrics Settings-ID
+                    d.id = 'usercentrics-cmp';
+                    d.setAttribute('data-settings-id', "XXXXXXXXXXX"); // Usercentrics Settings-ID
                     a = b.getElementsByTagName(c)[0];
                     a.parentNode.insertBefore(d, a);
                 }
@@ -86,7 +90,11 @@ Use the following steps to create a Data Processing Service for Tealium iQ Tag M
 1. Select the most recent Data Processing template for **Tealium iQ Tag Management**.
 1. Mark the template as **Required** to ensure that it cannot be opted out.  
 If you customized the Tealium iQ Tag Management service name, it will not be automatically detected by the CMP extension.  
+
+<blockquote>
 In the Configuration section of this document, you will manually add the custom service name using the Service Name input field.
+</blockquote>
+
 
 ## Configure the extension
 
@@ -96,17 +104,21 @@ The steps in this section describe how to add the extension, install the bookmar
 
 Use the following steps to add the Usercentrics extension:
 
-1. Go to **Tag Management &gt; Extensions &gt; Add Extension** and click the **Privacy** tab.
+1. Go to **Tag Management > Extensions > Add Extension** and click the **Privacy** tab.
 1. Select one of the Usercentrics extensions: **Usercentrics V1** or **Usercentrics V2**.  
 Select the version that corresponds with the version currently in use by your organization.
 1. In the **Title** field, enter a meaningful title to be used for this extension.  
 Note that the **Scope** field cannot be modified.
 1. Enter the **Settings-ID** (Optional)  
 Under **Usercentrics** **Settings ID**, in the **Settings ID** field, you can manually add your Usercentrics `Settings_ID`.  
+
+<blockquote>
 This step may not be needed as the Usercentrics Settings-ID is automatically added to the extension while importing the data processing services.
+</blockquote>
+
 
 1. Under the **Tealium iQ Service Name**, in the **Service Name** field, enter the exact name that was given to the Tealium Data Processing Service within Usercentrics.  
-    ![](/images/iq-tag-management/usercentrics-extension-rollback-domain-conditions.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/usercentrics-extension-rollback-domain-conditions.png)
 1. Continue to the next section to install and use the **Service Mapper** bookmarklet.
 
 ### Install the Service Mapper bookmarklet
@@ -116,7 +128,7 @@ Use the following steps to install the bookmarklet:
 1. Click the **Bookmarklet** button.  
 The **Usercentrics Service Mapper Bookmarklet** dialog appears.
 1. Click the **Usercentrics Service Mapper** link and drag and drop the bookmarklet onto the bookmark bar for your browser.  
-    ![](/images/iq-tag-management/usercentrics-bookmarklet-modal.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/usercentrics-bookmarklet-modal.png)  
 The bookmarklet now displays in your browser bar.
 1. Click **Close** to dismiss the Usercentrics Service Mapper Bookmarklet window.
 
@@ -130,10 +142,14 @@ A pop-up window displays the text for your Data Processing Services JSON object.
 1. Navigate back to the Usercentrics configuration dialog in **iQ Tag Management** and click the **Import** button.  
 The **Import Services** dialog appears.
 1. Paste the copied JSON text into the window, as shown in the following example.  
-    ![](/images/iq-tag-management/code-usercentrics-import-sample-pasted.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/code-usercentrics-import-sample-pasted.png)
 1. Click **Create Mapping Table**.  
 Your Usercentrics Settings ID and Tealium iQ Service Name are now automatically populated and the Service Mappings to your data processing services appear in a mapping table.  
+
+<blockquote>
 The mapping table must be updated each time a new tag is introduced or when your Data Processing Services with the Usercentrics configuration changes, as described in the Update the Mapping Table section of this document.
+</blockquote>
+
 
 ### Map data processing services to tags
 
@@ -141,7 +157,7 @@ Use the following steps to map your data processing services to tags:
 
 1. For each item in the mapping table, click the **To UID** field and use the prepopulated list to select the appropriate tag UID.  
 You can map more than one tag to a data processing service.  
-    ![](/images/iq-tag-management/usercentrics-extensions-service-mappings-dropdown.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/usercentrics-extensions-service-mappings-dropdown.png)
 1. The bookmarklet automatically adds a list item for **Tealium iQ Tag Management** and **Usercentrics** in the mapping table.
 1. Use the trash can icon to delete the **Tealium iQ Tag Management** and **Usercentrics** services, as they are not used for consent enforcement.
 1. (Optional) Click **Add Service** to manually add additional services and map them accordingly.  
@@ -164,8 +180,8 @@ To view typical events, log messages, and error messages that may require attent
 
 Use the following steps to enable console logging:
 
-1. Go to [JavaScript (Web) Debugging](/platforms/javascript/debugging/) and follow the steps to add the debugging cookie.
-1. After the debugging cookie is set, use the`&#34;/SENDING|\*\*\*\*/&#34;` filter to display only relevant entries.
+1. Go to [JavaScript (Web) Debugging](https://docs.tealium.com/platforms/javascript/debugging/) and follow the steps to add the debugging cookie.
+1. After the debugging cookie is set, use the`"/SENDING|\*\*\*\*/"` filter to display only relevant entries.
 
 ## FAQ
 

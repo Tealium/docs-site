@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/html5-vide
 
 HTML5ビデオイベントは、訪問がHTML5ビデオと対話するときにトラッキングします。訪問がアクションを実行すると、トラッキングコールがトリガーされます。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -31,19 +31,19 @@ HTML5ビデオイベントは、以下のイベントトリガーをトラッキ
 
 ### 要素セレクタ
 
-要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ]()を参照してください。
+要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ](https://docs.tealium.com/event-element-selector/)を参照してください。
 
 ### トリガー頻度
 
-トリガー頻度は、イベントトリガーがトラッキングコールを引き起こす回数を決定します。詳細については、[イベントトリガー]()を参照してください。
+トリガー頻度は、イベントトリガーがトラッキングコールを引き起こす回数を決定します。詳細については、[イベントトリガー](https://docs.tealium.com/event-triggers/)を参照してください。
 
 ## イベントトリガー変数
 
-イベントトリガー変数は、イベントリスナーがトラッキングコールと共に送信する値です。**新規イベント &gt; イベント構成**画面で、**イベントトリガー変数**テーブルに移動し、イベントのトリガー変数を表示または編集するためのトリガータイプをクリックします。
+イベントトリガー変数は、イベントリスナーがトラッキングコールと共に送信する値です。**新規イベント > イベント構成**画面で、**イベントトリガー変数**テーブルに移動し、イベントのトリガー変数を表示または編集するためのトリガータイプをクリックします。
 
 例えば、一時停止トリガーの変数を表示するには、**一時停止**タブをクリックします：
 
-![](/images/guides/iq/event_trigger_variables.png)
+![](https://docs.tealium.com/images/guides/iq/event_trigger_variables.png)
 
 HTML5ビデオイベントには、以下のデフォルトのイベントトリガー変数があります：
 
@@ -63,19 +63,19 @@ HTML5ビデオイベントには、以下のデフォルトのイベントトリ
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;video_play&#34;`| 訪問がビデオを再生しました。|
+|`tealium_event="video_play"`| 訪問がビデオを再生しました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_play&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;Tealiumでのビデオトラッキング方法&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;html5&#34;,
-   &#34;video_playhead&#34; : &#34;1&#34;,
-   &#34;iq_event_id:&#34; : &#34;html5_video_events_1&#34;
+   "tealium_event"  : "video_play",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "Tealiumでのビデオトラッキング方法",
+   "video_length" : "300",
+   "video_platform" : "html5",
+   "video_playhead" : "1",
+   "iq_event_id:" : "html5_video_events_1"
 }
 
 ```
@@ -84,19 +84,19 @@ HTML5ビデオイベントには、以下のデフォルトのイベントトリ
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;video_pause&#34;`| 訪問が再生中のビデオを一時停止しました。|
+|`tealium_event="video_pause"`| 訪問が再生中のビデオを一時停止しました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_pause&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;Tealiumでのビデオトラッキング方法&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;html5&#34;,
-   &#34;video_playhead&#34; : &#34;30&#34;,
-   &#34;iq_event_id:&#34; : &#34;html5_video_events_2&#34;
+   "tealium_event"  : "video_pause",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "Tealiumでのビデオトラッキング方法",
+   "video_length" : "300",
+   "video_platform" : "html5",
+   "video_playhead" : "30",
+   "iq_event_id:" : "html5_video_events_2"
 }
 
 ```
@@ -105,19 +105,19 @@ HTML5ビデオイベントには、以下のデフォルトのイベントトリ
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;video_buffer&#34;`| 訪問がビデオのバッファリングを経験しました。|
+|`tealium_event="video_buffer"`| 訪問がビデオのバッファリングを経験しました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_buffer&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;Tealiumでのビデオトラッキング方法&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;html5&#34;,
-   &#34;video_playhead&#34; : &#34;50&#34;,
-   &#34;iq_event_id:&#34; : &#34;html5_video_events_3&#34;
+   "tealium_event"  : "video_buffer",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "Tealiumでのビデオトラッキング方法",
+   "video_length" : "300",
+   "video_platform" : "html5",
+   "video_playhead" : "50",
+   "iq_event_id:" : "html5_video_events_3"
 }
 
 ```
@@ -126,21 +126,21 @@ HTML5ビデオイベントには、以下のデフォルトのイベントトリ
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;video_milestone&#34;`| 訪問がビデオをパーセンテージまたは時間のマイルストーンまで再生しました。|
+|`tealium_event="video_milestone"`| 訪問がビデオをパーセンテージまたは時間のマイルストーンまで再生しました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;video_milestone&#34;,
-   &#34;video_milestone&#34; : &#34;50&#34;,
-   &#34;milestone_type&#34; : &#34;percent&#34;,
-   &#34;video_id&#34; : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_name&#34; : &#34;Tealiumでのビデオトラッキング方法&#34;,
-   &#34;video_length&#34; : &#34;300&#34;,
-   &#34;video_platform&#34; : &#34;html5&#34;,
-   &#34;video_playhead&#34; : &#34;151&#34;,
-   &#34;iq_event_id:&#34; : &#34;html5_video_events_4&#34;
+   "tealium_event"  : "video_milestone",
+   "video_milestone" : "50",
+   "milestone_type" : "percent",
+   "video_id" : "xWlEk2i9r5Q",
+   "video_name" : "Tealiumでのビデオトラッキング方法",
+   "video_length" : "300",
+   "video_platform" : "html5",
+   "video_playhead" : "151",
+   "iq_event_id:" : "html5_video_events_4"
 }
 
 ```

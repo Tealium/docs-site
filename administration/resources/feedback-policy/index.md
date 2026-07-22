@@ -3,7 +3,7 @@ title: Tealium feedback policy
 description: This document explains our feedback policy.
 url: https://docs.tealium.com/administration/resources/feedback-policy/
 ---
-Use the Feedback module in the [Resource Center]() to submit product ideas, vote on ideas the product team is considering, and track items on the roadmap. This article explains how Tealium collects, reviews, and acts on product feedback.
+Use the Feedback module in the [Resource Center](https://docs.tealium.com/resource-center/) to submit product ideas, vote on ideas the product team is considering, and track items on the roadmap. This article explains how Tealium collects, reviews, and acts on product feedback.
 
 ## Our approach to product feedback
 
@@ -11,12 +11,12 @@ We always invite feedback from our customers and partners to identify features, 
 
 ## Why give us product feedback
 
-Your feedback plays a vital role in helping us understand how you&#39;re currently interacting with our products and where we can enhance your experience. By sharing your insights, you enable us to identify key areas for improvement and innovation, ensuring that our tools empower you to deliver even greater value to your customers.
+Your feedback plays a vital role in helping us understand how you're currently interacting with our products and where we can enhance your experience. By sharing your insights, you enable us to identify key areas for improvement and innovation, ensuring that our tools empower you to deliver even greater value to your customers.
 
 We offer several ways for you to share product feedback:
 
-* **Resource Center**: To access the Tealium Ideas Portal, select the **Feedback** option in the [Resource Center](). You can browse, vote on, and provide feedback on ideas that our product team is considering or actively developing. To share additional feedback, click **Give Feedback** in the upper-right corner.  
-* **Feedback Guides**: Look for the &#34;i&#34; badge in the breadcrumb of a page. These guides provide additional information as well as enable you to provide feedback on Tealium features.
+* **Resource Center**: To access the Tealium Ideas Portal, select the **Feedback** option in the [Resource Center](https://docs.tealium.com/resource-center/). You can browse, vote on, and provide feedback on ideas that our product team is considering or actively developing. To share additional feedback, click **Give Feedback** in the upper-right corner.  
+* **Feedback Guides**: Look for the "i" badge in the breadcrumb of a page. These guides provide additional information as well as enable you to provide feedback on Tealium features.
 * **In-app Product Surveys**: Our team uses in-app surveys to gather targeted feedback on products, features, or user experiences.
 * **NPS Surveys**: You may receive an in-app Net Promoter Score (NPS) survey to measure overall satisfaction and loyalty. Unlike in-app product surveys, which focus on specific features, NPS surveys gather broader feedback. We encourage detailed responses to help improve your Tealium experience.
 
@@ -27,11 +27,11 @@ Here are some tips for submitting helpful feedback to our Product Team:
 * **Be Specific**: Clearly describe what you like, dislike, or want to see improved. Include examples or scenarios to illustrate your point.
 * **Focus on Value**: Explain how the feature or improvement would benefit your workflow or solve a problem for you.
 * **Be Constructive**: Offer actionable suggestions and frame your feedback in a way that encourages positive improvements.
-![](/images/administration/product-feedback-form.png)
+![](https://docs.tealium.com/images/administration/product-feedback-form.png)
 
 ## What happens after you submit an idea
 
-No matter how you share your feedback&amp;mdash;whether through our Ideas Portal, in-app polls, email, NPS surveys, or conversations&amp;mdash;we centralize all input to provide context and deeper insights. This feedback is combined with platform engagement data to help us better understand how customers are using our tool.
+No matter how you share your feedback&mdash;whether through our Ideas Portal, in-app polls, email, NPS surveys, or conversations&mdash;we centralize all input to provide context and deeper insights. This feedback is combined with platform engagement data to help us better understand how customers are using our tool.
 
 Our Product team thoroughly reviews every piece of feedback. Once reviewed, feedback can be linked to an idea, which represents a potential solution we’d like customer input on. You can find these ideas in the Ideas Portal, accessible in the Resource Center. In the portal, customers can vote and comment on ideas, helping our Product team assess the demand for specific solutions.
 
@@ -63,6 +63,6 @@ Currently, there is no automatic notification when feedback is linked to an idea
 
 #### How do I escalate urgent feedback? 
 
-For urgent technical issues, please contact our [Support team](https://support.tealiumiq.com/en/support/tickets/new). If feedback is critical (for example, a significant workflow issue), please reach out to your customer success manager. 
+For technical issues, contact [Tealium Support](https://docs.tealium.com/support/).
 
 Thank you for your feedback and support as we work together to build the best products for the most trusted customer experiences possible.

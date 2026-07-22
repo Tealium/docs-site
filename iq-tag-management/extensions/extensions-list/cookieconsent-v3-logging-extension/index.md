@@ -16,7 +16,7 @@ This extension listens for `consent_updated` events from the CookieConsent inter
 The payload typically includes:
 
 * `tealium_event`: The event type, such as `consent_decision`.
-* `consent_id`: Unique identifier for the user&#39;s consent decision.
+* `consent_id`: Unique identifier for the user's consent decision.
 * `decision_type`: Whether the user accepted or rejected categories.
 * `accepted_purposes` and `rejected_purposes`: The categories selected by the user.
 * `consent_model`: Either `opt-in` or `opt-out`.
@@ -33,11 +33,11 @@ You can adjust this payload to suit your endpoint or data model.
 
 1. In Tealium iQ, go to **Extensions** and click **Add Extension**.
 1. Click the **Privacy** tab.
-1. Click **&#43; Add** next to the **CookieConsent v3 Logging** extension.
+1. Click **+ Add** next to the **CookieConsent v3 Logging** extension.
 1. Enter a **Title** for the extension.
-1. Under **Scope**, use the default option **DOM Ready**. It supports load conditions, which lets you control when the extension runs. The **Preloader** scope is also supported but doesn&#39;t allow load conditions.
+1. Under **Scope**, use the default option **DOM Ready**. It supports load conditions, which lets you control when the extension runs. The **Preloader** scope is also supported but doesn't allow load conditions.
 1. (Optional) Click **Add Condition** to apply load conditions for this extension. Ensure the conditions match your consent integration’s enforcement rules to avoid issues.
 1. In the **Configuration** code do one of the following:
-    * If you&#39;re sending logs to Tealium Collect, replace the placeholder values for `tealium_account` and `tealium_profile` with your actual values.
-    * If you&#39;re sending logs to a different endpoint, update the `fetch()` URL to the destination you want to send the consent logs.
+    * If you're sending logs to Tealium Collect, replace the placeholder values for `tealium_account` and `tealium_profile` with your actual values.
+    * If you're sending logs to a different endpoint, update the `fetch()` URL to the destination you want to send the consent logs.
 

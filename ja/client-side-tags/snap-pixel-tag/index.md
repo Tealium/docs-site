@@ -20,11 +20,11 @@ Snap Pixel は、広告主がキャンペーンのクロスデバイス影響を
   * 価格リスト (`_cprice`)
 * ユーザーのメールアドレスと電話番号は、Snap Pixel SDK内でSHA256に変換され、その後Snapのサーバーに渡されます。
 * Snap Pixel イベントIDをサーバーサイド属性として利用可能にするには、**イベントID生成**を `true` に構成し、Tealium Collectタグの最新バージョンを使用します。
-* イベントID属性名は `snap_event_id_&lt;イベント名&gt;_&lt;タグUID&gt;` の形式です（例：`snap_event_id_PageView_512`）。
+* イベントID属性名は `snap_event_id_<イベント名>_<タグUID>` の形式です（例：`snap_event_id_PageView_512`）。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、[タグの管理]()を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加する際には、次の構成を構成します：
 
@@ -33,11 +33,11 @@ Snap Pixel は、広告主がキャンペーンのクロスデバイス影響を
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -92,7 +92,7 @@ Snap Pixel は、広告主がキャンペーンのクロスデバイス影響を
 
 ### イベント
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -131,14 +131,14 @@ Snap Pixel は、広告主がキャンペーンのクロスデバイス影響を
 
 ### イベント固有パラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | タイプ | 説明 |
 |:---------|:------------|:------------|
 | `currency`| 文字列 | ISO 4217通貨コード  |
 | `description` | 文字列 | 説明  |
-| `item_category` | 文字列 | 商品カテゴリ。カテゴリIDはアップロードするカタログの `item_group_id` フィールドと一致する必要があります。例：`{&#39;item_category&#39;:Shoes&#39;,item_ids&#39;: [&#39;097man&#39;,16span&#39;]});`   |
-| `item_ids` | 配列 | 商品ID。商品IDはアップロードするカタログの `id` フィールドと一致する必要があります。例：`{&#39;item_category&#39;:Shoes&#39;,item_ids&#39;: [&#39;097man&#39;,16span&#39;]});`   |
+| `item_category` | 文字列 | 商品カテゴリ。カテゴリIDはアップロードするカタログの `item_group_id` フィールドと一致する必要があります。例：`{'item_category':Shoes',item_ids': ['097man',16span']});`   |
+| `item_ids` | 配列 | 商品ID。商品IDはアップロードするカタログの `id` フィールドと一致する必要があります。例：`{'item_category':Shoes',item_ids': ['097man',16span']});`   |
 | `number_items` | 数 | 商品数   |
 | `payment_info_available`| ブール値 | 支払情報の有無   |
 | `price` | 数 | 購入価格 |

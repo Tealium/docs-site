@@ -10,7 +10,7 @@ url: https://docs.tealium.com/client-side-tags/rtoaster-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Rtoaster tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Rtoaster tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -26,7 +26,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -34,20 +34,20 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`account_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Account ID&lt;/li&gt;&lt;/ul&gt; |
-|`element_id`|  &lt;ul&gt;&lt;li&gt;String, Array&lt;/li&gt;&lt;li&gt;Element ID&lt;/li&gt;&lt;/ul&gt; |
-|`popup_element_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Popup Element ID&lt;/li&gt;&lt;/ul&gt; |
-|`category`|  &lt;ul&gt;&lt;li&gt;String, Array&lt;/li&gt;&lt;li&gt;Category&lt;/li&gt;&lt;/ul&gt; |
-|`price_min`|  &lt;ul&gt;&lt;li&gt;String, Number&lt;/li&gt;&lt;li&gt;Price Minimum&lt;/li&gt;&lt;/ul&gt; |
-|`price_max`|  &lt;ul&gt;&lt;li&gt;String, Number&lt;/li&gt;&lt;li&gt;Price Maximum&lt;/li&gt;&lt;/ul&gt; |
+|`account_id`|  <ul><li>String</li><li>Account ID</li></ul> |
+|`element_id`|  <ul><li>String, Array</li><li>Element ID</li></ul> |
+|`popup_element_id`|  <ul><li>String</li><li>Popup Element ID</li></ul> |
+|`category`|  <ul><li>String, Array</li><li>Category</li></ul> |
+|`price_min`|  <ul><li>String, Number</li><li>Price Minimum</li></ul> |
+|`price_max`|  <ul><li>String, Number</li><li>Price Maximum</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Subtotal&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping amount.&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;Customer ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_subtotal`|  <ul><li>Subtotal</li><li>Overrides `_csubtotal`.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping amount.</li><li>Overrides `_cship`.</li></ul> |
+|`customer_id`|  <ul><li>Customer ID</li><li>Overrides `_ccustid`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Overrides `_cprod`</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices</li><li>Overrides `_cprice`.</li></ul> |

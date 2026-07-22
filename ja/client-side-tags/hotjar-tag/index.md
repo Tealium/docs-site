@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/hotjar-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Hotjarタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Hotjarタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -26,14 +26,14 @@ url: https://docs.tealium.com/ja/client-side-tags/hotjar-tag/
 1. Hotjarアカウントにログインします。
 1. アカウントダッシュボードから、**手動でコードをインストール**をクリックします。
 1. **クリップボードにコピー**をクリックします。
-1. Tealium iQタグ管理にログインし、**iQタグ管理 &amp;gt; タグ**に移動します。
+1. Tealium iQタグ管理にログインし、**iQタグ管理 &gt; タグ**に移動します。
 1. **タグを追加**をクリックします。
 1. **コードからタグを検出**をクリックします。
 1. ステップ3でコピーしたコードを貼り付けます。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -41,5 +41,5 @@ url: https://docs.tealium.com/ja/client-side-tags/hotjar-tag/
 
 |変数| 説明|
 |---| ---|
-|`hjid`|  &lt;ul&gt;&lt;li&gt;Hotjar ID&lt;/li&gt;&lt;/ul&gt; |
-| `hjsv` |  &lt;ul&gt;&lt;li&gt;Hotjarスニペットバージョン&lt;/li&gt;&lt;/ul&gt; |
+|`hjid`|  <ul><li>Hotjar ID</li></ul> |
+| `hjsv` |  <ul><li>Hotjarスニペットバージョン</li></ul> |

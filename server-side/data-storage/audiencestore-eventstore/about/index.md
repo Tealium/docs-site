@@ -3,12 +3,16 @@ title: About AudienceStore and EventStore
 description: This article describes how to access AudienceStore and EventStore services.
 url: https://docs.tealium.com/server-side/data-storage/audiencestore-eventstore/about/
 ---
-Contact your customer success manager to have AudienceStore and EventStore services activated for your account.
+
+<blockquote>
+[Contact support](https://docs.tealium.com/support/) to have AudienceStore and EventStore services activated for your account.
+</blockquote>
+
 
 ## Prerequisites
 
 * Tealium DataAccess must be enabled.
-* To send visitor profile data to the Tealium S3 bucket, an active AudienceStore connector is required. For more information, see the [AudienceStore Connector Setup Guide]().  
+* To send visitor profile data to the Tealium S3 bucket, an active AudienceStore connector is required. For more information, see the [AudienceStore Connector Setup Guide](https://docs.tealium.com/audiencestore-connector/).  
 * To send event data to the Tealium S3 bucket, at least one active event feed is required.
 * Audience names must be less than 128 characters in length. Longer audience names may be trimmed and errors may occur.
 
@@ -51,7 +55,7 @@ Data files for AudienceStore are stored in the S3 bucket with a path structure t
 
 The action ID can be found in the **Details** of the AudienceStore connector action, as seen here:
 
-![](/images/server-side/actionid-asactiondetails.png)
+![](https://docs.tealium.com/images/server-side/actionid-asactiondetails.png)
 
 Example path to AudienceStore file:
 
@@ -69,7 +73,7 @@ Data files for EventStore are stored in the S3 bucket as follows:
 
 The event feed ID can be found in the URL for the event feed. Go to **Live Events** and click the feed to select it. Inspect the URL to retrieve the feed ID, as shown below:
 
-![](/images/server-side/eventstore-id-in-url-highlighted.png)
+![](https://docs.tealium.com/images/server-side/eventstore-id-in-url-highlighted.png)
 
 Example path to EventStore file:
 

@@ -25,7 +25,7 @@ The Authenticom integration with Tealium Data Connect lets you import the follow
 Use the following steps to create an Authenticom integration with Tealium Data Connect:
 
 1. Set up a Tealium Connect data source.
-1. Contact your Implementation Engineer or Customer Success Manager to get the recipes imported into your Data Connect environment.
+1. [Contact support](https://docs.tealium.com/support/) to get the recipes imported into your Data Connect environment.
 1. Establish a connection to the Authenticom API.
 1. Select a data type and vendor.
 1. Send events to Tealium.
@@ -34,22 +34,22 @@ Use the following steps to create an Authenticom integration with Tealium Data C
 
 ## Step 1: Set up a Tealium Connect data source
 
-Set up a Tealium Connect data source. For more information, see [Set up a Tealium Connect data source]().
+Set up a Tealium Connect data source. For more information, see [Set up a Tealium Connect data source](https://docs.tealium.com/tealium-connect-data-source/).
 
 ## Step 2: Contact Tealium
 
-Contact your Implementation Engineer or Customer Success Manager, and they will import the integration into your environment.
+[Contact support](https://docs.tealium.com/support/) and they will import the integration into your environment.
 
 ## Step 3: Establish a connection to the Authenticom API
 
 To establish a connection to the Authenticom API, perform the following steps:
 
-1. Go to **Connect &gt; Data Connect &gt; Integrations**.
+1. Go to **Connect > Data Connect > Integrations**.
 1. Select the **Authenticom** connection.
 1. Do not change **Base URL**.
 1. Enter the **Subscription Key**, which is in the Authenticom Developers API portal in production.
 
- ![](/images/server-side/data-connect/authenticom-data-connect-integration-establish-connection.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/authenticom-data-connect-integration-establish-connection.png)
 
 ## Step 4: Select a data type and vendor
 
@@ -67,7 +67,7 @@ To select the data type and vendor, perform the following steps:
     * `SV_APPT`: Service Appointment.
 1. In the top-right of the window, click **Save**.
 
- ![](/images/server-side/data-connect/authenticom-data-connect-integration-select-data-type.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/authenticom-data-connect-integration-select-data-type.png)
 
 ## Step 5: Send events to Tealium
 
@@ -76,17 +76,17 @@ To send events to Tealium, perform the following steps:
 1. Go to **Send events in Tealium events V2**.
 1. Configure the data that you want to send to Tealium.
 
- ![](/images/server-side/data-connect/authenticom-data-connect-integration-send-events.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/authenticom-data-connect-integration-send-events.png)
 
-For additional information, see [Create a recipe: Configure an Action]().
+For additional information, see [Create a recipe: Configure an Action](https://docs.tealium.com/create-recipe-data-connect/#step-2-configure-an-action).
 
 ## Step 6: Set up an event feed for leads
 
- ![](/images/server-side/data-connect/authenticom-data-connect-integration-set-up-event-feed.png)
+ ![](https://docs.tealium.com/images/server-side/data-connect/authenticom-data-connect-integration-set-up-event-feed.png)
 
 Use the following steps to create an event feed:
 
-1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate > Live Events** and click **+ Add Event Feed**.
 1. In the **Create Event Feed** dialog, enter a **Title** and any **Notes**.
 1. (Optional) Click **Add Label** to select labels to apply to this event feed.
 1. Under **Event Data Storage**, enable the feed for EventStore or EventDB.
@@ -103,7 +103,7 @@ Use the following steps to test with trace and activate the recipe:
 1. Go to **Trace**.
 1. Under **New Trace**, click **Start**. A dialog with a trace ID appears.
 1. Copy the trace ID and click **Continue**.
-1. Go to **Connect &gt; Data Connect &gt; Integrations**.
+1. Go to **Connect > Data Connect > Integrations**.
 1. In the **Integrations** screen, perform the following steps for recipes that send new leads from Authenticom to Tealium:
     1. Select your recipe.
     1. Select the **Tealium Events V2 action** to edit it.

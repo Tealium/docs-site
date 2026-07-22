@@ -25,7 +25,9 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/single-event-visi
 訪問が新しいセッションで戻ってくる場合、彼らはリターン訪問として認識されます。
 
 
+<blockquote>
 2026年4月29日以前は、AudienceStreamは単発イベント訪問の記録を保持していませんでした。
+</blockquote>
 
 
 ## EventStoreとEventDB

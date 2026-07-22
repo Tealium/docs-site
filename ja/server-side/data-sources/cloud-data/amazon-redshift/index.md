@@ -3,7 +3,7 @@ title: Amazon Redshift クラウドデータソース
 description: この記事では、Amazon Redshift クラウドデータソースの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/amazon-redshift/
 ---
-クラウドデータソースの構成の一般的な概要については、を参照してください。
+クラウドデータソースの構成の一般的な概要については、[manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/)を参照してください。
 
 ## データタイプ
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/iterable-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。詳細については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。詳細については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/iterable-connector/
     * USベースのAPIエンドポイントの場合、**https://app.iterable.com** を選択します。
 * **API キー**: Iterable API キーを入力します。
 
-API キーを見つけるには、Iterable サイトで **Integrations &gt; API Keys** にある **Iterable Connector** メニューにアクセスします。
+API キーを見つけるには、Iterable サイトで **Integrations > API Keys** にある **Iterable Connector** メニューにアクセスします。
 
 ## アクション
 
@@ -43,7 +43,7 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 
 #### バッチ制限
 
-このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション]()を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：
+このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：
 
 * 最大リクエスト数：1000
 * 最古のリクエストからの最大時間：10分
@@ -58,18 +58,18 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |メール| **メール** または **ユーザーID** のいずれかを入力してユーザーを識別する必要があります。両方が入力されている場合は、**メール** が優先されます。|
 |イベントID| 入力されたIDのイベントが存在する場合、そのイベントは更新されます。**イベントID** が指定されていない場合、新しいIDが自動的に生成されて返されます。このIDは512バイトを超えることはできません。|
 |ユーザーID| `updateUser` コールに渡されたユーザーID。|
-|キャンペーン| &lt;ul&gt;&lt;li&gt;変換に関連するキャンペーン。&lt;/li&gt;&lt;li&gt;詳細については、[Iterable: キャンペーンの紹介](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-)を参照してください。&lt;/li&gt;&lt;/ul&gt;|
+|キャンペーン| <ul><li>変換に関連するキャンペーン。</li><li>詳細については、[Iterable: キャンペーンの紹介](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-)を参照してください。</li></ul>|
 |プロジェクトテンプレート| テンプレートID。詳細については、[Iterable: テンプレートの紹介](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-)を参照してください。|
 |データフィールド| イベントに関連する追加データ。例：アイテムの金額や数量。同じ名前のイベントの場合、同じ名前のデータフィールドは同じタイプでなければなりません。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。 |
 
 ### ユーザー追加（バッチ処理）
 
 #### バッチ制限
 
-このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション]()を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：
+このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：
 
 * 最大リクエスト数：1000
 * 最古のリクエストからの最大時間：10分
@@ -84,8 +84,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |ユーザーIDを優先| ユーザーがまだ存在しない場合、指定されたユーザーIDで新しいユーザーを作成します。|
 |ユーザーID| 通常はデータベースで生成されたIDです。**メール** または **ユーザーID** のいずれかが指定されている必要があります。|
 |データフィールド| ユーザープロファイルに格納するデータフィールド。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。 |
 
 ### GDPRに準拠してユーザーを削除
@@ -109,8 +109,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |受信者のユーザーID| `updateUser` コールに渡されたユーザーID。|
 |送信時刻| 最大365日先までのメッセージのスケジュールを構成します。過去に構成されている場合、メッセージは即時に送信されます。予想される形式は `YYYY-MM-DD HH:MM:SS` です。データが適切にフォーマットされていることを確認してください。**Date** タイプの属性が提供された場合、コネクタは値を上記の適切な日付形式に変換します。|
 |データフィールド| テンプレートにマージするフィールド。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。 |
 
 ### メールアドレスにメールを送信
@@ -127,8 +127,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |送信時刻| メッセージを最大365日後までスケジュール構成可能。過去に構成された場合、メッセージは即時送信されます。期待される形式は`YYYY-MM-DD HH:MM:SS`です。データが適切にフォーマットされていることを確認してください。**日付**タイプの属性が提供された場合、コネクタは値を上記の適切な日付形式に変換します。|
 |データフィールド| メールテンプレートにマージするフィールド。|
 |メタデータ| Webhookを通じて返送されるメタデータ。レンダリングには使用されません。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | コネクタ構成で指定されたAPIキーをオーバーライドするためにAPIキーを入力するか、APIキーの属性をマッピングします。 |
 
 ### トリガーワークフロー
@@ -141,8 +141,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |リスト| リスト内のすべてのユーザーに対してワークフローをトリガーします。|
 |メール| 指定されたメールアドレスに対してワークフローをトリガーします。**メール**または**リスト**のみでトリガーします。|
 |データフィールド| トリガーイベントに関連する追加データ。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | コネクタ構成で指定されたAPIキーをオーバーライドするためにAPIキーを入力するか、APIキーの属性をマッピングします。 |
 
 ### ユーザーをサブスクリプションに追加
@@ -181,8 +181,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |ユーザーID優先| ユーザーがまだ存在しない場合、指定されたユーザーIDで新しいユーザーを作成します。|
 |ユーザーID| 通常はデータベースで生成されたIDです。**メール**または**ユーザーID**のいずれかが指定されている必要があります。|
 |データフィールド| ユーザープロファイルに格納するデータフィールド。|
-|テンプレート変数| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|テンプレート| &lt;ul&gt;&lt;li&gt;本文データで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|テンプレート変数| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|テンプレート| <ul><li>本文データで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>サポートされるフィールドに名前でテンプレートを注入します。例：`{{SomeTemplateName}}`。</li></ul>|
 | APIキーオーバーライド | コネクタ構成で指定されたAPIキーをオーバーライドするためにAPIキーを入力するか、APIキーの属性をマッピングします。 |
 
 ### リストからユーザーを登録解除
@@ -221,8 +221,8 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |Prefer User ID| ユーザーがまだ存在しない場合、指定されたユーザーIDで新しいユーザーを作成します。|
 |User ID| 通常はデータベースで生成されたIDです。**Email** または **User ID** のいずれかが指定されている必要があります。|
 |User Data Fields| ユーザープロファイルに保存するデータフィールド。|
-|User Data Fields Template Variables| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|User Data Fields Templates| &lt;ul&gt;&lt;li&gt;User Data Fieldsで参照されるテンプレートを提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|User Data Fields Template Variables| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|User Data Fields Templates| <ul><li>User Data Fieldsで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。</li></ul>|
 
 #### アイテム属性
 
@@ -238,9 +238,9 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |Quantity| 商品数量。|
 |Image URL| 商品画像のURL。|
 |URL| 商品ページのURL。|
-|Items Data Fields| &lt;ul&gt;&lt;li&gt;追加のアイテムプロパティ。&lt;/li&gt;&lt;li&gt;複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。&lt;/li&gt;&lt;li&gt;Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。&lt;br&gt;単一値属性を使用することができ、各アイテムに適用されます。&lt;/li&gt;&lt;/ul&gt;|
-|Items Template Variables| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。&lt;br&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|Items Template| &lt;ul&gt;&lt;li&gt;ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。&lt;/li&gt;&lt;li&gt;テンプレートはJSON配列形式を期待します。&lt;/li&gt;&lt;li&gt;テンプレートが定義されている場合、**Items Attributes**セクションの構成は無視されます。&lt;/li&gt;&lt;li&gt;**Items Template** または **Items Attributes** のいずれかが指定されている必要があります。&lt;/li&gt;&lt;li&gt;詳細については、 を参照してください。&lt;/li&gt;&lt;/ul&gt;|
+|Items Data Fields| <ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。<br>単一値属性を使用することができ、各アイテムに適用されます。</li></ul>|
+|Items Template Variables| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|Items Template| <ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、**Items Attributes**セクションの構成は無視されます。</li><li>**Items Template** または **Items Attributes** のいずれかが指定されている必要があります。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。</li></ul>|
 | API Key Override | コネクタ構成で指定されたAPIキーを上書きするためにAPIキーを入力するか、APIキーのための属性をマッピングします。 |
 
 ### 購入追跡
@@ -262,11 +262,11 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |Prefer User ID| ユーザーがまだ存在しない場合、指定されたユーザーIDで新しいユーザーを作成します。|
 |User ID| 通常はデータベースで生成されたIDです。**Email** または **User ID** のいずれかが指定されている必要があります。|
 |Campaign| キャンペーンID。詳細については、[Iterable: キャンペーンへの導入](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-) を参照してください。|
-|Project Template| &lt;ul&gt;&lt;li&gt;テンプレートID。&lt;/li&gt;&lt;li&gt;詳細については、[Iterable: テンプレートへの導入](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates) を参照してください。&lt;/li&gt;&lt;/ul&gt;|
+|Project Template| <ul><li>テンプレートID。</li><li>詳細については、[Iterable: テンプレートへの導入](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates) を参照してください。</li></ul>|
 |Data Fields| 追跡する追加フィールド。|
 |User Data Fields| ユーザープロファイルに保存するデータフィールド。|
-|Data Fields Template Variables| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|Data Fields Templates| &lt;ul&gt;&lt;li&gt;Data FieldsおよびUser Data Fieldsで参照されるテンプレートを提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;|
+|Data Fields Template Variables| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|Data Fields Templates| <ul><li>Data FieldsおよびUser Data Fieldsで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。</li></ul>|
 
 #### アイテム属性
 
@@ -282,9 +282,9 @@ API キーを見つけるには、Iterable サイトで **Integrations &gt; API 
 |Quantity| 購入された商品の数量。|
 |Image URL| 商品画像のURL。|
 |URL| 商品ページのURL。|
-|Items Data Fields| &lt;ul&gt;&lt;li&gt;追加のアイテムプロパティ。&lt;/li&gt;&lt;li&gt;複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。&lt;/li&gt;&lt;li&gt;Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。&lt;/li&gt;&lt;li&gt;単一値属性を使用することができ、各アイテムに適用されます。&lt;/li&gt;&lt;/ul&gt;|
-|Items Template Variables| &lt;ul&gt;&lt;li&gt;データ入力としてテンプレート変数を提供します。詳細については、 を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;|
-|Items Template| &lt;ul&gt;&lt;li&gt;ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。&lt;/li&gt;&lt;li&gt;テンプレートはJSON配列形式を期待します。&lt;/li&gt;&lt;li&gt;テンプレートが定義されている場合、**Items Attributes**セクションの構成は無視されます。&lt;/li&gt;&lt;li&gt;**Items Template** または **Items Attributes** のいずれかが指定されている必要があります。&lt;/li&gt;&lt;li&gt;詳細については、 を参照してください。&lt;/li&gt;&lt;/ul&gt;|
+|Items Data Fields| <ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。</li><li>単一値属性を使用することができ、各アイテムに適用されます。</li></ul>|
+|Items Template Variables| <ul><li>データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>|
+|Items Template| <ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、**Items Attributes**セクションの構成は無視されます。</li><li>**Items Template** または **Items Attributes** のいずれかが指定されている必要があります。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。</li></ul>|
 | API Key Override | コネクタ構成で指定されたAPIキーを上書きするためにAPIキーを入力するか、APIキーのための属性をマッピングします。 |
 
 ### 顧客データのマージ

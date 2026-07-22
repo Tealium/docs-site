@@ -2,7 +2,7 @@
 title: Hosted data layer API endpoints
 description: Manage your hosted data layer using a hosted data layer object or JSON file.
 url: https://docs.tealium.com/api-v1/hosted-data-layer/endpoints/
----This is an older version of the [current Tealium Hosted Data Layer API]().
+---This is an older version of the [current Tealium Hosted Data Layer API](https://docs.tealium.com/about-hosted-data-layer-api/).
 
 ## Upload
 
@@ -10,17 +10,25 @@ Upload a Hosted Data Layer object.
 
 `POST /v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}`
 
+
+<blockquote>
 Using PUT instead of POST will result in a 405 Method Not Allowed error.
+</blockquote>
+
 
 ### cURL request
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X POST -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X POST -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token} \
   -d @{dl_id}.json
 ```
 
+
+<blockquote>
 When passing files to the `-d` parrameter using the cURL command, the file name must be prefixed with the `@` character.
+</blockquote>
+
 
 ### Example response
 
@@ -28,11 +36,15 @@ When passing files to the `-d` parrameter using the cURL command, the file name 
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 ```
 
-It may take five to ten minutes for changes to be reflected by Tealium&#39;s servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id`.
+
+<blockquote>
+It may take five to ten minutes for changes to be reflected by Tealium's servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id`.
+</blockquote>
+
 
 ### Error messages
 
@@ -43,8 +55,8 @@ This error occurs when you use PUT instead of POST to perform the upload.
 
 ```
 {
-   &#34;returnCode&#34; : 1464,
-   &#34;message&#34; : &#34;Resource already exists. Updates are not permitted via this type of request.&#34;
+   "returnCode" : 1464,
+   "message" : "Resource already exists. Updates are not permitted via this type of request."
 }
 
 ```
@@ -65,8 +77,8 @@ This error occurs when one of the following is true:
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -76,8 +88,8 @@ This error occurs when the user lacks the appropriate permissions or there is a 
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -85,12 +97,16 @@ This error occurs when the user lacks the appropriate permissions or there is a 
 
 ` PUT /v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}`
 
+
+<blockquote>
 Using PUT instead of POST will result in a 405 Method Not Allowed error.
+</blockquote>
+
 
 ### cURL request
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X PUT -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token} \
   -d @{dl_id}.json
 ```
@@ -101,12 +117,16 @@ cURL -i -b JSESSIONID={session_id} -X PUT -H &#34;Content-Type: application/json
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 
 ```
 
-It may take up to one (1) hour for changes to be reflected by Tealium&#39;s servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id.`
+
+<blockquote>
+It may take up to one (1) hour for changes to be reflected by Tealium's servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id.`
+</blockquote>
+
 
 ### Error messages
 
@@ -125,8 +145,8 @@ This error occurs when one of the following is true:
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -136,8 +156,8 @@ This error occurs if the supplied `dl_id` does not exist.
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Could not locate data layer for supplied params ([account]/[profile]/[dl_id]).&#34;
+   "returnCode" : 1404,
+   "message" : "Could not locate data layer for supplied params ([account]/[profile]/[dl_id])."
 }
 ```
 
@@ -148,7 +168,7 @@ This error occurs if the supplied `dl_id` does not exist.
 ### cURL request
 
 ```bash
-cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/json&#34; \
+cURL -i -b JSESSIONID={session_id} -X DELETE -H "Content-Type: application/json" \
   https://api.tealiumiq.com/v1/dle/accounts/{account}/profiles/{profile}/datalayers/{dl_id}?utk={token}
 ```
 
@@ -158,12 +178,16 @@ cURL -i -b JSESSIONID={session_id} -X DELETE -H &#34;Content-Type: application/j
 
 ```
 {
-   &#34;status&#34;: &#34;pending&#34;
+   "status": "pending"
 }
 
 ```
 
-It may take up to one hour for changes to be reflected by Tealium&#39;s servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id.`
+
+<blockquote>
+It may take up to one hour for changes to be reflected by Tealium's servers. Wait for the status to display as completed before attempting to make another call on the same `dl_id.`
+</blockquote>
+
 
 ### Error messages
 
@@ -173,8 +197,8 @@ This error occurs if the supplied `dl_id` does not exist.
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Could not locate data layer for supplied params ([account]/[profile]/[dl_id]).&#34;
+   "returnCode" : 1404,
+   "message" : "Could not locate data layer for supplied params ([account]/[profile]/[dl_id])."
 }
 
 ```
@@ -190,8 +214,8 @@ This error occurs when one of the following is true:
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -201,8 +225,8 @@ This error occurs due to a lack of appropriate permissions or a typographical er
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -229,7 +253,7 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   &#34;status&#34;: &#34;completed&#34;
+   "status": "completed"
 }
 
 ```
@@ -242,8 +266,8 @@ This error occurs when the supplied `dl_id` does not exist or the status for the
 
 ```
 {
-   &#34;returnCode&#34; : 1404,
-   &#34;message&#34; : &#34;Status unavailable. Please refer to documentation for request status retention period.&#34;
+   "returnCode" : 1404,
+   "message" : "Status unavailable. Please refer to documentation for request status retention period."
 }
 ```
 
@@ -258,8 +282,8 @@ This error occurs when one of the following is true:
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 ```
 
@@ -269,8 +293,8 @@ This error occurs due to a lack of appropriate permissions or a typographical er
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 ```
 
@@ -294,7 +318,7 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```
 {
-   [&#34;demo_1&#34;,&#34;demo_2&#34;,&#34;demo_3&#34;]
+   ["demo_1","demo_2","demo_3"]
 }
 ```
 
@@ -306,8 +330,8 @@ This error occurs due to a lack of appropriate permissions or a typographical er
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Please check supplied parameters or request body.&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Please check supplied parameters or request body."
 }
 
 ```
@@ -318,8 +342,8 @@ More than 1,000 hosted data layers were found for the account/profile.
 
 ```
 {
-   &#34;returnCode&#34; : 1400,
-   &#34;message&#34; : &#34;Invalid request submission. Data layer list size exceeds maximum permissible (1000).&#34;
+   "returnCode" : 1400,
+   "message" : "Invalid request submission. Data layer list size exceeds maximum permissible (1000)."
 }
 
 ```
@@ -328,8 +352,8 @@ More than 1,000 hosted data layers were found for the account/profile.
 
 ```
 {
-   &#34;returnCode&#34; : 1469,
-   &#34;message&#34; : &#34;although the user is authenticated, the request is denied because of a lack of proper permissions&#34;
+   "returnCode" : 1469,
+   "message" : "although the user is authenticated, the request is denied because of a lack of proper permissions"
 }
 
 ```

@@ -9,7 +9,7 @@ We will use Audience Discovery to sample our active customers using our new Emai
 
 Remember, for this to work you will need to let some time pass since the creation of the email address attribute so that AudienceStream can collect enough data to provide a decent sample set. Follow these steps to validate the email address attribute.
 
-1. Navigate to **Activate &gt; Discover** (Audience Discovery).
+1. Navigate to **Activate > Discover** (Audience Discovery).
 1. Click **Perspective** and select the visitor string attribute **Email Address**.
 1. You should examine not just the **Live** view, but the **Historic** view.
 
@@ -21,10 +21,10 @@ The number is the number of different visitor profiles from which we have seen t
 
 What you are looking out for here is any out of place bar heights or a suspicious distribution. For example, if most email addresses had been seen from 1, 2 or 3 visitor profiles, but some email addresses had been seen from 50 or more visitor profiles, then this requires further investigation at this point. If all email addresses on the first page of the report had been seen from a suspiciously high number of devices, then this too requires further investigation.
 
-The first bar shows the number of visitors with **no value &#34;(none)&#34;**, which represents the unknown visitors that have not provided an email address yet.
+The first bar shows the number of visitors with **no value "(none)"**, which represents the unknown visitors that have not provided an email address yet.
 
-![](/images/server-side/as-getting-started-discovery-sample-data.jpg)
+![](https://docs.tealium.com/images/server-side/as-getting-started-discovery-sample-data.jpg)
 
-The example above confirms that Email Address is being collected uniquely and accurately, so now it&#39;s time to complete our identity resolution strategy with the Visitor ID attribute.
+The example above confirms that Email Address is being collected uniquely and accurately, so now it's time to complete our identity resolution strategy with the Visitor ID attribute.
 
 Click **Next** to create a Visitor ID attribute and start taking advantage of visitor stitching.

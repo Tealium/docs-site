@@ -4,7 +4,7 @@ description: iQタグ管理でのタグの基本を学びましょう。
 url: https://docs.tealium.com/ja/iq-tag-management/getting-started/tag-basics/
 ---Tealiumを通じてロードされたタグは、ページ内でハードコードされた同じタグと同様に動作します。タグには次のコンポーネントがあります：
 
-![](/images/iq-tag-management/getting-started-tags.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/getting-started-tags.jpg)
 
 *   **タグの構成**  
 タグの構成、例えばアカウントIDなど。

@@ -27,11 +27,11 @@ addPersistentData(data)
 
 | パラメータ | タイプ | 説明  | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Object&gt;` | 既存の永続的な`Udo`に追加するための必須のマップデータ | `[&#34;key&#34;:&#34;value&#34;]` |
+| `data` | `Map<String, Object>` | 既存の永続的な`Udo`に追加するための必須のマップデータ | `["key":"value"]` |
 
 ```java
 Udo data = new Udo();
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
+data.put("KEY", "VALUE");
 tealium.getDataManager().addPersistentData(data);
 ```
 
@@ -45,11 +45,11 @@ deletePersistentData(list)
 
 | パラメータ |  タイプ |説明 | 例 |
 | --- | --- | --- | --- |
-| `list` |  `List&lt;String&gt;` | 文字列としてのキーのリスト | `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `list` |  `List<String>` | 文字列としてのキーのリスト | `["key1", "key2"]` |
 
 ```java
-List&lt;String&gt; list = new List&lt;&gt;();
-list.append(&#34;key_to_delete&#34;);
+List<String> list = new List<>();
+list.append("key_to_delete");
 tealium.getDataManager().deletePersistentData(list);
 ```
 
@@ -80,7 +80,7 @@ getPersistentData()
 
 | 戻り値のタイプ | 説明 | 例 |
 | --- | --- | --- |
-| `Udo` | 永続データのユニバーサルデータオブジェクト (UDO) | `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `Udo` | 永続データのユニバーサルデータオブジェクト (UDO) | `["key1", "key2"]` |
 
 ```java
 Udo persistentData = tealium.getDataManager().getPersistentData()
@@ -96,7 +96,7 @@ getSessionId()
 
 | 戻り値のタイプ | 説明 | 例  |
 | --- | --- | --- |
-| `String` | ミリ秒単位のタイムスタンプの表現 | `&#34;1473371215123&#34;` |
+| `String` | ミリ秒単位のタイムスタンプの表現 | `"1473371215123"` |
 
 ```java
 tealium.getDataManager().getSessionId() 
@@ -113,7 +113,7 @@ resetSessionId()
 
 | 戻り値のタイプ | 説明 | 例 |
 | --- | --- | --- |
-| `String` | ミリ秒単位のタイムスタンプの新しい文字列表現。これは、現在のセッションの残りの期間、すべてのディスパッチに追加されます。このメソッドが呼び出されると、自動的に揮発性データストアに追加されるため、返される文字列は監視の便宜上です。 | `&#34;1473371215123&#34;` |
+| `String` | ミリ秒単位のタイムスタンプの新しい文字列表現。これは、現在のセッションの残りの期間、すべてのディスパッチに追加されます。このメソッドが呼び出されると、自動的に揮発性データストアに追加されるため、返される文字列は監視の便宜上です。 | `"1473371215123"` |
 
 ```java
 tealium.getDataManager().resetSessionId()
@@ -136,9 +136,9 @@ track(eventTitle, data, callback)
 
 | パラメータ | タイプ | 説明 |  例 |
 |-----------|-------------|------| --- |
-| `eventTitle` | `String` |イベントのタイトル（`tealium_event`と`event_name`イベント属性値になります） |  `&#34;Some Event&#34;` |
+| `eventTitle` | `String` |イベントのタイトル（`tealium_event`と`event_name`イベント属性値になります） |  `"Some Event"` |
 | `data`    | `Udo` |  (オプション) キーと値のペアとしてのイベントデータを持つユニバーサルデータオブジェクト (UDO)| `udoObject` |
-| `callback`| `DispatchCallback` |(オプション) &#34;callback&#34;キーに関数が割り当てられたオブジェクト | `dispatchCallbackObject` |
+| `callback`| `DispatchCallback` |(オプション) "callback"キーに関数が割り当てられたオブジェクト | `dispatchCallbackObject` |
 
 
 ## クラス: `Tealium.Builder`
@@ -179,10 +179,10 @@ Tealium tealium = new Tealium.Builder(account, profile)
 
 | パラメータ |  タイプ | 説明 |  例 |
 | --- | --- | --- | --- |
-| `account` |  `String` |Tealiumのアカウント名 | `&#34;companyXYZ&#34;` |
-| `profile` |  `String` |Tealiumのプロファイル名  | `&#34;main&#34;` |
-| `environment` |  `String` |Tealiumの環境名  | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `datasource` |  `String` |(オプション) データソースキー（ない場合は`null`に構成）  | `&#34;abc123&#34;` |
+| `account` |  `String` |Tealiumのアカウント名 | `"companyXYZ"` |
+| `profile` |  `String` |Tealiumのプロファイル名  | `"main"` |
+| `environment` |  `String` |Tealiumの環境名  | [`"dev"`, `"qa"`, `"prod"`] |
+| `datasource` |  `String` |(オプション) データソースキー（ない場合は`null`に構成）  | `"abc123"` |
 
 ### `setDatasource() `  
 
@@ -194,7 +194,7 @@ tealium.setEnvironment(datasource);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `datasource` | `String` | データソースキー（ない場合は`null`に構成）  |  `&#34;abc123&#34;` |
+| `datasource` | `String` | データソースキー（ない場合は`null`に構成）  |  `"abc123"` |
 
 ### `setEnvironment()`   
 
@@ -206,7 +206,7 @@ tealium.setEnvironment(environment);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `environment` | `String` |Tealiumの環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `environment` | `String` |Tealiumの環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
 
 
 ### `setPersistentData()`   

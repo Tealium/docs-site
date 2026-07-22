@@ -3,20 +3,24 @@ title: デプロイされたモデルの健康状態
 description: この記事では、Tealium Predict MLを使用してデプロイされたモデルの品質を理解するための指標と評価について説明します。
 url: https://docs.tealium.com/ja/server-side/predict/deploy/deployed-model-health/
 ---
-**モデルダッシュボード**は、デプロイされた各モデルをリストで表示します。各行にはそのモデルの予測結果のスナップショットが含まれています。モデルダッシュボードビューにアクセスするには、**Predict &amp;gt; Model Dashboard &amp;gt; Deployed Models**に移動します。
+**モデルダッシュボード**は、デプロイされた各モデルをリストで表示します。各行にはそのモデルの予測結果のスナップショットが含まれています。モデルダッシュボードビューにアクセスするには、**Predict &gt; Model Dashboard &gt; Deployed Models**に移動します。
 
 モデルの概要では、モデルについて以下の情報が表示されることがあります：
 
 * この指標が増加または減少したかを示す指標とともに、モデルの**再現率**。
 * モデルの一般的なパフォーマンスの傾向を示す**スパークライングラフ**。
+
+<blockquote>
 強度評価は自動的に再計算され、スパークライングラフはリアルタイムのパフォーマンス指標を反映します。
+</blockquote>
+
 * デプロイされたモデルの**バージョン**。
 
-![](/images/predict/predictv2-deployed-models.png)
+![](https://docs.tealium.com/images/predict/predictv2-deployed-models.png)
 
 ## デプロイされたモデルの強度の評価
 
-モデルの強度評価は、バージョンの品質に対するラベルを提供します。強度評価には、_deployed_と_training_の2種類があります。デプロイされた強度は、各デプロイされたモデルの進行中の評価です。トレーニング強度は、各トレーニングバージョンの静的な評価です。詳細については、[Strength scores]()を参照してください。
+モデルの強度評価は、バージョンの品質に対するラベルを提供します。強度評価には、_deployed_と_training_の2種類があります。デプロイされた強度は、各デプロイされたモデルの進行中の評価です。トレーニング強度は、各トレーニングバージョンの静的な評価です。詳細については、[Strength scores](https://docs.tealium.com/strength-scores/)を参照してください。
 
 ## ライブモデルパフォーマンス詳細
 
@@ -26,7 +30,7 @@ Tealium Predictでは、再現率、精度、F1スコアは、利用可能な最
 
 **Live Performance**画面では、毎日の再現率、精度、F1スコアが時間の経過とともにモデルの健康状態がどのように変化したかを示します。**Live Performance**ウィンドウでは、**Prediction Distribution**チャートを使用して、予測時間枠内での**Prediction Value**を探索することもできます。予測値は、訪問の次の訪問が予測時間枠内にTrueに構成されるターゲット属性結果の可能性を表します。
 
-![](/images/predict/predictv2-live-performance.png)
+![](https://docs.tealium.com/images/predict/predictv2-live-performance.png)
 
 **Prediction Distribution**チャートでは、y軸は予測時間枠内でターゲット属性の振る舞いがTrueまたはFalseだった回数で、x軸は予測値です。理想的な結果は、Trueのカウントが予測値の上位範囲（例えば、0.5以上）に、Falseのカウントが予測値の下位範囲（例えば、0.5以下）に落ちることを示します。予測分布の形状がトレーニングモデルからの確率分布に似ている場合、それは時間の経過とともに強いモデルの健康状態の指標です。
 

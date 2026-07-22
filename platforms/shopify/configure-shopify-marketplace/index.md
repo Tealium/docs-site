@@ -7,7 +7,7 @@ Shopify Markets lets you manage multiple market regions from a single Shopify st
 
 ## Prerequisites
 
-* Shopify Markets must be enabled in your Shopify admin (**Settings &gt; Markets**).
+* Shopify Markets must be enabled in your Shopify admin (**Settings > Markets**).
 * At least one market must be configured in Shopify before using the **Markets** tab.
 * Complete the global Tealium configuration in the **Config** tab first.
 
@@ -47,12 +47,12 @@ Two value types are supported:
 **Literal Values**:
 
 ```json
-{ &#34;market_region&#34;: &#34;EMEA&#34;, &#34;market_currency&#34;: &#34;EUR&#34; }
+{ "market_region": "EMEA", "market_currency": "EUR" }
 ```
 **JavaScript References**:
 
 ```json
-{ &#34;page_title&#34;: document.title, &#34;current_url&#34;: window.location.href }
+{ "page_title": document.title, "current_url": window.location.href }
 ```
 
 Dynamic variables (for example, `{{ product.id }}`) are not supported in custom data layer configuration.

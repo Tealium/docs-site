@@ -7,14 +7,14 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/save-publish-a-v
 
 構成を保存し公開する準備ができたら、**保存/公開**をクリックします。
 
-![](/images/iq-tag-management/save-publish/client-side-publish-window.png)
+![](https://docs.tealium.com/images/iq-tag-management/save-publish/client-side-publish-window.png)
 
 ### 公開詳細
 
 **公開詳細**テーブルには、このバージョンでの変更に関する情報が表示されます：
 
 * **変更**  
-このタブには、このバージョンに保存され公開される変更された要素がリストされています。これには、更新された[プロファイルライブラリ]()の結果としての変更も含まれます。ライブラリへの変更は自動的にそれをロードするすべてのプロファイルに伝播するわけではありません。ライブラリへの変更を含めるためには、各プロファイルを再公開する必要があります。
+このタブには、このバージョンに保存され公開される変更された要素がリストされています。これには、更新された[プロファイルライブラリ](https://docs.tealium.com/about-profile-libraries/)の結果としての変更も含まれます。ライブラリへの変更は自動的にそれをロードするすべてのプロファイルに伝播するわけではありません。ライブラリへの変更を含めるためには、各プロファイルを再公開する必要があります。
     * **タイプ**: 要素のタイプ（`extension`、`tag`、`event`、`load rule`、`variable`または`template`）。
     * **要素名**: 要素のタイトル。
     * **変更**: 要素に対して行われた変更（`追加`、`更新`、`削除`、`オンに切り替え`、`オフに切り替え`）。
@@ -39,13 +39,17 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/save-publish-a-v
 1. (オプション) 現在のバージョンを上書きしたい場合は、**現在のバージョンを上書き**を選択します。このオプションを選択すると、現在のバージョンが置き換えられ、それに対する変更は元に戻すことができません。
 1. **ノート**フィールドに、バージョンに対して行った変更についてのノートを入力します。
 このフィールドに入力されたノートは、将来このバージョンに戻る必要がある場合に役立ちます。これは必須フィールドであり、ノートを入力せずにバージョンを保存することはできません。
-1. (オプション) 1つ以上の[公開場所]()を選択して、このバージョンを公開環境に公開します。また、[カスタム環境]()を選択するために**カスタム**を選択することもできます。
+1. (オプション) 1つ以上の[公開場所](https://docs.tealium.com/about-publishing/)を選択して、このバージョンを公開環境に公開します。また、[カスタム環境](https://docs.tealium.com/custom-publish-environments/)を選択するために**カスタム**を選択することもできます。
 
 保存または公開する準備ができたら、**保存**または**公開**をクリックします。
 
 公開環境を少なくとも1つ選択すると、アクションボタンには**公開**が表示されます。それ以外の場合は、**保存**が表示されます。**公開**または**保存**をクリックして、バージョンの保存および/または公開のプロセスを開始します。
 
- 承認ワークフローについての詳細は、[公開ワークフロー管理]()を参照してください。 
+
+<blockquote>
+承認ワークフローについての詳細は、[公開ワークフロー管理](https://docs.tealium.com/publish-workflow-management/)を参照してください。
+</blockquote>
+
 
 ## 検証
 
@@ -57,10 +61,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/save-publish-a-v
 
 現在のバージョンのバージョン番号、またはタイムスタンプは、変更がサイト上でライブになっていることを確認する最良の方法です。Web Companionからのタイムスタンプを最後の公開のタイムスタンプと照合して、変更がライブになっていることを確認します。
 
-![](/images/iq-tag-management/iq-versions-timestamp.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-versions-timestamp.png)
 
 バージョンがページ上で再ロードされた後、**Web Companion**に表示されるバージョンとタイムスタンプを比較します。
 
-![](/images/iq-tag-management/wc2.png)
+![](https://docs.tealium.com/images/iq-tag-management/wc2.png)
 
+
+<blockquote>
 **Tealium iQ**で報告されるタイムゾーンはGMTで、**Web Companion**内で報告されるローカルタイムゾーンです。
+</blockquote>

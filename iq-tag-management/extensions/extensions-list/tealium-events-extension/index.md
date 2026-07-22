@@ -31,39 +31,47 @@ To prevent an event from being set, remove the condition and click **Apply**. Th
 
 In this example, the condition for the Email Signup event has been removed, resulting in the event to be `Not Set`.
 
-![](/images/iq-tag-management/remove-event-conditon.png)
+![](https://docs.tealium.com/images/iq-tag-management/remove-event-conditon.png)
 
-![](/images/iq-tag-management/after-removing-condition.png)
+![](https://docs.tealium.com/images/iq-tag-management/after-removing-condition.png)
 
 ## Standard events
 
-Below is a table of standard events and default conditions in the extension. Events are listed in alphabetical order and are evaluated sequentially. The default conditions match our [standard data layer recommendations](), but they are customizable to match your exact implementation.
+Below is a table of standard events and default conditions in the extension. Events are listed in alphabetical order and are evaluated sequentially. The default conditions match our [standard data layer recommendations](https://docs.tealium.com/retail/), but they are customizable to match your exact implementation.
 
 |Event| `tealium_event`| Default Condition|
 |---| ---| ---|
-|Add to Cart| `cart_add`| `event_name=&#34;cart_add&#34;`|
-|Category Page View| `category_view`| `page_type=&#34;category&#34;`|
-|Checkout| `checkout`| `page_type=&#34;checkout&#34;`|
-|Email Signup| `email_signup`| `event_name=&#34;email_signup&#34;`|
-|Empty cart| `cart_empty`| `event_name=&#34;cart_empty&#34;`|
-|Page View| `page_view`| `page_type=&#34;generic&#34;`|
-|Product Detail Page View| `product_view`| `page_type=&#34;product&#34;`|
-|Purchase Complete| `purchase`| `page_type=&#34;purchase&#34;`|
-|Remove from Cart| `cart_remove`| `event_name=&#34;cart_remove&#34;`|
-|Search Page View| `search`| `page_type=&#34;search&#34; `|
-|Shopping Cart View| `cart_view`| `page_type=&#34;cart&#34; `|
-|Social Share| `social_share`| `event_name=&#34;social_share&#34;`|
-|User Log in| `user_login`| `event_name=&#34;user_login&#34;`|
-|User Log out| `user_logout`| `event_name=&#34;user_logout&#34;`|
-|User Register| `user_register`| `event_name=&#34;user_register&#34;`|
+|Add to Cart| `cart_add`| `event_name="cart_add"`|
+|Category Page View| `category_view`| `page_type="category"`|
+|Checkout| `checkout`| `page_type="checkout"`|
+|Email Signup| `email_signup`| `event_name="email_signup"`|
+|Empty cart| `cart_empty`| `event_name="cart_empty"`|
+|Page View| `page_view`| `page_type="generic"`|
+|Product Detail Page View| `product_view`| `page_type="product"`|
+|Purchase Complete| `purchase`| `page_type="purchase"`|
+|Remove from Cart| `cart_remove`| `event_name="cart_remove"`|
+|Search Page View| `search`| `page_type="search" `|
+|Shopping Cart View| `cart_view`| `page_type="cart" `|
+|Social Share| `social_share`| `event_name="social_share"`|
+|User Log in| `user_login`| `event_name="user_login"`|
+|User Log out| `user_logout`| `event_name="user_logout"`|
+|User Register| `user_register`| `event_name="user_register"`|
 
+
+<blockquote>
 The `tealium_event` value is always set for the condition that last evaluated to `true`. If more than one event condition evaluates to `true`, the event lower in the list is set.
+</blockquote>
+
 
 ## Custom events
 
 The Tealium Events extension provides a list of predefined events. A custom event uses a value defined by you and assigned to the variable `tealium_event`. Define these custom events directly in your data layer or by using the [Set Data Values extension]().
 
+
+<blockquote>
 Position custom events defined in an extension after the Tealium Events extension.
+</blockquote>
+
 
 To define a custom event using an extension:
 
@@ -75,7 +83,7 @@ To define a custom event using an extension:
 
 Example of custom event using the Set Data Values extension:
 
-![](/images/iq-tag-management/tealium-event-extension-custom-event.png)
+![](https://docs.tealium.com/images/iq-tag-management/tealium-event-extension-custom-event.png)
 
 ## Examples
 
@@ -91,4 +99,4 @@ Load rules use `tealium_event` to simplify their conditions.
 
 #### Customer Data Hub
 
-If you have the [Tealium Collect tag]() all the variables in your data layer are passed along to Tealium EventStream, including `tealium_event`. This variable is made available as an [imported event attribute]() to be used in enrichments, rules, and feeds.
+If you have the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) all the variables in your data layer are passed along to Tealium EventStream, including `tealium_event`. This variable is made available as an [imported event attribute](https://docs.tealium.com/add-enrichment/) to be used in enrichments, rules, and feeds.

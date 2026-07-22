@@ -5,7 +5,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/google-analy
 ---
 ## How it works
 
-The [Google Analytics 4 Measurement Protocol Connector]() allows developers to make HTTP requests that send events directly to Google Analytics servers. This helps developers measure how users interact with their business from any HTTP-enabled environment, which makes it easy to measure interactions that happen server-to-server.
+The [Google Analytics 4 Measurement Protocol Connector](https://docs.tealium.com/google-analytics-4-measurement-protocol-connector/) allows developers to make HTTP requests that send events directly to Google Analytics servers. This helps developers measure how users interact with their business from any HTTP-enabled environment, which makes it easy to measure interactions that happen server-to-server.
 
 Tealium EventStream acts as a conduit to enable Google Analytics 4 tracking. It ties together support for Mobile, Internet of Things, and Offline Event and pageview tracking by:
 
@@ -14,7 +14,7 @@ Tealium EventStream acts as a conduit to enable Google Analytics 4 tracking. It 
 * Measuring interactions both client-side and server-side.
 * Sending events that happen outside standard user interaction, such as offline conversations.
 
-![](/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png)
+![](https://docs.tealium.com/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png)
 
 Tealium supports the following actions with the Google Analytics 4 Measurement Protocol Connector:
 
@@ -22,11 +22,15 @@ Tealium supports the following actions with the Google Analytics 4 Measurement P
 * Send Event
 * Send Firebase Event
 
-For additional configuration details for the Google Analytics 4 Tag that appears in the diagram, see [Google Analytics 4 (GA4) Tag Setup Guide]().
+For additional configuration details for the Google Analytics 4 Tag that appears in the diagram, see [Google Analytics 4 (GA4) Tag Setup Guide](https://docs.tealium.com/google-analytics-4-ga4-tag/).
 
 ### Considerations
 
+
+<blockquote>
 The Google Analytics Measurement Protocol for Google Analytics 4 connector is not a complete replacement for the client-side tag solution.
+</blockquote>
+
 
 ### Limitations
 
@@ -44,7 +48,7 @@ The Google Analytics Measurement Protocol for Google Analytics 4 connector is no
 The Measurement Protocol API uses a measurement ID and API secret that are included in the URL as query parameters.
 
 ```
-https://google-analytics.com/mp/collect?measurement_id=G-1234567890&amp;api_secret=xxxxxxxxxx
+https://google-analytics.com/mp/collect?measurement_id=G-1234567890&api_secret=xxxxxxxxxx
 ```
 
 ## Configuration
@@ -65,17 +69,17 @@ The Tealium Measurement Protocol connector uses this endpoint during Trace, whic
 
 ### Recommendations and configuration details
 
-To mitigate issues around the noted limitations and fully cover all data requirements, implement the [Google Analytics 4 tag]() in Tealium iQ Tag Management. Set the tag to load on all pages, with **Send Page View** set to `false`. In addition, add the Google Analytics Cookie Matching Service tag so that the Google `clientId` is automatically added as a `utag_main__ga` cookie value.
+To mitigate issues around the noted limitations and fully cover all data requirements, implement the [Google Analytics 4 tag](https://docs.tealium.com/google-analytics-4-ga4-tag/) in Tealium iQ Tag Management. Set the tag to load on all pages, with **Send Page View** set to `false`. In addition, add the Google Analytics Cookie Matching Service tag so that the Google `clientId` is automatically added as a `utag_main__ga` cookie value.
 
 All required events outside of Google’s automatically collected events can then be configured in the Google Analytics connector in Tealium EventStream.
 
-The Google Analytics 4 tag automatically triggers a purchase event when `order_id `is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and want to track purchases through EventStream, configure a [Set Data Values]() extension scoped to Google Analytics 4 to clear the `_corder` attribute.
+The Google Analytics 4 tag automatically triggers a purchase event when `order_id `is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and want to track purchases through EventStream, configure a [Set Data Values](https://docs.tealium.com/set-data-values-extension/) extension scoped to Google Analytics 4 to clear the `_corder` attribute.
 
-![](/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png)
+![](https://docs.tealium.com/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png)
 
 Because Tealium can support a client-side implementation to better address web-client integrations, as well as supporting mobile and offline events through Tealium’s EventStream, Tealium can integrate with both solutions and create a combined approach.
 
-For more information for configuration of a client-side tag, see [Google Analytics 4 (GA4) Tag Setup Guide]().
+For more information for configuration of a client-side tag, see [Google Analytics 4 (GA4) Tag Setup Guide](https://docs.tealium.com/google-analytics-4-ga4-tag/).
 
 ### Prerequisites
 
@@ -89,9 +93,9 @@ For more information for configuration of a client-side tag, see [Google Analyti
 
 | VALUE	 | DESCRIPTION	| LOCATION |
 | ---| ---| --- | 
-| API Secret (Required)	| An API Secret generated in the Google Analytics UI.| 	To create a new secret, navigate to: **Admin** &gt; **Data Streams** &gt; **choose your stream** &gt; **Measurement Protocol** &gt; **Additional Settings** &gt; **Measurement Protocol API secrets**.| 
-| Measurement ID (Optional)	| The measurement ID associated with a stream.	| In the Google Analytics UI, navigate to: **Admin** &gt; **Data Streams** &gt; **choose your stream** &gt; **Measurement ID** &gt; **Create**.| 
-| Firebase App ID (Optional)| The identifier for a Firebase app.| 	In the Firebase console, navigate to: **Project Settings** &gt; **General** &gt; **Your Apps** &gt; **App ID**. |
+| API Secret (Required)	| An API Secret generated in the Google Analytics UI.| 	To create a new secret, navigate to: **Admin** > **Data Streams** > **choose your stream** > **Measurement Protocol** > **Additional Settings** > **Measurement Protocol API secrets**.| 
+| Measurement ID (Optional)	| The measurement ID associated with a stream.	| In the Google Analytics UI, navigate to: **Admin** > **Data Streams** > **choose your stream** > **Measurement ID** > **Create**.| 
+| Firebase App ID (Optional)| The identifier for a Firebase app.| 	In the Firebase console, navigate to: **Project Settings** > **General** > **Your Apps** > **App ID**. |
 
 API Version: Beta
 
@@ -115,14 +119,14 @@ API Version: Beta
 | Item Category 3	| The third category hierarchy or additional taxonomy for the item.| 
 | Item Category 4	| The fourth category hierarchy or additional taxonomy for the item.| 
 | Item Category 5	| The fifth category hierarchy or additional taxonomy for the item.| 
-| Item List ID	| The ID of the list in which the item was presented to the user. &lt;ul&gt;&lt;li&gt;If set, event-level `item_list_id` is ignored.&lt;/li&gt;&lt;li&gt;If not set, event-level `item_list_id` is used (if present).&lt;/li&gt;&lt;/ul&gt;| 
-| Item List Name	| The name of the list in which the item was presented to the user. &lt;ul&gt;&lt;li&gt;If set, event-level `item_list_name` is ignored. &lt;/li&gt;&lt;li&gt;If not set, event-level `item_list_name` is used (if present). &lt;/li&gt;&lt;/ul&gt;|
+| Item List ID	| The ID of the list in which the item was presented to the user. <ul><li>If set, event-level `item_list_id` is ignored.</li><li>If not set, event-level `item_list_id` is used (if present).</li></ul>| 
+| Item List Name	| The name of the list in which the item was presented to the user. <ul><li>If set, event-level `item_list_name` is ignored. </li><li>If not set, event-level `item_list_name` is used (if present). </li></ul>|
 | Item Variant	| The item variant or unique code or description for additional item details or options.|
-| Location ID	| The location associated with the item. It&#39;s recommended that you use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.  &lt;ul&gt;&lt;li&gt;If set, event-level `location_id` is ignored.&lt;/li&gt; &lt;li&gt;If not set, event-level `location_id` is used (if present).&lt;/li&gt;&lt;/ul&gt;|
+| Location ID	| The location associated with the item. It's recommended that you use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.  <ul><li>If set, event-level `location_id` is ignored.</li> <li>If not set, event-level `location_id` is used (if present).</li></ul>|
 | Price (number)	|The monetary price of the item, in units of the specified currency parameter.|
 |Quantity (number)	|Item quantity.|
-|Template Variables	|Provide template variables as data input for templates. For more information, see . Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes.|
-|Templates	| Provide templates to be referenced in User Properties. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Template Variables	|Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes.|
+|Templates	| Provide templates to be referenced in User Properties. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ## Send PageView Event
 
@@ -134,7 +138,7 @@ This action is used to pass website page view events to Google Analytics.
 
 | PARAMETER	| DESCRIPTION |
 | ---| ---|
-|Client ID	| (Required) A unique identifier for a client.&lt;br&gt;&lt;br&gt; This identifier must use the Client ID set by the Google Analytics 4 tag. For more information, see [Google Analytics 4 (GA4) Tag Setup Guide]().|
+|Client ID	| (Required) A unique identifier for a client.<br><br> This identifier must use the Client ID set by the Google Analytics 4 tag. For more information, see [Google Analytics 4 (GA4) Tag Setup Guide](https://docs.tealium.com/google-analytics-4-ga4-tag/).|
 |Measurement ID Override|	Measurement ID. For example, the identifier for a Data Stream.|
 |Firebase App ID Override |	(Required) The identifier for a Firebase app. This setting overrides Firebase App ID used in the **Configuration** section.|
 |User ID|	A unique identifier for a user. If you include `user_id` in your Google Analytics 4 Measurement Protocol events, you must also include it in the client-side events.|
@@ -156,16 +160,16 @@ As shown in the following example payload, the `events.name` value is `page_view
 
 ```json
 {
-  &#34;events&#34;: [
+  "events": [
     {
-      &#34;name&#34;: &#34;page_view&#34;,
-      &#34;params&#34;: {
-        &#34;page_location&#34;: &#34;http://demosite.com/ecomm/category.html&#34;,
+      "name": "page_view",
+      "params": {
+        "page_location": "http://demosite.com/ecomm/category.html",
         ...other mapped parameters...
       }
     }
   ],
-  &#34;client_id&#34;: &#34;017f6ae7e7a40014b19d17739b3d05079002707100fb8&#34;
+  "client_id": "017f6ae7e7a40014b19d17739b3d05079002707100fb8"
 }
 ```
 
@@ -183,7 +187,7 @@ This action is used to send a non-pageview event to Google Analytics. You can se
 | Measurement ID Override|Measurement ID. For example, the identifier for a Data Stream.|
 |Firebase App ID Override	| (Required) The identifier for a Firebase app. This setting overrides Firebase App ID used in the **Configuration** section.|
 |User ID|	A unique identifier for a user. If you include `user_id` in your Google Analytics 4 Measurement Protocol events, you must also include it in the client-side events.|
-|Timestamp Micros	|A Unix timestamp (in microseconds) for the time to associate with the event. Set this to record events that happened in the past. This value can be overridden through `user_property` or event timestamps. Events can be backdated up to three calendar days based on the property&#39;s timezone|
+|Timestamp Micros	|A Unix timestamp (in microseconds) for the time to associate with the event. Set this to record events that happened in the past. This value can be overridden through `user_property` or event timestamps. Events can be backdated up to three calendar days based on the property's timezone|
 Non Personalized Ads	|Set this to true to indicate these events are not used for personalized ads.|
 
 ### Event and Event Parameters
@@ -192,34 +196,34 @@ In addition to the general event parameters listed previously, each event type a
 
 | EVENT TYPE	| DESCRIPTION| 	EVENT-SPECIFIC PARAMETERS| 
 |-----|-----|-----|
-| Add Payment Information	| When a user has submitted their payment information.	| Event Parameters: &lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt; |
-| Add Shipping Information	| When a user has submitted their shipping information.	| Event Parameters: &lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;li&gt;Coupon (Optional)&lt;/li&gt;&lt;li&gt;Shipping Tier (Optional)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt; |
-| Add to Wishlist	| When an item was added to a wish list. Use this event to identify popular gift items in your app.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Begin Checkout	| When a user has begun a checkout.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;li&gt;Coupon (Optional)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt; | 
-| Earn Virtual Currency| 	When a user has been awarded virtual currency. Log this event with `spend_virtual_currency` to better understand your virtual economy.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Virtual Currency Name (Optional) - The name of the virtual currency.&lt;/li&gt;&lt;li&gt;Value (Optional) - The value of the virtual currency.&lt;/li&gt;&lt;/ul&gt;| 
-| Generate Lead	| When a lead has been generated. Use this event to better understand the efficacy of your re-engagement campaigns.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Join Group	| When a user joins a group, such as a guild, team, or family. Use this event to analyze how popular certain groups or social features are.|Event Parameter:&lt;ul&gt;&lt;li&gt;Group ID (Optional) - The ID of the group.&lt;/li&gt;&lt;/ul&gt;| 
-| Level Up	| When a player has leveled up. Use this event to measure the level distribution of your user base and identify levels that are difficult to complete.	| Event Parameters: &lt;ul&gt;&lt;li&gt;Level (Optional) - The level of the character.&lt;/li&gt;&lt;li&gt;Character (Optional) - The character that leveled up.&lt;/li&gt;&lt;/ul&gt;| 
-| Login| 	When a user has logged in.	| Event Parameter:&lt;ul&gt;&lt;li&gt;Method (Optional) - method used to log in.&lt;/li&gt;&lt;/ul&gt;| 
-| Post Score	| When a user posts a score. Use this event to understand how users are performing in your game and correlate high scores with audiences or behaviors.	| Event Parameters:&lt;ul&gt;&lt;li&gt;score (Required) - score to post.&lt;/li&gt;&lt;li&gt;level (Optional) - level of the character.&lt;/li&gt;&lt;li&gt;character (Optional) - the character that leveled up.&lt;/li&gt;&lt;/ul&gt;| 
-| Purchase	| When one or more items have been purchased by a user.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Transaction ID (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Refund	| When a user was issued a refund.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Transaction_id (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Remove from Cart| 	When a user removed an item from a cart.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Search| 	When a user performed a search. Use this event to help identify the most popular content in your app.	| Event Parameter:&lt;ul&gt;&lt;li&gt;Search Term (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Select Content	| When a user selected content of a certain type. Use this event to identify popular content and categories of content in your app.|Event Parameter:&lt;ul&gt;&lt;li&gt;Content Type (Optional)&lt;/li&gt;&lt;li&gt;Item ID (Optional)&lt;/li&gt;&lt;/ul&gt;| 
-| Select Item	| When a user selected an item from a list.	| Event Parameter:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Select Promotion| 	When a user selected a promotion from a list.| Event Parameters:&lt;ul&gt;&lt;li&gt;Creative Name (Optional)&lt;/li&gt;&lt;li&gt;Creative Slot (Optional)&lt;/li&gt;&lt;li&gt;Location ID (Optional)&lt;/li&gt;&lt;li&gt;Promotion ID (Optional)&lt;/li&gt;&lt;li&gt;Promotion Name (Optional)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| Share| 	When a user shared content.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Method (Optional)&lt;/li&gt;&lt;li&gt;Content Type (Optional)&lt;/li&gt;&lt;li&gt;Item ID (Optional)&lt;/li&gt;&lt;/ul&gt;| 
-| Sign up| 	When a user signs up for an account. Use this event to understand the difference between logged in and logged out users.| 	Event Parameter:&lt;ul&gt;&lt;li&gt;Method (Optional)&lt;/li&gt;&lt;/ul&gt;| 
-| Spend Virtual Currency| 	When a user purchased virtual goods. Use this event to identify the most popular virtual goods.| Event Parameters:&lt;ul&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;li&gt;Virtual Currency Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
+| Add Payment Information	| When a user has submitted their payment information.	| Event Parameters: <ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul> |
+| Add Shipping Information	| When a user has submitted their shipping information.	| Event Parameters: <ul><li>Currency (Required)</li><li>Value (Required)</li><li>Coupon (Optional)</li><li>Shipping Tier (Optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul> |
+| Add to Wishlist	| When an item was added to a wish list. Use this event to identify popular gift items in your app.	| Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Begin Checkout	| When a user has begun a checkout.	| Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li><li>Coupon (Optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul> | 
+| Earn Virtual Currency| 	When a user has been awarded virtual currency. Log this event with `spend_virtual_currency` to better understand your virtual economy.	| Event Parameters:<ul><li>Virtual Currency Name (Optional) - The name of the virtual currency.</li><li>Value (Optional) - The value of the virtual currency.</li></ul>| 
+| Generate Lead	| When a lead has been generated. Use this event to better understand the efficacy of your re-engagement campaigns.	| Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>| 
+| Join Group	| When a user joins a group, such as a guild, team, or family. Use this event to analyze how popular certain groups or social features are.|Event Parameter:<ul><li>Group ID (Optional) - The ID of the group.</li></ul>| 
+| Level Up	| When a player has leveled up. Use this event to measure the level distribution of your user base and identify levels that are difficult to complete.	| Event Parameters: <ul><li>Level (Optional) - The level of the character.</li><li>Character (Optional) - The character that leveled up.</li></ul>| 
+| Login| 	When a user has logged in.	| Event Parameter:<ul><li>Method (Optional) - method used to log in.</li></ul>| 
+| Post Score	| When a user posts a score. Use this event to understand how users are performing in your game and correlate high scores with audiences or behaviors.	| Event Parameters:<ul><li>score (Required) - score to post.</li><li>level (Optional) - level of the character.</li><li>character (Optional) - the character that leveled up.</li></ul>| 
+| Purchase	| When one or more items have been purchased by a user.	| Event Parameters:<ul><li>Transaction ID (Required)</li><li>Value (Required)</li><li>Currency (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Refund	| When a user was issued a refund.	| Event Parameters:<ul><li>Transaction_id (Required)</li><li>Value (Required)</li><li>Currency (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Remove from Cart| 	When a user removed an item from a cart.	| Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Search| 	When a user performed a search. Use this event to help identify the most popular content in your app.	| Event Parameter:<ul><li>Search Term (Required)</li></ul>| 
+| Select Content	| When a user selected content of a certain type. Use this event to identify popular content and categories of content in your app.|Event Parameter:<ul><li>Content Type (Optional)</li><li>Item ID (Optional)</li></ul>| 
+| Select Item	| When a user selected an item from a list.	| Event Parameter:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Select Promotion| 	When a user selected a promotion from a list.| Event Parameters:<ul><li>Creative Name (Optional)</li><li>Creative Slot (Optional)</li><li>Location ID (Optional)</li><li>Promotion ID (Optional)</li><li>Promotion Name (Optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| Share| 	When a user shared content.	| Event Parameters:<ul><li>Method (Optional)</li><li>Content Type (Optional)</li><li>Item ID (Optional)</li></ul>| 
+| Sign up| 	When a user signs up for an account. Use this event to understand the difference between logged in and logged out users.| 	Event Parameter:<ul><li>Method (Optional)</li></ul>| 
+| Spend Virtual Currency| 	When a user purchased virtual goods. Use this event to identify the most popular virtual goods.| Event Parameters:<ul><li>Value (Required)</li><li>Virtual Currency Name (Required)</li></ul>| 
 | Tutorial Begin	| When a user started the on-boarding process. Use this in a funnel with `tutorial_complete` to measure how many users complete the tutorial.	| There are no required parameters for this event.| 
 | Tutorial Complete	| When a user completed your on-boarding process. Use this in a funnel with `tutorial_begin` to measure how many users complete the tutorial.	| There are no required parameters for this event.| 
-| Unlock Achievement| 	When a user unlocked an achievement. Use this event to better understand how users experience your game.	| Event Parameter:&lt;ul&gt;&lt;li&gt;Achievement ID (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| View Cart| 	When a user viewed their cart.	|Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| View Item	| When a user viewed specific content. Use this event to identify the most popular viewed items.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Currency (Required)&lt;/li&gt;&lt;li&gt;Value (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| View Item List| 	When a user viewed a list of items of a certain category.	| Event Parameters:&lt;ul&gt;&lt;li&gt;Item List ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| View Promotion	| When a user viewed a promotion from a list. | Event Parameters:&lt;ul&gt;&lt;li&gt;creative name (Optional)&lt;/li&gt;&lt;li&gt;Creative Slot (Optional)&lt;/li&gt;&lt;li&gt;Location ID (Optional)&lt;/li&gt;&lt;li&gt;Promotion ID (Optional)&lt;/li&gt;&lt;li&gt;Promotion Name (Optional)&lt;/li&gt;&lt;/ul&gt;Item Parameters:&lt;ul&gt;&lt;li&gt;Item ID (Required)&lt;/li&gt;&lt;li&gt;Item Name (Required)&lt;/li&gt;&lt;/ul&gt;| 
-| View Search Results| 	When a user has been presented with search results.	| Event Parameter:&lt;ul&gt;&lt;li&gt;Search Term (Optional)&lt;/li&gt;&lt;/ul&gt;| 
+| Unlock Achievement| 	When a user unlocked an achievement. Use this event to better understand how users experience your game.	| Event Parameter:<ul><li>Achievement ID (Required)</li></ul>| 
+| View Cart| 	When a user viewed their cart.	|Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| View Item	| When a user viewed specific content. Use this event to identify the most popular viewed items.	| Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| View Item List| 	When a user viewed a list of items of a certain category.	| Event Parameters:<ul><li>Item List ID (Required)</li><li>Item Name (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| View Promotion	| When a user viewed a promotion from a list. | Event Parameters:<ul><li>creative name (Optional)</li><li>Creative Slot (Optional)</li><li>Location ID (Optional)</li><li>Promotion ID (Optional)</li><li>Promotion Name (Optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul>| 
+| View Search Results| 	When a user has been presented with search results.	| Event Parameter:<ul><li>Search Term (Optional)</li></ul>| 
 | Custom Event	| Use this event to support custom events not defined by Google’s pre-set events.| 	There are no required parameters for this event.| 
 
 To view a full list of supported events, see [Measurement Protocol - Google Analytics 4 events](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events.)

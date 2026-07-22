@@ -29,39 +29,39 @@ netID properties that have been stored in the browser can be fetched as part of 
 
 For example, if you’ve persisted the netID `tpid` parameter in a first-party cookie, add a new variable of type **First-Party Cookie** in the data layer, and set the value for **Source** to the cookie’s name (for example, `netid_tpid`).
 
-![](/images/industries/netid-add-variable.png)
+![](https://docs.tealium.com/images/industries/netid-add-variable.png)
 
 As a netID partner, use one of the following methods to include netID’s properties as key-value pairs in the Tealium Data Layer:
 
-* **First-Party-Cookie**: Persist the netID `tpid` as a [first-party-cookie]() named `netid_tpid` in the browser, and it will appear in the data layer with the `cp.` prefix alongside Tealium standard cookies:
+* **First-Party-Cookie**: Persist the netID `tpid` as a [first-party-cookie](https://docs.tealium.com/platforms/javascript/data-layer/#cookies) named `netid_tpid` in the browser, and it will appear in the data layer with the `cp.` prefix alongside Tealium standard cookies:
 
   ```
   {
     ...,
-    &#34;cp.netid_tpid&#34;: &#34;Bst040QDNr1nB9JM6sWH0I9__70JEvRyIiKvvd7G0MQLQ&#34;,
+    "cp.netid_tpid": "Bst040QDNr1nB9JM6sWH0I9__70JEvRyIiKvvd7G0MQLQ",
     ...
   }
   ```
 
-* **Universal Data Object (UDO)**: Use a [UDO variable]() to explicitly persist the netID property in `utag_data`. For example, add the netID identity property as `netid_tpid` to the UDO of your pages:
+* **Universal Data Object (UDO)**: Use a [UDO variable](https://docs.tealium.com/iq-tag-management/data-layer/data-layer-variables/#udo-variable) to explicitly persist the netID property in `utag_data`. For example, add the netID identity property as `netid_tpid` to the UDO of your pages:
 
   ```js
-  &lt;script type=&#34;text/javascript&#34;&gt;
+  <script type="text/javascript">
     var utag_data={
-        &#34;tealium_event&#34; : &#34;page_view&#34;,
-        &#34;page_name&#34;     : &#34;product_page&#34;,
-        &#34;product_id&#34;    : &#34;423543&#34;,
-        &#34;netid_tpid&#34;    : &#34;12345&#34;
+        "tealium_event" : "page_view",
+        "page_name"     : "product_page",
+        "product_id"    : "423543",
+        "netid_tpid"    : "12345"
       };
-  &lt;/script&gt;
+  </script>
   ```
 
-* **Track an event**: Use [`utag.link()`]() to track a successful netID authentication and response from the browser-based JavaScript API, and include the netID `tpid` as `netid_tpid` in the payload:
+* **Track an event**: Use [`utag.link()`](https://docs.tealium.com/platforms/javascript/track/#track-events) to track a successful netID authentication and response from the browser-based JavaScript API, and include the netID `tpid` as `netid_tpid` in the payload:
 
   ```json
   utag.link({
-    &#34;tealium_event&#34;     : &#34;netid_login&#34;,
-    &#34;netid_tpid&#34;        : &#34;12345&#34;,
+    "tealium_event"     : "netid_login",
+    "netid_tpid"        : "12345",
     ...
   });
   ```
@@ -72,18 +72,18 @@ After the Tealium Collect Tag captures netID properties from the browser’s dat
 
 To do this, create an event attribute to capture the `netid_tpid` value. In the following example, the attribute is set to the value of the first-party cookie:
 
-![](/images//industries/netid-es-add-attribute.png)
+![](https://docs.tealium.com/images//industries/netid-es-add-attribute.png)
 
-netID&#39;s identifier (`tpid`) can be activated as a first-party (Advertiser) ID to an advertising platform using their connector, such as:
+netID's identifier (`tpid`) can be activated as a first-party (Advertiser) ID to an advertising platform using their connector, such as:
 
-* [Adform]()
-* [The Trade Desk]()
+* [Adform](https://docs.tealium.com/server-side-connectors/adform-segments-connector/)
+* [The Trade Desk](https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/)
 
 ### Example
 
 If you use Adform, map the `netid_tpid` event attribute to Adform’s First-Party ID attribute:
 
-![](/images//industries/netid-es-attribute-mapping.png)
+![](https://docs.tealium.com/images//industries/netid-es-attribute-mapping.png)
 
 ## AudienceStream CDP
 
@@ -91,21 +91,21 @@ This data is processed as event attributes and can be stored as visitor attribut
 
 To do this, set a visitor string attribute on the visitor profile to the `netid_tpid` event attribute value. In the following example, the attribute is set to the value of the first-party cookie:
 
-![](/images//industries/netid-as-add-attribute.png)
+![](https://docs.tealium.com/images//industries/netid-as-add-attribute.png)
 
 The visitor ID can then be used to create audiences for visitors using netID as their authentication method.
 
-![](/images//industries/netid-as-new-audience.png)
+![](https://docs.tealium.com/images//industries/netid-as-new-audience.png)
 
 For real-time activation to advertising platforms such as Adform and The Trade Desk, use their Tealium connectors:
 
-* [Adform]()
-* [The Trade Desk]()
+* [Adform](https://docs.tealium.com/server-side-connectors/adform-segments-connector/)
+* [The Trade Desk](https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/)
 
 ## References
 
 * [netID: Browser-Based JavaScript API](https://developerzone.netid.dev/1.6/cmp/browser-based/)
-* [Adform: Segments Connector]()
+* [Adform: Segments Connector](https://docs.tealium.com/server-side-connectors/adform-segments-connector/)
 * [Adform: Using First Party IDs](https://www.adformhelp.com/hc/en-us/articles/9740579323153-Use-First-Party-IDs-for-Site-Tracking)
-* [The Trade Desk First Party Data Connector]()
-* [Tealium Data Layer]()
+* [The Trade Desk First Party Data Connector](https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/)
+* [Tealium Data Layer](https://docs.tealium.com/iq-tag-management/data-layer/about-the-data-layer/)

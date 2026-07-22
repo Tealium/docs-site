@@ -9,22 +9,26 @@ A deep link is a hyperlink that launches a mobile app and, optionally, delivers 
 
 The following platforms support deep link tracking:
 
-- [Android (Kotlin)](/platforms/android-kotlin/)
-- [iOS (Swift v2.x)](/platforms/ios-swift/)
+- [Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/)
+- [iOS (Swift v2.x)](https://docs.tealium.com/platforms/ios-swift/)
 
 ## How it works
 
 When your app is launched from a deep link, the Tealium library adds the URL to the data layer as the attribute `deep_link_url`.
 
-The deep link&#39;s query parameters are added to the data layer with attribute names in the format `deep_link_param_&lt;param name&gt;`.
+The deep link's query parameters are added to the data layer with attribute names in the format `deep_link_param_<param name>`.
 
 For example, `https://example.com/?campaign_code=SUMMER` becomes:  
 ```javascript
-deep_link_url = &#34;https://example.com/?campaign_code=SUMMER&#34;
-deep_link_param_campaign_code = &#34;SUMMER&#34;
+deep_link_url = "https://example.com/?campaign_code=SUMMER"
+deep_link_param_campaign_code = "SUMMER"
 ```
 
+
+<blockquote>
 Deep link data layer attributes are only stored for the session.
+</blockquote>
+
 
 ## Configuration
 
@@ -32,15 +36,15 @@ Deep link data layer attributes are only stored for the session.
 
 Deep link tracking is automatically enabled in Tealium for Android (Kotlin).
 
-Disable automatic tracking of deep links by setting the [`deepLinkTrackingEnabled`](/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled) property to `false`.
+Disable automatic tracking of deep links by setting the [`deepLinkTrackingEnabled`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled) property to `false`.
 
 ### Swift v2.x
 
-Automatic deep link tracking is enabled by default in Tealium for iOS (Swift v2.x) through the method swizzling technique. Method swizzling is the dynamic swapping of one method implementation for another during a program&#39;s runtime.
+Automatic deep link tracking is enabled by default in Tealium for iOS (Swift v2.x) through the method swizzling technique. Method swizzling is the dynamic swapping of one method implementation for another during a program's runtime.
 
-If you do not want to use method swizzling or don&#39;t want deep links to be tracked automatically, you can disable automatic deep link tracking with the `info.plist` key `TealiumAutotrackingDeepLinkEnabled` set to `false`.
+If you do not want to use method swizzling or don't want deep links to be tracked automatically, you can disable automatic deep link tracking with the `info.plist` key `TealiumAutotrackingDeepLinkEnabled` set to `false`.
 
-If you want to track deep links without method swizzling and you are using `SwiftUI`, after disabling the automatic tracking in the `info.plist`, use the `TealiumAppTrackable` wrapper around your application content&#39;s `View`:
+If you want to track deep links without method swizzling and you are using `SwiftUI`, after disabling the automatic tracking in the `info.plist`, use the `TealiumAppTrackable` wrapper around your application content's `View`:
 
 ```swift
 var body: some Scene {
@@ -56,12 +60,12 @@ If you are using `UIKit`, you can instead call the `handleDeeplink` method on th
 
 ### Swift v1.x
 
-Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app&#39;s `AppDelegate` class to enable deep linking.  
+Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app's `AppDelegate` class to enable deep linking.  
 
 ```swift
 func application(_ app: UIApplication,
                  open url: URL,
-                 options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
+                 options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
   tealium?.handleDeepLink(url)
   return true
 }

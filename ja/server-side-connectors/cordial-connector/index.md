@@ -13,12 +13,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/cordial-connector/
 
 ## 構成
 
-コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **APIキー**  
-CordialはHTTP Basic認証（BA）を使用します。Cordialプラットフォーム内で、アカウント用のエンコードされたAPIキーを生成できます。このキーはBA認証の`username`として使用されます。詳細については、[RESTful APIの概要と使用法](https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage)を参照してください。Cordialで`API_KEY`ホワイトリストに[Tealium IPアドレス]()を追加する必要があります。
+CordialはHTTP Basic認証（BA）を使用します。Cordialプラットフォーム内で、アカウント用のエンコードされたAPIキーを生成できます。このキーはBA認証の`username`として使用されます。詳細については、[RESTful APIの概要と使用法](https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage)を参照してください。
+<blockquote>
+Cordialで`API_KEY`ホワイトリストに[Tealium IPアドレス]()を追加する必要があります。
+</blockquote>
+
 * **Path-URL**  
 以下のPath URLから選択するか、手動で入力します。
   * `https://api.cordial.io/v2/` - 管理パネルのURLが`https://admin.cordial.io/`の場合、このURLを使用します。
@@ -64,7 +68,7 @@ CordialはHTTP Basic認証（BA）を使用します。Cordialプラットフォ
 | 文字列パラメータ | 属性タイプが文字列として構成されている場合、文字列属性値を追加します。 |
 | 数値パラメータ | 属性タイプが数値として構成されている場合、数値属性値を追加します。 |
 | 日付パラメータ | 属性タイプが日付として構成されている場合、日付属性値を追加します。 |
-| ジオパラメータ | 属性タイプがジオとして構成されている場合、ジオ属性値を追加します。ジオ属性には次のキー名のスキーマが含まれています：&lt;ul&gt;&lt;li&gt;住所&lt;/li&gt;&lt;li&gt;住所2&lt;/li&gt;&lt;li&gt;市区町村&lt;/li&gt;&lt;li&gt;州&lt;/li&gt;&lt;li&gt;郵便番号&lt;/li&gt;&lt;li&gt;国ISO&lt;/li&gt;&lt;li&gt;タイムゾーン&lt;/li&gt;&lt;li&gt;位置&lt;/li&gt;&lt;ul&gt;&lt;li&gt;緯度&lt;/li&gt;&lt;li&gt;経度&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt; |
+| ジオパラメータ | 属性タイプがジオとして構成されている場合、ジオ属性値を追加します。ジオ属性には次のキー名のスキーマが含まれています：<ul><li>住所</li><li>住所2</li><li>市区町村</li><li>州</li><li>郵便番号</li><li>国ISO</li><li>タイムゾーン</li><li>位置</li><ul><li>緯度</li><li>経度</li></ul></ul> |
 | 配列パラメータ | 属性タイプが配列として構成されている場合、配列属性値を追加します。デフォルトの動作は、提供された値で配列値を置き換えることです。デフォルトをオーバーライドするために、追加/削除の動作を指定するオブジェクトを指定することができます。最大アイテム数の制限（デフォルトは25）を超える場合、新しい値は最も古い値を置き換えます。 |
 
 ### コンタクトにカートを追加
@@ -186,8 +190,8 @@ CordialはHTTP Basic認証（BA）を使用します。Cordialプラットフォ
 | CID | コンタクトID。 |
 | 識別方法 | リクエストボディ内のどの識別キーを使用してコンタクトを検索するかを指定します。 |
 | 外部変数 | 外部変数をサポートします。テンプレートが使用されます。 |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;外部変数入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記（例：`items.name`）でネストされたテンプレート変数を名付けます。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;パラメータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt; |
+| テンプレート変数 | <ul><li>外部変数入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記（例：`items.name`）でネストされたテンプレート変数を名付けます。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | <ul><li>パラメータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。</li></ul> |
 
 ### コンタクト活動を記録（バッチ）
 
@@ -203,7 +207,7 @@ CordialはHTTP Basic認証（BA）を使用します。Cordialプラットフォ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| ホスト | Cordialリージョンを指定します：&lt;ul&gt;&lt;li&gt;usw1: `https://integrations-ingest-svc.cordial.com`&lt;/li&gt;&lt;li&gt;usw2: `https://integrations-ingest-svc.usw2.cordial.com`&lt;/li&gt;&lt;li&gt;use1: `https://integrations-ingest-svc.use1.cordial.com`&lt;/li&gt;&lt;/ul&gt; |
+| ホスト | Cordialリージョンを指定します：<ul><li>usw1: `https://integrations-ingest-svc.cordial.com`</li><li>usw2: `https://integrations-ingest-svc.usw2.cordial.com`</li><li>use1: `https://integrations-ingest-svc.use1.cordial.com`</li></ul> |
 | ソース | データソース。デフォルト値は `TEALIUM` です。 |
 
 #### 識別子

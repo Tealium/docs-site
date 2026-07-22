@@ -7,7 +7,7 @@ Create audiences from your Snowflake data and manage them over time. Tealium Aud
 
 ## Requirements
 
-* Tealium Audience Discovery for Snowflake installed in your Snowflake account with the required roles and permissions configured. See [Install Tealium Audience Discovery for Snowflake]() for instructions.
+* Tealium Audience Discovery for Snowflake installed in your Snowflake account with the required roles and permissions configured. See [Install Tealium Audience Discovery for Snowflake](https://docs.tealium.com/install-tealium-audience-discovery/) for instructions.
 * Access to the required databases, schemas, and tables.
 
 ## Create an audience
@@ -15,11 +15,11 @@ Create audiences from your Snowflake data and manage them over time. Tealium Aud
 ### Source dataset
 
 1. Open Tealium Audience Discovery for Snowflake.
-1. From **Audiences**, click **&#43; Create new audience**.
+1. From **Audiences**, click **+ Create new audience**.
 1. Enter an audience name and description.
 1. Select how to define the dataset:
 
-   * **Point &amp; Click**
+   * **Point & Click**
      1. Select a **Database**, **Schema**, and **Table / View**.
      1. Select a **User ID column** to uniquely identify each user. This column is used to de-duplicate records and ensure each user appears only once across scheduled runs.
 
@@ -39,7 +39,11 @@ Create audiences from your Snowflake data and manage them over time. Tealium Aud
      1. Click **Preview Query** to review the results.
      1. Select a **User ID column** to uniquely identify each user.
 
-    The Cortex method requires a semantic view to be configured in your Snowflake account.
+    
+<blockquote>
+The Cortex method requires a semantic view to be configured in your Snowflake account.
+</blockquote>
+
 
 1. Review the **Data Preview** to validate the dataset before continuing:
 
@@ -48,8 +52,10 @@ Create audiences from your Snowflake data and manage them over time. Tealium Aud
    * A live record count updates as you add filter conditions.
 
    
-   The **User ID column** must contain unique values for each user. If the column contains duplicates, the app displays a warning and prevents you from continuing. Define filters to ensure each user appears only once, or work with your Snowflake data team to identify the correct column.
-   
+<blockquote>
+The **User ID column** must contain unique values for each user. If the column contains duplicates, the app displays a warning and prevents you from continuing. Define filters to ensure each user appears only once, or work with your Snowflake data team to identify the correct column.
+</blockquote>
+
 
 1. Click **Next**.
 
@@ -68,16 +74,18 @@ These columns are added automatically and cannot be modified.
 1. (Optional) Configure audience criteria:
 
    * Review the full dataset preview.
-   * Use **Point &amp; Click** to add one or more filter blocks.
+   * Use **Point & Click** to add one or more filter blocks.
    * Add conditions within each block.
    * Use the **VAL** / **COL** toggle to switch between a fixed value (**VAL**) and a reference column (**COL**) when defining a condition.
    * Select a single operator (**AND** or **OR**) for each block.
 
    
-   All conditions within a filter block use the same operator. To apply different logic, create multiple filter blocks.
-   
+<blockquote>
+All conditions within a filter block use the same operator. To apply different logic, create multiple filter blocks.
+</blockquote>
 
-   ![](/images/server-side/data-sources/tealium-audience-discovery-filter-builder.png)
+
+   ![](https://docs.tealium.com/images/server-side/data-sources/tealium-audience-discovery-filter-builder.png)
 
    * Click **Preview filtered dataset** to validate the results.
    * Alternatively, use **SQL (Advanced)** to define filtering logic using a WHERE clause.
@@ -91,8 +99,10 @@ These columns are added automatically and cannot be modified.
    After the initial run processes all matching records, subsequent runs load only new records based on the user ID column.
 
    
-   More frequent schedules increase compute costs in your Snowflake account.
-   
+<blockquote>
+More frequent schedules increase compute costs in your Snowflake account.
+</blockquote>
+
 
 1. Click **Next**.
 
@@ -103,7 +113,9 @@ Review the configuration and click **Create audience**.
 The app creates the audience and runs the initial load, processing all matching records. The audience overview shows the record count increase from zero as the initial run completes. Subsequent scheduled runs add only new records.
 
 
+<blockquote>
 Use **Save as draft** to save an incomplete audience configuration and continue later. Draft audiences are not available for downstream use until activated.
+</blockquote>
 
 
 ## Manage audiences
@@ -122,7 +134,7 @@ The audience details view displays:
 * Audience history graph and refresh history
 * Data preview
 
-![](/images/server-side/data-sources/tealium-audience-discovery-audience-details.png)
+![](https://docs.tealium.com/images/server-side/data-sources/tealium-audience-discovery-audience-details.png)
 
 ### Audience actions
 
@@ -136,7 +148,9 @@ From the audience details view or the **Actions** menu in the table, perform the
 * **Delete** — Remove the audience permanently  
 
 
+<blockquote>
 Use **Share** to copy the connection details required when configuring the Snowflake data source in Tealium.
+</blockquote>
 
 
 ### Refresh audience data
@@ -163,4 +177,4 @@ This behavior allows different activation strategies:
 
 ## Next steps
 
-[Connect the Snowflake audiences to Tealium]() to begin loading data for activation.
+[Connect the Snowflake audiences to Tealium](https://docs.tealium.com/connect-snowflake-audiences/) to begin loading data for activation.

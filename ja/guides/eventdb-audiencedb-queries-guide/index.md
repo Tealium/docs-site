@@ -17,13 +17,15 @@ url: https://docs.tealium.com/ja/guides/eventdb-audiencedb-queries-guide/
 これらのクエリを実行するには、以下が必要です：
 
 * Tealium AudienceStream
-* アカウントとプロファイルに対して有効にされたEventDBおよびAudienceDB。[AudienceDBとEventDBの構成]()を参照してください。
+* アカウントとプロファイルに対して有効にされたEventDBおよびAudienceDB。[AudienceDBとEventDBの構成](https://docs.tealium.com/enable-audiencedb-eventdb/)を参照してください。
 * 以下の表にリストされている属性をAudienceStreamで構成する必要があります。デフォルト属性はすべてのアカウントで利用可能です。カスタム属性の構成については、アカウントマネージャーにお問い合わせください。
 
 各クエリで、`ACCOUNT__PROFILE`をデータベース名に置き換えてください。この値は、例えば`mycompany__main`のように、Tealiumアカウントとプロファイルをダブルアンダースコアで結合したものです。
 
 
+<blockquote>
 これらのクエリの列名は、属性タイトルに基づいてAudienceDBおよびEventDBビューの命名規則に従います。アカウントで属性を定義する方法によって、実際の列名が異なる場合があります。クエリを実行する前に、スキーマに対して列名を確認してください。
+</blockquote>
 
 
 ### 必要なAudienceDB属性
@@ -56,7 +58,7 @@ url: https://docs.tealium.com/ja/guides/eventdb-audiencedb-queries-guide/
 
 EventDBはページビュー、セッション、タイムスタンプなどのイベントレベルデータを保存します。これらのクエリを使用して、トラフィックパターンとセッション行動を分析します。
 
-EventDBテーブルとスキーマについての詳細は、[EventDBデータガイド]()を参照してください。
+EventDBテーブルとスキーマについての詳細は、[EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)を参照してください。
 
 ### バウンスセッション
 
@@ -64,11 +66,11 @@ EventDBテーブルとスキーマについての詳細は、[EventDBデータ�
 
 ```sql
 SELECT
-  COUNT(DISTINCT &#34;event - first party cookies - utag_main_ses_id&#34;)
+  COUNT(DISTINCT "event - first party cookies - utag_main_ses_id")
     AS total_sessions,
   COUNT(DISTINCT CASE
-    WHEN &#34;event - first party cookies - utag_main__pn&#34; = 1
-    THEN &#34;event - first party cookies - utag_main_ses_id&#34;
+    WHEN "event - first party cookies - utag_main__pn" = 1
+    THEN "event - first party cookies - utag_main_ses_id"
   END)
     AS bounced_sessions
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events;
@@ -80,9 +82,9 @@ FROM ACCOUNT__PROFILE.events_view__all_events__all_events;
 
 ```sql
 SELECT
-  DATE_TRUNC(&#39;hour&#39;, &#34;event - time&#34;)                               AS hour,
-  COUNT(DISTINCT &#34;event - visitor id&#34;)                             AS visitors,
-  COUNT(DISTINCT &#34;event - first party cookies - utag_main_ses_id&#34;) AS visits
+  DATE_TRUNC('hour', "event - time")                               AS hour,
+  COUNT(DISTINCT "event - visitor id")                             AS visitors,
+  COUNT(DISTINCT "event - first party cookies - utag_main_ses_id") AS visits
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events
 GROUP BY hour
 ORDER BY hour;
@@ -94,11 +96,11 @@ ORDER BY hour;
 
 ```sql
 SELECT
-  &#34;event - page url - full_url&#34;  AS page,
+  "event - page url - full_url"  AS page,
   COUNT(*)                       AS pageviews,
   COUNT(DISTINCT CASE
-    WHEN &#34;event - first party cookies - utag_main__pn&#34; = 1
-    THEN &#34;event - first party cookies - utag_main_ses_id&#34;
+    WHEN "event - first party cookies - utag_main__pn" = 1
+    THEN "event - first party cookies - utag_main_ses_id"
   END)                           AS entrances
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events
 GROUP BY page
@@ -112,12 +114,12 @@ LIMIT 10;
 
 ```sql
 SELECT
-  &#34;event - page url - full_url&#34;  AS page,
-  COUNT(DISTINCT &#34;event - first party cookies - utag_main_ses_id&#34;)
+  "event - page url - full_url"  AS page,
+  COUNT(DISTINCT "event - first party cookies - utag_main_ses_id")
     AS sessions,
   COUNT(DISTINCT CASE
-    WHEN &#34;event - first party cookies - utag_main__pn&#34; = 1
-    THEN &#34;event - first party cookies - utag_main_ses_id&#34;
+    WHEN "event - first party cookies - utag_main__pn" = 1
+    THEN "event - first party cookies - utag_main_ses_id"
   END)
     AS bounce_sessions
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events
@@ -134,32 +136,32 @@ LIMIT 10;
 
 ```sql
 SELECT
-  DATE(e.&#34;event - time&#34;)                                       AS start_date,
-  e.&#34;event - first party cookies - channel_name_cookie&#34;        AS channel,
-  COUNT(DISTINCT &#34;event - visitor id&#34;)                         AS visitors
+  DATE(e."event - time")                                       AS start_date,
+  e."event - first party cookies - channel_name_cookie"        AS channel,
+  COUNT(DISTINCT "event - visitor id")                         AS visitors
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events e
 GROUP BY
-  DATE(e.&#34;event - time&#34;),
-  e.&#34;event - first party cookies - channel_name_cookie&#34;;
+  DATE(e."event - time"),
+  e."event - first party cookies - channel_name_cookie";
 ```
 
 ## AudienceDBクエリ
 
 AudienceDBは訪問レベルのデータを保存し、アイデンティティのスティッチング結果、デバイスの集計、および長期的な指標を含みます。これらのクエリを使用して、既知の訪問の人口とエンゲージメントの傾向を分析します。
 
-AudienceDBテーブルとスキーマについての詳細は、[AudienceDBデータガイド]()を参照してください。
+AudienceDBテーブルとスキーマについての詳細は、[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)を参照してください。
 
 ### 既知の訪問の割合
 
-AudienceStreamは`visitor_replaces_view`でステッチされた訪問のアイデンティティを記録します。これらの2つのクエリを別々に実行し、その後で式を適用します。詳細については、[訪問のスティッチング]()を参照してください。
+AudienceStreamは`visitor_replaces_view`でステッチされた訪問のアイデンティティを記録します。これらの2つのクエリを別々に実行し、その後で式を適用します。詳細については、[訪問のスティッチング](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
 
 ```sql
 -- 既知の訪問
-SELECT COUNT(DISTINCT &#34;visitor - id&#34;) AS known_visitors
+SELECT COUNT(DISTINCT "visitor - id") AS known_visitors
 FROM ACCOUNT__PROFILE.visitor_replaces_view;
 
 -- 合計訪問
-SELECT COUNT(DISTINCT &#34;visitor - id&#34;) AS total_visitors
+SELECT COUNT(DISTINCT "visitor - id") AS total_visitors
 FROM ACCOUNT__PROFILE.visitors_view_normalized;
 ```
 
@@ -173,89 +175,89 @@ FROM ACCOUNT__PROFILE.visitors_view_normalized;
 
 ```sql
 SELECT
-  COUNT(DISTINCT &#34;ID&#34;)
+  COUNT(DISTINCT "ID")
 FROM
 (
   SELECT
-    v.&#34;visitor - id&#34;  AS &#34;ID&#34;,
-    COUNT(vr.&#34;visitor - id&#34;) AS &#34;Total Replaces&#34;
+    v."visitor - id"  AS "ID",
+    COUNT(vr."visitor - id") AS "Total Replaces"
   FROM ACCOUNT__PROFILE.visitors_view_normalized v
   INNER JOIN ACCOUNT__PROFILE.visitor_replaces_view vr
-    ON vr.&#34;visitor - id&#34; = v.&#34;visitor - id&#34;
+    ON vr."visitor - id" = v."visitor - id"
   GROUP BY
-    v.&#34;visitor - id&#34;
+    v."visitor - id"
 )
-WHERE &#34;Total Replaces&#34; &gt;= 1;
+WHERE "Total Replaces" >= 1;
 ```
 ### 既知の訪問のデバイス分布
 
-このクエリは、既知の訪問がセッション間で使用するデバイスの組み合わせを示します。各行はユニークなデバイスパターンを表し、例えばiPhoneとMacデスクトップの両方を使用した訪問は、`&#34;iPhone used&#34;` および `&#34;Mac desktop used&#34;` の列に表示されます。
+このクエリは、既知の訪問がセッション間で使用するデバイスの組み合わせを示します。各行はユニークなデバイスパターンを表し、例えばiPhoneとMacデスクトップの両方を使用した訪問は、`"iPhone used"` および `"Mac desktop used"` の列に表示されます。
 
 ```sql
 SELECT
-  CASE WHEN patterns.&#34;Android&#34; &gt; 0
-    THEN &#39;Android&#39; ELSE &#39; &#39; END               AS &#34;Android used&#34;,
-  CASE WHEN patterns.&#34;BlackBerry&#34; &gt; 0
-    THEN &#39;BlackBerry&#39; ELSE &#39; &#39; END            AS &#34;BlackBerry used&#34;,
-  CASE WHEN patterns.&#34;Chromebook&#34; &gt; 0
-    THEN &#39;Chromebook&#39; ELSE &#39; &#39; END            AS &#34;Chromebook used&#34;,
-  CASE WHEN patterns.&#34;iPad&#34; &gt; 0
-    THEN &#39;iPad&#39; ELSE &#39; &#39; END                  AS &#34;iPad used&#34;,
-  CASE WHEN patterns.&#34;iPhone&#34; &gt; 0
-    THEN &#39;iPhone&#39; ELSE &#39; &#39; END                AS &#34;iPhone used&#34;,
-  CASE WHEN patterns.&#34;Mac desktop&#34; &gt; 0
-    THEN &#39;Mac desktop&#39; ELSE &#39; &#39; END           AS &#34;Mac desktop used&#34;,
-  CASE WHEN patterns.&#34;other&#34; &gt; 0
-    THEN &#39;other&#39; ELSE &#39; &#39; END                 AS &#34;Other used&#34;,
-  CASE WHEN patterns.&#34;Windows desktop&#34; &gt; 0
-    THEN &#39;Windows desktop&#39; ELSE &#39; &#39; END       AS &#34;Windows desktop used&#34;,
-  CASE WHEN patterns.&#34;Windows phone&#34; &gt; 0
-    THEN &#39;Windows phone&#39; ELSE &#39; &#39; END         AS &#34;Windows phone used&#34;,
-  CASE WHEN patterns.&#34;Windows tablet&#34; &gt; 0
-    THEN &#39;Windows tablet&#39; ELSE &#39; &#39; END        AS &#34;Windows tablet used&#34;,
-  COUNT(DISTINCT patterns.&#34;visit - visitor id&#34;) AS &#34;Unique visitors&#34;
+  CASE WHEN patterns."Android" > 0
+    THEN 'Android' ELSE ' ' END               AS "Android used",
+  CASE WHEN patterns."BlackBerry" > 0
+    THEN 'BlackBerry' ELSE ' ' END            AS "BlackBerry used",
+  CASE WHEN patterns."Chromebook" > 0
+    THEN 'Chromebook' ELSE ' ' END            AS "Chromebook used",
+  CASE WHEN patterns."iPad" > 0
+    THEN 'iPad' ELSE ' ' END                  AS "iPad used",
+  CASE WHEN patterns."iPhone" > 0
+    THEN 'iPhone' ELSE ' ' END                AS "iPhone used",
+  CASE WHEN patterns."Mac desktop" > 0
+    THEN 'Mac desktop' ELSE ' ' END           AS "Mac desktop used",
+  CASE WHEN patterns."other" > 0
+    THEN 'other' ELSE ' ' END                 AS "Other used",
+  CASE WHEN patterns."Windows desktop" > 0
+    THEN 'Windows desktop' ELSE ' ' END       AS "Windows desktop used",
+  CASE WHEN patterns."Windows phone" > 0
+    THEN 'Windows phone' ELSE ' ' END         AS "Windows phone used",
+  CASE WHEN patterns."Windows tablet" > 0
+    THEN 'Windows tablet' ELSE ' ' END        AS "Windows tablet used",
+  COUNT(DISTINCT patterns."visit - visitor id") AS "Unique visitors"
 FROM
 (
   SELECT
-    vs.&#34;visit - visitor id&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Android&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Android&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;BlackBerry&#39;
-      THEN 1 ELSE 0 END)         AS &#34;BlackBerry&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Chromebook&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Chromebook&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;iPad&#39;
-      THEN 1 ELSE 0 END)         AS &#34;iPad&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;iPhone&#39;
-      THEN 1 ELSE 0 END)         AS &#34;iPhone&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Mac desktop&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Mac desktop&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;other&#39;
-      THEN 1 ELSE 0 END)         AS &#34;other&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Windows desktop&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Windows desktop&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Windows phone&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Windows phone&#34;,
-    SUM(CASE WHEN vs.&#34;visit - property - active device (46)&#34; = &#39;Windows tablet&#39;
-      THEN 1 ELSE 0 END)         AS &#34;Windows tablet&#34;
+    vs."visit - visitor id",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Android'
+      THEN 1 ELSE 0 END)         AS "Android",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'BlackBerry'
+      THEN 1 ELSE 0 END)         AS "BlackBerry",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Chromebook'
+      THEN 1 ELSE 0 END)         AS "Chromebook",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'iPad'
+      THEN 1 ELSE 0 END)         AS "iPad",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'iPhone'
+      THEN 1 ELSE 0 END)         AS "iPhone",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Mac desktop'
+      THEN 1 ELSE 0 END)         AS "Mac desktop",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'other'
+      THEN 1 ELSE 0 END)         AS "other",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Windows desktop'
+      THEN 1 ELSE 0 END)         AS "Windows desktop",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Windows phone'
+      THEN 1 ELSE 0 END)         AS "Windows phone",
+    SUM(CASE WHEN vs."visit - property - active device (46)" = 'Windows tablet'
+      THEN 1 ELSE 0 END)         AS "Windows tablet"
   FROM ACCOUNT__PROFILE.visits_view vs
-  WHERE vs.&#34;visit - visitor id&#34; IN (
-    SELECT DISTINCT &#34;visitor - id&#34;
+  WHERE vs."visit - visitor id" IN (
+    SELECT DISTINCT "visitor - id"
     FROM ACCOUNT__PROFILE.visitor_replaces_view
   )
-  GROUP BY vs.&#34;visit - visitor id&#34;
+  GROUP BY vs."visit - visitor id"
 ) patterns
 GROUP BY
-  &#34;Android used&#34;,
-  &#34;BlackBerry used&#34;,
-  &#34;Chromebook used&#34;,
-  &#34;iPad used&#34;,
-  &#34;iPhone used&#34;,
-  &#34;Mac desktop used&#34;,
-  &#34;Other used&#34;,
-  &#34;Windows desktop used&#34;,
-  &#34;Windows phone used&#34;,
-  &#34;Windows tablet used&#34;;
+  "Android used",
+  "BlackBerry used",
+  "Chromebook used",
+  "iPad used",
+  "iPhone used",
+  "Mac desktop used",
+  "Other used",
+  "Windows desktop used",
+  "Windows phone used",
+  "Windows tablet used";
 ```
 
 ### 訪問ごとのデバイス数
@@ -264,21 +266,21 @@ GROUP BY
 
 ```sql
 SELECT
-  &#34;Unique Devices&#34;,
-  COUNT(&#34;visitor - id&#34;) AS &#34;Total Visitors&#34;
+  "Unique Devices",
+  COUNT("visitor - id") AS "Total Visitors"
 FROM
 (
   SELECT
-    v.&#34;visitor - id&#34;,
-    COUNT(DISTINCT t.&#34;visitor tally - lifetime devices used - key&#34;)
-      AS &#34;Unique Devices&#34;
+    v."visitor - id",
+    COUNT(DISTINCT t."visitor tally - lifetime devices used - key")
+      AS "Unique Devices"
   FROM ACCOUNT__PROFILE.visitors_view_normalized v
   LEFT JOIN ACCOUNT__PROFILE.visitor_tallies_view_normalized t
-    ON t.&#34;visitor - id&#34; = v.&#34;visitor - id&#34;
-    AND t.&#34;visitor tally - lifetime devices used - value&#34; != &#39;&#39;
-  GROUP BY v.&#34;visitor - id&#34;
+    ON t."visitor - id" = v."visitor - id"
+    AND t."visitor tally - lifetime devices used - value" != ''
+  GROUP BY v."visitor - id"
 )
-GROUP BY &#34;Unique Devices&#34;;
+GROUP BY "Unique Devices";
 ```
 
 ### 複数のデバイスを使用する既知の訪問の平均訪問時間
@@ -287,23 +289,23 @@ GROUP BY &#34;Unique Devices&#34;;
 
 ```sql
 SELECT
-  SUM(&#34;Total Duration&#34;),
-  COUNT(DISTINCT &#34;ID&#34;)
+  SUM("Total Duration"),
+  COUNT(DISTINCT "ID")
 FROM
 (
   SELECT
-    v.&#34;visitor - id&#34; AS &#34;ID&#34;,
-    SUM(v.&#34;visitor - metric - average visit duration in minutes&#34;)
-      AS &#34;Total Duration&#34;,
-    COUNT(DISTINCT t.&#34;visitor tally - lifetime devices used - key&#34;)
-      AS &#34;Unique Devices&#34;
+    v."visitor - id" AS "ID",
+    SUM(v."visitor - metric - average visit duration in minutes")
+      AS "Total Duration",
+    COUNT(DISTINCT t."visitor tally - lifetime devices used - key")
+      AS "Unique Devices"
   FROM ACCOUNT__PROFILE.visitors_view_normalized v
   LEFT JOIN ACCOUNT__PROFILE.visitor_tallies_view_normalized t
-    ON t.&#34;visitor - id&#34; = v.&#34;visitor - id&#34;
-  WHERE t.&#34;visitor tally - lifetime devices used - key&#34; != &#39;&#39;
-  GROUP BY v.&#34;visitor - id&#34;
+    ON t."visitor - id" = v."visitor - id"
+  WHERE t."visitor tally - lifetime devices used - key" != ''
+  GROUP BY v."visitor - id"
 )
-WHERE &#34;Unique Devices&#34; &gt;= 2;
+WHERE "Unique Devices" >= 2;
 ```
 
 
@@ -313,7 +315,9 @@ WHERE &#34;Unique Devices&#34; &gt;= 2;
 `visitor_replaces_view` を使用して、EventDBとAudienceDBのデータを組み合わせる際に訪問のIDを解決します。
 
 
+<blockquote>
 EventDBのイベントとAudienceDBの訪問テーブルは直接的な結合キーを共有していません。イベントレベルと訪問レベルのデータを組み合わせるには、以下に示すように `visitor_replaces_view` を通じて結合します。
+</blockquote>
 
 
 ### イベントを訪問プロファイルに結合
@@ -326,9 +330,9 @@ SELECT
   v.*
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events e
 LEFT JOIN ACCOUNT__PROFILE.visitor_replaces_view vr
-  ON e.&#34;event - visitor id&#34; = vr.&#34;visitor - replaces id&#34;
+  ON e."event - visitor id" = vr."visitor - replaces id"
 LEFT JOIN ACCOUNT__PROFILE.visitors_view_normalized v
-  ON vr.&#34;visitor - id&#34; = v.&#34;visitor - id&#34;;
+  ON vr."visitor - id" = v."visitor - id";
 ```
 
 ### 訪問を訪問プロファイルに結合
@@ -341,7 +345,7 @@ SELECT
   vs.*
 FROM ACCOUNT__PROFILE.visitors_view_normalized v
 LEFT JOIN ACCOUNT__PROFILE.visits_view vs
-  ON vs.&#34;visit - visitor id&#34; = v.&#34;visitor - id&#34;;
+  ON vs."visit - visitor id" = v."visitor - id";
 ```
 
 ## オムニチャネルクエリ
@@ -353,58 +357,58 @@ LEFT JOIN ACCOUNT__PROFILE.visits_view vs
 
 ```sql
 SELECT
-  LOWER(offline_online_combined_date.&#34;event - first party cookies - channel_name_cookie&#34;)
+  LOWER(offline_online_combined_date."event - first party cookies - channel_name_cookie")
     AS channel,
-  DATE(offline_online_combined_date.&#34;date&#34;)                AS date,
-  SUM(offline_online_combined_date.&#34;Total Purchase Amount&#34;) AS total_purchase
+  DATE(offline_online_combined_date."date")                AS date,
+  SUM(offline_online_combined_date."Total Purchase Amount") AS total_purchase
 FROM
 (
   SELECT DISTINCT
-    offline_online_combined.&#34;visitor - id&#34;,
-    offline_online_combined.&#34;event - first party cookies - channel_name_cookie&#34;,
-    DATE(offline_online_combined.&#34;purchase_date&#34;) AS &#34;date&#34;,
-    offline_online_combined.&#34;purchase_amount&#34;     AS &#34;Total Purchase Amount&#34;
+    offline_online_combined."visitor - id",
+    offline_online_combined."event - first party cookies - channel_name_cookie",
+    DATE(offline_online_combined."purchase_date") AS "date",
+    offline_online_combined."purchase_amount"     AS "Total Purchase Amount"
   FROM
   (
     SELECT DISTINCT
-      DATE(e.&#34;event - time&#34;)                    AS &#34;start_date&#34;,
-      DATE(ADD_MONTHS(e.&#34;event - time&#34;, 1))     AS &#34;end_date&#34;,
-      vr.&#34;visitor - id&#34;,
-      e.&#34;event - first party cookies - channel_name_cookie&#34;,
-      offline_data.&#34;purchase_date&#34;,
-      offline_data.&#34;purchase_id&#34;,
-      offline_data.&#34;purchase_amount&#34;
+      DATE(e."event - time")                    AS "start_date",
+      DATE(ADD_MONTHS(e."event - time", 1))     AS "end_date",
+      vr."visitor - id",
+      e."event - first party cookies - channel_name_cookie",
+      offline_data."purchase_date",
+      offline_data."purchase_id",
+      offline_data."purchase_amount"
     FROM ACCOUNT__PROFILE.events_view__all_events__all_events e
     INNER JOIN ACCOUNT__PROFILE.visitor_replaces_view vr
-      ON e.&#34;event - visitor id&#34; = vr.&#34;visitor - replaces id&#34;
+      ON e."event - visitor id" = vr."visitor - replaces id"
     INNER JOIN
     (
       SELECT
-        timestamp &#39;epoch&#39;
-          &#43; CAST(&#34;event - omnichannel - createddate&#34; AS BIGINT) / 1000
-          * interval &#39;1 second&#39; AS &#34;purchase_date&#34;,
-        &#34;event - visitor id&#34;    AS &#34;purchase_id&#34;,
-        SUM(&#34;event - omnichannel - price&#34;) AS &#34;purchase_amount&#34;
+        timestamp 'epoch'
+          + CAST("event - omnichannel - createddate" AS BIGINT) / 1000
+          * interval '1 second' AS "purchase_date",
+        "event - visitor id"    AS "purchase_id",
+        SUM("event - omnichannel - price") AS "purchase_amount"
       FROM ACCOUNT__PROFILE.events_view__all_events__all_events
-      WHERE &#34;event - omnichannel - createddate&#34; IS NOT NULL
-      GROUP BY &#34;purchase_date&#34;, &#34;event - visitor id&#34;
+      WHERE "event - omnichannel - createddate" IS NOT NULL
+      GROUP BY "purchase_date", "event - visitor id"
     ) offline_data
-      ON offline_data.&#34;purchase_id&#34; = vr.&#34;visitor - id&#34;
-      AND offline_data.&#34;purchase_date&#34; &gt;= DATE(e.&#34;event - time&#34;)
-      AND offline_data.&#34;purchase_date&#34; &lt;= DATE(ADD_MONTHS(e.&#34;event - time&#34;, 1))
+      ON offline_data."purchase_id" = vr."visitor - id"
+      AND offline_data."purchase_date" >= DATE(e."event - time")
+      AND offline_data."purchase_date" <= DATE(ADD_MONTHS(e."event - time", 1))
     WHERE
-      &#34;event - udo - order_grand_total&#34; IS NOT NULL
-      AND e.&#34;event - first party cookies - channel_name_cookie&#34; != &#39;Direct Traffic&#39;
+      "event - udo - order_grand_total" IS NOT NULL
+      AND e."event - first party cookies - channel_name_cookie" != 'Direct Traffic'
   ) offline_online_combined
 ) offline_online_combined_date
 GROUP BY
-  offline_online_combined_date.&#34;event - first party cookies - channel_name_cookie&#34;,
-  DATE(offline_online_combined_date.&#34;date&#34;);
+  offline_online_combined_date."event - first party cookies - channel_name_cookie",
+  DATE(offline_online_combined_date."date");
 ```
 
 ## 次のステップ
 
-* EventDBとAudienceDBを構成します。[AudienceDBとEventDBの構成]()を参照してください。
+* EventDBとAudienceDBを構成します。[AudienceDBとEventDBの構成](https://docs.tealium.com/enable-audiencedb-eventdb/)を参照してください。
 * クエリ結果をBIツール（例：TableauやLooker）にエクスポートしてダッシュボードを構築します。
-* 訪問のアイデンティティの解決方法を学びます。[訪問のスティッチングについて]()を参照してください。
-* [EventDBデータガイド]()および[AudienceDBデータガイド]()で利用可能なテーブルとフィールドを確認してください。
+* 訪問のアイデンティティの解決方法を学びます。[訪問のスティッチングについて](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
+* [EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)および[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)で利用可能なテーブルとフィールドを確認してください。

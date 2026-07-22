@@ -7,7 +7,7 @@ Zaius empowers marketers to understand and act on customer behavioral data.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -15,11 +15,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Zaius tag are built into its **Data Mapping** tab. Available categories are:
 
@@ -38,8 +38,8 @@ Since the Zaius tag is e-commerce enabled, it will automatically use the default
 
 |**Destination Name**| **Description**|
 |---| ---|
-|First Name (first\_name)| Customer&#39;s first name on the order.|
-|Last Name (last\_name)| Customer&#39;s last name on the order.|
+|First Name (first\_name)| Customer's first name on the order.|
+|Last Name (last\_name)| Customer's last name on the order.|
 |Phone (phone)| Phone number associated with the order.|
 |Shipping Address (order\_ship\_address)| Shipping address for the order in the following format: street1, street2, city, state, zip, country.|
 |Billing Address (order\_bill\_address)| Billing address for the order in the following format: street1, street2, city, state, zip, country.|
@@ -67,9 +67,9 @@ Since the Zaius tag is e-commerce enabled, it will automatically use the default
 
 Map to these destinations for triggering specific events on a page. To trigger an event:
 
-1. Select an event from the dropdown list. You may choose from the predefined list or create a &#39;Custom&#39; event. For a &#39;Custom&#39; event, enter a name with which to identify it.
+1. Select an event from the dropdown list. You may choose from the predefined list or create a 'Custom' event. For a 'Custom' event, enter a name with which to identify it.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the **&#43;** button and repeat steps #1 and #2.
+1. To map more events, click the **+** button and repeat steps #1 and #2.
 1. Click **Apply**.
 
 The event triggers when the supplied value is found in the data layer.
@@ -98,13 +98,13 @@ To pass a parameter with a pre-defined event:
 1. Event: Select a Zaius event from the drop-down list.
 1. Parameter: Select a Zaius Parameter from the dropdown list.
 1. For a Custom parameter, enter a name with which to identify it.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 |**Destination Name**| **Description**|
 |---| ---|
 |Customer ID (customer\_id)| The identifier of the customer associated with this event.|
 |Email (email)| The email address of the customer associated with this event.|
-|Category (category)| The category associated with this event. This can either be a flat category (Laptops) or hierarchical category using &amp;gt; as delimiters (Electronics &amp;gt; Computers &amp;gt; Laptops).|
+|Category (category)| The category associated with this event. This can either be a flat category (Laptops) or hierarchical category using &gt; as delimiters (Electronics &gt; Computers &gt; Laptops).|
 |Search Term (search\_term)| Search term for on-site search.|
 |Paginate Result Count (paginate\_result\_count)| Number of results in a search pagination.|
 |Paginate Page Number (paginate\_page\_number)| Page depth of search pagination.|
@@ -124,7 +124,7 @@ To map a Custom Event Data variable:
 
 1. Event Action: Enter the name of the Custom Event exactly as specified in the Events tab.
 1. Parameter: Enter the name of the parameter you want to send.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 ## Vendor documentation
 

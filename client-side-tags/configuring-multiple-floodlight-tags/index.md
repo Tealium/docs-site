@@ -4,7 +4,11 @@ description: This articles describes how to set up multiple Floodlight tags in y
 url: https://docs.tealium.com/client-side-tags/configuring-multiple-floodlight-tags/
 ---If you have many Floodlight tags, all with a slightly different configuration, but based on the same load criteria, for example, different paths in the URL, rather than setting up several similar instances of the Floodlight tag, each with different load rules and configuration values, you can combine them into one instance of the Floodlight tag using some additional configuration.
 
-Google recommends migrating to the Google global site tag by implementing the [Floodlight tag](/client-side-tags/floodlight-gtagjs-tag/).
+
+<blockquote>
+Google recommends migrating to the Google global site tag by implementing the [Floodlight tag](https://docs.tealium.com/client-side-tags/floodlight-gtagjs-tag/).
+</blockquote>
+
 
 ## How it works
 
@@ -12,7 +16,7 @@ This multi-tag solution uses data mappings to set the Floodlight parameters dyna
 
 ## New data layer variables
 
-You will need the following variables for the data mappings in the Floodlight tag and for the lookup table extension. The &#34;dc_&#34; prefix is a best practice to remind you that these variables are used for the Floodlight configuration.
+You will need the following variables for the data mappings in the Floodlight tag and for the lookup table extension. The "dc_" prefix is a best practice to remind you that these variables are used for the Floodlight configuration.
 
 Create the following:
 
@@ -35,7 +39,7 @@ Set the following data mappings:
 
 Once completed the mappings will look like this:
 
-![](/images/client-side-tags/doubleclick-multi-tag-data-mappings.png)
+![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-data-mappings.png)
 
 ## Extensions
 
@@ -58,8 +62,8 @@ ADVERTISER ID|TYPE|CATEGORY|COUNTERTYPE
 
 To add this extension:
 
-1. Add a [Lookup Table extension]().
-1. Set the **Title**. For example, &#34;DC Settings&#34;.
+1. Add a [Lookup Table extension](https://docs.tealium.com/lookup-table-extension/).
+1. Set the **Title**. For example, "DC Settings".
 1. Set **Scope** to the Floodlight tag you just added.
 1. Set **Lookup Value In**: `pathname`
 1. Set **Destination**: `dc_settings`
@@ -76,9 +80,13 @@ Each lookup table entry will contain a URL pathname and a delimited string value
 
 The Lookup Table extension should appear as follows:
 
-![](/images/client-side-tags/doubleclick-multi-tag-lookup-table.png)
+![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-lookup-table.png)
 
+
+<blockquote>
 Use the **Import from CSV...** option to manage long lists.
+</blockquote>
+
 
 ### Set data layer extension
 
@@ -86,36 +94,40 @@ This extension will separate the delimited string into separate Floodlight varia
 
 To add this extension:
 
-1. Add a [Set Data Values extension]().
-1. Set the **Title**. For example: &#34;Floodlight Parameters&#34;.
+1. Add a [Set Data Values extension](https://docs.tealium.com/set-data-values-extension/).
+1. Set the **Title**. For example: "Floodlight Parameters".
 1. Set **Scope** to the Floodlight tag you just added.
 1. Set a variable for each of the Floodlight parameters: 
 
 |**Set Variable**| **Value Type**| **Value**|
 | --- | --- | --- |
-|dc\_advertiserId| JS Code| **b[&#39;dc_settings&#39;].split(&#34;&amp;#124;&#34;)[0]** |
-| dc\_type| JS Code| **b[&#39;dc_settings&#39;].split(&#34;&amp;#124;&#34;)[1]**|
-| dc\_category| JS Code| **b[&#39;dc_settings&#39;].split(&#34;&amp;#124;&#34;)[2]**|
-| dc\_counterType| JS Code| **b[&#39;dc_settings&#39;].split(&#34;&amp;#124;&#34;)[3]**|
+|dc\_advertiserId| JS Code| **b['dc_settings'].split("&#124;")[0]** |
+| dc\_type| JS Code| **b['dc_settings'].split("&#124;")[1]**|
+| dc\_category| JS Code| **b['dc_settings'].split("&#124;")[2]**|
+| dc\_counterType| JS Code| **b['dc_settings'].split("&#124;")[3]**|
 
 The extension should appear as follows:
 
-![](/images/client-side-tags/doubleclick-multi-tag-set-data.png)
+![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-set-data.png)
 
+
+<blockquote>
 Use the **Add Condition** to test that `dc_settings` is populated to ensure this will only run when there is a value.
+</blockquote>
+
 
 ### JavaScript code
 
-This extension will suppress the Floodlight tag if the lookup table extension did not output a value, for instance, there is no tag to fire. This means that you can keep the &#34;All Pages&#34; load rule set on the Floodlight tag and it will not fire if there is no configuration for the current page.
+This extension will suppress the Floodlight tag if the lookup table extension did not output a value, for instance, there is no tag to fire. This means that you can keep the "All Pages" load rule set on the Floodlight tag and it will not fire if there is no configuration for the current page.
 
 To add this extension:
 
-1. Add a [JavaScript Code extension]().
-1. Set the **Title**. For example: &#34;Check Value&#34;.
+1. Add a [JavaScript Code extension](https://docs.tealium.com/advanced-javascript-code-extension/).
+1. Set the **Title**. For example: "Check Value".
 1. Set **Scope** to the Floodlight tag you just added.
 1. Enter this code:  
 ```
-if(b[&#39;dc_settings&#39;]===&#39;&#39;){
+if(b['dc_settings']===''){
     return false;
 }
 ```

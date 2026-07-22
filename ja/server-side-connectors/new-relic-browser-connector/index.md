@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-browser-connec
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -38,38 +38,38 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-browser-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|New Relicブラウザアプリケーション|  &lt;ul&gt;&lt;li&gt;メトリクスを提供するブラウザアプリケーション。&lt;/li&gt;&lt;li&gt;アプリケーションがまだNew Relic Insightsに存在しない場合、または作成されない場合は、カスタム名を提供します。&lt;/li&gt;&lt;li&gt;これはNew Relicシステムにアプリケーションを作成するわけではなく、New Relic Insightsでアプリケーションをクエリする能力を提供します。&lt;/li&gt;&lt;/ul&gt; |
-|イベントカテゴリ|  &lt;ul&gt;&lt;li&gt;イベントカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|New RelicアプリケーションID|  &lt;ul&gt;&lt;li&gt;New RelicアプリケーションID&lt;/li&gt;&lt;/ul&gt; |
-|サーバーサイドアプリケーション名|  &lt;ul&gt;&lt;li&gt;サーバーサイドアプリケーション名&lt;/li&gt;&lt;/ul&gt; |
-|自律システム番号|  &lt;ul&gt;&lt;li&gt;自律システム番号&lt;/li&gt;&lt;/ul&gt; |
-|自律システム番号の緯度|  &lt;ul&gt;&lt;li&gt;自律システム番号の緯度&lt;/li&gt;&lt;/ul&gt; |
-|自律システム番号の経度|  &lt;ul&gt;&lt;li&gt;自律システム番号の経度&lt;/li&gt;&lt;/ul&gt; |
-|自律システム番号の組織|  &lt;ul&gt;&lt;li&gt;自律システム番号の組織&lt;/li&gt;&lt;/ul&gt; |
-|バックエンド応答時間|  &lt;ul&gt;&lt;li&gt;バックエンド応答時間&lt;/li&gt;&lt;/ul&gt; |
-|トランザクション名|  &lt;ul&gt;&lt;li&gt;トランザクション名&lt;/li&gt;&lt;/ul&gt; |
-|市区町村|  &lt;ul&gt;&lt;li&gt;市区町村&lt;/li&gt;&lt;/ul&gt; |
-|サーバー接続の確立時間|  &lt;ul&gt;&lt;li&gt;サーバー接続の確立時間&lt;/li&gt;&lt;/ul&gt; |
-|国コード|  &lt;ul&gt;&lt;li&gt;国コード&lt;/li&gt;&lt;/ul&gt; |
-|デバイスタイプ|  &lt;ul&gt;&lt;li&gt;デバイスタイプ&lt;/li&gt;&lt;/ul&gt; |
-|トップレベルDNSの解決時間|  &lt;ul&gt;&lt;li&gt;トップレベルDNSの解決時間&lt;/li&gt;&lt;/ul&gt; |
-|ページの処理時間|  &lt;ul&gt;&lt;li&gt;ページの処理時間&lt;/li&gt;&lt;/ul&gt; |
-|フロントエンドブラウザ応答時間|  &lt;ul&gt;&lt;li&gt;フロントエンドブラウザ応答時間&lt;/li&gt;&lt;/ul&gt; |
-|サーバーサイドトランザクションの名前|  &lt;ul&gt;&lt;li&gt;サーバーサイドトランザクションの名前&lt;/li&gt;&lt;/ul&gt; |
-|ネットワーク待機時間の合計|  &lt;ul&gt;&lt;li&gt;ネットワーク待機時間の合計&lt;/li&gt;&lt;/ul&gt; |
-|ページのレンダリング時間|  &lt;ul&gt;&lt;li&gt;ページのレンダリング時間&lt;/li&gt;&lt;/ul&gt; |
-|元のPageView URL|  &lt;ul&gt;&lt;li&gt;元のPageView URL&lt;/li&gt;&lt;/ul&gt; |
-|サービス開始待ち時間|  &lt;ul&gt;&lt;li&gt;サービス開始待ち時間&lt;/li&gt;&lt;/ul&gt; |
-|地域コード|  &lt;ul&gt;&lt;li&gt;地域コード&lt;/li&gt;&lt;/ul&gt; |
-|TLSの構成時間|  &lt;ul&gt;&lt;li&gt;TLSの構成時間&lt;/li&gt;&lt;/ul&gt; |
-|セッションID|  &lt;ul&gt;&lt;li&gt;セッションID&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーエージェント名|  &lt;ul&gt;&lt;li&gt;ユーザーエージェント名&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーエージェントバージョン|  &lt;ul&gt;&lt;li&gt;ユーザーエージェントバージョン&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーエージェントOS|  &lt;ul&gt;&lt;li&gt;ユーザーエージェントOS&lt;/li&gt;&lt;/ul&gt; |
-|インタラクションの名前|  &lt;ul&gt;&lt;li&gt;インタラクションの名前&lt;/li&gt;&lt;/ul&gt; |
-|ページアクションの名前|  &lt;ul&gt;&lt;li&gt;ページアクションの名前&lt;/li&gt;&lt;/ul&gt; |
-|ブラウザの高さ|  &lt;ul&gt;&lt;li&gt;ブラウザの高さ&lt;/li&gt;&lt;/ul&gt; |
-|ブラウザの幅|  &lt;ul&gt;&lt;li&gt;ブラウザの幅&lt;/li&gt;&lt;/ul&gt; |
-|現在のURL|  &lt;ul&gt;&lt;li&gt;現在のURL&lt;/li&gt;&lt;/ul&gt; |
-|リファラーURL|  &lt;ul&gt;&lt;li&gt;リファラーURL&lt;/li&gt;&lt;/ul&gt; |
-|ページ要求とPageActionの間の時間|  &lt;ul&gt;&lt;li&gt;ページ要求とPageActionの間の時間&lt;/li&gt;&lt;/ul&gt; |
+|New Relicブラウザアプリケーション|  <ul><li>メトリクスを提供するブラウザアプリケーション。</li><li>アプリケーションがまだNew Relic Insightsに存在しない場合、または作成されない場合は、カスタム名を提供します。</li><li>これはNew Relicシステムにアプリケーションを作成するわけではなく、New Relic Insightsでアプリケーションをクエリする能力を提供します。</li></ul> |
+|イベントカテゴリ|  <ul><li>イベントカテゴリ</li></ul> |
+|New RelicアプリケーションID|  <ul><li>New RelicアプリケーションID</li></ul> |
+|サーバーサイドアプリケーション名|  <ul><li>サーバーサイドアプリケーション名</li></ul> |
+|自律システム番号|  <ul><li>自律システム番号</li></ul> |
+|自律システム番号の緯度|  <ul><li>自律システム番号の緯度</li></ul> |
+|自律システム番号の経度|  <ul><li>自律システム番号の経度</li></ul> |
+|自律システム番号の組織|  <ul><li>自律システム番号の組織</li></ul> |
+|バックエンド応答時間|  <ul><li>バックエンド応答時間</li></ul> |
+|トランザクション名|  <ul><li>トランザクション名</li></ul> |
+|市区町村|  <ul><li>市区町村</li></ul> |
+|サーバー接続の確立時間|  <ul><li>サーバー接続の確立時間</li></ul> |
+|国コード|  <ul><li>国コード</li></ul> |
+|デバイスタイプ|  <ul><li>デバイスタイプ</li></ul> |
+|トップレベルDNSの解決時間|  <ul><li>トップレベルDNSの解決時間</li></ul> |
+|ページの処理時間|  <ul><li>ページの処理時間</li></ul> |
+|フロントエンドブラウザ応答時間|  <ul><li>フロントエンドブラウザ応答時間</li></ul> |
+|サーバーサイドトランザクションの名前|  <ul><li>サーバーサイドトランザクションの名前</li></ul> |
+|ネットワーク待機時間の合計|  <ul><li>ネットワーク待機時間の合計</li></ul> |
+|ページのレンダリング時間|  <ul><li>ページのレンダリング時間</li></ul> |
+|元のPageView URL|  <ul><li>元のPageView URL</li></ul> |
+|サービス開始待ち時間|  <ul><li>サービス開始待ち時間</li></ul> |
+|地域コード|  <ul><li>地域コード</li></ul> |
+|TLSの構成時間|  <ul><li>TLSの構成時間</li></ul> |
+|セッションID|  <ul><li>セッションID</li></ul> |
+|ユーザーエージェント名|  <ul><li>ユーザーエージェント名</li></ul> |
+|ユーザーエージェントバージョン|  <ul><li>ユーザーエージェントバージョン</li></ul> |
+|ユーザーエージェントOS|  <ul><li>ユーザーエージェントOS</li></ul> |
+|インタラクションの名前|  <ul><li>インタラクションの名前</li></ul> |
+|ページアクションの名前|  <ul><li>ページアクションの名前</li></ul> |
+|ブラウザの高さ|  <ul><li>ブラウザの高さ</li></ul> |
+|ブラウザの幅|  <ul><li>ブラウザの幅</li></ul> |
+|現在のURL|  <ul><li>現在のURL</li></ul> |
+|リファラーURL|  <ul><li>リファラーURL</li></ul> |
+|ページ要求とPageActionの間の時間|  <ul><li>ページ要求とPageActionの間の時間</li></ul> |

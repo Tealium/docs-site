@@ -25,7 +25,9 @@ Single event visitors are persisted in AudienceStream, passed to AudienceStore, 
 If the visitor returns in a new session, they are recognized as a returning visitor.
 
 
+<blockquote>
 Prior to April 29, 2026, AudienceStream did not persist single event visitor records.
+</blockquote>
 
 
 ## EventStore and EventDB

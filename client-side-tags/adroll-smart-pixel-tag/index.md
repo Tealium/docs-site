@@ -3,7 +3,11 @@ title: AdRoll Smart Pixel Tag Setup Guide (Deprecated)
 description: This article describes how to set up the AdRoll Smart Pixel tag in your Tealium iQ Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adroll-smart-pixel-tag/
 ---
-This connector is now deprecated and no longer available in the tag marketplace. For the current connector, see the [Adroll Pixel tag setup guide]().
+
+<blockquote>
+This connector is now deprecated and no longer available in the tag marketplace. For the current connector, see the [Adroll Pixel tag setup guide](https://docs.tealium.com/adroll-pixel-tag/).
+</blockquote>
+
 
 ## Tag Tips
 
@@ -15,7 +19,7 @@ This connector is now deprecated and no longer available in the tag marketplace.
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the AdRoll Smart Pixel tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the AdRoll Smart Pixel tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -27,7 +31,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -35,15 +39,15 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`adroll_custom_data.myvar`|  &lt;ul&gt;&lt;li&gt;Custom Data&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_record_user.myvar`|  &lt;ul&gt;&lt;li&gt;Custom Record User Data&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_conversion_value`|  &lt;ul&gt;&lt;li&gt;Conversion Value&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_currency`|  &lt;ul&gt;&lt;li&gt;Currency&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_segments`|  &lt;ul&gt;&lt;li&gt;Segments&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_email`|  &lt;ul&gt;&lt;li&gt;Email&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_id`|  &lt;ul&gt;&lt;li&gt;Product ID&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_group`|  &lt;ul&gt;&lt;li&gt;Product Group&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_action`|  &lt;ul&gt;&lt;li&gt;Product Action&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_category_id`|  &lt;ul&gt;&lt;li&gt;Product Category&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_adv_id`|  &lt;ul&gt;&lt;li&gt;Adv Id&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_pix_id`|  &lt;ul&gt;&lt;li&gt;Pix Id&lt;/li&gt;&lt;/ul&gt; |
+|`adroll_custom_data.myvar`|  <ul><li>Custom Data</li></ul> |
+|`adroll_record_user.myvar`|  <ul><li>Custom Record User Data</li></ul> |
+|`adroll_conversion_value`|  <ul><li>Conversion Value</li></ul> |
+|`adroll_currency`|  <ul><li>Currency</li></ul> |
+|`adroll_segments`|  <ul><li>Segments</li></ul> |
+|`adroll_email`|  <ul><li>Email</li></ul> |
+|`adroll_custom_data.product_id`|  <ul><li>Product ID</li></ul> |
+|`adroll_custom_data.product_group`|  <ul><li>Product Group</li></ul> |
+|`adroll_custom_data.product_action`|  <ul><li>Product Action</li></ul> |
+|`adroll_custom_data.product_category_id`|  <ul><li>Product Category</li></ul> |
+|`adroll_adv_id`|  <ul><li>Adv Id</li></ul> |
+|`adroll_pix_id`|  <ul><li>Pix Id</li></ul> |

@@ -23,11 +23,11 @@ Once the extension is added, the following configuration options are available:
 
 * **Channel Name**: The name of the channel
 * **Category**: Select the Category that the channel belongs from the drop-down menu
-* **Condition**: Apply a condition to determine when to set this channel. Click the **&#43;** button to add new conditions, or the **-** button to remove conditions.
+* **Condition**: Apply a condition to determine when to set this channel. Click the **+** button to add new conditions, or the **-** button to remove conditions.
 
 Click the **Add Channel** button to add and configure an additional channel, as needed.
 
-![](/images/iq-tag-management/no-title-176icaa0d1be9b890a0e.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-176icaa0d1be9b890a0e.png)
 
 ### Attribution period and population
 
@@ -36,7 +36,7 @@ Choose on which pages you want to populate the Output data sources. We recommend
 Navigate to the **Attribution Period/Population** tab. From this tab you set how long you want to attribute conversions to certain channels and on what pages you want this to happen.
 
 * **Attribution Period:** Enter an integer, and select the units from the drop-down menu
-    * **Session**: lasts for the duration of user&#39;s visit to the website. It displays a &#39;0&#39; in the cookie.
+    * **Session**: lasts for the duration of user's visit to the website. It displays a '0' in the cookie.
     * **Visitor**: The max value is set to 365 days, and displays a timestamp.
     * **Days**: This value is the number of days to keep the data, and displays a timestamp.
 
@@ -45,7 +45,7 @@ Navigate to the **Attribution Period/Population** tab. From this tab you set how
     * Check the box if you want to track the current channel only, or check the box if you are not interested in lifetime channel behavior beyond a single conversion.
     * Do not check the box for sites that have multiple conversions.
 
-![](/images/iq-tag-management/no-title-175i03abcc3041938f48.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-175i03abcc3041938f48.png)
 
 ### Conversion
 
@@ -58,11 +58,11 @@ To determine the commission amount to give to a channel depending on how it cont
 
 * **Closer Credit**: This is the percentage of the conversion value source attributed to the closer of a conversion.
 
-![](/images/iq-tag-management/no-title-174icc0c5df949e4995c.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-174icc0c5df949e4995c.png)
 
 ## Cookie data formatting
 
-Data from this extension is saved in a cookie called `channelflow`. The cookie data provides the full channel flow from beginning to end. Each channel has three values: the channel name, the category, and the attribution period. Each value is saved as a string delimited by a bar &#39;`|`&#39;. Each individual channel is separated by a comma. The following is an example:
+Data from this extension is saved in a cookie called `channelflow`. The cookie data provides the full channel flow from beginning to end. Each channel has three values: the channel name, the category, and the attribution period. Each value is saved as a string delimited by a bar '`|`'. Each individual channel is separated by a comma. The following is an example:
 
 ```
 Channel1 Name|Category|Attribution Period, Channel2 Name|Category|Attribution Period
@@ -172,8 +172,8 @@ The following is a custom handler example:
   // Custom Handler Example
   // if commisionjunction is the originator
   // it is also the closer
-  if(obj.channel_originator==&#39;commisionjunction&#39;){
-    obj.channel_closer=&#39;commission junction&#39;;
+  if(obj.channel_originator=='commisionjunction'){
+    obj.channel_closer='commission junction';
   }
 ```
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/guides/cart-abandonment-guide/
 ---
 This guide shows how to track basic cart abandonment by combining Tealium iQ Tag Management (Optional), Tealium AudienceStream CDP, and your email marketing connector.
 
-![](/images/guides/cart-abandonment-flow-diagram.png)
+![](https://docs.tealium.com/images/guides/cart-abandonment-flow-diagram.png)
 
 The solution in this guide covers the following steps:
 
@@ -24,21 +24,21 @@ In general, the following event attributes will be helpful in tracking cart aban
 
 | Attribute Name         | Example value |
 |----------------------- |---------------|
-|`cart_product_id`       | `[&#34;PROD123&#34;, &#34;PROD456&#34;]`|
-|`cart_product_price`    | `[&#34;12.00&#34;, &#34;25.99&#34;]`|
-|`cart_product_quantity` | `[&#34;2&#34;, &#34;2&#34;]`|
-|`cart_product_sku`      | `[&#34;PR-RED-123&#34;, &#34;PR-BLK-456&#34;]` |
-|`product_category`      | `[&#34;Shirts&#34;]`|
-|`product_id`            | `[&#34;PROD678&#34;]`|
-|`product_image_url`     | `[&#34;//example.com/path/image.gif&#34;]`|
-|`product_name`          | `[&#34;Product Three&#34;]`|
-|`product_price`         | `[&#34;18.00&#34;]`|
-|`product_quantity`      | `[&#34;2&#34;]`|
-|`product_sku`           | `[&#34;PR-BLU-678&#34;]`|
-|`product_subcategory`   | `[&#34;T-Shirts&#34;]`|
-|`tealium_event`         | `&#34;cart_add&#34;`|
+|`cart_product_id`       | `["PROD123", "PROD456"]`|
+|`cart_product_price`    | `["12.00", "25.99"]`|
+|`cart_product_quantity` | `["2", "2"]`|
+|`cart_product_sku`      | `["PR-RED-123", "PR-BLK-456"]` |
+|`product_category`      | `["Shirts"]`|
+|`product_id`            | `["PROD678"]`|
+|`product_image_url`     | `["//example.com/path/image.gif"]`|
+|`product_name`          | `["Product Three"]`|
+|`product_price`         | `["18.00"]`|
+|`product_quantity`      | `["2"]`|
+|`product_sku`           | `["PR-BLU-678"]`|
+|`product_subcategory`   | `["T-Shirts"]`|
+|`tealium_event`         | `"cart_add"`|
 
-For more information about tracking e-commerce events, see .
+For more information about tracking e-commerce events, see [retail](https://docs.tealium.com/retail/).
 
 
 ## Required visitor attributes
@@ -61,7 +61,7 @@ To start, we need to know when a visitor adds something to their cart. Create an
 
 In this use case, we are setting `tealium_event` to `cart_add`. 
 
-1. Go to **Tag Management &gt; Events** and click **&#43;New Event**.
+1. Go to **Tag Management > Events** and click **+New Event**.
 1. In the **Event Types** screen, select the **Click** event type and click **Next**.
 1. In the **Configuration** screen, set the following values for your click event:
    * **Name**: Add to Cart
@@ -72,9 +72,13 @@ In this use case, we are setting `tealium_event` to `cart_add`.
    * Event Trigger Variables: Set Tealium Event to Text and enter `cart_add`
 1. Click **Next**.
 
-![](/images/guides/event_add_cart_to_pages.png)
+![](https://docs.tealium.com/images/guides/event_add_cart_to_pages.png)
 
+
+<blockquote>
 Test your event configurations before publishing to production.
+</blockquote>
+
 
 ## Step 2: Define visitor attributes 
 
@@ -87,7 +91,7 @@ Now we need to create two boolean attributes:
 
 Create a visitor boolean attribute to track when a `cart_add` event has occurred.
 
-1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform > Visitor / Visit Attributes** and click **+Add Attribute**.
 1. In the **Add Attribute** screen, click **Visitor** and **Continue**.
 1. Select **Boolean** and click **Continue**.
 1. In the **Properties** section, enter `Added to Cart `as the title.
@@ -95,17 +99,17 @@ Create a visitor boolean attribute to track when a `cart_add` event has occurred
 1. Click **Add Enrichment** and set the **Added to Cart** boolean to `true` and the scope to **ANY EVENT**. 
 1. Create a rule if it does not already exist:
     * **Title**: Event cart_add
-    * Click **&#43;Attribute Condition**.
+    * Click **+Attribute Condition**.
     * Select `tealium_event` is **equal (ignore case)** to `cart_add`.
 1. Click **Save**.
 
-![](/images/guides/boolean_added_to_cart.png)
+![](https://docs.tealium.com/images/guides/boolean_added_to_cart.png)
 
 ### Did Purchase boolean
 
 Create a visitor boolean attribute to track when a `purchase` event has occurred.
 
-1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform > Visitor / Visit Attributes** and click **+Add Attribute**.
 1. In the **Add Attribute** screen, click **Visitor** and **Continue**.
 1. Select **Boolean** and click **Continue**.
 1. In the **Properties** section, enter `Did Purchase` as the title.
@@ -113,17 +117,17 @@ Create a visitor boolean attribute to track when a `purchase` event has occurred
 1. Click **Add Enrichment** to set the **Purchase** boolean to `true` for **Any Event**.
 1. Create the following rule if it does not already exist:
     * **Title**: Purchase event
-    * Click **&#43;Attribute Condition**.
+    * Click **+Attribute Condition**.
     * Select `tealium_event` **contains (ignore case)** `purchase`.
-    ![](/images/guides/boolean_purchase.png)
+    ![](https://docs.tealium.com/images/guides/boolean_purchase.png)
 1. Click **Save**.
 1. Click **Finish**.
 
 ### Cart Abandoner badge and rule
 
-Before you create your audience, you&#39;ll need to create a badge to assign to visitors if they&#39;ve abandoned their cart using the boolean attributes you&#39;ve just created.
+Before you create your audience, you'll need to create a badge to assign to visitors if they've abandoned their cart using the boolean attributes you've just created.
 
-1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform > Visitor / Visit Attributes** and click **+Add Attribute**.
 1. Select **Visitor** and then select **Badge**. 
 1. In the **Properties** section, enter `Cart Abandoner `as the title.
 1. Click **Add Enrichment** and **Assign a badge**.
@@ -137,37 +141,37 @@ Before you create your audience, you&#39;ll need to create a badge to assign to 
     * Set `tealium_event` to **contains (ignore case)** and `purchase`.
 1. Click **Finish**.
 
-![](/images/guides/badge_cart_abandoner.png)
+![](https://docs.tealium.com/images/guides/badge_cart_abandoner.png)
 
 ## Step 3: Define an audience
 
-Now you can easily create an audience using the badge you&#39;ve just created.
+Now you can easily create an audience using the badge you've just created.
 
-1. Go to **Activate &gt; Audiences** and click **&#43;New Audience**.
+1. Go to **Activate > Audiences** and click **+New Audience**.
 1. Add the following audience:
     * **Name**: Cart Abandoners
     * Select the **Cart Abandoner** badge from the first drop-down list and **is assigned** from the second drop-down list.
 1. Click **Done**.
 1. Save and publish your profile.
 
-![](/images/guides/audience_cart_abandoners.png)
+![](https://docs.tealium.com/images/guides/audience_cart_abandoners.png)
 
 ## Step 4: Configure a connector
 
-With your attributes, badges, and audiences set up, you&#39;re ready to connect this new audience to your email marketing tools to retarget and convert these visitors.
+With your attributes, badges, and audiences set up, you're ready to connect this new audience to your email marketing tools to retarget and convert these visitors.
 
 Some of the common connectors and actions for cart abandonment include:
 
-* [Adobe Campaign Classic]()
-* [Iterable](): **Subscribe User to a List**, **Upsert User** action
-* [Marketo](): **Add Lead to List** action
-* [SendGrid](): **Upsert Contact** action
+* [Adobe Campaign Classic](https://docs.tealium.com/adobe-campaign-classic-connector/)
+* [Iterable](https://docs.tealium.com/iterable-connector/): **Subscribe User to a List**, **Upsert User** action
+* [Marketo](https://docs.tealium.com/marketo-connector/): **Add Lead to List** action
+* [SendGrid](https://docs.tealium.com/sendgrid-connector/): **Upsert Contact** action
 
 ### Delayed actions
 
 While you can often send an email to a user right after they abandon their cart, you may have a better chance of conversion by delaying the email. Use delayed actions to control the timing of your retargeting campaign connector.
 
-For more information, see .
+For more information, see [about-delayed-actions](https://docs.tealium.com/about-delayed-actions/).
 
 ## Additional tracking
 
@@ -191,11 +195,11 @@ The following table lists more attributes to track for cart abandonment campaign
 | Attribute Name | Attribute Type | Scope | Category | Notes  |
 |---|---|---|---|---|
 | Cart abandoner                  | Boolean/Badge  | Visitor  | Purchase Behavior | Applied at end of session if items added to cart and no purchase made this session                                                                                                   |
-| Furthest stage of funnel reached| Badge          | Visit  | Purchase Behavior | Can be used in the following user flow: Acquisition &gt; Browsing &gt; Product Detail Page (PDP) view &gt; Add to cart &gt; View cart &gt; Purchase.                                                |
+| Furthest stage of funnel reached| Badge          | Visit  | Purchase Behavior | Can be used in the following user flow: Acquisition > Browsing > Product Detail Page (PDP) view > Add to cart > View cart > Purchase.                                                |
 | Cart viewed this session        | Boolean        | Visit  | Purchase Behavior | Signifies if the user viewed the cart or only added to their cart.                                                                                                                   |
 | Total cart value                | Number         | Visit  | Purchase Behavior | Useful for analysis, opportunity sizing and for future expansion into paid media.                                                                                                    |
 | Days since last cart abandonment| Number         | Visitor| Purchase Behavior | Simple date count to assist with eligibility for Cart Abandoner. Can also be used for analysis.                                                                                       |
-| Number of carts abandoned       | Number         | Visitor| Lifetime Behavior | Number that increments &#43;1 for each abandonment event.                                                                                                                                |
+| Number of carts abandoned       | Number         | Visitor| Lifetime Behavior | Number that increments +1 for each abandonment event.                                                                                                                                |
 | Average order value             | Number         | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.                                                                                                                     |
 | Average item value              | Number         | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.                                                                                                                     |
 | Favorite categories             | Tally          | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.                                                                                                                     |
@@ -204,6 +208,6 @@ For more robust retargeting, combine this basic cart abandonment configuration w
 
 ## Next steps
 
-Now that you&#39;ve defined attributes for cart abandoners, they can also be used for personalization with solutions like Moments API.
+Now that you've defined attributes for cart abandoners, they can also be used for personalization with solutions like Moments API.
 
-For more information, see .
+For more information, see [about-moments-api](https://docs.tealium.com/about-moments-api/).

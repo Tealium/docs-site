@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/apache-kafka-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -161,4 +161,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/apache-kafka-connector/
 
 #### コネクタログパラメータ
 
-パラメータの説明については、[コネクタログパラメータ]()を参照してください。
+パラメータの説明については、[コネクタログパラメータ](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)を参照してください。

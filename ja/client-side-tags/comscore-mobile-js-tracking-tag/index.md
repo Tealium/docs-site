@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-mobile-js-tracking-ta
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて]()を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -21,11 +21,11 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-mobile-js-tracking-ta
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -52,7 +52,7 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-mobile-js-tracking-ta
 | `autoStartLabels.####` | 自動開始ラベル |
 
 ### イベント
-イベントをマップするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|

@@ -17,30 +17,30 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/
 | [`count()`](#count)                     | データレイヤーに現在存在するすべての値の数を返します |
 | [`get()`](#get)                         | 指定されたキーの値を取得します        |
 | [`getBoolean()`](#getboolean)           | 指定されたキーの`Boolean`を取得します    |
-| [`getBooleanArray()`](#getbooleanarray) | 指定されたキーの`Array&lt;Boolean&gt;`を取得します |
+| [`getBooleanArray()`](#getbooleanarray) | 指定されたキーの`Array<Boolean>`を取得します |
 | [`getDouble()`](#getdouble)             | 指定されたキーの`Double`を取得します     |
-| [`getDoubleArray()`](#getdoublearray)   | 指定されたキーの`Array&lt;Double&gt;`を取得します |
+| [`getDoubleArray()`](#getdoublearray)   | 指定されたキーの`Array<Double>`を取得します |
 | [`getInt()`](#getint)                   | 指定されたキーの`Int`を取得します        |
-| [`getIntArray()`](#getintarray)         | 指定されたキーの`Array&lt;Int&gt;`を取得します |
+| [`getIntArray()`](#getintarray)         | 指定されたキーの`Array<Int>`を取得します |
 | [`getJsonArray()`](#getjsonarray)       | 指定されたキーの`org.json.JSONArray`を取得します |
 | [`getJsonObject()`](#getjsonobject)     | 指定されたキーの`org.json.JSONObject`を取得します |
 | [`getLong()`](#getlong)                 | 指定されたキーの`Long`を取得します       |
-| [`getLongArray()`](#getlongarray)       | 指定されたキーの`Array&lt;Long&gt;`を取得します |
+| [`getLongArray()`](#getlongarray)       | 指定されたキーの`Array<Long>`を取得します |
 | [`getString()`](#getstring)             | 指定されたキーの`String`を取得します     |
-| [`getStringArray()`](#getstringarray)   | 指定されたキーの`Array&lt;String&gt;`を取得します |
-| [`keys()`](#keys)                       | データレイヤーに現在存在するすべてのキーの`List&lt;String&gt;`を返します |
+| [`getStringArray()`](#getstringarray)   | 指定されたキーの`Array<String>`を取得します |
+| [`keys()`](#keys)                       | データレイヤーに現在存在するすべてのキーの`List<String>`を返します |
 | [`putBoolean()`](#putboolean)           | 指定されたキーに`Boolean`を格納します         |
-| [`putBooleanArray()`](#putbooleanarray) | 指定されたキーに`Array&lt;Boolean&gt;`を格納します  |
+| [`putBooleanArray()`](#putbooleanarray) | 指定されたキーに`Array<Boolean>`を格納します  |
 | [`putDouble()`](#putdouble)             | 指定されたキーに`Double`を格納します          |
-| [`putDoubleArray()`](#putdoublearray)   | 指定されたキーに`Array&lt;Double&gt;`を格納します   |
+| [`putDoubleArray()`](#putdoublearray)   | 指定されたキーに`Array<Double>`を格納します   |
 | [`putInt()`](#putint)                   | 指定されたキーに`Int`を格納します            |
-| [`putIntArray()`](#putintarray)         | 指定されたキーに`Array&lt;Int&gt;`を格納します     |
+| [`putIntArray()`](#putintarray)         | 指定されたキーに`Array<Int>`を格納します     |
 | [`putJsonArray()`](#putjsonarray)       | 指定されたキーに`org.json.JSONArray`を格納します |
 | [`putJsonObject()`](#putjsonobject)     | 指定されたキーに`org.json.JSONObject`を格納します |
 | [`putLong()`](#putlong)                 | 指定されたキーに`Long`を格納します            |
-| [`putLongArray()`](#putlongarray)       | 指定されたキーに`Array&lt;Long&gt;`を格納します     |
+| [`putLongArray()`](#putlongarray)       | 指定されたキーに`Array<Long>`を格納します     |
 | [`putString()`](#putstring)             | 指定されたキーに`String`を格納します          |
-| [`putStringArray()`](#putstringarray)   | 指定されたキーに`Array&lt;String&gt;`を格納します   |
+| [`putStringArray()`](#putstringarray)   | 指定されたキーに`Array<String>`を格納します   |
 | [`remove()`](#remove)                   | 指定されたキーの値を削除します          |
 
 ### `all`
@@ -68,7 +68,7 @@ tealium.dataLayer.clear()
 | `key`      | `String` | 削除する変数の名前 |
 
 ```java
-tealium.dataLayer.contains(&#34;KEY&#34;)
+tealium.dataLayer.contains("KEY")
 ```
 
 ### `count`
@@ -90,7 +90,7 @@ tealium.dataLayer.count()
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val any = tealium.dataLayer.get(&#34;KEY&#34;)
+val any = tealium.dataLayer.get("KEY")
 ```
 
 ### `getBoolean`
@@ -102,19 +102,19 @@ val any = tealium.dataLayer.get(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val bool = tealium.dataLayer.getBoolean(&#34;KEY&#34;)
+val bool = tealium.dataLayer.getBoolean("KEY")
 ```
 
 ### `getBooleanArray`
 
-指定されたキーで`Array&lt;Boolean&gt;`値を取得します。このキーの値が`Array&lt;Boolean&gt;`でない場合は`null`が返されます。
+指定されたキーで`Array<Boolean>`値を取得します。このキーの値が`Array<Boolean>`でない場合は`null`が返されます。
 
 | パラメータ | タイプ     | 説明                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val booleanArray = tealium.dataLayer.getBooleanArray(&#34;KEY&#34;)
+val booleanArray = tealium.dataLayer.getBooleanArray("KEY")
 ```
 
 ### `getDouble`
@@ -126,19 +126,19 @@ val booleanArray = tealium.dataLayer.getBooleanArray(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val double = tealium.dataLayer.getDouble(&#34;KEY&#34;)
+val double = tealium.dataLayer.getDouble("KEY")
 ```
 
 ### `getDoubleArray`
 
-指定されたキーで`Array&lt;Double&gt;`値を取得します。このキーの値が`Array&lt;Double&gt;`でない場合は`null`が返されます。
+指定されたキーで`Array<Double>`値を取得します。このキーの値が`Array<Double>`でない場合は`null`が返されます。
 
 | パラメータ | タイプ     | 説明                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val doubleArray = tealium.dataLayer.getDoubleArray(&#34;KEY&#34;)
+val doubleArray = tealium.dataLayer.getDoubleArray("KEY")
 ```
 
 ### `getInt`
@@ -150,19 +150,19 @@ val doubleArray = tealium.dataLayer.getDoubleArray(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val int = tealium.dataLayer.getInt(&#34;KEY&#34;)
+val int = tealium.dataLayer.getInt("KEY")
 ```
 
 ### `getIntArray`
 
-指定されたキーで`Array&lt;Int&gt;`値を取得します。このキーの値が`Array&lt;Int&gt;`でない場合は`null`が返されます。
+指定されたキーで`Array<Int>`値を取得します。このキーの値が`Array<Int>`でない場合は`null`が返されます。
 
 | パラメータ | タイプ     | 説明                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val intArray = tealium.dataLayer.getIntArray(&#34;KEY&#34;)
+val intArray = tealium.dataLayer.getIntArray("KEY")
 ```
 
 ### `getJsonArray`
@@ -174,7 +174,7 @@ val intArray = tealium.dataLayer.getIntArray(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前 |
 
 ```java
-val jsonArray = tealium.dataLayer.getJsonArray(&#34;KEY&#34;)
+val jsonArray = tealium.dataLayer.getJsonArray("KEY")
 ```
 ### `getJsonObject`
 
@@ -185,7 +185,7 @@ val jsonArray = tealium.dataLayer.getJsonArray(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前                         |
 
 ```java
-val jsonObject = tealium.dataLayer.getJsonObject(&#34;KEY&#34;)
+val jsonObject = tealium.dataLayer.getJsonObject("KEY")
 ```
 
 ### `getLong`
@@ -197,19 +197,19 @@ val jsonObject = tealium.dataLayer.getJsonObject(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前                         |
 
 ```java
-val long = tealium.dataLayer.getLong(&#34;KEY&#34;)
+val long = tealium.dataLayer.getLong("KEY")
 ```
 
 ### `getLongArray`
 
-指定されたキーで `Array&lt;Long&gt;` の値を取得します。このキーの値が `Array&lt;Long&gt;` でない場合は、`null` が返されます。
+指定されたキーで `Array<Long>` の値を取得します。このキーの値が `Array<Long>` でない場合は、`null` が返されます。
 
 | パラメータ | タイプ     | 説明                                      |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | 取得する変数の名前                         |
 
 ```java
-val longArray = tealium.dataLayer.getLongArray(&#34;KEY&#34;)
+val longArray = tealium.dataLayer.getLongArray("KEY")
 ```
 
 ### `getString`
@@ -221,24 +221,24 @@ val longArray = tealium.dataLayer.getLongArray(&#34;KEY&#34;)
 | `key`      | `String` | 取得する変数の名前                         |
 
 ```java
-val string = tealium.dataLayer.getString(&#34;KEY&#34;)
+val string = tealium.dataLayer.getString("KEY")
 ```
 
 ### `getStringArray`
 
-指定されたキーで `Array&lt;String&gt;` の値を取得します。このキーの値が `Array&lt;String&gt;` でない場合は、`null` が返されます。
+指定されたキーで `Array<String>` の値を取得します。このキーの値が `Array<String>` でない場合は、`null` が返されます。
 
 | パラメータ | タイプ     | 説明                                      |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | 取得する変数の名前                         |
 
 ```java
-val stringArray = tealium.dataLayer.getStringArray(&#34;KEY&#34;)
+val stringArray = tealium.dataLayer.getStringArray("KEY")
 ```
 
 ### `keys`
 
-データレイヤーに現在保存されているすべてのキーの `List&lt;String&gt;` を返します
+データレイヤーに現在保存されているすべてのキーの `List<String>` を返します
 
 ```java
 tealium.dataLayer.keys()
@@ -255,21 +255,21 @@ tealium.dataLayer.keys()
 | `expiry`   | `Expiry`  | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putBoolean(&#34;KEY&#34;, true, Expiry.FOREVER)
+tealium.dataLayer.putBoolean("KEY", true, Expiry.FOREVER)
 ```
 
 ### `putBooleanArray`
 
-指定されたキーに `Array&lt;Boolean&gt;` 値を保存します。
+指定されたキーに `Array<Boolean>` 値を保存します。
 
 | パラメータ | タイプ             | 説明                                       |
 |:-----------|:-----------------|:--------------------------------------------|
 | `key`      | `String`         | 保存される変数の名前                         |
-| `value`    | `Array&lt;Boolean&gt;` | 保存する `Array&lt;Boolean&gt;` 値                 |
+| `value`    | `Array<Boolean>` | 保存する `Array<Boolean>` 値                 |
 | `expiry`   | `Expiry`         | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putBooleanArray(&#34;KEY&#34;, arrayOf(true, false, true), Expiry.FOREVER)
+tealium.dataLayer.putBooleanArray("KEY", arrayOf(true, false, true), Expiry.FOREVER)
 ```
 
 ### `putDouble`
@@ -283,21 +283,21 @@ tealium.dataLayer.putBooleanArray(&#34;KEY&#34;, arrayOf(true, false, true), Exp
 | `expiry`   | `Expiry` | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putDouble(&#34;KEY&#34;, 10.5, Expiry.FOREVER)
+tealium.dataLayer.putDouble("KEY", 10.5, Expiry.FOREVER)
 ```
 
 ### `putDoubleArray`
 
-指定されたキーに `Array&lt;Double&gt;` 値を保存します。
+指定されたキーに `Array<Double>` 値を保存します。
 
 | パラメータ | タイプ            | 説明                                       |
 |:-----------|:----------------|:--------------------------------------------|
 | `key`      | `String`        | 保存される変数の名前                         |
-| `value`    | `Array&lt;Double&gt;` | 保存する `Array&lt;Double&gt;` 値                 |
+| `value`    | `Array<Double>` | 保存する `Array<Double>` 値                 |
 | `expiry`   | `Expiry`        | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putDoubleArray(&#34;KEY&#34;, arrayOf(0.1, 10.5), Expiry.FOREVER)
+tealium.dataLayer.putDoubleArray("KEY", arrayOf(0.1, 10.5), Expiry.FOREVER)
 ```
 
 ### `putInt`
@@ -311,21 +311,21 @@ tealium.dataLayer.putDoubleArray(&#34;KEY&#34;, arrayOf(0.1, 10.5), Expiry.FOREV
 | `expiry`   | `Expiry` | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putInt(&#34;KEY&#34;, 10, Expiry.FOREVER)
+tealium.dataLayer.putInt("KEY", 10, Expiry.FOREVER)
 ```
 
 ### `putIntArray`
 
-指定されたキーに `Array&lt;Int&gt;` 値を保存します。
+指定されたキーに `Array<Int>` 値を保存します。
 
 | パラメータ | タイプ         | 説明                                       |
 |:-----------|:-------------|:--------------------------------------------|
 | `key`      | `String`     | 保存される変数の名前                         |
-| `value`    | `Array&lt;Int&gt;` | 保存する `Array&lt;Int&gt;` 値                     |
+| `value`    | `Array<Int>` | 保存する `Array<Int>` 値                     |
 | `expiry`   | `Expiry`     | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putIntArray(&#34;KEY&#34;, arrayOf(100, Int.MAX_VALUE), Expiry.FOREVER)
+tealium.dataLayer.putIntArray("KEY", arrayOf(100, Int.MAX_VALUE), Expiry.FOREVER)
 ```
 
 ### `putJsonArray`
@@ -340,9 +340,9 @@ tealium.dataLayer.putIntArray(&#34;KEY&#34;, arrayOf(100, Int.MAX_VALUE), Expiry
 
 ```java
 val my_list = new JSONArray();
-my_list.put(&#34;value_1&#34;);
-my_list.put(&#34;value_2&#34;);
-tealium.dataLayer.putJsonArray(&#34;KEY&#34;, my_list, Expiry.FOREVER);
+my_list.put("value_1");
+my_list.put("value_2");
+tealium.dataLayer.putJsonArray("KEY", my_list, Expiry.FOREVER);
 ```
 
 ### `putJsonObject`
@@ -357,8 +357,8 @@ tealium.dataLayer.putJsonArray(&#34;KEY&#34;, my_list, Expiry.FOREVER);
 
 ```java
 val my_obj = new JSONObject();
-my_obj.put(&#34;key&#34;, &#34;value&#34;);
-tealium.dataLayer.putJsonObject(&#34;KEY&#34;, my_obj, Expiry.FOREVER);
+my_obj.put("key", "value");
+tealium.dataLayer.putJsonObject("KEY", my_obj, Expiry.FOREVER);
 ```
 
 ### `putLong`
@@ -372,21 +372,21 @@ tealium.dataLayer.putJsonObject(&#34;KEY&#34;, my_obj, Expiry.FOREVER);
 | `expiry`   | `Expiry` | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putLong(&#34;KEY&#34;, Long.MAX_VALUE, Expiry.FOREVER)
+tealium.dataLayer.putLong("KEY", Long.MAX_VALUE, Expiry.FOREVER)
 ```
 
 ### `putLongArray`
 
-指定されたキーに `Array&lt;Long&gt;` 値を保存します。
+指定されたキーに `Array<Long>` 値を保存します。
 
 | パラメータ | タイプ          | 説明                                       |
 |:-----------|:--------------|:--------------------------------------------|
 | `key`      | `String`      | 保存される変数の名前                         |
-| `value`    | `Array&lt;Long&gt;` | 保存する `Array&lt;Long&gt;` 値                    |
+| `value`    | `Array<Long>` | 保存する `Array<Long>` 値                    |
 | `expiry`   | `Expiry`      | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putLongArray(&#34;KEY&#34;, arrayOf(1000L, Long.MAX_VALUE), Expiry.FOREVER)
+tealium.dataLayer.putLongArray("KEY", arrayOf(1000L, Long.MAX_VALUE), Expiry.FOREVER)
 ```
 
 ### `putString`
@@ -400,21 +400,21 @@ tealium.dataLayer.putLongArray(&#34;KEY&#34;, arrayOf(1000L, Long.MAX_VALUE), Ex
 | `expiry`   | `Expiry` | (オプション) この変数の有効期限              |
 
 ```java
-tealium.dataLayer.putString(&#34;KEY&#34;, &#34;String Value&#34;, Expiry.FOREVER)
+tealium.dataLayer.putString("KEY", "String Value", Expiry.FOREVER)
 ```
 ### `putStringArray`
 
-指定されたキーに `Array&lt;String&gt;` 値を格納します。
+指定されたキーに `Array<String>` 値を格納します。
 
 | パラメータ | タイプ            | 説明                                     |
 |:-----------|:----------------|:----------------------------------------|
 | `key`      | `String`        | 格納される変数の名前                     |
-| `value`    | `Array&lt;String&gt;` | 格納される `Array&lt;String&gt;` の値          |
+| `value`    | `Array<String>` | 格納される `Array<String>` の値          |
 | `expiry`   | `Expiry`        | (オプショナル) この変数の有効期限        |
 
 ```java
-tealium.dataLayer.putStringArray(&#34;KEY&#34;,
-    arrayOf(&#34;String 1&#34;, &#34;String 2&#34;), Expiry.FOREVER)
+tealium.dataLayer.putStringArray("KEY",
+    arrayOf("String 1", "String 2"), Expiry.FOREVER)
 ```
 
 ### `remove`
@@ -426,5 +426,5 @@ tealium.dataLayer.putStringArray(&#34;KEY&#34;,
 | `key`      | `String` | 削除される変数の名前                 |
 
 ```java
-tealium.dataLayer.remove(&#34;KEY&#34;)
+tealium.dataLayer.remove("KEY")
 ```

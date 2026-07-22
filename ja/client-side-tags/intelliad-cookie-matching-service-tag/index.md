@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/client-side-tags/intelliad-cookie-matching-serv
 ---
 intelliAd Cookie Matching Serviceは、Tealium Visitor IDとintelliAd User IDを関連付けます。
 
- このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成]()を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期のために利用可能になります。詳細については、[utag 4.50リリースノート]()と[utag 4.50&#43;へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+
+<blockquote>
+このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期のために利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)と[utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+</blockquote>
+
 
 ## タグのヒント
 
@@ -16,7 +20,7 @@ intelliAd Cookie Matching Serviceは、Tealium Visitor IDとintelliAd User IDを
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグ概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -33,7 +37,7 @@ intelliAd Cookie Matching Serviceは、Tealium Visitor IDとintelliAd User IDを
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -41,8 +45,8 @@ intelliAd Cookie Matching Serviceは、Tealium Visitor IDとintelliAd User IDを
 
 |変数| 説明|
 |---| ---|
-|`tealium_account`|  &lt;ul&gt;&lt;li&gt;Tealium Account&lt;/li&gt;&lt;/ul&gt; |
-|`tealium_profile`|  &lt;ul&gt;&lt;li&gt;Tealium Profile&lt;/li&gt;&lt;/ul&gt; |
-|`store_in_datalayer`|  &lt;ul&gt;&lt;li&gt;Data Layerに保存&lt;/li&gt;&lt;li&gt;値は**yes**または**no**。&lt;/li&gt;&lt;/ul&gt; |
-|`send_to_tealium`|  &lt;ul&gt;&lt;li&gt;Tealiumに送信&lt;/li&gt;&lt;li&gt;値は**yes**または**no**。&lt;/li&gt;&lt;/ul&gt; |
+|`tealium_account`|  <ul><li>Tealium Account</li></ul> |
+|`tealium_profile`|  <ul><li>Tealium Profile</li></ul> |
+|`store_in_datalayer`|  <ul><li>Data Layerに保存</li><li>値は**yes**または**no**。</li></ul> |
+|`send_to_tealium`|  <ul><li>Tealiumに送信</li><li>値は**yes**または**no**。</li></ul> |
 

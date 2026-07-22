@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-audience-stud
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -29,13 +29,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-audience-stud
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ドメイン|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。&lt;/li&gt;&lt;/ul&gt; |
-|パブリッシャーUUID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。&lt;/li&gt;&lt;/ul&gt; |
-|サイト|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。&lt;/li&gt;&lt;/ul&gt; |
-|ユニークユーザーID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。&lt;/li&gt;&lt;/ul&gt; |
-|セクション|  &lt;ul&gt;&lt;li&gt;データを送信したいアプリケーションのセクションです。&lt;/li&gt;&lt;li&gt;例えば、`open_app`や`home_page`など&lt;/li&gt;&lt;/ul&gt; |
-|ブラウザ属性|  &lt;ul&gt;&lt;li&gt;ユーザーエージェントデータを補完するために送信する必要があるすべてのブラウザ属性データ。&lt;/li&gt;&lt;/ul&gt; |
-|追加情報|  &lt;ul&gt;&lt;li&gt;追加情報については、[Salesforce Audience Studio](https://konsole.zendesk.com/hc/en-us/articles/219493027-Mobile-HTTP-API#trackingviews)のドキュメンテーションを参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ドメイン|  <ul><li>必須。</li><li>この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。</li></ul> |
+|パブリッシャーUUID|  <ul><li>必須。</li><li>この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。</li></ul> |
+|サイト|  <ul><li>必須。</li><li>この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。</li></ul> |
+|ユニークユーザーID|  <ul><li>必須。</li><li>iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。</li></ul> |
+|セクション|  <ul><li>データを送信したいアプリケーションのセクションです。</li><li>例えば、`open_app`や`home_page`など</li></ul> |
+|ブラウザ属性|  <ul><li>ユーザーエージェントデータを補完するために送信する必要があるすべてのブラウザ属性データ。</li></ul> |
+|追加情報|  <ul><li>追加情報については、[Salesforce Audience Studio](https://konsole.zendesk.com/hc/en-us/articles/219493027-Mobile-HTTP-API#trackingviews)のドキュメンテーションを参照してください。</li></ul> |
 
 ### アクション - イベントを送信
 
@@ -43,8 +43,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-audience-stud
 
 |**パラメータ**| **説明**|
 |---| ---|
-|イベントURLエンドポイント|  &lt;ul&gt;&lt;li&gt;イベントURLは[Salesforce Audience Studio UI](https://console.krux.com/events/list)で作成されます。&lt;/li&gt;&lt;/ul&gt; |
-|ユニークユーザーID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。&lt;/li&gt;&lt;/ul&gt; |
+|イベントURLエンドポイント|  <ul><li>イベントURLは[Salesforce Audience Studio UI](https://console.krux.com/events/list)で作成されます。</li></ul> |
+|ユニークユーザーID|  <ul><li>必須。</li><li>iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。</li></ul> |
 
 ### アクション - トランザクションを送信
 
@@ -52,10 +52,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-audience-stud
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユニークユーザーID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。&lt;/li&gt;&lt;/ul&gt; |
-|トランザクションURLエンドポイント|  &lt;ul&gt;&lt;li&gt;トランザクションデータを送信するためにSalesforce Audience Studioの担当者から提供されるURL。&lt;/li&gt;&lt;/ul&gt; |
-|パブリッシャーUUID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。&lt;/li&gt;&lt;/ul&gt; |
-|注文合計|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;/ul&gt; |
-|数量|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;/ul&gt; |
-|トランザクション日|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;/ul&gt; |
-|追加情報|  &lt;ul&gt;&lt;li&gt;追加情報については、[Salesforce Audience Studio](https://konsole.zendesk.com/hc/en-us/articles/219493027-Mobile-HTTP-API#trackingviews)のドキュメンテーションを参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ユニークユーザーID|  <ul><li>必須。</li><li>iOSの場合、これはユニークな広告主IDである必要があります（デバイスIDではありません）。</li></ul> |
+|トランザクションURLエンドポイント|  <ul><li>トランザクションデータを送信するためにSalesforce Audience Studioの担当者から提供されるURL。</li></ul> |
+|パブリッシャーUUID|  <ul><li>必須。</li><li>この値を取得するには、Salesforce Audience Studioの担当者に連絡してください。</li></ul> |
+|注文合計|  <ul><li>必須。</li></ul> |
+|数量|  <ul><li>必須。</li></ul> |
+|トランザクション日|  <ul><li>必須。</li></ul> |
+|追加情報|  <ul><li>追加情報については、[Salesforce Audience Studio](https://konsole.zendesk.com/hc/en-us/articles/219493027-Mobile-HTTP-API#trackingviews)のドキュメンテーションを参照してください。</li></ul> |

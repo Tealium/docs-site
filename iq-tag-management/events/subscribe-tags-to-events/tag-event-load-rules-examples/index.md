@@ -19,7 +19,7 @@ A user creates an event listener with the following settings:
 * Uses the All Pages and event listeners load rule.
 * A Tealium Collect tag exists on the page, which uses the All Pages and Events load rule.
 
-![](/images/iq-tag-management/events/tag_event_loadrules_example_1.png)
+![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_1.png)
 
 **All pages:**
 
@@ -40,7 +40,7 @@ A user creates an event listener with the following settings:
 * Uses the All Pages and Events load rule.
 * A Tealium Collect tag exists on the page, which is subscribed to the Element visible event.
 
-![](/images/iq-tag-management/events/tag_event_loadrules_example_2.png)
+![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_2.png)
 
 **All pages:**
 
@@ -64,7 +64,7 @@ A user creates an event listener with the following settings:
 * Uses a load rule so it only loads on product details pages.
 * A Tealium Collect tag exists on the page, which uses the All Pages and Events load rule.
 
-![](/images/iq-tag-management/events/tag_event_loadrules_example_3.png)
+![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_3.png)
 
 **Product Page**
 
@@ -89,7 +89,7 @@ A user creates an event listener with the following settings:
 * Trigger only once.
 * Uses the DOM Ready scope (by default).
 * Uses a load rule so it only loads on product details pages.
-* Added to the Tealium Collect tag rules and event listeners with AND logic, where the rest of the tag rules and event listeners evaluate to `true`.![](/images/iq-tag-management/events/tag_event_loadrules_example_4.png)
+* Added to the Tealium Collect tag rules and event listeners with AND logic, where the rest of the tag rules and event listeners evaluate to `true`.![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_4.png)
 
 **Product Page:**
 
@@ -113,7 +113,7 @@ A user creates an event listener with the following settings:
 * Trigger only once.
 * Uses the DOM Ready scope (by default).
 * Uses a load rule so it only loads on product details pages.
-* Added to the Tealium Collect tag rules and event listeners with OR logic, where the rest of the tag rules and event listeners evaluate to `true`.![](/images/iq-tag-management/events/tag_event_loadrules_example_5.png)
+* Added to the Tealium Collect tag rules and event listeners with OR logic, where the rest of the tag rules and event listeners evaluate to `true`.![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_5.png)
 
 **Product Page:**
 
@@ -150,7 +150,7 @@ A user creates two event listeners with the following settings:
 * Uses the DOM Ready scope (by default).
 * Uses a load rule so it only loads on product details pages.
 * Added to the Tealium Collect tag rules and event listeners with OR logic, where the rest of the tag rules and event listeners evaluate to `true`.
-![](/images/iq-tag-management/events/tag_event_loadrules_example_6.png)
+![](https://docs.tealium.com/images/iq-tag-management/events/tag_event_loadrules_example_6.png)
 
 **Product Page:**
 

@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 ### はじめに
 
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### カスタマーデータハブ
 
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 
 
-![](/images/icons/icon-product-audiencestream.svg)
+![](https://docs.tealium.com/images/icons/icon-product-audiencestream.svg)
 
 #### AudienceStream CDP
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 
 
-![](/images/icons/icon-cubes.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
 #### 属性
 
@@ -33,7 +33,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 ### 訪問とオーディエンス
 
 
-![](/images/icons/icon-cubes.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
 #### 訪問属性
 
@@ -41,7 +41,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 
 
-![](/images/icons/icon-audience.svg)
+![](https://docs.tealium.com/images/icons/icon-audience.svg)
 
 #### オーディエンス
 
@@ -49,7 +49,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 
 
-![](/images/icons/icon-id.svg)
+![](https://docs.tealium.com/images/icons/icon-id.svg)
 
 #### アイデンティティ
 
@@ -59,7 +59,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 ### 統合
 
 
-![](/images/icons/icon-connector.svg)
+![](https://docs.tealium.com/images/icons/icon-connector.svg)
 
 #### コネクタ
 
@@ -67,7 +67,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 
 
-![](/images/icons/icon-code.svg)
+![](https://docs.tealium.com/images/icons/icon-code.svg)
 
 #### Webhooks
 
@@ -77,55 +77,55 @@ Webhookコネクタを使用してカスタム統合を構築します。
 ### 人気のコネクタ
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Ads Customer Match
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebook Conversions
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebook Audiences
 
 
 
-![](/images/integrations/linkedin.png)
+![](https://docs.tealium.com/images/integrations/linkedin.png)
 
 LinkedIn Matched Audiences
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
-Google Display &amp; Video 360
+Google Display & Video 360
 
 
 
-![](/images/integrations/tiktok.png)
+![](https://docs.tealium.com/images/integrations/tiktok.png)
 
 TikTok Events
 
 
 
-![](/images/integrations/pinterest.png)
+![](https://docs.tealium.com/images/integrations/pinterest.png)
 
 Pinterest Conversions
 
 
 
-![](/images/integrations/snapchat.svg)
+![](https://docs.tealium.com/images/integrations/snapchat.svg)
 
 Snapchat Conversions
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Ads Enhanced Conversions for Web
 

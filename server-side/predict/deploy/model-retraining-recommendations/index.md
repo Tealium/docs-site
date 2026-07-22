@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side/predict/deploy/model-retraining-recomm
 
 Although machine learning and statistics tools are not designed to guarantee future performance, following simple guidelines can improve performance results and reduce potential clutter from attempting to create more models instead of retraining those already in place. The following sections provide general guidelines and best practices about retraining both trained and deployed models.
 
-For information about how to retrain a model, see [Retrain a Model]().
+For information about how to retrain a model, see [Retrain a Model](https://docs.tealium.com/retrain-a-model/).
 
 ### Estimating the number of trainings needed
 

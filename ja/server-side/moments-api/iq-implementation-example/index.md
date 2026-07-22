@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/moments-api/iq-implementation-examp
 
 Moments APIは、ウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。
 
-以下のステップに従って、[Tealium iQ Advanced JavaScript Code Extension]()を使用してTealiumワークフローにMoments APIを実装します。この例では、訪問のデータをMoments APIからリクエストするためにFetch APIを使用していますが、`XMLHttpRequest`などの他のJavaScriptオプションもサポートされています。
+以下のステップに従って、[Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を使用してTealiumワークフローにMoments APIを実装します。この例では、訪問のデータをMoments APIからリクエストするためにFetch APIを使用していますが、`XMLHttpRequest`などの他のJavaScriptオプションもサポートされています。
 
 ## ステップ1: 訪問IDの取得
 
@@ -21,55 +21,59 @@ Tealiumの`utag_main`クッキーから`v_id`を解析します。
 
 ### `utag.js` 4.50以上
 
+
+<blockquote>
 `split_cookie=false`オプションを使用する場合は、[`utag.js` 4.49以下](#utag-js-4-49-and-below)のコード例を使用してください。
+</blockquote>
+
 
 ```js
 read_utag_cookies = function() {
-  if(!document.cookie || document.cookie === &#34;&#34;) {
+  if(!document.cookie || document.cookie === "") {
     return {};
   }
-  var cookies = document.cookie.split(&#34;; &#34;);
+  var cookies = document.cookie.split("; ");
   return cookies.reduce(function(result, cookie) {
-    var kv = cookie.split(&#34;=&#34;);
-    if(kv[0].startsWith(&#34;utag_&#34;)) {
-      var cookie_name = kv[0].split(&#34;_&#34;)[1];
-      var cookie_name_with_tag = &#34;utag_&#34; &#43; cookie_name;
-      var name_trimmed = kv[0].replace(cookie_name_with_tag&#43;&#34;_&#34;, &#34;&#34;);
-      result[name_trimmed] = String(kv[1]).replace(/%3b/g, &#39;;&#39;)
+    var kv = cookie.split("=");
+    if(kv[0].startsWith("utag_")) {
+      var cookie_name = kv[0].split("_")[1];
+      var cookie_name_with_tag = "utag_" + cookie_name;
+      var name_trimmed = kv[0].replace(cookie_name_with_tag+"_", "");
+      result[name_trimmed] = String(kv[1]).replace(https://docs.tealium.com/%3b/g, ';')
     }
     return result;
   }, {});
 }
 var utag_cookies = read_utag_cookies();
 //メモリにTealium訪問IDを保存
-var moments_identifier = utag_cookies[&#34;v_id&#34;] || null
+var moments_identifier = utag_cookies["v_id"] || null
 ```
 
 ### `utag.js` 4.49以下 {#utag-js-4-49-and-below}
 
 ```js
 function getCookie(cname) {
-    let name = cname &#43; &#34;=&#34;;
+    let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(&#39;;&#39;);
-    for (let i = 0; i &lt; ca.length; i&#43;&#43;) {
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) == &#39; &#39;) {
+        while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
             return c.substring(name.length, c.length);
         }
     }
-    return &#34;&#34;;
+    return "";
 }
 
 // utag_mainクッキーから訪問IDを抽出
-var utag_cookie = getCookie(&#34;utag_main&#34;);
+var utag_cookie = getCookie("utag_main");
 
 //メモリにTealium訪問IDを保存
 
-var moments_identifier = utag_cookie.split(&#34;v_id:&#34;)[1].split(&#34;$&#34;)[0] || &#34;&#34;;
+var moments_identifier = utag_cookie.split("v_id:")[1].split("$")[0] || "";
 ```
 
 ## ステップ2: Moments APIを呼び出す
@@ -78,7 +82,11 @@ Moments APIエンドポイントをリクエストし、応答データをロー
 
 別のアドバンスドJavaScript拡張機能に次のテンプレートコードを追加し、アカウントとターゲットエンジンに応じて更新します。このコードは、前の拡張機能で割り当てられた`moments_identifier`変数をAPIのURLエンドポイントの識別子パラメータにマッピングします。
 
-このコードが前のJavaScript拡張機能の後にロードされるように、[操作の順序]()に従ってください。
+
+<blockquote>
+このコードが前のJavaScript拡張機能の後にロードされるように、[操作の順序](https://docs.tealium.com/order-of-operations/)に従ってください。
+</blockquote>
+
 
 * **タイトル**: [Moments API]
 * **スコープ**: プリローダー
@@ -86,7 +94,7 @@ Moments APIエンドポイントをリクエストし、応答データをロー
 
 ```js
 // リクエストするエンジンIDを割り当てます
-var engine_id = &#34;your_engine_id&#34;; 
+var engine_id = "your_engine_id"; 
 
 
 // suppressNotFoundはオプションのパラメータです
@@ -98,18 +106,18 @@ var engine_id = &#34;your_engine_id&#34;;
 // この例ではオプションのパラメータは含まれていません
 // 必要に応じてオプションのパラメータを追加します
 
-var apiUrl = &#34;MOMENTS_API_ENDPOINT_URL&#34; &#43; moments_identifier;
+var apiUrl = "MOMENTS_API_ENDPOINT_URL" + moments_identifier;
 
-// 例: &#34;https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/&#34; &#43; &#34;0123456789&#34;
+// 例: "https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/" + "0123456789"
 
 // Moments APIの応答をlocalStorageに書き込む関数を追加します
 function writeToLocalStorage(obj, engineId) {
     // localStorageキーのプレフィックス
-    const prefix = &#39;moments_&#39; &#43; engine_id &#43; &#39;_&#39;;
+    const prefix = 'moments_' + engine_id + '_';
 
     // オブジェクトのプロパティをlocalStorageに保存する関数
-    const saveToLocalStorage = (key, value) =&gt; {
-        localStorage.setItem(prefix &#43; key, JSON.stringify(value));
+    const saveToLocalStorage = (key, value) => {
+        localStorage.setItem(prefix + key, JSON.stringify(value));
     };
 
     // オブジェクトの各トップレベルプロパティをループします
@@ -124,13 +132,13 @@ function writeToLocalStorage(obj, engineId) {
 // APIをフェッチします
 
 fetch(apiUrl)
-    .then(response =&gt; {
+    .then(response => {
         if (!response.ok) {
-            throw new Error(&#39;Network response was not ok&#39;);
+            throw new Error('Network response was not ok');
         }
         return response.json();
     })
-    .then(data =&gt; {
+    .then(data => {
         // 応答データを処理します
         if (data) {
         // データをlocalStorageに構成します。例えば、属性、バッジ、オーディエンスなどのグループに分類します。
@@ -138,7 +146,7 @@ fetch(apiUrl)
             
         }
     })
-    .catch(error =&gt; console.error(&#39;Moments API error:&#39;, error));
+    .catch(error => console.error('Moments API error:', error));
 //
 
 ```
@@ -147,4 +155,8 @@ fetch(apiUrl)
 
 データをオンサイトのパフォーマンスやパーソナライゼーションベンダーと統合します。
 
-DNSリクエストプロセスを最適化するために、DNSプリフェッチを検討してください。詳細については、[The Chromium Projects &gt; DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/)を参照してください。 
+
+<blockquote>
+DNSリクエストプロセスを最適化するために、DNSプリフェッチを検討してください。詳細については、[The Chromium Projects > DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/)を参照してください。
+</blockquote>
+ 

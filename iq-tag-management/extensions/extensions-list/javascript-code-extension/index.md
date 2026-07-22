@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/extensions/extensions-list/javas
   * This version provides support for the execution options under the All Tags scope
   * Upgrade to this version if you have not already done so.
 
-This is the basic version of the JavaScript Code extension. For advanced needs, see the [Advanced JavaScript Code Extension]().
+This is the basic version of the JavaScript Code extension. For advanced needs, see the [Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/).
 
 ### JavaScript code extension comparison
 
@@ -20,8 +20,8 @@ The following table highlights the key differences between the JavaScript Code e
 | Feature | JavaScript Code extension | Advanced JavaScript Code extension |
 | ----- | ----- | ----- |
 | Editor | Basic text editor | Advanced code editor with syntax checking and code diffs |
-| Publish workflow | [Publish locations]() | [Promote drafts to be approved for publishing]() |
-| Remote code integration | [Tealium API v3]() |[Link to GitHub repository]() |
+| Publish workflow | [Publish locations](https://docs.tealium.com/manage-extensions/) | [Promote drafts to be approved for publishing](https://docs.tealium.com/advanced-javascript-code-extension/#publish-workflow) |
+| Remote code integration | [Tealium API v3](https://docs.tealium.com/iq-javascript-extension-api/) |[Link to GitHub repository](https://docs.tealium.com/advanced-javascript-code-extension/#working-with-github) |
 | Permission | Account-level  | Profile-level  |
 
 ## How it works
@@ -36,7 +36,7 @@ function(a, b) {
 
 The parameters represent the following:
 
-* `a`: indicates which tracking call was made, where &#34;view&#34; corresponds to the `utag.view()` method for tracking page views, and &#34;link&#34; corresponds to the `utag.link()` method for tracking link clicks.
+* `a`: indicates which tracking call was made, where "view" corresponds to the `utag.view()` method for tracking page views, and "link" corresponds to the `utag.link()` method for tracking link clicks.
 * `b`: a reference to the data object passed to the tracking call.
 
 While the JavaScript Code extension is flexible and can be used for most anything you would want to accomplish within your tag management solution, it is important to understand the impact it could have on your account. We recommend that you try to use the other built-in extensions to accomplish your task before turning to the JavaScript Code extension.
@@ -61,7 +61,7 @@ To learn about the order of operations in `utag.js`, see [Order of Operations]()
 
 ### Occurrence
 
-By default, a JavaScript Code extension runs for every [tracking call](/platforms/javascript/track/), including in-page event tracking, which would potentially cause it to run more than once per page load. If you want to prevent multiple executions of your code, select **Run Once**.
+By default, a JavaScript Code extension runs for every [tracking call](https://docs.tealium.com/platforms/javascript/track/), including in-page event tracking, which would potentially cause it to run more than once per page load. If you want to prevent multiple executions of your code, select **Run Once**.
 
 You cannot change occurrence for extensions that use the following scopes:
 
@@ -74,16 +74,16 @@ You cannot change occurrence for extensions that use the following scopes:
 
 Consider the following before you begin:
 
-* Do not surround the code with `&lt;script&gt;` tags since the content of the text box will be included in a JavaScript file exactly as you enter it.
-* If you are referencing a variable from the `utag_data` object, such as `page_name` or `language`, use `b[&#39;VARIABLE&#39;]`.  
-Learn more about [the b object]().
-* If you are referencing a variable defined in the tag template of the scoped tag, such as `account_id` or `base_url`, use `u[&#39;VARIABLE&#39;]`.
+* Do not surround the code with `<script>` tags since the content of the text box will be included in a JavaScript file exactly as you enter it.
+* If you are referencing a variable from the `utag_data` object, such as `page_name` or `language`, use `b['VARIABLE']`.  
+Learn more about [the b object](https://docs.tealium.com/data-layer-object/).
+* If you are referencing a variable defined in the tag template of the scoped tag, such as `account_id` or `base_url`, use `u['VARIABLE']`.
 
 ## Configuration Steps
 
 Use the following steps to configure the JavaScript code extension:
 
-1. Go to the **Extensions Marketplace** and [add the JavaScript Code extension from the Advanced tab]().
+1. Go to the **Extensions Marketplace** and [add the JavaScript Code extension from the Advanced tab](https://docs.tealium.com/manage-extensions/).
 1. **Title**: Enter a name for this extension.
 1. **Scope**: Choose from the following options:  
     * utag Sync
@@ -99,25 +99,25 @@ Use the following steps to configure the JavaScript code extension:
 1. Enter your JavaScript code in the editor. The editor displays any errors and warnings.
 1. **Condition** (Optional)
     * Click **Add Condition** and create a conditional statement.
-    * The first drop-down list is populated with variables and the second drop-down list provides a list of [evaluating operators]().
+    * The first drop-down list is populated with variables and the second drop-down list provides a list of [evaluating operators](https://docs.tealium.com/about-load-rules/).
     * If you are running the conditional logic against a value, enter it in the text field.
     * To apply multiple conditions, choose between the **AND** and **OR** logic.
 1. Save and publish the changes.
 
 ## Troubleshooting
 
-#### Why can&#39;t I edit the code in the editor?
+#### Why can't I edit the code in the editor?
 
 You do not have the [Manage JS Code Extension permission]() in your Tealium iQ account. Contact your Tealium account administrator to obtain the permission.
 
-#### Why can&#39;t I set the scope to **Pre Loader**?
+#### Why can't I set the scope to **Pre Loader**?
 
 If you have a condition defined, the **Pre Loader** option is no longer available. In **Pre Loader** scope, the data layer is not yet populated so there is no data object with which to evaluate the conditional logic. Likewise, the **Add Condition** option is disabled when the scope is set to **Pre Loader**.
 
-#### What&#39;s the difference between an extension run in the **Pre Loader** scope and one run in **Before Load Rules** scope with occurrence set to **Run Once**?
+#### What's the difference between an extension run in the **Pre Loader** scope and one run in **Before Load Rules** scope with occurrence set to **Run Once**?
 
 In both cases, the extension to runs once before load rules are evaluated. The differences between the scopes are:
 
 * The **Pre Loader** scope does not support conditions.
-* Extensions in the **Pre Loader** scope execute before the data layer is processed and cannot access the data layer `b` object (it doesn&#39;t exist yet).
+* Extensions in the **Pre Loader** scope execute before the data layer is processed and cannot access the data layer `b` object (it doesn't exist yet).
 * The code in an extension scoped to **Pre Loader** is not wrapped in the anonymizing function and is executed exactly as it appears in the editor. For more information, see [Code Execution]().

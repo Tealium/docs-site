@@ -2,9 +2,13 @@
 title: インストール
 description: Flutter用Tealiumのインストール方法を学びます。
 url: https://docs.tealium.com/ja/platforms/flutter-v2/install/
----これはFlutter用Tealiumの以前のバージョン（2.x）です。最新バージョンについては、[Flutter用Tealium](/ja/platforms/flutter/)をご覧ください。
+---
+<blockquote>
+これはFlutter用Tealiumの以前のバージョン（2.x）です。最新バージョンについては、[Flutter用Tealium](https://docs.tealium.com/ja/platforms/flutter/)をご覧ください。
+</blockquote>
 
-Flutter用Tealiumを使用すると、Flutterアプリケーションで[Android](/ja/platforms/android-kotlin/)または[iOS](/ja/platforms/ios-swift/)のTealiumネイティブモバイルライブラリを使用できます。
+
+Flutter用Tealiumを使用すると、Flutterアプリケーションで[Android](https://docs.tealium.com/ja/platforms/android-kotlin/)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/)のTealiumネイティブモバイルライブラリを使用できます。
 
 ## 要件
 
@@ -12,7 +16,11 @@ Flutter用Tealiumを使用すると、Flutterアプリケーションで[Android
 * [Android Studio](https://developer.android.com/studio) や [VS Code](https://code.visualstudio.com/) などのIDE
 * IDEにインストールされたFlutterプラグイン
 
- Flutter用TealiumはFlutter Webアプリケーションと互換性がありません。Flutter Webアプリケーションを追跡するには、[JavaScript用Tealium](/ja/platforms/javascript/)を使用してください。
+
+<blockquote>
+Flutter用TealiumはFlutter Webアプリケーションと互換性がありません。Flutter Webアプリケーションを追跡するには、[JavaScript用Tealium](https://docs.tealium.com/ja/platforms/javascript/)を使用してください。
+</blockquote>
+
 
 ## サンプルアプリ
 
@@ -27,7 +35,7 @@ Flutter用Tealiumライブラリをインストールするには：
       dependencies:
         flutter:
           sdk: flutter
-        tealium: &#39;2.6.3&#39;
+        tealium: '2.6.3'
       ```
 
 1. プロジェクトでTealium Flutterプラグインの依存関係を取り込むには、次のコマンドを実行します：
@@ -37,20 +45,20 @@ Flutter用Tealiumライブラリをインストールするには：
 
 1. Dartコードをプロジェクトにインポートします：
       ```dart
-      import &#39;package:tealium/common.dart&#39;;
-      import &#39;package:tealium/tealium.dart&#39;;
+      import 'package:tealium/common.dart';
+      import 'package:tealium/tealium.dart';
       ```
 
 FlutterプロジェクトでTealium APIを使用します。
 
 ## 初期化
 
-次の例に示すように、[`initialize()`](/ja/platforms/flutter-v2/api/tealium/#initialize)メソッドでTealiumインスタンスを初期化します：
+次の例に示すように、[`initialize()`](https://docs.tealium.com/ja/platforms/flutter-v2/api/tealium/#initialize)メソッドでTealiumインスタンスを初期化します：
 
 ```dart
 final config = TealiumConfig(
-    &#39;ACCOUNT&#39;,
-    &#39;PROFILE&#39;,
+    'ACCOUNT',
+    'PROFILE',
     TealiumEnvironment.dev,
     [Collectors.AppData, Collectors.Lifecycle],
     [Dispatchers.RemoteCommands, Dispatchers.TagManagement],
@@ -62,8 +70,8 @@ final config = TealiumConfig(
 );
 
 Tealium.initialize(config).then((value) {
-    print(&#39;Tealium initialized&#39;);
+    print('Tealium initialized');
 });
 ```
 
-初期化オプションについて詳しくは、[Flutter API](/ja/platforms/flutter-v2/api/)をご覧ください。
+初期化オプションについて詳しくは、[Flutter API](https://docs.tealium.com/ja/platforms/flutter-v2/api/)をご覧ください。

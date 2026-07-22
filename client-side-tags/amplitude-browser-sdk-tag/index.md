@@ -27,11 +27,11 @@ This tag implements the following vendor API:
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
-* **API Key**: Your Amplitude project&#39;s API key.
+* **API Key**: Your Amplitude project's API key.
 * **SDK Version**: The version of the Amplitude Browser SDK library to load. The default is `2.6.0`. This value is used to construct the CDN URL. For example, entering `2.41.1` loads `https://cdn.amplitude.com/libs/analytics-browser-2.41.1-min.js.gz`.
 * **Session Replay**: Enable or disable session replay.
 * **Session Replay Version**: The version of the session replay library to load. The default value is `1.13.9`.
@@ -39,11 +39,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -123,9 +123,9 @@ The available categories are:
 
 | Variable | Type | Description |
 |:---------|:-----|:------------|
-| `ipAddress`  | Boolean | Enable or disable collection of the user&#39;s IP address |
-| `language`  | Boolean | Enable or disable collection of the user&#39;s browser language |
-| `platform`  | Boolean | Enable or disable collection of the user&#39;s platform information |
+| `ipAddress`  | Boolean | Enable or disable collection of the user's IP address |
+| `language`  | Boolean | Enable or disable collection of the user's browser language |
+| `platform`  | Boolean | Enable or disable collection of the user's platform information |
 
 ### Cookie Options
 
@@ -144,5 +144,5 @@ The available categories are:
 | `utm_source`  | String | The website that sent the traffic |
 | `utm_medium`  | String | The marketing medium, for example, `email` or `cpc` |
 | `utm_campaign`  | String | The specific campaign name, for example, `summer_sale` |
-| `utm_term`  | String | The paid search terms used, for example, `product&#43;analytics` |
+| `utm_term`  | String | The paid search terms used, for example, `product+analytics` |
 | `utm_content`  | String | Identifies what brought the user to the site, commonly used for A/B testing |

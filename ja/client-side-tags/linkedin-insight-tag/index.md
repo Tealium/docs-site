@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/client-side-tags/linkedin-insight-tag/
 
 ## タグの構成
  
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/client-side-tags/linkedin-insight-tag/
 
 ### Web用コンバージョンAPI
 
-Web用LinkedInコンバージョンAPIをサポートするために、タグは各イベントに対してユニークなイベントIDを生成し、それをTealium EventStreamに送信してLinkedInコンバージョンコネクタで使用します。このイベントIDはコネクタでマッピング可能で、Webベースのサーバーベースの統合を同期させることができます。この機能にはアクティブな[Tealium Collectタグ]()が必要です。
+Web用LinkedInコンバージョンAPIをサポートするために、タグは各イベントに対してユニークなイベントIDを生成し、それをTealium EventStreamに送信してLinkedInコンバージョンコネクタで使用します。このイベントIDはコネクタでマッピング可能で、Webベースのサーバーベースの統合を同期させることができます。この機能にはアクティブな[Tealium Collectタグ](https://docs.tealium.com/tealium-collect-tag/)が必要です。
 
 タグは次の命名規則を使用して新しいイベント属性を発行します：
 
@@ -32,13 +32,13 @@ Web用LinkedInコンバージョンAPIをサポートするために、タグは
 linkedin_event_id_{CONVERSION_EVENT}_{TAG_UID}
 ```
 
-例：`window.lintrk(&#39;track&#39;, { conversion_id: 11563522 });`
+例：`window.lintrk('track', { conversion_id: 11563522 });`
 
-[LinkedInコンバージョンコネクタ構成ガイド]()を参照してください。
+[LinkedInコンバージョンコネクタ構成ガイド](https://docs.tealium.com/linkedin-conversions-connector/)を参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

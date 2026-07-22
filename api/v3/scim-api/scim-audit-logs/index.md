@@ -48,7 +48,7 @@ Each log entry contains the following fields:
 | `target_first_name` | First name of the target user. |
 | `target_last_name` | Last name of the target user. |
 | `target_user_uuid` | Tealium-assigned UUID for the target user. |
-| `external_id` | The identity provider&#39;s identifier for the user. |
+| `external_id` | The identity provider's identifier for the user. |
 | `idp_source` | Name of the identity provider. |
 | `http_status` | HTTP response code for the SCIM operation. |
 | `outcome` | Result of the operation: `SUCCESS` or `ERROR`. |
@@ -58,15 +58,15 @@ Each log entry contains the following fields:
 
 ## Filter logs for common tasks
 
-The [GET SCIM Sync Logs API]() supports several query parameters for filtering results. The following examples show how to use filters for common tasks.
+The [GET SCIM Sync Logs API](https://docs.tealium.com/get-scim-sync-logs-api/) supports several query parameters for filtering results. The following examples show how to use filters for common tasks.
 
 **Export logs for a compliance audit (date range)**
 
 To produce a record of all provisioning activity for a specific period, set `from` and `to` to the date range required by the audit:
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&amp;from=2025-01-01T00:00:00Z&amp;to=2025-03-31T23:59:59Z&#39; \
---header &#39;Authorization: Bearer {TOKEN}&#39;
+curl --location 'https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&from=2025-01-01T00:00:00Z&to=2025-03-31T23:59:59Z' \
+--header 'Authorization: Bearer {TOKEN}'
 ```
 
 **Find failed provisioning events**
@@ -74,8 +74,8 @@ curl --location &#39;https://developer.tealiumapis.com/admin/scim-sync/logs?acco
 To identify provisioning failures, filter by `status=ERROR`:
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&amp;status=ERROR&#39; \
---header &#39;Authorization: Bearer {TOKEN}&#39;
+curl --location 'https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&status=ERROR' \
+--header 'Authorization: Bearer {TOKEN}'
 ```
 
 The `error_message` field in each result describes why the operation failed.
@@ -85,6 +85,6 @@ The `error_message` field in each result describes why the operation failed.
 If you have a correlation ID from a support ticket or application log, use `correlationId` to retrieve the exact event:
 
 ```bash
-curl --location &#39;https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&amp;correlationId={CORRELATION_ID}&#39; \
---header &#39;Authorization: Bearer {TOKEN}&#39;
+curl --location 'https://developer.tealiumapis.com/admin/scim-sync/logs?account={ACCOUNT}&correlationId={CORRELATION_ID}' \
+--header 'Authorization: Bearer {TOKEN}'
 ```

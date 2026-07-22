@@ -5,12 +5,12 @@ url: https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/
 ---
 ## Class: `TealiumConfig`
 
-The `TealiumConfig` class provides methods to set configuration options for the main `Tealium` class. The following document summarizes the commonly used methods and properties of the `TealiumConfig` class for Kotlin. Individual modules may also provide their own extensions for the TealiumConfig class if they are enabled - these are documented in the relevant module&#39;s own document.
+The `TealiumConfig` class provides methods to set configuration options for the main `Tealium` class. The following document summarizes the commonly used methods and properties of the `TealiumConfig` class for Kotlin. Individual modules may also provide their own extensions for the TealiumConfig class if they are enabled - these are documented in the relevant module's own document.
 
 | Method/Property                                                             | Description                                                                                  |
 |:----------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------|
 | [`adobeVisitorAuthState`](#adobevisitorauthstate)                           | Sets the current authentication state for the visitor.                                                                                                                           |
-| [`adobeVisitorCustomVisitorId`](#adobevisitorcustomvisitorid)               | Sets the known visitor ID to the Adobe ECID, if it&#39;s known at initialization time. If the ECID changes in the future, call `linkECIDToKnownIdentifier` to update the visitor ID. |
+| [`adobeVisitorCustomVisitorId`](#adobevisitorcustomvisitorid)               | Sets the known visitor ID to the Adobe ECID, if it's known at initialization time. If the ECID changes in the future, call `linkECIDToKnownIdentifier` to update the visitor ID. |
 | [`adobeVisitorDataProviderId`](#adobevisitordataproviderid)                 | Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.                                                                              |
 | [`adobeVisitorExistingEcid`](#adobevisitorexistingecid)                     | Sets the existing ECID from a previous installation to be used, such as the Adobe SDK, instead of requesting a new ECID.                                                         |
 | [`adobeVisitorOrgId`](#adobevisitororgid)                                   | String containing the Adobe Org ID including the `@` portion.                                                                                                                    |
@@ -34,7 +34,7 @@ The `TealiumConfig` class provides methods to set configuration options for the 
 | [`sessionCountingEnabled`](#sessioncountingenabled)                         | Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files                                        |
 | [`TealiumConfig`](#tealiumconfig)                                           | Constructor method that creates an instance of `TealiumConfig`.                                                                                                                      |
 | [`timedEventTriggers`](#timedeventtriggers)                                 | A list of `EventTrigger` objects for automatically tracking timed events.                                        |
-| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings]() (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. |
+| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. |
 
 ### `adobeVisitorAuthState`
 
@@ -50,10 +50,10 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN
 
 ### `adobeVisitorCustomVisitorId`
 
-Sets the known visitor ID to the Adobe ECID, if it&#39;s known at initialization time. If the ECID changes in the future, call [`linkECIDToKnownIdentifier`](/platforms/android-kotlin/api/tealium/#linkecidtoknownidentifier) to update the visitor ID.
+Sets the known visitor ID to the Adobe ECID, if it's known at initialization time. If the ECID changes in the future, call [`linkECIDToKnownIdentifier`](https://docs.tealium.com/platforms/android-kotlin/api/tealium/#linkecidtoknownidentifier) to update the visitor ID.
 
 ```java
-config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorCustomVisitorId = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorDataProviderId`
@@ -61,7 +61,7 @@ config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655
 Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.
 
 ```java
-config.adobeVisitorDataProviderId = &#34;01&#34;
+config.adobeVisitorDataProviderId = "01"
 ```
 
 ### `adobeVisitorExistingEcid`
@@ -71,7 +71,7 @@ Sets the existing ECID from a previous installation to be used, such as the Adob
 Example:
 
 ```java
-config.adobeVisitorExistingEcid = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorExistingEcid = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorOrgId`
@@ -85,7 +85,7 @@ config.adobeVisitorOrgId = STRING_VALUE
 Example:
 
 ```java
-config.adobeVisitorOrgId = &#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;
+config.adobeVisitorOrgId = "1A2A111A111150AA0A110A12@AdobeOrg"
 ```
 
 ### `adobeVisitorRetries`
@@ -100,29 +100,29 @@ config.adobeVisitorRetries = 5
 
 ### `autoTrackingBlocklistFilename`
 
-For use with the [AutoTracking Module](/platforms/android-kotlin/module-list/autotracking/#block-list).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/android-kotlin/module-list/autotracking/#block-list).
 
 Sets the name of a JSON formatted block list file that contains a list of activities to omit from automatic tracking. The file should be available in the Android `assets` directory.
 
 ```kotlin
-config.autoTrackingBlocklistFilename = &#34;autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistFilename = "autotracking-blocklist.json"
 ```
 
 ### `autoTrackingBlocklistUrl`
 
-For use with the [AutoTracking Module](/platforms/android-kotlin/module-list/autotracking/#block-list).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/android-kotlin/module-list/autotracking/#block-list).
 
 Sets a URL to a JSON formatted block list file that contains a list of activities to omit from automatic tracking.
 
 ```kotlin
-config.autoTrackingBlocklistUrl = &#34;https://example.com/autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistUrl = "https://example.com/autotracking-blocklist.json"
 ```
 
 ### `autoTrackingCollectorDelegate`
 
-For use with the [AutoTracking Module](/platforms/android-kotlin/module-list/autotracking/#custom-data).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/android-kotlin/module-list/autotracking/#custom-data).
 
-Sets a global delegate that executes for activities tracked by the [AutoTracking module](/platforms/android-kotlin/module-list/autotracking/). Edit this delegate to customize the data included with specific activities.
+Sets a global delegate that executes for activities tracked by the [AutoTracking module](https://docs.tealium.com/platforms/android-kotlin/module-list/autotracking/). Edit this delegate to customize the data included with specific activities.
 
 ```kotlin
 config.autoTrackingCollectorDelegate = myCollectorDelegate
@@ -130,7 +130,7 @@ config.autoTrackingCollectorDelegate = myCollectorDelegate
 
 ### `autoTrackingMode`
 
-Sets the level of tracking for the [AutoTracking module](/platforms/android-kotlin/module-list/autotracking/).
+Sets the level of tracking for the [AutoTracking module](https://docs.tealium.com/platforms/android-kotlin/module-list/autotracking/).
 
 * `FULL`  
 Track all activities except those annotated with `@Autotracked(track=false)`.
@@ -145,7 +145,7 @@ config.autoTrackingMode = AutoTrackingMode.FULL
 
 ### `Collectors`
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors. Default collectors are denoted by a `*` next to the collector name.
 
@@ -157,9 +157,9 @@ The following table lists the available collectors. Default collectors are denot
 | `Device`        | `Collectors.Device`       |
 | `Lifecycle`     | `Collectors.Lifecycle`    |
 
-These modules are enabled or disabled using the [`TealiumConfig`](/platforms/android-kotlin/api/tealium-config/) `collectors` property.
+These modules are enabled or disabled using the [`TealiumConfig`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/) `collectors` property.
 
-The following example adds to existing list of collectors you&#39;re using:  
+The following example adds to existing list of collectors you're using:  
 
 ```java
 val config = TealiumConfig(collectors = mutableSetOf(Collectors.AdobeVisitor))
@@ -207,7 +207,7 @@ config.consentManagerLoggingEnabled = true
 Overrides the profile that Tealium Collect sends data to.
 
 ```java
-config.consentManagerLoggingProfile = &#34;us-mobile&#34;
+config.consentManagerLoggingProfile = "us-mobile"
 ```
 
 ### `consentManagerLoggingUrl`
@@ -231,25 +231,29 @@ config.deepLinkTrackingEnabled = true
 Sets the data layer value for `tealium_visitor_id`. Use this when you have your own unique identifier.
 
 ```java
-config.existingVisitorId = &#34;8243d23b56d5488571027547bc72d93&#34;
+config.existingVisitorId = "8243d23b56d5488571027547bc72d93"
 ```
 
 ### `hostedDataLayerMaxCacheTimeMinutes`
 
-Sets an expiration on the hosted data layer data. If this property isn&#39;t set, hosted data layer items persist for 7 days by default, and are re-downloaded from Tealium once this period has expired.
+Sets an expiration on the hosted data layer data. If this property isn't set, hosted data layer items persist for 7 days by default, and are re-downloaded from Tealium once this period has expired.
 
 ```java
 hostedDataLayerMaxCacheTimeMinutes = 30
 ```
 
+
+<blockquote>
 If your hosted data layer is frequently updated, setting a lower value may impact battery life due to increased network requests.
+</blockquote>
+
 
 ### `hostedDataLayerEventMappings`
 
 Sets the hosted data layer keys (lookup variables) used by the hosted data layer module when retrieving data layer IDs. The key is the value in the `tealium_event` key of a dispatch.
 
 ```java
-hostedDataLayerEventMappings = mapOf(&#34;pdp&#34; to &#34;product_id&#34;)
+hostedDataLayerEventMappings = mapOf("pdp" to "product_id")
 ```
 
 ### `logLevel`
@@ -270,7 +274,11 @@ Set log level to one of the following values:
 config.logLevel = LogLevel.DEV
 ```
 
+
+<blockquote>
 View your development logs in the Android Studio using LogCat. View your production logs with the LogCat app by connecting your Android device.
+</blockquote>
+
 
 ### `remoteAPIEnabled`
 
@@ -304,15 +312,15 @@ The `TealiumConfig` instance is configured with the following parameters:
 | Parameters    | Type          | Description              | Example            |
 |:--------------|:--------------|:-------------------------|:-------------------|
 | `application` | `Application` | The application instance | `applicationObj`   |
-| `account`     | `String`      | Tealium account name     | `&#34;companyXYZ&#34;`     |
-| `profile`     | `String`      | Tealium profile name     | `&#34;main&#34;`           |
+| `account`     | `String`      | Tealium account name     | `"companyXYZ"`     |
+| `profile`     | `String`      | Tealium profile name     | `"main"`           |
 | `environment` | `String`      | Tealium environment name | `Environment.PROD` |
 
 The following is an example:
 
 ```java
 // Assuming execution is within Application.onCreate()
-val config = TealiumConfig(this, &#34;ACCOUNT_NAME&#34;, &#34;PROFILE_NAME&#34;, Environment.PROD)
+val config = TealiumConfig(this, "ACCOUNT_NAME", "PROFILE_NAME", Environment.PROD)
 
 // Add required Dispatchers
 config.dispatchers.addAll(setOf(CollectDispatcher, TagManagementDispatcher))
@@ -345,11 +353,11 @@ The following are `EventTrigger` parameters:
 |:-------------------|:----------|:----------------------------------------------------------------------|
 | `start_event`      | `String`  | Name of the `TealiumEvent` to start the timed event                   |
 | `stop_event`       | `String`  | Name of the `TealiumEvent` to stop the timed event                    |
-| `timed_event_name` | `String?` | (Optional) Name of timed event (default: `&#34;start_event::stop_event&#34;`) |
+| `timed_event_name` | `String?` | (Optional) Name of timed event (default: `"start_event::stop_event"`) |
 
 ### `useRemoteLibrarySettings`
 
-Optional `Boolean` to enable or disable the [Mobile Publish Settings]() (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.                     
+Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.                     
 
 ```swift
 config.useRemoteLibrarySettings = true

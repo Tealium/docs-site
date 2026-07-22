@@ -9,8 +9,8 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 詳細については、以下を参照してください：
 
-* [オプトアウトプライバシーバナーとポップアップ]()
-* [同意管理：イベントログ]()
+* [オプトアウトプライバシーバナーとポップアップ](https://docs.tealium.com/about-ccpa-privacy-banner-and-popup/)
+* [同意管理：イベントログ](https://docs.tealium.com/event-logging-for-consent-management/)
 
 ## 同意変更イベント
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 |名前| 説明| 例|
 |---| ---| ---|
 |`policy`| 同意の文脈で、通常は訪問に同意を得る際に提示される条件に特有です。値: `gdpr`（オプトイン）、`ccpa`（オプトアウト） | `gdpr`|
-|`consent_categories`| 承認されたトラッキングおよびデータ収集の種類のカテゴリ名。| `[&#34;affiliates&#34;, &#34;social&#34;]`|
+|`consent_categories`| 承認されたトラッキングおよびデータ収集の種類のカテゴリ名。| `["affiliates", "social"]`|
 |`do_not_sell`| 個人情報の販売をブロックするタグIDのリスト。| `[1, 42, 51]`|
 
 ### `grant_full_consent`
@@ -30,26 +30,26 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;      : &#34;grant_full_consent&#34;,
-    &#34;policy&#34;             : &#34;gdpr&#34;,
-    &#34;consent_categories&#34; : [
-        &#34;analytics&#34;,
-        &#34;affiliates&#34;,
-        &#34;display_ads&#34;,
-        &#34;search&#34;,
-        &#34;email&#34;,
-        &#34;personalization&#34;,
-        &#34;social&#34;,
-        &#34;big_data&#34;,
-        &#34;misc&#34;,
-        &#34;cookiematch&#34;,
-        &#34;cdp&#34;,
-        &#34;mobile&#34;,
-        &#34;engagement&#34;,
-        &#34;monitoring&#34;,
-        &#34;crm&#34;
+    "tealium_event"      : "grant_full_consent",
+    "policy"             : "gdpr",
+    "consent_categories" : [
+        "analytics",
+        "affiliates",
+        "display_ads",
+        "search",
+        "email",
+        "personalization",
+        "social",
+        "big_data",
+        "misc",
+        "cookiematch",
+        "cdp",
+        "mobile",
+        "engagement",
+        "monitoring",
+        "crm"
     ],
-    &#34;tealium_visitor_id&#34;: &#34;0184a9cef4ce000c9173745530e705075007706d00fb8&#34;
+    "tealium_visitor_id": "0184a9cef4ce000c9173745530e705075007706d00fb8"
 }
 ```
 
@@ -57,10 +57,10 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;      : &#34;grant_full_consent&#34;,
-    &#34;policy&#34;             : &#34;ccpa&#34;,
-    &#34;consent_categories&#34; : [],
-    &#34;tealium_visitor_id&#34;: &#34;0184a9cef4ce000c9173745530e705075007706d00fb8&#34;
+    "tealium_event"      : "grant_full_consent",
+    "policy"             : "ccpa",
+    "consent_categories" : [],
+    "tealium_visitor_id": "0184a9cef4ce000c9173745530e705075007706d00fb8"
 }
 ```
 
@@ -72,10 +72,10 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;      : &#34;grant_partial_consent&#34;,
-    &#34;policy&#34;             : &#34;gdpr&#34;,
-    &#34;consent_categories&#34; : [&#34;affiliates&#34;, &#34;social&#34;],
-    &#34;tealium_visitor_id&#34;: &#34;0184a9cef4ce000c9173745530e705075007706d00fb8&#34;
+    "tealium_event"      : "grant_partial_consent",
+    "policy"             : "gdpr",
+    "consent_categories" : ["affiliates", "social"],
+    "tealium_visitor_id": "0184a9cef4ce000c9173745530e705075007706d00fb8"
 }
 ```
 
@@ -83,10 +83,10 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;      : &#34;decline_consent&#34;,
-    &#34;policy&#34;             : &#34;gdpr&#34;,
-    &#34;consent_categories&#34; : [],
-    &#34;tealium_visitor_id&#34;: &#34;0184a9cef4ce000c9173745530e705075007706d00fb8&#34;
+    "tealium_event"      : "decline_consent",
+    "policy"             : "gdpr",
+    "consent_categories" : [],
+    "tealium_visitor_id": "0184a9cef4ce000c9173745530e705075007706d00fb8"
 }
 ```
 
@@ -98,9 +98,9 @@ url: https://docs.tealium.com/ja/consent/server-side/event-specs/
 
 ```json
 {
-    &#34;tealium_event&#34;      : &#34;decline_consent&#34;,
-    &#34;policy&#34;             : &#34;gdpr&#34;,
-    &#34;consent_categories&#34; : [],
-    &#34;tealium_visitor_id&#34;: &#34;0184a9cef4ce000c9173745530e705075007706d00fb8&#34;
+    "tealium_event"      : "decline_consent",
+    "policy"             : "gdpr",
+    "consent_categories" : [],
+    "tealium_visitor_id": "0184a9cef4ce000c9173745530e705075007706d00fb8"
 }
 ```

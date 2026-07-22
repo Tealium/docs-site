@@ -31,9 +31,9 @@ A healthy and well-structured data layer is essential for accurate, real-time da
 
 ### Event examples
 
-To understand how event health works, let&#39;s look at examples of valid, invalid, and unknown events. The following examples are based on the following event specification for a `video_complete` event:
+To understand how event health works, let's look at examples of valid, invalid, and unknown events. The following examples are based on the following event specification for a `video_complete` event:
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 The specification lists its `tealium_event` value (`video_complete`) and defines four required attributes: `video_id`, `video_length`, `video_name`, and `video_platform`. Each attribute has a defined data type (for example, string, number) that incoming events must match to be valid.
 
@@ -49,17 +49,17 @@ For example, consider the following event:
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_complete&#34;,
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: 300,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_complete",
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": 300,
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
 The `tealium_event` value is `video_complete`, so this event is checked against the `video_complete` specification. Because this event includes all required attributes in the specification and they are the correct data type, this event is marked as valid.
 
-![](/images/server-side/valid-video-complete-event.png)
+![](https://docs.tealium.com/images/server-side/valid-video-complete-event.png)
 
 #### Example of invalid event
 
@@ -67,16 +67,16 @@ The following event is checked against the preceding `video_complete` specificat
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_complete&#34;,
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: &#34;300 seconds&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_complete",
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": "300 seconds",
+    "video_platform": "YouTube"
 }
 ```
 
 This event is invalid because the `video_length` attribute is a string when the specification expects a number, and the required `video_name` attribute is missing.
 
-![](/images/server-side/invalid-video-complete-event.png)
+![](https://docs.tealium.com/images/server-side/invalid-video-complete-event.png)
 
 Identify errors in attributes, data types, and requirements to troubleshoot and resolve issues.
 
@@ -88,10 +88,10 @@ The following event is missing a `tealium_event` value:
 
 ```json
 {
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: 300,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": 300,
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
@@ -101,9 +101,9 @@ Similarly, the following event is also marked as an unknown event because there 
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_search&#34;,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_search",
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
@@ -115,11 +115,11 @@ Use the following workflow to go from raw event data to monitored, validated eve
 
 In the **All Events** feed on the live events chart, inspect the incoming traffic:
 
-![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventfeed.png)
 
 This view shows how your current implementation behaves in production, including attributes you may not have identified yet:
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
 
 From this information, build a list of key events and their attributes to create event specifications.
 
@@ -129,11 +129,11 @@ For more information, see [Live events]().
 
 From the **Live Events** or the **Event Specifications** page, create event specifications for your key events using the attributes you discovered. Start with the most important events in your customer journeys (such as `sign_up`, `login`, `add_to_cart`, `purchase`). For each attribute, set the data type and whether the attribute is required.
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 After you create an event specification, events with a matching `tealium_event` value are validated against that specification and marked as **Valid**, **Invalid**, or **No Spec**. Each event specification creates a corresponding event feed that you can enable for connectors, EventDB, or EventStore.
 
-![](/images/server-side/video-complete-event-feed.png)
+![](https://docs.tealium.com/images/server-side/video-complete-event-feed.png)
 
 Your important events now have a documented contract that Tealium validates in real time. Matching events are available for downstream workflows through the linked feeds.
 
@@ -143,7 +143,7 @@ For more information, see [Manage event specifications]().
 
 Use the live events chart and the event specification detail pages to monitor event health over time. Use **Valid**, **Invalid**, and **No Spec** filters to focus on specific health states. Use **Data Sources** and **Event Feeds** to narrow the chart to a subset of traffic.
 
-![](/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
 
 Continuous monitoring helps you catch regressions quickly. For example, a new release that stops sending a required attribute or introduces a new, undefined event name.
 
@@ -153,7 +153,7 @@ For more information, see [Live events]() and [About event specifications]().
 
 Use a trace ID to filter out all incoming events except for the ones you trigger. A trace ID is a temporary, unique identifier to insert into your event tracking code to manually test events. This is useful when validating a new or updated event specification, as you see the events you trigger during a test.
 
-For more information, see [Use a trace ID]().
+For more information, see [Use a trace ID](https://docs.tealium.com/about-live-events/#use-a-trace-id).
 
 ### Step 4 - Fix, iterate, and confirm recovery
 
@@ -176,7 +176,7 @@ In the live events chart, look for green bars (valid events), and a decreasing n
 
 On the **Event Specifications** overview and detail pages, monitor **Total Volume**, **Valid Events**, **Invalid Events**, and **No Spec** counts per event over your chosen time range.
 
-![](/images/server-side/event-health-table.png)
+![](https://docs.tealium.com/images/server-side/event-health-table.png)
 
 These metrics show whether your changes are improving data quality and where to focus next:
 

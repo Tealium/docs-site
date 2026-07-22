@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/pixibo-fyf-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[Tag Overview]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/client-side-tags/pixibo-fyf-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -32,9 +32,9 @@ url: https://docs.tealium.com/ja/client-side-tags/pixibo-fyf-tag/
 
 |変数| 説明|
 |---| ---|
-|`clientName`|  &lt;ul&gt;&lt;li&gt;クライアント名&lt;/li&gt;&lt;/ul&gt; |
-|`clientId`|  &lt;ul&gt;&lt;li&gt;クライアントID&lt;/li&gt;&lt;/ul&gt; |
-|`environment`|  &lt;ul&gt;&lt;li&gt;環境&lt;/li&gt;&lt;/ul&gt; |
-|`skuId`|  &lt;ul&gt;&lt;li&gt;SKU ID&lt;/li&gt;&lt;/ul&gt; |
-|`lang`|  &lt;ul&gt;&lt;li&gt;言語&lt;/li&gt;&lt;/ul&gt; |
+|`clientName`|  <ul><li>クライアント名</li></ul> |
+|`clientId`|  <ul><li>クライアントID</li></ul> |
+|`environment`|  <ul><li>環境</li></ul> |
+|`skuId`|  <ul><li>SKU ID</li></ul> |
+|`lang`|  <ul><li>言語</li></ul> |
 

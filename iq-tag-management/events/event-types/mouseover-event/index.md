@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/mouseover-eve
 
 The mouseover event tracks when visitors hover their mouse cursor over a specified element. When a visitor performs the action, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -27,11 +27,11 @@ You can set the following threshold for the trigger:
 
 ### Element selector
 
-The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector]().
+The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector](https://docs.tealium.com/event-element-selector/).
 
 ### Trigger frequency
 
-The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers]().
+The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers](https://docs.tealium.com/event-triggers/).
 
 ## Event trigger variables
 
@@ -41,15 +41,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;mouseover&#34;`| The visitor hovered their mouse cursor over the specified element for the minimum amount of time.|
+|`tealium_event="mouseover"`| The visitor hovered their mouse cursor over the specified element for the minimum amount of time.|
 |`iq_event_id` | The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mouseover&#34;,
-   &#34;iq_event_id:&#34; : &#34;mouseover_events_1&#34;
+   "tealium_event"  : "mouseover",
+   "iq_event_id:" : "mouseover_events_1"
 }
 
 ```

@@ -5,11 +5,11 @@ url: https://docs.tealium.com/ja/platforms/node/track/
 ---
 ## イベント/ビューのトラッキング
 
-[`track()`](/ja/platforms/node/api/#track)メソッドは、次の例に示すように、すべてのイベントとページビューをトラッキングします。
+[`track()`](https://docs.tealium.com/ja/platforms/node/api/#track)メソッドは、次の例に示すように、すべてのイベントとページビューをトラッキングします。
 
 
 ```javascript
-tealium.track(&#34;EVENT_NAME&#34;, {&#34;KEY&#34;: &#34;VALUE&#34;}); 
+tealium.track("EVENT_NAME", {"KEY": "VALUE"}); 
 ```
 
 ## 訪問のトラッキング
@@ -19,9 +19,9 @@ tealium.track(&#34;EVENT_NAME&#34;, {&#34;KEY&#34;: &#34;VALUE&#34;}); 
 ```javascript
 var myVisitorId = myVisitorIdFunction();
 
-tealium.track(&#34;page_view&#34;, {
-    &#34;tealium_visitor_id&#34; : myVisitorId,
-    &#34;some_key&#34;           : &#34;KEY&#34;
+tealium.track("page_view", {
+    "tealium_visitor_id" : myVisitorId,
+    "some_key"           : "KEY"
 });
 ```
 

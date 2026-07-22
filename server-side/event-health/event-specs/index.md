@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/event-health/event-specs/
 ---
 ## How it works
 
-Event specifications (also referred to as &#34;event specs&#34;) represent your [data layer]() for events. Event specifications allow the data quality of your events to be validated in real-time using the [live events chart]() or event specification detail view.
+Event specifications (also referred to as "event specs") represent your [data layer](https://docs.tealium.com/an-introduction-to-the-data-layer/) for events. Event specifications allow the data quality of your events to be validated in real-time using the [live events chart](https://docs.tealium.com/about-live-events/) or event specification detail view.
 
 Event specifications contain a set of definitions, which consist of:
 
@@ -22,17 +22,17 @@ For example, a `video_complete` event contains the following attributes and data
 
 ```json
 {
-    &#34;tealium_event&#34;  : &#34;video_complete&#34;, // name of event and specification
-    &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;   : 300,
-    &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34; : &#34;YouTube&#34;,
+    "tealium_event"  : "video_complete", // name of event and specification
+    "video_id"       : "xWlEk2i9r5Q",
+    "video_length"   : 300,
+    "video_name"     : "How to track videos in Tealium",
+    "video_platform" : "YouTube",
 }
 ```
 
 An event specification for this `video_complete` event contains the following:
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 * The `tealium_event` attribute identifies the event as `video_complete`.
 * The **Definitions** table provides contextual information about the event and defines the required attributes, their expected data types, and whether they are required for a valid event.
@@ -46,7 +46,7 @@ Event specifications provide two primary benefits for data management:
 
 ## View event specification statistics
 
-![](/images/server-side/event-health-table.png)
+![](https://docs.tealium.com/images/server-side/event-health-table.png)
 
 The **Event Health** window displays the total statistics for all event specifications. The table shows the statistics for each individual event specification. You can select a time frame to view the statistics for that period.
 
@@ -77,10 +77,10 @@ From the event specification details window, click **Code** and select the data 
 
 The following code sample demonstrates the tracking code for the `video_complete` event for a data source named `My iOS App`:
 
-![](/images/server-side/whiteui-eventstream-eventspecifications-viewcode.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-eventspecifications-viewcode.png)
 
 ## Event specifications in live events
 
 Once an event specification is created and the tracking code is implemented, use the live events chart to view incoming events in real-time to evaluate their data quality.
 
-For more information, see [Live events]().
+For more information, see [Live events](https://docs.tealium.com/about-live-events/#event-specification-display-filters).

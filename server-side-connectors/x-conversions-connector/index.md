@@ -65,7 +65,7 @@ Manage event duplication using the `conversion_id` event parameter, which can be
 
 X Conversions requires allowlisting on your X account. For assistance with allowlisting, contact your X representative.
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -77,7 +77,7 @@ This value can be created in the following ways:
   * Contact your X account manager.
 
 * **Pixel ID**  
-The Universal Website Tag (UWT) ID for an ad account. This represents the base36-encoded value for an ad account&#39;s UWT ID.  
+The Universal Website Tag (UWT) ID for an ad account. This represents the base36-encoded value for an ad account's UWT ID.  
   To obtain your Pixel ID:
   1. Log in to your ads account at [https://ads.x.com/](https://ads.x.com).
   1. In the top left corner of the interface, under **Tools**, click **Events Manager**.
@@ -98,7 +98,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions].() Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions].(https://docs.tealium.com/batched-actions/) Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 500
 * Max time since oldest request: 10 minutes
@@ -130,7 +130,7 @@ You must provide at least one of the following parameters:
 | Currency | The type of a currency to filter results by, identified using [ISO 4217 format](https://en.wikipedia.org/wiki/ISO_4217). This is a three-letter string, such as `USD`. |
 | Conversion ID | For deduplication between pixel and conversion API conversions. An identifier for a conversion event that can be used for de-duplication between Web Pixel and Conversion API conversions in the same event tag. For more information, see [X: Conversion API Set Up](https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api). |
 | Description | Description with any additional information on the conversions. |
-| Search String | Text that was searched for on the advertiser&#39;s website. |
+| Search String | Text that was searched for on the advertiser's website. |
 
 #### Contents Attributes
 

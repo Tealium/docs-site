@@ -6,9 +6,9 @@ url: https://docs.tealium.com/platforms/ios-swift/app-extensions/
 
 ## Today Extensions
 
-**Today Extensions** are widgets that appear on the device&#39;s &#34;Today&#34; screen. These app extensions are allowed very limited resources by the OS, and may be terminated if they consume too much memory or processing power.
+**Today Extensions** are widgets that appear on the device's "Today" screen. These app extensions are allowed very limited resources by the OS, and may be terminated if they consume too much memory or processing power.
 
-Use the Swift library as normal inside a Today Extension but, to keep the memory footprint low, we recommend using only the [Collect module](/platforms/ios-swift/module-list/collect/) to transmit data. The [Tag Management module](/platforms/ios-swift/module-list/tag-management/) may be too resource intensive and result in your widget being terminated.
+Use the Swift library as normal inside a Today Extension but, to keep the memory footprint low, we recommend using only the [Collect module](https://docs.tealium.com/platforms/ios-swift/module-list/collect/) to transmit data. The [Tag Management module](https://docs.tealium.com/platforms/ios-swift/module-list/tag-management/) may be too resource intensive and result in your widget being terminated.
 
 Regardless of the option chosen, it is important to thoroughly test and ensure your widget performs as expected. Embedding fewer Tealium modules in your widget results in greater performance and a lower memory footprint.
 
@@ -18,7 +18,7 @@ If you are adding a watchOS target to an iOS project that already has Tealium in
 
 For an example of a watchOS extension target utilizing Tealium, see [TealiumSwiftExample](https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/TealiumSwiftWatchExample%20Extension). Creating a standalone watchOS app is similar. Assign each `Tealium###.framework` to the watchOS extension target, and add your `TealiumHelper` class.
 
-Alternatively, use the `WatchConnectivty` framework&#39;s `WCSession` API to send a message to the host iOS app each time you want to send a tracking call. This allows the event to be tracked by the Tag Management module if you are using it, but is not an option for an independent watchOS app.
+Alternatively, use the `WatchConnectivty` framework's `WCSession` API to send a message to the host iOS app each time you want to send a tracking call. This allows the event to be tracked by the Tag Management module if you are using it, but is not an option for an independent watchOS app.
 
 ## WidgetKit and App Clips
 
@@ -35,16 +35,16 @@ class TealiumHelper {
 	var tealium: Tealium?
 	// ...
 	// Return the current visitor ID from the Tealium Swift library on the iOS app
-	func getVisitorId() -&gt; String? {
+	func getVisitorId() -> String? {
 		return self.tealium.visitorId
 	}
 
 	// On the app extension, pass the ID retrieved from the iOS app in the config object
 	private func initTealium(existingVisitorId id: String) {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
- 	       		                 profile: &#34;PROFILE&#34;,
-        	   	                 environment: &#34;ENVIRONMENT&#34;,
-           		                 datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+ 	       		                 profile: "PROFILE",
+        	   	                 environment: "ENVIRONMENT",
+           		                 datasource: "DATASOURCE")
 
 		// existing ID is used as the first party ID in the app extension
         config.existingVisitorId = id
@@ -55,4 +55,8 @@ class TealiumHelper {
 
 Alternatively, generate a visitor ID centrally and pass it to each Tealium instance at initialization. It is recommended to use a UUID.
 
+
+<blockquote>
 Do not use a simple ID, such as email address, for your first party visitor ID.
+</blockquote>
+

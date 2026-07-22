@@ -13,12 +13,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/frequently-asked-questions/ho
 ロードルールの条件によって生成されるJavaScriptコードは、`toString()` メソッドを使用します。これにより、配列はコンマ区切りの文字列に変換されます。たとえば、CONTAINS条件を使用するロードルールは、`toString()` を使用して変数を文字列に変換し、その後 `indexOf()` を使用して変数内で目的の値を見つけます。
 
 ```
-&gt; product_name = [&#34;Nexus One&#34;, &#34;Samsung Razor&#34;, &#34;Apple iPhone&#34;]
-[&#34;Nexus One&#34;, &#34;Samsung Razor&#34;, &#34;Apple iPhone&#34;]
+> product_name = ["Nexus One", "Samsung Razor", "Apple iPhone"]
+["Nexus One", "Samsung Razor", "Apple iPhone"]
 
-&gt; product_name.toString()
-&#34;Nexus One,Samsung Razor,Apple iPhone&#34;
+> product_name.toString()
+"Nexus One,Samsung Razor,Apple iPhone"
 
-&gt; product_name.toString().indexOf(&#34;Apple&#34;)
+> product_name.toString().indexOf("Apple")
 24
 ```

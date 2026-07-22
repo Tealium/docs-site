@@ -7,9 +7,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/array-
 
 ブール値の配列は、次のスコープで利用可能です：イベント、訪問、訪問。
 
-![](/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
 
-文字列 &#34;true&#34; と &#34;false&#34;（大文字小文字の組み合わせは任意）はそれぞれのブール値に変換されます。その他の非ブール値は無視されます。
+
+<blockquote>
+文字列 "true" と "false"（大文字小文字の組み合わせは任意）はそれぞれのブール値に変換されます。その他の非ブール値は無視されます。
+</blockquote>
+
 
 ## エンリッチメント
 

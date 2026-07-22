@@ -26,8 +26,15 @@ Resetting the SSO configuration deletes all current SSO settings and forces all 
 
 To reset the SSO configuration, complete the following steps:
 
-1. Go to **Admin menu &gt; Manage SSO** and click **Reset**.  Reset is available only when the **Authentication Mode** is switched to **Test**.
+1. Go to **Admin menu > Manage SSO** and click **Reset**. 
+<blockquote>
+Reset is available only when the **Authentication Mode** is switched to **Test**.
+</blockquote>
+
 2. The **Reset SSO?** dialog appears. Enter `RESET` in the confirmation field and click **Reset** to confirm the SSO reset.
 3. The **Configure IdP** screen appears. Follow the steps in the **Setting up your SSO** section.
 
- If your company changes its email address domain or IdP, you must reset the SSO. 
+
+<blockquote>
+If your company changes its email address domain or IdP, you must reset the SSO.
+</blockquote>

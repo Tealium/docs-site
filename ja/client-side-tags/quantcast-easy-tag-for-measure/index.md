@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-measure
 
 ## タグ構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Quantcast Easy Tag for Measureタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Quantcast Easy Tag for Measureタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-measure
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -28,4 +28,4 @@ url: https://docs.tealium.com/ja/client-side-tags/quantcast-easy-tag-for-measure
 
 |変数| 説明|
 |---| ---|
-|`qacct`|  &lt;ul&gt;&lt;li&gt;アカウントコード（P-code）。&lt;/li&gt;&lt;li&gt;`p-`で始まる13文字の大文字小文字を区別する英数字のコード。&lt;/li&gt;&lt;/ul&gt; |
+|`qacct`|  <ul><li>アカウントコード（P-code）。</li><li>`p-`で始まる13文字の大文字小文字を区別する英数字のコード。</li></ul> |

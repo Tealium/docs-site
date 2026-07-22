@@ -17,17 +17,17 @@ After you install the Moments API module, import the necessary classes into your
 The Tealium Moments API module requires the following:
 
 * Access to your native build environments
-* [Tealium for React Native 2.2.0 or later](/platforms/react-native/)
+* [Tealium for React Native 2.2.0 or later](https://docs.tealium.com/platforms/react-native/)
 * [React Native 0.63 or later](https://github.com/Tealium/tealium-react-native) and tools 
-* [Tealium iQ Mobile Profile]()
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
-* [Tealium for Android](/platforms/android-kotlin/) or [Tealium for iOS](/platforms/ios-swift/)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 
 ## Install (NPM/YARN)
 
 To install the Tealium Moments API module for React Native with NPM:
 
-1. Follow the [installation instructions](/platforms/react-native/install/) for the main `tealium-react-native` library installation. Ensure that you have installed at least version 2.2.0 or later.
+1. Follow the [installation instructions](https://docs.tealium.com/platforms/react-native/install/) for the main `tealium-react-native` library installation. Ensure that you have installed at least version 2.2.0 or later.
 1. Go to the root directory of your React Native project.
 1. Download and install the `tealium-react-native-moments-api` package with the following command:  
     ```bash
@@ -39,8 +39,8 @@ To install the Tealium Moments API module for React Native with NPM:
 To import the relevant classes into your app, add the following code:
 
 ```javascript
-import TealiumMomentsApi from &#39;tealium-react-native-moments-api&#39;;
-import { TealiumMomentsApiConfig, MomentsApiRegion} from &#39;tealium-react-native-moments-api/common&#39;;
+import TealiumMomentsApi from 'tealium-react-native-moments-api';
+import { TealiumMomentsApiConfig, MomentsApiRegion} from 'tealium-react-native-moments-api/common';
 ```
 
 ## Initialize
@@ -50,7 +50,7 @@ Configure the `Moments API` module prior to initializing the main Tealium React 
 ```javascript
 let momentsApiConfig: TealiumMomentsApiConfig = {
     region: MomentsApiRegion.UsEast,   // Setting a region is mandatory. The Moments API module will not initialize if it is missing.
-    referrer: &#34;https://tealium.com&#34;    // Optional - specify a referrer URL. This URL must match the “Domain Allow List” in the Tealium UI, or the Moments API will not return any data.
+    referrer: "https://tealium.com"    // Optional - specify a referrer URL. This URL must match the “Domain Allow List” in the Tealium UI, or the Moments API will not return any data.
 }
 
 TealiumMomentsApi.configure(momentsApiConfig);
@@ -67,8 +67,8 @@ Retrieves the engine response for the given engine ID.
 ```javascript
 TealiumMomentsApi.fetchEngineResponse(
     id,
-    value =&gt; {
-        console.log(&#34;Engine Response data: &#34; &#43; JSON.stringify(value))
+    value => {
+        console.log("Engine Response data: " + JSON.stringify(value))
     }
 );
 ```

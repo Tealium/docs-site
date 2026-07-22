@@ -15,7 +15,7 @@ Client ID (provided to you by the intelliAd CSM team)
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new intealliAd Connector. Read the [Connector Overview]() article for general instructions on how to add a Connector.
+Go to the Connector Marketplace and add a new intealliAd Connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a Connector.
 
 To configure your vendor, follow these steps:
 
@@ -27,7 +27,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It&#39;s where you&#39;ll set up actions and trigger them.
+Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
 
 This section describes how to set up parameters and options for the action.
 

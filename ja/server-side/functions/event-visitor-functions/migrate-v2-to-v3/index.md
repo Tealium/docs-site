@@ -7,16 +7,20 @@ url: https://docs.tealium.com/ja/server-side/functions/event-visitor-functions/m
 
 V3ランタイムを使用するイベントと訪問関数は、以下のようにV2関数と異なります：
 
-* **パラメータと名前付きエクスポート** &amp;ndash; 入力データはパラメータとして提供され、名前付きエクスポートではありません。
+* **パラメータと名前付きエクスポート** &ndash; 入力データはパラメータとして提供され、名前付きエクスポートではありません。
   * イベント関数には`event`と`helper`の2つのパラメータがあります。
   * 訪問関数には`visitor`、`visit`、`helper`の3つのパラメータがあります。
-* **ヘルパー関数** &amp;ndash; `helper`オブジェクトは、認証トークンIDを取得したり、グローバル変数を取得するために使用されます。
+* **ヘルパー関数** &ndash; `helper`オブジェクトは、認証トークンIDを取得したり、グローバル変数を取得するために使用されます。
     * `auth.get()`は`helper.getAuth()`に置き換えられました。
     * `store.get()`は`helper.getGlobalVariable()`に置き換えられました。
 * **イベントの収集**
   * `tealium.sendCollectEvent()`は`track()`に置き換えられ、名前付きパラメータを使用します。
 
+
+<blockquote>
 データ変換関数は**Transformation V0**ランタイムを使用し、V3ランタイムのリリースによって影響を受けません。
+</blockquote>
+
 
 ### V2関数の例
 
@@ -25,12 +29,12 @@ V3ランタイムを使用するイベントと訪問関数は、以下のよう
 
 
 ```js
-import { event, tealium } from &#34;tealium&#34;;
-(async () =&gt; {
+import { event, tealium } from "tealium";
+(async () => {
     const searchQuery = new URLSearchParams({ path: event.data.dom.pathname, query: event.data.dom.search_query });
     
     const newEvent = await fetch(`https://getnew.event.com?${searchQuery}`)
-        .then(response =&gt; {
+        .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
@@ -41,25 +45,25 @@ import { event, tealium } from &#34;tealium&#34;;
         newEvent,
         event.account,
         event.profile,
-        &#39;abc123&#39;)
-        .then(response =&gt; {
+        'abc123')
+        .then(response => {
             if(!response.ok){
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
             return response.text();
         })
-        .then(data =&gt; console.log(&#39;Result : &#39;, data))
-        .catch(error =&gt; console.error(&#39;Error:&#39;, error.message));
+        .then(data => console.log('Result : ', data))
+        .catch(error => console.error('Error:', error.message));
 })();
 ```
 
 
 ```js
-activate(async ({ event }) =&gt; {  
+activate(async ({ event }) => {  
     const searchQuery = new URLSearchParams({ path: event.data.dom.pathname, query: event.data.dom.search_query });
         
     const newEvent = await fetch(`https://getnew.event.com?${searchQuery}`)
-        .then(response =&gt; {
+        .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
@@ -69,16 +73,16 @@ activate(async ({ event }) =&gt; {
     track(newEvent, {
         tealium_account: event.account,
         tealium_profile: event.profile,
-        tealium_datasource: &#39;abc123&#39;
+        tealium_datasource: 'abc123'
         })
-        .then(response =&gt; {
+        .then(response => {
             if(!response.ok){
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
             return response.text();
         })
-        .then(data =&gt; console.log(&#39;Result : &#39;, data))
-        .catch(error =&gt; console.error(&#39;Error:&#39;, error.message));
+        .then(data => console.log('Result : ', data))
+        .catch(error => console.error('Error:', error.message));
 })();
 ```
 
@@ -93,14 +97,14 @@ activate(async ({ event }) =&gt; {
 
 
 ```js
-activate(async ({ event }) =&gt; {  
+activate(async ({ event }) => {  
 
 });
 ```
 
 
 ```js
-activate(async ({ visitor, visit }) =&gt; {  
+activate(async ({ visitor, visit }) => {  
 
 });
 ```
@@ -109,7 +113,7 @@ activate(async ({ visitor, visit }) =&gt; {
 
 1. V2関数のコードを、以下に示す関数の最初の行の後からコピーします：
     ```js
-    (async (event, helper) =&gt; {
+    (async (event, helper) => {
     ```  
     そして、関数の最後の行の上で終了します：
     ```js
@@ -128,28 +132,28 @@ activate(async ({ visitor, visit }) =&gt; {
 
 
 ```js
-import { event, tealium } from &#39;tealium&#39;;
+import { event, tealium } from 'tealium';
 
-(async () =&gt; {
+(async () => {
     const newEvent = { data: event.data.udo };
 
     tealium.sendCollectEvent(newEvent,
         event.account,
         event.profile,
-        &#39;abc123&#39;)
+        'abc123')
     ...
 })();
 ```
 
 
 ```js
-activate(({ event }) =&gt; {
+activate(({ event }) => {
     const newEvent = { data: event.data.udo };
 
     track(newEvent, {
         tealium_account: event.account,
         tealium_profile: event.profile,
-        tealium_datasource: &#39;abc123&#39;
+        tealium_datasource: 'abc123'
     })
     ...
 })
@@ -157,7 +161,7 @@ activate(({ event }) =&gt; {
 
 
 
-`track()`呼び出しでは、`&#39;abc123&#39;`をデータソースキーに置き換えます。
+`track()`呼び出しでは、`'abc123'`をデータソースキーに置き換えます。
 
 ### ライブラリの使用
 
@@ -166,15 +170,15 @@ V2関数がライブラリ、例えばCrytpoESを使用している場合、`act
 
 
 ```js
-import { event, tealium } from &#34;tealium&#34;;
-import CryptoES from &#39;crypto-es&#39;;
+import { event, tealium } from "tealium";
+import CryptoES from 'crypto-es';
 ...
 ```
 
 
 ```js
-import CryptoES from &#39;crypto-es&#39;;
-activate(async ({ event, helper }) =&gt; {  
+import CryptoES from 'crypto-es';
+activate(async ({ event, helper }) => {  
     ...
 });
 ```  
@@ -186,7 +190,7 @@ activate(async ({ event, helper }) =&gt; {
 V2関数が認証トークンまたはグローバル変数を使用している場合、V3関数の`activate`行に`helper`を関数パラメータに追加します。例えば：
 
 ```js
-activate(async ({ event, helper }) =&gt; {
+activate(async ({ event, helper }) => {
 });
 ```
 
@@ -195,36 +199,40 @@ V2コード内の`auth.get()`のすべてのインスタンスを`helper.getAuth
 
 
 ```js
-import { auth } from &#39;tealium&#39;;
+import { auth } from 'tealium';
 
-const token = auth.get(&#34;myAuthToken&#34;);
+const token = auth.get("myAuthToken");
 ```
 
 
 ```js
-activate(({event, helper }) =&gt; {
-    const token = helper.getAuth(&#34;myAuthToken&#34;);
+activate(({event, helper }) => {
+    const token = helper.getAuth("myAuthToken");
 })
 ```
 
 
 
+
+<blockquote>
 認証トークンはHTTPリクエスト内の関数によってのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。
+</blockquote>
+
 
 `store.get()`のすべてのインスタンスを`helper.getGlobalVariable()`に置き換えます。例えば：
 
 
 
 ```js
-import {store } from &#39;tealium&#39;;
+import {store } from 'tealium';
 
-const gVar = store.get(&#34;myGlobalVar&#34;);
+const gVar = store.get("myGlobalVar");
 ```
 
 
 ```js
-activate(({event, helper }) =&gt; {    
-    const gVar = helper.getGlobalVariable(&#34;myGlobalVar&#34;);
+activate(({event, helper }) => {    
+    const gVar = helper.getGlobalVariable("myGlobalVar");
 })
 ```
 

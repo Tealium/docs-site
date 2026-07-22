@@ -15,7 +15,7 @@ url: https://docs.tealium.com/client-side-tags/catchpoint-real-user-monitoring-r
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Catchpoint Real User Monitoring (RUM) tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Catchpoint Real User Monitoring (RUM) tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -25,7 +25,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -33,17 +33,17 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-| `pageGroup_token` |  &lt;ul&gt;&lt;li&gt;Page Group Token.&lt;/li&gt;&lt;/ul&gt; |
-| `variation_token` |  &lt;ul&gt;&lt;li&gt;Variation Tag Token.&lt;/li&gt;&lt;/ul&gt; |
-| `indicator_token` |  &lt;ul&gt;&lt;li&gt;Indicator Tag Token.&lt;/li&gt;&lt;/ul&gt; |
-| `indicator_value` |  &lt;ul&gt;&lt;li&gt;Indicator Value.&lt;/li&gt;&lt;/ul&gt; |
-| `tracepoint_token` |  &lt;ul&gt;&lt;li&gt;Tracepoint Token.&lt;/li&gt;&lt;/ul&gt; |
-|`tracepoint_value`|  &lt;ul&gt;&lt;li&gt;Tracepoint Value.&lt;/li&gt;&lt;/ul&gt; |
+| `pageGroup_token` |  <ul><li>Page Group Token.</li></ul> |
+| `variation_token` |  <ul><li>Variation Tag Token.</li></ul> |
+| `indicator_token` |  <ul><li>Indicator Tag Token.</li></ul> |
+| `indicator_value` |  <ul><li>Indicator Value.</li></ul> |
+| `tracepoint_token` |  <ul><li>Tracepoint Token.</li></ul> |
+|`tracepoint_value`|  <ul><li>Tracepoint Value.</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-| `order_id` |  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Subtotal.&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array.&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
+| `order_id` |  <ul><li>Order ID.</li><li>Overrides `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Subtotal.</li><li>Overrides `_csubtotal`.</li></ul> |
+|`product_quantity`|  <ul><li>Array.</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li></ul> |

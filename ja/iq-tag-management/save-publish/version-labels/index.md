@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/version-labels/
 
 任意のプロファイルには最初から3つのバージョンラベルが利用可能です：**検証待ち**、**検証成功**、および**検証失敗**。これらは必要に応じて削除できます。ラベルを削除すると、そのラベルが適用されていたバージョンから自動的に削除されることを覚えておいてください。バージョンラベルを管理するには、**バージョンラベル**エリアの**管理**リンクをクリックします。
 
-![](/images/iq-tag-management/no-title-1652ic6bbb75313e91a90.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-1652ic6bbb75313e91a90.png)
 
 ### ラベルの追加
 
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/version-labels/
 1. 新しいラベルの名前を入力します。**注：** ラベルの名前は40文字を超えることはできず、特殊文字を含むことはできません。また、同じ名前を2回使用することはできません。
 1. **保存**ボタンをクリックします。
 
-![](/images/iq-tag-management/no-title-1653i7c507566c876a5c8.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-1653i7c507566c876a5c8.png)
 
 ラベルを作成すると、アカウント内の他のすべてのユーザーがそれを使用できます。ただし、これらのラベルを編集、追加、または削除できるわけではないことに注意してください。
 
@@ -36,7 +36,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/version-labels/
 
 1. **バージョンラベルの管理**モーダルから、削除したいラベルの横にある**X**をクリックします。ラベルの名前が赤く表示されます。
 
-    ![](/images/iq-tag-management/no-title-1654i309f77c9d2aff410.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/no-title-1654i309f77c9d2aff410.png)
 
 1. **保存**をクリックします。
 

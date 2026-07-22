@@ -3,7 +3,11 @@ title: The Trade Desk サードパーティデータコネクタ構成ガイド
 description: この記事では、The Trade Desk サードパーティデータコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-party-data-connector/
 ---
+
+<blockquote>
 このコネクタは現在コネクタマーケットプレイスで利用できません。The Trade Desk サードパーティデータコネクタを使用するには、TealiumとThe Trade Deskのアカウントマネージャーのサポートが必要です。このコネクタを使用するには、Tealiumのアカウントマネージャーに連絡してください。
+</blockquote>
+
 
 ## API情報
 
@@ -18,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 
 ## バッチ制限
   
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：10000
 * 最古のリクエストからの最大時間：30分
@@ -26,7 +30,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法についての一般的な説明は、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法についての一般的な説明は、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -51,7 +55,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 | プロバイダーID          | (必須) アカウントマネージャーが提供したプロバイダーアカウントの一意のIDです。|
 | プロバイダーエレメントID  | (必須) タクソノミー設計時にセグメントに割り当てられた一意のIDです。このIDは512文字以下でなければなりません。これは作成後に変更することはできません。|
 | 親エレメントID    | (必須) タクソノミー内の親セグメントからのプロバイダーエレメントID値です。このパラメーターはタクソノミーの階層構造を確立します。これは作成後に変更することはできません。すべてのデータプロバイダーはタクソノミーの`ROOT`基本エレメントを使用します。|
-| 表示名         | (必須) DMPユーザーインターフェースでバイヤーが見るセグメントの名前です。表示名は256文字以下である必要がありますが、特に下位の子エレメントのフルパスが長い場合は、読みやすさのために50文字以下を推奨します。タブや特殊文字（`&#39;`, `&#34;`, `^`など）は含めないでください。|
+| 表示名         | (必須) DMPユーザーインターフェースでバイヤーが見るセグメントの名前です。表示名は256文字以下である必要がありますが、特に下位の子エレメントのフルパスが長い場合は、読みやすさのために50文字以下を推奨します。タブや特殊文字（`'`, `"`, `^`など）は含めないでください。|
 | 購入可能              | (必須) セグメントをDMPで見えるようにし、バイヤーが利用できるように構成します。コンテナエレメントの場合、このプロパティ値は`false`に構成します。これは、子エレメントを整理し、料金を割り当てるためにのみ使用されます。購入可能なセグメントのプロパティ値を`false`に変更した場合、そのセグメントをオーディエンスに持っている顧客はキャンペーンが終了するまでそれを使用できます。|
 | 説明          | (オプション) DMPで顧客に表示されるデータセグメントの説明です。説明は4,000文字以下である必要がありますが、読みやすさのために256文字以下を推奨します。|
 | 直接IPターゲティング | (オプション) `true`の場合、使用または作成される`TargetingData`はデフォルトの`7`（`ThirdPartyData`）ではなく、タイプ`16`（`DirectIpTargeting`）です。|
@@ -63,7 +67,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 | プロバイダーID               | (必須) アカウントマネージャーが提供したプロバイダーアカウントの一意のIDです。 |
 | プロバイダーエレメントID        | (必須) このデータエレメントをシステムで識別する一意のIDです。 |
 | ブランドID                  | (必須) プロバイダーが管理するブランドの一意のIDです。 |
-| 料金レベル                | (必須) サードパーティデータの料金レベルです。アクセスをリクエストするには、技術アカウントマネージャーに連絡してください。&lt;br&gt;`Partner`: 特定のパートナーとその広告主のためのものです。&lt;br&gt;`Advertiser`: 特定の広告主のためのものです。この料金レベルには追加の許可が必要です。 |
+| 料金レベル                | (必須) サードパーティデータの料金レベルです。アクセスをリクエストするには、技術アカウントマネージャーに連絡してください。<br>`Partner`: 特定のパートナーとその広告主のためのものです。<br>`Advertiser`: 特定の広告主のためのものです。この料金レベルには追加の許可が必要です。 |
 | パートナーID                | (必須) この料金でデータセグメントにアクセスできるパートナーのプラットフォームIDです。 |
 | 広告主ID             | (必須) この料金でデータセグメントにアクセスできる広告主のプラットフォームIDです。 |
 | 料金タイプ                 | (必須) セグメントのデータ料金タイプです。シンジケートされたタクソノミーのすべてのシステムレベルのデータ料金は、メディアコストの割合と最大CPM（千インプレッションあたりのコスト）キャップを使用するハイブリッド料金として割り当てられる必要があります。これは、このプロパティを`Hybrid`に構成し、`CPMRate`および`PercentOfMediaCostRate`の両方の値を提供する必要があることを意味します。カスタムタクソノミーは任意のデータ料金タイプを使用できますが、ハイブリッド料金が強く推奨されます。 |
@@ -105,7 +109,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 | EUIDToken (既にSHA256ハッシュ済み) | ユーザーのEuropean Unified ID、既にSHA256ハッシュ済み。 |
 | EUIDToken (SHA256ハッシュを適用) | ユーザーのEuropean Unified IDにSHA256ハッシュを適用。 |
 | EUID | ユーザーのEuropean Unified IDを44文字のbase64エンコードされたSHA-256文字列として。詳細は[The Trade Desk Partner Portal: PII Normalization and Hash Encoding](https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization)を参照。EUIDはヨーロッパおよび英国の市場要件に合わせたユーザーの透明性とプライバシー制御を提供し、UID2と同じメールアドレスの正規化とエンコーディングが必要です。詳細は[The Trade Desk Partner Portal: Unified IDs](https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs)を参照。 |
-| IDL | 49文字または70文字のRampID（以前はIdentityLinkとして知られていた）。この値はThe Trade Deskのために特別にマッピングされたLiveRampのRampIDでなければなりません。RampIDのマッピングについての詳細は[LiveRamp: LiveRamp&#39;s Sidecar](https://sidecar.readme.io/docs/getting-started)を参照。 |
+| IDL | 49文字または70文字のRampID（以前はIdentityLinkとして知られていた）。この値はThe Trade Deskのために特別にマッピングされたLiveRampのRampIDでなければなりません。RampIDのマッピングについての詳細は[LiveRamp: LiveRamp's Sidecar](https://sidecar.readme.io/docs/getting-started)を参照。 |
 
 #### データ
 
@@ -122,4 +126,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-third-par
 | パラメータ | 説明 |
 | --- | --- |
 | Data Provider ID | 必須。技術アカウントマネージャーから提供されたプロバイダーID。 |
-| Request Type | &lt;ul&gt;&lt;li&gt;**オプトアウト**: The Trade Deskは、IDのTTL値を`0`に構成することにより、データセグメントからIDをオプトアウトし、キャンペーンでのターゲティングを制限します。&lt;/li&gt;&lt;li&gt;**削除**: The Trade Deskは、データセグメントおよび`REDS`フィードを含むデータセットからIDを削除します。 |
+| Request Type | <ul><li>**オプトアウト**: The Trade Deskは、IDのTTL値を`0`に構成することにより、データセグメントからIDをオプトアウトし、キャンペーンでのターゲティングを制限します。</li><li>**削除**: The Trade Deskは、データセグメントおよび`REDS`フィードを含むデータセットからIDを削除します。 |

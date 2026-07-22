@@ -38,23 +38,23 @@ The Tealium `Config` instance is configured with the following parameters:
 | Parameters  | Type | Description | Example |
 | --- | --- | --- | --- |
 | `application` | `Application` |The application instance |  `applicationObj` |
-| `account` | `String` |Tealium account name |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` |Tealium profile name |  `&#34;main&#34;` |
-| `environment` | `String` |Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `account` | `String` |Tealium account name |  `"companyXYZ"` |
+| `profile` | `String` |Tealium profile name |  `"main"` |
+| `environment` | `String` |Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
 
 ### `enableConsentManager()`
 
 Enable consent manager. This method is to be used before Tealium initialization.
 
 ```java
-public final String TEALIUM_INSTANCE = &#34;main&#34;;
+public final String TEALIUM_INSTANCE = "main";
 final Tealium.Config config = Tealium.Config.create(...);
 config.enableConsentManager(TEALIUM_INSTANCE);
 ```
 
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `instance` | `String` | Tealium instance name | `&#34;main&#34;` |
+| `instance` | `String` | Tealium instance name | `"main"` |
 
 ### `isConsentManagerEnabled()`
 
@@ -80,7 +80,7 @@ config.setDataSourceId(dataSourceId);
 ```
 | Parameters  | Type | Description | Example |
 | --- | --- | --- | --- |
-| `dataSourceId` | `String` | Data source key (Set to `null` if none) | `&#34;abc123&#34;` |
+| `dataSourceId` | `String` | Data source key (Set to `null` if none) | `"abc123"` |
 
 ### `setForceOverrideLogLevel()`
 
@@ -94,10 +94,10 @@ The following `String` options are available for `forceOverrideLogLevel`:
 
 | Log Level | Description                     |
 |------------ | ------------------------------- |
-| `&#34;dev&#34;`     | Activity, Info, Warnings, and Errors|
-| `&#34;qa&#34;`      | Info, Warnings, and Errors      |
-| `&#34;prod&#34;`    | Errors                          |
-| `&#34;silent&#34;`  | None |
+| `"dev"`     | Activity, Info, Warnings, and Errors|
+| `"qa"`      | Info, Warnings, and Errors      |
+| `"prod"`    | Errors                          |
+| `"silent"`  | None |
 
 ### `setOverrideCollectDispatchProfile()`
 
@@ -135,7 +135,7 @@ https://collect.tealiumiq.com/bulk-event/
 The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:
 
 ```java
-config.setOverrideCollectDispatchUrl(&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;);
+config.setOverrideCollectDispatchUrl("https://collect-eu-central-1.tealiumiq.com/event/");
 ```
 
 

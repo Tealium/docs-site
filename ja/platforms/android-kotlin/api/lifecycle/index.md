@@ -18,33 +18,33 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/lifecycle/
 オプションのデータマップを使用して、手動で起動イベントを追跡します。
 
 ```java
-tealiumInstance.lifecycle?.trackLaunchEvent(mapOf(&#34;key&#34; to &#34;launch-value&#34;))
+tealiumInstance.lifecycle?.trackLaunchEvent(mapOf("key" to "launch-value"))
 ```
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | 起動イベントと一緒に送信するカスタムデータのマップ | mapOf(&#34;key&#34; to &#34;launch-value&#34;) |
+| `data` | `Map<String, Any>` | 起動イベントと一緒に送信するカスタムデータのマップ | mapOf("key" to "launch-value") |
 
 ### `trackSleepEvent()`
 
 オプションのデータマップを使用して、手動でスリープイベントを追跡します。
 
 ```java
-tealiumInstance.lifecycle?.trackSleepEvent(mapOf(&#34;key&#34; to &#34;sleep-value&#34;))
+tealiumInstance.lifecycle?.trackSleepEvent(mapOf("key" to "sleep-value"))
 ```
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | スリープイベントと一緒に送信するカスタムデータのマップ | mapOf(&#34;key&#34; to &#34;sleep-value&#34;) |
+| `data` | `Map<String, Any>` | スリープイベントと一緒に送信するカスタムデータのマップ | mapOf("key" to "sleep-value") |
 
 ### `trackWakeEvent()`
 
 オプションのデータマップを使用して、手動でウェイクイベントを追跡します。
 
 ```java
-tealiumInstance.lifecycle?.trackWakeEvent(mapOf(&#34;key&#34; to &#34;wake-value&#34;))
+tealiumInstance.lifecycle?.trackWakeEvent(mapOf("key" to "wake-value"))
 ```
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | ウェイクイベントと一緒に送信するカスタムデータのマップ | mapOf(&#34;key&#34; to &#34;wake-value&#34;) |
+| `data` | `Map<String, Any>` | ウェイクイベントと一緒に送信するカスタムデータのマップ | mapOf("key" to "wake-value") |

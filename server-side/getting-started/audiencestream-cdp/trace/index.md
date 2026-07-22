@@ -7,11 +7,11 @@ Use Trace to validate that your configuration is working properly and that conne
 
 ## How it works
 
-![](/images/server-side/getting-started-audiencestream-trace-icon.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-trace-icon.png)
 
 Trace lets you isolate a specific test case and view a log of how it gets processed in AudienceStream. Trace generates a unique ID called a trace ID to use during your testing. When you trigger events using the trace ID, the results are displayed in a detailed log in the Trace tool, including information about: the received event, the enriched visitor attributes, the affected audience activity and the triggered connector actions.
 
-Here&#39;s how it works:
+Here's how it works:
 
 * **Start a Trace**  
 Starting a new trace generates a unique trace ID. You add this value to the data layer of your test application as the `tealium_trace_id` attribute or by copying it into the AudienceStream Trace Tealium Tool for testing directly from the browser.

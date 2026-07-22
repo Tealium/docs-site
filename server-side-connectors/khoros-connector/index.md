@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/khoros-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For more information, see  [Connector Overview]().
+Go to the Connector Marketplace and add a new connector. For more information, see  [Connector Overview](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

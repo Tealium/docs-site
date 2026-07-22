@@ -41,10 +41,10 @@ CocoaPodsまたはCarthageでオートトラッキングモジュールをイン
 
 CocoaPodsでオートトラッキングモジュールをインストールするには、以下のpodをPodfileに追加します：  
 ```ruby
-pod &#39;tealium-swift/TealiumAutotracking&#39;
+pod 'tealium-swift/TealiumAutotracking'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存性があります。iOSのCocoaPodsインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存性があります。iOSのCocoaPodsインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
 
 ### Carthage
 
@@ -57,14 +57,14 @@ Carthageでオートトラッキングモジュールをインストールする
     TealiumAutotracking.framework
     ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存性があります。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存性があります。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
 
 ### ブリッジングヘッダー
 このモジュールはObjective-Cコードから移植されており、そのため、ブリッジングヘッダーが必要です。
 
 ブリッジングヘッダーを作成するには：
 
-1. Swiftプロジェクトで新しいファイルを作成します。ファイルタイプを選択するように求められたときに、&#34;Objective-C File&#34;を選択します。
+1. Swiftプロジェクトで新しいファイルを作成します。ファイルタイプを選択するように求められたときに、"Objective-C File"を選択します。
 
 2. このファイルに一時的な名前を付けます。例えば`placeholder.m`など。後で削除する予定です。
 
@@ -74,8 +74,8 @@ Carthageでオートトラッキングモジュールをインストールする
 
 5. 新しいブリッジングヘッダーに以下のインポートステートメントを追加します：  
     ```swift
-    #import &#34;uiapplication&#43;tealiumtracker.h&#34;
-    #import &#34;uiviewcontroller&#43;tealiumtracker.h&#34;
+    #import "uiapplication+tealiumtracker.h"
+    #import "uiviewcontroller+tealiumtracker.h"
     ```
 
 ## データレイヤー
@@ -84,7 +84,7 @@ Carthageでオートトラッキングモジュールをインストールする
 
 | 変数  | 説明                                             | 例  |
 |---------------|---------------------------------------------------------|---------------|
-| `autotracked`   | オートトラッキング呼び出しにtrueが構成され、追加されます。 | [`&#34;true&#34;`, `&#34;false&#34;`]          |
+| `autotracked`   | オートトラッキング呼び出しにtrueが構成され、追加されます。 | [`"true"`, `"false"`]          |
 
 ## APIリファレンス
 
@@ -93,12 +93,12 @@ Carthageでオートトラッキングモジュールをインストールする
 ### `tealiumAutotrackingShouldTrack()`
 
 ```swift
-tealiumAutotrackingShouldTrack(data: [String:Any]) -&gt; Bool
+tealiumAutotrackingShouldTrack(data: [String:Any]) -> Bool
 ```
 
 | パラメータ | タイプ | 説明                                                      | 例   |
 |------------|------|----------------------------------------------------------------- |-----------------|
-| `data`     | `String` or `[String]` | StringキーとAny値タイプの辞書 | `[&#34;key&#34;:&#34;value&#34;]` |
+| `data`     | `String` or `[String]` | StringキーとAny値タイプの辞書 | `["key":"value"]` |
 
 
 ### `tealiumAutotrackDidComplete()`
@@ -109,6 +109,6 @@ tealiumAutotrackDidComplete(success:Bool, info:[String:Any]?, error:Error?)
 
 | パラメータ | タイプ | 説明 | 例  |
 |------------|------|----------| --- |
-| `success`  | `Bool` | オートトラックトリガー呼び出しが成功したかどうか | [`&#34;true&#34;`, `&#34;false&#34;`]      |
+| `success`  | `Bool` | オートトラックトリガー呼び出しが成功したかどうか | [`"true"`, `"false"`]      |
 | `info`     | `String` or `[String]`  |(オプション) 配信タイプ情報、最終呼び出しフォーマット、ペイロード（呼び出しを生成するために使用されたデータ辞書）を保持します |             |
 | `error`    | `Error` | エラー（ある場合）    |               |

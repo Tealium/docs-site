@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**: Podscribe S2S API key used to authorize requests.
@@ -35,7 +35,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Action | Type of event (for example, user action or conversion).&lt;br&gt;view&lt;br&gt;signup&lt;br&gt;lead&lt;br&gt;purchase&lt;br&gt;install&lt;br&gt;offline_purchase |
+| Action | Type of event (for example, user action or conversion).<br>view<br>signup<br>lead<br>purchase<br>install<br>offline_purchase |
 
 #### Event Data
 

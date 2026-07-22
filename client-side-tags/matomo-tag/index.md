@@ -20,7 +20,7 @@ Configure your `Goal Index` and `Custom Dimension` values in the **Event-specifi
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -33,11 +33,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -78,17 +78,17 @@ The available categories are:
 
 | Variable | Description |
 |:---------|:------------|
-| List of SKUs (`product_sku`)&lt;br&gt;(Overrides `_csku`) | Array of Strings |
-| List of Names (`product_name`)&lt;br&gt;(Overrides `_cprodname`)  | Array of Strings |
-| List of Categories (`item_category`)&lt;br&gt;(Overrides `_ccat`)  | Array of Strings/Arrays |
-| List of Prices (`product_unit_price`)&lt;br&gt;(Overrides `_cprice`)  | Array of Numbers |
-| List of Quantities (`product_quantity`)&lt;br&gt;(Overrides `_cquan`)  | Array of Numbers |
+| List of SKUs (`product_sku`)<br>(Overrides `_csku`) | Array of Strings |
+| List of Names (`product_name`)<br>(Overrides `_cprodname`)  | Array of Strings |
+| List of Categories (`item_category`)<br>(Overrides `_ccat`)  | Array of Strings/Arrays |
+| List of Prices (`product_unit_price`)<br>(Overrides `_cprice`)  | Array of Numbers |
+| List of Quantities (`product_quantity`)<br>(Overrides `_cquan`)  | Array of Numbers |
 | Order Discounts (`product_discount`)  | Number or Boolean |
-| Order ID (`order_id`)&lt;br&gt;(Overrides `_corder`)  | String |
-| Order Subtotal (`grand_total`)&lt;br&gt;(Overrides `_csubtotal`)  | Number |
-| Order Total (`order_total`)&lt;br&gt;(Overrides `_ctotal`)  | Number |
-| Tax Amount (`order_tax`)&lt;br&gt;(Overrides `_ctax`)  | Number |
-| Shipping Amount (`order_shipping`)&lt;br&gt;(Overrides `_cship`)  | Number |
+| Order ID (`order_id`)<br>(Overrides `_corder`)  | String |
+| Order Subtotal (`grand_total`)<br>(Overrides `_csubtotal`)  | Number |
+| Order Total (`order_total`)<br>(Overrides `_ctotal`)  | Number |
+| Tax Amount (`order_tax`)<br>(Overrides `_ctax`)  | Number |
+| Shipping Amount (`order_shipping`)<br>(Overrides `_cship`)  | Number |
 
 ### Action Dimensions
 
@@ -98,7 +98,7 @@ The available categories are:
 | Custom Dimension Value (`custom_dimension_value`)  | String |
 
 ### Events
-For inforamtion on mapping events, see [Add an event mapping]().
+For inforamtion on mapping events, see [Add an event mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|
@@ -107,7 +107,7 @@ For inforamtion on mapping events, see [Add an event mapping]().
 | Add To Cart | `addToCart` |
 | Remove From Cart | `removeFromCart` |
 | Purchase | `purchase` |
-| User Logged Out | `resetUserId` |&#34;
+| User Logged Out | `resetUserId` |"
 | Track Goal | `trackGoal` |
 | Site Search | `trackSiteSearch` |
 | Track Link | `trackLink` |
@@ -115,7 +115,7 @@ For inforamtion on mapping events, see [Add an event mapping]().
 | Delete Custom Dimension | `deleteCustomDimension` |
 
 ### Event-specific Parameters
-For information on mapping events, see [Add an event mapping]().
+For information on mapping events, see [Add an event mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|

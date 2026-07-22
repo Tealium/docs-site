@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/manage-data-connect-in
 
 レシピをフィルタリング、検索、詳細表示するには、以下の手順を完了します：
 
-1. **Connect &gt; Data Connect &gt; Integrations**に移動します。
+1. **Connect > Data Connect > Integrations**に移動します。
 1. リストから接続を除外するには、**Recipes**をクリックします。
 1. レシピのステータスでリストをフィルタリングするには、**All statuses**をクリックし、**Active**または**Inactive**を選択します。
 1. レシピを検索するには、**Search**ボックスをクリックし、レシピ名の一部を入力します。  
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/manage-data-connect-in
 
 レシピを編集するには、以下の手順を完了します：
 
-1. **Connect &gt; Data Connect &gt; Integrations**に移動します。
+1. **Connect > Data Connect > Integrations**に移動します。
 1. **Recipes**をクリックし、レシピをクリックします。
 1. **Edit recipe**をクリックします。
 1. 必要に応じてトリガーとアクションを変更します。
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/manage-data-connect-in
 
 アクティブなレシピを停止したり、非アクティブなレシピを開始したりすることができます。レシピを開始または停止するには、以下の手順を完了します：
 
-1. **Connect &gt; Data Connect &gt; Integrations**に移動します。
+1. **Connect > Data Connect > Integrations**に移動します。
 1. レシピを検索するには、**Search**ボックスをクリックし、レシピ名の一部を入力します。  
 名前を入力するとリストがフィルタリングされます。
 1. レシピメニューをクリックし、**Start**または**Stop**を選択します。

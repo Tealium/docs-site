@@ -17,7 +17,11 @@ To help familiarize yourself with our library, the tracking methods, and best pr
 
 To run the sample app, run the command `npm i` to install all dependencies, and then run `npm start` in the root directory (`tealium-nativescript-plugin`). Depending on your platform, select `apps.demo.android` or `apps.demo.ios`.
 
-There is currently a known issue with NativeScript on iOS where the initial app build fails. To build successfully, open the file `.xcworkspace` and go to **Project** &gt; **Build Settings** &gt; **Validate Workspace** and set the property to `Yes`.
+
+<blockquote>
+There is currently a known issue with NativeScript on iOS where the initial app build fails. To build successfully, open the file `.xcworkspace` and go to **Project** > **Build Settings** > **Validate Workspace** and set the property to `Yes`.
+</blockquote>
+
 
 
 ## Install (NPM)
@@ -33,22 +37,22 @@ To install the Tealium library for NativeScript with NPM:
 
 ## TypeScript
 
-After installation, import the Tealium module into your app&#39;s TypeScript code:  
+After installation, import the Tealium module into your app's TypeScript code:  
 ```javascript
-import { Tealium } from &#39;@tealium-nativescript/tealium&#39;;
+import { Tealium } from '@tealium-nativescript/tealium';
 import {
    TealiumConfig, TealiumView, TealiumEvent, ConsentCategories, Dispatchers, Collectors,ConsentPolicy,
-   Expiry, ConsentStatus, TealiumEnvironment } from &#39;@tealium-nativescript/tealium/common&#39;;
+   Expiry, ConsentStatus, TealiumEnvironment } from '@tealium-nativescript/tealium/common';
 ```
 
 ## Initialize
 
-After your app has been installed, initialize the `Tealium` instance with the `initialize()` method using [TealiumConfig](/platforms/nativescript/api/tealium-config/#tealiumconfig) initialization options:  
+After your app has been installed, initialize the `Tealium` instance with the `initialize()` method using [TealiumConfig](https://docs.tealium.com/platforms/nativescript/api/tealium-config/#tealiumconfig) initialization options:  
 
 ```javascript
 let config: TealiumConfig = {
-    account: &#39;ACCOUNT&#39;,
-    profile: &#39;PROFILE&#39;,
+    account: 'ACCOUNT',
+    profile: 'PROFILE',
     environment: TealiumEnvironment.dev,
     dispatchers: [
         Dispatchers.Collect,
@@ -68,13 +72,13 @@ let config: TealiumConfig = {
 Tealium.initialize(config);
 ```
 
-See the [API Reference](/platforms/nativescript/api/) for more information and additional configuration options.
+See the [API Reference](https://docs.tealium.com/platforms/nativescript/api/) for more information and additional configuration options.
 
 ## Supported Modules
 
 ### Collectors
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors. Default collectors are denoted by a `*` next to the collector name.
 
@@ -85,7 +89,7 @@ The following table lists the available collectors. Default collectors are denot
 | `Device` | `Collectors.Device`|
 | `Lifecycle` | `Collectors.Lifecycle`|
 
-These modules are enabled or disabled using the [`TealiumConfig`](/platforms/nativescript/api/tealium-config/) `collectors` property.
+These modules are enabled or disabled using the [`TealiumConfig`](https://docs.tealium.com/platforms/nativescript/api/tealium-config/) `collectors` property.
 
 ### Dispatchers
 
@@ -97,4 +101,8 @@ Dispatchers are modules that send the data from your data layer to a Tealium end
 | `RemoteCommands` | `Dispatchers.RemoteCommands`|
 | `TagManagement` | `Dispatchers.TagManagement`|
 
+
+<blockquote>
 At least one dispatcher is required. If no dispatchers are specified, no tracking occurs.
+</blockquote>
+

@@ -47,12 +47,12 @@ url: https://docs.tealium.com/ja/guides/set-of-strings-guide/
 最も検索された上位3つの目的地を特定する前に、まずセッション中に訪問が各目的地を何回検索したかを追跡する必要があります。これを追跡するために、次のエンリッチメントを持つ訪問スコープの集計属性 **Countries of Resorts Browsed in Visit** を作成します：
 
 ```
-For Tally Countries of Resorts Browsed in Visit increment the value based on &#34;country&#34; by 1
+For Tally Countries of Resorts Browsed in Visit increment the value based on "country" by 1
 WHEN: Any event
-Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
+Rule "page_type" equals (ignore case) "resort_details"
 ```
 
-![](/images/guides/set-of-strings-increment-tally-attribute.png)
+![](https://docs.tealium.com/images/guides/set-of-strings-increment-tally-attribute.png)
 
 ### ステップ2：Set of Strings 属性を作成する
 
@@ -60,21 +60,21 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 
 訪問中に閲覧されたリゾートの上位3か国を保存するための文字列セット属性を次のエンリッチメントで作成します：
 
-1. **Transform &gt; Visitor / Visit Attributes** に移動します。
-1. **&#43; Add Attribute** をクリックします。
+1. **Transform > Visitor / Visit Attributes** に移動します。
+1. **+ Add Attribute** をクリックします。
 1. **Visit scope** を選択し、**Continue** をクリックします。
 1. **Set of Strings** データタイプを選択します。
 1. **Title** に **Top 3 Countries for Resorts Browsed in Visit** を入力します。
-1. **&#43; Add Enrichment** をクリックします。
+1. **+ Add Enrichment** をクリックします。
 1. **Set to Top Tally Items** を選択します。
 1. 次の文字列セットを構成します：
     ```
-    Set Top 3 Countries for Resorts Browsed in Visit to top 3 items in &#34;Countries of Resorts Browsed in Visit&#34;
+    Set Top 3 Countries for Resorts Browsed in Visit to top 3 items in "Countries of Resorts Browsed in Visit"
     WHEN: Any event
     ```
 1. **Finish** をクリックします。
 
-![](/images/guides/set-of-strings-set-to-top-tally-items.png)
+![](https://docs.tealium.com/images/guides/set-of-strings-set-to-top-tally-items.png)
 
 訪問が次の目的地を検索した場合：
 
@@ -87,7 +87,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 最終的な文字列セットは、上位3つの目的地のみを保存します：
 
 ```
-[ &#34;New York&#34;, &#34;Paris&#34;, &#34;London&#34; ]
+[ "New York", "Paris", "London" ]
 ```
 
 ## Set to Tally Items Above Target の例
@@ -98,21 +98,21 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 
 **Set of Strings** 属性を作成するには：
 
-1. **Transform &gt; Visitor / Visit Attributes** に移動します。
-1. **&#43; Add Attribute** をクリックします。
+1. **Transform > Visitor / Visit Attributes** に移動します。
+1. **+ Add Attribute** をクリックします。
 1. **Visit scope** を選択し、**Continue** をクリックします。
 1. **Set of Strings** データタイプを選択します。
 1. **Title** に **Countries Seen More Than 5 Times** を入力します。
-1. **&#43; Add Enrichment** をクリックします。
+1. **+ Add Enrichment** をクリックします。
 1. **Set to Tally Items Above Target Value** を選択します。
 1. 次の文字列セットを構成します：
     ```
-    Set Countries Seen More Than 5 Times to items in &#34;Countries of Resorts Browsed in Visit&#34; where the value is greater than 5
+    Set Countries Seen More Than 5 Times to items in "Countries of Resorts Browsed in Visit" where the value is greater than 5
     WHEN: Any event
     ```
 1. **Finish** をクリックします。
 
-![](/images/guides/set-of-strings-set-to-tally-items-above-target.png)
+![](https://docs.tealium.com/images/guides/set-of-strings-set-to-tally-items-above-target.png)
 
 訪問が次の目的地を検索した場合：
 
@@ -125,7 +125,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 最終的な文字列セットは、5回以上検索された目的地のみを保存します：
 
 ```
-[ &#34;Paris&#34;, &#34;Rome&#34; ]
+[ "Paris", "Rome" ]
 ```
 
 これにより、リターゲティングの取り組みは高関心の目的地にのみ焦点を当て、広告の効率、推奨事項、およびパーソナライズされたメールキャンペーンが向上します。
@@ -135,7 +135,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 
 コネクタをトリガーするには、**5回以上見られた国** 属性が割り当てられている訪問を含むオーディエンスを作成します。コネクタアクションでは、属性をテンプレート変数（例：`countries_seen_more_than_5_times`）にマッピングします。その後、この変数をメールコンテンツで参照して、パーソナライズされた目的地リストを表示できます。訪問がこのオーディエンスに参加すると、コネクタアクションが発火し、**5回以上見られた国** 属性をメールプラットフォームに送信します。
 
-例えば、訪問の文字列セットに `[&#34;Paris&#34;, &#34;Rome&#34;]` が含まれている場合、
+例えば、訪問の文字列セットに `["Paris", "Rome"]` が含まれている場合、
 
 コネクタはこのリストをメールプラットフォームに渡し、*「まだパリやローマの夢を見ていますか？こちらがあなたのためのトップディールです。」* などのコンテンツを動的に生成することができます。
 
@@ -146,7 +146,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 文字列セット属性をトラッキング、フィルタリング、および訪問のインタラクションのアクティベーションに実装した今、セットアップを拡張するための次のステップを検討してください：
 
 * **監査と使用状況の監視**  
-[Trace]() と [Live visitors]() を使用して、属性がセッション全体でどのようにポピュレートされ、使用されているかを確認します。
+[Trace](https://docs.tealium.com/manage-traces/) と [Live visitors](https://docs.tealium.com/visitor-profile-sampler/) を使用して、属性がセッション全体でどのようにポピュレートされ、使用されているかを確認します。
 * **新しいチャネルへの展開**  
 SMS、ディスプレイ広告、プッシュ通知などの他のコネクタで文字列セット属性を使用し、クロスチャネル体験を一貫性のあるものにします。
 
@@ -161,5 +161,5 @@ Functionsで文字列セットを使用するか、EventStreamを通じてイベ
 
 ## 追加リソース
 
-* [文字列セット属性]()
-* [エンリッチメント使用例]()
+* [文字列セット属性](https://docs.tealium.com/set-of-strings-attribute/)
+* [エンリッチメント使用例](https://docs.tealium.com/server-side/attributes/enrichments/usage-examples/)

@@ -7,6 +7,9 @@ url: https://docs.tealium.com/server-side/profiles/about/
 
 Your account is organized into profiles. Server-side profiles collect data from all your sites and apps into your Customer Data Hub to build a comprehensive view of your customers and visitors, and then action that data through vendor integrations.
 
-For more information about profiles and how they relate to other parts of your account, see .
+For more information about profiles and how they relate to other parts of your account, see [account-organization](https://docs.tealium.com/account-organization/).
 
- To create a server-side profile, contact Tealium Support.
+
+<blockquote>
+To create a server-side profile, contact Tealium Support.
+</blockquote>

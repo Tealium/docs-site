@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## 仕組み
 
-![](/images/server-side/getting-started-audiencestream-visitor-id.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-visitor-id.png)
 
 訪問ID属性の簡単な例は、メールアドレス（またはメールハッシュ）です。これは、特に資格イベントと関連付けられている場合、顧客を一意に識別する信頼できる方法です。メールアドレスで正確にアイデンティティ解決を行うには、以下が必要です：
 

@@ -1,10 +1,10 @@
 ---
 title: ヘルプ
-description: さまざまなリソースを提供して、質問に答え、強力なソリューションを作成するお手伝いをします。
+description: さまざまなリソースを提供して、質問に答えたり、強力なソリューションを作成したりするお手伝いをします。
 url: https://docs.tealium.com/ja/help/
 ---
 
-![](/images/icons/icon-book-solid.svg)
+![](https://docs.tealium.com/images/icons/icon-book-solid.svg)
 
 #### ドキュメント
 
@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/help/
 
 
 
-![](/images/icons/icon-books-solid.svg)
+![](https://docs.tealium.com/images/icons/icon-books-solid.svg)
 
 #### ナレッジベース
 
@@ -21,16 +21,16 @@ url: https://docs.tealium.com/ja/help/
 
 
 
-![](/images/icons/icon-graduationcap.svg)
+![](https://docs.tealium.com/images/icons/icon-graduationcap.svg)
 
 #### 教育
 
-当社のソリューションのエキスパートになるためのコースや教育製品を提供しています。
+当社のソリューションを使いこなすための専門知識を身につけるためのコースや教育製品を提供しています。
 
 
 
-{{% card-feature url=&#34;https://tealium.customershome.com/login?returnUrl=%2F&#34; %}}
-![](/images/icons/icon-audience.svg)
+{{% card-feature url="https://tealium.customershome.com/login?returnUrl=%2F" %}}
+![](https://docs.tealium.com/images/icons/icon-audience.svg)
 
 #### コミュニティ
 
@@ -39,15 +39,15 @@ url: https://docs.tealium.com/ja/help/
 
 
 
-![](/images/icons/icon-help.svg)
+![](https://docs.tealium.com/images/icons/icon-help.svg)
 
 #### サポート
 
-経験豊富な一流のカスタマーサクセスチームに、遭遇した問題についての支援を求めてください。
+Tealiumサポートポータルを通じてサポートチケットを提出してください。
 
 
 
-![](/images/icons/icon-menu.svg)
+![](https://docs.tealium.com/images/icons/icon-menu.svg)
 
 #### リソースセンター
 
@@ -57,7 +57,7 @@ url: https://docs.tealium.com/ja/help/
 
 
 
-![](/images/icons/icon-triangle-exclamation.svg)
+![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
 
 #### ステータスページ
 

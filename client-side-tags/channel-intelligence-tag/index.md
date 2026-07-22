@@ -24,7 +24,7 @@ url: https://docs.tealium.com/client-side-tags/channel-intelligence-tag/
 
 ### Adding the Tag
 
-Tealium iQ&#39;s Tag marketplace offers a wide variety of Tags. Click [here]() to learn how to add a Tag to your profile.
+Tealium iQ's Tag marketplace offers a wide variety of Tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a Tag to your profile.
 
 ### Configuring the Tag
 
@@ -38,15 +38,15 @@ Tealium iQ&#39;s Tag marketplace offers a wide variety of Tags. Click [here]() t
 
 ### Applying Load Rules
 
-[Load Rules]() determine when and where to load an instance of this Tag. The **Load on All Pages** rule is the default Load Rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag. The **Load on All Pages** rule is the default Load Rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
 
 **Best Practice**: Leave the default **Load on All Pages** selection as is. This will load the Tag on all pages of your site.
 
 ### Setting up Mappings
 
-[Mapping]() is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
+[Mapping](https://docs.tealium.com/about-data-mappings/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
 
-**Best Practice**: This Tag uses the [E-Commerce Extension]() to send the order information to the tag. Configure the necessary order and product variables in the extension so they can be mapped to their corresponding destinations. Be sure to set up mapping for the below listed variables in the extension:
+**Best Practice**: This Tag uses the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) to send the order information to the tag. Configure the necessary order and product variables in the extension so they can be mapped to their corresponding destinations. Be sure to set up mapping for the below listed variables in the extension:
 
 * `_corder`: The order identifier
 * `_cquan`: The list of quantities, with each quantity in the list unique to a product

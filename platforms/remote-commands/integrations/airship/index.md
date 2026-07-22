@@ -8,8 +8,8 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/airship/
 
 * [Airship credentials](https://docs.airship.com/guides/messaging/user-guide/admin/security/app-keys-secrets/)
 * One of these mobile libraries:
-  * [Tealium for Android](/platforms/android-java/)
-  * [Tealium for iOS-Swift](/platforms/ios-swift/)
+  * [Tealium for Android](https://docs.tealium.com/platforms/android-java/)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
 * Airship Remote Command tag in Tealium iQ Tag Management
 
 ## How It Works
@@ -30,14 +30,14 @@ When you add the Airship remote command module to your app, the required Airship
 
 Swift Package Manager is the recommended and simplest way to install the TealiumAirship package. To install Airship remote commands for iOS using Swift Package Manager:
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**
 
 2. Enter the repository URL: `https://github.com/tealium/tealium-ios-airship-remote-command`
 
 3. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumAirship`  version does not appears in the list, then reset your Swift package cache.
 
 4. Select the `TealiumAirship` module to install, and select the app target you want the module to be installed in.
-5. If you are using any additional modules from the Tealium Swift library, follow [the Swift Package Manager instructions](/platforms/ios-swift/install/#swift-package-manager-recommended) to add them.
+5. If you are using any additional modules from the Tealium Swift library, follow [the Swift Package Manager instructions](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) to add them.
 
 If your project has more than one app target and needs `TealiumAirship` module in more app targets, you have to manually add them in the **Frameworks, Libraries, and Embedded Content** section.
 
@@ -45,30 +45,30 @@ To install `TealiumAirship` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 2. In your Xcode project, select the app target under the **TARGETS** section.
-3. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and  select the `TealiumAirship` module to add it to your app target.
+3. Navigate to **General > Frameworks, Libraries & Embedded Content** and  select the `TealiumAirship` module to add it to your app target.
 
 
 
 
-1. Remove `pod &#34;tealium-swift&#34;` and `pod &#34;Airship&#34;` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAirship` framework.
+1. Remove `pod "tealium-swift"` and `pod "Airship"` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAirship` framework.
 
 2. Add the following dependency to your Podfile:  
       ```ruby
-      pod &#34;TealiumAirship&#34;
+      pod "TealiumAirship"
       ```
       The `TealiumAirship` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#34;tealium-swift/Core&#34;
-      &#34;tealium-swift/RemoteCommands&#34;
-      &#34;tealium-swift/TagManagement&#34;
+      "tealium-swift/Core"
+      "tealium-swift/RemoteCommands"
+      "tealium-swift/TagManagement"
       ```
 
 3. Add any other required modules manually to your Podfile, such as the following:   
       ```ruby
-      pod &#34;tealium-swift/Lifecycle&#34;
-      pod &#34;tealium-swift/VisitorService&#34;
+      pod "tealium-swift/Lifecycle"
+      pod "tealium-swift/VisitorService"
       ```
-      Learn more about the [recommended modules for iOS](/platforms/ios-swift/modules/).
+      Learn more about the [recommended modules for iOS](https://docs.tealium.com/platforms/ios-swift/modules/).
 
 4. Import the modules `TealiumSwift` and `TealiumAirship` in your `TealiumHelper` file, and any other files that access the `Tealium` class, or the Airship remote command.
 
@@ -79,12 +79,12 @@ To install `TealiumAirship` in additional app targets:
 
 2. Remove the following line if it exists in your Cartfile:  
       ```bash
-      github &#34;urbanairship/ios-library&#34;
+      github "urbanairship/ios-library"
       ```
 
 3.  Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-airship-remote-command&#34;
+      github "tealium/tealium-ios-airship-remote-command"
       ```
 
 
@@ -92,23 +92,23 @@ To install `TealiumAirship` in additional app targets:
 
 
 
-1. Install [Tealium for Android](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+1. Install [Tealium for Android](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
 
       ```groovy
       allprojects {
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import the Tealium-Airship remote commands by adding the following dependencies in your app project&#39;s `build.gradle` file:  
+2. Import the Tealium-Airship remote commands by adding the following dependencies in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium.remotecommands:airship:1.1.0&#39;
+            implementation 'com.tealium.remotecommands:airship:1.1.0'
       }
       ```
 
@@ -119,36 +119,36 @@ To install `TealiumAirship` in additional app targets:
 
 
 
-The manual installation for Airship remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the Airship remote commands for your iOS project:
+The manual installation for Airship remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the Airship remote commands for your iOS project:
 
-1. Install the [Airship SDK](https://github.com/urbanairship/ios-library), if you haven&#39;t already done so.
+1. Install the [Airship SDK](https://github.com/urbanairship/ios-library), if you haven't already done so.
 
 2. Clone the [Tealium iOS Airship remote command](https://github.com/tealium/tealium-ios-airship-remote-command) repo and drag the files within the `Sources` folder into your project.
 
 3. Add `Dispatchers.RemoteCommands` as a dispatcher.
 
-4. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
+4. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
 
 
 
 
-The manual installation for Airship remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed. To install the Airship remote commands for your Android project:
+The manual installation for Airship remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed. To install the Airship remote commands for your Android project:
 
 1. Add `flatDir` to your project root `build.gradle` file:  
       ```groovy
       repositories {
           flatDir {
-              dirs (&#39;/src/main/libs&#39;)
+              dirs ('/src/main/libs')
           }
       }
       ```
 
-2. Add `tealium-airship.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-airship.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-airship&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-airship', ext:'aar')
       }
       ```
 
@@ -156,19 +156,19 @@ The manual installation for Airship remote commands requires [Tealium for Androi
 
 ## Initialize
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Android or Swift library.
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Android or Swift library.
 
 
 
 
-The following example creates a Tealium instance and then registers the Airship remote command with Tealium&#39;s Swift library for iOS:
+The following example creates a Tealium instance and then registers the Airship remote command with Tealium's Swift library for iOS:
 
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                           profile: &#34;PROFILE&#34;,
-                           environment: &#34;ENVIRONMENT&#34;,
-                           dataSource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                           profile: "PROFILE",
+                           environment: "ENVIRONMENT",
+                           dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 config.remoteAPIEnabled = true // Required to use Remote Commands
 
@@ -181,10 +181,10 @@ tealium = Tealium(config: config) { _ in
     let airship = AirshipRemoteCommand() 
 
     // Local JSON
-    //let airship = AirshipRemoteCommand(type: .local(file: &#34;airship&#34;))
+    //let airship = AirshipRemoteCommand(type: .local(file: "airship"))
 
     // Remote JSON
-    //let airship = AirshipRemoteCommand(type: .remote(url: &#34;https://some.domain.com/airship.json&#34;))
+    //let airship = AirshipRemoteCommand(type: .remote(url: "https://some.domain.com/airship.json"))
     remoteCommands.add(airship)
 }
 ```
@@ -196,8 +196,8 @@ The following example creates a Tealium instance and then registers the Airship 
 
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 val airship = AirshipRemoteCommand(application);
@@ -208,10 +208,10 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(airship);
 
     // Local JSON
-    //remoteCommands?.add(airship, filename = &#34;airship.json&#34;);
+    //remoteCommands?.add(airship, filename = "airship.json");
 
     // Remote JSON
-    //remoteCommands?.add(airship, remoteUrl = &#34;https://some.domain.com/airship.json&#34;); 
+    //remoteCommands?.add(airship, remoteUrl = "https://some.domain.com/airship.json"); 
 }
 ```
 
@@ -265,7 +265,11 @@ We map a command to each Airship method. To trigger an Airship method, pass the 
 | `enablebackgroundlocation` | `UALocation.shared().isBackgroundLocationUpdatesAllowed` |
 | `disablebackgroundlocation` | `UALocation.shared().isBackgroundLocationUpdatesAllowed` |
 
+
+<blockquote>
 Since the Airship SDK is integrated with the Tealium SDK, you can trigger any native Airship functionality by calling the SDK directly, even if the functionality is not provided by the Tealium Airship Remote Command tag.
+</blockquote>
+
 
 ### SDK Setup
 
@@ -308,7 +312,7 @@ Sends a custom event to Airship.
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
 | `event_name` (required) | `String` | `Purchase` |
-| `event` (optional) | `JSON object` | `{&#34;my_numeric_property&#34;: 1}` |
+| `event` (optional) | `JSON object` | `{"my_numeric_property": 1}` |
 | `event_value` (optional) | `Number` | `1.5` |
 
 Airship Developer Guide: Event Tracking
@@ -389,7 +393,7 @@ Sets any additional custom identifiers that you deem significant for the user.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `custom` (required) | `JSON Object` (Strings Only) | `{&#34;my_custom_identifier&#34;:&#34;user@email.com&#34;}` |
+| `custom` (required) | `JSON Object` (Strings Only) | `{"my_custom_identifier":"user@email.com"}` |
 
 Airship Developer Guide:
 
@@ -471,7 +475,7 @@ The amount of time Airship must wait before displaying a new in-app message, in 
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `in_app_messaging_display_interval` (required) | `String` | `&#34;10&#34;` |
+| `in_app_messaging_display_interval` (required) | `String` | `"10"` |
 
 Airship Developer Guide:
 
@@ -488,8 +492,8 @@ Enables user push notifications.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `push_notification_options` (optional) | `Array of Strings` | `[&#34;badge&#34;, &#34;sound&#34;, &#34;announcement&#34;]` |
-Possible Push Messaging Options: `&#34;badge&#34;`, `&#34;sound&#34;`, `&#34;alert&#34;`, `&#34;carplay&#34;`, `&#34;announcement&#34;`, `&#34;critical&#34;`, `&#34;app_notification_settings&#34;`
+| `push_notification_options` (optional) | `Array of Strings` | `["badge", "sound", "announcement"]` |
+Possible Push Messaging Options: `"badge"`, `"sound"`, `"alert"`, `"carplay"`, `"announcement"`, `"critical"`, `"app_notification_settings"`
 
 Airship Developer Guide:
 
@@ -545,9 +549,9 @@ Sets push notification options. iOS Only.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `push_notification_options` (required) | `Array of Strings` | `[&#34;badge&#34;, &#34;sound&#34;, &#34;announcement&#34;]` |
+| `push_notification_options` (required) | `Array of Strings` | `["badge", "sound", "announcement"]` |
 
-Possible Push Messaging Options: `&#34;badge&#34;`, `&#34;sound&#34;`, `&#34;alert&#34;`, `&#34;carplay&#34;`, `&#34;announcement&#34;`, `&#34;critical&#34;`, `&#34;app_notification_settings&#34;`
+Possible Push Messaging Options: `"badge"`, `"sound"`, `"alert"`, `"carplay"`, `"announcement"`, `"critical"`, `"app_notification_settings"`
 
 Airship Developer Guide:
 
@@ -563,9 +567,9 @@ Sets push notification presentation options. iOS Only.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `foreground_presentation_options` (required) | `Array of Strings` | `[&#34;badge&#34;, &#34;sound&#34;, &#34;alert&#34;]` |
+| `foreground_presentation_options` (required) | `Array of Strings` | `["badge", "sound", "alert"]` |
 
-Possible Foreground Presentation Options: `&#34;badge&#34;`, `&#34;sound&#34;`, `&#34;alert&#34;`
+Possible Foreground Presentation Options: `"badge"`, `"sound"`, `"alert"`
 
 Airship Developer Guide:
 
@@ -573,7 +577,7 @@ Airship Developer Guide:
 
 #### setBadgeNumber
 
-Sets badge number on your app&#39;s icon to a specified number. iOS Only.
+Sets badge number on your app's icon to a specified number. iOS Only.
 
 | Remote Command | Airship Method |
 | :-- | :-- |
@@ -657,7 +661,7 @@ Sets the time constraints for the Quiet Time feature. iOS only.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `quiet` (required) | `JSON Object` | `{&#39;start_hour&#39;: 3, &#39;start_minute&#39;: 30, &#39;end_hour&#39;: 4, &#39;end_minute&#39;: 30` |
+| `quiet` (required) | `JSON Object` | `{'start_hour': 3, 'start_minute': 30, 'end_hour': 4, 'end_minute': 30` |
 Required within the quiet object:
 
 | Parameter | Type | Example |
@@ -693,7 +697,7 @@ Sets tags for the named user, overwriting previously set tags.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `named_user_tags` (required) | `String Array` | `[&#34;silver-member&#34;, &#34;gold-member&#34;]` |
+| `named_user_tags` (required) | `String Array` | `["silver-member", "gold-member"]` |
 | `tag_group` (required) | `String` | `loyalty` |
 
 Airship Developer Guide:
@@ -711,7 +715,7 @@ Adds a channel tag.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `channel_tag` (required) | `String` | `&#34;a_tag&#34;` |
+| `channel_tag` (required) | `String` | `"a_tag"` |
 
 Airship Developer Guide:
 
@@ -728,7 +732,7 @@ Removes a channel tag.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `channel_tag` (required) | `String` | `&#34;a_tag&#34;` |
+| `channel_tag` (required) | `String` | `"a_tag"` |
 
 Airship Developer Guide:
 
@@ -745,7 +749,7 @@ Adds a tag group for a named user or channel.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `named_user_tags` | `channel_tags` (required) | `String Array` | `[&#34;silver-member&#34;, &#34;gold-member&#34;]` |
+| `named_user_tags` | `channel_tags` (required) | `String Array` | `["silver-member", "gold-member"]` |
 | `tag_group` (required) | `String` | `loyalty` |
 | `tag_type` (required) | `String` | `channel|named_user` |
 
@@ -764,7 +768,7 @@ Removes a tag group for a named user or channel.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `named_user_tags` | `channel_tags` (required) | `String Array` | `[&#34;silver-member&#34;, &#34;gold-member&#34;]` |
+| `named_user_tags` | `channel_tags` (required) | `String Array` | `["silver-member", "gold-member"]` |
 | `tag_group` (required) | `String` | `loyalty` |
 | `tag_type` (required) | `String` | `channel` | `named_user` |
 
@@ -784,7 +788,7 @@ Sets custom attributes.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `attributes` (required) | `JSON object` | `{&#34;last\_product\_purchased&#34;: &#34;A1234567&#34;}` |
+| `attributes` (required) | `JSON object` | `{"last\_product\_purchased": "A1234567"}` |
 
 Attribute values must be either Strings or Numbers.
 
@@ -817,7 +821,7 @@ Sets the message center title. iOS only.
 
 | Parameter | Type | Example |
 | :-- | :-- | :-- |
-| `message_center_title` (required) | `String` | `&#34;Custom Message Center&#34;` |
+| `message_center_title` (required) | `String` | `"Custom Message Center"` |
 
 Airship Developer Guide:
 
@@ -836,12 +840,12 @@ Sets the message center style. iOS only.
 | `message_center_style` (required) | `JSON object` | Example below |
 
 ```
-{&#34;titleFont&#34;: {&#34;size&#34;: Double, &#34;name&#34;:&#34;fontname&#34;},
- &#34;cellTitleFont&#34;: {&#34;size&#34;: Double, &#34;name&#34;:&#34;fontname&#34;},
- &#34;cellDateFont&#34;: {&#34;size&#34;: Double, &#34;name&#34;:&#34;fontname&#34;},
- &#34;navigationBarColor&#34;: {&#34;red&#34;: Double, &#34;green&#34;: Double, &#34;blue&#34;: Double, &#34;alpha&#34;: Double}
- &#34;titleColor&#34;: {&#34;red&#34;: Double, &#34;green&#34;: Double, &#34;blue&#34;: Double, &#34;alpha&#34;: Double}
- &#34;tintColor&#34;: {&#34;red&#34;: Double, &#34;green&#34;: Double, &#34;blue&#34;: Double, &#34;alpha&#34;: Double}
+{"titleFont": {"size": Double, "name":"fontname"},
+ "cellTitleFont": {"size": Double, "name":"fontname"},
+ "cellDateFont": {"size": Double, "name":"fontname"},
+ "navigationBarColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
+ "titleColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
+ "tintColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
  }
 ```
 

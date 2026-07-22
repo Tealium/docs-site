@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/epsilon-universal-site-tag/
 ---
 ## Tag Configuration
 
-Go to the tag marketplace and add the Epsilon Site Tag. For more information about adding a tag, see .
+Go to the tag marketplace and add the Epsilon Site Tag. For more information about adding a tag, see [manage-tags](https://docs.tealium.com/manage-tags/).
 
 After adding the tag, configure the following settings:
 
@@ -19,7 +19,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

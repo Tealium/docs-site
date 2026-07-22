@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/the-trade-desk-offline-conv
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -26,7 +26,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -48,7 +48,7 @@ This connector uses batched requests to support high-volume data transfers to th
 |**Parameter**| **Description**|
 |---| ---|
 | The Trade Desk ID (TDID) (`TDID`) | The Trade Desk 36-character GUID (including dashes) for this user. |
-| Device Advertising ID (`DAID`) | The raw device ID for this user, sent in 36-character GUID format (including dashes). Use iOS IDFA or Android&#39;s AAID. |
+| Device Advertising ID (`DAID`) | The raw device ID for this user, sent in 36-character GUID format (including dashes). Use iOS IDFA or Android's AAID. |
 | Unified ID (`UID2`) | The raw UID2 value, also known as UID2. This value is case-sensitive. Raw UID2s are generated and managed using UID2 APIs. |
 | UID2 Token (encrypted advertising token) | The encrypted UID2 advertising token. This token is case-sensitive. |
 | IdentityLink (`IDL`) | The 49-character or 70-character RampID (previously known as IdentityLink). This must be a RampID from LiveRamp that is mapped specifically for The Trade Desk. |
@@ -66,7 +66,7 @@ This connector uses batched requests to support high-volume data transfers to th
 | Region |  Region. Example: `New York`. |
 | Metro Area |  Metro area. Example: `501` |
 | City |  City. Example: `Brooklyn`.|
-| Postal Code | The postal code. Example: `&#39;11223&#39;`. |
+| Postal Code | The postal code. Example: `'11223'`. |
 | Event Name | The type of event is defined by the partner platform. For more information, see [The Trade Desk: Event Mapping](https://partner.thetradedesk.com/v3/portal/data/doc/post-providerapi-offlineconversion#event-mapping).  |
 | Order ID | The unique identifier for a transaction or conversion event, with a maximum length of 64 characters. |
 

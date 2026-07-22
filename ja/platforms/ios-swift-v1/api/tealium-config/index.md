@@ -79,9 +79,9 @@ addRemoteCommand(command)
 
 ```swift
 #if os(iOS)
-let remoteCommand = TealiumRemoteCommand(commandId: &#34;test&#34;,
-        description: &#34;test&#34;) { response in
-			print(&#34;Remote Command &#39;test&#39; executed&#34;)
+let remoteCommand = TealiumRemoteCommand(commandId: "test",
+        description: "test") { response in
+			print("Remote Command 'test' executed")
 }
 config.addRemoteCommand(remoteCommand)
 #endif
@@ -92,7 +92,7 @@ config.addRemoteCommand(remoteCommand)
 バッチ処理をバイパスするイベント名のリストを構成します（個別のイベントとして送信されます）。
 
 ```swift
-config.batchingBypassKeys = [&#34;home_screen&#34;]
+config.batchingBypassKeys = ["home_screen"]
 ```
 
 ### `batchingEnabled`
@@ -116,7 +116,7 @@ config.batchSize = 8
 データを異なるTealiumプロファイルに送信するためにTealium Collectプロファイルを上書きします。
 
 ```swift
-config.collectOverrideProfile = &#34;main&#34;
+config.collectOverrideProfile = "main"
 ```
 
 ### `collectOverrideURL`
@@ -143,7 +143,7 @@ https://collect.tealiumiq.com/bulk-event/
 このメソッドは通常、カスタムホスト名を構成するか、特定の地域のホスト名を構成するために使用されます。次の例は、Tealium Collectの基本URLをEU Central地域内に保持するように構成します：
 
 ```swift
-let url = &#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;
+let url = "https://collect-eu-central-1.tealiumiq.com/event/"
 config.collectOverrideURL = url
 ```
 
@@ -166,7 +166,7 @@ config.connectivityRefreshInterval = 30
 
 ### `consentLoggingEnabled`
 
-[同意ログ]()機能を有効にします。これにより、すべての同意ステータスの変更が監査目的でTealium Customer Data Hubに送信されます。
+[同意ログ](https://docs.tealium.com/consent-change-event-specifications/)機能を有効にします。これにより、すべての同意ステータスの変更が監査目的でTealium Customer Data Hubに送信されます。
 
 ```swift
 config.consentLoggingEnabled = true
@@ -210,7 +210,7 @@ config.dispatchQueueLimit = 50
 
 
 ### `enableRemoteHTTPCommand()`
-組み込みのリモートHTTPコマンドを有効にします（[Swift Module: RemoteCommands](/ja/platforms/ios-swift-v1/module-list/remote-commands/)を参照）。
+組み込みのリモートHTTPコマンドを有効にします（[Swift Module: RemoteCommands](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/remote-commands/)を参照）。
 
 
 ```swift
@@ -229,24 +229,24 @@ config.existingVisitorId = id
 ローカルのジオフェンスファイルアセットの名前を構成します。ファイル拡張子は含めないでください。
 
 ```swift
-config.geofenceFileName = &lt;String&gt;
+config.geofenceFileName = <String>
 ```
 
 | タイプ | 説明 | 例 |
 | --- | --- | --- |
-| `String` | JSONファイル名 | `&#34;geofences&#34;` |
+| `String` | JSONファイル名 | `"geofences"` |
 
 ### `geofenceUrl`
 
 ホストされているジオフェンスファイルのURLを構成します。
 
 ```swift
-config.geofenceUrl = &lt;String (url)&gt;
+config.geofenceUrl = <String (url)>
 ```
 
 | タイプ | 説明 | 例 |
 | --- | --- | --- |
-| `String` | ジオフェンスファイルのURL | `&#34;https://example.com/.../geofences.json&#34;` |
+| `String` | ジオフェンスファイルのURL | `"https://example.com/.../geofences.json"` |
 
 ### `initialUserConsentCategories`
 
@@ -286,10 +286,14 @@ config.initialUserConsentStatus = .notConsented
 
 位置更新が受信される距離間隔（メートル）を構成します。
 
+
+<blockquote>
 このメソッドは、`useHighAccuracy`が`true`に構成されている場合のみ使用してください。
+</blockquote>
+
 
 ```swift
-config.updateDistance = &lt;Double&gt;
+config.updateDistance = <Double>
 ```
 
 | タイプ | 説明 | 例 |
@@ -300,10 +304,10 @@ config.updateDistance = &lt;Double&gt;
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium Location module config methods
       config.useHighAccuracy = true
@@ -326,7 +330,7 @@ func start() {
 高精度を使用すると、位置更新が頻繁に行われるため、低精度よりもデバイスのバッテリー消費が増加します。
 
 ```swift
-config.useHighAccuracy = &lt;Bool&gt;
+config.useHighAccuracy = <Bool>
 ```
 
 | タイプ | 説明 | 例 |
@@ -337,10 +341,10 @@ config.useHighAccuracy = &lt;Bool&gt;
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium Location module config methods
       config.useHighAccuracy = true

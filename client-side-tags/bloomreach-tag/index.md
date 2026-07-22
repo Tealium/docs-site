@@ -5,25 +5,25 @@ url: https://docs.tealium.com/client-side-tags/bloomreach-tag/
 ---
 ## Tag Configuration
 
-First, go to the tag marketplace and add the BloomReach tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the BloomReach tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the tag, configure the below settings:
 
 * Account ID: Your BloomReach account ID.
 * View ID: This BloomReach-provided ID is only required if you have multiple sites with unique product catalog characteristics using the same account ID.
 * Domain Key: This BloomReach-provided ID is only required for a site with multiple language versions.
-* Track TMS: Toggle tracking of Tealium as your Tag Management System (TMS). Only toggle to `Yes` when migrating your BloomReach implementation from another platform to Tealium, and you&#39;re still loading BloomReach on both platforms. The default is `No`. This allows BloomReach to distinguish the tracking calls from each platform.
+* Track TMS: Toggle tracking of Tealium as your Tag Management System (TMS). Only toggle to `Yes` when migrating your BloomReach implementation from another platform to Tealium, and you're still loading BloomReach on both platforms. The default is `No`. This allows BloomReach to distinguish the tracking calls from each platform.
 * Clear `br_data` on Page View: Toggle whether to clear out the `br_data` object with each page view, or to allow persisted values to remain. This is often set to `Yes` for Single-page or AJAX applications. The default is `No`.
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the BloomReach tag are built into its **Data Mapping** tab. Available categories are:
 
@@ -36,7 +36,7 @@ The destination variables for the BloomReach tag are built into its **Data Mappi
 | Domain Key           | Overrides your configured **Domain Key**.                                                                                 |
 | Title                | Overrides the Page Title with the title of the current page.                                                              |
 | Currency             | Overrides the currency code for transactions.                                                                             |
-| User ID              | Overrides the E-Commerce extension&#39;s `_ccustid` value.                                                                    |
+| User ID              | Overrides the E-Commerce extension's `_ccustid` value.                                                                    |
 | Track TMS Flag       | Overrides your configured Track TMS setting. The value must be the string `yes` to toggle on.                    |
 | Clear br_data Flag   | Overrides your configured Clear `br_data` on Page View setting. The value must be the string `yes` to toggle on. |
 | Event Group          | Map to override the default event group. Only override this after consulting with your BloomReach representative.         |
@@ -46,14 +46,14 @@ The destination variables for the BloomReach tag are built into its **Data Mappi
 
 | **Destination Name** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |:---------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ptype                | (Required for all page views) BloomReach has 7 page type classifications: `homepage`, `product`, `category`, `search`, `content`, `thematic`, and `other`. Set the `ptype` dynamically by entering the mapped variable&#39;s value and selecting the appropriate `ptype` from the dropdown.&lt;br&gt;&lt;br&gt;If your page type doesn&#39;t correspond to one of the supported BloomReach page types, then use `other`. Only set a custom ptype after consulting with your BloomReach representative. |
+| ptype                | (Required for all page views) BloomReach has 7 page type classifications: `homepage`, `product`, `category`, `search`, `content`, `thematic`, and `other`. Set the `ptype` dynamically by entering the mapped variable's value and selecting the appropriate `ptype` from the dropdown.<br><br>If your page type doesn't correspond to one of the supported BloomReach page types, then use `other`. Only set a custom ptype after consulting with your BloomReach representative. |
 
 ### Category Page
 
 | **Destination Name** | **Description**                                                                                                                                                                                                                                                     |
 |:---------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Category ID          | The unique category ID as referred to in your BloomReach database/catalog. The category ID needs to match the `crumb_id` in the feed. This is often a numeric ID or unique crumb path.&lt;br&gt;&lt;br&gt;If you are passing a crumb path, do not delimit the individual crumb values. |
-| Category Name        | The breadcrumb of the page. Each crumb must be delimited by a pipe (&amp;#124;).                                                                                                                                                                                        |
+| Category ID          | The unique category ID as referred to in your BloomReach database/catalog. The category ID needs to match the `crumb_id` in the feed. This is often a numeric ID or unique crumb path.<br><br>If you are passing a crumb path, do not delimit the individual crumb values. |
+| Category Name        | The breadcrumb of the page. Each crumb must be delimited by a pipe (&#124;).                                                                                                                                                                                        |
 
 ### Conversion Page
 
@@ -87,7 +87,7 @@ The destination variables for the BloomReach tag are built into its **Data Mappi
 
 | **Destination Name**   | **Description**                                                                                                                                                                          |
 |:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Original Referring URL | When firing Virtual Page View events, this is the originally loaded page&#39;s URL. This is automatically captured when a Virtual Page View is fired, but can be overridden by mapping here. |
+| Original Referring URL | When firing Virtual Page View events, this is the originally loaded page's URL. This is automatically captured when a Virtual Page View is fired, but can be overridden by mapping here. |
 
 ### Events
 
@@ -95,7 +95,7 @@ Map to these destinations for triggering specific events on a page. To trigger a
 
 1. Select an event from the dropdown list. You may choose from the predefined list or create a Custom event. For a Custom event, enter a name with which to identify it. Please consult with your BloomReach representative before configuring any custom parameters or events.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the **&#43;** button and repeat steps 1 and 2.
+1. To map more events, click the **+** button and repeat steps 1 and 2.
 1. Click **Apply**.
 
 The event triggers when the supplied value is found in the data layer.
@@ -125,14 +125,18 @@ This lets you map to a parameter for a specific event.
 | Search Query (`q`)         | The search term entered by the visitor for a Search Suggest event.                  |
 | Display Query (`aq`)       | The auto-suggested search term displayed to the visitor for a Search Suggest event. |
 
+
+<blockquote>
 If you pass a Display Query parameter for a Search Suggest event, then the event type will be set to `click` automatically. Otherwise, the event type will be `submit`.
+</blockquote>
+
 
 #### Segment Parameter
 
 You can add a custom segment parameter with the `br_data.SEGMENT_NAME` destination name, where `SEGMENT_NAME` represents the segment name.
 
-For example: `br_data.customer_tier = &#34;vip&#34;`
+For example: `br_data.customer_tier = "vip"`
 
 ### Vendor Documentation
 
-* [BloomReach JavaScript Tracking Pixel Reference](https://help.bloomreach.com/display/BRINT/JavaScript&#43;tracking&#43;pixel&#43;reference)
+* [BloomReach JavaScript Tracking Pixel Reference](https://help.bloomreach.com/display/BRINT/JavaScript+tracking+pixel+reference)

@@ -14,7 +14,11 @@ Permissions Enforcement was released in two phases:
 
 After you have created the necessary permission groups, assigned users and profiles to permission groups, and assigned account role permissions to users, the account admin can turn on Permissions Enforcement to enforce the permission settings for all assigned permission groups and profiles for the account.
 
+
+<blockquote>
 Before turning on Permissions Enforcement, make sure that users have been added to permission groups and admin role permissions have been assigned to users that manage users, permission groups, and PII permissions. If Permissions Enforcement is turned on before users have been added to permission groups, users cannot access Tealium.
+</blockquote>
+
 
 ## Manage Platform Permissions
 

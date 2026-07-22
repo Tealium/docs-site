@@ -11,13 +11,13 @@ To find a visitor record, [visitor stitching]() must be enabled and you need a k
 
 Use the following steps to perform a visitor search:
 
-1. Go to **Govern &gt; Visitor Search**.
+1. Go to **Govern > Visitor Search**.
 1. Select an attribute from the drop-down list.
 1. Enter a known value for the selected attribute.
 1. Click **Search**.  
 If the visitor record exists, the results appear.
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool.png)
 
 ### View a visitor record
 
@@ -25,9 +25,9 @@ When a visitor record is located, the information is displayed in two panels: th
 
 #### JSON object
 
-The main panel displays the raw JSON object of the visitor record. Each attribute data type is represented as keys in the object. For more information about the fields available in the visitor object, see [Visitor Privacy API objects](/api/v3/visitor-privacy/objects/).
+The main panel displays the raw JSON object of the visitor record. Each attribute data type is represented as keys in the object. For more information about the fields available in the visitor object, see [Visitor Privacy API objects](https://docs.tealium.com/api/v3/visitor-privacy/objects/).
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool-jsonoject.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-jsonoject.png)
 
 #### Attribute filter
 
@@ -35,7 +35,7 @@ The left panel provides an attribute filter to adjust the list of attributes tha
 
 | Filter by All Attributes |  Filter by Assigned Attributes |
 |---| ---|
-| ![](/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-audience-by-all-attributes.png) | ![](/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-by-assigned-attributes.png)|
+| ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-audience-by-all-attributes.png) | ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-by-assigned-attributes.png)|
 
 ### Deleting a visitor
 
@@ -45,15 +45,23 @@ Deleting a visitor record permanently removes its data from all components of th
 
 When you click **Delete Visitor**, a request is logged to our system to delete the visitor record and a transaction ID is returned to log the request. The delete request enters a queue for processing. If you search for the same visitor again and the record is not found, you will know the delete process has completed.
 
- When a visitor record is deleted, it does not trigger the &#34;Left Audience&#34; action in connectors. Connector actions for audiences are executed only when rules are re-evaluated and a visitor&#39;s status transitions from being included in the audience to being excluded. 
 
-The transaction ID can be used in the [Visitor Privacy API](/api/v3/visitor-privacy/endpoints/) to check the status of the request.
+<blockquote>
+When a visitor record is deleted, it does not trigger the "Left Audience" action in connectors. Connector actions for audiences are executed only when rules are re-evaluated and a visitor's status transitions from being included in the audience to being excluded.
+</blockquote>
+
+
+
+<blockquote>
+The transaction ID can be used in the [Visitor Privacy API](https://docs.tealium.com/api/v3/visitor-privacy/endpoints/) to check the status of the request.
+</blockquote>
+
 
 ## REST API
 
-The **REST API** tab provides an interface to the [Visitor Privacy API](/api/v3/visitor-privacy/endpoints/). The API calls are pre-formatted for you as examples of how to implement the same functionality in your application. Select the API call you want to make and adjust the placeholder values in the request URL.
+The **REST API** tab provides an interface to the [Visitor Privacy API](https://docs.tealium.com/api/v3/visitor-privacy/endpoints/). The API calls are pre-formatted for you as examples of how to implement the same functionality in your application. Select the API call you want to make and adjust the placeholder values in the request URL.
 
 Each API call is available in the **Request Types** drop-down list. Select a request type to view the details of that API call.
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool-select-rest-api-request-type.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-select-rest-api-request-type.png)
 

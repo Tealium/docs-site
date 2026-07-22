@@ -7,26 +7,42 @@ To view your profile settings, log in to your account and click your initials in
 
 After you change editable settings, click **Save**, followed by **Save/Publish**, to apply the changes.
 
+
+<blockquote>
 Read-only (non-editable) settings can only be changed by Tealium Support or the Account Manager.
+</blockquote>
+
 
 ## General settings
 
 * **Enable Concurrency** (Read Only): Allow account admins to toggle Server-Side Concurrency at the profile level.
 * **Activate AudienceStream** (Read Only): Enable/disable all AudienceStream features for the current profile.
 * **AudienceStream Event Filter** (Read Only): Enter the **Event Attribute** name and value (case insensitive). Only events matching this condition are sent to AudienceStream. Leaving these fields empty sends all events to AudienceStream.
-    While the filter only accepts a single attribute name and value, the event filter is applied after server-side enrichments are applied, which allows for more complex filtering based on a custom attribute using enrichments and rules.
+    
+<blockquote>
+While the filter only accepts a single attribute name and value, the event filter is applied after server-side enrichments are applied, which allows for more complex filtering based on a custom attribute using enrichments and rules.
+</blockquote>
+
 * **Visitor Stitching** (Read Only): Enable to merge visitor profiles across platforms, devices, and browsers when they originate from the same visitor. Default value is **ON**.
-* **Profile Retention Time** (Read Only): Set the retention time for visitor profiles. A visitor&#39;s last event determines the retention start time, in days.
+* **Profile Retention Time** (Read Only): Set the retention time for visitor profiles. A visitor's last event determines the retention start time, in days.
 * **Display/UI Time Zone** (Read Only): Select the time zone to display for actions on the connectors dashboard, the AudienceStream dashboard, and the Tealium Insights dashboards.
     * Options are **Greenwich Mean Time (GMT)** or **Local Time**.
     * Selecting **Local Time** displays the browser time for the user currently logged in.
 * **Enable Rule Dependency Checking**: Ensure that attribute dependencies on rules are captured and executed in the correct order. Default value is **ON**.
-    We recommend that you set this option to **On**. If this setting is set to **Off**, rules are not taken into consideration when calculating execution order and, if there are rule dependencies, enrichments are not guaranteed to execute in the correct order.
+    
+<blockquote>
+We recommend that you set this option to **On**. If this setting is set to **Off**, rules are not taken into consideration when calculating execution order and, if there are rule dependencies, enrichments are not guaranteed to execute in the correct order.
+</blockquote>
+
 * **Enable Visitor IP Attribute** (Read Only): Make the visitor’s IP address available as an attribute named **Client IP**. This attribute can be mapped in connectors and used in enrichments and rules.
     * Data layer enrichment key: `client_ip`.
     * Available in AudienceStore as `current_visit.last_event.client_ip`.
     * Default value is **OFF**.
-    The Client IP attribute is not visible in **Live Events** or **Trace**. To see the values of this attribute in **Live Events** or **Trace**, enrich a separate attribute with the Client IP attribute.
+    
+<blockquote>
+The Client IP attribute is not visible in **Live Events** or **Trace**. To see the values of this attribute in **Live Events** or **Trace**, enrich a separate attribute with the Client IP attribute.
+</blockquote>
+
 * **Enrichment Order Respects UI Order**: Enable this option to update the way enrichments are ordered to respect the order that they appear in the user interface.
     * Default value is **ON**.
 * **Usage Report Start Date** (Read Only): Set the date to use as the default start date for usage reports.
@@ -56,7 +72,11 @@ Read-only (non-editable) settings can only be changed by Tealium Support or the 
 * **Region** (Read Only): The region is the authority storage location for your data. Typically, you should choose a geographic location closest to a high percentage of your customers.
     * Some clients have legal restrictions that require their data be stored in a specific geographic location.
     * If you are unsure which is the best region for this profile, select **Oregon** and request an Optimal Authority Region report from Customer Success Leadership. They will provide the region recommendation after collecting a few days of data.
-    Any data collected in an incorrect region may be discarded.
+    
+<blockquote>
+Any data collected in an incorrect region may be discarded.
+</blockquote>
+
 
 ## Daily visitor query cap
 
@@ -71,10 +91,13 @@ Read-only (non-editable) settings can only be changed by Tealium Support or the 
 
 ## Consent Enforcement
 
-* **Legacy Consent Enforcement**: When enabled, apply the [legacy consent category enforcement rules]() to the current profile:
+* **Legacy Consent Enforcement**: When enabled, apply the [legacy consent category enforcement rules](https://docs.tealium.com/server-side-consent-management/) to the current profile:
     * Event actions are blocked unless they satisfy the legacy consent conditions, which rely on the predefined consent categories.
     * Enabled by default for existing profiles, disabled for newly-created profiles or 
-profiles that use [consent orchestration]().
+profiles that use [consent orchestration](https://docs.tealium.com/about-consent-orchestration/).
     * If consent orchestration is deactivated, legacy enforcement settings remain unchanged, allowing for continuity in operations unless manually adjusted.
 
- This setting cannot be turned on while consent orchestration has active purpose groups. 
+
+<blockquote>
+This setting cannot be turned on while consent orchestration has active purpose groups.
+</blockquote>

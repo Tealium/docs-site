@@ -7,7 +7,7 @@ Global variables are variables that can be retrieved by all functions in a profi
 
 Global variables are stored as key-value pairs. The key is generated when you create a variable and is based on the variable name. Functions can retrieve the value of a global variable, but cannot modify it. You can add, edit, and delete global variables on the **Code** tab of the functions code editor. 
 
-V3 event, visitor and data record functions can retrieve the value of a global variable using `helper.getGlobalVariable()`. For more information, see [Event and Visitor Functions V3]() and [V3 Event and visitor function examples]().
+V3 event, visitor and data record functions can retrieve the value of a global variable using `helper.getGlobalVariable()`. For more information, see [Event and Visitor Functions V3]() and [V3 Event and visitor function examples](https://docs.tealium.com/v3-event-visitor-function-examples/#get-the-value-of-a-global-variable).
 
 V2 event and visitor functions can retrieve the value of a global variable using `store.get()`. For more information, see [Event and Visitor Functions V2](). 
 
@@ -15,9 +15,9 @@ V2 event and visitor functions can retrieve the value of a global variable using
 
 To add a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Transform &gt; Functions**.
+1. in the **Server-Side**, go to **Transform > Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
-1. Click **Global Variables**, then click **&#43; Add Variable**.
+1. Click **Global Variables**, then click **+ Add Variable**.
 1. Enter a **Name** for the variable.  
 The **Key** field is automatically populated with the specified name.
 1. Enter the **Value** of the variable.
@@ -25,13 +25,13 @@ The **Key** field is automatically populated with the specified name.
 1. Click **Save/Publish**.
 
 The following example shows the name, key, and value after creating a global variable named `Cloud Function URL` that contains the URL of a Google cloud function.
-![](/images/server-side/functions-global-variable.png)
+![](https://docs.tealium.com/images/server-side/functions-global-variable.png)
 
 ## Edit a global variable
 
 To edit a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Transform &gt; Functions**.
+1. in the **Server-Side**, go to **Transform > Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
 1. Click **Global Variables**.
 1. In the menu for the variable, click **Edit**.
@@ -42,7 +42,7 @@ To edit a global variable, follow these steps:
 
 To delete a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Transform &gt; Functions**.
+1. in the **Server-Side**, go to **Transform > Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
 1. Click **Global Variables**.
 1. In the menu for the variable, click **Delete**.

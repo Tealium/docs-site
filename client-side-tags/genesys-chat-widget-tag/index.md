@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/genesys-chat-widget-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -19,26 +19,26 @@ When adding the tag, configure the following settings:
 * **Region**
   * Select the nearest or appropriate region based on where you are located.
 * **Theme**
-  * Selects the theme to apply to Genesys Widgets from the &#39;themes&#39; object.
+  * Selects the theme to apply to Genesys Widgets from the 'themes' object.
   * Uses the property name of the theme.
 * **Language**
-  * Select the language to use from the &#39;i18n&#39; language pack.
+  * Select the language to use from the 'i18n' language pack.
   * Language codes are selected by the customer.
   * Any language code format can be used as long as this property matches one of the language codes in your i18n language pack.
 * **Mobile Mode**
   * Values are **true**, **false**, or **auto**.
     * A value of **true** forces Mobile mode on all devices.
     * A value of **false** disables Mobile mode completely.
-    * If you use the automatic (**auto**) value Genesys Widgets Automatically switches between Mobile and Desktop modes using the &#39;Mobile Mode Breakpoint&#39; property and UserAgent detection.
+    * If you use the automatic (**auto**) value Genesys Widgets Automatically switches between Mobile and Desktop modes using the 'Mobile Mode Breakpoint' property and UserAgent detection.
 * **Time Format**
   * Sets the time format for the timestamps.
   * Values are **12** or **24**.
 * **Mobile Mode Breakpoint**
   * The breakpoint width in pixels where Genesys Widgets will switch to Mobile mode.
 * **Custom Stylesheet ID**
-  * The HTML ID of a `&lt;style&gt;` tag that contains CSS overrides, custom themes, or other custom CSS intended for Genesys Widgets.
+  * The HTML ID of a `<style>` tag that contains CSS overrides, custom themes, or other custom CSS intended for Genesys Widgets.
 * **Download Google Font**
-  * By default, Genesys Widgets downloads and uses the Google font &#39;Roboto&#39;.
+  * By default, Genesys Widgets downloads and uses the Google font 'Roboto'.
   * Values are **true** or **false**.
   * A value of **true** downloads and used the Google font Roboto.
   * To disable this download, set this value to **false**.
@@ -120,7 +120,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

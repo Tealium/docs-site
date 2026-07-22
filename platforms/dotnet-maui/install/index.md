@@ -5,7 +5,11 @@ url: https://docs.tealium.com/platforms/dotnet-maui/install/
 ---
 The Tealium .NET MAUI integration provides cross-platform interfaces and configuration classes that interface with Tealium for iOS and Tealium for Android.
 
-This integration is a migration from Tealium Xamarin. For more information, see [Tealium for Xamarin](/platforms/xamarin/).
+
+<blockquote>
+This integration is a migration from Tealium Xamarin. For more information, see [Tealium for Xamarin](https://docs.tealium.com/platforms/xamarin/).
+</blockquote>
+
 
 ## Sample App
 
@@ -33,7 +37,7 @@ To instantiate a class instance, first verify that your projects reference the a
 using Tealium.Droid;
 //...
 
-ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryDroid(&lt;myAndroidApplication&gt;));
+ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryDroid(<myAndroidApplication>));
 ```
 
 
@@ -52,26 +56,26 @@ After you create the `TealiumInstanceManager`, create a `TealiumConfig` object w
 
 ```csharp
 TealiumConfig tealConfig = new TealiumConfig(
-    &#34;ACCOUNT&#34;,                                          
-    &#34;PROFILE&#34;,
+    "ACCOUNT",                                          
+    "PROFILE",
     Tealium.Environment.Dev,
-    new List&lt;Dispatchers&gt; {
+    new List<Dispatchers> {
         Dispatchers.Collect, Dispatchers.RemoteCommands
     },
-    new List&lt;Collectors&gt; {
+    new List<Collectors> {
         Collectors.LifeCycle, Collectors.AppData
     }
 );
 ```
 
-For the full list of configuration parameters, see [API: TealiumConfig](/platforms/dotnet-maui/api/#object-tealiumconfig).
+For the full list of configuration parameters, see [API: TealiumConfig](https://docs.tealium.com/platforms/dotnet-maui/api/#object-tealiumconfig).
 
 ### Instance
 
 After you create the `TealiumConfig` object, use the `TealiumInstanceManager` to create a Tealium instance:
 
 ```csharp
-ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) =&gt; 
+ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) => 
 {
   // Callback for once the instance is ready.
   // For example: 
@@ -88,21 +92,21 @@ ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) =&gt;
 
 ## Remote Commands
 
-Use [remote commands](/platforms/remote-commands/how-it-works/) to trigger native code within a vendor SDK. Remote commands is supported in .NET MAUI with the [`IRemoteCommand`](/platforms/dotnet-maui/api/#iremotecommand) interface and a built-in implementation called `DelegateRemoteCommand`.
+Use [remote commands](https://docs.tealium.com/platforms/remote-commands/how-it-works/) to trigger native code within a vendor SDK. Remote commands is supported in .NET MAUI with the [`IRemoteCommand`](https://docs.tealium.com/platforms/dotnet-maui/api/#iremotecommand) interface and a built-in implementation called `DelegateRemoteCommand`.
 
 To create a remote command that works with the Custom Command tag in Tealium iQ, pass a command ID and description with no additional parameters, then define the response handler. Access the data payload of the command in `resp.Payload`.
 
 To create a remote command using the local file or remote URL option, add the `path` or `url` parameter respectively:
 
 ```csharp
-var myCommand = new DelegateRemoteCommand(&#34;logger&#34;, &#34;Logger command.&#34;, path: &#34;FILENAME.json&#34;)
+var myCommand = new DelegateRemoteCommand("logger", "Logger command.", path: "FILENAME.json")
 {
-    HandleResponseDelegate = (DelegateRemoteCommand cmd, IRemoteCommandResponse resp) =&gt;
+    HandleResponseDelegate = (DelegateRemoteCommand cmd, IRemoteCommandResponse resp) =>
     {
         var payload = resp.Payload;
-        System.Diagnostics.Debug.WriteLine($&#34;Command Payload: {payload}&#34;);
+        System.Diagnostics.Debug.WriteLine($"Command Payload: {payload}");
         
-        if (payload.GetValueForKey&lt;Boolean&gt;(&#34;frequent_visitor&#34;))
+        if (payload.GetValueForKey<Boolean>("frequent_visitor"))
         {
             // take action
         }
@@ -124,15 +128,15 @@ public class MyRemoteCommand : IRemoteCommand
         this.url = url;
     }
 
-    public string CommandId =&gt; &#34;logger&#34;;
+    public string CommandId => "logger";
 
-    public string Description =&gt; &#34;Logger command&#34;;
+    public string Description => "Logger command";
 
     // Sets the path to a local JSON mappings file
-    public string Path =&gt; path;
+    public string Path => path;
 
     // Sets the url to a remote JSON mappings file
-    public string Url =&gt; url;
+    public string Url => url;
 
     public void Dispose()
     {
@@ -142,9 +146,9 @@ public class MyRemoteCommand : IRemoteCommand
     public void HandleResponse(IRemoteCommandResponse response)
     {
         var payload = response.Payload;
-        System.Diagnostics.Debug.WriteLine($&#34;Command Payload: {payload}&#34;);
+        System.Diagnostics.Debug.WriteLine($"Command Payload: {payload}");
 
-        if (payload.GetValueForKey&lt;Boolean&gt;(&#34;frequent_visitor&#34;))
+        if (payload.GetValueForKey<Boolean>("frequent_visitor"))
         {
             // take action
         }
@@ -155,25 +159,25 @@ public class MyRemoteCommand : IRemoteCommand
 var iqCommand = new MyRemoteCommand(null, null);
 
 // Locally mapped Remote Command
-var localCommand = new MyRemoteCommand(&#34;FILENAME.json&#34;, null);
+var localCommand = new MyRemoteCommand("FILENAME.json", null);
 
 // Remotely mapped Remote Command
-var remoteCommand = new MyRemoteCommand(null, &#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;);
+var remoteCommand = new MyRemoteCommand(null, "https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json");
 ```
 
-To use remote commands, you must include [`Dispatcher.RemoteCommands`](/platforms/dotnet-maui/api/#dispatchers) in the `TealiumConfig` object. Then add your remote command to the `TealiumConfig` object or call [`AddRemoteCommand()`](/platforms/dotnet-maui/api/#addremotecommand) on the Tealium instance.
+To use remote commands, you must include [`Dispatcher.RemoteCommands`](https://docs.tealium.com/platforms/dotnet-maui/api/#dispatchers) in the `TealiumConfig` object. Then add your remote command to the `TealiumConfig` object or call [`AddRemoteCommand()`](https://docs.tealium.com/platforms/dotnet-maui/api/#addremotecommand) on the Tealium instance.
 
 Using `TealiumConfig`:
 
 ```csharp
 TealiumConfig config = new TealiumConfig(
-    &#34;ACCOUNT&#34;,                                          
-    &#34;PROFILE&#34;,
+    "ACCOUNT",                                          
+    "PROFILE",
     Tealium.Environment.Dev,
-    new List&lt;Dispatchers&gt; {
+    new List<Dispatchers> {
         Dispatchers.Collect, Dispatchers.RemoteCommands
     },
-    remoteCommands: new List&lt;IRemoteCommand&gt;
+    remoteCommands: new List<IRemoteCommand>
     {
         myCommand
     }
@@ -183,7 +187,7 @@ TealiumConfig config = new TealiumConfig(
 Using the Tealium instance:
 
 ```csharp
-InstanceManager.CreateInstance(config, (tealium) =&gt;
+InstanceManager.CreateInstance(config, (tealium) =>
 {
     if (tealium != null)
     {
@@ -210,35 +214,35 @@ Example use of the delegate method:
 static TealiumAdvancedConfig SetupAdvancedConfig() {
 
     DelegateDispatchValidator validator = new DelegateDispatchValidator() {
-        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside ShouldDropDispatchDelegate!&#34;);
+        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) => {
+            System.Diagnostics.Debug.WriteLine("Inside ShouldDropDispatchDelegate!");
             return false;
         },
-        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, bool shouldQueue) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside ShouldQueueDispatchDelegate!&#34;);
+        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, bool shouldQueue) => {
+            System.Diagnostics.Debug.WriteLine("Inside ShouldQueueDispatchDelegate!");
             return shouldQueue;
         }
     };
     DispatchSentDelegateEventListener sendingListener = new DispatchSentDelegateEventListener() {
-        DispatchSent = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside DispatchSent!&#34;);
-            dispatch.PutString(&#34;KeyAddedBySendListener&#34;, &#34;Value added by sending listener.&#34;);
+        DispatchSent = (tealium, dispatch) => {
+            System.Diagnostics.Debug.WriteLine("Inside DispatchSent!");
+            dispatch.PutString("KeyAddedBySendListener", "Value added by sending listener.");
         }
     };
     DispatchQueuedDelegateEventListener queuingListener = new DispatchQueuedDelegateEventListener() {
-        DispatchQueued = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside DispatchQueued!&#34;);
-            dispatch.PutString(&#34;KeyAddedByQueuedListener&#34;, &#34;Value added by queuing listener.&#34;);
+        DispatchQueued = (tealium, dispatch) => {
+            System.Diagnostics.Debug.WriteLine("Inside DispatchQueued!");
+            dispatch.PutString("KeyAddedByQueuedListener", "Value added by queuing listener.");
         }
     };
     WebViewReadyDelegateEventListener webViewListener = new WebViewReadyDelegateEventListener() {
-        WebViewReady = (tealium, webView) =&gt;  {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside WebViewReady!&#34;);
+        WebViewReady = (tealium, webView) =>  {
+            System.Diagnostics.Debug.WriteLine("Inside WebViewReady!");
         }
     };
     SettingsPublishedDelegateEventListener settingsListener = new SettingsPublishedDelegateEventListener() {
-        SettingsPublished = (tealium) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside SettingsPublished!&#34;);
+        SettingsPublished = (tealium) => {
+            System.Diagnostics.Debug.WriteLine("Inside SettingsPublished!");
         }
     };
     TealiumAdvancedConfig advConfig = new TealiumAdvancedConfig(validator,

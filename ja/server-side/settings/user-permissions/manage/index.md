@@ -47,7 +47,7 @@ url: https://docs.tealium.com/ja/server-side/settings/user-permissions/manage/
 1. Customer Data Hubのサーバーサイドエリアにログインします。
 1. 管理メニューで**ユーザー管理**をクリックします。
 1. **未来のプロファイルのための権限を構成**リストで、アカウントに新たに作成されるプロファイルのユーザーに割り当てるロールを選択します。  
-      ![](/images/server-side/ss-permissions-set-permissions-for-future-profiles.png)
+      ![](https://docs.tealium.com/images/server-side/ss-permissions-set-permissions-for-future-profiles.png)
 1. 変更を保存するには**保存**をクリックし、変更を破棄するには**キャンセル**をクリックします。  
 変更は公開する必要なく保存されます。
 
@@ -59,6 +59,6 @@ url: https://docs.tealium.com/ja/server-side/settings/user-permissions/manage/
 1. 管理メニューで**ユーザー管理**をクリックします。
 1. 権限ロールを変更したい各ユーザーを選択します。
 1. **一括操作**をクリックし、選択したユーザーに割り当てる権限を選択します。  
-      ![](/images/server-side/ss-permissions-bulk.png)
+      ![](https://docs.tealium.com/images/server-side/ss-permissions-bulk.png)
 1. **適用**をクリックし、次に**保存**をクリックします。  
 変更を保存するために公開する必要はありません。

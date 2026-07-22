@@ -13,11 +13,11 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Conversion API Token**  
-  * To generate the Conversion API Token, go to the settings panel, click **Conversion API Tokens &gt; Generate Conversion API Token**.
+  * To generate the Conversion API Token, go to the settings panel, click **Conversion API Tokens > Generate Conversion API Token**.
 
 ## Actions
 

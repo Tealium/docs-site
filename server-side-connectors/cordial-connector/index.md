@@ -13,12 +13,16 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Key**  
-Cordial uses HTTP Basic Authentication (BA). From within the Cordial platform, you can generate an encoded API key for your account. This key is then used as the `username` for your BA credentials. For more information, see [RESTful API Summary and Usage](https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage).  You must add the [Tealium IP addresses]() to your `API_KEY` whitelist in Cordial. 
+Cordial uses HTTP Basic Authentication (BA). From within the Cordial platform, you can generate an encoded API key for your account. This key is then used as the `username` for your BA credentials. For more information, see [RESTful API Summary and Usage](https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage). 
+<blockquote>
+You must add the [Tealium IP addresses]() to your `API_KEY` whitelist in Cordial.
+</blockquote>
+
 * **Path-URL**  
 Select one of the following Path URLs or type it manually.
   * `https://api.cordial.io/v2/` - Use this URL if your admin panel URL is `https://admin.cordial.io/`.
@@ -64,7 +68,7 @@ The following section describes how to set up parameters and options for each ac
 | String Parameters | Adds a string attribute value when the attribute type is set as string. |
 | Number Parameters | Adds a number attribute value when the attribute type is set as number. |
 | Date Parameters | Adds a date attribute value when the attribute type is set as date. |
-| Geo Parameters | Adds a geo attribute value when the attribute type is set as geo. Note that geo attributes contain following set schema of key names: &lt;ul&gt;&lt;li&gt;Street Address&lt;/li&gt;&lt;li&gt;Street Address 2&lt;/li&gt;&lt;li&gt;City&lt;/li&gt;&lt;li&gt;State&lt;/li&gt;&lt;li&gt;Postal Code&lt;/li&gt;&lt;li&gt;Country ISO&lt;/li&gt;&lt;li&gt;Time Zone&lt;/li&gt;&lt;li&gt;Location&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Latitude&lt;/li&gt;&lt;li&gt;Longitude&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt; |
+| Geo Parameters | Adds a geo attribute value when the attribute type is set as geo. Note that geo attributes contain following set schema of key names: <ul><li>Street Address</li><li>Street Address 2</li><li>City</li><li>State</li><li>Postal Code</li><li>Country ISO</li><li>Time Zone</li><li>Location</li><ul><li>Latitude</li><li>Longitude</li></ul></ul> |
 | Array Parameters | Adds array attribute values when the attribute type is set as array. The default behavior is to replace the array value with the provided one. An object specifying add/remove behavior can be specified to override the default. If the max items limit is exceeded (default is 25), newer values will replace the oldest values. |
 
 ### Add cart to contact
@@ -186,8 +190,8 @@ The following section describes how to set up parameters and options for each ac
 | CID | The contact ID. |
 | Identify By | Specifies which identifier key in the request body should be used to look up the contact. |
 | External Variables | The external variables. Supports templates. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as external variables input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation (For example, `items.name`).&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in parameters. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables | <ul><li>Provide template variables as external variables input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation (For example, `items.name`).</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul> |
 
 ### Record contact activity (batch)
 
@@ -203,7 +207,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Host | Specify your Cordial region:&lt;ul&gt;&lt;li&gt;usw1: `https://integrations-ingest-svc.cordial.com`&lt;/li&gt;&lt;li&gt;usw2: `https://integrations-ingest-svc.usw2.cordial.com`&lt;/li&gt;&lt;li&gt;use1: `https://integrations-ingest-svc.use1.cordial.com`&lt;/li&gt;&lt;/ul&gt; |
+| Host | Specify your Cordial region:<ul><li>usw1: `https://integrations-ingest-svc.cordial.com`</li><li>usw2: `https://integrations-ingest-svc.usw2.cordial.com`</li><li>use1: `https://integrations-ingest-svc.use1.cordial.com`</li></ul> |
 | Source | Data source. The default value is `TEALIUM`. |
 
 #### Identifiers
@@ -233,7 +237,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Robot | Indicates whether the device is operated by a bot. |
 | Device Type | Type of device, such as mobile or desktop. |
 | Contact Activity Properties | Additional event attributes. By default, each event can have up to 1,000 properties. Property keys that are numeric-only (for example, `57`) or contain a dot (for example, `shoes.color`) are stripped. |
-| Contact Attributes | The attributes to set if a contact doesn&#39;t exist and should be created. |
+| Contact Attributes | The attributes to set if a contact doesn't exist and should be created. |
 
 #### Contact Options
 
@@ -242,6 +246,6 @@ This action uses batched requests to support high-volume data transfers to the v
 | Force subscribe | Force subscribe. |
 | Merge allowed | Merge allowed. |
 | Mergeable secondary keys | Secondary keys, such as `email`, that can be used to merge contact records. |
-| Can be created | (Optional) The default value is `false`. Creates a new contact if it doesn&#39;t already exist. |
+| Can be created | (Optional) The default value is `false`. Creates a new contact if it doesn't already exist. |
 | Can be updated | (Optional) The default value is `false`. Updates the contact if it already exists. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between 1 and 60 minutes. The default value is 10 minutes. |

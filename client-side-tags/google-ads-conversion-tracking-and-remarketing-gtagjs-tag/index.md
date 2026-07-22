@@ -13,12 +13,12 @@ url: https://docs.tealium.com/client-side-tags/google-ads-conversion-tracking-an
   * List of categories.
   * List of quantities.
   * List of prices.
-* We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see [Google Ads Enhanced Conversions for Web Connector]().
+* We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see [Google Ads Enhanced Conversions for Web Connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/).
 * Use mapping to dynamically override the standard configuration values and the E-Commerce extension values.
 * Pass custom conversion variables by mapping to **Custom Conversion Variable** and replacing `myvar` with your custom variable name.
 * [Google: Dynamic Remarketing documentation](https://support.google.com/google-ads/answer/7305793).
 * [Google: Google Ads documentation](https://developers.google.com/adwords-remarketing-tag/).
-* Use the [Crypto Extension]() to encrypt and populate the **Hashed Email** and **Phone Number** values.
+* Use the [Crypto Extension](https://docs.tealium.com/crypto-extension/) to encrypt and populate the **Hashed Email** and **Phone Number** values.
 
 ## Enhanced Conversions
 
@@ -27,7 +27,11 @@ Google’s Enhanced Conversions for Web feature can improve the accuracy of your
 * Before enabling Enhanced Conversions, you must enable enhanced conversions in your Google Ads account. For more information, see [Google: Set up enhanced conversions for web using the Google tag](https://support.google.com/google-ads/answer/13258081?sjid=1600196321043643540-NC).
 * If you are using the server-side Enhanced Conversions for Web connector to supplement this client-side tag, map a unique value, such as `tealium_random`, to **Transaction ID** for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set **Implementation Type** to `API`.
 
- Support for enhanced conversions was added in June, 2022. If you are running an older version of the tag and want to use this feature, you must update the tag template. For more information, see [Managing Tag Templates](). 
+
+<blockquote>
+Support for enhanced conversions was added in June, 2022. If you are running an older version of the tag and want to use this feature, you must update the tag template. For more information, see [Managing Tag Templates](https://docs.tealium.com/manage-templates/).
+</blockquote>
+
 
 ## Deduplication
 
@@ -37,7 +41,7 @@ Google uses the transaction ID to deduplicate if the same conversion event is se
 
 The Google Ads Conversion Tracking and Remarketing tag supports dynamic remarketing that lets you personalize ads based on previous visitor activity on your website. To use remarketing features with this tag, set **Enable Remarketing** to **On** in the tag configuration.
 
-When you enable remarketing, this tag automatically pulls in data from the [E-Commerce extension]() to populate the Google Ads **Retail** parameters. To pass the values with a remarketing event, go to **Data Mapping &gt; Event-specific parameters** and map the relevant data layer attribute to the remarketing event attribute.
+When you enable remarketing, this tag automatically pulls in data from the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) to populate the Google Ads **Retail** parameters. To pass the values with a remarketing event, go to **Data Mapping > Event-specific parameters** and map the relevant data layer attribute to the remarketing event attribute.
 
 Google recommends always mapping at least one attribute from one of the remarketing categories (for example, retail, education, flights, hotels and rentals, jobs, local, real estate, and travel) to a remarketing event. If the user interacts with multiple items on your website, like checking out a shopping cart or searching for a travel itinerary, you can map more than one attribute.
 
@@ -45,7 +49,7 @@ For more information about dynamic remarketing events and item parameters, see [
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -67,17 +71,17 @@ When adding the tag, configure the following settings:
 * **Enable Enhanced Conversions**
   * Only enable this option if you are sending PII (Personally Identifiable Information) through the tag. 
   * If you are using the server-side **Enhanced Conversions for Web** connector to supplement this client-side tag, map a unique value, such as `tealium_random`, to **Transaction ID** for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set **Implementation Type** to `API`.
-  * For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in EventStream, see [Tealium &#43; Google Enhanced Conversions Integration Guide]().
+  * For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in EventStream, see [Tealium + Google Enhanced Conversions Integration Guide](https://docs.tealium.com/tealium-google-enhanced-conversions-integration-guide/).
 * **Enable Event Matching for Server-side Enhanced Conversions**
-  * Enable event matching to use Automatic Transaction ID in the [Google Ads Enhanced Conversions for Web connector]().
+  * Enable event matching to use Automatic Transaction ID in the [Google Ads Enhanced Conversions for Web connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/).
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -201,8 +205,8 @@ The available categories are:
 | Variable | Type | Description |
 |:---------|:------------|:------------|
 | `custom.ecomm_rec_prodid`| Array  |Recommended product IDs.  | 
-|`custom.a` |  Number |Visitor&#39;s age.  |
-| `custom.g`| String |Visitor&#39;s gender.  |
+|`custom.a` |  Number |Visitor's age.  |
+| `custom.g`| String |Visitor's gender.  |
 |`custom.hasaccount`| Boolean  |Visitor has account.  | 
 | `custom.cqs`| Number |Customer quality score.  | 
 | `custom.rp`| Boolean  |Repeat purchaser.  | 
@@ -239,15 +243,15 @@ The available categories are:
 |:---------|:------------|:------------|
 |  `gtag_enable_tcf_support` (true/false) | Boolean | Enable TCF support  |
 | `user_provided_data` | String | Any mapped event-specific parameters passed in a `user_data` object. |
-| `customer_type` | String | Whether the customer in a `purchase` event is a new customer. &lt;ul&gt;&lt;li&gt;`New`: A new customer who hasn&#39;t purchased within 540 days.&lt;/li&gt;&lt;li&gt;`Returning`: A returning customer who has made a purchase within 540 days.&lt;/li&gt;&lt;/ul&gt; |
+| `customer_type` | String | Whether the customer in a `purchase` event is a new customer. <ul><li>`New`: A new customer who hasn't purchased within 540 days.</li><li>`Returning`: A returning customer who has made a purchase within 540 days.</li></ul> |
 
 ### IAB Transparency and Consent Framework v2
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
-| `exception` | An exception event is logged when the normal flow of an app&#39;s execution is interrupted. |
+| `exception` | An exception event is logged when the normal flow of an app's execution is interrupted. |
 | `generate_lead` | A lead has been generated. This variable helps you understand how effective your re-engagement campaigns are. |
 | `login` | A user has logged in. |
 | `page_view` | A user has viewed a page. |

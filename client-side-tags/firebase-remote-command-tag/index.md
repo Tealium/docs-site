@@ -27,17 +27,17 @@ For all libraries, you must register the Firebase Analytics Remote Command befor
 
 ### Step 1 – Add the Firebase tag
 
-The Firebase Tag is a special tag that contains an implementation of the API required to trigger custom native code blocks you have registered with the Tealium mobile libraries. This tag is available in the tag marketplace and communicates with &#34;Step 3&#34; of the native app configuration.
+The Firebase Tag is a special tag that contains an implementation of the API required to trigger custom native code blocks you have registered with the Tealium mobile libraries. This tag is available in the tag marketplace and communicates with "Step 3" of the native app configuration.
 
 ### How it works
 
 The Tealium event (view or event) is triggered by the native code, which is then ingested by the `utag.js` file in the webview. The Firebase tag and associated extensions review the event and send a Firebase event to the remote command that was added to the native code. The remote command takes the request from the tag and formats and sends the event so that it can be collected by the Firebase tag.
 
-![](/images/client-side-tags/howitworks-firebasetag.jpg)
+![](https://docs.tealium.com/images/client-side-tags/howitworks-firebasetag.jpg)
 
 ### Step 2 – Set the Tag Configuration
 
-The only option for configuration is whether to enable debug mode. Your developers should determine whether this option needs to be enabled. The default setting is &#34;False&#34;.
+The only option for configuration is whether to enable debug mode. Your developers should determine whether this option needs to be enabled. The default setting is "False".
 
 ### Step 3 – Add Mappings
 
@@ -56,18 +56,18 @@ These can be set as static values or can be set dynamically using extensions.
 
 |Variable| Description|
 |---| ---|
-|`firebase_session_timeout_seconds`|  &lt;ul&gt;&lt;li&gt;Integer as String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_session_minimum_seconds`|  &lt;ul&gt;&lt;li&gt;Integer as String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_analytics_enabled`|  &lt;ul&gt;&lt;li&gt;Boolean as String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_log_level`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt;|
-|`firebase_event_name`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_event_params`|  &lt;ul&gt;&lt;li&gt;JSON&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_screen_name`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_screen_class`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_property_name`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_property_value`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`firebase_user_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`command_name`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
+|`firebase_session_timeout_seconds`|  <ul><li>Integer as String</li></ul> |
+|`firebase_session_minimum_seconds`|  <ul><li>Integer as String</li></ul> |
+|`firebase_analytics_enabled`|  <ul><li>Boolean as String</li></ul> |
+|`firebase_log_level`|  <ul><li>String</li></ul>|
+|`firebase_event_name`|  <ul><li>String</li></ul> |
+|`firebase_event_params`|  <ul><li>JSON</li></ul> |
+|`firebase_screen_name`|  <ul><li>String</li></ul> |
+|`firebase_screen_class`|  <ul><li>String</li></ul> |
+|`firebase_property_name`|  <ul><li>String</li></ul> |
+|`firebase_property_value`|  <ul><li>String</li></ul> |
+|`firebase_user_id`|  <ul><li>String</li></ul> |
+|`command_name`|  <ul><li>String</li></ul> |
 
 #### Automatic events
 
@@ -118,7 +118,7 @@ The event name is the event occurring in the app that needs to be captured (cart
 
 Firebase events are mapped as they would be in any other tag. Values can come in either from the data layer or set through an extension and then mapped to the tag in the following manner:
 
-![](/images/client-side-tags/screen-shot-2020-10-02-at-9.07.39-am-markup.jpg)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2020-10-02-at-9.07.39-am-markup.jpg)
 
 #### Custom events
 
@@ -127,7 +127,7 @@ If the event you want to send is not included in the list of default events, you
 1. Map your variable value to the `logEvent` event.
 1. Add a parameter to send the event name with your `logEvent` event.
 
-**![](/images/client-side-tags/screen-shot-2020-10-02-at-9.15.36-am-markup.jpg)**
+**![](https://docs.tealium.com/images/client-side-tags/screen-shot-2020-10-02-at-9.15.36-am-markup.jpg)**
 
 #### Standard parameters
 
@@ -249,7 +249,7 @@ Event parameters are sent along with the event and can be mapped to the paramete
 
 #### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|
@@ -300,7 +300,7 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 #### Parameters
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|
@@ -344,11 +344,11 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 If your parameter is not available in the above tables, a custom parameter will need to be sent with the event. When adding custom parameters to any event, note that they are sent along with the event (either standard or custom) and must be in a JSON format. The value of the mapped variable must be set using a Javascript extension. Multiple events can be formatted as shown in the following figure:
 
-![](/images/client-side-tags/screen-shot-2020-10-02-at-10.54.39-am.png)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2020-10-02-at-10.54.39-am.png)
 
 The mapping to send custom parameters would be configured as shown.
 
-![](/images/client-side-tags/screen-shot-2020-10-02-at-10.57.00-am.png)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2020-10-02-at-10.57.00-am.png)
 
 ## Tips
 
@@ -367,8 +367,8 @@ A/B testing parameters are stored in Firebase and are not accessible to Tealium.
 
 ## Resources
 
-[Tealium Firebase Remote Command Integration](https://docs.tealium.com/platforms/remote-commands/integrations/firebase/)&lt;br&gt;
-[Firebase Remote Command Example – iOS (Github)](https://github.com/Tealium/tealium-ios-firebase-remote-command)&lt;br&gt;
-[Firebase Remote Command Example – Android (Github)](https://github.com/Tealium/tealium-android-firebase-remote-command)&lt;br&gt;
-[Google Firebase Guide](https://firebase.google.com/docs/guides)&lt;br&gt;
+[Tealium Firebase Remote Command Integration](https://docs.tealium.com/platforms/remote-commands/integrations/firebase/)<br>
+[Firebase Remote Command Example – iOS (Github)](https://github.com/Tealium/tealium-ios-firebase-remote-command)<br>
+[Firebase Remote Command Example – Android (Github)](https://github.com/Tealium/tealium-android-firebase-remote-command)<br>
+[Google Firebase Guide](https://firebase.google.com/docs/guides)<br>
 [Automatically Collected Events – Firebase](https://support.google.com/firebase/answer/6317485?hl=en)

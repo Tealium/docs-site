@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-crash-t
 
 #### 推奨されるSDKモジュール：
 
-* [Tealium for Android Crash Reporter Module](/ja/platforms/android-java/module-list/crash-reporter/)
+* [Tealium for Android Crash Reporter Module](https://docs.tealium.com/ja/platforms/android-java/module-list/crash-reporter/)
 
 ### サポートされるアクション
 
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-crash-t
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいNew Relicモバイルクラッシュコネクタを追加します。コネクタを追加する方法の一般的な手順については、[コネクタの概要]()記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいNew Relicモバイルクラッシュコネクタを追加します。コネクタを追加する方法の一般的な手順については、[コネクタの概要](https://docs.tealium.com/about-connectors/)記事を参照してください。
 
 ベンダーを構成するには、次の手順に従ってください：
 
@@ -42,7 +42,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-crash-t
 
 ### アクション：Androidクラッシュイベントの送信
 
+
+<blockquote>
 コネクタは、イベント属性を必要なフィールドに自動的にマッピングしてからNew Relicに送信します。
+</blockquote>
+
 
 #### パラメータ
 
@@ -62,7 +66,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-crash-t
 | クラッシュ原因                  | ユーザーが読み取れる原因                                                                           | `インデックスが範囲外です`                                                                                                                                                                                                                     |
 | クラッシュ名                   | アプリが生成した名前                                                                             | `java.lang.RuntimeException`                                                                                                                                                                                                              |
 | クラッシュプロセスID             | 低レベルプロセスID                                                                         |                                                                                                                                                                                                                                           |
-| クラッシュスレッド                | 文字列化されたJSONの配列                                                                      | `[&#34;{&#34;crashed&#34;:true, &#34;state&#34;:&#34;RUNNABLE&#34;, &#34;threadNumber&#34;:1, &#34;threadId&#34;:&#34;main&#34;, &#34;priority&#34;:5,&#34;stack&#34;: [{&#34;className&#34;: &#34;com.tealium.example.fragment.ControlFragment&#34;, &#34;methodName&#34;:&#34;onClick&#34;, &#34;lineNumber&#34;:89}]}&#34;]` |
+| クラッシュスレッド                | 文字列化されたJSONの配列                                                                      | `["{"crashed":true, "state":"RUNNABLE", "threadNumber":1, "threadId":"main", "priority":5,"stack": [{"className": "com.tealium.example.fragment.ControlFragment", "methodName":"onClick", "lineNumber":89}]}"]` |
 | クラッシュUUID                   | ユニークなクラッシュ識別子                                                                        | `c0319246-ff40-4fdc-877f-7341ad48f52c`                                                                                                                                                                                                    |
 | デバイス                       | デバイス名                                                                                    | `motorola`                                                                                                                                                                                                                                |
 | デバイスCPUタイプ              | アーキテクチャ                                                                                   | `armv7l`                                                                                                                                                                                                                                  |

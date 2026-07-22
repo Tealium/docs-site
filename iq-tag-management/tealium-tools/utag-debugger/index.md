@@ -5,31 +5,31 @@ url: https://docs.tealium.com/iq-tag-management/tealium-tools/utag-debugger/
 ---
 ## How it works
 
-The Universal Tag (UTAG) Debugger tool displays the [Universal Data Object]() and event tracking callstriggered by `utag.js` on a site.
+The Universal Tag (UTAG) Debugger tool displays the [Universal Data Object](https://docs.tealium.com/universal-data-object/) and event tracking callstriggered by `utag.js` on a site.
 
-![](/images/iq-tag-management/utag-debugger.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-debugger.png)
 
 ## Install
 
 ### Tealium Tools
 
-To install UTAG Debugger as a Tealium Tool, first install the [Tealium Tools Browser Extension]().
+To install UTAG Debugger as a Tealium Tool, first install the [Tealium Tools Browser Extension](https://docs.tealium.com/tealium-tools-browser-extension/).
 
 After you install the extension, follow these steps to add the custom tool:
 
 1. Click the Tealium icon in the upper-right of your browser to open Tealium Tools.
-1. Go to the **Custom Tools** tab and click the square for **&#43; Custom Tools**, then click **Add Custom Tools**.
+1. Go to the **Custom Tools** tab and click the square for **+ Custom Tools**, then click **Add Custom Tools**.
 1. Next, copy and paste the following JSON code in the field for **Add by JSON Definition** then click **Add Custom Tool**:  
     ```json
     {
-        &#34;id&#34; : &#34;teal.sol.debug&#34;,
-        &#34;title&#34; : &#34;UTAG Debugger&#34;,
-        &#34;description&#34; : &#34;Universal Tag Debugger&#34;,
-        &#34;no_ui&#34; : true,
-        &#34;scripts&#34; : {
-            &#34;utag_monitor&#34; : {
-                &#34;js&#34; : &#34;void(window.open(\&#34;\&#34;,\&#34;utagmon\&#34;,\&#34;width=700,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\&#34;).document.write(\&#34;&lt;script language=&#39;JavaScript&#39; id=&#39;utagmon&#39; src=&#39;//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?opt_show_enrich=0&amp;opt_show_meta=0&amp;opt_show_query=0&amp;opt_show_jspage=0&amp;opt_show_tiq=1&amp;opt_show_cookie=0&amp;_cb=\&#34;&#43;Math.random()&#43;\&#34;&#39;&gt;&lt;/\&#34;&#43;\&#34;script&gt;\&#34;));&#34;,
-                &#34;auto_inject&#34; : true
+        "id" : "teal.sol.debug",
+        "title" : "UTAG Debugger",
+        "description" : "Universal Tag Debugger",
+        "no_ui" : true,
+        "scripts" : {
+            "utag_monitor" : {
+                "js" : "void(window.open(\"\",\"utagmon\",\"width=700,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\").document.write(\"<script language='JavaScript' id='utagmon' src='//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?opt_show_enrich=0&opt_show_meta=0&opt_show_query=0&opt_show_jspage=0&opt_show_tiq=1&opt_show_cookie=0&_cb=\"+Math.random()+\"'></\"+\"script>\"));",
+                "auto_inject" : true
             }
         }
     }
@@ -40,11 +40,11 @@ After you install the extension, follow these steps to add the custom tool:
 
 To install UTAG Debugger as a bookmark, copy the following code into the URL of a new bookmark:
 ```js
-javascript:void(window.open(&#34;&#34;,&#34;utagmon&#34;,&#34;width=700,height=600,location=0,menubar=0,status=1,toolbar=0,
-resizable=1,scrollbars=1&#34;).document.write(&#34;&lt;script language=&#39;JavaScript&#39; id=&#39;utagmon&#39;
-src=&#39;//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?
-opt_show_enrich=0&amp;opt_show_meta=0&amp;opt_show_tiq=1&amp;opt_show_dom=0&amp;opt_show_jspage=0&amp;opt_show_cookie=0&amp;_cb=&#34;
-&#43;Math.random() &#43;&#34;&#39;&gt;&lt;/&#34;&#43;&#34;script&gt;&#34;))
+javascript:void(window.open("","utagmon","width=700,height=600,location=0,menubar=0,status=1,toolbar=0,
+resizable=1,scrollbars=1").document.write("<script language='JavaScript' id='utagmon'
+src='//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?
+opt_show_enrich=0&opt_show_meta=0&opt_show_tiq=1&opt_show_dom=0&opt_show_jspage=0&opt_show_cookie=0&_cb="
++Math.random() +"'></"+"script>"))
 ```
 
 ## Use UTAG Debugger
@@ -54,7 +54,7 @@ To launch UTAG Debugger, follow these steps:
 1. Navigate to your site.
 1. For Tealium Tools, open Tealium Tools and click **UTag Debugger**. 
 1. For the bookmarklet, click the bookmark in your browser toolbar.
-    ![](/images/iq-tag-management/utag-debugger-bookmarklet.png) 
+    ![](https://docs.tealium.com/images/iq-tag-management/utag-debugger-bookmarklet.png) 
 
 ### Version and display options
 
@@ -63,14 +63,18 @@ When UTAG Debugger is open, the top section displays the `utag.js` file detected
 * The `account/profile/environment` of the `utag.js` file on the page.
 * The version of the `utag.js` file on the page.
 
-![](/images/iq-tag-management/utag-debugger-options.png)
+![](https://docs.tealium.com/images/iq-tag-management/utag-debugger-options.png)
 
 Use the following features:
 
-* **Bookmarklet** – Save your preferred display options by dragging the link to your browser&#39;s toolbar.
+* **Bookmarklet** – Save your preferred display options by dragging the link to your browser's toolbar.
 * **Events** – The tracking events detected on the page are either `view` events or `link` events. Toggle these checkboxes to filter the display.
 * **Scope** - Select the scope of the UDO data to display. The default is **Before load rules**.
-    The UDO variables displayed in the tool are captured after extensions scoped to **All Tags - Before Load Rules** and after extensions scoped to **All Tags - After Load Rules**. Learn more about [order of operations]().
+    
+<blockquote>
+The UDO variables displayed in the tool are captured after extensions scoped to **All Tags - Before Load Rules** and after extensions scoped to **All Tags - After Load Rules**. Learn more about [order of operations](https://docs.tealium.com/order-of-operations/).
+</blockquote>
+
 * **Show Data** – Select the variable types to display. The UDO variables are always displayed.
 
 
@@ -87,7 +91,7 @@ The following variable types are available:
 * **Local storage** – Local storage variables defined in your data layer.
 * **Session storage** – Session storage variables defined in your data layer.
 
-For more information, see [Data layer variable types]().
+For more information, see [Data layer variable types](https://docs.tealium.com/data-layer-variables/).
 
 ### Events
 
@@ -95,4 +99,4 @@ The data display area automatically updates as you navigate or trigger events. N
 
 The following example shows two pages visited and one event triggered. The result is two `utag_view` entries and one `utag_link` entry. The most recent activity always appears at the top.
 
-![](/images/iq-tag-management/utagmon-event-display.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/utagmon-event-display.jpg)

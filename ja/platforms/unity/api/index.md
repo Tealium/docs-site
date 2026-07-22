@@ -38,17 +38,17 @@ TealiumUnityPlugin.AddRemoteCommand(id, callback);
 
 | パラメータ | タイプ             | 説明                                                                                                                                                     | 例          |
 |:-----------|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
-| `id`       | `string`         | タグの設定からのコマンドIDの名前。                                                                                                              | `&#34;test_command&#34;` |
-| `callback` | `Action&lt;string&gt;` | リモートコマンドからのレスポンスを受け取った後に実行するコールバック関数。コールバックは、タグマッピングからのキーバリューペアのペイロードを返します。 | (例を参照)    |
+| `id`       | `string`         | タグの設定からのコマンドIDの名前。                                                                                                              | `"test_command"` |
+| `callback` | `Action<string>` | リモートコマンドからのレスポンスを受け取った後に実行するコールバック関数。コールバックは、タグマッピングからのキーバリューペアのペイロードを返します。 | (例を参照)    |
 
 例:
 
 ```swift
-TealiumUnityPlugin.AddRemoteCommand(&#34;firebase&#34;, (payload) =&gt; {
+TealiumUnityPlugin.AddRemoteCommand("firebase", (payload) => {
 
-  string? eventName = (string)payload[&#34;firebase_event_name&#34;];
-  Dictionary&lt;string, object&gt;? eventProperties =
-      (Dictionary&lt;string, object&gt;)payload[&#34;firebase_event_properties&#34;];
+  string? eventName = (string)payload["firebase_event_name"];
+  Dictionary<string, object>? eventProperties =
+      (Dictionary<string, object>)payload["firebase_event_properties"];
 
   if (eventName != null) {
     analytics().logEvent(eventName, eventProperties);
@@ -66,7 +66,7 @@ TealiumUnityPlugin.AddToDataLayer(data, expiry);
 
 | パラメータ | タイプ                         | 説明                                                                                                    | 例                                             |
 |:-----------|:-----------------------------|:-------------------------------------------------------------------------------------------------------|:------------------------------------------------|
-| `data`     | `Dictionary&lt;string, object&gt;` | キーが文字列で値が文字列または文字列の配列であるJSONオブジェクト。                                          | `new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}}` |
+| `data`     | `Dictionary<string, object>` | キーが文字列で値が文字列または文字列の配列であるJSONオブジェクト。                                          | `new Dictionary<string, object> {{"KEY", "VALUE"}}` |
 | `expiry`   | [`Expiry`](#expiry)          | データを永続化する期間。                                                                                  | `Expiry.Forever`                                    |
 
 ### `Collectors`
@@ -138,7 +138,11 @@ ConsentPolicy.GDPR
 | `RemoteCommands` | `Dispatchers.RemoteCommands` |
 | `TagManagement`  | `Dispatchers.TagManagement`  |
 
+
+<blockquote>
 少なくとも1つのディスパッチャが必要です。ディスパッチャが指定されていない場合、データはデータレイヤーに送信されません。
+</blockquote>
+
 
 ### `Expiry`
 
@@ -170,10 +174,10 @@ Tealium.GatherTrackData(callback);
 例:
 
 ```javascript
-Tealium.GatherTrackData(callback =&gt; {
+Tealium.GatherTrackData(callback => {
   string? serializedPayload = JsonConvert.SerializeObject(callback);
   if (serializedPayload != null) {
-      TealiumLogger.Log($&#34;Track Data: {serializedPayload}&#34;);
+      TealiumLogger.Log($"Track Data: {serializedPayload}");
   }
 });
 ```
@@ -195,7 +199,7 @@ TealiumUnityPlugin.GetFromDataLayer(key);
 
 ```bash
 string? stringValue =
-    (string)TealiumUnityPlugin.GetFromDataLayer(&#34;test_string&#34;);
+    (string)TealiumUnityPlugin.GetFromDataLayer("test_string");
 ```
 
 ### `GetConsentCategories()`
@@ -208,14 +212,14 @@ TealiumUnityPlugin.GetConsentCategories();
 
 | 戻り値のタイプ               | 説明                                                     |
 |:--------------------------|:----------------------------------------------------------------|
-| `List&lt;ConsentCategories&gt;` | ユーザーが同意した `ConsentCategories` のリスト。 |
+| `List<ConsentCategories>` | ユーザーが同意した `ConsentCategories` のリスト。 |
 
 例:
 
 ```javascript
-List&lt;string&gt; caetgories = TealiumUnityPlugin.GetConsentCategories();
-TealiumLogger.Log(&#34;Consent Categories: &#34;);
-caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value &#43; &#34; &#34;));
+List<string> caetgories = TealiumUnityPlugin.GetConsentCategories();
+TealiumLogger.Log("Consent Categories: ");
+caetgories.ForEach(category => TealiumLogger.Log(category.Value + " "));
 ```
 
 
@@ -234,8 +238,8 @@ TealiumUnityPlugin.GetConsentStatus();
 例:
 
 ```javascript
-TealiumLogger.Log(&#34;Consent Status: &#34;
-    &#43; TealiumUnityPlugin.GetConsentStatus().Value);
+TealiumLogger.Log("Consent Status: "
+    + TealiumUnityPlugin.GetConsentStatus().Value);
 ```
 
 ### `GetVisitorId()`
@@ -253,12 +257,12 @@ TealiumUnityPlugin.GetVisitorId()
 例:
 
 ```javascript
-TealiumLogger.Log(&#34;Visitor Id: &#34; &#43; TealiumUnityPlugin.GetVisitorId())
+TealiumLogger.Log("Visitor Id: " + TealiumUnityPlugin.GetVisitorId())
 ```
 
 ### `Initialize()`
 
-他のメソッドを呼び出す前にTealiumを初期化します。オプションで、Tealiumの初期化が完了した後に実行される `Action&lt;bool&gt;` コールバックを渡すこともできます。
+他のメソッドを呼び出す前にTealiumを初期化します。オプションで、Tealiumの初期化が完了した後に実行される `Action<bool>` コールバックを渡すこともできます。
 
 ```javascript
 TealiumUnityPlugin.Initialize(config, callback);
@@ -267,21 +271,21 @@ TealiumUnityPlugin.Initialize(config, callback);
 | パラメータ | タイプ                                    | 説明                                                                                  |
 |:-----------|:----------------------------------------|:-------------------------------------------------------------------------------------|
 | `config`   | [`TealiumConfig`](#class-tealiumconfig) | Tealiumの設定パラメータ。                                                            |
-| `callback` | `Action&lt;bool&gt;`                          | Tealiumの初期化が成功した場合は `true` 、エラーが発生した場合は `false` を返します。 |
+| `callback` | `Action<bool>`                          | Tealiumの初期化が成功した場合は `true` 、エラーが発生した場合は `false` を返します。 |
 
 
 例:
 
 ```javascript
 private TealiumConfig config =
-      new TealiumConfig(&#34;tealiummobile&#34;,
-      &#34;demo&#34;,
+      new TealiumConfig("tealiummobile",
+      "demo",
       TealiumEnvironment.DEV,
-      new List&lt;Dispatchers&gt; {
+      new List<Dispatchers> {
         Dispatchers.TagManagement,
         Dispatchers.Collect,
         Dispatchers.RemoteCommands },
-      new List&lt;Collectors&gt; {
+      new List<Collectors> {
         Collectors.AppData,
         Collectors.DeviceData,
         Collectors.Lifecycle,
@@ -289,21 +293,21 @@ private TealiumConfig config =
       consentPolicy: ConsentPolicy.GDPR,
       consentExpiry: new ConsentExpiry(10, TimeUnit.Minutes));
 
-TealiumUnityPlugin.Initialize(config, success =&gt; {
+TealiumUnityPlugin.Initialize(config, success => {
     if (success) {
-        TealiumLogger.Log(&#34;TealiumUnityPlugin Initialized&#34;);
+        TealiumLogger.Log("TealiumUnityPlugin Initialized");
         TealiumUnityPlugin.SetConsentStatus(ConsentStatus.Consented);
-        TealiumUnityPlugin.SetConsentExpiryListener(() =&gt;
-            TealiumLogger.Log(&#34;Consent Expired!!&#34;));
+        TealiumUnityPlugin.SetConsentExpiryListener(() =>
+            TealiumLogger.Log("Consent Expired!!"));
     } else {
-        TealiumLogger.Log(&#34;TealiumUnityPlugin Failed to Initialize&#34;);
+        TealiumLogger.Log("TealiumUnityPlugin Failed to Initialize");
     }
 });
 ```
 
 ### `JoinTrace()()`
 
-指定されたIDでトレースに参加します。Tealium Customer Data Hubの[トレース]()機能について詳しくは、ドキュメントを参照してください。
+指定されたIDでトレースに参加します。Tealium Customer Data Hubの[トレース](https://docs.tealium.com/manage-traces/)機能について詳しくは、ドキュメントを参照してください。
 
 ```javascript
 TealiumUnityPlugin.JoinTrace(id);
@@ -348,12 +352,12 @@ TealiumUnityPlugin.setConsentCategories(categories);
 
 | パラメータ   | タイプ                      | 説明                                        | 例                                                |
 |:-------------|:--------------------------|:-------------------------------------------|:---------------------------------------------------|
-| `categories` | `List&lt;ConsentCategories&gt;` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `List<ConsentCategories>` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 例:
 
 ```javascript
-TealiumUnityPlugin.SetConsentCategories(new List&lt;ConsentCategories&gt;(){ConsentCategories.Analytics, ConsentCategories.Email});
+TealiumUnityPlugin.SetConsentCategories(new List<ConsentCategories>(){ConsentCategories.Analytics, ConsentCategories.Email});
 ```
 
 #### ConsentCategories
@@ -392,7 +396,7 @@ TealiumUnityPlugin.SetConsentExpiryListener(callback);
 
 ```javascript
 TealiumUnityPlugin.SetConsentExpiryListener(()
-    =&gt; TealiumLogger.Log(&#34;Consent Expired!!&#34;));
+    => TealiumLogger.Log("Consent Expired!!"));
 ```
 
 ### `SetConsentStatus()`
@@ -425,7 +429,7 @@ TealiumUnityPlugin.SetConsentStatus(ConsentStatus.Consented);
 
 訪問者プロファイルが更新された後に実行するコールバックを定義します。更新された [`VisitorProfile`](#visitorprofile) はコールバック応答で提供されます。
 
-VisitorServiceモジュールは、Tealium Customer Data Hubの[データレイヤーエンリッチメント]()機能を実装しています。
+VisitorServiceモジュールは、Tealium Customer Data Hubの[データレイヤーエンリッチメント](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
 
 このモジュールの使用は、Tealium AudienceStreamのライセンスを受けており、モバイルアプリケーションでユーザーエクスペリエンスを向上させるために訪問者プロファイルを使用したい場合に推奨されます。AudienceStreamのライセンスを受けていない場合、このモジュールの使用は推奨されません。
 
@@ -435,12 +439,12 @@ TealiumUnityPlugin.setVisitorServiceListener(callback);
 
 | パラメータ | タイプ                                 | 説明                                                    |
 |:-----------|:-------------------------------------|:-------------------------------------------------------|
-| `callback` | `Action&lt;Dictionary&lt;string, object&gt;&gt;` | 更新された訪問者プロファイルが返される後に実行するコード。 |
+| `callback` | `Action<Dictionary<string, object>>` | 更新された訪問者プロファイルが返される後に実行するコード。 |
 
 例:
 
 ```javascript
-TealiumUnityPlugin.setVisitorServiceListener((profile) =&gt; {
+TealiumUnityPlugin.setVisitorServiceListener((profile) => {
   string? serializedProfile = JsonConvert.SerializeObject(profile);
   if (serializedProfile != null) {
       TealiumLogger.Log(serializedProfile);
@@ -458,7 +462,7 @@ TealiumUnityPlugin.RemoveFromDataLayer(keys);
 
 | パラメータ | タイプ           | 説明         | 例                            |
 |:-----------|:---------------|:------------|:-------------------------------|
-| `keys`     | `List&lt;string&gt;` | キーの名前の配列。 | `new List&lt;string&gt;(){&#34;foo&#34;, &#34;bar&#34;}` |
+| `keys`     | `List<string>` | キーの名前の配列。 | `new List<string>(){"foo", "bar"}` |
 
 ### `RemoveRemoteCommand()`
 
@@ -475,7 +479,7 @@ TealiumUnityPlugin.RemoveRemoteCommand(id);
 例:
 
 ```javascript
-TealiumUnityPlugin.RemoveRemoteCommand(&#34;firebase&#34;);
+TealiumUnityPlugin.RemoveRemoteCommand("firebase");
 ```
 
 
@@ -489,19 +493,19 @@ TealiumUnityPlugin.Track(dispatch);
 
 | パラメータ | タイプ                                            | 説明                                          | 例                        |
 |:-----------|:------------------------------------------------|:---------------------------------------------|:---------------------------|
-| `dispatch` | [`TealiumDispatch`](#interface-tealiumdispatch) | イベント名とデータレイヤーを持つTealiumディスパッチ。 | `TealiumEvent(&#34;button_click&#34;)` |
+| `dispatch` | [`TealiumDispatch`](#interface-tealiumdispatch) | イベント名とデータレイヤーを持つTealiumディスパッチ。 | `TealiumEvent("button_click")` |
 
 ゲームイベントをトラックするには、[`TealiumEvent`](#class-tealiumevent) オブジェクトを作成し、`track()` メソッドに渡します:
 
 ```javascript
-TealiumEvent event = TealiumEvent(&#39;GAME_EVENT_NAME&#39;, new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}});
+TealiumEvent event = TealiumEvent('GAME_EVENT_NAME', new Dictionary<string, object> {{"KEY", "VALUE"}});
 TealiumUnityPlugin.Track(event);
 ```
 
 ゲーム画面ビューをトラックするには、[`TealiumView`](#class-tealiumview) オブジェクトを作成し、`track()` メソッドに渡します:  
 
 ```javascript
-TealiumView view = new TealiumView(&#34;VIEW_NAME&#34;, new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}})
+TealiumView view = new TealiumView("VIEW_NAME", new Dictionary<string, object> {{"KEY", "VALUE"}})
 TealiumUnityPlugin.Track(view);
 ```
 
@@ -521,19 +525,19 @@ TealiumUnityPlugin.Terminate();
 
 | パラメータ         | プロパティ                                                                                                       | 値                                                                                                                             |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
-| `arraysOfBooleans` | id: `string`, value: `bool`                                                                                      | id: &#34;5129&#34; value: [true,false,true,true]                                                                                         |
-| `arraysOfNumbers`  | id: `string`, value: `double[]`                                                                                  | `id: &#34;57&#34;, value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
-| `arraysOfStrings`  | id: `string`, value: `string[]`                                                                                  | `id: &#34;5213&#34;, value: [&#34;green shirts&#34;, &#34;green shirts&#34;, &#34;blue shirts&#34;]`                                                              |
-| `audiences`        | id: string, value: string                                                                                        | `id: &#34;tealiummobile\_demo\_103&#34;, value: &#34;iOS Users&#34;`                                                                              |
-| `badges`           | id: `string`, value: `bool`                                                                                      | `id: &#34;2815&#34;, value: true`                                                                                                         |
-| `booleans`         | id: `string`, value: `bool`                                                                                      | `id: &#34;4868&#34;, value: true`                                                                                                         |
-| `currentVisit`     | 現在の訪問者プロファイルのすべての属性。現在の訪問プロファイルには、AudiencesまたはBadgesは含まれません。 | `TealiumCurrentVisitProfile(dates: [&#34;5376&#34;: 1567536668080, &#34;10&#34;: 1567536668000], booleans: [&#34;4530&#34;: true], numbers: [&#34;32&#34;: 3.8])` |
-| `dates`            | id: `string`, value: `int`                                                                                       | `id: &#34;22&#34;, value: 1567120112000`                                                                                                  |
-| `numbers`          | id: `string`, value: `double`                                                                                    | `id: &#34;5728&#34;, value: 4.82125`                                                                                                      |
-| `setOfStrings`     | id: `string`, value: `string[]`                                                                                  | `id: &#34;5211&#34;, value: [&#34;green shirts&#34;, &#34;red shirts&#34;, &#34;blue shirts&#34;]`                                                                |
-| `string`           | id: `string`, value: `string`                                                                                    | `id: &#34;5380&#34;, value: &#34;green shirts&#34;`                                                                                               |
-| `tallies`          | id: `string`, value: `Dictionary&lt;string, float&gt;`                                                                 | `&#34;57&#34;: [[&#34;category 1&#34;: 2.0], &#34;category 2&#34;: 1.0]]`                                                                                 |
-| `tallyValue`       | id: `string`, value: `float`                                                                                     | `[&#34;category 1&#34;: 2.0]`                                                                                                             |
+| `arraysOfBooleans` | id: `string`, value: `bool`                                                                                      | id: "5129" value: [true,false,true,true]                                                                                         |
+| `arraysOfNumbers`  | id: `string`, value: `double[]`                                                                                  | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
+| `arraysOfStrings`  | id: `string`, value: `string[]`                                                                                  | `id: "5213", value: ["green shirts", "green shirts", "blue shirts"]`                                                              |
+| `audiences`        | id: string, value: string                                                                                        | `id: "tealiummobile\_demo\_103", value: "iOS Users"`                                                                              |
+| `badges`           | id: `string`, value: `bool`                                                                                      | `id: "2815", value: true`                                                                                                         |
+| `booleans`         | id: `string`, value: `bool`                                                                                      | `id: "4868", value: true`                                                                                                         |
+| `currentVisit`     | 現在の訪問者プロファイルのすべての属性。現在の訪問プロファイルには、AudiencesまたはBadgesは含まれません。 | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
+| `dates`            | id: `string`, value: `int`                                                                                       | `id: "22", value: 1567120112000`                                                                                                  |
+| `numbers`          | id: `string`, value: `double`                                                                                    | `id: "5728", value: 4.82125`                                                                                                      |
+| `setOfStrings`     | id: `string`, value: `string[]`                                                                                  | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`                                                                |
+| `string`           | id: `string`, value: `string`                                                                                    | `id: "5380", value: "green shirts"`                                                                                               |
+| `tallies`          | id: `string`, value: `Dictionary<string, float>`                                                                 | `"57": [["category 1": 2.0], "category 2": 1.0]]`                                                                                 |
+| `tallyValue`       | id: `string`, value: `float`                                                                                     | `["category 1": 2.0]`                                                                                                             |
 
 ## クラス: `TealiumConfig`
 
@@ -545,8 +549,8 @@ TealiumUnityPlugin.Terminate();
 | `profile`                      | `string`                                          | (必須) Tealiumプロファイル名。                                                                                                                                                                                                                             | `main`                                       |
 | `environment`                  | [`TealiumEnvironment`](#class-tealiumenvironment) | (必須) Tealium環境名。                                                                                                                                                                                                                         | `TealiumEnvironment.Dev`                     |
 | `dataSource`                   | `string`                                          | CDHデータソースキー。                                                                                                                                                                                                                                         | `abc123`                                     |
-| `collectors`                   | `List&lt;Collectors&gt;`                                | (必須) Tealiumライブラリを初期化するための [`Collectors`](#collectors) のリストを設定します。                                                                                                                                                              | `new List&lt;Collectors&gt;(){Collectors.AppData}` |
-| `dispatchers`                  | `List&lt;Dispatchers&gt;`                               | (必須) Tealiumライブラリを初期化するための [`Dispatchers`](#dispatchers) のリストを設定します。                                                                                                                                                            | `new List&lt;Collectors&gt;(){Dispatchers.Collec}` |
+| `collectors`                   | `List<Collectors>`                                | (必須) Tealiumライブラリを初期化するための [`Collectors`](#collectors) のリストを設定します。                                                                                                                                                              | `new List<Collectors>(){Collectors.AppData}` |
+| `dispatchers`                  | `List<Dispatchers>`                               | (必須) Tealiumライブラリを初期化するための [`Dispatchers`](#dispatchers) のリストを設定します。                                                                                                                                                            | `new List<Collectors>(){Dispatchers.Collec}` |
 | `customVisitorId`              | `string`                                          | カスタムの訪問者IDを設定します。                                                                                                                                                                                                                                    | `ALK2398LSDKJ3289SLKJ3298SLKJ3`              |
 | `memoryReportingEnabled`       | `bool`                                            | デバイスデータモジュールでメモリレポートを有効または無効にします（デフォルト：無効）。                                                                                                                                                                           | `true`                                       |
 | `overrideCollectURL`           | `string`                                          | Tealium Collect URLを別のエンドポイントに送信するためにオーバーライドします。イベントバッチング機能を使用している場合は、`overrideCollectBatchURL` プロパティもオーバーライドしてください。                                                                                           | `https://custom-domain.com/event`            |
@@ -556,14 +560,14 @@ TealiumUnityPlugin.Terminate();
 | `overrideLibrarySettingsURL`   | `string`                                          | パブリッシュ設定URLをオーバーライドします。                                                                                                                                                                                                                          | `https://custom-domain.com/mobile.html`      |
 | `overrideTagManagementURL`     | `string`                                          | タグ管理モジュールで使用されるデフォルトのURLをオーバーライドします。Tealium JavaScriptファイルを自己ホストしている場合に必要です。                                                                                                                           | `https://custom-domain.com/path/env/utag.js` |
 | `deepLinkTrackingEnabled`      | `bool`                                            | Facebookやその他のソースからアプリへのリンクなど、標準のディープリンクの自動トラッキングを有効または無効にします（デフォルト：有効）。                                                                                                          | `false`                                      |
-| `qrTraceEnabled`               | `bool`                                            | [QRトレース](/ja/platforms/getting-started-mobile/trace/#how-it-works)を有効または無効にします（デフォルト：有効）                                                                                                                                                            | `false`                                      |
+| `qrTraceEnabled`               | `bool`                                            | [QRトレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#how-it-works)を有効または無効にします（デフォルト：有効）                                                                                                                                                            | `false`                                      |
 | `loglevel`                     | [`LogLevel`](#loglevel)                           | ログレベルプロパティを設定します。ログに記録される情報の量を制御します（デフォルト：silent）。                                                                                                                                                                | `LogLevel.dev`                               |
 | `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)                 | ユーザーの同意設定の有効期限を設定します（デフォルトはポリシーに依存します）。                                                                                                                                                                      | `ConsentExpiry(90, TimeUnit.days)`           |
-| `consentLoggingEnabled`        | `bool`                                            | 同意の変更イベントをTealium Customer Data Hubに送信して監査目的でログに記録する[同意ログ]()機能を有効または無効にします（デフォルト：有効）    | `true`                                       |
+| `consentLoggingEnabled`        | `bool`                                            | 同意の変更イベントをTealium Customer Data Hubに送信して監査目的でログに記録する[同意ログ](https://docs.tealium.com/consent-change-event-specifications/)機能を有効または無効にします（デフォルト：有効）    | `true`                                       |
 | `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)                 | CCPAまたはGDPRのいずれかの同意ポリシーを設定します。このプロパティが設定されている場合にのみ同意マネージャが有効になります。                                                                                                                                                     | `ConsentPolicy.GDPR`                         |
 | `lifecycleAutotrackingEnabled` | `bool`                                            | ライフサイクルの自動トラッキングを有効または無効にします（デフォルト：有効）。                                                                                                                                                                                              | `false`                                      |
-| `useRemoteLibrarySettings`     | `bool`                                            | [モバイルパブリッシュ設定]()を有効または無効にします（デフォルト：有効）。Tealium Tag Managementでモバイルパブリッシュ設定を構成するか、機能を無効にします。 | `false`                                      |
-| `visitorServiceEnabled`        | `bool`                                            | [データレイヤーエンリッチメントAPI]()を使用して訪問者プロファイルを自動的に取得する機能を有効または無効にします（デフォルト：無効）。                                | `true`                                       |
+| `useRemoteLibrarySettings`     | `bool`                                            | [モバイルパブリッシュ設定](https://docs.tealium.com/creating-a-mobile-profile/)を有効または無効にします（デフォルト：有効）。Tealium Tag Managementでモバイルパブリッシュ設定を構成するか、機能を無効にします。 | `false`                                      |
+| `visitorServiceEnabled`        | `bool`                                            | [データレイヤーエンリッチメントAPI](https://docs.tealium.com/data-layer-enrichment-api/)を使用して訪問者プロファイルを自動的に取得する機能を有効または無効にします（デフォルト：無効）。                                | `true`                                       |
 | `sessionCountingEnabled`       | `Boolean`                                   | Tealium iQアカウントのセッションカウントを有効または無効にします。Tealium JavaScriptファイルを自己ホストしている場合は、これを `false` に設定します（デフォルト：有効）                                                                                                            | `false`                                                                                                        |
 
 
@@ -601,13 +605,13 @@ TealiumEvent(viewName, dataLayer)
 | パラメータ  | タイプ                         | 説明                                | 例                                                                                           |
 |:------------|:-----------------------------|:-----------------------------------|:--------------------------------------------------------------------------------------------------|
 | `eventName` | `string`                     | ゲームイベントの名前。                        | `level_completed`                                                                                 |
-| `dataLayer` | `Dictionary&lt;string, object&gt;` | (オプション) イベントと一緒に送信するデータ。 | `new Dictionary&lt;string, object&gt; {{&#34;user_id&#34;, &#34;gamer123&#34;}, {&#34;level&#34;: 2}, {&#34;total_points&#34;: 17500}}` |
+| `dataLayer` | `Dictionary<string, object>` | (オプション) イベントと一緒に送信するデータ。 | `new Dictionary<string, object> {{"user_id", "gamer123"}, {"level": 2}, {"total_points": 17500}}` |
 
 例:
 
 ```javascript
-TealiumEvent event = TealiumEvent(&#39;EVENT_NAME&#39;,
-    new Dictionary&lt;string, object&gt; {{&#34;KEY&#34;, &#34;VALUE&#34;}});
+TealiumEvent event = TealiumEvent('EVENT_NAME',
+    new Dictionary<string, object> {{"KEY", "VALUE"}});
 TealiumUnityPlugin.Track(event);
 ```
 

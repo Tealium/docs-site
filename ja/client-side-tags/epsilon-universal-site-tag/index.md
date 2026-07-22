@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/epsilon-universal-site-tag/
 ---
 ## タグ構成
 
-タグマーケットプレイスに移動し、エプシロンサイトタグを追加します。タグの追加についての詳細は、を参照してください。
+タグマーケットプレイスに移動し、エプシロンサイトタグを追加します。タグの追加についての詳細は、[manage-tags](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加した後、以下の構成を行います：
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/epsilon-universal-site-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

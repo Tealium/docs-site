@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/twitter-campaigns-connec
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -34,16 +34,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/twitter-campaigns-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ラインアイテム|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;更新するラインアイテム。&lt;/li&gt;&lt;/ul&gt; |
-|広範囲キーワード|  &lt;ul&gt;&lt;li&gt;広範囲キーワード&lt;/li&gt;&lt;/ul&gt; |
-|正確なキーワード|  &lt;ul&gt;&lt;li&gt;正確なキーワード&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーのフォロワー|  &lt;ul&gt;&lt;li&gt;ユーザーのフォロワー&lt;/li&gt;&lt;/ul&gt; |
-|興味|  &lt;ul&gt;&lt;li&gt;興味&lt;/li&gt;&lt;/ul&gt; |
-|ネガティブな正確なキーワード|  &lt;ul&gt;&lt;li&gt;ネガティブな正確なキーワード&lt;/li&gt;&lt;/ul&gt; |
-|ネガティブキーワード|  &lt;ul&gt;&lt;li&gt;ネガティブキーワード&lt;/li&gt;&lt;/ul&gt; |
-|ネガティブフレーズキーワード|  &lt;ul&gt;&lt;li&gt;ネガティブフレーズキーワード&lt;/li&gt;&lt;/ul&gt; |
-|フレーズキーワード|  &lt;ul&gt;&lt;li&gt;フレーズキーワード&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーのフォロワーに似ている|  &lt;ul&gt;&lt;li&gt;ユーザーのフォロワーに似ている&lt;/li&gt;&lt;/ul&gt; |
+|ラインアイテム|  <ul><li>必須</li><li>更新するラインアイテム。</li></ul> |
+|広範囲キーワード|  <ul><li>広範囲キーワード</li></ul> |
+|正確なキーワード|  <ul><li>正確なキーワード</li></ul> |
+|ユーザーのフォロワー|  <ul><li>ユーザーのフォロワー</li></ul> |
+|興味|  <ul><li>興味</li></ul> |
+|ネガティブな正確なキーワード|  <ul><li>ネガティブな正確なキーワード</li></ul> |
+|ネガティブキーワード|  <ul><li>ネガティブキーワード</li></ul> |
+|ネガティブフレーズキーワード|  <ul><li>ネガティブフレーズキーワード</li></ul> |
+|フレーズキーワード|  <ul><li>フレーズキーワード</li></ul> |
+|ユーザーのフォロワーに似ている|  <ul><li>ユーザーのフォロワーに似ている</li></ul> |
 
 ### アクション - ラインアイテムからターゲティング基準を削除
 
@@ -51,5 +51,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/twitter-campaigns-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ラインアイテム|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;更新するラインアイテム。&lt;/li&gt;&lt;/ul&gt; |
-|ターゲティング基準|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;ラインアイテムから削除するターゲティング基準。&lt;/li&gt;&lt;/ul&gt; |
+|ラインアイテム|  <ul><li>必須。</li><li>更新するラインアイテム。</li></ul> |
+|ターゲティング基準|  <ul><li>必須。</li><li>ラインアイテムから削除するターゲティング基準。</li></ul> |

@@ -7,16 +7,16 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/create-f
 
 データ変換関数を作成するには、以下の手順に従ってください：
 
-1. **&#43; 関数を追加**をクリックします。
+1. **+ 関数を追加**をクリックします。
 1. 関数の名前を入力します。
 1. トリガーとして**データ変換**を選択し、**続行**をクリックします。
 1. **トリガー名**を入力します。
 1. **セレクター**にJSONPath式を入力します（[JSONPath](https://github.com/json-path/JsonPath)を参照）。例えば、`$.datasourceId` や `$.data.udo.tealium_event` です。セレクターは128文字に制限されます。
 1. **演算子**を選択し、**値**を入力します。
    **値**は128文字に制限されます。
-1. **&#43; 条件を追加**をクリックして追加の`AND`条件を追加します。
+1. **+ 条件を追加**をクリックして追加の`AND`条件を追加します。
    `AND`条件のブロックは10条件に制限されます。
-1. **&#43; OR**をクリックして`OR`条件のブロックを追加します。
+1. **+ OR**をクリックして`OR`条件のブロックを追加します。
    `OR`条件ブロックの数は`10`に制限されます。
 1. **続行**をクリックします。
    コメント付きの例示コードが表示されます。このコードを修正するか、自分の関数コードに置き換えることができます。
@@ -26,7 +26,11 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/create-f
 
 関数は保存して公開するまで保存されず、トリガーすることはできません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。
 
+
+<blockquote>
 データ変換関数を作成して保存して公開した後、変更が有効になるまで最大300秒かかることがあります。
+</blockquote>
+
 
 ### データ変換関数の条件の例
 
@@ -36,28 +40,28 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/create-f
 [
   [
     {
-      &#34;input&#34;: &#34;$.dataSourceId&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;aq68ur&#34;
+      "input": "$.dataSourceId",
+      "operator": "equals",
+      "filter": "aq68ur"
     },
     {
-      &#34;input&#34;: &#34;$.data.udo.campaign&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;cdfc5a72&#34;
+      "input": "$.data.udo.campaign",
+      "operator": "equals",
+      "filter": "cdfc5a72"
     },
     {
-      &#34;input&#34;: &#34;$.data.udo.product[?(@.category == \&#34;Personal Electronics\&#34;)]&#34;,
-      &#34;operator&#34;: &#34;is not empty&#34;
+      "input": "$.data.udo.product[?(@.category == \"Personal Electronics\")]",
+      "operator": "is not empty"
     },
     {
-      &#34;input&#34;: &#34;$.data.udo.order_total&#34;,
-      &#34;operator&#34;: &#34;greater than&#34;,
-      &#34;filter&#34;: &#34;1000&#34;
+      "input": "$.data.udo.order_total",
+      "operator": "greater than",
+      "filter": "1000"
     },
     {
-      &#34;input&#34;: &#34;$.data.udo.tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "$.data.udo.tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ] 
 ]
@@ -65,7 +69,7 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/create-f
 
 ## イベント、訪問、またはデータレコード関数を作成する
 
-1. **&#43; 関数を追加**をクリックします。
+1. **+ 関数を追加**をクリックします。
 1. 関数の名前を入力します。
 1. トリガーとして**処理済みイベント**、**処理済み訪問**、または**処理済みデータレコード**を選択し、**続行**をクリックします。
 1. 次のように関数を構成します：

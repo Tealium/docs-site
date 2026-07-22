@@ -20,7 +20,7 @@ Matomo（旧称Piwik）は、ダウンロード可能な無料（GPLライセン
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて]()を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -33,11 +33,11 @@ Matomo（旧称Piwik）は、ダウンロード可能な無料（GPLライセン
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -78,17 +78,17 @@ Matomo（旧称Piwik）は、ダウンロード可能な無料（GPLライセン
 
 | 変数 | 説明 |
 |:---------|:------------|
-| SKUのリスト (`product_sku`)&lt;br&gt;(`_csku`を上書き) | 文字列の配列 |
-| 名前のリスト (`product_name`)&lt;br&gt;(`_cprodname`を上書き)  | 文字列の配列 |
-| カテゴリのリスト (`item_category`)&lt;br&gt;(`_ccat`を上書き)  | 文字列/配列の配列 |
-| 価格のリスト (`product_unit_price`)&lt;br&gt;(`_cprice`を上書き)  | 数値の配列 |
-| 数量のリスト (`product_quantity`)&lt;br&gt;(`_cquan`を上書き)  | 数値の配列 |
+| SKUのリスト (`product_sku`)<br>(`_csku`を上書き) | 文字列の配列 |
+| 名前のリスト (`product_name`)<br>(`_cprodname`を上書き)  | 文字列の配列 |
+| カテゴリのリスト (`item_category`)<br>(`_ccat`を上書き)  | 文字列/配列の配列 |
+| 価格のリスト (`product_unit_price`)<br>(`_cprice`を上書き)  | 数値の配列 |
+| 数量のリスト (`product_quantity`)<br>(`_cquan`を上書き)  | 数値の配列 |
 | 注文割引 (`product_discount`)  | 数値またはブール値 |
-| 注文ID (`order_id`)&lt;br&gt;(`_corder`を上書き)  | 文字列 |
-| 注文小計 (`grand_total`)&lt;br&gt;(`_csubtotal`を上書き)  | 数値 |
-| 注文合計 (`order_total`)&lt;br&gt;(`_ctotal`を上書き)  | 数値 |
-| 税額 (`order_tax`)&lt;br&gt;(`_ctax`を上書き)  | 数値 |
-| 送料 (`order_shipping`)&lt;br&gt;(`_cship`を上書き)  | 数値 |
+| 注文ID (`order_id`)<br>(`_corder`を上書き)  | 文字列 |
+| 注文小計 (`grand_total`)<br>(`_csubtotal`を上書き)  | 数値 |
+| 注文合計 (`order_total`)<br>(`_ctotal`を上書き)  | 数値 |
+| 税額 (`order_tax`)<br>(`_ctax`を上書き)  | 数値 |
+| 送料 (`order_shipping`)<br>(`_cship`を上書き)  | 数値 |
 
 ### アクションディメンション
 
@@ -98,7 +98,7 @@ Matomo（旧称Piwik）は、ダウンロード可能な無料（GPLライセン
 | カスタムディメンション値 (`custom_dimension_value`)  | 文字列 |
 
 ### イベント
-イベントマッピングについての情報は、[イベントマッピングの追加]()を参照してください。
+イベントマッピングについての情報は、[イベントマッピングの追加](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -115,7 +115,7 @@ Matomo（旧称Piwik）は、ダウンロード可能な無料（GPLライセン
 | カスタムディメンション削除 | `deleteCustomDimension` |
 
 ### イベント固有のパラメータ
-イベントマッピングについての情報は、[イベントマッピングの追加]()を参照してください。
+イベントマッピングについての情報は、[イベントマッピングの追加](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|

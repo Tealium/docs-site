@@ -18,13 +18,13 @@ The Snap Pixel helps advertisers measure the cross-device impact of campaigns. A
   * List of Categories (`_ccat`)
   * List of Quantities (`_cquan`)
   * List of Prices (`_cprice`)
-* User Email and Phone Number are converted to SHA256 within the Snap Pixel SDK before being passed to Snap&#39;s server.
+* User Email and Phone Number are converted to SHA256 within the Snap Pixel SDK before being passed to Snap's server.
 * To make Snap Pixel Event IDs available as server-side attributes, set **Generate Event ID** to `true` and use the latest version of the Tealium Collect tag.
-* The event ID attribute names are in the format `snap_event_id_&lt;Event Name&gt;_&lt;Tag UID&gt;` (for example: `snap_event_id_PageView_512`).
+* The event ID attribute names are in the format `snap_event_id_<Event Name>_<Tag UID>` (for example: `snap_event_id_PageView_512`).
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -33,11 +33,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -92,7 +92,7 @@ To allow Snap to match the visitor, we recommend that you include an email or ph
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -131,14 +131,14 @@ To run dynamic ads, you will need to upload a product catalog or feed, and then 
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Type | Description |
 |:---------|:------------|:------------|
 | `currency`| String | ISO 4217 currency code  |
 | `description` | String | Description  |
-| `item_category` | String | Item category. Category ID must match the `item_group_id` field in the catalog that you upload. For example, `{&#39;item_category&#39;:Shoes&#39;,item_ids&#39;: [&#39;097man&#39;,16span&#39;]});`   |
-| `item_ids` | Array | Item IDs. Item IDs must match the `id` field in the catalog that you upload. For example, `{&#39;item_category&#39;:Shoes&#39;,item_ids&#39;: [&#39;097man&#39;,16span&#39;]});`   |
+| `item_category` | String | Item category. Category ID must match the `item_group_id` field in the catalog that you upload. For example, `{'item_category':Shoes',item_ids': ['097man',16span']});`   |
+| `item_ids` | Array | Item IDs. Item IDs must match the `id` field in the catalog that you upload. For example, `{'item_category':Shoes',item_ids': ['097man',16span']});`   |
 | `number_items` | Number | Number of items   |
 | `payment_info_available`| Boolean | Payment information available   |
 | `price` | Number | Price of the purchase |

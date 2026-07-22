@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -39,7 +39,7 @@ The following section lists the supported parameters for each action.
 
 ### Unitary message execution (Batched)
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 20
 * Max time since oldest request: 5 minutes
@@ -63,8 +63,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Email Address | The recipient email address, which is also the external user ID. |
 | Mobile Phone Number | The recipient mobile phone number for SMS text messages. |
 | Profile | The profile data used for dynamic variable substitution in message content. |
-| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;br&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;br&gt;Nested template variables are typically built from data layer list attributes.|
-| Templates | Provide templates to be referenced in Body Parameters.For more information, see .&lt;br&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br>Name nested template variables with the dot notation. For example: `items.name`.<br>Nested template variables are typically built from data layer list attributes.|
+| Templates | Provide templates to be referenced in Body Parameters.For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
 
 ### Unitary message execution (Real-time)
 
@@ -86,5 +86,5 @@ This action uses batched requests to support high-volume data transfers to the v
 | Email Address | The recipient email address, which is also the external user ID. |
 | Mobile Phone Number | The recipient mobile phone number for SMS text messages. |
 | Profile | The profile data used for dynamic variable substitution in message content. |
-| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;br&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;br&gt;Nested template variables are typically built from data layer list attributes.|
-| Templates | Provide templates to be referenced in Body Parameters. For more information, see .&lt;br&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+| Template Variables | Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br>Name nested template variables with the dot notation. For example: `items.name`.<br>Nested template variables are typically built from data layer list attributes.|
+| Templates | Provide templates to be referenced in Body Parameters. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|

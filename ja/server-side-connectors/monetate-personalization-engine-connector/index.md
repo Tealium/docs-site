@@ -6,18 +6,18 @@ url: https://docs.tealium.com/ja/server-side-connectors/monetate-personalization
 ## 必要条件
 
 * Monetate アカウント
-* API ユーザー名 &amp; API キー
+* API ユーザー名 & API キー
 * データスキーマ
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
-* **API ユーザー名**：（必須）アカウントの **構成 &gt; サイト &gt; API キー** の下にある API ユーザー名を入力します。
+* **API ユーザー名**：（必須）アカウントの **構成 > サイト > API キー** の下にある API ユーザー名を入力します。
 * **プライベートキー**：（必須）アカウントに登録されている公開キーに対応するプライベートキーを提供します。プライベートキーは RSA アルゴリズムで生成され、PEM PKCS #8 形式に変換されている必要があります。詳細については、[Monetate: API キーの概要](https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview) および [API キーの生成](#generate-api-keys) を参照してください。
-* **クライアント ID**：（必須）アカウントの **構成 &gt; API ドキュメント &gt; Monetate データ API &gt; ベース URL** の下にあるクライアント ID を提供します。例えば、URL が `https://api.monetate.net/api/data/v1/abc/production/` の場合、クライアント ID は `abc` です。
+* **クライアント ID**：（必須）アカウントの **構成 > API ドキュメント > Monetate データ API > ベース URL** の下にあるクライアント ID を提供します。例えば、URL が `https://api.monetate.net/api/data/v1/abc/production/` の場合、クライアント ID は `abc` です。
 
 **接続テスト** をクリックして、提供された認証情報で API 接続性を確認します。
 
@@ -57,7 +57,11 @@ openssl rsa -in my_key.pem -pubout -outform PEM -out my_public_key.pem
 |スキーマ |（必須）レコードを作成または更新するスキーマを選択します。 |
 |データレコード |（必須）属性をデータレコードのフィールドにマッピングします。スキーマ内に主キーフィールド値が既に存在するレコードがある場合、データは更新されます。`event`タイプのスキーマでは、`event time`タイプのフィールドが必要です。明示的にマッピングされていない場合、フィールド値はデフォルトで現在時刻になります。日付属性は ISO 8601 形式に変換されます：`YYYY-MM-DDThh:mm:ss`。 |
 
+
+<blockquote>
 詳細については、[エンジン API: データの送信](https://knowledge.monetate.com/hc/en-us/articles/115005090746)を参照してください。
+</blockquote>
+
 
 ### データレコードの作成または更新（バッチ処理）
 

@@ -11,9 +11,9 @@ Salesforceが顧客フィールド`customerStatusTypeID`をキャプチャする
 
 ```json
 {
-  tealium_event   : &#34;offline_account_update&#34;,
-  customer_id     : &#34;123456&#34;,
-  customer_status : &#34;Active&#34;
+  tealium_event   : "offline_account_update",
+  customer_id     : "123456",
+  customer_status : "Active"
 }
 ```
 

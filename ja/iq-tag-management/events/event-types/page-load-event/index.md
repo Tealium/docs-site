@@ -3,7 +3,11 @@ title: ページロードイベント
 description: ページロードイベントは、訪問がページをロードするときにトラッキングデータを送信します。
 url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-load-event/
 ---
- ページロードイベントリスナーは、廃止された[ページビューイベントリスナー]()を置き換えます。 
+
+<blockquote>
+ページロードイベントリスナーは、廃止された[ページビューイベントリスナー](https://docs.tealium.com/page-view-event/)を置き換えます。
+</blockquote>
+
 
 ## 要件
 
@@ -13,7 +17,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-load-
 
 ページロードイベントは、訪問がページをロードするときにトラッキングします。訪問がアクションを実行すると、トラッキングコールがトリガーされます。
 
-イベントリスナーを追加する方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーを追加する方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ### ユースケース
 
@@ -36,7 +40,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-load-
 
 ### トリガー頻度
 
-トリガー頻度は、イベントトリガーがトラッキングコールを引き起こす回数を決定します。ページロードイベントリスナーの頻度は**一度**に構成されています。詳細については、[イベントトリガー]()を参照してください。
+トリガー頻度は、イベントトリガーがトラッキングコールを引き起こす回数を決定します。ページロードイベントリスナーの頻度は**一度**に構成されています。詳細については、[イベントトリガー](https://docs.tealium.com/event-triggers/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -46,15 +50,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-load-
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;page_view&#34;`| 訪問が指定したページをロードしました。|
+|`tealium_event="page_view"`| 訪問が指定したページをロードしました。|
 |`iq_event_id` | イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;page_view&#34;,
-   &#34;iq_event_id:&#34; : &#34;page_view_events_1&#34;
+   "tealium_event"  : "page_view",
+   "iq_event_id:" : "page_view_events_1"
 }
 
 ```

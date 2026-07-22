@@ -3,7 +3,7 @@ title: PulsePoint NPI List Connector Setup Guide
 description: This article describes how to set up the PulsePoint NPI List connector.
 url: https://docs.tealium.com/server-side-connectors/pulsepoint-npi-list-connector/
 ---
-This integration connects you to Life by PulsePoint. Life is a DSP focused on healthcare advertising and lets you plan, activate, and analyze digital healthcare ad campaigns aimed at HCPs across endemic and non-endemic publishers. Our PulsePoint NPI List Connector provides you direct access and complete control to Life’s NPI List, creating a seamless integration to our [Tealium for Pharma CDP](/industries/tealium-for-pharma/).
+This integration connects you to Life by PulsePoint. Life is a DSP focused on healthcare advertising and lets you plan, activate, and analyze digital healthcare ad campaigns aimed at HCPs across endemic and non-endemic publishers. Our PulsePoint NPI List Connector provides you direct access and complete control to Life’s NPI List, creating a seamless integration to our [Tealium for Pharma CDP](https://docs.tealium.com/industries/tealium-for-pharma/).
 
 ## API Information
 
@@ -23,7 +23,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 
 After adding the connector, configure the following settings:

@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 
 * **ANY EVENT**で`customer_email`に構成します。
 
-![](/images/guides/offline_purchases_string_email address.png)
+![](https://docs.tealium.com/images/guides/offline_purchases_string_email address.png)
 
 訪問が商品を閲覧したり、検索を行ったりしてサイトと再び関与するかどうかを追跡するために、次のエンリッチメントで`ユーザーアクション`という名前のブール値訪問属性を作成します：
 
@@ -51,33 +51,33 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 
 この属性に他のイベントを含めるように調整します。
 
-![](/images/guides/user_actions_attribute.png)
+![](https://docs.tealium.com/images/guides/user_actions_attribute.png)
 
-属性の追加についての詳細は、[AudienceStream属性の管理]()を参照してください。
+属性の追加についての詳細は、[AudienceStream属性の管理](https://docs.tealium.com/manage-as-attributes/)を参照してください。
 
 ## ステップ2 - データソースの構成
 
 このステップでは、店舗の購入データへの接続を構成します。そのデータを収集して処理する方法はいくつかあります：
 
-* [Data Connect]()は、SaaSアプリケーション、CRM、データウェアハウスからTealiumにリアルタイムでデータをインポートするためのデータワークフローを自動化、スケジュール構成、エンリッチメントします。
-* [HTTP-API Advanced]()データソースは、複雑なオブジェクトのフラット化やバッチイベントのサポートを備えた単一のHTTPコールでリアルタイムのイベントデータを収集するHTTPエンドポイントを提供します。
-* [File Import]()では、CSVファイルをTealiumにインポートでき、各行がイベントを表します。
+* [Data Connect](https://docs.tealium.com/about-data-connect/)は、SaaSアプリケーション、CRM、データウェアハウスからTealiumにリアルタイムでデータをインポートするためのデータワークフローを自動化、スケジュール構成、エンリッチメントします。
+* [HTTP-API Advanced](https://docs.tealium.com/http-api-advanced-incoming-webhook-setup-guide/)データソースは、複雑なオブジェクトのフラット化やバッチイベントのサポートを備えた単一のHTTPコールでリアルタイムのイベントデータを収集するHTTPエンドポイントを提供します。
+* [File Import](https://docs.tealium.com/about-file-import/)では、CSVファイルをTealiumにインポートでき、各行がイベントを表します。
 
 次の例では、除外リストに使用するオフラインデータを処理するためにファイルインポートを使用する方法を示します：
 
-* **サンプルファイルを作成する**: CSVサンプルファイルには、顧客IDやメールアドレスなど、顧客を特定するために必要な取引の詳細を含める必要があります。行1の列名は自動的に検出され、**Column Mappings**画面のエントリを事前構成するために使用されます。 ![](/images/guides/offline_purchasers_csv_file.png)
+* **サンプルファイルを作成する**: CSVサンプルファイルには、顧客IDやメールアドレスなど、顧客を特定するために必要な取引の詳細を含める必要があります。行1の列名は自動的に検出され、**Column Mappings**画面のエントリを事前構成するために使用されます。 ![](https://docs.tealium.com/images/guides/offline_purchasers_csv_file.png)
 * **ファイルをアップロードして確認する**: サンプルファイルをスクロールして、列とデータが正しいことを確認します。
-* **列をイベント属性にマッピングする**: CSVファイルの各行はイベントとして処理されます。マッピングされていない列は無視されます。CSVファイルに存在しないマッピングされた列はスキップされます。 ![](/images/guides/map_columns.png)
+* **列をイベント属性にマッピングする**: CSVファイルの各行はイベントとして処理されます。マッピングされていない列は無視されます。CSVファイルに存在しないマッピングされた列はスキップされます。 ![](https://docs.tealium.com/images/guides/map_columns.png)
 * **イベント仕様を選択する**: ファイルのデータに一致するように構成を確認するか、カスタムのイベント属性セットを作成します。
-* **訪問ID属性を特定してマッピングする**: 適切なイベント属性、例えばメールアドレスを訪問ID属性にマッピングします。 ![](/images/guides/visitor_id_mapping.png)
+* **訪問ID属性を特定してマッピングする**: 適切なイベント属性、例えばメールアドレスを訪問ID属性にマッピングします。 ![](https://docs.tealium.com/images/guides/visitor_id_mapping.png)
 
 後で使用するために**データソースキー**をコピーしてください。
 
-![](/images/guides/file_import_summary.png)
+![](https://docs.tealium.com/images/guides/file_import_summary.png)
 
 変更を保存/公開します。
 
-ファイルインポートの構成方法についての詳細は、[File Import]()を参照してください。
+ファイルインポートの構成方法についての詳細は、[File Import](https://docs.tealium.com/about-file-import/)を参照してください。
 
 ## ステップ3 - オフラインショッパーバッジを作成する
 
@@ -86,7 +86,7 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 * インポートプロファイルからのデータソースキーに(case insensitive)等しい場合、**ANY EVENT**でこのバッジを訪問に割り当てます
 * `User Actions`が`true`の場合、**VISIT ENDED**でこのバッジを訪問から削除します。
 
-![](/images/guides/offline_shopper_badge.png)
+![](https://docs.tealium.com/images/guides/offline_shopper_badge.png)
 
 ## ステップ4 - オフラインショッパーオーディエンスを作成する
 
@@ -95,7 +95,7 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 * `オフラインショッパー`バッジが割り当てられています。
 * `メールアドレス`文字列が割り当てられています。
 
-![](/images/guides/offline_shoppers_audience.png)
+![](https://docs.tealium.com/images/guides/offline_shoppers_audience.png)
 
 詳細については、を参照してください。
 ## ステップ5 - コネクタの構成
@@ -104,22 +104,22 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 
 割引ショッパーをターゲットにする一般的なコネクタとアクションには以下が含まれます：
 
-* [Adobe Campaign Classic]()
-* [Iterable](): **リストへのユーザー登録**、**ユーザーのアップサート** アクション
-* [Marketo](): **リストへのリード追加** アクション
-* [SendGrid](): **コンタクトのアップサート** アクション
+* [Adobe Campaign Classic](https://docs.tealium.com/adobe-campaign-classic-connector/)
+* [Iterable](https://docs.tealium.com/iterable-connector/): **リストへのユーザー登録**、**ユーザーのアップサート** アクション
+* [Marketo](https://docs.tealium.com/marketo-connector/): **リストへのリード追加** アクション
+* [SendGrid](https://docs.tealium.com/sendgrid-connector/): **コンタクトのアップサート** アクション
 
 例えば、Marketoコネクタを構成して、訪問のメールアドレスをリマーケティングの除外リストに追加することができます。訪問がオフラインショッパーオーディエンスに参加したときのみトリガーされるようにコネクタアクションをカスタマイズします。
 
-![](/images/guides/offline_shoppers_marketo1.png)
+![](https://docs.tealium.com/images/guides/offline_shoppers_marketo1.png)
 
-![](/images/guides/offline_shoppers_marketo2.png)
+![](https://docs.tealium.com/images/guides/offline_shoppers_marketo2.png)
 
 その後、訪問がサイトに戻ったときに除外リストから削除するために、Marketoコネクタの別のインスタンスを構成する必要があります。訪問がオフラインショッパーオーディエンスを離れたときのみトリガーされるようにコネクタアクションをカスタマイズします。
 
-![](/images/guides/offline_shoppers_marketo3.png)
+![](https://docs.tealium.com/images/guides/offline_shoppers_marketo3.png)
 
-![](/images/guides/offline_shoppers_marketo4.png)
+![](https://docs.tealium.com/images/guides/offline_shoppers_marketo4.png)
 
 詳細については、を参照してください。
 
@@ -127,4 +127,4 @@ url: https://docs.tealium.com/ja/guides/exclude-offline-purchasers/
 
 属性、バッジ、オーディエンスを構成したので、Tealiumのファイルインポート機能を使用してデータをアップロードします。AudienceStreamはこのデータを訪問プロファイルに結びつけ、オーディエンスを更新し、リマーケティングコネクタに更新を送信します。
 
-アップロードプロセスについての詳細は、[ファイルインポートについて]()を参照してください。
+アップロードプロセスについての詳細は、[ファイルインポートについて](https://docs.tealium.com/about-file-import/#step-2-upload-your-files-to-a-file-transfer-service)を参照してください。

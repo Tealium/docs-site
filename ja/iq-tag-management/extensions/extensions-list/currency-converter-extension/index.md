@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/cu
 ## 要件
 
 * utag v4.38以降。`utag.js`テンプレートの更新についての詳細は、ナレッジベースの記事[utag.jsの最新バージョンへの更新のベストプラクティス](https://support.tealiumiq.com/en/support/solutions/articles/36000363470)を参照してください。
-* [Tealium通貨変換タグ]()（すべてのタグまたは特定のタグにスコープを構成できます）
+* [Tealium通貨変換タグ](https://docs.tealium.com/tealium-currency-converter-tag/)（すべてのタグまたは特定のタグにスコープを構成できます）
 
 ## 動作原理
 
@@ -33,13 +33,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/cu
   [
     [
       {
-        &#34;input&#34;: &#34;site_currency&#34;,
-        &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-        &#34;filter&#34;: &#34;GBP&#34;
+        "input": "site_currency",
+        "operator": "equals (ignore case)",
+        "filter": "GBP"
       }
     ]
   ]
   
     
 * **通貨変換エクステンション**: サイトがサポートする各通貨および変換が必要な各データレイヤー変数に対して通貨変換を追加します。この例では、すべての値がUSDで送信されることが求められる特定のタグにスコープが構成されていることに注意してください。
-    ![](/images/iq-tag-management/iq-currency-extension.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/iq-currency-extension.jpg)

@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/co
 * **Replace Node Content**：新しいコンテンツは、指定された要素のコンテンツを置き換えます。
 * **Replace Node**：新しいコンテンツは、指定された要素を完全に置き換えます。
 
-**Content**テキストエリアに、新しいコンテンツの標準HTMLコードをコピーして貼り付けます。シングルクォートは使用しないでください。IDを提供することをお勧めします。そうしないと、新しいコンテンツはIDなしで挿入されます。例：`&lt;div id=&#34;myNewId&#34;&gt;My New Content&lt;/div&gt;`
+**Content**テキストエリアに、新しいコンテンツの標準HTMLコードをコピーして貼り付けます。シングルクォートは使用しないでください。IDを提供することをお勧めします。そうしないと、新しいコンテンツはIDなしで挿入されます。例：`<div id="myNewId">My New Content</div>`
 
 **Condition**を構成して、拡張が実行されるタイミングを制御します。例えば、訪問がショッピングカートページにいて、特定のテストグループにも属している場合に、広告バナーの表示を制御します。
 
@@ -52,17 +52,17 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/co
     * Replace Node
 * **Content**：新しいコンテンツを標準HTML形式で入力します。シングルクォートは使用しないでください。
 * 条件を追加するには、**Add Condition**ボタンをクリックします。条件を使用すると、コンテンツの変更をいつ行うかを決定できます。
-    * 条件ボックス内の**&#43;**ボタンをクリックして、別のAND条件を追加します。
-    * OR条件を追加するには、条件ボックスの外側の**&#43;**ボタンをクリックします。
+    * 条件ボックス内の**+**ボタンをクリックして、別のAND条件を追加します。
+    * OR条件を追加するには、条件ボックスの外側の**+**ボタンをクリックします。
 
 ### フッターへのスコープ指定（非推奨）
 
 フッタースコープ機能は非推奨となりました。フッターにスコープ指定された古い拡張は正常に機能しますが、フッタースコープはもはや選択肢として利用できません。コンテンツ変更拡張をフッターにスコープ指定するには、フッタータグ内またはページのbodyタグの下部に別のスクリプトを挿入する必要がありました。以下は、ページのコード内のスクリプトの例です：
 
 ```html
-     &lt;script type=&#34;text/javascript&#34; src=&#34;//tags.tiqcdn.com/utag/account/profile/environment/utag.footer.js&#34;&gt;&lt;/script&gt;
-     &lt;/body&gt;
-&lt;/html&gt;
+     <script type="text/javascript" src="//tags.tiqcdn.com/utag/account/profile/environment/utag.footer.js"></script>
+     </body>
+</html>
 
 ```
 
@@ -71,28 +71,28 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/co
 以下は、ノード位置についての詳細な説明です。例は、ソースに次のターゲット要素を含むウェブページに基づいています：
 
 ```html
-&lt;div id=&#34;myDomId&#34;&gt;Target Node&lt;/div&gt;
+<div id="myDomId">Target Node</div>
 ```
 
 ターゲット要素に`id`属性があるため、この例では**Element Type**のオプションとして**DOM ID**を使用します。
 
-![](/images/iq-tag-management/iq-extension-content-modification.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-extension-content-modification.png)
 
 この拡張により実行されるJavaScriptについての追加の技術詳細を提供するために、以下のステートメントが仮定されます：
 
-* `d = document.getElementById(&#39;myDomId&#39;);`
-* `n = document.createElement(&#39;div&#39;);`
-* `n.innerHTML = &#39;My New Content&#39;;`
+* `d = document.getElementById('myDomId');`
+* `n = document.createElement('div');`
+* `n.innerHTML = 'My New Content';`
 
 この表は、ターゲット要素に対する各ノード位置オプションの効果を示しています：
 
 | **Node Postion**     | **Result After Insertion** | **Code Applied**  |
 | -------------------- | -------------------------- | ----------------- |
-| Before Node          | ``` &lt;div&gt;My New Content&lt;/div&gt; &lt;div id=&#34;myDomId&#34;&gt;Target Node&lt;/div&gt; ```       | `d.parentElement.insertBefore(n, d)`              |
-| After Node           | ``` &lt;div id=&#34;myDomId&#34;&gt;Target Node&lt;/div&gt; &lt;div&gt;My New Content&lt;/div&gt; ```       | `d.parentElement.insertBefore(n, d.nextSibling);` |
-| Beginning of Node    | ``` &lt;div id=&#34;myDomId&#34;&gt;   &lt;div&gt;My New Content&lt;/div&gt;   Target Node &lt;/div&gt; ``` | `d.insertBefore(n, d.firstChild);`                |
-| End of Node          | ``` &lt;div id=&#34;myDomId&#34;&gt;   Target Node   &lt;div&gt;My New Content&lt;/div&gt; &lt;/div&gt; ``` | `d.appendChild(n);`                               |
-| Replace Node Content | ``` &lt;div id=&#34;myDomId&#34;&gt;My New Content&lt;/div&gt; ```                       | `d.innerHTML=&#39;My New Content&#39;;` |
+| Before Node          | ``` <div>My New Content</div> <div id="myDomId">Target Node</div> ```       | `d.parentElement.insertBefore(n, d)`              |
+| After Node           | ``` <div id="myDomId">Target Node</div> <div>My New Content</div> ```       | `d.parentElement.insertBefore(n, d.nextSibling);` |
+| Beginning of Node    | ``` <div id="myDomId">   <div>My New Content</div>   Target Node </div> ``` | `d.insertBefore(n, d.firstChild);`                |
+| End of Node          | ``` <div id="myDomId">   Target Node   <div>My New Content</div> </div> ``` | `d.appendChild(n);`                               |
+| Replace Node Content | ``` <div id="myDomId">My New Content</div> ```                       | `d.innerHTML='My New Content';` |
 
 
 コンテンツ変更拡張で使用されるJavaScriptメソッドについて詳しく学びましょう：
@@ -112,6 +112,6 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/co
 JavaScript Code拡張の例：
 
 ```js
-jQuery(&#34;.my-custom-selector&#34;).get(0).setAttribute(&#34;id&#34;, &#34;myDomId&#34;);
+jQuery(".my-custom-selector").get(0).setAttribute("id", "myDomId");
 ```
 

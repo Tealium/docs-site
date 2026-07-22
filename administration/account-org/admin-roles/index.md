@@ -16,7 +16,11 @@ The following admin roles are available:
 * [Profile admin](#profile-admin)
 * [Standard user](#standard-user)
 
- The difference between admin roles and permission groups is that admin roles manage aspects of the account while permission groups manage aspects of profiles. 
+
+<blockquote>
+The difference between admin roles and permission groups is that admin roles manage aspects of the account while permission groups manage aspects of profiles.
+</blockquote>
+
 
 ### Default account admin
 
@@ -32,9 +36,13 @@ You can grant the following admin roles to users in your account:
 
 The account admin role has full power and access to the account. The account admin role includes all account-level permissions and all profile-level permissions, including both client-side and server-side publishing permissions.
 
-In addition, account admins control permissions enforcement on the account, which changes the account from legacy to platform permissions. For more information, see [Permissions Enforcement]().
+In addition, account admins control permissions enforcement on the account, which changes the account from legacy to platform permissions. For more information, see [Permissions Enforcement](https://docs.tealium.com/permissions-system-migration-guide-permissions-enforcement/).
 
- At least one user in your account must have the account admin role. If you are the only user with the account admin role in your account, you cannot remove this role from yourself. 
+
+<blockquote>
+At least one user in your account must have the account admin role. If you are the only user with the account admin role in your account, you cannot remove this role from yourself.
+</blockquote>
+
 
 ### User admin
 
@@ -42,11 +50,11 @@ The user admin role has access to the following settings:
 
 * **Manage Permissions**: Create, edit, and delete permission groups. Also can add and remove users from permission groups, and assign profiles to permission groups.
 * **Manage Users**: Add, edit, and remove users from the account.
-* **Multi-Factor Authentication**: Enable and disable [multi-factor authentication]() on the account.
+* **Multi-Factor Authentication**: Enable and disable [multi-factor authentication](https://docs.tealium.com/multi-factor-authentication-mfa/) on the account.
 * **Reset MFA for other users**: Reset multi-factor authentication tokens for other users in the account.
-* **Set Password Policy**: Manage the [password policy]() for the account.
-* **SSO Management**: Enable, disable, and manage [Single-Sign On (SSO)]().
-* **Insights Management**: Manage user roles within [Tealium Insights]().
+* **Set Password Policy**: Manage the [password policy](https://docs.tealium.com/password-policy/) for the account.
+* **SSO Management**: Enable, disable, and manage [Single-Sign On (SSO)](https://docs.tealium.com/set-up-single-sign-on/).
+* **Insights Management**: Manage user roles within [Tealium Insights](https://docs.tealium.com/about-data-insights/#author-and-reader-roles).
 
 Also, the user admin role can view all profiles on the account.
 
@@ -54,23 +62,27 @@ Also, the user admin role can view all profiles on the account.
 
 The technical admin role has access to the following settings:
 
-* **First-Party Domains** - Manage [first-party domains](), including entering domain names and updating certificates.
-* **GitHub Account** - Link the account to [a GitHub account]() for use with the Advanced JavaScript Code extension.
+* **First-Party Domains** - Manage [first-party domains](https://docs.tealium.com/first-party-domains/), including entering domain names and updating certificates.
+* **GitHub Account** - Link the account to [a GitHub account](https://docs.tealium.com/about-linking-to-github/) for use with the Advanced JavaScript Code extension.
 
 ### Privacy admin
 
 The privacy admin role can only be granted to users with the user admin role. The privacy admin role has access to the following settings:
 
-* **Consent Management**: Manage [consent parameters and languages](), which apply to all profiles that use consent management.
-* **PII View and Manage**: Manage Personally Identifiable Information (PII) user permissions and view and edit attributes with [restricted data]().
-* **Tag Marketplace Policy**: Enable, disable, and configure the [tag marketplace policy]() to control which tags are available for use on this account.
+* **Consent Management**: Manage [consent parameters and languages](https://docs.tealium.com/about-consent-management/), which apply to all profiles that use consent management.
+* **PII View and Manage**: Manage Personally Identifiable Information (PII) user permissions and view and edit attributes with [restricted data](https://docs.tealium.com/about-restricted-data/).
+* **Tag Marketplace Policy**: Enable, disable, and configure the [tag marketplace policy](https://docs.tealium.com/tag-marketplace-policy/) to control which tags are available for use on this account.
 
 ### Profile admin
 
 The profile admin role has access to manage client-side profiles and profile settings. This role does not include profile editing or publishing permissions; those are granted through rights in a permission group, which the profile admin can set.
 
-* **Manage Profile Libraries**: [Manage profile libraries]().
-* **Manage Profiles**: [Create and manage profiles]().  Only client-side profiles can be created through the platform. To create a server-side profile, contact Tealium Support.
+* **Manage Profile Libraries**: [Manage profile libraries](https://docs.tealium.com/profile-libraries/).
+* **Manage Profiles**: [Create and manage profiles](https://docs.tealium.com/manage-profiles/). 
+<blockquote>
+Only client-side profiles can be created through the platform. To create a server-side profile, contact Tealium Support.
+</blockquote>
+
 
 ### Standard user
 
@@ -88,6 +100,6 @@ To edit a user’s admin roles:
     * The interface automatically selects any additional admin roles or PII permissions that are necessary for that role.
 1. When you are finished making the changes you want, click **Finish**.
 
-The changes to the user&#39;s admin roles are effective immediately.
+The changes to the user's admin roles are effective immediately.
 
 You can also use the checkboxes and **Bulk Actions** to assign or unassign roles to multiple users at once.

@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/test-fun
 1. 関数を実行するには、**Run Test**をクリックします。
 実行結果は**Test Input**の下に表示されます。実行**Output**と**Test Logs**は結果の下に表示されます。
 データ変換関数の場合、テストを実行することでトリガールールがテストペイロードと一致するかどうかも確認されます。ルールとペイロードが一致しない場合、関数はトリガーされず、次のメッセージが表示されます：
-      ![](/images/server-side/test-payload-warning.png)  
+      ![](https://docs.tealium.com/images/server-side/test-payload-warning.png)  
       ルールまたはペイロードを変更して、再度テストを実行してください。
 1. ログを表示するには、**Test Logs**をクリックし、リストからログをクリックします。
 
@@ -42,7 +42,11 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/test-fun
 すでに最大10個のテストペイロードを保存しており、別のペイロードを保存する必要がある場合は、テストペイロードを削除する必要があります。テストペイロードを削除するには、以下の手順に従います：
 
 1. ペイロードメニューをクリックし、**Delete**をクリックします。
-    保存されたテストペイロードを削除する際は注意してください。確認ダイアログは表示されません。
+    
+<blockquote>
+保存されたテストペイロードを削除する際は注意してください。確認ダイアログは表示されません。
+</blockquote>
+
 1. **Apply**をクリックします。
 1. **Save/Publish**をクリックします。
 
@@ -70,9 +74,9 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/test-fun
 1. 新しい関数を作成し、例示コードを削除して、イベントと訪問データをコンソールログに書き込む次のコードを入力します。
 
 ```js
-import { event, visitor } from &#34;tealium&#34;;
-console.log(&#39;Event object:&#39; &#43; JSON.stringify(event));
-console.log(&#39;Visitor object:&#39; &#43;JSON.stringify(visitor));
+import { event, visitor } from "tealium";
+console.log('Event object:' + JSON.stringify(event));
+console.log('Visitor object:' +JSON.stringify(visitor));
 ```
 
 1. **Configuration**タブをクリックし、**Status**を**ON**に構成します。
@@ -92,14 +96,16 @@ console.log(&#39;Visitor object:&#39; &#43;JSON.stringify(visitor));
 ### トレースを使用してテストデータを取得する
 
 
+<blockquote>
 トレースを使用して関数をテストする場合、関数の呼び出しは分あたり15回に制限されます。
+</blockquote>
 
 
 1. コードエディタで任意のJavaScriptコードを作成します。例えば：  
-`console.log(&#34;Hello World!&#34;);`
+`console.log("Hello World!");`
 1. **Configuration**タブをクリックし、**Status**を**ON**に構成し、**Done**をクリックします。
 1. 保存して公開します。
-1. トレースツールを開始します。詳細については、[Trace]()を参照してください。
+1. トレースツールを開始します。詳細については、[Trace](https://docs.tealium.com/about-trace/)を参照してください。
 1. ウェブサイトで関数をトリガーするためのアクションを行います。
 1. トレースツールで**Action Processed**通知をクリックし、**payload**の下にあるイベントまたは訪問オブジェクトを見つけてコピーします。
 1. **Test**タブに移動し、現在のコードを削除して、イベントまたは訪問オブジェクトを**Test Input**エディタに貼り付けます。

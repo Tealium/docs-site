@@ -2,25 +2,29 @@
 title: Data Management
 description: Learn how to manage persistent and volatile data.
 url: https://docs.tealium.com/platforms/ios-swift-v1/data-management/
----This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](/platforms/ios-swift/).
+---
+<blockquote>
+This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](https://docs.tealium.com/platforms/ios-swift/).
+</blockquote>
+
 
 ## Usage
 
 Some variables are required on every event. To prevent having to manually add required variable data to every event, you have the option to store data as either volatile or persistent. Once data is stored, it will be appended to every event, including lifecycle events.
 
-[Learn more](/platforms/getting-started-mobile/mobile-concepts/#data-management) about Data Management.
+[Learn more](https://docs.tealium.com/platforms/getting-started-mobile/mobile-concepts/#data-management) about Data Management.
 
 
 ## Persistent Data
 Persistent data values are stored on the device and preserved between launches of the app. The values are merged with any dictionary passed to a tracking call.
 
-The [`persistentData().add()`](/platforms/ios-swift-v1/api/tealium-persistent-data/#add) method stores persistent data, as shown in the following example:
+The [`persistentData().add()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-persistent-data/#add) method stores persistent data, as shown in the following example:
 
 ```swift
-tealium?.persistentData()?.add(data: [&#34;KEY&#34;:&#34;VALUE&#34;])
+tealium?.persistentData()?.add(data: ["KEY":"VALUE"])
 ```
 
-To clear data for specific keys use the [`persistentData.deleteData()`](/platforms/ios-swift-v1/api/tealium-persistent-data/#deletedata) method, or to delete all data use the [`persistentData.deleteAllData()`](/platforms/ios-swift-v1/api/tealium-persistent-data/#deletealldata) method.
+To clear data for specific keys use the [`persistentData.deleteData()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-persistent-data/#deletedata) method, or to delete all data use the [`persistentData.deleteAllData()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-persistent-data/#deletealldata) method.
 
 The following example demonstrates these methods:
 
@@ -49,9 +53,9 @@ class TealiumHelper {
 ## Volatile Data
 Volatile data values are merged into to each event, but discarded upon closing the app and restarting. The values are merged with any dictionary passed to a tracking call.
 
-The [`volatileData().add()`](/platforms/ios-swift-v1/api/tealium-volatile-data/#add) method stores volatile data.
+The [`volatileData().add()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-volatile-data/#add) method stores volatile data.
 
-To clear data for specific keys use the [`voltileData.deleteData()`](/platforms/ios-swift-v1/api/tealium-volatile-data/#deletedata) method, or to delete all data use the [`volatileData.deleteAllData()`](/platforms/ios-swift-v1/api/tealium-volatile-data/#deletealldata) method.
+To clear data for specific keys use the [`voltileData.deleteData()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-volatile-data/#deletedata) method, or to delete all data use the [`volatileData.deleteAllData()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-volatile-data/#deletealldata) method.
 
 The following example demonstrates these methods:
 

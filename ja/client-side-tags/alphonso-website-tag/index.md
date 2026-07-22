@@ -6,11 +6,11 @@ url: https://docs.tealium.com/ja/client-side-tags/alphonso-website-tag/
 
 * デフォルトの構成オプションを使用すると、タグはページに直接スニペットを配置するのと同じように動作します。
 * セッションID、UTMソース、UTMメディアは自動的に入力されます。これらのオプションを自分で管理するには、これらのオプションをオフにします。
-* **&#43; カスタムデスティネーションを追加** ボタンを使用してカスタム値を追加します。
+* **+ カスタムデスティネーションを追加** ボタンを使用してカスタム値を追加します。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/client-side-tags/alphonso-website-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -33,18 +33,18 @@ url: https://docs.tealium.com/ja/client-side-tags/alphonso-website-tag/
 
 |説明| 説明|
 |---| ---|
-|`cust`|  &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;/ul&gt; |
-|`ord`|  &lt;ul&gt;&lt;li&gt;キャッシュバスター&lt;/li&gt;&lt;/ul&gt; |
-|`utm_src`|  &lt;ul&gt;&lt;li&gt;キャンペーンソース&lt;/li&gt;&lt;/ul&gt; |
-|`utm_mdm`|  &lt;ul&gt;&lt;li&gt;キャンペーンメディア&lt;/li&gt;&lt;/ul&gt; |
-|`url`|  &lt;ul&gt;&lt;li&gt;ページURL&lt;/li&gt;&lt;/ul&gt; |
-|`title`|  &lt;ul&gt;&lt;li&gt;ページタイトル&lt;/li&gt;&lt;/ul&gt; |
-|`session_id`|  &lt;ul&gt;&lt;li&gt;セッションID&lt;/li&gt;&lt;/ul&gt; |
-|`sess_status`|  &lt;ul&gt;&lt;li&gt;セッションステータス&lt;/li&gt;&lt;/ul&gt; |
-|`ref`|  &lt;ul&gt;&lt;li&gt;リファラーURL&lt;/li&gt;&lt;/ul&gt; |
-|`event_type`|  &lt;ul&gt;&lt;li&gt;イベント名&lt;/li&gt;&lt;/ul&gt; |
-|`event_value`|  &lt;ul&gt;&lt;li&gt;イベント値&lt;/li&gt;&lt;/ul&gt; |
-|`useDefaultSession`|  &lt;ul&gt;&lt;li&gt;デフォルトのセッション管理を使用する&lt;/li&gt;&lt;/ul&gt; |
-|`useDefaultUtm`|  &lt;ul&gt;&lt;li&gt;デフォルトのUTM解析を使用する&lt;/li&gt;&lt;/ul&gt; |
-|`useOnBeforeUnload`|  &lt;ul&gt;&lt;li&gt;OnBeforeUnloadピクセルを使用する&lt;/li&gt;&lt;/ul&gt; |
+|`cust`|  <ul><li>顧客ID</li></ul> |
+|`ord`|  <ul><li>キャッシュバスター</li></ul> |
+|`utm_src`|  <ul><li>キャンペーンソース</li></ul> |
+|`utm_mdm`|  <ul><li>キャンペーンメディア</li></ul> |
+|`url`|  <ul><li>ページURL</li></ul> |
+|`title`|  <ul><li>ページタイトル</li></ul> |
+|`session_id`|  <ul><li>セッションID</li></ul> |
+|`sess_status`|  <ul><li>セッションステータス</li></ul> |
+|`ref`|  <ul><li>リファラーURL</li></ul> |
+|`event_type`|  <ul><li>イベント名</li></ul> |
+|`event_value`|  <ul><li>イベント値</li></ul> |
+|`useDefaultSession`|  <ul><li>デフォルトのセッション管理を使用する</li></ul> |
+|`useDefaultUtm`|  <ul><li>デフォルトのUTM解析を使用する</li></ul> |
+|`useOnBeforeUnload`|  <ul><li>OnBeforeUnloadピクセルを使用する</li></ul> |
 

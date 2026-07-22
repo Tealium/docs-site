@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/functions/environment/
 ---
 ## Execution environment
 
-The execution environment for functions is built on the [GraalVM](https://www.graalvm.org/&#34;) JavaScript runtime and runs ECMAScript 2020-compatible code.
+The execution environment for functions is built on the [GraalVM](https://www.graalvm.org/") JavaScript runtime and runs ECMAScript 2020-compatible code.
 
 ### Function limitations
 
@@ -31,9 +31,9 @@ The execution environment for functions, referred to as the runtime version, var
  * **CloudStream Data Record Transformation Functions**: The current runtime version is Transformation V1.
  * **CloudStream Data Record Functions**: The latest runtime version is CLS Action V1.
 
-The runtime version for a function is shown in the **Code** tab of the code editor, as shown below: ![](/images/server-side/functions-runtime-version-location.png)
+The runtime version for a function is shown in the **Code** tab of the code editor, as shown below: ![](https://docs.tealium.com/images/server-side/functions-runtime-version-location.png)
 
-Runtime versions may be updated to provide new features. When a new runtime version is available, a message similar to the following is displayed on the **Functions Overview** page: ![](/images/server-side/functions-new-runtime-available.png)
+Runtime versions may be updated to provide new features. When a new runtime version is available, a message similar to the following is displayed on the **Functions Overview** page: ![](https://docs.tealium.com/images/server-side/functions-new-runtime-available.png)
 
 As Tealium releases new runtime versions, older versions will be deprecated, and will eventually become obsolete. A message is displayed on the **Functions Overview** screen and on the **Code** tab for a function when the runtime version in use is deprecated or becomes obsolete.
 
@@ -51,9 +51,9 @@ These execution limits are based on the account and the region. The sum of the e
 
 If either limit is exceeded, function execution is briefly stopped (throttled). The following message is displayed in the **Functions Overview** and a yellow alert icon is displayed next to a throttled function, as follows:
 
-![](/images/server-side/throttle-msg.png)
+![](https://docs.tealium.com/images/server-side/throttle-msg.png)
 
-For information on how to view details for throttled functions, see [View function statistics]().
+For information on how to view details for throttled functions, see [View function statistics](https://docs.tealium.com/view-function-statistics/).
 
 ## Execution time limits for event, visitor, and data record functions
 

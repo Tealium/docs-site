@@ -16,17 +16,21 @@ The Tealium for Salesforce solution is installed as a number of Apex classes: on
 
 The Tealium for Salesforce solution can link records from the Customer Data Hub into Salesforce by specifying a shared identifier attribute. In Customer Data Hub this attribute can be any Visitor ID attribute that uniquely identifies records coming from an ingestion sync. In Salesforce you must create a custom field in the Object named **Tealium ID** to capture that Customer Data Hub attribute.
 
-For more information, see the [Salesforce Connector Setup Guide for AudienceStream]().
+For more information, see the [Salesforce Connector Setup Guide for AudienceStream](https://docs.tealium.com/salesforce-connector/).
 
 To add this custom field to the Lead object:
 
-1. From **Setup**, go to **Lead &gt; Fields**.  
-![](/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png)
+1. From **Setup**, go to **Lead > Fields**.  
+![](https://docs.tealium.com/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png)
 1. Add a new custom field of type Text with the following settings:
       * **Field Label**: Tealium ID.
       * **Length**: 100.
       * **Field Name**: `tealium_id_teal`.
-    The `_teal` suffix indicates that these variables are specific to Tealium.
+    
+<blockquote>
+The `_teal` suffix indicates that these variables are specific to Tealium.
+</blockquote>
+
 1. Click **Save**.
 
 ### Create the `TealiumCollect` Apex class
@@ -43,38 +47,38 @@ To add the `TealiumCollect` Apex class:
 public class TealiumCollect {
     private static Boolean debug = true;
     /* TEALIUM CONFIGURATION */
-    private static String tealiumAccount       = &#34;YOUR_ACCOUNT&#34;;
-    private static String tealiumProfile       = &#34;YOUR_PROFILE&#34;;
-    private static String tealiumDataSourceKey = &#34;YOUR_DATASOURCE_KEY&#34;;
-    private static String tealiumEventType     = &#34;derived&#34;;
-    private static String tealiumEndpoint      = &#34;https://collect.tealiumiq.com/event&#34;;
+    private static String tealiumAccount       = "YOUR_ACCOUNT";
+    private static String tealiumProfile       = "YOUR_PROFILE";
+    private static String tealiumDataSourceKey = "YOUR_DATASOURCE_KEY";
+    private static String tealiumEventType     = "derived";
+    private static String tealiumEndpoint      = "https://collect.tealiumiq.com/event";
     @future(callout=true)
-    public static void track(Map&lt;String, String&gt; tealiumData){
-        List&lt;String&gt; tealiumParams = New List&lt;String&gt;();
-        tealiumParams.add(&#34;tealium_account&#34;    &#43; &#34;=&#34; &#43; tealiumAccount);
-        tealiumParams.add(&#34;tealium_profile&#34;    &#43; &#34;=&#34; &#43; tealiumProfile);
-        tealiumParams.add(&#34;tealium_datasource&#34; &#43; &#34;=&#34; &#43; tealiumDataSourceKey);
-        tealiumParams.add(&#34;tealium_event_type&#34; &#43; &#34;=&#34; &#43; tealiumEventType);
-        tealiumParams.add(&#34;tealium_event&#34;      &#43; &#34;=&#34; &#43;
-            EncodingUtil.urlEncode(tealiumData.get(&#34;tealium_event&#34;), &#34;UTF-8&#34;));
-        String tealiumVid = tealiumData.get(&#34;tealium_visitor_id&#34;);
-        if(tealiumVid == null || tealiumVid == &#34;&#34;){
-            tealiumData.remove(&#34;tealium_visitor_id&#34;);
+    public static void track(Map<String, String> tealiumData){
+        List<String> tealiumParams = New List<String>();
+        tealiumParams.add("tealium_account"    + "=" + tealiumAccount);
+        tealiumParams.add("tealium_profile"    + "=" + tealiumProfile);
+        tealiumParams.add("tealium_datasource" + "=" + tealiumDataSourceKey);
+        tealiumParams.add("tealium_event_type" + "=" + tealiumEventType);
+        tealiumParams.add("tealium_event"      + "=" +
+            EncodingUtil.urlEncode(tealiumData.get("tealium_event"), "UTF-8"));
+        String tealiumVid = tealiumData.get("tealium_visitor_id");
+        if(tealiumVid == null || tealiumVid == ""){
+            tealiumData.remove("tealium_visitor_id");
         }
         for(String key : tealiumData.keySet()){
             try{
                 String value = tealiumData.get(key);
                 Boolean valueTest = (value != null);
-                tealiumParams.add(key &#43; &#34;=&#34; &#43; (valueTest ? EncodingUtil.urlEncode(value, &#34;UTF-8&#34;) : &#34;&#34;));
+                tealiumParams.add(key + "=" + (valueTest ? EncodingUtil.urlEncode(value, "UTF-8") : ""));
             }catch(Exception e){}
         }
         HttpRequest req = new HttpRequest();
-        String tealCollect = tealiumEndpoint &#43; &#34;?&#34; &#43; String.join(tealiumParams, &#34;&amp;&#34;);
+        String tealCollect = tealiumEndpoint + "?" + String.join(tealiumParams, "&");
         req.setEndpoint(tealCollect);
         if(debug){
             System.debug(tealCollect);
         }
-        req.setMethod(&#34;GET&#34;);
+        req.setMethod("GET");
         Http http = new Http();
         HTTPResponse res = http.send(req);
     }
@@ -97,28 +101,28 @@ Use the following steps to create the Tealium trigger:
 
 ```java
 trigger tealiumContactUpdate on Contact (after insert, after update) {
-    String tealiumEvent = &#34;crm_contact_update&#34;;
+    String tealiumEvent = "crm_contact_update";
 
     /* POPULATE TEALIUM DATA LAYER */
-    Map&lt;string,string&gt; tealiumData = new Map&lt;string,string&gt;();
+    Map<string,string> tealiumData = new Map<string,string>();
     for (Contact sfdcObj : Trigger.new ){
         /* REQUIRED TEALIUM DATA */
-        tealiumData.put(&#34;tealium_event&#34;, tealiumEvent);
-        tealiumData.put(&#34;tealium_visitor_id&#34;, sfdcObj.tealium_id_teal__c);
+        tealiumData.put("tealium_event", tealiumEvent);
+        tealiumData.put("tealium_visitor_id", sfdcObj.tealium_id_teal__c);
 
         /* SFDC DATA */
-        tealiumData.put(&#34;customer_email&#34;,      sfdcObj.Email);
-        tealiumData.put(&#34;crm_lead_source&#34;,     sfdcObj.LeadSource);
-        tealiumData.put(&#34;has_opted_out_email&#34;, String.valueOf(sfdcObj.HasOptedOutOfEmail));
-        tealiumData.put(&#34;has_opted_out_phone&#34;, String.valueOf(sfdcObj.DoNotCall));
-        tealiumData.put(&#34;mobile_phone_number&#34;, String.valueOf(sfdcObj.MobilePhone));
-        tealiumData.put(&#34;home_phone_number&#34;,   String.valueOf(sfdcObj.Phone));
-        tealiumData.put(&#34;customer_first_name&#34;, sfdcObj.FirstName);
-        tealiumData.put(&#34;customer_last_name&#34;,  sfdcObj.LastName);
-        tealiumData.put(&#34;customer_title&#34;,      sfdcObj.Title);
-        tealiumData.put(&#34;crm_account&#34;,         String.valueOf(sfdcObj.Account));
+        tealiumData.put("customer_email",      sfdcObj.Email);
+        tealiumData.put("crm_lead_source",     sfdcObj.LeadSource);
+        tealiumData.put("has_opted_out_email", String.valueOf(sfdcObj.HasOptedOutOfEmail));
+        tealiumData.put("has_opted_out_phone", String.valueOf(sfdcObj.DoNotCall));
+        tealiumData.put("mobile_phone_number", String.valueOf(sfdcObj.MobilePhone));
+        tealiumData.put("home_phone_number",   String.valueOf(sfdcObj.Phone));
+        tealiumData.put("customer_first_name", sfdcObj.FirstName);
+        tealiumData.put("customer_last_name",  sfdcObj.LastName);
+        tealiumData.put("customer_title",      sfdcObj.Title);
+        tealiumData.put("crm_account",         String.valueOf(sfdcObj.Account));
         /* Addition Custom Fields */
-        /* tealiumData.put(&#34;custom_field&#34;, sfdcObj.customField); */
+        /* tealiumData.put("custom_field", sfdcObj.customField); */
 
         TealiumCollect.track(tealiumData);
     }
@@ -129,30 +133,30 @@ trigger tealiumContactUpdate on Contact (after insert, after update) {
 
 ```java
 trigger tealiumLeadUpdate on Lead (after insert, after update) {
-    String tealiumEvent = &#34;crm_lead_update&#34;;
+    String tealiumEvent = "crm_lead_update";
 
     /* POPULATE TEALIUM DATA LAYER */
-    Map&lt;string,string&gt; tealiumData = new Map&lt;string,string&gt;();
+    Map<string,string> tealiumData = new Map<string,string>();
     for (Lead sfdcObj : Trigger.new ){
         /* REQUIRED TEALIUM DATA */
-        tealiumData.put(&#34;tealium_event&#34;, tealiumEvent);
-        tealiumData.put(&#34;tealium_visitor_id&#34;, sfdcObj.tealium_id_teal__c);
+        tealiumData.put("tealium_event", tealiumEvent);
+        tealiumData.put("tealium_visitor_id", sfdcObj.tealium_id_teal__c);
 
         /* SFDC DATA */
-        tealiumData.put(&#34;customer_email&#34;,      sfdcObj.Email);
-        tealiumData.put(&#34;crm_lead_status&#34;,     sfdcObj.Status);
-        tealiumData.put(&#34;crm_lead_source&#34;,     sfdcObj.LeadSource);
-        tealiumData.put(&#34;crm_lead_rating&#34;,     sfdcObj.Rating);
-        tealiumData.put(&#34;crm_lead_industry&#34;,   sfdcObj.Industry);
-        tealiumData.put(&#34;crm_lead_company&#34;,    sfdcObj.Company);
-        tealiumData.put(&#34;has_opted_out_email&#34;, String.valueOf(sfdcObj.HasOptedOutOfEmail));
-        tealiumData.put(&#34;has_opted_out_phone&#34;, String.valueOf(sfdcObj.DoNotCall));
-        tealiumData.put(&#34;mobile_phone_number&#34;, String.valueOf(sfdcObj.MobilePhone));
-        tealiumData.put(&#34;home_phone_number&#34;,   String.valueOf(sfdcObj.Phone));
-        tealiumData.put(&#34;customer_first_name&#34;, sfdcObj.FirstName);
-        tealiumData.put(&#34;customer_last_name&#34;,  sfdcObj.LastName);
+        tealiumData.put("customer_email",      sfdcObj.Email);
+        tealiumData.put("crm_lead_status",     sfdcObj.Status);
+        tealiumData.put("crm_lead_source",     sfdcObj.LeadSource);
+        tealiumData.put("crm_lead_rating",     sfdcObj.Rating);
+        tealiumData.put("crm_lead_industry",   sfdcObj.Industry);
+        tealiumData.put("crm_lead_company",    sfdcObj.Company);
+        tealiumData.put("has_opted_out_email", String.valueOf(sfdcObj.HasOptedOutOfEmail));
+        tealiumData.put("has_opted_out_phone", String.valueOf(sfdcObj.DoNotCall));
+        tealiumData.put("mobile_phone_number", String.valueOf(sfdcObj.MobilePhone));
+        tealiumData.put("home_phone_number",   String.valueOf(sfdcObj.Phone));
+        tealiumData.put("customer_first_name", sfdcObj.FirstName);
+        tealiumData.put("customer_last_name",  sfdcObj.LastName);
         /* Addition Custom Fields */
-        /* tealiumData.put(&#34;custom_field&#34;, sfdcObj.customField); */
+        /* tealiumData.put("custom_field", sfdcObj.customField); */
 
         TealiumCollect.track(tealiumData);
     }
@@ -163,16 +167,16 @@ trigger tealiumLeadUpdate on Lead (after insert, after update) {
 
 To preserve the custom field **Tealium ID** during a Lead conversion to a Contact you must map **Lead.Tealium ID** to **Contact.Tealium ID**.
 
-For more information, see [Salesforce Sales Cloud Basics: Map Custom Lead Fields for Lead Conversion](https://help.salesforce.com/s/articleView?id=sales.customize_mapleads.htm&amp;type=5).
+For more information, see [Salesforce Sales Cloud Basics: Map Custom Lead Fields for Lead Conversion](https://help.salesforce.com/s/articleView?id=sales.customize_mapleads.htm&type=5).
 
 Use the following steps to create a custom field mapping:
 
-1. Go to **Lead &gt; Fields**.
+1. Go to **Lead > Fields**.
 1. Click **Map Fields**.
 1. Click **Contact**.
-1. Map `tealium_id` in the Lead column to **Tealium ID**&#34;in the Contact column.  
+1. Map `tealium_id` in the Lead column to **Tealium ID**"in the Contact column.  
     
-    ![](/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png)
+    ![](https://docs.tealium.com/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png)
 
 1. Click **Save**.
 
@@ -190,16 +194,16 @@ Create the remote site with the following settings:
 
 #### Remote site example
 
-![](/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png)
+![](https://docs.tealium.com/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png)
 
 ### Add Salesforce event attributes
 
-The Salesforce variables used in the Apex trigger code must be defined in Tealium as event attributes. To see what data is coming from Salesforce, inspect the trigger code or use [Live Events]() to see the data in real-time.
+The Salesforce variables used in the Apex trigger code must be defined in Tealium as event attributes. To see what data is coming from Salesforce, inspect the trigger code or use [Live Events](https://docs.tealium.com/about-live-events/) to see the data in real-time.
 
 Use the following steps to add event attributes:
 
-1. Go to **Enrich &gt; Attributes**.
-1. Click **&#43; Add Attribute**.
+1. Go to **Enrich > Attributes**.
+1. Click **+ Add Attribute**.
 1. Select the scope: **Event**.
 1. Select the type: **Universal Data Object**.
 1. Select the data type: **String**.

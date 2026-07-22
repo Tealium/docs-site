@@ -22,7 +22,7 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 
 ## 構成の構成
 
-コネクタマーケットプレイスにアクセスし、新しいPardotコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいPardotコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 ベンダーを構成するには、以下の手順に従います：
 
@@ -47,10 +47,18 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 #### パラメータ
 
 * **キャンペーン**: (必須) 使用するキャンペーンを選択します。探しているキャンペーンが見つからない場合は、カスタム値としてキャンペーンIDを入力することができます。
+
+<blockquote>
 キャンペーンIDを見つけるには、対象のキャンペーンをPardotで開き、URLの最後にある数値を探します。たとえば、このURLでは：`https://pi.pardot.com/campaign/read/id/123`、IDは`123`です。キャンペーンIDに関する詳細は、[1対1のメール送信](http://developer.pardot.com/kb/api-version-4/emails/#sending-one-to-one-emails)および[サポートされるパラメータ](http://developer.pardot.com/kb/api-version-4/emails/#supported-parameters_1)の記事を参照してください。
+</blockquote>
+
 * **メールテンプレート**: (必須) 使用するメールテンプレートを選択します。このリストに探しているメールテンプレートがない場合は、テンプレートIDをカスタム値として入力することができます。
 
+
+<blockquote>
 キャンペーンIDと同様に、メールテンプレートIDはPardotのメールテンプレートURLの最後にある数値です。テンプレートのURLは次のようになります：`https://pi.pardot.com/emailTemplate/read/id/XXXX`、ここでの`XXXX`は数値のIDです。
+</blockquote>
+
 
 * **見込み客識別子**: (必須) 見込み客を識別するための識別子を選択します。
   * **prospect_email:** 見込み客に関連付けられたメールアドレス
@@ -71,19 +79,19 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 |`list_ids[]`| 1つまたは複数のリストに対して「配列/セット」属性タイプを構成します。これは、メールを送信するリストのIDです|
 |`suppression_list_ids[]`| 1つまたは複数のリストに対して「配列/セット」属性タイプを構成します。これは、メール送信を抑制するリストのIDです|
 
-* `email_template_id`が提供されていない場合は、`(from_email &amp; from_name)`または`from_user_id`が必要です
+* `email_template_id`が提供されていない場合は、`(from_email & from_name)`または`from_user_id`が必要です
 * **メールテンプレート**セクションが構成されていない場合、`name`、`subject`、および`text_content`または`html_content`のいずれかが必要です
 * **メールテンプレート**セクションが構成されている場合、最初にメールテンプレートが使用されます。`name`、`replyto_email`、`subject`、`text_content`、および`html_content`が提供されている場合、テンプレートの内容を上書きします
 
 ##### テンプレート変数
 
-* テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。
+* テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。
 * ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`
 * ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます
 
 ##### テンプレート
 
-* メッセージデータで参照されるテンプレートを提供します。詳細については、を参照してください。
+* メッセージデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。
 * テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`.
 
 ### アクション - 見込み客の作成または更新
@@ -98,7 +106,11 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
     * 見込み客FID (fid): これは見込み客のCRM IDです
 
 *. **キャンペーン:** (必須) 使用するキャンペーンを選択します。探しているキャンペーンが見つからない場合は、カスタム値としてキャンペーンIDを入力することができます。
+
+<blockquote>
 キャンペーンIDを見つけるには、対象のキャンペーンをPardotで開き、URLの最後にある数値を探します。たとえば、このURLでは：`https://pi.pardot.com/campaign/read/id/123`、IDは`123`です。
+</blockquote>
+
 
 * **存在しない場合は作成:** (任意) 見込み客の作成を許可する場合はチェックします。
 
@@ -114,9 +126,13 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 #### パラメータ
 
 * **対象リスト:** (必須) 見込み客を追加するリスト。
-参照：[&#34;create&#34; option under Supported Parameters](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
+参照：["create" option under Supported Parameters](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
   
+
+<blockquote>
 ドロップダウンに表示されていないリストを追加する必要がある場合は、URLでリストIDを見つけることができます：`https://pi.pardot.com/list/read/id/XXXX`
+</blockquote>
+
 
 * **見込み客識別子:** (必須) 見込み客を識別するための識別子を選択します。
   * **prospect\_email:** 見込み客に関連付けられたメールアドレス
@@ -128,9 +144,13 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 #### パラメータ
 
 * **ターゲットリスト:** (必須) プロスペクトを追加するリスト。
-参照: [&#34;create&#34; オプションのサポートされているパラメータ](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
+参照: ["create" オプションのサポートされているパラメータ](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
   
+
+<blockquote>
 ドロップダウンに表示されないリストを追加する必要がある場合は、URL `https://pi.pardot.com/list/read/id/XXXX` でリストIDを見つけることができます。
+</blockquote>
+
 
 * **プロスペクト識別子:** (必須) プロスペクトを識別するための識別子を選択します。
   * **prospect_email:** プロスペクトに関連付けられたメールアドレス
@@ -141,9 +161,13 @@ Salesforce Pardotコネクタを使用すると、オーディエンスに基づ
 #### パラメータ
 
 * **ターゲットリスト** (必須) プロスペクトを追加するリスト。
-参照: [&#34;delete&#34; オプションのサポートされているパラメータ](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
+参照: ["delete" オプションのサポートされているパラメータ](http://developer.pardot.com/kb/api-version-4/list-memberships/#supported-operations_1)
   
+
+<blockquote>
 ドロップダウンに表示されないリストを追加する必要がある場合は、URL `https://pi.pardot.com/list/read/id/XXXX` でリストIDを見つけることができます。
+</blockquote>
+
 
 * **プロスペクト検索識別子:** (必須) プロスペクトを識別するための識別子を選択します。
   * **prospect_email:** プロスペクトに関連付けられたメールアドレス

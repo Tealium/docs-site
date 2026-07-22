@@ -13,13 +13,13 @@ The insight for the X Custom Audiences connector provides the size and creation 
 
 The X Custom Audiences API enables X advertisers to manage advertising operations programmatically. X Custom Audiences Insights offers information on the audience list set up in the connector action.
 
-![](/images/server-side-connectors/x-custom-audiences-insights.png)
+![](https://docs.tealium.com/images/server-side-connectors/x-custom-audiences-insights.png)
 
 ## Using Connector Insights
 
-To access Connector Insights, go to **Connect &gt; Audience Connectors**, search for the **X Custom Audiences** connector, and click **Insights**.
+Go to **Connect > Connectors**, find the **X Custom Audiences** connector, and select an action. On the action screen, click the **Insights** tab.
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 ## Understanding X Custom Audiences Insights
 
@@ -33,4 +33,4 @@ The X Custom Audiences Insights uses the [Custom Audiences API endpoint](https:/
 ## Additional Resources
 
 * [Custom Audiences](https://developer.x.com/en/docs/x-ads-api/audiences/api-reference/custom-audiences)
-* [X Custom Audiences Connector Setup Guide]()
+* [X Custom Audiences Connector Setup Guide](https://docs.tealium.com/X-custom-audiences-connector/)

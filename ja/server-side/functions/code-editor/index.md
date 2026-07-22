@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/functions/code-editor/
 ---
 Tealium 関数コードエディターは、関数の作成、構成、テスト、監視を行うタブを提供し、ログを表示したり認証トークンを取得することもできます。
 
-![](/images/server-side/functions-code-editor.png)
+![](https://docs.tealium.com/images/server-side/functions-code-editor.png)
 
 ## コードタブ
 
@@ -21,7 +21,7 @@ Tealium 関数コードエディターは、関数の作成、構成、テスト
 
 ## ログタブ
 
-**ログ**タブでは、関数実行からのログファイル一覧を表示します。ログファイルは30日間保持されます。関数はJavaScriptコンソール関数を使用して、メッセージやエラーをログに書き込むことができます。詳細については、[JavaScriptコンソールAPI]()を参照してください。
+**ログ**タブでは、関数実行からのログファイル一覧を表示します。ログファイルは30日間保持されます。関数はJavaScriptコンソール関数を使用して、メッセージやエラーをログに書き込むことができます。詳細については、[JavaScriptコンソールAPI](https://docs.tealium.com/function-modules/#javascript-console-api)を参照してください。
 
 ## 構成タブ
 

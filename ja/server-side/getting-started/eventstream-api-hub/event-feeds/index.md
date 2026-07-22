@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 各フィードには、**All Events** フィードからフィルタリングするための1つ以上の条件が必要です。イベント属性の値を使用して、特定のタイプのイベントを識別するシンプルなルールを作成します。  
 例：  
     ```none
-    tealium_event EQUALS &#34;purchase&#34;
+    tealium_event EQUALS "purchase"
     AND
     order_total IS GREATER THAN 1000
     ```
@@ -33,11 +33,11 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 フィードには2つの条件が含まれていることに注意してください：
 
-* `tealium_event EQUALS &#34;search&#34;`
+* `tealium_event EQUALS "search"`
 * `search_results EQUALS 0`
 
 イベントフィードの例：**Search with No Results**
 
-![](/images/server-side/getting-started-eventstream-event-feed-example.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-event-feed-example.png)
 
 次のチュートリアルでは、イベントフィードの追加方法を学びます。

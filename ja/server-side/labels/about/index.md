@@ -9,4 +9,4 @@ url: https://docs.tealium.com/ja/server-side/labels/about/
 
 ラベルは、大部分が同じであるが重要な違いがある大量の要素を識別するのに特に便利です。例えば、**VIP - 過去の購入**というAudienceStreamバッジ属性のいくつかのインスタンスを持っていて、iOSユーザーとAndroidユーザーを区別する必要があるかもしれません。ユーザーのデバイスに応じてAudienceStream属性にラベルを適用し、これらのラベルを使用して属性をフィルタリングすることができます。
 
-![](/images/server-side/as-attribute-example-label.png)
+![](https://docs.tealium.com/images/server-side/as-attribute-example-label.png)

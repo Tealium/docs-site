@@ -5,13 +5,13 @@ url: https://docs.tealium.com/platforms/android-kotlin/api/location-manager/
 ---
 ## Class: LocationManager
 
-The `LocationManager` class provides methods for gathering location data, creating and monitoring geofences. The following summarizes the commonly used methods of the `LocationManager` class for Tealium Kotlin. For additional details, see the [Location module](/platforms/android-kotlin/module-list/location/).
+The `LocationManager` class provides methods for gathering location data, creating and monitoring geofences. The following summarizes the commonly used methods of the `LocationManager` class for Tealium Kotlin. For additional details, see the [Location module](https://docs.tealium.com/platforms/android-kotlin/module-list/location/).
 
 | Method | Description |
 | ----- | ------ |
 | [`addGeofence()`](#addgeofence) | Creates and adds a new `GeofenceLocation` to allGeofenceLocations. |
 | [`allGeofenceNames()`](#allgeofencenames) | Returns a list of all `GeofenceLocation` names. |
-| [`lastLocation()`](#lastlocation) | Returns last known location result for user&#39;s device. |
+| [`lastLocation()`](#lastlocation) | Returns last known location result for user's device. |
 | [`lastLocationLatitude()`](#lastlocationlatitude) | Returns latitude for last location result. |
 | [`lastLocationLongitude()`](#lastlocationlongitude) | Returns longitude for last location result. |
 | [`startLocationTracking()`](#startlocationtracking) | Starts location tracking based on the accuracy and interval updates you want. |
@@ -23,7 +23,7 @@ Provides to ability to manually create and add geofences for monitoring.
 
 ```java
 tealiumInstance.location?.addGeofence(
-							&#34;Tealium-HQ&#34;,
+							"Tealium-HQ",
 							45.0, // latitude
 							100.0, // longitude
 							100, // radius
@@ -35,7 +35,7 @@ tealiumInstance.location?.addGeofence(
 
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Name of location | `&#34;Tealium-HQ&#34;` |
+| `name` | `String` | Name of location | `"Tealium-HQ"` |
 | `latitude` | `Double` | Latitude of location | `45.0` |
 | `longitude` | `Double` | Longitude of location | `100.0` |
 | `radius` | `Int` | Radius in meters of geofence | `100` |
@@ -54,7 +54,7 @@ tealiumInstance.location?.allGeofenceNames()
 
 ### `lastLocation()`
 
-Returns most recent location recorded for a user&#39;s device or `null` if location is not available.
+Returns most recent location recorded for a user's device or `null` if location is not available.
 
 ```java
 val location = tealiumInstance.location?.lastLocation()
@@ -62,7 +62,7 @@ val location = tealiumInstance.location?.lastLocation()
 
 ### `lastLocationLatitude()`
 
-Returns the latitude for the most recent location recorded for a user&#39;s device.
+Returns the latitude for the most recent location recorded for a user's device.
 
 ```java
 val latitude = tealiumInstance.location?.lastLocationLatitude()
@@ -70,7 +70,7 @@ val latitude = tealiumInstance.location?.lastLocationLatitude()
 
 ### `lastLocationLongitude()`
 
-Returns the longitude for the most recent location recorded for a user&#39;s device.
+Returns the longitude for the most recent location recorded for a user's device.
 
 ```java
 val longitude = tealiumInstance.location?.lastLocationLongitude()
@@ -85,7 +85,7 @@ tealiumInstance.location?.startLocationTracking(true, 1000)
 ```
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `isHighAcuracy` | `Boolean` | Set to &#39;true&#39; for high precision location tracking, or `false` for accuracy within 100 meters  | `true` |
+| `isHighAcuracy` | `Boolean` | Set to 'true' for high precision location tracking, or `false` for accuracy within 100 meters  | `true` |
 | `updateInterval` | `Int` | Interval in milliseconds for preferred location update frequency | `10000` |
 
 ### `stopLocationTracking()`

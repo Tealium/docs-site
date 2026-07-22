@@ -3,17 +3,17 @@ title: ロケーションモジュール
 description: イベントのためのデバイスの位置情報を提供し、興味のあるポイントの周りにジオフェンスを追加する機能を提供します。
 url: https://docs.tealium.com/ja/platforms/ios-swift/module-list/location/
 ---
-ロケーションモジュールは、iOSアプリが位置情報を受け取り、ジオフェンスを構成および監視する機能を有効にします。[詳細はこちら](/ja/platforms/getting-started-mobile/location/)で位置追跡とジオフェンシングについて学びましょう。
+ロケーションモジュールは、iOSアプリが位置情報を受け取り、ジオフェンスを構成および監視する機能を有効にします。[詳細はこちら](https://docs.tealium.com/ja/platforms/getting-started-mobile/location/)で位置追跡とジオフェンシングについて学びましょう。
 
 ## 対応プラットフォーム
 
 以下のプラットフォームが対応しています：
 
-* [iOS](/ja/platforms/ios-swift/)
+* [iOS](https://docs.tealium.com/ja/platforms/ios-swift/)
 
 ## 要件
 
-* [Tealium for Swift](/ja/platforms/ios-swift/) (1.9.0&#43;)
+* [Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/) (1.9.0+)
 
 ## サンプルアプリ
 
@@ -25,24 +25,24 @@ Swift Package Manager、CocoaPods、またはCarthageでロケーションモジ
 
 ### Swift Package Manager（推奨）
 
-バージョン1.9.0&#43;でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：
+バージョン1.9.0+でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：
 
-1. Xcodeプロジェクトで**ファイル &gt; パッケージ依存関係を追加**を選択します。
+1. Xcodeプロジェクトで**ファイル > パッケージ依存関係を追加**を選択します。
 1. リポジトリURLを入力します：`https://github.com/tealium/tealium-swift`
 1. バージョンルールを構成します。通常は`次のメジャーまで`が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
 1. インストールするモジュールのリストから`ロケーション`モジュールを選択し、Xcodeプロジェクトの**フレームワークとライブラリ**の下にあるアプリターゲットごとに追加します。
 
-[iOSのSwift Package Managerインストールについてもっと学ぶ](/ja/platforms/ios-swift/install/#swift-package-manager-recommended)。
+[iOSのSwift Package Managerインストールについてもっと学ぶ](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)。
 
 ### CocoaPods
 
 CocoaPodsでロケーションモジュールをインストールするには、Podfileに次のポッドを追加します：
 
 ```perl
-pod &#39;tealium-swift/Location&#39;
+pod 'tealium-swift/Location'
 ```
 
-[iOSのCocoaPodsインストールについてもっと学ぶ](/ja/platforms/ios-swift/install/#cocoapods)。
+[iOSのCocoaPodsインストールについてもっと学ぶ](https://docs.tealium.com/ja/platforms/ios-swift/install/#cocoapods)。
 
 ### Carthage
 
@@ -55,17 +55,21 @@ Carthageでロケーションモジュールをインストールするには：
       TealiumLocation.framework
       ```
 
-[iOSのCarthageインストールについてもっと学ぶ](/ja/platforms/ios-swift/install/#carthage)。
+[iOSのCarthageインストールについてもっと学ぶ](https://docs.tealium.com/ja/platforms/ios-swift/install/#carthage)。
 
 ## 初期化
 
-モジュールを初期化するには、`TealiumConfig`の[`collectors`](/ja/platforms/ios-swift/api/tealium-config/#collectors)プロパティに指定されていることを確認してください。
+モジュールを初期化するには、`TealiumConfig`の[`collectors`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#collectors)プロパティに指定されていることを確認してください。
 
 `config.collectors = [Collectors.Location]`
 
 `TealiumConfig`インスタンスの[位置精度](#location-tracking)および[ジオフェンシング](#geofencing)の追加オプションも構成可能です。
 
-[Collectors](/ja/platforms/ios-swift/modules/#collectors)のドキュメントを確認して、必要なコレクターを正しく指定する方法を理解してください。
+
+<blockquote>
+[Collectors](https://docs.tealium.com/ja/platforms/ios-swift/modules/#collectors)のドキュメントを確認して、必要なコレクターを正しく指定する方法を理解してください。
+</blockquote>
+
 
 ### 認証
 
@@ -88,21 +92,21 @@ func start() {
 ```
 ## ジオフェンシング
 
-ジオフェンシングはデフォルトで有効になっており、ジオフェンスを構成するには、以下の方法のいずれかを使用して[ジオフェンス JSON ファイル](/ja/platforms/getting-started-mobile/location/#json-file)を提供します：
+ジオフェンシングはデフォルトで有効になっており、ジオフェンスを構成するには、以下の方法のいずれかを使用して[ジオフェンス JSON ファイル](https://docs.tealium.com/ja/platforms/getting-started-mobile/location/#json-file)を提供します：
 
 * **ホストされた URL**  
-自分のホストされたジオフェンスファイルをURLとして提供します。プロパティ[`geofenceUrl`](/ja/platforms/ios-swift/api/tealium-config/#geofenceurl)を使用します。  
-このオプションは、公開構成のURLを上書きした場合や[ホストされたデータレイヤー]()を使用したい場合に推奨されます。  
+自分のホストされたジオフェンスファイルをURLとして提供します。プロパティ[`geofenceUrl`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#geofenceurl)を使用します。  
+このオプションは、公開構成のURLを上書きした場合や[ホストされたデータレイヤー](https://docs.tealium.com/use-case-supplementing-product-data/)を使用したい場合に推奨されます。  
 ```swift
-config.geofenceUrl = &#34;https://example.com/geofences.json&#34;
+config.geofenceUrl = "https://example.com/geofences.json"
 ```
 * **ローカルファイル**  
-アプリ内に保存されているジオフェンスファイルを使用するには、プロパティ[`geofenceFileName`](/ja/platforms/ios-swift/api/tealium-config/#geofencefilename)を構成します。ファイル拡張子は省略します。
+アプリ内に保存されているジオフェンスファイルを使用するには、プロパティ[`geofenceFileName`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#geofencefilename)を構成します。ファイル拡張子は省略します。
 ```swift
-config.geofenceFileName = &#34;geofences&#34; // geofences.json
+config.geofenceFileName = "geofences" // geofences.json
 ```
 
-ジオフェンシングを無効にするには、プロパティ[`geofenceTrackingEnabled`](/ja/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled)を構成します：
+ジオフェンシングを無効にするには、プロパティ[`geofenceTrackingEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled)を構成します：
 
 ```swift
 config.geofenceTrackingEnabled = false
@@ -135,8 +139,8 @@ config.geofenceTrackingEnabled = false
 | `geofence_name`            | `String` | ジオフェンス領域の名前 | `Tealium_San_Diego` |
 | `geofence_transition_type` | `String` | ジオフェンス遷移イベントのタイプ | `geofence_entered` または `geofence_exited` |
 | `movement_speed`           | `String` | デバイスの瞬間速度、メートル毎秒で測定 | `1.0` |
-| `location_timestamp`       | `String` | ユーザーがジオフェンス領域に入った/出た時の記録された日時（GMT） | `2020-01-28 16:29:46 &#43;0000`|
+| `location_timestamp`       | `String` | ユーザーがジオフェンス領域に入った/出た時の記録された日時（GMT） | `2020-01-28 16:29:46 +0000`|
 
 ## API リファレンス
 
-ロケーションモジュールで使用されるメソッドのリファレンスについては、iOS APIのTealium SDKの[`LocationModule`](/ja/platforms/ios-swift/api/location-module/)クラスを参照してください。
+ロケーションモジュールで使用されるメソッドのリファレンスについては、iOS APIのTealium SDKの[`LocationModule`](https://docs.tealium.com/ja/platforms/ios-swift/api/location-module/)クラスを参照してください。

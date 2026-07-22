@@ -20,7 +20,7 @@ Go to your project overview and select **OAuth Server-to-Server** in the **Crede
     * Client secret
     * Technical Account Email
 1. Note your credentials and return to Tealium to complete the connector configuration.
-1. In Tealium, go to the Connector Marketplace and add a new Adobe Campaign v8 connector. For general instructions on how to add a connector, see [About Connectors]().
+1. In Tealium, go to the Connector Marketplace and add a new Adobe Campaign v8 connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 1. After adding the connector, configure the following settings:
     * **Client ID**  
         * (Required) The Client ID (API Key).
@@ -44,7 +44,7 @@ Migrate existing Adobe Campaign Classic connectors to Adobe Campaign V8 connecto
 
 Complete the following steps to migrate your Adobe Analytics tag using Tealium Tools:
 
-1. Add the Adobe Campaign Classic to v8 Migrator to your Tealium Tools using the JSON definition at the following URL: `https://solutions.tealium.net/hosted/tealiumTools/acc_to_v8/acc_to_v8.json`. For more information about adding custom tools, see [Manage Custom Tools]().
+1. Add the Adobe Campaign Classic to v8 Migrator to your Tealium Tools using the JSON definition at the following URL: `https://solutions.tealium.net/hosted/tealiumTools/acc_to_v8/acc_to_v8.json`. For more information about adding custom tools, see [Manage Custom Tools](https://docs.tealium.com/tealium-tools-browser-extension/#add-a-custom-tool).
 1. Go to either **Event Connectors** or **Audience Connectors** and launch the Adobe Campaign Classic to v8 Migrator tool from Tealium Tools.
 1. Select how actions should be migrated. To disable your existing Adobe Campaign Classic actions as part of the migration, select **Disable existing action**. To migrate only active actions, select **Migrate only active actions.**
 1. Select the scope for the migration from the drop-down list:
@@ -59,7 +59,7 @@ The Migrator tool automatically migrates existing Adobe Campaign Classic connect
 
 ## IP addresses to allow
 
-You will need to add the [Tealium IP addresses]() to your [Adobe Campaign allow list](https://experience.adobe.com/#/controlpanel/instances) (**Adobe Experience Platform** &gt; **Control Panel** &gt; **Instances**).
+You will need to add the [Tealium IP addresses](https://docs.tealium.com/ip-allow-list/) to your [Adobe Campaign allow list](https://experience.adobe.com/#/controlpanel/instances) (**Adobe Experience Platform** > **Control Panel** > **Instances**).
 
 For more information, see [Adobe Campaign: Allowlist IP addresses](https://experienceleague.adobe.com/en/docs/control-panel-learn/tutorials/instance-settings/allowlist-ip-adresses).
 
@@ -88,12 +88,12 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| SOAP Action Header Value | `SOAP` Action, for example: `nms:rtEvent#PushEvent`.&lt;br&gt;This value will be assigned to `SOAPAction` `HTTP` header. |
-| SOAP Request Body Prefix | Provide a template of the opening portion of `SOAP` Request, for example: &lt;br&gt;`&lt;?xml version=&#34;`1`.0&#34; encoding=&#34;utf-`8`&#34;?&gt;&lt;soapenv:Envelope xmlns:soapenv=&#34;http://schemas.xmlsoap.org/soap/envelope/&#34; xmlns:urn=&#34;urn:nms:rtEvent&#34;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;urn:PushEvent&gt;&lt;urn:domEvent&gt;`.&lt;br&gt;You can use template variables in the `SOAP` Request Body Prefix. For more information, see . |
-| SOAP Request Body Data | Provide a template for the `SOAP` Request batch item to be sent.&lt;br&gt;You can use template variables in the `SOAP` Request Body Data. |
-| SOAP Request Body Suffix | Provide a template for the closing portion of `SOAP` Request, for example: &lt;br&gt;`&lt;/urn:domEvent&gt;&lt;/urn:PushEvent&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;`.&lt;br&gt;You can use template variables in the `SOAP` Request Body Suffix. |
+| SOAP Action Header Value | `SOAP` Action, for example: `nms:rtEvent#PushEvent`.<br>This value will be assigned to `SOAPAction` `HTTP` header. |
+| SOAP Request Body Prefix | Provide a template of the opening portion of `SOAP` Request, for example: <br>`<?xml version="`1`.0" encoding="utf-`8`"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:nms:rtEvent"><soapenv:Header/><soapenv:Body><urn:PushEvent><urn:domEvent>`.<br>You can use template variables in the `SOAP` Request Body Prefix. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). |
+| SOAP Request Body Data | Provide a template for the `SOAP` Request batch item to be sent.<br>You can use template variables in the `SOAP` Request Body Data. |
+| SOAP Request Body Suffix | Provide a template for the closing portion of `SOAP` Request, for example: <br>`</urn:domEvent></urn:PushEvent></soapenv:Body></soapenv:Envelope>`.<br>You can use template variables in the `SOAP` Request Body Suffix. |
 | SOAP Request Body Joiner | A character or string to use between body items when batching. If not specified, an empty string is used. |
-| SOAP Request Template Variables | Provide template variables as data input for `SOAP Request Body Prefix`, `SOAP Request Body Data` and `SOAP Request Body Suffix`. For more information, see .&lt;br&gt;Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. |
+| SOAP Request Template Variables | Provide template variables as data input for `SOAP Request Body Prefix`, `SOAP Request Body Data` and `SOAP Request Body Suffix`. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br>Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. |
 | SOAP Response Error Identifier | If the response contains an error string, it is marked as a failure. By default, an `HTTP` response status outside `200`-`299` range is also marked as a failure. |
 
 ### Send Custom SOAP Request
@@ -102,7 +102,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| SOAP Action Header Value | `SOAP` Action, for example: `nms:rtEvent#PushEvent`.&lt;br&gt;This value will be assigned to `SOAPAction` `HTTP` header. |
-| SOAP Request Body Template | Provide `SOAP` Request Body Template to be sent. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
-| SOAP Request Body Template Variables | Provide template variables as data input for `SOAP Request Body Template`. For more information, see . Name nested template variables with the dot notation, for example `items.name`. Nested template variables are typically built from data layer list attributes. |
+| SOAP Action Header Value | `SOAP` Action, for example: `nms:rtEvent#PushEvent`.<br>This value will be assigned to `SOAPAction` `HTTP` header. |
+| SOAP Request Body Template | Provide `SOAP` Request Body Template to be sent. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+| SOAP Request Body Template Variables | Provide template variables as data input for `SOAP Request Body Template`. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation, for example `items.name`. Nested template variables are typically built from data layer list attributes. |
 | SOAP Response Error Identifier | If the response contains an error string, it is marked as a failure. By default, an `HTTP` response status outside `200`-`299` range is also marked as a failure. |

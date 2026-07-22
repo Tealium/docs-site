@@ -11,7 +11,7 @@ The CookieConsent v3 Loader extension requires the Manage JavaScript Code Extens
 
 ## How it works
 
-This extension loads the CookieConsent library and initializes it using a configuration object `ccConfig`. You can define categories, services, styles, language settings, and behavior through the extension&#39;s JSON configuration.
+This extension loads the CookieConsent library and initializes it using a configuration object `ccConfig`. You can define categories, services, styles, language settings, and behavior through the extension's JSON configuration.
 
 The tool is designed to operate in opt-in or opt-out mode and supports advanced features such as disabling page interaction, customizing modal layout, and setting linked categories and cookie tables.
 
@@ -25,9 +25,9 @@ When the page loads, the extension:
 
 1. In Tealium iQ, go to **Extensions** and click **Add Extension**.
 1. Click the **Privacy** tab.
-1. Click **&#43; Add** next to the **CookieConsent v3 Loader** extension.
+1. Click **+ Add** next to the **CookieConsent v3 Loader** extension.
 1. Enter a **Title** for the extension.
-1. Under **Scope**, use the default option **DOM Ready**. It supports load conditions, which lets you control when the extension runs. The **Preloader** scope is also supported but doesn&#39;t allow load conditions.
+1. Under **Scope**, use the default option **DOM Ready**. It supports load conditions, which lets you control when the extension runs. The **Preloader** scope is also supported but doesn't allow load conditions.
 1. (Optional) Click **Add Condition** to apply a load condition for this extension. This is useful for running the banner only in specific scenarios (for example, when a region-specific load rule is true). Ensure the conditions match your consent integration’s enforcement rules to avoid enforcement issues.
 1. In the **Configuration** code, update the `ccConfig` JSON object to define your settings. This includes:
    * Category definitions such as `necessary`, `analytics`, and `marketing`.

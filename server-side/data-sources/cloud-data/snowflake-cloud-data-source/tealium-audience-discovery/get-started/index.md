@@ -15,14 +15,14 @@ This guide walks you through setting up Tealium Audience Discovery for Snowflake
 
 Install Tealium Audience Discovery for Snowflake from the Snowflake Marketplace and grant the app access to the databases and schemas you want to use.
 
-For detailed instructions, see [Install Tealium Audience Discovery for Snowflake]().
+For detailed instructions, see [Install Tealium Audience Discovery for Snowflake](https://docs.tealium.com/install-tealium-audience-discovery/).
 
 ## Step 2: Create your first audience
 
 1. Open Tealium Audience Discovery for Snowflake.
-1. Go to **Audiences** and click **&#43; Create new audience**.
+1. Go to **Audiences** and click **+ Create new audience**.
 1. Enter an audience name and description.
-1. Select **Point &amp; Click**.
+1. Select **Point & Click**.
 1. Select a **Database**, **Schema**, and **Table / View**.
 1. Select a **User ID column** to uniquely identify each user.
 1. Click **Next**.
@@ -33,18 +33,18 @@ For detailed instructions, see [Install Tealium Audience Discovery for Snowflake
 
 The app runs an initial load and begins refreshing the audience on the schedule you set. Monitor progress from the audience details view.
 
-For detailed configuration options, see [Manage audiences in Tealium Audience Discovery for Snowflake]().
+For detailed configuration options, see [Manage audiences in Tealium Audience Discovery for Snowflake](https://docs.tealium.com/manage-discovery-audiences/).
 
 ## Step 3: Connect the audience to Tealium
 
 1. In the audience list, open the actions menu and click **Share**.
 1. Copy the **Database**, **Schema**, and **Role** values.
-1. In Tealium, go to **Connect &gt; Data Sources** and click **Add Data Source**.
+1. In Tealium, go to **Connect > Data Sources** and click **Add Data Source**.
 1. Select **Snowflake** under **Data Cloud**.
 1. Enter a name and configure the connection using the copied values.
 1. Enable processing and configure processing settings.
 1. Under **Build query**, select the audience table and the columns to import.
-1. Set the query mode to **Timestamp &#43; Incrementing** and map the following columns:
+1. Set the query mode to **Timestamp + Incrementing** and map the following columns:
 
    * **Timestamp column** — `TEALIUM_CTRL_COL_CREATED_AT`
    * **Incrementing column** — `TEALIUM_CTRL_COL_INCREMENTAL_ID`
@@ -56,10 +56,10 @@ For detailed configuration options, see [Manage audiences in Tealium Audience Di
 
 Tealium begins loading audience records on the schedule you configured.
 
-For detailed configuration options, see [Connect Snowflake audiences to Tealium]().
+For detailed configuration options, see [Connect Snowflake audiences to Tealium](https://docs.tealium.com/connect-snowflake-audiences/).
 
 ## Next steps
 
 * Configure connectors to activate audience segments
 * Enrich audience data using Tealium attributes and audiences
-* [Track membership changes]() using the `TEALIUM_CTRL_COL_IS_ACTIVE` column to trigger actions when users leave or re-qualify for an audience
+* [Track membership changes](https://docs.tealium.com/connect-snowflake-audiences/#track-membership-changes) using the `TEALIUM_CTRL_COL_IS_ACTIVE` column to trigger actions when users leave or re-qualify for an audience

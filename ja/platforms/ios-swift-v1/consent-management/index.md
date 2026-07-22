@@ -2,7 +2,11 @@
 title: 同意管理
 description: iOS（Swift）での同意管理の実装方法を学びます。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/
----これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、[iOS（Swift）用Tealium 2.x](/ja/platforms/ios-swift/)をご覧ください。
+---
+<blockquote>
+これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、[iOS（Swift）用Tealium 2.x](https://docs.tealium.com/ja/platforms/ios-swift/)をご覧ください。
+</blockquote>
+
 
 ## 使用方法
 
@@ -12,7 +16,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/
 
 サポートされているプラットフォームには、iOS、macOS、tvOS、およびwatchOSが含まれます。
 
-[同意管理についてもっと学ぶ](/ja/platforms/getting-started-mobile/consent-management/)。
+[同意管理についてもっと学ぶ](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)。
 
 
 
@@ -24,7 +28,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/
 
 ## 無効化
 
-同意管理を無効にするには、初期化時に[TealiumConfig](/ja/platforms/ios-swift-v1/api/)オブジェクトの無効化モジュールリストに含めてください。
+同意管理を無効にするには、初期化時に[TealiumConfig](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/)オブジェクトの無効化モジュールリストに含めてください。
 
 
 ## データレイヤー
@@ -35,7 +39,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/
 | --- | --- | --- |
 | `policy` | 同意が収集されたポリシー（デフォルト：`gdpr`） | `gdpr` |
 | `consent_status` | ユーザーの現在の同意状態 | [`consented`, `notConsented`] |
-| `consent_categories` | ユーザーが選択した同意カテゴリの配列 | [`&#34;analytics&#34;`, `&#34;cdp&#34;`] |
+| `consent_categories` | ユーザーが選択した同意カテゴリの配列 | [`"analytics"`, `"cdp"`] |
 
 
 ## 例
@@ -47,10 +51,10 @@ class TealiumHelper {
 	var tealium: Tealium?
 	// ...
 	private func initTealium() {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
- 	       		                 profile: &#34;PROFILE&#34;,
-        	   	                 environment: &#34;ENVIRONMENT&#34;,
-           		                 datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+ 	       		                 profile: "PROFILE",
+        	   	                 environment: "ENVIRONMENT",
+           		                 datasource: "DATASOURCE")
 
 		// 初期状態をnotConsentedに構成します。送信されたすべてのイベントは削除されます。
 		// config.initialUserConsentStatus = .notConsented
@@ -102,20 +106,20 @@ func setConsentStatusSimple(_ consented: Bool) {
 
 Tealium Helperクラスで、アプリユーザーが追跡に同意または拒否したときに次のメソッドを定義して呼び出します。ユーザーが追跡に同意した場合、同意マネージャーは自動的にすべての追跡カテゴリにオプトインします。
 
-![](/images/platforms/ios-swift/simple-consent)
+![](https://docs.tealium.com/images/platforms/ios-swift/simple-consent)
 
 ### グループ化されたオプトイン
 
 この例では、追跡カテゴリをより少ない数の上位カテゴリにグループ化するカテゴリベースの同意モデルを示しています。
 
-たとえば、Tealiumの同意カテゴリ`&#34;big_data&#34;`, `&#34;analytics&#34;`, `&#34;monitoring&#34;`を`&#34;performance&#34;`という単一のカテゴリにグループ化することを選択するかもしれません。これは、ユーザーがカテゴリの完全なリストから選択するよりも簡単かもしれません。最も許可されていないものから最も許可されているもの（すべてのカテゴリ）までの範囲でスライダーインターフェースでこれを表現することを選択するかもしれません。
+たとえば、Tealiumの同意カテゴリ`"big_data"`, `"analytics"`, `"monitoring"`を`"performance"`という単一のカテゴリにグループ化することを選択するかもしれません。これは、ユーザーがカテゴリの完全なリストから選択するよりも簡単かもしれません。最も許可されていないものから最も許可されているもの（すべてのカテゴリ）までの範囲でスライダーインターフェースでこれを表現することを選択するかもしれません。
 
 ```swift
 func updateConsentPreferences(_ dict: [String: Any]) {
-    if let status = dict[&#34;consentStatus&#34;] as? String {
+    if let status = dict["consentStatus"] as? String {
         var tealiumConsentCategories = [TealiumConsentCategories]()
-        let tealiumConsentStatus = (status == &#34;consented&#34;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
-        if let categories = dict[&#34;consentCategories&#34;] as? [String] {
+        let tealiumConsentStatus = (status == "consented") ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        if let categories = dict["consentCategories"] as? [String] {
             tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
         }
         self.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
@@ -126,34 +130,34 @@ func updateConsentPreferences(_ dict: [String: Any]) {
 // ユーザーが構成を保存するときにこの関数を呼び出します。
 func setUserConsentPreferences(){
 	// グループ化されたカテゴリを含む辞書を定義します。
-	let consentGroups = [&#34;Off&#34; : [],
-	        &#34;Performance&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;],
-	        &#34;Marketing&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;, &#34;affiliates&#34;, &#34;email&#34;, &#34;search&#34;, &#34;engagement&#34;, &#34;cdp&#34;],
-	        &#34;Personalized Advertising&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;, &#34;affiliates&#34;, &#34;email&#34;, &#34;search&#34;, &#34;engagement&#34;, &#34;cdp&#34;, &#34;display_ads&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;cookiematch&#34;, &#34;misc&#34;]]
+	let consentGroups = ["Off" : [],
+	        "Performance": ["analytics", "monitoring", "big_data", "mobile", "crm"],
+	        "Marketing": ["analytics", "monitoring", "big_data", "mobile", "crm", "affiliates", "email", "search", "engagement", "cdp"],
+	        "Personalized Advertising": ["analytics", "monitoring", "big_data", "mobile", "crm", "affiliates", "email", "search", "engagement", "cdp", "display_ads", "personalization", "social", "cookiematch", "misc"]]
 
 	// これは実際のアプリでは通常動的ですが、ユーザーが選択した構成レベルです。
-	let userSelection = &#34;Marketing&#34;
+	let userSelection = "Marketing"
 
 	if let userList = consentGroups[userSelection] {
-	  let settingsDict: [String: Any] = [&#34;consentStatus&#34;: &#34;consented&#34;, &#34;consentCategories&#34;: userList]
+	  let settingsDict: [String: Any] = ["consentStatus": "consented", "consentCategories": userList]
 
 	  updateConsentPreferences(settingsDict)
 	}
 }
 ```
 
-![](/images/platforms/ios-swift/grouped-gif.gif)
+![](https://docs.tealium.com/images/platforms/ios-swift/grouped-gif.gif)
 ### カテゴリーベースのオプトイン
 
-この例では、ユーザーが全カテゴリーのリストから明示的に各カテゴリーを選択する必要があるカテゴリーベースの同意モデルを示しています。デフォルト状態は`&#34;Unknown&#34;`で、ユーザーが同意を提供するまでヒットをキューに入れます。ユーザーが任意のカテゴリーに同意すると、イベントはキューから出され、同意したカテゴリーのデータが各トラッキングコールに追加されます。
+この例では、ユーザーが全カテゴリーのリストから明示的に各カテゴリーを選択する必要があるカテゴリーベースの同意モデルを示しています。デフォルト状態は`"Unknown"`で、ユーザーが同意を提供するまでヒットをキューに入れます。ユーザーが任意のカテゴリーに同意すると、イベントはキューから出され、同意したカテゴリーのデータが各トラッキングコールに追加されます。
 
 ```swift
 // Tealium consentManager APIを呼び出すヘルパーメソッド
 func updateConsentPreferences(_ dict: [String: Any]) {
-    if let status = dict[&#34;consentStatus&#34;] as? String {
+    if let status = dict["consentStatus"] as? String {
         var tealiumConsentCategories = [TealiumConsentCategories]()
-        let tealiumConsentStatus = (status == &#34;consented&#34;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
-        if let categories = dict[&#34;consentCategories&#34;] as? [String] {
+        let tealiumConsentStatus = (status == "consented") ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        if let categories = dict["consentCategories"] as? [String] {
             tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
         }
         self.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
@@ -163,9 +167,9 @@ func updateConsentPreferences(_ dict: [String: Any]) {
 // Tealium consentManager APIにカテゴリーリストを渡す例示関数
 func setUserConsentPreferences(_ categories: [String]){
 
-	let settingsDict: [String: Any] = [&#34;consentStatus&#34;: &#34;consented&#34;, &#34;consentCategories&#34;: categories]
+	let settingsDict: [String: Any] = ["consentStatus": "consented", "consentCategories": categories]
 	updateConsentPreferences(settingsDict)
 }
 ```
 
-![](/images/platforms/ios-swift/category-based)
+![](https://docs.tealium.com/images/platforms/ios-swift/category-based)

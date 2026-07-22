@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/client-side-tags/rakuten-advertising-tag/
 
 ### タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスして、楽天マーケティングタグを追加します。詳細については、[タグの管理]()を参照してください。
+まず、Tealiumのタグマーケットプレイスにアクセスして、楽天マーケティングタグを追加します。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/client-side-tags/rakuten-advertising-tag/
 
 ### データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -46,78 +46,78 @@ url: https://docs.tealium.com/ja/client-side-tags/rakuten-advertising-tag/
 
 |変数| 説明|
 |---| ---|
-|`trackingKey`|  &lt;ul&gt;&lt;li&gt;トラッキングキー&lt;/li&gt;&lt;/ul&gt; |
-|`siteSection`|  &lt;ul&gt;&lt;li&gt;サイトセクション&lt;/li&gt;&lt;/ul&gt; |
-|`conversionType`|  &lt;ul&gt;&lt;li&gt;コンバージョンタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`customerStatus`|  &lt;ul&gt;&lt;li&gt;顧客ステータス&lt;/li&gt;&lt;/ul&gt; |
-|`discountAmount`|  &lt;ul&gt;&lt;li&gt;割引額&lt;/li&gt;&lt;/ul&gt; |
-|`optionalData`|  &lt;ul&gt;&lt;li&gt;オプショナルデータ&lt;/li&gt;&lt;/ul&gt; |
+|`trackingKey`|  <ul><li>トラッキングキー</li></ul> |
+|`siteSection`|  <ul><li>サイトセクション</li></ul> |
+|`conversionType`|  <ul><li>コンバージョンタイプ</li></ul> |
+|`customerStatus`|  <ul><li>顧客ステータス</li></ul> |
+|`discountAmount`|  <ul><li>割引額</li></ul> |
+|`optionalData`|  <ul><li>オプショナルデータ</li></ul> |
 
 #### Eコマース
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文ID。&lt;/li&gt;&lt;li&gt;`_corder` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計。&lt;/li&gt;&lt;li&gt;`_csubtotal` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;税額。&lt;/li&gt;&lt;li&gt;`_ctax` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;通貨。&lt;/li&gt;&lt;li&gt;`_ccurrency` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;プロモーションコード。&lt;/li&gt;&lt;li&gt;`_cpromo` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_consumed`|  &lt;ul&gt;&lt;li&gt;消費済み。&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipped_country`|  &lt;ul&gt;&lt;li&gt;発送国。&lt;/li&gt;&lt;/ul&gt; |
-|`order_status`|  &lt;ul&gt;&lt;li&gt;注文ステータス。&lt;/li&gt;&lt;li&gt;値は以下の通りです：&lt;ul&gt;&lt;li&gt;既存&lt;/li&gt;&lt;li&gt;リターニング&lt;/li&gt;&lt;li&gt;新規&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-| `order_shipped` |  &lt;ul&gt;&lt;li&gt;発送済み。&lt;/li&gt;&lt;/ul&gt; |
-|`order_site_name`|  &lt;ul&gt;&lt;li&gt;サイト名。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;顧客ID。&lt;/li&gt;&lt;li&gt;`_ccustid` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_score`|  &lt;ul&gt;&lt;li&gt;顧客スコア。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_country`|  &lt;ul&gt;&lt;li&gt;顧客国。&lt;/li&gt;&lt;li&gt;`_ccountry` を上書きします。&lt;/li&gt;&lt;li&gt;`order_shipped_country` が提供されていない場合は、`order_shipped_country` の代わりに使用されます。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品IDリスト。&lt;/li&gt;&lt;li&gt;`product_sku` が提供されていない場合は、`product_sku` の代わりに使用されます。&lt;/li&gt;&lt;li&gt;`_cprod` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;名前リスト。&lt;/li&gt;&lt;li&gt;`_cprodname` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量リスト。&lt;/li&gt;&lt;li&gt;`_cquan` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_sku`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;SKUリスト。&lt;/li&gt;&lt;li&gt;`_csku` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格リスト。&lt;/li&gt;&lt;li&gt;`_cprice` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_discount`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;割引リスト。&lt;/li&gt;&lt;li&gt;`_cpdisc` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_brand`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;ブランドリスト。&lt;/li&gt;&lt;li&gt;`_cbrand` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;カテゴリリスト。&lt;/li&gt;&lt;li&gt;`_ccat` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_category_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;カテゴリIDリスト。&lt;/li&gt;&lt;/ul&gt; |
-|`product_coupon`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;クーポンリスト。&lt;/li&gt;&lt;/ul&gt; |
-|`product_is_clearance`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;クリアランスステータスリスト。&lt;/li&gt;&lt;/ul&gt; |
-|`product_is_sale`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;セールスステータスリスト。&lt;/li&gt;&lt;/ul&gt; |
-|`product_margin`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;マージンリスト。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文ID。</li><li>`_corder` を上書きします。</li></ul> |
+|`order_subtotal`|  <ul><li>小計。</li><li>`_csubtotal` を上書きします。</li></ul> |
+|`order_tax`|  <ul><li>税額。</li><li>`_ctax` を上書きします。</li></ul> |
+|`order_currency`|  <ul><li>通貨。</li><li>`_ccurrency` を上書きします。</li></ul> |
+|`order_coupon_code`|  <ul><li>プロモーションコード。</li><li>`_cpromo` を上書きします。</li></ul> |
+|`order_consumed`|  <ul><li>消費済み。</li></ul> |
+|`order_shipped_country`|  <ul><li>発送国。</li></ul> |
+|`order_status`|  <ul><li>注文ステータス。</li><li>値は以下の通りです：<ul><li>既存</li><li>リターニング</li><li>新規</li></ul> </li></ul> |
+| `order_shipped` |  <ul><li>発送済み。</li></ul> |
+|`order_site_name`|  <ul><li>サイト名。</li></ul> |
+|`customer_id`|  <ul><li>顧客ID。</li><li>`_ccustid` を上書きします。</li></ul> |
+|`customer_score`|  <ul><li>顧客スコア。</li></ul> |
+|`customer_country`|  <ul><li>顧客国。</li><li>`_ccountry` を上書きします。</li><li>`order_shipped_country` が提供されていない場合は、`order_shipped_country` の代わりに使用されます。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>製品IDリスト。</li><li>`product_sku` が提供されていない場合は、`product_sku` の代わりに使用されます。</li><li>`_cprod` を上書きします。</li></ul> |
+|`product_name`|  <ul><li>配列</li><li>名前リスト。</li><li>`_cprodname` を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量リスト。</li><li>`_cquan` を上書きします。</li></ul> |
+|`product_sku`|  <ul><li>配列</li><li>SKUリスト。</li><li>`_csku` を上書きします。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>価格リスト。</li><li>`_cprice` を上書きします。</li></ul> |
+|`product_discount`|  <ul><li>配列</li><li>割引リスト。</li><li>`_cpdisc` を上書きします。</li></ul> |
+|`product_brand`|  <ul><li>配列</li><li>ブランドリスト。</li><li>`_cbrand` を上書きします。</li></ul> |
+|`product_category`|  <ul><li>配列</li><li>カテゴリリスト。</li><li>`_ccat` を上書きします。</li></ul> |
+|`product_category_id`|  <ul><li>配列</li><li>カテゴリIDリスト。</li></ul> |
+|`product_coupon`|  <ul><li>配列</li><li>クーポンリスト。</li></ul> |
+|`product_is_clearance`|  <ul><li>配列</li><li>クリアランスステータスリスト。</li></ul> |
+|`product_is_sale`|  <ul><li>配列</li><li>セールスステータスリスト。</li></ul> |
+|`product_margin`|  <ul><li>配列</li><li>マージンリスト。</li></ul> |
 
 #### アフィリエイト
 
 |変数| 説明|
 |---| ---|
-|`allowCommission`|  &lt;ul&gt;&lt;li&gt;コミッション許可&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.ranMID`|  &lt;ul&gt;&lt;li&gt;ranMID&lt;/li&gt;&lt;/ul&gt; |
-| `affiliateConfig.taxRate` |  &lt;ul&gt;&lt;li&gt;税率&lt;/li&gt;&lt;/ul&gt; |
-| `affiliateConfig.discountType` |  &lt;ul&gt;&lt;li&gt;割引タイプ&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.tagType`|  &lt;ul&gt;&lt;li&gt;タグタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.includeStatus`|  &lt;ul&gt;&lt;li&gt;ステータスを含む&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeOrderTax`|  &lt;ul&gt;&lt;li&gt;注文税を除去&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeTaxFromProducts`|  &lt;ul&gt;&lt;li&gt;製品から税を除去&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeTaxFromDiscount`|  &lt;ul&gt;&lt;li&gt;割引から税を除去。&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.centValues`|  &lt;ul&gt;&lt;li&gt;セント値。&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.nonCentCurrencies`|  &lt;ul&gt;&lt;li&gt;非セント通貨。&lt;/li&gt;&lt;li&gt;通貨の配列またはカンマ区切りの通貨リストを含む文字列を受け入れることができます。&lt;/li&gt;&lt;/ul&gt; |
+|`allowCommission`|  <ul><li>コミッション許可</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.ranMID`|  <ul><li>ranMID</li></ul> |
+| `affiliateConfig.taxRate` |  <ul><li>税率</li></ul> |
+| `affiliateConfig.discountType` |  <ul><li>割引タイプ</li></ul> |
+|`affiliateConfig.tagType`|  <ul><li>タグタイプ</li></ul> |
+|`affiliateConfig.includeStatus`|  <ul><li>ステータスを含む</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.removeOrderTax`|  <ul><li>注文税を除去</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.removeTaxFromProducts`|  <ul><li>製品から税を除去</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.removeTaxFromDiscount`|  <ul><li>割引から税を除去。</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.centValues`|  <ul><li>セント値。</li><li>値は `true` または `false`。</li></ul> |
+|`affiliateConfig.nonCentCurrencies`|  <ul><li>非セント通貨。</li><li>通貨の配列またはカンマ区切りの通貨リストを含む文字列を受け入れることができます。</li></ul> |
 
 #### ディスプレイ
 
 |変数| 説明|
 |---| ---|
-|`displayConfig.rdMID`|  &lt;ul&gt;&lt;li&gt;rdMID&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.domain`|  &lt;ul&gt;&lt;li&gt;ドメイン&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.tagType`|  &lt;ul&gt;&lt;li&gt;タグタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.includeStatus`|  &lt;ul&gt;&lt;li&gt;ステータスを含む&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.allowCommission`|  &lt;ul&gt;&lt;li&gt;コミッション許可&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.removeTaxFromProducts`|  &lt;ul&gt;&lt;li&gt;製品から税を除去&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.removeTaxFromDiscount`|  &lt;ul&gt;&lt;li&gt;割引から税を除去&lt;/li&gt;&lt;li&gt;値は `true` または `false`。&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.taxRate`|  &lt;ul&gt;&lt;li&gt;税率&lt;/li&gt;&lt;/ul&gt; |
+|`displayConfig.rdMID`|  <ul><li>rdMID</li></ul> |
+|`displayConfig.domain`|  <ul><li>ドメイン</li></ul> |
+|`displayConfig.tagType`|  <ul><li>タグタイプ</li></ul> |
+|`displayConfig.includeStatus`|  <ul><li>ステータスを含む</li></ul> |
+|`displayConfig.allowCommission`|  <ul><li>コミッション許可</li></ul> |
+|`displayConfig.removeTaxFromProducts`|  <ul><li>製品から税を除去</li><li>値は `true` または `false`。</li></ul> |
+|`displayConfig.removeTaxFromDiscount`|  <ul><li>割引から税を除去</li><li>値は `true` または `false`。</li></ul> |
+|`displayConfig.taxRate`|  <ul><li>税率</li></ul> |
 
 #### 検索
 
 |変数| 説明|
 |---| ---|
-|`searchConfig.rsMID`|  &lt;ul&gt;&lt;li&gt;rsMID&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.conversionType`|  &lt;ul&gt;&lt;li&gt;コンバージョンタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.accountID`|  &lt;ul&gt;&lt;li&gt;アカウントID&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.clickID`|  &lt;ul&gt;&lt;li&gt;クリックID&lt;/li&gt;&lt;/ul&gt; |
+|`searchConfig.rsMID`|  <ul><li>rsMID</li></ul> |
+|`searchConfig.conversionType`|  <ul><li>コンバージョンタイプ</li></ul> |
+|`searchConfig.accountID`|  <ul><li>アカウントID</li></ul> |
+|`searchConfig.clickID`|  <ul><li>クリックID</li></ul> |

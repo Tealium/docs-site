@@ -2,7 +2,11 @@
 title: Install
 description: Learn to install Tealium for Xamarin 1.x.
 url: https://docs.tealium.com/platforms/xamarin-v1/install/
----For the current version, see [Tealium for Xamarin 2.x](/platforms/xamarin/).
+---
+<blockquote>
+For the current version, see [Tealium for Xamarin 2.x](https://docs.tealium.com/platforms/xamarin/).
+</blockquote>
+
 
 The Tealium Xamarin integration provides a set of cross-platform interfaces and configuration classes that interface with the native Tealium iOS and Android SDKs.
 
@@ -23,12 +27,16 @@ Abstraction DLLS are included to create a C# API wrapper for the native Tealium 
     *   `Tealium.Droid.dll` – for Android mobile platforms
     *   `Tealium.iOS.dll` – for Apple mobile platforms
 
-There are DLLs specific to each mobile platform which are referenced by the abstraction DLLs. The platform DLLs are binding libraries and therefore embedded in Tealium&#39;s native SDKs. They provide auto-generated wrapper code that lets you interact with our native SDKs directly and as a result they may be used standalone.
+There are DLLs specific to each mobile platform which are referenced by the abstraction DLLs. The platform DLLs are binding libraries and therefore embedded in Tealium's native SDKs. They provide auto-generated wrapper code that lets you interact with our native SDKs directly and as a result they may be used standalone.
 
 *   `Tealium.Platform.Droid.dll`
 *   `Tealium.Platform.iOS.dll`
 
+
+<blockquote>
 Binding libraries may be used by themselves. The fact that they are automatically generated results in vastly different namespaces for each platform, which adds an extra complication to development efforts. It is advised to make use of the `Common` and platform-specific abstraction libraries instead.
+</blockquote>
+
 
 #### Lifecycle Modules
 
@@ -41,7 +49,7 @@ An optional lifecycle module is available by referencing the relevant DLL for th
 
 The following example illustrates the Shared project and Android platform-specific project from a typical Xamarin based app:
 
-![](/images/platforms/xamarin/consent-manager-model.png)
+![](https://docs.tealium.com/images/platforms/xamarin/consent-manager-model.png)
 
 As shown in the example, the Shared Project references only the `Tealium.Common.dll` library, whereas the Android-specific project references all of the following:
 
@@ -60,7 +68,7 @@ To install Tealium library for Xamarin, first verify that your projects referenc
 using Tealium.Droid;
 //...
 
-ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryDroid(&lt;myAndroidApplication&gt;));
+ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryDroid(<myAndroidApplication>));
 //Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.Droid.dll
 TealiumLifecycleManager.SetLifecycleAutoTracking = TealiumDroid.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
 ```
@@ -94,10 +102,10 @@ TealiumConfig tealConfig
 ```
 | Parameter               | Type      | Description                                          | Example                     |
 |:------------------------|:----------|:-----------------------------------------------------|:----------------------------|
-| `instance`              | `String`  | Tealium Instance ID                                  | `&#34;tealium_main&#34;`            |
-| `account`               | `String`  | Tealium account name                                 | `&#34;companyXYZ&#34;`              |
-| `profile`               | `String`  | Tealium profile name                                 | `&#34;main&#34;`                    |
-| `environment`           | `String`  | Tealium environment name                             | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `instance`              | `String`  | Tealium Instance ID                                  | `"tealium_main"`            |
+| `account`               | `String`  | Tealium account name                                 | `"companyXYZ"`              |
+| `profile`               | `String`  | Tealium profile name                                 | `"main"`                    |
+| `environment`           | `String`  | Tealium environment name                             | [`"dev"`, `"qa"`, `"prod"`] |
 | `lifecycleAutoTracking` | `Boolean` | (Optional) Lifecycle auto-tracking (default: `true`) | ``true`, `false``           |
 
 
@@ -118,19 +126,19 @@ While the majority of the events within mobile are either sent to our data colle
 The following sample code prints out the command ID (set to `TealiumConsts.REMOTE_COMMAND_ID`). This example also provides access to a full payload of data, as configured in the associated TagBridge Custom Command tag required to set this up:
 
 ```csharp
-static List&lt;IRemoteCommand&gt; SetupRemoteCommands()
+static List<IRemoteCommand> SetupRemoteCommands()
 {
-    var command = new DelegateRemoteCommand(TealiumConsts.REMOTE_COMMAND_ID, &#34;Test command &#34; &#43; TealiumConsts.REMOTE_COMMAND_ID) {
+    var command = new DelegateRemoteCommand(TealiumConsts.REMOTE_COMMAND_ID, "Test command " + TealiumConsts.REMOTE_COMMAND_ID) {
         HandleResponseDelegate = (DelegateRemoteCommand cmd,
-            IRemoteCommandResponse resp) =&gt; {
-                System.Diagnostics.Debug.WriteLine($&#34;Handling command {cmd.CommandId}...&#34;);
+            IRemoteCommandResponse resp) => {
+                System.Diagnostics.Debug.WriteLine($"Handling command {cmd.CommandId}...");
             }
         };
-    return new List&lt;IRemoteCommand&gt;() { command };
+    return new List<IRemoteCommand>() { command };
 }
 ```
 
-[Learn more](/platforms/remote-commands/how-it-works/) about remote commands.
+[Learn more](https://docs.tealium.com/platforms/remote-commands/how-it-works/) about remote commands.
 
 ### Delegate Methods
 
@@ -150,35 +158,35 @@ The following example illustrates the usage of the delegate method:
 static TealiumAdvancedConfig SetupAdvancedConfig() {
 
     DelegateDispatchValidator validator = new DelegateDispatchValidator() {
-        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside ShouldDropDispatchDelegate!&#34;);
+        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) => {
+            System.Diagnostics.Debug.WriteLine("Inside ShouldDropDispatchDelegate!");
             return false;
         },
-        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, bool shouldQueue) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside ShouldQueueDispatchDelegate!&#34;);
+        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, bool shouldQueue) => {
+            System.Diagnostics.Debug.WriteLine("Inside ShouldQueueDispatchDelegate!");
             return shouldQueue;
         }
     };
     DispatchSentDelegateEventListener sendingListener = new DispatchSentDelegateEventListener() {
-        DispatchSent = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside DispatchSent!&#34;);
-            dispatch.PutString(&#34;KeyAddedBySendListener&#34;, &#34;Value added by sending listener.&#34;);
+        DispatchSent = (tealium, dispatch) => {
+            System.Diagnostics.Debug.WriteLine("Inside DispatchSent!");
+            dispatch.PutString("KeyAddedBySendListener", "Value added by sending listener.");
         }
     };
     DispatchQueuedDelegateEventListener queuingListener = new DispatchQueuedDelegateEventListener() {
-        DispatchQueued = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside DispatchQueued!&#34;);
-            dispatch.PutString(&#34;KeyAddedByQueuedListener&#34;, &#34;Value added by queuing listener.&#34;);
+        DispatchQueued = (tealium, dispatch) => {
+            System.Diagnostics.Debug.WriteLine("Inside DispatchQueued!");
+            dispatch.PutString("KeyAddedByQueuedListener", "Value added by queuing listener.");
         }
     };
     WebViewReadyDelegateEventListener webViewListener = new WebViewReadyDelegateEventListener() {
-        WebViewReady = (tealium, webView) =&gt;  {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside WebViewReady!&#34;);
+        WebViewReady = (tealium, webView) =>  {
+            System.Diagnostics.Debug.WriteLine("Inside WebViewReady!");
         }
     };
     SettingsPublishedDelegateEventListener settingsListener = new SettingsPublishedDelegateEventListener() {
-        SettingsPublished = (tealium) =&gt; {
-            System.Diagnostics.Debug.WriteLine(&#34;Inside SettingsPublished!&#34;);
+        SettingsPublished = (tealium) => {
+            System.Diagnostics.Debug.WriteLine("Inside SettingsPublished!");
         }
     };
     TealiumAdvancedConfig advConfig = new TealiumAdvancedConfig(validator,
@@ -190,9 +198,9 @@ static TealiumAdvancedConfig SetupAdvancedConfig() {
 
 ## Resources
 
-The following resources provide links to Xamarin&#39;s extensive documentation for adding Tealium&#39;s Android and iOS libraries:
+The following resources provide links to Xamarin's extensive documentation for adding Tealium's Android and iOS libraries:
 
 *   [Xamarin](https://www.xamarin.com/platform)
-*   [Binding a Java Library](https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library &#34;Xamarin How to Bind a Java Library&#34;)
+*   [Binding a Java Library](https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library "Xamarin How to Bind a Java Library")
 *   [Xamarin - Binding an iOS Objective-C Library](https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/)
-*   [Walkthrough: Binding an iOS Objective-C Library](https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/ &#34;Xamarin how to bind an Objective-C library&#34;)
+*   [Walkthrough: Binding an iOS Objective-C Library](https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/ "Xamarin how to bind an Objective-C library")

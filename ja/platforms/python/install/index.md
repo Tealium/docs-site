@@ -4,8 +4,8 @@ description: Python用Tealiumのインストール方法を学びます。
 url: https://docs.tealium.com/ja/platforms/python/install/
 ---## 必要条件
 
-* [Tealium Customer Data Hubアカウント]()
-* Python 2.7&#43; 
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
+* Python 2.7+ 
 
 ## サンプルスクリプト
 
@@ -36,11 +36,15 @@ Python用のTealiumライブラリをインストールするには：
 
 ## 初期化
 
-モジュールをインポートし、以下の例に示すように[`Tealium()`](/ja/platforms/python/api/#tealium)コンストラクタで`Tealium`インスタンスを初期化します：
+モジュールをインポートし、以下の例に示すように[`Tealium()`](https://docs.tealium.com/ja/platforms/python/api/#tealium)コンストラクタで`Tealium`インスタンスを初期化します：
 
 ```python
 from tealium import Tealium
-teal = Tealium(&#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;, &#34;DATASOURCE&#34;)
+teal = Tealium("ACCOUNT", "PROFILE", "ENVIRONMENT", "DATASOURCE")
 ```
 
+
+<blockquote>
 バージョン2.0.0以降、visitorId、sessionId、ローカル保存、および`vdata`ディスパッチャーは削除されました。すべてのCollectモジュールリクエストは現在、`/event`エンドポイントにPOSTリクエストとして送信されます。Tealium初期化子にはもはやPATHパラメーターはありません。
+</blockquote>
+

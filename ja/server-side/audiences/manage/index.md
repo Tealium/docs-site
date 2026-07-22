@@ -7,30 +7,38 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 ## オーディエンスの作成  
 
- ![](/images/early-access/integrated-audiences-potential-size.png)
+ ![](https://docs.tealium.com/images/early-access/integrated-audiences-potential-size.png)
 
 オーディエンスを作成するには、以下の手順に従ってください：
 
-1. **Activate &gt; Audiences** に移動します。
-1. **&#43; New Audience** をクリックします。
-1. オーディエンスの**名前**を入力します。[DataAccess]()製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
+1. **Activate > Audiences** に移動します。
+1. **+ New Audience** をクリックします。
+1. オーディエンスの**名前**を入力します。
+<blockquote>
+[DataAccess](https://docs.tealium.com/about-dataaccess/)製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
+</blockquote>
+
 1. オーディエンスの条件を追加するには、属性、演算子、値を選択します。
-    * オーディエンスの潜在的なサイズが表示されます。詳細は[潜在的なサイズ]()を参照してください。
+    * オーディエンスの潜在的なサイズが表示されます。詳細は[潜在的なサイズ](https://docs.tealium.com/about-audiences/#potential-size)を参照してください。
     * 属性にカーソルを合わせると、その属性のエンリッチメントが表示されます。
     * 属性にバッジを選択する場合は、**is assigned** または **is not assigned** を選択します。
     * 時間枠を指定する演算子を選択する場合は、値と時間枠を選択します。
-1. 別の条件を追加するには、**&#43; Add Condition** をクリックします。
+1. 別の条件を追加するには、**+ Add Condition** をクリックします。
     * 条件を追加するたびに、**Calculate** をクリックして潜在的なサイズを更新します。
-1. このセグメントを保存するには、**Save** アイコンをクリックします。![](/images/guides/server-side/int-aud-save-segment-icon.png)
-1. セグメントの**名前**を入力し、**Done** をクリックします。[DataAccess]()製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでないと、DataAccessがセグメント名を切り詰め、エラーが発生する可能性があります。
-1. セグメントを追加するには、**&#43; Add Segment** をクリックし、セグメントの条件を追加します。
-1. 保存済みのセグメントを追加するには、**&#43; Add Segment** の隣の矢印をクリックしてセグメントを選択します。
+1. このセグメントを保存するには、**Save** アイコンをクリックします。![](https://docs.tealium.com/images/guides/server-side/int-aud-save-segment-icon.png)
+1. セグメントの**名前**を入力し、**Done** をクリックします。
+<blockquote>
+[DataAccess](https://docs.tealium.com/about-dataaccess/)製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでないと、DataAccessがセグメント名を切り詰め、エラーが発生する可能性があります。
+</blockquote>
+
+1. セグメントを追加するには、**+ Add Segment** をクリックし、セグメントの条件を追加します。
+1. 保存済みのセグメントを追加するには、**+ Add Segment** の隣の矢印をクリックしてセグメントを選択します。
     * セグメントにカーソルを合わせると、そのセグメントの条件が表示されます。
-1. オーディエンスの一回限りのバックフィルを実行するには、**Fill Audience** を選択します。詳細は、[Fill an audience]()を参照してください。
+1. オーディエンスの一回限りのバックフィルを実行するには、**Fill Audience** を選択します。詳細は、[Fill an audience](https://docs.tealium.com/about-audiences/#fill-an-audience)を参照してください。
 1. ラベルやメモを追加するには、**More Options** をクリックします。
     1. ラベルを追加するには、**Add Label** をクリックしてラベルを選択します。
-    1. 必要に応じてメモを入力します。AIを使用してメモを生成するには、**AI Note** をクリックします。詳細は [AI Note Generation]() を参照してください。
-1. オーディエンスを即座にアクティブ化するには、**Connect &amp; Activate** をクリックし、コネクタを選択して構成します。
+    1. 必要に応じてメモを入力します。AIを使用してメモを生成するには、**AI Note** をクリックします。詳細は [AI Note Generation](https://docs.tealium.com/ai-features/#ai-note-generation) を参照してください。
+1. オーディエンスを即座にアクティブ化するには、**Connect & Activate** をクリックし、コネクタを選択して構成します。
     * 選択したコネクタの構成ガイドについては、該当するガイドを参照してください。
 1. オーディエンスをアクティブ化せずに保存するには、**Done** をクリックします。
 1. 保存して公開します。
@@ -52,47 +60,47 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスリストからオーディエンスを複製するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. オーディエンスメニューで **Duplicate** を選択します。
     * オーディエンスのコピーが表示されます。
 1. **Edit** をクリックして、新しいオーディエンスの**名前**と条件を必要に応じて変更します。
     * 条件を編集または追加するときに、**Calculate** をクリックして潜在的なサイズを更新します。
-1. **Done** または **Connect &amp; Activate** をクリックします。
+1. **Done** または **Connect & Activate** をクリックします。
 1. 保存して公開します。
 
 オーディエンスの詳細からオーディエンスを複製するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Duplicate** をクリックします。
     * オーディエンスのコピーが表示されます。
 1. **Edit** をクリックして、新しいオーディエンスの**名前**と条件を必要に応じて変更します。
     * 条件を編集または追加するときに、**Calculate** をクリックして潜在的なサイズを更新します。
-1. **Done** または **Connect &amp; Activate** をクリックします。
+1. **Done** または **Connect & Activate** をクリックします。
 1. 保存して公開します。
 
 ## オーディエンスの編集
 
 オーディエンスを編集するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Edit** をクリックします。
 1. 必要に応じてオーディエンスを変更します。
     * 条件を編集するときに、**Calculate** をクリックして潜在的なサイズを更新します。
-1. オーディエンスの一回限りのバックフィルを実行するには、**Fill Audience** を選択します。詳細は、[Fill an audience]()を参照してください。
+1. オーディエンスの一回限りのバックフィルを実行するには、**Fill Audience** を選択します。詳細は、[Fill an audience](https://docs.tealium.com/about-audiences/#fill-an-audience)を参照してください。
 1. このオーディエンスのアクティベーションを追加するか、アクティベーションを表示するには、**Activations** をクリックします。
     * アクティベーションを追加する方法については、[オーディエンスのアクティベーション](#activate-an-audience)を参照してください。
 1. このオーディエンスの訪問情報や活動情報を表示するには、**Insights** をクリックします。
 1. このオーディエンスによってトリガーされる関数を表示するには、**Functions** をクリックします。
-1. オーディエンスの編集が完了したら、**Done** または **Connect &amp; Activate** をクリックします。
+1. オーディエンスの編集が完了したら、**Done** または **Connect & Activate** をクリックします。
 1. 保存して公開します。
 
 ## オーディエンスのアクティベーション
 
 オーディエンスをアクティベートするには、コネクタを選択して構成します：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Edit** をクリックします。
-1. **Activations** タブをクリックし、**&#43; Add Activation** をクリックします。
+1. **Activations** タブをクリックし、**+ Add Activation** をクリックします。
 1. コネクタを選択して構成します。
     * 選択したコネクタの構成ガイドについては、該当するガイドを参照してください。
 1. オーディエンスを閉じるために **X** をクリックします。
@@ -102,7 +110,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスを非アクティブ化するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Activations** をクリックします。
 1. コネクタをクリックし、コネクタを **Off** に切り替えます。
 1. 保存して公開します。
@@ -113,14 +121,14 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスリストからオーディエンスを削除するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. オーディエンスメニューをクリックし、**Delete** を選択します。
 1. 確認ダイアログで **Delete** をクリックします。
 1. 保存して公開します。
 
 オーディエンスの詳細からオーディエンスを削除するには、次の手順に従います：
 
-1. **Activate &gt; Audiences** に移動します。
+1. **Activate > Audiences** に移動します。
 1. オーディエンスリストでオーディエンスをクリックします。
 1. **Delete** をクリックします。
 1. 確認ダイアログで **Delete** をクリックします。

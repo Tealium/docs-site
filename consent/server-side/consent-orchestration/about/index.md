@@ -5,7 +5,11 @@ url: https://docs.tealium.com/consent/server-side/consent-orchestration/about/
 ---
 Consent orchestration lets you centrally control consent conditions for event-level activations. It enforces user consent in real-time, ensuring that data processing aligns with user preferences and legal requirements.
 
-Currently, only event-level enforcement is available, and [manual enforcement]() is required for audiences.
+
+<blockquote>
+Currently, only event-level enforcement is available, and [manual enforcement](https://docs.tealium.com/manual-enforcement/) is required for audiences.
+</blockquote>
+
 
 ## How it works
 
@@ -16,12 +20,12 @@ You can organize consent rules into purpose groups with consent orchestration on
 Consent orchestration provides centralized control over consent rules for the following features:
 
 * EventStream connector actions
-* [Event functions]()
+* [Event functions](https://docs.tealium.com/about-event-and-visitor-functions/)
 * EventStore
 * EventDB
 * Events that AudienceStream is allowed to process
 
-Consent orchestration doesn&#39;t control AudienceStream activations. A future release will include support for these activations.
+Consent orchestration doesn't control AudienceStream activations. A future release will include support for these activations.
 
 ### Purpose Groups and Consent Policies
 
@@ -35,12 +39,12 @@ You can use enforcement rules to manage multiple purpose groups or exemptions if
 
 An exemption allows data tracking under specific conditions without applying consent enforcement. Use exemptions to define clear exceptions to consent enforcement based on regulatory requirements or operational needs. This approach provides flexibility while ensuring compliance with data protection regulations.
 
-Exemptions only apply to events that don&#39;t match the enforcement rules of any purpose group. If an event matches both an exemption and a purpose group’s enforcement rules, the purpose group is enforced. This ensures that consent is always required for events associated with enforceable purposes. Use exemptions carefully to avoid overlap with purpose group enforcement rules.
+Exemptions only apply to events that don't match the enforcement rules of any purpose group. If an event matches both an exemption and a purpose group’s enforcement rules, the purpose group is enforced. This ensures that consent is always required for events associated with enforceable purposes. Use exemptions carefully to avoid overlap with purpose group enforcement rules.
 
 Some examples of exemptions include:
 
 * **Region**: Apply exemptions to regions that don’t have data privacy regulations. For example, you can exempt events from countries without consent requirements. For regions with laws such as GDPR (Europe) or CCPA (California), apply purpose group enforcement instead.
-* **Data source**: Use the data source key to define an exemption for a specific data source that already includes user consent, such as a file import. In this case, additional consent enforcement isn&#39;t needed.
+* **Data source**: Use the data source key to define an exemption for a specific data source that already includes user consent, such as a file import. In this case, additional consent enforcement isn't needed.
 
 ### Conflicts between exemptions and purpose groups
 
@@ -52,8 +56,8 @@ For more information about how conflicts are handled, see .
 
 ### Replaces legacy enforcement
 
-This feature disables [server-side consent management](), but you can still use the `consent_categories` array in your purpose rules.
+This feature disables [server-side consent management](https://docs.tealium.com/server-side-consent-management/), but you can still use the `consent_categories` array in your purpose rules.
 
 ## Consent orchestration flow
 
-![](/images/early-access/consent-orchestration-flow.png)
+![](https://docs.tealium.com/images/early-access/consent-orchestration-flow.png)

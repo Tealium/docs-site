@@ -3,7 +3,11 @@ title: サーバーサイドでの保存と公開の変更
 description: この記事では、サーバーサイドの構成に対する変更を保存し公開する方法について説明します。
 url: https://docs.tealium.com/ja/administration/early-access/server-side-concurrency/save-publish/
 ---
+
+<blockquote>
 サーバーサイドの同時実行はアーリーアクセス中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
+
 
 ## 動作原理
 
@@ -19,13 +23,13 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 **保存/公開**をクリックすると、変更の保存方法を選択する次の画面が表示されます：
 
-![](/images/server-side/save-publish/save-your-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/save-your-changes.png)
 
 * **新しいバージョンとして保存**  
 現在のバージョンに変更を保存するか、新しいバージョンを作成するか選択します。このチェックボックスはデフォルトでは選択されていません。新しいプロジェクトのために変更を新しいバージョンとして保存したい場合は、**新しいバージョンとして保存**を選択します。
 * **最新の公開変更を含む**  
 このオプションは、公開されたバージョンより遅れている場合に表示されます。このプロファイルで公開された最新の変更を含めるかどうかを選択します。このオプションを選択しない場合、他のバージョンの公開変更はあなたのバージョンに統合されません。このチェックボックスはデフォルトで選択されています。
-![](/images/server-side/save-publish/integrate-changes-by-others.png)
+![](https://docs.tealium.com/images/server-side/save-publish/integrate-changes-by-others.png)
 * **バージョン名**  
 バージョンに名前を入力します。この名前は、さまざまな画面でこのバージョンを識別するために表示されるので、このバージョンの変更を要約する説明的な名前を選んでください。デフォルトでは、**バージョン**フィールドに日付とタイムスタンプが表示されます。現在のバージョンに保存する場合、バージョン名を変更することはできません。
 * **ノート**  
@@ -35,7 +39,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 ### 変更の確認
 
-![](/images/server-side/save-publish/review-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
 **保存される変更**または**公開される変更**の表には、保存している変更と最新の公開バージョンから含まれる変更に関する情報が表示されます：
 
@@ -47,7 +51,11 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 この表には、システムによって生成された変更が含まれる場合があります。たとえば、イベント仕様を追加すると、システムは自動的にそのイベント仕様に関連するルールを作成し、それらはこの表に未保存の変更として表示されます。
 
+
+<blockquote>
 最新の公開バージョンで更新された項目を編集した場合、公開するときにあなたの変更がそれらの更新を上書きします。
+</blockquote>
+
 
 ## 履歴情報
 

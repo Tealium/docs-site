@@ -8,7 +8,7 @@ All modules have a dependency on `TealiumCore`. Modules are separated into `Coll
 
 ## Collectors
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors.
 
@@ -34,10 +34,10 @@ To add a `Collector`, specify it in the `collectors` property of the `TealiumCon
 import TealiumCore
 import TealiumLifecycle
 
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                               profile: &#34;PROFILE&#34;,
-                               environment: &#34;ENVIRONMENT&#34;,
-                               datasource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT",
+                               datasource: "DATASOURCE")
 
 // Adds the Collectors you want. If omitted, default Collectors are added.
 config.collectors = [Collectors.AppData, Collectors.Device, Collectors.Connectivity, Collectors.Lifecycle]                               
@@ -45,9 +45,13 @@ config.collectors = [Collectors.AppData, Collectors.Device, Collectors.Connectiv
 
 To only use the default collectors, omit or comment out the `config.collectors` line from your initialization code. 
 
-When adding new collectors, be sure to also include `Collectors.Device` and `Collectors.Connectivity` in the array, otherwise these collectors will be disabled.
 
-The AppData collector can&#39;t be disabled, because it collects critical information, such as the Tealium Visitor ID.
+<blockquote>
+When adding new collectors, be sure to also include `Collectors.Device` and `Collectors.Connectivity` in the array, otherwise these collectors will be disabled.
+</blockquote>
+
+
+The AppData collector can't be disabled, because it collects critical information, such as the Tealium Visitor ID.
 
 ### Custom Collectors
 
@@ -55,10 +59,10 @@ Although custom collectors are generally not required, it is possible to build a
 
 ```swift
 class MyDateCollector: Collector {
-    var id = &#34;MyDateCollector&#34;
+    var id = "MyDateCollector"
 
     var data: [String : Any]? {
-        [&#34;day_of_week&#34;: dayOfWeek]
+        ["day_of_week": dayOfWeek]
     }
 
     var context: TealiumContext
@@ -66,12 +70,12 @@ class MyDateCollector: Collector {
     required init(context: TealiumContext,
                   delegate: ModuleDelegate?,
                   diskStorage: TealiumDiskStorageProtocol?,
-                  completion: (ModuleResult) -&gt; Void) {
+                  completion: (ModuleResult) -> Void) {
         self.context = context
     }
 
     var dayOfWeek: String {
-        return &#34;\(Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? -1)&#34;
+        return "\(Calendar.current.dateComponents([.weekday], from: Date()).weekday ?? -1)"
     }
 }
 
@@ -80,10 +84,10 @@ class MyDateCollector: Collector {
 class TealiumHelper {
 	// ...
 	func startTracking() {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                               profile: &#34;PROFILE&#34;,
-                               environment: &#34;ENVIRONMENT&#34;,
-                               datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT",
+                               datasource: "DATASOURCE")
 
 // Add the Collectors you want. If omitted, default Collectors are added.
 config.collectors = [Collectors.AppData,
@@ -104,7 +108,11 @@ Dispatchers are modules that send the data from your data layer and send it to a
 | `RemoteCommands` | `Dispatchers.RemoteCommands`|
 | `TagManagement` | `Dispatchers.TagManagement`|
 
+
+<blockquote>
 At least one dispatcher is required. If no dispatchers are specified, your data is not sent anywhere.
+</blockquote>
+
 
 ### Usage
 
@@ -114,10 +122,10 @@ To add a `Dispatcher`, specify it in the `dispatchers` property of the `TealiumC
 import TealiumCore
 import TealiumLifecycle
 
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                               profile: &#34;PROFILE&#34;,
-                               environment: &#34;ENVIRONMENT&#34;,
-                               datasource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT",
+                               datasource: "DATASOURCE")
 
 // Add the Collectors. you want Do not include if you want to use compiled Collectors
 config.dispatchers = [Dispatchers.Collect]                               
@@ -130,7 +138,7 @@ Although custom dispatchers are generally not required, it is possible to build 
 ```swift
 class MyCustomDispatcher: Dispatcher {
     var isReady: Bool
-    var id = &#34;MyCustomDispatcher&#34;
+    var id = "MyCustomDispatcher"
     var config: TealiumConfig
 
     required init(config: TealiumConfig, delegate: ModuleDelegate, completion: ModuleCompletion?) {
@@ -141,10 +149,10 @@ class MyCustomDispatcher: Dispatcher {
     func dynamicTrack(_ request: TealiumRequest, completion: ModuleCompletion?) {
         switch request {
         case let request as TealiumTrackRequest:
-            print(&#34;Track received: \(request.event ?? &#34;no event name&#34;)&#34;)
+            print("Track received: \(request.event ?? "no event name")")
             // perform track action. For example, send to custom endpoint
         case _ as TealiumBatchTrackRequest:
-            print(&#34;Batch track received&#34;)
+            print("Batch track received")
             // perform batch track action. For example, send to custom endpoint
         default:
             return
@@ -156,10 +164,10 @@ class MyCustomDispatcher: Dispatcher {
 class TealiumHelper {
 	// ...
 	func startTracking() {
-		let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                               profile: &#34;PROFILE&#34;,
-                               environment: &#34;ENVIRONMENT&#34;,
-                               datasource: &#34;DATASOURCE&#34;)
+		let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT",
+                               datasource: "DATASOURCE")
 
    // add the Dispatchers you want
    config.dispatchers = [Dispatchers.Collect, MyCustomDispatcher.self]      
@@ -187,7 +195,7 @@ In addition to the base modules, these modules enable the Tealium library to pro
 
 ### Server-side
 
-In addition to the base modules, these modules enable the library to send data to Tealium&#39;s server-side products (EventStream, AudienceStream, Event Data Framework).
+In addition to the base modules, these modules enable the library to send data to Tealium's server-side products (EventStream, AudienceStream, Event Data Framework).
 
 * Collect Dispatcher - Required to use any server-side products
 * Visitor Service Collector - Only required to retrieve Visitor Profiles from Tealium AudienceStream.
@@ -198,12 +206,12 @@ Install the modules with CocoaPods or Carthage.
 
 ### CocoaPods
 
-See [Install with CocoaPods](/platforms/ios-swift/install/#cocoapods) for instructions on including and excluding specific modules.
+See [Install with CocoaPods](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods) for instructions on including and excluding specific modules.
 
 ### Carthage
 
-When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See [Install with Carthage](/platforms/ios-swift/install/#carthage) for instructions on including/excluding specific modules.
+When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See [Install with Carthage](https://docs.tealium.com/platforms/ios-swift/install/#carthage) for instructions on including/excluding specific modules.
 
 ### Swift Package Manager
 
-See [Install with Swift Package Manager](/platforms/ios-swift/install#swift-package-manager-recommended) for instructions on including and excluding specific modules.
+See [Install with Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install#swift-package-manager-recommended) for instructions on including and excluding specific modules.

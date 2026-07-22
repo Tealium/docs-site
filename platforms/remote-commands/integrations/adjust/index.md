@@ -7,12 +7,12 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/adjust/
 
 * Adjust [App Token](https://help.adjust.com/en/article/app-settings#view-your-app-token)
 * One of these mobile libraries:
-  * [Tealium for Android-Kotlin](/platforms/android-kotlin/) (1.0.0&#43;)
-  * [Tealium for Android-Java](/platforms/android-java/) (5.9.0&#43;)
-  * [Tealium for iOS-Swift](/platforms/ios-swift/)
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0+)
+  * [Tealium for Android-Java](https://docs.tealium.com/platforms/android-java/) (5.9.0+)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
 * One of these remote command integrations:
-  * [Adjust Remote Command JSON File](/platforms/remote-commands/integrations/adjust/#json-template) (Requires Android-Kotlin 1.0.0&#43; or iOS-Swift 2.1.0&#43;)
-  * [Adjust Remote Command tag in Tealium iQ Tag Management]()
+  * [Adjust Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/adjust/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)
+  * [Adjust Remote Command tag in Tealium iQ Tag Management](https://docs.tealium.com/adjust-mobile-remote-command-tag/)
 
 ## How It Works
 
@@ -24,9 +24,13 @@ The Adjust integration uses three items:
 
 Adding the Adjust remote command module to your app automatically installs and builds the required Adjust libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Adjust SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
-iOS: For Adjust version 4.23.0&#43;, the SDK automatically adds the following native frameworks: `AdSupport.framework`, `iAd.framework` and `AppTrackingTransparaceny.framework`. Learn more in the [Adjust iOS SKAdNetwork integration](https://help.adjust.com/en/article/app-tracking-transparency-att-framework) guide.
+
+<blockquote>
+iOS: For Adjust version 4.23.0+, the SDK automatically adds the following native frameworks: `AdSupport.framework`, `iAd.framework` and `AppTrackingTransparaceny.framework`. Learn more in the [Adjust iOS SKAdNetwork integration](https://help.adjust.com/en/article/app-tracking-transparency-att-framework) guide.
+</blockquote>
+
 
 ## Install
 
@@ -35,11 +39,11 @@ iOS: For Adjust version 4.23.0&#43;, the SDK automatically adds the following na
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**
 2. Enter the repository URL: `https://github.com/tealium/tealium-ios-adjust-remote-command`
 3. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumAdjust` version does not appear in the list, then reset your Swift package cache.
 4. Select the `TealiumAdjust` module to install, and select the app target you want the module to be installed in.
-5. If you are using any additional modules from the Tealium Swift library, follow [the Swift Package Manager instructions](/platforms/ios-swift/install/#swift-package-manager-recommended) to add them.
+5. If you are using any additional modules from the Tealium Swift library, follow [the Swift Package Manager instructions](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) to add them.
 
 If your project has more than one app target and needs `TealiumAdjust` module in more app targets, you have to manually add them in the **Frameworks, Libraries, and Embedded Content** section.
 
@@ -47,29 +51,29 @@ To install `TealiumAdjust` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 2. In your Xcode project, select the app target under the **TARGETS** section.
-3. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and  select the `TealiumAdjust` module to add it to your app target.
+3. Navigate to **General > Frameworks, Libraries & Embedded Content** and  select the `TealiumAdjust` module to add it to your app target.
 
 
 
 
-1. Remove `pod &#34;tealium-swift&#34;` and `pod &#34;Adjust&#34;` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAdjust` framework.
+1. Remove `pod "tealium-swift"` and `pod "Adjust"` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumAdjust` framework.
 
 2. Add the following dependency to your Podfile:  
       ```ruby
-      pod &#34;TealiumAdjust&#34;
+      pod "TealiumAdjust"
       ```  
       The `TealiumAdjust` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#34;tealium-swift/Core&#34;
-      &#34;tealium-swift/RemoteCommands&#34;
+      "tealium-swift/Core"
+      "tealium-swift/RemoteCommands"
       ```
 
 3. Include a dispatcher pod in your installation, either `tealium-swift/Collect` or `tealium-swift/TagManagement`, and include any other individual sub modules in your podfile. For example:   
       ```ruby
-      pod &#34;TealiumAdjust&#34;
-      pod &#34;tealium-swift/Collect&#34;
-      pod &#34;tealium-swift/Lifecycle&#34;
-      pod &#34;tealium-swift/Attribution&#34;
+      pod "TealiumAdjust"
+      pod "tealium-swift/Collect"
+      pod "tealium-swift/Lifecycle"
+      pod "tealium-swift/Attribution"
       ```
 
 4. Import the modules `TealiumSwift` and `TealiumAdjust` in your `TealiumHelper` file, and any other files that access the `Tealium` class, or the Adjsut remote command.
@@ -81,12 +85,12 @@ To install `TealiumAdjust` in additional app targets:
 
 2. Remove the following line if it exists in your Cartfile:  
       ```bash
-      github &#34;adjust/ios_sdk&#34;
+      github "adjust/ios_sdk"
       ```
 
 3.  Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-adjust-remote-command&#34;
+      github "tealium/tealium-ios-adjust-remote-command"
       ```
 
 
@@ -94,23 +98,23 @@ To install `TealiumAdjust` in additional app targets:
 
 
 
-1. Install [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+1. Install [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
 
       ```groovy
       allprojects {
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import both the Adjust SDK and Tealium-Adjust remote commands by adding the following dependencies in your app project&#39;s `build.gradle` file:  
+2. Import both the Adjust SDK and Tealium-Adjust remote commands by adding the following dependencies in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium.remotecommands:adjust:1.0.0&#39;
+            implementation 'com.tealium.remotecommands:adjust:1.0.0'
       }
       ```
 
@@ -122,7 +126,7 @@ To install `TealiumAdjust` in additional app targets:
     ```bash
     yarn add tealium-react-adjust
     ```
-3. React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run `react-native link` if using version 0.60&#43; of React Native.
+3. React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run `react-native link` if using version 0.60+ of React Native.
 
 
 
@@ -132,19 +136,19 @@ To install `TealiumAdjust` in additional app targets:
 
 
 
-The manual installation for Adjust remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the Adjust remote commands for your iOS project:
+The manual installation for Adjust remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the Adjust remote commands for your iOS project:
 
-1. Install the [Adjust SDK](https://github.com/adjust/ios_sdk), if you haven&#39;t already done so.
+1. Install the [Adjust SDK](https://github.com/adjust/ios_sdk), if you haven't already done so.
 
 2. Clone the [Tealium iOS Adjust remote command](https://github.com/tealium/tealium-ios-adjust-remote-command) repo and drag the files within the `Sources` folder into your project.
 
-3. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`
+3. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`
 
 
 
 
 
-The manual installation for Adjust remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed. To install the Adjust remote commands for your Android project:
+The manual installation for Adjust remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed. To install the Adjust remote commands for your Android project:
 
 1. Add `flatDir` to your project root `build.gradle` file:  
       ```groovy
@@ -152,18 +156,18 @@ The manual installation for Adjust remote commands requires [Tealium for Android
             repositories {
               mavenCentral()
               flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
               }
             }
       }
       ```
 
-2. Add `tealium-adjust.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-adjust.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-adjust&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-adjust', ext:'aar')
       }
       ```
 
@@ -176,13 +180,13 @@ For all Tealium libraries, register the Adjust Remote Command when you initializ
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s iOS (Swift) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's iOS (Swift) library:
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                           profile: &#34;PROFILE&#34;,
-                           environment: &#34;ENVIRONMENT&#34;,
-                           dataSource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                           profile: "PROFILE",
+                           environment: "ENVIRONMENT",
+                           dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 config.remoteAPIEnabled = true // Required to use Remote Commands
 
@@ -195,10 +199,10 @@ tealium = Tealium(config: config) { _ in
     let adjust = AdjustRemoteCommand()
 
     // Local JSON
-    //let adjust = AdjustRemoteCommand(type: .local(file: &#34;adjust&#34;)) 
+    //let adjust = AdjustRemoteCommand(type: .local(file: "adjust")) 
 
     // Remote JSON
-    //let adjust = AdjustRemoteCommand(type: .remote(url: &#34;https://some.domain.com/adjust.json&#34;))
+    //let adjust = AdjustRemoteCommand(type: .remote(url: "https://some.domain.com/adjust.json"))
 
     remoteCommands.add(adjust)
 }
@@ -206,11 +210,11 @@ tealium = Tealium(config: config) { _ in
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Android (Kotlin) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Android (Kotlin) library:
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 val adjust = AdjustRemoteCommand(application);
@@ -221,18 +225,18 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(adjust); 
 
     // Local JSON
-    //remoteCommands?.add(adjust, filename = &#34;adjust.json&#34;);
+    //remoteCommands?.add(adjust, filename = "adjust.json");
 
     // Remote JSON
-    //remoteCommands?.add(adjust, remoteUrl = &#34;https://some.domain.com/adjust.json&#34;); 
+    //remoteCommands?.add(adjust, remoteUrl = "https://some.domain.com/adjust.json"); 
 }
 ```
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Android (Java) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Android (Java) library:
 ```java
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 // New code to add the Adjust Remote Command
@@ -245,17 +249,17 @@ teal.addRemoteCommand(adjustRemoteCommand);
 
 Initialize remote commands with a JSON configuration file or the Remote Command tag for React Native:
 ```javascript
-import AdjustRemoteCommand from &#39;tealium-react-adjust&#39;;
+import AdjustRemoteCommand from 'tealium-react-adjust';
 AdjustRemoteCommand.initialize();
 
 // Webview Tag
 let adjust = { id: AdjustRemoteCommand.name } 
 
 // Local JSON
-//let adjust = { id: AdjustRemoteCommand.name, path: &#34;adjust.json&#34; }
+//let adjust = { id: AdjustRemoteCommand.name, path: "adjust.json" }
 
 // Remote JSON
-//let adjust = { id: AdjustRemoteCommand.name, url: &#34;https://some.domain.com/adjust.json&#34; }
+//let adjust = { id: AdjustRemoteCommand.name, url: "https://some.domain.com/adjust.json" }
 
 let config = TealiumConfig {
     // ...
@@ -268,66 +272,66 @@ let config = TealiumConfig {
 
 ## JSON Template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-  &#34;config&#34;: {
-    &#34;api_token&#34;: &#34;YOUR_API_TOKEN&#34;,
-    &#34;sandbox&#34;: true,
-    &#34;settings&#34;: {
-      &#34;log_level&#34;: &#34;verbose&#34;,
-      &#34;allow_iad&#34;: true,
-      &#34;allow_ad_services&#34;: true,
-      &#34;allow_idfa&#34;: true,
-      &#34;event_buffering_enabled&#34;: false,
-      &#34;send_in_background&#34;: true
+  "config": {
+    "api_token": "YOUR_API_TOKEN",
+    "sandbox": true,
+    "settings": {
+      "log_level": "verbose",
+      "allow_iad": true,
+      "allow_ad_services": true,
+      "allow_idfa": true,
+      "event_buffering_enabled": false,
+      "send_in_background": true
     }
   },
-  &#34;mappings&#34;: {
-    &#34;event_token&#34;: &#34;event_token&#34;,
-    &#34;order_total&#34;: &#34;revenue,callback.orderTotal&#34;,
-    &#34;order_currency&#34;: &#34;currency&#34;,
-    &#34;order_id&#34;: &#34;order_id,callback.orderId&#34;,
-    &#34;conversion_value&#34;: &#34;conversion_value&#34;,
-    &#34;sales_region&#34;: &#34;sales_region&#34;,
-    &#34;callback_id&#34;: &#34;callback_id&#34;,
-    &#34;ad_revenue_source&#34;: &#34;ad_revenue_source&#34;,
-    &#34;campaign&#34;: &#34;ad_revenue_payload.campaignId&#34;,
-    &#34;ad_uuid&#34;: &#34;ad_revenue_payload.adId&#34;,
-    &#34;appstore_receipt_data&#34;: &#34;receipt&#34;,
-    &#34;purchase_timestamp&#34;: &#34;purchase_time&#34;,
-    &#34;product_sku&#34;: &#34;sku&#34;,
-    &#34;purchase_signature&#34;: &#34;signature&#34;,
-    &#34;purchase_token&#34;: &#34;purchase_token&#34;,
-    &#34;deeplink_url&#34;: &#34;deeplink_open_url&#34;,
-    &#34;push_token&#34;: &#34;push_token&#34;,
-    &#34;favorite_color&#34;: &#34;callback.color,session_callback.color&#34;,
-    &#34;num_of_pets&#34;: &#34;partner.pets,session_partner.pets&#34;,
-    &#34;customer_id&#34;: &#34;callback.customerId&#34;,
-    &#34;customer_is_member&#34;: &#34;partner.isMember&#34;,
-    &#34;global_params&#34;: &#34;global_callback,global_partner&#34;,
-    &#34;remove_global_params&#34;: &#34;remove_global_callback_params,remove_global_partner_params&#34;,
-    &#34;reset_global_params&#34;: &#34;reset_global_callback_params,reset_global_partner_params&#34;,
-    &#34;consent_granted&#34;: &#34;measurement_consent&#34;,
-    &#34;enabled&#34;: &#34;enabled&#34;
+  "mappings": {
+    "event_token": "event_token",
+    "order_total": "revenue,callback.orderTotal",
+    "order_currency": "currency",
+    "order_id": "order_id,callback.orderId",
+    "conversion_value": "conversion_value",
+    "sales_region": "sales_region",
+    "callback_id": "callback_id",
+    "ad_revenue_source": "ad_revenue_source",
+    "campaign": "ad_revenue_payload.campaignId",
+    "ad_uuid": "ad_revenue_payload.adId",
+    "appstore_receipt_data": "receipt",
+    "purchase_timestamp": "purchase_time",
+    "product_sku": "sku",
+    "purchase_signature": "signature",
+    "purchase_token": "purchase_token",
+    "deeplink_url": "deeplink_open_url",
+    "push_token": "push_token",
+    "favorite_color": "callback.color,session_callback.color",
+    "num_of_pets": "partner.pets,session_partner.pets",
+    "customer_id": "callback.customerId",
+    "customer_is_member": "partner.isMember",
+    "global_params": "global_callback,global_partner",
+    "remove_global_params": "remove_global_callback_params,remove_global_partner_params",
+    "reset_global_params": "reset_global_callback_params,reset_global_partner_params",
+    "consent_granted": "measurement_consent",
+    "enabled": "enabled"
   },
-  &#34;commands&#34;: {
-    &#34;launch&#34;: &#34;initialize&#34;,
-    &#34;track_deeplink&#34;: &#34;appwillopenurl&#34;,
-    &#34;purchase&#34;: &#34;trackevent,updateconversionvalue&#34;,
-    &#34;event&#34;: &#34;trackevent&#34;,
-    &#34;contact&#34;: &#34;trackevent,addglobalcallbackparams,addglobalpartnerparams&#34;,
-    &#34;ad_revenue&#34;: &#34;trackadrevenue&#34;,
-    &#34;subscribe&#34;: &#34;trackevent,tracksubscription&#34;,
-    &#34;received_push_token&#34;: &#34;setpushtoken&#34;,
-    &#34;add_global_parameters&#34;: &#34;addglobalcallbackparams,addglobalpartnerparams&#34;,
-    &#34;remove_global_parameters&#34;: &#34;removeglobalcallbackparams,removeglobalpartnerparams&#34;,
-    &#34;reset_global_parameters&#34;: &#34;resetglobalcallbackparams,resetglobalpartnerparams&#34;,
-    &#34;consent_revoked&#34;: &#34;gdprforgetme,trackmeasurementconsent&#34;,
-    &#34;consent_granted&#34;: &#34;trackmeasurementconsent&#34;,
-    &#34;set_enabled&#34;: &#34;setenabled&#34;,
-    &#34;offline&#34;: &#34;setofflinemode&#34;
+  "commands": {
+    "launch": "initialize",
+    "track_deeplink": "appwillopenurl",
+    "purchase": "trackevent,updateconversionvalue",
+    "event": "trackevent",
+    "contact": "trackevent,addglobalcallbackparams,addglobalpartnerparams",
+    "ad_revenue": "trackadrevenue",
+    "subscribe": "trackevent,tracksubscription",
+    "received_push_token": "setpushtoken",
+    "add_global_parameters": "addglobalcallbackparams,addglobalpartnerparams",
+    "remove_global_parameters": "removeglobalcallbackparams,removeglobalpartnerparams",
+    "reset_global_parameters": "resetglobalcallbackparams,resetglobalpartnerparams",
+    "consent_revoked": "gdprforgetme,trackmeasurementconsent",
+    "consent_granted": "trackmeasurementconsent",
+    "set_enabled": "setenabled",
+    "offline": "setofflinemode"
   }
 }
 
@@ -365,7 +369,10 @@ We map a command to each Adjust method. To trigger an Adjust method, pass the co
 | `removeGlobalPartnerParams` | `removeGlobalPartnerParams()` |
 | `resetGlobalPartnerParams` | `resetGlobalPartnerParams()` |
 
- Only supported in iOS as part of the `AppTrackingTransparency.framework`.  Learn more in the [Adjust iOS SKAdNetwork integration](https://help.adjust.com/en/article/app-tracking-transparency-att-framework) guide.
+
+<blockquote>
+Only supported in iOS as part of the `AppTrackingTransparency.framework`.  Learn more in the [Adjust iOS SKAdNetwork integration](https://help.adjust.com/en/article/app-tracking-transparency-att-framework) guide.
+</blockquote>
 
 
 ### SDK Setup
@@ -413,7 +420,11 @@ There are several configuration options available in the Adjust Remote Command t
 
 Note that `url_strategy` must be one of the v4 url strategies or, in alternative, you can provide all of the three parameters domains/useSubdomains/isResidency to create another strategy that is added in the future.
 
- iOS and Android only
+
+<blockquote>
+iOS and Android only
+</blockquote>
+
 
 #### Track Event
 
@@ -479,10 +490,10 @@ tealium = Tealium(config: config) { _ in
 	let adjustRemoteCommand = AdjustRemoteCommand()
 	adjustRemoteCommand.trackingAuthorizationCompletion = { status in
             switch status {
-            case 0: print(&#34;ATTrackingManagerAuthorizationStatusNotDetermined&#34;)
-            case 1: print(&#34;ATTrackingManagerAuthorizationStatusRestricted&#34;)
-            case 2: print(&#34;ATTrackingManagerAuthorizationStatusDenied&#34;)
-            case 3: print(&#34;ATTrackingManagerAuthorizationStatusAuthorized&#34;)
+            case 0: print("ATTrackingManagerAuthorizationStatusNotDetermined")
+            case 1: print("ATTrackingManagerAuthorizationStatusRestricted")
+            case 2: print("ATTrackingManagerAuthorizationStatusDenied")
+            case 3: print("ATTrackingManagerAuthorizationStatusAuthorized")
             default:
                 break;
             }

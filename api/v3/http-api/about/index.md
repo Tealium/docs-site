@@ -5,13 +5,13 @@ url: https://docs.tealium.com/api/v3/http-api/about/
 ---
 ## How it works
 
-The Tealium Collect HTTP API is an authenticated endpoint that supports GET and POST methods for data collection. For the unauthenticated endpoint, see [HTTP API v1](/platforms/http-api/).
+The Tealium Collect HTTP API is an authenticated endpoint that supports GET and POST methods for data collection. For the unauthenticated endpoint, see [HTTP API v1](https://docs.tealium.com/platforms/http-api/).
 
 ```
 https://collect.tealiumiq.com/v3/collect/event
 ```
 
-Sessions are determined based on the [Visit scope]() attribute property.
+Sessions are determined based on the [Visit scope](https://docs.tealium.com/about-attributes/#scope) attribute property.
 
 ### Regional and global endpoints
 
@@ -21,10 +21,10 @@ HTTP API supports the following two hosts:
 
 * `collect.tealiumiq.com`  
 Sends events to the nearest server (one with the lowest latency).
-* `collect-&lt;region&gt;.tealiumiq.com`  
+* `collect-<region>.tealiumiq.com`  
 Sends events to the server in the region of the profile.
 
-For authenticated endpoints, the global endpoints are internally mapped to `collect.tealiumiq.com` and regional endpoints are mapped to `collect-&lt;region&gt;.tealiumiq.com`.
+For authenticated endpoints, the global endpoints are internally mapped to `collect.tealiumiq.com` and regional endpoints are mapped to `collect-<region>.tealiumiq.com`.
 
 ### Rate limits
 
@@ -37,7 +37,11 @@ For example, if you send:
 
 If you exceed the rate limit, Tealium returns an HTTP 429 response to indicate that you have sent too many requests.
 
+
+<blockquote>
 If you need higher event limits, contact your Tealium account manager.
+</blockquote>
+
 
 ## Endpoints
 
@@ -64,7 +68,7 @@ A RESTful endpoint that supports POST requests for multiple events (up to 10) in
 
 ### Integrations
 
-A RESTful endpoint used by [incoming webhooks](/server-side/data-sources/webhooks/).
+A RESTful endpoint used by [incoming webhooks](https://docs.tealium.com/server-side/data-sources/webhooks/).
 
 | Type | Endpoint |
 |----- | -------- | 
@@ -92,9 +96,13 @@ Depending on your business case, use anonymous values or values based on known u
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from `utag.js`, see [JavaScript (Web) &gt; Data Layer]().
+If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from `utag.js`, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
+
+<blockquote>
 If you are using Adobe Launch or Google Tag Manager, then the value needs to match the `v` part of the **TEAL** cookie.
+</blockquote>
+
 
 #### Known-visitors server-to-server
 
@@ -106,7 +114,11 @@ When sending data for known visitors (when a value exists for a visitor ID attri
 
 * Account
 * Profile
-* Visitor ID attribute ID and value You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes]().
+* Visitor ID attribute ID and value 
+<blockquote>
+You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes](https://docs.tealium.com/about-attributes/#attribute-ids).
+</blockquote>
+
 
 For example, if you have the following values:
 
@@ -118,24 +130,32 @@ For example, if you have the following values:
 The concatenated value is:
 
 ```
-&#34;tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
+"tealium_visitor_id":"__my-account_main__7688_45653454__"
 ```
 
- Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+
+<blockquote>
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+</blockquote>
+
 
 Example JSON:
 
 ```json
 {
-    &#34;tealium_account&#34;    : &#34;my-account&#34;,
-    &#34;tealium_profile&#34;    : &#34;main&#34;,
-    &#34;tealium_event&#34;      : &#34;user_login&#34;,
-    &#34;email_address&#34;      : &#34;user@example.com&#34;,
-    &#34;tealium_visitor_id&#34; : &#34;__my-account_main__7688_45653454__&#34;
+    "tealium_account"    : "my-account",
+    "tealium_profile"    : "main",
+    "tealium_event"      : "user_login",
+    "email_address"      : "user@example.com",
+    "tealium_visitor_id" : "__my-account_main__7688_45653454__"
 }
 ```
 
+
+<blockquote>
 Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent `tealium_visitor_id`, each event generates a new visit and visitor stitching is not possible.
+</blockquote>
+
 
 ### User Identifiers
 
@@ -143,7 +163,7 @@ When using AudienceStream, pass a known user identifier with a tracking call. Fo
 
 A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes]().
+In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ## Permission requirements
 
@@ -151,6 +171,10 @@ In AudienceStream, these user identifiers are used to enrich [visitor ID attribu
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
 
-To learn about generating a bearer token from the API key, see [Authentication]().
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.
+</blockquote>
+
+
+To learn about generating a bearer token from the API key, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).

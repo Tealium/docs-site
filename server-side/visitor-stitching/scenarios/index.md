@@ -25,11 +25,11 @@ A week later, a user visits the website using the same device and browser and su
 
 ### Case A
 
-The anonymous ID is the same, so the incoming event will match the profile that was created on the user&#39;s first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.
+The anonymous ID is the same, so the incoming event will match the profile that was created on the user's first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.
 
 **Result for case A:** One visitor profile with a visitor ID attribute set to the original email address hash.
 
-![](/images/server-side/two-emails-first.png)
+![](https://docs.tealium.com/images/server-side/two-emails-first.png)
 
 ### Case B
 
@@ -41,11 +41,11 @@ Users sharing a device and visiting the same websites using different user ident
 
 ## Scenario 2: a different email from a different device or browser
 
-A week later, the same user visits the website using a different device or browser and submits a form with a different email address. The anonymous ID is different, so the incoming event does not match the profile that was created on the user&#39;s first visit. A new profile is created and there are two profiles for this user after the second visit. No visitor stitching occurs, because the visitor ID attribute does not match (the email addresses are different). These two profiles could be stitched together later, if they matched on a second visitor ID attribute.
+A week later, the same user visits the website using a different device or browser and submits a form with a different email address. The anonymous ID is different, so the incoming event does not match the profile that was created on the user's first visit. A new profile is created and there are two profiles for this user after the second visit. No visitor stitching occurs, because the visitor ID attribute does not match (the email addresses are different). These two profiles could be stitched together later, if they matched on a second visitor ID attribute.
 
 **Result:** Two visitor profiles, with each visitor ID attribute set to the corresponding email address hash.
 
-![](/images/server-side/two-emails-both.png)
+![](https://docs.tealium.com/images/server-side/two-emails-both.png)
 
 ## Example of two visitor profiles matching on a second visitor ID attribute
 
@@ -53,15 +53,15 @@ In this example, a user visits a web site from two different devices and is assi
 
 This scenario could only happen if the anonymous ID (`tealium_visitor_id`) is not known, or is different in the two profiles. If the anonymous IDs match, no user IDs or visitor ID attributes would be evaluated, and the second profile would not be created.
 
-![](/images/server-side/match-2nd-visid-first.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-first.png)
 
 The user visits the website again from the first device and provides an email address when submitting a form. The customer_email address attribute is configured to enrich visitor ID attribute #2. Visitor ID attribute #2 in Profile A is enriched with the email address, as shown below.
 
-![](/images/server-side/match-2nd-visid-second.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-second.png)
 
 When the user visits the website from the second device and provides the same email address when submitting a form, the email address matches visitor ID attribute #2 in Profile A, and the two profiles are stitched together to create Profile C, as shown below.
 
-![](/images/server-side/match-2nd-visid-third.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-third.png)
 
 Profile C contains a new `replaces` array, which holds values that are no longer stored in visitor ID attributes, but can still be used for visitor stitching in the future. Profile A and Profile B had different values for the anonymous ID and Visitor ID Attribute #1 (Customer ID). Because only one value can be set per visitor ID attribute, two values had to move to the `replaces` array. Profile B was the newer profile and had fewer events than Profile A, so the Profile B identifiers were moved to the `replaces` array.
 
@@ -71,7 +71,7 @@ For web or HTTP API data sources, this scenario would happen only if the attribu
 
 With file import, visitor ID mappings can be customized and user identifier enrichment occurs in the order mapped, this scenario could be achieved in a few different ways depending on the setup.
 
-For more information, see [Tealium Collect HTTP API](), [About incoming webhooks](), or [About file import]().
+For more information, see [Tealium Collect HTTP API](https://docs.tealium.com/platforms/http-api//), [About incoming webhooks](), or [About file import]().
 
 #### Stateless events
 
@@ -106,8 +106,8 @@ What happens when two visitor profiles are stitched and an attribute exists in e
 
 For example:
 
-* On the desktop device, &#34;Opt-In Status&#34; flag is &#34;True&#34;
-* On the mobile device, &#34;Opt-In Status&#34; flag is &#34;False&#34;
+* On the desktop device, "Opt-In Status" flag is "True"
+* On the mobile device, "Opt-In Status" flag is "False"
 
 #### Answer
 
@@ -119,13 +119,13 @@ First, it’s important to note a few important system functionalities.
 
 With that foundation set we can now discuss what occurs upon a stitching event. When matching profiles are found, AudienceStream will load up all past events for all of the visitors being stitched, sort each event chronologically, and replay all events to create a primary stitched profile.
 
-So back to the question, whether the `Opt-In Status` flag will be set to `True` or `False`. The answer is that it depends on the outcome of all of the enrichments that are reprocessed when AudienceStream replays all of these visitors&#39; past events.
+So back to the question, whether the `Opt-In Status` flag will be set to `True` or `False`. The answer is that it depends on the outcome of all of the enrichments that are reprocessed when AudienceStream replays all of these visitors' past events.
 
 #### More notes and possible questions
 
-You may be curious about more advanced attributes such as `list` and `tally`. Even though `tally` and `list` attributes look like they are merged, it&#39;s because they are setup using additive enrichments (add to list, increment tally, etc.). These have typically been correctly stitched in the past.
+You may be curious about more advanced attributes such as `list` and `tally`. Even though `tally` and `list` attributes look like they are merged, it's because they are setup using additive enrichments (add to list, increment tally, etc.). These have typically been correctly stitched in the past.
 
-Depending on how many events there are, stitching can take awhile to execute as it&#39;s an extremely complex and CPU heavy task to execute. However, over the past couple of years Engineering has made numerous optimizations to make this stitching process more efficient. Typically, it is a very quick process.
+Depending on how many events there are, stitching can take awhile to execute as it's an extremely complex and CPU heavy task to execute. However, over the past couple of years Engineering has made numerous optimizations to make this stitching process more efficient. Typically, it is a very quick process.
 
 Does this mean stitching is backwards compatible? Imagine this scenario of events:
 
@@ -143,7 +143,7 @@ Does this mean stitching is backwards compatible? Imagine this scenario of event
 * 2 weeks later the visitor authenticates on Mobile with the same `customer_email` value (but no `customer_type` is passed)
 * We stitch the desktop and mobile profiles together
 
-The Trait capturing `customer_type` will not have existed in either device&#39;s visitor profile. However, when AS reprocesses all the events, AudienceStream will use the latest AudienceStream profile definition and re-evaluate the Trait&#39;s enrichment. This means the primary visitor profile will now have the Trait storing the `customer_type`.
+The Trait capturing `customer_type` will not have existed in either device's visitor profile. However, when AS reprocesses all the events, AudienceStream will use the latest AudienceStream profile definition and re-evaluate the Trait's enrichment. This means the primary visitor profile will now have the Trait storing the `customer_type`.
 
 #### How does this affect Omnichannel data?
 

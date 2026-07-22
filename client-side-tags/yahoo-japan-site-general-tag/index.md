@@ -19,11 +19,11 @@ url: https://docs.tealium.com/client-side-tags/yahoo-japan-site-general-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
-* **Auto Tagging**: Enable or disable auto tagging. Enabling this setting performs the `ytag({&#34;type&#34;:&#34;ycl_cookie&#34;});` call after the tag loads.
+* **Auto Tagging**: Enable or disable auto tagging. Enabling this setting performs the `ytag({"type":"ycl_cookie"});` call after the tag loads.
 * **Display Network Conversion IO**: Enter your Yahoo! Japan Display Network (YDN) Conversion IO.
 * **Display Network Conversion Label**: Enter your Yahoo! Japan Display Network (YDN) Conversion Label.
 * **Display Network Retargeting ID**: Enter your Yahoo! Japan Display Network (YDN) Retargeting ID.
@@ -34,9 +34,13 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
+
+<blockquote>
 To fire any tags, you must set up the trigger condition in the **Tag Type** category.
+</blockquote>
+
 
 The available categories are:
 
@@ -133,18 +137,18 @@ The available categories are:
 To set up a tag which fires on every page according to load rules:
 
 1. On the **Tag Configuration** tab, enter the appropriate value for the **Display Network Retargeting ID** box.
-1. Set **Auto Tagging** to **True**. This will trigger the `ytag({&#34;type&#34;:&#34;ycl_cookie&#34;});` call.
+1. Set **Auto Tagging** to **True**. This will trigger the `ytag({"type":"ycl_cookie"});` call.
 1. Set up your load rules as needed.
 1. On the **Data Mappings** tab in the **Variables** dropdown, click **Use Custom Value**.
 1. In the upper-left section of the dialog, enter **true** in the box.
 1. In the **Category** section, select **Tag Types**.
 1. In the **When mapped variables equals** box, enter **true**.
 1. In the **Trigger tag type** dropdown, select **Display Network Retargeting**.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 1. Click **Done**.
 1. Click **Apply**.
 
-![](/images/client-side-tags/screen-shot-2022-07-06-at-13.35.19.png)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.35.19.png)
 
 ### Trigger YDB Conversion on a purchase event while retargeting on other pages
 
@@ -153,33 +157,33 @@ To set up a YDN Conversion tag which fires on a page with a `tealium_event` vari
 1. Set up your Retargeting tag as described in the Trigger YDN Retargeting on every page that matches load rules section above.
 1. On the **Tag Configuration** tab, enter the appropriate values for the **Display Network Conversion IO** and **Conversion Label** boxes.
 1. On the **Data Mappings** tab in the **Variables** dropdown, select `tealium_event`.
-1. Click **&#43;Select Destination**.
+1. Click **+Select Destination**.
 1. In the **Category** section, select **Tag Types**.
 1. In the **When mapped variables equals** box, enter `purchase`.
 1. In the **Trigger tag type** dropdown, select **Display Network Conversion**.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 1. Repeat steps 3 through 8 for similar mappings, such as **Conversion Transaction ID** and **Conversion Value**, by **Selecting Display Network (YDN) Conversion** from the **Category** section.
 1. To fire the conversion on multiple pages, either repeat these steps or create a vendor-specific variable (for example: `yahoo_conversion_value`), which can be dynamically assigned by extensions.
 1. Click **Done**.
 1. Click **Apply**.
 
-![](/images/client-side-tags/screen-shot-2022-07-06-at-13.42.31.png)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.42.31.png)
 
-Trigger YDB Conversion on a specific page&#39;s URL while retargeting on other pages
+Trigger YDB Conversion on a specific page's URL while retargeting on other pages
 
-To set up a YDN Conversion tag which fires on a specific page&#39;s URL (for example: `/cart/thankyou`) and a Retargeting tag on every other page according to load rules:
+To set up a YDN Conversion tag which fires on a specific page's URL (for example: `/cart/thankyou`) and a Retargeting tag on every other page according to load rules:
 
 1. Set up your Retargeting tag as described in the Trigger YDN Retargeting on every page that matches load rules section above.
 1. On the **Tag Configuration** tab, enter the appropriate values for the **Display Network Conversion IO** and **Conversion Label** boxes.
 1. On the **Data Mappings** tab in the **Variables** dropdown, select **Custom Value**.
-1. Click **&#43;Select Destination**.
+1. Click **+Select Destination**.
 1. In the **Category** section, select **Tag Types**.
 1. In the **When mapped variables equals** box, enter the path to the page where your version should be triggered (for example: `/cart/thankyou`).
 1. In the **Trigger tag type** dropdown, select **Display Network Conversion**.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 1. Repeat steps 3 through 8 for similar mappings, such as **Conversion Transaction ID** and **Conversion Value**, by **Selecting Display Network (YDN) Conversion** from the **Category** section.
 1. To fire the conversion on multiple pages, either repeat these steps or create a vendor-specific variable (for example: `yahoo_conversion_value`), which can be dynamically assigned by extensions.
 1. Click **Done**.
 1. Click **Apply**.
 
-![](/images/client-side-tags/screen-shot-2022-07-06-at-13.43.38.png)
+![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.43.38.png)

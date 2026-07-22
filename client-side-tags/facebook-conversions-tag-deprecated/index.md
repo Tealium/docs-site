@@ -3,7 +3,11 @@ title: Facebook Conversions Tag Setup Guide (Deprecated)
 description: This article describes how to set up the Facebook Conversions tag.
 url: https://docs.tealium.com/client-side-tags/facebook-conversions-tag-deprecated/
 ---
-This tag is deprecated and no longer available in the tag marketplace. Users can upgrade to the [Facebook Pixel tag](), which combines Custom Audiences and Conversion Tracking functionality.
+
+<blockquote>
+This tag is deprecated and no longer available in the tag marketplace. Users can upgrade to the [Facebook Pixel tag](https://docs.tealium.com/facebook-pixel-tag/), which combines Custom Audiences and Conversion Tracking functionality.
+</blockquote>
+
 
 ## Specifications and Requirements
 
@@ -25,7 +29,7 @@ This tag is deprecated and no longer available in the tag marketplace. Users can
 
 ### Adding the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 ### Configuring the Tag
 
@@ -34,19 +38,27 @@ Go to the tag marketplace to add a new tag. For more information about how to ad
 If you prefer to dynamically set this parameter or otherwise override any existing ID, map to `pixel_id` in the Mapping Toolbox.
 1. **Conversion Type**: This is deprecated in the recent tag template. Do not make a selection from the drop-down list.
 1. **Conversion Value**: Enter the value of the conversion type in your account currency.  
+
+<blockquote>
 If you want to configure the Conversion Value dynamically or override its existing value, map to `value` in the Mapping toolbox.
+</blockquote>
+
 
 ### Applying Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag. The **Display on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag. The **Display on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
 
 We recommend that you load this tag on the page where the conversion event happens. For instance, load this tag only on the checkout page if you want to track checkout events.
 
 #### Setting up Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
-We recommend setting up the [E-Commerce data layer]() for this tag so the value in `_csubtotal` can be automatically sent to matching tag destination.
+
+<blockquote>
+We recommend setting up the [E-Commerce data layer](https://docs.tealium.com/e-commerce-extension/) for this tag so the value in `_csubtotal` can be automatically sent to matching tag destination.
+</blockquote>
+
 
 * **Pixel ID** (`pixel_id`)  
 The numeric identifier of your conversion pixel.  

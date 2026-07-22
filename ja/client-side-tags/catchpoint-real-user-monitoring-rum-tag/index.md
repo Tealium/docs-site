@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/client-side-tags/catchpoint-real-user-monitorin
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスし、Catchpoint リアルユーザーモニタリング（RUM）タグを追加します（[タグの追加方法についてはこちら]()を参照）。
+まず、Tealiumのタグマーケットプレイスにアクセスし、Catchpoint リアルユーザーモニタリング（RUM）タグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照）。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/client-side-tags/catchpoint-real-user-monitorin
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -33,17 +33,17 @@ url: https://docs.tealium.com/ja/client-side-tags/catchpoint-real-user-monitorin
 
 |変数| 説明|
 |---| ---|
-| `pageGroup_token` |  &lt;ul&gt;&lt;li&gt;ページグループトークン。&lt;/li&gt;&lt;/ul&gt; |
-| `variation_token` |  &lt;ul&gt;&lt;li&gt;バリエーションタグトークン。&lt;/li&gt;&lt;/ul&gt; |
-| `indicator_token` |  &lt;ul&gt;&lt;li&gt;インジケータータグトークン。&lt;/li&gt;&lt;/ul&gt; |
-| `indicator_value` |  &lt;ul&gt;&lt;li&gt;インジケーター値。&lt;/li&gt;&lt;/ul&gt; |
-| `tracepoint_token` |  &lt;ul&gt;&lt;li&gt;トレースポイントトークン。&lt;/li&gt;&lt;/ul&gt; |
-|`tracepoint_value`|  &lt;ul&gt;&lt;li&gt;トレースポイント値。&lt;/li&gt;&lt;/ul&gt; |
+| `pageGroup_token` |  <ul><li>ページグループトークン。</li></ul> |
+| `variation_token` |  <ul><li>バリエーションタグトークン。</li></ul> |
+| `indicator_token` |  <ul><li>インジケータータグトークン。</li></ul> |
+| `indicator_value` |  <ul><li>インジケーター値。</li></ul> |
+| `tracepoint_token` |  <ul><li>トレースポイントトークン。</li></ul> |
+|`tracepoint_value`|  <ul><li>トレースポイント値。</li></ul> |
 
 ### Eコマース
 
 |変数| 説明|
 |---| ---|
-| `order_id` |  &lt;ul&gt;&lt;li&gt;注文ID。&lt;/li&gt;&lt;li&gt;`_corder`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計。&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列。&lt;/li&gt;&lt;li&gt;数量リスト。&lt;/li&gt;&lt;li&gt;`_cquan`を上書き。&lt;/li&gt;&lt;/ul&gt; |
+| `order_id` |  <ul><li>注文ID。</li><li>`_corder`を上書き。</li></ul> |
+|`order_subtotal`|  <ul><li>小計。</li><li>`_csubtotal`を上書き。</li></ul> |
+|`product_quantity`|  <ul><li>配列。</li><li>数量リスト。</li><li>`_cquan`を上書き。</li></ul> |

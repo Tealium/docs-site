@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/iq-dashboard/
 
 ダッシュボードは、iQタグ管理にログインするとデフォルトで表示されるビューです。ダッシュボードには、プロファイル構成の要約、現在のプロファイルのタグメトリクス、および最近の変更のリストが表示されます。ダッシュボードを使用して、アカウント内の特定のエリアにすばやくジャンプします。
 
-ダッシュボードにアクセスするには、サイドバーから **タグ管理 &gt; ダッシュボード** を選択します。
+ダッシュボードにアクセスするには、サイドバーから **タグ管理 > ダッシュボード** を選択します。
 
 ## アカウントの概要
 
@@ -15,22 +15,22 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/iq-dashboard/
 
 ### ヘディング
 
-![](/images/iq-tag-management/iq-dashboard-heading.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-dashboard-heading.png)
 
 ヘディングバーはTealiumウィンドウの上部に表示されます。以下の項目が含まれています：
 
 * プロファイルスイッチャー：別のアカウント、プロファイル、またはバージョンに切り替えます。
 * 検索バー：プロファイル内のルール、タグ、拡張機能を検索します。
-* [保存/公開]()：バージョンへの変更を保存して公開します。
+* [保存/公開](https://docs.tealium.com/save-publish-a-version/)：バージョンへの変更を保存して公開します。
 * リソースセンター：このボタンをクリックしてサポートタブを開きます。このタブから、サポートチケットを提出したり、製品ガイドを検索したり、製品発表を見たり、マーケティングコンテンツや今後のイベントを読んだり、製品に対するアイデアを提出したりすることができます。
-* [同時ユーザー]()：他のユーザーがログオンしてプロファイルを使用している場合、このアイコンが表示されます。アイコンをクリックして、どのユーザーが使用しているかを表示し、プロファイルを閲覧する人にメッセージを投稿します。
+* [同時ユーザー](https://docs.tealium.com/concurrent-users/)：他のユーザーがログオンしてプロファイルを使用している場合、このアイコンが表示されます。アイコンをクリックして、どのユーザーが使用しているかを表示し、プロファイルを閲覧する人にメッセージを投稿します。
 * プロファイルアイコン：プロファイルアイコンをクリックすると、**管理** メニューが表示されます。**管理** メニューには、アカウントで使用できるすべての機能が含まれています。
 
 ### ナビゲーションバー
 
 ナビゲーションバーはTealiumウィンドウの左側に表示されます。利用可能なすべての製品、機能、ツールへのリンクが含まれています。どのアイテムをクリックしても、それがTealiumウィンドウでロードされます。サーバーサイドの製品や機能をクリックすると、サーバーサイドのプロファイルをロードするためにブラウザで新しいタブが開きます。
 
-![](/images/iq-tag-management/iq-dashboard-navigation-bar1.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-dashboard-navigation-bar1.png)
 
 ナビゲーションバーを最小化するには、ナビゲーションバーの下部にある左矢印をクリックします。Tealiumアプリケーションは、製品の機能を表示するボタンとして表示されるか、それが開く製品を説明するツールチップが表示されます。ナビゲーションバーを再度展開するには、ナビゲーションバーの下部にある右矢印をクリックします。
 
@@ -38,13 +38,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/iq-dashboard/
 
 **サマリー** セクションでは、円グラフにアクティブタグと非アクティブタグの総数が表示されます。チャートの任意の領域にカーソルを合わせると、タグカテゴリ名とそのカテゴリに構成されているタグの数が表示されます。[変数]()、[ルール]()、[タグ]()、および [拡張機能]() の総数が上部に表示されます。どのアイテムもクリックすると、その構成セクションに直接移動します。
 
-![](/images/iq-tag-management/iq-dashboard-summary.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-dashboard-summary.png)
 
 ### プロファイルタグレポート
 
 **プロファイルタグレポート** セクションでは、使用状況の要約が表示されます：訪問数、uTagのロード数、ベンダータグのロード数。グラフの右上の矢印をクリックすると、**タグレポート** に直接移動します。そこから、ドロップダウンカレンダーを使用して視点を調整し、日付範囲を変更することができます。異なる視点と日付範囲を見ることで、基本的なIT目的のための組織のタグ使用状況の一般的なビューを得ることができます。
 
-![](/images/iq-tag-management/iq-dashboard-tag-report.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-dashboard-tag-report.png)
 
 ### 最近のプロファイル変更
 
@@ -57,13 +57,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/getting-started/iq-dashboard/
 * **バージョンに切り替える**
 バージョンの右上隅にある矢印をクリックして、そのバージョンのアカウント/プロファイルにすばやく切り替えます。
 
-![](/images/iq-tag-management/iq-dashboard-recent-changes.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-dashboard-recent-changes.png)
 
 ## **Tealium Learning Center Resources**
 
 下部パネルにはTealium Learning Center (TLC) のリソースリストが表示されます。
 
-![](/images/iq-tag-management/whiteui-tiq-resourcesbanner.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-resourcesbanner.png)
 
 * **コミュニティフォーラム**  
 コミュニティフォーラムでは、製品の他のユーザーに質問をしたり、ヒントやコツを共有したり、ターゲットを絞った議論に参加したり、コミュニティ内で専門知識のバッジや賞賛を獲得したりすることができます。

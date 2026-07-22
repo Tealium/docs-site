@@ -12,9 +12,9 @@ Artificial intelligence is the larger concept used to create intelligent machine
 
 ## About Artificial Intelligence
 
-Artificial intelligence is a field of computer science that enables a computer system to mimic or simulate human intelligence. The two words &#34;_Artificial_&#34; and &#34;_Intelligence_&#34; translate to &#34;a human-made thinking power.&#34;
+Artificial intelligence is a field of computer science that enables a computer system to mimic or simulate human intelligence. The two words "_Artificial_" and "_Intelligence_" translate to "a human-made thinking power."
 
-An artificial intelligence system does not require programming in advance. It instead uses algorithms that work with the intelligence already present in the system. This involves machine learning algorithms, such as &#34;reinforcement learning&#34; and &#34;deep learning&#34; neural networks.
+An artificial intelligence system does not require programming in advance. It instead uses algorithms that work with the intelligence already present in the system. This involves machine learning algorithms, such as "reinforcement learning" and "deep learning" neural networks.
 
 Some examples of artificial intelligence implementations in used today include: Siri, Google AlphaGo, and various chess playing implementations.
 

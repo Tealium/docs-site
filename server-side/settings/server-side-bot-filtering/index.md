@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/settings/server-side-bot-filtering/
 ---
 Server-side bot filtering is essential for maintaining the accuracy of data collected through Tealium server-side products.
 
-This article focuses on server-side bot filtering. For details on client-side bot filtering, see .
+This article focuses on server-side bot filtering. For details on client-side bot filtering, see [client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/).
 
 ## How it works
 
@@ -128,9 +128,9 @@ ZyBorg
 
 If you need to prevent specific events from being sent server-side due to internal or bot traffic, you can:
 
-* Add [load rules]() on the [Collect tag]() to restrict when it loads.
+* Add [load rules](https://docs.tealium.com/manage-load-rules/) on the [Collect tag](https://docs.tealium.com/tealium-collect-tag/) to restrict when it loads.
 * Use client-side methods to stop the Collect tag from loading based on user agents.
-For details on client-side bot filtering, see .
+For details on client-side bot filtering, see [client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/).
 ## Enabling server-side filtering in AudienceStream
 
-For more advanced filtering, such as excluding certain user agent patterns or IP addresses, you can enable server-side filtering in AudienceStream. To set this up, contact your Tealium customer success manager for guidance.
+For more advanced filtering, such as excluding certain user agent patterns or IP addresses, you can enable server-side filtering in AudienceStream. To set this up, [contact support](https://docs.tealium.com/support/) for guidance.

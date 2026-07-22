@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/at-internet-piano-analytics
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -27,7 +27,7 @@ The following section describes how to set up parameters and options for each ac
 
 ### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100
 * Max time since oldest request: 5 minutes
@@ -45,7 +45,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |Parameter| Description|
 | --- | --- |
-|Date Formats| Specify the [date format](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date) when populating an event property.&lt;br&gt; Only milliseconds since epoch UTC (or CDH Date Attributes) are formattable, otherwise the action fails.&lt;br&gt; The following date formats are valid: `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDTHH:mm:ssZ`, `UNIX`.|
+|Date Formats| Specify the [date format](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date) when populating an event property.<br> Only milliseconds since epoch UTC (or CDH Date Attributes) are formattable, otherwise the action fails.<br> The following date formats are valid: `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDTHH:mm:ssZ`, `UNIX`.|
 
 #### Standard Parameters
 

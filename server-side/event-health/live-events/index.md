@@ -9,13 +9,13 @@ The live events chart displays events in real time coming from all data sources 
 
 ## Use live events
 
-Access live events by going to **Validate &gt; Live Events**.
+Access live events by going to **Validate > Live Events**.
 
-![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventfeed.png)
 
 You control which events are displayed in the chart using the **Data Sources** and **Event Feeds** lists. The default selections are **All Data Sources** and **All Events**. Adjusting these menus refreshes the chart and displays the event activity for the selected combination.
 
-![](/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
 
 If you select a specific event for an event feed, the chart displays data for that event only. To compare an event feed to all event data, click **Compare against All Events**. For example, you can create event feeds for specific countries or regions, then compare a country or region event feed to all events.
 
@@ -30,7 +30,7 @@ The trace options modal is displayed.
 1. Click **Start Trace** and follow the instructions.
 1. Copy the generated trace ID and click **Continue**.
 1. Open a new Chrome browser window with the page to test.
-1. Open **Tealium Tools &gt; Trace** and enter the trace ID.  
+1. Open **Tealium Tools > Trace** and enter the trace ID.  
 
 The live events chart now shows only events triggered during your traced session. You can start a new trace or rejoin an existing trace following the same steps.
 
@@ -38,7 +38,7 @@ The live events chart now shows only events triggered during your traced session
 
 If you have [event specifications]() defined, Live Events displays the quality of your incoming data. Each bar in the chart is segmented according to the status of the event specifications applied. The following filters can be toggled on or off to adjust the display of the chart:
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-event-specification-filters.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-event-specification-filters.png)
 
 * **Valid Events**  
 These events satisfy the requirements of an active event specification. This means that the events have a known value for the `tealium_event` attribute and all the required attributes from the specification. The more valid events you see the better. This means your installations are sending the data expected in your specifications.
@@ -47,7 +47,11 @@ These events match an event specification, but do not have the required attribut
 * **No Spec**  
 These events do not have a matching event specification. This means that the events either do not have the `tealium_event` attribute or the value does not have a corresponding event specification.
 
- Event specifications do not filter out data. Even if an event is invalid, the system still processes the event. 
+
+<blockquote>
+Event specifications do not filter out data. Even if an event is invalid, the system still processes the event.
+</blockquote>
+
 
 ## View event details
 
@@ -55,13 +59,13 @@ Click a bar in the chart to view the event details from an incoming data sample.
 
 For example, a valid `cart_empty` event:
 
-![](/images/server-side/whiteui-eventstream-live-events-and-feeds-valid-events-details.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-live-events-and-feeds-valid-events-details.png)
 
 The event attribute details are organized into the following attribute types: Universal Variable, JavaScript Page Variable, HTML Metadata, First-party Cookie, Query String Parameter, and Tealium-provided.
 
 An invalid `cart_empty` event due to lack of matching event specification resembles the following: 
 
-![](/images/server-side/whiteui-eventstream-eventspecifications-invalid-event.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-eventspecifications-invalid-event.png)
 
 ## Define unknown attributes
 
@@ -69,7 +73,7 @@ An unknown attribute is an attribute detected in the incoming event that has not
 
 In the event details view, unknown attributes are indicated in the **Data Type** column as `Unknown`.
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
 
 Unknown attributes can be defined directly from this screen by using the **Quick Add** action, as follows:
 
@@ -83,6 +87,10 @@ The attribute now displays its new data type.
 
 Events with a custom value for `tealium_event` are displayed as `Unknown` in the event details view if they do not have an associated event specification. When this occurs, create a custom event specification directly from the event details view based on the detected value of `tealium_event` and the attributes of the event.
 
-We recommend that you define unknown attributes before you create an event specification from a live event. For more information, see [Define unknown attributes](#define-unknown-attributes).
 
-For more information, see [Manage event specifications]().
+<blockquote>
+We recommend that you define unknown attributes before you create an event specification from a live event. For more information, see [Define unknown attributes](#define-unknown-attributes).
+</blockquote>
+
+
+For more information, see [Manage event specifications](https://docs.tealium.com/manage-event-specifications/#create-an event-specification).

@@ -7,9 +7,13 @@ The array of booleans attribute stores a list of true/false values.
 
 The array of booleans is available in the following scopes: Event, Visit, Visitor.
 
-![](/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
+![](https://docs.tealium.com/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png)
 
-The strings &#34;true&#34; and &#34;false&#34; (any mix of upper/lowercase) are converted to their respective boolean values. All other non-boolean values are ignored.
+
+<blockquote>
+The strings "true" and "false" (any mix of upper/lowercase) are converted to their respective boolean values. All other non-boolean values are ignored.
+</blockquote>
+
 
 ## Enrichments
 

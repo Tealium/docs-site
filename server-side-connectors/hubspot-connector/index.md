@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/hubspot-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -31,7 +31,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact Properties| &lt;ul&gt;&lt;li&gt;(Required) The contact email address.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt;|
+|Contact Properties| <ul><li>(Required) The contact email address.</li><li>Select a HubSpot field to map to from the list.</li></ul>|
 
 ### Create Contact (Batched)
 
@@ -45,7 +45,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact Properties| &lt;ul&gt;&lt;li&gt;(Required) The contact email address.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt;|
+|Contact Properties| <ul><li>(Required) The contact email address.</li><li>Select a HubSpot field to map to from the list.</li></ul>|
 
 ### Update Contact (Real-Time)
 
@@ -53,8 +53,8 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact Identifiers|  &lt;ul&gt;&lt;li&gt;(Required) The email address or contact ID of the contact.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Properties| &lt;ul&gt;&lt;li&gt;(Required) The email address to set the contact to.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt;|
+|Contact Identifiers|  <ul><li>(Required) The email address or contact ID of the contact.</li><li>Select a HubSpot field to map to from the list.</li></ul> |
+|Contact Properties| <ul><li>(Required) The email address to set the contact to.</li><li>Select a HubSpot field to map to from the list.</li></ul>|
 
 ### Update Contact (Batched)
 
@@ -70,8 +70,8 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact Identifiers|  &lt;ul&gt;&lt;li&gt;(Required) The email address or contact ID of the contact.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Properties| &lt;ul&gt;&lt;li&gt;(Required) The email address to set the contact to.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt;|
+|Contact Identifiers|  <ul><li>(Required) The email address or contact ID of the contact.</li><li>Select a HubSpot field to map to from the list.</li></ul> |
+|Contact Properties| <ul><li>(Required) The email address to set the contact to.</li><li>Select a HubSpot field to map to from the list.</li></ul>|
 
 ### Add Contact to List
 
@@ -87,8 +87,8 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List|  &lt;ul&gt;&lt;li&gt;(Required) Select the contact list to add the contact to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Lookup|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List|  <ul><li>(Required) Select the contact list to add the contact to.</li></ul> |
+|Contact Lookup|  <ul><li>(Required) The email address of the contact.</li><li>Select a HubSpot field to map to from the list.</li></ul> |
 
 ### Remove Contact from List
 
@@ -100,5 +100,5 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List|  &lt;ul&gt;&lt;li&gt;(Required) Select the contact list to remove the contact from.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Lookup|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;li&gt;Select a HubSpot field to map to from the list.&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List|  <ul><li>(Required) Select the contact list to remove the contact from.</li></ul> |
+|Contact Lookup|  <ul><li>(Required) The email address of the contact.</li><li>Select a HubSpot field to map to from the list.</li></ul> |

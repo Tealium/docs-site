@@ -9,13 +9,13 @@ url: https://docs.tealium.com/ja/platforms/android-java/consent-management/
 
 対応しているプラットフォームは、Androidモバイル、Android TV、Android Wearを含みます。
 
-詳細については、を参照してください。
+詳細については、[platforms/getting-started-mobile/consent-management](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/)を参照してください。
 
 ## サンプルアプリ
 
 私たちのライブラリ、トラッキング方法、ベストプラクティスの実装に慣れるために、Android Consent Managementの[サンプルアプリ](https://github.com/Tealium/tealium-android/tree/master/Samples/ConsentManagerDemoApp)を探索してみてください。
 
-Androidの同意管理方法のリストについては、[APIリファレンス](/ja/platforms/android-java/api/consent-manager/)を参照してください。
+Androidの同意管理方法のリストについては、[APIリファレンス](https://docs.tealium.com/ja/platforms/android-java/api/consent-manager/)を参照してください。
 
 ## 有効化
 
@@ -25,10 +25,10 @@ Androidの同意管理方法のリストについては、[APIリファレンス
 //TealiumHelper.java
 import com.tealium.library.ConsentManager;
 
-public static final String TEALIUM_MAIN = &#34;main&#34;;
+public static final String TEALIUM_MAIN = "main";
 
 public static void initialize(Application application) {
-	final Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+	final Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 
 	config.enableConsentManager(TEALIUM_MAIN); //enable with tealium instance name
 
@@ -68,9 +68,9 @@ tealiumInstance.getConsentManager()
           new String[] {ConsentManager.ConsentCategory.ANALYTICS});
 ```
 
-例えば、Tealiumの同意カテゴリー`&#34;big_data&#34;`、`&#34;analytics&#34;`、`&#34;monitoring&#34;`を&#34;performance&#34;という単一のカテゴリーにグループ化することを選択することができます。これは、全カテゴリーから選択するよりもユーザーにとって簡単かもしれません。これを最も許可しないものから最も許可するもの（全カテゴリー）までのスライダーインターフェースで表現することを選択することができます。
+例えば、Tealiumの同意カテゴリー`"big_data"`、`"analytics"`、`"monitoring"`を"performance"という単一のカテゴリーにグループ化することを選択することができます。これは、全カテゴリーから選択するよりもユーザーにとって簡単かもしれません。これを最も許可しないものから最も許可するもの（全カテゴリー）までのスライダーインターフェースで表現することを選択することができます。
 
-![](/images/platforms/android/consent-slider.gif)
+![](https://docs.tealium.com/images/platforms/android/consent-slider.gif)
 
 ### カテゴリーベースのオプトイン
 
@@ -84,5 +84,5 @@ tealiumInstance.getConsentManager()
 ```
 
 
-![](/images/platforms/android/consent-categories.gif)
+![](https://docs.tealium.com/images/platforms/android/consent-categories.gif)
 

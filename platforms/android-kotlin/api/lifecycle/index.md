@@ -18,33 +18,33 @@ The following summarizes the methods of the `Lifecycle` class for manually track
 Manually tracks launch event with optional data map.
 
 ```java
-tealiumInstance.lifecycle?.trackLaunchEvent(mapOf(&#34;key&#34; to &#34;launch-value&#34;))
+tealiumInstance.lifecycle?.trackLaunchEvent(mapOf("key" to "launch-value"))
 ```
 
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | Map of custom data to send with launch event | mapOf(&#34;key&#34; to &#34;launch-value&#34;) |
+| `data` | `Map<String, Any>` | Map of custom data to send with launch event | mapOf("key" to "launch-value") |
 
 ### `trackSleepEvent()`
 
 Manually tracks sleep event with optional data map.
 
 ```java
-tealiumInstance.lifecycle?.trackSleepEvent(mapOf(&#34;key&#34; to &#34;sleep-value&#34;))
+tealiumInstance.lifecycle?.trackSleepEvent(mapOf("key" to "sleep-value"))
 ```
 
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | Map of custom data to send with sleep event | mapOf(&#34;key&#34; to &#34;sleep-value&#34;) |
+| `data` | `Map<String, Any>` | Map of custom data to send with sleep event | mapOf("key" to "sleep-value") |
 
 ### `trackWakeEvent()`
 
 Manually tracks wake event with optional data map.
 
 ```java
-tealiumInstance.lifecycle?.trackWakeEvent(mapOf(&#34;key&#34; to &#34;wake-value&#34;))
+tealiumInstance.lifecycle?.trackWakeEvent(mapOf("key" to "wake-value"))
 ```
 
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Any&gt;` | Map of custom data to send with wake event | mapOf(&#34;key&#34; to &#34;wake-value&#34;) |
+| `data` | `Map<String, Any>` | Map of custom data to send with wake event | mapOf("key" to "wake-value") |

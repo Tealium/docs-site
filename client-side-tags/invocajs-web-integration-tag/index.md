@@ -10,12 +10,16 @@ url: https://docs.tealium.com/client-side-tags/invocajs-web-integration-tag/
   * Contact your Invoca representative for help adding Marketing data fields.
   * Marketing data field names do not need to match the data mappings.
   * Data Source Type should be: **JavaScript Data Layer**
-  * Data Source Name should be: `localStorage.getItem(&#34;inv_TEALIUM_MAPPING&#34;)`  
+  * Data Source Name should be: `localStorage.getItem("inv_TEALIUM_MAPPING")`  
+
+<blockquote>
 `TEALIUM_MAPPING` must match the name of your custom data mapping.
+</blockquote>
+
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -27,4 +31,4 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).

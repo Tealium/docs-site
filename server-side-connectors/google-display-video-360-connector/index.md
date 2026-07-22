@@ -5,9 +5,13 @@ url: https://docs.tealium.com/server-side-connectors/google-display-video-360-co
 ---
 ## Requirements
 
-To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google DV360 interface (**Linked Accounts &gt; Link New Account &gt; External Data Partner &gt; Tealium**). For more information, see [Google: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=en).
+To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google DV360 interface (**Linked Accounts > Link New Account > External Data Partner > Tealium**). For more information, see [Google: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=en).
 
- Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement. 
+
+<blockquote>
+Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement.
+</blockquote>
+
 
 ## API Information
 
@@ -24,14 +28,22 @@ This connector uses the following vendor APIs:
   * API Endpoint: `https://cm.g.doubleclick.net/upload`
   * Documentation: [Google Authorized Buyers API](https://developers.google.com/authorized-buyers/rtb/bulk-uploader)
 
-It may take up to 72 hours from when the connector fires before the visitor becomes available for use. &lt;br&gt;
-For more information, see [Tips for using third-party audience lists](https://support.google.com/displayvideo/answer/6212219?hl=en&amp;amp;ref_topic=2726036).
+
+<blockquote>
+It may take up to 72 hours from when the connector fires before the visitor becomes available for use. <br>
+For more information, see [Tips for using third-party audience lists](https://support.google.com/displayvideo/answer/6212219?hl=en&amp;ref_topic=2726036).
+</blockquote>
+
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
-When you add this connector, you must accept the vendor&#39;s data platform policy that appears.
+
+<blockquote>
+When you add this connector, you must accept the vendor's data platform policy that appears.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -50,12 +62,20 @@ Use the following steps to create a new segment in AudienceStream:
 
 1. Click **Create a New Segment** from the top of the **Actions** selection drop-down list.
 2. Enter the **Segment Name**, **Segment Member Lifespan**, **Integration Code**, and **Segment Description**.  
-![](/images/server-side-connectors/audiencestream-create-segment.jpg)
-If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
+![](https://docs.tealium.com/images/server-side-connectors/audiencestream-create-segment.jpg)
+
+<blockquote>
+If you use a [DataAccess](https://docs.tealium.com/about-dataaccess/) product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
+</blockquote>
+
 3. Click **Create Segment**.  
 The Integration Code is an ID used by user list sellers to correlate IDs on their systems. If no ID is available, you can manually enter a random number between `1` and `1000`. Confirmation will appear in the form of a check mark next to the Create Segment button to verify that the segment has been created.
 
-Allow 3 to 4 hours before using new audiences within an action when you create a new Google Display &amp;amp; Video 360 audience. When your audience list is visible inside Google Display &amp;amp; Video 360, you can then use your audience without error. For more information, see [Google Display &amp;amp; Video Help: Audience list targeting](https://support.google.com/displayvideo/answer/2949947?hl=en).
+
+<blockquote>
+Allow 3 to 4 hours before using new audiences within an action when you create a new Google Display &amp; Video 360 audience. When your audience list is visible inside Google Display &amp; Video 360, you can then use your audience without error. For more information, see [Google Display &amp; Video Help: Audience list targeting](https://support.google.com/displayvideo/answer/2949947?hl=en).
+</blockquote>
+
 
 ## Actions
 
@@ -68,7 +88,11 @@ Allow 3 to 4 hours before using new audiences within an action when you create a
 
 #### Parameters
 
- You must use one of the following ID parameters: **Partner Provided ID (already MD5 hashed)**, **Partner Provided ID (apply MD5 hash)**, **Google User ID**, **iOS Advertising ID**, **Android Advertising ID**, **RIDA**, **AFAI**, or **MSAI**. 
+
+<blockquote>
+You must use one of the following ID parameters: **Partner Provided ID (already MD5 hashed)**, **Partner Provided ID (apply MD5 hash)**, **Google User ID**, **iOS Advertising ID**, **Android Advertising ID**, **RIDA**, **AFAI**, or **MSAI**.
+</blockquote>
+
 
 | Parameter | Description |
 |---| ---|

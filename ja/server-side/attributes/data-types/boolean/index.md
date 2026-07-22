@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/boolean/
 
 ブーリアン属性は次のスコープで利用可能です：イベント、訪問、訪問。
 
-![](/images/server-side/attribute-scopes-table-all.png)
+![](https://docs.tealium.com/images/server-side/attribute-scopes-table-all.png)
 
 ### サイズ制限
 
@@ -33,11 +33,11 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/boolean/
 ```
 構成値: true
 条件: 任意のイベント
-ルール: tealium_event equals &#34;cart_add&#34;
+ルール: tealium_event equals "cart_add"
 ```
 
 **属性名:** Did Add to Cart
 
-* **初期値**: `&#34;&#34;`
+* **初期値**: `""`
 * **エンリッチされた値**: `true`
 * **結果の値** `true`

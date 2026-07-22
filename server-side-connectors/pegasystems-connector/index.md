@@ -34,11 +34,15 @@ Additionally, trigger next best actions within the Pega Customer Decision Hub by
 | ID Merge | ✓ | ✗ |
 | Send Customer Profile Data | ✓ | ✗ |
 
+
+<blockquote>
 While Tealium supports batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.
+</blockquote>
+
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/manage-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -49,7 +53,11 @@ After adding the connector, configure the following settings:
   * **POST**: Send the client credentials in the body of the POST request.
   * **BASIC**: Send the client credentials (Client ID and Client Secret) to the external application as a part of the authorization header.
 
+
+<blockquote>
 The REST service authentication used by the client requires **Client ID** and **Client Secret** credentials.
+</blockquote>
+
 
 Click **Done** when you are finished configuring the connector.
 
@@ -61,13 +69,13 @@ The following section describes how to set up parameters and options for each ac
 
 ### Action — Update Segment Membership Data (Real-Time)
 
-Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&#39;s profile for making a decision in real-time.
+Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor's profile for making a decision in real-time.
 
 #### Parameters
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Service Endpoint URL | The Service Endpoint URL defined in your Pega system.&lt;br&gt;The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://&lt;host&gt;:&lt;port&gt;/prweb/PRRestService/&lt;servicepackage&gt;/&lt;serviceclass&gt;/&lt;servicemethod&gt;` |
+| Service Endpoint URL | The Service Endpoint URL defined in your Pega system.<br>The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://<host>:<port>/prweb/PRRestService/<servicepackage>/<serviceclass>/<servicemethod>` |
 | Customer ID | (Required) The primary key for a Pega Customer Profile. |
 | Name | (Required) The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega. |
 | Status | (Required) The audience trigger action to join or leave an audience. Based on the action you select, we recommend that you include mapping **Join** or **Leave** values to the Segment Status field. |
@@ -78,21 +86,25 @@ Use this action to send audience data to Pega to trigger next best action decisi
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 60 minutes
 * Max size of requests: 100 MB
 
-Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&#39;s profile for making a decision in real-time.
+Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor's profile for making a decision in real-time.
 
+
+<blockquote>
 While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.
+</blockquote>
+
 
 #### Parameters
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Service Endpoint URL | The Service Endpoint URL defined in your Pega system.&lt;br&gt;The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://&lt;host&gt;:&lt;port&gt;/prweb/PRRestService/&lt;servicepackage&gt;/&lt;serviceclass&gt;/&lt;servicemethod&gt;` |
+| Service Endpoint URL | The Service Endpoint URL defined in your Pega system.<br>The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://<host>:<port>/prweb/PRRestService/<servicepackage>/<serviceclass>/<servicemethod>` |
 | Customer ID | (Required) The primary key for a Pega Customer Profile. |
 | Name | (Required) The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega. |
 | Status | (Required) The audience trigger action to join or leave an audience. Based on the action you select, we recommend that you include mapping **Join** or **Leave** values to the Segment Status field. |
@@ -107,7 +119,7 @@ Use this EventStream action to send real-time event data, primarily page views, 
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Service Endpoint URL | The value is the Service Endpoint URL defined in your Pega system.&lt;br&gt;The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://&lt;host&gt;:&lt;port&gt;/prweb/PRRestService/&lt;servicepackage&gt;/&lt;serviceclass&gt;/&lt;servicemethod&gt;` |
+| Service Endpoint URL | The value is the Service Endpoint URL defined in your Pega system.<br>The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://<host>:<port>/prweb/PRRestService/<servicepackage>/<serviceclass>/<servicemethod>` |
 | Page Type | (Required) The type of the page visited. |
 | Device Type | (Required) The device used in event generation. |
 | Event Type | (Required) The name of the event. Recommended to use your `tealium_event` value. |
@@ -121,7 +133,7 @@ Use this EventStream action to send real-time event data, primarily page views, 
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 60 minutes
@@ -129,13 +141,17 @@ This action uses batched requests to support high-volume data transfers to the v
 
 Use this EventStream action to send batched event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.
 
+
+<blockquote>
 While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.
+</blockquote>
+
 
 #### Parameters
 
 | Parameter | Description |
 | --- | --- |
-| Service Endpoint URL | The value is the Service Endpoint URL defined in your Pega system.&lt;br&gt;The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://&lt;host&gt;:&lt;port&gt;/prweb/PRRestService/&lt;servicepackage&gt;/&lt;serviceclass&gt;/&lt;servicemethod&gt;` |
+| Service Endpoint URL | The value is the Service Endpoint URL defined in your Pega system.<br>The **Service Endpoint URL** uses the following structure, but is customizable and may be provided by your Pega contact: `https://<host>:<port>/prweb/PRRestService/<servicepackage>/<serviceclass>/<servicemethod>` |
 | Page Type | (Required) The type of the page visited. |
 | Device Type | (Required) The device used in event generation. |
 | Event Type | (Required) The name of the event. Recommended to use your `tealium_event` value. |
@@ -157,7 +173,7 @@ We recommend the following Pegasystems connector configuration:
     * **Pega Customer ID**: (EventStream string) Inherited from the data layer.
     * **Pega Customer IDs**: (AudienceStream array of strings) The **Pega Customer ID**s stitched together by Tealium.
     * **Pega Customer IDs count**: (AudienceStream number) The length of the **Pega Customer IDs** set of strings.
-1. Create an audience with the name **Pega match check**, where the condition is `Pega Customer IDs count &gt; 1`.
+1. Create an audience with the name **Pega match check**, where the condition is `Pega Customer IDs count > 1`.
 1. Add a **Merge customer behavioral data** action to the existing Pega connector, where:
     * **Trigger**: `In Audience at end of visit`.
     * **Uncheck**: `And was not a member of this Audience at start of visit`.
@@ -166,7 +182,7 @@ We recommend the following Pegasystems connector configuration:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Primary ID / Secondary ID | (Required) An array of strings that contains the Primary ID and Secondary IDs. The first value is Primary ID, and subsequent values are Secondary IDs. For example: `[&#34;ID12345&#34;,&#34;ID12346&#34;,&#34;ID12347&#34;]`. |
+| Primary ID / Secondary ID | (Required) An array of strings that contains the Primary ID and Secondary IDs. The first value is Primary ID, and subsequent values are Secondary IDs. For example: `["ID12345","ID12346","ID12347"]`. |
 | Application Name | The ID of the application in which the data of the known customer and unknown prospect is saved. If this value is not passed, the application ID is identified from the value of the application alias in the service URL. |
 | Context Name | Select the context name or enter a custom context name: **Customer**, **Provider**, or **Subscriber**. |
 

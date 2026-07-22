@@ -18,7 +18,7 @@ A minimum of 10,000 average daily visits during chosen training period.
   * **Target Attribute Volume Minimums**  
 Your target attribute must have a minimum daily average of 200 true and 200 false visitors over a 30-day period.
   * **Dataset Timeframe**  
-Dataset Training Timeframe: Your dataset training timeframe must be at least the duration of the Prediction Timeframe plus 1 additional day. For example, a &#34;Likelihood to purchase in 30 days&#34; model requires at least 31 days of data. For better training model accuracy, the training time frame should be 90 days regardless of the prediction timeframe selected in the UI.
+Dataset Training Timeframe: Your dataset training timeframe must be at least the duration of the Prediction Timeframe plus 1 additional day. For example, a "Likelihood to purchase in 30 days" model requires at least 31 days of data. For better training model accuracy, the training time frame should be 90 days regardless of the prediction timeframe selected in the UI.
 
 ## Data quality
 

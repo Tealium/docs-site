@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/singular-events-connecto
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -30,16 +30,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/singular-events-connecto
 
 |**パラメータ**| **説明**|
 |---| ---|
-|デバイスID|  &lt;ul&gt;&lt;li&gt;少なくとも1つのデバイス識別子が必要です。例えば：  &lt;ul&gt;&lt;li&gt;広告主識別子 (`idfa`)&lt;/li&gt;&lt;li&gt;iOSアプリのベンダー識別子 (`idfv`)&lt;/li&gt;&lt;li&gt;Android広告ID ( `aifa`),&lt;/li&gt;&lt;li&gt;Android ID ( `andi`) for Android.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;詳細情報は以下の[APIドキュメンテーション](https://support.singular.net/hc/en-us/articles/4411780525979-Types-of-Device-IDs)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|デバイスID|  <ul><li>少なくとも1つのデバイス識別子が必要です。例えば：  <ul><li>広告主識別子 (`idfa`)</li><li>iOSアプリのベンダー識別子 (`idfv`)</li><li>Android広告ID ( `aifa`),</li><li>Android ID ( `andi`) for Android.</li></ul> </li><li>詳細情報は以下の[APIドキュメンテーション](https://support.singular.net/hc/en-us/articles/4411780525979-Types-of-Device-IDs)を参照してください。</li></ul> |
 |プラットフォーム| `Android` または `iOS`.|
-|アプリケーション名|  &lt;ul&gt;&lt;li&gt;アプリケーションのパッケージ名（Android）またはバンドルID（iOS）。&lt;/li&gt;&lt;li&gt;例：`com.mycompany.app`&lt;/li&gt;&lt;/ul&gt; |
-|IPアドレス|  &lt;ul&gt;&lt;li&gt;デバイスセッションのIPアドレス（小数点またはコロン付き）。&lt;/li&gt;&lt;li&gt;IPv4とIPv6の両方がサポートされています。&lt;/li&gt;&lt;/ul&gt; |
-|デバイスメーカー|  &lt;ul&gt;&lt;li&gt;デバイスハードウェアのメーカー名。通常は消費者向けの名前です。&lt;/li&gt;&lt;li&gt;例：`Samsung`、`LG`、または `Apple`。&lt;/li&gt;&lt;/ul&gt; |
-|デバイスモデル|  &lt;ul&gt;&lt;li&gt;デバイスハードウェアのモデル。&lt;/li&gt;&lt;li&gt;例：`iPhone 8` または `Galaxy S10`&lt;/li&gt;&lt;/ul&gt; |
-|デバイスビルド|  &lt;ul&gt;&lt;li&gt;デバイスのビルド、URLエンコードされています。&lt;/li&gt;&lt;li&gt;例：`Build%2F13D15`。&lt;/li&gt;&lt;/ul&gt; |
-|OSバージョン|  &lt;ul&gt;&lt;li&gt;デバイス上のOSのバージョン。&lt;/li&gt;&lt;li&gt;例：`9.2`。&lt;/li&gt;&lt;/ul&gt; |
-|言語 &amp;amp; 国コード|  &lt;ul&gt;&lt;li&gt;デバイスのIETFローカルタグ。2文字の言語コードと国コードをアンダースコアで区切ります。&lt;/li&gt;&lt;li&gt;例：`en_US`。&lt;/li&gt;&lt;/ul&gt; |
-|オプションパラメータ|  &lt;ul&gt;&lt;li&gt;ここにすべてのオプションパラメータを追加します。&lt;/li&gt;&lt;li&gt;サポートされているパラメータの詳細については、[シングラーAPIドキュメンテーション](https://support.singular.net/hc/en-us/articles/360048588672#Event_Notification_Endpoint)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|アプリケーション名|  <ul><li>アプリケーションのパッケージ名（Android）またはバンドルID（iOS）。</li><li>例：`com.mycompany.app`</li></ul> |
+|IPアドレス|  <ul><li>デバイスセッションのIPアドレス（小数点またはコロン付き）。</li><li>IPv4とIPv6の両方がサポートされています。</li></ul> |
+|デバイスメーカー|  <ul><li>デバイスハードウェアのメーカー名。通常は消費者向けの名前です。</li><li>例：`Samsung`、`LG`、または `Apple`。</li></ul> |
+|デバイスモデル|  <ul><li>デバイスハードウェアのモデル。</li><li>例：`iPhone 8` または `Galaxy S10`</li></ul> |
+|デバイスビルド|  <ul><li>デバイスのビルド、URLエンコードされています。</li><li>例：`Build%2F13D15`。</li></ul> |
+|OSバージョン|  <ul><li>デバイス上のOSのバージョン。</li><li>例：`9.2`。</li></ul> |
+|言語 &amp; 国コード|  <ul><li>デバイスのIETFローカルタグ。2文字の言語コードと国コードをアンダースコアで区切ります。</li><li>例：`en_US`。</li></ul> |
+|オプションパラメータ|  <ul><li>ここにすべてのオプションパラメータを追加します。</li><li>サポートされているパラメータの詳細については、[シングラーAPIドキュメンテーション](https://support.singular.net/hc/en-us/articles/360048588672#Event_Notification_Endpoint)を参照してください。</li></ul> |
 
 ### アクション - インストール後のイベント
 
@@ -47,14 +47,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/singular-events-connecto
 
 |**パラメータ**| **説明**|
 |---| ---|
-|イベント名|  &lt;ul&gt;&lt;li&gt;シングラーで報告するイベントの名前。&lt;/li&gt;&lt;li&gt;例：`ViewItem`&lt;/li&gt;&lt;/ul&gt; |
-|アプリケーション名|  &lt;ul&gt;&lt;li&gt;モバイルアプリケーションのパッケージ名（Android）またはバンドルID（iOS）。&lt;/li&gt;&lt;li&gt;例：`com.yourcompany.app`&lt;/li&gt;&lt;/ul&gt; |
-|デバイスID|  &lt;ul&gt;&lt;li&gt;少なくとも1つのデバイス識別子が必要です。例えば：  &lt;ul&gt;&lt;li&gt;広告主識別子 (`idfa`)&lt;/li&gt;&lt;li&gt;iOSアプリのベンダー識別子 (`idfv`)&lt;/li&gt;&lt;li&gt;Android広告ID ( `aifa`),&lt;/li&gt;&lt;li&gt;Android ID ( `andi`) for Android.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;詳細情報は以下の[APIドキュメンテーション](https://support.singular.net/hc/en-us/articles/4411780525979-Types-of-Device-IDs)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|イベント名|  <ul><li>シングラーで報告するイベントの名前。</li><li>例：`ViewItem`</li></ul> |
+|アプリケーション名|  <ul><li>モバイルアプリケーションのパッケージ名（Android）またはバンドルID（iOS）。</li><li>例：`com.yourcompany.app`</li></ul> |
+|デバイスID|  <ul><li>少なくとも1つのデバイス識別子が必要です。例えば：  <ul><li>広告主識別子 (`idfa`)</li><li>iOSアプリのベンダー識別子 (`idfv`)</li><li>Android広告ID ( `aifa`),</li><li>Android ID ( `andi`) for Android.</li></ul> </li><li>詳細情報は以下の[APIドキュメンテーション](https://support.singular.net/hc/en-us/articles/4411780525979-Types-of-Device-IDs)を参照してください。</li></ul> |
 |プラットフォーム| Android または iOS.|
-|IPアドレス|  &lt;ul&gt;&lt;li&gt;デバイスの生のIPアドレス（小数点またはコロン付き）。&lt;/li&gt;&lt;li&gt;IPv4とIPv6の両方がサポートされています。&lt;/li&gt;&lt;/ul&gt; |
-|デバイスメーカー|  &lt;ul&gt;&lt;li&gt;デバイスハードウェアのメーカー名。通常は消費者向けの名前です。&lt;/li&gt;&lt;li&gt;例：`Samsung`、`LG`、または `Apple`&lt;/li&gt;&lt;/ul&gt; |
-|デバイスモデル|  &lt;ul&gt;&lt;li&gt;デバイスハードウェアのモデル。&lt;/li&gt;&lt;li&gt;例：`iPhone XS` または `Galaxy S10`&lt;/li&gt;&lt;/ul&gt; |
-|デバイスビルド|  &lt;ul&gt;&lt;li&gt;デバイスのビルド、URLエンコードされています。&lt;/li&gt;&lt;li&gt;例：`Build%2F13D15`&lt;/li&gt;&lt;/ul&gt; |
-|OSバージョン|  &lt;ul&gt;&lt;li&gt;デバイス上のOSのバージョン。&lt;/li&gt;&lt;li&gt;例：`9.2`&lt;/li&gt;&lt;/ul&gt; |
-|言語 &amp;amp; 国コード|  &lt;ul&gt;&lt;li&gt;デバイスのIETFローカルタグ。2文字の言語コードと国コードをアンダースコアで区切ります。&lt;/li&gt;&lt;li&gt;例：`en_US`&lt;/li&gt;&lt;/ul&gt; |
-|オプションパラメータ|  &lt;ul&gt;&lt;li&gt;ここにすべてのオプションパラメータを追加します。&lt;/li&gt;&lt;li&gt;詳細情報は、[シングラーサーバー間ドキュメンテーション](https://support.singular.net/hc/en-us/articles/360048588672#Event_Notification_Endpoint)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|IPアドレス|  <ul><li>デバイスの生のIPアドレス（小数点またはコロン付き）。</li><li>IPv4とIPv6の両方がサポートされています。</li></ul> |
+|デバイスメーカー|  <ul><li>デバイスハードウェアのメーカー名。通常は消費者向けの名前です。</li><li>例：`Samsung`、`LG`、または `Apple`</li></ul> |
+|デバイスモデル|  <ul><li>デバイスハードウェアのモデル。</li><li>例：`iPhone XS` または `Galaxy S10`</li></ul> |
+|デバイスビルド|  <ul><li>デバイスのビルド、URLエンコードされています。</li><li>例：`Build%2F13D15`</li></ul> |
+|OSバージョン|  <ul><li>デバイス上のOSのバージョン。</li><li>例：`9.2`</li></ul> |
+|言語 &amp; 国コード|  <ul><li>デバイスのIETFローカルタグ。2文字の言語コードと国コードをアンダースコアで区切ります。</li><li>例：`en_US`</li></ul> |
+|オプションパラメータ|  <ul><li>ここにすべてのオプションパラメータを追加します。</li><li>詳細情報は、[シングラーサーバー間ドキュメンテーション](https://support.singular.net/hc/en-us/articles/360048588672#Event_Notification_Endpoint)を参照してください。</li></ul> |

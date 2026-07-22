@@ -13,6 +13,10 @@ The iQ Revisions API must be activated for your account before it will return re
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. 
 
-See the [Getting Started]() guide to learn about generating a bearer token from the API key.
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call.
+</blockquote>
+
+
+See the [Getting Started](https://docs.tealium.com/api-authentication/) guide to learn about generating a bearer token from the API key.

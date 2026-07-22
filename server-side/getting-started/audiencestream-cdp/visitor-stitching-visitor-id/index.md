@@ -7,9 +7,9 @@ The value is usually set during a qualifying event, one that would only occur wh
 
 ## How it works
 
-![](/images/server-side/getting-started-audiencestream-visitor-id.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-visitor-id.png)
 
-A simple example of a visitor ID attribute is email address (or email hash). This is typically a reliable way to uniquely identify a customer, especially when it&#39;s associated with a qualifying event. To accurately perform identity resolution with an email address the following is needed:
+A simple example of a visitor ID attribute is email address (or email hash). This is typically a reliable way to uniquely identify a customer, especially when it's associated with a qualifying event. To accurately perform identity resolution with an email address the following is needed:
 
 * **Event Attribute (String) - email_address**  
 An email address must be part of the data collection as an event attribute.

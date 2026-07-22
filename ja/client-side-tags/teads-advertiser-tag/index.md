@@ -9,13 +9,13 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-advertiser-tag/
 
 ## タグ構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Teads広告主タグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Teads広告主タグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、データマッピングセクションの構成を行います。
 
 ## データマッピング
 
-マッピングとは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -23,8 +23,8 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-advertiser-tag/
 
 | 変数             | 説明                                                                                      |
 |:-----------------|:-------------------------------------------------------------------------------------------------|
-| `advertiserId`   | &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;Teadsから提供される広告主ID。&lt;/li&gt;&lt;li&gt;例：`123456`&lt;/li&gt;&lt;/ul&gt; |
-| `conversionType` | &lt;ul&gt;&lt;li&gt;オプション。&lt;/li&gt;&lt;li&gt;コンバージョンの名前またはタイプ。&lt;/li&gt;&lt;/ul&gt;                              |
+| `advertiserId`   | <ul><li>必須。</li><li>Teadsから提供される広告主ID。</li><li>例：`123456`</li></ul> |
+| `conversionType` | <ul><li>オプション。</li><li>コンバージョンの名前またはタイプ。</li></ul>                              |
 | `name` | 名前 |
 | `price` | 価格 |
 | `currency` | 通貨 |

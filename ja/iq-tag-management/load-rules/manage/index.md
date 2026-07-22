@@ -7,28 +7,28 @@ url: https://docs.tealium.com/ja/iq-tag-management/load-rules/manage/
 
 以下に示す**ロードルール**画面のリストビューでは、**Used In**列にロードルールを使用しているタグの数が表示されます。
 
-![](/images/iq-tag-management/load-rules-list-view.png)
+![](https://docs.tealium.com/images/iq-tag-management/load-rules-list-view.png)
 
-**UID**列には、各ロードルールの数値識別子が表示されます。この値は、[utag.jsのデバッグ](/ja/platforms/javascript/debugging/)に役立ちます。
+**UID**列には、各ロードルールの数値識別子が表示されます。この値は、[utag.jsのデバッグ](https://docs.tealium.com/ja/platforms/javascript/debugging/)に役立ちます。
 
 ## ロードルールの作成
 
 ロードルールを作成するには、以下の手順を使用します：
 
-1. **ロードルール**画面で、**&#43; 新規ルール**をクリックします。  
+1. **ロードルール**画面で、**+ 新規ルール**をクリックします。  
 **ルールの追加**ダイアログが表示されます。
 1. ロードルールの**タイトル**を追加し、必要に応じて**ノート**を追加します。
 1. ドロップダウンリストから**変数**と**演算子**を選択し、**値**を入力します。  
-    ![](/images/iq-tag-management/load-rules-add-rule.png)
-    * 変数の値をチェックする前に、変数が存在することを確認することをお勧めします。次の例では、`MyVariable`が定義されているかどうかを確認し、その値が1000に等しいかどうかをチェックします：![](/images/iq-tag-management/load-rules/variable-is-defined.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-rules-add-rule.png)
+    * 変数の値をチェックする前に、変数が存在することを確認することをお勧めします。次の例では、`MyVariable`が定義されているかどうかを確認し、その値が1000に等しいかどうかをチェックします：![](https://docs.tealium.com/images/iq-tag-management/load-rules/variable-is-defined.png)
 
       変数が存在し、その値が`null`であることを確認しないと、コードはエラーをスローし、タグが発火しない可能性があります。
 1. ANDロジックを使用して別の条件を追加するには、以下のいずれかを行います：
-    * デフォルトの条件文の隣にある**&#43;**をクリックします。
+    * デフォルトの条件文の隣にある**+**をクリックします。
     * 行メニューをクリックし、**行の複製**を選択して、ANDロジックを使用した条件文のコピーを作成します。  
     複製した条件文は必要に応じて編集できます。
 1. ORロジックを使用して別の条件を追加するには、以下のいずれかを行います：
-    * **&#43;OR**をクリックします。
+    * **+OR**をクリックします。
     * 条件メニューをクリックし、**複製**を選択して、ORロジックを使用した条件のコピーを作成します。  
     複製した条件は新しい条件を作成するために編集できます。
 1. URLなどの長い値を展開するには、以下のいずれかを行います：
@@ -46,11 +46,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/load-rules/manage/
 1. **ルール**タブを選択し、**編集**をクリックします。 
 1. ダイアログの右側のリストからルールをドラッグアンドドロップして左側に移動します。これにより、イベントの論理条件が構築されます。
 
-ロードルールがイベントとどのように動作するかについての詳細は、[イベントルールの例]()を参照してください。
+ロードルールがイベントとどのように動作するかについての詳細は、[イベントルールの例](https://docs.tealium.com/event-rules/)を参照してください。
 
-ロードルール、イベント、タグがどのように相互作用するかについての詳細は、[タグをイベントに登録する]()を参照してください。
+ロードルール、イベント、タグがどのように相互作用するかについての詳細は、[タグをイベントに登録する](https://docs.tealium.com/subscribe-tag-to-event/)を参照してください。
 
+
+<blockquote>
 タグ詳細エリアからも、ロードルールの作成、編集、コピー、有効化、無効化、削除を行うことができます。
+</blockquote>
+
 
 ### タグに追加
 
@@ -60,19 +64,23 @@ url: https://docs.tealium.com/ja/iq-tag-management/load-rules/manage/
 1. **ルール**タブを選択し、**編集**をクリックします。 
 1. ダイアログの右側のリストからルールをドラッグアンドドロップして左側に移動します。これにより、イベントの論理条件が構築されます。
 
+
+<blockquote>
 タグ詳細エリアからも、ロードルールの作成、編集、コピー、有効化、無効化、削除を行うことができます。
+</blockquote>
+
 
 ## ロードルールの詳細を表示
 
 **ロードルール**画面で、ロードルールをクリックします。ロードルールの詳細が表示され、以下の詳細がタブで表示されます：
 
-![](/images/iq-tag-management/load-rules/load-rules-details.png)
+![](https://docs.tealium.com/images/iq-tag-management/load-rules/load-rules-details.png)
 
 * **構成**：ルールのタイトルと論理条件。
-* **タグ**：ロードルールにスコープされた[タグ]()。スコープされたタグに移動するには、タグをクリックします。
-* **イベント**：ロードルールを使用する[イベント]()。
-* **同意**：このルールにリンクされた[同意]()に関する情報。
-* **拡張機能**：ロードルールを使用する[拡張機能]()。
+* **タグ**：ロードルールにスコープされた[タグ](https://docs.tealium.com/about-tags/)。スコープされたタグに移動するには、タグをクリックします。
+* **イベント**：ロードルールを使用する[イベント](https://docs.tealium.com/manage-events/#view-event-details)。
+* **同意**：このルールにリンクされた[同意](https://docs.tealium.com/about-consent-management/)に関する情報。
+* **拡張機能**：ロードルールを使用する[拡張機能](https://docs.tealium.com/about-extensions/)。
 
 ロードルールの変更履歴を表示するには、**変更履歴**をクリックします。
 
@@ -85,10 +93,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/load-rules/manage/
 無効化されたルールが拡張機能にリンクされている場合、拡張機能はエラーでフラグが立てられ、ユーザーはアクティブなルールをリンクする必要があります。
 
 ロードルールを無効化するには、**ロードルール**画面に移動し、無効化したいロードルールの**ON**トグルボタンをクリックします。
-![](/images/iq-tag-management/whiteui-tiq-load-rule-toggle-on.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-load-rule-toggle-on.png)
 ルールが使用中の場合、それをオフにすることを確認する必要があります。トグルボタンは**OFF**を表示するように変わります。
 
-![](/images/iq-tag-management/whiteui-tiq-load-rule-toggle-off.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-load-rule-toggle-off.png)
 
 ロードルールを再度有効化するには、**OFF**トグルボタンをクリックします。
 
@@ -102,7 +110,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/load-rules/manage/
 1. ルールの**詳細**画面で、**削除**をクリックします。  
 確認ダイアログが表示されます。
 1. 確認するには、**ロードルールの削除**をクリックします。それ以外の場合は、**キャンセル**をクリックします。  
-    ![](/images/iq-tag-management/load-rule-delete.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-rule-delete.png)
 1. 削除したいロードルールが使用中の場合、詳細が表示されるメッセージが表示されます。  
-    ![](/images/iq-tag-management/load-rules-delete-tag-scoped.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-rules-delete-tag-scoped.png)
 1. 続行してロードルールを削除するには、**削除**をクリックします。

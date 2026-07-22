@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -65,7 +65,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | 数量 | カートに追加されたアイテムの総数。有効なフィールドは：`add-to-cart-v1`, `remove-from-cart-v1`です。 |
 | ユニークトランザクションID | トランザクションIDに対して重複したイベントが報告されても、トランザクションIDごとに購入が1回のみ記録されることを保証します。有効なフィールドは：`purchase-v1`です。 |
 | CUID | ユーザー識別子値。有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`です。 |
-| CUIDタイプ | ユーザー識別子値のタイプ。この値を使用してデバイス間でユーザーを識別します。例えば、`customer_id`, `account_id`, `email`など。&lt;ul&gt;&lt;li&gt;個人を特定する情報はこの値に含めないでください。&lt;/li&gt;&lt;li&gt;有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`です。&lt;/li&gt;&lt;/ul&gt; |
+| CUIDタイプ | ユーザー識別子値のタイプ。この値を使用してデバイス間でユーザーを識別します。例えば、`customer_id`, `account_id`, `email`など。<ul><li>個人を特定する情報はこの値に含めないでください。</li><li>有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`です。</li></ul> |
 | ハッシュ化されたメール | 小文字のメールアドレスのSHA-256エンコーディング。`cuid`および`cuidType`の代わりにこの識別子タイプを使用できます。有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optout-v1`です。 |
 | 電話番号 | SMSチャンネルでユーザーを識別するためにこの識別子タイプを使用します。Reconnectキャンペーンで使用します。有効なフィールドは：`login-v1`です。 |
 | プレーンテキストメール | 有効なプレーンテキストのメールアドレス。`plainTextEmail`または`externalId`のいずれかを使用します。有効なフィールドは：`message-optin-v1`です。 |
@@ -83,7 +83,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | アイテムID | コンテンツフィードのアイテムIDに一致するID。有効なフィールドは：`video-watch-v1`です。 |
 | カテゴリ | ビデオカテゴリの配列。有効なフィールドは：`video-watch-v1`です。 |
 | 自動再生 | ビデオが自動的に再生されたか（`true`）、ユーザーのアクションによるものか（`false`）を示します。デフォルトは`false`です。有効なフィールドは：`video-watch-v1`です。 |
-| 進行状況 | ビデオが再生された量を説明します。可能な値：&lt;ul&gt;&lt;li&gt;`VIDEO_STARTED`: ビデオの再生が開始されました。ビデオが最後まで再生されたか、特定のタイムマーカーまで再生されたかは示しません。&lt;/li&gt;&lt;li&gt;`PREROLL_FINISHED`: プリロールが再生を終えました。&lt;/li&gt;&lt;li&gt;`VIDEO_FINISHED`: プリロールの有無にかかわらず、ビデオが再生を終えました。&lt;/li&gt;&lt;li&gt;`VIDEO_PROGRESS`: クライアントがビデオ内の細かい進行状況を定期的にパーセンテージで報告できる場合、この値と`progressPercent`プロパティを使用します。&lt;/li&gt;&lt;li&gt;デフォルトは`VIDEO_STARTED`です。&lt;/li&gt;&lt;li&gt;有効なフィールドは：`video-watch-v1`です。&lt;/li&gt;&lt;/ul&gt; |
+| 進行状況 | ビデオが再生された量を説明します。可能な値：<ul><li>`VIDEO_STARTED`: ビデオの再生が開始されました。ビデオが最後まで再生されたか、特定のタイムマーカーまで再生されたかは示しません。</li><li>`PREROLL_FINISHED`: プリロールが再生を終えました。</li><li>`VIDEO_FINISHED`: プリロールの有無にかかわらず、ビデオが再生を終えました。</li><li>`VIDEO_PROGRESS`: クライアントがビデオ内の細かい進行状況を定期的にパーセンテージで報告できる場合、この値と`progressPercent`プロパティを使用します。</li><li>デフォルトは`VIDEO_STARTED`です。</li><li>有効なフィールドは：`video-watch-v1`です。</li></ul> |
 | 進行パーセント | ビデオがどれだけ視聴されたかをパーセンテージで示します。有効なフィールドは：`video-watch-v1`です。 |
 | 商品ID | 商品識別子の配列。 |
 | 数量 | 商品数量の配列。 |
@@ -99,7 +99,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：10
 * 最古のリクエストからの最大時間：5分
@@ -119,7 +119,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | 数量 | カートに追加されたアイテムの総数。有効なフィールドは：`add-to-cart-v1`, `remove-from-cart-v1`。 |
 | ユニークトランザクションID | トランザクションIDに対して重複したイベントが報告されても、トランザクションIDごとに購入が1回のみ記録されることを保証します。有効なフィールドは：`purchase-v1` |
 | CUID | ユーザー識別子値。有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`。 |
-| CUIDタイプ | ユーザー識別子値のタイプ。この値を使用してデバイス間でユーザーを識別します。例えば、`customer_id`, `account_id`, `email`。&lt;ul&gt;&lt;li&gt;個人を特定する情報はこの値に含めないでください。&lt;/li&gt;&lt;li&gt;有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`。&lt;/li&gt;&lt;/ul&gt; |
+| CUIDタイプ | ユーザー識別子値のタイプ。この値を使用してデバイス間でユーザーを識別します。例えば、`customer_id`, `account_id`, `email`。<ul><li>個人を特定する情報はこの値に含めないでください。</li><li>有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optin-v1`, `message-optout-v1`。</li></ul> |
 | ハッシュ化されたメール | 小文字のメールアドレスのSHA-256エンコーディング。`cuid`および`cuidType`の代わりにこの識別子タイプを使用できます。有効なフィールドは：`identify-v1`, `login-v1`, `signup-v1`, `newsletter-subscription-v1`, `message-optout-v1`。 |
 | 電話番号 | SMSチャンネルでユーザーを識別するためにこの識別子タイプを使用します。有効なフィールドは：`login-v1`。 |
 | プレーンテキストメール | 有効なプレーンテキストのメールアドレス。`plainTextEmail`または`externalId`のいずれかを使用します。有効なフィールドは：`message-optin-v1`。 |
@@ -137,7 +137,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | アイテムID | コンテンツフィードのアイテムIDに一致するID。有効なフィールドは：`video-watch-v1`。 |
 | カテゴリ | ビデオカテゴリの配列。有効なフィールドは：`video-watch-v1`。 |
 | 自動再生 | ビデオが自動的に再生されたか（`true`）、ユーザーのアクションによるものか（`false`）を示します。デフォルトは`false`です。有効なフィールドは：`video-watch-v1`。 |
-| 進行状況 | ビデオの再生量を説明します。可能な値：&lt;ul&gt;&lt;li&gt;`VIDEO_STARTED`: ビデオの再生が開始されました。ビデオが最後まで再生されたか、特定のタイムマーカーまで再生されたかは示しません。&lt;/li&gt;&lt;li&gt;`PREROLL_FINISHED`: プリロールの再生が終了しました。&lt;/li&gt;&lt;li&gt;`VIDEO_FINISHED`: プリロールの有無にかかわらず、ビデオの再生が終了しました。&lt;/li&gt;&lt;li&gt;`VIDEO_PROGRESS`: クライアントがビデオ内の細かい進行状況を定期的にパーセンテージで報告できる場合、この値を`progressPercent`プロパティと一緒に使用します。&lt;/li&gt;&lt;li&gt;デフォルトは`VIDEO_STARTED`です。&lt;/li&gt;&lt;li&gt;有効なフィールドは：`video-watch-v1`。&lt;/li&gt;&lt;/ul&gt; |
+| 進行状況 | ビデオの再生量を説明します。可能な値：<ul><li>`VIDEO_STARTED`: ビデオの再生が開始されました。ビデオが最後まで再生されたか、特定のタイムマーカーまで再生されたかは示しません。</li><li>`PREROLL_FINISHED`: プリロールの再生が終了しました。</li><li>`VIDEO_FINISHED`: プリロールの有無にかかわらず、ビデオの再生が終了しました。</li><li>`VIDEO_PROGRESS`: クライアントがビデオ内の細かい進行状況を定期的にパーセンテージで報告できる場合、この値を`progressPercent`プロパティと一緒に使用します。</li><li>デフォルトは`VIDEO_STARTED`です。</li><li>有効なフィールドは：`video-watch-v1`。</li></ul> |
 | 進行パーセント | ビデオがどれだけ視聴されたかをパーセンテージで示します。有効なフィールドは：`video-watch-v1`。 |
 | 商品ID | 商品識別子の配列。 |
 | 数量 | 商品数量の配列。 |
@@ -158,7 +158,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | ユーザーID | ユニークなユーザーID。有効な値は `dyid` または `dyid_server` です。 |
 | Dynamic Yield によって生成されたセッション識別子 | `_dyjsession` クッキーの値が存在する場合はその値を渡します。そうでない場合は、新しいセッション識別子が Dynamic Yield によって作成され、レスポンスで返されます。 |
 | デバイスIP | IPフィルタリングのためのクライアントIPアドレス。渡されない場合、呼び出し元のIPが使用されます。 |
-| タイプ | （必須）エンゲージメントのタイプ。&lt;ul&gt;&lt;li&gt;APIカスタムコードキャンペーンのためにCLICKまたはIMP（インプレッション）を使用します。&lt;/li&gt;&lt;li&gt;APIレコメンデーションキャンペーンのために`SLOT_CLICK`を使用します。&lt;/li&gt;&lt;li&gt;QSRレコメンデーションキャンペーンのために`SLOT_IMP`を使用します。&lt;/li&gt;&lt;/ul&gt; |
+| タイプ | （必須）エンゲージメントのタイプ。<ul><li>APIカスタムコードキャンペーンのためにCLICKまたはIMP（インプレッション）を使用します。</li><li>APIレコメンデーションキャンペーンのために`SLOT_CLICK`を使用します。</li><li>QSRレコメンデーションキャンペーンのために`SLOT_IMP`を使用します。</li></ul> |
 | 決定ID | 選択されたエンドポイントから返されるユニークな決定ID。CLICKまたはIMPを報告するために必要です。決定IDはbase64形式の配列でなければなりません。 |
 | バリエーション | ユーザーが見た複数のバリエーションIDの配列。カスタムキャンペーンで複数のバリエーションを返す場合にのみ、明示的にインプレッションを報告するために必要です。例えば、スライダー。 |
 | スロットID | 選択されたエンドポイントから返される特定のクリックされた製品のスロットID。カスタムAPIキャンペーンでは使用されません。APIレコメンデーションキャンペーンでクリックを報告するために必要です。 |
@@ -168,7 +168,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：10
 * 最古のリクエストからの最大時間：1分
@@ -180,7 +180,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 | ユーザーID | ユニークなユーザーID。有効な値は `dyid` または `dyid_server` です。 |
 | Dynamic Yield によって生成されたセッション識別子 | `_dyjsession` クッキーの値が存在する場合はその値を渡します。そうでない場合は、新しいセッション識別子が Dynamic Yield によって作成され、レスポンスで返されます。 |
 | デバイスIP | クライアントのIPアドレス。指定されない場合は、呼び出し元のIPが使用されます。 |
-| タイプ | (必須) エンゲージメントのタイプ。&lt;ul&gt;&lt;li&gt;APIカスタムコードキャンペーンには CLICK または IMP (インプレッション) を使用します。&lt;/li&gt;&lt;li&gt;APIレコメンデーションキャンペーンには `SLOT_CLICK` を使用します。&lt;/li&gt;&lt;li&gt;QSRレコメンデーションキャンペーンには `SLOT_IMP` を使用します。&lt;/li&gt;&lt;/ul&gt; |
+| タイプ | (必須) エンゲージメントのタイプ。<ul><li>APIカスタムコードキャンペーンには CLICK または IMP (インプレッション) を使用します。</li><li>APIレコメンデーションキャンペーンには `SLOT_CLICK` を使用します。</li><li>QSRレコメンデーションキャンペーンには `SLOT_IMP` を使用します。</li></ul> |
 | ディシジョンID | 選択したエンドポイントから返されるユニークなディシジョンID。CLICKまたはIMPの報告に必要です。ディシジョンIDはbase64形式の配列でなければなりません。 |
 | バリエーション | ユーザーが見た複数のバリエーションIDの配列。カスタムキャンペーンで複数のバリエーションを返す場合にのみ、明示的にインプレッションを報告するために必要です。例えば、スライダーなど。 |
 | スロットID | 選択したエンドポイントから返される特定のクリックされた製品のスロットID。カスタムAPIキャンペーンには使用されません。APIレコメンデーションキャンペーンでクリックを報告するために必要です。 |
@@ -203,7 +203,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dynamic-yield-connector/
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions]()を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100
 * 最古のリクエストからの最大時間：60分

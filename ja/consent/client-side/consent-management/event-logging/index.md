@@ -5,11 +5,11 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/event-lo
 ---
 ## 要件
 
-* Tealium EventStream または [Tealium DataAccess]() (EventStore または EventDB)
+* Tealium EventStream または [Tealium DataAccess](https://docs.tealium.com/about-dataaccess/) (EventStore または EventDB)
 
 ## 動作原理
 
-イベントログ機能は、訪問によるすべての同意アクションを記録し、すべての[クライアントサイド同意管理]()オファリングで動作します。クライアントサイド同意管理があなたのサイトにデプロイされ、イベントログが有効になっている場合、同意アクションはHTTPリクエストとしてTealiumのサーバーサイドCDHに送信され、監査および記録保持の目的でEventStoreやEventDBでログ記録されたり、EventStreamでストリーミングされたりします。
+イベントログ機能は、訪問によるすべての同意アクションを記録し、すべての[クライアントサイド同意管理](https://docs.tealium.com/about-consent-management/)オファリングで動作します。クライアントサイド同意管理があなたのサイトにデプロイされ、イベントログが有効になっている場合、同意アクションはHTTPリクエストとしてTealiumのサーバーサイドCDHに送信され、監査および記録保持の目的でEventStoreやEventDBでログ記録されたり、EventStreamでストリーミングされたりします。
 
 以下の同意アクションが記録されます：
 
@@ -32,6 +32,6 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/event-lo
     https://collect.tealiumiq.com/event
     ```
 
-* **Event Log Profile** - ログされたイベントが送信されるプロファイル。ここで構成された値はパラメータ `tealium_profile=&#34;PROFILE&#34;` としてイベントログURLに渡されます。
+* **Event Log Profile** - ログされたイベントが送信されるプロファイル。ここで構成された値はパラメータ `tealium_profile="PROFILE"` としてイベントログURLに渡されます。
 
-[同意イベント]()のペイロードをカスタマイズするには、これらの2つのテンプレート `fullConsentEventHandler` と `partialConsentEventHandler` を編集します。テンプレートの更新についての詳細は、[テンプレートの管理]()を参照してください。
+[同意イベント](https://docs.tealium.com/consent-change-event-specifications/)のペイロードをカスタマイズするには、これらの2つのテンプレート `fullConsentEventHandler` と `partialConsentEventHandler` を編集します。テンプレートの更新についての詳細は、[テンプレートの管理](https://docs.tealium.com/about-templates/)を参照してください。

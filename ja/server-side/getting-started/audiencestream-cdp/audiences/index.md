@@ -5,18 +5,22 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 ---
 オーディエンスとは、共通の属性セットによって識別される訪問のグループです。オーディエンスの条件は、そのオーディエンスに属する訪問の属性値を指定します。条件を追加するほど、オーディエンスはより具体的になります。オーディエンスは動的であり、訪問はアクティブな訪問セッションからのイベントが入るとオーディエンスに参加したり離れたりします。
 
-![](/images/server-side/audiencestream-audience.jpg)
+![](https://docs.tealium.com/images/server-side/audiencestream-audience.jpg)
 
 オーディエンスを作成するために使用する条件が多いほど、それはより具体的になります。オーディエンスはリアルタイムでベンダーアクション（コネクター）をトリガーするために使用されます。
 
-次の例では、[以前に作成されたバッジ]()を使用して基本的なVIPオーディエンスを作成します。このオーディエンスをメールキャンペーンでターゲットにするため、既知のメールアドレスもチェックします。最後に、追加の条件でオーディエンスを拡張する方法を示します。
+次の例では、[以前に作成されたバッジ](https://docs.tealium.com/audiencestream-attributes-badges/)を使用して基本的なVIPオーディエンスを作成します。このオーディエンスをメールキャンペーンでターゲットにするため、既知のメールアドレスもチェックします。最後に、追加の条件でオーディエンスを拡張する方法を示します。
 
 ## オーディエンスの作成
 
 オーディエンスを作成するには、以下の手順に従ってください：
 
-1. **Activate &gt; Audiences** に移動し、**&#43; Add Audience** をクリックします。
-1. オーディエンスを一意に識別するための **Name** を入力します。例えば `VIP` とします。[DataAccess]()製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
+1. **Activate > Audiences** に移動し、**+ Add Audience** をクリックします。
+1. オーディエンスを一意に識別するための **Name** を入力します。例えば `VIP` とします。
+<blockquote>
+[DataAccess](https://docs.tealium.com/about-dataaccess/)製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
+</blockquote>
+
 1. **Conditions** ドロップダウンを使用してフィルターを作成します：
     ```
     VIP (badge) is assigned

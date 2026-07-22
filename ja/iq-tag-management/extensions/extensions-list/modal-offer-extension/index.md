@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/mo
 
 ポップアップは、拡張機能に適用された条件に基づいて起動します。
 
-![](/images/iq-tag-management/modal-popup-extension-example.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/modal-popup-extension-example.jpg)
 
 拡張機能はすべてのページのDOM-Readyスコープで実行されますが、定義された条件が`true`に評価されたときにのみ実行されます。
 
@@ -29,15 +29,19 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/mo
 * **モーダル公開モード**：モーダル公開モードを使用してモーダルポップアップの内容を構成します
     * **標準**：（デフォルト）シンプルなテンプレートを使用してモーダルの内容を入力し、高さと幅を調整します。標準モードでは、ウィンドウの外観は以下のルールに従います：
         * モーダルは常に中央に配置されます。
-        * モーダルのフォントスタイルは`&lt;body&gt;`要素から継承されます。
+        * モーダルのフォントスタイルは`<body>`要素から継承されます。
         * モーダルのCSSはTealiumのデフォルトのセットです。
         * モーダルが表示されている間、ページの残りの部分をブロックするために暗い`div`要素が追加されます。
         * ヘッダー、ボディ、フッター要素のサイズは、ウィンドウの高さと幅のパーセンテージです。
     * **カスタム**：モーダルポップアップのCSSとHTMLを直接編集してカスタム動作を許可します。  
-        ![](/images/iq-tag-management/modal-extension-custom-mode.png)
+        ![](https://docs.tealium.com/images/iq-tag-management/modal-extension-custom-mode.png)
         * カスタムモードでモーダルポップアップを構成するには、モーダルウィンドウのスタイリング定義のためのCSSコードと、モーダルウィンドウのテンプレートのためのHTMLコードを編集します。
         * CSSとHTMLには、標準公開モードの構成を参照する`##VALUE##`の形式のプレースホルダーが含まれています。例えば、`##MDLWIDTH##`は**ウィンドウの幅**構成を参照します。これらのプレースホルダーを自分のカスタム値に置き換えるか、標準構成から値が入力されるようにそのままにしておきます。  
-            `_tealiumModalClose`ボタンをカスタマイズする場合は、`onclick=&#34;utag.extn.mdlW.dismiss()`関数を保持しておくことを確認してください。
+            
+<blockquote>
+`_tealiumModalClose`ボタンをカスタマイズする場合は、`onclick="utag.extn.mdlW.dismiss()`関数を保持しておくことを確認してください。
+</blockquote>
+
         * 拡張機能の下部にある**リセット**をクリックして、すべてのコードをデフォルトの状態に戻します。
 * **モーダルヘッダー** - ウィンドウの上部に表示されるテキスト。
 * **モーダルボディ** - ウィンドウの中央に表示されるテキスト。
@@ -45,12 +49,16 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/mo
 * **ウィンドウの高さ** - （デフォルト：200）ウィンドウの高さ（ピクセル）。
 * **ウィンドウの幅** - （デフォルト：300）ウィンドウの幅（ピクセル）。
 * **条件を追加**をクリックして、このモーダルが入れるタイミングを制御します。
-      * **条件**ボックス内の**&#43;**ボタンをクリックしてAND条件を追加します。
-      * **条件**ボックスの外側の**&#43;**ボタンをクリックしてOR条件を追加します。
+      * **条件**ボックス内の**+**ボタンをクリックしてAND条件を追加します。
+      * **条件**ボックスの外側の**+**ボタンをクリックしてOR条件を追加します。
       * **条件**ボックス内の**-**ボタンをクリックしてAND条件を削除します。
       * **条件**ボックスの外側の**-**ボタンをクリックするとOR条件が削除されます。  
-    ![](/images/iq-tag-management/modal-extension-condition.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/modal-extension-condition.png)  
+
+<blockquote>
 条件を構成しない場合、モーダルはすべてのページでポップアップします。
+</blockquote>
+
 
 ## モーダルを直接起動する
 
@@ -58,13 +66,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/mo
 
 * **デフォルトのモーダル起動をブロックする**：モーダルの起動をブロックするために、常に`false`に評価される条件を適用します。
 * **モーダルを直接起動する**：**拡張機能**画面でモーダルオファー拡張機能のUIDを見つけます：  
-    ![](/images/iq-tag-management/modal-extension-uid.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/modal-extension-uid.png)
 * 以下のJavaScriptコードを使用してモーダルウィンドウを起動し、`{UID}`を上記のUIDに置き換えます：  
     ```js
           // Replace {UID} with the UID of the Modal Offer extension to trigger
-          // For example &#34;utag.modalExt_72.js&#34;
+          // For example "utag.modalExt_72.js"
           utag.ut.loader({
-              src: utag.cfg.path &#43; &#39;utag.modalExt_{UID}.js?utv=&#39; &#43; utag.cfg.v,
+              src: utag.cfg.path + 'utag.modalExt_{UID}.js?utv=' + utag.cfg.v,
               cb: function() {
                   utag.extn.mdlW.load();
               }

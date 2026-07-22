@@ -6,9 +6,9 @@ url: https://docs.tealium.com/ja/server-side/predict/deploy/undeploy-a-model/
 モデルをアンデプロイするには2つの方法があります：
 
 1. **モデルダッシュボード**から、**アンデプロイ**をクリックします。  
-      ![](/images/predict/predictv2-undeploy.png)
+      ![](https://docs.tealium.com/images/predict/predictv2-undeploy.png)
 1. **トレーニング詳細**画面から、トレーニングの詳細を確認した後、アンデプロイを選択できます。  
-      ![](/images/predict/predictv2-training-details-undeploy.png)
+      ![](https://docs.tealium.com/images/predict/predictv2-training-details-undeploy.png)
 
 モデルのアンデプロイを選択した後、以下の手順を完了します：
 

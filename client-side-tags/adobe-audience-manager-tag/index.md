@@ -6,12 +6,12 @@ url: https://docs.tealium.com/client-side-tags/adobe-audience-manager-tag/
 ## Tag Tips
 
 * Select **On** under **Use E-Commerce Variables** to add the Order and Customer E-Commerce data to the `c_` data
-* Use the &#34;Custom c_ Object&#34; mapping to send your own object or additional objects with `c_` data
+* Use the "Custom c_ Object" mapping to send your own object or additional objects with `c_` data
 * Current Library Version: 9.5
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Adobe Audience Manager tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Adobe Audience Manager tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -21,7 +21,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

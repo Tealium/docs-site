@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/platforms/cordova-v1/module-list/install-referr
 ---
 ## インストール
 
+
+<blockquote>
 この機能は別のNPMパッケージとして利用できます。
+</blockquote>
+
 
 Install Referrerモジュールをインストールするには：
 
@@ -20,7 +24,7 @@ Install Referrerモジュールをインストールするには：
 
 Install Referrerモジュールを初期化するには：
 
-1. メインのTealiumプラグインをインスタンス化するJavaScriptファイルを編集し、[`tealium.init()`](/ja/platforms/cordova-v1/api/#init)メソッドを呼び出した後で行います。
+1. メインのTealiumプラグインをインスタンス化するJavaScriptファイルを編集し、[`tealium.init()`](https://docs.tealium.com/ja/platforms/cordova-v1/api/#init)メソッドを呼び出した後で行います。
 
 2. 次のコードを追加します：  
       ```javascript
@@ -44,7 +48,7 @@ Install Referrerモジュールを初期化するには：
 
 ```bash
 adb shell
-am broadcast -a com.android.vending.INSTALL_REFERRER -n &#34;com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver&#34; --es &#34;referrer&#34; &#34;utm_source=mysource&amp;utm_medium=mymedium&amp;utm_term=myterm&amp;utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&amp;utm_campaign=mycampname&#34;
+am broadcast -a com.android.vending.INSTALL_REFERRER -n "com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver" --es "referrer" "utm_source=mysource&utm_medium=mymedium&utm_term=myterm&utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&utm_campaign=mycampname"
 ```
 
 ## アンインストール
@@ -58,5 +62,5 @@ Install Referrerモジュールをアンインストールするには：
 
 2. Install Referrerデータを永続保存から削除します：
       ```javascript
-      tealium.removePersistent(&#34;install_referrer&#34;, &lt;your tealium instance name&gt;);
+      tealium.removePersistent("install_referrer", <your tealium instance name>);
       ```

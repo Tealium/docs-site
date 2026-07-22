@@ -7,11 +7,11 @@ Booleans and badges are both essential attributes used to capture and represent 
 
 ## Definitions
 
-![](/images/icons/icon-boolean-flag.png)
+![](https://docs.tealium.com/images/icons/icon-boolean-flag.png)
 
 ### Booleans
 
-Booleans are simple true/false attributes that represent the customer&#39;s inherent state or current status. They are used for atomic attributes, representing a single piece of information about a visitor. They do not change unless explicitly updated.
+Booleans are simple true/false attributes that represent the customer's inherent state or current status. They are used for atomic attributes, representing a single piece of information about a visitor. They do not change unless explicitly updated.
 
 Examples of visitor booleans include:
 
@@ -19,7 +19,7 @@ Examples of visitor booleans include:
   * `has_valid_payment`: Whether a visitor has a valid method of payment on their account.
   * `is_internal_user`: Whether a visitor is an internal user.
 
-![](/images/icons/icon-badge.png)
+![](https://docs.tealium.com/images/icons/icon-badge.png)
 
 ### Badges
 
@@ -33,7 +33,7 @@ Examples of badges include:
   * `Cart Abandoner`: A cart abandoner is a visitor who adds products to the shopping cart but doesn’t complete a purchase.
   * `Frequent Business Traveler`: A frequent business traveler is a customer who has traveled more than a certain number of times over a given time period.
 
-For more examples, see .
+For more examples, see [popular-badges](https://docs.tealium.com/popular-badges/).
 
 ## Enrichments and logic
 
@@ -62,8 +62,8 @@ Booleans are stored in visitor data records under the data object `flags` as key
 ```json
 {
     ...
-    &#34;flags&#34;: {
-        &#34;5052&#34;: false
+    "flags": {
+        "5052": false
     },
     ...
 }
@@ -86,7 +86,7 @@ Badges are stored in visitor data records as an array of the badge UIDs or as an
 ```json
 {
     ...
-    &#34;badges&#34;: [&#34;13&#34;,&#34;26&#34;,&#34;52&#34;],
+    "badges": ["13","26","52"],
     ...
 }
 ```
@@ -101,11 +101,11 @@ The value in the column will be `t` or `f`, depending on the presence of the bad
 
 The **Badge Activity** window of the AudienceStream **Dashboard** lists all the badges on the profile that have been removed or assigned to visitor profiles:
 
-![](/images/server-side/badge-activity-view.png)
+![](https://docs.tealium.com/images/server-side/badge-activity-view.png)
 
 And in the **Visitor Profile** sampler, each badge appears with a count and percentage of visitors who have obtained that badge since you started monitoring activity:
 
-![](/images/server-side/visitor-profile-sampler-badges-view.jpg)
+![](https://docs.tealium.com/images/server-side/visitor-profile-sampler-badges-view.jpg)
 
 ## Strings as booleans
 
@@ -133,6 +133,6 @@ The following table lists the major differences between booleans and badges:
 
 ## Related
 
-* 
-* 
-* 
+* [badge-attribute](https://docs.tealium.com/badge-attribute/)
+* [boolean-attribute](https://docs.tealium.com/boolean-attribute/)
+* [vip-badge-guide](https://docs.tealium.com/vip-badge-guide/)

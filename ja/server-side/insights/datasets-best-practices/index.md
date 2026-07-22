@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side/insights/datasets-best-practices/
 
 ### 列の数を減らす
 
-[データセットを作成する]()際には、デフォルトですべての列がSPICE（Super-fast Parallel In-memory Calculation Engine）にロードされます。必要以上に多くの列を含めると、特に大きなデータセットではクエリのパフォーマンスが低下します。
+[データセットを作成する](https://docs.tealium.com/manage-datasets/#create-a-new-dataset)際には、デフォルトですべての列がSPICE（Super-fast Parallel In-memory Calculation Engine）にロードされます。必要以上に多くの列を含めると、特に大きなデータセットではクエリのパフォーマンスが低下します。
 
 例えば、2000万行のデータセットでは：
 * 1列をロードするのに約 `2.63` 分かかります。
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/server-side/insights/datasets-best-practices/
 
 データセットビューでは、分析やダッシュボードに必要な列のみを含め、不要な列は削除します。これにより、ロード時間が短縮され、反応性が向上します。
 
-![](/images/server-side/data-insights/include-and-exclude-columns-in-datasets.png)
+![](https://docs.tealium.com/images/server-side/data-insights/include-and-exclude-columns-in-datasets.png)
 
 ## 日付列を使用して行をフィルタリングする
 
@@ -45,10 +45,10 @@ url: https://docs.tealium.com/ja/server-side/insights/datasets-best-practices/
 ```sql
 SELECT 
     COUNT(*) AS count, 
-    TRUNC(&#34;event - time&#34;) AS &#34;period&#34;, 
-    &#34;event - udo - tealium_event&#34; 
+    TRUNC("event - time") AS "period", 
+    "event - udo - tealium_event" 
 FROM ${db_schema}.events_view__all_events__all_events 
-GROUP BY &#34;period&#34;, &#34;event - udo - tealium_event&#34;;
+GROUP BY "period", "event - udo - tealium_event";
 ```
 
 このアプローチを、SPICEで処理するデータを減らすために、他の集約や分析にも適応させます。
@@ -83,7 +83,7 @@ LIMIT 10;
 ```sql
 SELECT employee_id, first_name, last_name
 FROM employees
-WHERE department_id IN (SELECT id FROM departments WHERE name = &#39;Sales&#39;);
+WHERE department_id IN (SELECT id FROM departments WHERE name = 'Sales');
 ```
 
 2つのテーブルからデータをクエリするために結合を使用します：
@@ -91,11 +91,11 @@ WHERE department_id IN (SELECT id FROM departments WHERE name = &#39;Sales&#39;)
 SELECT e.employee_id, e.first_name, e.last_name, d.department_name
 FROM employees e
 JOIN departments d ON e.department_id = d.id
-WHERE d.name = &#39;Sales&#39;;
+WHERE d.name = 'Sales';
 ```
 
 ## 増分リフレッシュを構成する
 
 データセットの精度を維持し、リフレッシュ時間を短縮するために、リフレッシュスケジュールを作成する際に増分リフレッシュを構成します。増分リフレッシュは、新規または更新されたデータのみを処理するため、大規模で頻繁に更新されるデータセットに最適です。これに対して、フルリフレッシュはデータセット全体を再ロードします。最適な結果を得るために、ウィンドウサイズは2日を推奨しますが、要件に応じて調整することができます。
 
-![](/images/server-side/data-insights/configure-incremental-refresh.png)
+![](https://docs.tealium.com/images/server-side/data-insights/configure-incremental-refresh.png)

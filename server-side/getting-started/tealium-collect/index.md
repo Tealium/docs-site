@@ -7,20 +7,24 @@ Tealium Collect is the primary method for server-side data collection  for websi
 
 ## Web and mobile
 
-![](/images/server-side/tag-management-01.png)
+![](https://docs.tealium.com/images/server-side/tag-management-01.png)
 
 For customers with an iQ Tag Management account, use the Tealium Collect tag. Adding this tag to your client-side profile turns your installation of the Tealium Universal Tag into a data source for your server-side profile.
 
 The Tealium Collect tag sends each event tracking call to your server-side profile where the data will be processed into visitor profiles, audiences, cloud-based connectors, and data storage solutions.
 
-Learn [how to set up the Tealium Collect tag in your client-side profile]().
+Learn [how to set up the Tealium Collect tag in your client-side profile](https://docs.tealium.com/data-sources-for-iq-tag-management/).
 
 
+
+<blockquote>
 Even if you are not already using a tag manager, we recommend using a basic setup of Tealium iQ Tag Management and the Tealium Collect tag.
+</blockquote>
+
 
 For mobile profiles, we recommend using the Tealium Collect module in your app.
 
-Learn more about [installing Tealium Collect directly in your mobile app](/platforms/getting-started-mobile/server-side/).
+Learn more about [installing Tealium Collect directly in your mobile app](https://docs.tealium.com/platforms/getting-started-mobile/server-side/).
 
 ## Server applications
 
@@ -28,11 +32,11 @@ For other platforms that are not managed through iQ Tag Management, we offer ins
 
 Popular server app platforms include:
 
-* [Python](/platforms/python/)
-* [Node](/platforms/node/)
-* [C#](/platforms/csharp/)
-* [Java](/platforms/java/)
-* [HTTP API](/platforms/http-api/)
+* [Python](https://docs.tealium.com/platforms/python/)
+* [Node](https://docs.tealium.com/platforms/node/)
+* [C#](https://docs.tealium.com/platforms/csharp/)
+* [Java](https://docs.tealium.com/platforms/java/)
+* [HTTP API](https://docs.tealium.com/platforms/http-api/)
 
 ## Google Tag Manager
 
@@ -42,7 +46,7 @@ If you are using Google Tag Manager and are satisfied with your data layer and e
 
 Installation components:
 
-* [Tealium Collect for Google Tag Manager](/platforms/google-tag-manager/)
+* [Tealium Collect for Google Tag Manager](https://docs.tealium.com/platforms/google-tag-manager/)
 
 ### With Tealium Universal tag
 
@@ -52,6 +56,6 @@ This approach provides the advantages of deploying iQ Tag Management, as well as
 
 Installation components:
 
-* [Tealium iQ Tag Management](/iq-tag-management/)
+* [Tealium iQ Tag Management](https://docs.tealium.com/iq-tag-management/)
 * [Custom HTML Tag in Google Tag Manager](https://support.google.com/tagmanager/answer/6107167?hl=en)
 

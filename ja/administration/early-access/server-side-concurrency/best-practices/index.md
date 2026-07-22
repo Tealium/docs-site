@@ -3,7 +3,11 @@ title: 並行処理のベストプラクティス
 description: この記事では、チームコラボレーションのベストプラクティスについて説明します。
 url: https://docs.tealium.com/ja/administration/early-access/server-side-concurrency/best-practices/
 ---
+
+<blockquote>
 サーバーサイドの並行処理はアーリーアクセス中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
+
 
 ## 一般的なガイドライン
 
@@ -21,7 +25,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
     * **最新の状態です**  
     現在のバージョンと現在の公開バージョンが一致しています。
     * **公開バージョンより遅れています**  
-    現在の公開バージョンには、現在のバージョンにない変更が含まれています。これらの変更を表示するには、**View latest published changes**をクリックします。これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイドの保存と公開について]()を参照してください。
+    現在の公開バージョンには、現在のバージョンにない変更が含まれています。これらの変更を表示するには、**View latest published changes**をクリックします。これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイドの保存と公開について](https://docs.tealium.com/about-server-side-saving-and-publishing/#compare-versions)を参照してください。
 
 ## 例示的なワークフロー
 
@@ -31,7 +35,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 次の例では、両方のユーザーが同じバージョンで一緒に作業しています。
 
-![](/images/server-side/save-publish/collaboration-workflow-two-users2.png)
+![](https://docs.tealium.com/images/server-side/save-publish/collaboration-workflow-two-users2.png)
 
 上の図は、各アクションを示しています。
 
@@ -48,7 +52,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 
 次の例では、各ユーザーが自分のバージョンで作業しています。
 
-![](/images/server-side/save-publish/collaboration-workflow-two-projects2.png)
+![](https://docs.tealium.com/images/server-side/save-publish/collaboration-workflow-two-projects2.png)
 
 上の図は、各アクションを示しています。
 

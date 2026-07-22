@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/predict/evaluate-models/probability-di
 ---
 The Training Details screen for any version of any trained model shows a probability distribution of the predictions made by the model during training.
 
-![](/images/predict/predictv2-probability-distribution.png)
+![](https://docs.tealium.com/images/predict/predictv2-probability-distribution.png)
 
 The two colored curves of this chart represent the distributions of true and false predictions that the model made during training. Since the model training process uses historical data and you know whether each visitor actually performed the target behavior, it is possible to test the model by comparing the predictions for historical visitors versus the actual outcomes. The purpose of this comparison is to set aside a portion of the training dataset as the test subset.
 

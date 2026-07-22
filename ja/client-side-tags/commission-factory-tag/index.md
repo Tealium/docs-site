@@ -5,12 +5,12 @@ url: https://docs.tealium.com/ja/client-side-tags/commission-factory-tag/
 ---
 ## 要件
 
-* Commission Factory タグは、[E-Commerce extension]()が必要です。
+* Commission Factory タグは、[E-Commerce extension](https://docs.tealium.com/e-commerce-extension/)が必要です。
 * 拡張機能を追加し、`_corder`、`_csubtotal`、`_csku`、`_cprice,` `_cquan` 変数をそれぞれのデータソースにマッピングする必要があります。
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview]() 記事を読んでください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview](https://docs.tealium.com/about-tags/) 記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/commission-factory-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]() ドキュメントを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/) ドキュメントを参照してください。
 
 ## データマッピング
 

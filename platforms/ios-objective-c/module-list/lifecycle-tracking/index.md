@@ -15,7 +15,7 @@ In any abstraction class (like `TealiumHelper.h`) replace any `@import TealiumIO
 To install the Lifecycle Tracking module with CocoaPods, add the following to your Podfile:
 
 ```perl
-pod &#39;TealiumIOSLifecycle&#39;
+pod 'TealiumIOSLifecycle'
 ```
 
 ### Manual
@@ -62,21 +62,21 @@ Available for specific lifecycle paradigms and non-conventional lifecycle tracki
 To manually track a `launch` event, call:
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] launch];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] launch];
 ```
 
 **Sleep Event**  
 To manually track a `sleep` event, call:
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] sleep];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] sleep];
 ```
 
 **Wake Event**  
 To manually track a `wake` event, call:
 
 ```objc
-[[Tealium instanceForKey:@&#34;(uniqueInstanceId)&#34;] wake];
+[[Tealium instanceForKey:@"(uniqueInstanceId)"] wake];
 ```
 
 ## Data Layer
@@ -90,9 +90,9 @@ The Lifecycle Tracking module adds the following data layer variables:
 | `lifecycle_ dayssinceupdate` | `Number` | Days since the last detected app version update in integer increments| `46` | all |
 | `lifecycle_ dayssincelastwake` | `Number` | Days since last detected wake in integer increments | `1` | all |
 | `lifecycle_ diddetectcrash` | `Boolean` | Crash inferred from missing prior sleep event (only present if a launch event follows a wake event) | [`true`, `false`] | launch |
-| `lifecycle_ firstlaunchdate` | `String` | GMT timestamp of the first detected launch/wake in ISO 8601 format from UTC | `&#34;2013-07-11T17:55:04Z&#34;`  | all  |
-| `lifecycle_ firstlaunchdate_ MMDDYYYY ` | `String` | GMT Timestamp formatted as MM/DD/YYYY  | `&#34;01/17/2012&#34;` |  all |
-| `lifecycle_ hourofday_local` | `String` | Local hour of day that call was made (24 hour format)  | `&#34;12&#34;` |  all |
+| `lifecycle_ firstlaunchdate` | `String` | GMT timestamp of the first detected launch/wake in ISO 8601 format from UTC | `"2013-07-11T17:55:04Z"`  | all  |
+| `lifecycle_ firstlaunchdate_ MMDDYYYY ` | `String` | GMT Timestamp formatted as MM/DD/YYYY  | `"01/17/2012"` |  all |
+| `lifecycle_ hourofday_local` | `String` | Local hour of day that call was made (24 hour format)  | `"12"` |  all |
 | `lifecycle_ isfirstlaunch` | `Boolean` |Only present if call is the first launch call | [`true`, `false`] | launch |
 | `lifecycle_ isfirstlaunchupdate` | `Boolean` |Only present if call is first launch after a detected updated  | [`true`, `false`] | launch |
 | `lifecycle_ isfirstwakemonth` | `Boolean` |Only present if call is first launch/wake of the month | [`true`, `false`] | launch, wake  |
@@ -104,8 +104,8 @@ The Lifecycle Tracking module adds the following data layer variables:
 | `lifecycle_ totalcrashcount` | `Number` |Total number of crashes counted since install (only reset if app deleted)  |`21 ` |  all |
 | `lifecycle_ totallaunchcount` | `Number` |Total number of launches since install (only reset if app deleted)  | `3`  |  all |
 | `lifecycle_ totalsecondsawake` | `Number` |Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted) | `36` |  all |
-| `lifecycle_ totalsleepcount` |`Number` | Total number of times your app has gone into the background since app install (only reset if app deleted) |  `&#34;400&#34;` |  all |
-| `lifecycle_ totalwakecount` | `Number` |Total number of launches &#43; wakes since install (only reset if app deleted)  |`563` |  all |
-| `lifecycle_type` | `String` | Type of lifecycle call |  [`&#34;launch&#34;`, `&#34;wake&#34;`, `&#34;sleep&#34;`] |  all |
-| `lifecycle_ updatelaunchdate` | `String` |GMT timestamp of first wake/launch after a version update has been detected | `&#34;2014-09-08T18:10:01Z&#34;` |  all |
-| `lifecycle_ wakecount` | `Number` | Total number of launches &#43; wakes in this version of your app (resets if updated) | ` 29` |  all |
+| `lifecycle_ totalsleepcount` |`Number` | Total number of times your app has gone into the background since app install (only reset if app deleted) |  `"400"` |  all |
+| `lifecycle_ totalwakecount` | `Number` |Total number of launches + wakes since install (only reset if app deleted)  |`563` |  all |
+| `lifecycle_type` | `String` | Type of lifecycle call |  [`"launch"`, `"wake"`, `"sleep"`] |  all |
+| `lifecycle_ updatelaunchdate` | `String` |GMT timestamp of first wake/launch after a version update has been detected | `"2014-09-08T18:10:01Z"` |  all |
+| `lifecycle_ wakecount` | `Number` | Total number of launches + wakes in this version of your app (resets if updated) | ` 29` |  all |

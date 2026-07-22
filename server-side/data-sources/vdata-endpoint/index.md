@@ -6,8 +6,8 @@ url: https://docs.tealium.com/server-side/data-sources/vdata-endpoint/
 
 You are likely familiar with the following two standard methods of ingesting data into EventStream:
 
-* The [Tealium Collect tag]() that manages triggering website event data to EventStream. This tag is configured within Tealium iQ.
-* [File Import Data Source]() manages the process of bulk importing visitor data into EventStream.
+* The [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) that manages triggering website event data to EventStream. This tag is configured within Tealium iQ.
+* [File Import Data Source](https://docs.tealium.com/about-file-import/) manages the process of bulk importing visitor data into EventStream.
 
 Did you know there is a third method for EventStream to receive data? This additional method is called Visitor Data Enrichment and can be used to send real-time data updates to EventStream from any external system. The following sections provide details and examples.
 
@@ -15,12 +15,12 @@ Did you know there is a third method for EventStream to receive data? This addit
 
 * The `/vdata/` path in the Tealium Collect endpoint is used to receive data typically in a name/value pair format traditional to tracking pixels.  
    ```
-   //my.domain.com/my.gif?name1=value1&amp;name2=value2
+   //my.domain.com/my.gif?name1=value1&name2=value2
    ```
 
 * The `/vdata/ `URL has some key-values that are special and required (those that begin with `tealium_`), but everything else is simply used to build the data layer  
    ```
-   //collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&amp;tealium_profile=PROFILE&amp;tealium_vid=ID&amp;name1=value1&amp;name2=value2
+   //collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&tealium_profile=PROFILE&tealium_vid=ID&name1=value1&name2=value2
    ```
 
 * Data collection can be isolated to a specific region.  
@@ -53,13 +53,13 @@ The following table describes required parameters for the Tealium REST endpoint:
 ## Sample GET Request
 
 ```
-GET //collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&amp;tealium_profile=PROFILE&amp;tealium_vid=ID&amp;ut.event=view&amp;page_name=product_detail&amp;product_id=sku123456
+GET //collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&tealium_profile=PROFILE&tealium_vid=ID&ut.event=view&page_name=product_detail&product_id=sku123456
 ```
 
-#### What this &#39;Might&#39; Look Like Embedded in an Email
+#### What this 'Might' Look Like Embedded in an Email
 
 ```
-&lt;img src=&#34;//collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&amp;tealium_profile=PROFILE&amp;tealium_vid=ID&amp;ut.event=view&amp;email_id=december2015&amp;content_type=
+<img src="//collect.tealiumiq.com/vdata/i.gif?tealium_account=ACCOUNT&tealium_profile=PROFILE&tealium_vid=ID&ut.event=view&email_id=december2015&content_type=
 ```
 
 Using the `/vdata/i.gif` is the most common method for using the Visitor Data Enrichment and we strongly suggest using it. As there may be limitations or requirements around sending the data in a different format directly from a server, we provide options for doing so in the following sections.
@@ -71,14 +71,14 @@ The following example shows how to code a display ad to send the impression trac
 ```
 //build your object of data
 var a={
-    &#34;data&#34;:{
-        &#34;event_name&#34;:&#34;ad_tracking&#34;,
-        &#34;ad_image_id&#34;:&#34;%%macro_to_get_ADID%%&#34;,
-        &#34;ad_advertiser_id&#34;:&#34;%%macro_to_get_ADVID%%&#34;,
-        &#34;ad_campaign_id&#34;:&#34;%%macro_to_get_CAMPID%%&#34;,
-        &#34;ad_user_id&#34;:&#34;%%macro_to_get_USERID%%&#34;
+    "data":{
+        "event_name":"ad_tracking",
+        "ad_image_id":"%%macro_to_get_ADID%%",
+        "ad_advertiser_id":"%%macro_to_get_ADVID%%",
+        "ad_campaign_id":"%%macro_to_get_CAMPID%%",
+        "ad_user_id":"%%macro_to_get_USERID%%"
     },
-    &#34;event&#34;:&#34;view&#34;
+    "event":"view"
 }
 
 //stringify the object for the GET event
@@ -86,7 +86,7 @@ var json_string = JSON.stringify(a);
 
 //send the data to your collect endpoint
 var img = new Image();
-img.src=&#39;//collect.tealiumiq.com/account/profile/2/i.gif?data=&#39;&#43;encodeURIComponent(json_string);
+img.src='//collect.tealiumiq.com/account/profile/2/i.gif?data='+encodeURIComponent(json_string);
 
 ```
 
@@ -99,24 +99,24 @@ The POST request examples are similar to GET except that the POST of data is not
 ```
 //build your object of data
 var a={
-   &#34;data&#34;:{
-      &#34;event_name&#34;:&#34;myEvent&#34;,
-      &#34;customer_id&#34;:&#34;user1@tealium.com&#34;,
-      &#34;cp.trace_id&#34;:&#34;12345&#34;
+   "data":{
+      "event_name":"myEvent",
+      "customer_id":"user1@tealium.com",
+      "cp.trace_id":"12345"
    },
-   &#34;event&#34;:&#34;view&#34; //change this to &#34;link&#34; or &#34;view&#34; depending on the type of event
+   "event":"view" //change this to "link" or "view" depending on the type of event
 }
 
 //stringify the object for the POST event
 var json_string = JSON.stringify(a);
 
 //POST the data to your collect endpoint
-if (json_string!=&#34;&#34;) {
+if (json_string!="") {
    var formData = new FormData();
-   formData.append(&#34;data&#34;, json_string);
+   formData.append("data", json_string);
    function postData(data) {
       var xhr = new XMLHttpRequest();
-      xhr.open(&#39;post&#39;, &#34;//collect.tealiumiq.com/account/profile/2/i.gif&#34;, true);
+      xhr.open('post', "//collect.tealiumiq.com/account/profile/2/i.gif", true);
       xhr.withCredentials = true;
       xhr.send(data);
    }
@@ -129,7 +129,7 @@ if (json_string!=&#34;&#34;) {
 The following example shows how to POST data to EventStream from a Command Line Interface (CLI) or terminal for Mac. This example would likely only be used for testing.
 
 ```
-curl -H &#34;Content-Type: application/json&#34; -X POST -d &#39;{&#34;data&#34;:{&#34;event_name&#34;:&#34;myEvent&#34;,&#34;customer_id&#34;:&#34;user1@tealium.com&#34;,&#34;cp.trace_id&#34;:&#34;12345&#34;},&#34;event&#34;:&#34;view&#34;}&#39; https://collect.tealiumiq.com/account/profile/2/i.gif
+curl -H "Content-Type: application/json" -X POST -d '{"data":{"event_name":"myEvent","customer_id":"user1@tealium.com","cp.trace_id":"12345"},"event":"view"}' https://collect.tealiumiq.com/account/profile/2/i.gif
 ```
 
 ### Sample POST Request using Python
@@ -138,12 +138,12 @@ The following example shows how to programmatically code this to run using Pytho
 
 ```
 import requests, json
-body = {&#39;data&#39;:{&#39;event_name&#39;:&#39;abc_score&#39;,&#39;cp.trace_id&#39;:&#39;04759&#39;,&#39;abc_score&#39;:&#39;0.56&#39;,&#39;customer_id&#39;:&#39;9999999&#39;},&#39;event&#39;:&#39;view&#39;}
-headers = {&#34;Content-Type&#34;: &#34;text/plain&#34;,&#34;Accept&#34;: &#34;image/gif&#34;}
-r = requests.post(&#39; https://collect.tealiumiq.com/account/profile/2/i.gif&#39;, data = json.dumps(body), headers=headers);
+body = {'data':{'event_name':'abc_score','cp.trace_id':'04759','abc_score':'0.56','customer_id':'9999999'},'event':'view'}
+headers = {"Content-Type": "text/plain","Accept": "image/gif"}
+r = requests.post(' https://collect.tealiumiq.com/account/profile/2/i.gif', data = json.dumps(body), headers=headers);
 ```
 
-This example uses the Python &#34;Requests&#34; module, which can be installed using the following command:
+This example uses the Python "Requests" module, which can be installed using the following command:
 
 ```
 pip2 install requests
@@ -155,4 +155,8 @@ For Python3, use:
 pip3 install requests
 ```
 
+
+<blockquote>
 When complete, update and test accordingly.
+</blockquote>
+

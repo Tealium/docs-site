@@ -19,7 +19,7 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`versionDetails`| Object| Details about the current version including: location of where the current profile version is published to, the email of the user who published the profile, and notes about the profile.|
 |`environmentVersions`| Object| List of the current published profile version for each environment. |
 |`dataCloudLinkedProfiles`| String| The linked server-side profile name.|
-|`libraryType`| String|  The type of library being inherited. If no library is inherited, the value is `NONE`.&lt;br&gt; `Required` - All profiles include this library automatically.&lt;br&gt; `Optional` - You specify which profiles include this library.&lt;br&gt;`NONE` - Indicates the given profile is not a library. |
+|`libraryType`| String|  The type of library being inherited. If no library is inherited, the value is `NONE`.<br> `Required` - All profiles include this library automatically.<br> `Optional` - You specify which profiles include this library.<br>`NONE` - Indicates the given profile is not a library. |
 |`linkedProfiles`|  Array[object]| For libraries, this field lists the values that the profiles inherit from this library. For profiles, this value is `null`.|
 |`linkedLibraries`| Array[object]| For profiles, this field represents the libraries linked to the profile. For libraries this value is `null`.|
 |`variables`| Array of variables| Array of variable objects in the profile.|
@@ -34,27 +34,27 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 
 ```json
 {
-    &#34;account&#34;: &#34;my_account&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;versionTitle&#34;: &#34;Version 2022.03.22.2108&#34;,
-    &#34;version&#34;: &#34;202203222108&#34;,
-    &#34;minorVersion&#34;: &#34;202203222108&#34;,
-    &#34;parentVersion&#34;: &#34;202309191127&#34;,
-    &#34;creation&#34;: &#34;202201131654&#34;,
-    &#34;customTargets&#34;: null,
-    &#34;versionDetails&#34;: {},
-    &#34;environmentVersions&#34;: {},
-    &#34;dataCloudLinkedProfiles&#34;: &#34;{}&#34;,
-    &#34;libraryType&#34;: &#34;NONE&#34;,
-    &#34;linkedProfiles&#34;: null,
-    &#34;linkedLibraries&#34;: [],
-    &#34;variables&#34;: null,
-    &#34;extensions&#34;: null,
-    &#34;loadRules&#34;: null,
-    &#34;tags&#34;: null,
-    &#34;events&#34;: null,
-    &#34;templateList&#34;: null,
-    &#34;versionIds&#34;: null
+    "account": "my_account",
+    "profile": "main",
+    "versionTitle": "Version 2022.03.22.2108",
+    "version": "202203222108",
+    "minorVersion": "202203222108",
+    "parentVersion": "202309191127",
+    "creation": "202201131654",
+    "customTargets": null,
+    "versionDetails": {},
+    "environmentVersions": {},
+    "dataCloudLinkedProfiles": "{}",
+    "libraryType": "NONE",
+    "linkedProfiles": null,
+    "linkedLibraries": [],
+    "variables": null,
+    "extensions": null,
+    "loadRules": null,
+    "tags": null,
+    "events": null,
+    "templateList": null,
+    "versionIds": null
 }
 ```
 
@@ -66,9 +66,9 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`uniqueIdentifier`| String| Variable identifier used to refer to the variable from extension `conditions`, tag `dataMappings`, and load rule `conditions`.|
 |`name`| String| The variable title.|
 |`alias`| String| The variable name.|
-|`type`| String| A prefix representing the variable type.&lt;br&gt;  `ls` - Local storage &lt;br&gt; `ss` - Session storage &lt;br&gt; `udo` - Universal Data Object&lt;br&gt; `qp` - Query string parameter&lt;br&gt; `cp` - Cookie&lt;br&gt; `js` - JavaScript  variable&lt;br&gt; `meta` - Meta data element&lt;br&gt; `va` - AudienceStream attribute |
+|`type`| String| A prefix representing the variable type.<br>  `ls` - Local storage <br> `ss` - Session storage <br> `udo` - Universal Data Object<br> `qp` - Query string parameter<br> `cp` - Cookie<br> `js` - JavaScript  variable<br> `meta` - Meta data element<br> `va` - AudienceStream attribute |
 |`notes`| String| Notes about the variable.|
-|`context`| Array| The scope for attributes imported from AudienceStream.&lt;br&gt; Values: `current_visit` or `visitor`|
+|`context`| Array| The scope for attributes imported from AudienceStream.<br> Values: `current_visit` or `visitor`|
 |`library`| String| Name of the library from which the variable is inherited.|
 |`imported`| String| The source of an imported variable. This is set to `AudienceStream` for all AudienceStream attributes.|
 |`usedIn`| Object| The list of IDs where this variable is used.|
@@ -83,11 +83,11 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`library`| String| Name of the library from which the tag is inherited.|
 |`status`| String| The on/off status: `active` or `inactive`.|
 |`notes`| String| Notes about the tag.|
-|`dataMappings`| Map &amp;lt;String, String&amp;gt;|  Returns Tealium IQ variable and its corresponding mapped destination. |
-|`selectedTargets`| Map&amp;lt;String, Boolean&amp;gt;|  An object of environments where the tag is allowed to be published. |
-|`environmentVersions`| Map&amp;lt;String, Boolean&amp;gt;| An array of the environments where this tag was last published.|
-|`advancedConfiguration`| Object|  A set of advanced configurations corresponding to the tag configuration settings.&lt;br&gt; `advConfigBundle` — **True** or **False**&lt;br&gt; `advConfigLoadType` — **True** or **False**&lt;br&gt; `advConfigOptOut` — **True**&lt;br&gt; `advConfigSend`— **True** or **False** `advConfigSrc` — Text field&lt;br&gt; `tagTiming` — **DOM Ready** or **Prioritized** |
-| `configuration` |  Map &amp;lt;String, Object&amp;gt; |  A String and Object Map of tag configurations made available by the vendor. |
+|`dataMappings`| Map &lt;String, String&gt;|  Returns Tealium IQ variable and its corresponding mapped destination. |
+|`selectedTargets`| Map&lt;String, Boolean&gt;|  An object of environments where the tag is allowed to be published. |
+|`environmentVersions`| Map&lt;String, Boolean&gt;| An array of the environments where this tag was last published.|
+|`advancedConfiguration`| Object|  A set of advanced configurations corresponding to the tag configuration settings.<br> `advConfigBundle` — **True** or **False**<br> `advConfigLoadType` — **True** or **False**<br> `advConfigOptOut` — **True**<br> `advConfigSend`— **True** or **False** `advConfigSrc` — Text field<br> `tagTiming` — **DOM Ready** or **Prioritized** |
+| `configuration` |  Map &lt;String, Object&gt; |  A String and Object Map of tag configurations made available by the vendor. |
 |`rules`| Object| The load rules to apply or exclude from the tag.|
  | `template` |  Object |  Returns the full tag template. Requires `includes = tags.template` in the request. |
 
@@ -102,7 +102,7 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`notes`| String| Notes about the load rules.|
 |`startDate`| Date| For scheduled load rules, the start date.|
 |`endDate`| Date| For scheduled load rules, the end date.|
-|`environmentVersions`| Map&amp;lt;String, Boolean&amp;gt;| List of the current published load rule version for each environment. |
+|`environmentVersions`| Map&lt;String, Boolean&gt;| List of the current published load rule version for each environment. |
 |`usedIn`| Object| The list of IDs where this load rule is used.|
 |`conditions`| Array[object]| An array of objects that include variable name, operator, and value. Each object within an array is associated by an `and` operator while each array within the array is associated by an `or` operator.|
 
@@ -117,13 +117,13 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`library`| String| The name of the associated library.|
 |`notes`| String| The notes entered for the extension.|
 |`loadRule`| Mixed| A comma-separated list of load rule IDs, or `all` for All Pages.|
-|`scope`| String|  The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs. &lt;br&gt; `utag Sync`&lt;br&gt; `Pre Loader`&lt;br&gt; `Before Load Rules`&lt;br&gt; `After Load Rules`&lt;br&gt; `DOM Ready`&lt;br&gt; `Tag Scoped Extensions`&lt;br&gt; `After Tag Extensions` For more information about tag-scoped extensions and how they work with `occurrence`, see [Understanding Scope](). |
+|`scope`| String|  The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs. <br> `utag Sync`<br> `Pre Loader`<br> `Before Load Rules`<br> `After Load Rules`<br> `DOM Ready`<br> `Tag Scoped Extensions`<br> `After Tag Extensions` For more information about tag-scoped extensions and how they work with `occurrence`, see [Understanding Scope](https://docs.tealium.com/about-extensions/#understanding-scope). |
 |`occurrence`| String|  Determines the number of times the JavaScript code extension runs per page load. Values: `Run Once` or `Run Always`. |
 |`status`| String| The on/off status: `active` or `inactive`.|
-|`selectedTargets`| Map&amp;lt;String, Boolean&amp;gt;| Environments where the extension is allowed to be published.|
-|`environmentVersions`| Map&amp;lt;String, Boolean&amp;gt;| An array of the environments where the extension is published.|
+|`selectedTargets`| Map&lt;String, Boolean&gt;| Environments where the extension is allowed to be published.|
+|`environmentVersions`| Map&lt;String, Boolean&gt;| An array of the environments where the extension is published.|
 |`conditions`| Array[object]| The conditions set for the specific extension.|
-|`configuration`| Map &amp;lt;String, Object&amp;gt;| A Map of configurations for each extension.|
+|`configuration`| Map &lt;String, Object&gt;| A Map of configurations for each extension.|
 
 ## Events
 
@@ -133,15 +133,15 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 | `eventID` | Number | The system ID for this event type. This value is the same for all events of the same type.  |
 | `name` | String | Name of the event. |
 | `status` | String | The on/off status: `active` or `inactive`. |
-| `eventType` | String | Type of event being tracked. &lt;ul&gt;&lt;li&gt;[`mouseEvents`]()\- Includes the following user actions:&lt;ul&gt;&lt;li&gt;`click` \- When a visitor clicks their mouse on a page.&lt;/li&gt;&lt;li&gt;`mousedown` \- When a visitor moves their mouse down.&lt;/li&gt;&lt;li&gt;`mouseup` \- When a visitor moves their mouse down.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;[`mouseOver`]() \- When a visitor hovers their mouse over a specific element on a page.&lt;/li&gt;&lt;li&gt; [`formSubmit`]() \- When a visitor submits a form on a page.&lt;/li&gt;&lt;li&gt;[`youtubeVideo`]() \- When a visitor interacts with an embedded YouTube video on a page.&lt;/li&gt;&lt;li&gt;[`vimeoVideo`]() \- When a visitor interacts with an embedded Vimeo video on a page.&lt;/li&gt;&lt;li&gt;[`html5Video`]() \- When a visitor interacts with an embedded HTML5 video on a page.&lt;/li&gt;&lt;li&gt;[`pageView`]() \- When a visitor views a page.&lt;/li&gt;&lt;li&gt;[`scroll`]() \- When a visitor scrolls through a page, vertically or horizontally.&lt;/li&gt;&lt;li&gt;[`elementVisibility`]() \- When the page displays a screen element to a visitor.&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;|
-| `scope` | String | The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs.&lt;br&gt;`After Load Rules`&lt;br&gt;`DOM Ready`&lt;br&gt;For more information about tag-scoped events, see [Scope](). |
+| `eventType` | String | Type of event being tracked. <ul><li>[`mouseEvents`](https://docs.tealium.com/click-event/)\- Includes the following user actions:<ul><li>`click` \- When a visitor clicks their mouse on a page.</li><li>`mousedown` \- When a visitor moves their mouse down.</li><li>`mouseup` \- When a visitor moves their mouse down.</li></ul><li>[`mouseOver`](https://docs.tealium.com/mouseover-event/) \- When a visitor hovers their mouse over a specific element on a page.</li><li> [`formSubmit`](https://docs.tealium.com/form-submission-event/) \- When a visitor submits a form on a page.</li><li>[`youtubeVideo`](https://docs.tealium.com/youtube-event/) \- When a visitor interacts with an embedded YouTube video on a page.</li><li>[`vimeoVideo`](https://docs.tealium.com/vimeo-event/) \- When a visitor interacts with an embedded Vimeo video on a page.</li><li>[`html5Video`](https://docs.tealium.com/html5-video-event/) \- When a visitor interacts with an embedded HTML5 video on a page.</li><li>[`pageView`](https://docs.tealium.com/page-view-event/) \- When a visitor views a page.</li><li>[`scroll`](https://docs.tealium.com/scroll-event/) \- When a visitor scrolls through a page, vertically or horizontally.</li><li>[`elementVisibility`](https://docs.tealium.com/element-visibility-event/) \- When the page displays a screen element to a visitor.</li></li></ul>|
+| `scope` | String | The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs.<br>`After Load Rules`<br>`DOM Ready`<br>For more information about tag-scoped events, see [Scope](https://docs.tealium.com/event-scope/). |
 | `trackingEvent` | String | The event call made when the event takes place. |
 | `notes` | String | Notes about the event. |
 | `library` | String | The name of the associated library. |
 | `eventLoadRulesList` | String | A list of all load rules used in the event. |
-| `eventTrigger` | Object | Configurations specific to each event type. For more information about event triggers, see [Events &gt; Event Triggers](). |
-| `selectedTargets` | Map\&lt;String, Boolean&gt; | Environments where the event is allowed to be published. |
-| `environmentVersions` | Map\&lt;String, Boolean&gt; | An array of the environments where the event is published. |
+| `eventTrigger` | Object | Configurations specific to each event type. For more information about event triggers, see [Events > Event Triggers](https://docs.tealium.com/event-triggers/). |
+| `selectedTargets` | Map\<String, Boolean> | Environments where the event is allowed to be published. |
+| `environmentVersions` | Map\<String, Boolean> | An array of the environments where the event is published. |
 | `eventVariables` | Object | Variables specific to each event type. |
 | `rules` | Object | Rules that dictate when an event listener is loaded on the page.  |
 | `usedIn` | Object | The list of IDs where this event is used. |

@@ -14,7 +14,7 @@ Mapp Intelligenceは、ウェブサイトの使用状況と顧客の深い理解
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[Tag Overview]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -42,11 +42,11 @@ Mapp Intelligenceは、ウェブサイトの使用状況と顧客の深い理解
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]()のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、[data mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、[data mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -315,12 +315,12 @@ Mapp Intelligenceは、ウェブサイトの使用状況と顧客の深い理解
 | 注文合計 (`order_total`)             | ( `_ctotal` を上書きします)                                        |
 | 通貨 (`order_currency`)             | ( `_ccurrency` を上書きします)                                     |
 | クーポン値 (`order_couponValue`)      |                                                               |
-| 名前のリスト (`product_name`)          | [Array]&lt;br&gt; ( `_cprodname` を上書きします)                         |
-| 数量のリスト (`product_quantity`) | [Array]&lt;br&gt; ( `_cquan` を上書きします)                             |
-| 価格のリスト (`product_unit_price`)   | [Array] &lt;br&gt; ( `_cprice` を上書きします)                           |
-| 商品カテゴリ (`product_category`)    | [Array] &lt;br&gt; カテゴリのリスト &lt;br&gt; ( `_ccat` を上書きします)     |
-| 商品ブランド (`product_brand`)       | [Array]&lt;br&gt; ブランドのリスト &lt;br&gt; ( `_cbrand` を上書きします)        |
-| 商品サブカテゴリ (`product_subcategory`) | [Array]&lt;br&gt; サブカテゴリのリスト &lt;br&gt; ( `_ccat2` を上書きします) |
+| 名前のリスト (`product_name`)          | [Array]<br> ( `_cprodname` を上書きします)                         |
+| 数量のリスト (`product_quantity`) | [Array]<br> ( `_cquan` を上書きします)                             |
+| 価格のリスト (`product_unit_price`)   | [Array] <br> ( `_cprice` を上書きします)                           |
+| 商品カテゴリ (`product_category`)    | [Array] <br> カテゴリのリスト <br> ( `_ccat` を上書きします)     |
+| 商品ブランド (`product_brand`)       | [Array]<br> ブランドのリスト <br> ( `_cbrand` を上書きします)        |
+| 商品サブカテゴリ (`product_subcategory`) | [Array]<br> サブカテゴリのリスト <br> ( `_ccat2` を上書きします) |
 | 商品ステータス (`productStatus`)        |                                                               |
 | 支払い方法 (`paymentMethod`)        | [String]                                                      |
 | 配送サービス (`shippingService`)    | [String]                                                      |

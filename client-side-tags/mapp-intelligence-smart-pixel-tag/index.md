@@ -14,12 +14,12 @@ Mapp Intelligence offers analysts and marketers in depth analyses and valuable i
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Library Version**: Select the library version to use.
-* **Track ID**: Use Track IDs to assign requests to an account. Find the Track ID under **Mapp Q3 &gt; Configuration &gt; System Configuration &gt; Data Collection** in the Mapp **System Configuration**. To record the same information for multiple accounts, separate Track IDs with commas.
+* **Track ID**: Use Track IDs to assign requests to an account. Find the Track ID under **Mapp Q3 > Configuration > System Configuration > Data Collection** in the Mapp **System Configuration**. To record the same information for multiple accounts, separate Track IDs with commas.
 * **Track Domain**: Enter the Mapp Intelligence track domain provided by your account manager.
 * **Domain**: Override the default behavior of excluding the Smart Pixel’s domain as a referrer.
 * **Cookie Handling**: Indicate whether to set cookies with the browser or server. Server-side cookies are recommended only if you use a custom Track Domain that matches your web domain. This allows first-party tracking and the highest data quality.
@@ -40,11 +40,11 @@ When adding the tag, configure the following settings:
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -107,13 +107,13 @@ The available categories are:
 | `articleTitle` | `String` | The article title. |
 | `contentTags` | `String` | Tags of an article. |
 | `title` | `String` | Title of the page. |
-| `e.g. &#34;overview&#34;` | `String` | Type of the page. |
-| `e.g. &#34;large&#34;` | `String` | Length of the page. |
+| `e.g. "overview"` | `String` | Type of the page. |
+| `e.g. "large"` | `String` | Length of the page. |
 | `daysSincePublication` | `Number` | Days since publication. |
 | `testVariant` | `String` | Name of the test variant. |
 | `testExperiment` | `String` | Name of the test. |
 | `parameter` | `Object` | You can use parameters to enrich analytics data with your own website-specific information and/or metrics. |
-| `called &#34;Content Groups&#34; in Mapp` | `Object` | Page categories. |
+| `called "Content Groups" in Mapp` | `Object` | Page categories. |
 | `goal` | `Object` | When using website goals, all central goals are quickly available for analyzing and filtering. |
 
 ### Event parameters

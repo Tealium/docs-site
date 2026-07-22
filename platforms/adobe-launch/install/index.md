@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/adobe-launch/install/
 ---
 ## Requirements
 
-* [Tealium Customer Data Hub account]().
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/).
 
 ## Tealium Collect extension
 
@@ -13,7 +13,7 @@ The Tealium Collect extension for Adobe Experience Platform Launch sends all you
 
 For each triggered event, the Adobe Experience Platform tag automatically flattens the data layer enrichment object specified in the configuration into key-value pairs and posts the data to the Tealium Collect endpoint. A custom endpoint may be specified if you use first-party data collection.
 
-For more information about how data layer variables are flattened, see [Data layer](/platforms/adobe-launch/data-layer/).
+For more information about how data layer variables are flattened, see [Data layer](https://docs.tealium.com/platforms/adobe-launch/data-layer/).
 
 ## Install
 
@@ -64,7 +64,7 @@ Use this action in the following scenarios:
 
 Configure a rule based on ACDL data pushes to trigger the Track event through ACDL action.
 
-![](/images/platforms/adobe-launch/adobe-launch-acdl-rule.png)
+![](https://docs.tealium.com/images/platforms/adobe-launch/adobe-launch-acdl-rule.png)
 
 ### Track event
 
@@ -81,13 +81,13 @@ Use this action in the following scenarios:
 
 * Your site pushes data directly to a JavaScript object or custom data layer.
 * You want to send events defined entirely in Adobe Launch rules (for example, DOM Ready, Link Click, or `_satellite.track` events).
-* You don&#39;t need to filter or manage ACDL events individually.
+* You don't need to filter or manage ACDL events individually.
 
 #### Example usage
 
 Configure a rule to trigger the Tealium Collect extension. The following example runs the extension for the page view event.
 
-![](/images/platforms/adobe-launch/adobe-launch-rules.png)
+![](https://docs.tealium.com/images/platforms/adobe-launch/adobe-launch-rules.png)
 
 #### Direct calls
 
@@ -96,25 +96,25 @@ The direct call events from `_satellite.track` are processed by Tealium Collect 
 The following example is a direct call for the event `contact_submit`. We recommend that you use a data layer of key-value pairs, but you may also pass a nested `adobeDataLayer` object.
 
 ```js
-_satellite.track(&#34;contact_submit&#34;, { &#34;name&#34;: &#34;John Doe&#34; });
+_satellite.track("contact_submit", { "name": "John Doe" });
 ```
 
 The resulting event in Tealium Collect resembles the following:
 
 ```json
 {
-  &#34;tealium_event&#34; : &#34;contact_submit&#34;,
-  &#34;name&#34; : &#34;John Doe&#34;
+  "tealium_event" : "contact_submit",
+  "name" : "John Doe"
 }
 ```
 
 In addition to the event parameters, the values found in `_satellite.buildInfo` are also included in the data layer for direct call event tracking:
 
 ```json
-turbineVersion: &#34;14.0.0&#34;,
-turbineBuildDate: &#34;2016-07-01T18:10:34Z&#34;,
-buildDate: &#34;2016-03-30T16:27:10Z&#34;,
-environment: &#34;development&#34;
+turbineVersion: "14.0.0",
+turbineBuildDate: "2016-07-01T18:10:34Z",
+buildDate: "2016-03-30T16:27:10Z",
+environment: "development"
 ```
 
 ## Source code

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/distribute-travel-tag/
 ---
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Distribute Travel Tag to your profile (See [Add a tag]()).
+First, go to the tag marketplace and add the Distribute Travel Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
 After adding the Tag, configure the below settings:
 
@@ -13,13 +13,13 @@ After adding the Tag, configure the below settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this Tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag on your site.
 
 Recommended Load Rule: **All Pages**
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Distribute Travel Tag are built into its Data Mapping tab. Available categories are:
 

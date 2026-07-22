@@ -29,7 +29,7 @@ Use the following steps to switch environments:
 1. Click the **Basic** tab.
 1. Click the environment you want to switch to.  
 When you select a new environment, the environment detected on the page is outlined in orange and the active environment on the page (the one you switched to) is highlighted in blue.  
-    ![](/images/iq-tag-management/tealium-tools-environment-switcher-basic-tab.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-basic-tab.jpg)
 1. Click **Start** to apply your changes.  
 This action refreshes the current page.
 
@@ -38,7 +38,11 @@ This action refreshes the current page.
 The options on the **Advanced** tab provide the following features:
 
 * Advanced redirects to load the Tealium files from a different account, profile, and environment.  
-    This is helpful if you use [profile libraries]() or [custom publish environments]().
+    
+<blockquote>
+This is helpful if you use [profile libraries](https://docs.tealium.com/about-profile-libraries/) or [custom publish environments](https://docs.tealium.com/custom-publish-environments/).
+</blockquote>
+
 
 * URL redirects to load the Tealium files from a custom URL location.
 * Separate settings for each Tealium file and your browsing session..
@@ -47,22 +51,22 @@ The options on the **Advanced** tab provide the following features:
 
 To redirect the **Account**, **Profile**, or **Environment**, click **Advanced Redirect** to expand.
 
-Type the source name for each in the **Source** column and the destination name for each in the **Destination** column.&lt;br&gt;
-![](/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-advanced-redirect.jpg)
+Type the source name for each in the **Source** column and the destination name for each in the **Destination** column.<br>
+![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-advanced-redirect.jpg)
 
 #### URL Redirects
 
 To redirect to a custom URL, click **URL Redirect** to expand.
 
-Type the source URL in the **Source** column and the destination URL in the **Destination** column.&lt;br&gt;
-![](/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-url-redirect.jpg)
+Type the source URL in the **Source** column and the destination URL in the **Destination** column.<br>
+![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-url-redirect.jpg)
 
 #### Advanced Options
 
 Click **Advanced Options** to select or deselect how your redirects are applied.
 
-Select or deselect one or more of the following:&lt;br&gt;
-![](/images/iq-tag-management/tealium-tools-environment-switcher-advance-tab-advanced-options.jpg)
+Select or deselect one or more of the following:<br>
+![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-advance-tab-advanced-options.jpg)
 
 * **Current Domain Only** - only apply the redirects to the current domain. If you navigate to a different subdomain, the redirects are not applied.
 * **Current Tab Only** - only apply the redirects to the current browser tab. Other browser tabs, even if viewing the same page, will not be affected.
@@ -81,7 +85,7 @@ After making any changes using the Environment Switcher, the **Active Redirects*
 To disable an active redirect, click **Stop** in the Action column. The page is automatically refreshed and the Tealium files load normally, as coded in the page.
 
 * In subsequent visits to this tab, you can select **Refresh** or **Stop** in the Action column.  
-![](/images/iq-tag-management/tealium-tools-environment-switcher-active-redirects-refresh-and-stop-buttons.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-active-redirects-refresh-and-stop-buttons.jpg)
 
 ### Recent Redirects
 
@@ -91,7 +95,7 @@ To reactivate a previously configured switcher:
 
 1. Click the **Recent Redirects** tab.  
 A list of recently configured switchers displays.  
-    ![](/images/iq-tag-management/tealium-tools-environment-switcher-recent-redirects-tab-start.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-recent-redirects-tab-start.jpg)
 1. Click the **Start** button next to the switcher that you want to reactivate.  
 The page refreshes automatically and the changes are applied.
 
@@ -146,7 +150,7 @@ To force stop all active redirects:
 
 1. Click the **Help** tab.
 1. Click **Force Stop all Active Redirects**.  
-    ![](/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-force-stop-all-active-redirects.jpg)  
+    ![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-force-stop-all-active-redirects.jpg)  
 The Active Redirects tab is now empty and all active redirects are stopped.
 
 ### **Reset Environment Switcher to the Default State**
@@ -158,7 +162,7 @@ Use the following steps to reset the Environment Switcher:
 1. Click the **Help** tab.
 1. Click **Force Reset** to expand.
 1. Click **Reset Environment Switcher**.  
-    ![](/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-reset-environment-switcher.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-reset-environment-switcher.jpg)
 
 The **Active Redirects** and **Recent Redirects** tabs are now empty. All active redirects are stopped and recent redirects are purged.
 

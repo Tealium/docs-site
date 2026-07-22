@@ -9,15 +9,15 @@ url: https://docs.tealium.com/client-side-tags/firebase-remote-command-order-eve
 
 The Custom Command tag is a special tag that contains an implementation of the API required to trigger custom native code blocks you have registered with the Tealium mobile libraries.
 
-[Learn more](/client-side-tags/firebase-remote-command-tag/) about setting up the Firebase Mobile Remote Command Tag in your Tealium iQ Tag Management (/client-side-tags/firebase-remote-command-tag/) account.
+[Learn more](https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) about setting up the Firebase Mobile Remote Command Tag in your Tealium iQ Tag Management (https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) account.
 
-Extensions may be needed to update the data coming from the app through a tracking call. For example, you might be tracking a screen view using the Tealium SDK on the &#34;Order Confirmation&#34; screen, which you want to also log in the Firebase SDK.
+Extensions may be needed to update the data coming from the app through a tracking call. For example, you might be tracking a screen view using the Tealium SDK on the "Order Confirmation" screen, which you want to also log in the Firebase SDK.
 
 The following is an example of the tracking call in Tealium for iOS (Swift):
 
 ```
-`tealium?.trackView(&#34;order_confirmation&#34;, [&#34;order_id&#34;:&#34;A123456&#34;,
-&#34;user_id&#34;: &#34;john.doe@someprovider.com&#34;, &#34;user_loyalty_status&#34;:&#34;vip&#34;, &#34;travel_class&#34; : &#34;first&#34;])
+`tealium?.trackView("order_confirmation", ["order_id":"A123456",
+"user_id": "john.doe@someprovider.com", "user_loyalty_status":"vip", "travel_class" : "first"])
 `
 ```
 
@@ -31,7 +31,7 @@ The value for the `command_name` variable is set to a comma-separated string of 
 * `setUserProperty`
 * `logEvent`.
 
-For this example, it is important to understand the order of operations in Tealium iQ. Extensions with the same &#34;scope&#34; are guaranteed to execute in order, from top to bottom as you see them in the Extensions tab. Therefore, logic is easily split into different extensions, but keep writing to a variable that was defined in an earlier extension.
+For this example, it is important to understand the order of operations in Tealium iQ. Extensions with the same "scope" are guaranteed to execute in order, from top to bottom as you see them in the Extensions tab. Therefore, logic is easily split into different extensions, but keep writing to a variable that was defined in an earlier extension.
 
 1. Create a new data layer variable called `firebase_command_name` in your Tealium iQ profile.
 
@@ -82,7 +82,7 @@ The following user ID variables are available:
 
 |TiQ Variable Name| Type| Example| Notes|
 |---| ---| ---| ---|
-|`firebase_command_name`| JS Code| `b.firebase\_command\_name &#43; &#34;,setUserId&#34;`| Case-sensitive, comma-separated, no spaces|
+|`firebase_command_name`| JS Code| `b.firebase\_command\_name + ",setUserId"`| Case-sensitive, comma-separated, no spaces|
 |`firebase_user_id`| Text| `john.doe@someprovider.com`| (Required) Any valid string|
 
 This produces the following call in the native Firebase API:
@@ -90,14 +90,14 @@ This produces the following call in the native Firebase API:
 Android:
 
 ```
-`FirebaseAnalytics.setUserId(&#34;john.doe@someprovider.com&#34;);
+`FirebaseAnalytics.setUserId("john.doe@someprovider.com");
 `
 ```
 
 Swift:
 
 ```
-`Analytics.setUserID(&#34;john.doe@someprovider.com&#34;)
+`Analytics.setUserID("john.doe@someprovider.com")
 `
 ```
 
@@ -107,7 +107,7 @@ The following screen name variables are available:
 
 |TiQ Variable Name| Type| Example| Notes|
 |---| ---| ---| ---|
-|`firebase_command_name`| JS Code| `b.firebase_command_name &#43; &#34;,setScreenName&#34;`| Case-sensitive, comma-separated, no spaces|
+|`firebase_command_name`| JS Code| `b.firebase_command_name + ",setScreenName"`| Case-sensitive, comma-separated, no spaces|
 |`firebase_screen_name`| Text| `Order Confirmation`| (Required) Any valid string|
 |`firebase_screen_class`| Text| `Order`| (Optional) Any valid string|
 
@@ -116,14 +116,14 @@ This produces the following call in the native Firebase API:
 Android:
 
 ```
-`FirebaseAnalytics.setCurrentScreen(&amp;lt;current activity reference&amp;gt;, &#34;Order Confirmation&#34;, &#34;Order&#34;);
+`FirebaseAnalytics.setCurrentScreen(&lt;current activity reference&gt;, "Order Confirmation", "Order");
 `
 ```
 
 Swift:
 
 ```
-`Analytics.setScreenName(&#34;Order Confirmation&#34;, screenClass: &#34;Order)
+`Analytics.setScreenName("Order Confirmation", screenClass: "Order)
 `
 ```
 
@@ -133,7 +133,7 @@ The following user property variables are available:
 
 |TiQ Variable Name| Type| Example| Notes|
 |---| ---| ---| ---|
-|`firebase_command_name`| JS Code| `b.firebase_command_name &#43; &#34;,setUserProperty&#34;`| Case-sensitive, comma-separated, no spaces|
+|`firebase_command_name`| JS Code| `b.firebase_command_name + ",setUserProperty"`| Case-sensitive, comma-separated, no spaces|
 |`firebase_property_name`| Text| `user_loyalty_status`| (Required) Any valid string|
 |`firebase_property_value`| Text| `vip`| (Required) Any valid string. Set to empty string to clear previously-set value.|
 
@@ -142,14 +142,14 @@ This produces the following call in the native Firebase API:
 Android:
 
 ```
-`FirebaseAnalytics.setUserProperty(&#34;user_loyalty_status&#34;, &#34;vip&#34;);
+`FirebaseAnalytics.setUserProperty("user_loyalty_status", "vip");
 `
 ```
 
 Swift:
 
 ```
-`Analytics.setUserProperty(&#34;vip&#34;, forName: &#34;user_loyalty_status&#34;)
+`Analytics.setUserProperty("vip", forName: "user_loyalty_status")
 `
 ```
 
@@ -159,9 +159,9 @@ The following log event variables are available:
 
 |TiQ Variable Name| Variable| Example| Notes|
 |---| ---| ---| ---|
-|`firebase_command_name`| JS Code| `b.firebase_command_name &#43; &#34;,logEvent&#34;`| Case-sensitive, comma-separated, no spaces|
+|`firebase_command_name`| JS Code| `b.firebase_command_name + ",logEvent"`| Case-sensitive, comma-separated, no spaces|
 |`firebase_event_name`| Text| `event_ecommerce_purchase`| (Required) Any valid string. Use one of the recommended event types listed above for best results.|
-|`firebase_event_params`| JS Code| `{&#34;param_travel_class&#34; : b.travel_class, &#34;param_transaction_id&#34;: b.order_id};`| (Optional) Any valid JSON object. Use one of the recommended default parameters listed above for best results. Custom parameters must be defined in the Firebase console before they show in reports.|
+|`firebase_event_params`| JS Code| `{"param_travel_class" : b.travel_class, "param_transaction_id": b.order_id};`| (Optional) Any valid JSON object. Use one of the recommended default parameters listed above for best results. Custom parameters must be defined in the Firebase console before they show in reports.|
 
 This produces the following call in the native Firebase API:
 
@@ -169,8 +169,8 @@ Android:
 
 ```
 `Bundle b = new Bundle();
-b.putString(&#34;param_travel_class&#34;, &#34;first&#34;);
-b.putString(&#34;param_transaction_id&#34;, &#34;A123456&#34;)
+b.putString("param_travel_class", "first");
+b.putString("param_transaction_id", "A123456")
 
 FirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, b);
 `
@@ -179,5 +179,5 @@ FirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, b);
 Swift:
 
 ```
-`Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [AnalyticsParameterTravelClass: &#34;first&#34;, AnalyticsParameterTransactionID: &#34;A123456&#34;])`
+`Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [AnalyticsParameterTravelClass: "first", AnalyticsParameterTransactionID: "A123456"])`
 ```

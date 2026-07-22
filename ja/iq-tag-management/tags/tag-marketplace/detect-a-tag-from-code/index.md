@@ -8,14 +8,18 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/tag-marketplace/detect-a
 **コードからタグを検出**ツールを使用してタグを追加するには、以下の手順に従ってください：
 
 1. **コードからタグを検出**をクリックしてテキストボックスを表示します。  
-    ![](/images/iq-tag-management/manage_tags/tag_marketplace_detect_from_code.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/manage_tags/tag_marketplace_detect_from_code.png)
 1. タグベンダーから提供されたコードを貼り付けます。
 1. **構成を検出**をクリックします。  
 プラットフォームはタグスニペットを解析し、そのパラメータを抽出します。
 1. コードスニペットに一致するタグが検出されると、そのタグとその構成がコードスニペットの下に表示されます。
 1. タグを選択し、**続行**をクリックしてプロファイルにタグを追加します。
 
-ツールがベンダーコードスニペットを検出できない場合は、従来の方法でタグを検索して[追加します]()。  
+ツールがベンダーコードスニペットを検出できない場合は、従来の方法でタグを検索して[追加します](https://docs.tealium.com/manage-tags/#add-a-tag)。  
 必要なタグがタグマーケットプレイスにない場合は、Tealiumカスタムコンテナを使用してタグを追加します。
 
+
+<blockquote>
 [タグマーケットプレイスポリシー]()によるタグの非表示は、ツールが一致するコードスニペットを検出するのを防ぎます。
+</blockquote>
+

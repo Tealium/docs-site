@@ -5,7 +5,11 @@ url: https://docs.tealium.com/iq-tag-management/administration/first-party-domai
 ---
 After you have configured first-party domains and validation has been completed, you need to update your endpoint configurations to use first-party domains with Tealium iQ Tag Management and [Tealium Collect]().
 
+
+<blockquote>
 The information in this article applies only to CNAME and A records that were created using first-party domains.
+</blockquote>
+
 
 ## Tag management
 
@@ -14,7 +18,11 @@ To use your first-party domain with Tealium iQ Tag Management you must also make
 * Update the Universal Tag (`utag.js`) code snippet wherever it is installed.
 * Set the publishing URLs.
 
-The Tealium environment switcher supports first-party domains. However, the environment switcher **Basic** option does not work with first-party domains. Use the **URL redirect** option on the **Advanced** tab. For more information, see [Tealium Tools: Environment Switcher](/iq-tag-management/tealium-tools/environment-switcher/).
+
+<blockquote>
+The Tealium environment switcher supports first-party domains. However, the environment switcher **Basic** option does not work with first-party domains. Use the **URL redirect** option on the **Advanced** tab. For more information, see [Tealium Tools: Environment Switcher](https://docs.tealium.com/iq-tag-management/tealium-tools/environment-switcher/).
+</blockquote>
+
 
 ### Update universal tag loading script
 
@@ -22,7 +30,7 @@ To update the Universal Tag code snippet, follow these steps:
 
 1. In the admin menu, click **Code Center**.
 1. Under **Choose Domain**, select your first-party domain.  
-    ![](/images/iq-tag-management/first-party-data-code-center.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/first-party-data-code-center.png)
 
 The example code snippet is updated to use your first-party domain.
 
@@ -36,19 +44,23 @@ In the following code snippet example for the current version of first-party dom
 
 
 ```
-&lt;!-- Loading script asynchronously --&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
+<!-- Loading script asynchronously -->
+<script type="text/javascript">
     (function(a,b,c,d){
-    a=&#39;**https://tags.tealiumecommerce.com/ecomm/prod/utag.js**&#39;;
-    b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;&#43;c;d.async=true;
+    a='**https://tags.tealiumecommerce.com/ecomm/prod/utag.js**';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
     a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
     })();
-&lt;/script&gt;
+</script>
 ```
 
 ### Update publishing URLs
 
+
+<blockquote>
 If you have multiple first-party domains configured for a profile, see [Update publishing URLs when a profile has multiple first-party domains](#update-publishing-urls-when-a-profile-has-multiple-first-party-domains) for information about updating the publishing URLs.
+</blockquote>
+
 
 The publishing URLs determine where to load the additional `utag.#.js` files for each default environment. If the publishing URLs are not updated, then the vendor tag files loaded after `utag.js` will not originate from your domain.
 
@@ -56,7 +68,7 @@ To set the publishing URLs, use the following steps:
 
 1. In the admin menu, click **Configure Publish Settings**.
 1. Scroll down to **Publishing URLs**, then enter a URL for each environment that uses your first-party domain. For example, `tags.example.com` and `collect.example.com`.
-    ![](/images/iq-tag-management/first-party-domains-publishing-urls.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/first-party-domains-publishing-urls.png)  
     **Publish Dev URL**: `//sub.your_domain.com/your_profile/dev/`  
     **Publish QA URL**: `//sub.your_domain.com/your_profile/qa/`  
     **Publish Prod URL**: `//sub.your_domain.com/your_profile/prod/`
@@ -70,13 +82,13 @@ If you have multiple first-party domains configured for a profile, you will not 
 You need to add a script similar to the following to update the publishing URLs, replacing the example path with the appropriate path for the page (it will match the `utag.js` inclusion path, which can be updated at the same time). This script must be added before the script that specifies the URL for `utag.js`.
 
 ```
-&lt;script&gt;
+<script>
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {} ;
-window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod/&#39;
-&lt;/script&gt;
+window.utag_cfg_ovrd.path = '//tags.example.com/main/prod/'
+</script>
 ```
 
-For more information, see [Settings]().
+For more information, see [Settings](https://docs.tealium.com/platforms/javascript/settings/).
 
 ## Update Tealium Collect endpoint
 
@@ -90,4 +102,7 @@ For example: `sub.your_domain.com/your_account/your_profile/2/i.gif`
 1. In the **Visitor Service Override** field, enter the visitor service URL. Omit the protocol and path. For example: `your-visitor-service.example.com`
 1. Click **Apply**.
 
+
+<blockquote>
 A separate Collect tag must be used for each subdomain unless an extension is used to map the values dynamically.
+</blockquote>

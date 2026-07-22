@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pa
 ## 前提条件
 
 * [拡張機能の仕組み]()
-* [URLコンポーネントの理解]()
+* [URLコンポーネントの理解](https://docs.tealium.com/about-load-rules/)
 
 ## 仕組み
 
@@ -15,10 +15,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pa
 以下がその仕組みです：
 
 * 拡張機能は `location.pathname` の値を見て、スラッシュ (`/`) 文字間の各テキスト値を分離します。したがって、場所が `https://example.com/section/folder/sub-folder/page.html` の場合、拡張機能は次の値を `_pathname1` から `_pathname8` という名前の変数としてデータレイヤーに追加します：
-    * `_pathname1=&#34;section&#34;`
-    * `_pathname2=&#34;folder&#34;`
-    * `_pathname3=&#34;sub-folder&#34;`
-    * `_pathname4=&#34;page.html&#34;`
+    * `_pathname1="section"`
+    * `_pathname2="folder"`
+    * `_pathname3="sub-folder"`
+    * `_pathname4="page.html"`
     * `_pathname5`
     * `_pathname6`
     * `_pathname7`
@@ -43,16 +43,20 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pa
 
 この表は、上記の各例のURLに対して拡張機能によって生成された結果の値を示しています。これらの変数を使用して、データレイヤーでサイトの構造を表現する方法がわかります。
 
+
+<blockquote>
 パス名変数により意味のある名前を付けるために、[Set Data Values extension]()を使用して、パス名変数を新しい変数名、例えば `site_section` や `site_category` などにコピーします。
+</blockquote>
+
 
 例えば、`_pathname1` を `site_section` に、`_pathname2` を `site_category` に、`_pathname3` を `site_subcategory` に、`_pathname4` を `site_subcategory2` に、というようにコピーすることができます。
 
 |変数| ページ1の値| ページ2の値| ページ3の値| ページ4の値|
 |---| ---| ---| ---| ---|
-|`_pathname1`| &#34;apparel&#34;| &#34;apparel&#34;| &#34;apparel&#34;| &#34;apparel&#34;|
-|`_pathname2`| &#34;women&#34;| &#34;women&#34;| &#34;women&#34;|
-|`_pathname3`| &#34;jeans&#34;| &#34;jeans&#34;|
-|`_pathname4`| &#34;skinny-jeans&#34;|
+|`_pathname1`| "apparel"| "apparel"| "apparel"| "apparel"|
+|`_pathname2`| "women"| "women"| "women"|
+|`_pathname3`| "jeans"| "jeans"|
+|`_pathname4`| "skinny-jeans"|
 |`_pathname5`|
 |`_pathname6`|
 |`_pathname7`|

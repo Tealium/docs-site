@@ -27,7 +27,7 @@ Tealium.createInstance(key, config);
 ```
 | Parameters  | Type | Description | Example |
 | --- | --- | --- | --- |
-| `key` | `String` |New Tealium instance name |  `&#34;abc123&#34;` |
+| `key` | `String` |New Tealium instance name |  `"abc123"` |
 | `config` | `Tealium.Config` | The configuration for the new instance | `tealConfigObj` |
 
 | Returns | Return Type |
@@ -63,7 +63,7 @@ ConsentManager consentManager = tealiumInstance.getConsentManager();
 Request to dispatch a batch queue of events when the batch limit has not been reached. If all other dispatching checks are okay (online, consent management, dispatch validators), the queue is dispatched.
 
 ```java
-Tealium instance = Tealium.getInstance(&#34;my_instance_name&#34;);
+Tealium instance = Tealium.getInstance("my_instance_name");
 instance.requestFlush();
 ```
 
@@ -73,15 +73,15 @@ instance.requestFlush();
 Track a non-view event.
 
 ```java
-Map&lt;String, Object&gt; data = new HashMap&lt;&gt;(1);
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
-Tealium.getInstance(&#34;INSTANCE KEY&#34;).trackEvent(eventName, data);
+Map<String, Object> data = new HashMap<>(1);
+data.put("KEY", "VALUE");
+Tealium.getInstance("INSTANCE KEY").trackEvent(eventName, data);
 ```
 
 | Parameter | Type | Description  | Example |
 |-----------|-------------| ---- | ------- |
-| `eventName`| `String` |Non-view event name | `&#34;Button Click&#34;` |
-| `data`    |`[Map&lt;String, dynamic&gt;]` | (Optional) Event data as key-value pairs (Use `null` if none)| `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `eventName`| `String` |Non-view event name | `"Button Click"` |
+| `data`    |`[Map<String, dynamic>]` | (Optional) Event data as key-value pairs (Use `null` if none)| `{"key1": "value1"}` |
 
 
 ### `trackView()`
@@ -89,11 +89,11 @@ Tealium.getInstance(&#34;INSTANCE KEY&#34;).trackEvent(eventName, data);
 Track a presented view.
 
 ```java
-Map&lt;String, Object&gt; data = new HashMap&lt;&gt;(1);
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
-Tealium.getInstance(&#34;INSTANCE KEY&#34;).trackView(screenName, data);
+Map<String, Object> data = new HashMap<>(1);
+data.put("KEY", "VALUE");
+Tealium.getInstance("INSTANCE KEY").trackView(screenName, data);
 ```
 | Parameter | Type | Description | Example |
 |-----------|------| ---- | ------- |
-| `screenName`| `String` | View screen name | `&#34;Home screen&#34;` |
-| `data`    | `[Map&lt;String, dynamic&gt;]` | (Optional) Event data as key-value pairs (Use `null` if none)| `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `screenName`| `String` | View screen name | `"Home screen"` |
+| `data`    | `[Map<String, dynamic>]` | (Optional) Event data as key-value pairs (Use `null` if none)| `{"key1": "value1"}` |

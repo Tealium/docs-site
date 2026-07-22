@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piano-analytics-tag/
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する一般的な手順については、[Tag Overview]() の記事を読んでください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する一般的な手順については、[Tag Overview](https://docs.tealium.com/about-tags/) の記事を読んでください。
 
 タグを追加する際には、以下の構成を構成します:
 
@@ -30,11 +30,11 @@ url: https://docs.tealium.com/ja/client-side-tags/piano-analytics-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]() のドキュメントを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/) のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[data mappings](/ja/iq-tag-management/data-mappings/manage/) を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[data mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/) を参照してください。
 
 利用可能なカテゴリは以下の通りです:
 
@@ -193,7 +193,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piano-analytics-tag/
 
 | 変数                     | 型       | 説明 |
 |:-------------------------|:---------|:-----|
-| `isVisitorClientSide`    | ブール値 | 訪問IDがブラウザのクッキーに保存されているかどうか。&lt;ul&gt;&lt;li&gt;`true`: 訪問IDはブラウザで生成および保存されます。&lt;/li&gt;&lt;li&gt;`false`: 訪問IDはサーバーで管理されます。&lt;/li&gt;&lt;/ul&gt; |
+| `isVisitorClientSide`    | ブール値 | 訪問IDがブラウザのクッキーに保存されているかどうか。<ul><li>`true`: 訪問IDはブラウザで生成および保存されます。</li><li>`false`: 訪問IDはサーバーで管理されます。</li></ul> |
 
 ### オーディオビデオパラメータ
 
@@ -256,7 +256,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piano-analytics-tag/
 
 ### イベント
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 | 変数                                   | 説明                                 |
 |:---------------------------------------|:------------------------------------|
@@ -321,7 +321,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piano-analytics-tag/
 | カスタム                               | カスタム。                           |
 ### イベント固有のパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 | 変数                               | 説明                           |
 |:-----------------------------------|:-------------------------------|

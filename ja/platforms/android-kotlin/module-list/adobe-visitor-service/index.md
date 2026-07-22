@@ -5,11 +5,11 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/module-list/adobe-visi
 ---
 Adobe Visitor Serviceモジュールは、訪問のExperience Cloud ID（ECID）を取得および維持するためにAdobeのREST APIと直接連携します。
 
-[AdobeVisitorService](/ja/platforms/getting-started-mobile/adobe-visitor-service/)モジュールについてもっと学びましょう。
+[AdobeVisitorService](https://docs.tealium.com/ja/platforms/getting-started-mobile/adobe-visitor-service/)モジュールについてもっと学びましょう。
 
 ## 要件
 
-* [Tealium Kotlin for Android](/ja/platforms/android-kotlin/)
+* [Tealium Kotlin for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)
 * 有効なAdobeアカウントとAdobe組織ID
 
 ## サンプルアプリ
@@ -45,8 +45,8 @@ import com.tealium.adobe.kotlin.*
 
 val config = TealiumConfig(
       app,
-      &#34;&lt;account&gt;&#34;,
-      &#34;&lt;profile&gt;&#34;,
+      "<account>",
+      "<profile>",
       Environment.DEV,
       collectors = mutableSetOf(Collectors.AdobeVisitor),
       dispatchers = mutableSetOf(Dispatchers.Collect)
@@ -56,4 +56,7 @@ val config = TealiumConfig(
   tealium = Tealium.create(BuildConfig.TEALIUM_INSTANCE, config)
 ```
 
-既知の訪問IDをリンクするか認証状態を構成するには、[既知の訪問IDと認証状態を構成する](/ja/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state)を参照してください。
+
+<blockquote>
+既知の訪問IDをリンクするか認証状態を構成するには、[既知の訪問IDと認証状態を構成する](https://docs.tealium.com/ja/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state)を参照してください。
+</blockquote>

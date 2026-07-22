@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mailrelay-connector/
 
 ## 構成を構成する
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mailrelay-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|あなたのアカウント|  &lt;ul&gt;&lt;li&gt;あなたのMailrelayアドレスまたはアカウント名。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://mailrelay.com/en/api-documentation&gt;&lt;/li&gt;&lt;/ul&gt; |
-|APIキー|  &lt;ul&gt;&lt;li&gt;あなたのAPIキー。&lt;/li&gt;&lt;li&gt;アカウントの構成の下にあります。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;購読者のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|名前|  &lt;ul&gt;&lt;li&gt;購読者の名前。&lt;/li&gt;&lt;/ul&gt; |
+|あなたのアカウント|  <ul><li>あなたのMailrelayアドレスまたはアカウント名。</li><li>詳細については、次を参照してください：<https://mailrelay.com/en/api-documentation></li></ul> |
+|APIキー|  <ul><li>あなたのAPIキー。</li><li>アカウントの構成の下にあります。</li></ul> |
+|メール|  <ul><li>購読者のメールアドレス。</li></ul> |
+|名前|  <ul><li>購読者の名前。</li></ul> |

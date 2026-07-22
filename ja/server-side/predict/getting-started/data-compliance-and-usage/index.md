@@ -8,7 +8,7 @@ url: https://docs.tealium.com/ja/server-side/predict/getting-started/data-compli
 
 Tealium Predictは、Tealium AudienceStream製品と同じデータを使用します。あなたのデータは完全に保護されており、GDPRとCCPAの両方に準拠しています。これには、自動プロファイリングのオプトインやオプトアウトなどの高度な考慮事項も含まれます。
 
-Tealium Consent ManagementのコンプライアンスとConsent Managementツールについての詳細な情報は、[Consent Management]()を参照してください。
+Tealium Consent ManagementのコンプライアンスとConsent Managementツールについての詳細な情報は、[Consent Management](https://docs.tealium.com/about-consent-management/)を参照してください。
 
 ## データ収集
 

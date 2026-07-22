@@ -5,9 +5,9 @@ url: https://docs.tealium.com/platforms/android-kotlin/tv/
 ---
 ## Requirements
 
-* Android TV app with [Tealium for Android](/platforms/android-kotlin/)
-* [Tealium iQ Mobile Profile]()
-* [Tealium Customer Data Hub account]()
+* Android TV app with [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## API Reference
 
@@ -21,13 +21,13 @@ To abstract the Tealium implementation from the rest of your app, we recommend t
 
 ### Android TV Device
 
-To install Tealium for Android TV, the installation steps are the same as found on the [Tealium for Android](/platforms/android-kotlin/install/) install guide.
+To install Tealium for Android TV, the installation steps are the same as found on the [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/install/) install guide.
 
 ### Amazon Fire TV
 
-It is recommended to leverage Tealium when developing using the Amazon&#39;s Fire TV [Fire App Builder framework](https://github.com/amzn/fire-app-builder). Tealium is a vendor-neutral solution allowing you to send your data to multiple platforms without being locked into a single vendor.
+It is recommended to leverage Tealium when developing using the Amazon's Fire TV [Fire App Builder framework](https://github.com/amzn/fire-app-builder). Tealium is a vendor-neutral solution allowing you to send your data to multiple platforms without being locked into a single vendor.
 
-Clone this fork of Amazon&#39;s [Fire App Builder](https://github.com/jonwongswong/fire-app-builder) library to get started with developing streaming apps on Fire TV and leverage the Tealium SDK.
+Clone this fork of Amazon's [Fire App Builder](https://github.com/jonwongswong/fire-app-builder) library to get started with developing streaming apps on Fire TV and leverage the Tealium SDK.
 
 ## Tracking
 
@@ -36,7 +36,7 @@ Clone this fork of Amazon&#39;s [Fire App Builder](https://github.com/jonwongswo
 The `TealiumView` method tracks screen views, as shown in the following example:
 
 ```java
-tealium.track(TealiumView(&#34;SCREEN_NAME&#34;, mapOf(&#34;key&#34; to &#34;context value&#34;)))
+tealium.track(TealiumView("SCREEN_NAME", mapOf("key" to "context value")))
 ```
 
 ### Track Events
@@ -44,5 +44,5 @@ tealium.track(TealiumView(&#34;SCREEN_NAME&#34;, mapOf(&#34;key&#34; to &#34;con
 The `TealiumEvent` method tracks non-view events, as shown in the following example:
 
 ```java
-tealium.track(TealiumEvent(&#34;EVENT_NAME&#34;, mapOf(&#34;key&#34; to &#34;context value&#34;)))
+tealium.track(TealiumEvent("EVENT_NAME", mapOf("key" to "context value")))
 ```

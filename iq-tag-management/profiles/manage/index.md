@@ -5,24 +5,36 @@ url: https://docs.tealium.com/iq-tag-management/profiles/manage/
 ---
 ## Create a profile
 
- Only users with the **Create Profile** legacy permission or the [profile admin role]() can create client-side profiles. To create a server-side profile, contact Tealium Support. 
+
+<blockquote>
+Only users with the **Create Profile** legacy permission or the [profile admin role](https://docs.tealium.com/admin-roles/) can create client-side profiles. To create a server-side profile, contact Tealium Support.
+</blockquote>
+
 
 You can create one or multiple profiles at the same time.
 
 Use the following steps to create a profile:
 
 1. In the admin menu, click **Manage Profiles**. The **Manage Profiles** dialog appears.
-1. Under **Profiles** on the left, click **&#43; Add**. The **Create Profile** dialog appears.
+1. Under **Profiles** on the left, click **+ Add**. The **Create Profile** dialog appears.
 1. In the **Name** field, enter a name for the new profile.  
 The name can be a maximum of 50 characters and only contain the following characters: `a-z`, `0-9`, period (`.`), and hyphen (`-`).  
-    The following restrictions apply to naming: The names `main` and `all` are reserved and cannot be used, the name cannot contain a double hyphen (`--`), and the name cannot begin with a period, such as `.profile2`.
+    
+<blockquote>
+The following restrictions apply to naming: The names `main` and `all` are reserved and cannot be used, the name cannot contain a double hyphen (`--`), and the name cannot begin with a period, such as `.profile2`.
+</blockquote>
 
-1. You can optionally click the plus button (**&#43;**) to add more profile names.
+
+1. You can optionally click the plus button (**+**) to add more profile names.
 1. Check any items in the **Copy Elements From** section to be copied from the current profile to the new profile.
 1. Click **Create Profile** to create the profile.  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profiles-create-profile-dialog.jpg)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profiles-create-profile-dialog.jpg)  
     The new profile display in the **Profiles** list.  
-    Creating a profile happens immediately. If there are any required libraries present, they will be linked to the profile automatically. Any variables based on AudienceStream attributes will not be copied upon profile creation. You must manually add attribute-based variables to newly-created profiles.
+    
+<blockquote>
+Creating a profile happens immediately. If there are any required libraries present, they will be linked to the profile automatically. Any variables based on AudienceStream attributes will not be copied upon profile creation. You must manually add attribute-based variables to newly-created profiles.
+</blockquote>
+
 
 ### Copy the tag template for utag.js or utag.sync.js
 
@@ -63,11 +75,11 @@ Each account may contain several profiles. Use the following steps to switch to 
 1. Click the profile drop-down menu.
 1. From the **Profile** drop-down menu, select the profile you want to switch to.
 1. From the **Version** drop-down menu, select the version of the profile to switch to.
-    ![](/images/iq-tag-management/profiles/profile-switcher1.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/profiles/profile-switcher1.png)
     * The most recent profile version is the default selection.
 1. Click **Load Version**.
 
-For more information, see [Profile Switcher]().
+For more information, see [Profile Switcher](https://docs.tealium.com/profile-switcher/).
 
 ## Remove profile
 

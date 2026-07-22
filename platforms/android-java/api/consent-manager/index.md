@@ -15,8 +15,8 @@ The following summarizes the commonly used methods of the `ConsentManager` class
 | `getUserConsentStatus()` | Returns the current consent status of the user |
 | `resetUserConsentPreferences()` | Resets user consent consent preferences |
 | `setPolicy()` | Overrides the default policy parameter (default: gdpr) |
-| `setUserConsentCategories()` | Sets the user&#39;s consent status and categories |
-| `setUserConsentStatus()`| Sets the user&#39;s consent status |
+| `setUserConsentCategories()` | Sets the user's consent status and categories |
+| `setUserConsentStatus()`| Sets the user's consent status |
 | `setUserConsentStatusWithCategories()` | Sets the consent status and categories in a single call|
 
 ### `getPolicy()`
@@ -29,7 +29,7 @@ final String currentPolicy = tealiumInstance.getConsentManager().getPolicy();
 ```
 | Returns | Return Type |
 | --- | --- |
-| User&#39;s current policy | `String` |
+| User's current policy | `String` |
 
 
 ### `getUserConsentCategories()`
@@ -42,12 +42,12 @@ final String[] userCategories = tealiumInstance.getConsentManager().getUserConse
 
 | Returns | Return Type |
 | --- | --- |
-| User&#39;s current consent categories | `String[]` |
+| User's current consent categories | `String[]` |
 
 
 ### `getUserConsentPreferences()`
 
-Returns the user&#39;s consent preferences.
+Returns the user's consent preferences.
 
 ```java
 final UserConsentPreferences userPreferences = tealiumInstance.getConsentManager().getUserConsentPreferences();
@@ -55,7 +55,7 @@ final UserConsentPreferences userPreferences = tealiumInstance.getConsentManager
 
 | Returns | Return Type |
 | --- | --- |
-| User&#39;s consent preferences | `UserConsentPreferences` |
+| User's consent preferences | `UserConsentPreferences` |
 
 
 
@@ -69,7 +69,7 @@ final String userStatus = tealiumInstance.getConsentManager().getUserConsentStat
 
 | Returns | Return Type |
 | --- | --- |
-| User&#39;s current consent status | `String` |
+| User's current consent status | `String` |
 
 
 ### `resetUserConsentPreferences()`
@@ -90,12 +90,12 @@ tealiumInstance.getConsentManager().setPolicy(policy);
 ```
 | Parameter | Type | Description| Example |
 | --- | --- | --- | --- |
-| `policy` | `String` |Policy to set | `&#34;custompolicy&#34;` |
+| `policy` | `String` |Policy to set | `"custompolicy"` |
 
 
 ### `setUserConsentCategories()`
 
-Sets the user&#39;s consent status and categories. Call this method from your consent management preferences screen in your app. This method automatically sets the user&#39;s consent status to `CONSENTED` if any number of categories are set.
+Sets the user's consent status and categories. Call this method from your consent management preferences screen in your app. This method automatically sets the user's consent status to `CONSENTED` if any number of categories are set.
 
 ```java
 tealiumInstance.getConsentManager().setUserConsentCategories(categories);
@@ -126,16 +126,16 @@ MISC
 
 ### `setUserConsentStatus()`  
 
-Sets the user&#39;s consent status. Call this method from your consent management preferences screen in your app when the user opts in or opts out of tracking. If `true`, automatically enables all categories.  If `false`, all categories automatically disabled.
+Sets the user's consent status. Call this method from your consent management preferences screen in your app when the user opts in or opts out of tracking. If `true`, automatically enables all categories.  If `false`, all categories automatically disabled.
 
-If the user&#39;s status is set to `CONSENTED` using this method, the consent manager automatically subscribes the user to ALL available consent categories (subset of categories not allowed).
+If the user's status is set to `CONSENTED` using this method, the consent manager automatically subscribes the user to ALL available consent categories (subset of categories not allowed).
 
 ```java
 tealiumInstance.getConsentManager().setUserConsentStatus(status);
 ```
 | Parameter | Type | Description | Example |
 | --- | --- | --- | --- |
-| `status` | `String` |Status to set the user&#39;s consent |  [`ConsentManager.ConsentStatus.CONSENTED`, `ConsentManager.ConsentStatus.NOT_CONSENTED`] |
+| `status` | `String` |Status to set the user's consent |  [`ConsentManager.ConsentStatus.CONSENTED`, `ConsentManager.ConsentStatus.NOT_CONSENTED`] |
 
 These static constants are the complete list of supported consent statuses.
 ```
@@ -172,7 +172,7 @@ tealiumInstance.getConsentManager().setUserConsentStatusWithCategories(status, c
 
 | Parameter | Type | Description  | Example |
 | --- | --- | --- | --- |
-| `status` | `String` |Status to set the user&#39;s consent | [`ConsentManager.ConsentStatus.CONSENTED`, `ConsentManager.ConsentStatus.NOT_CONSENTED`] |
+| `status` | `String` |Status to set the user's consent | [`ConsentManager.ConsentStatus.CONSENTED`, `ConsentManager.ConsentStatus.NOT_CONSENTED`] |
 | `categories` | `[String]` | Categories to set |  `new String[]{ConsentManager.ConsentCategory.ANALYTICS, ConsentManager.ConsentCategory.BIG_DATA}` |
 
 See `setUserConsentStatus()` and `setUserConsentCategories()` for a list of constant supported.

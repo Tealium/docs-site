@@ -11,13 +11,13 @@ url: https://docs.tealium.com/ja/server-side/visitor-search/
 
 訪問者検索を行うには、以下の手順に従ってください：
 
-1. **サーバーサイドツール &gt; 訪問者** **検索**に移動します。
+1. **サーバーサイドツール > 訪問者** **検索**に移動します。
 1. ドロップダウンリストから属性を選択します。
 1. 選択した属性の既知の値を入力します。
 1. **検索**をクリックします。  
 訪問者レコードが存在する場合、結果が表示されます。
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool.png)
 
 ### 訪問者レコードの表示
 
@@ -25,9 +25,9 @@ url: https://docs.tealium.com/ja/server-side/visitor-search/
 
 #### JSONオブジェクト
 
-メインパネルでは、訪問者レコードの生のJSONオブジェクトが表示されます。各属性データタイプはオブジェクト内のキーとして表されます。訪問者オブジェクトで利用可能なフィールドについての詳細は、[訪問者プライバシーAPIオブジェクト](/ja/api/v3/visitor-privacy/objects/)を参照してください。
+メインパネルでは、訪問者レコードの生のJSONオブジェクトが表示されます。各属性データタイプはオブジェクト内のキーとして表されます。訪問者オブジェクトで利用可能なフィールドについての詳細は、[訪問者プライバシーAPIオブジェクト](https://docs.tealium.com/ja/api/v3/visitor-privacy/objects/)を参照してください。
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool-jsonoject.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-jsonoject.png)
 
 #### 属性フィルター
 
@@ -35,7 +35,7 @@ url: https://docs.tealium.com/ja/server-side/visitor-search/
 
 | すべての属性をフィルター | 割り当てられた属性をフィルター |
 |---| ---|
-| ![](/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-audience-by-all-attributes.png) | ![](/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-by-assigned-attributes.png)|
+| ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-audience-by-all-attributes.png) | ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-filter-by-assigned-attributes.png)|
 
 ### 訪問者の削除
 
@@ -45,14 +45,22 @@ url: https://docs.tealium.com/ja/server-side/visitor-search/
 
 **訪問者削除**をクリックすると、訪問者レコードを削除するためのリクエストがシステムに記録され、リクエストを記録するトランザクションIDが返されます。削除リクエストは処理のためのキューに入ります。同じ訪問者を再検索してレコードが見つからない場合は、削除プロセスが完了したことを知ることができます。
 
- 訪問者レコードが削除されても、「オーディエンスを離れる」アクションはコネクタでトリガーされません。コネクタのオーディエンスアクションは、ルールが再評価され、訪問者のステータスがオーディエンスに含まれることから除外されるときにのみ実行されます。 
 
-トランザクションIDは、[訪問者検索API](/ja/api/v3/visitor-privacy/endpoints/)でリクエストの状態を確認するために使用できます。
+<blockquote>
+訪問者レコードが削除されても、「オーディエンスを離れる」アクションはコネクタでトリガーされません。コネクタのオーディエンスアクションは、ルールが再評価され、訪問者のステータスがオーディエンスに含まれることから除外されるときにのみ実行されます。
+</blockquote>
+
+
+
+<blockquote>
+トランザクションIDは、[訪問者検索API](https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/)でリクエストの状態を確認するために使用できます。
+</blockquote>
+
 
 ## REST API
 
-**REST API**タブは、[訪問者検索API](/ja/api/v3/visitor-privacy/endpoints/)へのインターフェースを提供します。API呼び出しは、アプリケーションで同じ機能を実装する方法の例として事前にフォーマットされています。行いたいAPI呼び出しを選択し、リクエストURLのプレースホルダー値を調整します。
+**REST API**タブは、[訪問者検索API](https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/)へのインターフェースを提供します。API呼び出しは、アプリケーションで同じ機能を実装する方法の例として事前にフォーマットされています。行いたいAPI呼び出しを選択し、リクエストURLのプレースホルダー値を調整します。
 
 各API呼び出しは、**リクエストタイプ**ドロップダウンリストで利用可能です。リクエストタイプを選択して、そのAPI呼び出しの詳細を表示します。
 
-![](/images/server-side/whiteui-audiencestream-visitorlookuptool-select-rest-api-request-type.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-visitorlookuptool-select-rest-api-request-type.png)

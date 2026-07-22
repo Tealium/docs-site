@@ -3,9 +3,13 @@ title: Trino cloud data source
 description: This article describes how to set up the Trino cloud data source.
 url: https://docs.tealium.com/administration/early-access/data-sources/trino-cloud-data-source/
 ---
- The Trino cloud data source is currently in Early Access and is available to select customers only. Contact Tealium Support to get started with Trino. 
 
-For a general overview of setting up a cloud data source, see .
+<blockquote>
+The Trino cloud data source is currently in Early Access and is available to select customers only. Contact Tealium Support to get started with Trino.
+</blockquote>
+
+
+For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## Data types
 
@@ -47,7 +51,7 @@ For a general overview, see .
 
 For Trino, note the following requirements:
 
-* **Timestamp &#43; Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP` or `TIMESTAMP WITH TIME ZONE`.  
+* **Timestamp + Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP` or `TIMESTAMP WITH TIME ZONE`.  
 For more information, see [Trino: Date and time types](https://trino.io/docs/current/language/types.html#date-and-time).
 * **Incrementing** query mode: The selected numeric column must increment in value for every row added and must be one of the integer types (SMALLINT, INTEGER, or BIGINT).
 

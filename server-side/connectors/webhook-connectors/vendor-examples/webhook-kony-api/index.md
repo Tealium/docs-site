@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/connectors/webhook-connectors/vendor-e
 ---
 ## Overview
 
-Submit an http request to Kony with a list of subscriber IDs and name &amp;amp; value pairs. Whole request body is a JSON message.
+Submit an http request to Kony with a list of subscriber IDs and name &amp; value pairs. Whole request body is a JSON message.
 
 ## Vendor requirements
 
@@ -13,59 +13,59 @@ Submit an http request to Kony with a list of subscriber IDs and name &amp;amp; 
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {
-                            &#34;ksid&#34;: &#34;95784&#34;
+                            "ksid": "95784"
                         },
                         {
-                            &#34;ksid&#34;: &#34;97899&#34;
+                            "ksid": "97899"
                         }
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {
-                                    &#34;name&#34;: &#34;trip_type&#34;,
-                                    &#34;content&#34;: &#34;o&#34;
+                                    "name": "trip_type",
+                                    "content": "o"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;o&#34;,
-                                    &#34;content&#34;: &#34;LAX&#34;
+                                    "name": "o",
+                                    "content": "LAX"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;d&#34;,
-                                    &#34;content&#34;: &#34;NRT&#34;
+                                    "name": "d",
+                                    "content": "NRT"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;dd&#34;,
-                                    &#34;content&#34;: &#34;2016-01-09&#34;
+                                    "name": "dd",
+                                    "content": "2016-01-09"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;rd&#34;,
-                                    &#34;content&#34;: &#34;2016-01-20&#34;
+                                    "name": "rd",
+                                    "content": "2016-01-20"
                                 }
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -76,7 +76,7 @@ Submit an http request to Kony with a list of subscriber IDs and name &amp;amp; 
 #### Notes
 
 * Subscribers array is dynamic and can contain one or more subscriber IDs.
-* &#34;customData&#34; key array is dynamic and can contain one or more name and content objects.
+* "customData" key array is dynamic and can contain one or more name and content objects.
 
 ## Action implementation
 
@@ -88,7 +88,11 @@ Set to `POST`.
 
 Set to PutsReq bucket URL.
 
+
+<blockquote>
 Consult Kony API documentation for a URL. A PutsReq URL is adequate to demonstrate a general implementation here.
+</blockquote>
+
 
 ### Body content type
 
@@ -112,32 +116,36 @@ Set name and value pairs to be referenced and replaced in templates.
 |`customData.name`| Kony Data Names| Set of Strings attribute|
 |`customData.content`| Kony Data Contents| Set of Strings attribute|
 
+
+<blockquote>
 Variables are internally translated to JSON and made available to all templates.
+</blockquote>
+
 
 #### Resulting JSON structure:
 
 ```json
 {
-    &#34;subscribers&#34;: [
+    "subscribers": [
         {
-            &#34;ksid&#34;: &#34;sub-id-1&#34;
+            "ksid": "sub-id-1"
         },
         {
-            &#34;ksid&#34;: &#34;sub-id-2&#34;
+            "ksid": "sub-id-2"
         }
     ],
-    &#34;customData&#34;: [
+    "customData": [
         {
-            &#34;name&#34;: &#34;name-1&#34;,
-            &#34;content&#34;: &#34;Content A&#34;
+            "name": "name-1",
+            "content": "Content A"
         },
         {
-            &#34;name&#34;: &#34;name-2&#34;,
-            &#34;content&#34;: &#34;Content B&#34;
+            "name": "name-2",
+            "content": "Content B"
         },
         {
-            &#34;name&#34;: &#34;name-3&#34;,
-            &#34;content&#34;: &#34;Content C&#34;
+            "name": "name-3",
+            "content": "Content C"
         }
     ]
 }
@@ -150,44 +158,44 @@ Variables are internally translated to JSON and made available to all templates.
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {{#subscribers}}
                         {
-                            &#34;ksid&#34;: &#34;{{ksid}}&#34;
+                            "ksid": "{{ksid}}"
                         }{{#iter.hasNext}}, {{/iter.hasNext}}
                         {{/subscribers}}
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {{#customData}}
                                 {
-                                    &#34;name&#34;: &#34;{{name}}&#34;,
-                                    &#34;content&#34;: &#34;{{content}}&#34;
+                                    "name": "{{name}}",
+                                    "content": "{{content}}"
                                 }{{#iter.hasNext}}, {{/iter.hasNext}}
                                 {{/customData}}
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -202,51 +210,51 @@ Internally template gets rendered and its content injected where referenced.
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {
-                            &#34;ksid&#34;: &#34;sub-id-1&#34;
+                            "ksid": "sub-id-1"
                         },
                         {
-                            &#34;ksid&#34;: &#34;sub-id-2&#34;
+                            "ksid": "sub-id-2"
                         }
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {
-                                    &#34;name&#34;: &#34;name-1&#34;,
-                                    &#34;content&#34;: &#34;Content A&#34;
+                                    "name": "name-1",
+                                    "content": "Content A"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;name-2&#34;,
-                                    &#34;content&#34;: &#34;Content B&#34;
+                                    "name": "name-2",
+                                    "content": "Content B"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;name-3&#34;,
-                                    &#34;content&#34;: &#34;Content C&#34;
+                                    "name": "name-3",
+                                    "content": "Content C"
                                 }
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -255,4 +263,4 @@ Internally template gets rendered and its content injected where referenced.
 
 ## Action configuration screenshot
 
-![](/images/server-side/example)
+![](https://docs.tealium.com/images/server-side/example)

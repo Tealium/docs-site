@@ -5,7 +5,7 @@ url: https://docs.tealium.com/guides/known-visitor-badge/
 ---
 ## How it works
 
-![](/images/server-side/badges-known-visitor.png)
+![](https://docs.tealium.com/images/server-side/badges-known-visitor.png)
 
 The `Known Visitor` badge is assigned when a visitor takes an action that provides a unique and reliable user identifier. Once created, this badge is commonly used to create audience segments to select visitors who can be targeted with a connector.
 
@@ -13,7 +13,7 @@ This approach simplifies audience rule management by centralizing the logic in o
 
 Badges can be combined to create more refined audience segments. For example, the following audience contains visitors that have the `Known Visitor` and `Cart Abandoner` badges and have provided an email address. This audience can be used to trigger a connector to send an email to remind visitors about items left in their cart:
 
-![](/images/guides/server-side/known-visitor-purchaser-abandoned.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-purchaser-abandoned.png)
 
 ## Benefit
 
@@ -31,7 +31,7 @@ These events provide opportunities to collect reliable identifiers that can be u
 * **Loyalty program enrollment**: When a visitor signs up for a loyalty or rewards program, they usually provide personal details like an email address or membership ID.
 * **Customer support interaction**: During live chat sessions, support tickets, or phone calls, visitor often provide identifiers like email addresses or phone numbers to verify their identity.
 
-For more information about user identifiers, see [User identifiers]().
+For more information about user identifiers, see [User identifiers](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#user-identifiers).
 
 ## Scenarios
  
@@ -41,7 +41,7 @@ The following examples highlight audience segments where the `Known Visitor` bad
 
 The `Known Visitor` badge enables direct and personalized communication for more effective retargeting of cart abandoners.
 
-![](/images/guides/server-side/known-visitor-cart-abandoner-email.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-cart-abandoner-email.png)
 
 * **Known Visitors**: Visitors who have abandoned their cart and have provided an email address. This segment can be targeted with personalized email reminders about the items left in their cart, potentially including discounts or incentives to complete the purchase.
 * **Unknown Visitors**: Visitors who have abandoned their cart but have not provided an email address. This segment can only be retargeted through less personalized methods, such as display ads or on-site reminders.
@@ -50,7 +50,7 @@ The `Known Visitor` badge enables direct and personalized communication for more
 
 The `Known Visitor` badge allows for tailored loyalty campaigns that build stronger customer relationships.
 
-![](/images/guides/server-side/known-visitor-purchased-email.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-purchased-email.png)
 
 * **Known Visitors**: Visitors who have made multiple purchases and have an email address or account. This segment can be targeted with loyalty rewards, exclusive offers, or VIP programs.
 * **Unknown Visitors**: Visitors who have made multiple purchases but have not provided identifiable information. This segment can only be targeted with general promotions or on-site messaging.

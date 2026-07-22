@@ -3,7 +3,7 @@ title: Moments iQ Expertise with AudienceStream example
 description: This article provides an example of a Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
 url: https://docs.tealium.com/iq-tag-management/moments-iq/audiencestream-example/
 ---
-In the following example, we embed an experience on an electronics site to ask the visitor about their level of expertise. The visitor&#39;s response is then enriched in their visitor profile. This helps determine their familiarity with the product line, which can be used to personalize recommendations for additional services and products, such as home installation services, speaker cables, or extended warranties.
+In the following example, we embed an experience on an electronics site to ask the visitor about their level of expertise. The visitor's response is then enriched in their visitor profile. This helps determine their familiarity with the product line, which can be used to personalize recommendations for additional services and products, such as home installation services, speaker cables, or extended warranties.
 
 ## Requirements
 
@@ -11,13 +11,13 @@ This example requires the following:
 
 * Moments iQ.
 * Tealium AudienceStream.
-* The most recent version of the [Tealium Collect tag]().
+* The most recent version of the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 ## Step 1: Create tag
 
 The following experience appears on the home page.
 
-[Create a Moments iQ experience]() for the first engagement with the visitor by adding a Tealium Moments iQ tag with the following properties:
+[Create a Moments iQ experience](https://docs.tealium.com/manage-moments-iq/#create-a-moments-iq-tag) for the first engagement with the visitor by adding a Tealium Moments iQ tag with the following properties:
 
 * **Title**: `Visitor expertise`
 * **Experience Placement**: `Center`
@@ -40,9 +40,9 @@ To load the experience only on the home page, create the following rule:
 [
   [
     {
-      &#34;input&#34;: &#34;js.page_type&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;home&#34;
+      "input": "js.page_type",
+      "operator": "equals (ignore case)",
+      "filter": "home"
     }
   ] 
 ]
@@ -67,12 +67,12 @@ Update the rule for the `Customer_Expertise` visit attribute to check if `moment
 
 In this example, the tag UID is `123`:
 
-![](/images/early-access/moments-iq/moments-iq-expertise-conditions.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/moments-iq-expertise-conditions.png)
 
 ## Results
 
 When the visitor loads the home page, the experience is embedded at the beginning of the `div.col-main` element.
 
-![](/images/moments-iq/momentsiq-example-home-theater.png)
+![](https://docs.tealium.com/images/moments-iq/momentsiq-example-home-theater.png)
 
 When the customer answers the question, their answer is stored in their visitor profile and they are assigned a badge based on their expertise level.

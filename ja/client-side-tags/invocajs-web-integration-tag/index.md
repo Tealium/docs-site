@@ -10,12 +10,16 @@ url: https://docs.tealium.com/ja/client-side-tags/invocajs-web-integration-tag/
   * マーケティングデータフィールドを追加するために、Invocaの担当者に連絡してください。
   * マーケティングデータフィールド名はデータマッピングと一致する必要はありません。
   * データソースタイプは次のようになります：**JavaScriptデータレイヤー**
-  * データソース名は次のようになります：`localStorage.getItem(&#34;inv_TEALIUM_MAPPING&#34;)`  
+  * データソース名は次のようになります：`localStorage.getItem("inv_TEALIUM_MAPPING")`  
+
+<blockquote>
 `TEALIUM_MAPPING`はあなたのカスタムデータマッピングの名前と一致する必要があります。
+</blockquote>
+
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要]()の記事を読んでください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際、以下の構成を構成します：
 
@@ -27,4 +31,4 @@ url: https://docs.tealium.com/ja/client-side-tags/invocajs-web-integration-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。

@@ -11,7 +11,7 @@ Before you add OAuth 2.0 authentication, open your OAuth API provider settings i
 
 1. After you create a function, click the **Advanced** tab.
 1. Click **Assign Authentications**.
-1. Click **&#43;Add Authentication**, then select **OAuth 2.0**, and click **Continue**.
+1. Click **+Add Authentication**, then select **OAuth 2.0**, and click **Continue**.
 1. Select the **Grant Type**.
 1. Enter a **Name** for the access token, and click **Next**.  
 A unique access token name for the function is generated based on the specified **Name**.
@@ -37,7 +37,7 @@ To establish a connection using the authorization code grant type, use the follo
 1. Click **Establish Connection**.  
 
 If the connection was established, a message similar to the following is displayed:  
-    ![](/images/server-side/connectionestablishedmsg.png)  
+    ![](https://docs.tealium.com/images/server-side/connectionestablishedmsg.png)  
     If the connection could not be established, the message includes information on the reason. Update your configuration to correct the problem and try again.
 1. Click **Finish**.
 
@@ -57,7 +57,7 @@ To establish a connection using the client credential grant type, use the follow
 1. Click **Test Connection**.  
 
 If the connection was established, a message similar to the following is displayed:  
-      ![](/images/server-side/connectionestablishedmsg.png)  
+      ![](https://docs.tealium.com/images/server-side/connectionestablishedmsg.png)  
       If the connection could not be established, the message includes information on the reason. Update your configuration to correct the problem and try again.
 1. Click **Finish**.
 
@@ -76,6 +76,6 @@ To establish a connection using the user password grant type, use the following 
 
 1. Click **Test Connection**.  
 If the connection was established, a message similar to the following is displayed:  
-      ![](/images/server-side/connectionestablishedmsg.png)  
+      ![](https://docs.tealium.com/images/server-side/connectionestablishedmsg.png)  
       If the connection could not be established, the message includes information on the reason. Update your configuration to correct the problem and try again.
 1. Click **Finish**.

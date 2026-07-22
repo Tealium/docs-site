@@ -18,7 +18,7 @@ Kochava enables people-based marketers to establish and enrich user identities, 
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Kochava tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the Kochava tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -30,7 +30,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -62,7 +62,7 @@ The available categories are:
 |Start Trial| `starttrial`|
 |Subscribe| `subscribe`|
 |View| `view`|
-|QSS. (Quality Steaming Session &amp;gt;5mins)| `qss`|
+|QSS. (Quality Steaming Session &gt;5mins)| `qss`|
 |First_Video_View| `first_video_view`|
 |Share_with_friend| `share_with_friend`|
 |Authentication_Success| `authentication_success`|
@@ -138,7 +138,7 @@ The available categories are:
 |Start Trial| `starttrial`|
 |Subscribe| `subscribe`|
 |View| `view`|
-|QSS. (Quality Steaming Session &amp;gt;5mins)| `qss`|
+|QSS. (Quality Steaming Session &gt;5mins)| `qss`|
 |First_Video_View| `first_video_view`|
 |Share_with_friend| `share_with_friend`|
 |Authentication_Success| `authentication_success`|

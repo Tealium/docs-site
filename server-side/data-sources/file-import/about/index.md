@@ -8,7 +8,11 @@ url: https://docs.tealium.com/server-side/data-sources/file-import/about/
 * Tealium AudienceStream CDP **OR**
 * Tealium EventStream API Hub
 
-To be successfully imported, you must format your CSV files correctly. For information on file and data formats, see [Prepare a CSV file for import]().
+
+<blockquote>
+To be successfully imported, you must format your CSV files correctly. For information on file and data formats, see [Prepare a CSV file for import](https://docs.tealium.com/prepare-a-csv-file-for-import/).
+</blockquote>
+
 
 ## How it works
 
@@ -20,19 +24,19 @@ File import is a batched ingestion process for historical data and is not intend
 File rows are processed at a variable rate based on the regional load in our multi-tenant environment, but most files are processed within 24 hours. 
 
 For real-time processing of large volumes of event data, use any of the following:
-* [HTTP API]()
-* [Advanced HTTP API]()
+* [HTTP API](https://docs.tealium.com/endpoint-spec/)
+* [Advanced HTTP API](https://docs.tealium.com/http-api-advanced-incoming-webhook-setup-guide/)
 
 ### Events
 
-In the default Tealium [data collection order of operations](), events from a file import data source are processed before the _Event received_ step and do not change the order of operations.
+In the default Tealium [data collection order of operations](https://docs.tealium.com/server-side-order-of-operations/), events from a file import data source are processed before the _Event received_ step and do not change the order of operations.
 
 File import events are sent to EventStream and AudienceStream in the same way as events from other data sources with the following important exceptions:
 
 * **Browser-specific attributes**: Browser-specific attributes, such as user agent, are not populated.
 * **Enrichments**: Enrichments on pre-loaded attributes in AudienceStream are not run, except the **First Visit** pre-loaded attribute.
 * **Functions**: Data transformation functions are not run.
-* **Single-page visits**: Incoming events are exempt from the single-page visit/visitors criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information about single-page visits/visitors, see [How are single-page visits processed in AudienceStream?]() (requires Tealium login).
+* **Single-page visits**: Incoming events are exempt from the single-page visit/visitors criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information about single-page visits/visitors, see [How are single-page visits processed in AudienceStream?](https://docs.tealium.com/single-event-visitor/) (requires Tealium login).
 * **Visit length**: A visit started by a file import event lasts for 60 seconds.
 * **Visitor ID mapping**: If you map an AudienceStream visitor ID attribute in your file import data source configuration, the visitor ID is set directly to the value of the column you choose.
 
@@ -47,7 +51,11 @@ Additionally, you can use the following event attributes with incoming data from
 There are two steps in setting up a file import as a data source:
 
 1. **Column mapping and file transfer service configuration**  
-To set up a file import data source, map columns from your CSV file to event attributes in Tealium and select a file transfer service. To assist with column mapping, upload a sample CSV file with your column labels and up to 1,000 rows of data.
+To set up a file import data source, map columns from your CSV file to event attributes in Tealium and select a file transfer service. 
+<blockquote>
+To assist with column mapping, upload a sample CSV file with your column labels and up to 1,000 rows of data.
+</blockquote>
+
 1. **Upload files to your file transfer service**  
 After you set up your data source, upload your CSV files to your file service. File uploading is done outside of Tealium.
 
@@ -61,29 +69,29 @@ Mappings can be configured based on an existing event specification or as a cust
 
 #### Event specification mapping
 
-Each row of the CSV file is processed as an event. When you select an event specification mapping, event attributes are pre-selected in the **Column Mapping** table. Each row is processed as an event of the selected specification, for example `tealium_event = &#34;purchase&#34;`.
+Each row of the CSV file is processed as an event. When you select an event specification mapping, event attributes are pre-selected in the **Column Mapping** table. Each row is processed as an event of the selected specification, for example `tealium_event = "purchase"`.
 
 #### Custom mapping
 
 If you select a custom event mapping, specify the event attribute that corresponds to each CSV column. Each row is processed as an event with the following event identifier:
 
-`tealium_event = &#34;imported&#34;`
+`tealium_event = "imported"`
 
 #### Visitor ID mapping
 
 To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in a file import source file has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
 
-For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources]().
+For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources](https://docs.tealium.com/visitor-identification-data-sources/).
 
 ### File transfer service
 
 The file transfer service is a secure location where you upload the files to be imported. Tealium supports the following file transfer services:
 
 * Amazon S3
-  * [AWS S3 bucket]()
-  * [Tealium S3 bucket]()  
-* [Microsoft Azure File/Blob Storage]()
-* [SFTP]()
+  * [AWS S3 bucket](https://docs.tealium.com/aws-s3/)
+  * [Tealium S3 bucket](https://docs.tealium.com/tealium-s3/)  
+* [Microsoft Azure File/Blob Storage](https://docs.tealium.com/azure/)
+* [SFTP](https://docs.tealium.com/sftp/)
 
 #### Tealium S3 file retention
 
@@ -105,5 +113,9 @@ When a new file is detected, it is copied from the file transfer location and pr
 The prefix of the filename is used to identify which file import data source to use when importing the data in the file.
 1. **Process files**  
 The header line is read to identify the attributes being imported. After reading the header line, the following processing is performed:
-    1. **Visitor lookup** — The visitor ID is used to look up the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. Grouping rows with the same visitor ID decreases the import time.
+    1. **Visitor lookup** — The visitor ID is used to look up the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. 
+<blockquote>
+Grouping rows with the same visitor ID decreases the import time.
+</blockquote>
+
     1. **Attribute enrichment** - The visitor record is enriched according to the attributes imported and the existing enrichments in your account.

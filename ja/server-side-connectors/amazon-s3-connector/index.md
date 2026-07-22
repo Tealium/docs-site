@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-s3-connector/
 ---
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * リクエストの最大数：100,000
 * 最も古いリクエストからの最大時間：10分
@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-s3-connector/
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -45,7 +45,11 @@ Tealium は、バケットのリストを表示し、イベントおよびオー
 * アクセスキーとアクセスシークレットを提供します。
 * STS（セキュリティトークンサービス）の資格情報を提供します。
 
- S3 オブジェクトが暗号化されている場合、IAM ユーザーと KMS キーポリシーに復号化許可を追加する必要があります。 
+
+<blockquote>
+S3 オブジェクトが暗号化されている場合、IAM ユーザーと KMS キーポリシーに復号化許可を追加する必要があります。
+</blockquote>
+
 
 #### アクセスキーとシークレットの資格情報
 
@@ -59,30 +63,30 @@ AWS アクセスキーとシークレットを見つけるには：
     1. `AmazonS3FullAccess` ポリシーを検索してアタッチします。特定のバケットへのアクセスを制限する場合は、以下の例のようなポリシーを作成します。例では、`YOUR_BUCKET_NAME` は Tealium がイベントおよびオーディエンスデータを S3 オブジェクトにアップロードするために使用するバケットです：
     ```json
     {
-      &#34;Version&#34;: &#34;2012-10-17&#34;,
-      &#34;Statement&#34;: [
+      "Version": "2012-10-17",
+      "Statement": [
           {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                   &#34;s3:ListBucket&#34;,
-                    &#34;s3:PutObject&#34;,
-                    &#34;s3:GetObject&#34;,
-                    &#34;s3:ListBucketMultipartUploads&#34;,
-                    &#34;s3:ListMultipartUploadParts&#34;
+                "Effect": "Allow",
+                "Action": [
+                   "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:ListBucketMultipartUploads",
+                    "s3:ListMultipartUploadParts"
                 ],
-                &#34;Resource&#34;: [
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Resource": [
+                    "arn:aws:s3:::YOUR_BUCKET_NAME",
+                    "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                 ]
             },
             // プライベートクラウドで実行している場合、復号化が必要な場合は次のセクションを追加します
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                     &#34;kms:Decrypt&#34;,
-                     &#34;kms:GenerateDataKey&#34;
+                "Effect": "Allow",
+                "Action": [
+                     "kms:Decrypt",
+                     "kms:GenerateDataKey"
                 ],
-                 &#34;Resource&#34;: &#34;arn:aws:kms:YOUR_REGION:111879511226:key/YOUR_KEY_ID&#34;
+                 "Resource": "arn:aws:kms:YOUR_REGION:111879511226:key/YOUR_KEY_ID"
            }
         ]
     }
@@ -93,16 +97,16 @@ AWS アクセスキーとシークレットを見つけるには：
     1. プライベートクラウド環境を使用している場合は、キーポリシーに次のようなステートメントを追加します：
     ```
     {
-        &#34;Sid&#34;: &#34;AllowDecryptFromIAMUser&#34;,
-        &#34;Effect&#34;: &#34;Allow&#34;,
-        &#34;Principal&#34;: {
-            &#34;AWS&#34;: &#34;arn:aws:iam::&lt;&lt;account-id&gt;&gt;:user/&lt;&lt;user-name&gt;&gt;&#34;
+        "Sid": "AllowDecryptFromIAMUser",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "arn:aws:iam::<<account-id>>:user/<<user-name>>"
         },
-        &#34;Action&#34;: [
-            &#34;kms:Decrypt&#34;,
-            &#34;kms:GenerateDataKey&#34;
+        "Action": [
+            "kms:Decrypt",
+            "kms:GenerateDataKey"
         ],
-        &#34;Resource&#34;: &#34;*&#34;
+        "Resource": "*"
     }
     ```
 #### STS認証情報
@@ -122,30 +126,30 @@ STS認証情報を見つけるには：
     1. `AmazonS3FullAccess`ポリシーを検索してアタッチし、フルアクセスを許可します。特定のバケットへのアクセスを制限する場合は、以下の例のようなポリシーを作成します。例では、`YOUR_BUCKET_NAME`はTealiumがS3オブジェクトにイベントデータとオーディエンスデータをアップロードするバケットです：
     ```json
     {
-        &#34;Version&#34;: &#34;2012-10-17&#34;,
-        &#34;Statement&#34;: [
+        "Version": "2012-10-17",
+        "Statement": [
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Action&#34;: [
-                    &#34;s3:ListBucket&#34;,
-                    &#34;s3:PutObject&#34;,
-                    &#34;s3:GetObject&#34;,
-                    &#34;s3:ListBucketMultipartUploads&#34;,
-                    &#34;s3:ListMultipartUploadParts&#34;
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:ListBucketMultipartUploads",
+                    "s3:ListMultipartUploadParts"
                 ],
-                &#34;Resource&#34;: [
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;,
-                    &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Resource": [
+                    "arn:aws:s3:::YOUR_BUCKET_NAME",
+                    "arn:aws:s3:::YOUR_BUCKET_NAME/*"
                 ]
             },
             // プライベートクラウドで実行していて復号が必要な場合は、以下のセクションを追加してください
             {
-                &#34;Effect&#34;: &#34;Allow&#34;,
-                &#34;Principal&#34;: {
-                &#34;AWS&#34;: &#34;arn:aws:iam::111879511226:user/YOUR_USER_NAME&#34;
+                "Effect": "Allow",
+                "Principal": {
+                "AWS": "arn:aws:iam::111879511226:user/YOUR_USER_NAME"
              },
-                &#34;Action&#34;: &#34;s3:GetObject&#34;,
-                &#34;Resource&#34;: &#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
             }
         ]
     }
@@ -156,17 +160,17 @@ STS認証情報を見つけるには：
     1. Tealiumへの接続のための`EXTERNAL_ID`値を構成します。IDは256文字までで、英数字（`A-Z`, `a-z`, `0-9`）やハイフン（`-`）、アンダースコア（`_`）、ピリオド（`.`）などの記号を含むことができます。
     ```json
         {
-            &#34;Version&#34;: &#34;2012-10-17&#34;,
-            &#34;Statement&#34;: [
+            "Version": "2012-10-17",
+            "Statement": [
                 {
-                    &#34;Effect&#34;: &#34;Allow&#34;,
-                    &#34;Principal&#34;: {
-                        &#34;AWS&#34;: &#34;arn:aws:iam::757913464184:root&#34;
+                    "Effect": "Allow",
+                    "Principal": {
+                        "AWS": "arn:aws:iam::757913464184:root"
                     },
-                    &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
-                    &#34;Condition&#34;: {
-                        &#34;StringEquals&#34;: {
-                            &#34;sts:ExternalId&#34;: &#34;EXTERNAL_ID&#34;
+                    "Action": "sts:AssumeRole",
+                    "Condition": {
+                        "StringEquals": {
+                            "sts:ExternalId": "EXTERNAL_ID"
                         }
                     }
                 }
@@ -206,7 +210,7 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | バケット | Amazon S3バケットを選択するか、カスタム値を提供します。 |
 | ファイルパス | データを追加するS3オブジェクトのパスを指定します。 |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択します。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルが上書きされるのを防ぎます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしての区切り文字。&lt;/li&gt;&lt;li&gt;デフォルトは`Newline`です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは`Newline`と`No Delimiter`です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは`Newline`です。</li><li>利用可能なオプションは`Newline`と`No Delimiter`です。</li></ul> |
 | 属性名の印刷 | デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。属性名が更新されるとペイロード名も反映されることに注意してください。 |
 | バッチの有効期限 | バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。`1`から`60`分の間で値を入力します。デフォルト値は`10`分です。 |
 
@@ -225,10 +229,10 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | --- | --- |
 | イベント属性 | イベント属性とベンダーパラメータ間のカスタムマッピングを定義します。 |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択します。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルが上書きされるのを防ぎます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしての区切り文字。&lt;/li&gt;&lt;li&gt;デフォルトは`Newline`です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは`Newline`と`No Delimiter`です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは`Newline`です。</li><li>利用可能なオプションは`Newline`と`No Delimiter`です。</li></ul> |
 | バッチの有効期限 | バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。`1`から`60`分の間で値を入力します。デフォルト値は`10`分です。 |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;**テンプレート**用のデータ入力としてテンプレート変数を提供します。使用例や詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数に名前を付けます。例：`items.name.`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;イベントパラメータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt;|
+| テンプレート変数 | <ul><li>**テンプレート**用のデータ入力としてテンプレート変数を提供します。使用例や詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数に名前を付けます。例：`items.name.`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | <ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。</li></ul>|
 
 ### すべての訪問データを送信
 #### パラメータ
@@ -238,7 +242,7 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | バケット | Amazon S3バケットを選択するか、カスタム値を入力してください。 |
 | ファイルパス | データを追加するS3オブジェクトのパスを指定してください。 |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルの上書きが防止されます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしてのデリミタ。&lt;/li&gt;&lt;li&gt;デフォルトは `Newline` です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは `Newline` と `No Delimiter` です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは `Newline` です。</li><li>利用可能なオプションは `Newline` と `No Delimiter` です。</li></ul> |
 | 属性名の印刷 | デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。 |
 | バッチの有効期限 | バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。`1`から`60`分の間で値を入力してください。デフォルト値は`10`分です。 |
 | すべての訪問イベントを含む | 現在の訪問データを訪問データに含めるために選択してください。 |
@@ -257,10 +261,10 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | **パラメータ** | **説明** |
 | --- | --- |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルの上書きが防止されます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしてのデリミタ。&lt;/li&gt;&lt;li&gt;デフォルトは `Newline` です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは `Newline` と `No Delimiter` です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは `Newline` です。</li><li>利用可能なオプションは `Newline` と `No Delimiter` です。</li></ul> |
 | バッチの有効期限 | バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。`1`から`60`分の間で値を入力してください。デフォルト値は`10`分です。 |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;**テンプレート**用のデータ入力としてテンプレート変数を提供します。詳細と使用例については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name.`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;イベントパラメータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt;|
+| テンプレート変数 | <ul><li>**テンプレート**用のデータ入力としてテンプレート変数を提供します。詳細と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name.`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | <ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。</li></ul>|
 
 ### ログイベントの送信
 
@@ -277,10 +281,10 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | --- | --- |
 | イベント属性 | イベント属性とベンダーパラメータ間のカスタムマッピングを定義します。 |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルの上書きが防止されます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしてのデリミタ。&lt;/li&gt;&lt;li&gt;デフォルトは `Newline` です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは `Newline` と `No Delimiter` です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは `Newline` です。</li><li>利用可能なオプションは `Newline` と `No Delimiter` です。</li></ul> |
 | バッチの有効期限 | バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。`1`から`60`分の間で値を入力してください。デフォルト値は`10`分です。 |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;**テンプレート**用のデータ入力としてテンプレート変数を提供します。詳細と使用例については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name.`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;イベントパラメータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt;|
+| テンプレート変数 | <ul><li>**テンプレート**用のデータ入力としてテンプレート変数を提供します。詳細と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name.`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | <ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。</li></ul>|
 
 ### ログイベント全体の送信
 
@@ -291,4 +295,4 @@ S3バケットはAWS S3内の保存コンテナで、データの保存と整理
 | バケット | Amazon S3バケットを選択するか、カスタム値を入力してください。 |
 | ファイルパス | データを追加するS3オブジェクトのパスを指定してください。 |
 | ファイルパスサフィックス | 現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。これにより、各イベントごとにユニークなファイルが作成され、既存のファイルの上書きが防止されます。複数のサフィックス値を入力する場合、それらはアンダースコアで区切られます。 |
-| レコードサフィックス | &lt;ul&gt;&lt;li&gt;各レコードの末尾に追加するサフィックスとしてのデリミタ。&lt;/li&gt;&lt;li&gt;デフォルトは `Newline` です。&lt;/li&gt;&lt;li&gt;利用可能なオプションは `Newline` と `No Delimiter` です。&lt;/li&gt;&lt;/ul&gt; |
+| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは `Newline` です。</li><li>利用可能なオプションは `Newline` と `No Delimiter` です。</li></ul> |

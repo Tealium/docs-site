@@ -9,7 +9,7 @@ The Snapchat Conversions connector uses the Snap Conversions API. The Snap Conve
 
 Snap Conversions API can be deployed standalone or in-conjunction with the client-side Snap Pixel.
 
-For more information about Snap&#39;s Conversions API, see [Snap: Conversion API](https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US).
+For more information about Snap's Conversions API, see [Snap: Conversion API](https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US).
 
 ## API Information
 
@@ -27,7 +27,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2000
 * Max time since oldest request: 10 minutes
@@ -60,7 +60,11 @@ For more information, see [Snap: Best Practices - Deduplication](https://develop
 
 #### Automatic deduplication
 
- In version 3, the connector uses **Event ID** for deduplication instead of **Client Dedup ID**. 
+
+<blockquote>
+In version 3, the connector uses **Event ID** for deduplication instead of **Client Dedup ID**.
+</blockquote>
+
 
 When the **Automatic Deduplication** value is populated with a Tealium iQ tag UID, the connector looks for the corresponding event attribute. If this section is populated and you are using Tealium iQ, you are no longer required to add an **Event ID**. However, the following approach may still be needed when using EventStream without Tealium iQ.
 
@@ -68,11 +72,11 @@ The connector order of operations is as follows:
 
 * If **Automatic Deduplication** is populated, and the value is found in the data layer, (for example, `6V5xX1T0n9pC42luElKD`) this value supersedes anything mapped in **Event ID**.
 * If **Automatic Deduplication** is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, `6V5xX1T0n9pC42luElKD`).
-* If **Automatic Deduplication** is populated, but the value isn&#39;t found, the mapped **Event ID** is used, if it is populated.
+* If **Automatic Deduplication** is populated, but the value isn't found, the mapped **Event ID** is used, if it is populated.
 
-You can find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/snap-pixel-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/snap-pixel-uid.png)
 
 ## Connector Actions
 
@@ -82,7 +86,7 @@ You can find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag deta
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. See the [Connector Overview]() for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. See the [Connector Overview](https://docs.tealium.com/about-connectors/) for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -179,14 +183,14 @@ This section describes how to set up parameters and options for each action.
 | Download ID | The ID associated with an app download event |
 | Click ID | The value of the `ScCid` query string parameter from the landing page URL. Using this ID improves ad measurement performance. We encourage advertisers using **Click ID** to pass the full destination URL to **Event Source URL**. For more information, see [Snap: Sending a Click ID](https://developers.snap.com/api/marketing-api/Conversions-API/UsingTheAPI#sending-click-id). This parameter is automapped. To override the automapping, map an attribute or disable automapping.  |
 | Cookie1 | If you are using the Pixel SDK, you can access a first-party cookie by looking at the `_scid` value under your domain. This parameter is automapped. To override the automapping, map an attribute or disable automapping. |
-| Client User Agent | The user agent string of the user&#39;s web browser. This parameter is automapped. To override the automapping, map an attribute or disable automapping. |
+| Client User Agent | The user agent string of the user's web browser. This parameter is automapped. To override the automapping, map an attribute or disable automapping. |
 
 
 #### Dynamic Travel Ads
 
 | Parameter | Description |
 | --- | --- |
-| Checkin Date | The hotel check-in date in the hotel&#39;s time-zone. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD` and `YYYY-MM-DDThh:mm:ssTZD`. |
+| Checkin Date | The hotel check-in date in the hotel's time-zone. Accepted formats are `YYYYMMDD`, `YYYY-MM-DD`, `YYYY-MM-DDThh:mmTZD` and `YYYY-MM-DDThh:mm:ssTZD`. |
 | Travel End | End date of travel. |
 | Travel Start | Start date of travel. |
 | Suggested Destinations | The suggested destinations. |
@@ -202,11 +206,11 @@ This section describes how to set up parameters and options for each action.
 | Returning Departure Date | The starting date and time of the return journey. |
 | Returning Arrival Date | The date and time when the return journey is complete. |
 | Number of Children | The number of children staying. |
-| Hotel Score | The hotel&#39;s score, relative to other hotels to an advertiser. |
+| Hotel Score | The hotel's score, relative to other hotels to an advertiser. |
 | Postal Code | The postal or ZIP code. |
 | Number of Infants | The number of infants staying. |
 | Preferred Neighborhoods | Any preferred neighborhoods for the stay. |
-| Preferred Star Ratings | The minimum and maximum hotel star rating supplied as a tuple. For example, `star1,star2` or `[&#34;star1&#34;, &#34;star2&#34;]`. |
+| Preferred Star Ratings | The minimum and maximum hotel star rating supplied as a tuple. For example, `star1,star2` or `["star1", "star2"]`. |
 | Suggested Hotels | The suggested hotels. |
 | Destination IDs | The ID representative of the destination in the catalog. |
 

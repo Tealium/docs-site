@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/moments-api/iq-implementation-example/
 
 Moments API creates a unique endpoint that you can integrate into your websites or applications.
 
-Complete the following steps to implement Moments API into your Tealium workflow using the [Tealium iQ Advanced JavaScript Code Extension](). The following example uses Fetch API to request the visitor’s data from the Moments API, but other JavaScript options, such as `XMLHttpRequest`, are also supported. 
+Complete the following steps to implement Moments API into your Tealium workflow using the [Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/). The following example uses Fetch API to request the visitor’s data from the Moments API, but other JavaScript options, such as `XMLHttpRequest`, are also supported. 
 
 ## Step 1: Get the visitor ID
 
@@ -19,57 +19,61 @@ Copy the following code, depending on your version of `utag.js`, into the extens
 * **Scope**: Pre Loader
 * **Type**: Advanced JavaScript
 
-### `utag.js` 4.50&#43; 
+### `utag.js` 4.50+ 
 
+
+<blockquote>
 If you use the `split_cookie=false` option, use the [`utag.js` 4.49 and below](#utag-js-4-49-and-below) code examples.
+</blockquote>
+
 
 ```js
 read_utag_cookies = function() {
-  if(!document.cookie || document.cookie === &#34;&#34;) {
+  if(!document.cookie || document.cookie === "") {
     return {};
   }
-  var cookies = document.cookie.split(&#34;; &#34;);
+  var cookies = document.cookie.split("; ");
   return cookies.reduce(function(result, cookie) {
-    var kv = cookie.split(&#34;=&#34;);
-    if(kv[0].startsWith(&#34;utag_&#34;)) {
-      var cookie_name = kv[0].split(&#34;_&#34;)[1];
-      var cookie_name_with_tag = &#34;utag_&#34; &#43; cookie_name;
-      var name_trimmed = kv[0].replace(cookie_name_with_tag&#43;&#34;_&#34;, &#34;&#34;);
-      result[name_trimmed] = String(kv[1]).replace(/%3b/g, &#39;;&#39;)
+    var kv = cookie.split("=");
+    if(kv[0].startsWith("utag_")) {
+      var cookie_name = kv[0].split("_")[1];
+      var cookie_name_with_tag = "utag_" + cookie_name;
+      var name_trimmed = kv[0].replace(cookie_name_with_tag+"_", "");
+      result[name_trimmed] = String(kv[1]).replace(https://docs.tealium.com/%3b/g, ';')
     }
     return result;
   }, {});
 }
 var utag_cookies = read_utag_cookies();
 //save the Tealium Visitor ID in memory
-var moments_identifier = utag_cookies[&#34;v_id&#34;] || null
+var moments_identifier = utag_cookies["v_id"] || null
 ```
 
 ### `utag.js` 4.49 and below {#utag-js-4-49-and-below}
 
 ```js
 function getCookie(cname) {
-    let name = cname &#43; &#34;=&#34;;
+    let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(&#39;;&#39;);
-    for (let i = 0; i &lt; ca.length; i&#43;&#43;) {
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) == &#39; &#39;) {
+        while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
             return c.substring(name.length, c.length);
         }
     }
-    return &#34;&#34;;
+    return "";
 }
 
 // Extracting the visitor ID from the utag_main cookie
-var utag_cookie = getCookie(&#34;utag_main&#34;);
+var utag_cookie = getCookie("utag_main");
 
 //save the Tealium Visitor ID in memory
 
-var moments_identifier = utag_cookie.split(&#34;v_id:&#34;)[1].split(&#34;$&#34;)[0] || &#34;&#34;;
+var moments_identifier = utag_cookie.split("v_id:")[1].split("$")[0] || "";
 ```
 
 ## Step 2: Call Moments API
@@ -78,7 +82,11 @@ Request the Moments API endpoint and store the response data in local storage to
 
 Add the following template code to another Advanced JavaScript extension and update it according to your account and target engine. The code maps the `moments_identifier` variable assigned in the previous extension to the identifier parameter of the API’s URL endpoint. 
 
-Ensure this code loads after the previous JavaScript extension according to the [Order of Operations](). 
+
+<blockquote>
+Ensure this code loads after the previous JavaScript extension according to the [Order of Operations](https://docs.tealium.com/order-of-operations/).
+</blockquote>
+
 
 * **Title**: [Moments API]
 * **Scope**: Pre Loader
@@ -86,7 +94,7 @@ Ensure this code loads after the previous JavaScript extension according to the 
 
 ```js
 // Assign the engine ID you want to request 
-var engine_id = &#34;your_engine_id&#34;; 
+var engine_id = "your_engine_id"; 
 
 
 // suppressNotFound is an optional parameter 
@@ -98,18 +106,18 @@ var engine_id = &#34;your_engine_id&#34;;
 // This example does not include optional parameters
 // Add optional parameters, if required
 
-var apiUrl = &#34;MOMENTS_API_ENDPOINT_URL&#34; &#43; moments_identifier;
+var apiUrl = "MOMENTS_API_ENDPOINT_URL" + moments_identifier;
 
-// Example: &#34;https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/&#34; &#43; &#34;0123456789&#34;
+// Example: "https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/" + "0123456789"
 
 // Add function for writing the Moments API response to localStorage
 function writeToLocalStorage(obj, engineId) {
     // Prefix for localStorage keys
-    const prefix = &#39;moments_&#39; &#43; engineId &#43; &#39;_&#39;;
+    const prefix = 'moments_' + engineId + '_';
 
     // Function to save an object property to localStorage
-    const saveToLocalStorage = (key, value) =&gt; {
-        localStorage.setItem(prefix &#43; key, JSON.stringify(value));
+    const saveToLocalStorage = (key, value) => {
+        localStorage.setItem(prefix + key, JSON.stringify(value));
     };
 
     // Loop through each top-level property in the object
@@ -124,13 +132,13 @@ function writeToLocalStorage(obj, engineId) {
 // Fetch the API
 
 fetch(apiUrl)
-    .then(response =&gt; {
+    .then(response => {
         if (!response.ok) {
-            throw new Error(&#39;Network response was not ok&#39;);
+            throw new Error('Network response was not ok');
         }
         return response.json();
     })
-    .then(data =&gt; {
+    .then(data => {
         // Handle the response data
         if (data) {
         // set the data to localStorage, categorised by grouping. For example, attributes, badges, and audiences.
@@ -138,7 +146,7 @@ fetch(apiUrl)
             
         }
     })
-    .catch(error =&gt; console.error(&#39;Moments API error:&#39;, error));
+    .catch(error => console.error('Moments API error:', error));
 //
 
 ```
@@ -147,4 +155,8 @@ fetch(apiUrl)
 
 Integrate the data with an onsite performance or personalization vendor according to your use case.
 
-To optimize the DNS request process, consider using DNS prefetching. For more information, see [The Chromium Projects &gt; DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/). 
+
+<blockquote>
+To optimize the DNS request process, consider using DNS prefetching. For more information, see [The Chromium Projects > DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/).
+</blockquote>
+ 

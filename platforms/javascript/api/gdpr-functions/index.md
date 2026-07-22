@@ -35,7 +35,7 @@ Returns the value of the `dns` consent cookie (`true` or `false`).
 
 ## `utag.gdpr.dns.setDnsState()`
 
-Sets the value of the `dns` consent cookie. Recognized values: `true`, `false`, `1`, `0`, `&#34;true&#34;`, `&#34;false&#34;`.
+Sets the value of the `dns` consent cookie. Recognized values: `true`, `false`, `1`, `0`, `"true"`, `"false"`.
 
 Example:
 ```js
@@ -57,12 +57,12 @@ utag.gdpr.getCategories(onlyEnabledCats)
 
 The following example shows the results when `utag.gdpr.getCategories()` returns all categories:  
 ```js
-[&#34;analytics&#34;, &#34;affiliates&#34;, &#34;display_ads&#34;, &#34;search&#34;, &#34;email&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;big_data&#34;, &#34;misc&#34;, &#34;cookiematch&#34;, &#34;cdp&#34;, &#34;mobile&#34;, &#34;engagement&#34;, &#34;monitoring&#34;, &#34;crm&#34;]
+["analytics", "affiliates", "display_ads", "search", "email", "personalization", "social", "big_data", "misc", "cookiematch", "cdp", "mobile", "engagement", "monitoring", "crm"]
 ```
 
 The following example shows the results when `utag.gdpr.getCategories()` returns the enabled categories:    
 ```js
-[&#34;analytics&#34;, &#34;affiliates&#34;, &#34;personalization&#34;]
+["analytics", "affiliates", "personalization"]
 ```
 
 ## `utag.gdpr.getCategoryLanguage()`
@@ -79,15 +79,15 @@ utag.gdpr.getCategoryLanguage(category)
 | --- | --- | --- |
 | `category` | `String` | Name of category. |
 
-The following example shows the `Object` returned by `utag.gdpr.getCategoryLanguage(&#34;analytics&#34;)` when the language is English:
+The following example shows the `Object` returned by `utag.gdpr.getCategoryLanguage("analytics")` when the language is English:
 
 ```js
-{name: &#34;Cookies that help us improve our website&#34;, notes: &#34;These cookies help us understand how people use our website.&#34;}
+{name: "Cookies that help us improve our website", notes: "These cookies help us understand how people use our website."}
 ```
-The following example shows the `Object` returned by `utag.gdpr.getCategoryLanguage(&#34;analytics&#34;)` when the language is Polish:
+The following example shows the `Object` returned by `utag.gdpr.getCategoryLanguage("analytics")` when the language is Polish:
 
 ```js
-{name: &#34;Pliki cookie dotyczące wydajności&#34;, notes: &#34;Te pliki cookie gromadzą informacje o tym, jak odw…dynie w celu ulepszania działania naszej witryny.&#34;}
+{name: "Pliki cookie dotyczące wydajności", notes: "Te pliki cookie gromadzą informacje o tym, jak odw…dynie w celu ulepszania działania naszej witryny."}
 ```
 
 ## `utag.gdpr.getConsentState()`
@@ -105,7 +105,7 @@ When full, declined, or no consent is given, one of the following consent state 
 | Decline | `-1` | Consent was declined (`consent:false` on the cookie). |
 | None Given | `0` | No consent is given (no cookie present). |
 
-When partial consent is given, an `Array` of `Objects` is returned. Each `Object` represents a consent category. For each `Object` in the `Array`, the `&#34;ct&#34;` key represents the consent value (`1`/`0`), and the `&#34;name&#34;` key specifies the consent category.
+When partial consent is given, an `Array` of `Objects` is returned. Each `Object` represents a consent category. For each `Object` in the `Array`, the `"ct"` key represents the consent value (`1`/`0`), and the `"name"` key specifies the consent category.
 
 ```js
 utag.gdpr.getConsentState()
@@ -114,26 +114,30 @@ utag.gdpr.getConsentState()
 The following example shows an `Array` of `Objects` returned for partial consent:
 
 ```js
-[{&#34;ct&#34;:&#34;1&#34;,&#34;name&#34;:&#34;analytics&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;affiliates&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;display_ads&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;search&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;email&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;personalization&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;social&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;big_data&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;misc&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;cookiematch&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;cdp&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;mobile&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;engagement&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;monitoring&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;crm&#34;}]
+[{"ct":"1","name":"analytics"},
+{"ct":"0","name":"affiliates"},
+{"ct":"0","name":"display_ads"},
+{"ct":"0","name":"search"},
+{"ct":"0","name":"email"},
+{"ct":"0","name":"personalization"},
+{"ct":"0","name":"social"},
+{"ct":"0","name":"big_data"},
+{"ct":"0","name":"misc"},
+{"ct":"0","name":"cookiematch"},
+{"ct":"0","name":"cdp"},
+{"ct":"0","name":"mobile"},
+{"ct":"0","name":"engagement"},
+{"ct":"0","name":"monitoring"},
+{"ct":"0","name":"crm"}]
 ```
 
 ## `utag.gdpr.getCookieValues()`
 
+
+<blockquote>
 Instead of using this function directly, it is recommended that you use a function such as `utag.gdpr.getConsentState()`, which calls the `getCookieValues()` function to read the cookie.
+</blockquote>
+
 
 Returns an `Object` representing the consent cookie as key-value pairs. This function uses the default cookie namespace (`CONSENTMGR`) or the value provided in `window.utag_cfg_ovrd.cmcookiens`. The reverse function (writing into the cookie) is `utag.gdpr.setCookie()`.
 
@@ -145,30 +149,30 @@ The following example shows the `Array` returned by `utag.gdpr.getCookieValues()
 
 ```js
 {
-    &#34;c1&#34;:&#34;1&#34;,
-    &#34;c2&#34;:&#34;0&#34;,
-    &#34;c3&#34;:&#34;0&#34;,
-    &#34;c4&#34;:&#34;0&#34;,
-    &#34;c5&#34;:&#34;0&#34;,
-    &#34;c6&#34;:&#34;0&#34;,
-    &#34;c7&#34;:&#34;0&#34;,
-    &#34;c8&#34;:&#34;0&#34;,
-    &#34;C9&#34;:&#34;0&#34;,
-    &#34;c10&#34;:&#34;0&#34;,
-    &#34;c11&#34;:&#34;0&#34;,
-    &#34;c12&#34;:&#34;0&#34;,
-    &#34;c13&#34;:&#34;0&#34;,
-    &#34;c14&#34;:&#34;0&#34;,
-    &#34;c15&#34;:&#34;0&#34;,
-    &#34;ts&#34;:&#34;1586965568213&#34;,
-    &#34;consent&#34;:&#34;true&#34;
+    "c1":"1",
+    "c2":"0",
+    "c3":"0",
+    "c4":"0",
+    "c5":"0",
+    "c6":"0",
+    "c7":"0",
+    "c8":"0",
+    "C9":"0",
+    "c10":"0",
+    "c11":"0",
+    "c12":"0",
+    "c13":"0",
+    "c14":"0",
+    "c15":"0",
+    "ts":"1586965568213",
+    "consent":"true"
 }
 ```
 The following example shows the `Array` returned by `utag.gdpr.getCookieValues()` for full consent:  
 ```js
 utag.gdpr.getCategories(true)
 
-{&#34;consent&#34;:&#34;true&#34;,&#34;ts&#34;:&#34;1587026030058&#34;}
+{"consent":"true","ts":"1587026030058"}
 ```
 
 ## `utag.gdpr.getLanguage()`
@@ -182,7 +186,7 @@ utag.gdpr.getLanguage()
 The following example shows the `String` returned when the language is English (United Kingdom):
 
 ```js
-&#34;en-gb&#34;
+"en-gb"
 ```
 
 ## `utag.gdpr.getSelectedCategories()`
@@ -196,7 +200,7 @@ utag.gdpr.getSelectedCategories()
 The following example shows an `Array` returned by `utag.gdpr.getSelectedCategories()`:
 
 ```js
-[&#34;analytics&#34;, &#34;personalization&#34;]
+["analytics", "personalization"]
 ```
 
 ## `utag.gdpr.setAllCategories()`
@@ -226,7 +230,11 @@ utag.gdpr.setAllCategories(false)
 
 Sets the consent cookie value to enabled or disabled. The function also updates the timestamp of consent, and generates a tracking call to the Collect API, and replays tags that are kept in the queue `utag.gdpr.queue`.
 
+
+<blockquote>
 `utag.gdpr.setConsentValue()` doesn’t change the consent value of individual categories. The consent value needs to be disabled through the relevant API call (`setPreferencesFromList()` or `setPreferencesValues()`).
+</blockquote>
+
 
 ```js
 utag.gdpr.setConsentValue(_response)
@@ -236,18 +244,22 @@ utag.gdpr.setConsentValue(_response)
 | --- | --- | --- |
 | `_response` | `Boolean` | Set to `true` enable consent, or `false` to disable consent. |
 
-The following example sets the cookie to the value `&#34;consent:true&#34;` and updates the timestamp:  
+The following example sets the cookie to the value `"consent:true"` and updates the timestamp:  
 ```js
 utag.gdpr.setConsentValue(true)
 ```
-The following example sets the cookie to the value `&#34;consent:false&#34;` and updates the timestamp:  
+The following example sets the cookie to the value `"consent:false"` and updates the timestamp:  
 ```js
 utag.gdpr.setConsentValue(0)
 ```
 
 ## `utag.gdpr.setCookie()`
 
+
+<blockquote>
 We do not recommend calling  this function directly.
+</blockquote>
+
 
 Internal function that writes directly to the cookie `Object`. It uses an `Object` to represent the consent state, the timestamp, and the various categories for partial consent. It automatically uses the correct cookie name and expiry period.
 
@@ -262,7 +274,7 @@ utag.gdpr.setCookie(onlyEnabledCats)
 Example:
 
 ```js
-var object = {&#34;c6&#34;:&#34;1&#34;,&#34;c1&#34;:&#34;0&#34;,&#34;c2&#34;:&#34;0&#34;,&#34;ts&#34;:1587133550264,&#34;consent&#34;:&#34;false&#34;,&#34;c3&#34;:&#34;0&#34;,&#34;c4&#34;:&#34;0&#34;,&#34;c5&#34;:&#34;0&#34;,&#34;c7&#34;:&#34;0&#34;,&#34;c8&#34;:&#34;0&#34;,&#34;c9&#34;:&#34;0&#34;,&#34;c10&#34;:&#34;0&#34;,&#34;c11&#34;:&#34;0&#34;,&#34;c12&#34;:&#34;0&#34;,&#34;c13&#34;:&#34;0&#34;,&#34;c14&#34;:&#34;0&#34;,&#34;c15&#34;:&#34;0&#34;}
+var object = {"c6":"1","c1":"0","c2":"0","ts":1587133550264,"consent":"false","c3":"0","c4":"0","c5":"0","c7":"0","c8":"0","c9":"0","c10":"0","c11":"0","c12":"0","c13":"0","c14":"0","c15":"0"}
 
 utag.gdpr.setCookie(object)
 ```
@@ -271,7 +283,11 @@ utag.gdpr.setCookie(object)
 
 Sets an individual value in the consent cookie.
 
+
+<blockquote>
 This function is used by other higher level functions such as `setConsentValue()`. Use this method cautiously and only if higher level functions do not fulfill the initial needs.
+</blockquote>
+
 
 ```js
 utag.gdpr.setCookieValue(key, value);
@@ -282,14 +298,14 @@ utag.gdpr.setCookieValue(key, value);
 | `key` | `String` | Key used in the cookie that is set to either `consent`, `ts` or any of the categories specified by the `c` value representation, such as `c1` for Analytics or `c2` for Affiliates. |
 | `value` | `String` | The value to set in the cookie key. |
 
-The following example sets the consent cookie to `&#34;consent:false&#34;`:  
+The following example sets the consent cookie to `"consent:false"`:  
 ```js
-utag.gdpr.setCookieValue(&#34;consent&#34;, false);
+utag.gdpr.setCookieValue("consent", false);
 ```
 
-The following example sets consent cookie to `&#34;c1:0&#34;`:  
+The following example sets consent cookie to `"c1:0"`:  
 ```js
-utag.gdpr.setCookieValue(&#34;c1&#34;, 0);
+utag.gdpr.setCookieValue("c1", 0);
 ```
 
 ## `utag.gdpr.setPreferencesFromList()`
@@ -304,10 +320,10 @@ utag.gdpr.setPreferencesFromList(list)
 | --- | --- | --- |
 | `List` |`Array` | `Array` of valid categories. |
 
-The following example sets the consent state for the `&#34;analytics&#34;` category in the consent cookie:
+The following example sets the consent state for the `"analytics"` category in the consent cookie:
 
 ```js
-utag.gdpr.setPreferencesFromList([&#34;analytics&#34;])
+utag.gdpr.setPreferencesFromList(["analytics"])
 ```
 
 ## `utag.gdpr.setPreferencesValues()`
@@ -323,9 +339,9 @@ utag.gdpr.setPreferencesValues(state, noCollect)
 | `state` | `Object` | Key-value pairs in the format `category:consentState`. |
 | `noCollect` | `Boolean` | (Optional) Set to `true` to not call the Collect API to track the consent. |
 
-The following example sets the cookie value for the `&#34;analytics&#34;`, `&#34;affiliates&#34;`, and `&#34;personalization&#34;` categories:  
+The following example sets the cookie value for the `"analytics"`, `"affiliates"`, and `"personalization"` categories:  
 ```js
-Var cats = {&#34;analytics&#34;:&#34;1&#34;,&#34;affiliates&#34;:&#34;0&#34;,&#34;personalization&#34;:&#34;0&#34;}
+Var cats = {"analytics":"1","affiliates":"0","personalization":"0"}
 utag.gdpr.setPreferencesValues(cats)
 ```
 
@@ -348,7 +364,7 @@ utag.gdpr.showConsentPreferences()
 
 The following example displays consent in French:  
 ```js
-utag.gdpr.showConsentPreferences(&#34;fr-fr&#34;)
+utag.gdpr.showConsentPreferences("fr-fr")
 ```
 
 ## `utag.gdpr.showDoNotSellBanner()`
@@ -371,7 +387,7 @@ utag.gdpr.showDoNotSellBanner()
 
 The following example displays the Opt-out banner in French:  
 ```js
-utag.gdpr.showDoNotSellBanner(&#34;fr-fr&#34;)
+utag.gdpr.showDoNotSellBanner("fr-fr")
 ```
 
 ## `utag.gdpr.showDoNotSellPrompt()`
@@ -389,12 +405,12 @@ utag.gdpr.showDoNotSellPrompt(_lang)
 The following example displays the CCPA popup in the default language or the language set up in the data layer:  
 
 ```js
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt()&#34;&gt;Change Consent&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt()">Change Consent</a>
 ```
 
 The following example displays the Opt-out Model popup in French:  
 ```js
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt(&#39;fr-fr&#39;)&#34;&gt;Change Consent&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt('fr-fr')">Change Consent</a>
 ```
 
 ## `utag.gdpr.showExplicitConsent()`
@@ -415,7 +431,7 @@ utag.gdpr.showExplicitConsent()
 ```
 The following example displays explicit consent in French:  
 ```js
-utag.gdpr.showExplicitConsent(&#34;fr-fr&#34;)
+utag.gdpr.showExplicitConsent("fr-fr")
 ```
 
 ## `utag.gdpr.updateConsentCookie()`

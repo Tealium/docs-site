@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/api/consent-manager/
 ---
 ## Class: `ConsentManager`
 
-The following summarizes the commonly used methods of the `ConsentManager` class for Kotlin. See [consent management](/platforms/android-kotlin/consent-management/) for more details.
+The following summarizes the commonly used methods of the `ConsentManager` class for Kotlin. See [consent management](https://docs.tealium.com/platforms/android-kotlin/consent-management/) for more details.
 
 | Method | Description |
 | ----- | ------ |
@@ -17,7 +17,7 @@ The following summarizes the commonly used methods of the `ConsentManager` class
 
 ### `isConsentLoggingEnabled`
 
-Get or set whether to log changes to the user consent preferences. Initialized through the [TealiumConfig.consentManagerLoggingEnabled](/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled) option.
+Get or set whether to log changes to the user consent preferences. Initialized through the [TealiumConfig.consentManagerLoggingEnabled](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled) option.
 
 ```java
 tealium.consentManager.isConsentLoggingEnabled // for example: false
@@ -25,7 +25,7 @@ tealium.consentManager.isConsentLoggingEnabled // for example: false
 
 ### `policy`
 
-Returns the currently in-use `ConsentPolicy`. Initialized through the [TealiumConfig.consentManagerPolicy](/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) option, and may be set to `null`.
+Returns the currently in-use `ConsentPolicy`. Initialized through the [TealiumConfig.consentManagerPolicy](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) option, and may be set to `null`.
 
 ```java
 val policy = tealium.consentManager.policy // for example: ConsentPolicy.GDPR
@@ -43,7 +43,7 @@ tealium.consentManager.reset()
 
 ### `userConsentCategories`
 
-Set or get the current Consent Status as granted by the app user. Learn more about the [available options](/platforms/android-kotlin/api/consent-category/).
+Set or get the current Consent Status as granted by the app user. Learn more about the [available options](https://docs.tealium.com/platforms/android-kotlin/api/consent-category/).
 
 ```java
 tealium.consentManager.userConsentCategories = setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)
@@ -90,7 +90,7 @@ val tealium = Tealium.create(...) {
     events.subscribe(object : UserConsentPreferencesUpdatedListener {
         override fun onUserConsentPreferencesUpdated(userConsentPreferences: UserConsentPreferences,
             policy: ConsentManagementPolicy) {
-            Logger.dev(BuildConfig.TAG, &#34;Consent preferences have been updated&#34;)
+            Logger.dev(BuildConfig.TAG, "Consent preferences have been updated")
 
             }
         )}

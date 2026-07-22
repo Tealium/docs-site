@@ -30,7 +30,7 @@ To edit server-side user permissions, you must have the **Manage Account** permi
 Use the following steps to view and edit server-side permissions for a user:
 
 1. Log into the server-side area of the Customer Data Hub.
-1. In the admin menu, click **Manage Users**. A list of all server-side users appears, including the user&#39;s name, email address, and a timestamp for the last login.
+1. In the admin menu, click **Manage Users**. A list of all server-side users appears, including the user's name, email address, and a timestamp for the last login.
 1. Click a user to display the permission details.
 1. To grant access to a profile, select a **Permission Role**.
 1. Repeat Step 3 through Step 5 for each user you want to edit.
@@ -47,7 +47,7 @@ Use the following steps to set permissions for future profiles, which allows use
 1. Log into the server-side area of the Customer Data Hub.
 1. In the admin menu, click **Manage Users**.
 1. In the **Set permissions for future profiles** list, select a role to be assigned to users of new profiles created for an account.  
-      ![](/images/server-side/ss-permissions-set-permissions-for-future-profiles.png)
+      ![](https://docs.tealium.com/images/server-side/ss-permissions-set-permissions-for-future-profiles.png)
 1. Click **Save** to keep your changes or **Cancel** to discard the changes.  
 Your changes are saved without the need to publish.
 
@@ -59,7 +59,7 @@ Use the following steps to edit the permission role for multiple users:
 1. In the admin menu, click **Manage Users**.
 1. Select each user for which you want to change the permission role.
 1. Click **Bulk Actions** and select the permission to assign to the selected users.  
-      ![](/images/server-side/ss-permissions-bulk.png)
+      ![](https://docs.tealium.com/images/server-side/ss-permissions-bulk.png)
 1. Click **Apply**, then click **Save**.  
 You do not need to publish for your changes to persist.
 

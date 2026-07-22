@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/pixibo-fyf-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -24,7 +24,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -32,8 +32,8 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`clientName`|  &lt;ul&gt;&lt;li&gt;Client Name&lt;/li&gt;&lt;/ul&gt; |
-|`clientId`|  &lt;ul&gt;&lt;li&gt;Client ID&lt;/li&gt;&lt;/ul&gt; |
-|`environment`|  &lt;ul&gt;&lt;li&gt;Environment&lt;/li&gt;&lt;/ul&gt; |
-|`skuId`|  &lt;ul&gt;&lt;li&gt;SKU ID&lt;/li&gt;&lt;/ul&gt; |
-|`lang`|  &lt;ul&gt;&lt;li&gt;Language&lt;/li&gt;&lt;/ul&gt; |
+|`clientName`|  <ul><li>Client Name</li></ul> |
+|`clientId`|  <ul><li>Client ID</li></ul> |
+|`environment`|  <ul><li>Environment</li></ul> |
+|`skuId`|  <ul><li>SKU ID</li></ul> |
+|`lang`|  <ul><li>Language</li></ul> |

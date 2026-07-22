@@ -3,7 +3,11 @@ title: Amazon Advertising DSP Connector Setup Guide
 description: This article describes how to set up the Amazon Advertising DSP connector.
 url: https://docs.tealium.com/server-side-connectors/amazon-advertising-dsp-connector/
 ---
- This connector is now deprecated. For the current connector, see [Amazon Ads Audience Management connector](). 
+
+<blockquote>
+This connector is now deprecated. For the current connector, see [Amazon Ads Audience Management connector](https://docs.tealium.com/amazon-ads-audience-management-connector/).
+</blockquote>
+
 
 The Amazon Ads API enables Amazon advertisers and members of the Amazon Advertising Partner Network to programmatically manage advertising operations. Tealium’s integration with Amazon Ads Data Provider API allows clients to add and remove visitors from audiences within Amazon Ads DSP.
 
@@ -17,9 +21,13 @@ The Amazon Ads API enables Amazon advertisers and members of the Amazon Advertis
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
- When you add this connector, you will be prompted to accept the vendor&#39;s data platform policy. 
+
+<blockquote>
+When you add this connector, you will be prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -51,11 +59,11 @@ The following section describes how to set up parameters and options for each ac
 
 This action is used to send hashed PII and an external identifier (for example, customer ID) to Amazon DSP to match Amazon shoppers with their hashed customer records, including name, email, mobile, address, and zip code. Advertisers can then use the data provider API to add customers to audiences using the previously sent external identifier.
 
-For example, configure a **Known Customer** audience that visitors join when both their email and customer ID are present in their profile. Then configure an Amazon DSP connector with the **Add Hashed Record** action that triggers when a visitor joins the **Known Customer** audience. The connector&#39;s action sends the hashed email and the customer ID to Amazon. That customer ID can then be used later to add that visitor to an audience with the **Add to Audience** Amazon DSP connector action.
+For example, configure a **Known Customer** audience that visitors join when both their email and customer ID are present in their profile. Then configure an Amazon DSP connector with the **Add Hashed Record** action that triggers when a visitor joins the **Known Customer** audience. The connector's action sends the hashed email and the customer ID to Amazon. That customer ID can then be used later to add that visitor to an audience with the **Add to Audience** Amazon DSP connector action.
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 5000
 * Max time since oldest request: 10 minutes
@@ -65,27 +73,27 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|External ID|  &lt;ul&gt;&lt;li&gt;The external identifier for this record.&lt;/li&gt;&lt;li&gt;This can be any ID unique to the record in the caller&#39;s own identity space.&lt;/li&gt;&lt;li&gt;This identifier will be matched to hashed records in Amazon Ads and can then be used to add users to audiences.&lt;/li&gt;&lt;/ul&gt; |
-|Email Address (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;Email address. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|Email Address (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;Email address. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|First Name (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;First Name. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|First Name (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;First Name. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|Last Name (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;Last Name. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|Last Name (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;Last Name. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|Street Address (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;Street Address. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|Street Address (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;Street Address. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|Phone Number (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;Phone Number. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|Phone Number (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;Phone Number. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|City (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;City. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|City (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;City. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|Postal Code (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;Postal Code. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|Postal Code (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;Postal Code. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
-|State (already SHA256 hashed)|  &lt;ul&gt;&lt;li&gt;State. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. &lt;/li&gt;&lt;/ul&gt; |
-|State (apply SHA256 hash)|  &lt;ul&gt;&lt;li&gt;State. &lt;/li&gt;&lt;li&gt;Must be SHA256 Hashed. &lt;/li&gt;&lt;li&gt;Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.&lt;/li&gt;&lt;/ul&gt; |
+|External ID|  <ul><li>The external identifier for this record.</li><li>This can be any ID unique to the record in the caller's own identity space.</li><li>This identifier will be matched to hashed records in Amazon Ads and can then be used to add users to audiences.</li></ul> |
+|Email Address (already SHA256 hashed)|  <ul><li>Email address. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|Email Address (apply SHA256 hash)|  <ul><li>Email address. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash. </li></ul> |
+|First Name (already SHA256 hashed)|  <ul><li>First Name. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|First Name (apply SHA256 hash)|  <ul><li>First Name. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
+|Last Name (already SHA256 hashed)|  <ul><li>Last Name. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|Last Name (apply SHA256 hash)|  <ul><li>Last Name. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
+|Street Address (already SHA256 hashed)|  <ul><li>Street Address. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|Street Address (apply SHA256 hash)|  <ul><li>Street Address. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
+|Phone Number (already SHA256 hashed)|  <ul><li>Phone Number. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed and hashed using SHA256 hash. </li></ul> |
+|Phone Number (apply SHA256 hash)|  <ul><li>Phone Number. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim and hash this value using SHA256 hash.</li></ul> |
+|City (already SHA256 hashed)|  <ul><li>City. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|City (apply SHA256 hash)|  <ul><li>City. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
+|Postal Code (already SHA256 hashed)|  <ul><li>Postal Code. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|Postal Code (apply SHA256 hash)|  <ul><li>Postal Code. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
+|State (already SHA256 hashed)|  <ul><li>State. </li><li>Must be SHA256 Hashed. </li><li>If already hashed, use **Already SHA256 Hashed** option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li></ul> |
+|State (apply SHA256 hash)|  <ul><li>State. </li><li>Must be SHA256 Hashed. </li><li>Use **Apply SHA256 Hash** option with plain text value, the connector will whitespace trim, lowercase and hash this value using SHA256 hash.</li></ul> |
 
 #### Hashed attibutes
 
-Mapped values need to be normalized and hashed according to Amazon&#39;s [Hashed Audience documentation](https://advertising.amazon.com/dsp/help/ss/en/audiences/advertiser-audiences/advertiser-hashed-audience/#GA6BC9BW52YFXBNE).
+Mapped values need to be normalized and hashed according to Amazon's [Hashed Audience documentation](https://advertising.amazon.com/dsp/help/ss/en/audiences/advertiser-audiences/advertiser-hashed-audience/#GA6BC9BW52YFXBNE).
 
 ### Action — Add to Audience
 
@@ -93,7 +101,7 @@ This action is used to add a visitor to an audience within Amazon DSP. For exaqm
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2000
 * Max time since oldest request: 10 minutes
@@ -103,7 +111,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Audience ID|  To use an existing Tealium-created Amazon audience, enter the Tealium audience ID located in an existing Tealium connector action configuration.&lt;br&gt; To create a new audience in Amazon DSP, click **Create Audience** and enter the following information: &lt;ul&gt;&lt;li&gt;The name for the new Amazon DSP audience&lt;/li&gt;&lt;li&gt;A description&lt;/li&gt;&lt;li&gt;A unique external audience ID&lt;/li&gt;&lt;li&gt;A comma-separated list of two-letter country codes. This is a DMA-related field that represents the source of the user audience data. The default value is `UNKNOWN`.&lt;/li&gt;&lt;/ul&gt;After you select or create an audience, click **Verify Audience ID** to verify that the audience is correct. |
+|Audience ID|  To use an existing Tealium-created Amazon audience, enter the Tealium audience ID located in an existing Tealium connector action configuration.<br> To create a new audience in Amazon DSP, click **Create Audience** and enter the following information: <ul><li>The name for the new Amazon DSP audience</li><li>A description</li><li>A unique external audience ID</li><li>A comma-separated list of two-letter country codes. This is a DMA-related field that represents the source of the user audience data. The default value is `UNKNOWN`.</li></ul>After you select or create an audience, click **Verify Audience ID** to verify that the audience is correct. |
 |External ID| An External ID previously sent to Amazon through hashed matching.|
 |MAID| Mobile advertising identifier.|
 |Amazon Cookie| Cookie obtained through a cookie sync.|
@@ -118,7 +126,7 @@ This action is used to remove a visitor from an audience within Amazon DSP. For 
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2000
 * Max time since oldest request: 10 minutes
@@ -128,7 +136,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Audience ID| To use an existing Tealium-created Amazon audience, enter its ID and click **Verify Audience ID** to verify that the audience is correct.&lt;br&gt; You can copy the audience ID created in the &#34;Add to Audience&#34; action configuration. Be sure to copy-paste this name from an existing Tealium connector action configuration and not from the ID displayed in the Amazon interface.|
+|Audience ID| To use an existing Tealium-created Amazon audience, enter its ID and click **Verify Audience ID** to verify that the audience is correct.<br> You can copy the audience ID created in the "Add to Audience" action configuration. Be sure to copy-paste this name from an existing Tealium connector action configuration and not from the ID displayed in the Amazon interface.|
 |External ID| An External ID previously sent to Amazon through hashed matching.|
 |MAID| Mobile advertising identifier.|
 |Amazon Cookie| Cookie obtained through a cookie sync.|
@@ -164,7 +172,7 @@ The following example assumes `Customer ID` is a visitor-scoped attribute popula
 1. Configure a **Known Customer** audience that visitors join when both `Customer Email` and `Customer ID` are present in their profile.
 1. Configure an Amazon DSP connector with the **Add Hashed Record** action that triggers when a visitor joins the **Known Customer** audience.
 1. In this action, map `Customer ID` as `External ID` and `Customer Email` as a hashed identifier.
-1. The connector&#39;s action then sends the hashed email and the customer ID to Amazon.
+1. The connector's action then sends the hashed email and the customer ID to Amazon.
 1. The `Customer ID` value can then be used later to add that visitor to an audience with the **Add to Audience** connector action.
 
 #### Tealium Visitor ID example

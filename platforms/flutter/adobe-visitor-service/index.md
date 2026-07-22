@@ -28,7 +28,7 @@ To install the Tealium library for Flutter:
     ```
 1. Import the Dart code to your project:
       ```dart
-      import &#39;package:tealium_adobevisitor/common.dart&#39;;
+      import 'package:tealium_adobevisitor/common.dart';
       ```
 
 ## Initialize
@@ -37,23 +37,23 @@ Configure the Adobe Visitor Service module prior to initializing the main Tealiu
 
 ```dart
 final adobeVisitorConfig = AdobeVisitorConfig(
-    &#34;ADOBE-ORG-ID&#34;,
+    "ADOBE-ORG-ID",
     adobeVisitorRetries: 1,
-    adobeVisitorExistingEcid: &#34;EXISTING-ECID&#34;,  // optional
+    adobeVisitorExistingEcid: "EXISTING-ECID",  // optional
 );
 
 TealiumAdobeVisitor.configure(adobeVisitorConfig);
 ```
 
-Set the `adobeVisitorCustomVisitorId`, `adobeVisitorDataProviderId`, and `adobeVisitorAuthState` properties only if all three values are known at the start of the app session. Set `adobeVisitorAuthState` only when you also set `adobeVisitorCustomVisitorId`. If the visitor&#39;s ID is not known at initialization (for example, before login), omit these properties and call [`linkEcidToKnownIdentifier`](#linkecidtoknownidentifierknownid-adobedataproviderid-authstate) once the ID becomes available.
+Set the `adobeVisitorCustomVisitorId`, `adobeVisitorDataProviderId`, and `adobeVisitorAuthState` properties only if all three values are known at the start of the app session. Set `adobeVisitorAuthState` only when you also set `adobeVisitorCustomVisitorId`. If the visitor's ID is not known at initialization (for example, before login), omit these properties and call [`linkEcidToKnownIdentifier`](#linkecidtoknownidentifierknownid-adobedataproviderid-authstate) once the ID becomes available.
 
 ```dart
 final adobeVisitorConfig = AdobeVisitorConfig(
-    &#34;ADOBE-ORG-ID&#34;,
+    "ADOBE-ORG-ID",
     adobeVisitorRetries: 1,
-    adobeVisitorExistingEcid: &#34;EXISTING-ECID&#34;,
-    adobeVisitorDataProviderId: &#34;DATA-PROVIDER-ID&#34;,
-    adobeVisitorCustomVisitorId: &#34;CUSTOM-VISITOR-ID&#34;,
+    adobeVisitorExistingEcid: "EXISTING-ECID",
+    adobeVisitorDataProviderId: "DATA-PROVIDER-ID",
+    adobeVisitorCustomVisitorId: "CUSTOM-VISITOR-ID",
     adobeVisitorAuthState: AuthState.authenticated,
 );
 
@@ -69,7 +69,7 @@ After the Adobe Visitor Service Module and the main Tealium Flutter integration 
 Links existing Experience Cloud ID (ECID) to known identifier.
 
 ```dart
-final visitor = await TealiumAdobeVisitor.linkEcidToKnownIdentifier(&#34;myidentifier&#34;, &#34;123456&#34;, AuthState.unknown);
+final visitor = await TealiumAdobeVisitor.linkEcidToKnownIdentifier("myidentifier", "123456", AuthState.unknown);
 ```
 
 ### `getAdobeVisitor()`
@@ -78,7 +78,7 @@ Get the current Adobe visitor information.
 
 ```dart
 TealiumAdobeVisitor.getAdobeVisitor()
-        .then((visitor) =&gt; print(visitor));
+        .then((visitor) => print(visitor));
 ```
 
 ### `decorateUrl(url)`
@@ -86,7 +86,7 @@ TealiumAdobeVisitor.getAdobeVisitor()
 Decorates the URL with ECID visitor data.
 
 ```dart
-String? decoratedUrl = await TealiumAdobeVisitor.decorateUrl(&#34;https://example.com&#34;);
+String? decoratedUrl = await TealiumAdobeVisitor.decorateUrl("https://example.com");
 ```
 
 ### `getUrlParameters()`
@@ -95,9 +95,9 @@ Retrieves URL parameters containing the Adobe Visitor ID to be manually appended
 
 ```dart
 TealiumAdobeVisitor.getUrlParameters().then(
-                            (value) =&gt;
+                            (value) =>
                             value?.forEach((key, value) {
-                                print(&#34;Retrieved URL Parameters: $key = $value&#34;);
+                                print("Retrieved URL Parameters: $key = $value");
                             })
                     );
 ```

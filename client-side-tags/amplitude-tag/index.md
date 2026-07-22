@@ -3,7 +3,11 @@ title: Amplitude Tag Setup (Deprecated)
 description: This article describes how to set up the Amplitude tag in your Tealium iQ Tag Management (TiQ) account.
 url: https://docs.tealium.com/client-side-tags/amplitude-tag/
 ---
-This connector is now deprecated and no longer available in the tag marketplace. For the current connector, see the [Amplitude Browser SDK tag setup guide]().
+
+<blockquote>
+This connector is now deprecated and no longer available in the tag marketplace. For the current connector, see the [Amplitude Browser SDK tag setup guide](https://docs.tealium.com/amplitude-browser-sdk-tag/).
+</blockquote>
+
 
 ## Tag tips
 
@@ -18,7 +22,7 @@ This connector is now deprecated and no longer available in the tag marketplace.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -27,7 +31,7 @@ The API or Project Key supplied by Amplitude.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -35,27 +39,27 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`api_key`|  &lt;ul&gt;&lt;li&gt;The API or Project Key supplied by Amplitude.&lt;/li&gt;&lt;/ul&gt; |
-|`batchEvents`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`cookieExpiration`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
-|`cookieName`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`deviceId`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`deviceIdFromUrlParam`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`domain`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-| `eventUploadPeriodMillis` |  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
-|`eventUploadThreshold`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
-|`forceHttps`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`includeGclid`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`includeReferrer`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-| `includeUtm` |  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`language`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`optOut`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`platform`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-|`saveEvents`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`savedMaxCount`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
-|`saveParamsReferrerOncePerSession`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-|`sessionTimeout`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
-|`uploadBatchSize`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;/ul&gt; |
+|`api_key`|  <ul><li>The API or Project Key supplied by Amplitude.</li></ul> |
+|`batchEvents`|  <ul><li>Boolean</li></ul> |
+|`cookieExpiration`|  <ul><li>Number</li></ul> |
+|`cookieName`|  <ul><li>String</li></ul> |
+|`deviceId`|  <ul><li>String</li></ul> |
+|`deviceIdFromUrlParam`|  <ul><li>Boolean</li></ul> |
+|`domain`|  <ul><li>String</li></ul> |
+| `eventUploadPeriodMillis` |  <ul><li>Number</li></ul> |
+|`eventUploadThreshold`|  <ul><li>Number</li></ul> |
+|`forceHttps`|  <ul><li>Boolean</li></ul> |
+|`includeGclid`|  <ul><li>Boolean</li></ul> |
+|`includeReferrer`|  <ul><li>Boolean</li></ul> |
+| `includeUtm` |  <ul><li>Boolean</li></ul> |
+|`language`|  <ul><li>String</li></ul> |
+|`optOut`|  <ul><li>Boolean</li></ul> |
+|`platform`|  <ul><li>String</li></ul> |
+|`saveEvents`|  <ul><li>Boolean</li></ul> |
+|`savedMaxCount`|  <ul><li>Number</li></ul> |
+|`saveParamsReferrerOncePerSession`|  <ul><li>Boolean</li></ul> |
+|`sessionTimeout`|  <ul><li>Number</li></ul> |
+|`uploadBatchSize`|  <ul><li>Number</li></ul> |
 
 ### User Properties
 
@@ -85,9 +89,9 @@ Learn more about [Amplitude User Properties](http://Set%20the value, and once se
 
 |Variable| Description|
 |---| ---|
-| `order_id` |  &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_type`|  &lt;ul&gt;&lt;li&gt;Cart or Order Type&lt;/li&gt;&lt;li&gt;Overrides `_ctype`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;Customer ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt; &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;/ul&gt; &lt;/ul&gt; &lt;ul&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+| `order_id` |  <ul><li>Order ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_type`|  <ul><li>Cart or Order Type</li><li>Overrides `_ctype`.</li></ul> |
+|`customer_id`|  <ul><li>Customer ID</li><li>Overrides `_ccustid`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs</li><li>Overrides `_cprod`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul> <ul><li>Array</li><li>List of Prices</li></ul> </ul> <ul><li>Overrides `_cprice`.</li></ul> |

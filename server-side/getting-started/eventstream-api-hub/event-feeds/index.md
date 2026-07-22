@@ -9,7 +9,7 @@ The default event feed is named `All Events` and contains all incoming events, b
 
 Feeds identify your most important types of events to take action on using vendor connectors.
 
-Here&#39;s how it works:
+Here's how it works:
 
 * **Feed name**  
 An event feed has a name that identifies it throughout the interface, such as when configuring a connector action. Choose a user-friendly name that makes sense to you and your team.  
@@ -18,7 +18,7 @@ Example: `Purchases with Order Total Over $1,000`
 Each feed requires one or more conditions that filters it out of the **All Events** feeds. Use the values of your event attributes to build simple rules that identify a certain type of event.  
 Example:  
     ```none
-    tealium_event EQUALS &#34;purchase&#34;
+    tealium_event EQUALS "purchase"
     AND
     order_total IS GREATER THAN 1000
     ```
@@ -33,11 +33,11 @@ Here is an example of an event feed that identifies `search` events that had `0`
 
 Notice that the feed contains two conditions:
 
-* `tealium_event EQUALS &#34;search&#34;`
+* `tealium_event EQUALS "search"`
 * `search_results EQUALS 0`
 
 Example event feed: **Search with No Results**
 
-![](/images/server-side/getting-started-eventstream-event-feed-example.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-event-feed-example.png)
 
 In the next tutorial, you will learn how to add an event feed.

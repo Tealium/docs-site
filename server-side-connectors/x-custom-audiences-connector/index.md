@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 60 minutes
@@ -24,44 +24,48 @@ This connector uses batched requests to support high-volume data transfers to th
 
 1. Sign up for a [developer account](https://developer.x.com/en/apply-for-access). Both `Essential` and `Elevateddeveloper` access can access the Ads API. Please see the [access levels](https://developer.x.com/en/docs/x-api/getting-started/about-x-api#v2-access-level) to determine what access is required.
 1. Create a [developer app](https://developer.x.com/en/apps) and secure your token
-1. Request [access to the Ads API](https://developer.x.com/en/docs/x-ads-api/apply). Make sure to include the correct App ID in the application. The App ID can be found in the [Developer Portal](https://developer.x.com/en/portal/dashboard) under **Projects &amp;amp; Apps**. For example: `16489123`
+1. Request [access to the Ads API](https://developer.x.com/en/docs/x-ads-api/apply). Make sure to include the correct App ID in the application. The App ID can be found in the [Developer Portal](https://developer.x.com/en/portal/dashboard) under **Projects &amp; Apps**. For example: `16489123`
 
+
+<blockquote>
 If you are already building on the X Developer Platform and have a developer account, skip to step 3.
+</blockquote>
+
 
 ## How it works
 
 X Custom Audiences gives you control over who sees your X Ads. X Ads gives you powerful context to connect your message to what’s most meaningful to your customers in real time. Engaging with real-time Tweets can influence conversations in a way that can help build your business.
 
-Audiences is a tool in your [X Ads](http://ads.x.com) account that lets you review and manage your audiences. You can access it by navigating to **Tools &gt; Audiences**.
+Audiences is a tool in your [X Ads](http://ads.x.com) account that lets you review and manage your audiences. You can access it by navigating to **Tools > Audiences**.
 
-From there, you can use Custom Audiences in campaign targeting to directly reach the users you care about. Tealium provides the ability to create an X Custom Audience through the user interface within AudienceStream and leverage your audience data to populate the Audience lists. Additionally, Audience lists can be created in your X Ads account and populated into AudienceStream to add or remove users. Examples of audiences that you can re-target include: previous customers, web visitors who haven&#39;t yet converted, and/or high-value customers.
+From there, you can use Custom Audiences in campaign targeting to directly reach the users you care about. Tealium provides the ability to create an X Custom Audience through the user interface within AudienceStream and leverage your audience data to populate the Audience lists. Additionally, Audience lists can be created in your X Ads account and populated into AudienceStream to add or remove users. Examples of audiences that you can re-target include: previous customers, web visitors who haven't yet converted, and/or high-value customers.
 
 Tealium provides a list of hashed identifiers that can be sent to X to add or remove a user from the custom audience list, and X performs a match and produces segments that are made available against media buying on X. Your lists are matched with @handles on X so that you can directly target them in your campaigns, making your marketing highly relevant.
 
-![](/images/server-side-connectors/twitter-custom-audiences.jpg)
+![](https://docs.tealium.com/images/server-side-connectors/twitter-custom-audiences.jpg)
 
 ## Considerations
 
-* All user identifiers except &#34;Partner User ID&#34; must be hashed using SHA256 hashing methods and [normalized](https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization).
-* If the &#34;User Identifier is already hashed&#34; checkbox is unchecked, the connector action normalizes and hashes the mapped value.
-* When you create a Custom Audience, there&#39;s an initial processing period where the users on the Custom Audience are &#34;matched&#34; by the X systems to their X @handle. This will then enable ad serving with the Promoted Ads to their account.
-  * It&#39;s possible that not all of the users on your Custom Audience are active X users, which is why you might see a final Custom Audience size that is smaller than the connector actions firing volume.
-  * All Custom Audiences appear in AudienceStream, but only those in `Ready` serving status will properly target users in your campaign. This is viewable within your **X Ads account &amp;gt; Audiences** section.
+* All user identifiers except "Partner User ID" must be hashed using SHA256 hashing methods and [normalized](https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization).
+* If the "User Identifier is already hashed" checkbox is unchecked, the connector action normalizes and hashes the mapped value.
+* When you create a Custom Audience, there's an initial processing period where the users on the Custom Audience are "matched" by the X systems to their X @handle. This will then enable ad serving with the Promoted Ads to their account.
+  * It's possible that not all of the users on your Custom Audience are active X users, which is why you might see a final Custom Audience size that is smaller than the connector actions firing volume.
+  * All Custom Audiences appear in AudienceStream, but only those in `Ready` serving status will properly target users in your campaign. This is viewable within your **X Ads account &gt; Audiences** section.
 
 * An audience can only be targeted if it matches at least 100 users active within the past 90 days on X-owned and -operated clients.
 * Generally speaking, audience changes are processed in batches that run every 6-8 hours. While an audience change is processing the existing audience to be updated is unaffected.
-* Audience lists created through AudienceStream are added as the &#34;List&#34; Type within the Ads Campaign manager.
+* Audience lists created through AudienceStream are added as the "List" Type within the Ads Campaign manager.
 * It is recommended to not use X data to derive or infer potentially sensitive characteristics about X users. A listing of these characteristics can be found at [More About Restricted uses of the X APIs](https://developer.x.com/en/developer-terms/more-on-restricted-use-cases).
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
 * **Ad Account ID**
   * (Required) Provide your X Ad Account ID.
-  * Your Account ID can be located in your account&#39;s URL when logged in.
+  * Your Account ID can be located in your account's URL when logged in.
   * Example: If the URL is `https://ads.x.com/accounts/1234abcd/`, the account ID is `1234abcd`.
 
 ## Create a Custom Audience Overview
@@ -105,9 +109,9 @@ You must provide at least one of the following parameters:
 
 |**Parameter**| **Description**|
 |---| ---|
-|Custom Audience|  &lt;ul&gt;&lt;li&gt;(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.&lt;/li&gt;&lt;li&gt;For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).&lt;/li&gt;&lt;/ul&gt; |
-|Effective At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should take effect.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to the current date and time.&lt;/li&gt;&lt;li&gt;A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.&lt;/li&gt;&lt;/ul&gt; |
-|Expired At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should expire.&lt;/li&gt;&lt;li&gt;The specified time must be later than the value of **Effective At**.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.&lt;/li&gt;&lt;/ul&gt; |
+|Custom Audience|  <ul><li>(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.</li><li>For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).</li></ul> |
+|Effective At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul> |
+|Expired At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of **Effective At**.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.</li></ul> |
 
 ### Action - Add User To Custom Audience (multiple identifiers)
 
@@ -133,9 +137,9 @@ You must provide at least one of the following parameters:
 
 |**Parameter**| **Description**|
 |---| ---|
-|Custom Audience|  &lt;ul&gt;&lt;li&gt;(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.&lt;/li&gt;&lt;li&gt;For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).&lt;/li&gt;&lt;/ul&gt; |
-|Effective At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should take effect.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to the current date and time.&lt;/li&gt;&lt;li&gt;A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.&lt;/li&gt;&lt;/ul&gt; |
-|Expired At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should expire.&lt;/li&gt;&lt;li&gt;The specified time must be later than the value of **Effective At**.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.&lt;/li&gt;&lt;/ul&gt; |
+|Custom Audience|  <ul><li>(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.</li><li>For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).</li></ul> |
+|Effective At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul> |
+|Expired At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of **Effective At**.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.</li></ul> |
 
 ### Action - Remove User From Custom Audience
 
@@ -157,9 +161,9 @@ You must provide at least one of the following parameters:
 
 |**Parameter**| **Description**|
 |---| ---|
-|Custom Audience|  &lt;ul&gt;&lt;li&gt;(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.&lt;/li&gt;&lt;li&gt;For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).&lt;/li&gt;&lt;/ul&gt; |
-|Effective At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should take effect.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to the current date and time.&lt;/li&gt;&lt;li&gt;A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.&lt;/li&gt;&lt;/ul&gt; |
-|Expired At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should expire.&lt;/li&gt;&lt;li&gt;The specified time must be later than the value of **Effective At**.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.&lt;/li&gt;&lt;/ul&gt; |
+|Custom Audience|  <ul><li>(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.</li><li>For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).</li></ul> |
+|Effective At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul> |
+|Expired At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of **Effective At**.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.</li></ul> |
 
 
 ### Remove User from Custom Audience (multiple identifiers)
@@ -186,15 +190,15 @@ You must provide at least one of the following parameters:
 
 |**Parameter**| **Description**|
 |---| ---|
-|Custom Audience|  &lt;ul&gt;&lt;li&gt;(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.&lt;/li&gt;&lt;li&gt;For more information, see [Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).&lt;/li&gt;&lt;/ul&gt; |
-|Effective At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should take effect.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to the current date and time.&lt;/li&gt;&lt;li&gt;A milliseconds (ms) since epoch timestamp may be provided, and will be formatted correctly.&lt;/li&gt;&lt;/ul&gt; |
-|Expired At|  &lt;ul&gt;&lt;li&gt;Membership option.&lt;/li&gt;&lt;li&gt;The UTC time at which the custom audience associations should expire.&lt;/li&gt;&lt;li&gt;The specified time must be later than the value of **Effective At**.&lt;/li&gt;&lt;li&gt;Expressed in ISO 8601 format.&lt;/li&gt;&lt;li&gt;Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.&lt;/li&gt;&lt;/ul&gt; |
+|Custom Audience|  <ul><li>(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.</li><li>For more information, see [Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).</li></ul> |
+|Effective At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (ms) since epoch timestamp may be provided, and will be formatted correctly.</li></ul> |
+|Expired At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of **Effective At**.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.</li></ul> |
 
 #### Parameters
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Do Not Reach List | &lt;ul&gt;&lt;li&gt;(Required) Select the **Do Not Reach** list from the drop-down list.&lt;/li&gt;&lt;li&gt;Each X account can have at most one Do Not Reach List.&lt;/li&gt;&lt;li&gt;The `DNRL` must be created in the X `UI`. For more information, see [X: Do Not Reach Lists](https://business.x.com/en/help/campaign-setup/campaign-targeting/do-not-reach-lists).&lt;/li&gt;&lt;/ul&gt;  |
+| Do Not Reach List | <ul><li>(Required) Select the **Do Not Reach** list from the drop-down list.</li><li>Each X account can have at most one Do Not Reach List.</li><li>The `DNRL` must be created in the X `UI`. For more information, see [X: Do Not Reach Lists](https://business.x.com/en/help/campaign-setup/campaign-targeting/do-not-reach-lists).</li></ul>  |
 
 #### User Identifier
 
@@ -209,7 +213,7 @@ You must provide at least one of the following parameters:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Do Not Reach List | &lt;ul&gt;&lt;li&gt;(Required) Select the **Do Not Reach** list from the drop-down list.&lt;/li&gt;&lt;li&gt;Each X account can have at most one Do Not Reach List.&lt;/li&gt;&lt;li&gt;The `DNRL` must be created in the X `UI`. For more information, see [X: Do Not Reach Lists](https://business.x.com/en/help/campaign-setup/campaign-targeting/do-not-reach-lists).&lt;/li&gt;&lt;/ul&gt;  |
+| Do Not Reach List | <ul><li>(Required) Select the **Do Not Reach** list from the drop-down list.</li><li>Each X account can have at most one Do Not Reach List.</li><li>The `DNRL` must be created in the X `UI`. For more information, see [X: Do Not Reach Lists](https://business.x.com/en/help/campaign-setup/campaign-targeting/do-not-reach-lists).</li></ul>  |
 
 #### User Identifier
 

@@ -16,7 +16,7 @@ url: https://docs.tealium.com/server-side-connectors/apsis-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -37,7 +37,7 @@ This section describes how to set up parameters and options for each action.
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10
 * Max time since oldest request: 1 minutes
@@ -47,24 +47,24 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Mailing List|  &lt;ul&gt;&lt;li&gt;The ID of the list the subscriber should be added to.&lt;/li&gt;&lt;li&gt;If you know mailing list ID, you can enter it as Custom Value.&lt;/li&gt;&lt;li&gt;Select the list the subscriber should be added to, or provide list ID directly.&lt;/li&gt;&lt;li&gt;For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).&lt;/li&gt;&lt;/ul&gt; |
-|Create Mode|  &lt;ul&gt;&lt;li&gt;If the subscriber&#39;s account already exists and this parameter is set to &#34;Create or Update&#34;, then the subscriber&#39;s data will be updated.&lt;/li&gt;&lt;li&gt;It is not possible to update existing subscriber when subscribing with double opt-in.&lt;/li&gt;&lt;/ul&gt; |
-|Country code|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s country code.&lt;/li&gt;&lt;/ul&gt; |
-|Desired format|  &lt;ul&gt;&lt;li&gt;The format the subscriber wants.&lt;/li&gt;&lt;/ul&gt; |
-|Email address|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address.&lt;/li&gt;&lt;/ul&gt; |
-|External ID|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s external ID.&lt;/li&gt;&lt;/ul&gt; |
-|Name|  &lt;ul&gt;&lt;li&gt;The name of the subscriber.&lt;/li&gt;&lt;/ul&gt; |
-|Password|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s password.&lt;/li&gt;&lt;/ul&gt; |
-|Phone number|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s phone number.&lt;/li&gt;&lt;/ul&gt; |
-|Demographic Data|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s list of demographic data fields.&lt;/li&gt;&lt;li&gt;The keys and possible values of data fields are defined in the APSIS account management console.&lt;/li&gt;&lt;/ul&gt; |
-|Template Variables|  &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables for Demographic Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation.&lt;/li&gt;&lt;li&gt;Example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Templates|  &lt;ul&gt;&lt;li&gt;(Optional) provide templates to be referenced in Demographic Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields.&lt;/li&gt;&lt;li&gt;For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+|Mailing List|  <ul><li>The ID of the list the subscriber should be added to.</li><li>If you know mailing list ID, you can enter it as Custom Value.</li><li>Select the list the subscriber should be added to, or provide list ID directly.</li><li>For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).</li></ul> |
+|Create Mode|  <ul><li>If the subscriber's account already exists and this parameter is set to "Create or Update", then the subscriber's data will be updated.</li><li>It is not possible to update existing subscriber when subscribing with double opt-in.</li></ul> |
+|Country code|  <ul><li>The subscriber's country code.</li></ul> |
+|Desired format|  <ul><li>The format the subscriber wants.</li></ul> |
+|Email address|  <ul><li>(Required) The subscriber's email address.</li></ul> |
+|External ID|  <ul><li>The subscriber's external ID.</li></ul> |
+|Name|  <ul><li>The name of the subscriber.</li></ul> |
+|Password|  <ul><li>The subscriber's password.</li></ul> |
+|Phone number|  <ul><li>The subscriber's phone number.</li></ul> |
+|Demographic Data|  <ul><li>The subscriber's list of demographic data fields.</li><li>The keys and possible values of data fields are defined in the APSIS account management console.</li></ul> |
+|Template Variables|  <ul><li>(Optional) Provide template variables for Demographic Data.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation.</li><li>Example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Templates|  <ul><li>(Optional) provide templates to be referenced in Demographic Data.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>For example, `{{SomeTemplateName}}`.</li></ul> |
 
 ### Action - Update Subscriber (Queued)
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10
 * Max time since oldest request: 1 minutes
@@ -74,16 +74,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Country code|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s country code.&lt;/li&gt;&lt;/ul&gt; |
-|Desired format|  &lt;ul&gt;&lt;li&gt;The format the subscriber wants.&lt;/li&gt;&lt;/ul&gt; |
-|Email address|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address&lt;/li&gt;&lt;/ul&gt; |
-|Name|  &lt;ul&gt;&lt;li&gt;The name of the subscriber.&lt;/li&gt;&lt;/ul&gt; |
-|Password|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s password.&lt;/li&gt;&lt;/ul&gt; |
-|Phone number|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s phone number.&lt;/li&gt;&lt;/ul&gt; |
-|User ID|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s ID.&lt;/li&gt;&lt;li&gt;For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)&lt;/li&gt;&lt;/ul&gt; |
-|Demographic Data|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s list of demographic data fields.&lt;/li&gt;&lt;li&gt;The keys and possible values of data fields are defined in the account management console.&lt;/li&gt;&lt;/ul&gt; |
-|Template Variables|  &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables for Demographic Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation.&lt;/li&gt;&lt;li&gt;Example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Templates|  &lt;ul&gt;&lt;li&gt;(Optional) provide templates to be referenced in Demographic Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields.&lt;/li&gt;&lt;li&gt;For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+|Country code|  <ul><li>The subscriber's country code.</li></ul> |
+|Desired format|  <ul><li>The format the subscriber wants.</li></ul> |
+|Email address|  <ul><li>(Required) The subscriber's email address</li></ul> |
+|Name|  <ul><li>The name of the subscriber.</li></ul> |
+|Password|  <ul><li>The subscriber's password.</li></ul> |
+|Phone number|  <ul><li>The subscriber's phone number.</li></ul> |
+|User ID|  <ul><li>The subscriber's ID.</li><li>For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)</li></ul> |
+|Demographic Data|  <ul><li>The subscriber's list of demographic data fields.</li><li>The keys and possible values of data fields are defined in the account management console.</li></ul> |
+|Template Variables|  <ul><li>(Optional) Provide template variables for Demographic Data.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation.</li><li>Example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Templates|  <ul><li>(Optional) provide templates to be referenced in Demographic Data.</li><li>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>For example, `{{SomeTemplateName}}`.</li></ul> |
 
 ### Action - Add Subscriber to Mailing List
 
@@ -91,9 +91,9 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Mailing List|  &lt;ul&gt;&lt;li&gt;Select the list the subscriber should be added to, or provide list ID directly.&lt;/li&gt;&lt;li&gt;For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).&lt;/li&gt;&lt;li&gt;If you know mailing list ID, you can enter it as Custom Value&lt;/li&gt;&lt;/ul&gt; |
-|Subscriber&#39;s Email|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address&lt;/li&gt;&lt;/ul&gt; |
-|Subscriber&#39;s ID|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s ID.&lt;/li&gt;&lt;li&gt;For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)&lt;/li&gt;&lt;/ul&gt; |
+|Mailing List|  <ul><li>Select the list the subscriber should be added to, or provide list ID directly.</li><li>For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).</li><li>If you know mailing list ID, you can enter it as Custom Value</li></ul> |
+|Subscriber's Email|  <ul><li>(Required) The subscriber's email address</li></ul> |
+|Subscriber's ID|  <ul><li>The subscriber's ID.</li><li>For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)</li></ul> |
 
 ### Action - Remove Subscriber from Mailing List
 
@@ -101,15 +101,15 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Mailing List|  &lt;ul&gt;&lt;li&gt;Select the list the subscriber should be added to, or provide list ID directly.&lt;/li&gt;&lt;li&gt;For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).&lt;/li&gt;&lt;li&gt;If you know mailing list ID, you can enter it as Custom Value&lt;/li&gt;&lt;/ul&gt; |
-|Subscriber&#39;s Email|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address&lt;/li&gt;&lt;/ul&gt; |
-|Subscriber&#39;s Id|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s ID.&lt;/li&gt;&lt;li&gt;For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)&lt;/li&gt;&lt;/ul&gt; |
+|Mailing List|  <ul><li>Select the list the subscriber should be added to, or provide list ID directly.</li><li>For more information, see [SubscriberService.CreateSubscriber](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/CreateSubscriber).</li><li>If you know mailing list ID, you can enter it as Custom Value</li></ul> |
+|Subscriber's Email|  <ul><li>(Required) The subscriber's email address</li></ul> |
+|Subscriber's Id|  <ul><li>The subscriber's ID.</li><li>For more information, see [Update Subscribers](http://se.apidoc.anpdm.com/Browse/Method/SubscriberService/UpdateSubscribers)</li></ul> |
 
 ### Action - Delete Subscriber (Queued)
 
 ##### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10
 * Max time since oldest request: 1 minutes
@@ -119,7 +119,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Subscriber&#39;s Email|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address&lt;/li&gt;&lt;/ul&gt; |
+|Subscriber's Email|  <ul><li>(Required) The subscriber's email address</li></ul> |
 
 ### Action - Send Transactional Email
 
@@ -127,17 +127,17 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Transactional Project|  &lt;ul&gt;&lt;li&gt;Select the transactional project.&lt;/li&gt;&lt;li&gt;ID of the project.&lt;/li&gt;&lt;li&gt;For more information, see [Send Transactional Email](http://se.apidoc.anpdm.com/Browse/Method/TransactionalService/SendTransactionalEmail)&lt;/li&gt;&lt;/ul&gt; |
-|Disable inactive projects|  &lt;ul&gt;&lt;li&gt;True or false indicating if sending should be allowed when project is inactive&lt;/li&gt;&lt;li&gt;Default value is **true**.&lt;/li&gt;&lt;/ul&gt; |
-|Country code|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s country code.&lt;/li&gt;&lt;/ul&gt; |
-|Demographic data for HTML|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s list of demographic data fields.&lt;/li&gt;&lt;li&gt;The keys and possible values of data fields are defined in the APSIS account management console.&lt;/li&gt;&lt;/ul&gt; |
-|Desired format|  &lt;ul&gt;&lt;li&gt;The format the subscriber wants.&lt;/li&gt;&lt;/ul&gt; |
-|Email address|  &lt;ul&gt;&lt;li&gt;(Required) The subscriber&#39;s email address&lt;/li&gt;&lt;/ul&gt; |
-|External ID|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s external ID.&lt;/li&gt;&lt;/ul&gt; |
-|Name|  &lt;ul&gt;&lt;li&gt;The name of the subscriber.&lt;/li&gt;&lt;/ul&gt; |
-|Phone number|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s phone number.&lt;/li&gt;&lt;/ul&gt; |
-|Send Date|  &lt;ul&gt;&lt;li&gt;Send date.&lt;/li&gt;&lt;/ul&gt; |
-|Sending Type|  &lt;ul&gt;&lt;li&gt;Possible values:  &lt;ul&gt;&lt;li&gt;**m** - marketing&lt;/li&gt;&lt;li&gt;**t** - transactional (default)&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|Demographic Data|  &lt;ul&gt;&lt;li&gt;The subscriber&#39;s list of demographic data fields.&lt;/li&gt;&lt;li&gt;The keys and possible values of data fields are defined in the APSIS account management console.&lt;/li&gt;&lt;/ul&gt; |
-|Template Variables|  &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables for Demographic Data.&lt;/li&gt;&lt;li&gt;&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation.&lt;/li&gt;&lt;li&gt;Example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Templates|  &lt;ul&gt;&lt;li&gt;(Optional) provide templates to be referenced in Demographic Data.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields.&lt;/li&gt;&lt;li&gt;For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+|Transactional Project|  <ul><li>Select the transactional project.</li><li>ID of the project.</li><li>For more information, see [Send Transactional Email](http://se.apidoc.anpdm.com/Browse/Method/TransactionalService/SendTransactionalEmail)</li></ul> |
+|Disable inactive projects|  <ul><li>True or false indicating if sending should be allowed when project is inactive</li><li>Default value is **true**.</li></ul> |
+|Country code|  <ul><li>The subscriber's country code.</li></ul> |
+|Demographic data for HTML|  <ul><li>The subscriber's list of demographic data fields.</li><li>The keys and possible values of data fields are defined in the APSIS account management console.</li></ul> |
+|Desired format|  <ul><li>The format the subscriber wants.</li></ul> |
+|Email address|  <ul><li>(Required) The subscriber's email address</li></ul> |
+|External ID|  <ul><li>The subscriber's external ID.</li></ul> |
+|Name|  <ul><li>The name of the subscriber.</li></ul> |
+|Phone number|  <ul><li>The subscriber's phone number.</li></ul> |
+|Send Date|  <ul><li>Send date.</li></ul> |
+|Sending Type|  <ul><li>Possible values:  <ul><li>**m** - marketing</li><li>**t** - transactional (default)</li></ul> </li></ul> |
+|Demographic Data|  <ul><li>The subscriber's list of demographic data fields.</li><li>The keys and possible values of data fields are defined in the APSIS account management console.</li></ul> |
+|Template Variables|  <ul><li>(Optional) Provide template variables for Demographic Data.</li><li>>For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation.</li><li>Example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Templates|  <ul><li>(Optional) provide templates to be referenced in Demographic Data.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>For example, `{{SomeTemplateName}}`.</li></ul> |

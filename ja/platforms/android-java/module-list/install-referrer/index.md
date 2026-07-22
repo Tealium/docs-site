@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/platforms/android-java/module-list/install-refe
 
 ## 要件
 
-* [Tealium for Android](/ja/platforms/android-java/)（5.0.0以降）（[4.x向けソリューション](#solution-for-tealium-sdk-4-x)）
+* [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)（5.0.0以降）（[4.x向けソリューション](#solution-for-tealium-sdk-4-x)）
 
 ## インストール
 
@@ -19,22 +19,26 @@ Install ReferrerモジュールをMavenによってインストールするに�
 1. プロジェクトの最上位の`build.gradle`ファイルに、次のMavenレポジトリを追加します。
 ```groovy
 maven {
-      url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+      url "https://maven.tealiumiq.com/android/releases/"
 }
 ```  
 2. プロジェクトモジュールの`build.gradle`ファイルに、以下のようにMavenの依存関係を追加します。
 ```groovy
 dependencies{
       // only required if you do not have this reference
-      implementation &#39;com.tealium:library:5.8.0&#39;
-      implementation &#39;com.tealium:installreferrer:1.1.3&#39;
+      implementation 'com.tealium:library:5.8.0'
+      implementation 'com.tealium:installreferrer:1.1.3'
       // only required if you do not already have this reference and require lifecycle tracking
-      implementation &#39;com.tealium:lifecycle:1.1.4&#39;
-      // Google&#39;s Install Referrer API
-      implementation &#39;com.android.installreferrer:installreferrer:1.0&#39;
+      implementation 'com.tealium:lifecycle:1.1.4'
+      // Google's Install Referrer API
+      implementation 'com.android.installreferrer:installreferrer:1.0'
 }
 ```  
+
+<blockquote>
 [Google Install Referrer API](https://developer.android.com/google/play/installreferrer/library)はこのモジュールの依存関係の1つですが、自動的には追加されません。ビルドにこのモジュールを追加してください。
+</blockquote>
+
 
 3. （Tealiumをインスタンス化した後で）Tealiumライブラリをインスタンス化する同じブロックで、以下を追加します。
 
@@ -43,7 +47,7 @@ dependencies{
 import com.tealium.installreferrer.InstallReferrerReceiver;
 
 // substitute the example instance name here with the same instance name you used when initializing the Tealium library
-private static final String TEALIUM_INSTANCENAME = &#34;INSTANCE_NAME&#34;;
+private static final String TEALIUM_INSTANCENAME = "INSTANCE_NAME";
 
 // call this to store the referrer as Persistent data - recommended
 InstallReferrerReceiver.setReferrerPersistent(applicationContext, TEALIUM_INSTANCENAME);
@@ -64,24 +68,24 @@ allprojects {
       repositories {
         mavenCentral()
         flatDir {
-            dirs &#39;libs&#39;
+            dirs 'libs'
         }
       }
 }
 ```  
 
-3. ファイル `tealium.installreferrer-1.1.2.aar` をプロジェクトの `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` ディレクトリにコピーします。
+3. ファイル `tealium.installreferrer-1.1.2.aar` をプロジェクトの `<PROJECT_ROOT>/<MODULE>/libs` ディレクトリにコピーします。
 
 4. Tealiumライブラリの依存関係をプロジェクトモジュールの`build.gradle`ファイルに追加します。
 ```groovy
 dependencies {
       // only required if you do not already have this reference
-      implementation(name:&#39;tealium-5.6.1&#39;, ext:&#39;aar&#39;)
-      implementation(name:&#39;tealium.installreferrer-1.1.2&#39;, ext:&#39;aar&#39;)
+      implementation(name:'tealium-5.6.1', ext:'aar')
+      implementation(name:'tealium.installreferrer-1.1.2', ext:'aar')
       // only required if you do not already have this reference and require lifecycle tracking
-      implementation(name:&#39;tealium.lifecycle-1.1.2&#39;, ext:&#39;aar&#39;)
-      // Google&#39;s Install Referrer API
-      implementation &#39;com.android.installreferrer:installreferrer:1.0&#39;
+      implementation(name:'tealium.lifecycle-1.1.2', ext:'aar')
+      // Google's Install Referrer API
+      implementation 'com.android.installreferrer:installreferrer:1.0'
 }
 ```
 
@@ -91,9 +95,9 @@ dependencies {
 受信URLがすべての指定されたキャンペーン情報を含んでいたと仮定すると、`INSTALL_REFERRER`変数には以下のURL形式データが受信されると予想できます。
 
 ```
-utm_medium=test_medium&amp;
-utm_term=test_term&amp;
-utm_content=test_content&amp;
+utm_medium=test_medium&
+utm_term=test_term&
+utm_content=test_content&
 utm_campaign=test_name
 ```
 
@@ -118,20 +122,20 @@ SDK 4.xでこの機能を実現するには、以下のコードを使用しま�
 
 ```xml
 // Android Manifest
-&lt;receiver
-    android:name=&#34;com.tealium.InstallReferrerReceiver&#34;
-    android:exported=&#34;true&#34;&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&#34;com.android.vending.INSTALL_REFERRER&#34; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
+<receiver
+    android:name="com.tealium.InstallReferrerReceiver"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
 ```
 
 ```java
 // Class for retrieving install referrer
 public class InstallReferrerReceiver extends BroadcastReceiver {
 
-    private static final String INSTALL_REFERRER = &#34;INSTALL_REFERRER&#34;;
+    private static final String INSTALL_REFERRER = "INSTALL_REFERRER";
 
     public void onReceive(Context context, Intent intent) {
         if (intent != null) {
@@ -141,7 +145,7 @@ public class InstallReferrerReceiver extends BroadcastReceiver {
         if (extras == null) {
             return;
         }
-        String referrer = extras.getString(&#34;referrer&#34;);
+        String referrer = extras.getString("referrer");
 
         if (StringUtils.isNotBlank(referrer)) {
             Tealium.getGlobalCustomData().edit().putString(INSTALL_REFERRER, referrer).apply();

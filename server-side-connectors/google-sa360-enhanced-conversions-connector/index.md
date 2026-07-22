@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/google-sa360-enhanced-conve
 ---
 The Google SA360 Enhanced Conversions connector can improve the accuracy of your conversion measurement and unlock more powerful bidding. It supplements your existing client-side conversion tags by sending hashed first-party conversion data from your website to Google in a privacy-safe way. 
 
-Conversions are recorded through the client-side [Floodlight (`gtag.js`) tag]() and are indexed by Google. The Google SA360 Enhanced Conversions connector can be used to enhance these conversions with personally identifiable information (PII) using a server-to-server API call.
+Conversions are recorded through the client-side [Floodlight (`gtag.js`) tag](https://docs.tealium.com/floodlight-gtagjs-tag/) and are indexed by Google. The Google SA360 Enhanced Conversions connector can be used to enhance these conversions with personally identifiable information (PII) using a server-to-server API call.
 
 ## Requirements
 
 This connector requires the following:
 
 * To obtain a profile ID to use in the connector configuration, add the `api@tealium.com` user to your Google Campaign Manager 360 account. This user must have Update Offline Conversions permissions.
-* The [Floodlight `gtag.js` tag]() is required for this connector to update the tag payload with PII data.
+* The [Floodlight `gtag.js` tag](https://docs.tealium.com/floodlight-gtagjs-tag/) is required for this connector to update the tag payload with PII data.
 * Update the Floodlight `gtag.js` tag to the latest version.
 * Map an attribute containing a unique value, such as `tealium_random`, to the tag `match_id` variable. Use the same value in the connector so that Google can identify the conversion to enhance.
 * For non-purchase conversions, in the Floodlight `gtag.js` tag, map an attribute containing a unique value to `ordinal`. For example, `tealium_random`.
@@ -34,7 +34,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 60 minutes
@@ -44,7 +44,7 @@ In addition, the connector sends batched conversions after a two-hour delay so t
 
 ## Trace
 
-The Tealium [Trace]() feature bypasses configured batching and delays to permit real-time debugging. The Google indexing of client-side conversions is not immediate, and you will encounter `404 Not Found` errors when using Trace with this connector.
+The Tealium [Trace](https://docs.tealium.com/about-trace/) feature bypasses configured batching and delays to permit real-time debugging. The Google indexing of client-side conversions is not immediate, and you will encounter `404 Not Found` errors when using Trace with this connector.
 
 ## PII mapping restrictions
 
@@ -59,9 +59,13 @@ Ensure that you adhere to the following restrictions with PII data when using th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
- When you add this connector, you must accept the vendor&#39;s data platform policy. 
+
+<blockquote>
+When you add this connector, you must accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
@@ -108,17 +112,17 @@ Required parameters:
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: Street Address (already SHA256 hashed) | Provide a street address which does not contain special characters, has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Street Address (apply SHA256 hash) | Provide a plain text street address and the connector will remove all special characters, whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| Address Info: City | City of the user&#39;s address. |
-| Address Info: State | State code of the user&#39;s address. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
-| Address Info: Country Code | The 2-letter country code of the user&#39;s address in ISO 3166-1 alpha-2 format. |
+| Address Info: City | City of the user's address. |
+| Address Info: State | State code of the user's address. |
+| Address Info: Postal Code | Postal code of the user's address. |
+| Address Info: Country Code | The 2-letter country code of the user's address in ISO 3166-1 alpha-2 format. |
 
 #### Custom Variables
 
 | Parameter | Description |
 |---| ---|
-|Custom Variable Values|  &lt;ul&gt;&lt;li&gt;An array of custom values.&lt;/li&gt;&lt;li&gt;Each value must not exceed 50 characters.&lt;/li&gt;&lt;/ul&gt; |
-|Custom Variable Types|  &lt;ul&gt;&lt;li&gt;An array of strings matching the pattern “U1” through “U100”. Any string that does not match this pattern will be excluded.&lt;/li&gt;&lt;/ul&gt; |
+|Custom Variable Values|  <ul><li>An array of custom values.</li><li>Each value must not exceed 50 characters.</li></ul> |
+|Custom Variable Types|  <ul><li>An array of strings matching the pattern “U1” through “U100”. Any string that does not match this pattern will be excluded.</li></ul> |
 
 ## Troubleshooting
 
@@ -126,7 +130,7 @@ Required parameters:
 
 Refer to the following image of the Google SA360 **Activities** screen for help in identifying which attributes are needed for this connector:
 
-![](/images/server-side-connectors/google-sa360-ui.png)
+![](https://docs.tealium.com/images/server-side-connectors/google-sa360-ui.png)
 
 The figure shows the location of the following attributes that are needed for this connector and the Floodlight (gtag.js) tag:
 
@@ -144,5 +148,5 @@ Potential error messages for this connector are:
 
 |Error Message| Description|
 |---| ---|
-| `NOT_FOUND` | &#34;MatchId `{matchId}` cannot be found.&#34; Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the iQ Tag Management tag setup. This can also be a result of the use of the [Google Consent Mode tag](), where consent was denied for the tag, but the conversion enhancement was sent through the connector. |
-| `NOT_FOUND` | &#34;Specified conversion doesn&#39;t exist.&#34; The conversion was received from the client-side tag, but has not yet been indexed by Google for enhancing. Tealium will retry these calls up to three times.|
+| `NOT_FOUND` | "MatchId `{matchId}` cannot be found." Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the iQ Tag Management tag setup. This can also be a result of the use of the [Google Consent Mode tag](https://docs.tealium.com/google-consent-mode-tag/), where consent was denied for the tag, but the conversion enhancement was sent through the connector. |
+| `NOT_FOUND` | "Specified conversion doesn't exist." The conversion was received from the client-side tag, but has not yet been indexed by Google for enhancing. Tealium will retry these calls up to three times.|

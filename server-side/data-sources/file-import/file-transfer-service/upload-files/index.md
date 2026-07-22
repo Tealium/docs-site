@@ -6,24 +6,24 @@ url: https://docs.tealium.com/server-side/data-sources/file-import/file-transfer
 Tealium supports the following file transfer services for file import:
 
 * Amazon S3
-  * [AWS S3 bucket]()
-  * [Tealium S3 bucket]()
-* [Microsoft Azure File/Blob Storage]()
-* [SFTP]()
+  * [AWS S3 bucket](https://docs.tealium.com/aws-s3/)
+  * [Tealium S3 bucket](https://docs.tealium.com/tealium-s3/)
+* [Microsoft Azure File/Blob Storage](https://docs.tealium.com/azure/)
+* [SFTP](https://docs.tealium.com/sftp/)
 
 ## Upload and manage files using Cyberduck and Amazon CLI
 
-After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it&#39;s free and supports SFTP and Amazon S3.
+After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it's free and supports SFTP and Amazon S3.
 
 Use the following articles to get started uploading and managing your files:
 
-* [Upload a file with SFTP or Amazon S3 with Cyberduck]()
-* [Upload and manage files using the Amazon Command Line Interface]()
+* [Upload a file with SFTP or Amazon S3 with Cyberduck](https://docs.tealium.com/cyberduck/)
+* [Upload and manage files using the Amazon Command Line Interface](https://docs.tealium.com/aws-cli/)
 
 
 ## Usage reports
 
-After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see [Understanding the usage report]().
+After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see [Understanding the usage report](https://docs.tealium.com/understanding-the-usage-report/).
 
 ## File upload errors
 
@@ -34,4 +34,7 @@ When a file process failure occurs, the file is ignored. The system does not att
 * Column names used in the file definition do not exist in the file.
 * A column name is used more than once in the File Service configuration.
 
+
+<blockquote>
 If AudienceStream fails to copy a file using the file transfer service, it will retry in 10 minutes.
+</blockquote>

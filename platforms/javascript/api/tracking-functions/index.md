@@ -11,7 +11,11 @@ The following tracking functions are available:
 | `utag.track()` | Tracks either page views or events, based on the first parameter value |
 | `utag.view()` | Tracks page views, virtual page views, and Ajax page flows |
 
-Using the `uid_array` parameter bypasses load rules. When using load rules for consent enforcement, the `uid_array` parameter will also ignore the consent conditions. For more information, see [About Load Rules]().
+
+<blockquote>
+Using the `uid_array` parameter bypasses load rules. When using load rules for consent enforcement, the `uid_array` parameter will also ignore the consent conditions. For more information, see [About Load Rules](https://docs.tealium.com/about-load-rules/#load-rules-and-consent-enforcement).
+</blockquote>
+
 
 ## `utag.link()`
 
@@ -25,7 +29,7 @@ utag.link(data_object, callback, [uid_array]);
 | --- | --- |
 | `data_object`| A data object containing the data layer variables associated with the event.|
 | `callback`| A function to be executed after the tracking call has completed. |
-| `uid_array`| An array of tag UID&#39;s to trigger. |
+| `uid_array`| An array of tag UID's to trigger. |
 
 ## `utag.track()`
 
@@ -40,7 +44,7 @@ utag.track(event_type, data_object, callback, [uid_array]);
 | `event_type` | The type of event. Set to `view` for page views, or `link` for events |
 | `data_object`| A data object containing the data layer variables associated with the event.|
 | `callback`| A function to be executed after the tracking call has completed. |
-| `uid_array`| An array of tag UID&#39;s to trigger. |
+| `uid_array`| An array of tag UID's to trigger. |
 
 ## `utag.view()`
 
@@ -54,4 +58,4 @@ utag.view(data_object, callback, [uid_array]);
 | --- | --- | --- |
 | `data_object` | Object | (Optional) A data object containing the attributes associated with this specific tracking call. Uses the same format and variable names as the Universal Data Object.  |
 | `callback` | Function | (Optional) A function to be executed after the tracking call has completed.  |
-| `uid_array` | Array | (Optional) An array of tag IDs. Limits the tracking call for the vendor tags specified by the UID&#39;s in this array.  |
+| `uid_array` | Array | (Optional) An array of tag IDs. Limits the tracking call for the vendor tags specified by the UID's in this array.  |

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/version-history/
 
 サイドバーで **サーバーサイドバージョン** をクリックしてバージョン履歴を表示します。
 
-![](/images/server-side/versions/server-side-versions-table.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-table.png)
 
 **最新の公開** ボックスには、現在公開されているサーバーサイドバージョンが表示されます。バージョンテーブルには、現在のプロファイルのバージョンとリビジョンのすべての公開および保存アクションがリストされています。
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/version-history/
 
 リビジョンの詳細を表示するには、**詳細** をクリックします。**リビジョン詳細** ウィンドウが表示されます：
 
-![](/images/server-side/versions/server-side-version-details.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-version-details.png)
 
 **リビジョン詳細** ウィンドウの上部には、アカウント、プロファイル、およびバージョン名が表示されます。また、以下の情報も表示されます：
 
@@ -60,17 +60,21 @@ url: https://docs.tealium.com/ja/server-side/save-publish/version-history/
 * **名前**: 変更されたアイテムの名前。
 * **アクション**: アイテムに対して実行されたアクション（作成、更新、削除）。
 * **ユーザー**: 変更を実行したユーザー。
- 変更の歴史データが存在しない場合、システムは変更を行ったユーザーとして **システム** を表示します。 
+
+<blockquote>
+変更の歴史データが存在しない場合、システムは変更を行ったユーザーとして **システム** を表示します。
+</blockquote>
+
 
 ### リビジョンの復元
 
-**このリビジョンに戻る** オプションは、選択したリビジョンが3ヶ月以内に公開された場合に、プロファイルに[公開権限を持つユーザー]()に利用可能です。**このリビジョンに戻る** をクリックして選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。
+**このリビジョンに戻る** オプションは、選択したリビジョンが3ヶ月以内に公開された場合に、プロファイルに[公開権限を持つユーザー](https://docs.tealium.com/permission-groups/#publishing-permissions)に利用可能です。**このリビジョンに戻る** をクリックして選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。
 
 ### リビジョンの比較
 
 テーブルから2つのリビジョンを選択し、**比較** をクリックしてそれらの違いを確認します。
 
-![](/images/server-side/versions/server-side-versions-table-compare.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-table-compare.png)
 
 **リビジョンの比較** ウィンドウが表示され、違いがある場合はそれが表示されます：
 
@@ -78,6 +82,6 @@ url: https://docs.tealium.com/ja/server-side/save-publish/version-history/
 * **名前**: 変更されたアイテムの名前。
 * **アクション**: アイテムに対して実行されたアクション（追加、含まれていない、更新）。
 
-![](/images/server-side/versions/server-side-versions-diff.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-diff.png)
 
 **リビジョンの比較** ウィンドウは読み取り専用です。このウィンドウで変更を加えることはできません。

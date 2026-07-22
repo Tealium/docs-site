@@ -9,7 +9,7 @@ The Snapchat Conversions connector insights surface Snapchat Signal Readiness da
 
 To access connector insights:
 
-Go to **Connectors**, find the Snapchat Conversions connector, and select an action. On the action screen, click the **Insights** tab.
+Go to **Connect > Connectors**, find the **Snapchat Conversions** connector, and select an action. On the action screen, click the **Insights** tab.
 
 The insights are based on the **Snap App ID** or **Pixel ID** of the configured connector. If the identifier is configured as a static value, metrics load automatically. If you use dynamic attributes, enter the required Snap App ID or Pixel ID and click **Retrieve Metrics** to fetch the insights data.
 
@@ -59,6 +59,6 @@ If no data is available for a source, the section displays a message indicating 
 The Signal Readiness Score reflects how well the event data that Snapchat receives meets Snapchat signal quality requirements. Each recommendation is assigned a priority level and a score:
 
 * **Priority**: P0 (highest impact), P1, or P2. Implementing higher-priority recommendations typically produces the greatest improvement to signal quality.
-* **Score**: `GOOD`, `OKAY`, or `BAD`. The score indicates how the current state of the signal compares to Snapchat&#39;s quality standards.
+* **Score**: `GOOD`, `OKAY`, or `BAD`. The score indicates how the current state of the signal compares to Snapchat's quality standards.
 
 For more information, see [Snapchat: Signal Readiness API](https://developers.snap.com/api/marketing-api/Ads-API/signal-readiness-api).

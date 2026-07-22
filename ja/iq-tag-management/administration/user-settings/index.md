@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/administration/user-settings/
 以下の手順でパスワードを変更します：
 
 1. 管理メニューで、**Edit/View User Settings**をクリックします。あなたのアカウントの**User Overview**情報とプロフィールの権限が表示されます。
-1. 右パネルで、**Change Password**をクリックします。アカウント管理者が構成したパスワード要件が表示される**Create New Password**ダイアログが表示されます：![](/images/iq-tag-management/administration/create-a-new-password-dialog.png)
+1. 右パネルで、**Change Password**をクリックします。アカウント管理者が構成したパスワード要件が表示される**Create New Password**ダイアログが表示されます：![](https://docs.tealium.com/images/iq-tag-management/administration/create-a-new-password-dialog.png)
 
 1. **Current password**フィールドに、現在のパスワードを入力します
 1. **New password**フィールドに、画面上のパスワード要件に従って新しいパスワードを入力します。

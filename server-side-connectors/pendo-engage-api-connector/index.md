@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -44,7 +44,7 @@ The following section describes how to set up parameters and options for each ac
 | Timestamp | (Required) Time (in milliseconds after the epoch) that the event occurred. |
 | Account ID | (Recommended) Unique string identifier for the account to which the visitor belongs. |
 | Properties | Free-form object of properties of the event. |
-| IP | (Recommended) Current user&#39;s IP address. |
+| IP | (Recommended) Current user's IP address. |
 | User Agent | (Recommended) User agent of the device making the request. |
 | URL | URL of the current page in the browser. |
 | Title | Title of the current page in the browser. |

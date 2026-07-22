@@ -8,7 +8,7 @@ Media tracking is the ability to track streaming media events (video or audio)  
 
 ## How It Works
 
-The Media module supports the tracking of a user&#39;s entire streaming media experience. This includes the start and end of the session, the start and end of ad breaks, and every interaction with the media player such as play, pause, and seek.
+The Media module supports the tracking of a user's entire streaming media experience. This includes the start and end of the session, the start and end of ad breaks, and every interaction with the media player such as play, pause, and seek.
 
 The Media module structures the tracking in a hierarchy of the following elements:
 
@@ -42,8 +42,8 @@ Example structure of a media session:
 
 To get started, install the Media module for one of the supported platforms:
 
-- [Android (Kotlin)](/platforms/android-kotlin/module-list/media/)
-- [iOS (Swift v2.x)](/platforms/ios-swift/module-list/media/)
+- [Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/module-list/media/)
+- [iOS (Swift v2.x)](https://docs.tealium.com/platforms/ios-swift/module-list/media/)
 
 ## Initialize
 
@@ -54,7 +54,7 @@ After you install the Media module, initialize a `MediaContent` object:
 
 ```kotlin
 val mediaContent: MediaContent = MediaContent(
-  name = &#34;What is the Tealium Customer Data Hub?&#34;,
+  name = "What is the Tealium Customer Data Hub?",
   trackingType = TrackingType.MILESTONE,
   streamType = StreamType.DVOD,
   mediaType = MediaType.VIDEO,
@@ -68,7 +68,7 @@ val mediaContent: MediaContent = MediaContent(
 
 ```swift
 let media = MediaContent(
-  name: &#34;What is the Tealium Customer Data Hub?&#34;,
+  name: "What is the Tealium Customer Data Hub?",
   trackingType: .milestone,
   streamType: .vod,
   mediaType: .video,
@@ -184,13 +184,13 @@ Example of tracking change in player state:
 
 
 
-Set the state value by calling the [`updatePlayerState()`](/platforms/android-kotlin/api/media/#updateplayerstate) method:  
+Set the state value by calling the [`updatePlayerState()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#updateplayerstate) method:  
 ```kotlin
 tealium?.media?.updatePlayerState(STATE_CONSTANT_VALUE)
 ```
 
 
-Set the state value by setting the [`playerState`](/platforms/ios-swift/api/media-session/#playerstate) variable:  
+Set the state value by setting the [`playerState`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#playerstate) variable:  
 
 ```swift
 mediaSession.playerState = STATE_CONSTANT_VALUE
@@ -233,13 +233,13 @@ Example of tracking quality of experience:
 
 
 
-Set the quality of experience bitrate value by calling the [`updateQOE()`](/platforms/android-kotlin/api/media/#updateqoe) method:
+Set the quality of experience bitrate value by calling the [`updateQOE()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#updateqoe) method:
 ```kotlin
 tealium?.media?.updateQOE(BITRATE_VALUE)
 ```
 
 
-Set the quality of experience bitrate value by setting the [`bitrate`](/platforms/ios-swift/api/media-session/#bitrate) variable:  
+Set the quality of experience bitrate value by setting the [`bitrate`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#bitrate) variable:  
 ```swift
 mediaSession.bitrate = BITRATE_VALUE
 ```
@@ -251,7 +251,7 @@ mediaSession.bitrate = BITRATE_VALUE
 
 Metadata is a parameter that sets additional information about an object.  When you pass metadata to the object, those key-value pairs are also set in the data layer. The following objects accept metadata: `MediaContent`, `Chapter`, `QoE`.
 
-Since metadata can be set in multiple objects, it&#39;s possible to set the same metadata key multiple times. To resolve conflicting metadata keys in the data layer, the metadata from multiple objects are merged into the data layer using the object hierarchy: `MediaContent` &gt; `Chapter` &gt; `QoE`.
+Since metadata can be set in multiple objects, it's possible to set the same metadata key multiple times. To resolve conflicting metadata keys in the data layer, the metadata from multiple objects are merged into the data layer using the object hierarchy: `MediaContent` > `Chapter` > `QoE`.
 
 For example, if you set `feed_type` in both `MediaContent` and `Chapter`, the  value from the `Chapter` metadata will override the value from the `MediaContent` metadata in the final data layer.
 
@@ -263,7 +263,7 @@ Example of setting metadata:
 ```kotlin
 val mediaContent: MediaContent = MediaContent(
     // ...
-    metadata = mutableMapOf(&#34;episode&#34; to &#34;2&#34;, &#34;network&#34; to &#34;YouTube&#34;)
+    metadata = mutableMapOf("episode" to "2", "network" to "YouTube")
 )
 ```
 
@@ -272,7 +272,7 @@ val mediaContent: MediaContent = MediaContent(
 ```swift
 let media = MediaContent(
     // ...
-    metadata: [&#34;episode&#34;: &#34;2&#34;, &#34;network&#34;: &#34;YouTube&#34;]
+    metadata: ["episode": "2", "network": "YouTube"]
 )
 ```
 
@@ -417,7 +417,7 @@ Summary events include:
   * `media_session_start`
   * `media_session_end`
 
-See the full list of all [media summary variables](/platforms/getting-started-mobile/media/#media-summary-data) that are tracked.
+See the full list of all [media summary variables](https://docs.tealium.com/platforms/getting-started-mobile/media/#media-summary-data) that are tracked.
 
 ### Comparison Chart
 
@@ -449,7 +449,11 @@ A media session is the entire media content containing chapters, ad breaks, ads,
 
 To start tracking a media session call the `startSession()` method with a `MediaContent` object. To stop tracking a media session call the `endSession()` method.
 
+
+<blockquote>
 Starting a session does not imply a `play()` event.
+</blockquote>
+
 
 Example:  
 
@@ -482,18 +486,18 @@ This table lists the values of `tealium_event` for each session tracking method:
 
 | Method                                                                  | Event Description                             | Tealium Event          |
 |:------------------------------------------------------------------------|:----------------------------------------------|:-----------------------|
-| [`startSession()`](/platforms/android-kotlin/api/media/#startsession)   | The session started.                          | `media_start_session`  |
-| [`resumeSession()`](/platforms/android-kotlin/api/media/#resumesession) | The session resumed.                          | `media_resume_session` |
-| [`endSession()`](/platforms/android-kotlin/api/media/#endsession)       | The session ended, including ads and content. | `media_session_end`    |
+| [`startSession()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startsession)   | The session started.                          | `media_start_session`  |
+| [`resumeSession()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#resumesession) | The session resumed.                          | `media_resume_session` |
+| [`endSession()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endsession)       | The session ended, including ads and content. | `media_session_end`    |
 
 
 
 
 | Method                                                                     | Event Description                             | Tealium Event          |
 |:---------------------------------------------------------------------------|:----------------------------------------------|:-----------------------|
-| [`startSession()`](/platforms/ios-swift/api/media-session/#startsession)   | The session started.                          | `media_start_session`  |
-| [`resumeSession()`](/platforms/ios-swift/api/media-session/#resumesession) | The session resumed.                          | `media_resume_session` |
-| [`endSession()`](/platforms/ios-swift/api/media-session/#endsession)       | The session ended, including ads and content. | `media_session_end`    |
+| [`startSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startsession)   | The session started.                          | `media_start_session`  |
+| [`resumeSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#resumesession) | The session resumed.                          | `media_resume_session` |
+| [`endSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endsession)       | The session ended, including ads and content. | `media_session_end`    |
 
 
 
@@ -511,26 +515,26 @@ This table lists the values of `tealium_event` for each player tracking method:
 
 | Method                                                              | Event Description                  | Tealium Event         |
 |:--------------------------------------------------------------------|:-----------------------------------|:----------------------|
-| [`play()`](/platforms/android-kotlin/api/media/#play)               | The media content started playing. | `media_play`          |
-| [`pause()`](/platforms/android-kotlin/api/media/#pause)             | The user paused the media.         | `media_pause`         |
-| [`startSeek()`](/platforms/android-kotlin/api/media/#startseek)     | The user started seeking.          | `media_seek_start`    |
-| [`endSeek()`](/platforms/android-kotlin/api/media/#endseek)         | The user ended seeking.            | `media_seek_end`      |
-| [`startBuffer()`](/platforms/android-kotlin/api/media/#startbuffer) | The buffer started.                | `media_buffer_start`  |
-| [`endBuffer()`](/platforms/android-kotlin/api/media/#endbuffer)     | The buffer ended.                  | `media_buffer_end`    |
-| [`custom()`](/platforms/android-kotlin/api/media/#custom)           | Custom event status.               | `&lt;custom event name&gt;` |
+| [`play()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#play)               | The media content started playing. | `media_play`          |
+| [`pause()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#pause)             | The user paused the media.         | `media_pause`         |
+| [`startSeek()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startseek)     | The user started seeking.          | `media_seek_start`    |
+| [`endSeek()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endseek)         | The user ended seeking.            | `media_seek_end`      |
+| [`startBuffer()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startbuffer) | The buffer started.                | `media_buffer_start`  |
+| [`endBuffer()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endbuffer)     | The buffer ended.                  | `media_buffer_end`    |
+| [`custom()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#custom)           | Custom event status.               | `<custom event name>` |
 
 
 
 
 | Method                                                                 | Event Description                  | Tealium Event         |
 |:-----------------------------------------------------------------------|:-----------------------------------|:----------------------|
-| [`play()`](/platforms/ios-swift/api/media-session/#play)               | The media content started playing. | `media_play`          |
-| [`pause()`](/platforms/ios-swift/api/media-session/#pause)             | The user paused the media.         | `media_pause`         |
-| [`startSeek()`](/platforms/ios-swift/api/media-session/#startsession)  | The user started seeking.          | `media_seek_start`    |
-| [`endSeek()`](/platforms/ios-swift/api/media-session/#endseek)         | The user ended seeking.            | `media_seek_end`      |
-| [`startBuffer()`](/platforms/ios-swift/api/media-session/#startbuffer) | The buffer started.                | `media_buffer_start`  |
-| [`endBuffer()`](/platforms/ios-swift/api/media-session/#endbuffer)     | The buffer ended.                  | `media_buffer_end`    |
-| [`custom()`](/platforms/ios-swift/api/media-session/#custom)           | Custom event status.               | `&lt;custom event name&gt;` |
+| [`play()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#play)               | The media content started playing. | `media_play`          |
+| [`pause()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#pause)             | The user paused the media.         | `media_pause`         |
+| [`startSeek()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startsession)  | The user started seeking.          | `media_seek_start`    |
+| [`endSeek()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endseek)         | The user ended seeking.            | `media_seek_end`      |
+| [`startBuffer()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startbuffer) | The buffer started.                | `media_buffer_start`  |
+| [`endBuffer()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endbuffer)     | The buffer ended.                  | `media_buffer_end`    |
+| [`custom()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#custom)           | Custom event status.               | `<custom event name>` |
 
 
 
@@ -548,7 +552,7 @@ Example of tracking a chapter:
 
 ```kotlin
 val chapterObject = Chapter(
-  name = &#34;What is the Tealium Customer Data Hub?&#34;,
+  name = "What is the Tealium Customer Data Hub?",
   duration = 114
 )
 tealium?.media?.startChapter(chapterObject)
@@ -561,7 +565,7 @@ tealium?.media?.endChapter()
 
 ```swift
 let chapterObject = Chapter(
-  name: &#34;What is the Tealium Customer Data Hub?&#34;,
+  name: "What is the Tealium Customer Data Hub?",
   duration: 114
 )
 mediaSession.startChapter(chapterObject)
@@ -579,18 +583,18 @@ This table lists the values of `tealium_event` for each chapter tracking method:
 
 | Method                                                                | Event Description             | Tealium Event         |
 |:----------------------------------------------------------------------|:------------------------------|:----------------------|
-| [`startChapter()`](/platforms/android-kotlin/api/media/#startchapter) | The chapter started.          | `media_chapter_start` |
-| [`skipChapter()`](/platforms/android-kotlin/api/media/#skipchapter)   | The user skipped the chapter. | `media_chapter_skip`  |
-| [`endChapter()`](/platforms/android-kotlin/api/media/#endchapter)     | The chapter ended.            | `media_chapter_end`   |
+| [`startChapter()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startchapter) | The chapter started.          | `media_chapter_start` |
+| [`skipChapter()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#skipchapter)   | The user skipped the chapter. | `media_chapter_skip`  |
+| [`endChapter()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endchapter)     | The chapter ended.            | `media_chapter_end`   |
 
 
 
 
 | Method                                                                   | Event Description             | Tealium Event         |
 |:-------------------------------------------------------------------------|:------------------------------|:----------------------|
-| [`startChapter()`](/platforms/ios-swift/api/media-session/#startchapter) | The chapter started.          | `media_chapter_start` |
-| [`skipChapter()`](/platforms/ios-swift/api/media-session/#skipchapter)   | The user skipped the chapter. | `media_chapter_skip`  |
-| [`endChapter()`](/platforms/ios-swift/api/media-session/#endchapter)     | The chapter ended.            | `media_chapter_end`   |
+| [`startChapter()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startchapter) | The chapter started.          | `media_chapter_start` |
+| [`skipChapter()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#skipchapter)   | The user skipped the chapter. | `media_chapter_skip`  |
+| [`endChapter()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endchapter)     | The chapter ended.            | `media_chapter_end`   |
 
 
 
@@ -609,14 +613,14 @@ Example of tracking ad breaks and ads:
 
 
 ```kotlin
-val adBreak = AdBreak(name = &#34;Ad Break&#34;)
+val adBreak = AdBreak(name = "Ad Break")
 tealium?.media?.startAdBreak(adBreak)
 
-val ad1 = Ad(&#34;Ad 1&#34;)
+val ad1 = Ad("Ad 1")
 tealium?.media?.startAd(ad1)
 tealium?.media?.endAd()
 
-val ad2 = Ad(&#34;Ad 2&#34;)
+val ad2 = Ad("Ad 2")
 tealium?.media?.startAd(ad2)
 tealium?.media?.endAd()
 
@@ -625,14 +629,14 @@ tealium?.media?.endAdBreak()
 
 
 ```swift
-val adBreak = AdBreak(name: &#34;Ad Break&#34;)
+val adBreak = AdBreak(name: "Ad Break")
 session.endAdBreak(adBreak)
 
-let ad1 = Ad(&#34;Ad 1&#34;)
+let ad1 = Ad("Ad 1")
 session.startAd(ad1)
 session.endAd()
 
-let ad2 = Ad(&#34;Ad 2&#34;)
+let ad2 = Ad("Ad 2")
 session.adStart(ad2)
 session.endAd()
 
@@ -648,24 +652,24 @@ This table lists the values of `tealium_event` for each ad tracking method:
 
 | Method                                                                | Event Description                                   | Tealium Event         |
 |:----------------------------------------------------------------------|:----------------------------------------------------|:----------------------|
-| [`startAdBreak()`](/platforms/android-kotlin/api/media/#startadbreak) | The ad break started.                               | `media_adbreak_start` |
-| [`endAdBreak()`](/platforms/android-kotlin/api/media/#endadbreak)     | The ad break ended.                                 | `media_adbreak_end`   |
-| [`startAd()`](/platforms/android-kotlin/api/media/#startad)           | The ad started.                                     | `media_ad_start`      |
-| [`endAd()`](/platforms/android-kotlin/api/media/#endad)               | The ad ended.                                       | `media_ad_end`        |
-| [`clickAd()`](/platforms/android-kotlin/api/media/#clickad)           | The user clicked on a ad that is currently playing. | `media_ad_click`      |
-| [`skipAd()`](/platforms/android-kotlin/api/media/#skipad)             | The user skipped the current ad.                    | `media_ad_skip`       |
+| [`startAdBreak()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startadbreak) | The ad break started.                               | `media_adbreak_start` |
+| [`endAdBreak()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endadbreak)     | The ad break ended.                                 | `media_adbreak_end`   |
+| [`startAd()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#startad)           | The ad started.                                     | `media_ad_start`      |
+| [`endAd()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#endad)               | The ad ended.                                       | `media_ad_end`        |
+| [`clickAd()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#clickad)           | The user clicked on a ad that is currently playing. | `media_ad_click`      |
+| [`skipAd()`](https://docs.tealium.com/platforms/android-kotlin/api/media/#skipad)             | The user skipped the current ad.                    | `media_ad_skip`       |
 
 
 
 
 | Method                                                                   | Event Description                                   | Tealium Event         |
 |:-------------------------------------------------------------------------|:----------------------------------------------------|:----------------------|
-| [`startAdBreak()`](/platforms/ios-swift/api/media-session/#startadbreak) | The ad break started.                               | `media_adbreak_start` |
-| [`endAdBreak()`](/platforms/ios-swift/api/media-session/#endadbreak)     | The ad break ended.                                 | `media_adbreak_end`   |
-| [`startAd()`](/platforms/ios-swift/api/media-session/#startAd)           | The ad started.                                     | `media_ad_start`      |
-| [`endAd()`](/platforms/ios-swift/api/media-session/#endad)               | The ad ended.                                       | `media_ad_end`        |
-| [`clickAd()`](/platforms/ios-swift/api/media-session/#clickad)           | The user clicked on a ad that is currently playing. | `media_ad_click`      |
-| [`skipAd()`](/platforms/ios-swift/api/media-session/#skipad)             | The user skipped the current ad.                    | `media_ad_skip`       |
+| [`startAdBreak()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startadbreak) | The ad break started.                               | `media_adbreak_start` |
+| [`endAdBreak()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endadbreak)     | The ad break ended.                                 | `media_adbreak_end`   |
+| [`startAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startAd)           | The ad started.                                     | `media_ad_start`      |
+| [`endAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endad)               | The ad ended.                                       | `media_ad_end`        |
+| [`clickAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#clickad)           | The user clicked on a ad that is currently playing. | `media_ad_click`      |
+| [`skipAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#skipad)             | The user skipped the current ad.                    | `media_ad_skip`       |
 
 
 
@@ -674,7 +678,11 @@ This table lists the values of `tealium_event` for each ad tracking method:
 
 The Media module transmits different variables for each type of tracked event. The following sections list the data layer variables associated with each Tealium event.
 
+
+<blockquote>
 The optional variables are only sent if they are defined.
+</blockquote>
+
 
 ### Media Session Data
 
@@ -704,7 +712,7 @@ Tealium events: `media_chapter_start`, `media_chapter_end`
 |:---------------------------|:----------------------------------------------------------------------------------|:---------|
 | `media_chapter_uuid`       | The unique ID of the chapter, such as `83675D85-F0D3-48BB-A1BB-18111B7A89AA`.     | Yes      |
 | `media_chapter_name`       | The chapter name, such as `Chapter 2`.                                            | Yes      |
-| `media_chapter_duration`   | The chapter&#39;s duration in seconds (calculated if not not defined), such as `600`. | Yes      |
+| `media_chapter_duration`   | The chapter's duration in seconds (calculated if not not defined), such as `600`. | Yes      |
 | `media_chapter_position`   | The number position of the chapter within the session, starting with `0`.         |          |
 | `media_chapter_start_time` | Offset in seconds from the start of the content, such as `641407641.724858`.      |          |
 
@@ -762,7 +770,7 @@ Tealium events: `media_session_end` (when `TrackingType` is set to `summary`)
 
 | Variable                            | Data Type  | Description                                                                 | Example                                                                            |
 |:------------------------------------|:-----------|:----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|
-| `media_ad_uuids`                    | `[String]` | An array of unique identifiers for ads played during this media session.    | `[&#34;8B51B7FA-EEC5-4754-ACAB-58B9B7643AE8&#34;, &#34;83675D85-F0D3-48BB-A1BB-18111B7A89AA&#34;]` |
+| `media_ad_uuids`                    | `[String]` | An array of unique identifiers for ads played during this media session.    | `["8B51B7FA-EEC5-4754-ACAB-58B9B7643AE8", "83675D85-F0D3-48BB-A1BB-18111B7A89AA"]` |
 | `media_percentage_ad_complete`      | `Double`   | The percentage of completed ads after starting.                             | `90.0`                                                                             |
 | `media_percentage_ad_time`          | `Double`   | The percentage of ad content playback time.                                 | `23.7`                                                                             |
 | `media_percentage_chapter_complete` | `Double`   | The percentage of completed chapters after starting.                        | `75.0`                                                                             |

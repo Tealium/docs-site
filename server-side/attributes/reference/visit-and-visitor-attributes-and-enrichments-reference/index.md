@@ -39,7 +39,7 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned|
+|Is assigned<br> Is not assigned|
 
 ## Set of Strings
 
@@ -60,16 +60,16 @@ This reference uses the following icons for data sources:
 |Remove one entry| |
 |Lowercase all entries|
 | Set to top N keys from tally based on values | |
-| Set to keys from tally having value &amp;gt; X | |
+| Set to keys from tally having value &gt; X | |
 
 ### Rule Conditions
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned| |
-| Contains &lt;br&gt; Contains (key) | |
-| Contains partial string&lt;br&gt; Contains partial string (ignore case)&lt;br&gt; Contains partial string (key contains substring)&lt;br&gt; Contains partial string (ignore case) (key contains substring) | |
-| Does not contain&lt;br&gt; Does not contain (key)&lt;br&gt; Does not contain (key) (ignore case)&lt;br&gt; Does not contain (ignore case) | |
+|Is assigned<br> Is not assigned| |
+| Contains <br> Contains (key) | |
+| Contains partial string<br> Contains partial string (ignore case)<br> Contains partial string (key contains substring)<br> Contains partial string (ignore case) (key contains substring) | |
+| Does not contain<br> Does not contain (key)<br> Does not contain (key) (ignore case)<br> Does not contain (ignore case) | |
 
 ## Tally
 
@@ -95,10 +95,10 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned|
+|Is assigned<br> Is not assigned|
 |Contains (key) with option to check the value of key| |
 |Contain partial string (a key contains this substring). With ignore case option, and with option to check the value of key.| |
-|Does not contain&lt;br&gt; Does not contain (key)&lt;br&gt; Does not contain (key) (ignore case)&lt;br&gt; Does not contain (ignore case)| |
+|Does not contain<br> Does not contain (key)<br> Does not contain (key) (ignore case)<br> Does not contain (ignore case)| |
 
 ## String
 
@@ -123,10 +123,10 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-| Contain/s&lt;br&gt; Contain/s (ignore case)&lt;br&gt; Does not contain&lt;br&gt; Does not contain (ignore case) | |
-| Equal/s &lt;br&gt; Equal/s (ignore case)&lt;br&gt; Does not equal&lt;br&gt; Does not equal (ignore case) | |
-| Starts with&lt;br&gt; Starts with (ignore case)&lt;br&gt; Ends with&lt;br&gt; Ends with (ignore case) | |
-|Is assigned&lt;br&gt; Is not assigned| |
+| Contain/s<br> Contain/s (ignore case)<br> Does not contain<br> Does not contain (ignore case) | |
+| Equal/s <br> Equal/s (ignore case)<br> Does not equal<br> Does not equal (ignore case) | |
+| Starts with<br> Starts with (ignore case)<br> Ends with<br> Ends with (ignore case) | |
+|Is assigned<br> Is not assigned| |
 |Has changed|
 |Matches regex| |
 
@@ -144,15 +144,15 @@ This reference uses the following icons for data sources:
 |Set to current date|
 |Set to| |
 |Set date based on date format from| |
-|Set date based on epoch milliseconds from (use &#34;xxx&#34; as date format for iQ Attribute)| |
+|Set date based on epoch milliseconds from (use "xxx" as date format for iQ Attribute)| |
 |Remove date|
 
 ### Rule Conditions
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Greater than or equal to&lt;br&gt; Less than or equal to&lt;br&gt; (You can compare with the current time either directly or with future or past timeframes in seconds, minutes, hours, days, weeks, or months.)| |
-|Is assigned&lt;br&gt; Is not assigned|
+|Greater than or equal to<br> Less than or equal to<br> (You can compare with the current time either directly or with future or past timeframes in seconds, minutes, hours, days, weeks, or months.)| |
+|Is assigned<br> Is not assigned|
 |Has changed|
 
 ## Visitor ID
@@ -160,7 +160,7 @@ This reference uses the following icons for data sources:
 * Visitor-level attribute
 * Can be used in a webhook
 * Data layer enrichment key name: n/a
-* For more information, see [Visitor ID Attribute]().
+* For more information, see [Visitor ID Attribute](https://docs.tealium.com/visitor-id-attribute/).
 
 ### Enrichments
 
@@ -172,9 +172,9 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Contain/s&lt;br&gt; Contain/s (ignore case)&lt;br&gt; Does not contain&lt;br&gt; Does not contain (ignore case)| |
-|Equal/s &lt;br&gt; Equal/s (ignore case)&lt;br&gt; Does not equal&lt;br&gt; Does not equal (ignore case)| |
-|Is assigned&lt;br&gt; Is not assigned|
+|Contain/s<br> Contain/s (ignore case)<br> Does not contain<br> Does not contain (ignore case)| |
+|Equal/s <br> Equal/s (ignore case)<br> Does not equal<br> Does not equal (ignore case)| |
+|Is assigned<br> Is not assigned|
 
 ## Funnel
 
@@ -194,9 +194,9 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Contain/s&lt;br&gt; Contain/s (ignore case)&lt;br&gt; Does not contain&lt;br&gt; Does not contain (ignore case)| |
-|Equal/s &lt;br&gt; Equal/s (ignore case)&lt;br&gt; Does not equal&lt;br&gt; Does not equal (ignore case)| |
-|Is assigned&lt;br&gt; Is not assigned|
+|Contain/s<br> Contain/s (ignore case)<br> Does not contain<br> Does not contain (ignore case)| |
+|Equal/s <br> Equal/s (ignore case)<br> Does not equal<br> Does not equal (ignore case)| |
+|Is assigned<br> Is not assigned|
 
 ## Array of Strings
 
@@ -221,9 +221,9 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Contain/s (partial string)&lt;br&gt; Contain/s (partial string) (ignore case)&lt;br&gt; Contain/s &lt;br&gt; Contain/s (ignore case)| |
-| Does not contain (key)&lt;br&gt; Does not contain (key) (ignore case)&lt;br&gt; Does not contain key&lt;br&gt; Does not contain (ignore case) | |
-|Is assigned&lt;br&gt; Is not assigned|
+|Contain/s (partial string)<br> Contain/s (partial string) (ignore case)<br> Contain/s <br> Contain/s (ignore case)| |
+| Does not contain (key)<br> Does not contain (key) (ignore case)<br> Does not contain key<br> Does not contain (ignore case) | |
+|Is assigned<br> Is not assigned|
 
 ## Timeline
 
@@ -242,7 +242,7 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned|
+|Is assigned<br> Is not assigned|
 
 ## Number
 
@@ -273,9 +273,9 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-| Equal&lt;br&gt; Does not equal | |
-|Is assigned&lt;br&gt; Is not assigned|
-|Greater than or equal to&lt;br&gt; Less than or equal to| |
+| Equal<br> Does not equal | |
+|Is assigned<br> Is not assigned|
+|Greater than or equal to<br> Less than or equal to| |
 |Has changed|
 
 ## Array of Numbers
@@ -298,7 +298,7 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned|
+|Is assigned<br> Is not assigned|
 |Contains number| |
 
 ## Array of Booleans
@@ -320,7 +320,7 @@ This reference uses the following icons for data sources:
 
 |RULE CONDITIONS| SOURCE VALUES|
 |---| ---|
-|Is assigned&lt;br&gt; Is not assigned|
+|Is assigned<br> Is not assigned|
 |Contains number| |
 
 ## Boolean

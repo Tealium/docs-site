@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/apache-kafka-connector/
 ---
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -28,7 +28,7 @@ After adding the connector, configure the following settings:
 * **Compression Type**
   * Compression algorithm for messages sent to Kafka. Reduces bandwidth and storage costs. If left blank, GZIP is used.
 * **Maximum Message Size (bytes)**
-  * The maximum size in bytes of a single message or batch sent in one request. Raise this value to accommodate large visitor profiles, but ensure it matches the broker&#39;s configuration. Default: 1,048,576 (1 MB). Maximum: 2,097,152 (2 MB). Must not exceed your Kafka broker&#39;s `message.max.bytes` setting.
+  * The maximum size in bytes of a single message or batch sent in one request. Raise this value to accommodate large visitor profiles, but ensure it matches the broker's configuration. Default: 1,048,576 (1 MB). Maximum: 2,097,152 (2 MB). Must not exceed your Kafka broker's `message.max.bytes` setting.
 * **Client ID**
   * A string identifier sent to the broker with every request for logging, monitoring attribution, and quota enforcement. If left blank, an auto-generated identifier in the format `tealium-{account}-{profile}-{connectorId}` is used. Allowed characters: letters, numbers, dots, hyphens, underscores.
 * **Acknowledgments (acks)**
@@ -65,9 +65,9 @@ The following sections describe how to set up parameters and options for each ac
 | --- | --- |
 | Topic | Select the topic or type the Topic ID. |
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
-| Message Key | (Optional) Specify the raw message key. When the data format is set to `BINARY`, this value is encoded before it&#39;s sent. |
+| Message Key | (Optional) Specify the raw message key. When the data format is set to `BINARY`, this value is encoded before it's sent. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
 | Print Attribute Names | By default, attribute keys are used. Enable this option to use attribute names as keys instead. |
 | Batch time to live | Time to live in minutes for the batch (between 1 and 60). Default: 10. |
@@ -80,7 +80,7 @@ The following sections describe how to set up parameters and options for each ac
 | --- | --- |
 | Topic | Select the topic or type the Topic ID. |
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
 | Message Key | (Optional) Specify the raw message key. If you chose **BINARY** as the data format, Tealium encodes this value before sending it. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
@@ -98,7 +98,7 @@ The following sections describe how to set up parameters and options for each ac
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
 | Schema | (Optional) Select a schema subject from the Schema Registry. Requires Schema Registry URL to be configured. |
 | Message Data | Provide values to construct message data. To use a template, reference the template name and map it to Custom Message Definition. Any other key-value pairs are ignored when a template is used. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
 | Message Key | (Optional) Specify the raw message key. If you chose **BINARY** as the data format, Tealium encodes this value before sending it. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
@@ -114,7 +114,7 @@ The following sections describe how to set up parameters and options for each ac
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
 | Schema | (Optional) Select a schema subject from the Schema Registry. Requires Schema Registry URL to be configured. |
 | Message Data | Provide values to construct message data. To use a template, reference the template name and map it to Custom Message Definition. Any other key-value pairs are ignored when a template is used. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
 | Message Key | (Optional) Specify the raw message key. If you chose **BINARY** as the data format, Tealium encodes this value before sending it. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
@@ -128,7 +128,7 @@ The following sections describe how to set up parameters and options for each ac
 | --- | --- |
 | Topic | Select the topic or type the Topic ID. |
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
 | Message Key | (Optional) Specify the raw message key. If you chose **BINARY** as the data format, Tealium encodes this value before sending it. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
@@ -142,7 +142,7 @@ The following sections describe how to set up parameters and options for each ac
 | --- | --- |
 | Topic | Select the topic or type the Topic ID. |
 | Data Format | Specify the format for data delivery: `JSON`, `STRING`, or `BINARY`. |
-| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka&#39;s default partitioner is used based on the message key or round-robin. |
+| Partition ID | (Optional) Select the Partition ID. If left blank, Kafka's default partitioner is used based on the message key or round-robin. |
 | Headers | (Optional) A set of key-value pairs added to the Kafka record headers. |
 | Message Key | (Optional) Specify the raw message key. If you chose **BINARY** as the data format, Tealium encodes this value before sending it. |
 | Timestamp | (Optional) The message timestamp in ISO 8601 UTC format `YYYY-MM-DDThh:mm:ssZ`. If not provided, the current timestamp is used. |
@@ -150,4 +150,4 @@ The following sections describe how to set up parameters and options for each ac
 
 #### Connector log parameters
 
-For parameter descriptions, see [Connector log parameters]().
+For parameter descriptions, see [Connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters).

@@ -12,22 +12,22 @@ Integrate Tealium mobile libraries into your React Native application using one 
 * NPM package (Recommended)
 * Manually with [GitHub](https://github.com/Tealium/tealium-react-native)
 
-For more information about the Crash Reporter Module, see [Crash Reporter Module for Android](/platforms/android-kotlin/module-list/crash-reporter/) or [Crash Reporter Module for iOS](/platforms/ios-swift/module-list/crash-reporter/).
+For more information about the Crash Reporter Module, see [Crash Reporter Module for Android](https://docs.tealium.com/platforms/android-kotlin/module-list/crash-reporter/) or [Crash Reporter Module for iOS](https://docs.tealium.com/platforms/ios-swift/module-list/crash-reporter/).
 
 ## Requirements
 
 * Access to your native build environments
-* [Tealium for React Native v2.2.0&#43;](/platforms/react-native/)
-* [React Native 0.63&#43;](https://github.com/Tealium/tealium-react-native) and tools installed. 
-* [Tealium iQ Mobile Profile]()
+* [Tealium for React Native v2.2.0+](https://docs.tealium.com/platforms/react-native/)
+* [React Native 0.63+](https://github.com/Tealium/tealium-react-native) and tools installed. 
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
-* [Tealium for Android](/platforms/android-kotlin/) or [Tealium for iOS](/platforms/ios-swift/)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 
 ## Install (NPM/YARN)
 
 To install the Tealium Crash Reporter module for React Native with NPM:
 
-1. Follow the [installation instructions for the main `tealium-react-native` library installation](/platforms/react-native/install/). Ensure you have installed at least verion 2.2.0 or above.
+1. Follow the [installation instructions for the main `tealium-react-native` library installation](https://docs.tealium.com/platforms/react-native/install/). Ensure you have installed at least verion 2.2.0 or above.
 
 2. Navigate to the root of your React Native project.
 
@@ -41,7 +41,7 @@ To install the Tealium Crash Reporter module for React Native with NPM:
 To import the relevant classes into your app, do the following:
 
 ```javascript
-import TealiumCrashReporter from &#39;tealium-react-native-crash-reporter&#39;;
+import TealiumCrashReporter from 'tealium-react-native-crash-reporter';
 ```
 
 ## Initialize

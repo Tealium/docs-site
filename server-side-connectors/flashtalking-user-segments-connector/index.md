@@ -15,7 +15,7 @@ For additional information, log into your Flashtalking account and go to [Flasht
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](/server-side/connectors/manage/) article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -38,7 +38,7 @@ This section describes how to set up parameters and options for each action.
 | DAID | Android advertising ID. |
 | IDFA | Apple advertising ID. |
 | UID | Unique ID from cookie sync. |
-| Segment(s) | Identify the target segments by the segment string. Pass either a single segment or a comma separated list of segments. If you pass a list of segments, do not include brackets &#34;`[]`&#34;. |
+| Segment(s) | Identify the target segments by the segment string. Pass either a single segment or a comma separated list of segments. If you pass a list of segments, do not include brackets "`[]`". |
 
 ### Action - Remove User from Segment
 
@@ -49,7 +49,7 @@ This section describes how to set up parameters and options for each action.
 | DAID | Android advertising ID. |
 | IDFA | Apple advertising ID. |
 | UID | Unique ID from cookie sync. |
-| Segment(s) | Identify the target segment(s) by the Segment String. Pass either a single segment or a comma separated list of segments. If you pass a list of segments, do not include brackets &#34;`[]`&#34;. |
+| Segment(s) | Identify the target segment(s) by the Segment String. Pass either a single segment or a comma separated list of segments. If you pass a list of segments, do not include brackets "`[]`". |
 
 ### Action - Remove User from All Segments
 

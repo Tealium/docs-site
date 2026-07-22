@@ -9,16 +9,16 @@ Tealiumのウェブページ用データレイヤーはJavaScriptオブジェク
 
 ユニバーサルデータオブジェクトには、読み込まれたページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、`utag.js`によって作成されたクッキー、ページからの標準DOM変数、読み込まれた構成に関するTealium特有の変数が含まれます。
 
-`utag.js`によって生成されるユニバーサルデータオブジェクトの一部である[データレイヤー変数](/ja/platforms/javascript/data-layer/)について詳しく学びましょう。
+`utag.js`によって生成されるユニバーサルデータオブジェクトの一部である[データレイヤー変数](https://docs.tealium.com/ja/platforms/javascript/data-layer/)について詳しく学びましょう。
 
 ## イベント名
 
 イベント名は、追跡する各種のインタラクションを一意に識別するために予約変数`tealium_event`を使用します。この変数は、Tealium iQ内でロードルール、拡張機能、データマッピングを構成するために参照されます。その他のすべてのイベントデータには、自由に選んだ変数名を使用します。
 
-[イベントの追跡とイベント名](/ja/platforms/javascript/track/)について詳しく学びましょう。
+[イベントの追跡とイベント名](https://docs.tealium.com/ja/platforms/javascript/track/)について詳しく学びましょう。
 
 ## シングルページアプリケーション（SPA）
 
 シングルページアプリケーション（SPA）では、ページが訪問ごとに`utag.js`を一度だけ読み込むため、自動的なページビュートラッキング呼び出しを抑制し、アプリケーションがこれらの呼び出しを直接`utag.view()`で行うようにします。
 
-[シングルページアプリケーション](/ja/platforms/javascript/single-page-applications/)について詳しく学びましょう。
+[シングルページアプリケーション](https://docs.tealium.com/ja/platforms/javascript/single-page-applications/)について詳しく学びましょう。

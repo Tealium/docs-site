@@ -7,16 +7,16 @@ The Google Analytics 4 Measurement Protocol is intended to augment existing even
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Secret (Required)**  
-An API Secret generated in the Google Analytics UI. To create a secret, navigate to: **Admin &gt; Data Streams &gt; choose your stream &gt; Measurement Protocol &gt; Create**.
+An API Secret generated in the Google Analytics UI. To create a secret, navigate to: **Admin > Data Streams > choose your stream > Measurement Protocol > Create**.
 * **Measurement ID (Optional)**  
-The measurement ID associated with a stream. Found in the Google Analytics UI under: **Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID**.
+The measurement ID associated with a stream. Found in the Google Analytics UI under: **Admin > Data Streams > choose your stream > Measurement ID**.
 * **Firebase App ID (Optional)**  
-The Firebase App ID. The identifier for a Firebase app. Found in the Firebase console under: **Project Settings &gt; General &gt; Your Apps &gt; App ID**.
+The Firebase App ID. The identifier for a Firebase app. Found in the Firebase console under: **Project Settings > General > Your Apps > App ID**.
 
 ### Mapping client ID
 
@@ -30,7 +30,7 @@ Google Analytics stores the client ID in a cookie named `_ga`. The format of thi
 
 ### Consent
 
-The connector will not send any consent signals by default. If you don&#39;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for `ad_user_data` and `ad_personalization`.
+The connector will not send any consent signals by default. If you don't specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for `ad_user_data` and `ad_personalization`.
 
 ### Event names
 
@@ -80,7 +80,11 @@ For more information and a list of available events, see [Events](https://develo
 | Send Firebase Event | ✓ | ✓ |
 | Send PageView Event (gtag.js) Deprecated | ✓ | ✓ |
 
+
+<blockquote>
 The Send PageView Event action is deprecated. Use the Send Event action to send a `page_view` event.
+</blockquote>
+
 
 The following section describes how to set up parameters and options for each action.
 
@@ -93,13 +97,13 @@ For more information, see [Google: Send Measurement Protocol events to Google An
 | **Parameter** | **Description** |
 | --- | --- |
 | Client ID | (Required) A unique identifier for a client. For more information, see [Mapping client ID](#mapping-client-id). |
-| Measurement ID Override | The identifier for a Google Analytics data stream. Found in the Google Analytics UI under **Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID**. This setting overrides **Measurement ID**  in the **Configuration** section. |
+| Measurement ID Override | The identifier for a Google Analytics data stream. Found in the Google Analytics UI under **Admin > Data Streams > choose your stream > Measurement ID**. This setting overrides **Measurement ID**  in the **Configuration** section. |
 | API Secret Override | The Measurement Protocol API Secret for the data stream. This setting overrides the **API Secret** in the **Configuration** section. |
 | User ID | A unique identifier for a user. |
 | Timestamp Micros | A Unix timestamp (in microseconds) for the time to associate with the event.  |
 | Non Personalized Ads | Set to `true` to indicate these events should not be used for personalized ads. |
 | User Agent | The device user agent for Google Analytics to use to derive device information for the request. |
-| IP Override | IP address of the visitor. Use this mapping if you don&#39;t use the geographic mappings. For more information, see [Google Analytics Measurement Protocol: Geographic information](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info). |
+| IP Override | IP address of the visitor. Use this mapping if you don't use the geographic mappings. For more information, see [Google Analytics Measurement Protocol: Geographic information](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info). |
 
 #### Event parameters
 
@@ -155,17 +159,17 @@ The `User ID` parameter must be set whenever user-provided data is set.
 | Email Address (already SHA256 hashed) | Provide an email address that has already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in `gmail.com` and `googlemail.com` email addresses before hashing. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector will remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Phone Number (already SHA256 hashed) | Provide a phone number in E164 format that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (`&#43;`), whitespace trim, lowercase, and hash this value using SHA256 hash. |
+| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (`+`), whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: First Name (already SHA256 hashed) | Provide first name that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: Last Name (already SHA256 hashed) | Provide last name that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: Street Address (already SHA256 hashed) | Provide street address that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Street Address (apply SHA256 hash) | Provide a plain text street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| Address Info: City | City of the user&#39;s address. |
-| Address Info: State | State code of the user&#39;s address. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
-| Address Info: Country | Two-letter country code in ISO 3166-1 alpha-2 format of the user&#39;s address. |
+| Address Info: City | City of the user's address. |
+| Address Info: State | State code of the user's address. |
+| Address Info: Postal Code | Postal code of the user's address. |
+| Address Info: Country | Two-letter country code in ISO 3166-1 alpha-2 format of the user's address. |
 
 #### User properties
 
@@ -260,20 +264,24 @@ For more information, see [Google Analytics Measurement Protocol: Geographic inf
 | Timestamp Micros | A Unix timestamp (in microseconds) for the time to associate with the event. |
 | Non Personalized Ads | Set to `true` to indicate these events should not be used for personalized ads. |
 | User Agent | The device user agent for Google Analytics to use to derive device information for the request. |
-| IP Override | IP address of the visitor. Use this mapping if you don&#39;t use the geographic mappings. For more information, see [Google Analytics Measurement Protocol: Geographic information](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info). |
+| IP Override | IP address of the visitor. Use this mapping if you don't use the geographic mappings. For more information, see [Google Analytics Measurement Protocol: Geographic information](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info). |
 
 For other parameters, see [Send Event (gtag.js)](#send-event-gtagjs).
 
 ### Send PageView Event (gtag.js)
 
+
+<blockquote>
 The **Send PageView Event** action is deprecated. Use the [Send Event (gtag.js) action](#send-event-gtagjs) to send a `page_view` event.
+</blockquote>
+
 
 #### Body parameters
 
 | **Parameter** | **Description** |
 | --- | --- |
 | Client ID | (Required) A unique identifier for a client. For more information, see [Mapping client ID](#mapping-client-id). |
-| Measurement ID Override | The identifier for a Google Analytics data stream. Found in the Google Analytics UI under **Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID**. This setting overrides **Measurement ID** in the **Configuration** section. |
+| Measurement ID Override | The identifier for a Google Analytics data stream. Found in the Google Analytics UI under **Admin > Data Streams > choose your stream > Measurement ID**. This setting overrides **Measurement ID** in the **Configuration** section. |
 | API Secret Override | The Measurement Protocol API Secret for the data stream. This setting overrides the **API Secret** in the **Configuration** section. |
 | User ID | A unique identifier for a user. See [GA4 Help: User-ID for cross-platform analysis](https://support.google.com/analytics/answer/9213390) for more information on this identifier. Can include only utf-8 characters.|
 | Timestamp Micros | A Unix timestamp (in microseconds) for the time to associate with the event. |
@@ -295,17 +303,17 @@ The `User ID` parameter must be set whenever user-provided data is set.
 | Email Address (already SHA256 hashed) | Provide an email address that has already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses before hashing. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector will remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Phone Number (already SHA256 hashed) | Provide a phone number in E164 format that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (&#43;), whitespace trim, lowercase, and hash this value using SHA256 hash. |
+| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (+), whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: First Name (already SHA256 hashed) | Provide first name that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: Last Name (already SHA256 hashed) | Provide last name that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Address Info: Street Address (already SHA256 hashed) | Provide street address that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Street Address (apply SHA256 hash) | Provide a plain text street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| Address Info: City | City of the user&#39;s address. |
-| Address Info: State | State code of the user&#39;s address. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
-| Address Info: Country | Two-letter country code in ISO 3166-1 alpha-2 format of the user&#39;s address. |
+| Address Info: City | City of the user's address. |
+| Address Info: State | State code of the user's address. |
+| Address Info: Postal Code | Postal code of the user's address. |
+| Address Info: Country | Two-letter country code in ISO 3166-1 alpha-2 format of the user's address. |
 
 #### User properties
 
@@ -345,7 +353,7 @@ The `User ID` parameter must be set whenever user-provided data is set.
 
 #### Consent
 
-Consent states are either `granted` or `denied`. If you don&#39;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance.
+Consent states are either `granted` or `denied`. If you don't specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance.
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -360,4 +368,4 @@ The Google Analytics 4 Measurement Protocol supplies the following endpoint for 
 https://google-analytics.com/debug/mp/collect?
 ```
 
-The Tealium Google Analytics 4 Measurement Protocol connector uses this endpoint during [Trace](), giving you insights into the validation of the event data. You can view Google Analytics 4 Measurement Protocol validation messages in the HTTP response content of the API call within Trace.
+The Tealium Google Analytics 4 Measurement Protocol connector uses this endpoint during [Trace](https://docs.tealium.com/about-trace/), giving you insights into the validation of the event data. You can view Google Analytics 4 Measurement Protocol validation messages in the HTTP response content of the API call within Trace.

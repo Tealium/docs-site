@@ -7,7 +7,7 @@ Step through this guide to learn how to quickly set up a working CDP with visit 
 
 ## Requirements
 
-What you&#39;ll need to complete this guide:
+What you'll need to complete this guide:
 
 * Tealium server-side login credentials
 * An existing Tealium EventStream account
@@ -16,9 +16,9 @@ What you&#39;ll need to complete this guide:
 
 ## What is Tealium AudienceStream?
 
-![](/images/tutorials/audiencestream-customer-evolution.jpg)
+![](https://docs.tealium.com/images/tutorials/audiencestream-customer-evolution.jpg)
 
-Tealium AudienceStream is a customer data platform (CDP) that offers identity resolution, data enrichment capabilities, and robust audience management. It&#39;s used to create visitor profiles, representing your most valuable first-party data, which are segmented by shared behaviors to create audiences that fuel your marketing technology stack in real-time through connectors.
+Tealium AudienceStream is a customer data platform (CDP) that offers identity resolution, data enrichment capabilities, and robust audience management. It's used to create visitor profiles, representing your most valuable first-party data, which are segmented by shared behaviors to create audiences that fuel your marketing technology stack in real-time through connectors.
 
 Tealium AudienceStream offers the following benefits:
 
@@ -29,7 +29,7 @@ Use Tealium AudienceStream to manage visitor attributes, define an identity reso
 
 ## Explore the User Interface
 
-Go to &lt;https://my.tealiumiq.com/&gt; and log in to Tealium to explore the interface.
+Go to <https://my.tealiumiq.com/> and log in to Tealium to explore the interface.
 
 AudienceStream is organized into the following areas:
 

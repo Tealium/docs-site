@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/client-side-tags/sailthru-personalization-engin
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスし、Sailthruパーソナライゼーションエンジンタグを追加します（[タグの追加方法についてはこちら]()）。
+まず、Tealiumのタグマーケットプレイスにアクセスし、Sailthruパーソナライゼーションエンジンタグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)）。
 
 タグを追加した後、以下の構成を構成します：
 
@@ -37,7 +37,7 @@ url: https://docs.tealium.com/ja/client-side-tags/sailthru-personalization-engin
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -45,99 +45,99 @@ url: https://docs.tealium.com/ja/client-side-tags/sailthru-personalization-engin
 
 |変数| 説明|
 |---| ---|
-|`init.customerId`|  &lt;ul&gt;&lt;li&gt;Sailthru顧客ID&lt;/li&gt;&lt;/ul&gt; |
-|`pageviewTracking`|  &lt;ul&gt;&lt;li&gt;ページビュートラッキング&lt;/li&gt;&lt;li&gt;オプションは**自動**または**手動**です。&lt;/li&gt;&lt;/ul&gt; |
-|`init.isCustom`|  &lt;ul&gt;&lt;li&gt;オプションは`true`または`false`です。&lt;/li&gt;&lt;/ul&gt; |
-|`init.useStoredTags`|  &lt;ul&gt;&lt;li&gt;オプションは`true`または`false`です。&lt;/li&gt;&lt;/ul&gt; |
-|`init.excludeContent`|  &lt;ul&gt;&lt;li&gt;オプションは`true`または`false`です。&lt;/li&gt;&lt;/ul&gt; |
-|`pageview.url`|  &lt;ul&gt;&lt;li&gt;ページビューURL&lt;/li&gt;&lt;/ul&gt; |
-|`pageview.tags`|  &lt;ul&gt;&lt;li&gt;ページビュータグ&lt;/li&gt;&lt;/ul&gt; |
-|`pageview.onSuccess`|  &lt;ul&gt;&lt;li&gt;コールバック関数名&lt;/li&gt;&lt;li&gt;ページビュー成功時&lt;/li&gt;&lt;/ul&gt; |
-|`pageview.onError`|  &lt;ul&gt;&lt;li&gt;コールバック関数名&lt;/li&gt;&lt;li&gt;ページビュー失敗時&lt;/li&gt;&lt;/ul&gt; |
-|`meta.custom`|  &lt;ul&gt;&lt;li&gt;カスタムメタタグ&lt;/li&gt;&lt;/ul&gt; |
+|`init.customerId`|  <ul><li>Sailthru顧客ID</li></ul> |
+|`pageviewTracking`|  <ul><li>ページビュートラッキング</li><li>オプションは**自動**または**手動**です。</li></ul> |
+|`init.isCustom`|  <ul><li>オプションは`true`または`false`です。</li></ul> |
+|`init.useStoredTags`|  <ul><li>オプションは`true`または`false`です。</li></ul> |
+|`init.excludeContent`|  <ul><li>オプションは`true`または`false`です。</li></ul> |
+|`pageview.url`|  <ul><li>ページビューURL</li></ul> |
+|`pageview.tags`|  <ul><li>ページビュータグ</li></ul> |
+|`pageview.onSuccess`|  <ul><li>コールバック関数名</li><li>ページビュー成功時</li></ul> |
+|`pageview.onError`|  <ul><li>コールバック関数名</li><li>ページビュー失敗時</li></ul> |
+|`meta.custom`|  <ul><li>カスタムメタタグ</li></ul> |
 
 #### Eコマース
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;li&gt;`_ccustid`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品IDリスト&lt;/li&gt;&lt;li&gt;`_cprod`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品名リスト&lt;/li&gt;&lt;li&gt;`_cprodname`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品数量リスト&lt;/li&gt;&lt;li&gt;`_cquan`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品価格リスト&lt;/li&gt;&lt;li&gt;`_cprice`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文ID</li><li>`_corder`を上書きします。</li></ul> |
+|`customer_id`|  <ul><li>顧客ID</li><li>`_ccustid`を上書きします。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>製品IDリスト</li><li>`_cprod`を上書きします。</li></ul> |
+|`product_name`|  <ul><li>配列</li><li>製品名リスト</li><li>`_cprodname`を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>製品数量リスト</li><li>`_cquan`を上書きします。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>製品価格リスト</li><li>`_cprice`を上書きします。</li></ul> |
 
 #### イベントトリガー
 
 |変数| 説明|
 |---| ---|
-|`userSignUp`|  &lt;ul&gt;&lt;li&gt;ユーザー登録&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn`|  &lt;ul&gt;&lt;li&gt;ユーザー登録オプトイン確認&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart`|  &lt;ul&gt;&lt;li&gt;カートに追加&lt;/li&gt;&lt;/ul&gt; |
-|`purchase`|  &lt;ul&gt;&lt;li&gt;購入&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent`|  &lt;ul&gt;&lt;li&gt;カスタムイベント&lt;/li&gt;&lt;/ul&gt; |
+|`userSignUp`|  <ul><li>ユーザー登録</li></ul> |
+|`userSignUpConfirmedOptIn`|  <ul><li>ユーザー登録オプトイン確認</li></ul> |
+|`addToCart`|  <ul><li>カートに追加</li></ul> |
+|`purchase`|  <ul><li>購入</li></ul> |
+|`customEvent`|  <ul><li>カスタムイベント</li></ul> |
 
 #### イベントデータ: userSignUp
 
 |変数| 説明|
 |---| ---|
-|`userSignUp.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;li&gt;Eコマース顧客IDを上書きします&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.key`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーIDタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.lists`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;リスト&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;変数&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.source`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;獲得ソース&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.onSuccess`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;成功時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUp.onError`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;エラー時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
+|`userSignUp.email`|  <ul><li>文字列</li><li>ユーザーのメール</li><li>Eコマース顧客IDを上書きします</li></ul> |
+|`userSignUp.id`|  <ul><li>文字列</li><li>ユーザーID</li></ul> |
+|`userSignUp.key`|  <ul><li>文字列</li><li>ユーザーIDタイプ</li></ul> |
+|`userSignUp.lists`|  <ul><li>オブジェクト</li><li>リスト</li></ul> |
+|`userSignUp.vars`|  <ul><li>オブジェクト</li><li>変数</li></ul> |
+|`userSignUp.source`|  <ul><li>文字列</li><li>獲得ソース</li></ul> |
+|`userSignUp.onSuccess`|  <ul><li>文字列</li><li>成功時のコールバック関数名</li></ul> |
+|`userSignUp.onError`|  <ul><li>文字列</li><li>エラー時のコールバック関数名</li></ul> |
 
 #### イベントデータ: userSignUpConfirmedOptIn
 
 |変数| 説明|
 |---| ---|
-|`userSignUpConfirmedOptIn.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;li&gt;Eコマース顧客IDを上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.key`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーIDタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.template_name`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;オプトインテンプレート名&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.template_vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;オプトインテンプレート変数&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;変数&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.source`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;獲得ソース&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.onSuccess`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;成功時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
-|`userSignUpConfirmedOptIn.onError`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;エラー時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
+|`userSignUpConfirmedOptIn.email`|  <ul><li>文字列</li><li>ユーザーのメール</li><li>Eコマース顧客IDを上書きします。</li></ul> |
+|`userSignUpConfirmedOptIn.id`|  <ul><li>文字列</li><li>ユーザーID</li></ul> |
+|`userSignUpConfirmedOptIn.key`|  <ul><li>文字列</li><li>ユーザーIDタイプ</li></ul> |
+|`userSignUpConfirmedOptIn.template_name`|  <ul><li>文字列</li><li>オプトインテンプレート名</li></ul> |
+|`userSignUpConfirmedOptIn.template_vars`|  <ul><li>オブジェクト</li><li>オプトインテンプレート変数</li></ul> |
+|`userSignUpConfirmedOptIn.vars`|  <ul><li>オブジェクト</li><li>変数</li></ul> |
+|`userSignUpConfirmedOptIn.source`|  <ul><li>文字列</li><li>獲得ソース</li></ul> |
+|`userSignUpConfirmedOptIn.onSuccess`|  <ul><li>文字列</li><li>成功時のコールバック関数名</li></ul> |
+|`userSignUpConfirmedOptIn.onError`|  <ul><li>文字列</li><li>エラー時のコールバック関数名</li></ul> |
 
 #### イベントデータ: addToCart
 
 |変数| 説明|
 |---| ---|
-|`addToCart.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;li&gt;Eコマース顧客IDを上書きします&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart.reminder_time`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;リマインダー時間&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart.reminder_template`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;リマインダーテンプレート&lt;/li&gt;&lt;/ul&gt; |
-|`product_url`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品URLリスト&lt;/li&gt;&lt;/ul&gt; |
-|`product_images`|  &lt;ul&gt;&lt;li&gt;オブジェクトの配列&lt;/li&gt;&lt;li&gt;製品画像リスト&lt;/li&gt;&lt;/ul&gt; |
-|`product_vars`|  &lt;ul&gt;&lt;li&gt;オブジェクトの配列&lt;/li&gt;&lt;li&gt;製品変数リスト&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart.vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;変数&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart.onSuccess`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;成功時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
-|`addToCart.onError`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;エラー時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
+|`addToCart.email`|  <ul><li>文字列</li><li>ユーザーのメール</li><li>Eコマース顧客IDを上書きします</li></ul> |
+|`addToCart.reminder_time`|  <ul><li>文字列</li><li>リマインダー時間</li></ul> |
+|`addToCart.reminder_template`|  <ul><li>文字列</li><li>リマインダーテンプレート</li></ul> |
+|`product_url`|  <ul><li>配列</li><li>製品URLリスト</li></ul> |
+|`product_images`|  <ul><li>オブジェクトの配列</li><li>製品画像リスト</li></ul> |
+|`product_vars`|  <ul><li>オブジェクトの配列</li><li>製品変数リスト</li></ul> |
+|`addToCart.vars`|  <ul><li>オブジェクト</li><li>変数</li></ul> |
+|`addToCart.onSuccess`|  <ul><li>文字列</li><li>成功時のコールバック関数名</li></ul> |
+|`addToCart.onError`|  <ul><li>文字列</li><li>エラー時のコールバック関数名</li></ul> |
 
 #### イベントデータ: purchase
 
 |変数| 説明|
 |---| ---|
-|`purchase.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;li&gt;Eコマース顧客IDを上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_url`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;製品URLリスト&lt;/li&gt;&lt;/ul&gt; |
-|`product_images`|  &lt;ul&gt;&lt;li&gt;オブジェクトの配列&lt;/li&gt;&lt;li&gt;製品画像リスト&lt;/li&gt;&lt;/ul&gt; |
-|`product_vars`|  &lt;ul&gt;&lt;li&gt;オブジェクトの配列&lt;/li&gt;&lt;li&gt;製品変数リスト&lt;/li&gt;&lt;/ul&gt; |
-|`purchase.vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;変数&lt;/li&gt;&lt;/ul&gt; |
-|`purchase.onSuccess`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;成功時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
-|`purchase.onError`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;エラー時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
+|`purchase.email`|  <ul><li>文字列</li><li>ユーザーのメール</li><li>Eコマース顧客IDを上書きします。</li></ul> |
+|`product_url`|  <ul><li>配列</li><li>製品URLリスト</li></ul> |
+|`product_images`|  <ul><li>オブジェクトの配列</li><li>製品画像リスト</li></ul> |
+|`product_vars`|  <ul><li>オブジェクトの配列</li><li>製品変数リスト</li></ul> |
+|`purchase.vars`|  <ul><li>オブジェクト</li><li>変数</li></ul> |
+|`purchase.onSuccess`|  <ul><li>文字列</li><li>成功時のコールバック関数名</li></ul> |
+|`purchase.onError`|  <ul><li>文字列</li><li>エラー時のコールバック関数名</li></ul> |
 
 #### イベントデータ: customEvent
 
 |変数| 説明|
 |---| ---|
-|`customEvent.name`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;イベント名&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;li&gt;Eコマース顧客IDを上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.key`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーIDタイプ&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.vars`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;変数&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.onSuccess`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;成功時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
-|`customEvent.onError`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;エラー時のコールバック関数名&lt;/li&gt;&lt;/ul&gt; |
+|`customEvent.name`|  <ul><li>文字列</li><li>イベント名</li></ul> |
+|`customEvent.email`|  <ul><li>文字列</li><li>ユーザーのメール</li><li>Eコマース顧客IDを上書きします。</li></ul> |
+|`customEvent.id`|  <ul><li>文字列</li><li>ユーザーID</li></ul> |
+|`customEvent.key`|  <ul><li>文字列</li><li>ユーザーIDタイプ</li></ul> |
+|`customEvent.vars`|  <ul><li>オブジェクト</li><li>変数</li></ul> |
+|`customEvent.onSuccess`|  <ul><li>文字列</li><li>成功時のコールバック関数名</li></ul> |
+|`customEvent.onError`|  <ul><li>文字列</li><li>エラー時のコールバック関数名</li></ul> |

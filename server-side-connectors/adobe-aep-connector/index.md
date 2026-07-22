@@ -21,30 +21,30 @@ To map an array of objects with dynamic lengths, the connector accepts an array 
 
 For example, if you want to send an Adobe Analytics list, you can use this connector to send the data as an array of objects. The connector will map the list in the following ways:
 
-* `_experience.analytics.customDimensions.lists.list1.list.key` to `[&#39;productCategories&#39;,&#39;productCategories&#39;,&#39;productCategories&#39;]`
-* `_experience.analytics.customDimensions.lists.list1.list.value` to `[&#39;clothing&#39;,&#39;shoes&#39;,&#39;accessories&#39;]`
+* `_experience.analytics.customDimensions.lists.list1.list.key` to `['productCategories','productCategories','productCategories']`
+* `_experience.analytics.customDimensions.lists.list1.list.value` to `['clothing','shoes','accessories']`
 
 The connector will merge these arrays into the following JSON format:
 
 ```json
-&#34;xdm&#34;: {
-    &#34;_experience&#34;: {
-        &#34;analytics&#34;: {
-            &#34;customDimensions&#34;: {
-                &#34;lists&#34;: {
-                    &#34;list1&#34;: {
-                        &#34;list&#34;: [
+"xdm": {
+    "_experience": {
+        "analytics": {
+            "customDimensions": {
+                "lists": {
+                    "list1": {
+                        "list": [
                             {
-                                &#34;key&#34;: &#34;productCategories&#34;,
-                                &#34;value&#34;: &#34;clothing&#34;
+                                "key": "productCategories",
+                                "value": "clothing"
                             },
                             {
-                                &#34;key&#34;: &#34;productCategories&#34;,
-                                &#34;value&#34;: &#34;shoes&#34;
+                                "key": "productCategories",
+                                "value": "shoes"
                             },
                             {
-                                &#34;key&#34;: &#34;productCategories&#34;,
-                                &#34;value&#34;: &#34;accessories&#34;
+                                "key": "productCategories",
+                                "value": "accessories"
                             }
                         ]
                     }
@@ -55,7 +55,7 @@ The connector will merge these arrays into the following JSON format:
 }
 ```
 
-If you pass an empty optional array value to the connector, then the connector passes an empty value in the corresponding object&#39;s attribute. For example, if you mapped `experience.analytics.customDimensions.lists.list1.list.key` to `[&#39;clothing&#39;,&#39;&#39;,&#39;accessories&#39;]`, the attribute key will not be present for the second object in the list array.
+If you pass an empty optional array value to the connector, then the connector passes an empty value in the corresponding object's attribute. For example, if you mapped `experience.analytics.customDimensions.lists.list1.list.key` to `['clothing','','accessories']`, the attribute key will not be present for the second object in the list array.
 
 If the schema requires an attribute and it is not included in the array, the entire object will not be included in the array sent to Adobe.
 
@@ -66,26 +66,26 @@ Your connector configuration may require map attributes with identity namespaces
 For example, if you want to send the following `segmentMembership` values to Adobe:
 
 ```json
-&#34;segmentMembership&#34;:{
-   &#34;Email&#34;:{
-      &#34;a@example.com&#34;:{
-        &#34;version&#34;: 1,
+"segmentMembership":{
+   "Email":{
+      "a@example.com":{
+        "version": 1,
       },
-      &#34;b@example.com&#34;:{
-        &#34;status&#34;: &#34;exited&#34;
+      "b@example.com":{
+        "status": "exited"
       },
-      &#34;c@example.com&#34;:{
-        &#34;version&#34;: 3,
-        &#34;status&#34;: &#34;in&#34;
+      "c@example.com":{
+        "version": 3,
+        "status": "in"
       },
    }
 }
 ```
 You will need to map the following arrays in the connector:
 
-* `segmentMembership.Email`: `[&#34;a@example.com&#34;,&#34;b@example.com&#34;,&#34;c@example.com&#34;]`
-* `segmentMembership.Email.version`: `[&#34;1&#34;, &#34;&#34;, &#34;3&#34;]` (An array of strings that includes an empty value for the second email.)
-* `segmentMembership.Email.status`: `[&#39;&#39;, &#39;exited&#39;, &#39;in&#39;]` (Includes an empty value for the first email.)
+* `segmentMembership.Email`: `["a@example.com","b@example.com","c@example.com"]`
+* `segmentMembership.Email.version`: `["1", "", "3"]` (An array of strings that includes an empty value for the second email.)
+* `segmentMembership.Email.status`: `['', 'exited', 'in']` (Includes an empty value for the first email.)
 * `segmentMembership.Email.validUntil`: `null`
 
 ## API information
@@ -112,7 +112,7 @@ The following credentials are required for this connector:
     * Client secret 
     * Organization ID
 1. Note your credentials and return to Tealium to complete the connector configuration.
-1. In Tealium, navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+1. In Tealium, navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 1. After adding the connector, configure the following settings using the credentials that you generated in the previous steps:
     * **Client ID**  
     (Required) The Client ID.
@@ -140,14 +140,14 @@ The following credentials are required for this connector:
 | --- | --- |
 | Datastream ID | The Adobe server-side Datastream configuration you want to use for this action. |
 | XDM Schema | The Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see [Generate a Datastream identifier](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier). |
-| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. &lt;br&gt; If the **XDM Schema** you select contains any kind of map attribute, use this parameter to select the identity namespaces you want to use in the mapping. |
-| XDM Schema Parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.&lt;br&gt; Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. If the parameter does not contain any identity namespaces, enter a dash (`-`). |
-| XDM Schema Template | Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.&lt;br&gt;For more information, see [Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/). |
+| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. <br> If the **XDM Schema** you select contains any kind of map attribute, use this parameter to select the identity namespaces you want to use in the mapping. |
+| XDM Schema Parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.<br> Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. If the parameter does not contain any identity namespaces, enter a dash (`-`). |
+| XDM Schema Template | Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.<br>For more information, see [Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/). |
 | Data | Use this field to map a preexisting JSON data layer object to an XDM schema. The sub-properties of the data object can be constructed in a way that maps to the data layer properties that you want to capture. The attribute is fully customizable. |
-| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. &lt;br&gt; For more information and usage examples, see .|
-| Templates | Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;br&gt;For more information and usage examples, see .|
-| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&#39;s Referer header, if available, or the corresponding data layer property. |
-| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&#39;s IP address. |
+| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Templates | Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.<br>For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser's Referer header, if available, or the corresponding data layer property. |
+| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor's IP address. |
 | X-Forwarded-Proto | Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is `HTTPS`. |
 | X-Forwarded-Host | Identifies the original host requested by the client, such as `www.clientsite.com`. Required by AEP to maintain accurate host attribution. |
 | User-Agent | Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection. |
@@ -166,7 +166,7 @@ The following credentials are required for this connector:
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 6,000
 * Max time since oldest request: 15 minutes
@@ -177,14 +177,14 @@ This action uses batched requests to support high-volume data transfers to the v
 | --- | --- |
 | Datastream ID | The Adobe server-side Datastream configuration you want to use for this action. |
 | XDM Schema | The Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see [Generate a Datastream identifier](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier).  |
-| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. &lt;br&gt; If the **XDM Schema** you select contains any kind of map type attribute, use this parameter to select the identity namespaces you want to use in the mapping.&lt;br&gt;If the parameter does not contain any identity namespaces, enter a dash (`-`). |
-| XDM Schema Parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.&lt;br&gt;Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
-| XDM Schema Template | Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.&lt;br&gt;For more information, see [Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/). |
+| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. <br> If the **XDM Schema** you select contains any kind of map type attribute, use this parameter to select the identity namespaces you want to use in the mapping.<br>If the parameter does not contain any identity namespaces, enter a dash (`-`). |
+| XDM Schema Parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.<br>Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
+| XDM Schema Template | Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.<br>For more information, see [Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/). |
 | Data | Use this field to map a preexisting JSON data layer object to an XDM schema. The sub-properties of the data object can be constructed in a way that maps to the data layer properties that you want to capture. The attribute is fully customizable. |
-| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. &lt;br&gt; For more information and usage examples, see .|
-| Templates | Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;br&gt;For more information and usage examples, see .|
-| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&#39;s Referer header, if available, or the corresponding data layer property. |
-| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&#39;s IP address. |
+| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Templates | Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.<br>For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser's Referer header, if available, or the corresponding data layer property. |
+| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor's IP address. |
 | X-Forwarded-Proto | Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is `HTTPS`. |
 | X-Forwarded-Host | Identifies the original host requested by the client, such as `www.clientsite.com`. Required by AEP to maintain accurate host attribution. |
 | User-Agent | Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection. |
@@ -206,13 +206,13 @@ This action uses batched requests to support high-volume data transfers to the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Dataset | Select the source dataset for record data. |
-| Connection | The connection ID. &lt;br&gt;For new connection IDs:&lt;ol&gt;&lt;li&gt;Click **Create**.&lt;/li&gt;&lt;li&gt;In the **Create Connection** screen, enter the name for the connection ID and click **Done**.&lt;/li&gt;&lt;li&gt;Click **Connect** to finish creating the connection to Adobe AEP endpoints.&lt;/li&gt;&lt;/ol&gt;For existing connection IDs:&lt;ol&gt;&lt;li&gt;Click **Connect** to create the connection to the Adobe AEP endpoints.&lt;/li&gt;&lt;/ol&gt;A **Connection Done** message will be displayed after your connection is successfully established.  |
-| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. &lt;br&gt; If the **XDM Schema** you select contains any kind of map attribute, use this parameter to select the identity namespaces you want to use in the mapping. If the parameter does not contain any identity namespaces, enter a dash (`-`). |
-| Body parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.&lt;br&gt;Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
+| Connection | The connection ID. <br>For new connection IDs:<ol><li>Click **Create**.</li><li>In the **Create Connection** screen, enter the name for the connection ID and click **Done**.</li><li>Click **Connect** to finish creating the connection to Adobe AEP endpoints.</li></ol>For existing connection IDs:<ol><li>Click **Connect** to create the connection to the Adobe AEP endpoints.</li></ol>A **Connection Done** message will be displayed after your connection is successfully established.  |
+| Identity Namespaces | Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. <br> If the **XDM Schema** you select contains any kind of map attribute, use this parameter to select the identity namespaces you want to use in the mapping. If the parameter does not contain any identity namespaces, enter a dash (`-`). |
+| Body parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
 | Created At | A timestamp marking the creation of the connection. |
 | Source Name | (Optional) A name for your source. If this value is missing, the streaming message automatically adds the source ID from the streaming connection definition. |
-| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&#39;s Referer header, if available, or the corresponding data layer property. |
-| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&#39;s IP address. |
+| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser's Referer header, if available, or the corresponding data layer property. |
+| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor's IP address. |
 | X-Forwarded-Proto | Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is `HTTPS`. |
 | X-Forwarded-Host | Identifies the original host requested by the client, such as `www.clientsite.com`. Required by AEP to maintain accurate host attribution. |
 | User-Agent | Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection. |
@@ -226,14 +226,14 @@ This action uses batched requests to support high-volume data transfers to the v
 | Sec-CH-UA-WoW64 | Indicates whether the client is running a 32-bit process on a 64-bit Windows system. |
 | Custom Header Key CSV | Provide a custom header key to send with the request. |
 | Custom Header Value CSV | Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key. |
-| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. &lt;br&gt; For more information and usage examples, see .|
-| Templates | Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;br&gt;For more information and usage examples, see .|
+| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Templates | Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.<br>For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
 
 ### Stream Record Data (Batched)
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 6,000
 * Max time since oldest request: 60 minutes
@@ -244,13 +244,13 @@ This action uses batched requests to support high-volume data transfers to the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Dataset | Select the dataset to ingest record data. |
-| Connection | The connection ID. &lt;br&gt;For new connection IDs:&lt;ol&gt;&lt;li&gt;Click **Create**.&lt;/li&gt;&lt;li&gt;In the **Create Connection** screen, enter the name for the connection ID and click **Done**.&lt;/li&gt;&lt;li&gt;Click **Connect** to finish creating the connection to Adobe AEP endpoints.&lt;/li&gt;&lt;/ol&gt;For existing connection IDs:&lt;ol&gt;&lt;li&gt;Click **Connect** to create the connection to the Adobe AEP endpoints.&lt;/li&gt;&lt;/ol&gt;A **Connection Done** message will be displayed after your connection is successfully established.  |
-| Identity Namespaces | This parameter indicates the context to which an identity relates, distinguishing different types of identity values, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. Select the namespaces that you want to map.&lt;br&gt;If the parameter does not contain any identity namespaces, enter a dash (`-`). |
-| Body parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.&lt;br&gt;Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
+| Connection | The connection ID. <br>For new connection IDs:<ol><li>Click **Create**.</li><li>In the **Create Connection** screen, enter the name for the connection ID and click **Done**.</li><li>Click **Connect** to finish creating the connection to Adobe AEP endpoints.</li></ol>For existing connection IDs:<ol><li>Click **Connect** to create the connection to the Adobe AEP endpoints.</li></ol>A **Connection Done** message will be displayed after your connection is successfully established.  |
+| Identity Namespaces | This parameter indicates the context to which an identity relates, distinguishing different types of identity values, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. Select the namespaces that you want to map.<br>If the parameter does not contain any identity namespaces, enter a dash (`-`). |
+| Body parameters | Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The `identityMap` attribute requires that at least one of its namespaces has the property `primary` set to `true`. |
 | Created At | A timestamp marking the creation of the connection. |
 | Source Name | (Optional) A name for your source. If this value is missing, the streaming message automatically adds the source ID from the streaming connection definition. |
-| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&#39;s Referer header, if available, or the corresponding data layer property. |
-| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&#39;s IP address. |
+| Referer | Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser's Referer header, if available, or the corresponding data layer property. |
+| X-Forwarded-For | Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor's IP address. |
 | X-Forwarded-Proto | Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is `HTTPS`. |
 | X-Forwarded-Host | Identifies the original host requested by the client, such as `www.clientsite.com`. Required by AEP to maintain accurate host attribution. |
 | User-Agent | Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection. |
@@ -264,8 +264,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Sec-CH-UA-WoW64 | Indicates whether the client is running a 32-bit process on a 64-bit Windows system. |
 | Custom Header Key CSV | Provide a custom header key to send with the request. |
 | Custom Header Value CSV | Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key. |
-| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. &lt;br&gt; For more information and usage examples, see .|
-| Templates | Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;br&gt;For more information and usage examples, see .|
+| Template Variables | Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
+| Templates | Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.<br>For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).|
 
 ## Use cases
 
@@ -277,36 +277,36 @@ To use the Adobe Experience Platform connector to send analytics data to Adobe A
 
 When sending data to Adobe Experience Edge, you need to ensure it adheres to the Adobe XDM schemas. After Adobe Analytics receives the events, they are converted into more structured data, such as page views or link events, that can be easily managed. For more information about XDM data and Adobe Analytics, see [Implement Adobe Analytics with Adobe Experience Platform Edge](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/overview.html?lang=en).
 
-To ensure that page views and link events are handled properly, Adobe applies specific logic to the data before it&#39;s sent to the Adobe Experience Edge network. This logic ensures that the data is properly formatted, that any necessary transformations or aggregations are applied, and that the data conforms to the XDM schema. From there, it&#39;s forwarded to Adobe Analytics for processing and analysis.
+To ensure that page views and link events are handled properly, Adobe applies specific logic to the data before it's sent to the Adobe Experience Edge network. This logic ensures that the data is properly formatted, that any necessary transformations or aggregations are applied, and that the data conforms to the XDM schema. From there, it's forwarded to Adobe Analytics for processing and analysis.
 
 The following table lists examples of data in an XDM payload and how Adobe Analytics will interpret the data based on the schema:
 
 | **XDM payload data** | **Adobe Analytics interpretation** |
 | --- | --- |
-| `web.webPageDetails.name` or&lt;br&gt; `web.webPageDetails.URL` and no &lt;br&gt;`web.webInteraction.type` | Payload is considered a page view.|
-|`web.webInteraction.type` and &lt;br&gt;(`web.webInteraction.name` or `web.webInteraction.url`) | Payload is considered a link event.|
-|`web.webInteraction.type` and&lt;br&gt; (`web.webPageDetails.name` or `web.webPageDetails.url`)| Payload is considered a link event. `web.webPageDetails.name` and `web.webPageDetails.URL` are set to `null`.|
-|no `web.webInteraction.type` and &lt;br&gt;(no `webPageDetails.name` and no `web.webPageDetails.URL`) | Payload is dropped and data is ignored.|
+| `web.webPageDetails.name` or<br> `web.webPageDetails.URL` and no <br>`web.webInteraction.type` | Payload is considered a page view.|
+|`web.webInteraction.type` and <br>(`web.webInteraction.name` or `web.webInteraction.url`) | Payload is considered a link event.|
+|`web.webInteraction.type` and<br> (`web.webPageDetails.name` or `web.webPageDetails.url`)| Payload is considered a link event. `web.webPageDetails.name` and `web.webPageDetails.URL` are set to `null`.|
+|no `web.webInteraction.type` and <br>(no `webPageDetails.name` and no `web.webPageDetails.URL`) | Payload is dropped and data is ignored.|
 
 For a complete list of different variables that you can use to send data to Adobe Analytics, see [Analytics variable mapping in Adobe Experience Edge](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/variable-mapping.html?lang=en).
 
 The following example shows how data for the variable `web.webPageDetails.name` and `experience` data is formatted when sent to Adobe Analytics:
 
 ```json
-&#34;xdm&#34;: {
-  &#34;web&#34;: {
-    &#34;webPageDetails&#34;: {
-      &#34;name&#34;: &#34;Home Page&#34;
+"xdm": {
+  "web": {
+    "webPageDetails": {
+      "name": "Home Page"
     }
   },
-  &#34;_experience&#34;: {
-    &#34;analytics&#34;: {
-      &#34;customDimensions&#34;: {
-        &#34;props&#34;: {
-          &#34;prop1&#34;: &#34;value1&#34;
+  "_experience": {
+    "analytics": {
+      "customDimensions": {
+        "props": {
+          "prop1": "value1"
         },
-        &#34;eVars&#34;: {
-          &#34;eVar1&#34;: &#34;value2&#34;
+        "eVars": {
+          "eVar1": "value2"
         }
       }
     }
@@ -316,15 +316,15 @@ The following example shows how data for the variable `web.webPageDetails.name` 
 
 #### Configure Adobe Experience Platform
 
-1. In Adobe Experience Platform, go to **Data Management &gt; Schemas** and click **Create Schema**.
+1. In Adobe Experience Platform, go to **Data Management > Schemas** and click **Create Schema**.
 1. In the **Schema Details** section, select the **Experience Event** option and then click **Next**.
 1. Enter a name for the schema and click **Finish**.
-1. In **Data Management &gt; Schemas** select the schema that you just created.
-1. In the schema details screen, go to the **Field groups** section and click **Add**. Select the **Adobe Analytics ExperienceEvent Template** and click **Save**.![](/images/client-side-tags/adobe-experience-platform-schemas.png)
-1. Go to **Data Collection &gt; Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
-1. In your Datastream **Configure** screen, select the **Event Schema** you just created and click **Save**. ![](/images/client-side-tags/adobe-experience-platform-datastreams.png)
+1. In **Data Management > Schemas** select the schema that you just created.
+1. In the schema details screen, go to the **Field groups** section and click **Add**. Select the **Adobe Analytics ExperienceEvent Template** and click **Save**.![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-schemas.png)
+1. Go to **Data Collection > Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
+1. In your Datastream **Configure** screen, select the **Event Schema** you just created and click **Save**. ![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-datastreams.png)
 1. In the **Datastreams** screen, click **Add Service** and select the **Adobe Analytics** option from the drop-down list and then click **Add Report Suite**. 
-1. Enter the **Report Suite ID** from Adobe Analytics and click **Save**. You can find the report suite ID by navigating to **Adobe Analytics &gt; Admin &gt; Report Suites**. 
+1. Enter the **Report Suite ID** from Adobe Analytics and click **Save**. You can find the report suite ID by navigating to **Adobe Analytics > Admin > Report Suites**. 
 
 For more information about configuring Adobe Experience Platform Datastream, services, and schemas, see the following articles in the Adobe documentation:
 
@@ -349,7 +349,7 @@ For more information about configuring Adobe Experience Platform Datastream, ser
 
 The following image shows example mappings in Tealium:
 
-![](/images/server-side-connectors/adobe-analytics-tealium-setup.png)
+![](https://docs.tealium.com/images/server-side-connectors/adobe-analytics-tealium-setup.png)
 
 ### Send audience data to Adobe Audience Manager
 
@@ -360,31 +360,31 @@ For a full list of Adobe Audience Manager and XDM field mappings, see [Audience 
 The following example shows how audience data is mapped to XDM schema when sent to Adobe Audience Manager.
 
 ```json
-  &#34;xdm&#34;: {
-      &#34;identityMap&#34;: {
-        &#34;ECID&#34;: {
-          &#34;_id&#34;: &#34;12345&#34;
+  "xdm": {
+      "identityMap": {
+        "ECID": {
+          "_id": "12345"
         },
-        &#34;CORE&#34;: {
-          &#34;_id&#34;: &#34;67890&#34;
+        "CORE": {
+          "_id": "67890"
         }
       },
-      &#34;segmentMemberships&#34;: {
-        &#34;AAMTraits&#34;: [&#34;trait1&#34;, &#34;trait2&#34;],
-        &#34;AAMSegments&#34;: [&#34;segment1&#34;, &#34;segment2&#34;]
+      "segmentMemberships": {
+        "AAMTraits": ["trait1", "trait2"],
+        "AAMSegments": ["segment1", "segment2"]
       },
-      &#34;profileStitch&#34;: [],
-      &#34;device&#34;: {
-        &#34;type&#34;: &#34;desktop&#34;
+      "profileStitch": [],
+      "device": {
+        "type": "desktop"
       },
-      &#34;placeContext&#34;: {
-        &#34;geo&#34;: {
-          &#34;countryCode&#34;: &#34;US&#34;
+      "placeContext": {
+        "geo": {
+          "countryCode": "US"
         }
       },
-      &#34;environment&#34;: {
-        &#34;browserDetails&#34;: {
-          &#34;userAgent&#34;: &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#34;
+      "environment": {
+        "browserDetails": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
         }
       }
   }
@@ -393,12 +393,12 @@ The following example shows how audience data is mapped to XDM schema when sent 
 
 Adobe Audience Manager accepts two types of data: real-time and profile data, using Experience Event and Individual Profile schemas. The following example shows how to configure Adobe Experience Platform for an Experience Event use case. To use Individual Profile, complete the following steps but select the Individual Profile option in the step 2.
 
-1. In Adobe Experience Platform, go to **Data Management &gt; Schemas** and click **Create Schema**.
+1. In Adobe Experience Platform, go to **Data Management > Schemas** and click **Create Schema**.
 1. In the **Schema Details** section, select the **Experience Event** option for real-time data setup and then click **Next**.
 1. Enter a name for the schema and click **Finish**.
-1. In **Data Management &gt; Schemas** select the schema that you just created.
-1. In the schema details screen, go to the **Field groups** section, select the **Adobe Audience Manager Template**, and click **Save**.![](/images/server-side-connectors/adobe-audience-manager-schema.png)
-1. Go to **Data Collection &gt; Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
+1. In **Data Management > Schemas** select the schema that you just created.
+1. In the schema details screen, go to the **Field groups** section, select the **Adobe Audience Manager Template**, and click **Save**.![](https://docs.tealium.com/images/server-side-connectors/adobe-audience-manager-schema.png)
+1. Go to **Data Collection > Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
 1. In your Datastream **Configure** screen, select the **Event Schema** you just created and click **Save**. 
 1. In the **Datastreams** screen, click **Add Service** and select the **Adobe Audience Manager** option from the drop-down list and click **Save**. 
 
@@ -424,42 +424,42 @@ For a full list of Adobe Target and XDM field mappings, see [Audience Target fie
 The following example shows how data is mapped to XDM schema when sent to Adobe Target.
 
 ```json
-&#34;xdm&#34;: {
-        &#34;channel&#34;: {
-            &#34;_id&#34;: &#34;web&#34;
+"xdm": {
+        "channel": {
+            "_id": "web"
         },
-        &#34;environment&#34;: {
-            &#34;browserDetails&#34;: {
-                &#34;userAgent&#34;: &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#34;
+        "environment": {
+            "browserDetails": {
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
             }
         },
-        &#34;_experience&#34;: {
-            &#34;target&#34;: {
-                &#34;clientCode&#34;: &#34;adobetarget&#34;,
-                &#34;mboxName&#34;: &#34;mbox1&#34;,
-                &#34;activities&#34;: [
+        "_experience": {
+            "target": {
+                "clientCode": "adobetarget",
+                "mboxName": "mbox1",
+                "activities": [
                     {
-                        &#34;activityID&#34;: &#34;12345&#34;
+                        "activityID": "12345"
                     }
                 ]
             }
         },
-        &#34;device&#34;: {
-            &#34;type&#34;: &#34;desktop&#34;
+        "device": {
+            "type": "desktop"
         },
-        &#34;placeContext&#34;: {
-            &#34;geo&#34;: {
-                &#34;countryCode&#34;: &#34;US&#34;
+        "placeContext": {
+            "geo": {
+                "countryCode": "US"
             }
         },
-        &#34;commerce&#34;: {
-            &#34;order&#34;: {
-                &#34;priceTotal&#34;: 100.0
+        "commerce": {
+            "order": {
+                "priceTotal": 100.0
             }
         },
-        &#34;web&#34;: {
-            &#34;webReferrer&#34;: {
-                &#34;url&#34;: &#34;https://www.example.com&#34;
+        "web": {
+            "webReferrer": {
+                "url": "https://www.example.com"
             }
         }
     }
@@ -467,12 +467,12 @@ The following example shows how data is mapped to XDM schema when sent to Adobe 
 ```
 #### Configure Adobe Experience Platform
 
-1. In Adobe Experience Platform, go to **Data Management &gt; Schemas** and click **Create Schema**.
+1. In Adobe Experience Platform, go to **Data Management > Schemas** and click **Create Schema**.
 1. In the **Schema Details** section, select the **Experience Event** option and then click **Next**.
 1. Enter a name for the schema and click **Finish**.
-1. In **Data Management &gt; Schemas** select the schema that you just created.
-1. In the schema details screen, go to the **Field groups** section and click **Add**. Select the **Adobe Target ExperienceEvent Template** and click **Save**.![](/images/server-side-connectors/adobe-target-schema.png)
-1. Go to **Data Collection &gt; Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
+1. In **Data Management > Schemas** select the schema that you just created.
+1. In the schema details screen, go to the **Field groups** section and click **Add**. Select the **Adobe Target ExperienceEvent Template** and click **Save**.![](https://docs.tealium.com/images/server-side-connectors/adobe-target-schema.png)
+1. Go to **Data Collection > Datastreams** and select the datastream you want to use for data streaming and click the **Edit** button on the right side of the screen. If you do not already have a datastream configured, you can create a new one.
 1. In your Datastream **Configure** screen, select the **Event Schema** you just created and click **Save**. 
 1. In the **Datastreams** screen, click **Add Service** and select the **Adobe Target** option from the drop-down list and click **Save**. 
 
@@ -489,7 +489,7 @@ To configure the connector to send data to Adobe Target, complete the steps in t
 
 The following image shows example mappings in Tealium:
 
-![](/images/server-side-connectors/adobe-target-tealium-setup.png)
+![](https://docs.tealium.com/images/server-side-connectors/adobe-target-tealium-setup.png)
 
 
 ### Send profiling data to Adobe Identity Service
@@ -518,21 +518,21 @@ The following example shows how identity data is mapped to XDM schema when sent 
 
 ```json
 {
-    &#34;_id&#34;: &#34;gjsadfghdfkyweiu2ydudyieds3wuyi2kadsjlksddrdesdhslksdwqe&#34;,
-    &#34;timestamp&#34;: &#34;2023-11-17T02:59:57Z&#34;,
-    &#34;identityMap&#34;: {
-        &#34;Email&#34;: [
+    "_id": "gjsadfghdfkyweiu2ydudyieds3wuyi2kadsjlksddrdesdhslksdwqe",
+    "timestamp": "2023-11-17T02:59:57Z",
+    "identityMap": {
+        "Email": [
           {
-            &#34;id&#34;: &#34;myemail@example.com&#34;,
-            &#34;primary&#34;: true
+            "id": "myemail@example.com",
+            "primary": true
           }
         ]
       },
-      &#34;personalEmail&#34;: {
-        &#34;address&#34;: &#34;myNEWemail@example.com&#34;
+      "personalEmail": {
+        "address": "myNEWemail@example.com"
       },
-      &#34;mobilePhone&#34;: {
-        &#34;number&#34;: &#34;77828292900000&#34;
+      "mobilePhone": {
+        "number": "77828292900000"
       }
     }
 }
@@ -547,9 +547,13 @@ For more information about configuring the Identity Service in Adobe Experience 
 
 #### Configure Adobe Experience Platform
 
-Updating customer data in Adobe Experience Platform may require stitching data from across Adobe products. For example, a profile may be created for an email campaign running in Adobe Journey Optimizer and then updated with different events sent through the Interactive Data Collection endpoint.
 
-1. In Adobe Experience Platform, go to **Data Management &gt; Schemas** and select the schema you want to use or click **Create Schema** to create a new one.
+<blockquote>
+Updating customer data in Adobe Experience Platform may require stitching data from across Adobe products. For example, a profile may be created for an email campaign running in Adobe Journey Optimizer and then updated with different events sent through the Interactive Data Collection endpoint.
+</blockquote>
+
+
+1. In Adobe Experience Platform, go to **Data Management > Schemas** and select the schema you want to use or click **Create Schema** to create a new one.
     * New schema
         1. In the **Schema Details** section, select the **Experience Event** or **Individual Profile** option and then click **Next**.
         1. Enter a name for the schema and click **Finish**.
@@ -558,13 +562,13 @@ Updating customer data in Adobe Experience Platform may require stitching data f
         1. Add the profile attributes you want updated when you use this schema. For example, to add email address and phone number:
             * Expand the **personalEmail** property, click on **address**, and click the **Identity** checkbox in the **Field Properties** section on the right side of the schema screen.
             * Expand the **mobilePhone** property, click on **number**, and click the **Identity** checkbox in the **Field Properties** section on the right side of the schema screen.
-1. Click **Save**.![](/images/server-side-connectors/adobe-identity-schema.png)
-1. Go to **Data Management &gt; Datasets**, and click **Create Dataset**.
+1. Click **Save**.![](https://docs.tealium.com/images/server-side-connectors/adobe-identity-schema.png)
+1. Go to **Data Management > Datasets**, and click **Create Dataset**.
 1. Click **Create Dataset from Schema**, select your schema from the list, and click **Next**.
 1. Enter a name for the dataset and click **Finish**.
-1. Go to **Customer &gt; Profiles**, select the **Merge Policies** tab, and click **Create merge policy**.
+1. Go to **Customer > Profiles**, select the **Merge Policies** tab, and click **Create merge policy**.
 1. Enter a schema name. Leave the schema class as **XDM Individual Profile** and ID stitching as **Private Graph**. Click **Save**.
-1. Go to **Connection &gt; Sources**, search for **Adobe Data Collection**, and click **Set Up**. 
+1. Go to **Connection > Sources**, search for **Adobe Data Collection**, and click **Set Up**. 
 
 For more information, see [Adobe Data Collection](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/data-collection.html?lang=en).
 
@@ -576,20 +580,20 @@ If you are using an Event Experience schema, create a **Send Event** action. If 
 
 The following image shows example mappings in Tealium:
 
-![](/images/server-side-connectors/adobe-identity-service-tealium-setup.png)
+![](https://docs.tealium.com/images/server-side-connectors/adobe-identity-service-tealium-setup.png)
 
 #### Verify profile update in Adobe Experience Platform
 
-To see an updated profile in Adobe Experience Platform, go to **Customer &gt; Profiles**. To view all profile attributes, click the **Attributes** tab. 
+To see an updated profile in Adobe Experience Platform, go to **Customer > Profiles**. To view all profile attributes, click the **Attributes** tab. 
 
 ## Debug an event call in Adobe Experience Platform
 
-To debug an event call, go to **Connection &gt; Sources** and click the **Dataflows** tab. 
+To debug an event call, go to **Connection > Sources** and click the **Dataflows** tab. 
 
 Click the dataflow automatically created for your datastream and verify if records have failed. You may not see the dataflow yet if the event has not been processed.
 
 If you find an error, click the **Dataflow Run Start** value to view the error details.
-![](/images/server-side-connectors/adobe-dataflows-tab.png)
+![](https://docs.tealium.com/images/server-side-connectors/adobe-dataflows-tab.png)
 
 In this example, the event has not been processed because the timestamp is not in the correct format.
-![](/images/server-side-connectors/adobe-dataflow-run-error.png)
+![](https://docs.tealium.com/images/server-side-connectors/adobe-dataflow-run-error.png)

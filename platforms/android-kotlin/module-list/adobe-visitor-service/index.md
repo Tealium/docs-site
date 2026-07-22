@@ -5,11 +5,11 @@ url: https://docs.tealium.com/platforms/android-kotlin/module-list/adobe-visitor
 ---
 The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors.
 
-Learn more about the [AdobeVisitorService](/platforms/getting-started-mobile/adobe-visitor-service/) module.
+Learn more about the [AdobeVisitorService](https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-service/) module.
 
 ## Requirements
 
-* [Tealium Kotlin for Android](/platforms/android-kotlin/)
+* [Tealium Kotlin for Android](https://docs.tealium.com/platforms/android-kotlin/)
 * Valid Adobe account and Adobe organization ID
 
 ## Sample App
@@ -45,8 +45,8 @@ import com.tealium.adobe.kotlin.*
 
 val config = TealiumConfig(
       app,
-      &#34;&lt;account&gt;&#34;,
-      &#34;&lt;profile&gt;&#34;,
+      "<account>",
+      "<profile>",
       Environment.DEV,
       collectors = mutableSetOf(Collectors.AdobeVisitor),
       dispatchers = mutableSetOf(Dispatchers.Collect)
@@ -56,4 +56,8 @@ val config = TealiumConfig(
   tealium = Tealium.create(BuildConfig.TEALIUM_INSTANCE, config)
 ```
 
-To link a known visitor ID or set the authentication state, see [Set a known visitor ID and authentication state](/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state).
+
+<blockquote>
+To link a known visitor ID or set the authentication state, see [Set a known visitor ID and authentication state](https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state).
+</blockquote>
+

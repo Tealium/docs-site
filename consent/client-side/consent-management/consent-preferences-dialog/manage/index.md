@@ -5,10 +5,10 @@ url: https://docs.tealium.com/consent/client-side/consent-management/consent-pre
 ---
 The Consent Preferences Manager is configured using the following tabs:
 
-![](/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
 
 * **Content**  
-This tab is used to enter the message displayed to your customers, add multiple language translations, and provide your company&#39;s logo URL and privacy policy link.
+This tab is used to enter the message displayed to your customers, add multiple language translations, and provide your company's logo URL and privacy policy link.
 * **Customization**  
 From this tab, customize the design and layout of your prompt by editing the CSS, HTML, and JavaScript used to display the pop-up.
 * **Categories**  
@@ -21,8 +21,8 @@ This tab lets you adjust additional options, such as logging consent changes usi
 
 Use the following steps to begin setting up the Consent Preferences Manager:
 
-1. In the left sidebar, go to **Client-Side Tools &gt; Consent Management**. In the **Consent Preferences Dialog** section, click **Get Started** to launch the configuration modal.  
-    ![](/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
+1. In the left sidebar, go to **Client-Side Tools > Consent Management**. In the **Consent Preferences Dialog** section, click **Get Started** to launch the configuration modal.  
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
     If your prompt is already set up, toggle it on or off from this screen.
 
 ### Content
@@ -47,29 +47,33 @@ To edit the content of the standard parameters, modify the text fields and click
 Sample HTML code with parameters:
 
 ``` html
-&lt;div class=&#34;example_body&#34;&gt;
-  &lt;div class=&#34;privacy_prompt&#34;&gt;
-    &lt;div class=&#34;privacy_prompt_content&#34;&gt;
-      &lt;h1&gt;{{title}}&lt;/h1&gt;
-      &lt;p&gt;{{message}}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;privacy_prompt_footer&#34;&gt;
-      &lt;div class=&#34;button right&#34;&gt;{{confirmation_button}}&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;close_btn_thick&#34;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="example_body">
+  <div class="privacy_prompt">
+    <div class="privacy_prompt_content">
+      <h1>{{title}}</h1>
+      <p>{{message}}</p>
+    </div>
+    <div class="privacy_prompt_footer">
+      <div class="button right">{{confirmation_button}}</div>
+    </div>
+    <div class="close_btn_thick"></div>
+  </div>
+</div>
 ```
 
 ### Custom parameters
 
 Add custom parameters to further customize the popup. Custom parameters are referenced within the standard parameters or in the CSS/HTML/JavaScript code.
 
+
+<blockquote>
 Best Practice: Avoid putting translatable text directly in the HTML or JavaScript. Instead, construct the code with `{{parameters}}` and define the values using custom parameters.
+</blockquote>
+
 
 To add a custom parameter:
 
-1. Click **&#43; Add Parameter**.  
+1. Click **+ Add Parameter**.  
 The **Custom Parameter** dialog appears.
 1. Enter a name for the parameter.
 1. Click **Apply**.  
@@ -80,18 +84,18 @@ This value is substituted any place that the parameter is referenced.
 
 ### Languages
 
-The preferences popup is built with automatic language detection. The browser&#39;s language setting of the browser is detected (two-character language code, for example `de` for German) and the pop-up presents the corresponding version of the content (if that language has been configured). The preferences pop-up is configured in English (`en`) as the default.
+The preferences popup is built with automatic language detection. The browser's language setting of the browser is detected (two-character language code, for example `de` for German) and the pop-up presents the corresponding version of the content (if that language has been configured). The preferences pop-up is configured in English (`en`) as the default.
 
 You are able to override the language with a value provided in the data layer (provided it is in the ISO format). Add this code as a preloader extension. This tells the consent which variable to use to switch the language. This affects the language shown for both explicit and preferences manager.
 
 ```
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
-window.utag_cfg_ovrd.gdprDLRef = &#34;&lt;some data layer var, for example: meta.lang/page_lang&gt;&#34;;
+window.utag_cfg_ovrd.gdprDLRef = "<some data layer var, for example: meta.lang/page_lang>";
 ```
 
 Use the following steps to add a language:
 
-1. In the **Language** side panel, click **&#43; Add**.  
+1. In the **Language** side panel, click **+ Add**.  
 The **Add Language** dialog appears.
 1. Select the language and click **Apply**.  
 The new language displays in the **Language** side panel.
@@ -99,9 +103,9 @@ The new language displays in the **Language** side panel.
 1. Enter the translated values in the standard parameter boxes (**Title**, **Message**, and **Confirmation** button).
 1. Click **Finish**.
 
-Set a default language by checking the box named **Make Default Language** located in the language title bar. The default language is used to display the preferences pop-up when the customer&#39;s detected browser language does not have a matching language configured in the consent prompt manager.
+Set a default language by checking the box named **Make Default Language** located in the language title bar. The default language is used to display the preferences pop-up when the customer's detected browser language does not have a matching language configured in the consent prompt manager.
 
-![](/images/iq-tag-management/consent-prompt-content-make-default.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
 
 ## Customization (CSS, HTML, JavaScript)
 
@@ -120,7 +124,7 @@ The list of tags appears in the main panel.
 1. Click the drop-down list and select a new category for the tag.
 1. Click **Finish**.
 
-To omit a category from displaying in the pop-up list that displays to the customer, toggle the switch to **Off**. To display a category in the customer&#39;s pop-up display, toggle the switch to **On**.
+To omit a category from displaying in the pop-up list that displays to the customer, toggle the switch to **Off**. To display a category in the customer's pop-up display, toggle the switch to **On**.
 
 
 ## Options
@@ -168,7 +172,7 @@ Displays the consent preferences popup. Integrate this function into your site t
 Example:
 
 ```html
-&lt;a href=&#34;#&#34; onClick=&#34;utag.gdpr.showConsentPreferences()&#34;&gt;Consent Preferences&lt;/a&gt;
+<a href="#" onClick="utag.gdpr.showConsentPreferences()">Consent Preferences</a>
 ```
 
 To set the language dynamically, pass a language code value to the function. This overrides both the `window.utag_cfg_ovrd.gdprDLRef` configuration and the browser detection logic.
@@ -176,6 +180,6 @@ To set the language dynamically, pass a language code value to the function. Thi
 Examples:
 
 ```js
-utag.gdpr.showConsentPreferences(&#39;de-DE&#39;); // German/Germany
-utag.gdpr.showConsentPreferences(&#39;fr&#39;);    // French
+utag.gdpr.showConsentPreferences('de-DE'); // German/Germany
+utag.gdpr.showConsentPreferences('fr');    // French
 ```

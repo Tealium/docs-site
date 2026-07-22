@@ -3,20 +3,20 @@ title: Location Module
 description: Provides device location data for your events and the ability to add geofences around points of interest.
 url: https://docs.tealium.com/platforms/android-java/module-list/location/
 ---
-The Location module enables your Android app to receive location information and the ability to configure and monitor geofences. Learn more about [location tracking and geofencing](/platforms/getting-started-mobile/location/).
+The Location module enables your Android app to receive location information and the ability to configure and monitor geofences. Learn more about [location tracking and geofencing](https://docs.tealium.com/platforms/getting-started-mobile/location/).
 
 ## Supported Platforms
 
 The following platforms are supported:
 
-* [Android](/platforms/android-java/)
-* [Android TV](/platforms/android-java/tv/)
-* [Android Wear](/platforms/android-java/wear/)
+* [Android](https://docs.tealium.com/platforms/android-java/)
+* [Android TV](https://docs.tealium.com/platforms/android-java/tv/)
+* [Android Wear](https://docs.tealium.com/platforms/android-java/wear/)
 
 ## Requirements
 
-* [Tealium for Android](/platforms/android-java/) (5.6.0&#43;)
-* Google Play Services [Location](https://developer.android.com/training/location) (11.0.0&#43;)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-java/) (5.6.0+)
+* Google Play Services [Location](https://developer.android.com/training/location) (11.0.0+)
 
 This module supports Firebase Cloud Messaging.
 
@@ -35,18 +35,18 @@ import com.tealium.location.TealiumLocation;
 
 To install the module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:  
+1. In your project's top-level `build.gradle` file, add the following Maven repository:  
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
-2. In your project module&#39;s `build.gradle` file, add the Maven dependencies for the Tealium library, Location module, and Google Play Services Location API:  
+2. In your project module's `build.gradle` file, add the Maven dependencies for the Tealium library, Location module, and Google Play Services Location API:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium:library:5.8.0&#39;
-            implementation &#39;com.tealium:location:1.0.0&#39;
-            runtimeOnly &#39;com.google.android.gms:play-services-location:17.0.0&#39;
+            implementation 'com.tealium:library:5.8.0'
+            implementation 'com.tealium:location:1.0.0'
+            runtimeOnly 'com.google.android.gms:play-services-location:17.0.0'
       }
       ```
 
@@ -64,32 +64,32 @@ To install the Location module manually:
             ...
             google()
             flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
             }
             ...
             }
       }
       ```
-3. Copy the file `tealium.location-1.0.0.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+3. Copy the file `tealium.location-1.0.0.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 4. Add the Tealium library dependency to your project module’s `build.gradle` file:  
       ```groovy
       dependencies {
             // only required if you do not already have this reference
-            implementation(name:&#39;tealium-5.6.0&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-5.6.0', ext:'aar')
             // location module reference
-            implementation(name:&#39;tealium.location-1.0.0&#39;, ext:&#39;aar&#39;)
-            // Google&#39;s Location Services API reference
-            runtimeOnly &#39;com.google.android.gms:play-services-location:17.0.0&#39;
+            implementation(name:'tealium.location-1.0.0', ext:'aar')
+            // Google's Location Services API reference
+            runtimeOnly 'com.google.android.gms:play-services-location:17.0.0'
       }
       ```
 
 ## Initialize
 
-Initialize the Location module by passing a Tealium instance name to [`TealiumLocation.setupInstance()`](/platforms/android-java/api/tealium-location/#setupinstance).
+Initialize the Location module by passing a Tealium instance name to [`TealiumLocation.setupInstance()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#setupinstance).
 
 ```java
-Set&lt;String&gt; tealiumInstances = new HashSet&lt;&gt;();
+Set<String> tealiumInstances = new HashSet<>();
 tealiumInstances.add(TealiumHelper.TEALIUM_MAIN);
 
 mInstance = TealiumLocation.setupInstance(this, tealiumInstances);
@@ -107,7 +107,7 @@ The time interval between location updates is set with a value in milliseconds. 
 
 Learn more about [Android location interval settings](https://developer.android.com/guide/topics/location/battery#frequency).
 
-Start location tracking by calling [`TealiumLocation.startLocationUpdates()`](/platforms/android-java/api/tealium-location/#startlocationupdates). Set the first parameter to `true` for high accuracy and `false` for lower accuracy tracking.
+Start location tracking by calling [`TealiumLocation.startLocationUpdates()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#startlocationupdates). Set the first parameter to `true` for high accuracy and `false` for lower accuracy tracking.
 
 The following example uses high accuracy and a time interval of 60000 milliseconds (60 seconds):  
 ```java
@@ -115,7 +115,7 @@ TealiumLocation.getInstance().startLocationUpdates(true, 60000);
 
 ```
 
-Disable continuous tracking by calling the methods `TealiumLocation.destroyInstance()` or [`TealiumLocation.stopLocationUpdates()`](/platforms/android-java/api/tealium-location/#stoplocationupdates).
+Disable continuous tracking by calling the methods `TealiumLocation.destroyInstance()` or [`TealiumLocation.stopLocationUpdates()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#stoplocationupdates).
 
 ### Location Permissions
 
@@ -126,7 +126,7 @@ To grant location permissions in your app:
       public static final int LOCATION_REQUEST_CODE = 101;
       ```
 
-2. Add the following method in your app&#39;s `MainActivity` class:  
+2. Add the following method in your app's `MainActivity` class:  
       ```java
       public void requestLocationPermission() {
             if (ContextCompat.checkSelfPermission(getApplicationContext(),
@@ -144,7 +144,7 @@ To grant location permissions in your app:
       ```java
       if ((ContextCompat.checkSelfPermission(getApplicationContext(),
             Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-            &amp;&amp; ContextCompat.checkSelfPermission(getApplicationContext(),
+            && ContextCompat.checkSelfPermission(getApplicationContext(),
             Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestLocationPermission();
       }
@@ -159,14 +159,14 @@ To grant location permissions in your app:
             String message;
             if (requestCode == LOCATION_REQUEST_CODE) {
                   // If request is cancelled, the result arrays are empty.
-                  if ((grantResults.length &gt; 0) &amp;&amp; (grantResults[0]
+                  if ((grantResults.length > 0) && (grantResults[0]
                   == PackageManager.PERMISSION_GRANTED)) {
-                  message = &#34;Location Permission Granted&#34;;
+                  message = "Location Permission Granted";
                   } else {
-                  message = &#34;Location Permission Not Granted&#34;;
+                  message = "Location Permission Not Granted";
                   }
             } else {
-                  message = &#34;Location Permission Not Granted&#34;;
+                  message = "Location Permission Not Granted";
             }
             showToast(message);
       }
@@ -180,25 +180,25 @@ To grant location permissions in your app:
 
 ### Last Known Location
 
-When continuous tracking is disabled, request the last known location with the method [`TealiumLocation.requestDeviceLastLocation()`](/platforms/android-java/api/tealium-location/#requestdevicelastlocation). This method relies on the location client being used by other apps on the device for accuracy. If no other apps are receiving location updates, then the method returns the last known location (or `null` if the location is not available).  
+When continuous tracking is disabled, request the last known location with the method [`TealiumLocation.requestDeviceLastLocation()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#requestdevicelastlocation). This method relies on the location client being used by other apps on the device for accuracy. If no other apps are receiving location updates, then the method returns the last known location (or `null` if the location is not available).  
 ```java
 TealiumLocation.getInstance().requestDeviceLastLocation();
 ```
 
 ## Geofencing
 
-To initialize with geofencing enabled, use one of the following methods to provide your [geofence JSON file](/platforms/getting-started-mobile/location/#json-file) to the setup method:
+To initialize with geofencing enabled, use one of the following methods to provide your [geofence JSON file](https://docs.tealium.com/platforms/getting-started-mobile/location/#json-file) to the setup method:
 
 * **Hosted URL**  
-Use your own hosted geofences file provided as a URL to the method [`TealiumLocation.setupInstanceWithUrl()`](/platforms/android-java/api/tealium-location/#setupinstancewithurl).  
-This option is recommended if you have overridden the publish settings URL or want to use [Hosted Data Layer]().  
+Use your own hosted geofences file provided as a URL to the method [`TealiumLocation.setupInstanceWithUrl()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#setupinstancewithurl).  
+This option is recommended if you have overridden the publish settings URL or want to use [Hosted Data Layer](https://docs.tealium.com/use-case-supplementing-product-data/).  
 ```java
-TealiumLocation.setupInstanceWithUrl(this, tealiumInstances, &#34;https://example.com/geofences.json&#34;);
+TealiumLocation.setupInstanceWithUrl(this, tealiumInstances, "https://example.com/geofences.json");
 ```
 * **Local File**  
-Use a geofences file stored in the Assets directory of your app with [`TealiumLocation.setupInstanceWithFile()`](/platforms/android-java/api/tealium-location/#setupinstancewithfile).  
+Use a geofences file stored in the Assets directory of your app with [`TealiumLocation.setupInstanceWithFile()`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#setupinstancewithfile).  
 ```java
-TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.json&#34;);
+TealiumLocation.setupInstanceWithFile(this, tealiumInstances, "geofences.json");
 ```
 
 ## Additional Considerations
@@ -207,17 +207,17 @@ TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.jso
 Android devices that implement battery optimization features may interfere with geofence monitoring, leading to events not firing.
 
 **BroadcastReceiver**  
-A `GEOFENCE_EVENT` broadcast is sent when a geofence transition type is triggered. Android only calls the _first_ `BroadcastReceiver` for this particular broadcast, even if multiple are defined. For third party SDKs that handle the `GEOFENCE_EVENT` broadcast, implement a &#34;proxy&#34; `BroadcastReceiver` that calls the `onReceive()` method of each individual receiver for the `GEOFENCE_EVENT` broadcast.
+A `GEOFENCE_EVENT` broadcast is sent when a geofence transition type is triggered. Android only calls the _first_ `BroadcastReceiver` for this particular broadcast, even if multiple are defined. For third party SDKs that handle the `GEOFENCE_EVENT` broadcast, implement a "proxy" `BroadcastReceiver` that calls the `onReceive()` method of each individual receiver for the `GEOFENCE_EVENT` broadcast.
 
 **Initializing Geofences**  
-If a user is within a geofence at the time of creation, the `&#34;enter&#34;` transition event does not fire. This is because `&#34;exit&#34;` and `&#34;enter&#34;` transition events are fired when crossing the perimeter and not when materializing inside.
+If a user is within a geofence at the time of creation, the `"enter"` transition event does not fire. This is because `"exit"` and `"enter"` transition events are fired when crossing the perimeter and not when materializing inside.
 
 **Latency:**   
 When using the geofencing capabilities, take the following into account:  
 
 * The geofence service does not continuously query for location, so latency is expected when receiving alerts. The latency is typically less than 2 minutes, but if background location limits are set or if the device has been stationary for a while, the latency increases.
 * The geofence service depends on the network location provider and a data connection. If there is no reliable network connectivity inside the geofence, alerts may not be triggered.
-* If Wi-Fi is turned off on the device, your application might never receive geofence alerts depending on several settings including the radius of the geofence, the device model, or the Android version. In Android 4.3&#43; provides the capability of &#34;Wi-Fi scan only mode&#34; which allows users to disable Wi-Fi and still receive a reliable network location. It is recommended to prompt the user to enable this setting.
+* If Wi-Fi is turned off on the device, your application might never receive geofence alerts depending on several settings including the radius of the geofence, the device model, or the Android version. In Android 4.3+ provides the capability of "Wi-Fi scan only mode" which allows users to disable Wi-Fi and still receive a reliable network location. It is recommended to prompt the user to enable this setting.
 
 **Number of Active Geofences**  
 Geofences are added and removed dynamically, using as few resources as possible. There is no limit to the number of geofences defined, but the number of active geofences is limited to 100 per device user across _all_ running applications.
@@ -228,9 +228,9 @@ The following variables are populated by the Location module as part of the mobi
 
 | Variable Name       | Type     | Description                                                               | Example       |
 |:--------------------|:---------|:--------------------------------------------------------------------------|:--------------|
-| `latitude`          | `String` | The latitude of the user&#39;s most recently recorded location                | `&#34;32.906119&#34;` |
-| `longitude`         | `String` | The longitude of the user&#39;s most recently recorded location               | `&#34;-117.2367&#34;` |
-| `location_accuracy` | `String` | The accuracy setting for the location module, such as `&#34;high&#34;` or `&#34;low&#34;` | `&#34;high&#34;`      |
+| `latitude`          | `String` | The latitude of the user's most recently recorded location                | `"32.906119"` |
+| `longitude`         | `String` | The longitude of the user's most recently recorded location               | `"-117.2367"` |
+| `location_accuracy` | `String` | The accuracy setting for the location module, such as `"high"` or `"low"` | `"high"`      |
 
 During geofencing, a tracking call containing location data is sent when the transition state of the user changes. Transition state changes include a user entering, exiting, or dwelling within a geofence for a specified duration of time. You must set the duration of loitering before the dwelling alert is sent using the Android method [setLoiteringDelay()](https://developers.google.com/android/reference/com/google/android/gms/location/Geofence.Builder#setLoiteringDelay(int)).
 
@@ -238,10 +238,10 @@ The following variables are sent to the data layer:
 
 | Variable Name              | Type     | Description                           | Example                                                          |
 |:---------------------------|:---------|:--------------------------------------|:-----------------------------------------------------------------|
-| `tealium_event`            | `String` | The Tealium tracked geofence event    | `&#34;geofence_entered&#34;`, `&#34;geofence_exited&#34;`, or `&#34;geofence_dwell&#34;` |
-| `geofence_name`            | `String` | The name of the geofence region       | `&#34;Tealium_San_Diego&#34;`                                            |
-| `geofence_transition_type` | `String` | The type of geofence transition event | `&#34;geofence_entered&#34;`, `&#34;geofence_exited&#34;`, or `&#34;geofence_dwell&#34;` |
+| `tealium_event`            | `String` | The Tealium tracked geofence event    | `"geofence_entered"`, `"geofence_exited"`, or `"geofence_dwell"` |
+| `geofence_name`            | `String` | The name of the geofence region       | `"Tealium_San_Diego"`                                            |
+| `geofence_transition_type` | `String` | The type of geofence transition event | `"geofence_entered"`, `"geofence_exited"`, or `"geofence_dwell"` |
 
 ## API Reference
 
-For the reference of methods used in the Location module, see the [`TealiumLocation`](/platforms/android-java/api/tealium-location/#class-tealiumlocation) class in the Tealium SDK for Android API.
+For the reference of methods used in the Location module, see the [`TealiumLocation`](https://docs.tealium.com/platforms/android-java/api/tealium-location/#class-tealiumlocation) class in the Tealium SDK for Android API.

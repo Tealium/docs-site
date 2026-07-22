@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/save-publish/version-history/
 
 In the sidebar, click **Server-Side Versions** to view the version history.
 
-![](/images/server-side/versions/server-side-versions-table.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-table.png)
 
 The **Latest Publish** box displays the currently published server-side version. The versions table lists all publish and save actions on versions and revisions of the current profile.
 
@@ -40,7 +40,7 @@ To select a new date range for the version table, click **Date Range** and selec
 
 To view revision details, click **Details**. The **Revision Details** window is displayed:
 
-![](/images/server-side/versions/server-side-version-details.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-version-details.png)
 
 The top of the **Revision Details** window displays the account, profile, and version name. It also displays the following information:
 
@@ -60,17 +60,21 @@ You can filter the displayed changes by the type of item or by the action perfor
 * **Name**: The name of the item that was changed.
 * **Action**: The action performed on the item (Created, Updated, Deleted).
 * **User**: The user who performed the change.
- If historical data for a change does not exist, the system displays **System** as the user who made the change. 
+
+<blockquote>
+If historical data for a change does not exist, the system displays **System** as the user who made the change.
+</blockquote>
+
 
 ### Revert revision
 
-The **Revert to this Revision** option is available for users with [publishing rights to the profile]() when the selected revision was published less than three months ago. Click **Revert to this Revision** to duplicate the selected revision and publish it. The table will refresh with the new information.
+The **Revert to this Revision** option is available for users with [publishing rights to the profile](https://docs.tealium.com/permission-groups/#publishing-permissions) when the selected revision was published less than three months ago. Click **Revert to this Revision** to duplicate the selected revision and publish it. The table will refresh with the new information.
 
 ### Compare revisions
 
 Select two revisions from the table, then click **Compare** to see differences between them.
 
-![](/images/server-side/versions/server-side-versions-table-compare.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-table-compare.png)
 
 The **Compare Revisions** window is displayed, and it displays the differences, if any:
 
@@ -78,6 +82,6 @@ The **Compare Revisions** window is displayed, and it displays the differences, 
 * **Name**: The name of the item that was changed.
 * **Action**: The action performed on the item (Added, Not Included, Updated).
 
-![](/images/server-side/versions/server-side-versions-diff.png)
+![](https://docs.tealium.com/images/server-side/versions/server-side-versions-diff.png)
 
 The **Compare Revisions** window is read-only. You cannot make changes on this window.

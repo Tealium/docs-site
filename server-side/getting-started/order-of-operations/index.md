@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/getting-started/order-of-operations/
 ---
 ## Data supply chain
 
-![](/images/guides/server-side/tealium-data-supply-chain.png)
+![](https://docs.tealium.com/images/guides/server-side/tealium-data-supply-chain.png)
 
 ## Order of operations overview
 
@@ -22,7 +22,7 @@ The default order of operations:
 * Audiences evaluated
 * Connectors triggered
 
-![](/images/server-side/asorderofprocessing.png)
+![](https://docs.tealium.com/images/server-side/asorderofprocessing.png)
 
 ## Enrichment timing and conditions
 
@@ -60,7 +60,7 @@ In the following example, the attribute enrichment for the `Cart Abandoner` badg
 * **WHEN**: Visit Ended
 * **Rule**: `cart_total_items greater than 0`
 
-![](/images/server-side/asprocessingcartabandoner.png)
+![](https://docs.tealium.com/images/server-side/asprocessingcartabandoner.png)
 
 If **Enable Rule Dependency Checking** is enabled, enrichments are executed in the correct order to accommodate dependencies in rules.
 
@@ -72,7 +72,7 @@ If the event contains a user identifier that is configured to enrich a visitor I
 
 * The visitor ID attribute does not have an existing value.
 * The enrichment rule evaluates to `true`.
-* The enriched value meets [the minimum requirements for a visitor ID]().
+* The enriched value meets [the minimum requirements for a visitor ID](https://docs.tealium.com/visitor-id-attribute/).
 
 If there are multiple visitor ID attributes, they are evaluated in attribute ID order.
 
@@ -89,6 +89,6 @@ AudienceStream evaluates the visitor profile to determine which audiences it sho
 AudienceStream evaluates triggers to determine which connector actions to initiate. Connector actions are initiated when the trigger condition is met. A connector condition can be one of the following:
 
 * **Joined Audience**: The visitor joined the audience during this visit.
-* **Left Audience**: The visitor left the audience during this visit. This action does not occur when a visitor is deleted. For more information, see [Deleting a visitor]().
+* **Left Audience**: The visitor left the audience during this visit. This action does not occur when a visitor is deleted. For more information, see [Deleting a visitor](https://docs.tealium.com/visitor-search/#deleting-a-visitor).
 * **In Audience at start of visit**: The visitor was in the audience at the start of the visit.
 * **In Audience at end of visit**: The visitor was in the audience at the end of the visit.

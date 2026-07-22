@@ -3,7 +3,11 @@ title: NextDoor Conversion Pixel (Legacy)
 description: This article describes how to set up the Nextdoor Conversion Pixel tag.
 url: https://docs.tealium.com/client-side-tags/nextdoor-conversion-pixel-tag/
 ---
-This is the legacy version of the tag. It will soon be deprecated and replaced with the [Nextdoor Universal Pixel tag]().
+
+<blockquote>
+This is the legacy version of the tag. It will soon be deprecated and replaced with the [Nextdoor Universal Pixel tag](https://docs.tealium.com/nextdoor-universal-pixel-tag/).
+</blockquote>
+
 
 Use the Nextdoor Conversion Pixel to accurately measure conversions that can be attributed to your ads on Nextdoor. The Nextdoor Pixel is key to understanding your campaign’s Cost Per Action (CPA). Additionally, it lets you optimize your targeting and creative strategy, which will ultimately lead to a more effective Return on Investment (ROI).
 
@@ -14,7 +18,7 @@ Use the Nextdoor Conversion Pixel to accurately measure conversions that can be 
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -25,11 +29,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -57,7 +61,7 @@ The available categories are:
 |  `order_id` (Overrides `_corder`)  | String | Order ID |
 
 ### Events
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

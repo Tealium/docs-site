@@ -23,10 +23,10 @@ Install the PersistentData module with CocoaPods or Carthage.
 To install the PersistentData module with CocoaPods, add the following to your Podfile:
 
 ```ruby
-pod &#39;tealium-swift/TealiumPersistentData&#39;
+pod 'tealium-swift/TealiumPersistentData'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 
 
@@ -34,7 +34,7 @@ The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod
 
 To install the PersistentData module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:
 
@@ -47,8 +47,8 @@ To install the PersistentData module with Carthage, following these steps:
       import TealiumPersistentData
       ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 ## API Reference
 
-See the [`TealiumPersistentData`](/platforms/ios-swift-v1/api/tealium-persistent-data/) class in the iOS (Swift) API.
+See the [`TealiumPersistentData`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-persistent-data/) class in the iOS (Swift) API.

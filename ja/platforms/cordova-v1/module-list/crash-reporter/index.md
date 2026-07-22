@@ -27,8 +27,8 @@ function tealiumInit(account, profile, environment, instance) {
        profile : profile,
        environment : environment,
        instance : instance,
-       isLifecycleEnabled: &#34;true&#34;,
-       isCrashReporterEnabled: &#34;true&#34;
+       isLifecycleEnabled: "true",
+       isCrashReporterEnabled: "true"
     });
 }
 ```
@@ -42,10 +42,10 @@ JavaScript APIはクラッシュを強制的にトリガーするメソッドを
 *   クラッシュレポーターモジュールが正常に初期化されている
 *   データレイヤーに `forceCrash` 変数が存在する
 
-上記の条件が満たされている場合、[`trackView()`](/ja/platforms/cordova-v1/api/#trackview) メソッドを使用して `forceCrash` 変数を含むトラッキングコールを発行してクラッシュをトリガーします：
+上記の条件が満たされている場合、[`trackView()`](https://docs.tealium.com/ja/platforms/cordova-v1/api/#trackview) メソッドを使用して `forceCrash` 変数を含むトラッキングコールを発行してクラッシュをトリガーします：
 
 ```javascript
-tealium.trackView({&#34;forceCrash&#34;:&#34;true&#34;});
+tealium.trackView({"forceCrash":"true"});
 ```
 
 ## アンインストール

@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/click-even
 
 クリックイベントは、指定した要素で完全なクリックとリリース、マウスダウン、またはマウスアップのイベントを訪問者に追跡します。訪問者がアクションを実行すると、トラッキングコールがトリガーされます。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -25,11 +25,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/click-even
 
 ### 要素セレクタ
 
-要素セレクタは、イベントリスナーをトリガーするためのページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ]()を参照してください。
+要素セレクタは、イベントリスナーをトリガーするためのページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ](https://docs.tealium.com/event-element-selector/)を参照してください。
 
 ### トリガー頻度
 
-トリガー頻度は、イベントトリガーがトラッキングコールを結果とする回数を決定します。詳細については、[イベントトリガー]()を参照してください。
+トリガー頻度は、イベントトリガーがトラッキングコールを結果とする回数を決定します。詳細については、[イベントトリガー](https://docs.tealium.com/event-triggers/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -39,15 +39,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/click-even
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;click&#34;`| 訪問者が指定した要素をクリックしてリリースしました。|
+|`tealium_event="click"`| 訪問者が指定した要素をクリックしてリリースしました。|
 |`iq_event_id` | イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;click&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_1&#34;
+   "tealium_event"  : "click",
+   "iq_event_id:"   : "click_events_1"
 }
 
 ```
@@ -56,15 +56,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/click-even
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;mousedown&#34;`| 訪問者が指定した要素をクリックしました。|
+|`tealium_event="mousedown"`| 訪問者が指定した要素をクリックしました。|
 |`iq_event_id`| イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mousedown&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_2&#34;
+   "tealium_event"  : "mousedown",
+   "iq_event_id:"   : "click_events_2"
 }
 
 ```
@@ -73,15 +73,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/click-even
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;mouseup&#34;`| 訪問者が指定した要素からクリックをリリースしました。|
+|`tealium_event="mouseup"`| 訪問者が指定した要素からクリックをリリースしました。|
 |`iq_event_id`| イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mouseup&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_3&#34;
+   "tealium_event"  : "mouseup",
+   "iq_event_id:"   : "click_events_3"
 }
 
 ```

@@ -38,4 +38,7 @@ Content-Type: application/json
 
 Tealium APIエンドポイントはさまざまな目的を果たし、レート制限は異なる場合があります。レート制限情報については、特定のAPIエンドポイントのドキュメンテーションを確認してください。任意のAPIエンドポイントの指定されたレート制限を超えると、HTTP `429 Too Many Requests`レスポンスコードが返されることがあります。
 
+
+<blockquote>
 ビジネスのニーズが高い制限を必要とする場合は、Tealiumのアカウントマネージャーに連絡してください。
+</blockquote>

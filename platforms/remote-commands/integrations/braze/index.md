@@ -7,11 +7,11 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/braze/
 
 * Braze API key
 * One of the following mobile libraries:
-  * [Tealium for Android-Kotlin](/platforms/android-kotlin/) (1.0.0&#43;)
-  * [Tealium for Android-Java](/platforms/android-java/) (5.9.0&#43; for Braze 1.0.0&#43; or &lt;5.9.0 for previous versions)
-  * [Tealium for iOS-Swift](/platforms/ios-swift/) (2.8.0&#43;)
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0+)
+  * [Tealium for Android-Java](https://docs.tealium.com/platforms/android-java/) (5.9.0+ for Braze 1.0.0+ or <5.9.0 for previous versions)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/) (2.8.0+)
 * One of the following remote command integrations:
-  * [Braze Remote Command JSON File](/platforms/remote-commands/integrations/braze/#json-template) (Requires Android-Kotlin 1.0.0&#43; or iOS-Swift 2.1.0&#43;)
+  * [Braze Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/braze/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)
   * Braze Remote Command tag in Tealium iQ Tag Management
 
 ## How It Works
@@ -24,7 +24,7 @@ The Braze integration uses the following items:
 
 Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Braze SDK separately.
 
-There are two remote command options: a JSON configuration file or using iQ Tag Management to configure the mappings. Using a JSON configuration file is recommended for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: a JSON configuration file or using iQ Tag Management to configure the mappings. Using a JSON configuration file is recommended for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 
 ## Install
@@ -34,7 +34,7 @@ There are two remote command options: a JSON configuration file or using iQ Tag 
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**.
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**.
 2. Enter the repository URL: `https://github.com/tealium/tealium-ios-braze-remote-command`.
 3. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumBraze` version does not appear in the list, then reset your Swift package cache.
 4. Select the `TealiumBraze` module to install, and select the app target you want the module to be installed in.
@@ -45,23 +45,23 @@ To install `TealiumBraze` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 2. In your Xcode project, select the app target under the **TARGETS** section.
-3. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and select the `TealiumBraze` module to add it to your app target.
+3. Navigate to **General > Frameworks, Libraries & Embedded Content** and select the `TealiumBraze` module to add it to your app target.
 
-To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
-
-
+To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
 
 
-1. Remove `tealium-swift` and `pod &#34;BrazeKit&#34;` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumBraze` framework.
+
+
+1. Remove `tealium-swift` and `pod "BrazeKit"` if they exist in your Podfile. The dependency for `tealium-swift` is already included in the `TealiumBraze` framework.
 
 2. Add the following dependency to your Podfile:  
       ```ruby
-      pod &#34;TealiumBraze&#34;
+      pod "TealiumBraze"
       ```  
       The `TealiumBraze` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#39;tealium-swift/Core&#39;
-      &#39;tealium-swift/RemoteCommands&#39;
+      'tealium-swift/Core'
+      'tealium-swift/RemoteCommands'
       ```
 
 3. Import the `TealiumSwift` and `TealiumBraze` modules in your `TealiumHelper` file, and any other files that access the `Tealium` class or the Braze remote command.
@@ -74,31 +74,31 @@ To add additional modules from the Tealium Swift library, follow the [Swift Pack
 
 2.  Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-braze-remote-command&#34;
+      github "tealium/tealium-ios-braze-remote-command"
       ```
 
 
 
 
 
-1. Install [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+1. Install [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
 
       ```groovy
       allprojects {
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import both the Braze SDK and Tealium-Braze remote commands by adding the following dependencies in your app project&#39;s `build.gradle` file:  
+2. Import both the Braze SDK and Tealium-Braze remote commands by adding the following dependencies in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium.remotecommands:braze:3.0.0&#39;
-            implementation &#39;com.braze:android-sdk-ui:29.0.1&#39;
+            implementation 'com.tealium.remotecommands:braze:3.0.0'
+            implementation 'com.braze:android-sdk-ui:29.0.1'
       }
       ```
 
@@ -110,7 +110,7 @@ To add additional modules from the Tealium Swift library, follow the [Swift Pack
     ```bash
     yarn add tealium-react-braze
     ```
-3. React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run `react-native link` if using version 0.60&#43; of React Native.
+3. React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run `react-native link` if using version 0.60+ of React Native.
 
 
 
@@ -119,18 +119,18 @@ To add additional modules from the Tealium Swift library, follow the [Swift Pack
 
 
 
-The manual installation for Braze remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the Braze remote commands for your iOS project:
+The manual installation for Braze remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the Braze remote commands for your iOS project:
 
-1. Install the [Braze SDK](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/), if you haven&#39;t already done so.
+1. Install the [Braze SDK](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/), if you haven't already done so.
 
 2. Clone the [Tealium iOS Braze remote command](https://github.com/tealium/tealium-ios-braze-remote-command) repo and drag the files within the `Sources` folder into your project.
 
-3. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`
+3. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`
 
 
 
 
-The manual installation for Braze remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed.
+The manual installation for Braze remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed.
 
 To install the Braze remote commands for your Android project:
 
@@ -141,19 +141,19 @@ To install the Braze remote commands for your Android project:
             repositories {
               mavenCentral()
               flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
               }
             }
       }
       ```
 
-2. Add `tealium-braze.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-braze.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:
 
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-braze&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-braze', ext:'aar')
       }
       ```
 
@@ -167,10 +167,10 @@ To install the Braze remote commands for your Android project:
 Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium’s iOS (Swift) library:  
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                           profile: &#34;PROFILE&#34;,
-                           environment: &#34;ENVIRONMENT&#34;,
-                           dataSource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                           profile: "PROFILE",
+                           environment: "ENVIRONMENT",
+                           dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 config.remoteAPIEnabled = true // Required to use Remote Commands
 
@@ -183,21 +183,21 @@ tealium = Tealium(config: config) { _ in
     let braze = BrazeRemoteCommand(brazeLocation: BrazeLocationProvider()) 
 
     // Local JSON
-    //let braze = BrazeRemoteCommand(type: .local(file: &#34;braze&#34;), brazeLocation: BrazeLocationProvider()) 
+    //let braze = BrazeRemoteCommand(type: .local(file: "braze"), brazeLocation: BrazeLocationProvider()) 
 
     // Remote JSON
-    //let braze = BrazeRemoteCommand(type: .remote(url: &#34;https://some.domain.com/braze.json&#34;), brazeLocation: BrazeLocationProvider()) 
+    //let braze = BrazeRemoteCommand(type: .remote(url: "https://some.domain.com/braze.json"), brazeLocation: BrazeLocationProvider()) 
 
     remoteCommands.add(braze)
 }
 ```
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Kotlin library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Kotlin library:
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 // New code to add the Braze Remote Command
@@ -210,7 +210,7 @@ val braze = BrazeRemoteCommand(application,
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
     // Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
     //              or simply to override settings locally.
-    braze.registerConfigOverride { builder -&gt;
+    braze.registerConfigOverride { builder ->
         // builder.setIsLocationCollectionEnabled(true);
         // builder.setGeofencesEnabled(true);
         // builder.setPushDeepLinkBackStackActivityEnabled(true);
@@ -223,19 +223,19 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(braze); 
 
     // Local JSON
-    //remoteCommands?.add(braze, filename = &#34;braze.json&#34;); 
+    //remoteCommands?.add(braze, filename = "braze.json"); 
 
     // Remote JSON
-    //remoteCommands?.add(braze, remoteUrl = &#34;https://some.domain.com/braze.json&#34;); 
+    //remoteCommands?.add(braze, remoteUrl = "https://some.domain.com/braze.json"); 
 }
 ```
 
 
-Initialize remote commands with the Remote Command tag for Tealium&#39;s Android (Java) library:  
+Initialize remote commands with the Remote Command tag for Tealium's Android (Java) library:  
 ```java
 import com.tealium.remotecommands.BrazeRemoteCommand;
 
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 BrazeRemoteCommand braze;
@@ -243,8 +243,8 @@ BrazeRemoteCommand braze;
 braze = new BrazeRemoteCommand(config);
 
 // Or alternatively initialize with some additional config options:
-Set&lt;Class&gt; sessionHandlingBlacklist = new HashSet&lt;&gt;();
-Set&lt;Class&gt; inAppMessageBlacklist = new HashSet&lt;&gt;();
+Set<Class> sessionHandlingBlacklist = new HashSet<>();
+Set<Class> inAppMessageBlacklist = new HashSet<>();
 // sessionHandlingBlacklist.add(MainActivity.class);
 // inAppMessageBlacklist.add(UserActivity.class);
 braze = new BrazeRemoteCommand(config,
@@ -271,17 +271,17 @@ teal.addRemoteCommand(braze);
 
 Initialize remote commands with a JSON configuration file or the Remote Command tag for React Native:
 ```javascript
-import BrazeRemoteCommand from &#39;tealium-react-braze&#39;;
+import BrazeRemoteCommand from 'tealium-react-braze';
 BrazeRemoteCommand.initialize();
 
 // Webview Tag
 let braze = { id: BrazeRemoteCommand.name } 
 
 // Local JSON
-//let braze = { id: BrazeRemoteCommand.name, path: &#34;braze.json&#34; } 
+//let braze = { id: BrazeRemoteCommand.name, path: "braze.json" } 
 
 // Remote JSON
-//let braze = { id: BrazeRemoteCommand.name, url: &#34;https://some.domain.com/braze.json&#34; } 
+//let braze = { id: BrazeRemoteCommand.name, url: "https://some.domain.com/braze.json" } 
 
 let config = TealiumConfig {
     // ...
@@ -295,74 +295,74 @@ let config = TealiumConfig {
 
 ## JSON Template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-    &#34;config&#34;: {
-        &#34;api_key&#34;: &#34;YOUR_API_KEY&#34;,
-        &#34;custom_endpoint&#34;: &#34;sdk.iad-01.braze.com&#34;,
-        &#34;session_timeout&#34;: 30,
-        &#34;trigger_interval_seconds&#34;: 100,
-        &#34;enable_geofences&#34;: true,
-        &#34;enable_automatic_geofences&#34;: true,
-        &#34;enable_automatic_location&#34;: true,
-        &#34;push_story_identifier&#34;: &#34;YOUR_IDENTIFIER&#34;,
-        &#34;use_uuid_as_device_id&#34;: true,
-        &#34;forward_universal_links&#34;: true
+    "config": {
+        "api_key": "YOUR_API_KEY",
+        "custom_endpoint": "sdk.iad-01.braze.com",
+        "session_timeout": 30,
+        "trigger_interval_seconds": 100,
+        "enable_geofences": true,
+        "enable_automatic_geofences": true,
+        "enable_automatic_location": true,
+        "push_story_identifier": "YOUR_IDENTIFIER",
+        "use_uuid_as_device_id": true,
+        "forward_universal_links": true
     },
-    &#34;mappings&#34;: {
-        &#34;customer_id&#34;: &#34;user_id&#34;,
-        &#34;customer_first_name&#34;: &#34;first_name&#34;,
-        &#34;customer_last_name&#34;: &#34;last_name&#34;,
-        &#34;customer_gender&#34;: &#34;gender&#34;,
-        &#34;customer_language&#34;: &#34;language&#34;,
-        &#34;customer_email&#34;: &#34;email&#34;,
-        &#34;customer_home_city&#34;: &#34;home_city&#34;,
-        &#34;customer_dob&#34;: &#34;date_of_birth&#34;,
-        &#34;customer_alias&#34;: &#34;user_alias&#34;,
-        &#34;customer_alias_label&#34;: &#34;alias_label&#34;,
-        &#34;pet&#34;: &#34;set_custom_attribute.pet&#34;,
-        &#34;pet_count&#34;: &#34;set_custom_attribute.pet_count&#34;,
-        &#34;pet_count_unset&#34;: &#34;unset_custom_attribute.pet_count_unset&#34;,
-        &#34;pet_count_increment&#34;: &#34;increment_custom_attribute.pet_count_increment&#34;,
-        &#34;pet_names&#34;: &#34;set_custom_array_attribute.pet_names&#34;,
-        &#34;pet_names_append&#34;: &#34;append_custom_array_attribute.pet_names_append&#34;,
-        &#34;pet_names_remove&#34;: &#34;remove_custom_array_attribute.pet_names_remove&#34;,
-        &#34;screen_name&#34;: &#34;screen_name&#34;,
-        &#34;email_notification&#34;: &#34;email_notification&#34;,
-        &#34;push_notification&#34;: &#34;push_notification&#34;,
-        &#34;event_name&#34;: &#34;event_name&#34;,
-        &#34;current_level&#34;: &#34;event.current_level&#34;,
-        &#34;start_date&#34;: &#34;event.start_date&#34;,
-        &#34;high_score&#34;: &#34;event.high_score&#34;,
-        &#34;product_id&#34;: &#34;product_id&#34;,
-        &#34;product_quantity&#34;: &#34;product_qty&#34;,
-        &#34;product_unit_price&#34;: &#34;product_unit_price&#34;,
-        &#34;currency_code&#34;: &#34;product_currency&#34;,
-        &#34;rewards_member&#34;: &#34;purchase.rewards_member&#34;,
-        &#34;rewards_points_earned&#34;: &#34;purchase.rewards_points_earned&#34;,
-        &#34;date_joined_program&#34;: &#34;purchase.date_joined_program&#34;,
-        &#34;latitude&#34;: &#34;location_latitude&#34;,
-        &#34;longitude&#34;: &#34;location_longitude&#34;,
-        &#34;horizontal_accuracy&#34;: &#34;location_horizontal_accuracy&#34;,
-        &#34;vertical_accuracy&#34;: &#34;location_vertical_accuracy&#34;
+    "mappings": {
+        "customer_id": "user_id",
+        "customer_first_name": "first_name",
+        "customer_last_name": "last_name",
+        "customer_gender": "gender",
+        "customer_language": "language",
+        "customer_email": "email",
+        "customer_home_city": "home_city",
+        "customer_dob": "date_of_birth",
+        "customer_alias": "user_alias",
+        "customer_alias_label": "alias_label",
+        "pet": "set_custom_attribute.pet",
+        "pet_count": "set_custom_attribute.pet_count",
+        "pet_count_unset": "unset_custom_attribute.pet_count_unset",
+        "pet_count_increment": "increment_custom_attribute.pet_count_increment",
+        "pet_names": "set_custom_array_attribute.pet_names",
+        "pet_names_append": "append_custom_array_attribute.pet_names_append",
+        "pet_names_remove": "remove_custom_array_attribute.pet_names_remove",
+        "screen_name": "screen_name",
+        "email_notification": "email_notification",
+        "push_notification": "push_notification",
+        "event_name": "event_name",
+        "current_level": "event.current_level",
+        "start_date": "event.start_date",
+        "high_score": "event.high_score",
+        "product_id": "product_id",
+        "product_quantity": "product_qty",
+        "product_unit_price": "product_unit_price",
+        "currency_code": "product_currency",
+        "rewards_member": "purchase.rewards_member",
+        "rewards_points_earned": "purchase.rewards_points_earned",
+        "date_joined_program": "purchase.date_joined_program",
+        "latitude": "location_latitude",
+        "longitude": "location_longitude",
+        "horizontal_accuracy": "location_horizontal_accuracy",
+        "vertical_accuracy": "location_vertical_accuracy"
     },
-    &#34;commands&#34;: {
-        &#34;launch&#34;: &#34;initialize&#34;,
-        &#34;setengagement&#34;: &#34;emailnotification,pushnotification&#34;,
-        &#34;log_custom_event&#34;: &#34;logcustomevent&#34;,
-        &#34;set_location&#34;: &#34;setlastknownlocation&#34;,
-        &#34;custom_attribute&#34;: &#34;setcustomattribute&#34;,
-        &#34;unset_custom_attribute&#34;: &#34;unsetcustomattribute&#34;,
-        &#34;custom_array_attribute&#34;: &#34;appendcustomarrayattribute&#34;,
-        &#34;append_custom_array_attribute&#34;: &#34;appendcustomarrayattribute&#34;,
-        &#34;remove_custom_array_attribute&#34;: &#34;removecustomarrayattribute&#34;,
-        &#34;increment_custom_attribute&#34;: &#34;incrementcustomattribute&#34;,
-        &#34;log_purchase&#34;: &#34;logpurchase&#34;,
-        &#34;user_attribute&#34;: &#34;userattribute,useridentifier,useralias&#34;,
-        &#34;user_login&#34;: &#34;useridentifier,useralias&#34;,
-        &#34;user_alias&#34;: &#34;useralias&#34;,
+    "commands": {
+        "launch": "initialize",
+        "setengagement": "emailnotification,pushnotification",
+        "log_custom_event": "logcustomevent",
+        "set_location": "setlastknownlocation",
+        "custom_attribute": "setcustomattribute",
+        "unset_custom_attribute": "unsetcustomattribute",
+        "custom_array_attribute": "appendcustomarrayattribute",
+        "append_custom_array_attribute": "appendcustomarrayattribute",
+        "remove_custom_array_attribute": "removecustomarrayattribute",
+        "increment_custom_attribute": "incrementcustomattribute",
+        "log_purchase": "logpurchase",
+        "user_attribute": "userattribute,useridentifier,useralias",
+        "user_login": "useridentifier,useralias",
+        "user_alias": "useralias",
     }
 }
 ```
@@ -397,7 +397,11 @@ We map a command to each Braze method. To trigger a Braze method, pass the corre
 | `wipedata` | `wipeData()` |
 
 
+
+<blockquote>
 Since the Braze SDK is installed alongside the Tealium SDK, trigger any native Braze functionality given the corresponding tag configuration.
+</blockquote>
+
 
 ### SDK Setup
 
@@ -630,7 +634,7 @@ iOS
 
 | Parameter | Type | Example |
 |---|---|---|
-| `email_notification` | `String`| [`&#34;optedin&#34;`, `&#34;subscribed&#34;`, `&#34;unsubscribed&#34;`]|
+| `email_notification` | `String`| [`"optedin"`, `"subscribed"`, `"unsubscribed"`]|
 
 - Braze Developer Guide: Analytics Email Subscriptions   
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions)
@@ -668,7 +672,7 @@ iOS
 
 | Parameter | Type | Example |
 |---|---|---|
-| `push_notification` | `String`| [`&#34;optedin&#34;`, `&#34;subscribed&#34;`, `&#34;unsubscribed&#34;`]|
+| `push_notification` | `String`| [`"optedin"`, `"subscribed"`, `"unsubscribed"`]|
 
 
 - Braze Developer Guide: Analytics Push Notifications  
@@ -698,7 +702,7 @@ iOS
 
 ### Location Tracking
 
-#### Set User&#39;s Last Known Location
+#### Set User's Last Known Location
 
 | Remote Command | Braze Method |
 |---|---|
@@ -764,7 +768,7 @@ iOS
 The remote command offers a convenient way to map some of the functionality offered by Braze into your app, such as logging of events and purchases. 
 However, some Braze features, such as content cards, feature flags, or notifications, have to be integrated into your app using the Braze instance.
 
-To access the Braze instance directly, use the `onReady` method. The `onReady` method returns the Braze instance in the completion block once it&#39;s properly configured.
+To access the Braze instance directly, use the `onReady` method. The `onReady` method returns the Braze instance in the completion block once it's properly configured.
 
 ```swift
 brazeRemoteCommand.onReady { braze in
@@ -783,8 +787,8 @@ To use this feature the Braze instance must be initialized synchronously on the 
 To configure the Braze instance directly, use this code:
 
 ```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {
-    let brazeConfig = Braze.Configuration(apiKey: &#34;YOUR_API_KEY&#34;, endpoint: &#34;YOUR_ENDPOINT&#34;)
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    let brazeConfig = Braze.Configuration(apiKey: "YOUR_API_KEY", endpoint: "YOUR_ENDPOINT")
     brazeConfig.push.automation = true
     // ...
     // add all your other configuration here

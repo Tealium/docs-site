@@ -23,23 +23,23 @@ https://api.keen.io/API_VERSION/projects/PROJECT_ID/events
 
 ```json
 {
-    &#34;purchases&#34;: [
+    "purchases": [
         {
-            &#34;item&#34;: &#34;Golden gadget&#34;,
-            &#34;price&#34;: 25.50,
-            &#34;transaction_id&#34;: &#34;f029342&#34;
+            "item": "Golden gadget",
+            "price": 25.50,
+            "transaction_id": "f029342"
         },
         {
-            &#34;item&#34;: &#34;Different gadget&#34;,
-            &#34;price&#34;: 17.75,
-            &#34;transaction_id&#34;: &#34;f029342&#34;
+            "item": "Different gadget",
+            "price": 17.75,
+            "transaction_id": "f029342"
         }
     ],
-    &#34;transactions&#34;: [
+    "transactions": [
         {
-            &#34;id&#34;: &#34;f029342&#34;,
-            &#34;items&#34;: 2,
-            &#34;total&#34;: 43.25
+            "id": "f029342",
+            "items": 2,
+            "total": 43.25
         }
     ]
 }
@@ -64,7 +64,7 @@ URLはハードコーディング（組み込みのAPIバージョンとプロ�
 
 ### ボディデータ
 
-&#34;Body&#34;オプションを選択し、テンプレート参照を提供します。
+"Body"オプションを選択し、テンプレート参照を提供します。
 
 |名前| 値|
 |---| ---|
@@ -84,27 +84,31 @@ URLはハードコーディング（組み込みのAPIバージョンとプロ�
 |`apiVersion`| `3.0`|
 |`projectId`| `987.65`|
 
+
+<blockquote>
 変数は内部的にJSONに変換され、すべてのテンプレートで利用可能になります。
+</blockquote>
+
 
 #### 結果のJSON構造:
 
 ```json
 {
-  &#34;purchases&#34;: [
+  "purchases": [
     {
-      &#34;price&#34;: &#34;17.75&#34;,
-      &#34;item&#34;: &#34;Different gadget&#34;
+      "price": "17.75",
+      "item": "Different gadget"
     },
     {
-      &#34;price&#34;: &#34;25.50&#34;,
-      &#34;item&#34;: &#34;Golden gadget&#34;
+      "price": "25.50",
+      "item": "Golden gadget"
     }
   ],
-  &#34;apiVersion&#34;: &#34;3.0&#34;,
-  &#34;transactionId&#34;: &#34;f029342&#34;,
-  &#34;transactionItemCount&#34;: &#34;2&#34;,
-  &#34;transactionTotalPrice&#34;: &#34;43.25&#34;,
-  &#34;projectId&#34;: &#34;98765&#34;
+  "apiVersion": "3.0",
+  "transactionId": "f029342",
+  "transactionItemCount": "2",
+  "transactionTotalPrice": "43.25",
+  "projectId": "98765"
 }
 
 ```
@@ -121,20 +125,20 @@ https://api.keen.io/{{apiVersion}}/projects/{{projectId}}/events
 
 ```json
 {
-    &#34;purchases&#34;: [
+    "purchases": [
         {{#purchases}}
         {
-            &#34;item&#34;: &#34;{{item}}&#34;,
-            &#34;price&#34;: {{price}},
-            &#34;transaction_id&#34;: &#34;{{transactionId}}&#34;
+            "item": "{{item}}",
+            "price": {{price}},
+            "transaction_id": "{{transactionId}}"
         }{{#iter.hasNext}}, {{/iter.hasNext}}
         {{/purchases}}
     ],
-    &#34;transactions&#34;: [
+    "transactions": [
         {
-            &#34;id&#34;: &#34;{{transactionId}}&#34;,
-            &#34;items&#34;: {{transactionItemCount}},
-            &#34;total&#34;: {{transactionTotalPrice}}
+            "id": "{{transactionId}}",
+            "items": {{transactionItemCount}},
+            "total": {{transactionTotalPrice}}
         }
     ]
 }
@@ -155,23 +159,23 @@ https://api.keen.io/3.0/projects/98765/events
 
 ```json
 {
-    &#34;purchases&#34;: [
+    "purchases": [
         {
-            &#34;item&#34;: &#34;Different gadget&#34;,
-            &#34;price&#34;: 17.75,
-            &#34;transaction_id&#34;: &#34;f029342&#34;
+            "item": "Different gadget",
+            "price": 17.75,
+            "transaction_id": "f029342"
         },
         {
-            &#34;item&#34;: &#34;Golden gadget&#34;,
-            &#34;price&#34;: 25.50,
-            &#34;transaction_id&#34;: &#34;f029342&#34;
+            "item": "Golden gadget",
+            "price": 25.50,
+            "transaction_id": "f029342"
         }
     ],
-    &#34;transactions&#34;: [
+    "transactions": [
         {
-            &#34;id&#34;: &#34;f029342&#34;,
-            &#34;items&#34;: 2,
-            &#34;total&#34;: 43.25
+            "id": "f029342",
+            "items": 2,
+            "total": 43.25
         }
     ]
 }
@@ -180,4 +184,4 @@ https://api.keen.io/3.0/projects/98765/events
 
 ## アクション構成のスクリーンショット
 
-![](/images/server-side/example)
+![](https://docs.tealium.com/images/server-side/example)

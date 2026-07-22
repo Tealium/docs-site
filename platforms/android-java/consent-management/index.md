@@ -9,13 +9,13 @@ Usage of the consent management module is recommended, as it is automatically in
 
 Supported platforms include: Android mobile, Android TV, and Android Wear.
 
-For more information, see 
+For more information, see [platforms/getting-started-mobile/consent-management](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/)
 
 ## Sample App
 
 To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Android consent management [sample app](https://github.com/Tealium/tealium-android/tree/master/Samples/ConsentManagerDemoApp).
 
-See the [API Reference](/platforms/android-java/api/consent-manager/) for a list of consent management methods for Android.
+See the [API Reference](https://docs.tealium.com/platforms/android-java/api/consent-manager/) for a list of consent management methods for Android.
 
 ## Enable
 
@@ -25,10 +25,10 @@ The following example enables consent management:
 //TealiumHelper.java
 import com.tealium.library.ConsentManager;
 
-public static final String TEALIUM_MAIN = &#34;main&#34;;
+public static final String TEALIUM_MAIN = "main";
 
 public static void initialize(Application application) {
-	final Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+	final Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 
 	config.enableConsentManager(TEALIUM_MAIN); //enable with tealium instance name
 
@@ -43,8 +43,8 @@ The following variables are transmitted with each tracking call while consent ma
 | Variable Name | Description | Example |
 | --- | --- | --- |
 | `policy` | The policy under which consent was collected | `gdpr` |
-| `consent_status` | The user&#39;s current consent status | `consented` |
-| `consent_categories` | The user&#39;s current categories they are consented to | `[ANALYTICS, CDP]` |
+| `consent_status` | The user's current consent status | `consented` |
+| `consent_categories` | The user's current categories they are consented to | `[ANALYTICS, CDP]` |
 
 
 ## Examples
@@ -68,9 +68,9 @@ tealiumInstance.getConsentManager()
           new String[] {ConsentManager.ConsentCategory.ANALYTICS});
 ```
 
-For examples, you may choose to group the Tealium consent categories `&#34;big_data&#34;`, `&#34;analytics&#34;`, and `&#34;monitoring&#34;` under a single category called &#34;performance&#34;. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most permissive (all categories).
+For examples, you may choose to group the Tealium consent categories `"big_data"`, `"analytics"`, and `"monitoring"` under a single category called "performance". This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most permissive (all categories).
 
-![](/images/platforms/android/consent-slider.gif)
+![](https://docs.tealium.com/images/platforms/android/consent-slider.gif)
 
 ### Category-based Opt-in
 
@@ -84,5 +84,5 @@ tealiumInstance.getConsentManager()
 ```
 
 
-![](/images/platforms/android/consent-categories.gif)
+![](https://docs.tealium.com/images/platforms/android/consent-categories.gif)
 

@@ -35,7 +35,7 @@ Tells Adform which character to use to split up the pagename.
 
 ### Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Adform tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Adform tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -48,7 +48,7 @@ After adding the tag, configure the following settings:
 
 ### Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -64,21 +64,21 @@ The available categories are:
 
 | Variable              | Description                                                                     |
 |:----------------------|:--------------------------------------------------------------------------------|
-| `order_id`            | &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt;                         |
-| `order_subtotal`      | &lt;ul&gt;&lt;li&gt;Subtotal&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt;                      |
-| `order_status`        | &lt;ul&gt;&lt;li&gt;Order Status&lt;/li&gt;&lt;/ul&gt;                                                  |
-| `order_currency`      | &lt;ul&gt;&lt;li&gt;Currency&lt;/li&gt;&lt;li&gt;Overrides `_ccurrency`.&lt;/li&gt;&lt;/ul&gt;                      |
-| `customer_country`    | &lt;ul&gt;&lt;li&gt;Country&lt;/li&gt;&lt;li&gt;Overrides `_ccountry`.&lt;/li&gt;&lt;/ul&gt;                        |
-| `customer_agegroup`   | &lt;ul&gt;&lt;li&gt;Age Group&lt;/li&gt;&lt;/ul&gt;                                                     |
-| `customer_gender`     | &lt;ul&gt;&lt;li&gt;Gender&lt;/li&gt;&lt;/ul&gt;                                                        |
-| `product_id`          | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-| `product_name`        | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;/ul&gt;  |
-| `product_category`    | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories.&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt;  |
-| `product_category_id` | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Category IDs.&lt;/li&gt;&lt;/ul&gt;                           |
-| `product_quantity`    | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-| `product_unit_price`  | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt;    |
-| `product_weight`      | &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product Weights.&lt;/li&gt;&lt;/ul&gt;                        |
-| `step`                | &lt;ul&gt;&lt;li&gt;Step&lt;/li&gt;&lt;li&gt;Values of `1`/ `2`/ `3`.&lt;/li&gt;&lt;/ul&gt;                         |
+| `order_id`            | <ul><li>Order ID</li><li>Overrides `_corder`.</li></ul>                         |
+| `order_subtotal`      | <ul><li>Subtotal</li><li>Overrides `_csubtotal`.</li></ul>                      |
+| `order_status`        | <ul><li>Order Status</li></ul>                                                  |
+| `order_currency`      | <ul><li>Currency</li><li>Overrides `_ccurrency`.</li></ul>                      |
+| `customer_country`    | <ul><li>Country</li><li>Overrides `_ccountry`.</li></ul>                        |
+| `customer_agegroup`   | <ul><li>Age Group</li></ul>                                                     |
+| `customer_gender`     | <ul><li>Gender</li></ul>                                                        |
+| `product_id`          | <ul><li>Array</li><li>List of Product IDs</li><li>Overrides `_cprod`.</li></ul> |
+| `product_name`        | <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li></ul>  |
+| `product_category`    | <ul><li>Array</li><li>List of Categories.</li><li>Overrides `_ccat`.</li></ul>  |
+| `product_category_id` | <ul><li>Array</li><li>List of Category IDs.</li></ul>                           |
+| `product_quantity`    | <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li></ul> |
+| `product_unit_price`  | <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li></ul>    |
+| `product_weight`      | <ul><li>Array</li><li>List of Product Weights.</li></ul>                        |
+| `step`                | <ul><li>Step</li><li>Values of `1`/ `2`/ `3`.</li></ul>                         |
 
 #### Custom Order/Products
 
@@ -86,11 +86,11 @@ Custom variables can be mapped to order-level or product-level. Possible values 
 
 | Variable  | Description                                                      |
 |:----------|:-----------------------------------------------------------------|
-| `order`   | &lt;ul&gt;&lt;li&gt;Order&lt;/li&gt;&lt;/ul&gt;                                          |
-| `product` | &lt;ul&gt;&lt;li&gt;Product&lt;/li&gt;&lt;/ul&gt;                                        |
-| `var`     | &lt;ul&gt;&lt;li&gt;Data Object Variable ranging from `1` to `10`.&lt;/li&gt;&lt;/ul&gt; |
-| `sv`      | &lt;ul&gt;&lt;li&gt;String Variable, ranging from `1` to `89`.&lt;/li&gt;&lt;/ul&gt;     |
-| `svn`     | &lt;ul&gt;&lt;li&gt;Numeric Variable ranging from `1` to `2`.&lt;/li&gt;&lt;/ul&gt;      |
+| `order`   | <ul><li>Order</li></ul>                                          |
+| `product` | <ul><li>Product</li></ul>                                        |
+| `var`     | <ul><li>Data Object Variable ranging from `1` to `10`.</li></ul> |
+| `sv`      | <ul><li>String Variable, ranging from `1` to `89`.</li></ul>     |
+| `svn`     | <ul><li>Numeric Variable ranging from `1` to `2`.</li></ul>      |
 
 ### Vendor Resources
 

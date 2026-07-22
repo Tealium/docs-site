@@ -17,15 +17,19 @@ Usage costs for Tealium AudienceStream, Tealium AudienceDB, Tealium AudienceStor
 
 Every event, at its point of entry into the Tealium Customer Data Hub, counts towards the total volume and is charged equally.
 
-Usage reports track audience fill events for visibility, but fill events do not count toward your contracted event volume. For more information, see [Fill an audience]().
+Usage reports track audience fill events for visibility, but fill events do not count toward your contracted event volume. For more information, see [Fill an audience](https://docs.tealium.com/about-audiences/#fill-an-audience).
 
+
+<blockquote>
 Usage reports do not provide billing or pricing information. Your final usage cost is determined by a combination of your event volume, your contract terms, and your implementation setup. Contact your account manager for all billing and pricing inquiries.
+</blockquote>
+
 
 ## Graph format
 
 Reports are displayed as line graphs. The date range is plotted on the horizontal axis and the metric is plotted along the vertical axis and marked by dots. Hovering over a dot displays the aggregate metric values and the day on which it was aggregated.
 
-![](/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg)
 
 ## Available reports
 
@@ -67,7 +71,7 @@ Data Collection reports correspond to real-time and offline events flowing into 
 * **Total Inbound Events**  
 The sum total of real-time and file import events. Data usage cost for EventStream is calculated based on the **Total Inbound Events** report.
 * **Total Real-time Events**  
-The number of events that are captured by the [Tealium Collect]() tag from your website or mobile app in the date range specified. For more information, see [Live Events and Feeds]().
+The number of events that are captured by the [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/) tag from your website or mobile app in the date range specified. For more information, see [Live Events and Feeds](https://docs.tealium.com/about-live-events/).
 * **Total File Import Events**  
 The number of [file import]() rows or lines imported into AudienceStream.
 * **Total Omnichannel Events**  
@@ -84,13 +88,17 @@ The number of offline and bulk events received by AudienceStream. This graph inc
 The number of real-time events may not match the number of AudienceStream events due to any of the following expected reasons:
 
 * **Filtered events**  
-If the [AudienceStream event filter]() is set, only events that match the filter will be processed.
+If the [AudienceStream event filter](https://docs.tealium.com/server-side-account-settings/#general-settings) is set, only events that match the filter will be processed.
 * **Consent**  
 If consent is in use, AudienceStream will not process events unless the visitor has opted into the CDP consent category. For more information, see .
 * **Exceeding data size limits**  
 To ensure the stability of the platform, event or visitor data exceeding specified size limits may not be processed. These measures safeguard against overloading the system to maintain optimal performance for all customers. For more information, see .
 
+
+<blockquote>
 Data usage cost for AudienceStream is calculated based on the **Total AudienceStream Events** report.
+</blockquote>
+
 
 ### Data Connect Reports
 
@@ -138,28 +146,28 @@ The number of writes performed by the view-through tracking service.
 * **Total View-Through Tracking Reads**  
 The number of reads performed by the view-through tracking service.
 
-For more information, see .
+For more information, see [view-through-tracking-extension](https://docs.tealium.com/view-through-tracking-extension/).
 
 ## View reports
 
-To view usage reports, navigate to **Analyze &gt; Usage**. The default view is for all profiles and all product features.
+To view usage reports, navigate to **Analyze > Usage**. The default view is for all profiles and all product features.
 
-![](/images/server-side/usage-reports.png)
+![](https://docs.tealium.com/images/server-side/usage-reports.png)
 
 To view reports for a specific profile, feature, or date range:
 
 1. Select a profile and feature type from the drop-down lists.    
-      ![](/images/server-side/usage-reports-report-selector.png)
+      ![](https://docs.tealium.com/images/server-side/usage-reports-report-selector.png)
 1. Click the start date or end date to adjust the date range for the report.  
 The default date range is set for January 1 of the current year to the current date. To change the default, contact your account administrator.
 1. Click **Get Report**.
 
 ## FAQ
 
-**Why can&#39;t I see data for today in my reports?**
+**Why can't I see data for today in my reports?**
 
 Usage reports can take up to 48 hours to completely process and update. If your date range only spans the last 24-48 hours, you may not see data populated in the reports. Choose a start date that is three or more days before the current date.
 
-**Why can&#39;t I choose a date prior to April 1, 2016?**
+**Why can't I choose a date prior to April 1, 2016?**
 
 Usage reports provide data for up to one year from the time of their release. This method provides most accounts with the data they need to evaluate their annual billing cycle.

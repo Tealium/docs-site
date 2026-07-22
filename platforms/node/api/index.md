@@ -36,15 +36,15 @@ Tealium(config);
 
 | Parameter | Type | Description | Example
 |-----------|------| --- | --- |
-| `config` | var | Tealium configuration object data as key-value pairs | `{&#34;account&#34;:&#34;ACCOUNT&#34;, &#34;profile&#34;:&#34;PROFILE&#34;, &#34;datasource&#34;:&#34;DATASOURCE&#34;};` |
+| `config` | var | Tealium configuration object data as key-value pairs | `{"account":"ACCOUNT", "profile":"PROFILE", "datasource":"DATASOURCE"};` |
 
 The `config` object parameter has the following has the following key-value pairs
 
 | Parameter | Type | Description | Example
 |-----------|------| --- | --- |
-| `account` |  `String` |  Tealium profile name | `&#34;companyXYZ&#34;` |
-| `profile` | `String`| Tealium profile name | `&#34;main&#34;` |
-| `datasource` | `String` | (Optional) The data source key | `&#34;abc123&#34;` |
+| `account` |  `String` |  Tealium profile name | `"companyXYZ"` |
+| `profile` | `String`| Tealium profile name | `"main"` |
+| `datasource` | `String` | (Optional) The data source key | `"abc123"` |
 ### `track()`
 
 Tracks views and events.
@@ -55,5 +55,5 @@ tealium.track(event, data);
 
 | Parameters | Type | Description | Example |
 | --- |  --- | --- | --- |
-| `event` | `String` | Name of the event (sets the value of `tealium_event`)| `&#34;event&#34;` |
-| `data` | `Dictionary` | Object with event data as key-value pairs | `{&#34;some_key&#34;: &#34;some_value&#34;}` |
+| `event` | `String` | Name of the event (sets the value of `tealium_event`)| `"event"` |
+| `data` | `Dictionary` | Object with event data as key-value pairs | `{"some_key": "some_value"}` |

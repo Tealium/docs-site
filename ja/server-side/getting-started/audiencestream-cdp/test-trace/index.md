@@ -7,13 +7,13 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 トレースでウェブページをテストする場合、以下が必要です：
 
-* [Tealium Toolsブラウザ拡張]()
+* [Tealium Toolsブラウザ拡張](https://docs.tealium.com/tealium-tools-browser-extension/)
 
 ## トレースの開始
 
 以下の手順でトレースをテストします：
 
-1. **ツール &gt; トレース**に移動し、新規トレースの下の**開始**をクリックします。
+1. **ツール > トレース**に移動し、新規トレースの下の**開始**をクリックします。
 1. 提供されたトレースIDをコピーし、**続行**をクリックします。
 1. 次の方法のいずれかを使用してトレースIDを有効にします：  
 
@@ -22,13 +22,13 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
       1. テストページへの新しいブラウザウィンドウを開きます。 
       1. Tealium Toolsブラウザ拡張をクリックします
       1. **AudienceStream Trace**をクリックします。
-      1. ステップ2からのトレースIDを入力し、**Start Trace**をクリックします。&lt;br&gt; ![](/images/server-side/es-getting-started-trace-tealium-tool.jpg) 
+      1. ステップ2からのトレースIDを入力し、**Start Trace**をクリックします。<br> ![](https://docs.tealium.com/images/server-side/es-getting-started-trace-tealium-tool.jpg) 
 
   * **Data Layer Attribute** 
   
       1. `tealium_trace_id`をコードインストールのデータレイヤーに追加し、それをトレースIDの値に構成します。
-      1. HTTP APIでは、これはクエリストリングパラメータを追加することを意味します：`&amp;tealium_trace_id=012345`
-      1. 例えばSwiftアプリでは、以下のようになります：&lt;br&gt; `tealium?.volatileData()?.add(data: [&#34;tealium_trace_id&#34;: &#34;012345&#34;])`
+      1. HTTP APIでは、これはクエリストリングパラメータを追加することを意味します：`&tealium_trace_id=012345`
+      1. 例えばSwiftアプリでは、以下のようになります：<br> `tealium?.volatileData()?.add(data: ["tealium_trace_id": "012345"])`
 
 1. テストケースのワークフローを進めます。  
 これは、ページを更新したり、いくつかのページをナビゲートしたり、購入を行ったり、ネイティブアプリのいくつかの画面を表示したりすることを意味します。この場合、500ドル以上の購入を完了すると、作成したオーディエンスがトリガーされます。
@@ -41,15 +41,15 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 この例では、550ドルの購入が完了し、トレースで以下が確認されました：
 
 * ✓ - 訪問属性の更新  
-    ![](/images/tutorials/as-getting-started-trace-enriched-visitor.jpg)
+    ![](https://docs.tealium.com/images/tutorials/as-getting-started-trace-enriched-visitor.jpg)
 * ✓ - VIPオーディエンスの参加  
-    ![](/images/tutorials/as-getting-started-audiences-joined.jpg)
+    ![](https://docs.tealium.com/images/tutorials/as-getting-started-audiences-joined.jpg)
 * ✓ - Google Sheetsコネクタのトリガー  
-    ![](/images/tutorials/as-getting-started-sheets-inserted-row.jpg)
+    ![](https://docs.tealium.com/images/tutorials/as-getting-started-sheets-inserted-row.jpg)
 * ✓ - Google Sheets行の挿入  
-    ![](/images/server-side/as-getting-started-sheets-inserted-row.jpg)
+    ![](https://docs.tealium.com/images/server-side/as-getting-started-sheets-inserted-row.jpg)
 
-![](/images/server-side/beast-thumbsup-whistle-small.png)
+![](https://docs.tealium.com/images/server-side/beast-thumbsup-whistle-small.png)
 
 期待したトレースログが表示されなかった場合は、以下のことを確認してください：
 

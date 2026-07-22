@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-transact-connec
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -41,7 +41,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-transact-connec
   * 必須
   * あなたのサーバーリージョン。
   * ヒント：例の`transact-campaign-ZZ-5.goacoustic.com`では、`ZZ`があなたのリージョンです。
-  * 提供されない場合、デフォルトで&#34;`us`&#34;リージョンが使用されます。
+  * 提供されない場合、デフォルトで"`us`"リージョンが使用されます。
   * アコースティックサポートに連絡して支援を求めてください。
 
 ## アクション構成 - パラメータとオプション
@@ -56,9 +56,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/acoustic-transact-connec
 
 |**パラメータ**| **説明**|
 |---| ---|
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;メーリングに使用されるTransact Automated Message GroupのID。&lt;/li&gt;&lt;/ul&gt; |
-|受信者のメール|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;トランザクションメールが送信されるメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|トランザクションID|  &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;送信者がトランザクションを一意に識別するために使用します。&lt;/li&gt;&lt;li&gt;指定された値は、元のリクエストで使用された場合、レスポンスドキュメントに返されます。&lt;/li&gt;&lt;/ul&gt; |
-|列を保存|  &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;受信者要素からデータベースに保存する列名のリスト。&lt;/li&gt;&lt;li&gt;列名は大文字と小文字を区別し、Acoustic Campaignで指定したものと一致していなければなりません。&lt;/li&gt;&lt;li&gt;この要素を使用しない場合、Acoustic Campaignは列名を保存しません。&lt;/li&gt;&lt;/ul&gt; |
-|コンテンツ/本文タイプ|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;コンテンツ本文がHTMLのみかTEXTのみかを定義するパラメータ。&lt;/li&gt;&lt;/ul&gt; |
-|コンテンツパーソナライゼーション（タグ値をタグ名にマップ）|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;送信するメールのコンテンツを提供するために、少なくとも1つのパーソナライゼーションブロックが必要です。&lt;/li&gt;&lt;li&gt;各パーソナライゼーション要素には1つの名前/値のペアが含まれます。&lt;/li&gt;&lt;li&gt;**タグ値**を**タグ名**にマップします。ここで：&lt;ul&gt;&lt;li&gt;**タグ名**は、メーリングのテンプレート本文に使用されるパーソナライゼーション文字列の名前を指定し、&lt;/li&gt;&lt;li&gt;**タグ値**は、対応する`TAG_NAME`要素の値を指定します。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;タグ名は、Acoustic Campaignで使用されるフィールドと完全に一致していなければなりません。&lt;/li&gt;&lt;li&gt;ブール値（**true**、**false**）は小文字でなければなりません。&lt;/li&gt;&lt;li&gt;Transactサーバーは、テキストまたはCDATAコンテンツに配置された任意のコード（ロジックまたは変換）を処理しません。これには、テンプレートフィールドによって挿入されたものも含まれます。&lt;/li&gt;&lt;li&gt;テキストに角括弧（`&lt;`または`&gt;`）が含まれている場合、それをCDATAセクションで囲む必要があります。&lt;/li&gt;&lt;/ul&gt; |
+|キャンペーンID|  <ul><li>必須</li><li>メーリングに使用されるTransact Automated Message GroupのID。</li></ul> |
+|受信者のメール|  <ul><li>必須</li><li>トランザクションメールが送信されるメールアドレス。</li></ul> |
+|トランザクションID|  <ul><li>オプション</li><li>送信者がトランザクションを一意に識別するために使用します。</li><li>指定された値は、元のリクエストで使用された場合、レスポンスドキュメントに返されます。</li></ul> |
+|列を保存|  <ul><li>オプション</li><li>受信者要素からデータベースに保存する列名のリスト。</li><li>列名は大文字と小文字を区別し、Acoustic Campaignで指定したものと一致していなければなりません。</li><li>この要素を使用しない場合、Acoustic Campaignは列名を保存しません。</li></ul> |
+|コンテンツ/本文タイプ|  <ul><li>必須</li><li>コンテンツ本文がHTMLのみかTEXTのみかを定義するパラメータ。</li></ul> |
+|コンテンツパーソナライゼーション（タグ値をタグ名にマップ）|  <ul><li>必須</li><li>送信するメールのコンテンツを提供するために、少なくとも1つのパーソナライゼーションブロックが必要です。</li><li>各パーソナライゼーション要素には1つの名前/値のペアが含まれます。</li><li>**タグ値**を**タグ名**にマップします。ここで：<ul><li>**タグ名**は、メーリングのテンプレート本文に使用されるパーソナライゼーション文字列の名前を指定し、</li><li>**タグ値**は、対応する`TAG_NAME`要素の値を指定します。</li></ul> </li><li>タグ名は、Acoustic Campaignで使用されるフィールドと完全に一致していなければなりません。</li><li>ブール値（**true**、**false**）は小文字でなければなりません。</li><li>Transactサーバーは、テキストまたはCDATAコンテンツに配置された任意のコード（ロジックまたは変換）を処理しません。これには、テンプレートフィールドによって挿入されたものも含まれます。</li><li>テキストに角括弧（`<`または`>`）が含まれている場合、それをCDATAセクションで囲む必要があります。</li></ul> |

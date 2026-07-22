@@ -15,11 +15,11 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
-  * Your project API key. The API key is located in your Amplitude instance under **Settings &gt; Projects**.
+  * Your project API key. The API key is located in your Amplitude instance under **Settings > Projects**.
 * **Endpoint**  
   * Select the endpoint or type the endpoint URL.
   * Standard Server: `https://api2.amplitude.com/identify`.
@@ -42,17 +42,25 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| `user_id` | A `UUID` (unique user `ID`) that you specify. If you send a request with a `user_id` that is not in the Amplitude system yet, then the user tied to the `user_id` isn&#39;t marked new until their first event. |
+| `user_id` | A `UUID` (unique user `ID`) that you specify. If you send a request with a `user_id` that is not in the Amplitude system yet, then the user tied to the `user_id` isn't marked new until their first event. |
 | `device_id` | A device specific identifier, such as the Identifier for Vendor (`IDFV`) on iOS. |
 | `app_version` | The version of the app the user is on. |
 | `start_version` | The version of the app the user was on first. |
-| `groups` | A dictionary of key-value pairs that represent groups of users. Setting groups lets you use account-level reporting. You can track up to `5` unique group types and `10` total groups. For more information, see [Account-level reporting in Amplitude](https://amplitude.com/docs/analytics/account-level-reporting). This feature is only available to Enterprise customers who have purchased the accounts add-on. |
+| `groups` | A dictionary of key-value pairs that represent groups of users. Setting groups lets you use account-level reporting. You can track up to `5` unique group types and `10` total groups. For more information, see [Account-level reporting in Amplitude](https://amplitude.com/docs/analytics/account-level-reporting). 
+<blockquote>
+This feature is only available to Enterprise customers who have purchased the accounts add-on.
+</blockquote>
+ |
 | `language` | The language the user has set. |
 | `paying` | Specify if the user is paying. |
 
 #### Geographical Parameters
 
-You must update all of the following fields together. Setting any of these fields automatically resets the others if they aren&#39;t also explicitly set on the same identify call.
+
+<blockquote>
+You must update all of the following fields together. Setting any of these fields automatically resets the others if they aren't also explicitly set on the same identify call.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -72,11 +80,15 @@ You must update the following fields together:
 * `device_model`
 * `carrier`
 
-Setting any of the fields above resets all the other property values to null if they aren&#39;t explicitly set on the same identify call. All property values otherwise persist to later events if the values aren&#39;t changed to a different string or if all values are passed as `null`. Amplitude tries to use `device_brand`, `device_manufacturer`, and `device_model` to map the corresponding device type.
+
+<blockquote>
+Setting any of the fields above resets all the other property values to null if they aren't explicitly set on the same identify call. All property values otherwise persist to later events if the values aren't changed to a different string or if all values are passed as `null`. Amplitude tries to use `device_brand`, `device_manufacturer`, and `device_model` to map the corresponding device type.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |
-| `platform` | The platform that&#39;s sending the data. |
+| `platform` | The platform that's sending the data. |
 | `os_name` | The mobile operating system or browser the user is on. |
 | `os_version` | The version of the mobile operating system or browser the user is on. |
 | `device_brand` | The device brand the user is on. |

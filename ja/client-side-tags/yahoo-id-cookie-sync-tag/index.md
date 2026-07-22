@@ -3,7 +3,11 @@ title: Yahoo ID Cookie Syncタグ
 description: この記事では、YahooユーザーID Cookie Syncタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/yahoo-id-cookie-sync-tag/
 ---
- このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成]()を`true`に構成する必要があります。この構成により、訪問IDがCookie同期に利用可能になります。詳細については、[utag 4.50リリースノート]()および[utag 4.50&#43;へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+
+<blockquote>
+このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがCookie同期に利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+</blockquote>
+
 
 Yahoo Cookie Syncタグを使用すると、データパートナーがCookie同期を開始し、各パートナーに対して一意の暗号化されたYahoo Cookie ID（AXID）を受け取ることができます。この暗号化されたIDは、Yahoo DataX Connectorを介してCookieデータを投稿するために使用できます。このタグは、AXIDをサーバーサイドに送信して取り込みます。
 
@@ -14,7 +18,7 @@ Yahoo Cookie Syncタグを使用すると、データパートナーがCookie同
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて]()を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -28,11 +32,11 @@ Yahoo Cookie Syncタグを使用すると、データパートナーがCookie同
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

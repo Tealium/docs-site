@@ -22,7 +22,7 @@ To create a label directly on an item:
     * **Tag**
     * **Extension**
 1. In the left panel, click **Apply Labels**.  
-    ![](/images/iq-tag-management/whiteui-tiq-addnewlabel.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-addnewlabel.png)
 1. Click the folder to change the label color.
 1. Enter the name of the label and press **Enter** or click the return arrow (**↩**).
 1. Click **Save/Publish** to save your changes.
@@ -32,13 +32,13 @@ To create a label directly on an item:
 To create a label directly on multiple items:
 
 1. Go to one of the following screens:
-    * **Data Layer &gt; Variables**
+    * **Data Layer > Variables**
     * **Load Rules**
     * **Tags**
     * **Extensions**
 1. Click the box next to the items you want to label.
 1. At the top of the table, click **Apply Labels**.  
-    ![](/images/guides/iq/labels-apply-multiple.png)
+    ![](https://docs.tealium.com/images/guides/iq/labels-apply-multiple.png)
 1. Click the folder to change the label color.
 1. Enter the name of the label and press **Enter** or click the return arrow (**↩**).
 1. Click **Save/Publish** to save your changes.
@@ -48,17 +48,17 @@ To create a label directly on multiple items:
 To create a label from the **Manage Labels** screen:
 
 1. In the admin menu, click **Manage Labels**.  
-    ![](/images/iq-tag-management/add-label.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/add-label.png)
 1. Enter a **Name** for the label.
 1. Select a **Color** for the label.
-1. To restrict the ability to make changes to items with this label applied, click **Yes** under **Assign as Resource Lock**, then select users. Learn more about [resource locks]().
-1. To add another label, click **Save &amp; Add Another**, otherwise click **Save Changes**.
+1. To restrict the ability to make changes to items with this label applied, click **Yes** under **Assign as Resource Lock**, then select users. Learn more about [resource locks](https://docs.tealium.com/resource-locks/).
+1. To add another label, click **Save & Add Another**, otherwise click **Save Changes**.
 
 ## Filter by label
 
 1. Navigate to **Tag Management**.
 1. Go to one of the following screens:
-    * **Data Layer &gt; Variables**
+    * **Data Layer > Variables**
     * **Load Rules**
     * **Tags**
     * **Extensions**
@@ -75,7 +75,7 @@ The **Filter** list now displays **Filter On**.
 Use the following steps to search Tealium iQ based on labels:
 
 1. In the search bar at the top of the screen, enter the label you want to search by.  
-    ![](/images/iq-tag-management/whiteui-tiq-lables-searchtiq.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-lables-searchtiq.png)  
 The search bar displays results for labels applied to tags, load rules, and extensions.
 1. Select any label from the search results to go to that area of the interface, filtered by the label searched for.
 
@@ -84,7 +84,7 @@ The search bar displays results for labels applied to tags, load rules, and exte
 1. In the admin menu, click **Manage Labels**.
 1. Select the label you want to delete to expand the details.
 1. Click **Delete**.  
-    ![](/images/iq-tag-management/delete-label.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/delete-label.png)  
 A message appears asking you to confirm your deletion.
 1. Click **Delete Label**.  
 The label is now removed.

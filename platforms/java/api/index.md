@@ -27,11 +27,11 @@ addPersistentData(data)
 
 | Parameters | Type | Description  | Example |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Object&gt;` | Required map data to add to the existing persistent `Udo` | `[&#34;key&#34;:&#34;value&#34;]` |
+| `data` | `Map<String, Object>` | Required map data to add to the existing persistent `Udo` | `["key":"value"]` |
 
 ```java
 Udo data = new Udo();
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
+data.put("KEY", "VALUE");
 tealium.getDataManager().addPersistentData(data);
 ```
 
@@ -45,11 +45,11 @@ deletePersistentData(list)
 
 | Parameters |  Type |Description | Example |
 | --- | --- | --- | --- |
-| `list` |  `List&lt;String&gt;` | List of keys as Strings | `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `list` |  `List<String>` | List of keys as Strings | `["key1", "key2"]` |
 
 ```java
-List&lt;String&gt; list = new List&lt;&gt;();
-list.append(&#34;key_to_delete&#34;);
+List<String> list = new List<>();
+list.append("key_to_delete");
 tealium.getDataManager().deletePersistentData(list);
 ```
 
@@ -80,7 +80,7 @@ getPersistentData()
 
 | Return Type | Description | Example |
 | --- | --- | --- |
-| `Udo` | Universal Data Object (UDO) of persistent data | `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `Udo` | Universal Data Object (UDO) of persistent data | `["key1", "key2"]` |
 
 ```java
 Udo persistentData = tealium.getDataManager().getPersistentData()
@@ -96,7 +96,7 @@ getSessionId()
 
 | Return Type | Description | Example  |
 | --- | --- | --- |
-| `String` | Representation of a timestamp in milliseconds | `&#34;1473371215123&#34;` |
+| `String` | Representation of a timestamp in milliseconds | `"1473371215123"` |
 
 ```java
 tealium.getDataManager().getSessionId() 
@@ -113,7 +113,7 @@ resetSessionId()
 
 | Return Type | Description | Example |
 | --- | --- | --- |
-| `String` | New String representation of a timestamp in milliseconds that is added to all dispatches for the remainder of the current session. The returned String is for monitoring convenience as it is automatically added to the volatile data store when this method is called. | `&#34;1473371215123&#34;` |
+| `String` | New String representation of a timestamp in milliseconds that is added to all dispatches for the remainder of the current session. The returned String is for monitoring convenience as it is automatically added to the volatile data store when this method is called. | `"1473371215123"` |
 
 ```java
 tealium.getDataManager().resetSessionId()
@@ -136,9 +136,9 @@ track(eventTitle, data, callback)
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------|------| --- |
-| `eventTitle` | `String` |Title of event (becomes the `tealium_event` and `event_name` event attribute values) |  `&#34;Some Event&#34;` |
+| `eventTitle` | `String` |Title of event (becomes the `tealium_event` and `event_name` event attribute values) |  `"Some Event"` |
 | `data`    | `Udo` |  (Optional) Universal Data Object (UDO) with event data as key-value pairs| `udoObject` |
-| `callback`| `DispatchCallback` |(Optional) Object with a function assigned to the &#34;callback&#34; key | `dispatchCallbackObject` |
+| `callback`| `DispatchCallback` |(Optional) Object with a function assigned to the "callback" key | `dispatchCallbackObject` |
 
 
 ## Class: `Tealium.Builder`
@@ -155,7 +155,7 @@ The following summarizes the commonly used methods of the Java `Tealium.Builder`
 
 ### `build()`
 
-Executes the build. Sets the persistent data if it hasn&#39;t been explicitly set with the `setPersistentData()` method. Sets the collect dispatcher if it hasn&#39;t been explicitly set with the setCollectDispatcher() method.
+Executes the build. Sets the persistent data if it hasn't been explicitly set with the `setPersistentData()` method. Sets the collect dispatcher if it hasn't been explicitly set with the setCollectDispatcher() method.
 
 ```java
 tealium.build();
@@ -179,10 +179,10 @@ Tealium tealium = new Tealium.Builder(account, profile)
 
 | Parameters |  Type | Description |  Example |
 | --- | --- | --- | --- |
-| `account` |  `String` |Tealium account name | `&#34;companyXYZ&#34;` |
-| `profile` |  `String` |Tealium profile name  | `&#34;main&#34;` |
-| `environment` |  `String` |Tealium environment name  | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `datasource` |  `String` |(Optional) data source key (Set to `null` if none)  | `&#34;abc123&#34;` |
+| `account` |  `String` |Tealium account name | `"companyXYZ"` |
+| `profile` |  `String` |Tealium profile name  | `"main"` |
+| `environment` |  `String` |Tealium environment name  | [`"dev"`, `"qa"`, `"prod"`] |
+| `datasource` |  `String` |(Optional) data source key (Set to `null` if none)  | `"abc123"` |
 
 ### `setDatasource() `  
 
@@ -194,7 +194,7 @@ tealium.setEnvironment(datasource);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `datasource` | `String` | Data source key (Set to `null` if none)  |  `&#34;abc123&#34;` |
+| `datasource` | `String` | Data source key (Set to `null` if none)  |  `"abc123"` |
 
 ### `setEnvironment()`   
 
@@ -206,7 +206,7 @@ tealium.setEnvironment(environment);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `environment` | `String` |Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `environment` | `String` |Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
 
 
 ### `setPersistentData()`   

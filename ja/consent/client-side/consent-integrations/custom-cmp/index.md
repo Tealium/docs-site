@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 * Tealium iQの同意強制フレームワーク（`utcm_framework` テンプレート）。
 * Tealium iQの同意強制フレームワークを活用するCMP特有の統合テンプレート。これらの統合テンプレートはできるだけ軽量に設計されています。
 
-私たちの[事前構築された統合]()は、様々な同意管理プラットフォーム（CMP）との統合をサポートしています。しかし、以下のような場合にはカスタム統合が推奨されます：
+私たちの[事前構築された統合](https://docs.tealium.com/vendor-specific-configuration/)は、様々な同意管理プラットフォーム（CMP）との統合をサポートしています。しかし、以下のような場合にはカスタム統合が推奨されます：
 
 * 事前に構築された統合がないCMPを使用する場合。
 * 同意をキャプチャするための内部ツールを使用する場合。
@@ -22,10 +22,10 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 
 以下は、カスタム統合を作成するための基本的なワークフローを説明しています：
 1. Tealium iQの外部（CMPが実装されているウェブサイト）で統合を開発およびデバッグします。
-1. Tealium iQで新しいカスタム同意統合と目的グループを追加します。詳細については、[同意統合と目的グループの管理]()を参照してください。
+1. Tealium iQで新しいカスタム同意統合と目的グループを追加します。詳細については、[同意統合と目的グループの管理](https://docs.tealium.com/manage-consent-integrations/)を参照してください。
 1. Tealium iQと適切なタグを目的グループ内の目的に割り当てます。
 1. テンプレートを作成するために、プロファイルを保存します。
-1. 新しく作成されたテンプレートを編集します。詳細については、を参照してください。
+1. 新しく作成されたテンプレートを編集します。詳細については、[manage-templates](https://docs.tealium.com/manage-templates/)を参照してください。
 1. 開発環境またはテスト環境にテンプレートを公開して、すべてが期待通りに動作することを確認し、その後通常のテストおよび公開フローに従ってください。
 
 ## 統合機能
@@ -52,13 +52,17 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 
 * `.cmpConvertResponseToGroupList` - 生の決定を下流の強制のための許可された目的キーの単純な配列に変換します。同意された目的キーの配列を返します。
 
+
+<blockquote>
 `cmpConvertResponseToGroupList` によって返される目的キーは、同意統合で構成された目的名と正確に一致する必要があります。**Vendor ID** フィールドは、Tealium iQ UIでテンプレートが関連するCMPクッキーまたは識別子を識別するために使用されます。この値はCMPの使用例でのクッキー名または識別子と一致する必要があります。大文字と小文字を区別します。
+</blockquote>
+
 
 ### 同意更新の監視とトリガー
 
 * `.cmpAddCallbackToTriggerRecheck` - CMPの同意ステータスが変更されるたびに呼び出されるコールバック関数を登録します。これにより、Tealium iQはポーリングに頼ることなく最新の同意決定を迅速に更新できます。
 
-  `cmpAddCallbackToTriggerRecheck` は、CMPがコールバックまたは代替実装方法を通じて同意ステータスの変更を通知するたびに `triggerRecheck()` を呼び出すように構成されていることを確認してください。バナーが暗黙的同意のために表示されるときやCMPの読み込み時の類似点で `triggerRecheck()` を呼び出します。詳細は、[カスタム統合テンプレート](#custom-integration-template) のコメントを参照してください。現在コールバックをサポートしている統合については、を参照してください。
+  `cmpAddCallbackToTriggerRecheck` は、CMPがコールバックまたは代替実装方法を通じて同意ステータスの変更を通知するたびに `triggerRecheck()` を呼び出すように構成されていることを確認してください。バナーが暗黙的同意のために表示されるときやCMPの読み込み時の類似点で `triggerRecheck()` を呼び出します。詳細は、[カスタム統合テンプレート](#custom-integration-template) のコメントを参照してください。現在コールバックをサポートしている統合については、[vendor-specific-configuration](https://docs.tealium.com/vendor-specific-configuration/)を参照してください。
 
 ## カスタム統合テンプレート
 
@@ -72,8 +76,8 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
     * このテンプレートは編集を意図しており、カスタムCMP/キャプチャツールのサポートを構築するために使用します。
     *
     * 例として挙げられているコード（コメントアウトされています）は、オプトアウトクッキーをチェックし、以下の二つの決定のいずれかを返す統合から取られています：
-    *  - [&#39;no-selling&#39;]（任意の値が見つかったオプトアウトクッキー） - 常に明示的な決定（オプトアウトクッキーが構成されています）
-    *  - [&#39;no-selling&#39;, &#39;yes-selling&#39;]（オプトアウトクッキーが見つからない） - 常に暗黙的な決定（クッキーが構成されていません）
+    *  - ['no-selling']（任意の値が見つかったオプトアウトクッキー） - 常に明示的な決定（オプトアウトクッキーが構成されています）
+    *  - ['no-selling', 'yes-selling']（オプトアウトクッキーが見つからない） - 常に暗黙的な決定（クッキーが構成されていません）
     *
     * オプトアウトクッキーの（大文字と小文字を区別する）名前はUIの「Vendor ID」フィールドから取得されます。
     *
@@ -85,8 +89,8 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
   // CMP特有の機能とラベル
   window.tealiumCmpIntegration = window.tealiumCmpIntegration || {}
 
-  window.tealiumCmpIntegration.cmpName = &#39;Custom Example&#39;
-  window.tealiumCmpIntegration.cmpIntegrationVersion = &#39;v1.1.0&#39;
+  window.tealiumCmpIntegration.cmpName = 'Custom Example'
+  window.tealiumCmpIntegration.cmpIntegrationVersion = 'v1.1.0'
 
   window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision = cmpFetchCurrentConsentDecision
   window.tealiumCmpIntegration.cmpFetchCurrentLookupKey = cmpFetchCurrentLookupKey
@@ -101,7 +105,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 
   /*
   // UIで入力されたVendor IDを単一の関連統合のために引っ張ってくる
-  var optOutCookieName = (window.tealiumCmpIntegration &amp;&amp; window.tealiumCmpIntegration.map &amp;&amp; Object.keys(window.tealiumCmpIntegration.map)[0]) || &#39;error-no-map-found-so-no-cookie-name-available&#39;
+  var optOutCookieName = (window.tealiumCmpIntegration && window.tealiumCmpIntegration.map && Object.keys(window.tealiumCmpIntegration.map)[0]) || 'error-no-map-found-so-no-cookie-name-available'
   */
 
   // CMPが「オプトイン」モデル（GDPRスタイル）を実行している場合は真を返す必要があります
@@ -118,13 +122,13 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
     /*
     // ここではタグマネージャーの機能を使用できません。なぜならそれがまだ許可されていないからです
     var readCookie = function (name) {
-      var reString = &#39;(?:(?:^|.*;\\s*)&#39; &#43; name &#43; &#39;\\s*\\=\\s*([^;]*).*$)|^.*$&#39;
+      var reString = '(?:(?:^|.*;\\s*)' + name + '\\s*\\=\\s*([^;]*).*$)|^.*$'
       var re = new RegExp(reString)
-      var cookieValue = document.cookie.replace(re, &#39;$1&#39;)
+      var cookieValue = document.cookie.replace(re, '$1')
       if (!cookieValue) return undefined
       return cookieValue
     }
-    var cookie = readCookie(optOutCookieName) || &#39;opt-out-cookie-not-found&#39;
+    var cookie = readCookie(optOutCookieName) || 'opt-out-cookie-not-found'
     return { cookieState: cookie } // 統合が機能するためにはオブジェクトを返す必要があります - これにより、後で他のプロパティ（グローバルプライバシーコントロールなど）を追加することができます
     */
   }
@@ -139,7 +143,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
   // 生の決定がCMPの期待に合致している場合は真を返す必要があります
   function cmpCheckForWellFormedDecision (cmpRawOutput) {
     /*
-    return typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39;
+    return typeof cmpRawOutput === 'object' && typeof cmpRawOutput.cookieState === 'string'
     */
   }
 
@@ -147,7 +151,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
   function cmpCheckForExplicitConsentDecision (cmpRawOutput) {
     /*
     // この例では、決定が明示的であるかどうかを判断する唯一の方法は、オプトアウトクッキーが構成されているかどうかを確認することです
-    if ((typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39; &amp;&amp; cmpRawOutput.cookieState !== &#39;opt-out-cookie-not-found&#39;)) return true
+    if ((typeof cmpRawOutput === 'object' && typeof cmpRawOutput.cookieState === 'string' && cmpRawOutput.cookieState !== 'opt-out-cookie-not-found')) return true
     return false
     */
   }
@@ -155,10 +159,10 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
   // 同意されたベンダー/目的の配列を返す必要があります - これらはTealium iQの目的と正確に一致する必要があります
   function cmpConvertResponseToGroupList (cmpRawOutput) {
     /*
-    var consentDecision = [&#39;no-selling&#39;] // データを売却/共有しないタグは常に許可されます
+    var consentDecision = ['no-selling'] // データを売却/共有しないタグは常に許可されます
     // タグがデータを売却/共有してもよいかどうかを判断するために、空でないオプトアウトクッキーを非常に単純にチェックします
-    if (cmpRawOutput.cookieState === &#39;opt-out-cookie-not-found&#39;) {
-      consentDecision.push(&#39;yes-selling&#39;) // クッキーが見つからないので、データの売却/共有が問題ないと仮定しなければなりません
+    if (cmpRawOutput.cookieState === 'opt-out-cookie-not-found') {
+      consentDecision.push('yes-selling') // クッキーが見つからないので、データの売却/共有が問題ないと仮定しなければなりません
     }
     return consentDecision
     */
@@ -176,11 +180,11 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
     /*
     (function() {
         // 元のdocument.cookieディスクリプタ
-        const originalCookieDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, &#39;cookie&#39;);
+        const originalCookieDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, 'cookie');
 
         // カスタムイベントを作成
         function emitCookieChange(value) {
-          const event = new CustomEvent(&#39;cookieUpdated&#39;, {
+          const event = new CustomEvent('cookieUpdated', {
             detail: {
               cookies: value
             }
@@ -189,7 +193,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
         }
 
         // document.cookieプロパティをオーバーライド
-        Object.defineProperty(document, &#39;cookie&#39;, {
+        Object.defineProperty(document, 'cookie', {
           get: function() {
             return originalCookieDescriptor.get.call(document);
           },
@@ -201,7 +205,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
       })();
 
       // 例のリスナー
-      document.addEventListener(&#39;cookieUpdated&#39;, (e) =&gt; {
+      document.addEventListener('cookieUpdated', (e) => {
         // オプトアウトクッキーが更新されたときにコールバック関数をトリガーします（ここではいくつかの誤検知があります）
         if ((e.detail.cookies.indexOf(optOutCookieName)) !== -1) {
             triggerRecheck();
@@ -215,7 +219,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
     // 理解できないものはオプトアウトとして扱います
     if (cmpCheckForWellFormedDecision(cmpRawOutput) !== true) return false
 
-    tiqGroupName = tiqGroupName || &#39;tiq-group-name-missing&#39;
+    tiqGroupName = tiqGroupName || 'tiq-group-name-missing'
     var allowedGroups = cmpConvertResponseToGroupList(cmpRawOutput)
     return allowedGroups.indexOf(tiqGroupName) !== -1
   }
@@ -223,7 +227,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 
 /*
   // Debugging / development output - uncomment this block, then paste/repaste this entire template on your test pages
-  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
+  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
 
   Checks:
     - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
@@ -247,7 +251,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 1. あなたの決定をカスタマイズし、新しく解釈された同意決定を見るためにテンプレートを再度貼り付けます。
 1. テンプレートに満足したら、Tealium iQに貼り付けて公開する前に再びデバッグブロックをコメントアウトします。
 
-デバッグスニペットは、プロファイルを保存して[テンプレートを編集]()することで見つけることができます。
+デバッグスニペットは、プロファイルを保存して[テンプレートを編集](https://docs.tealium.com/manage-templates/)することで見つけることができます。
 
 ## 公開後の検証
 
@@ -255,8 +259,8 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 
 ### デバッグモードを使用する
 
-[デバッグモード]()を使用するには：
-* コンソールで`document.cookie = &#34;utagdb=true&#34;`を構成して`utagdb`クッキーを`true`に構成します。
+[デバッグモード](https://docs.tealium.com/debugging/)を使用するには：
+* コンソールで`document.cookie = "utagdb=true"`を構成して`utagdb`クッキーを`true`に構成します。
 * 関連する出力のみを表示するようにコンソールフィルターを構成します（デバッグ出力で提案されているフィルターを使用します）。
 * 期待通りに動作するかどうか、異なるオプションをテストします。
 
@@ -266,4 +270,4 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
 * テンプレートの最下部にコメントアウトされているデバッグコードブロックをコンソールに貼り付けて、あなたの決定と関連する出力のみを出力します。
 * 必要に応じて、テンプレート内の関数を個別に呼び出すか、このオブジェクトの他の便利なプロパティにアクセスすることもできます。
 
-プリビルトおよびカスタムインテグレーションのより詳細なデバッグのヒントについては、[同意インテグレーションの検証とデバッグ]()を参照してください。
+プリビルトおよびカスタムインテグレーションのより詳細なデバッグのヒントについては、[同意インテグレーションの検証とデバッグ](https://docs.tealium.com/validate-and-debug-consent-integrations/)を参照してください。

@@ -11,7 +11,7 @@ url: https://docs.tealium.com/client-side-tags/quora-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Quora tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Quora tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -20,7 +20,7 @@ A Quora-provided alphanumeric string uniquely identifying the pixel
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -28,20 +28,20 @@ The available categories are:
 
 | Variable   | Description                      |
 |:-----------|:---------------------------------|
-| `pixel_id` | &lt;ul&gt;&lt;li&gt;Quora Pixel ID&lt;/li&gt;&lt;/ul&gt; |
+| `pixel_id` | <ul><li>Quora Pixel ID</li></ul> |
 
 ### Events
 
 | Variable               | Description                                      |
 |:-----------------------|:-------------------------------------------------|
-| `ViewContent`          | &lt;ul&gt;&lt;li&gt;Page View&lt;/li&gt;&lt;li&gt;View content&lt;/li&gt;&lt;/ul&gt; |
-| `Generic`              | &lt;ul&gt;&lt;li&gt;Generic&lt;/li&gt;&lt;/ul&gt;                        |
-| `Purchase`             | &lt;ul&gt;&lt;li&gt;Purchase&lt;/li&gt;&lt;/ul&gt;                       |
-| `GenerateLead`         | &lt;ul&gt;&lt;li&gt;Generate lead&lt;/li&gt;&lt;/ul&gt;                  |
-| `CompleteRegistration` | &lt;ul&gt;&lt;li&gt;Complete registration&lt;/li&gt;&lt;/ul&gt;          |
-| `AddPaymentInfo`       | &lt;ul&gt;&lt;li&gt;Add payment Information&lt;/li&gt;&lt;/ul&gt;        |
-| `AddToCart`            | &lt;ul&gt;&lt;li&gt;Add to cart&lt;/li&gt;&lt;/ul&gt;                    |
-| `AddToWishlist`        | &lt;ul&gt;&lt;li&gt;Add to wish list&lt;/li&gt;&lt;/ul&gt;               |
-| `InitiateCheckout`     | &lt;ul&gt;&lt;li&gt;Initiate checkout&lt;/li&gt;&lt;/ul&gt;              |
-| `Search`               | &lt;ul&gt;&lt;li&gt;Search&lt;/li&gt;&lt;/ul&gt;                         |
-| `Custom`               | &lt;ul&gt;&lt;li&gt;Custom&lt;/li&gt;&lt;/ul&gt;                         |
+| `ViewContent`          | <ul><li>Page View</li><li>View content</li></ul> |
+| `Generic`              | <ul><li>Generic</li></ul>                        |
+| `Purchase`             | <ul><li>Purchase</li></ul>                       |
+| `GenerateLead`         | <ul><li>Generate lead</li></ul>                  |
+| `CompleteRegistration` | <ul><li>Complete registration</li></ul>          |
+| `AddPaymentInfo`       | <ul><li>Add payment Information</li></ul>        |
+| `AddToCart`            | <ul><li>Add to cart</li></ul>                    |
+| `AddToWishlist`        | <ul><li>Add to wish list</li></ul>               |
+| `InitiateCheckout`     | <ul><li>Initiate checkout</li></ul>              |
+| `Search`               | <ul><li>Search</li></ul>                         |
+| `Custom`               | <ul><li>Custom</li></ul>                         |

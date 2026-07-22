@@ -70,13 +70,13 @@ url: https://docs.tealium.com/platforms/getting-started-web/data-layer/definitio
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;       : &#34;de&#34;,
-  &#34;language_code&#34;      : &#34;de&#34;,
-  &#34;page_name&#34;          : &#34;Homepage&#34;,
-  &#34;page_type&#34;          : &#34;home&#34;,
-  &#34;site_section&#34;       : &#34;Public&#34;,
-  &#34;user_auth_state&#34;    : &#34;unauthenticated&#34;,
-  &#34;tealium_event&#34;      : &#34;page_view&#34;
+  "country_code"       : "de",
+  "language_code"      : "de",
+  "page_name"          : "Homepage",
+  "page_type"          : "home",
+  "site_section"       : "Public",
+  "user_auth_state"    : "unauthenticated",
+  "tealium_event"      : "page_view"
 }
 ```
 
@@ -89,19 +89,19 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;           : &#34;de&#34;,
-  &#34;language_code&#34;          : &#34;de&#34;,
-  &#34;page_name&#34;              : &#34;Account Overview&#34;,
-  &#34;page_type&#34;              : &#34;account_overview&#34;,
-  &#34;site_section&#34;           : &#34;Retail Banking&#34;,
-  &#34;user_auth_state&#34;        : &#34;authenticated&#34;,
-  &#34;customer_id&#34;            : &#34;CUST8237572&#34;,
-  &#34;customer_segment&#34;       : &#34;premium&#34;,
-  &#34;account_id&#34;             : &#34;ACC123456&#34;,
-  &#34;account_type&#34;           : &#34;checking&#34;,
-  &#34;account_currency_code&#34;  : &#34;EUR&#34;,
-  &#34;account_balance&#34;        : &#34;1543.27&#34;,
-  &#34;tealium_event&#34;          : &#34;page_view&#34;
+  "country_code"           : "de",
+  "language_code"          : "de",
+  "page_name"              : "Account Overview",
+  "page_type"              : "account_overview",
+  "site_section"           : "Retail Banking",
+  "user_auth_state"        : "authenticated",
+  "customer_id"            : "CUST8237572",
+  "customer_segment"       : "premium",
+  "account_id"             : "ACC123456",
+  "account_type"           : "checking",
+  "account_currency_code"  : "EUR",
+  "account_balance"        : "1543.27",
+  "tealium_event"          : "page_view"
 }
 ```
 
@@ -114,18 +114,18 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;           : &#34;de&#34;,
-  &#34;language_code&#34;          : &#34;de&#34;,
-  &#34;page_name&#34;              : &#34;Checking Account Detail&#34;,
-  &#34;page_type&#34;              : &#34;account_detail&#34;,
-  &#34;site_section&#34;           : &#34;Retail Banking&#34;,
-  &#34;user_auth_state&#34;        : &#34;authenticated&#34;,
-  &#34;customer_id&#34;            : &#34;CUST8237572&#34;,
-  &#34;account_id&#34;             : &#34;ACC123456&#34;,
-  &#34;account_type&#34;           : &#34;checking&#34;,
-  &#34;account_currency_code&#34;  : &#34;EUR&#34;,
-  &#34;account_balance&#34;        : &#34;1543.27&#34;,
-  &#34;tealium_event&#34;          : &#34;account_view&#34;
+  "country_code"           : "de",
+  "language_code"          : "de",
+  "page_name"              : "Checking Account Detail",
+  "page_type"              : "account_detail",
+  "site_section"           : "Retail Banking",
+  "user_auth_state"        : "authenticated",
+  "customer_id"            : "CUST8237572",
+  "account_id"             : "ACC123456",
+  "account_type"           : "checking",
+  "account_currency_code"  : "EUR",
+  "account_balance"        : "1543.27",
+  "tealium_event"          : "account_view"
 }
 ```
 
@@ -138,14 +138,14 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;      : &#34;de&#34;,
-  &#34;language_code&#34;     : &#34;de&#34;,
-  &#34;page_name&#34;         : &#34;Credit Cards Overview&#34;,
-  &#34;page_type&#34;         : &#34;product_listing&#34;,
-  &#34;site_section&#34;      : &#34;Products&#34;,
-  &#34;product_category&#34;  : &#34;lending&#34;,
-  &#34;product_subcategory&#34;: &#34;credit_card&#34;,
-  &#34;tealium_event&#34;     : &#34;page_view&#34;
+  "country_code"      : "de",
+  "language_code"     : "de",
+  "page_name"         : "Credit Cards Overview",
+  "page_type"         : "product_listing",
+  "site_section"      : "Products",
+  "product_category"  : "lending",
+  "product_subcategory": "credit_card",
+  "tealium_event"     : "page_view"
 }
 ```
 
@@ -158,16 +158,16 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;        : &#34;de&#34;,
-  &#34;language_code&#34;       : &#34;de&#34;,
-  &#34;page_name&#34;           : &#34;Gold Credit Card&#34;,
-  &#34;page_type&#34;           : &#34;product_detail&#34;,
-  &#34;site_section&#34;        : &#34;Products&#34;,
-  &#34;product_id&#34;          : &#34;CC_GOLD_01&#34;,
-  &#34;product_name&#34;        : &#34;Gold Credit Card&#34;,
-  &#34;product_category&#34;    : &#34;lending&#34;,
-  &#34;product_subcategory&#34; : &#34;credit_card&#34;,
-  &#34;tealium_event&#34;       : &#34;product_view&#34;
+  "country_code"        : "de",
+  "language_code"       : "de",
+  "page_name"           : "Gold Credit Card",
+  "page_type"           : "product_detail",
+  "site_section"        : "Products",
+  "product_id"          : "CC_GOLD_01",
+  "product_name"        : "Gold Credit Card",
+  "product_category"    : "lending",
+  "product_subcategory" : "credit_card",
+  "tealium_event"       : "product_view"
 }
 ```
 
@@ -175,19 +175,19 @@ Sample:
 
 |Event Name|Description| Sample URL|
 |---| ---| ---|
-|`search`|An on-site search results page.|`https://www.example.com/search?query=credit&#43;card`|
+|`search`|An on-site search results page.|`https://www.example.com/search?query=credit+card`|
 
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;     : &#34;de&#34;,
-  &#34;language_code&#34;    : &#34;de&#34;,
-  &#34;page_name&#34;        : &#34;Search Results&#34;,
-  &#34;page_type&#34;        : &#34;search&#34;,
-  &#34;site_section&#34;     : &#34;Public&#34;,
-  &#34;search_keyword&#34;   : &#34;credit card&#34;,
-  &#34;search_results&#34;   : &#34;23&#34;,
-  &#34;tealium_event&#34;    : &#34;search&#34;
+  "country_code"     : "de",
+  "language_code"    : "de",
+  "page_name"        : "Search Results",
+  "page_type"        : "search",
+  "site_section"     : "Public",
+  "search_keyword"   : "credit card",
+  "search_results"   : "23",
+  "tealium_event"    : "search"
 }
 ```
 
@@ -200,13 +200,13 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;     : &#34;de&#34;,
-  &#34;language_code&#34;    : &#34;de&#34;,
-  &#34;page_name&#34;        : &#34;Online Banking Login&#34;,
-  &#34;page_type&#34;        : &#34;login&#34;,
-  &#34;site_section&#34;     : &#34;Retail Banking&#34;,
-  &#34;user_auth_state&#34;  : &#34;unauthenticated&#34;,
-  &#34;tealium_event&#34;    : &#34;page_view&#34;
+  "country_code"     : "de",
+  "language_code"    : "de",
+  "page_name"        : "Online Banking Login",
+  "page_type"        : "login",
+  "site_section"     : "Retail Banking",
+  "user_auth_state"  : "unauthenticated",
+  "tealium_event"    : "page_view"
 }
 ```
 
@@ -219,19 +219,19 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;        : &#34;de&#34;,
-  &#34;language_code&#34;       : &#34;de&#34;,
-  &#34;page_name&#34;           : &#34;Credit Card Application - Personal Details&#34;,
-  &#34;page_type&#34;           : &#34;application&#34;,
-  &#34;site_section&#34;        : &#34;Applications&#34;,
-  &#34;product_id&#34;          : &#34;CC_GOLD_01&#34;,
-  &#34;product_name&#34;        : &#34;Gold Credit Card&#34;,
-  &#34;product_category&#34;    : &#34;lending&#34;,
-  &#34;product_subcategory&#34; : &#34;credit_card&#34;,
-  &#34;application_id&#34;      : &#34;APP987654&#34;,
-  &#34;application_stage&#34;   : &#34;personal_details&#34;,
-  &#34;application_status&#34;  : &#34;in_progress&#34;,
-  &#34;tealium_event&#34;       : &#34;application_view&#34;
+  "country_code"        : "de",
+  "language_code"       : "de",
+  "page_name"           : "Credit Card Application - Personal Details",
+  "page_type"           : "application",
+  "site_section"        : "Applications",
+  "product_id"          : "CC_GOLD_01",
+  "product_name"        : "Gold Credit Card",
+  "product_category"    : "lending",
+  "product_subcategory" : "credit_card",
+  "application_id"      : "APP987654",
+  "application_stage"   : "personal_details",
+  "application_status"  : "in_progress",
+  "tealium_event"       : "application_view"
 }
 ```
 
@@ -244,18 +244,18 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;        : &#34;de&#34;,
-  &#34;language_code&#34;       : &#34;de&#34;,
-  &#34;page_name&#34;           : &#34;Credit Card Application - Confirmation&#34;,
-  &#34;page_type&#34;           : &#34;application_confirmation&#34;,
-  &#34;site_section&#34;        : &#34;Applications&#34;,
-  &#34;product_id&#34;          : &#34;CC_GOLD_01&#34;,
-  &#34;product_name&#34;        : &#34;Gold Credit Card&#34;,
-  &#34;application_id&#34;      : &#34;APP987654&#34;,
-  &#34;application_stage&#34;   : &#34;confirmation&#34;,
-  &#34;application_status&#34;  : &#34;completed&#34;,
-  &#34;application_decision&#34;: &#34;approved&#34;,
-  &#34;tealium_event&#34;       : &#34;application_complete&#34;
+  "country_code"        : "de",
+  "language_code"       : "de",
+  "page_name"           : "Credit Card Application - Confirmation",
+  "page_type"           : "application_confirmation",
+  "site_section"        : "Applications",
+  "product_id"          : "CC_GOLD_01",
+  "product_name"        : "Gold Credit Card",
+  "application_id"      : "APP987654",
+  "application_stage"   : "confirmation",
+  "application_status"  : "completed",
+  "application_decision": "approved",
+  "tealium_event"       : "application_complete"
 }
 ```
 
@@ -268,14 +268,14 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;country_code&#34;      : &#34;de&#34;,
-  &#34;language_code&#34;     : &#34;de&#34;,
-  &#34;page_name&#34;         : &#34;Profile Settings&#34;,
-  &#34;page_type&#34;         : &#34;account&#34;,
-  &#34;site_section&#34;      : &#34;Profile&#34;,
-  &#34;user_auth_state&#34;   : &#34;authenticated&#34;,
-  &#34;customer_id&#34;       : &#34;CUST8237572&#34;,
-  &#34;tealium_event&#34;     : &#34;page_view&#34;
+  "country_code"      : "de",
+  "language_code"     : "de",
+  "page_name"         : "Profile Settings",
+  "page_type"         : "account",
+  "site_section"      : "Profile",
+  "user_auth_state"   : "authenticated",
+  "customer_id"       : "CUST8237572",
+  "tealium_event"     : "page_view"
 }
 ```
 
@@ -290,11 +290,11 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;      : &#34;CUST8237572&#34;,
-  &#34;user_auth_state&#34;  : &#34;authenticated&#34;,
-  &#34;login_method&#34;     : &#34;username_password&#34;,
-  &#34;device_type&#34;      : &#34;mobile&#34;,
-  &#34;tealium_event&#34;    : &#34;login_success&#34;
+  "customer_id"      : "CUST8237572",
+  "user_auth_state"  : "authenticated",
+  "login_method"     : "username_password",
+  "device_type"      : "mobile",
+  "tealium_event"    : "login_success"
 }
 ```
 
@@ -307,10 +307,10 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;user_auth_state&#34;  : &#34;unauthenticated&#34;,
-  &#34;login_method&#34;     : &#34;username_password&#34;,
-  &#34;device_type&#34;      : &#34;desktop&#34;,
-  &#34;tealium_event&#34;    : &#34;login_failure&#34;
+  "user_auth_state"  : "unauthenticated",
+  "login_method"     : "username_password",
+  "device_type"      : "desktop",
+  "tealium_event"    : "login_failure"
 }
 ```
 
@@ -323,15 +323,15 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;               : &#34;CUST8237572&#34;,
-  &#34;account_id&#34;                : &#34;ACC123456&#34;,
-  &#34;transaction_id&#34;            : &#34;TXN567890&#34;,
-  &#34;transaction_type&#34;          : &#34;outgoing&#34;,
-  &#34;transaction_category&#34;      : &#34;transfer&#34;,
-  &#34;transaction_currency_code&#34; : &#34;EUR&#34;,
-  &#34;transaction_amount&#34;        : &#34;250.00&#34;,
-  &#34;transaction_status&#34;        : &#34;initiated&#34;,
-  &#34;tealium_event&#34;             : &#34;transaction_initiated&#34;
+  "customer_id"               : "CUST8237572",
+  "account_id"                : "ACC123456",
+  "transaction_id"            : "TXN567890",
+  "transaction_type"          : "outgoing",
+  "transaction_category"      : "transfer",
+  "transaction_currency_code" : "EUR",
+  "transaction_amount"        : "250.00",
+  "transaction_status"        : "initiated",
+  "tealium_event"             : "transaction_initiated"
 }
 ```
 
@@ -344,15 +344,15 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;               : &#34;CUST8237572&#34;,
-  &#34;account_id&#34;                : &#34;ACC123456&#34;,
-  &#34;transaction_id&#34;            : &#34;TXN567890&#34;,
-  &#34;transaction_type&#34;          : &#34;outgoing&#34;,
-  &#34;transaction_category&#34;      : &#34;transfer&#34;,
-  &#34;transaction_currency_code&#34; : &#34;EUR&#34;,
-  &#34;transaction_amount&#34;        : &#34;250.00&#34;,
-  &#34;transaction_status&#34;        : &#34;success&#34;,
-  &#34;tealium_event&#34;             : &#34;transaction_success&#34;
+  "customer_id"               : "CUST8237572",
+  "account_id"                : "ACC123456",
+  "transaction_id"            : "TXN567890",
+  "transaction_type"          : "outgoing",
+  "transaction_category"      : "transfer",
+  "transaction_currency_code" : "EUR",
+  "transaction_amount"        : "250.00",
+  "transaction_status"        : "success",
+  "tealium_event"             : "transaction_success"
 }
 ```
 
@@ -365,15 +365,15 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;               : &#34;CUST8237572&#34;,
-  &#34;account_id&#34;                : &#34;ACC123456&#34;,
-  &#34;transaction_id&#34;            : &#34;TXN567890&#34;,
-  &#34;transaction_type&#34;          : &#34;outgoing&#34;,
-  &#34;transaction_category&#34;      : &#34;transfer&#34;,
-  &#34;transaction_currency_code&#34; : &#34;EUR&#34;,
-  &#34;transaction_amount&#34;        : &#34;250.00&#34;,
-  &#34;transaction_status&#34;        : &#34;failed&#34;,
-  &#34;tealium_event&#34;             : &#34;transaction_failure&#34;
+  "customer_id"               : "CUST8237572",
+  "account_id"                : "ACC123456",
+  "transaction_id"            : "TXN567890",
+  "transaction_type"          : "outgoing",
+  "transaction_category"      : "transfer",
+  "transaction_currency_code" : "EUR",
+  "transaction_amount"        : "250.00",
+  "transaction_status"        : "failed",
+  "tealium_event"             : "transaction_failure"
 }
 ```
 
@@ -386,16 +386,16 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;         : &#34;CUST8237572&#34;,
-  &#34;product_id&#34;          : &#34;CC_GOLD_01&#34;,
-  &#34;product_name&#34;        : &#34;Gold Credit Card&#34;,
-  &#34;product_category&#34;    : &#34;lending&#34;,
-  &#34;product_subcategory&#34; : &#34;credit_card&#34;,
-  &#34;application_id&#34;      : &#34;APP987654&#34;,
-  &#34;application_channel&#34; : &#34;web&#34;,
-  &#34;application_stage&#34;   : &#34;start&#34;,
-  &#34;application_status&#34;  : &#34;in_progress&#34;,
-  &#34;tealium_event&#34;       : &#34;application_start&#34;
+  "customer_id"         : "CUST8237572",
+  "product_id"          : "CC_GOLD_01",
+  "product_name"        : "Gold Credit Card",
+  "product_category"    : "lending",
+  "product_subcategory" : "credit_card",
+  "application_id"      : "APP987654",
+  "application_channel" : "web",
+  "application_stage"   : "start",
+  "application_status"  : "in_progress",
+  "tealium_event"       : "application_start"
 }
 ```
 
@@ -408,12 +408,12 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;         : &#34;CUST8237572&#34;,
-  &#34;product_id&#34;          : &#34;CC_GOLD_01&#34;,
-  &#34;application_id&#34;      : &#34;APP987654&#34;,
-  &#34;application_stage&#34;   : &#34;income_details&#34;,
-  &#34;application_status&#34;  : &#34;in_progress&#34;,
-  &#34;tealium_event&#34;       : &#34;application_step&#34;
+  "customer_id"         : "CUST8237572",
+  "product_id"          : "CC_GOLD_01",
+  "application_id"      : "APP987654",
+  "application_stage"   : "income_details",
+  "application_status"  : "in_progress",
+  "tealium_event"       : "application_step"
 }
 ```
 
@@ -426,13 +426,13 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;          : &#34;CUST8237572&#34;,
-  &#34;product_id&#34;           : &#34;CC_GOLD_01&#34;,
-  &#34;application_id&#34;       : &#34;APP987654&#34;,
-  &#34;application_stage&#34;    : &#34;decision&#34;,
-  &#34;application_status&#34;   : &#34;completed&#34;,
-  &#34;application_decision&#34; : &#34;approved&#34;,
-  &#34;tealium_event&#34;        : &#34;application_outcome&#34;
+  "customer_id"          : "CUST8237572",
+  "product_id"           : "CC_GOLD_01",
+  "application_id"       : "APP987654",
+  "application_stage"    : "decision",
+  "application_status"   : "completed",
+  "application_decision" : "approved",
+  "tealium_event"        : "application_outcome"
 }
 ```
 
@@ -445,15 +445,15 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_city&#34;        : &#34;Frankfurt&#34;,
-  &#34;customer_country&#34;     : &#34;Germany&#34;,
-  &#34;customer_email&#34;       : &#34;john.smith@example.com&#34;,
-  &#34;customer_first_name&#34;  : &#34;John&#34;,
-  &#34;customer_id&#34;          : &#34;CUST8237572&#34;,
-  &#34;customer_last_name&#34;   : &#34;Smith&#34;,
-  &#34;customer_postal_code&#34; : &#34;60311&#34;,
-  &#34;customer_state&#34;       : &#34;HE&#34;,
-  &#34;tealium_event&#34;        : &#34;user_register&#34;
+  "customer_city"        : "Frankfurt",
+  "customer_country"     : "Germany",
+  "customer_email"       : "john.smith@example.com",
+  "customer_first_name"  : "John",
+  "customer_id"          : "CUST8237572",
+  "customer_last_name"   : "Smith",
+  "customer_postal_code" : "60311",
+  "customer_state"       : "HE",
+  "tealium_event"        : "user_register"
 }
 ```
 
@@ -466,15 +466,15 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_city&#34;        : &#34;Frankfurt&#34;,
-  &#34;customer_country&#34;     : &#34;Germany&#34;,
-  &#34;customer_email&#34;       : &#34;john.smith@example.com&#34;,
-  &#34;customer_first_name&#34;  : &#34;John&#34;,
-  &#34;customer_id&#34;          : &#34;CUST8237572&#34;,
-  &#34;customer_last_name&#34;   : &#34;Smith&#34;,
-  &#34;customer_postal_code&#34; : &#34;60311&#34;,
-  &#34;customer_state&#34;       : &#34;HE&#34;,
-  &#34;tealium_event&#34;        : &#34;user_update&#34;
+  "customer_city"        : "Frankfurt",
+  "customer_country"     : "Germany",
+  "customer_email"       : "john.smith@example.com",
+  "customer_first_name"  : "John",
+  "customer_id"          : "CUST8237572",
+  "customer_last_name"   : "Smith",
+  "customer_postal_code" : "60311",
+  "customer_state"       : "HE",
+  "tealium_event"        : "user_update"
 }
 ```
 
@@ -487,9 +487,9 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_email&#34; : &#34;john.smith@example.com&#34;,
-  &#34;customer_id&#34;    : &#34;CUST8237572&#34;,
-  &#34;tealium_event&#34;  : &#34;email_signup&#34;
+  "customer_email" : "john.smith@example.com",
+  "customer_id"    : "CUST8237572",
+  "tealium_event"  : "email_signup"
 }
 ```
 
@@ -502,10 +502,10 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;link_category&#34; : &#34;Hero Banner&#34;,
-  &#34;link_name&#34;     : &#34;Apply Now - Gold Credit Card&#34;,
-  &#34;page_type&#34;     : &#34;product_detail&#34;,
-  &#34;tealium_event&#34; : &#34;custom_click&#34;
+  "link_category" : "Hero Banner",
+  "link_name"     : "Apply Now - Gold Credit Card",
+  "page_type"     : "product_detail",
+  "tealium_event" : "custom_click"
 }
 ```
 
@@ -518,7 +518,7 @@ Sample:
 Sample:
 ```javascript
 {
-  &#34;customer_id&#34;       : &#34;CUST8237572&#34;,
-  &#34;tealium_event&#34;     : &#34;consent_update&#34;
+  "customer_id"       : "CUST8237572",
+  "tealium_event"     : "consent_update"
 }
 ```

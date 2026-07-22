@@ -21,22 +21,26 @@ This connector uses the following vendor API:
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
 * **Data Center ID**
-  * Your Data Center ID can be found by going to **Account Settings** &amp;gt; **Qualtrics IDs**&amp;gt; **IDs** &amp;gt; **Box User**.
+  * Your Data Center ID can be found by going to **Account Settings** &gt; **Qualtrics IDs**&gt; **IDs** &gt; **Box User**.
 * **Client ID**
   * Provide your web application Client ID that has access to the Qualtrics XM Directory API.
-  * Your Client ID can be found by going to **Account Settings** **&amp;gt; Qualtrics IDs &amp;gt;** **OAuth Client Manager**.
+  * Your Client ID can be found by going to **Account Settings** **&gt; Qualtrics IDs &gt;** **OAuth Client Manager**.
   * Your Qualtrics XM Directory API OAuth Client Manager Page must contain the following **Grant Type**:
     * `client_credentials` and **Scopes** must be: `manage:contact_transactions`, `manage:directory_contacts`, `read:directories`, and `read:mailing_lists`.
   * For additional information, see [OAuth authentication (client credentials)](https://api.qualtrics.com/api-reference/docs/Instructions/oauth-authentication.md) and [OAuth 2.0 Scopes](https://api.qualtrics.com/api-reference/docs/Instructions/oauthscopes.md).
 * **Client Secret**
   * Provide your web application client secret.
 
- When creating your application within Qualtrics, configure the redirect URLs to match your Tealium environment. For example: [https://sso.tealiumiq.com/oauth/qualtrics/callback.html](https://sso.tealiumiq.com/oauth/qualtrics/callback.html) for SSO enabled customers and [https://my.tealiumiq.com/oauth/qualtrics/callback.html](https://my.tealiumiq.com/oauth/qualtrics/callback.html) for standard customers. 
+ 
+<blockquote>
+When creating your application within Qualtrics, configure the redirect URLs to match your Tealium environment. For example: [https://sso.tealiumiq.com/oauth/qualtrics/callback.html](https://sso.tealiumiq.com/oauth/qualtrics/callback.html) for SSO enabled customers and [https://my.tealiumiq.com/oauth/qualtrics/callback.html](https://my.tealiumiq.com/oauth/qualtrics/callback.html) for standard customers.
+</blockquote>
+ 
 
 ## Action settings - parameters and options
 
@@ -50,8 +54,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Update Strategy|  &lt;ul&gt;&lt;li&gt;(Required) Select applicable update strategy.  &lt;ul&gt;&lt;li&gt;**Create Only**: Look up an existing contact and if not found, create a new contact.&lt;/li&gt;&lt;li&gt;**Update Only**: Look up an existing contact and update it.&lt;/li&gt;&lt;li&gt;**Create or Update**: Look up an existing contact and if found, update it, otherwise create a new contact.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|Directory|  &lt;ul&gt;&lt;li&gt;(Required) Select the directory to create or update the contact in.&lt;/li&gt;&lt;/ul&gt; |
+|Update Strategy|  <ul><li>(Required) Select applicable update strategy.  <ul><li>**Create Only**: Look up an existing contact and if not found, create a new contact.</li><li>**Update Only**: Look up an existing contact and update it.</li><li>**Create or Update**: Look up an existing contact and if found, update it, otherwise create a new contact.</li></ul> </li></ul> |
+|Directory|  <ul><li>(Required) Select the directory to create or update the contact in.</li></ul> |
 |FirstName|
 |LastName|
 |Email|
@@ -66,7 +70,7 @@ This section describes how to set up parameters and options for each action.
 |ExtRef|
 |Language|
 |Unsubscribed|
-|Embedded Data|  &lt;ul&gt;&lt;li&gt;The embedded data object contains extra metadata that you want to associate with contacts.&lt;/li&gt;&lt;li&gt;This user-defined data could include such data as birthplace, gender, employment status, etc.&lt;/li&gt;&lt;/ul&gt; |
+|Embedded Data|  <ul><li>The embedded data object contains extra metadata that you want to associate with contacts.</li><li>This user-defined data could include such data as birthplace, gender, employment status, etc.</li></ul> |
 |ContactId|
 |FirstName|
 |LastName|
@@ -82,8 +86,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Directory|  &lt;ul&gt;&lt;li&gt;(Required) Select the directory to create or update the contact in.&lt;/li&gt;&lt;/ul&gt; |
-|Mailing List|  &lt;ul&gt;&lt;li&gt;(Required) Select the mailing list to create the contact transaction in.&lt;/li&gt;&lt;/ul&gt; |
+|Directory|  <ul><li>(Required) Select the directory to create or update the contact in.</li></ul> |
+|Mailing List|  <ul><li>(Required) Select the mailing list to create the contact transaction in.</li></ul> |
 |ContactId|
 |FirstName|
 |LastName|

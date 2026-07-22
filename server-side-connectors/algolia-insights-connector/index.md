@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 5 minutes
@@ -29,7 +29,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -54,7 +54,11 @@ The following section describes how to set up parameters and options for each ac
 
 #### Event Parameters
 
- Event should include one or more **Object IDs** on one or more **Filters**, and a single event must not include both **Object IDs** and **Filters**. 
+
+<blockquote>
+Event should include one or more **Object IDs** on one or more **Filters**, and a single event must not include both **Object IDs** and **Filters**.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -63,7 +67,7 @@ The following section describes how to set up parameters and options for each ac
 | Currency | If you include pricing information in the `objectData` parameter or provide value, you must also specify the currency as ISO 4217 currency code, such as `USD` or `EUR`. |
 | Index | (Required) Index name. Events are related to items from an Algolia index. The format must be the same as the index name used by the search engine.|
 | User Token | (Required) Pseudonymous or anonymous user identifier. Never include personal identifiable information in user tokens. |
-| Timestamp | The time of the event in milliseconds in Unix epoch time. By default, the Algolia Insights API uses the time it receives an event as its timestamp. If this field is not mapped, it will be initialized with the current timestamp. The Algolia Insights API accepts events from up to 4 days in the past. &lt;ul&gt;&lt;li&gt;For sending events not in real time (for example, a backend search), ensure you set the correct timestamp.&lt;/li&gt;&lt;li&gt; For batched events, if you do not include a timestamp, all events will have the same timestamp. &lt;/li&gt; &lt;li&gt;Timestamps for click and conversion events must be within 1 hour of the corresponding search or browse request.&lt;/li&gt;&lt;/ul&gt; |
+| Timestamp | The time of the event in milliseconds in Unix epoch time. By default, the Algolia Insights API uses the time it receives an event as its timestamp. If this field is not mapped, it will be initialized with the current timestamp. The Algolia Insights API accepts events from up to 4 days in the past. <ul><li>For sending events not in real time (for example, a backend search), ensure you set the correct timestamp.</li><li> For batched events, if you do not include a timestamp, all events will have the same timestamp. </li> <li>Timestamps for click and conversion events must be within 1 hour of the corresponding search or browse request.</li></ul> |
 | Query ID | A unique identifier for a search query. A `queryID` is required for events related to search or browse requests. |
 | Object IDs | An array of object identifiers for items of an Algolia index. You can include up to 20 object IDs. |
 | Filters | An array of facet filters in the following format: `${attribute}:${value}`. For example, `brand:apple`. You can include up to 10 filters. |
@@ -89,7 +93,11 @@ The following section describes how to set up parameters and options for each ac
 
 #### Event Parameters
 
- Event should include one or more **Object IDs** on one or more **Filters**, and a single event must not include both **Object IDs** and **Filters**. 
+
+<blockquote>
+Event should include one or more **Object IDs** on one or more **Filters**, and a single event must not include both **Object IDs** and **Filters**.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -98,7 +106,7 @@ The following section describes how to set up parameters and options for each ac
 | Currency | If you include pricing information in the `objectData` parameter or provide value, you must also specify the currency as ISO 4217 currency code, such as `USD` or `EUR`. |
 | Index | (Required) Index name. Events are related to items from an Algolia index. The format must be the same as the index name used by the search engine.|
 | User Token | (Required) Pseudonymous or anonymous user identifier. Never include personal identifiable information in user tokens. |
-| Timestamp | The time of the event in milliseconds in Unix epoch time. By default, the Algolia Insights API uses the time it receives an event as its timestamp. If this field is not mapped, it will be initialized with the current timestamp. The Algolia Insights API accepts events from up to 4 days in the past. &lt;ul&gt;&lt;li&gt;For sending events not in real time (for example, a backend search), ensure you set the correct timestamp.&lt;/li&gt;&lt;li&gt; For batched events, if you do not include a timestamp, all events will have the same timestamp. &lt;/li&gt; &lt;li&gt;Timestamps for click and conversion events must be within 1 hour of the corresponding search or browse request.&lt;/li&gt;&lt;/ul&gt; |
+| Timestamp | The time of the event in milliseconds in Unix epoch time. By default, the Algolia Insights API uses the time it receives an event as its timestamp. If this field is not mapped, it will be initialized with the current timestamp. The Algolia Insights API accepts events from up to 4 days in the past. <ul><li>For sending events not in real time (for example, a backend search), ensure you set the correct timestamp.</li><li> For batched events, if you do not include a timestamp, all events will have the same timestamp. </li> <li>Timestamps for click and conversion events must be within 1 hour of the corresponding search or browse request.</li></ul> |
 | Query ID | A unique identifier for a search query. A `queryID` is required for events related to search or browse requests. |
 | Object IDs | An array of object identifiers for items of an Algolia index. You can include up to 20 object IDs. |
 | Filters | An array of facet filters in the following format: `${attribute}:${value}`. For example, `brand:apple`. You can include up to 10 filters. |

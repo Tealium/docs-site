@@ -19,11 +19,11 @@ AudienceStreamダッシュボードは、構成可能な時間範囲にわたっ
 
 トレンドグラフを構成するには、以下の手順を使用します：
 
-1. サイドバーで **Analyze &gt; Audience Dashboard** に移動します。
+1. サイドバーで **Analyze > Audience Dashboard** に移動します。
 1. 表示されているグラフの右下隅にある歯車アイコンをクリックします。
-  ![](/images/server-side/audiencestream-dashboard-click-gear-to-flip.png)  
+  ![](https://docs.tealium.com/images/server-side/audiencestream-dashboard-click-gear-to-flip.png)  
 グラフが「反転」して、値と範囲を表示します。
-  ![](/images/server-side/audiencestream-dashboard-graph-flipped.png)
+  ![](https://docs.tealium.com/images/server-side/audiencestream-dashboard-graph-flipped.png)
 二つのドロップダウンリストが表示されます。
 1. ドロップダウンリストを使用して、表示する値を選択します。
 1. ドロップダウンリストを使用して、**現在の**または**前の**時間範囲を選択します。
@@ -35,7 +35,7 @@ AudienceStreamダッシュボードは、構成可能な時間範囲にわたっ
     * ローリング週
     * ローリング月
 1. **完了**をクリックします。グラフはトレンドラインに戻ります。
-  ![](/images/server-side/whiteui-audiencestream-select-values-and-finish.png)
+  ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-select-values-and-finish.png)
 
 ## 時間範囲
 
@@ -65,23 +65,23 @@ AudienceStreamダッシュボードは、構成可能な時間範囲にわたっ
 
 **バッジ活動**ウィンドウは画面の右側に表示され、指定された時間範囲でバッジが訪問に割り当てられたり削除されたりした回数をリストします。
 
-![](/images/server-side/whiteui-audiencestream-badgeactivity.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-badgeactivity.png)
 
 バッジをクリックすると、そのバッジが訪問に割り当てられたり削除されたりした方法と時期の詳細が表示されます。
 
-![](/images/server-side/whiteui-audiencestream-badge-activity-details.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-badge-activity-details.png)
 
 ### ダッシュボードシート
 
 ダッシュボードシートは、トレンドグラフのカスタマイズされたビューです。デフォルトのシートは**Main**という名前で、名前を変更したり削除したりすることはできません。ダッシュボードシートは番号が付けられており、ここに表示されるダッシュボードサイドバーを通じて利用できます：
 
-![](/images/server-side/whiteui-audiencestream-dashboard-dashboardsheetscollapsed.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-dashboard-dashboardsheetscollapsed.png)
 
 サイドバーの上部の矢印をクリックすると、シートの名前が表示され、シートを編集することができます。ダッシュボードサイドバーを使用して以下のアクションが利用可能です：
 
-![](/images/server-side/whiteui-audiencestream-dashboard-dashboard-sheets-expanded.png)
+![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-dashboard-dashboard-sheets-expanded.png)
 
-* **シートを追加する**：サイドバーの下部にある **&#43; Add Dashboard Sheet** をクリックしてシートを追加し、編集アイコンをクリックしてシートに名前を付けます。**Save** をクリックして新しい名前でシートを保存します。
+* **シートを追加する**：サイドバーの下部にある **+ Add Dashboard Sheet** をクリックしてシートを追加し、編集アイコンをクリックしてシートに名前を付けます。**Save** をクリックして新しい名前でシートを保存します。
 * **シートの名前を変更する**：編集アイコンをクリックしてシートの名前を変更し、**Save** をクリックします。
-* **シートを削除する**：名前の右にある &#34;**X**&#34; アイコンをクリックしてシートを削除し、**Yes** をクリックして確認します。
+* **シートを削除する**：名前の右にある "**X**" アイコンをクリックしてシートを削除し、**Yes** をクリックして確認します。
 * 

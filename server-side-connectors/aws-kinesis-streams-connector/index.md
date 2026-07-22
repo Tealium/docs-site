@@ -22,14 +22,14 @@ url: https://docs.tealium.com/server-side-connectors/aws-kinesis-streams-connect
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Access Key**  
-(Required) Provide your IAM User&#39;s access key. The associated IAM policy (for either IAM User or Assumed Role) must grant `kinesis:PutRecord` permission along with streams you want to send data to. See: [Kinesis Streams Resources Access](http://docs.aws.amazon.com/streams/latest/dev/controlling-access.html).
+(Required) Provide your IAM User's access key. The associated IAM policy (for either IAM User or Assumed Role) must grant `kinesis:PutRecord` permission along with streams you want to send data to. See: [Kinesis Streams Resources Access](http://docs.aws.amazon.com/streams/latest/dev/controlling-access.html).
 * **Secret Key**  
-(Required) Provide your IAM User&#39;s secret key.
+(Required) Provide your IAM User's secret key.
 * **Region**  
 (Required) Select a region.
 * **Assume Role: ARN**  
@@ -53,7 +53,7 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Stream Name | Select the stream to send data to. If your IAM policy does not grant `kinesis:ListStreams` permission, you will need to manually enter a custom value. |
 | Partition Key | (Required) A partition key groups data into shards within a stream. |
-| Sequence Number For Ordering | The data record&#39;s sequence number within the Kinesis data stream&#39;s shard. |
+| Sequence Number For Ordering | The data record's sequence number within the Kinesis data stream's shard. |
 | Explicit Hash Key | The key used to hash the Partition Key. |
 | Print Attribute Names | If attribute names are updated, the names in the payload will reflect the update. |
 
@@ -65,9 +65,9 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Stream Name | Select the stream to send data to. If your IAM policy does not grant `kinesis:ListStreams` permission, you will need to manually enter a custom value. |
 | Partition Key | (Required) A partition key groups data into shards within a stream. |
-| Sequence Number For Ordering | The data record&#39;s sequence number within the Kinesis data stream&#39;s shard. |
+| Sequence Number For Ordering | The data record's sequence number within the Kinesis data stream's shard. |
 | Explicit Hash Key | The key used to hash the Partition Key. |
-| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn&#39;t selected. |
+| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn't selected. |
 | Exclude Current Visit Event Data | Exclude event data from the current visit data. |
 | Print Attribute Names | If attribute names are updated, the names in the payload will reflect the update. |
 
@@ -77,19 +77,19 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Stream Name | Select the stream to send data to. If your IAM policy does not grant &#39;kinesis:ListStreams&#39; permission, you will need to manually enter a custom value. |
+| Stream Name | Select the stream to send data to. If your IAM policy does not grant 'kinesis:ListStreams' permission, you will need to manually enter a custom value. |
 | Partition Key | (Required) A partition key groups data into shards within a stream. |
-| Sequence Number For Ordering | The data record&#39;s sequence number within the Kinesis data stream&#39;s shard. |
+| Sequence Number For Ordering | The data record's sequence number within the Kinesis data stream's shard. |
 | Explicit Hash Key | The key used to hash the Partition Key. |
 | Custom Message Definition | A custom message to include in the log file. |
-| Template Variables | Optional. &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables as data input for templates. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | Optional. &lt;ul&gt;&lt;li&gt;(Optional) Provide templates to be referenced in message data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables | Optional. <ul><li>(Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | Optional. <ul><li>(Optional) Provide templates to be referenced in message data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul> |
 
 ### Action Settings - Send Batched Event Data to Kinesis Stream
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 500
 * Max time since oldest request: 10 minutes
@@ -108,7 +108,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 500
 * Max time since oldest request: 10 minutes
@@ -118,7 +118,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Stream Name | Select the stream to send data to. If your IAM policy does not grant &#39;kinesis:ListStreams&#39; permission, you will need to manually enter a custom value. |
+| Stream Name | Select the stream to send data to. If your IAM policy does not grant 'kinesis:ListStreams' permission, you will need to manually enter a custom value. |
 | Partition Key | (Required) A partition key groups data into shards within a stream. |
 | Explicit Hash Key | The key used to hash the Partition Key. |
 | Include Current Visit Data | A `true`/`false` value that indicates whether to include the current visit data in the payload. |
@@ -128,7 +128,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 500
 * Max time since oldest request: 10 minutes
@@ -142,5 +142,5 @@ This action uses batched requests to support high-volume data transfers to the v
 | Partition Key | (Required) A partition key groups data into shards within a stream. |
 | Explicit Hash Key | The key used to hash the Partition Key. |
 | Custom Message Definition | A custom message to include in the log file. |
-| Template Variables | &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables as data input for templates. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation (For example: `items.name`).&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;(Optional) Provide templates to be referenced in message data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields (For example, `{{SomeTemplateName}}`.)&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables | <ul><li>(Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation (For example: `items.name`).</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>(Optional) Provide templates to be referenced in message data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields (For example, `{{SomeTemplateName}}`.)</li></ul> |

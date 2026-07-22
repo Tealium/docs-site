@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/media/
 ---
 ## クラス: Media
 
-`Media`クラスは、カスタムイベントを使用してアプリ内でストリーミングメディアをトラッキングするためのメソッドを提供します。[メディアトラッキング](/ja/platforms/getting-started-mobile/media/)について詳しくはこちらをご覧ください。
+`Media`クラスは、カスタムイベントを使用してアプリ内でストリーミングメディアをトラッキングするためのメソッドを提供します。[メディアトラッキング](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/)について詳しくはこちらをご覧ください。
 
 以下は、Tealium Kotlinの`Media`クラスでよく使用されるメソッドの概要です。
 
@@ -130,7 +130,7 @@ tealium?.media?.pause()
 tealium?.media?.ping()
 ```
 
-[メディアトラッキングタイプ](/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
+[メディアトラッキングタイプ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
 
 ### `play()`
 
@@ -167,7 +167,7 @@ tealium?.media?.sendMilestone()
 | 88.0 - 92.0    | `90%`           |
 | 97.0 - 100.0   | `100%`          |
 
-[メディアトラッキングタイプ](/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
+[メディアトラッキングタイプ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
 
 ### `sendSummary()`
 
@@ -177,7 +177,7 @@ tealium?.media?.sendMilestone()
 tealium?.media?.sendSummary()
 ```
 
-[メディアトラッキングタイプ](/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
+[メディアトラッキングタイプ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#trackingtype)について詳しくはこちらをご覧ください。
 
 ### `skipAd()`
 
@@ -209,7 +209,7 @@ tealium?.media?.startAd(ad)
 
 例:
 ```java
-tealium?.media?.startAd(Ad(&#34;広告  1&#34;))
+tealium?.media?.startAd(Ad("広告  1"))
 ```
 
 ### `startAdBreak()`
@@ -227,7 +227,7 @@ tealium?.media?.startAdBreak(break)
 例:
 
 ```java
-val adBreak = AdBreak(name = &#34;広告ブレイク 1&#34;)
+val adBreak = AdBreak(name = "広告ブレイク 1")
 tealium?.media?.startAdBreak(adBreak)
 ```
 
@@ -254,7 +254,7 @@ tealium?.media?.startChapter(chapter)
 例:
 
 ```java
-tealium?.media?.startChapter(Chapter(name = &#34;章 1&#34;))
+tealium?.media?.startChapter(Chapter(name = "章 1"))
 ```
 
 ### `startSeek()`
@@ -311,7 +311,7 @@ tealium?.media?.updatePlayerState(state)
 tealium?.media?.updatePlayerState(fullscreen)
 ```
 
-[プレーヤーの状態](/ja/platforms/getting-started-mobile/media/#state)について詳しくはこちらをご覧ください。
+[プレーヤーの状態](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#state)について詳しくはこちらをご覧ください。
 
 ### `updateQOE()`
 
@@ -354,16 +354,16 @@ val mediaContent: MediaContent = MediaContent(
 | 変数名  | タイプ                                                             | 説明                                                              | 必須 |
 |:---------------|:-----------------------------------------------------------------|:-------------------------------------------------------------------------|:---------|
 | `name`         | `String`                                                         | メディアコンテンツの名前。                                           | Yes      |
-| `streamType`   | [`StreamType`](/ja/platforms/getting-started-mobile/media/#streamtype)     | メディアストリームのタイプ。                                                | Yes      |
-| `mediaType`    | [`MediaType`](/ja/platforms/getting-started-mobile/media/#mediatype)       | メディアのタイプ（ビデオまたはオーディオ）。                                      | Yes      |
-| `qoe`          | [`QoE`](/ja/platforms/getting-started-mobile/media/#quality-of-experience) | クオリティオブエクスペリエンスのビットレート値。                                 | Yes      |
-| `trackingType` | [`TrackingType`](/ja/platforms/getting-started-mobile/media/#trackingtype) | イベントトラッキングのレベル（デフォルト：`TrackingType.FULL_PLAYBACK`）     | Yes      |
-| `state`        | [`PlayerState`](/ja/platforms/getting-started-mobile/media/#state)         | メディアプレーヤーの状態のタイプ。                                             |          |
+| `streamType`   | [`StreamType`](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#streamtype)     | メディアストリームのタイプ。                                                | Yes      |
+| `mediaType`    | [`MediaType`](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#mediatype)       | メディアのタイプ（ビデオまたはオーディオ）。                                      | Yes      |
+| `qoe`          | [`QoE`](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#quality-of-experience) | クオリティオブエクスペリエンスのビットレート値。                                 | Yes      |
+| `trackingType` | [`TrackingType`](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#trackingtype) | イベントトラッキングのレベル（デフォルト：`TrackingType.FULL_PLAYBACK`）     | Yes      |
+| `state`        | [`PlayerState`](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#state)         | メディアプレーヤーの状態のタイプ。                                             |          |
 | `customId`     | `String`                                                         | カスタム識別子名。                                              |          |
 | `duration`     | `Int`                                                            | メディアの再生時間（秒単位）（例：`130`）                            |          |
 | `playerName`   | `String`                                                         | メディアプレーヤーの名前。                                                   |          |
 | `channelName`  | `String`                                                         | メディアチャンネルの名前。                                                  |          |
-| `metadata`     | `[String: Any]`                                                  | 追加のメディア[メタデータ](/ja/platforms/getting-started-mobile/media/#metadata)。 |          |
+| `metadata`     | `[String: Any]`                                                  | 追加のメディア[メタデータ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#metadata)。 |          |
 
 ## クラス: `Ad`
 
@@ -445,7 +445,7 @@ val chapterObject = Chapter(
 | `name`        | `String`        | 章の名前。                                                                 | Yes      |
 | `duration`    | `Double`        | 章の再生時間（秒単位）（例：`130`）                                        |          |
 | `position`    | `Int`           | 章の位置インデックス。                                                      |          |
-| `metadata`    | `[String: Any]` | 追加の章のメディア[メタデータ](/ja/platforms/getting-started-mobile/media/#metadata)。 |          |
+| `metadata`    | `[String: Any]` | 追加の章のメディア[メタデータ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#metadata)。 |          |
 
 ## クラス: `Ad`
 
@@ -527,4 +527,4 @@ val chapterObject = Chapter(
 | `name`        | `String`        | 章の名前。                                                                 | Yes      |
 | `duration`    | `Double`        | 章の再生時間（秒単位）（例：`130`）                                        |          |
 | `position`    | `Int`           | 章の位置インデックス。                                                      |          |
-| `metadata`    | `[String: Any]` | 追加の章のメディア[メタデータ](/ja/platforms/getting-started-mobile/media/#metadata)。 |          |
+| `metadata`    | `[String: Any]` | 追加の章のメディア[メタデータ](https://docs.tealium.com/ja/platforms/getting-started-mobile/media/#metadata)。 |          |

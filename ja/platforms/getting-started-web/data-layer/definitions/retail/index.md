@@ -7,12 +7,12 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |変数| 説明| 例| タイプ|
 |---| ---| ---| ---|
 |`brand_name`| ブランド固有のページのブランド名| `Ralph Lauren`| 文字列|
-|`browse_refine_type`| 絞り込みタイプの配列| `[&#34;Size&#34;, &#34;Color&#34;]`| 配列|
-|`browse_refine_value`| 絞り込み値の配列| `[&#34;XL&#34;, &#34;Red&#34;]`| 配列|
-|`cart_product_id`| `cart_add` イベント時、カート内の全商品IDの配列| `[&#34;PROD123&#34;, &#34;PROD456&#34;]` | 配列|
-|`cart_product_price`| `cart_add` イベント時、カート内の全商品価格の配列| `[&#34;12.99&#34;, &#34;25.99&#34;]`| 配列|
-|`cart_product_quantity`| `cart_add` イベント時、カート内の全商品数量の配列| `[&#34;2&#34;, &#34;2&#34;]`| 配列|
-|`cart_product_sku`| `cart_add` イベント時、カート内の全商品SKUの配列| `[&#34;PR-RED-1234&#34;, &#34;PR-BLK-6789&#34;]` | 配列|
+|`browse_refine_type`| 絞り込みタイプの配列| `["Size", "Color"]`| 配列|
+|`browse_refine_value`| 絞り込み値の配列| `["XL", "Red"]`| 配列|
+|`cart_product_id`| `cart_add` イベント時、カート内の全商品IDの配列| `["PROD123", "PROD456"]` | 配列|
+|`cart_product_price`| `cart_add` イベント時、カート内の全商品価格の配列| `["12.99", "25.99"]`| 配列|
+|`cart_product_quantity`| `cart_add` イベント時、カート内の全商品数量の配列| `["2", "2"]`| 配列|
+|`cart_product_sku`| `cart_add` イベント時、カート内の全商品SKUの配列| `["PR-RED-1234", "PR-BLK-6789"]` | 配列|
 |`cart_total_items`| カート内の商品総数| `4`| 文字列|
 |`cart_total_value`| カート内の商品総価値（数字と小数点のみの文字列）| `77.96`| 文字列|
 |`category_id`| 閲覧中のカテゴリーの一意のID| `243`| 文字列|
@@ -45,20 +45,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`order_type`| 発生したばかりの変換のタイプまたはサイト上のユーザーのタイプ| `email`| 文字列|
 |`page_name`| ページ名を識別するTealium変数| `Homepage`| 文字列|
 |`page_type`| ページのタイプ| `product`| 文字列|
-|`product_brand`| 商品ブランドの配列| `[&#34;Ralph Lauren&#34;, &#34;Lucky&#34;]`| 配列|
-|`product_category`| 商品カテゴリの配列| `[&#34;Shirts&#34;, &#34;Pants&#34;]`| 配列|
-|`product_discount_amount`| 商品レベルのクーポンによる割引額の配列（数字と小数点のみの文字列）| `[&#34;2.98&#34;, &#34;0.00&#34;]`| 配列|
-|`product_id`| 商品IDの配列| `[&#34;PROD123&#34;, &#34;PROD456&#34;]`| 配列|
-|`product_image_url`| 主要商品画像のURLの配列| `[&#34;//domain.com/123.gif&#34;, &#34;//domain.com/456.gif&#34;]` | 配列|
-|`product_name`| 商品名の配列| `[&#34;Product One&#34;, &#34;Expensive Product Two&#34;]` | 配列|
-|`product_on_page`| ページ上に表示される他の商品の商品IDの配列| `[&#34;PROD123&#34;, &#34;PROD456&#34;]`| 配列|
-|`product_original_price`| 元の提案小売商品価格の配列、カンマと記号を省略| `[&#34;29.99&#34;, &#34;1015.00&#34;]`| 配列|
-|`product_price`| 商品販売価格の配列、カンマと記号を省略| `[&#34;12.99&#34;, &#34;1010.98&#34;]`| 配列|
-|`product_promo_code`| 特定の商品に適用されたプロモーション/クーポンコードの配列| `[&#34;SHIRT10OFF&#34;,&#34;PROMO10&#34;]`| 配列|
-|`product_quantity`| 各商品の数量の配列| `[&#34;2&#34;,&#34;2&#34;]`| 配列|
-|`product_sku`| 商品SKUの配列| `[&#34;PR-RED-1234&#34;, &#34;PR-BLK-6789&#34;]` | 配列|
-|`product_subcategory`| 商品サブカテゴリの配列| `[&#34;T-Shirts&#34;, &#34;Dress Pants&#34;]`| 配列|
-|`product_url`| 個々の商品ページへのURLの配列| `[&#34;//domain.com/123.html&#34;, &#34;//domain.com/456/html&#34;]` | 配列|
+|`product_brand`| 商品ブランドの配列| `["Ralph Lauren", "Lucky"]`| 配列|
+|`product_category`| 商品カテゴリの配列| `["Shirts", "Pants"]`| 配列|
+|`product_discount_amount`| 商品レベルのクーポンによる割引額の配列（数字と小数点のみの文字列）| `["2.98", "0.00"]`| 配列|
+|`product_id`| 商品IDの配列| `["PROD123", "PROD456"]`| 配列|
+|`product_image_url`| 主要商品画像のURLの配列| `["//domain.com/123.gif", "//domain.com/456.gif"]` | 配列|
+|`product_name`| 商品名の配列| `["Product One", "Expensive Product Two"]` | 配列|
+|`product_on_page`| ページ上に表示される他の商品の商品IDの配列| `["PROD123", "PROD456"]`| 配列|
+|`product_original_price`| 元の提案小売商品価格の配列、カンマと記号を省略| `["29.99", "1015.00"]`| 配列|
+|`product_price`| 商品販売価格の配列、カンマと記号を省略| `["12.99", "1010.98"]`| 配列|
+|`product_promo_code`| 特定の商品に適用されたプロモーション/クーポンコードの配列| `["SHIRT10OFF","PROMO10"]`| 配列|
+|`product_quantity`| 各商品の数量の配列| `["2","2"]`| 配列|
+|`product_sku`| 商品SKUの配列| `["PR-RED-1234", "PR-BLK-6789"]` | 配列|
+|`product_subcategory`| 商品サブカテゴリの配列| `["T-Shirts", "Dress Pants"]`| 配列|
+|`product_url`| 個々の商品ページへのURLの配列| `["//domain.com/123.html", "//domain.com/456/html"]` | 配列|
 |`search_keyword`| ユーザーが入力した検索テキストの値| `cargo`| 文字列|
 |`search_results`| 検索によって返された結果の数| `42`| 文字列|
 |`site_section`| サイトの高レベルセクション| `Clothing`| 文字列|
@@ -74,14 +74,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34; : &#34;4&#34;,
-    &#34;cart_total_value&#34; : &#34;77.96&#34;,
-    &#34;country_code&#34;     : &#34;us&#34;,
-    &#34;language_code&#34;    : &#34;en&#34;,
-    &#34;page_name&#34;        : &#34;Homepage&#34;,
-    &#34;page_type&#34;        : &#34;home&#34;,
-    &#34;site_section&#34;     : &#34;Clothing&#34;,
-    &#34;tealium_event&#34;    : &#34;page_view&#34;
+    "cart_total_items" : "4",
+    "cart_total_value" : "77.96",
+    "country_code"     : "us",
+    "language_code"    : "en",
+    "page_name"        : "Homepage",
+    "page_type"        : "home",
+    "site_section"     : "Clothing",
+    "tealium_event"    : "page_view"
 }
 ```
 
@@ -94,18 +94,18 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;brand_name&#34;        : &#34;Ralph Lauren&#34;,
-    &#34;cart_total_items&#34;  : &#34;4&#34;,
-    &#34;cart_total_value&#34;  : &#34;77.96&#34;,
-    &#34;category_id&#34;       : &#34;243&#34;,
-    &#34;category_name&#34;     : &#34;Shoes: Boots&#34;,
-    &#34;country_code&#34;      : &#34;us&#34;,
-    &#34;language_code&#34;     : &#34;en&#34;,
-    &#34;page_name&#34;         : &#34;Homepage&#34;,
-    &#34;page_type&#34;         : &#34;section&#34;,
-    &#34;product_on_page&#34;   : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;site_section&#34;      : &#34;Clothing&#34;,
-    &#34;tealium_event&#34;     : &#34;page_view&#34;
+    "brand_name"        : "Ralph Lauren",
+    "cart_total_items"  : "4",
+    "cart_total_value"  : "77.96",
+    "category_id"       : "243",
+    "category_name"     : "Shoes: Boots",
+    "country_code"      : "us",
+    "language_code"     : "en",
+    "page_name"         : "Homepage",
+    "page_type"         : "section",
+    "product_on_page"   : ["PROD123", "PROD456"],
+    "site_section"      : "Clothing",
+    "tealium_event"     : "page_view"
 }
 ```
 
@@ -118,20 +118,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;brand_name&#34;           : &#34;Ralph Lauren&#34;,
-    &#34;browse_refine_type&#34;   : [&#34;Size&#34;, &#34;Color&#34;],
-    &#34;browse_refine_value&#34;  : [&#34;XL&#34;, &#34;Red&#34;],
-    &#34;cart_total_items&#34;     : &#34;4&#34;,
-    &#34;cart_total_value&#34;     : &#34;77.96&#34;,
-    &#34;category_id&#34;          : &#34;243&#34;,
-    &#34;category_name&#34;        : &#34;Shoes: Boots&#34;,
-    &#34;country_code&#34;         : &#34;us&#34;,
-    &#34;language_code&#34;        : &#34;en&#34;,
-    &#34;page_name&#34;            : &#34;Homepage&#34;,
-    &#34;page_type&#34;            : &#34;category&#34;,
-    &#34;product_on_page&#34;      : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;site_section&#34;         : &#34;Clothing&#34;,
-    &#34;tealium_event&#34;        : &#34;category_view&#34;
+    "brand_name"           : "Ralph Lauren",
+    "browse_refine_type"   : ["Size", "Color"],
+    "browse_refine_value"  : ["XL", "Red"],
+    "cart_total_items"     : "4",
+    "cart_total_value"     : "77.96",
+    "category_id"          : "243",
+    "category_name"        : "Shoes: Boots",
+    "country_code"         : "us",
+    "language_code"        : "en",
+    "page_name"            : "Homepage",
+    "page_type"            : "category",
+    "product_on_page"      : ["PROD123", "PROD456"],
+    "site_section"         : "Clothing",
+    "tealium_event"        : "category_view"
 }
 ```
 ### 商品ページ
@@ -143,27 +143,27 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34;        : &#34;4&#34;,
-    &#34;cart_total_value&#34;        : &#34;77.96&#34;,
-    &#34;category_id&#34;             : &#34;243&#34;,
-    &#34;category_name&#34;           : &#34;靴: ブーツ&#34;,
-    &#34;country_code&#34;            : &#34;us&#34;,
-    &#34;language_code&#34;           : &#34;en&#34;,
-    &#34;page_name&#34;               : &#34;ホームページ&#34;,
-    &#34;page_type&#34;               : &#34;product&#34;,
-    &#34;product_brand&#34;           : [&#34;Ralph Lauren&#34;, &#34;Lucky&#34;],
-    &#34;product_category&#34;        : [&#34;シャツ&#34;, &#34;パンツ&#34;],
-    &#34;product_id&#34;              : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;product_image_url&#34;       : [&#34;//domain.com/path/image.gif&#34;],
-    &#34;product_name&#34;            : [&#34;商品一&#34;, &#34;高級商品二&#34;],
-    &#34;product_on_page&#34;         : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;product_original_price&#34;  : [&#34;29.99&#34;, &#34;1015.00&#34;],
-    &#34;product_price&#34;           : [&#34;12.99&#34;, &#34;1010.98&#34;],
-    &#34;product_sku&#34;             : [&#34;PR-RED-1234&#34;, &#34;PR-BLK-6789&#34;],
-    &#34;product_subcategory&#34;     : [&#34;Tシャツ&#34;, &#34;ドレスパンツ&#34;],
-    &#34;product_url&#34;             : [&#34;//domain.com/cat/prod/prod123.html&#34;],
-    &#34;site_section&#34;            : &#34;衣類&#34;,
-    &#34;tealium_event&#34;           : &#34;product_view&#34;
+    "cart_total_items"        : "4",
+    "cart_total_value"        : "77.96",
+    "category_id"             : "243",
+    "category_name"           : "靴: ブーツ",
+    "country_code"            : "us",
+    "language_code"           : "en",
+    "page_name"               : "ホームページ",
+    "page_type"               : "product",
+    "product_brand"           : ["Ralph Lauren", "Lucky"],
+    "product_category"        : ["シャツ", "パンツ"],
+    "product_id"              : ["PROD123", "PROD456"],
+    "product_image_url"       : ["//domain.com/path/image.gif"],
+    "product_name"            : ["商品一", "高級商品二"],
+    "product_on_page"         : ["PROD123", "PROD456"],
+    "product_original_price"  : ["29.99", "1015.00"],
+    "product_price"           : ["12.99", "1010.98"],
+    "product_sku"             : ["PR-RED-1234", "PR-BLK-6789"],
+    "product_subcategory"     : ["Tシャツ", "ドレスパンツ"],
+    "product_url"             : ["//domain.com/cat/prod/prod123.html"],
+    "site_section"            : "衣類",
+    "tealium_event"           : "product_view"
 }
 ```
 
@@ -176,19 +176,19 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;browse_refine_type&#34;   : [&#34;サイズ&#34;, &#34;色&#34;],
-    &#34;browse_refine_value&#34;  : [&#34;XL&#34;, &#34;赤&#34;],
-    &#34;cart_total_items&#34;     : &#34;4&#34;,
-    &#34;cart_total_value&#34;     : &#34;77.96&#34;,
-    &#34;country_code&#34;         : &#34;us&#34;,
-    &#34;language_code&#34;        : &#34;en&#34;,
-    &#34;page_name&#34;            : &#34;ホームページ&#34;,
-    &#34;page_type&#34;            : &#34;search&#34;,
-    &#34;product_on_page&#34;      : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;search_keyword&#34;       : &#34;カーゴ&#34;,
-    &#34;search_results&#34;       : &#34;42&#34;,
-    &#34;site_section&#34;         : &#34;衣類&#34;,
-    &#34;tealium_event&#34;        : &#34;search&#34;
+    "browse_refine_type"   : ["サイズ", "色"],
+    "browse_refine_value"  : ["XL", "赤"],
+    "cart_total_items"     : "4",
+    "cart_total_value"     : "77.96",
+    "country_code"         : "us",
+    "language_code"        : "en",
+    "page_name"            : "ホームページ",
+    "page_type"            : "search",
+    "product_on_page"      : ["PROD123", "PROD456"],
+    "search_keyword"       : "カーゴ",
+    "search_results"       : "42",
+    "site_section"         : "衣類",
+    "tealium_event"        : "search"
 }
 ```
 
@@ -201,27 +201,27 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34;         : &#34;2&#34;,
-    &#34;cart_total_value&#34;         : &#34;2524.00&#34;,
-    &#34;country_code&#34;             : &#34;us&#34;,
-    &#34;language_code&#34;            : &#34;en&#34;,
-    &#34;page_name&#34;                : &#34;ショッピングバッグ&#34;,
-    &#34;page_type&#34;                : &#34;cart&#34;,
-    &#34;product_brand&#34;            : [&#34;Ralph Lauren&#34;, &#34;Lucky&#34;],
-    &#34;product_category&#34;         : [&#34;シャツ&#34;, &#34;パンツ&#34;],
-    &#34;product_discount_amount&#34;  : [&#34;2.98&#34;, &#34;0.00&#34;],
-    &#34;product_id&#34;               : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;product_image_url&#34;        : [&#34;//domain.com/path/image123.gif&#34;,
-                                  &#34;//domain.com/path/image456.gif&#34;],
-    &#34;product_name&#34;             : [&#34;商品一&#34;, &#34;高級商品二&#34;],
-    &#34;product_price&#34;            : [&#34;12.00&#34;, &#34;1250.00&#34;],
-    &#34;product_promo_code&#34;       : [&#34;SHIRT10OFF&#34;,&#34;&#34;],
-    &#34;product_quantity&#34;         : [&#34;2&#34;,&#34;2&#34;],
-    &#34;product_sku&#34;              : [&#34;PR-RED-1234&#34;, &#34;PR-BLK-6789&#34;],
-    &#34;product_subcategory&#34;      : [&#34;Tシャツ&#34;, &#34;ドレスパンツ&#34;],
-    &#34;product_url&#34;              : [&#34;//domain.com/cat/prod/prod123.html&#34;,
-                                  &#34;//domain.com/cat/prod/prod456.html&#34;],
-    &#34;tealium_event&#34;            : &#34;cart_view&#34;
+    "cart_total_items"         : "2",
+    "cart_total_value"         : "2524.00",
+    "country_code"             : "us",
+    "language_code"            : "en",
+    "page_name"                : "ショッピングバッグ",
+    "page_type"                : "cart",
+    "product_brand"            : ["Ralph Lauren", "Lucky"],
+    "product_category"         : ["シャツ", "パンツ"],
+    "product_discount_amount"  : ["2.98", "0.00"],
+    "product_id"               : ["PROD123", "PROD456"],
+    "product_image_url"        : ["//domain.com/path/image123.gif",
+                                  "//domain.com/path/image456.gif"],
+    "product_name"             : ["商品一", "高級商品二"],
+    "product_price"            : ["12.00", "1250.00"],
+    "product_promo_code"       : ["SHIRT10OFF",""],
+    "product_quantity"         : ["2","2"],
+    "product_sku"              : ["PR-RED-1234", "PR-BLK-6789"],
+    "product_subcategory"      : ["Tシャツ", "ドレスパンツ"],
+    "product_url"              : ["//domain.com/cat/prod/prod123.html",
+                                  "//domain.com/cat/prod/prod456.html"],
+    "tealium_event"            : "cart_view"
 }
 ```
 
@@ -234,13 +234,13 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34;  : &#34;2&#34;,
-    &#34;cart_total_value&#34;  : &#34;2524.00&#34;,
-    &#34;country_code&#34;      : &#34;us&#34;,
-    &#34;language_code&#34;     : &#34;en&#34;,
-    &#34;page_name&#34;         : &#34;チェックアウト：支払い&#34;,
-    &#34;page_type&#34;         : &#34;checkout&#34;,
-    &#34;tealium_event&#34;     : &#34;checkout&#34;
+    "cart_total_items"  : "2",
+    "cart_total_value"  : "2524.00",
+    "country_code"      : "us",
+    "language_code"     : "en",
+    "page_name"         : "チェックアウト：支払い",
+    "page_type"         : "checkout",
+    "tealium_event"     : "checkout"
 }
 ```
 
@@ -253,46 +253,46 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34;         : &#34;2&#34;,
-    &#34;cart_total_value&#34;         : &#34;2524.00&#34;,
-    &#34;country_code&#34;             : &#34;us&#34;,
-    &#34;customer_city&#34;            : &#34;サンディエゴ&#34;,
-    &#34;customer_country&#34;         : &#34;アメリカ合衆国&#34;,
-    &#34;customer_email&#34;           : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;      : &#34;ジョン&#34;,
-    &#34;customer_id&#34;              : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;       : &#34;スミス&#34;,
-    &#34;customer_postal_code&#34;     : &#34;92101&#34;,
-    &#34;customer_state&#34;           : &#34;CA&#34;,
-    &#34;language_code&#34;            : &#34;en&#34;,
-    &#34;order_currency_code&#34;      : &#34;USD&#34;,
-    &#34;order_discount_amount&#34;    : &#34;10.00&#34;,
-    &#34;order_id&#34;                 : &#34;ORD123456&#34;,
-    &#34;order_payment_type&#34;       : &#34;paypal&#34;,
-    &#34;order_promo_code&#34;         : &#34;SPRFREE,PROMO10&#34;,
-    &#34;order_shipping_amount&#34;    : &#34;6.99&#34;,
-    &#34;order_shipping_type&#34;      : &#34;UPS&#34;,
-    &#34;order_store&#34;              : &#34;モバイルウェブ&#34;,
-    &#34;order_subtotal&#34;           : &#34;2524.00&#34;,
-    &#34;order_tax_amount&#34;         : &#34;25.00&#34;,
-    &#34;order_total&#34;              : &#34;2549.00&#34;,
-    &#34;page_name&#34;                : &#34;注文確認 - ありがとう&#34;,
-    &#34;page_type&#34;                : &#34;order&#34;,
-    &#34;product_brand&#34;            : [&#34;Ralph Lauren&#34;, &#34;Lucky&#34;],
-    &#34;product_category&#34;         : [&#34;シャツ&#34;, &#34;パンツ&#34;],
-    &#34;product_discount_amount&#34;  : [&#34;5.00&#34;, &#34;0.00&#34;],
-    &#34;product_id&#34;               : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;product_image_url&#34;        : [&#34;//domain.com/path/image123.gif&#34;,
-                                  &#34;//domain.com/path/image456.gif&#34;],
-    &#34;product_name&#34;             : [&#34;商品一&#34;, &#34;高級商品二&#34;],
-    &#34;product_price&#34;            : [&#34;12.00&#34;, &#34;1250.00&#34;],
-    &#34;product_promo_code&#34;       : [&#34;SHIRT10OFF&#34;,&#34;&#34;],
-    &#34;product_quantity&#34;         : [&#34;2&#34;,&#34;2&#34;],
-    &#34;product_sku&#34;              : [&#34;PR-RED-1234&#34;, &#34;PR-BLK-6789&#34;],
-    &#34;product_subcategory&#34;      : [&#34;Tシャツ&#34;, &#34;ドレスパンツ&#34;],
-    &#34;product_url&#34;              : [&#34;//domain.com/cat/prod/prod123.html&#34;,
-                                  &#34;//domain.com/cat/prod/prod456.html&#34;],
-    &#34;tealium_event&#34;            : &#34;purchase&#34;
+    "cart_total_items"         : "2",
+    "cart_total_value"         : "2524.00",
+    "country_code"             : "us",
+    "customer_city"            : "サンディエゴ",
+    "customer_country"         : "アメリカ合衆国",
+    "customer_email"           : "john.smith@example.com",
+    "customer_first_name"      : "ジョン",
+    "customer_id"              : "8237572",
+    "customer_last_name"       : "スミス",
+    "customer_postal_code"     : "92101",
+    "customer_state"           : "CA",
+    "language_code"            : "en",
+    "order_currency_code"      : "USD",
+    "order_discount_amount"    : "10.00",
+    "order_id"                 : "ORD123456",
+    "order_payment_type"       : "paypal",
+    "order_promo_code"         : "SPRFREE,PROMO10",
+    "order_shipping_amount"    : "6.99",
+    "order_shipping_type"      : "UPS",
+    "order_store"              : "モバイルウェブ",
+    "order_subtotal"           : "2524.00",
+    "order_tax_amount"         : "25.00",
+    "order_total"              : "2549.00",
+    "page_name"                : "注文確認 - ありがとう",
+    "page_type"                : "order",
+    "product_brand"            : ["Ralph Lauren", "Lucky"],
+    "product_category"         : ["シャツ", "パンツ"],
+    "product_discount_amount"  : ["5.00", "0.00"],
+    "product_id"               : ["PROD123", "PROD456"],
+    "product_image_url"        : ["//domain.com/path/image123.gif",
+                                  "//domain.com/path/image456.gif"],
+    "product_name"             : ["商品一", "高級商品二"],
+    "product_price"            : ["12.00", "1250.00"],
+    "product_promo_code"       : ["SHIRT10OFF",""],
+    "product_quantity"         : ["2","2"],
+    "product_sku"              : ["PR-RED-1234", "PR-BLK-6789"],
+    "product_subcategory"      : ["Tシャツ", "ドレスパンツ"],
+    "product_url"              : ["//domain.com/cat/prod/prod123.html",
+                                  "//domain.com/cat/prod/prod456.html"],
+    "tealium_event"            : "purchase"
 }
 ```
 
@@ -305,21 +305,21 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_total_items&#34;      : &#34;4&#34;,
-    &#34;cart_total_value&#34;      : &#34;77.96&#34;,
-    &#34;country_code&#34;          : &#34;us&#34;,
-    &#34;customer_city&#34;         : &#34;サンディエゴ&#34;,
-    &#34;customer_country&#34;      : &#34;アメリカ合衆国&#34;,
-    &#34;customer_email&#34;        : &#34;johnsmith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;ジョン&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;スミス&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;language_code&#34;         : &#34;en&#34;,
-    &#34;page_name&#34;             : &#34;ホームページ&#34;,
-    &#34;page_type&#34;             : &#34;account&#34;,
-    &#34;tealium_event&#34;         : &#34;page_view&#34;
+    "cart_total_items"      : "4",
+    "cart_total_value"      : "77.96",
+    "country_code"          : "us",
+    "customer_city"         : "サンディエゴ",
+    "customer_country"      : "アメリカ合衆国",
+    "customer_email"        : "johnsmith@example.com",
+    "customer_first_name"   : "ジョン",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "スミス",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "language_code"         : "en",
+    "page_name"             : "ホームページ",
+    "page_type"             : "account",
+    "tealium_event"         : "page_view"
 }
 ```
 
@@ -334,19 +334,19 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_product_id&#34;          : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;cart_product_price&#34;       : [&#34;12.00&#34;, &#34;25.99&#34;],
-    &#34;cart_product_quantity&#34;    : [&#34;2&#34;, &#34;2&#34;],
-    &#34;cart_product_sku&#34;         : [&#34;PR-RED-123&#34;, &#34;PR-BLK-456&#34;],
-    &#34;product_category&#34;         : [&#34;シャツ&#34;],
-    &#34;product_id&#34;               : [&#34;PROD678&#34;],
-    &#34;product_image_url&#34;        : [&#34;//domain.com/path/image.gif&#34;],
-    &#34;product_name&#34;             : [&#34;商品三&#34;],
-    &#34;product_price&#34;            : [&#34;18.00&#34;],
-    &#34;product_quantity&#34;         : [&#34;2&#34;],
-    &#34;product_sku&#34;              : [&#34;PR-BLU-678&#34;],
-    &#34;product_subcategory&#34;      : [&#34;Tシャツ&#34;],
-    &#34;tealium_event&#34;            : &#34;cart_add&#34;
+    "cart_product_id"          : ["PROD123", "PROD456"],
+    "cart_product_price"       : ["12.00", "25.99"],
+    "cart_product_quantity"    : ["2", "2"],
+    "cart_product_sku"         : ["PR-RED-123", "PR-BLK-456"],
+    "product_category"         : ["シャツ"],
+    "product_id"               : ["PROD678"],
+    "product_image_url"        : ["//domain.com/path/image.gif"],
+    "product_name"             : ["商品三"],
+    "product_price"            : ["18.00"],
+    "product_quantity"         : ["2"],
+    "product_sku"              : ["PR-BLU-678"],
+    "product_subcategory"      : ["Tシャツ"],
+    "tealium_event"            : "cart_add"
 }
 ```
 ### カートから削除
@@ -358,19 +358,19 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cart_product_id&#34;          : [&#34;PROD123&#34;, &#34;PROD456&#34;],
-    &#34;cart_product_price&#34;       : [&#34;12.00&#34;, &#34;25.99&#34;],
-    &#34;cart_product_quantity&#34;    : [&#34;2&#34;, &#34;2&#34;],
-    &#34;cart_product_sku&#34;         : [&#34;PR-RED-123&#34;, &#34;PR-BLK-456&#34;],
-    &#34;product_category&#34;         : [&#34;Shirts&#34;],
-    &#34;product_id&#34;               : [&#34;PROD456&#34;],
-    &#34;product_image_url&#34;        : [&#34;//domain.com/path/image.gif&#34;],
-    &#34;product_name&#34;             : [&#34;Product Two&#34;],
-    &#34;product_price&#34;            : [&#34;12.00&#34;],
-    &#34;product_quantity&#34;         : [&#34;2&#34;],
-    &#34;product_sku&#34;              : [&#34;PR-BLK-456&#34;],
-    &#34;product_subcategory&#34;      : [&#34;T-Shirts&#34;],
-    &#34;tealium_event&#34;            : &#34;cart_remove&#34;
+    "cart_product_id"          : ["PROD123", "PROD456"],
+    "cart_product_price"       : ["12.00", "25.99"],
+    "cart_product_quantity"    : ["2", "2"],
+    "cart_product_sku"         : ["PR-RED-123", "PR-BLK-456"],
+    "product_category"         : ["Shirts"],
+    "product_id"               : ["PROD456"],
+    "product_image_url"        : ["//domain.com/path/image.gif"],
+    "product_name"             : ["Product Two"],
+    "product_price"            : ["12.00"],
+    "product_quantity"         : ["2"],
+    "product_sku"              : ["PR-BLK-456"],
+    "product_subcategory"      : ["T-Shirts"],
+    "tealium_event"            : "cart_remove"
 }
 ```
 
@@ -383,15 +383,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_register&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_register"
 }
 ```
 
@@ -404,15 +404,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_city&#34;         : &#34;San Diego&#34;,
-    &#34;customer_country&#34;      : &#34;United States&#34;,
-    &#34;customer_email&#34;        : &#34;john.smith@example.com&#34;,
-    &#34;customer_first_name&#34;   : &#34;John&#34;,
-    &#34;customer_id&#34;           : &#34;8237572&#34;,
-    &#34;customer_last_name&#34;    : &#34;Smith&#34;,
-    &#34;customer_postal_code&#34;  : &#34;92101&#34;,
-    &#34;customer_state&#34;        : &#34;CA&#34;,
-    &#34;tealium_event&#34;         : &#34;user_update&#34;
+    "customer_city"         : "San Diego",
+    "customer_country"      : "United States",
+    "customer_email"        : "john.smith@example.com",
+    "customer_first_name"   : "John",
+    "customer_id"           : "8237572",
+    "customer_last_name"    : "Smith",
+    "customer_postal_code"  : "92101",
+    "customer_state"        : "CA",
+    "tealium_event"         : "user_update"
 }
 ```
 
@@ -425,8 +425,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34;  : &#34;john.smith@example.com&#34;,
-    &#34;tealium_event&#34;   : &#34;email_signup&#34;
+    "customer_email"  : "john.smith@example.com",
+    "tealium_event"   : "email_signup"
 }
 ```
 ### カスタムクリック
@@ -438,8 +438,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;link_category&#34;  : &#34;Header&#34;,
-    &#34;link_name&#34;      : &#34;Login&#34;,
-    &#34;tealium_event&#34;  : &#34;custom_click&#34;
+    "link_category"  : "Header",
+    "link_name"      : "Login",
+    "tealium_event"  : "custom_click"
 }
 ```

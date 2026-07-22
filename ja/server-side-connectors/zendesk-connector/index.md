@@ -12,12 +12,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/zendesk-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
 * **ユーザー名**
-  * パスワードアクセスは、Zendesk Support管理インターフェースの**管理 &amp;gt; チャネル &amp;gt; API**で有効にする必要があります。
+  * パスワードアクセスは、Zendesk Support管理インターフェースの**管理 &gt; チャネル &gt; API**で有効にする必要があります。
   * エージェントまたは管理者がユーザープロファイルで2要素認証を有効にしている場合、基本認証を使用することはできません。
 
 * **パスワード**
@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/zendesk-connector/
 
 * **サブドメイン**
   * Zendeskアカウントの一意のサブドメイン。
-  * 例：`&lt;subdomain&gt;.zendesk.com`。
+  * 例：`<subdomain>.zendesk.com`。
   * サブドメインのみを入力し、フルドメインは入力しないでください。
 
 ## アクション構成 - パラメータとオプション
@@ -40,12 +40,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/zendesk-connector/
 
 | **パラメータ**     | **説明**                                                                                                                                                                                                                                  |
 |:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| メール             | &lt;ul&gt;&lt;li&gt;ユーザーのメールアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                     |
-| 名前              | &lt;ul&gt;&lt;li&gt;ユーザーの名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                              |
-| ユーザープロパティ   | &lt;ul&gt;&lt;li&gt;ユーザープロファイルに追加するカスタムユーザープロパティ。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                         |
-| 役割              | &lt;ul&gt;&lt;li&gt;役割パラメータを指定しない場合、新しいユーザーにはエンドユーザーの役割が割り当てられます。&lt;/li&gt;&lt;li&gt;詳細については、[ユーザーの作成または更新](https://developer.zendesk.com/rest_api/docs/core/users#create-or-update-user)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| ユーザー認証     | &lt;ul&gt;&lt;li&gt;確認メールを送信せずにユーザーを作成する必要がある場合は、`&#34;verified&#34;: true`パラメータを渡します。&lt;/li&gt;&lt;/ul&gt;                                                                                                                     |
-| 組織名 | &lt;ul&gt;&lt;li&gt;ユーザーは、組織名を追加することで名前付きの組織にも追加できます。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                             |
+| メール             | <ul><li>ユーザーのメールアドレス。</li></ul>                                                                                                                                                                                                     |
+| 名前              | <ul><li>ユーザーの名前。</li></ul>                                                                                                                                                                                                              |
+| ユーザープロパティ   | <ul><li>ユーザープロファイルに追加するカスタムユーザープロパティ。</li></ul>                                                                                                                                                                         |
+| 役割              | <ul><li>役割パラメータを指定しない場合、新しいユーザーにはエンドユーザーの役割が割り当てられます。</li><li>詳細については、[ユーザーの作成または更新](https://developer.zendesk.com/rest_api/docs/core/users#create-or-update-user)を参照してください。</li></ul> |
+| ユーザー認証     | <ul><li>確認メールを送信せずにユーザーを作成する必要がある場合は、`"verified": true`パラメータを渡します。</li></ul>                                                                                                                     |
+| 組織名 | <ul><li>ユーザーは、組織名を追加することで名前付きの組織にも追加できます。</li></ul>                                                                                                                                             |
 
 ### アクション - リクエスター付きの新規チケットの作成
 
@@ -53,10 +53,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/zendesk-connector/
 
 | **パラメータ**   | **説明**                                                                                                                                                                                                                              |
 |:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 件名         | &lt;ul&gt;&lt;li&gt;チケットの件名。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                 |
-| コメント         | &lt;ul&gt;&lt;li&gt;チケットにコメントを追加するオブジェクト。&lt;/li&gt;&lt;li&gt;詳細については、[新規リクエスターでチケットを作成する](https://developer.zendesk.com/rest_api/docs/core/tickets#creating-a-ticket-with-a-new-requester)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| リクエスター名  | &lt;ul&gt;&lt;li&gt;チケットを提出するユーザーの名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                    |
-| リクエスターメール | &lt;ul&gt;&lt;li&gt;チケットを提出するユーザーのメール。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                   |
-| 優先度        | &lt;ul&gt;&lt;li&gt;許可される値は`urgent`、`high`、`normal`、または`low`です。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                   |
-| タイプ            | &lt;ul&gt;&lt;li&gt;許可される値は`problem`、`incident`、`question`、または`task`です。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                           |
-| タグ             | &lt;ul&gt;&lt;li&gt;チケットに追加するタグ。既存のタグはすべて置き換えられることに注意してください。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                  |
+| 件名         | <ul><li>チケットの件名。</li></ul>                                                                                                                                                                                                 |
+| コメント         | <ul><li>チケットにコメントを追加するオブジェクト。</li><li>詳細については、[新規リクエスターでチケットを作成する](https://developer.zendesk.com/rest_api/docs/core/tickets#creating-a-ticket-with-a-new-requester)を参照してください。</li></ul> |
+| リクエスター名  | <ul><li>チケットを提出するユーザーの名前。</li></ul>                                                                                                                                                                                    |
+| リクエスターメール | <ul><li>チケットを提出するユーザーのメール。</li></ul>                                                                                                                                                                                   |
+| 優先度        | <ul><li>許可される値は`urgent`、`high`、`normal`、または`low`です。</li></ul>                                                                                                                                                                   |
+| タイプ            | <ul><li>許可される値は`problem`、`incident`、`question`、または`task`です。</li></ul>                                                                                                                                                           |
+| タグ             | <ul><li>チケットに追加するタグ。既存のタグはすべて置き換えられることに注意してください。</li></ul>                                                                                                                                                  |

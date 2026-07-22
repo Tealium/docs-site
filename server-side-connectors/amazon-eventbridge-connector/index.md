@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-eventbridge-connecto
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -38,7 +38,7 @@ The following section describes how to set up parameters and options for each ac
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Event Source          | Select partner event source to send data to.                                                                                                                                                                                                                              |
 | Detail Type           | A free-form string used to decide what fields to expect in the event detail. For more information about Detail Type, read [Amazon EventBridge API PutPartnerEvents documentation](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEvents.html). |
-| Resources             | AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.&lt;br&gt; Any number, including zero, may be present.                                                                                                                              |
+| Resources             | AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.<br> Any number, including zero, may be present.                                                                                                                              |
 | Print Attribute Names | If attribute names get updated, the names in the payload will reflect the update.                                                                                                                                                                                         |
 |                       |                                                                                                                                                                                                                                                                           |
 ### Action — Send Visitor Data to Event Source
@@ -49,8 +49,8 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Event Source| Select partner event source to send data to.|
 |Detail Type| A free-form string used to decide what fields to expect in the event detail.|
-|Resources| AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.&lt;br&gt; Any number, including zero, may be present.|
-| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn&#39;t selected. |
+|Resources| AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.<br> Any number, including zero, may be present.|
+| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn't selected. |
 | Exclude Current Visit Event Data | Exclude event data from the current visit data. |
 |Print Attribute Names| If attribute names get updated, the names in the payload will reflect the update.|
 
@@ -62,7 +62,7 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Event Source| Select partner event source to send data to.|
 |Detail Type| A free-form string used to decide what fields to expect in the event detail.|
-|Resources| AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.&lt;br&gt; Any number, including zero, may be present.|
+|Resources| AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns.<br> Any number, including zero, may be present.|
 |Custom Message Definition|
-|Message Template Variables| (Optional) Provide template variables as data input for templates. For more information, see .&lt;br&gt; Name nested template variables with the dot notation (Example: `items.name`).&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Message Templates| (Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|
+|Message Template Variables| (Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation (Example: `items.name`).<br> Nested template variables are typically built from data layer list attributes.|
+|Message Templates| (Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.|

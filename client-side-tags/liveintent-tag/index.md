@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/liveintent-tag/
 ---
 ### Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 After adding the tag, configure the below settings:
 
@@ -13,13 +13,13 @@ After adding the tag, configure the below settings:
 
 ### Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
 ### Data Mappings
 
-Mapping is the process of sending data from a [data layer variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the LiveIntent tag are built into its **Data Mapping** tab. Available categories are:
 
@@ -28,10 +28,10 @@ The destination variables for the LiveIntent tag are built into its **Data Mappi
 |**Destination Name**| **Description**|
 |---| ---|
 |App ID (`app_id`)| Map to this destination to override or dynamically set the App ID|
-| Content/Category/Conversion Name (`name`) |  Typically used to: &lt;ul&gt;&lt;li&gt;Pass product name for a `viewContent` event&lt;/li&gt;&lt;li&gt;Pass the category name for a `viewContent` event&lt;/li&gt;&lt;li&gt;Give the type of conversion a name for the conversion event&lt;/li&gt;&lt;/ul&gt; |
+| Content/Category/Conversion Name (`name`) |  Typically used to: <ul><li>Pass product name for a `viewContent` event</li><li>Pass the category name for a `viewContent` event</li><li>Give the type of conversion a name for the conversion event</li></ul> |
 |Content ID (`contentID`)| A product ID that matches the product feed|
-|Hashed User Email (`emailHash`)| The customer&#39;s email address as an MD5 hashed string|
-|User Email (`email`)| The customer&#39;s email address in plain text|
+|Hashed User Email (`emailHash`)| The customer's email address as an MD5 hashed string|
+|User Email (`email`)| The customer's email address in plain text|
 
 #### E-Commerce
 
@@ -56,7 +56,7 @@ Map to these destinations for triggering specific events on a page. To trigger a
 1. Select an event from the drop-down list.  
 You may choose from the predefined list or create a  event. For a  event, enter a name with which to identify it.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click **&#43;** and repeat steps 1 and 2.
+1. To map more events, click **+** and repeat steps 1 and 2.
 1. Click **Apply**.
 
 The event triggers when the supplied value is found in the data layer.
@@ -75,14 +75,18 @@ The event triggers when the supplied value is found in the data layer.
 
 Map to these destinations if you want to pass additional data with the event(s) you mapped earlier.
 
+
+<blockquote>
 Parameters are only used with predefined events. For more information on how to pass a parameter with a custom event, see .
+</blockquote>
+
 
 To pass a parameter with a predefined event:
 
 1. **Event**: Select a LiveIntent event from the drop-down list.
 1. **Parameter**: Select a LiveIntent parameter from the drop-down list.
 1. For a **Custom** parameter, enter a name with which to identify it.
-1. Click **&#43; Add**.
+1. Click **+ Add**.
 
 |**Destination Name**| **Description**|
 |---| ---|
@@ -104,7 +108,7 @@ To map a Custom Event Data variable:
 
 1. **Event Action**: Enter the name of the Custom Event exactly as specified in the **Events** tab.
 1. **Parameter**: Enter the name of the Parameter you want to send.
-1. Click **&#43; Add**.
+1. Click **+ Add**.
 
 ### Vendor Documentation
 

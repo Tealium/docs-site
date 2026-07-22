@@ -17,7 +17,7 @@ In Tealium, the profile configuration is referred to as a version. You can find 
 
 | Client-Side | Server-Side |
 | --- | --- |
-| ![](/images/administration/profile-retention-client-side-version.png) | ![](/images/administration/profile-retention-server-side-version.png) |
+| ![](https://docs.tealium.com/images/administration/profile-retention-client-side-version.png) | ![](https://docs.tealium.com/images/administration/profile-retention-server-side-version.png) |
 
 ## Retention scope
 

@@ -13,22 +13,30 @@ The Join Data Values extension combines two or more text values into a single te
 
 This extension uses the JavaScript `join()` method to concatenated multiple variables with the delimiter character.
 
+
+<blockquote>
 Avoid delimiter characters that could also appear in the joined values.
+</blockquote>
+
 
 ## Using the extension
 
 Once the extension is added, the following configuration options are available:
 
 * **Destination**: The variable to store the joined values.  
-Choose an existing variable from the drop-down list or create a new one by clicking the **&#43;** button.
+Choose an existing variable from the drop-down list or create a new one by clicking the **+** button.
 * **Delimiter**: The character to separate each variable in the final text value.  
 Enter a single character, such as `/`, `-`, or `:`.
 * **Leading Delimiter**: (Default: **No**). Determines if the delimiter will also be applied at the beginning of the joined values.
 * **Default Value**: The default value to use in place of a joined variable that does not contain a value. For example, `unset` or `blank`.
 * **Join**: The list of variables to join into a single value.  
-    * Click the **&#43;** button to add another variable.  
+    * Click the **+** button to add another variable.  
     * Click the **-** button to remove a variable.  
-    Select the option **Text Value** to enter a custom text value.
+    
+<blockquote>
+Select the option **Text Value** to enter a custom text value.
+</blockquote>
+
 * **Sample**: A sample value to validate the correct delimiter and variables.
 * **Condition**: Click **Add Condition** to set a condition to determine when this extension will run.
 
@@ -38,14 +46,14 @@ Enter a single character, such as `/`, `-`, or `:`.
 
 Join separate date variables to create a standard date string. Use a different delimiter or order of variables to create the date format you want.
 
-* **Input Variables**:  `year=&#34;2020&#34; month=&#34;12&#34; day=&#34;31&#34;`
+* **Input Variables**:  `year="2020" month="12" day="31"`
 * **Delimiter**: `-`
-* **Joined Value**:  `date=&#34;2020-12-31&#34;`
+* **Joined Value**:  `date="2020-12-31"`
 
 ### Page hierarchy
 
 Create a structured page hierarchy value by combining `site_section`, `page_category`, and other page level variables.
 
-* **Input Variables**:  `site_region=&#34;en-us&#34; site_section=&#34;Electronics&#34; category_name=&#34;Tablets&#34; `
+* **Input Variables**:  `site_region="en-us" site_section="Electronics" category_name="Tablets" `
 * **Delimiter**: `:`
-* **Joined Value**:  `page_hier=&#34;en-us:Electronics:Tablets&#34;`
+* **Joined Value**:  `page_hier="en-us:Electronics:Tablets"`

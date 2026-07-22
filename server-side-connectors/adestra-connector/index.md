@@ -14,11 +14,11 @@ url: https://docs.tealium.com/server-side-connectors/adestra-connector/
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
-* **API Key**: (Required) Adestra account API key, see: [Create API Token](https://app.adestra.com/doc/page/current/index/integration/zapier/initial-config#Step3:CreateAPITokeninMessageFocus &#34;Create API Token&#34;)
+* **API Key**: (Required) Adestra account API key, see: [Create API Token](https://app.adestra.com/doc/page/current/index/integration/zapier/initial-config#Step3:CreateAPITokeninMessageFocus "Create API Token")
 
 ## Action Settings - Parameters and Options
 
@@ -32,9 +32,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Update Strategy|  &lt;ul&gt;&lt;li&gt;(Required) Select applicable update strategy.  &lt;ul&gt;&lt;li&gt;**Create Only** Look up an existing contact and if not found, create a new contact.&lt;/li&gt;&lt;li&gt;**Update Only** Look up an existing contact and update it.&lt;/li&gt;&lt;li&gt;**Create or Update** Look up an existing contact and if found, update it, otherwise create a new contact.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|Core Table|  &lt;ul&gt;&lt;li&gt;(Required) Select the core table to create or update the contact in.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Lookup Email Address|  &lt;ul&gt;&lt;li&gt;(Required) Email address to lookup contact.&lt;/li&gt;&lt;/ul&gt; |
+|Update Strategy|  <ul><li>(Required) Select applicable update strategy.  <ul><li>**Create Only** Look up an existing contact and if not found, create a new contact.</li><li>**Update Only** Look up an existing contact and update it.</li><li>**Create or Update** Look up an existing contact and if found, update it, otherwise create a new contact.</li></ul> </li></ul> |
+|Core Table|  <ul><li>(Required) Select the core table to create or update the contact in.</li></ul> |
+|Contact Lookup Email Address|  <ul><li>(Required) Email address to lookup contact.</li></ul> |
 
 ### Action - Add Contact To List
 
@@ -42,9 +42,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Core Table|  &lt;ul&gt;&lt;li&gt;(Required) Select the core table the contact belongs to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Lookup Email Address|  &lt;ul&gt;&lt;li&gt;(Required) Email address to lookup contact.&lt;/li&gt;&lt;/ul&gt; |
-|List|  &lt;ul&gt;&lt;li&gt;(Required) List to add the contact to.&lt;/li&gt;&lt;/ul&gt; |
+|Core Table|  <ul><li>(Required) Select the core table the contact belongs to.</li></ul> |
+|Contact Lookup Email Address|  <ul><li>(Required) Email address to lookup contact.</li></ul> |
+|List|  <ul><li>(Required) List to add the contact to.</li></ul> |
 
 ### Action - Remove Contact From List
 
@@ -52,9 +52,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Core Table|  &lt;ul&gt;&lt;li&gt;(Required) Core tables store contacts in Adestra.&lt;/li&gt;&lt;li&gt;Select the core table the contact belongs to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email Address|  &lt;ul&gt;&lt;li&gt;(Required) Email address to lookup contact.&lt;/li&gt;&lt;/ul&gt; |
-|List|  &lt;ul&gt;&lt;li&gt;(Required) List to remove the contact from.&lt;/li&gt;&lt;/ul&gt; |
+|Core Table|  <ul><li>(Required) Core tables store contacts in Adestra.</li><li>Select the core table the contact belongs to.</li></ul> |
+|Contact Email Address|  <ul><li>(Required) Email address to lookup contact.</li></ul> |
+|List|  <ul><li>(Required) List to remove the contact from.</li></ul> |
 
 ### Action - Send Email
 
@@ -62,6 +62,6 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Email Campaign|  &lt;ul&gt;&lt;li&gt;(Required) Select the campaign to be launched.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email Address|  &lt;ul&gt;&lt;li&gt;(Required) Email address to send email to.&lt;/li&gt;&lt;/ul&gt; |
-|Transaction Data|  &lt;ul&gt;&lt;li&gt;(Required) Template data to set within the email campaign.&lt;/li&gt;&lt;/ul&gt; |
+|Email Campaign|  <ul><li>(Required) Select the campaign to be launched.</li></ul> |
+|Contact Email Address|  <ul><li>(Required) Email address to send email to.</li></ul> |
+|Transaction Data|  <ul><li>(Required) Template data to set within the email campaign.</li></ul> |

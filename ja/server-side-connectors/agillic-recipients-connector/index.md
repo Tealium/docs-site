@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/agillic-recipients-conne
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -48,8 +48,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/agillic-recipients-conne
 
 |**パラメータ**| **説明**|
 |---| ---|
-|受信者ID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;EMAILやMOBILEなどのユニークなPerson Dataをマップします。&lt;/li&gt;&lt;li&gt;一般的な目的には受信者IDを使用します。&lt;/li&gt;&lt;li&gt;詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|受信者データ|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;Person Dataフィールドに値をマップします。&lt;/li&gt;&lt;/ul&gt; |
+|受信者ID|  <ul><li>必須。</li><li>EMAILやMOBILEなどのユニークなPerson Dataをマップします。</li><li>一般的な目的には受信者IDを使用します。</li><li>詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。</li></ul> |
+|受信者データ|  <ul><li>必須。</li><li>Person Dataフィールドに値をマップします。</li></ul> |
 
 #### アクション - 受信者テーブルレコードの更新
 
@@ -57,9 +57,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/agillic-recipients-conne
 
 |**パラメータ**| **説明**|
 |---| ---|
-|受信者ID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;EMAILやMOBILEなどのユニークなPerson Dataをマップします。&lt;/li&gt;&lt;li&gt;一般的な目的には受信者IDを使用します。&lt;/li&gt;&lt;li&gt;詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|テーブル|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;バッチ更新されるレコードのテーブルID。&lt;/li&gt;&lt;/ul&gt; |
-|テーブルレコード|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;各テーブルレコードフィールドに1つ以上の値をマップします。&lt;/li&gt;&lt;li&gt;IDまたはプライマリキーを指定する必要があります。&lt;/li&gt;&lt;/ul&gt; |
+|受信者ID|  <ul><li>必須。</li><li>EMAILやMOBILEなどのユニークなPerson Dataをマップします。</li><li>一般的な目的には受信者IDを使用します。</li><li>詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。</li></ul> |
+|テーブル|  <ul><li>必須。</li><li>バッチ更新されるレコードのテーブルID。</li></ul> |
+|テーブルレコード|  <ul><li>必須。</li><li>各テーブルレコードフィールドに1つ以上の値をマップします。</li><li>IDまたはプライマリキーを指定する必要があります。</li></ul> |
 
 ### アクション - イベントの達成
 
@@ -67,6 +67,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/agillic-recipients-conne
 
 |**パラメータ**| **説明**|
 |---| ---|
-|受信者ID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;EMAILやMOBILEなどのユニークなPerson Dataをマップします。&lt;/li&gt;&lt;li&gt;一般的な目的には受信者IDを使用します。&lt;/li&gt;&lt;li&gt;詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|イベントID|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;達成するイベントID。&lt;/li&gt;&lt;/ul&gt; |
+|受信者ID|  <ul><li>必須。</li><li>EMAILやMOBILEなどのユニークなPerson Dataをマップします。</li><li>一般的な目的には受信者IDを使用します。</li><li>詳細については、[APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation)を参照してください。</li></ul> |
+|イベントID|  <ul><li>必須。</li><li>達成するイベントID。</li></ul> |
 

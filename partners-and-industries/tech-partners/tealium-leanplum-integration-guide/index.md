@@ -14,10 +14,14 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-lean
 
 Leanplum helps forward-looking brands meet the real-time needs of their customers by transforming data into an understanding of user needs and wants. By optimizing engagement campaigns and using multiple communication channels, the Leanplum platform delivers a timely, tested, and relevant unified experience to build customer loyalty and fuel business growth.
 
-See the [Tealium &#43; Leanplum Technology Partnership Overview](https://tealium.com/technology-partner/leanplum/) for more information.
+See the [Tealium + Leanplum Technology Partnership Overview](https://tealium.com/technology-partner/leanplum/) for more information.
 
 
- When configuring the Leanplum connector, you must specify which endpoint and API version is used for each action.
+
+<blockquote>
+When configuring the Leanplum connector, you must specify which endpoint and API version is used for each action.
+</blockquote>
+
 
 ## API version
 
@@ -33,4 +37,4 @@ See the [Tealium &#43; Leanplum Technology Partnership Overview](https://tealium
 
 * [Leanplum](https://www.leanplum.com/)
 * [Tealium and Leanplum Partner Brief](https://tealium.com/assets/pdf/Partner_Brief_Leanplum-Tealium.pdf)
-* [Leanplum Connector Setup Guide]()
+* [Leanplum Connector Setup Guide](https://docs.tealium.com/leanplum-connector/)

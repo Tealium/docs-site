@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/heap-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 ## Action Settings - Parameters and Options
 
@@ -26,9 +26,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|App ID|  &lt;ul&gt;&lt;li&gt;The `app_id` corresponding to one of your projects.&lt;/li&gt;&lt;/ul&gt; |
-|Identity|  &lt;ul&gt;&lt;li&gt;An identity, typically corresponding to an existing user.&lt;/li&gt;&lt;li&gt;If no such identity exists, a new user is created with that identity.&lt;/li&gt;&lt;li&gt;Limited to 255 characters.&lt;/li&gt;&lt;li&gt;For more information, see: [Heap: Add User Properties](https://developers.heap.io/docs/using-identify)&lt;/li&gt;&lt;/ul&gt; |
-|User Properties|  &lt;ul&gt;&lt;li&gt;An object with key-value properties you want associated with the user.&lt;/li&gt;&lt;li&gt;Each key and property must either be a number or string with fewer than 1024 characters.&lt;/li&gt;&lt;li&gt;For more information, see: [Heap: Add User Properties](https://developers.heap.io/docs/using-identify)&lt;/li&gt;&lt;/ul&gt; |
+|App ID|  <ul><li>The `app_id` corresponding to one of your projects.</li></ul> |
+|Identity|  <ul><li>An identity, typically corresponding to an existing user.</li><li>If no such identity exists, a new user is created with that identity.</li><li>Limited to 255 characters.</li><li>For more information, see: [Heap: Add User Properties](https://developers.heap.io/docs/using-identify)</li></ul> |
+|User Properties|  <ul><li>An object with key-value properties you want associated with the user.</li><li>Each key and property must either be a number or string with fewer than 1024 characters.</li><li>For more information, see: [Heap: Add User Properties](https://developers.heap.io/docs/using-identify)</li></ul> |
 
 ### Action - Track
 
@@ -36,8 +36,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|App ID|  &lt;ul&gt;&lt;li&gt;The `app_id` corresponding to one of your projects.&lt;/li&gt;&lt;/ul&gt; |
-|Identity|  &lt;ul&gt;&lt;li&gt;An identity, typically corresponding to an existing user.&lt;/li&gt;&lt;li&gt;If no such identity exists, then a new user will be created with that identity.&lt;/li&gt;&lt;li&gt;Limited to 255 characters.&lt;/li&gt;&lt;li&gt;For more information, see the [Heap documentation](https://developers.heap.io/reference#track).&lt;/li&gt;&lt;/ul&gt; |
-|Event|  &lt;ul&gt;&lt;li&gt;The name of the server-side event.&lt;/li&gt;&lt;li&gt;Limited to 1024 characters.&lt;/li&gt;&lt;li&gt;For more information, see the [Heap documentation](https://developers.heap.io/reference#track).&lt;/li&gt;&lt;/ul&gt; |
-|Properties|  &lt;ul&gt;&lt;li&gt;An object with key-value properties you want associated with the user.&lt;/li&gt;&lt;li&gt;Each key and property must either be a number or string with fewer than 1024 characters.&lt;/li&gt;&lt;li&gt;For more information, see the [Heap documentation](https://developers.heap.io/reference#track).&lt;/li&gt;&lt;/ul&gt; |
-|Timestamp|  &lt;ul&gt;&lt;li&gt;ISO 8601 or Unix epoch milliseconds.&lt;/li&gt;&lt;li&gt;Example: `2017-03-10T22:21:56&#43;00:00`&lt;/li&gt;&lt;li&gt;For more information, see the [Heap documentation](https://developers.heap.io/reference#track).&lt;/li&gt;&lt;/ul&gt; |
+|App ID|  <ul><li>The `app_id` corresponding to one of your projects.</li></ul> |
+|Identity|  <ul><li>An identity, typically corresponding to an existing user.</li><li>If no such identity exists, then a new user will be created with that identity.</li><li>Limited to 255 characters.</li><li>For more information, see the [Heap documentation](https://developers.heap.io/reference#track).</li></ul> |
+|Event|  <ul><li>The name of the server-side event.</li><li>Limited to 1024 characters.</li><li>For more information, see the [Heap documentation](https://developers.heap.io/reference#track).</li></ul> |
+|Properties|  <ul><li>An object with key-value properties you want associated with the user.</li><li>Each key and property must either be a number or string with fewer than 1024 characters.</li><li>For more information, see the [Heap documentation](https://developers.heap.io/reference#track).</li></ul> |
+|Timestamp|  <ul><li>ISO 8601 or Unix epoch milliseconds.</li><li>Example: `2017-03-10T22:21:56+00:00`</li><li>For more information, see the [Heap documentation](https://developers.heap.io/reference#track).</li></ul> |

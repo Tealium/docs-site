@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/flashtalking-user-segmen
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview](/ja/server-side/connectors/manage/)記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview](https://docs.tealium.com/ja/server-side/connectors/manage/)記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/flashtalking-user-segmen
 | DAID | Android広告ID。 |
 | IDFA | Apple広告ID。 |
 | UID | クッキーシンクからのユニークID。 |
-| セグメント | セグメント文字列によってターゲットセグメントを識別します。単一のセグメントまたはカンマで区切られたセグメントのリストを渡します。セグメントのリストを渡す場合、ブラケット &#34;`[]`&#34; を含めないでください。 |
+| セグメント | セグメント文字列によってターゲットセグメントを識別します。単一のセグメントまたはカンマで区切られたセグメントのリストを渡します。セグメントのリストを渡す場合、ブラケット "`[]`" を含めないでください。 |
 
 ### アクション - ユーザーをセグメントから削除
 
@@ -49,7 +49,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/flashtalking-user-segmen
 | DAID | Android広告ID。 |
 | IDFA | Apple広告ID。 |
 | UID | クッキーシンクからのユニークID。 |
-| セグメント | セグメント文字列によってターゲットセグメントを識別します。単一のセグメントまたはカンマで区切られたセグメントのリストを渡します。セグメントのリストを渡す場合、ブラケット &#34;`[]`&#34; を含めないでください。 |
+| セグメント | セグメント文字列によってターゲットセグメントを識別します。単一のセグメントまたはカンマで区切られたセグメントのリストを渡します。セグメントのリストを渡す場合、ブラケット "`[]`" を含めないでください。 |
 
 ### アクション - ユーザーをすべてのセグメントから削除
 

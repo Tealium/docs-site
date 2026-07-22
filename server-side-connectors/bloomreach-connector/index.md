@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -22,7 +22,7 @@ The API key.
 * **API Secret**  
 The API secret.
 * **Project token**  
-Your project token. You can find this in the Engagement web app under **Project settings &gt; Access management &gt; API**.
+Your project token. You can find this in the Engagement web app under **Project settings > Access management > API**.
 * **API Domain**  
 Your Bloomreach API domain. The default value is `https://api-engagement.bloomreach.com`.
 
@@ -63,9 +63,9 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | The customer&#39;s email address. |
-| First Name | The customer&#39;s first name. |
-| Last Name | The customer&#39;s last name. |
+| Email | The customer's email address. |
+| First Name | The customer's first name. |
+| Last Name | The customer's last name. |
 
 #### Optional
 
@@ -87,9 +87,9 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | The customer&#39;s email address. |
-| First Name | The customer&#39;s first name. |
-| Last Name | The customer&#39;s last name. |
+| Email | The customer's email address. |
+| First Name | The customer's first name. |
+| Last Name | The customer's last name. |
 
 #### Optional
 
@@ -103,7 +103,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Event Type | Type of the event. The event type based on the filled properties triggers as many events as needed based on the property categories selected.&lt;ul&gt;&lt;li&gt;Purchase&lt;/li&gt;&lt;li&gt;Purchase Item&lt;/li&gt;&lt;li&gt;Cart Update&lt;/li&gt;&lt;li&gt;Checkout&lt;/li&gt;&lt;li&gt;View Item&lt;/li&gt;&lt;li&gt;View Category&lt;/li&gt;&lt;li&gt;Consent&lt;/li&gt;&lt;li&gt;Banner&lt;/li&gt;&lt;li&gt;Recommendation&lt;/li&gt;&lt;/ul&gt; |
+| Event Type | Type of the event. The event type based on the filled properties triggers as many events as needed based on the property categories selected.<ul><li>Purchase</li><li>Purchase Item</li><li>Cart Update</li><li>Checkout</li><li>View Item</li><li>View Category</li><li>Consent</li><li>Banner</li><li>Recommendation</li></ul> |
 
 #### Customer IDs
 
@@ -123,7 +123,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Event Type | Type of the event. The event type based on the filled properties triggers as many events as needed based on the property categories selected.&lt;ul&gt;&lt;li&gt;Purchase&lt;/li&gt;&lt;li&gt;Purchase Item&lt;/li&gt;&lt;li&gt;Cart Update&lt;/li&gt;&lt;li&gt;Checkout&lt;/li&gt;&lt;li&gt;View Item&lt;/li&gt;&lt;li&gt;View Category&lt;/li&gt;&lt;li&gt;Consent&lt;/li&gt;&lt;li&gt;Banner&lt;/li&gt;&lt;li&gt;Recommendation&lt;/li&gt;&lt;/ul&gt; |
+| Event Type | Type of the event. The event type based on the filled properties triggers as many events as needed based on the property categories selected.<ul><li>Purchase</li><li>Purchase Item</li><li>Cart Update</li><li>Checkout</li><li>View Item</li><li>View Category</li><li>Consent</li><li>Banner</li><li>Recommendation</li></ul> |
 
 #### Customer IDs
 
@@ -163,8 +163,8 @@ The following section describes how to set up parameters and options for each ac
 | Attachments Filename | The name of the attachment. |
 | Attachments Content | Base64 encoded content of your file. |
 | Attachments Content Type | The format of your attachments. |
-| Html | Define the content of the email between the `&lt;html&gt;` and `&lt;/html&gt;` tags. You can include CSS content. is also accepted. Jinja is not evaluated in this field. |
-| Email Content Parameters | Provide all the required data for email personalization used in the template. Format: `param_name`:&#34;value&#34;. For example: `first_name`:&#34;Marian&#34; |
+| Html | Define the content of the email between the `<html>` and `</html>` tags. You can include CSS content. is also accepted. Jinja is not evaluated in this field. |
+| Email Content Parameters | Provide all the required data for email personalization used in the template. Format: `param_name`:"value". For example: `first_name`:"Marian" |
 | Campaign Name | The name of the email campaign. |
 
 #### Recipient
@@ -178,13 +178,13 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transfer Identity | Whether link transfer ability should be enabled. Possible values:&lt;ul&gt;&lt;li&gt;`Enabled` - default value, appends `iitt` parameter, which identifies on all clicks.&lt;/li&gt;&lt;li&gt;`Disabled` - appends nothing to the links, no identity transfer.&lt;/li&gt;&lt;li&gt;`First Click` - appends `xnpe_tifc`, which identifies on first click only.&lt;/li&gt;&lt;/ul&gt; |
+| Transfer Identity | Whether link transfer ability should be enabled. Possible values:<ul><li>`Enabled` - default value, appends `iitt` parameter, which identifies on all clicks.</li><li>`Disabled` - appends nothing to the links, no identity transfer.</li><li>`First Click` - appends `xnpe_tifc`, which identifies on first click only.</li></ul> |
 
 #### Email Template Settings
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transfer User Identity | Whether link transfer ability should be enabled. Possible values:&lt;ul&gt;&lt;li&gt;`enabled` (default value)&lt;/li&gt;&lt;li&gt;`disabled`&lt;/li&gt;&lt;li&gt;`iitt` - do not transfer identity into the link.&lt;/li&gt;&lt;/ul&gt; This setting is the same as the `transferidentity` parameter directly in the body of the request. Note that only one can be specified. Specifying transfer identity as part of the settings as well as alone will result in an error. |
+| Transfer User Identity | Whether link transfer ability should be enabled. Possible values:<ul><li>`enabled` (default value)</li><li>`disabled`</li><li>`iitt` - do not transfer identity into the link.</li></ul> This setting is the same as the `transferidentity` parameter directly in the body of the request. Note that only one can be specified. Specifying transfer identity as part of the settings as well as alone will result in an error. |
 | Consent Category | To respect the consent in the Engagement platform, specify the consent category of the customer. |
 | Consent Category Tracking | To respect the tracking consent in the Engagement platform, specify the tracking consent category of the customer. |
 | Email Template Custom Event Properties | Custom attributes. |
@@ -201,7 +201,7 @@ The following section describes how to set up parameters and options for each ac
 | Message | Content of the SMS message. |
 | Max Message Parts | The maximum allowed number of message parts. If exceeded, the SMS message is not sent. Minimum value: `1`, Maximum value: `8`, Default value: `8`. |
 | Sender | Your sender phone number. |
-| Sms Content Parameters | Provide all the required data for SMS personalization used in the template. Format: `param_name`:&#34;value&#34;. For example: `first_name`:&#34;Marian&#34;. |
+| Sms Content Parameters | Provide all the required data for SMS personalization used in the template. Format: `param_name`:"value". For example: `first_name`:"Marian". |
 | Campaign Name | Name of the SMS campaign. |
 
 #### Recipient
@@ -220,7 +220,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transfer User Identity | Whether link transfer ability should be enabled. Possible values:&lt;ul&gt;&lt;li&gt;`enabled` (default value)&lt;/li&gt;&lt;li&gt;`disabled`&lt;/li&gt;&lt;li&gt;`iitt` - do not transfer identity into the link.&lt;/li&gt;&lt;/ul&gt; This setting is the same as the `transferidentity` parameter directly in the body of the request. Note that only one can be specified. Specifying transfer identity as part of the settings as well as alone will result in an error. |
+| Transfer User Identity | Whether link transfer ability should be enabled. Possible values:<ul><li>`enabled` (default value)</li><li>`disabled`</li><li>`iitt` - do not transfer identity into the link.</li></ul> This setting is the same as the `transferidentity` parameter directly in the body of the request. Note that only one can be specified. Specifying transfer identity as part of the settings as well as alone will result in an error. |
 | Consent Category | To respect the consent in the Engagement platform, specify the consent category of the customer. |
 | Consent Category Tracking | To respect the tracking consent in the Engagement platform, specify the tracking consent category of the customer. |
 | SMS Template Custom Event Properties | Custom attributes. |

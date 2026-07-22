@@ -3,7 +3,11 @@ title: トラッキングオプトアウト拡張
 description: この拡張機能を使用してトラッキングオプトアウトを有効にします。お客様がオプトアウトオプションを選択できるように、ウェブサイトに配置するオプトアウトリンクが提供されます。
 url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/tracking-opt-out-extension/
 ---
+
+<blockquote>
 この拡張機能は旧式の実装をサポートしています。より包括的で最新のソリューションについては、[Consent Manager]()を参照してください。
+</blockquote>
+
 
 ## 仕組み
 
@@ -19,10 +23,14 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/tr
 
 拡張機能が追加されると、次の構成オプションが利用可能になります：
 
-* **Opt In**: `&lt;a href=&#39;javascript:utag_trackingOptIn()&#39;&gt;トラッキングオプトイン&lt;/a&gt;`
-* **Opt Out**: `&lt;a href=&#39;javascript:utag_trackingOptOut()&#39;&gt;トラッキングオプトアウト&lt;/a&gt;`
+* **Opt In**: `<a href='javascript:utag_trackingOptIn()'>トラッキングオプトイン</a>`
+* **Opt Out**: `<a href='javascript:utag_trackingOptOut()'>トラッキングオプトアウト</a>`
 
 これらのリンクを、訪問がトラッキングのオプトイン/アウトを選択できるサイトに追加します。
 
+
+<blockquote>
 この拡張機能は一度だけ追加する必要があり、これらのリンクが機能するためには有効化する必要があります。​
+</blockquote>
+
 

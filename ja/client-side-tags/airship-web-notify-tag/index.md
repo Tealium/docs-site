@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグ概要]()の記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -43,13 +43,13 @@ url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
 |vapidPublicKey (vapid\_public\_key)| [文字列]|
 |Token (token)| [文字列]|
 |secureIframeUrl (secure\_iframe\_url)| [文字列]|
-|Auto Prompt Flag (auto\_prompt)| [&#34;true&#34;/&#34;false&#34;]|
+|Auto Prompt Flag (auto\_prompt)| ["true"/"false"]|
 
 ### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|Is New Item (is\_new\_item)| [&#34;true&#34;/&#34;false&#34;]|
+|Is New Item (is\_new\_item)| ["true"/"false"]|
 |List of Product Brands (product\_brand) (Overrides \_cbrand)| [配列]|
 |List of Product Categories (product\_category) (Overrides \_ccat)| [配列]|
 |List of Product Descriptions (product\_description)| [配列]|
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
 |Author (media\_author)| [文字列]|
 |Category (media\_category)| [文字列]|
 |Description (media\_description)| [文字列]|
-|Feature (media\_feature)| [&#34;true&#34;/&#34;false&#34;]|
+|Feature (media\_feature)| ["true"/"false"]|
 |Identifier (media\_identifier)| [文字列]|
 |Published Date (media\_published\_date)| [文字列]|
 |Type (media\_type)| [文字列]|

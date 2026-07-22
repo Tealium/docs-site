@@ -11,7 +11,7 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/click-event/
 
 The click event tracks visitors for a full click-and-release, mousedown, or mouseup event on a specified element. When a visitor performs the action, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -25,11 +25,11 @@ The click event can track the following event triggers:
 
 ### Element selector
 
-The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector]().
+The element selector specifies which element on a page you want to trigger the event listener. For more information, see [Event element selector](https://docs.tealium.com/event-element-selector/).
 
 ### Trigger frequency
 
-The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers]().
+The trigger frequency determines how many times the event trigger will result in a tracking call. For more information, see [Event triggers](https://docs.tealium.com/event-triggers/).
 
 ## Event trigger variables
 
@@ -39,15 +39,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;click&#34;`| The visitor clicked and released the specified element.|
+|`tealium_event="click"`| The visitor clicked and released the specified element.|
 |`iq_event_id` | The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;click&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_1&#34;
+   "tealium_event"  : "click",
+   "iq_event_id:"   : "click_events_1"
 }
 
 ```
@@ -56,15 +56,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;mousedown&#34;`| The visitor clicked the specified element.|
+|`tealium_event="mousedown"`| The visitor clicked the specified element.|
 |`iq_event_id`| The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mousedown&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_2&#34;
+   "tealium_event"  : "mousedown",
+   "iq_event_id:"   : "click_events_2"
 }
 
 ```
@@ -73,15 +73,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;mouseup&#34;`| The visitor released a click from the specified element.|
+|`tealium_event="mouseup"`| The visitor released a click from the specified element.|
 |`iq_event_id`| The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mouseup&#34;,
-   &#34;iq_event_id:&#34;   : &#34;click_events_3&#34;
+   "tealium_event"  : "mouseup",
+   "iq_event_id:"   : "click_events_3"
 }
 
 ```

@@ -23,7 +23,7 @@ This reduces overhead in the following ways:
 
 CloudStream connects directly to your data cloud, letting you activate customer data without moving or storing it in Tealium.
 
-![](/images/early-access/cloudstream/cloudstream_workflow.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_workflow.png)
 
 In a dedicated server-side profile, you define a data source to connect to a table or view in your data cloud, then map its columns to cloud attributes. You can add enrichments to further process the data in attributes, or enrich additional cloud attributes with averages or other calculations. Using these attributes, you build segments — groups of users or entities that meet specific criteria. Finally, you activate these segments by sending them to your chosen destinations through connectors.
 
@@ -33,11 +33,15 @@ CloudStream uses a dedicated CloudStream profile, keeping your workflow organize
 
 CloudStream uses its own dedicated server-side profile, separate from other platform profiles. This separation lets you manage attributes, segments, rules, and connectors for large datasets and complex segments without impacting your AudienceStream or EventStream workflows.
 
- To create a dedicated CloudStream profile, contact Tealium Support.
+
+<blockquote>
+To create a dedicated CloudStream profile, contact Tealium Support.
+</blockquote>
+
 
 ### Data supply chain dashboard
 
-![](/images/early-access/cloudstream/cloudstream_profile_dashboard.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_profile_dashboard.png)
 
 The CloudStream data supply chain dashboard lists the following information:
 
@@ -54,9 +58,13 @@ Tables list the cloud data sources, segments, and destinations (connectors and f
 
 Data sources are defined connections to your data cloud, such as Snowflake or Databricks. CloudStream connects to these data sources to retrieve and activate segments without storing the data in Tealium. This lets you work with large datasets directly from the cloud, leveraging the power of your existing data infrastructure.
 
-![](/images/early-access/cloudstream/cloudstream_datasource_summary.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_datasource_summary.png)
 
- You can connect to up to 10 data sources in a profile. 
+
+<blockquote>
+You can connect to up to 10 data sources in a profile.
+</blockquote>
+
 
 CloudStream data sources are designed to work directly with data stored in a data cloud. Data remains in the data cloud and is only temporarily imported for activation through connectors, without being stored in Tealium.
 
@@ -65,34 +73,42 @@ Tealium data sources support two configurations to process data: basic and advan
 * Basic: Your data is imported using the default schema you specify in the data source configuration. You can process data from only one table or view.
 * Advanced: You can select one or more tables to join using an advanced SQL editor. The tables can be from multiple schemas. 
 
- CloudStream only supports cloud data sources. 
+
+<blockquote>
+CloudStream only supports cloud data sources.
+</blockquote>
+
 
 For more information about cloud data sources, refer to the following articles:
 
-*   
+* [about-cloud-data-sources](https://docs.tealium.com/about-cloud-data-sources/)  
 General information about data source features, such as supported data types, limits, SQL queries, query modes, processing information, and data mapping.
-*    
+* [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/)   
 Information about creating a data source connection, configuration, and mapping as well as instructions on how to test your configuration.
 
 ### Cloud attributes
 
 Cloud attributes are defined when you create a data source in CloudStream. As you connect to a table in your data cloud, CloudStream analyzes the table’s columns, determines their data types, and generates corresponding cloud attributes. You can review and adjust these attribute mappings during the data source setup process to ensure they align with your activation needs.
 
-![](/images/early-access/cloudstream/cloud_attributes.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloud_attributes.png)
 
-Cloud attributes are identical to event attributes in structure and behavior, except that they cannot be marked as [restricted data]() and CloudStream does not contain [preloaded attributes]().
+Cloud attributes are identical to event attributes in structure and behavior, except that they cannot be marked as [restricted data](https://docs.tealium.com/about-restricted-data/) and CloudStream does not contain [preloaded attributes](https://docs.tealium.com/preloaded-attributes/).
 
- If you need more than 500 attributes in a profile, contact your Customer Success Manager. 
 
-For more information, see .
+<blockquote>
+If you need more than 500 attributes in a profile, [contact support](https://docs.tealium.com/support/).
+</blockquote>
+
+
+For more information, see [manage-cloudstream-attributes](https://docs.tealium.com/manage-cloudstream-attributes/).
 
 ### Segments
 
 Segments are groups of users or entities that meet a set of conditions based on the cloud attributes defined in your data source. Segments in CloudStream are not persisted in the system and are only dynamically evaluated in real time while data is imported from your data cloud and activated through connectors.
 
-![](/images/early-access/cloudstream/cloudstream_segment_details.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_details.png)
 
-For more information, see .
+For more information, see [manage-cloudstream-segments](https://docs.tealium.com/manage-cloudstream-segments/).
 
 #### Segments with multiple data sources
 
@@ -100,17 +116,21 @@ You cannot directly join multiple data sources within CloudStream. However, you 
 
 For example, suppose you want to create a single segment to find high potential prospects for buying a car from a prospects table and from a table of people who have taken a test drive. First, create a segment that includes each of these data sources. Then, set a filter for the prospects, use an OR condition, and set another filter for the test drive participants.
 
-![](/images/early-access/cloudstream/cloudstream_combined_segment_details.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_combined_segment_details.png)
 
 ### Activations
 
-Activations are the process of delivering segments to your marketing, analytics, and advertising platforms. You can set activations through connector actions or functions. For more information, see  and .
+Activations are the process of delivering segments to your marketing, analytics, and advertising platforms. You can set activations through connector actions or functions. For more information, see [add-connector](https://docs.tealium.com/add-connector/) and [about-data-record-functions](https://docs.tealium.com/about-data-record-functions/).
 
-![](/images/early-access/cloudstream/cloudstream_segment_path.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_segment_path.png)
 
 You can output a segment to multiple connector actions or functions. However, each configured activation can only use data from the selected data source. If you want to activate data from additional data sources through an activation, configure a separate action or function for each data source.
 
- To enable CloudStream connectors and functions, go to **Admin menu** &gt; **Server-Side Settings** &gt; **CloudStream Connectors**, set **Activate CloudStream Connectors** to `On`, and click **Save**.  
+
+<blockquote>
+To enable CloudStream connectors and functions, go to **Admin menu** > **Server-Side Settings** > **CloudStream Connectors**, set **Activate CloudStream Connectors** to `On`, and click **Save**.
+</blockquote>
+
 
 ## Comparison
 

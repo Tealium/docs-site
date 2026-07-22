@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/te
 
 If you are testing a web page with Trace, you need the following:
 
-* [Tealium Tools browser extension]()
+* [Tealium Tools browser extension](https://docs.tealium.com/tealium-tools-browser-extension/)
 
 ## Start a trace
 
@@ -21,12 +21,12 @@ Follow these steps to perform a test with Trace:
       * Open a new browser window to your test page.
       * Click the Tealium Tools browser extension and click **AudienceStream Trace**. 
       * Enter the trace ID from step 2 and click **Start Trace**.   
-      ![](/images/server-side/es-getting-started-trace-tealium-tool.jpg)
+      ![](https://docs.tealium.com/images/server-side/es-getting-started-trace-tealium-tool.jpg)
     * **Data layer attribute**
       * Add `tealium_trace_id` to the data layer of your code installation and set it to the value of the trace ID.
-      * In the HTTP API, this means adding a query string parameter: `&amp;tealium_trace_id=012345`
+      * In the HTTP API, this means adding a query string parameter: `&tealium_trace_id=012345`
       * In a Swift app, for example, it will look like this:  
-      `tealium?.volatileData()?.add(data: [&#34;tealium_trace_id&#34;: &#34;012345&#34;])`
+      `tealium?.volatileData()?.add(data: ["tealium_trace_id": "012345"])`
 
 1. Proceed with your test case work flow. This might require refreshing the page, navigating through some pages, making a purchase, or viewing some screens in a native app.
 1. Return to the **Trace** interface to inspect the log details.
@@ -37,17 +37,17 @@ The Trace log updates automatically as it processes the traced event. It display
 
 The Trace image below reflects the validation of the previously configured components using the **Search with No Results** example.
 
-![](/images/server-side/getting-started-eventstream-trace.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-trace.png)
 
 In this case:
 
-![](/images/server-side/beast-thumbsup-whistle-small.png)
+![](https://docs.tealium.com/images/server-side/beast-thumbsup-whistle-small.png)
 
 * ✓ The event spec for `search` is valid.
 * ✓ The event feed matched.
 * ✓ The Google Sheets connector triggered.
 
-If you didn&#39;t see the expected trace log, check the following items:
+If you didn't see the expected trace log, check the following items:
 
 * Did you use the correct trace ID in your test?
 * Did you save and publish your account after adding the event spec, event feed, and connector action?
@@ -55,4 +55,4 @@ If you didn&#39;t see the expected trace log, check the following items:
 * Does the value of `tealium_event` match the name of the spec?
 * Does your test event match the conditions of the event feed?
 
-You&#39;ve made it to the end of this simple getting started guide. The next step will quickly cover the save and publish process, followed by some helpful links for additional reading.
+You've made it to the end of this simple getting started guide. The next step will quickly cover the save and publish process, followed by some helpful links for additional reading.

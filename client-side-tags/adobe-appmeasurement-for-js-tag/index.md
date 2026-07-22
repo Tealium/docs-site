@@ -14,7 +14,7 @@ url: https://docs.tealium.com/client-side-tags/adobe-appmeasurement-for-js-tag/
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 After adding the tag, configure the following settings:
 
@@ -23,7 +23,7 @@ After adding the tag, configure the following settings:
 * **Device Type**
   * Select one of the following based on the platform of your implementation:
     * **Standard** for desktop website installations.
-    * **Mobile App** for native mobile installations with [Tealium for iOS](/platforms/ios-swift/) or [Tealium for Android](/platforms/android-kotlin/).
+    * **Mobile App** for native mobile installations with [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/) or [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/).
 * **Report Suite**
   * (Required) Set a default value even when using mapping to dynamically set report suite.
   * The default report suite to use. which may change based on the value set in the Dynamic Acct List.
@@ -41,7 +41,7 @@ After adding the tag, configure the following settings:
   * Must be set to **No** if your event trigger value contains the colon character (`:`).
 * **Auto Link Tracking**
   * Default value is **Yes** and is the recommended selection.
-  * If set to **No**, must replicate the automatic link tracking using other methods, such as the [Link Tracking Extension]().
+  * If set to **No**, must replicate the automatic link tracking using other methods, such as the [Link Tracking Extension](https://docs.tealium.com/link-tracking-extension/).
 * **Internal Link Filters**
   * A comma-separated list of your domains ,classified as internal, that is used to ensure that link clicks are not reported as exit clicks to Adobe report.
   * Reference AppMeasurement.js: `s.linkInternalFilters`
@@ -78,13 +78,13 @@ After adding the tag, configure the following settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: **All Pages**.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/about-the-data-layer/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -92,20 +92,20 @@ The available categories are:
 
 | Variable | Description|
 |:---------|:------------|
-| `adobe_org_id` | &lt;ul&gt;&lt;li&gt;Experience Cloud ID&lt;/li&gt;&lt;/ul&gt;|
-| `pageName` | &lt;ul&gt;&lt;li&gt;Page name&lt;/li&gt;&lt;li&gt;This is not the page&#39;s URL or path name.&lt;/li&gt;&lt;li&gt;Should instead be something business users recognize, such as `Home Page` or `Checkout`.&lt;/li&gt;&lt;/ul&gt;|
-| `channel` | &lt;ul&gt;&lt;li&gt;Sections of your site&lt;/li&gt;&lt;/ul&gt;|
-| `server` | &lt;ul&gt;&lt;li&gt;Domain of a web page or the server that hosts the page to this destination.&lt;/li&gt;&lt;/ul&gt;|
-| `visitorID` | &lt;ul&gt;&lt;li&gt;Unique visitor ID.&lt;/li&gt;&lt;li&gt;Up to 100 alphanumeric characters long.&lt;/li&gt;&lt;li&gt;Cannot contain a hyphen.&lt;/li&gt;&lt;/ul&gt;|
-| `s_account` | &lt;ul&gt;&lt;li&gt;Report Suite Override.&lt;/li&gt;&lt;li&gt;Mapping to this destination overrides the report suite set in the Tag configuration.&lt;/li&gt;&lt;/ul&gt;|
-| `linkTrackVars` | &lt;ul&gt;&lt;li&gt;Link Variable Override&lt;/li&gt;&lt;/ul&gt;|
-| `linkTrackEvents` | &lt;ul&gt;&lt;li&gt;Link Event Override&lt;/li&gt;&lt;/ul&gt;|
-| Combine Link Variables | &lt;ul&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt;|
-| `charSet` | &lt;ul&gt;&lt;li&gt;Character set&lt;/li&gt;&lt;/ul&gt; |
-| `collectHighEntropyUserAgentHits`  | &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Collect High Entropy User Agent Hints&lt;/li&gt;&lt;/ul&gt; |
-| `contextData.myvar` | &lt;ul&gt;&lt;li&gt;Custom Context Data.&lt;/li&gt;&lt;li&gt;Context variables in general:  &lt;ul&gt;&lt;li&gt;Are unlimited in the number of context variables you may define.&lt;/li&gt;&lt;li&gt;Have no character limits on what you can place in a context variable.&lt;/li&gt;&lt;li&gt;Can contain any name you prefer.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;Context data lets you define the name of the variable that you assign a particular value to.&lt;/li&gt;&lt;li&gt;Provides additional detail to what SiteCatalyst traditionally passes.&lt;/li&gt;&lt;li&gt;Simplifies the ability to standardize your implementation if you need to, for example, combine data from different sites.&lt;/li&gt;&lt;li&gt;Your data organization is at your discretion, mapping through Tealium lets you define the context data variables.&lt;/li&gt;&lt;/ul&gt; |
-| `contextData.namespace.myvar` | &lt;ul&gt;&lt;li&gt;Custom Context Data With Custom Namespace.&lt;/li&gt;&lt;li&gt;Use the namespace prefix to avoid conflicts in variable names.&lt;/li&gt;&lt;li&gt;The namespace `a` is reserved for mobile implementation.&lt;/li&gt;&lt;/ul&gt; |
-| `clearVars_in_RPTCallback` | &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt; Requires **Run clearVars** to be set to **Yes**.&lt;/li&gt;&lt;li&gt;If `clearVars_in_RPTCallback`  is set to `true`, the `clearVars` action occurs in the `registerPostTrack` (RPT) callback. If set to `false`, the `clearVars` action will occur outside the RPT callback.&lt;/li&gt;&lt;li&gt;The default is `false`.&lt;/li&gt;&lt;/ul&gt; |
+| `adobe_org_id` | <ul><li>Experience Cloud ID</li></ul>|
+| `pageName` | <ul><li>Page name</li><li>This is not the page's URL or path name.</li><li>Should instead be something business users recognize, such as `Home Page` or `Checkout`.</li></ul>|
+| `channel` | <ul><li>Sections of your site</li></ul>|
+| `server` | <ul><li>Domain of a web page or the server that hosts the page to this destination.</li></ul>|
+| `visitorID` | <ul><li>Unique visitor ID.</li><li>Up to 100 alphanumeric characters long.</li><li>Cannot contain a hyphen.</li></ul>|
+| `s_account` | <ul><li>Report Suite Override.</li><li>Mapping to this destination overrides the report suite set in the Tag configuration.</li></ul>|
+| `linkTrackVars` | <ul><li>Link Variable Override</li></ul>|
+| `linkTrackEvents` | <ul><li>Link Event Override</li></ul>|
+| Combine Link Variables | <ul><li>Values are `true` or `false`.</li></ul>|
+| `charSet` | <ul><li>Character set</li></ul> |
+| `collectHighEntropyUserAgentHits`  | <ul><li>Boolean</li><li>Collect High Entropy User Agent Hints</li></ul> |
+| `contextData.myvar` | <ul><li>Custom Context Data.</li><li>Context variables in general:  <ul><li>Are unlimited in the number of context variables you may define.</li><li>Have no character limits on what you can place in a context variable.</li><li>Can contain any name you prefer.</li></ul> </li><li>Context data lets you define the name of the variable that you assign a particular value to.</li><li>Provides additional detail to what SiteCatalyst traditionally passes.</li><li>Simplifies the ability to standardize your implementation if you need to, for example, combine data from different sites.</li><li>Your data organization is at your discretion, mapping through Tealium lets you define the context data variables.</li></ul> |
+| `contextData.namespace.myvar` | <ul><li>Custom Context Data With Custom Namespace.</li><li>Use the namespace prefix to avoid conflicts in variable names.</li><li>The namespace `a` is reserved for mobile implementation.</li></ul> |
+| `clearVars_in_RPTCallback` | <ul><li>Boolean</li><li> Requires **Run clearVars** to be set to **Yes**.</li><li>If `clearVars_in_RPTCallback`  is set to `true`, the `clearVars` action occurs in the `registerPostTrack` (RPT) callback. If set to `false`, the `clearVars` action will occur outside the RPT callback.</li><li>The default is `false`.</li></ul> |
 
 ### Events
 
@@ -118,12 +118,12 @@ Use the following steps to map an event:
 1. In the **Value** field, enter the value of the variable being mapped.  
 This variable becomes the trigger string.
 1. From the **Trigger** drop-down list, select the event you want to trigger.  
-You can click the plus icon (**&#43;**) to add additional value/trigger combinations.
+You can click the plus icon (**+**) to add additional value/trigger combinations.
 
 | Destination Name | Description |
 |:-----------------|:-------------|
-| Value | &lt;ul&gt;&lt;li&gt;The value of the mapped Variable that triggers the assigned event.&lt;/li&gt;&lt;/ul&gt; |
-| Trigger | &lt;ul&gt;&lt;li&gt;The event to trigger.&lt;/li&gt;&lt;li&gt;Select:  &lt;ul&gt;&lt;li&gt;**prodView** for product views.&lt;/li&gt;&lt;li&gt;**scOpen** for opening/initializing a new shopping cart.&lt;/li&gt;&lt;li&gt;**scAdd** for adding an item to the shopping cart.&lt;/li&gt;&lt;li&gt;**scRemove** for removing an item from the shopping cart.&lt;/li&gt;&lt;li&gt;**scView** for viewing a shopping cart.&lt;/li&gt;&lt;li&gt;**scCheckout** for beginning a checkout.&lt;/li&gt;&lt;li&gt;**purchase** for completing an order.&lt;/li&gt;&lt;li&gt;**event1** through **event1000** to set a custom event. &lt;br&gt;**Note: Events 101-1000 are available only to library versions 1.4 and up.** &lt;ul&gt;&lt;li&gt;SiteCatalyst lets you use 100 custom events, also referred to as success events.&lt;/li&gt;&lt;li&gt;These events typically count specific things that happen on a site and do not normally contain a value, such as logins and form views.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
+| Value | <ul><li>The value of the mapped Variable that triggers the assigned event.</li></ul> |
+| Trigger | <ul><li>The event to trigger.</li><li>Select:  <ul><li>**prodView** for product views.</li><li>**scOpen** for opening/initializing a new shopping cart.</li><li>**scAdd** for adding an item to the shopping cart.</li><li>**scRemove** for removing an item from the shopping cart.</li><li>**scView** for viewing a shopping cart.</li><li>**scCheckout** for beginning a checkout.</li><li>**purchase** for completing an order.</li><li>**event1** through **event1000** to set a custom event. <br>**Note: Events 101-1000 are available only to library versions 1.4 and up.** <ul><li>SiteCatalyst lets you use 100 custom events, also referred to as success events.</li><li>These events typically count specific things that happen on a site and do not normally contain a value, such as logins and form views.</li></ul> </li></ul> </li></ul> |
 
 #### Product-Level Events
 
@@ -147,7 +147,7 @@ SiteCatalyst lets you use custom props, also called traffic variables.
 
 | Destination Name | Description |
 |:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `PRODUCTS_event1` through `PRODUCTS_event100` | &lt;ul&gt;&lt;li&gt;The product event to assign.&lt;/li&gt;&lt;li&gt;Props above 75 are not built-into the mapping toolbox.&lt;/li&gt;&lt;/ul&gt; |
+| `PRODUCTS_event1` through `PRODUCTS_event100` | <ul><li>The product event to assign.</li><li>Props above 75 are not built-into the mapping toolbox.</li></ul> |
 
 SiteCatalyst lets you use 75 custom props, also called traffic variables. Props contain data that is not meant to persist beyond a page view. If you want to correlate a prop with another variable, ensure both variables get set on the same page. Use events to hold certain numeric values when passed in the product string or being serialized.
 
@@ -161,8 +161,8 @@ Use the following steps to map custom destinations:
 
 | Destination Name | Description |
 |:-------------------------------|:-------------|
-| `eVar0` | &lt;ul&gt;&lt;li&gt;Campaign.&lt;/li&gt;&lt;li&gt;For campaign/promotion tracking&lt;/li&gt;&lt;/ul&gt; |
-| `eVar1` through &lt;br&gt; `eVar250` | &lt;ul&gt;&lt;li&gt;SiteCatalyst lets you use 250 eVars, also called conversion variables.&lt;/li&gt;&lt;li&gt;`evar76` through `evar250` are available only to library versions 1.4 and up.&lt;/li&gt;&lt;li&gt;eVars contain data that is meant to persist beyond a single page view and can be used to correlate data from an eVar to another variable, depending on how you set up your reports within Omniture.&lt;/li&gt;&lt;li&gt;eVars typically include internal search terms, A/B testing, campaign/promotion tracking, merchandising categories, and user types.&lt;/li&gt;&lt;/ul&gt; |
+| `eVar0` | <ul><li>Campaign.</li><li>For campaign/promotion tracking</li></ul> |
+| `eVar1` through <br> `eVar250` | <ul><li>SiteCatalyst lets you use 250 eVars, also called conversion variables.</li><li>`evar76` through `evar250` are available only to library versions 1.4 and up.</li><li>eVars contain data that is meant to persist beyond a single page view and can be used to correlate data from an eVar to another variable, depending on how you set up your reports within Omniture.</li><li>eVars typically include internal search terms, A/B testing, campaign/promotion tracking, merchandising categories, and user types.</li></ul> |
 
 #### Merchandising eVars
 
@@ -170,23 +170,23 @@ Merchandising eVars allow you to associate a product with some value in addition
 
 | Destination Name | Description |
 |:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `eVar0` | &lt;ul&gt;&lt;li&gt;Campaign.&lt;/li&gt;&lt;li&gt;For campaign/promotion tracking&lt;/li&gt;&lt;/ul&gt; |
-| `PRODUCTS_eVar1` through `PRODUCTS_eVar75` | &lt;ul&gt;&lt;li&gt;SiteCatalyst lets you use 250 eVar parameters, also called conversion variables.&lt;/li&gt;&lt;li&gt;eVars contain data that is meant to persist beyond a single page view and can be used to correlate data from an eVar to another variable depending on how you set up your reports within Omniture.&lt;/li&gt;&lt;/ul&gt; eVars usually include internal search terms, A/B testing, campaign/promotion tracking, merchandising categories, and user types. |
+| `eVar0` | <ul><li>Campaign.</li><li>For campaign/promotion tracking</li></ul> |
+| `PRODUCTS_eVar1` through `PRODUCTS_eVar75` | <ul><li>SiteCatalyst lets you use 250 eVar parameters, also called conversion variables.</li><li>eVars contain data that is meant to persist beyond a single page view and can be used to correlate data from an eVar to another variable depending on how you set up your reports within Omniture.</li></ul> eVars usually include internal search terms, A/B testing, campaign/promotion tracking, merchandising categories, and user types. |
 
 #### Commerce
 
-Since the AppMeasurement tag is e-commerce enabled, it automatically uses the default [E-Commerce Extension]() mappings. Manually mapping in this category is generally not needed unless you want to override any extension mappings or a specific e-commerce variable is not offered in the extension.
+Since the AppMeasurement tag is e-commerce enabled, it automatically uses the default [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) mappings. Manually mapping in this category is generally not needed unless you want to override any extension mappings or a specific e-commerce variable is not offered in the extension.
 
 Several SiteCatalyst variables, including the Product String, are automatically populated by the E-Commerce extension. SiteCatalyst uses the Product String to capture product information, revenue, units sold, and other pieces of information around purchases. A standard Product string looks like this:
 
-![](/images/client-side-tags/product-string.png)
+![](https://docs.tealium.com/images/client-side-tags/product-string.png)
 
 ##### Best practices for the product string:
 
 * The semicolon `;` is a standard separator for most items in the Products string.
 * Delimit multiple Merchandising eVars with a pipe (`|`) character.
 * Delimit multiple product instances with a comma (`,`).
-* The total price is the price per unit multiplied by the quantity. The E-Commerce extension&#39;s total price (`_ctotal`) output does not automatically map to the Products string.
+* The total price is the price per unit multiplied by the quantity. The E-Commerce extension's total price (`_ctotal`) output does not automatically map to the Products string.
 * A SiteCatalyst best practice is to leave the Category empty because you cannot change the category for a product once it is set in SiteCatalyst. Tealium does; however, allow you to set the category at the time of the conversion if changing the category later is not a concern.
 
 #### E-Commerce Destinations
@@ -195,14 +195,14 @@ The following e-commerce destinations are built into the toolbox:
 
 | Destination Name | Description | Ecommerce Extension Variable |
 |:---------------------------|:--------------------------------------------------------------------|:-----------------------------|
-| purchaseID | &lt;ul&gt;&lt;li&gt;Unique order identifier to this destination.&lt;/li&gt;&lt;/ul&gt; | `_corder` |
-| transactionID | &lt;ul&gt;&lt;li&gt;Correlates offline data to an online transaction.&lt;/li&gt;&lt;/ul&gt; | N/A |
-| state | &lt;ul&gt;&lt;li&gt;Name of the state specified in the conversion&lt;/li&gt;&lt;/ul&gt; | N/A |
-| zip | &lt;ul&gt;&lt;li&gt;Zip code specified in the conversion&lt;/li&gt;&lt;/ul&gt; | N/A |
-| Product IDs (array) | &lt;ul&gt;&lt;li&gt;Unique ID of each product in the product array&lt;/li&gt;&lt;/ul&gt; | `_cprod` |
-| Product Categories (array) | &lt;ul&gt;&lt;li&gt;Name of each category in the product array&lt;/li&gt;&lt;/ul&gt; | `_ccat` |
-| Product Quantities (array) | &lt;ul&gt;&lt;li&gt;Quantity of each product in the product array&lt;/li&gt;&lt;/ul&gt; | `_cquan` |
-| Product Prices (array) | &lt;ul&gt;&lt;li&gt;Unit price of each product in the product array&lt;/li&gt;&lt;/ul&gt; | `_cprice` |
+| purchaseID | <ul><li>Unique order identifier to this destination.</li></ul> | `_corder` |
+| transactionID | <ul><li>Correlates offline data to an online transaction.</li></ul> | N/A |
+| state | <ul><li>Name of the state specified in the conversion</li></ul> | N/A |
+| zip | <ul><li>Zip code specified in the conversion</li></ul> | N/A |
+| Product IDs (array) | <ul><li>Unique ID of each product in the product array</li></ul> | `_cprod` |
+| Product Categories (array) | <ul><li>Name of each category in the product array</li></ul> | `_ccat` |
+| Product Quantities (array) | <ul><li>Quantity of each product in the product array</li></ul> | `_cquan` |
+| Product Prices (array) | <ul><li>Unit price of each product in the product array</li></ul> | `_cprice` |
 
 #### Other
 
@@ -238,10 +238,10 @@ The following e-commerce destinations are built into the toolbox:
 | Launches Since Ugrade | (`contextData.a.LaunchesSinceUpgrade`) |
 | Daily Engaged Users | (`contextData.a.DailyEngUserEvent`) |
 | Monthly Engaged Users | (`contextData.a.MonthlyEngUserEvent`) |
-| `disable_wake_track` | &lt;ul&gt;&lt;li&gt;Disable Wake Tracking&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-| `disable_sleep_track` | &lt;ul&gt;&lt;li&gt;Disable Sleep Tracking&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-| `send_timestamp` | &lt;ul&gt;&lt;li&gt;Send Timestamp Toggle&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-| `timestamp` | &lt;ul&gt;&lt;li&gt;Timestamp&lt;/li&gt;&lt;li&gt;ISO 8601 format&lt;/li&gt;&lt;li&gt;Unix Time&lt;/li&gt;&lt;/ul&gt; |
+| `disable_wake_track` | <ul><li>Disable Wake Tracking</li><li>Values are `true` or `false`.</li></ul> |
+| `disable_sleep_track` | <ul><li>Disable Sleep Tracking</li><li>Values are `true` or `false`.</li></ul> |
+| `send_timestamp` | <ul><li>Send Timestamp Toggle</li><li>Values are `true` or `false`.</li></ul> |
+| `timestamp` | <ul><li>Timestamp</li><li>ISO 8601 format</li><li>Unix Time</li></ul> |
 
 #### Link Tracking
 
@@ -259,11 +259,19 @@ When event serialization detection is turned on (default setting), the tag detec
 * **Event serialization detection: Off**  
 When event serialization detection is turned off, the tag does not detect colons. The tag attempts to match both trigger values in their entirety. This setting is highly recommended if your mapped trigger string contains a colon. Turning off event serialization detection is the only way to have an event correctly trigger on a value with a colon.
 
+
+<blockquote>
 Whether event serialization detection is on or off, serials mapped directly with the **Event Serialization** tab always take precedence (see [scenario 3 example](#scenario3)).
+</blockquote>
+
 
 This following scenarios help you understand how event serialization detection interprets a trigger value with and without a colon.
 
-Throughout this section, the term &#34;mapped trigger&#34; refers to the value in the tag&#39;s data mapping configuration and the term &#34;data layer trigger&#34; refers to the value found in the data layer of your website.
+
+<blockquote>
+Throughout this section, the term "mapped trigger" refers to the value in the tag's data mapping configuration and the term "data layer trigger" refers to the value found in the data layer of your website.
+</blockquote>
+
 
 #### Example: Mapped trigger without a colon
 
@@ -272,7 +280,7 @@ As an example, if you want to trigger a `prodView` event and serialize it when t
 1. Map the UDO variable `serial` to `SERIAL_prodView` in the Event Serialization tab.
 1. Map the UDO variable `trigger` to `prodView` under Events.
 1. Map `fireEvt` as the trigger string for `prodView`.  
-![](/images/client-side-tags/trigger-without-colon.jpeg)
+![](https://docs.tealium.com/images/client-side-tags/trigger-without-colon.jpeg)
 
 There are many scenarios that could occur in your data layer.
 
@@ -280,8 +288,8 @@ There are many scenarios that could occur in your data layer.
 
 ```js
 var utag_data = {
-  trigger: &#34;fireEvt&#34;,
-  serial: &#34;&#34;
+  trigger: "fireEvt",
+  serial: ""
 }
 
 ```
@@ -293,20 +301,20 @@ Same result as above.
 
 A successful network call looks like this:
 
-![](/images/client-side-tags/scene-1-network-call-.png)
+![](https://docs.tealium.com/images/client-side-tags/scene-1-network-call-.png)
 
 #### Scenario 2: Data layer trigger is `fireEvt:123` and the `serial` value is empty
 
 ```
 var utag_data = {
-  trigger: &#34;fireEvt:123&#34;,
-  serial: &#34;&#34;
+  trigger: "fireEvt:123",
+  serial: ""
 }
 ```
 
 * **Event serialization detection: On**  
 The tag serializes `123` then matches `fireEvt` with the mapped trigger and successfully fires `prodView` on the page.  
-![](/images/client-side-tags/scene-2-network-call.png)
+![](https://docs.tealium.com/images/client-side-tags/scene-2-network-call.png)
 
 * **Event serialization detection: Off**  
 The tag fails to match `fireEvt:123` with your mapped trigger, as a result `prodView` does not fire on the page.
@@ -315,15 +323,15 @@ The tag fails to match `fireEvt:123` with your mapped trigger, as a result `prod
 
 ```
 var utag_data = {
-  trigger: &#34;fireEvt:123&#34;,
-  serial: &#34;456&#34;
+  trigger: "fireEvt:123",
+  serial: "456"
 }
 ```
 
 * **Event serialization detection: On**  
 Initially, the tag serializes `123` and matches `fireEvt` with your mapped trigger. Then `prodView` fires successfully and is serialized with `456` instead of `123`.  
 This happens because serial values detected by event serialization mapping (`456`) take precedence over those detected by event serialization detection (`123`).  
-![](/images/client-side-tags/scene-3-network-call.png)
+![](https://docs.tealium.com/images/client-side-tags/scene-3-network-call.png)
 * **Event serialization detection: Off**  
 The tag fails to match `fireEvt:123` with your mapped trigger. As a result, `prodView` does not fire on the page.
 
@@ -331,14 +339,14 @@ The tag fails to match `fireEvt:123` with your mapped trigger. As a result, `pro
 
 This example follows the same path as scenario 2, but the mapped trigger is `fireEvt:123` instead of `fireEvt`.
 
-![](/images/client-side-tags/trigger-with-colon.png)
+![](https://docs.tealium.com/images/client-side-tags/trigger-with-colon.png)
 
 #### Scenario: Data layer trigger is `fireEvt:123`
 
 ```js
 var utag_data = {
-  trigger: &#34;fireEvt:123&#34;,
-  serial: &#34;&#34;
+  trigger: "fireEvt:123",
+  serial: ""
 }
 ```
 
@@ -355,18 +363,18 @@ Tealium offers a function called `u.addEvent()` to assist in setting the `s.even
 
 Use the following steps to customize `s.events` using `u.addEvent`:
 
-1. Add a [Set Data Values]() extension.
+1. Add a [Set Data Values](https://docs.tealium.com/set-data-values-extension/) extension.
 1. Set the **Scope** to the Adobe Analytics tag.
 1. From the **Set** menu, select **sc_events**.
 1. From the **To** menu select **JS Code**.
-1. In the text field, enter: `u.addEvent(&#34;CUSTOM_EVENT&#34;)`  
+1. In the text field, enter: `u.addEvent("CUSTOM_EVENT")`  
 Where `CUSTOM_EVENT` is the event you want to append to the `s.events `string, such as `event10`.
 1. To add multiple events in one step, pass an array to `u.addEvent`, as follows:  
-`u.addEvent([&#34;event1&#34;,&#34;event2&#34;,&#34;scView&#34;]);`
+`u.addEvent(["event1","event2","scView"]);`
 
-To add values directly in the string(s) passed to the function: `u.addEvent([&#39;event500=500&#39;, &#39;event501=&#39; &#43; b.demo_event_value]);`
+To add values directly in the string(s) passed to the function: `u.addEvent(['event500=500', 'event501=' + b.demo_event_value]);`
 
-To add serializations directly in the string(s) passed to the function: `u.addEvent(&#34;event78:&#34; &#43; b.booking_reference);`
+To add serializations directly in the string(s) passed to the function: `u.addEvent("event78:" + b.booking_reference);`
 
 ## Supported Versions
 
@@ -436,7 +444,11 @@ The following code versions of AppMeasurement for JavaScript are supported:
 
 ##### v2.9.0 Released May 24, 2018
 
+
+<blockquote>
 Visitor API 3.0 or higher is required for customers using the Experience Cloud ID Service. Adobe recommends upgrading to the latest Visitor API version when associated code libraries are updated, such as at.js, AppMeasurement.js, etc.
+</blockquote>
+
 
 * Updated AppMeasurement to use the updated Visitor interface for requesting IDs. (AN-151483)
 * Corrected issue where link tracking cookie is being written after link tracking is turned off. (AN-156332)
@@ -487,16 +499,20 @@ Visitor API 3.0 or higher is required for customers using the Experience Cloud I
 
 * Fixed an issue where AppMeasurement prematurely terminated request connections.
 * Fixed an issue causing AppMeasurement to call the wrong obfuscated method in the Visitor API.
-* Fixed an issue causing the JavaScript error: &#34;Attribute only valid on v:image&#34;.
+* Fixed an issue causing the JavaScript error: "Attribute only valid on v:image".
 * Separated the Marketing Cloud ID support (aka Visitor API) into a new Tag called the Marketing Cloud ID Service Tag.
 
-The Marketing Cloud ID Service Tag has to load before all other Adobe Tags (including AppMeasurement) in your profile. Without that, you&#39;ll lose visitor tracking integrity. To load the tag first, enable the [bundle setting]() on All Pages and load it before other Adobe tags.
+
+<blockquote>
+The Marketing Cloud ID Service Tag has to load before all other Adobe Tags (including AppMeasurement) in your profile. Without that, you'll lose visitor tracking integrity. To load the tag first, enable the [bundle setting](https://docs.tealium.com/tag-advanced-settings/) on All Pages and load it before other Adobe tags.
+</blockquote>
+
 
 View [full Adobe AppMeasurement release notes](https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates).
 
 ##### v1.6.1 Released July 28, 2016
 
-The following updates affect AppMeasurement&#39;s Events, Value Events, and Event Serialization:
+The following updates affect AppMeasurement's Events, Value Events, and Event Serialization:
 
 * Added a new Event Serialization mapping tab in the Data Mapping toolbox.
 * Added a new drop-down list in the AppMeasurement Tag configuration for turning ON/OFF Event Serialization

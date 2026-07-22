@@ -8,11 +8,15 @@ Hosted data layer provides a convenient mechanism to upload your static data to 
 
 ## Data layer objects
 
-Hosted data layer utilizes micro data layer objects that are associated to a variable in your on-page data layer. The hosted data layer object is a text file that contains a JSON object in which the key-value pairs represent the micro data layer. This file is uploaded to Tealium using the [hosted data layer API](). The on-page data layer contains lookup variables, which are configured in the [hosted data layer extension](), that are used to determine which hosted data layer object to fetch from Tealium.
+Hosted data layer utilizes micro data layer objects that are associated to a variable in your on-page data layer. The hosted data layer object is a text file that contains a JSON object in which the key-value pairs represent the micro data layer. This file is uploaded to Tealium using the [hosted data layer API](https://docs.tealium.com/about-hosted-data-layer-api/). The on-page data layer contains lookup variables, which are configured in the [hosted data layer extension](https://docs.tealium.com/hosted-data-layer-extension/), that are used to determine which hosted data layer object to fetch from Tealium.
 
 The following sections provide a description of the two required components, the hosted data layer API and the hosted data layer extension.
 
+
+<blockquote>
 These objects can also be plain JSON files used for purposes other than data layer augmentation and would not require the use of the hosted data layer extension.
+</blockquote>
+
 
 ## Hosted data layer API
 
@@ -22,19 +26,23 @@ The following example shows the contents of a hosted data layer object:
 
 ```json
 {
-    &#34;product_category&#34;           : [&#34;Accessories&#34;],
-    &#34;product_brand&#34;              : [&#34;Acme&#34;],
-    &#34;product_sku&#34;                : [&#34;GEN-PRD-BLU&#34;],
-    &#34;product_has_free_shipping&#34;  : [&#34;0&#34;],
-    &#34;product_has_instore_pickup&#34; : [&#34;1&#34;]
+    "product_category"           : ["Accessories"],
+    "product_brand"              : ["Acme"],
+    "product_sku"                : ["GEN-PRD-BLU"],
+    "product_has_free_shipping"  : ["0"],
+    "product_has_instore_pickup" : ["1"]
 }
 ```
 
 As shown in the example, a hosted data layer object looks similar to the data layer object on your website. While the on-page data layer describes the page and customer interactions, the hosted data layer object provides additional attributes based on a specific variable on the page. Additional attributes for a specific product are provided in the example.
 
-The API can be used to store other types of information in JSON format besides data layer values.
 
-For detailed instructions, see [How to use the hosted data layer API]().
+<blockquote>
+The API can be used to store other types of information in JSON format besides data layer values.
+</blockquote>
+
+
+For detailed instructions, see [How to use the hosted data layer API](https://docs.tealium.com/about-hosted-data-layer-api/).
 
 ## Hosted data layer extension
 
@@ -50,7 +58,11 @@ For detailed instructions, see [How to set up the hosted data layer extension]()
 
 A lookup variable identifies which variable in the on-page data layer will be used to fetch the corresponding hosted data layer object for that page. The lookup variable is the shared link between the hosted data layer objects and the hosted data layer extension.
 
+
+<blockquote>
 You must identify your lookup variables first and then use the expected values of each variable to name your hosted data layer objects. For example, if your lookup variable is `item_id` and one of the values is `123`, the corresponding hosted data layer object will be named `123.js`.
+</blockquote>
+
 
 ## Order of operations
 
@@ -63,14 +75,18 @@ The following list summarizes the order of operations for the hosted data layer 
 * If a hosted data layer object is found, the data from that object is combined with the on-page data layer into a temporary object.
 * After all lookup variables are processed and a new data layer object is finalized, the extension triggers `utag.view()` with that new object.
 
-**Timing Issue**&lt;br&gt;
-Due to the delay introduced by the hosted data layer extension, extensions scoped to &#34;DOM Ready&#34; might run before some &#34;All Tags&#34; extensions.
+
+<blockquote>
+**Timing Issue**<br>
+Due to the delay introduced by the hosted data layer extension, extensions scoped to "DOM Ready" might run before some "All Tags" extensions.
+</blockquote>
+
 
 ## Summary diagram
 
 The following list and diagram summarizes how the hosted data layer extension processes data.
 
-![](/images/iq-tag-management/hosted-data-layer-diagram.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/hosted-data-layer-diagram.jpg)
 
 1. The hosted data layer API is used to upload JSON data files to Tealium.
 1. The hosted data layer extension is configured with identified lookup variables in Tealium iQ Tag Management.

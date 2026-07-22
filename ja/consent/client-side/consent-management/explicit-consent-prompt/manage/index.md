@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 
 明示的同意プロンプトの構成を始めるには、以下の手順に従ってください：
 
-1. 左サイドバーから **クライアントサイドツール &gt; 同意管理** へ移動します。
+1. 左サイドバーから **クライアントサイドツール > 同意管理** へ移動します。
 1. **明示的同意プロンプト** セクションで、**開始** をクリックして構成を開始します。  
 もし **明示的同意プロンプト** が既に構成されている場合は、この画面からオンまたはオフに切り替えることができます。
 
@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 
 **コンテンツ** 画面では、同意プロンプトに表示されるメッセージをカスタマイズし、翻訳されたコンテンツの言語を追加し、カスタムパラメータを定義し、作成したプロンプトのプレビューを表示します。
 
-![](/images/guides/iq/consent-manager-explicit-consent-prompt.png)
+![](https://docs.tealium.com/images/guides/iq/consent-manager-explicit-consent-prompt.png)
 
 #### コンテンツパラメータ
 
@@ -40,29 +40,33 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 パラメータを使用したサンプルHTMLコード：
 
 ``` html
-&lt;div class=&#34;example_body&#34;&gt;
-  &lt;div class=&#34;privacy_prompt&#34;&gt;
-    &lt;div class=&#34;privacy_prompt_content&#34;&gt;
-      &lt;h1&gt;{{title}}&lt;/h1&gt;
-      &lt;p&gt;{{message}}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;privacy_prompt_footer&#34;&gt;
-      &lt;div class=&#34;button right&#34;&gt;{{confirmation_button}}&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;close_btn_thick&#34;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="example_body">
+  <div class="privacy_prompt">
+    <div class="privacy_prompt_content">
+      <h1>{{title}}</h1>
+      <p>{{message}}</p>
+    </div>
+    <div class="privacy_prompt_footer">
+      <div class="button right">{{confirmation_button}}</div>
+    </div>
+    <div class="close_btn_thick"></div>
+  </div>
+</div>
 ```
 
 #### カスタムパラメータ
 
 カスタムパラメータを追加して、プロンプトをさらにカスタマイズすることができます。これらのパラメータは、標準パラメータ内やCSS/HTML/JavaScriptコード内で参照することができます。
 
+
+<blockquote>
 ベストプラクティス：HTMLやJavaScriptに直接翻訳可能なテキストを入れるのを避けてください。代わりに `{{parameters}}` を使用してコードを構築し、カスタムパラメータを使用して値を定義してください。
+</blockquote>
+
 
 カスタムパラメータを追加するには、以下の手順に従ってください：
 
-1. **カスタムパラメータ** セクションまでスクロールダウンし、**&#43; パラメータ追加** をクリックします。  
+1. **カスタムパラメータ** セクションまでスクロールダウンし、**+ パラメータ追加** をクリックします。  
 カスタムパラメータダイアログが表示されます。
 1. パラメータの名前を入力します。
 1. **適用** をクリックします。  
@@ -81,8 +85,8 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 
 言語を追加するには：
 
-1. **言語** サイドパネルで、**&#43; 追加** をクリックします。  
-    ![](/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
+1. **言語** サイドパネルで、**+ 追加** をクリックします。  
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
 
 1. 言語を選択し、**適用** をクリックします。  
 新しい言語がサイドパネルに表示されます。
@@ -94,29 +98,33 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 ユーザーの検出されたブラウザ言語が構成されていない場合に同意プロンプトを表示するために使用されるデフォルト言語を構成します：
 
 1. 言語タイトルバーにある **デフォルト言語に構成** ボックスをチェックします。  
-    ![](/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
 1. **プレビュー** をクリックして、言語構成を確認します。
 
 #### 言語を上書きする
 
-[Universal Tag settings override object](/ja/platforms/javascript/settings/) を使用して、データレイヤ変数で同意マネージャの言語構成を上書きすることができます。同意マネージャで使用する言語を格納するデータレイヤ変数の名前を指定します。
+[Universal Tag settings override object](https://docs.tealium.com/ja/platforms/javascript/settings/) を使用して、データレイヤ変数で同意マネージャの言語構成を上書きすることができます。同意マネージャで使用する言語を格納するデータレイヤ変数の名前を指定します。
 
 例えば、データレイヤに `site_language` という変数が含まれている場合：
 
 ```
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
-window.utag_cfg_ovrd.gdprDLRef = &#34;site_language&#34;;
+window.utag_cfg_ovrd.gdprDLRef = "site_language";
 ```
 
+
+<blockquote>
 2文字の言語コードを直接構成しないでください。この上書き構成は変数名を期待しており、言語コードの値ではありません。
+</blockquote>
+
 
 **カスタマイズ** 画面では、同意プロンプトの背後にあるコード – CSS、HTML、およびプロンプトを実行するJavaScript – を編集して、プロンプトの外観とデザインをウェブサイトに合わせて調整することができます。
 
-JavaScriptコードは、utag.jsファイルに公開される前に最小化されます。何らかの理由（構文エラーなど）で最小化プロセスが失敗した場合、公開プロセスは中断され、iQで警告メッセージが表示されます。公開が成功すると、utag.jsがページ上で実行される際に、同意プロンプトのJavaScriptコードがページの `&lt;head&gt;` に注入されます。
+JavaScriptコードは、utag.jsファイルに公開される前に最小化されます。何らかの理由（構文エラーなど）で最小化プロセスが失敗した場合、公開プロセスは中断され、iQで警告メッセージが表示されます。公開が成功すると、utag.jsがページ上で実行される際に、同意プロンプトのJavaScriptコードがページの `<head>` に注入されます。
 
 ### 施行ルール
 
-**施行ルール** 画面では、顧客に同意プロンプトを表示するタイミングを決定するロードルールを選択します。ルールがfalseと評価された場合、同意マネージャは同意を強制せず、タグは通常どおり発火します。GDPRに準拠するためには、欧州連合（EU）に居住するデータ主体に同意プロンプトを提示する必要があります。その基準を満たす既存のロードルールを選択するか、新たに作成することができます。適切なロードルールの作成方法がわからない場合は、[ロードルールについて]()を参照してください。
+**施行ルール** 画面では、顧客に同意プロンプトを表示するタイミングを決定するロードルールを選択します。ルールがfalseと評価された場合、同意マネージャは同意を強制せず、タグは通常どおり発火します。GDPRに準拠するためには、欧州連合（EU）に居住するデータ主体に同意プロンプトを提示する必要があります。その基準を満たす既存のロードルールを選択するか、新たに作成することができます。適切なロードルールの作成方法がわからない場合は、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## オプション
 
@@ -135,7 +143,7 @@ JavaScriptコードは、utag.jsファイルに公開される前に最小化さ
 iQタグ管理を通じて展開されるすべてのタグがトラッキングやデータ収集のためのものではありません。タグや拡張機能は、ポップアップモーダル、製品フィードバック、サイトサポート、またはチャットクライアントなどのサイト機能を提供するためにも使用されます。**省略するタグ** 構成を使用して、トラッキング制限から除外されるタグのリストを作成します。
 ### 同意クッキー
 
-同意プロンプトでは `CONSENTMGR` という名前のクッキーを使用します。このクッキーの存在とその内容は、プロンプトの振る舞いと訪問の同意状態を決定します。キーと値のペアはパイプ (&#34;`|`&#34;) 文字で区切られます。
+同意プロンプトでは `CONSENTMGR` という名前のクッキーを使用します。このクッキーの存在とその内容は、プロンプトの振る舞いと訪問の同意状態を決定します。キーと値のペアはパイプ ("`|`") 文字で区切られます。
 
 `CONSENTMGR` クッキーは、同意と構成プロンプトに関連する以下のキーと値のペアを保存します：
 
@@ -153,7 +161,7 @@ ts:1525369619|consent:true|c1:0|c2:0|c3:0|c4:0|c5:0|c6:0|c7:1|c8:0|c9:1|c10:0|c1
 
 ドメイン名を共有する複数のプロファイルがある場合は、各プロファイルに対して同意クッキーに固有の名前を付けることを強く推奨します。固有のクッキー名を使用することで、クッキー間の競合やセキュリティ問題を防ぎます。
 
-詳細については、[同意管理クッキー名](/ja/platforms/javascript/settings/#cmcookiens)を参照してください。
+詳細については、[同意管理クッキー名](https://docs.tealium.com/ja/platforms/javascript/settings/#cmcookiens)を参照してください。
 
 ### デフォルトの同意カテゴリ（JavaScriptコード拡張）
 
@@ -164,7 +172,7 @@ ts:1525369619|consent:true|c1:0|c2:0|c3:0|c4:0|c5:0|c6:0|c7:1|c8:0|c9:1|c10:0|c1
 1. [JavaScriptコード拡張]()を追加します。
 1. このコード行を追加して、デフォルトの同意カテゴリのリストを構成します：
     ```
-    b[&#34;consent_categories&#34;] = [&#34;analytics&#34;, &#34;affiliates&#34;, &#34;display_ads&#34;, &#34;search&#34;, &#34;email&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;big_data&#34;, &#34;misc&#34;, &#34;cookiematch&#34;, &#34;cdp&#34;, &#34;mobile&#34;, &#34;engagement&#34;, &#34;monitoring&#34;, &#34;crm&#34;];
+    b["consent_categories"] = ["analytics", "affiliates", "display_ads", "search", "email", "personalization", "social", "big_data", "misc", "cookiematch", "cdp", "mobile", "engagement", "monitoring", "crm"];
     ```
 1. 拡張機能をTealium Collectタグに適用します。
 
@@ -180,20 +188,20 @@ ts:1525369619|consent:true|c1:0|c2:0|c3:0|c4:0|c5:0|c6:0|c7:1|c8:0|c9:1|c10:0|c1
 例：
 
 ```html
-&lt;a href=&#34;javascript:utag.gdpr.showExplicitConsent(&#39;EN&#39;)&#34;&gt;同意を変更&lt;/a&gt;
+<a href="javascript:utag.gdpr.showExplicitConsent('EN')">同意を変更</a>
 ```
 
 ### utag.gdpr.getCookieValues()
 
-`CONSENTMGR` クッキー（上記参照）からキーと値のペアのオブジェクトを返します。値は `utag.data[&#39;cp.CONSENTMGR&#39;]` から取得されます。
+`CONSENTMGR` クッキー（上記参照）からキーと値のペアのオブジェクトを返します。値は `utag.data['cp.CONSENTMGR']` から取得されます。
 
 同意が拒否された例：
 
 ```js
 utag.gdpr.getCookieValues()
 {
-  ts: &#34;1525369619&#34;,
-  consent: &#34;false&#34;
+  ts: "1525369619",
+  consent: "false"
 }
 ```
 
@@ -202,8 +210,8 @@ utag.gdpr.getCookieValues()
 ```js
 utag.gdpr.getCookieValues()
 {
-  ts: &#34;1525369619&#34;,
-  consent: &#34;true&#34;,
+  ts: "1525369619",
+  consent: "true",
   c1: 0,
   c2: 0,
   c3: 0,

@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Pixel ID**  
@@ -40,5 +40,5 @@ The following section describes how to set up parameters and options for each ac
 | URL | The `URL` of the target website. |
 | User Agent | The web browser user agent of the user who triggered the event that is being sent to the pixel server. It is required for the user profile. |
 | User IP | The `IP` address of the user who triggered the event that is being sent to the pixel server. |
-| Template Variables | Provide template variables as data input for templates. For more information, see [Template Variables Guide](). Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in either URL, URL parameter, header, or body data. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. When using OAuth, the template variable `{{webhook_access_token}}` refers to the token returned by the authentication request. |
+| Template Variables | Provide template variables as data input for templates. For more information, see [Template Variables Guide](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation. For example, `items.name`. Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in either URL, URL parameter, header, or body data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. When using OAuth, the template variable `{{webhook_access_token}}` refers to the token returned by the authentication request. |

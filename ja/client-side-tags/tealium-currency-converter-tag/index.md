@@ -8,7 +8,7 @@ url: https://docs.tealium.com/ja/client-side-tags/tealium-currency-converter-tag
 通貨変換を実装するには、以下の2つのコンポーネントが関連しています：
 
 * Tealium 通貨コンバータータグ
-* 通貨コンバーター拡張機能（[詳細はこちら]()）
+* 通貨コンバーター拡張機能（[詳細はこちら](https://docs.tealium.com/currency-converter-extension/)）
 
 ## Tealium 通貨コンバータータグ
 
@@ -18,17 +18,21 @@ url: https://docs.tealium.com/ja/client-side-tags/tealium-currency-converter-tag
 
 `https://tags.tiqcdn.com/utag/tiqapp/utag.currency.js`
 
+
+<blockquote>
 これはブロッキングタグなので、非同期でロードされるものの、ロードされるまで他の Tealium タグのロードを阻止します。
+</blockquote>
+
 
 ## 通貨コンバーター拡張機能
 
-この拡張機能を使用すると、データレイヤー変数に変換された値を保存する通貨変換を簡単に構成できます。[通貨コンバーター拡張機能]()についてもっと学びましょう。
+この拡張機能を使用すると、データレイヤー変数に変換された値を保存する通貨変換を簡単に構成できます。[通貨コンバーター拡張機能](https://docs.tealium.com/currency-converter-extension/)についてもっと学びましょう。
 
 ## タグの追加
 
 1. タグマーケットプレイスに移動し、Tealium 通貨コンバータータグを追加します。
 1. タグウィザードを使用して、タグに具体的なタイトルを付け、任意のメモを入力し、ロードルールタブに進みます。
-1. 適用したいロードルールを選択し、**完了**をクリックします。![](/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
+1. 適用したいロードルールを選択し、**完了**をクリックします。![](https://docs.tealium.com/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
 
 ## 通貨変換機能
 
@@ -45,5 +49,5 @@ url: https://docs.tealium.com/ja/client-side-tags/tealium-currency-converter-tag
 例：
 
 ```
-var order_total_uk = tealiumiq_currency.convert(100, &#34;USD&#34;, &#34;GBP&#34;);
+var order_total_uk = tealiumiq_currency.convert(100, "USD", "GBP");
 ```

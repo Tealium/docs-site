@@ -18,20 +18,20 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/do
 * **Dev Domains**: テストに使用したい開発環境のドメインを入力します。例えば、`dev.tealium.com`。
 * **QA Domains**: テストに使用したいQA環境のドメインを入力します。例えば、`qa.tealium.com`。
 
-新しいDev/QA環境を追加するには、プラスボタン（**&#43;**）をクリックし、Dev/QA環境を削除するにはマイナスボタン（**-**）をクリックします。
+新しいDev/QA環境を追加するには、プラスボタン（**+**）をクリックし、Dev/QA環境を削除するにはマイナスボタン（**-**）をクリックします。
 
 ## 例
 
 あなたの本番ウェブサイトには次のスクリプトが含まれています：
 
 ``` javascript
-&lt;script type=&#34;text/javascript&#34;&gt;
+<script type="text/javascript">
 (function(a,b,c,d){
-a=&#39;https://tags.tiqcdn.com/utag/my_account/main/**prod**/utag.js&#39;;
-b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;&#43;c;d.async=true;
+a='https://tags.tiqcdn.com/utag/my_account/main/**prod**/utag.js';
+b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
 a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
 })();
-&lt;/script&gt;
+</script>
 ```
 
 この例では、環境は**prod**（**qa**や**dev**ではない）です。
@@ -43,24 +43,24 @@ a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
 
 * **dev.tealium.com**
     ``` javascript
-    &lt;script type=&#34;text/javascript&#34;&gt;
+    <script type="text/javascript">
     (function(a,b,c,d){
-    a=&#39;https://tags.tiqcdn.com/utag/my_account/main/**dev**/utag.js&#39;;
-    b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;&#43;c;d.async=true;
+    a='https://tags.tiqcdn.com/utag/my_account/main/**dev**/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
     a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
     })();
-    &lt;/script&gt;
+    </script>
     ```
 
 * **qa.tealium.com**
     ``` javascript
-    &lt;script type=&#34;text/javascript&#34;&gt;
+    <script type="text/javascript">
     (function(a,b,c,d){
-    a=&#39;https://tags.tiqcdn.com/utag/my_account/main/**qa**/utag.js&#39;;
-    b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;&#43;c;d.async=true;
+    a='https://tags.tiqcdn.com/utag/my_account/main/**qa**/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
     a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
     })();
-    &lt;/script&gt;
+    </script>
     ```
 
 サイトのトラフィックを表示すると、非本番環境が検出された場合、まず`/**prod**/utag.js`がロードされ、次に`/**dev**/utag.js`または`/**qa**/utag.js`がロードされます。その後にロードされる`utag.#.js`ファイルは、それぞれの**Dev**または**QA**環境から提供されます。

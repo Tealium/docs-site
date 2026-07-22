@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/platforms/java/install/
 ---
 ## 要件
 
-* [Tealium Customer Data Hubアカウント]()
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 * EclipseやNetBeansなどのJava IDE
-* Java JDK 7&#43;
+* Java JDK 7+
 
 ## インストール
 
@@ -19,17 +19,17 @@ Java用のTealiumライブラリをMavenでインストールするには、`pom
 
 1. リポジトリを追加します：
       ```xml
-      &lt;repository&gt;    
-        &lt;id&gt;maven-tealium&lt;/id&gt;
-        &lt;url&gt;https://maven.tealiumiq.com/java/releases/&lt;/url&gt;
-      &lt;/repository&gt;
+      <repository>    
+        <id>maven-tealium</id>
+        <url>https://maven.tealiumiq.com/java/releases/</url>
+      </repository>
       ```
 
 2. 依存関係を追加します：
       ```xml
-      &lt;groupId&gt;com.tealium&lt;/groupId&gt;
-      &lt;artifactId&gt;java&lt;/artifactId&gt;
-      &lt;version&gt;1.4.0&lt;/version&gt;
+      <groupId>com.tealium</groupId>
+      <artifactId>java</artifactId>
+      <version>1.4.0</version>
       ```
 
 ### 手動
@@ -47,11 +47,11 @@ Java用のTealiumライブラリを手動でインストールするには：
 
 ## 初期化
 
-[`Builder()`](/ja/platforms/java/api/#builder)メソッドを使用して`Tealium`インスタンスを初期化するには、以下のコードを`main`または`util`クラスに追加し、それが呼び出される前に初期化されることを確認します：
+[`Builder()`](https://docs.tealium.com/ja/platforms/java/api/#builder)メソッドを使用して`Tealium`インスタンスを初期化するには、以下のコードを`main`または`util`クラスに追加し、それが呼び出される前に初期化されることを確認します：
 
 ```java
-Tealium tealium = new Tealium.Builder(&#34;ACCOUNT&#34;, &#34;PROFILE&#34;)
-    .setEnvironment(&#34;ENVIRONMENT&#34;)
-    .setDatasource(&#34;DATASOURCE&#34;)
+Tealium tealium = new Tealium.Builder("ACCOUNT", "PROFILE")
+    .setEnvironment("ENVIRONMENT")
+    .setDatasource("DATASOURCE")
     .build();
 ```

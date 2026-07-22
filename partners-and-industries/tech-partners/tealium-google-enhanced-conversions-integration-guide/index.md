@@ -17,16 +17,16 @@ Successful implementations of this solution have benefited from the following po
 ## Prerequisites
 
 * Tealium
-    * iQ Tag Management: [Google Ads Conversion and Remarketing (gtag.js) tag]() or [Floodlight (gtag.js) tag]()
-    * EventStream: [Google Ads Enhanced Conversions for Web connector]()
+    * iQ Tag Management: [Google Ads Conversion and Remarketing (gtag.js) tag](https://docs.tealium.com/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/) or [Floodlight (gtag.js) tag](https://docs.tealium.com/floodlight-gtagjs-tag/)
+    * EventStream: [Google Ads Enhanced Conversions for Web connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/)
 * Google
-    * Google Ads account with an Enhanced Conversions-enabled conversion. For more information, see [About enhanced conversions for web in the Google Ads API](https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&amp;rd=1).
+    * Google Ads account with an Enhanced Conversions-enabled conversion. For more information, see [About enhanced conversions for web in the Google Ads API](https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&rd=1).
 
 ## How it works
 
 This hybrid solution uses both the client-side tag and server-side API to customer data and send conversion events, such as subscriptions, sign ups, and purchases, to Google. The customer data is matched to a signed-in Google user and the conversion event is attributed to ad clicks or views. The customer data is protected using a one-way hashing algorithm called SHA256, which keeps it secure and private.
 
-![](/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png)
+![](https://docs.tealium.com/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png)
 
 Enhanced conversions only work when one or more of the following customer attributes is available:
 
@@ -40,15 +40,15 @@ The following customer parameters are required. The client-side tag will normali
 
 |Data Field| Description|
 |---| ---|
-|Email address| Lower-case and, for Gmail addresses, remove all periods.&lt;br&gt; For example, `janedoe@gmail.com`|
-|Phone number| Remove symbols and dashes, but keep the country code.&lt;br&gt; For example, `14155551212`|
-|First name| User first name.&lt;br&gt; Example: `Jane`|
-|Last Name| User last name.&lt;br&gt; Example: `Doe`|
-|Street address| User street address.&lt;br&gt; Example: `123 Main St`|
-|City| User city name.&lt;br&gt; Example: `San Diego`|
-|Region| User region, state, or province.&lt;br&gt; Example: `CA` or `California`|
-|Postal Code| User postal code (5-, 6- or 7- digit version).&lt;br&gt; Example: `92121` or `S099 9XX`|
-|Country| User country code, in ISO 3155-1 standard.&lt;br&gt; Example: `US` or `UK`|
+|Email address| Lower-case and, for Gmail addresses, remove all periods.<br> For example, `janedoe@gmail.com`|
+|Phone number| Remove symbols and dashes, but keep the country code.<br> For example, `14155551212`|
+|First name| User first name.<br> Example: `Jane`|
+|Last Name| User last name.<br> Example: `Doe`|
+|Street address| User street address.<br> Example: `123 Main St`|
+|City| User city name.<br> Example: `San Diego`|
+|Region| User region, state, or province.<br> Example: `CA` or `California`|
+|Postal Code| User postal code (5-, 6- or 7- digit version).<br> Example: `92121` or `S099 9XX`|
+|Country| User country code, in ISO 3155-1 standard.<br> Example: `US` or `UK`|
 
 ## Conversion data
 
@@ -58,7 +58,7 @@ The following Google conversion parameters are required for the tag:
 |---| ---|
 |Conversion ID| Unique tracking ID for the conversion.|
 |Conversion Label| Encoded conversion tracking ID and conversion type. |
-|Conversion Value| A transaction-specific value or the value used for this conversion type. &lt;br&gt; See more at [Google Ads Help: About conversion values](https://support.google.com/google-ads/answer/3419241?hl=en).|
+|Conversion Value| A transaction-specific value or the value used for this conversion type. <br> See more at [Google Ads Help: About conversion values](https://support.google.com/google-ads/answer/3419241?hl=en).|
 | Order ID | Order ID or Transaction ID from the E-Commerce extension, or mapped directly. |
 
 The following Google conversion parameters are required for the connector:
@@ -78,11 +78,11 @@ To configure the Google Ads Conversion and Remarketing tag in iQ Tag Management,
 * A load rule to identify the conversion event to track.
 * Your Google Ads conversion settings, specifically your conversion tracking ID and conversion label.
 
-The following steps are available in more detail in the [Google Ads Conversion Tracking &amp;amp; Remarketing (gtag.js) Tag Setup Guide]().
+The following steps are available in more detail in the [Google Ads Conversion Tracking &amp; Remarketing (gtag.js) Tag Setup Guide](https://docs.tealium.com/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/).
 
 ### Tag configuration
 
-Go to the tag marketplace and add the Google Ads Conversion &amp;amp; Remarketing (`gtag.js`) tag.
+Go to the tag marketplace and add the Google Ads Conversion &amp; Remarketing (`gtag.js`) tag.
 
 ### Load rules
 
@@ -90,8 +90,8 @@ Set a load rule that matches your conversion event. This could be the page where
 
 Example load rules include:
 
-* **Purchase** - `tealium_event EQUALS &#34;purchase&#34;`
-* **Sign up** - `tealium_event EQUALS &#34;newsletter_signup&#34;`
+* **Purchase** - `tealium_event EQUALS "purchase"`
+* **Sign up** - `tealium_event EQUALS "newsletter_signup"`
 
 ### Data mappings
 
@@ -110,13 +110,17 @@ To configure the Google Ads Enhanced Conversions for Web connector in EventStrea
 * An event feed to identify the conversion events to track.
 * Your Google Ads conversion settings.
 
-The following steps are available in more detail in the [Google Ads Enhanced Conversions for Web Connector Setup Guide]().
+The following steps are available in more detail in the [Google Ads Enhanced Conversions for Web Connector Setup Guide](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/).
 
 ### Add the connector
 
 Go to the connector marketplace and add the EventStream action for the Google Ads Enhanced Conversions for Web connector.
 
+
+<blockquote>
 To set up this connector, you will establish a connection between Tealium Customer Data Hub and your Google Ads account, so it is helpful to log into your Google account prior to configuring the connector.
+</blockquote>
+
 
 Then configure the following:
 
@@ -141,7 +145,11 @@ All fields must be provided.
 
 Phone number is an optional value that can be provided with either option.
 
+
+<blockquote>
 The EventStream connector allows for plain-text mapping, and SHA-256 hashing will be applied.
+</blockquote>
+
 
 ## Google Enhanced Conversions
 
@@ -160,5 +168,5 @@ The following conversion events are not in scope at this time:
 
 ## Additional resources
 
-* [Better Together: Tealium &#43; Google](https://tealium.com/google-integrations/)
-* [Google Ads Help: About enhanced conversions (beta)](https://support.google.com/google-ads/answer/9888656?hl=en&amp;amp;ref_topic=3165803)
+* [Better Together: Tealium + Google](https://tealium.com/google-integrations/)
+* [Google Ads Help: About enhanced conversions (beta)](https://support.google.com/google-ads/answer/9888656?hl=en&amp;ref_topic=3165803)

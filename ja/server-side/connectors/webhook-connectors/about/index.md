@@ -23,9 +23,13 @@ HTTPベースのWebhookコネクタに対応する認証方法は以下の通り
 
 Webhook OAuth2は、OAuth 2.0認証を明示的に要求するサービスに使用されます。
 
-詳細については、を参照してください。
+詳細については、[webhook-authentication](https://docs.tealium.com/webhook-authentication/)を参照してください。
 
-Webhookを使用してデータをJDBC互換データベースに送信する方法については、[Webhook JDBC]()を参照してください。
+
+<blockquote>
+Webhookを使用してデータをJDBC互換データベースに送信する方法については、[Webhook JDBC](https://docs.tealium.com/webhook-jdbc/)を参照してください。
+</blockquote>
+
 
 ## アクション
 
@@ -37,7 +41,7 @@ Webhookを使用してデータをJDBC互換データベースに送信する方
 | HTTPリクエストを介してバッチデータを送信  | イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。     | ✓      | ✓     |
 | HTTPリクエストを介してバッチカスタマイズデータを送信（高度） | マッピングで指定されたバッチイベント/訪問属性を送信します。    | ✓      | ✓          |
 
-詳細については、を参照してください。
+詳細については、[webhook-actions](https://docs.tealium.com/webhook-actions/)を参照してください。
 
 ## HTTPレスポンスクッキー
 

@@ -19,7 +19,10 @@ The action with the highest priority number runs first. For example, a priority 
 
 Actions without frequency capping enabled trigger independently and are not affected by cooldown groups.
 
+
+<blockquote>
 If two actions in the same cooldown group have the same priority, only one action triggers. If both actions must trigger, assign them to different cooldown groups.
+</blockquote>
 
 
 ## Cooldown with frequency capping
@@ -36,7 +39,7 @@ If frequency capping is disabled, the action does not participate in cooldown be
 
 The following diagram shows how actions are evaluated when you enable frequency capping and prioritization.
 
-![](/images/server-side/connectors/frequency-capping/action-priority-workflow.png)
+![](https://docs.tealium.com/images/server-side/connectors/frequency-capping/action-priority-workflow.png)
 
 The workflow operates as follows:
 

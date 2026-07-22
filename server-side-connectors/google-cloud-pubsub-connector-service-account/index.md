@@ -34,7 +34,7 @@ This connector uses two-legged OAuth flow, based on a Google Cloud service accou
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings based on which connector you added:
 
@@ -77,7 +77,11 @@ After adding the connector, configure the following settings based on which conn
 | Send Customized Data to Topic (Advanced) | ✓ | ✓ |
 | Send Log Event to Topic | ✓ | ✓ |
 
+
+<blockquote>
 If the Pub/Sub topic you are publishing to has a schema attached, use the **Send Customized Data to Topic** action to specify a strict JSON definition which matches your schema.
+</blockquote>
+
 
 ### Send Event Data to Topic
 
@@ -111,8 +115,8 @@ If the Pub/Sub topic you are publishing to has a schema attached, use the **Send
 |Project Topic|(Required) Select the topic in your Pub/Sub project to publish the message to. |
 | Message Data|(Required) Provide values to construct message data. For template support, reference the template name to generate message data from the template. Map values to names for simple one-level JSON format, otherwise reference the template name and select only the **Custom Message Definition** option.|
 |Message Attributes| Map your attribute values to custom Pub/Sub message attributes.Enter the message attribute key in the **To** drop-down list.|
-|Template Variables|Provide template variables as data input for templates. For more information, see . Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.|
-|Templates| Provide templates to be referenced in either message attributes or data. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.
+|Template Variables|Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.|
+|Templates| Provide templates to be referenced in either message attributes or data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.
 |Ordering Key|Map or enter an ordering key-value to enable Pub/Sub topic subscribers to receive messages in the order they are published. For more information, see [Google: Order messages](https://cloud.google.com/pubsub/docs/ordering).|
 
 ### Send Log Event to Topic

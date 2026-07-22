@@ -11,7 +11,7 @@ Password policy controls password settings for all users on your account. You ca
 * Minimum uppercase characters
 * Minimum numeric characters
 * Minimum special characters  
-Valid special characters: **@ # $ % ^ &amp;amp; \* ( ) - \_ = &#43; &#39; &#34; [ ] \{ \} | ; : &amp;lt; &amp;gt; , . / ? !**
+Valid special characters: **@ # $ % ^ &amp; \* ( ) - \_ = + ' " [ ] \{ \} | ; : &lt; &gt; , . / ? !**
 * Password history restriction - Prevents users from entering previously used passwords when updating their passwords.
 * Password expiration - The number of days before a password expires and a new one must be set.
 
@@ -74,7 +74,7 @@ To configure the password expiration time for your account, set the expiration t
 
 ### Change to a stricter password policy
 
-If you set a stricter password policy, you may break some users’ current passwords. This forces those users to reset their passwords if they don&#39;t satisfy the new password requirements. As an admin, you cannot change passwords for other users.
+If you set a stricter password policy, you may break some users’ current passwords. This forces those users to reset their passwords if they don't satisfy the new password requirements. As an admin, you cannot change passwords for other users.
 
 ## Failed logins
 

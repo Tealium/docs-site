@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/onesignal-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -32,7 +32,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/onesignal-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|App ID|  &lt;ul&gt;&lt;li&gt;キー＆IDで見つけることができるOneSignalアプリケーションID。&lt;/li&gt;&lt;li&gt;詳細については、[通知の作成](https://documentation.onesignal.com/reference#create-notification)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|App ID|  <ul><li>キー＆IDで見つけることができるOneSignalアプリケーションID。</li><li>詳細については、[通知の作成](https://documentation.onesignal.com/reference#create-notification)を参照してください。</li></ul> |
 |Player ID| 通知を送信する特定のプレイヤー。|
 |Template ID| OneSignalアカウント内のプッシュテンプレートのID。|
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/onesignal-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|App ID|  &lt;ul&gt;&lt;li&gt;キー＆IDで見つけることができるOneSignalアプリケーションID。&lt;/li&gt;&lt;li&gt;詳細については、[通知の作成](https://documentation.onesignal.com/reference#create-notification)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|App ID|  <ul><li>キー＆IDで見つけることができるOneSignalアプリケーションID。</li><li>詳細については、[通知の作成](https://documentation.onesignal.com/reference#create-notification)を参照してください。</li></ul> |
 |Player ID| 通知を送信する特定のプレイヤー。|
 |Email Subject| メールの件名。|
 |Email Body| メールの本文。|

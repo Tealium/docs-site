@@ -3,9 +3,13 @@ title: Databricks Delta Sharing cloud data source
 description: This article describes how to set up the Databricks Delta Sharing cloud data source.
 url: https://docs.tealium.com/administration/early-access/data-sources/databricks-delta-sharing-cloud-data-source/
 ---
- The Databricks Delta Sharing cloud data source is currently in Early Access and is available to select customers only. Contact Tealium Support to get started with Databricks Delta Sharing. 
 
-For a general overview of setting up a cloud data source, see .
+<blockquote>
+The Databricks Delta Sharing cloud data source is currently in Early Access and is available to select customers only. Contact Tealium Support to get started with Databricks Delta Sharing.
+</blockquote>
+
+
+For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## How it works
 
@@ -15,7 +19,7 @@ In this protocol, you are the provider and Tealium is the recipient. You create 
 
 You configure the secure connection to Tealium in Databricks using the Tealium sharing identifier (metastore ID). No database usernames, passwords, or access tokens leave Databricks.
 
-When used with [CloudStream](), the data pipeline is zero-copy. Data remains in your Databricks environment and is accessed on demand for activation.
+When used with [CloudStream](https://docs.tealium.com/about-cloudstream/), the data pipeline is zero-copy. Data remains in your Databricks environment and is accessed on demand for activation.
 
 ## Data types
 
@@ -34,7 +38,11 @@ For more information, see Databricks: Data Types ([AWS](https://docs.databricks.
 
 ## Create a connection
 
- Users must have the following Databricks Unity Catalog permissions to configure Delta Sharing: `CREATE RECIPIENT`, `CREATE SHARE`, `USE CATALOG`, `USE SCHEMA`, and `SELECT`. A metastore admin already has these permissions. 
+
+<blockquote>
+Users must have the following Databricks Unity Catalog permissions to configure Delta Sharing: `CREATE RECIPIENT`, `CREATE SHARE`, `USE CATALOG`, `USE SCHEMA`, and `SELECT`. A metastore admin already has these permissions.
+</blockquote>
+
 
 To create a connection with Databricks Delta Sharing, complete the following steps in Databricks:
 
@@ -50,7 +58,7 @@ For more information, see Databricks: Manage access to Delta Sharing data shares
 
 Complete the following steps in Tealium to create a Databricks Delta Sharing cloud data source: 
 
-1. After Tealium Support creates the connection for you, create a Databricks Delta Sharing cloud data source in Tealium. For more information, see .
+1. After Tealium Support creates the connection for you, create a Databricks Delta Sharing cloud data source in Tealium. For more information, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 1. Click **Establish Connection**. Establishing the Delta Sharing connection to Databricks may take up to 2-3 minutes.
 
 ## Query configurations
@@ -59,7 +67,7 @@ For a general overview, see .
 
 For Databricks Delta Sharing, note the following requirements:
 
-* **Timestamp &#43; Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP`.  
+* **Timestamp + Incrementing** and **Timestamp** query modes: The selected timestamp column must be the type `TIMESTAMP`.  
 For more information, see Databricks: TIMESTAMP type ([AWS](https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type), [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type), [GCP](https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type)).
 * **Incrementing** query mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:
 
@@ -71,6 +79,6 @@ For more information, see Databricks `CREATE TABLE` ([AWS](https://docs.databric
 
 ## IP access list
 
-If your Databricks workspace is restricted by IP addresses, add the [Tealium IP addresses]() to your Databricks IP access list.
+If your Databricks workspace is restricted by IP addresses, add the [Tealium IP addresses](https://docs.tealium.com/ip-allow-list/) to your Databricks IP access list.
 
 For more information, see Databricks: Manage IP access list ([AWS](https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list), [Azure](https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list), [GCP](https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list)).

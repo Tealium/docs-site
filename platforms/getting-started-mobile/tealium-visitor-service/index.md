@@ -5,8 +5,8 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/tealium-visitor-s
 ---
 ## Supported platforms
 
-* [Tealium for Android: Visitor Service module](/platforms/android-kotlin/module-list/visitor-service/)
-* [Tealium for iOS: Visitor Service module](/platforms/ios-swift/module-list/visitor-service/)
+* [Tealium for Android: Visitor Service module](https://docs.tealium.com/platforms/android-kotlin/module-list/visitor-service/)
+* [Tealium for iOS: Visitor Service module](https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/)
 
 ## How it works
 
@@ -21,12 +21,12 @@ To save device resources, the module polls for updates up to five times after ea
 
 ## Visitor profile structure
 
-The visitor profile is an object containing attributes keyed by their **attribute ID** from AudienceStream. Attribute IDs are numeric strings (for example, `&#34;22&#34;` for Lifetime Event Count). Audiences are keyed by audience ID, with the audience name as the value.
+The visitor profile is an object containing attributes keyed by their **attribute ID** from AudienceStream. Attribute IDs are numeric strings (for example, `"22"` for Lifetime Event Count). Audiences are keyed by audience ID, with the audience name as the value.
 
 For a full list of attribute types and usage examples, see the platform-specific reference:
 
-* [Tealium for Android: VisitorProfile](/platforms/android-kotlin/api/visitor-profile/)
-* [Tealium for iOS: Visitor Data Object](/platforms/ios-swift/module-list/visitor-service/#visitor-data-object)
+* [Tealium for Android: VisitorProfile](https://docs.tealium.com/platforms/android-kotlin/api/visitor-profile/)
+* [Tealium for iOS: Visitor Data Object](https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/#visitor-data-object)
 
 ## Examples
 
@@ -39,8 +39,8 @@ For a full list of attribute types and usage examples, see the platform-specific
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, tealiumConfig) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            visitorProfile.audiences?.let { audiences -&gt;
-                if (audiences.containsValue(&#34;Premium User&#34;)) {
+            visitorProfile.audiences?.let { audiences ->
+                if (audiences.containsValue("Premium User")) {
                     // enable premium features
                 }
             }
@@ -58,7 +58,7 @@ extension TealiumHelper: VisitorServiceDelegate {
         guard let audiences = visitorProfile.audiences else {
             return
         }
-        if audiences.contains(where: { $0.value == &#34;Premium User&#34; }) {
+        if audiences.contains(where: { $0.value == "Premium User" }) {
             // enable premium features
         }
     }
@@ -77,9 +77,9 @@ extension TealiumHelper: VisitorServiceDelegate {
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, tealiumConfig) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            visitorProfile.numbers?.let { numbers -&gt;
-                numbers[&#34;5057&#34;]?.let { sessionCount -&gt;
-                    if (sessionCount &gt; 5) {
+            visitorProfile.numbers?.let { numbers ->
+                numbers["5057"]?.let { sessionCount ->
+                    if (sessionCount > 5) {
                         // take action for returning users
                     }
                 }
@@ -98,8 +98,8 @@ extension TealiumHelper: VisitorServiceDelegate {
         guard let numbers = visitorProfile.numbers else {
             return
         }
-        if let sessionCount = numbers[&#34;5057&#34;] {
-            if sessionCount &gt; 5 {
+        if let sessionCount = numbers["5057"] {
+            if sessionCount > 5 {
                 // take action for returning users
             }
         }
@@ -114,7 +114,7 @@ extension TealiumHelper: VisitorServiceDelegate {
 
 Use the visitor service module to personalize your app in real time, for example:
 
-* Display content based on the user&#39;s preferred product category
+* Display content based on the user's preferred product category
 * Surface recommendations based on prior browsing or search behavior
 * Show different UI for high-value or loyalty-program members
 * Enable or disable features for specific audience segments

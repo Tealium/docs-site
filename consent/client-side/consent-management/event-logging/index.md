@@ -6,11 +6,11 @@ url: https://docs.tealium.com/consent/client-side/consent-management/event-loggi
 
 ## Requirements
 
-* Tealium EventStream or [Tealium DataAccess]() (EventStore or EventDB)
+* Tealium EventStream or [Tealium DataAccess](https://docs.tealium.com/about-dataaccess/) (EventStore or EventDB)
 
 ## How it works
 
-The event logging feature logs every consent action taken by your visitors and works with all the [client-side consent management]() offerings. When client-side consent management is deployed to your site and event logging is enabled, consent actions are sent as an HTTP request to Tealium&#39;s server-side CDH, where they can be logged with EventStore or EventDB or streamed with EventStream as needed for auditing and record-keeping purposes.
+The event logging feature logs every consent action taken by your visitors and works with all the [client-side consent management](https://docs.tealium.com/about-consent-management/) offerings. When client-side consent management is deployed to your site and event logging is enabled, consent actions are sent as an HTTP request to Tealium's server-side CDH, where they can be logged with EventStore or EventDB or streamed with EventStream as needed for auditing and record-keeping purposes.
 
 The following consent actions are logged:
 
@@ -33,6 +33,6 @@ Default:
     https://collect.tealiumiq.com/event
     ```
 
-* **Event Log Profile** - the profile to which logged events should be sent. The value set here is passed to the event log URL as the parameter `tealium_profile=&#34;PROFILE&#34;`.
+* **Event Log Profile** - the profile to which logged events should be sent. The value set here is passed to the event log URL as the parameter `tealium_profile="PROFILE"`.
 
-To customize the [consent event]() payloads, edit these two templates `fullConsentEventHandler` and `partialConsentEventHandler`. For more information about updating templates, see [Managing Templates]().
+To customize the [consent event](https://docs.tealium.com/consent-change-event-specifications/) payloads, edit these two templates `fullConsentEventHandler` and `partialConsentEventHandler`. For more information about updating templates, see [Managing Templates](https://docs.tealium.com/about-templates/).

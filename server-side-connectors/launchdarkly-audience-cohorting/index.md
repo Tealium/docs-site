@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/launchdarkly-audience-cohor
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -46,7 +46,7 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Last Name | The visitor&#39;s last name. |
+| Last Name | The visitor's last name. |
 | First Name | The visitor’s first name. |
 | Email | The visitor’s email address. |
 | Phone Number | The visitor’s phone number. |

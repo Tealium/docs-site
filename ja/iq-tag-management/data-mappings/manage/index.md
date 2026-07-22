@@ -12,8 +12,8 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/
 1. タグを展開して、そのタグの詳細を表示します。
 1. **Mapped Variables**タブをクリックします。
 1. マップする変数を選択します。
-1. **&#43; Add Mapping**をクリックします。
-1. リストからデスティネーションを選択するか、**&#43; Add Custom Destination**をクリックして新しいカスタムデスティネーションを入力します。
+1. **+ Add Mapping**をクリックします。
+1. リストからデスティネーションを選択するか、**+ Add Custom Destination**をクリックして新しいカスタムデスティネーションを入力します。
 1. **Done**をクリックします。新しいデータマッピングが表示されます。
 1. 追加の変数をマップするために、手順2から6を繰り返します。
 
@@ -23,45 +23,45 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/
 
 イベントマッピングを使用して、あなたのイベント名をベンダーのイベント名と対応するトラッキングに関連付けます。まず、あなたのイベント変数（通常は`tealium_event`）を選択し、あなたのデータレイヤーからイベント名を入力し、トリガーする対応するベンダーイベントを選択します。
 
-![](/images/iq-tag-management/data-mappings-event-triggers.png)
+![](https://docs.tealium.com/images/iq-tag-management/data-mappings-event-triggers.png)
 
 イベントをマップするには、以下の手順を使用します：
 
 1. タグを展開して、そのタグの詳細を表示します。
 1. **Mapped Variables**タブをクリックします。
 1. マップするイベント変数を選択します。
-1. **&#43; Add Mapping**をクリックします。
+1. **+ Add Mapping**をクリックします。
 1. **Category**の下で、**Events**セクションを見つけます。
 1. **Trigger**フィールドに、あなたのデータレイヤーからのイベント名を入力します。
 1. **Event**ドロップダウンで、トリガーするベンダーのイベントを選択します。
-1. **&#43; Add**をクリックします。これらの手順を繰り返して複数のイベントをマップします。
+1. **+ Add**をクリックします。これらの手順を繰り返して複数のイベントをマップします。
 1. **Apply**をクリックします。
 
 イベントマッピングは、`EVENT_NAME:VENDOR_EVENT`の形式でデータマッピングリストに表示されます。例えば、`cart_add`イベントをベンダーのイベント`addToCart`にマップした場合、マッピングは`cart_add:addToCart`として表示されます。
 
-![](/images/iq-tag-management/mapped-event-triggers.png)
+![](https://docs.tealium.com/images/iq-tag-management/mapped-event-triggers.png)
 
 ## イベントパラメータマッピングの追加
 
 イベントマッピングを使用して、あなたのイベントパラメータ名を構成パラメータ名と関連付けます。
 
-![](/images/iq-tag-management/data-mappings-event-parameters.png)
+![](https://docs.tealium.com/images/iq-tag-management/data-mappings-event-parameters.png)
 
 イベントパラメータをマップするには、以下の手順を使用します：
 
 1. タグを展開して、そのタグの詳細を表示します。
 1. **Mapped Variables**の下で、**Edit**をクリックします。
 1. マップするイベント変数を選択します。
-1. **&#43; Select Destination**をクリックします。
+1. **+ Select Destination**をクリックします。
 1. **Category**の下で、**Event Parameters**セクションを見つけます。
 1. **Event**ドロップダウンで、あなたのデータレイヤーからのベンダーのイベントパラメータを選択します。
 1. **Parameters**ドロップダウンで、マップする構成パラメータを選択します。
-1. **&#43; Add**をクリックします。これらの手順を繰り返して複数のイベントパラメータをマップします。
+1. **+ Add**をクリックします。これらの手順を繰り返して複数のイベントパラメータをマップします。
 1. **Apply**をクリックします。
 
 イベントパラメータマッピングは、`EVENT_NAME:SETTINGS_PARAMETER`の形式でデータマッピングリストに表示されます。例えば、`sendscreenview`イベントパラメータを構成パラメータ`dynamic_var`にマップした場合、マッピングは`sendscreenview:dynamic_var`として表示されます。
 
-![](/images/iq-tag-management/mapped-event-parameters.png)
+![](https://docs.tealium.com/images/iq-tag-management/mapped-event-parameters.png)
 
 ## カスタム値マッピングの追加
 
@@ -89,11 +89,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/
 
 1. タグを展開して、そのタグの詳細を表示します。
 1. **Mapped Variables**タブをクリックします。
-1. **Variables**ドロップダウンからデータレイヤー変数を選択するか、**&#43; Add Variable**をクリックして新しいものを使用します。
-1. 上部パネルまたは左下パネルで**&#43; Add Custom** **Destination**をクリックします。
+1. **Variables**ドロップダウンからデータレイヤー変数を選択するか、**+ Add Variable**をクリックして新しいものを使用します。
+1. 上部パネルまたは左下パネルで**+ Add Custom** **Destination**をクリックします。
 1. カスタム変数の名前を入力します。
-1. 上部パネルで**OK**をクリックするか、下部パネルのオプションを使用した場合は**&#43; Add**をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-datamappings-two-options-to-add-custom-destination.png)
+1. 上部パネルで**OK**をクリックするか、下部パネルのオプションを使用した場合は**+ Add**をクリックします。  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-datamappings-two-options-to-add-custom-destination.png)
 
 さらにカスタムマッピングを追加するために、手順を繰り返します。完了したら、**Done**をクリックします。カスタムマッピングは**Data Mappings**タブに表示されます。
 
@@ -103,11 +103,11 @@ AudienceStream属性は、あなたの訪問に関するエンリッチされた
 
 あなたのプロファイルは、一致するAudienceStreamプロファイルからの属性で構成されている必要があります。これらの属性は、変数ドロップダウンメニューのデータマッピングとして利用可能になります。それらは属性タイプ別に整理され、AudienceStream変数としてラベル付けされています。
 
-詳細については、[About Data Layer Enrichment]()を参照してください。
+詳細については、[About Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)を参照してください。
 
 ## データマッピングの変更履歴を表示する
 
-データマッピングの変更履歴を表示するには、**Tag Management &gt; Tags**に移動し、**View Tag History**をクリックします。
+データマッピングの変更履歴を表示するには、**Tag Management > Tags**に移動し、**View Tag History**をクリックします。
 
 ## マッピングの編集
 
@@ -131,16 +131,16 @@ AudienceStream属性は、あなたの訪問に関するエンリッチされた
 1. タグを展開して、そのタグの詳細を表示します。
 1. **Mapped Variables**タブをクリックします。
 1. データレイヤー変数の行で、編集アイコンをクリックします。
-1. **&#43;Add Custom Destination**をクリックします。
+1. **+Add Custom Destination**をクリックします。
 1. 新しい名前を入力します。  
 1. **OK**をクリックして変更を適用します。
 1. 完了したら、**Done**をクリックします。
 
-&lt;!-- ## マッピングの並べ替え
+<!-- ## マッピングの並べ替え
 
 あなたはデータマッピングをあなたの好みの順序でドラッグアンドドロップできます。これは、マッピングをアルファベット順に並べることでより良い組織化をしたい場合に便利です。
 
-マッピングの順序は、2つ以上のデータレイヤー変数が同じベンダーデスティネーションにマップされている場合に重要です。この場合、最後のマッピングが優先されます。 --&gt;
+マッピングの順序は、2つ以上のデータレイヤー変数が同じベンダーデスティネーションにマップされている場合に重要です。この場合、最後のマッピングが優先されます。 -->
 
 ## マッピングの削除
 
@@ -150,4 +150,7 @@ AudienceStream属性は、あなたの訪問に関するエンリッチされた
 1. **Mapped Variables**タブをクリックします。
 1. 削除したいマッピングの隣にあるゴミ箱アイコンをクリックします。  
 1. **Apply**をクリックして確認します。  
+
+<blockquote>
 警告や確認メッセージは表示されません。削除されたマッピングは復元できません。
+</blockquote>

@@ -56,13 +56,13 @@ Tealium AI features include the following:
 
 ### AI Note Generation
 
-The AI Note Generation feature (also known as NoteGen Agent) automatically generates clear, contextually relevant notes for supported configuration components, such as Tealium iQ variables and AudienceStream audiences. This makes it easier for users to quickly understand a component&#39;s configuration and purpose.
+The AI Note Generation feature (also known as NoteGen Agent) automatically generates clear, contextually relevant notes for supported configuration components, such as Tealium iQ variables and AudienceStream audiences. This makes it easier for users to quickly understand a component's configuration and purpose.
 
-![](/images/administration/notegen.png)
+![](https://docs.tealium.com/images/administration/notegen.png)
 
 Click **AI Note** below the **Notes** field to generate a note for the selected configuration component.
 
-![](/images/administration/notegen-accept.png)
+![](https://docs.tealium.com/images/administration/notegen-accept.png)
 
 Click **Accept** to use that note.
 
@@ -82,25 +82,25 @@ The Tealium AI Assistant provides answers to questions about configuring and usi
 
 Access the AI Assistant by clicking the icon at the right side of the top header, as shown below.
 
-![](/images/administration/ai-assistant-icon.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-icon.png)
 
 #### Ask a question
 
 The AI Assistant provides a simple interface for asking questions, as shown in the following figure.
 
-![](/images/administration/ai-assistant-initial-screen.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-initial-screen.png)
 
 After you ask a question, the AI Assistant provides an answer. You may need to scroll down to see the complete response. A **Sources** link is included at the end of the response, which provides links to related documentation on [docs.tealium.com](https://docs.tealium.com/).
 
 To get help from the AI Assistant, enter your question in the text box at the bottom of the screen. The question and the results are displayed.
 
-The following example shows the results of asking &#34;How do I create a new attribute?&#34;.
+The following example shows the results of asking "How do I create a new attribute?".
 
-![](/images/administration/ai-assistant-example-question.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-example-question.png)
 
 The following example shows an expanded **Sources** link at the end of the response:
 
-![](/images/administration/ai-assistant-sources-link.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-sources-link.png)
 
 ----
 
@@ -108,7 +108,7 @@ The following example shows an expanded **Sources** link at the end of the respo
 
 **Effective Date: November 6, 2025**
 
-This Terms of Service (&#34;TOS&#34;) governs your use of the AI Assistant, which is provided and operated by Tealium Inc. (&#34;Tealium&#34;). By using the AI Assistant, you agree that you: (a) are authorized by your employer to use services that include artificial intelligence-enabled technologies, and (b) will comply with these terms. 
+This Terms of Service ("TOS") governs your use of the AI Assistant, which is provided and operated by Tealium Inc. ("Tealium"). By using the AI Assistant, you agree that you: (a) are authorized by your employer to use services that include artificial intelligence-enabled technologies, and (b) will comply with these terms. 
 
 1. **Purpose and Functionality.** The AI Assistant is an AI-powered chatbot designed to answer questions about how to use and configure Tealium’s software-as-a-service products. The AI Assistant is built on the AWS Bedrock platform. **The results are not reviewed by a human.** Therefore, use of the AI Assistant is not a substitute for professional advice.
 

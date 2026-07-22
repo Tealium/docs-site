@@ -11,7 +11,7 @@ The following summarizes the commonly used methods and properties of the iOS (Sw
 | ----- | ------ |
 | [`addRemoteCommand()`](#addremotecommand) | Adds remote commands for later execution |
 | [`adobeVisitorAuthState`](#adobevisitorauthstate) | Sets the current authentication state for the visitor.                                                                                                                                                                   |
-| [`adobeVisitorCustomVisitorId`](#adobevisitorcustomvisitorid) | Sets the known visitor ID to the Adobe ECID, if it&#39;s known at initialization time. If the ECID changes in the future, call `linkECIDToKnownIdentifier` to update the visitor ID.                                         |
+| [`adobeVisitorCustomVisitorId`](#adobevisitorcustomvisitorid) | Sets the known visitor ID to the Adobe ECID, if it's known at initialization time. If the ECID changes in the future, call `linkECIDToKnownIdentifier` to update the visitor ID.                                         |
 | [`adobeVisitorDataProviderId`](#adobevisitordataproviderid) | Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.                                                                                                                      |
 | [`adobeVisitorExistingEcid`](#adobevisitorexistingecid) | Sets the existing ECID from a previous installation to be used, such as the Adobe SDK, instead of requesting a new ECID.                                                                                                 |
 | [`adobeVisitorOrgId`](#adobevisitororgid) | String containing the Adobe Org ID including the `@` portion.                                                                                                                                                            |
@@ -28,7 +28,7 @@ The following summarizes the commonly used methods and properties of the iOS (Sw
 | [`connectivityRefreshInterval`](#connectivityrefreshinterval) | Sets the default connectivity refresh interval in seconds |
 | [`consentExpiry`](#consentexpiry) | Sets the expiration time of the user consent selections |
 | [`consentLoggingEnabled`](#consentloggingenabled) | Enables or disables the consent logging feature |
-| [`consentPolicy`](#consentpolicy) | Sets the [consent policy](/platforms/ios-swift/consent-management/#set-policy) (defaults to GDPR) |
+| [`consentPolicy`](#consentpolicy) | Sets the [consent policy](https://docs.tealium.com/platforms/ios-swift/consent-management/#set-policy) (defaults to GDPR) |
 | [`deepLinkTrackingEnabled`](#deeplinktrackingenabled) | Enables or disables automatic tracking of deep links |
 | [`desiredAccuracy`](#desiredaccuracy) | The accuracy of the location data that your app wants to receive |
 | [`diskStorageDirectory`](#diskstoragedirectory) | Sets the directory to be used for disk storage. Default `.caches`. |
@@ -78,7 +78,7 @@ The following summarizes the commonly used methods and properties of the iOS (Sw
 | [`timedEventTriggers`](#timedeventtriggers) | A list of `TimedEventTrigger` objects for automatically tracking timed events |
 | [`updateDistance`](#updatedistance)  | Sets the distance interval (meters) in which the location updates are received |
 | [`useHighAccuracy`](#usehighaccuracy) | Sets the location precision to low accuracy (default) or high accuracy |
-| [`visitorIdentityKey`](#visitoridentitykey) | A config key that specifies the data layer key that represents the customer identifier. It can be used to enable [visitor switching](/platforms/getting-started-mobile/identity-resolution/#visitor-switching). |
+| [`visitorIdentityKey`](#visitoridentitykey) | A config key that specifies the data layer key that represents the customer identifier. It can be used to enable [visitor switching](https://docs.tealium.com/platforms/getting-started-mobile/identity-resolution/#visitor-switching). |
 | [`webviewProcessPool`](#webviewprocesspool) | Prevents cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview |
 | [`webviewConfig`](#webviewconfig) | Permits a custom `WKWebviewConfiguration` object to be passed, which is used by the Tealium Tag Management webview |
 
@@ -98,9 +98,9 @@ The following example, placed prior to Tealium initialization, shows how add rem
 
 ```swift
 #if os(iOS)
-let remoteCommand = RemoteCommand(commandId: &#34;test&#34;,
-        description: &#34;test&#34;) { response in
-			print(&#34;Remote Command &#39;test&#39; executed&#34;)
+let remoteCommand = RemoteCommand(commandId: "test",
+        description: "test") { response in
+			print("Remote Command 'test' executed")
 }
 config.addRemoteCommand(remoteCommand)
 #endif
@@ -120,10 +120,10 @@ config.adobeVisitorAuthState = .unknown
 
 ### `adobeVisitorCustomVisitorId`
 
-Sets the known visitor ID to the Adobe ECID, if it&#39;s known at initialization time. If the ECID changes in the future, call [`linkECIDToKnownIdentifier`](/platforms/ios-swift/api/tealium/#linkecidtoknownidentifier) to update the visitor ID.
+Sets the known visitor ID to the Adobe ECID, if it's known at initialization time. If the ECID changes in the future, call [`linkECIDToKnownIdentifier`](https://docs.tealium.com/platforms/ios-swift/api/tealium/#linkecidtoknownidentifier) to update the visitor ID.
 
 ```swift
-config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorCustomVisitorId = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorDataProviderId`
@@ -131,7 +131,7 @@ config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655
 Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.
 
 ```swift
-config.adobeVisitorDataProviderId = &#34;01&#34;
+config.adobeVisitorDataProviderId = "01"
 ```
 
 ### `adobeVisitorExistingEcid`
@@ -141,7 +141,7 @@ Sets the existing ECID from a previous installation to be used, such as the Adob
 Example:
 
 ```swift
-config.adobeVisitorExistingEcid = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorExistingEcid = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorOrgId`
@@ -155,7 +155,7 @@ config.adobeVisitorOrgId = STRING_VALUE
 Example:
 
 ```swift
-config.adobeVisitorOrgId = &#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;
+config.adobeVisitorOrgId = "1A2A111A111150AA0A110A12@AdobeOrg"
 ```
 
 ### `adobeVisitorRetries`
@@ -178,29 +178,29 @@ config.appDelegateProxyEnabled = false
 
 ### `autoTrackingBlocklistFilename`
 
-For use with the [AutoTracking Module](/platforms/ios-swift/module-list/autotracking/#block-list).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/ios-swift/module-list/autotracking/#block-list).
 
 Sets the name of the block list file that contains a list of views to omit from automatic tracking. The file should be available in the Android `assets` directory.
 
 ```swift
-config.autoTrackingBlocklistFilename = &#34;autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistFilename = "autotracking-blocklist.json"
 ```
 
 ### `autoTrackingBlocklistURL`
 
-For use with the [AutoTracking Module](/platforms/ios-swift/module-list/autotracking/#block-list).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/ios-swift/module-list/autotracking/#block-list).
 
 Sets a URL to a JSON formatted block list file that contains a list of views to omit from automatic tracking.
 
 ```swift
-config.autoTrackingBlocklistUrl = &#34;https://example.com/autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistUrl = "https://example.com/autotracking-blocklist.json"
 ```
 
 ### `autoTrackingCollectorDelegate`
 
-For use with the [AutoTracking Module](/platforms/ios-swift/module-list/autotracking/).
+For use with the [AutoTracking Module](https://docs.tealium.com/platforms/ios-swift/module-list/autotracking/).
 
-The global delegate set on the `TealiumConfig` object that executes for views tracked by the [AutoTracking module](/platforms/ios-swift/module-list/autotracking/). Edit this delegate to customize the data included with specific views.
+The global delegate set on the `TealiumConfig` object that executes for views tracked by the [AutoTracking module](https://docs.tealium.com/platforms/ios-swift/module-list/autotracking/). Edit this delegate to customize the data included with specific views.
 
 ```swift
 config.autoTrackingCollectorDelegate = myCollectorDelegate
@@ -211,7 +211,7 @@ config.autoTrackingCollectorDelegate = myCollectorDelegate
 Sets a list of event names for which batching is bypassed (sent as individual events).
 
 ```swift
-config.batchingBypassKeys = [&#34;home_screen&#34;]
+config.batchingBypassKeys = ["home_screen"]
 ```
 
 ### `batchingEnabled`
@@ -232,7 +232,7 @@ config.batchSize = 8
 
 ### `Collectors`
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors. Default collectors are denoted by a `*` next to the collector name.
 
@@ -244,9 +244,9 @@ The following table lists the available collectors. Default collectors are denot
 | `Device`        | `Collectors.Device`       |
 | `Lifecycle`     | `Collectors.Lifecycle`    |
 
-These modules are enabled or disabled using the [`TealiumConfig`](/platforms/ios-swift/api/tealium-config/) `collectors` property.
+These modules are enabled or disabled using the [`TealiumConfig`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/) `collectors` property.
 
-The following example adds to existing list of collectors you&#39;re using:  
+The following example adds to existing list of collectors you're using:  
 
 ```swift
 config.collectors = [Collectors.AdobeVisitor]
@@ -283,7 +283,7 @@ config.consentExpiry = (90, .days)
 
 ### `consentLoggingEnabled`
 
-Enables the [Consent Logging]() feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.
+Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.
 
 ```swift
 config.consentLoggingEnabled = true
@@ -291,7 +291,7 @@ config.consentLoggingEnabled = true
 
 ### `consentPolicy`
 
-Sets the [consent policy](/platforms/ios-swift/consent-management/#set-policy). Consent manager is only enabled if this property is set.
+Sets the [consent policy](https://docs.tealium.com/platforms/ios-swift/consent-management/#set-policy). Consent manager is only enabled if this property is set.
 
 
 ```swift
@@ -326,7 +326,7 @@ The available `desiredAccuracy` options are:
 | `.withinOneKilometer`    | Accuracy to the nearest 1 kilometer                                                                          |
 | `.withinThreeKilometers` | Accuracy to the nearest 3 kilometers                                                                         |
 
-Learn more about Apple&#39;s [desired accuracy constants](https://developer.apple.com/documentation/corelocation/cllocationaccuracy).
+Learn more about Apple's [desired accuracy constants](https://developer.apple.com/documentation/corelocation/cllocationaccuracy).
 
 ### `diskStorageDirectory`
 
@@ -398,7 +398,7 @@ config.existingVisitorId = id
 Sets the name of a local geofences file asset. Do not include the file extension.
 
 ```swift
-config.geofenceFileName = &lt;String&gt;
+config.geofenceFileName = <String>
 ```
 
 | Type     | Description        | Example          |
@@ -422,7 +422,7 @@ config.geofenceTrackingEnabled = false
 Sets the URL of a hosted geofences file.
 
 ```swift
-config.geofenceUrl = &lt;String (url)&gt;
+config.geofenceUrl = <String (url)>
 ```
 
 | Type     | Description                 | Example                                  |
@@ -431,20 +431,24 @@ config.geofenceUrl = &lt;String (url)&gt;
 
 ### `hostedDataLayerExpiry`
 
-Sets an expiration on the hosted data layer data. If this property isn&#39;t set, hosted data layer items persist for 7 days by default, and are re-downloaded once this period has expired.
+Sets an expiration on the hosted data layer data. If this property isn't set, hosted data layer items persist for 7 days by default, and are re-downloaded once this period has expired.
 
 ```swift
 config.hostedDataLayerExpiry = (1, unit: .minutes)
 ```
 
+
+<blockquote>
 Setting a shorter expiration time reduces mobile device battery life due to increased network requests.
+</blockquote>
+
 
 ### `hostedDataLayerKeys`
 
 Sets the hosted data layer keys (lookup variables) used by the hosted data layer module when retrieving data layer IDs.
 
 ```swift
-config.hostedDataLayerKeys = [&#34;product_view&#34; : &#34;product_id&#34;]
+config.hostedDataLayerKeys = ["product_view" : "product_id"]
 ```
 
 ### `isCollectEnabled`
@@ -506,7 +510,11 @@ Sets the log level property, which controls how much information is logged, to o
 config.logLevel = .debug
 ```
 
+
+<blockquote>
 View your development logs in the Xcode console or the Mac Console app. View your production logs with the Console app by connecting your iOS device.
+</blockquote>
+
 
 ### `logType`
 
@@ -574,7 +582,7 @@ config.onConsentExpiration = {
 Overrides the Tealium Collect profile to send data to a different Tealium profile.
 
 ```swift
-config.overrideCollectProfile = &#34;main&#34;
+config.overrideCollectProfile = "main"
 ```
 
 ### `overrideCollectURL`
@@ -597,7 +605,7 @@ https://collect.tealiumiq.com/event/
 The property is used to set a custom hostname or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:
 
 ```swift
-let url = &#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;
+let url = "https://collect-eu-central-1.tealiumiq.com/event/"
 config.overrideCollectURL = url
 ```
 
@@ -621,7 +629,7 @@ https://collect.tealiumiq.com/bulk-event/
 The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:
 
 ```swift
-let url = &#34;https://collect-eu-central-1.tealiumiq.com/bulk-event/&#34;
+let url = "https://collect-eu-central-1.tealiumiq.com/bulk-event/"
 config.overrideCollectBatchURL = url
 ```
 
@@ -630,7 +638,7 @@ config.overrideCollectBatchURL = url
 Overrides the default Collect domain. Set the value to a hostname with the protocol excluded, such as `my-company.com`. Use this property for both batch and single event dispatches. If `overrideCollectURL` or `overrideCollectBatchURL` is populated, this property takes precedence.
 
 ```swift
-config.overrideCollectDomain = &#34;my-company.com&#34;
+config.overrideCollectDomain = "my-company.com"
 ```
 
 ### `overrideConsentCategoriesKey`
@@ -638,28 +646,28 @@ config.overrideCollectDomain = &#34;my-company.com&#34;
 Overrides the name of the consent categories attribute sent in consent events. Use this to support custom enforcement of server-side consent. The default value is `consent_categories`.
 
 ```swift
-config.overrideConsentCategoriesKey = &#34;consent_categories_granted&#34;
+config.overrideConsentCategoriesKey = "consent_categories_granted"
 ```
 
 Default consent event:
 ```
 {
-    &#34;tealium_event&#34;      : &#34;grant_partial_consent&#34;,
-    &#34;policy&#34;             : &#34;gdpr&#34;,
-    &#34;consent_categories&#34; : [&#34;Affiliates&#34;, &#34;Social&#34;]
+    "tealium_event"      : "grant_partial_consent",
+    "policy"             : "gdpr",
+    "consent_categories" : ["Affiliates", "Social"]
 }
 ```
 
 Consent event with override:
 ```
 {
-    &#34;tealium_event&#34;              : &#34;grant_partial_consent&#34;,
-    &#34;policy&#34;                     : &#34;gdpr&#34;,
-    &#34;consent_categories_granted&#34; : [&#34;Affiliates&#34;, &#34;Social&#34;]
+    "tealium_event"              : "grant_partial_consent",
+    "policy"                     : "gdpr",
+    "consent_categories_granted" : ["Affiliates", "Social"]
 }
 ```
 
-Learn more about [disabling automatic enforcement of server-side consent]().
+Learn more about [disabling automatic enforcement of server-side consent](https://docs.tealium.com/server-side-consent-management/).
 
 
 ### `publishSettingsProfile`
@@ -667,7 +675,7 @@ Learn more about [disabling automatic enforcement of server-side consent]().
 Overrides the publish settings profile.
 
 ```swift
-config.publishSettingsProfile = &#34;main&#34;
+config.publishSettingsProfile = "main"
 ```
 
 ### `publishSettingsURL`
@@ -675,7 +683,7 @@ config.publishSettingsProfile = &#34;main&#34;
 Overrides the publish settings URL.
 
 ```swift
-config.publishSettingsURL = &#34;https://www.example.com/custom/publish/settings.html&#34;
+config.publishSettingsURL = "https://www.example.com/custom/publish/settings.html"
 ```
 
 ### `remoteAPIEnabled`
@@ -697,7 +705,7 @@ let remoteCommands = config.remoteCommands
 ```
 
 ### `remoteHTTPCommandDisabled`
-Disables the built-in remote HTTP command (see [Swift Module: RemoteCommands](/platforms/ios-swift/module-list/remote-commands/)).
+Disables the built-in remote HTTP command (see [Swift Module: RemoteCommands](https://docs.tealium.com/platforms/ios-swift/module-list/remote-commands/)).
 
 ```swift
 config.remoteHTTPCommandDisabled = true
@@ -749,17 +757,25 @@ If set to `true` (default), this method determines whether to add a `WKWebView` 
 config.shouldAddCookieObserver = false
 ```
 
-The [`shouldAddCookieObserver`](#shouldaddcookieobserver) property permits using your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in `WKWebView`, which prevents your own observer from being called.   
+
+<blockquote>
+The [`shouldAddCookieObserver`](#shouldaddcookieobserver) property permits using your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in `WKWebView`, which prevents your own observer from being called.
+</blockquote>
+  
 
 ### `shouldUseRemotePublishSettings`
 
-Sets the [Mobile Publish Settings]() (version 1.9.0&#43;) to enabled (default) or disabled.
+Sets the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (version 1.9.0+) to enabled (default) or disabled.
 
 ```swift
 config.shouldUseRemotePublishSettings = false
 ```
 
+
+<blockquote>
 Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature using `config.shouldUseRemotePublishSettings = false` in the Swift installation. Failure to do causes initialization failures and prevents tracking.
+</blockquote>
+
 
 ### `skAdAttributionEnabled`
 Enables or disables the Apple SKAdNetwork API in the Attribution module (default: disabled).                         
@@ -772,13 +788,13 @@ config.skAdAttributionEnabled = true
 Dictionary defining the event for which to call the `SKAdNetwork.updateConversionValue()` method and the key to use as the conversion value.                         
 
 ```swift
-config.skAdConversionKeys = [&#34;purchase&#34;: &#34;number_of_coins&#34;]
+config.skAdConversionKeys = ["purchase": "number_of_coins"]
 ```
 
 In this case, the below event will equate to: `SKAdNetwork.updateConversionValue(40)`
 
 ```swift
-tealium?.track(&#34;purchase&#34;, dataLayer: [&#34;number_of_coins&#34;: 40])
+tealium?.track("purchase", dataLayer: ["number_of_coins": 40])
 ```
 
 ### `tagManagementOverrideURL`
@@ -788,7 +804,7 @@ Overrides the default URL used by the Tag Management module. This is needed if y
 The following example shows how to override the default URL used by the Tag Management module.
 
 ```swift
-let url = &#34;https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html&#34;
+let url = "https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html"
 config.tagManagementOverrideURL =  url
 ```
 
@@ -814,9 +830,9 @@ TealiumConfig(account:String, profile:String, environment:String, dataSource:Str
 A list of `TimedEventTrigger` objects for automatically tracking timed events.
 
 ```swift
-config.timedEventTriggers = [TimedEventTrigger(start: &#34;START_EVENT&#34;,
-                                               stop: &#34;STOP_EVENT&#34;,
-                                               name: &#34;TIMED_EVENT_NAME&#34;)]
+config.timedEventTriggers = [TimedEventTrigger(start: "START_EVENT",
+                                               stop: "STOP_EVENT",
+                                               name: "TIMED_EVENT_NAME")]
 ```
 The following are `TimedEventTrigger` parameters:  
 
@@ -824,18 +840,22 @@ The following are `TimedEventTrigger` parameters:
 |:----------|:----------|:----------------------------------------------------------------------|
 | `start`   | `String`  | Name of the `TealiumEvent` to start the timed event                   |
 | `stop`    | `String`  | Name of the `TealiumEvent`  to stop the timed event                   |
-| `name`    | `String?` | (Optional) Name of timed event (default: `&#34;START_EVENT::STOP_EVENT&#34;`) |
+| `name`    | `String?` | (Optional) Name of timed event (default: `"START_EVENT::STOP_EVENT"`) |
 
 
 ### `updateDistance`
 
 Sets the distance interval (meters) in which location updates are received.
 
+
+<blockquote>
 Only use this method if `useHighAccuracy` is set to `true`.
+</blockquote>
+
 
 
 ```swift
-config.updateDistance = &lt;Double&gt;
+config.updateDistance = <Double>
 ```
 
 | Type     | Description                                                           | Example |
@@ -846,10 +866,10 @@ Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;)
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE")
       // Tealium Location module config methods
       config.useHighAccuracy = true
       config.updateDistance = 150.0
@@ -862,16 +882,16 @@ Sets the location precision to low accuracy (default) or high accuracy.
 
 The property is disabled by default, which sets the location precision to low accuracy. If the location enabled device moves 500 meters or more, then this is considered a significant location changes causing a location update. Location updates typically take longer than five minutes with this setting.
 
-Learn more about [Apple&#39;s significant-change location service](https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service).
+Learn more about [Apple's significant-change location service](https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service).
 
 If enabled, the property sets the location of data precision to the highest possible accuracy. The initial event is delivered as quickly as possible and then continues to determine the location and delivers additional events, as necessary, when that data is available.
 
-Learn more about [Apple&#39;s accuracy of location data](https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift).
+Learn more about [Apple's accuracy of location data](https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift).
 
 Using high accuracy results in greater battery consumption for your device than low accuracy, due to more frequent location updates.   
 
 ```swift
-config.useHighAccuracy = &lt;Bool&gt;
+config.useHighAccuracy = <Bool>
 ```
 
 | Type      | Description                     | Example |
@@ -883,10 +903,10 @@ Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;)
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE")
       // Tealium Location module config methods
       config.useHighAccuracy = true
       config.updateDistance = 150.0
@@ -901,11 +921,11 @@ Example:
 
 ```swift
   func start() {
-      let customerIdentifierKey = &#34;customer_id&#34;
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;)
+      let customerIdentifierKey = "customer_id"
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE")
       config.visitorIdentityKey = customerIdentifierKey
       // use the same customerIdentifierKey for storing a specific customer identifier in the data layer
   }
@@ -926,7 +946,11 @@ config.webviewProcessPool = processPool
 
 Permits a custom `WKWebviewConfiguration` object to be passed, which is used by the Tealium Tag Management webview. If using this option instead of `webviewProcessPool` option, set the singleton `WKProcessPool` through the customizable `WKWebviewConfiguration` `processPool` property.
 
+
+<blockquote>
 It is recommended to use this option as it may be required if future API changes are made to `WKWebView`.
+</blockquote>
+
 
 Example:   
 

@@ -25,7 +25,7 @@ This approach aims to collect maximum data for analytics and ad conversions, usi
 
 ## Tips
 
-This section provides general information regarding tag configuration and mapping options. For details on how to integrate Google consent mode with Tealium consent register (a feature of client-side [consent integrations]() and [consent manager]()), refer to [Tealium consent register](). This is the recommended implementation approach.
+This section provides general information regarding tag configuration and mapping options. For details on how to integrate Google consent mode with Tealium consent register (a feature of client-side [consent integrations](https://docs.tealium.com/about-consent-integrations/) and [consent manager](https://docs.tealium.com/about-consent-management/)), refer to [Tealium consent register](https://docs.tealium.com/consent-register/). This is the recommended implementation approach.
 
 To allow the Google Consent Mode tag to dynamically adapt to user consent status, we recommend the following:
 
@@ -34,11 +34,11 @@ To allow the Google Consent Mode tag to dynamically adapt to user consent status
   * Map Google tags to their respective consent categories in either consent integrations or consent management.
 * Advanced consent mode:
   * Set Google Consent Mode tag and Google tags to **Strictly Necessary** in consent integrations or omit the tag from consent management.
-  * Map end-user consent choices to Google consent mode settings using a JavaScript extension. For details, see [consent purpose mapping]().
+  * Map end-user consent choices to Google consent mode settings using a JavaScript extension. For details, see [consent purpose mapping](https://docs.tealium.com/google-consent-mode/#consent-purpose-mapping).
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -55,11 +55,11 @@ When `ads_data_redaction` is `true` and `ad_storage` is `denied`, ad click ident
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -79,7 +79,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -87,7 +87,7 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Type | Description |
 |:---------|:------------|:------------|

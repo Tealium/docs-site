@@ -3,22 +3,22 @@ title: 属性の管理
 description: この記事では、属性の管理方法について説明します。
 url: https://docs.tealium.com/ja/server-side/attributes/manage-attributes/
 ---
-**AudienceStream** **&amp;gt; 訪問/訪問属性** にアクセスして、属性を表示します。テーブルの上部にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+**AudienceStream** **&gt; 訪問/訪問属性** にアクセスして、属性を表示します。テーブルの上部にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
 
-![](/images/server-side/ea-filter-attributes.png)
+![](https://docs.tealium.com/images/server-side/ea-filter-attributes.png)
 
 ## 属性の追加
 
 イベント属性と訪問または訪問属性を追加するプロセスは似ています。以下の手順でオーディエンス属性を追加する方法を示します：
 
-1. **&#43; 属性を追加** をクリックします。
+1. **+ 属性を追加** をクリックします。
 1. **属性を追加** ダイアログで、属性の範囲として **訪問** または **訪問** を選択し、**続行** をクリックします。  
-      ![](/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
 1. データタイプ（**訪問** または **訪問**）を選択し、続行をクリックします。
 1. （必須）**タイトル** フィールドに説明的な名前を入力します。   
 イベント属性の場合、**タイトル** には文字、数字、アンダースコア、ドル記号、角括弧、ピリオドのみを含めることができます。イベント属性の名前は、実装された変数の名前と一致する必要があります。  
 訪問と訪問属性の場合、**タイトル** には二重引用符を除く任意のASCII文字を使用できます。   
-      ![](/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
 1. **ノート** フィールドに、属性の目的やメカニズムを説明する役立つメモを入力します。
 1. （オプション）訪問データにPIIデータが含まれている場合は、**制限されたデータ** チェックボックスを選択します。
 1. （オプション）属性をAudienceDBの列に含めるために、**AudienceDB** チェックボックスをチェックします。  
@@ -30,22 +30,26 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-attributes/
 属性を複製するには、次の手順を使用します：
 
 1. 複製したい属性をクリックし、次に複製アイコンをクリックします。  
-      ![](/images/server-side/whiteui-usingattributes-duplicateattribute.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-usingattributes-duplicateattribute.png)
 1. 必要に応じて編集し、**保存** をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
 ## 属性の編集
 
- 事前にロードされた属性は変更できませんが、事前にロードされた属性を複製して、そのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれます。 
 
-**Transform &gt; Visitor / Visit Attributes** にアクセスして、属性を表示します。左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+<blockquote>
+事前にロードされた属性は変更できませんが、事前にロードされた属性を複製して、そのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれます。
+</blockquote>
 
-![](/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png)
+
+**Transform > Visitor / Visit Attributes** にアクセスして、属性を表示します。左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+
+![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png)
 
 属性を編集するには、次の手順を使用します：
 
 1. 編集したい属性をクリックし、鉛筆アイコンをクリックします。  
-      ![](/images/server-side/whiteui-usingattributes-editattribute.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-usingattributes-editattribute.png)
 1. 変更を行い、**保存** をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
@@ -55,9 +59,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-attributes/
 
 1. 削除する属性をクリックします。
 1. 削除アイコンをクリックします。または 1. 削除（ゴミ箱）アイコンをクリックします。
-      ![](/images/server-side/whiteui-usingattributes-deleteattribute.png)  
+      ![](https://docs.tealium.com/images/server-side/whiteui-usingattributes-deleteattribute.png)  
 ルール、エンリッチメント、またはオーディエンスによって現在使用されている属性を削除しようとすると、次のメッセージが表示されます：  
-      ![](/images/server-side/attribute-delete-in-use.png)  
+      ![](https://docs.tealium.com/images/server-side/attribute-delete-in-use.png)  
 属性を削除するには、ルール、エンリッチメント、またはオーディエンスから削除してから再試行してください。
 1. **属性を削除** ダイアログで **削除** をクリックして属性を削除します。
 1. 変更を適用するためにプロファイルを保存して公開します。

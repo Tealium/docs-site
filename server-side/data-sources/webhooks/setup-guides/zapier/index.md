@@ -31,12 +31,12 @@ tealium_datasource=DATA_SOURCE_KEY
 tealium_event=EVENT_NAME
 ```
 
-To add the Zapier data source to your Tealium profile, see [Data Sources](). After you add and connect the data source, save and publish your profile.
+To add the Zapier data source to your Tealium profile, see [Data Sources](https://docs.tealium.com/about-data-sources/). After you add and connect the data source, save and publish your profile.
 
 ## Zapier setup
 
 After you have your data source endpoint, go to your Zapier account to create the webhook. When creating the Zapier webhook, use the URL and query string parameters for the data source, followed by any additional event attributes that you need. If your Zapier events are intended to enrich visitor profiles within AudienceStream, be sure to include a user ID.
 
-![](/images/server-side/zapierwebhooksetup-png.png)
+![](https://docs.tealium.com/images/server-side/zapierwebhooksetup-png.png)
 
 For information on setting up Zapier Webhooks, see [Send Webhooks in Zaps](https://help.zapier.com/hc/en-us/articles/8496326446989-Send-webhooks-in-Zaps).

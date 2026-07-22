@@ -7,24 +7,24 @@ url: https://docs.tealium.com/ja/server-side/trace/view/
 
 トレース画面から、トレース要約のアイコンをクリックしてイベントを再生、一時停止、または再開することができます。
 
-![](/images/server-side/trace-icons.png)
+![](https://docs.tealium.com/images/server-side/trace-icons.png)
 
 以下の表は、各トレースアイコンの詳細を提供します。
 
 | アイコン | 説明 |
 | ---- | ----------- |
-| ![](/images/server-side/trace-icon-play-normal.png)     | 通常速度で再生します。イベントを再生する際のデフォルト構成は通常速度です。|
-| ![](/images/server-side/trace-icon-play-2x.png)         | 通常の2倍の速度で再生します。|
-| ![](/images/server-side/trace-icon-pause.png)           | 進行中のトレースを一時停止します。一時停止中は、新しいイベントの処理は続けられますが、新しいログエントリは表示されません。一時停止を再度クリックして再開するまでです。|
-| ![](/images/server-side/trace-icon-view-profile.png)    | 最新の訪問プロファイルを表示します。JSON形式で最新の訪問のプロファイルのスナップショットを表示します。**OK** をクリックしてこのウィンドウを終了します。|
-| ![](/images/server-side/trace-icon-get-code-replay.png) | イベントを再生するためのコードを取得します。各イベントに対して `curl` コマンドを生成し、ターミナルウィンドウで `curl` コマンドを実行して、ウェブページ上での構成ステップを再現することなくトレースでイベントを再生します。&lt;ul&gt;&lt;li&gt;単一のイベントを再生するには、対応する `curl` コマンドをターミナルウィンドウにコピーして貼り付け、**Enter** を押してコマンドを実行します。&lt;/li&gt;&lt;li&gt;複数のイベントを再生するには、**Download Bash Script** をクリックして .sh ファイルをダウンロードします。ターミナルウィンドウで .sh スクリプトを実行します。&lt;/li&gt;&lt;/ul&gt; |
-| ![](/images/server-side/trace-icon-exit-race.png)|    現在のトレースを終了します。ウェブページ上でトレースがまだアクティブな場合、トレースIDを使用してトレースに再参加することができます。                   |
+| ![](https://docs.tealium.com/images/server-side/trace-icon-play-normal.png)     | 通常速度で再生します。イベントを再生する際のデフォルト構成は通常速度です。|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-play-2x.png)         | 通常の2倍の速度で再生します。|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-pause.png)           | 進行中のトレースを一時停止します。一時停止中は、新しいイベントの処理は続けられますが、新しいログエントリは表示されません。一時停止を再度クリックして再開するまでです。|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-view-profile.png)    | 最新の訪問プロファイルを表示します。JSON形式で最新の訪問のプロファイルのスナップショットを表示します。**OK** をクリックしてこのウィンドウを終了します。|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-get-code-replay.png) | イベントを再生するためのコードを取得します。各イベントに対して `curl` コマンドを生成し、ターミナルウィンドウで `curl` コマンドを実行して、ウェブページ上での構成ステップを再現することなくトレースでイベントを再生します。<ul><li>単一のイベントを再生するには、対応する `curl` コマンドをターミナルウィンドウにコピーして貼り付け、**Enter** を押してコマンドを実行します。</li><li>複数のイベントを再生するには、**Download Bash Script** をクリックして .sh ファイルをダウンロードします。ターミナルウィンドウで .sh スクリプトを実行します。</li></ul> |
+| ![](https://docs.tealium.com/images/server-side/trace-icon-exit-race.png)|    現在のトレースを終了します。ウェブページ上でトレースがまだアクティブな場合、トレースIDを使用してトレースに再参加することができます。                   |
 
 ## イベントの詳細を表示する
 
 次の画像は、トレースインターフェースの部分を示しています。**Trace Log** は、アクション、イベント、およびオーディエンスのリアルタイムスクローリングの要約です。**Overview Panel** は、詳細なアクティビティのスナップショットを表示します。**Search** は、訪問および訪問スコープの属性リストの特定の属性を見つけるために使用できます。リストの属性はデータタイプ（数字、日付など）ごとにグループ化されています。**Filters** は、これらの属性をフィルタリングするために使用できます。
 
-![](/images/server-side/trace-log-sections.png)
+![](https://docs.tealium.com/images/server-side/trace-log-sections.png)
 
 ### フィルタ
 
@@ -41,7 +41,11 @@ AudienceStreamの処理後に値を取得した属性のみを表示します。
 
 トレースログでは、クリック可能なテキストは青色、その他のテキストは灰色です。ログエントリの隣のタイムスタンプは、ログエントリの時間を表示します。イベントの詳細を表示するには、青いイベントテキストをクリックして、イベントの詳細ビューをスライドアウトします。
 
+
+<blockquote>
 トレースウィンドウを最小化して、UIの他の機能に移る間、プロセスを続けることができます。
+</blockquote>
+
 
 次の表は、さまざまなトレースイベントの意味を説明しています：
 

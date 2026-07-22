@@ -13,13 +13,13 @@ There are a number of ways that you can separate live events from your test even
 
 You can set up an event boolean attribute `test_data` with enrichments based on an existing event attribute.
 
-![](/images/server-side/save-publish/test-data-event-boolean.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-data-event-boolean.png)
 
 ### Extension
 
 You can use an extension to set a test flag before the data is passed to the server-side.
 
-![](/images/server-side/save-publish/test-data-iq-extension.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-data-iq-extension.png)
 
 Use this value to leverage existing data or a cookie value you’ve set through a query string.
 
@@ -28,9 +28,9 @@ Use this value to leverage existing data or a cookie value you’ve set through 
 You can set a test flag within the code of your **QA** or **Dev** site as part of the data layer:
 
 ```html
-&lt;script&gt;
-utag_data.test_data = &#39;true&#39;;
-&lt;/script&gt;
+<script>
+utag_data.test_data = 'true';
+</script>
 ```
 
 ### File import
@@ -44,14 +44,14 @@ For live file import files, if you omit the column from the file, it still proce
 If you are submitting events through the API, append `test_data=true` to your call and no additional enrichments are needed.
 
 ```
-curl -i &#34;https://collect.tealiumiq.com/event?tealium_account=YOURACCOUNT&amp;tealium_profile-YOURPROFILE&amp;tealium_datasource-ABCDEF&amp;tealium_event=user_login&amp;customer_email=user@example.com&amp;test_data=true&#34;
+curl -i "https://collect.tealiumiq.com/event?tealium_account=YOURACCOUNT&tealium_profile-YOURPROFILE&tealium_datasource-ABCDEF&tealium_event=user_login&customer_email=user@example.com&test_data=true"
 ```
 
 If you use the Collect API and the `POST` method, include a `test_data` attribute in the JSON payload with a value of `true`:
 
 ```json
 {
-    &#34;test_data&#34; : true
+    "test_data" : true
 }
 ```
 
@@ -59,15 +59,15 @@ If you use the Collect API and the `POST` method, include a `test_data` attribut
 
 After you have a test attribute that identifies test events, create a duplicate of each event feed and the `test_data` flag:
 
-![](/images/server-side/save-publish/test-data-event-feed.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-data-event-feed.png)
 
-![](/images/server-side/save-publish/test-data-event-feed-details.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-data-event-feed-details.png)
 
 ### Test connectors
 
 We recommend that you create separate connectors for test feeds.
 
-![](/images/server-side/save-publish/test-data-separate-connectors.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-data-separate-connectors.png)
 
 We also recommend that you set the title of a test connector with the following:
 
@@ -76,7 +76,11 @@ We also recommend that you set the title of a test connector with the following:
 
 Example: `Test Cart Add Events`
 
-If you use this method, ensure that all connector actions are updated when you are looking to do make changes. 
+
+<blockquote>
+If you use this method, ensure that all connector actions are updated when you are looking to do make changes.
+</blockquote>
+
 
 ### Update connector and actions
 
@@ -87,13 +91,13 @@ If you want to update a connector and its actions, use the following steps:
 1. For each of the connector actions, update the source to point to the matching `Test Data` event feed.
 1. Save and publish.
 
-From here, make your changes in this new test connector until it&#39;s working as expected.
+From here, make your changes in this new test connector until it's working as expected.
 
 ### Publish updates
 
 After testing is complete and you are ready to deploy your changes, follow these steps to promote your test connector to the live environment:
 
-1. Delete the connector that&#39;s in the live environment.
+1. Delete the connector that's in the live environment.
 1. Update the test connector:
     * Rename it to the `Live version.
     * Remove the test flag.
@@ -114,21 +118,25 @@ We highly recommend using the **Notes** field for each connector to provide addi
 
 For this example, we use a badge attribute called `Test User`. This badge uses a rule that evaluates on any event when a query string parameter contains `tealiumtest=true`. This badge uses a second rule to unassign it from a visitor when the query string parameter contains `tealiumtest=false`.
 
-![](/images/server-side/save-publish/test-user-badge-rules.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-user-badge-rules.png)
 
+
+<blockquote>
 The badge and rule condition can be customized, but they should be unique so that regular site visitors do not get this badge applied to them.
+</blockquote>
+
 
 ### Configure an attribute for testing
 
 To test a specific attribute, for example a string, include a specific rule that the `Test User` badge is assigned.
 
-![](/images/server-side/save-publish/attribute-for-testing.png)
+![](https://docs.tealium.com/images/server-side/save-publish/attribute-for-testing.png)
 
 ### Configure an audience for testing
 
 If you are testing a specific audience, add a condition that the `Test User` badge has to be assigned. This prevents all other users from joining that audience and lets you test any connector actions dependent on that specific audience.
 
-![](/images/server-side/save-publish/audience-for-testing.png)
+![](https://docs.tealium.com/images/server-side/save-publish/audience-for-testing.png)
 
 ### Test
 
@@ -138,6 +146,6 @@ For example: `http://www.example.com/?tealium_test=true`
 
 After your trace starts, you will see the **Test User** badge assigned.
 
-![](/images/server-side/save-publish/test-badge-trace-example.png)
+![](https://docs.tealium.com/images/server-side/save-publish/test-badge-trace-example.png)
 
 Testing this way before publishing to the live environment helps you validate your configuration, reduces errors, and increases the accuracy of your strategy.

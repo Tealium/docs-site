@@ -3,11 +3,15 @@ title: Snowflake AI Connector Setup Guide
 description: Set up the Snowflake AI connector to send Tealium event and visitor data to Snowflake Cortex models or deployed model endpoints for real-time enrichment.
 url: https://docs.tealium.com/server-side-connectors/snowflake-ai-connector/
 ---
-For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions]().
+
+<blockquote>
+For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -15,7 +19,7 @@ After adding the connector, configure the following settings:
 * **User Name**: The Snowflake account user name. We recommend using a Snowflake service user.
 * **Private Key**: Private key for the user.
 * **Private Key Passphrase**: (Optional) Provide the encrypted private key passphrase if the private key is encrypted. Do not assign a value if the private key is unencrypted.
-* **User Role**: (Optional) Specify the Snowflake role to use for authentication and model endpoint access. If left blank, the user&#39;s default role is used. The selected role must be granted to the configured user and have permission to access Snowflake Cortex APIs and any deployed model endpoints.
+* **User Role**: (Optional) Specify the Snowflake role to use for authentication and model endpoint access. If left blank, the user's default role is used. The selected role must be granted to the configured user and have permission to access Snowflake Cortex APIs and any deployed model endpoints.
 
 ## Actions
 
@@ -30,7 +34,7 @@ After adding the connector, configure the following settings:
 
 | Parameter | Description |
 | --- | --- |
-| Model | Enter the Snowflake Cortex model to use for this request.&lt;br&gt;Provide the exact model name (for example, `llama3.1-8b`). Model availability depends on your Snowflake region and configuration, and invalid model names will result in an error.&lt;br&gt;You can also enter a fully-qualified fine-tuned model name (`DATABASE.SCHEMA.MODEL`) if configured in Snowflake.&lt;br&gt;For information on model availability, see [Snowflake: Model availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#model-availability). |
+| Model | Enter the Snowflake Cortex model to use for this request.<br>Provide the exact model name (for example, `llama3.1-8b`). Model availability depends on your Snowflake region and configuration, and invalid model names will result in an error.<br>You can also enter a fully-qualified fine-tuned model name (`DATABASE.SCHEMA.MODEL`) if configured in Snowflake.<br>For information on model availability, see [Snowflake: Model availability](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#model-availability). |
 
 #### Tealium Context
 
@@ -44,7 +48,7 @@ The connector automatically passes `tealium_account`, `tealium_profile`, and `te
 | Include Visitor Profile | (Available for audience actions) When enabled, the full visitor profile is made available to the prompt as `{{visitor_profile}}`. |
 | Include Current Visit | (Available for audience actions) When enabled, current visit attributes are added to the `{{visitor_profile}}` object (keyed by attribute name). |
 | Include Event Payload | (Available for event actions) When enabled, the current event data is made available to the prompt as `{{event_payload}}`. |
-| Prompt | Enter the prompt that will be sent to the selected Snowflake Cortex model.&lt;br&gt;Use double curly braces for mapped parameters, for example: `{{product_id}}`, `{{event_value}}`.&lt;br&gt;Reference `{{visitor_profile}}` (audience actions) or `{{event_payload}}` (event actions) after enabling the corresponding option.&lt;br&gt;Describe how the model should determine and set each output field.&lt;br&gt;Do not include JSON formatting instructions. The connector enforces the JSON structure automatically via structured output mapping. |
+| Prompt | Enter the prompt that will be sent to the selected Snowflake Cortex model.<br>Use double curly braces for mapped parameters, for example: `{{product_id}}`, `{{event_value}}`.<br>Reference `{{visitor_profile}}` (audience actions) or `{{event_payload}}` (event actions) after enabling the corresponding option.<br>Describe how the model should determine and set each output field.<br>Do not include JSON formatting instructions. The connector enforces the JSON structure automatically via structured output mapping. |
 
 #### Advanced model settings
 
@@ -68,7 +72,7 @@ The connector automatically passes `tealium_account`, `tealium_profile`, and `te
 
 | Parameter | Description |
 | --- | --- |
-| Endpoint URL | Enter the URL of your deployed public endpoint generated by Snowflake Model Registry/Snowpark Container Services. For example, `https://&lt;service-id&gt;.snowflakecomputing.app/predict`.&lt;br&gt;This URL is used to invoke the model and to generate the OAuth scope required for authentication.&lt;br&gt;The endpoint must be publicly accessible and configured for real-time inference.&lt;br&gt;Your Snowflake user or role must have permission to invoke the endpoint. |
-| Input Data | Map Tealium event or visitor attributes to the input fields expected by your deployed model.&lt;br&gt;Input field names must exactly match the feature names required by your model.&lt;br&gt;At least one mapping is required. |
-| Response Path | Optional path to the JSON object in the model response whose fields will be sent to Tealium Collect as attributes.&lt;br&gt;Use dot notation and array indexes, for example: `data[0][1].PREDICTION` or `predictions[0]`. If the value at the path is a JSON string, it will be parsed automatically.&lt;br&gt;If left blank, the root of the response is used as the JSON object.&lt;br&gt;Nested objects and arrays are serialized as JSON strings. |
+| Endpoint URL | Enter the URL of your deployed public endpoint generated by Snowflake Model Registry/Snowpark Container Services. For example, `https://<service-id>.snowflakecomputing.app/predict`.<br>This URL is used to invoke the model and to generate the OAuth scope required for authentication.<br>The endpoint must be publicly accessible and configured for real-time inference.<br>Your Snowflake user or role must have permission to invoke the endpoint. |
+| Input Data | Map Tealium event or visitor attributes to the input fields expected by your deployed model.<br>Input field names must exactly match the feature names required by your model.<br>At least one mapping is required. |
+| Response Path | Optional path to the JSON object in the model response whose fields will be sent to Tealium Collect as attributes.<br>Use dot notation and array indexes, for example: `data[0][1].PREDICTION` or `predictions[0]`. If the value at the path is a JSON string, it will be parsed automatically.<br>If left blank, the root of the response is used as the JSON object.<br>Nested objects and arrays are serialized as JSON strings. |
 | Debug Mode | When enabled, the connector does not send responses to Tealium Collect. Use Trace to inspect the raw Snowflake response and validate that it is valid JSON before enabling full processing. |

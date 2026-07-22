@@ -15,15 +15,19 @@ iQタグ管理から公開されたファイルのブラウザキャッシュの
 |`utag.js`| 5分|
 |`utag.#.js`| 5分|
 |`utag.sync.js`| 5分|
-|`mobile.html`| 1時間（qa/prod）&lt;br&gt;5分（dev）|
+|`mobile.html`| 1時間（qa/prod）<br>5分（dev）|
 
 ## ユニバーサルタグのキャッシュ
 
 バージョン4.26以前のユニバーサルタグでは、公開後にすべての`utag.js`ファイルが更新されていました。公開のたびに、`utag.js`ファイルはキャッシュを無効にし、ブラウザが変更されていないファイルを取得するために不必要なネットワーク呼び出しを行っていましたが、これがページの読み込み性能に影響を与えていました。
 
-[バージョン4.26以降](/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01)では、ブラウザがネットワーク呼び出しを減らし、ページの読み込み性能が向上しました。
+[バージョン4.26以降](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01)では、ブラウザがネットワーク呼び出しを減らし、ページの読み込み性能が向上しました。
 
+
+<blockquote>
 `utag.js`テンプレートを更新する方法についての詳細は、ナレッジベースの記事[utag.jsの最新バージョンへの更新のベストプラクティス](https://support.tealiumiq.com/en/support/solutions/articles/36000363470)をご覧ください。
+</blockquote>
+
 
 ## 動作原理
 
@@ -34,18 +38,22 @@ iQタグ管理から公開されたファイルのブラウザキャッシュの
 |バージョン| 説明| 例|
 |---| ---| ---|
 |v4.26 - v4.38| タイムスタンプにバージョン番号は含まれていない| `utag.#js?utv=201510202208`|
-|v4.39&#43;| タイムスタンプの前にバージョン番号が付けられる| `utag.#.js?utv=ut4.39.201510202208`|
+|v4.39+| タイムスタンプの前にバージョン番号が付けられる| `utag.#.js?utv=ut4.39.201510202208`|
 
 公開間でタイムスタンプ値が変わらないため、変更されていない`utag.#.js`ファイルはブラウザにキャッシュされ続けます。
 
-[通貨変換エクステンション]()はキャッシュされません。
+
+<blockquote>
+[通貨変換エクステンション](https://docs.tealium.com/currency-converter-extension/)はキャッシュされません。
+</blockquote>
+
 
 ## 例
 
 次の例では、UID #4のタグを変更または追加し、タグ#1を非アクティブ化し、タグ#2とタグ#3には変更を加えません。
 
-![](/images/iq-tag-management/example-tags.png)
+![](https://docs.tealium.com/images/iq-tag-management/example-tags.png)
 
 ウェブコンソールの公開URLビューでは、新規または変更されたファイルである`utag.4.js`がサーバーから取得されました。変更されていない`utag.2.js`と`utag.3.js`はキャッシュから取得されました。非アクティブ化されたため、`utag.1.js`はページ上にロードされませんでした。
 
-![](/images/iq-tag-management/timestamps-on-qa.png)
+![](https://docs.tealium.com/images/iq-tag-management/timestamps-on-qa.png)

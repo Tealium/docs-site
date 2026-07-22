@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/distribute-travel-tag/
 ---
 ## タグの構成
 
-まず、タグマーケットプレイスに移動し、Distribute Travelタグをプロフィールに追加します（[タグの追加]()を参照）。
+まず、タグマーケットプレイスに移動し、Distribute Travelタグをプロフィールに追加します（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -13,13 +13,13 @@ url: https://docs.tealium.com/ja/client-side-tags/distribute-travel-tag/
 
 ## ロードルール
 
-[ロードルール]()は、このタグをサイト上のどこといつロードするかを決定します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグをサイト上のどこといつロードするかを決定します。
 
 推奨されるロードルール：**すべてのページ**
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 Distribute Travelタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは以下の通りです：
 

@@ -14,4 +14,4 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-scope/
 
 ほとんどの標準的な実装では、**DOM準備完了**スコープは**ロードルール後**の直後に順次発生しますが、このタイミングは保証されません。
 
-イベント実行順序の詳細な概要については、[操作の順序]()を参照してください。
+イベント実行順序の詳細な概要については、[操作の順序](https://docs.tealium.com/order-of-operations/)を参照してください。

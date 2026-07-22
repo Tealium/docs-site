@@ -33,7 +33,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 イベントの健全性がどのように機能するかを理解するために、有効なイベント、無効なイベント、未知のイベントの例を見てみましょう。次の例は、`video_complete`イベントのイベント仕様に基づいています：
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 仕様はその`tealium_event`値（`video_complete`）をリストし、四つの必須属性：`video_id`、`video_length`、`video_name`、`video_platform`を定義しています。各属性には定義されたデータタイプ（例：文字列、数値）があり、受信イベントはこれに一致する必要があります。
 
@@ -49,17 +49,17 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_complete&#34;,
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: 300,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_complete",
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": 300,
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
 `tealium_event`値は`video_complete`なので、このイベントは`video_complete`仕様に対してチェックされます。このイベントは仕様に記載されているすべての必須属性を含んでおり、それらは正しいデータタイプですので、このイベントは有効とマークされます。
 
-![](/images/server-side/valid-video-complete-event.png)
+![](https://docs.tealium.com/images/server-side/valid-video-complete-event.png)
 
 #### 無効なイベントの例
 
@@ -67,16 +67,16 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_complete&#34;,
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: &#34;300 seconds&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_complete",
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": "300 seconds",
+    "video_platform": "YouTube"
 }
 ```
 
 このイベントは無効です。なぜなら、`video_length`属性が数値であるべきところを文字列であり、必須の`video_name`属性が欠けているからです。
 
-![](/images/server-side/invalid-video-complete-event.png)
+![](https://docs.tealium.com/images/server-side/invalid-video-complete-event.png)
 
 属性、データタイプ、要件のエラーを特定して、問題をトラブルシューティングし、解決します。
 
@@ -88,10 +88,10 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ```json
 {
-    &#34;video_id&#34;: &#34;xWlEk2i9r5Q&#34;,
-    &#34;video_length&#34;: 300,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "video_id": "xWlEk2i9r5Q",
+    "video_length": 300,
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
@@ -101,9 +101,9 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ```json
 {
-    &#34;tealium_event&#34;: &#34;video_search&#34;,
-    &#34;video_name&#34;: &#34;How to track videos in Tealium&#34;,
-    &#34;video_platform&#34;: &#34;YouTube&#34;
+    "tealium_event": "video_search",
+    "video_name": "How to track videos in Tealium",
+    "video_platform": "YouTube"
 }
 ```
 
@@ -115,11 +115,11 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ライブイベントチャートの**すべてのイベント**フィードで、受信トラフィックを調査します：
 
-![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventfeed.png)
 
 このビューは、本番環境での現在の実装がどのように動作しているかを示し、まだ特定していない属性も含まれます：
 
-![](/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveeventsandfeeds-add-unknown-attribute.png)
 
 この情報から、キーとなるイベントとその属性のリストを作成し、イベント仕様を作成します。
 
@@ -129,11 +129,11 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 **ライブイベント**または**イベント仕様**ページから、発見した属性を使用してキーとなるイベントのイベント仕様を作成します。カスタマージャーニーの中で最も重要なイベント（例：`sign_up`、`login`、`add_to_cart`、`purchase`）から始めます。各属性について、データタイプと属性が必須かどうかを構成します。
 
-![](/images/server-side/whiteui-eventspecifications-videocomplete.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 
 イベント仕様を作成した後、`tealium_event`値が一致するイベントはその仕様に対して検証され、**Valid**、**Invalid**、または**No Spec**とマークされます。各イベント仕様は、コネクター、EventDB、またはEventStoreで有効にできる対応するイベントフィードを作成します。
 
-![](/images/server-side/video-complete-event-feed.png)
+![](https://docs.tealium.com/images/server-side/video-complete-event-feed.png)
 
 重要なイベントには、Tealiumがリアルタイムで検証する文書化された契約があります。一致するイベントは、リンクされたフィードを通じて下流のワークフローで利用可能です。
 
@@ -142,7 +142,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 ライブイベントチャートとイベント仕様の詳細ページを使用して、時間とともにイベントの健全性を監視します。**有効**、**無効**、**仕様なし**のフィルターを使用して、特定の健康状態に焦点を当てます。**データソース**と**イベントフィード**を使用して、トラフィックのサブセットにチャートを絞り込みます。
 
-![](/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
+![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
 
 継続的な監視により、迅速に退行を捉えることができます。例えば、必要な属性の送信を停止する新しいリリースや、新しい未定義のイベント名を導入する場合などです。
 
@@ -152,7 +152,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 トレースIDを使用して、トリガーしたイベント以外のすべての受信イベントをフィルタリングします。トレースIDは、イベント追跡コードに挿入する一時的でユニークな識別子で、イベントを手動でテストする際に役立ちます。これは、新しいまたは更新されたイベント仕様を検証する際に、テスト中にトリガーしたイベントを確認するのに役立ちます。
 
-詳細については、[トレースIDの使用]()を参照してください。
+詳細については、[トレースIDの使用](https://docs.tealium.com/about-live-events/#use-a-trace-id)を参照してください。
 
 ### ステップ4 - 修正、反復、および回復の確認
 
@@ -175,7 +175,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/about/
 
 **イベント仕様**の概要および詳細ページで、選択した時間範囲におけるイベントごとの**総ボリューム**、**有効なイベント**、**無効なイベント**、**仕様なし**の数を監視します。
 
-![](/images/server-side/event-health-table.png)
+![](https://docs.tealium.com/images/server-side/event-health-table.png)
 
 これらの指標は、データ品質が改善されているかどうか、および次に焦点を当てるべき場所を示します：
 

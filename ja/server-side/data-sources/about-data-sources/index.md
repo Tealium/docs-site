@@ -24,7 +24,11 @@ url: https://docs.tealium.com/ja/server-side/data-sources/about-data-sources/
 
 データソースを構成した後、Live Eventsを使用してそのデータソースに入ってくるイベントを検査し、検証します。
 
+
+<blockquote>
 プロファイルごとに最大10のクラウドデータウェアハウスデータソースを同時に有効にすることができます。
+</blockquote>
+
 
 ### プラットフォームとAPI
 
@@ -34,9 +38,9 @@ url: https://docs.tealium.com/ja/server-side/data-sources/about-data-sources/
 
 Tealiumは、オフラインデータをTealiumにインポートし、エンリッチメントとアクティベーションを行うためのいくつかの方法をサポートしています。ビジネスケース、開発サポート、インポートニーズに応じて、以下のいずれかを選択できます：
 
-* **[ファイルインポート]()**  
+* **[ファイルインポート](https://docs.tealium.com/about-file-import/)**  
 オフラインデータをCSVにコンパイルするための開発サポートがある顧客向け。
-* **[Data Connect]()**  
+* **[Data Connect](https://docs.tealium.com/about-data-connect/)**  
 データを取り込むためのローコードソリューションを求める顧客向け。
 * **Tealium Collect APIエンドポイント**   
 開発リソースがある顧客向け。Tealiumサポートが推奨。
@@ -46,6 +50,6 @@ Tealiumは、オフラインデータをTealiumにインポートし、エンリ
 | | **ファイルインポート**| **Data Connect**| **Collect API**|
 |:---|:---|:---|:---|
 |**ユースケース** |_オフラインデータをCSVにコンパイルするためのサポートがある顧客向け。_ | _データを取り込むためのローコードソリューションを求める顧客向け。_ | _開発リソースがある顧客向け。Tealiumサポートが推奨。_|
-|**AudienceStreamとEventStream**|&lt;ul&gt;&lt;li&gt;含まれる&lt;/li&gt;&lt;li&gt;インポートされたイベントはアカウント使用量にカウントされる&lt;/li&gt;&lt;/ul&gt;|&lt;ul&gt;&lt;li&gt;含まれない&lt;/li&gt;&lt;li&gt;インポートされたイベントはアカウント使用量にカウントされる&lt;/li&gt;&lt;/ul&gt;|&lt;ul&gt;&lt;li&gt;含まれる&lt;/li&gt;&lt;li&gt;インポートされたイベントはアカウント使用量にカウントされる&lt;/li&gt;&lt;/ul&gt;|
-|**データインポート** | &lt;ul&gt;&lt;li&gt;10分ごとにサービス構成をポーリング&lt;/li&gt;&lt;/ul&gt; | &lt;ul&gt;&lt;li&gt;リアルタイムに近い&lt;/li&gt;&lt;/ul&gt; | &lt;ul&gt;&lt;li&gt;リアルタイム&lt;/li&gt;&lt;/ul&gt;|
-|**データソース**| &lt;ul&gt;&lt;li&gt;大量のデータの場合、プラットフォームをシードするために使用されることがある&lt;/li&gt;&lt;li&gt;ファイルサービスプロバイダーを持っているか、Tealium S3を使用できる&lt;/li&gt;&lt;/ul&gt;|&lt;ul&gt;&lt;li&gt;Snowflake、Hubspot、Salesforceなどの外部システムへの接続が必要&lt;/li&gt;&lt;li&gt;必要に応じてインポートのスケジュールを構成&lt;/li&gt;&lt;/ul&gt;|&lt;ul&gt;&lt;li&gt;データ量が多い&lt;/li&gt;&lt;li&gt;プラットフォームとプログラム的にやり取りする方法が必要&lt;/li&gt;&lt;/ul&gt;| 
+|**AudienceStreamとEventStream**|<ul><li>含まれる</li><li>インポートされたイベントはアカウント使用量にカウントされる</li></ul>|<ul><li>含まれない</li><li>インポートされたイベントはアカウント使用量にカウントされる</li></ul>|<ul><li>含まれる</li><li>インポートされたイベントはアカウント使用量にカウントされる</li></ul>|
+|**データインポート** | <ul><li>10分ごとにサービス構成をポーリング</li></ul> | <ul><li>リアルタイムに近い</li></ul> | <ul><li>リアルタイム</li></ul>|
+|**データソース**| <ul><li>大量のデータの場合、プラットフォームをシードするために使用されることがある</li><li>ファイルサービスプロバイダーを持っているか、Tealium S3を使用できる</li></ul>|<ul><li>Snowflake、Hubspot、Salesforceなどの外部システムへの接続が必要</li><li>必要に応じてインポートのスケジュールを構成</li></ul>|<ul><li>データ量が多い</li><li>プラットフォームとプログラム的にやり取りする方法が必要</li></ul>| 

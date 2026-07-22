@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/pixibo-conversion-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -26,7 +26,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -34,17 +34,17 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`clientId`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Client ID&lt;/li&gt;&lt;/ul&gt; |
-|`size`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product Sizes&lt;/li&gt;&lt;/ul&gt; |
+|`clientId`|  <ul><li>String</li><li>Client ID</li></ul> |
+|`size`|  <ul><li>Array</li><li>List of Product Sizes</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;(Required) Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub Total&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;Currency&lt;/li&gt;&lt;li&gt;Overrides `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;Customer ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_sku`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of SKUs&lt;/li&gt;&lt;li&gt;Overrides `_csku`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>(Required) Order ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub Total</li><li>Overrides `_csubtotal`.</li></ul> |
+|`order_currency`|  <ul><li>Currency</li><li>Overrides `_ccurrency`.</li></ul> |
+|`customer_id`|  <ul><li>Customer ID</li><li>Overrides `_ccustid`.</li></ul> |
+|`product_sku`|  <ul><li>Array</li><li>List of SKUs</li><li>Overrides `_csku`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices</li><li>Overrides `_cprice`.</li></ul> |

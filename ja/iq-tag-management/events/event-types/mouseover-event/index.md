@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/mouseover-
 
 マウスオーバーイベントは、訪問者が指定した要素にマウスカーソルをホバーさせたときにトラッキングします。訪問者がアクションを実行すると、トラッキングコールがトリガーされます。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -27,11 +27,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/mouseover-
 
 ### 要素セレクタ
 
-要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ]()を参照してください。
+要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ](https://docs.tealium.com/event-element-selector/)を参照してください。
 
 ### トリガー頻度
 
-トリガー頻度は、イベントトリガーがトラッキングコールを結果とする回数を決定します。詳細については、[イベントトリガー]()を参照してください。
+トリガー頻度は、イベントトリガーがトラッキングコールを結果とする回数を決定します。詳細については、[イベントトリガー](https://docs.tealium.com/event-triggers/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -41,15 +41,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/mouseover-
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;mouseover&#34;`| 訪問者が指定した要素に最小限の時間マウスカーソルをホバーさせました。|
+|`tealium_event="mouseover"`| 訪問者が指定した要素に最小限の時間マウスカーソルをホバーさせました。|
 |`iq_event_id` | イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;mouseover&#34;,
-   &#34;iq_event_id:&#34; : &#34;mouseover_events_1&#34;
+   "tealium_event"  : "mouseover",
+   "iq_event_id:" : "mouseover_events_1"
 }
 
 ```

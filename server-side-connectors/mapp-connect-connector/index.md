@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/mapp-connect-connector/
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -39,7 +39,7 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | (Required) The contact&#39;s email address. |
+| Email | (Required) The contact's email address. |
 
 ### Remove Contact from Group
 
@@ -53,5 +53,5 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | (Required) The contact&#39;s email address. |
+| Email | (Required) The contact's email address. |
 

@@ -9,7 +9,7 @@ Usage of this module is recommended, as it is automatically included and enabled
 
 Supported platforms include: iOS, macOS, tvOS, and watchOS.
 
-For more information about consent management, see .
+For more information about consent management, see [platforms/getting-started-mobile/consent-management](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/).
 
 ## Sample Apps
 
@@ -26,8 +26,8 @@ The following variables are transmitted with each tracking call while consent ma
 | Variable Name | Description | Example |
 | --- | --- | --- |
 | `policy` | The policy under which consent was collected (Default: `gdpr`)| `gdpr` |
-| `consent_status` | The user&#39;s current consent status | [`&#34;Consented&#34;`, `&#34;Not Consented&#34;`] |
-| `consent_categories` | The user&#39;s current categories they are consented to | `@[@&#34;analytics&#34;]` |
+| `consent_status` | The user's current consent status | [`"Consented"`, `"Not Consented"`] |
+| `consent_categories` | The user's current categories they are consented to | `@[@"analytics"]` |
 
 
 ## Use Cases
@@ -38,31 +38,31 @@ The following variables are transmitted with each tracking call while consent ma
 [_tealium.consentManager setUserConsentStatus:Consented];
 ```
 
-This example shows you how to give your users a simple &#34;Opt-in/Opt-out&#34; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories are active, and no tracking calls are sent.
+This example shows you how to give your users a simple "Opt-in/Opt-out" option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories are active, and no tracking calls are sent.
 
 Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the consent manager automatically opts them in to all tracking categories.
 
-![](/images/platforms/ios/consent-simple-optin.gif)
+![](https://docs.tealium.com/images/platforms/ios/consent-simple-optin.gif)
 
 ### Use Case: Grouped Opt-in
 
 ```objc
-[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@&#34;analytics&#34;, @&#34;monitoring&#34;, @&#34;big_data&#34;, @&#34;mobile&#34;, @&#34;crm&#34;]];
+[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@"analytics", @"monitoring", @"big_data", @"mobile", @"crm"]];
 ```
 
-This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you. For example, you may choose to group the Tealium consent categories `&#34;analytics&#34;`, `&#34;monitoring&#34;`, `&#34;big_data&#34;`, `&#34;mobile&#34;`, and `&#34;crm&#34;` under a single category called `&#34;performance&#34;`. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).
+This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you. For example, you may choose to group the Tealium consent categories `"analytics"`, `"monitoring"`, `"big_data"`, `"mobile"`, and `"crm"` under a single category called `"performance"`. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).
 
-![](/images/platforms/ios/consent-group-optin.gif)
+![](https://docs.tealium.com/images/platforms/ios/consent-group-optin.gif)
 
 ### Use Case: Category-based Opt-in
 
 ```objc
-[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@&#34;analytics&#34;, @&#34;personalization&#34;]];
+[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@"analytics", @"personalization"]];
 ```
 
-This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state of the consent manager is `&#34;Unknown&#34;`, which queues hits until the user provides their consent. If the user consents to any category, events are dequeued, and the consented category data is appended to each tracking call.
+This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state of the consent manager is `"Unknown"`, which queues hits until the user provides their consent. If the user consents to any category, events are dequeued, and the consented category data is appended to each tracking call.
 
-![](/images/platforms/ios/consent-category-optin.gif)
+![](https://docs.tealium.com/images/platforms/ios/consent-category-optin.gif)
 
 ## API Reference
 
@@ -73,7 +73,7 @@ This code shows how to enable consent management on Tealium initialization.
 // TealiumHelper.h
 
 @import TealiumIOS;
-@interface TealiumHelper : NSObject&lt;TealiumDelegate, TEALConsentManagerDelegate&gt;
+@interface TealiumHelper : NSObject<TealiumDelegate, TEALConsentManagerDelegate>
 @property (nonatomic, strong) Tealium *tealium;
 @end
 
@@ -81,10 +81,10 @@ This code shows how to enable consent management on Tealium initialization.
 
 @implementation TealiumHelper
 
-&#43; (instancetype _Nonnull)sharedInstance {
++ (instancetype _Nonnull)sharedInstance {
   static TealiumHelper *tealiumHelper = nil;
   static dispatch_once_t onceToken;
-  dispatch_once(&amp;onceToken, ^{
+  dispatch_once(&onceToken, ^{
   tealiumHelper = [[self alloc] init];
   });
 
@@ -93,18 +93,18 @@ This code shows how to enable consent management on Tealium initialization.
 
 - (instancetype)init {
   if (self = [super init]) {
-    TEALConfiguration *configuration = [TEALConfiguration configurationWithAccount:@&#34;ACCOUNT&#34; profile:@&#34;PROFILE&#34; environment:@&#34;ENVIRONMENT&#34;];
+    TEALConfiguration *configuration = [TEALConfiguration configurationWithAccount:@"ACCOUNT" profile:@"PROFILE" environment:@"ENVIRONMENT"];
     [configuration setLogLevel: TEALLogLevelDev];
 
     // enable Tealium consent manager
     [configuration setEnableConsentManager:YES];
 
-    _tealium = [Tealium newInstanceForKey:@&#34;INSTANCE&#34; configuration:configuration];
+    _tealium = [Tealium newInstanceForKey:@"INSTANCE" configuration:configuration];
     _tealium.delegate = self;
 
     // set optional Tealium consent manager Delegate
     _tealium.consentManagerDelegate = self;
-    NSLog(@&#34;%s, %@&#34;, __FUNCTION__, [TEALConsentManager consentStatusString:_tealium.consentManager.userConsentStatus]);
+    NSLog(@"%s, %@", __FUNCTION__, [TEALConsentManager consentStatusString:_tealium.consentManager.userConsentStatus]);
   }
 
   return self;
@@ -147,11 +147,11 @@ Checks if the consent manager is disabled.
 Registers a specific class conforming to the TEALConsentManagerDelegate protocol.
 
 ```objc
-[_tealium setConsentManagerDelegate:(id&lt;TEALConsentManagerDelegate&gt;)];
+[_tealium setConsentManagerDelegate:(id<TEALConsentManagerDelegate>)];
 ```
 
 **`setUserConsentStatus`**  
-Sets the user&#39;s consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.
+Sets the user's consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.
 
 ```objc
 [_tealium.consentManager setUserConsentStatus:Consented];
@@ -164,29 +164,29 @@ Consent manager always sets the list of consented categories to include ALL avai
 | `TEALConsentStatus` | A value from TEALConsentStatus enum | [`Consented`, `NotConsented`, `Disabled`] |
 
 **`setUserConsentCategories`**  
-Sets the user&#39;s consent categories. Designed to be called from your consent management preferences screen in your app.
+Sets the user's consent categories. Designed to be called from your consent management preferences screen in your app.
 
 ```objc
-[_tealium.consentManager setUserConsentCategories:@[@&#34;analytics&#34;]];
+[_tealium.consentManager setUserConsentCategories:@[@"analytics"]];
 ```
 
 Always sets consent status to `Consented` when any number of categories are set.
 
 | Parameters | Description | Example |
 | --- | --- | --- |
-| `NSArray` | An array of predefined NSString categories | `@[@&#34;analytics&#34;, @&#34;big_data&#34;]` |
+| `NSArray` | An array of predefined NSString categories | `@[@"analytics", @"big_data"]` |
 
 **`setUserConsentStatus:withUserConsentCategories`**  
-Sets the user&#39;s consent status and user&#39;s consent categories in a single method.
+Sets the user's consent status and user's consent categories in a single method.
 
 ```objc
-[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@&#34;analytics&#34;]];
+[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[@"analytics"]];
 ```
 
 | Parameters | Description | Example Value |
 | --- | --- | --- |
 | TEALConsentStatus | A value from TEALConsentStatus enum | [`Consented`, `NotConsented`] |
-| NSArray | An array of predefined NSString categories | `@[@&#34;analytics&#34;, @&#34;big_data&#34;]` |
+| NSArray | An array of predefined NSString categories | `@[@"analytics", @"big_data"]` |
 
 **`userConsentStatus`**  
 Returns the current consent status of the user.
@@ -222,7 +222,7 @@ Resets all currently stored consent preferences. Reverts to `Unknown` consent st
 ```
 
 **`setConsentLoggingEnabled`**  
-Enables the [Consent Logging]() feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.
+Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.
 
 ```objc
 [_tealium.consentManager setConsentLoggingEnabled:YES];
@@ -255,7 +255,7 @@ self.configuration.enableConsentManager = YES;
 Consent manager always sets the list of consented categories to include ALL available consent categories, if the status is `Consented`. This method does not allow categories to be set selectively.
 
 **`userConsentStatus`**  
-Sets the user&#39;s initial consent status when the library starts up for the first time. If there are saved preferences, these override any preferences passed in the config object.
+Sets the user's initial consent status when the library starts up for the first time. If there are saved preferences, these override any preferences passed in the config object.
 ```objc
 self.configuration.userConsentStatus = Consented;
 ```
@@ -265,14 +265,14 @@ self.configuration.userConsentStatus = Consented;
 | `TEALConsentStatus` | A value from TEALConsentStatus enum | [`Consented`, `NotConsented`, `Disabled`] |
 
 **`userConsentCategories`**  
-Sets the user&#39;s initial consent categories when the library starts up for the first time. If there are saved preferences, these  override any preferences passed in the config object.
+Sets the user's initial consent categories when the library starts up for the first time. If there are saved preferences, these  override any preferences passed in the config object.
 ```objc
-self.configuration.userConsentCategories = @[@&#34;analytics&#34;, @&#34;retargeting&#34;];
+self.configuration.userConsentCategories = @[@"analytics", @"retargeting"];
 ```
 
 | Parameters | Description | Example Value |
 | --- | --- | --- |
-| `NSArray` | An array of predefined NSString categories | `@[@&#34;analytics&#34;, @&#34;big_data&#34;]` |
+| `NSArray` | An array of predefined NSString categories | `@[@"analytics", @"big_data"]` |
 
 
 ### `TEALConsentManagerDelegate`

@@ -8,7 +8,7 @@ url: https://docs.tealium.com/ja/server-side/functions/data-transformation-funct
 この例では、関数が機密データ（メールアドレス）を含む変数を削除します。
 
 ```js
-transform((event) =&gt; {
+transform((event) => {
     delete event.data.udo.user.email;
 });
 ```
@@ -19,7 +19,7 @@ transform((event) =&gt; {
 次の例では、`page_name`変数にタイトルを埋め込みます。
 
 ```js
-transform((event) =&gt; {
+transform((event) => {
     if (!event.data.udo.page_name) {
         event.data.udo.page_name = event.data.dom.title;
     }
@@ -32,9 +32,9 @@ transform((event) =&gt; {
 この例では、複数の変数から`page_hierarchy`変数を作成します。
 
 ```js
-transform((event) =&gt; {
+transform((event) => {
     const { site_region, site_section, category_name } = event.data.udo;
-    event.data.udo.page_hierarchy = &#39;${site_region}:${site_section}:${category_name}&#39;;
+    event.data.udo.page_hierarchy = '${site_region}:${site_section}:${category_name}';
 });
 ```
 
@@ -42,8 +42,8 @@ transform((event) =&gt; {
 次の例では、`pathname`に基づいて`site_section`、`site_category`、および`site_subcategory`変数を作成します。
 
 ```js
-transform((event) =&gt; {
-    const [,site_section, site_category, site_subcategory] = event.data.dom.pathname.split(&#34;/&#34;);
+transform((event) => {
+    const [,site_section, site_category, site_subcategory] = event.data.dom.pathname.split("/");
     Object.assign(event.data.udo, {
         site_section,
         site_category,
@@ -59,14 +59,14 @@ transform((event) =&gt; {
 
 ```js
 const categoryNameById = {
-    38: &#34;モバイル&#34;,
-    39: &#34;エンゲージメント&#34;,
-    40: &#34;モニタリング&#34;
+    38: "モバイル",
+    39: "エンゲージメント",
+    40: "モニタリング"
 };
 
-transform((event) =&gt; {
+transform((event) => {
     event.data.udo.products = event.data.udo.products
-        .map(product =&gt; ({
+        .map(product => ({
             ...product,
             category_name: categoryNameById[product.category_id]
         }));
@@ -79,7 +79,7 @@ transform((event) =&gt; {
 次の例では、変数をすべて小文字に変更します。
 
 ```js
-transform((event) =&gt; {
+transform((event) => {
     const searchKeyword = event.data.udo.search_keyword;
     if (searchKeyword) {
         event.data.udo.search_keyword = searchKeyword.toLowerCase();
@@ -91,7 +91,7 @@ transform((event) =&gt; {
 この例では、変数の値を新しい変数に構成し、既存の変数を削除することで変数の名前を変更します。
 
 ```js
-transform((event) =&gt; {
+transform((event) => {
     event.data.udo.page_title = event.data.udo.page_name;
     delete event.data.udo.page_name;
 });
@@ -103,10 +103,10 @@ transform((event) =&gt; {
 この例では、2つの値を連結し、そのうちの1つの値を削除します。また、新しい変数を作成します。
 
 ```js
-import flatten from &#39;tealium/util/flatten&#39;;
+import flatten from 'tealium/util/flatten';
 
-// &#34;transform&#34;関数を使用すると、イベントにアクセスして変更を適用できます
-transform((event) =&gt; {
+// "transform"関数を使用すると、イベントにアクセスして変更を適用できます
+transform((event) => {
     // test1とtest2のプロパティを連結します
     const { test1, test2 } = event.data.udo;
     event.data.udo.test_concatenated = `${test1}:${test2}`;
@@ -115,7 +115,7 @@ transform((event) =&gt; {
     delete event.data.udo.test1;
 
     // 新しいtest3プロパティを追加します
-    event.data.udo.test3 = &#39;TEST3&#39;;
+    event.data.udo.test3 = 'TEST3';
 
     console.log(JSON.stringify(event, null, 2));
 })

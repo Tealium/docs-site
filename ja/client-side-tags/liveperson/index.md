@@ -43,7 +43,7 @@ url: https://docs.tealium.com/ja/client-side-tags/liveperson/
 
 ## タグ構成
 
-新しいタグを追加するために、タグマーケットプレイスに移動します。詳細については、[タグについて]()を参照してください。
+新しいタグを追加するために、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加した後、以下の構成を行います：
 
@@ -58,7 +58,7 @@ url: https://docs.tealium.com/ja/client-side-tags/liveperson/
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 
@@ -74,7 +74,7 @@ url: https://docs.tealium.com/ja/client-side-tags/liveperson/
 
 ### イベント
 
-イベントをマップするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 |変数| 説明|
 |---| ---|

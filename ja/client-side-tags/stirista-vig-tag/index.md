@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/stirista-vig-tag/
 ---
 ## タグ構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Stirista VIGタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Stirista VIGタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/stirista-vig-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

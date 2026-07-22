@@ -5,14 +5,14 @@ url: https://docs.tealium.com/client-side-tags/bold360-formerly-boldchat-tag/
 ---
 ## Tag Tips
 
-* Configuration values are found by going to Bold360 and clicking **Setup &amp;gt; HTML &amp;gt; Generate Visitor Monitor HTML.**
+* Configuration values are found by going to Bold360 and clicking **Setup &gt; HTML &gt; Generate Visitor Monitor HTML.**
 * The Conversion Tracking event is sent automatically when there is an Order ID (`_corder`) from the E-Commerce extension.
 * Mapping a value to Conversion Ref also triggers Conversion Tracking.
 * Use the mapping toolbox to send additional visitor information.
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Bold360 (formerly BoldChat) tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Bold360 (formerly BoldChat) tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -32,7 +32,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -40,18 +40,18 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`AccountID`|  &lt;ul&gt;&lt;li&gt;Account ID&lt;/li&gt;&lt;/ul&gt; |
-|`WebsiteDefID`|  &lt;ul&gt;&lt;li&gt;Website Definition ID&lt;/li&gt;&lt;/ul&gt; |
-|`InvitationDefID`|  &lt;ul&gt;&lt;li&gt;Proactive Invitation Definition ID&lt;/li&gt;&lt;/ul&gt; |
-|`FloatingChatButtonDefID`|  &lt;ul&gt;&lt;li&gt;Floating Chat Button Definition ID&lt;/li&gt;&lt;/ul&gt; |
-|`VisitName`|  &lt;ul&gt;&lt;li&gt;Visitor Name&lt;/li&gt;&lt;/ul&gt; |
-|`VisitPhone`|  &lt;ul&gt;&lt;li&gt;Visitor Phone&lt;/li&gt;&lt;/ul&gt; |
-|`VisitEmail`|  &lt;ul&gt;&lt;li&gt;Visitor Email&lt;/li&gt;&lt;/ul&gt; |
-|`VisitRef`|  &lt;ul&gt;&lt;li&gt;Visitor ID&lt;/li&gt;&lt;/ul&gt; |
-|`VisitInfo`|  &lt;ul&gt;&lt;li&gt;Visitor Info&lt;/li&gt;&lt;/ul&gt; |
-|`CustomUrl`|  &lt;ul&gt;&lt;li&gt;Custom URL&lt;/li&gt;&lt;/ul&gt; |
-|`WindowParameters`|  &lt;ul&gt;&lt;li&gt;Window Parameters&lt;/li&gt;&lt;/ul&gt; |
-|`ConversionCodeID`|  &lt;ul&gt;&lt;li&gt;Conversion Code ID&lt;/li&gt;&lt;/ul&gt; |
-|`ConversionRef`|  &lt;ul&gt;&lt;li&gt;Conversion ID or Order ID&lt;/li&gt;&lt;/ul&gt; |
-|`ConversionAmount`|  &lt;ul&gt;&lt;li&gt;Conversion Amount&lt;/li&gt;&lt;/ul&gt; |
-|`ConversionInfo`|  &lt;ul&gt;&lt;li&gt;Conversion Info&lt;/li&gt;&lt;/ul&gt; |
+|`AccountID`|  <ul><li>Account ID</li></ul> |
+|`WebsiteDefID`|  <ul><li>Website Definition ID</li></ul> |
+|`InvitationDefID`|  <ul><li>Proactive Invitation Definition ID</li></ul> |
+|`FloatingChatButtonDefID`|  <ul><li>Floating Chat Button Definition ID</li></ul> |
+|`VisitName`|  <ul><li>Visitor Name</li></ul> |
+|`VisitPhone`|  <ul><li>Visitor Phone</li></ul> |
+|`VisitEmail`|  <ul><li>Visitor Email</li></ul> |
+|`VisitRef`|  <ul><li>Visitor ID</li></ul> |
+|`VisitInfo`|  <ul><li>Visitor Info</li></ul> |
+|`CustomUrl`|  <ul><li>Custom URL</li></ul> |
+|`WindowParameters`|  <ul><li>Window Parameters</li></ul> |
+|`ConversionCodeID`|  <ul><li>Conversion Code ID</li></ul> |
+|`ConversionRef`|  <ul><li>Conversion ID or Order ID</li></ul> |
+|`ConversionAmount`|  <ul><li>Conversion Amount</li></ul> |
+|`ConversionInfo`|  <ul><li>Conversion Info</li></ul> |

@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/session-ai-connector/
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/session-ai-connector/
  必須。環境に関連付けられたホストを選択します。
 セッションAIサンドボックス環境を指す場合は `https://csb.zineone.com` を使用します。本番環境を指す場合は `https://cloud.zineone.com` を使用します。
 * **APIキー**  
-APIキーを生成するには、**Session AI &gt; Integrations &gt; Data Channel** でチャネルを作成します。
+APIキーを生成するには、**Session AI > Integrations > Data Channel** でチャネルを作成します。
 
 ## アクション
 
@@ -32,7 +32,7 @@ APIキーを生成するには、**Session AI &gt; Integrations &gt; Data Channe
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| オプトインアクション | 可能な値：&lt;ul&gt;&lt;li&gt;`true` - オプトインリクエストを選択します。&lt;/li&gt;&lt;li&gt;`false` - オプトアウトリクエストを選択します。&lt;/li&gt;&lt;/ul&gt; |
+| オプトインアクション | 可能な値：<ul><li>`true` - オプトインリクエストを選択します。</li><li>`false` - オプトアウトリクエストを選択します。</li></ul> |
 
 #### ユーザー識別子
 
@@ -76,7 +76,7 @@ APIキーを生成するには、**Session AI &gt; Integrations &gt; Data Channe
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| `logged_in` | (必須) ユーザーがログインしているかどうかを示します。&lt;br&gt; 可能な値：`Y`、`N`、またはマップされたブール型属性。  |
+| `logged_in` | (必須) ユーザーがログインしているかどうかを示します。<br> 可能な値：`Y`、`N`、またはマップされたブール型属性。  |
 | `pagename` | イベントがトリガーされたページ名です。 |
 | `pagepath` | イベントがトリガーされたページパスです。 |
 | `category` | 製品のカテゴリです。 |
@@ -165,6 +165,6 @@ APIキーを生成するには、**Session AI &gt; Integrations &gt; Data Channe
 | `terms` | クーポンの条件です。 |
 | `method` | クーポンの方法です。 |
 | カスタムイベント属性 | オプションのカスタム属性をマップします。 |
-| カスタムイベント属性テンプレート変数 | より複雑なデータ構造を作成し、データ入力としてテンプレート変数を提供するために、ドット表記でテンプレート変数に名前を付けます。例：`items.name`。&lt;li&gt;ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| カスタムイベント属性テンプレート | **カスタムイベント属性**で参照されるテンプレートを提供します。&lt;ul&gt;&lt;li&gt;テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+| カスタムイベント属性テンプレート変数 | より複雑なデータ構造を作成し、データ入力としてテンプレート変数を提供するために、ドット表記でテンプレート変数に名前を付けます。例：`items.name`。<li>ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li></ul> |
+| カスタムイベント属性テンプレート | **カスタムイベント属性**で参照されるテンプレートを提供します。<ul><li>テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前で注入されます。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li></ul> |
 

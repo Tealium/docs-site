@@ -22,41 +22,41 @@ Install the Collect module with Swift Package Manager, CocoaPods or Carthage.
 
 ### Swift Package Manager (Recommended)
 
-Supported in version 1.9.0&#43;, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
+Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
 
-1. In your Xcode project, select **File &gt; Add Package Dependencies**
+1. In your Xcode project, select **File > Add Package Dependencies**
 1. Enter the repository URL: `https://github.com/tealium/tealium-swift`
-1. Configure the version rules. Typically, `&#34;Up to next major&#34;` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
+1. Configure the version rules. Typically, `"Up to next major"` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
 1. Select the `Collect` module from the list of modules to install and add it each of your app targets in your Xcode project, under **Frameworks and Libraries**.
 
-Learn more about the [Swift Package Manager installation for iOS](/platforms/ios-swift/install/#swift-package-manager-recommended).
+Learn more about the [Swift Package Manager installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended).
 
 ### CocoaPods
 
 To install the Collect module with CocoaPods, add the following pod to your Podfile:  
 ```perl
-pod &#39;tealium-swift/Collect&#39;
+pod 'tealium-swift/Collect'
 ```
 
-Learn more about the [CocoaPods installation for iOS](/platforms/ios-swift/install/#cocoapods).
+Learn more about the [CocoaPods installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods).
 
 
 ### Carthage
 
 To install the Collect module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
       ```perl
       TealiumCollect.framework
       ```
 
-[Learn more](/platforms/ios-swift/install/#carthage) about Carthage installation for iOS.
+[Learn more](https://docs.tealium.com/platforms/ios-swift/install/#carthage) about Carthage installation for iOS.
 
 ## Initialize
 
-To initialize the module, verify that it&#39;s specified on the `TealiumConfig` `dispatchers` property:
+To initialize the module, verify that it's specified on the `TealiumConfig` `dispatchers` property:
 
 `config.dispatchers = [Dispatchers.Collect]`
 
@@ -66,4 +66,4 @@ The following variables are transmitted with each tracking call while the module
 
 | Variable         | Description                                                        | Example  |
 |------------------|--------------------------------------------------------------------|---------------|
-| `dispatch_service` | Static string to indicate which module the tracking call came from | `&#34;collect&#34;`       |
+| `dispatch_service` | Static string to indicate which module the tracking call came from | `"collect"`       |

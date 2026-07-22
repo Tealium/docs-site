@@ -3,14 +3,18 @@ title: Install
 description: Install the Tealium plugin in your Unity application.
 url: https://docs.tealium.com/platforms/unity/install/
 ---
- We have discontinued active development of the Tealium for Unity plugin. If you use this plugin and need assistance with it, contact Tealium Support. 
+
+<blockquote>
+We have discontinued active development of the Tealium for Unity plugin. If you use this plugin and need assistance with it, contact Tealium Support.
+</blockquote>
+
 
 Tealium for Unity provides the Tealium native mobile libraries in your Unity application for iOS and Android.
 
 ## Requirements
 
-* [Unity 2020.3&#43;](https://docs.unity3d.com/Manual/UnityOverview.html)
-* [Tealium for Android](/platforms/android-kotlin/) or [Tealium for iOS](/platforms/ios-swift/)
+* [Unity 2020.3+](https://docs.unity3d.com/Manual/UnityOverview.html)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 
 ## Sample app
 
@@ -22,7 +26,11 @@ Alternatively, drag the contents of `Assets/Scenes` and `Assets/Scripts` into yo
 
 ## Install
 
+
+<blockquote>
 Tealium only supports Android and iOS platforms within Unity.
+</blockquote>
+
 
 ### Package Import
 
@@ -30,7 +38,7 @@ The recommended installation method is to use the `TealiumUnityPlugin` as a `.un
 
 1. Visit the [GitHub releases page](https://github.com/Tealium/unity-plugin/tree/release/2.0.0) and download `Tealium.unitypackage` from the latest release.
 2. Create a new Unity project or open an existing project.
-3. Import the `Tealium.unitypackage` to your project by selecting **Assets &gt; Import Package &gt; Custom Package**.
+3. Import the `Tealium.unitypackage` to your project by selecting **Assets > Import Package > Custom Package**.
 4. Add the following import statement to your project:   
       ```bash
       using TealiumCommon;
@@ -56,22 +64,26 @@ After you build and run your project for the first time, manually link the Teali
 3. Expand the **Embedded Frameworks** section.
 4. Copy all the frameworks located in the `Frameworks/Plugins/iOS` folder into the **Embedded Frameworks** section.
 
+
+<blockquote>
 `TealiumUnityPlugin` has a dependency on the Unity plugin `JSON.net` to serialize and deserialize objects. If `JSON.net` is already included in your project, you may need to remove it to avoid conflicts.
+</blockquote>
+
 
 
 ## Initialize
 
-Initialize the Tealium instance with the [`Initialize()`](/platforms/unity/api/#initialize) method, as shown in the following example:
+Initialize the Tealium instance with the [`Initialize()`](https://docs.tealium.com/platforms/unity/api/#initialize) method, as shown in the following example:
 
 ```javascript
-private TealiumConfig config = new TealiumConfig(&#34;tealiummobile&#34;,
-                     &#34;demo&#34;,
+private TealiumConfig config = new TealiumConfig("tealiummobile",
+                     "demo",
                      TealiumEnvironment.DEV,
-                     new List&lt;Dispatchers&gt; {
+                     new List<Dispatchers> {
                         Dispatchers.TagManagement,
                         Dispatchers.Collect,
                         Dispatchers.RemoteCommands },
-                     new List&lt;Collectors&gt; {
+                     new List<Collectors> {
                         Collectors.AppData,
                         Collectors.DeviceData,
                         Collectors.Lifecycle,

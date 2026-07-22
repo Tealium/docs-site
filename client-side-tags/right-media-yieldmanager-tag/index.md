@@ -21,7 +21,7 @@ url: https://docs.tealium.com/client-side-tags/right-media-yieldmanager-tag/
 
 ## Add the Tag
 
-Tealium iQ&#39;s Tag marketplace offers a wide variety of tags. Click [here]() to learn how to add a tag to your profile.
+Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a tag to your profile.
 
 ## Configure the Tag
 
@@ -36,13 +36,17 @@ Tealium iQ&#39;s Tag marketplace offers a wide variety of tags. Click [here]() t
 
 ## Apply Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag. The **Load on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag. The **Load on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
 
- It is recommended to load this tag on all pages of your site; use the default **Load on All Pages** Rule. 
+
+<blockquote>
+It is recommended to load this tag on all pages of your site; use the default **Load on All Pages** Rule.
+</blockquote>
+
 
 ## Set up Mappings
 
-[Mapping]() is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The **Mapping** toolbox for this tag does NOT offer any pre-defined destination variables. However, you can provide custom (more like &#39;user-defined&#39;) variables as the tag&#39;s destination. To do so, select the appropriate data source from the drop-down list and enter a custom label in the adjacent text field.
+[Mapping](https://docs.tealium.com/about-data-mappings/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The **Mapping** toolbox for this tag does NOT offer any pre-defined destination variables. However, you can provide custom (more like 'user-defined') variables as the tag's destination. To do so, select the appropriate data source from the drop-down list and enter a custom label in the adjacent text field.
 
 ## Vendor Documentation
 

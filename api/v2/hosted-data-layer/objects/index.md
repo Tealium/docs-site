@@ -12,11 +12,11 @@ The JSON payload should not exceed 1 MB.
   
       ```json
       {
-          &#34;product_category&#34;           : [&#34;Accessories&#34;],
-          &#34;product_brand&#34;              : [&#34;Acme&#34;],
-          &#34;product_sku&#34;                : [&#34;GEN-PRD-BLU&#34;],
-          &#34;product_has_free_shipping&#34;  : [&#34;0&#34;],
-          &#34;product_has_instore_pickup&#34; : [&#34;1&#34;]
+          "product_category"           : ["Accessories"],
+          "product_brand"              : ["Acme"],
+          "product_sku"                : ["GEN-PRD-BLU"],
+          "product_has_free_shipping"  : ["0"],
+          "product_has_instore_pickup" : ["1"]
       }
       ```
 

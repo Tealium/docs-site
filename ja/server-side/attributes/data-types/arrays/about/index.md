@@ -5,18 +5,22 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-types/arrays/about/
 ---
 ## 仕組み
 
-配列は値のリストを保存するために使用されます。文字列や数値の属性は、`&#34;Home Page&#34;`や`12.95`のような単一の値しか含むことができませんが、配列は`[&#34;Pants&#34;, &#34;Shirts&#34;]`や`[5.99, 12.95]`のような複数の値を含むことができます。配列は[number]()、[string]()、[boolean]()属性データ型で利用可能です。
+配列は値のリストを保存するために使用されます。文字列や数値の属性は、`"Home Page"`や`12.95`のような単一の値しか含むことができませんが、配列は`["Pants", "Shirts"]`や`[5.99, 12.95]`のような複数の値を含むことができます。配列は[number]()、[string]()、[boolean]()属性データ型で利用可能です。
 
 配列はすべての例でJSON形式で表現されます。
 
 ```json
-[&#34;Pants&#34;, &#34;Shirts&#34;, &#34;Shoes&#34;]
+["Pants", "Shirts", "Shoes"]
 [2, 4, 6]
 [true, false, false]
 []
 ```
 
+
+<blockquote>
 配列は重複した値を含むことができます。
+</blockquote>
+
 
 ### サイズ制限
 

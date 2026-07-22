@@ -7,15 +7,23 @@ url: https://docs.tealium.com/ja/server-side/cloudstream/datasources/
 
 データソースは、SnowflakeやDatabricksなどのデータクラウドへの定義済み接続です。CloudStreamはこれらのデータソースに接続してセグメントを取得し、Tealiumにデータを保存せずにアクティベーションします。これにより、既存のデータインフラの力を活用しながら、クラウドから直接大規模なデータセットを扱うことができます。
 
-![](/images/early-access/cloudstream/cloudstream_datasource_summary.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_datasource_summary.png)
 
- プロファイルで最大10個のデータソースに接続できます。 
+
+<blockquote>
+プロファイルで最大10個のデータソースに接続できます。
+</blockquote>
+
 
 CloudStreamデータソースは、データクラウドに保存されているデータと直接連携するように設計されています。データはデータクラウドに残り、コネクタを通じて一時的にインポートされるだけで、Tealiumには保存されません。
 
- CloudStreamはクラウドデータソースのみをサポートしています。 
 
-クラウドデータソースについての詳細は、を参照してください。
+<blockquote>
+CloudStreamはクラウドデータソースのみをサポートしています。
+</blockquote>
+
+
+クラウドデータソースについての詳細は、[about-cloud-data-sources](https://docs.tealium.com/about-cloud-data-sources/)を参照してください。
 
 ## 構成のテスト
 
@@ -23,7 +31,7 @@ CloudStreamデータソースは、データクラウドに保存されている
 
 データソース構成をテストするには、次の手順を使用します：
 
-![](/images/early-access/cloudstream/cloudstream_test_configuration.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_configuration.png)
 
 1. データソースウィンドウの右上隅にあるアクションボタンをクリックし、**エンドツーエンドテスト**をクリックします。
 1. 出力を受け取る方法を選択します：
@@ -34,16 +42,16 @@ CloudStreamデータソースは、データクラウドに保存されている
 1. **テストクエリ**の下で、テストに含めるテーブルのカラムを選択します。リストからカラムを削除するには、カラムの**X**をクリックします。少なくとも1つのカラムを選択する必要があります。
 1. **From Table**の下で、クエリを実行するテーブルを選択します。**Select Columns**ボックスは、テーブルのカラムで更新されます。
 1. **Where**の下で、テーブルに対して実行するSQLクエリを入力します。
-1. **Check Query**をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。結果は**Query Result Preview**タブの下のテーブルに表示されます：![](/images/early-access/cloudstream/cloudstream_test_check_query.png)
+1. **Check Query**をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。結果は**Query Result Preview**タブの下のテーブルに表示されます：![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_check_query.png)
 1. **Start Test**をクリックして構成テストを開始します。
 
 右サイドバーには、テストの完了までの時間を推定するプログレスバーと、テストがエラーに遭遇した場合に知らせるステータスメッセージが表示されます。
 
-![](/images/early-access/cloudstream/cloudstream_test_output.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_output.png)
 
 テストが完了すると、結果が表示されます：
 
-![](/images/early-access/cloudstream/cloudstream_test_results.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_test_results.png)
 
 * テストの実行をトレースで見たい場合は、**Join Trace**をクリックします。
 * テストが失敗した場合は、次のことができます：
@@ -59,14 +67,14 @@ CloudStreamデータソースは、データクラウドに保存されている
 次の条件が真の場合にのみ、オフセットを管理できます：
 
 * 現在のプロファイルが公開されています。
-* クエリモードが**Timestamp &#43; Incrementing (推奨)**、**Timestamp**、または**Incrementing**です。**Full Resync**クエリモードではオフセットを管理できません。
+* クエリモードが**Timestamp + Incrementing (推奨)**、**Timestamp**、または**Incrementing**です。**Full Resync**クエリモードではオフセットを管理できません。
 * データソースが停止しています。
     * データソースの状態が実行中、スケジュールされている、または失敗している場合は、オフセットを編集できません。現在のオフセットに関する情報のみが利用可能です。
     * 状態が初期化中、非アクティブ、または接続エラーがある場合、オフセットは利用できません。
 
 データソースのオフセットを管理するには、次の手順を使用します：
 
-![](/images/early-access/cloudstream/manage_offset.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/manage_offset.png)
 
 1. データソースの詳細ウィンドウの右上隅にあるアクションボタンをクリックし、**Manage Offset**をクリックします。
 1. 利用可能なオフセット方法は**Timestamp**と**Incrementing Column**です。クエリモードによって利用可能なオフセットが決まります。
@@ -81,7 +89,7 @@ CloudStreamデータソースは、データクラウドに保存されている
 
 **Validate Offset Changes**をクリックして、新しいオフセット位置からインポートされるデータのプレビューを表示します。テーブルはサンプル行を表示し、オフセットを調整した後に処理される行数の見積もりも提供します。
 
-![](/images/early-access/cloudstream/validate_offset.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/validate_offset.png)
 
 **Done**をクリックして新しいオフセット構成を確認します。**Cancel**をクリックして変更を破棄します。
 

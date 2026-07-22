@@ -3,7 +3,11 @@ title: ページビューイベント
 description: ページビューイベントは、訪問がページを閲覧するときにトラッキングデータを送信します。
 url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-view-event/
 ---
- ページビューイベントリスナーは現在非推奨です。現在のイベントリスナーについては、[ページロードイベントリスナー]()を参照してください。 
+
+<blockquote>
+ページビューイベントリスナーは現在非推奨です。現在のイベントリスナーについては、[ページロードイベントリスナー](https://docs.tealium.com/page-load-event/)を参照してください。
+</blockquote>
+
 
 ## 要件
 
@@ -13,19 +17,27 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-view-
 
 ページビューイベントは、訪問がページを閲覧するときにトラッキングします。訪問がアクションを実行すると、イベントリスナーはそのデータを既存のトラッキング呼び出しに追加します。
 
-この動作は、ページビューのペイロードを定義し、指定されたページまたはページが閲覧されたときにタグを発火するロードルールを持つ[データ値構成]()拡張機能に似ています。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+<blockquote>
+この動作は、ページビューのペイロードを定義し、指定されたページまたはページが閲覧されたときにタグを発火するロードルールを持つ[データ値構成](https://docs.tealium.com/set-data-values-extension/)拡張機能に似ています。
+</blockquote>
+
+
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ### ユースケース
 
+
+<blockquote>
 このイベントリスナーは、すでに他のイベントリスナーに登録しているタグと一緒に使用します。
+</blockquote>
+
 
 訪問がページを閲覧すると、ページビューイベントがタグを発火し、ページビューイベントの変数をタグのペイロードに含めるように、他のイベントとのOR関係にページビューイベントを追加します。
 
 ## イベントのトラッキング
 
-ページビューイベントは、このページビューイベントを別のイベントとマージするための`utag.ut.merge()`関数を実行します。詳細については、[ユーティリティ関数](/ja/platforms/javascript/api/utility-functions/#utagutmerge)を参照してください。
+ページビューイベントは、このページビューイベントを別のイベントとマージするための`utag.ut.merge()`関数を実行します。詳細については、[ユーティリティ関数](https://docs.tealium.com/ja/platforms/javascript/api/utility-functions/#utagutmerge)を参照してください。
 
 ## イベントトリガー
 
@@ -41,15 +53,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/page-view-
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;page_view&#34;`| 訪問が指定されたページを閲覧しました。|
+|`tealium_event="page_view"`| 訪問が指定されたページを閲覧しました。|
 |`iq_event_id` | イベントを送信したイベントリスナーのUIDです。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;page_view&#34;,
-   &#34;iq_event_id:&#34; : &#34;page_view_events_1&#34;
+   "tealium_event"  : "page_view",
+   "iq_event_id:" : "page_view_events_1"
 }
 
 ```

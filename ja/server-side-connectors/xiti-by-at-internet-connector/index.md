@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 ## 構成の構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -40,13 +40,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 | **パラメータ** | **説明**  |
 |:--------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Comp  | &lt;ul&gt;&lt;li&gt;(必須) 各訪問に対してユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt; |
-| Page  | &lt;ul&gt;&lt;li&gt;(必須) アクセスされたページの名前&lt;/li&gt;&lt;li&gt;250文字を超えないこと&lt;/li&gt;&lt;/ul&gt; |
-| Chapters  | &lt;ul&gt;&lt;li&gt;1〜3章&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成します&lt;/li&gt;&lt;/ul&gt;  |
-| Level 2 | &lt;ul&gt;&lt;li&gt;インターフェースで事前に構成する必要があり、対応するIDを取得します&lt;/li&gt;&lt;/ul&gt;  |
-| 追加ヒットパラメータ | &lt;ul&gt;&lt;li&gt;必要に応じて追加の値を提供します&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレートを使用するには、以下のテンプレートとテンプレート変数セクションを構成し、テンプレート名を二重中括弧で囲んで参照します。例：`{{MyTemplateName}}`&lt;/li&gt;&lt;/ul&gt;  |
-| テンプレート変数  | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートのデータ入力としてテンプレート変数を提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。&lt;/li&gt;&lt;li&gt;例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;(オプション) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;  |
+| Comp  | <ul><li>(必須) 各訪問に対してユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul> |
+| Page  | <ul><li>(必須) アクセスされたページの名前</li><li>250文字を超えないこと</li></ul> |
+| Chapters  | <ul><li>1〜3章</li><li>配列属性タイプを使用して構成します</li></ul>  |
+| Level 2 | <ul><li>インターフェースで事前に構成する必要があり、対応するIDを取得します</li></ul>  |
+| 追加ヒットパラメータ | <ul><li>必要に応じて追加の値を提供します</li><li>テンプレートサポート：テンプレートを使用するには、以下のテンプレートとテンプレート変数セクションを構成し、テンプレート名を二重中括弧で囲んで参照します。例：`{{MyTemplateName}}`</li></ul>  |
+| テンプレート変数  | <ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート | <ul><li>(オプション) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。</li></ul>  |
 
 ### アクション - メディアプレイヒット送信
 
@@ -54,21 +54,21 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 | **パラメータ** | **説明**  |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユニーク訪問ID | &lt;ul&gt;&lt;li&gt;(必須) 各訪問に対してユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツラベル | &lt;ul&gt;&lt;li&gt;1〜3のラベル&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成するか、単一のラベルをスカラー値として指定できます&lt;/li&gt;&lt;/ul&gt;  |
-| メディアタイプ  | &lt;ul&gt;&lt;li&gt;(必須) メディアタイプを選択します&lt;/li&gt;&lt;li&gt;オプションは `Video`, `Audio`,` Pre-roll video`, `Mid-roll video`, `Post-roll video`です&lt;/li&gt;&lt;/ul&gt; |
-| 放送タイプ  | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択します&lt;/li&gt;&lt;li&gt;オプションは `Clip` または `Live`です&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツの長さ  | &lt;ul&gt;&lt;li&gt;`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です&lt;/li&gt;&lt;li&gt;ライブ放送には適用されません&lt;/li&gt;&lt;/ul&gt;  |
-| 放送場所  | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択します&lt;/li&gt;&lt;li&gt;オプションは `internal` または `external`です&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツレベル | &lt;ul&gt;&lt;li&gt;(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツバッファリング | &lt;ul&gt;&lt;li&gt;(オプション) バッファリング中は `1` を構成し、バッファリング終了時に構成します&lt;/li&gt;&lt;/ul&gt; |
-| ページラベル  | &lt;ul&gt;&lt;li&gt;(オプション) コンテンツが再生されるページのラベル（オプションのツリー構造を含む）&lt;/li&gt;&lt;/ul&gt;  |
-| ページレベル2  | &lt;ul&gt;&lt;li&gt;(オプション) コンテンツが再生されるページのレベル2&lt;/li&gt;&lt;/ul&gt; |
-| プレイヤー識別子 | &lt;ul&gt;&lt;li&gt;(オプション) 同じページに複数のプレイヤーがある場合に便利です&lt;/li&gt;&lt;/ul&gt; |
-| 関連コンテンツのラベル | &lt;ul&gt;&lt;li&gt;(オプション) ツリー構造がある場合はそれを含む；プレ/ミッド/ポストロールコンテンツの場合に使用されます&lt;/li&gt;&lt;/ul&gt; |
-| 放送ドメイン  | &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;外部放送の場合の放送ドメイン&lt;/li&gt;&lt;/ul&gt;  |
-| テンプレート変数  | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートのデータ入力としてテンプレート変数を提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします&lt;/li&gt;&lt;li&gt;例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;(オプション) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;/ul&gt;  |
+| ユニーク訪問ID | <ul><li>(必須) 各訪問に対してユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul> |
+| コンテンツラベル | <ul><li>1〜3のラベル</li><li>配列属性タイプを使用して構成するか、単一のラベルをスカラー値として指定できます</li></ul>  |
+| メディアタイプ  | <ul><li>(必須) メディアタイプを選択します</li><li>オプションは `Video`, `Audio`,` Pre-roll video`, `Mid-roll video`, `Post-roll video`です</li></ul> |
+| 放送タイプ  | <ul><li>(必須) 放送タイプを選択します</li><li>オプションは `Clip` または `Live`です</li></ul>  |
+| コンテンツの長さ  | <ul><li>`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です</li><li>ライブ放送には適用されません</li></ul>  |
+| 放送場所  | <ul><li>(必須) 放送タイプを選択します</li><li>オプションは `internal` または `external`です</li></ul>  |
+| コンテンツレベル | <ul><li>(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります</li></ul> |
+| コンテンツバッファリング | <ul><li>(オプション) バッファリング中は `1` を構成し、バッファリング終了時に構成します</li></ul> |
+| ページラベル  | <ul><li>(オプション) コンテンツが再生されるページのラベル（オプションのツリー構造を含む）</li></ul>  |
+| ページレベル2  | <ul><li>(オプション) コンテンツが再生されるページのレベル2</li></ul> |
+| プレイヤー識別子 | <ul><li>(オプション) 同じページに複数のプレイヤーがある場合に便利です</li></ul> |
+| 関連コンテンツのラベル | <ul><li>(オプション) ツリー構造がある場合はそれを含む；プレ/ミッド/ポストロールコンテンツの場合に使用されます</li></ul> |
+| 放送ドメイン  | <ul><li>オプション</li></ul> <ul><li>外部放送の場合の放送ドメイン</li></ul>  |
+| テンプレート変数  | <ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート | <ul><li>(オプション) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。</li></ul>  |
 
 ### アクション - メディアリフレッシュヒット送信
 
@@ -77,20 +77,20 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 | **パラメータ** | **説明** |
 |:----------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユニークビジターID | &lt;ul&gt;&lt;li&gt;(必須) 各訪問にユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツラベル | &lt;ul&gt;&lt;li&gt;1〜3のラベル&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます&lt;/li&gt;&lt;/ul&gt;  |
-| メディアタイプ  | &lt;ul&gt;&lt;li&gt;(必須) メディアタイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`&lt;/li&gt;&lt;/ul&gt;  |
-| 放送タイプ  | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Clip` または `Live`&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツの長さ  | &lt;ul&gt;&lt;li&gt;`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です&lt;/li&gt;&lt;li&gt;ライブ放送には適用されません&lt;/li&gt;&lt;/ul&gt; |
-| 放送場所  | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `internal` または `external`&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツレベル | &lt;ul&gt;&lt;li&gt;(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツバッファリング | &lt;ul&gt;&lt;li&gt;(オプション) バッファリング中は `1` を構成し、バッファリング終了時に構成します&lt;/li&gt;&lt;/ul&gt;  |
-| ページレベル2  | &lt;ul&gt;&lt;li&gt;(オプション) コンテンツが再生されるページのレベル2&lt;/li&gt;&lt;/ul&gt;  |
-| プレイヤー識別子 | &lt;ul&gt;&lt;li&gt;(オプション) 同じページに複数のプレイヤーがある場合に便利です&lt;/li&gt;&lt;/ul&gt;  |
-| 関連コンテンツのラベル | &lt;ul&gt;&lt;li&gt;(オプション) あればツリー構造を含む&lt;/li&gt;&lt;li&gt;プレ/ミッド/ポストロールコンテンツの場合に使用されます&lt;/li&gt;&lt;/ul&gt;  |
-| 放送ドメイン  | &lt;ul&gt;&lt;li&gt;(オプション) 外部放送の場合の放送ドメイン&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート変数  | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートにデータ入力としてテンプレート変数を提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | &lt;ul&gt;&lt;li&gt;(オプション) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。&lt;/li&gt;&lt;/ul&gt; |
+| ユニークビジターID | <ul><li>(必須) 各訪問にユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul>  |
+| コンテンツラベル | <ul><li>1〜3のラベル</li><li>配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます</li></ul>  |
+| メディアタイプ  | <ul><li>(必須) メディアタイプを選択</li><li>オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`</li></ul>  |
+| 放送タイプ  | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `Clip` または `Live`</li></ul> |
+| コンテンツの長さ  | <ul><li>`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です</li><li>ライブ放送には適用されません</li></ul> |
+| 放送場所  | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `internal` または `external`</li></ul> |
+| コンテンツレベル | <ul><li>(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります</li></ul>  |
+| コンテンツバッファリング | <ul><li>(オプション) バッファリング中は `1` を構成し、バッファリング終了時に構成します</li></ul>  |
+| ページレベル2  | <ul><li>(オプション) コンテンツが再生されるページのレベル2</li></ul>  |
+| プレイヤー識別子 | <ul><li>(オプション) 同じページに複数のプレイヤーがある場合に便利です</li></ul>  |
+| 関連コンテンツのラベル | <ul><li>(オプション) あればツリー構造を含む</li><li>プレ/ミッド/ポストロールコンテンツの場合に使用されます</li></ul>  |
+| 放送ドメイン  | <ul><li>(オプション) 外部放送の場合の放送ドメイン</li></ul> |
+| テンプレート変数  | <ul><li>(オプション) テンプレートにデータ入力としてテンプレート変数を提供します</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート | <ul><li>(オプション) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。</li></ul> |
 
 ### アクション - メディア一時停止ヒットの送信
 
@@ -98,16 +98,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 | **パラメータ**  | **説明** |
 |:-------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユニークビジターID  | &lt;ul&gt;&lt;li&gt;(必須) 各訪問にユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツラベル  | &lt;ul&gt;&lt;li&gt;1〜3のラベル&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます&lt;/li&gt;&lt;/ul&gt;  |
-| メディアタイプ | &lt;ul&gt;&lt;li&gt;(必須) メディアタイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`&lt;/li&gt;&lt;/ul&gt;  |
-| 放送タイプ | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;オプションは `Clip` または `Live`&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツの長さ | &lt;ul&gt;&lt;li&gt;`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です&lt;/li&gt;&lt;li&gt;ライブ放送には適用されません&lt;/li&gt;&lt;/ul&gt; |
-| 放送場所 | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `internal` または `external`&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツレベル  | &lt;ul&gt;&lt;li&gt;(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります&lt;/li&gt;&lt;/ul&gt;  |
-| プレイヤー識別子  | &lt;ul&gt;&lt;li&gt;(オプション) 同じページに複数のプレイヤーがある場合に便利です&lt;/li&gt;&lt;/ul&gt;  |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートにデータ入力としてテンプレート変数を提供します。&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート  | &lt;ul&gt;&lt;li&gt;(オプション) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。&lt;/li&gt;&lt;/ul&gt; |
+| ユニークビジターID  | <ul><li>(必須) 各訪問にユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul>  |
+| コンテンツラベル  | <ul><li>1〜3のラベル</li><li>配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます</li></ul>  |
+| メディアタイプ | <ul><li>(必須) メディアタイプを選択</li><li>オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`</li></ul>  |
+| 放送タイプ | <ul><li>(必須) 放送タイプを選択</li></ul> <ul><li>オプションは `Clip` または `Live`</li></ul> |
+| コンテンツの長さ | <ul><li>`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です</li><li>ライブ放送には適用されません</li></ul> |
+| 放送場所 | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `internal` または `external`</li></ul> |
+| コンテンツレベル  | <ul><li>(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります</li></ul>  |
+| プレイヤー識別子  | <ul><li>(オプション) 同じページに複数のプレイヤーがある場合に便利です</li></ul>  |
+| テンプレート変数 | <ul><li>(オプション) テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート  | <ul><li>(オプション) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。</li></ul> |
 
 ### アクション - メディア停止ヒットの送信
 
@@ -115,29 +115,29 @@ url: https://docs.tealium.com/ja/server-side-connectors/xiti-by-at-internet-conn
 
 | **パラメータ**  | **説明**  |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユニークビジターID  | &lt;ul&gt;&lt;li&gt;(必須) 各訪問にユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツラベル  | &lt;ul&gt;&lt;li&gt;1〜3のラベル&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます&lt;/li&gt;&lt;/ul&gt; |
-| メディアタイプ | &lt;ul&gt;&lt;li&gt;(必須) メディアタイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`&lt;/li&gt;&lt;/ul&gt; |
-| 放送タイプ | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Clip` または `Live`&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツの長さ | &lt;ul&gt;&lt;li&gt;`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です&lt;/li&gt;&lt;li&gt;ライブ放送には適用されません&lt;/li&gt;&lt;/ul&gt;  |
-| 放送場所 | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `internal` または `external`&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツレベル  | &lt;ul&gt;&lt;li&gt;(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります&lt;/li&gt;&lt;/ul&gt; |
-| プレイヤー識別子  | &lt;ul&gt;&lt;li&gt;(オプション) 同じページに複数のプレイヤーがある場合に便利です&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートにデータ入力としてテンプレート変数を提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート  | &lt;ul&gt;&lt;li&gt;(オプション) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。&lt;/li&gt;&lt;/ul&gt;  |
+| ユニークビジターID  | <ul><li>(必須) 各訪問にユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul> |
+| コンテンツラベル  | <ul><li>1〜3のラベル</li><li>配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます</li></ul> |
+| メディアタイプ | <ul><li>(必須) メディアタイプを選択</li><li>オプションは `Video`, `Audio`, `Pre-roll video`, `Mid-roll video`, `Post-roll video`</li></ul> |
+| 放送タイプ | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `Clip` または `Live`</li></ul>  |
+| コンテンツの長さ | <ul><li>`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です</li><li>ライブ放送には適用されません</li></ul>  |
+| 放送場所 | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `internal` または `external`</li></ul>  |
+| コンテンツレベル  | <ul><li>(オプション) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります</li></ul> |
+| プレイヤー識別子  | <ul><li>(オプション) 同じページに複数のプレイヤーがある場合に便利です</li></ul> |
+| テンプレート変数 | <ul><li>(オプション) テンプレートにデータ入力としてテンプレート変数を提供します</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例：`items.name` のようにドット表記でネストされたテンプレート変数を名付けます</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート  | <ul><li>(オプション) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>例：`{{SomeTemplateName}}` のように名前でテンプレートがサポートされるフィールドに注入されます。</li></ul>  |
 
 ### アクション - メディア移動ヒットの送信
 #### パラメータ
 
 | **パラメータ**  | **説明**  |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユニークビジターID  | &lt;ul&gt;&lt;li&gt;(必須) 各訪問に対してユニークである必要があります&lt;/li&gt;&lt;li&gt;[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください&lt;/li&gt;&lt;/ul&gt; |
-| コンテンツラベル  | &lt;ul&gt;&lt;li&gt;1から3つのラベル&lt;/li&gt;&lt;li&gt;配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます&lt;/li&gt;&lt;/ul&gt; |
-| メディアタイプ | &lt;ul&gt;&lt;li&gt;(必須) メディアタイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Video`, `Audio`, Pre-roll video,` Mid-roll video`, `Post-roll video`&lt;/li&gt;&lt;/ul&gt; |
-| 放送タイプ | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `Clip` または `Live`&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツの長さ | &lt;ul&gt;&lt;li&gt;`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です&lt;/li&gt;&lt;li&gt;ライブ放送には適用されません&lt;/li&gt;&lt;/ul&gt;  |
-| 放送場所 | &lt;ul&gt;&lt;li&gt;(必須) 放送タイプを選択&lt;/li&gt;&lt;li&gt;オプションは `internal` または `external`&lt;/li&gt;&lt;/ul&gt;  |
-| コンテンツレベル  | &lt;ul&gt;&lt;li&gt;(オプショナル) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります&lt;/li&gt;&lt;/ul&gt; |
-| プレイヤー識別子  | &lt;ul&gt;&lt;li&gt;(オプショナル) 同じページ上に複数のプレイヤーがある場合に便利です&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;(オプショナル) テンプレートにデータ入力としてテンプレート変数を提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;例：items.nameのようにドット表記でネストされたテンプレート変数を名前付けします&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート  | &lt;ul&gt;&lt;li&gt;(オプショナル) メッセージデータで参照されるテンプレートを提供します&lt;/li&gt;&lt;li&gt;詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前でダブルカーリーブレイスで注入されます。&lt;/li&gt;&lt;/ul&gt;  |
+| ユニークビジターID  | <ul><li>(必須) 各訪問に対してユニークである必要があります</li><li>[XiTi by AT Internetのドキュメント](https://developers.atinternet-solutions.com/general-en/craft-your-hit/)を参照してください</li></ul> |
+| コンテンツラベル  | <ul><li>1から3つのラベル</li><li>配列属性タイプを使用して構成するか、スカラー値として単一のラベルを指定できます</li></ul> |
+| メディアタイプ | <ul><li>(必須) メディアタイプを選択</li><li>オプションは `Video`, `Audio`, Pre-roll video,` Mid-roll video`, `Post-roll video`</li></ul> |
+| 放送タイプ | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `Clip` または `Live`</li></ul>  |
+| コンテンツの長さ | <ul><li>`Clip` 放送タイプの場合、秒単位でのコンテンツの長さが必要です</li><li>ライブ放送には適用されません</li></ul>  |
+| 放送場所 | <ul><li>(必須) 放送タイプを選択</li><li>オプションは `internal` または `external`</li></ul>  |
+| コンテンツレベル  | <ul><li>(オプショナル) XiTiのウェブサイトを使用して事前に構成し、対応するIDを取得する必要があります</li></ul> |
+| プレイヤー識別子  | <ul><li>(オプショナル) 同じページ上に複数のプレイヤーがある場合に便利です</li></ul> |
+| テンプレート変数 | <ul><li>(オプショナル) テンプレートにデータ入力としてテンプレート変数を提供します</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例：items.nameのようにドット表記でネストされたテンプレート変数を名前付けします</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+| テンプレート  | <ul><li>(オプショナル) メッセージデータで参照されるテンプレートを提供します</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、例えば `{{SomeTemplateName}}` のように、サポートされるフィールドに名前でダブルカーリーブレイスで注入されます。</li></ul>  |

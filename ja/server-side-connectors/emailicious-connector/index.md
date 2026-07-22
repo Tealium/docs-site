@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/emailicious-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -33,12 +33,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/emailicious-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|アカウント名|  &lt;ul&gt;&lt;li&gt;Emailiciousアカウントの名前。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：&lt;https://emailicious-api.readthedocs.io/en/latest/topics/introduction.html&gt;&lt;/li&gt;&lt;/ul&gt; |
-|リストID|  &lt;ul&gt;&lt;li&gt;購読者が追加されるリストの一意の識別子。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：[https://emailicious-api.readthedocs.io/en/latest/resources/subscribers.html#post--api-v1-lists-(int-list_id)-subscribers](https://emailicious-api.readthedocs.io/en/latest/resources/subscribers.html#post--api-v1-lists-(int-list_id)-subscribers)&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;購読者のメール。&lt;/li&gt;&lt;/ul&gt; |
-|名前|  &lt;ul&gt;&lt;li&gt;購読者の名前。&lt;/li&gt;&lt;/ul&gt; |
-|姓|  &lt;ul&gt;&lt;li&gt;購読者の姓。&lt;/li&gt;&lt;/ul&gt; |
-|性別|  &lt;ul&gt;&lt;li&gt;購読者の性別。&lt;/li&gt;&lt;/ul&gt; |
-|生年月日|  &lt;ul&gt;&lt;li&gt;購読者の生年月日。&lt;/li&gt;&lt;/ul&gt; |
-|言語|  &lt;ul&gt;&lt;li&gt;購読者の言語。&lt;/li&gt;&lt;/ul&gt; |
-|地域|  &lt;ul&gt;&lt;li&gt;購読者の地域。&lt;/li&gt;&lt;/ul&gt; |
+|アカウント名|  <ul><li>Emailiciousアカウントの名前。</li><li>詳細については、次を参照してください：<https://emailicious-api.readthedocs.io/en/latest/topics/introduction.html></li></ul> |
+|リストID|  <ul><li>購読者が追加されるリストの一意の識別子。</li><li>詳細については、次を参照してください：[https://emailicious-api.readthedocs.io/en/latest/resources/subscribers.html#post--api-v1-lists-(int-list_id)-subscribers](https://emailicious-api.readthedocs.io/en/latest/resources/subscribers.html#post--api-v1-lists-(int-list_id)-subscribers)</li></ul> |
+|メール|  <ul><li>購読者のメール。</li></ul> |
+|名前|  <ul><li>購読者の名前。</li></ul> |
+|姓|  <ul><li>購読者の姓。</li></ul> |
+|性別|  <ul><li>購読者の性別。</li></ul> |
+|生年月日|  <ul><li>購読者の生年月日。</li></ul> |
+|言語|  <ul><li>購読者の言語。</li></ul> |
+|地域|  <ul><li>購読者の地域。</li></ul> |

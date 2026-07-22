@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/scenarios/
 
 **ケースAの結果：** 訪問ID属性が元のメールアドレスハッシュに構成された1つの訪問プロファイル。
 
-![](/images/server-side/two-emails-first.png)
+![](https://docs.tealium.com/images/server-side/two-emails-first.png)
 
 ### ケースB
 
@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/scenarios/
 
 **結果：** 各訪問ID属性が対応するメールアドレスハッシュに構成された2つの訪問プロファイル。
 
-![](/images/server-side/two-emails-both.png)
+![](https://docs.tealium.com/images/server-side/two-emails-both.png)
 
 ## 2番目の訪問ID属性で一致する2つの訪問プロファイルの例
 
@@ -53,15 +53,15 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/scenarios/
 
 このシナリオは、匿名ID（`tealium_visitor_id`）が不明であるか、2つのプロファイルで異なる場合にのみ発生します。匿名IDが一致する場合、ユーザーIDや訪問ID属性は評価されず、2番目のプロファイルは作成されません。
 
-![](/images/server-side/match-2nd-visid-first.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-first.png)
 
 ユーザーが最初のデバイスから再びウェブサイトを訪れ、フォームを提出する際にメールアドレスを提供します。customer_emailアドレス属性は訪問ID属性#2をエンリッチするように構成されています。プロファイルAの訪問ID属性#2は、以下に示すようにメールアドレスで豊かにされます。
 
-![](/images/server-side/match-2nd-visid-second.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-second.png)
 
 ユーザーが2番目のデバイスからウェブサイトを訪れ、フォームを提出する際に同じメールアドレスを提供すると、メールアドレスがプロファイルAの訪問ID属性#2と一致し、2つのプロファイルがスティッチングされてプロファイルCが作成されます。以下に示すようになります。
 
-![](/images/server-side/match-2nd-visid-third.png)
+![](https://docs.tealium.com/images/server-side/match-2nd-visid-third.png)
 
 プロファイルCには新しい`replaces`配列が含まれており、訪問ID属性にはもはや格納されていませんが、将来の訪問スティッチングには引き続き使用できます。プロファイルAとプロファイルBは匿名IDと訪問ID属性#1（顧客ID）の値が異なっていました。訪問ID属性ごとに1つの値しか構成できないため、2つの値を`replaces`配列に移動する必要がありました。プロファイルBは新しいプロファイルであり、プロファイルAよりもイベントが少なかったため、プロファイルBの識別子が`replaces`配列に移動されました。
 
@@ -71,7 +71,7 @@ url: https://docs.tealium.com/ja/server-side/visitor-stitching/scenarios/
 
 ファイルインポートでは、訪問IDマッピングをカスタマイズでき、ユーザー識別子の豊か化はマッピングされた順序で発生します。このシナリオは、セットアップに応じていくつかの異なる方法で達成できます。
 
-詳細については、[Tealium Collect HTTP API]()、[インカミングウェブフックについて]()、または[ファイルインポートについて]()を参照してください。
+詳細については、[Tealium Collect HTTP API](https://docs.tealium.com/platforms/http-api//)、[インカミングウェブフックについて]()、または[ファイルインポートについて]()を参照してください。
 
 #### 状態のないイベント
 

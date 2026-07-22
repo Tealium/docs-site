@@ -13,16 +13,16 @@ Kissmetrics is a powerful web analytics solution that helps you to increase cust
     * Trigger calls containing the mapped data to` _kmq.push()`
 * Purchase events are automatically recorded when an order ID is set. All of the E-Commerce extension values are supported.
 * `_kmq.push` mapping examples:
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;]`
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}]`
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}, CALLBACK_FUNCTION]`
-    * `[&#39;set&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}]`
-    * `[&#39;identify&#39;, &#39;IDENTITY&#39;]`
+    * `['record', 'EVENT_NAME']`
+    * `['record', 'EVENT_NAME', {'PROPERTY_NAME':'VALUE'}]`
+    * `['record', 'EVENT_NAME', {'PROPERTY_NAME':'VALUE'}, CALLBACK_FUNCTION]`
+    * `['set', {'PROPERTY_NAME':'VALUE'}]`
+    * `['identify', 'IDENTITY']`
 * Common Methods: [Kissmetrics API Common Metrics](https://support.kissmetrics.io/docs/common-methods).
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,11 +30,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

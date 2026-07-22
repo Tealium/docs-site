@@ -79,7 +79,7 @@ removeAllConsentDelegates()
 
 ### `resetUserConsentPreferences()`
 
-メモリと永続保存に現在保存されているすべての同意構成をクリアします。同意状態を&#34;unknown&#34;に戻し、カテゴリはありません。
+メモリと永続保存に現在保存されているすべての同意構成をクリアします。同意状態を"unknown"に戻し、カテゴリはありません。
 
 ```swift
 resetUserConsentPreferences()

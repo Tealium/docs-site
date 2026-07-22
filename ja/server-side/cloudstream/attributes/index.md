@@ -3,11 +3,11 @@ title: クラウド属性
 description: この記事では、クラウド属性の使用方法と属性の追加、複製、削除の手順について概説します。
 url: https://docs.tealium.com/ja/server-side/cloudstream/attributes/
 ---
-![](/images/early-access/cloudstream/cloud_attributes.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/cloud_attributes.png)
 
 クラウド属性は、CloudStream内で使用される基本的なデータ要素です。データソースをCloudStreamで作成するときに定義されます。データクラウドのテーブルに接続すると、CloudStreamはテーブルの列を分析し、そのデータ型を決定し、対応するクラウド属性を生成します。
 
-![](/images/early-access/cloudstream/datasource_cloud_attribute_mapping.png)
+![](https://docs.tealium.com/images/early-access/cloudstream/datasource_cloud_attribute_mapping.png)
 
 クラウドデータソースはすべてのデータ型をサポートしています。データソースの構成プロセス中に属性マッピングを確認し、調整して、各属性のデータ型が正しく、データ活性化の要件（例えばセグメンテーションやオーディエンスターゲティングなど）に合致していることを確認してください。
 
@@ -22,12 +22,16 @@ url: https://docs.tealium.com/ja/server-side/cloudstream/attributes/
 | 配列             | 文字列の配列、数値の配列、またはブールの配列 |
 | その他           | 文字列属性                         |
 
-データ型についての詳細は、[クラウドデータソースについて &gt; データ型]()を参照してください。
+データ型についての詳細は、[クラウドデータソースについて > データ型](https://docs.tealium.com/about-cloud-data-sources/#data-types)を参照してください。
 
 また、マッピングで既存のクラウド属性を選択して、異なるデータソースやセグメント間で再利用することもできます。
 
- 現在のクラウド属性の合計は、**属性**画面で確認できます。プロファイルで500以上の属性が必要な場合は、カスタマーサクセスマネージャーに連絡してください。 
+
+<blockquote>
+現在のクラウド属性の合計は、**属性**画面で確認できます。プロファイルで500以上の属性が必要な場合は、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
+</blockquote>
+
 
 クラウド属性は構造と振る舞いにおいてイベント属性と同一ですが、制限データとしてマークされることはなく、CloudStreamにはプリロードされた属性が含まれていません。
 
-詳細については、を参照してください。
+詳細については、[about-attributes](https://docs.tealium.com/about-attributes/)を参照してください。

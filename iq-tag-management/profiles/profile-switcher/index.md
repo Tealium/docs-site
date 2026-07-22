@@ -7,7 +7,7 @@ url: https://docs.tealium.com/iq-tag-management/profiles/profile-switcher/
 
 Each account can contain several profiles. The profile switcher lets you quickly switch accounts, profiles, and profile versions.
 
-![](/images/iq-tag-management/profiles/profile-switcher1.png)
+![](https://docs.tealium.com/images/iq-tag-management/profiles/profile-switcher1.png)
 
 The profile switcher displays the latest version of the current profile, your most recently visited profiles, and the last profile you visited.
 
@@ -20,4 +20,4 @@ Use the following steps to switch to another profile:
 1. From the **Version** drop-down menu, select the version of the profile to switch to.
 1. Click **Load Version**.
 
-You can also use the **Switch to this Version** option in the [Versions screen]() to switch versions.
+You can also use the **Switch to this Version** option in the [Versions screen](https://docs.tealium.com/client-side-versions/) to switch versions.

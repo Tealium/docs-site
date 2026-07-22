@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -34,10 +34,10 @@ You can retrieve your instance identifier by accessing **Gears** from the **Inte
 (Required) The name or identifier of the Marketing Cloud Personalization dataset you are sending data to.
 * **API Key ID**  
 (Required) Your API Key ID that will be used to generate an API Token.  
-For more information about API tokens, see [Salesforce: Personalization API Tokens ](https://help.salesforce.com/s/articleView?id=mktg.mc_pers.htm&amp;type=5).
+For more information about API tokens, see [Salesforce: Personalization API Tokens ](https://help.salesforce.com/s/articleView?id=mktg.mc_pers.htm&type=5).
 * **API Key Secret**  
 (Required) Your API Key Secret that will be used to generate an API Token.  
-For more information about API tokens, see [Salesforce: Personalization API Tokens ](https://help.salesforce.com/s/articleView?id=mktg.mc_pers.htm&amp;type=5).
+For more information about API tokens, see [Salesforce: Personalization API Tokens ](https://help.salesforce.com/s/articleView?id=mktg.mc_pers.htm&type=5).
 
 Click **Done** when you are finished configuring the connector.
 
@@ -61,7 +61,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Interaction Type  | Select interaction type.&lt;br&gt; **Catalog Object Interaction**: Captures engagement data about catalog objects.&lt;br&gt; **Cart Interaction**: Captures engagement data about the contents of a user&#39;s cart.&lt;br&gt; **Order Interaction**: Captures engagement data about the items in a user&#39;s order. In Personalization, only the **PurchaseOrderInteraction** affects and updates a user&#39;s current order.  |
+| Interaction Type  | Select interaction type.<br> **Catalog Object Interaction**: Captures engagement data about catalog objects.<br> **Cart Interaction**: Captures engagement data about the contents of a user's cart.<br> **Order Interaction**: Captures engagement data about the items in a user's order. In Personalization, only the **PurchaseOrderInteraction** affects and updates a user's current order.  |
 
 #### Interaction Name Parameters
 
@@ -80,7 +80,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Catalog Object Attributes | This section will be ignored if type selected in the **Interaction Type** section is not **Catalog Object Interaction**.&lt;br&gt; Key-value pairs are stored as metadata on the catalog object. These attributes must be defined in the platform.&lt;br&gt; For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
+| Catalog Object Attributes | This section will be ignored if type selected in the **Interaction Type** section is not **Catalog Object Interaction**.<br> Key-value pairs are stored as metadata on the catalog object. These attributes must be defined in the platform.<br> For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
 
 #### Related Catalog Objects Parameters
 
@@ -92,7 +92,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Cart Data | This section is ignored if the type selected in the **Interaction Type** section is not **Cart Interaction**. This type of Interaction captures engagement data about the contents of a user&#39;s cart. For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html). If you need nested objects support, you can use the **Templates** section to define a template. Reference the template by its name with matching double curly braces: `{{template_name}}`. |
+| Cart Data | This section is ignored if the type selected in the **Interaction Type** section is not **Cart Interaction**. This type of Interaction captures engagement data about the contents of a user's cart. For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html). If you need nested objects support, you can use the **Templates** section to define a template. Reference the template by its name with matching double curly braces: `{{template_name}}`. |
 
 #### Cart Data Line Items Parameters
 
@@ -100,7 +100,7 @@ The following section describes how to set up parameters and options for each ac
 |:------------------------|:-------------------|
 | Catalog Object ID | A unique ID representing the catalog object. |
 | Catalog Object Type | The type representing the catalog object. |
-| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset&#39;s configured currency. |
+| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset's configured currency. |
 | Price | The price of the catalog object in the line item. |
 | Quantity  | The number of catalog objects in the line item. |
 
@@ -108,19 +108,19 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Cart Line Items Attributes  | This section will be ignored if type selected in the **Interaction Type** section is not **Cart Interaction**.&lt;br&gt; Key-value pairs are stored as metadata on the line item object. These attributes must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; Provide Array type attributes to add multiple items. Array type attributes must be of equal length.&lt;br&gt; **Cart Line Items Attributes** arrays and **Cart Line Items** arrays must be of equal length.&lt;br&gt; Single value attributes can be used and will apply to each item.  |
+| Cart Line Items Attributes  | This section will be ignored if type selected in the **Interaction Type** section is not **Cart Interaction**.<br> Key-value pairs are stored as metadata on the line item object. These attributes must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> Provide Array type attributes to add multiple items. Array type attributes must be of equal length.<br> **Cart Line Items Attributes** arrays and **Cart Line Items** arrays must be of equal length.<br> Single value attributes can be used and will apply to each item.  |
 
 #### Cart Line Items Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Cart Line Items Template Variables  | Provide template variables as data input for **Cart Line Items Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| Cart Line Items Template Variables  | Provide template variables as data input for **Cart Line Items Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### Cart Line Items Template Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Cart Line Items Template  | This section will be ignored if type selected in the **Interaction Type** section is not **Cart Interaction**.&lt;br&gt; If you need nested objects support, use this section to define a template.&lt;br&gt; The template expects a JSON object format if **Add To Cart** or **Remove From Cart** value is selected in the **Interaction Name** section. Otherwise the template expects a JSON array format.&lt;br&gt; When template is defined, then configuration from the **Cart Line Items** and **Cart Line Items Attributes** sections will be ignored.&lt;br&gt; You can use template variables mapped in the **Cart Line Items Template Variables** section.&lt;br&gt;For more information, see . |
+| Cart Line Items Template  | This section will be ignored if type selected in the **Interaction Type** section is not **Cart Interaction**.<br> If you need nested objects support, use this section to define a template.<br> The template expects a JSON object format if **Add To Cart** or **Remove From Cart** value is selected in the **Interaction Name** section. Otherwise the template expects a JSON array format.<br> When template is defined, then configuration from the **Cart Line Items** and **Cart Line Items Attributes** sections will be ignored.<br> You can use template variables mapped in the **Cart Line Items Template Variables** section.<br>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). |
 
 #### Order Data Parameters
 
@@ -134,7 +134,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Order Attributes  | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.&lt;br&gt;Key-value pairs are stored as metadata on the order object. These attributes must be defined in the platform.&lt;br&gt; For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
+| Order Attributes  | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.<br>Key-value pairs are stored as metadata on the order object. These attributes must be defined in the platform.<br> For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
 
 #### Order Line Items Parameters
 
@@ -142,7 +142,7 @@ The following section describes how to set up parameters and options for each ac
 |:------------------------|:-------------------|
 | Catalog Object ID | A unique ID representing the catalog object.  |
 | Catalog Object Type | The type representing the catalog object. |
-| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset&#39;s configured currency. |
+| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset's configured currency. |
 | Price | The price of the catalog object in the line item. |
 | Quantity  | The number of catalog objects in the line item. |
 
@@ -150,19 +150,19 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Order Line Items Attributes | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.&lt;br&gt;Key-value pairs are stored as metadata on the line item object. These attributes must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; Provide Array type attributes to add multiple items. Array type attributes must be of equal length.&lt;br&gt; **Order Line Items Attributes** arrays and **Order Line Items** arrays must be of equal length.&lt;br&gt; Single value attributes can be used and will apply to each item.  |
+| Order Line Items Attributes | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.<br>Key-value pairs are stored as metadata on the line item object. These attributes must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> Provide Array type attributes to add multiple items. Array type attributes must be of equal length.<br> **Order Line Items Attributes** arrays and **Order Line Items** arrays must be of equal length.<br> Single value attributes can be used and will apply to each item.  |
 
 #### Order Line Items Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Order Line Items Template Variables | Provide template variables as data input for **Order Line Items Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.  |
+| Order Line Items Template Variables | Provide template variables as data input for **Order Line Items Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.  |
 
 #### Order Line Items Template Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Order Line Items Template | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.&lt;br&gt; If you need nested objects support, use this section to define a template.&lt;br&gt; The template expects a JSON array format.&lt;br&gt; When template is defined, then configuration from the **Order Line Items** and **Order Line Items Attributes** sections will be ignored.&lt;br&gt; You can use template variables mapped in the **Order Line Items Template Variables** section.&lt;br&gt;For more information, see .  |
+| Order Line Items Template | This section will be ignored if type selected in the **Interaction Type** section is not **Order Interaction**.<br> If you need nested objects support, use this section to define a template.<br> The template expects a JSON array format.<br> When template is defined, then configuration from the **Order Line Items** and **Order Line Items Attributes** sections will be ignored.<br> You can use template variables mapped in the **Order Line Items Template Variables** section.<br>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).  |
 
 #### Consents Parameters
 
@@ -216,25 +216,25 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| User Identities | Key-value pairs are stored as identity information of a user.&lt;br&gt; For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).  |
+| User Identities | Key-value pairs are stored as identity information of a user.<br> For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).  |
 
 #### User Attributes Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| User Attributes | Key-value pairs are stored as metadata on the user. These attributes must be defined in the platform.&lt;br&gt;  For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`. |
+| User Attributes | Key-value pairs are stored as metadata on the user. These attributes must be defined in the platform.<br>  For more information and usage examples, see [Salesforce: Marketing Cloud Personalization Event API](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`. |
 
 #### Profile Objects Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Profile Objects Template Variables  | Provide template variables as data input for **Profile Objects Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| Profile Objects Template Variables  | Provide template variables as data input for **Profile Objects Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### Profile Objects Template Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Profile Objects Template  | Provide template to send key-value pairs of profile objects that are stored as metadata on the user.&lt;br&gt; Profile objects, their attributes, and related catalog objects must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; The template expects a valid JSON object format.&lt;br&gt; You can use template variables mapped in the **Profile Objects Template Variables** section.&lt;br&gt; For more information, see .  |
+| Profile Objects Template  | Provide template to send key-value pairs of profile objects that are stored as metadata on the user.<br> Profile objects, their attributes, and related catalog objects must be defined in the platform. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> The template expects a valid JSON object format.<br> You can use template variables mapped in the **Profile Objects Template Variables** section.<br> For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).  |
 
 #### Account Data Parameters
 
@@ -246,7 +246,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Account Attributes  |Key-value pairs are stored as metadata on the account. These attributes must be defined in the platform.&lt;br&gt; For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
+| Account Attributes  |Key-value pairs are stored as metadata on the account. These attributes must be defined in the platform.<br> For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
 
 #### Performance Metrics Parameters
 
@@ -261,25 +261,25 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| CampaignStat Array Template Variables | Provide template variables as data input for **CampaignStat Array Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| CampaignStat Array Template Variables | Provide template variables as data input for **CampaignStat Array Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### CampaignStat Array Template Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| CampaignStat Array Template | Provide a template to send **campaignStats** array that is used to track campaign statistics for an associated event. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; The template expects a valid JSON array format.&lt;br&gt; You can use template variables mapped in the **CampaignStat Array Template Variables** section.&lt;br&gt; For more information about templates, see [Templates Guide](). |
+| CampaignStat Array Template | Provide a template to send **campaignStats** array that is used to track campaign statistics for an associated event. For more information and object structure, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> The template expects a valid JSON array format.<br> You can use template variables mapped in the **CampaignStat Array Template Variables** section.<br> For more information about templates, see [Templates Guide](https://docs.tealium.com/about-connector-templates/). |
 
 #### Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Template Variables  | Provide template variables as data input for **Templates**.&lt;br&gt; For usage examples, see [Template Variables Guide]().&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| Template Variables  | Provide template variables as data input for **Templates**.<br> For usage examples, see [Template Variables Guide](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### Templates Parameters
 
 | **Parameter** | **Description**  |
 |:------------------------|:-------------------|
-| Templates | Provide templates to be referenced in **Event Data**, **Catalog Object Data**, **Catalog Object Attributes**, **Cart Data**, **Order Data**, **Order Attributes**, **Debug**, **Flags**, **Source**, **User Data**, **User Attributes**, **Account Data**, **Account Attributes** and **Performance Metrics** sections.&lt;br&gt; The template expects a valid JSON object format.&lt;br&gt; For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+| Templates | Provide templates to be referenced in **Event Data**, **Catalog Object Data**, **Catalog Object Attributes**, **Cart Data**, **Order Data**, **Order Attributes**, **Debug**, **Flags**, **Source**, **User Data**, **User Attributes**, **Account Data**, **Account Attributes** and **Performance Metrics** sections.<br> The template expects a valid JSON object format.<br> For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
 
 ### Action — Send Event Data via Trusted Channel (Evergage Namespace)
 
@@ -287,7 +287,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Item Action | Select the action taken on a catalog item.&lt;br&gt; For more information about supported item actions, see [Salesforce: Item Actions](https://developer.salesforce.com/docs/marketing/personalization/guide/item-actions.html?_ga=2.26533758.275889428.1751986406-534341303.1751986398). |
+| Item Action | Select the action taken on a catalog item.<br> For more information about supported item actions, see [Salesforce: Item Actions](https://developer.salesforce.com/docs/marketing/personalization/guide/item-actions.html?_ga=2.26533758.275889428.1751986406-534341303.1751986398). |
 
 #### Event Data Parameters
 
@@ -307,7 +307,7 @@ The following section describes how to set up parameters and options for each ac
 |:--------------|:-----------------|
 | Item Type | (Required) Provide the type of the item to send `order` object. |
 | Order ID  | ID of the purchased order. |
-| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset&#39;s configured currency. |
+| Currency  | (Optional) The currency code of purchase. If the value is null, the default value is the dataset's configured currency. |
 | Total Value | Total value for purchase. The default value is the sum of line items price multiplied by quantity. |
 
 #### Order Line Items Parameters
@@ -388,19 +388,19 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| User Attributes | Key-value pairs are stored as metadata on the user. These attributes must be defined in the platform.&lt;br&gt;For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`. |
+| User Attributes | Key-value pairs are stored as metadata on the user. These attributes must be defined in the platform.<br>For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`. |
 
 #### Profile Objects Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Profile Objects Template Variables  | Provide template variables as data input for **Profile Objects Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.  |
+| Profile Objects Template Variables  | Provide template variables as data input for **Profile Objects Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes.  |
 
 #### Profile Objects Template Parameters
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Profile Objects Template  | Provide template to send key-value pairs of profile objects are stored as metadata on the user.&lt;br&gt; Profile objects, their attributes, and related catalog objects must be defined in the platform. For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; The template expects a valid JSON object format.&lt;br&gt; You can use template variables mapped in the **Profile Objects Template Variables** section.&lt;br&gt; For more information, see . |
+| Profile Objects Template  | Provide template to send key-value pairs of profile objects are stored as metadata on the user.<br> Profile objects, their attributes, and related catalog objects must be defined in the platform. For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> The template expects a valid JSON object format.<br> You can use template variables mapped in the **Profile Objects Template Variables** section.<br> For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). |
 
 #### Account Data Parameters
 
@@ -412,7 +412,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Account Attributes  | Key-value pairs are stored as metadata on the account. These attributes must be defined in the platform.&lt;br&gt; For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
+| Account Attributes  | Key-value pairs are stored as metadata on the account. These attributes must be defined in the platform.<br> For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> If you need nested objects support, you can use the **Templates** section to define a template. The template should be mapped by referencing its names with matching double curly braces: `{{template_name}}`.  |
 
 #### Performance Parameters
 
@@ -422,7 +422,7 @@ The following section describes how to set up parameters and options for each ac
 | Event DNS Time  | Time (in milliseconds) to resolve account-specific domain. |
 | Network Time  | Time (in milliseconds) for the previous request to return. |
 | Page Load Time  | Time (in milliseconds) for the DOM to load.  |
-| SDK DNS Time  | Time (in milliseconds) to perform resolution of SDK&#39;s CDN domain.  |
+| SDK DNS Time  | Time (in milliseconds) to perform resolution of SDK's CDN domain.  |
 | SDK Load Time | Time (in milliseconds) for the network to load the web SDK.  |
 | SDK Parse Time  | Time (in milliseconds) for the beacon to be parsed during page load. |
 
@@ -430,22 +430,22 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| CampaignStat Array Template Variables | Provide template variables as data input for **CampaignStat Array Template**.&lt;br&gt; For more information and usage examples, see .&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| CampaignStat Array Template Variables | Provide template variables as data input for **CampaignStat Array Template**.<br> For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### CampaignStat Array Template Parameters
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| CampaignStat Array Template | Provide template to send **campaignStats** array that is used to track campaign statistics for an associated event. For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).&lt;br&gt; The template expects a valid JSON array format.&lt;br&gt; You can use template variables mapped in the **CampaignStat Array Template Variables** section.&lt;br&gt; For more information about templates, see [Templates Guide]().  |
+| CampaignStat Array Template | Provide template to send **campaignStats** array that is used to track campaign statistics for an associated event. For more information and usage examples, see [Salesforce: Event API Requests](https://developer.salesforce.com/docs/marketing/personalization/guide/event-api-requests.html).<br> The template expects a valid JSON array format.<br> You can use template variables mapped in the **CampaignStat Array Template Variables** section.<br> For more information about templates, see [Templates Guide](https://docs.tealium.com/about-connector-templates/).  |
 
 #### Template Variables Parameters
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Template Variables  | Provide template variables as data input for **Templates**.&lt;br&gt; For usage examples, see [Template Variables Guide]().&lt;br&gt; Name nested template variables with the dot notation. For example, `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes. |
+| Template Variables  | Provide template variables as data input for **Templates**.<br> For usage examples, see [Template Variables Guide](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation. For example, `items.name`.<br> Nested template variables are typically built from data layer list attributes. |
 
 #### Templates Parameters
 
 | **Parameter** | **Description**  |
 |:--------------|:-----------------|
-| Templates | Provide templates to be referenced in **Event Data**, **Catalog Data**, **Order Data**, **Cart Data**, **Debug**, **Flags**, **Source**, **User Data**, **User Attributes**, **Account Data**, **Account Attributes** and **Performance** sections.&lt;br&gt; The template expects a valid JSON object format.&lt;br&gt; For more information, see .&lt;br&gt; Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+| Templates | Provide templates to be referenced in **Event Data**, **Catalog Data**, **Order Data**, **Cart Data**, **Debug**, **Flags**, **Source**, **User Data**, **User Attributes**, **Account Data**, **Account Attributes** and **Performance** sections.<br> The template expects a valid JSON object format.<br> For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).<br> Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |

@@ -25,11 +25,15 @@ utag.link(data_object, callback, [uid_array]);
 | `callback`| トラッキング コールの完了後に実行される関数。|
 | `uid_array`| トリガーするタグ UID の配列。|
 
+
+<blockquote>
 配信ルールの結果に関わらず、`uid_array` パラメータで指定されたタグは必ず実行されます。。
+</blockquote>
+
 
 ## `utag.track()`
 
-第 1 のパラメータ値に基づき、ページ ビューまたはイベントのいずれかをトラッキングします。[`utag.link()`](/ja/platforms/javascript/api/tracking-functions#utag-link) および [`utag.view()`](/ja/platforms/javascript/api/#utag-view) の双方が、この関数をラップします。
+第 1 のパラメータ値に基づき、ページ ビューまたはイベントのいずれかをトラッキングします。[`utag.link()`](https://docs.tealium.com/ja/platforms/javascript/api/tracking-functions#utag-link) および [`utag.view()`](https://docs.tealium.com/ja/platforms/javascript/api/#utag-view) の双方が、この関数をラップします。
 
 ```javascript
 utag.track(event_type, data_object, callback, [uid_array]);
@@ -43,7 +47,11 @@ utag.track(event_type, data_object, callback, [uid_array]);
 | `uid_array`| トリガーするタグ UID の配列。|
 
 
+
+<blockquote>
 配信ルールの結果に関わらず、`uid_array` パラメータで指定されたタグは必ず実行されます。。
+</blockquote>
+
 
 ## `utag.view()`
 
@@ -59,4 +67,8 @@ utag.view(data_object, callback, [uid_array]);
 | `callback` | 関数| (オプション) トラッキング コールの完了後に実行される関数。|
 | `uid_array` | 配列| (オプション) タグ ID の配列。この配列の UID で指定されるベンダー タグに対してトラッキング コールを限定します。|
 
+
+<blockquote>
 配信ルールの結果に関わらず、`uid_array` パラメータで指定されたタグは必ず実行されます。。
+</blockquote>
+

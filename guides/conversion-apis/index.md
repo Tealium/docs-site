@@ -33,7 +33,11 @@ At Tealium, our conversion API solutions typically support a tag and connector w
 * Build a more complete view of the customer journey by incorporating online and offline conversions.
 * Provide richer, more consistent training data for ad platform AI and optimization algorithms.
 
+
+<blockquote>
 We recommend using a hybrid approach for 90 days. After the initial 90-day period, advertisers should work with their advertising partners to assess resiliency status, event match quality scores, and overall signal health. If the data shows strong reliability and accuracy, advertisers can then confidently proceed with dropping the client-side tag signal.
+</blockquote>
+
 
 ## Client-side tags and deduplication
 
@@ -43,15 +47,19 @@ Sending the same conversion using the tag and conversion can result in duplicate
 
 In a typical hybrid setup:
 
-1. The tag fires on the browser, sending a client-side conversion event. In iQ Tag Management, this often uses the Generate Event ID flag in the tag configuration to create a unique identifier per event according to the ad vendor&#39;s specifications.
+1. The tag fires on the browser, sending a client-side conversion event. In iQ Tag Management, this often uses the Generate Event ID flag in the tag configuration to create a unique identifier per event according to the ad vendor's specifications.
 1. The conversion API connector sends a corresponding event with the same event identifier. Using Automatic Deduplication, or mapping the identifier, ensures the unique identifier is sent on the event.
 1. The ad platform uses the shared event identifier to deduplicate and keep a single, high-quality conversion record.
 
 The hybrid pattern improves resilience to signal loss while maintaining clean, accurate reporting. Tealium Connector Insights can then be used to monitor delivery, diagnose errors, and validate deduplication is working as expected across supported vendors.
 
-Misconfigured or missing event IDs can result in duplicate conversions being counted by the ad platform. Ensure event IDs match between client-side tags and server-side conversion API connectors.
 
- ![](/images/guides/capi-data-flow.png)
+<blockquote>
+Misconfigured or missing event IDs can result in duplicate conversions being counted by the ad platform. Ensure event IDs match between client-side tags and server-side conversion API connectors.
+</blockquote>
+
+
+ ![](https://docs.tealium.com/images/guides/capi-data-flow.png)
 
 ## Personally identifiable information (PII)
 
@@ -80,7 +88,7 @@ Each advertising platform ranks customer identifiers slightly differently, but t
 
 Stronger combinations of identifiers improve platform-level signal health metrics, such as Event Match Quality scores, which directly affect how well ad platforms can attribute conversions and optimize with AI. Combinations of signals matter more than a single field. A hashed email plus phone and a stable external ID will almost always outperform a single IP or name field.
 
-For details on exactly which identifiers are supported and how they are ranked, refer to each vendor&#39;s conversion API documentation.
+For details on exactly which identifiers are supported and how they are ranked, refer to each vendor's conversion API documentation.
 
 ## Configuration best practices
 
@@ -88,8 +96,8 @@ Complete the following steps to ensure your conversion API setup is configured c
 
 1. Ensure the Tealium Collect tag has been configured and loaded last in the [load order]() after the conversion tag.
 1. In the data layer, define the necessary PII data (advertising platforms use PII for matching).
-1. If the conversion API vendor also provides a tag, we recommend using both. Configure the tag, and use advanced matching when it&#39;s available. We recommend loading the tag on all pages. After you have configured the tag, configure the conversion API connector.
-1. Configure a data source for the conversion API connector, if it doesn&#39;t already exist.
+1. If the conversion API vendor also provides a tag, we recommend using both. Configure the tag, and use advanced matching when it's available. We recommend loading the tag on all pages. After you have configured the tag, configure the conversion API connector.
+1. Configure a data source for the conversion API connector, if it doesn't already exist.
 1. Ensure the necessary event IDs are defined and the IDs are the same on the client-side (tag) and server-side (conversion API). The event IDs must be the same for deduplication to work. We recommend using the Generate Event ID flag in the client-side tag and the Automatic Deduplication feature of the server-side connector.
 1. Ensure the triggers for client-side conversion events are correct. Trigger the event only after all the required data has been entered. Advertising reports and ROAS reports on the ad platform may be inaccurate if data is missing. We recommend setting up the server-side event feed based on the event ID generated on the client side, or match the client-side tag load rule exactly in the event feed conditions.
 
@@ -103,17 +111,21 @@ We recommend using Connector Insights to:
 * Monitor signal health and match quality over time.
 * Troubleshoot configuration issues before they impact ROAS or reporting.
 
+
+<blockquote>
 Check Connector Insights regularly after initial setup to monitor signal health and catch configuration issues early.
+</blockquote>
 
-![](/images/server-side-connectors/connector-insights-btn.png)
 
-![](/images/server-side-connectors/facebook-api-insights-events.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
+
+![](https://docs.tealium.com/images/server-side-connectors/facebook-api-insights-events.png)
 
 ## Supported CAPI vendors
 
 For detailed examples of configuring conversion APIs, see the following:
 
-* [Tealium &#43; Google Enhanced Conversions Integration Guide]()
+* [Tealium + Google Enhanced Conversions Integration Guide]()
 * [Google SA360 Enhanced Conversions Implementation Guide]()
 * [Facebook Conversions Connector]()
 * [LinkedIn Conversions Connector]()
@@ -125,7 +137,7 @@ For detailed examples of configuring conversion APIs, see the following:
 
 ## Use cases
 
-![](/images/icons/icon-globe.svg) **Web conversion attribution**
+![](https://docs.tealium.com/images/icons/icon-globe.svg) **Web conversion attribution**
 
 
 
@@ -146,7 +158,7 @@ For detailed examples of configuring conversion APIs, see the following:
 
 
 
-![](/images/icons/icon-cash-register.svg) **Offline conversion attribution**
+![](https://docs.tealium.com/images/icons/icon-cash-register.svg) **Offline conversion attribution**
 
 
 
@@ -168,11 +180,11 @@ For detailed examples of configuring conversion APIs, see the following:
 
 
 
-![](/images/icons/icon-shield.svg) **Signal loss recovery**
+![](https://docs.tealium.com/images/icons/icon-shield.svg) **Signal loss recovery**
 
 
 
-1. A shopper clicks an ad on their mobile browser and proceeds to checkout, but their browser&#39;s tracking settings block the tag.
+1. A shopper clicks an ad on their mobile browser and proceeds to checkout, but their browser's tracking settings block the tag.
 1. The transaction still occurs, but no client-side conversion is recorded.
 1. The conversion API recovers the click ID and PII and on order confirmation, the conversion data is sent to the advertising vendor. This server-side delivery restores attribution, helping the retailer avoid under reporting and ensuring bidding optimization toward high-value purchasers.
 

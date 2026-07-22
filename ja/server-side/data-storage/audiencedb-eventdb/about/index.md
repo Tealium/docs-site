@@ -3,7 +3,11 @@ title: AudienceDBとEventDBについて
 description: この記事では、AudienceDBとEventDBの操作方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencedb-eventdb/about/
 ---
-EventDBとAudienceDBをアカウントとプロファイルで有効にするには、カスタマーサクセスマネージャーに連絡してください。
+
+<blockquote>
+EventDBとAudienceDBをアカウントとプロファイルで有効にするには、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
+</blockquote>
+
 
 ## 動作原理
 
@@ -68,13 +72,17 @@ Redshiftデータベースのテーブルの列名は、属性タイプと内部
 * 文字列のセット：`visit_lists`, `visitor_lists`
 * 集計：`visit_tallies`, `visitor_tallies`
 
-詳細については、[AudienceDBデータガイド]()を参照してください。
+詳細については、[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)を参照してください。
 
 ## EventDBのテーブル
 
-EventDBのテーブルデータには、イベントフィードのすべてのイベントのイベント属性が含まれます。テーブルの列名は属性タイプと名前によって命名され、一部の属性は内部IDを参照しています。標準のUniversal Data Object (UDO)変数は`udo_`プレフィックスで命名され、ほとんどの列名は対応する属性名と一致します。例：`udo_event_name`。追加情報については、[ライブイベントとフィード]()を参照してください。
+EventDBのテーブルデータには、イベントフィードのすべてのイベントのイベント属性が含まれます。テーブルの列名は属性タイプと名前によって命名され、一部の属性は内部IDを参照しています。標準のUniversal Data Object (UDO)変数は`udo_`プレフィックスで命名され、ほとんどの列名は対応する属性名と一致します。例：`udo_event_name`。追加情報については、[ライブイベントとフィード](https://docs.tealium.com/about-live-events/)を参照してください。
 
+
+<blockquote>
 Tealium Collectタグからのイベントデータには、ページで実行されたタグとページパフォーマンスメトリックに関する情報も含まれます。詳細については、[Tealium Collect]()を参照してください。
+</blockquote>
+
 
 イベントデータのための次のテーブルがあります：
 

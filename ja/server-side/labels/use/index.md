@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/server-side/labels/use/
 ## ラベルでビューをフィルタリングする
 
 1. 次のいずれかをクリックします：
-    * **ライブイベント &gt; イベントフィード**
+    * **ライブイベント > イベントフィード**
     * **イベント属性**
     * **訪問/訪問属性**
 1. **フィルター**サイドバーで、**ラベル**セクションに移動します。
@@ -18,6 +18,6 @@ url: https://docs.tealium.com/ja/server-side/labels/use/
 以下の手順を使用して、ラベルに基づいて検索します：
 
 1. 画面上部の検索バーに、検索したいラベルを入力します。  
-    ![](/images/iq-tag-management/whiteui-tiq-lables-searchtiq.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-lables-searchtiq.png)  
 検索バーは、データソース、イベントフィード、イベント仕様、属性に適用されたラベルの結果を表示します。
 1. 検索結果から任意のラベルを選択して、そのラベルでフィルタリングされたインターフェースのそのエリアに移動します。

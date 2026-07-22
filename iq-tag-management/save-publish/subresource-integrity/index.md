@@ -10,10 +10,10 @@ When SRI (Subresource Integrity) is enabled on a Tealium profile, the user can g
 The following example demonstrates the new `integrity` parameter:
 
 ```
-&lt;script src=&#34;https://tags.tiqcdn.com/utag/account/profile/PROD-A/utag.v202012030630.js&#34; integrity=&#34;sha256-9/abcdefghijklmnopqrstuvwx/abcdefghijklmnopq0=&#34; crossorigin=&#34;anonymous&#34; async&gt;&lt;/script&gt;
+<script src="https://tags.tiqcdn.com/utag/account/profile/PROD-A/utag.v202012030630.js" integrity="sha256-9/abcdefghijklmnopqrstuvwx/abcdefghijklmnopq0=" crossorigin="anonymous" async></script>
 ```
 
-When a visitor loads the `utag.js` file through their browser, the hash is used to validate the file. If the hash matches the file&#39;s contents, then the `utag.js` file is valid and loaded on the page. If the hash does not match, this indicates that the file was modified from the source and, as a precaution, the browser blocks the `utag.js` file from loading.
+When a visitor loads the `utag.js` file through their browser, the hash is used to validate the file. If the hash matches the file's contents, then the `utag.js` file is valid and loaded on the page. If the hash does not match, this indicates that the file was modified from the source and, as a precaution, the browser blocks the `utag.js` file from loading.
 
 For more information about SRI, see [Mozilla’s developer documentation on Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
 
@@ -47,7 +47,11 @@ Best practice is to create as many SRI environments for each environment categor
 
 When you publish profiles and update your live site, you must update the `utag` path and the SRI hash in the `integrity` parameter at the same time to use the correct custom environment. If you do not, the path and SRI hash conflict and the browser does not load `utag`.
 
- As a best practice, we recommend working with development teams to implement this into a CMS workflow where this can be updated together.  
+
+<blockquote>
+As a best practice, we recommend working with development teams to implement this into a CMS workflow where this can be updated together.
+</blockquote>
+
 
 ## Configure profiles for SRI
 
@@ -55,7 +59,7 @@ To configure profiles for SRI, perform the following steps:
 
 ### Step 1 - Enable custom environments
 
-To enable custom environments on a profile:, see [Custom publish environments]().
+To enable custom environments on a profile:, see [Custom publish environments](https://docs.tealium.com/custom-publish-environments/#enabling-custom-publish-environments).
 
 ### Step 2 - Create custom environments
 
@@ -63,15 +67,15 @@ To create the necessary custom publish environments for SRI:
 
 1. In the admin menu, click **Code Center**.
 1. Click **Add Environment**.
-1. Under **Environment Name**, enter a name that follows the naming convention and begins with a valid prefix (**DEV-**, **QA-**, or **PROD-**).![](/images/iq-tag-management/save-publish/subresourceintegrity1.png)
-1. After you have created all of your new custom environments, the profile’s **Environments** list resembles the following:![](/images/iq-tag-management/save-publish/subresourceintegrity2.png)
+1. Under **Environment Name**, enter a name that follows the naming convention and begins with a valid prefix (**DEV-**, **QA-**, or **PROD-**).![](https://docs.tealium.com/images/iq-tag-management/save-publish/subresourceintegrity1.png)
+1. After you have created all of your new custom environments, the profile’s **Environments** list resembles the following:![](https://docs.tealium.com/images/iq-tag-management/save-publish/subresourceintegrity2.png)
 1. Click **OK**.
 1. **Save/Publish** the profile on any environment to create all of the new custom environments.
 
-For more information, see [Custom publish environments]().
+For more information, see [Custom publish environments](https://docs.tealium.com/custom-publish-environments/#adding-a-custom-publish-environment).
 
 ### Step 3 - Publish to custom environments
 
 The process of saving and publishing to profiles with SRI environments is nearly identical to that of the default publishing workflow, except that only one environment can be published at a time.
 
-For more information, see [Custom publish environments]().
+For more information, see [Custom publish environments](https://docs.tealium.com/custom-publish-environments/#publishing-to-a-custom-environment).

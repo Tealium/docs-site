@@ -5,14 +5,14 @@ url: https://docs.tealium.com/ja/platforms/cordova/install/
 ---
 ## 必要条件
 
-* Apache Cordova (9.0.0&#43;)
+* Apache Cordova (9.0.0+)
 
 ## ライブラリ
 
 このプラグインには以下のTealiumライブラリが含まれています：
 
-* [Tealium for iOS](/ja/platforms/ios-swift)
-* [Tealium for Android](/ja/platforms/android-kotlin/)
+* [Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift)
+* [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)
 
 ## サンプルアプリ
 
@@ -20,7 +20,11 @@ url: https://docs.tealium.com/ja/platforms/cordova/install/
 
 ## インストール
 
+
+<blockquote>
 `package.json`でFirebaseリモートコマンドをインストールする場合は、問題を避けるためにプラグインセクションでFirebaseの前に`tealium-cordova-plugin`がリストされていることを確認してください。
+</blockquote>
+
 
 Cordova用のTealiumライブラリをインストールするには、Cordovaアプリプロジェクトで以下のコマンドを実行します：
 
@@ -45,7 +49,7 @@ npm install @awesome-cordova-plugins/tealium
 
 ## 初期化
 
-[`initialize()`](/ja/platforms/cordova/api/#initialize)メソッドは、以下の例に示すようにTealium Cordovaプラグインを初期化します：
+[`initialize()`](https://docs.tealium.com/ja/platforms/cordova/api/#initialize)メソッドは、以下の例に示すようにTealium Cordovaプラグインを初期化します：
 
 
 
@@ -58,8 +62,8 @@ var Dispatchers = tealium.utils.Dispatchers;
 var ConsentPolicy = tealium.utils.ConsentPolicy;
 
 var config = {
-    account: &#39;ACCOUNT&#39;,
-    profile: &#39;PROFILE&#39;,
+    account: 'ACCOUNT',
+    profile: 'PROFILE',
     environment: Environment.dev,
     dispatchers: [
         Dispatchers.Collect,
@@ -74,8 +78,8 @@ var config = {
     ],
     consentLoggingEnabled: true,
     // consentExpiry: {
-    //     &#39;time&#39;: 10,
-    //     &#39;unit&#39;: &#39;days&#39;
+    //     'time': 10,
+    //     'unit': 'days'
     // },
     // consentPolicy: ConsentPolicy.gdpr,
     lifecycleAutotrackingEnabled: true,
@@ -85,7 +89,7 @@ var config = {
 };
 window.tealium.initialize(config, function(success) {
     if (success) {
-      console.log(&#34;Tealium initialized successfully&#34;);
+      console.log("Tealium initialized successfully");
     }
 })
 ```
@@ -94,11 +98,11 @@ window.tealium.initialize(config, function(success) {
 
 
 ```js
-import {Collectors, Dispatchers, LogLevel, Tealium, TealiumConfig,  TealiumEnvironment, TealiumEvent, TealiumView} from &#39;@awesome-cordova-plugins/tealium&#39;;
+import {Collectors, Dispatchers, LogLevel, Tealium, TealiumConfig,  TealiumEnvironment, TealiumEvent, TealiumView} from '@awesome-cordova-plugins/tealium';
 
 let config: TealiumConfig = {
-    account: &#39;ACCOUNT&#39;,
-    profile: &#39;PROFILE&#39;,
+    account: 'ACCOUNT',
+    profile: 'PROFILE',
     environment: TealiumEnvironment.dev,
     dispatchers: [
         Dispatchers.Collect,
@@ -113,8 +117,8 @@ let config: TealiumConfig = {
     ],
     consentLoggingEnabled: true,
     // consentExpiry: {
-    //     &#39;time&#39;: 10,
-    //     &#39;unit&#39;: TimeUnit.days
+    //     'time': 10,
+    //     'unit': TimeUnit.days
     // },
     // consentPolicy: ConsentPolicy.gdpr,
     lifecycleAutotrackingEnabled: true,
@@ -123,8 +127,8 @@ let config: TealiumConfig = {
 };
 
 
-Tealium.initialize(tealConfig).then(()=&gt;{
-    console.log(&#34;Tealium initialized successfully&#34;);
+Tealium.initialize(tealConfig).then(()=>{
+    console.log("Tealium initialized successfully");
 });
 ```
 

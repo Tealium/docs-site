@@ -32,14 +32,14 @@ The following statuses are reported. Note that a template may have more than one
 
 | Symbol | Status| Description |
 |:------:|:------|:------------|
-| ![](/images/iq-tag-management/tag-status-new-version-available.png) | New Version Available | Indicates that a newer version of the template is available.|
-| ![](/images/iq-tag-management/tag-status-latest-version.png)        | Latest Versions       | Indicates that this template matches the latest system version available.|
-| ![](/images/iq-tag-management/tag-status-not-customized.png)        | Not Customized        | Indicates that the template has not been modified from its original state when it was added.|
-| ![](/images/iq-tag-management/tag-status-customized.png)            | Customized            | Indicates that the template has been edited from its original state by a user.|
-| ![](/images/iq-tag-management/tag-status-deprecated.png)            | Deprecated            | Indicates that this version of the template is no longer supported or offered. It is likely that a new version of the template has been released to replace this one. |
-| ![](/images/iq-tag-management/tag-status-version-mismatch.png)      | Version Mismatch      | Indicates that the template does not match the currently selected version of the tag in the tag configuration settings.|
-| ![](/images/iq-tag-management/tag-status-unknown.png)               | Unknown               | Indicates that the system is unable to determine the current state of the template.|
-| ![](/images/iq-tag-management/template-status-unsaved.png)          | Unsaved Changes       | Indicates that this template has pending changes that have not been saved in the profile.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-new-version-available.png) | New Version Available | Indicates that a newer version of the template is available.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-latest-version.png)        | Latest Versions       | Indicates that this template matches the latest system version available.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-not-customized.png)        | Not Customized        | Indicates that the template has not been modified from its original state when it was added.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-customized.png)            | Customized            | Indicates that the template has been edited from its original state by a user.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-deprecated.png)            | Deprecated            | Indicates that this version of the template is no longer supported or offered. It is likely that a new version of the template has been released to replace this one. |
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-version-mismatch.png)      | Version Mismatch      | Indicates that the template does not match the currently selected version of the tag in the tag configuration settings.|
+| ![](https://docs.tealium.com/images/iq-tag-management/tag-status-unknown.png)               | Unknown               | Indicates that the system is unable to determine the current state of the template.|
+| ![](https://docs.tealium.com/images/iq-tag-management/template-status-unsaved.png)          | Unsaved Changes       | Indicates that this template has pending changes that have not been saved in the profile.|
 
 ## Using the Template Status Checker
 
@@ -54,10 +54,10 @@ From the **Admin** menu, click **Template Status Checker**.
 
 Use the following steps to check the status of your templates from the **Tags** screen:
 
-1. Go to **Tag Management &gt; Tags**.
+1. Go to **Tag Management > Tags**.
 1. In the header toolbar, click **Run Template Status Checker**.
 1. The **Status** column displays in the list of tags with a colored indicator for the status of each template.  
-    ![](/images/iq-tag-management/template-status-checker-column.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-checker-column.png)
 
 ### From the Admin menu
 
@@ -74,7 +74,7 @@ Use the following steps to check the status of your templates from the **Admin**
 
 1. Click **Scan**.  
 The **Template Status Checker** window displays the results.  
-    ![](/images/iq-tag-management/template-status-checker-report.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-checker-report.png)
 1. Click a table row to view that template.
 
 ### Filter by status
@@ -84,6 +84,6 @@ After the template status checker runs, use the status results to filter the tag
 Use the following steps to filter the tag list by template status:
 
 1. Select the **Template Status** drop-down list and click a status.  
-    ![](/images/iq-tag-management/template-status-filter.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/template-status-filter.png)  
     The list of tags adjusts accordingly.
 1. (Optional) Click **Re-Run** to run the tool again.

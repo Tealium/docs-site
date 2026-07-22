@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/campayn-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -32,9 +32,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/campayn-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;追加するリストのID。&lt;/li&gt;&lt;li&gt;詳細については、GitHubの[Campayn API Contacts ](https://github.com/nebojsac/Campayn-API/blob/master/endpoints/contacts.md)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;サインアップするユーザーのメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|重複時に失敗|  &lt;ul&gt;&lt;li&gt;値は `true` または `false` です。&lt;/li&gt;&lt;li&gt;`true` の場合、ユーザーが既に存在するときに呼び出しが失敗します。&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>追加するリストのID。</li><li>詳細については、GitHubの[Campayn API Contacts ](https://github.com/nebojsac/Campayn-API/blob/master/endpoints/contacts.md)を参照してください。</li></ul> |
+|メール|  <ul><li>サインアップするユーザーのメールアドレス。</li></ul> |
+|重複時に失敗|  <ul><li>値は `true` または `false` です。</li><li>`true` の場合、ユーザーが既に存在するときに呼び出しが失敗します。</li></ul> |
 
 ### アクション - 連絡先の退会
 
@@ -42,5 +42,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/campayn-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;連絡先が退会するリストのID。&lt;/li&gt;&lt;li&gt;詳細については、GitHubの[ Campayn API Lists](https://github.com/nebojsac/Campayn-API/blob/master/endpoints/lists.md)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;退会する連絡先のメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>連絡先が退会するリストのID。</li><li>詳細については、GitHubの[ Campayn API Lists](https://github.com/nebojsac/Campayn-API/blob/master/endpoints/lists.md)を参照してください。</li></ul> |
+|メール|  <ul><li>退会する連絡先のメールアドレス。</li></ul> |

@@ -12,4 +12,8 @@ url: https://docs.tealium.com/ja/server-side/predict/deploy/delete-a-model/
 
 選択したモデルは現在削除され、構成またはトレーニングのためには利用できなくなります。
 
+
+<blockquote>
 削除したいモデルを使用している依存関係がある場合、モデルを削除する前にそれらの依存関係を削除する必要があります。
+</blockquote>
+

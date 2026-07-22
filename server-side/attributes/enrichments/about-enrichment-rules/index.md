@@ -19,7 +19,7 @@ Rules let you:
 
 Rules are especially important for event-driven data, where attributes are not populated on every event.
 
-For instructions on applying a rule when adding an enrichment, see [Add an enrichment]().
+For instructions on applying a rule when adding an enrichment, see [Add an enrichment](https://docs.tealium.com/add-enrichment/).
 
 ## How rules work
 
@@ -49,9 +49,9 @@ The following rule restricts an enrichment to purchase events:
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -71,7 +71,7 @@ Rules add a second layer of control on top of the **WHEN** setting. The two sett
 * **WHEN** determines when the enrichment is allowed to run.
 * **Rule** determines which events qualify.
 
-For example, a &#34;Lifetime Order Total&#34; attribute may use:
+For example, a "Lifetime Order Total" attribute may use:
 
 * **WHEN**: Any event
 * **Rule**: `tealium_event equals purchase`
@@ -99,9 +99,9 @@ Use this pattern to run an enrichment only when `tealium_event` matches a specif
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -115,14 +115,14 @@ Add multiple conditions to the same group to require all conditions to be true:
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     },
     {
-      &#34;input&#34;: &#34;product_category&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;Electronics&#34;
+      "input": "product_category",
+      "operator": "equals",
+      "filter": "Electronics"
     }
   ]
 ]
@@ -136,16 +136,16 @@ Add separate groups to allow either condition to trigger the enrichment:
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "checkout"
     }
   ],
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -159,9 +159,9 @@ Rules can also evaluate visit or visitor attributes:
 [
   [
     {
-      &#34;input&#34;: &#34;loyalty_member&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;true&#34;
+      "input": "loyalty_member",
+      "operator": "equals",
+      "filter": "true"
     }
   ]
 ]
@@ -177,7 +177,7 @@ When designing rules, consider how the enrichment behaves over time:
 
 ## Related topics
 
-* [About attributes]()
-* [About enrichments]()
-* [Add an enrichment]()
-* [Enrichment usage examples]()
+* [About attributes](https://docs.tealium.com/about-attributes/#rules)
+* [About enrichments](https://docs.tealium.com/about-enrichments/)
+* [Add an enrichment](https://docs.tealium.com/add-enrichment/)
+* [Enrichment usage examples](https://docs.tealium.com/usage-examples/)

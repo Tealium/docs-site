@@ -3,39 +3,51 @@ title: Floodlight Tag Setup Guide
 description: This article shows how to set up the Floodlight tag in your Tealium iQ Tag Management account. The Floodlight tag was previously marketed as "DoubleClick Floodlight".
 url: https://docs.tealium.com/client-side-tags/floodlight-tag/
 ---
-Google recommends migrating to the Google global site tag by implementing the [Floodlight tag](/client-side-tags/floodlight-gtagjs-tag/).
+
+<blockquote>
+Google recommends migrating to the Google global site tag by implementing the [Floodlight tag](https://docs.tealium.com/client-side-tags/floodlight-gtagjs-tag/).
+</blockquote>
+
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Title** (Required)   
 Enter a descriptive title to identify the Tag instance.
 * **Advertiser ID** (Required)   
-This is the ID of the source advertiser that is tracking the Floodlight activity. Enter the value of &#34;src&#34; key in this field.
+This is the ID of the source advertiser that is tracking the Floodlight activity. Enter the value of "src" key in this field.
 * **Type** (Optional)   
 Enter the 8-character string that identifies the group/type of Floodlight activity.
 * **Category** (Optional)  
 Enter the 8-character string that identifies the Floodlight activity being tracked.
 * **Counter Type** (Optional)  
-Click the drop-down list and set the method to count the frequency at which the Floodlight activity occurs. By default, this is set to the &#34;Standard&#34; method.  
+Click the drop-down list and set the method to count the frequency at which the Floodlight activity occurs. By default, this is set to the "Standard" method.  
+
+<blockquote>
 All counting methods are automatically lowercased.
+</blockquote>
+
   * **Standard**: This will count each visit to the Floodlight-enabled web page as a separate activity.
   * **Unique**: This will count the number of conversions by unique users within a 24-hour period.
   * **Per Session**: This will count only one Floodlight activity per browser session.
 
+
+<blockquote>
 Place this tag at the top of the list in the **Tags** tab to give it a higher priority than other tags.
+</blockquote>
+
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 
 ## Data mappings
 
-Mapping is the process of sending data from a Data Layer variable to the corresponding destination variable of the vendor Tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a Data Layer variable to the corresponding destination variable of the vendor Tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The following mappings are available:
 
@@ -44,12 +56,12 @@ The following mappings are available:
 |Src| `src`| The ID of the source advertiser that is tracking the activity.|
 |Type| `type`| The 8-character string that identifies the group/type of activity.|
 |Category| `cat`| The 8-character string that identifies the Floodlight activity|
-|Counter Type| countertype| How Floodlight should measure your conversions. Read more about [Floodlight conversion counting methods](https://support.google.com/dcm/partner/answer/2823400?hl=en&amp;ref_topic=4241549).|
-|Conversion Count| conversioncount| How Floodlight should track sales activities. Read more about [Floodlight sales counting methods](https://support.google.com/dcm/partner/answer/2823400?hl=en&amp;ref_topic=4241549).|
-|U1-U10| `u1-u10`| Custom variables. Read more about [Custom Floodlight variables](https://support.google.com/dcm/answer/2823222?hl=en&amp;ref_topic=6094040).|
+|Counter Type| countertype| How Floodlight should measure your conversions. Read more about [Floodlight conversion counting methods](https://support.google.com/dcm/partner/answer/2823400?hl=en&ref_topic=4241549).|
+|Conversion Count| conversioncount| How Floodlight should track sales activities. Read more about [Floodlight sales counting methods](https://support.google.com/dcm/partner/answer/2823400?hl=en&ref_topic=4241549).|
+|U1-U10| `u1-u10`| Custom variables. Read more about [Custom Floodlight variables](https://support.google.com/dcm/answer/2823222?hl=en&ref_topic=6094040).|
 |Order ID| `ord`| A unique identifier for the transaction (overrides \_corder)|
 |Sub Total| `cost`| The amount of revenue generated by the transaction (overrides \_csubtotal)|
-|List of Product IDs| `prd=iN:`| The product ID&#39;s of a purchase (overrides \_cprod). Read more about [adding purchase details to your Floodlight tags](https://support.google.com/ds/answer/6026125?hl=en).|
+|List of Product IDs| `prd=iN:`| The product ID's of a purchase (overrides \_cprod). Read more about [adding purchase details to your Floodlight tags](https://support.google.com/ds/answer/6026125?hl=en).|
 |List of Quantities| `prd=qN:`| The product quantities of a purchase (overrides \_cquan). Read more about [adding purchase details to your Floodlight tags](https://support.google.com/ds/answer/6026125?hl=en).|
 |List of Prices| `prd=pN:`| The product prices of a purchase (overrides \_cprice). Read more about [adding purchase details to your Floodlight tags](https://support.google.com/ds/answer/6026125?hl=en).|
 
@@ -58,5 +70,5 @@ The following mappings are available:
 For additional information, see the following vendor documentation.
 
 * [About Floodlight](https://support.google.com/dcm/partner/answer/4304205?hl=en)
-* [Iframe and Image Tags for Floodlight](https://support.google.com/dcm/answer/2823450?hl=en&amp;ref_topic=6094040)
+* [Iframe and Image Tags for Floodlight](https://support.google.com/dcm/answer/2823450?hl=en&ref_topic=6094040)
 * [Custom Floodlight Variables](https://support.google.com/dcm/partner/answer/2823222?hl=en)

@@ -3,8 +3,12 @@ title: Iterableコネクタ構成ガイド（廃止）
 description: この記事では、Customer Data HubアカウントでIterableコネクタを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/iterable-connector-deprecated/
 ---
+
+<blockquote>
 このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。
-現在のコネクタについては、[Iterableコネクタ構成ガイド]()を参照してください。
+現在のコネクタについては、[Iterableコネクタ構成ガイド](https://docs.tealium.com/iterable-connector/)を参照してください。
+</blockquote>
+
 
 ## コネクタのアクション
 
@@ -18,12 +22,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/iterable-connector-depre
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **APIキー**  
-Iterableインターフェースの左側のナビゲーションメニューに移動し、**Integrations &amp;gt; API Keys**をクリックしてAPIキーを見つけます。
+Iterableインターフェースの左側のナビゲーションメニューに移動し、**Integrations &gt; API Keys**をクリックしてAPIキーを見つけます。
 
 ## アクション構成 - パラメータとオプション
 
@@ -37,13 +41,13 @@ Iterableインターフェースの左側のナビゲーションメニューに
 
 |**パラメータ**| **説明**|
 |---| ---|
-|メール|  &lt;ul&gt;&lt;li&gt;ユーザーを識別するためには、メールまたはuserIDのいずれかを渡す必要があります&lt;/li&gt;&lt;li&gt;両方が渡された場合、メールが優先されます&lt;/li&gt;&lt;li&gt;詳細情報については、以下のベンダードキュメンテーションを参照してください：&lt;ul&gt;&lt;li&gt;[イベントとイベントプロパティAPIドキュメンテーション](https://support.iterable.com/hc/en-us/articles/206430615-Events-and-Event-Properties)&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|イベント名|  &lt;ul&gt;&lt;li&gt;イベントの名前&lt;/li&gt;&lt;/ul&gt; |
-|作成日時|  &lt;ul&gt;&lt;li&gt;イベントが発生した時間&lt;/li&gt;&lt;li&gt;指定されていない場合、イベントが受信された時間に構成されます&lt;/li&gt;&lt;li&gt;Unixタイムスタンプを期待します&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;`updateUser`コールに渡されたユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;コンバージョンに関連付けられたキャンペーン&lt;/li&gt;&lt;/ul&gt; |
-|テンプレートID|  &lt;ul&gt;&lt;li&gt;テンプレートID&lt;/li&gt;&lt;/ul&gt; |
-|データフィールド|  &lt;ul&gt;&lt;li&gt;イベントに関連付けられた追加データ、例：アイテムID、アイテム量、市、州など。&lt;/li&gt;&lt;/ul&gt; |
+|メール|  <ul><li>ユーザーを識別するためには、メールまたはuserIDのいずれかを渡す必要があります</li><li>両方が渡された場合、メールが優先されます</li><li>詳細情報については、以下のベンダードキュメンテーションを参照してください：<ul><li>[イベントとイベントプロパティAPIドキュメンテーション](https://support.iterable.com/hc/en-us/articles/206430615-Events-and-Event-Properties)</li></ul> </li></ul> |
+|イベント名|  <ul><li>イベントの名前</li></ul> |
+|作成日時|  <ul><li>イベントが発生した時間</li><li>指定されていない場合、イベントが受信された時間に構成されます</li><li>Unixタイムスタンプを期待します</li></ul> |
+|ユーザーID|  <ul><li>`updateUser`コールに渡されたユーザーID</li></ul> |
+|キャンペーンID|  <ul><li>コンバージョンに関連付けられたキャンペーン</li></ul> |
+|テンプレートID|  <ul><li>テンプレートID</li></ul> |
+|データフィールド|  <ul><li>イベントに関連付けられた追加データ、例：アイテムID、アイテム量、市、州など。</li></ul> |
 
 ### アクション - ユーザーの追加または更新
 
@@ -51,9 +55,9 @@ Iterableインターフェースの左側のナビゲーションメニューに
 
 |**パラメータ**| **説明**|
 |---| ---|
-|メール|  &lt;ul&gt;&lt;li&gt;プロフィールにユーザーIDが構成されている場合を除き、メールを構成する必要があります&lt;/li&gt;&lt;li&gt;ユーザーIDが構成されたプロフィールがすでに存在する場合、ユーザーIDからメールへのルックアップが行われます&lt;/li&gt;&lt;li&gt;詳細情報については、以下のベンダードキュメンテーションを参照してください：&lt;ul&gt;&lt;li&gt;[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/users/updateUser)&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;オプションのユーザーID&lt;/li&gt;&lt;li&gt;これは通常、データベースが生成するIDです&lt;/li&gt;&lt;/ul&gt; |
-|データフィールド|  &lt;ul&gt;&lt;li&gt;ユーザープロフィールに保存するデータフィールド&lt;/li&gt;&lt;/ul&gt; |
+|メール|  <ul><li>プロフィールにユーザーIDが構成されている場合を除き、メールを構成する必要があります</li><li>ユーザーIDが構成されたプロフィールがすでに存在する場合、ユーザーIDからメールへのルックアップが行われます</li><li>詳細情報については、以下のベンダードキュメンテーションを参照してください：<ul><li>[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/users/updateUser)</li></ul> </li></ul> |
+|ユーザーID|  <ul><li>オプションのユーザーID</li><li>これは通常、データベースが生成するIDです</li></ul> |
+|データフィールド|  <ul><li>ユーザープロフィールに保存するデータフィールド</li></ul> |
 
 ### アクション - ユーザーをリストに登録
 
@@ -61,10 +65,10 @@ Iterableインターフェースの左側のナビゲーションメニューに
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;ユーザーを登録するリストのID&lt;/li&gt;&lt;li&gt;詳細情報については、以下のベンダードキュメンテーションを参照してください：&lt;ul&gt;&lt;li&gt;[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/lists/subscribe)&lt;/li&gt;&lt;li&gt;[API概要とサンプルペイロード](https://support.iterable.com/hc/en-us/articles/204780579-API-Overview-and-Sample-Payloads#lists).&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;ユーザーのメールアドレス&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;ユーザーの一意のユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|データフィールド|  &lt;ul&gt;&lt;li&gt;ユーザープロフィールに保存するデータフィールド&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>ユーザーを登録するリストのID</li><li>詳細情報については、以下のベンダードキュメンテーションを参照してください：<ul><li>[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/lists/subscribe)</li><li>[API概要とサンプルペイロード](https://support.iterable.com/hc/en-us/articles/204780579-API-Overview-and-Sample-Payloads#lists).</li></ul> </li></ul> |
+|メール|  <ul><li>ユーザーのメールアドレス</li></ul> |
+|ユーザーID|  <ul><li>ユーザーの一意のユーザーID</li></ul> |
+|データフィールド|  <ul><li>ユーザープロフィールに保存するデータフィールド</li></ul> |
 
 ### アクション - ユーザーをリストから解除
 
@@ -72,10 +76,10 @@ Iterableインターフェースの左側のナビゲーションメニューに
 
 |**パラメータ**| **説明**|
 |---| ---|
-|リストID|  &lt;ul&gt;&lt;li&gt;ユーザーを解除するリストのID&lt;/li&gt;&lt;li&gt;詳細情報については、以下のベンダードキュメンテーションを参照してください：&lt;ul&gt;&lt;li&gt;[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/lists/unsubscribe)&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;ユーザーのメールアドレス&lt;/li&gt;&lt;/ul&gt; |
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;キャンペーンに解除を属性付けする&lt;/li&gt;&lt;/ul&gt; |
-|チャネル解除|  &lt;ul&gt;&lt;li&gt;リストの関連チャネルからメールを解除する&lt;/li&gt;&lt;li&gt;このパラメータは基本的にグローバルな解除です&lt;/li&gt;&lt;li&gt;可能な値：`true`または`false`&lt;/li&gt;&lt;li&gt;デフォルト値は`false`です&lt;/li&gt;&lt;/ul&gt; |
+|リストID|  <ul><li>ユーザーを解除するリストのID</li><li>詳細情報については、以下のベンダードキュメンテーションを参照してください：<ul><li>[Iterable APIドキュメンテーション](https://api.iterable.com/api/docs#!/lists/unsubscribe)</li></ul> </li></ul> |
+|メール|  <ul><li>ユーザーのメールアドレス</li></ul> |
+|キャンペーンID|  <ul><li>キャンペーンに解除を属性付けする</li></ul> |
+|チャネル解除|  <ul><li>リストの関連チャネルからメールを解除する</li><li>このパラメータは基本的にグローバルな解除です</li><li>可能な値：`true`または`false`</li><li>デフォルト値は`false`です</li></ul> |
 
 ### アクション - 特定のメールアドレスにメールを送信
 
@@ -83,7 +87,7 @@ Iterableインターフェースの左側のナビゲーションメニューに
 
 |**パラメータ**| **説明**|
 |---| ---|
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;トリガーするキャンペーンのID&lt;/li&gt;&lt;/ul&gt; |
-|受信者メール|  &lt;ul&gt;&lt;li&gt;受信者のメールアドレス&lt;/li&gt;&lt;/ul&gt; |
-|データフィールド|  &lt;ul&gt;&lt;li&gt;メールテンプレートにマージするフィールド&lt;/li&gt;&lt;/ul&gt; |
-|送信時刻|  &lt;ul&gt;&lt;li&gt;メッセージを最大365日先までスケジュールします。&lt;/li&gt;&lt;li&gt;過去に構成されているか、空白の場合、メールはすぐに送信されます。&lt;/li&gt;&lt;li&gt;形式はUTCで`YYYY-MM-DD HH:MM:SS`です。&lt;/li&gt;&lt;/ul&gt; |
+|キャンペーンID|  <ul><li>トリガーするキャンペーンのID</li></ul> |
+|受信者メール|  <ul><li>受信者のメールアドレス</li></ul> |
+|データフィールド|  <ul><li>メールテンプレートにマージするフィールド</li></ul> |
+|送信時刻|  <ul><li>メッセージを最大365日先までスケジュールします。</li><li>過去に構成されているか、空白の場合、メールはすぐに送信されます。</li><li>形式はUTCで`YYYY-MM-DD HH:MM:SS`です。</li></ul> |

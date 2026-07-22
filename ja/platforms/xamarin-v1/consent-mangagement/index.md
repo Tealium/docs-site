@@ -2,13 +2,17 @@
 title: 同意管理
 description: 同意管理の実装方法を学びます。
 url: https://docs.tealium.com/ja/platforms/xamarin-v1/consent-mangagement/
----現在のバージョンについては、[Xamarin 2.x 用 Tealium](/ja/platforms/xamarin/)をご覧ください。
+---
+<blockquote>
+現在のバージョンについては、[Xamarin 2.x 用 Tealium](https://docs.tealium.com/ja/platforms/xamarin/)をご覧ください。
+</blockquote>
+
 
 ## 使用法
 
 このモジュールの使用は推奨されており、ライブラリに自動的に含まれ、初期化時にネイティブコードで有効になります。AndroidとiOSの両方のプラットフォームがサポートされています。
 
-[同意管理についてもっと学ぶ](/ja/platforms/getting-started-mobile/consent-management/)。
+[同意管理についてもっと学ぶ](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)。
 
 ## サンプルアプリ
 

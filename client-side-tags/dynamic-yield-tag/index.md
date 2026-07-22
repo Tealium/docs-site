@@ -20,7 +20,7 @@ url: https://docs.tealium.com/client-side-tags/dynamic-yield-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Dynamic Yield tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Dynamic Yield tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -29,7 +29,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

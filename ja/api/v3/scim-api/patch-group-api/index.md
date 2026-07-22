@@ -15,7 +15,7 @@ PATCH /scim/v2/Groups/{id}
 
 すべての API 呼び出しには OAuth ベアラートークンを使用して認証します。API キーではありません。
 
-詳細については、[認証]()を参照してください。
+詳細については、[認証](https://docs.tealium.com/about-scim-api/#authentication)を参照してください。
 
 ## PATCH 操作パラメータ
 
@@ -33,50 +33,50 @@ PATCH /scim/v2/Groups/{id}
 #### Microsoft Entra ID
 
 ```bash
-curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34; \
--H &#34;Content-Type: application/scim&#43;json&#34; \
--H &#34;Accept: application/scim&#43;json&#34; \
--d &#39;{
-    &#34;schemas&#34;: [
-        &#34;urn:ietf:params:scim:api:messages:2.0:PatchOp&#34;
+curl -X PATCH "https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b" \
+-H "Content-Type: application/scim+json" \
+-H "Accept: application/scim+json" \
+-d '{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &#34;Operations&#34;: [
+    "Operations": [
         {
-            &#34;op&#34;: &#34;replace&#34;,
-            &#34;path&#34;: &#34;members&#34;,
-            &#34;value&#34;: [
+            "op": "replace",
+            "path": "members",
+            "value": [
                {
-                   &#34;value&#34;: &#34;cb300cb6-9702-45a9-a909-f8b7c972ab7e&#34;
+                   "value": "cb300cb6-9702-45a9-a909-f8b7c972ab7e"
                }
-           , &#34;/ja/early-access/api/scim-api/patch-group-api&#34;]
+           , "/ja/early-access/api/scim-api/patch-group-api"]
         }
-    , &#34;/ja/early-access/api/scim-api/patch-group-api&#34;]
-}&#39;
+    , "/ja/early-access/api/scim-api/patch-group-api"]
+}'
 ```
 
 #### Okta
 
 ```bash
-curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34; \
--H &#34;Content-Type: application/scim&#43;json&#34; \
--H &#34;Accept: application/scim&#43;json&#34; \
--d &#39;{
-    &#34;schemas&#34;: [
-        &#34;urn:ietf:params:scim:api:messages:2.0:PatchOp&#34;
+curl -X PATCH "https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b" \
+-H "Content-Type: application/scim+json" \
+-H "Accept: application/scim+json" \
+-d '{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &#34;Operations&#34;: [
+    "Operations": [
         {
-            &#34;op&#34;: &#34;replace&#34;,
-            &#34;value&#34;: {
-                &#34;members&#34;: [
+            "op": "replace",
+            "value": {
+                "members": [
                    {
-                       &#34;value&#34;: &#34;cb300cb6-9702-45a9-a909-f8b7c972ab7e&#34;
+                       "value": "cb300cb6-9702-45a9-a909-f8b7c972ab7e"
                    }
-               , &#34;/ja/early-access/api/scim-api/patch-group-api&#34;]
+               , "/ja/early-access/api/scim-api/patch-group-api"]
             }
         }
-    , &#34;/ja/early-access/api/scim-api/patch-group-api&#34;]
-}&#39;
+    , "/ja/early-access/api/scim-api/patch-group-api"]
+}'
 ```
 
 ### 応答例
@@ -85,28 +85,28 @@ curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b
 
 ```json
 {
-   &#34;schemas&#34;: [
-        &#34;urn:ietf:params:scim:schemas:core:2.0:Group&#34;
+   "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:Group"
     ],
-    &#34;id&#34;: &#34;eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;,
-    &#34;displayName&#34;: &#34;example group&#34;,
-    &#34;members&#34;: [
+    "id": "eb987394-b2b0-4a21-a1d8-7915a91e06b",
+    "displayName": "example group",
+    "members": [
         {
-            &#34;value&#34;: &#34;cb300cb6-9702-45a9-a909-f8b7c972ab7e&#34;,
-            &#34;type&#34;: &#34;User&#34;,
-            &#34;display&#34;: &#34;exampleuser@example.onmicrosoft.com&#34;,
-            &#34;$ref&#34;: &#34;/scim/v2/Users/cb300cb6-9702-45a9-a909-f8b7c972ab7e&#34;
+            "value": "cb300cb6-9702-45a9-a909-f8b7c972ab7e",
+            "type": "User",
+            "display": "exampleuser@example.onmicrosoft.com",
+            "$ref": "/scim/v2/Users/cb300cb6-9702-45a9-a909-f8b7c972ab7e"
         },
         {
-            &#34;value&#34;: &#34;3bfa1b1f-5f1f-45c1-bcb8-25a70b1a4bb2&#34;,
-            &#34;type&#34;: &#34;User&#34;,
-            &#34;display&#34;: &#34;exampleuser@okta.com&#34;,
-            &#34;$ref&#34;: &#34;/scim/v2/Users/3bfa1b1f-5f1f-45c1-bcb8-25a70b1a4bb2&#34;
+            "value": "3bfa1b1f-5f1f-45c1-bcb8-25a70b1a4bb2",
+            "type": "User",
+            "display": "exampleuser@okta.com",
+            "$ref": "/scim/v2/Users/3bfa1b1f-5f1f-45c1-bcb8-25a70b1a4bb2"
         }
     ],
-    &#34;meta&#34;: {
-        &#34;resourceType&#34;: &#34;Group&#34;,
-        &#34;location&#34;: &#34;/scim/v2/Groups/7987a965-411b-4816-b485-29fd81ca81ac&#34;
+    "meta": {
+        "resourceType": "Group",
+        "location": "/scim/v2/Groups/7987a965-411b-4816-b485-29fd81ca81ac"
     }
 }
 ```
@@ -118,12 +118,12 @@ curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b
 
 | エラーコード | エラーメッセージ |
 | --- | --- |
-| 400 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;400&#34;,&#34;scimType&#34;: &#34;invalidValue&#34;,&#34;detail&#34;: &#34;User payload is required.&#34;}` |
-| 400 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;400&#34;,&#34;scimType&#34;: &#34;invalidValue&#34;,&#34;detail&#34;: &#34;Cannot rename built-in group &#39;Account Admins&#39;. Built-in group names are immutable.&#34;}`|
-| 401 | `{&#34;returnCode&#34; : 1401 , &#34;message&#34; : &#34;Authentication failed.&#34;}` |
-| 403 | `{&#34;schemas&#34;: [ &#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;403&#34;,&#34;scimType&#34;: null,&#34;detail&#34;: &#34;Missing X-Tealium-Account header.&#34;}` |
-| 404 |` {&#34;schemas&#34;:[&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;404&#34;, &#34;scimType&#34;: &#34;noTarget&#34;, &#34;detail&#34;:&#34;Group uuid 1987a965-411b-4816-b485-29fd81ca81ac not found in account testaccount&#34;}`|
-| 404 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;404&#34;,&#34;scimType&#34;: &#34;noTarget&#34;,&#34;detail&#34;: &#34;User UUID {uuid} not found in account {ACCOUNT}.&#34;}`|
-| 405 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;], &#34;status&#34;: &#34;405&#34;, &#34;scimType&#34;: &#34;invalidMethod&#34;, &#34;detail&#34;: &#34;Method is not allowed on this endpoint. Allowed methods: GET, POST.&#34;}`|
-| 500 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;500&#34;,&#34;scimType&#34;: &#34;internalServerError&#34;,&#34;detail&#34;: &#34;Error processing json for extension - account {ACCOUNT}&#34;}`|
-| 501 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;501&#34;,&#34;scimType&#34;: &#34;unsupported&#34;,&#34;detail&#34;: &#34;The operation {operation} is not supported.&#34;}`|
+| 400 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "400","scimType": "invalidValue","detail": "User payload is required."}` |
+| 400 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "400","scimType": "invalidValue","detail": "Cannot rename built-in group 'Account Admins'. Built-in group names are immutable."}`|
+| 401 | `{"returnCode" : 1401 , "message" : "Authentication failed."}` |
+| 403 | `{"schemas": [ "urn:ietf:params:scim:api:messages:2.0:Error"],"status": "403","scimType": null,"detail": "Missing X-Tealium-Account header."}` |
+| 404 |` {"schemas":["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "404", "scimType": "noTarget", "detail":"Group uuid 1987a965-411b-4816-b485-29fd81ca81ac not found in account testaccount"}`|
+| 404 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "404","scimType": "noTarget","detail": "User UUID {uuid} not found in account {ACCOUNT}."}`|
+| 405 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"], "status": "405", "scimType": "invalidMethod", "detail": "Method is not allowed on this endpoint. Allowed methods: GET, POST."}`|
+| 500 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "500","scimType": "internalServerError","detail": "Error processing json for extension - account {ACCOUNT}"}`|
+| 501 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "501","scimType": "unsupported","detail": "The operation {operation} is not supported."}`|

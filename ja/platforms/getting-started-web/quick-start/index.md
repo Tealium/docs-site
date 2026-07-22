@@ -11,14 +11,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 ユニバーサルタグは、`utag.js`と呼ばれるJavaScriptファイルで、サイトのタグ管理構成をロードするために必要なコードが生成されています。
 
 ```html
-&lt;!-- Tealium Universal Tag --&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
   (function(a,b,c,d) {
-      a=&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;;
-      b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;
-      d.type=&#39;text/java&#39;&#43;c;d.async=true;
+      a='//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
       a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
-&lt;/script&gt;
+</script>
 ```
 
 `utag.js`のファイルパスはアカウントによって異なります。このガイドを通じて、プレースホルダーの値`ACCOUNT`、`PROFILE`、`ENVIRONMENT`をあなたのアカウント、プロファイル、環境に置き換えてください。
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 //tags.tiqcdn.com/utag/your-company/main/qa/utag.js
 ```
 
-[ユニバーサルタグ（utag.js）のインストールについてもっと学ぶ](/ja/platforms/javascript/install/#universal-tag-utag-js)。
+[ユニバーサルタグ（utag.js）のインストールについてもっと学ぶ](https://docs.tealium.com/ja/platforms/javascript/install/#universal-tag-utag-js)。
 
 ### コードの取得
 
@@ -37,18 +37,18 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 
 #### プラットフォーム権限
 
-プラットフォーム権限を使用しているアカウントの場合、**タグ管理 &gt; 環境管理**にアクセスしてコードスニペットを取得します：
+プラットフォーム権限を使用しているアカウントの場合、**タグ管理 > 環境管理**にアクセスしてコードスニペットを取得します：
 
 1. クライアントサイドの管理メニューで**環境管理**をクリックします。**環境管理**ダイアログが表示されます。
 1. 使用しているウェブサイトの環境の編集アイコンをクリックします。**環境の編集**画面が表示されます。
 1. **コードスニペット**セクションで**クリップボードにコピー**をクリックしてコードスニペットを選択します。
 1. スクリプトコードの`a=`行の場所を置き換えます。
 
-詳細については、を参照してください。
+詳細については、[manage-environments](https://docs.tealium.com/manage-environments/)を参照してください。
 
 #### レガシー権限
 
-レガシー権限を使用しているアカウントの場合、**タグ管理 &gt; コードセンター**にアクセスしてコードスニペットを取得します：
+レガシー権限を使用しているアカウントの場合、**タグ管理 > コードセンター**にアクセスしてコードスニペットを取得します：
 
 1. 管理メニューで**コードセンター**をクリックします。
    **コードセンター**ダイアログが表示されます。
@@ -56,11 +56,11 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 1. テキストボックスに表示されたコードを以下のいずれかの方法で選択します：
     * コード全体をクリックしてドラッグして選択します。
     * コード上にマウスを移動すると表示される**すべて選択**ボタンをクリックします。
-        ![](/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
 1. コードをコピーします。
 1. サイトのオーサリングツールやバックエンドシステムにコードを貼り付けます。
 
-詳細については、を参照してください。
+詳細については、[code-center](https://docs.tealium.com/code-center/)を参照してください。
 
 ### 環境
 
@@ -73,32 +73,32 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 * **Prod**  
 `//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/prod/utag.js`
 
-詳細については、を参照してください。
+詳細については、[manage-environments](https://docs.tealium.com/manage-environments/)を参照してください。
 
 ### コードの配置
 
-ユニバーサルタグのコードは、サイトのすべてのページの開始`&lt;body&gt;`タグの直後に貼り付けます。この位置は、最も多くのベンダーとの互換性を提供し、訪問が次のページに移動する前にサードパーティのトラッキングが完了することを可能にします。
+ユニバーサルタグのコードは、サイトのすべてのページの開始`<body>`タグの直後に貼り付けます。この位置は、最も多くのベンダーとの互換性を提供し、訪問が次のページに移動する前にサードパーティのトラッキングが完了することを可能にします。
 
 以下の例は、コードの配置を示しています：
 
 ```html
-&lt;head&gt;
+<head>
   ...
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- Tealium Universal Tag --&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
   (function(a,b,c,d) {
-      a=&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;;
-      b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;
-      d.type=&#39;text/java&#39;&#43;c;d.async=true;
+      a='//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
       a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
-&lt;/script&gt;
+</script>
   ...
-&lt;/body&gt;
+</body>
 ```
 
-[操作の順序]()についてもっと学ぶことで、ユニバーサルタグがどのようにロードされるかを理解できます。
+[操作の順序](https://docs.tealium.com/order-of-operations/)についてもっと学ぶことで、ユニバーサルタグがどのようにロードされるかを理解できます。
 ### Tealium イベント変数
 
 追跡する各種のインタラクションを一意に識別するために、予約変数 `tealium_event` を使用します。この変数は Tealium iQ 全体でロードルール、拡張機能、データマッピングの構成に参照されます。その他のイベントデータには、お好みの変数名を使用してください。
@@ -117,10 +117,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 
 詳細はこちら：
 
-* [`tealium_event` 変数について](/ja/platforms/javascript/track/#tealium-event)
-* [データレイヤー定義：小売]()
-* [データレイヤー定義：公開]()
-* [データレイヤー定義：ビデオトラッキング]()
+* [`tealium_event` 変数について](https://docs.tealium.com/ja/platforms/javascript/track/#tealium-event)
+* [データレイヤー定義：小売](https://docs.tealium.com/retail/)
+* [データレイヤー定義：公開](https://docs.tealium.com/publisher/)
+* [データレイヤー定義：ビデオトラッキング](https://docs.tealium.com/basic-video-tracking/)
 
 
 ### ベストプラクティス
@@ -136,9 +136,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 **データ値**
 
 - すべての変数に文字列値を使用します。
-- ブール値には、`true` や `false` の代わりに文字列値 `&#34;1&#34;` と `&#34;0&#34;` を使用します。
-- 数値には、`1234.56` の代わりに文字列値 `&#34;1234.56&#34;` を使用します。
-- 配列には、`[&#34;prodID1&#34;, &#34;prodID2&#34;, &#34;prodID3&#34;]` のようなカンマ区切りの文字列を使用します。
+- ブール値には、`true` や `false` の代わりに文字列値 `"1"` と `"0"` を使用します。
+- 数値には、`1234.56` の代わりに文字列値 `"1234.56"` を使用します。
+- 配列には、`["prodID1", "prodID2", "prodID3"]` のようなカンマ区切りの文字列を使用します。
 
 **ページタイプ識別子**
 
@@ -146,12 +146,12 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 
 **サードパーティのデータレイヤーオブジェクト**
 
-既にサイトに実装されているデータレイヤーオブジェクト（W3Cデータオブジェクトや独自のカスタムオブジェクトなど）がある場合、これらのオブジェクトをユニバーサルデータオブジェクト（UDO）`utag_data` に変換します。利用可能な[データレイヤーコンバーター]()のいずれかを使用してください。
+既にサイトに実装されているデータレイヤーオブジェクト（W3Cデータオブジェクトや独自のカスタムオブジェクトなど）がある場合、これらのオブジェクトをユニバーサルデータオブジェクト（UDO）`utag_data` に変換します。利用可能な[データレイヤーコンバーター](https://docs.tealium.com/set-up-data-layer-converter/)のいずれかを使用してください。
 
 **`utag_data` を `utag.js` の前に構成する**  
 ページコードでは、ユニバーサルデータオブジェクトをユニバーサルタグの前に宣言する必要があります。これにより、ユニバーサルタグはロードルール、拡張機能、タグを評価するために必要なすべてのデータレイヤー変数を持つことが保証されます。
 
-[データレイヤーのベストプラクティス]()についてもっと学ぶ。
+[データレイヤーのベストプラクティス](https://docs.tealium.com/data-layer-best-practices/)についてもっと学ぶ。
 
 ## テストと検証
 
@@ -161,32 +161,36 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/
 
 ユニバーサルタグデバッガー（または「utagデバッガー」）は、サイトをナビゲートする際にリアルタイムでデータレイヤーとトラッキングコールを検証する簡単な方法を提供します。
 
-![](/images/platforms/javascript/utag-monitor.png)
+![](https://docs.tealium.com/images/platforms/javascript/utag-monitor.png)
 
 `utag.js` によって行われるトラッキングコールは、ページ内イベントをナビゲートまたはトリガーするとツールに表示され、更新されます。
 
-[ユニバーサルタグデバッガー]()についてもっと学ぶ。
+[ユニバーサルタグデバッガー](https://docs.tealium.com/universal-tag-debugger/)についてもっと学ぶ。
 
 ### Web Companion
 
 Web Companionは、タグ構成を確認し、サイト上のデータを検査し、新しい構成を素早く簡単に作成してテストするためのブラウザツールです。このツールをすぐに起動することで、`utag.js` ライブラリがサイト上で適切にロードされていることを確認できます。
 
-![](/images/platforms/javascript/web-companion.png)
+![](https://docs.tealium.com/images/platforms/javascript/web-companion.png)
 
 詳細はこちら：
 
-- [Web Companion]()
-- [公開構成のWeb Companion構成]()
-- [環境の切り替え]()
+- [Web Companion](https://docs.tealium.com/web-companion/)
+- [公開構成のWeb Companion構成](https://docs.tealium.com/publish-configuration/)
+- [環境の切り替え](https://docs.tealium.com/methods-to-switch-publish-environment/)
 
 ### ライブイベント
 
 Tealium EventStreamでは、ライブイベント機能を使用してリアルタイムで受信イベントを管理および検査します。データソースから送信されたイベントが受信されていることを確認します。
 
+
+<blockquote>
 ライブイベントを使用するには、iQタグ管理構成にTealium Collectタグを追加する必要があります。
+</blockquote>
+
 
 詳細はこちら：
 
-* [ライブイベントとフィード]()
-* [iQタグ管理のためのデータソース]()
-* [Tealium Collectタグ構成ガイド]()
+* [ライブイベントとフィード](https://docs.tealium.com/about-live-events/)
+* [iQタグ管理のためのデータソース](https://docs.tealium.com/data-sources-for-iq-tag-management/)
+* [Tealium Collectタグ構成ガイド](https://docs.tealium.com/tealium-collect-tag/)

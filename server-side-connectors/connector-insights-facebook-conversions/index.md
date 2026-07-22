@@ -8,17 +8,21 @@ url: https://docs.tealium.com/server-side-connectors/connector-insights-facebook
 The Facebook Conversions connector insights is an integration with Meta that brings the following data quality reports into Tealium:
 
 * [Event match quality (EMQ)](#event-match-quality-emq): A report to assess the effectiveness of your Conversions API integration in matching events to Meta users.
-* [Offline data quality (ODQ)](#offline-data-quality-odq): A report to assess how well your offline events align with Meta&#39;s advertising requirements.
+* [Offline data quality (ODQ)](#offline-data-quality-odq): A report to assess how well your offline events align with Meta's advertising requirements.
 
 To access connector insights:
 
-Go to **Connectors**, find the Facebook Conversions connector, and click **Insights**.
+Go to **Connect > Connectors**, find the **Facebook Conversions** connector, and select an action. On the action screen, click the **Insights** tab.
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 The insights are based on the **Pixel ID** or **Dataset ID** of the configured connector, which is displayed on the summary screen. If the identifier is configured as a static value, it will be displayed on the summary screen and metrics will load automatically. If you use dynamic attributes, enter the required Dataset ID or Pixel ID and click **Retrieve Metrics** to fetch the insights data.
 
+
+<blockquote>
 If the **Pixel ID** is set dynamically as a mapped parameter in the connector action instead of in the connector configuration, the insights cannot be retrieved from Meta and the scores will not appear.
+</blockquote>
+
 
 ## Event match quality (EMQ)
 
@@ -36,7 +40,7 @@ The EMQ score indicates how well the customer information in those events matche
 
 Click an event to see the customer information details of the event match quality.
 
-![](/images/server-side-connectors/facebook-api-insights-events.png)
+![](https://docs.tealium.com/images/server-side-connectors/facebook-api-insights-events.png)
 
 ### Customer information summary
 
@@ -44,7 +48,7 @@ The customer information summary shows the customer parameters received by Meta 
 
 If EMQ diagnostics issues are detected, they appear here with the name of the issue.
 
-![](/images/server-side-connectors/facebook-api-insights-customer-info.png)
+![](https://docs.tealium.com/images/server-side-connectors/facebook-api-insights-customer-info.png)
 
 ### EMQ score
 
@@ -56,7 +60,7 @@ To improve your EMQ score, include as many customer information parameters as po
 * Client IP address / Client user agent
 * Hashed phone number
 
-Add data mappings for these parameters and more in the [Facebook Conversions connector]().
+Add data mappings for these parameters and more in the [Facebook Conversions connector](https://docs.tealium.com/facebook-conversions-connector/).
 
 Meta recommends maintaining an EMQ score of 6.0 or higher. For more information, see [Meta Business Help Center: Best Practices for Conversions API](https://www.facebook.com/business/help/308855623839366?id=818859032317965).
 
@@ -68,7 +72,7 @@ For example, the detected issue might be **Always Same Match**, which indicates 
 
 ## Offline data quality (ODQ)
 
-The offline data quality (ODQ) insight provides a composite score for offline event types and detailed data quality scores for each event type. The scores indicate how well your offline events align with Meta&#39;s advertising requirements.
+The offline data quality (ODQ) insight provides a composite score for offline event types and detailed data quality scores for each event type. The scores indicate how well your offline events align with Meta's advertising requirements.
 
 ### Offline event summary
 
@@ -82,7 +86,7 @@ Each event type has an event match quality score ranging from 1 to 10. The score
 
 Click an event to see the detailed ODQ scores.
 
-![](/images/server-side-connectors/fb-offline-event-quality-events-composite-score.png)
+![](https://docs.tealium.com/images/server-side-connectors/fb-offline-event-quality-events-composite-score.png)
 
 ### ODQ scores
 
@@ -94,6 +98,6 @@ The offline event type summary shows the following specific scores for an event 
 
 For each score, the **Recommendation** column shows how to improve the score.
 
-![](/images/server-side-connectors/fb-offline-data-quality-details-match-frequency-freshness.png)
+![](https://docs.tealium.com/images/server-side-connectors/fb-offline-data-quality-details-match-frequency-freshness.png)
 
 For more information, see [Meta Conversions API: Offline Data Quality](https://developers.facebook.com/docs/marketing-api/best-practices/omni-optimal-setup-guide#offline-data-quality--odq--score)

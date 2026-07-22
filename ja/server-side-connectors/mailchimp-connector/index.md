@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/mailchimp-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいMailchimpコネクタを追加します。コネクタの追加方法については、[コネクタの概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいMailchimpコネクタを追加します。コネクタの追加方法については、[コネクタの概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 ベンダーを構成するには、以下の手順を実行します。
 

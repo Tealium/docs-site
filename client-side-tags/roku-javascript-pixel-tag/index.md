@@ -10,18 +10,22 @@ url: https://docs.tealium.com/client-side-tags/roku-javascript-pixel-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see .
+Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Ad Account ID**: Your Roku ad account ID. 
-* **Generate Event ID**: Automatically generate an event ID for every Roku tracking event. Used for deduplication when implementing the Roku Events API connector. The default value is `true`. For more information, see [Roku Events API connector](). 
+* **Generate Event ID**: Automatically generate an event ID for every Roku tracking event. Used for deduplication when implementing the Roku Events API connector. The default value is `true`. For more information, see [Roku Events API connector](https://docs.tealium.com/roku-events-api-connector/). 
 * **Auto PageView Tracking**: Automatically track page views. The default value is `true`.
 * **Auto Purchase Tracking**: If `order_id` or `_corder` are present, automatically trigger a purchase event. The default value is `true`.
 
 ### Roku Events API
 
- This feature requires an active [Tealium Collect tag](). 
+
+<blockquote>
+This feature requires an active [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+</blockquote>
+
 
 To support the Roku Events API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Roku Events API connector and passes it to the Roku JavaScript Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
@@ -35,7 +39,7 @@ For example, a purchase event from tag #32 would send the following attribute an
 
 ```json
 {
-  &#34;roku_event_id_purchase_32&#34;: &#34;028b2ade7478...&#34;
+  "roku_event_id_purchase_32": "028b2ade7478..."
 }
 ```
 
@@ -43,7 +47,7 @@ A page view event from the same tag would send the following attribute and value
 
 ```json
 {
-  &#34;roku_event_id_page_view_32&#34;: &#34;084b1cda7461...&#34;
+  "roku_event_id_page_view_32": "084b1cda7461..."
 }
 ```
 
@@ -53,18 +57,18 @@ To ensure proper event deduplication, the event ID from the Roku Events API conn
 
 * From the **Tag Timing** drop-down, select **Prioritized**.
 * Set the **Bundle Flag** toggle to `On`.
-* Use **Load Order Manager** to fire the Roku JavaScript Pixel tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last. For more information, see [Load Order Manager]().
+* Use **Load Order Manager** to fire the Roku JavaScript Pixel tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last. For more information, see [Load Order Manager](https://docs.tealium.com/load-order-manager/).
 
-For information on using these event ID attributes, see [Roku: Events API connector]() and [Roku: Conversions API](https://help.ads.roku.com/en/articles/8880744-conversions-api).
+For information on using these event ID attributes, see [Roku: Events API connector](https://docs.tealium.com/roku-events-api-connector/) and [Roku: Conversions API](https://help.ads.roku.com/en/articles/8880744-conversions-api).
 
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -133,7 +137,7 @@ The available categories are:
 
 ### Event-specific parameters
 
-To map events, see [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|

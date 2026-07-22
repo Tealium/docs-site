@@ -20,11 +20,15 @@ When you save changes, you have the option to save your changes to the existing 
 
 When starting a new project or creating a dedicated team workspace, we recommend that you **Save As** to branch off to a new version to keep your version history organized. You should **Save** incremental development within that new version to create a series of revisions.
 
- Using **Save As** instead of **Save** to create multiple new versions during development on a branch will result in confusion when it is time to reconcile your changes to the published version and then publish them. 
 
-If you need to undo changes in a version that you saved as a revision, you can revert to a previous save using the [version history]() screen.
+<blockquote>
+Using **Save As** instead of **Save** to create multiple new versions during development on a branch will result in confusion when it is time to reconcile your changes to the published version and then publish them.
+</blockquote>
 
-For more information, see .
+
+If you need to undo changes in a version that you saved as a revision, you can revert to a previous save using the [version history](https://docs.tealium.com/ss-version-history/) screen.
+
+For more information, see [ss-save-and-publish](https://docs.tealium.com/ss-save-and-publish/).
 
 ## Published version
 
@@ -40,9 +44,9 @@ To permanently delete an item, delete it from the published version. If you dele
 
 The version status label compares your current version to the latest published version. It lets you know if the published version has changes that do not exist in your current version. Tracking these changes helps ensure that you incorporate published updates from other users.
 
-The [profile switcher]() and the [Save/Publish window]() display your version&#39;s status. 
+The [profile switcher](https://docs.tealium.com/ss-profile-switcher/) and the [Save/Publish window](https://docs.tealium.com/ss-save-and-publish/) display your version's status. 
 
-![](/images/server-side/save-publish/server-side-profile-switcher-status.png)
+![](https://docs.tealium.com/images/server-side/save-publish/server-side-profile-switcher-status.png)
 
 The version statuses are:
 
@@ -54,11 +58,11 @@ The version statuses are:
 
 The server-side platform supports managing changes from concurrent users who are logged into the server-side platform at the same time. 
 
-The platform displays an in-app notification when other users make changes or publish. When one user publishes their version, other logged-in users must integrate those published changes to avoid conflicts and ensure continuity. The platform also displays your version&#39;s relationship to the published version in the version status.
+The platform displays an in-app notification when other users make changes or publish. When one user publishes their version, other logged-in users must integrate those published changes to avoid conflicts and ensure continuity. The platform also displays your version's relationship to the published version in the version status.
 
-To prevent conflicts, follow a clear publishing strategy and the recommended [best practices]() to avoid overwriting or omitting changes made by other users.
+To prevent conflicts, follow a clear publishing strategy and the recommended [best practices](https://docs.tealium.com/ss-save-publish-best-practices/) to avoid overwriting or omitting changes made by other users.
 
-For more information, see [Concurrent users]().
+For more information, see [Concurrent users](https://docs.tealium.com/concurrent-user-management/).
 
 ## Permissions
 

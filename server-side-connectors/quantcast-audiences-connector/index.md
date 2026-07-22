@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/quantcast-audiences-connect
 ---
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 10 minutes
@@ -13,7 +13,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -45,7 +45,11 @@ At least one of the following parameters is required: **Partner User ID**, **Qua
 | Email Address (already SHA256 hashed) | Provide an email address which has been already whitespace trimmed, lowercased and SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. |
 
+
+<blockquote>
 Hashed email identifiers are supported only for Quantcast audiences in the United States. They are not supported for audiences outside the United States.
+</blockquote>
+
 
 #### Segment
 

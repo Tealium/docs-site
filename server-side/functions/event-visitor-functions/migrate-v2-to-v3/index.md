@@ -7,17 +7,21 @@ url: https://docs.tealium.com/server-side/functions/event-visitor-functions/migr
 
 Event and visitor functions that use the V3 runtime differ from V2 functions as follows:
 
-* **Parameters and named exports** &amp;ndash; Input data is provided as parameters instead of named exports.
+* **Parameters and named exports** &ndash; Input data is provided as parameters instead of named exports.
   * An event function has two parameters: `event` and `helper`.  
   * A visitor function has three parameters: `visitor`, `visit`, and `helper`.
-*  **Helper functions** &amp;ndash; The `helper` object is used to get an authentication token ID or retrieve global variables.
+*  **Helper functions** &ndash; The `helper` object is used to get an authentication token ID or retrieve global variables.
     * `auth.get()` has been replaced with `helper.getAuth()`.
     * `store.get()` has been replaced with `helper.getGlobalVariable()`.
 * **Collect event**
   * `tealium.sendCollectEvent()` has been replaced by `track()`, which uses named parameters.
 
 
+
+<blockquote>
 Data transformation functions use the **Transformation V0** runtime and are not affected by the release of the V3 runtime.
+</blockquote>
+
 
 ### Example V2 function 
 
@@ -26,12 +30,12 @@ The following code examples show a V2 event function that sends an event to the 
 
 
 ```js
-import { event, tealium } from &#34;tealium&#34;;
-(async () =&gt; {
+import { event, tealium } from "tealium";
+(async () => {
     const searchQuery = new URLSearchParams({ path: event.data.dom.pathname, query: event.data.dom.search_query });
     
     const newEvent = await fetch(`https://getnew.event.com?${searchQuery}`)
-        .then(response =&gt; {
+        .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
@@ -42,25 +46,25 @@ import { event, tealium } from &#34;tealium&#34;;
         newEvent,
         event.account,
         event.profile,
-        &#39;abc123&#39;)
-        .then(response =&gt; {
+        'abc123')
+        .then(response => {
             if(!response.ok){
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
             return response.text();
         })
-        .then(data =&gt; console.log(&#39;Result : &#39;, data))
-        .catch(error =&gt; console.error(&#39;Error:&#39;, error.message));
+        .then(data => console.log('Result : ', data))
+        .catch(error => console.error('Error:', error.message));
 })();
 ```
 
 
 ```js
-activate(async ({ event }) =&gt; {  
+activate(async ({ event }) => {  
     const searchQuery = new URLSearchParams({ path: event.data.dom.pathname, query: event.data.dom.search_query });
         
     const newEvent = await fetch(`https://getnew.event.com?${searchQuery}`)
-        .then(response =&gt; {
+        .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
@@ -70,16 +74,16 @@ activate(async ({ event }) =&gt; {
     track(newEvent, {
         tealium_account: event.account,
         tealium_profile: event.profile,
-        tealium_datasource: &#39;abc123&#39;
+        tealium_datasource: 'abc123'
         })
-        .then(response =&gt; {
+        .then(response => {
             if(!response.ok){
                 throw new Error(`Network response was not ok. Status code: ${response.status}.`);
             }
             return response.text();
         })
-        .then(data =&gt; console.log(&#39;Result : &#39;, data))
-        .catch(error =&gt; console.error(&#39;Error:&#39;, error.message));
+        .then(data => console.log('Result : ', data))
+        .catch(error => console.error('Error:', error.message));
 })();
 ```
 
@@ -94,14 +98,14 @@ We will add the function code in the next step, then modify the code.
 
 
 ```js
-activate(async ({ event }) =&gt; {  
+activate(async ({ event }) => {  
 
 });
 ```
 
 
 ```js
-activate(async ({ visitor, visit }) =&gt; {  
+activate(async ({ visitor, visit }) => {  
 
 });
 ```
@@ -110,7 +114,7 @@ activate(async ({ visitor, visit }) =&gt; {
 
 1. Copy the code from the V2 function, starting after the first line of the function, shown below:  
     ```js
-    (async (event, helper) =&gt; {
+    (async (event, helper) => {
     ```  
     and ending above the last line of the function:
     ```js
@@ -129,28 +133,28 @@ The example function uses `tealium.sendCollectEvent()`. This call needs to be re
 
 
 ```js
-import { event, tealium } from &#39;tealium&#39;;
+import { event, tealium } from 'tealium';
 
-(async () =&gt; {
+(async () => {
     const newEvent = { data: event.data.udo };
 
     tealium.sendCollectEvent(newEvent,
         event.account,
         event.profile,
-        &#39;abc123&#39;)
+        'abc123')
     ...
 })();
 ```
 
 
 ```js
-activate(({ event }) =&gt; {
+activate(({ event }) => {
     const newEvent = { data: event.data.udo };
 
     track(newEvent, {
         tealium_account: event.account,
         tealium_profile: event.profile,
-        tealium_datasource: &#39;abc123&#39;
+        tealium_datasource: 'abc123'
     })
     ...
 })
@@ -158,7 +162,7 @@ activate(({ event }) =&gt; {
 
 
 
-In the `track()` call, replace `&#39;abc123&#39;` with your data source key.
+In the `track()` call, replace `'abc123'` with your data source key.
 
 ### Use libraries
 
@@ -167,15 +171,15 @@ If your V2 function uses libraries, such as CrytpoES, add the import line before
 
 
 ```js
-import { event, tealium } from &#34;tealium&#34;;
-import CryptoES from &#39;crypto-es&#39;;
+import { event, tealium } from "tealium";
+import CryptoES from 'crypto-es';
 ...
 ```
 
 
 ```js
-import CryptoES from &#39;crypto-es&#39;;
-activate(async ({ event, helper }) =&gt; {  
+import CryptoES from 'crypto-es';
+activate(async ({ event, helper }) => {  
     ...
 });
 ```  
@@ -187,7 +191,7 @@ activate(async ({ event, helper }) =&gt; {
 If your V2 function uses authentication tokens or global variables, add `helper` to the function parameters in the `activate` line of the V3 function. For example:  
 
 ```js
-activate(async ({ event, helper }) =&gt; {
+activate(async ({ event, helper }) => {
 });
 ```
 
@@ -196,36 +200,40 @@ Replace any instances of `auth.get()` in the V2 code with `helper.getAuth()`. Fo
 
 
 ```js
-import { auth } from &#39;tealium&#39;;
+import { auth } from 'tealium';
 
-const token = auth.get(&#34;myAuthToken&#34;);
+const token = auth.get("myAuthToken");
 ```
 
 
 ```js
-activate(({event, helper }) =&gt; {
-    const token = helper.getAuth(&#34;myAuthToken&#34;);
+activate(({event, helper }) => {
+    const token = helper.getAuth("myAuthToken");
 })
 ```
 
 
 
+
+<blockquote>
 Authentication tokens can only be referenced by a function within an HTTP request. If you try to reference the token outside of an HTTP request, the token is replaced by a UUID placeholder.
+</blockquote>
+
 
 Replace any instances of `store.get()` with `helper.getGlobalVariable()`. For example: 
 
 
 
 ```js
-import {store } from &#39;tealium&#39;;
+import {store } from 'tealium';
 
-const gVar = store.get(&#34;myGlobalVar&#34;);
+const gVar = store.get("myGlobalVar");
 ```
 
 
 ```js
-activate(({event, helper }) =&gt; {    
-    const gVar = helper.getGlobalVariable(&#34;myGlobalVar&#34;);
+activate(({event, helper }) => {    
+    const gVar = helper.getGlobalVariable("myGlobalVar");
 })
 ```
 

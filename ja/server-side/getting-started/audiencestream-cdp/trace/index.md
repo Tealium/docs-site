@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## 使い方
 
-![](/images/server-side/getting-started-audiencestream-trace-icon.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-trace-icon.png)
 
 トレースを使用すると、特定のテストケースを分離し、それがAudienceStreamでどのように処理されるかのログを表示することができます。トレースは、テスト中に使用するための一意のID、トレースIDを生成します。トレースIDを使用してイベントをトリガーすると、結果はトレースツールの詳細なログに表示され、受信したイベント、豊かな訪問者属性、影響を受けた観客活動、トリガーされたコネクタアクションに関する情報が含まれます。
 

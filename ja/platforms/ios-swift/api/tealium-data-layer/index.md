@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/
 
 ### `add()`
 
-[有効期限タイプ](/ja/platforms/ios-swift/data-layer/#data-expiration)に基づいてデータレイヤーにデータを追加します。`expiry`パラメータが提供されていない場合、有効期限タイプはデフォルトで`.session`になります。
+[有効期限タイプ](https://docs.tealium.com/ja/platforms/ios-swift/data-layer/#data-expiration)に基づいてデータレイヤーにデータを追加します。`expiry`パラメータが提供されていない場合、有効期限タイプはデフォルトで`.session`になります。
 
 ```swift
 tealium?.dataLayer.add(key, value, expiry)
@@ -92,10 +92,10 @@ tealium?.dataLayer.deleteAll()
 永続保存に保存されているすべてのイベントデータを返します。
 
 ```swift
-let data: Set&lt;DataLayerItem&gt; = tealium?.dataLayer.persistentDataStorage
+let data: Set<DataLayerItem> = tealium?.dataLayer.persistentDataStorage
 ```
 
 | 戻り値のタイプ | 説明                       |
 |-------------|-----------------------------------|
-| `Set&lt;DataLayerItem&gt;`  | 永続保存に保存されているすべてのイベントデータ |
+| `Set<DataLayerItem>`  | 永続保存に保存されているすべてのイベントデータ |
 

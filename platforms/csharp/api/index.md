@@ -23,14 +23,14 @@ Config tealConfig = new Config(account, profile, environment,
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `string` | Tealium Account name  | `&#34;companyXYZ&#34;` |
-| `profile` | `string` |Tealium profile  name|  `&#34;main&#34;` |
-| `environment` | `string` |(Optional) Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `visitorID` | `string` |32-char alphanumeric string ID, unique to a user, app instance, or device (`null` ok) |  `&#34;t3aL...1uM&#34;` |
+| `account` | `string` | Tealium Account name  | `"companyXYZ"` |
+| `profile` | `string` |Tealium profile  name|  `"main"` |
+| `environment` | `string` |(Optional) Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `visitorID` | `string` |32-char alphanumeric string ID, unique to a user, app instance, or device (`null` ok) |  `"t3aL...1uM"` |
 | `modules` | `[string]` | (Optional) Modules to be initialized with Collect library |  See [Available Modules](#available-modules) |
-| `dataSourceKey` | `string` |(Optional) Data source key |  | `&#34;abc123&#34;` |
+| `dataSourceKey` | `string` |(Optional) Data source key |  | `"abc123"` |
 | `overrideCollectUrl` | `string` |(Optional) Override Collect URL (custom destination URL for data) |   |
-| `optionalData` | `Dictionary&lt;string, object&gt;` |(Optional) Data as key-value pairs for module use (`null` acceptable - not needed for most setups) | |
+| `optionalData` | `Dictionary<string, object>` |(Optional) Data as key-value pairs for module use (`null` acceptable - not needed for most setups) | |
 | `method` | `Method` enum | (Optional) Determines HTTP method used to send data to the Tealium Collect Endpoint | [`Method.POST`, `Method.GET`] |
 
 ## Class: `Tealium`
@@ -72,7 +72,7 @@ tealium.JoinTrace(traceId);
 
 | Parameters | Type | Description  | Example |
 |----------- | ----------- | -----| ------- |
-| `traceId`  | `string` |Trace ID to join   | `&#34;12345&#34;` |
+| `traceId`  | `string` |Trace ID to join   | `"12345"` |
 
 ### `KillTraceSession()`
 
@@ -113,7 +113,7 @@ tealium.Track(title, customData, completion);
 | Parameters | Type | Description |
 | --- | --- | ---  |
 | `title` | `string` | Event identifier |
-| `customData` | `Dictionary&lt;string, object&gt;` | (Optional) Event data as key-value pairs (set to `null` if none) |
+| `customData` | `Dictionary<string, object>` | (Optional) Event data as key-value pairs (set to `null` if none) |
 | `completion` | `TrackCompletion` (set to `null` if none)| (Optional) Completion block to trigger after track call |
 
 
@@ -134,4 +134,8 @@ config.Modules = new string[] { AppDataModule.Name,
 | `CollectModule` | Delivers processed events to Tealium Collect endpoint |
 | `LoggerModule` | Provides debug output |
 
+
+<blockquote>
 Use the `.Name` constant of each Module class.
+</blockquote>
+

@@ -24,10 +24,10 @@ The following steps describe how to install the Amazon Redshift JDBC driver:
 1.  Open **SQL Workbench/J**.
 2.  Click **Manage Drivers** in the lower left of the screen.
 3.  Click the **Create a new entry** icon.  
-![](/images/server-side/sql-workbench-create-driver.jpg)
+![](https://docs.tealium.com/images/server-side/sql-workbench-create-driver.jpg)
 4.  In the **Name** field, enter `Redshift`.
 5.  Click the **folder** icon to the right of the Library text area.  
-![](/images/server-side/sql-workbench-folder.jpg)
+![](https://docs.tealium.com/images/server-side/sql-workbench-folder.jpg)
 6.  Navigate to the location of the driver, click to select it, and then click **Open**.  
 The **Classname** field is now set to `com.amazon.redshift.jdbc_41_.Driver` where `41` indicates the driver version.
 7.  Click **OK** to exit.  
@@ -38,21 +38,21 @@ Your Redshift database is now configured.
 The following steps describe how to create a connection profile by providing SQL Workbench with the connection credentials to your Tealium database:
 
 1.  In the **SQL Workbench/J** interface, click the **Create a new connection profile** icon.  
-![](/images/server-side/sql-workbench-connection-profile.jpg)
+![](https://docs.tealium.com/images/server-side/sql-workbench-connection-profile.jpg)
 2.  Enter a name your new profile. For example, a name that combines your Tealium account and profile, such as `mycompany-main`.
 3.  In the **Driver** drop-down list, select `Amazon Redshift JDBC Driver (com.amazon.redshift.jdbc41.Driver)`.  
-  ![](/images/server-side/sql-workbench-connection-profile.jpg)
-4.  In your Tealium account, navigate to **Store &gt; EventDB** or **Store &gt; AudienceDB**.
+  ![](https://docs.tealium.com/images/server-side/sql-workbench-connection-profile.jpg)
+4.  In your Tealium account, navigate to **Store > EventDB** or **Store > AudienceDB**.
 5.  Click **Get DB Connection Details**.  
   The **DB Connection Detail** dialog displays. Keep this window open as you proceed. In the following example, credentials are removed for confidentiality.  
-    ![](/images/server-side/sql-workbench-connection-details.jpg)
+    ![](https://docs.tealium.com/images/server-side/sql-workbench-connection-details.jpg)
 6.  Return to SQL Workbench and enter a URL based on the following example, where `HOST`, `PORT`, and `DATABASE` are replaced with the connection values from DataAccess: `jdbc:redshift://HOST:PORT/DATABASE?ssl=true`.  
-    ![](/images/server-side/sql-workbench-connection-url.jpg)
+    ![](https://docs.tealium.com/images/server-side/sql-workbench-connection-url.jpg)
 7.  Use your credentials to enter your **Username** and **Password**.
 8.  Check the **Autocommit** checkbox.  
-      ![](/images/server-side/sql-workbench-connection-autocommit.jpg)
+      ![](https://docs.tealium.com/images/server-side/sql-workbench-connection-autocommit.jpg)
 9.  Click the **Save Profile List** icon to save.  
-        ![](/images/server-side/sql-workbench-connection-save.jpg)
+        ![](https://docs.tealium.com/images/server-side/sql-workbench-connection-save.jpg)
 10.  Click **OK** to attempt to connect.  
 
 If successful, the **Statement** page displays. From here, you can begin writing scripts to query the data.  
@@ -75,11 +75,11 @@ The following sections provide information about common errors and troubleshooti
 #### Tips
 *   **Show password**  
   If you need to view your password, click **Show password** next to the Password input field in SQLWorkbench/J.  
-  ![](/images/server-side/sql-workbench-show-password.jpg)
+  ![](https://docs.tealium.com/images/server-side/sql-workbench-show-password.jpg)
 *   **Enable an event feed for EventDB**  
-  For EventDB, you must enable an event feed to be sent to EventDB. For additional information, see [event feeds]().
+  For EventDB, you must enable an event feed to be sent to EventDB. For additional information, see [event feeds](https://docs.tealium.com/about-event-feeds/).
 *   **Enable attributes for AudienceDB**  
-  For AudienceDB, you must enable attributes to be sent to AudienceDB. For additional information, see [Adding Attributes to AudienceDB]().
+  For AudienceDB, you must enable attributes to be sent to AudienceDB. For additional information, see [Adding Attributes to AudienceDB](https://docs.tealium.com/audiencedb-and-eventdb/#adjust-audiencedb-attributes).
     *   If you do not complete the above steps, you will see many `visit_` and `visitor_` tables and views that contain only basic visitor-level data and Audiences. No attribute data will be included.
     *   There is a soft limit of 250 attributes in AudienceDB. After this number is reached, you may experience performance degradation.
 
@@ -96,13 +96,13 @@ The following sections provide general information about the most commonly used 
 
 From the SQL Workbench/J interface, click the **Statements** tab to write SQL statements and view results or error messages.
 
-![](/images/server-side/whiteui-dataaccess-running-queries-on-audiencedb-event-db-using-sql-workbench:j-statement-editor.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-running-queries-on-audiencedb-event-db-using-sql-workbench:j-statement-editor.jpg)
 
 ### Database explorer
 
 From the SQL Workbench/J interface, go to **Database Explorer** to review your available data.
 
-![](/images/server-side/whiteui-dataaccess-running-queries-on-audiencedb-eventdb-using-sql-workbenchj.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-running-queries-on-audiencedb-eventdb-using-sql-workbenchj.jpg)
 
 The left panel displays the tables and views that are accessible within your Redshift instance. Each table or view contains different pieces of data. To build your query correctly, you must know the column names that are available to be queried, such as `udo_job_role`. The right pane helps you navigate the data column names and build your queries.
 
@@ -125,19 +125,19 @@ For each table, there is a corresponding view. A view provides a more human-read
     * `visitors` is the most commonly-used table and contains the latest visitor-scoped data for each visitor and any audiences that they belong to.
     * `visits` contains the latest current visitor-scoped data for each visitor.
 * **Limitations**
-    * [Funnel]() and [timeline]() attributes are not supported.
+    * [Funnel](https://docs.tealium.com/funnel-attribute/) and [timeline](https://docs.tealium.com/timeline-attribute/) attributes are not supported.
 
 ### View column names
 
 Click the **Objects** tab to view the column names for each table or view. You can use the available filters in the interface to fine-tune your results. By default, `COLUMN_NAME` is not in alphabetical order. Click the header row to sort the names alphabetically.
 
-![](/images/server-side/whiteui-dataaccess-running-queries-on-audencedb-eventdb-using-sql-workbenchj-search-tables-objects-tab.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-running-queries-on-audencedb-eventdb-using-sql-workbenchj-search-tables-objects-tab.jpg)
 
 ### View random sample data
 
 Click the **Search table data** tab to view random samples of data. You can use the available filters in the interface to fine-tune your results.
 
-![](/images/server-side/whiteui-dataaccess-running-queries-on-audencedb-eventdb-using-sql-workbenchj-search-table-data.jpg)
+![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-running-queries-on-audencedb-eventdb-using-sql-workbenchj-search-table-data.jpg)
 
 ### Common errors to avoid
 

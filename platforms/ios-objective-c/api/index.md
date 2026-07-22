@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/ios-objective-c/api/
 
 Swift is the preferred programming language for macOS, iOS, watchOS, tvOS and beyond. Swift code co-exists along side your existing Objective-C files in the same project, with full access to your Objective-C API, making it easy to adopt.
 
-See the [API Reference for Swift](/platforms/ios-swift/api/) for a reference of the Tealium SDK for iOS (Swift).
+See the [API Reference for Swift](https://docs.tealium.com/platforms/ios-swift/api/) for a reference of the Tealium SDK for iOS (Swift).
 
 ## API for Objective-C
 

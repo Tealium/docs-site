@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/clevertap-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/clevertap-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| プロファイルデータ | ユーザープロファイルのプロパティ。キーと値のペアとして渡されます。注：`Phone`は`&#43;[国コード][電話番号]`の形式でフォーマットする必要があります（例：`&#43;12125551212`）。このエンドポイントについての詳細は、[Clevertap: Upload User Profiles API](https://developer.clevertap.com/docs/upload-user-profiles-api)を参照してください。 |
+| プロファイルデータ | ユーザープロファイルのプロパティ。キーと値のペアとして渡されます。注：`Phone`は`+[国コード][電話番号]`の形式でフォーマットする必要があります（例：`+12125551212`）。このエンドポイントについての詳細は、[Clevertap: Upload User Profiles API](https://developer.clevertap.com/docs/upload-user-profiles-api)を参照してください。 |
 | Identity | ユニークなユーザーを識別するためのID、例えばユーザーのメールアドレス、電話番号、またはユーザーをタグ付けするために使用するその他の識別子です。ユーザーを識別するために、identity、FBID、GPID、または`objectId`のいずれかのパラメータに値を構成する必要があります。 |
 | FBID | Facebook IDによってユニークなユーザーを識別します。 |
 | GPID | Google Plus IDによってユニークなユーザーを識別します。 |

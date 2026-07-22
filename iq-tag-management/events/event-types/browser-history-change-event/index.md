@@ -6,13 +6,13 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/browser-histo
 ## Requirements
 
 * utag v4.38 or later. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
-* The page or app uses `history.pushState()` and `history.replaceState()` functions in the browser&#39;s history API for navigation.
+* The page or app uses `history.pushState()` and `history.replaceState()` functions in the browser's history API for navigation.
 
 ## How it works
 
-The browser history change event listener monitors the functions `history.pushState()` and `history.replaceState()` in the browser&#39;s history API. These two functions are used to manage navigation in SPA without full page reloads. When the visitor navigates to a new page within the app or goes back, the tracking call is triggered.
+The browser history change event listener monitors the functions `history.pushState()` and `history.replaceState()` in the browser's history API. These two functions are used to manage navigation in SPA without full page reloads. When the visitor navigates to a new page within the app or goes back, the tracking call is triggered.
 
-For more information about how to add an event listener, see [Manage events]().
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ## Event triggers
 
@@ -28,7 +28,7 @@ This event is triggered by the browser change history.
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;history_change&#34;`| The visitor navigated to a new page within the app or went back a page.|
+|`tealium_event="history_change"`| The visitor navigated to a new page within the app or went back a page.|
 
 ## Event trigger variables
 
@@ -43,7 +43,7 @@ Event trigger variables are the values the event sends with the tracking call. T
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;history_change&#34;,
-   &#34;iq_event_id:&#34; : &#34;history_change_events_1&#34;
+   "tealium_event"  : "history_change",
+   "iq_event_id:" : "history_change_events_1"
 }
 ```

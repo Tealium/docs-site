@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -22,7 +22,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 * **APIパスワード**
 * **サーバーホスト**  
 適切なサーバーホストを取得するために、Oracle Responsysの担当者に連絡してください。  
+
+<blockquote>
 サーバーホストを入力するときは、プロトコルやパスを含めないでください。
+</blockquote>
+
 
 ## アクション構成 - パラメータとオプション
 
@@ -36,7 +40,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 |---| ---|
 |テーブルフォルダ名| 必須|
 |テーブルオブジェクト名| 必須|
-|更新戦略|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;既存のレコードをどのように更新するかを制御します。&lt;/li&gt;&lt;li&gt;NO_UPDATE — 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用します。&lt;/li&gt;&lt;li&gt;REPLACE_ALL – 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。&lt;/li&gt;&lt;/ul&gt; |
+|更新戦略|  <ul><li>必須</li><li>既存のレコードをどのように更新するかを制御します。</li><li>NO_UPDATE — 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用します。</li><li>REPLACE_ALL – 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。</li></ul> |
 |RIID|
 |CUSTOMER_ID|
 |EMAIL_ADDRESS|
@@ -49,10 +53,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 |---| ---|
 |テーブルフォルダ名| 必須|
 |テーブルオブジェクト名| 必須|
-|更新戦略|  &lt;ul&gt;&lt;li&gt;必須、既存のレコードをどのように更新するかを制御します。&lt;/li&gt;&lt;li&gt;NO_UPDATE – 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用し、**一致しない場合に挿入**のチェックボックスをチェックします。&lt;/li&gt;&lt;li&gt;REPLACE_ALL — 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。&lt;/li&gt;&lt;/ul&gt; |
+|更新戦略|  <ul><li>必須、既存のレコードをどのように更新するかを制御します。</li><li>NO_UPDATE – 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用し、**一致しない場合に挿入**のチェックボックスをチェックします。</li><li>REPLACE_ALL — 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。</li></ul> |
 |一致しない場合に挿入| オプション|
 |データ列の空の値を構成する| オプション|
-|構成するデータ列|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;主キー列が含まれていることを確認してください。&lt;/li&gt;&lt;li&gt;リストを渡すには、リスト属性を使用し、すべてのリストが同じインデックス長を持っていることを確認してください。&lt;/li&gt;&lt;/ul&gt; |
+|構成するデータ列|  <ul><li>必須</li><li>主キー列が含まれていることを確認してください。</li><li>リストを渡すには、リスト属性を使用し、すべてのリストが同じインデックス長を持っていることを確認してください。</li></ul> |
 
 ### アクション - リストに訪問をマージ
 
@@ -62,13 +66,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 |---| ---|
 |リストフォルダ名|
 |リストオブジェクト名|
-|更新戦略|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;既存のレコードをどのように更新するかを制御します。&lt;/li&gt;&lt;li&gt;NO_UPDATE — 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用し、**一致しない場合に挿入**のチェックボックスをチェックします。&lt;/li&gt;&lt;li&gt;REPLACE_ALL — 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。&lt;/li&gt;&lt;/ul&gt; |
+|更新戦略|  <ul><li>必須。</li><li>既存のレコードをどのように更新するかを制御します。</li><li>NO_UPDATE — 選択した場合、既存のレコードが一致した場合、更新は行われません。したがって、INSERTのみを強制するには、このオプションを使用し、**一致しない場合に挿入**のチェックボックスをチェックします。</li><li>REPLACE_ALL — 選択した場合、既存のレコードが一致した場合、構成したすべてのプロパティが更新されます。</li></ul> |
 |一致しない場合に挿入|
 |RIID|
 |CUSTOMER_ID|
 |EMAIL_ADDRESS|
 |データ列の空の値を構成する|
-|構成するデータ列|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;マージするレコードデータを指定してください。&lt;/li&gt;&lt;/ul&gt; |
+|構成するデータ列|  <ul><li>必須</li><li>マージするレコードデータを指定してください。</li></ul> |
 |optinValue|
 |optoutValue|
 
@@ -97,7 +101,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/oracle-responsys-connect
 |EMAIL_ADDRESS|
 |カスタムイベントID|
 |カスタムイベント名|
-|オプションのデータマップ|  &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;ユーザーが任意の値に構成できるカスタムイベントデータ&lt;/li&gt;&lt;/ul&gt; |
+|オプションのデータマップ|  <ul><li>オプション</li><li>ユーザーが任意の値に構成できるカスタムイベントデータ</li></ul> |
 
 ## ベンダーのドキュメンテーション
 

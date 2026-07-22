@@ -25,16 +25,16 @@ Amazon SQS provides fully managed message queues for micro-services, distributed
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Access Key**
-  * (Required) Provide your IAM User&#39;s access key. Associated IAM policy (for either IAM User or Assumed Role) must grant `sqs:SendMessage` permission.
+  * (Required) Provide your IAM User's access key. Associated IAM policy (for either IAM User or Assumed Role) must grant `sqs:SendMessage` permission.
   * For more information, see [Access Control for Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.htm).
 
 * **Secret Key**
-  * (Required) Provide your IAM User&#39;s secret key
+  * (Required) Provide your IAM User's secret key
 
 * **Region**
   * (Required) Select the region.
@@ -61,7 +61,7 @@ The following sections describe how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Maximum number of requests: 10
 * Maximum time since oldest request: 5 minutes
@@ -71,12 +71,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-|Queue|  &lt;ul&gt;&lt;li&gt;(Required) Select queue to send data to.&lt;/li&gt;&lt;li&gt;If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value.&lt;/li&gt;&lt;li&gt;The custom value should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`&lt;/li&gt;&lt;/ul&gt; |
+|Queue|  <ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value.</li><li>The custom value should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`</li></ul> |
 |MessageGroupId|Specifies that a message belongs to a specific message group (FIFO Queues only).|
 |DelaySeconds|The length of time (in seconds) to delay a specific message (0 to 900).|
 |Print Attribute Names|If attribute names are updated, the names in the payload reflect the update.|
 
+
+<blockquote>
 See [Using Amazon SQS Message Attributes](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html).
+</blockquote>
+
 
 ### Action - Send Visitor Data to Queue and Send Visitor Data to Queue (Batch)
 
@@ -93,10 +97,10 @@ The Send Visitor Data to Queue (Batch) action uses batched requests to support h
 
 |**Parameter**| **Description**|
 |---| ---|
-|Queue|  &lt;ul&gt;&lt;li&gt;(Required) Select queue to send data to.&lt;/li&gt;&lt;li&gt;If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value&lt;/li&gt;&lt;li&gt;The custom value should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`&lt;/li&gt;&lt;/ul&gt;|
+|Queue|  <ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value</li><li>The custom value should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`</li></ul>|
 |MessageGroupId|Specifies that a message belongs to a specific message group (FIFO Queues only).|
 |DelaySeconds|The length of time (in seconds) to delay a specific message (0 to 900).|
-| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn&#39;t selected. |
+| Include Current Visit Data With Visitor Data | Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn't selected. |
 | Exclude Current Visit Event Data | Exclude event data from the current visit data. |
 |Print Attribute Names| If attribute names are updated, the names in the payload reflect the update.|
 
@@ -115,16 +119,19 @@ The Send Customized Data to Queue (Advanced Batch) action uses batched requests 
 
 |**Parameter**| **Description**|
 |---| ---|
-|Queue|  &lt;ul&gt;&lt;li&gt;(Required) Select queue to send data to.&lt;/li&gt;&lt;li&gt;If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value. The custom values should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`&lt;/li&gt;&lt;/ul&gt;|
+|Queue|  <ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant `sqs:ListQueues` permission, you will need to manually enter a Custom Value. The custom values should be a URL. For example: `https://sqs.us-west-2.amazonaws.com/0123456789/queue_name`</li></ul>|
 |MessageGroupId|Specifies that a message belongs to a specific message group (FIFO Queues only).|
 |DelaySeconds|The length of time (in seconds) to delay a specific message (0 to 900).|
 |Custom Message Definition||
-|Message Template Variables|&lt;ul&gt;&lt;li&gt;(Optional) Provide template variables as data input for templates. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation For example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Message Templates|  &lt;ul&gt;&lt;li&gt;(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
-|Message Template Variables|&lt;ul&gt;&lt;li&gt;(Optional) Provide template variables as data input for templates. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation For example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-|Message Templates|  &lt;ul&gt;&lt;li&gt;(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt; |
+|Message Template Variables|<ul><li>(Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation For example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Message Templates|  <ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`.</li></ul> |
+|Message Template Variables|<ul><li>(Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation For example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+|Message Templates|  <ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`.</li></ul> |
 
+
+<blockquote>
 See [Using Amazon SQS Message Attributes](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html).
+</blockquote>
 
 
 ## Vendor Documentation

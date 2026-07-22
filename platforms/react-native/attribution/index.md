@@ -15,17 +15,17 @@ Tealium mobile libraries are integrated into your React Native application using
 ## Requirements
 
 * Access to your native build environments
-* [Tealium for React Native 2.2.0 or later](/platforms/react-native/)
+* [Tealium for React Native 2.2.0 or later](https://docs.tealium.com/platforms/react-native/)
 * [React Native 0.63 or later](https://github.com/Tealium/tealium-react-native) and tools installed 
-* [Tealium iQ Mobile Profile]()
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
-* [Tealium for Android](/platforms/android-kotlin/) or [Tealium for iOS](/platforms/ios-swift/)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 
 ## Install (NPM/YARN)
 
 To install the Tealium Attribution module for React Native with NPM:
 
-1. Follow the [installation instructions](/platforms/react-native/install/) for the main `tealium-react-native` library installation. Ensure that you have installed at least version 2.2.0 or later.
+1. Follow the [installation instructions](https://docs.tealium.com/platforms/react-native/install/) for the main `tealium-react-native` library installation. Ensure that you have installed at least version 2.2.0 or later.
 1. Navigate to the root directory of your React Native project.
 1. Download and install the `tealium-react-native-attribution` package with the following command:  
     ```bash
@@ -37,8 +37,8 @@ To install the Tealium Attribution module for React Native with NPM:
 To import the relevant classes into your app, add the following code:
 
 ```javascript
-import TealiumAttribution from &#39;tealium-react-native-attribution&#39;;
-import { TealiumAttributionConfig } from &#39;tealium-react-native-attribution/common&#39;;
+import TealiumAttribution from 'tealium-react-native-attribution';
+import { TealiumAttributionConfig } from 'tealium-react-native-attribution/common';
 ```
 
 ## Initialize
@@ -51,7 +51,7 @@ let attributionConfig: TealiumAttributionConfig = {
     androidAdIdentifierEnabled: true,
     iosSearchAdsEnabled: true,
     iosSkAdAttributionEnabled: true,
-    iosSkAdConversionKeys: {&#34;event&#34;: &#34;conversion_value&#34;}
+    iosSkAdConversionKeys: {"event": "conversion_value"}
 }
 
 TealiumAttribution.configure(attributionConfig);

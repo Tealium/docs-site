@@ -3,7 +3,11 @@ title: Proactive notification contacts
 description: This article explains proactive notification contacts and how to specify them for time-sensitive service communications.
 url: https://docs.tealium.com/administration/early-access/administration/proactive-notification-contacts/
 ---
+
+<blockquote>
 Proactive notification contacts is currently in Early Access and is available to select customers only. Contact your Tealium Support representative to get started.
+</blockquote>
+
 
 ## How it works
 
@@ -60,7 +64,7 @@ To add a proactive notification contact:
     * **Role**: Select one or more roles that describe why this address should be contacted (for example, Finance or Technical). 
     * **Alias/Distribution List**: Indicate whether the email address is an alias or distribution group.
 1. **Emergency Phone (Optional)**  
-Enter one or more comma-separated phone numbers including the country code (for example, &#43;`1 415 555 0100, &#43;44 20 7946 0958`). We recommend including an emergency phone number for urgent or out-of-hours communication. Roles are not available for emergency phone numbers.
+Enter one or more comma-separated phone numbers including the country code (for example, +`1 415 555 0100, +44 20 7946 0958`). We recommend including an emergency phone number for urgent or out-of-hours communication. Roles are not available for emergency phone numbers.
 1. Review the contact information for accuracy, then click **Save Changes**. Your changes are effective immediately. You do not need to save the profile.
 
 ## Edit or remove a contact
@@ -80,7 +84,7 @@ To remove a contact who should no longer receive proactive notifications:
 1. Edit the **Emergency Phone** field as needed, removing any phone numbers that are no longer relevant.
 1. Click **Save Changes**.
 
-We recommend that you update a contact when someone&#39;s role changes and remove a contact when they leave your organization.
+We recommend that you update a contact when someone's role changes and remove a contact when they leave your organization.
 
 ## Best practices
 

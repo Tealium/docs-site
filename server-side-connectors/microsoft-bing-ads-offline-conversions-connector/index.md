@@ -20,7 +20,7 @@ This connector uses the following vendor API:
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -47,7 +47,7 @@ Click **Create Offline Conversion Goal** to set a goal for conversions. Enter th
 1. Under **Revenue Value**, enter a value to determine how much each conversion is worth to your business.
 1. Under **Revenue Code**, enter the currency type that you use in reports.
 1. (Optional) Under **Status**, select `Active`, `Paused`, or `Deleted` to define the possible user-determined status values of a conversion goal.
-1. Click **Create &amp; Close**.
+1. Click **Create & Close**.
 
 ## Actions
 
@@ -67,8 +67,8 @@ The following section describes how to set up parameters and options for each ac
 | External Attribution Credit | Represents the fraction of the conversion that is attributed to each click. The value must be greater than 0 and less than or equal to 1. This field can only be set for conversions actions which use external attribution. |
 | Conversion Value | The offline conversion value. |
 | Conversion Time | (Required) The period of time after the user completed the action that Bing Ads uses to record conversion data. |
-| Currency Code | The currency code for the offline conversion. If you do not specify an offline conversion currency code, then the Currency Code element of the goal&#39;s &lt;a href=&#34;https://learn.microsoft.com/en-us/advertising/campaign-management-service/conversiongoalrevenue?view=bingads-13&#34; target=&#34;_blank&#34;&gt;Conversion Goal Revenue&lt;/a&gt; is used. |
+| Currency Code | The currency code for the offline conversion. If you do not specify an offline conversion currency code, then the Currency Code element of the goal's <a href="https://learn.microsoft.com/en-us/advertising/campaign-management-service/conversiongoalrevenue?view=bingads-13" target="_blank">Conversion Goal Revenue</a> is used. |
 | Email Address (already SHA256 hashed) | Provide an email address which has been already whitespace trimmed, lowercased and SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector trims whitespace, lowercases, and hashes this value using SHA256. |
 | Phone Number (already SHA256 hashed) | Provide a phone number according to the E.164 standard which has already been trimmed of whitespace, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector removes all non-digit symbols, prefixes the number with a plus sign (`&#43;`), trims whitespace, lowercases, and hash this value using SHA256. |
+| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector removes all non-digit symbols, prefixes the number with a plus sign (`+`), trims whitespace, lowercases, and hash this value using SHA256. |

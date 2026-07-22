@@ -5,11 +5,11 @@ url: https://docs.tealium.com/iq-tag-management/getting-started/install/about-ut
 ---
 ## Hosted files
 
-All tag configuration and business logic saved in your account is converted to JavaScript code and published to a file named `utag.js`. This file is specific to your account and is hosted on Tealium&#39;s servers.
+All tag configuration and business logic saved in your account is converted to JavaScript code and published to a file named `utag.js`. This file is specific to your account and is hosted on Tealium's servers.
 
-Tealium&#39;s server infrastructure is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage, a request is made to Tealium&#39;s servers, the file is downloaded into the page and the code is run. As soon as `utag.js` is loaded on your page it begins executing code to prepare to fire your tags.
+Tealium's server infrastructure is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage, a request is made to Tealium's servers, the file is downloaded into the page and the code is run. As soon as `utag.js` is loaded on your page it begins executing code to prepare to fire your tags.
 
-Learn more about the [order of operations]() to understand how the Universal Tag `utag.js` loads.
+Learn more about the [order of operations](https://docs.tealium.com/order-of-operations/) to understand how the Universal Tag `utag.js` loads.
 
 ## Page data
 
@@ -24,27 +24,31 @@ The final data object are used to power your load rules and tags.
 
 ## Load rules
 
-[Load rules]() are precise conditions that determine when to load a tag. Generally made up of one or more conditions, a load rule has to be satisfied to load the tag to which it is applied. The full list of variables from the data object are used to evaluate the load rules and determine which tags load on the page. Load Rules are JavaScript code evaluated client-side, in the browser.
+[Load rules](https://docs.tealium.com/about-load-rules/) are precise conditions that determine when to load a tag. Generally made up of one or more conditions, a load rule has to be satisfied to load the tag to which it is applied. The full list of variables from the data object are used to evaluate the load rules and determine which tags load on the page. Load Rules are JavaScript code evaluated client-side, in the browser.
 
 ## Events
 
-[Events]() are triggers that help collect data. They listen for the viewer to perform an action on a page, and then send that information to the data layer. For example, if you want to check how many times a certain product has been viewed, you can use an event that fires each time a product page is viewed. You can also use them to record user interactions with website elements, such as when particular elements are visible. Event triggers use load rules to determine whether they are loaded on a page along with the tags. Events are JavaScript code evaluated client-side, in the browser.
+[Events](https://docs.tealium.com/about-events/) are triggers that help collect data. They listen for the viewer to perform an action on a page, and then send that information to the data layer. For example, if you want to check how many times a certain product has been viewed, you can use an event that fires each time a product page is viewed. You can also use them to record user interactions with website elements, such as when particular elements are visible. Event triggers use load rules to determine whether they are loaded on a page along with the tags. Events are JavaScript code evaluated client-side, in the browser.
 
 ## Load tags
 
-The code needed to load and run a vendor tag is also published to Tealium and stored in a tag configuration file numbered according to the UID of the tag, such as `utag.1.js`. Visitors&#39; browsers send HTTP requests to the Tealium server to get each tag configuration file when they go to a web page.
+The code needed to load and run a vendor tag is also published to Tealium and stored in a tag configuration file numbered according to the UID of the tag, such as `utag.1.js`. Visitors' browsers send HTTP requests to the Tealium server to get each tag configuration file when they go to a web page.
 
-While this file contains the settings and configuration for the vendor, it might not contain the vendor&#39;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&#39;s code. These requests are made asynchronously to minimize the impact on the time to render the page.
+While this file contains the settings and configuration for the vendor, it might not contain the vendor's JavaScript file. If so, an additional HTTP request is made to fetch the vendor's code. These requests are made asynchronously to minimize the impact on the time to render the page.
 
 Here is a simple example showing how one tag, Google Analytics, is loaded into the page:
 
-![](/images/platforms/javascript/utag-network-files.png)
+![](https://docs.tealium.com/images/platforms/javascript/utag-network-files.png)
 
 *   **`utag.js`** (`tags.tiqcdn.com`) - the Tealium iQ Tag Management JavaScript library
 *   **`utag.1.js`** (`tags.tiqcdn.com`) - the Tealium tag configuration file for Google Analytics
 *   **`analytics.js`** (`www.google-analytics.com`) - the Google Analytics JavaScript library
 
-Improve page performance by [bundling tags]() to reduce the number of HTTP requests coming from your page.
+
+<blockquote>
+Improve page performance by [bundling tags](https://docs.tealium.com/tag-advanced-settings/) to reduce the number of HTTP requests coming from your page.
+</blockquote>
+
 
 ## Run Tags
 
@@ -52,4 +56,4 @@ Once all tag files are loaded and the DOM Ready event is reached, the tracking b
 
 For example, Google Analytics is identified in the network request by the following two items: the `analytics.js` script and the collect image pixel. These same network requests occur even when Google Analytics is loaded by iQ Tag Management, as seen here:
 
-![](/images/platforms/javascript/utag-vendor-pixel.png)
+![](https://docs.tealium.com/images/platforms/javascript/utag-vendor-pixel.png)

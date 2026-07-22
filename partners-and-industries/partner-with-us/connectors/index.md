@@ -8,13 +8,13 @@ Do you offer an API for data collection or activation? Do you have a server-side
 
 ## How Connectors Work
 
-A _connector_ is an integration between Tealium and a vendor for transmitting data. A connector offers _actions_ that represent methods from a vendor&#39;s API. Connectors provide Tealium users a simplified workflow for activating data in real-time and sending it directly to a vendor.
+A _connector_ is an integration between Tealium and a vendor for transmitting data. A connector offers _actions_ that represent methods from a vendor's API. Connectors provide Tealium users a simplified workflow for activating data in real-time and sending it directly to a vendor.
 
 ### Event and Customer Data
 
-Connectors that send _event data_, such as web analytics, are used in [Tealium EventStream]().
+Connectors that send _event data_, such as web analytics, are used in [Tealium EventStream](https://docs.tealium.com/introduction-to-eventstream/).
 
-Connectors that send _customer data_, such as email subscription status, are used in [Tealium AudienceStream]().
+Connectors that send _customer data_, such as email subscription status, are used in [Tealium AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/).
 
 ### Configuration
 
@@ -42,11 +42,11 @@ Create a lead or contact, convert a lead, or upsert (insert or update) a record.
 * **Mobile**  
 Send an SMS or a push notification, track an app install, or send in-app events.
 
-[Learn more about connectors]().
+[Learn more about connectors](https://docs.tealium.com/audiencestream-connectors/).
 
 ## Example: Facebook Audiences Connector
 
-With the [Facebook Audiences Connector]() for Facebook Ads users, Tealium users are able to manage their custom audiences in real-time, based on user behavior collected from one or more data sources.
+With the [Facebook Audiences Connector](https://docs.tealium.com/facebook-audiences-connector/) for Facebook Ads users, Tealium users are able to manage their custom audiences in real-time, based on user behavior collected from one or more data sources.
 
 This connector provides the following actions:
 
@@ -71,7 +71,11 @@ For both solutions, Tealium supports the following authentication types:
 - OAuth 2.0
 - JSON Web Tokens (JWT)
 
+
+<blockquote>
 If your API places limits on the number of concurrent tokens, Tealium users may encounter issues since we are globally distributed across dozens of servers at any given time.
+</blockquote>
+
 
 ## Best Practices
 
@@ -88,21 +92,25 @@ Create subscriber list or contact list.
 
 ### Dynamic Vendor Options
 
-Tealium assists users in configuring a connector action by dynamically populating connector options with data retrieved directly from the vendor&#39;s platform.
+Tealium assists users in configuring a connector action by dynamically populating connector options with data retrieved directly from the vendor's platform.
 
-For example, on the configuration screen of the Facebook Audiences connector, Tealium makes API calls to get the list of custom audiences from the user&#39;s Facebook Ads account. This permits the user to browse their external resources with familiar names and helpful metadata to ensure they are selecting the right resources.
+For example, on the configuration screen of the Facebook Audiences connector, Tealium makes API calls to get the list of custom audiences from the user's Facebook Ads account. This permits the user to browse their external resources with familiar names and helpful metadata to ensure they are selecting the right resources.
 
-These dynamic configuration options may sometimes need to be executed as sequential calls. In a CRM connector, for example, to fetch a CRM object&#39;s primary key field, we must first retrieve the list of CRM objects.
+These dynamic configuration options may sometimes need to be executed as sequential calls. In a CRM connector, for example, to fetch a CRM object's primary key field, we must first retrieve the list of CRM objects.
 
 ### Upsert by Default
 
-For API methods that create or update records in a vendor platform, Tealium prefers native support for `upsert` in a single request. This will minimize the number of outgoing API calls from Tealium. For example, before creating or updating a record, an API user must first verify whether a record exists. If the record doesn&#39;t exist, the next API call will create the record. If the record does exist, the next API call will update the existing record.
+For API methods that create or update records in a vendor platform, Tealium prefers native support for `upsert` in a single request. This will minimize the number of outgoing API calls from Tealium. For example, before creating or updating a record, an API user must first verify whether a record exists. If the record doesn't exist, the next API call will create the record. If the record does exist, the next API call will update the existing record.
 
 ### Batching and Rate Limits
 
-While Tealium&#39;s goal is to provide real-time performance, some vendors prefer that data be sent in small batches to manage resource costs. This is especially true when dealing with large volumes of data.
+While Tealium's goal is to provide real-time performance, some vendors prefer that data be sent in small batches to manage resource costs. This is especially true when dealing with large volumes of data.
 
+
+<blockquote>
 We recommend that vendors rate limit individual accounts using their APIs. This prevents a small group of high-volume accounts from impacting your entire system.
+</blockquote>
+
 
 Tealium connectors conform to the thresholds you want for the API endpoints used. The following are rate limits examples:
 

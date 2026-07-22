@@ -3,9 +3,9 @@ title: Manage visitor and visit attributes
 description: This article describes how to manage visitor and visit attributes.
 url: https://docs.tealium.com/server-side/attributes/manage-as-attributes/
 ---
-Go to **Transform &gt; Visitor/Visit Attributes** to view your visitor attributes.
+Go to **Transform > Visitor/Visit Attributes** to view your visitor attributes.
 
-![](/images/server-side/attributes/visit-visitor-attributes-table.png)
+![](https://docs.tealium.com/images/server-side/attributes/visit-visitor-attributes-table.png)
 
 The table of attributes contains the following information:
 
@@ -17,49 +17,53 @@ The table of attributes contains the following information:
 * **AudienceDB**: Whether the attribute is stored in AudienceDB.
 * **Restricted Data**: Whether the attribute is marked as containing restricted data.
 * **Warnings**: Any warnings about the attribute, such as an incorrect scope or a lack of enrichments for assigning a value to the attribute.
-* **Attribute ID**: The attribute&#39;s ID.
+* **Attribute ID**: The attribute's ID.
 
 You can filter your view by clicking any of the available drop-down filters at the top of the table.
 
-![](/images/server-side/attributes/filtered-attributes.png)
+![](https://docs.tealium.com/images/server-side/attributes/filtered-attributes.png)
 
 ## View an attribute
 
-Click any attribute in the table to view that attribute&#39;s details.
+Click any attribute in the table to view that attribute's details.
 
-![](/images/server-side/attributes/attribute-details-slideout.png)
+![](https://docs.tealium.com/images/server-side/attributes/attribute-details-slideout.png)
 
 The attribute details page contains two tabs:
 
-* **Enrichments**: Lists all the enrichments, and enrichment rules, for this attribute. Enrichments customize an attribute&#39;s value. For more about enrichments, see .
+* **Enrichments**: Lists all the enrichments, and enrichment rules, for this attribute. Enrichments customize an attribute's value. For more about enrichments, see [about-enrichments](https://docs.tealium.com/about-enrichments/).
 * **Dependencies**: Lists all items that are dependent on this attribute (for example: other attributes, audiences, segments, rules, connectors, data sources, and Predict models). You cannot delete an attribute if any dependencies exist for that attribute. To view a dependency’s details, click **Go To**.
 
 ## Create an attribute
 
 The process of adding visit or visitor attributes is similar. The following steps show how to add a visit or visitor attribute:
 
-1. Go to **Transform &gt; Visitor/Visit Attributes**.  
+1. Go to **Transform > Visitor/Visit Attributes**.  
 You can optionally use the filters on the left to narrow your view.
-1. Click **&#43; Add Attribute**.
+1. Click **+ Add Attribute**.
 1. In the **Add Attribute** dialog, select **Visit** or **Visitor** for the attribute scope and click **Continue**.  
-      ![](/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
-1. Select a data type and click **Continue**. For more about data types, see .
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
+1. Select a data type and click **Continue**. For more about data types, see [data-types](https://docs.tealium.com/data-types/).
 1. (Required) In the **Title** field, enter a descriptive name. For visit and visitor attributes, you can use any ASCII character for **Title** other than double quotes.   
-      ![](/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
 1. In the **Notes** field, enter helpful notes that describe the purpose and/or mechanics of the attribute.
 1. (Optional) Select the **Restricted Data** checkbox if the visitor data includes PII data.
 1. (Optional) Check the **AudienceDB** checkbox to include the attribute as a column in AudienceDB.  
 This step requires AudienceDB to be enabled in the profile.
-1. Continue to the next section to [add an enrichment]() to the attribute.
+1. Continue to the next section to [add an enrichment](https://docs.tealium.com/add-enrichment/) to the attribute.
 
 ## Edit an attribute
 
- [Preloaded attributes]() cannot be modified, but you can duplicate them and modify the copy. The duplicate contains all of the enrichments and rules from the original. 
+
+<blockquote>
+[Preloaded attributes](https://docs.tealium.com/preloaded-attributes/) cannot be modified, but you can duplicate them and modify the copy. The duplicate contains all of the enrichments and rules from the original.
+</blockquote>
+
 
 Use the following steps to edit an attribute:
 
 1. Click the attribute you want to edit and click **Edit**.  
-      ![](/images/server-side/attributes/edit-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/edit-attribute.png)
 1. Make your changes and click **Save**.
 1. Save and publish your profile to apply the changes.
 
@@ -76,7 +80,7 @@ Use the following steps to edit label assignments, restricted data status, or in
 Use the following steps to duplicate an attribute:
 
 1. Click the attribute you want to duplicate and then click **Duplicate**.  
-      ![](/images/server-side/attributes/duplicate-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/duplicate-attribute.png)
 1. Edit if needed and then click **Save**.
 1. Save and publish your profile to apply the changes.
 
@@ -88,7 +92,7 @@ Before deleting an attribute, review its dependencies and the potential impact a
 
 * You cannot delete an attribute if it is still referenced by any dependencies.
 * You cannot recover deleted attributes or their data.
-* You cannot delete [preloaded attributes]().
+* You cannot delete [preloaded attributes](https://docs.tealium.com/preloaded-attributes/).
 
 **Required steps before deleting**
 
@@ -109,13 +113,17 @@ Any API endpoints, exports, or scheduled jobs that reference the deleted attribu
 The attribute is removed from EventStore, AudienceStore, EventDB, and AudienceDB. External systems may still reference the attribute even if it appears to have no dependencies in the UI. This can lead to unexpected data loss or integration failures.
 
 **Visitor profiles**  
-The attribute data is deleted from a visitor profile the next time that visitor triggers an event. Until then, the data remains in their profile.  Deleting a visitor ID attribute does not undo previous stitching for that ID. If you no longer use a visitor ID, disable its enrichments and remove any file import mappings. This keeps the ID available for lookup, but no new values are set and no new stitching with the visitor ID will happen.
+The attribute data is deleted from a visitor profile the next time that visitor triggers an event. Until then, the data remains in their profile.  
+<blockquote>
+Deleting a visitor ID attribute does not undo previous stitching for that ID. If you no longer use a visitor ID, disable its enrichments and remove any file import mappings. This keeps the ID available for lookup, but no new values are set and no new stitching with the visitor ID will happen.
+</blockquote>
+
 
 **Reporting and analytics**  
 Historical reports for connectors, DataAccess, data collection, functions, and insights may show gaps or inconsistencies if deleted attributes were used in calculations or filters.
 
 **Visitor Lookup and Trace**  
-The attribute no longer appears in visitor lookup tools or traces after the visitor&#39;s next event. You cannot view or debug historical data related to that attribute.
+The attribute no longer appears in visitor lookup tools or traces after the visitor's next event. You cannot view or debug historical data related to that attribute.
 
 ### Delete a single attribute
 
@@ -123,9 +131,9 @@ Use the following steps to delete an attribute:
 
 1. Click the attribute you want to delete.
 1. Click **Delete**.  
-      ![](/images/server-side/attributes/delete-attribute.png)  
+      ![](https://docs.tealium.com/images/server-side/attributes/delete-attribute.png)  
 If the attribute you attempt to delete is in use by a rule, an enrichment, or an audience, the following message is displayed:  
-      ![](/images/server-side/attributes/error-delete-attribute-with-dependencies.png)  
+      ![](https://docs.tealium.com/images/server-side/attributes/error-delete-attribute-with-dependencies.png)  
 To delete the attribute, remove it from any listed dependencies (other attributes, audiences, segments, rules, connectors, data sources, and Predict models) and try again.
 1. In the **Delete Attribute** dialog, click **Delete** to delete the attribute.
 1. Save and publish your profile to apply the changes.
@@ -137,7 +145,7 @@ Use the following steps to delete attributes:
 1. Select the checkboxes next to the attributes you want to delete.
 1. Click **Delete**.
 If one or more attributes you attempt to delete are currently in use by a rule, an enrichment, or an audience, the following message is displayed:
-      ![](/images/server-side/attributes/error-delete-attributes-with-dependencies.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/error-delete-attributes-with-dependencies.png)
 To delete attributes with dependencies, remove them from any listed dependencies and try again.
 1. To delete the attributes without dependencies, click **Confirm**.
 1. Save and publish your profile to apply the changes.

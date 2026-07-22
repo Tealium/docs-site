@@ -5,7 +5,7 @@ url: https://docs.tealium.com/administration/resources/tealium-status-page/
 ---
 ## How it works
 
-The status page at &lt;https://status.tealium.com/&gt; lists status updates for all Tealium services and features. Click a service or feature to expand it and list all of its sub-services.
+The status page at <https://status.tealium.com/> lists status updates for all Tealium services and features. Click a service or feature to expand it and list all of its sub-services.
 
 ## Statuses
 
@@ -63,7 +63,7 @@ Click **Subscribe** to receive notices of announcements through your preferred m
 
 * **Email**: Enter your email address and click **Subscribe** to receive announcements through email.
 * **Webhook**: Enter the webhook URL to send announcements in JSON format through a POST method.
-* **RSS Feed**: Click RSS feed to open a browser tab that contains the RSS feed of announcements. Add the feed&#39;s URL to your preferred RSS feed reader.
+* **RSS Feed**: Click RSS feed to open a browser tab that contains the RSS feed of announcements. Add the feed's URL to your preferred RSS feed reader.
 * **Slack**: Click **Add to Slack** to open a Status.io permission request page. Log in to your preferred Slack workspace, select the channel for Status.io to post as an app, and click **Allow**. Your workspace administrators will need to approve Status.io access to the workspace.
 
 Click **Manage Existing Subscription** to request a link through email to a page where you can manage your subscription. You will need to enter your email address, webhook URL, or Slack channel ID to identify the method you are using to receive updates.

@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/server-side/functions/dashboard/
     * 時間経過によるドロップされた関数
 
 以下の図は、関数インサイトの視覚的な例を示しています。
-![](/images/server-side/functions-insights-tab.png)
+![](https://docs.tealium.com/images/server-side/functions-insights-tab.png)
 
 ## 関数インサイトをオンにする
 
@@ -48,7 +48,7 @@ url: https://docs.tealium.com/ja/server-side/functions/dashboard/
 
 ## 関数インサイトを表示する
 
-1. **変換 &gt; 関数**に移動します。
+1. **変換 > 関数**に移動します。
 1. **インサイト**タブをクリックします。
 グラフをすべて表示するには、下にスクロールする必要があるかもしれません。
 

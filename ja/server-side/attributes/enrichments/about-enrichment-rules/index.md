@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 
 イベント駆動型データでは、属性がすべてのイベントで構成されるわけではないため、ルールは特に重要です。
 
-エンリッチメントを追加する際にルールを適用する方法については、[エンリッチメントを追加する]()を参照してください。
+エンリッチメントを追加する際にルールを適用する方法については、[エンリッチメントを追加する](https://docs.tealium.com/add-enrichment/)を参照してください。
 
 ## ルールの仕組み
 
@@ -49,9 +49,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -99,9 +99,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -115,14 +115,14 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     },
     {
-      &#34;input&#34;: &#34;product_category&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;Electronics&#34;
+      "input": "product_category",
+      "operator": "equals",
+      "filter": "Electronics"
     }
   ]
 ]
@@ -136,16 +136,16 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;checkout&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "checkout"
     }
   ],
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ]
 ]
@@ -159,9 +159,9 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 [
   [
     {
-      &#34;input&#34;: &#34;loyalty_member&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;true&#34;
+      "input": "loyalty_member",
+      "operator": "equals",
+      "filter": "true"
     }
   ]
 ]
@@ -177,7 +177,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/about-enrich
 
 ## 関連トピック
 
-* [属性について]()
-* [エンリッチメントについて]()
-* [エンリッチメントを追加する]()
-* [エンリッチメント使用例]()
+* [属性について](https://docs.tealium.com/about-attributes/#rules)
+* [エンリッチメントについて](https://docs.tealium.com/about-enrichments/)
+* [エンリッチメントを追加する](https://docs.tealium.com/add-enrichment/)
+* [エンリッチメント使用例](https://docs.tealium.com/usage-examples/)

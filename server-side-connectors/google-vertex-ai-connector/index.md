@@ -3,13 +3,21 @@ title: Google Vertex AI Setup Guide
 description: Set up the Google Vertex AI connector to invoke Vertex AI models with Tealium event data and return model responses for real-time visitor enrichment.
 url: https://docs.tealium.com/server-side-connectors/google-vertex-ai-connector/
 ---
-For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions]().
+
+<blockquote>
+For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 ## How it works
 
 This connector invokes an AI model with your custom prompt and mapped Tealium data, then sends the response as a JSON event back to Tealium Collect for real-time enrichment.
 
+
+<blockquote>
 The connector should be used for targeted, high-value interactions rather than high-volume events. Excessive usage may result in rate limits or increased API costs in your vendor account and add to your inbound Tealium event volume.
+</blockquote>
+
 
 ## Usage and cost considerations
 
@@ -35,7 +43,7 @@ To get the most value from this connector, follow these guidelines to build effe
 * **High-value triggers**: Choose event feed or audience triggers that contain rich context or meaningful customer input. Triggering this connector for a high-volume use case may incur additional costs in your Google Cloud account or lead to failed requests.
 * **Be specific**: Include details about what the model should evaluate and what values you expect. List the exact values you expect.
 * **JSON format**: Include a valid JSON response template that can be sent as a Tealium event.
-* **Response values**: Reference the response values to capture. For example, if your prompt asks to evaluate the purchase intent, reference `&lt;customer purchase intent&gt;` in the prompt where you want that value to appear in the event JSON.
+* **Response values**: Reference the response values to capture. For example, if your prompt asks to evaluate the purchase intent, reference `<customer purchase intent>` in the prompt where you want that value to appear in the event JSON.
 * **Tealium data**: Reference Tealium data and mapped parameters using double-curly braces. For example, to reference the mapped value for `tealium_account`, write `{{tealium_account}}` in your prompt.
 
 ## API information
@@ -49,7 +57,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -75,7 +83,7 @@ This action invokes a Vertex AI model with your custom prompt and mapped Tealium
 
 | Parameter | Description |
 | --- | --- |
-| Model | &lt;ul&gt;&lt;li&gt;Select the Vertex model to use for this prompt.&lt;/li&gt;&lt;li&gt;The list shows Google&#39;s Gemini generative models that are suitable for text or JSON-style responses.&lt;/li&gt;&lt;li&gt;If your team uses a private or fine-tuned Vertex AI model, you can enter its model resource name manually (for example: `projects/{{PROJECT}}/locations/{{REGION}}/models/{{MODEL_ID}}`).&lt;/li&gt;&lt;li&gt;We recommend using a model that is optimized for structured output (JSON) and supports your performance and cost requirements.&lt;/li&gt;&lt;/ul&gt; |
+| Model | <ul><li>Select the Vertex model to use for this prompt.</li><li>The list shows Google's Gemini generative models that are suitable for text or JSON-style responses.</li><li>If your team uses a private or fine-tuned Vertex AI model, you can enter its model resource name manually (for example: `projects/{{PROJECT}}/locations/{{REGION}}/models/{{MODEL_ID}}`).</li><li>We recommend using a model that is optimized for structured output (JSON) and supports your performance and cost requirements.</li></ul> |
 
 #### Prompt Parameters
 
@@ -84,7 +92,7 @@ This action invokes a Vertex AI model with your custom prompt and mapped Tealium
 | Add Event Payload | (Available for event actions) Check this box to include the event payload for use in the prompt template as variable `{{event_payload}}`. |
 | Add Visitor Profile | (Available for audience actions) Check this box to include the visitor profile for use in the prompt template as variable `{{visitor_profile}}`. |
 | Add Current Visit | (Available for audience actions) Check this box to include the current visit within the variable `{{visitor_profile}}`. |
-| Prompt | &lt;ul&gt;&lt;li&gt;Enter the prompt to send to the selected Vertex AI model. Use the guidelines below to ensure consistent and machine-readable output:&lt;/li&gt;&lt;li&gt;Use double curly braces to reference mapped parameters, for example: `{{tealium_account}}`, `{{visitor_id}}`, `{{event_value}}`.&lt;/li&gt;&lt;li&gt;When using a visitor action, use `{{visitor_profile}}` to include the visitor profile in the prompt after first enabling the **Add Visitor Profile** checkbox.&lt;/li&gt;&lt;li&gt;Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.&lt;/li&gt;&lt;li&gt;Define the JSON fields and structure you expect in the response.&lt;/li&gt;&lt;li&gt;Explicitly instruct the model to return `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in its response in order for the connector to correctly parse and forward the response to the Collect endpoint.&lt;/li&gt;&lt;li&gt;The connector will include `response_mime_type`: `application/json` in the request to force the model to return JSON.&lt;/li&gt;&lt;li&gt;For more information and examples, refer to the Tealium documentation for this connector.&lt;/li&gt;&lt;/ul&gt; |
+| Prompt | <ul><li>Enter the prompt to send to the selected Vertex AI model. Use the guidelines below to ensure consistent and machine-readable output:</li><li>Use double curly braces to reference mapped parameters, for example: `{{tealium_account}}`, `{{visitor_id}}`, `{{event_value}}`.</li><li>When using a visitor action, use `{{visitor_profile}}` to include the visitor profile in the prompt after first enabling the **Add Visitor Profile** checkbox.</li><li>Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.</li><li>Define the JSON fields and structure you expect in the response.</li><li>Explicitly instruct the model to return `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in its response in order for the connector to correctly parse and forward the response to the Collect endpoint.</li><li>The connector will include `response_mime_type`: `application/json` in the request to force the model to return JSON.</li><li>For more information and examples, refer to the Tealium documentation for this connector.</li></ul> |
 | Debug Mode | When debug mode is enabled, the connector accepts the raw Vertex AI response without sending it to Tealium Collect. Use a trace to validate the response format before enabling full processing. |
 
 #### Advanced Model Settings

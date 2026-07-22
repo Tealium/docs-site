@@ -11,14 +11,14 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/about/
 
 ## サポートされるベンダー
 
-クラウドデータソースの構成は、ほぼすべてのベンダーで同じです。概要については、を参照してください。
+クラウドデータソースの構成は、ほぼすべてのベンダーで同じです。概要については、[manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/)を参照してください。
 
 ベンダー固有の構成の詳細については、以下を参照してください：
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/)
+* [Snowflake](https://docs.tealium.com/about-snowflake-cloud-data-source/)
 
 ## 仕組み
 
@@ -37,19 +37,23 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/about/
 
 インポートされた各行はTealiumのイベントとして処理され、クラウドシステムからの大量データをリアルタイム処理、セグメンテーション、およびアクティベーションに使用できます。
 
+
+<blockquote>
 プロファイルごとに最大10のクラウドデータウェアハウスデータソースを有効にすることができます。
+</blockquote>
+
 
 ## イベント処理
 
 インポートされた各行は、イベント属性にマッピングされた列としてイベントとして処理されます。イベント属性にマッピングされていない列は無視されます。
 
-デフォルトのTealium [データ収集の操作順序]()では、クラウドデータソースからのイベントは**イベント受信**ステップの前に処理され、操作の順序は変更されません。
+デフォルトのTealium [データ収集の操作順序](https://docs.tealium.com/server-side-order-of-operations/)では、クラウドデータソースからのイベントは**イベント受信**ステップの前に処理され、操作の順序は変更されません。
 
 クラウドデータソースの行は、他のデータソースからのイベントと同様にEventStreamおよびAudienceStreamで処理されますが、以下の重要な例外があります：
 
 * **ブラウザ固有の属性**：`User agent`などのブラウザ固有の属性は構成されません。
 * **エンリッチメント**：AudienceStreamは`First visit`の事前読み込み属性のみをエンリッチします。事前読み込み属性の他のすべてのエンリッチメントはスキップされます。
-* **シングルページ訪問**：受信イベントはシングルページ訪問の基準から除外されます。他のデータソースからのシングルページ訪問および訪問はAudienceStreamに保持されません。詳細については、[AudienceStreamでのシングルページ訪問はどのように処理されますか？]()を参照してください。
+* **シングルページ訪問**：受信イベントはシングルページ訪問の基準から除外されます。他のデータソースからのシングルページ訪問および訪問はAudienceStreamに保持されません。詳細については、[AudienceStreamでのシングルページ訪問はどのように処理されますか？](https://docs.tealium.com/single-event-visitor/)を参照してください。
 * **訪問の長さ**：クラウドデータソースイベントによって開始された訪問は60秒間続きます。
 * **訪問IDのマッピング**：クラウドデータソースの構成でAudienceStream訪問ID属性をマッピングする場合、訪問IDは選択した列の値に直接構成され、エンリッチメントは必要ありません。
 
@@ -68,7 +72,11 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/about/
 | **毎日**          | 構成した時刻（UTC）で1日に1回実行されます。                |
 | **毎週**         | 構成した日と時刻（UTC）で1週間に1回実行されます。          |
 
+
+<blockquote>
 高頻度でデータを取得する（ほぼリアルタイムまたは毎時）と、データウェアハウスでのコスト増加やシステムへの負荷が発生する可能性があります。
+</blockquote>
+
 
 ### バッチサイズ
 
@@ -91,7 +99,7 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/about/
 
 ### レート制限
 
-クラウドデータソースからのインポートは、通常、アカウントごとに秒間200イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限は引き続き適用されます。詳細については、[属性について &gt; サイズ制限]()を参照してください。
+クラウドデータソースからのインポートは、通常、アカウントごとに秒間200イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限は引き続き適用されます。詳細については、[属性について > サイズ制限](https://docs.tealium.com/about-attributes/#size-limits)を参照してください。
 
 ## クエリ構成
 
@@ -115,16 +123,16 @@ Tealiumデータソースは、データを処理するための2つの構成を
 
 ベンダー固有のデータタイプについては、以下を参照してください：
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#data-types)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#data-types)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#data-types)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#data-types)
 
 ### クエリモード
 
 クラウドデータソースは、テーブルまたはビューからデータをインポートする方法を制御するための次の3つのクエリモードをサポートしています：
 
-* タイムスタンプ &#43; 増分
+* タイムスタンプ + 増分
 * タイムスタンプ
 * 増分
 
@@ -144,14 +152,14 @@ Tealiumデータソースは、データを処理するための2つの構成を
 
 ベンダー固有の要件については、以下を参照してください：
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#query-configurations)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#query-configurations)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#query-configurations)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#query-configurations)
 
 使用事例の要件に合わせてモードを選択してください。これらのモードの動作例については、[クエリモードバッチ処理の挙動](#query-mode-batch-processing-behavior)を参照してください。
 
-#### タイムスタンプ &#43; インクリメント（推奨）
+#### タイムスタンプ + インクリメント（推奨）
 
 このモードは、タイムスタンプ列とインクリメント列の両方を使用して、新規または変更された行をインポートします。
 

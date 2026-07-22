@@ -9,11 +9,11 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 **保存/公開** ボタンは、未保存の変更があることを示すためにオレンジ色に変わります：
 
-![](/images/server-side/getting-started-save-publish-button.png)
+![](https://docs.tealium.com/images/server-side/getting-started-save-publish-button.png)
 
 **保存** ダイアログボックスでは、**名前を付けて保存** のオプションがあり、新しいバージョンに対して説明的なタイトルを構成する必要があります。
 
-![](/images/server-side/getting-started-eventstream-save-publish.png)
+![](https://docs.tealium.com/images/server-side/getting-started-eventstream-save-publish.png)
 
 このオプションを使用して、以前のバージョンに再公開（ロールバック）します。変更を保存するだけでは、変更前の状態に戻すことはできません。
 
@@ -34,6 +34,10 @@ EventStreamには公開環境が一つしかないため、すべての公開が
 
 保存履歴はバージョンに組織化されています。**名前を付けて保存** を使用してバージョンを保存すると、新しいバージョンが作成され、以前のバージョンに戻ることができます。**保存** を使用すると、新しいリビジョンが作成され、通常は小さな変更のために意図されており、以前のリビジョンに戻ることはできません。
 
+
+<blockquote>
 保存するときには説明的なメモを書くようにしましょう。これはあなたの同僚が感謝する素晴らしい習慣を形成します。さらに、あなたが何をしたのかを思い出させてくれます。自分の仕事をどれだけ簡単に忘れてしまうかに驚くでしょう！
+</blockquote>
+
 
 さて、それでほぼすべてです。チュートリアルの最後のページには追加のリソースがリストされています。

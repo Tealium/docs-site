@@ -6,7 +6,7 @@ url: https://docs.tealium.com/client-side-tags/contentsquare-ux-analytics-tag/
 ## Tag tips
 *   The `ecommerce:addTransaction` event is tracked when an order ID is set.
 *   When mapping a badge, enter the name that should appear in Contentsquare.
-*   Set **Send All Audiences** to `true` to send each audience to Contentsquare in the format `_uxa.push([&#34;trackDynamicVariable&#34;, {key: &#34;CDP_TL_Audience ID : AUDIENCE_ID&#34;, value: &#34;AUDIENCE_NAME&#34;}]);`.
+*   Set **Send All Audiences** to `true` to send each audience to Contentsquare in the format `_uxa.push(["trackDynamicVariable", {key: "CDP_TL_Audience ID : AUDIENCE_ID", value: "AUDIENCE_NAME"}]);`.
 *   Supported E-Commerce extension parameters (\*required for transactions):
     *   Order ID (`_corder`) \*
     *   Order Total (`_ctotal`) \*
@@ -22,21 +22,21 @@ url: https://docs.tealium.com/client-side-tags/contentsquare-ux-analytics-tag/
 
 ## Tag configuration
 
-Navigate to the tag marketplace to add a new tag. For more information, see .
+Navigate to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Main Tag ID**: The Main Tag ID specific to your website.
 * **WebView Tag ID**: The Tag WebView ID specific to your website.
-* **Send All Audiences**: Select `True` to send each audience to Contentsquare in the format `_uxa.push([&#34;trackDynamicVariable&#34;, {key: &#34;Tealium Audience AUDIENCE ID&#34;, value: &#34;AUDIENCE NAME&#34;}]);`.
+* **Send All Audiences**: Select `True` to send each audience to Contentsquare in the format `_uxa.push(["trackDynamicVariable", {key: "Tealium Audience AUDIENCE ID", value: "AUDIENCE NAME"}]);`.
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -64,8 +64,8 @@ The available categories are:
 
 ### Badges
 
-To map a badge, enter the name that should appear in Contentsquare. The name is used in the `key` when calling `_uxa.push([&#34;trackDynamicVariable&#34;, { &#34;key&#34; : &#34;CDP_TL_Badge ID : BADGE_NAME&#34;, &#34;value&#34; : BADGE_VALUE`.
+To map a badge, enter the name that should appear in Contentsquare. The name is used in the `key` when calling `_uxa.push(["trackDynamicVariable", { "key" : "CDP_TL_Badge ID : BADGE_NAME", "value" : BADGE_VALUE`.
 
 ### Dynamic variables
 
-To map a dynamic variable, enter the name of the variable expected by Contentsquare. The variable name is used as the `key` when calling `_uxa.push([&#34;trackDynamicVariable&#34;, { &#34;key&#34;: &#34;my_key&#34;, &#34;value&#34;: my_value }]);`.
+To map a dynamic variable, enter the name of the variable expected by Contentsquare. The variable name is used as the `key` when calling `_uxa.push(["trackDynamicVariable", { "key": "my_key", "value": my_value }]);`.

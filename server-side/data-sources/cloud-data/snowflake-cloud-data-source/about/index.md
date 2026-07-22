@@ -3,7 +3,7 @@ title: Snowflake cloud data source
 description: This article provides specific details about setting up the Snowflake cloud data source.
 url: https://docs.tealium.com/server-side/data-sources/cloud-data/snowflake-cloud-data-source/about/
 ---
-For a general overview of setting up a cloud data source, see .
+For a general overview of setting up a cloud data source, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 ## User role
 
@@ -37,7 +37,11 @@ You must have the following account information to create a connection to Snowfl
 * Connection role
 * Snowflake username
 
-It&#39;s important to note that your connection information might be case sensitive depending on your Snowflake data account settings.
+
+<blockquote>
+It's important to note that your connection information might be case sensitive depending on your Snowflake data account settings.
+</blockquote>
+
 
 To configure a new connection, enter the following connection details. 
 
@@ -76,7 +80,7 @@ Select from the following key algorithms based on your security requirements: **
 
    ```sql
    ALTER USER your_username
-   SET RSA_PUBLIC_KEY=&#39;your_public_key&#39;;
+   SET RSA_PUBLIC_KEY='your_public_key';
    ```
 
    For more information, see [Snowflake: Assign a public key to a Snowflake user](https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user).
@@ -88,9 +92,9 @@ After you connect to Snowflake, select the data source table from the **Table Se
 
 For a general overview, see .
 
-For the **Timestamp &#43; Incrementing** and **Timestamp** query modes, the selected timestamp column must be one of the following Snowflake data types: `TIMESTAMP_LTZ`, `TIMESTAMP_TZ`, or `TIMESTAMP_NTZ`.
+For the **Timestamp + Incrementing** and **Timestamp** query modes, the selected timestamp column must be one of the following Snowflake data types: `TIMESTAMP_LTZ`, `TIMESTAMP_TZ`, or `TIMESTAMP_NTZ`.
 
-For more information, see the [Snowflake: Date &amp; time data types](https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz).
+For more information, see the [Snowflake: Date & time data types](https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz).
 
 For the **Incrementing** query mode, the selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:
 

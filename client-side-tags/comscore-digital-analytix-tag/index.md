@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/comscore-digital-analytix-tag/
 ---
 ## Tag tips
 
-* comScore is now GDPR-compliant. You can indicate a visitor&#39;s consent by setting the `cs_ucfr` parameter to 0 (no consent) or 1 (consent). By default the `cs_ucfr parameter` is set to 0. You can set this parameter with a mappings. You may have to update this tag&#39;s template to take advantage of this feature.
+* comScore is now GDPR-compliant. You can indicate a visitor's consent by setting the `cs_ucfr` parameter to 0 (no consent) or 1 (consent). By default the `cs_ucfr parameter` is set to 0. You can set this parameter with a mappings. You may have to update this tag's template to take advantage of this feature.
 * Use mapping to add additional `c-parameters`.
 * Order tracking is triggered automatically when an Order ID is set by the E-Commerce extension.
 * Supports the following E-Commerce extension values:
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/client-side-tags/comscore-digital-analytix-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 Configure the following settings:
 
@@ -31,11 +31,11 @@ Configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -43,27 +43,27 @@ The available categories are:
 
 | Variable | Description |
 |:---------|:------------|
-| `c1`  | &lt;ul&gt;&lt;li&gt;C1&lt;/li&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-| `c2`  | &lt;ul&gt;&lt;li&gt;Client ID&lt;/li&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-| `ns_type` | &lt;ul&gt;&lt;li&gt;NS Type&lt;/li&gt;&lt;li&gt;String&lt;/li&gt;&lt;/ul&gt; |
-| `form` | &lt;ul&gt;&lt;li&gt;Form identifier&lt;/li&gt;&lt;/ul&gt; |
-| `form_normal`  | &lt;ul&gt;&lt;li&gt;Normal Form Fields&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;/ul&gt; |
-| `form_hidden`  | &lt;ul&gt;&lt;li&gt;Hidden Form Fields&lt;/li&gt;&lt;li&gt; Array&lt;/li&gt;&lt;/ul&gt; |
-| `form_submit`  | &lt;ul&gt;&lt;li&gt;Report Submit Events&lt;/li&gt;&lt;li&gt; Boolean&lt;/li&gt;&lt;/ul&gt; |
-| `form_abandon`  | &lt;ul&gt;&lt;li&gt;Report Abandon Events&lt;/li&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-| `form_failure`  | &lt;ul&gt;&lt;li&gt;Report Failure Events&lt;/li&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;/ul&gt; |
-| `cs_ucfr`  | &lt;ul&gt;&lt;li&gt;Consent State&lt;/li&gt;&lt;li&gt;[0/1]&lt;/li&gt;&lt;/ul&gt; |
+| `c1`  | <ul><li>C1</li><li>String</li></ul> |
+| `c2`  | <ul><li>Client ID</li><li>String</li></ul> |
+| `ns_type` | <ul><li>NS Type</li><li>String</li></ul> |
+| `form` | <ul><li>Form identifier</li></ul> |
+| `form_normal`  | <ul><li>Normal Form Fields</li><li>Array</li></ul> |
+| `form_hidden`  | <ul><li>Hidden Form Fields</li><li> Array</li></ul> |
+| `form_submit`  | <ul><li>Report Submit Events</li><li> Boolean</li></ul> |
+| `form_abandon`  | <ul><li>Report Abandon Events</li><li>Boolean</li></ul> |
+| `form_failure`  | <ul><li>Report Failure Events</li><li>Boolean</li></ul> |
+| `cs_ucfr`  | <ul><li>Consent State</li><li>[0/1]</li></ul> |
 
 ### E-Commerce
 
 | Variable | Description |
 |:---------|:------------|
-| `order_id` | &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`&lt;/li&gt;&lt;/ul&gt; |
-| `order_shipping` | &lt;ul&gt;&lt;li&gt;Shipping Amount&lt;/li&gt;&lt;li&gt;Overrides `_cship`&lt;/li&gt;&lt;/ul&gt; |
-| `customer_id` | &lt;ul&gt;&lt;li&gt;Customer ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`&lt;/li&gt;&lt;/ul&gt; |
-| `product_id` | &lt;ul&gt;&lt;li&gt;List of Product IDs&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_cprod`&lt;/li&gt;&lt;/ul&gt; |
-| `product_brand` | &lt;ul&gt;&lt;li&gt;List of Brands&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_cbrand`&lt;/li&gt;&lt;/ul&gt; |
-| `product_category` | &lt;ul&gt;&lt;li&gt;List of Categories&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_ccat`&lt;/li&gt;&lt;/ul&gt; |
-| `product_subcategory` | &lt;ul&gt;&lt;li&gt;List of Sub Categories&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_ccat`&lt;/li&gt;&lt;/ul&gt; |
-| `product_quantity` | &lt;ul&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_cquan`&lt;/li&gt;&lt;/ul&gt; |
-| `product_unit_price` | &lt;ul&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Overrides `_cprice`&lt;/li&gt;&lt;/ul&gt; |   
+| `order_id` | <ul><li>Order ID</li><li>Overrides `_corder`</li></ul> |
+| `order_shipping` | <ul><li>Shipping Amount</li><li>Overrides `_cship`</li></ul> |
+| `customer_id` | <ul><li>Customer ID</li><li>Overrides `_ccustid`</li></ul> |
+| `product_id` | <ul><li>List of Product IDs</li><li>Array</li><li>Overrides `_cprod`</li></ul> |
+| `product_brand` | <ul><li>List of Brands</li><li>Array</li><li>Overrides `_cbrand`</li></ul> |
+| `product_category` | <ul><li>List of Categories</li><li>Array</li><li>Overrides `_ccat`</li></ul> |
+| `product_subcategory` | <ul><li>List of Sub Categories</li><li>Array</li><li>Overrides `_ccat`</li></ul> |
+| `product_quantity` | <ul><li>List of Quantities</li><li>Array</li><li>Overrides `_cquan`</li></ul> |
+| `product_unit_price` | <ul><li>List of Prices</li><li>Array</li><li>Overrides `_cprice`</li></ul> |   

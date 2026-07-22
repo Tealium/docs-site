@@ -3,9 +3,13 @@ title: サーバーサイドでの手動同意強制の実施
 description: 訪問レベルのサーバーサイドシナリオで同意を手動で強制する方法、および自動強制が無効になっておりConsent Orchestrationを使用していない場合のイベントレベルのシナリオについて学びます。
 url: https://docs.tealium.com/ja/consent/server-side/manual-enforcement/
 ---
-イベントレベルのアクティベーションに手動強制を使用する場合は、より効率的な自動強制を提供するConsent Orchestrationへの移行を検討してください。Consent Orchestrationを有効にすると、レガシーなイベントレベルのサーバーサイド強制が無効になり、置き換えられます。詳細については、[Consent Orchestrationについて]()を参照してください。
 
-AudienceStreamで訪問レベルの同意を強制する必要がある場合や、自動イベントレベルの同意強制を無効にしてConsent Orchestrationを使用していない場合には、手動強制が必要です。自動強制を無効にする方法については、[サーバーサイド同意管理]()を参照してください。
+<blockquote>
+イベントレベルのアクティベーションに手動強制を使用する場合は、より効率的な自動強制を提供するConsent Orchestrationへの移行を検討してください。Consent Orchestrationを有効にすると、レガシーなイベントレベルのサーバーサイド強制が無効になり、置き換えられます。詳細については、[Consent Orchestrationについて](https://docs.tealium.com/about-consent-orchestration/)を参照してください。
+</blockquote>
+
+
+AudienceStreamで訪問レベルの同意を強制する必要がある場合や、自動イベントレベルの同意強制を無効にしてConsent Orchestrationを使用していない場合には、手動強制が必要です。自動強制を無効にする方法については、[サーバーサイド同意管理](https://docs.tealium.com/server-side-consent-management/#disabling-automatic-enforcement)を参照してください。
 
 ## EventStreamコネクタアクション、機能、およびEventStoreの構成
 
@@ -21,7 +25,7 @@ AudienceStreamで訪問レベルの同意を強制する必要がある場合や
 
 1. 各イベントフィードに適切なイベントレベルの`consent attributes`を含め、同意されたデータのみがアクティブ化されるようにします。
 
-      ![](/images/server-side/image1.png)
+      ![](https://docs.tealium.com/images/server-side/image1.png)
 
 ## AudienceStreamコネクタ、機能、およびAudienceStoreの構成
 
@@ -30,7 +34,7 @@ AudienceStreamで訪問レベルの同意を強制する必要がある場合や
     * これらの属性にラベルを付けることをお勧めします。
 
 1. 同意されたデータのみがアクティブ化されるように、各オーディエンスに適切な訪問レベルの`consent attributes`を含めます。
-    ![](/images/server-side/image5.png)
+    ![](https://docs.tealium.com/images/server-side/image5.png)
 
 ### AudienceDBでのAudienceStreamプロファイル処理のブロック
 
@@ -38,7 +42,7 @@ AudienceStreamで訪問レベルの同意を強制する必要がある場合や
 
 特定の条件下でプロファイルをブロックする必要がある場合は、AudienceStream Event Filterで使用する別の文字列属性を構成します。たとえば、`has_audiencestream_consent`という新しいイベント文字列属性を作成し、訪問が適切な同意を提供した場合（イベントレベルの`consent attributes`に基づいて）`true`になるように構成します。
 
-![](/images/server-side/image2.png)
+![](https://docs.tealium.com/images/server-side/image2.png)
 
 ## ベストプラクティス
 

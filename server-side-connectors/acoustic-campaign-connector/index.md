@@ -15,7 +15,7 @@ url: https://docs.tealium.com/server-side-connectors/acoustic-campaign-connector
 
 ## Configure Settings
 
-Navigate to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -44,7 +44,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Database Name| Select the database name to upsert the contact in.&lt;br&gt; It can be found by logging into your Acoustic account and navigating to **Data &amp;gt; Databases**.|
+|Database Name| Select the database name to upsert the contact in.<br> It can be found by logging into your Acoustic account and navigating to **Data &gt; Databases**.|
 |Database Type| The type of database.|
 |Enable Auto Reply (If AutoResponder is defined for database)|
 |Contact Identifier(s)| If your database has a key other than Email, you must include all unique key columns with their corresponding name/value pairs. If adding and/or updating contacts in a flexible database, one or more Sync Fields must be specified to look up the contact.|
@@ -56,8 +56,8 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact List Name| Select the contact list name to add the contact to.&lt;br&gt; It can be found by logging into your Acoustic account and&lt;br&gt; navigating to **Data &amp;gt; Contact Lists**.| 
-|Contact List&#39;s Corresponding Database| Select the corresponding contact list&#39;s database name to add the contact to.&lt;br&gt; It can be found by logging into your Acoustic account and navigating to **Data &amp;gt; Databases**.|
+|Contact List Name| Select the contact list name to add the contact to.<br> It can be found by logging into your Acoustic account and<br> navigating to **Data &gt; Contact Lists**.| 
+|Contact List's Corresponding Database| Select the corresponding contact list's database name to add the contact to.<br> It can be found by logging into your Acoustic account and navigating to **Data &gt; Databases**.|
 
 ### Action — Upsert Contact in Database and Add to Program
 
@@ -65,7 +65,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Database Name| Select the database name to upsert contact in.&lt;br&gt; It can be found by logging into your Acoustic account and navigating to **Data &amp;gt; Databases**.|
+|Database Name| Select the database name to upsert contact in.<br> It can be found by logging into your Acoustic account and navigating to **Data &gt; Databases**.|
 |Database Type| The type of database.|
 |Enable Auto Reply (If AutoResponder is defined for database)|
 |Contact Identifier(s)| If your database has a key other than Email, you must include all unique key columns with their corresponding name/value pairs. If adding and/or updating contacts in a flexible database, one or more Sync Fields must be specified to look up the contact.|
@@ -78,8 +78,8 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Autoresponder Mailing Send ID| For this operation to work, the autoresponder has to be custom triggered. Choose &#34;Custom&#34; option when creating the Automated Mailing Send and use a Database as its &#34;Contact Source&#34;.&lt;br&gt; You can find the **Autoresponder ID** by logging into your Acoustic Campaign account Autoresponder listing page and hovering your mouse over the mailing name.|
-|Autoresponder&#39;s Corresponding Database| Provide the database name that was used when creating the selected Autoresponder.|
+|Autoresponder Mailing Send ID| For this operation to work, the autoresponder has to be custom triggered. Choose "Custom" option when creating the Automated Mailing Send and use a Database as its "Contact Source".<br> You can find the **Autoresponder ID** by logging into your Acoustic Campaign account Autoresponder listing page and hovering your mouse over the mailing name.|
+|Autoresponder's Corresponding Database| Provide the database name that was used when creating the selected Autoresponder.|
 
 ### Action — Upsert Contact in Relational Table
 

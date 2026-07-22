@@ -3,17 +3,21 @@ title: Quantum Metric タグ構成ガイド
 description: この記事では、Quantum Metric タグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/quantum-metric-tag/
 ---
- `utag` バージョン4.50以降を使用する場合、`utag.js` の [`always_set_v_id` 構成]() を `true` に構成する必要があります。この構成により、訪問IDがクッキー同期のために利用可能になります。詳細については、[utag 4.50 リリースノート]() および [utag 4.50&#43; へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-) を参照してください。
+
+<blockquote>
+`utag` バージョン4.50以降を使用する場合、`utag.js` の [`always_set_v_id` 構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id) を `true` に構成する必要があります。この構成により、訪問IDがクッキー同期のために利用可能になります。詳細については、[utag 4.50 リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later) および [utag 4.50+ へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-) を参照してください。
+</blockquote>
+
 
 ## タグのヒント
 
 * Tealium アカウントと Tealium プロファイルが空白の場合、現在のアカウントとプロファイルが自動的に入力されます。**Send Replay URL** を使用する場合のみ適用されます。
 * **Time Stamp** のデフォルト値は `30days` です。
-* このタグを AudienceStream と統合する方法については、[Tealium &#43; Quantum Metric 統合ガイド]() を参照してください。
+* このタグを AudienceStream と統合する方法については、[Tealium + Quantum Metric 統合ガイド](https://docs.tealium.com/tealium-quantum-metric-integration-guide/) を参照してください。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて]() を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/) を参照してください。
 
 タグを追加する際に、以下の構成を構成します：
 
@@ -25,11 +29,11 @@ url: https://docs.tealium.com/ja/client-side-tags/quantum-metric-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]() を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/) を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて]() を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/) を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

@@ -19,18 +19,18 @@ Install the Moments API module using Maven.
 
 To install the module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
    ```groovy
    maven {
-       url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+       url "https://maven.tealiumiq.com/android/releases/"
    }
    ```
 
-2. In your project module&#39;s `build.gradle` file, add the Maven dependencies for the Tealium library and Moments API Module:
+2. In your project module's `build.gradle` file, add the Maven dependencies for the Tealium library and Moments API Module:
    ```groovy
    dependencies {
-       implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-       implementation &#39;com.tealium:kotlin-momentsapi:1.0.0&#39;
+       implementation 'com.tealium:kotlin-core:1.6.0'
+       implementation 'com.tealium:kotlin-momentsapi:1.0.0'
    }
    ```
 
@@ -43,8 +43,8 @@ Initialize the Tealium instance with the Moments API module included in the conf
 ```kotlin
 val config = TealiumConfig(
     application,
-    &#34;tealiummobile&#34;,
-    &#34;demo&#34;,
+    "tealiummobile",
+    "demo",
     Environment.DEV,
     modules = mutableSetOf(
         Modules.Lifecycle,
@@ -58,21 +58,25 @@ val config = TealiumConfig(
     )
 ).apply {
     momentsApiRegion = MomentsApiRegion.UsEast // See possible region options below
-    // momentsApiRegion = MomentsApiRegion.Custom(&#34;myRegion&#34;)
+    // momentsApiRegion = MomentsApiRegion.Custom("myRegion")
 }
 
-Tealium.create(&#34;your_instance_name&#34;, config)
+Tealium.create("your_instance_name", config)
 ```
 
- Setting the region is mandatory. The Moments API module will not initialize if it&#39;s missing. 
+
+<blockquote>
+Setting the region is mandatory. The Moments API module will not initialize if it's missing.
+</blockquote>
+
 
 ### Fetch Visitor Data
 
 Use the `fetchEngineResponse` method to retrieve the visitor profile information. This method accepts an engine ID and a response listener to handle the API response.
 
 ```kotlin
-fun fetchMoments(engineId: String, responseListener: ResponseListener&lt;EngineResponse&gt;) {
-    val tealiumInstance = Tealium[&#34;your_instance_name&#34;]
+fun fetchMoments(engineId: String, responseListener: ResponseListener<EngineResponse>) {
+    val tealiumInstance = Tealium["your_instance_name"]
     tealiumInstance?.momentsApi?.fetchEngineResponse(engineId, responseListener)
 }
 ```
@@ -81,19 +85,19 @@ fun fetchMoments(engineId: String, responseListener: ResponseListener&lt;EngineR
 
 ```kotlin
 fun fetchMoments(engineId: String) {
-    val tealiumInstance = Tealium[&#34;your_instance_name&#34;]
-    tealiumInstance?.momentsApi?.fetchEngineResponse(engineId, object : ResponseListener&lt;EngineResponse&gt; {
+    val tealiumInstance = Tealium["your_instance_name"]
+    tealiumInstance?.momentsApi?.fetchEngineResponse(engineId, object : ResponseListener<EngineResponse> {
         override fun success(data: EngineResponse) {
-            Log.d(&#34;MomentsAPI&#34;, &#34;String attributes: ${data.strings}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Boolean attributes: ${data.booleans}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Audiences: ${data.audiences}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Date attributes: ${data.dates}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Badges: ${data.badges}&#34;)
-            Log.d(&#34;MomentsAPI&#34;, &#34;Numbers: ${data.numbers}&#34;)
+            Log.d("MomentsAPI", "String attributes: ${data.strings}")
+            Log.d("MomentsAPI", "Boolean attributes: ${data.booleans}")
+            Log.d("MomentsAPI", "Audiences: ${data.audiences}")
+            Log.d("MomentsAPI", "Date attributes: ${data.dates}")
+            Log.d("MomentsAPI", "Badges: ${data.badges}")
+            Log.d("MomentsAPI", "Numbers: ${data.numbers}")
         }
 
         override fun failure(errorCode: ErrorCode, message: String) {
-            Log.e(&#34;MomentsAPI&#34;, &#34;Error fetching moments: $errorCode - $message&#34;)
+            Log.e("MomentsAPI", "Error fetching moments: $errorCode - $message")
         }
     })
 }
@@ -105,12 +109,12 @@ The `EngineResponse` object contains various types of attributes returned by the
 
 | Property   | Data Type             | Description                                                     |
 |------------|-----------------------|-----------------------------------------------------------------|
-| `audiences`| List&lt;String&gt;          | The list of audiences the visitor is currently assigned to.     |
-| `badges`   | List&lt;String&gt;          | The list of badges assigned to the visitor.                     |
-| `booleans` | Map&lt;String, Boolean&gt;  | The boolean attributes currently assigned to the visitor.       |
-| `dates`    | Map&lt;String, Long&gt;     | The date attributes currently assigned to the visitor (in ms).  |
-| `numbers`  | Map&lt;String, Double&gt;   | The number attributes currently assigned to the visitor.        |
-| `strings`  | Map&lt;String, String&gt;   | The string attributes currently assigned to the visitor.        |
+| `audiences`| List<String>          | The list of audiences the visitor is currently assigned to.     |
+| `badges`   | List<String>          | The list of badges assigned to the visitor.                     |
+| `booleans` | Map<String, Boolean>  | The boolean attributes currently assigned to the visitor.       |
+| `dates`    | Map<String, Long>     | The date attributes currently assigned to the visitor (in ms).  |
+| `numbers`  | Map<String, Double>   | The number attributes currently assigned to the visitor.        |
+| `strings`  | Map<String, String>   | The string attributes currently assigned to the visitor.        |
 
 ## Configuration Options
 
@@ -126,30 +130,34 @@ Configure the Moments API region according to where your AudienceStream profile 
 | `MomentsApiRegion.Oregon`    | `us-west-2`       |
 | `MomentsApiRegion.Tokyo`     | `ap-northeast-1`  |
 | `MomentsApiRegion.HongKong` | `ap-east-1`       |
-| `MomentsApiRegion.Custom`    | `&lt;custom string&gt;` |
+| `MomentsApiRegion.Custom`    | `<custom string>` |
 
 ```kotlin
 config.momentsApiRegion = MomentsApiRegion.UsEast
 ```
 
- The custom option allows for future expansion and should not be used unless directed. 
+
+<blockquote>
+The custom option allows for future expansion and should not be used unless directed.
+</blockquote>
+
 
 ```kotlin
-config.momentsApiRegion = MomentsApiRegion.Custom(&#34;custom_region_placeholder&#34;)
+config.momentsApiRegion = MomentsApiRegion.Custom("custom_region_placeholder")
 ```
 
 ### Referrer
 
-For added security, you can specify a referrer URL. This URL must match the &#34;Domain Allow List&#34; in the Tealium UI, or the Moments API will not return any data. The default referrer URL is:
+For added security, you can specify a referrer URL. This URL must match the "Domain Allow List" in the Tealium UI, or the Moments API will not return any data. The default referrer URL is:
 
 ```
-https://tags.tiqcdn.com/utag/&lt;account&gt;/&lt;profile&gt;/&lt;environment&gt;/mobile.html
+https://tags.tiqcdn.com/utag/<account>/<profile>/<environment>/mobile.html
 ```
 
 If the provided referrer is not in the allow list, Moments API will not return any data.
 
 ```kotlin
-config.momentsApiReferrer = &#34;https://yourcustomreferrer.com&#34;
+config.momentsApiReferrer = "https://yourcustomreferrer.com"
 ```
 
 ## Troubleshooting

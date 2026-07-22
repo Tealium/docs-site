@@ -12,7 +12,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -44,7 +44,7 @@ After adding the connector, configure the following settings:
 | Container | Select the container where you want to create the objects. This container represents the top-level storage unit within an account that organizes a set of blobs, similar to folders in a file system. |
 | Blob Path | Specify the path to the Blob object where you want the data to be appended. |
 | File Blob Suffix | If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Blob | If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of `JSON` objects containing the payload with the data being forwarded from Tealium. |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect any updates to attribute names. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
@@ -58,7 +58,7 @@ After adding the connector, configure the following settings:
 | Container | Select the container where you want to create the objects. This container represents the top-level storage unit within an account that organizes a set of blobs, similar to folders in a file system. |
 | Blob Path |  Specify the path to the Blob object where you want the data to be appended. |
 | File Blob Suffix | If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Blob | If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of `JSON` objects containing the payload with the data being forwarded from Tealium. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
@@ -66,8 +66,8 @@ After adding the connector, configure the following settings:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in the Message Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in the Message Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.</li></ul>|
 
 ### Send Entire Visitor Data
 
@@ -78,7 +78,7 @@ After adding the connector, configure the following settings:
 | Container | Select the container where you want to create the objects. This container represents the top-level storage unit within an account that organizes a set of blobs, similar to folders in a file system. |
 | Blob Path |  Specify the path to the Blob object where you want the data to be appended. |
 | File Blob Suffix | If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Blob | If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of `JSON` objects containing the payload with the data being forwarded from Tealium. |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect any updates to attribute names. |
 | Include Current Visit Data with Visitor Data | Select this option to include current visit data with visitor data. |
@@ -93,16 +93,16 @@ After adding the connector, configure the following settings:
 | Container | Select the container where you want to create the objects. This container represents the top-level storage unit within an account that organizes a set of blobs, similar to folders in a file system. |
 | Blob Path |  Specify the path to the Blob object where you want the data to be appended. |
 | File Blob Suffix | If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character. |
-| Record Suffix | &lt;ul&gt;&lt;li&gt;A suffix to add on the end of each record as a delimiter.&lt;/li&gt;&lt;li&gt;The default is `Newline`. &lt;/li&gt;&lt;li&gt;Available options are `Newline` and `No Delimiter`.&lt;/li&gt;&lt;/ul&gt; |
+| Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Overwrite Existing Blob | If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of `JSON` objects containing the payload with the data being forwarded from Tealium. |
-| Message Data | &lt;ul&gt;&lt;li&gt;Provide values to construct message data.&lt;/li&gt;&lt;li&gt;Template Support: reference template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs are ignored if the template is used.&lt;/li&gt;&lt;/ul&gt; |
-| Template Variables | &lt;ul&gt;&lt;li&gt;Provide template variables as data input for **Templates**. For more information and usage examples, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. Example: `items.name.`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt; |
-| Templates | &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in the Message Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+| Message Data | <ul><li>Provide values to construct message data.</li><li>Template Support: reference template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs are ignored if the template is used.</li></ul> |
+| Template Variables | <ul><li>Provide template variables as data input for **Templates**. For more information and usage examples, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
+| Templates | <ul><li>Provide templates to be referenced in the Message Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields, For example, `{{SomeTemplateName}}`.</li></ul>|
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
 ### Send Entire Log Event
 
-Send connector error logs to this vendor. For more information, see .
+Send connector error logs to this vendor. For more information, see [connector-error-logging](https://docs.tealium.com/connector-error-logging/).
 
 #### Parameters
 

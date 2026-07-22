@@ -17,7 +17,7 @@ url: https://docs.tealium.com/client-side-tags/facebook-app-analytics-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Facebook App Analytics tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Facebook App Analytics tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -27,7 +27,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -97,6 +97,6 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-| `lmt_data.use_ldu` (Use LDU) |  &lt;ul&gt;&lt;li&gt;If `true`, use Facebook’s Limited Data Use option &lt;/li&gt;&lt;li&gt;If `false`, do not use Facebook’s Limited Data Use option&lt;/li&gt;&lt;/ul&gt; |
-| `lmt_data.ldu_types.geolocate` (LDU should Geolocate) |  &lt;ul&gt;&lt;li&gt;If `true`, the LDU geolocates the user.&lt;/li&gt;&lt;li&gt;If `false`, the LDU does not geolocate the user. If **Use LDU** is enabled, then **LDU should Geolocate** is also enabled by default.&lt;/li&gt;&lt;/ul&gt; |
-| `lmt_data.ldu_types.california` (LDU is California) |  &lt;ul&gt;&lt;li&gt;If `true`, sets the state and country California-specific values inside the template. Only enable this option if the user is located in California and needs to be processed with Limited Data Use.&lt;/li&gt;&lt;li&gt;If `false`, does not set the user’s state and country California-specific values inside the template.&lt;/li&gt;&lt;/ul&gt; |
+| `lmt_data.use_ldu` (Use LDU) |  <ul><li>If `true`, use Facebook’s Limited Data Use option </li><li>If `false`, do not use Facebook’s Limited Data Use option</li></ul> |
+| `lmt_data.ldu_types.geolocate` (LDU should Geolocate) |  <ul><li>If `true`, the LDU geolocates the user.</li><li>If `false`, the LDU does not geolocate the user. If **Use LDU** is enabled, then **LDU should Geolocate** is also enabled by default.</li></ul> |
+| `lmt_data.ldu_types.california` (LDU is California) |  <ul><li>If `true`, sets the state and country California-specific values inside the template. Only enable this option if the user is located in California and needs to be processed with Limited Data Use.</li><li>If `false`, does not set the user’s state and country California-specific values inside the template.</li></ul> |

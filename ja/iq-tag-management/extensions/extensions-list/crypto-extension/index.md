@@ -14,7 +14,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/cr
 
 拡張機能で構成されたデータレイヤー変数は、新しいハッシュ値で上書きされます。ハッシュ値を生成し、元の変数を保持するには、ハッシュ値用の2つ目の変数を使用します。
 
+
+<blockquote>
 ハッシュ化と暗号化は同義語ではありません。
+</blockquote>
+
 
 ## 拡張機能の使用
 
@@ -31,33 +35,33 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/cr
     * **SHA512**  
     提供された入力に適用すると、異なる入力に対して生成される値と一致する可能性が非常に低い128桁の16進数を結果として生成するハッシュ関数です。SHA512は、SHA-2（Secure Hash Algorithm 2）の暗号化ハッシュ関数セットの一種です。
     * **変数**  
-    選択した暗号化関数を使用して変数値を追加するには、**&#43; 変数を追加**をクリックします。追加の変数をハッシュ化するには、この手順を繰り返します。
+    選択した暗号化関数を使用して変数値を追加するには、**+ 変数を追加**をクリックします。追加の変数をハッシュ化するには、この手順を繰り返します。
 
-![](/images/iq-tag-management/cryptoextension-1.png)
+![](https://docs.tealium.com/images/iq-tag-management/cryptoextension-1.png)
 
 ### 例
 
 以下の例では、`customer_email`という名前のデータレイヤー変数をハッシュ化します：
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;test@tealium.com&#34;
+> utag_data.customer_email
+< "test@tealium.com"
 ```
 
 クリプト拡張が構成されていて、SHA-1暗号化ハッシュ関数を使用して`customer_email`を変換すると、新しい値は次のようになります：
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+> utag_data.customer_email
+< "05fcf31275aa13408ace62e84dac60ae4b805a65"
 ```
 
 `customer_email`を保持し、ハッシュ値を作成するには、`customer_email_hash`という名前の2つ目の変数を使用します。まず、[Set Data Values extension]()を使用してハッシュ変数`customer_email_hash`を`customer_email`の値に初期化し、その後クリプト拡張で変換します。これにより、新しいハッシュ値を作成した後も元の値を保持できます：
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;test@tealium.com&#34;
-&gt; utag_data.customer_email_hash
-&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+> utag_data.customer_email
+< "test@tealium.com"
+> utag_data.customer_email_hash
+< "05fcf31275aa13408ace62e84dac60ae4b805a65"
 ```
 
 別のオプションとして、クリプト拡張をハッシュ値を使用するタグにのみスコープすることができます。これにより、他のすべてのタグに対して元の変数を保持できます。

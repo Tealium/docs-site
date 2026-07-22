@@ -14,7 +14,7 @@ Spotify provides transparent impression reporting in real-time across hosting pr
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -22,11 +22,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -62,7 +62,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping]()
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -75,7 +75,7 @@ To map events, refer to [Create an Event Mapping]()
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping]()
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

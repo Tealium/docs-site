@@ -9,7 +9,11 @@ The Trade Desk（TTD）リアルタイムコンバージョンイベントサー
 
 このコネクタは、TealiumとThe Trade Deskのパートナーシップからの他の統合とともにエンリッチメントされます。Unified ID 2.0（UID2）またはEuropean Unified ID（EUID）Functionを使用して、イベントデータを送信する前にユニバーサルユーザー識別子を生成して割り当てます。オプションで、Tealium iQタグ管理にTTDユニバーサルピクセルを実装して、リアルタイムでユーザーの行動を包括的に捉えます。
 
- 指定されたTTD担当者と協力して、必要なすべてのパラメータが生成され利用可能であることを確認してください。 
+
+<blockquote>
+指定されたTTD担当者と協力して、必要なすべてのパラメータが生成され利用可能であることを確認してください。
+</blockquote>
+
 
 ## API情報
 
@@ -22,13 +26,13 @@ The Trade Desk（TTD）リアルタイムコンバージョンイベントサー
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 The Trade Deskリアルタイムコンバージョンコネクタは、イベントマッピングとURLマッピングの追跡をサポートしています。コネクタを構成する際には、アプローチに応じて以下のパラメータを構成します：
 
 * **URLマッピング** - このアプローチでは、ユーザーが訪れたページのURLがTTDプラットフォーム内でリターゲティングとコンバージョン測定の基盤として割り当てられます。
     * ユーザーが閲覧するページに焦点を当てるウェブサイトに推奨されます。
-    * [TTDユニバーサルピクセルタグ]()と同じ方法論を使用します。
+    * [TTDユニバーサルピクセルタグ](https://docs.tealium.com/the-trade-desk-universal-pixel-tag/)と同じ方法論を使用します。
     * 構成パラメータ：**広告主ID**および**ユニバーサルピクセルID**。
 * **イベントマッピング** - このアプローチでは、イベント名（例：`Purchase`、`Addtocart`）を使用してコンバージョンがキャプチャされ、オプションで関連するコマース製品の詳細があります。イベント名と製品は、リターゲティングとコンバージョン測定の基盤としてTTDプラットフォーム内で評価されます。
     * 構成パラメータ：**マーチャントID**および**イベントトラッカーID**。
@@ -44,8 +48,12 @@ The Trade Deskリアルタイムコンバージョンコネクタは、イベン
 * **イベントトラッカーID**  
 **ピクセルID**が提供されていない場合に必要です。イベントトラッカーのプラットフォームIDです。
 
- **広告主ID**を提供して**ユニバーサルピクセルID**を提供しない場合、コネクタリクエストはエラーを返します。
-また、**構成ウィンドウ**のすべてのパラメータを入力することを避け、選択したアプローチに必要な値のみを提供することをお勧めします。例えば、**広告主ID**と**マーチャントID**の両方を提供するのではなく、追跡方法論に必要な構成のみを入力してください。 
+
+<blockquote>
+**広告主ID**を提供して**ユニバーサルピクセルID**を提供しない場合、コネクタリクエストはエラーを返します。
+また、**構成ウィンドウ**のすべてのパラメータを入力することを避け、選択したアプローチに必要な値のみを提供することをお勧めします。例えば、**広告主ID**と**マーチャントID**の両方を提供するのではなく、追跡方法論に必要な構成のみを入力してください。
+</blockquote>
+
 
 ## アクション
 
@@ -65,21 +73,21 @@ The Trade Deskリアルタイムコンバージョンコネクタは、イベン
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| コンバージョンイベント名 | パートナープラットフォームによって定義されたイベントのタイプ。利用可能なイベントタイプ：&lt;ul&gt;&lt;li&gt;`addtocart`: ユーザーがショッピングカートにアイテムを追加しました。&lt;/li&gt;&lt;li&gt;`purchase`: ユーザーが購入を完了し、**サンキューページ**が表示されました。&lt;/li&gt;&lt;li&gt;`viewitem`: ユーザーがアイテムまたはSKU番号を閲覧しました。&lt;/li&gt;&lt;li&gt;`searchitem`: ユーザーがアイテムまたはSKU番号を検索しました。&lt;/li&gt;&lt;li&gt;`searchcategory`: ユーザーがカテゴリを検索しました。&lt;/li&gt;&lt;li&gt;`login`: ユーザーがサイトにログインしました。&lt;/li&gt;&lt;li&gt;`messagebusiness`: ユーザーがビジネスにメッセージを送信したり、フォームやメールでビジネスに連絡しました。&lt;/li&gt;&lt;li&gt;`direction`: ユーザーがビジネスへの道順をリクエストして受け取りました。&lt;/li&gt;&lt;li&gt;`startcheckout`: ユーザーがチェックアウトプロセスを開始しました。&lt;/li&gt;&lt;li&gt;`viewcart`: ユーザーがショッピングカートの内容を閲覧しました。&lt;/li&gt;&lt;li&gt;`sitevisit`: ユーザーがサイトを訪問しました。&lt;/li&gt;&lt;li&gt;`wishlistitem`: ユーザーがアイテムまたはSKU番号をウィッシュリストに追加しました。&lt;/li&gt;&lt;/ul&gt;|
+| コンバージョンイベント名 | パートナープラットフォームによって定義されたイベントのタイプ。利用可能なイベントタイプ：<ul><li>`addtocart`: ユーザーがショッピングカートにアイテムを追加しました。</li><li>`purchase`: ユーザーが購入を完了し、**サンキューページ**が表示されました。</li><li>`viewitem`: ユーザーがアイテムまたはSKU番号を閲覧しました。</li><li>`searchitem`: ユーザーがアイテムまたはSKU番号を検索しました。</li><li>`searchcategory`: ユーザーがカテゴリを検索しました。</li><li>`login`: ユーザーがサイトにログインしました。</li><li>`messagebusiness`: ユーザーがビジネスにメッセージを送信したり、フォームやメールでビジネスに連絡しました。</li><li>`direction`: ユーザーがビジネスへの道順をリクエストして受け取りました。</li><li>`startcheckout`: ユーザーがチェックアウトプロセスを開始しました。</li><li>`viewcart`: ユーザーがショッピングカートの内容を閲覧しました。</li><li>`sitevisit`: ユーザーがサイトを訪問しました。</li><li>`wishlistitem`: ユーザーがアイテムまたはSKU番号をウィッシュリストに追加しました。</li></ul>|
 
 #### ユーザー識別子パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| UID2 | ユーザーのUnified ID 2.0で、44文字のbase64エンコードされたSHA-256文字列です。詳細については、および[TTD: Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs)を参照してください。 |
+| UID2 | ユーザーのUnified ID 2.0で、44文字のbase64エンコードされたSHA-256文字列です。詳細については、[use-visitor-function-uid20](https://docs.tealium.com/use-visitor-function-uid20/)および[TTD: Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs)を参照してください。 |
 | UID2トークン（暗号化された広告トークン）| 暗号化されたUID2広告トークンです。このトークンは大文字と小文字を区別します。 |
-| EUID | ユーザーのEuropean Unified IDで、44文字のbase64エンコードされたSHA-256文字列です。詳細については、および[Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs)を参照してください。 |
-| TDID | このユーザーのThe Trade Desk 36文字のGUID（ハイフンを含む）です。[The Trade Desk Cookie Matching Service Tag]()を通じて取得できます。|
+| EUID | ユーザーのEuropean Unified IDで、44文字のbase64エンコードされたSHA-256文字列です。詳細については、[use-visitor-function-euid](https://docs.tealium.com/use-visitor-function-euid/)および[Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs)を参照してください。 |
+| TDID | このユーザーのThe Trade Desk 36文字のGUID（ハイフンを含む）です。[The Trade Desk Cookie Matching Service Tag](https://docs.tealium.com/the-trade-desk-cookie-matching-service-tag/)を通じて取得できます。|
 | IDFA | iOSデバイスの広告識別子です。 |
 | AAID | Androidデバイスの広告識別子です。 |
 | DAID | このユーザーの生のデバイスIDで、36文字のGUID形式（ハイフンを含む）で送信されます。 |
 | NAID | Windowsデバイスの広告識別子です。 |
-| IDL | 49文字または70文字のRampID（以前のIdentityLinkとして知られていました）。&lt;br&gt;注意：これはLiveRampがThe Trade Desk用に特別にマッピングしたRampIDでなければなりません。RampIDのマッピングについての詳細は、[LiveRampドキュメント](https://sidecar.readme.io/docs/getting-started)を参照してください。 |
+| IDL | 49文字または70文字のRampID（以前のIdentityLinkとして知られていました）。<br>注意：これはLiveRampがThe Trade Desk用に特別にマッピングしたRampIDでなければなりません。RampIDのマッピングについての詳細は、[LiveRampドキュメント](https://sidecar.readme.io/docs/getting-started)を参照してください。 |
 
 #### イベントパラメータ
 
@@ -113,7 +121,7 @@ The Trade Deskリアルタイムコンバージョンコネクタは、イベン
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| `privacy_type` | 次の値からオブジェクトごとに一つの値: &lt;ul&gt;&lt;li&gt;GDPR（一般データ保護規則）、欧州経済領域（EEA）に適用。&lt;/li&gt;&lt;li&gt;GPP（グローバルプライバシープラットフォーム）、適用されるプライバシー規制がある米国の州のユーザー向け。&lt;/li&gt;&lt;/ul&gt; |
+| `privacy_type` | 次の値からオブジェクトごとに一つの値: <ul><li>GDPR（一般データ保護規則）、欧州経済領域（EEA）に適用。</li><li>GPP（グローバルプライバシープラットフォーム）、適用されるプライバシー規制がある米国の州のユーザー向け。</li></ul> |
 | `is_applicable` | `privacy_type` パラメータで指定された値が適用されるかどうかを示します。 |
 | `consent_string` | プライバシー規制が有効な場合のユーザーの同意。詳細については、[IAB Tech Lab: GDPR透明性と同意フレームワーク](https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/)を参照してください。 |
 

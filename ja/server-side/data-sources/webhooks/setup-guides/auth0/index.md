@@ -16,7 +16,7 @@ Auth0からのWebhookには以下が必要です：
 
 ### Auth0データソースの追加
 
-Tealium Customer Data HubプロファイルにAuth0データソースを追加するには、[Data Sources]()を参照してください。データソースを追加し、接続した後、プロファイルを保存して公開します。
+Tealium Customer Data HubプロファイルにAuth0データソースを追加するには、[Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加し、接続した後、プロファイルを保存して公開します。
 Tealium Customer Data HubプロファイルにAuth0データソースを追加すると、Webhook構成で使用するためのユニークなURLとデータソースキーが生成されます。URLの形式は次のとおりです：
 
 ```
@@ -28,11 +28,11 @@ https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 Auth0をTealium Customer Data Hubプロファイルに接続した後、以下の手順でWebhookを構成します：
 
 1. Auth0アカウントにログインします。
-1. 左側のメニューから、**Actions &gt; Library**を選択します。
-1. **Create Action &gt; Use a Marketplace Integration**をクリックします。
+1. 左側のメニューから、**Actions > Library**を選択します。
+1. **Create Action > Use a Marketplace Integration**をクリックします。
 1. **Tealium Action**をライブラリに追加します。
 1. アクションの**Tealium Account Name**、**Tealium Profile Name**、**Data Source key**を入力します。
-1. 左側のメニューから、**Actions &gt; Flow**を選択します。
+1. 左側のメニューから、**Actions > Flow**を選択します。
 1. 適切なフローを選択し、アクションをフローに追加します。
 
 詳細については、[Auth0: Understand How Auth0 Actions Work](https://auth0.com/docs/customize/actions/actions-overview#what-can-you-do-with-actions-)を参照してください。

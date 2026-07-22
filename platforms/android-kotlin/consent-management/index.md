@@ -7,9 +7,9 @@ url: https://docs.tealium.com/platforms/android-kotlin/consent-management/
 
 The consent management module is recommended and automatically enabled upon initialization. It is supported on Android mobile and Android TV.
 
-Initialize the consent manager policy inside [`TealiumConfig`](/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy). Then manage user consent using the Tealium instance at [`tealium.consentManager`](/platforms/android-kotlin/api/tealium/#consentmanager).
+Initialize the consent manager policy inside [`TealiumConfig`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy). Then manage user consent using the Tealium instance at [`tealium.consentManager`](https://docs.tealium.com/platforms/android-kotlin/api/tealium/#consentmanager).
 
-Learn more about [consent management](/platforms/getting-started-mobile/consent-management/) and consent policies.
+Learn more about [consent management](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/) and consent policies.
 
 ## Consent
 
@@ -20,7 +20,11 @@ Set the consent policy during initialization to one of the following:
 * `ConsentPolicy.GDPR`
 * `ConsentPolicy.CCPA`
 
+
+<blockquote>
 Only one policy may be enforced on a device at any given time.
+</blockquote>
+
 
 ```java
 val config = TealiumConfig(...).apply {
@@ -30,7 +34,7 @@ val config = TealiumConfig(...).apply {
 
 ### Consent Expiration
 
-Set the expiration time for the consent selections using the [`consentExpiry`](/platforms/android-kotlin/api/tealium-config/#consentexpiry) property.
+Set the expiration time for the consent selections using the [`consentExpiry`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#consentexpiry) property.
 
 
 The following example sets the consent manager policy to GDPR and the expiration time to 90 days:  
@@ -42,7 +46,7 @@ val config = TealiumConfig(...).apply {
 }
 ```
 
-To trigger a callback once the consent has expired, use the [`onUserConsentPreferencesUpdated()`](/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated) method to check when the `ConsentStatus` is `UNKNOWN`:
+To trigger a callback once the consent has expired, use the [`onUserConsentPreferencesUpdated()`](https://docs.tealium.com/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated) method to check when the `ConsentStatus` is `UNKNOWN`:
 
 ```java
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
@@ -50,7 +54,7 @@ Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
         override fun onUserConsentPreferencesUpdated(userConsentPreferences: UserConsentPreferences,
                                                      policy: ConsentManagementPolicy) {
             if (userConsentPreferences.consentStatus == ConsentStatus.UNKNOWN) {
-                Logger.dev(BuildConfig.TAG, &#34;Re-prompt for consent&#34;)
+                Logger.dev(BuildConfig.TAG, "Re-prompt for consent")
             }
         }
     })
@@ -65,11 +69,15 @@ To set full consent:
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 ```
 
-Setting full consent implicitly sets the consent categories to the full list of available [`ConsentCategory`](/platforms/android-kotlin/api/consent-category/#class-consentcategory) types.
+
+<blockquote>
+Setting full consent implicitly sets the consent categories to the full list of available [`ConsentCategory`](https://docs.tealium.com/platforms/android-kotlin/api/consent-category/#class-consentcategory) types.
+</blockquote>
+
 
 ### Set Partial Consent by Category
 
-To set partial consent, specify a subset of consent categories. This implicitly sets [`userConsentStatus`](/platforms/android-kotlin/api/consent-manager/#userconsentstatus) to `CONSENTED`.
+To set partial consent, specify a subset of consent categories. This implicitly sets [`userConsentStatus`](https://docs.tealium.com/platforms/android-kotlin/api/consent-manager/#userconsentstatus) to `CONSENTED`.
 
 ```java
 tealium.consentManager.userConsentCategories = setOf(ConsentCategory.ANALYTICS, ConsentCategory.EMAIL)
@@ -86,7 +94,7 @@ Alternatively, set the consent categories to `null`.
 
 ## Custom Consent
 
-If your organization&#39;s consent requirements are not covered by our standard [Opt-in](/glossary/#opt-in-model-consent) and [Opt-out](/glossary/#opt-out-model-consent) consent management policies, create a custom consent policy.
+If your organization's consent requirements are not covered by our standard [Opt-in](https://docs.tealium.com/glossary/#opt-in-model-consent) and [Opt-out](https://docs.tealium.com/glossary/#opt-out-model-consent) consent management policies, create a custom consent policy.
 
 1. Implement the `ConsentManagementPolicy` interface.      
       ```java
@@ -98,7 +106,7 @@ If your organization&#39;s consent requirements are not covered by our standard 
       ```java
       ConsentPolicy.CUSTOM.setCustomPolicy(customPolicy)
       ```
-3. Pass the `ConsentPolicy.CUSTOM` option on your `TealiumConfig` object through the [`consentManagerPolicy`](/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) property.   
+3. Pass the `ConsentPolicy.CUSTOM` option on your `TealiumConfig` object through the [`consentManagerPolicy`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) property.   
       ```java
       config.consentManagerPolicy = ConsentPolicy.CUSTOM
       ```
@@ -109,9 +117,9 @@ Your custom `ConsentManagementPolicy` implementation may delegate existing conse
 class CustomPolicy(
         val superPolicy: ConsentManagementPolicy
         ) : ConsentManagementPolicy by superPolicy {
-    override val name: String = &#34;custom_policy&#34;
+    override val name: String = "custom_policy"
 
-    override fun policyStatusInfo(): Map&lt;String, Any&gt; {
+    override fun policyStatusInfo(): Map<String, Any> {
         return superPolicy.policyStatusInfo().toMutableMap().apply {
             put(ConsentManagerConstants.CONSENT_POLICY, name)
         }
@@ -131,9 +139,9 @@ After the custom consent policy is implemented, override the following propertie
 | `consentLoggingEnabled` | `Boolean` | Sets whether or not logging of consent changes are required |
 | `consentLoggingEventName` | `String` | Sets the event name (key: `tealium_event`) to use when logging a change in consent |
 | `defaultConsentExpiry`] |`ConsentExpiry` | Sets the default expiry time for the `ConsentManagementPolicy` |
-| `cookieUpdateRequired`| `Boolean` | Sets whether or not to update a cookie in the TagManagement module&#39;s webview|
+| `cookieUpdateRequired`| `Boolean` | Sets whether or not to update a cookie in the TagManagement module's webview|
 | `cookieUpdateEventName` |  `String` | Sets the event name to use when `cookieUpdateRequired` is set to `true`|
-| `policyStatusInfo()` |`Map&lt;String, Any&gt;` | Returns a map of key-value data to be added to the payload of each dispatch |
+| `policyStatusInfo()` |`Map<String, Any>` | Returns a map of key-value data to be added to the payload of each dispatch |
 | `shouldQueue()` | `Boolean` | Returns whether or not to queue dispatches according to the `ConsentPolicy` rules|
 | `shouldDrop()`| `Boolean` | Returns whether or not to drop dispatches according to the `ConsentPolicy` rules|
 
@@ -145,13 +153,13 @@ class CustomPolicy(
         val superPolicy: ConsentManagementPolicy
 ) : ConsentManagementPolicy by superPolicy {
     return superPolicy.policyStatusInfo().toMutableMap().apply {
-        get(ConsentManagerConstants.CONSENT_STATUS)?.let { status -&gt;
+        get(ConsentManagerConstants.CONSENT_STATUS)?.let { status ->
             remove(ConsentManagerConstants.CONSENT_STATUS)
-            put(&#34;custom_consent_status&#34;, status)
+            put("custom_consent_status", status)
         }
-        get(ConsentManagerConstants.CONSENT_CATEGORIES)?.let { categories -&gt;
+        get(ConsentManagerConstants.CONSENT_CATEGORIES)?.let { categories ->
             remove(ConsentManagerConstants.CONSENT_CATEGORIES)
-            put(&#34;custom_consent_categories&#34;, categories)
+            put("custom_consent_categories", categories)
         }
     }
 }
@@ -165,9 +173,9 @@ class CustomPolicy(
     override val consentLoggingEventName: String
         get() {
             return when(userConsentPreferences.consentStatus) {
-                ConsentStatus.CONSENTED -&gt; &#34;user_consented&#34;
-                ConsentStatus.NOT_CONSENTED -&gt; &#34;user_not_consented&#34;
-                ConsentStatus.UNKNOWN -&gt; &#34;user_consent_unknown&#34;
+                ConsentStatus.CONSENTED -> "user_consented"
+                ConsentStatus.NOT_CONSENTED -> "user_not_consented"
+                ConsentStatus.UNKNOWN -> "user_consent_unknown"
             }
         }
 }
@@ -179,10 +187,10 @@ class CustomPolicy(
         val superPolicy: ConsentManagementPolicy,
         val thirdPartyConsentLibrary: OtherConsentProvider
 ) : ConsentManagementPolicy by superPolicy {
-    override fun policyStatusInfo(): Map&lt;String, Any&gt; {
+    override fun policyStatusInfo(): Map<String, Any> {
         val status = thirdPartyConsentLibrary
                 .getConsent(userConsentPreferences.consentStatus == ConsentStatus.CONSENTED)
-        return mapOf(&#34;my_consent_status&#34; to status)
+        return mapOf("my_consent_status" to status)
     }
 }
 ```

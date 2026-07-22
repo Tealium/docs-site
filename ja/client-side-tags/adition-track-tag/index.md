@@ -9,8 +9,8 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 * Aditionとの契約に従ってドメインを構成します。
 
   * デフォルト値: `adfarm1.adition.com`
-  * AdfarmID: `ad&lt;id&gt;.adfarm1.adition.com`
-  * カスタム: `&lt;subdomain&gt;.&lt;domain&gt;.&lt;tld&gt;`
+  * AdfarmID: `ad<id>.adfarm1.adition.com`
+  * カスタム: `<subdomain>.<domain>.<tld>`
 
 * デフォルトの戻りタイプは `img` です。
 * 次のE-コマース変数を使用します
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Adition (Track)タグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Adition (Track)タグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、次の構成を行います：
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -50,14 +50,14 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 
 |変数| 説明|
 |---| ---|
-|タグタイプ|  &lt;ul&gt;&lt;li&gt;タグタイプ&lt;/li&gt;&lt;/ul&gt; |
-|ドメイン|  &lt;ul&gt;&lt;li&gt;ドメイン&lt;/li&gt;&lt;/ul&gt; |
-| `tid` |  &lt;ul&gt;&lt;li&gt;ランディングページID&lt;/li&gt;&lt;/ul&gt; |
-| `sid` |  &lt;ul&gt;&lt;li&gt;トラッキングスポットID&lt;/li&gt;&lt;/ul&gt; |
-|`orderid`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`descr`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;アイテムの説明。&lt;/li&gt;&lt;li&gt;`_cprod` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `quantity` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;アイテムの数量。&lt;/li&gt;&lt;li&gt;`_cquan` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;アイテムの価格。&lt;/li&gt;&lt;li&gt;`_cprice` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`total`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;合計価格。&lt;/li&gt;&lt;/ul&gt; |
-|`param`|  &lt;ul&gt;&lt;li&gt;パラメータ&lt;/li&gt;&lt;li&gt;値は1 - 20です。&lt;/li&gt;&lt;/ul&gt; |
+|タグタイプ|  <ul><li>タグタイプ</li></ul> |
+|ドメイン|  <ul><li>ドメイン</li></ul> |
+| `tid` |  <ul><li>ランディングページID</li></ul> |
+| `sid` |  <ul><li>トラッキングスポットID</li></ul> |
+|`orderid`|  <ul><li>注文ID</li><li>`_corder` を上書きします。</li></ul> |
+|`descr`|  <ul><li>配列</li><li>アイテムの説明。</li><li>`_cprod` を上書きします。</li></ul> |
+| `quantity` |  <ul><li>配列</li><li>アイテムの数量。</li><li>`_cquan` を上書きします。</li></ul> |
+|`price`|  <ul><li>配列</li><li>アイテムの価格。</li><li>`_cprice` を上書きします。</li></ul> |
+|`total`|  <ul><li>配列</li><li>合計価格。</li></ul> |
+|`param`|  <ul><li>パラメータ</li><li>値は1 - 20です。</li></ul> |
 

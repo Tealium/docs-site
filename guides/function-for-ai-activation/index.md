@@ -5,7 +5,7 @@ url: https://docs.tealium.com/guides/function-for-ai-activation/
 ---
 This guide explains how to integrate external AI models with Tealium functions for real-time activation. Connect securely to model endpoints, invoke AI predictions using event and visitor data, and enrich visitor profiles with model outputs. It also covers asynchronous responses and common integration issues.
 
-For information on when to use Tealium functions or AI connectors for your use case, see [AI connectors and Tealium functions]().
+For information on when to use Tealium functions or AI connectors for your use case, see [AI connectors and Tealium functions](https://docs.tealium.com/ai-connectors-and-functions/).
 
 ## How it works
 
@@ -97,8 +97,8 @@ You can implement your AI activation logic using either an event function or a v
 | `visitor.metrics.*` |  Visitor profile numeric attributes |
 | `visitor.audiences` | Visitor audience membership  |
 | `visitor.current_visit.*` | Visit attributes from the visitor’s current session |
-| `helper.getAuth(&#39;name&#39;)` | Retrieve stored authentication token |
-| `helper.getGlobalVariable(&#39;name&#39;)` | Retrieve stored global variable |
+| `helper.getAuth('name')` | Retrieve stored authentication token |
+| `helper.getGlobalVariable('name')` | Retrieve stored global variable |
 | `track(data, config)` | Send event to Tealium Collect (max 6 calls per invocation) |
 
 ### Platform-specific notes
@@ -114,17 +114,17 @@ The following code examples show a generic REST API pattern. Actual implementati
 | GCP Vertex              | Vertex AI endpoints use OAuth 2.0 or service account authentication.                                                                          |
 | Azure                   | Azure ML managed endpoints use API key or Azure AD token authentication.                                                                      |
 
-Refer to your platform&#39;s API documentation for request/response formats and authentication requirements.
+Refer to your platform's API documentation for request/response formats and authentication requirements.
 
 ### Event function example
 
-The following example shows how to call an external model API from an event function. Adapt the payload structure and response parsing to match your model&#39;s API.
+The following example shows how to call an external model API from an event function. Adapt the payload structure and response parsing to match your model's API.
 
 
 ```js
-activate(async ({ event, helper }) =&gt; {
+activate(async ({ event, helper }) => {
   // 1. Assemble feature payload from event data
-  // Adapt this to match your model&#39;s expected input format
+  // Adapt this to match your model's expected input format
   const payload = {
     product_id: event.data.udo.product_id,
     category: event.data.udo.product_category,
@@ -132,31 +132,31 @@ activate(async ({ event, helper }) =&gt; {
   };
   // 2. Call your model API
   const response = await fetch(
-    helper.getGlobalVariable(&#39;MODEL_ENDPOINT_URL&#39;),
+    helper.getGlobalVariable('MODEL_ENDPOINT_URL'),
     {
-      method: &#39;POST&#39;,
+      method: 'POST',
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;model_api_token&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('model_api_token'),
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }
   );
   if (!response.ok) {
-    console.error(&#39;Model API error:&#39;, response.status);
+    console.error('Model API error:', response.status);
     return;
   }
   const result = await response.json();
   // 3. Send prediction to Tealium Collect
-  // Adapt the attribute names to match your model&#39;s response
+  // Adapt the attribute names to match your model's response
   track({
-    tealium_event: &#39;model_prediction&#39;,
+    tealium_event: 'model_prediction',
     prediction_score: result.score,
     prediction_label: result.label
   }, {
     tealium_account: event.account,
     tealium_profile: event.profile,
-    tealium_datasource: helper.getGlobalVariable(&#39;DATASOURCE_KEY&#39;)
+    tealium_datasource: helper.getGlobalVariable('DATASOURCE_KEY')
   });
 });
 ```
@@ -168,7 +168,7 @@ Visitor functions can access accumulated profile data for scoring. However, visi
 
 
 ```js
-activate(async ({ visitor, visit, helper }) =&gt; {
+activate(async ({ visitor, visit, helper }) => {
   // Assemble payload from visitor profile attributes
   const payload = {
     lifetime_value: visitor.metrics.lifetime_value,
@@ -177,32 +177,32 @@ activate(async ({ visitor, visit, helper }) =&gt; {
     loyalty_tier: visitor.properties.loyalty_tier
   };
   const response = await fetch(
-    helper.getGlobalVariable(&#39;MODEL_ENDPOINT_URL&#39;),
+    helper.getGlobalVariable('MODEL_ENDPOINT_URL'),
     {
-      method: &#39;POST&#39;,
+      method: 'POST',
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;model_api_token&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('model_api_token'),
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }
   );
   if (!response.ok) {
-    console.error(&#39;Model API error:&#39;, response.status);
+    console.error('Model API error:', response.status);
     return;
   }
   const result = await response.json();
   // For Visitor Functions, use Global Variables for routing
   // Include visitor_id to ensure the event stitches to the correct profile
   track({
-    tealium_event: &#39;churn_prediction&#39;,
+    tealium_event: 'churn_prediction',
     tealium_visitor_id: visitor.properties.visitor_id,
     churn_score: result.churn_probability,
     churn_risk_tier: result.risk_tier
   }, {
-    tealium_account: helper.getGlobalVariable(&#39;TEALIUM_ACCOUNT&#39;),
-    tealium_profile: helper.getGlobalVariable(&#39;TEALIUM_PROFILE&#39;),
-    tealium_datasource: helper.getGlobalVariable(&#39;DATASOURCE_KEY&#39;)
+    tealium_account: helper.getGlobalVariable('TEALIUM_ACCOUNT'),
+    tealium_profile: helper.getGlobalVariable('TEALIUM_PROFILE'),
+    tealium_datasource: helper.getGlobalVariable('DATASOURCE_KEY')
   });
 });
 ```
@@ -216,12 +216,12 @@ When model inference takes longer than 10 seconds, use an asynchronous pattern. 
 1. Model endpoint returns 202 Accepted immediately
 1. Function exits (no timeout)
 1. Model completes inference asynchronously
-1. Model POSTs prediction to Tealium&#39;s HTTP API
+1. Model POSTs prediction to Tealium's HTTP API
 1. Enrichments write prediction to visitor profile
 
 #### Create an HTTP API data source for the model callback
 
-Create an HTTP API data source for receiving model callbacks. For more information, see [Create a data source]().
+Create an HTTP API data source for receiving model callbacks. For more information, see [Create a data source](https://docs.tealium.com/create-data-source/).
 
 ### Async function code
 
@@ -229,26 +229,26 @@ Use the following function code:
 
 
 ```js
-activate(async ({ visitor, visit, helper }) =&gt; {
+activate(async ({ visitor, visit, helper }) => {
   const payload = {
     visitor_id: visitor.properties.visitor_id,
     lifetime_value: visitor.metrics.lifetime_value,
     purchase_count: visitor.metrics.purchase_count,
-    callback_url: helper.getGlobalVariable(&#39;TEALIUM_CALLBACK_URL&#39;),
-    callback_datasource: helper.getGlobalVariable(&#39;DATASOURCE_KEY&#39;)
+    callback_url: helper.getGlobalVariable('TEALIUM_CALLBACK_URL'),
+    callback_datasource: helper.getGlobalVariable('DATASOURCE_KEY')
   };
-  // Fire and forget - don&#39;t await the response
+  // Fire and forget - don't await the response
   fetch(
-    helper.getGlobalVariable(&#39;MODEL_ENDPOINT_URL&#39;),
+    helper.getGlobalVariable('MODEL_ENDPOINT_URL'),
     {
-      method: &#39;POST&#39;,
+      method: 'POST',
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;model_api_token&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('model_api_token'),
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }
-  ).catch(error =&gt; console.error(&#39;Request failed:&#39;, error.message));
+  ).catch(error => console.error('Request failed:', error.message));
   // Function exits immediately - model will callback when ready
 });
 ```
@@ -259,14 +259,14 @@ activate(async ({ visitor, visit, helper }) =&gt; {
 Your model endpoint should POST to the Tealium HTTP API when inference completes:
 
 ```
-POST https://collect.tealiumiq.com/event?tealium_account={account}&amp;tealium_profile={profile}&amp;tealium_datasource={datasource_key}
+POST https://collect.tealiumiq.com/event?tealium_account={account}&tealium_profile={profile}&tealium_datasource={datasource_key}
 
 {
-  &#34;tealium_event&#34;: &#34;model_prediction_complete&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;original_visitor_id_from_request&#34;,
-  &#34;churn_score&#34;: 0.82,
-  &#34;churn_risk_tier&#34;: &#34;high&#34;,
-  &#34;model_version&#34;: &#34;v2.1&#34;
+  "tealium_event": "model_prediction_complete",
+  "tealium_visitor_id": "original_visitor_id_from_request",
+  "churn_score": 0.82,
+  "churn_risk_tier": "high",
+  "model_version": "v2.1"
 }
 ```
 
@@ -278,32 +278,36 @@ Store your model API credentials and configuration in Tealium functions for secu
 
 ### Add authentication tokens for the ML platform
 
-To store API credentials for a function on the Tealium platform, add an authentication token. In this example, you will store the API key or token endpoint URL as `model_api_token`. For more information, see [Add authentication]().
+To store API credentials for a function on the Tealium platform, add an authentication token. In this example, you will store the API key or token endpoint URL as `model_api_token`. For more information, see [Add authentication](https://docs.tealium.com/add-authentication-to-function/).
 
 Retrieve the token in your function with the following code:
 
 ```
     {
-      method: &#39;POST&#39;,
+      method: 'POST',
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;model_api_token&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('model_api_token'),
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }
 ```
 
+
+<blockquote>
 Authentication tokens can only be referenced by a function within an HTTP request. If you try to reference the token outside of an HTTP request, the token is replaced by a UUID placeholder.
+</blockquote>
+
 
 ### Add global variables for the ML platform
 
-Store configuration information for a function such as the model endpoint URL and name as global variables. In this example, you will store the model endpoint URL as `MODEL_ENDPOINT_URL`. For more information, see [Manage global variables]().
+Store configuration information for a function such as the model endpoint URL and name as global variables. In this example, you will store the model endpoint URL as `MODEL_ENDPOINT_URL`. For more information, see [Manage global variables](https://docs.tealium.com/manage-global-variables/).
 
 Retrieve the variable in your function with the following code:
 
 ```
   const response = await fetch(
-    helper.getGlobalVariable(&#39;MODEL_ENDPOINT_URL&#39;),
+    helper.getGlobalVariable('MODEL_ENDPOINT_URL'),
     {
 ...
     }
@@ -318,7 +322,7 @@ Before you can activate predictions in downstream systems, you must configure at
 
 Create an attribute to store model predictions in visitor profiles. In this example, create a `churn_score` number attribute.
 
-For more information, see [Create an attribute]().
+For more information, see [Create an attribute](https://docs.tealium.com/manage-as-attributes/#create-an-attribute).
 
 Enrich the attribute you created to write model predictions from events to visitor profiles. Without an enrichment, predictions do not appear on visitor profiles. In this example, create an enrichment to write the `prediction_score` event attribute from your `track()` call to the `churn_score` visitor attribute when `tealium_event` equals `model_prediction` (or your event name).
 
@@ -326,15 +330,15 @@ Enrich the attribute you created to write model predictions from events to visit
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;model_prediction&#34;
+      "input": "tealium_event",
+      "operator": "equals (ignore case)",
+      "filter": "model_prediction"
     }
   ] 
 ]
 
 
-For more information, see [Add enrichment]().
+For more information, see [Add enrichment](https://docs.tealium.com/add-enrichment/).
 
 ## Step 4: Activate a high churn risk audience
 
@@ -348,21 +352,21 @@ Create an audience based on prediction attributes. In this example, create a `Hi
 [
   [
     {
-      &#34;input&#34;: &#34;churn_score&#34;,
-      &#34;operator&#34;: &#34;greater than&#34;,
-      &#34;filter&#34;: &#34;0.7&#34;
+      "input": "churn_score",
+      "operator": "greater than",
+      "filter": "0.7"
     }
   ] 
 ]
 
 
-For more information, see [Create an audience]().
+For more information, see [Create an audience](https://docs.tealium.com/manage-audiences/#create-an-audience).
 
 ### Configure connectors
 
 Attach connector actions to audiences to activate on prediction values. In this example, you can trigger retention emails for high churn risk or add users to remarketing audiences based on purchase intent.
 
-For more information, see [Add connector]().
+For more information, see [Add connector](https://docs.tealium.com/add-connector/).
 
 ## Debugging
 
@@ -371,9 +375,9 @@ For more information, see [Add connector]().
 Use `console.log()` for debugging:
 
 ```
-console.log(&#39;Payload:&#39;, JSON.stringify(payload));
-console.log(&#39;Response status:&#39;, response.status);
-console.log(&#39;Result:&#39;, JSON.stringify(result));
+console.log('Payload:', JSON.stringify(payload));
+console.log('Response status:', response.status);
+console.log('Result:', JSON.stringify(result));
 ```
 
 To view logs, click the **Logs** tab in the functions editor.
@@ -389,4 +393,4 @@ To view logs, click the **Logs** tab in the functions editor.
 
 ## Resources
 
-* [Functions]()
+* [Functions](https://docs.tealium.com/about-functions/)

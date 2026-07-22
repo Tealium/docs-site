@@ -12,7 +12,7 @@ Information about your primary account can be found in the **User Preferences** 
 1. In Tealium iQ, click your name/email in the top right corner to display the **Account** Admin drop-down menu.
 1. Under User Preferences, click **Edit/View user Settings**.
 1. Your primary account appears in the right panel.
-    ![](/images/iq-tag-management/display-primary-account-name.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/display-primary-account-name.jpg)
 
 #### Who can enable/disable MFA in my account?
 
@@ -32,7 +32,7 @@ Yes. MFA applies to all profiles within your account.
 
 #### I was assigned to an MFA-enabled account that is not my primary account. Will I need a token to access it?
 
-Yes. You are subject to MFA when signing into or switching to any MFA-enabled account — regardless if it&#39;s not your primary account.
+Yes. You are subject to MFA when signing into or switching to any MFA-enabled account — regardless if it's not your primary account.
 
 ## Authenticator App and Security Tokens
 
@@ -50,30 +50,34 @@ Ideally, you should only set up the application once after enabling MFA. If at a
 
 #### I am unable to scan the barcode when setting up the authenticator application
 
-It is possible that your mobile phone does not have a built-in barcode reader app, particularly if it is an Android device. If that&#39;s the case, then download and install a generic barcode reader app.
+It is possible that your mobile phone does not have a built-in barcode reader app, particularly if it is an Android device. If that's the case, then download and install a generic barcode reader app.
 
+
+<blockquote>
 Ensure that the app you use is designed to scan generic barcodes only – not the mail barcodes you typically see on shipping labels.
+</blockquote>
+
 
 #### Invalid 6-digit verification code when setting up the authenticator application
 
 If you encounter this error, the easiest thing to do is to start over. Go back to the login page, sign in with your username and password, and then proceed with the application setup steps.
 
-![](/images/iq-tag-management/invalid-mfa-token.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/invalid-mfa-token.jpg)
 
 #### My authenticator application has multiple entries of my synced accounts
 
 This happens when the same barcode is scanned multiple times and does not introduce any problems. To correct, simply delete the unwanted entries and proceed to [re-sync the app with your account](#setup).
 
-![](/images/iq-tag-management/duplicate-entries.png)
+![](https://docs.tealium.com/images/iq-tag-management/duplicate-entries.png)
 
 #### The token expired before I could enter it
 
 Don’t worry if your token expired before you used it. You can use the next one since most apps generate fresh tokens every few seconds. How long each token lasts will depend on the app you are using.
 
-#### I&#39;ve tried everything and still can&#39;t sync my authenticator app
+#### I've tried everything and still can't sync my authenticator app
 
 In rare cases, there could be a timing issue on your smartphone, causing the sync to fail. Try this:
 
-1. Go to your smartphone&#39;s time settings, turn off the automatic time settings, and exit the settings.
+1. Go to your smartphone's time settings, turn off the automatic time settings, and exit the settings.
 1. Reopen the settings and set the time back to automatic.
 1. Follow the steps to re-sync the app with your account.

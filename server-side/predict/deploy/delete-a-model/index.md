@@ -12,4 +12,8 @@ Use the following steps to delete a model:
 
 The model you selected is now deleted and no longer available for configuration or training.
 
+
+<blockquote>
 If there are dependencies that use the model you want to delete, you will need to remove those dependencies before deleting the model.
+</blockquote>
+

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/order-of-operations
 ---
 ## データサプライチェーン
 
-![](/images/guides/server-side/tealium-data-supply-chain.png)
+![](https://docs.tealium.com/images/guides/server-side/tealium-data-supply-chain.png)
 
 ## 操作の順序の概要
 
@@ -22,7 +22,7 @@ Tealium AudienceStreamはTealium EventStreamと密接に統合されているた
 * オーディエンスが評価される
 * コネクタがトリガーされる
 
-![](/images/server-side/asorderofprocessing.png)
+![](https://docs.tealium.com/images/server-side/asorderofprocessing.png)
 
 ## エンリッチメントのタイミングと条件
 
@@ -60,7 +60,7 @@ Tealium AudienceStreamはTealium EventStreamと密接に統合されているた
 * **WHEN**: 訪問終了
 * **ルール**: `cart_total_items greater than 0`
 
-![](/images/server-side/asprocessingcartabandoner.png)
+![](https://docs.tealium.com/images/server-side/asprocessingcartabandoner.png)
 
 **ルール依存性チェックを有効にする**が有効になっている場合、ルールの依存関係を考慮してエンリッチメントが正しい順序で実行されます。
 
@@ -72,7 +72,7 @@ Tealium AudienceStreamはTealium EventStreamと密接に統合されているた
 
 * 訪問ID属性に既存の値がない。
 * エンリッチメントルールが `true` と評価される。
-* エンリッチメントされた値が[訪問IDの最小要件]()を満たしている。
+* エンリッチメントされた値が[訪問IDの最小要件](https://docs.tealium.com/visitor-id-attribute/)を満たしている。
 
 複数の訪問ID属性がある場合、それらは属性IDの順序で評価されます。
 
@@ -89,6 +89,6 @@ AudienceStreamは訪問プロファイルを評価して、どのオーディエ
 AudienceStreamはトリガー条件を評価して、どのコネクタアクションを開始するかを決定します。コネクタ条件は次のいずれかになります：
 
 * **参加したオーディエンス**：訪問はこの訪問中にオーディエンスに参加しました。
-* **離脱したオーディエンス**：訪問はこの訪問中にオーディエンスを離脱しました。このアクションは訪問が削除された場合には発生しません。詳細については、[訪問の削除]()を参照してください。
+* **離脱したオーディエンス**：訪問はこの訪問中にオーディエンスを離脱しました。このアクションは訪問が削除された場合には発生しません。詳細については、[訪問の削除](https://docs.tealium.com/visitor-search/#deleting-a-visitor)を参照してください。
 * **訪問開始時のオーディエンス内**：訪問開始時に訪問はオーディエンス内にいました。
 * **訪問終了時のオーディエンス内**：訪問終了時に訪問はオーディエンス内にいました。

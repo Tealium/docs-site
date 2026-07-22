@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/sendgrid-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. See the [Connector Overview](/server-side/connectors/manage/) for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. See the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 

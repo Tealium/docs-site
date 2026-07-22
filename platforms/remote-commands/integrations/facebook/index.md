@@ -6,11 +6,11 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/facebook/
 ## Requirements
 
 * One of these mobile libraries:
-  * [Tealium for Android (Kotlin)](/platforms/android-kotlin/) (1.0.0&#43;).
-  * [Tealium for Android (Java)](/platforms/android-java/) (5.9.0&#43; for Facebook 1.0.0&#43; or &lt;5.9.0 for previous versions).
-  * [Tealium for iOS (Swift)](/platforms/ios-swift/).
+  * [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0+).
+  * [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/) (5.9.0+ for Facebook 1.0.0+ or <5.9.0 for previous versions).
+  * [Tealium for iOS (Swift)](https://docs.tealium.com/platforms/ios-swift/).
 * One of these remote command integrations:
-  * [Facebook Remote Command JSON File](/platforms/remote-commands/integrations/facebook/.#json-template) (Requires Android-Kotlin 1.0.0&#43; or iOS-Swift 2.1.0&#43;).
+  * [Facebook Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/facebook/.#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+).
   * Facebook Remote Command tag in Tealium iQ Tag Management.
 
 The following are requirements for iOS and Android:  
@@ -20,23 +20,23 @@ The following are requirements for iOS and Android:
 
 Add the following keys to your `app/src/main/res/values/strings.xml` file. Replace `[APP_ID]` with your Facebook App ID and `[CLIENT_TOKEN]` with your Facebook Client Token:
 ```xml
-&lt;string name=&#34;facebook_app_id&#34;&gt;[APP_ID]&lt;/string&gt;
-&lt;string name=&#34;fb_login_protocol_scheme&#34;&gt;fb[APP_ID]&lt;/string&gt;
-&lt;string name=&#34;facebook_client_token&#34;&gt;[CLIENT_TOKEN]&lt;/string&gt;
+<string name="facebook_app_id">[APP_ID]</string>
+<string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+<string name="facebook_client_token">[CLIENT_TOKEN]</string>
 ```
 
 The following `meta-data` element is required in the `AndroidManifest.xml` file:
 ```xml
-&lt;application android:label=&#34;@string/app_name&#34; ...&gt;
+<application android:label="@string/app_name" ...>
     ...
-    &lt;meta-data
-      android:name=&#34;com.facebook.sdk.ApplicationId&#34;
-      android:value=&#34;@string/facebook_app_id&#34; /&gt;
-    &lt;meta-data 
-        android:name=&#34;com.facebook.sdk.ClientToken&#34;
-        android:value=&#34;@string/facebook_client_token&#34; /&gt;
+    <meta-data
+      android:name="com.facebook.sdk.ApplicationId"
+      android:value="@string/facebook_app_id" />
+    <meta-data 
+        android:name="com.facebook.sdk.ClientToken"
+        android:value="@string/facebook_client_token" />
     ...
-&lt;/application&gt;
+</application>
 ```
 
 Learn more: [Facebook Android Getting Started - Integrate the Facebook SDK in Your Android App](https://developers.facebook.com/docs/app-events/getting-started-app-events-android).
@@ -46,21 +46,21 @@ Learn more: [Facebook Android Getting Started - Integrate the Facebook SDK in Yo
 
 Add the following keys to your `Info.plist` file. Replace `[APP_ID]` with your Facebook App ID, `[APP_NAME]` with your app name, and `[CLIENT_TOKEN]` with your Facebook Client Token:  
 ```xml
-&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
-&lt;array&gt;
-  &lt;dict&gt;
-  &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
-  &lt;array&gt;
-    &lt;string&gt;fb[APP_ID]&lt;/string&gt;
-  &lt;/array&gt;
-  &lt;/dict&gt;
-&lt;/array&gt;
-&lt;key&gt;FacebookAppID&lt;/key&gt;
-&lt;string&gt;[APP_ID]&lt;/string&gt;
-&lt;key&gt;FacebookDisplayName&lt;/key&gt;
-&lt;string&gt;[APP_NAME]&lt;/string&gt;
-&lt;key&gt;FacebookClientToken&lt;/key&gt;
-&lt;string&gt;[CLIENT_TOKEN]&lt;/string&gt;
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb[APP_ID]</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>[APP_ID]</string>
+<key>FacebookDisplayName</key>
+<string>[APP_NAME]</string>
+<key>FacebookClientToken</key>
+<string>[CLIENT_TOKEN]</string>
 ```
 Learn more: [Facebook iOS Getting Started - Configure Your Property List](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#plist-config).
 
@@ -78,7 +78,7 @@ Update the `AppDelegate` code as follows:
       func application(
             _ app: UIApplication,
             open url: URL,
-            options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -&gt; Bool {
+            options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = ApplicationDelegate.shared.application(
             app,
             open: url,
@@ -100,7 +100,7 @@ The Facebook integration uses three items:
 
 Adding the Facebook remote command module to your app automatically installs and builds the required Facebook libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Facebook SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 
@@ -109,7 +109,7 @@ There are two remote command options: A JSON configuration file, or using iQ Tag
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**.
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**.
 2. Enter the repository URL: `https://github.com/tealium/tealium-ios-facebook-remote-command`.
 3. Configure the version rules. Typically, `Up to next major` is recommended. If the current `TealiumFacebook` version does not appear in the list, then reset your Swift package cache.
 4. Select the `TealiumFacebook` module to install, and select the app target you want the module to be installed in.
@@ -120,24 +120,24 @@ To install `TealiumFacebook` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 2. In your Xcode project, select the app target under the **TARGETS** section.
-3. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and  select the `TealiumFacebook` module to add it to your app target.
+3. Navigate to **General > Frameworks, Libraries & Embedded Content** and  select the `TealiumFacebook` module to add it to your app target.
 
-To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
-
-
+To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
 
 
-1. Remove `tealium-swift` and `pod &#34;FBSDKCoreKit&#34;` if they already exist your Podfile. The dependency for `tealium-swift` is already included in the `TealiumFacebook` framework.
+
+
+1. Remove `tealium-swift` and `pod "FBSDKCoreKit"` if they already exist your Podfile. The dependency for `tealium-swift` is already included in the `TealiumFacebook` framework.
 
 2. Add the following dependency to your Podfile:
       ```ruby
-      pod &#34;TealiumFacebook&#34;
+      pod "TealiumFacebook"
       ```
       The `TealiumFacebook` pod includes the following `TealiumSwift` dependencies:  
       ```bash
-      &#39;tealium-swift/Core&#39;
-      &#39;tealium-swift/RemoteCommands&#39;
-      &#39;tealium-swift/TagManagement&#39;
+      'tealium-swift/Core'
+      'tealium-swift/RemoteCommands'
+      'tealium-swift/TagManagement'
       ```
 
 3. Import the modules `TealiumSwift` and `TealiumFacebook` in your `TealiumHelper` file, and any other files that access the `Tealium` class, or the Facebook Remote Command.
@@ -149,21 +149,25 @@ To add additional modules from the Tealium Swift library, follow the [Swift Pack
 
 2. Remove the following line if it exists in your Cartfile:  
       ```bash
-      github &#34;facebook/facebook-ios-sdk&#34;
+      github "facebook/facebook-ios-sdk"
       ```
 
 3.  Add the following dependency to your Cartfile:  
       ```bash
-      github &#34;tealium/tealium-ios-facebook-remote-command&#34;
+      github "tealium/tealium-ios-facebook-remote-command"
       ```
 
-Tealium for Swift SDK (version 2.12&#43;) is required for the latest Facebook Remote Command integration.
+
+<blockquote>
+Tealium for Swift SDK (version 2.12+) is required for the latest Facebook Remote Command integration.
+</blockquote>
 
 
 
 
 
-1. Install [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project&#39;s top-level `build.gradle` file, if you haven&#39;t done so already.
+
+1. Install [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project's top-level `build.gradle` file, if you haven't done so already.
 
 
       ```groovy
@@ -171,16 +175,16 @@ Tealium for Swift SDK (version 2.12&#43;) is required for the latest Facebook Re
         repositories {
           mavenCentral()
           maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
           }
         }
       }
       ```
 
-2. Import both the Facebook SDK and Tealium-Facebook remote command by adding the following dependencies in your app project&#39;s `build.gradle` file:  
+2. Import both the Facebook SDK and Tealium-Facebook remote command by adding the following dependencies in your app project's `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium.remotecommands:facebook:3.0.0&#39;
+            implementation 'com.tealium.remotecommands:facebook:3.0.0'
       }
       ```
 
@@ -192,20 +196,20 @@ Tealium for Swift SDK (version 2.12&#43;) is required for the latest Facebook Re
 
 
 
-The manual installation for Facebook remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the Facebook remote commands for your iOS project:
+The manual installation for Facebook remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the Facebook remote commands for your iOS project:
 
-1. Install the [Facebook SDK](https://github.com/facebook/facebook-ios-sdk/tree/master/FBSDKCoreKit), if you haven&#39;t already done so.
+1. Install the [Facebook SDK](https://github.com/facebook/facebook-ios-sdk/tree/master/FBSDKCoreKit), if you haven't already done so.
 
 2. Clone the [Tealium iOS Facebook remote command](https://github.com/tealium/tealium-ios-facebook-remote-command) repo and drag the files within the `Sources` folder into your project.
 
 3. Add `Dispatchers.RemoteCommands` as a dispatcher.
 
-4. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true.`
+4. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true.`
 
 
 
 
-The manual installation for Facebook remote commands requires [Tealium for Android (Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) to be installed.
+The manual installation for Facebook remote commands requires [Tealium for Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) to be installed.
 
 To install the Facebook remote commands for your Android project:
 
@@ -215,18 +219,18 @@ To install the Facebook remote commands for your Android project:
             repositories {
               mavenCentral()
               flatDir {
-                dirs &#39;libs&#39;
+                dirs 'libs'
               }
             }
       }
       ```
 
-2. Add `tealium-facebook.aar` to `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`.
+2. Add `tealium-facebook.aar` to `<PROJECT_ROOT>/<MODULE>/libs`.
 
 3. Add the Tealium library dependency to your `build.gradle` file:  
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-facebook&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-facebook', ext:'aar')
       }
       ```
 
@@ -240,13 +244,13 @@ For all Tealium libraries, register the Facebook Remote Command when you initial
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s iOS (Swift) library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's iOS (Swift) library:
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                           profile: &#34;PROFILE&#34;,
-                           environment: &#34;ENVIRONMENT&#34;,
-                           dataSource: &#34;DATASOURCE&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+                           profile: "PROFILE",
+                           environment: "ENVIRONMENT",
+                           dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 config.remoteAPIEnabled = true // Required to use Remote Commands
 
@@ -259,10 +263,10 @@ tealium = Tealium(config: config) { _ in
     let facebook = FacebookRemoteCommand(launchOptions: launchOptions) 
 
     // Local JSON
-    //let facebook = FacebookRemoteCommand(type: .local(file: &#34;facebook&#34;), launchOptions: launchOptions) 
+    //let facebook = FacebookRemoteCommand(type: .local(file: "facebook"), launchOptions: launchOptions) 
 
     // Remote JSON
-    //let facebook = FacebookRemoteCommand(type: .remote(url: &#34;https://some.domain.com/facebook.json&#34;), launchOptions: launchOptions) 
+    //let facebook = FacebookRemoteCommand(type: .remote(url: "https://some.domain.com/facebook.json"), launchOptions: launchOptions) 
 
     remoteCommands.add(facebook)
 }
@@ -270,11 +274,11 @@ tealium = Tealium(config: config) { _ in
 
 
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s Kotlin library:
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's Kotlin library:
 ```kotlin
 val config = TealiumConfig(application,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
+        "ACCOUNT",
+        "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
 val facebook = FacebookRemoteCommand(application);
@@ -284,20 +288,20 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     remoteCommands?.add(facebook); 
 
     // Local JSON
-    //remoteCommands?.add(facebook, filename = &#34;facebook.json&#34;); 
+    //remoteCommands?.add(facebook, filename = "facebook.json"); 
 
     // Remote JSON
-    //remoteCommands?.add(facebook, remoteUrl = &#34;https://some.domain.com/facebook.json&#34;); 
+    //remoteCommands?.add(facebook, remoteUrl = "https://some.domain.com/facebook.json"); 
 }
 ```
 
 
 
-Initialize remote commands with the Remote Command tag for Tealium&#39;s Android (Java) library:   
+Initialize remote commands with the Remote Command tag for Tealium's Android (Java) library:   
 ```java
 import com.tealium.remotecommands.facebook.FacebookRemoteCommand;
 
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 FacebookRemoteCommand facebook = new FacebookRemoteCommand(this);
@@ -311,86 +315,86 @@ teal.addRemoteCommand(facebook);
 
 ## JSON Template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-  &#34;config&#34;: {
-    &#34;applicationid&#34;: &#34;YOUR_APP_ID&#34;,
-    &#34;clienttoken&#34;: &#34;YOUR_CLIENT_TOKEN&#34;,
-    &#34;accesstoken&#34;: &#34;YOUR_ACCESS_TOKEN&#34;,
-    &#34;userid&#34;: &#34;YOUR_USER_ID&#34;,
-    &#34;auto_log&#34;: true,
-    &#34;auto_log_events_enabled&#34;: true,
-    &#34;auto_initialized&#34;: true,
-    &#34;advertiser_id_collection_enabled&#34;: true,
-    &#34;advertiser_collection&#34;: true,
-    &#34;debug&#34;: true
+  "config": {
+    "applicationid": "YOUR_APP_ID",
+    "clienttoken": "YOUR_CLIENT_TOKEN",
+    "accesstoken": "YOUR_ACCESS_TOKEN",
+    "userid": "YOUR_USER_ID",
+    "auto_log": true,
+    "auto_log_events_enabled": true,
+    "auto_initialized": true,
+    "advertiser_id_collection_enabled": true,
+    "advertiser_collection": true,
+    "debug": true
   },
-  &#34;mappings&#34;: {
-    &#34;achievement_type&#34;: &#34;event.fb_description&#34;,
-    &#34;ad_type&#34;: &#34;event.ad_type&#34;,
-    &#34;content&#34;: &#34;event.fb_content&#34;,
-    &#34;content_type&#34;: &#34;event.fb_content_type&#34;,
-    &#34;currency_code&#34;: &#34;event.fb_currency&#34;,
-    &#34;event_name&#34;: &#34;event.fb_description&#34;,
-    &#34;current_level&#34;: &#34;event.fb_level&#34;,
-    &#34;pet_count&#34;: &#34;event.fb_max_rating_value&#34;,
-    &#34;number_of_items&#34;: &#34;event.fb_num_items&#34;,
-    &#34;order_id&#34;: &#34;event.fb_order_id&#34;,
-    &#34;payment_info_available&#34;: &#34;event.fb_payment_info_available&#34;,
-    &#34;signup_method&#34;: &#34;event.fb_registration_method&#34;,
-    &#34;search_keyword&#34;: &#34;event.fb_search_string&#34;,
-    &#34;success&#34;: &#34;event.fb_success&#34;,
-    &#34;customer_email&#34;: &#34;user.em&#34;,
-    &#34;customer_first_name&#34;: &#34;user.fn&#34;,
-    &#34;customer_last_name&#34;: &#34;user.ln&#34;,
-    &#34;customer_phone&#34;: &#34;user.ph&#34;,
-    &#34;customer_dob&#34;: &#34;user.dob&#34;,
-    &#34;customer_gender&#34;: &#34;user.ge&#34;,
-    &#34;customer_city&#34;: &#34;user.ct&#34;,
-    &#34;customer_state&#34;: &#34;user.st&#34;,
-    &#34;customer_zip&#34;: &#34;user.zp&#34;,
-    &#34;customer_country&#34;: &#34;user.country&#34;,
-    &#34;customer_id&#34;: &#34;fb_user_id&#34;,
-    &#34;user_value&#34;: &#34;fb_user_value&#34;,
-    &#34;user_key&#34;: &#34;fb_user_key&#34;,
-    &#34;product_id&#34;: &#34;product.fb_product_item_id,event.fb_content_id&#34;,
-    &#34;product_availability&#34;: &#34;product.fb_product_availability&#34;,
-    &#34;product_condition&#34;: &#34;product.fb_product_condition&#34;,
-    &#34;product_description&#34;: &#34;product.fb_product_description,event.fb_product_description&#34;,
-    &#34;product_image_link&#34;: &#34;product.fb_product_image_link&#34;,
-    &#34;product_link&#34;: &#34;product.fb_product_link&#34;,
-    &#34;product_name&#34;: &#34;product.fb_product_title&#34;,
-    &#34;product_variant&#34;: &#34;product.fb_product_gtin&#34;,
-    &#34;product_brand&#34;: &#34;product.fb_product_brand&#34;,
-    &#34;product_price&#34;: &#34;product.fb_product_price_amount,event.fb_value_to_sum&#34;,
-    &#34;product_currency&#34;: &#34;product.fb_product_price_currency&#34;,
-    &#34;product_alias&#34;: &#34;product_parameters.product_alias&#34;,
-    &#34;product_color&#34;: &#34;product_parameters.product_color&#34;,
-    &#34;order_total&#34;: &#34;purchase.fb_purchase_amount&#34;,
-    &#34;order_currency&#34;: &#34;purchase.fb_purchase_currency&#34;,
-    &#34;customer_status&#34;: &#34;purchase_parameters.customer_status&#34;,
-    &#34;coupon&#34;: &#34;purchase_parameters.coupon&#34;,
-    &#34;push_action&#34;: &#34;push.fb_push_action&#34;,
-    &#34;push_payload&#34;: &#34;push.fb_push_payload&#34;,
-    &#34;tealium_event&#34;: &#34;command_name&#34;
+  "mappings": {
+    "achievement_type": "event.fb_description",
+    "ad_type": "event.ad_type",
+    "content": "event.fb_content",
+    "content_type": "event.fb_content_type",
+    "currency_code": "event.fb_currency",
+    "event_name": "event.fb_description",
+    "current_level": "event.fb_level",
+    "pet_count": "event.fb_max_rating_value",
+    "number_of_items": "event.fb_num_items",
+    "order_id": "event.fb_order_id",
+    "payment_info_available": "event.fb_payment_info_available",
+    "signup_method": "event.fb_registration_method",
+    "search_keyword": "event.fb_search_string",
+    "success": "event.fb_success",
+    "customer_email": "user.em",
+    "customer_first_name": "user.fn",
+    "customer_last_name": "user.ln",
+    "customer_phone": "user.ph",
+    "customer_dob": "user.dob",
+    "customer_gender": "user.ge",
+    "customer_city": "user.ct",
+    "customer_state": "user.st",
+    "customer_zip": "user.zp",
+    "customer_country": "user.country",
+    "customer_id": "fb_user_id",
+    "user_value": "fb_user_value",
+    "user_key": "fb_user_key",
+    "product_id": "product.fb_product_item_id,event.fb_content_id",
+    "product_availability": "product.fb_product_availability",
+    "product_condition": "product.fb_product_condition",
+    "product_description": "product.fb_product_description,event.fb_product_description",
+    "product_image_link": "product.fb_product_image_link",
+    "product_link": "product.fb_product_link",
+    "product_name": "product.fb_product_title",
+    "product_variant": "product.fb_product_gtin",
+    "product_brand": "product.fb_product_brand",
+    "product_price": "product.fb_product_price_amount,event.fb_value_to_sum",
+    "product_currency": "product.fb_product_price_currency",
+    "product_alias": "product_parameters.product_alias",
+    "product_color": "product_parameters.product_color",
+    "order_total": "purchase.fb_purchase_amount",
+    "order_currency": "purchase.fb_purchase_currency",
+    "customer_status": "purchase_parameters.customer_status",
+    "coupon": "purchase_parameters.coupon",
+    "push_action": "push.fb_push_action",
+    "push_payload": "push.fb_push_payload",
+    "tealium_event": "command_name"
   },
-  &#34;commands&#34;: {
-    &#34;launch&#34;: &#34;initialize,setautologappeventsenabled,setautoinitenabled,enableadvertiseridcollection&#34;,
-    &#34;user_login&#34;: &#34;setuser,setuserid&#34;,
-    &#34;email_signup&#34;: &#34;updateuservalue&#34;,
-    &#34;level_up&#34;: &#34;achievedlevel&#34;,
-    &#34;user_register&#34;: &#34;completedregistration&#34;,
-    &#34;unlock_achievement&#34;: &#34;unlockedachievement&#34;,
-    &#34;cart_add&#34;: &#34;addedtocart&#34;,
-    &#34;custom_attribute&#34;: &#34;rated&#34;,
-    &#34;wishlist_add&#34;: &#34;addedtowishlist&#34;,
-    &#34;payment&#34;: &#34;initiatedcheckout&#34;,
-    &#34;product&#34;: &#34;logproductitem&#34;,
-    &#34;order&#34;: &#34;logpurchase&#34;,
-    &#34;flush&#34;: &#34;flush&#34;,
-    &#34;customfbevent&#34;: &#34;customfbevent&#34;
+  "commands": {
+    "launch": "initialize,setautologappeventsenabled,setautoinitenabled,enableadvertiseridcollection",
+    "user_login": "setuser,setuserid",
+    "email_signup": "updateuservalue",
+    "level_up": "achievedlevel",
+    "user_register": "completedregistration",
+    "unlock_achievement": "unlockedachievement",
+    "cart_add": "addedtocart",
+    "custom_attribute": "rated",
+    "wishlist_add": "addedtowishlist",
+    "payment": "initiatedcheckout",
+    "product": "logproductitem",
+    "order": "logpurchase",
+    "flush": "flush",
+    "customfbevent": "customfbevent"
   }
 }
 ```
@@ -490,7 +494,11 @@ The following is a list of standard event names supported with the `logEvent` me
 | `viewedcontent`              | `FBSDKAppEventNameViewedContent`                  |
 
 
+
+<blockquote>
 Since the Facebook SDK is installed alongside the Tealium SDK, you are able to trigger any native Facebook functionality given the corresponding tag configuration.
+</blockquote>
+
 
 ### Clear User
 
@@ -568,7 +576,11 @@ Uploads product catalog product item as an app event.
 |                |                           | `fb_product_mpn` | `String`                                     |
 |                |                           | `fb_product_brand` | `String`                                     |
 
+
+<blockquote>
 Either `gtin`, `mpn` or `brand` is required. Product parameters are optional fields for deep link specification.
+</blockquote>
+
 
 | Product Availability Input | Product Availability Lookup              |
 | -------------------------- | ---------------------------------------- |
@@ -592,7 +604,7 @@ Either `gtin`, `mpn` or `brand` is required. Product parameters are optional fie
  Log a purchase of the specified amount, in the specified currency, also optionally providing a set of additional characteristics describing the purchase.
 
  Arbitrary parameter dictionary of characteristics. The keys to this dictionary must
- be `NSString`&#39;s, and the values are expected to be `NSString` or `NSNumber`. Limitations on the number of
+ be `NSString`'s, and the values are expected to be `NSString` or `NSNumber`. Limitations on the number of
  parameters and name construction are given in the [FBSDKAppEvents](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-names) documentation. Commonly used parameter names
  are provided in [FBSDKAppEventParameterName](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-params) constants.
 
@@ -733,10 +745,14 @@ The following are [Facebook Standard Events](https://github.com/facebook/faceboo
 - `unlockedachievement`
 - `viewedcontent`
 
+
+<blockquote>
 Because the Facebook SDK is installed alongside the Tealium SDK, all native Facebook functionality is available.
+</blockquote>
+
 
 Arbitrary parameter dictionary of characteristics. The keys to this dictionary must
-be `NSString`&#39;s, and the values are expected to be `NSString` or `NSNumber`.  Limitations on the number of
+be `NSString`'s, and the values are expected to be `NSString` or `NSNumber`.  Limitations on the number of
 parameters and name construction are given in the [FBSDKAppEvents](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118s) documentation. Commonly used parameter names
 are provided in [FBSDKAppEventParameterName](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195) constants.
 

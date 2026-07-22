@@ -15,14 +15,14 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/snowflake-c
 
 SnowflakeマーケットプレイスからSnowflake用Tealium Audience Discoveryをインストールし、使用したいデータベースとスキーマへのアクセスを許可します。
 
-詳しい手順については、[Snowflake用Tealium Audience Discoveryのインストール]()を参照してください。
+詳しい手順については、[Snowflake用Tealium Audience Discoveryのインストール](https://docs.tealium.com/install-tealium-audience-discovery/)を参照してください。
 
 ## ステップ2: 最初のオーディエンスを作成する
 
 1. Snowflake用Tealium Audience Discoveryを開きます。
-1. **Audiences**に移動し、**&#43; Create new audience**をクリックします。
+1. **Audiences**に移動し、**+ Create new audience**をクリックします。
 1. オーディエンス名と説明を入力します。
-1. **Point &amp; Click**を選択します。
+1. **Point & Click**を選択します。
 1. **Database**、**Schema**、**Table / View**を選択します。
 1. 各ユーザーを一意に識別する**User ID column**を選択します。
 1. **Next**をクリックします。
@@ -33,18 +33,18 @@ SnowflakeマーケットプレイスからSnowflake用Tealium Audience Discovery
 
 アプリは初期ロードを実行し、構成したスケジュールに従ってオーディエンスの更新を開始します。オーディエンス詳細ビューから進行状況を監視します。
 
-詳細な構成オプションについては、[Snowflake用Tealium Audience Discoveryでオーディエンスを管理する]()を参照してください。
+詳細な構成オプションについては、[Snowflake用Tealium Audience Discoveryでオーディエンスを管理する](https://docs.tealium.com/manage-discovery-audiences/)を参照してください。
 
 ## ステップ3: オーディエンスをTealiumに接続する
 
 1. オーディエンスリストでアクションメニューを開き、**Share**をクリックします。
 1. **Database**、**Schema**、**Role**の値をコピーします。
-1. Tealiumで**Connect &gt; Data Sources**に移動し、**Add Data Source**をクリックします。
+1. Tealiumで**Connect > Data Sources**に移動し、**Add Data Source**をクリックします。
 1. **Data Cloud**の下で**Snowflake**を選択します。
 1. 名前を入力し、コピーした値を使用して接続を構成します。
 1. 処理を有効にし、処理構成を構成します。
 1. **Build query**の下で、オーディエンステーブルとインポートする列を選択します。
-1. クエリモードを**Timestamp &#43; Incrementing**に構成し、以下の列をマッピングします：
+1. クエリモードを**Timestamp + Incrementing**に構成し、以下の列をマッピングします：
 
    * **Timestamp column** — `TEALIUM_CTRL_COL_CREATED_AT`
    * **Incrementing column** — `TEALIUM_CTRL_COL_INCREMENTAL_ID`
@@ -56,10 +56,10 @@ SnowflakeマーケットプレイスからSnowflake用Tealium Audience Discovery
 
 Tealiumは構成したスケジュールに従ってオーディエンスレコードのロードを開始します。
 
-詳細な構成オプションについては、[SnowflakeオーディエンスをTealiumに接続する]()を参照してください。
+詳細な構成オプションについては、[SnowflakeオーディエンスをTealiumに接続する](https://docs.tealium.com/connect-snowflake-audiences/)を参照してください。
 
 ## 次のステップ
 
 * オーディエンスセグメントをアクティブ化するためのコネクタを構成する
 * Tealiumの属性とオーディエンスを使用してオーディエンスデータをエンリッチする
-* `TEALIUM_CTRL_COL_IS_ACTIVE`列を使用して[メンバーシップの変更を追跡する]()、ユーザーがオーディエンスから離れたり、再び資格を得たりしたときにアクションをトリガーする
+* `TEALIUM_CTRL_COL_IS_ACTIVE`列を使用して[メンバーシップの変更を追跡する](https://docs.tealium.com/connect-snowflake-audiences/#track-membership-changes)、ユーザーがオーディエンスから離れたり、再び資格を得たりしたときにアクションをトリガーする

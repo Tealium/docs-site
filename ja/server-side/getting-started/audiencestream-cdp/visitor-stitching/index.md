@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## アイデンティティ解決
 
-![](/images/server-side/as-getting-started-identity-resolution.jpg)
+![](https://docs.tealium.com/images/server-side/as-getting-started-identity-resolution.jpg)
 
 アイデンティティ解決とは、顧客が匿名でブランドと関わるさまざまな方法を指し、その行動を既知の顧客に関連付けることを指します。ほとんどのサイトやアプリは、ユーザーが自分自身を特定する（ログインするか購入を完了するなど）まで、未知のユーザーを追跡しようとします。
 

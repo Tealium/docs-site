@@ -4,7 +4,7 @@ description: We provide a variety of resources to help you answer your questions
 url: https://docs.tealium.com/help/
 ---
 
-![](/images/icons/icon-book-solid.svg)
+![](https://docs.tealium.com/images/icons/icon-book-solid.svg)
 
 #### Documentation
 
@@ -12,7 +12,7 @@ Our documentation offers guides on getting started with our products, client-sid
 
 
 
-![](/images/icons/icon-books-solid.svg)
+![](https://docs.tealium.com/images/icons/icon-books-solid.svg)
 
 #### Knowledge Base
 
@@ -21,7 +21,7 @@ Our knowledge base provides user guides, troubleshooting tips, implementation st
 
 
 
-![](/images/icons/icon-graduationcap.svg)
+![](https://docs.tealium.com/images/icons/icon-graduationcap.svg)
 
 #### Education
 
@@ -29,8 +29,8 @@ We offer courses and educational products designed to help you become experts wi
 
 
 
-{{% card-feature url=&#34;https://tealium.customershome.com/login?returnUrl=%2F&#34; %}}
-![](/images/icons/icon-audience.svg)
+{{% card-feature url="https://tealium.customershome.com/login?returnUrl=%2F" %}}
+![](https://docs.tealium.com/images/icons/icon-audience.svg)
 
 #### Community
 
@@ -39,15 +39,15 @@ Our community site includes forums, speaking engagements, reference calls, and f
 
 
 
-![](/images/icons/icon-help.svg)
+![](https://docs.tealium.com/images/icons/icon-help.svg)
 
 #### Support
 
-Ask our experienced, best-in-class Customer Success Team for assistance with any issues you encounter.
+Submit a support ticket through the Tealium support portal.
 
 
 
-![](/images/icons/icon-menu.svg)
+![](https://docs.tealium.com/images/icons/icon-menu.svg)
 
 #### Resource Center
 
@@ -57,7 +57,7 @@ Our in-product resource center provides context-sensitive links to product guide
 
 
 
-![](/images/icons/icon-triangle-exclamation.svg)
+![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
 
 #### Status Page
 

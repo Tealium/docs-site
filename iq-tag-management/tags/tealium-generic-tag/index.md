@@ -12,23 +12,23 @@ This tag supports one of three types: image, iframe, or script. Identifying the 
 Image tag code snippets usually contain one of the following:
 
 * `new Image()`
-* `&lt;img src=&#34;https://`
-* `document.write(&#34;&lt;img src=&#34; ... &#34;&gt;&#34;);`
+* `<img src="https://`
+* `document.write("<img src=" ... ">");`
 
 ### Iframe
 
 Iframe tag code snippets usually contain one of the following:
 
-* `document.createElement(&#39;iframe&#39;)`
-* `&lt;iframe src=&#34;https://`
-* `document.write(&#34;&lt;iframe src=&#34; ... &#34;&gt;&lt;/iframe&#34;);`
+* `document.createElement('iframe')`
+* `<iframe src="https://`
+* `document.write("<iframe src=" ... "></iframe");`
 
 ### Script
 
 Script tag code snippets usually contain one of the following:
 
-* `&lt;script type=&#34;text/javascript&#34; src=&#34;//example.com/tag.js&#34;&gt;&lt;/script&gt;`
-* `document.createElement(&#39;script&#39;)`
+* `<script type="text/javascript" src="//example.com/tag.js"></script>`
+* `document.createElement('script')`
 
 ## Tag components
 
@@ -45,7 +45,7 @@ In our sample pixel above, the base URL is: `//www.example.com/tag.gif`
 Many tags collect data by using the query string of the URL. These are the key-value pairs that appear in the URL after the `?` character. In our example the parameters are:
 
 ```nohl
-cid=112233&amp;rg=us&amp;rnd=&#39; &#43; rnd_nocache &#43; &#39;&amp;ref=&#39; &#43; referrer
+cid=112233&rg=us&rnd=' + rnd_nocache + '&ref=' + referrer
 ```
 
 Static parameters have values that you can see in the snippet and do not change from page to page. In this example, the static parameters are:
@@ -62,7 +62,7 @@ Dynamic parameters must be configured using [data mappings](). All variables con
 
 ### Cache bust
 
-It&#39;s common for vendor tags to require a cache bust variable in the query string. This value is randomly generated and added to URLs to prevent the browser from caching the request. Our example includes a cache busting variable called `rnd`.
+It's common for vendor tags to require a cache bust variable in the query string. This value is randomly generated and added to URLs to prevent the browser from caching the request. Our example includes a cache busting variable called `rnd`.
 
 This functionality is built into the Generic Tag. Simply enable the cache bust setting and specify the name of the cache bust parameter and the Generic Tag will generate and assign the random value for you.
 
@@ -70,7 +70,7 @@ This functionality is built into the Generic Tag. Simply enable the cache bust s
 
 First, go to the tag marketplace and add the Generic Tag to your profile.
 
-![](/images/iq-tag-management/tags/tealium_generic_tag_configuration.png)
+![](https://docs.tealium.com/images/iq-tag-management/tags/tealium_generic_tag_configuration.png)
 
 After adding the Tag, configure the following settings:
 
@@ -81,7 +81,7 @@ After adding the Tag, configure the following settings:
     * If the base and HTTPS URL are the same, then add `//` as the prefix in the **Base URL** field and leave the **HTTPS URL** field empty. This tells the tag to apply HTTP and HTTPS appropriately based on the current location protocol.
     * If the URLs are different, set their respective fields.
 * **Query String Delimiter**: The delimiter character that separates the query string portion from the URL. The default is `?`, but this can be changed.
-* **Parameter Delimiter**: The delimiter character that separates each key-value pair in the query string. The default is `&amp;`, but this can be changed.
+* **Parameter Delimiter**: The delimiter character that separates each key-value pair in the query string. The default is `&`, but this can be changed.
 * **key-value Delimiter**: The delimiter character that separates a key from its value. The default is `=`, but this can be changed.
 * **Query String**: Enter static and dynamic query string parameters using the delimiters defined.
 
@@ -98,30 +98,38 @@ Each type of data layer variable can be substituted using the following prefixes
 
 ### Load rules
 
-[Load rules]() determine when and where to load an instance of this tag on your site.
+[Load rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 ### Data mappings
 
 Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings]().
 
+
+<blockquote>
 The Generic Tag supports custom mappings only. You can define a custom destination name in the text field.
+</blockquote>
+
 
 ### Callback function
 
 If your tag requires code to run after the main library has loaded you can use the callback function.The Generic Tag defines an internal callback property named `u.callback` that you can redefine within a tag-scoped [Javascript Code extension](). Simply create a new extension, add your callback code, and scope it to the Generic Tag. This code will then run after the tag code has executed on the page.
 
+
+<blockquote>
 The `u.callback` function cannot be used when the Generic Tag type is set to `image`.
+</blockquote>
+
 
 Example:
 
 ```js
 // Put this code in a Javascript Code extension scoped to the tag.
 u.callback = function() {
- console.log(&#34;The tag has loaded, now do cool stuff!&#34;);
+ console.log("The tag has loaded, now do cool stuff!");
 }
 ```
 
-![](/images/iq-tag-management/generic-tag-callback-extension.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/generic-tag-callback-extension.jpg)
 
 ### Map HTML attributes
 
@@ -130,9 +138,9 @@ If the tag **Type** is `Script` or `Iframe`, you can add attributes to the tag b
 For example, the following script uses a `data-id` attribute.
 
 ```js
-&lt;script async data-id=&#34;1234567890&#34; src=&#34;https://example.com/js/embed.js&#34;&gt;&lt;/script&gt;
+<script async data-id="1234567890" src="https://example.com/js/embed.js"></script>
 ```
 
 To provide a value for the `data-id` attribute, map a custom value to the `attribute.data-id` custom destination, as shown in the following figure:
 
-![](/images/iq-tag-management/generic-tag-map-to-attribute-data-id.png)
+![](https://docs.tealium.com/images/iq-tag-management/generic-tag-map-to-attribute-data-id.png)

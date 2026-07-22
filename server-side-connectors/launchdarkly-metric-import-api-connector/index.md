@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 * Documentation: [LaunchDarkly API](https://docs.launchdarkly.com/home/creating-experiments/import-metric-events)
 
 ## Batch Limits
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 10000
 * Max time since oldest request: 10 minutes
@@ -27,14 +27,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Company Name**  
  (Required) Name of your company in LaunchDarkly.
 * **Project Key**  
- (Required) Project key for your metric events environment. Locate the project key in LaunchDarkly account settings &gt; Projects &gt; Environments.
+ (Required) Project key for your metric events environment. Locate the project key in LaunchDarkly account settings > Projects > Environments.
 * **Environment Key**  
 (Required) Environment key for the environment your metric events pertain to. Find these under Environments on the Projects tab in your LaunchDarkly [Account](https://app.launchdarkly.com/settings/members) settings page.
 * **Access Token**  
@@ -55,5 +55,5 @@ The following section describes how to set up parameters and options for each ac
 | Key | (Required) Identifies your metric. The Event Name in your LaunchDarkly metric must match this value. |
 | Creation Date | Timestamp of when the event is created, in Unix milliseconds. |
 | Metric Value | The value of your metric. Required for numeric metrics. Optional for conversion metrics. LaunchDarkly will ignore this value if provided for conversion metrics. |
-| Context Keys | A JSON object with one or more properties that lists the context keys for each metric event context in the format: `&lt;contextKind&gt;: &lt;contextKey&gt;`. For example, if your experiment works with user contexts, you may have the following kind/key pair: `&#34;user&#34;: &#34;user-key-123abc&#34;`.&lt;br&gt;Each context kind and key must match the kind/key pair in the corresponding context provided to LaunchDarkly SDK evaluating flags used in your experiments.&lt;br&gt;For more information about using context kinds, see [Randomization units](https://docs.launchdarkly.com/home/creating-experiments/allocation#randomization-units). |
+| Context Keys | A JSON object with one or more properties that lists the context keys for each metric event context in the format: `<contextKind>: <contextKey>`. For example, if your experiment works with user contexts, you may have the following kind/key pair: `"user": "user-key-123abc"`.<br>Each context kind and key must match the kind/key pair in the corresponding context provided to LaunchDarkly SDK evaluating flags used in your experiments.<br>For more information about using context kinds, see [Randomization units](https://docs.launchdarkly.com/home/creating-experiments/allocation#randomization-units). |
 

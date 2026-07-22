@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/pipedrive-connector/
 
 ## 構成を構成する
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -38,13 +38,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/pipedrive-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|名前|  &lt;ul&gt;&lt;li&gt;作成する人物の名前。&lt;/li&gt;&lt;li&gt;詳細については、[人物を追加する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/post_persons)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|オーナーID|  &lt;ul&gt;&lt;li&gt;この人物のオーナーとしてマークされるユーザーのID。&lt;/li&gt;&lt;li&gt;省略した場合、認証されたユーザーIDが使用されます。&lt;/li&gt;&lt;/ul&gt; |
+|名前|  <ul><li>作成する人物の名前。</li><li>詳細については、[人物を追加する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/post_persons)を参照してください。</li></ul> |
+|オーナーID|  <ul><li>この人物のオーナーとしてマークされるユーザーのID。</li><li>省略した場合、認証されたユーザーIDが使用されます。</li></ul> |
 |組織ID| この人物が所属する組織のID。|
 |メール| 人物のメールアドレス。|
 |電話| 人物の電話番号。|
-|表示先|  &lt;ul&gt;&lt;li&gt;人物の可視性。&lt;/li&gt;&lt;li&gt;省略した場合、可視性は認証されたユーザーのこのアイテムタイプのデフォルトの可視性構成に構成されます。&lt;/li&gt;&lt;/ul&gt; |
-|追加時間|  &lt;ul&gt;&lt;li&gt;人物の作成日時を協定世界時（UTC）形式でオプションで構成します。&lt;/li&gt;&lt;li&gt;例：`YYYY-MM-DD HH:MM:SS`。&lt;/li&gt;&lt;li&gt;管理者ユーザーのAPIトークンが必要です。&lt;/li&gt;&lt;/ul&gt; |
+|表示先|  <ul><li>人物の可視性。</li><li>省略した場合、可視性は認証されたユーザーのこのアイテムタイプのデフォルトの可視性構成に構成されます。</li></ul> |
+|追加時間|  <ul><li>人物の作成日時を協定世界時（UTC）形式でオプションで構成します。</li><li>例：`YYYY-MM-DD HH:MM:SS`。</li><li>管理者ユーザーのAPIトークンが必要です。</li></ul> |
 
 ### アクション - 人物を更新する
 
@@ -52,14 +52,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/pipedrive-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ID|  &lt;ul&gt;&lt;li&gt;人物のID。&lt;/li&gt;&lt;li&gt;詳細については、[人物を更新する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/put_persons_id)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ID|  <ul><li>人物のID。</li><li>詳細については、[人物を更新する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/put_persons_id)を参照してください。</li></ul> |
 |名前| 作成する人物の名前。|
-|オーナーID|  &lt;ul&gt;&lt;li&gt;この人物のオーナーとしてマークされるユーザーのID。&lt;/li&gt;&lt;li&gt;省略した場合、認証されたユーザーIDが使用されます。&lt;/li&gt;&lt;/ul&gt; |
+|オーナーID|  <ul><li>この人物のオーナーとしてマークされるユーザーのID。</li><li>省略した場合、認証されたユーザーIDが使用されます。</li></ul> |
 |組織ID| この人物が所属する組織のID。|
 |メール| 人物のメールアドレス。|
 |電話| 人物の電話番号。|
-|表示先|  &lt;ul&gt;&lt;li&gt;人物の可視性。&lt;/li&gt;&lt;li&gt;省略した場合、可視性は認証されたユーザーのこのアイテムタイプのデフォルトの可視性構成に構成されます。&lt;/li&gt;&lt;/ul&gt; |
-|追加時間|  &lt;ul&gt;&lt;li&gt;人物の作成日時を協定世界時（UTC）形式でオプションで構成します。&lt;/li&gt;&lt;li&gt;例：`YYYY-MM-DD HH:MM:SS`&lt;/li&gt;&lt;li&gt;管理者ユーザーのAPIトークンが必要です。&lt;/li&gt;&lt;/ul&gt; |
+|表示先|  <ul><li>人物の可視性。</li><li>省略した場合、可視性は認証されたユーザーのこのアイテムタイプのデフォルトの可視性構成に構成されます。</li></ul> |
+|追加時間|  <ul><li>人物の作成日時を協定世界時（UTC）形式でオプションで構成します。</li><li>例：`YYYY-MM-DD HH:MM:SS`</li><li>管理者ユーザーのAPIトークンが必要です。</li></ul> |
 
 ### アクション - 二人の人物を統合する
 
@@ -67,7 +67,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/pipedrive-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ID|  &lt;ul&gt;&lt;li&gt;統合される人物のID。&lt;/li&gt;&lt;li&gt;詳細については、[二人の人物を統合する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/put_persons_id_merge)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ID|  <ul><li>統合される人物のID。</li><li>詳細については、[二人の人物を統合する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/put_persons_id_merge)を参照してください。</li></ul> |
 |統合先ID| 人物が統合される人物のID。|
 
 ### アクション - 人物を削除する
@@ -76,4 +76,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/pipedrive-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ID|  &lt;ul&gt;&lt;li&gt;削除する人物のID。&lt;/li&gt;&lt;li&gt;詳細については、[人物を削除する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/delete_persons_id)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|ID|  <ul><li>削除する人物のID。</li><li>詳細については、[人物を削除する](https://developers.pipedrive.com/docs/api/v1/#!/Persons/delete_persons_id)を参照してください。</li></ul> |

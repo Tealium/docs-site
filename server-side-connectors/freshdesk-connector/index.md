@@ -16,11 +16,11 @@ url: https://docs.tealium.com/server-side-connectors/freshdesk-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Connector. Read the [Connector Overview]() article for general instructions on how to add a Connector.
+Go to the Connector Marketplace and add a new Connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a Connector.
 
 After adding the connector, configure the following settings:
 
-* **Account Domain**: Provide your account&#39;s domain name. For example, enter `exampledomain` if your Freshdesk account API endpoint is: `https://exampledomain.freshdesk.com/api/v2/`.   
+* **Account Domain**: Provide your account's domain name. For example, enter `exampledomain` if your Freshdesk account API endpoint is: `https://exampledomain.freshdesk.com/api/v2/`.   
 ([Freshdesk API](https://developers.freshdesk.com/api/#getting-started))
 * **Username**: For authentication, use the same username and password that you use when you log in to Freshdesk.
 * **Password**: For authentication, use the same username and password that you use when you log in to Freshdesk.
@@ -37,7 +37,7 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter**      | **Description**                                                                                                                                                                                |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name               | Name of the contact. For more information on this endpoint, visit: [Freshdesk&#39;s documentation](https://developers.freshdesk.com/api/#create_contact).                                          |
+| Name               | Name of the contact. For more information on this endpoint, visit: [Freshdesk's documentation](https://developers.freshdesk.com/api/#create_contact).                                          |
 | Email              | Primary email address of the contact. To associate additional emails with this contact, use the `other_emails` attribute.                                                                      |
 | Phone              | Telephone number of the contact.                                                                                                                                                               |
 | Mobile             | Mobile number of the contact.                                                                                                                                                                  |
@@ -60,7 +60,7 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter**      | **Description**                                                                                                                                                                                |
 |:-------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Contact ID         | The ID of the contact you want to update. For more information on this endpoint, visit: [Freshdesk&#39;s documentation](https://developers.freshdesk.com/api/#update_contact).                     |
+| Contact ID         | The ID of the contact you want to update. For more information on this endpoint, visit: [Freshdesk's documentation](https://developers.freshdesk.com/api/#update_contact).                     |
 | Name               | Name of the contact.                                                                                                                                                                           |
 | Email              | Primary email address of the contact. To associate additional emails with this contact, use the `other_emails` attribute.                                                                      |
 | Phone              | Telephone number of the contact.                                                                                                                                                               |
@@ -84,7 +84,7 @@ This section describes how to set up parameters and options for each action.
 
 | **Parameter** | **Description**                                                                                                                                                                 |
 |:--------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Contact ID    | The ID of the contact you want to soft delete. For more information on this endpoint, visit: [Freshdesk&#39;s documentation](https://developers.freshdesk.com/api/#delete_contact). |
+| Contact ID    | The ID of the contact you want to soft delete. For more information on this endpoint, visit: [Freshdesk's documentation](https://developers.freshdesk.com/api/#delete_contact). |
 
 ### Action - Permanently Delete a Contact
 

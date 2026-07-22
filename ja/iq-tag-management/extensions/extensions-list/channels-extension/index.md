@@ -23,11 +23,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
 
 * **チャンネル名**：チャンネルの名前
 * **カテゴリ**：ドロップダウンメニューからチャンネルが属するカテゴリを選択
-* **条件**：このチャンネルを構成するタイミングを決定する条件を適用。**&#43;** ボタンをクリックして新しい条件を追加するか、**-** ボタンをクリックして条件を削除します。
+* **条件**：このチャンネルを構成するタイミングを決定する条件を適用。**+** ボタンをクリックして新しい条件を追加するか、**-** ボタンをクリックして条件を削除します。
 
 **チャンネルを追加** ボタンをクリックして、必要に応じて追加のチャンネルを追加および構成します。
 
-![](/images/iq-tag-management/no-title-176icaa0d1be9b890a0e.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-176icaa0d1be9b890a0e.png)
 
 ### 帰属期間と人口
 
@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
     * 現在のチャンネルのみを追跡したい場合、または単一のコンバージョンを超えてライフタイムチャンネルの動作に興味がない場合は、ボックスをチェックします。
     * 複数のコンバージョンがあるサイトの場合は、ボックスをチェックしないでください。
 
-![](/images/iq-tag-management/no-title-175i03abcc3041938f48.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-175i03abcc3041938f48.png)
 
 ### コンバージョン
 
@@ -58,7 +58,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/ch
 
 * **クローザークレジット**：これは、コンバージョンのクローザーに帰属するコンバージョン値ソースの割合です。
 
-![](/images/iq-tag-management/no-title-174icc0c5df949e4995c.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-174icc0c5df949e4995c.png)
 
 ## クッキーデータのフォーマット
 
@@ -171,8 +171,8 @@ Channels拡張機能を使用すると、拡張機能によって保存された
   // カスタムハンドラの例
   // もしcommisionjunctionがオリジネーターであれば
   // それはクローザーでもあります
-  if(obj.channel_originator==&#39;commisionjunction&#39;){
-    obj.channel_closer=&#39;commission junction&#39;;
+  if(obj.channel_originator=='commisionjunction'){
+    obj.channel_closer='commission junction';
   }
 ```
 

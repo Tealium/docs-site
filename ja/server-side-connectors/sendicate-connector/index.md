@@ -14,14 +14,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendicate-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[Connector Overview]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[Connector Overview](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
 * **APIトークン**
   * 以下の手順でAPIトークンを見つけます：
     * Sendicateアカウントにログインします。
-    * **Manage &amp;gt; Account**に移動します。
+    * **Manage &gt; Account**に移動します。
     * **API Access**までスクロールダウンします。
   * 詳細については、次を参照してください：[Sendicate Documentation: API Intro](http://www.sendicate.net/docs/api/#api_intro)
 
@@ -37,9 +37,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendicate-connector/
 
 | **パラメータ**    | **説明**                                                                                                                                                                                 |
 |:-----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| サブスクライバーのメール | &lt;ul&gt;&lt;li&gt;サブスクライバーのメールアドレス。&lt;/li&gt;&lt;li&gt;このエンドポイントに関する詳細は、[Sendicate&#39;s documentation](http://www.sendicate.net/docs/api/#update_a_subscriber)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| 属性       | &lt;ul&gt;&lt;li&gt;更新するサブスクライバーの属性。&lt;/li&gt;&lt;li&gt;これらの属性はすでにSendicateプラットフォーム内に存在している必要があります。&lt;/li&gt;&lt;/ul&gt;                                                        |
-| リストID        | &lt;ul&gt;&lt;li&gt;サブスクライバーに関連付けるリストIDの配列。&lt;/li&gt;&lt;li&gt;Customer Data Hubで構成された配列属性タイプである必要があります。&lt;/li&gt;&lt;/ul&gt;                                       |
+| サブスクライバーのメール | <ul><li>サブスクライバーのメールアドレス。</li><li>このエンドポイントに関する詳細は、[Sendicate's documentation](http://www.sendicate.net/docs/api/#update_a_subscriber)を参照してください。</li></ul> |
+| 属性       | <ul><li>更新するサブスクライバーの属性。</li><li>これらの属性はすでにSendicateプラットフォーム内に存在している必要があります。</li></ul>                                                        |
+| リストID        | <ul><li>サブスクライバーに関連付けるリストIDの配列。</li><li>Customer Data Hubで構成された配列属性タイプである必要があります。</li></ul>                                       |
 
 ### アクション - リストにサブスクライバーを追加
 
@@ -47,9 +47,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendicate-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                    |
 |:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| リストID       | &lt;ul&gt;&lt;li&gt;サブスクライバーを追加したいリストのID。&lt;/li&gt;&lt;li&gt;このエンドポイントに関する詳細は、[Sendicate&#39;s documentation](http://www.sendicate.net/docs/api/#create_or_update_list_subscribers)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| メール         | &lt;ul&gt;&lt;li&gt;サブスクライバーのメールアドレス。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                             |
-| 属性    | &lt;ul&gt;&lt;li&gt;この呼び出しはサブスクライバーも更新します。&lt;/li&gt;&lt;li&gt;これらの属性はすでにSendicateプラットフォーム内に存在している必要があります。&lt;/li&gt;&lt;/ul&gt;                                                                                            |
+| リストID       | <ul><li>サブスクライバーを追加したいリストのID。</li><li>このエンドポイントに関する詳細は、[Sendicate's documentation](http://www.sendicate.net/docs/api/#create_or_update_list_subscribers)を参照してください。</li></ul> |
+| メール         | <ul><li>サブスクライバーのメールアドレス。</li></ul>                                                                                                                                                                             |
+| 属性    | <ul><li>この呼び出しはサブスクライバーも更新します。</li><li>これらの属性はすでにSendicateプラットフォーム内に存在している必要があります。</li></ul>                                                                                            |
 
 ### アクション - リストからサブスクライバーを削除
 
@@ -57,8 +57,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendicate-connector/
 
 | **パラメータ**    | **説明**                                                                  |
 |:-----------------|:---------------------------------------------------------------------------------|
-| リストID          | &lt;ul&gt;&lt;li&gt;サブスクライバーを削除したいリストのID。&lt;/li&gt;&lt;/ul&gt; |
-| サブスクライバーのメール | &lt;ul&gt;&lt;li&gt;サブスクライバーのメールアドレス。&lt;/li&gt;&lt;/ul&gt;                          |
+| リストID          | <ul><li>サブスクライバーを削除したいリストのID。</li></ul> |
+| サブスクライバーのメール | <ul><li>サブスクライバーのメールアドレス。</li></ul>                          |
 
 ### アクション - サブスクライバーの登録解除
 
@@ -66,5 +66,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/sendicate-connector/
 
 | **パラメータ**    | **説明**                                                                                                                                                                                                         |
 |:-----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| サブスクライバーのメール | &lt;ul&gt;&lt;li&gt;登録を解除するサブスクライバーのメールアドレス。&lt;/li&gt;&lt;li&gt;このエンドポイントに関する詳細は、[Sendicate&#39;s documentation](http://www.sendicate.net/docs/api/#unsubscribe_a_subscriber)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| ステータス           | &lt;ul&gt;&lt;li&gt;`true` または `false`。&lt;/li&gt;&lt;li&gt;`false`の値はサブスクライバーの登録を解除します。&lt;/li&gt;&lt;/ul&gt;                                                                                                                        |
+| サブスクライバーのメール | <ul><li>登録を解除するサブスクライバーのメールアドレス。</li><li>このエンドポイントに関する詳細は、[Sendicate's documentation](http://www.sendicate.net/docs/api/#unsubscribe_a_subscriber)を参照してください。</li></ul> |
+| ステータス           | <ul><li>`true` または `false`。</li><li>`false`の値はサブスクライバーの登録を解除します。</li></ul>                                                                                                                        |

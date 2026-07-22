@@ -15,7 +15,7 @@ PATCH /scim/v2/Users/{id}
 
 すべての API 呼び出しには OAuth ベアラートークンが使用され、API キーは使用されません。
 
-詳細については、[認証]()を参照してください。
+詳細については、[認証](https://docs.tealium.com/about-scim-api/#authentication)を参照してください。
 
 ## PATCH 操作のパラメータ
 
@@ -39,42 +39,42 @@ PATCH /scim/v2/Users/{id}
 #### Microsoft Entra ID
 
 ```bash
-curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34; \
--H &#34;Content-Type: application/scim&#43;json&#34; \
--H &#34;Accept: application/scim&#43;json&#34; \
--d &#39;{
-    &#34;schemas&#34;: [
-        &#34;urn:ietf:params:scim:api:messages:2.0:PatchOp&#34;
+curl -X PATCH "https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b" \
+-H "Content-Type: application/scim+json" \
+-H "Accept: application/scim+json" \
+-d '{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &#34;Operations&#34;: [
+    "Operations": [
         {
-            &#34;op&#34;: &#34;replace&#34;,
-            &#34;path&#34;: &#34;active&#34;,
-            &#34;value&#34;: &#34;false&#34;
+            "op": "replace",
+            "path": "active",
+            "value": "false"
         }
-    , &#34;/ja/early-access/api/scim-api/patch-user-api&#34;]
-}&#39;
+    , "/ja/early-access/api/scim-api/patch-user-api"]
+}'
 ```
 
 #### Okta
 
 ```bash
-curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34; \
--H &#34;Content-Type: application/scim&#43;json&#34; \
--H &#34;Accept: application/scim&#43;json&#34; \
--d &#39;{
-    &#34;schemas&#34;: [
-        &#34;urn:ietf:params:scim:api:messages:2.0:PatchOp&#34;
+curl -X PATCH "https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b" \
+-H "Content-Type: application/scim+json" \
+-H "Accept: application/scim+json" \
+-d '{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &#34;Operations&#34;: [
+    "Operations": [
         {
-            &#34;op&#34;: &#34;replace&#34;,
-            &#34;value&#34;: {
-                &#34;active&#34;: false
+            "op": "replace",
+            "value": {
+                "active": false
             }
         }
-    , &#34;/ja/early-access/api/scim-api/patch-user-api&#34;]
-}&#39;
+    , "/ja/early-access/api/scim-api/patch-user-api"]
+}'
 ```
 
 ### 例応答
@@ -87,8 +87,8 @@ curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0
 
 | エラーコード | エラーメッセージ |
 | --- | --- |
-| 400 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;400&#34;,&#34;scimType&#34;: &#34;invalidValue&#34;,&#34;detail&#34;: &#34;User payload is required.&#34;}` |
-| 401 | `{&#34;returnCode&#34; : 1401 , &#34;message&#34; : &#34;Authentication failed.&#34;}` |
-| 403 | `{&#34;schemas&#34;: [ &#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;403&#34;,&#34;scimType&#34;: null,&#34;detail&#34;: &#34;Missing X-Tealium-Account header.&#34;}` |
-| 404 |` {&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;404&#34;,&#34;scimType&#34;: &#34;noTarget&#34;,&#34;detail&#34;: &#34;User not found in account {ACCOUNT}.&#34;}`|
-| 500 | `{&#34;schemas&#34;: [&#34;urn:ietf:params:scim:api:messages:2.0:Error&#34;],&#34;status&#34;: &#34;500&#34;,&#34;scimType&#34;: &#34;internalServerError&#34;,&#34;detail&#34;: &#34;Error processing json for extension - account {ACCOUNT}&#34;}`|
+| 400 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "400","scimType": "invalidValue","detail": "User payload is required."}` |
+| 401 | `{"returnCode" : 1401 , "message" : "Authentication failed."}` |
+| 403 | `{"schemas": [ "urn:ietf:params:scim:api:messages:2.0:Error"],"status": "403","scimType": null,"detail": "Missing X-Tealium-Account header."}` |
+| 404 |` {"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "404","scimType": "noTarget","detail": "User not found in account {ACCOUNT}."}`|
+| 500 | `{"schemas": ["urn:ietf:params:scim:api:messages:2.0:Error"],"status": "500","scimType": "internalServerError","detail": "Error processing json for extension - account {ACCOUNT}"}`|

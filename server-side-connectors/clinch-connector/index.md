@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Client ID**  
@@ -131,7 +131,7 @@ Select the event type. The following values are available:
 | `amount` | The total price amount. |
 | `currency` | The three-letter currency code. |
 
-#### Privacy &amp; Consent
+#### Privacy & Consent
 
 | **Parameter** | **Description** |
 | --- | --- |

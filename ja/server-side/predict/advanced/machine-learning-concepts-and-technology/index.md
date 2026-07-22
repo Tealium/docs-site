@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/predict/advanced/machine-learning-c
 
 欲しいデータが何か分かっている場合、機械学習はそのデータを取得するまでの道のりを加速します。パターンを特定する必要がある場合や、何を欲しいか正確には分からない場合、機械学習はパターンを見つけ出し、データ取得を進めるために使用できる結果を明らかにします。
 
-機械学習が何であるか、何でないかについての情報は、[機械学習 vs. 人工知能]()をご覧ください。
+機械学習が何であるか、何でないかについての情報は、[機械学習 vs. 人工知能](https://docs.tealium.com/machine-learning-vs-artificial-intelligence/)をご覧ください。
 
 ## 目標
 

@@ -14,7 +14,11 @@ url: https://docs.tealium.com/ja/platforms/cordova-v1/module-list/adid/
       cordova plugin add tealium-cordova-adidentifier
       ```
 
+
+<blockquote>
 広告識別子モジュールはGoogle Play Services Adsモジュールに依存しています。アプリが起動時にクラッシュするのを防ぐために、[AdMob App ID](https://developers.google.com/admob/android/quick-start)をアプリの`AndroidManifest.xml`ファイルに追加してください。
+</blockquote>
+
 
 ## 初期化
 
@@ -59,10 +63,10 @@ url: https://docs.tealium.com/ja/platforms/cordova-v1/module-list/adid/
 2. 永続保存から広告識別子データを削除します：
       ```javascript
       // android only
-      tealium.removePersistent(&#34;google_adid&#34;, &lt;your tealium instance name&gt;);
+      tealium.removePersistent("google_adid", <your tealium instance name>);
 
       // ios only
-      tealium.removePersistent(&#34;device_advertising_id&#34;, &lt;your tealium instance name&gt;);
-      tealium.removePersistent(&#34;device_advertising_vendor_id&#34;, &lt;your tealium instance name&gt;);
-      tealium.removePersistent(&#34;device_advertising_enabled&#34;, &lt;your tealium instance name&gt;);
+      tealium.removePersistent("device_advertising_id", <your tealium instance name>);
+      tealium.removePersistent("device_advertising_vendor_id", <your tealium instance name>);
+      tealium.removePersistent("device_advertising_enabled", <your tealium instance name>);
       ```

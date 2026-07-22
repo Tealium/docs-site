@@ -7,20 +7,20 @@ url: https://docs.tealium.com/ja/platforms/angular/track/
 
 ## ビューの追跡
 
-[`view()`](/ja/platforms/angular/api/#view) メソッドはページビューを追跡します。このメソッドは、以下の例に示すように、キーと値のペアのオブジェクトを単一のパラメータとして取ります：
+[`view()`](https://docs.tealium.com/ja/platforms/angular/api/#view) メソッドはページビューを追跡します。このメソッドは、以下の例に示すように、キーと値のペアのオブジェクトを単一のパラメータとして取ります：
 
 ```javascript
 this.tealium.view({
-    &#34;tealium_event&#34;  : &#34;SCREEN_NAME&#34;,
-    &#34;page_type&#34;      : &#34;PAGE_TYPE&#34;,
-    &#34;product_id&#34;     : [&#34;PRODUCT_ID&#34;]});
+    "tealium_event"  : "SCREEN_NAME",
+    "page_type"      : "PAGE_TYPE",
+    "product_id"     : ["PRODUCT_ID"]});
 ```
 ## イベントの追跡
 
-[`link()`](/ja/platforms/angular/api/#link) メソッドはページ内イベントを追跡します。このメソッドは、以下の例に示すように、キーと値のペアのオブジェクトを単一のパラメータとして取ります：
+[`link()`](https://docs.tealium.com/ja/platforms/angular/api/#link) メソッドはページ内イベントを追跡します。このメソッドは、以下の例に示すように、キーと値のペアのオブジェクトを単一のパラメータとして取ります：
 
 ```javascript
 this.tealium.link({
-    &#34;tealium_event&#34; : &#34;EVENT_NAME&#34;,
-    &#34;customer_id&#34;   : &#34;CUSTOMER_ID&#34;});
+    "tealium_event" : "EVENT_NAME",
+    "customer_id"   : "CUSTOMER_ID"});
 ```

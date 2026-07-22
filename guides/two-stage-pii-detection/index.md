@@ -39,7 +39,7 @@ Only events flagged in stage one proceed to stage two, minimizing unnecessary AP
   A filtered stream of flagged events (based on the derived attribute) that you can send to connectors, storage, or other functions for further processing.
 
 * **Processed event function**  
-  A function that runs after enrichment and filtering. It sends flagged events to an external endpoint (such as AWS Lambda &#43; Comprehend) for advanced validation.
+  A function that runs after enrichment and filtering. It sends flagged events to an external endpoint (such as AWS Lambda + Comprehend) for advanced validation.
 
 ## Benefits
 
@@ -88,7 +88,7 @@ To implement this pattern, you need:
 
 To flag and optionally hash events that may contain personally identifiable information (PII), create a data transformation function that uses regular expression pattern matching.
 
-Follow the steps to [create a data transformation function](), and apply the following configuration for this use case:
+Follow the steps to [create a data transformation function](https://docs.tealium.com/create-function/#create-a-data-transformation-function), and apply the following configuration for this use case:
 
 #### Configure the trigger conditions
 
@@ -105,41 +105,41 @@ For example:
 [
   [
     {
-    &#34;input&#34;: &#34;$.data&#34;,
-    &#34;operator&#34;: &#34;matches regex&#34;,
-    &#34;filter&#34;: &#34;/\\b[a-zA-Z0-9._%&#43;-]&#43;@[a-zA-Z0-9.-]&#43;\\.[a-zA-Z]{2,}\\b/im&#34;
+    "input": "$.data",
+    "operator": "matches regex",
+    "filter": "/\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\\b/im"
     },
     {
-    &#34;input&#34;: &#34;$.data.udo.tealium_event&#34;,
-    &#34;operator&#34;: &#34;does not equal&#34;,
-    &#34;filter&#34;: &#34;pii_detected&#34;
+    "input": "$.data.udo.tealium_event",
+    "operator": "does not equal",
+    "filter": "pii_detected"
     }
   ]  
 ]
 
 
-![](/images/guides/data-transformation-function.png)
+![](https://docs.tealium.com/images/guides/data-transformation-function.png)
 
 #### Add the transformation code
 
 Under the **Code** tab, replace the default logic with code that adds a flag to events with suspected PII and optionally hashes sensitive fields.
 
 ```js
-import CryptoES from &#34;crypto-es&#34;;
+import CryptoES from "crypto-es";
 
 // If you want to allow specific keys, define them here
-const allowedPIIKeys = [&#34;mid_email&#34;];
+const allowedPIIKeys = ["mid_email"];
 
 // Email detection regex
-const emailRegex = /\b[a-zA-Z0-9._%&#43;-]&#43;@[a-zA-Z0-9.-]&#43;\.[a-zA-Z]{2,}\b/im;
+const emailRegex = /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/im;
 
 function findAndHashEmailKeys(jsonData, hashFunction) {
-  function traverse(obj, currentPath = &#34;&#34;) {
+  function traverse(obj, currentPath = "") {
     for (const key in obj) {
       const newPath = `${currentPath}.${key}`;
-      if (typeof obj[key] === &#34;string&#34; &amp;&amp; emailRegex.test(obj[key]) &amp;&amp; !allowedPIIKeys.includes(key)) {
+      if (typeof obj[key] === "string" && emailRegex.test(obj[key]) && !allowedPIIKeys.includes(key)) {
         obj[key] = hashFunction(obj[key]).toString();
-      } else if (typeof obj[key] === &#34;object&#34; &amp;&amp; obj[key] !== null) {
+      } else if (typeof obj[key] === "object" && obj[key] !== null) {
         traverse(obj[key], newPath);
       }
     }
@@ -147,9 +147,9 @@ function findAndHashEmailKeys(jsonData, hashFunction) {
   traverse(jsonData);
 }
 
-transform((event) =&gt; {
+transform((event) => {
   findAndHashEmailKeys(event.data, CryptoES.SHA256);
-  event.data.udo[&#34;potential_pii_detected&#34;] = true;
+  event.data.udo["potential_pii_detected"] = true;
 });
 ```
 
@@ -159,7 +159,7 @@ This script does the following:
 * Hashes any value that matches the email pattern, except for explicitly allowed keys (like `mid_email`).
 * Adds a `potential_pii_detected: true` flag to the event for use in downstream filtering and routing.
 
-![](/images/guides/data-transformation-function-code.png)
+![](https://docs.tealium.com/images/guides/data-transformation-function-code.png)
 
 #### Save, test, and publish
 
@@ -175,7 +175,7 @@ After flagging events with potential PII using a data transformation function, u
 
 Create a boolean event attribute that derives its value from the `potential_pii_detected` flag added in step 1.
 
-1. Go to **Transform &gt; Event Attributes &gt; Add Attribute**.
+1. Go to **Transform > Event Attributes > Add Attribute**.
 1. For **attribute type**, select **Universal Variable**.
 1. Click **Continue**.
 1. Select **Boolean** data type.
@@ -193,13 +193,13 @@ Create a boolean event attribute that derives its value from the `potential_pii_
             [
               [
                 {
-                &#34;input&#34;: &#34;potential_pii_detected&#34;,
-                &#34;operator&#34;: &#34;is true&#34;
+                "input": "potential_pii_detected",
+                "operator": "is true"
                 },
                 {
-                &#34;input&#34;: &#34;tealium_event&#34;,
-                &#34;operator&#34;: &#34;does not equal&#34;,
-                &#34;filter&#34;: &#34;pii_detected&#34;
+                "input": "tealium_event",
+                "operator": "does not equal",
+                "filter": "pii_detected"
                 }
               ]  
             ]
@@ -207,27 +207,27 @@ Create a boolean event attribute that derives its value from the `potential_pii_
 
 This ensures every event has a `true` or `false` value, and only flagged events are marked `true`.
 
-![](/images/guides/email-check-attribute.png)
+![](https://docs.tealium.com/images/guides/email-check-attribute.png)
 
 #### Filter out flagged events using an AudienceStream event filter
 
 Use the `Email_Check` attribute to prevent flagged events from enriching the real-time visitor profile in AudienceStream.
 
-1. Go to **Server-Side Settings &gt; General Settings**.
-1. Under **Activate AudienceStream &gt; Event Filter**, set the filter to:
+1. Go to **Server-Side Settings > General Settings**.
+1. Under **Activate AudienceStream > Event Filter**, set the filter to:
 
    * **Attribute name**: `Email_Check`
    * **Value**: `false`
 
 Only events where `Email_Check` is `false` are processed by AudienceStream. AudienceStream excludes events flagged as potential PII (`Email_Check: true`).
 
-![](/images/guides/audiencestream-event-filter.png)
+![](https://docs.tealium.com/images/guides/audiencestream-event-filter.png)
 
 ### Step 3: Create an event feed to route flagged events
 
 Event feeds let you group and isolate events based on attribute conditions. In this step, create a feed to collect events flagged as containing potential PII. This ensures that they can be processed separately. For example, sent to an API for secondary validation.
 
-1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate > Live Events** and click **+ Add Event Feed**.
 1. Set the **Title** to `Email_Check is True` or a descriptive name of your choice.
 1. In the **Capture events that...** section, add the following conditions:
 
@@ -235,13 +235,13 @@ Event feeds let you group and isolate events based on attribute conditions. In t
     [
       [
         {
-        &#34;input&#34;: &#34;Email_Check&#34;,
-        &#34;operator&#34;: &#34;is true&#34;
+        "input": "Email_Check",
+        "operator": "is true"
         },
         {
-        &#34;input&#34;: &#34;tealium_event&#34;,
-        &#34;operator&#34;: &#34;does not equal (ignore case)&#34;,
-        &#34;filter&#34;: &#34;pii_detected&#34;
+        "input": "tealium_event",
+        "operator": "does not equal (ignore case)",
+        "filter": "pii_detected"
         }
       ]  
     ]
@@ -253,22 +253,26 @@ These conditions match only events that:
 * Were enriched to `Email_Check = true`
 * Have not yet been processed by the stage two validation
 
-![](/images/guides/email-check-event-feed.png)
+![](https://docs.tealium.com/images/guides/email-check-event-feed.png)
 
+
+<blockquote>
 Connect this feed to a connector, webhook, or storage solution such as EventDB or EventStore for further processing.
+</blockquote>
 
-For more information about event feeds, see .
+
+For more information about event feeds, see [about-event-feeds](https://docs.tealium.com/about-event-feeds/).
 
 ### Step 4: Configure a processed event function to send the payload to AWS
 
-Processed event functions run at the end of the server-side data pipeline. Use this function to send flagged events to an external service like AWS Lambda &#43; Comprehend for further PII analysis. For more information, see 
+Processed event functions run at the end of the server-side data pipeline. Use this function to send flagged events to an external service like AWS Lambda + Comprehend for further PII analysis. For more information, see [about-functions](https://docs.tealium.com/about-functions/)
 
 When an event matches the criteria defined in your event feed (step 3), it triggers this function. The function extracts relevant values from the incoming event, sends them to AWS Lambda through API Gateway, and then appends the results (such as PII detection) back into the event.
 
 #### Create the processed event function
 
-1. Go to **Transform &gt; Functions**.
-1. Click **&#43; Add Function**.
+1. Go to **Transform > Functions**.
+1. Click **+ Add Function**.
 1. Enter a name for the function.
 1. Select **Processed Event** trigger, then click **Continue**. 
 1. Enter a trigger name such as `Check for PII`.
@@ -280,22 +284,22 @@ When an event matches the criteria defined in your event feed (step 3), it trigg
 Paste the following sample code into the code editor. This code prepares a payload by collecting attributes to inspect, excluding defaults like `tealium_profile` and `tealium_event`. It sends the payload to an AWS Lambda endpoint through API Gateway.
 
 ```js
-const url = &#34;https://your-url&#34;; // Replace with your actual API Gateway URL.
+const url = "https://your-url"; // Replace with your actual API Gateway URL.
 
-activate(async ({ event, helper }) =&gt; {
+activate(async ({ event, helper }) => {
 //Set default values through global variables to reduce code and errors.    
 
 
     // changes are applied through mutation of the original event
-    const IGNORE = [&#39;tealium_profile&#39;, &#39;tealium_account&#39;, &#39;tealium_event&#39;]
-    var TOCHECK = &#34;&#34;
+    const IGNORE = ['tealium_profile', 'tealium_account', 'tealium_event']
+    var TOCHECK = ""
 
     function preparePayload(o){
-        var str = &#34;&#34;
+        var str = ""
         for(var i in o ){
             if(!IGNORE.includes(i))
                 //console.log(i)
-                TOCHECK &#43;= o[i] &#43; &#34;\n&#34;
+                TOCHECK += o[i] + "\n"
         }
         
     }
@@ -306,38 +310,38 @@ activate(async ({ event, helper }) =&gt; {
         //console.log(str)
         
         const response = await fetch(url, {
-            method: &#39;POST&#39;,
+            method: 'POST',
             headers: {
-                &#39;Content-Type&#39;: &#39;application/json&#39;
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({&#34;text&#34; : JSON.stringify(TOCHECK)})
+            body: JSON.stringify({"text" : JSON.stringify(TOCHECK)})
         });
-        //console.log(&#34;Status :&#34; &#43; response.status);
+        //console.log("Status :" + response.status);
         
         if(response.status == 200){
             var tempSet = new Set()
             var toReturn = {}
             var result = JSON.parse(response._bodyInit);
-            var rr = JSON.parse(result[&#39;body&#39;])
+            var rr = JSON.parse(result['body'])
             for(var j in rr){
-                var type = rr[j][&#39;Type&#39;]
-                if(type == &#39;EMAIL&#39;){
-                    var text = rr[j][&#39;Text&#39;]
-                    var score = rr[j][&#39;Score&#39;]
-                    tempSet.add(type&#43;&#34;__&#34;&#43;score&#43;&#34;__&#34;&#43;text)
+                var type = rr[j]['Type']
+                if(type == 'EMAIL'){
+                    var text = rr[j]['Text']
+                    var score = rr[j]['Score']
+                    tempSet.add(type+"__"+score+"__"+text)
                 }
             }
-            toReturn[&#39;tealium_event&#39;] = &#39;pii_detected&#39;
-            toReturn[&#39;tealium_visitor_id&#39;] = event[&#39;visitor_id&#39;]
-            toReturn[&#39;tealium_firstparty_visitor_id&#39;] = event[&#39;visitor_id&#39;]
-            toReturn[&#39;pii_type_value&#39;] = Array.from(tempSet)
+            toReturn['tealium_event'] = 'pii_detected'
+            toReturn['tealium_visitor_id'] = event['visitor_id']
+            toReturn['tealium_firstparty_visitor_id'] = event['visitor_id']
+            toReturn['pii_type_value'] = Array.from(tempSet)
 
             track(toReturn, {
-                tealium_account: &#34;TEALIUM_ACCOUNT&#34;, // Replace with your Tealium account.
-                tealium_profile: &#34;TEALIUM_PROFILE&#34;, // Replace with your Tealium profile.
-                tealium_datasource: &#34;TEALIUM_DATASOURCE&#34;, // Replace with your Tealium datasource.
+                tealium_account: "TEALIUM_ACCOUNT", // Replace with your Tealium account.
+                tealium_profile: "TEALIUM_PROFILE", // Replace with your Tealium profile.
+                tealium_datasource: "TEALIUM_DATASOURCE", // Replace with your Tealium datasource.
             })
-            .then(response =&gt; {
+            .then(response => {
                 if(!response.ok){
                     throw new Error(`Network response was not ok. Status code: ${response.status}.`);
                 }
@@ -345,22 +349,22 @@ activate(async ({ event, helper }) =&gt; {
             })
             
            
-            console.log(&#34;200 : &#34;, JSON.stringify(result[&#39;body&#39;]))
+            console.log("200 : ", JSON.stringify(result['body']))
         }else {
-           console.log(&#39;FAILED : &#39;, JSON.stringify(response))
+           console.log('FAILED : ', JSON.stringify(response))
         }
 
 });
 ```
 
-![](/images/guides/check-for-pii-processed-event-function.png)
+![](https://docs.tealium.com/images/guides/check-for-pii-processed-event-function.png)
 
 #### Test your function
 
 1. Go to the **Test** tab in the function editor.
 1. Use the **Test Payload** panel to load or paste a real sample event payload.
 1. Click **Run Test** to verify the function executes and sends the data correctly.
-1. When you&#39;re ready, enable the function and click **Save and Publish**.
+1. When you're ready, enable the function and click **Save and Publish**.
 
 You see logs confirming the outgoing request and any response or error messages. Adjust the payload or code as needed.
 
@@ -398,12 +402,12 @@ The Lambda should:
 Here is a sample implementation outline in Node.js:
 
 ```js
-const AWS = require(&#34;aws-sdk&#34;);
+const AWS = require("aws-sdk");
 const comprehend = new AWS.Comprehend();
 
-exports.handler = async (event) =&gt; {
+exports.handler = async (event) => {
   const inputText = JSON.stringify(event.data); // Or a specific field
-  const languageCode = &#34;en&#34;;
+  const languageCode = "en";
 
   try {
     const piiResponse = await comprehend.detectPiiEntities({
@@ -412,7 +416,7 @@ exports.handler = async (event) =&gt; {
     }).promise();
 
     const piiEntities = piiResponse.Entities || [];
-    const piiDetected = piiEntities.length &gt; 0;
+    const piiDetected = piiEntities.length > 0;
 
     return {
       ...event,
@@ -422,12 +426,12 @@ exports.handler = async (event) =&gt; {
       },
     };
   } catch (err) {
-    console.error(&#34;PII detection failed:&#34;, err);
+    console.error("PII detection failed:", err);
     return {
       ...event,
       pii_analysis: {
         pii_detected: false,
-        error: &#34;Comprehend error&#34;,
+        error: "Comprehend error",
       },
     };
   }
@@ -440,20 +444,20 @@ For a full example, see the [Amazon Comprehend: Use DetectPiiEntities with an AW
 
 ```json
 {
-  &#34;data&#34;: {
-    &#34;udo&#34;: {
-      &#34;potential_pii_detected&#34;: true,
+  "data": {
+    "udo": {
+      "potential_pii_detected": true,
       ...
     }
   },
-  &#34;pii_analysis&#34;: {
-    &#34;pii_detected&#34;: true,
-    &#34;entities&#34;: [
+  "pii_analysis": {
+    "pii_detected": true,
+    "entities": [
       {
-        &#34;Type&#34;: &#34;EMAIL&#34;,
-        &#34;Score&#34;: 0.98,
-        &#34;BeginOffset&#34;: 13,
-        &#34;EndOffset&#34;: 35
+        "Type": "EMAIL",
+        "Score": 0.98,
+        "BeginOffset": 13,
+        "EndOffset": 35
       }
     ]
   }
@@ -462,7 +466,11 @@ For a full example, see the [Amazon Comprehend: Use DetectPiiEntities with an AW
 
 This enrichment can then be used in downstream logic for additional processing, alerts, or suppression.
 
+
+<blockquote>
 Add logging and error handling in your Lambda to capture issues in processing. Use structured logs to track events and set alerts based on detection rates or errors.
+</blockquote>
+
 
 ### Step 6: Review and test
 
@@ -497,7 +505,7 @@ Configure these decisions using one or more of the following:
 
 ## Resources
 
-* [Functions]()
+* [Functions](https://docs.tealium.com/about-functions/)
 * [AWS Comprehend: Personally identifiable information (PII)](https://docs.aws.amazon.com/comprehend/latest/dg/pii.html)
 * [AWS Lambda: Invoking a Lambda function using an Amazon API Gateway endpoint](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)
 * [What is Amazon API Gateway?](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html)

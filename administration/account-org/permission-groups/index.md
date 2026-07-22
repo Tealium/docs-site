@@ -16,14 +16,18 @@ Permission groups can be granted the following feature permissions:
 
 * **No Access**: The permission group does not have access to the feature and it will not appear in their navigation.
 * **View**: The permission group can view the feature and data it contains, but they cannot edit it.
-* **View &amp; Edit**: The permission group can view the feature and data it contains, and they can edit the data.
-* **View, Edit, &amp; Delete**: The permission group can view the feature and the data it contains, and they can edit or delete the data.
+* **View & Edit**: The permission group can view the feature and data it contains, and they can edit the data.
+* **View, Edit, & Delete**: The permission group can view the feature and the data it contains, and they can edit or delete the data.
 
-![](/images/administration/permission-groups-products-features-example.png)
+![](https://docs.tealium.com/images/administration/permission-groups-products-features-example.png)
 
-Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permission also have **Save** permission for their changes to a profile.
 
-The interface changes based on the user&#39;s permissions:
+<blockquote>
+Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission also have **Save** permission for their changes to a profile.
+</blockquote>
+
+
+The interface changes based on the user's permissions:
 
 * If a user does not have access to a product, that product does not appear in the navigation.
 * If a user has access to some features, but not others, they only see the features they can access in the navigation.
@@ -31,9 +35,13 @@ The interface changes based on the user&#39;s permissions:
 
 A permission group can also be granted publishing rights for server-side profiles. Users in a permission group with server-side publish permissions automatically receive full access to all server-side products and features.
 
- Granting publish permissions to a group may result in users receiving greater permissions on products and features than you intend to give them. For example, an AudienceStream-only developer that you grant publishing rights to will receive with full permissions on a profile, which would include EventStream, DataAccess, and every other server-side product and feature.&lt;br&gt;&lt;br&gt;To avoid granting users greater permissions than necessary, we  recommend that you create a separate permission group with publishing permissions for each of your server-side profiles. 
 
-For more information, see [About platform permissions]().
+<blockquote>
+Granting publish permissions to a group may result in users receiving greater permissions on products and features than you intend to give them. For example, an AudienceStream-only developer that you grant publishing rights to will receive with full permissions on a profile, which would include EventStream, DataAccess, and every other server-side product and feature.<br><br>To avoid granting users greater permissions than necessary, we  recommend that you create a separate permission group with publishing permissions for each of your server-side profiles.
+</blockquote>
+
+
+For more information, see [About platform permissions](https://docs.tealium.com/about-platform-permissions/).
 
 ### Product features
 
@@ -57,9 +65,9 @@ Carefully consider when you set a user to **No Access** for a feature or product
 
 #### Tealium Insights permissions
 
-Insights user roles are managed through the **Analyze &gt; Insights &gt; QuickSight Users** page. However, Insights users must also be a member of a permission group with view access to the Insights feature.
+Insights user roles are managed through the **Analyze > Insights > QuickSight Users** page. However, Insights users must also be a member of a permission group with view access to the Insights feature.
 
-For more information, see [About Tealium Insights]().
+For more information, see [About Tealium Insights](https://docs.tealium.com/about-data-insights/#author-and-reader-roles).
 
 ### Publishing permissions
 
@@ -72,20 +80,23 @@ Permission groups have publishing rights on the profiles to which you give them 
 
 Remember, a permission group can also be granted publishing rights for server-side profiles. Users who are members of a permission group with server-side publishing rights have full access to all server-side products and features.
 
-&lt;!-- #### Publishing changes to features in multiple products
+<!-- #### Publishing changes to features in multiple products
 
 If you disable a product for a user, but the user has server-side publish permission and access to another product that shares features with the first product, the user can still publish changes to those shared features. For example, EventStream and AudienceStream share some features, such as rules and labels.
 
-If a user has publish permission and only has access to EventStream, they can publish changes made to rules and labels in EventStream, and those changes also affect AudienceStream. Similarly, if a user has publish permission and only has access to AudienceStream, their published changes to rules and labels also affect EventStream. --&gt;
+If a user has publish permission and only has access to EventStream, they can publish changes made to rules and labels in EventStream, and those changes also affect AudienceStream. Similarly, if a user has publish permission and only has access to AudienceStream, their published changes to rules and labels also affect EventStream. -->
 
 ### Users in multiple permission groups
 
 Access rights to profiles are cumulative. The user always receives the highest level of access granted by their permission groups, even if the permission groups have conflicting permissions.
 
-For example, Group A has **View** permissions on a profile, while Group B has **View &amp; Edit** permissions on that profile. A user in both Group A and Group B has **View &amp; Edit** permissions on that profile.
+For example, Group A has **View** permissions on a profile, while Group B has **View & Edit** permissions on that profile. A user in both Group A and Group B has **View & Edit** permissions on that profile.
 
- A user with the profile admin role has full permission on all profiles in the account.
- 
+
+<blockquote>
+A user with the profile admin role has full permission on all profiles in the account.
+</blockquote>
+
 
 ## Manage permission groups
 
@@ -93,7 +104,7 @@ To manage permission groups, in the admin menu, click **Manage Permissions**. Th
 
 ### View a permission group
 
-Click a permission group to display that permission group&#39;s details. Click one of the following tabs to display more details about that permission group:
+Click a permission group to display that permission group's details. Click one of the following tabs to display more details about that permission group:
 
 * **Users**: Lists the users who are a member of the permission group.
 * **Group Permissions**: Lists the group member permissions for products and features.
@@ -101,12 +112,16 @@ Click a permission group to display that permission group&#39;s details. Click o
 
 ### Create a permission group
 
+
+<blockquote>
 To create or edit a permission group, you must have the account admin or the user admin role. To add a permission group to a profile, you must have the account admin or the profile admin role.
+</blockquote>
+
 
 To create a permission group, set the access level for each product feature, and then invite users to join the account and the permission group:
 
 1. From the admin menu, click **Manage Permissions**. The **Manage Permissions** screen appears.
-1. Click **&#43; New Group**. The **New Permission Group** slideout appears.
+1. Click **+ New Group**. The **New Permission Group** slideout appears.
 1. In the **Name** box, enter a name for the permission group.
 1. Select what the permission group initially contains:
     * **Blank Group** - Start a permission group without any existing settings.
@@ -122,7 +137,7 @@ To create a permission group, set the access level for each product feature, and
 1. Select the profiles to allow the permission group to access.
 1. Click **Next**. The **Add Users** slideout appears.
 1. Select up to 25 users to add to the permission group.
-    * To add a user who is not already on your account, you must add the user to the account first. For more information, see [Users]().
+    * To add a user who is not already on your account, you must add the user to the account first. For more information, see [Users](https://docs.tealium.com/users/).
 1. Click **Add**.
 
 The **Manage Permissions** screen appears and the new permission group appears in the list.

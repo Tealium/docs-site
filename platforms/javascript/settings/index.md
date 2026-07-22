@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/javascript/settings/
 ---
 ## How it works
 
-Many of the behaviors of `utag.js` are controlled with settings in the `utag.cfg` object. The default behaviors controlled by these settings are overridden using a new object called `utag_cfg_ovrd`. To use this object, set it in your page code prior to loading `utag.js` or within a [JavaScript Code Extension]() scoped to **Pre Loader** with the following:
+Many of the behaviors of `utag.js` are controlled with settings in the `utag.cfg` object. The default behaviors controlled by these settings are overridden using a new object called `utag_cfg_ovrd`. To use this object, set it in your page code prior to loading `utag.js` or within a [JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) scoped to **Pre Loader** with the following:
 
 ```js
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
@@ -19,7 +19,7 @@ The following table summarizes the available settings:
 | ------- | ----------- |
 | [`always_set_v_id`](#always_set_v_id)| Set the `utag_main_v_id` cookie or `v_id` component of `utag_main`. Default: `false` |
 | [`cmcookiens`](#cmcookiens) | Consent management cookie name. |
-| [`consentPeriod`](#consentperiod) | Set the number of days to retain the user&#39;s consent preference. |
+| [`consentPeriod`](#consentperiod) | Set the number of days to retain the user's consent preference. |
 | [`disable_tealium_attribute_override`](#disable_tealium_attribute_override) | Prevent system-defined attributes `tealium_*` from being overwritten by incoming data. |
 | [`dom_complete`](#dom_complete) | Delay tags until the DOM complete (load) event. |
 | [`domain`](#domain) | Override the domain used to set cookies. |
@@ -36,7 +36,7 @@ The following table summarizes the available settings:
 | [`nonblocking_tags`](#nonblocking_tags) | Make all tags nonblocking to improve performance and Interaction to Next Paint (INP) scores in extreme cases. Default: `false`. |
 | [`path`](#path) | Specifies the publishing path. |
 | [`readywait`](#readywait) | Halt operations until the DOM-ready browser event. |
-| [`secure_cookie`](#secure_cookie) | Set the attribute string to `secure` for all `utag_main` cookies set by the [Persist Data Values extension]() and the [`utag.loader.SC`](/platforms/javascript/api/cookie-functions/#utagloadersc) method. |
+| [`secure_cookie`](#secure_cookie) | Set the attribute string to `secure` for all `utag_main` cookies set by the [Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/) and the [`utag.loader.SC`](https://docs.tealium.com/platforms/javascript/api/cookie-functions/#utagloadersc) method. |
 | [`session_timeout`](#session_timeout)| Set the session expiration time (in milliseconds). |
 | [`split_cookie`](#split_cookie)| Splits the `utag_main` cookie into standalone cookies. Default: `true` |
 | [`split_cookie_allowlist`](#split_cookie_allowlist)| An array of allowed `utag_main` subcookies or standalone cookies. |
@@ -46,7 +46,7 @@ The following table summarizes the available settings:
 ### `always_set_v_id`
 
 **Force `utag.js` to set the `utag_main_v_id` cookie or `v_id` component of `utag_main`**  
-(New in [`utag.js` 4.50](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
+(New in [`utag.js` 4.50](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
 The `v_id` variable of `utag_main` is set by the Tealium Collect tag to ensure that it complies with data privacy and consent purposes. Setting this to `true` forces `utag.js` to set this cookie for all visitors. (Default: `false`)
 
 ```js
@@ -59,7 +59,7 @@ window.utag_cfg_ovrd.always_set_v_id = true;
 Customize the consent management cookie name. If you have multiple profiles on the same domain name, give each profile a unique consent management cookie name to prevent conflicts between the cookies and potential data leaks.
 
 ```js
-window.utag_cfg_ovrd.cmcookiens = &#34;CONSENTMGR_NL-CMB-CG1&#34;;
+window.utag_cfg_ovrd.cmcookiens = "CONSENTMGR_NL-CMB-CG1";
 ```
 
 ### `consentPeriod`
@@ -75,7 +75,7 @@ window.utag_cfg_ovrd.consentPeriod = 60;
 
 **Prevent overrides of system-defined attributes**  
 
-(New in [`utag.js` 4.54](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22))
+(New in [`utag.js` 4.54](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22))
 
 When set to `true`, this setting blocks incoming data from overwriting system-defined attributes that start with `tealium_`, such as `tealium_visitor_id`.  
 
@@ -102,7 +102,7 @@ window.utag_cfg_ovrd.dom_complete = true;
 Sets the domain where `utag_main` cookie is set. Useful for sites on root domains that do not accept cookies. For example, `amazonaws.com`. (Default: The top-level domain of `location.hostname`)
 
 ```js
-window.utag_cfg_ovrd.domain = &#34;mysite.amazonaws.com&#34;;
+window.utag_cfg_ovrd.domain = "mysite.amazonaws.com";
 ```
 
 ### `gdprDLRef`
@@ -114,10 +114,14 @@ For example, if your data layer contains a variable named `site_language`:
 
 ```js
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
-window.utag_cfg_ovrd.gdprDLRef = &#34;site_language&#34;;
+window.utag_cfg_ovrd.gdprDLRef = "site_language";
 ```
 
+
+<blockquote>
 Do not set the language code directly. This override setting expects a variable name, not a language code value.
+</blockquote>
+
 
 ### `ignoreLocalStorage`
 
@@ -142,7 +146,7 @@ window.utag_cfg_ovrd.ignoreSessionStorage = true;
 ### `load_rules_ajax`
 
 **Disable load rules after page load (legacy)**  
-Controls if load rules are reprocessed on each call to `utag.view` and `utag.link` within the same page load. It&#39;s possible that a newly triggered Load Rule loads a new tag into the page. Use this setting to replicate behavior from versions of `utag.js` older than 4.2x. (Default: `true`)
+Controls if load rules are reprocessed on each call to `utag.view` and `utag.link` within the same page load. It's possible that a newly triggered Load Rule loads a new tag into the page. Use this setting to replicate behavior from versions of `utag.js` older than 4.2x. (Default: `true`)
 
 ```js
 window.utag_cfg_ovrd.load_rules_ajax = false;
@@ -164,12 +168,12 @@ Lower-case all meta data variable names and values. Replicates behavior in `utag
 
 Example meta tag:
 ```html
-&lt;meta content=&#34;iQ Tag Management&#34; property=&#34;Article:Section&#34;&gt;
+<meta content="iQ Tag Management" property="Article:Section">
 ```
 
 Resulting value:
 ```js
-utag.data[&#39;meta.article:section&#39;]=&#34;iq tag management&#34;
+utag.data['meta.article:section']="iq tag management"
 ```
 
 ```js
@@ -181,8 +185,8 @@ window.utag_cfg_ovrd.lowermeta = true;
 **Lower-case query string parameter names and values (legacy)**  
 Lower-case all query string variable names and values. Replicates behavior in `utag.js` versions prior to 4.2x. (Default: `false`)
 
-Example query string parameter: `&amp;RefId=Abc123`
-Resulting value: `utag.data[&#39;qp.refid&#39;]=&#34;abc123&#34;`
+Example query string parameter: `&RefId=Abc123`
+Resulting value: `utag.data['qp.refid']="abc123"`
 
 ```js
 window.utag_cfg_ovrd.lowerqp = true;
@@ -210,9 +214,13 @@ window.utag_cfg_ovrd.noview = true;
 
 **Cookie opt-out**  
 Only set this option if a visitor has explicitly opted out of all cookies. (Default: `false`)
-Using this option inflates visitor and session counts, making all visits look like &#34;single page sessions&#34;.
 
-This option disables _all_ cookies from being stored by `utag.js`, including cookies set with the [Persist Data Value extension](), and session cookies. It also sets a new timestamp for the variables `ut.visitor_id`, `tealium_visitor_id`, and `cp.utag_main_v_id` when the cookie is not available.
+<blockquote>
+Using this option inflates visitor and session counts, making all visits look like "single page sessions".
+</blockquote>
+
+
+This option disables _all_ cookies from being stored by `utag.js`, including cookies set with the [Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/), and session cookies. It also sets a new timestamp for the variables `ut.visitor_id`, `tealium_visitor_id`, and `cp.utag_main_v_id` when the cookie is not available.
 
 ```js
 window.utag_cfg_ovrd.nocookie = true
@@ -221,7 +229,7 @@ window.utag_cfg_ovrd.nocookie = true
 ### `nonblocking_tags`
 
 **Load tags asynchronously**  
-(New in [`utag.js` 4.52](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18))  
+(New in [`utag.js` 4.52](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18))  
 This option enables non-blocking behavior for all tags, which can improve INP scores and overall page performance. Use this setting for pages with resource-intensive tags that slow down user interactions and reduce INP scores, but ensure you test exit link tracking thoroughly. (Default: `false`)
 
 ```js
@@ -242,7 +250,7 @@ Use the following best practices with the `nonblocking_tags` setting:
 Sets the publishing URL path for your tag templates, overriding the Publish URLs fields in the [Publish Configuration dialog](), if specified. Setting the publishing URL path can be useful for self-hosting and [First Party Domains]() customers.
 
 ```js
-window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod&#39;;
+window.utag_cfg_ovrd.path = '//tags.example.com/main/prod';
 ```
 
 ### `readywait`
@@ -257,8 +265,8 @@ window.utag_cfg_ovrd.readywait = true;
 ### `secure_cookie`
 
 **Secure cookie**  
-(New in [`utag.js` 4.48](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01))  
-Set the attribute string to `secure` for all `utag_main` cookies set by the [Persist Data Values extension]() and the [`SC()`](/platforms/javascript/api/cookie-functions/#utag-loader-sc) function. Secure cookies can only be set and accessed on HTTPS pages. (Default: `false`)
+(New in [`utag.js` 4.48](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01))  
+Set the attribute string to `secure` for all `utag_main` cookies set by the [Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/) and the [`SC()`](https://docs.tealium.com/platforms/javascript/api/cookie-functions/#utag-loader-sc) function. Secure cookies can only be set and accessed on HTTPS pages. (Default: `false`)
 
 ```js
 window.utag_cfg_ovrd.secure_cookie = true;
@@ -277,8 +285,8 @@ window.utag_cfg_ovrd.session_timeout = 900000;
 ### `split_cookie`
 
 **Standalone cookies**  
-(New in [`utag.js` 4.50](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
-Determines if `utag_` namespace cookies (like the built-in `utag_main` cookie) should be written as multi-value cookies or as standalone cookies by [`utag.loader.SC`](/platforms/javascript/api/cookie-functions/#utagloadersc). (Default: `true`)
+(New in [`utag.js` 4.50](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
+Determines if `utag_` namespace cookies (like the built-in `utag_main` cookie) should be written as multi-value cookies or as standalone cookies by [`utag.loader.SC`](https://docs.tealium.com/platforms/javascript/api/cookie-functions/#utagloadersc). (Default: `true`)
 
 ```js
 window.utag_cfg_ovrd.split_cookie = false;
@@ -287,7 +295,7 @@ window.utag_cfg_ovrd.split_cookie = false;
 ### `split_cookie_allowlist`
 
 **`utag_main` subcookies**  
-(New in [`utag.js` 4.50](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
+(New in [`utag.js` 4.50](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01))  
 Specifies an array of allowed `utag_main` subcookies. The allow list is enforced only if `split_cookie` is set to `true`, which is the default setting in version 4.50 and later. 
 
 If `split_cookie_allowlist` is defined and active, the following applies:
@@ -297,18 +305,22 @@ If `split_cookie_allowlist` is defined and active, the following applies:
 
 If `split_cookie_allowlist` is not defined or `split_cookie` is not `true`, all `utag_` namespace cookies are allowed.
 
+
+<blockquote>
 Using this option without allowing `ses_id`, `_st`, and `_ss` inflates visitor and session counts, making all visits look like single page sessions.
+</blockquote>
+
 
 ```js
-window.utag_cfg_ovrd.split_cookie_allowlist = [&#34;v_id&#34;, &#34;_ss&#34;, &#34;_st&#34;, &#34;ses_id&#34;];
+window.utag_cfg_ovrd.split_cookie_allowlist = ["v_id", "_ss", "_st", "ses_id"];
 ```
 
 ### `suppress_before_load_rules_with_uids`
 
 **Skip Before Load Rules extensions when tracking tags by UID**  
-(New in [`utag.js` 4.52](/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18))  
+(New in [`utag.js` 4.52](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18))  
 
-By default, extensions scoped to **Before Load Rules** execute for all tracking calls, even when [tracking tags by UID](). Previously, those extensions did not run when tracking tags by UID. 
+By default, extensions scoped to **Before Load Rules** execute for all tracking calls, even when [tracking tags by UID](https://docs.tealium.com/tracking-functions/). Previously, those extensions did not run when tracking tags by UID. 
 
 Set this option to `true` to skip extensions scoped to **Before Load Rules** when tracking tags by UID (legacy behavior). (Default: `false`)
 

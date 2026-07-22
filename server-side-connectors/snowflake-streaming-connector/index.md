@@ -62,7 +62,11 @@ The connector does not support the following table or column configurations:
 
 Snowflake has strict rules about which systems it accepts requests from. Add the [Tealium IP addresses]() to your Snowflake allow list.
 
- You must add the `us-west-1` and the server-side profile region addresses to your allowlist. If you do not add these addresses to your allowlist, you will see errors when you try to fetch data. Tealium uses the `us-west-1` IP addresses during connector configuration.
+
+<blockquote>
+You must add the `us-west-1` and the server-side profile region addresses to your allowlist. If you do not add these addresses to your allowlist, you will see errors when you try to fetch data. Tealium uses the `us-west-1` IP addresses during connector configuration.
+</blockquote>
+
 
 ## Best practices
 
@@ -71,7 +75,11 @@ We recommend the following Snowflake table configurations for the Snowflake Stre
 * 1 event feed per table
 * 1 audience per table
 
+
+<blockquote>
 Concurrent writing of tables by more than one feed or audience may result in performance errors.
+</blockquote>
+
 
 ## Snowflake native app
 
@@ -81,11 +89,15 @@ The app includes helper utilities for setting up and managing streamed data from
 
 The native app is optional and does not replace the configuration steps in this guide. To perform the setup manually, follow the instructions below.
 
+
+<blockquote>
 The Tealium Snowflake App currently transforms visitor payload data only. Event payload data is not supported.
+</blockquote>
+
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -96,13 +108,17 @@ After adding the connector, configure the following settings:
     * URL with underscores: `https://acme-marketing_test_account.snowflakecomputing.com`
     * URL with dashes: `https://acme-marketing-test-account.snowflakecomputing.com`
 * For private key authentication:
-    * **Private Key**: The customer-generated private key. Supports both encrypted and unencrypted private keys. For instructions on generating the Snowflake private key, see [Snowflake: Key-pair authentication and key-pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-the-private-key). If the private key is encrypted, you must provide the Private Key Passphrase. 
+    * **Private Key**: The customer-generated private key. Supports both encrypted and unencrypted private keys. For instructions on generating the Snowflake private key, see [Snowflake: Key-pair authentication and key-pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-the-private-key). 
+<blockquote>
+If the private key is encrypted, you must provide the Private Key Passphrase.
+</blockquote>
+
     * **Private Key Passphrase**: The encrypted private key passphrase for use with an encrypted private key. Do not assign a value if the private key is unencrypted.
     * To use the private key:
         1. Generate a public key in Snowflake. For more information, see [Generate a Public Key](https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-a-public-key).
         1. Assign the public key to the above user by using an `ALTER USER` command in Snowflake. Only owners of users or users with SECURITYADMIN roles or higher can alter a user. For more information, see [Assign the public key to a Snowflake user](https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user).  
         To successfully assign the public key to the user, ensure the following:
-            * Enter the Snowflake username in double quotes (`&#34;`). For example, `&#34;SNOWFLAKE.USER&#34;`.
+            * Enter the Snowflake username in double quotes (`"`). For example, `"SNOWFLAKE.USER"`.
             * Copy and paste the public key without line breaks.
         1. Run the query to update the user with the new public key.
 * For public key authentication:
@@ -115,7 +131,11 @@ After adding the connector, configure the following settings:
         1. Click **Done** to create the new connection.
 * **Enable Snowpipe Streaming for Iceberg Tables**: Enable this option if your target table in Snowflake is a managed Iceberg table.
 
-Snowflake supports public and private key rotations. For more information, see [Configuring key-pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-rotation). 
+
+<blockquote>
+Snowflake supports public and private key rotations. For more information, see [Configuring key-pair rotation](https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-rotation).
+</blockquote>
+
 
 ## Actions
 
@@ -153,7 +173,7 @@ The following section lists the supported parameters for each action.
 | Column to record the payload | Choose the **VARIANT** column to record the event data.|
 | Timestamp | Select the column to send the timestamp variable to.|
 | Timestamp Attribute | (Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see [Snowflake: Supported Java data types](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types). If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
-| Additional Event Data | The following parameters are only available when using Tealium iQ and EventStream.&lt;ul&gt;&lt;li&gt;**First-party Cookies** - Include first-party cookie information captured with the event.&lt;/li&gt;&lt;li&gt;**DOM** - Include DOM data captured with the event.&lt;/li&gt;&lt;li&gt;**Meta** - Include Meta data captured with the event.&lt;/li&gt;&lt;/ul&gt; |
+| Additional Event Data | The following parameters are only available when using Tealium iQ and EventStream.<ul><li>**First-party Cookies** - Include first-party cookie information captured with the event.</li><li>**DOM** - Include DOM data captured with the event.</li><li>**Meta** - Include Meta data captured with the event.</li></ul> |
 
 ### Send Custom Visitor Data
 
@@ -213,7 +233,7 @@ To drop channels that Tealium has created, provide a list of channels in CSV for
 
 To configure channels to drop, use the following steps:
 
-1. Go to **Connect &gt; Event Connectors** or to **Connect &gt; Audience Connectors**.
+1. Go to **Connect > Event Connectors** or to **Connect > Audience Connectors**.
 1. Select a Snowflake connector.
 1. Under **Remote Configuration**, click **Drop Channel**.
 1. Enter the following information:  

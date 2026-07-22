@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて]()を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 以下の構成を行います：
 
@@ -31,11 +31,11 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -43,29 +43,29 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `c1`  | &lt;ul&gt;&lt;li&gt;C1&lt;/li&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-| `c2`  | &lt;ul&gt;&lt;li&gt;クライアントID&lt;/li&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-| `ns_type` | &lt;ul&gt;&lt;li&gt;NSタイプ&lt;/li&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;/ul&gt; |
-| `form` | &lt;ul&gt;&lt;li&gt;フォーム識別子&lt;/li&gt;&lt;/ul&gt; |
-| `form_normal`  | &lt;ul&gt;&lt;li&gt;通常のフォームフィールド&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;/ul&gt; |
-| `form_hidden`  | &lt;ul&gt;&lt;li&gt;隠しフォームフィールド&lt;/li&gt;&lt;li&gt; 配列&lt;/li&gt;&lt;/ul&gt; |
-| `form_submit`  | &lt;ul&gt;&lt;li&gt;送信イベントを報告&lt;/li&gt;&lt;li&gt; ブール値&lt;/li&gt;&lt;/ul&gt; |
-| `form_abandon`  | &lt;ul&gt;&lt;li&gt;放棄イベントを報告&lt;/li&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-| `form_failure`  | &lt;ul&gt;&lt;li&gt;失敗イベントを報告&lt;/li&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;/ul&gt; |
-| `cs_ucfr`  | &lt;ul&gt;&lt;li&gt;同意状態&lt;/li&gt;&lt;li&gt;[0/1]&lt;/li&gt;&lt;/ul&gt; |
+| `c1`  | <ul><li>C1</li><li>文字列</li></ul> |
+| `c2`  | <ul><li>クライアントID</li><li>文字列</li></ul> |
+| `ns_type` | <ul><li>NSタイプ</li><li>文字列</li></ul> |
+| `form` | <ul><li>フォーム識別子</li></ul> |
+| `form_normal`  | <ul><li>通常のフォームフィールド</li><li>配列</li></ul> |
+| `form_hidden`  | <ul><li>隠しフォームフィールド</li><li> 配列</li></ul> |
+| `form_submit`  | <ul><li>送信イベントを報告</li><li> ブール値</li></ul> |
+| `form_abandon`  | <ul><li>放棄イベントを報告</li><li>ブール値</li></ul> |
+| `form_failure`  | <ul><li>失敗イベントを報告</li><li>ブール値</li></ul> |
+| `cs_ucfr`  | <ul><li>同意状態</li><li>[0/1]</li></ul> |
 
 ### E-Commerce
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `order_id` | &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `order_shipping` | &lt;ul&gt;&lt;li&gt;送料&lt;/li&gt;&lt;li&gt;`_cship`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `customer_id` | &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;li&gt;`_ccustid`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_id` | &lt;ul&gt;&lt;li&gt;製品IDのリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_cprod`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_brand` | &lt;ul&gt;&lt;li&gt;ブランドのリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_cbrand`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_category` | &lt;ul&gt;&lt;li&gt;カテゴリのリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_ccat`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_subcategory` | &lt;ul&gt;&lt;li&gt;サブカテゴリのリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_ccat`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_quantity` | &lt;ul&gt;&lt;li&gt;数量のリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_cquan`を上書き&lt;/li&gt;&lt;/ul&gt; |
-| `product_unit_price` | &lt;ul&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;`_cprice`を上書き&lt;/li&gt;&lt;/ul&gt; |   
+| `order_id` | <ul><li>注文ID</li><li>`_corder`を上書き</li></ul> |
+| `order_shipping` | <ul><li>送料</li><li>`_cship`を上書き</li></ul> |
+| `customer_id` | <ul><li>顧客ID</li><li>`_ccustid`を上書き</li></ul> |
+| `product_id` | <ul><li>製品IDのリスト</li><li>配列</li><li>`_cprod`を上書き</li></ul> |
+| `product_brand` | <ul><li>ブランドのリスト</li><li>配列</li><li>`_cbrand`を上書き</li></ul> |
+| `product_category` | <ul><li>カテゴリのリスト</li><li>配列</li><li>`_ccat`を上書き</li></ul> |
+| `product_subcategory` | <ul><li>サブカテゴリのリスト</li><li>配列</li><li>`_ccat`を上書き</li></ul> |
+| `product_quantity` | <ul><li>数量のリスト</li><li>配列</li><li>`_cquan`を上書き</li></ul> |
+| `product_unit_price` | <ul><li>価格のリスト</li><li>配列</li><li>`_cprice`を上書き</li></ul> |   
 
 

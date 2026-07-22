@@ -42,13 +42,13 @@ When a user reopens the interactive CMP and makes a new explicit consent decisio
 
 ## Consent integrations consent flow
 
-![](/images/iq-tag-management/consent-integrations-consent-flow.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-integrations-consent-flow.png)
 
 When the flow reaches the step to determine if a tag can run, the following process applies for each tag and event:
 
 ### Fire tags detail
 
-![](/images/iq-tag-management/consent-integrations-fire-tags.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-integrations-fire-tags.png)
 
 ## Opt-out model
 

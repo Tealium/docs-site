@@ -14,7 +14,7 @@ In the event of a system crash, incoming data from live events is captured. Cras
 
 #### Recommended SDK modules:
 
-* [Tealium for Android Crash Reporter Module](/platforms/android-java/module-list/crash-reporter/)
+* [Tealium for Android Crash Reporter Module](https://docs.tealium.com/platforms/android-java/module-list/crash-reporter/)
 
 ### Supported Actions
 
@@ -24,7 +24,7 @@ In the event of a system crash, incoming data from live events is captured. Cras
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new New Relic Mobile Crash connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new New Relic Mobile Crash connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 To configure your vendor, follow these steps:
 
@@ -36,13 +36,17 @@ To configure your vendor, follow these steps:
 
 ## Action Settings: Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It&#39;s where you&#39;ll set up actions and trigger them.
+Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
 
 This section describes how to set up parameters and options for each action.
 
 ### Action: Send Android Crash Event
 
+
+<blockquote>
 The connector automatically maps event attributes to the requisite fields before being sent over to New Relic.
+</blockquote>
+
 
 #### Parameters
 
@@ -62,7 +66,7 @@ The connector automatically maps event attributes to the requisite fields before
 | Crash Cause                  | Human readable cause                                                                           | `Index out of bounds`                                                                                                                                                                                                                     |
 | Crash Name                   | App-generated name                                                                             | `java.lang.RuntimeException`                                                                                                                                                                                                              |
 | Crash Process ID             | `Low-level process ID`                                                                         |                                                                                                                                                                                                                                           |
-| Crash Threads                | Array of stringified JSON                                                                      | `[&#34;{&#34;crashed&#34;:true, &#34;state&#34;:&#34;RUNNABLE&#34;, &#34;threadNumber&#34;:1, &#34;threadId&#34;:&#34;main&#34;, &#34;priority&#34;:5,&#34;stack&#34;: [{&#34;className&#34;: &#34;com.tealium.example.fragment.ControlFragment&#34;, &#34;methodName&#34;:&#34;onClick&#34;, &#34;lineNumber&#34;:89}]}&#34;]` |
+| Crash Threads                | Array of stringified JSON                                                                      | `["{"crashed":true, "state":"RUNNABLE", "threadNumber":1, "threadId":"main", "priority":5,"stack": [{"className": "com.tealium.example.fragment.ControlFragment", "methodName":"onClick", "lineNumber":89}]}"]` |
 | Crash UUID                   | Unique crash identifier                                                                        | `c0319246-ff40-4fdc-877f-7341ad48f52c`                                                                                                                                                                                                    |
 | Device                       | Device name                                                                                    | `motorola`                                                                                                                                                                                                                                |
 | Device CPU Type              | Architecture                                                                                   | `armv7l`                                                                                                                                                                                                                                  |

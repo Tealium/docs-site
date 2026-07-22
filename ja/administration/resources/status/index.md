@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/administration/resources/status/
 ---
 ## 仕組み
 
-&lt;https://status.tealium.com/&gt; のステータスページには、Tealiumの全サービスと機能のステータス更新がリストされています。サービスまたは機能をクリックすると展開され、そのすべてのサブサービスがリストされます。
+<https://status.tealium.com/> のステータスページには、Tealiumの全サービスと機能のステータス更新がリストされています。サービスまたは機能をクリックすると展開され、そのすべてのサブサービスがリストされます。
 
 ## ステータス
 

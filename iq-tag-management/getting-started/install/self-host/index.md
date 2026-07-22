@@ -3,7 +3,11 @@ title: Self-hosting utag.js
 description: This guide shows the configuration and workflow for self-hosting the utag.js files.
 url: https://docs.tealium.com/iq-tag-management/getting-started/install/self-host/
 ---
+
+<blockquote>
 Before you begin, contact your Account Manager to verify the contracted terms for this feature on your account to ensure that availability and appropriate licensing is maintained.
+</blockquote>
+
 
 ## Overview
 
@@ -16,18 +20,18 @@ The main difference in self-hosting is in the code snippet used to load `utag.js
 For self-hosted Universal Tags, replace `tags.tiqcdn.com` in the code snippet with the address of the server hosting the tag:
 
 ```html
-&lt;!-- Tealium Universal Tag --&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
 (function(a,b,c,d){
-a=&#39;//YOURDOMAIN.com/CUSTOM/PATH/[ENV]/utag.js&#39;;
-b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;
-d.type=&#39;text/java&#39;&#43;c;d.async=true;
+a='//YOURDOMAIN.com/CUSTOM/PATH/[ENV]/utag.js';
+b=document;c='script';d=b.createElement(c);d.src=a;
+d.type='text/java'+c;d.async=true;
 a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)
 })();
-&lt;/script&gt;
+</script>
 ```
 
-For more information about adding the tag to your site, see [installing the Universal Tag (utag.js)](/platforms/javascript/install/#universal-tag-utag-js).
+For more information about adding the tag to your site, see [installing the Universal Tag (utag.js)](https://docs.tealium.com/platforms/javascript/install/#universal-tag-utag-js).
 
 ## Enable the .zip archive
 
@@ -39,11 +43,11 @@ To enable the distro file:
 1. On the **General Publishing** tab, under the **Implementation** section, find the **Generate distro.zip file** setting and toggle it to **On**.
 1. Click **Save**
 
-![](/images/iq-tag-management/iq-self-hosting-generate-distro-zip.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/iq-self-hosting-generate-distro-zip.jpg)
 
 ### Set published file location
 
-The published file location is a setting that tells the `utag.js` code where to load subsequent utag files (for example, `utag.4.js`). Remember, the code snippet to load `utag.js` will be adjusted to use your custom self-hosted location, but the loading of the other utag files occurs dynamically based on the logic within `utag.js` and the default location is Tealium&#39;s servers.
+The published file location is a setting that tells the `utag.js` code where to load subsequent utag files (for example, `utag.4.js`). Remember, the code snippet to load `utag.js` will be adjusted to use your custom self-hosted location, but the loading of the other utag files occurs dynamically based on the logic within `utag.js` and the default location is Tealium's servers.
 
 To change the published file location:
 
@@ -51,26 +55,30 @@ To change the published file location:
 1. On the **General Publishing** tab, under the **Publishing URLs** section, enter the domain and full path to your self-hosted files, one for each environment (omit the actual file name). For example: `//example.com/custom/path/prod/`
 1. Click **Save**
 
+
+<blockquote>
 Include the environment in your path to support the built-in Dev, QA, and Prod targets.
+</blockquote>
+
 
 ### Publish all environments
 
 You have now enabled the downloadable `distro.zip` file. You will notice that the code snippet in the **Code Center** now displays the custom location of your hosted `utag.js` instead of Tealium.
 
-![](/images/iq-tag-management/iq-self-hosting-code-center.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/iq-self-hosting-code-center.jpg)
 
 The final step is to publish the profile to all environment targets (Dev, QA, Prod). This step ensures you have a `distro.zip` file generated for each environment.
 
 ### Publish work flow
 
-![](/images/iq-tag-management/iq-self-hosting-version-download.jpg)You will continue to manage your tags within Tealium iQ, but each time you save and publish, you must download the new `distro.zip` file and unzip the files to your own server.
+![](https://docs.tealium.com/images/iq-tag-management/iq-self-hosting-version-download.jpg)You will continue to manage your tags within Tealium iQ, but each time you save and publish, you must download the new `distro.zip` file and unzip the files to your own server.
 
 To download and verify the `distro.zip` file:
 
 1. From the **Versions** tab, find the last published version, expand the **Publish Details** for each environment and click **Download Distro Zip File**.
 1. Unzip the `distro.zip` file on your server in the location specified in the custom **Publishing URLs** setting. `distro.zip` should contain the following files:
     * `utag.js`: The Universal Tag, which loads and executes code to load and run tags based on load rules and conditions.
-    * `utag.#.js`: The individual tag code, where `#` represents the tag&#39;s UID. For example: `utag.1.js`.
+    * `utag.#.js`: The individual tag code, where `#` represents the tag's UID. For example: `utag.1.js`.
     * `utag.sync.js`: The code to execute prior to page load to support A/B and multivariate testing tags.
     * `utag.v.js`: The file required for session counts and billing.
     * `mobile.html`: The mobile configuration file.
@@ -81,14 +89,14 @@ To download and verify the `distro.zip` file:
 
 Lastly, after you make the `utag` files available on your live site, we recommend labeling the released version in Tealium iQ using **[Version Labels]()**.  Version labels indicate to users of your account which versions have completed your internal software release cycle.
 
-![](/images/iq-tag-management/self-hosted-version-label.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/self-hosted-version-label.jpg)
 
 ### SHA256 digest signatures
 
 For added security, verify the contents of the files by clicking the **Distro Verification** link from the publish details area where you downloaded `distro.zip`. The **Distro Verification** shows the SHA-256 checksums for each file in the archive.
 
-![](/images/iq-tag-management/self-hosted-sha256-digest.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/self-hosted-sha256-digest.jpg)
 
 Use your favorite [checksum](https://en.wikipedia.org/wiki/Checksum) utility to verify the digest signatures of the files on your hosted location. The following diagram displays the SHA-256 checksum for `utag.js`, which matches the value seen in Tealium iQ.
 
-![](/images/iq-tag-management/self-hosted-shasum.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/self-hosted-shasum.jpg)

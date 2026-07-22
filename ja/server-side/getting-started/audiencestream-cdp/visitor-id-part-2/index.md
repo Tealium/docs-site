@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ビジターID属性を作成するには：
 
-1. **Transform &gt; Visitor / Visit Attributes**に移動し、**&#43; Add Attribute**をクリックします。
+1. **Transform > Visitor / Visit Attributes**に移動し、**+ Add Attribute**をクリックします。
 1. **Visitor**の範囲を選択し、**Continue**をクリックします。
 1. データタイプ**Visitor ID**を選択し、**Continue**をクリックします。
 1. 属性の名前、`Email Address`を入力します。

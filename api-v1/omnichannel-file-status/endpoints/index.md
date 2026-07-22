@@ -3,7 +3,7 @@ title: Omnichannel File Status API endpoints
 description: Use the File Import Status GET request to retreive detailed status information for your files.
 url: https://docs.tealium.com/api-v1/omnichannel-file-status/endpoints/
 ---
-This is an older version of the [current Tealium Omnichannel File Status API]().
+This is an older version of the [current Tealium Omnichannel File Status API](https://docs.tealium.com/about-file-import/).
 
 
 ## File count
@@ -17,23 +17,27 @@ The following query parameters are used:
 * **endDate** - the end date of a range of files to query, for example `2017-01-08T12:34Z`.
 
 ```
-GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/count?utk={utk token}&amp;filePrefix={file prefix}&amp;startDate={start date}&amp;endDate={end date}
+GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/count?utk={utk token}&filePrefix={file prefix}&startDate={start date}&endDate={end date}
 ```
 
 ### cURL request
 
 ```bash
 cURL -i -b JSESSIONID={session_id} \
-  https://api.tealiumiq.com/v1/omnichannel/accounts/{account}/profiles/{profile}/files/count?utk={token}&amp;filePrefix={filePrefix}&amp;startDate={startDate}&amp;endDate={endDate}
+  https://api.tealiumiq.com/v1/omnichannel/accounts/{account}/profiles/{profile}/files/count?utk={token}&filePrefix={filePrefix}&startDate={startDate}&endDate={endDate}
 ```
 
+
+<blockquote>
 If the file count exceeds 50, try narrowing the date range parameters.
+</blockquote>
+
 
 ### Example response
 
 ```json
 {
-    &#34;count&#34; : 42
+    "count" : 42
 }
 ```
 
@@ -41,7 +45,7 @@ If the file count exceeds 50, try narrowing the date range parameters.
 
 |Error Type| Description|
 |---| ---|
-|400 Bad request|  * File Definition prefix exceeds 150 chars&lt;br&gt; * File Definition prefix, start date, or end date not supplied&lt;br&gt; * Start/End date format is invalid&lt;br&gt; * End date is before Start date |
+|400 Bad request|  * File Definition prefix exceeds 150 chars<br> * File Definition prefix, start date, or end date not supplied<br> * Start/End date format is invalid<br> * End date is before Start date |
 
 ## Single file status
 
@@ -62,49 +66,49 @@ cURL -i -b JSESSIONID={session_id} \
 
 ```json
 {
-    &#34;_id&#34;: {
-      &#34;$oid&#34;: &#34;5702ea6db993f8f8cbea334c&#34;
+    "_id": {
+      "$oid": "5702ea6db993f8f8cbea334c"
     },
-    &#34;account&#34;: &#34;acme&#34;,
-    &#34;created_at&#34;: {
-      &#34;$date&#34;: &#34;2016-04-04T22:27:56.993Z&#34;
+    "account": "acme",
+    "created_at": {
+      "$date": "2016-04-04T22:27:56.993Z"
     },
-    &#34;file&#34;: {
-      &#34;name&#34;: &#34;sales-transaction_2016feb4v50.csv&#34;,
-      &#34;size&#34;: 2744,
-      &#34;checksum&#34;: &#34;44b12d35ea9fffdeeb69f98b03004f22&#34;,
-      &#34;source&#34;: {
-        &#34;type&#34;: &#34;s3&#34;,
-        &#34;host&#34;: &#34;johndoe:&#34;
+    "file": {
+      "name": "sales-transaction_2016feb4v50.csv",
+      "size": 2744,
+      "checksum": "44b12d35ea9fffdeeb69f98b03004f22",
+      "source": {
+        "type": "s3",
+        "host": "johndoe:"
       },
-      &#34;line_count&#34;: 35
+      "line_count": 35
     },
-    &#34;node_id&#34;: &#34;bulk_downloader_i-cd504b49&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;status&#34;: [
+    "node_id": "bulk_downloader_i-cd504b49",
+    "profile": "main",
+    "status": [
       {
-        &#34;state&#34;: &#34;DOWNLOADING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.285Z&#34;
+        "state": "DOWNLOADING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.285Z"
         }
       },
       {
-        &#34;state&#34;: &#34;DOWNLOADED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.722Z&#34;
+        "state": "DOWNLOADED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.722Z"
         }
       },
       {
-        &#34;state&#34;: &#34;PROCESSING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.780Z&#34;
+        "state": "PROCESSING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.780Z"
         },
-        &#34;lines_skipped&#34;: 34
+        "lines_skipped": 34
       },
       {
-        &#34;state&#34;: &#34;PROCESSED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:58.797Z&#34;
+        "state": "PROCESSED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:58.797Z"
         }
       }
     ]
@@ -124,14 +128,14 @@ cURL -i -b JSESSIONID={session_id} \
 Returns an array of file statuses within the specified date range. Only applies to files with the same file prefix.
 
 ```
-GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/search?utk={utk token}&amp;filePrefix={filePrefix}&amp;startDate={startDate}&amp;endDate={endDate}
+GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/search?utk={utk token}&filePrefix={filePrefix}&startDate={startDate}&endDate={endDate}
 ```
 
 ### cURL request
 
 ```bash
 cURL -i -b JSESSIONID={session_id} \
-  https://api.tealiumiq.com/v1/omnichannel/accounts/{account}/profiles/{profile}/files/search?utk={token}&amp;filePrefix={filePrefix}&amp;startDate={startDate}&amp;endDate={endDate} \
+  https://api.tealiumiq.com/v1/omnichannel/accounts/{account}/profiles/{profile}/files/search?utk={token}&filePrefix={filePrefix}&startDate={startDate}&endDate={endDate} \
   -o {filename}.txt
 ```
 
@@ -142,145 +146,145 @@ Below is a sample file status for three files that are all prefixed by `sales-tr
 ```json
 [
   {
-    &#34;_id&#34;: {
-      &#34;$oid&#34;: &#34;5702ea6db993f8f8cbea334c&#34;
+    "_id": {
+      "$oid": "5702ea6db993f8f8cbea334c"
     },
-    &#34;account&#34;: &#34;acme&#34;,
-    &#34;created_at&#34;: {
-      &#34;$date&#34;: &#34;2016-04-04T22:27:56.993Z&#34;
+    "account": "acme",
+    "created_at": {
+      "$date": "2016-04-04T22:27:56.993Z"
     },
-    &#34;file&#34;: {
-      &#34;name&#34;: &#34;sales-transaction_2016feb4v50.csv&#34;,
-      &#34;size&#34;: 2744,
-      &#34;checksum&#34;: &#34;44b12d35ea9fffdeeb69f98b03004f22&#34;,
-      &#34;source&#34;: {
-        &#34;type&#34;: &#34;s3&#34;,
-        &#34;host&#34;: &#34;johndoe:&#34;
+    "file": {
+      "name": "sales-transaction_2016feb4v50.csv",
+      "size": 2744,
+      "checksum": "44b12d35ea9fffdeeb69f98b03004f22",
+      "source": {
+        "type": "s3",
+        "host": "johndoe:"
       },
-      &#34;line_count&#34;: 35
+      "line_count": 35
     },
-    &#34;node_id&#34;: &#34;bulk_downloader_i-cd504b49&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;status&#34;: [
+    "node_id": "bulk_downloader_i-cd504b49",
+    "profile": "main",
+    "status": [
       {
-        &#34;state&#34;: &#34;DOWNLOADING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.285Z&#34;
+        "state": "DOWNLOADING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.285Z"
         }
       },
       {
-        &#34;state&#34;: &#34;DOWNLOADED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.722Z&#34;
+        "state": "DOWNLOADED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.722Z"
         }
       },
       {
-        &#34;state&#34;: &#34;PROCESSING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:57.780Z&#34;
+        "state": "PROCESSING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:57.780Z"
         },
-        &#34;lines_skipped&#34;: 34
+        "lines_skipped": 34
       },
       {
-        &#34;state&#34;: &#34;PROCESSED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:58.797Z&#34;
+        "state": "PROCESSED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:58.797Z"
         }
       }
     ]
   },
   {
-    &#34;_id&#34;: {
-      &#34;$oid&#34;: &#34;5702ea6bb993f8f8cbea334b&#34;
+    "_id": {
+      "$oid": "5702ea6bb993f8f8cbea334b"
     },
-    &#34;account&#34;: &#34;acme&#34;,
-    &#34;created_at&#34;: {
-      &#34;$date&#34;: &#34;2016-04-04T22:27:55.562Z&#34;
+    "account": "acme",
+    "created_at": {
+      "$date": "2016-04-04T22:27:55.562Z"
     },
-    &#34;file&#34;: {
-      &#34;name&#34;: &#34;sales-transaction_2016feb4v49.csv&#34;,
-      &#34;size&#34;: 2744,
-      &#34;checksum&#34;: &#34;7b8f92474e220c275bf9931c0337abf3&#34;,
-      &#34;source&#34;: {
-        &#34;type&#34;: &#34;s3&#34;,
-        &#34;host&#34;: &#34;johndoe:&#34;
+    "file": {
+      "name": "sales-transaction_2016feb4v49.csv",
+      "size": 2744,
+      "checksum": "7b8f92474e220c275bf9931c0337abf3",
+      "source": {
+        "type": "s3",
+        "host": "johndoe:"
       },
-      &#34;line_count&#34;: 35
+      "line_count": 35
     },
-    &#34;node_id&#34;: &#34;bulk_downloader_i-cd504b49&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;status&#34;: [
+    "node_id": "bulk_downloader_i-cd504b49",
+    "profile": "main",
+    "status": [
       {
-        &#34;state&#34;: &#34;DOWNLOADING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:55.601Z&#34;
+        "state": "DOWNLOADING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:55.601Z"
         }
       },
       {
-        &#34;state&#34;: &#34;DOWNLOADED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:55.887Z&#34;
+        "state": "DOWNLOADED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:55.887Z"
         }
       },
       {
-        &#34;state&#34;: &#34;PROCESSING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:56.045Z&#34;
+        "state": "PROCESSING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:56.045Z"
         },
-        &#34;lines_skipped&#34;: 34
+        "lines_skipped": 34
       },
       {
-        &#34;state&#34;: &#34;PROCESSED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:56.669Z&#34;
+        "state": "PROCESSED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:56.669Z"
         }
       }
     ]
   },
   {
-    &#34;_id&#34;: {
-      &#34;$oid&#34;: &#34;5702ea69b993f8f8cbea3349&#34;
+    "_id": {
+      "$oid": "5702ea69b993f8f8cbea3349"
     },
-    &#34;account&#34;: &#34;acme&#34;,
-    &#34;created_at&#34;: {
-      &#34;$date&#34;: &#34;2016-04-04T22:27:53.276Z&#34;
+    "account": "acme",
+    "created_at": {
+      "$date": "2016-04-04T22:27:53.276Z"
     },
-    &#34;file&#34;: {
-      &#34;name&#34;: &#34;sales-transaction_2016feb4v53.csv&#34;,
-      &#34;size&#34;: 2744,
-      &#34;checksum&#34;: &#34;44b12d35ea9fffdeeb69f98b03004f22&#34;,
-      &#34;source&#34;: {
-        &#34;type&#34;: &#34;s3&#34;,
-        &#34;host&#34;: &#34;johndoe:&#34;
+    "file": {
+      "name": "sales-transaction_2016feb4v53.csv",
+      "size": 2744,
+      "checksum": "44b12d35ea9fffdeeb69f98b03004f22",
+      "source": {
+        "type": "s3",
+        "host": "johndoe:"
       },
-      &#34;line_count&#34;: 35
+      "line_count": 35
     },
-    &#34;node_id&#34;: &#34;bulk_downloader_i-cd504b49&#34;,
-    &#34;profile&#34;: &#34;profile&#34;,
-    &#34;status&#34;: [
+    "node_id": "bulk_downloader_i-cd504b49",
+    "profile": "profile",
+    "status": [
       {
-        &#34;state&#34;: &#34;DOWNLOADING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:53.307Z&#34;
+        "state": "DOWNLOADING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:53.307Z"
         }
       },
       {
-        &#34;state&#34;: &#34;DOWNLOADED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:54.249Z&#34;
+        "state": "DOWNLOADED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:54.249Z"
         }
       },
       {
-        &#34;state&#34;: &#34;PROCESSING&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:54.289Z&#34;
+        "state": "PROCESSING",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:54.289Z"
         },
-        &#34;lines_skipped&#34;: 34
+        "lines_skipped": 34
       },
       {
-        &#34;state&#34;: &#34;PROCESSED&#34;,
-        &#34;timestamp&#34;: {
-          &#34;$date&#34;: &#34;2016-04-04T22:27:55.480Z&#34;
+        "state": "PROCESSED",
+        "timestamp": {
+          "$date": "2016-04-04T22:27:55.480Z"
         }
       }
     ]
@@ -292,41 +296,45 @@ Below is a sample file status for three files that are all prefixed by `sales-tr
 
 |Error Type| Description|
 |---| ---|
-|400 Bad request|  * File Definition prefix exceeds 150 chars&lt;br&gt; * File Definition prefix, start date, or end date not supplied&lt;br&gt; * Start/End date format is invalid&lt;br&gt; * End date is before Start date |
+|400 Bad request|  * File Definition prefix exceeds 150 chars<br> * File Definition prefix, start date, or end date not supplied<br> * Start/End date format is invalid<br> * End date is before Start date |
 
 ## Omnichannel file errors
 
 File processing can fail for many reasons: invalid service credentials, missing row data, internal server error, etc. In the File Status, these specific errors are logged in the value of the `last_failure` key.
 
-Here&#39;s a truncated sample of a file status:
+Here's a truncated sample of a file status:
 
 ```json
     ...
     {
-        &#34;state&#34;: &#34;PROCESSING&#34;,
-        &#34;timestamp&#34;: {
-            &#34;$date&#34;: &#34;2016-10-05T18:09:54.014Z&#34;
+        "state": "PROCESSING",
+        "timestamp": {
+            "$date": "2016-10-05T18:09:54.014Z"
         },
-        &#34;lines_failed_processing&#34;: 1,
-        &#34;last_failure&#34;: &#34;Failed to find attribute for column with id&#34;
+        "lines_failed_processing": 1,
+        "last_failure": "Failed to find attribute for column with id"
     },
     ...
 ```
 
+
+<blockquote>
 Below listed errors are specific to Omnichannel Files; they are different from the API endpoint errors.
+</blockquote>
+
 
 ### Processing and download errors
 
 |Error message| What does it mean| How to resolve|
 |---| ---| ---|
-|Unknown file prefix, unable to parse file| File for the supplied prefix (name) could not be found. Either the file doesn&#39;t exist or there is a typographical error in the prefix.| Re-upload the file and double check the file prefix in the Omnichannel Definitions tab. If the error persists, please contact your Tealium Account Manager.|
+|Unknown file prefix, unable to parse file| File for the supplied prefix (name) could not be found. Either the file doesn't exist or there is a typographical error in the prefix.| Re-upload the file and double check the file prefix in the Omnichannel Definitions tab. If the error persists, please contact your Tealium Account Manager.|
 |DBObject of size `{###}`` is over Max BSON size `{###}`| File is too large to be processed| Split up your file data into multiple file definitions|
-|Failed to download (SFTP, S3) file| File could not be downloaded due to errors in your service credentials (see [File Import Service Configuration]()).|  * For SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
-|Invalid connection type&lt;br&gt; **OR**&lt;br&gt; Could not find required (SFTP, S3) configuration parameters for definition| Your service credentials (under [File Import Service Configuration]()) could not be authenticated.|  * For SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+|Failed to download (SFTP, S3) file| File could not be downloaded due to errors in your service credentials (see [File Import Service Configuration](https://docs.tealium.com/configure-file-import/)).|  * For SFTP, double check the Host name, user name, and password<br> * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+|Invalid connection type<br> **OR**<br> Could not find required (SFTP, S3) configuration parameters for definition| Your service credentials (under [File Import Service Configuration](https://docs.tealium.com/configure-file-import/)) could not be authenticated.|  * For SFTP, double check the Host name, user name, and password<br> * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
 
 ### Configuration and definition errors
 
-These errors are caused by incorrect column mappings in the [Column Mapping screen]().
+These errors are caused by incorrect column mappings in the [Column Mapping screen](https://docs.tealium.com/configure-file-import/).
 
 |Error Message| What does it mean| How to resolve|
 |---| ---| ---|
@@ -341,7 +349,7 @@ These errors are caused by incorrect column mappings in the [Column Mapping scre
 These errors occur when the different servers processing your files are unable to communicate with each other.
 
 * `Connection is already closed due to connection error; cause: com.rabbitmq.client.MissedHeartbeatException`
-* `Can&#39;t connect to new replica set master [##.#.#.###:###], err: couldn&#39;t connect to server [##.#.#.###:###], error querying server`
+* `Can't connect to new replica set master [##.#.#.###:###], err: couldn't connect to server [##.#.#.###:###], error querying server`
 * `DBClientBase::findN: transport error`
 * `socket exception [SEND_ERROR]`
 

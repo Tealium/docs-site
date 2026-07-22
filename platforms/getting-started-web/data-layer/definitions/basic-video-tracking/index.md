@@ -22,16 +22,16 @@ url: https://docs.tealium.com/platforms/getting-started-web/data-layer/definitio
 
 |Identifier|Description|
 |---|---|
-|`tealium_event=&#34;video_load&#34;`| The video was loaded and made available to the viewer.|
+|`tealium_event="video_load"`| The video was loaded and made available to the viewer.|
 
 Sample:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_load&#34;,
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_length&#34;   : 300,
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_load",
+   "video_id"       : "xWlEk2i9r5Q",
+   "video_length"   : 300,
+   "video_name"     : "How to track videos in Tealium",
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -39,16 +39,16 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-| `tealium_event=&#34;video_start&#34;`| The video began playing for the first time (either by auto-play or user click).|
+| `tealium_event="video_start"`| The video began playing for the first time (either by auto-play or user click).|
 
 Sample:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_start&#34;,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_start",     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -56,17 +56,17 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-|`tealium_event=&#34;video_play&#34;`| The video playback changed from not playing to playing.|
+|`tealium_event="video_play"`| The video playback changed from not playing to playing.|
 
 Sample:  
 ```javascript
 {  
-   &#34;tealium_event&#34;  : &#34;video_play&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_play",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -74,17 +74,17 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-|`tealium_event=&#34;video_pause&#34;`| The video playback changed to paused.|
+|`tealium_event="video_pause"`| The video playback changed to paused.|
 
 Sample:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_pause&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_pause",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -92,17 +92,17 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-| `tealium_event=&#34;video_seek&#34;`| Video playback was advanced forward or backward to a new playhead.|
+| `tealium_event="video_seek"`| Video playback was advanced forward or backward to a new playhead.|
 
 Sample:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_seek&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_seek",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -110,16 +110,16 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-| `tealium_event=&#34;video_complete&#34;`| Video playback has completed.|
+| `tealium_event="video_complete"`| Video playback has completed.|
 
 Sample:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_complete&#34;,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_complete",     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -127,17 +127,17 @@ Sample:
 
 |Identifier|Description|
 |---|---|
-| `tealium_event=&#34;video_milestone&#34;`| The video playback reached a specific percentage milestone.|
+| `tealium_event="video_milestone"`| The video playback reached a specific percentage milestone.|
 
 Sample:  
 ```javascript
 {   
-   &#34;tealium_event&#34;   : &#34;video_milestone&#34;,     
-   &#34;video_playhead&#34;  : 75,     
-   &#34;video_id&#34;        : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;    : 300,     
-   &#34;video_milestone&#34; : 25,     
-   &#34;video_name&#34;      : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34;  : &#34;YouTube&#34;
+   "tealium_event"   : "video_milestone",     
+   "video_playhead"  : 75,     
+   "video_id"        : "xWlEk2i9r5Q",     
+   "video_length"    : 300,     
+   "video_milestone" : 25,     
+   "video_name"      : "How to track videos in Tealium",     
+   "video_platform"  : "YouTube"
 }
 ```

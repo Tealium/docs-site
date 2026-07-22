@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/client-side-tags/hybris-integration/
 ## 前提条件
 
 * Tealium IQアカウント。
-* hybris v5.0.1&#43;が展開およびビルドされ、B2C Commerce Acceleratorが含まれています。
+* hybris v5.0.1+が展開およびビルドされ、B2C Commerce Acceleratorが含まれています。
 
 ## 定義
 
@@ -20,13 +20,13 @@ url: https://docs.tealium.com/ja/client-side-tags/hybris-integration/
 **Githubリポジトリ**: `https://github.com/Tealium/integration-hybris`
 
 1. `tealiumiqaddon`ディレクトリを`${HYBRIS_BIN}/custom`に配置します。このディレクトリはリポジトリの`/hybris/bin/custom/`フォルダにあります。
-1. `config/localextensions.xml`に&amp;lt;extension dir=&#34;$\{HYBRIS_BIN\}/custom/tealiumiqaddon&#34;/\\&amp;gt;を追加します。
+1. `config/localextensions.xml`に&lt;extension dir="$\{HYBRIS_BIN\}/custom/tealiumiqaddon"/\\&gt;を追加します。
 1. `yacceleratorstorefront`に`tealiumiqaddon`を追加します。以下を使用します:  
-  - `sudo ant addoninstall -Daddonnames=&#34;tealiumiqaddon&#34;  `
-  - `DaddonStorefront.yacceleratorstorefront=&#34;yacceleratorstorefront&#34;`
+  - `sudo ant addoninstall -Daddonnames="tealiumiqaddon"  `
+  - `DaddonStorefront.yacceleratorstorefront="yacceleratorstorefront"`
 1. 次のファイルを更新します:  
-  * `${HYBRIS_BIN\}/ext-template/yacceleratorstorefront/web/webroot/WEB-INF/tags/desktop/template/master.tag`に以下を追加します:&lt;br&gt;&amp;lt;%@ taglib prefix=&#34;tealiumiqaddon&#34; tagdir=&#34;/WEB-INF/tags/addons/tealiumiqaddon/shared/analytics&#34; %&amp;gt;をファイルの先頭に追加します。&lt;br&gt;&amp;lt;tealiumiqaddon:sync/&amp;gt;を&amp;lt;head&amp;gt;タグの後に追加します。&lt;br&gt;&amp;lt;tealiumiqaddon:tealium/&amp;gt;を&amp;lt;body&amp;gt;タグの後に追加します。
-  * `${HYBRIS_BIN}/custom/tealiumiqaddon/project.properties.template`を変更します:&lt;br&gt; **tealiumiqaddon.account**,**tealiumiqaddon.profile**, および **tealiumiqaddon.target**をあなたのTealium IQアカウント固有の情報に変更します。&lt;br&gt;`tealiumiqaddon.utagSyncEnabled = 1`を変更して、`utag.sync.js`の注入をHTMLページの&amp;lt;head&amp;gt;に有効にします。この機能はオプションで、デフォルトでは無効になっています。
+  * `${HYBRIS_BIN\}/ext-template/yacceleratorstorefront/web/webroot/WEB-INF/tags/desktop/template/master.tag`に以下を追加します:<br>&lt;%@ taglib prefix="tealiumiqaddon" tagdir="/WEB-INF/tags/addons/tealiumiqaddon/shared/analytics" %&gt;をファイルの先頭に追加します。<br>&lt;tealiumiqaddon:sync/&gt;を&lt;head&gt;タグの後に追加します。<br>&lt;tealiumiqaddon:tealium/&gt;を&lt;body&gt;タグの後に追加します。
+  * `${HYBRIS_BIN}/custom/tealiumiqaddon/project.properties.template`を変更します:<br> **tealiumiqaddon.account**,**tealiumiqaddon.profile**, および **tealiumiqaddon.target**をあなたのTealium IQアカウント固有の情報に変更します。<br>`tealiumiqaddon.utagSyncEnabled = 1`を変更して、`utag.sync.js`の注入をHTMLページの&lt;head&gt;に有効にします。この機能はオプションで、デフォルトでは無効になっています。
 
 ## カスタムデータの追加
 
@@ -57,8 +57,8 @@ public UDO homePage(UDO udo) {
 @Override
 public UDO searchPage(UDO udo) {
 	try {
-		udo.setValue(&#34;page_name&#34;, &#34;new search page name&#34;);
-		udo.setValue(&#34;custom_key&#34;, &#34;custom_value&#34;);
+		udo.setValue("page_name", "new search page name");
+		udo.setValue("custom_key", "custom_value");
 		} catch (UDOUpdateException e) {
 			e.printStackTrace();
 	    }
@@ -69,35 +69,35 @@ public UDO searchPage(UDO udo) {
 1. 値を持つ新しいページタイプを追加するには、クラスに静的変数を追加し、新しいページを`addCustomPages`メソッドに追加します:
 ```
 public class TealiumCustomData implements HybrisCustomDataConverter {
-private static Map&lt;String, HybrisCustomPageTypeCustomData&gt; customPagesMap;
+private static Map<String, HybrisCustomPageTypeCustomData> customPagesMap;
 @Override
-public Map&lt;String, HybrisCustomPageTypeCustomData&gt; getHybrisCustomPageTypes() {
+public Map<String, HybrisCustomPageTypeCustomData> getHybrisCustomPageTypes() {
 	return customPagesMap;
 }
 //... other methods
 @Override
 public void addCustomPages() {
 	if (customPagesMap == null){
-	    customPagesMap = new HashMap&lt;&gt;();
+	    customPagesMap = new HashMap<>();
 	}
-		customPagesMap.put(&#34;custom_one&#34;, new HybrisCustomPageTypeCustomData(){
+		customPagesMap.put("custom_one", new HybrisCustomPageTypeCustomData(){
 	@Override
 	public UDO getCustomDataUdo(UDO udo) {
 		try {
-		     udo.setValue(&#34;page_name&#34;, &#34;custom page 1&#34;);
-		     udo.setValue(&#34;custom_page1_key&#34;, &#34;custom value&#34;);
+		     udo.setValue("page_name", "custom page 1");
+		     udo.setValue("custom_page1_key", "custom value");
 		    } catch (UDOUpdateException e) {
 			e.printStackTrace();
 		    }
 		    return udo;
 	        }
 	});
-	customPagesMap.put(&#34;custom_two&#34;, new HybrisCustomPageTypeCustomData(){
+	customPagesMap.put("custom_two", new HybrisCustomPageTypeCustomData(){
 	@Override
 	public UDO getCustomDataUdo(UDO udo) {
 		try {
-			udo.setValue(&#34;page_name&#34;, &#34;custom page 2&#34;);
-			udo.setValue(&#34;custom_page2_key&#34;, &#34;custom value&#34;);
+			udo.setValue("page_name", "custom page 2");
+			udo.setValue("custom_page2_key", "custom value");
 		    } catch (UDOUpdateException e) {
 			e.printStackTrace();
 		    }
@@ -111,8 +111,8 @@ public void addCustomPages() {
 1. 変更します:   
  `${HYBRIS_BIN\}/custom/tealiumiqaddonweb/webroot/WEB-INF/tags/addons/tealiumiqaddon/shared/analytics/data.tag`
   * `CLASS_NAME`をあなたのクラス名に置き換えます（例えば、`TealiumCustomData`）
-  * 新しいクラスを追加します: &amp;lt;%@ tag import=&#34;com.tealium.dataconnector.hybris. CLASS_NAME &#34;%&amp;gt;
-  * 新しいクラスをHybrisDataConverterに登録します: &amp;lt;%HybrisDataConverter.registerCustomDataClass(&#34;ID&#34;, new CLASS_NAME ()); %&amp;gt;
+  * 新しいクラスを追加します: &lt;%@ tag import="com.tealium.dataconnector.hybris. CLASS_NAME "%&gt;
+  * 新しいクラスをHybrisDataConverterに登録します: &lt;%HybrisDataConverter.registerCustomDataClass("ID", new CLASS_NAME ()); %&gt;
 
 ## 完了
 
@@ -181,7 +181,7 @@ hybrisを再ビルドして再起動します。
 |`order_discount`| 注文の割引（ある場合）を含みます|
 |`order_shipping`| 注文の送料を含みます|
 |`order_tax`| 注文の税金額を含みます|
-|`order_currency`| トランザクションに関連する通貨を含みます。例えば、USD&#39;|
+|`order_currency`| トランザクションに関連する通貨を含みます。例えば、USD'|
 |`order_coupon_code`| 注文のクーポンコードを含みます|
 |`order_type`| 注文/カートを含みます|
 |`product_id`| 商品IDを含みます。複数の値はカンマで区切られます|

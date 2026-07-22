@@ -15,7 +15,7 @@ When you send events using the trace ID, the results are displayed in a detailed
 * event feeds matched
 * connector actions triggered
 
-Here&#39;s how it works:
+Here's how it works:
 
 * **Start a trace**  
 Starting a new trace generates a unique trace ID. You add this value to the data layer of your test application as the `tealium_trace_id` attribute or by copying it into the Tealium Tools Trace tool for testing directly from the browser.

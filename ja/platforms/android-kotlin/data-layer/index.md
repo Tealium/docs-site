@@ -7,20 +7,24 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/
 
 すべてのイベントで一般的なデータレイヤーの値が必要な場合がよくあります。これらの値をすべてのトラッキングコールに追加する必要がないようにするために、`tealium.dataLayer`メソッドを使用して、すべてのトラッキングコールに適用されるデータレイヤーの値を永続化します。値が保存されると、自動的にすべてのトラッキングイベントに含まれます。
 
+
+<blockquote>
 `tealium.dataLayer`が提供するメソッドは、カスタムの値を読み書きすることができますが、[モジュールデータ](#module-data)にはアクセスできません。
+</blockquote>
+
 
 ### 値の構成と取得
 
 データレイヤーの値を構成、取得、削除するためのいくつかのユーティリティメソッドがあります。カスタムのデータレイヤーの値を構成および取得するためのメソッドは型付きですが、データレイヤーに格納されている変数の型がわからない場合は、型指定されていないメソッドを使用することもできます。
 
-たとえば、文字列の値を構成するには、[`putString()`](/ja/platforms/android-kotlin/api/data-layer/#putstring)を呼び出します:  
+たとえば、文字列の値を構成するには、[`putString()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putstring)を呼び出します:  
 ```java
-tealium.dataLayer.putString(&#34;my_string&#34;, &#34;my_string_value&#34;)
+tealium.dataLayer.putString("my_string", "my_string_value")
 ```
-型が指定されていない場合は、[`get()`](/ja/platforms/android-kotlin/api/data-layer/#get)を呼び出して値を取得します:  
+型が指定されていない場合は、[`get()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#get)を呼び出して値を取得します:  
 
 ```java
-tealium.dataLayer.get(&#34;my_string&#34;)
+tealium.dataLayer.get("my_string")
 ```
 
 ### データの型
@@ -34,22 +38,22 @@ tealium.dataLayer.get(&#34;my_string&#34;)
 * `Double`
 * `JSONObject`
 * `JSONArray`
-* `Array&lt;Boolean&gt;`
-* `Array&lt;String&gt;`
-* `Array&lt;Integer&gt;`
-* `Array&lt;Long&gt;`
-* `Array&lt;Double&gt;`
+* `Array<Boolean>`
+* `Array<String>`
+* `Array<Integer>`
+* `Array<Long>`
+* `Array<Double>`
 
-長い数値の値を構成するには、[`putLong()`](/ja/platforms/android-kotlin/api/data-layer/#putlong)を呼び出します:  
+長い数値の値を構成するには、[`putLong()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putlong)を呼び出します:  
 ```java
 val launchTime = System.currentTimeMillis()
-tealium.dataLayer.putLong(&#34;launch_time&#34;, launchTime)
+tealium.dataLayer.putLong("launch_time", launchTime)
 ```
 
-文字列の配列を構成するには、[`putStringArray()`](/ja/platforms/android-kotlin/api/data-layer/#putstringarray)を呼び出します:  
+文字列の配列を構成するには、[`putStringArray()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putstringarray)を呼び出します:  
 ```java
-val lastThreeProductsViewed = arrayOf(&#34;SKU-1&#34;, &#34;SKU-2&#34;, &#34;SKU-3&#34;)
-tealium.dataLayer.putStringArray(&#34;last_three_products&#34;, lastThreeProductsViewed)
+val lastThreeProductsViewed = arrayOf("SKU-1", "SKU-2", "SKU-3")
+tealium.dataLayer.putStringArray("last_three_products", lastThreeProductsViewed)
 ```
 
 ### データの有効期限
@@ -70,62 +74,62 @@ tealium.dataLayer.putStringArray(&#34;last_three_products&#34;, lastThreeProduct
 
 たとえば、期限切れにならない値を構成するには:  
 ```java
-val userId = &#34;my_id&#34;
-tealium.dataLayer.putString(&#34;user_id&#34;, userId, Expiry.FOREVER)
+val userId = "my_id"
+tealium.dataLayer.putString("user_id", userId, Expiry.FOREVER)
 ```
 
 現在のセッションの終了時に値が期限切れになるように明示的に構成するには (デフォルトの動作):  
 ```java
 val sessionProductViews = 10
-tealium.dataLayer.putInt(&#34;product_views&#34;, sessionProductViews, Expiry.SESSION)
+tealium.dataLayer.putInt("product_views", sessionProductViews, Expiry.SESSION)
 ```
 
 1日後に値が期限切れになるように構成するには:  
 ```java
-val frequentVisitor = tealium.dataLayer.getBoolean(&#34;frequent_visitor&#34;) ?: false
+val frequentVisitor = tealium.dataLayer.getBoolean("frequent_visitor") ?: false
 
-tealium.dataLayer.putBoolean(&#34;frequent_visitor&#34;,
+tealium.dataLayer.putBoolean("frequent_visitor",
         frequentVisitor,
         Expiry.afterTimeUnit(1, TimeUnit.DAYS))
 ```
 
 ### 例
 
-使用可能なすべてのメソッドの完全なリストについては、[Class: DataLayer](/ja/platforms/android-kotlin/api/data-layer/)を参照してください。
+使用可能なすべてのメソッドの完全なリストについては、[Class: DataLayer](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/)を参照してください。
 
-データレイヤーに変数が含まれているかどうかを確認するには、[`contains()`](/ja/platforms/android-kotlin/api/data-layer/#contains)を呼び出します:
+データレイヤーに変数が含まれているかどうかを確認するには、[`contains()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#contains)を呼び出します:
 
 ```java
-tealium.dataLayer.contains(&#34;my_string&#34;)
+tealium.dataLayer.contains("my_string")
 ```
 
-値を削除するには、[`remove()`](/ja/platforms/android-kotlin/api/data-layer/#remove)を呼び出します:  
+値を削除するには、[`remove()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#remove)を呼び出します:  
 ```java
-tealium.dataLayer.remove(&#34;my_string&#34;)
+tealium.dataLayer.remove("my_string")
 ```
 
-データレイヤー内のすべてのキー名をリストするには、[`keys()`](/ja/platforms/android-kotlin/api/data-layer/#keys)を呼び出します:  
+データレイヤー内のすべてのキー名をリストするには、[`keys()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#keys)を呼び出します:  
 
 ```java
 tealium.dataLayer.keys()
 ```
 
-データレイヤー内の変数の数を取得するには、[`count()`](/ja/platforms/android-kotlin/api/data-layer/#count)を呼び出します:  
+データレイヤー内の変数の数を取得するには、[`count()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#count)を呼び出します:  
 ```java
 tealium.dataLayer.count()
 ```
 
-変数の有効期限を取得するには、[`getExpiry()`](/ja/platforms/android-kotlin/api/data-layer/#getexpiry)を呼び出します:  
+変数の有効期限を取得するには、[`getExpiry()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#getexpiry)を呼び出します:  
 ```java
-tealium.dataLayer.getExpiry(&#34;my_string&#34;)
+tealium.dataLayer.getExpiry("my_string")
 ```
 
-すべてのデータレイヤー変数を取得するには、[`all()`](/ja/platforms/android-kotlin/api/data-layer/#all)を呼び出します。これにより、`mapOf()`が返されます:  
+すべてのデータレイヤー変数を取得するには、[`all()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#all)を呼び出します。これにより、`mapOf()`が返されます:  
 ```java
 tealium.dataLayer.all()
 ```
 
-すべてのデータレイヤー変数を削除するには、[`clear()`](/ja/platforms/android-kotlin/api/data-layer/#clear)を呼び出します:  
+すべてのデータレイヤー変数を削除するには、[`clear()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#clear)を呼び出します:  
 ```java
 tealium.dataLayer.clear()
 ```
@@ -134,7 +138,7 @@ tealium.dataLayer.clear()
 
 ### 広告識別子
 
-[広告識別子](/ja/platforms/android-kotlin/module-list/adid/)によってデータレイヤーに追加される変数は次のとおりです。
+[広告識別子](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/adid/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数 | 型 | 説明 | 例 |
 | --- | --- | --- | --- |     
@@ -143,7 +147,7 @@ tealium.dataLayer.clear()
 
 ### アプリコレクター
 
-[アプリコレクター](/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
+[アプリコレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -156,7 +160,7 @@ tealium.dataLayer.clear()
 
 ### 接続コレクター
 
-[接続コレクター](/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
+[接続コレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -168,19 +172,19 @@ tealium.dataLayer.clear()
 
 ### クラッシュレポーター
 
-[クラッシュレポーター](/ja/platforms/android-kotlin/module-list/crash-reporter/)によってデータレイヤーに追加される変数は次のとおりです。
+[クラッシュレポーター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/crash-reporter/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数 | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
 | `crash_cause` | `String` | 例外のタイプ | `java.lang.RuntimeException` |
 | `crash_count` | `Number` | インストール後の各クラッシュごとにインクリメントされるカウンター | `1` |
-| `crash_name` | `String` | 例外のメッセージ |`&#34;Connection refused by server&#34;` |
-| `crash_threads` | `[String]` | クラッシュしたスレッドのデータを含むJSON文字列の配列。スレッドIDとスタックトレースを含みます| ` [&#39;{ &#34;crashed&#34;: &#34;true&#34;, &#34;state&#34;: &#34;RUNNABLE&#34;, &#34;threadNumber&#34;: &#34;1&#34;, &#34;threadId&#34;: &#34;main&#34;, &#34;priority&#34;: &#34;5&#34;, &#34;stack&#34;:  [ { &#34;fileName&#34;: &#34;MainActivity.java&#34;, &#34;className&#34;: &#34;com.tealium.libraryproject.MainActivity$1&#34;, &#34;methodName&#34;: &#34;onClick&#34;, &#34;lineNumber&#34;: &#34;38&#34; }] }&#39;]` |
+| `crash_name` | `String` | 例外のメッセージ |`"Connection refused by server"` |
+| `crash_threads` | `[String]` | クラッシュしたスレッドのデータを含むJSON文字列の配列。スレッドIDとスタックトレースを含みます| ` ['{ "crashed": "true", "state": "RUNNABLE", "threadNumber": "1", "threadId": "main", "priority": "5", "stack":  [ { "fileName": "MainActivity.java", "className": "com.tealium.libraryproject.MainActivity$1", "methodName": "onClick", "lineNumber": "38" }] }']` |
 | `crash_uuid` | `String` | 各クラッシュイベントの16文字の一意のID | `3c91d707-949e-445f-8ad1-4d6e200bfd6f` |
 
 ### デバイスコレクター
 
-[デバイスコレクター](/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
+[デバイスコレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -216,7 +220,7 @@ tealium.dataLayer.clear()
 
 ### ライフサイクルモジュール
 
-[ライフサイクルモジュール](/ja/platforms/android-kotlin/module-list/lifecycle-tracking/)によってデータレイヤーに追加される変数は次のとおりです。
+[ライフサイクルモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/lifecycle-tracking/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -240,14 +244,14 @@ tealium.dataLayer.clear()
 | `lifecycle_totallaunchcount` | インストール後の起動の総数 (アプリが削除されるまでリセットされない)| `3` |
 | `lifecycle_totalsecondsawake` | アプリがインストールされてからのアプリの起動/アクティブ状態の合計秒数 (アプリが削除されるまでリセットされない)| `36` |
 | `lifecycle_totalsleepcount` | アプリがインストールされてからのバックグラウンドに移行した回数の合計 (アプリが削除されるまでリセットされない)| `400` |
-| `lifecycle_totalwakecount` | インストール後の起動数 &#43; 起床数の合計 (アプリが削除されるまでリセットされない)| `563` |
+| `lifecycle_totalwakecount` | インストール後の起動数 + 起床数の合計 (アプリが削除されるまでリセットされない)| `563` |
 | `lifecycle_type` | ライフサイクル呼び出しのタイプ| `launch`, `wake`, `sleep`|
 | `lifecycle_updatelaunchdate` | バージョン更新が検出された後の最初の起動/起床のGMTタイムスタンプ| `2014-09-08T18:10:01Z` |
-| `lifecycle_wakecount` | このバージョンのアプリの起動数 &#43; 起床数の合計 (更新されるとリセットされる)| `29` |
+| `lifecycle_wakecount` | このバージョンのアプリの起動数 + 起床数の合計 (更新されるとリセットされる)| `29` |
 
 ### 位置情報コレクター
 
-[位置情報コレクター](/ja/platforms/android-kotlin/module-list/location/)によってデータレイヤーに追加される変数は次のとおりです。
+[位置情報コレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/location/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -260,7 +264,7 @@ tealium.dataLayer.clear()
 
 ### Tealiumコレクター
 
-[Tealiumコレクター](/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
+[Tealiumコレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -274,7 +278,7 @@ tealium.dataLayer.clear()
 
 ### タイムコレクター
 
-[タイムコレクター](/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
+[タイムコレクター](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors/)によってデータレイヤーに追加される変数は次のとおりです。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -286,7 +290,7 @@ tealium.dataLayer.clear()
 
 ### 廃止予定
 
-[Tealium for Android (Java)](/ja/platforms/android-java/data-layer/)の次のデータレイヤー変数は、Tealium for Android (Kotlin)では名前が変更されたり削除されたりしました。
+[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/data-layer/)の次のデータレイヤー変数は、Tealium for Android (Kotlin)では名前が変更されたり削除されたりしました。
 
 | Tealium for Android (Java) | Tealium for Android (Kotlin) |
 |:---------------|:---------------------|

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 ---
 ## 要件
 
-* アカウントで[プラットフォームの権限]()が有効になっていること。
+* アカウントで[プラットフォームの権限](https://docs.tealium.com/about-platform-permissions/)が有効になっていること。
 
 ## 概要
 
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 同時にログインしているユーザーからの変更を予期している場合、どのバージョンで作業しているかを知ることが重要です。現在のバージョンは、アカウントおよびプロファイルの下にある見出しに表示されます：
 
-![](/images/server-side/save-publish/server-side-concurrency-heading.png)
+![](https://docs.tealium.com/images/server-side/save-publish/server-side-concurrency-heading.png)
 
 新しい長期プロジェクトを開始する場合は、プロファイルスイッチャーを使用して現在公開されているバージョンを読み込み、**名前を付けて保存**を実行して計画変更用の新しいバージョンを作成します。新しいバージョンにすべての構成変更を行います。変更が完了し、テストされたら、新しいバージョンを本番環境に公開します。
 
@@ -44,13 +44,13 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 ログインすると、作業している製品エリアが左側のナビゲーションバーで青く強調表示されます。別のユーザーもログインしており、あなたのバージョンでアクティブな場合、そのユーザーのイニシャルが画面の上部に独自の背景色の円として表示されます。同じ独自の色が、その他のユーザーが現在作業している製品のエリアを強調表示するために使用されます。次の例を参照してください：
 
-![](/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
+![](https://docs.tealium.com/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png)
 
 ## 別のユーザーが変更を開始する
 
 別のユーザーが使用しているバージョンに変更を加え始めると、進行中の未保存の変更についてメッセージが通知されます：
 
-![](/images/server-side/save-publish/another-user-is-making-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-is-making-changes.png)
 
 **了解**をクリックしてメッセージを確認します。
 
@@ -62,7 +62,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 変更を加えていない場合、次の通知が表示されます：
 
-![](/images/server-side/save-publish/concurrency-notification-nochangesmade.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrency-notification-nochangesmade.png)
 
 **更新**をクリックして画面をリフレッシュし、他のユーザーの保存された変更を読み込みます。
 
@@ -70,11 +70,11 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 変更を加えた場合、次の通知が表示されます：
 
-![](/images/server-side/save-publish/concurrency-notification-changesmade.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrency-notification-changesmade.png)
 
 **保存**をクリックして、他のユーザーの変更をあなたの作業に統合します。保存に関する情報が含まれる新しいダイアログが開きます：
 
-![](/images/server-side/save-publish/review-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
 **保存される変更**または**公開される変更**の表には、次の情報が含まれます：
 
@@ -85,7 +85,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 あなたの変更と最新の公開バージョンの両方が同じアイテムを変更しており、システムが変更を調整できない場合、**上書き**バッジがその隣に表示されます。
 
-![](/images/server-side/save-publish/concurrent-user-publish-conflict.png)
+![](https://docs.tealium.com/images/server-side/save-publish/concurrent-user-publish-conflict.png)
 
 あなたのバージョンを公開すると、公開バージョンの既存のアイテムがあなたのものに置き換えられます。
 
@@ -93,6 +93,6 @@ url: https://docs.tealium.com/ja/server-side/save-publish/concurrent-users/
 
 別のユーザーがバージョンを公開すると、あなたがどのバージョンにいても、その公開についてのメッセージが表示されます：
 
-![](/images/server-side/save-publish/another-user-published.png)
+![](https://docs.tealium.com/images/server-side/save-publish/another-user-published.png)
 
-あなたのバージョンを最新の状態に保つために、その変更を保存して含めることをお勧めします。詳細については、[保存と公開]()を参照してください。
+あなたのバージョンを最新の状態に保つために、その変更を保存して含めることをお勧めします。詳細については、[保存と公開](https://docs.tealium.com/ss-save-and-publish/#save-or-publish-changes)を参照してください。

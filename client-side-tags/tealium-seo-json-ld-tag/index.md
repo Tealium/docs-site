@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/tealium-seo-json-ld-tag/
 ---
 ## Tag Configuration
 
-First, go to the tag marketplace and add the Tealium SEO Tag to your profile. For more information, see [Manage Tags]().
+First, go to the tag marketplace and add the Tealium SEO Tag to your profile. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag).
 
 After adding the tag, configure the below settings:
 
@@ -23,13 +23,13 @@ For example, if your search URL is `http://query.example.com/search?q=smartphone
 
 ## Load Rules
 
-[Load rules]() determine when and where to load an instance of this tag on your site.
+[Load rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: **All Pages**.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Tealium SEO Tag are built into its data mapping tab. Available categories are:
 
@@ -45,24 +45,24 @@ The destination variables for the Tealium SEO Tag are built into its data mappin
 
 ### How to Create Custom JSON-LD Data Mappings
 
-Custom JSON-LD data is created using data mappings and dot-notation naming. You will need to know what the final JSON-LD should look like in your page to determine the mappings. Let&#39;s use the example of creating a `contactPoint` object.
+Custom JSON-LD data is created using data mappings and dot-notation naming. You will need to know what the final JSON-LD should look like in your page to determine the mappings. Let's use the example of creating a `contactPoint` object.
 
 In the final JSON-LD, the `contactPoint` object might look like this:
 
 ```
-&lt;script type=&#34;application/ld&#43;json&#34;&gt;
+<script type="application/ld+json">
 {
-  &#34;@context&#34; : &#34;http://schema.org&#34;,
-  &#34;@type&#34; : &#34;Organization&#34;,
-  &#34;url&#34; : &#34;http://www.example.com&#34;,
-  &#34;contactPoint&#34;:
+  "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "url" : "http://www.example.com",
+  "contactPoint":
    {
-      &#34;@type&#34;: &#34;ContactPoint&#34;,
-      &#34;telephone&#34;: &#34;&#43;1-888-555-1212&#34;,
-      &#34;contactType&#34;: &#34;sales&#34;
+      "@type": "ContactPoint",
+      "telephone": "+1-888-555-1212",
+      "contactType": "sales"
    }
 }
-&lt;/script&gt;
+</script>
 ```
 
 In the tag, the entire object is represented by the `json_ld` name in the data mappings. From there, each item within the final object is referenced by using dot-notation. For example, to set all of the values from the example above, you would create the following data mappings:
@@ -77,7 +77,7 @@ The tag will create sub-objects within the final JSON-LD based on the dot-notati
 * `json_ld.contactPoint.telephone`
 * `json_ld.contactPoint.contactType`
 
-In this case, let&#39;s assume you have a data layer variable named `contact_phone` that contains the phone number to set within the contactPoint telephone property.
+In this case, let's assume you have a data layer variable named `contact_phone` that contains the phone number to set within the contactPoint telephone property.
 
 1. Create a data mapping for `contact_phone` and select the Custom JSON-LD Data destination.
 
@@ -107,24 +107,24 @@ Use the following mappings if **Build Product Data** is set to `Yes`.
 
 ## Creating Custom JSON-LD with Data Mappings
 
-Custom JSON-LD data is created using data mappings and dot-notation naming. You will need to know what the final JSON-LD should look like in your page to determine the mappings. Let&#39;s use the example of creating a `contactPoint` object.
+Custom JSON-LD data is created using data mappings and dot-notation naming. You will need to know what the final JSON-LD should look like in your page to determine the mappings. Let's use the example of creating a `contactPoint` object.
 
 In the final JSON-LD, the contactPoint object might look like this:
 
 ```
-&lt;script type=&#34;application/ld&#43;json&#34;&gt;
+<script type="application/ld+json">
 {
-  &#34;@context&#34; : &#34;http://schema.org&#34;,
-  &#34;@type&#34; : &#34;Organization&#34;,
-  &#34;url&#34; : &#34;http://www.example.com&#34;,
-  &#34;contactPoint&#34;:
+  "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "url" : "http://www.example.com",
+  "contactPoint":
    {
-      &#34;@type&#34;: &#34;ContactPoint&#34;,
-      &#34;telephone&#34;: &#34;&#43;1-888-555-1212&#34;,
-      &#34;contactType&#34;: &#34;sales&#34;
+      "@type": "ContactPoint",
+      "telephone": "+1-888-555-1212",
+      "contactType": "sales"
    }
 }
-&lt;/script&gt;
+</script>
 ```
 
 In the tag, the entire object is represented by the `json_ld` name in the data mappings. From there, each item within the final object is referenced by using dot-notation. For example, to set all of the values from the example above, you would create the following data mappings:
@@ -139,31 +139,31 @@ The tag will create sub-objects within the final JSON-LD based on the dot-notati
 * `json_ld.contactPoint.telephone`
 * `json_ld.contactPoint.contactType`
 
-In this case, let&#39;s assume you have a data layer variable named `contact_phone` that contains the phone number to set within the contactPoint telephone property.
+In this case, let's assume you have a data layer variable named `contact_phone` that contains the phone number to set within the contactPoint telephone property.
 
 1. Create a data mapping for `contact_phone` and select the **Custom JSON-LD Data** destination.
-![](/images/client-side-tags/json-ld-tag-data-mapping-custom.jpg)
+![](https://docs.tealium.com/images/client-side-tags/json-ld-tag-data-mapping-custom.jpg)
 
 1. Click the `json_ld.custom` name to edit it, then change the value to `json_ld.contactPoint.telephone`.
 
 
 ### Creating Custom JSON-LD with JavaScript
 
-You can inject custom JSON objects using the [JavaScript Code Extension]() scoped to this tag. The tag exposes a JavaScript utility function for adding custom objects called `u.injectJSONLD()`. It takes one parameter, an array of objects.
+You can inject custom JSON objects using the [JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) scoped to this tag. The tag exposes a JavaScript utility function for adding custom objects called `u.injectJSONLD()`. It takes one parameter, an array of objects.
 
 Example of adding a [ContactPoint Schema](http://schema.org/ContactPoint):
 
 ```
 u.injectJSONLD([{
-    &#34;@context&#34;: &#34;http://schema.org&#34;,
-    &#34;@type&#34;: &#34;Organization&#34;,
-    &#34;url&#34;: &#34;https://www.example.com&#34;,
-    &#34;contactPoint&#34;: [{
-        &#34;@type&#34;: &#34;ContactPoint&#34;,
-        &#34;telephone&#34;: &#34;&#43;1-877-555-1212&#34;,
-        &#34;contactType&#34;: &#34;Lead&#34;,
-        &#34;contactOption&#34;: &#34;TollFree&#34;,
-        &#34;areaServed&#34;: &#34;US&#34;
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.example.com",
+    "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+1-877-555-1212",
+        "contactType": "Lead",
+        "contactOption": "TollFree",
+        "areaServed": "US"
     }]
 }]);
 ```

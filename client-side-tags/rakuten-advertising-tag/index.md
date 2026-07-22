@@ -23,7 +23,7 @@ url: https://docs.tealium.com/client-side-tags/rakuten-advertising-tag/
 
 ### Tag configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Rakuten Marketing tag . For more information, see [Manage tags]().
+First, go to Tealium's tag marketplace and add the Rakuten Marketing tag . For more information, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 After adding the tag, configure the following settings:
 
@@ -38,7 +38,7 @@ After adding the tag, configure the following settings:
 
 ### Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -46,78 +46,78 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`trackingKey`|  &lt;ul&gt;&lt;li&gt;Tracking Key&lt;/li&gt;&lt;/ul&gt; |
-|`siteSection`|  &lt;ul&gt;&lt;li&gt;Site Section&lt;/li&gt;&lt;/ul&gt; |
-|`conversionType`|  &lt;ul&gt;&lt;li&gt;Conversion Type&lt;/li&gt;&lt;/ul&gt; |
-|`customerStatus`|  &lt;ul&gt;&lt;li&gt;Customer Status&lt;/li&gt;&lt;/ul&gt; |
-|`discountAmount`|  &lt;ul&gt;&lt;li&gt;Discount Amount&lt;/li&gt;&lt;/ul&gt; |
-|`optionalData`|  &lt;ul&gt;&lt;li&gt;Optional Data&lt;/li&gt;&lt;/ul&gt; |
+|`trackingKey`|  <ul><li>Tracking Key</li></ul> |
+|`siteSection`|  <ul><li>Site Section</li></ul> |
+|`conversionType`|  <ul><li>Conversion Type</li></ul> |
+|`customerStatus`|  <ul><li>Customer Status</li></ul> |
+|`discountAmount`|  <ul><li>Discount Amount</li></ul> |
+|`optionalData`|  <ul><li>Optional Data</li></ul> |
 
 #### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder` .&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub Total.&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax Amount.&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;Currency.&lt;/li&gt;&lt;li&gt;Overrides `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;Promo Code.&lt;/li&gt;&lt;li&gt;Overrides `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_consumed`|  &lt;ul&gt;&lt;li&gt;Consumed.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipped_country`|  &lt;ul&gt;&lt;li&gt;Order Shipped Country.&lt;/li&gt;&lt;/ul&gt; |
-|`order_status`|  &lt;ul&gt;&lt;li&gt;Order Status.&lt;/li&gt;&lt;li&gt;Values are:  &lt;ul&gt;&lt;li&gt;Existing&lt;/li&gt;&lt;li&gt;Returning&lt;/li&gt;&lt;li&gt;New&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-| `order_shipped` |  &lt;ul&gt;&lt;li&gt;Order Shipped.&lt;/li&gt;&lt;/ul&gt; |
-|`order_site_name`|  &lt;ul&gt;&lt;li&gt;Site Name.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;Customer ID.&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_score`|  &lt;ul&gt;&lt;li&gt;Customer Score.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_country`|  &lt;ul&gt;&lt;li&gt;Customer Country.&lt;/li&gt;&lt;li&gt;Overrides `_ccountry`.&lt;/li&gt;&lt;li&gt;Used in place of `order_shipped_country` if `order_shipped_country` is not provided.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Used in place of `product_sku` if `product_sku` is not provided.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan` .&lt;/li&gt;&lt;/ul&gt; |
-|`product_sku`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of SKUs.&lt;/li&gt;&lt;li&gt;Overrides `_csku`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_discount`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Discounts.&lt;/li&gt;&lt;li&gt;Overrides `_cpdisc`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_brand`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Brands.&lt;/li&gt;&lt;li&gt;Overrides `_cbrand`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories.&lt;/li&gt;&lt;li&gt;Overrides `_ccat` .&lt;/li&gt;&lt;/ul&gt; |
-|`product_category_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Category IDs.&lt;/li&gt;&lt;/ul&gt; |
-|`product_coupon`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Coupons.&lt;/li&gt;&lt;/ul&gt; |
-|`product_is_clearance`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Clearance Statuses.&lt;/li&gt;&lt;/ul&gt; |
-|`product_is_sale`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Sales Statuses.&lt;/li&gt;&lt;/ul&gt; |
-|`product_margin`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Margins.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID.</li><li>Overrides `_corder` .</li></ul> |
+|`order_subtotal`|  <ul><li>Sub Total.</li><li>Overrides `_csubtotal`.</li></ul> |
+|`order_tax`|  <ul><li>Tax Amount.</li><li>Overrides `_ctax`.</li></ul> |
+|`order_currency`|  <ul><li>Currency.</li><li>Overrides `_ccurrency`.</li></ul> |
+|`order_coupon_code`|  <ul><li>Promo Code.</li><li>Overrides `_cpromo`.</li></ul> |
+|`order_consumed`|  <ul><li>Consumed.</li></ul> |
+|`order_shipped_country`|  <ul><li>Order Shipped Country.</li></ul> |
+|`order_status`|  <ul><li>Order Status.</li><li>Values are:  <ul><li>Existing</li><li>Returning</li><li>New</li></ul> </li></ul> |
+| `order_shipped` |  <ul><li>Order Shipped.</li></ul> |
+|`order_site_name`|  <ul><li>Site Name.</li></ul> |
+|`customer_id`|  <ul><li>Customer ID.</li><li>Overrides `_ccustid`.</li></ul> |
+|`customer_score`|  <ul><li>Customer Score.</li></ul> |
+|`customer_country`|  <ul><li>Customer Country.</li><li>Overrides `_ccountry`.</li><li>Used in place of `order_shipped_country` if `order_shipped_country` is not provided.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Used in place of `product_sku` if `product_sku` is not provided.</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan` .</li></ul> |
+|`product_sku`|  <ul><li>Array</li><li>List of SKUs.</li><li>Overrides `_csku`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li></ul> |
+|`product_discount`|  <ul><li>Array</li><li>List of Discounts.</li><li>Overrides `_cpdisc`.</li></ul> |
+|`product_brand`|  <ul><li>Array</li><li>List of Brands.</li><li>Overrides `_cbrand`.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories.</li><li>Overrides `_ccat` .</li></ul> |
+|`product_category_id`|  <ul><li>Array</li><li>List of Category IDs.</li></ul> |
+|`product_coupon`|  <ul><li>Array</li><li>List of Coupons.</li></ul> |
+|`product_is_clearance`|  <ul><li>Array</li><li>List of Clearance Statuses.</li></ul> |
+|`product_is_sale`|  <ul><li>Array</li><li>List of Sales Statuses.</li></ul> |
+|`product_margin`|  <ul><li>Array</li><li>List of Margins.</li></ul> |
 
 #### Affiliate
 
 |Variable| Description|
 |---| ---|
-|`allowCommission`|  &lt;ul&gt;&lt;li&gt;Allow Commission&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.ranMID`|  &lt;ul&gt;&lt;li&gt;ranMID&lt;/li&gt;&lt;/ul&gt; |
-| `affiliateConfig.taxRate` |  &lt;ul&gt;&lt;li&gt;Tax Rate&lt;/li&gt;&lt;/ul&gt; |
-| `affiliateConfig.discountType` |  &lt;ul&gt;&lt;li&gt;Discount Type&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.tagType`|  &lt;ul&gt;&lt;li&gt;Tag Type&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.includeStatus`|  &lt;ul&gt;&lt;li&gt;Include Status&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeOrderTax`|  &lt;ul&gt;&lt;li&gt;Remove Order Tax&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeTaxFromProducts`|  &lt;ul&gt;&lt;li&gt;Remove Tax From Products&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.removeTaxFromDiscount`|  &lt;ul&gt;&lt;li&gt;Remove Tax From Discount.&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.centValues`|  &lt;ul&gt;&lt;li&gt;Cent Values.&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`affiliateConfig.nonCentCurrencies`|  &lt;ul&gt;&lt;li&gt;Non cent currencies.&lt;/li&gt;&lt;li&gt;Can accept an Array or a String containing a comma-separated list of currencies.&lt;/li&gt;&lt;/ul&gt; |
+|`allowCommission`|  <ul><li>Allow Commission</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.ranMID`|  <ul><li>ranMID</li></ul> |
+| `affiliateConfig.taxRate` |  <ul><li>Tax Rate</li></ul> |
+| `affiliateConfig.discountType` |  <ul><li>Discount Type</li></ul> |
+|`affiliateConfig.tagType`|  <ul><li>Tag Type</li></ul> |
+|`affiliateConfig.includeStatus`|  <ul><li>Include Status</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.removeOrderTax`|  <ul><li>Remove Order Tax</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.removeTaxFromProducts`|  <ul><li>Remove Tax From Products</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.removeTaxFromDiscount`|  <ul><li>Remove Tax From Discount.</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.centValues`|  <ul><li>Cent Values.</li><li>Values are `true` or `false`.</li></ul> |
+|`affiliateConfig.nonCentCurrencies`|  <ul><li>Non cent currencies.</li><li>Can accept an Array or a String containing a comma-separated list of currencies.</li></ul> |
 
 #### Display
 
 |Variable| Description|
 |---| ---|
-|`displayConfig.rdMID`|  &lt;ul&gt;&lt;li&gt;rdMID&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.domain`|  &lt;ul&gt;&lt;li&gt;Domain&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.tagType`|  &lt;ul&gt;&lt;li&gt;Tag Type&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.includeStatus`|  &lt;ul&gt;&lt;li&gt;Include Status&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.allowCommission`|  &lt;ul&gt;&lt;li&gt;Allow Commission&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.removeTaxFromProducts`|  &lt;ul&gt;&lt;li&gt;Remove Tax From Products&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.removeTaxFromDiscount`|  &lt;ul&gt;&lt;li&gt;Remove Tax From Discount&lt;/li&gt;&lt;li&gt;Values are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
-|`displayConfig.taxRate`|  &lt;ul&gt;&lt;li&gt;Tax Rate&lt;/li&gt;&lt;/ul&gt; |
+|`displayConfig.rdMID`|  <ul><li>rdMID</li></ul> |
+|`displayConfig.domain`|  <ul><li>Domain</li></ul> |
+|`displayConfig.tagType`|  <ul><li>Tag Type</li></ul> |
+|`displayConfig.includeStatus`|  <ul><li>Include Status</li></ul> |
+|`displayConfig.allowCommission`|  <ul><li>Allow Commission</li></ul> |
+|`displayConfig.removeTaxFromProducts`|  <ul><li>Remove Tax From Products</li><li>Values are `true` or `false`.</li></ul> |
+|`displayConfig.removeTaxFromDiscount`|  <ul><li>Remove Tax From Discount</li><li>Values are `true` or `false`.</li></ul> |
+|`displayConfig.taxRate`|  <ul><li>Tax Rate</li></ul> |
 
 #### Search
 
 |Variable| Description|
 |---| ---|
-|`searchConfig.rsMID`|  &lt;ul&gt;&lt;li&gt;rsMID&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.conversionType`|  &lt;ul&gt;&lt;li&gt;Conversion Type&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.accountID`|  &lt;ul&gt;&lt;li&gt;Account ID&lt;/li&gt;&lt;/ul&gt; |
-|`searchConfig.clickID`|  &lt;ul&gt;&lt;li&gt;Click ID&lt;/li&gt;&lt;/ul&gt; |
+|`searchConfig.rsMID`|  <ul><li>rsMID</li></ul> |
+|`searchConfig.conversionType`|  <ul><li>Conversion Type</li></ul> |
+|`searchConfig.accountID`|  <ul><li>Account ID</li></ul> |
+|`searchConfig.clickID`|  <ul><li>Click ID</li></ul> |

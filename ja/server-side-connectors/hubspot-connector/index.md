@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -30,7 +30,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|コンタクトプロパティ| &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt;|
+|コンタクトプロパティ| <ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul>|
 
 ### コンタクトの作成（バッチ処理）
 
@@ -44,7 +44,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|コンタクトプロパティ| &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt;|
+|コンタクトプロパティ| <ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul>|
 
 ### コンタクトの更新（リアルタイム）
 
@@ -52,8 +52,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|コンタクト識別子|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレスまたはコンタクトID。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt; |
-|コンタクトプロパティ| &lt;ul&gt;&lt;li&gt;（必須）構成するコンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt;|
+|コンタクト識別子|  <ul><li>（必須）コンタクトのメールアドレスまたはコンタクトID。</li><li>リストからHubSpotフィールドを選択します。</li></ul> |
+|コンタクトプロパティ| <ul><li>（必須）構成するコンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul>|
 
 ### コンタクトの更新（バッチ処理）
 
@@ -69,8 +69,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|コンタクト識別子|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレスまたはコンタクトID。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt; |
-|コンタクトプロパティ| &lt;ul&gt;&lt;li&gt;（必須）構成するコンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt;|
+|コンタクト識別子|  <ul><li>（必須）コンタクトのメールアドレスまたはコンタクトID。</li><li>リストからHubSpotフィールドを選択します。</li></ul> |
+|コンタクトプロパティ| <ul><li>（必須）構成するコンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul>|
 
 ### リストにコンタクトを追加
 
@@ -86,8 +86,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|対象コンタクトリスト|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトを追加するリストを選択します。&lt;/li&gt;&lt;/ul&gt; |
-|コンタクト検索|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt; |
+|対象コンタクトリスト|  <ul><li>（必須）コンタクトを追加するリストを選択します。</li></ul> |
+|コンタクト検索|  <ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul> |
 
 ### リストからコンタクトを削除
 
@@ -99,5 +99,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/hubspot-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|対象コンタクトリスト|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトを削除するリストを選択します。&lt;/li&gt;&lt;/ul&gt; |
-|コンタクト検索|  &lt;ul&gt;&lt;li&gt;（必須）コンタクトのメールアドレス。&lt;/li&gt;&lt;li&gt;リストからHubSpotフィールドを選択します。&lt;/li&gt;&lt;/ul&gt; |
+|対象コンタクトリスト|  <ul><li>（必須）コンタクトを削除するリストを選択します。</li></ul> |
+|コンタクト検索|  <ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul> |

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/about/
 ---
 ## データレイヤーとは何ですか？
 
-![](/images/iq-tag-management/data-layer-stack.png)
+![](https://docs.tealium.com/images/iq-tag-management/data-layer-stack.png)
 
 データレイヤーはタグ管理の基盤です。データレイヤーでは、ウェブサイトの属性、例えばサイトの言語やページ名を定義します。また、データレイヤーは、購入やログインなど、追跡したい重要なユーザー行動を定義する場所でもあります。タグ管理を実装する際、データレイヤーの属性を定義することが最初のステップです。
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/data-layer/about/
 *   **一貫した名前**  
 Tealium iQタグ管理で定義されたデータレイヤー変数の名前は、ページコードに記載されている変数の名前と一致していなければなりません。例えば、Tealium iQで`page_name`と名付けられたデータレイヤー変数は、あなたのページコードでは次のように記載されます：  
       ```js
-      utag_data = { &#34;page_name&#34; : &#34;My Home Page&#34; };
+      utag_data = { "page_name" : "My Home Page" };
       ```
 *   **ユーザーフレンドリーな変数名**  
 データレイヤー変数は、ベンダーニュートラルで、すべてのビジネスユニットで理解しやすいユーザーフレンドリーな名前を持っています。例えば、`order_id`は`oid`ではなく。

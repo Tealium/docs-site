@@ -6,8 +6,8 @@ url: https://docs.tealium.com/platforms/ruby/track/
 
 ## Track Events
 
-The [`track()`](/platforms/ruby/api/#track) method tracks events, as shown in the following example:
+The [`track()`](https://docs.tealium.com/platforms/ruby/api/#track) method tracks events, as shown in the following example:
 
 ```ruby
-teal.track(&#34;EVENT_NAME&#34;, {:key =&gt; &#34;value&#34;})
+teal.track("EVENT_NAME", {:key => "value"})
 ```

@@ -8,7 +8,7 @@ url: https://docs.tealium.com/iq-tag-management/data-layer/best-practices/
 
 In the page code, the data layer object (`utag_data`) must be declared _before_ the reference to the Universal Tag (`utag.js`). This ensures that the Universal Tag has all the data layer variables needed to evaluate load rules, extensions, and tags. An example of the recommended code placement can be accessed from the Code Center.
 
-To learn more, see [installing the Universal Tag (utag.js)](/platforms/javascript/install/#universal-tag-utag-js).
+To learn more, see [installing the Universal Tag (utag.js)](https://docs.tealium.com/platforms/javascript/install/#universal-tag-utag-js).
 
 ## Naming conventions
 
@@ -49,7 +49,7 @@ Examples:
 
 | | Boolean| Integer|
 |---| ---| ---|
-|Correct|  `is_registered : &#34;1&#34;` |  `order_total : &#34;1234.56&#34;` |
+|Correct|  `is_registered : "1"` |  `order_total : "1234.56"` |
 |Incorrect|  `is_registered : true` |  `order_total : 1234.56` |
 
 **Pros**
@@ -68,13 +68,13 @@ Set product variables (price, quantity, ID, etc.) as arrays. The Universal Tag (
 Array (Recommended):
 
 ```javascript
-product_id : [&#34;prodID1&#34;,&#34;prodID2&#34;,&#34;prodID3&#34;]
+product_id : ["prodID1","prodID2","prodID3"]
 ```
 
 String:
 
 ```javascript
-product_id : &#34;prodID1,prodID2,prodID3&#34;
+product_id : "prodID1,prodID2,prodID3"
 ```
 
 **Pros**
@@ -111,7 +111,7 @@ All pages of your site should include a variable called `page_type`. This is use
 
 ## Third-party data layer objects
 
-You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. We recommend that these objects be converted to the UDO `utag_data` format using one of the available [data layer converters]().
+You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. We recommend that these objects be converted to the UDO `utag_data` format using one of the available [data layer converters](https://docs.tealium.com/set-up-data-layer-converter/).
 
 **Pros**
 

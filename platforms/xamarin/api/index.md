@@ -24,10 +24,10 @@ Example:
 ```csharp
 public class MyRemoteCommand : IRemoteCommand
     {
-        public string CommandId =&gt; &#34;my_remote_command&#34;;
-        public string Description =&gt; &#34;description of my remote command&#34;;
-        public string Path =&gt; null;
-        public string Url =&gt; null;
+        public string CommandId => "my_remote_command";
+        public string Description => "description of my remote command";
+        public string Path => null;
+        public string Url => null;
 
         public void Dispose()
         {
@@ -36,8 +36,8 @@ public class MyRemoteCommand : IRemoteCommand
 
         public void HandleResponse(IRemoteCommandResponse response)
         {
-            var str = response.Payload.GetValueForKey&lt;String&gt;(&#34;key&#34;);
-            if (str == &#34;&#34;)
+            var str = response.Payload.GetValueForKey<String>("key");
+            if (str == "")
             {
                 // etc
             }
@@ -51,17 +51,17 @@ tealium.AddRemoteCommand(new MyRemoteCommand());
 Adds data to the persistent data storage for the given expiration.
 
 ```csharp
-void AddToDataLayer(IDictionary&lt;string, object&gt; data, Expiry expiry);
+void AddToDataLayer(IDictionary<string, object> data, Expiry expiry);
 ```
 
 | Parameters | Type | Description |
 |:-----------|:-----|:------------|
-| `data`     | `IDictionary&lt;string, object&gt;` | IDictionary of key-value pairs, where keys are strings and the values are primitives or collections |
+| `data`     | `IDictionary<string, object>` | IDictionary of key-value pairs, where keys are strings and the values are primitives or collections |
 | `expiry`   | [`Expiry`](#expiry)           | Length of time for which to persist the data|
 
 ```csharp
-tealium.AddToDataLayer(new Dictionary&lt;string, object&gt; {
-  { &#34;user_language&#34;, lang }
+tealium.AddToDataLayer(new Dictionary<string, object> {
+  { "user_language", lang }
 }, Expiry.Forever);
 ```
 
@@ -75,7 +75,11 @@ Visitor IDs will contiue to be stored based on the config setting `visitorIdenti
 tealium.ClearStoredVisitorIds();
 ```
 
+
+<blockquote>
 To avoid storing the newly reset `visitorId` with the current identity after the storage is cleared, the identity key must be previously deleted from the data layer (see [`RemoveFromDataLayer()`](#removefromdatalayer)).
+</blockquote>
+
 
 ### ConsentCategory
 The consent category values. For use with [`GetConsentCategories`](#getconsentcategories) and [`SetConsentCategories`](#setconsentcategories).
@@ -140,20 +144,20 @@ object? GetFromDataLayer(string key);
 | `key`      | `String` | Key to retrieve from the data layer |
 
 ```csharp
-string myString = (string)tealium.GetFromDataLayer(&#34;user_language&#34;);
+string myString = (string)tealium.GetFromDataLayer("user_language");
 ```
 
 ### `GetConsentCategories()`
 Get the list of categories that the user consented to.
 
 ```csharp
-List&lt;ConsentCategory&gt;? GetConsentCategories();
+List<ConsentCategory>? GetConsentCategories();
 ```
 
 Example:
 
 ```csharp
-tealium.GetConsentCategories().ForEach((c) =&gt;
+tealium.GetConsentCategories().ForEach((c) =>
 {
     if (c == ConsentManager.ConsentCategory.Analytics)
     {
@@ -163,7 +167,7 @@ tealium.GetConsentCategories().ForEach((c) =&gt;
 ```
 
 ### `GetConsentStatus()`
-Gets the current state of the user&#39;s consent. Returns a [`ConsentStatus`](#consentstatus) value.
+Gets the current state of the user's consent. Returns a [`ConsentStatus`](#consentstatus) value.
 
 ```csharp
 ConsentStatus GetConsentStatus();
@@ -183,7 +187,7 @@ switch (tealium.GetConsentStatus()) {
 ```
 
 ### `GetVisitorId()`
-Retrieves the user&#39;s visitor ID and returns in the form of a callback function.
+Retrieves the user's visitor ID and returns in the form of a callback function.
 
 ```csharp
 string? visitorId = tealium.GetVisitorId();
@@ -191,7 +195,7 @@ string? visitorId = tealium.GetVisitorId();
 
 ### `JoinTrace()`
 
-Joins a trace with the specified ID. Learn more about the [Trace]() feature in the Tealium Customer Data Hub.
+Joins a trace with the specified ID. Learn more about the [Trace](https://docs.tealium.com/manage-traces/) feature in the Tealium Customer Data Hub.
 
 ```csharp
 tealium.JoinTrace(id);
@@ -214,15 +218,15 @@ tealium.LeaveTrace();
 Remove persistent data that has been previously set using [`AddToDataLayer()`](#addtodatalayer).
 
 ```csharp
-void RemoveFromDataLayer(ICollection&lt;string&gt; keys);
+void RemoveFromDataLayer(ICollection<string> keys);
 ```
 
 | Parameters | Type                  | Description             |
 |:-----------|:----------------------|:------------------------|
-| `keys`     | `ICollection&lt;String&gt;` | Collection of key names |
+| `keys`     | `ICollection<String>` | Collection of key names |
   
 ```csharp
-tealium.RemoveFromDataLayer(new string[] { &#34;key1&#34;, &#34;key2&#34; });
+tealium.RemoveFromDataLayer(new string[] { "key1", "key2" });
 ```
 
 ### `RemoveRemoteCommand()`
@@ -238,7 +242,7 @@ void RemoveRemoteCommand(string id);
 | `id`       | `String` | Name of the command ID to remove |
 
 ```csharp
-tealium.RemoveRemoteCommand(&#34;firebase&#34;);
+tealium.RemoveRemoteCommand("firebase");
 ```
 
 
@@ -254,15 +258,15 @@ tealium.ResetVisitorId();
 Sets the list of categories that the user consented to. For use with [`ConsentCategory`](#consentcategory).
 
 ```csharp
-void SetConsentCategories(List&lt;ConsentCategory&gt; categories);
+void SetConsentCategories(List<ConsentCategory> categories);
 ```
 
 | Parameters   | Type                    | Description                      |
 |:-------------|:------------------------|:---------------------------------|
-| `categories` | `List&lt;ConsentCategory&gt;` | List of user consent categories. |
+| `categories` | `List<ConsentCategory>` | List of user consent categories. |
 
 ```csharp
-tealium.SetConsentCategories(new List&lt;ConsentManager.ConsentCategory&gt;()
+tealium.SetConsentCategories(new List<ConsentManager.ConsentCategory>()
 {
     ConsentManager.ConsentCategory.DisplayAds,
     ConsentManager.ConsentCategory.Analytics
@@ -281,14 +285,14 @@ void SetConsentExpiryListener(Action callback);
 | `callback  ` | `Action` | Code to execute when consent expires. |
   
 ```csharp
-tealium.SetConsentExpiryListener(() =&gt;
+tealium.SetConsentExpiryListener(() =>
 {
-    System.Diagnostics.Debug.WriteLine(&#34;Consent Expired&#34;);
+    System.Diagnostics.Debug.WriteLine("Consent Expired");
 });
 ```
 
 ### `SetConsentStatus()`
-Sets the consent status for a user. Default value is `.Unknown` until it&#39;s set.
+Sets the consent status for a user. Default value is `.Unknown` until it's set.
 
 ```csharp
 void SetConsentStatus(ConsentStatus status);
@@ -303,7 +307,7 @@ tealium.SetConsentStatus(ConsentManager.ConsentStatus.NotConsented);
 ```
 
 ### `SetVisitorServiceListener()`
-Sets a callback function to execute when the visitor profile has been updated. The updated [`VisitorProfile`](#instance-ivisitorprofile) is provided in the callback response. For use when [`visitorServiceEnabled`](/platforms/xamarin/install/#config) is set to `true`.
+Sets a callback function to execute when the visitor profile has been updated. The updated [`VisitorProfile`](#instance-ivisitorprofile) is provided in the callback response. For use when [`visitorServiceEnabled`](https://docs.tealium.com/platforms/xamarin/install/#config) is set to `true`.
 
 Use this feature if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application.
 
@@ -316,10 +320,10 @@ void SetVisitorServiceListener(Action callback);
 | `callback  ` | `Action` | Code to execute when a visitor profile is retrieved. |
   
 ```csharp
-tealium.SetVisitorServiceListener((visitorProfile) =&gt;
+tealium.SetVisitorServiceListener((visitorProfile) =>
 {
-    System.Diagnostics.Debug.WriteLine(&#34;Visitor Updated&#34;);
-    System.Diagnostics.Debug.WriteLine($&#34;Visitor: {visitorProfile}&#34;);
+    System.Diagnostics.Debug.WriteLine("Visitor Updated");
+    System.Diagnostics.Debug.WriteLine($"Visitor: {visitorProfile}");
 });
 ```
 
@@ -346,10 +350,10 @@ tealium.Track(tealEvent);
 To track events, create a [`TealiumEvent`](#class-tealiumevent) object, and pass it to the `track()` method:
 
 ```csharp
-tealium.Track(new TealiumEvent(&#34;cart_add&#34;, new Dictionary&lt;string, object&gt; {
-    { &#34;customer_id&#34;, &#34;abc123&#34; }, 
-    { &#34;product_id&#34;, [&#34;PROD123&#34;, &#34;PROD456&#34;] },
-    { &#34;product_price&#34;, [4.00, 6.00] }
+tealium.Track(new TealiumEvent("cart_add", new Dictionary<string, object> {
+    { "customer_id", "abc123" }, 
+    { "product_id", ["PROD123", "PROD456"] },
+    { "product_price", [4.00, 6.00] }
 }));
 ```
 
@@ -359,35 +363,35 @@ The following summarizes the properties of the `TealiumConfig` class.
 
 | Parameters| Type| Description| Example|
 |:----------|:----|:-----------|:-------|
-| `account`| `String`| (Required) Tealium account name| `&#34;companyXYZ&#34; `|
-| `profile`| `String`| (Required) Tealium profile name| `&#34;main&#34;`|
+| `account`| `String`| (Required) Tealium account name| `"companyXYZ" `|
+| `profile`| `String`| (Required) Tealium profile name| `"main"`|
 | `environment`| [`Environment`](#environment) | (Required) Tealium environment name| `Environment.dev`|
-| `dataSource`| `String`| CDH data source key| `&#34;abc123&#34;`|
+| `dataSource`| `String`| CDH data source key| `"abc123"`|
 | `collectors`| `Collectors[]`| (Required) Sets the list of [`Collectors`](#collectors) to initialize the Tealium library with| `[Collectors.AppData]`|
 | `dispatchers`| `Dispatchers[]`| (Required) Sets the list of [`Dispatchers`](#dispatchers) to initialize the Tealium library with| `[Dispatchers.Collect]`|
-| `customVisitorId`| `String`| Sets a custom Visitor ID| `&#34;ALK2398LSDKJ3289SLKJ3298SLKJ3&#34;`|
+| `customVisitorId`| `String`| Sets a custom Visitor ID| `"ALK2398LSDKJ3289SLKJ3298SLKJ3"`|
 | `memoryReportingEnabled`       | `Boolean`| Enables or disables memory reporting in the DeviceData module (default: disabled).| `true`|
-| `overrideCollectDomain`           | `String`| Overrides the domain of the Tealium Collect URL. For use with [first-party domains](/iq-tag-management/administration/first-party-domains/manage/). | `&#34;your-domain.com&#34;`|
-| `overrideCollectURL`           | `String`| Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the `overrideCollectBatchURL` property.| `&#34;https://custom-domain.com/event&#34;`|
-| `overrideCollectBatchURL`      | `String`| Overrides the Tealium Collect batch URL to send data to a different endpoint.| `&#34;https://custom-domain.com/batch-event&#34;`|
-| `overrideLibrarySettingsURL`   | `String`| Overrides the publish settings URL.| `&#34;https://custom-domain.com/mobile.html&#34;`|
-| `overrideTagManagementURL`     | `String`| Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.| `&#34;https://custom-domain.com/path/env/utag.js&#34;`|
-| `deepLinkTrackingEnabled`      | `Boolean`| Enables or disables [automatic tracking of standard deep links](/platforms/getting-started-mobile/deep-linking/#readout), such as links to the app from Facebook or other sources, as well as QR trace.  (default: enabled)| `false`|
-| `qrTraceEnabled`               | `Boolean`| Enables or disables [QR trace](/platforms/getting-started-mobile/trace/#how-it-works). (default: enabled)| `false`|
+| `overrideCollectDomain`           | `String`| Overrides the domain of the Tealium Collect URL. For use with [first-party domains](https://docs.tealium.com/iq-tag-management/administration/first-party-domains/manage/). | `"your-domain.com"`|
+| `overrideCollectURL`           | `String`| Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the `overrideCollectBatchURL` property.| `"https://custom-domain.com/event"`|
+| `overrideCollectBatchURL`      | `String`| Overrides the Tealium Collect batch URL to send data to a different endpoint.| `"https://custom-domain.com/batch-event"`|
+| `overrideLibrarySettingsURL`   | `String`| Overrides the publish settings URL.| `"https://custom-domain.com/mobile.html"`|
+| `overrideTagManagementURL`     | `String`| Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.| `"https://custom-domain.com/path/env/utag.js"`|
+| `deepLinkTrackingEnabled`      | `Boolean`| Enables or disables [automatic tracking of standard deep links](https://docs.tealium.com/platforms/getting-started-mobile/deep-linking/#readout), such as links to the app from Facebook or other sources, as well as QR trace.  (default: enabled)| `false`|
+| `qrTraceEnabled`               | `Boolean`| Enables or disables [QR trace](https://docs.tealium.com/platforms/getting-started-mobile/trace/#how-it-works). (default: enabled)| `false`|
 | `loglevel`                     | [`LogLevel`](#loglevel)                     | Sets the log level property, which controls how much information is logged (default: silent)| `LogLevel.dev`|
-| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)           | Sets the expiration of the user&#39;s consent preferences. (defaults dependent upon policy)| `ConsentExpiry(90, TimeUnit.days)`|
-| `consentLoggingEnabled`        | `Boolean`| Enables the [Consent Logging]() feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)   | `true`|
+| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)           | Sets the expiration of the user's consent preferences. (defaults dependent upon policy)| `ConsentExpiry(90, TimeUnit.days)`|
+| `consentLoggingEnabled`        | `Boolean`| Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)   | `true`|
 | `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)           | Sets the consent policy. For example, CCPA or GDPR. Consent manager is only enabled if this property is set.| `ConsentPolicy.gdpr`|
 | `lifecycleAutotrackingEnabled` | `Boolean`| Enables or disables lifecycle auto tracking. (default: enabled)| `false`|
-| `useRemoteLibrarySettings`     | `Boolean`| Enables or disables the [Mobile Publish Settings]() (default: enabled) Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`|
-| `visitorServiceEnabled`        | `Boolean`| Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API]() (default: disabled)| `true`|
-| `remoteCommands`               | `RemoteCommand[]`| Sets a list of [RemoteCommand](#RemoteCommand) objects to add when the instance is ready| `[{ id: &#34;hello-world&#34;, callback: (payload) =&gt; { console.log(&#34;hello-world: &#34; &#43; JSON.stringify(payload)); } }]` |
-| `overrideConsentCategoriesKey` | `String` | Overrides the name of the consent categories event attribute. Use this to support custom enforcement of server-side consent. Learn more about [disabling automatic enforcement of server-side consent](). (default: `consent_categories`)| `consent_categories_granted` |
+| `useRemoteLibrarySettings`     | `Boolean`| Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: enabled) Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`|
+| `visitorServiceEnabled`        | `Boolean`| Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled)| `true`|
+| `remoteCommands`               | `RemoteCommand[]`| Sets a list of [RemoteCommand](#RemoteCommand) objects to add when the instance is ready| `[{ id: "hello-world", callback: (payload) => { console.log("hello-world: " + JSON.stringify(payload)); } }]` |
+| `overrideConsentCategoriesKey` | `String` | Overrides the name of the consent categories event attribute. Use this to support custom enforcement of server-side consent. Learn more about [disabling automatic enforcement of server-side consent](https://docs.tealium.com/server-side-consent-management/). (default: `consent_categories`)| `consent_categories_granted` |
 | `visitorIdentityKey` | `String` | Use to support visitor switching and to specify the shared key to identify multiple users of the app. | `user_profile_id` |
 
 ### Collectors
 
-Collectors are modules that gather supplemental information from the device and append it to the data layer before it&#39;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
+Collectors are modules that gather supplemental information from the device and append it to the data layer before it's transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.
 
 The following table lists the available collectors. Default collectors are denoted by a `*` next to the collector name.
 
@@ -403,7 +407,7 @@ These modules are enabled or disabled using the `Collectors` property set in  [`
 ```csharp
 TealiumConfig tealConfig = new TealiumConfig(
     // ...
-    new List&lt;Collectors&gt; {
+    new List<Collectors> {
         Collectors.LifeCycle, Collectors.Device
     }
     // ...
@@ -451,7 +455,7 @@ Dispatchers are modules that send the data to a Tealium endpoint. These are set 
 ```csharp
 TealiumConfig tealConfig = new TealiumConfig(
     // ...
-    new List&lt;Dispatchers&gt; {
+    new List<Dispatchers> {
         Dispatchers.Collect, Dispatchers.RemoteCommands
     }
     // ...
@@ -464,7 +468,11 @@ The following dispatchers are available:
 * `Dispatchers.RemoteCommands`
 * `Dispatchers.TagManagement`
 
+
+<blockquote>
 At least one dispatcher is required.
+</blockquote>
+
 
 ### LogLevel
 
@@ -498,18 +506,18 @@ The visitor profile object contains visitor attributes returned from the visitor
 
 | Parameters| Properties| Value|
 |:----------|:----------|:-----|
-| `ArraysOfBooleans` | `IDictionary&lt;string, IList&lt;bool&gt;&gt;`                 | `id: &#34;5129&#34;, value: [true,false,true,true]`                          |
-| `ArraysOfNumbers`  | `IDictionary&lt;string, IList&lt;double&gt;&gt;`               | `id: &#34;57&#34;, value: [4.82125, 16.8, 0.5714285714285714]`               |
-| `ArraysOfStrings`  | `IDictionary&lt;string, IList&lt;string&gt;&gt;`               | `id: &#34;5213&#34;, value: [&#34;green shirts&#34;, &#34;green shirts&#34;, &#34;blue shirts&#34;]` |
-| `Audiences`        | `IDictionary&lt;string, string&gt;`                      | `id: &#34;tealiummobile\_demo\_103&#34;, value: &#34;iOS Users&#34;`                 |
-| `Badges`           | `IDictionary&lt;string, bool&gt;`                        | `id: &#34;2815&#34;, value: true`                                            |
-| `Booleans`         | `IDictionary&lt;string, bool&gt;`                        | `id: &#34;4868&#34;, value: true`                                            |
+| `ArraysOfBooleans` | `IDictionary<string, IList<bool>>`                 | `id: "5129", value: [true,false,true,true]`                          |
+| `ArraysOfNumbers`  | `IDictionary<string, IList<double>>`               | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]`               |
+| `ArraysOfStrings`  | `IDictionary<string, IList<string>>`               | `id: "5213", value: ["green shirts", "green shirts", "blue shirts"]` |
+| `Audiences`        | `IDictionary<string, string>`                      | `id: "tealiummobile\_demo\_103", value: "iOS Users"`                 |
+| `Badges`           | `IDictionary<string, bool>`                        | `id: "2815", value: true`                                            |
+| `Booleans`         | `IDictionary<string, bool>`                        | `id: "4868", value: true`                                            |
 | `CurrentVisit`     | `ICurrentVisit`                                    |                                                                      |
-| `Dates`            | `IDictionary&lt;string, long&gt;`                        | `id: &#34;22&#34;, value: 1567120112000`                                     |
-| `Numbers`          | `IDictionary&lt;string, double&gt;`                      | `id: &#34;5728&#34;, value: 4.82125`                                         |
-| `SetOfStrings`     | `IDictionary&lt;string, ISet&lt;string&gt;&gt;`                | `id: &#34;5211&#34;, value: [&#34;green shirts&#34;, &#34;red shirts&#34;, &#34;blue shirts&#34;]`   |
-| `Strings`          | `IDictionary&lt;string, string&gt;                       | `id: &#34;5380&#34;, value: &#34;green shirts&#34;`                                  |
-| `Tallies`          | `IDictionary&lt;string, IDictionary&lt;string, double&gt;&gt;` | `&#34;57&#34;: [[&#34;category 1&#34;: 2.0], &#34;category 2&#34;: 1.0]]`                    |
+| `Dates`            | `IDictionary<string, long>`                        | `id: "22", value: 1567120112000`                                     |
+| `Numbers`          | `IDictionary<string, double>`                      | `id: "5728", value: 4.82125`                                         |
+| `SetOfStrings`     | `IDictionary<string, ISet<string>>`                | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`   |
+| `Strings`          | `IDictionary<string, string>                       | `id: "5380", value: "green shirts"`                                  |
+| `Tallies`          | `IDictionary<string, IDictionary<string, double>>` | `"57": [["category 1": 2.0], "category 2": 1.0]]`                    |
 
 ### `ICurrentVisit`
 
@@ -517,15 +525,15 @@ The object that contains attributes scoped to the current visit.
 
 | Parameters| Properties| Value|
 |:----------|:----------|:-----|
-| `ArraysOfBooleans` | `IDictionary&lt;string, IList&lt;bool&gt;&gt;`                 | `id: &#34;5129&#34;, value: [true,false,true,true]`                          |
-| `ArraysOfNumbers`  | `IDictionary&lt;string, IList&lt;double&gt;&gt;`               | `id: &#34;57&#34;, value: [4.82125, 16.8, 0.5714285714285714]`               |
-| `ArraysOfStrings`  | `IDictionary&lt;string, IList&lt;string&gt;&gt;`               | `id: &#34;5213&#34;, value: [&#34;green shirts&#34;, &#34;green shirts&#34;, &#34;blue shirts&#34;]` |
-| `Booleans`         | `IDictionary&lt;string, bool&gt;`                        | `id: &#34;4868&#34;, value: true`                                            |
-| `Dates`            | `IDictionary&lt;string, long&gt;`                        | `id: &#34;22&#34;, value: 1567120112000`                                     |
-| `Numbers`          | `IDictionary&lt;string, double&gt;`                      | `id: &#34;5728&#34;, value: 4.82125`                                         |
-| `SetOfStrings`     | `IDictionary&lt;string, ISet&lt;string&gt;&gt;`                | `id: &#34;5211&#34;, value: [&#34;green shirts&#34;, &#34;red shirts&#34;, &#34;blue shirts&#34;]`   |
-| `Strings`          | `IDictionary&lt;string, string&gt;                       | `id: &#34;5380&#34;, value: &#34;green shirts&#34;`                                  |
-| `Tallies`          | `IDictionary&lt;string, IDictionary&lt;string, double&gt;&gt;` | `&#34;57&#34;: [[&#34;category 1&#34;: 2.0], &#34;category 2&#34;: 1.0]]`                    |
+| `ArraysOfBooleans` | `IDictionary<string, IList<bool>>`                 | `id: "5129", value: [true,false,true,true]`                          |
+| `ArraysOfNumbers`  | `IDictionary<string, IList<double>>`               | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]`               |
+| `ArraysOfStrings`  | `IDictionary<string, IList<string>>`               | `id: "5213", value: ["green shirts", "green shirts", "blue shirts"]` |
+| `Booleans`         | `IDictionary<string, bool>`                        | `id: "4868", value: true`                                            |
+| `Dates`            | `IDictionary<string, long>`                        | `id: "22", value: 1567120112000`                                     |
+| `Numbers`          | `IDictionary<string, double>`                      | `id: "5728", value: 4.82125`                                         |
+| `SetOfStrings`     | `IDictionary<string, ISet<string>>`                | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`   |
+| `Strings`          | `IDictionary<string, string>                       | `id: "5380", value: "green shirts"`                                  |
+| `Tallies`          | `IDictionary<string, IDictionary<string, double>>` | `"57": [["category 1": 2.0], "category 2": 1.0]]`                    |
 | `TotalEventCount`  | `int`                                              | `42`                                                                 |
 | `CreatedAt`        | `long`                                             | `1638236024`                                                         |
 
@@ -535,10 +543,10 @@ An interface that defines the type of dispatch to be tracked. The following clas
 
 ### Class: `TealiumEvent`
 
-To track a user&#39;s interaction with a screen or a screen view, pass an instance of `TealiumEvent(tealiumEvent, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
+To track a user's interaction with a screen or a screen view, pass an instance of `TealiumEvent(tealiumEvent, dataLayer)` to the [`Track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
 
 ```csharp
-tealium.Track(new TealiumEvent(&#34;tealiumEvent&#34;, new Dictionary&lt;string, object&gt; {
+tealium.Track(new TealiumEvent("tealiumEvent", new Dictionary<string, object> {
     eventData
 }));
 ```
@@ -546,15 +554,15 @@ tealium.Track(new TealiumEvent(&#34;tealiumEvent&#34;, new Dictionary&lt;string,
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent` | `string` | The event name, passed as the tealium_event attribute.  |
-| `eventData` | `Dictionary&lt;string, object&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `eventData` | `Dictionary<string, object>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```csharp
-tealium.Track(new TealiumEvent(&#34;cart_add&#34;, new Dictionary&lt;string, object&gt; {
-    { &#34;customer_id&#34;, &#34;abc123&#34; }, 
-    { &#34;product_id&#34;, [&#34;PROD123&#34;, &#34;PROD456&#34;] },
-    { &#34;product_price&#34;, [4.00, 6.00] }
+tealium.Track(new TealiumEvent("cart_add", new Dictionary<string, object> {
+    { "customer_id", "abc123" }, 
+    { "product_id", ["PROD123", "PROD456"] },
+    { "product_price", [4.00, 6.00] }
 }));
 ```
 
@@ -563,7 +571,7 @@ tealium.Track(new TealiumEvent(&#34;cart_add&#34;, new Dictionary&lt;string, obj
 To track screen views, pass an instance of `TealiumView(tealiumEvent, dataLayer)` to the [`Track()`](#track) method. `TealiumView` consists of a view name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
 
 ```csharp
-tealium.Track(new TealiumView(&#34;tealiumEvent&#34;, new Dictionary&lt;string, object&gt; {
+tealium.Track(new TealiumView("tealiumEvent", new Dictionary<string, object> {
     eventData
 }));
 ```
@@ -571,15 +579,15 @@ tealium.Track(new TealiumView(&#34;tealiumEvent&#34;, new Dictionary&lt;string, 
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent`  | `string`| The event name, passed as the `tealium_event` attribute.          | 
-| `eventData` | `Dictionary&lt;string, object&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `eventData` | `Dictionary<string, object>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```csharp
-tealium.Track(new TealiumView(&#34;purchase&#34;, new Dictionary&lt;string, object&gt; {
-    { &#34;customer_id&#34;, &#34;abc123&#34; },
-    { &#34;order_total&#34;, 10.00 },
-    { &#34;product_id&#34;, [&#34;PROD123&#34;, &#34;PROD456&#34;] },
-    { &#34;order_id&#34;, &#34;0123456789&#34; }
+tealium.Track(new TealiumView("purchase", new Dictionary<string, object> {
+    { "customer_id", "abc123" },
+    { "order_total", 10.00 },
+    { "product_id", ["PROD123", "PROD456"] },
+    { "order_id", "0123456789" }
 }));
 ```

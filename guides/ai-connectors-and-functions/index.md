@@ -21,11 +21,15 @@ AI connectors integrate with hosted AI services from supported providers. They s
 
 To use an AI connector, you need authentication credentials for your provider and at least one configured action that defines the request and the Tealium data to send to the model.
 
-AI connectors are designed for use cases that return structured, predictable output. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization&#39;s AI governance processes before moving to production.
+
+<blockquote>
+AI connectors are designed for use cases that return structured, predictable output. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization's AI governance processes before moving to production.
+</blockquote>
+
 
 ### Data flow
 
-![](/images/guides/ai-connectors-flow.png)
+![](https://docs.tealium.com/images/guides/ai-connectors-flow.png)
 
 1. **Trigger fires**: An event or audience change triggers a connector action.
 1. **Request sent**: The connector sends your prompt or input data to the AI model endpoint.
@@ -38,7 +42,11 @@ AI connectors are designed for use cases that return structured, predictable out
 
 The prompt instructs the model about the context data to evaluate, asks a specific question, and defines the expected response. Depending on the vendor connector, you may or may not need to include specific instructions about the response output. See the specific connector instructions for details.
 
+
+<blockquote>
 Some connectors, such as the OpenAI **Send Prompt to OpenAI** action, enforce JSON structure automatically through a schema. For those connectors, do not include response format instructions in your prompt. The examples below apply to connectors that require manual response formatting.
+</blockquote>
+
 
 #### Context data
 
@@ -63,11 +71,11 @@ If the connector requires prompt instructions about the response format, include
 ```wrap
 Return only a single JSON object on one line with the following structure: 
 {
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
-  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+  "tealium_account": "{{tealium_account}}",
+  "tealium_profile": "{{tealium_profile}}",
+  "tealium_visitor_id": "{{tealium_visitor_id}}",
+  "tealium_event":  "ai_response",
+  "ai_review_sentiment": "<customer review sentiment>"
 }
 ```
 
@@ -75,10 +83,10 @@ Return only a single JSON object on one line with the following structure:
 
 Your prompt tells the model how to evaluate the data and asks to generate one or more specific values.
 
-For example, this prompt asks to generate a text value representing the sentiment of the customer&#39;s review:
+For example, this prompt asks to generate a text value representing the sentiment of the customer's review:
 
 ```wrap
-Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
+Based on the provided product review event, classify the customer's sentiment as one of: "dissatisfied", "neutral", or "satisfied".
 ```
 
 ### Response event
@@ -89,11 +97,11 @@ Example response event:
 
 ```json
 {
-  &#34;tealium_account&#34;: &#34;acme&#34;,
-  &#34;tealium_profile&#34;: &#34;main&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;383...05d&#34;,
-  &#34;tealium_event&#34;: &#34;ai_response&#34;,
-  &#34;ai_review_sentiment&#34;: &#34;satisfied&#34;
+  "tealium_account": "acme",
+  "tealium_profile": "main",
+  "tealium_visitor_id": "383...05d",
+  "tealium_event": "ai_response",
+  "ai_review_sentiment": "satisfied"
 }
 ```
 
@@ -105,18 +113,18 @@ In this example, the customer has just submitted a product review and the prompt
 **Example prompt**:
 
 ```wrap
-You receive a JSON object describing a customer&#39;s product review:
+You receive a JSON object describing a customer's product review:
 {{event_payload}}
 
-Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
+Based on the provided product review event, classify the customer's sentiment as one of: "dissatisfied", "neutral", or "satisfied".
 
 Return only a single JSON object on one line with the following structure: 
 {
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
-  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+  "tealium_account": "{{tealium_account}}",
+  "tealium_profile": "{{tealium_profile}}",
+  "tealium_visitor_id": "{{tealium_visitor_id}}",
+  "tealium_event":  "ai_response",
+  "ai_review_sentiment": "<customer review sentiment>"
 }
 ```
 
@@ -124,17 +132,17 @@ Return only a single JSON object on one line with the following structure:
 
 ```json
 {
-  &#34;tealium_account&#34;: &#34;acme&#34;,
-  &#34;tealium_profile&#34;: &#34;main&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;383...05d&#34;,
-  &#34;tealium_event&#34;: &#34;ai_response&#34;,
-  &#34;ai_review_sentiment&#34;: &#34;satisfied&#34;
+  "tealium_account": "acme",
+  "tealium_profile": "main",
+  "tealium_visitor_id": "383...05d",
+  "tealium_event": "ai_response",
+  "ai_review_sentiment": "satisfied"
 }
 ```
 
 #### Audience trigger
 
-In this example, the customer joined an audience named &#34;Frequent Browser, No Purchases&#34; and the prompt asks the model to evaluate the customer&#39;s intent.
+In this example, the customer joined an audience named "Frequent Browser, No Purchases" and the prompt asks the model to evaluate the customer's intent.
 
 **Example prompt**:
 
@@ -142,15 +150,15 @@ In this example, the customer joined an audience named &#34;Frequent Browser, No
 You receive a JSON object describing a retail visitor:
 {{visitor_profile}}
 
-Based on the customer data provided, classify their likely shopping intent as: &#34;bargain hunting&#34;, &#34;product comparison&#34;, &#34;researching for later&#34;, or &#34;not interested&#34;. If data is missing, make a best effort guess.
+Based on the customer data provided, classify their likely shopping intent as: "bargain hunting", "product comparison", "researching for later", or "not interested". If data is missing, make a best effort guess.
 
 Return only a single JSON object on one line with the following structure: 
 {
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
-  &#34;ai_shopping_intent&#34;: &#34;&lt;customer shopping intent&gt;&#34;
+  "tealium_account": "{{tealium_account}}",
+  "tealium_profile": "{{tealium_profile}}",
+  "tealium_visitor_id": "{{tealium_visitor_id}}",
+  "tealium_event":  "ai_response",
+  "ai_shopping_intent": "<customer shopping intent>"
 }
 ```
 
@@ -158,11 +166,11 @@ Return only a single JSON object on one line with the following structure:
 
 ```json
 {
-  &#34;tealium_account&#34;: &#34;acme&#34;,
-  &#34;tealium_profile&#34;: &#34;main&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;383...05d&#34;,
-  &#34;tealium_event&#34;: &#34;ai_response&#34;,
-  &#34;ai_shopping_intent&#34;: &#34;bargain hunting&#34;
+  "tealium_account": "acme",
+  "tealium_profile": "main",
+  "tealium_visitor_id": "383...05d",
+  "tealium_event": "ai_response",
+  "ai_shopping_intent": "bargain hunting"
 }
 ```
 
@@ -170,7 +178,11 @@ Return only a single JSON object on one line with the following structure:
 
 If the model returns a valid JSON object, the connector forwards it to Tealium Collect as an inbound event. Enrichment rules then write the response values to visitor profile attributes. From there, audiences and downstream connectors activate based on the enriched profile.
 
-Setting a value for `tealium_event` that&#39;s unique to the connector and naming the response attribute specific to the use case makes it easy to create event feeds or rules that match these events.
+
+<blockquote>
+Setting a value for `tealium_event` that's unique to the connector and naming the response attribute specific to the use case makes it easy to create event feeds or rules that match these events.
+</blockquote>
+
 
 Example rule for AI response event activation:
 
@@ -178,13 +190,13 @@ Example rule for AI response event activation:
 [
   [
     {
-      &#34;input&#34;: &#34;tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;ai_response&#34;
+      "input": "tealium_event",
+      "operator": "equals",
+      "filter": "ai_response"
     },
     {
-      &#34;input&#34;: &#34;ai_review_sentiment&#34;,
-      &#34;operator&#34;: &#34;is populated&#34;
+      "input": "ai_review_sentiment",
+      "operator": "is populated"
     }
   ]  
 ]
@@ -225,7 +237,7 @@ Because functions cannot directly modify visitor profiles, predictions must flow
 
 Functions support both synchronous and asynchronous model invocation. For models that respond within 10 seconds, use a standard `await` pattern. For slower models, use a fire-and-forget pattern. The function sends the request and exits immediately. The model then POSTs the result to a callback URL when inference completes.
 
-For implementation details, see [Create a function for AI activation]().
+For implementation details, see [Create a function for AI activation](https://docs.tealium.com/function-for-ai-activation/).
 
 ## Choosing between connectors and functions
 
@@ -238,7 +250,11 @@ For implementation details, see [Create a function for AI activation]().
 * You want to configure the integration through the Tealium UI without writing code.
 * Your use case consists of targeted, high-value events or audiences rather than high-volume, low-value events such as page views.
 
-AI connectors are designed for use cases that return structured, predictable output, such as classification labels, confidence values, scores, or identifiers from a predefined list. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization&#39;s AI governance processes before moving to production.
+
+<blockquote>
+AI connectors are designed for use cases that return structured, predictable output, such as classification labels, confidence values, scores, or identifiers from a predefined list. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization's AI governance processes before moving to production.
+</blockquote>
+
 
 ### Use Tealium functions when
 
@@ -269,7 +285,7 @@ The following table lists common AI use cases and the recommended integration ap
 | Use case | Description | Recommended approach |
 |----------|-------------|----------------------|
 | Sentiment analysis | Classify customer feedback or review events as positive, neutral, or negative. | AI connector |
-| Intent classification | Identify a customer&#39;s likely intent based on browsing or purchase history. | AI connector |
+| Intent classification | Identify a customer's likely intent based on browsing or purchase history. | AI connector |
 | Next-best-action (playbook selection) | Select from a finite set of approved actions or offers based on visitor context. | AI connector |
 | Propensity scoring | Predict the likelihood of a conversion, churn, or high-value action using a trained machine learning model. | AI connector (if the model is deployed on a supported platform) or Tealium functions |
 | Next-best-action (score optimization) | Score a set of candidate actions using a numeric model and select the highest-scoring one. | AI connector (if the model is deployed on a supported platform) or Tealium functions |

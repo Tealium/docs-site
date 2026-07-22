@@ -7,7 +7,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/e-
 
 * utag v4.38以降。`utag.js`テンプレートの更新についての詳細は、当社のナレッジベース記事[utag.jsの最新バージョンへの更新のベストプラクティス](https://support.tealiumiq.com/en/support/solutions/articles/36000363470)を参照してください。
 
+
+<blockquote>
 古いバージョン（4.37以下）では、拡張機能が2回実行される可能性があります。
+</blockquote>
+
 
 ## 仕組み
 
@@ -23,7 +27,7 @@ Eコマース拡張機能は、他の変数と区別するために`_c`で始ま
 
 以下の例は、データレイヤー変数とEコマース変数のマッピングを示しています。
 
-![](/images/iq-tag-management/e-commerce-extension-configuration-variables-naming-best-practices.png)
+![](https://docs.tealium.com/images/iq-tag-management/e-commerce-extension-configuration-variables-naming-best-practices.png)
 
 各変数エントリーにマウスを置くと、正しい変数を選択するのに役立つツールチップが表示されます。
 
@@ -33,7 +37,11 @@ Eコマース拡張機能は、他の変数と区別するために`_c`で始ま
 
 この表は、注文レベルのデータに関連するEコマース変数を一覧表示しています。
 
+
+<blockquote>
 Order ID変数は必須のマッピングです。
+</blockquote>
+
 
 | **注文値**    | **説明**                                                                                                                                                     | **出力変数** |
 |:-------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|
@@ -71,10 +79,10 @@ Order ID変数は必須のマッピングです。
 
 **リスト変数タイプ**ドロップリストは、商品値のリストが送信される形式を識別します。オプションは以下の通りです：
 
-* **配列:** (デフォルト) 例：`[&#34;商品1&#34;,&#34;商品2&#34;, &#34;商品3&#34;]`
-* **文字列**: 例：`&#34;商品1, 商品2, 商品3&#34;`
+* **配列:** (デフォルト) 例：`["商品1","商品2", "商品3"]`
+* **文字列**: 例：`"商品1, 商品2, 商品3"`
 
-文字列と配列について詳しくは、[文字列 vs. 配列]()の記事をご覧ください。
+文字列と配列について詳しくは、[文字列 vs. 配列](https://docs.tealium.com/universal-data-object/#syntax-guidelines)の記事をご覧ください。
 
 **価格は**ラジオボタンは、商品価格がEコマース拡張に表示される形式を識別します。オプションは以下の通りです：
 
@@ -87,15 +95,19 @@ Eコマース拡張を構成すると、拡張で選択した値は自動的にE
 
 以下は、Google Universal Analyticsタグの**マッピングツールボックス**の例です：
 
-![](/images/iq-tag-management/mappingtoolboxexample.png)
+![](https://docs.tealium.com/images/iq-tag-management/mappingtoolboxexample.png)
 
 #### Eコマース変数バンドルの追加
 
-Eコマース拡張を追加していない場合で、[変数バンドル]()を追加している場合、以下のバンドルが自動的に追加され、Eコマース拡張を構成します：
+Eコマース拡張を追加していない場合で、[変数バンドル](https://docs.tealium.com/data-bundles/)を追加している場合、以下のバンドルが自動的に追加され、Eコマース拡張を構成します：
 
 * Eコマース変数バンドル
 * Demandwareバンドル（バージョン18.1以前）
 * Hybrisバンドル
 * Magentoバンドル
 
+
+<blockquote>
 これらのバンドルを追加する前にEコマース拡張を追加し構成していた場合、バンドルを追加しても既存のEコマース拡張やその構成は上書きや置き換えられません。
+</blockquote>
+

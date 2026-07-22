@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/veritonic-connector/
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を行います：
 * **クライアントID**  
@@ -53,10 +53,10 @@ Veritonicダッシュボードからの一意の識別子。
 
 | **イベントタイプ** | **追加パラメータ（オプション）** |
 | --- | --- |
-| `view` | &lt;ul&gt;&lt;li&gt;なし&lt;/li&gt;&lt;/ul&gt; |
-| `addtocart` | &lt;ul&gt;&lt;li&gt;`value`, `currency`, `quantity`, `product_id`, `product_name`, `product_type`, `product_vendor`, `variant_id`, `variant_name`&lt;/li&gt;&lt;/ul&gt; |
-| `checkout` | &lt;ul&gt;&lt;li&gt;`value`, `currency`, `discount_code`, `quantity`, `line_items`&lt;/li&gt;&lt;li&gt;`line_items`は以下のオプション属性を持つオブジェクトの配列です：`value`, `quantity`, `product_id`, `product_name`, `product_type`, `product_vendor`, `variant_id`, `variant_name`&lt;/li&gt;&lt;li&gt;ユーザーは次の各パラメータに数値の配列または文字列の配列をマッピングできる必要があります：&lt;ul&gt;&lt;li&gt;`line_items.value`&lt;/li&gt;&lt;li&gt;`line_items.quantity`&lt;/li&gt;&lt;li&gt;`line_items.product_id`&lt;/li&gt;&lt;li&gt;`line_items.product_name`&lt;/li&gt;&lt;li&gt;`line_items.product_type`&lt;/li&gt;&lt;li&gt;`line_items.product_vendor`&lt;/li&gt;&lt;li&gt;`line_items.variant_id`&lt;/li&gt;&lt;li&gt;`line_items.variant_name`&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;最終的なオブジェクトの配列はバックエンドで構築する必要があります。たとえば、以下のような場合：&lt;ul&gt;&lt;li&gt;`line_items.quantity` = [1,2]&lt;/li&gt;&lt;li&gt;`line_items.product_id` = [a,b]&lt;/li&gt;&lt;li&gt;line_items配列は次のようになります：`[{product_id:a,quantity:1},{product_id:b,quantity:2}]`&lt;/ul&gt;&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt; |
-| `lead` | &lt;ul&gt;&lt;li&gt;`value`, `currency`, `type`,`category`&lt;/li&gt;&lt;/ul&gt;  |
-| `product` | &lt;ul&gt;&lt;li&gt;`value`, `currency`, `product_id`, `product_name`, `product_type`, `product_vendor`&lt;/li&gt;&lt;/ul&gt; |
-| `purchase` | &lt;ul&gt;&lt;li&gt;`value`, `currency`, `discount_code`, `quantity`, `line_items`&lt;/li&gt;&lt;li&gt;`line_items`: チェックアウトイベントと同じ&lt;/li&gt;&lt;/ul&gt; |
-| `app_install` | &lt;ul&gt;&lt;li&gt;`app_name`, `app_id`, `integration`&lt;/li&gt;&lt;/ul&gt; |
+| `view` | <ul><li>なし</li></ul> |
+| `addtocart` | <ul><li>`value`, `currency`, `quantity`, `product_id`, `product_name`, `product_type`, `product_vendor`, `variant_id`, `variant_name`</li></ul> |
+| `checkout` | <ul><li>`value`, `currency`, `discount_code`, `quantity`, `line_items`</li><li>`line_items`は以下のオプション属性を持つオブジェクトの配列です：`value`, `quantity`, `product_id`, `product_name`, `product_type`, `product_vendor`, `variant_id`, `variant_name`</li><li>ユーザーは次の各パラメータに数値の配列または文字列の配列をマッピングできる必要があります：<ul><li>`line_items.value`</li><li>`line_items.quantity`</li><li>`line_items.product_id`</li><li>`line_items.product_name`</li><li>`line_items.product_type`</li><li>`line_items.product_vendor`</li><li>`line_items.variant_id`</li><li>`line_items.variant_name`</li></ul></li><li>最終的なオブジェクトの配列はバックエンドで構築する必要があります。たとえば、以下のような場合：<ul><li>`line_items.quantity` = [1,2]</li><li>`line_items.product_id` = [a,b]</li><li>line_items配列は次のようになります：`[{product_id:a,quantity:1},{product_id:b,quantity:2}]`</ul></li></li></ul> |
+| `lead` | <ul><li>`value`, `currency`, `type`,`category`</li></ul>  |
+| `product` | <ul><li>`value`, `currency`, `product_id`, `product_name`, `product_type`, `product_vendor`</li></ul> |
+| `purchase` | <ul><li>`value`, `currency`, `discount_code`, `quantity`, `line_items`</li><li>`line_items`: チェックアウトイベントと同じ</li></ul> |
+| `app_install` | <ul><li>`app_name`, `app_id`, `integration`</li></ul> |

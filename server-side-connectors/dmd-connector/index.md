@@ -7,7 +7,7 @@ DMD, an IQVIA Business, is the only provider of healthcare data that is first-pa
 
 ## Batch Limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 *   Max number of requests: 100
 *   Max time since oldest request: 15 minutes
@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](/server-side/connectors/manage/) article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
@@ -53,12 +53,12 @@ The following section describes how to set up parameters and options for each ac
 | Email Format | (Required) Email Format, either `TEXT_FORMAT` or `HTML_FORMAT`. |
 | Customer ID | Customer ID. |
 | Mobile Number | Mobile number, can be `NULL`. |
-| Recipient ID | Recipient&#39;s RIID, value can be `NULL`. |
-| Email Address | Recipient&#39;s plain text email address. |
-| Email Address (already SHA256 hashed) | Recipient&#39;s SHA256-hashed Email address. |
-| Email Address (apply SHA256 hash) | Recipient&#39;s email address, which will receive a SHA256 hash. |
-| Email Address (already MD5 hashed) | Recipient&#39;s MD5-hashed Email address. |
-| Email Address (apply MD5 hash) | Recipient&#39;s email address, which will receive an MD5 hash. |
+| Recipient ID | Recipient's RIID, value can be `NULL`. |
+| Email Address | Recipient's plain text email address. |
+| Email Address (already SHA256 hashed) | Recipient's SHA256-hashed Email address. |
+| Email Address (apply SHA256 hash) | Recipient's email address, which will receive a SHA256 hash. |
+| Email Address (already MD5 hashed) | Recipient's MD5-hashed Email address. |
+| Email Address (apply MD5 hash) | Recipient's email address, which will receive an MD5 hash. |
 | Number Data Mapping |   |
 | Date Data Mapping |   |
 | String Data Mapping |   |
@@ -74,12 +74,12 @@ The following section describes how to set up parameters and options for each ac
 | Email Format | (Required) Email Format. |
 | Customer ID | Customer ID |
 | Mobile Number | Mobile number,  can be `NULL`. |
-| Recipient ID | Recipient&#39;s RIID, value can be `NULL`. |
-| Email Address | Recipient&#39;s plain text email address. |
-| Email Address (already SHA256 hashed) | Recipient&#39;s SHA256-hashed Email address. |
-| Email Address (apply SHA256 hash) | Recipient&#39;s email address, which will receive a SHA256 hash. |
-| Email Address (already MD5 hashed) | Recipient&#39;s MD5-hashed Email address. |
-| Email Address (apply MD5 hash) | Recipient&#39;s email address, which will receive an MD5 hash. |
+| Recipient ID | Recipient's RIID, value can be `NULL`. |
+| Email Address | Recipient's plain text email address. |
+| Email Address (already SHA256 hashed) | Recipient's SHA256-hashed Email address. |
+| Email Address (apply SHA256 hash) | Recipient's email address, which will receive a SHA256 hash. |
+| Email Address (already MD5 hashed) | Recipient's MD5-hashed Email address. |
+| Email Address (apply MD5 hash) | Recipient's email address, which will receive an MD5 hash. |
 | Campaign Folder Name | (Optional) Campaign Folder Name. |
 | Object Name | (Optional) Profile List Name. |
 | Optional Data | Optional data containing name-value pairs. |

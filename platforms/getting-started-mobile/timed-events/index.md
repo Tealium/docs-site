@@ -7,8 +7,8 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/timed-events/
 
 The following platforms support timed events:
 
-- [Android (Kotlin)](/platforms/android-kotlin/)
-- [iOS (Swift v2.x)](/platforms/ios-swift/)
+- [Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/)
+- [iOS (Swift v2.x)](https://docs.tealium.com/platforms/ios-swift/)
 
 ## How It Works
 
@@ -24,8 +24,8 @@ Timed events are not persistent and are discarded if the app terminates before t
 
 Learn how to use timed events for:
 
-- [Android Kotlin](/platforms/android-kotlin/track/#timed-events)
-- [iOS (Swift v2.x)](/platforms/ios-swift/track/#timed-events)
+- [Android Kotlin](https://docs.tealium.com/platforms/android-kotlin/track/#timed-events)
+- [iOS (Swift v2.x)](https://docs.tealium.com/platforms/ios-swift/track/#timed-events)
 
 ### Automatic Triggers
 
@@ -36,8 +36,8 @@ To track a timed event with an automatic trigger, specify the start and stop Tea
 ```kotlin
 val config = TealiumConfig(…).apply {
    timedEventTriggers = mutableListOf(EventTrigger.forEventName(
-        &#34;cart_add&#34;,
-        &#34;purchase&#34;))
+        "cart_add",
+        "purchase"))
 }
 ```
 
@@ -45,8 +45,8 @@ val config = TealiumConfig(…).apply {
 ```swift
 let config = TealiumConfig(...)
 config.timedEventTriggers = [TimedEventTrigger(
-    start: &#34;cart_add&#34;,
-    stop: &#34;purchase&#34;)]
+    start: "cart_add",
+    stop: "purchase")]
 ```
 
 
@@ -55,11 +55,11 @@ The resulting timed event from an automatic trigger:
 
 ```bash
 {
-  &#34;tealium_event&#34;: &#34;timed_event&#34;,
-  &#34;timed_event_name&#34;: &#34;cart_add::purchase&#34;,
-  &#34;timed_event_start&#34;: &#34;1605645967299&#34;,
-  &#34;timed_event_end&#34;: &#34;1605645968401&#34;,
-  &#34;timed_event_duration&#34;: &#34;1102&#34;
+  "tealium_event": "timed_event",
+  "timed_event_name": "cart_add::purchase",
+  "timed_event_start": "1605645967299",
+  "timed_event_end": "1605645968401",
+  "timed_event_duration": "1102"
 }
 ```
 
@@ -70,24 +70,24 @@ To track a timed event with a manual trigger, specify a name for the timed event
 Start a timed event manually:
   
 ```swift
-tealium.startTimedEvent(name: &#34;TimeSpentViewingProduct&#34;)
+tealium.startTimedEvent(name: "TimeSpentViewingProduct")
 ```
 
 Stop a timed event manually:
 
 ```swift
-tealium.stopTimedEvent(name: &#34;TimeSpentViewingProduct&#34;)
+tealium.stopTimedEvent(name: "TimeSpentViewingProduct")
 ```
 
 The resulting timed event from a manual trigger:  
 
 ```bash
 {
-  &#34;tealium_event&#34;: &#34;timed_event&#34;,
-  &#34;timed_event_name&#34;: &#34;TimeSpentViewingProduct&#34;,
-  &#34;timed_event_start&#34;: &#34;1605645967299&#34;,
-  &#34;timed_event_end&#34;: &#34;1605645968401&#34;,
-  &#34;timed_event_duration&#34;: &#34;1102&#34;
+  "tealium_event": "timed_event",
+  "timed_event_name": "TimeSpentViewingProduct",
+  "timed_event_start": "1605645967299",
+  "timed_event_end": "1605645968401",
+  "timed_event_duration": "1102"
 }
 ```
 
@@ -97,8 +97,8 @@ Timed events are tracked with the event name `timed_event` and the following att
 
 | Attribute Name          | Data Type | Value |
 | ---------------------- | --------- | ------------------------------------ |
-| `tealium_event`        | `String`  | `&#34;timed_event&#34;` |
-| `timed_event_name`     | `String`  | The name of the timed event (defaults to `&#34;start_event_name::stop_event_name&#34;` for automatic triggers)  |
+| `tealium_event`        | `String`  | `"timed_event"` |
+| `timed_event_name`     | `String`  | The name of the timed event (defaults to `"start_event_name::stop_event_name"` for automatic triggers)  |
 | `timed_event_start`    | `String`  | Timed event start time (UNIX time in milliseconds) |
 | `timed_event_end`      | `String`  | Timed event end time (UNIX time in milliseconds)   |
 | `timed_event_duration` | `String`  | Duration of the timed event (total milliseconds: `timed_event_end` - `timed_event_start`)   |
@@ -107,10 +107,10 @@ The following is an example of a timed event:
 
 ```bash
 {
-  &#34;tealium_event&#34;: &#34;timed_event&#34;,
-  &#34;timed_event_name&#34;: &#34;cart_add::purchase&#34;,
-  &#34;timed_event_start&#34;: &#34;1605645967299&#34;,
-  &#34;timed_event_end&#34;: &#34;1605645968401&#34;,
-  &#34;timed_event_duration&#34;: &#34;1102&#34;
+  "tealium_event": "timed_event",
+  "timed_event_name": "cart_add::purchase",
+  "timed_event_start": "1605645967299",
+  "timed_event_end": "1605645968401",
+  "timed_event_duration": "1102"
 }
 ```

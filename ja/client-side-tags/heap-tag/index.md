@@ -5,23 +5,27 @@ url: https://docs.tealium.com/ja/client-side-tags/heap-tag/
 ---
 ## タグ構成
 
-まず、タグマーケットプレイスに移動し、ヒープタグをプロフィールに追加します（[タグの追加]()を参照）。タグを追加したら、以下の構成を行います：
+まず、タグマーケットプレイスに移動し、ヒープタグをプロフィールに追加します（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。タグを追加したら、以下の構成を行います：
 
   1. **タイトル** (必須): デフォルトは `Heap` です。任意のカスタム名に置き換えることができます。
   1. **アプリケーションID** (必須): Heapから提供されたアプリケーションIDを入力します。
   1. **文字列デリミタ**: 配列を区切り文字列として渡すためのデフォルトのセパレータ（セミコロン）です。任意のデリミタに置き換えることができます。
 
-**アプリケーションID**と**文字列デリミタ**は、[データマッピング]()を使用して上書き、または動的に構成することができます。
+
+<blockquote>
+**アプリケーションID**と**文字列デリミタ**は、[データマッピング](https://docs.tealium.com/heap-tag/)を使用して上書き、または動的に構成することができます。
+</blockquote>
+
 
 ### ロードルール
 
-[ロードルール]()は、このタグをサイト上のどこで、いつロードするかを決定します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグをサイト上のどこで、いつロードするかを決定します。
 
 推奨されるロードルール: デフォルトの **全ページ** ルール。
 
 ### データマッピング
 
-マッピングは、[データレイヤー変数](/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[変数のマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[変数のマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 ヒープタグの宛先変数は、以下のカテゴリーの下にあるデータマッピングツールボックスに組み込まれています：
 
@@ -36,7 +40,11 @@ url: https://docs.tealium.com/ja/client-side-tags/heap-tag/
 |トラックイベントプロパティ (`track.custom`)| トラックされているイベントにイベントプロパティを添付します。この宛先へのマッピングは `heap.track()` 関数をトリガーします（[詳細](https://heapanalytics.com/docs/custom-api#track)）。|
 |イベントプロパティの追加 (`addEventProperties.custom`)| 訪問の後続のイベントに新しいイベントプロパティを添付します（[詳細](https://heapanalytics.com/docs/custom-api#addeventproperties)）。 |
 |ユーザープロパティの追加 (`addUserProperties.custom`)| 訪問プロファイルに新しいプロパティを添付します（[詳細](https://heapanalytics.com/docs/custom-api#adduserproperties))|
-|文字列デリミタ| 配列値を区切るためのデリミタ文字。この宛先へのマッピングは、デフォルトのセミコロンデリミタを上書きします。|
+|文字列デリミタ| 配列値を区切るためのデリミタ文字。
+<blockquote>
+この宛先へのマッピングは、デフォルトのセミコロンデリミタを上書きします。
+</blockquote>
+|
 
 #### イベントトリガー
 
@@ -61,7 +69,11 @@ url: https://docs.tealium.com/ja/client-side-tags/heap-tag/
 
 タグがページ上でロードされると、マップされた変数にどの値が構成されているかを確認するためにデータレイヤーをスキャンします。それが提供されたトリガー文字列と等しい場合、タグはイベントを発火します。
 
+
+<blockquote>
 Eコマースエクステンションは、このタグのために自動的に任意のeコマース変数をマップしません。
+</blockquote>
+
 
 ## ベンダー文書
 

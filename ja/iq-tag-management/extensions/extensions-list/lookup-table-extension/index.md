@@ -30,7 +30,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/lo
 ルックアップテーブル拡張機能を使用するには、次の構成を行います：
 
 * **Lookup Value in**: ルックアップしたい値を含むデータレイヤーからソースルックアップ変数を選択します。
-* **Destination**: 関連する出力値に構成する変数を選択します。新しい変数を作成するには、**&#43;** ボタンをクリックします。
+* **Destination**: 関連する出力値に構成する変数を選択します。新しい変数を作成するには、**+** ボタンをクリックします。
 * **Variable Type**: ルックアップ変数の値のデータタイプ（文字列または配列）を選択します。配列を選択した場合、出力は対応するルックアップマッチの同じ配列インデックスに入ります。
 * **Match Type**: 選択したマッチタイプを使用してすべてのルックアップが行われます。
     * **Exact**: ルックアップ変数の値と正確に一致します（大文字と小文字を区別します）。
@@ -89,7 +89,7 @@ Lookup Value, Output Value, Note
 ルックアップテーブル拡張機能を使用すると、次の例に示すように、`category_id` などのデータレイヤー変数を `category_name` などの別の変数にマッチさせることができます：
 
 1. **Lookup Value in** ドロップダウンメニューからルックアップ変数 `category_id` を選択します。
-1. **Destination** ドロップダウンメニューから読み取り可能な値変数 `category_name` を選択します。ドロップダウンメニューに変数が見つからない場合は、**&#43;** をクリックして変数を追加します。
+1. **Destination** ドロップダウンメニューから読み取り可能な値変数 `category_name` を選択します。ドロップダウンメニューに変数が見つからない場合は、**+** をクリックして変数を追加します。
 1. **Default Output** フィールドに `none` を入力します。ルックアップテーブルマッピングで `category_id` の値が見つからない場合、`category_name` の値は `none` に構成されます。
 1. **Variable Type** で **String** を選択します。変数 `category_id` はカテゴリごとに1つのIDのみを含むためです。
 1. 正確なカテゴリIDを知っている場合は、**Match Type** で **Exact** を選択します。
@@ -97,9 +97,9 @@ Lookup Value, Output Value, Note
     1. **Lookup Match** フィールドにカテゴリIDを入力します。たとえば `38`。
     1. **Output** フィールドにカテゴリ名を入力します。たとえば `Mobile`。
     1. (オプション) **Note** フィールドに関連するメモを追加します。
-    1. **&#43;** ボタンをクリックして別のルックアップ/出力値を追加します。
+    1. **+** ボタンをクリックして別のルックアップ/出力値を追加します。
 
-![](/images/iq-tag-management/screen-shot-2020-03-12-at-10.23.12-am.png)
+![](https://docs.tealium.com/images/iq-tag-management/screen-shot-2020-03-12-at-10.23.12-am.png)
 
 ルックアップテーブル拡張機能が実行されると、ルックアップが出力値と一致する場合、`category_id` 変数の出力値が構成された値で `category_name` 変数が構成されます。たとえば、`category_id` が `46` の場合、`category_name` は `AudienceStream` に構成されます。
 
@@ -110,6 +110,6 @@ Lookup Value, Output Value, Note
 
 A: ルックアップは拡張子に表示される順番で実行され、最初に一致したものが採用されます。
 
-#### &#34;Exact&#34;マッチタイプは大文字と小文字を区別しますか？
+#### "Exact"マッチタイプは大文字と小文字を区別しますか？
 
 A: はい。`Exact` マッチオプションは大文字と小文字を区別します。

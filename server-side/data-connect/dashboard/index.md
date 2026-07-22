@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/data-connect/dashboard/
 ---
 The Data Connect dashboard displays statistics about recipes, jobs, tasks, and connections. The **Dependencies graph** tab shows graphs of links between **Apps**, **Connections**, and **Recipes**.
 
-![](/images/early-access/dashboard.png)
+![](https://docs.tealium.com/images/early-access/dashboard.png)
 
 
 ## Dashboard tab

@@ -26,7 +26,7 @@ Participating in the Early Access program is easy. Follow these steps to get sta
 
 ## Expectations and responsibilities
 
-To ensure a mutually beneficial partnership in the Early Access program, it&#39;s important to understand your role and responsibilities:
+To ensure a mutually beneficial partnership in the Early Access program, it's important to understand your role and responsibilities:
 
 * **Testing**: Actively use the early access products or features in your real-world scenarios.
 * **Feedback**: Share your thoughts, suggestions, and any issues you encounter.
@@ -35,7 +35,7 @@ To ensure a mutually beneficial partnership in the Early Access program, it&#39;
 
 ## Feedback
 
-When you use an Early Access feature, you agree to provide feedback to Tealium about that feature. Your feedback is important for shaping our products and services. Here&#39;s how you can effectively provide feedback: 
+When you use an Early Access feature, you agree to provide feedback to Tealium about that feature. Your feedback is important for shaping our products and services. Here's how you can effectively provide feedback: 
 
 * **Be specific**: Clearly communicate your experiences, positive and negative, with the Early Access products or features.
 * **Use provided channels**: Use the designated feedback channels, such as surveys or forums, to share your input. You can also send feedback directly to your Customer Success Manager.
@@ -58,4 +58,4 @@ Early Access features come with the following limitations:
 
 Thank you for considering participation in our Early Access program. Your involvement is integral to our continued growth and development. Together, we can create innovative solutions that better serve your needs and those of our broader customer base.
 
-If you have any questions or need further assistance, don&#39;t hesitate to contact your Customer Success Manager.
+If you have any questions or need further assistance, don't hesitate to contact your Customer Success Manager.

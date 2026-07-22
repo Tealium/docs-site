@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/functions/code-editor/
 ---
 The Tealium Functions code editor provides tabs for creating, configuring, testing, and monitoring functions, as well as viewing logs and getting an authentication token.
 
-![](/images/server-side/functions-code-editor.png)
+![](https://docs.tealium.com/images/server-side/functions-code-editor.png)
 
 ## Code tab
 
@@ -21,7 +21,7 @@ The **Monitoring** tab displays the following function statistics for the last h
 
 ## Logs tab
 
-The **Logs** tab displays a list of log files from function execution. Log files are kept for 30 days. Functions can use the JavaScript console functions to write messages and errors to the log. For more information, see [JavaScript console API]().
+The **Logs** tab displays a list of log files from function execution. Log files are kept for 30 days. Functions can use the JavaScript console functions to write messages and errors to the log. For more information, see [JavaScript console API](https://docs.tealium.com/function-modules/#javascript-console-api).
 
 
 ## Configuration tab

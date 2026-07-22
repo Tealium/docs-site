@@ -15,8 +15,8 @@ The following summarizes the commonly used methods of the iOS (Swift) `TealiumIn
 | `getUserConsentStatus()` |Returns the current consent status |
 | `removeAllConsentDelegates()` | Removes all consent delegates |
 | `resetUserConsentPreferences()` | Clears all currently stored consent preferences in memory and in persistent storage |
-| `setUserConsentCategories()` | Sets the user&#39;s consent categories |
-| `setUserConsentStatus()` | Sets the user&#39;s consent status |
+| `setUserConsentCategories()` | Sets the user's consent categories |
+| `setUserConsentStatus()` | Sets the user's consent status |
 | `setUserConsentStatusWithCategories()` | Sets consent status and categories |
 
 ### `addConsentDelegate()`
@@ -79,7 +79,7 @@ removeAllConsentDelegates()
 
 ### `resetUserConsentPreferences()`
 
-Clears all currently stored consent preferences in memory and in persistent storage. Reverts to `&#34;unknown&#34;` consent state, with no categories.
+Clears all currently stored consent preferences in memory and in persistent storage. Reverts to `"unknown"` consent state, with no categories.
 
 ```swift
 resetUserConsentPreferences()
@@ -88,7 +88,7 @@ resetUserConsentPreferences()
 
 ### `setUserConsentCategories()`
 
-Sets the user&#39;s consent categories. Designed to be called from your consent management preferences screen in your app. Sets consent status to `.consented`.
+Sets the user's consent categories. Designed to be called from your consent management preferences screen in your app. Sets consent status to `.consented`.
 
 ```swift
 setUserConsentCategories(categories)
@@ -107,7 +107,7 @@ tealium?.consentManager()?.setUserConsentCategories([.analytics,.bigData])
 
 ### `setUserConsentStatus()`
 
-Sets the user&#39;s consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.
+Sets the user's consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.
 
 Sets the list of consented categories to include ALL available consent categories, if the status is `.consented`. Does not allow categories to be set selectively.
 

@@ -35,7 +35,7 @@ The standard data layer is included in the Tealium app and supports the followin
 | `purchase` | Customer completed a purchase. |
 | `search` | Customer performed a search. |
 
-For more information, see .
+For more information, see [data-layer-and-events](https://docs.tealium.com/data-layer-and-events/).
 
 Newsletter sign up events and discount events must be customized for each store.
 
@@ -87,4 +87,4 @@ The following webhooks can be enabled for collecting data:
 
 Custom pixels are currently the best option for Shopify checkout tracking with Tealium iQ Tag Management. The installation process for the Tealium Shopify app includes the option to configure a custom pixel.
 
-For more information, see [Install the Tealium Shopify app]().
+For more information, see [Install the Tealium Shopify app](https://docs.tealium.com/install-tealium-shopify-app/#configure-the-checkout-pixel).

@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/reddit-conversions-conne
 
 ## バッチ制限
   
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：1000
 * 最古のリクエストからの最大時間：60分
@@ -22,13 +22,13 @@ url: https://docs.tealium.com/ja/server-side-connectors/reddit-conversions-conne
 
 ## 構成
 
-コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **アカウント ID**  
   * （必須）変換イベントが属する Reddit 広告アカウントの ID。
-  * Reddit 広告アカウント ID を見つけるには、Reddit Ads UI の **Conversions Events &gt; Pixel ID** に移動します。
+  * Reddit 広告アカウント ID を見つけるには、Reddit Ads UI の **Conversions Events > Pixel ID** に移動します。
   * Reddit 広告アカウントには、`adsread`、`history`、`adsconversions`、`adsleadgendownloader` の権限が必要です。
   * 詳細については、[Reddit: 認証](https://ads-api.reddit.com/docs/v2/#section/Authentication)を参照してください。
 * **変換アクセストークン**  
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/reddit-conversions-conne
 
 ## Web イベントの重複排除
 
-このコネクタを [Reddit Pixel タグ]() からのイベントの重複排除に構成するには、次の命名規則でイベント属性として送信されるイベント ID を使用します：
+このコネクタを [Reddit Pixel タグ](https://docs.tealium.com/reddit-pixel-tag/) からのイベントの重複排除に構成するには、次の命名規則でイベント属性として送信されるイベント ID を使用します：
 
 ```nohl
 reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
@@ -50,13 +50,13 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 タグの UID は、Tealium iQ の **Tags** テーブルまたはタグの詳細画面で見つけることができます：
 
-![](/images/server-side-connectors/facebook-pixel-tag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/facebook-pixel-tag-uid.png)
 
 たとえば、UID が `168` のタグからの購入イベントは、次の属性値を送信します：
 
 ```json
 {
-  &#34;reddit_pixel_event_id_Purchase_168&#34;: &#34;028b2ade7478...&#34;
+  "reddit_pixel_event_id_Purchase_168": "028b2ade7478..."
 }
 ```
 
@@ -64,7 +64,7 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 ```json
 {
-  &#34;reddit_pixel_event_id_AddToCart_168&#34;: &#34;084b1cda7461...&#34;
+  "reddit_pixel_event_id_AddToCart_168": "084b1cda7461..."
 }
 ```
 
@@ -73,9 +73,13 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 | Tealium 属性  | Reddit パラメータ |
 |:-------------------------|:-------------------|
 | `reddit_pixel_event_id_Purchase_168` (属性)   | Event ID           |
-| `&#34;Purchase&#34;` (カスタムテキスト) | Event Name         |
+| `"Purchase"` (カスタムテキスト) | Event Name         |
 
+
+<blockquote>
 タグ UID なしで命名形式 `reddit_pixel_event_id_{REDDIT_EVENT}` を使用してイベント ID 属性のみを受け取っている場合は、タグを更新することをお勧めします。詳細については、 を参照してください。
+</blockquote>
+
 
 ### 自動重複排除
 
@@ -120,7 +124,7 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 #### ユーザーデータ
 
-各変換イベントには少なくとも1つの帰属信号が必要です。Redditは可能な限り多くの信号を送信することを推奨しており、帰属の精度とパフォーマンスを向上させます。次のいずれかが入力されている必要があります：クリックID、メールアドレス、IPアドレス &#43; ユーザーエージェント &#43; 画面サイズ、IDFA、AAID。
+各変換イベントには少なくとも1つの帰属信号が必要です。Redditは可能な限り多くの信号を送信することを推奨しており、帰属の精度とパフォーマンスを向上させます。次のいずれかが入力されている必要があります：クリックID、メールアドレス、IPアドレス + ユーザーエージェント + 画面サイズ、IDFA、AAID。
 
 | **パラメータ** | **説明** |
 | --- | --- |
@@ -162,7 +166,11 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 ### 変換送信（非推奨）
 
+
+<blockquote>
 RedditはConversions API v3を導入したため、このアクションは非推奨となりました。既存のアクションマッピングを**Send Conversion V3**アクションに移行するために**Copy Mappings to an Action**の使用を推奨します。
+</blockquote>
+
 
 #### API情報
 

@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For more information, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For more information, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -84,10 +84,10 @@ The integration requires at least one or a combination of the following paramete
 | Gender (apply SHA256 hash) | Provide a plain text gender and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. Use the lowercase initial: f for female, m for male, or n for non-binary. Leave empty if you prefer not to say. |
 | Pixel ID | Nextdoor Pixel ID. This allows Nextdoor to deduplicate events for an advertiser that sends events through both the Conversions API and the pixel. |
 | Click ID | This is the same as the `ndclid` parameter attached to the clickthrough URL. |
-| Client IP Address | &lt;ul&gt;&lt;li&gt;The IP address of the browser corresponding to the event must be a valid IPV4 or IPV6 address. IPV6 is preferable over IPV4 for IPV6-enabled users.&lt;/li&gt;&lt;li&gt; Always provide the real IP address to ensure accurate event reporting.&lt;/li&gt;&lt;li&gt;Do not hash this value&lt;/li&gt;&lt;li&gt;Sending both the **Client IP Address** and **User Agent** parameters for all of the events may help improve event matching and ad delivery for campaigns.&lt;/li&gt;&lt;li&gt;This information is automatically added to events sent through the browser, but it must be manually configured for events sent through the server.&lt;/li&gt;&lt;/ul&gt;|
+| Client IP Address | <ul><li>The IP address of the browser corresponding to the event must be a valid IPV4 or IPV6 address. IPV6 is preferable over IPV4 for IPV6-enabled users.</li><li> Always provide the real IP address to ensure accurate event reporting.</li><li>Do not hash this value</li><li>Sending both the **Client IP Address** and **User Agent** parameters for all of the events may help improve event matching and ad delivery for campaigns.</li><li>This information is automatically added to events sent through the browser, but it must be manually configured for events sent through the server.</li></ul>|
 | Client User Agent | The unhashed browser user agent corresponding to the event. This parameter is required for website events shared using the [Conversions API](https://developers.facebook.com/docs/marketing-api/conversions-api). Sending both the **Client IP Address** and **User Agent** parameters for all of the events may help improve event matching and ad delivery for campaigns. Note that this information is automatically added to events sent through the browser, but must be manually configured for events sent through the server. |
 | Data Source ID | Nextdoor Ads Manager data source ID. **Data Source ID** or **Client ID** is required. This allows Nextdoor to deduplicate events for an advertiser that sends events through both the Conversions API and the pixel. |
-| Delivery Optimization | &lt;ul&gt;&lt;li&gt;`True`: Indicates data can be used for optimization.&lt;/li&gt;&lt;li&gt;`False`: Indicates the data is only used for attribution.&lt;/li&gt;&lt;/ul&gt; |
+| Delivery Optimization | <ul><li>`True`: Indicates data can be used for optimization.</li><li>`False`: Indicates the data is only used for attribution.</li></ul> |
 
 #### Custom and App Events
 
@@ -96,9 +96,9 @@ The integration requires at least one or a combination of the following paramete
 | Order Value | Required for purchase events. The currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format followed by the total numeric value (up to two decimal places) associated with the event. |
 | Order ID | The order ID for a transaction. This value is required for offline events. |
 | App ID | Corresponds to a unique ID for advertisers. Use the mobile app ID from App Store and Google Play Store. |
-| Platform | The user&#39;s platform. Values can be `iOS` or `Android`. |
+| Platform | The user's platform. Values can be `iOS` or `Android`. |
 | App Version | Mobile app version. |
-| Delivery Category | &lt;ul&gt;&lt;li&gt;`In Store`: Customer needs to enter the store to get the purchased product.&lt;/li&gt;&lt;li&gt;`Curbside`: Customer picks up their order by driving to a store and waiting inside their vehicle.&lt;/li&gt;&lt;li&gt;`Home Delivery`: Purchase is delivered to the customer&#39;s home.&lt;/li&gt;&lt;/ul&gt; |
+| Delivery Category | <ul><li>`In Store`: Customer needs to enter the store to get the purchased product.</li><li>`Curbside`: Customer picks up their order by driving to a store and waiting inside their vehicle.</li><li>`Home Delivery`: Purchase is delivered to the customer's home.</li></ul> |
 
 #### Product Context
 
@@ -108,7 +108,7 @@ The integration requires at least one or a combination of the following paramete
 | Content Name | Product name. |
 | Quantity | Product quantity. |
 | Item Price | Product item price. |
-| App Tracking Enabled | User opt-out settings for ATT. Specify whether you want to track app events and send them to Nextdoor through the Conversions API.&lt;ul&gt;&lt;li&gt;`False`: Disables app event tracking. No app events are sent to Nextdoor.&lt;/li&gt;&lt;li&gt;`True`: Enables app event tracking. App events are sent to Nextdoor for attribution and measurement.&lt;/li&gt;&lt;/ul&gt;  |
+| App Tracking Enabled | User opt-out settings for ATT. Specify whether you want to track app events and send them to Nextdoor through the Conversions API.<ul><li>`False`: Disables app event tracking. No app events are sent to Nextdoor.</li><li>`True`: Enables app event tracking. App events are sent to Nextdoor for attribution and measurement.</li></ul>  |
 
 #### Automatic Deduplication
 

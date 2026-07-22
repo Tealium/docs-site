@@ -3,7 +3,11 @@ title: Google Universal Analytics タグ拡張 E-コマース
 description: この記事は、Tealium iQ タグ管理で Google Universal Analytics タグの拡張 E コマース トラッキングを構成する概要です。
 url: https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/
 ---
- 2023年7月1日より、Google Universal Analytics プロパティはヒットの処理を停止しました。このタグは非推奨となり、タグマーケットプレイスではもはや利用できません。現在のタグについては、[Google Analytics 4]()をご覧ください。
+
+<blockquote>
+2023年7月1日より、Google Universal Analytics プロパティはヒットの処理を停止しました。このタグは非推奨となり、タグマーケットプレイスではもはや利用できません。現在のタグについては、[Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)をご覧ください。
+</blockquote>
+
 
 ## 概要
 
@@ -11,7 +15,7 @@ url: https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-tag
 
 ## 動作方法
 
-拡張 E コマース トラッキングは、[E-コマース拡張機能]()と[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を組み合わせて[Google Universal Analytics タグ]()で動作します。E-コマース拡張機能は、最も一般的な E コマース データを処理し、より高度なデータはタグ構成でのデータマッピングを使用して送信されます。拡張 E コマースのアクションもタグ内でイベントとしてマッピングされます。
+拡張 E コマース トラッキングは、[E-コマース拡張機能](https://docs.tealium.com/e-commerce-extension/)と[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を組み合わせて[Google Universal Analytics タグ](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/)で動作します。E-コマース拡張機能は、最も一般的な E コマース データを処理し、より高度なデータはタグ構成でのデータマッピングを使用して送信されます。拡張 E コマースのアクションもタグ内でイベントとしてマッピングされます。
 
 ## 拡張 E コマース データとアクション
 
@@ -19,13 +23,17 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 以下は、データレイヤー変数を追加するための推奨リストと、拡張 E コマースでのそれに対応する変数です。
 
+
+<blockquote>
 変数が E-コマース拡張列で「n/a」とマークされている場合は、タグにデータマッピングとして追加する必要があります。
+</blockquote>
+
 
 ## 印象データ
 
 印象データが UDO にマッピングされ、入力されると、`ec:addImpression` コマンドを使用して Google Analytics に渡されます。
 
-|データレイヤー変数| Google キー| E-コマース&lt;br&gt; 拡張|
+|データレイヤー変数| Google キー| E-コマース<br> 拡張|
 |---| ---| ---|
 |product\_impression\_id| id| n/a|
 |product\_impression\_name| name| n/a|
@@ -40,7 +48,7 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 製品変数は、製品データを期待するイベントで使用されます。拡張 E コマースに必要な製品データは、E-コマース拡張機能を通じて自動的にマッピングされます（下記の表を参照）。製品変数は、`ec:addProduct` コマンドを使用して Google Analytics に渡されます。
 
-|データレイヤー変数| Google キー| E-コマース&lt;br&gt; 拡張|
+|データレイヤー変数| Google キー| E-コマース<br> 拡張|
 |---| ---| ---|
 |product\_id| id| \_cprod|
 |product\_name| name| \_cprodname|
@@ -56,7 +64,7 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 プロモーションデータが UDO にマッピングされ、入力されると、`ec:addPromo` コマンドを使用して Google Analytics に渡されます。
 
-|データレイヤー変数| Google キー| E-コマース&lt;br&gt; 拡張|
+|データレイヤー変数| Google キー| E-コマース<br> 拡張|
 |---| ---| ---|
 |promotion\_id| id| n/a|
 |promotion\_name| name| n/a|
@@ -67,7 +75,7 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 アクション変数は、注文データを期待するイベントで入力されます。拡張 E コマースに必要な注文データは、E-コマース拡張機能を通じて自動的にマッピングされます（下記の表を参照）。アクション変数は、`ec:setAction` コマンドを使用して Google Analytics に渡されます。
 
-|データレイヤー変数| Google キー| E-コマース&lt;br&gt; 拡張|
+|データレイヤー変数| Google キー| E-コマース<br> 拡張|
 |---| ---| ---|
 |order\_id| id| \_corder|
 |order\_store| affiliation| \_cstore|
@@ -76,7 +84,7 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 |order\_shipping\_amount| shipping| \_cship|
 |order\_promo\_code| coupon| \_cpromo|
 |checkout\_step| step| n/a |
-|shipping\_method,&lt;br&gt; shipping\_carrier,&lt;br&gt; payment\_method,&lt;br&gt; etc. &lt;br&gt; (various checkout options) | option| n/a |
+|shipping\_method,<br> shipping\_carrier,<br> payment\_method,<br> etc. <br> (various checkout options) | option| n/a |
 
 ## データマッピング
 
@@ -86,7 +94,7 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 以下は、期待される拡張 E コマースアクションにマッピングされる Tealium イベントの提案です：
 
-|Tealium イベント/ページタイプ| Google アクション&lt;br&gt; (enh\_action)|
+|Tealium イベント/ページタイプ| Google アクション<br> (enh\_action)|
 |---| ---|
 |product\_click| click|
 |product\_view| detail|
@@ -118,13 +126,13 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 ```js
 // 例：製品詳細ページビュー
 var utag_data = {
- &#34;product_impression_id&#34;       : [&#39;P12345&#39;, &#39;P67890&#39;],
- &#34;product_impression_name&#34;     : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
- &#34;product_impression_brand&#34;    : [&#39;Tealium&#39;, &#39;Tealium&#39;],
- &#34;product_impression_variant&#34;  : [&#39;black&#39;, &#39;blue&#39;],
- &#34;product_impression_category&#34; : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
- &#34;product_impression_list&#34;     : [&#39;Search Results&#39;, &#39;Search Results&#39;],
- &#34;product_impression_position&#34; : [1, 2]
+ "product_impression_id"       : ['P12345', 'P67890'],
+ "product_impression_name"     : ['DV T-Shirt', 'DV Water Bottle'],
+ "product_impression_brand"    : ['Tealium', 'Tealium'],
+ "product_impression_variant"  : ['black', 'blue'],
+ "product_impression_category" : ['Shirts', 'Home & Office'],
+ "product_impression_list"     : ['Search Results', 'Search Results'],
+ "product_impression_position" : [1, 2]
 };
 ```
 
@@ -144,13 +152,13 @@ var utag_data = {
 ```js
 // 例：製品クリック
 utag.link({
-  &#34;tealium_event&#34;    : &#34;product_click&#34;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_position&#34; : [1]
+  "tealium_event"    : "product_click",
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_position" : [1]
 });
 
 ```
@@ -170,12 +178,12 @@ utag.link({
 ```js
 // 例：製品詳細ページビュー
 var utag_data = {
-  &#34;tealium_event&#34;    : &#34;product_view&#34;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;]
+  "tealium_event"    : "product_view",
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts']
 };
 
 ```
@@ -198,14 +206,14 @@ var utag_data = {
 ```js
 // 例：商品追加
 utag.link({
-  &#34;tealium_event&#34;    : &#39;cart_add&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_price&#34;    : [&#39;23.49&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : 'cart_add',
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_price"    : ['23.49'],
+  "product_quantity" : [1]
 });
 
 ```
@@ -228,14 +236,14 @@ utag.link({
 ```js
 // 例：商品カート削除
 utag.link({
-  &#34;tealium_event&#34;    : &#39;cart_remove&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;],
-  &#34;product_price&#34;    : [&#39;23.49&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : 'cart_remove',
+  "product_id"       : ['P12345'],
+  "product_name"     : ['DV T-Shirt'],
+  "product_brand"    : ['Tealium'],
+  "product_variant"  : ['black'],
+  "product_category" : ['Shirts'],
+  "product_price"    : ['23.49'],
+  "product_quantity" : [1]
 });
 
 ```
@@ -261,22 +269,26 @@ utag.link({
 ```js
 // 例：チェックアウト
 var utag_data = {
-  &#34;tealium_event&#34;    : &#39;checkout&#39;,
-  &#34;product_id&#34;       : [&#39;P1235&#39;, &#39;P67890&#39;],
-  &#34;product_name&#34;     : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
-  &#34;product_brand&#34;    : [&#39;Tealium&#39;, &#39;Tealium&#39;],
-  &#34;product_variant&#34;  : [&#39;black&#39;, &#39;blue&#39;],
-  &#34;product_category&#34; : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
-  &#34;product_price&#34;    : [&#39;23.39&#39;, &#39;11.00&#39;],
-  &#34;product_quantity&#34; : [1, 2],
-  &#34;product_position&#34; : [1, 2],
-  &#34;checkout_step&#34;    : &#34;1&#34;,
-  &#34;shipping_carrier&#34; : &#39;FedEx&#39;
+  "tealium_event"    : 'checkout',
+  "product_id"       : ['P1235', 'P67890'],
+  "product_name"     : ['DV T-Shirt', 'DV Water Bottle'],
+  "product_brand"    : ['Tealium', 'Tealium'],
+  "product_variant"  : ['black', 'blue'],
+  "product_category" : ['Shirts', 'Home & Office'],
+  "product_price"    : ['23.39', '11.00'],
+  "product_quantity" : [1, 2],
+  "product_position" : [1, 2],
+  "checkout_step"    : "1",
+  "shipping_carrier" : 'FedEx'
 };
 
 ```
 
+
+<blockquote>
 Google Analyticsアカウント内の[チェックアウトファネル構成](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-funnel)を使用して、チェックアウトステップにより詳細な名前を割り当てることができます。
+</blockquote>
+
 
 ### チェックアウトオプション
 
@@ -292,9 +304,9 @@ Google Analyticsアカウント内の[チェックアウトファネル構成](h
 ```js
 // 例：チェックアウトオプション
 utag.link({
-  &#34;tealium_event&#34;    : &#34;checkout_option&#34;,
-  &#34;checkout_step&#34;    : &#34;2&#34;,
-  &#34;shipping_carrier&#34; : &#34;FedEx&#34;
+  "tealium_event"    : "checkout_option",
+  "checkout_step"    : "2",
+  "shipping_carrier" : "FedEx"
 });
 ```
 
@@ -322,19 +334,19 @@ utag.link({
 // 例：購入
 // ページロード時にデータオブジェクトに以下の情報が含まれるべきです
 var utag_data = {
-  &#34;tealium_event&#34;         : &#39;purchase&#39;,
-  &#34;order_id&#34;              : &#39;O1234567&#39;,
-  &#34;order_grand_total&#34;     : &#39;57.44&#39;,
-  &#34;order_tax_amount&#34;      : &#39;3.65&#39;,
-  &#34;order_shipping_amount&#34; : &#39;8.50&#39;,
-  &#34;order_promo_code&#34;      : &#39;SALE20&#39;,
-  &#34;product_id&#34;            : [&#39;P1235&#39;, &#39;P67890&#39;],
-  &#34;product_name&#34;          : [&#39;DV T-Shirt&#39;, &#39;DV Water Bottle&#39;],
-  &#34;product_brand&#34;         : [&#39;Tealium&#39;, &#39;Tealium&#39;],
-  &#34;product_variant&#34;       : [&#39;black&#39;, &#39;blue&#39;],
-  &#34;product_category&#34;      : [&#39;Shirts&#39;, &#39;Home &amp; Office&#39;],
-  &#34;product_price&#34;         : [&#39;23.39&#39;, &#39;11.00&#39;],
-  &#34;product_quantity&#34;      : [1, 2]
+  "tealium_event"         : 'purchase',
+  "order_id"              : 'O1234567',
+  "order_grand_total"     : '57.44',
+  "order_tax_amount"      : '3.65',
+  "order_shipping_amount" : '8.50',
+  "order_promo_code"      : 'SALE20',
+  "product_id"            : ['P1235', 'P67890'],
+  "product_name"          : ['DV T-Shirt', 'DV Water Bottle'],
+  "product_brand"         : ['Tealium', 'Tealium'],
+  "product_variant"       : ['black', 'blue'],
+  "product_category"      : ['Shirts', 'Home & Office'],
+  "product_price"         : ['23.39', '11.00'],
+  "product_quantity"      : [1, 2]
 };
 
 ```
@@ -353,11 +365,11 @@ var utag_data = {
 ```js
 // 例：プロモーションクリック
 utag.link({
-  &#34;tealium_event&#34;      : &#34;promo_click&#34;,
-  &#34;promotion_id&#34;       : [&#39;DV18-EARLY-REG&#39;],
-  &#34;promotion_name&#34;     : [&#39;DV 2018 Early Registration&#39;],
-  &#34;promotion_creative&#34; : [&#39;early_reg_promo1&#39;],
-  &#34;promotion_position&#34; : [1]
+  "tealium_event"      : "promo_click",
+  "promotion_id"       : ['DV18-EARLY-REG'],
+  "promotion_name"     : ['DV 2018 Early Registration'],
+  "promotion_creative" : ['early_reg_promo1'],
+  "promotion_position" : [1]
 });
 
 ```
@@ -376,10 +388,10 @@ utag.link({
 ```js
 // 例：払い戻し
 var utag_data = {
-  &#34;tealium_event&#34;    : &#34;refund&#34;,
-  &#34;order_id&#34;         : &#39;O123456&#39;,
-  &#34;product_id&#34;       : [&#39;P12345&#39;],
-  &#34;product_quantity&#34; : [1]
+  "tealium_event"    : "refund",
+  "order_id"         : 'O123456',
+  "product_id"       : ['P12345'],
+  "product_quantity" : [1]
 };
 ```
 

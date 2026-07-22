@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 ---
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、[タグ概要]()の記事を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -19,15 +19,19 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
   * コンバージョンアクションに割り当てたい値を入力します。
   * このフィールドは空白のままにするか、注文小計の値を使用するか、データマッピングツールボックスを介して動的に構成することができます。
 
+
+<blockquote>
 上記の構成はすべてデータマッピングツールボックスで構成することもできます。
+</blockquote>
+
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール]()のドキュメントを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/about-data-mappings/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 ### 標準
 
@@ -37,31 +41,31 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |宛先名| 説明|
 |---| ---|
-| コンバージョンID `google_conversion_id` |  &lt;ul&gt;&lt;li&gt;`google_conversion_id` パラメータの値。&lt;/li&gt;&lt;/ul&gt; |
-|コンバージョンラベル|  &lt;ul&gt;&lt;li&gt;ここにデフォルトラベルを構成し、マッピングを使用してこの値を動的に上書きします。&lt;/li&gt;&lt;li&gt;複数のラベルのデータを送信するためにカンマ区切りリストを使用します。&lt;/li&gt;&lt;li&gt;このリストは、コンバージョンIDの数に合わせて複数のコンバージョンラベルを使用するか、すべてのコンバージョンIDに対して単一のラベルを使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|コンバージョン値 (value)|  &lt;ul&gt;&lt;li&gt;ここにデフォルト値を構成するか、E-Commerce拡張機能からの小計値を使用するためにこのフィールドを空白にします。&lt;/li&gt;&lt;li&gt;マッピングを使用してこの値とE-Commerce拡張機能の値を動的に上書きします。&lt;/li&gt;&lt;li&gt;コンバージョントラッキングを使用する場合、特定のタイプのすべてのコンバージョンアクションに同じ値を割り当てることができます（静的値）または、コンバージョンアクションごとに異なる値を持たせることができます（動的、トランザクション固有の値を表します）。&lt;/li&gt;&lt;li&gt;コンバージョンに値を割り当てると、異なるコンバージョンによってもたらされる広告の総価値を区別し、高価値のコンバージョンを特定して重点を置くことができます。&lt;/li&gt;&lt;li&gt;このフィールドを空白にすると、タグはE-commerceの小計値 (`_csubtotal`) を使用して自動的に入力されます。&lt;/li&gt;&lt;/ul&gt; |
-|グローバルオブジェクト|  &lt;ul&gt;&lt;li&gt;イベントキューに使用されるグローバルオブジェクトの名前。&lt;/li&gt;&lt;li&gt;指定されていない場合は「gtag」が使用されます。&lt;/li&gt;&lt;li&gt;ほとんどの実装では必要ありません。&lt;/li&gt;&lt;/ul&gt; |
-|データレイヤー名|  &lt;ul&gt;&lt;li&gt;デフォルトでは、グローバルサイトタグによって初期化および参照されるデータレイヤーは **dataLayer** という名前です。&lt;/li&gt;&lt;li&gt;プロジェクトが別の名前を必要とする場合のみ、データレイヤーの名前を変更します。&lt;/li&gt;&lt;/ul&gt; |
-|リマーケティングを有効にする|  &lt;ul&gt;&lt;li&gt;値は **On** または **Off** です。&lt;/li&gt;&lt;li&gt;デフォルト値は **Off** です。&lt;/li&gt;&lt;li&gt;リマーケティングが有効になっている場合、このタグは自動的にE-Commerce拡張機能からデータを引き込み、Google Adsの「Retail」パラメータ（接頭辞 `ecomm_`）を入力します。&lt;/li&gt;&lt;li&gt;「Retail」タブに直接マッピングすると、E-Commerce拡張機能を介して引き込まれたデータが上書きされます。&lt;/li&gt;&lt;/ul&gt; |
-|ページタイプ `pagetype` |  &lt;ul&gt;&lt;li&gt;コンバージョンを追跡しているページのタイプ。&lt;/li&gt;&lt;li&gt;ここでデフォルトのページタイプを選択し、マッピングを使用してこの値を動的に上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|クロストラッキングドメイン|  &lt;ul&gt;&lt;li&gt;クロスドメイントラッキングに使用するドメインのカンマ区切りリスト（setAllowLinkerを構成）。&lt;/li&gt;&lt;li&gt;トップレベルドメイン、例えば「tealiumiq.com」などが該当します。&lt;/li&gt;&lt;/ul&gt; |
-|カスタム|  &lt;ul&gt;&lt;li&gt;Google Adsによって事前に定義されていないカスタマイズされたパラメータを定義することができます。&lt;/li&gt;&lt;li&gt;詳細については以下の「Advanced」を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+| コンバージョンID `google_conversion_id` |  <ul><li>`google_conversion_id` パラメータの値。</li></ul> |
+|コンバージョンラベル|  <ul><li>ここにデフォルトラベルを構成し、マッピングを使用してこの値を動的に上書きします。</li><li>複数のラベルのデータを送信するためにカンマ区切りリストを使用します。</li><li>このリストは、コンバージョンIDの数に合わせて複数のコンバージョンラベルを使用するか、すべてのコンバージョンIDに対して単一のラベルを使用することができます。</li></ul> |
+|コンバージョン値 (value)|  <ul><li>ここにデフォルト値を構成するか、E-Commerce拡張機能からの小計値を使用するためにこのフィールドを空白にします。</li><li>マッピングを使用してこの値とE-Commerce拡張機能の値を動的に上書きします。</li><li>コンバージョントラッキングを使用する場合、特定のタイプのすべてのコンバージョンアクションに同じ値を割り当てることができます（静的値）または、コンバージョンアクションごとに異なる値を持たせることができます（動的、トランザクション固有の値を表します）。</li><li>コンバージョンに値を割り当てると、異なるコンバージョンによってもたらされる広告の総価値を区別し、高価値のコンバージョンを特定して重点を置くことができます。</li><li>このフィールドを空白にすると、タグはE-commerceの小計値 (`_csubtotal`) を使用して自動的に入力されます。</li></ul> |
+|グローバルオブジェクト|  <ul><li>イベントキューに使用されるグローバルオブジェクトの名前。</li><li>指定されていない場合は「gtag」が使用されます。</li><li>ほとんどの実装では必要ありません。</li></ul> |
+|データレイヤー名|  <ul><li>デフォルトでは、グローバルサイトタグによって初期化および参照されるデータレイヤーは **dataLayer** という名前です。</li><li>プロジェクトが別の名前を必要とする場合のみ、データレイヤーの名前を変更します。</li></ul> |
+|リマーケティングを有効にする|  <ul><li>値は **On** または **Off** です。</li><li>デフォルト値は **Off** です。</li><li>リマーケティングが有効になっている場合、このタグは自動的にE-Commerce拡張機能からデータを引き込み、Google Adsの「Retail」パラメータ（接頭辞 `ecomm_`）を入力します。</li><li>「Retail」タブに直接マッピングすると、E-Commerce拡張機能を介して引き込まれたデータが上書きされます。</li></ul> |
+|ページタイプ `pagetype` |  <ul><li>コンバージョンを追跡しているページのタイプ。</li><li>ここでデフォルトのページタイプを選択し、マッピングを使用してこの値を動的に上書きします。</li></ul> |
+|クロストラッキングドメイン|  <ul><li>クロスドメイントラッキングに使用するドメインのカンマ区切りリスト（setAllowLinkerを構成）。</li><li>トップレベルドメイン、例えば「tealiumiq.com」などが該当します。</li></ul> |
+|カスタム|  <ul><li>Google Adsによって事前に定義されていないカスタマイズされたパラメータを定義することができます。</li><li>詳細については以下の「Advanced」を参照してください。</li></ul> |
 
 ### 小売
 
-このタグには、[E-Commerce拡張機能]()の構成をお勧めします。これにより、必要な製品および注文の詳細が適切な広告パラメータに自動的に送信されます。また、マッピングを使用して拡張機能の変数を上書きすることもできます。
+このタグには、[E-Commerce拡張機能](https://docs.tealium.com/e-commerce-extension/)の構成をお勧めします。これにより、必要な製品および注文の詳細が適切な広告パラメータに自動的に送信されます。また、マッピングを使用して拡張機能の変数を上書きすることもできます。
 
 以下の表は、小売変数の宛先名と説明を示しています。
 
 |宛先名| 説明|
 |---| ---|
-|`ecomm.prodid`|  &lt;ul&gt;&lt;li&gt;（必須）これは現在のページに表示されている製品の製品IDまたは製品IDです。ここで使用されるIDはフィード内のIDと一致する必要があります。&lt;/li&gt;&lt;li&gt;E-commerce拡張機能を使用する場合、このパラメータのマッピングは `_cprod` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメータは製品ページ、カートページ、購入ページのタイプで使用され、単一の製品の値を製品ページで、またはカートおよび購入ページで1つ以上の製品の値の合計を含む必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.category`|  &lt;ul&gt;&lt;li&gt;このパラメータは、現在表示されている製品またはカテゴリページのカテゴリを含みます。&lt;/li&gt;&lt;li&gt;E-commerce拡張機能を使用する場合、このパラメータは `_ccat` を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨。&lt;/li&gt;&lt;li&gt;タグが配置されているページのタイプを示します。&lt;/li&gt;&lt;li&gt;次の値のいずれかを使用します：&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`category`&lt;/li&gt;&lt;li&gt;`product`&lt;/li&gt;&lt;li&gt;`cart`&lt;/li&gt;&lt;li&gt;`purchase`&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` ページタイプに当てはまらない場合に使用します。例えば、「Contact Us」や「About Us」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;このパラメータを含める場合は、データソースを `ecomm.pagetype` にマップします。&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.value`|  &lt;ul&gt;&lt;li&gt;非推奨。&lt;/li&gt;&lt;li&gt;このパラメータはGoogle Adsによってこのリマーケティングタグではもはや使用されていません。&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.quantity`|  &lt;ul&gt;&lt;li&gt;非推奨。&lt;/li&gt;&lt;li&gt;このパラメータはGoogle Adsによってこのリマーケティングタグではもはや使用されていません。&lt;/li&gt;&lt;/ul&gt; |
-|`Custom`|  &lt;ul&gt;&lt;li&gt;Google Adsによって事前に定義されていないカスタマイズされたパラメータを定義することができます。&lt;/li&gt;&lt;li&gt;詳細については以下の「Advanced」を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|`ecomm.prodid`|  <ul><li>（必須）これは現在のページに表示されている製品の製品IDまたは製品IDです。ここで使用されるIDはフィード内のIDと一致する必要があります。</li><li>E-commerce拡張機能を使用する場合、このパラメータのマッピングは `_cprod` を上書きします。</li></ul> |
+|`ecomm.totalvalue`|  <ul><li>このパラメータは製品ページ、カートページ、購入ページのタイプで使用され、単一の製品の値を製品ページで、またはカートおよび購入ページで1つ以上の製品の値の合計を含む必要があります。</li></ul> |
+|`ecomm.category`|  <ul><li>このパラメータは、現在表示されている製品またはカテゴリページのカテゴリを含みます。</li><li>E-commerce拡張機能を使用する場合、このパラメータは `_ccat` を上書きします。</li></ul> |
+|`ecomm.pagetype`|  <ul><li>推奨。</li><li>タグが配置されているページのタイプを示します。</li><li>次の値のいずれかを使用します：</li> <ul><li>`home`</li><li>`searchresults`</li><li>`category`</li><li>`product`</li><li>`cart`</li><li>`purchase`</li></ul> <ul><li>`other` ページタイプに当てはまらない場合に使用します。例えば、「Contact Us」や「About Us」ページなどです。</li></ul> <li>このパラメータを含める場合は、データソースを `ecomm.pagetype` にマップします。</li></ul> |
+|`ecomm.value`|  <ul><li>非推奨。</li><li>このパラメータはGoogle Adsによってこのリマーケティングタグではもはや使用されていません。</li></ul> |
+|`ecomm.quantity`|  <ul><li>非推奨。</li><li>このパラメータはGoogle Adsによってこのリマーケティングタグではもはや使用されていません。</li></ul> |
+|`Custom`|  <ul><li>Google Adsによって事前に定義されていないカスタマイズされたパラメータを定義することができます。</li><li>詳細については以下の「Advanced」を参照してください。</li></ul> |
 
 ### 教育
 
@@ -69,9 +73,9 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |宛先名| 説明|
 |---| ---|
-|`edu.pid`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメータは、訪問が現在プログラムページまたはリードページタイプで表示しているプログラムのIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の「教育プログラム」の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`edu.plocid`|  &lt;ul&gt;&lt;li&gt;このパラメータは、ユーザーが現在プログラムページまたはリードページタイプで表示しているプログラムの場所のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の「ロケーションID」の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`edu.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨。&lt;/li&gt;&lt;li&gt;タグが配置されているページのタイプを示します。&lt;/li&gt;&lt;li&gt;次の値のいずれかを使用します：&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`program`&lt;/li&gt;&lt;li&gt;`lead`&lt;/li&gt;&lt;li&gt;`complete` または&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` ページタイプに当てはまらない場合に使用します。例えば、「Contact Us」や「About Us」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;このパラメータを含める場合は、データソースを `edu.pagetype` にマップします。&lt;/li&gt;&lt;/ul&gt; |
+|`edu.pid`|  <ul><li>（必須）このパラメータは、訪問が現在プログラムページまたはリードページタイプで表示しているプログラムのIDです。</li><li>このIDはフィード内の「教育プログラム」の値と一致する必要があります。</li></ul> |
+|`edu.plocid`|  <ul><li>このパラメータは、ユーザーが現在プログラムページまたはリードページタイプで表示しているプログラムの場所のIDです。</li><li>このIDはフィード内の「ロケーションID」の値と一致する必要があります。</li></ul> |
+|`edu.pagetype`|  <ul><li>推奨。</li><li>タグが配置されているページのタイプを示します。</li><li>次の値のいずれかを使用します：</li> <ul><li>`home`</li><li>`searchresults`</li><li>`program`</li><li>`lead`</li><li>`complete` または</li></ul> <ul><li>`other` ページタイプに当てはまらない場合に使用します。例えば、「Contact Us」や「About Us」ページなどです。</li></ul> <li>このパラメータを含める場合は、データソースを `edu.pagetype` にマップします。</li></ul> |
 
 
 ### フライト
@@ -80,12 +84,12 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`flight.originid`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、検索結果、カート、購入ページタイプで表示されるフライト行程の出発地です。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要がありますが、Googleは3文字の空港コードの使用を推奨しています。&lt;/li&gt;&lt;/ul&gt; |
-|`flight.destid`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメーターは、検索結果、カート、購入ページタイプで表示されるフライト行程の目的地です。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要がありますが、Googleは3文字の空港コードの使用を推奨しています。&lt;/li&gt;&lt;/ul&gt; |
-|`flight.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターはカートおよび購入ページタイプで使用され、フライト行程の総価値を含むべきです。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`flight.startdate`|  &lt;ul&gt;&lt;li&gt;フライト行程が始まる日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式であるべきです。&lt;/li&gt;&lt;/ul&gt; |
-|`flight.enddate`|  &lt;ul&gt;&lt;li&gt;フライト行程が終わる日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式であるべきです。&lt;/li&gt;&lt;/ul&gt; |
-|`flight.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨されます。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`cart`&lt;/li&gt;&lt;li&gt;`purchase`&lt;/li&gt;&lt;li&gt;`cancel` または&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを `flight.pagetype` にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`flight.originid`|  <ul><li>このパラメーターは、検索結果、カート、購入ページタイプで表示されるフライト行程の出発地です。</li><li>このIDはフィード内の値と一致する必要がありますが、Googleは3文字の空港コードの使用を推奨しています。</li></ul> |
+|`flight.destid`|  <ul><li>（必須）このパラメーターは、検索結果、カート、購入ページタイプで表示されるフライト行程の目的地です。</li><li>このIDはフィード内の値と一致する必要がありますが、Googleは3文字の空港コードの使用を推奨しています。</li></ul> |
+|`flight.totalvalue`|  <ul><li>このパラメーターはカートおよび購入ページタイプで使用され、フライト行程の総価値を含むべきです。</li><li>通貨記号は含めないでください。</li></ul> |
+|`flight.startdate`|  <ul><li>フライト行程が始まる日付です。</li><li>`YYYY-MM-DD`形式であるべきです。</li></ul> |
+|`flight.enddate`|  <ul><li>フライト行程が終わる日付です。</li><li>`YYYY-MM-DD`形式であるべきです。</li></ul> |
+|`flight.pagetype`|  <ul><li>推奨されます。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`cart`</li><li>`purchase`</li><li>`cancel` または</li><li>`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。</li></ul> </li><li>このパラメーターを含める場合は、データソースを `flight.pagetype` にマッピングしてください。</li></ul> |
 
 ### ホテルとレンタル
 
@@ -93,11 +97,11 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`hrental.id`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメーターは、訪問が現在プロパティページタイプで閲覧しているホテルまたはレンタル物件のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.startdate`|  &lt;ul&gt;&lt;li&gt;予約が開始される日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式であるべきです。&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.enddate`|  &lt;ul&gt;&lt;li&gt;予約が終了する日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式であるべきです。&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、転換意図および転換ページタイプで使用され、訪問のカート内のすべての物件の総合計値を含むべきです。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨されます。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` または&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを `hrental.pagetype.` にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`hrental.id`|  <ul><li>（必須）このパラメーターは、訪問が現在プロパティページタイプで閲覧しているホテルまたはレンタル物件のIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`hrental.startdate`|  <ul><li>予約が開始される日付です。</li><li>`YYYY-MM-DD`形式であるべきです。</li></ul> |
+|`hrental.enddate`|  <ul><li>予約が終了する日付です。</li><li>`YYYY-MM-DD`形式であるべきです。</li></ul> |
+|`hrental.totalvalue`|  <ul><li>このパラメーターは、転換意図および転換ページタイプで使用され、訪問のカート内のすべての物件の総合計値を含むべきです。</li><li>通貨記号は含めないでください。</li></ul> |
+|`hrental.pagetype`|  <ul><li>推奨されます。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` または</li><li>`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。</li></ul> </li></ul> <ul><li>このパラメーターを含める場合は、データソースを `hrental.pagetype.` にマッピングしてください。</li></ul> |
 
 ### ジョブ
 
@@ -105,10 +109,10 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`job.id`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメーターは、`searchresults`, `offerdetail`, `conversionintent` および `conversion` ページタイプで表示される求人のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`job.locid`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、場所のIDまたは名前を表し、フィードで複数の job\_ids を同じ値で使用するが、異なる場所IDを使用して二次的なマッチングキーとして機能し、検索結果、オファー詳細、転換意図および転換ページタイプで存在すべきです。&lt;/li&gt;&lt;/ul&gt; |
-|`job.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、転換意図および転換ページタイプで使用され、ユーザーが選択した求人リストの総価値を含むべきです。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`job.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨されます。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent` または&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを `job.pagetype.` にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`job.id`|  <ul><li>（必須）このパラメーターは、`searchresults`, `offerdetail`, `conversionintent` および `conversion` ページタイプで表示される求人のIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`job.locid`|  <ul><li>このパラメーターは、場所のIDまたは名前を表し、フィードで複数の job\_ids を同じ値で使用するが、異なる場所IDを使用して二次的なマッチングキーとして機能し、検索結果、オファー詳細、転換意図および転換ページタイプで存在すべきです。</li></ul> |
+|`job.totalvalue`|  <ul><li>このパラメーターは、転換意図および転換ページタイプで使用され、ユーザーが選択した求人リストの総価値を含むべきです。</li><li>通貨記号は含めないでください。</li></ul> |
+|`job.pagetype`|  <ul><li>推奨されます。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent` または</li><li>`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。</li></ul> </li><li>このパラメーターを含める場合は、データソースを `job.pagetype.` にマッピングしてください。</li></ul> |
 
 ### ローカル
 
@@ -116,9 +120,9 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`local.id`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメーターは、検索結果、オファー詳細、転換意図および転換ページタイプで表示されるオファーまたはディールのIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`local.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、転換意図および転換ページタイプで使用され、ユーザーが購入したオファーまたはオファーの総価値を含むべきです。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`local.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨されます。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` または&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを `local.pagetype` にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`local.id`|  <ul><li>（必須）このパラメーターは、検索結果、オファー詳細、転換意図および転換ページタイプで表示されるオファーまたはディールのIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`local.totalvalue`|  <ul><li>このパラメーターは、転換意図および転換ページタイプで使用され、ユーザーが購入したオファーまたはオファーの総価値を含むべきです。</li><li>通貨記号は含めないでください。</li></ul> |
+|`local.pagetype`|  <ul><li>推奨されます。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` または</li><li>`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。</li></ul> </li><li>このパラメーターを含める場合は、データソースを `local.pagetype` にマッピングしてください。</li></ul> |
 
 ### 不動産
 
@@ -126,21 +130,21 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`listing.id`|  &lt;ul&gt;&lt;li&gt;（必須）このパラメーターは、検索結果、オファー詳細、転換意図および転換ページタイプで表示される物件のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`listing.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、転換意図および転換ページタイプで使用され、物件の総価値を含むべきです。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`listing.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨されます。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` または&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを `listing.pagetype` にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`listing.id`|  <ul><li>（必須）このパラメーターは、検索結果、オファー詳細、転換意図および転換ページタイプで表示される物件のIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`listing.totalvalue`|  <ul><li>このパラメーターは、転換意図および転換ページタイプで使用され、物件の総価値を含むべきです。</li><li>通貨記号は含めないでください。</li></ul> |
+|`listing.pagetype`|  <ul><li>推奨されます。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` または</li><li>`other` 上記にリストされていないページタイプに当てはまらない場合に使用します。例えば、「お問い合わせ」や「会社概要」ページなどです。</li></ul> </li><li>このパラメーターを含める場合は、データソースを `listing.pagetype` にマッピングしてください。</li></ul> |
 ### 旅行
 
 以下の表は、旅行変数の目的地名と説明を示しています。
 
 |目的地名| 説明|
 |---| ---|
-|`travel.destid`|  &lt;ul&gt;&lt;li&gt;(必須) 検索結果、転換意図、転換ページタイプで表示される旅行先のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`travel.originid`|  &lt;ul&gt;&lt;li&gt;(オプション) 検索結果、転換意図、転換ページタイプで表示される出発地のIDです。&lt;/li&gt;&lt;li&gt;この値はフィードで二次的なマッチングキーとして使用され、何を表す必要はありませんが、Googleは3文字の空港コードまたは2文字の国コードの使用を推奨しています。&lt;/li&gt;&lt;/ul&gt; |
-|`travel.startdate`|  &lt;ul&gt;&lt;li&gt;旅行の日程が始まる日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式である必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`travel.enddate`|  &lt;ul&gt;&lt;li&gt;旅行の日程が終わる日付です。&lt;/li&gt;&lt;li&gt;`YYYY-MM-DD`形式である必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`travel.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは転換意図と転換ページタイプで使用され、旅行の日程の総価値を含む必要があります。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`travel.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。&lt;/li&gt;&lt;li&gt;以下の値のいずれかを使用してください：&lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion`&lt;/li&gt;&lt;li&gt;`cancel`&lt;/li&gt;&lt;li&gt;`other` 上記にリストされていないページタイプの場合に使用します。例えば、「Contact Us」や「About Us」ページなど。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;このパラメーターを含める場合は、データソースを`travel.pagetype`にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`travel.destid`|  <ul><li>(必須) 検索結果、転換意図、転換ページタイプで表示される旅行先のIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`travel.originid`|  <ul><li>(オプション) 検索結果、転換意図、転換ページタイプで表示される出発地のIDです。</li><li>この値はフィードで二次的なマッチングキーとして使用され、何を表す必要はありませんが、Googleは3文字の空港コードまたは2文字の国コードの使用を推奨しています。</li></ul> |
+|`travel.startdate`|  <ul><li>旅行の日程が始まる日付です。</li><li>`YYYY-MM-DD`形式である必要があります。</li></ul> |
+|`travel.enddate`|  <ul><li>旅行の日程が終わる日付です。</li><li>`YYYY-MM-DD`形式である必要があります。</li></ul> |
+|`travel.totalvalue`|  <ul><li>このパラメーターは転換意図と転換ページタイプで使用され、旅行の日程の総価値を含む必要があります。</li><li>通貨記号は含めないでください。</li></ul> |
+|`travel.pagetype`|  <ul><li>推奨。</li><li>タグが存在するページのタイプを示します。</li><li>以下の値のいずれかを使用してください：<ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion`</li><li>`cancel`</li><li>`other` 上記にリストされていないページタイプの場合に使用します。例えば、「Contact Us」や「About Us」ページなど。</li></ul> </li><li>このパラメーターを含める場合は、データソースを`travel.pagetype`にマッピングしてください。</li></ul> |
 
 ### 電話転換オプション
 
@@ -150,8 +154,8 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`phone_conversion_number`|  &lt;ul&gt;&lt;li&gt;(必須) 次の例では、「REPLACE WITH VALUE」をあなたのビジネスの電話番号に置き換えてください。&lt;/li&gt;&lt;li&gt;番号はページ上の番号と正確に一致し、関連する国コードを含む必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`phone_conversion_css_class`|  &lt;ul&gt;&lt;li&gt;(必須) CSSクラス名を入力してください。&lt;/li&gt;&lt;li&gt;そのクラスのすべての要素は、整形された電話番号で内容が置き換えられます。&lt;/li&gt;&lt;/ul&gt; |
+|`phone_conversion_number`|  <ul><li>(必須) 次の例では、「REPLACE WITH VALUE」をあなたのビジネスの電話番号に置き換えてください。</li><li>番号はページ上の番号と正確に一致し、関連する国コードを含む必要があります。</li></ul> |
+|`phone_conversion_css_class`|  <ul><li>(必須) CSSクラス名を入力してください。</li><li>そのクラスのすべての要素は、整形された電話番号で内容が置き換えられます。</li></ul> |
 
 ### その他
 
@@ -159,10 +163,10 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|`dynx.itemid`|  &lt;ul&gt;&lt;li&gt;(必須) 検索結果、オファー詳細、転換意図、転換ページタイプで表示される製品のIDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.itemid2`|  &lt;ul&gt;&lt;li&gt;(オプション) 検索結果、オファー詳細、転換意図、転換ページタイプで表示される製品の二次IDです。&lt;/li&gt;&lt;li&gt;このIDはフィード内の値と一致する必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.totalvalue`|  &lt;ul&gt;&lt;li&gt;このパラメーターは転換意図ページタイプで使用され、訪問が購入した製品の総価値を含む必要があります。&lt;/li&gt;&lt;li&gt;通貨記号は含めないでください。&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.pagetype`|  &lt;ul&gt;&lt;li&gt;推奨。&lt;/li&gt;&lt;li&gt;タグが存在するページのタイプを示します。以下の値のいずれかを使用してください：&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion`&lt;/li&gt;&lt;li&gt;`cancel`&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` 上記にリストされていないページタイプの場合に使用します。例えば、「Contact Us」や「About Us」ページなど。&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;このパラメーターを含める場合は、データソースを`dynx.pagetype`にマッピングしてください。&lt;/li&gt;&lt;/ul&gt; |
+|`dynx.itemid`|  <ul><li>(必須) 検索結果、オファー詳細、転換意図、転換ページタイプで表示される製品のIDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`dynx.itemid2`|  <ul><li>(オプション) 検索結果、オファー詳細、転換意図、転換ページタイプで表示される製品の二次IDです。</li><li>このIDはフィード内の値と一致する必要があります。</li></ul> |
+|`dynx.totalvalue`|  <ul><li>このパラメーターは転換意図ページタイプで使用され、訪問が購入した製品の総価値を含む必要があります。</li><li>通貨記号は含めないでください。</li></ul> |
+|`dynx.pagetype`|  <ul><li>推奨。</li><li>タグが存在するページのタイプを示します。以下の値のいずれかを使用してください：</li> <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion`</li><li>`cancel`</li></ul> <ul><li>`other` 上記にリストされていないページタイプの場合に使用します。例えば、「Contact Us」や「About Us」ページなど。</li></ul> <li>このパラメーターを含める場合は、データソースを`dynx.pagetype`にマッピングしてください。</li></ul> |
 
 ### 高度な構成
 
@@ -170,15 +174,15 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|推奨される製品ID `custom.ecomm_rec_prodid`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、ページ上の推奨製品の製品IDを渡すために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|訪問の年齢 `custom.a`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問の年齢を渡すために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|訪問の性別 `custom.g`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問の性別を渡すために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|訪問がアカウントを持っているか `custom.hasaccount`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問がアカウントを持っているかどうかを示すために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|顧客品質スコア `custom.cqs`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問の顧客品質スコアを報告するために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|リピート購入者 `custom.rp`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問がリピート購入者であるかどうかを識別するために使用することができます。&lt;/li&gt;&lt;/ul&gt; |
-|訪問のロイヤルティスコア `custom.ly` |  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問のロイヤルティスコアを識別するために使用されます。&lt;/li&gt;&lt;/ul&gt; |
-|訪問のハイスペンダースコア `custom.hs`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、訪問のハイスペンダースコアを識別するために使用されます。&lt;/li&gt;&lt;/ul&gt; |
-|カスタム `custom.myvar`|  &lt;ul&gt;&lt;li&gt;このパラメーターは、任意のカスタマイズされたパラメーターを渡すために使用することができます。&lt;/li&gt;&lt;li&gt;`myvar`をあなた自身のパラメーター名に置き換えてください。&lt;/li&gt;&lt;/ul&gt; |
+|推奨される製品ID `custom.ecomm_rec_prodid`|  <ul><li>このパラメーターは、ページ上の推奨製品の製品IDを渡すために使用することができます。</li></ul> |
+|訪問の年齢 `custom.a`|  <ul><li>このパラメーターは、訪問の年齢を渡すために使用することができます。</li></ul> |
+|訪問の性別 `custom.g`|  <ul><li>このパラメーターは、訪問の性別を渡すために使用することができます。</li></ul> |
+|訪問がアカウントを持っているか `custom.hasaccount`|  <ul><li>このパラメーターは、訪問がアカウントを持っているかどうかを示すために使用することができます。</li></ul> |
+|顧客品質スコア `custom.cqs`|  <ul><li>このパラメーターは、訪問の顧客品質スコアを報告するために使用することができます。</li></ul> |
+|リピート購入者 `custom.rp`|  <ul><li>このパラメーターは、訪問がリピート購入者であるかどうかを識別するために使用することができます。</li></ul> |
+|訪問のロイヤルティスコア `custom.ly` |  <ul><li>このパラメーターは、訪問のロイヤルティスコアを識別するために使用されます。</li></ul> |
+|訪問のハイスペンダースコア `custom.hs`|  <ul><li>このパラメーターは、訪問のハイスペンダースコアを識別するために使用されます。</li></ul> |
+|カスタム `custom.myvar`|  <ul><li>このパラメーターは、任意のカスタマイズされたパラメーターを渡すために使用することができます。</li><li>`myvar`をあなた自身のパラメーター名に置き換えてください。</li></ul> |
 
 ### Eコマース
 
@@ -192,26 +196,30 @@ url: https://docs.tealium.com/ja/client-side-tags/google-ads-remarketing-tag/
 
 |目的地名| 説明|
 |---| ---|
-|注文ID `_corder`|  &lt;ul&gt;&lt;li&gt;最終注文に割り当てられた一意の識別子を表します。&lt;/li&gt;&lt;li&gt;Eコマースパラメーターを使用する利点の一つは、タグが自動的に任意のビジネスタイプに対して`_csubtotal`を総価値として使用することです。&lt;/li&gt;&lt;li&gt;例えば、小売ビジネスタイプの場合、`ecomm.totalvalue`の値は`_csubtotal`を使用します。&lt;/li&gt;&lt;/ul&gt; |
-|小計 (`_csubtotal`)|  &lt;ul&gt;&lt;li&gt;最終注文の小計額を表します。&lt;/li&gt;&lt;li&gt;`_csubtotal`内の値は、報告されるビジネスタイプに関係なく自動的に総価値として`_csubtotal`を使用します。&lt;/li&gt;&lt;li&gt;例えば、小売ビジネスタイプの場合、`ecomm.totalvalue`の値は`_csubtotal`を使用します。&lt;/li&gt;&lt;/ul&gt; |
-|製品IDリスト `_cprod`|  &lt;ul&gt;&lt;li&gt;製品配列内の各製品の一意の識別子を表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.prodidは`_cprod`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
-|カテゴリリスト `_ccat`|  &lt;ul&gt;&lt;li&gt;製品配列内の各製品のカテゴリを表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.categoryは`_ccat`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
-|数量リスト `_cquan`|  &lt;ul&gt;&lt;li&gt;製品配列内の各製品の数量を表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.quantityは`_cquan`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
-|価格リスト `_cprice`|  &lt;ul&gt;&lt;li&gt;製品配列内の各製品の単位価格を表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.pvalueは`_cprice`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
-|通貨 `_ccurrency`|  &lt;ul&gt;&lt;li&gt;製品配列の価格の通貨を表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.currencyは`_ccurrency`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
-|割引リスト `product_discount`|  &lt;ul&gt;&lt;li&gt;製品配列内の各製品の単位割引を表します。&lt;/li&gt;&lt;li&gt;存在する場合、カスタムパラメーターecomm.discountは`_cdisc`の内容を含みます。&lt;/li&gt;&lt;/ul&gt; |
+|注文ID `_corder`|  <ul><li>最終注文に割り当てられた一意の識別子を表します。</li><li>Eコマースパラメーターを使用する利点の一つは、タグが自動的に任意のビジネスタイプに対して`_csubtotal`を総価値として使用することです。</li><li>例えば、小売ビジネスタイプの場合、`ecomm.totalvalue`の値は`_csubtotal`を使用します。</li></ul> |
+|小計 (`_csubtotal`)|  <ul><li>最終注文の小計額を表します。</li><li>`_csubtotal`内の値は、報告されるビジネスタイプに関係なく自動的に総価値として`_csubtotal`を使用します。</li><li>例えば、小売ビジネスタイプの場合、`ecomm.totalvalue`の値は`_csubtotal`を使用します。</li></ul> |
+|製品IDリスト `_cprod`|  <ul><li>製品配列内の各製品の一意の識別子を表します。</li><li>存在する場合、カスタムパラメーターecomm.prodidは`_cprod`の内容を含みます。</li></ul> |
+|カテゴリリスト `_ccat`|  <ul><li>製品配列内の各製品のカテゴリを表します。</li><li>存在する場合、カスタムパラメーターecomm.categoryは`_ccat`の内容を含みます。</li></ul> |
+|数量リスト `_cquan`|  <ul><li>製品配列内の各製品の数量を表します。</li><li>存在する場合、カスタムパラメーターecomm.quantityは`_cquan`の内容を含みます。</li></ul> |
+|価格リスト `_cprice`|  <ul><li>製品配列内の各製品の単位価格を表します。</li><li>存在する場合、カスタムパラメーターecomm.pvalueは`_cprice`の内容を含みます。</li></ul> |
+|通貨 `_ccurrency`|  <ul><li>製品配列の価格の通貨を表します。</li><li>存在する場合、カスタムパラメーターecomm.currencyは`_ccurrency`の内容を含みます。</li></ul> |
+|割引リスト `product_discount`|  <ul><li>製品配列内の各製品の単位割引を表します。</li><li>存在する場合、カスタムパラメーターecomm.discountは`_cdisc`の内容を含みます。</li></ul> |
 ## タグの確認
 
-[Google Tag Assistant](https://support.google.com/tagassistant/answer/2947093?hl=en&amp;ref_topic=6000196)を使用するには、Chrome Webブラウザが必要です。ブラウザがすでにコンピュータにインストールされている場合は、[Google Chrome Store](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk)からGoogle Tag Assistantをインストールしてください。正常にインストールされたら、以下の手順に従ってください：
+[Google Tag Assistant](https://support.google.com/tagassistant/answer/2947093?hl=en&ref_topic=6000196)を使用するには、Chrome Webブラウザが必要です。ブラウザがすでにコンピュータにインストールされている場合は、[Google Chrome Store](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk)からGoogle Tag Assistantをインストールしてください。正常にインストールされたら、以下の手順に従ってください：
 
 1. サイトにアクセスし、対象ページを開きます。
 1. ブラウザの右上隅にあるアシスタントアイコンをクリックします。
 1. **このページを今すぐチェック**をクリックします。  
-![](/images/client-side-tags/test-page.png)
+![](https://docs.tealium.com/images/client-side-tags/test-page.png)
+
+<blockquote>
 アイコンの色指標が緑ではなく赤に表示される場合がありますが、これはTealiumを通じてタグを実装しているためです。
+</blockquote>
+
 Tag Assistantが実行されると、値が表示されるようになります。以下のサンプルユースケースでは、ホームページのテストを示しています。例では、リクエストが「動作中」であり、データソースが取得されていることに注意してください。また、`ecomm_pagetype`は`home`の値で入力されていますが、`ecomm_value`と`ecomm_prodid`はホームページにそれらの値が含まれていないため、入力されていません。  
-![](/images/client-side-tags/home-page.png)次の例は、製品詳細ページでのTag Assistantの様子を示しています。  
-![](/images/client-side-tags/product-detail.png)
+![](https://docs.tealium.com/images/client-side-tags/home-page.png)次の例は、製品詳細ページでのTag Assistantの様子を示しています。  
+![](https://docs.tealium.com/images/client-side-tags/product-detail.png)
 
 ## ベンダー文書
 

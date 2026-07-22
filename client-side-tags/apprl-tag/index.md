@@ -15,11 +15,11 @@ url: https://docs.tealium.com/client-side-tags/apprl-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -27,15 +27,15 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`base_url`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Base URL&lt;/li&gt;&lt;/ul&gt; |
+|`base_url`|  <ul><li>String</li><li>Base URL</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_value`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Order Value.&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`currency`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Currency.&lt;/li&gt;&lt;li&gt;Overrides `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`sku`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of SKUs.&lt;/li&gt;&lt;li&gt;Overrides `_csku`.&lt;/li&gt;&lt;/ul&gt; |
-|`quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice` . &lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>String</li><li>Order ID.</li><li>Overrides `_corder`.</li></ul> |
+|`order_value`|  <ul><li>String</li><li>Order Value.</li><li>Overrides `_ctotal`.</li></ul> |
+|`currency`|  <ul><li>String</li><li>Currency.</li><li>Overrides `_ccurrency`.</li></ul> |
+|`sku`|  <ul><li>Array</li><li>List of SKUs.</li><li>Overrides `_csku`.</li></ul> |
+|`quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li></ul> |
+|`price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice` . </li></ul> |

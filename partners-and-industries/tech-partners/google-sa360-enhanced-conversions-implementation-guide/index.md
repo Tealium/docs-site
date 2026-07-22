@@ -12,11 +12,11 @@ The Tealium EventStream Google SA360 Enhanced Conversions (EC) connector leverag
 To accept the terms of service in CM360, perform the following steps:
 
 1. Log in to the CM360 account and select the advertiser you want to implement Enhanced Conversions with. 
-1. On the left side, go to **Floodlight &gt; Configuration**, check the checkbox under **Enhanced conversion section**.
+1. On the left side, go to **Floodlight > Configuration**, check the checkbox under **Enhanced conversion section**.
 
 ### Identify parameters for Floodlight tag
 
-Open **Floodlight &gt; Activities** and find or create the activity you are using to receive the Enhanced Conversions data. The important parameters are: 
+Open **Floodlight > Activities** and find or create the activity you are using to receive the Enhanced Conversions data. The important parameters are: 
 
 * Advertiser ID (**floodlight Configuration ID** or `floodlightConfigurationId`) 
 * Activity ID 
@@ -30,7 +30,7 @@ Add the `api@tealium.com `user to your CM360 account and grant it access with **
 
 ## Requirements - Tealium iQ Tag
 
-For basic setup of the TiQ Floodlight tag, see [Floodlight tag]().
+For basic setup of the TiQ Floodlight tag, see [Floodlight tag](https://docs.tealium.com/floodlight-gtagjs-tag/).
 
 Use the configuration values noted above (Advertiser ID, Activity tag string, Group tag string, and Type), along with event mappings to trigger conversions, in the basic tag configuration.
 
@@ -43,7 +43,7 @@ Use the Tealium iQ library-generated `tealium_random` attribute. Map this to bot
 
 ## Requirements - Tealium EventStream Connector
 
-The [SA360 Enhanced Conversions connector]() has the following implementation steps:
+The [SA360 Enhanced Conversions connector](https://docs.tealium.com/google-sa360-enhanced-conversions-connector/) has the following implementation steps:
 
 ### Connector Configuration
 
@@ -53,7 +53,7 @@ After adding the connector, configure the following settings:
 
 #### Action Source
 
-**Event Feed**: Create an [event feed]() for the relevant Floodlight conversion and use this feed as the source of the connector action.
+**Event Feed**: Create an [event feed](https://docs.tealium.com/about-event-feeds/) for the relevant Floodlight conversion and use this feed as the source of the connector action.
 
 #### Action Configuration
 
@@ -80,6 +80,10 @@ Map PII data for the conversion event. The minimum requirements are as follows:
 * Hashed Phone Number
 * Address Info
 
-Select either **apply SHA256 hash** or **already SHA256 hash** mapping, depending on the event attribute&#39;s hash state. If event data is already hashed, it must have been lowercased, trimmed, and have had periods preceding the domain name in `gmail.com` and `googlemail.com` email addresses removed prior to hashing.
+Select either **apply SHA256 hash** or **already SHA256 hash** mapping, depending on the event attribute's hash state. If event data is already hashed, it must have been lowercased, trimmed, and have had periods preceding the domain name in `gmail.com` and `googlemail.com` email addresses removed prior to hashing.
 
- The CM360 API requires a 120 minute delay before it can accept conversion updates. The Tealium SA360 connector has this delay built in, but when using Trace our connectors bypass batching delays. You will encounter `CONVERSION_NOT_FOUND` errors in the API responses when using Trace, as the conversion has not yet been indexed by Google. 
+
+<blockquote>
+The CM360 API requires a 120 minute delay before it can accept conversion updates. The Tealium SA360 connector has this delay built in, but when using Trace our connectors bypass batching delays. You will encounter `CONVERSION_NOT_FOUND` errors in the API responses when using Trace, as the conversion has not yet been indexed by Google.
+</blockquote>
+

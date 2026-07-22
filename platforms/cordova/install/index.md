@@ -5,14 +5,14 @@ url: https://docs.tealium.com/platforms/cordova/install/
 ---
 ## Requirements
 
-* Apache Cordova (9.0.0&#43;)
+* Apache Cordova (9.0.0+)
 
 ## Libraries
 
 The plugin includes the following Tealium libraries:
 
-* [Tealium for iOS](/platforms/ios-swift)
-* [Tealium for Android](/platforms/android-kotlin/)
+* [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/)
 
 ## Sample Apps
 
@@ -43,7 +43,7 @@ npm install @awesome-cordova-plugins/tealium
 
 ## Initialize
 
-The [`initialize()`](/platforms/cordova/api/#initialize) method initializes the Tealium Cordova plugin, as shown in the following examples:
+The [`initialize()`](https://docs.tealium.com/platforms/cordova/api/#initialize) method initializes the Tealium Cordova plugin, as shown in the following examples:
 
 
 
@@ -56,8 +56,8 @@ var Dispatchers = tealium.utils.Dispatchers;
 var ConsentPolicy = tealium.utils.ConsentPolicy;
 
 var config = {
-    account: &#39;ACCOUNT&#39;,
-    profile: &#39;PROFILE&#39;,
+    account: 'ACCOUNT',
+    profile: 'PROFILE',
     environment: Environment.dev,
     dispatchers: [
         Dispatchers.Collect,
@@ -72,8 +72,8 @@ var config = {
     ],
     consentLoggingEnabled: true,
     // consentExpiry: {
-    //     &#39;time&#39;: 10,
-    //     &#39;unit&#39;: &#39;days&#39;
+    //     'time': 10,
+    //     'unit': 'days'
     // },
     // consentPolicy: ConsentPolicy.gdpr,
     lifecycleAutotrackingEnabled: true,
@@ -83,7 +83,7 @@ var config = {
 };
 window.tealium.initialize(config, function(success) {
     if (success) {
-      console.log(&#34;Tealium initialized successfully&#34;);
+      console.log("Tealium initialized successfully");
     }
 })
 ```
@@ -92,11 +92,11 @@ window.tealium.initialize(config, function(success) {
 
 
 ```js
-import {Collectors, Dispatchers, LogLevel, Tealium, TealiumConfig,  TealiumEnvironment, TealiumEvent, TealiumView} from &#39;@awesome-cordova-plugins/tealium&#39;;
+import {Collectors, Dispatchers, LogLevel, Tealium, TealiumConfig,  TealiumEnvironment, TealiumEvent, TealiumView} from '@awesome-cordova-plugins/tealium';
 
 let config: TealiumConfig = {
-    account: &#39;ACCOUNT&#39;,
-    profile: &#39;PROFILE&#39;,
+    account: 'ACCOUNT',
+    profile: 'PROFILE',
     environment: TealiumEnvironment.dev,
     dispatchers: [
         Dispatchers.Collect,
@@ -111,8 +111,8 @@ let config: TealiumConfig = {
     ],
     consentLoggingEnabled: true,
     // consentExpiry: {
-    //     &#39;time&#39;: 10,
-    //     &#39;unit&#39;: TimeUnit.days
+    //     'time': 10,
+    //     'unit': TimeUnit.days
     // },
     // consentPolicy: ConsentPolicy.gdpr,
     lifecycleAutotrackingEnabled: true,
@@ -121,8 +121,8 @@ let config: TealiumConfig = {
 };
 
 
-Tealium.initialize(tealConfig).then(()=&gt;{
-    console.log(&#34;Tealium initialized successfully&#34;);
+Tealium.initialize(tealConfig).then(()=>{
+    console.log("Tealium initialized successfully");
 });
 ```
 

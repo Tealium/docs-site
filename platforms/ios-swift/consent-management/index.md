@@ -14,7 +14,7 @@ Version 2.x of the Tealium Swift library introduces important changes to the con
 * CCPA support introduced
 * Consent expiration options
 
-Learn more about [consent management](/platforms/getting-started-mobile/consent-management/) and consent policies.
+Learn more about [consent management](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/) and consent policies.
 
 ## Consent
 
@@ -27,7 +27,11 @@ Set the consent policy during initialization to one of the following:
 
 The consent management module is included with the core library and is not active until a consent policy is set.
 
+
+<blockquote>
 Only one policy may be enforced on a device at any given time.
+</blockquote>
+
 
 To set the GDPR policy:  
 
@@ -50,7 +54,7 @@ config.consentLoggingEnabled = true
 
 ### Consent Expiration
 
-Set the expiration time for the consent selections using the [`consentExpiry`](/platforms/ios-swift/api/tealium-config/#consentexpiry) property.
+Set the expiration time for the consent selections using the [`consentExpiry`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#consentexpiry) property.
 
 The following example sets the consent manager policy to GDPR and the expiration time to 90 days:
 
@@ -67,7 +71,7 @@ class TealiumHelper {
 }
 ```
 
-To trigger a callback once the consent has expired, define your callback on the [`TealiumConfig`](/platforms/ios-swift/api/tealium-config/) object:
+To trigger a callback once the consent has expired, define your callback on the [`TealiumConfig`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/) object:
 
 ```swift
 class TealiumHelper {
@@ -78,18 +82,18 @@ class TealiumHelper {
 		config.consentPolicy = .gdpr
 		config.consentExpiry = (90, .days)
 		config.onConsentExpiration = {
-       	print(&#34;Consent expired&#34;)
+       	print("Consent expired")
        }
     //...
 	}
 }
 ```
-Alternatively, define your callback on the [`TealiumConsentManager`](/platforms/ios-swift/api/tealium-consent-manager/) object:
+Alternatively, define your callback on the [`TealiumConsentManager`](https://docs.tealium.com/platforms/ios-swift/api/tealium-consent-manager/) object:
 
 ```swift
 tealium = Tealium(config: config) { [weak self] _ in
 	self?.tealium?.consentManager?.onConsentExpiration = {
-		print(&#34;Consent expired&#34;)
+		print("Consent expired")
 	}
 }
 ```
@@ -105,7 +109,7 @@ func grantFullConsent() {
 
 ### Set Partial Consent by Category
 
-To set partial consent, specify a subset of consent categories. This implicitly sets [`userConsentStatus`](/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus) to `.consented`.   
+To set partial consent, specify a subset of consent categories. This implicitly sets [`userConsentStatus`](https://docs.tealium.com/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus) to `.consented`.   
 ```swift
 func grantPartialConsent(categories: [TealiumConsentCategories]) {
 	self.tealium?.consentManager?.userConsentCategories = categories
@@ -125,7 +129,7 @@ func declineConsent() {
 
 ## Custom Consent
 
-If your organization&#39;s consent requirements are not covered by our standard GDPR and CCPA policies, create a custom consent policy.
+If your organization's consent requirements are not covered by our standard GDPR and CCPA policies, create a custom consent policy.
 
 1. Implement the `ConsentPolicy` protocol.   
 ```swift
@@ -134,7 +138,7 @@ class SomeCustomConsentPolicy: ConsentPolicy {
 }
 ```
 
-2. Set the [`consentPolicy`](/platforms/ios-swift/api/tealium-config/#consentpolicy) property on the `TealiumConfig` object to your new custom policy by using the `TealiumConsentPolicy.custom` enum with an associated type.   
+2. Set the [`consentPolicy`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#consentpolicy) property on the `TealiumConfig` object to your new custom policy by using the `TealiumConsentPolicy.custom` enum with an associated type.   
 ```swift
 config.consentPolicy = .custom(SomeCustomConsentPolicy.self)
 ```
@@ -149,7 +153,7 @@ After the custom consent policy is implemented, override the following propertie
 | `defaultConsentExpiry` | `(time: Int, unit: TimeUnit)` | Sets the default expiry time for this `ConsentPolicy` |
 | `preferences` | `UserConsentPreferences` | The current `UserConsentPreferences` that are automatically updated by the `ConsentManager` when the preferences change|
 | `shouldLogConsentStatus` | `Bool` | Sets whether or not logging of consent changes are required |
-| `shouldUpdateConsentCookie` | `Bool` |Sets whether or not to update a cookie in the TagManagement module&#39;s webview |
+| `shouldUpdateConsentCookie` | `Bool` |Sets whether or not to update a cookie in the TagManagement module's webview |
 | `trackAction` | `TealiumConsentTrackAction`| The tracking action based on the consent status (allowed, forbidden, queued) |
 | `updateConsentCookieEventName` | `String` | Sets the event name to use when `shouldUpdateConsentCookie` is set to true |
 
@@ -164,23 +168,23 @@ class MyCustomConsentPolicy: ConsentPolicy {
         self.preferences = preferences
     }
 
-    var name: String = &#34;my custom policy&#34;
+    var name: String = "my custom policy"
 
     var defaultConsentExpiry: (time: Int, unit: TimeUnit) = (90, .days)
 
     var shouldUpdateConsentCookie: Bool = false
 
-    var updateConsentCookieEventName: String = &#34;custom_consent_update&#34;
+    var updateConsentCookieEventName: String = "custom_consent_update"
 
     var consentPolicyStatusInfo: [String : Any]? {
-        [&#34;custom_consent_status&#34;: preferences.consentStatus.rawValue,
-         &#34;custom_consent_categories&#34;: preferences.consentCategories?.map({ $0.rawValue }),
-         &#34;custom_policy_key&#34;: name]
+        ["custom_consent_status": preferences.consentStatus.rawValue,
+         "custom_consent_categories": preferences.consentCategories?.map({ $0.rawValue }),
+         "custom_policy_key": name]
     }
 
     var trackAction: TealiumConsentTrackAction  = .trackingAllowed
 
-    var consentTrackingEventName: String = &#34;custom_consent_update&#34;
+    var consentTrackingEventName: String = "custom_consent_update"
 
     var shouldLogConsentStatus: Bool = true
 
@@ -208,7 +212,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
     }
 
     var name: String {
-        &#34;customGDPRPolicy&#34;
+        "customGDPRPolicy"
     }
 
 }
@@ -227,9 +231,9 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
     }
 
     var consentPolicyStatusInfo: [String : Any]? {
-        [&#34;custom_consent_status&#34;: preferences.consentStatus.rawValue,
-         &#34;custom_consent_categories&#34;: preferences.consentCategories?.map({ $0.rawValue }),
-         &#34;custom_policy_key&#34;: &#34;customGDPRPolicy&#34;]
+        ["custom_consent_status": preferences.consentStatus.rawValue,
+         "custom_consent_categories": preferences.consentCategories?.map({ $0.rawValue }),
+         "custom_policy_key": "customGDPRPolicy"]
     }
 
 }
@@ -248,11 +252,11 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
     var consentTrackingEventName: String {
         switch preferences.consentStatus {
         case .consented:
-            return &#34;user_consented&#34;
+            return "user_consented"
         case .notConsented:
-            return &#34;user_not_consented&#34;
+            return "user_not_consented"
         case .unknown:
-            return &#34;user_consent_unknown&#34;
+            return "user_consent_unknown"
         }
     }
 
@@ -272,7 +276,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
     var consentPolicyStatusInfo: [String: Any]? {
         let status = thirdPartyConsentProvider.getConsent()
-        return [&#34;my_consent_status&#34;: status]
+        return ["my_consent_status": status]
     }
 
 }
@@ -283,7 +287,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
 ### Full Consent
 
-The following example shows how to give your users the option to consent or decline the consent policy.  Once the user has consented or declined, the rules for your selected consent policy takes effect. Learn more about [consent policies](/platforms/getting-started-mobile/consent-management/#consent-policies).
+The following example shows how to give your users the option to consent or decline the consent policy.  Once the user has consented or declined, the rules for your selected consent policy takes effect. Learn more about [consent policies](https://docs.tealium.com/platforms/getting-started-mobile/consent-management/#consent-policies).
 
 ```swift
 func setConsentStatusSimple(_ consented: Bool) {
@@ -294,21 +298,21 @@ func setConsentStatusSimple(_ consented: Bool) {
 
 Define and call the method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the consent manager automatically includes them in all tracking categories.
 
-![](/images/platforms/ios-swift/simple-consent)
+![](https://docs.tealium.com/images/platforms/ios-swift/simple-consent)
 
 ### Partial Consent by Category (GDPR)
 
 In category-based consent, the user must explicitly select each category from the full list of categories.
 
-The following helper method calls methods from the [`TealiumConsentManager`](/platforms/ios-swift/api/tealium-consent-manager/) API:  
+The following helper method calls methods from the [`TealiumConsentManager`](https://docs.tealium.com/platforms/ios-swift/api/tealium-consent-manager/) API:  
 ```swift
 func updateConsentPreferences(_ dict: [String: Any]) {
       var tealiumConsentCategories = [TealiumConsentCategories]()
-        if let categories = dict[&#34;consentCategories&#34;] as? [String] {
+        if let categories = dict["consentCategories"] as? [String] {
             tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
             tealium.consentManager?.userConsentCategories = tealiumConsentCategories
-        } else if let status = dict[&#34;consentStatus&#34;] as? String {
-            let tealiumConsentStatus = (status == &#34;consented&#34;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        } else if let status = dict["consentStatus"] as? String {
+            let tealiumConsentStatus = (status == "consented") ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
             self.tealium?.consentManager?.consentStatus = status
         }
     }
@@ -318,7 +322,7 @@ func updateConsentPreferences(_ dict: [String: Any]) {
 To update a list of categories:  
 ```swift
 func setUserConsentPreferences(_ categories: [String]){
-	let settingsDict: [String: Any] = [&#34;consentStatus&#34;: &#34;consented&#34;, &#34;consentCategories&#34;: categories]
+	let settingsDict: [String: Any] = ["consentStatus": "consented", "consentCategories": categories]
 	updateConsentPreferences(settingsDict)
 }
 ```
@@ -327,16 +331,16 @@ func setUserConsentPreferences(_ categories: [String]){
 
 In a category-based consent model, tracking categories are grouped into a smaller number of higher-level categories, defined by the customer.
 
-For example, you may choose to group the Tealium consent categories `&#34;big_data&#34;`, `&#34;analytics&#34;`, and `&#34;monitoring&#34;` under a single category called `&#34;performance&#34;`. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).
+For example, you may choose to group the Tealium consent categories `"big_data"`, `"analytics"`, and `"monitoring"` under a single category called `"performance"`. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).
 
 ```swift
 func updateConsentPreferences(_ dict: [String: Any]) {
       var tealiumConsentCategories = [TealiumConsentCategories]()
-        if let categories = dict[&#34;consentCategories&#34;] as? [String] {
+        if let categories = dict["consentCategories"] as? [String] {
             tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
             tealium.consentManager?.userConsentCategories = tealiumConsentCategories
-        } else if let status = dict[&#34;consentStatus&#34;] as? String {
-            let tealiumConsentStatus = (status == &#34;consented&#34;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        } else if let status = dict["consentStatus"] as? String {
+            let tealiumConsentStatus = (status == "consented") ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
             self.tealium?.consentManager?.consentStatus = status
         }
     }
@@ -347,26 +351,26 @@ The following helper function defines groups of categories and sets the users co
 
 ```swift
 func setUserConsentPreferences(){
-	let consentGroups = [&#34;Off&#34; : [],
-	        &#34;Performance&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;],
-	        &#34;Marketing&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;, &#34;affiliates&#34;, &#34;email&#34;, &#34;search&#34;, &#34;engagement&#34;, &#34;cdp&#34;],
-	        &#34;Personalized Advertising&#34;: [&#34;analytics&#34;, &#34;monitoring&#34;, &#34;big_data&#34;, &#34;mobile&#34;, &#34;crm&#34;, &#34;affiliates&#34;, &#34;email&#34;, &#34;search&#34;, &#34;engagement&#34;, &#34;cdp&#34;, &#34;display_ads&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;cookiematch&#34;, &#34;misc&#34;]]
+	let consentGroups = ["Off" : [],
+	        "Performance": ["analytics", "monitoring", "big_data", "mobile", "crm"],
+	        "Marketing": ["analytics", "monitoring", "big_data", "mobile", "crm", "affiliates", "email", "search", "engagement", "cdp"],
+	        "Personalized Advertising": ["analytics", "monitoring", "big_data", "mobile", "crm", "affiliates", "email", "search", "engagement", "cdp", "display_ads", "personalization", "social", "cookiematch", "misc"]]
 
-	let userSelection = &#34;Marketing&#34;
+	let userSelection = "Marketing"
 
 	if let userList = consentGroups[userSelection] {
-	  let settingsDict: [String: Any] = [&#34;consentStatus&#34;: &#34;consented&#34;, &#34;consentCategories&#34;: userList]
+	  let settingsDict: [String: Any] = ["consentStatus": "consented", "consentCategories": userList]
 
 	  updateConsentPreferences(settingsDict)
 	}
 }
 ```
 
-![](/images/platforms/ios-swift/grouped-gif.gif)
+![](https://docs.tealium.com/images/platforms/ios-swift/grouped-gif.gif)
 
 ## Sample App
 
 To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Swift [consent manager sample app](https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo).
 
-![](/images/platforms/ios-swift/category-based)
+![](https://docs.tealium.com/images/platforms/ios-swift/category-based)
 

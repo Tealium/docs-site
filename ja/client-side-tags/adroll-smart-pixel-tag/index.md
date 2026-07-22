@@ -3,7 +3,11 @@ title: AdRoll Smart Pixelタグ設定ガイド（廃止）
 description: この記事では、Tealium iQタグ管理アカウントでAdRoll Smart Pixelタグを設定する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 ---
-このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Adroll Pixelタグ設定ガイド]()をご覧ください。
+
+<blockquote>
+このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Adroll Pixelタグ設定ガイド](https://docs.tealium.com/adroll-pixel-tag/)をご覧ください。
+</blockquote>
+
 
 ## タグのヒント
 
@@ -15,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 
 ## タグの設定
 
-まず、Tealiumのタグマーケットプレイスに移動し、AdRoll Smart Pixelタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、AdRoll Smart Pixelタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の設定を行います：
 
@@ -27,7 +31,7 @@ url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 
 ## データマッピング
 
-マッピングとは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -35,15 +39,15 @@ url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 
 |変数| 説明|
 |---| ---|
-|`adroll_custom_data.myvar`|  &lt;ul&gt;&lt;li&gt;カスタムデータ&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_record_user.myvar`|  &lt;ul&gt;&lt;li&gt;カスタムレコードユーザーデータ&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_conversion_value`|  &lt;ul&gt;&lt;li&gt;コンバージョン値&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_currency`|  &lt;ul&gt;&lt;li&gt;通貨&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_segments`|  &lt;ul&gt;&lt;li&gt;セグメント&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_email`|  &lt;ul&gt;&lt;li&gt;メール&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_id`|  &lt;ul&gt;&lt;li&gt;製品ID&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_group`|  &lt;ul&gt;&lt;li&gt;製品グループ&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_action`|  &lt;ul&gt;&lt;li&gt;製品アクション&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_custom_data.product_category_id`|  &lt;ul&gt;&lt;li&gt;製品カテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_adv_id`|  &lt;ul&gt;&lt;li&gt;Adv Id&lt;/li&gt;&lt;/ul&gt; |
-|`adroll_pix_id`|  &lt;ul&gt;&lt;li&gt;Pix Id&lt;/li&gt;&lt;/ul&gt; |
+|`adroll_custom_data.myvar`|  <ul><li>カスタムデータ</li></ul> |
+|`adroll_record_user.myvar`|  <ul><li>カスタムレコードユーザーデータ</li></ul> |
+|`adroll_conversion_value`|  <ul><li>コンバージョン値</li></ul> |
+|`adroll_currency`|  <ul><li>通貨</li></ul> |
+|`adroll_segments`|  <ul><li>セグメント</li></ul> |
+|`adroll_email`|  <ul><li>メール</li></ul> |
+|`adroll_custom_data.product_id`|  <ul><li>製品ID</li></ul> |
+|`adroll_custom_data.product_group`|  <ul><li>製品グループ</li></ul> |
+|`adroll_custom_data.product_action`|  <ul><li>製品アクション</li></ul> |
+|`adroll_custom_data.product_category_id`|  <ul><li>製品カテゴリ</li></ul> |
+|`adroll_adv_id`|  <ul><li>Adv Id</li></ul> |
+|`adroll_pix_id`|  <ul><li>Pix Id</li></ul> |

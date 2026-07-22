@@ -8,7 +8,7 @@ The CJ Universal Tag provides complete tracking protection and maintains program
 ## Tag Tips
 
 * Conversion Tag is present when Order ID is set.
-* CJ&#39;s Client Integration Team recommends this tag not be bundled.
+* CJ's Client Integration Team recommends this tag not be bundled.
 * Supports these E-Commerce extension parameters:
     * Order ID (`_corder`)
     * Sub Total (`_csubtotal`)
@@ -22,15 +22,15 @@ The CJ Universal Tag provides complete tracking protection and maintains program
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Proxy Path**:  
-Configure a reverse proxy to CJ’s servers to receive the full benefits of this integration. Example: `//yourdomain.com/proxydir/tags/&lt;YOUR_TAG_ID&gt;/tag.js`.
+Configure a reverse proxy to CJ’s servers to receive the full benefits of this integration. Example: `//yourdomain.com/proxydir/tags/<YOUR_TAG_ID>/tag.js`.
 * **CJ Hosted Tag ID**:  
 If you are unable set up a reverse proxy, enter your CJ Hosted Tag ID to use the CJ Hosted Tag. CJ’s Client Integration team provides this value.
-Example: `//www.mczbf.com/tags/&lt;TAG_ID&gt;/tag.js`.
+Example: `//www.mczbf.com/tags/<TAG_ID>/tag.js`.
 * **Action Tracker Id**:  
 Static value provided by CJ’s Client Integration team.
 * **CJ Enterprise Id**:  
@@ -40,11 +40,11 @@ Enables the CJ page visit tag on all pages except the conversion page.
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

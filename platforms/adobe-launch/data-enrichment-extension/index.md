@@ -16,13 +16,13 @@ To install the Tealium Data Enrichment extension, use the following steps:
       * **Endpoint**: (Optional) Override the default endpoint with your own custom first-party endpoint, such as `https://visitor-service.collect.example.co.uk`.
 1. Add a data element in Adobe Launch to read the data in local storage. For more information, see [Adobe: Data Elements](https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements).
 
-The [data layer enrichment object]() is stored in `localStorage` under the key `teal_adobe_enrichment_data`. Retrieving the key returns the data layer enrichment object.
+The [data layer enrichment object](https://docs.tealium.com/enable-data-layer-enrichment/) is stored in `localStorage` under the key `teal_adobe_enrichment_data`. Retrieving the key returns the data layer enrichment object.
 
 The following example retrieves the data layer enrichment object from `localStorage` and then stores all the audiences in an array:
 
 ```javascript
 var dle_object = JSON.parse(localStorage.getItem(
-   &#34;teal_adobe_enrichment_data&#34;));
+   "teal_adobe_enrichment_data"));
 
 var data = {audiences: []};
 if (dle_object.audiences) {
@@ -34,7 +34,11 @@ if (dle_object.audiences) {
 }
 ```
 
+
+<blockquote>
 If the data layer enrichment object contains nested values, it is automatically flattened before it is sent to the Tealium Collect endpoint.
+</blockquote>
+
 
 For more information, see [Adobe: Adobe Experience Platform Launch object reference](https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo).
 

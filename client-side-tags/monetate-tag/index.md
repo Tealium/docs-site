@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/monetate-tag/
 ---
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 After adding the tag, configure the below settings:
 
@@ -15,13 +15,13 @@ After adding the tag, configure the below settings:
 
 ## Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag on your site.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the Monetate tag are built into its **Data Mapping** tab. Available categories are:
 
@@ -31,7 +31,7 @@ The destination variables for the Monetate tag are built into its **Data Mapping
 |:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Monetate HTTPS URL (`base_url`)     | The URL provided to you by Monetate in your tracking code snippet                                                                                                                                           |
 | Page Type (`page_type`)             | Used to identify the page the user is viewing. Used in `setPageType` method whenever populated. Use to override the default Page Types                                                                      |
-| Breadcrumbs (`breadcrumbs`)         | An ordered array representing the breadcrumb trail for a user&#39;s navigation. Used in the `addBreadcrumbs` method whenever populated. Sent with all Page Types                                                |
+| Breadcrumbs (`breadcrumbs`)         | An ordered array representing the breadcrumb trail for a user's navigation. Used in the `addBreadcrumbs` method whenever populated. Sent with all Page Types                                                |
 | Custom Variable (`variable.custom`) | Used with `setCustomVariables` to set a custom variable. Map to the variable containing the  value you want and replace `custom` in the mapping name with the name of your variable. Sent with all Page Types |
 
 ### E-Commerce
@@ -70,7 +70,7 @@ Map to these destinations for triggering specific page type events on a page. To
 
 1. Select a page type from the dropdown list. You may also send a Custom Page Event from the dropdown list. For a Custom Page Event, enter a name with which to identify it.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the **&#43;** button and repeat steps #1 and #2.
+1. To map more events, click the **+** button and repeat steps #1 and #2.
 1. Click **Apply**.
 
 The page type event triggers when the supplied value is found in the data layer.
@@ -92,9 +92,9 @@ The page type event triggers when the supplied value is found in the data layer.
 
 Map to these destinations for triggering specific events on a page. To trigger an event:
 
-1. Select an event from the dropdown list. You may choose from the predefined list or create a &#39;Custom&#39; event. For a &#39;Custom&#39; event, enter a name with which to identify it. Please consult with your BloomReach representative before configuring any custom parameters or events.
+1. Select an event from the dropdown list. You may choose from the predefined list or create a 'Custom' event. For a 'Custom' event, enter a name with which to identify it. Please consult with your BloomReach representative before configuring any custom parameters or events.
 1. In the **Trigger** field, enter the value of the variable being mapped.
-1. To map more events, click the **&#43;** button and repeat steps #1 and #2.
+1. To map more events, click the **+** button and repeat steps #1 and #2.
 1. Click **Apply**.
 
 The event triggers when the supplied value is found in the data layer.
@@ -120,12 +120,12 @@ To pass a parameter with a pre-defined event:
 1. Event: Select a Monetate page type from the dropdown list.
 1. Parameter: Select a Monetate parameter from the dropdown list.
 1. For a Custom parameter, enter a name with which to identify it after the default content.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 | **Destination Name**          | **Description**                                                                                                                                                                                                                                       |
 |:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Page Type                     | Used to identify the page the user is viewing. Use to override the default Page Types. Specific to the selected page type(s)                                                                                                                          |
-| Breadcrumbs                   | An ordered array representing the breadcrumb trail for a user&#39;s navigation. Used in the `addBreadcrumbs` method whenever populated. Specific to the selected page type(s)                                                                             |
+| Breadcrumbs                   | An ordered array representing the breadcrumb trail for a user's navigation. Used in the `addBreadcrumbs` method whenever populated. Specific to the selected page type(s)                                                                             |
 | Custom Variable               | Used with `setCustomVariables` to set a custom variable. Map to the variable containing the value you want and enter a name with which to identify it after the default content. Specific to the selected page type(s)                                 |
 | Custom Order Data             | A custom item of order data for the current page or transaction. Map to the variable containing the value you want and enter a name with which to identify it after the default content in format `_CUSTOM`. Specific to the selected page type(s) |
 | Order ID                      | The unique order Id for the current transaction. Specific to the selected page type(s)                                                                                                                                                                |
@@ -150,7 +150,7 @@ To pass a parameter with a pre-defined event:
 
 1. Event: Select a Monetate Travel event from the dropdown list.
 1. Parameter: Select a Monetate Travel parameter from the dropdown list.
-1. Click **&#43;Add**.
+1. Click **+Add**.
 
 | **Destination Name**    | **Description**                                                                                                                                            |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -162,7 +162,7 @@ To pass a parameter with a pre-defined event:
 | Cruise Start Date       | A string that includes the start date of the cruise in `YYYYMMDD` format. Specific to the selected event(s)                                                |
 | Cruise End Date         | A string that includes the end date of the cruise in `YYYYMMDD` format. Specific to the selected event(s)                                                  |
 | Cruise Adult Passengers | An integer that includes the total number of adult passengers for the cruise. Specific to the selected event(s)                                            |
-| Cruise Total Passengers | An integer that includes the total number of guests for the cruise (adults &#43; children). Specific to the selected event(s)                                  |
+| Cruise Total Passengers | An integer that includes the total number of guests for the cruise (adults + children). Specific to the selected event(s)                                  |
 | Cruise Duration         | An integer that includes the duration of cruise in days. Specific to the selected event(s)                                                                 |
 | Cruise Departure Port   | A string that includes the port of departure for the cruise. Specific to the selected event(s)                                                             |
 | Cruise Destination Port | A string that includes the port of destination for the cruise. Specific to the selected event(s)                                                           |
@@ -177,7 +177,7 @@ To pass a parameter with a pre-defined event:
 | Hotel Purchase ID       | A string that includes the order ID for a purchased hotel. Specific to the selected event(s)                                                               |
 | Hotel Check-in Date     | A string that includes the check-in date for the hotel stay in `YYYYMMDD` format. Specific to the selected event(s)                                        |
 | Hotel Check-out Date    | A string that includes the check-out date for the hotel stay in `YYYYMMDD` format. Specific to the selected event(s)                                       |
-| Hotel Total Guests      | An integer that includes the total number of guests staying in a hotel room (adults &#43; children). Specific to the selected event(s)                         |
+| Hotel Total Guests      | An integer that includes the total number of guests staying in a hotel room (adults + children). Specific to the selected event(s)                         |
 | Hotel City              | A string that includes the city where a hotel was searched for. Specific to the selected event(s)                                                          |
 | Hotel Country           | A string that includes the country where a hotel was searched for. Specific to the selected event(s)                                                       |
 | Number of Hotel Rooms   | An integer that includes the total number of hotel rooms searched for. Specific to the selected event(s)                                                   |
@@ -216,7 +216,7 @@ To pass a parameter with a pre-defined event:
 | Cruise Start Date (`dtBegin`)               | A string that includes the start date of the cruise in `YYYYMMDD` format                                           |
 | Cruise End Date (`dtEnd`)                   | A string that includes the end date of the cruise in `YYYYMMDD` format                                             |
 | Cruise Adult Passengers (`cruise_adults`)   | An integer that includes the total number of adult passengers for the cruise                                       |
-| Cruise Total Passengers (`cruise_guests`)   | An integer that includes the total number of guests for the cruise (adults &#43; children)                             |
+| Cruise Total Passengers (`cruise_guests`)   | An integer that includes the total number of guests for the cruise (adults + children)                             |
 | Cruise Duration (`duration`) [Days]         | An integer that includes the duration of cruise in days                                                            |
 | Cruise Departure Port (`port`)              | A string that includes the port of departure for the cruise                                                        |
 | Cruise Destination Port (`dest`)            | A string that includes the port of destination for the cruise                                                      |
@@ -236,7 +236,7 @@ To pass a parameter with a pre-defined event:
 | Hotel Purchase ID (`hotel_purchaseId`)      | A string that includes the order ID for a purchased hotel                                                         |
 | Hotel Check-in Date (`checkIn`)             | A string that includes the check-in date for the hotel stay in `YYYYMMDD` format                                  |
 | Hotel Check-out Date (`checkOut`)           | A string that includes the check-out date for the hotel stay in `YYYYMMDD` format                                 |
-| Hotel Total Guests (`hotel_guests`)         | An integer that includes the total number of guests staying in a hotel room (adults &#43; children)                   |
+| Hotel Total Guests (`hotel_guests`)         | An integer that includes the total number of guests staying in a hotel room (adults + children)                   |
 | Hotel City (`city`)                         | A string that includes the city where a hotel was searched for                                                    |
 | Hotel Country (`country`)                   | A string that includes the country where a hotel was searched for                                                 |
 | Number of Hotel Rooms (`rooms`)             | An integer that includes the total number of hotel rooms searched for                                             |

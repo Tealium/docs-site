@@ -15,7 +15,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -35,7 +35,11 @@ Only account administrators can make dynamic audience generation available or ad
 
 To delete a segment, click **Delete Audience Segment** and select the audience segment to be deleted.
 
+
+<blockquote>
 By default, the ability to dynamically create audiences is not available. To use this feature, ask your Adform administrator to make this feature available.
+</blockquote>
+
 
 ### Partner Level
 
@@ -48,7 +52,7 @@ To create a partner-level segment, click **New Audience Segment** and configure 
 | Category ID  | (Required) A category ID to which the audience should belong. |
 | Owner ID |  (Required) Audience Owner ID value. |
 | Price | (Required) The price to set per audience. |
-| Data Type |  Set the data type according to your data sharing plans: &lt;ul&gt;&lt;li&gt;**1st Party**: Only you use the data. &lt;/li&gt;&lt;li&gt;**2nd Party**: You share the data with your partner or partners. &lt;/li&gt;&lt;li&gt;**3rd Party**: You share this data with everyone as a branded data provider. &lt;/li&gt;&lt;/ul&gt; |
+| Data Type |  Set the data type according to your data sharing plans: <ul><li>**1st Party**: Only you use the data. </li><li>**2nd Party**: You share the data with your partner or partners. </li><li>**3rd Party**: You share this data with everyone as a branded data provider. </li></ul> |
 | Time to Live (TTL) | (Required) The lifetime of data under an audience segment. |
 | Frequency | (Required) The number of times a user must fall into a category to be assigned to an audience. |
 
@@ -77,7 +81,11 @@ To create an advertiser-level audience for Audience Manager global accounts, cli
 |Add User to Audience Segment (Audience Manager)| ✓| ✓|
 |Remove User from Audience Segment (Audience Manager)| ✓| ✓|
 
- The Adform Segments connector does not support sending the `UID` parameter. If the `UID` parameter is required, Adform suggests using the [Adform tag](). 
+
+<blockquote>
+The Adform Segments connector does not support sending the `UID` parameter. If the `UID` parameter is required, Adform suggests using the [Adform tag](https://docs.tealium.com/adform-tag/).
+</blockquote>
+
 
 ### Add User to Audience Segment
 
@@ -90,7 +98,7 @@ To create an advertiser-level audience for Audience Manager global accounts, cli
 |GAID (`gaid`)| Google Advertiser Visitor ID attribute|
 |IDFA (`idfa`)| Apple Identifier for Advertisers|
 |First Party Data Source| Text for the source or technology provider responsible for the included IDs. This should be a top-level domain. For example, `netid.de`|
-|First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  &lt;ul&gt;&lt;li&gt;1 - Collected from a desktop device in a browser.&lt;/li&gt;&lt;li&gt;2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).&lt;/li&gt;&lt;li&gt;3 - A user-based ID, which is the same across multiple devices and applications.&lt;/li&gt;&lt;li&gt;500&#43; - Vendor-specific context and ID, vendor-specific codes.&lt;/li&gt;&lt;/ul&gt; |
+|First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  <ul><li>1 - Collected from a desktop device in a browser.</li><li>2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).</li><li>3 - A user-based ID, which is the same across multiple devices and applications.</li><li>500+ - Vendor-specific context and ID, vendor-specific codes.</li></ul> |
 |First Party ID| An identifier for the first-party ID from the source provider. This might be a long string or a GUID.|
 
 ### Remove User from Audience Segment
@@ -104,7 +112,7 @@ To create an advertiser-level audience for Audience Manager global accounts, cli
 |GAID (`gaid`)| Google Advertiser Visitor ID attribute|
 |IDFA (`idfa`)| Apple Identifier for Advertisers|
 |First Party Data Source| Text for the source or technology provider responsible for the included IDs. This should be a top-level domain. For example, `netid.de`|
-|First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  &lt;ul&gt;&lt;li&gt;1 - Collected from a desktop device in a browser.&lt;/li&gt;&lt;li&gt;2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).&lt;/li&gt;&lt;li&gt;3 - A user-based ID, which is the same across multiple devices and applications.&lt;/li&gt;&lt;li&gt;500&#43; - Vendor-specific context and ID, vendor-specific codes.&lt;/li&gt;&lt;/ul&gt; |
+|First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  <ul><li>1 - Collected from a desktop device in a browser.</li><li>2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).</li><li>3 - A user-based ID, which is the same across multiple devices and applications.</li><li>500+ - Vendor-specific context and ID, vendor-specific codes.</li></ul> |
 |First Party ID| An identifier for the first-party ID from the source provider. This might be a long string or a GUID.|
 
 ### Add User to Audience Segment (Audience Manager)

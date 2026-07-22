@@ -27,24 +27,24 @@ Install the DeviceData module with CocoaPods or Carthage.
 
 To install the DeviceData module with CocoaPods, add the following pod to your Podfile:  
 ```ruby
-pod &#39;tealium-swift/TealiumDeviceData&#39;
+pod 'tealium-swift/TealiumDeviceData'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 
 ### Carthage
 
 To install the DeviceData module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
       ```ruby
       TealiumDeviceData.framework
       ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 ## Data Layer
 The following variables are transmitted with each tracking call while the module is enabled:

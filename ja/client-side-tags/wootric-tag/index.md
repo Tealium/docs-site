@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/client-side-tags/wootric-tag/
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグ概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -14,11 +14,11 @@ url: https://docs.tealium.com/ja/client-side-tags/wootric-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール]()のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 Wootricタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは次のとおりです：
 

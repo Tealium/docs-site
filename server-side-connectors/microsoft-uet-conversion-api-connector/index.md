@@ -3,7 +3,11 @@ title: Microsoft UET Conversion API Connector Setup Guide
 description: This article describes how to set up the Microsoft UET Conversion API connector.
 url: https://docs.tealium.com/server-side-connectors/microsoft-uet-conversion-api-connector/
 ---
+
+<blockquote>
 This connector is not currently available in the connector marketplace. Using the Microsoft UET Conversions connector requires support from both Tealium and the Microsoft account managers. To use this connector, contact your Tealium account manager.
+</blockquote>
+
 
 ## Overview
 
@@ -25,14 +29,14 @@ This connector uses batched requests to support high-volume data transfers to th
 * **UET Tag ID**: Microsoft requires a UET tag ID for attribution and audience association, even if using only server-side tracking through Tealium for online or offline conversions. Find the UET tag ID in your Microsoft Ads platform. Use an existing tag or provision a new UET tag ID as needed.
 * **Access Token**: The Microsoft Developer token for CAPI. For more information, see [Generate access token](#generate-access-token).
 * **Conversion Goal**: To ensure Microsoft can attribute CAPI events correctly, create at least one conversion goal tied to your UET tag.
-    1. Go to **Tools &gt; Conversion Goals**.
-    1. Click **&#43; New Conversion Goal**.
+    1. Go to **Tools > Conversion Goals**.
+    1. Click **+ New Conversion Goal**.
     1. Choose a goal type (for example, purchase, lead, booking).
     1. Associate it with your UET tag ID.
 
 ## Configuration
 
-To add the connector, go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+To add the connector, go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -43,7 +47,7 @@ After adding the connector, configure the following settings:
 
 To generate an access token for the Microsoft UET Conversion API, follow these steps:
 
-1. In your Microsoft Ads account, go to **Conversions &gt; UET tag**.
+1. In your Microsoft Ads account, go to **Conversions > UET tag**.
 1. Hover over the tag name and then click the pencil icon.
     * You may need to select a value for **Industry**.
 1. Click **Save and next**.
@@ -93,12 +97,12 @@ For online conversions, attribution typically occurs in real time. For offline c
 ### Prerequisites
 
 * **Enable Offline Conversion Import**: This must be enabled in Microsoft Ads to allow it to ingest CAPI events sent from Tealium.
-    1. Go to **Tools &gt; Offline Conversions**.
+    1. Go to **Tools > Offline Conversions**.
     1. Select **Import Conversions**.
     1. Select **Microsoft (Offline conversions via API)**.
 * **Associate the conversion goal with the UET tag**: This must be enabled to ensure Microsoft can attribute conversions to ad interactions.
-    1. Go to **Tools &gt; Conversion Goals**.
-    1. Click **&#43; New Conversion Goal**.
+    1. Go to **Tools > Conversion Goals**.
+    1. Click **+ New Conversion Goal**.
     1. Select a goal type relevant to offline events (for example, **In-Store Purchase**, **Phone Booking**, **Loan Application**).
     1. Under **Goal Source**, select **Offline Conversions (Import via file or API)**.
     1. Associate the goal with your existing UET tag ID.
@@ -107,7 +111,7 @@ For online conversions, attribution typically occurs in real time. For offline c
 
 ## Best practices
 
-* **Persist the click ID**: The Microsoft Click ID (`msclkid`) is critical to conversion tracking. When auto-tagging is enabled in Microsoft Ads, this identifier is appended as a query parameter on the landing page URL after a user clicks an ad. Persisting the click ID with a [Persist Data Values extension]() ensures that it is available for server-side use. Map the cookie attribute server-side. Without the click ID, Microsoft may not be able to link the conversion back to the originating ad click, resulting in lost attribution and under-optimized bidding.
+* **Persist the click ID**: The Microsoft Click ID (`msclkid`) is critical to conversion tracking. When auto-tagging is enabled in Microsoft Ads, this identifier is appended as a query parameter on the landing page URL after a user clicks an ad. Persisting the click ID with a [Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/) ensures that it is available for server-side use. Map the cookie attribute server-side. Without the click ID, Microsoft may not be able to link the conversion back to the originating ad click, resulting in lost attribution and under-optimized bidding.
 * **Every click fires a page load event**: Every page view or single-page application (SPA) navigation must fire one page load event. You may also fire one or more custom events. Each custom event links to a page load event through the `pageLoadId` parameter.
 * **Enable Microsoft ID Beacon Sync**: Enable Microsoft ID Beacon Sync in the Microsoft UET tag to improve identity resolution and remarketing performance. This feature supports identity stitching across devices and improves the ability to match online behavior to offline conversions.
 * **Consent granted by default**: By default, Microsoft processes all events as consent state being granted. If you need to use explicit consent signals, you can use the parameter `adStorageConsent` with the following options:
@@ -118,12 +122,12 @@ For online conversions, attribution typically occurs in real time. For offline c
     * For email addresses:
         * Remove whitespaces from the beginning and end of the email address.
         * Ensure the text is in lower case.
-        * Remove everything between `&#43;` and `@` (for example, `user&#43;withplus@example.com` becomes `user@example.com`).
+        * Remove everything between `+` and `@` (for example, `user+withplus@example.com` becomes `user@example.com`).
         * Remove periods before `@` (for example, `us.er@example.com` becomes `user@example.com`).
         * Ensure email addresses contain the `@` sign.
         * Remove any spaces.
         * Ensure there is a period after `@`, such as `.com`.
-        * Ensure it doesn&#39;t start or end with a period.
+        * Ensure it doesn't start or end with a period.
         * Remove any accents (for example, `à`).
 * Enable automatic deduplication by turning on **Event ID Generation** in the UET Tag. Enter the **Tag ID** in the **Automatic Deduplication** mapping section. Microsoft detects matching IDs across delivery methods and prevents double-counting. This step is important in dual-delivery setups to maintain data integrity. 
 
@@ -140,7 +144,7 @@ Yes. Send lead form completions, pre-qualification submissions, and call center 
 
 ## Troubleshooting
 
-Use the [Trace tool]() to monitor event flow in EventStream and AudienceStream. You can also enable the &#34;Test Mode&#34; toggle or send events to a staging instance if configured in your Microsoft Ads account.
+Use the [Trace tool](https://docs.tealium.com/about-trace/) to monitor event flow in EventStream and AudienceStream. You can also enable the "Test Mode" toggle or send events to a staging instance if configured in your Microsoft Ads account.
 
 ## Actions
 
@@ -173,7 +177,7 @@ The following section describes how to set up parameters and options for each ac
 | Event Source URL | URL of the page, used for external destination URL goals. The connector automatically maps this parameter when it appears in the event. If you map an attribute, it overrides this value. |
 | Ad Storage Consent | For consent signals, use `G` for granted and `D` for denied. |
 | Page Load ID | Page load ID that links to one or more custom events from the same page. This parameter must be formatted as a v4 UUID. |
-| Referrer URL | Referrer of the page, used for external &#34;referral&#34; remarketing lists. |
+| Referrer URL | Referrer of the page, used for external "referral" remarketing lists. |
 | Page Title | Page title (for example, `document.title`). |
 | Keywords | Page keywords (SEO meta keywords). |
 

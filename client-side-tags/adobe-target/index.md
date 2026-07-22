@@ -9,7 +9,7 @@ Adobe Target gives marketers the necessary capabilities to continually make thei
 
 * This template requires utag version v4.26 or above. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
 * If you want to use the Adobe Experience Cloud ID Service,  add the Adobe Experience Cloud ID Service tag **BEFORE** this tag.
-* Scope your [Adobe Target Extension]() to this tag.
+* Scope your [Adobe Target Extension](https://docs.tealium.com/adobe-target-extension/) to this tag.
 * The **Timeout** setting is a failsafe in case the Target server may not be responding.  For best performance, do not set this value to less than 5000 ms.
 * Unbundling is not supported in this tag. If you set **Bundle Flag** to `No`, the value is overwritten as `Yes`.
 * Response objects received from `getOffers` are placed into the `u.offersReceived` array.
@@ -20,26 +20,26 @@ The contents of the response from `getOffers` resembles the following:
 
 ```
 {
-  &#34;prefetch&#34;: {
-    &#34;mboxes&#34;: [{
-      &#34;index&#34;: 0,
-      &#34;name&#34;: &#34;a1-serverside-xt&#34;,
-      &#34;options&#34;: [{
-        &#34;content&#34;: &#34;&lt;img src=\&#34;http://s7d2.scene7.com/is/image/TargetAdobeTargetMobile/L4242-xt-usa?tm=1490025518668&amp;fit=constrain&amp;hei=491&amp;wid=980&amp;fmt=png-alpha\&#34;/&gt;&#34;,
-        &#34;type&#34;: &#34;html&#34;,
-        &#34;eventToken&#34;: &#34;n/K05qdH0MxsiyH4gX05/2qipfsIHvVzTQxHolz2IpSCnQ9Y9OaLL2gsdrWQTvE54PwSz67rmXWmSnkXpSSS2Q==&#34;,
-        &#34;responseTokens&#34;: {
-          &#34;profile.memberlevel&#34;: &#34;0&#34;,
-          &#34;geo.city&#34;: &#34;anytown&#34;,
-          &#34;activity.id&#34;: &#34;167169&#34;,
-          &#34;experience.name&#34;: &#34;USA Experience&#34;,
-          &#34;geo.country&#34;: &#34;countryname&#34;
+  "prefetch": {
+    "mboxes": [{
+      "index": 0,
+      "name": "a1-serverside-xt",
+      "options": [{
+        "content": "<img src=\"http://s7d2.scene7.com/is/image/TargetAdobeTargetMobile/L4242-xt-usa?tm=1490025518668&fit=constrain&hei=491&wid=980&fmt=png-alpha\"/>",
+        "type": "html",
+        "eventToken": "n/K05qdH0MxsiyH4gX05/2qipfsIHvVzTQxHolz2IpSCnQ9Y9OaLL2gsdrWQTvE54PwSz67rmXWmSnkXpSSS2Q==",
+        "responseTokens": {
+          "profile.memberlevel": "0",
+          "geo.city": "anytown",
+          "activity.id": "167169",
+          "experience.name": "USA Experience",
+          "geo.country": "countryname"
         }
       }],
-      &#34;analytics&#34;: {
-        &#34;payload&#34;: {
-          &#34;pe&#34;: &#34;tnt&#34;,
-          &#34;tnta&#34;: &#34;167169:0:0|0|100,167169:0:0|2|100,167169:0:0|1|100&#34;
+      "analytics": {
+        "payload": {
+          "pe": "tnt",
+          "tnta": "167169:0:0|0|100,167169:0:0|2|100,167169:0:0|1|100"
         }
       }
     }]
@@ -47,18 +47,18 @@ The contents of the response from `getOffers` resembles the following:
 }
 ```
 
-This response is placed in the `u.offersResponse` array. Then, the `u.applyOffers()` function is called to parse the `u.offersResponse` array, which calls Adobe Target&#39;s `aaplyOffers()` method to pass in each offer parsed.
+This response is placed in the `u.offersResponse` array. Then, the `u.applyOffers()` function is called to parse the `u.offersResponse` array, which calls Adobe Target's `aaplyOffers()` method to pass in each offer parsed.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Code Version**: The version of Adobe Target to use. To learn more, see [Adobe Target version details](https://experienceleague.adobe.com/docs/target-dev/developer/client-side/at-js-implementation/target-atjs-versions.html).
 * **Client Code**: The client name (for example, `mycompany` in the `mycompany.tt.omtrdc.net`)
 * **Timeout**: Set this value to `5000` or greater.  This is time (in milliseconds) to wait for a response from Target before assuming the Target server is not responding.
-* **Adobe Org ID**: Used with the visitor tracking across Adobe Target and Site Catalyst. Found in the `mbox.js` `var imsOrgId = &#39;XXXXXXXXXXXXXXXXXXXXXXXX@AdobeOrg&#39;`
+* **Adobe Org ID**: Used with the visitor tracking across Adobe Target and Site Catalyst. Found in the `mbox.js` `var imsOrgId = 'XXXXXXXXXXXXXXXXXXXXXXXX@AdobeOrg'`
 * **Library Endpoint Path**: The path variable in the library call (generally does not need changing).
 * **Authoring Script URL**: If you are authoring targeted content, enter the authoring script URL (for example: `//cdn.tt.omtrdc.net/cdn/target-vec.j`).
 * **Auto Create Global mbox**: Whether to automatically create the globally-hidden mbox. Only set this to `false` if you implement the mbox elsewhere.
@@ -66,11 +66,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

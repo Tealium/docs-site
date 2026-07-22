@@ -13,7 +13,7 @@ Using **Audience Discovery**, you can quickly and easily:
 * Overlay important metrics to compare data points.
 * View your audiences from a variety of perspectives.
 
-For information about creating audiences, see [Create an audience]().
+For information about creating audiences, see [Create an audience](https://docs.tealium.com/manage-audiences/#create-an-audience).
 
 ## How it works
 
@@ -37,7 +37,7 @@ The daily visitor query cap determines the sample size of visitors used to proje
 
 The **Sample Size of Daily Visitors to Process** profile setting can only be modified by Tealium. To adjust this setting, contact your account representative.
 
-![](/images/server-side/daily-visitor-query-cap-setting.jpg)
+![](https://docs.tealium.com/images/server-side/daily-visitor-query-cap-setting.jpg)
 
 ## Audience Discovery visualizations
 
@@ -45,7 +45,7 @@ Audience Discovery is a real-time visual representation of attributes that provi
 
 Use the following interactive tools to define and filter your search. The presentation of matching visitors can help guide you to narrow or broaden your query to reach the visitor segment you want and create highly defined, targetable audiences.
 
-![](/images/server-side/audience-discovery-ui-features.png)
+![](https://docs.tealium.com/images/server-side/audience-discovery-ui-features.png)
 
 |Image Label| Description|
 |---| ---|
@@ -53,8 +53,8 @@ Use the following interactive tools to define and filter your search. The presen
 |2 - Current View| Click to view **Live** activity or **Historic** activity. |
 | 3 - Select Perspectives | Click to search or select from all, **Visit**, or **Visitor-scoped** perspectives.|
 | 4 - Hover to highlight perspective | Hover over any bar in the chart to highlight details about that perspective.|
-| 5 - Explore the details of a perspective | Click a perspective to see additional details. &lt;ul&gt;&lt;li&gt;**Zoom In** provides a more detailed breakdown of the perspective. You can continue to explore additional layers by zooming into the results until exhausted.&lt;/li&gt;&lt;li&gt;**Cross Tab Report** provides a detailed breakdown of the perspective in the same bar chart format.&lt;/li&gt;&lt;li&gt;**View Attribute Definition** displays the attribute definition or definitions used to create the results displayed. Double-click the attribute to display the edit screen to edit the attribute on-the-fly or delete the attribute.&lt;/li&gt;&lt;/ul&gt; |
-| 6 - View, edit, or add favorite numbers| Favorite numbers allow you to select specific metrics to display along the bottom of the screen. Only numeric values are allowed. From here, you can: &lt;ul&gt;&lt;li&gt;Click a **Favorite Number** that is already defined to view the properties.&lt;/li&gt;&lt;li&gt;Add a new favorite number and define the properties to display.&lt;/li&gt;&lt;li&gt;Delete an existing favorite number.&lt;/li&gt;&lt;li&gt;Pin (overlay) favorite number results on the primary graph.&lt;/li&gt;&lt;li&gt;For more information, see [Favorite numbers]().&lt;/li&gt;&lt;/ul&gt; |
+| 5 - Explore the details of a perspective | Click a perspective to see additional details. <ul><li>**Zoom In** provides a more detailed breakdown of the perspective. You can continue to explore additional layers by zooming into the results until exhausted.</li><li>**Cross Tab Report** provides a detailed breakdown of the perspective in the same bar chart format.</li><li>**View Attribute Definition** displays the attribute definition or definitions used to create the results displayed. Double-click the attribute to display the edit screen to edit the attribute on-the-fly or delete the attribute.</li></ul> |
+| 6 - View, edit, or add favorite numbers| Favorite numbers allow you to select specific metrics to display along the bottom of the screen. Only numeric values are allowed. From here, you can: <ul><li>Click a **Favorite Number** that is already defined to view the properties.</li><li>Add a new favorite number and define the properties to display.</li><li>Delete an existing favorite number.</li><li>Pin (overlay) favorite number results on the primary graph.</li><li>For more information, see [Favorite numbers]().</li></ul> |
 
 ## Test visitor stitching configurations
 
@@ -62,4 +62,8 @@ Visitor stitching is a form of identity resolution that works across platforms, 
 
 Learn more about testing visitor stitching strategies with Audience Discovery in the [Visitor ID Part 1]() tutorial. For instructions on creating a visitor ID attribute, including verification with Audience Discovery, see [Create a visitor ID attribute]().
 
-You can also use Audience Discovery to validate that values are correctly being assigned for badges or attributes with complex enrichments using this method. 
+
+<blockquote>
+You can also use Audience Discovery to validate that values are correctly being assigned for badges or attributes with complex enrichments using this method.
+</blockquote>
+

@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/userlist-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -33,11 +33,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/userlist-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|識別子|  &lt;ul&gt;&lt;li&gt;このユーザーの一意の識別子。&lt;/li&gt;&lt;li&gt;これは、データベースのユーザーの主キー、生成された追跡識別子、またはそのメールアドレスのいずれかです。&lt;/li&gt;&lt;li&gt;詳細については、[システムにユーザーデータを取り込む統合ガイド](https://docs.userlist.io/article/15-integration-guide)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|メール|  &lt;ul&gt;&lt;li&gt;このユーザーにメッセージを送信するために使用されるメールアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|登録日時|  &lt;ul&gt;&lt;li&gt;ユーザーが登録した時間、ISO 8601を使用してフォーマット。&lt;/li&gt;&lt;li&gt;構成されていない場合、Userlistは現在の時間を使用します。&lt;/li&gt;&lt;/ul&gt; |
-|最終訪問日時|  &lt;ul&gt;&lt;li&gt;ユーザーが最後にアプリケーション内で見られた時間。&lt;/li&gt;&lt;li&gt;ISO 8601を使用してフォーマット。&lt;/li&gt;&lt;li&gt;構成されていない場合、Userlistは現在の時間を使用します。&lt;/li&gt;&lt;li&gt;このユーザーに対するイベントが発生するたびに、Userlistはこのプロパティを更新します。&lt;/li&gt;&lt;/ul&gt; |
-|プロパティ|  &lt;ul&gt;&lt;li&gt;ユーザーをさらに説明するカスタムプロパティ。&lt;/li&gt;&lt;li&gt;ここに保存する内容は完全にあなた次第です。&lt;/li&gt;&lt;li&gt;オブジェクトのキーは`snake_case`に正規化されます。&lt;/li&gt;&lt;li&gt;構成されている場合、`name`、または`first_name`と`last_name`を使用してUserlist内でユーザーを表現します。&lt;/li&gt;&lt;/ul&gt; |
+|識別子|  <ul><li>このユーザーの一意の識別子。</li><li>これは、データベースのユーザーの主キー、生成された追跡識別子、またはそのメールアドレスのいずれかです。</li><li>詳細については、[システムにユーザーデータを取り込む統合ガイド](https://docs.userlist.io/article/15-integration-guide)を参照してください。</li></ul> |
+|メール|  <ul><li>このユーザーにメッセージを送信するために使用されるメールアドレス。</li></ul> |
+|登録日時|  <ul><li>ユーザーが登録した時間、ISO 8601を使用してフォーマット。</li><li>構成されていない場合、Userlistは現在の時間を使用します。</li></ul> |
+|最終訪問日時|  <ul><li>ユーザーが最後にアプリケーション内で見られた時間。</li><li>ISO 8601を使用してフォーマット。</li><li>構成されていない場合、Userlistは現在の時間を使用します。</li><li>このユーザーに対するイベントが発生するたびに、Userlistはこのプロパティを更新します。</li></ul> |
+|プロパティ|  <ul><li>ユーザーをさらに説明するカスタムプロパティ。</li><li>ここに保存する内容は完全にあなた次第です。</li><li>オブジェクトのキーは`snake_case`に正規化されます。</li><li>構成されている場合、`name`、または`first_name`と`last_name`を使用してUserlist内でユーザーを表現します。</li></ul> |
 
 ### アクション - イベントの追跡
 
@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/userlist-connector/
 
 |**パラメータ**| **説明**|
 |---| ---|
-|名前|  &lt;ul&gt;&lt;li&gt;トリガーされるイベントの名前。&lt;/li&gt;&lt;li&gt;名前は`snake_case`に正規化されます。&lt;/li&gt;&lt;li&gt;詳細については、[システムにユーザーデータを取り込む](https://docs.userlist.io/article/15-integration-guide)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|ユーザー|  &lt;ul&gt;&lt;li&gt;識別子がシステムに認識されていない場合、新しいユーザーを作成します。&lt;/li&gt;&lt;li&gt;ユーザーが既に存在する場合は、与えられた情報を使用して更新します。&lt;/li&gt;&lt;/ul&gt; |
-|発生日時|  &lt;ul&gt;&lt;li&gt;イベントが発生した時間。&lt;/li&gt;&lt;li&gt;ISO 8601を使用してフォーマット。&lt;/li&gt;&lt;li&gt;入力を提供しない場合、システムは現在の時間を使用します。&lt;/li&gt;&lt;/ul&gt; |
-|プロパティ|  &lt;ul&gt;&lt;li&gt;イベントをさらに説明するカスタムプロパティ。&lt;/li&gt;&lt;li&gt;ここに保存する内容は完全にあなた次第です。&lt;/li&gt;&lt;li&gt;オブジェクトのキーは`snake_case`に正規化されます。&lt;/li&gt;&lt;/ul&gt; |
+|名前|  <ul><li>トリガーされるイベントの名前。</li><li>名前は`snake_case`に正規化されます。</li><li>詳細については、[システムにユーザーデータを取り込む](https://docs.userlist.io/article/15-integration-guide)を参照してください。</li></ul> |
+|ユーザー|  <ul><li>識別子がシステムに認識されていない場合、新しいユーザーを作成します。</li><li>ユーザーが既に存在する場合は、与えられた情報を使用して更新します。</li></ul> |
+|発生日時|  <ul><li>イベントが発生した時間。</li><li>ISO 8601を使用してフォーマット。</li><li>入力を提供しない場合、システムは現在の時間を使用します。</li></ul> |
+|プロパティ|  <ul><li>イベントをさらに説明するカスタムプロパティ。</li><li>ここに保存する内容は完全にあなた次第です。</li><li>オブジェクトのキーは`snake_case`に正規化されます。</li></ul> |

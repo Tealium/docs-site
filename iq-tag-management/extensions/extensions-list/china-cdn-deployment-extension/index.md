@@ -5,7 +5,11 @@ url: https://docs.tealium.com/iq-tag-management/extensions/extensions-list/china
 ---
 You can use this extension when you cannot modify the source code for a web site to add logic to determine the user’s location. This extension is also useful when a profile that primarily serves content from outside of China receives a small amount of traffic from within China.
 
- If a large amount of your traffic is from China and you can modify the source code for your web site, we recommend that you create a dedicated profile for the `.cn` domain and add a customized script to the HTML code you paste in each page. For more information, see [Update the code for your website]().  
+
+<blockquote>
+If a large amount of your traffic is from China and you can modify the source code for your web site, we recommend that you create a dedicated profile for the `.cn` domain and add a customized script to the HTML code you paste in each page. For more information, see [Update the code for your website](https://docs.tealium.com/load-utag-china/#update-the-code-for-your-website).
+</blockquote>
+ 
 
 ## Prerequisites
 
@@ -15,16 +19,20 @@ You can use this extension when you cannot modify the source code for a web site
 
 The China CDN Deployment extension consists of a code editor pre-filled with JavaScript code that is executed during the pre-loader scope. This code contains logic to do the following:
 
-* Determine the user&#39;s location based on their browser language, timezone, and IP address.
+* Determine the user's location based on their browser language, timezone, and IP address.
 * Set a cookie with the best CDN for that user.
 
 All subsequent site visits read the cookie value, if it is present, and fetch all utag content from the most specified CDN. Setting the cookie in the pre-loader scope means that the initial page request is served from the appropriate CDN.
 
+
+<blockquote>
 Page load speeds will be impacted if content is delivered to China from outside the Chinese network. However, after the initial page load and setting of the CDN cookie, the extension will deliver available resources from the China CDN to China-based users to speed up their requests.
+</blockquote>
+
 
 ## Configuring the extension
 
-When you add the China CDN Deployment extension to a profile, an Ace Editor window is displayed, which contains the default code for the extension. You can configure the `domainMap`, `languageMap`, and `gmtMap` variables for the extension. In addition, you can specify the `matchLogic` to determine a user&#39;s location.
+When you add the China CDN Deployment extension to a profile, an Ace Editor window is displayed, which contains the default code for the extension. You can configure the `domainMap`, `languageMap`, and `gmtMap` variables for the extension. In addition, you can specify the `matchLogic` to determine a user's location.
 
 ### Setting up domain mapping
 
@@ -32,7 +40,7 @@ When you add the China CDN Deployment extension to a profile, an Ace Editor wind
 
 ```js
 domainMap = {
-    &#39;www.yourwebsite.cn&#39;: &#39;cn&#39;
+    'www.yourwebsite.cn': 'cn'
 },
 ```
 
@@ -42,10 +50,10 @@ The `languageMap` variable lists the most common Chinese language variations and
 
 ```js
 languageMap = {
-    &#39;zh&#39;: &#39;cn&#39;,
-    &#39;zh-HK&#39;: &#39;cn&#39;,
-    &#39;zh-CN&#39;: &#39;cn&#39;,
-    &#39;zh-TW&#39;: &#39;cn&#39;
+    'zh': 'cn',
+    'zh-HK': 'cn',
+    'zh-CN': 'cn',
+    'zh-TW': 'cn'
 },
 ```
 
@@ -55,7 +63,7 @@ The `gmtMap` variable specifies the Chinese time zone.
 
 ```js
 gmtMap = {
-    &#39;-480&#39;: &#39;cn&#39;
+    '-480': 'cn'
 },
 ```
 
@@ -64,7 +72,7 @@ gmtMap = {
 The default `matchLogic` variable for all defined variables requires them to all be true. Set it to `or` if only some of the variables need to be true.
 
 ```js
-matchLogic = &#39;and&#39;; // &#39;or&#39;
+matchLogic = 'and'; // 'or'
 ```
 
 ### Turning IP location detection on or off
@@ -80,7 +88,7 @@ matchLogic = &#39;and&#39;; // &#39;or&#39;
 
 ### Adjusting the cookie duration and when to trigger a retest
 
-The `retestTime` variable is specified in milliseconds and specifies when the retest is done to determine the user&#39;s location. The default is one day.
+The `retestTime` variable is specified in milliseconds and specifies when the retest is done to determine the user's location. The default is one day.
 
 ```js
 var retestTime = 86400000; // 1 day

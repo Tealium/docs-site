@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/best-practices/
     * **最新の状態です**  
     現在のバージョンと現在公開されているバージョンが一致しています。
     * **公開バージョンより遅れています**  
-    現在公開されているバージョンには、あなたのバージョンにない変更が含まれています。これらの変更を表示するには、**最新の公開変更を表示**をクリックしてください。これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイド保存と公開について]()を参照してください。
+    現在公開されているバージョンには、あなたのバージョンにない変更が含まれています。これらの変更を表示するには、**最新の公開変更を表示**をクリックしてください。これらのステータスメッセージとその使用方法についての詳細は、[サーバーサイド保存と公開について](https://docs.tealium.com/about-save-publish/)を参照してください。
 * **公開バージョンからのみ項目を削除する**：  
 項目を永久に削除するには、公開バージョンから削除してください。公開バージョンではないバージョンから項目を削除してから保存および公開すると、プラットフォームは公開時に削除された項目を復元します。これは、オーディエンスに必要な属性などの依存関係を誤って削除するのを防ぐためです。
 
@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/best-practices/
 
 次の例では、両方のユーザーが同じバージョンで一緒に作業しています。
 
-![](/images/server-side/save-publish/collaboration-workflow-two-users2.png)
+![](https://docs.tealium.com/images/server-side/save-publish/collaboration-workflow-two-users2.png)
 
 図は各アクションを示しています。
 
@@ -55,7 +55,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/best-practices/
 
 次の例では、各ユーザーがそれぞれの長期プロジェクトで別々のバージョンで作業しています。
 
-![](/images/server-side/save-publish/collaboration-workflow-two-projects2.png)
+![](https://docs.tealium.com/images/server-side/save-publish/collaboration-workflow-two-projects2.png)
 
 図は各アクションを示しています。
 

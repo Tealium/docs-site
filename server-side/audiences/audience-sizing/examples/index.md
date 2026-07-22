@@ -22,7 +22,7 @@ This example assumes that you have already set up the necessary date selections 
 
 Use the following steps:
 
-1. In the sidebar, go to **Activate &gt; Discover**.
+1. In the sidebar, go to **Activate > Discover**.
 1. Click the **Audience Sizing** tab.
 1. Select a date range that represents the last 7 days.
 1. Select or create the following rules:
@@ -31,19 +31,19 @@ Use the following steps:
 [
   [
     {
-      &#34;input&#34;: &#34;Favorite Product Category (favorite)&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;Jeans&#34;
+      "input": "Favorite Product Category (favorite)",
+      "operator": "equals",
+      "filter": "Jeans"
     },
     {
-      &#34;input&#34;: &#34;Lifetime Order Value&#34;,
-      &#34;operator&#34;: &#34;less than or equal to&#34;,
-      &#34;filter&#34;: &#34;500&#34;
+      "input": "Lifetime Order Value",
+      "operator": "less than or equal to",
+      "filter": "500"
     },
     {
-      &#34;input&#34;: &#34;Days since last purchase&#34;,
-      &#34;operator&#34;: &#34;greater than&#34;,
-      &#34;filter&#34;: &#34;30&#34;
+      "input": "Days since last purchase",
+      "operator": "greater than",
+      "filter": "30"
     }
   ]
 ]
@@ -64,7 +64,7 @@ This example assumes that you have already set up the necessary date selections 
 * The marketing channel they engage with most.
 * Their coupon usage frequency.
 
-1. In the sidebar, go to **Activate &gt; Discover**.
+1. In the sidebar, go to **Activate > Discover**.
 1. Click the **Audience Sizing** tab.
 1. Select a date range that represents the December holiday season (for example, December 1 - December 31.
 1. Select or create the following rules:  
@@ -73,19 +73,19 @@ This example assumes that you have already set up the necessary date selections 
 [
   [
     {
-      &#34;input&#34;: &#34;VIP Customer&#34;,
-      &#34;operator&#34;: &#34;is assigned&#34;,
-      &#34;filter&#34;: &#34;&#34;
+      "input": "VIP Customer",
+      "operator": "is assigned",
+      "filter": ""
     },
     {
-      &#34;input&#34;: &#34;Marketing Channel Engagement (favorite)&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;email&#34;
+      "input": "Marketing Channel Engagement (favorite)",
+      "operator": "equals",
+      "filter": "email"
     },
     {
-      &#34;input&#34;: &#34;Coupon Usage Ratio&#34;,
-      &#34;operator&#34;: &#34;greater than or equal to&#34;,
-      &#34;filter&#34;: &#34;0.50&#34;
+      "input": "Coupon Usage Ratio",
+      "operator": "greater than or equal to",
+      "filter": "0.50"
     }
   ]
 ]

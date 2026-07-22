@@ -9,7 +9,11 @@ The Trade Desk (TTD) Real-Time Conversion Events server-side connector sends con
 
 Enhance this connector with other integrations from the Tealium and The Trade Desk partnership. Use the Unified ID 2.0 (UID2) or European Unified ID (EUID) Function to generate and assign universal user identifiers before sending the event data. Optionally, implement the TTD Universal Pixel in Tealium iQ Tag Management to capture a comprehensive view of the user’s behavior in real time.
 
- Work with your assigned TTD representative to ensure that all necessary parameters have been generated and are available. 
+
+<blockquote>
+Work with your assigned TTD representative to ensure that all necessary parameters have been generated and are available.
+</blockquote>
+
 
 ## API information
 
@@ -22,13 +26,13 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 The Trade Desk Real-Time Conversion connector supports Event Mapping and URL Mapping tracking. When configuring the connector, set the following parameters depending on your approach:
 
 * **URL Mapping** - In this approach, the URL of the page visited by the user is assigned within TTD platform as the basis for retargeting and conversion measurement.
     * Recommended for websites where the tracking focus is on the pages that the user views.
-    * Uses the same methodology as the [TTD Universal Pixel tag]().
+    * Uses the same methodology as the [TTD Universal Pixel tag](https://docs.tealium.com/the-trade-desk-universal-pixel-tag/).
     * Configuration parameters: **Advertiser ID** and **Universal Pixel ID**.
 * **Event Mapping** - In this approach, conversions are captured using the event name (for example, `Purchase`, `Addtocart`) with optional relevant commerce product details. The event name and products are assessed within the TTD platform as the basis for the retargeting and conversion measurements.
     * Configuration parameters: **Merchant ID** and **Event Tracker ID**.
@@ -44,8 +48,12 @@ Required, if **Event Tracker ID** is not provided. The universal pixel ID for th
 * **Event Tracker ID**  
 Required, if **Pixel ID** is not provided. The platform ID of the event tracker.
 
- If you provide an **Advertiser ID** and not a **Universal Pixel ID**, the connector request returns an error.
-We also recommend that you avoid populating every parameter in the **Configuration Window** and provide only values for the chosen approach. For example, you should not provide both an **Advertiser ID** and a **Merchant ID**. Instead, enter only the configuration setting required by the tracking methodology. 
+
+<blockquote>
+If you provide an **Advertiser ID** and not a **Universal Pixel ID**, the connector request returns an error.
+We also recommend that you avoid populating every parameter in the **Configuration Window** and provide only values for the chosen approach. For example, you should not provide both an **Advertiser ID** and a **Merchant ID**. Instead, enter only the configuration setting required by the tracking methodology.
+</blockquote>
+
 
 ## Actions
 
@@ -65,21 +73,21 @@ Ensure that the event has been appropriately defined within your TTD instance or
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Conversion Event Name | The type of event defined by the partner platform. Available event types:&lt;ul&gt;&lt;li&gt;`addtocart`: The user added an item to the shopping cart.&lt;/li&gt;&lt;li&gt;`purchase`: The user completed a purchase and the **Thank You page** has been displayed.&lt;/li&gt;&lt;li&gt;`viewitem`: The user viewed an item or SKU number.&lt;/li&gt;&lt;li&gt;`searchitem`: The user searched for an item or SKU number.&lt;/li&gt;&lt;li&gt;`searchcategory`: The user searched for a category.&lt;/li&gt;&lt;li&gt;`login`: The user logged in to the site.&lt;/li&gt;&lt;li&gt;`messagebusiness`: The user sent a message to the business or contacted the business with a form or email.&lt;/li&gt;&lt;li&gt;`direction`: The user requested and received directions to the business.&lt;/li&gt;&lt;li&gt;`startcheckout`: The user started the checkout process.&lt;/li&gt;&lt;li&gt;`viewcart`: The user viewed the contents of the shopping cart.&lt;/li&gt;&lt;li&gt;`sitevisit`: The user visited the site.&lt;/li&gt;&lt;li&gt;`wishlistitem`: The user added an item or SKU number to the wish list.&lt;/li&gt;&lt;/ul&gt;|
+| Conversion Event Name | The type of event defined by the partner platform. Available event types:<ul><li>`addtocart`: The user added an item to the shopping cart.</li><li>`purchase`: The user completed a purchase and the **Thank You page** has been displayed.</li><li>`viewitem`: The user viewed an item or SKU number.</li><li>`searchitem`: The user searched for an item or SKU number.</li><li>`searchcategory`: The user searched for a category.</li><li>`login`: The user logged in to the site.</li><li>`messagebusiness`: The user sent a message to the business or contacted the business with a form or email.</li><li>`direction`: The user requested and received directions to the business.</li><li>`startcheckout`: The user started the checkout process.</li><li>`viewcart`: The user viewed the contents of the shopping cart.</li><li>`sitevisit`: The user visited the site.</li><li>`wishlistitem`: The user added an item or SKU number to the wish list.</li></ul>|
 
 #### User identifier parameters
 
 | **Parameter** | **Description** |
 | --- | --- |
-| UID2 | The user&#39;s Unified ID 2.0 as a 44-character base64-encoded SHA-256 string. For more information, see  and [TTD: Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs). |
+| UID2 | The user's Unified ID 2.0 as a 44-character base64-encoded SHA-256 string. For more information, see [use-visitor-function-uid20](https://docs.tealium.com/use-visitor-function-uid20/) and [TTD: Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs). |
 | UID2 Token (encrypted advertising token)| The encrypted UID2 advertising token. This token is case-sensitive. |
-| EUID | The user&#39;s European Unified ID as a 44-character base64-encoded SHA-256 string. For more information, see  and [Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs). |
-| TDID | The Trade Desk 36-character GUID (including dashes) for this user. Can be obtained through [The Trade Desk Cookie Matching Service Tag]().|
+| EUID | The user's European Unified ID as a 44-character base64-encoded SHA-256 string. For more information, see [use-visitor-function-euid](https://docs.tealium.com/use-visitor-function-euid/) and [Unified IDs](https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs). |
+| TDID | The Trade Desk 36-character GUID (including dashes) for this user. Can be obtained through [The Trade Desk Cookie Matching Service Tag](https://docs.tealium.com/the-trade-desk-cookie-matching-service-tag/).|
 | IDFA | Ad identifier for iOS devices. |
 | AAID | Ad identifier for Android devices. |
 | DAID | The raw device ID for this user, sent in 36-character GUID format (including dashes). |
 | NAID | Ad identifier for Windows devices. |
-| IDL | The 49-character or 70-character RampID (previously known as IdentityLink).&lt;br&gt;Note: This must be a RampID from LiveRamp that is mapped specifically for The Trade Desk. For more information about mapping a RampID, see [LiveRamp documentation](https://sidecar.readme.io/docs/getting-started). |
+| IDL | The 49-character or 70-character RampID (previously known as IdentityLink).<br>Note: This must be a RampID from LiveRamp that is mapped specifically for The Trade Desk. For more information about mapping a RampID, see [LiveRamp documentation](https://sidecar.readme.io/docs/getting-started). |
 
 #### Event parameters
 
@@ -112,9 +120,9 @@ All three privacy setting properties are required.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| `privacy_type` | Only one value per object from the following values: &lt;ul&gt;&lt;li&gt;GDPR (General Data Protection Regulation), applicable to the European Economic Area (EEA).&lt;/li&gt;&lt;li&gt;GPP (Global Privacy Platform), intended for users in US states with applicable privacy regulations.&lt;/li&gt;&lt;/ul&gt; |
+| `privacy_type` | Only one value per object from the following values: <ul><li>GDPR (General Data Protection Regulation), applicable to the European Economic Area (EEA).</li><li>GPP (Global Privacy Platform), intended for users in US states with applicable privacy regulations.</li></ul> |
 | `is_applicable` | Indicates if the value specified in the `privacy_type` parameter is applicable. |
-| `consent_string` | The user&#39;s consent when the privacy regulations are in effect. For more information, see the [IAB Tech Lab: GDPR Transparency and Consent Framework](https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/). |
+| `consent_string` | The user's consent when the privacy regulations are in effect. For more information, see the [IAB Tech Lab: GDPR Transparency and Consent Framework](https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/). |
 
 #### Custom properties
 

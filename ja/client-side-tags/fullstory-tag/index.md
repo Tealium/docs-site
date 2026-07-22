@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/client-side-tags/fullstory-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要]()記事を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要](https://docs.tealium.com/about-tags/)記事を参照してください。
 
 タグを追加するときには、次の構成を行います：
 
@@ -30,7 +30,7 @@ url: https://docs.tealium.com/ja/client-side-tags/fullstory-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -38,40 +38,40 @@ url: https://docs.tealium.com/ja/client-side-tags/fullstory-tag/
 
 |変数| 説明|
 |---| ---|
-|`fs_debug`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;FullStoryデバッグを有効にする&lt;/li&gt;&lt;li&gt;値は**true**または**false**。&lt;/li&gt;&lt;/ul&gt; |
-|`get_fs_session_id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;FullStoryセッションIDを取得する&lt;/li&gt;&lt;li&gt;値は**true**または**false**。&lt;/li&gt;&lt;/ul&gt; |
-|`get_tealium_session_id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;TealiumセッションIDを取得する&lt;/li&gt;&lt;li&gt;値は**true**または**false**。&lt;/li&gt;&lt;/ul&gt; |
-|`get_tealium_visitor_id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;Tealium訪問IDを取得する&lt;/li&gt;&lt;li&gt;値は**true**または**false**。&lt;/li&gt;&lt;/ul&gt; |
-|`fs_consent`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザートラッキングの同意&lt;/li&gt;&lt;li&gt;値は**true**または**false**。&lt;/li&gt;&lt;/ul&gt; |
-|`fs_script`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;スクリプトURL&lt;/li&gt;&lt;/ul&gt; |
+|`fs_debug`|  <ul><li>文字列</li><li>FullStoryデバッグを有効にする</li><li>値は**true**または**false**。</li></ul> |
+|`get_fs_session_id`|  <ul><li>文字列</li><li>FullStoryセッションIDを取得する</li><li>値は**true**または**false**。</li></ul> |
+|`get_tealium_session_id`|  <ul><li>文字列</li><li>TealiumセッションIDを取得する</li><li>値は**true**または**false**。</li></ul> |
+|`get_tealium_visitor_id`|  <ul><li>文字列</li><li>Tealium訪問IDを取得する</li><li>値は**true**または**false**。</li></ul> |
+|`fs_consent`|  <ul><li>文字列</li><li>ユーザートラッキングの同意</li><li>値は**true**または**false**。</li></ul> |
+|`fs_script`|  <ul><li>文字列</li><li>スクリプトURL</li></ul> |
 
 ### ユーザーパラメータ
 
 |変数| 説明|
 |---| ---|
-|`uid`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーID&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.displayName`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザー表示名&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.email`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ユーザーのメール&lt;/li&gt;&lt;/ul&gt; |
-|`uservars.custom`|  &lt;ul&gt;&lt;li&gt;カスタムユーザーVar&lt;/li&gt;&lt;/ul&gt; |
+|`uid`|  <ul><li>文字列</li><li>ユーザーID</li></ul> |
+|`uservars.displayName`|  <ul><li>文字列</li><li>ユーザー表示名</li></ul> |
+|`uservars.email`|  <ul><li>文字列</li><li>ユーザーのメール</li></ul> |
+|`uservars.custom`|  <ul><li>カスタムユーザーVar</li></ul> |
 
 ### イベント
 
 |変数| 説明|
 |---| ---|
-|`fs_event_name`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;イベント名&lt;/li&gt;&lt;/ul&gt; |
-|`fs_event_source`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;イベントソース&lt;/li&gt;&lt;/ul&gt; |
-|`s_event.custom`|  &lt;ul&gt;&lt;li&gt;個々のカスタムイベントパラメータ&lt;/li&gt;&lt;/ul&gt; |
-|`fs_event_object`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;フルイベントオブジェクト&lt;/li&gt;&lt;/ul&gt; |
+|`fs_event_name`|  <ul><li>文字列</li><li>イベント名</li></ul> |
+|`fs_event_source`|  <ul><li>文字列</li><li>イベントソース</li></ul> |
+|`s_event.custom`|  <ul><li>個々のカスタムイベントパラメータ</li></ul> |
+|`fs_event_object`|  <ul><li>オブジェクト</li><li>フルイベントオブジェクト</li></ul> |
 
 ### ページイベント
 
 |変数| 説明|
 |---| ---|
-|`fs_page.pageName`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ページ名&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.category`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ページカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.title`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ページタイトル&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.url`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ページURL&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.image_url`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ページ画像URL&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page.custom`|  &lt;ul&gt;&lt;li&gt;個々のカスタムページパラメータ&lt;/li&gt;&lt;/ul&gt; |
-|`fs_page_object`|  &lt;ul&gt;&lt;li&gt;オブジェクト&lt;/li&gt;&lt;li&gt;フルページオブジェクト&lt;/li&gt;&lt;/ul&gt; |
+|`fs_page.pageName`|  <ul><li>文字列</li><li>ページ名</li></ul> |
+|`fs_page.category`|  <ul><li>文字列</li><li>ページカテゴリ</li></ul> |
+|`fs_page.title`|  <ul><li>文字列</li><li>ページタイトル</li></ul> |
+|`fs_page.url`|  <ul><li>文字列</li><li>ページURL</li></ul> |
+|`fs_page.image_url`|  <ul><li>文字列</li><li>ページ画像URL</li></ul> |
+|`fs_page.custom`|  <ul><li>個々のカスタムページパラメータ</li></ul> |
+|`fs_page_object`|  <ul><li>オブジェクト</li><li>フルページオブジェクト</li></ul> |
 

@@ -30,7 +30,7 @@ Here are some ways you can use the Tealium Data Connect integration with Faceboo
 
 The diagram below illustrates the Facebook Lead Ads Data Connect integration flow. Follow the detailed instructions below to successfully set up your Tealium Data Connect integration with Facebook Lead Ads.
 
-![](/images/server-side/data-connect/fb-lead-ads-data-connect-integration-flow.png)
+![](https://docs.tealium.com/images/server-side/data-connect/fb-lead-ads-data-connect-integration-flow.png)
 
 ## Create a Facebook Lead Ads integration
 
@@ -46,15 +46,15 @@ These are the steps required to create a Facebook Lead Ads integration with Teal
 
 ### Step 1: Set up a Tealium Connect data source
 
-Set up a Tealium Connect data source. For the steps, see [set up a Tealium Connect data source]().
+Set up a Tealium Connect data source. For the steps, see [set up a Tealium Connect data source](https://docs.tealium.com/tealium-connect-data-source/).
 
 ### Step 2: Create a new recipe to send new leads from Facebook to Tealium
 
-For details on how to create a new recipe, see [create a recipe in Data Connect]().
+For details on how to create a new recipe, see [create a recipe in Data Connect](https://docs.tealium.com/create-recipe-data-connect/).
 
 Complete the following steps to create and set up your recipe:
 
-1. Go to **DataConnect &gt; Integrations** and create a new recipe that triggers from the Facebook Lead Ads app. For details on how to create a recipe that **Triggers from an App**, see the steps to create a recipe in [Create a recipe in Data Connect]().
+1. Go to **DataConnect > Integrations** and create a new recipe that triggers from the Facebook Lead Ads app. For details on how to create a recipe that **Triggers from an App**, see the steps to create a recipe in [Create a recipe in Data Connect](https://docs.tealium.com/create-recipe-data-connect/).
 1. To build your recipe:
     1. Under **Trigger**, select **New Lead**.
     1. Connect to your Facebook Business Manager account.
@@ -62,17 +62,17 @@ Complete the following steps to create and set up your recipe:
     1. In the **Setup** step:
         * Select the **Page** you want to pull data from.
         * In the **Form ID** field, select **Use form ID** and enter a form ID from your Meta Business Suite (formerly Facebook Business Manager).
-    1. Set up an action to send new lead generations to Tealium. For details, see [Configure an action]().
+    1. Set up an action to send new lead generations to Tealium. For details, see [Configure an action](https://docs.tealium.com/create-recipe-data-connect/#step-2-configure-an-action).
 
-        ![](/images/server-side/data-connect/new-lead-generations-to-Tealium-action.png)
+        ![](https://docs.tealium.com/images/server-side/data-connect/new-lead-generations-to-Tealium-action.png)
 
 ### Step 3: Send new/updated lead records from Tealium to Salesforce
 
 Complete the following steps to send new or updated lead records from Tealium to any other CRM of choice. This example uses Salesforce:
 
-1. Set up an audience. For details, see [Create an audience]().
-1. Go to **Connect &gt; Audience Connectors**.
-1. Click **&#43; Add Connector** and add the [Salesforce Connector]().
+1. Set up an audience. For details, see [Create an audience](https://docs.tealium.com/manage-audiences/#create-an-audience).
+1. Go to **Connect > Audience Connectors**.
+1. Click **+ Add Connector** and add the [Salesforce Connector](https://docs.tealium.com/salesforce-connector/).
 1. In the **Source** step,
     1. Select the **Audience** you created above.
     1. Under **Trigger**, select **Joined Audience.**
@@ -86,28 +86,32 @@ Complete the following steps to send new or updated lead records from Tealium to
 
 ### Step 4: Create another recipe to receive new/updated lead records from Salesforce to Tealium
 
-![](/images/server-side/data-connect/recipe-to-receive-lead-records.png)
+![](https://docs.tealium.com/images/server-side/data-connect/recipe-to-receive-lead-records.png)
 
-1. Go to **DataConnect &gt; Integrations** and create a new recipe that triggers from the Salesforce app. For details on how to create a recipe that **Triggers from an App**, see the steps to create a recipe in [Create a recipe in Data Connect]().
+1. Go to **DataConnect > Integrations** and create a new recipe that triggers from the Salesforce app. For details on how to create a recipe that **Triggers from an App**, see the steps to create a recipe in [Create a recipe in Data Connect](https://docs.tealium.com/create-recipe-data-connect/).
 1. To build your recipe:
     1. Under **Trigger**, select **New/Updated Records**. You can select either batch or real time based on your needs.  
     1. Authenticate your Tealium Data Connect account with Salesforce. This may involve entering API keys or credentials.
     1. Configure the connector settings to map the fields from Facebook Lead Ads to the corresponding fields in Salesforce. Ensure data mapping is accurate to avoid issues with data synchronization.
-    1. Set up an action to send new/updated records from Salesforce to Tealium. For details, see [Configure an action]().
+    1. Set up an action to send new/updated records from Salesforce to Tealium. For details, see [Configure an action](https://docs.tealium.com/create-recipe-data-connect/#step-2-configure-an-action).
 
-        ![](/images/server-side/data-connect/action-parameter-mapping.png)
+        ![](https://docs.tealium.com/images/server-side/data-connect/action-parameter-mapping.png)
 
 ### Step 5: Set up event feed for leads
 
 Complete the following steps to create an event feed:
 
-1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate > Live Events** and click **+ Add Event Feed**.
 1. In the **Create Event Feed** dialog, enter a **Title** and any **Notes**.
-    The event feed title is dependent on how lead events come into Data Connect.
+    
+<blockquote>
+The event feed title is dependent on how lead events come into Data Connect.
+</blockquote>
+
 1. (Optional) Click **Add Label** to select labels to apply to this event feed.
 1. Under **Event Data Storage**, enable the feed for EventStore or EventDB.
 1. Set an **Attribute Condition** for the feed to capture events that match new lead events.
-    ![](/images/server-side/data-connect/fb-lead-ads-data-connect-event-feed.png)
+    ![](https://docs.tealium.com/images/server-side/data-connect/fb-lead-ads-data-connect-event-feed.png)
 1. Click **Save**.
 1. Save and publish your profile.
 
@@ -115,8 +119,8 @@ Complete the following steps to create an event feed:
 
 Follow these steps to set up the [Facebook Conversions event connector](https://docs.tealium.com/server-side-connectors/facebook-conversions-connector/) to send leads to a back to Facebook:
 
-1. Go to **Connect &gt; Event Connectors**.
-1. Click **&#43; Add Connector** and add the Facebook Conversions connector.
+1. Go to **Connect > Event Connectors**.
+1. Click **+ Add Connector** and add the Facebook Conversions connector.
 1. In the **Source** step, 
     1. Select the **Data Source**.
     1. Select the **Event Feed** you created in the [preceding steps](#step-5-set-up-event-feed-for-leads).
@@ -127,7 +131,7 @@ Follow these steps to set up the [Facebook Conversions event connector](https://
     1. Enter a **Name.**
     1. In **Action Type, **select **Send Lead Event.**
     1. Map the **Lead ID** and the **Event Name** parameters.
-        ![](/images/server-side/data-connect/fb-lead-ads-event-connector-action.png)
+        ![](https://docs.tealium.com/images/server-side/data-connect/fb-lead-ads-event-connector-action.png)
 1. Click **Finish**.
 1. Save and publish your profile.
 
@@ -140,7 +144,7 @@ Follow these steps to test with trace and activate the recipe:
 1. In the sidebar, select **Trace**.
 1. Under **New Trace**, click **Start**. A dialog with a trace ID will appear.
 1. Copy the trace ID and click **Continue**.
-1. Go to **Data Connect** &gt; **Integrations**.
+1. Go to **Data Connect** > **Integrations**.
 1. In the **Integrations** screen, do this for both recipes that send new leads from Facebook to Tealium and receive new/updated lead records from Salesforce to Tealium:
     1. Select your recipe.
     1. Select the **Tealium Events V2** action to edit it.

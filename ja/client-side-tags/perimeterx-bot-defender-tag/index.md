@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/perimeterx-bot-defender-tag/
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/client-side-tags/perimeterx-bot-defender-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -25,9 +25,9 @@ url: https://docs.tealium.com/ja/client-side-tags/perimeterx-bot-defender-tag/
 
 |変数| 説明|
 |---| ---|
-|`appId`|  &lt;ul&gt;&lt;li&gt;AppID&lt;/li&gt;&lt;/ul&gt; |
-|`_pxParam1`|  &lt;ul&gt;&lt;li&gt;カスタムパラメータ1&lt;/li&gt;&lt;/ul&gt; |
-|`_pxParam2`|  &lt;ul&gt;&lt;li&gt;カスタムパラメータ2&lt;/li&gt;&lt;/ul&gt; |
-|`_pxParam3`|  &lt;ul&gt;&lt;li&gt;カスタムパラメータ3&lt;/li&gt;&lt;/ul&gt; |
-|`_pxParam4`|  &lt;ul&gt;&lt;li&gt;カスタムパラメータ4&lt;/li&gt;&lt;/ul&gt; |
+|`appId`|  <ul><li>AppID</li></ul> |
+|`_pxParam1`|  <ul><li>カスタムパラメータ1</li></ul> |
+|`_pxParam2`|  <ul><li>カスタムパラメータ2</li></ul> |
+|`_pxParam3`|  <ul><li>カスタムパラメータ3</li></ul> |
+|`_pxParam4`|  <ul><li>カスタムパラメータ4</li></ul> |
 

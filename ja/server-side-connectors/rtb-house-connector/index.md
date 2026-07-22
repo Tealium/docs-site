@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 * **RTB House パートナーキー**  
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| イベントコード | 利用可能なオプションは以下の通りです：&lt;ul&gt;&lt;li&gt;**Home** - ウェブサイトのホームページを訪問したとき。&lt;/li&gt;&lt;li&gt;**Category2** - カテゴリーページを訪問したとき。&lt;/li&gt;&lt;li&gt;**Offer** - 製品ページを訪問したとき。&lt;/li&gt;&lt;li&gt;**Listing** - 検索結果ページを訪問したとき。&lt;/li&gt;&lt;li&gt;**Basket add** - 製品をカートに追加したとき。&lt;/li&gt;&lt;li&gt;**Basket status** - ショッピングカートページを表示したとき。&lt;/li&gt;&lt;li&gt;**Start order** - 注文処理を開始するページ（チェックアウトページなど）を訪問したとき。&lt;/li&gt;&lt;li&gt;**Conversion Order** - 注文確認ページ。&lt;/li&gt;&lt;/ul&gt; |
+| イベントコード | 利用可能なオプションは以下の通りです：<ul><li>**Home** - ウェブサイトのホームページを訪問したとき。</li><li>**Category2** - カテゴリーページを訪問したとき。</li><li>**Offer** - 製品ページを訪問したとき。</li><li>**Listing** - 検索結果ページを訪問したとき。</li><li>**Basket add** - 製品をカートに追加したとき。</li><li>**Basket status** - ショッピングカートページを表示したとき。</li><li>**Start order** - 注文処理を開始するページ（チェックアウトページなど）を訪問したとき。</li><li>**Conversion Order** - 注文確認ページ。</li></ul> |
 
 #### イベント属性
 

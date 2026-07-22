@@ -3,7 +3,7 @@ title: Media Module
 description: Provides tracking data for your media events.
 url: https://docs.tealium.com/platforms/ios-swift/module-list/media/
 ---
-The Media module tracks streaming media in apps through the use of custom events. Learn more about [media tracking](/platforms/getting-started-mobile/media/).
+The Media module tracks streaming media in apps through the use of custom events. Learn more about [media tracking](https://docs.tealium.com/platforms/getting-started-mobile/media/).
 
 ## Sample App
 
@@ -15,48 +15,48 @@ Install the Media module with Swift Package Manager, CocoaPods or Carthage.
 
 ### Swift Package Manager (Recommended)
 
-Supported in version 1.9.0&#43;, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
+Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
 
-1. In your Xcode project, select **File &gt; Add Package Dependencies**.
+1. In your Xcode project, select **File > Add Package Dependencies**.
 1. Enter the repository URL: `https://github.com/tealium/tealium-swift`
-1. Configure the version rules. Typically, `&#34;Up to next major&#34;` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
+1. Configure the version rules. Typically, `"Up to next major"` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
 1. Select the `Media` module from the list of modules to install and add it each of your app targets in your Xcode project, under **Frameworks and Libraries**
 
-Learn more about the [Swift Package Manager installation for iOS](/platforms/ios-swift/install/#swift-package-manager-recommended).
+Learn more about the [Swift Package Manager installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended).
 
 ### CocoaPods
 
 To install the Media module with CocoaPods, add the following pod to your Podfile:  
 ```perl
-pod &#39;tealium-swift/Media&#39;
+pod 'tealium-swift/Media'
 ```
 
-Learn more about the [CocoaPods installation for iOS](/platforms/ios-swift/install/#cocoapods).
+Learn more about the [CocoaPods installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods).
 
 
 ### Carthage
 
 To install the Media module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
 ```perl
 TealiumMedia.framework
 ```
 
-Learn more about [Carthage installation for iOS](/platforms/ios-swift/install/#carthage).
+Learn more about [Carthage installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#carthage).
 
 
 ## Initialize
 
-To initialize the Media module, create a [`MediaContent`](/platforms/ios-swift/api/media-session/#class-mediacontent) object.
+To initialize the Media module, create a [`MediaContent`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#class-mediacontent) object.
 
 For example:  
 
 ```swift
 let media = MediaContent(
-  name: &#34;What is the Tealium Customer Data Hub?&#34;,
+  name: "What is the Tealium Customer Data Hub?",
   trackingType: .milestone,
   streamType: .vod,
   mediaType: .video,
@@ -65,26 +65,26 @@ let media = MediaContent(
 )
 ```
 
-Learn more about [implementing the Media module](/platforms/getting-started-mobile/media/#implement).
+Learn more about [implementing the Media module](https://docs.tealium.com/platforms/getting-started-mobile/media/#implement).
 
 #### Metadata
 
 To add optional metadata to the media session:  
 ```swift
-metadata: [&#34;artist&#34;: &#34;various&#34;, &#34;duration&#34;: &#34;45:00&#34;]
+metadata: ["artist": "various", "duration": "45:00"]
 ```
 
 To add chapter metadata:   
 ```swift
-metadata: [&#34;artist&#34;: &#34;Aerosmith&#34;, &#34;track&#34;: &#34;5&#34;]
+metadata: ["artist": "Aerosmith", "track": "5"]
 ```
 
 To add merged metadata:  
 ```swift
-metadata: [&#34;artist&#34;: &#34;Aerosmith&#34;, &#34;track&#34;: &#34;5&#34;, &#34;duration&#34;: &#34;45:00&#34;]
+metadata: ["artist": "Aerosmith", "track": "5", "duration": "45:00"]
 ```
 
-Learn more about [metadata](/platforms/getting-started-mobile/media/#metadata).
+Learn more about [metadata](https://docs.tealium.com/platforms/getting-started-mobile/media/#metadata).
 
 
 ## Track
@@ -93,7 +93,7 @@ There are many methods and properties available to track media.
 
 ### Media Session
 
-To start tracking a media session, call the [`startSession()`](/platforms/ios-swift/api/media-session/#startsession) method. To stop tracking a media session, call the [`endSession()`](/platforms/ios-swift/api/media-session/#endsession) method:  
+To start tracking a media session, call the [`startSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startsession) method. To stop tracking a media session, call the [`endSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endsession) method:  
 
 ```swift
 let session = tealium?.media?.createSession(from: media)                                
@@ -102,58 +102,58 @@ session.startSession()
 session.end()
 ```
 
-Learn more about [tracking sessions](/platforms/getting-started-mobile/media/#media-sessions).
+Learn more about [tracking sessions](https://docs.tealium.com/platforms/getting-started-mobile/media/#media-sessions).
 
 ### Player Events
 
-To track media player events such as play and pause, call the appropriate [player event methods](/platforms/getting-started-mobile/media/#playerevents). Each media player event sends a `tealium_event` variable to the data layer when called.
+To track media player events such as play and pause, call the appropriate [player event methods](https://docs.tealium.com/platforms/getting-started-mobile/media/#playerevents). Each media player event sends a `tealium_event` variable to the data layer when called.
 
-To track when the media is played, call the [`play()`](/platforms/ios-swift/api/media-session/#play) method:   
+To track when the media is played, call the [`play()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#play) method:   
 ```swift
 session.play()
 ```
 
-To track when the media is paused, call the [`pause()`](/platforms/ios-swift/api/media-session/#pause) method:   
+To track when the media is paused, call the [`pause()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#pause) method:   
 ```swift
 session.pause()
 ```
 
 ### Chapters
 
-To track a chapter segments in the media session, create a [`Chapter`](/platforms/ios-swift/api/media-session/#struct-chapter) object and pass it to the [`startChapter()`](/platforms/ios-swift/api/media-session/#startchapter) method. To stop tracking the chapter, call the [`endChapter()`](/platforms/ios-swift/api/media-session/#endchapter) method
+To track a chapter segments in the media session, create a [`Chapter`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#struct-chapter) object and pass it to the [`startChapter()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startchapter) method. To stop tracking the chapter, call the [`endChapter()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endchapter) method
 
 ```swift
-let chapter1 = Chapter(&#34;Chapter 1&#34;, 120)
+let chapter1 = Chapter("Chapter 1", 120)
 mediaSession.startChapter(chapter1)
 // ...
 mediaSession.endChapter()
 ```
 
-Learn more about [tracking chapters](/platforms/getting-started-mobile/media/#chapters).
+Learn more about [tracking chapters](https://docs.tealium.com/platforms/getting-started-mobile/media/#chapters).
 
 
 ### Ads
 
-To track the start of an ad break, create an [`AdBreak`](/platforms/ios-swift/api/media-session/#struct-adbreak) object and pass it to the [`startAdBreak()`](/platforms/ios-swift/api/media-session/#startadbreak) method. To track the start of an ad within the ad break, create an [`Ad`](/platforms/ios-swift/api/media-session/#struct-ad) object and pass it to the [`startAd()`](/platforms/ios-swift/api/media-session/#startad) method.
+To track the start of an ad break, create an [`AdBreak`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#struct-adbreak) object and pass it to the [`startAdBreak()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startadbreak) method. To track the start of an ad within the ad break, create an [`Ad`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#struct-ad) object and pass it to the [`startAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#startad) method.
 
-To track the end of an ad, call the [`endAd()`](/platforms/ios-swift/api/media-session/#endad) method. To track the end of the ad break, call the [`endAdBreak()`](/platforms/ios-swift/api/media-session/#endadbreak) method.
+To track the end of an ad, call the [`endAd()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endad) method. To track the end of the ad break, call the [`endAdBreak()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endadbreak) method.
 
 ```swift
-let adBreak = AdBreak(&#34;Ad Break 1&#34;)
+let adBreak = AdBreak("Ad Break 1")
 session.endAdBreak(adBreak)
 
-let ad1 = Ad(&#34;Ad 1&#34;)
+let ad1 = Ad("Ad 1")
 session.startAd(ad1)
 session.endAd()
 
-let ad2 = Ad(&#34;Ad 2&#34;)
+let ad2 = Ad("Ad 2")
 session.adStart(ad2)
 session.endAd()
 
 session.endAdBreak()
 ```
 
-Learn more about [tracking ads](/platforms/getting-started-mobile/media/#ads).
+Learn more about [tracking ads](https://docs.tealium.com/platforms/getting-started-mobile/media/#ads).
 
 ## Examples
 
@@ -165,7 +165,7 @@ The following example tracks media content with chapters and ads:
 let qoe = QoE(bitrate: 1500)
 
 let mediaSession = tealium?.media?.createSession(from: MediaContent(
-  name: &#34;What is the Tealium Customer Data Hub?&#34;,
+  name: "What is the Tealium Customer Data Hub?",
   trackingType: .fullPlayback
   streamType: .vod,
   mediaType: .video,
@@ -174,40 +174,40 @@ let mediaSession = tealium?.media?.createSession(from: MediaContent(
 ))
 
 mediaSession.startSession()
-let adBreak = AdBreak(&#34;Ad Break 1&#34;)
+let adBreak = AdBreak("Ad Break 1")
 mediaSession.startAdBreak(adBreak)
-let ad = Ad(&#34;Ad 1&#34;)
+let ad = Ad("Ad 1")
 mediaSession.startAd(ad)
 // ...
 mediaSession.endAd()
-let secondAd = Ad(&#34;Ad 2&#34;)
+let secondAd = Ad("Ad 2")
 mediaSession.startAd(secondAd)
 mediaSession.endAd()
 mediaSession.endAdBreak()
-let chapterOne = Chapter(&#34;Chapter 1&#34;)
+let chapterOne = Chapter("Chapter 1")
 mediaSession.startChapter(chapterOne)
 mediaSession.endChapter()
-let adBreak = AdBreak(&#34;Ad Break 2&#34;)
+let adBreak = AdBreak("Ad Break 2")
 mediaSession.startAdBreak(adBreak)
-let thirdAd = Ad(&#34;Ad 3&#34;)
+let thirdAd = Ad("Ad 3")
 mediaSession.startAd(thirdAd)
 // ...
 mediaSession.endAd()
 mediaSession.endAdBreak()
-let chapterTwo = Chapter(&#34;Chapter 2&#34;)
+let chapterTwo = Chapter("Chapter 2")
 mediaSession.startChapter(chapterTwo)
 mediaSession.endChapter()
 
-let adBreak = AdBreak(&#34;Ad Break 3&#34;)
+let adBreak = AdBreak("Ad Break 3")
 mediaSession.startAdBreak(adBreak)
-let fourthAd = Ad(&#34;Ad 4&#34;)
+let fourthAd = Ad("Ad 4")
 mediaSession.startAd(fourthAd)
 mediaSession.endAd()
-let fifthAd = Ad(&#34;Ad 5&#34;)
+let fifthAd = Ad("Ad 5")
 mediaSession.startAd(fifthAd)
 mediaSession.endAd()
 mediaSession.endAdBreak()
-let chapterThree = Chapter(&#34;Chapter 3&#34;)
+let chapterThree = Chapter("Chapter 3")
 mediaSession.startChapter(chapterThree)
 mediaSession.startBuffer()
 mediaSession.endBuffer()
@@ -218,11 +218,11 @@ mediaSession.endSession()  // end of session
 
 ### Session Abandonment
 
-The following example shows when the user abandons the session, the app is backgrounded and media stops playing. With the Media module enabled, the [`endSession()`](/platforms/ios-swift/api/media-session/#endsession) method is triggered after 1 minute before the session is terminated. When the user opens the app again, the media session resumes.
+The following example shows when the user abandons the session, the app is backgrounded and media stops playing. With the Media module enabled, the [`endSession()`](https://docs.tealium.com/platforms/ios-swift/api/media-session/#endsession) method is triggered after 1 minute before the session is terminated. When the user opens the app again, the media session resumes.
 
 ```swift
 let media = MediaContent(
-  name: &#34;What is the Tealium Customer Data Hub?&#34;,
+  name: "What is the Tealium Customer Data Hub?",
   trackingType: .fullPlayback
   streamType: .vod,
   mediaType: .video,
@@ -231,23 +231,23 @@ let media = MediaContent(
 )
 let mediaSession = tealium?.media?.createSession(from: media)                                
 mediaSession.startSession()
-let adBreak = AdBreak(&#34;Ad Break 1&#34;)
+let adBreak = AdBreak("Ad Break 1")
 mediaSession.startAdBreak(adBreak)
-let ad = Ad(&#34;Ad 1&#34;)
+let ad = Ad("Ad 1")
 mediaSession.startAd(ad)
 // ...
 mediaSession.endAd()
-let secondAd = Ad(&#34;Ad 2&#34;)
+let secondAd = Ad("Ad 2")
 mediaSession.startAd(secondAd)
 mediaSession.endAd()
 mediaSession.endAdBreak()
 mediaSession.play()
 // app goes into background and media does not continue playing
 mediaSession.pause()
-// Tealium&#39;s background media tracking is enabled, so the endSession is triggered after 1 minute
+// Tealium's background media tracking is enabled, so the endSession is triggered after 1 minute
 // User opens app again, and media continues
 mediaSession.resumeSession() // resume event
-let adBreak = AdBreak(&#34;Ad Break 2&#34;)
+let adBreak = AdBreak("Ad Break 2")
 mediaSession.startAdBreak(adBreak)
 // User closes app - session abandoned (no endContent event)
 mediaSession.endSession() // end of session

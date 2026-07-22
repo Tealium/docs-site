@@ -12,12 +12,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/chameleon-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[Connector Overview](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **APIキー**
-  * APIキーはここで見つけることができます：[https://www.trychameleon.com/integrations](https://www.trychameleon.com/integrations&amp;quot;&amp;gt;https://www.trychameleon.com/integrations)
+  * APIキーはここで見つけることができます：[https://www.trychameleon.com/integrations](https://www.trychameleon.com/integrations&quot;&gt;https://www.trychameleon.com/integrations)
 
 ## アクション構成 - パラメータとオプション
 
@@ -31,9 +31,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/chameleon-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                            |
 |:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユーザーID       | &lt;ul&gt;&lt;li&gt;あなたのデータベースでユーザーを一意に識別するID。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：[Send User Properties](https://help.trychameleon.com/articles/1229862-send-user-properties)&lt;/li&gt;&lt;/ul&gt; |
-| メール         | &lt;ul&gt;&lt;li&gt;有効なメールアドレスで、有効化した統合でデータを連携します。&lt;/li&gt;&lt;/ul&gt;                                                                                                                       |
-| ユーザーデータ     | &lt;ul&gt;&lt;li&gt;ユーザーに関連するすべてのパラメータ。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                            |
+| ユーザーID       | <ul><li>あなたのデータベースでユーザーを一意に識別するID。</li><li>詳細については、次を参照してください：[Send User Properties](https://help.trychameleon.com/articles/1229862-send-user-properties)</li></ul> |
+| メール         | <ul><li>有効なメールアドレスで、有効化した統合でデータを連携します。</li></ul>                                                                                                                       |
+| ユーザーデータ     | <ul><li>ユーザーに関連するすべてのパラメータ。</li></ul>                                                                                                                                            |
 
 ### アクション - ユーザー更新
 
@@ -41,6 +41,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/chameleon-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                            |
 |:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ユーザーID       | &lt;ul&gt;&lt;li&gt;あなたのデータベースでユーザーを一意に識別するID。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：[Send User Properties](https://help.trychameleon.com/articles/1229862-send-user-properties)&lt;/li&gt;&lt;/ul&gt; |
-| メール         | &lt;ul&gt;&lt;li&gt;有効なメールアドレスで、有効化した統合でデータを連携します。&lt;/li&gt;&lt;/ul&gt;                                                                                                                       |
-| ユーザーデータ     | &lt;ul&gt;&lt;li&gt;ユーザーに関連するすべてのパラメータ。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                            |
+| ユーザーID       | <ul><li>あなたのデータベースでユーザーを一意に識別するID。</li><li>詳細については、次を参照してください：[Send User Properties](https://help.trychameleon.com/articles/1229862-send-user-properties)</li></ul> |
+| メール         | <ul><li>有効なメールアドレスで、有効化した統合でデータを連携します。</li></ul>                                                                                                                       |
+| ユーザーデータ     | <ul><li>ユーザーに関連するすべてのパラメータ。</li></ul>                                                                                                                                            |

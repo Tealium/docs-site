@@ -28,7 +28,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piwik-pro-tag/
 
 ## タグ構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Piwik PROタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Piwik PROタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -69,7 +69,7 @@ url: https://docs.tealium.com/ja/client-side-tags/piwik-pro-tag/
 
 ### データマッピング
 
-マッピングとは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -77,94 +77,94 @@ url: https://docs.tealium.com/ja/client-side-tags/piwik-pro-tag/
 
 | 変数                             | 説明                                                  |
 | ------------------------------------ | ------------------------------------------------------------ |
-| `appId`                              | &lt;ul&gt;&lt;li&gt;App ID。&lt;/li&gt;&lt;/ul&gt;                                    |
-| `base_url`                           | &lt;ul&gt;&lt;li&gt;PPASインスタンスアドレス。&lt;/li&gt;&lt;/ul&gt;                     |
-| `tracking_url`                       | &lt;ul&gt;&lt;li&gt;Analytics Tracker URL。&lt;/li&gt;&lt;/ul&gt;                     |
-| `category`                           | &lt;ul&gt;&lt;li&gt;イベントカテゴリ。&lt;/li&gt;&lt;/ul&gt;                            |
-| `action`                             | &lt;ul&gt;&lt;li&gt;イベントアクション。&lt;/li&gt;&lt;/ul&gt;                              |
-| `name`                               | &lt;ul&gt;&lt;li&gt;イベント名。&lt;/li&gt;&lt;/ul&gt;                                |
-| `value`                              | &lt;ul&gt;&lt;li&gt;イベント値。&lt;/li&gt;&lt;/ul&gt;                               |
-| `goal_name`                          | &lt;ul&gt;&lt;li&gt;ゴール名。&lt;/li&gt;&lt;/ul&gt;                                 |
-| `goal_value`                         | &lt;ul&gt;&lt;li&gt;ゴール値。&lt;/li&gt;&lt;/ul&gt;                                |
-| `title`                              | &lt;ul&gt;&lt;li&gt;カスタムページ名/ドキュメントタイトル。&lt;/li&gt;&lt;/ul&gt;           |
-| `beat`                               | &lt;ul&gt;&lt;li&gt;ハートビートリクエスト間の時間。&lt;/li&gt;&lt;/ul&gt;           |
-| `keyword`                            | &lt;ul&gt;&lt;li&gt;キーワード&lt;/li&gt;&lt;/ul&gt;                                    |
-| `searchCount`                        | &lt;ul&gt;&lt;li&gt;検索数&lt;/li&gt;&lt;/ul&gt;                               |
-| `isAnonymous`                        | &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;li&gt;匿名トラッキングを有効にする。&lt;/li&gt;&lt;/ul&gt; |
-| `CustomUrl`                          | &lt;ul&gt;&lt;li&gt;カスタムURL&lt;/li&gt;&lt;/ul&gt;                                 |
-| `ReferrerUrl`                        | &lt;ul&gt;&lt;li&gt;リファラーURL。&lt;/li&gt;&lt;/ul&gt;                              |
-| `cookieDomain`                       | &lt;ul&gt;&lt;li&gt;Cookieドメイン。&lt;/li&gt;&lt;/ul&gt;                             |
-| `cookiePath`                         | &lt;ul&gt;&lt;li&gt;Cookieパス。&lt;/li&gt;&lt;/ul&gt;                               |
-| `updateTimingDataOnPageLoadSampling` | &lt;ul&gt;&lt;li&gt;ページロードサンプリング時にタイミングデータを更新する。&lt;/li&gt;&lt;/ul&gt;  |
-| `enableHeartBeatTimer`               | &lt;ul&gt;&lt;li&gt;ハートビートタイマーを有効にする。&lt;/li&gt;&lt;/ul&gt;                   |
-| `sendPageView`  | &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;li&gt;ページビューを送信する&lt;/li&gt;&lt;/ul&gt;  |
+| `appId`                              | <ul><li>App ID。</li></ul>                                    |
+| `base_url`                           | <ul><li>PPASインスタンスアドレス。</li></ul>                     |
+| `tracking_url`                       | <ul><li>Analytics Tracker URL。</li></ul>                     |
+| `category`                           | <ul><li>イベントカテゴリ。</li></ul>                            |
+| `action`                             | <ul><li>イベントアクション。</li></ul>                              |
+| `name`                               | <ul><li>イベント名。</li></ul>                                |
+| `value`                              | <ul><li>イベント値。</li></ul>                               |
+| `goal_name`                          | <ul><li>ゴール名。</li></ul>                                 |
+| `goal_value`                         | <ul><li>ゴール値。</li></ul>                                |
+| `title`                              | <ul><li>カスタムページ名/ドキュメントタイトル。</li></ul>           |
+| `beat`                               | <ul><li>ハートビートリクエスト間の時間。</li></ul>           |
+| `keyword`                            | <ul><li>キーワード</li></ul>                                    |
+| `searchCount`                        | <ul><li>検索数</li></ul>                               |
+| `isAnonymous`                        | <ul><li>ブール値</li><li>匿名トラッキングを有効にする。</li></ul> |
+| `CustomUrl`                          | <ul><li>カスタムURL</li></ul>                                 |
+| `ReferrerUrl`                        | <ul><li>リファラーURL。</li></ul>                              |
+| `cookieDomain`                       | <ul><li>Cookieドメイン。</li></ul>                             |
+| `cookiePath`                         | <ul><li>Cookieパス。</li></ul>                               |
+| `updateTimingDataOnPageLoadSampling` | <ul><li>ページロードサンプリング時にタイミングデータを更新する。</li></ul>  |
+| `enableHeartBeatTimer`               | <ul><li>ハートビートタイマーを有効にする。</li></ul>                   |
+| `sendPageView`  | <ul><li>ブール値</li><li>ページビューを送信する</li></ul>  |
 
 
 #### コンテンツトラッキング
 
 |変数| 説明|
 |---| ---|
-|`trackAllContentImpressions`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;li&gt;すべてのコンテンツの印象を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`checkOnScroll`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;li&gt;スクロール時の印象チェック。&lt;/li&gt;&lt;/ul&gt; |
-| `watchInterval` |  &lt;ul&gt;&lt;li&gt;印象のウォッチ間隔。&lt;/li&gt;&lt;/ul&gt; |
-| `impressionDomNode` |  &lt;ul&gt;&lt;li&gt;印象のDomノード。&lt;/li&gt;&lt;/ul&gt; |
-|`domNode`|  &lt;ul&gt;&lt;li&gt;インタラクションのDomノード。&lt;/li&gt;&lt;/ul&gt; |
-| `contentInteraction` |  &lt;ul&gt;&lt;li&gt;コンテンツインタラクション名。&lt;/li&gt;&lt;/ul&gt; |
-|`contentName`|  &lt;ul&gt;&lt;li&gt;コンテンツ名。&lt;/li&gt;&lt;/ul&gt; |
-|`contentPiece`|  &lt;ul&gt;&lt;li&gt;コンテンツピース。&lt;/li&gt;&lt;/ul&gt; |
-|`contentTarget`|  &lt;ul&gt;&lt;li&gt;コンテンツターゲット。&lt;/li&gt;&lt;/ul&gt; |
+|`trackAllContentImpressions`|  <ul><li>ブール値</li><li>すべてのコンテンツの印象を追跡する。</li></ul> |
+|`checkOnScroll`|  <ul><li>ブール値</li><li>スクロール時の印象チェック。</li></ul> |
+| `watchInterval` |  <ul><li>印象のウォッチ間隔。</li></ul> |
+| `impressionDomNode` |  <ul><li>印象のDomノード。</li></ul> |
+|`domNode`|  <ul><li>インタラクションのDomノード。</li></ul> |
+| `contentInteraction` |  <ul><li>コンテンツインタラクション名。</li></ul> |
+|`contentName`|  <ul><li>コンテンツ名。</li></ul> |
+|`contentPiece`|  <ul><li>コンテンツピース。</li></ul> |
+|`contentTarget`|  <ul><li>コンテンツターゲット。</li></ul> |
 
 #### ダウンロードとアウトリンクトラッキング
 
 |変数| 説明|
 |---| ---|
-|`link_tracking`|  &lt;ul&gt;&lt;li&gt;ブール値&lt;/li&gt;&lt;li&gt;リンクトラッキングを有効にする。&lt;/li&gt;&lt;/ul&gt; |
-|`domains`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;エイリアスドメインを無視する。&lt;/li&gt;&lt;/ul&gt; |
-|`outLinkClassName`|  &lt;ul&gt;&lt;li&gt;アウトリンククラス名。&lt;/li&gt;&lt;/ul&gt; |
-|`linkAddress`|  &lt;ul&gt;&lt;li&gt;リンクアドレス。&lt;/li&gt;&lt;/ul&gt; |
-|`addDownloadExtensions`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;ダウンロード拡張子を追加する。&lt;/li&gt;&lt;/ul&gt; |
-|`setDownloadExtensions`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;デフォルトの拡張子を置き換える。&lt;/li&gt;&lt;/ul&gt; |
-|`setDownloadClassName`|  &lt;ul&gt;&lt;li&gt;ダウンロードクラス名を構成する。&lt;/li&gt;&lt;/ul&gt; |
-|`time`|  &lt;ul&gt;&lt;li&gt;リンクトラッキング遅延。&lt;/li&gt;&lt;/ul&gt; |
-|`setIgnoreClasses`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;アウトリンクトラッキングクラスを無効にする。&lt;/li&gt;&lt;/ul&gt; |
+|`link_tracking`|  <ul><li>ブール値</li><li>リンクトラッキングを有効にする。</li></ul> |
+|`domains`|  <ul><li>配列</li><li>エイリアスドメインを無視する。</li></ul> |
+|`outLinkClassName`|  <ul><li>アウトリンククラス名。</li></ul> |
+|`linkAddress`|  <ul><li>リンクアドレス。</li></ul> |
+|`addDownloadExtensions`|  <ul><li>配列</li><li>ダウンロード拡張子を追加する。</li></ul> |
+|`setDownloadExtensions`|  <ul><li>配列</li><li>デフォルトの拡張子を置き換える。</li></ul> |
+|`setDownloadClassName`|  <ul><li>ダウンロードクラス名を構成する。</li></ul> |
+|`time`|  <ul><li>リンクトラッキング遅延。</li></ul> |
+|`setIgnoreClasses`|  <ul><li>配列</li><li>アウトリンクトラッキングクラスを無効にする。</li></ul> |
 
 #### イベント
 
 |変数| 説明|
 |---| ---|
-|`trackEvent`|  &lt;ul&gt;&lt;li&gt;カスタムイベントをトリガーする。&lt;/li&gt;&lt;/ul&gt; |
-|`trackGoal`|  &lt;ul&gt;&lt;li&gt;ゴールのコンバージョンを追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`addEcommerceItem`|  &lt;ul&gt;&lt;li&gt;Eコマースアイテムを追加する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackEcommerceOrder`|  &lt;ul&gt;&lt;li&gt;Eコマースの注文を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackEcommerceCartUpdate`|  &lt;ul&gt;&lt;li&gt;カートを更新する。&lt;/li&gt;&lt;/ul&gt; |
-|`setEcommerceView`|  &lt;ul&gt;&lt;li&gt;商品/カテゴリビューを追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackAllContentImpressions`|  &lt;ul&gt;&lt;li&gt;ページ内のすべてのコンテンツの印象を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackVisibleContentImpressions`|  &lt;ul&gt;&lt;li&gt;すべての表示コンテンツの印象を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentImpressionsWithinNode`|  &lt;ul&gt;&lt;li&gt;特定のページ部分のみのコンテンツの印象を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentInteractionNode`|  &lt;ul&gt;&lt;li&gt;自動検出で手動でインタラクションを追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentImpression`|  &lt;ul&gt;&lt;li&gt;手動で印象を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentInteraction`|  &lt;ul&gt;&lt;li&gt;手動でユーザーのインタラクションを追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackLink`|  &lt;ul&gt;&lt;li&gt;JS関数を使用してダウンロードの強制追跡を行う。&lt;/li&gt;&lt;/ul&gt; |
-|`setUserId`|  &lt;ul&gt;&lt;li&gt;UserIdを構成する。&lt;/li&gt;&lt;/ul&gt; |
-|`resetUserId`|  &lt;ul&gt;&lt;li&gt;UserIdをリセットする。&lt;/li&gt;&lt;/ul&gt; |
-|`setDocumentTitle`|  &lt;ul&gt;&lt;li&gt;カスタムページ名を構成する。&lt;/li&gt;&lt;/ul&gt; |
-|`trackSiteSearch`|  &lt;ul&gt;&lt;li&gt;サイト検索を追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`setUserIsAnonymous`|  &lt;ul&gt;&lt;li&gt;ユーザーを匿名で追跡する。&lt;/li&gt;&lt;/ul&gt; |
-|`deanonymizeUser`|  &lt;ul&gt;&lt;li&gt;匿名でのユーザー追跡を無効にする（訪問の同意後）。&lt;/li&gt;&lt;/ul&gt; |
+|`trackEvent`|  <ul><li>カスタムイベントをトリガーする。</li></ul> |
+|`trackGoal`|  <ul><li>ゴールのコンバージョンを追跡する。</li></ul> |
+|`addEcommerceItem`|  <ul><li>Eコマースアイテムを追加する。</li></ul> |
+|`trackEcommerceOrder`|  <ul><li>Eコマースの注文を追跡する。</li></ul> |
+|`trackEcommerceCartUpdate`|  <ul><li>カートを更新する。</li></ul> |
+|`setEcommerceView`|  <ul><li>商品/カテゴリビューを追跡する。</li></ul> |
+|`trackAllContentImpressions`|  <ul><li>ページ内のすべてのコンテンツの印象を追跡する。</li></ul> |
+|`trackVisibleContentImpressions`|  <ul><li>すべての表示コンテンツの印象を追跡する。</li></ul> |
+|`trackContentImpressionsWithinNode`|  <ul><li>特定のページ部分のみのコンテンツの印象を追跡する。</li></ul> |
+|`trackContentInteractionNode`|  <ul><li>自動検出で手動でインタラクションを追跡する。</li></ul> |
+|`trackContentImpression`|  <ul><li>手動で印象を追跡する。</li></ul> |
+|`trackContentInteraction`|  <ul><li>手動でユーザーのインタラクションを追跡する。</li></ul> |
+|`trackLink`|  <ul><li>JS関数を使用してダウンロードの強制追跡を行う。</li></ul> |
+|`setUserId`|  <ul><li>UserIdを構成する。</li></ul> |
+|`resetUserId`|  <ul><li>UserIdをリセットする。</li></ul> |
+|`setDocumentTitle`|  <ul><li>カスタムページ名を構成する。</li></ul> |
+|`trackSiteSearch`|  <ul><li>サイト検索を追跡する。</li></ul> |
+|`setUserIsAnonymous`|  <ul><li>ユーザーを匿名で追跡する。</li></ul> |
+|`deanonymizeUser`|  <ul><li>匿名でのユーザー追跡を無効にする（訪問の同意後）。</li></ul> |
 
 #### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;注文合計&lt;/li&gt;&lt;li&gt;`_ctotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;送料&lt;/li&gt;&lt;li&gt;`_cship`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;税金&lt;/li&gt;&lt;li&gt;`_ctax`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;li&gt;`_ccustid`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品IDのリスト。&lt;/li&gt;&lt;li&gt;`_cprod`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;名前のリスト。&lt;/li&gt;&lt;li&gt;`_cprodname`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;カテゴリのリスト&lt;/li&gt;&lt;li&gt;`_ccat`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト。&lt;/li&gt;&lt;li&gt;`_cquan`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト。&lt;/li&gt;&lt;li&gt;`_cprice`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_discount`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;割引のリスト。&lt;/li&gt;&lt;li&gt;`_cpdisc`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文ID</li><li>`_corder`を上書きします。</li></ul> |
+|`order_total`|  <ul><li>注文合計</li><li>`_ctotal`を上書きします。</li></ul> |
+|`order_subtotal`|  <ul><li>小計</li><li>`_csubtotal`を上書きします。</li></ul> |
+|`order_shipping`|  <ul><li>送料</li><li>`_cship`を上書きします。</li></ul> |
+|`order_tax`|  <ul><li>税金</li><li>`_ctax`を上書きします。</li></ul> |
+|`customer_id`|  <ul><li>顧客ID</li><li>`_ccustid`を上書きします。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>商品IDのリスト。</li><li>`_cprod`を上書きします。</li></ul> |
+|`product_name`|  <ul><li>配列</li><li>名前のリスト。</li><li>`_cprodname`を上書きします。</li></ul> |
+|`product_category`|  <ul><li>配列</li><li>カテゴリのリスト</li><li>`_ccat`を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量のリスト。</li><li>`_cquan`を上書きします。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>価格のリスト。</li><li>`_cprice`を上書きします。</li></ul> |
+|`product_discount`|  <ul><li>配列</li><li>割引のリスト。</li><li>`_cpdisc`を上書きします。</li></ul> |

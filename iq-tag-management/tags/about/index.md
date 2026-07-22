@@ -7,12 +7,12 @@ A *tag* is a term used in the web technology and analytics industry to describe 
 Tags are commonly used by marketers to measure the effectiveness of online advertising, email marketing, site personalization, and conversion tracking (among many other uses). This is accomplished by collecting data from the webpage. The most common way to implement a tag on a website is with JavaScript code.
 
 
-![](/images/iq-tag-management/what-are-tags.png)
+![](https://docs.tealium.com/images/iq-tag-management/what-are-tags.png)
 
 ## How tags work
 
 * **No coding necessary** 
-Setting up a tag does not require any coding. A tag in iQ Tag Management offers a user-friendly interface to configure and deploy a vendor&#39;s tag to your site.
+Setting up a tag does not require any coding. A tag in iQ Tag Management offers a user-friendly interface to configure and deploy a vendor's tag to your site.
 * **Deploy tags directly from iQ Tag Management**  
 After the Universal tag (utag.js) is added to your site, tags added in your account configuration are loaded directly on your site after you publish your changes.
 * **Multi-functional tags**  

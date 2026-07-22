@@ -3,21 +3,33 @@ title: Moments APIエンジンの管理
 description: この記事では、Moments APIエンジンの作成と管理方法について説明します。
 url: https://docs.tealium.com/ja/server-side/moments-api/manage/
 ---
+
+<blockquote>
 Moments APIをアカウントで有効にするには、アカウントマネージャーに連絡してください。
+</blockquote>
+
 
 ## エンジンの作成
 
+
+<blockquote>
 エンジン属性を選択する前に、プロファイルの変更が公開されていることを確認してください。
+</blockquote>
+
 
 エンジンを作成するには、次の手順を完了します：
 
-1. **Activate &gt; Moments API** に移動し、**&#43; New Engine** をクリックします。
+1. **Activate > Moments API** に移動し、**+ New Engine** をクリックします。
 1. **Details** 画面で、以下のエンジン詳細を構成します：
     * **Name**: エンジンの名前を入力します。
     * **Enable Engine**: エンジンをオンまたはオフに切り替えます。エンジンエンドポイントはデフォルトでオフです。エンジンを有効にし、訪問がアクティブなセッションを記録し、システムでイベントを生成した後、訪問のデータが利用可能になります。
-    * **Domain Allow List**: このエンドポイントを使用できるドメインを指定します。詳細については、[About Moments API &gt; Domain allow list]()を参照してください。
+    * **Domain Allow List**: このエンドポイントを使用できるドメインを指定します。詳細については、[About Moments API > Domain allow list](https://docs.tealium.com/about-moments-api/#domain-allowlist)を参照してください。
 1. **Next** をクリックします。
-1. **Response** 画面で、エンジンに含めるオーディエンス、バッジ、および属性を選択します。**Example Response** パネルを使用して選択を確認します。 **Select all current and future audiences** 機能を使用する場合、オーディエンスが後で削除された場合でも、エンジンデータを消去するか、データが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。
+1. **Response** 画面で、エンジンに含めるオーディエンス、バッジ、および属性を選択します。**Example Response** パネルを使用して選択を確認します。
+<blockquote>
+**Select all current and future audiences** 機能を使用する場合、オーディエンスが後で削除された場合でも、エンジンデータを消去するか、データが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。
+</blockquote>
+
 1. ペイロードでオーディエンスと訪問属性のID（UID）または名前を使用するかどうかを選択します。大きなレスポンスでIDの代わりにオーディエンス、バッジ、および属性の名前を使用すると、ペイロードサイズに影響を与える可能性があります。
 1. **Next** をクリックしてエンジンを作成します。
 1. **Summary** 画面で、エンドポイントの詳細を含む一意のエンドポイントURLを確認します。
@@ -29,11 +41,15 @@ Moments APIをアカウントで有効にするには、アカウントマネー
 
 エンジンを編集するには、Moments API画面に移動し、更新したいエンジンをクリックします。**Edit Engine** 画面から、エンジンの詳細とレスポンス構成を更新し、エンジンデータを消去し、必要に応じてエンジンをオンまたはオフに切り替えることができます。
 
+
+<blockquote>
 エンジンを編集した後、プロファイルを公開する必要はありません。Moments APIエンジンの変更は、構成変更を保存してから5分後に利用可能になります。
+</blockquote>
+
 
 ## データの消去
 
-エンジンで使用されているオーディエンス、バッジ、属性がユーザーによって削除または名前が変更された場合、エンドポイントのレスポンスに予期しない結果が生じる可能性があります。このような場合、エンジンデータを消去することを検討するかもしれません。データの消去についての詳細は、[About Moments API &gt; Purge Data]()を参照してください。
+エンジンで使用されているオーディエンス、バッジ、属性がユーザーによって削除または名前が変更された場合、エンドポイントのレスポンスに予期しない結果が生じる可能性があります。このような場合、エンジンデータを消去することを検討するかもしれません。データの消去についての詳細は、[About Moments API > Purge Data](https://docs.tealium.com/about-moments-api/#purge-data)を参照してください。
 
 必要に応じてエンジンデータを消去するための2つの方法がMoments APIにはあります：
 

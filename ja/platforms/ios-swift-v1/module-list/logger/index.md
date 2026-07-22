@@ -24,10 +24,10 @@ CocoaPodsまたはCarthageでロガーモジュールをインストールしま
 
 CocoaPodsでロガーモジュールをインストールするには、以下のpodをPodfileに追加します：  
 ```ruby
-pod &#39;tealium-swift/TealiumLogger&#39;
+pod 'tealium-swift/TealiumLogger'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存性があります。iOSのCocoaPodsインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存性があります。iOSのCocoaPodsインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
 
 ### Carthage
 
@@ -40,7 +40,7 @@ Carthageでロガーモジュールをインストールするには、以下の
       TealiumLogger.framework
       ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存性があります。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存性があります。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
 
 ## データレイヤー
 このモジュールによって新たな変数は導入されません。

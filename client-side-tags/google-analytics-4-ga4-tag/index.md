@@ -37,12 +37,12 @@ For more information about migrating to GA4 from Google Universal Analytics, see
 
 ## Configuring the Google Analytics 4 tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Measurement ID**
-  * Measurement ID of the Google Analytics property for which you want to send data. The measurement ID begins with &#34;G-&#34;. For example, `G-12345678M`.
+  * Measurement ID of the Google Analytics property for which you want to send data. The measurement ID begins with "G-". For example, `G-12345678M`.
   * Use a comma-separated list of measurement IDs to send data for multiple GA4 properties.
 * **Global Object**
   * The name of the Global Object used for the event queue.
@@ -59,7 +59,7 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## GA4 event types
 
@@ -72,7 +72,7 @@ GA4 is event-based and provides the following types of events:
 
 The following diagram shows how to determine which type of event you need for your use case:
 
-![](/images/client-side-tags/ga4-flowchart-event-type-v3.png)
+![](https://docs.tealium.com/images/client-side-tags/ga4-flowchart-event-type-v3.png)
 
 ### Automatic events
 
@@ -80,11 +80,11 @@ GA4 automatically generates some events, with no configuration required. For mor
 
 ### Enhanced measurement events
 
-You can enable enhanced measurement options (events) in the Google Analytics interface to measure interactions with your content. No configuration in Tealium iQ is required. When you enable enhanced measurement options, additional events are sent that provide information on user activity such as file downloads and searches. For more information, see the GA4 documentation for [Enhanced Measurement Events](https://support.google.com/analytics/answer/9216061?hl=en&amp;ref_topic=9756175).
+You can enable enhanced measurement options (events) in the Google Analytics interface to measure interactions with your content. No configuration in Tealium iQ is required. When you enable enhanced measurement options, additional events are sent that provide information on user activity such as file downloads and searches. For more information, see the GA4 documentation for [Enhanced Measurement Events](https://support.google.com/analytics/answer/9216061?hl=en&ref_topic=9756175).
 
 ### Recommended events
 
-GA4 provides recommended events, including events recommended for all sites, as well as events specific to online sales and to games. Each recommended event has one or more parameters that provide additional context for the event. For more information on these events and their parameters, see the Google [Recommended Events](https://support.google.com/analytics/answer/9267735?hl=en&amp;ref_topic=9756175) documentation.
+GA4 provides recommended events, including events recommended for all sites, as well as events specific to online sales and to games. Each recommended event has one or more parameters that provide additional context for the event. For more information on these events and their parameters, see the Google [Recommended Events](https://support.google.com/analytics/answer/9267735?hl=en&ref_topic=9756175) documentation.
 
 ### Dynamic Events Trigger
 
@@ -94,7 +94,7 @@ For example:
 
 1. Map `event_name` to the Dynamic Events Trigger.
 1. Map `variable1` to `variable2`.
-1. If the data layer is `{event_name:&#39;value&#39;,variable1:&#39;abc&#39;}`, then the tag triggers `gtag(&#39;event&#39;,&#39;value&#39;,{variable2:&#39;abc&#39;})`.
+1. If the data layer is `{event_name:'value',variable1:'abc'}`, then the tag triggers `gtag('event','value',{variable2:'abc'})`.
 
 | Variable | Description |
 |:---------|:------------|
@@ -110,11 +110,11 @@ To use Dynamic Events Trigger, you must update your template to the May 26, 2023
 1. If you customized your tag template, edit the template to include those customizations.
 1. Click **Update** to update the template.
 
-For more information, see [Manage Templates]().
+For more information, see [Manage Templates](https://docs.tealium.com/manage-templates/).
 
 ### Custom events
 
-If your event does not fit one of the event types described above, send a custom event. For more information, see [GA4 Custom Events](https://support.google.com/analytics/answer/12229021?hl=en&amp;ref_topic=9756175).
+If your event does not fit one of the event types described above, send a custom event. For more information, see [GA4 Custom Events](https://support.google.com/analytics/answer/12229021?hl=en&ref_topic=9756175).
 
 ## Event mapping examples
 
@@ -131,19 +131,19 @@ For the login event, the following data is sent to Tealium iQ in a `utag.link` c
 
 ```
 utag.link({
-   &#34;tealium_event&#34; : &#34;sign in&#34;,
-   &#34;signin_method&#34; : &#34;email&#34;
+   "tealium_event" : "sign in",
+   "signin_method" : "email"
  });
 ```
 
 Login is one of the GA4 recommended events, and has one parameter, `method`, that indicates how the user logged in. When you configure the GA4 tag, use the mapping toolbox to map the `tealium_event` and `signin_method` variables, as follows:
 
 * `tealium_event` – Select **Event Triggers** for the **Category**, and then enter `sign in` in the **Trigger** field and select `login` for **Event**.   
-![](/images/client-side-tags/map-tealium-event.png)
+![](https://docs.tealium.com/images/client-side-tags/map-tealium-event.png)
 * `signin_method` – Select **Event-specific Parameters** for the **Category**, and then enter `method` in the **Event parameter** field and select `login` for **For event**.  
-![](/images/client-side-tags/map-signin-method.png)
+![](https://docs.tealium.com/images/client-side-tags/map-signin-method.png)
 
-For more information on mapping variables, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 ### Contact Us link event example
 
@@ -151,16 +151,16 @@ For the contact us link event, the following data is sent to Tealium iQ in a `ut
 
 ```
 utag.link({
-   &#34;tealium_event&#34; : &#34;contact us&#34;
+   "tealium_event" : "contact us"
  });
 ```
 
-This event is not one of the GA4 recommended events, so it&#39;s mapped as a custom event, as follows:
+This event is not one of the GA4 recommended events, so it's mapped as a custom event, as follows:
 
 * `tealium_event` – Select **Event Triggers** for the **Category**, and then enter `contact us` in the **Trigger** field. Select `Custom Event` for **Event** and enter `contact_us_click` in the **Custom Name** field.  
-![](/images/client-side-tags/map-contactus-example.png)
+![](https://docs.tealium.com/images/client-side-tags/map-contactus-example.png)
 
-For more information on mapping variables, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 ## Tracking e-commerce events
 
@@ -174,7 +174,7 @@ GA4 has ecommerce events that are equivalent to the enhanced ecommerce events fo
 
 Some ecommerce events have an `items` parameter. For these events, the `items` array is automatically populated from E-commerce extension values, such as product name, category, and price.
 
-For more information, see [E-commerce Extension]().
+For more information, see [E-commerce Extension](https://docs.tealium.com/e-commerce-extension/).
 
 ### Custom items
 
@@ -196,7 +196,7 @@ Google Universal Analytics has four scopes:
 * User (similar to User in GA4)
 * Product
 
-When translating requirements from Google Universal Analytics to GA4, consider passing session-scoped variables as user-scoped variables where reasonable. Product-scoped variables can be passed as e-commerce parameters. For more information, see [Universal Analytics versus Google Analytics 4 data &gt; Custom dimensions/metrics](https://support.google.com/analytics/answer/9964640?hl=en#custom-dim)
+When translating requirements from Google Universal Analytics to GA4, consider passing session-scoped variables as user-scoped variables where reasonable. Product-scoped variables can be passed as e-commerce parameters. For more information, see [Universal Analytics versus Google Analytics 4 data > Custom dimensions/metrics](https://support.google.com/analytics/answer/9964640?hl=en#custom-dim)
 
 ### User properties
 
@@ -204,7 +204,7 @@ GA4 collects user-scoped properties, which describe segments of your visitors, s
 
 To set user properties, choose the data layer variable to map, then select the **User Properties** category and enter the GA4 property name. The mapping is added in the format `set.user_properties.USER_PROPERTY` where `USER_PROPERTY` represents the GA4 property name.
 
-![](/images/client-side-tags/ga4-user-property.png)
+![](https://docs.tealium.com/images/client-side-tags/ga4-user-property.png)
 
 ### User provided data
 

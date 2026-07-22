@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/elastic-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Authentication type**: Select the authentication type.
@@ -18,7 +18,7 @@ To create a data stream:
 
 1. Under **Remote Configuration**, click **Create Data Stream**.
 1. Enter the **Data stream name**.
-1. Click **Create Data Stream &amp; Close**.
+1. Click **Create Data Stream & Close**.
 
 ## Actions
 
@@ -42,7 +42,7 @@ To create a data stream:
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -62,7 +62,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -73,7 +77,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Event Data | Configure how event payload keys are emitted. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
@@ -82,7 +86,7 @@ Optional parameters that control how documents are indexed.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300,000
 * Max time since oldest request: 60 minutes
@@ -93,7 +97,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -113,7 +117,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -124,7 +132,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Event Data | Configure how event payload keys are emitted. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
@@ -137,7 +145,7 @@ Optional parameters that control how documents are indexed.
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -157,7 +165,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -168,7 +180,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
 
@@ -176,7 +188,7 @@ Optional parameters that control how documents are indexed.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300,000
 * Max time since oldest request: 60 minutes
@@ -187,7 +199,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -207,7 +219,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -218,7 +234,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Event Data | Configure how event payload keys are emitted. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
@@ -231,7 +247,7 @@ Optional parameters that control how documents are indexed.
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -251,7 +267,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -262,7 +282,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
 
@@ -273,7 +293,7 @@ Optional parameters that control how documents are indexed.
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -293,7 +313,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -304,7 +328,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Log event resource attributes | These fields capture information about the entity for which telemetry is recorded. |
 | Log event HTTP attributes | These fields log the HTTP requests and responses within the logging system. To map the entire `http` array to a single column, map the `http` attribute. |
@@ -319,7 +343,7 @@ Optional parameters that control how documents are indexed.
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -339,7 +363,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -350,7 +378,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Visitor Data | Configure how the visitor payload is composed. |
 | Print Attribute Names | Configure how event payload keys are emitted. |
@@ -360,7 +388,7 @@ Optional parameters that control how documents are indexed.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300,000
 * Max time since oldest request: 60 minutes
@@ -371,7 +399,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -391,7 +419,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -402,7 +434,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Event Data | Configure how event payload keys are emitted. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
@@ -414,7 +446,7 @@ Optional parameters that control how documents are indexed.
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -435,7 +467,11 @@ Optional document metadata. Available keys depend on the target type.
 | `version` | Explicit version number for concurrency control. Must be a non-negative long. |
 | Error Handling | Configure how Elastic reports parsing errors. |
 
+
+<blockquote>
 Concurrency-control parameters are not supported for Data streams. Data streams are append-only and enforce first-write-wins semantics, so `primary_term`, `seq_no`, and `version` have no effect. If you need optimistic concurrency control or document updates, target a regular index or its write alias instead of a Data stream.
+</blockquote>
+
 
 #### Indexing behavior
 
@@ -446,7 +482,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
 
@@ -454,7 +490,7 @@ Optional parameters that control how documents are indexed.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300,000
 * Max time since oldest request: 60 minutes
@@ -465,7 +501,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Parameter | Description |
 | --- | --- |
 | Target type | (Required) Specify the target type: **Index** or a **Data stream**. |
-| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream &amp; Close**. |
+| Target | (Required) Specify the target. When target type is **Index**, custom values are accepted (the index is created on the fly if needed). When target type is **Data stream**, select an existing data stream or click **Create Data Stream** to create one. Enter a **Data stream name** and click **Create Data Stream & Close**. |
 
 #### Document details
 
@@ -487,7 +523,7 @@ Optional parameters that control how documents are indexed.
 | `operation_type` | Defines how the document is indexed. `index` overwrites an existing document with the same ID. `create` inserts only and fails if a document with the same ID already exists. Available when target type is **Index** only. |
 | `pipeline` | ID of the ingest pipeline used to preprocess documents. Use `_none` to disable the default ingest pipeline. |
 | `routing` | A custom routing value to direct operations to a specific shard. |
-| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas &#43; 1`). |
+| `wait_for_active_shards` | Minimum shard copies required before proceeding. Default: `1`. Allowed values: `all` or any positive integer up to the total number of shards (`number_of_replicas + 1`). |
 | Refresh | Determines when indexing operations become visible in search. Allowed values: `true`, `false`, `wait_for`. |
 | Custom attributes | Include any additional attributes that you want to add at the root level of the JSON object. |
 | Batch time to live | Time to live for the batch, in minutes. Allowed values: `1` to `60`. Default: `60`. |

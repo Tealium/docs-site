@@ -5,15 +5,23 @@ url: https://docs.tealium.com/server-side/functions/event-visitor-functions/abou
 ---
 Event and visitor functions run at the end of the data pipeline, after the event or visitor is processed. Use event and visitor functions to retrieve data from other systems, augment Tealium data, or send data to other endpoints.
 
-![](/images/server-side/functions-event-visitor-flow.svg)
+![](https://docs.tealium.com/images/server-side/functions-event-visitor-flow.svg)
 
 If your function needs authentication to access an external system, see [Add authentication to a function]().
 
+
+<blockquote>
 At this point in the data pipeline, modifications to the event or visitor data have no effect on other parts of the system. To modify an event, use either event attribute enrichments or an event transformation function. To modify a visitor profile, use visitor attribute enrichments.
+</blockquote>
+
 
 ## Action V2 and Action V3 runtimes
 
+
+<blockquote>
 The Action V2 runtime is obsolete and is no longer supported. Functions that use the V2 runtime are still executing but you cannot save code changes. To save code changes, you need to update the runtime version, which may require changes to the function code. For information on the required code changes, see [Migrate a V2 function to the V3 runtime]().
+</blockquote>
+
 
 The input data for event and visitor functions varies depending on the function type (event or visitor) and the runtime version (Action V2 or Action V3). Functions that use the Action V2 runtime have named exports for input data. Functions that use the Action V3 runtime receive data as input parameters.
 

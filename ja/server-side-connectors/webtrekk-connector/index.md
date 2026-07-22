@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/webtrekk-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -50,6 +50,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/webtrekk-connector/
 |リファラー|
 |ユーザーエージェント|
 |ユーザーIP|
-|E-コマース製品パラメータ|  &lt;ul&gt;&lt;li&gt;Webtrekkに渡すためのキーに配列とリストの値をマップします。&lt;/li&gt;&lt;li&gt;すべての配列とリストは同じ長さであるべきです。&lt;/li&gt;&lt;li&gt;単一値の属性は、値を繰り返す他のすべての配列と同じ長さの配列に展開されます。&lt;/li&gt;&lt;li&gt;Webtrekkに送信できるパラメータのリストについては。&lt;/li&gt;&lt;li&gt;[Webtrekkに送信できるパラメータ](https://support.webtrekk.com/hc/en-us/articles/360000061559-Which-parameters-can-be-sent-to-Webtrekk-)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|テンプレート変数|  &lt;ul&gt;&lt;li&gt;メッセージデータのテンプレート変数を提供します。&lt;/li&gt;&lt;li&gt;参照：[テンプレート変数ガイド]()&lt;/li&gt;&lt;li&gt;ドット表記法でネストしたテンプレート変数を名付けます。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストしたテンプレート変数は通常、データレイヤーリスト属性から構築されます&lt;/li&gt;&lt;/ul&gt; |
-|テンプレート|  &lt;ul&gt;&lt;li&gt;オプション：クエリパラメータで参照されるテンプレートを提供します。&lt;/li&gt;&lt;li&gt;参照：[テンプレートガイド]()&lt;/li&gt;&lt;li&gt;テンプレートは、例：`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。&lt;/li&gt;&lt;/ul&gt; |
+|E-コマース製品パラメータ|  <ul><li>Webtrekkに渡すためのキーに配列とリストの値をマップします。</li><li>すべての配列とリストは同じ長さであるべきです。</li><li>単一値の属性は、値を繰り返す他のすべての配列と同じ長さの配列に展開されます。</li><li>Webtrekkに送信できるパラメータのリストについては。</li><li>[Webtrekkに送信できるパラメータ](https://support.webtrekk.com/hc/en-us/articles/360000061559-Which-parameters-can-be-sent-to-Webtrekk-)を参照してください。</li></ul> |
+|テンプレート変数|  <ul><li>メッセージデータのテンプレート変数を提供します。</li><li>参照：[テンプレート変数ガイド](https://docs.tealium.com/connector-template-variables/)</li><li>ドット表記法でネストしたテンプレート変数を名付けます。例：`items.name`。</li><li>ネストしたテンプレート変数は通常、データレイヤーリスト属性から構築されます</li></ul> |
+|テンプレート|  <ul><li>オプション：クエリパラメータで参照されるテンプレートを提供します。</li><li>参照：[テンプレートガイド](https://docs.tealium.com/about-connector-templates/)</li><li>テンプレートは、例：`{{SomeTemplateName}}`のように、サポートされるフィールドに名前で注入されます。</li></ul> |

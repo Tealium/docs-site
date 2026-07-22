@@ -3,12 +3,16 @@ title: Predictについて
 description: この記事では、Tealium Predict ML製品について説明し、訪問の行動についての予測を行うための機械学習モデルを作成、訓練、デプロイする方法について説明します。
 url: https://docs.tealium.com/ja/server-side/predict/getting-started/about-predict/
 ---
+
+<blockquote>
 Predictに興味がありますか？  
-Predictは、AudienceStreamを持つ顧客向けの追加機能です。すでにTealiumの顧客である場合は、デモを見るためやPredictについて詳しく知るために、カスタマーサクセスマネージャーに連絡してください。新規の顧客の場合は、[こちらから](https://tealium.com/predict-demo/)デモをリクエストしてください。 
+Predictは、AudienceStreamを持つ顧客向けの追加機能です。すでにTealiumの顧客である場合は、デモや詳細については[サポートにお問い合わせください](https://docs.tealium.com/support/)。新規の顧客の場合は、[こちらから](https://tealium.com/predict-demo/)デモをリクエストしてください。
+</blockquote>
+ 
 
 Tealium Predictは、複雑な分野（機械学習）を完全に管理された機能にまで絞り込むTealium AudienceStream CDP製品と共に使用される組み込みの機械学習技術製品です。Tealium PredictはTealium AudienceStreamと連携して、よりインテリジェントなオーディエンスを構築・作成し、信頼性のある機械学習の洞察を活性化します。
 
-![](/images/predict/high-level-predict-flow.png)
+![](https://docs.tealium.com/images/predict/high-level-predict-flow.png)
 
 Tealium Predictを使用すると、訪問の行動について有意義な予測を行うデータモデルを作成、最適化、デプロイすることができ、次のことを決定することができます：
 

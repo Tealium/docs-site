@@ -3,12 +3,16 @@ title: About Predict
 description: This article describes the Tealium Predict ML product and how it is used to create, train, and deploy machine learning models to make predictions about visitor behavior.
 url: https://docs.tealium.com/server-side/predict/getting-started/about-predict/
 ---
+
+<blockquote>
 Interested in Predict?  
-Predict is an add-on feature for customers who have AudienceStream. If you are already a Tealium customer, contact your Customer Success Manager for a demo and to learn more about Predict. If you are a new customer, [contact us](https://tealium.com/predict-demo/) to request a demo. 
+Predict is an add-on feature for customers who have AudienceStream. If you are already a Tealium customer, [contact support](https://docs.tealium.com/support/) for a demo and to learn more about Predict. If you are a new customer, [contact us](https://tealium.com/predict-demo/) to request a demo.
+</blockquote>
+ 
 
 Tealium Predict is a built-in machine learning technology product used with the Tealium AudienceStream CDP product that takes a complicated discipline (machine learning) and distills it down to a fully managed feature. Tealium Predict works with Tealium AudienceStream to build and create more intelligent audiences and activate trustworthy machine learning insights.
 
-![](/images/predict/high-level-predict-flow.png)
+![](https://docs.tealium.com/images/predict/high-level-predict-flow.png)
 
 Using Tealium Predict, you can create, optimize, and deploy data models that make meaningful predictions about visitor behavior allowing you to determine:
 
@@ -27,7 +31,7 @@ For information about data compliance and security, see the [Tealium Customer Pr
 Key benefits of Tealium Predict include the following:
 
 * **Leverage Machine Learning Intelligence Across your Entire Implementation**  
-Automatically activate predictive insights in any of Tealium&#39;s over 1,200 integrations.
+Automatically activate predictive insights in any of Tealium's over 1,200 integrations.
 * **Simplification**  
 Tealium Predict technology simplifies the implementation of machine learning for you without the need for a data scientist or dedicated team. You can create a model, deploy it, and immediately activate the value in AudienceStream without writing a single line of code.
 * **Predict Customer Actions**  

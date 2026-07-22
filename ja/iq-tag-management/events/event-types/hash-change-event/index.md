@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/hash-chang
 
 ハッシュ変更イベントリスナーは主にシングルページアプリケーション（SPA）で使用するためのものです。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/hash-chang
 
 トリガー頻度は、イベントトリガーがトラッキング呼び出しを引き起こす回数を決定します。SPAはDOMのロードが1回しかないため、ハッシュ変更イベントのトリガー頻度は**常に**構成することをお勧めします。これにより、イベントリスナーはすべてのハッシュ変更をトラッキングします。
 
-詳細については、[イベントトリガー]()を参照してください。
+詳細については、[イベントトリガー](https://docs.tealium.com/event-triggers/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -41,15 +41,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/hash-chang
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;hash_change&#34;`| ページのURLのアンカー部分が変更されました。 |
+|`tealium_event="hash_change"`| ページのURLのアンカー部分が変更されました。 |
 |`iq_event_id`| イベントを送信したイベントリスナーのUID。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;hash_change&#34;,
-   &#34;iq_event_id&#34;   : &#34;hash_change_events_3&#34;
+   "tealium_event"  : "hash_change",
+   "iq_event_id"   : "hash_change_events_3"
 }
 
 ```

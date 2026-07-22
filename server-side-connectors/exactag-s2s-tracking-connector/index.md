@@ -22,7 +22,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -64,8 +64,8 @@ The following section lists the supported parameters for each action.
 | consent_string | IAB GDPR consent string. |
 | protocol | Protocol. Either `http` or `https`. |
 | params | A JSON object containing any additional parameters to send to Exactag. To create more complex data structures, provide the template name in the **Event Attributes Templates** section. |
-| Event Attributes Template Variables | Provide template variables as data input. For more information, see . Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
-| Event Attributes Templates | Provide templates to be referenced in **Event Attributes**. For more information, see . Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`. |
+| Event Attributes Template Variables | Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
+| Event Attributes Templates | Provide templates to be referenced in **Event Attributes**. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`. |
 
 ### Send Onsite Conversion Request
 
@@ -99,5 +99,5 @@ The following section lists the supported parameters for each action.
 | totalprice | Recommended. Total basket value. |
 | consent | URL encoded JSON object for type or partner based consent (for example: `{“comfort”:1,”analytics”:0,”marketing”:0}`). To create more complex data structures, provide the template name in the **Request Attributes Templates** section. |
 | protocol | Protocol `http` or `https`. |
-| Request Attributes Template Variables | Provide template variables as data input. For more information, see . Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
-| Request Attributes Templates | Provide templates to be referenced in **Request Attributes**. For more information, see . Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`. |   
+| Request Attributes Template Variables | Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
+| Request Attributes Templates | Provide templates to be referenced in **Request Attributes**. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`. |   

@@ -15,9 +15,9 @@ Consent integrations requires `utag.js` version 4.49 or later.
 
 To enable support in earlier versions of `utag.js`, edit the **uTag Loader** template and add `##UTCM##` under the `##UTGEN##` publish engine flag.
 
-![](/images/iq-tag-management/utcm-utag-loader-template.png)
+![](https://docs.tealium.com/images/iq-tag-management/utcm-utag-loader-template.png)
 
-For more information about how to update the **uTag Loader** template, see [Update a template]().
+For more information about how to update the **uTag Loader** template, see [Update a template](https://docs.tealium.com/manage-templates/#update-a-template).
 
 ## Consent concepts
 
@@ -25,10 +25,10 @@ The following terms describe concepts used in the consent integrations framework
 
 * **Purpose**: A specific data use purpose to which your website users can consent or decline.
 * **Purpose group**: A group of purposes representing an enforcement policy to which tags are assigned.
-* **Exemption**: A scenario where no enforcement is necessary and no tags need to be blocked based on consent decisions. Enforcement exemptions differ from the behavior when no consent integration enforcement rules apply. Unless there&#39;s an explicit exemption, or matching consent integration and the appropriate consent decision, no tags are allowed to fire.
+* **Exemption**: A scenario where no enforcement is necessary and no tags need to be blocked based on consent decisions. Enforcement exemptions differ from the behavior when no consent integration enforcement rules apply. Unless there's an explicit exemption, or matching consent integration and the appropriate consent decision, no tags are allowed to fire.
 * **Enforcement rule**: Rules that determine when to enforce a consent integration or exemption.
 * **Consent decision**: An array of purposes the user has consented to, with a `type` attribute indicating whether the user has made an active decision (`explicit`) or not (`implicit`).
-* **Implicit decision**: A decision inferred from a user&#39;s behavior. By visiting a site, a user consents to the necessary tags as described in the site’s privacy policy. A user can object to the sale of their data, but by default this is enabled (there is an implicit &#39;it&#39;s OK, to share/sell my data&#39; decision).
+* **Implicit decision**: A decision inferred from a user's behavior. By visiting a site, a user consents to the necessary tags as described in the site’s privacy policy. A user can object to the sale of their data, but by default this is enabled (there is an implicit 'it's OK, to share/sell my data' decision).
 * **Explicit decision**: A clear and precise consent decision by a user about what tracking they consent to.
 * **Integration**: A set of features and configurations (pre-loaded or custom) that capture a consent decision from a CMP.
 
@@ -38,23 +38,27 @@ Consent integrations enforces consent decisions from your CMP by blocking tags t
 
 Each consent integration instructs the underlying framework how to communicate with a single CMP. Only one integration can be active at a time. However, you can use **Enforcement Rules** to conditionally apply multiple active integrations without conflict, if needed.
 
+
+<blockquote>
 Tags that inject CMPs into the page are incompatible with consent integrations. Integrations require a signal from the CMP before tags load. To integrate your CMP with consent integrations, use a Pre Loader or DOM Ready extension, or add the CMP to the page outside Tealium iQ.
+</blockquote>
+
 
 You can set up an integration with a supported CMP in the Tealium iQ dashboard, or create a custom integration by editing the **Custom template**.
 
 ## Supported integrations
 
-See [Supported Vendor Integrations]() for a full list of currently supported integrations.
+See [Supported Vendor Integrations](https://docs.tealium.com/vendor-specific-configuration/) for a full list of currently supported integrations.
 
 ## Tag refire
 
 Each tag has a **Tag Refire** switch in the **Map Tags** screen:
 
-![](/images/early-access/map-tags.png)
+![](https://docs.tealium.com/images/early-access/map-tags.png)
 
 If you enable this option, the tag can fire twice for each user action; once for an implicit decision and again for an explicit decision. Tags are not triggered if the mapped purposes are not consented to.
 
-Most tags don&#39;t require refiring. Enabling this option can result in duplicate events or double tracking. Use caution when enabling this feature.
+Most tags don't require refiring. Enabling this option can result in duplicate events or double tracking. Use caution when enabling this feature.
 
 For information about server-side refiring, see [Server-side event refiring](#server-side-event-refiring).
 
@@ -77,10 +81,10 @@ These variables are automatically sent by the Tealium Collect tag. They are not 
 
 ```json
 {
-  &#34;tci.consent_type&#34;: &#34;implicit&#34;,
-  &#34;tci.purposes_with_consent_all&#34;: [&#34;C0001&#34;, &#34;C0002&#34;, &#34;C0003&#34;],
-  &#34;tci.purposes_with_consent_processed&#34;: [&#34;C0001&#34;, &#34;C0002&#34;],
-  &#34;tci.purposes_with_consent_unprocessed&#34;: [&#34;C0003&#34;]
+  "tci.consent_type": "implicit",
+  "tci.purposes_with_consent_all": ["C0001", "C0002", "C0003"],
+  "tci.purposes_with_consent_processed": ["C0001", "C0002"],
+  "tci.purposes_with_consent_unprocessed": ["C0003"]
 }
 ```
 
@@ -107,9 +111,9 @@ Tealium Collect sends consent attributes as part of each event payload. These at
 
 ```json
 {
-  &#34;event_name&#34;: &#34;page_view&#34;,
-  &#34;tci.purposes_with_consent_unprocessed&#34;: [&#34;C0003&#34;],
-  &#34;tci.purposes_with_consent_all&#34;: [&#34;C0001&#34;, &#34;C0002&#34;, &#34;C0003&#34;]
+  "event_name": "page_view",
+  "tci.purposes_with_consent_unprocessed": ["C0003"],
+  "tci.purposes_with_consent_all": ["C0001", "C0002", "C0003"]
 }
 ```
 
@@ -128,11 +132,11 @@ This is an example of a complete event object with consent decision variables:
 
 ```json
 {
-  &#34;event_name&#34;: &#34;page_view&#34;,
-  &#34;tci.consent_type&#34;: &#34;implicit&#34;,
-  &#34;tci.purposes_with_consent_all&#34;: [&#34;C0001&#34;, &#34;C0002&#34;, &#34;C0003&#34;],
-  &#34;tci.purposes_with_consent_processed&#34;: [&#34;C0001&#34;, &#34;C0002&#34;],
-  &#34;tci.purposes_with_consent_unprocessed&#34;: [&#34;C0003&#34;]
+  "event_name": "page_view",
+  "tci.consent_type": "implicit",
+  "tci.purposes_with_consent_all": ["C0001", "C0002", "C0003"],
+  "tci.purposes_with_consent_processed": ["C0001", "C0002"],
+  "tci.purposes_with_consent_unprocessed": ["C0003"]
 }
 ```
 
@@ -147,10 +151,14 @@ In this example:
 
 When active, you can interact with a consent integration in the browser console on pages where `utag.js` is loaded. Using the JavaScript console lets you get the current consent decision that is retrieved from the CMP on every event. The consent decision is never cached, which ensures that it is always up to date.
 
-For more information, see [Validate and debug consent integrations]().
+For more information, see [Validate and debug consent integrations](https://docs.tealium.com/validate-and-debug-consent-integrations/).
 
 ## Consent register
 
-Consent integrations can use the Tealium consent register to emit events when consent settings are loaded or updated. These changes are available globally on the page, making it easier for you to manage consent decisions across your website. For more information, see [Tealium consent register]().
+Consent integrations can use the Tealium consent register to emit events when consent settings are loaded or updated. These changes are available globally on the page, making it easier for you to manage consent decisions across your website. For more information, see [Tealium consent register](https://docs.tealium.com/consent-register/).
 
-The consent register requires the consent integrations framework template version 1.2.0 or later. To update this template, see [Update a template]().
+
+<blockquote>
+The consent register requires the consent integrations framework template version 1.2.0 or later. To update this template, see [Update a template](https://docs.tealium.com/manage-templates/#update-a-template).
+</blockquote>
+

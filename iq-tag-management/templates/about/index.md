@@ -7,15 +7,19 @@ url: https://docs.tealium.com/iq-tag-management/templates/about/
 
 Templates are JavaScript code that provide the core logic for a feature, tag, or functional component of iQ Tag Management. Templates are used to assemble your configuration from Tealium iQ into the JavaScript files that run on your site or app. For a list of templates by component, see [Template Types](#template-types).
 
-Users can run the [Template Status Checker]() to ensure that their templates are up-to-date. Advanced users will find directly editing templates useful for the following cases:
+Users can run the [Template Status Checker](https://docs.tealium.com/template-status-checker/) to ensure that their templates are up-to-date. Advanced users will find directly editing templates useful for the following cases:
 
-* Adding [Custom Container tags]() or [custom consent integrations]() to build their own functionality for an unsupported vendor or self-built solution.
+* Adding [Custom Container tags](https://docs.tealium.com/tealium-custom-container-tag/) or [custom consent integrations](https://docs.tealium.com/custom-cmp-integrations/) to build their own functionality for an unsupported vendor or self-built solution.
 * Temporarily fixing a bug in a tag until an official fix is released.
 * Changing the core logic of any templated component to meet their specific needs.
 
- Some customizations and fixes can be made by using extensions rather than editing templates. Consider using extensions first because they are easier to maintain over time. 
 
-For more information on editing and updating templates, see [Manage Templates]().
+<blockquote>
+Some customizations and fixes can be made by using extensions rather than editing templates. Consider using extensions first because they are easier to maintain over time.
+</blockquote>
+
+
+For more information on editing and updating templates, see [Manage Templates](https://docs.tealium.com/manage-templates/).
 
 ## Template types
 
@@ -24,15 +28,15 @@ Templates are used for system tags, vendor tags, and the consent manager. When y
 ### System tags
 
 * **uTag Loader** (`utag.js`)  
-The template for the Universal Tag. The Universal Tag is the JavaScript code that contains all of the generated code necessary to load third-party tags onto your site. For more information, see [JavaScript (`utag.js`) install](/platforms/javascript/install/#universal-tag-utagjs).
+The template for the Universal Tag. The Universal Tag is the JavaScript code that contains all of the generated code necessary to load third-party tags onto your site. For more information, see [JavaScript (`utag.js`) install](https://docs.tealium.com/platforms/javascript/install/#universal-tag-utagjs).
 * **uTag Sync** (`utag.sync.js`)  
-This file allows your pages to support A/B and multivariate testing tags, such as Adobe Target or Optimizely. Place the script in the `&lt;head&gt;` section of your page code and it loads synchronously to comply with the most common vendor requirements. For more information, see [How `utag.sync.js` works]().
+This file allows your pages to support A/B and multivariate testing tags, such as Adobe Target or Optimizely. Place the script in the `<head>` section of your page code and it loads synchronously to comply with the most common vendor requirements. For more information, see [How `utag.sync.js` works](https://docs.tealium.com/utag-sync/).
 * **Mobile webview** (`mobile.html`)  
-The template for mobile installations, which is loaded as a hidden webview for your mobile app to load vendor tags. For more information, see [Client-side](/platforms/getting-started-mobile/client-side/#mobile).
+The template for mobile installations, which is loaded as a hidden webview for your mobile app to load vendor tags. For more information, see [Client-side](https://docs.tealium.com/platforms/getting-started-mobile/client-side/#mobile).
 
 ### Consent management
 
-These templates are used in the consent management features. For more information, see [About consent management]().
+These templates are used in the consent management features. For more information, see [About consent management](https://docs.tealium.com/about-consent-management/).
 
 * Dom Ready (`cmDomready`)
 * General (`cmGeneral`)
@@ -46,13 +50,13 @@ These templates are used in the consent management features. For more informatio
 
 ### Consent integrations
 
-These templates are used in the consent integrations. For more information, see [About consent integrations]().
+These templates are used in the consent integrations. For more information, see [About consent integrations](https://docs.tealium.com/about-consent-integrations/).
 
 * Framework (`utcm_framework`): The consent enforcement framework for Tealium iQ.
 * Integration templates : All integration templates are identified by the integration name (as it appears in the consent integrations dashboard), the template name (such as OneTrust, Usercentrics, Custom, etc.), and the internal Tealium ID for your instance of that template. For example: `Consent Integrations - Test Integration (onetrust) UID:utcm_e9582a8f-40fd-49ae-9819-fb2721f5547e`
   * Didomi
   * OneTrust
-  * OptOut Cookie &#43; GPC
+  * OptOut Cookie + GPC
   * Usercentrics
   * Custom
 
@@ -65,7 +69,7 @@ Example: `Twitter Conversions: Twitter Conversions (Retargeting): Tag UID: 2042
 
 ## Template Status Checker
 
-The **Template Status Checker** tool compares each of your templates to the latest system version available. For more information, see [about the template status checker]().
+The **Template Status Checker** tool compares each of your templates to the latest system version available. For more information, see [about the template status checker](https://docs.tealium.com/template-status-checker/).
 
 ## Access templates
 
@@ -79,10 +83,10 @@ From the tag configuration screen, expand the **Advanced Settings** area and cli
 * **Template Status Checker**  
 In the admin menu, click **Template Status Checker** then click a template in the report.  
 This method displays a status report of your templates. The report contains links to each template.  
-For more information, see [about the template status checker]().
+For more information, see [about the template status checker](https://docs.tealium.com/template-status-checker/).
 
 ## Template merge behavior
 
 Tag templates do not follow standard merge behavior. When merging one version into another, the tag templates in the active version take priority. Any tag template changes from the merged version will be discarded. If you want to merge in tag templates from another version, switch to that version and then merge the tag templates into your original version.
 
-For more information about merging versions, see .
+For more information about merging versions, see [merging-versions](https://docs.tealium.com/merging-versions/).

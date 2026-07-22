@@ -9,7 +9,7 @@ Use the date attribute to store important timestamps such as `First Purchase Dat
 
 The date attribute is available for the event, visit, and visitor scopes.
 
-![](/images/server-side/attribute-scopes-table-all.png)
+![](https://docs.tealium.com/images/server-side/attribute-scopes-table-all.png)
 
 ## Date formatter
 
@@ -21,8 +21,8 @@ Date and time string patterns:
 |--------|-----------------------------------|------------------------|
 | G      | Era designator                    | BC, AD                 |
 | y      | Year (2 or 4 digits)              | 12, 2012 (use `yy` or `yyyy`) |
-| M      | Month in year (length depends on M&#39;s count) | MM, MMM, MMMMM      |
-| d      | Day in month (length depends on d&#39;s count)  | d, dd    |
+| M      | Month in year (length depends on M's count) | MM, MMM, MMMMM      |
+| d      | Day in month (length depends on d's count)  | d, dd    |
 | h      | Hour of day, 1-12 (AM/PM)              | hh        |
 | H      | Hour of day, 0-23                      | HH        |
 | m      | Minute in hour, 0-59                   | mm        |
@@ -30,13 +30,17 @@ Date and time string patterns:
 | S      | Millisecond in second, 0-999           | SSS       |
 | a      | AM/PM marker                           | AM, PM    |
 | z      | Time Zone                              | PST, EST  |
-| Z      | RFC 822 Time Zone                      | -0800, &#43;0530   |
-| &#39;      | Escape for text delimiter    |         |
-| &#39;      | Single quote                 |         |
+| Z      | RFC 822 Time Zone                      | -0800, +0530   |
+| '      | Escape for text delimiter    |         |
+| '      | Single quote                 |         |
 
 For more information, see [Oracle: SimpleDateFormat Java Class](https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html).
 
- If the string includes a `T`, include single quotes before and after the `T` in the expression. For example, a `2024-08-22T10:24:58.905` string uses the expression `yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS`. Omitting the quotes, such as using `yyyy-MM-ddTHH:mm:ss.SSS`, results in a parsing error. 
+
+<blockquote>
+If the string includes a `T`, include single quotes before and after the `T` in the expression. For example, a `2024-08-22T10:24:58.905` string uses the expression `yyyy-MM-dd'T'HH:mm:ss.SSS`. Omitting the quotes, such as using `yyyy-MM-ddTHH:mm:ss.SSS`, results in a parsing error.
+</blockquote>
+
 
 ### Collect date values as string attributes
 
@@ -46,7 +50,7 @@ It is a best practice to collect date values as string event attributes and then
 
 To capture a signup date as a string and enrich a date attribute, use the following steps:
 
-1. Create the `Signup Date` event attribute as a string, such as `&#34;2023-10-15&#34;`.
+1. Create the `Signup Date` event attribute as a string, such as `"2023-10-15"`.
 1. Create the `Signup Date` visitor attribute as a date.  
 1. Use the [Set Date enrichment](#set-date) on the visitor attribute to convert the string into a date attribute using the format `yyyy-MM-dd`.  
 
@@ -55,7 +59,7 @@ To capture a signup date as a string and enrich a date attribute, use the follow
 The size of a each date attribute is limited to the following range:
 
 * Minimum: `-292275055-05-16T16:47:04.192Z`
-* Maximum: `&#43;292278994-08-17T07:12:55.807Z`
+* Maximum: `+292278994-08-17T07:12:55.807Z`
 
 These attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).
 
@@ -69,7 +73,7 @@ For example, to capture the Last Purchase Date, use this enrichment with a rule 
 
 **Attribute Name:** Last Purchase Date
 
-* **Starting Value**: `&#34;&#34;`
+* **Starting Value**: `""`
 * **Enriched With**:
 * **Resulting Value**: `1491233145706`
 
@@ -79,7 +83,7 @@ The **Set date** enrichment sets the attribute to the value of another attribute
 
 **Attribute Name**: Last Purchase Date
 
-* **Starting Value**: `&#34;&#34;`
+* **Starting Value**: `""`
 * **Enriched with String**: `01/04/2019`
 * **Using Format**: `dd/MM/yyyy` (This format specifies the day, month, and year order for parsing the string.)
 
@@ -87,7 +91,7 @@ When you use the **Set date** enrichment to set an EventStream date from another
 * **Set date to**: The date attribute you want to set the value to. In this example,`date_of_birth`.
 * **with date format**: Enter any placeholder, for example, `x`.
 
-![](/images/server-side/attributes/set_date_enrichment_example.png)
+![](https://docs.tealium.com/images/server-side/attributes/set_date_enrichment_example.png)
 
 ### Remove date
 

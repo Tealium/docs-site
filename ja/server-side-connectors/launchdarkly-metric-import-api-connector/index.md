@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/launchdarkly-metric-impo
 * ドキュメンテーション：[LaunchDarkly API](https://docs.launchdarkly.com/home/creating-experiments/import-metric-events)
 
 ## バッチ制限
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
 
 * リクエストの最大数：10000
 * 最も古いリクエストからの最大時間：10分
@@ -27,14 +27,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/launchdarkly-metric-impo
 
 ## 設定の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の設定を構成します：
 
 * **会社名**  
  必須。LaunchDarklyでのあなたの会社の名前。
 * **プロジェクトキー**  
- 必須。メトリックイベント環境のプロジェクトキー。LaunchDarklyアカウント設定 &gt; プロジェクト &gt; 環境でプロジェクトキーを探します。
+ 必須。メトリックイベント環境のプロジェクトキー。LaunchDarklyアカウント設定 > プロジェクト > 環境でプロジェクトキーを探します。
 * **環境キー**  
 必須。メトリックイベントが関連する環境の環境キー。これらはLaunchDarkly [アカウント](https://app.launchdarkly.com/settings/members)設定ページのプロジェクトタブの環境で見つけることができます。
 * **アクセストークン**  
@@ -55,4 +55,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/launchdarkly-metric-impo
 | キー | 必須。あなたのメトリックを識別します。LaunchDarklyメトリックのイベント名は、この値と一致する必要があります。 |
 | 作成日 | イベントが作成されたタイムスタンプ、Unixミリ秒。 |
 | メトリック値 | メトリックの値。数値メトリックには必須、変換メトリックにはオプションです。変換メトリックに対してこの値が提供された場合、LaunchDarklyはこの値を無視します。 |
-| コンテキストキー | メトリックイベントコンテキストの各コンテキストキーをリストする1つ以上のプロパティを持つJSONオブジェクト。形式は`&lt;contextKind&gt;: &lt;contextKey&gt;`です。例えば、あなたの実験がユーザーコンテキストで動作する場合、次のような種類/キーのペアがあるかもしれません：`&#34;user&#34;: &#34;user-key-123abc&#34;`。&lt;br&gt;各コンテキストの種類とキーは、あなたの実験で使用されるフラグを評価するためにLaunchDarkly SDKに提供される対応するコンテキストの種類/キーのペアと一致する必要があります。&lt;br&gt;コンテキスト種類の使用についての詳細は、[ランダム化ユニット](https://docs.launchdarkly.com/home/creating-experiments/allocation#randomization-units)を参照してください。 |
+| コンテキストキー | メトリックイベントコンテキストの各コンテキストキーをリストする1つ以上のプロパティを持つJSONオブジェクト。形式は`<contextKind>: <contextKey>`です。例えば、あなたの実験がユーザーコンテキストで動作する場合、次のような種類/キーのペアがあるかもしれません：`"user": "user-key-123abc"`。<br>各コンテキストの種類とキーは、あなたの実験で使用されるフラグを評価するためにLaunchDarkly SDKに提供される対応するコンテキストの種類/キーのペアと一致する必要があります。<br>コンテキスト種類の使用についての詳細は、[ランダム化ユニット](https://docs.launchdarkly.com/home/creating-experiments/allocation#randomization-units)を参照してください。 |

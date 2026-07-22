@@ -7,8 +7,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/location/
 
 以下のプラットフォームでは、位置情報追跡とジオフェンシングがサポートされています：
 
-- [Android](/ja/platforms/android-java/module-list/location/)
-- [iOS](/ja/platforms/ios-swift/module-list/location/)
+- [Android](https://docs.tealium.com/ja/platforms/android-java/module-list/location/)
+- [iOS](https://docs.tealium.com/ja/platforms/ios-swift/module-list/location/)
 
 ## 位置情報追跡
 
@@ -22,9 +22,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/location/
 
 | 変数名 | タイプ | 説明 | 例             |
 |---------------|-----|-------------|----------------------|
-| `latitude`     | `String` | ユーザーの最近記録された位置の緯度 | `&#34;32.9072&#34;` |
-| `longitude`    | `String` | ユーザーの最近記録された位置の経度 | `&#34;-117.2367&#34;` |
-| `location_accuracy` | `String` | 精度構成、例えば `&#34;high&#34;` または `&#34;low&#34;` | `&#34;high&#34;`|
+| `latitude`     | `String` | ユーザーの最近記録された位置の緯度 | `"32.9072"` |
+| `longitude`    | `String` | ユーザーの最近記録された位置の経度 | `"-117.2367"` |
+| `location_accuracy` | `String` | 精度構成、例えば `"high"` または `"low"` | `"high"`|
 
 ## ジオフェンシング
 
@@ -34,9 +34,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/location/
 
 | 遷移       | Tealiumイベント             | 説明 |
 |------------------|-------------------------------------| --- |
-| ジオフェンス入場 | `tealium_event=&#34;geofence_entered&#34;`  | ユーザーがジオフェンスに入った |
-| ジオフェンス退場 | `tealium_event=&#34;geofence_exited&#34;`  | ユーザーがジオフェンスから出た |
-| 滞在 | `tealium_event=&#34;geofence_dwell&#34;` (Androidのみ)  | ユーザーがジオフェンス内で一定時間停止した |
+| ジオフェンス入場 | `tealium_event="geofence_entered"`  | ユーザーがジオフェンスに入った |
+| ジオフェンス退場 | `tealium_event="geofence_exited"`  | ユーザーがジオフェンスから出た |
+| 滞在 | `tealium_event="geofence_dwell"` (Androidのみ)  | ユーザーがジオフェンス内で一定時間停止した |
 
 ジオフェンシングの詳細は、[ジオフェンスファイル](#file-format)で定義し、アプリの初期化時に提供します。
 
@@ -44,11 +44,11 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/location/
 
 | 変数名 | タイプ | 説明 | 例             |
 |----------------------------|----------|-------------|----------------------|
-| `tealium_event`            | `String` |  Tealiumが追跡するジオフェンスイベント：`&#34;geofence_entered&#34;`、`&#34;geofence_exited&#34;`、または`&#34;geofence_dwell&#34;` (Androidのみ) | `&#34;geofence_entered&#34;` |
-| `geofence_name`            | `String` | ジオフェンス領域の名前 | `&#34;Tealium San Diego&#34;` |
-| `geofence_transition_type` | `String` | ジオフェンス遷移イベントのタイプ | `&#34;geofence_entered&#34;`、`&#34;geofence_exited&#34;`、または`&#34;geofence_dwell&#34;`(Android) |
-| `movement_speed`  (iOSのみ)         | `String` | ユーザーの瞬間的な速度、秒単位のメートルで測定 | `&#34;1.0&#34;` |
-| `location_timestamp` (iOSのみ)     | `String` | ユーザーがジオフェンス領域に入った/出た日時（GMT）を記録 | `&#34;2020-01-28 16:29:46 &#43;0000&#34;`|
+| `tealium_event`            | `String` |  Tealiumが追跡するジオフェンスイベント：`"geofence_entered"`、`"geofence_exited"`、または`"geofence_dwell"` (Androidのみ) | `"geofence_entered"` |
+| `geofence_name`            | `String` | ジオフェンス領域の名前 | `"Tealium San Diego"` |
+| `geofence_transition_type` | `String` | ジオフェンス遷移イベントのタイプ | `"geofence_entered"`、`"geofence_exited"`、または`"geofence_dwell"`(Android) |
+| `movement_speed`  (iOSのみ)         | `String` | ユーザーの瞬間的な速度、秒単位のメートルで測定 | `"1.0"` |
+| `location_timestamp` (iOSのみ)     | `String` | ユーザーがジオフェンス領域に入った/出た日時（GMT）を記録 | `"2020-01-28 16:29:46 +0000"`|
 
 ## ジオフェンスファイル
 
@@ -62,14 +62,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/location/
 
  ```json
 [{
-  &#34;name&#34;: &#34;Geofence_Name&#34;,
-  &#34;latitude&#34;: 0.000,
-  &#34;longitude&#34;: 0.000,
-  &#34;radius&#34;: 100,
-  &#34;expire_after&#34;: -1,
-  &#34;trigger_on_enter&#34;: true,
-  &#34;trigger_on_exit&#34;: false,
-  &#34;minimum_dwell_time&#34;: 0 },
+  "name": "Geofence_Name",
+  "latitude": 0.000,
+  "longitude": 0.000,
+  "radius": 100,
+  "expire_after": -1,
+  "trigger_on_enter": true,
+  "trigger_on_exit": false,
+  "minimum_dwell_time": 0 },
  {
     ...
  }]

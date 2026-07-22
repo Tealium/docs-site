@@ -7,8 +7,8 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/hosted-data-layer
 
 The following platforms support hosted data layer:
 
-- [Android (Kotlin)](/platforms/android-kotlin/)
-- [iOS (Swift v2.x)](/platforms/ios-swift/)
+- [Android (Kotlin)](https://docs.tealium.com/platforms/android-kotlin/)
+- [iOS (Swift v2.x)](https://docs.tealium.com/platforms/ios-swift/)
 
 ## How it Works
 
@@ -20,23 +20,27 @@ A _lookup variable_ identifies which variable the data layer uses for fetching t
 
 Additional Information:  
 
-- About [hosted data layer]()
-- [Hosted data layer API]()
+- About [hosted data layer](https://docs.tealium.com/use-case-supplementing-product-data/)
+- [Hosted data layer API](https://docs.tealium.com/about-hosted-data-layer-api/)
 
 
 ## Configuration
 
 Prior to initializing the Tealium library, identify and configure the hosted data layer keys (lookup variables) by setting the following property. The key-values are used by the hosted data layer module to retrieve data layer IDs
 
-- Android: [`hostedDataLayerEventMappings`](/platforms/android-kotlin/api/tealium-config/#hosteddatalayereventmappings)
-- Swift: [`hostedDataLayerKeys`](/platforms/ios-swift/api/tealium-config/#hosteddatalayerkeys)
+- Android: [`hostedDataLayerEventMappings`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#hosteddatalayereventmappings)
+- Swift: [`hostedDataLayerKeys`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#hosteddatalayerkeys)
 
 By default, data persists for 7 days in the hosted data layer data, and is re-downloaded after expiration. Configure an expiration time on hosted data layer data by setting the following property.
 
-- Android: [`hostedDataLayerMaxCacheTimeMinutes`](/platforms/android-kotlin/api/tealium-config/#hosteddatalayermaxcachetimeminutes)
-- Swift: [`hostedDataLayerExpiry`](/platforms/ios-swift/api/tealium-config/#hosteddatalayerexpiry)
+- Android: [`hostedDataLayerMaxCacheTimeMinutes`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#hosteddatalayermaxcachetimeminutes)
+- Swift: [`hostedDataLayerExpiry`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#hosteddatalayerexpiry)
 
+
+<blockquote>
 Setting a shorter expiration time reduces mobile device battery life due to increased network requests.
+</blockquote>
+
 
 ## Use Case: Supplementing Product Data
 
@@ -51,21 +55,21 @@ The following steps describe the implementation process for this use case:
 1. **Identify lookup variables**  
 The data layer contains `product_id`, which is also an identifier in the offline data and a good candidate for a lookup variable.
 2. **Create and upload hosted data layer objects**  
-Export the offline product data into JSON files, which are named according to the expected values of `product_id`. For example, if the data layer contains `product_id=[&#34;PRD123&#34;]` , then a matching hosted data layer file named `PRD123.js` is created. Create a separate file for each product.
+Export the offline product data into JSON files, which are named according to the expected values of `product_id`. For example, if the data layer contains `product_id=["PRD123"]` , then a matching hosted data layer file named `PRD123.js` is created. Create a separate file for each product.
 
 The following table shows the end result of applying the enrichment process.
 
 | Enrichment | Result |
 | --- | --- |
-| Data layer `utag_data`|`{ &#34;page_type&#34;:&#34;product&#34;, &#34;product_id&#34;:[&#34;PRD123&#34;]}` |
-| Hosted data layer object `PRD123.js`|`{&#34;has_free_shipping&#34;:[&#34;0&#34;], &#34;has_instore_pickup&#34;:[&#34;1&#34;]}` |
-| Merged data layer |`{&#34;page_type&#34;:&#34;product&#34;, &#34;product_id&#34;:[&#34;PRD123&#34;], &#34;has_free_shipping&#34;:[&#34;0&#34;], &#34;has_instore_pickup&#34;:[&#34;1&#34;]}` |
+| Data layer `utag_data`|`{ "page_type":"product", "product_id":["PRD123"]}` |
+| Hosted data layer object `PRD123.js`|`{"has_free_shipping":["0"], "has_instore_pickup":["1"]}` |
+| Merged data layer |`{"page_type":"product", "product_id":["PRD123"], "has_free_shipping":["0"], "has_instore_pickup":["1"]}` |
 
 ## Troubleshooting
 
 The following are troubleshooting tips:
 
-* Be aware that track calls where the dispatch contains hosted data layer components may be sent out of order, due to the additional time required to retrieve those remote files. This doesn&#39;t apply if a valid cache exists for an item, since lookup isn&#39;t required.
+* Be aware that track calls where the dispatch contains hosted data layer components may be sent out of order, due to the additional time required to retrieve those remote files. This doesn't apply if a valid cache exists for an item, since lookup isn't required.
 * If there are any server or connectivity errors when the hosted data layer request is made, the request retries up to 5 times. After 5 failed attempts, the track call is sent without the hosted data layer data.
 * If a valid record on Tealium is not found for an item, the track call is sent without the hosted data layer data.
 * If there is no valid cache available for the hosted data layer item being requested, the first request is queued and only sent when the queue is flushed. This behavior is automatic when the maximum number of batched events is reached or if the app is in the background.

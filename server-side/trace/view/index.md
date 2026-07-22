@@ -7,24 +7,24 @@ url: https://docs.tealium.com/server-side/trace/view/
 
 From the trace screen, you can replay, pause, or resume an event by clicking one of the icons in the trace summary.
 
-![](/images/server-side/trace-icons.png)
+![](https://docs.tealium.com/images/server-side/trace-icons.png)
 
 The following table provides details on each of the trace icons.
 
 | Icon | Description |
 | ---- | ----------- |
-| ![](/images/server-side/trace-icon-play-normal.png)     | Play at normal speed. The default setting used to replay an event is normal speed.|
-| ![](/images/server-side/trace-icon-play-2x.png)         | Play at twice the normal speed.|
-| ![](/images/server-side/trace-icon-pause.png)           | Pause the ongoing trace. When paused, trace continues to process new events behind the scenes but does not display new log entries until you click pause again to restart.|
-| ![](/images/server-side/trace-icon-view-profile.png)    | View the latest visitor profile. Displays a snapshot of the profile for the latest visitor in JSON format. Click **OK** to exit this window.|
-| ![](/images/server-side/trace-icon-get-code-replay.png) | Get code to replay events generates a curl command for each event. Run the `curl` commands in a terminal window to replay an event in trace without having to recreate the configuration steps on the web page.  &lt;ul&gt;&lt;li&gt;To replay a single event, copy and paste the matching curl command in the terminal window and press **Enter** to run the command.&lt;/li&gt;&lt;li&gt;To replay multiple events, click **Download Bash Script** to download the .sh file. Use the terminal window to run the .sh script.&lt;/li&gt;&lt;/ul&gt; |
-| ![](/images/server-side/trace-icon-exit-race.png)|    Exit the current trace. If the trace is still active on the web page, you can rejoin the trace using the Trace ID.                   |
+| ![](https://docs.tealium.com/images/server-side/trace-icon-play-normal.png)     | Play at normal speed. The default setting used to replay an event is normal speed.|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-play-2x.png)         | Play at twice the normal speed.|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-pause.png)           | Pause the ongoing trace. When paused, trace continues to process new events behind the scenes but does not display new log entries until you click pause again to restart.|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-view-profile.png)    | View the latest visitor profile. Displays a snapshot of the profile for the latest visitor in JSON format. Click **OK** to exit this window.|
+| ![](https://docs.tealium.com/images/server-side/trace-icon-get-code-replay.png) | Get code to replay events generates a curl command for each event. Run the `curl` commands in a terminal window to replay an event in trace without having to recreate the configuration steps on the web page.  <ul><li>To replay a single event, copy and paste the matching curl command in the terminal window and press **Enter** to run the command.</li><li>To replay multiple events, click **Download Bash Script** to download the .sh file. Use the terminal window to run the .sh script.</li></ul> |
+| ![](https://docs.tealium.com/images/server-side/trace-icon-exit-race.png)|    Exit the current trace. If the trace is still active on the web page, you can rejoin the trace using the Trace ID.                   |
 
 ## View event details
 
 The following image shows the parts of the trace interface. The **Trace Log** is a real-time scrolling summary of actions, events, and audiences. The **Overview Panel** displays a snapshot of the detailed activity. **Search** can be used to find specific attributes in the list of visitor and visitor-scoped attributes. The attributes in the list are grouped by data type (numbers, dates, and so on). **Filters** can be used to filter these attributes.
 
-![](/images/server-side/trace-log-sections.png)
+![](https://docs.tealium.com/images/server-side/trace-log-sections.png)
 
 ### Filters
 
@@ -41,7 +41,11 @@ Shows only the modified, or enriched, attributes.
 
 In the trace log, clickable text is blue, other text is gray. The timestamp adjacent to the log entry displays the time of the log entry. To view the details of an event, click the blue event text to slide out a detailed view of the event.
 
+
+<blockquote>
 You can minimize the trace window to continue the process while moving on to other features of the UI.
+</blockquote>
+
 
 The following table describes the meanings of various trace events:
 

@@ -14,11 +14,11 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
-* **API Key** &amp;ndash; (Required) The API key of the application. The API key is attached to requests and can be found in the application settings in Yelp Ads.
+* **API Key** &ndash; (Required) The API key of the application. The API key is attached to requests and can be found in the application settings in Yelp Ads.
 
 ## Actions
 

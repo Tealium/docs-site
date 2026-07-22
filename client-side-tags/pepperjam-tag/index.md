@@ -12,11 +12,11 @@ url: https://docs.tealium.com/client-side-tags/pepperjam-tag/
   * List of Prices
   * List of Quantities
   * List of Categories
-* The &#34;Standard Integration Type&#34; value only applies when the tag integration value is &#34;Standard&#34;.
+* The "Standard Integration Type" value only applies when the tag integration value is "Standard".
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -28,7 +28,7 @@ This selection only affects the Standard integration of this tag.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -36,20 +36,20 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`base_url`|  &lt;ul&gt;&lt;li&gt;Base URL&lt;/li&gt;&lt;/ul&gt; |
-|`pid`|  &lt;ul&gt;&lt;li&gt;Program ID&lt;/li&gt;&lt;/ul&gt; |
-|`integration`|  &lt;ul&gt;&lt;li&gt;Integration&lt;/li&gt;&lt;li&gt;Values are:  &lt;ul&gt;&lt;li&gt;STANDARD&lt;/li&gt;&lt;li&gt;DYNAMIC&lt;/li&gt;&lt;li&gt;ITEMIZED&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|`type`|  &lt;ul&gt;&lt;li&gt;Standard Integration Type&lt;/li&gt;&lt;li&gt;Values are **1** or **2**.&lt;/li&gt;&lt;/ul&gt; |
-|`new_to_file`|  &lt;ul&gt;&lt;li&gt;New to FIle&lt;/li&gt;&lt;li&gt;Values are  or **1**.&lt;/li&gt;&lt;/ul&gt; |
+|`base_url`|  <ul><li>Base URL</li></ul> |
+|`pid`|  <ul><li>Program ID</li></ul> |
+|`integration`|  <ul><li>Integration</li><li>Values are:  <ul><li>STANDARD</li><li>DYNAMIC</li><li>ITEMIZED</li></ul> </li></ul> |
+|`type`|  <ul><li>Standard Integration Type</li><li>Values are **1** or **2**.</li></ul> |
+|`new_to_file`|  <ul><li>New to FIle</li><li>Values are  or **1**.</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Subtotal&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_coupon_code`|  &lt;ul&gt;&lt;li&gt;Promo Code&lt;/li&gt;&lt;li&gt;Overrides `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Subtotal</li><li>Overrides `_csubtotal`.</li></ul> |
+|`order_coupon_code`|  <ul><li>Promo Code</li><li>Overrides `_cpromo`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs</li><li>Overrides `_cprod`.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories</li><li>Overrides `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices</li><li>Overrides `_cprice`.</li></ul> |

@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-vertex-commerce-c
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を行います：
 
@@ -39,12 +39,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-vertex-commerce-c
 | パラメータ | 説明 |
 | --- | --- |
 | カタログ | Vertex AI Search for Commerceのカタログを選択し、ユーザーイベントが記録されます。 |
-| イベントタイプ | Vertex AI Search for Commerceに送信するユーザーイベントのタイプを選択します。これにより、イベントの解釈方法とペイロードに必要なフィールドが決まります。&lt;ul&gt;&lt;li&gt;`add-to-cart`&lt;/li&gt;&lt;li&gt;`remove-from-cart`&lt;/li&gt;&lt;li&gt;`category-page-view`&lt;/li&gt;&lt;li&gt;`detail-page-view`&lt;/li&gt;&lt;li&gt;`home-page-view`&lt;/li&gt;&lt;li&gt;`purchase-complete`&lt;/li&gt;&lt;li&gt;`search`&lt;/li&gt;&lt;li&gt;`shopping-cart-page-view`&lt;/li&gt;&lt;/ul&gt;|
+| イベントタイプ | Vertex AI Search for Commerceに送信するユーザーイベントのタイプを選択します。これにより、イベントの解釈方法とペイロードに必要なフィールドが決まります。<ul><li>`add-to-cart`</li><li>`remove-from-cart`</li><li>`category-page-view`</li><li>`detail-page-view`</li><li>`home-page-view`</li><li>`purchase-complete`</li><li>`search`</li><li>`shopping-cart-page-view`</li></ul>|
 
 #### イベントデータ
 
 | パラメータ | 説明 |
 | --- | --- |
 | 属性 | 推薦モデルに含める追加のユーザーイベント機能をマッピングします |
-| テンプレート変数    | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート             | &lt;ul&gt;&lt;li&gt;(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。&lt;/li&gt;&lt;/ul&gt; |
+| テンプレート変数    | <ul><li>(オプション) テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>   |
+| テンプレート             | <ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。</li></ul> |

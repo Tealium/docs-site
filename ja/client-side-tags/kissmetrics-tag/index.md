@@ -13,16 +13,16 @@ Kissmetricsは、顧客獲得率と保持率を向上させ、より賢明なビ
     * マップされたデータを含む` _kmq.push()`への呼び出しをトリガーします
 * 注文IDが構成されていると、購入イベントは自動的に記録されます。すべてのE-Commerce拡張値がサポートされています。
 * `_kmq.push`マッピングの例：
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;]`
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}]`
-    * `[&#39;record&#39;, &#39;EVENT_NAME&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}, CALLBACK_FUNCTION]`
-    * `[&#39;set&#39;, {&#39;PROPERTY_NAME&#39;:&#39;VALUE&#39;}]`
-    * `[&#39;identify&#39;, &#39;IDENTITY&#39;]`
+    * `['record', 'EVENT_NAME']`
+    * `['record', 'EVENT_NAME', {'PROPERTY_NAME':'VALUE'}]`
+    * `['record', 'EVENT_NAME', {'PROPERTY_NAME':'VALUE'}, CALLBACK_FUNCTION]`
+    * `['set', {'PROPERTY_NAME':'VALUE'}]`
+    * `['identify', 'IDENTITY']`
 * 共通メソッド：[Kissmetrics API Common Metrics](https://support.kissmetrics.io/docs/common-methods).
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[About tags]()を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[About tags](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -30,11 +30,11 @@ Kissmetricsは、顧客獲得率と保持率を向上させ、より賢明なビ
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[About load rules]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[About load rules](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[About data mappings]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[About data mappings](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 

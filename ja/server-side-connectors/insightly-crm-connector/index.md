@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-crm-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいInsightlyコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいInsightlyコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを構成するには、次の手順を実行します：
 

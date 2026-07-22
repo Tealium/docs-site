@@ -3,7 +3,11 @@ title: トレースの管理
 description: この記事では、新しいトレースの開始と停止、またはアクティブなトレースへの参加方法について説明します。
 url: https://docs.tealium.com/ja/server-side/trace/manage/
 ---
-大量のイベントにトレースを追加しないでください。&lt;br&gt;本番データの監視にトレースを恒久的なパラメータとして追加しないでください。
+
+<blockquote>
+大量のイベントにトレースを追加しないでください。<br>本番データの監視にトレースを恒久的なパラメータとして追加しないでください。
+</blockquote>
+
 
 ## トレースIDの取得
 
@@ -11,10 +15,10 @@ url: https://docs.tealium.com/ja/server-side/trace/manage/
 
 トレースIDを取得するには、以下の手順に従ってください：
 
-1. **Validate &gt; Trace** に移動します。
+1. **Validate > Trace** に移動します。
 1. **Start** をクリックします。  
 トレースIDが表示されます。  
-      ![](/images/server-side/whiteui-dataaccess-trace-getting-a-trace-id.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-trace-getting-a-trace-id.png)
 1. トレースIDをコピーします。  
 トレースIDの有効期間は発行から24時間です。
 
@@ -24,32 +28,36 @@ url: https://docs.tealium.com/ja/server-side/trace/manage/
 
 1. 新しいChromeブラウザウィンドウを開き、テストするワークフローの最初のページに移動します。
 1. **Tealium Tools** ブラウザプラグインを開き、**AudienceStream Trace** をクリックします。  
-      ![](/images/server-side/whiteui-dataaccess-trace-starting-a-trace-tealium-tools-audiencestream-trace.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-trace-starting-a-trace-tealium-tools-audiencestream-trace.png)
 1. トレースIDを貼り付けるか入力します。  
 複数のドメインをまたがるセッションをトレースする場合は、**新しい訪問としてトレースする** の選択を解除します。  
-    ![](/images/server-side/whiteui-dataaccess-trace-starting-a-trace-tealium-tools-audiencestream-trace-start-trace.png)
+    ![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-trace-starting-a-trace-tealium-tools-audiencestream-trace-start-trace.png)
 1. **Start Trace** をクリックします。
 1. **Exit** をクリックし、**ESC** キーを押してツールを終了します。
 1. Tealiumの**Trace ID** 画面に戻り、**Continue** をクリックします。  
 ブラウザウィンドウでワークフローをナビゲートすると、トレースはTealiumに情報を送信し、訪問のアクティビティのタイムラインを表示します。トレース画面では、イベント、アクション、機能の概要と、すべてのイベント、アクション、機能の詳細リストが提供されます。例えば：  
-    ![](/images/server-side/trace-visitor-activity.png)
+    ![](https://docs.tealium.com/images/server-side/trace-visitor-activity.png)
 
 ## アクティブなトレースに参加
 
 進行中のトレースに参加するには、以下の手順に従ってください：
 
-トレースに参加する前に、すべてのアクティブなトレースを終了する必要があります。
 
-1. **Validate &gt; Trace** をクリックします。
+<blockquote>
+トレースに参加する前に、すべてのアクティブなトレースを終了する必要があります。
+</blockquote>
+
+
+1. **Validate > Trace** をクリックします。
 1. **Join** をクリックします。
 1. アクティブなトレースのトレースIDを入力します。
 1. **Join** をクリックします。  
 トレースログが表示されます。
-![](/images/server-side/whiteui-dataaccess-trace-get-started-with-trace.png)
+![](https://docs.tealium.com/images/server-side/whiteui-dataaccess-trace-get-started-with-trace.png)
 
 ## スライドアウト画面でトレースの開始または参加
 
-トレース画面を閉じた場合は、**Validate &gt; Trace** をクリックして画面を再度スライドアウトします。現在の位置を離れることなくトレースの開始または参加を行うためにトレース画面を使用します。トレースが進行中の場合、**Validate &gt; Trace** の隣にある青い矢印が点滅します。
+トレース画面を閉じた場合は、**Validate > Trace** をクリックして画面を再度スライドアウトします。現在の位置を離れることなくトレースの開始または参加を行うためにトレース画面を使用します。トレースが進行中の場合、**Validate > Trace** の隣にある青い矢印が点滅します。
 
 ## トレースの停止
 

@@ -4,7 +4,7 @@ description: This article describes how to set up the UserWay tag in your Tealiu
 url: https://docs.tealium.com/client-side-tags/userway-tag/
 ---
 
-UserWay creates advanced website accessibility solutions that help ensure ADA compliance without refactoring your website&#39;s existing code. With UserWay&#39;s RaaS™ and Tealium users can effortlessly increase compliance with WCAG 2.1, ADA, ATAG 2.0, EN 301-549, and Section 508 regulations as required by US &amp; international governmental &amp; regulatory bodies.
+UserWay creates advanced website accessibility solutions that help ensure ADA compliance without refactoring your website's existing code. With UserWay's RaaS™ and Tealium users can effortlessly increase compliance with WCAG 2.1, ADA, ATAG 2.0, EN 301-549, and Section 508 regulations as required by US & international governmental & regulatory bodies.
 
 ## Tag tips
 
@@ -12,7 +12,7 @@ UserWay creates advanced website accessibility solutions that help ensure ADA co
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following setting:
 
@@ -20,11 +20,11 @@ When adding the tag, configure the following setting:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -35,7 +35,7 @@ The available categories are:
 |Get UserWay API version.| `(getVersion)`|
 |Show UserWay accessibility menu icon.| `(iconVisibilityOn)`|
 |Hide UserWay accessibility menu icon.| `(iconVisibilityOff)`|
-|Toggle UserWay accessibility icon&#39;s visibility.| `(iconVisibilityToggle)`|
+|Toggle UserWay accessibility icon's visibility.| `(iconVisibilityToggle)`|
 
 ### Widget methods
 

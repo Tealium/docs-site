@@ -35,7 +35,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/
 タイムドイベントのタイマーをキャンセルします。タイムドイベントは追跡されません。
 
 ```swift
-tealium?.cancelTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium?.cancelTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | パラメータ | タイプ     | 説明                 |
@@ -69,14 +69,14 @@ decorateUrl(_ url: URL, completion: ((URL) → Void)
 | パラメータ            | タイプ                          | 説明                    |
 |:----------------------|:------------------------------|:-------------------------------|
 | `url`                 | `URL`                         | 装飾するURL            |
-| `completion`          | `URL` -&gt; Void                 | 装飾されたURLで呼び出されるブロック。 |
+| `completion`          | `URL` -> Void                 | 装飾されたURLで呼び出されるブロック。 |
 
 例:
 
 ```swift
 var tealium: Tealium?
 ...
-let url = URL(string: &#34;https://www.tealium.com&#34;)!
+let url = URL(string: "https://www.tealium.com")!
 tealium?.adobeVisitorApi?.decorateUrl(url) { newUrl in
     // 新しいURLを使用
 }
@@ -106,30 +106,30 @@ tealium?.disable()
  tealium?.gatherTrackData(retreiveCachedData: false, completion: { allData in
     let lifecycleTotalWakeCount = allData[TealiumDataKey.totalWakeCount]
     let visitorId = allData[TealiumDataKey.visitorId]
-    let userLanguage = allData[&#34;user_language&#34;]
+    let userLanguage = allData["user_language"]
 })
 ```
 
-参照：[`Tealium.dataLayer.all`](/ja/platforms/ios-swift/data-layer/#retrieve-all-data).
+参照：[`Tealium.dataLayer.all`](https://docs.tealium.com/ja/platforms/ios-swift/data-layer/#retrieve-all-data).
 
 ### `getTagManagementWebView()`
-([v2.10.0](/ja/platforms/ios-swift/release-notes/#2100-may-2023)で新規)
+([v2.10.0](https://docs.tealium.com/ja/platforms/ios-swift/release-notes/#2100-may-2023)で新規)
 
-TagManagement WebViewを返し、クライアントが`isInspectable`フラグを構成し、XCode 14.3&#43;でデバッグできるようにします。
+TagManagement WebViewを返し、クライアントが`isInspectable`フラグを構成し、XCode 14.3+でデバッグできるようにします。
 
 プライベートWebviewオブジェクトの他の使用、例えば別のウェブページをロードすることは、予測不可能な挙動を引き起こす可能性があり、強く非推奨です。
 
 ```swift
  tealium?.getTagManagementWebView { webView in
     if #available(iOS 16.4, *) {
-        webView.isInspectable = true // XCode 14.3&#43;およびiOS 16.4&#43;でtagManagement webviewsを検査するため
+        webView.isInspectable = true // XCode 14.3+およびiOS 16.4+でtagManagement webviewsを検査するため
     }
   }
 ```
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。トレースはアプリセッションの間、`leaveTrace()`が呼ばれるまでアクティブのままです。Tealium Customer Data Hubの[トレース機能]()についてもっと学びましょう。
+指定されたIDでトレースに参加します。トレースはアプリセッションの間、`leaveTrace()`が呼ばれるまでアクティブのままです。Tealium Customer Data Hubの[トレース機能](https://docs.tealium.com/manage-traces/)についてもっと学びましょう。
 
 ```swift
 joinTrace(traceId: String)
@@ -137,7 +137,7 @@ joinTrace(traceId: String)
 
 | パラメータ | タイプ     | 説明                               | 例   |
 |:-----------|:---------|:------------------------------------------|:----------|
-| `traceId`  | `String` | Traceツールから取得したトレースID | `&#34;12345&#34;` |
+| `traceId`  | `String` | Traceツールから取得したトレースID | `"12345"` |
 
 
 ### `leaveTrace()`
@@ -160,7 +160,7 @@ linkECIDToKnownIdentifier(
   _ knownID: String,
   adobeDataProviderId: String,
   authState: AdobeVisitorAuthState?,
-  completion: ((Result&lt;AdobeVisitor, Error&gt;) → Void)
+  completion: ((Result<AdobeVisitor, Error>) → Void)
 ```
 
 | パラメーター              | 型                            | 説明                          |
@@ -168,7 +168,7 @@ linkECIDToKnownIdentifier(
 | `knownId`             | `String`                      | 既知の識別子。                  |
 | `adobeDataProviderId` | `String`                      | Adobeデータプロバイダー識別子。 |
 | `authState`           | `AdobeVisitorAuthState`       | 認証状態。                     |
-| `completion`          | `Result&lt;AdobeVisitor, Error&gt;` | Adobeの応答リスナー。           |
+| `completion`          | `Result<AdobeVisitor, Error>` | Adobeの応答リスナー。           |
 
 例:
 
@@ -177,7 +177,7 @@ var tealium: Tealium?
 ...
 
 tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(
-  &#34;myidentifier&#34;, adobeDataProviderId: &#34;123456&#34;, .unknown
+  "myidentifier", adobeDataProviderId: "123456", .unknown
   )
 ```
 
@@ -222,20 +222,20 @@ tealium?.resetVisitorId()
 イベント名と共にオプショナルデータが渡された場合、タイマーが[`stopTimedEvent()`](#stoptimedevent)コールで停止されたときにトラックコールに追加されます。
 
 ```swift
-tealium.startTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;, with: [&#34;custom_key&#34;: &#34;custom_value&#34;])
+tealium.startTimedEvent(name: "TIMED_EVENT_NAME", with: ["custom_key": "custom_value"])
 ```
 
 | パラメーター                                  | 型     | 説明                   |
 |:--------------------------------------------|:---------|:------------------------------|
 | `name`                                      | `String` | タイムドイベントの名前   |
-| `[&#34;custom_key&#34;: &#34;custom_value&#34;]` (オプショナル) | `Map`    | データレイヤーで追跡されるキー値ペアデータのオブジェクト |
+| `["custom_key": "custom_value"]` (オプショナル) | `Map`    | データレイヤーで追跡されるキー値ペアデータのオブジェクト |
 
 ### `stopTimedEvent()`
 
 タイムドイベントのタイマーを停止し、`timed_event`トラッキングコールをトリガーします。
 
 ```swift
-tealium?.stopTimedEvent(name: &#34;TIMED_EVENT_NAME&#34;)
+tealium?.stopTimedEvent(name: "TIMED_EVENT_NAME")
 ```
 
 | パラメーター | 型     | 説明                 |
@@ -252,7 +252,7 @@ Tealium(config: TealiumConfig, completion: Closure)
 | パラメーター   | 型            | 説明                                           |
 |:-------------|:----------------|:------------------------------------------------------|
 | `config`     | `TealiumConfig` | アカウントの詳細を含む`TealiumConfig`オブジェクトでTealiumオブジェクトを初期化します。 |
-| `completion` | `Closure`       | (オプショナル) 初期化完了時に呼び出される完了クロージャ`()-&gt; Void )?` |
+| `completion` | `Closure`       | (オプショナル) 初期化完了時に呼び出される完了クロージャ`()-> Void )?` |
 
 ### `track()`
 
@@ -270,12 +270,12 @@ tealium?.track(tealiumEvent)
 
 ```swift
 let tealiumEvent = TealiumView(
-  &#34;purchase&#34;,
+  "purchase",
   dataLayer: [
-    &#34;customer_id&#34;: &#34;abc123&#34;, 
-    &#34;order_total&#34;: 10.00,
-    &#34;product_id&#34;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-    &#34;order_id&#34;: &#34;0123456789&#34;
+    "customer_id": "abc123", 
+    "order_total": 10.00,
+    "product_id": ["PROD123", "PROD456"], 
+    "order_id": "0123456789"
   ]
 )
 tealium?.track(tealiumEvent)

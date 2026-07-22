@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/administration/account-org/permissions-system-m
 ---
 ## ユーザーのエクスポート
 
+
+<blockquote>
 この機能にはアカウントの「アカウント管理」権限と各プロファイルの「ユーザー管理」権限が必要です。ファイルには、現在ログインしているユーザーが「ユーザー管理」権限を持っているプロファイルのユーザーとレガシーユーザー権限のみが含まれます。権限の強制が有効になっている場合、このボタンは表示されません。
+</blockquote>
+
 
 ユーザーのエクスポート機能を使用すると、アカウントのユーザー、プロファイル、および各プロファイルのレガシーユーザー権限を含むコンマ区切り値（CSV）ファイルをダウンロードできます。これにより、ユーザーとその権限を監査し、権限グループを構築し、プラットフォームの権限システムで管理者ロールを割り当てることが容易になります。
 
@@ -18,9 +22,13 @@ CSVファイルには権限値が `TRUE` または `FALSE` としてリストさ
 
 次のスクリーンショットは、GoogleシートにインポートされたダウンロードしたCSVファイルを示しており、行1の軽微な書式構成の調整と、読みやすさのために `TRUE` と `FALSE` のエントリを `Y` と `N` に変更しています：
 
-![](/images/platform-permissions/permissionssystemmigrationguide-1.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-1.png)
 
+
+<blockquote>
 エクスポートされたデータには「サイトスキャンの管理」が含まれています。これはレガシー機能であり、移行目的では必要ありません。
+</blockquote>
+
 
 この例では、**user3** が **ユーザー**列に3回表示されます。他のユーザーとは異なり、アカウントのすべてのプロファイルで同じ権限を持っているわけではなく、**user3** のプロファイル権限はスプレッドシートの別々の行に含まれています。
 
@@ -62,7 +70,7 @@ CSVファイルには権限値が `TRUE` または `FALSE` としてリストさ
 1. **キャンセル**をクリックします。
 1. 各ユーザーに対してこのプロセスを繰り返します。
 
-![](/images/platform-permissions/permissionssystemmigrationguide-2.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-2.png)
 これで、クライアント側のユーザー権限がすべて揃いました。
 
 ### サーバー側
@@ -106,7 +114,7 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 
 * **No PII** – ユーザーはPII属性を閲覧できますが、これらの属性の値を見ることはできません。PIIは、TraceやLive Eventsを含む表示される場所であいまいにされます。
 * **View** – ユーザーはPII属性の値を閲覧できますが、PIIデータを編集または管理することはできません。
-* **Manage &amp; View** – ユーザーはPIIデータを閲覧、編集、および管理できます。
+* **Manage & View** – ユーザーはPIIデータを閲覧、編集、および管理できます。
 
 スプレッドシートに、ユーザーがPIIに対してアクセスなし、閲覧アクセス、または管理および閲覧アクセスのいずれであるかをメモしてください。### 製品と機能のニーズ
 
@@ -114,7 +122,11 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 
 製品アクセス権限は機能権限に分けられ、グループに割り当てられた製品権限によって異なる場合があります。以下の表に示すようになります。
 
+
+<blockquote>
 **閲覧＆編集**または**閲覧、編集＆削除**の権限を持つユーザーは、**保存**の権限も持っています。
+</blockquote>
+
 
 #### iQタグ管理
 
@@ -168,7 +180,7 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 | AudienceStore|アクセスなし、閲覧、閲覧＆編集、閲覧編集＆削除|
 | EventStore|アクセスなし、閲覧、閲覧＆編集、閲覧編集＆削除|
 
-\* Tealium Insightsの権限は、**Analyze &gt; Insights &gt; QuickSight Users**ページを通じてユーザー管理者によって構成できます。詳細については、[Tealium Insightsについて]()を参照してください。
+\* Tealium Insightsの権限は、**Analyze > Insights > QuickSight Users**ページを通じてユーザー管理者によって構成できます。詳細については、[Tealium Insightsについて](https://docs.tealium.com/about-data-insights/)を参照してください。
 
 #### Predict
 
@@ -211,7 +223,7 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 
 各製品と機能に対してスプレッドシートの列を作成し、ユーザーが各々に持つべきアクセスレベルをマークします。
 
-![](/images/platform-permissions/permissionssystemmigrationguide-3.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-3.png)
 
 おめでとうございます。これで、スプレッドシートにすべてのユーザーの個々のニーズが記載されました。
 
@@ -230,7 +242,7 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 
 各「はい」の回答に対して、スプレッドシートに別の列を追加し、その質問がそのユーザーの組織とワークフローにどのように影響するかについてその列にメモを追加します。
 
-![](/images/platform-permissions/permissionssystemmigrationguide-4.png)
+![](https://docs.tealium.com/images/platform-permissions/permissionssystemmigrationguide-4.png)
 
 ### プロファイル監査
 
@@ -276,8 +288,12 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 * **Profile Admin** - このロールはプロファイルとライブラリへのアクセスを管理します。アカウント上でプロファイルを構築し整理する人はこのロールを持つべきです。このロールにはプロファイルの編集や公開権限は含まれません。それらは権限グループ内の権限を通じて付与されます。
 * **Standard User** - このロールはグループ権限を通じてすべての権限を受け取ります。
 
-管理者ロールについての詳細は、[Admin Roles]()を参照してください。
+管理者ロールについての詳細は、[Admin Roles](https://docs.tealium.com/admin-roles/)を参照してください。
 
+
+<blockquote>
 **User Admin** 管理者ロールは、特に移行プロセスに役立ちます。これらの人々は、ユーザーがプラットフォームの権限システムをテストするにつれて、権限グループを洗練するのを助けることができます。
+</blockquote>
+
 
 おめでとうございます。作成する必要がある権限グループと割り当てるべき管理者ロールを理解しました。

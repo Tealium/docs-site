@@ -10,11 +10,15 @@ url: https://docs.tealium.com/iq-tag-management/extensions/extensions-list/crypt
 
 ### How it works
 
-A cryptographic hash function is used to convert a text value containing sensitive information into an anonymous and unique, fixed-length string of characters. For example, hashing is commonly applied to a user&#39;s email address to anonymize the value while retaining its uniqueness. This extension offers a variety of commonly used hashing function algorithms, such as MD5 and SHA-1.
+A cryptographic hash function is used to convert a text value containing sensitive information into an anonymous and unique, fixed-length string of characters. For example, hashing is commonly applied to a user's email address to anonymize the value while retaining its uniqueness. This extension offers a variety of commonly used hashing function algorithms, such as MD5 and SHA-1.
 
 A data layer variable set in the extension is overwritten with the new hashed value. To generate a hashed value and preserve the original variable, use a second variable for the hashed value.
 
+
+<blockquote>
 The term hashing is not synonomous with encryption.
+</blockquote>
+
 
 ## Using the extension
 
@@ -31,33 +35,33 @@ Select one of the available hashing functions:
     * **SHA512**  
     A hash function that, when applied to the provided input, results in a 128-digit hexadecimal number that is highly unlikely to match the value produced for a different input. SHA512 is a variant of the SHA-2 (Secure Hash Algorithm 2) set of cryptographic hash functions.
     * **Variable**  
-    Click **&#43; Add Variable** to add a variable value using the selected cryptographic function. Repeat this step to hash additional variables.
+    Click **+ Add Variable** to add a variable value using the selected cryptographic function. Repeat this step to hash additional variables.
 
-![](/images/iq-tag-management/cryptoextension-1.png)
+![](https://docs.tealium.com/images/iq-tag-management/cryptoextension-1.png)
 
 ### Example
 
 The following example hashes a data layer variable named `customer_email`:
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;test@tealium.com&#34;
+> utag_data.customer_email
+< "test@tealium.com"
 ```
 
 With the Crypto extension configured to convert `customer_email` using the SHA-1 cryptographic hash function, the new value becomes:
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+> utag_data.customer_email
+< "05fcf31275aa13408ace62e84dac60ae4b805a65"
 ```
 
 To preserve `customer_email` and create a hashed value, use a second variable named `customer_email_hash`. First, use the [Set Data Values extension]() to initialize the hash variable `customer_email_hash` to the value in `customer_email`, and then convert it in the Crypto extension. This ensures you preserve the original value after creating the new hash value:
 
 ```
-&gt; utag_data.customer_email
-&lt; &#34;test@tealium.com&#34;
-&gt; utag_data.customer_email_hash
-&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+> utag_data.customer_email
+< "test@tealium.com"
+> utag_data.customer_email_hash
+< "05fcf31275aa13408ace62e84dac60ae4b805a65"
 ```
 
 Another option is to scope the Crypto extension only to the tags that use the hashed value. This preserves the original variable for all other tags.

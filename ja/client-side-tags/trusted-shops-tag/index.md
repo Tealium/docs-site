@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/client-side-tags/trusted-shops-tag/
 ## タグのヒント
 
 * マッピングを使用して、標準の構成値を動的に上書きします。
-* 注文IDが構成されると（通常は注文確認ページで）、非表示の`trustedShopsCheckout` `&lt;div&gt;`がページに追加されます。以下の`&lt;span&gt;`タグは、E-Commerce拡張機能またはマッピングを介して値が構成されている場合、`&lt;div&gt;`内に作成されます：
+* 注文IDが構成されると（通常は注文確認ページで）、非表示の`trustedShopsCheckout` `<div>`がページに追加されます。以下の`<span>`タグは、E-Commerce拡張機能またはマッピングを介して値が構成されている場合、`<div>`内に作成されます：
     * `tsCheckoutOrderNr`
     * `tsCheckoutBuyerEmail`
     * `tsCheckoutOrderAmount`
@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/client-side-tags/trusted-shops-tag/
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて]()を参照してください。
+タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -30,11 +30,11 @@ url: https://docs.tealium.com/ja/client-side-tags/trusted-shops-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 

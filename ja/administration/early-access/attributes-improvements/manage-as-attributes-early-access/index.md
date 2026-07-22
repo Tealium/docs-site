@@ -3,13 +3,17 @@ title: AudienceStream属性の管理
 description: この記事では、AudienceStream属性の管理方法について説明します。
 url: https://docs.tealium.com/ja/administration/early-access/attributes-improvements/manage-as-attributes-early-access/
 ---
-&lt;!-- 属性の追加、複製、削除のエイリアスを追加することを忘れないでください --&gt;
+<!-- 属性の追加、複製、削除のエイリアスを追加することを忘れないでください -->
 
+
+<blockquote>
 新しい属性インターフェースはEarly Accessであり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
 
-**Transform &gt; Visitor / Visit Attributes**に移動して、属性を表示します。
 
-![](/images/server-side/attributes/visit-visitor-attributes-table.png)
+**Transform > Visitor / Visit Attributes**に移動して、属性を表示します。
+
+![](https://docs.tealium.com/images/server-side/attributes/visit-visitor-attributes-table.png)
 
 属性のテーブルには以下の情報が含まれています：
 
@@ -25,45 +29,49 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 
 テーブルの上部にある利用可能なドロップダウンフィルターをクリックして、表示をフィルタリングできます。
 
-![](/images/server-side/attributes/filtered-attributes.png)
+![](https://docs.tealium.com/images/server-side/attributes/filtered-attributes.png)
 
 ## 属性を表示する
 
 テーブルの任意の属性をクリックして、その属性の詳細を表示します。
 
-![](/images/server-side/attributes/attribute-details-slideout.png)
+![](https://docs.tealium.com/images/server-side/attributes/attribute-details-slideout.png)
 
 属性の詳細ページには2つのタブがあります：
 
-* **エンリッチメント**: この属性のすべてのエンリッチメントとエンリッチメントルールをリストします。エンリッチメントは属性の値をカスタマイズします。エンリッチメントについての詳細は、()を参照してください。
+* **エンリッチメント**: この属性のすべてのエンリッチメントとエンリッチメントルールをリストします。エンリッチメントは属性の値をカスタマイズします。エンリッチメントについての詳細は、([about-enrichments](https://docs.tealium.com/about-enrichments/))を参照してください。
 * **依存関係**: この属性に依存するすべての項目（例：オーディエンス、セグメント、ルール、属性、コネクター、データソース、Predict）をリストします。依存関係がある属性は削除できません。依存関係の詳細を表示するには、**Go To**をクリックします。
 
 ## 属性を作成する
 
 訪問または訪問属性を追加するプロセスは似ています。次の手順は、オーディエンス属性を追加する方法を示しています：
 
-1. **Transform &gt; Visitor / Visit Attributes**に移動します。  
+1. **Transform > Visitor / Visit Attributes**に移動します。  
 左側のフィルターを使用して表示を絞り込むこともできます。
-1. **&#43; 属性を追加**をクリックします。
+1. **+ 属性を追加**をクリックします。
 1. **属性を追加**ダイアログで、属性のスコープとして**訪問**または**訪問**を選択し、**続行**をクリックします。  
-      ![](/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
-1. データタイプを選択し、**続行**をクリックします。データタイプについての詳細は、を参照してください。
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png)
+1. データタイプを選択し、**続行**をクリックします。データタイプについての詳細は、[data-types](https://docs.tealium.com/data-types/)を参照してください。
 1. (必須) **タイトル**フィールドに説明的な名前を入力します。訪問と訪問属性の**タイトル**には、ダブルクォートを除く任意のASCII文字を使用できます。  
-      ![](/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-addattribute-entertitle.png)
 1. **ノート**フィールドに、属性の目的やメカニズムを説明する役立つメモを入力します。
 1. (オプション) 訪問データにPIIデータが含まれている場合は、**制限データ**チェックボックスを選択します。
 1. (オプション) 属性をAudienceDBの列に含める場合は、**AudienceDB**チェックボックスをチェックします。  
 このステップにはプロファイルでAudienceDBが有効になっている必要があります。
-1. 次のセクションに進み、属性に[エンリッチメントを追加]()します。
+1. 次のセクションに進み、属性に[エンリッチメントを追加](https://docs.tealium.com/add-enrichment/)します。
 
 ## 属性を編集する
 
- [プリロードされた属性]()は変更できませんが、複製して変更することができます。複製には元のすべてのエンリッチメントとルールが含まれます。
+
+<blockquote>
+[プリロードされた属性](https://docs.tealium.com/preloaded-attributes/)は変更できませんが、複製して変更することができます。複製には元のすべてのエンリッチメントとルールが含まれます。
+</blockquote>
+
 
 属性を編集するには、次の手順を使用します：
 
 1. 編集したい属性をクリックし、**編集**をクリックします。  
-      ![](/images/server-side/attributes/edit-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/edit-attribute.png)
 1. 変更を行い、**保存**をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
@@ -80,21 +88,25 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 属性を複製するには、次の手順を使用します：
 
 1. 複製したい属性をクリックし、その後**複製**をクリックします。  
-      ![](/images/server-side/attributes/duplicate-attribute.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/duplicate-attribute.png)
 1. 必要に応じて編集し、**保存**をクリックします。
 1. 変更を適用するためにプロファイルを保存して公開します。
 
 ## 属性を削除する
 
- [プリロードされた属性]()は削除できません。&lt;br&gt;&lt;br&gt;依存関係のある属性は削除できません。すべての依存関係から属性を削除する必要があります。
+
+<blockquote>
+[プリロードされた属性](https://docs.tealium.com/preloaded-attributes/)は削除できません。<br><br>依存関係のある属性は削除できません。すべての依存関係から属性を削除する必要があります。
+</blockquote>
+
 
 属性を削除するには、次の手順を使用します：
 
 1. 削除したい属性をクリックします。
 1. **削除**をクリックします。  
-      ![](/images/server-side/attributes/delete-attribute.png)  
+      ![](https://docs.tealium.com/images/server-side/attributes/delete-attribute.png)  
 ルール、エンリッチメント、またはオーディエンスによって現在使用中の属性を削除しようとすると、次のメッセージが表示されます：  
-      ![](/images/server-side/attributes/error-delete-attribute-with-dependencies.png)  
+      ![](https://docs.tealium.com/images/server-side/attributes/error-delete-attribute-with-dependencies.png)  
 属性を削除するには、リストされている依存関係からそれを削除して、もう一度試してください。
 1. **属性を削除**ダイアログで**削除**をクリックして、属性を削除します。
 1. 変更を適用するためにプロファイルを保存して公開します。
@@ -106,6 +118,6 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 1. 削除したい属性の横にあるチェックボックスを選択します。
 1. **削除**をクリックします。
 ルール、エンリッチメント、またはオーディエンスによって現在使用中の1つ以上の属性を削除しようとすると、次のメッセージが表示されます：
-      ![](/images/server-side/attributes/error-delete-attributes-with-dependencies.png)
+      ![](https://docs.tealium.com/images/server-side/attributes/error-delete-attributes-with-dependencies.png)
 依存関係のある属性を削除するには、リストされている依存関係からそれらを削除して、もう一度試してください。
 1. 依存関係のない属性を削除するために、確認をクリックします。

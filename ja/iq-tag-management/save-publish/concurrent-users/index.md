@@ -35,10 +35,10 @@ iQタグ管理の同時利用者管理には以下の制限が適用されます
 他のユーザーを表示し、コミュニケーションを取るための手順は以下の通りです：
 
 1. **同時利用者**アイコンをクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-concurrentuserstiq-collaboration-icon.png)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-concurrentuserstiq-collaboration-icon.png)  
     **同時利用者**ダイアログには、現在ログインしてそのプロファイルに取り組んでいる他のユーザーのリストが表示され、各ユーザーのメールアドレス、アクティブなプロファイルバージョン、保留中の変更がある場合のステータスが表示されます。
 1. 他のユーザーとコミュニケーションを取り、協力を調整するために、テキストフィールドに入力し、**投稿**をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-post-message-to-other-users.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-post-message-to-other-users.png)
 1. このウィンドウを閉じるには、**閉じる**をクリックします。  
 いつでもコラボレーションアイコンをクリックしてウィンドウを再度開くことができます。
 
@@ -52,7 +52,7 @@ iQタグ管理の同時利用者管理には以下の制限が適用されます
 同時利用者が変更を保存したときに未保存の変更がない。
 * **結果**  
 未保存の変更がないため、新しいプロファイルバージョンをロードするように求められます。
-    ![](/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-concurrent-users-save-and-publish-notification.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-concurrent-users-save-and-publish-notification.png)
     **新しいバージョンをロード**を選択し、**OK**をクリックします。
     完了すると、プロファイルは最新の変更で再ロードされます。
 
@@ -62,7 +62,7 @@ iQタグ管理の同時利用者管理には以下の制限が適用されます
 同時利用者が変更を保存し、自分が未保存の変更を持っていて、**新しいバージョンを現在の作業にマージする**オプションを選択した場合。
 * **結果**  
 次回の保存に両方の変更セットが含まれるように、自分のものに変更をマージするように求められます。
-![](/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-merge-new-version-into-your-current-work.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-concurrent-users-tiq-merge-new-version-into-your-current-work.png)
 詳細については、[バージョンのマージ]()を参照してください。
 
 ### シナリオ3
@@ -71,7 +71,7 @@ iQタグ管理の同時利用者管理には以下の制限が適用されます
 同時利用者が変更を保存し、自分が未保存の変更を持っていて、**作業を続けて後で保存する**オプションを選択した場合。
 * **結果**  
 次回保存するときに、新しい変更を自分のバージョンにマージするか、別のプロファイルバージョンを作成するかを求められます。  
-![](/images/iq-tag-management/whiteui-tiq-managing-concurrent-users-tiq-merge-their-changes-with-your-changes.png)  
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-concurrent-users-tiq-merge-their-changes-with-your-changes.png)  
 詳細については、[バージョンのマージ]()を参照してください。
 
 ### シナリオ4
@@ -80,7 +80,7 @@ iQタグ管理の同時利用者管理には以下の制限が適用されます
 **プロファイルのロック**構成が有効で、同時利用者が変更を開始したときに変更を行っていない。  
 **結果**  
 他のユーザーが変更を開始したことが通知され、同時利用者の変更が保存されるか破棄されるまで保存できなくなります。
-![](/images/iq-tag-management/whiteui-tiq-concurrentuserstiq-concurrent-notification.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-concurrentuserstiq-concurrent-notification.png)
 詳細については、[公開構成]()を参照してください。
 
 ### シナリオ5

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/
 ---
 ## クラス: `ConsentManager`
 
-以下は、Kotlinの`ConsentManager`クラスの一般的に使用されるメソッドをまとめたものです。詳細は[Consent Management](/ja/platforms/android-kotlin/consent-management/)を参照してください。
+以下は、Kotlinの`ConsentManager`クラスの一般的に使用されるメソッドをまとめたものです。詳細は[Consent Management](https://docs.tealium.com/ja/platforms/android-kotlin/consent-management/)を参照してください。
 
 | メソッド | 説明 |
 | ----- | ------ |
@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/
 
 ### `isConsentLoggingEnabled`
 
-ユーザーの同意構成の変更をログに記録するかどうかを取得または構成します。[TealiumConfig.consentManagerLoggingEnabled](/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled)オプションで初期化されます。
+ユーザーの同意構成の変更をログに記録するかどうかを取得または構成します。[TealiumConfig.consentManagerLoggingEnabled](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled)オプションで初期化されます。
 
 ```java
 tealium.consentManager.isConsentLoggingEnabled // 例: false
@@ -25,7 +25,7 @@ tealium.consentManager.isConsentLoggingEnabled // 例: false
 
 ### `policy`
 
-現在使用中の`ConsentPolicy`を返します。[TealiumConfig.consentManagerPolicy](/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy)オプションで初期化され、`null`に構成することも可能です。
+現在使用中の`ConsentPolicy`を返します。[TealiumConfig.consentManagerPolicy](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy)オプションで初期化され、`null`に構成することも可能です。
 
 ```java
 val policy = tealium.consentManager.policy // 例: ConsentPolicy.GDPR
@@ -43,7 +43,7 @@ tealium.consentManager.reset()
 
 ### `userConsentCategories`
 
-アプリユーザーによって付与された現在のConsent Statusを構成または取得します。[利用可能なオプション](/ja/platforms/android-kotlin/api/consent-category/)について詳しくはこちらをご覧ください。
+アプリユーザーによって付与された現在のConsent Statusを構成または取得します。[利用可能なオプション](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-category/)について詳しくはこちらをご覧ください。
 
 ```java
 tealium.consentManager.userConsentCategories = setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)
@@ -90,7 +90,7 @@ val tealium = Tealium.create(...) {
     events.subscribe(object : UserConsentPreferencesUpdatedListener {
         override fun onUserConsentPreferencesUpdated(userConsentPreferences: UserConsentPreferences,
             policy: ConsentManagementPolicy) {
-            Logger.dev(BuildConfig.TAG, &#34;同意構成が更新されました&#34;)
+            Logger.dev(BuildConfig.TAG, "同意構成が更新されました")
 
             }
         )}

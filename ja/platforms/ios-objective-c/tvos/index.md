@@ -3,14 +3,18 @@ title: tvOS
 description: Tealium for tvOSのインストール方法を学びます。
 url: https://docs.tealium.com/ja/platforms/ios-objective-c/tvos/
 ---
-tvOSはもうサポートされていません。Tealium [iOS (Swift)](/ja/platforms/ios-swift/) ライブラリを推奨します。
+
+<blockquote>
+tvOSはもうサポートされていません。Tealium [iOS (Swift)](https://docs.tealium.com/ja/platforms/ios-swift/) ライブラリを推奨します。
+</blockquote>
+
 
 
 ## 要件
 
-* [Tealium Customer Data Hubアカウント]()
-* Xcode 7&#43;
-* tvOS 9.0&#43;
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
+* Xcode 7+
+* tvOS 9.0+
 * `.ipa`ファイルサイズに100KBの利用可能なスペース
 * [Bitcode準拠](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html) フレームワーク 
 
@@ -27,11 +31,15 @@ CocoaPodsを使用してtvOSのTealium依存関係をインストールおよび
 
 1. Podfileに以下の依存関係を追加します：
     ```perl
-    pod &#39;TealiumTVOS&#39;
+    pod 'TealiumTVOS'
     ```
 
 2. [Tealium for tvOS](https://github.com/Tealium/tealium-tvos)をダウンロードしてインストールします。
-    ライブラリをクローンすること（ダウンロードする代わりに）を推奨します。これにより、将来のリリースに簡単に更新できます。  
+    
+<blockquote>
+ライブラリをクローンすること（ダウンロードする代わりに）を推奨します。これにより、将来のリリースに簡単に更新できます。
+</blockquote>
+  
 
 3. `TealiumTVOS.framework`をプロジェクトのtvOS Extensionターゲットに追加し、結果のダイアログボックスでフレームワークをプロジェクトにコピーします。
 
@@ -47,12 +55,12 @@ Application Delegate、またはヘルパークラスのセットアップメソ
 
 
 ```swift
-let config = TEALConfiguration.init(account: &#34;ACCOUNT&#34;,
-                      profile: &#34;PROFILE&#34;,
-                      environment: &#34;ENV&#34;,
-                      datasource: &#34;DATASOURCE&#34;)
+let config = TEALConfiguration.init(account: "ACCOUNT",
+                      profile: "PROFILE",
+                      environment: "ENV",
+                      datasource: "DATASOURCE")
 
-guard let tealium = Tealium.newInstanceForKey(&#34;uniqueInstanceKey&#34;, configuration: config) else {
+guard let tealium = Tealium.newInstanceForKey("uniqueInstanceKey", configuration: config) else {
     // Any additional failure response here
     return
 }
@@ -61,23 +69,23 @@ guard let tealium = Tealium.newInstanceForKey(&#34;uniqueInstanceKey&#34;, confi
 
 ```objc
 TEALConfiguration *configuration = [TEALConfiguration
-                      configurationWithAccount:@&#34;ACCOUNT&#34;
-                      profile:@&#34;PROFILE&#34;
-                      environment:@&#34;ENV&#34;,
-                      datasource:@&#34;DATASOURCE&#34;];
+                      configurationWithAccount:@"ACCOUNT"
+                      profile:@"PROFILE"
+                      environment:@"ENV",
+                      datasource:@"DATASOURCE"];
 
-Tealium *tealiumInstance1 = [Tealium newInstanceForKey:@&#34;INSTANCE&#34; configuration:configuration]; 
+Tealium *tealiumInstance1 = [Tealium newInstanceForKey:@"INSTANCE" configuration:configuration]; 
 ```
 
 
 
 | パラメータ | 説明 | 例 |
 |-----------|-------------|  ---- |
-| `account`   | Tealiumアカウント名 |`&#34;companyXYZ&#34;` |
-| `profile`   | Tealiumプロファイル名 | `&#34;main&#34;` |
-| `environment` | Tealium環境名  | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `datasource` | (オプション) データソースキー  | `&#34;abc123&#34;`|
-| `instance` | ユニークなTealiumインスタンス識別子（複数のインスタンスがサポートされています） | `&#34;tealium_main&#34;` |
+| `account`   | Tealiumアカウント名 |`"companyXYZ"` |
+| `profile`   | Tealiumプロファイル名 | `"main"` |
+| `environment` | Tealium環境名  | [`"dev"`, `"qa"`, `"prod"`] |
+| `datasource` | (オプション) データソースキー  | `"abc123"`|
+| `instance` | ユニークなTealiumインスタンス識別子（複数のインスタンスがサポートされています） | `"tealium_main"` |
 
 ## ビューのトラッキング
 
@@ -88,17 +96,21 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:@&#34;INSTANCE&#34; confi
 
 
 ```swift
-Tealium.instanceForKey(&#34;uniqueInstanceKey&#34;)?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [:])
+Tealium.instanceForKey("uniqueInstanceKey")?.trackViewWithTitle(NSStringFromClass(self.classForCoder), dataSources: [:])
 ```
 
 
 ```objc
-[[Tealium instanceForKey:@&#34;INSTANCE&#34;] trackViewWithTitle:NSStringFromClass([self class]) dataSources:nil];
+[[Tealium instanceForKey:@"INSTANCE"] trackViewWithTitle:NSStringFromClass([self class]) dataSources:nil];
 ```
 
 
 
+
+<blockquote>
 画面名はイベントデータに`screen_title`として記入されます。
+</blockquote>
+
 
 ## イベントのトラッキング
 
@@ -107,17 +119,21 @@ Tealium.instanceForKey(&#34;uniqueInstanceKey&#34;)?.trackViewWithTitle(NSString
 
 
 ```swift
-Tealium.instanceForKey(&#34;INSTANCE&#34;)?.trackEventWithTitle(&#34;EVENT_NAME&#34;, dataSources: [:])
+Tealium.instanceForKey("INSTANCE")?.trackEventWithTitle("EVENT_NAME", dataSources: [:])
 ```
 
 
 ```objc
-[[Tealium instanceForKey:@&#34;INSTANCE&#34;] trackEventWithTitle:@&#34;EVENT_NAME&#34; dataSources:nil];
+[[Tealium instanceForKey:@"INSTANCE"] trackEventWithTitle:@"EVENT_NAME" dataSources:nil];
 ```
 
 
 
+
+<blockquote>
 イベント名はイベントデータに`tealium_event`として記入されます。
+</blockquote>
+
 
 
 ## APIリファレンス

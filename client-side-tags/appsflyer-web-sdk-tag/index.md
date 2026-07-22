@@ -7,7 +7,7 @@ The Web-S2S API for People-Based Attribution complements the Web SDK allowing ma
 
 ## Tag Tips
 
-* To get your Web Dev Key go to **AppsFlyer &amp;gt; My Apps &amp;gt; View brand bundles**.
+* To get your Web Dev Key go to **AppsFlyer &gt; My Apps &gt; View brand bundles**.
 * Use mappings to:
   * Dynamically override the E-Commerce extension values
   * Setup event triggers
@@ -18,7 +18,7 @@ The Web-S2S API for People-Based Attribution complements the Web SDK allowing ma
 
 ## Tag Configuration
 
-First, go to the tag marketplace and add the AppsFlyer Web SDK tag (Learn more about [how to add a tag]()).
+First, go to the tag marketplace and add the AppsFlyer Web SDK tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -26,7 +26,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 

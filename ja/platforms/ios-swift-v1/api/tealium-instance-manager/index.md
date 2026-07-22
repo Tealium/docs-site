@@ -11,29 +11,29 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-instance-man
 | ----- | ------ |
 | `getInstanceByName()` | 指定したアカウント/プロファイル/環境キーのTealiumインスタンスを返します |
 | `removeInstance()` | 指定した `TealiumConfig` インスタンスのTealiumインスタンスを削除します |
-| `removeInstanceForKey()` | 指定したキー（形式：`&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;`）のTealiumインスタンスを削除します |
+| `removeInstanceForKey()` | 指定したキー（形式：`"ACCOUNT.PROFILE.ENVIRONMENT"`）のTealiumインスタンスを削除します |
 
 
 
 ### `getInstanceByName()`
 
-指定したキー（形式：&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;）のTealiumインスタンスを返します。
+指定したキー（形式："ACCOUNT.PROFILE.ENVIRONMENT"）のTealiumインスタンスを返します。
 
 ```swift
-getInstanceByName(instanceKey: String) -&gt; Tealium?
+getInstanceByName(instanceKey: String) -> Tealium?
 ```
 
 | パラメータ  | タイプ       | 説明       | 例 |
 |------------  |-----------|-------------------| --- |
-| `instanceKey`| `String`  | 取得する `Tealium` インスタンスの指定キー | `&#34;companyXYZ.main.dev&#34;` |      
+| `instanceKey`| `String`  | 取得する `Tealium` インスタンスの指定キー | `"companyXYZ.main.dev"` |      
 
 以下の例は、指定したアカウント/プロファイル/環境キーのTealiumインスタンスを取得する方法を示しています：
 
 ```swift
 let instanceManager = TealiumInstanceManager.shared
-let myTealiumInstance = instanceManager.getInstanceByName(&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;)
+let myTealiumInstance = instanceManager.getInstanceByName("ACCOUNT.PROFILE.ENVIRONMENT")
 // 取得したTealiumインスタンスで任意のメソッドを呼び出す
-// myTealiumInstance?.track(&#34;myevent&#34;)
+// myTealiumInstance?.track("myevent")
 ```
 ### `removeInstance()`
 
@@ -55,7 +55,7 @@ instanceManager.removeInstance(myTealiumConfig)
 
 ### `removeInstanceForKey()`
 
-指定したキー（形式：&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;）のTealiumインスタンスを削除（解放）します。このメソッドまたは `removeInstance()` メソッドのいずれも呼び出されない場合、永続的な参照が保持され、インスタンスは削除されません。
+指定したキー（形式："ACCOUNT.PROFILE.ENVIRONMENT"）のTealiumインスタンスを削除（解放）します。このメソッドまたは `removeInstance()` メソッドのいずれも呼び出されない場合、永続的な参照が保持され、インスタンスは削除されません。
 
 ```swift
 removeInstanceForKey(instanceKey)
@@ -63,13 +63,13 @@ removeInstanceForKey(instanceKey)
 
 | パラメータ  | タイプ       | 説明       | 例 |
 |------------  |-----------|-------------------| --- |
-| `instanceKey`| `String`  | 削除する `Tealium` インスタンスの指定キー | `&#34;companyXYZ.main.dev&#34;` |      
+| `instanceKey`| `String`  | 削除する `Tealium` インスタンスの指定キー | `"companyXYZ.main.dev"` |      
 
 以下の例は、指定したアカウント/プロファイル/環境キーのTealiumインスタンスを削除する方法を示しています：
 
 ```swift
 let instanceManager = TealiumInstanceManager.shared
-instanceManager.removeInstanceForKey(&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;)
+instanceManager.removeInstanceForKey("ACCOUNT.PROFILE.ENVIRONMENT")
 ```
 
 

@@ -30,7 +30,7 @@ Google Analytics provides APIs to collect, configure, and report on user-interac
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -38,10 +38,14 @@ When adding the tag, configure the following settings:
   * Tracking ID of the Google Analytics property to which you want to send data  
   * Example: `UA-XXXXXX-13`  
   * Use a comma-separated list to send data for multiple properties.
-Enable [App &#43; Web](https://developers.google.com/analytics/devguides/collection/app-web/basic-tag) by including the measurement ID in the Tracking ID value. For example; `UA-XXXXXX-13,G-XXXXXXXXXX`
+
+<blockquote>
+Enable [App + Web](https://developers.google.com/analytics/devguides/collection/app-web/basic-tag) by including the measurement ID in the Tracking ID value. For example; `UA-XXXXXX-13,G-XXXXXXXXXX`
+</blockquote>
+
 * **Global Object**
   * The name of the Global Object used for the event queue.
-  * If not specified, &#34;gtag&#34; is used.
+  * If not specified, "gtag" is used.
   * Not required for most implementations.
 * **Cross-Tracking Domains**
   * A comma-separated list of domains to use with Cross-Domain Tracking (`setAllowLinker`).
@@ -49,7 +53,7 @@ Enable [App &#43; Web](https://developers.google.com/analytics/devguides/collect
   * Should be the top level domain, such as **tealiumiq.com**.
 * **Cross-Domain Tracking**
   * Sets the value for `setAllowLinker` and enables the cross-domain tracking plug-in.
-  * To use this feature, one or more domains must be specified in the &#34;Cross-Tracking Domains&#34; field or be mapped to `crossDomainTrack`.
+  * To use this feature, one or more domains must be specified in the "Cross-Tracking Domains" field or be mapped to `crossDomainTrack`.
 * **Transport Type**
   * Specifies the transport mechanism with which hits are sent.
 * **Allow Advertising Features**
@@ -77,11 +81,11 @@ Enable [App &#43; Web](https://developers.google.com/analytics/devguides/collect
   * By default, the data layer initiated and referenced by the global site tag is named `dataLayer`.
   * Only rename the data layer if your project requires a separate name.
 * **Allow Anchor**
-  * When true, the `_ga` parameter is added to the query portion of the URL rather than the anchor portion (&#34;#&#34;).
+  * When true, the `_ga` parameter is added to the query portion of the URL rather than the anchor portion ("#").
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -89,70 +93,70 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`tracking_id`|  &lt;ul&gt;&lt;li&gt;Tracking ID&lt;/li&gt;&lt;li&gt;Tracking ID of the Google Analytics property to which you want to send data&lt;/li&gt;&lt;li&gt;Example: `UA-XXXXXX-13`&lt;/li&gt;&lt;li&gt;Use a comma-separated list to send data for multiple properties.&lt;/li&gt;&lt;/ul&gt; |
-|`transport_type`|  &lt;ul&gt;&lt;li&gt;Transport type&lt;/li&gt;&lt;/ul&gt; |
-|`page_title`|  &lt;ul&gt;&lt;li&gt;Page Title&lt;/li&gt;&lt;/ul&gt; |
-|`page_location`|  &lt;ul&gt;&lt;li&gt;Page Location&lt;/li&gt;&lt;/ul&gt; |
-| `page_path` |  &lt;ul&gt;&lt;li&gt;Page Path&lt;/li&gt;&lt;/ul&gt; |
-|`cookie_name`|  &lt;ul&gt;&lt;li&gt;Cookie Name&lt;/li&gt;&lt;/ul&gt; |
-| `cookie_domain` |  &lt;ul&gt;&lt;li&gt;Cookie Domain&lt;/li&gt;&lt;/ul&gt; |
-| `cookie_expires` |  &lt;ul&gt;&lt;li&gt;Cookie Expires&lt;/li&gt;&lt;/ul&gt; |
-|`cookie_prefix`|  &lt;ul&gt;&lt;li&gt;Cookie prefix&lt;/li&gt;&lt;/ul&gt; |
-|`cookie_update`|  &lt;ul&gt;&lt;li&gt;Cookie update&lt;/li&gt;&lt;/ul&gt; |
-|`config.allow_google_signals`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Allow advertising features.&lt;/li&gt;&lt;/ul&gt; |
-|`allow_ad_personalization_signals`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Allow ad personalization signals.&lt;/li&gt;&lt;li&gt;Enables Google Analytics to collect data about your traffic through the Google Ad Manager (DoubleClick) cookie, in addition to data collected through the standard Google Analytics implementation.&lt;/li&gt;&lt;/ul&gt; |
-|`config.link_attribution.cookie_name`|  &lt;ul&gt;&lt;li&gt;Link Attribution Cookie Name&lt;/li&gt;&lt;/ul&gt; |
-|`config.link_attribution.cookie_expires`|  &lt;ul&gt;&lt;li&gt;Link Attribution Cookie Expiration&lt;/li&gt;&lt;/ul&gt; |
-|`config.link_attribution.levels`|  &lt;ul&gt;&lt;li&gt;Link Attribution Levels&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.id`|  &lt;ul&gt;&lt;li&gt;Campaign ID&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.name`|  &lt;ul&gt;&lt;li&gt;Campaign Name&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.source`|  &lt;ul&gt;&lt;li&gt;Campaign Source&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.medium`|  &lt;ul&gt;&lt;li&gt;Campaign Medium&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.content`|  &lt;ul&gt;&lt;li&gt;Campaign Content&lt;/li&gt;&lt;/ul&gt; |
-|`config.campaign.term`|  &lt;ul&gt;&lt;li&gt;Campaign Term/Keyword&lt;/li&gt;&lt;/ul&gt; |
-|`config.anonymize_ip`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Anonymize IP&lt;/li&gt;&lt;li&gt;Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.&lt;/li&gt;&lt;li&gt;Slightly reduces the accuracy of geographic reporting.&lt;/li&gt;&lt;/ul&gt; |
-|`clear_global_vars`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Clear Vars&lt;/li&gt;&lt;li&gt;Clears items usually set for the lifetime of the tracker after each tracking request.&lt;/li&gt;&lt;/ul&gt; |
-|`config.optimize_id`|  &lt;ul&gt;&lt;li&gt;Optimize Container ID&lt;/li&gt;&lt;li&gt;Sets the `optimize_id` and enables the Google Optimize plugin.&lt;/li&gt;&lt;li&gt;This ID is found in your Optimize accounts page.&lt;/li&gt;&lt;li&gt;Example: **GTM-XXXXXX**&lt;/li&gt;&lt;/ul&gt; |
-|`config.use_amp_client_id`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Use AMP Client ID&lt;/li&gt;&lt;li&gt;The Google AMP Client ID lets you uniquely identify users that engage with your content on AMP and non-AMP pages.&lt;/li&gt;&lt;li&gt;If you opt-in, Google Analytics uses the AMP Client ID to determine that multiple site events belong to the same user when those users visit AMP pages through a Google AMP viewer.&lt;/li&gt;&lt;/ul&gt; |
-| `config.sample_rate` |  &lt;ul&gt;&lt;li&gt;Sample Rate&lt;/li&gt;&lt;/ul&gt; |
-|`config.site_speed_sample_rate`|  &lt;ul&gt;&lt;li&gt;Site Speed Sample Rate&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;User ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`&lt;/li&gt;&lt;/ul&gt; |
-|`config.client_id`|  &lt;ul&gt;&lt;li&gt;Client ID&lt;/li&gt;&lt;/ul&gt; |
+|`tracking_id`|  <ul><li>Tracking ID</li><li>Tracking ID of the Google Analytics property to which you want to send data</li><li>Example: `UA-XXXXXX-13`</li><li>Use a comma-separated list to send data for multiple properties.</li></ul> |
+|`transport_type`|  <ul><li>Transport type</li></ul> |
+|`page_title`|  <ul><li>Page Title</li></ul> |
+|`page_location`|  <ul><li>Page Location</li></ul> |
+| `page_path` |  <ul><li>Page Path</li></ul> |
+|`cookie_name`|  <ul><li>Cookie Name</li></ul> |
+| `cookie_domain` |  <ul><li>Cookie Domain</li></ul> |
+| `cookie_expires` |  <ul><li>Cookie Expires</li></ul> |
+|`cookie_prefix`|  <ul><li>Cookie prefix</li></ul> |
+|`cookie_update`|  <ul><li>Cookie update</li></ul> |
+|`config.allow_google_signals`|  <ul><li>Boolean</li><li>Allow advertising features.</li></ul> |
+|`allow_ad_personalization_signals`|  <ul><li>Boolean</li><li>Allow ad personalization signals.</li><li>Enables Google Analytics to collect data about your traffic through the Google Ad Manager (DoubleClick) cookie, in addition to data collected through the standard Google Analytics implementation.</li></ul> |
+|`config.link_attribution.cookie_name`|  <ul><li>Link Attribution Cookie Name</li></ul> |
+|`config.link_attribution.cookie_expires`|  <ul><li>Link Attribution Cookie Expiration</li></ul> |
+|`config.link_attribution.levels`|  <ul><li>Link Attribution Levels</li></ul> |
+|`config.campaign.id`|  <ul><li>Campaign ID</li></ul> |
+|`config.campaign.name`|  <ul><li>Campaign Name</li></ul> |
+|`config.campaign.source`|  <ul><li>Campaign Source</li></ul> |
+|`config.campaign.medium`|  <ul><li>Campaign Medium</li></ul> |
+|`config.campaign.content`|  <ul><li>Campaign Content</li></ul> |
+|`config.campaign.term`|  <ul><li>Campaign Term/Keyword</li></ul> |
+|`config.anonymize_ip`|  <ul><li>Boolean</li><li>Anonymize IP</li><li>Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.</li><li>Slightly reduces the accuracy of geographic reporting.</li></ul> |
+|`clear_global_vars`|  <ul><li>Boolean</li><li>Clear Vars</li><li>Clears items usually set for the lifetime of the tracker after each tracking request.</li></ul> |
+|`config.optimize_id`|  <ul><li>Optimize Container ID</li><li>Sets the `optimize_id` and enables the Google Optimize plugin.</li><li>This ID is found in your Optimize accounts page.</li><li>Example: **GTM-XXXXXX**</li></ul> |
+|`config.use_amp_client_id`|  <ul><li>Boolean</li><li>Use AMP Client ID</li><li>The Google AMP Client ID lets you uniquely identify users that engage with your content on AMP and non-AMP pages.</li><li>If you opt-in, Google Analytics uses the AMP Client ID to determine that multiple site events belong to the same user when those users visit AMP pages through a Google AMP viewer.</li></ul> |
+| `config.sample_rate` |  <ul><li>Sample Rate</li></ul> |
+|`config.site_speed_sample_rate`|  <ul><li>Site Speed Sample Rate</li></ul> |
+|`customer_id`|  <ul><li>User ID</li><li>Overrides `_ccustid`</li></ul> |
+|`config.client_id`|  <ul><li>Client ID</li></ul> |
 
 ### Event
 
 |Variable| Description|
 |---| ---|
-| `event_name` |  &lt;ul&gt;&lt;li&gt;Event Action&lt;/li&gt;&lt;/ul&gt; |
-| `event.event_category` |  &lt;ul&gt;&lt;li&gt;Event Category&lt;/li&gt;&lt;/ul&gt; |
-| `event.event_label` |  &lt;ul&gt;&lt;li&gt;Event Label&lt;/li&gt;&lt;/ul&gt; |
-| `event.value` |  &lt;ul&gt;&lt;li&gt;Event / Timing Value&lt;/li&gt;&lt;/ul&gt; |
-| `event.name` |  &lt;ul&gt;&lt;li&gt;Timing Variable Name&lt;/li&gt;&lt;/ul&gt; |
-| `event.description` |  &lt;ul&gt;&lt;li&gt;Exception Description&lt;/li&gt;&lt;/ul&gt; |
-| `event.non_interaction` |  &lt;ul&gt;&lt;li&gt;Non-Interaction&lt;/li&gt;&lt;/ul&gt; |
-|`event.fatal`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Fatal Error&lt;/li&gt;&lt;/ul&gt; |
-| `event.search_term` |  &lt;ul&gt;&lt;li&gt;Search Term&lt;/li&gt;&lt;/ul&gt; |
-| `event.method` |  &lt;ul&gt;&lt;li&gt;Method&lt;/li&gt;&lt;/ul&gt; |
-| `event.content_type` |  &lt;ul&gt;&lt;li&gt;Content Type&lt;/li&gt;&lt;/ul&gt; |
-| `event.content_id` |  &lt;ul&gt;&lt;li&gt;Content ID&lt;/li&gt;&lt;/ul&gt; |
-| `event.destination` |  &lt;ul&gt;&lt;li&gt;Destination&lt;/li&gt;&lt;/ul&gt; |
-|`event.start_date`|  &lt;ul&gt;&lt;li&gt;Start Date&lt;/li&gt;&lt;li&gt;Date format is YYYYMMDD.&lt;/li&gt;&lt;/ul&gt; |
-|`event.end_date`|  &lt;ul&gt;&lt;li&gt;End Date&lt;/li&gt;&lt;li&gt;Date format is YYYYMMDD.&lt;/li&gt;&lt;/ul&gt; |
-| `event.custom` |  &lt;ul&gt;&lt;li&gt;Custom Event Data&lt;/li&gt;&lt;/ul&gt; |
-|`event.anonymize_ip`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Anonymize IP&lt;/li&gt;&lt;li&gt;Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.&lt;/li&gt;&lt;li&gt;Slightly reduces the accuracy of geographic reporting.&lt;/li&gt;&lt;/ul&gt; |
-| `event.send_to` |  &lt;ul&gt;&lt;li&gt;Override Default Routing&lt;/li&gt;&lt;/ul&gt; |
-| `event.event_callback` |  &lt;ul&gt;&lt;li&gt;Event callback&lt;/li&gt;&lt;/ul&gt; |
+| `event_name` |  <ul><li>Event Action</li></ul> |
+| `event.event_category` |  <ul><li>Event Category</li></ul> |
+| `event.event_label` |  <ul><li>Event Label</li></ul> |
+| `event.value` |  <ul><li>Event / Timing Value</li></ul> |
+| `event.name` |  <ul><li>Timing Variable Name</li></ul> |
+| `event.description` |  <ul><li>Exception Description</li></ul> |
+| `event.non_interaction` |  <ul><li>Non-Interaction</li></ul> |
+|`event.fatal`|  <ul><li>Boolean</li><li>Fatal Error</li></ul> |
+| `event.search_term` |  <ul><li>Search Term</li></ul> |
+| `event.method` |  <ul><li>Method</li></ul> |
+| `event.content_type` |  <ul><li>Content Type</li></ul> |
+| `event.content_id` |  <ul><li>Content ID</li></ul> |
+| `event.destination` |  <ul><li>Destination</li></ul> |
+|`event.start_date`|  <ul><li>Start Date</li><li>Date format is YYYYMMDD.</li></ul> |
+|`event.end_date`|  <ul><li>End Date</li><li>Date format is YYYYMMDD.</li></ul> |
+| `event.custom` |  <ul><li>Custom Event Data</li></ul> |
+|`event.anonymize_ip`|  <ul><li>Boolean</li><li>Anonymize IP</li><li>Tells Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage.</li><li>Slightly reduces the accuracy of geographic reporting.</li></ul> |
+| `event.send_to` |  <ul><li>Override Default Routing</li></ul> |
+| `event.event_callback` |  <ul><li>Event callback</li></ul> |
 
 ### App / Screen tracking
 
 |Variable| Description|
 |---| ---|
-|`screen_view`|  &lt;ul&gt;&lt;li&gt;Boolean.&lt;/li&gt;&lt;li&gt;Values accepted to activate: &#34;true&#34;, &#34;on&#34;)&lt;/li&gt;&lt;li&gt;Track Screen Views&lt;/li&gt;&lt;li&gt;Enables App/Screen tracking.&lt;/li&gt;&lt;li&gt;When enabled, a separate screenview request is sent after the initial pageview.&lt;/li&gt;&lt;/ul&gt; |
-| `event.screen_name` |  &lt;ul&gt;&lt;li&gt;Screen Name&lt;/li&gt;&lt;/ul&gt; |
-| `config.app_name` |  &lt;ul&gt;&lt;li&gt;Application Name&lt;/li&gt;&lt;/ul&gt; |
-| `config.app_id` |  &lt;ul&gt;&lt;li&gt;Application ID&lt;/li&gt;&lt;/ul&gt; |
-| `config.app_version` |  &lt;ul&gt;&lt;li&gt;Application Version&lt;/li&gt;&lt;/ul&gt; |
-|`IDconfig.app_installer_id`|  &lt;ul&gt;&lt;li&gt;Application Installer&lt;/li&gt;&lt;/ul&gt; |
+|`screen_view`|  <ul><li>Boolean.</li><li>Values accepted to activate: "true", "on")</li><li>Track Screen Views</li><li>Enables App/Screen tracking.</li><li>When enabled, a separate screenview request is sent after the initial pageview.</li></ul> |
+| `event.screen_name` |  <ul><li>Screen Name</li></ul> |
+| `config.app_name` |  <ul><li>Application Name</li></ul> |
+| `config.app_id` |  <ul><li>Application ID</li></ul> |
+| `config.app_version` |  <ul><li>Application Version</li></ul> |
+|`IDconfig.app_installer_id`|  <ul><li>Application Installer</li></ul> |
 
 ### Content groups
 
@@ -222,88 +226,88 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`checkout_step`|  &lt;ul&gt;&lt;li&gt;Number&lt;/li&gt;&lt;li&gt;Checkout step.&lt;/li&gt;&lt;/ul&gt; |
-| `checkout_option` |  &lt;ul&gt;&lt;li&gt;Checkout Option.&lt;/li&gt;&lt;/ul&gt; |
-|`order_currency`|  &lt;ul&gt;&lt;li&gt;Currency&lt;/li&gt;&lt;li&gt;Overrides `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Transaction ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;Value/Order Total&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;/ul&gt; |
-| `order_shipping` |  &lt;ul&gt;&lt;li&gt;Shipping Amount&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax Amount&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_store`|  &lt;ul&gt;&lt;li&gt;Affiliation/Store&lt;/li&gt;&lt;li&gt;Overrides `_cstore`.&lt;/li&gt;&lt;/ul&gt; |
-| `order_coupon_code` |  &lt;ul&gt;&lt;li&gt;Promo Code/Coupon&lt;/li&gt;&lt;li&gt;Overrides `_cpromo`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;User ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of IDs&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names&lt;/li&gt;&lt;li&gt;`Overrides _cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_brand`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Brands&lt;/li&gt;&lt;li&gt;Overrides `_cbrand`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_variant`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Variants&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_discount`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Discounts&lt;/li&gt;&lt;li&gt;Overrides `_cdisc`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_promo_code`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Promo Codes/Coupons&lt;/li&gt;&lt;/ul&gt; |
-|`product_action_list`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Action List&lt;/li&gt;&lt;/ul&gt; |
-|`product_list_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Name&lt;/li&gt;&lt;/ul&gt; |
-|`product_list_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product List ID&lt;/li&gt;&lt;/ul&gt; |
-|`product_list_position`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Position&lt;/li&gt;&lt;/ul&gt; |
-|`product_location_id`|  &lt;ul&gt;&lt;li&gt;Product Location ID&lt;/li&gt;&lt;/ul&gt; |
+|`checkout_step`|  <ul><li>Number</li><li>Checkout step.</li></ul> |
+| `checkout_option` |  <ul><li>Checkout Option.</li></ul> |
+|`order_currency`|  <ul><li>Currency</li><li>Overrides `_ccurrency`.</li></ul> |
+|`order_id`|  <ul><li>Transaction ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_total`|  <ul><li>Value/Order Total</li><li>Overrides `_ctotal`.</li></ul> |
+| `order_shipping` |  <ul><li>Shipping Amount</li><li>Overrides `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax Amount</li><li>Overrides `_ctax`.</li></ul> |
+|`order_store`|  <ul><li>Affiliation/Store</li><li>Overrides `_cstore`.</li></ul> |
+| `order_coupon_code` |  <ul><li>Promo Code/Coupon</li><li>Overrides `_cpromo`.</li></ul> |
+|`customer_id`|  <ul><li>User ID</li><li>Overrides `_ccustid`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of IDs</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names</li><li>`Overrides _cprodname`.</li></ul> |
+|`product_brand`|  <ul><li>Array</li><li>List of Brands</li><li>Overrides `_cbrand`.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories</li><li>Overrides `_ccat`.</li></ul> |
+|`product_variant`|  <ul><li>Array</li><li>List of Variants</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices</li><li>Overrides `_cprice`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities</li><li>Overrides `_cquan`.</li></ul> |
+|`product_discount`|  <ul><li>Array</li><li>List of Discounts</li><li>Overrides `_cdisc`.</li></ul> |
+|`product_promo_code`|  <ul><li>Array</li><li>List of Promo Codes/Coupons</li></ul> |
+|`product_action_list`|  <ul><li>Array</li><li>Product Action List</li></ul> |
+|`product_list_name`|  <ul><li>Array</li><li>Product Name</li></ul> |
+|`product_list_id`|  <ul><li>Array</li><li>Product List ID</li></ul> |
+|`product_list_position`|  <ul><li>Array</li><li>Product Position</li></ul> |
+|`product_location_id`|  <ul><li>Product Location ID</li></ul> |
 
 ### Enh E-Comm engagement
 
 |Variable| Description|
 |---| ---|
-|`impression_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression ID&lt;/li&gt;&lt;/ul&gt; |
-|`impression_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Name&lt;/li&gt;&lt;/ul&gt; |
-| `impression_category` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Category&lt;/li&gt;&lt;/ul&gt; |
-|`impression_brand`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Brand&lt;/li&gt;&lt;/ul&gt; |
-|`impression_variant`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Variant&lt;/li&gt;&lt;/ul&gt; |
-|`impression_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Price&lt;/li&gt;&lt;/ul&gt; |
-|`impression_list_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression List&lt;/li&gt;&lt;/ul&gt; |
-|`impression_item_list_id`|  &lt;ul&gt;&lt;li&gt;Product Impression List ID&lt;/li&gt;&lt;/ul&gt; |
-|`impression_list_position`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Product Impression Position&lt;/li&gt;&lt;/ul&gt; |
-|```promo_id```|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion ID&lt;/li&gt;&lt;/ul&gt; |
-|`promo_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Name&lt;/li&gt;&lt;/ul&gt; |
-|`promo_creative_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Creative&lt;/li&gt;&lt;/ul&gt; |
-| `promo_creative_slot` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Position&lt;/li&gt;&lt;/ul&gt; |
-| `promo_location_id` |  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Promotion Location&lt;/li&gt;&lt;/ul&gt; |
+|`impression_id`|  <ul><li>Array</li><li>Product Impression ID</li></ul> |
+|`impression_name`|  <ul><li>Array</li><li>Product Impression Name</li></ul> |
+| `impression_category` |  <ul><li>Array</li><li>Product Impression Category</li></ul> |
+|`impression_brand`|  <ul><li>Array</li><li>Product Impression Brand</li></ul> |
+|`impression_variant`|  <ul><li>Array</li><li>Product Impression Variant</li></ul> |
+|`impression_price`|  <ul><li>Array</li><li>Product Impression Price</li></ul> |
+|`impression_list_name`|  <ul><li>Array</li><li>Product Impression List</li></ul> |
+|`impression_item_list_id`|  <ul><li>Product Impression List ID</li></ul> |
+|`impression_list_position`|  <ul><li>Array</li><li>Product Impression Position</li></ul> |
+|```promo_id```|  <ul><li>Array</li><li>Promotion ID</li></ul> |
+|`promo_name`|  <ul><li>Array</li><li>Promotion Name</li></ul> |
+|`promo_creative_name`|  <ul><li>Array</li><li>Promotion Creative</li></ul> |
+| `promo_creative_slot` |  <ul><li>Array</li><li>Promotion Position</li></ul> |
+| `promo_location_id` |  <ul><li>Array</li><li>Promotion Location</li></ul> |
 
-### App&#43;Web travel
-
-|Variable| Description|
-|---| ---|
-|`event.trip_type`|  &lt;ul&gt;&lt;li&gt;Trip Type&lt;/li&gt;&lt;/ul&gt; |
-|`start_date`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Start Date&lt;/li&gt;&lt;/ul&gt; |
-|`end_date`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;End Date&lt;/li&gt;&lt;/ul&gt; |
-|`origin`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Origin&lt;/li&gt;&lt;/ul&gt; |
-|`destination`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Destination&lt;/li&gt;&lt;/ul&gt; |
-|`flight_number`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Flight Number&lt;/li&gt;&lt;/ul&gt; |
-|`travel_class`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Travel Class&lt;/li&gt;&lt;/ul&gt; |
-|`fare_product`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Fare Product&lt;/li&gt;&lt;/ul&gt; |
-|`booking_code`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Booking Code&lt;/li&gt;&lt;/ul&gt; |
-|`event.passengers.total`|  &lt;ul&gt;&lt;li&gt;Total Number of Passengers&lt;/li&gt;&lt;/ul&gt; |
-|`event.passengers.adult`|  &lt;ul&gt;&lt;li&gt;Number of Adult Passengers&lt;/li&gt;&lt;/ul&gt; |
-|`event.passengers.child`|  &lt;ul&gt;&lt;li&gt;Number of Child Passengers&lt;/li&gt;&lt;/ul&gt; |
-|`event.passengers.infant_in_lap`|  &lt;ul&gt;&lt;li&gt;Number of Infant Passengers in Lap&lt;/li&gt;&lt;/ul&gt; |
-|`event.passengers.infant_in_seat`|  &lt;ul&gt;&lt;li&gt;Number of Infant Passengers in Seat&lt;/li&gt;&lt;/ul&gt; |
-
-### App&#43;Web game
+### App+Web travel
 
 |Variable| Description|
 |---| ---|
-|`event.achievement_id`|  &lt;ul&gt;&lt;li&gt;Achievement ID&lt;/li&gt;&lt;/ul&gt; |
-|`event.character`|  &lt;ul&gt;&lt;li&gt;Character&lt;/li&gt;&lt;/ul&gt; |
-|`event.group_id`|  &lt;ul&gt;&lt;li&gt;Group ID&lt;/li&gt;&lt;/ul&gt; |
-|`event.item_name`|  &lt;ul&gt;&lt;li&gt;Item Name&lt;/li&gt;&lt;/ul&gt; |
-|`event.level`|  &lt;ul&gt;&lt;li&gt;Level&lt;/li&gt;&lt;/ul&gt; |
-|`event.level_name`|  &lt;ul&gt;&lt;li&gt;Level Name&lt;/li&gt;&lt;/ul&gt; |
-|`event.score`|  &lt;ul&gt;&lt;li&gt;Score&lt;/li&gt;&lt;/ul&gt; |
-|`event.success`|  &lt;ul&gt;&lt;li&gt;Success&lt;/li&gt;&lt;/ul&gt; |
-|`event.virtual_currency_name`|  &lt;ul&gt;&lt;li&gt;Virtual Currency Name&lt;/li&gt;&lt;/ul&gt; |
+|`event.trip_type`|  <ul><li>Trip Type</li></ul> |
+|`start_date`|  <ul><li>Array</li><li>Start Date</li></ul> |
+|`end_date`|  <ul><li>Array</li><li>End Date</li></ul> |
+|`origin`|  <ul><li>Array</li><li>Origin</li></ul> |
+|`destination`|  <ul><li>Array</li><li>Destination</li></ul> |
+|`flight_number`|  <ul><li>Array</li><li>Flight Number</li></ul> |
+|`travel_class`|  <ul><li>Array</li><li>Travel Class</li></ul> |
+|`fare_product`|  <ul><li>Array</li><li>Fare Product</li></ul> |
+|`booking_code`|  <ul><li>Array</li><li>Booking Code</li></ul> |
+|`event.passengers.total`|  <ul><li>Total Number of Passengers</li></ul> |
+|`event.passengers.adult`|  <ul><li>Number of Adult Passengers</li></ul> |
+|`event.passengers.child`|  <ul><li>Number of Child Passengers</li></ul> |
+|`event.passengers.infant_in_lap`|  <ul><li>Number of Infant Passengers in Lap</li></ul> |
+|`event.passengers.infant_in_seat`|  <ul><li>Number of Infant Passengers in Seat</li></ul> |
+
+### App+Web game
+
+|Variable| Description|
+|---| ---|
+|`event.achievement_id`|  <ul><li>Achievement ID</li></ul> |
+|`event.character`|  <ul><li>Character</li></ul> |
+|`event.group_id`|  <ul><li>Group ID</li></ul> |
+|`event.item_name`|  <ul><li>Item Name</li></ul> |
+|`event.level`|  <ul><li>Level</li></ul> |
+|`event.level_name`|  <ul><li>Level Name</li></ul> |
+|`event.score`|  <ul><li>Score</li></ul> |
+|`event.success`|  <ul><li>Success</li></ul> |
+|`event.virtual_currency_name`|  <ul><li>Virtual Currency Name</li></ul> |
 
 ### IAB Transparency and Consent Framework v2
 
 |Variable| Description|
 |---| ---|
-|`gtag_enable_tcf_support`|  &lt;ul&gt;&lt;li&gt;Enable TCF Support&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
+|`gtag_enable_tcf_support`|  <ul><li>Enable TCF Support</li><li>Values are **true** or **false**.</li></ul> |
 
 ## Google Analytics 4 support
 

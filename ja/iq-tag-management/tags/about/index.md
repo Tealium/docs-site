@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/tags/about/
 
 タグは、オンライン広告、メールマーケティング、サイトのパーソナライゼーション、コンバージョン追跡（その他多くの用途）の効果を測定するために、マーケターによって一般的に使用されます。これは、ウェブページからデータを収集することで達成されます。ウェブサイトにタグを実装する最も一般的な方法は、JavaScriptコードを使用することです。
 
-![](/images/iq-tag-management/what-are-tags.png)
+![](https://docs.tealium.com/images/iq-tag-management/what-are-tags.png)
 
 ## タグの仕組み
 

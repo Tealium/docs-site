@@ -30,8 +30,8 @@ Before you begin, familiarize yourself with [how extensions work]().
 To use the Lookup Table extension, set up the following configurations:
 
 * **Lookup Value in**: Select the source lookup variable from the data layer that contains the value you want to look up.
-* **Destination**: Select the variable to set to the associated output value. Click the **&#43;** button to create new variable.
-* **Variable Type**: Select the data type (string or array) of the lookup variable&#39;s value. If you select array, any output goes into the same array index as its corresponding lookup match.
+* **Destination**: Select the variable to set to the associated output value. Click the **+** button to create new variable.
+* **Variable Type**: Select the data type (string or array) of the lookup variable's value. If you select array, any output goes into the same array index as its corresponding lookup match.
 * **Match Type**: All lookups are done using the selected match type.
     * **Exact**: Matches the value of the lookup variable exactly (case sensitive).
     * **Contains**: Matches a substring (a contiguous sequence of characters within a string) value of the lookup variable.
@@ -89,7 +89,7 @@ At least one mapping row must be present to perform a successful export. If the 
 The Lookup Table extension lets you match a data layer variable such as `category_id` to another variable such as `category_name`, as shown in the following example:
 
 1. Select the lookup variable `category_id` from the **Lookup Value in** drop-down menu.
-1. Select the readable value variable `category_name` from the **Destination** drop-down menu. If the variable is not found in the drop-down menu, click **&#43;** to add the variable.
+1. Select the readable value variable `category_name` from the **Destination** drop-down menu. If the variable is not found in the drop-down menu, click **+** to add the variable.
 1. In the **Default Output** field, enter `none`. The value of `category_name` is set to `none` when the `category_id` value is not found on the lookup table mapping.
 1. Select **String** for **Variable Type**, since the variable `category_id` contains only one ID per category.
 1. Select **Exact** for **Match Type** if you know the exact category IDs.
@@ -97,9 +97,9 @@ The Lookup Table extension lets you match a data layer variable such as `categor
     1. Enter a category ID in the **Lookup Match** field, such as `38`.
     1. Enter a category name in the **Output** field, such as `Mobile`.
     1. (Optional) Add relevant notes in the **Note** field.
-    1. Click the **&#43;** button to add another lookup/output value.
+    1. Click the **+** button to add another lookup/output value.
 
-![](/images/iq-tag-management/screen-shot-2020-03-12-at-10.23.12-am.png)
+![](https://docs.tealium.com/images/iq-tag-management/screen-shot-2020-03-12-at-10.23.12-am.png)
 
 When the Lookup Table extension runs, if one of the lookups matches the output value of the `category_id` variable, then the `category_name` variable is populated with the value set in the Output. For example, if `category_id` is `46`, then `category_name` is set to `AudienceStream`.
 
@@ -109,6 +109,6 @@ When the Lookup Table extension runs, if one of the lookups matches the output v
 
 A: Lookups are performed in the order they appear in the extension and the first match wins.
 
-#### Is the match type &#34;Exact&#34; case sensitive?
+#### Is the match type "Exact" case sensitive?
 
 A: Yes. The `Exact` match option is case sensitive.

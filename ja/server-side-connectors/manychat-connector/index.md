@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/manychat-connector/
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -61,7 +61,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/manychat-connector/
 | サブスクライバーID | サブスクライバーの一意の識別子。 |
 | フィールド名 | 値を構成するフィールド名。 |
 | フィールド値 | フィールド値。 |
-| 日付フィールド | オプション。カスタムフィールドが日時形式(`YYY-MM-DDTHH:MM:SS&#43;00:00`)を期待する場合は、チェックボックスを選択します。それ以外の場合は、`YYYY-MM-DD`の日付形式が使用されます。 |
+| 日付フィールド | オプション。カスタムフィールドが日時形式(`YYY-MM-DDTHH:MM:SS+00:00`)を期待する場合は、チェックボックスを選択します。それ以外の場合は、`YYYY-MM-DD`の日付形式が使用されます。 |
 
 ### サブスクライバーをアップサート
 
@@ -90,6 +90,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/manychat-connector/
 | データ | メッセージデータ。このオブジェクトを構築するためにはテンプレート変数を使用する必要があります。[詳細情報](https://manychat.github.io/dynamic_block_docs/)。 |
 | メッセージタグ | メッセージを説明するタグ。例：`ACCOUNT_UPDATE`。 |
 | OTNトピック名 | 一回限りの通知トピック名。例：チャンネルニュース。 |
-| テンプレート変数 | **テンプレート**のデータ入力としてテンプレート変数を提供します。&lt;br&gt;詳細情報と使用例については、を参照してください。&lt;br&gt;ドット表記でネストされたテンプレート変数に名前を付けます。例：items.name。&lt;br&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
-| テンプレート | データフィールドで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;br&gt;テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前でダブルカーリーブレースで注入されます。 |
+| テンプレート変数 | **テンプレート**のデータ入力としてテンプレート変数を提供します。<br>詳細情報と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。<br>ドット表記でネストされたテンプレート変数に名前を付けます。例：items.name。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
+| テンプレート | データフィールドで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。<br>テンプレートは、例えば`{{SomeTemplateName}}`のように、サポートされるフィールドに名前でダブルカーリーブレースで注入されます。 |
 

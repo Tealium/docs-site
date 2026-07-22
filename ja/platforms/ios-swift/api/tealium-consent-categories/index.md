@@ -54,4 +54,4 @@ consentCategoriesStringArrayToEnum(categories)
 
 | パラメータ | 型 |  説明 | 例 |
 | --- | --- | --- | --- |
-| `categories` | `[String]` | TealiumConsentCategoriesの配列に変換するための文字列の配列 | `[&#34;analytics&#34;, &#34;bigData&#34;]` |
+| `categories` | `[String]` | TealiumConsentCategoriesの配列に変換するための文字列の配列 | `["analytics", "bigData"]` |

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/consent/client-side/consent-management/privacy-ban
 
 Use the following steps to begin setting up the opt-out consent manager:
 
-1. In the left sidebar, go to **Client-Side Tools &gt; Consent Management**.  
+1. In the left sidebar, go to **Client-Side Tools > Consent Management**.  
 If the opt-out model banner and popup is already set up, you can toggle it on or off from this screen.
 1. In the **Opt-Out Model** section, click **Get Started** to launch the configuration modal.
 
@@ -17,11 +17,11 @@ To get started, choose the user experience option that matches your site:
 
 * **Banner and Popup (Recommended)** 
 This option adds a cookie banner to be displayed on the page. You set the message and links and the consent manager takes care of the rest, displaying the banner on the page based on your configured settings. The banner contains a link that opens the popup where users set their **Do Not Sell** preferences.
-    ![](/images/iq-tag-management/ccpa-banner-popup.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-banner-popup.png)
 
 * **Popup Only**  
 Select this option if you already display a cookie banner on your site. This option makes the popup available using a JavaScript method that you add to a link in your banner.
-    ![](/images/iq-tag-management/ccpa-popup.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-popup.png)
 
 ### Content
 
@@ -70,30 +70,34 @@ To edit the content of the standard parameters, modify the text fields and click
 Sample HTML code with parameters:
 
 ```html
-&lt;div class=&#34;privacy_prompt consent_doNotSell&#34;&gt;
-  &lt;div class=&#34;privacy_prompt_content&#34;&gt;
-    &lt;h1&gt;{{title}}&lt;/h1&gt;
-    &lt;img src=&#34;{{company_logo_url}}&#34; class=&#34;logo&#34;&gt;
-    &lt;p&gt;{{message}}&lt;/p&gt;
-    &lt;input id=&#39;consent_doNotSell_checkbox&#39; type=&#39;checkbox&#39; /&gt;
+<div class="privacy_prompt consent_doNotSell">
+  <div class="privacy_prompt_content">
+    <h1>{{title}}</h1>
+    <img src="{{company_logo_url}}" class="logo">
+    <p>{{message}}</p>
+    <input id='consent_doNotSell_checkbox' type='checkbox' />
     {{do_not_sell_description}}
-  &lt;/div&gt;
-  &lt;div class=&#34;privacy_prompt_footer&#34;&gt;
-    &lt;div class=&#34;button right&#34; id=&#34;consent_doNotSell_submit&#34;&gt;{{confirmation_button}}&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&#34;close_btn_thick&#34;&gt;&lt;/div&gt;
-&lt;/div&gt;
+  </div>
+  <div class="privacy_prompt_footer">
+    <div class="button right" id="consent_doNotSell_submit">{{confirmation_button}}</div>
+  </div>
+  <div class="close_btn_thick"></div>
+</div>
 ```
 
 #### Custom parameters
 
 Custom parameters can be added to further customize the consent manager. These parameters can be referenced within the standard parameters or in the templates.
 
+
+<blockquote>
 Best Practice: Avoid putting translatable text directly in the HTML or JavaScript. Instead, construct the code with `{{parameters}}` and define the values using custom parameters.
+</blockquote>
+
 
 To add a custom parameter:
 
-1. Scroll down to the Custom Parameters section and click **&#43; Add Parameter**.  
+1. Scroll down to the Custom Parameters section and click **+ Add Parameter**.  
 The **Custom Parameter** dialog appears.
 1. Enter a name for the parameter.
 1. Click **Apply**.  
@@ -121,7 +125,7 @@ window.utag_cfg_ovrd.gdprDLRef = utag_data.site_language;
 
 To add a language:
 
-1. In the **Language** side panel, click **&#43; Add**.  
+1. In the **Language** side panel, click **+ Add**.  
 The **Add Language** dialog appears.
 1. Select the language and click **Apply**.  
 The new language displays in the side panel.
@@ -131,16 +135,16 @@ The new language displays in the side panel.
 
 ##### Setting the default language
 
-The default language is used to display the consent manager when the user&#39;s detected browser language does not have a matching language configured.
+The default language is used to display the consent manager when the user's detected browser language does not have a matching language configured.
 
 To set a default language, select the **Make Default Language** checkbox located in the language title bar.  
-    ![](/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
 
 ### Customization (CSS, HTML, JavaScript)
 
 The **Customization** screen displays the code behind the banner and popup – the CSS, HTML, and JavaScript. This code can be edited to adjust the look and design of the banner and popup to match your website and customer needs.
 
-The JavaScript code is minified before it is published into the utag.js file. If the minification process fails for any reason (such as a syntax error), the publish process halts and returns a warning message in Tealium iQ. Upon successful publish, when `utag.js` executes on the page, the consent manager JavaScript code is injected into the `&lt;head&gt;` of the page.
+The JavaScript code is minified before it is published into the utag.js file. If the minification process fails for any reason (such as a syntax error), the publish process halts and returns a warning message in Tealium iQ. Upon successful publish, when `utag.js` executes on the page, the consent manager JavaScript code is injected into the `<head>` of the page.
 
 ### Affected tags
 
@@ -155,11 +159,11 @@ The list of tags appears in the main panel.
 
 ### Enforcement rule
 
-On the **Enforcement Rule** screen, select the load rule to determine when to enforce consent. You can select an existing load rule or create one to satisfy your legal criteria. For more information, see [Load rules]().
+On the **Enforcement Rule** screen, select the load rule to determine when to enforce consent. You can select an existing load rule or create one to satisfy your legal criteria. For more information, see [Load rules](https://docs.tealium.com/about-load-rules/).
 
 ### Consent cookie
 
-The prompt relies on a cookie named `CONSENTMGR`. The presence of this cookie and the values it contains determine the behavior of the prompt and reflect the state of the visitor&#39;s choice. The key-value pairs are delimited by the pipe (&#34;|&#34;) character.
+The prompt relies on a cookie named `CONSENTMGR`. The presence of this cookie and the values it contains determine the behavior of the prompt and reflect the state of the visitor's choice. The key-value pairs are delimited by the pipe ("|") character.
 
 The `CONSENTMGR` cookie stores the following key-value pairs related to the Do Not Sell Prompt:
 
@@ -171,7 +175,11 @@ The `CONSENTMGR` cookie stores the following key-value pairs related to the Do N
 
 Example value of the `CONSENTMGR` cookie: `ts:1525369619|dns:true`
 
+
+<blockquote>
 This cookie has a default expiry of 13 months from the time it is set or changed.
+</blockquote>
+
 
 
 ## JavaScript functions
@@ -180,12 +188,12 @@ After the Opt-out banner and popup are enabled and published, JavaScript utility
 
 ### utag.gdpr.showDoNotSellBanner()
 
-Displays the [Opt-out](/glossary/#opt-out-model-consent) Model banner. By default, this function is called when the display rule evaluates to `true`.
+Displays the [Opt-out](https://docs.tealium.com/glossary/#opt-out-model-consent) Model banner. By default, this function is called when the display rule evaluates to `true`.
 
 Optionally set the language as a parameter when calling the function. This overrides all other language detection logic.
 
 ```js
-utag.gdpr.showDoNotSellBanner(&#34;EN&#34;);
+utag.gdpr.showDoNotSellBanner("EN");
 ```
 
 ### utag.gdpr.showDoNotSellPrompt()
@@ -197,7 +205,7 @@ Optionally set the language as a parameter when calling the function. This overr
 Example:
 
 ```html
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt(&#39;EN&#39;)&#34;&gt;Change Consent&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt('EN')">Change Consent</a>
 ```
 
 ### utag.gdpr.dns.getDnsState()
@@ -213,7 +221,7 @@ true
 
 ### utag.gdpr.dns.setDnsState()
 
-Set the value of the `dns` consent cookie. Recognized values: `true`, `false`, `1`, `0`, `&#34;true&#34;`, `&#34;false&#34;`.
+Set the value of the `dns` consent cookie. Recognized values: `true`, `false`, `1`, `0`, `"true"`, `"false"`.
 
 Example:
 
@@ -224,15 +232,15 @@ utag.gdpr.dns.setDnsState(true);
 
 ### utag.gdpr.getCookieValues()
 
-Returns an object of key-value pairs from the `CONSENTMGR` cookie, accessible in the data layer object as `utag.data[&#39;cp.CONSENTMGR&#39;]`.
+Returns an object of key-value pairs from the `CONSENTMGR` cookie, accessible in the data layer object as `utag.data['cp.CONSENTMGR']`.
 
 Example of consent declined:
 
 ```js
 utag.gdpr.getCookieValues()
 {
-  ts: &#34;1525369619&#34;,
-  consent: &#34;true&#34;,
-  dns: &#34;false&#34;
+  ts: "1525369619",
+  consent: "true",
+  dns: "false"
 }
 ```

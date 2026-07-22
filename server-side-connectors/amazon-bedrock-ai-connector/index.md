@@ -3,7 +3,11 @@ title: Amazon Bedrock AI Connector Setup Guide
 description: Set up the Amazon Bedrock AI connector to send Tealium event and visitor data to foundation models, managed prompts, or multi-step Bedrock workflows for real-time enrichment.
 url: https://docs.tealium.com/server-side-connectors/amazon-bedrock-ai-connector/
 ---
-For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions]().
+
+<blockquote>
+For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see [AI connectors and Tealium functions](https://docs.tealium.com/ai-connectors-and-functions/).
+</blockquote>
+
 
 ## Supported models
 
@@ -48,17 +52,17 @@ To create your STS credentials:
 
 ```json
     {
-      &#34;Version&#34;: &#34;2012-10-17&#34;,
-      &#34;Statement&#34;: [
+      "Version": "2012-10-17",
+      "Statement": [
         {
-          &#34;Effect&#34;: &#34;Allow&#34;,
-          &#34;Principal&#34;: {
-            &#34;AWS&#34;: &#34;arn:aws:iam::757913464184:root&#34;
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::757913464184:root"
           },
-          &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
-          &#34;Condition&#34;: {
-            &#34;StringEquals&#34;: {
-              &#34;sts:ExternalId&#34;: &#34;EXTERNAL_ID&#34;
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "EXTERNAL_ID"
             }
           }
         }
@@ -70,30 +74,34 @@ To create your STS credentials:
 
 In the AWS Management Console, enter the necessary policies for the connector actions you are using. The following policies are required for each connector action:
 
+
+<blockquote>
 We recommend that you limit permissions to the specific ARNs of flows and Lambda functions you require.
+</blockquote>
+
 
 
 
 
 ```json
 {
-  &#34;Version&#34;: &#34;2012-10-17&#34;,
-  &#34;Statement&#34;: [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      &#34;Sid&#34;: &#34;ListModels&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;bedrock:ListFoundationModels&#34;
+      "Sid": "ListModels",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:ListFoundationModels"
       ],
-      &#34;Resource&#34;: &#34;*&#34;
+      "Resource": "*"
     },
     {
-      &#34;Sid&#34;: &#34;InvokeModel&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;bedrock:InvokeModel&#34;
+      "Sid": "InvokeModel",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel"
       ],
-      &#34;Resource&#34;: &#34;*&#34;
+      "Resource": "*"
     }
   ]
 }
@@ -103,15 +111,15 @@ We recommend that you limit permissions to the specific ARNs of flows and Lambda
 
 ```json
 {
-  &#34;Version&#34;: &#34;2012-10-17&#34;,
-  &#34;Statement&#34;: [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      &#34;Sid&#34;: &#34;RenderManagedPrompt&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;bedrock:RenderPrompt&#34;
+      "Sid": "RenderManagedPrompt",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:RenderPrompt"
       ],
-      &#34;Resource&#34;: &#34;*&#34;
+      "Resource": "*"
     }
   ]
 }
@@ -124,23 +132,23 @@ If you are using Lambda:
 
 ```json
 {
-  &#34;Version&#34;: &#34;2012-10-17&#34;,
-  &#34;Statement&#34;: [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      &#34;Sid&#34;: &#34;BedrockFlowInvoke&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;bedrock:InvokeFlow&#34;
+      "Sid": "BedrockFlowInvoke",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeFlow"
       ],
-      &#34;Resource&#34;: &#34;arn:aws:bedrock:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:flow/&lt;flow_id&gt;/alias/&lt;alias_name&gt;&#34;
+      "Resource": "arn:aws:bedrock:<REGION>:<ACCOUNT_ID>:flow/<flow_id>/alias/<alias_name>"
     },
     {
-      &#34;Sid&#34;: &#34;LambdaInvokeFunction&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;lambda:InvokeFunction&#34;
+      "Sid": "LambdaInvokeFunction",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:InvokeFunction"
       ],
-      &#34;Resource&#34;: &#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:&lt;FUNCTION_NAME&gt;&#34;
+      "Resource": "arn:aws:lambda:<REGION>:<ACCOUNT_ID>:function:<FUNCTION_NAME>"
     }
   ]
 }
@@ -150,15 +158,15 @@ If you are not using Lambda:
 
 ```json
 {
-  &#34;Version&#34;: &#34;2012-10-17&#34;,
-  &#34;Statement&#34;: [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      &#34;Sid&#34;: &#34;BedrockFlowInvoke&#34;,
-      &#34;Effect&#34;: &#34;Allow&#34;,
-      &#34;Action&#34;: [
-        &#34;bedrock:InvokeFlow&#34;
+      "Sid": "BedrockFlowInvoke",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeFlow"
       ],
-      &#34;Resource&#34;: &#34;arn:aws:bedrock:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:flow/&lt;flow_id&gt;/alias/&lt;alias_name&gt;&#34;
+      "Resource": "arn:aws:bedrock:<REGION>:<ACCOUNT_ID>:flow/<flow_id>/alias/<alias_name>"
     }
   ]
 }
@@ -168,27 +176,27 @@ If you are not using Lambda:
 
 To enter and attach the policies:
 
-1. In the AWS console, go to **IAM &gt; Policies** and click **Create policy**.
+1. In the AWS console, go to **IAM > Policies** and click **Create policy**.
 1. In the policy editor, select the **JSON** tab, paste the policy for your connector action, resolve any validation warnings, and click **Next**.
 1. Enter a policy name (for example, `TealiumCustomAccessPolicy`) and optional description, then click **Create policy**.
-1. Go to **IAM &gt; Roles** and select the role you want to modify.
-1. On the **Permissions** tab, click **Add permissions &gt; Attach policies**.
+1. Go to **IAM > Roles** and select the role you want to modify.
+1. On the **Permissions** tab, click **Add permissions > Attach policies**.
 1. Search for your custom policy, select it, and click **Attach policies**.
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Authentication Type**: (Required) The type of authentication to use.
     * **Access Key**
-        * **Access Key**: (Required) Provide your IAM user&#39;s access key. The associated IAM policy (for either IAM user or Assumed Role) must grant `bedrock:PutRecord` permission along with streams you want to send data to.
-        * **Secret Key**: (Required) Provide your IAM user&#39;s secret key.
+        * **Access Key**: (Required) Provide your IAM user's access key. The associated IAM policy (for either IAM user or Assumed Role) must grant `bedrock:PutRecord` permission along with streams you want to send data to.
+        * **Secret Key**: (Required) Provide your IAM user's secret key.
     * **STS**
         * **STS - Assume Role: ARN**: (Required) An Amazon Resource Name assigned to the role to assume. For more information, see: [AWS: Switching to an IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html).
         * **STS - Assume Role: Session Name**: (Required) A unique identifier of the assumed role session.
-        * **STS - Assume Role: External ID**: (Optional) A unique identifier used by third parties when assuming roles in their customers&#39; accounts. For more information, see: [AWS: Access to AWS accounts owned by third parties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html).
+        * **STS - Assume Role: External ID**: (Optional) A unique identifier used by third parties when assuming roles in their customers' accounts. For more information, see: [AWS: Access to AWS accounts owned by third parties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html).
 * **Region**: (Required) Select a region.
 
 
@@ -202,7 +210,7 @@ A Bedrock AI prompt, whether sent from Tealium, managed within Amazon Bedrock, o
 * Instruct the model to return Tealium fields explicitly (for example, `tealium_account`, `tealium_profile`, `tealium_visitor_id`, `tealium_event`).
 * If you need to reference a specific attribute in the prompt, map that attribute to a vendor parameter. For example, map `Last product viewed` to `last_product_viewed` and reference it in the prompt as `{{last_product_viewed}}`.
 * Avoid vague instructions. Write deterministic prompts so that repeated calls produce the same JSON schema.
-* For best results, include a line such as: &#34;Return a single JSON object only, with no prose, no backticks, and no additional formatting.&#34;
+* For best results, include a line such as: "Return a single JSON object only, with no prose, no backticks, and no additional formatting."
 
 ### Prompt example
 
@@ -211,16 +219,16 @@ You are an AI assistant that must return only valid JSON.
 Do not include explanations, markdown, code fences, or any text outside the JSON object.
 
 Using the visitor data below, calculate a numeric score between 0 and 100 that represents
-the visitor&#39;s likelihood to convert in this session.
+the visitor's likelihood to convert in this session.
 
 Return a single JSON object only, with this exact structure:
 
 {
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;: &#34;bedrock_ai_insight&#34;,
-  &#34;visitor_score&#34;: &lt;integer between 0 and 100&gt;
+  "tealium_account": "{{tealium_account}}",
+  "tealium_profile": "{{tealium_profile}}",
+  "tealium_visitor_id": "{{tealium_visitor_id}}",
+  "tealium_event": "bedrock_ai_insight",
+  "visitor_score": <integer between 0 and 100>
 }
 
 Visitor data:
@@ -234,25 +242,25 @@ The response will resemble the following:
 
 ```json
 {
-    &#34;metrics&#34;: {
-        &#34;latencyMs&#34;: 1272
+    "metrics": {
+        "latencyMs": 1272
     },
-    &#34;output&#34;: {
-        &#34;message&#34;: {
-            &#34;content&#34;: [
+    "output": {
+        "message": {
+            "content": [
                 {
-                    &#34;text&#34;: &#34;{\&#34;tealium_account\&#34;:\&#34;your-account\&#34;,\&#34;tealium_profile\&#34;:\&#34;main\&#34;,\&#34;tealium_visitor_id\&#34;:\&#34;__your-account_main__5574_438850__\&#34;,\&#34;tealium_event\&#34;:\&#34;bedrock_ai_insight\&#34;,\&#34;visitor_score\&#34;:85}&#34;
+                    "text": "{\"tealium_account\":\"your-account\",\"tealium_profile\":\"main\",\"tealium_visitor_id\":\"__your-account_main__5574_438850__\",\"tealium_event\":\"bedrock_ai_insight\",\"visitor_score\":85}"
                 }
             ],
-            &#34;role&#34;: &#34;assistant&#34;
+            "role": "assistant"
         }
     },
-    &#34;stopReason&#34;: &#34;end_turn&#34;,
-    &#34;usage&#34;: {
-        &#34;inputTokens&#34;: 8811,
-        &#34;outputTokens&#34;: 65,
-        &#34;serverToolUsage&#34;: {},
-        &#34;totalTokens&#34;: 8876
+    "stopReason": "end_turn",
+    "usage": {
+        "inputTokens": 8811,
+        "outputTokens": 65,
+        "serverToolUsage": {},
+        "totalTokens": 8876
     }
 }
 ```
@@ -274,13 +282,13 @@ Every flow begins with an input node. This node represents the JSON document Tea
 Tealium sends your mapped attributes in the following format similar to the following example:
 
 ```json
-&#34;document&#34;: {
-    &#34;tealium_account&#34;: &#34;services-example&#34;,
-    &#34;tealium_profile&#34;: &#34;ai&#34;,
-    &#34;tealium_visitor_id&#34;: &#34;1234567890abc&#34;,
-    &#34;visitor_profile&#34;: {
-        &#34;lifetime_value&#34;: &#34;1200&#34;,
-        &#34;total_orders&#34;: 5,
+"document": {
+    "tealium_account": "services-example",
+    "tealium_profile": "ai",
+    "tealium_visitor_id": "1234567890abc",
+    "visitor_profile": {
+        "lifetime_value": "1200",
+        "total_orders": 5,
         ...
         }
 }
@@ -293,7 +301,7 @@ Inside your flow, reference fields using `$.data.attribute_name`. Based on the p
 | `tealium_account` | `$.data.tealium_account` or `{{tealium_account}}` | `services-example` |
 | `tealium_profile` | `$.data.tealium_profile` or `{{tealium_profile}}` | `ai` |
 | `tealium_visitor_id` | `$.data.tealium_visitor_id` or `{{tealium_visitor_id}}` | `1234567890abc` |
-| `visitor_profile` | `$.data.visitor_profile` |  `&#34;visitor_profile&#34;: {&#34;lifetime_value&#34;: &#34;1200&#34;,&#34;total_orders&#34;: 5,...}` |
+| `visitor_profile` | `$.data.visitor_profile` |  `"visitor_profile": {"lifetime_value": "1200","total_orders": 5,...}` |
 
 ### Step 2 - Map data into a prompt node (Required)
 
@@ -353,54 +361,58 @@ The following is a Lambda example for accepting prompt output, parsing the JSON,
 
 The account and profile must be configured to accept server-side events with the specified data source.
 
+
+<blockquote>
 This example requires Node.js version 18.x or later as the runtime environment.
+</blockquote>
+
 
 
 ```js
-const COLLECT_URL = process.env.COLLECT_URL || &#34;https://collect.tealiumiq.com/event&#34;;
+const COLLECT_URL = process.env.COLLECT_URL || "https://collect.tealiumiq.com/event";
 function extractInputByName(event, name) {
   const arr = event?.node?.inputs;
   if (Array.isArray(arr)) {
-    const hit = arr.find(i =&gt; i?.name === name);
-    if (hit &amp;&amp; typeof hit.value === &#34;string&#34;) return hit.value;
-    if (hit &amp;&amp; typeof hit.value === &#34;object&#34;) return JSON.stringify(hit.value);
+    const hit = arr.find(i => i?.name === name);
+    if (hit && typeof hit.value === "string") return hit.value;
+    if (hit && typeof hit.value === "object") return JSON.stringify(hit.value);
   }
   return undefined;
 }
 function extractJsonStringFromEvent(event) {
-  const fromStandardPin = extractInputByName(event, &#34;codeHookInput&#34;);
-  if (typeof fromStandardPin === &#34;string&#34;) return fromStandardPin;
-  const anyString = event?.node?.inputs?.find?.(i =&gt; typeof i?.value === &#34;string&#34;)?.value;
-  if (typeof anyString === &#34;string&#34;) return anyString;
-  if (typeof event?.codeHookInput === &#34;string&#34;) return event.codeHookInput;
-  if (typeof event?.document === &#34;string&#34;) return event.document;
+  const fromStandardPin = extractInputByName(event, "codeHookInput");
+  if (typeof fromStandardPin === "string") return fromStandardPin;
+  const anyString = event?.node?.inputs?.find?.(i => typeof i?.value === "string")?.value;
+  if (typeof anyString === "string") return anyString;
+  if (typeof event?.codeHookInput === "string") return event.codeHookInput;
+  if (typeof event?.document === "string") return event.document;
   const doc = event?.fields?.[0]?.content?.document;
-  if (typeof doc === &#34;string&#34;) return doc;
-  if (typeof event === &#34;string&#34;) return event;
-  throw new Error(&#34;Could not find JSON string in event&#34;);
+  if (typeof doc === "string") return doc;
+  if (typeof event === "string") return event;
+  throw new Error("Could not find JSON string in event");
 }
-export const handler = async (event) =&gt; {
+export const handler = async (event) => {
   try {
     const jsonStr = extractJsonStringFromEvent(event);
     const obj = JSON.parse(jsonStr);  // Fixed: store parsed result
-    const required = [&#34;tealium_account&#34;, &#34;tealium_profile&#34;, &#34;tealium_visitor_id&#34;];
+    const required = ["tealium_account", "tealium_profile", "tealium_visitor_id"];
     for (const key of required) {
       if (!Object.prototype.hasOwnProperty.call(obj, key)) {
-        throw new Error(`Missing required field &#39;${key}&#39; in model output`);
+        throw new Error(`Missing required field '${key}' in model output`);
       }
     }
     const r = await fetch(COLLECT_URL, {
-      method: &#34;POST&#34;,
-      headers: { &#34;Content-Type&#34;: &#34;application/json&#34; },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: jsonStr
     });
     if (!r.ok) {
-      const txt = await r.text().catch(() =&gt; &#34;&#34;);
+      const txt = await r.text().catch(() => "");
       throw new Error(`Collect failed ${r.status}: ${txt}`);
     }
     return jsonStr;
   } catch (err) {
-    console.error(&#34;Shim error:&#34;, err);
+    console.error("Shim error:", err);
     return JSON.stringify({ ok: false, error: String(err.message || err) });
   }
 };
@@ -424,12 +436,12 @@ Use **Send Prompt to Bedrock AI Model** when you need a simple, single-model cal
 
 | Parameter | Description |
 | --- | --- |
-| Model ID or Inference Profile ARN | Select an Amazon Bedrock model to use on-demand inference, or manually enter a Provisioned Throughput model ARN or inference profile ARN.&lt;br&gt;Only models that support on-demand inference and text input/output are shown.&lt;br&gt;If the model you want does not appear, verify that the model is enabled in your AWS account and region and that it supports on-demand inference.&lt;br&gt;&lt;br&gt;&lt;br&gt;If using Provisioned Throughput, enter the full model ARN (for example: `arn:aws:bedrock:region:account-id:provisioned-model/...`).&lt;br&gt;Inference profile ARNs may also be used if configured in your AWS account.&lt;br&gt;Model availability and supported inference types are determined by your AWS account permissions and region configuration.|
+| Model ID or Inference Profile ARN | Select an Amazon Bedrock model to use on-demand inference, or manually enter a Provisioned Throughput model ARN or inference profile ARN.<br>Only models that support on-demand inference and text input/output are shown.<br>If the model you want does not appear, verify that the model is enabled in your AWS account and region and that it supports on-demand inference.<br><br><br>If using Provisioned Throughput, enter the full model ARN (for example: `arn:aws:bedrock:region:account-id:provisioned-model/...`).<br>Inference profile ARNs may also be used if configured in your AWS account.<br>Model availability and supported inference types are determined by your AWS account permissions and region configuration.|
 | Prompt Parameters | Map parameters to a placeholder to replace in the prompt. By default, the connector has access to `{{tealium_account}}`, `{{tealium_profile}}`, and `{{tealium_visitor_id}}`. These can be overwritten with mapping. |
 | Add Visitor Profile | (Only audience actions) Whether to allow the visitor profile for use in the prompt template as the variable `{{visitor_profile}}`. |
 | Add Current Visit | (Only audience actions) Whether to include current visit data in the `{{visitor_profile}}` object. |
 | Add Event Payload | (Only event actions) Whether to allow the event payload for use in the prompt template as the variable `{{event_payload}}`. |
-| Prompt | &lt;ul&gt;&lt;li&gt;Use double curly braces to reference mapped parameters, for example: `{{tealium_account}}`, `{{visitor_id}}`, `{{event_value}}`.&lt;/li&gt;&lt;li&gt;Use `{{visitor_profile}}` to include the visitor profile in the prompt.&lt;br&gt;Clearly instruct the model to return only valid JSON, with no explanations, markdown, code fences, or extra text.&lt;/li&gt;&lt;li&gt;Define the exact JSON structure expected (for example, field names, required keys, value formats).&lt;/li&gt;&lt;li&gt;If Tealium fields must be included, specify them explicitly in the prompt.&lt;br&gt;Avoid ambiguous phrasing. Write deterministic prompts.&lt;/li&gt;&lt;li&gt;Include direct instructions such as: &#34;Return a single JSON object only, with no prose, no backticks, and no extra formatting.&#34;&lt;/li&gt;&lt;/ul&gt; |
+| Prompt | <ul><li>Use double curly braces to reference mapped parameters, for example: `{{tealium_account}}`, `{{visitor_id}}`, `{{event_value}}`.</li><li>Use `{{visitor_profile}}` to include the visitor profile in the prompt.<br>Clearly instruct the model to return only valid JSON, with no explanations, markdown, code fences, or extra text.</li><li>Define the exact JSON structure expected (for example, field names, required keys, value formats).</li><li>If Tealium fields must be included, specify them explicitly in the prompt.<br>Avoid ambiguous phrasing. Write deterministic prompts.</li><li>Include direct instructions such as: "Return a single JSON object only, with no prose, no backticks, and no extra formatting."</li></ul> |
 | Debug Mode | When debug mode is enabled, the connector accepts the raw Bedrock response without sending it to Tealium Collect. Use Trace to validate the response format before enabling full processing. |
 
 #### Inference Parameters
@@ -450,7 +462,7 @@ Use **Send Data to Bedrock AI Managed Prompt** when you want a reusable, version
 | Parameter | Description |
 | --- | --- |
 | Prompt ARN | (Required) Provide the ARN of a Bedrock Prompt Management template. The prompt ARN can be found in the **Overview** section of the prompt details in Bedrock. |
-| Prompt Data | &lt;ul&gt;&lt;li&gt;Tealium passes mapped attributes into the prompt when invoking it.&lt;/li&gt;&lt;li&gt;The connector includes the variables `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in the prompt. These can be overwritten with mapping.&lt;/li&gt;&lt;li&gt;Write the prompt to clearly instruct the model to return only valid JSON, with no explanations, no markdown, no code fences, and no additional text before or after the JSON.&lt;/li&gt;&lt;li&gt;You must author the prompt to include instructions for the model to return `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in the JSON.&lt;/li&gt;&lt;li&gt;Avoid ambiguous phrasing. Write deterministic prompts so the output can be parsed reliably.&lt;/li&gt;&lt;li&gt;For best results, include a direct instruction such as: &#34;Return a single JSON object only, with no prose, no backticks, and no extra formatting.&#34;&lt;/li&gt;&lt;/ul&gt; |
+| Prompt Data | <ul><li>Tealium passes mapped attributes into the prompt when invoking it.</li><li>The connector includes the variables `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in the prompt. These can be overwritten with mapping.</li><li>Write the prompt to clearly instruct the model to return only valid JSON, with no explanations, no markdown, no code fences, and no additional text before or after the JSON.</li><li>You must author the prompt to include instructions for the model to return `tealium_account`, `tealium_profile`, and `tealium_visitor_id` in the JSON.</li><li>Avoid ambiguous phrasing. Write deterministic prompts so the output can be parsed reliably.</li><li>For best results, include a direct instruction such as: "Return a single JSON object only, with no prose, no backticks, and no extra formatting."</li></ul> |
 | Add Visitor Profile | (Only audience actions) Whether to allow the visitor profile for use in the prompt template as the variable `{{visitor_profile}}`. |
 | Add Current Visit | (Only audience actions) Whether to include current visit data in the `{{visitor_profile}}` object. |
 | Add Event Payload | (Only event actions) Whether to allow the event payload for use in the prompt template as the variable `{{event_payload}}`. |
@@ -463,7 +475,7 @@ Use **Send Data to Bedrock AI Workflow** when you need multi-step orchestration 
 | Parameter | Description |
 | --- | --- |
 | Bedrock Flow Alias ARN | (Required) Enter the ARN of the Bedrock Flow Alias you want this action to invoke. We recommend creating an alias such as `live` and using that ARN here. |
-| Flow Data | &lt;ul&gt;&lt;li&gt;Change which Flow Version that alias points to in AWS without updating this connector.&lt;/li&gt;&lt;li&gt;The connector sends your mapped fields to the Flow as a JSON object named document.&lt;/li&gt;&lt;li&gt;Inside your Flow, reference these fields using `$.data.&lt;fieldName&gt;` in Prompt, Lambda, or other nodes.&lt;/li&gt;&lt;li&gt;By default, `tealium_account`, `tealium_profile`, and `tealium_visitor_id` are included automatically, and can be overwritten through field mappings if needed.&lt;/li&gt;&lt;li&gt;Your flow must include a `FlowOutputNode`, but Tealium does not use its output.&lt;/li&gt;&lt;li&gt;Use Lambda to send data back into Tealium through the Collect endpoint.&lt;/li&gt;&lt;li&gt;We recommend wiring the Lambda output into the `FlowOutputNode` to see success/error information when testing the flow in the Bedrock console.&lt;/li&gt;&lt;/ul&gt; |
+| Flow Data | <ul><li>Change which Flow Version that alias points to in AWS without updating this connector.</li><li>The connector sends your mapped fields to the Flow as a JSON object named document.</li><li>Inside your Flow, reference these fields using `$.data.<fieldName>` in Prompt, Lambda, or other nodes.</li><li>By default, `tealium_account`, `tealium_profile`, and `tealium_visitor_id` are included automatically, and can be overwritten through field mappings if needed.</li><li>Your flow must include a `FlowOutputNode`, but Tealium does not use its output.</li><li>Use Lambda to send data back into Tealium through the Collect endpoint.</li><li>We recommend wiring the Lambda output into the `FlowOutputNode` to see success/error information when testing the flow in the Bedrock console.</li></ul> |
 | Add Visitor Profile | (Only audience actions) Whether to include the full visitor profile in the Flow input as a `visitor_profile` JSON object. |
 | Add Current Visit | (Only audience actions) Whether to include the current visit data in the `visitor_profile` JSON object. |
 | Add Event Payload | (Only event actions) Whether to include the event payload in the Flow input as the `event_payload` JSON object. | 

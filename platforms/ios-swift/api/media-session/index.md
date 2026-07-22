@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/ios-swift/api/media-session/
 ---
 ## Class: Media
 
-The `MediaSession` class provides methods for tracking streaming media in apps through the use of custom events. Learn more about [media tracking](/platforms/getting-started-mobile/media/).
+The `MediaSession` class provides methods for tracking streaming media in apps through the use of custom events. Learn more about [media tracking](https://docs.tealium.com/platforms/getting-started-mobile/media/).
 
 The following summarizes the commonly used methods of the `MediaSession` class for Tealium iOS (Swift).
 
@@ -149,7 +149,7 @@ Sends an interval event to the data layer. This method is called automatically e
 mediaSession.ping()
 ```
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 ### `play()`
 
@@ -183,7 +183,7 @@ Example:
 mediaSession.playerState = .mute
 ```
 
-Learn more about the [player state](/platforms/getting-started-mobile/media/#state).
+Learn more about the [player state](https://docs.tealium.com/platforms/getting-started-mobile/media/#state).
 
 ### `resumeSession()`
 
@@ -216,7 +216,7 @@ Milestone values:
 | 88.0 - 92.0    | `90%`           |
 | 97.0 - 100.0   | `100%`          |
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 ### `sendSummary()`
 
@@ -226,7 +226,7 @@ Sends summary data to the data layer. This method is called automatically on `en
 mediaSession.sendSummary()
 ```
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 
 ### `skipAd()`
@@ -260,7 +260,7 @@ mediaSession.startAd(_ ad: Ad)
 
 Example:
 ```swift
-let ad = Ad(name = &#34;Ad 1&#34;)
+let ad = Ad(name = "Ad 1")
 session.startAd(ad)
 ```
 
@@ -279,7 +279,7 @@ mediaSession.startAdBreak(_ break: AdBreak)
 Example:
 
 ```swift
-let adBreak = AdBreak(name = &#34;Ad Break 1&#34;)
+let adBreak = AdBreak(name = "Ad Break 1")
 mediaSession.startAdBreak(adBreak)
 ```
 
@@ -307,7 +307,7 @@ mediaSession.startChapter(_ chapter: Chapter)
 Example:
 
 ```swift
-let chapterOne = Chapter(name = &#34;Chapter 1&#34;)
+let chapterOne = Chapter(name = "Chapter 1")
 mediaSession.startChapter(chapterOne)
 ```
 
@@ -372,18 +372,18 @@ let media = MediaContent(
 |:----------------------------|:-----------------------------------------------------------------|:-------------------------------------------------------------------------|:---------|
 | `uuid`                      | `UUID`                                                           | The ad universally unique identifier.                                    |          |
 | `name`                      | `String`                                                         | The name of the media content.                                           | Yes      |
-| `streamType`                | [`StreamType`](/platforms/getting-started-mobile/media/#streamtype)     | The type of media stream.                                                | Yes      |
-| `mediaType`                 | [`MediaType`](/platforms/getting-started-mobile/media/#mediatype)       | The type of media (video or audio).                                      | Yes      |
-| `qoe`                       | [`QoE`](/platforms/getting-started-mobile/media/#quality-of-experience) | The quality of experience bitrate value.                                 | Yes      |
-| `trackingType`              | [`TrackingType`](/platforms/getting-started-mobile/media/#trackingtype) | The level of event tracking. (default: `.fullPlayback`)                  | Yes      |
+| `streamType`                | [`StreamType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#streamtype)     | The type of media stream.                                                | Yes      |
+| `mediaType`                 | [`MediaType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#mediatype)       | The type of media (video or audio).                                      | Yes      |
+| `qoe`                       | [`QoE`](https://docs.tealium.com/platforms/getting-started-mobile/media/#quality-of-experience) | The quality of experience bitrate value.                                 | Yes      |
+| `trackingType`              | [`TrackingType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype) | The level of event tracking. (default: `.fullPlayback`)                  | Yes      |
 | `milestoneInterval`         | `Double`                                                         | The milestone interval value. (default: `5.0`)                           |          |
 | `contentCompletePercentage` | `Double`                                                         | The content complete percentage value.                                   |          |
-| `state`                     | [`PlayerState`](/platforms/getting-started-mobile/media/#state)         | The media player state type.                                             |          |
+| `state`                     | [`PlayerState`](https://docs.tealium.com/platforms/getting-started-mobile/media/#state)         | The media player state type.                                             |          |
 | `customId`                  | `String`                                                         | The custom identifier name.                                              |          |
 | `duration`                  | `Int`                                                            | The media duration, in seconds, such as `130`                            |          |
 | `playerName`                | `String`                                                         | The media player name.                                                   |          |
 | `channelName`               | `String`                                                         | The media channel name.                                                  |          |
-| `metadata`                  | `[String: Any]`                                                  | Additional media [metadata](/platforms/getting-started-mobile/media/#metadata). |          |
+| `metadata`                  | `[String: Any]`                                                  | Additional media [metadata](https://docs.tealium.com/platforms/getting-started-mobile/media/#metadata). |          |
 | `summary`                   | `Summary`                                                        | A media `Summary` object.                                                |          |
 | `adBreaks`                  | `[AdBreak]()`                                                    | Array of `AdBreak` objects.                                              |          |
 | `ads`                       | `[Ad]()`                                                         | Array of `Ad` objects.                                                   |          |
@@ -476,4 +476,4 @@ The following are the `Chapter` object parameters. Parameters must be in order i
 | `duration`    | `Double`        | The chapter duration, in seconds, such as `130`                                  |          |
 | `position`    | `Int`           | The chapter position index.                                                      |          |
 | `startTime`   | `Date`          | The chapter start time.                                                          |          |
-| `metadata`    | `[String: Any]` | Additional chapter media [metadata](/platforms/getting-started-mobile/media/#metadata). |          |
+| `metadata`    | `[String: Any]` | Additional chapter media [metadata](https://docs.tealium.com/platforms/getting-started-mobile/media/#metadata). |          |

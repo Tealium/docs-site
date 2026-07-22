@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## 訪問者属性
 
-![](/images/server-side/audiencestream-profile.png)
+![](https://docs.tealium.com/images/server-side/audiencestream-profile.png)
 
 訪問者属性は、現在のユーザーに関連します。これらの属性に格納されたデータはユーザーの寿命全体にわたって持続します。訪問者の属性の例は次のとおりです：
 

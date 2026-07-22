@@ -21,7 +21,7 @@ The `options` parameter contains the following properties:
 |`delimiter`| `String` | The character used to combine parent and child property names. The default is `.`.|
 |`prefix`| `String` |  The string concatenated at the beginning of the new key name followed by the `delimiter`. |
 |`ignoreKeys`| `String[]` | An array of keys to omit from the output.|
-|`replaceKeys`| `Object{string:string}` | Specifies new names for keys, where the key is the existing key in the object and the value is the new key. &lt;br&gt;Example: `{ &#34;uid&#34; : &#34;user_id&#34; }` |
+|`replaceKeys`| `Object{string:string}` | Specifies new names for keys, where the key is the existing key in the object and the value is the new key. <br>Example: `{ "uid" : "user_id" }` |
 
 ## Parameters
 
@@ -35,7 +35,7 @@ const object = {
   user: {
     id: 1
   },
-  util: [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;]
+  util: ["1", "2", "3"]
 };
 ```
 
@@ -45,9 +45,9 @@ If `delimiter` is `_`, the following object is returned:
 
 ```json
 {
-  &#34;page_id&#34;: 1,
-  &#34;user_id&#34;: 1,
-  &#34;util&#34;: [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;]
+  "page_id": 1,
+  "user_id": 1,
+  "util": ["1", "2", "3"]
 }
 ```
 
@@ -57,19 +57,19 @@ If `prefix` is `fl`, the following object is returned:
 
 ```json
 {
-  &#34;fl.user.id&#34;: 1,
-  &#34;fl.page.id&#34;: 1,
-  &#34;fl.util&#34;: [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;]
+  "fl.user.id": 1,
+  "fl.page.id": 1,
+  "fl.util": ["1", "2", "3"]
 }
 ```
 
 ### `ignoreKeys`
 
-If `ignoreKeys` is `[&#34;page&#34;, &#34;util&#34;]`, the following object is returned:
+If `ignoreKeys` is `["page", "util"]`, the following object is returned:
 
 ```json
 {
-  &#34;user.id&#34;: 1
+  "user.id": 1
 }
 ```
 
@@ -79,8 +79,8 @@ If `replaceKeys` is defined as follows:
 
 ```js
 const replaceKeys = {
-  &#34;user&#34;: &#34;&#34;,
-  &#34;page&#34;: &#34;p&#34;
+  "user": "",
+  "page": "p"
 }
 ```
 
@@ -88,9 +88,9 @@ The following object is returned:
 
 ```json
 {
-  &#34;id&#34;: 1,
-  &#34;p.id&#34;: 1,
-  &#34;util&#34;: [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;]
+  "id": 1,
+  "p.id": 1,
+  "util": ["1", "2", "3"]
 }
 ```
 
@@ -99,48 +99,48 @@ The following object is returned:
 The following example shows a complex object to be flattened:
 
 ```js
-import flatten from &#39;tealium/util/flatten&#39;;
+import flatten from 'tealium/util/flatten';
 const options = {
-  delimiter: &#34;_&#34;,
-  ignoreKeys: [&#34;array_of_strings&#34;],
+  delimiter: "_",
+  ignoreKeys: ["array_of_strings"],
   replaceKeys: {
-    &#34;number&#34;: &#34;float&#34;,
-    &#34;array_of_objects&#34;: &#34;modified_array_of_strings&#34;,
-    &#34;ordinal&#34;: &#34;&#34;
+    "number": "float",
+    "array_of_objects": "modified_array_of_strings",
+    "ordinal": ""
   },
-  prefix: &#34;t&#34;
+  prefix: "t"
 }
 
 const output = flatten({
-  &#34;boolean&#34;: true,
-  &#34;number&#34;: 12.34,
-  &#34;string&#34;: &#34;value&#34;,
-  &#34;date&#34;: new Date(1631009413904),
-  &#34;array_of_strings&#34;: [&#34;first&#34;, &#34;second&#34;],
-  &#34;array_of_arrays&#34;: [
+  "boolean": true,
+  "number": 12.34,
+  "string": "value",
+  "date": new Date(1631009413904),
+  "array_of_strings": ["first", "second"],
+  "array_of_arrays": [
     [1, 2],
     [3, 4]
   ],
-  &#34;array_of_objects&#34;: [{
-    &#34;ordinal&#34;: &#34;first&#34;
+  "array_of_objects": [{
+    "ordinal": "first"
   }, {
-    &#34;ordinal&#34;: &#34;second&#34;
+    "ordinal": "second"
   }],
-  &#34;object&#34;: {
-    &#34;child_boolean&#34;: true,
-    &#34;child_number&#34;: 12.34,
-    &#34;child_string&#34;: &#34;value&#34;,
-    &#34;child_array_of_strings&#34;: [&#34;first&#34;, &#34;second&#34;],
-    &#34;child_array_of_arrays&#34;: [
+  "object": {
+    "child_boolean": true,
+    "child_number": 12.34,
+    "child_string": "value",
+    "child_array_of_strings": ["first", "second"],
+    "child_array_of_arrays": [
       [1, 2],
       [3, 4]
     ],
-    &#34;child_object&#34;: {
-      &#34;gchild_boolean&#34;: true,
-      &#34;gchild_number&#34;: 12.34,
-      &#34;gchild_string&#34;: &#34;value&#34;,
-      &#34;gchild_array_of_strings&#34;: [&#34;first&#34;, &#34;second&#34;],
-      &#34;gchild_array_of_arrays&#34;: [
+    "child_object": {
+      "gchild_boolean": true,
+      "gchild_number": 12.34,
+      "gchild_string": "value",
+      "gchild_array_of_strings": ["first", "second"],
+      "gchild_array_of_arrays": [
         [1, 2],
         [3, 4]
       ]
@@ -153,21 +153,21 @@ The following object is returned by `flatten()`:
 
 ```js
 {
-  &#34;t_boolean&#34;: &#34;true&#34;,
-  &#34;t_float&#34;: &#34;12.34&#34;,
-  &#34;t_string&#34;: &#34;value&#34;,
-  &#34;t_date&#34;: &#34;2021-09-07T10:10:13.904Z&#34;,
-  &#34;t_array_of_arrays&#34;: [&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;],
-  &#34;t_modified_array_of_strings&#34;: [&#34;first&#34;,&#34;second&#34;],
-  &#34;t_object_child_boolean&#34;: &#34;true&#34;,
-  &#34;t_object_child_number&#34;: &#34;12.34&#34;,
-  &#34;t_object_child_string&#34;: &#34;value&#34;,
-  &#34;t_object_child_array_of_strings&#34;: [&#34;first&#34;,&#34;second&#34;],
-  &#34;t_object_child_array_of_arrays&#34;: [&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;],
-  &#34;t_object_child_object_gchild_boolean&#34;: &#34;true&#34;,
-  &#34;t_object_child_object_gchild_number&#34;: &#34;12.34&#34;,
-  &#34;t_object_child_object_gchild_string&#34;: &#34;value&#34;,
-  &#34;t_object_child_object_gchild_array_of_strings&#34;: [&#34;first&#34;,&#34;second&#34;],
-  &#34;t_object_child_object_gchild_array_of_arrays&#34;: [&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;]
+  "t_boolean": "true",
+  "t_float": "12.34",
+  "t_string": "value",
+  "t_date": "2021-09-07T10:10:13.904Z",
+  "t_array_of_arrays": ["1","2","3","4"],
+  "t_modified_array_of_strings": ["first","second"],
+  "t_object_child_boolean": "true",
+  "t_object_child_number": "12.34",
+  "t_object_child_string": "value",
+  "t_object_child_array_of_strings": ["first","second"],
+  "t_object_child_array_of_arrays": ["1","2","3","4"],
+  "t_object_child_object_gchild_boolean": "true",
+  "t_object_child_object_gchild_number": "12.34",
+  "t_object_child_object_gchild_string": "value",
+  "t_object_child_object_gchild_array_of_strings": ["first","second"],
+  "t_object_child_object_gchild_array_of_arrays": ["1","2","3","4"]
 }
 ```

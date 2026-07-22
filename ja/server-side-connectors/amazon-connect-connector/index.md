@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-connect-connector
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -108,5 +108,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/amazon-connect-connector
 
 | パラメータ | 説明 |
 | --- | --- |
-| Template Variables | （必須）テンプレートにデータ入力としてテンプレート変数を提供します。たとえば、`items.name`のようにドット表記でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。詳細および使用例については、を参照してください。|
-| Templates | （必須）データセクションで参照されるテンプレートを提供します。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。たとえば、`{{SomeTemplateName}}`。詳細および使用例については、を参照してください。|
+| Template Variables | （必須）テンプレートにデータ入力としてテンプレート変数を提供します。たとえば、`items.name`のようにドット表記でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
+| Templates | （必須）データセクションで参照されるテンプレートを提供します。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。たとえば、`{{SomeTemplateName}}`。詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|

@@ -11,29 +11,29 @@ The following summarizes the commonly used methods of the iOS (Swift) `TealiumIn
 | ----- | ------ |
 | `getInstanceByName()` | Returns a Tealium instance for a specified account/profile/environment key |
 | `removeInstance()` | Removes a Tealium instance for a specified `TealiumConfig` instance |
-| `removeInstanceForKey()` | Removes a Tealium instance for a specified key (format: `&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;`)|
+| `removeInstanceForKey()` | Removes a Tealium instance for a specified key (format: `"ACCOUNT.PROFILE.ENVIRONMENT"`)|
 
 
 
 ### `getInstanceByName()`
 
-Returns a Tealium instance for a specified key (format: &#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;).
+Returns a Tealium instance for a specified key (format: "ACCOUNT.PROFILE.ENVIRONMENT").
 
 ```swift
-getInstanceByName(instanceKey: String) -&gt; Tealium?
+getInstanceByName(instanceKey: String) -> Tealium?
 ```
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `instanceKey`| `String`  | The specified key of the `Tealium` instance to be retrieved | `&#34;companyXYZ.main.dev&#34;` |      
+| `instanceKey`| `String`  | The specified key of the `Tealium` instance to be retrieved | `"companyXYZ.main.dev"` |      
 
 The following example shows how to get a Tealium instance for a specified account/profile/environment key:
 
 ```swift
 let instanceManager = TealiumInstanceManager.shared
-let myTealiumInstance = instanceManager.getInstanceByName(&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;)
+let myTealiumInstance = instanceManager.getInstanceByName("ACCOUNT.PROFILE.ENVIRONMENT")
 // call any methods on the Tealium instance you just retrieved
-// myTealiumInstance?.track(&#34;myevent&#34;)
+// myTealiumInstance?.track("myevent")
 ```
 ### `removeInstance()`
 
@@ -55,7 +55,7 @@ instanceManager.removeInstance(myTealiumConfig)
 
 ### `removeInstanceForKey()`
 
-Removes (deallocates) a Tealium instance for a specified key (format: &#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;). If neither this method nor the `removeInstance()` method is called, then a permanent reference is held and the instance is not removed.
+Removes (deallocates) a Tealium instance for a specified key (format: "ACCOUNT.PROFILE.ENVIRONMENT"). If neither this method nor the `removeInstance()` method is called, then a permanent reference is held and the instance is not removed.
 
 ```swift
 removeInstanceForKey(instanceKey)
@@ -63,13 +63,13 @@ removeInstanceForKey(instanceKey)
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `instanceKey`| `String`  | The specified key of the `Tealium` instance to be removed | `&#34;companyXYZ.main.dev&#34;` |      
+| `instanceKey`| `String`  | The specified key of the `Tealium` instance to be removed | `"companyXYZ.main.dev"` |      
 
 The following example removes a Tealium instance for a specified account/profile/environment key:
 
 ```swift
 let instanceManager = TealiumInstanceManager.shared
-instanceManager.removeInstanceForKey(&#34;ACCOUNT.PROFILE.ENVIRONMENT&#34;)
+instanceManager.removeInstanceForKey("ACCOUNT.PROFILE.ENVIRONMENT")
 ```
 
 

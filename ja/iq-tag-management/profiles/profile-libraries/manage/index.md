@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-libraries/ma
 **ライブラリの作成**ダイアログが表示されます。
 1. **名前**フィールドに、ライブラリの名前を入力します。  
 ベストプラクティスとして、ライブラリとプロファイルを区別するための命名規則を使用します。例えば、ライブラリ名の前に`lib-`を追加すると、ライブラリとプロファイルのどちらを操作しているかを簡単に判断することができます。プロファイルとライブラリは同じ名前を共有することはできません。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-create-a-library.jpg)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-create-a-library.jpg)  
     ライブラリ名はプロファイル名と同じ制限があります：スペースなし、小文字のみ、数字、ピリオド、ダッシュのみ。
 1. ライブラリがオプションか必須かを決定するために、以下のチェックボックスのいずれかを選択します：
     * **すべてのプロファイルにライブラリを含めることを必須にする**  
@@ -41,8 +41,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-libraries/ma
 1. 管理メニューで、**プロファイルの管理**をクリックします。  
 **プロファイルの管理**ウィンドウが表示され、アカウントのすべてのライブラリとプロファイルが左側に表示されます。
 1. 表示したいライブラリをクリックし、**プロファイル**ドロップダウンリストから正しいプロファイルを選択し、**編集**をクリックします。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-edit-library.jpg)
-1. **すべてのプロファイルにライブラリを含めることを必須にする**または**他のプロファイルにこのライブラリをオプションで含める**を選択し、**OK**をクリックします。ライブラリを編集すると、変更はすぐに有効になります。必須のライブラリをオプションのライブラリに変更しても、それにリンクされているプロファイルには影響しませんが、オプションのライブラリを必須のライブラリに変更すると、ライブラリが自動的に各プロファイルにリンクされます。
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-edit-library.jpg)
+1. **すべてのプロファイルにライブラリを含めることを必須にする**または**他のプロファイルにこのライブラリをオプションで含める**を選択し、**OK**をクリックします。ライブラリを編集すると、変更はすぐに有効になります。
+<blockquote>
+必須のライブラリをオプションのライブラリに変更しても、それにリンクされているプロファイルには影響しませんが、オプションのライブラリを必須のライブラリに変更すると、ライブラリが自動的に各プロファイルにリンクされます。
+</blockquote>
+
 1. ウィンドウを閉じるために**適用**をクリックします。
 
 ## ライブラリの保存
@@ -53,14 +57,18 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-libraries/ma
 * ベストプラクティスとして、ライブラリバージョンを追跡するための命名規則を開発します。デフォルトでは、**バージョン**フィールドには日付とタイムスタンプが表示されます。
 * ライブラリへの変更は自動的にすべてのプロファイルに伝播しません。ライブラリの変更を含めるためには、各プロファイルを再公開する必要があります。
 
-詳細については、[バージョンの保存と公開]()を参照してください。
+詳細については、[バージョンの保存と公開](https://docs.tealium.com/save-publish-a-version/)を参照してください。
 
 ライブラリを保存するには、以下の手順を使用します：
 
 1. **保存/公開**をクリックします。
 1. **バージョン**フィールドに、新しいバージョンの名前を入力します。
 1. **ノート**フィールドに、プロファイルライブラリに対して行った変更についてのノートを入力します。これは必須フィールドであり、ノートを入力しないとプロファイルライブラリを保存することはできません。このフィールドに入力したノートは、将来このプロファイルライブラリにロールバックする必要がある場合に役立ちます。 
-1. (オプション) 1つ以上の[公開場所]()を選択して、このバージョンを公開環境に公開します。また、**カスタム**チェックボックスを選択して[カスタム環境]()を選択することもできます。カスタム環境にプロファイルライブラリをリンクすることはできず、ライブラリ上の任意のカスタム環境は子プロファイルへのリンクでは認識されません。
+1. (オプション) 1つ以上の[公開場所](https://docs.tealium.com/about-publishing/)を選択して、このバージョンを公開環境に公開します。また、**カスタム**チェックボックスを選択して[カスタム環境](https://docs.tealium.com/custom-publish-environments/)を選択することもできます。
+<blockquote>
+カスタム環境にプロファイルライブラリをリンクすることはできず、ライブラリ上の任意のカスタム環境は子プロファイルへのリンクでは認識されません。
+</blockquote>
+
 1. **公開**をクリックします。
 
 ライブラリへの変更を公開した後、ライブラリにリンクされている各プロファイルをロードして最新の変更をインポートし、それらのプロファイルを保存する必要があります。
@@ -75,10 +83,10 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-libraries/ma
 1. プロファイルリストから、ライブラリにリンクしたいプロファイルを選択します。
 オプションで、リンクしたいライブラリを選択します。
 1. ウィンドウの上部にあるドロップダウンリストからライブラリを選択します。
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library.jpg)
-1. **&#43; ライブラリへのリンク**をクリックします。選択したライブラリが表示されます。
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library.jpg)
+1. **+ ライブラリへのリンク**をクリックします。選択したライブラリが表示されます。
 1. プロファイルにリンクしたいライブラリの公開環境（Dev、QA、Prod）を選択します。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library-select-publish-environment.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library-select-publish-environment.jpg)
 1. リンクを削除するには、**リンクの削除**をクリックします。  
 必須のライブラリへのリンクは削除できません。
 1. **適用**をクリックします。
@@ -92,7 +100,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/profiles/profile-libraries/ma
 1. 管理メニューで、**プロファイルの管理**をクリックします。**プロファイルの管理**ダイアログが表示されます。
 1. **ライブラリ**セクションで、調査するライブラリをクリックします。  
 このライブラリにリンクされているプロファイルが右側のメインウィンドウに表示されます。**ライブラリバージョン**列は、プロファイルがリンクされているこのライブラリの公開環境を表示します。  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-view-library-version.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-view-library-version.jpg)
 1. ウィンドウを閉じるために**キャンセル**をクリックします。
 
 ## ライブラリの削除

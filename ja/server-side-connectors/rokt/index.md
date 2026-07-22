@@ -17,11 +17,15 @@ url: https://docs.tealium.com/ja/server-side-connectors/rokt/
   * [カスタムオーディエンスインポートAPI](https://docs.rokt.com/developers/api-reference/custom-audience-import/)
   * [イベントAPI](https://docs.rokt.com/developers/api-reference/event-api/)
 
- イベント送信アクションは、v1およびv2の認証方法をサポートしています。アクションレベルで使用するAPIを指定できます。ただし、カスタムオーディエンスの更新アクションはv2認証方法のみをサポートしています。詳細については、[Rokt: イベントAPI v1](https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret)または[Rokt: イベントAPI v2](https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2)のドキュメントを参照してください。
+
+<blockquote>
+イベント送信アクションは、v1およびv2の認証方法をサポートしています。アクションレベルで使用するAPIを指定できます。ただし、カスタムオーディエンスの更新アクションはv2認証方法のみをサポートしています。詳細については、[Rokt: イベントAPI v1](https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret)または[Rokt: イベントAPI v2](https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2)のドキュメントを参照してください。
+</blockquote>
+
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100
 * 最古のリクエストからの最大時間：10分
@@ -29,7 +33,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/rokt/
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](/ja/server-side/connectors/manage/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 

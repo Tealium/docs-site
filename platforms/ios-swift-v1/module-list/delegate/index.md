@@ -21,16 +21,16 @@ Install the Delegate module with CocoaPods or Carthage.
 
 To install the Delegate module with CocoaPods, add the following pod to your Podfile:  
 ```ruby
-pod &#39;tealium-swift/TealiumDelegate&#39;
+pod 'tealium-swift/TealiumDelegate'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 ### Carthage
 
 To install the Delegate module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
     ```ruby
@@ -41,7 +41,7 @@ To install the Delegate module with Carthage, following these steps:
     import TealiumDelegate
     ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 
 ## Data Layer
@@ -87,12 +87,12 @@ removeAll()
 If method returns `true`, the tracking call is allowed to complete. If method returns false, tracking call is canceled.
 
 ```swift
-tealiumShouldTrack(data: [String:Any]) -&gt; Bool
+tealiumShouldTrack(data: [String:Any]) -> Bool
 ```
 
 | Parameters | Description   | Example             |
 |------------|---------------|---------------------------|
-| `data`     | `[String:Any]`| `[&#34;somekey&#34; : &#34;somevalue&#34;]` |
+| `data`     | `[String:Any]`| `["somekey" : "somevalue"]` |
 
 
 ### `tealiumTrackCompleted()`
@@ -104,6 +104,6 @@ tealiumTrackCompleted(success: Bool, info: [String:Any]?, error: Error?)
 
 | Parameters | Type             | Description                                                  | Example |
 |------------|------------------|--------------------------------------------------------------| ------- |
-| `success`    | `Bool`         | If dispatch completed acceptably                                                       |[`&#34;true&#34;`, `&#34;false&#34;`] |
-| `info`       | `[String:Any]` | Dictionary of the original payload and any other returned data regarding dispatch     |`[&#34;somekey&#34; : &#34;somevalue&#34;]`  |
+| `success`    | `Bool`         | If dispatch completed acceptably                                                       |[`"true"`, `"false"`] |
+| `info`       | `[String:Any]` | Dictionary of the original payload and any other returned data regarding dispatch     |`["somekey" : "somevalue"]`  |
 | `error`      | `Error`        | Error, if any, encountered during dispatch processing|  `TealiumCollectError.xErrorDetected` |

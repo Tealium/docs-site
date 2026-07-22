@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-datasets/
 
 新しいデータセットを作成するには、次の手順を使用します：
 
-1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Datasets**をクリックします。
+1. **Analyze > Analyze > Insights > Dashboards**に移動し、**Datasets**をクリックします。
 1. **New dataset**をクリックします。
 1. **From Existing Data Sources**からデータソースを選択します。
 1. 確認ダイアログボックスで、**Create dataset**をクリックします。
@@ -34,11 +34,11 @@ PIIデータを含む列を除外することがあります。
 
 データセットを編集するには、次の手順を使用します：
 
-1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Datasets**をクリックします。
+1. **Analyze > Analyze > Insights > Dashboards**に移動し、**Datasets**をクリックします。
 1. データセットをクリックし、**EDIT DATASET**をクリックします。  
 必要に応じてフィールドを追加および削除します。
-1. **SAVE &amp; PUBLISH**をクリックします。  
-データセットを保存し、新しい分析を作成するには、**PUBLISH &amp; VISUALIZE**をクリックします。
+1. **SAVE & PUBLISH**をクリックします。  
+データセットを保存し、新しい分析を作成するには、**PUBLISH & VISUALIZE**をクリックします。
 
 ## データセットの削除
 
@@ -46,7 +46,7 @@ PIIデータを含む列を除外することがあります。
 
 データセットを削除するには、次の手順を使用します：
 
-1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Datasets**をクリックします。
+1. **Analyze > Analyze > Insights > Dashboards**に移動し、**Datasets**をクリックします。
 1. データセットのメニューをクリックし、**Delete**を選択します。
 
 ## ダッシュボードのデータセット構造の更新

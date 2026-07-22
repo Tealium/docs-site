@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/server-side/connectors/batched-actions/
 ---
 多くのコネクターはバッチベースのアクションをサポートしています。バッチ処理アクションを使用すると、システムはコネクターリクエストをバッチに蓄積し、その後ベンダーに対して一括して呼び出します。バッチ処理アクションを使用することで、ベンダーシステムへの負荷が軽減され、ベンダーAPIのレート制限内に収まるのに役立ちます。
 
- [Trace]()を使用する場合、バッチ処理は無視されます。
+
+<blockquote>
+[Trace](https://docs.tealium.com/about-trace/)を使用する場合、バッチ処理は無視されます。
+</blockquote>
+
 
 バッチ処理をサポートするコネクターには、バッチベースのパラメータロジックが含まれています。リクエストは、以下のいずれかの閾値が満たされるまでキューに入れられます：
 
@@ -15,7 +19,11 @@ url: https://docs.tealium.com/ja/server-side/connectors/batched-actions/
 
 最大閾値に達すると、コネクターはバッチを送信します。これらの閾値はORベースで動作し、いずれか一つがバッチ送信をトリガーします。
 
+
+<blockquote>
 プロファイルを公開すると、バッチ制限に達していなくてもコネクターバッチキューが処理されます。
+</blockquote>
+
 
 ## バッチコンポーネント
 
@@ -33,13 +41,13 @@ url: https://docs.tealium.com/ja/server-side/connectors/batched-actions/
 
 この場合、**最大リクエスト数**のパラメータが定期的にバッチデータの送信をトリガーします。なぜなら、他の2つのパラメータがトリガーされる前に閾値に達するからです。
 
-![](/images/server-side/single-component-batching.png)
+![](https://docs.tealium.com/images/server-side/single-component-batching.png)
 
 ### 複数コンポーネント
 
 実際には、Tealiumコネクターには複数のバッチングコンポーネントがあります。この例では、2つのバッチングコンポーネントが同じデータ流入（1分間に150リクエスト）を持っています。リクエストは2つのコンポーネント間で均等に分配されます。各コンポーネントが独立してバッチを監視するため、各コンポーネントへのデータ流入は1分間に75リクエストになります。このデータ流入は**最大リクエスト数**の閾値をトリガーするには十分ではありません。この場合、最初に**最大時間**の閾値がトリガーされるでしょう。それでも定期的にベンダーAPIへの呼び出しが行われますが、各呼び出しには75レコードのみが含まれます。
 
-![](/images/server-side/multiple-component-batching.png)
+![](https://docs.tealium.com/images/server-side/multiple-component-batching.png)
 
 実際のシナリオでは、Tealiumコネクターには1つや2つ以上のコンポーネントがあります。需要に応じてバッチングコンポーネントの数を増減します。
 

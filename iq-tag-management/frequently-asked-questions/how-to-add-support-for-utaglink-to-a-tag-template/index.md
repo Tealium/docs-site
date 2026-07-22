@@ -17,22 +17,22 @@ Generally, this is based on the implementation guide the tag vendor provided, so
 
 ## Solution
 
-Sometimes you might want to add utag.link support to a tag that by default only supports utag.view. To begin, follow this document for instructions on how to edit a tag template: [Edit a tag template]().
+Sometimes you might want to add utag.link support to a tag that by default only supports utag.view. To begin, follow this document for instructions on how to edit a tag template: [Edit a tag template](https://docs.tealium.com/manage-templates/).
 
 Once you are editing the template, look for the line that starts with the following:
 
 ```js
-u.ev= {&#39;view&#39;: 1};
+u.ev= {'view': 1};
 ```
 
-![](/images/iq-tag-management/viewonly.png)
+![](https://docs.tealium.com/images/iq-tag-management/viewonly.png)
 
 Edit this line to read:
 
 ```js
-u.ev = {&#39;view&#39; : 1, &#39;link&#39;: 1};
+u.ev = {'view' : 1, 'link': 1};
 ```
 
-![](/images/iq-tag-management/view-link.png)
+![](https://docs.tealium.com/images/iq-tag-management/view-link.png)
 
 Save the tag template and re-publish the profile. Your tag will now respond to both utag.view and utag.link events.

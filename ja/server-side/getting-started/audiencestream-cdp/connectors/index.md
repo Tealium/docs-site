@@ -3,7 +3,7 @@ title: コネクタ
 description: このドキュメントでは、AudienceStreamのコネクタについて説明します。
 url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/connectors/
 ---
-![](/images/server-side/getting-started-audiencestream-connectors-icon.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-connectors-icon.png)
 
 コネクタは、データを送信するためにTealiumと他のベンダーとの間の統合です。コネクタには、ベンダーがサポートするAPIを表すアクションが含まれています。AudienceStreamのコネクタでは、視聴者（訪問プロファイル）が送信するデータのソースとして使用されます。
 

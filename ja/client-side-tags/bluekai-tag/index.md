@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/bluekai-tag/
 
 ## タグの構成
 
-タグマーケットプレイスに移動し、BlueKaiタグを追加します。詳細については、[タグの管理]()を参照してください。
+タグマーケットプレイスに移動し、BlueKaiタグを追加します。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
 
 タグを追加した後、次の変数を構成します：
 
@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/bluekai-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 次の変数はBlueKaiタグで利用可能です：
 

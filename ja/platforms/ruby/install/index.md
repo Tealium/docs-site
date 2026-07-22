@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/ruby/install/
 ---
 ## 要件
 
-* [Tealium Customer Data Hubアカウント]()
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## インストール
 
@@ -21,9 +21,9 @@ Tealiumを初期化するには：
 
 1. 次のコマンドでTealiumパッケージをインポートします：  
       ```ruby
-      require &#39;tealium&#39;
+      require 'tealium'
       ```  
-2. 次の例に示すように、[`new()`](/ja/platforms/ruby/api/#initialize)メソッドを使用してTealiumオブジェクトを初期化します：
+2. 次の例に示すように、[`new()`](https://docs.tealium.com/ja/platforms/ruby/api/#initialize)メソッドを使用してTealiumオブジェクトを初期化します：
       ```ruby
-      teal = Tealium.new(&#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;DATASOURCE&#34;)
+      teal = Tealium.new("ACCOUNT", "PROFILE", "DATASOURCE")
       ```

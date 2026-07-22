@@ -13,7 +13,7 @@ url: https://docs.tealium.com/administration/early-access/visitor-stitching/stit
 
 Visitor stitching uses event replay to build a merged profile from historical events, but is subject to system limits such as the event retention period and a maximum of 1,500 events. When visitor profiles exceed these limits, older events may not be replayed during stitching, resulting in incomplete historical data for long-lived or high-volume profiles.
 
-Stitching merge rules address such cases by augmenting the stitching process with attribute‑specific logic that doesn&#39;t rely on event replay and produces the same durable, consistent outcome every time.
+Stitching merge rules address such cases by augmenting the stitching process with attribute‑specific logic that doesn't rely on event replay and produces the same durable, consistent outcome every time.
 
 Merge rules compare the attributes from two visitor profiles to determine the final attribute value, which is applied after historical events are replayed on the merged visitor profile. This ensures that your most important attributes retain their intended value even when historical event processing cannot include all past events.
 
@@ -50,7 +50,7 @@ For examples of stitching merge rules best suited for certain enrichments, see [
 
 Preloaded attributes are system‑managed attributes that exist in all profiles where AudienceStream is enabled. When stitching merge rules are enabled, these attributes receive appropriate, replay‑consistent merge rules automatically and the selections are not editable. This maintains consistency with their built-in enrichments.
 
-For more information, see .
+For more information, see [preloaded-attributes](https://docs.tealium.com/preloaded-attributes/).
 
 ### Funnel
 
@@ -66,7 +66,7 @@ Tally attributes and their associated favorite attributes follow these behaviors
 
 * If the tally has a merge rule, the favorite attribute automatically uses the **Recalculate (Force)** rule so its value is recomputed on the stitched visitor after other merge rules run.
 * If the tally has no merge rule, the favorite string automatically has no merge rule.
-* If a merge rule is removed from the tally, the favorite attribute&#39;s merge rule is removed automatically.
+* If a merge rule is removed from the tally, the favorite attribute's merge rule is removed automatically.
 
 ### Timeline
 
@@ -86,14 +86,14 @@ Before you can use stitching merge rules, you must enable the feature.
 
 To enable stitching merge rules on a profile:
 
-1. Go to **Admin &gt; Server-Side Settings**.
+1. Go to **Admin > Server-Side Settings**.
 1. Click the **Stitching Merge Rules** toggle to the on position.
 1. Click **Save**.
 1. Publish the profile.
 
 When stitching merge rules are enabled, a new setting is available in the attribute edit view. Enable the setting to apply a merge rule to the attribute, then select a merge rule from the list.
 
-![](/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png)
 
 ## Rules available by attribute
 
@@ -123,13 +123,13 @@ When stitching merge rules are enabled, a new setting is available in the attrib
 |----------------------|---------------|
 |  Badge | Set to `Assigned` only if both are `Assigned`. |
 |  Boolean | Set to `true` only if both are `true`. |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-and-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-and-example.png)
 
-This example attribute is `true` for a visitor if all the visitor&#39;s online visits came from PPC. Based on these enrichments, the merged attribute is `true` only if both visitors have the attribute set to `true`. If either visitor has the attribute set to `false`, it means not all  the visitor&#39;s online visits were from PPC, so the merged attribute value is `false`. Use the **And** rule to achieve the correct merged value.
+This example attribute is `true` for a visitor if all the visitor's online visits came from PPC. Based on these enrichments, the merged attribute is `true` only if both visitors have the attribute set to `true`. If either visitor has the attribute set to `false`, it means not all  the visitor's online visits were from PPC, so the merged attribute value is `false`. Use the **And** rule to achieve the correct merged value.
 
 **Badges**:
 | Visitor A | Visitor B | Merged visitor with **And** rule  |
@@ -156,11 +156,11 @@ This example attribute is `true` for a visitor if all the visitor&#39;s online v
 |----------------------|---------------|
 |  Badge | Set to `Assigned` if either is `Assigned`. |
 |  Boolean | Set to `true` if either is `true`. |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-or-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-or-example.png)
 
 This example badge is assigned if the visitor sees a one-time event, and the badge is never unassigned.
 
@@ -191,11 +191,11 @@ Based on these enrichments, the merged badge is assigned if either visitor has r
 |----------------------|---------------|
 |  Number | Keep the higher value. |
 |  Date | Keep the later date. |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-max-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-max-example.png)
 
 In this example, use the **Max** merge rule to select the more recent of the dates from the merged visitor profiles.
 
@@ -207,11 +207,11 @@ Since this enrichment uses the current timestamp, the **Newer** rule produces th
 |----------------------|---------------|
 |  Number | Keep the lower value. |
 |  Date | Keep the earlier date. |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-min-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-min-example.png)
 
 In this example, use the **Min** merge rule to select the earlier of the two dates from the merged visitor profiles. 
 
@@ -226,17 +226,17 @@ The **Newer** rule is based on an internal timestamp set when an enrichment upda
 | Supported data types | Rule behavior |
 |-------------|--------------------|
 |  Badge | Keep the more recently updated state (including unassigned). |
-|  Boolean&lt;br&gt;  Number |  Keep the more recently updated value. |
+|  Boolean<br>  Number |  Keep the more recently updated value. |
 |  Date |  Keep the more recently updated value (including removed values). This is based on when this date attribute was last enriched, not the date value stored in the attribute itself. |
 |  Set of strings |  Keep the more recently updated (including removed) set of strings. |
 |  String |  Keep the more recently updated value (including removed values). |
 |  Tally |  Keep the more recently updated (including removed) tally. |
-|  Array of booleans&lt;br&gt;  Array of numbers&lt;br&gt;  Array of strings |  Keep the more recently updated (including removed) array. |
-{class=&#34;dt--fixed&#34;}
+|  Array of booleans<br>  Array of numbers<br>  Array of strings |  Keep the more recently updated (including removed) array. |
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-newer-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-newer-example.png)
 
 ### Older
 
@@ -244,31 +244,35 @@ The **Older** rule chooses the attribute value, including a removed value, updat
 
 The **Older** rule is based on an internal timestamp set when an enrichment updates the value of an attribute. If the internal timestamp is not set for both attributes, the timestamps of the last visit for each visitor are used to determine which was set first.
 
-If an attribute enrichment does not use a self-referencing rule to ensure it&#39;s only set once, then using the **Older** rule will not necessarily result in the earliest value set.
+
+<blockquote>
+If an attribute enrichment does not use a self-referencing rule to ensure it's only set once, then using the **Older** rule will not necessarily result in the earliest value set.
+</blockquote>
+
 
 | Supported data types | Rule behavior |
 |----------------------|---------------|
 |  Badge | Keep the earlier updated state (including unassigned). |
-|  Boolean&lt;br&gt; Number | Keep the earlier updated value. |
+|  Boolean<br> Number | Keep the earlier updated value. |
 |  Date | Keep the earlier updated value (including removed values). This is based on when this date attribute was last enriched, not the date value stored in the attribute itself. |
 |  Set of strings | Keep the earlier updated (including removed) set of strings. |
 |  String | Keep the earlier updated value (including removed values). |
 |  Tally | Keep the earlier updated (including removed) tally. |
-|  Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Keep the earlier updated (including removed) array. |
-{class=&#34;dt--fixed&#34;}
+|  Array of booleans<br> Array of numbers<br> Array of strings | Keep the earlier updated (including removed) array. |
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-older-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-older-example.png)
 
 ### Recalculate
 
 | Supported data types | Rule behavior |
 |----------------------|---------------|
 |  Badge | Discard previous states and run enrichments on the final merged profile. |
-|  Boolean&lt;br&gt; Date&lt;br&gt; Number | Discard previous values and run enrichments on the final merged profile. |
-|  Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Start unassigned and run enrichments on the final merged profile. |
-{class=&#34;dt--fixed&#34;}
+|  Boolean<br> Date<br> Number | Discard previous values and run enrichments on the final merged profile. |
+|  Set of strings<br> String<br> Tally<br> Array of booleans<br> Array of numbers<br> Array of strings | Start unassigned and run enrichments on the final merged profile. |
+{class="dt--fixed"}
 
 The **Recalculate** rule discards the initial merged value of the attribute and reruns the enrichments for the attribute. Discarding the initial merged value ensures that the recalculation starts with an unset value and the value is set only based on the enrichments.
 
@@ -282,7 +286,7 @@ The **Recalculate** rule is best suited for attributes derived from other visito
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-recalculate-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-recalculate-example.png)
 
 In this example, the attribute value is derived from another visitor attribute, `Orders Timeline`. If the `Orders Timeline` attribute has its own merge rule (**Merge timeline**), that rule runs before this number attribute is evaluated by the **Recalculate** rule.
 
@@ -301,13 +305,13 @@ Visitor stitching can occur at times that do not coincide with the **New Visitor
 | Supported data types | Rule behavior |
 |----------------------|---------------|
 |  Badge | Discard previous states and run enrichments on the final merged profile and force some conditions to `true`. |
-|  Boolean&lt;br&gt; Date&lt;br&gt; Number | Discard previous values and run enrichments on the final merged profile and force some conditions to `true`. |
-|  Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Start unassigned and run enrichments on the final merged profile and force some conditions to `true`. |
-{class=&#34;dt--fixed&#34;}
+|  Boolean<br> Date<br> Number | Discard previous values and run enrichments on the final merged profile and force some conditions to `true`. |
+|  Set of strings<br> String<br> Tally<br> Array of booleans<br> Array of numbers<br> Array of strings | Start unassigned and run enrichments on the final merged profile and force some conditions to `true`. |
+{class="dt--fixed"}
 
 **Example**
 
-![](/images/server-side/merge-rules/rule-recalculate-force-end-visit.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-recalculate-force-end-visit.png)
 
 In this example, the attribute is derived from another visitor attribute, `Lifetime visit count`, and assigns a badge when the visitor has made 10 or more visits. However, the enrichment is set to run on `Visit Ended`, which might not be true when the visitor stitching occurs, so using the **Recalculate (Force)** rule forces the enrichment to run anyway.
 
@@ -320,9 +324,9 @@ The **Sum** rule keeps the sum of the values of each number attribute. If one of
 | Supported data types | Rule behavior |
 |----------------------|---------------|
 |  Number | Add values from both visitors. |
-{class=&#34;dt--fixed&#34;}
+{class="dt--fixed"}
 
-![](/images/server-side/merge-rules/rule-sum-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-sum-example.png)
 
 In this example, if Visitor A spent $30 and Visitor B spent $60, then the merged visitor has spent $90.
 
@@ -333,12 +337,12 @@ The **Union** rule combines values from both attributes, preserving consistent o
 | Supported data types | Rule behavior |
 |----------------------|---------------|
 |  Set of strings | Combine values from both. |
-|  Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Combine values from both, preserving consistent order across arrays. |
-{class=&#34;dt--fixed&#34;}
+|  Array of booleans<br> Array of numbers<br> Array of strings | Combine values from both, preserving consistent order across arrays. |
+{class="dt--fixed"}
 
 **Example: Set of strings** 
 
-![](/images/server-side/merge-rules/rule-union-set-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-set-example.png)
 
 In this example, the **Union** rule combines the entries and removes the duplicate entry for Wednesday because entries in a set of strings must be unique.
 
@@ -346,19 +350,19 @@ Example of **Union** rule for a set of strings attribute:
 
 ```json
 Visitor-A: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday"]
 }
 Visitor-B: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Wednesday", "Friday"]
 }
 Merged: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Friday"]
 }
 ```
 
 **Example: Array** 
 
-![](/images/server-side/merge-rules/rule-union-array-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-array-example.png)
 
 In this example, an array of strings attribute tracks the day of the week each time the visitor sees the order confirmation page. Unlike a set of strings attribute, the merged value of two arrays can contain duplicate values.
 
@@ -366,13 +370,13 @@ Example of a **Union** rule for an array of strings attribute:
 
 ```json
 Visitor-Older: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Monday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Monday"]
 }
 Visitor-Active: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Wednesday", "Friday"]
 }
 Merged: {
-  &#34;Days of week viewed confirmation&#34;: [&#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Monday&#34;, &#34;Wednesday&#34;, &#34;Friday&#34;]
+  "Days of week viewed confirmation": ["Monday", "Wednesday", "Monday", "Wednesday", "Friday"]
 }
 ```
 
@@ -390,62 +394,62 @@ The **Union Max/Min/Sum** rules merge tally attributes where the values of any c
 
 **Example: Union Sum**
 
-![](/images/server-side/merge-rules/rule-union-sum-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-sum-example.png)
 
 In this example, the tally counts the different product categories the visitor has seen on product details pages. Use the **Union Sum** rule to merge the keys and add the values for matching keys.
 
 ```json
 Visitor-A: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Accessories&#34;: 1,
-      &#34;Apparel&#34;: 2,
-      &#34;Books&#34;: 1
+  "Lifetime count of product categories": {
+      "Accessories": 1,
+      "Apparel": 2,
+      "Books": 1
   }
 }
 Visitor-B: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Apparel&#34;: 4,
-      &#34;Books&#34;: 3,
-      &#34;Electronics&#34;: 5    
+  "Lifetime count of product categories": {
+      "Apparel": 4,
+      "Books": 3,
+      "Electronics": 5    
   }
 }
 Merged: {
-  &#34;Lifetime count of product categories&#34;: {
-      &#34;Accessories&#34;: 1,
-      &#34;Apparel&#34;: 6,
-      &#34;Books&#34;: 4,
-      &#34;Electronics&#34;: 5    
+  "Lifetime count of product categories": {
+      "Accessories": 1,
+      "Apparel": 6,
+      "Books": 4,
+      "Electronics": 5    
   }
 }
 ```
 
 **Example: **Union Max**
 
-![](/images/server-side/merge-rules/rule-union-max-example.png)
+![](https://docs.tealium.com/images/server-side/merge-rules/rule-union-max-example.png)
 
 In this example, the tally stores the last date (in milliseconds since the Epoch) that a product category was seen. Use the **Union Max** rule to merge the keys and keep the most recent value for matching keys.
 
 ```json
 Visitor-A: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Accessories&#34;: 1702454863722,
-    &#34;Apparel&#34;: 1733414869787,
-    &#34;Books&#34;: 1731414884828
+  "Dates of last seen product categories": {
+    "Accessories": 1702454863722,
+    "Apparel": 1733414869787,
+    "Books": 1731414884828
   }
 }
 Visitor-B: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Apparel&#34;: 1732424969356,
-    &#34;Books&#34;: 1733414883367,
-    &#34;Electronics&#34;: 1721357252812
+  "Dates of last seen product categories": {
+    "Apparel": 1732424969356,
+    "Books": 1733414883367,
+    "Electronics": 1721357252812
   }
 }
 Merged: {
-  &#34;Dates of last seen product categories&#34;: {
-    &#34;Accessories&#34;: 1702454863722,
-    &#34;Apparel&#34;: 1733414869787,
-    &#34;Books&#34;: 1733414883367,
-    &#34;Electronics&#34;: 1721357252812
+  "Dates of last seen product categories": {
+    "Accessories": 1702454863722,
+    "Apparel": 1733414869787,
+    "Books": 1733414883367,
+    "Electronics": 1721357252812
   }
 }
 ```

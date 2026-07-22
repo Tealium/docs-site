@@ -3,7 +3,7 @@ title: iQ ロードルール API
 description: iQ Variables APIを使用すると、iQタグ管理プロファイル内でロードルールをプログラム的に作成、更新、削除できます。
 url: https://docs.tealium.com/ja/api/v3/iq-profiles/iq-load-rules-api/
 ---
-このAPIと利用可能なオブジェクトフィールドについて詳しくは、[iQプロファイルAPI]()および[iQプロファイルオブジェクト]()を参照してください。
+このAPIと利用可能なオブジェクトフィールドについて詳しくは、[iQプロファイルAPI](https://docs.tealium.com/iq-profiles-v3-api/)および[iQプロファイルオブジェクト](https://docs.tealium.com/iq-profiles-api-objects/)を参照してください。
 
 ## 動作方法
 
@@ -18,17 +18,21 @@ PATCHメソッドを使用するときは、プログラムを使用してプロ
 ### cURLリクエストの例
 
 ```bash
-curl --location --request PATCH &#39;https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}&#39; \
-  --header &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9&#39; \
-  --header &#39;Content-Type: application/json&#39; \
-  --data &#39;
+curl --location --request PATCH 'https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}' \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9' \
+  --header 'Content-Type: application/json' \
+  --data '
 ```
 
 ## 認証
 
-Bearerトークンは、すべてのAPI呼び出しを認証するために使用され、APIキーは認証呼び出しでのみ使用されます。Bearerトークンに加えて、認証応答には、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれています。
 
-APIキーからBearerトークンを生成する方法については、[認証]()を参照してください。
+<blockquote>
+Bearerトークンは、すべてのAPI呼び出しを認証するために使用され、APIキーは認証呼び出しでのみ使用されます。Bearerトークンに加えて、認証応答には、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれています。
+</blockquote>
+
+
+APIキーからBearerトークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
 
 ## プロファイルフィールド
 
@@ -36,7 +40,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
 
 |フィールド| タイプ| 必須| 説明|
 |---| ---| ---| ---|
-|`versionTitle`| 文字列| 任意| 保存されたバージョンのタイトル。&lt;br&gt; `saveType`が`saveAs`の場合のデフォルト：`API \| {TIMESTAMP}`&lt;br&gt; `saveType`が`save`の場合のデフォルト：既存のバージョンタイトル |
+|`versionTitle`| 文字列| 任意| 保存されたバージョンのタイトル。<br> `saveType`が`saveAs`の場合のデフォルト：`API \| {TIMESTAMP}`<br> `saveType`が`save`の場合のデフォルト：既存のバージョンタイトル |
 |`saveType`| 文字列| 任意| PATCHリクエストで実行する保存のタイプ：`save`または`saveAs`。デフォルトは`saveAs`です。 |
 |`notes`| 文字列| 必須| 公開バージョンに関する追加のノート。|
 |`op`| 文字列| 必須| 実行する操作：`add`、`replace`、または`remove`。|
@@ -47,34 +51,34 @@ APIキーからBearerトークンを生成する方法については、[認証]
 |`value.notes`| 文字列| 任意| ロードルールに関するノート。|
 |`value.startDate`| 日付| `value.endDate`が空の場合は任意。 | スケジュールされたロードルールの開始日。日付形式は`yyyyMMddHHmm`でなければなりません。|
 |`value.endDate`| 日付| 任意| スケジュールされたロードルールの終了日。日付形式は`yyyyMMddHHmm`でなければなりません。|
-|`value.conditions`| オブジェクトの配列| 必須| 変数名、オペレータ、値を含むオブジェクトの配列。配列内の各オブジェクトは`and`オペレータで関連付けられ、配列内の各配列は`or`オペレータで関連付けられます。次のオペレータは値を受け付けません：&lt;br&gt;`is defined`&lt;br&gt; `is badge assigned`&lt;br&gt; `is badge not assigned`&lt;br&gt; `is not defined`&lt;br&gt; `is not populated` |
+|`value.conditions`| オブジェクトの配列| 必須| 変数名、オペレータ、値を含むオブジェクトの配列。配列内の各オブジェクトは`and`オペレータで関連付けられ、配列内の各配列は`or`オペレータで関連付けられます。次のオペレータは値を受け付けません：<br>`is defined`<br> `is badge assigned`<br> `is badge not assigned`<br> `is not defined`<br> `is not populated` |
 
 ### リクエストの例
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;Adding Rule&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes here&#34;, 
-  &#34;operationList&#34;: [
+  "versionTitle": "Adding Rule",
+  "saveType": "saveAs",
+  "notes": "version notes here", 
+  "operationList": [
     {
-      &#34;op&#34;: &#34;add&#34;,
-      &#34;path&#34;: &#34;/loadRules&#34;,
-      &#34;value&#34;:{
-        &#34;object&#34;: &#34;loadRule&#34;,
-        &#34;name&#34;: &#34;new rule API Dom variable&#34;,
-        &#34;status&#34;: &#34;active&#34;,
-        &#34;notes&#34;: &#34;Load Rule notes here&#34;,
-        &#34;startDate&#34;: &#34;202202020000&#34;,
-        &#34;endDate&#34;: &#34;202202020000&#34;,
-        &#34;conditions&#34;: [
+      "op": "add",
+      "path": "/loadRules",
+      "value":{
+        "object": "loadRule",
+        "name": "new rule API Dom variable",
+        "status": "active",
+        "notes": "Load Rule notes here",
+        "startDate": "202202020000",
+        "endDate": "202202020000",
+        "conditions": [
           [
             {
-              &#34;variable&#34;: &#34;udo.new_name&#34;,
-              &#34;operator&#34;: &#34;does_not_equal&#34;,
-              &#34;value&#34;: 10
+              "variable": "udo.new_name",
+              "operator": "does_not_equal",
+              "value": 10
             }
-          , &#34;/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api&#34;]
+          , "/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api"]
         ]   
       }
     }
@@ -97,15 +101,15 @@ APIキーからBearerトークンを生成する方法については、[認証]
 例えば、ロードルールを追加するには：
 
 ```json
-&#34;op&#34; : &#34;add&#34;,
-&#34;path&#34; : &#34;/loadRules&#34;
+"op" : "add",
+"path" : "/loadRules"
 ```
 
 特定のロードルールを更新するには、パスにIDを追加します：
 
 ```json
-&#34;op&#34; : &#34;replace&#34;,
-&#34;path&#34; : &#34;/loadRules/503&#34;
+"op" : "replace",
+"path" : "/loadRules/503"
 ```
 
 ## ロードルールの作成
@@ -116,28 +120,28 @@ APIキーからBearerトークンを生成する方法については、[認証]
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;Adding Rule&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes here&#34;, 
-  &#34;operationList&#34;: [
+  "versionTitle": "Adding Rule",
+  "saveType": "saveAs",
+  "notes": "version notes here", 
+  "operationList": [
     {
-      &#34;op&#34;: &#34;add&#34;,
-      &#34;path&#34;: &#34;/loadRules&#34;,
-      &#34;value&#34;:{
-        &#34;object&#34;: &#34;loadRule&#34;,
-        &#34;name&#34;: &#34;new rule API Dom variable&#34;,
-        &#34;status&#34;: &#34;active&#34;,
-        &#34;notes&#34;: &#34;Load Rule notes here&#34;,
-        &#34;startDate&#34;: &#34;202202020000&#34;,
-        &#34;endDate&#34;: &#34;202202020000&#34;,
-        &#34;conditions&#34;: [
+      "op": "add",
+      "path": "/loadRules",
+      "value":{
+        "object": "loadRule",
+        "name": "new rule API Dom variable",
+        "status": "active",
+        "notes": "Load Rule notes here",
+        "startDate": "202202020000",
+        "endDate": "202202020000",
+        "conditions": [
           [
             {
-              &#34;variable&#34;: &#34;udo.new_name&#34;,
-              &#34;operator&#34;: &#34;does_not_equal&#34;,
-              &#34;value&#34;: 10
+              "variable": "udo.new_name",
+              "operator": "does_not_equal",
+              "value": 10
             }
-          , &#34;/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api&#34;]
+          , "/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api"]
         ]   
       }
     }
@@ -153,28 +157,28 @@ APIキーからBearerトークンを生成する方法については、[認証]
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;Adding Rule&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes here&#34;, 
-  &#34;operationList&#34;: [
+  "versionTitle": "Adding Rule",
+  "saveType": "saveAs",
+  "notes": "version notes here", 
+  "operationList": [
     {
-      &#34;op&#34;: &#34;replace&#34;,
-      &#34;path&#34;: &#34;/loadRules/49&#34;,
-      &#34;value&#34;:{
-        &#34;object&#34;: &#34;loadRule&#34;,
-        &#34;name&#34;: &#34;new rule API Dom variable&#34;,
-        &#34;status&#34;: &#34;active&#34;,
-        &#34;notes&#34;: &#34;Load Rule notes here&#34;,
-        &#34;startDate&#34;: &#34;202202020000&#34;,
-        &#34;endDate&#34;: &#34;202202020000&#34;,
-        &#34;conditions&#34;: [
+      "op": "replace",
+      "path": "/loadRules/49",
+      "value":{
+        "object": "loadRule",
+        "name": "new rule API Dom variable",
+        "status": "active",
+        "notes": "Load Rule notes here",
+        "startDate": "202202020000",
+        "endDate": "202202020000",
+        "conditions": [
           [
             {
-              &#34;variable&#34;: &#34;udo.new_name&#34;,
-              &#34;operator&#34;: &#34;does_not_equal&#34;,
-              &#34;value&#34;: 10
+              "variable": "udo.new_name",
+              "operator": "does_not_equal",
+              "value": 10
             }
-          , &#34;/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api&#34;]
+          , "/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api"]
         ]   
       }
     }
@@ -190,18 +194,18 @@ APIキーからBearerトークンを生成する方法については、[認証]
 
 ```json
 {
-  &#34;versionTitle&#34;: &#34;Adding Rule&#34;,
-  &#34;saveType&#34;: &#34;saveAs&#34;,
-  &#34;notes&#34;: &#34;version notes here&#34;, 
-  &#34;operationList&#34;: [
+  "versionTitle": "Adding Rule",
+  "saveType": "saveAs",
+  "notes": "version notes here", 
+  "operationList": [
     {
-      &#34;op&#34;: &#34;remove&#34;,
-      &#34;path&#34;: &#34;/loadRules/49&#34;,
-      &#34;value&#34;:{
-        &#34;object&#34;: &#34;loadRule&#34;
+      "op": "remove",
+      "path": "/loadRules/49",
+      "value":{
+        "object": "loadRule"
       }
     }
-  , &#34;/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api&#34;]
+  , "/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api"]
 }
 ```
 
@@ -211,7 +215,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
 
 |エラーコード| エラーメッセージ|
 |---| ---|
-|400|  `&#34;Validate patch request failed due to %s&#34;`&lt;br&gt;   `&#34;Cannot set tag scope extension with tags that do not exist, id: {ID} - {ACCOUNT} \| profile: {PROFILE}&#34;` &lt;br&gt;  `&#34;Cannot set extension scope to sync if the setting is not turned on - {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;   `&#34;Error in getting next extension id - {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;   `&#34;Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}&#34;` &lt;br&gt;  `&#34;Not Supported&#34;` &lt;br&gt; `&#34;patchProfile.arg2.notes: must not be empty&#34;` |
-| 404 |    `&#34;Account: {ACCOUNT}, profile: {PROFILE} not found&#34;` |
-| 409 |  `&#34;Users are currently viewing the same account: {ACCOUNT} profile: {PROFILE}&#34;` &lt;br&gt; `Error saving profile: {PROFILE} for account: {ACCOUNT}, duplicate versions: {VERSIONS}` |
-|500|  `&#34;An error occurred&#34;` &lt;br&gt;  `&#34;Profile: {PROFILE} inherits from library profile&#34;`&lt;br&gt;   `&#34;Unable to invoke request: unknown host, see logs for more detail.&#34;`&lt;br&gt;  `&#34;Error saving profile metadata - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;   `&#34;Error saving profile - account: {ACCOUNT} \| profile: {PROFILE}&#34;`&lt;br&gt;   `&#34;Error saving profile(legacy) - {ACCOUNT} \| profile: {PROFILE}&#34;` |
+|400|  `"Validate patch request failed due to %s"`<br>   `"Cannot set tag scope extension with tags that do not exist, id: {ID} - {ACCOUNT} \| profile: {PROFILE}"` <br>  `"Cannot set extension scope to sync if the setting is not turned on - {ACCOUNT} \| profile: {PROFILE}"`<br>   `"Error in getting next extension id - {ACCOUNT} \| profile: {PROFILE}"`<br>   `"Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} \| profile: {PROFILE}"` <br>  `"Not Supported"` <br> `"patchProfile.arg2.notes: must not be empty"` |
+| 404 |    `"Account: {ACCOUNT}, profile: {PROFILE} not found"` |
+| 409 |  `"Users are currently viewing the same account: {ACCOUNT} profile: {PROFILE}"` <br> `Error saving profile: {PROFILE} for account: {ACCOUNT}, duplicate versions: {VERSIONS}` |
+|500|  `"An error occurred"` <br>  `"Profile: {PROFILE} inherits from library profile"`<br>   `"Unable to invoke request: unknown host, see logs for more detail."`<br>  `"Error saving profile metadata - account: {ACCOUNT} \| profile: {PROFILE}"`<br>   `"Error saving profile - account: {ACCOUNT} \| profile: {PROFILE}"`<br>   `"Error saving profile(legacy) - {ACCOUNT} \| profile: {PROFILE}"` |

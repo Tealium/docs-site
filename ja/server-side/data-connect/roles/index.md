@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/roles/
 ---
 TealiumプロファイルごとにData Connectレシピへのユーザーアクセスを制御するために、そのプロファイルに役割を割り当てます。各プロファイルは、そのプロファイルで作成されたレシピのみを見ることができます。
 
-ユーザー権限の編集についての詳細は、[サーバーサイド権限について]()を参照してください。
+ユーザー権限の編集についての詳細は、[サーバーサイド権限について](https://docs.tealium.com/about-managing-server-side-user-permissions/)を参照してください。
 
 ## 利用可能な役割
 

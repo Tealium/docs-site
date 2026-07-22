@@ -12,10 +12,10 @@ A template consists of a dataset, an analysis, and a dashboard. A dataset is a c
 The **Template Details** screen displays example of each of the visuals for the dashboard and a summary of information for each dataset used in the template.
 
 For example, the following **Template Details** example shows a visual for the total events count dashboard:
-![](/images/server-side/data-insights/data-insights-template-details.png)
+![](https://docs.tealium.com/images/server-side/data-insights/data-insights-template-details.png)
 
 The dataset information is displayed after the visuals, as follows:
-![](/images/server-side/data-insights/data-insights-templates-dataset-info.png)
+![](https://docs.tealium.com/images/server-side/data-insights/data-insights-templates-dataset-info.png)
 
 ## Templates for predefined dashboards
 
@@ -32,6 +32,6 @@ The data displayed in the events count, visits count, and visitors count dashboa
 ## Template status
 
 The templates listed on the **Templates** screen may have one of the following labels:
-* **Generated** &amp;ndash; The dashboard has been generated and can be viewed on the dashboards screen. For example: ![](/images/server-side/data-insights/generated-label.png)
+* **Generated** &ndash; The dashboard has been generated and can be viewed on the dashboards screen. For example: ![](https://docs.tealium.com/images/server-side/data-insights/generated-label.png)
 
 If a template has no label, the dashboard has not been generated.

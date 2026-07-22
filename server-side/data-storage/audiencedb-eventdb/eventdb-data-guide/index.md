@@ -3,15 +3,19 @@ title: EventDB data guide
 description: This guide describes the data available in EventDB, including built-in columns, cookie variables, tag execution data, and performance timing metrics.
 url: https://docs.tealium.com/server-side/data-storage/audiencedb-eventdb/eventdb-data-guide/
 ---
-Contact your account manager to activate EventDB for the appropriate profiles in your account. For information about configuring the attributes stored in EventDB, see [Configure AudienceDB and EventDB]().
 
-EventDB stores event-level data captured by the [Tealium Collect tag]() or other Collect library. EventDB uses [EventStore]() as its data source and loads that data into Amazon Redshift for SQL-based querying.
+<blockquote>
+Contact your account manager to activate EventDB for the appropriate profiles in your account. For information about configuring the attributes stored in EventDB, see [Configure AudienceDB and EventDB]().
+</blockquote>
+
+
+EventDB stores event-level data captured by the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) or other Collect library. EventDB uses [EventStore](https://docs.tealium.com/audiencestore-and-eventstore/) as its data source and loads that data into Amazon Redshift for SQL-based querying.
 
 ## How it works
 
 EventDB loads data from EventStore in the following steps:
 
-1. The Tealium Collect tag sends event data to EventStore, where it&#39;s stored in an Amazon S3 bucket as flattened JSON.
+1. The Tealium Collect tag sends event data to EventStore, where it's stored in an Amazon S3 bucket as flattened JSON.
 1. When the S3 bucket reaches a size of 100 MB uncompressed or after one hour has elapsed, whichever comes first, the system compresses the data and prepares it for Redshift.
 1. After compression, the system copies and imports the data into the Redshift database for your account.
 
@@ -19,16 +23,16 @@ New data is stored in EventDB within 30 to 90 minutes, depending on the load for
 
 ## Event feeds and tables
 
-Each event feed is stored in the Redshift schema `ACCOUNT__PROFILE`, where `ACCOUNT__PROFILE` is your Tealium account and profile separated by a double underscore, for example `mycompany__main`. Within that schema, each [event feed]() has:
+Each event feed is stored in the Redshift schema `ACCOUNT__PROFILE`, where `ACCOUNT__PROFILE` is your Tealium account and profile separated by a double underscore, for example `mycompany__main`. Within that schema, each [event feed](https://docs.tealium.com/about-event-feeds/) has:
 
 * A base table named `events__{event-feed-id}`
 * A view with descriptive column names: `events_view__{feed-name}__{event-feed-id}`
 
 The event feed ID is the identifier for the feed in EventStream. To find the feed ID, go to **Live Events**, click the feed, and inspect the URL.
 
-![](/images/server-side/eventstore-id-in-url-highlighted.png)
+![](https://docs.tealium.com/images/server-side/eventstore-id-in-url-highlighted.png)
 
-For example, for a feed named &#34;Conversions&#34; with ID `7f78639b-34c2-4f8e-a575-d132c1008c80` in the schema `mycompany__main`:
+For example, for a feed named "Conversions" with ID `7f78639b-34c2-4f8e-a575-d132c1008c80` in the schema `mycompany__main`:
 
 | Table type | Full table reference |
 |---|---|
@@ -88,7 +92,7 @@ The Tealium Collect tag sends several predefined variables alongside the event d
 | `eventid` | An alphanumeric identifier unique to the event. |
 | `eventtime` | The event timestamp stored as a UTC datetime in Amazon Redshift (for example, `2024-08-01 00:00:02`). This differs from the epoch millisecond representation in EventStore. |
 | `useragent` | The user-agent header for the client. |
-| `clientip` | The IP address of the client. Requires the **Enable Visitor IP Attribute** setting to be enabled in [server-side account settings](). |
+| `clientip` | The IP address of the client. Requires the **Enable Visitor IP Attribute** setting to be enabled in [server-side account settings](https://docs.tealium.com/server-side-account-settings/#general-settings). |
 
 ### DOM variables
 
@@ -147,7 +151,7 @@ First-party cookie values use columns prefixed with `firstpartycookies_`. EventD
 
 ### JavaScript variables
 
-JavaScript variables from the page appear as columns prefixed with `js_`. The exact column names depend on the variables available on your site. Check your EventDB schema or [Live Events]() to confirm naming.
+JavaScript variables from the page appear as columns prefixed with `js_`. The exact column names depend on the variables available on your site. Check your EventDB schema or [Live Events](https://docs.tealium.com/about-live-events/) to confirm naming.
 
 | Column | Description |
 |---|---|
@@ -229,15 +233,19 @@ Browser performance timing metrics appear as columns prefixed with `udo_timing_`
 | `udo_timing_query_string` | The query string in the URL where the timing data was collected. |
 | `udo_timing_response` | Server response time. |
 
+
+<blockquote>
 If the value of a timing column equals zero, no timing information was captured. Ignore zero values when reporting or averaging.
+</blockquote>
+
 
 ## Data retention
 
-EventDB data remains available in Amazon Redshift for the length of time specified in your contract. When an event record reaches its expiration date, it&#39;s automatically purged. For more information, see [About AudienceDB and EventDB]().
+EventDB data remains available in Amazon Redshift for the length of time specified in your contract. When an event record reaches its expiration date, it's automatically purged. For more information, see [About AudienceDB and EventDB](https://docs.tealium.com/audiencedb-and-eventdb/).
 
 ## Calculate visitor timezone
 
-EventDB doesn&#39;t store the timezone for a visitor directly. To calculate the timezone, compare `eventtime` with `firstpartycookies_utag_main_ses_id` on the row where `firstpartycookies_utag_main__ss` equals `1`, which marks the start of the session. Because `eventtime` is a UTC datetime and `firstpartycookies_utag_main_ses_id` is an epoch millisecond value, convert `firstpartycookies_utag_main_ses_id` to a UTC datetime before comparing. The difference between the two values represents the visitor&#39;s UTC offset.
+EventDB doesn't store the timezone for a visitor directly. To calculate the timezone, compare `eventtime` with `firstpartycookies_utag_main_ses_id` on the row where `firstpartycookies_utag_main__ss` equals `1`, which marks the start of the session. Because `eventtime` is a UTC datetime and `firstpartycookies_utag_main_ses_id` is an epoch millisecond value, convert `firstpartycookies_utag_main_ses_id` to a UTC datetime before comparing. The difference between the two values represents the visitor's UTC offset.
 
 ## Sample row
 
@@ -272,4 +280,8 @@ The following shows a representative subset of columns from a single EventDB row
 | `udo_tealium_environment` | `prod` |
 | `udo_user_type` | `client` |
 
+
+<blockquote>
 The sample includes account-specific data layer variables such as `udo_user_type` alongside built-in columns. The data layer variables in your EventDB tables depend on your implementation.
+</blockquote>
+

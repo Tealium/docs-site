@@ -15,7 +15,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -39,12 +39,12 @@ The following section describes how to set up parameters and options for each ac
 | Parameter | Description |
 | --- | --- |
 | Catalog | Select the Vertex AI Search for Commerce catalog where user events are recorded. |
-| Event Type | Choose the type of user event to send to Vertex AI Search for Commerce. This determines how the event is interpreted and which fields are required in the payload.&lt;ul&gt;&lt;li&gt;`add-to-cart`&lt;/li&gt;&lt;li&gt;`remove-from-cart`&lt;/li&gt;&lt;li&gt;`category-page-view`&lt;/li&gt;&lt;li&gt;`detail-page-view`&lt;/li&gt;&lt;li&gt;`home-page-view`&lt;/li&gt;&lt;li&gt;`purchase-complete`&lt;/li&gt;&lt;li&gt;`search`&lt;/li&gt;&lt;li&gt;`shopping-cart-page-view`&lt;/li&gt;&lt;/ul&gt;|
+| Event Type | Choose the type of user event to send to Vertex AI Search for Commerce. This determines how the event is interpreted and which fields are required in the payload.<ul><li>`add-to-cart`</li><li>`remove-from-cart`</li><li>`category-page-view`</li><li>`detail-page-view`</li><li>`home-page-view`</li><li>`purchase-complete`</li><li>`search`</li><li>`shopping-cart-page-view`</li></ul>|
 
 #### Event Data
 
 | Parameter | Description |
 | --- | --- |
 | Attributes | Map extra user event features to include in the recommendation model |
-| Template Variables    | &lt;ul&gt;&lt;li&gt;(Optional) Provide template variables as data input for templates. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;   |
-| Templates             | &lt;ul&gt;&lt;li&gt;(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;li&gt;When using OAuth, the template variable `{{webhook_access_token}}` refers to the token returned by the authentication request.&lt;/li&gt;&lt;/ul&gt; |
+| Template Variables    | <ul><li>(Optional) Provide template variables as data input for templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>   |
+| Templates             | <ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li><li>When using OAuth, the template variable `{{webhook_access_token}}` refers to the token returned by the authentication request.</li></ul> |

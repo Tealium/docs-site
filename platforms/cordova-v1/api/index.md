@@ -3,8 +3,12 @@ title: API Reference
 description: Reference guide for classes and methods provided by Tealium for Cordova.
 url: https://docs.tealium.com/platforms/cordova-v1/api/
 ---
+
+<blockquote>
 This is the previous version (1.x) of Tealium for Cordova.  
-For the current version, see [Tealium for Cordova 2.x](/platforms/cordova/).
+For the current version, see [Tealium for Cordova 2.x](https://docs.tealium.com/platforms/cordova/).
+</blockquote>
+
 
 ## Class: `Tealium`
 
@@ -20,7 +24,7 @@ The following summarizes the commonly used methods of the Cordova `Tealium` clas
 | `getVolatile()`      | Returns a value from the Tealium volatile data store                                                                       |
 | `removePersistent()` | Removes data from the Tealium persistent data store                                                                        |
 | `removeVolatile()`   | Removes volatile data from the Tealium volatile data store                                                                 |
-| `track()`            | Track views by passing `&#34;view&#34;` as the first argument type, or track events by passing `&#34;link&#34;` as the first argument type |
+| `track()`            | Track views by passing `"view"` as the first argument type, or track events by passing `"link"` as the first argument type |
 | `trackEvent()`       | Tracks all non-view activity                                                                                               |
 | `trackView()`        | Tracks every time a user opens or changes a screen in the app                                                              |
 
@@ -35,9 +39,9 @@ tealium.addPersistent(key, data, instance);
 
 | Parameter  | Type                   | Description                                                                     | Example                           |
 |:-----------|:-----------------------|:--------------------------------------------------------------------------------|:----------------------------------|
-| `key`      | `String`               | Key name of value to be persisted                                               | `&#34;user_hashed_email&#34;`             |
-| `data`     | `String` or `[String]` | The value to be persisted for this key                                          | `[&#34;testpersist&#34;, &#34;testpersist2&#34;]` |
-| `instance` | `String`               | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`                  |
+| `key`      | `String`               | Key name of value to be persisted                                               | `"user_hashed_email"`             |
+| `data`     | `String` or `[String]` | The value to be persisted for this key                                          | `["testpersist", "testpersist2"]` |
+| `instance` | `String`               | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`                  |
 
 ### `addVolatile()`
 
@@ -49,9 +53,9 @@ tealium.addVolatile(key, data, instance);
 
 | Parameter  | Type                   | Description                                                                     | Example                              |
 |:-----------|:-----------------------|:--------------------------------------------------------------------------------|:-------------------------------------|
-| `key`      | `String`               | Key name of value to be persisted                                               | `&#34;user_hashed_email&#34;`                |
-| `data`     | `String` or `[String]` | The value to be persisted for this key                                          | `[&#34;testvolatile1&#34;, &#34;testvolatile2&#34;]` |
-| `instance` | `String`               | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`                     |
+| `key`      | `String`               | Key name of value to be persisted                                               | `"user_hashed_email"`                |
+| `data`     | `String` or `[String]` | The value to be persisted for this key                                          | `["testvolatile1", "testvolatile2"]` |
+| `instance` | `String`               | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`                     |
 
 
 ### `init()`
@@ -82,16 +86,16 @@ tealium.init({account, profile, environment, instance,
 
 | Parameter                | Type     | Description                                                                                | Example                                                                                                                                                                   |
 |:-------------------------|:---------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `account`                | `String` | Tealium account name                                                                       | `&#34;companyXYZ&#34;`                                                                                                                                                            |
-| `profile`                | `String` | Tealium profile name                                                                       | `&#34;main&#34;`                                                                                                                                                                  |
-| `environment`            | `String` | Tealium environment name                                                                   | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`]                                                                                                                                               |
-| `instance`               | `String` | Tealium instance name (multiple instances supported)                                       | `&#34;tealium_main`                                                                                                                                                           |
-| `isLifecycleEnabled`     | `String` | (Optional) String value &#34;true&#34; or &#34;false&#34; to enable lifecycle tracking (default: `&#34;true&#34;`) | [`&#34;true&#34;`, `&#34;false&#34;`]                                                                                                                                                     |
-| `collectDispatchURL`     | `String` | Override the full Tealium Collect endpoint URL                                             | `&#34;https: //collect. tealiumiq.com/ vdata/i.gif ?tealium_account =companyXYZ &amp;tealium_profile =main&#34;`                                                                      |
-| `collectDispatchProfile` | `String` | Set the profile to use in the Tealium Collect endpoint                                     | `&#34;cordova-demo&#34;`                                                                                                                                                          |
-| `isCrashReporterEnabled` | `String` | (Optional and for Android only) Enable crash reporting (uncaught exception handler)        | [`&#34;true&#34;`, `&#34;false&#34;`]                                                                                                                                                     |
+| `account`                | `String` | Tealium account name                                                                       | `"companyXYZ"`                                                                                                                                                            |
+| `profile`                | `String` | Tealium profile name                                                                       | `"main"`                                                                                                                                                                  |
+| `environment`            | `String` | Tealium environment name                                                                   | [`"dev"`, `"qa"`, `"prod"`]                                                                                                                                               |
+| `instance`               | `String` | Tealium instance name (multiple instances supported)                                       | `"tealium_main`                                                                                                                                                           |
+| `isLifecycleEnabled`     | `String` | (Optional) String value "true" or "false" to enable lifecycle tracking (default: `"true"`) | [`"true"`, `"false"`]                                                                                                                                                     |
+| `collectDispatchURL`     | `String` | Override the full Tealium Collect endpoint URL                                             | `"https: //collect. tealiumiq.com/ vdata/i.gif ?tealium_account =companyXYZ &tealium_profile =main"`                                                                      |
+| `collectDispatchProfile` | `String` | Set the profile to use in the Tealium Collect endpoint                                     | `"cordova-demo"`                                                                                                                                                          |
+| `isCrashReporterEnabled` | `String` | (Optional and for Android only) Enable crash reporting (uncaught exception handler)        | [`"true"`, `"false"`]                                                                                                                                                     |
 | `logLevel`               | `String` | (Optional) Set the log level (defaults to your environment)                                | `tealium.logLevels.DEV` (Info, Warnings, Errors), `tealium.logLevels.QA` (Warnings, Errors), `tealium.logLevels.PROD` (Errors Only), `tealium.logLevels.SILENT` (No Logs) |
-| `dataSourceId`           | `String` | (Optional) The data source key                                                             | &#34;abc123&#34;                                                                                                                                                                  |
+| `dataSourceId`           | `String` | (Optional) The data source key                                                             | "abc123"                                                                                                                                                                  |
 
 
 ### `getPersistent()`
@@ -105,8 +109,8 @@ tealium.getPersistent(key, instance, callback);
 
 | Parameter  | Type       | Description                                                                     | Example               |
 |:-----------|:-----------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String`   | Key name of value to be retrieved from persistent storage                       | `&#34;user_hashed_email&#34;` |
-| `instance` | `String`   | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`      |
+| `key`      | `String`   | Key name of value to be retrieved from persistent storage                       | `"user_hashed_email"` |
+| `instance` | `String`   | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`      |
 | `callback` | `Function` | Callback object to return the value requested from the persistent storage       | `null`                |
 
 ### `getVisitorID()`
@@ -127,8 +131,8 @@ tealium.getVolatile(key, instance, callback);
 
 | Parameter  | Type       | Description                                                                     | Example               |
 |:-----------|:-----------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String`   | Key name of value to be retrieved from volatile storage                         | `&#34;user_hashed_email&#34;` |
-| `instance` | `String`   | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`      |
+| `key`      | `String`   | Key name of value to be retrieved from volatile storage                         | `"user_hashed_email"` |
+| `instance` | `String`   | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`      |
 | `callback` | `Function` | Callback object to return the value requested from the persistent storage       | `null`                |
 
 
@@ -142,8 +146,8 @@ tealium.removePersistent(key, instance);
 
 | Parameter  | Type     | Description                                                                     | Example               |
 |:-----------|:---------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String` | Key name of value to be removed from persistent storage                         | `&#34;user_hashed_email&#34;` |
-| `instance` | `String` | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`      |
+| `key`      | `String` | Key name of value to be removed from persistent storage                         | `"user_hashed_email"` |
+| `instance` | `String` | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`      |
 
 
 ### `removeVolatile()`
@@ -156,12 +160,12 @@ tealium.removeVolatile(key, instance);
 
 | Parameter  | Type     | Description                                                                     | Example               |
 |:-----------|:---------|:--------------------------------------------------------------------------------|:----------------------|
-| `key`      | `String` | Key name of value to be removed from volatile memory                            | `&#34;user_hashed_email&#34;` |
-| `instance` | `String` | Arbitrary instance name constant, used to refer to a specific tracking instance | `&#34;tealium_main&#34;`      |
+| `key`      | `String` | Key name of value to be removed from volatile memory                            | `"user_hashed_email"` |
+| `instance` | `String` | Arbitrary instance name constant, used to refer to a specific tracking instance | `"tealium_main"`      |
 
 ### `track()`
 
-Track views by passing `&#34;view&#34;` as the first argument type, or track events by passing `&#34;link&#34;` as the first argument type.
+Track views by passing `"view"` as the first argument type, or track events by passing `"link"` as the first argument type.
 
 
 ```js
@@ -170,9 +174,9 @@ tealium.track(type, data, instance);
 
 | Parameter  | Type                   | Description                                                                        | Example                           |
 |:-----------|:-----------------------|:-----------------------------------------------------------------------------------|:----------------------------------|
-| `type`     | `String`               | Tealium event type name - `&#34;link&#34;` (event) or `&#34;view&#34;` (screen view)               | [`&#34;link&#34;`, `&#34;view&#34;`]              |
-| `data`     | JavaScript/JSON object | Populates the data layer for this tracking call with the key-value pairs specified | `{&#34;tealium_event&#34; : &#34;page_view&#34;}` |
-| `instance` | `String`               | Tealium instance name - refers to a specific tracking instance                     | `&#34;tealium_main&#34;`                  |
+| `type`     | `String`               | Tealium event type name - `"link"` (event) or `"view"` (screen view)               | [`"link"`, `"view"`]              |
+| `data`     | JavaScript/JSON object | Populates the data layer for this tracking call with the key-value pairs specified | `{"tealium_event" : "page_view"}` |
+| `instance` | `String`               | Tealium instance name - refers to a specific tracking instance                     | `"tealium_main"`                  |
 
 ### `trackEvent()`
 
@@ -184,8 +188,8 @@ tealium.trackEvent(data, instance);
 
 | Parameter  | Type                   | Description                                                   | Example                         |
 |:-----------|:-----------------------|:--------------------------------------------------------------|:--------------------------------|
-| `data`     | JavaScript/JSON object | Event data as key-value pairs                                 | `{&#34;tealium_event&#34;: &#34;cart_add&#34;}` |
-| `instance` | `String`               | Tealium instance name - refer to a specific tracking instance | `&#34;tealium_main&#34;`                |
+| `data`     | JavaScript/JSON object | Event data as key-value pairs                                 | `{"tealium_event": "cart_add"}` |
+| `instance` | `String`               | Tealium instance name - refer to a specific tracking instance | `"tealium_main"`                |
 
 ### `trackView()`
 
@@ -197,5 +201,5 @@ tealium.trackView(data, instance);
 
 | Parameter  | Type                   | Description                   | Example                                                     |
 |:-----------|:-----------------------|:------------------------------|:------------------------------------------------------------|
-| `data`     | JavaScript/JSON object | `View data as key-value pairs | `{tealium_event:&#34;screen_view&#34;, &#34;screen_name&#34;:&#34;Homescreen&#34;}` |
-| `instance` | `String`               | Tealium instance name         | `&#34;tealium_main&#34;`                                            |
+| `data`     | JavaScript/JSON object | `View data as key-value pairs | `{tealium_event:"screen_view", "screen_name":"Homescreen"}` |
+| `instance` | `String`               | Tealium instance name         | `"tealium_main"`                                            |

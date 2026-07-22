@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 **保存/公開**ボタンは、未保存の変更があることを示すために緑色に変わります：
 
-![](/images/tutorials/getting-started-save-publish-button.png)
+![](https://docs.tealium.com/images/tutorials/getting-started-save-publish-button.png)
 
 ## 公開
 
@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 保存は作業セッション間で作業を失わないようにするためのもので、公開は変更を有効にするためのものです。公開はコネクタとアクションに影響を与えます。例えば、新しいコネクタアクションを構成して保存することはできますが、公開しない限りアクションはトリガーされません。しかし、公開すると、変更が有効になり、コネクタアクションがトリガーされ、データがベンダーに送信されます。
 
-Customer Data Hubには、本番環境のみが公開環境として存在するため、すべての公開が本番環境に影響を与えます。QA環境の代わりに、テスト中に新しい構成を隔離するために&#34;テスト&#34;属性を作成することができます。
+Customer Data Hubには、本番環境のみが公開環境として存在するため、すべての公開が本番環境に影響を与えます。QA環境の代わりに、テスト中に新しい構成を隔離するために"テスト"属性を作成することができます。
 
 ## バージョン
 

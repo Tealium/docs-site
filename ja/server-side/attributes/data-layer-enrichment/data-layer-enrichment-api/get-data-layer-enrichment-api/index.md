@@ -11,11 +11,15 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/da
 GET https://visitor-service-{REGION}.tealiumiq.com/{ACCOUNT}/{PROFILE}/{VISITOR_ID}
 ```
 
-地域固有のホストを決定するには、**管理メニュー &gt; サーバーサイド構成 &gt; 地域**にアクセスしてください。その後、[Tealiumの許可されたIPアドレス]()で地域値を見つけることができます。
+地域固有のホストを決定するには、**管理メニュー > サーバーサイド構成 > 地域**にアクセスしてください。その後、[Tealiumの許可されたIPアドレス](https://docs.tealium.com/ip-allow-list/)で地域値を見つけることができます。
 
-訪問IDは、`utag_main`クッキー名前空間の`v_id`キーの値、または`utag.data[&#34;cp.utag_main_v_id&#34;]`から見つけることができます。
+訪問IDは、`utag_main`クッキー名前空間の`v_id`キーの値、または`utag.data["cp.utag_main_v_id"]`から見つけることができます。
 
+
+<blockquote>
 提供された訪問IDが無効である場合、または訪問が現在アクティブな訪問を持っていない場合、APIはステータスコード200と空のJSONレスポンスを返します。
+</blockquote>
+
 
 ## リクエスト例
 
@@ -27,38 +31,38 @@ curl https://visitor-service-us-west-2.tealiumiq.com/myaccount/main/015d1de1af41
 
 ```json
    {
-        &#34;metrics&#34; : {
-            &#34;5117&#34; : 6.0,
-            &#34;22&#34; : 6.0
+        "metrics" : {
+            "5117" : 6.0,
+            "22" : 6.0
         },
-        &#34;dates&#34; : {
-            &#34;5111&#34; : 1420223771043
+        "dates" : {
+            "5111" : 1420223771043
         },
-        &#34;properties&#34; : {
-            &#34;account&#34; : &#34;myaccount&#34;,
-            &#34;5123&#34; : &#34;set&#34;,
-            &#34;profile&#34; : &#34;main&#34;
+        "properties" : {
+            "account" : "myaccount",
+            "5123" : "set",
+            "profile" : "main"
         },
-        &#34;flags&#34; : { &#34;5115&#34; : true } ,
-        &#34;current_visit&#34; : {
-            &#34;metrics&#34; : {
-                &#34;7&#34; : 6.0
+        "flags" : { "5115" : true } ,
+        "current_visit" : {
+            "metrics" : {
+                "7" : 6.0
             },
-            &#34;dates&#34; : {
-                &#34;5202&#34; : 1420225387000
+            "dates" : {
+                "5202" : 1420225387000
             },
-            &#34;properties&#34; : {
-                &#34;48&#34; : &#34;Chrome&#34;,
-                &#34;45&#34; : &#34;Mac OS X&#34;,
-                &#34;44&#34; : &#34;Chrome&#34;,
-                &#34;47&#34; : &#34;browser&#34;,
-                &#34;46&#34; : &#34;Mac desktop&#34;
+            "properties" : {
+                "48" : "Chrome",
+                "45" : "Mac OS X",
+                "44" : "Chrome",
+                "47" : "browser",
+                "46" : "Mac desktop"
             },
-            &#34;flags&#34; : { }
+            "flags" : { }
         },
-        &#34;badges&#34; : { &#34;5113&#34; : true },
-        &#34;audiences&#34; : {
-            &#34;myaccount_main_101&#34; : &#34;Sample Audience&#34;
+        "badges" : { "5113" : true },
+        "audiences" : {
+            "myaccount_main_101" : "Sample Audience"
         }
     }
 ```

@@ -15,7 +15,7 @@ Instead of using one large dataset for a dashboard, break it down into multiple 
 
 ### Reduce the number of columns
 
-When [creating a dataset](), all columns are loaded into SPICE (Super-fast Parallel In-memory Calculation Engine) by default. Including more columns than is necessary can slow down query performance, especially with large datasets. 
+When [creating a dataset](https://docs.tealium.com/manage-datasets/#create-a-new-dataset), all columns are loaded into SPICE (Super-fast Parallel In-memory Calculation Engine) by default. Including more columns than is necessary can slow down query performance, especially with large datasets. 
 
 For example, in a dataset with 20 million rows:
 * 1 column takes approximately `2.63` minutes to load.
@@ -24,7 +24,7 @@ For example, in a dataset with 20 million rows:
 
 In the dataset view, include only the columns needed for analysis or dashboards, and remove any columns that aren’t needed. This reduces load times and improves responsiveness.
 
-![](/images/server-side/data-insights/include-and-exclude-columns-in-datasets.png)
+![](https://docs.tealium.com/images/server-side/data-insights/include-and-exclude-columns-in-datasets.png)
 
 ## Use date columns to filter rows
 
@@ -45,10 +45,10 @@ For example, to count event types by day, use a SQL query like this:
 ```sql
 SELECT 
     COUNT(*) AS count, 
-    TRUNC(&#34;event - time&#34;) AS &#34;period&#34;, 
-    &#34;event - udo - tealium_event&#34; 
+    TRUNC("event - time") AS "period", 
+    "event - udo - tealium_event" 
 FROM ${db_schema}.events_view__all_events__all_events 
-GROUP BY &#34;period&#34;, &#34;event - udo - tealium_event&#34;;
+GROUP BY "period", "event - udo - tealium_event";
 ```
 
 Adapt this approach for other aggregations or analyses you need to perform, as it reduces the data processed in SPICE.
@@ -83,7 +83,7 @@ Avoid using a subquery:
 ```sql
 SELECT employee_id, first_name, last_name
 FROM employees
-WHERE department_id IN (SELECT id FROM departments WHERE name = &#39;Sales&#39;);
+WHERE department_id IN (SELECT id FROM departments WHERE name = 'Sales');
 ```
 
 Use a join to query data from two tables:
@@ -91,11 +91,11 @@ Use a join to query data from two tables:
 SELECT e.employee_id, e.first_name, e.last_name, d.department_name
 FROM employees e
 JOIN departments d ON e.department_id = d.id
-WHERE d.name = &#39;Sales&#39;;
+WHERE d.name = 'Sales';
 ```
 
 ## Configure incremental refreshes
 
 To maintain dataset accuracy and reduce refresh times, configure an incremental refresh when creating a refresh schedule. Incremental refreshes are ideal for large, frequently updated datasets because it processes only new or updated data, unlike full refreshes, which reload the entire dataset. For best results, we recommend a 2-day window size, though you can adjust this based on your requirements.
 
-![](/images/server-side/data-insights/configure-incremental-refresh.png)
+![](https://docs.tealium.com/images/server-side/data-insights/configure-incremental-refresh.png)

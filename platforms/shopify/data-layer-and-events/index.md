@@ -3,7 +3,7 @@ title: Data layer and events
 description: This article provides information about the data layer variables and events tracked by the Tealium Shopify app.
 url: https://docs.tealium.com/platforms/shopify/data-layer-and-events/
 ---
-For more information about the Tealium data layer and the Universal Data Object, see [An introduction to the data layer]() and [Universal Data Object]().
+For more information about the Tealium data layer and the Universal Data Object, see [An introduction to the data layer](https://docs.tealium.com/an-introduction-to-the-data-layer/) and [Universal Data Object](https://docs.tealium.com/universal-data-object/).
 
 ## Supported variables
 
@@ -66,14 +66,14 @@ The following sections show example data for specific events.
 |---|---|
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-|`customer_logged_in`|&#34;false&#34;|
-|`language_code`|&#34;en&#34;|
-|`page_name`|&#34;Women&#39;s Clothing&#34;|
-|`page_type`|&#34;page&#34;|
-|`product_on_page`|[&#34;40586935271479&#34;, &#34;40586935664695&#34;, &#34;40586935599159&#34;, &#34;40586935402551&#34;, &#34;40586935762999&#34;,…]|
-|`site_section`|&#34;collection&#34;|
-|`tealium_event`|&#34;page_view&#34;|
-|`tealium_visitor_id`|&#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34;|
+|`customer_logged_in`|"false"|
+|`language_code`|"en"|
+|`page_name`|"Women's Clothing"|
+|`page_type`|"page"|
+|`product_on_page`|["40586935271479", "40586935664695", "40586935599159", "40586935402551", "40586935762999",…]|
+|`site_section`|"collection"|
+|`tealium_event`|"page_view"|
+|`tealium_visitor_id`|"01902bf47c7200111b70236f67ee0506f004b06700fbe"|
 
 ### Example data for product_view events
 
@@ -81,18 +81,18 @@ The following sections show example data for specific events.
 |---|---|
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-|`customer_logged_in`|&#34;false&#34;|
-|`language_code`|&#34;en&#34;|
-|`page_name`|&#34;Women&#39;s Shoes&#34;|
-|`page_type`|&#34;product&#34;|
-|`product_brand`|[&#34;XYZ Shoes&#34;]|
-|`product_id`|[&#34;6933873000503&#34;]|
-|`product_name`|[&#34;Flats&#34;]|
-|`product_price`|[&#34;600.00&#34;]|
-|`product_sku`|[&#34;&#34;]|
-|`site_section`|&#34;product&#34;|
-|`tealium_event`|&#34;product_view&#34;|
-|`tealium_visitor_id`|&#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34;|
+|`customer_logged_in`|"false"|
+|`language_code`|"en"|
+|`page_name`|"Women's Shoes"|
+|`page_type`|"product"|
+|`product_brand`|["XYZ Shoes"]|
+|`product_id`|["6933873000503"]|
+|`product_name`|["Flats"]|
+|`product_price`|["600.00"]|
+|`product_sku`|[""]|
+|`site_section`|"product"|
+|`tealium_event`|"product_view"|
+|`tealium_visitor_id`|"01902bf47c7200111b70236f67ee0506f004b06700fbe"|
 
 #### Example data for cart_add / cart_remove
 
@@ -100,24 +100,24 @@ The following sections show example data for specific events.
 |---|---|
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-|`customer_logged_in`|&#34;false&#34;|
-|`language_code`|&#34;en&#34;|
-|`page_name`|&#34;Women&#39;s Clothing&#34;|
-|`page_type`|&#34;product&#34;|
-|`product_brand`|[&#34;XYZ Clothing&#34;]|
-|`product_category`|[&#34;&#34;]|
-|`product_currency`|&#34;CAD&#34;|
-|`product_id`|[&#34;40586935402551&#34;]|
-|`product_image_url`|[&#34;&#34;]|
+|`customer_logged_in`|"false"|
+|`language_code`|"en"|
+|`page_name`|"Women's Clothing"|
+|`page_type`|"product"|
+|`product_brand`|["XYZ Clothing"]|
+|`product_category`|[""]|
+|`product_currency`|"CAD"|
+|`product_id`|["40586935402551"]|
+|`product_image_url`|[""]|
 |`product_main_id`|[6933873000503]|
-|`product_name`|[&#34;XYZ Womens&#39;s Flats&#34;]|
+|`product_name`|["XYZ Womens's Flats"]|
 |`product_normal_price`|[600]|
 |`product_one_variant`|[true]|
 |`product_quantity`|[1]|
 |`product_unit_price`|[600]|
-|`product_url`|[&#34;/products/the-collection-snowboard-hydrogen?variant=40586935402551&#34;]|
-|`tealium_event`|&#34;cart_add&#34;|
-|`tealium_visitor_id`|&#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34;|
+|`product_url`|["/products/the-collection-snowboard-hydrogen?variant=40586935402551"]|
+|`tealium_event`|"cart_add"|
+|`tealium_visitor_id`|"01902bf47c7200111b70236f67ee0506f004b06700fbe"|
 
 ### Example data for search events
 
@@ -125,78 +125,78 @@ The following sections show example data for specific events.
 |---|---|
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-|`customer_logged_in`|&#34;false&#34;|
-|`language_code`|&#34;en&#34;|
-|`search_keyword`|&#34;shoes&#34;|
+|`customer_logged_in`|"false"|
+|`language_code`|"en"|
+|`search_keyword`|"shoes"|
 |`search_results`|12|
-|`site_section`|&#34;search&#34;|
-|`page_name`|&#34;Search: 12 results found for &amp;quot;shoes&amp;quot;&#34;|
-|`product_on_page`|[&#34;40586935009335&#34;, &#34;40586935566391&#34;, &#34;40586935500855&#34;, &#34;40586934976567&#34;, &#34;40586935402551&#34;,…]|
-|`tealium_event`|&#34;search&#34;|
-|`tealium_visitor_id`|&#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34;|
+|`site_section`|"search"|
+|`page_name`|"Search: 12 results found for &quot;shoes&quot;"|
+|`product_on_page`|["40586935009335", "40586935566391", "40586935500855", "40586934976567", "40586935402551",…]|
+|`tealium_event`|"search"|
+|`tealium_visitor_id`|"01902bf47c7200111b70236f67ee0506f004b06700fbe"|
 
 ### Example data for checkout events
 
 |Variable|Example Value|
 |---|---|
-| `site_section` | &#34;order&#34; |
+| `site_section` | "order" |
 | `tealium_from_checkout` | 1 |
-| `page_name` | &#34;Checkout : Started&#34; |
-| `page_type` | &#34;checkout&#34; |
+| `page_name` | "Checkout : Started" |
+| `page_type` | "checkout" |
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-| `tealium_event` | &#34;checkout&#34; |
-| `tealium_visitor_id` | &#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34; |
+| `tealium_event` | "checkout" |
+| `tealium_visitor_id` | "01902bf47c7200111b70236f67ee0506f004b06700fbe" |
 
 ### Example data for checkout_address_info_submitted events
 
 |Variable|Example Value|
 |---|---|
-| `site_section` | &#34;order&#34; |
+| `site_section` | "order" |
 | `tealium_from_checkout` | 1 |
-| `page_name` | &#34;Checkout : Form&#34; |
-| `page_type` | &#34;checkout&#34; |
+| `page_name` | "Checkout : Form" |
+| `page_type` | "checkout" |
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-| `tealium_event` | &#34;checkout_address_info_submitted&#34; |
-| `tealium_visitor_id` | &#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34; |
+| `tealium_event` | "checkout_address_info_submitted" |
+| `tealium_visitor_id` | "01902bf47c7200111b70236f67ee0506f004b06700fbe" |
 
 ### Example data for purchase events
 
 |Variable|Example Value|
 |---|---|
-|`site_section`|&#34;order&#34;|
+|`site_section`|"order"|
 |`tealium_from_checkout`|1|
-|`customer_country`|&#34;US&#34;|
-|`customer_state`|&#34;CA&#34;|
-|`customer_city`|&#34;San Diego&#34;|
-|`customer_zip`|&#34;92121&#34;|
-|`customer_id`|&#34;6691629760567&#34;|
-|`customer_logged_in`|&#34;false&#34;|
-|`customer_email`|&#34;user.name@example.com&#34;|
-|`customer_first_name`|&#34;user&#34;|
-|`customer_last_name`|&#34;name&#34;|
-|`country_code`|&#34;US&#34;|
-|`order_id`|&#34;5853792796727&#34;|
+|`customer_country`|"US"|
+|`customer_state`|"CA"|
+|`customer_city`|"San Diego"|
+|`customer_zip`|"92121"|
+|`customer_id`|"6691629760567"|
+|`customer_logged_in`|"false"|
+|`customer_email`|"user.name@example.com"|
+|`customer_first_name`|"user"|
+|`customer_last_name`|"name"|
+|`country_code`|"US"|
+|`order_id`|"5853792796727"|
 |`order_subtotal`|2400|
 |`order_total`|2400|
-|`order_currency`|&#34;USD&#34;|
+|`order_currency`|"USD"|
 |`order_tax`|0|
 |`order_shipping`|0|
-|`order_discount_amount`|&#34;&#34;|
-|`payment_gateway`|&#34;shopify_payments&#34;|
-|`product_id`|[&#34;6933873000503&#34;]|
-|`product_on_page`|[&#34;6933873000503&#34;]|
+|`order_discount_amount`|""|
+|`payment_gateway`|"shopify_payments"|
+|`product_id`|["6933873000503"]|
+|`product_on_page`|["6933873000503"]|
 |`product_quantity`|[4]|
 |`product_unit_price`|[2400]|
-|`product_name`|[&#34;XYZ Women&#39;s Flats&#34;]|
-|`product_sku`|[&#34;40586935402551&#34;]|
-|`page_name`|&#34;Information - Tealiumapp - Checkout&#34;|
+|`product_name`|["XYZ Women's Flats"]|
+|`product_sku`|["40586935402551"]|
+|`page_name`|"Information - Tealiumapp - Checkout"|
 |`cart_total_items`|0|
 |`cart_total_value`|0.00|
-|`page_type`|&#34;order&#34;|
-|`tealium_event`|&#34;purchase&#34;|
-|`tealium_visitor_id`|&#34;01902bf47c7200111b70236f67ee0506f004b06700fbe&#34;|
+|`page_type`|"order"|
+|`tealium_event`|"purchase"|
+|`tealium_visitor_id`|"01902bf47c7200111b70236f67ee0506f004b06700fbe"|
 
 ## Webhook example data
 
@@ -208,13 +208,13 @@ The following sections show example data for specific events.
 
 |Variable|Example Value|
 |---|---|
-| `order_id` |  &#34;5853792796727&#34; |
-| `order_name` | &#34;Order #12345&#34; |
-| `order_number` | &#34;12345&#34; |
-| `checkout_token` | &#34;abcdef123456&#34; |
-| `confirmation_number` | &#34;CONF123456&#34; |
-| `landing_site` | &#34;/landing-page&#34; |
-| `order_created_at` | &#34;2024-06-01T12:34:56Z&#34; |
+| `order_id` |  "5853792796727" |
+| `order_name` | "Order #12345" |
+| `order_number` | "12345" |
+| `checkout_token` | "abcdef123456" |
+| `confirmation_number` | "CONF123456" |
+| `landing_site` | "/landing-page" |
+| `order_created_at` | "2024-06-01T12:34:56Z" |
 
 #### Order Financials
 
@@ -225,72 +225,72 @@ The following sections show example data for specific events.
 | `order_discount` | 0 |
 | `order_tax` | 0 |
 | `order_shipping` | 0 |
-| `order_currency` | &#34;USD&#34; |
-| `order_payment_type` | &#34;VISA&#34;&#34;|
-| `order_coupon_code` | &#34;20SAVE&#34;&#34; |
-| `order_shipping_type` | &#34;Fedex&#34; |
+| `order_currency` | "USD" |
+| `order_payment_type` | "VISA""|
+| `order_coupon_code` | "20SAVE"" |
+| `order_shipping_type` | "Fedex" |
 
 #### Customer Data
 
 |Variable|Example Value|
 |---|---|
-|`customer_id`|&#34;6691629760567&#34;|
-|`customer_email`|&#34;user.name@example.com&#34;|
-| `customer_first_name` | &#34;John&#34;&#34; |
-| `customer_last_name` | &#34;Smith&#34; |
-| `customer_city` | &#34;San Diego&#34; |
-| `customer_country` | &#34;US&#34; |
-| `customer_state` | &#34;CA&#34; |
-| `customer_zip` | &#34;92121&#34; |
-| `customer_email_marketing_consent` | &#34;True&#34; |
-| `customer_sms_marketing_consent` | &#34;True&#34; |
+|`customer_id`|"6691629760567"|
+|`customer_email`|"user.name@example.com"|
+| `customer_first_name` | "John"" |
+| `customer_last_name` | "Smith" |
+| `customer_city` | "San Diego" |
+| `customer_country` | "US" |
+| `customer_state` | "CA" |
+| `customer_zip` | "92121" |
+| `customer_email_marketing_consent` | "True" |
+| `customer_sms_marketing_consent` | "True" |
 
 #### Product Data (Arrays - one entry per line item)
 
 |Variable|Example Value|
 |---|---|
-| `product_id` | [&#34;6933873000503&#34;] |
-| `product_variant` | [&#34;Size 8 / Black&#34;] |
-| `product_name` | [&#34;XYZ Women&#39;s Flats&#34;] |
+| `product_id` | ["6933873000503"] |
+| `product_variant` | ["Size 8 / Black"] |
+| `product_name` | ["XYZ Women's Flats"] |
 | `product_quantity` | [4] |
 | `product_unit_price` | [2400] |
-| `product_brand` | [&#34;XYZ&#34;] |
-| `product_sku` | [&#34;40586935402551&#34;] |
-| `product_category` | [&#34;Women&#39;s Shoes&#34;] |
+| `product_brand` | ["XYZ"] |
+| `product_sku` | ["40586935402551"] |
+| `product_category` | ["Women's Shoes"] |
 | `product_discount` | [0] |
-| `product_promo_code` | [&#34;20SAVE&#34;] |
+| `product_promo_code` | ["20SAVE"] |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;purchase&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;orders/create&#34; |
+| `tealium_event` | "purchase" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "orders/create" |
 
 ### Example data for CHECKOUTS_CREATE
 
 |Variable|Example Value|
 |---|---|
-| `order_id` |  &#34;5853792796727&#34; |
-| `checkout_token` | &#34;abcdef123456&#34; |
+| `order_id` |  "5853792796727" |
+| `checkout_token` | "abcdef123456" |
 | `order_total` | 2400 |
 | `order_subtotal` | 2400 |
 | `order_discount` | 0 |
-| `order_currency` | &#34;USD&#34; |
+| `order_currency` | "USD" |
 
 #### Product Data (Arrays)
 
 |Variable|Example Value|
 |---|---|
-| `product_id` | [&#34;6933873000503&#34;] |
-| `product_variant` | [&#34;Size 8 / Black&#34;] |
-| `product_name` | [&#34;XYZ Women&#39;s Flats&#34;] |
+| `product_id` | ["6933873000503"] |
+| `product_variant` | ["Size 8 / Black"] |
+| `product_name` | ["XYZ Women's Flats"] |
 | `product_quantity` | [4] |
-| `product_sku` | [&#34;40586935402551&#34;] |
-| `product_category` | [&#34;Women&#39;s Shoes&#34;] |
+| `product_sku` | ["40586935402551"] |
+| `product_category` | ["Women's Shoes"] |
 | `product_discount` | [0] |
 | `product_list_price` | [2400] |
 
@@ -298,19 +298,19 @@ The following sections show example data for specific events.
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;checkouts_create&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;checkouts/create&#34; |
+| `tealium_event` | "checkouts_create" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "checkouts/create" |
 
 ### Example data for REFUNDS_CREATE 
 
 |Variable|Example Value|
 |---|---|
-| `order_id` |  &#34;5853792796727&#34; |
-|`customer_id`|&#34;6691629760567&#34;|
-| `order_currency` | &#34;USD&#34; |
+| `order_id` |  "5853792796727" |
+|`customer_id`|"6691629760567"|
+| `order_currency` | "USD" |
 |`order_total`|2400|
 | `order_tax` | 0 |
 | `order_discount` | 0 |
@@ -323,29 +323,29 @@ The following sections show example data for specific events.
 |---|---|
 |Variable|Example Value|
 |---|---|
-| `product_id` | [&#34;6933873000503&#34;] |
-| `product_variant` | [&#34;Size 8 / Black&#34;] |
-| `product_sku` | [&#34;40586935402551&#34;] |
+| `product_id` | ["6933873000503"] |
+| `product_variant` | ["Size 8 / Black"] |
+| `product_sku` | ["40586935402551"] |
 | `product_quantity` | [2] |
-| `product_name` | [&#34;XYZ Women&#39;s Flats&#34;] |
+| `product_name` | ["XYZ Women's Flats"] |
 | `product_unit_price` | [2400] |
-| `product_category` | [&#34;Women&#39;s Shoes&#34;] |
+| `product_category` | ["Women's Shoes"] |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;shopify_refund&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;refunds/create&#34; |
+| `tealium_event` | "shopify_refund" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "refunds/create" |
 
 ### Example data for CARTS_CREATE / CARTS_UPDATE
 
 |Variable|Example Value|
 |---|---|
-| `cart_token` | &#34;abcdef123456&#34; |
+| `cart_token` | "abcdef123456" |
 | `cart_total_items` | 2 |
 | `cart_total_value` | 1200 |
 
@@ -353,90 +353,90 @@ The following sections show example data for specific events.
 
 |Variable|Example Value|
 |---|---|
-| `product_id` | [&#34;6933873000503&#34;] |
-| `product_variant` | [&#34;Size 8 / Black&#34;] |
-| `product_name` | [&#34;XYZ Women&#39;s Flats&#34;] |
+| `product_id` | ["6933873000503"] |
+| `product_variant` | ["Size 8 / Black"] |
+| `product_name` | ["XYZ Women's Flats"] |
 | `product_quantity` | [2] |
 | `product_unit_price` | [1200] |
-| `product_brand` | [&#34;XYZ&#34;] |
-| `product_category` | [&#34;Women&#39;s Shoes&#34;] |
+| `product_brand` | ["XYZ"] |
+| `product_category` | ["Women's Shoes"] |
 | `product_discount` | [0] |
-| `product_image_url` | [&#34;https://cdn.shopify.com/s/files/1/0000/0001/products/flats.jpg&#34;] |
-| `product_url` | [&#34;/products/xyz-womens-flats?variant=6933873000503&#34;] |
+| `product_image_url` | ["https://cdn.shopify.com/s/files/1/0000/0001/products/flats.jpg"] |
+| `product_url` | ["/products/xyz-womens-flats?variant=6933873000503"] |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;cart_create&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;carts/create&#34; |
+| `tealium_event` | "cart_create" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "carts/create" |
 
 ### Example data for CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE
 
 |Variable|Example Value|
 |---|---|
-|`customer_id`|&#34;6691629760567&#34;|
-|`customer_email`| &#34;user.name@example.com&#34;|
-| `consent_state` | &#34;subscribed&#34;  |
-| `opt_in_level` | &#34;single_opt_in&#34;  |
-| `consent_timestamp` | &#34;2024-06-01T12:34:56Z&#34; |
+|`customer_id`|"6691629760567"|
+|`customer_email`| "user.name@example.com"|
+| `consent_state` | "subscribed"  |
+| `opt_in_level` | "single_opt_in"  |
+| `consent_timestamp` | "2024-06-01T12:34:56Z" |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;email_consent_change&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;customers_email_marketing_consent/update&#34; |
+| `tealium_event` | "email_consent_change" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "customers_email_marketing_consent/update" |
 
 ### Example data for CUSTOMERS_MARKETING_CONSENT_UPDATE (SMS)
 
 |Variable|Example Value|
 |---|---|
-|`customer_id`|&#34;6691629760567&#34;|
-| `consent_state` | &#34;subscribed&#34;|
-| `opt_in_level` |&#34;single_opt_in&#34; |
-| `consent_collected_from` | &#34;website&#34; |
-| `consent_timestamp` | &#34;2024-06-01T12:34:56Z&#34; |
+|`customer_id`|"6691629760567"|
+| `consent_state` | "subscribed"|
+| `opt_in_level` |"single_opt_in" |
+| `consent_collected_from` | "website" |
+| `consent_timestamp` | "2024-06-01T12:34:56Z" |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;sms_consent_change&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;customers_marketing_consent/update&#34; |
+| `tealium_event` | "sms_consent_change" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "customers_marketing_consent/update" |
 
 ### Example data for CUSTOMERS_CREATE
 
 |Variable|Example Value|
 |---|---|
-|`customer_id`|&#34;6691629760567&#34;|
-|`customer_email`|&#34;user.name@example.com&#34;|
-| `customer_first_name` | &#34;John&#34;&#34; |
-| `customer_last_name` | &#34;Smith&#34; |
-| `customer_city` | &#34;San Diego&#34; |
-| `customer_country` | &#34;US&#34; |
-| `customer_country_code` | &#34;US&#34; |
-| `province` | &#34;California&#34; |
-| `province_code` | &#34;CA&#34; |
-| `order_currency` | &#34;USD&#34; |
-| `shopify_tags` | &#34;wholesale,newsletter&#34; |
-| `created_at` | &#34;2024-06-01T12:34:56Z&#34; |
+|`customer_id`|"6691629760567"|
+|`customer_email`|"user.name@example.com"|
+| `customer_first_name` | "John"" |
+| `customer_last_name` | "Smith" |
+| `customer_city` | "San Diego" |
+| `customer_country` | "US" |
+| `customer_country_code` | "US" |
+| `province` | "California" |
+| `province_code` | "CA" |
+| `order_currency` | "USD" |
+| `shopify_tags` | "wholesale,newsletter" |
+| `created_at` | "2024-06-01T12:34:56Z" |
 
 #### Tealium Metadata
 
 |Variable|Example Value|
 |---|---|
-| `tealium_event` | &#34;Shopify New Customer&#34; |
-| `tealium_account` | &#34;myaccount&#34; |
-| `tealium_profile` | &#34;main&#34; |
-| `tealium_datasource` | &#34;shopify_app&#34; |
-| `shopify_topic` | &#34;customers/create&#34; |
+| `tealium_event` | "Shopify New Customer" |
+| `tealium_account` | "myaccount" |
+| `tealium_profile` | "main" |
+| `tealium_datasource` | "shopify_app" |
+| `shopify_topic` | "customers/create" |

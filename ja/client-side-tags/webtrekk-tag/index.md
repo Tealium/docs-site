@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/client-side-tags/webtrekk-tag/
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要]()の記事を読んでください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を構成します：
 
@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/client-side-tags/webtrekk-tag/
   * このリストから Webtrekk ピクセルのバージョンを選択します。例：トラッキングスクリプト。
 * **トラック ID**
   * Webtrekk から受け取った数値のトラック ID を入力します。
-  * トラック ID は Webtrekk ツールの **システム構成 &amp;gt; データ収集** の下に位置しています。
+  * トラック ID は Webtrekk ツールの **システム構成 &gt; データ収集** の下に位置しています。
 * **トラックドメイン**
   * Webtrekk ピクセルで指定されたトラッキング URL（https/http プロトコルを除く）を入力します。例：`track.XXXX.net`
 * **TagIntegration 顧客 ID**
@@ -43,21 +43,21 @@ url: https://docs.tealium.com/ja/client-side-tags/webtrekk-tag/
   * 訪問のアクション/イベント、クリック、ダウンロードなどのトラッキング構成を以下から選択します。
     * **リンク**（デフォルト）
       * `href` 属性の値、たとえばクリックされたリンクの目的地ページ URL をアクション/イベント名として送信します。
-      * 例えば、クリックされたリンクが `&lt;a href=&#34;example.htm&#34;&gt;ここをクリック&lt;/a&gt;` の場合、`example.htm` の値が渡されます。
+      * 例えば、クリックされたリンクが `<a href="example.htm">ここをクリック</a>` の場合、`example.htm` の値が渡されます。
     * **標準**
       * `name` 属性の値をアクション/イベント名として送信します。
-      * 例えば、クリックされたリンクが `&lt;a href=&#34;example.htm&#34; name=&#34;example_name&#34;&gt;ここをクリック&lt;/a&gt;` の場合、`example_name` の値が渡されます。
+      * 例えば、クリックされたリンクが `<a href="example.htm" name="example_name">ここをクリック</a>` の場合、`example_name` の値が渡されます。
     * **なし**
       * タグインスタンスのリンク/イベントトラッキングを無効にします。
 * **リンクトラック属性**
   * **標準** トラッキングオプションのオプション構成です。
   * アクション/イベント名を割り当てるために `name` 属性の代わりに使用する HTML 属性を入力します。
-  * 例えば、このリンク `&lt;a href=&#34;example.htm&#34; name=&#34;internal_id&#34; rel=&#34;example&#34;&gt;ここをクリック&lt;/a&gt;` では、`name` の代わりに `rel` を使用することができます。
+  * 例えば、このリンク `<a href="example.htm" name="internal_id" rel="example">ここをクリック</a>` では、`name` の代わりに `rel` を使用することができます。
 * **リンクトラックパラメータ**
   * （オプション）**リンク** トラッキングオプションの構成です。
   * クリックされたリンクをトラッキングするためのクエリ文字列パラメータの名前を入力します。
   * 複数のパラメータを区切るにはコンマを使用します。
-  * 例：`&lt;a href=&#34;example.htm?page=10&#34;&gt;10ページへ行く&lt;/a&gt;`
+  * 例：`<a href="example.htm?page=10">10ページへ行く</a>`
 * **リンクトラックダウンロード**
   * トラックするファイルタイプのリストを入力します。
   * 複数のエントリを区切るにはセミコロンを使用します。
@@ -96,63 +96,67 @@ url: https://docs.tealium.com/ja/client-side-tags/webtrekk-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール]()のドキュメントを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 推奨ルール：すべてのページ（デフォルト）
 
 ## データマッピング
 
-データマッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)の指示を参照してください。
+データマッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)の指示を参照してください。
 ### 標準カテゴリ
 
 これらの目的地にマッピングして、タグ構成を上書きするか動的に構成します。
 
+
+<blockquote>
 これらのマッピングは、グローバルな `Webtrekk.js` 構成に適用されます。
+</blockquote>
+
 
 |タグの目的地| 説明|
 |---| ---|
-|WT オブジェクト名|  &lt;ul&gt;&lt;li&gt;タグインスタンスを一意に識別するためのオブジェクト名。&lt;/li&gt;&lt;li&gt;デフォルト値は `wt` です。&lt;/li&gt;&lt;/ul&gt; |
-|Cookie OptOut 名|  &lt;ul&gt;&lt;li&gt;`webtrekkOptOut` クッキーの名前&lt;/li&gt;&lt;/ul&gt; |
-|Cookie OptOut 有効期間|  &lt;ul&gt;&lt;li&gt;`webtrekkoptout` クッキーの寿命&lt;/li&gt;&lt;/ul&gt; |
-|最初に含めるパラメータ|  &lt;ul&gt;&lt;li&gt;セミコロンで区切られたパラメータのリスト。&lt;/li&gt;&lt;li&gt;変数にリストされた順序でパラメータが送信されます。&lt;/li&gt;&lt;/ul&gt; |
-|プリレンダリングを無視|  &lt;ul&gt;&lt;li&gt;プリレンダリングされたページを追跡するかどうかを決定するフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
-|フォームパス分析|  &lt;ul&gt;&lt;li&gt;フォームフィールドの追跡を有効または無効にするフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
-|tabBrowsing|  &lt;ul&gt;&lt;li&gt;ブラウザタブのビューを追跡するためのフラグ（ブール値）。&lt;/li&gt;&lt;li&gt;デフォルト値は false です&lt;/li&gt;&lt;/ul&gt; |
+|WT オブジェクト名|  <ul><li>タグインスタンスを一意に識別するためのオブジェクト名。</li><li>デフォルト値は `wt` です。</li></ul> |
+|Cookie OptOut 名|  <ul><li>`webtrekkOptOut` クッキーの名前</li></ul> |
+|Cookie OptOut 有効期間|  <ul><li>`webtrekkoptout` クッキーの寿命</li></ul> |
+|最初に含めるパラメータ|  <ul><li>セミコロンで区切られたパラメータのリスト。</li><li>変数にリストされた順序でパラメータが送信されます。</li></ul> |
+|プリレンダリングを無視|  <ul><li>プリレンダリングされたページを追跡するかどうかを決定するフラグ（ブール値）</li></ul> |
+|フォームパス分析|  <ul><li>フォームフィールドの追跡を有効または無効にするフラグ（ブール値）</li></ul> |
+|tabBrowsing|  <ul><li>ブラウザタブのビューを追跡するためのフラグ（ブール値）。</li><li>デフォルト値は false です</li></ul> |
 |globalVisitorIds|
-|execRTA|  &lt;ul&gt;&lt;li&gt;Webtrekkのリアルタイム入札（RTB）サービスを有効または無効にするフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
-|execCDB|  &lt;ul&gt;&lt;li&gt;Webtrekkのクロスデバイスブリッジ（CDB）技術を有効または無効にするフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
-|useCDBCache|  &lt;ul&gt;&lt;li&gt;画像キャッシュクッキーの使用を有効または無効にするフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
+|execRTA|  <ul><li>Webtrekkのリアルタイム入札（RTB）サービスを有効または無効にするフラグ（ブール値）</li></ul> |
+|execCDB|  <ul><li>Webtrekkのクロスデバイスブリッジ（CDB）技術を有効または無効にするフラグ（ブール値）</li></ul> |
+|useCDBCache|  <ul><li>画像キャッシュクッキーの使用を有効または無効にするフラグ（ブール値）</li></ul> |
 |useCDBScript|
-|requestLimitAmount|  &lt;ul&gt;&lt;li&gt;送信できる最大リクエスト数&lt;/li&gt;&lt;/ul&gt; |
-|requestLimitTime|  &lt;ul&gt;&lt;li&gt;最大リクエスト数を送信する許容時間制限&lt;/li&gt;&lt;/ul&gt; |
-|Track ID|  &lt;ul&gt;&lt;li&gt;Webtrekkから受け取ったトラッキングピクセルの数値識別子。&lt;/li&gt;&lt;li&gt;Track IDはWebtrekkツールの **システム構成 &amp;gt; データ収集** で見つけることができます。&lt;/li&gt;&lt;/ul&gt; |
-|Track Domain|  &lt;ul&gt;&lt;li&gt;Webtrekkピクセルで指定されたトラッキングURL（https/httpプロトコルを除く）。&lt;/li&gt;&lt;/ul&gt; |
-|Site Domain|  &lt;ul&gt;&lt;li&gt;追跡されるサイトのドメイン。&lt;/li&gt;&lt;/ul&gt; |
-|Link Tracking|  &lt;ul&gt;&lt;li&gt;訪問のアクション、クリック、ダウンロードを追跡するためのイベント追跡構成。&lt;/li&gt;&lt;li&gt;Webtrekkは「Link」と「Standard」の2つのオプションをサポートしています。&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Attribute|  &lt;ul&gt;&lt;li&gt;「Standard」追跡オプションに適用されます。&lt;/li&gt;&lt;li&gt;この属性はイベント/アクションの名前を決定するために使用されます。&lt;/li&gt;&lt;li&gt;この目的地にマッピングするとデフォルトの「name」が上書きされます。&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Params|  &lt;ul&gt;&lt;li&gt;グローバル構成の「Link」追跡オプションに適用されます。&lt;/li&gt;&lt;li&gt;この目的地にマッピングすると、クリックされたリンクを追跡するためのクエリ文字列パラメータが送信されます。&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Pattern|  &lt;ul&gt;&lt;li&gt;Link Track Parameterのクエリ文字列から望ましくないパラメータを除外するための正規表現。&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Replace|  &lt;ul&gt;&lt;li&gt;フィルタリングされたパラメータを置き換えるための置換文字。&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Ignore Pattern|  &lt;ul&gt;&lt;li&gt;個々のリンクを追跡から除外するための正規表現&lt;/li&gt;&lt;/ul&gt; |
-|No Delay Link Track Attribute|  &lt;ul&gt;&lt;li&gt;このパラメータで明示的にタグ付けされたリンクの遅延を無効にします&lt;/li&gt;&lt;/ul&gt; |
-|Link Track Downloads|  &lt;ul&gt;&lt;li&gt;グローバル構成でダウンロードを追跡するために追跡したいファイルタイプのリスト。&lt;/li&gt;&lt;li&gt;例：`zip;raw;doc`&lt;/li&gt;&lt;/ul&gt; |
-|Pixel Sampling|  &lt;ul&gt;&lt;li&gt;Webtrekkに報告されるトラフィックの割合。&lt;/li&gt;&lt;/ul&gt; |
-|Force HTTPS|  &lt;ul&gt;&lt;li&gt;リクエストをセキュアとして強制送信します。&lt;/li&gt;&lt;li&gt;データソースにはアクティベーションのための値 `1` が含まれている必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|Cookie Handling|  &lt;ul&gt;&lt;li&gt;サイトの訪問を追跡するためのファーストパーティまたはサードパーティクッキー。&lt;/li&gt;&lt;li&gt;ファーストパーティがデフォルトで推奨されます。&lt;/li&gt;&lt;/ul&gt; |
-|Cookie Domain|  &lt;ul&gt;&lt;li&gt;`firstparty` クッキーにのみ適用されます。&lt;/li&gt;&lt;li&gt;トップレベルドメインが二重バレルである場合、この目的地にマッピングします。たとえば、`.co`、`.uk`などの追加識別子で接尾辞が付けられています。&lt;/li&gt;&lt;/ul&gt; |
-|contentId|  &lt;ul&gt;&lt;li&gt;URLではなく、そのユニークな名前によってページを識別します。&lt;/li&gt;&lt;/ul&gt; |
-|Heat map|  &lt;ul&gt;&lt;li&gt;グローバル構成でヒートマップを有効/無効にします。&lt;/li&gt;&lt;li&gt;データソースの値はアクティベーションのために `1` と等しくなければなりません。&lt;/li&gt;&lt;/ul&gt; |
-|Form|  &lt;ul&gt;&lt;li&gt;グローバル構成でフォーム追跡を有効/無効にします。&lt;/li&gt;&lt;li&gt;データソースの値はアクティベーションのために `1` と等しくなければなりません。&lt;/li&gt;&lt;/ul&gt; |
-|executePluginFuntion|  &lt;ul&gt;&lt;li&gt;プラグイン機能のリスト&lt;/li&gt;&lt;/ul&gt; |
-|Media Code|  &lt;ul&gt;&lt;li&gt;キャンペーンを追跡するためのパラメータ。&lt;/li&gt;&lt;/ul&gt; |
-|Media Code cookie|  &lt;ul&gt;&lt;li&gt;セッションごとにキャンペーンを1回のみ追跡するためのパラメータ。&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Async|  &lt;ul&gt;&lt;li&gt;タグを非同期でロードするかどうかを決定するフラグ（ブール値）&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Timeout|  &lt;ul&gt;&lt;li&gt;TagIntegrationファイルのロードを待つ最大時間。&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Domain|  &lt;ul&gt;&lt;li&gt;TagIntegrationドメイン&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Customer ID|  &lt;ul&gt;&lt;li&gt;TagIntegrationの顧客識別子&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Custom Domain|  &lt;ul&gt;&lt;li&gt;TagIntegrationファイルをロードするカスタムドメイン&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag CustomPath|  &lt;ul&gt;&lt;li&gt;カスタムドメインのJavaScriptファイルのパス&lt;/li&gt;&lt;/ul&gt; |
-|SafeTag Option [Object]|  &lt;ul&gt;&lt;li&gt;追加のTagIntegration情報&lt;/li&gt;&lt;/ul&gt; |
+|requestLimitAmount|  <ul><li>送信できる最大リクエスト数</li></ul> |
+|requestLimitTime|  <ul><li>最大リクエスト数を送信する許容時間制限</li></ul> |
+|Track ID|  <ul><li>Webtrekkから受け取ったトラッキングピクセルの数値識別子。</li><li>Track IDはWebtrekkツールの **システム構成 &gt; データ収集** で見つけることができます。</li></ul> |
+|Track Domain|  <ul><li>Webtrekkピクセルで指定されたトラッキングURL（https/httpプロトコルを除く）。</li></ul> |
+|Site Domain|  <ul><li>追跡されるサイトのドメイン。</li></ul> |
+|Link Tracking|  <ul><li>訪問のアクション、クリック、ダウンロードを追跡するためのイベント追跡構成。</li><li>Webtrekkは「Link」と「Standard」の2つのオプションをサポートしています。</li></ul> |
+|Link Track Attribute|  <ul><li>「Standard」追跡オプションに適用されます。</li><li>この属性はイベント/アクションの名前を決定するために使用されます。</li><li>この目的地にマッピングするとデフォルトの「name」が上書きされます。</li></ul> |
+|Link Track Params|  <ul><li>グローバル構成の「Link」追跡オプションに適用されます。</li><li>この目的地にマッピングすると、クリックされたリンクを追跡するためのクエリ文字列パラメータが送信されます。</li></ul> |
+|Link Track Pattern|  <ul><li>Link Track Parameterのクエリ文字列から望ましくないパラメータを除外するための正規表現。</li></ul> |
+|Link Track Replace|  <ul><li>フィルタリングされたパラメータを置き換えるための置換文字。</li></ul> |
+|Link Track Ignore Pattern|  <ul><li>個々のリンクを追跡から除外するための正規表現</li></ul> |
+|No Delay Link Track Attribute|  <ul><li>このパラメータで明示的にタグ付けされたリンクの遅延を無効にします</li></ul> |
+|Link Track Downloads|  <ul><li>グローバル構成でダウンロードを追跡するために追跡したいファイルタイプのリスト。</li><li>例：`zip;raw;doc`</li></ul> |
+|Pixel Sampling|  <ul><li>Webtrekkに報告されるトラフィックの割合。</li></ul> |
+|Force HTTPS|  <ul><li>リクエストをセキュアとして強制送信します。</li><li>データソースにはアクティベーションのための値 `1` が含まれている必要があります。</li></ul> |
+|Cookie Handling|  <ul><li>サイトの訪問を追跡するためのファーストパーティまたはサードパーティクッキー。</li><li>ファーストパーティがデフォルトで推奨されます。</li></ul> |
+|Cookie Domain|  <ul><li>`firstparty` クッキーにのみ適用されます。</li><li>トップレベルドメインが二重バレルである場合、この目的地にマッピングします。たとえば、`.co`、`.uk`などの追加識別子で接尾辞が付けられています。</li></ul> |
+|contentId|  <ul><li>URLではなく、そのユニークな名前によってページを識別します。</li></ul> |
+|Heat map|  <ul><li>グローバル構成でヒートマップを有効/無効にします。</li><li>データソースの値はアクティベーションのために `1` と等しくなければなりません。</li></ul> |
+|Form|  <ul><li>グローバル構成でフォーム追跡を有効/無効にします。</li><li>データソースの値はアクティベーションのために `1` と等しくなければなりません。</li></ul> |
+|executePluginFuntion|  <ul><li>プラグイン機能のリスト</li></ul> |
+|Media Code|  <ul><li>キャンペーンを追跡するためのパラメータ。</li></ul> |
+|Media Code cookie|  <ul><li>セッションごとにキャンペーンを1回のみ追跡するためのパラメータ。</li></ul> |
+|SafeTag Async|  <ul><li>タグを非同期でロードするかどうかを決定するフラグ（ブール値）</li></ul> |
+|SafeTag Timeout|  <ul><li>TagIntegrationファイルのロードを待つ最大時間。</li></ul> |
+|SafeTag Domain|  <ul><li>TagIntegrationドメイン</li></ul> |
+|SafeTag Customer ID|  <ul><li>TagIntegrationの顧客識別子</li></ul> |
+|SafeTag Custom Domain|  <ul><li>TagIntegrationファイルをロードするカスタムドメイン</li></ul> |
+|SafeTag CustomPath|  <ul><li>カスタムドメインのJavaScriptファイルのパス</li></ul> |
+|SafeTag Option [Object]|  <ul><li>追加のTagIntegration情報</li></ul> |
 |SafeTag Option|
 |Custom wt config item|
 
@@ -162,89 +166,93 @@ url: https://docs.tealium.com/ja/client-side-tags/webtrekk-tag/
 
 |タグの目的地| 説明|
 |---| ---|
-|カスタム訪問ID|  &lt;ul&gt;&lt;li&gt;一意の訪問識別子を送信するためにこの目的地にマッピングします。&lt;/li&gt;&lt;/ul&gt; |
-|URMカテゴリ|  &lt;ul&gt;&lt;li&gt;あなたのWebtrekkツールのURMカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|Email RID|  &lt;ul&gt;&lt;li&gt;メール受信者ID&lt;/li&gt;&lt;/ul&gt; |
-|Email Opt-In|  &lt;ul&gt;&lt;li&gt;メールオプトインステータス。&lt;/li&gt;&lt;li&gt;可能な値:  &lt;ul&gt;&lt;li&gt;`1`（はい）&lt;/li&gt;&lt;li&gt;`2`（いいえ）&lt;/li&gt;&lt;li&gt;`3`（不明）&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|性別|  &lt;ul&gt;&lt;li&gt;性別&lt;/li&gt;&lt;li&gt;可能な値:  &lt;ul&gt;&lt;li&gt;`1`（男性）&lt;/li&gt;&lt;li&gt;`2`（女性）&lt;/li&gt;&lt;li&gt;`3`（不明） &lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-|誕生日|  &lt;ul&gt;&lt;li&gt;生年月日（`YYYYMMDD`）&lt;/li&gt;&lt;/ul&gt; |
-|誕生年|  &lt;ul&gt;&lt;li&gt;生年（`YYYY`）&lt;/li&gt;&lt;/ul&gt; |
-|誕生月|  &lt;ul&gt;&lt;li&gt;誕生月（`MM`）&lt;/li&gt;&lt;/ul&gt; |
-|誕生日|  &lt;ul&gt;&lt;li&gt;誕生日（`DD`）&lt;/li&gt;&lt;/ul&gt; |
-|CRMカテゴリ1から10|  &lt;ul&gt;&lt;li&gt;会員タイプ、年齢、性別などのCRM情報を送信するためのカスタムカテゴリ。&lt;/li&gt;&lt;li&gt;マッピングする前に、カテゴリがあなたのWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムセッションパラメータ1から10|  &lt;ul&gt;&lt;li&gt;ログインステータス、登録ステータス、A/Bテストのテストグループなどの追加の訪問/セッション情報を送信するためのカスタムパラメータ。&lt;/li&gt;&lt;li&gt;マッピングする前に、セッションパラメータがあなたのWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; |
+|カスタム訪問ID|  <ul><li>一意の訪問識別子を送信するためにこの目的地にマッピングします。</li></ul> |
+|URMカテゴリ|  <ul><li>あなたのWebtrekkツールのURMカテゴリ</li></ul> |
+|Email RID|  <ul><li>メール受信者ID</li></ul> |
+|Email Opt-In|  <ul><li>メールオプトインステータス。</li><li>可能な値:  <ul><li>`1`（はい）</li><li>`2`（いいえ）</li><li>`3`（不明）</li></ul> </li></ul> |
+|性別|  <ul><li>性別</li><li>可能な値:  <ul><li>`1`（男性）</li><li>`2`（女性）</li><li>`3`（不明） </li></ul> </li></ul> |
+|誕生日|  <ul><li>生年月日（`YYYYMMDD`）</li></ul> |
+|誕生年|  <ul><li>生年（`YYYY`）</li></ul> |
+|誕生月|  <ul><li>誕生月（`MM`）</li></ul> |
+|誕生日|  <ul><li>誕生日（`DD`）</li></ul> |
+|CRMカテゴリ1から10|  <ul><li>会員タイプ、年齢、性別などのCRM情報を送信するためのカスタムカテゴリ。</li><li>マッピングする前に、カテゴリがあなたのWebtrekkツールで定義されていることを確認してください。</li></ul> |
+|カスタムセッションパラメータ1から10|  <ul><li>ログインステータス、登録ステータス、A/Bテストのテストグループなどの追加の訪問/セッション情報を送信するためのカスタムパラメータ。</li><li>マッピングする前に、セッションパラメータがあなたのWebtrekkツールで定義されていることを確認してください。</li></ul> |
 
 ### ページデータカテゴリ
 
 |タグの目的地| 説明|
 |---| ---|
-|ページコンテンツID|  &lt;ul&gt;&lt;li&gt;URLではなく、そのユニークな名前によってページを識別し、ページ固有の構成で構成されます。&lt;/li&gt;&lt;/ul&gt; |
-|コンテンツグループ1から25|  &lt;ul&gt;&lt;li&gt;ページに最大50のカスタムパラメータを送信するためにこれらの目的地にマッピングします。&lt;/li&gt;&lt;li&gt;マッピングするコンテンツグループがあなたのWebtrekkツールで定義されていることも確認してください。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムパラメータ1から50|  &lt;ul&gt;&lt;li&gt;ページに最大50のカスタムパラメータを送信するためにこれらの目的地にマッピングします。&lt;/li&gt;&lt;/ul&gt; |
+|ページコンテンツID|  <ul><li>URLではなく、そのユニークな名前によってページを識別し、ページ固有の構成で構成されます。</li></ul> |
+|コンテンツグループ1から25|  <ul><li>ページに最大50のカスタムパラメータを送信するためにこれらの目的地にマッピングします。</li><li>マッピングするコンテンツグループがあなたのWebtrekkツールで定義されていることも確認してください。</li></ul> |
+|カスタムパラメータ1から50|  <ul><li>ページに最大50のカスタムパラメータを送信するためにこれらの目的地にマッピングします。</li></ul> |
 ### 検索とフォーム追跡
 
 内部検索やフォーム入力パラメータを送信するための目的地をマッピングします。
 
 |タグの目的地| 説明|
 |---| ---|
-|内部検索|  &lt;ul&gt;&lt;li&gt;訪問がサイトを検索するために使用した検索キーワード/用語&lt;/li&gt;&lt;/ul&gt; |
-|フォーム追跡|  &lt;ul&gt;&lt;li&gt;ページ固有の構成でフォーム追跡を有効/無効にする&lt;/li&gt;&lt;li&gt;データソースは有効化のために値 `1` を、無効化のために を含む必要があります。&lt;/li&gt;&lt;/ul&gt; |
-|フォーム属性|  &lt;ul&gt;&lt;li&gt;この属性はフォームの名前を決定するために使用されます。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングはデフォルトの &#34;name&#34; 属性を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|フォーム値属性|  &lt;ul&gt;&lt;li&gt;この属性はフォームフィールドが &#39;radio&#39; や &#39;checkbox&#39; の場合のフォームの名前を決定するために使用されます。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングはデフォルトの `value` 属性を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|内部検索|  <ul><li>訪問がサイトを検索するために使用した検索キーワード/用語</li></ul> |
+|フォーム追跡|  <ul><li>ページ固有の構成でフォーム追跡を有効/無効にする</li><li>データソースは有効化のために値 `1` を、無効化のために を含む必要があります。</li></ul> |
+|フォーム属性|  <ul><li>この属性はフォームの名前を決定するために使用されます。</li><li>この目的地へのマッピングはデフォルトの "name" 属性を上書きします。</li></ul> |
+|フォーム値属性|  <ul><li>この属性はフォームフィールドが 'radio' や 'checkbox' の場合のフォームの名前を決定するために使用されます。</li><li>この目的地へのマッピングはデフォルトの `value` 属性を上書きします。</li></ul> |
 |フォームフィールド属性| ---|
 |全内容フォーム追跡| 自由記述フィールドの最初の30文字を送信します。|
-|匿名フォーム追跡|  &lt;ul&gt;&lt;li&gt;フォームの内容はWebtrekkに送信されません。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングによりフォームデータが匿名化されます。&lt;/li&gt;&lt;/ul&gt; |
-|フォームHTML ID|  &lt;ul&gt;&lt;li&gt;Ajaxによってリロードされたフォームを追跡する方法。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングによりその方法が呼び出されます&lt;/li&gt;&lt;/ul&gt; |
+|匿名フォーム追跡|  <ul><li>フォームの内容はWebtrekkに送信されません。</li><li>この目的地へのマッピングによりフォームデータが匿名化されます。</li></ul> |
+|フォームHTML ID|  <ul><li>Ajaxによってリロードされたフォームを追跡する方法。</li><li>この目的地へのマッピングによりその方法が呼び出されます</li></ul> |
 
 ### クリック追跡
 
 |タグの目的地| 説明|
 |---| ---|
-|ヒートマップ|  &lt;ul&gt;&lt;li&gt;ページ固有の構成でヒートマップを有効/無効にする。&lt;/li&gt;&lt;li&gt;データソースの値は有効化のために `1` と等しくなければならず、無効化のために と等しくなければなりません。&lt;/li&gt;&lt;/ul&gt; |
-|ヒートマップ参照点ID|  &lt;ul&gt;&lt;li&gt;ヒートマップの参照点として使用される要素のID。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡|  &lt;ul&gt;&lt;li&gt;ページ固有の構成でのイベント追跡構成。&lt;/li&gt;&lt;li&gt;Webtrekkは &#39;Link&#39; と &#39;Standard&#39; の構成をサポートしています。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡属性|  &lt;ul&gt;&lt;li&gt;ページ固有の構成での &#34;Standard&#34; 追跡オプションに適用されます。&lt;/li&gt;&lt;li&gt;この属性はイベント/アクションの名前を決定するために使用されます。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングはデフォルトの &#34;name&#34; を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡パラメータ|  &lt;ul&gt;&lt;li&gt;ページ固有の構成での &#34;Link&#34; 追跡オプションに適用されます。&lt;/li&gt;&lt;li&gt;この目的地へのマッピングにより追跡されたリンクのクエリ文字列パラメータが送信されます。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡パターン|  &lt;ul&gt;&lt;li&gt;リンク追跡パラメータのクエリ文字列から望ましくないパラメータを除外するための正規表現。&lt;/li&gt;&lt;li&gt;ページ固有の構成に適用されます。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡置換|  &lt;ul&gt;&lt;li&gt;リンク追跡パラメータでフィルタリングされたパラメータを置換するための置換文字。&lt;/li&gt;&lt;li&gt;ページ固有の構成に適用されます。&lt;/li&gt;&lt;/ul&gt; |
-|リンク追跡ダウンロード|  &lt;ul&gt;&lt;li&gt;ダウンロードの追跡を希望するファイルタイプのリスト。&lt;/li&gt;&lt;li&gt;ページ固有の構成に適用されます。&lt;/li&gt;&lt;li&gt;例: `zip;raw;doc`&lt;/li&gt;&lt;/ul&gt; |
-|カスタム utag.link 追跡用リンクID|  &lt;ul&gt;&lt;li&gt;追跡されるリンクの名前。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムクリックパラメータ1から10|  &lt;ul&gt;&lt;li&gt;クリック追跡のためのカスタムパラメータ。&lt;/li&gt;&lt;li&gt;カスタムクリックパラメータを送信するためには、リンクID値をマッピングする必要があります。&lt;/li&gt;&lt;li&gt;マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; |
+|ヒートマップ|  <ul><li>ページ固有の構成でヒートマップを有効/無効にする。</li><li>データソースの値は有効化のために `1` と等しくなければならず、無効化のために と等しくなければなりません。</li></ul> |
+|ヒートマップ参照点ID|  <ul><li>ヒートマップの参照点として使用される要素のID。</li></ul> |
+|リンク追跡|  <ul><li>ページ固有の構成でのイベント追跡構成。</li><li>Webtrekkは 'Link' と 'Standard' の構成をサポートしています。</li></ul> |
+|リンク追跡属性|  <ul><li>ページ固有の構成での "Standard" 追跡オプションに適用されます。</li><li>この属性はイベント/アクションの名前を決定するために使用されます。</li><li>この目的地へのマッピングはデフォルトの "name" を上書きします。</li></ul> |
+|リンク追跡パラメータ|  <ul><li>ページ固有の構成での "Link" 追跡オプションに適用されます。</li><li>この目的地へのマッピングにより追跡されたリンクのクエリ文字列パラメータが送信されます。</li></ul> |
+|リンク追跡パターン|  <ul><li>リンク追跡パラメータのクエリ文字列から望ましくないパラメータを除外するための正規表現。</li><li>ページ固有の構成に適用されます。</li></ul> |
+|リンク追跡置換|  <ul><li>リンク追跡パラメータでフィルタリングされたパラメータを置換するための置換文字。</li><li>ページ固有の構成に適用されます。</li></ul> |
+|リンク追跡ダウンロード|  <ul><li>ダウンロードの追跡を希望するファイルタイプのリスト。</li><li>ページ固有の構成に適用されます。</li><li>例: `zip;raw;doc`</li></ul> |
+|カスタム utag.link 追跡用リンクID|  <ul><li>追跡されるリンクの名前。</li></ul> |
+|カスタムクリックパラメータ1から10|  <ul><li>クリック追跡のためのカスタムパラメータ。</li><li>カスタムクリックパラメータを送信するためには、リンクID値をマッピングする必要があります。</li><li>マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。</li></ul> |
 
 ### キャンペーン追跡
 
 オプショナルおよびカスタムキャンペーンパラメータを送信するための目的地をマッピングします
 
+
+<blockquote>
 これらのマッピングはページ固有の構成に適用されます。
+</blockquote>
+
 
 |タグの目的地| 説明|
 |---| ---|
-|メディアコード|  &lt;ul&gt;&lt;li&gt;キャンペーン追跡のためのパラメータ。&lt;/li&gt;&lt;/ul&gt; |
-|メディアコードクッキー|  &lt;ul&gt;&lt;li&gt;セッションごとに1回だけキャンペーンを追跡するためのパラメータ。&lt;/li&gt;&lt;/ul&gt; |
-|キャンペーンID|  &lt;ul&gt;&lt;li&gt;メディアコードパラメータに続いて `%3D` とパラメータ値が続きます&lt;/li&gt;&lt;/ul&gt; |
-|キャンペーンアクション|  &lt;ul&gt;&lt;li&gt;訪問のキャンペーンへの反応が &#39;view&#39; か &#39;click&#39; かを決定します。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムキャンペーンパラメータ1から10|  &lt;ul&gt;&lt;li&gt;キャンペーン追跡のためのカスタムパラメータ。&lt;/li&gt;&lt;li&gt;マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; |
+|メディアコード|  <ul><li>キャンペーン追跡のためのパラメータ。</li></ul> |
+|メディアコードクッキー|  <ul><li>セッションごとに1回だけキャンペーンを追跡するためのパラメータ。</li></ul> |
+|キャンペーンID|  <ul><li>メディアコードパラメータに続いて `%3D` とパラメータ値が続きます</li></ul> |
+|キャンペーンアクション|  <ul><li>訪問のキャンペーンへの反応が 'view' か 'click' かを決定します。</li></ul> |
+|カスタムキャンペーンパラメータ1から10|  <ul><li>キャンペーン追跡のためのカスタムパラメータ。</li><li>マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。</li></ul> |
 
 ### E-コマースカテゴリ
 
-WebtrekkタグはE-コマース対応であり、デフォルトの [E-Commerce Extension]() マッピングを自動的に使用します。次の場合を除き、手動でのマッピングは一般的に必要ありません：
+WebtrekkタグはE-コマース対応であり、デフォルトの [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) マッピングを自動的に使用します。次の場合を除き、手動でのマッピングは一般的に必要ありません：
 
 * 拡張マッピングを上書きしたい場合
 * 拡張機能で提供されていないE-コマース変数が必要な場合
 
 |タグの目的地| 説明| E-コマース拡張マッピング |
 |---| ---| ---|
-|注文ID|  &lt;ul&gt;&lt;li&gt;最終注文の一意の識別子&lt;/li&gt;&lt;/ul&gt; | `_corder`|
-|注文合計|  &lt;ul&gt;&lt;li&gt;送料と税後の合計金額。&lt;/li&gt;&lt;/ul&gt; | `_ctotal`|
-|通貨|  &lt;ul&gt;&lt;li&gt;顧客が支払いに使用した通貨&lt;/li&gt;&lt;/ul&gt; | `_ccurrency`|
-|クーポン値|  &lt;ul&gt;&lt;li&gt;注文で使用されたクーポンの値&lt;/li&gt;&lt;/ul&gt; | N//A|
-|製品名リスト|  &lt;ul&gt;&lt;li&gt;製品配列の各製品の名前&lt;/li&gt;&lt;/ul&gt; | `_cprodname`|
-|製品数量リスト|  &lt;ul&gt;&lt;li&gt;製品配列の各製品の数量&lt;/li&gt;&lt;/ul&gt; | `_cquan`|
-|製品価格リスト|  &lt;ul&gt;&lt;li&gt;製品配列の各製品の単価&lt;/li&gt;&lt;/ul&gt; | `_cprice`|
-|製品カテゴリリスト (productCategories[1])|  &lt;ul&gt;&lt;li&gt;製品配列の各製品のカテゴリ&lt;/li&gt;&lt;/ul&gt; | `_ccat`|
-|製品ブランドリスト (productCategory[2])|  &lt;ul&gt;&lt;li&gt;製品配列の各製品のブランド&lt;/li&gt;&lt;/ul&gt; | `_cbrand`|
-|製品サブカテゴリリスト (productCategory[3])|  &lt;ul&gt;&lt;li&gt;製品配列の各製品のサブカテゴリ&lt;/li&gt;&lt;/ul&gt; | `_ccat2`|
-|製品ステータス|  &lt;ul&gt;&lt;li&gt;製品が閲覧されたか、カートに追加されたか、カートからチェックアウトされたかを示します。&lt;/li&gt;&lt;/ul&gt; | N/A|
-|製品カテゴリ1から25|  &lt;ul&gt;&lt;li&gt;製品が一度だけ関連付けられるカスタムカテゴリ。&lt;/li&gt;&lt;li&gt;最大25のユニークなカテゴリをマッピングできます。&lt;/li&gt;&lt;li&gt;マッピングする前に、製品カテゴリがWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; | N/A|
-|カスタムE-コマースパラメータ1から50|  &lt;ul&gt;&lt;li&gt;追加の製品および注文レベルのデータを送信するためのカスタムパラメータ。&lt;/li&gt;&lt;li&gt;最大50のユニークなパラメータをマッピングできます。&lt;/li&gt;&lt;li&gt;マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。&lt;/li&gt;&lt;/ul&gt; | N/A|
+|注文ID|  <ul><li>最終注文の一意の識別子</li></ul> | `_corder`|
+|注文合計|  <ul><li>送料と税後の合計金額。</li></ul> | `_ctotal`|
+|通貨|  <ul><li>顧客が支払いに使用した通貨</li></ul> | `_ccurrency`|
+|クーポン値|  <ul><li>注文で使用されたクーポンの値</li></ul> | N//A|
+|製品名リスト|  <ul><li>製品配列の各製品の名前</li></ul> | `_cprodname`|
+|製品数量リスト|  <ul><li>製品配列の各製品の数量</li></ul> | `_cquan`|
+|製品価格リスト|  <ul><li>製品配列の各製品の単価</li></ul> | `_cprice`|
+|製品カテゴリリスト (productCategories[1])|  <ul><li>製品配列の各製品のカテゴリ</li></ul> | `_ccat`|
+|製品ブランドリスト (productCategory[2])|  <ul><li>製品配列の各製品のブランド</li></ul> | `_cbrand`|
+|製品サブカテゴリリスト (productCategory[3])|  <ul><li>製品配列の各製品のサブカテゴリ</li></ul> | `_ccat2`|
+|製品ステータス|  <ul><li>製品が閲覧されたか、カートに追加されたか、カートからチェックアウトされたかを示します。</li></ul> | N/A|
+|製品カテゴリ1から25|  <ul><li>製品が一度だけ関連付けられるカスタムカテゴリ。</li><li>最大25のユニークなカテゴリをマッピングできます。</li><li>マッピングする前に、製品カテゴリがWebtrekkツールで定義されていることを確認してください。</li></ul> | N/A|
+|カスタムE-コマースパラメータ1から50|  <ul><li>追加の製品および注文レベルのデータを送信するためのカスタムパラメータ。</li><li>最大50のユニークなパラメータをマッピングできます。</li><li>マッピングする前に、パラメータがWebtrekkツールで定義されていることを確認してください。</li></ul> | N/A|
 

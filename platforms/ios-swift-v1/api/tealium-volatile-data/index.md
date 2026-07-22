@@ -27,7 +27,7 @@ tealium?.volatileData()?.add(data)
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `data`| `[String: Any]`  | Dictionary of data to add as key-value pairs | `data: [&#34;session_id&#34;:&#34;1234567890232&#34;]` |  
+| `data`| `[String: Any]`  | Dictionary of data to add as key-value pairs | `data: ["session_id":"1234567890232"]` |  
 
 ### `deleteAllData()`
 
@@ -48,7 +48,7 @@ tealium?.volatileData()?.deleteData(forKeys)
 
 | Parameter  | Type       | Description       | Example |
 |------------  |-----------|-------------------| --- |
-| `forKeys`| `[String]`  | Array of keys to remove from the internal volatile data store | `forKeys: [&#34;a&#34;, &#34;b&#34;]` |  
+| `forKeys`| `[String]`  | Array of keys to remove from the internal volatile data store | `forKeys: ["a", "b"]` |  
 
 
 ### `getData()`
@@ -80,4 +80,4 @@ tealium?.volatileData()?.setSessionId(sessionId)
 
 | Parameters | Type | Description                      | Example              |
 |------------|-----|-----------------------------|---------------------------|
-| `sessionId`  | `String` | Override the session ID for the current session | `&#34;123456123456009&#34;` |
+| `sessionId`  | `String` | Override the session ID for the current session | `"123456123456009"` |

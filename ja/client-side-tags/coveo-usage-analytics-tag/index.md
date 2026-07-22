@@ -18,7 +18,7 @@ Coveo UA Javascriptについての詳細は、Coveo [Collect Commerce Events](ht
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[Manage Tags]()を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -27,11 +27,11 @@ Coveo UA Javascriptについての詳細は、Coveo [Collect Commerce Events](ht
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]()のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
 
 ## データマッピング
 
-マッピングは、[data layer variable]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[data mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[data mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

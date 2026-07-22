@@ -28,10 +28,10 @@ CocoaPodsまたはCarthageでアトリビューションモジュールをイン
 
 CocoaPodsでアトリビューションモジュールをインストールするには、以下のpodをPodfileに追加します：  
 ```ruby
-pod &#39;tealium-swift/TealiumAttribution&#39;
+pod 'tealium-swift/TealiumAttribution'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しています。iOSのCocoaPodsインストールについての詳細は[こちら](/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しています。iOSのCocoaPodsインストールについての詳細は[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
 
 
 ### Carthage
@@ -45,7 +45,7 @@ Carthageでアトリビューションモジュールをインストールする
     TealiumAttribution.framework
     ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しています。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについての詳細は[こちら](/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
+フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しています。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについての詳細は[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
 
 
 ## データレイヤー
@@ -63,7 +63,7 @@ Carthageでアトリビューションモジュールをインストールする
 | `ad_keyword_matchtype` | これは、Broad、Exact、またはSearch Matchのいずれかである可能性があります。 | `Exact` |
 | `ad_org_id` |  対応する広告のキャンペーン組織ID | `OrgID` |
 | `ad_org_name` |  対応する広告のキャンペーン組織名 | `OrgName` |
-| `ad_purchase_date` | ユーザーが初めてアプリをダウンロードした日時。`iadconversion-type = &#34;Redownload&#34;`の場合、これは元の購入日を表します。これはApple Search Adに関連していたかもしれませんし、いなかったかもしれません。| `2016-12-05T17:31:40Z` |
+| `ad_purchase_date` | ユーザーが初めてアプリをダウンロードした日時。`iadconversion-type = "Redownload"`の場合、これは元の購入日を表します。これはApple Search Adに関連していたかもしれませんし、いなかったかもしれません。| `2016-12-05T17:31:40Z` |
 | `ad_region` | このインストールを駆動したキャンペーンに関連する国または地域を識別します。 | `US` |
 | `ad_user_clicked_ last_30_days` | ユーザーがアプリをダウンロードする30日前にSearch Adsのインプレッションをクリックしたかどうかを示すブール値 | [`true`, `false`] |
 | `ad_user_conversion_type` | アプリの新規ダウンロードまたは再ダウンロードを識別します| `Download` |
@@ -74,4 +74,7 @@ Carthageでアトリビューションモジュールをインストールする
 | `device_advertising_ vendor_id` | 同一ベンダーからの同一デバイス上のすべてのアプリで同じであることが保証された一意のID（RDNSバンドル識別子の最初の2部分が同じアプリ。例えば、com.tealiumまたはcom.acme）| `6D92078A-8246...` |
 
 
-`ad_`で始まる変数は、Search Adsが[TealiumConfig](/ja/platforms/ios-swift-v1/api/tealium-config/)オブジェクトで明示的に有効にされている場合にのみ有効になります。これらの変数はAppleのサーバーからアプリの寿命中に一度だけ取得されますが、永続的な変数として保存されるため、将来のアプリの起動時に利用可能です。
+
+<blockquote>
+`ad_`で始まる変数は、Search Adsが[TealiumConfig](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/)オブジェクトで明示的に有効にされている場合にのみ有効になります。これらの変数はAppleのサーバーからアプリの寿命中に一度だけ取得されますが、永続的な変数として保存されるため、将来のアプリの起動時に利用可能です。
+</blockquote>

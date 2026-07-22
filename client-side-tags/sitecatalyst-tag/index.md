@@ -30,15 +30,15 @@ url: https://docs.tealium.com/client-side-tags/sitecatalyst-tag/
 
 ### 1. Add the Tag
 
-Tealium iQ&#39;s Tag marketplace offers a wide variety of Tags. To learn more, see [here]().
+Tealium iQ's Tag marketplace offers a wide variety of Tags. To learn more, see [here](https://docs.tealium.com/about-tag-marketplace/).
 
 ### 2. Configure the Tag
 
-Here&#39;s a list of configurations for the SiteCatalyst Tag. You can find the values for the configurations in the `s_code` file provided to you by SiteCatalyst.
+Here's a list of configurations for the SiteCatalyst Tag. You can find the values for the configurations in the `s_code` file provided to you by SiteCatalyst.
 
-![](/images/client-side-tags/no-title-1081i487822e9a007e208.png)
+![](https://docs.tealium.com/images/client-side-tags/no-title-1081i487822e9a007e208.png)
 
-![](/images/client-side-tags/no-title-1080if5f98fdd321f2089.png)
+![](https://docs.tealium.com/images/client-side-tags/no-title-1080if5f98fdd321f2089.png)
 
 1. **Title**: (Required) Enter a descriptive title to identify the Tag.
 1. **S-Code Version**: (Required) Select the version of SiteCatalyst you want to use. Versions H20 through H27 are supported.
@@ -46,8 +46,8 @@ Here&#39;s a list of configurations for the SiteCatalyst Tag. You can find the v
 1. **Server**: (Required) Enter the data collection server information. You can find this value as `s.trackingServer` in your `s_code.js`. file.
 1. **Server Secure**: (Required) Enter the secure (`https`) data collection server information. You can find this values as `s.trackingServerSecure` in your `s_code.js` file.
 1. **Namespace**: (Required) You can find this value as `s.namespace` in your `s_code.js` file.
-1. **Auto Link Tracking**: (Optional) The default selection is `Yes` and is the recommended selection. If you set this to `No`, you will have to duplicate all the automatic link tracking with Tealium&#39;s [link tracking extensions]().
-You may still use Tealium&#39;s link tracking extensions for custom tracking even if you select `Yes`.
+1. **Auto Link Tracking**: (Optional) The default selection is `Yes` and is the recommended selection. If you set this to `No`, you will have to duplicate all the automatic link tracking with Tealium's [link tracking extensions](https://docs.tealium.com/jquery-onhandler-extension/).
+You may still use Tealium's link tracking extensions for custom tracking even if you select `Yes`.
 
 1. **Download Types**: (Optional) In this field list the types of file extensions that, when downloaded, you want to track as download links. For example, you could enter `zip`,`exe`,`wav`,`mp3`,`mov`,`mpg`,`avi`,`wmv`,`pdf`,`doc`,`docx`,`xls`,`xlsx`,`ppt`,`pptx`
 1. **Internal Link Filters**: (Optional) You must enter a value here, otherwise all link clicks will be reported as exit links in your SiteCatalyst report. To properly track link clicks that trigger a JavaScript activity such as a modal popping up you need to make certain you include `javascript` in the field. You can find these values as `s.linkInternalFilters` in your `s_code.js` file.
@@ -58,21 +58,25 @@ You may still use Tealium&#39;s link tracking extensions for custom tracking eve
 1. **Clear Vars**: (Optional) Set this to `Yes` to clears props, eVars, and events set in the global `s` object after each tracking request.
 1. **Partner**: (Optional) Enter your partner ID here. This is only required to use Adobe AudienceManager, so leave it blank if you do not use Adobe AudienceManager. You can find the partner ID value in the `DIL.create` call.
 
-**Tip**: Place this Tag near the top of the list in the Tags tab to ensure that it loads as soon as possible. The sooner the Tag loads, the sooner it captures visitors&#39; activity.
+**Tip**: Place this Tag near the top of the list in the Tags tab to ensure that it loads as soon as possible. The sooner the Tag loads, the sooner it captures visitors' activity.
 
 ### 3. Apply Load Rules
 
-[Load Rules]() determine when and where to load an instance of this Tag. The **Display on All Pages** rule is the default load rule. To load this Tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag. The **Display on All Pages** rule is the default load rule. To load this Tag on a specific page, create a new load rule with the relevant conditions.
 
 **Note**: Since SiteCatalyst is an analytics Tag you will want it to load across your entire site, so we recommend leaving the default **Load on all Pages** selection as is.
 
 ### 4. Set up Mappings
 
-[Mapping](/iq-tag-management/data-mappings/manage/) is the process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
+[Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) is the process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
 
-To properly format the Products String and send revenue data to your SiteCatalyst report suite, you must add and configure the [E-Commerce Extension]() in your Tealium iQ profile.
+To properly format the Products String and send revenue data to your SiteCatalyst report suite, you must add and configure the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) in your Tealium iQ profile.
 
- As of the latest template update, linkTrackVars and linkTrackEvents are set automatically. You may have to update your template to the latest and greatest to take advantage of this. 
+
+<blockquote>
+As of the latest template update, linkTrackVars and linkTrackEvents are set automatically. You may have to update your template to the latest and greatest to take advantage of this.
+</blockquote>
+
 
 ### Standard Mappings
 
@@ -96,7 +100,7 @@ You can use mapping to trigger the following events events:
 * **purchase**
 * **event1 through event100**
 
-For more information on Event tracking in SiteCatalyst through Tealium iQ, click [here]().
+For more information on Event tracking in SiteCatalyst through Tealium iQ, click [here](https://docs.tealium.com/sitecatalyst-firing-multiple-events-and-event-serialization/).
 
 #### Product-level Events
 

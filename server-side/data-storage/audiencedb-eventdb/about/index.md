@@ -3,7 +3,11 @@ title: About AudienceDB and EventDB
 description: This article describes how to work with AudienceDB and EventDB.
 url: https://docs.tealium.com/server-side/data-storage/audiencedb-eventdb/about/
 ---
-To have EventDB and AudienceDB enabled for your account and profile, contact your customer success manager.
+
+<blockquote>
+To have EventDB and AudienceDB enabled for your account and profile, [contact support](https://docs.tealium.com/support/).
+</blockquote>
+
 
 ## How it works
 
@@ -68,13 +72,17 @@ In addition, the following tables exist for special attribute types:
 * Set of Strings: `visit_lists`, `visitor_lists`
 * Tally: `visit_tallies`, `visitor_tallies`
 
-For detailed information, see the [AudienceDB data guide]().
+For detailed information, see the [AudienceDB data guide](https://docs.tealium.com/audiencedb-data-guide/).
 
 ## EventDB tables
 
-EventDB table data includes event attributes for all events in the event feed. Table columns are named according to the attribute type and name, with only some attributes referencing internal ID&#39;s. Standard Universal Data Object (UDO) variables are named with a `udo_` prefix and most column names match their corresponding attribute names, for example: `udo_event_name`. For additional information, see [Live Events and Feeds]().
+EventDB table data includes event attributes for all events in the event feed. Table columns are named according to the attribute type and name, with only some attributes referencing internal ID's. Standard Universal Data Object (UDO) variables are named with a `udo_` prefix and most column names match their corresponding attribute names, for example: `udo_event_name`. For additional information, see [Live Events and Feeds](https://docs.tealium.com/about-live-events/).
 
+
+<blockquote>
 Event data coming from the Tealium Collect tag also includes information about which tags executed on the page and page performance metrics. For more information, see [Tealium Collect]().
+</blockquote>
+
 
 The following tables are available for event data:
 

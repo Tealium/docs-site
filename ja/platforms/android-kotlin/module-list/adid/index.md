@@ -18,15 +18,15 @@ Mavenを使用してモジュールをインストールするには：
 1. プロジェクトのトップレベルの `build.gradle` ファイルに、次のMavenリポジトリを追加します：
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
 
 2. プロジェクトモジュールの `build.gradle` ファイルに、次のMaven依存関係を追加します：
       ```groovy
       dependencies{
-            implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-            implementation &#39;com.tealium:kotlin-ad-identifier:1.1.1&#39;
+            implementation 'com.tealium:kotlin-core:1.6.0'
+            implementation 'com.tealium:kotlin-ad-identifier:1.1.1'
       }
       ```
 
@@ -42,18 +42,18 @@ Mavenを使用してモジュールをインストールするには：
             repositories {
             mavenCentral()
             flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
             }
             }
       }
       ```
 
-3. ファイル `tealium.adidentifier-1.1.1.aar` をプロジェクトの `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` ディレクトリにコピーします。
+3. ファイル `tealium.adidentifier-1.1.1.aar` をプロジェクトの `<PROJECT_ROOT>/<MODULE>/libs` ディレクトリにコピーします。
 
 4. プロジェクトモジュールの `build.gradle` ファイルにTealiumライブラリの依存関係を追加します：
       ```groovy
       dependencies {
-            implementation (name:&#39;tealium-kotlin.adidentifier-1.1.1&#39;, ext:&#39;aar&#39;)
+            implementation (name:'tealium-kotlin.adidentifier-1.1.1', ext:'aar')
       }
       ```
 
@@ -63,8 +63,8 @@ Mavenを使用してモジュールをインストールするには：
 
 ```kotlin
 val config = TealiumConfig(application,
-              &#34;ACCOUNT&#34;,
-              &#34;PROFILE&#34;,
+              "ACCOUNT",
+              "PROFILE",
               ENVIRONMENT,
               modules = mutableSetOf(Modules.AdIdentifier), // Ad Identifier module
               dispatchers = mutableSetOf(Dispatchers.Collect,

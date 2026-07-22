@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/dashboard/
 ---
 データコネクトダッシュボードは、レシピ、ジョブ、タスク、接続に関する統計を表示します。**依存関係グラフ**タブでは、**アプリ**、**接続**、**レシピ**間のリンクのグラフを表示します。
 
-![](/images/early-access/dashboard.png)
+![](https://docs.tealium.com/images/early-access/dashboard.png)
 
 
 ## ダッシュボードタブ

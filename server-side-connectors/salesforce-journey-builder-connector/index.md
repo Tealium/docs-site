@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/salesforce-journey-builder-
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -40,9 +40,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Event Entry Definition|  &lt;ul&gt;&lt;li&gt;(Required) Select an event entry definition or enter it manually.&lt;/li&gt;&lt;li&gt;The drop-down list is listed from newest to oldest and shows a maximum of 2000 entries.&lt;/li&gt;&lt;li&gt;For more information, see [Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html).&lt;/li&gt;&lt;/ul&gt; |
-|Contact Key|  &lt;ul&gt;&lt;li&gt;(Required) Provide contact key.&lt;/li&gt;&lt;/ul&gt; |
-|Event Data|  &lt;ul&gt;&lt;li&gt;Required if defined in a custom event or specified by the event.&lt;/li&gt;&lt;li&gt;Map values to contact event attributes.&lt;/li&gt;&lt;li&gt;For more information, see [Salesforce: POST /interaction/v1/events](hhttps://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html).&lt;/li&gt;&lt;/ul&gt; |
+|Event Entry Definition|  <ul><li>(Required) Select an event entry definition or enter it manually.</li><li>The drop-down list is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>For more information, see [Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html).</li></ul> |
+|Contact Key|  <ul><li>(Required) Provide contact key.</li></ul> |
+|Event Data|  <ul><li>Required if defined in a custom event or specified by the event.</li><li>Map values to contact event attributes.</li><li>For more information, see [Salesforce: POST /interaction/v1/events](hhttps://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html).</li></ul> |
 
 ## Vendor Documentation
 

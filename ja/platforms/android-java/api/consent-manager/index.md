@@ -29,7 +29,7 @@ final String currentPolicy = tealiumInstance.getConsentManager().getPolicy();
 ```
 | 戻り値 | 戻り値の型|
 | --- | ---|
-| User&#39;s current policy | `String` |
+| User's current policy | `String` |
 
 
 ### `getUserConsentCategories()`
@@ -42,7 +42,7 @@ final String[] userCategories = tealiumInstance.getConsentManager().getUserConse
 
 | 戻り値 | 戻り値の型|
 | --- | ---|
-| User&#39;s current consent categories | `String[]` |
+| User's current consent categories | `String[]` |
 
 
 ### `getUserConsentPreferences()`
@@ -55,7 +55,7 @@ final UserConsentPreferences userPreferences = tealiumInstance.getConsentManager
 
 | 戻り値 | 戻り値の型|
 | --- | ---|
-| User&#39;s consent preferences | `UserConsentPreferences` |
+| User's consent preferences | `UserConsentPreferences` |
 
 
 
@@ -69,7 +69,7 @@ final String userStatus = tealiumInstance.getConsentManager().getUserConsentStat
 
 | 戻り値 | 戻り値の型|
 | --- | ---|
-| User&#39;s current consent status | `String` |
+| User's current consent status | `String` |
 
 
 ### `resetUserConsentPreferences()`
@@ -90,7 +90,7 @@ tealiumInstance.getConsentManager().setPolicy(policy);
 ```
 | パラメータ | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `policy` | `String` |構成するポリシー| `&#34;custompolicy&#34;` |
+| `policy` | `String` |構成するポリシー| `"custompolicy"` |
 
 
 ### `setUserConsentCategories()`

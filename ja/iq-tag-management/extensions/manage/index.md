@@ -7,9 +7,9 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 拡張機能を追加するには、以下の手順を使用します：
 
-1. サイドバーで **Tag Management &gt; Extensions** に移動します。
-1. **&#43; Add Extension** をクリックします。
-1. マルチタブメニューを使用して拡張機能のカテゴリを参照し、使用したい拡張機能の隣にある **&#43; Add** をクリックします。
+1. サイドバーで **Tag Management > Extensions** に移動します。
+1. **+ Add Extension** をクリックします。
+1. マルチタブメニューを使用して拡張機能のカテゴリを参照し、使用したい拡張機能の隣にある **+ Add** をクリックします。
 1. 拡張機能を識別するための **Title** を入力します。
 1. （オプション）左側の **Apply Labels** をクリックして、拡張機能をカテゴライズするためのラベルを追加します。
 1. **Scope** の下で、ドロップダウンリストからスコープを選択するか、**Edit Load Order** をクリックします。  
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 ## 公開場所
 
-![](/images/iq-tag-management/whiteui-tiq-extensions-publishlocations.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-extensions-publishlocations.png)
 
 公開場所の構成は、拡張機能が公開される環境を制御します。公開場所のチェックを外すと、その場所に拡張機能は公開されません。例えば、拡張機能の **Prod** をチェックを外し、Prodに公開すると、その拡張機能はProd環境のファイルから省かれます。
 
@@ -53,7 +53,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 拡張機能の変更履歴を表示するには：
 
-1. サイドバーで **Tag Management &gt; Extensions** に移動します。
+1. サイドバーで **Tag Management > Extensions** に移動します。
 1. レビューしたい拡張機能をクリックします。拡張機能の詳細が表示されます。
 1. **View Change History** をクリックします。
 
@@ -61,7 +61,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 拡張機能は、拡張機能ビューから直接編集できます。拡張機能を展開し、構成を調整します。変更が検出されると、**Save/Publish** ボタンがオレンジ色に変わり、未保存の変更が存在することを示します。
 
+
+<blockquote>
 Tealiumは、uTag Sync拡張機能の編集を推奨していません。
+</blockquote>
+
 
 ## 拡張機能の非アクティブ化
 
@@ -73,7 +77,7 @@ Tealiumは、uTag Sync拡張機能の編集を推奨していません。
 確認ダイアログが表示されます。
 1. **Deactivate** をクリックしてアクションを確認します。  
 
-![](/images/iq-tag-management/whiteui-tiq-deactivateextension.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-deactivateextension.png)
 
 ## 拡張機能の削除
 
@@ -86,7 +90,11 @@ Tealiumは、uTag Sync拡張機能の編集を推奨していません。
 確認ダイアログが表示されます。
 1. **Drop Extension** をクリックしてアクションを確認します。 
  
-![](/images/iq-tag-management/whiteui-tiq-dropextension.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-dropextension.png)
 
+
+<blockquote>
 拡張機能を誤って削除し、プロファイルを保存していない場合は、ブラウザをリロードして拡張機能の元の状態に戻すことができます。
+</blockquote>
+
 

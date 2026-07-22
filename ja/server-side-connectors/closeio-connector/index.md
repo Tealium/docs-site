@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/closeio-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加したら、次の構成を構成します：
 
@@ -33,15 +33,15 @@ url: https://docs.tealium.com/ja/server-side-connectors/closeio-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                       |
 |:--------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| リードID       | &lt;ul&gt;&lt;li&gt;リードIDはリードのURLで見つけることができます。&lt;/li&gt;&lt;li&gt;このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| 名前          | &lt;ul&gt;&lt;li&gt;コンタクトの名前。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                            |
-| タイトル         | &lt;ul&gt;&lt;li&gt;コンタクトのタイトル。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                           |
-| 電話         | &lt;ul&gt;&lt;li&gt;コンタクトの電話番号。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                    |
-| 電話タイプ    | &lt;ul&gt;&lt;li&gt;電話のタイプ。&lt;/li&gt;&lt;li&gt;例：`office`, `mobile`&lt;/li&gt;&lt;/ul&gt;                                                                                                                 |
-| メール         | &lt;ul&gt;&lt;li&gt;コンタクトのメール。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                           |
-| メールタイプ    | &lt;ul&gt;&lt;li&gt;メールのタイプ。&lt;/li&gt;&lt;li&gt;例：`office`, `home`&lt;/li&gt;&lt;/ul&gt;                                                                                                               |
-| URL           | &lt;ul&gt;&lt;li&gt;例：`http://twitter.com/google/` &lt;/li&gt;&lt;/ul&gt;                                                                                                                              |
-| URLタイプ      | &lt;ul&gt;&lt;li&gt;例：`url`&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                      |
+| リードID       | <ul><li>リードIDはリードのURLで見つけることができます。</li><li>このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts)を参照してください。</li></ul> |
+| 名前          | <ul><li>コンタクトの名前。</li></ul>                                                                                                                                            |
+| タイトル         | <ul><li>コンタクトのタイトル。</li></ul>                                                                                                                                           |
+| 電話         | <ul><li>コンタクトの電話番号。</li></ul>                                                                                                                                    |
+| 電話タイプ    | <ul><li>電話のタイプ。</li><li>例：`office`, `mobile`</li></ul>                                                                                                                 |
+| メール         | <ul><li>コンタクトのメール。</li></ul>                                                                                                                                           |
+| メールタイプ    | <ul><li>メールのタイプ。</li><li>例：`office`, `home`</li></ul>                                                                                                               |
+| URL           | <ul><li>例：`http://twitter.com/google/` </li></ul>                                                                                                                              |
+| URLタイプ      | <ul><li>例：`url`</li></ul>                                                                                                                                                      |
 
 ### アクション - 既存のコンタクトの更新
 
@@ -49,8 +49,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/closeio-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                                                                                          |
 |:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| コンタクトID    | &lt;ul&gt;&lt;li&gt;コンタクトIDは、コンタクトが作成されたときに割り当てられ、`cont_`で始まります。&lt;/li&gt;&lt;li&gt;例：`cont_y7YAwBXugpmy4YEnmCJPnOTFHLLOnn6gDfoeNTOBp8T`&lt;/li&gt;&lt;li&gt;このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts-update-an-existing-contact)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-| 属性    | &lt;ul&gt;&lt;li&gt;更新したいコンタクトの属性。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                                                                                                                 |
+| コンタクトID    | <ul><li>コンタクトIDは、コンタクトが作成されたときに割り当てられ、`cont_`で始まります。</li><li>例：`cont_y7YAwBXugpmy4YEnmCJPnOTFHLLOnn6gDfoeNTOBp8T`</li><li>このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts-update-an-existing-contact)を参照してください。</li></ul> |
+| 属性    | <ul><li>更新したいコンタクトの属性。</li></ul>                                                                                                                                                                                                                                                                 |
 
 ### アクション - コンタクトの削除
 
@@ -58,4 +58,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/closeio-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                                                                                |
 |:--------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| コンタクトID    | &lt;ul&gt;&lt;li&gt;コンタクトIDは、コンタクトが作成されたときに割り当てられ、`cont_`で始まります。&lt;/li&gt;&lt;li&gt;例：`cont_y7YAwBXugpmy4YEnmCJPnOTFHLLOnn6gDfoeNTOBp8T`&lt;/li&gt;&lt;li&gt;このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts-delete-a-contact)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+| コンタクトID    | <ul><li>コンタクトIDは、コンタクトが作成されたときに割り当てられ、`cont_`で始まります。</li><li>例：`cont_y7YAwBXugpmy4YEnmCJPnOTFHLLOnn6gDfoeNTOBp8T`</li><li>このエンドポイントについての詳細は、[Close.io documentation](https://developer.close.io/#contacts-delete-a-contact)を参照してください。</li></ul> |

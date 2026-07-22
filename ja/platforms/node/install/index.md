@@ -2,7 +2,7 @@
 title: インストール
 description: Tealium for Node.jsのインストールについて説明します。
 url: https://docs.tealium.com/ja/platforms/node/install/
----Node.js用の`tealium-collect`モジュールでは、イベントデータが[Tealium HTTP API](/ja/platforms/http-api/)経由でTealium Customer Data Hubに送信されます。このモジュールは、[サーバーサイド](/ja/server-side/)アプリケーションやブラウザで使用します。
+---Node.js用の`tealium-collect`モジュールでは、イベントデータが[Tealium HTTP API](https://docs.tealium.com/ja/platforms/http-api/)経由でTealium Customer Data Hubに送信されます。このモジュールは、[サーバーサイド](https://docs.tealium.com/ja/server-side/)アプリケーションやブラウザで使用します。
 
 ## 要件
 
@@ -20,21 +20,21 @@ npm install tealium-collect
 
 1. モジュールをインポートします。
 ```javascript
-var Tealium = require(&#39;tealium&#39;);
-var tealiumCollect = require(&#39;tealium-collect&#39;);
+var Tealium = require('tealium');
+var tealiumCollect = require('tealium-collect');
 ```
 
-2. `Tealium`インスタンスを[`Tealium()`](/ja/platforms/node/api/#tealium)コンストラクタメソッドで初期化します。
+2. `Tealium`インスタンスを[`Tealium()`](https://docs.tealium.com/ja/platforms/node/api/#tealium)コンストラクタメソッドで初期化します。
 ```javascript
 var config = {
-      &#34;account&#34;    : &#34;ACCOUNT&#34;,
-      &#34;profile&#34;    : &#34;PROFILE&#34;,
-      &#34;datasource&#34; : &#34;DATASOURCE&#34;
+      "account"    : "ACCOUNT",
+      "profile"    : "PROFILE",
+      "datasource" : "DATASOURCE"
 };
 var tealium = Tealium(config);
 ```
 
-3. [`addModule()`](/ja/platforms/node/api/#addmodule)メソッドを呼び出してTealium Collectモジュールを追加します。
+3. [`addModule()`](https://docs.tealium.com/ja/platforms/node/api/#addmodule)メソッドを呼び出してTealium Collectモジュールを追加します。
 ```javascript
 tealium.addModule(tealiumCollect);
 ```

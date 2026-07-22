@@ -7,63 +7,67 @@ url: https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/actio
 
 以下のアクションは、認証タイプに関係なく、すべてのHTTPベースのWebhookコネクタで利用可能です。
 
-JDBC互換データベースにデータを送信するためのWebhookを使用するには、[Webhook JDBC]()を参照してください。
+
+<blockquote>
+JDBC互換データベースにデータを送信するためのWebhookを使用するには、[Webhook JDBC](https://docs.tealium.com/webhook-jdbc/)を参照してください。
+</blockquote>
+
 
 ### HTTPリクエストを介してイベントデータを送信
 
 | パラメータ      | 説明 |
 |:------------------|:-------------|
-| メソッド       | &lt;ul&gt;&lt;li&gt;(必須) リクエストメソッドを選択：`GET`, `POST`, `PUT`, `DELETE`, `PATCH`。&lt;/li&gt;&lt;li&gt;**GET**が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして`data`キーで配信されます。&lt;/li&gt;&lt;/ul&gt;     |
-| URL       | &lt;ul&gt;&lt;li&gt;(必須) リクエストを送信するURLを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してURLを生成します。&lt;/li&gt;&lt;/ul&gt;    |
-| URLパラメータ     | &lt;ul&gt;&lt;li&gt;(オプション) URLに追加するパラメータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。&lt;/li&gt;&lt;/ul&gt;  |
-| ヘッダー      | &lt;ul&gt;&lt;li&gt;(オプション) HTTPヘッダー値をヘッダー名にマッピングします。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| クッキー     | &lt;ul&gt;&lt;li&gt;(オプション) クッキー値をクッキー名にマッピングします。&lt;/li&gt;&lt;li&gt;クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してクッキー値を生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| ボディコンテンツタイプ     | &lt;ul&gt;&lt;li&gt;(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。&lt;/li&gt;&lt;li&gt;すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`&lt;/li&gt;&lt;li&gt;ボディデータが提供される場合、コンテンツタイプが必要です。&lt;/li&gt;&lt;/ul&gt;      |
-| テンプレート変数    | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート             | &lt;ul&gt;&lt;li&gt;(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを参照します。&lt;/li&gt;&lt;/ul&gt; |
-| 属性名の印刷 | &lt;ul&gt;&lt;li&gt;属性名が更新されると、ペイロードの名前が更新を反映します。&lt;/li&gt;&lt;/ul&gt;   |
-| リダイレクション           | &lt;ul&gt;&lt;li&gt;メソッドがGETの場合のみリダイレクションを許可します。&lt;/li&gt;&lt;/ul&gt;  |
+| メソッド       | <ul><li>(必須) リクエストメソッドを選択：`GET`, `POST`, `PUT`, `DELETE`, `PATCH`。</li><li>**GET**が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして`data`キーで配信されます。</li></ul>     |
+| URL       | <ul><li>(必須) リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul>    |
+| URLパラメータ     | <ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul>  |
+| ヘッダー      | <ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul>     |
+| クッキー     | <ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`</li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul>     |
+| ボディコンテンツタイプ     | <ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`</li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul>      |
+| テンプレート変数    | <ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>   |
+| テンプレート             | <ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを参照します。</li></ul> |
+| 属性名の印刷 | <ul><li>属性名が更新されると、ペイロードの名前が更新を反映します。</li></ul>   |
+| リダイレクション           | <ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul>  |
 
 ### HTTPリクエストを介して訪問データを送信
 
 | パラメータ   | 説明      |
 |:----------------|:------------------|
-| メソッド       | &lt;ul&gt;&lt;li&gt;(必須) リクエストメソッドを選択：`GET`, `POST`, `PUT`, `DELETE`, `PATCH`。&lt;/li&gt;&lt;li&gt;**GET**が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして`data`キーで配信されます。&lt;/li&gt;&lt;/ul&gt;     |
-| URL       | &lt;ul&gt;&lt;li&gt;(必須) リクエストを送信するURLを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してURLを生成します。&lt;/li&gt;&lt;/ul&gt;    |
-| URLパラメータ     | &lt;ul&gt;&lt;li&gt;(オプション) URLに追加するパラメータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。&lt;/li&gt;&lt;/ul&gt;  |
-| ヘッダー      | &lt;ul&gt;&lt;li&gt;(オプション) HTTPヘッダー値をヘッダー名にマッピングします。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| クッキー     | &lt;ul&gt;&lt;li&gt;(オプション) クッキー値をクッキー名にマッピングします。&lt;/li&gt;&lt;li&gt;クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してクッキー値を生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| ボディコンテンツタイプ     | &lt;ul&gt;&lt;li&gt;(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。&lt;/li&gt;&lt;li&gt;すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`&lt;/li&gt;&lt;li&gt;ボディデータが提供される場合、コンテンツタイプが必要です。&lt;/li&gt;&lt;/ul&gt;      |
-| テンプレート変数    | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート             | &lt;ul&gt;&lt;li&gt;(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを参照します。&lt;/li&gt;&lt;/ul&gt; |
-| 現在の訪問データを訪問データに含める | &lt;ul&gt;&lt;li&gt;ペイロードに現在の訪問データを追加します。&lt;/li&gt;&lt;li&gt;これには、現在の訪問イベントデータが除外されていない場合のイベント訪問データが含まれます。&lt;/li&gt;&lt;/ul&gt; |
-| 現在の訪問イベントデータを除外 | &lt;ul&gt;&lt;li&gt;現在の訪問データからイベントデータを除外します。&lt;/li&gt;&lt;/ul&gt; |
-| 属性名の印刷      | &lt;ul&gt;&lt;li&gt;属性名が更新されると、ペイロードの名前が更新を反映します。&lt;/li&gt;&lt;/ul&gt;     |
-| リダイレクション    | &lt;ul&gt;&lt;li&gt;メソッドがGETの場合のみリダイレクションを許可します。&lt;/li&gt;&lt;/ul&gt;    |
+| メソッド       | <ul><li>(必須) リクエストメソッドを選択：`GET`, `POST`, `PUT`, `DELETE`, `PATCH`。</li><li>**GET**が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして`data`キーで配信されます。</li></ul>     |
+| URL       | <ul><li>(必須) リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul>    |
+| URLパラメータ     | <ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul>  |
+| ヘッダー      | <ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul>     |
+| クッキー     | <ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`</li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul>     |
+| ボディコンテンツタイプ     | <ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`</li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul>      |
+| テンプレート変数    | <ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>   |
+| テンプレート             | <ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを参照します。</li></ul> |
+| 現在の訪問データを訪問データに含める | <ul><li>ペイロードに現在の訪問データを追加します。</li><li>これには、現在の訪問イベントデータが除外されていない場合のイベント訪問データが含まれます。</li></ul> |
+| 現在の訪問イベントデータを除外 | <ul><li>現在の訪問データからイベントデータを除外します。</li></ul> |
+| 属性名の印刷      | <ul><li>属性名が更新されると、ペイロードの名前が更新を反映します。</li></ul>     |
+| リダイレクション    | <ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul>    |
 
 
 ### HTTPリクエストを介してカスタマイズされたデータを送信する（高度）
 
-カスタムリクエストが複雑なペイロード（ネストされたJSONやXMLなど）を必要とする場合は、**テンプレート**オプションを使用して、ベンダーのエンドポイントに必要な形式のペイロードを構築します。詳細については、を参照してください。
+カスタムリクエストが複雑なペイロード（ネストされたJSONやXMLなど）を必要とする場合は、**テンプレート**オプションを使用して、ベンダーのエンドポイントに必要な形式のペイロードを構築します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。
 
 | パラメータ     | 説明    |
 |:-------------------|:---------------------|
-| メソッド    | &lt;ul&gt;&lt;li&gt;（必須）リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または`PATCH`。&lt;/li&gt;&lt;/ul&gt;     |
-| URL     | &lt;ul&gt;&lt;li&gt;（必須）リクエストを送信するURLを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してURLを生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| URLパラメータ     | &lt;ul&gt;&lt;li&gt;（オプション）URLに追加するパラメータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。&lt;/li&gt;&lt;/ul&gt;|
-| ヘッダー    | &lt;ul&gt;&lt;li&gt;（オプション）HTTPヘッダー値をヘッダー名にマッピングします。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。&lt;/li&gt;&lt;/ul&gt;   |
-| クッキー  | &lt;ul&gt;&lt;li&gt;（オプション）クッキー値をクッキー名にマッピングします。&lt;/li&gt;&lt;li&gt;クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してクッキー値を生成します。&lt;/li&gt;&lt;/ul&gt;    |
-| ボディコンテンツタイプ  | &lt;ul&gt;&lt;li&gt;（オプション）利用可能なタイプを選択するか、カスタム値を提供します。&lt;/li&gt;&lt;li&gt;すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`&lt;/li&gt;&lt;li&gt;ボディデータが提供される場合、コンテンツタイプが必要です。&lt;/li&gt;&lt;/ul&gt;     |
-| ボディデータ   | &lt;ul&gt;&lt;li&gt;（オプション）メッセージボディを構築するためのデータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してボディデータを生成します。&lt;/li&gt;&lt;li&gt;ボディコンテンツタイプが`multipart/form-data`または`application/x-www-form-urlencoded`の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照し、**ボディ**オプションのみを選択します。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート変数 | &lt;ul&gt;&lt;li&gt;（オプション）テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;  |
-| テンプレート     | &lt;ul&gt;&lt;li&gt;（オプション）URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。&lt;/li&gt;&lt;/ul&gt; |
-| リダイレクション    | &lt;ul&gt;&lt;li&gt;メソッドがGETの場合のみリダイレクションを許可します。&lt;/li&gt;&lt;/ul&gt;    |
+| メソッド    | <ul><li>（必須）リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または`PATCH`。</li></ul>     |
+| URL     | <ul><li>（必須）リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul>     |
+| URLパラメータ     | <ul><li>（オプション）URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul>|
+| ヘッダー    | <ul><li>（オプション）HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul>   |
+| クッキー  | <ul><li>（オプション）クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`</li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul>    |
+| ボディコンテンツタイプ  | <ul><li>（オプション）利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`</li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul>     |
+| ボディデータ   | <ul><li>（オプション）メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してボディデータを生成します。</li><li>ボディコンテンツタイプが`multipart/form-data`または`application/x-www-form-urlencoded`の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照し、**ボディ**オプションのみを選択します。</li></ul>   |
+| テンプレート変数 | <ul><li>（オプション）テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>  |
+| テンプレート     | <ul><li>（オプション）URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。</li></ul> |
+| リダイレクション    | <ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul>    |
 
 ### HTTPリクエストを介してバッチ処理されたデータを送信する
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100
 * 最古のリクエストからの最大時間：60分
@@ -73,25 +77,29 @@ JDBC互換データベースにデータを送信するためのWebhookを使用
 
 | パラメータ      | 説明      |
 |:------------|:------------------|
-| メソッド       | &lt;ul&gt;&lt;li&gt;（必須）リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または`PATCH`。&lt;/li&gt;&lt;/ul&gt;     |
-| URL     | &lt;ul&gt;&lt;li&gt;（必須）リクエストを送信するURLを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してURLを生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| URLパラメータ   | &lt;ul&gt;&lt;li&gt;（オプション）URLに追加するパラメータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。&lt;/li&gt;&lt;/ul&gt; |
-| ヘッダー   | &lt;ul&gt;&lt;li&gt;（オプション）HTTPヘッダー値をヘッダー名にマッピングします。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。&lt;/li&gt;&lt;/ul&gt;    |
-| クッキー    | &lt;ul&gt;&lt;li&gt;（オプション）クッキー値をクッキー名にマッピングします。&lt;/li&gt;&lt;li&gt;クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してクッキー値を生成します。&lt;/li&gt;&lt;/ul&gt;  |
-| ボディコンテンツタイプ     | &lt;ul&gt;&lt;li&gt;（オプション）利用可能なタイプを選択するか、カスタム値を提供します。&lt;/li&gt;&lt;li&gt;すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`&lt;/li&gt;&lt;li&gt;ボディデータが提供される場合、コンテンツタイプが必要です。&lt;/li&gt;&lt;/ul&gt;     |
-| テンプレート変数    | &lt;ul&gt;&lt;li&gt;（オプション）テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート   | &lt;ul&gt;&lt;li&gt;（オプション）URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。&lt;/li&gt;&lt;/ul&gt; |
-| 現在の訪問データを含む | &lt;ul&gt;&lt;li&gt;現在の訪問データを含める場合は、このチェックボックスを選択します。&lt;/li&gt;&lt;/ul&gt;   |
-| 現在の訪問イベントデータを除外する | &lt;ul&gt;&lt;li&gt;現在の訪問データからイベントデータを除外します。&lt;/li&gt;&lt;/ul&gt; |
-| 属性名を印刷する      | &lt;ul&gt;&lt;li&gt;属性名が更新された場合、ペイロードに反映される名前です。&lt;/li&gt;&lt;/ul&gt;     |
-| リダイレクション    | &lt;ul&gt;&lt;li&gt;メソッドがGETの場合のみリダイレクションを許可します。&lt;/li&gt;&lt;/ul&gt;    |
+| メソッド       | <ul><li>（必須）リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または`PATCH`。</li></ul>     |
+| URL     | <ul><li>（必須）リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul>     |
+| URLパラメータ   | <ul><li>（オプション）URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul> |
+| ヘッダー   | <ul><li>（オプション）HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul>    |
+| クッキー    | <ul><li>（オプション）クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：`Cookie: name1=value1; name2=value2`</li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul>  |
+| ボディコンテンツタイプ     | <ul><li>（オプション）利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`</li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul>     |
+| テンプレート変数    | <ul><li>（オプション）テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>   |
+| テンプレート   | <ul><li>（オプション）URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数`{{webhook_access_token}}`は認証リクエストによって返されるトークンを指します。</li></ul> |
+| 現在の訪問データを含む | <ul><li>現在の訪問データを含める場合は、このチェックボックスを選択します。</li></ul>   |
+| 現在の訪問イベントデータを除外する | <ul><li>現在の訪問データからイベントデータを除外します。</li></ul> |
+| 属性名を印刷する      | <ul><li>属性名が更新された場合、ペイロードに反映される名前です。</li></ul>     |
+| リダイレクション    | <ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul>    |
 | タイムアウト | `HTTP`リクエストを介してデータを送信する際に、システムがバッチアクションを完了するのを待つ最大時間（秒）を構成します。最小値は`1`、最大値は`10`です。 |
 
 ### HTTPリクエストを介してバッチ処理されたカスタマイズデータを送信する（高度）
 
-カスタムリクエストが複雑なペイロード（ネストされたJSONやXMLなど）を必要とする場合は、**テンプレート**オプションを使用して、ベンダーのエンドポイントに必要な形式のペイロードを構築します。カスタムリクエスト用のテンプレートの使用に関する詳細は、[カスタムリクエスト - テンプレート変数ガイド]()を参照してください。
+カスタムリクエストが複雑なペイロード（ネストされたJSONやXMLなど）を必要とする場合は、**テンプレート**オプションを使用して、ベンダーのエンドポイントに必要な形式のペイロードを構築します。カスタムリクエスト用のテンプレートの使用に関する詳細は、[カスタムリクエスト - テンプレート変数ガイド](https://docs.tealium.com/connector-template-variables/)を参照してください。
 
- [Trace]()を使用する場合、バッチ処理は無視されます。
+
+<blockquote>
+[Trace](https://docs.tealium.com/about-trace/)を使用する場合、バッチ処理は無視されます。
+</blockquote>
+
 
 #### バッチ制限
 
@@ -104,19 +112,19 @@ JDBC互換データベースにデータを送信するためのWebhookを使用
 
 | パラメータ      | 説明      |
 |:------------|:------------------|
-| メソッド       |  &lt;ul&gt;&lt;li&gt;(必須) リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または `PATCH`。&lt;/li&gt;&lt;/ul&gt;      |
-| URL     | &lt;ul&gt;&lt;li&gt;(必須) リクエストを送信するURLを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してURLを生成します。&lt;/li&gt;&lt;/ul&gt;     |
-| ボディコンテンツタイプ     | &lt;ul&gt;&lt;li&gt;(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。&lt;/li&gt;&lt;li&gt;すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`&lt;/li&gt;&lt;li&gt;ボディデータが提供される場合、コンテンツタイプが必要です。&lt;/li&gt;&lt;/ul&gt;     |
-| ボディデータ    | &lt;ul&gt;&lt;li&gt;(オプション) メッセージボディを構築するためのデータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してボディデータを生成します。&lt;/li&gt;&lt;li&gt;ボディコンテンツタイプが `multipart/form-data` または `application/x-www-form-urlencoded` の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して `Body` オプションのみを選択します。&lt;/li&gt;&lt;/ul&gt;     |
-| プレフィックス | ボディデータの前に繰り返されないリクエストの部分です。JSON配列のプレフィックスは開き括弧 (`[`) です。例として `Custom [` を **プレフィックス** にマッピングします。&lt;br/&gt; `[   {     &#34;editable_in_signup&#34;: false,     &#34;displayed_for_customers&#34;: true    },   {     &#34;editable_in_signup&#34;: true,     &#34;displayed_for_customers&#34;: true   } ] ` |
-| ジョイナー | ボディデータ内の個々のデータ項目を分離する文字または文字列です。JSONオブジェクトのジョイナーはカンマ (`,`) です。例として `Custom ,` を **ジョイナー** にマッピングします。&lt;br/&gt; `[   {     &#34;editable_in_signup&#34;: false,     &#34;displayed_for_customers&#34;: true    },  {     &#34;editable_in_signup&#34;: true,     &#34;displayed_for_customers&#34;: true   } ]`  |
-| サフィックス | ボディデータの後に繰り返されないリクエストの部分です。JSON配列のサフィックスは閉じ括弧 (`]`) です。例として `Custom ]` を **サフィックス** にマッピングします。&lt;br/&gt; `[   {     &#34;editable_in_signup&#34;: false,     &#34;displayed_for_customers&#34;: true    },   {     &#34;editable_in_signup&#34;: true,     &#34;displayed_for_customers&#34;: true   } ] ` |
-| 最大レコード数   | &lt;ul&gt;&lt;li&gt;最大レコード数。&lt;/li&gt;&lt;/ul&gt;     |
-| 生存時間 (分) | &lt;ul&gt;&lt;li&gt;分単位の生存時間。&lt;/li&gt;&lt;/ul&gt;       |
-| URLパラメータ   | &lt;ul&gt;&lt;li&gt;(オプション) URLに追加するパラメータを提供します。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。&lt;/li&gt;&lt;/ul&gt; |
-| ヘッダー   | &lt;ul&gt;&lt;li&gt;(オプション) HTTPヘッダー名にヘッダー値をマッピングします。&lt;/li&gt;&lt;li&gt;テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。&lt;/li&gt;&lt;/ul&gt;    |
-| テンプレート変数    | &lt;ul&gt;&lt;li&gt;(オプション) テンプレートでのデータ入力用にテンプレート変数を提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt;   |
-| テンプレート   | &lt;ul&gt;&lt;li&gt;(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、を参照してください。&lt;/li&gt;&lt;li&gt;テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。&lt;/li&gt;&lt;li&gt;OAuthを使用する場合、テンプレート変数 `{{webhook_access_token}}` は認証リクエストによって返されるトークンを指します。&lt;/li&gt;&lt;/ul&gt; |
+| メソッド       |  <ul><li>(必須) リクエストメソッドを選択：`GET`、`POST`、`PUT`、`DELETE`、または `PATCH`。</li></ul>      |
+| URL     | <ul><li>(必須) リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul>     |
+| ボディコンテンツタイプ     | <ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：`Content-Type: text/plain; charset=UTF-8`</li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul>     |
+| ボディデータ    | <ul><li>(オプション) メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してボディデータを生成します。</li><li>ボディコンテンツタイプが `multipart/form-data` または `application/x-www-form-urlencoded` の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して `Body` オプションのみを選択します。</li></ul>     |
+| プレフィックス | ボディデータの前に繰り返されないリクエストの部分です。JSON配列のプレフィックスは開き括弧 (`[`) です。例として `Custom [` を **プレフィックス** にマッピングします。<br/> `[   {     "editable_in_signup": false,     "displayed_for_customers": true    },   {     "editable_in_signup": true,     "displayed_for_customers": true   } ] ` |
+| ジョイナー | ボディデータ内の個々のデータ項目を分離する文字または文字列です。JSONオブジェクトのジョイナーはカンマ (`,`) です。例として `Custom ,` を **ジョイナー** にマッピングします。<br/> `[   {     "editable_in_signup": false,     "displayed_for_customers": true    },  {     "editable_in_signup": true,     "displayed_for_customers": true   } ]`  |
+| サフィックス | ボディデータの後に繰り返されないリクエストの部分です。JSON配列のサフィックスは閉じ括弧 (`]`) です。例として `Custom ]` を **サフィックス** にマッピングします。<br/> `[   {     "editable_in_signup": false,     "displayed_for_customers": true    },   {     "editable_in_signup": true,     "displayed_for_customers": true   } ] ` |
+| 最大レコード数   | <ul><li>最大レコード数。</li></ul>     |
+| 生存時間 (分) | <ul><li>分単位の生存時間。</li></ul>       |
+| URLパラメータ   | <ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul> |
+| ヘッダー   | <ul><li>(オプション) HTTPヘッダー名にヘッダー値をマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul>    |
+| テンプレート変数    | <ul><li>(オプション) テンプレートでのデータ入力用にテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul>   |
+| テンプレート   | <ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。</li><li>OAuthを使用する場合、テンプレート変数 `{{webhook_access_token}}` は認証リクエストによって返されるトークンを指します。</li></ul> |
 | タイムアウト | `HTTP` リクエストを通じてデータを送信する際にシステムがバッチアクションの完了を待つ最大時間（秒）を構成します。最小値は `1` で、最大値は `10` です。 |
 
 ## イベントデータJSON
@@ -127,38 +135,38 @@ JDBC互換データベースにデータを送信するためのWebhookを使用
 
 ```json
 {
-    &#34;account&#34;: &#34;tealium&#34;,
-    &#34;profile&#34;: &#34;main&#34;,
-    &#34;env&#34;: &#34;prod&#34;,
-    &#34;data&#34;: {
-        &#34;dom&#34;: {
-            &#34;referrer&#34;: &#34;&#34;,
-            &#34;domain&#34;: &#34;tealium.com&#34;,
-            &#34;title&#34;: &#34;Tealium | Customer Data Hub and Enterprise Tag Management&#34;,
-            &#34;query_string&#34;: &#34;&#34;,
-            &#34;url&#34;: &#34;http://tealium.com/&#34;,
-            &#34;pathname&#34;: &#34;/&#34;
+    "account": "tealium",
+    "profile": "main",
+    "env": "prod",
+    "data": {
+        "dom": {
+            "referrer": "",
+            "domain": "tealium.com",
+            "title": "Tealium | Customer Data Hub and Enterprise Tag Management",
+            "query_string": "",
+            "url": "http://tealium.com/",
+            "pathname": "/"
         },
-        &#34;udo&#34;: {
-            &#34;tealium_event&#34;: &#34;page_view&#34;,
-            &#34;page_name&#34;: &#34;Tealium | Customer Data Hub and Enterprise Tag Management&#34;,
-            &#34;page_type&#34;: &#34;home&#34;,
-            &#34;device_type&#34;: &#34;desktop&#34;
+        "udo": {
+            "tealium_event": "page_view",
+            "page_name": "Tealium | Customer Data Hub and Enterprise Tag Management",
+            "page_type": "home",
+            "device_type": "desktop"
         },
-        &#34;firstparty_tealium_cookies&#34;: {
-            &#34;trace_id&#34;: &#34;&#34;,
-            &#34;s_fid&#34;: &#34;3EF757DF6253B144-0D0194366CD4479B&#34;,
-            &#34;utag_main_ses_id&#34;: 1383677957942,
-            &#34;s_cc&#34;: &#34;true&#34;,
-            &#34;utag_main__st&#34;: 1383678970903,
-            &#34;TID&#34;: &#34;2cff51e585ed4a5a9330324d5dbc6bb7&#34;,
-            &#34;s_sq&#34;: &#34;[[B]]&#34;
+        "firstparty_tealium_cookies": {
+            "trace_id": "",
+            "s_fid": "3EF757DF6253B144-0D0194366CD4479B",
+            "utag_main_ses_id": 1383677957942,
+            "s_cc": "true",
+            "utag_main__st": 1383678970903,
+            "TID": "2cff51e585ed4a5a9330324d5dbc6bb7",
+            "s_sq": "[[B]]"
         }
     },
-    &#34;post_time&#34;: 1500999541000,
-    &#34;useragent&#34;: &#34;PostmanRuntime/6.1.6&#34;,
-    &#34;event_id&#34;: &#34;1a1ee055-1456-46f8-ab4d-779628c05dd4&#34;,
-    &#34;visitor_id&#34;: &#34;1a1ee055145646f8ab4d779628c05dd4&#34;
+    "post_time": 1500999541000,
+    "useragent": "PostmanRuntime/6.1.6",
+    "event_id": "1a1ee055-1456-46f8-ab4d-779628c05dd4",
+    "visitor_id": "1a1ee055145646f8ab4d779628c05dd4"
 }
 
 ```
@@ -171,84 +179,84 @@ JDBC互換データベースにデータを送信するためのWebhookを使用
 
 ```json
 {
-    &#34;metrics&#34;: {
-        &#34;Weeks since first visit&#34;: 0.0,
-        &#34;Lifetime visit count&#34;: 1.0,
-        &#34;Lifetime event count&#34;: 1.0,
-        &#34;Total direct visits&#34;: 1.0
+    "metrics": {
+        "Weeks since first visit": 0.0,
+        "Lifetime visit count": 1.0,
+        "Lifetime event count": 1.0,
+        "Total direct visits": 1.0
     },
-    &#34;dates&#34;: {
-        &#34;Last visit&#34;: 1500999541000,
-        &#34;last_visit_start_ts&#34;: 1500999541000,
-        &#34;First visit&#34;: 1500999541000
+    "dates": {
+        "Last visit": 1500999541000,
+        "last_visit_start_ts": 1500999541000,
+        "First visit": 1500999541000
     },
-    &#34;properties&#34;: {
-        &#34;profile&#34;: &#34;main&#34;,
-        &#34;visitor_id&#34;: &#34;1a1ee055145646f8ab4d779628c05dd4&#34;,
-        &#34;account&#34;: &#34;tealium&#34;
+    "properties": {
+        "profile": "main",
+        "visitor_id": "1a1ee055145646f8ab4d779628c05dd4",
+        "account": "tealium"
     },
-    &#34;flags&#34;: {
-        &#34;Is Registered&#34;: false
+    "flags": {
+        "Is Registered": false
     },
-    &#34;audiences&#34;: [
-        &#34;New Users&#34;
+    "audiences": [
+        "New Users"
     ],
-    &#34;badges&#34;: [
-        &#34;Product Browser&#34;
+    "badges": [
+        "Product Browser"
     ],
-    &#34;preloaded&#34;: false,
-    &#34;creation_ts&#34;: 1500999541000,
-    &#34;_id&#34;: &#34;1a1ee055145646f8ab4d779628c05dd4&#34;,
-    &#34;_partition&#34;: 0,
-    &#34;shard_token&#34;: 0,
-    &#34;current_visit&#34;: {
-        &#34;metrics&#34;: {
-            &#34;Event count&#34;: 1.0
+    "preloaded": false,
+    "creation_ts": 1500999541000,
+    "_id": "1a1ee055145646f8ab4d779628c05dd4",
+    "_partition": 0,
+    "shard_token": 0,
+    "current_visit": {
+        "metrics": {
+            "Event count": 1.0
         },
-        &#34;dates&#34;: {
-            &#34;Visit start&#34;: 1500999541000,
-            &#34;last_event_ts&#34;: 1500999541000
+        "dates": {
+            "Visit start": 1500999541000,
+            "last_event_ts": 1500999541000
         },
-        &#34;properties&#34;: {
-            &#34;Active browser type&#34;: &#34;Chrome&#34;,
-            &#34;Active operating system&#34;: &#34;MacOS&#34;,
-            &#34;Active browser version&#34;: &#34;53&#34;,
-            &#34;Active platform&#34;: &#34;browser&#34;,
-            &#34;Active device&#34;: &#34;other&#34;
+        "properties": {
+            "Active browser type": "Chrome",
+            "Active operating system": "MacOS",
+            "Active browser version": "53",
+            "Active platform": "browser",
+            "Active device": "other"
         },
-        &#34;flags&#34;: {
-            &#34;Direct visit&#34;: true
+        "flags": {
+            "Direct visit": true
         },
-        &#34;property_sets&#34;: {
-            &#34;Active devices&#34;: [
-                &#34;other&#34;
+        "property_sets": {
+            "Active devices": [
+                "other"
             ],
-            &#34;Active browser versions&#34;: [
-                &#34;53&#34;
+            "Active browser versions": [
+                "53"
             ],
-            &#34;Active operating systems&#34;: [
-                &#34;MacOS&#34;
+            "Active operating systems": [
+                "MacOS"
             ],
-            &#34;Active platforms&#34;: [
-                &#34;browser&#34;
+            "Active platforms": [
+                "browser"
             ],
-            &#34;Active browser types&#34;: [
-                &#34;Chrome&#34;
+            "Active browser types": [
+                "Chrome"
             ]
         },
-        &#34;creation_ts&#34;: 1500999541000,
-        &#34;_id&#34;: &#34;9a20caf81d4adc55cfb958da81a513feff62e3324e9f840ed8bf28ca8a39a37d&#34;,
-        &#34;shard_token&#34;: 0,
-        &#34;_dc_ttl_&#34;: 60000,
-        &#34;total_event_count&#34;: 1,
-        &#34;events_compressed&#34;: false
+        "creation_ts": 1500999541000,
+        "_id": "9a20caf81d4adc55cfb958da81a513feff62e3324e9f840ed8bf28ca8a39a37d",
+        "shard_token": 0,
+        "_dc_ttl_": 60000,
+        "total_event_count": 1,
+        "events_compressed": false
     },
-    &#34;_dctrace&#34;: [
-        &#34;local_visitor_processor_visitor_processor&#34;
+    "_dctrace": [
+        "local_visitor_processor_visitor_processor"
     ],
-    &#34;new_visitor&#34;: true,
-    &#34;audiences_joined_at&#34;: {
-        &#34;tealium_main_101&#34;: 1500999542434
+    "new_visitor": true,
+    "audiences_joined_at": {
+        "tealium_main_101": 1500999542434
     }
 }
 ```

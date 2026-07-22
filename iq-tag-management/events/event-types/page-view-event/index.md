@@ -3,7 +3,11 @@ title: Page view event
 description: The page view event sends tracking data when a visitor views a page.
 url: https://docs.tealium.com/iq-tag-management/events/event-types/page-view-event/
 ---
- The page view event listener is now deprecated. For the current event listener, see [Page load event listener](). 
+
+<blockquote>
+The page view event listener is now deprecated. For the current event listener, see [Page load event listener](https://docs.tealium.com/page-load-event/).
+</blockquote>
+
 
 ## Requirements
 
@@ -13,19 +17,27 @@ url: https://docs.tealium.com/iq-tag-management/events/event-types/page-view-eve
 
 The page view event tracks when a visitor views a page. When a visitor performs the action, the event listener appends its data to existing tracking calls.
 
-This behavior is similar to a [Set Data Values]() extension that defines a payload for page views and has a load rule which fires the tag when a specified page or pages are viewed.
 
-For more information about how to add an event listener, see [Manage events]().
+<blockquote>
+This behavior is similar to a [Set Data Values](https://docs.tealium.com/set-data-values-extension/) extension that defines a payload for page views and has a load rule which fires the tag when a specified page or pages are viewed.
+</blockquote>
+
+
+For more information about how to add an event listener, see [Manage events](https://docs.tealium.com/manage-events/).
 
 ### Use case
 
+
+<blockquote>
 Use this event listener with tags that already subscribe to other event listeners.
+</blockquote>
+
 
 Add the page view event in an OR relationship with the other events so that when a visitor views the page, the page view event fires the tag and includes the page view event variables with the tag payload.
 
 ## Tracking events
 
-The page view event performs a `utag.ut.merge()` function to merge this page view event with another event. For more information, see [Utility functions](/platforms/javascript/api/utility-functions/#utagutmerge).
+The page view event performs a `utag.ut.merge()` function to merge this page view event with another event. For more information, see [Utility functions](https://docs.tealium.com/platforms/javascript/api/utility-functions/#utagutmerge).
 
 ## Event triggers
 
@@ -41,15 +53,15 @@ Event trigger variables are the values the event listener sends with the trackin
 
 |Identifier| Description|
 |---| ---|
-|`tealium_event=&#34;page_view&#34;`| The visitor viewed the specified page.|
+|`tealium_event="page_view"`| The visitor viewed the specified page.|
 |`iq_event_id` | The UID of the event listener that sent the event.|
 
 **Example**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;page_view&#34;,
-   &#34;iq_event_id:&#34; : &#34;page_view_events_1&#34;
+   "tealium_event"  : "page_view",
+   "iq_event_id:" : "page_view_events_1"
 }
 
 ```

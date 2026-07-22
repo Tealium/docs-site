@@ -48,10 +48,10 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN
 
 ### `adobeVisitorCustomVisitorId`
 
-Adobe ECIDに既知の訪問IDを構成します。初期化時に既知のECIDが変更された場合は、[`linkECIDToKnownIdentifier`](/ja/platforms/android-kotlin/api/tealium/#linkecidtoknownidentifier)を呼び出して訪問IDを更新します。
+Adobe ECIDに既知の訪問IDを構成します。初期化時に既知のECIDが変更された場合は、[`linkECIDToKnownIdentifier`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#linkecidtoknownidentifier)を呼び出して訪問IDを更新します。
 
 ```java
-config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorCustomVisitorId = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorDataProviderId`
@@ -59,7 +59,7 @@ config.adobeVisitorCustomVisitorId = &#34;20381482060927465156359999806251989655
 ECIDを既知のIDにリンクする際に必要な、Adobeから提供されるデータプロバイダIDを構成します。
 
 ```java
-config.adobeVisitorDataProviderId = &#34;01&#34;
+config.adobeVisitorDataProviderId = "01"
 ```
 
 ### `adobeVisitorExistingEcid`
@@ -69,7 +69,7 @@ config.adobeVisitorDataProviderId = &#34;01&#34;
 例:
 
 ```java
-config.adobeVisitorExistingEcid = &#34;20381482060927465156359999806251989655&#34;
+config.adobeVisitorExistingEcid = "20381482060927465156359999806251989655"
 ```
 
 ### `adobeVisitorOrgId`
@@ -83,7 +83,7 @@ config.adobeVisitorOrgId = STRING_VALUE
 例:
 
 ```java
-config.adobeVisitorOrgId = &#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;
+config.adobeVisitorOrgId = "1A2A111A111150AA0A110A12@AdobeOrg"
 ```
 
 ### `adobeVisitorRetries`
@@ -98,27 +98,27 @@ config.adobeVisitorRetries = 5
 
 ### `autoTrackingBlocklistFilename`
 
-[AutoTrackingモジュール](/ja/platforms/android-kotlin/module-list/autotracking/#block-list)で使用するための構成です。
+[AutoTrackingモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/autotracking/#block-list)で使用するための構成です。
 
 自動トラッキングから除外するアクティビティのリストを含むJSON形式のブロックリストファイルの名前を構成します。ファイルはAndroidの`assets`ディレクトリに配置する必要があります。
 
 ```kotlin
-config.autoTrackingBlocklistFilename = &#34;autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistFilename = "autotracking-blocklist.json"
 ```
 
 ### `autoTrackingBlocklistUrl`
 
-[AutoTrackingモジュール](/ja/platforms/android-kotlin/module-list/autotracking/#block-list)で使用するための構成です。
+[AutoTrackingモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/autotracking/#block-list)で使用するための構成です。
 
 自動トラッキングから除外するアクティビティのリストを含むJSON形式のブロックリストファイルのURLを構成します。
 
 ```kotlin
-config.autoTrackingBlocklistUrl = &#34;https://example.com/autotracking-blocklist.json&#34;
+config.autoTrackingBlocklistUrl = "https://example.com/autotracking-blocklist.json"
 ```
 
 ### `autoTrackingCollectorDelegate`
 
-[AutoTrackingモジュール](/ja/platforms/android-kotlin/module-list/autotracking/#custom-data)で使用するための構成です。
+[AutoTrackingモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/autotracking/#custom-data)で使用するための構成です。
 
 自動トラッキングモジュールによってトラッキングされるアクティビティのために実行されるグローバルデリゲートを構成します。特定のアクティビティに含まれるデータをカスタマイズするために、このデリゲートを編集します。
 
@@ -128,7 +128,7 @@ config.autoTrackingCollectorDelegate = myCollectorDelegate
 
 ### `autoTrackingMode`
 
-[AutoTrackingモジュール](/ja/platforms/android-kotlin/module-list/autotracking/#custom-data)のトラッキングモードを構成します。
+[AutoTrackingモジュール](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/autotracking/#custom-data)のトラッキングモードを構成します。
 
 * `FULL`  
 `@Autotracked(track=false)`で注釈が付けられていないすべてのアクティビティをトラッキングします。
@@ -155,7 +155,7 @@ Collectorsは、デバイスから補足情報を収集し、Tealium Customer Da
 | `Device`        | `Collectors.Device`       |
 | `Lifecycle`     | `Collectors.Lifecycle`    |
 
-これらのモジュールは、[`TealiumConfig`](/ja/platforms/android-kotlin/api/tealium-config/)の`collectors`プロパティを使用して有効または無効にできます。
+これらのモジュールは、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/)の`collectors`プロパティを使用して有効または無効にできます。
 
 以下の例は、使用しているCollectorsのリストに追加する方法です:
 
@@ -205,7 +205,7 @@ config.consentManagerLoggingEnabled = true
 データを送信するTealium Collectのプロファイルを上書きします。
 
 ```java
-config.consentManagerLoggingProfile = &#34;us-mobile&#34;
+config.consentManagerLoggingProfile = "us-mobile"
 ```
 
 ### `consentManagerLoggingUrl`
@@ -229,7 +229,7 @@ config.deepLinkTrackingEnabled = true
 `tealium_visitor_id`のデータレイヤー値を構成します。独自の一意の識別子を持っている場合に使用します。
 
 ```java
-config.existingVisitorId = &#34;8243d23b56d5488571027547bc72d93&#34;
+config.existingVisitorId = "8243d23b56d5488571027547bc72d93"
 ```
 
 ### `hostedDataLayerMaxCacheTimeMinutes`
@@ -240,14 +240,18 @@ config.existingVisitorId = &#34;8243d23b56d5488571027547bc72d93&#34;
 hostedDataLayerMaxCacheTimeMinutes = 30
 ```
 
+
+<blockquote>
 ホストされたデータレイヤーが頻繁に更新される場合、より低い値を構成するとネットワークリクエストが増えるため、バッテリー寿命に影響する可能性があります。
+</blockquote>
+
 
 ### `hostedDataLayerEventMappings`
 
 ホストされたデータレイヤーモジュールがデータレイヤーIDを検索する際に使用するイベントマッピングを構成します。キーはディスパッチの`tealium_event`キーの値です。
 
 ```java
-hostedDataLayerEventMappings = mapOf(&#34;pdp&#34; to &#34;product_id&#34;)
+hostedDataLayerEventMappings = mapOf("pdp" to "product_id")
 ```
 
 ### `logLevel`
@@ -268,7 +272,11 @@ hostedDataLayerEventMappings = mapOf(&#34;pdp&#34; to &#34;product_id&#34;)
 config.logLevel = LogLevel.DEV
 ```
 
+
+<blockquote>
 Android StudioのLogCatを使用して開発ログを表示します。Androidデバイスに接続してLogCatアプリで本番ログを表示します。
+</blockquote>
+
 
 ### `remoteAPIEnabled`
 
@@ -303,15 +311,15 @@ val config = TealiumConfig(
 | パラメータ    | タイプ          | 説明              | 例            |
 |:--------------|:--------------|:-------------------------|:-------------------|
 | `application` | `Application` | アプリケーションインスタンス | `applicationObj`   |
-| `account`     | `String`      | Tealiumアカウント名     | `&#34;companyXYZ&#34;`     |
-| `profile`     | `String`      | Tealiumプロファイル名     | `&#34;main&#34;`           |
+| `account`     | `String`      | Tealiumアカウント名     | `"companyXYZ"`     |
+| `profile`     | `String`      | Tealiumプロファイル名     | `"main"`           |
 | `environment` | `String`      | Tealium環境名 | `Environment.PROD` |
 
 以下は例です:
 
 ```java
 // Application.onCreate()内で実行されていると仮定します
-val config = TealiumConfig(this, &#34;ACCOUNT_NAME&#34;, &#34;PROFILE_NAME&#34;, Environment.PROD)
+val config = TealiumConfig(this, "ACCOUNT_NAME", "PROFILE_NAME", Environment.PROD)
 
 // 必要なDispatchersを追加
 config.dispatchers.addAll(setOf(CollectDispatcher, TagManagementDispatcher))
@@ -344,6 +352,6 @@ val config = TealiumConfig(…).apply {
 |:-------------------|:----------|:----------------------------------------------------------------------|
 | `start_event`      | `String`  | タイムドイベントを開始するための`TealiumEvent`の名前                   |
 | `stop_event`       | `String`  | タイムドイベントを停止するための`TealiumEvent`の名前                   |
-| `timed_event_name` | `String?` | (オプション) タイムドイベントの名前（デフォルト: `&#34;start_event::stop_event&#34;`） |
+| `timed_event_name` | `String?` | (オプション) タイムドイベントの名前（デフォルト: `"start_event::stop_event"`） |
 
 

@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/lo
     * **いいえ**：特定の変数のみを小文字に構成します。  
   
 ドロップダウンから変数を選択します。  
-**&#43;** ボタンをクリックしてさらに変数を追加するか、**-** ボタンをクリックして変数を削除します。
+**+** ボタンをクリックしてさらに変数を追加するか、**-** ボタンをクリックして変数を削除します。
 
 ## 例
 
@@ -34,4 +34,4 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/lo
 1. **すべての変数を小文字にする**を**いいえ**に構成します。
 1. 変数のドロップダウンから**検索キーワード**を選択します。
 
-![](/images/iq-tag-management/lowercasing.png)
+![](https://docs.tealium.com/images/iq-tag-management/lowercasing.png)

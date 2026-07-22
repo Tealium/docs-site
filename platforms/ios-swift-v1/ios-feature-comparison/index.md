@@ -2,7 +2,11 @@
 title: Feature comparison
 description: Detailed list of feature comparison between iOS Objective-C and iOS Swift libraries.
 url: https://docs.tealium.com/platforms/ios-swift-v1/ios-feature-comparison/
----This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](/platforms/ios-swift/).
+---
+<blockquote>
+This is the previous version (1.x) of Tealium for iOS (Swift). For the latest version, see [Tealium for iOS (Swift) 2.x](https://docs.tealium.com/platforms/ios-swift/).
+</blockquote>
+
 
 The Tealium library for Swift is fully compatible with apps running pure Swift, Objective-C, or any combination of the two. Since it is the newest and most up-to-date library, we strongly recommend implementing the Swift library if possible.
 
@@ -10,7 +14,7 @@ The Objective-C library is still fully supported, but the Swift library generall
 
 Check the comparison table below to figure out which is most suitable for your needs.
 
-## Memory Footprint &amp; Performance
+## Memory Footprint & Performance
 
 All SDKs have some performance and memory impacts on your app. This varies between apps, and may be difficult to measure the exact footprint of a specific SDK.
 
@@ -18,25 +22,25 @@ We have measured the Tealium Swift SDK against a baseline of a standard blank iO
 
 **Compiled App Archive (`.ipa` file)**  
 
-* 3&#43; MB (includes all modules)
+* 3+ MB (includes all modules)
 
 **Runtime Memory Usage**  
 
-* 2 - 2.5&#43; MB (Collect module and supporting modules)
-* 7 - 10&#43; MB (Tag Management module, Collect module, and supporting modules)
+* 2 - 2.5+ MB (Collect module and supporting modules)
+* 7 - 10+ MB (Tag Management module, Collect module, and supporting modules)
 
 **Startup Time**   
 
 * ≈0.05 seconds (approximate time from initialization to completion callback firing)
 
 ## Swift Versions
-* 4.0&#43; (Xcode 9.0&#43;)
+* 4.0+ (Xcode 9.0+)
 
 ## Operating Systems
-* iOS 9.0&#43;
-* tvOS 9.2&#43;
-* macOS 10.11&#43;
-* WatchOS 3.0&#43;
+* iOS 9.0+
+* tvOS 9.2+
+* macOS 10.11+
+* WatchOS 3.0+
 
 ## Tealium Products
 * Tealium iQ Tag Management
@@ -71,4 +75,4 @@ The Swift library was built from scratch on a completely new codebase to the [Ob
 | Swift Package Manager (SPM) Support                     |                                 | ✔                | Support for the Swift Package Manager dependency manager                                                        |                                                                                                                                                                                                                                                      |
 | Source Code Available                |                                 | ✔                | May assist with debugging                                                                          |  
 | Consent Manager                | ✔                                | ✔                | Assists with GDPR/privacy compliance                                                                          |
-| Tealium Visitor Service API                | ✔                                |     ✔             | Provides callbacks for changes to a user&#39;s AudienceStream visitor profile
+| Tealium Visitor Service API                | ✔                                |     ✔             | Provides callbacks for changes to a user's AudienceStream visitor profile

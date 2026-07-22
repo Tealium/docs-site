@@ -21,16 +21,20 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
-When you add this connector you are prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector you are prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 After adding the connector, configure the following settings:
 
 * **Customer ID**  
 (Required) The Google Ads account customer ID.
 * **Manager Customer ID**  
-(Optional) If you are accessing the account on behalf of a client, the Manager Customer ID must be set. You can find your Customer ID by logging into Google Ads and going to **Preferences &gt; Access &amp; Security &gt; Manager**.
+(Optional) If you are accessing the account on behalf of a client, the Manager Customer ID must be set. You can find your Customer ID by logging into Google Ads and going to **Preferences > Access & Security > Manager**.
 
 ## Action settings - parameters and options
 
@@ -42,7 +46,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100000
 * Max time since oldest request: 60 minutes
@@ -58,12 +62,12 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Address Info: Country Code | The country code in the user&#39;s address using the two-letter ISO 3166-1 alpha-2 format. |
+| Address Info: Country Code | The country code in the user's address using the two-letter ISO 3166-1 alpha-2 format. |
 | Address Info: First Name (already SHA256 hashed) | Provide the user’s first name that has been already whitespace trimmed, lowercase, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash.  |
 | Address Info: Last Name (already SHA256 hashed) | Provide the user’s last name that has been already whitespace trimmed, lowercase, and SHA256 hashed. |
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
+| Address Info: Postal Code | Postal code of the user's address. |
 | Email Address (already SHA256 hashed) | Provide an email address for the user that has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash. |
 | Phone Number (already SHA256 hashed) | Provide a phone number for the user that has been already whitespace trimmed and SHA256 hashed. |
@@ -74,7 +78,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[&#43;/-HH:MM]`, where `[&#43;/-HH:MM]` is an optional timezone offset from UTC. |
+| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. |
 | Transaction Amount | (Required) Transaction amount in micros, where one million is equivalent to one currency unit. |
 | Currency Code | (Required) The transaction currency code in an ISO 4217 three-letter format. |
 | Transaction Upload Fraction | (Required) The ratio of sales uploaded compared to the overall sales associated with a customer. This value must be between 0 and 1 (excluding 0). For example, if you upload half the sales that you are able to associate with a customer, this value would be 0.5. |
@@ -101,7 +105,7 @@ The connector sends the value of `GRANTED` for `adUserData` and `adPersonalizati
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 33000
 * Max time since oldest request: 60 minutes
@@ -117,12 +121,12 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Address Info: Country Code | The country code in the user&#39;s address using the two-letter ISO 3166-1 alpha-2 format. |
+| Address Info: Country Code | The country code in the user's address using the two-letter ISO 3166-1 alpha-2 format. |
 | Address Info: First Name (already SHA256 hashed) | Provide the user’s first name that has been already whitespace trimmed, lowercase, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash.  |
 | Address Info: Last Name (already SHA256 hashed) | Provide the user’s last name that has been already whitespace trimmed, lowercase, and SHA256 hashed. |
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
+| Address Info: Postal Code | Postal code of the user's address. |
 | Email Address (already SHA256 hashed) | Provide an email address for the user that has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address for the user and the connector will whitespace trim, lowercase, and hash this value using a SHA256 hash. |
 | Phone Number (already SHA256 hashed) | Provide a phone number for the user that has been already whitespace trimmed and SHA256 hashed. |
@@ -133,7 +137,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[&#43;/-HH:MM]`, where `[&#43;/-HH:MM]` is an optional timezone offset from UTC. |
+| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. |
 | Transaction Amount | (Required) Transaction amount in micros, where one million is equivalent to one currency unit. |
 | Currency Code | (Required) The transaction currency code in an ISO 4217 three-letter format. |
 | Transaction Upload Fraction | (Required) The ratio of sales uploaded compared to the overall sales associated with a customer. This value must be between 0 and 1 (excluding 0). For example, if you upload half the sales that you are able to associate with a customer, this value would be 0.5. |

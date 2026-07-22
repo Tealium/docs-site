@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/client-side-tags/cubed-attribution-tag/
 ---
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスし、プロファイルにCUBEDタグを追加してください（[タグの追加]()を参照）。
+まず、タグマーケットプレイスにアクセスし、プロファイルにCUBEDタグを追加してください（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -14,13 +14,13 @@ url: https://docs.tealium.com/ja/client-side-tags/cubed-attribution-tag/
 
 ## ロードルール
 
-[ロードルール]()は、サイト上でこのタグのインスタンスをいつ、どこでロードするかを決定します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、サイト上でこのタグのインスタンスをいつ、どこでロードするかを決定します。
 
 推奨されるロードルール：**全ページ**
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング]()を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 CUBEDタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは以下の通りです：
 

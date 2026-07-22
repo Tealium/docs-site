@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/iterable-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For more information, see [About connectors]().
+Go to the Connector Marketplace and add a new connector. For more information, see [About connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -14,7 +14,7 @@ After adding the connector, configure the following settings:
     * For US-based API endpoints, select **https://app.iterable.com**.
 * **API Key**: Enter your Iterable API key.
 
-To find your API Key, on the Iterable site, go to **Integrations &gt; API Keys** in the **Iterable Connector** menu.
+To find your API Key, on the Iterable site, go to **Integrations > API Keys** in the **Iterable Connector** menu.
 
 ## Actions
 
@@ -43,7 +43,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -58,18 +58,18 @@ This action uses batched requests to support high-volume data transfers to the v
 |Email| User email. Either **Email** or **User ID** must be entered to identify the user. If both are entered, **Email** takes precedence.|
 |Event ID| If an event exists with the entered ID, the event is updated. If none is specified, a new ID is automatically be generated and returned. Note that this ID cannot be longer than 512 bytes.|
 |User ID| User ID that was passed into the `updateUser` call.|
-|Campaign| &lt;ul&gt;&lt;li&gt;Campaign tied to conversion.&lt;/li&gt;&lt;li&gt;For more information, see [Iterable: Introduction to Campaigns](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-).&lt;/li&gt;&lt;/ul&gt;|
+|Campaign| <ul><li>Campaign tied to conversion.</li><li>For more information, see [Iterable: Introduction to Campaigns](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-).</li></ul>|
 |Project Template| Template ID.  For more information, see [Iterable: Introduction to Templates](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-).|
 |Data Fields| Additional data associated with the event. For example: item amount or item quantity. For events of the same name, identically named data fields must be of the same type.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Upsert User (Batched)
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -84,8 +84,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |Prefer User ID| Create a new user with the specified User ID if the user does not exist yet.|
 |User ID| The user ID. Either **Email** or **User ID** must be specified.|
 |Data Fields| The data fields to store in the user profile.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Forget a User in Compliance with GDPR
@@ -94,7 +94,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |Parameter| Description|
 |---| ---|
-|Email| User email. Provide user email if you want to delete the specified user&#39;s data from the Iterable project and prevent future data collection about them.|
+|Email| User email. Provide user email if you want to delete the specified user's data from the Iterable project and prevent future data collection about them.|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Send SMS Notification to User
@@ -109,8 +109,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |Recipient User ID| User ID that was passed into the `updateUser` call.|
 |Send At|  Schedule the message for up to 365 days in the future. If set in the past, the message is sent immediately. Expected format is `YYYY-MM-DD HH:MM:SS`. Ensure data is properly formatted. If attribute of the **Date** type is provided, the connector converts the value to the appropriate date format, shown above. |
 |Data Fields| Fields to merge into template.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Send an Email to an Email Address
@@ -126,8 +126,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |Send At| Schedule the message for up to 365 days in the future. If set in the past, the message is sent immediately. Expected format is `YYYY-MM-DD HH:MM:SS`. Ensure data is properly formatted. If attribute of the **Date** type is provided, the connector converts the value to the appropriate date format, shown above. |
 |Data Fields| Fields to merge into email template.|
 |Metadata| Metadata to pass back through webhooks. Not used for rendering.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`. Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Trigger Workflow
@@ -140,8 +140,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |List| Trigger the workflow for all users in a list.|
 |Email| Trigger the workflow for the specified email address. Trigger only with **Email** or **List**.|
 |Data Fields| Additional data associated with the triggering event.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input.  For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input.  For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Add a User to a Subscription
@@ -180,8 +180,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |Prefer User ID| Create a new user with the specified user ID if the user does not exist yet.|
 |User ID| Typically your database generated ID. Either **Email** or **User ID** must be specified.|
 |Data Fields| The data fields to store in the user profile.|
-|Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input.  For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Body Data.  For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Template Variables| <ul><li>Provide template variables as data input.  For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Templates| <ul><li>Provide templates to be referenced in Body Data.  For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Unsubscribe User from List
@@ -194,7 +194,7 @@ This action uses batched requests to support high-volume data transfers to the v
 |Email| User email. Either **Email** or **User ID** must be specified.|
 |User ID| The user ID. Either **Email** or **User ID** must be specified.|
 |Campaign| Attribute unsubscribe to a campaign. For more information, see [Iterable: Introduction to Campaigns](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-).|
-|Channel Unsubscribe| Unsubscribe email from list&#39;s associated channel.|
+|Channel Unsubscribe| Unsubscribe email from list's associated channel.|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Update User Email
@@ -219,8 +219,8 @@ This action uses batched requests to support high-volume data transfers to the v
 |Prefer User ID| Create a new user with the specified User ID if the user does not exist yet.|
 |User ID| The user ID. Either **Email** or **User ID** must be specified.|
 |User Data Fields| The data fields to store in the user profile.|
-|User Data Fields Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|User Data Fields Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in User Data Fields.  For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|User Data Fields Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|User Data Fields Templates| <ul><li>Provide templates to be referenced in User Data Fields.  For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 
 #### Item attributes
 
@@ -236,9 +236,9 @@ This action uses batched requests to support high-volume data transfers to the v
 |Quantity| Product quantity.|
 |Image URL| URL for product image.|
 |URL| URL for product page.|
-|Items Data Fields| &lt;ul&gt;&lt;li&gt;Additional item properties.&lt;/li&gt;&lt;li&gt;Provide Array type attributes to add multiple items. Array type attributes must be of equal length.&lt;/li&gt;&lt;li&gt;Items Data Fields arrays and Items Attributes arrays must be of equal length.&lt;br&gt; Single value attributes can be used and are applied to each item.&lt;/li&gt;&lt;/ul&gt;|
-|Items Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;br&gt; Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Items Template| &lt;ul&gt;&lt;li&gt;If you need nested objects support, use this section to define a template.&lt;/li&gt;&lt;li&gt;The template expects a JSON array format.&lt;/li&gt;&lt;li&gt;When template is defined, then configuration from the **Items Attributes** section are ignored.&lt;/li&gt;&lt;li&gt;Either **Items Template** or **Items Attributes** must be specified.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt;|
+|Items Data Fields| <ul><li>Additional item properties.</li><li>Provide Array type attributes to add multiple items. Array type attributes must be of equal length.</li><li>Items Data Fields arrays and Items Attributes arrays must be of equal length.<br> Single value attributes can be used and are applied to each item.</li></ul>|
+|Items Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.<br> Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Items Template| <ul><li>If you need nested objects support, use this section to define a template.</li><li>The template expects a JSON array format.</li><li>When template is defined, then configuration from the **Items Attributes** section are ignored.</li><li>Either **Items Template** or **Items Attributes** must be specified.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Track Purchase
@@ -260,11 +260,11 @@ This action uses batched requests to support high-volume data transfers to the v
 |Prefer User ID| Create a new user with the specified User ID if the user does not exist yet.|
 |User ID| The user ID. Either **Email** or **User ID** must be specified.|
 |Campaign| Campaign ID. For more information, see [Iterable: Introduction to Campaigns](https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-).|
-|Project Template| &lt;ul&gt;&lt;li&gt;Template ID.&lt;/li&gt;&lt;li&gt;For more information, see [Iterable: Introduction to Templates](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-).&lt;/li&gt;&lt;/ul&gt;|
+|Project Template| <ul><li>Template ID.</li><li>For more information, see [Iterable: Introduction to Templates](https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-).</li></ul>|
 |Data Fields| Additional fields to be tracked.|
 |User Data Fields| The data fields to store in the user profile.|
-|Data Fields Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Data Fields Templates| &lt;ul&gt;&lt;li&gt;Provide templates to be referenced in Data Fields and User Data Fields. For more information, see .&lt;/li&gt;&lt;li&gt;Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.&lt;/li&gt;&lt;/ul&gt;|
+|Data Fields Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Data Fields Templates| <ul><li>Provide templates to be referenced in Data Fields and User Data Fields. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.</li></ul>|
 
 #### Item attributes
 
@@ -280,9 +280,9 @@ This action uses batched requests to support high-volume data transfers to the v
 |Quantity| Quantity of product purchased.|
 |Image URL| URL for product image.|
 |URL| URL for product page.|
-|Items Data Fields| &lt;ul&gt;&lt;li&gt;Additional item properties.&lt;/li&gt;&lt;li&gt;Provide Array type attributes to add multiple items. Array type attributes must be of equal length.&lt;/li&gt;&lt;li&gt;Items Data Fields arrays and Items Attributes arrays must be of equal length.&lt;/li&gt;&lt;li&gt;Single value attributes can be used and are applied to each item.&lt;/li&gt;&lt;/ul&gt;|
-|Items Template Variables| &lt;ul&gt;&lt;li&gt;Provide template variables as data input. For more information, see .&lt;/li&gt;&lt;li&gt;Name nested template variables with the dot notation. For example: `items.name`.&lt;/li&gt;&lt;li&gt;Nested template variables are typically built from data layer list attributes.&lt;/li&gt;&lt;/ul&gt;|
-|Items Template| &lt;ul&gt;&lt;li&gt;If you need nested objects support, use this section to define a template.&lt;/li&gt;&lt;li&gt;The template expects a JSON array format.&lt;/li&gt;&lt;li&gt;When template is defined, then configuration from the **Items Attributes** section are ignored.&lt;/li&gt;&lt;li&gt;Either **Items Template** or **Items Attributes** must be specified.&lt;/li&gt;&lt;li&gt;For more information, see .&lt;/li&gt;&lt;/ul&gt;|
+|Items Data Fields| <ul><li>Additional item properties.</li><li>Provide Array type attributes to add multiple items. Array type attributes must be of equal length.</li><li>Items Data Fields arrays and Items Attributes arrays must be of equal length.</li><li>Single value attributes can be used and are applied to each item.</li></ul>|
+|Items Template Variables| <ul><li>Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. For example: `items.name`.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul>|
+|Items Template| <ul><li>If you need nested objects support, use this section to define a template.</li><li>The template expects a JSON array format.</li><li>When template is defined, then configuration from the **Items Attributes** section are ignored.</li><li>Either **Items Template** or **Items Attributes** must be specified.</li><li>For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li></ul>|
 | API Key Override | Enter an API key or map an attribute for an API key to override the API key specified in the connector configuration. |
 
 ### Merge Customer Data

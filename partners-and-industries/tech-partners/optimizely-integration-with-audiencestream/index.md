@@ -5,7 +5,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/optimizely-i
 ---
 ## Requirements
 
-Set **Data Enrichment for the Tealium Collect tag** to **Frequent**. For more information, see the [Tealium Collect Setup Guide]().
+Set **Data Enrichment for the Tealium Collect tag** to **Frequent**. For more information, see the [Tealium Collect Setup Guide](https://docs.tealium.com/tealium-collect-tag/).
 
 After you complete the integration, audiences are automatically sent to Optimizely with data layer enrichment.
 
@@ -20,13 +20,13 @@ There are two steps to integrate Optimizely Classic with AudienceStream:
 
 You need to include `utag.sync.js` in all HTML pages that need to use Optimizely. For consistency, you may want to include it in all pages.
 
-For details on setting up `utag.sync.js`, see [Using the utag.sync.js Script]().
+For details on setting up `utag.sync.js`, see [Using the utag.sync.js Script](https://docs.tealium.com/utag-sync/).
 
 ### Connect AudienceStream and Optimizely
 
 To use audiences in Optimizely, you need to connect AudienceStream and Optimizely and then map audiences to your Optimizely project. Use the Tealium Tool: Optimizely Helper to complete both of these tasks.
 
-For more information, see [Tealium Tool: Optimizely Helper]().
+For more information, see [Tealium Tool: Optimizely Helper](https://docs.tealium.com/optimizely-helper/).
 
 ## Integrate Optimizely X with AudienceStream
 
@@ -38,8 +38,8 @@ Use the Optimizely Dashboard to integrate Optimizely X with AudienceStream.
 1. Select the **Overview** tab, then click **Audiences**.
 1. Under Conditions, click **Tealium**.
 1. Drag **Tealium Audience** or **Tealium Badge** to create an Optimizely Audience condition based on a Tealium audience.  
-    ![](/images/tech-partners/createaudience1.png)  
-    ![](/images/tech-partners/createaudience2.png)
+    ![](https://docs.tealium.com/images/tech-partners/createaudience1.png)  
+    ![](https://docs.tealium.com/images/tech-partners/createaudience2.png)
 1. Click **Save Audience**.
 
 ## Create audience-based experiments

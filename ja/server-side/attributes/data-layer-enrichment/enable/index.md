@@ -12,4 +12,4 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/en
 1. 適切な**Data Layer Enrichment Profile**を選択します。
 1. **Apply**をクリックし、変更を**Prod**環境に保存して公開を続けます。
 
-![](/images/server-side/whiteui-datalayerenrichment-selectdatalayerenrichmentprofile.png)
+![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-selectdatalayerenrichmentprofile.png)

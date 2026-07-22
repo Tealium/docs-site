@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/cheetah-digital-by-marig
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -39,22 +39,26 @@ url: https://docs.tealium.com/ja/server-side-connectors/cheetah-digital-by-marig
 
 | **パラメータ** | **説明** |
 |:--------------|:----------------|
-| `email`| &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;ターゲットのメールアドレス。&lt;/li&gt;&lt;/ul&gt;|
-| `eid`| &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;ターゲットのメーリングテンプレートに関連付けられたイベントID。&lt;/li&gt;&lt;/ul&gt;|
-| `aid`| &lt;ul&gt;&lt;li&gt;ターゲットメーリングのアフィリエイトID。&lt;/li&gt;&lt;/ul&gt;|
-| `from_address`| &lt;ul&gt;&lt;li&gt;送信者/差出人のメールアドレス。&lt;/li&gt;&lt;/ul&gt;|
-| `from_text`| &lt;ul&gt;&lt;li&gt;差出人ヘッダーのテキスト部分。&lt;/li&gt;&lt;/ul&gt;|
-| `replyto`| &lt;ul&gt;&lt;li&gt;返信先ヘッダー。&lt;/li&gt;&lt;/ul&gt;|
-| `b `| &lt;ul&gt;&lt;li&gt;エンゲージグローバル抑制ツール（GST）。&lt;/li&gt;&lt;/ul&gt; |
-| `certify`| &lt;ul&gt;&lt;li&gt;第三者の認証スタンプを付けて送信。&lt;/li&gt;&lt;/ul&gt; |
-| `mtype`| &lt;ul&gt;&lt;li&gt;認証済みメッセージタイプ。&lt;/li&gt;&lt;/ul&gt; |
-| `test `| &lt;ul&gt;&lt;li&gt;デプロイされていないイベントをトリガーするテストフラグ。&lt;/li&gt;&lt;/ul&gt; |
-| `part`| &lt;ul&gt;&lt;li&gt;テストに使用するメーリング部分。&lt;/li&gt;&lt;/ul&gt; |
-| 優先コンテンツタイプ                                                              | &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;`HTML=Optional` - PARAM値の特殊なインスタンスで、優先コンテンツタイプを示します：&lt;ul&gt;&lt;li&gt;– テキストのみ&lt;/li&gt;&lt;li&gt;`1` – HTML/テキストのマルチパート&lt;/li&gt;&lt;li&gt;`2` – リッチテキスト/テキストのマルチパート&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
-| 構成するメールCBデータフィールド                                                         | &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。&lt;/li&gt;&lt;li&gt;`cb=Optional` - グローバル抑制ツール（GST）の変更対象となるクライアント定義の抑制ビットインデックスのリストで、1から25までの範囲です。&lt;/li&gt;&lt;li&gt;`cb`パラメータが渡された場合、`b`パラメータも0または1の値で指定する必要があります。&lt;/li&gt;&lt;li&gt;アドレスの抑制を評価する際に、標準的なストップリストを含めるかどうかを示します。&lt;/li&gt;&lt;/ul&gt; |
-| 構成するメールREQデータフィールド                                                        | &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。&lt;/li&gt;&lt;li&gt;`req=Optional` - 成功のために空でない必要があるパーソナライゼーションフィールドを指定します。&lt;/li&gt;&lt;li&gt;ループするダイナミックコンテンツフィールドは、適切な値（`ITEMS.*`）で`*`を置き換えて明示的に必要とすることができます。&lt;/li&gt;&lt;li&gt;また、`req`を`1`の値に構成すると、存在するすべてのパーソナライゼーションフィールドが空でないことが指定されます。&lt;/li&gt;&lt;/ul&gt; |
-| ダイナミックコンテンツタグ/パラメータの構成                                                 | &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。&lt;/li&gt;&lt;li&gt;`PARAM=` - 任意の大文字のパラメータの値は、パラメータ名と2つのパーセンテージ記号で構成されるタグの代わりにメールに代入されるためのものです。&lt;ul&gt;&lt;li&gt;例：PARAMの場合、タグは&#34;`%%PARAM%%`&#34;になります。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;大文字のパラメータは`A` - `Z`または`_`で始まり、その後に任意の数の文字`A`- `Z`、- `9`、またはアンダースコア（ `_`）が続きます。&lt;/li&gt;&lt;li&gt;値は代入前にURLデコードされます。&lt;/li&gt;&lt;li&gt;API呼び出しで提供されないパラメータを参照するタグは空の文字列に置き換えられます。&lt;/li&gt;&lt;li&gt;値のサイズ制限はありません（全体の注文テーブルを提供することができます）。&lt;/li&gt;&lt;li&gt;テキスト、html、リッチテキスト/aolの3種類のメールクリエイティブのパラメータにはバージョニングがありません。&lt;/li&gt;&lt;li&gt;変数コンテンツがクリエイティブによって異なる形式でフォーマットされる必要がある場合、API呼び出しは異なるパラメータ名で異なるバージョンを提供する必要があります。&lt;/li&gt;&lt;li&gt;メーリングは、バージョンに適したタグを使用するように構成する必要があります。&lt;/li&gt;&lt;li&gt;パラメータ`T`、`TRACK`、および`EMAIL`は内部使用のために予約されています。&lt;/li&gt;&lt;li&gt;APIはPARAM名に対してエラートレラントです。&lt;/li&gt;&lt;li&gt;テンプレートに存在しないPARAMが提供された場合、それは静かに無視されます。&lt;/li&gt;&lt;li&gt;すべての名前を校正して、スペルミスにより失われないように確認してください。&lt;/li&gt;&lt;/ul&gt; |
-| `getuser1` API呼び出しを介したサブスクライバールックアップの有効化 | &lt;ul&gt;&lt;li&gt;このオプションを有効にすると、ターゲットのサブスクライバーが`getuser1` API呼び出しを使用して検索される追加のAPI呼び出しがトリガーされます。&lt;/li&gt;&lt;li&gt;結果は次のセクションで構成されたサブスクライバーリストIDと照合され、一致した場合には`ebmtrigger1` API呼び出しを介してメールが送信されます。&lt;/li&gt;&lt;/ul&gt; このAPI呼び出しから返されるAIDは、&#34;Email General Data Fields to Set&#34;セクションの構成を上書きして使用されます。ただし、&#34;Subscriber Lookupから返されるAIDの使用を除外&#34;がチェックされている場合は除きます。 |
-| &#34;Subscriber Lookup&#34;から返されるAIDの使用を除外 | &lt;ul&gt;&lt;li&gt;このオプションは、&#34;Subscriber Lookup&#34;も有効にされている場合にのみ使用されます。&lt;/li&gt;&lt;li&gt;チェックされている場合、&#34;Subscriber Lookup&#34; API呼び出しで返されたAIDは、次の`ebmtrigger1` API呼び出しには含まれません。それ以外の場合、&#34;Subscriber Lookup&#34;からのAIDが含まれ、&#34;Email General Data Fields to Set&#34;セクションの構成を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| サブスクライバールックアップ（`getuser1` API呼び出し）と照合するターゲットサブスクライバーリストID | &lt;ul&gt;&lt;li&gt;このオプションは、&#34;Subscriber Lookup&#34;も有効にされている場合にのみ使用されます。&lt;/li&gt;&lt;li&gt;email&lt;/li&gt;&lt;li&gt;このテーブルの&#34;Email General Data Fields to Set&#34;行を参照してください。&lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;&#34;Email General Data Fields to Set&#34;セクションで提供されたメールアドレスがサブスクライバーの検索に使用されます。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;ターゲットサブスクライバーリストID  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;`getuser1` API呼び出しの応答と照合するために使用されるサブスクライバーリストID。&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; |
+| `email`| <ul><li>必須</li><li>ターゲットのメールアドレス。</li></ul>|
+| `eid`| <ul><li>必須</li><li>ターゲットのメーリングテンプレートに関連付けられたイベントID。</li></ul>|
+| `aid`| <ul><li>ターゲットメーリングのアフィリエイトID。</li></ul>|
+| `from_address`| <ul><li>送信者/差出人のメールアドレス。</li></ul>|
+| `from_text`| <ul><li>差出人ヘッダーのテキスト部分。</li></ul>|
+| `replyto`| <ul><li>返信先ヘッダー。</li></ul>|
+| `b `| <ul><li>エンゲージグローバル抑制ツール（GST）。</li></ul> |
+| `certify`| <ul><li>第三者の認証スタンプを付けて送信。</li></ul> |
+| `mtype`| <ul><li>認証済みメッセージタイプ。</li></ul> |
+| `test `| <ul><li>デプロイされていないイベントをトリガーするテストフラグ。</li></ul> |
+| `part`| <ul><li>テストに使用するメーリング部分。</li></ul> |
+| 優先コンテンツタイプ                                                              | <ul><li>オプション</li><li>`HTML=Optional` - PARAM値の特殊なインスタンスで、優先コンテンツタイプを示します：<ul><li>– テキストのみ</li><li>`1` – HTML/テキストのマルチパート</li><li>`2` – リッチテキスト/テキストのマルチパート</li></ul> </li></ul> |
+| 構成するメールCBデータフィールド                                                         | <ul><li>オプション</li><li>フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。</li><li>`cb=Optional` - グローバル抑制ツール（GST）の変更対象となるクライアント定義の抑制ビットインデックスのリストで、1から25までの範囲です。</li><li>`cb`パラメータが渡された場合、`b`パラメータも0または1の値で指定する必要があります。</li><li>アドレスの抑制を評価する際に、標準的なストップリストを含めるかどうかを示します。</li></ul> |
+| 構成するメールREQデータフィールド                                                        | <ul><li>オプション</li><li>フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。</li><li>`req=Optional` - 成功のために空でない必要があるパーソナライゼーションフィールドを指定します。</li><li>ループするダイナミックコンテンツフィールドは、適切な値（`ITEMS.*`）で`*`を置き換えて明示的に必要とすることができます。</li><li>また、`req`を`1`の値に構成すると、存在するすべてのパーソナライゼーションフィールドが空でないことが指定されます。</li></ul> |
+| ダイナミックコンテンツタグ/パラメータの構成                                                 | <ul><li>オプション</li><li>フィールドごとに1行のアイテムを追加します（提供される行アイテムはパイプで区切られています）。</li><li>`PARAM=` - 任意の大文字のパラメータの値は、パラメータ名と2つのパーセンテージ記号で構成されるタグの代わりにメールに代入されるためのものです。<ul><li>例：PARAMの場合、タグは"`%%PARAM%%`"になります。</li></ul> </li><li>大文字のパラメータは`A` - `Z`または`_`で始まり、その後に任意の数の文字`A`- `Z`、- `9`、またはアンダースコア（ `_`）が続きます。</li><li>値は代入前にURLデコードされます。</li><li>API呼び出しで提供されないパラメータを参照するタグは空の文字列に置き換えられます。</li><li>値のサイズ制限はありません（全体の注文テーブルを提供することができます）。</li><li>テキスト、html、リッチテキスト/aolの3種類のメールクリエイティブのパラメータにはバージョニングがありません。</li><li>変数コンテンツがクリエイティブによって異なる形式でフォーマットされる必要がある場合、API呼び出しは異なるパラメータ名で異なるバージョンを提供する必要があります。</li><li>メーリングは、バージョンに適したタグを使用するように構成する必要があります。</li><li>パラメータ`T`、`TRACK`、および`EMAIL`は内部使用のために予約されています。</li><li>APIはPARAM名に対してエラートレラントです。</li><li>テンプレートに存在しないPARAMが提供された場合、それは静かに無視されます。</li><li>すべての名前を校正して、スペルミスにより失われないように確認してください。</li></ul> |
+| `getuser1` API呼び出しを介したサブスクライバールックアップの有効化 | <ul><li>このオプションを有効にすると、ターゲットのサブスクライバーが`getuser1` API呼び出しを使用して検索される追加のAPI呼び出しがトリガーされます。</li><li>結果は次のセクションで構成されたサブスクライバーリストIDと照合され、一致した場合には`ebmtrigger1` API呼び出しを介してメールが送信されます。</li></ul> 
+<blockquote>
+このAPI呼び出しから返されるAIDは、"Email General Data Fields to Set"セクションの構成を上書きして使用されます。ただし、"Subscriber Lookupから返されるAIDの使用を除外"がチェックされている場合は除きます。
+</blockquote>
+ |
+| "Subscriber Lookup"から返されるAIDの使用を除外 | <ul><li>このオプションは、"Subscriber Lookup"も有効にされている場合にのみ使用されます。</li><li>チェックされている場合、"Subscriber Lookup" API呼び出しで返されたAIDは、次の`ebmtrigger1` API呼び出しには含まれません。それ以外の場合、"Subscriber Lookup"からのAIDが含まれ、"Email General Data Fields to Set"セクションの構成を上書きします。</li></ul> |
+| サブスクライバールックアップ（`getuser1` API呼び出し）と照合するターゲットサブスクライバーリストID | <ul><li>このオプションは、"Subscriber Lookup"も有効にされている場合にのみ使用されます。</li><li>email</li><li>このテーブルの"Email General Data Fields to Set"行を参照してください。<ul><li>必須</li><li>"Email General Data Fields to Set"セクションで提供されたメールアドレスがサブスクライバーの検索に使用されます。</li></ul> </li><li>ターゲットサブスクライバーリストID  <ul><li>必須</li><li>`getuser1` API呼び出しの応答と照合するために使用されるサブスクライバーリストID。</li></ul> </li></ul> |
 

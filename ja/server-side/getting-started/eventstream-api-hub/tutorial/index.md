@@ -13,13 +13,13 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 ## Tealium EventStreamとは何ですか？
 
-![](/images/tutorials/eventstream-icon.jpg)
+![](https://docs.tealium.com/images/tutorials/eventstream-icon.jpg)
 
 Tealium EventStream API Hubは、軽量なデータ収集および配信プラットフォームです。APIハブは、サーバーサイドのベンダー統合を活用し、モバイルアプリのサイズを縮小し、クライアントサイドのネットワークリクエストを最小限に抑え、コードリリースなしで新しいベンダーをデプロイすることができます。Tealium EventStreamは、着信データの管理、イベント要件の定義、データ品質の検査、送信データのオーケストレーションを支援します。
 
 ## ユーザーインターフェースを探索する
 
-あなたのアカウントにログインしてください：&lt;https://my.tealiumiq.com/&gt;
+あなたのアカウントにログインしてください：<https://my.tealiumiq.com/>
 
 Tealium EventStreamは、以下の領域に分かれています：
 

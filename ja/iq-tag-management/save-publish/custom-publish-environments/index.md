@@ -23,8 +23,8 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/custom-publish-e
 
 カスタム環境の作成と管理についての詳細情報：
 
-* プラットフォーム権限：[環境管理]()。
-* 旧権限：[コードセンター]()。
+* プラットフォーム権限：[環境管理](https://docs.tealium.com/manage-environments/)。
+* 旧権限：[コードセンター](https://docs.tealium.com/code-center/)。
 
 ## カスタム環境への公開
 
@@ -32,7 +32,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/save-publish/custom-publish-e
 
 1. **保存/公開**をクリックします。
 1. **公開場所**セクションで、**カスタム**チェックボックスを選択します。ドロップダウンリストが表示されます：
-    ![](/images/iq-tag-management/save-publish/iq-custom-publish-environment-save-publish.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/save-publish/iq-custom-publish-environment-save-publish.png)
 1. ドロップダウンリストから公開したい環境を選択します。
     * 一度に1つのカスタム環境にのみ公開できます。複数の環境に公開するには、それぞれの環境で公開プロセスを繰り返します。
 1. **公開**をクリックします。

@@ -3,7 +3,11 @@ title: Xandr Tag Setup Guide (Deprecated)
 description: This article describes how to set up the Xandr tag in your Tealium iQ Tag Management account.
 url: https://docs.tealium.com/client-side-tags/xandr-tag/
 ---
- The Xandr tag is deprecated and no longer supported. We recommend migrating to the [Xandr Universal Pixel tag]().  
+
+<blockquote>
+The Xandr tag is deprecated and no longer supported. We recommend migrating to the [Xandr Universal Pixel tag](https://docs.tealium.com/xandr-universal-pixel-tag/).
+</blockquote>
+
 
 ## Requirements
 
@@ -11,7 +15,7 @@ url: https://docs.tealium.com/client-side-tags/xandr-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -22,11 +26,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data mappings
 
-[Mapping]() is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
+[Mapping](https://docs.tealium.com/about-data-mappings/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
 
 You only need to map to the following destination variables if you want to dynamically set these Tag configurations. If you set one, you do not need to set the other.
 

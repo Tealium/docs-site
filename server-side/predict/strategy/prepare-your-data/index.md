@@ -9,19 +9,19 @@ This section defines basic data wellness concepts you can use to examine, audit,
 
 After reviewing and understanding the concepts, advance to the following data readiness steps:
 
-![](/images/predict/data-readiness.png)
+![](https://docs.tealium.com/images/predict/data-readiness.png)
 
-* **Strategy**&lt;br&gt;
+* **Strategy**<br>
 Define your business goals and your strategy. Define what do want to accomplish with machine learning technology, identify your audiences, and decide what data you want to capture and act on.
 
-* **Data Completeness**&lt;br&gt;
+* **Data Completeness**<br>
 Examine the volume and completeness of your data. As always, better data produces better outcomes.
 
-* **Governance and Consent**&lt;br&gt;
+* **Governance and Consent**<br>
 Review and understand compliance practices and requirements regarding data usage.
 
-* **Accessibility**&lt;br&gt;
-Ensure that the insights you identify are accessible to other tools within your &#34;tech stack&#34;.
+* **Accessibility**<br>
+Ensure that the insights you identify are accessible to other tools within your "tech stack".
 
 * **Data Integrity**  
 Review your Tealium AudienceStream CDP implementation and compare the results of your data to the of data you want to collect, capture, and act on.
@@ -30,7 +30,7 @@ To learn more about data readiness and review the wellness checklist, see the [D
 
 ### Data wellness services
 
-If you need help getting started, we offer a &#34;Data Wellness&#34; services package to assist in getting your data ready to use with Tealium Predict. To learn how you can benefit from this service according to your unique data, contact your account representative.
+If you need help getting started, we offer a "Data Wellness" services package to assist in getting your data ready to use with Tealium Predict. To learn how you can benefit from this service according to your unique data, contact your account representative.
 
 ## Data readiness actions
 
@@ -39,7 +39,7 @@ The following steps describe actions you and your teams can take to get your dat
 1. **Audit**  
 Audit your data layer and AudienceStream attributes. Examine your data quality, volume, and maturity and make any adjustments as needed to improve the quality and integrity of your customer data.
 1. **Define and Integrate**  
-Define your digital data strategy and integrate. Your data foundation and infrastructure is vendor-neutral and can be used to power your entire &#34;tech stack&#34; without dependencies on any one vendor.
+Define your digital data strategy and integrate. Your data foundation and infrastructure is vendor-neutral and can be used to power your entire "tech stack" without dependencies on any one vendor.
 1. **Data Governance Practices**  
 Review, define, and implement your data governance practices. As compliance is ever-evolving, ensure that compliance issues are revisited on a regular basis to ensure the long-term health and viability of your data.
 1. **Understand and Enrich**  

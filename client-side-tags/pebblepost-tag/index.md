@@ -4,7 +4,7 @@ description: This article describes how to configure PebblePost in your Tealium 
 url: https://docs.tealium.com/client-side-tags/pebblepost-tag/
 ---## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -12,13 +12,13 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 Recommended Load Rule: All Pages
 
 ## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the PebblePost Tag are built into its Data Mapping tab. Available categories are:
 
@@ -27,7 +27,7 @@ The destination variables for the PebblePost Tag are built into its Data Mapping
 |**Destination Name**| **Description**|
 |---| ---|
 |Customer Email (email)| The email address for the customer.|
-|Synthetic Endpoint (end\_url)| The URL trigger for the transaction. The PebblePost tag triggers campaign logic based on URL value, if your page will not provide one, you may pass an artificial URL value here. For example: &#34;/thankyou&#34;.|
+|Synthetic Endpoint (end\_url)| The URL trigger for the transaction. The PebblePost tag triggers campaign logic based on URL value, if your page will not provide one, you may pass an artificial URL value here. For example: "/thankyou".|
 |Customer Tag (tags)| A custom value you may pass through the PebblePost tag.|
 
 ### E-Commerce

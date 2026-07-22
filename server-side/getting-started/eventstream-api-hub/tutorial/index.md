@@ -7,7 +7,7 @@ Step through this guide to learn how to quickly set up a working server-side pro
 
 ## Requirements
 
-Here&#39;s what you will need to complete this guide:
+Here's what you will need to complete this guide:
 
 * Tealium server-side login credentials
 * Access to add or change the code of a website or mobile app
@@ -15,13 +15,13 @@ Here&#39;s what you will need to complete this guide:
 
 ## What is Tealium EventStream?
 
-![](/images/tutorials/eventstream-icon.jpg)
+![](https://docs.tealium.com/images/tutorials/eventstream-icon.jpg)
 
 Tealium EventStream API Hub is lightweight data collection and delivery platform. An API hub takes advantage of server-side vendor integrations, allowing you to reduce the size of your mobile apps, minimize client-side network requests, and deploy new vendors without the need for code releases. Tealium EventStream helps you manage incoming data, define event requirements, inspect data quality, and orchestrate out-going data.
 
 ## Explore the user interface
 
-Log in to your account: &lt;https://my.tealiumiq.com/&gt;
+Log in to your account: <https://my.tealiumiq.com/>
 
 Tealium EventStream is organized into the following areas:
 

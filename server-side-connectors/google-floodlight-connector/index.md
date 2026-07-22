@@ -5,7 +5,11 @@ url: https://docs.tealium.com/server-side-connectors/google-floodlight-connector
 ---
 The Google Floodlight connector inserts offline conversions into the Floodlight Conversion Tracking and Attribution system through the Google Campaign Manager 360 API.
 
-Floodlight is the conversion tracking system used across the Google Marketing Platform. All GMP products (Campaign Manager 360*, Search Ads 360, and Display &amp; Video 360) can use Floodlight for measuring conversions.
+
+<blockquote>
+Floodlight is the conversion tracking system used across the Google Marketing Platform. All GMP products (Campaign Manager 360*, Search Ads 360, and Display & Video 360) can use Floodlight for measuring conversions.
+</blockquote>
+
 
 ## Requirements
 
@@ -27,7 +31,7 @@ This connector uses the following vendor API:
 
 ### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 60 minutes
@@ -37,18 +41,26 @@ This connector uses batched requests to support high-volume data transfers to th
 
 Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see [Google: Best practices for uploading offline conversions](https://support.google.com/campaignmanager/answer/2823388?hl=en).
 
-Actions are not delayed when using [trace]() in EventSream or AudienceStream.
+
+<blockquote>
+Actions are not delayed when using [trace](https://docs.tealium.com/about-trace/) in EventSream or AudienceStream.
+</blockquote>
+
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
 * **Floodlight Profile ID**  
   * The Floodlight Profile ID that is given to you by Campaign Manager 360, after adding the `api@tealium.com` user to your Campaign Manager 360 account.
 
-When you add this connector, you are be prompted to accept the vendor&#39;s data platform policy.
+
+<blockquote>
+When you add this connector, you are be prompted to accept the vendor's data platform policy.
+</blockquote>
+
 
 ## Actions
 
@@ -102,17 +114,17 @@ This section describes how to set up parameters and options for each action.
 | Email Address (already SHA256 hashed) | Provide an email address which has been already whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses before hashing. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address and the connector removes all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses, whitespace trim, lowercase, and hash this value using SHA256 hash. |
 | Phone Number (already SHA256 hashed) | Provide a phone number which has been already whitespace trimmed and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector removes all non-figit symbols, prefix the number with a plus sign (`&#43;`), whitespace trim and hash this value using SHA256 hash. |
+| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector removes all non-figit symbols, prefix the number with a plus sign (`+`), whitespace trim and hash this value using SHA256 hash. |
 | Address Info: First Name (already SHA256 hashed) | Provide first name which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) |  Provide a plain text first name and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. |
 | Address Info: Last Name (already SHA256 hashed) | Provide last name which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Last Name (apply SHA256 hash) | Provide a plain text last name and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. |
 | Address Info: Street Address (already SHA256 hashed) | Provide a street address which does not contain special characters, has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: Street Address (apply SHA256 hash) | Provide a plain text street address and the connector removes all special characters, whitespace trims, lowercases, and hashes this value using SHA256 hash. |
-| Address Info: City | City of the user&#39;s address. |
-| Address Info: State | State code of the user&#39;s address. |
-| Address Info: Postal Code | Postal code of the user&#39;s address. |
-| Address Info: Country Code | The 2-letter country code of the user&#39;s address in ISO 3166-1 alpha-2 format. |
+| Address Info: City | City of the user's address. |
+| Address Info: State | State code of the user's address. |
+| Address Info: Postal Code | Postal code of the user's address. |
+| Address Info: Country Code | The 2-letter country code of the user's address in ISO 3166-1 alpha-2 format. |
 
 #### Encryption
 

@@ -3,7 +3,11 @@ title: TikTokオーディエンスコネクタ構成ガイド
 description: この記事では、TikTokオーディエンスコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/tiktok-audiences-connector-setup-guide/
 ---
- このコネクタは非推奨となりました。代わりに[TikTokオーディエンス（Tealium提供の資格情報）コネクタ]()の使用をお勧めします。
+
+<blockquote>
+このコネクタは非推奨となりました。代わりに[TikTokオーディエンス（Tealium提供の資格情報）コネクタ](https://docs.tealium.com/tiktok-audiences-tealium-provided-credentials-connector/)の使用をお勧めします。
+</blockquote>
+
 
 ## API情報
 
@@ -16,7 +20,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-audiences-connect
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：1000
 * 最古のリクエストからの最大時間：30分
@@ -24,7 +28,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-audiences-connect
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-connect
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -38,26 +38,26 @@ url: https://docs.tealium.com/ja/server-side-connectors/new-relic-mobile-connect
 
 |**パラメータ**| **説明**|
 |---| ---|
-|モバイルアプリケーション|  &lt;ul&gt;&lt;li&gt;メトリクスを提供するブラウザアプリケーション。&lt;/li&gt;&lt;li&gt;アプリケーションがまだNew Relic Insightsに存在しない場合、または作成されない場合は、カスタム名を提供します。&lt;/li&gt;&lt;li&gt;これはNew Relicシステムにアプリケーションを作成するわけではなく、New Relic Insightsでアプリケーションをクエリする能力を提供します。&lt;/li&gt;&lt;/ul&gt; |
-|イベントカテゴリ|  &lt;ul&gt;&lt;li&gt;イベントカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|イベントタイプ|  &lt;ul&gt;&lt;li&gt;オプション&lt;/li&gt;&lt;li&gt;このデータが保存されるイベントのタイプ。&lt;/li&gt;&lt;li&gt;デフォルト値は **Mobile Event** です&lt;/li&gt;&lt;/ul&gt; |
-|アプリケーションビルド番号|  &lt;ul&gt;&lt;li&gt;アプリケーションビルド番号&lt;/li&gt;&lt;/ul&gt; |
-|New Relicエージェントバージョン番号|  &lt;ul&gt;&lt;li&gt;New Relicエージェントバージョン番号&lt;/li&gt;&lt;/ul&gt; |
-|アプリが位置する都市|  &lt;ul&gt;&lt;li&gt;アプリが位置する都市&lt;/li&gt;&lt;/ul&gt; |
-|アプリが位置する国|  &lt;ul&gt;&lt;li&gt;アプリが位置する国&lt;/li&gt;&lt;/ul&gt; |
-|アプリが位置する地域|  &lt;ul&gt;&lt;li&gt;アプリが位置する地域&lt;/li&gt;&lt;/ul&gt; |
-|デバイスカテゴリ|  &lt;ul&gt;&lt;li&gt;デバイスカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|デバイス製造者|  &lt;ul&gt;&lt;li&gt;デバイス製造者&lt;/li&gt;&lt;/ul&gt; |
-|デバイスモデル番号|  &lt;ul&gt;&lt;li&gt;デバイスモデル番号&lt;/li&gt;&lt;/ul&gt; |
-|インタラクションの期間|  &lt;ul&gt;&lt;li&gt;インタラクションの期間&lt;/li&gt;&lt;/ul&gt; |
-|新規アプリインストール|  &lt;ul&gt;&lt;li&gt;新規アプリインストール&lt;/li&gt;&lt;/ul&gt; |
-|最後のアプリケーションインタラクション|  &lt;ul&gt;&lt;li&gt;最後のアプリケーションインタラクション&lt;/li&gt;&lt;/ul&gt; |
-|アプリケーションメモリ使用量|  &lt;ul&gt;&lt;li&gt;アプリケーションメモリ使用量&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーセッションの期間|  &lt;ul&gt;&lt;li&gt;ユーザーセッションの期間&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーセッションID|  &lt;ul&gt;&lt;li&gt;ユーザーセッションID&lt;/li&gt;&lt;/ul&gt; |
-|最後のインタラクションからの時間|  &lt;ul&gt;&lt;li&gt;最後のインタラクションからの時間&lt;/li&gt;&lt;/ul&gt; |
-|ロードからの時間|  &lt;ul&gt;&lt;li&gt;ロードからの時間&lt;/li&gt;&lt;/ul&gt; |
-|バージョンからのアップグレード|  &lt;ul&gt;&lt;li&gt;バージョンからのアップグレード&lt;/li&gt;&lt;/ul&gt; |
-|New Relicエージェントバージョン番号|  &lt;ul&gt;&lt;li&gt;New Relicエージェントバージョン番号&lt;/li&gt;&lt;/ul&gt; |
-|インタラクションの名前|  &lt;ul&gt;&lt;li&gt;インタラクションの名前&lt;/li&gt;&lt;/ul&gt; |
+|モバイルアプリケーション|  <ul><li>メトリクスを提供するブラウザアプリケーション。</li><li>アプリケーションがまだNew Relic Insightsに存在しない場合、または作成されない場合は、カスタム名を提供します。</li><li>これはNew Relicシステムにアプリケーションを作成するわけではなく、New Relic Insightsでアプリケーションをクエリする能力を提供します。</li></ul> |
+|イベントカテゴリ|  <ul><li>イベントカテゴリ</li></ul> |
+|イベントタイプ|  <ul><li>オプション</li><li>このデータが保存されるイベントのタイプ。</li><li>デフォルト値は **Mobile Event** です</li></ul> |
+|アプリケーションビルド番号|  <ul><li>アプリケーションビルド番号</li></ul> |
+|New Relicエージェントバージョン番号|  <ul><li>New Relicエージェントバージョン番号</li></ul> |
+|アプリが位置する都市|  <ul><li>アプリが位置する都市</li></ul> |
+|アプリが位置する国|  <ul><li>アプリが位置する国</li></ul> |
+|アプリが位置する地域|  <ul><li>アプリが位置する地域</li></ul> |
+|デバイスカテゴリ|  <ul><li>デバイスカテゴリ</li></ul> |
+|デバイス製造者|  <ul><li>デバイス製造者</li></ul> |
+|デバイスモデル番号|  <ul><li>デバイスモデル番号</li></ul> |
+|インタラクションの期間|  <ul><li>インタラクションの期間</li></ul> |
+|新規アプリインストール|  <ul><li>新規アプリインストール</li></ul> |
+|最後のアプリケーションインタラクション|  <ul><li>最後のアプリケーションインタラクション</li></ul> |
+|アプリケーションメモリ使用量|  <ul><li>アプリケーションメモリ使用量</li></ul> |
+|ユーザーセッションの期間|  <ul><li>ユーザーセッションの期間</li></ul> |
+|ユーザーセッションID|  <ul><li>ユーザーセッションID</li></ul> |
+|最後のインタラクションからの時間|  <ul><li>最後のインタラクションからの時間</li></ul> |
+|ロードからの時間|  <ul><li>ロードからの時間</li></ul> |
+|バージョンからのアップグレード|  <ul><li>バージョンからのアップグレード</li></ul> |
+|New Relicエージェントバージョン番号|  <ul><li>New Relicエージェントバージョン番号</li></ul> |
+|インタラクションの名前|  <ul><li>インタラクションの名前</li></ul> |
 

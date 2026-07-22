@@ -11,16 +11,24 @@ Data transformation functions execute when data enters the Tealium system but be
 * Populating variables in the event object based on other values.
 * Renaming variables by assigning the value to a different variable and deleting the original variable.
 
+
+<blockquote>
 File import events are not supported with data transformation functions.
+</blockquote>
+
 
 ## Input to a data transformation function
 
 Data transformation functions have one of the following input parameters depending on the source of the data:
 
 * `event`: An event data object from Tealium Collect. For more information, see [Event parameter]().
-* `dataRecord`: A data record from a cloud data source. For more information, see [Data record object](). 
+* `dataRecord`: A data record from a cloud data source. For more information, see [Data record object](https://docs.tealium.com/about-data-record-functions/#data-record-object). 
 
+
+<blockquote>
 The Tealium module exports the `flatten()` utility for data transformation functions, which converts a nested object into a new object with no nesting.
+</blockquote>
+
 
 ## Custom triggers
 
@@ -32,14 +40,14 @@ For example, in the following rule, the function is triggered when a `purchase` 
 [
   [
     {
-      &#34;input&#34;: &#34;$.dataSourceId&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;r2rbm8&#34;
+      "input": "$.dataSourceId",
+      "operator": "equals",
+      "filter": "r2rbm8"
     },
     {
-      &#34;input&#34;: &#34;$.data.udo.tealium_event&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;purchase&#34;
+      "input": "$.data.udo.tealium_event",
+      "operator": "equals",
+      "filter": "purchase"
     }
   ] 
 ]
@@ -47,21 +55,25 @@ For example, in the following rule, the function is triggered when a `purchase` 
 
 A condition is based on a property selector of the incoming data object, a comparison operator, and a comparison value. The selector is a JSONPath expression (see [JSONPath](https://github.com/json-path/JsonPath)) and can reference any property in the object.
 
-For information on creating a data transformation function and a custom trigger, see [Create a function]().
+For information on creating a data transformation function and a custom trigger, see [Create a function](https://docs.tealium.com/create-function/).
 
+
+<blockquote>
 An event or data record can trigger only one function. If the incoming data matches more than one trigger rule, the function with the oldest **Date Modified** is triggered.
+</blockquote>
+
 
 ### For events
 
 For events coming from Tealium Collect, custom trigger conditions can be based on any property of the `event` parameter, but are commonly based on the data source key, data source platform, and the `tealium_event` attribute.
 
-For more information about the `event` parameter, see [Event parameter](). 
+For more information about the `event` parameter, see [Event parameter](https://docs.tealium.com/transforms-event-parameter/). 
 
 ### For data records
 
 For events coming from a cloud data source, custom trigger conditions can be based on any property of the `dataRecord` parameter, but must include a condition based on the data source key (`$.dataSourceId`).
 
-For more information about the `dataRecord` parameter, see [Data record object](). 
+For more information about the `dataRecord` parameter, see [Data record object](https://docs.tealium.com/about-data-record-functions/#data-record-object). 
 
 ### Rule limitations
 
@@ -76,10 +88,10 @@ For more information about the `dataRecord` parameter, see [Data record object](
 When you create a data transformation function, default code is shown in the **Code** tab. The default code imports the `flatten` library and calls `transform(event)`, where the `event` parameter is a metadata object for the incoming event, then flattens the incoming `event` object. Change the default `transform()` code as needed to modify the event attributes in the `event.data.udo` object.
 
 ```js
-import flatten from &#34;tealium/util/flatten&#34;;
-// &#34;transform&#34; function lets you access event and apply changes
+import flatten from "tealium/util/flatten";
+// "transform" function lets you access event and apply changes
 
-transform((event) =&gt; {
+transform((event) => {
     // changes are applied through the mutation of the original event
     event.data.udo = flatten(event.data.udo);
     console.log(JSON.stringify(event, null, 2));
@@ -92,7 +104,7 @@ For examples of data transformation functions, see [Example Code]().
 
 Custom triggers were introduced after the initial release of data transformation functions. For any data transformation functions that existed before custom triggers were introduced, a condition similar to the following is automatically created:
 
-![](/images/server-side/transfm-conversion-edit-cond.png)
+![](https://docs.tealium.com/images/server-side/transfm-conversion-edit-cond.png)
 
 This new condition specifies the data source ID set to the ID of the data source associated with the function. The function is triggered for every event from the data source. You can edit this condition to trigger the function for more specific events.
 

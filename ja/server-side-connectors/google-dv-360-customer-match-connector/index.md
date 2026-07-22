@@ -14,19 +14,23 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 ## 要件
 
-このコネクタを構成する前に、Google Display &amp; Video 360 アカウントにTealiumをリンクされたアカウントとして追加してください。
+このコネクタを構成する前に、Google Display & Video 360 アカウントにTealiumをリンクされたアカウントとして追加してください。
 
-詳細については、[Google Display &amp; Video 360: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=ja)を参照してください。
+詳細については、[Google Display & Video 360: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=ja)を参照してください。
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[About Connectors](https://docs.tealium.com/manage-connectors/)を参照してください。
 
+
+<blockquote>
 このコネクタを追加すると、ベンダーのデータプラットフォームポリシーを受け入れるように求められます。
+</blockquote>
+
 
 コネクタを追加した後、以下の構成を構成します：
 
-* **Customer ID**: (必須) TealiumにリンクされたあなたのGoogle DV360パートナーID。Google DV360ダッシュボードからパートナーIDを見つけるには、**Partner Settings &gt; Basic Details**に進んでください。
+* **Customer ID**: (必須) TealiumにリンクされたあなたのGoogle DV360パートナーID。Google DV360ダッシュボードからパートナーIDを見つけるには、**Partner Settings > Basic Details**に進んでください。
 * **Target Product**: (必須) リンクされたアカウントのターゲット製品。
 
 コネクタの構成が完了したら、**Done**をクリックします。
@@ -38,7 +42,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 | **パラメータ** | **説明** |
 | --- | --- |
 | List Name | (必須) カスタマーマッチリスト名。 |
-| List Type | (必須) リストタイプ。このリストで使用されるユーザー識別情報のタイプに影響します：&lt;ul&gt;&lt;li&gt;Contact Info - メンバーは顧客情報（メールアドレス、電話番号、または物理的住所）からマッチされます。&lt;/li&gt;&lt;li&gt;Mobile Advertising - メンバーはモバイル広告IDからマッチされます。&lt;/li&gt;&lt;/ul&gt; |
+| List Type | (必須) リストタイプ。このリストで使用されるユーザー識別情報のタイプに影響します：<ul><li>Contact Info - メンバーは顧客情報（メールアドレス、電話番号、または物理的住所）からマッチされます。</li><li>Mobile Advertising - メンバーはモバイル広告IDからマッチされます。</li></ul> |
 | App ID | Mobile Advertisingリストタイプに必要です。データが収集されたモバイルアプリケーションを一意に識別する文字列。 |
 | List Membership Lifespan | (オプション) ユーザーがリストに最後に追加されてからリストに残る日数。数値は `0` から `540` の間でなければなりません。デフォルトの寿命は540日です。 |
 | List Description | (オプション) リストの説明。 |
@@ -71,8 +75,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 |ユーザー識別子フィールド| 説明|
 |---| ---|
-| `CONTACT_INFO` |  &lt;ul&gt;&lt;li&gt;ハッシュ化されたメール、ハッシュ化された電話番号、または住所情報を提供します。&lt;/li&gt;&lt;li&gt;**住所情報: 国コード** - ISO 3166-1 alpha-2形式のユーザーの住所の2文字国コード。&lt;/li&gt;&lt;li&gt;**住所情報: 名（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された名を提供します。&lt;/li&gt;&lt;li&gt;**住所情報: 名（SHA256ハッシュを適用）** - プレーンテキストの名を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。&lt;/li&gt;&lt;li&gt;**住所情報: 姓（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された姓を提供します。&lt;/li&gt;&lt;li&gt;**住所情報: 姓（SHA256ハッシュを適用）** - プレーンテキストの姓を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。&lt;/li&gt;&lt;li&gt;**住所情報: 郵便番号** - ユーザーの住所の郵便番号。&lt;/li&gt;&lt;li&gt;**メールアドレス（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化されたメールアドレスを提供します。&lt;/li&gt;&lt;li&gt;**メールアドレス（SHA256ハッシュを適用）** - プレーンテキストのメールアドレスを提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。&lt;/li&gt;&lt;li&gt;**電話番号（既にSHA256ハッシュ化済み）** - 空白をトリムし、SHA256でハッシュ化された電話番号を提供します。&lt;/li&gt;&lt;li&gt;**電話番号（SHA256ハッシュを適用）** - プレーンテキストの電話番号を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。&lt;/li&gt;&lt;/ul&gt; |
-|`MOBILE_ADVERTISING_ID`|  &lt;ul&gt;&lt;li&gt;**モバイルID** (必須) - モバイルデバイスID（広告ID/IDFA）。&lt;/li&gt;&lt;/ul&gt; |
+| `CONTACT_INFO` |  <ul><li>ハッシュ化されたメール、ハッシュ化された電話番号、または住所情報を提供します。</li><li>**住所情報: 国コード** - ISO 3166-1 alpha-2形式のユーザーの住所の2文字国コード。</li><li>**住所情報: 名（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された名を提供します。</li><li>**住所情報: 名（SHA256ハッシュを適用）** - プレーンテキストの名を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**住所情報: 姓（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された姓を提供します。</li><li>**住所情報: 姓（SHA256ハッシュを適用）** - プレーンテキストの姓を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**住所情報: 郵便番号** - ユーザーの住所の郵便番号。</li><li>**メールアドレス（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化されたメールアドレスを提供します。</li><li>**メールアドレス（SHA256ハッシュを適用）** - プレーンテキストのメールアドレスを提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**電話番号（既にSHA256ハッシュ化済み）** - 空白をトリムし、SHA256でハッシュ化された電話番号を提供します。</li><li>**電話番号（SHA256ハッシュを適用）** - プレーンテキストの電話番号を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li></ul> |
+|`MOBILE_ADVERTISING_ID`|  <ul><li>**モバイルID** (必須) - モバイルデバイスID（広告ID/IDFA）。</li></ul> |
 
 ### カスタマーマッチリストに追加 (複数識別子)
 
@@ -87,7 +91,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions]()を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数: 66,000
 * 最古のリクエストからの最大時間: 1440分
@@ -110,7 +114,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 ### カスタマーマッチリストに追加 (非推奨)
 
- TealiumはGoogle DV 360から直接リスト統計を取得し、このコネクタと[Google DV 360 Customer Match connector insight]()のコネクタリクエストの総量との間に差異が生じることがあります。 
+
+<blockquote>
+TealiumはGoogle DV 360から直接リスト統計を取得し、このコネクタと[Google DV 360 Customer Match connector insight](https://docs.tealium.com/connector-insights-google-dv360-customer-match/)のコネクタリクエストの総量との間に差異が生じることがあります。
+</blockquote>
+
 
 #### API 情報
 
@@ -123,7 +131,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions]()を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数: 100,000
 * 最古のリクエストからの最大時間: 1440分
@@ -151,7 +159,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション]()を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
 * 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：1440分

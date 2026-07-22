@@ -5,39 +5,43 @@ url: https://docs.tealium.com/platforms/javascript/track/
 ---
 ## Track Views
 
-The [`utag.view()`](/platforms/javascript/api/tracking-functions/#utag-view) function tracks page views, virtual page views, and Ajax page flows. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags. `utag.js` automatically triggers this function on every page load.
+The [`utag.view()`](https://docs.tealium.com/platforms/javascript/api/tracking-functions/#utag-view) function tracks page views, virtual page views, and Ajax page flows. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags. `utag.js` automatically triggers this function on every page load.
 
 `utag.view()` is commonly used for Ajax page flows where the URL does not refresh as the user navigates the site. For example, single-page checkout or single-page application.
 
 The Universal Data Object (UDO) declared on the initial page load, `utag_data`, is not re-purposed with these calls. You must explicitly pass a new data object to this function.  
 
-Best practice is to use the variable [`tealium_event`](#tealium-event) to identify important page view events and `page_type` to uniquely identify page templates.
 
-The following example tracks a &#34;Product Quick View&#34; view:
+<blockquote>
+Best practice is to use the variable [`tealium_event`](#tealium-event) to identify important page view events and `page_type` to uniquely identify page templates.
+</blockquote>
+
+
+The following example tracks a "Product Quick View" view:
 
 ```javascript
 utag.view({
-    &#34;tealium_event&#34;: &#34;product_view&#34;,
-    &#34;page_type&#34;    : &#34;product_quick_view&#34;,
-    &#34;page_name&#34;    : &#34;Quick View: Shirts: Lucky Shirt&#34;,
-    &#34;product_id&#34;   : [&#34;12345&#34;],
-    &#34;product_name&#34; : [&#34;Lucky Shirt&#34;]
+    "tealium_event": "product_view",
+    "page_type"    : "product_quick_view",
+    "page_name"    : "Quick View: Shirts: Lucky Shirt",
+    "product_id"   : ["12345"],
+    "product_name" : ["Lucky Shirt"]
 });
 ```
 
 ## Track Events
 
-The [`utag.link()`](/platforms/javascript/api/tracking-functions/#utag-link) function tracks events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about your visitors’ interactions _within_ a page. While page view tracking gathers information about the navigation path a visitor takes, event tracking monitors what visitors do in-between navigation steps.
+The [`utag.link()`](https://docs.tealium.com/platforms/javascript/api/tracking-functions/#utag-link) function tracks events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about your visitors’ interactions _within_ a page. While page view tracking gathers information about the navigation path a visitor takes, event tracking monitors what visitors do in-between navigation steps.
 
-The following example tracks an &#34;Add to Cart&#34; event: 
+The following example tracks an "Add to Cart" event: 
 
 ```javascript
 utag.link({
-    &#34;tealium_event&#34;    : &#34;cart_add&#34;,
-    &#34;product_id&#34;       : [&#34;12345&#34;],
-    &#34;product_name&#34;     : [&#34;Lucky Shirt&#34;],
-    &#34;product_quantity&#34; : [&#34;2&#34;],
-    &#34;product_price&#34;    : [&#34;12.99&#34;]
+    "tealium_event"    : "cart_add",
+    "product_id"       : ["12345"],
+    "product_name"     : ["Lucky Shirt"],
+    "product_quantity" : ["2"],
+    "product_price"    : ["12.99"]
 });
 ```
 
@@ -65,13 +69,13 @@ The following example adds additional information related to the event in the tr
 
 ```javascript
 utag.link({
-    &#34;tealium_event&#34;  : &#34;social_share&#34;,
-    &#34;social_network&#34; : &#34;LinkedIn&#34;,
-    &#34;shared_link&#34;    : &#34;https://tealium.com/&#34;
+    "tealium_event"  : "social_share",
+    "social_network" : "LinkedIn",
+    "shared_link"    : "https://tealium.com/"
 });
 ```
 
-Learn more about [the data layer and Tealium events]().
+Learn more about [the data layer and Tealium events](https://docs.tealium.com/an-introduction-to-the-data-layer/).
 
 ## Implementation Options
 
@@ -81,7 +85,7 @@ The following sections describe the approaches for implementing Tealium’s even
 
 ### jQuery and HTML5
 
-Use the [jQuery Extension]() to track basic interactions within a page, such as clicking, expanding, and selecting. Use HTML5 [data attributes](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) to implement informational properties of tracked elements. Requires a web page with [semantic HTML](https://en.wikipedia.org/wiki/Semantic_HTML).
+Use the [jQuery Extension](https://docs.tealium.com/jquery-onhandler-extension/) to track basic interactions within a page, such as clicking, expanding, and selecting. Use HTML5 [data attributes](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) to implement informational properties of tracked elements. Requires a web page with [semantic HTML](https://en.wikipedia.org/wiki/Semantic_HTML).
 
 * Best used for link clicks, button clicks, form field interactions.
 * Not recommended for Ajax page flows, or form submissions.
@@ -89,13 +93,13 @@ Use the [jQuery Extension]() to track basic interactions within a page, such as 
 An element with data attributes might look like this in the page code:
 
 ```html
-&lt;a href=&#34;/logout&#34; data-click_name=&#34;Sign Out&#34; data-click_category=&#34;header&#34;&gt;Log out&lt;/a&gt; 
+<a href="/logout" data-click_name="Sign Out" data-click_category="header">Log out</a> 
 ```
 
-Reference these attributes in the jQuery Extension to track clicks on this link and to set the relevant event data using the &#34;JS Code&#34; option.
+Reference these attributes in the jQuery Extension to track clicks on this link and to set the relevant event data using the "JS Code" option.
 
 *   Use a selector to identify elements with a specific data attribute. For example, `a[data-click_name]`.
-*   Set a variable using the &#34;JS Code&#34; option to reference a data attribute in the clicked element. For example, `$(this).data(&#39;click_name&#39;)`.
+*   Set a variable using the "JS Code" option to reference a data attribute in the clicked element. For example, `$(this).data('click_name')`.
 
 ### Page Code
 
@@ -108,9 +112,9 @@ Page code is used for tracking dynamic page content refreshes, Ajax pages, modal
 
 Video tracking often requires a custom solution coding to the specifications of the video platform API.
 
-Learn more about Tealium&#39;s current solution in the [YouTube Video Tracking Setup Guide]().
+Learn more about Tealium's current solution in the [YouTube Video Tracking Setup Guide](https://docs.tealium.com/youtube-event/).
 
 ### Single Page Applications
 
-Learn about tracking views and events for [single page applications](/platforms/javascript/single-page-applications/).
+Learn about tracking views and events for [single page applications](https://docs.tealium.com/platforms/javascript/single-page-applications/).
 

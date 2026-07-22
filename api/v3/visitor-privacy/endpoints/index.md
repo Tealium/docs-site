@@ -5,25 +5,29 @@ url: https://docs.tealium.com/api/v3/visitor-privacy/endpoints/
 ---
 ## GET Visitor
 
-You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication]().
+
+<blockquote>
+You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).
+</blockquote>
+
 
 Use the following GET command to retrieve a visitor record:
 
 ```bash
-GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&amp;attributeValue={attributeValue}&amp;prettyName={prettyName}
+GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&attributeValue={attributeValue}&prettyName={prettyName}
 ```
 
 This command uses the following parameters:
 
 * `attributeId`
-  * The numeric ID representing a [Visitor ID attribute]() from your account.
+  * The numeric ID representing a [Visitor ID attribute](https://docs.tealium.com/visitor-id-attribute/) from your account.
 * `attributeValue`
   * The value to look up.
   * Values containing special characters must be URL encoded.
 * `prettyName`
   * A Boolean value indicating how attribute keys display in the response:
-    * **True** – Attributes display as user-friendly names, such as &#34;Lifetime Order Value&#34;.
-    * **False** – Attributes display as numeric ID&#39;s, such as &#34;28471&#34;.
+    * **True** – Attributes display as user-friendly names, such as "Lifetime Order Value".
+    * **False** – Attributes display as numeric ID's, such as "28471".
 
 ### Permission requirements
 
@@ -33,12 +37,12 @@ This command uses the following parameters:
 ### Example cURL request
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
  -G \
-&#39;https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main&#39; \
- --data-urlencode &#39;attributeId=86&#39; \
- --data-urlencode &#39;attributeValue=user@example.com&#39; \
- --data &#39;prettyName=true&#39;
+'https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
+ --data-urlencode 'attributeId=86' \
+ --data-urlencode 'attributeValue=user@example.com' \
+ --data 'prettyName=true'
 ```
 
 ### Example response
@@ -51,49 +55,53 @@ Potential error messages for this task are:
 
 |Error Message| Description|
 |---| ---|
-|400|  `{ &#34;message&#34;: &#34;You are missing an attribute Id or Attribute Value&#34;}` |
-|401|  `{ &#34;message&#34;: &#34;Unauthorized&#34;}` |
-| 404 | `Visitor not found in system {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;Too many requests&#34;}` |
-| 500 |`{ &#34;message&#34;: &#34;Internal Server Error&#34;}` |
+|400|  `{ "message": "You are missing an attribute Id or Attribute Value"}` |
+|401|  `{ "message": "Unauthorized"}` |
+| 404 | `Visitor not found in system {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "Too many requests"}` |
+| 500 |`{ "message": "Internal Server Error"}` |
 
 ## DELETE visitor
 
-You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication]().
+
+<blockquote>
+You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).
+</blockquote>
+
 
 Consider the following prior to deleting one or more visitor records:
 
 * Requests to delete visitor records result in the deletion of all data associated to the visitor ID value, including stitched visitor records.
 * Delete requests are queued for processing and may take up to 30 days to complete.
 * If a visitor replaces or has been replaced by another visitor, all visitors that have been stitched are deleted.
-* The parameters to the DELETE command must be passed as URL-encoded form fields using the content-type &#34; `application/x-www-form-urlencoded`&#34;, and not as query string parameters.
+* The parameters to the DELETE command must be passed as URL-encoded form fields using the content-type " `application/x-www-form-urlencoded`", and not as query string parameters.
 
 Use the following DELETE command to delete a visitor record:
 
 ```bash
-DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={value}&amp;attributeValue={value}
+DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={value}&attributeValue={value}
 ```
 
 This command uses the following parameters:
 
 * `attributeId`  
-The numeric ID representing a [Visitor ID attribute]() from your account.
+The numeric ID representing a [Visitor ID attribute](https://docs.tealium.com/visitor-id-attribute/) from your account.
 * `attributeValue`  
 The value to look up.
 
 ### Permission requirements
 
 * Server-side publisher legacy permissions, or
-* **View, Edit, &amp; Delete** Visitor Lookup platform permissions
+* **View, Edit, & Delete** Visitor Lookup platform permissions
 
 ### Example cURL request
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 -X DELETE \
-&#39;https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main&#39; \
---data-urlencode &#34;attributeId=86&#34;
---data-urlencode &#34;attributeValue=user@example.com&#34;
+'https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
+--data-urlencode "attributeId=86"
+--data-urlencode "attributeValue=user@example.com"
 ```
 
 ### Example response
@@ -104,7 +112,7 @@ A successful response displays the 202 Accepted message with a `transactionId` v
 
 ```json
 {
-&#34;transactionId&#34; : &#34;{transactionId1}&#34;
+"transactionId" : "{transactionId1}"
 }
 ```
 
@@ -114,14 +122,18 @@ Potential error messages for this task are:
 
 |Error Message| Description|
 |---| ---|
-|400|  `{ &#34;message&#34;: &#34;You are missing an attribute Id or Attribute Value&#34;}` |
-|401|  `{ &#34;message&#34;: &#34;Unauthorized&#34;}` |
-|404|  `Visitor not found in system {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;Too many requests&#34;}` |
+|400|  `{ "message": "You are missing an attribute Id or Attribute Value"}` |
+|401|  `{ "message": "Unauthorized"}` |
+|404|  `Visitor not found in system {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "Too many requests"}` |
 
 ## GET transaction
 
-You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication]().
+
+<blockquote>
+You must use the region-specific host returned in the authentication API with this call. For more information, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/).
+</blockquote>
+
 
 A transaction refers to any DELETE visitor request. DELETE visitor requests are queued for later processing, which makes the `transaction_id` the unique record for that request and ID to be used when checking the processing status.
 
@@ -138,10 +150,10 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/transactions/{tran
 
 ### Example cURL request
 
-For information about generating a bearer token from the API key, see [Authentication](). The bearer token is used in the API calls, rather than the API key.
+For information about generating a bearer token from the API key, see [Authentication](https://docs.tealium.com/api/v3/getting-started/authentication/). The bearer token is used in the API calls, rather than the API key.
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/transactions/0123456789
 ```
 
@@ -151,7 +163,7 @@ The response contains an object with one key-value pair where the key is a `tran
 
 ```json
 {
-  &#34;0123456789&#34; : &#34;SUCCESS&#34;
+  "0123456789" : "SUCCESS"
 }
 ```
 
@@ -161,9 +173,9 @@ Potential error messages for this task are:
 
 |Error Message| Description|
 |---| ---|
-|401|  `{ &#34;message&#34;: &#34;Unauthorized&#34;}` |
-|404|  `Visitor not found in system {  &#34;transactionId&#34;: {transactionId}  }` |
-|429| `{ &#34;message&#34;: &#34;Too many requests&#34;}` |
+|401|  `{ "message": "Unauthorized"}` |
+|404|  `Visitor not found in system {  "transactionId": {transactionId}  }` |
+|429| `{ "message": "Too many requests"}` |
 
 ## GET Visitor ID Attributes
 
@@ -181,7 +193,7 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
 ### Example cURL request
 
 ```bash
-curl -H &#39;Authorization: Bearer {token}&#39; \
+curl -H 'Authorization: Bearer {token}' \
 https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/ids
 ```
 
@@ -191,8 +203,8 @@ The response for this command is an object of key-value pairs representing the n
 
 ```json
 {
-  &#34;43&#34; : &#34;Email Address&#34;,
-  &#34;57&#34; : &#34;Tax ID Number&#34;
+  "43" : "Email Address",
+  "57" : "Tax ID Number"
 }
 ```
 
@@ -202,7 +214,7 @@ Potential error messages for this task are:
 
 |Error Message| Description|
 |---| ---|
-|401|  `{ &#34;message&#34;: &#34;Unauthorized&#34;}` |
-|404|  `{ &#34;message&#34; : &#34;No Visitor ids were found for the account and profile&#34;}` |
-|429| `{ &#34;message&#34;: &#34;Too many requests&#34;}` |
-|500|  `{ &#34;message&#34; : &#34;Internal Server Error&#34;}` |
+|401|  `{ "message": "Unauthorized"}` |
+|404|  `{ "message" : "No Visitor ids were found for the account and profile"}` |
+|429| `{ "message": "Too many requests"}` |
+|500|  `{ "message" : "Internal Server Error"}` |

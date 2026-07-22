@@ -37,12 +37,14 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/sync-analytics-hybrid
     *   **カスタムJavaScript** - セッションIDをベンダータグに渡すためのJavaScriptコード（拡張またはタグテンプレート）。
 
 
+<blockquote>
 この記事では、Android/iOS v5.0以降のTealiumを使用していることを前提としており、アプリを再デプロイする必要があります。
+</blockquote>
 
 
 以下は、ハイブリッドアプリの各コンポーネントに対する解決策の概要です。
 
-&lt;table style=&#34;border: 1px solid rgb(237, 237, 237) !important&#34;&gt;&lt;thead&gt;&lt;tr&gt;&lt;td colspan=&#34;4&#34; style=&#34;text-align: center;&#34;&gt;&lt;strong&gt;ハイブリッドアプリ&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr &gt;&lt;th style=&#34;border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;text-transform:uppercase;&#34; class=&#34;bg-secondary&#34; colspan=&#34;2&#34;&gt;ネイティブコード&lt;br&gt;コンポーネント&lt;/th&gt;&lt;td rowspan=&#34;3&#34; style=&#34;vertical-align: top; text-align: center;border: 1px solid rgb(237, 237, 237) !important&#34;&gt;ネイティブコードは、次のURLでWebビューをロードします：&lt;br&gt;&lt;code&gt;&amp;session_id=SESSION&lt;/code&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/td&gt;&lt;th style=&#34;vertical-align: top; text-align: center;text-transform:uppercase;&#34; class=&#34;bg-secondary&#34;&gt;Webビュー&lt;br&gt;コンポーネント&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align: top; text-align: center;&#34;&gt;iQモバイルプロファイル&lt;br&gt;（非表示のWebビューで実行）&lt;/td&gt;&lt;td style=&#34;border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;&#34;&gt;ネイティブコード&lt;/td&gt;&lt;td style=&#34;vertical-align: top; text-align: center;&#34;&gt;ウェブサイト用iQプロファイル&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align: top;&#34;&gt;&lt;p&gt;カスタムリモートコマンド&lt;code&gt;syncSessionId&lt;/code&gt;コマンドの設定&lt;/p&gt;&lt;p&gt;ベンダーからセッションIDを取得するJavaScriptコード拡張&lt;/p&gt;&lt;p&gt;セッションIDを渡すための&lt;code&gt;utag.link()&lt;/code&gt;の呼び出し&lt;/p&gt;&lt;/td&gt;&lt;td style=&#34;vertical-align: top;border: 1px solid rgb(237, 237, 237) !important&#34;&gt;&lt;p&gt;syncSessionIdを同期するためのリモートコマンドのカスタムコード&lt;/p&gt;&lt;p&gt;セッションID変数をWebビューに渡すためのカスタムコード&lt;/p&gt;&lt;/td&gt;&lt;td style=&#34;vertical-align: top;&#34;&gt;&lt;p&gt;WebビューURLのクエリ文字列変数&lt;code&gt;session_id&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;code&gt;session_id&lt;/code&gt;のデータマッピングを持つベンダータグ&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table style="border: 1px solid rgb(237, 237, 237) !important"><thead><tr><td colspan="4" style="text-align: center;"><strong>ハイブリッドアプリ</strong></td></tr></thead><tbody><tr ><th style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary" colspan="2">ネイティブコード<br>コンポーネント</th><td rowspan="3" style="vertical-align: top; text-align: center;border: 1px solid rgb(237, 237, 237) !important">ネイティブコードは、次のURLでWebビューをロードします：<br><code>&session_id=SESSION</code><p>&nbsp;</p></td><th style="vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary">Webビュー<br>コンポーネント</th></tr><tr><td style="vertical-align: top; text-align: center;">iQモバイルプロファイル<br>（非表示のWebビューで実行）</td><td style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;">ネイティブコード</td><td style="vertical-align: top; text-align: center;">ウェブサイト用iQプロファイル</td></tr><tr><td style="vertical-align: top;"><p>カスタムリモートコマンド<code>syncSessionId</code>コマンドの設定</p><p>ベンダーからセッションIDを取得するJavaScriptコード拡張</p><p>セッションIDを渡すための<code>utag.link()</code>の呼び出し</p></td><td style="vertical-align: top;border: 1px solid rgb(237, 237, 237) !important"><p>syncSessionIdを同期するためのリモートコマンドのカスタムコード</p><p>セッションID変数をWebビューに渡すためのカスタムコード</p></td><td style="vertical-align: top;"><p>WebビューURLのクエリ文字列変数<code>session_id</code></p><p><code>session_id</code>のデータマッピングを持つベンダータグ</p></td></tr></tbody></table>
 
 
 ## 実装
@@ -53,24 +55,28 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/sync-analytics-hybrid
 
 #### Android（Javaコード）：
 
+
+<blockquote>
 このコードは完全に機能しますが、このタスクを達成するためのサンプルコードです。ご自身の判断で使用し、ライブアプリにデプロイする前に必ずテストしてください。
+</blockquote>
+
 
 1. `syncSessionId`という新しいリモートコマンドを定義し、渡されたセッションIDの値を`sessionId`というネイティブ変数に格納します。このコードをTealiumの`init`ブロックに配置します（これは通常、ヘルパーファイルになります）：  
     ```java
     // Tealiumの初期化
-    Tealium.Config config = Tealium.Config.create(application, &#34;&#34;, &#34;&#34;, &#34;&#34;);
+    Tealium.Config config = Tealium.Config.create(application, "", "", "");
     // 上記のconfigオブジェクトを使用して新しいTealiumインスタンスを作成します
     Tealium inst = Tealium.createInstance(TEALIUM\_INSTANCENAME, config);
-    // &#34;syncSessionId&#34;という名前の新しいRemoteCommandをTealiumに登録します
-    inst.addRemoteCommand(new RemoteCommand(&#34;syncSessionId&#34;, &#34;セッションIDを同期します&#34;) {
+    // "syncSessionId"という名前の新しいRemoteCommandをTealiumに登録します
+    inst.addRemoteCommand(new RemoteCommand("syncSessionId", "セッションIDを同期します") {
         // onInvokeは、Tealium iQがコマンドをトリガーしたときに呼び出されます
         @Override
         protected void onInvoke(Response response) throws Exception {
             // レスポンスオブジェクトを取得します
             JSONObject resp = response.getRequestPayload();
-            // レスポンス内のキー&#34;sessionId&#34;の値をアプリケーションレベルの&#34;gaSessionId&#34;文字列変数に設定します
+            // レスポンス内のキー"sessionId"の値をアプリケーションレベルの"gaSessionId"文字列変数に設定します
             // これは、Applicationクラスでこの共有変数を作成したことを前提としています。詳細については、サンプルアプリを参照してください。
-            DemoApplication.sessionId = resp.optString(&#34;sessionId&#34;, null);
+            DemoApplication.sessionId = resp.optString("sessionId", null);
         }
     });
     ```
@@ -84,7 +90,7 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/sync-analytics-hybrid
             webview mywebview = (webview) findViewById(R.id.webview);
             mywebview.clearCache(true);
             mywebview.getSettings().setJavaScriptEnabled(true);
-            mywebview.loadUrl(&#34;https://solutions.tealium.net/hosted/cpr/mobile_ga_demo.html?session_id=&#34; &#43; DemoApplication.sessionId);
+            mywebview.loadUrl("https://solutions.tealium.net/hosted/cpr/mobile_ga_demo.html?session_id=" + DemoApplication.sessionId);
         }
     }
     ```
@@ -95,14 +101,14 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/sync-analytics-hybrid
 
 ```objc
 // インスタンス名を置き換えてください
-Tealium *instanceHandle = [Tealium instanceForKey: @&#34;tealium&#34;]; 
-[instanceHandle addRemoteCommandID:@&#34;syncSessionId&#34;
-   description:@&#34;セッションIDを同期します&#34;
+Tealium *instanceHandle = [Tealium instanceForKey: @"tealium"]; 
+[instanceHandle addRemoteCommandID:@"syncSessionId"
+   description:@"セッションIDを同期します"
    targetQueue:dispatch_get_main_queue()
  // レスポンスは、Tealium iQで設定したマッピングから生成されます
    responseBlock:^(TEALRemoteCommandResponse * _Nonnull response) {
  // レスポンスオブジェクトからセッションIDを取得します
-       NSString *session_id = response.requestPayload[@&#34;sessionId&#34;];
+       NSString *session_id = response.requestPayload[@"sessionId"];
  /* セッションIDを取得したので、後でWebビューを作成するときにアクセスできる場所に保存します。詳細については、Androidコードを参照してください */
 }\];
 ```
@@ -115,11 +121,11 @@ iQモバイルプロファイルでは、カスタムリモートコマンドタ
 
 1. データレイヤーに次のUDO変数を追加します：`session_id`
 2. **カスタムリモートコマンド**タグを追加します：  
-![](/images/platforms/remote-commands/sync-analytics1.jpg)
+![](https://docs.tealium.com/images/platforms/remote-commands/sync-analytics1.jpg)
 3. **コマンドID**を`syncSessionId`（ネイティブコードで定義したリモートコマンドの名前）に設定します：  
-![](/images/platforms/remote-commands/sync-analytics2.jpg)
+![](https://docs.tealium.com/images/platforms/remote-commands/sync-analytics2.jpg)
 4. `session_id`を`sessionId`にマッピングするデータマッピングを追加します。  
-![](/images/platforms/remote-commands/sync-analytics3.jpg)
+![](https://docs.tealium.com/images/platforms/remote-commands/sync-analytics3.jpg)
 
 ### ベンダータグの追加（モバイルアプリ用のiQプロファイル）
 
@@ -132,10 +138,10 @@ iQモバイルプロファイルでは、カスタムリモートコマンドタ
     ```js
     window.setTimeout(function() {
          // ベンダー固有: Google AnalyticsからセッションIDを取得します
-         var tracker = window.ga.getByName(&#39;tealium_0&#39;); // ページ上にGAトラッカーが1つしかない場合を想定しています
-         var clientId = tracker.get(&#39;clientId&#39;);
+         var tracker = window.ga.getByName('tealium_0'); // ページ上にGAトラッカーが1つしかない場合を想定しています
+         var clientId = tracker.get('clientId');
          // カスタムリモートコマンドがトリガーされたトラッキングコール
-         utag.link({session_id : clientId}, null, [&#39;UID&#39;])
+         utag.link({session_id : clientId}, null, ['UID'])
     }, 1000);
     ```
     
@@ -157,17 +163,17 @@ iQモバイルプロファイルでは、カスタムリモートコマンドタ
 
 上記のコードをデプロイした後、Charles ProxyやFiddlerなどのローカルプロキシを使用して、アプリの出力を表示できます。`www.google-analytics.com`への送信ヒットを検査すると、ネイティブアプリからのヒットとWebビューコンポーネントからのヒットで`cid`パラメータが同じであることを確認できます。
 
-詳細については、[モバイルインストールのトラブルシューティング](/ja/platforms/getting-started-mobile/troubleshooting/)を参照してください。
+詳細については、[モバイルインストールのトラブルシューティング](https://docs.tealium.com/ja/platforms/getting-started-mobile/troubleshooting/)を参照してください。
 
 ネイティブアプリからの共有セッションID：
 
-![](/images/platforms/remote-commands/sync-analytics4.png)
+![](https://docs.tealium.com/images/platforms/remote-commands/sync-analytics4.png)
 
 インアプリのWebビューからの共有セッションID：
 
-![](/images/platforms/remote-commands/sync-analytics5.png)
+![](https://docs.tealium.com/images/platforms/remote-commands/sync-analytics5.png)
 
-Android Studioプロジェクトとしてサンプルアプリをダウンロード：[GAwebviewDemo.zip](/images/platforms/remote-commands/GAWebViewDemo.zip)。
+Android Studioプロジェクトとしてサンプルアプリをダウンロード：[GAwebviewDemo.zip](https://docs.tealium.com/images/platforms/remote-commands/GAWebViewDemo.zip)。
 
 ## その他の解決策
 

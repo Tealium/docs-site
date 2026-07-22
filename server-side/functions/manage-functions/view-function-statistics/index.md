@@ -11,9 +11,9 @@ To view information for a throttled function, follow these steps:
 
 1. In the **Functions Overview**, click on a throttled function, then click the **Monitoring** tab.  
 The **Monitoring** tab displays two graphs, one showing errors and the other showing rate limited invocations.
-![](/images/server-side/functions-monitoring-tab.png)
+![](https://docs.tealium.com/images/server-side/functions-monitoring-tab.png)
 1. To view more detailed rate limits information click **View Rate Limits Data**.  
-      ![](/images/server-side/functions-rate-limits-graph.png)
+      ![](https://docs.tealium.com/images/server-side/functions-rate-limits-graph.png)
 1. To adjust the time frame shown in the graph, select the number of hours or days to include in the graph.
 1. To view details for a log, click on a log file.  
 The expanded view of the log shows the following information:
@@ -39,5 +39,5 @@ Graphs can be displayed for the following time frames:
 
 Follow these steps to view function statistics:
 
-1. Navigate to **Transform &gt; Functions**, and click a function in the list.
+1. Navigate to **Transform > Functions**, and click a function in the list.
 1. Click the **Monitoring** tab to see the graphs of the function statistics.

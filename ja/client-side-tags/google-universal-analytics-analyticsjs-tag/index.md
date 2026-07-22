@@ -3,20 +3,24 @@ title: Google Universal Analytics (analytics.js) タグ構成ガイド
 description: この記事では、iQタグ管理アカウントでGoogle Universal Analyticsタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-analyticsjs-tag/
 ---
- 2023年7月1日以降、Google Universal Analyticsのプロパティはヒットの処理を停止しました。このタグは廃止され、タグマーケットプレイスではもう利用できません。現在のタグについては、[Google Analytics 4]()をご覧ください。 
+
+<blockquote>
+2023年7月1日以降、Google Universal Analyticsのプロパティはヒットの処理を停止しました。このタグは廃止され、タグマーケットプレイスではもう利用できません。現在のタグについては、[Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)をご覧ください。
+</blockquote>
+
 
 Google Analytics (analytics.js)は、Google Analyticsアカウントでデータが収集・整理される方法を変える一連の機能を導入します。
 
 ## タグのヒント
 
-* Google Analytics (analytics.js)についての詳細は、[About Universal Analytics](http://support.google.com/analytics/bin/answer.py?hl=en&amp;answer=2790010&amp;topic=2790009)をご覧ください。
+* Google Analytics (analytics.js)についての詳細は、[About Universal Analytics](http://support.google.com/analytics/bin/answer.py?hl=en&answer=2790010&topic=2790009)をご覧ください。
 * このタグのTealium実装を使用する場合は、Google API関数の代わりにマッピングを使用してください。
 * ディスプレイ広告のサポート情報については、[About Advertising Features](http://support.google.com/analytics/answer/3450482)をご覧ください。
 * 自動生成されたトラッカー名は、定義されたアカウント数に対して`tealium_X`の形式を取ります。
 
 ## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview]()の記事を読んでください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -42,22 +46,22 @@ Google Analytics (analytics.js)は、Google Analyticsアカウントでデータ
   * サイトのドメイン名を入力します。
   * Google Analyticsにドメインを自動検出させるためには、このフィールドを空白にします。
   * この構成は、GUAがサイト訪問を識別するために使用するクッキーのドメインを構成します。
-  * 共有サブドメイン間での追跡を有効にする場合は、ドメインの&#39;www.&#39;プレフィックスを省略します。例えば、[www.tealium.com](http://www.tealium.com)は**tealium.com**になります。特定のサブドメインを個別に追跡したい場合は、ドメインアドレス全体を入力します。例：`www.tealium.com`。
+  * 共有サブドメイン間での追跡を有効にする場合は、ドメインの'www.'プレフィックスを省略します。例えば、[www.tealium.com](http://www.tealium.com)は**tealium.com**になります。特定のサブドメインを個別に追跡したい場合は、ドメインアドレス全体を入力します。例：`www.tealium.com`。
 * **グローバルオブジェクト**
   * ほとんどの実装では必要ありません。
   * イベントキューに使用されるグローバルオブジェクトの名前。
-  * 指定されていない場合は&#34;**ga**&#34;が使用されます。
+  * 指定されていない場合は"**ga**"が使用されます。
 * **クロスドメイン追跡**
   * 任意。
   * クロスドメイン追跡を有効にするには**true**に構成する必要があります。
   * クロスドメイン追跡（setAllowLinker）で使用するドメインのカンマ区切りのリスト。
-  * トップレベルドメインの&#34;tealiumiq.com&#34;ではなく、完全修飾ドメイン名、例えば&#34;my.tealiumiq.com&#34;を使用する必要があります。
+  * トップレベルドメインの"tealiumiq.com"ではなく、完全修飾ドメイン名、例えば"my.tealiumiq.com"を使用する必要があります。
 * **クロスドメイン追跡**
   * 任意。
   * クロスドメイン追跡を有効にするには**On**を選択します。
   * クロスドメイン追跡（setAllowLinker）で使用するドメインのカンマ区切りのリスト。
-  * &#34;setAllowLinker&#34;の値を構成し、クロスドメイン追跡プラグインを有効にします。
-  * この機能を使用するには、&#34;Cross-Tracking Domains&#34;フィールドに1つ以上のドメインを指定するか、&#34;crossDomainTrack&#34;にマッピングする必要があります。
+  * "setAllowLinker"の値を構成し、クロスドメイン追跡プラグインを有効にします。
+  * この機能を使用するには、"Cross-Tracking Domains"フィールドに1つ以上のドメインを指定するか、"crossDomainTrack"にマッピングする必要があります。
 * **トランスポート**
   * ヒットが送信されるトランスポートメカニズムを指定します。
 * **エンハンストEコマース**
@@ -74,7 +78,7 @@ Google Analytics (analytics.js)は、Google Analyticsアカウントでデータ
     * `promo_click`
     * `refund`
   * 詳細については、Googleの[Enhanced E-Commerce](http://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)ドキュメンテーションをご覧ください。
-  * Tealium iQタグ管理を通じてエンハンストEコマースアクションを構成する方法についての詳細は、[Google Universal Analytics Tag: Enhanced E-Commerce](/ja/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/)をご覧ください。
+  * Tealium iQタグ管理を通じてエンハンストEコマースアクションを構成する方法についての詳細は、[Google Universal Analytics Tag: Enhanced E-Commerce](https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/)をご覧ください。
 * **エンハンストリンク属性**
   * 任意。
   * 有効にすると、各ページで`linkid.js`のリクエストが行われます。
@@ -96,7 +100,7 @@ Google Analytics (analytics.js)は、Google Analyticsアカウントでデータ
   * これにより、地理的な報告の精度がわずかに低下します。
 * **拡張子実行前の作成を有効にする**
   * 任意。
-  * 拡張子が実行される前にGAの&#34;create&#34;メソッドを使用してトラッキングIDを初期化することを有効にするには、**On**を選択します。
+  * 拡張子が実行される前にGAの"create"メソッドを使用してトラッキングIDを初期化することを有効にするには、**On**を選択します。
   * トラッキングIDがマッピングで構成されている場合は適用されません。
 * **Eコマース値の自動入力**
   * 任意。
@@ -125,17 +129,21 @@ Google Analytics (analytics.js)は、Google Analyticsアカウントでデータ
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules]()のドキュメンテーションをご覧ください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/)のドキュメンテーションをご覧ください。
+
+<blockquote>
 Google Universal Analyticsなどの分析タグはすべてのページで読み込むことを目的としているため、デフォルトの**すべてのページ**読み込みルールを選択するべきです。
+</blockquote>
+
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
-* 電子商取引のデータを追跡している場合、[E-Commerce Extension]()を追加し、構成することをお勧めします。マッピングツールボックス内の電子商取引の宛先へのマッピングは、電子商取引の拡張のマッピングを上書きします。
+* 電子商取引のデータを追跡している場合、[E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/)を追加し、構成することをお勧めします。マッピングツールボックス内の電子商取引の宛先へのマッピングは、電子商取引の拡張のマッピングを上書きします。
 * Google Analyticsでは、基本的なページ追跡には追加のマッピングは必要ありません。タグは自動的に基本的なページデータを追跡します。イベント追跡、キャンペーン追跡、ソーシャルインタラクション測定、コンテンツグループ、カスタム変数は自動的に送信されません。これらは手動でマッピングする必要があります。
 
-Google Universal Analyticsへのマッピングに関する詳細情報は、[Google Universal Analytics Tag: Advanced Mapping](/ja/client-side-tags/google-universal-analytics-tag-advanced-mapping/)の記事を参照してください。
+Google Universal Analyticsへのマッピングに関する詳細情報は、[Google Universal Analytics Tag: Advanced Mapping](https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-tag-advanced-mapping/)の記事を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -143,86 +151,86 @@ Google Universal Analyticsへのマッピングに関する詳細情報は、[Go
 
 |変数| 説明|
 |---| ---|
-|`tid`|  &lt;ul&gt;&lt;li&gt;トラッキングID&lt;/li&gt;&lt;li&gt;データを送信したいGoogle AnalyticsプロパティのトラッキングID&lt;/li&gt;&lt;li&gt;例： **UA-12345678-1**&lt;/li&gt;&lt;li&gt;複数のプロパティにデータを送信するには、カンマ区切りのリストを使用します。&lt;/li&gt;&lt;li&gt;デフォルトを上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`name`|  &lt;ul&gt;&lt;li&gt;トラッカー名。&lt;/li&gt;&lt;li&gt;デフォルトを上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`page`|  &lt;ul&gt;&lt;li&gt;ページ&lt;/li&gt;&lt;/ul&gt; |
-|`title`|  &lt;ul&gt;&lt;li&gt;タイトル&lt;/li&gt;&lt;/ul&gt; |
-|`location`|  &lt;ul&gt;&lt;li&gt;ロケーション&lt;/li&gt;&lt;/ul&gt; |
-|`uid`|  &lt;ul&gt;&lt;li&gt;UID&lt;/li&gt;&lt;/ul&gt; |
-|`transport`|  &lt;ul&gt;&lt;li&gt;トランスポート&lt;/li&gt;&lt;/ul&gt; |
-|`cookieDomain`|  &lt;ul&gt;&lt;li&gt;Cookieドメイン&lt;/li&gt;&lt;li&gt;デフォルトを上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`cookieExpires`|  &lt;ul&gt;&lt;li&gt;Cookieの有効期限&lt;/li&gt;&lt;/ul&gt; |
-|`legacyCookieDomain`|  &lt;ul&gt;&lt;li&gt;レガシーCookieドメイン&lt;/li&gt;&lt;/ul&gt; |
-|`legacyHistoryImport`|  &lt;ul&gt;&lt;li&gt;レガシーヒストリーインポート&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`nonInteraction`|  &lt;ul&gt;&lt;li&gt;非インタラクション&lt;/li&gt;&lt;/ul&gt; |
-|`enhancedLinkAttribution`|  &lt;ul&gt;&lt;li&gt;リンク属性のエンリッチメント&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`allowLinker`|  &lt;ul&gt;&lt;li&gt;リンカーの構成&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`crossDomainTrack`|  &lt;ul&gt;&lt;li&gt;ブーリアン&lt;/li&gt;&lt;li&gt;クロスドメイン追跡&lt;/li&gt;&lt;li&gt;自動リンクドメイン&lt;/li&gt;&lt;li&gt;`setAllowLinker`の値を構成し、クロスドメイン追跡プラグインを有効にします。&lt;/li&gt;&lt;li&gt;この機能を使用するには、&#34;クロストラッキングドメイン&#34;フィールドに1つ以上のドメインを指定するか、`crossDomainTrack`にマッピングする必要があります。&lt;/li&gt;&lt;li&gt;複数のドメインに対しては、カンマ区切りのリストを使用します。&lt;/li&gt;&lt;/ul&gt; |
-|`siteSpeedSampleRate`|  &lt;ul&gt;&lt;li&gt;サイトスピードサンプルレート&lt;/li&gt;&lt;/ul&gt; |
-|`sampleRate`|  &lt;ul&gt;&lt;li&gt;サンプルレート&lt;/li&gt;&lt;/ul&gt; |
-|`autofill_params`|  &lt;ul&gt;&lt;li&gt;自動入力E-Commerceパラメータ&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`optimizely`|  &lt;ul&gt;&lt;li&gt;Optimizely統合&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`init_before_extensions`|  &lt;ul&gt;&lt;li&gt;拡張機能の前にトラッカーを初期化&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`sessionControl`|  &lt;ul&gt;&lt;li&gt;セッション制御&lt;/li&gt;&lt;li&gt;値は **start** または **end**。&lt;/li&gt;&lt;/ul&gt; |
-|`anonymizeIp`|  &lt;ul&gt;&lt;li&gt;IPの匿名化&lt;/li&gt;&lt;li&gt;トラッカーオブジェクトによって送信される情報を匿名化するようGoogle Analyticsに指示します。これは、IPアドレスの最後のオクテットを保存する前に削除します。&lt;/li&gt;&lt;li&gt;地理的な報告の精度をわずかに低下させます。&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`dataSource`|  &lt;ul&gt;&lt;li&gt;データソース&lt;/li&gt;&lt;li&gt;例：ウェブ、モバイル。&lt;/li&gt;&lt;/ul&gt; |
-|`clear_global_vars`|  &lt;ul&gt;&lt;li&gt;変数のクリア&lt;/li&gt;&lt;li&gt;各トラッキングリクエスト後に、トラッカーの寿命の間に通常構成される項目をクリアします。&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`clientId`|  &lt;ul&gt;&lt;li&gt;クライアントID&lt;/li&gt;&lt;/ul&gt; |
-|`useAmpClientId`|  &lt;ul&gt;&lt;li&gt;AMPクライアントIDの使用&lt;/li&gt;&lt;li&gt;値は **true** または **false**。&lt;/li&gt;&lt;/ul&gt; |
-|`set.###`|  &lt;ul&gt;&lt;li&gt;カスタムセットコマンド&lt;/li&gt;&lt;/ul&gt; |
+|`tid`|  <ul><li>トラッキングID</li><li>データを送信したいGoogle AnalyticsプロパティのトラッキングID</li><li>例： **UA-12345678-1**</li><li>複数のプロパティにデータを送信するには、カンマ区切りのリストを使用します。</li><li>デフォルトを上書き。</li></ul> |
+|`name`|  <ul><li>トラッカー名。</li><li>デフォルトを上書き。</li></ul> |
+|`page`|  <ul><li>ページ</li></ul> |
+|`title`|  <ul><li>タイトル</li></ul> |
+|`location`|  <ul><li>ロケーション</li></ul> |
+|`uid`|  <ul><li>UID</li></ul> |
+|`transport`|  <ul><li>トランスポート</li></ul> |
+|`cookieDomain`|  <ul><li>Cookieドメイン</li><li>デフォルトを上書き。</li></ul> |
+|`cookieExpires`|  <ul><li>Cookieの有効期限</li></ul> |
+|`legacyCookieDomain`|  <ul><li>レガシーCookieドメイン</li></ul> |
+|`legacyHistoryImport`|  <ul><li>レガシーヒストリーインポート</li><li>値は **true** または **false**。</li></ul> |
+|`nonInteraction`|  <ul><li>非インタラクション</li></ul> |
+|`enhancedLinkAttribution`|  <ul><li>リンク属性のエンリッチメント</li><li>値は **true** または **false**。</li></ul> |
+|`allowLinker`|  <ul><li>リンカーの構成</li><li>値は **true** または **false**。</li></ul> |
+|`crossDomainTrack`|  <ul><li>ブーリアン</li><li>クロスドメイン追跡</li><li>自動リンクドメイン</li><li>`setAllowLinker`の値を構成し、クロスドメイン追跡プラグインを有効にします。</li><li>この機能を使用するには、"クロストラッキングドメイン"フィールドに1つ以上のドメインを指定するか、`crossDomainTrack`にマッピングする必要があります。</li><li>複数のドメインに対しては、カンマ区切りのリストを使用します。</li></ul> |
+|`siteSpeedSampleRate`|  <ul><li>サイトスピードサンプルレート</li></ul> |
+|`sampleRate`|  <ul><li>サンプルレート</li></ul> |
+|`autofill_params`|  <ul><li>自動入力E-Commerceパラメータ</li><li>値は **true** または **false**。</li></ul> |
+|`optimizely`|  <ul><li>Optimizely統合</li><li>値は **true** または **false**。</li></ul> |
+|`init_before_extensions`|  <ul><li>拡張機能の前にトラッカーを初期化</li><li>値は **true** または **false**。</li></ul> |
+|`sessionControl`|  <ul><li>セッション制御</li><li>値は **start** または **end**。</li></ul> |
+|`anonymizeIp`|  <ul><li>IPの匿名化</li><li>トラッカーオブジェクトによって送信される情報を匿名化するようGoogle Analyticsに指示します。これは、IPアドレスの最後のオクテットを保存する前に削除します。</li><li>地理的な報告の精度をわずかに低下させます。</li><li>値は **true** または **false**。</li></ul> |
+|`dataSource`|  <ul><li>データソース</li><li>例：ウェブ、モバイル。</li></ul> |
+|`clear_global_vars`|  <ul><li>変数のクリア</li><li>各トラッキングリクエスト後に、トラッカーの寿命の間に通常構成される項目をクリアします。</li><li>値は **true** または **false**。</li></ul> |
+|`clientId`|  <ul><li>クライアントID</li></ul> |
+|`useAmpClientId`|  <ul><li>AMPクライアントIDの使用</li><li>値は **true** または **false**。</li></ul> |
+|`set.###`|  <ul><li>カスタムセットコマンド</li></ul> |
 
 ### イベント
 
 |変数| 説明|
 |---| ---|
-|`eventCategory`|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントカテゴリ。&lt;/li&gt;&lt;/ul&gt; |
-|`eventAction`|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントアクション。&lt;/li&gt;&lt;/ul&gt; |
-|`eventLabel`|  &lt;ul&gt;&lt;li&gt;イベントラベル&lt;/li&gt;&lt;/ul&gt; |
-|`eventValue`|  &lt;ul&gt;&lt;li&gt;イベント値&lt;/li&gt;&lt;/ul&gt; |
-|`ga_events`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;GAイベント配列&lt;/li&gt;&lt;/ul&gt; |
-|`global_event_cb`|  &lt;ul&gt;&lt;li&gt;グローバルビューコールバック&lt;/li&gt;&lt;/ul&gt; |
-|`standard_event_cb`|  &lt;ul&gt;&lt;li&gt;スタンダードイベントコールバック&lt;/li&gt;&lt;/ul&gt; |
+|`eventCategory`|  <ul><li>必須</li><li>イベントカテゴリ。</li></ul> |
+|`eventAction`|  <ul><li>必須</li><li>イベントアクション。</li></ul> |
+|`eventLabel`|  <ul><li>イベントラベル</li></ul> |
+|`eventValue`|  <ul><li>イベント値</li></ul> |
+|`ga_events`|  <ul><li>配列</li><li>GAイベント配列</li></ul> |
+|`global_event_cb`|  <ul><li>グローバルビューコールバック</li></ul> |
+|`standard_event_cb`|  <ul><li>スタンダードイベントコールバック</li></ul> |
 
 ### キャンペーン
 
 |変数| 説明|
 |---| ---|
-|`campaignId`|  &lt;ul&gt;&lt;li&gt;キャンペーンID&lt;/li&gt;&lt;/ul&gt; |
-|`campaignName`|  &lt;ul&gt;&lt;li&gt;キャンペーン名&lt;/li&gt;&lt;/ul&gt; |
-|`campaignSource`|  &lt;ul&gt;&lt;li&gt;キャンペーンソース&lt;/li&gt;&lt;/ul&gt; |
-|`campaignMedium`|  &lt;ul&gt;&lt;li&gt;キャンペーン媒体&lt;/li&gt;&lt;/ul&gt; |
-|`campaignContent`|  &lt;ul&gt;&lt;li&gt;キャンペーンコンテンツ&lt;/li&gt;&lt;/ul&gt; |
-|`campaignKeyword`|  &lt;ul&gt;&lt;li&gt;キャンペーンキーワード&lt;/li&gt;&lt;/ul&gt; |
+|`campaignId`|  <ul><li>キャンペーンID</li></ul> |
+|`campaignName`|  <ul><li>キャンペーン名</li></ul> |
+|`campaignSource`|  <ul><li>キャンペーンソース</li></ul> |
+|`campaignMedium`|  <ul><li>キャンペーン媒体</li></ul> |
+|`campaignContent`|  <ul><li>キャンペーンコンテンツ</li></ul> |
+|`campaignKeyword`|  <ul><li>キャンペーンキーワード</li></ul> |
 
 ### ソーシャル
 
 |変数| 説明|
 |---| ---|
-|`socialNetwork`|  &lt;ul&gt;&lt;li&gt;ソーシャルネットワーク&lt;/li&gt;&lt;/ul&gt; |
-|`socialAction`|  &lt;ul&gt;&lt;li&gt;ソーシャルアクション&lt;/li&gt;&lt;/ul&gt; |
-|`socialTarget`|  &lt;ul&gt;&lt;li&gt;ソーシャルターゲット&lt;/li&gt;&lt;/ul&gt; |
+|`socialNetwork`|  <ul><li>ソーシャルネットワーク</li></ul> |
+|`socialAction`|  <ul><li>ソーシャルアクション</li></ul> |
+|`socialTarget`|  <ul><li>ソーシャルターゲット</li></ul> |
 
 ### E-Commerce
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;トランザクションID&lt;/li&gt;&lt;/ul&gt; |
-|`affiliation`|  &lt;ul&gt;&lt;li&gt;ストア名/ID&lt;/li&gt;&lt;/ul&gt; |
-|`revenue`|  &lt;ul&gt;&lt;li&gt;総合計&lt;/li&gt;&lt;/ul&gt; |
-|`shipping`|  &lt;ul&gt;&lt;li&gt;送料&lt;/li&gt;&lt;/ul&gt; |
-|`tax`|  &lt;ul&gt;&lt;li&gt;税金&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>トランザクションID</li></ul> |
+|`affiliation`|  <ul><li>ストア名/ID</li></ul> |
+|`revenue`|  <ul><li>総合計</li></ul> |
+|`shipping`|  <ul><li>送料</li></ul> |
+|`tax`|  <ul><li>税金</li></ul> |
 
 ### アプリ / スクリーントラッキング
 
 |変数| 説明|
 |---| ---|
-|`screenView`|  &lt;ul&gt;&lt;li&gt;スクリーンビューの追跡&lt;/li&gt;&lt;li&gt;アプリ/スクリーン追跡を有効にします。&lt;/li&gt;&lt;li&gt;有効にすると、初期のページビュー後に別のスクリーンビューリクエストが送信されます。&lt;/li&gt;&lt;/ul&gt; |
-| `appName` |  &lt;ul&gt;&lt;li&gt;アプリケーション名&lt;/li&gt;&lt;/ul&gt; |
-| `appId` |  &lt;ul&gt;&lt;li&gt;アプリケーションID&lt;/li&gt;&lt;/ul&gt; |
-| `appVersion` |  &lt;ul&gt;&lt;li&gt;アプリケーションバージョン&lt;/li&gt;&lt;/ul&gt; |
-|`appInstallerId`|  &lt;ul&gt;&lt;li&gt;アプリケーションインストーラーID&lt;/li&gt;&lt;/ul&gt; |
-|`screenName`|  &lt;ul&gt;&lt;li&gt;スクリーン名&lt;/li&gt;&lt;/ul&gt; |
-|`exception_reason`|  &lt;ul&gt;&lt;li&gt;例外の説明&lt;/li&gt;&lt;/ul&gt; |
+|`screenView`|  <ul><li>スクリーンビューの追跡</li><li>アプリ/スクリーン追跡を有効にします。</li><li>有効にすると、初期のページビュー後に別のスクリーンビューリクエストが送信されます。</li></ul> |
+| `appName` |  <ul><li>アプリケーション名</li></ul> |
+| `appId` |  <ul><li>アプリケーションID</li></ul> |
+| `appVersion` |  <ul><li>アプリケーションバージョン</li></ul> |
+|`appInstallerId`|  <ul><li>アプリケーションインストーラーID</li></ul> |
+|`screenName`|  <ul><li>スクリーン名</li></ul> |
+|`exception_reason`|  <ul><li>例外の説明</li></ul> |
 
 ### コンテンツグループ
 
@@ -292,47 +300,47 @@ Google Universal Analyticsへのマッピングに関する詳細情報は、[Go
 
 |変数| 説明|
 |---| ---|
-|`enh_action`|  &lt;ul&gt;&lt;li&gt;E-Commerceアクション&lt;/li&gt;&lt;/ul&gt; |
-| `enh_event_cb` |  &lt;ul&gt;&lt;li&gt;E-Commerceイベントコールバック&lt;/li&gt;&lt;/ul&gt; |
-| `enh_checkout_step` |  &lt;ul&gt;&lt;li&gt;チェックアウトステップ&lt;/li&gt;&lt;/ul&gt; |
-| `enh_checkout_option` |  &lt;ul&gt;&lt;li&gt;チェックアウトオプション&lt;/li&gt;&lt;/ul&gt; |
-| `order_id` |  &lt;ul&gt;&lt;li&gt;トランザクションID&lt;/li&gt;&lt;li&gt;`_corder`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `affiliation` |  &lt;ul&gt;&lt;li&gt;ストア名/ID&lt;/li&gt;&lt;li&gt;`_cstore`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `revenue` |  &lt;ul&gt;&lt;li&gt;総合計&lt;/li&gt;&lt;li&gt;`_ctotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `shipping` |  &lt;ul&gt;&lt;li&gt;配送&lt;/li&gt;&lt;li&gt;`_cship`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `tax` |  &lt;ul&gt;&lt;li&gt;税金&lt;/li&gt;&lt;li&gt;`_ctax`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `coupon` |  &lt;ul&gt;&lt;li&gt;クーポン&lt;/li&gt;&lt;li&gt;`_cpromo`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-| `product_id` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;IDのリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_name` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;名前のリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_category` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;カテゴリのリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_brand` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;ブランドのリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_variant` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;バリアントのリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_unit_price` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_quantity` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_discount` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;割引のリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_action_list` |  &lt;ul&gt;&lt;li&gt;商品アクションリスト&lt;/li&gt;&lt;/ul&gt; |
-| `product_position` |  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品位置&lt;/li&gt;&lt;/ul&gt; |
+|`enh_action`|  <ul><li>E-Commerceアクション</li></ul> |
+| `enh_event_cb` |  <ul><li>E-Commerceイベントコールバック</li></ul> |
+| `enh_checkout_step` |  <ul><li>チェックアウトステップ</li></ul> |
+| `enh_checkout_option` |  <ul><li>チェックアウトオプション</li></ul> |
+| `order_id` |  <ul><li>トランザクションID</li><li>`_corder`を上書きします。</li></ul> |
+| `affiliation` |  <ul><li>ストア名/ID</li><li>`_cstore`を上書きします。</li></ul> |
+| `revenue` |  <ul><li>総合計</li><li>`_ctotal`を上書きします。</li></ul> |
+| `shipping` |  <ul><li>配送</li><li>`_cship`を上書きします。</li></ul> |
+| `tax` |  <ul><li>税金</li><li>`_ctax`を上書きします。</li></ul> |
+| `coupon` |  <ul><li>クーポン</li><li>`_cpromo`を上書きします。</li></ul> |
+| `product_id` |  <ul><li>配列</li><li>IDのリスト</li></ul> |
+| `product_name` |  <ul><li>配列</li><li>名前のリスト</li></ul> |
+| `product_category` |  <ul><li>配列</li><li>カテゴリのリスト</li></ul> |
+| `product_brand` |  <ul><li>配列</li><li>ブランドのリスト</li></ul> |
+| `product_variant` |  <ul><li>配列</li><li>バリアントのリスト</li></ul> |
+| `product_unit_price` |  <ul><li>配列</li><li>価格のリスト</li></ul> |
+| `product_quantity` |  <ul><li>配列</li><li>数量のリスト</li></ul> |
+| `product_discount` |  <ul><li>配列</li><li>割引のリスト</li></ul> |
+| `product_action_list` |  <ul><li>商品アクションリスト</li></ul> |
+| `product_position` |  <ul><li>配列</li><li>商品位置</li></ul> |
 
 ### Enh E-Comm: インプレッション/プロモ
 
 |変数| 説明|
 |---| ---|
-|`enh_impression_id`|  &lt;ul&gt;&lt;/ul&gt; |
-|`enh_impression_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッション名&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_category`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッションカテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_brand`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッションブランド&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_variant`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッションバリアント&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッション価格&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_list`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッションリスト&lt;/li&gt;&lt;/ul&gt; |
-|`enh_impression_position`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品インプレッション位置&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;プロモーションID&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;プロモーション名&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_creative`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;プロモーションクリエイティブ&lt;/li&gt;&lt;/ul&gt; |
-|`enh_promo_position`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;プロモーション位置&lt;/li&gt;&lt;/ul&gt; |
+|`enh_impression_id`|  <ul></ul> |
+|`enh_impression_name`|  <ul><li>配列</li><li>商品インプレッション名</li></ul> |
+|`enh_impression_category`|  <ul><li>配列</li><li>商品インプレッションカテゴリ</li></ul> |
+|`enh_impression_brand`|  <ul><li>配列</li><li>商品インプレッションブランド</li></ul> |
+|`enh_impression_variant`|  <ul><li>配列</li><li>商品インプレッションバリアント</li></ul> |
+|`enh_impression_price`|  <ul><li>配列</li><li>商品インプレッション価格</li></ul> |
+|`enh_impression_list`|  <ul><li>配列</li><li>商品インプレッションリスト</li></ul> |
+|`enh_impression_position`|  <ul><li>配列</li><li>商品インプレッション位置</li></ul> |
+|`enh_promo_id`|  <ul><li>配列</li><li>プロモーションID</li></ul> |
+|`enh_promo_name`|  <ul><li>配列</li><li>プロモーション名</li></ul> |
+|`enh_promo_creative`|  <ul><li>配列</li><li>プロモーションクリエイティブ</li></ul> |
+|`enh_promo_position`|  <ul><li>配列</li><li>プロモーション位置</li></ul> |
 
 ## ベンダーのドキュメンテーション
 
-* [あなたのサイトにanalytics.jsを追加する (**Google Analytics** &amp;gt; **トラッキング**)](https://developers.google.com/analytics/devguides/collection/analyticsjs/)
+* [あなたのサイトにanalytics.jsを追加する (**Google Analytics** &gt; **トラッキング**)](https://developers.google.com/analytics/devguides/collection/analyticsjs/)
 
 
 

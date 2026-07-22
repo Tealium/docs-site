@@ -17,15 +17,19 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/ab
 
 データレイヤーエンリッチメントは、iQのプロファイルレベルの構成で、対応するAudienceStreamプロファイルにリンクします。データレイヤーエンリッチメントが有効になると、データレイヤー画面の変数リストに新しいタイプのデータレイヤー変数であるAudienceStream属性が表示されます。AudienceStreamプロファイルからの訪問と訪問の属性がインポートされ、他のデータレイヤー変数と同様に使用できるようになります。
 
-![](/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png)
+![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png)
 
-これらの属性は、リアルタイムの顧客データをUniversal Data Object (UDO)に[Tealium Collectタグ]()を使用して反映します。
+これらの属性は、リアルタイムの顧客データをUniversal Data Object (UDO)に[Tealium Collectタグ](https://docs.tealium.com/tealium-collect-tag/)を使用して反映します。
 
 訪問が初めてサイトを訪れたとき、Tealium CollectタグはAudienceStreamにコールを送り、最新の訪問プロファイル属性を取得します。データはブラウザのローカル保存に保存され、将来の使用のために保持されます。
 
 2回目のトラッキングコールでは、AudienceStreamの属性がUDOに反映され、それらを構成したロードルール、拡張機能、またはタグに影響を与えます。
 
+
+<blockquote>
 タグは非同期にロードされるため、最新に取得した属性セットは現在のページのイベントではなく、次のトラッキングコールで使用できます。
+</blockquote>
+
 
 ### 同一オリジンポリシー
 
@@ -60,7 +64,7 @@ http://app.mobile.example.com
 
 特定の信頼できるドメインからのリクエストのみを制限するために、プロファイル内に許可リストを作成します。
 
-1. **管理メニュー &gt; データレイヤーエンリッチメント**に移動します。
+1. **管理メニュー > データレイヤーエンリッチメント**に移動します。
 1. 信頼するドメインのカンマ区切りリストを入力します。プロファイルごとに最大250のドメインを追加できます。ドメインの前に`http`または`https`プロトコルを含めないでください（例：`example.com`）。
 1. **保存**をクリックします。
 1. 変更を保存して公開します。

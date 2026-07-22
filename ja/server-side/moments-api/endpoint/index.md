@@ -9,7 +9,7 @@ Moments APIエンジンは、あなたの地域、アカウント、およびプ
 
 訪問のデータは、エンジンを有効にして訪問がアクティブなセッションを記録し、システムでイベントを生成した後に利用可能になります。訪問のデータをリクエストしても、彼らがまだアクティブなセッションを記録していない場合、APIはデータを返しません。
 
-訪問のデータを取得するには、[Tealium iQ Advanced JavaScript Code Extension]()を構成してMoments APIエンドポイントにリクエストを行います。
+訪問のデータを取得するには、[Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を構成してMoments APIエンドポイントにリクエストを行います。
 
 ## GETメソッド
 
@@ -25,24 +25,24 @@ GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/a
 
 | **パラメータ** |**タイプ**| **説明**|
 |---| ---| ---|
-|`identifier` |String&lt;br&gt;パスパラメータ| Tealiumの匿名訪問IDです。|
-| `suppressNotFound`| Boolean&lt;br&gt;クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 &lt;ul&gt;&lt;li&gt;`true` - HTTP 200コードと空のレスポンスボディを返します。&lt;/li&gt;&lt;li&gt;`false` - HTTP 404コードを返します。&lt;/li&gt;&lt;/ul&gt;|
+|`identifier` |String<br>パスパラメータ| Tealiumの匿名訪問IDです。|
+| `suppressNotFound`| Boolean<br>クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
 
 ### 訪問ID属性
 
 ```bash
-GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/accounts/{ACCOUNT}/profiles/{PROFILE}/engines/{ENGINE_ID}?attributeId={attributeId}&amp;attributeValue={attributeValue}&amp;suppressNotFound={SUPPRESS_NOT_FOUND}
+GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/accounts/{ACCOUNT}/profiles/{PROFILE}/engines/{ENGINE_ID}?attributeId={attributeId}&attributeValue={attributeValue}&suppressNotFound={SUPPRESS_NOT_FOUND}
 ```
 
 このコマンドは以下のパラメータを使用します：
 
 | **パラメータ** |**タイプ**| **説明**|
 |---| ---| ---|
-|`attributeId` |String&lt;br&gt;クエリパラメータ| アカウントからの[訪問ID属性]()を表す数値UIDです。|
-|`attributeValue`|String&lt;br&gt;クエリパラメータ | 検索する値です。特殊文字を含む値はURLエンコードする必要があります。 |
-| `suppressNotFound`| Boolean&lt;br&gt;クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 &lt;ul&gt;&lt;li&gt;`true` - HTTP 200コードと空のレスポンスボディを返します。&lt;/li&gt;&lt;li&gt;`false` - HTTP 404コードを返します。&lt;/li&gt;&lt;/ul&gt;|
+|`attributeId` |String<br>クエリパラメータ| アカウントからの[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値UIDです。|
+|`attributeValue`|String<br>クエリパラメータ | 検索する値です。特殊文字を含む値はURLエンコードする必要があります。 |
+| `suppressNotFound`| Boolean<br>クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
 
-匿名IDと二次訪問IDについての詳細は、[匿名ID、ユーザー識別子、および訪問ID属性]()を参照してください。
+匿名IDと二次訪問IDについての詳細は、[匿名ID、ユーザー識別子、および訪問ID属性](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)を参照してください。
 
 ## オブジェクト
 
@@ -66,23 +66,23 @@ PIIとしてマークされた属性はサポートされていません。
 
 ```json
 {
-    &#34;audiences&#34;: [
-        &#34;30 Days Since Last Login&#34;
+    "audiences": [
+        "30 Days Since Last Login"
     ],
-    &#34;badges&#34;: [
-        &#34;Frequent visitor&#34;
+    "badges": [
+        "Frequent visitor"
     ],
-    &#34;metrics&#34;: {
-        &#34;Total direct visits&#34;: 1
+    "metrics": {
+        "Total direct visits": 1
     },
-    &#34;properties&#34;: {
-        &#34;Company Name&#34;: &#34;&lt;attr_value&gt;&#34;
+    "properties": {
+        "Company Name": "<attr_value>"
     },
-    &#34;flags&#34;: {
-        &#34;Returning visitor&#34;: false
+    "flags": {
+        "Returning visitor": false
     },
-    &#34;dates&#34;: {
-        &#34;First visit&#34;: 1491233145706
+    "dates": {
+        "First visit": 1491233145706
     }
 }
 
@@ -94,23 +94,23 @@ PIIとしてマークされた属性はサポートされていません。
 
 ```json
 {
-    &#34;audiences&#34;: [
-        &#34;tealium_main_205&#34;
+    "audiences": [
+        "tealium_main_205"
     ],
-    &#34;badges&#34;: [
-        &#34;31&#34;
+    "badges": [
+        "31"
     ],
-    &#34;metrics&#34;: {
-        &#34;15&#34;: 1
+    "metrics": {
+        "15": 1
     },
-    &#34;properties&#34;: {
-        &#34;27330&#34;: &#34;&lt;attr_value&gt;&#34;
+    "properties": {
+        "27330": "<attr_value>"
     },
-    &#34;flags&#34;: {
-        &#34;27&#34;: false
+    "flags": {
+        "27": false
     },
-    &#34;dates&#34;: {
-        &#34;23&#34;: 1491233145706
+    "dates": {
+        "23": 1491233145706
     }
 }
 ```

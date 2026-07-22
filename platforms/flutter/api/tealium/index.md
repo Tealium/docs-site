@@ -15,9 +15,9 @@ The following summarizes the commonly used methods of the Flutter `Tealium` clas
 | [`clearStoredVisitorIds()`](#clearstoredvisitorids) | Clears all previously stored visitor IDs and hashed customer identifiers. As a result, a new visitor ID is generated and becomes the active visitor ID. |
 | [`gatherTrackData()`](#gathertrackdata) | Gathers data from all collectors and data layer |
 | [`getFromDataLayer()`](#getfromdatalayer) | Gets the value for a specified key in the persistent data layer |
-| [`getConsentCategories()`](#getconsentcategories) | Gets the user&#39;s consented categories |
-| [`getConsentStatus()`](#getconsentstatus) | Gets the user&#39;s consent status |
-| [`getVisitorId()`](#getvisitorid) | Gets the user&#39;s visitor ID |
+| [`getConsentCategories()`](#getconsentcategories) | Gets the user's consented categories |
+| [`getConsentStatus()`](#getconsentstatus) | Gets the user's consent status |
+| [`getVisitorId()`](#getvisitorid) | Gets the user's visitor ID |
 | [`initialize()`](#initialize) | Initializes Tealium with configuration parameters |
 | [`joinTrace()`](#jointrace) | Joins a trace with the given ID |
 | [`leaveTrace()`](#leavetrace) | Leaves a previously joined traced and ends the visitor session |
@@ -26,7 +26,7 @@ The following summarizes the commonly used methods of the Flutter `Tealium` clas
 | [`resetVisitorId()`](#resetvisitorid) | Generates a new visitor ID for the user. |
 | [`setConsentCategories()`](#setconsentcategories) | Sets the consent categories of a user |
 | [`setConsentExpiryListener()`](#setconsentexpirylistener) | Sets the consent expired listener/callback |
-| [`setConsentStatus()`](#setconsentstatus) | Sets the user&#39;s consent status |
+| [`setConsentStatus()`](#setconsentstatus) | Sets the user's consent status |
 | [`setVisitorIdListener()`](#setvisitoridlistener) | Add a listener for changes on `visitorId`. |
 | [`setVisitorServiceListener()`](#setvisitorservicelistener) | Sets the visitor service listener/callback |
 | [`terminateInstance()`](#terminateinstance) | Terminates the Tealium instance by disabling the Tealium library and removing all module references |
@@ -42,13 +42,13 @@ Tealium.addCustomRemoteCommand(id, callback);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `id` | `String` | Name of the command ID from the tag configuration | `&#34;test_command&#34;` |
+| `id` | `String` | Name of the command ID from the tag configuration | `"test_command"` |
 | `callback` | `Function ` | A callback function to execute after receiving the response from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```dart
-Tealium.addCustomRemoteCommand(&#39;CUSTOM_COMMAND_ID&#39;, (payload) {
+Tealium.addCustomRemoteCommand('CUSTOM_COMMAND_ID', (payload) {
   print(JsonEncoder().convert(payload));
 });
 ```
@@ -68,8 +68,8 @@ Tealium.addRemoteCommand(remoteCommand);
 Example:
 
 ```dart
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: &#34;firebase.json&#34;)); // local
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: &#34;www.tealium.com/path_to_remote_command/firebase.json&#34;)); // remote
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: "firebase.json")); // local
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: "www.tealium.com/path_to_remote_command/firebase.json")); // remote
 Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName)); // webview
 ```
 
@@ -83,7 +83,7 @@ Tealium.addToDataLayer(data, expiry);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Object&gt;` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{&#39;persistent_key&#39; : &#39;persistent_val&#39;}` |
+| `data` | `Map<String, Object>` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{'persistent_key' : 'persistent_val'}` |
 | `expiry` | `Expiry` | Length of time for which to persist the data | `Expiry.forever` |
 
 ### `clearStoredVisitorIds()`
@@ -106,19 +106,19 @@ Tealium.getFromDataLayer(key);
 | Parameter | Type | Description |
 |-----------|-------------| ---- |
 | `key` | `String` | Key to retrieve from the data layer|
-| `N/A` | `Future&lt;dynamic&gt;` | Future succeeds after value was successfully retrieved from `Tealium.dataLayer` |
+| `N/A` | `Future<dynamic>` | Future succeeds after value was successfully retrieved from `Tealium.dataLayer` |
 
 Example:
 
 ```dart
-Tealium.getFromDataLayer(&#39;key&#39;)
-    .then((value) =&gt; print(&#39;Value From data layer: $value&#39;));
+Tealium.getFromDataLayer('key')
+    .then((value) => print('Value From data layer: $value'));
 ```
 
 
 ### `getConsentCategories()`
 
-Gets the user&#39;s consented categories.
+Gets the user's consented categories.
 
 ```dart
 Tealium.getConsentCategories();
@@ -126,20 +126,20 @@ Tealium.getConsentCategories();
 
 | Parameter | Type | Description |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;List&lt;dynamic&gt;&gt;` | Future completes after the consent categories have been successfully retrieved from the `Tealium.ConsentManager` |
+| `N/A` | `Future<List<dynamic>>` | Future completes after the consent categories have been successfully retrieved from the `Tealium.ConsentManager` |
 
 Example:
 
 ```dart
 Tealium.getConsentCategories()
-  .then((categories) =&gt;
-      print(&#39;Consent Categories: &#39; &#43; categories.join(&#34;,&#34;)));
+  .then((categories) =>
+      print('Consent Categories: ' + categories.join(",")));
 ```
 
 
 ### `getConsentStatus()`
 
-Gets the user&#39;s consent status as a callback function.
+Gets the user's consent status as a callback function.
 
 ```dart
 Tealium.getConsentStatus();
@@ -147,18 +147,18 @@ Tealium.getConsentStatus();
 
 | Parameter | Type | Description |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | Future completes after the consent status was successfully retrieved from the `Tealium.ConsentManager` |
+| `N/A` | `Future<String>` | Future completes after the consent status was successfully retrieved from the `Tealium.ConsentManager` |
 
 Example:
 
 ```dart
 Tealium.getConsentStatus()
-  .then((status) =&gt; print(&#39;Consent Status: $status&#39;));
+  .then((status) => print('Consent Status: $status'));
 ```
 
 ### `getVisitorId()`
 
-Gets the user&#39;s visitor ID.
+Gets the user's visitor ID.
 
 ```dart
 Tealium.getVisitorId();
@@ -166,7 +166,7 @@ Tealium.getVisitorId();
 
 | Parameter | Type | Description |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | Future returns after the `Tealium.visitorId` was successfully retrieved |
+| `N/A` | `Future<String>` | Future returns after the `Tealium.visitorId` was successfully retrieved |
 
 Example:
 
@@ -185,15 +185,15 @@ Tealium.initialize(config);
 | Parameter | Type | Description |
 |-----------|-------------| ---- |
 | `config`  | `TealiumConfig` | Configuration |
-| `N/A` | `Future&lt;void&gt;` | Future completes when Tealium is successfully initialized. Throws `PlatformException` on failure. |
+| `N/A` | `Future<void>` | Future completes when Tealium is successfully initialized. Throws `PlatformException` on failure. |
 
 
 Example:
 
 ```dart
 final config = TealiumConfig(
-    &#39;ACCOUNT&#39;,
-    &#39;PROFILE&#39;,
+    'ACCOUNT',
+    'PROFILE',
     TealiumEnvironment.dev,
     [Collectors.AppData, Collectors.DeviceData, Collectors.Lifecycle, Collectors.Connectivity],
     [Dispatchers.Collect, Dispatchers.TagManagement, Dispatchers.RemoteCommands],
@@ -205,16 +205,16 @@ final config = TealiumConfig(
 try {
     await Tealium.initialize(config);
     Tealium.setConsentStatus(ConsentStatus.consented);
-    Tealium.setConsentExpiryListener(() =&gt; print(&#39;Consent Expired&#39;));
+    Tealium.setConsentExpiryListener(() => print('Consent Expired'));
 } on PlatformException catch (e) {
-    print(&#39;Tealium initialization error: ${e.message}&#39;);
+    print('Tealium initialization error: ${e.message}');
 }
 ```
 
 
 ### `joinTrace()`
 
-Joins a trace with the specified ID. Learn more about [Trace](/platforms/getting-started-mobile/trace/).
+Joins a trace with the specified ID. Learn more about [Trace](https://docs.tealium.com/platforms/getting-started-mobile/trace/).
 
 ```dart
 Tealium.joinTrace(id);
@@ -222,7 +222,7 @@ Tealium.joinTrace(id);
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | Trace ID retrieved from the CDH |  `&#34;abc123xy&#34;` |
+| `id` | `String` | Trace ID retrieved from the CDH |  `"abc123xy"` |
 
 ### `leaveTrace()`
 
@@ -242,7 +242,7 @@ Tealium.removeFromDataLayer(keys);
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | Array of key names |  `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `keys` | `List<String>` | Array of key names |  `["key1", "key2"]` |
 
 ### `removeRemoteCommand()`
 
@@ -254,12 +254,12 @@ Tealium.removeRemoteCommand(id);
 
 | Parameter | Type | Description |  Example |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | Name of the command ID to remove |  `&#34;test_command&#34;` |
+| `id` | `String` | Name of the command ID to remove |  `"test_command"` |
 
 Example:
 
 ```dart
-Tealium.removeRemoteCommand(&#39;test_command&#39;);
+Tealium.removeRemoteCommand('test_command');
 ```
 
 ### `resetVisitorId()`
@@ -280,7 +280,7 @@ Tealium.setConsentCategories(categories);
 
 | Parameter | Type | Description | Example |
 |-----------|-------------| ---- | ------- |
-| `categories` | `List&lt;ConsentCategories&gt;` | Array of user consent categories | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `List<ConsentCategories>` | Array of user consent categories | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 Example:
 
@@ -312,7 +312,7 @@ The following consent categories are available:
 
 ### `setConsentExpiryListener()`
 
-Sets a callback to execute after the user&#39;s consent preferences have expired according the `ConsentExpiry`.
+Sets a callback to execute after the user's consent preferences have expired according the `ConsentExpiry`.
 
 ```dart
 Tealium.setConsentExpiryListener(callback);
@@ -323,7 +323,7 @@ Tealium.setConsentExpiryListener(callback);
 | `callback`  | `Function` | Code to execute after consent expires |
 
 ```dart
-Tealium.setConsentExpiryListener(() =&gt; print(&#39;Consent Expired&#39;));
+Tealium.setConsentExpiryListener(() => print('Consent Expired'));
 ```
 
 ### `setConsentStatus()`
@@ -369,7 +369,7 @@ Tealium.setVisitorIdListener(callback);
 Example:
 
 ```dart
-Tealium.setVisitorIdListener((newVisitorId) =&gt; print(newVisitorId));
+Tealium.setVisitorIdListener((newVisitorId) => print(newVisitorId));
 ```
 
 
@@ -377,7 +377,7 @@ Tealium.setVisitorIdListener((newVisitorId) =&gt; print(newVisitorId));
 
 Sets a callback to execute when the visitor profile is updated. The updated `VisitorProfile` is provided in the callback response.
 
-The VisitorService module implements the [Data Layer Enrichment]() feature of the Tealium Customer Data Hub.
+The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
 Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
 
@@ -421,11 +421,11 @@ To track view or events, pass an instance of [`TealiumView`](#class-tealiumview)
 
 ```dart
 final tealEvent = TealiumEvent(
-  &#39;cart_add&#39;, 
+  'cart_add', 
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;, 
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-    &#39;product_price&#39;: [4.00, 6.00]
+    'customer_id': 'abc123', 
+    'product_id': ["PROD123", "PROD456"], 
+    'product_price': [4.00, 6.00]
   }
 );
 Tealium.track(tealEvent);
@@ -439,7 +439,7 @@ Example:
 
 ```dart
 Tealium.gatherTrackData()
-  .then((data) =&gt; print(&#39;Gather track data: $data&#39;));
+  .then((data) => print('Gather track data: $data'));
 ```
 
 ## Interface: `TealiumDispatch`
@@ -448,7 +448,7 @@ An interface that defines the type of dispatch to be tracked. The following clas
 
 ### Class: `TealiumEvent`
 
-To track a user&#39;s interaction with a screen or a screen view, pass an instance of `TealiumEvent(eventName, dataLayer)` to the [`track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
+To track a user's interaction with a screen or a screen view, pass an instance of `TealiumEvent(eventName, dataLayer)` to the [`track()`](#track) method. `TealiumEvent` consists of an event name, which appears in the tracking call as `tealium_event`, and an optional data dictionary.
 
 ```dart
 final tealEvent = TealiumEvent(eventName, dataLayer);
@@ -458,17 +458,17 @@ Tealium.track(tealEvent);
 | Parameters  | Type    | Description      | 
 |:------------|:--------|:-----------------|
 | `eventName` | `String` | The event name, passed as the `tealium_event` attribute.  |
-| `dataLayer` | `Map&lt;String, Object&gt;` | (Optional) Data to be sent with the event in key-value format. |
+| `dataLayer` | `Map<String, Object>` | (Optional) Data to be sent with the event in key-value format. |
 
 Example:
 
 ```dart
 final tealEvent = TealiumEvent(
-  &#39;cart_add&#39;, 
+  'cart_add', 
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;, 
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-    &#39;product_price&#39;: [4.00, 6.00]
+    'customer_id': 'abc123', 
+    'product_id': ["PROD123", "PROD456"], 
+    'product_price': [4.00, 6.00]
   }
 );
 Tealium.track(tealEvent);
@@ -486,18 +486,18 @@ Tealium.track(screenView);
 | Parameters  | Type    | Description      |
 |:------------|:--------|:-----------------|
 | `viewName`  | `String`| The view name, passed as the `tealium_event` attribute.|
-| `dataLayer` | `Map&lt;String, Object&gt;` | (Optional) Data to be sent with the event in key-value format. | 
+| `dataLayer` | `Map<String, Object>` | (Optional) Data to be sent with the event in key-value format. | 
 
 Example:
 
 ```dart
 final screenView = TealiumView(
-  &#39;purchase&#39;, 
+  'purchase', 
   {
-    &#39;customer_id&#39;: &#39;abc123&#39;, 
-    &#39;order_total&#39;: 10.00, 
-    &#39;product_id&#39;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-    &#39;order_id&#39;: &#39;0123456789&#39;
+    'customer_id': 'abc123', 
+    'order_total': 10.00, 
+    'product_id': ["PROD123", "PROD456"], 
+    'order_id': '0123456789'
   }
 );
 Tealium.track(screenView);

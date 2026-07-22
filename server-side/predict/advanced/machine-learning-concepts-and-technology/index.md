@@ -10,7 +10,7 @@ Machine learning is a subfield of artificial intelligence that focuses on enabli
 
 In cases where you know what data you want, Machine Learning accelerates the path to acquiring the data you want. In cases where you do not know exactly what you want or need to identify a pattern, Machine Learning can find a pattern and reveal results that you can use to move forward with acquiring the data you need.
 
-For information about what Machine Learning is and what it is not, see [Machine Learning vs. Artificial Intelligence]().
+For information about what Machine Learning is and what it is not, see [Machine Learning vs. Artificial Intelligence](https://docs.tealium.com/machine-learning-vs-artificial-intelligence/).
 
 ## Goals
 
@@ -20,7 +20,7 @@ Machine learning technology enables you to learn more about your users and, as a
 
 Data scientists and developers who have a high level of knowledge about Machine Learning and actually work on Machine Learning projects are the primary consumers of Machine Learning tools and technologies. Everyone else, including marketers and business users, have a general understanding of the potential benefits of Machine Learning but lack the knowledge of how to start and implement a Machine Learning project.
 
-Tealium Predict can be implemented and managed by members of this &#34;everyone else&#34; group. One does not have to be a Data Scientist or have a background in Data Science to get started and add immediate value to a business.
+Tealium Predict can be implemented and managed by members of this "everyone else" group. One does not have to be a Data Scientist or have a background in Data Science to get started and add immediate value to a business.
 
 ## Business examples
 

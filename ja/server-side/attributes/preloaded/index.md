@@ -5,9 +5,13 @@ url: https://docs.tealium.com/ja/server-side/attributes/preloaded/
 ---
 ## 動作原理
 
-便宜上、AudienceStream および EventStream には、事前に読み込まれたイベント、訪問、および訪問属性のセットが含まれています。各属性は、各訪問または訪問について有用な情報を決定するのに役立つ統計情報を収集するように構成されています。これらの属性には、[Tealium Collect タグ]()からの標準イベントデータを超える追加データは必要ありません。
+便宜上、AudienceStream および EventStream には、事前に読み込まれたイベント、訪問、および訪問属性のセットが含まれています。各属性は、各訪問または訪問について有用な情報を決定するのに役立つ統計情報を収集するように構成されています。これらの属性には、[Tealium Collect タグ](https://docs.tealium.com/tealium-collect-tag/)からの標準イベントデータを超える追加データは必要ありません。
 
- 事前読み込みされた属性は変更できませんが、複製してそのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれています。 
+
+<blockquote>
+事前読み込みされた属性は変更できませんが、複製してそのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれています。
+</blockquote>
+
 
 ## 訪問属性
 
@@ -31,7 +35,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/preloaded/
 |使用されたオペレーティングシステムのお気に入り | 58 | 文字列|  使用されたオペレーティングシステムの属性からお気に入りのアイテム| 使用されたオペレーティングシステムから自動生成。 |
 |使用されたプラットフォームの合計 |61 | 集計| 使用されたプラットフォームを記録する集計。| 訪問終了時に `アクティブなプラットフォーム` に見つかった場合、`使用されたプラットフォームの合計` のすべての値を `1` 増やす。 |
 |使用されたプラットフォームのお気に入り | 60 | 文字列 | 使用されたプラットフォームの属性からお気に入りのアイテム。| 使用されたプラットフォームから自動生成。|
-|サイト訪問回数の合計 | 21  |数値 | ユーザーがサイトを訪問した総回数。| &lt;ul&gt;&lt;li&gt;訪問終了時に `サイトでの合計滞在時間（分）` を `サイト訪問回数の合計` で割った比率 `平均訪問時間（分）` を構成。&lt;/li&gt;&lt;li&gt;新規訪問時に `最初の訪問からの週数` が `1` 以上の場合、`サイト訪問回数の合計` を `最初の訪問からの週数` で割った比率 `週平均訪問回数` を構成。&lt;/li&gt;&lt;/ul&gt; |
+|サイト訪問回数の合計 | 21  |数値 | ユーザーがサイトを訪問した総回数。| <ul><li>訪問終了時に `サイトでの合計滞在時間（分）` を `サイト訪問回数の合計` で割った比率 `平均訪問時間（分）` を構成。</li><li>新規訪問時に `最初の訪問からの週数` が `1` 以上の場合、`サイト訪問回数の合計` を `最初の訪問からの週数` で割った比率 `週平均訪問回数` を構成。</li></ul> |
 |リピーター| 27 | ブール値| 訪問がリピーターである場合。| 新規訪問時に `サイト訪問回数の合計` が `1` より大きい場合、`リピーター` を `true` に構成。 |
 |直接訪問の合計| 15 | 数値 | 直接訪問の総数。| 新規訪問時に `紹介URL` が空または `紹介URL` が `現在のURL` と等しい場合、数値 `直接訪問の合計` を `1` 増やす。 |
 |紹介訪問の合計 |16 | 数値 | 紹介による訪問の総数。| 新規訪問時に `紹介URL` が空でなく、`紹介URL` が `現在のURL` と等しくない場合、数値 `紹介訪問の合計` を `1` 増やす。|
@@ -42,7 +46,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/preloaded/
 
 | 訪問属性 | ID | タイプ | 説明 | エンリッチメント |
 |-----|-----|-----|-----|-----|
-|アクティブなブラウザの種類 | 44 | 文字列 | 訪問が現在使用しているブラウザ。| &lt;ul&gt;&lt;li&gt;イベントの `User Agent` が `Firefox`、`Safari`、`MSIE`、`Edg`、`Opera` を含まない場合、文字列 `Active browser version` を `Active browser type` に構成する。&lt;/li&gt;&lt;li&gt;イベントの `User Agent` が `Chrome` の場合、文字列 `Active browser version` を `Active browser type` に構成する。&lt;/li&gt;&lt;li&gt;イベントの `User Agent` が `Firefox` の場合、文字列 `Active browser version` を `Active browser type` に構成する。&lt;/li&gt;&lt;li&gt;イベントの `User Agent` が `Opera` の場合、文字列 `Active browser version` を `Active browser type` に構成する。&lt;/li&gt;&lt;li&gt;イベントがある場合、`Set of Strings` アクティブなブラウザの種類に `Active browser type` を追加する。&lt;/li&gt;&lt;/ul&gt; |
+|アクティブなブラウザの種類 | 44 | 文字列 | 訪問が現在使用しているブラウザ。| <ul><li>イベントの `User Agent` が `Firefox`、`Safari`、`MSIE`、`Edg`、`Opera` を含まない場合、文字列 `Active browser version` を `Active browser type` に構成する。</li><li>イベントの `User Agent` が `Chrome` の場合、文字列 `Active browser version` を `Active browser type` に構成する。</li><li>イベントの `User Agent` が `Firefox` の場合、文字列 `Active browser version` を `Active browser type` に構成する。</li><li>イベントの `User Agent` が `Opera` の場合、文字列 `Active browser version` を `Active browser type` に構成する。</li><li>イベントがある場合、`Set of Strings` アクティブなブラウザの種類に `Active browser type` を追加する。</li></ul> |
 |アクティブなブラウザの種類 | 49 | 文字列のセット | この訪問で使用されたブラウザの種類の重複排除リスト。| 訪問終了時に `Active browser types` に見つかったすべての値に `1` を加算して `Lifetime browser types used` を集計する。 |
 |アクティブなブラウザのバージョン | 48 | 文字列 | 訪問が現在使用しているブラウザのバージョン。| イベントがある場合、文字列のセット `Active browser versions` に `Active browser version` を追加する。 |
 |アクティブなブラウザのバージョン | 53 | 文字列のセット | この訪問でのブラウザのバージョンの重複排除リスト。| 訪問終了時に `Active browser versions` に見つかったすべての値に `1` を加算して `Lifetime browser versions used` を集計する。 |
@@ -67,10 +71,10 @@ url: https://docs.tealium.com/ja/server-side/attributes/preloaded/
 |-----|-----|-----|-----|-----|
 |クライアント IP | 74 | 文字列 | 訪問の IPv4 アドレス。| |
 |クライアント IPv6 | 83 | 文字列 | 訪問の IPv6 アドレス。訪問は IPv6 アドレスを持っている必要があり、そのネットワークインフラはアドレスを伝送できる必要がある。詳細は [IPv6のサポート](#support-for-ipv6) を参照。| |
-|現在の URL | 4 | 文字列 | 現在のページの URL。 | &lt;ul&gt;&lt;li&gt;新しい訪問時に文字列 `Entry URL` を `Current URL` に構成する。&lt;/li&gt;&lt;li&gt;訪問終了時に文字列 `Exit URL` を `Current URL` に構成する。&lt;/li&gt;&lt;li&gt;イベントがある場合、文字列 `Last event URL` を `Current URL` に構成する。&lt;/li&gt;&lt;/ul&gt; |
+|現在の URL | 4 | 文字列 | 現在のページの URL。 | <ul><li>新しい訪問時に文字列 `Entry URL` を `Current URL` に構成する。</li><li>訪問終了時に文字列 `Exit URL` を `Current URL` に構成する。</li><li>イベントがある場合、文字列 `Last event URL` を `Current URL` に構成する。</li></ul> |
 |ドメイン | 35 | 文字列 | 現在のページのドメイン。| |
 |イベント名 | 64 | 文字列 | この属性は非推奨です。代わりに `tealium_event` を使用してください。|
-|最後のイベントのタイムスタンプ | 8 | 文字列 | 最後のイベントのタイムスタンプ。| &lt;ul&gt;&lt;li&gt;新しい訪問時に日付 `Visit start` を `Last event timestamp` に構成する。&lt;/li&gt;&lt;li&gt;イベントがある場合、日付 `Visit end` を `Last event timestamp` に構成する。&lt;/li&gt;&lt;li&gt;新しい訪問の場合、日付 `First visit` を `Last event timestamp` に構成する。&lt;/li&gt;&lt;li&gt;訪問終了時に日付 `Last visit` を `Last event timestamp` に構成する。&lt;/li&gt;&lt;/ul&gt;|
+|最後のイベントのタイムスタンプ | 8 | 文字列 | 最後のイベントのタイムスタンプ。| <ul><li>新しい訪問時に日付 `Visit start` を `Last event timestamp` に構成する。</li><li>イベントがある場合、日付 `Visit end` を `Last event timestamp` に構成する。</li><li>新しい訪問の場合、日付 `First visit` を `Last event timestamp` に構成する。</li><li>訪問終了時に日付 `Last visit` を `Last event timestamp` に構成する。</li></ul>|
 |ページタイトル | 38 | 文字列 | 現在のページのタイトル。| |
 |パス名 | 36 | 文字列 | 現在のページのパス名。| |
 |プラットフォーム | 40 | 文字列 | クライアントのプラットフォーム。| |
@@ -114,7 +118,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/preloaded/
 
 以下のコンポーネントはIPv6をサポートしていません：
 
-* Tealium CollectタグおよびCollect HTTP API（`collect.tealiumiq.com`および`collect-&lt;region&gt;.tealiumiq.com`）
+* Tealium CollectタグおよびCollect HTTP API（`collect.tealiumiq.com`および`collect-<region>.tealiumiq.com`）
 * ファーストパーティCollectドメイン
 * Tealium v1、v2、およびv3 API（`platform.tealiumapis.com`）
 * コネクターおよび外部ファイルのインポート

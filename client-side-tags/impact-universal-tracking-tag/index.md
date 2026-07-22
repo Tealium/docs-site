@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/impact-universal-tracking-tag/
 ---
 ## Tag tips
 
-* Map the variable that contains the SHA1 hash of the customer&#39;s email to `customerEmail`. Unhashed email addresses are removed from Impact tracking calls.
+* Map the variable that contains the SHA1 hash of the customer's email to `customerEmail`. Unhashed email addresses are removed from Impact tracking calls.
 * Custom mappings pass in the properties object of the Impact tracking call.
 * This tag supports the following E-Commerce extension parameters:
     * Order ID (`_corder`)
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/client-side-tags/impact-universal-tracking-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -37,11 +37,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

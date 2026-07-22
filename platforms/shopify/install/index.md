@@ -24,7 +24,7 @@ The following sections provide instructions for installing the Tealium App in Sh
     * **Client Side Only**: Select this option if you only have Tealium iQ Tag Management.
     * **Client and Server Side**: Select this option if you use Shopify Webhooks to send data to EventStream.
 1. If you selected **Client and Server Side**, do the following:  
-    1. In Tealium, go to **Server-Side &gt; Data Sources**, and select the data source you created for Shopify.  
+    1. In Tealium, go to **Server-Side > Data Sources**, and select the data source you created for Shopify.  
     1. Copy the **Data Source Key** for the selected data source.  
     1. In Shopify, paste the data source key into the **Server Side Data Source ID** field. 
 1. Click **Submit** when you have finished the configuration. Webhooks are immediately created.
@@ -33,7 +33,7 @@ The following sections provide instructions for installing the Tealium App in Sh
 
 Use the following steps to enable the Shopify theme:
 
-1. In Shopify, go to **Online Store &gt; Themes &gt; Customize**.
+1. In Shopify, go to **Online Store > Themes > Customize**.
 1. Click **App Embeds** and enable the Tealium extension.  
 This loads the Tealium library `utag.js` and the standard data layer for Shopify events.
 1. Set **Tealium Settings** to `On`.
@@ -45,7 +45,7 @@ The Tealium app uses a custom checkout pixel to send checkout event data to Even
 
 Use the following steps to configure the Checkout Pixel: 
 
-1. In **Shopify Admin**, go to **Settings &gt; Customer Events**.  
+1. In **Shopify Admin**, go to **Settings > Customer Events**.  
 You will see the Tealium pixel that the Tealium app has installed. The checkout pixel must be added manually.
 1. Click **Add Custom Pixel** and enter `Tealium Checkout` for the **Pixel Name**.
 1. Under **Customer Privacy**, the recommended options are as follows:
@@ -86,7 +86,7 @@ To add a consent integration for Shopify, create a purpose group and one or more
 
 Assign the appropriate Tealium iQ purpose before mapping tags to the different purposes. For each Tag, select the **Map** drop-down menu and assign the most appropriate purpose for the tag.
 
-For more information about creating a purpose group and purposes, see [Add a purpose group]().
+For more information about creating a purpose group and purposes, see [Add a purpose group](https://docs.tealium.com/manage-consent-integrations/#add-a-purpose-group).
 
 #### Add a custom consent integration
 
@@ -98,10 +98,10 @@ Use the following settings when configuring a custom integration for Shopify:
 | Vendor | `Custom` |
 | Vendor ID | `_tracking_consent` |
 | Enforcement Rule | Use the default |
-| Publish Locations | &lt;ul&gt;&lt;li&gt;`Dev` for testing&lt;/li&gt;&lt;li&gt;`Prod` when testing is complete&lt;/li&gt;&lt;/ul&gt; |
+| Publish Locations | <ul><li>`Dev` for testing</li><li>`Prod` when testing is complete</li></ul> |
 | Purpose Group | The purpose group created for Shopify. |
 
-For more information about adding a custom consent integration, see [Add an integration]().
+For more information about adding a custom consent integration, see [Add an integration](https://docs.tealium.com/manage-consent-integrations/#add-an-integration).
 
 ## Validate your installation
 
@@ -118,7 +118,7 @@ Debug mode applies only to the client-side. It cannot be used to validate server
 
 Debugging of webhooks and events sent to EventStream can be done using the Live Events page in EventStream. The page being tested needs to be reloaded to see the events. This works on the whole site, including checkout. For more information, see [About Live Events]().
 
-1. In **Shopify Admin**, go to **Online Store &gt; Themes &gt; Customize &gt; App embeds**.
+1. In **Shopify Admin**, go to **Online Store > Themes > Customize > App embeds**.
 1. Enable debugging in the Tealium extension settings and click **Save**.
 1. Reload your website and check the browser console to see detailed debugging information.
 
@@ -155,7 +155,7 @@ The `ses_id`, `_st`, and `_ss` cookies are required and marked with red badges t
 
 To remove the Tealium app from Shopify, use the following steps:
 
-1. In Shopify, go to **Visit Settings &gt; Custom data**.
+1. In Shopify, go to **Visit Settings > Custom data**.
 1. In the list, click **Tealium**, which will be near the bottom of the list.  
 The Tealium metadata fields will be listed.
 1. Scroll down in the list of fields and click **Delete**.

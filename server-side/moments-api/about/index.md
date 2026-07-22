@@ -3,7 +3,11 @@ title: About Moments API
 description: Moments API is a high-performance, configurable endpoint that retrieves a targeted slice of live visitor context for real-time personalization, AI systems, and cross-channel experiences.
 url: https://docs.tealium.com/server-side/moments-api/about/
 ---
+
+<blockquote>
 Contact your account manager to enable Moments API for your account.
+</blockquote>
+
 
 Moments API is a composable AudienceStream API that retrieves a fast, targeted slice of live visitor context. Instead of returning a full visitor profile, it returns only the audiences, badges, and attributes your app, service workflow, or AI system needs for a specific decision or experience. Integrate Moments API into your Tealium client-side applications, wherever `utag.js` is installed, in Tealium for Mobile, or into any agentic AI framework such as LangChain via the [managed MCP server](#mcp-server).
 
@@ -25,7 +29,7 @@ Moments API can be used any time you need real-time visitor data for personalize
 
 For example, when a visitor returns to your website or app, a request is made to the unique Moments API endpoint for visitor data. Moments API is optimized to provide only the data you need, so the API sends a real-time, streamlined response back to your app. With that critical data, you can activate additional logic to trigger personalized experiences for your visitor.
 
-![](/images/early-access/moments-api-workflow.png)
+![](https://docs.tealium.com/images/early-access/moments-api-workflow.png)
 
 ### Engines
 
@@ -52,28 +56,28 @@ For example, a visitor visits a site from two devices, which results in two anon
 
 These result in two visitor profiles, A and B:
 
-![](/images/server-side/visitor-stitching-example-first-visit.png)
-![](/images/server-side/visitor-stitching-example-second-visit.png)  
+![](https://docs.tealium.com/images/server-side/visitor-stitching-example-first-visit.png)
+![](https://docs.tealium.com/images/server-side/visitor-stitching-example-second-visit.png)  
 
-The visitor&#39;s email address is `user@example.com`, which populates the configured visitor ID attribute and is used to stitch the profiles associated with both devices into a new master profile (C).
+The visitor's email address is `user@example.com`, which populates the configured visitor ID attribute and is used to stitch the profiles associated with both devices into a new master profile (C).
 
-![](/images/server-side/visitor-stitching-profile-c-created.png)
+![](https://docs.tealium.com/images/server-side/visitor-stitching-profile-c-created.png)
 
 If the account has a single engine and the visitor has an attribute that qualifies it for writing, the system writes that data one time for each visitor profile:
 
 * If visitor ID lookups are enabled, 3 writes (3 visitor profiles × 1 engine).
 * If visitor ID lookups are disabled, 2 writes (2 visitor profiles × 1 engine).
 
-![](/images/server-side/moments-api/moments-api-visitor-stitching-1.png)
+![](https://docs.tealium.com/images/server-side/moments-api/moments-api-visitor-stitching-1.png)
 
 If the account has five identically configured engines and the visitor has an attribute that qualifies it for writing, the system writes that data five times for each visitor profile:
 
 * If visitor ID lookups are enabled, 15 writes (3 visitor profiles × 5 engines).
 * If visitor ID lookups are disabled, 10 writes (2 visitor profiles × 5 engines).
 
-![](/images/server-side/moments-api/moments-api-visitor-stitching-2.png)
+![](https://docs.tealium.com/images/server-side/moments-api/moments-api-visitor-stitching-2.png)
 
-For more information about visitor stitching, see .
+For more information about visitor stitching, see [about-visitor-stitching](https://docs.tealium.com/about-visitor-stitching/).
 
 ### Endpoints
 
@@ -81,9 +85,13 @@ Moments API creates a unique endpoint for each engine. Visitor data is returned 
 
 Tealium has benchmarked the average Moments API endpoint performance at 60 ms for payload sizes of 1 kB and smaller. 
 
-To retrieve visitor data, configure a [Tealium iQ Advanced JavaScript Code Extension]() to make a request to the [Moments API endpoint](). 
+To retrieve visitor data, configure a [Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) to make a request to the [Moments API endpoint](https://docs.tealium.com/moments-api-endpoint/). 
 
+
+<blockquote>
 Data is not available for visitors that have not had an active session since turning on the engine.
+</blockquote>
+
 
 ### MCP server
 
@@ -91,7 +99,7 @@ The Moments API managed MCP server provides AI systems and LLMs with secure, rea
 
 The server supports both anonymous ID and visitor ID attribute lookups, matching the same retrieval methods available through the standard endpoint.
 
-For more information, see .
+For more information, see [moments-api-mcp-server](https://docs.tealium.com/moments-api-mcp-server/).
 
 ### Visitor identifiers
 
@@ -100,13 +108,13 @@ Moments API endpoints support GET requests that use both the Tealium anonymous I
 * **Anonymous ID**: A unique and anonymous value assigned to a visitor on each visit to a site or each use of an app. The anonymous ID tracks a visitor over multiple visits from the same browser or app, but not across different browsers or devices.
 * **Visitor ID attribute**: A special attribute type in AudienceStream that gets its value from a user identifier and is used in visitor stitching. 
 
-For more information, see [Anonymous IDs, user identifiers, and visitor ID attributes]().
+For more information, see [Anonymous IDs, user identifiers, and visitor ID attributes](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
 ### Governance
 
 Moments API includes built-in controls for secure, production-grade deployment:
 
-* **No PII access**: Attributes designate as [restricted data]() cannot be included in API responses.
+* **No PII access**: Attributes designate as [restricted data](https://docs.tealium.com/about-restricted-data/) cannot be included in API responses.
 * **Domain allow lists**: Restrict which domains can query your engine endpoints.
 * **Permissions**: Control who can create, edit, or delete engines using role-based access.
 * **Purge data**: Delete outdated engine data at any time without affecting visitor records.
@@ -119,7 +127,11 @@ The Moments API has the following default limits:
 
 * Read rate limit per profile across all engines: 200 requests/second/profile
 * Maximum enabled engines per profile: 10
-* Maximum size of Moments API data that can be stored per visitor per engine: 1 kB If your visitor attribute data exceeds the data store limit, it is not stored for that visitor.
+* Maximum size of Moments API data that can be stored per visitor per engine: 1 kB 
+<blockquote>
+If your visitor attribute data exceeds the data store limit, it is not stored for that visitor.
+</blockquote>
+
 * Data available in Moments API endpoint: 30-day retention if no new events are processed
 
 If you need higher limits for your use case, contact your Tealium account manager.
@@ -136,13 +148,21 @@ The following examples describe situations in which you may want to purge data f
 
 If an audience, badge, or attribute used in an engine is deleted from AudienceStream or the engine configuration, that item is no longer populated in the endpoint moving forward. Engine data that contains the removed attributes are unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data. 
 
-Purging data only deletes Moments API engine data. Visitor records in AudienceStream are not affected.
 
-For more information about purging engine data, see [Manage Moments API engines &gt; Purge data](). 
+<blockquote>
+Purging data only deletes Moments API engine data. Visitor records in AudienceStream are not affected.
+</blockquote>
+
+
+For more information about purging engine data, see [Manage Moments API engines > Purge data](https://docs.tealium.com/moments-api-manage-engines/#purge-data). 
 
 ## Domain allowlist
 
+
+<blockquote>
 We recommend creating a domain allowlist only after you test the API endpoint.
+</blockquote>
+
 
 An allowlist prevents untrusted domains from making requests to your Moments API endpoints. Add specific domains to the allowlist when you configure the engine. 
 
@@ -169,14 +189,14 @@ Moments API functionality is managed through the following permission levels:
 
 ## Moments API compared with Data Layer Enrichment API
 
-Both Moments API and [Data Layer Enrichment API]() let you retrieve live visitor data, but the use cases, configurations, and implementations are different. Refer to the following comparison to learn more about the differences between these two visitor profile data retrieval methods.
+Both Moments API and [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-public-api/) let you retrieve live visitor data, but the use cases, configurations, and implementations are different. Refer to the following comparison to learn more about the differences between these two visitor profile data retrieval methods.
 
 | | **Moments API**| **Data Layer Enrichment API**|
 |---|---|---|
 |**Use case**| Real-time access to current visitor data for first-page personalization and beyond.| Live visitor data available in real-time to near-real-time after an initial processed event.|
 |**Rates**| 200 requests/second | - |
 |**Active visitor session required** | No | Yes|
-|**Available data**| Audience, badge, or [supported attribute data types]().&lt;br&gt; Names and IDs of audiences and badges available. | Attributes other than visitor IDs, funnels, and timelines, listed by attribute IDs. For badges and audiences, names are available.&lt;br&gt;For badge names, combine with [Profile Definition API]().|
+|**Available data**| Audience, badge, or [supported attribute data types](https://docs.tealium.com/moments-api-endpoint/#objects).<br> Names and IDs of audiences and badges available. | Attributes other than visitor IDs, funnels, and timelines, listed by attribute IDs. For badges and audiences, names are available.<br>For badge names, combine with [Profile Definition API](https://docs.tealium.com/get-profile-definition-api/).|
 |**Lookup ID**| Tealium anonymous ID or visitor ID attribute value | Tealium anonymous ID|
 |**Authenticated endpoint**| No| No|
 |**Access to PII** | No | No |

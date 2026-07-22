@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-in-app-ev
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -29,12 +29,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/the-trade-desk-in-app-ev
 
 |**パラメータ**| **説明**|
 |---| ---|
-| TTDイベントトラッカーID (`upid`) |  &lt;ul&gt;&lt;li&gt;TTDイベントトラッカーID (`upid`)&lt;/li&gt;&lt;/ul&gt; |
-| モバイルアプリイベント (`ref`) |  &lt;ul&gt;&lt;li&gt;これはイベントの名前と同じであるべきです。&lt;/li&gt;&lt;li&gt;この特定のイベント (`ref`) に対してThe Trade Desk構成ページで構成した値と同じです。&lt;/li&gt;&lt;/ul&gt; |
-| モバイルクライアントIPアドレス (`client_ip`) |  &lt;ul&gt;&lt;li&gt;モバイルクライアントIPアドレス (`client_ip`)&lt;/li&gt;&lt;/ul&gt; |
-| iOS用モバイルIDFA (`idfa`) |  &lt;ul&gt;&lt;li&gt;IDFAはiOSの広告主ID (`idfa`)&lt;/li&gt;&lt;/ul&gt; |
-| Android用モバイルGPS ADID (`gps_adid`) |  &lt;ul&gt;&lt;li&gt;ADIDはGoogle Play広告主ID (`gps_adid`)&lt;/li&gt;&lt;/ul&gt; |
-| Windows用モバイルNAID (`win_naid`) |  &lt;ul&gt;&lt;li&gt;Windows NAIDはWindows PhoneデバイスID (`win_naid`)&lt;/li&gt;&lt;/ul&gt; |
-| 収益追跡値 ( `v` ) |  &lt;ul&gt;&lt;li&gt;収益追跡パラメータ `v` と `vf` はUIが有効になっている場合にのみ送信されます。&lt;/li&gt;&lt;li&gt;`vf` フィールドにはISO 4217通貨コードが使用されます&lt;/li&gt;&lt;li&gt;`v` フィールドには浮動小数点数が期待されます。&lt;/li&gt;&lt;li&gt;例：`0.99` , `3.99`&lt;/li&gt;&lt;/ul&gt; |
-| 収益追跡通貨 (`vf`) |  &lt;ul&gt;&lt;li&gt;収益追跡パラメータ `v` と `vf` はUIが有効になっている場合にのみ送信されます&lt;/li&gt;&lt;li&gt;`vf` フィールドにはISO 4217通貨コードが使用されます&lt;/li&gt;&lt;li&gt;`v` フィールドには浮動小数点数が期待されます。&lt;/li&gt;&lt;li&gt;例：`0.99` , `3.99`&lt;/li&gt;&lt;/ul&gt; |
-|追加のクエリデータ|  &lt;ul&gt;&lt;li&gt;必要に応じて追加のURLクエリパラメータデータを提供します&lt;/li&gt;&lt;/ul&gt; |
+| TTDイベントトラッカーID (`upid`) |  <ul><li>TTDイベントトラッカーID (`upid`)</li></ul> |
+| モバイルアプリイベント (`ref`) |  <ul><li>これはイベントの名前と同じであるべきです。</li><li>この特定のイベント (`ref`) に対してThe Trade Desk構成ページで構成した値と同じです。</li></ul> |
+| モバイルクライアントIPアドレス (`client_ip`) |  <ul><li>モバイルクライアントIPアドレス (`client_ip`)</li></ul> |
+| iOS用モバイルIDFA (`idfa`) |  <ul><li>IDFAはiOSの広告主ID (`idfa`)</li></ul> |
+| Android用モバイルGPS ADID (`gps_adid`) |  <ul><li>ADIDはGoogle Play広告主ID (`gps_adid`)</li></ul> |
+| Windows用モバイルNAID (`win_naid`) |  <ul><li>Windows NAIDはWindows PhoneデバイスID (`win_naid`)</li></ul> |
+| 収益追跡値 ( `v` ) |  <ul><li>収益追跡パラメータ `v` と `vf` はUIが有効になっている場合にのみ送信されます。</li><li>`vf` フィールドにはISO 4217通貨コードが使用されます</li><li>`v` フィールドには浮動小数点数が期待されます。</li><li>例：`0.99` , `3.99`</li></ul> |
+| 収益追跡通貨 (`vf`) |  <ul><li>収益追跡パラメータ `v` と `vf` はUIが有効になっている場合にのみ送信されます</li><li>`vf` フィールドにはISO 4217通貨コードが使用されます</li><li>`v` フィールドには浮動小数点数が期待されます。</li><li>例：`0.99` , `3.99`</li></ul> |
+|追加のクエリデータ|  <ul><li>必要に応じて追加のURLクエリパラメータデータを提供します</li></ul> |

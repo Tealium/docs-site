@@ -35,7 +35,7 @@ url: https://docs.tealium.com/ja/platforms/javascript/api/gdpr-functions/
 
 ## `utag.gdpr.dns.setDnsState()`
 
-`dns` 同意クッキーの値を構成します。認識される値：`true`、`false`、`1`、`0`、`&#34;true&#34;`、`&#34;false&#34;`。
+`dns` 同意クッキーの値を構成します。認識される値：`true`、`false`、`1`、`0`、`"true"`、`"false"`。
 
 例：
 ```js
@@ -57,12 +57,12 @@ utag.gdpr.getCategories(onlyEnabledCats)
 
 以下の例は、`utag.gdpr.getCategories()` がすべてのカテゴリを返すときの結果を示しています：  
 ```js
-[&#34;analytics&#34;, &#34;affiliates&#34;, &#34;display_ads&#34;, &#34;search&#34;, &#34;email&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;big_data&#34;, &#34;misc&#34;, &#34;cookiematch&#34;, &#34;cdp&#34;, &#34;mobile&#34;, &#34;engagement&#34;, &#34;monitoring&#34;, &#34;crm&#34;]
+["analytics", "affiliates", "display_ads", "search", "email", "personalization", "social", "big_data", "misc", "cookiematch", "cdp", "mobile", "engagement", "monitoring", "crm"]
 ```
 
 以下の例は、`utag.gdpr.getCategories()` が有効なカテゴリを返すときの結果を示しています：    
 ```js
-[&#34;analytics&#34;, &#34;affiliates&#34;, &#34;personalization&#34;]
+["analytics", "affiliates", "personalization"]
 ```
 
 ## `utag.gdpr.getCategoryLanguage()`
@@ -79,15 +79,15 @@ utag.gdpr.getCategoryLanguage(category)
 | --- | --- | --- |
 | `category` | `String` | カテゴリの名前。 |
 
-以下の例は、言語が英語の場合に `utag.gdpr.getCategoryLanguage(&#34;analytics&#34;)` によって返される `Object` を示しています：
+以下の例は、言語が英語の場合に `utag.gdpr.getCategoryLanguage("analytics")` によって返される `Object` を示しています：
 
 ```js
-{name: &#34;Cookies that help us improve our website&#34;, notes: &#34;These cookies help us understand how people use our website.&#34;}
+{name: "Cookies that help us improve our website", notes: "These cookies help us understand how people use our website."}
 ```
-以下の例は、言語がポーランド語の場合に `utag.gdpr.getCategoryLanguage(&#34;analytics&#34;)` によって返される `Object` を示しています：
+以下の例は、言語がポーランド語の場合に `utag.gdpr.getCategoryLanguage("analytics")` によって返される `Object` を示しています：
 
 ```js
-{name: &#34;Pliki cookie dotyczące wydajności&#34;, notes: &#34;Te pliki cookie gromadzą informacje o tym, jak odw…dynie w celu ulepszania działania naszej witryny.&#34;}
+{name: "Pliki cookie dotyczące wydajności", notes: "Te pliki cookie gromadzą informacje o tym, jak odw…dynie w celu ulepszania działania naszej witryny."}
 ```
 
 ## `utag.gdpr.getConsentState()`
@@ -105,7 +105,7 @@ utag.gdpr.getCategoryLanguage(category)
 | 拒否 | `-1` | 同意が拒否されました（クッキー上の `consent:false`）。 |
 | なし | `0` | 同意が与えられていません（クッキーが存在しない）。 |
 
-部分的な同意が与えられた場合、`Object` の `Array` が返されます。各 `Object` は同意カテゴリを表します。`Array` 内の各 `Object` では、`&#34;ct&#34;` キーが同意値（`1`/`0`）を表し、`&#34;name&#34;` キーが同意カテゴリを指定します。
+部分的な同意が与えられた場合、`Object` の `Array` が返されます。各 `Object` は同意カテゴリを表します。`Array` 内の各 `Object` では、`"ct"` キーが同意値（`1`/`0`）を表し、`"name"` キーが同意カテゴリを指定します。
 
 ```js
 utag.gdpr.getConsentState()
@@ -114,26 +114,30 @@ utag.gdpr.getConsentState()
 以下の例は、部分的な同意のために返される `Object` の `Array` を示しています：
 
 ```js
-[{&#34;ct&#34;:&#34;1&#34;,&#34;name&#34;:&#34;analytics&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;affiliates&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;display_ads&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;search&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;email&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;personalization&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;social&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;big_data&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;misc&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;cookiematch&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;cdp&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;mobile&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;engagement&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;monitoring&#34;},
-{&#34;ct&#34;:&#34;0&#34;,&#34;name&#34;:&#34;crm&#34;}]
+[{"ct":"1","name":"analytics"},
+{"ct":"0","name":"affiliates"},
+{"ct":"0","name":"display_ads"},
+{"ct":"0","name":"search"},
+{"ct":"0","name":"email"},
+{"ct":"0","name":"personalization"},
+{"ct":"0","name":"social"},
+{"ct":"0","name":"big_data"},
+{"ct":"0","name":"misc"},
+{"ct":"0","name":"cookiematch"},
+{"ct":"0","name":"cdp"},
+{"ct":"0","name":"mobile"},
+{"ct":"0","name":"engagement"},
+{"ct":"0","name":"monitoring"},
+{"ct":"0","name":"crm"}]
 ```
 
 ## `utag.gdpr.getCookieValues()`
 
+
+<blockquote>
 この関数を直接使用する代わりに、クッキーを読み取るために `getCookieValues()` 関数を呼び出す `utag.gdpr.getConsentState()` のような関数を使用することをお勧めします。
+</blockquote>
+
 
 同意クッキーをキーと値のペアとして表す `Object` を返します。この関数はデフォルトのクッキー名前空間（`CONSENTMGR`）を使用するか、`window.utag_cfg_ovrd.cmcookiens` で提供された値を使用します。逆の関数（クッキーに書き込む）は `utag.gdpr.setCookie()` です。
 
@@ -145,30 +149,30 @@ utag.gdpr.getCookieValues()
 
 ```js
 {
-    &#34;c1&#34;:&#34;1&#34;,
-    &#34;c2&#34;:&#34;0&#34;,
-    &#34;c3&#34;:&#34;0&#34;,
-    &#34;c4&#34;:&#34;0&#34;,
-    &#34;c5&#34;:&#34;0&#34;,
-    &#34;c6&#34;:&#34;0&#34;,
-    &#34;c7&#34;:&#34;0&#34;,
-    &#34;c8&#34;:&#34;0&#34;,
-    &#34;C9&#34;:&#34;0&#34;,
-    &#34;c10&#34;:&#34;0&#34;,
-    &#34;c11&#34;:&#34;0&#34;,
-    &#34;c12&#34;:&#34;0&#34;,
-    &#34;c13&#34;:&#34;0&#34;,
-    &#34;c14&#34;:&#34;0&#34;,
-    &#34;c15&#34;:&#34;0&#34;,
-    &#34;ts&#34;:&#34;1586965568213&#34;,
-    &#34;consent&#34;:&#34;true&#34;
+    "c1":"1",
+    "c2":"0",
+    "c3":"0",
+    "c4":"0",
+    "c5":"0",
+    "c6":"0",
+    "c7":"0",
+    "c8":"0",
+    "C9":"0",
+    "c10":"0",
+    "c11":"0",
+    "c12":"0",
+    "c13":"0",
+    "c14":"0",
+    "c15":"0",
+    "ts":"1586965568213",
+    "consent":"true"
 }
 ```
 以下の例は、全面的な同意のために `utag.gdpr.getCookieValues()` によって返される `Array` を示しています：  
 ```js
 utag.gdpr.getCategories(true)
 
-{&#34;consent&#34;:&#34;true&#34;,&#34;ts&#34;:&#34;1587026030058&#34;}
+{"consent":"true","ts":"1587026030058"}
 ```
 
 ## `utag.gdpr.getLanguage()`
@@ -182,7 +186,7 @@ utag.gdpr.getLanguage()
 以下の例は、言語が英語（イギリス）の場合に返される `String` を示しています：
 
 ```js
-&#34;en-gb&#34;
+"en-gb"
 ```
 
 ## `utag.gdpr.getSelectedCategories()`
@@ -195,7 +199,7 @@ utag.gdpr.getSelectedCategories()
 次の例は、`utag.gdpr.getSelectedCategories()`によって返される`Array`を示しています：
 
 ```js
-[&#34;analytics&#34;, &#34;personalization&#34;]
+["analytics", "personalization"]
 ```
 
 ## `utag.gdpr.setAllCategories()`
@@ -225,7 +229,11 @@ utag.gdpr.setAllCategories(false)
 
 同意クッキーの値を有効または無効に構成します。この関数は同意のタイムスタンプを更新し、Collect APIへの追跡呼び出しを生成し、キュー`utag.gdpr.queue`に保持されているタグを再生します。
 
+
+<blockquote>
 `utag.gdpr.setConsentValue()`は個々のカテゴリの同意値を変更しません。同意値は関連するAPI呼び出し（`setPreferencesFromList()`または`setPreferencesValues()`）を介して無効にする必要があります。
+</blockquote>
+
 
 ```js
 utag.gdpr.setConsentValue(_response)
@@ -235,18 +243,22 @@ utag.gdpr.setConsentValue(_response)
 | --- | --- | --- |
 | `_response` | `Boolean` | 同意を有効にするには`true`を構成し、同意を無効にするには`false`を構成します。 |
 
-次の例は、クッキーの値を`&#34;consent:true&#34;`に構成し、タイムスタンプを更新します：  
+次の例は、クッキーの値を`"consent:true"`に構成し、タイムスタンプを更新します：  
 ```js
 utag.gdpr.setConsentValue(true)
 ```
-次の例は、クッキーの値を`&#34;consent:false&#34;`に構成し、タイムスタンプを更新します：  
+次の例は、クッキーの値を`"consent:false"`に構成し、タイムスタンプを更新します：  
 ```js
 utag.gdpr.setConsentValue(0)
 ```
 
 ## `utag.gdpr.setCookie()`
 
+
+<blockquote>
 この関数を直接呼び出すことはお勧めしません。
+</blockquote>
+
 
 クッキー`Object`に直接書き込む内部関数です。同意状態、タイムスタンプ、部分的な同意のためのさまざまなカテゴリを表すために`Object`を使用します。自動的に正しいクッキー名と有効期限を使用します。
 
@@ -261,7 +273,7 @@ utag.gdpr.setCookie(onlyEnabledCats)
 例：
 
 ```js
-var object = {&#34;c6&#34;:&#34;1&#34;,&#34;c1&#34;:&#34;0&#34;,&#34;c2&#34;:&#34;0&#34;,&#34;ts&#34;:1587133550264,&#34;consent&#34;:&#34;false&#34;,&#34;c3&#34;:&#34;0&#34;,&#34;c4&#34;:&#34;0&#34;,&#34;c5&#34;:&#34;0&#34;,&#34;c7&#34;:&#34;0&#34;,&#34;c8&#34;:&#34;0&#34;,&#34;c9&#34;:&#34;0&#34;,&#34;c10&#34;:&#34;0&#34;,&#34;c11&#34;:&#34;0&#34;,&#34;c12&#34;:&#34;0&#34;,&#34;c13&#34;:&#34;0&#34;,&#34;c14&#34;:&#34;0&#34;,&#34;c15&#34;:&#34;0&#34;}
+var object = {"c6":"1","c1":"0","c2":"0","ts":1587133550264,"consent":"false","c3":"0","c4":"0","c5":"0","c7":"0","c8":"0","c9":"0","c10":"0","c11":"0","c12":"0","c13":"0","c14":"0","c15":"0"}
 
 utag.gdpr.setCookie(object)
 ```
@@ -270,7 +282,11 @@ utag.gdpr.setCookie(object)
 
 同意クッキーの個々の値を構成します。
 
+
+<blockquote>
 この関数は、`setConsentValue()`などの他の高レベルの関数によって使用されます。この方法は慎重に使用し、初期のニーズを満たさない場合にのみ使用してください。
+</blockquote>
+
 
 ```js
 utag.gdpr.setCookieValue(key, value);
@@ -281,14 +297,14 @@ utag.gdpr.setCookieValue(key, value);
 | `key` | `String` | クッキーに構成されるキー。`consent`、`ts`、または`c`値表現によって指定されたカテゴリのいずれかに構成します。例えば、Analyticsの場合は`c1`、Affiliatesの場合は`c2`など。 |
 | `value` | `String` | クッキーのキーに構成する値。 |
 
-次の例は、同意クッキーを`&#34;consent:false&#34;`に構成します：  
+次の例は、同意クッキーを`"consent:false"`に構成します：  
 ```js
-utag.gdpr.setCookieValue(&#34;consent&#34;, false);
+utag.gdpr.setCookieValue("consent", false);
 ```
 
-次の例は、同意クッキーを`&#34;c1:0&#34;`に構成します：  
+次の例は、同意クッキーを`"c1:0"`に構成します：  
 ```js
-utag.gdpr.setCookieValue(&#34;c1&#34;, 0);
+utag.gdpr.setCookieValue("c1", 0);
 ```
 
 ## `utag.gdpr.setPreferencesFromList()`
@@ -303,10 +319,10 @@ utag.gdpr.setPreferencesFromList(list)
 | --- | --- | --- |
 | `List` |`Array` | 有効なカテゴリの`Array`。 |
 
-次の例は、同意クッキーの`&#34;analytics&#34;`カテゴリの同意状態を構成します：
+次の例は、同意クッキーの`"analytics"`カテゴリの同意状態を構成します：
 
 ```js
-utag.gdpr.setPreferencesFromList([&#34;analytics&#34;])
+utag.gdpr.setPreferencesFromList(["analytics"])
 ```
 
 ## `utag.gdpr.setPreferencesValues()`
@@ -322,9 +338,9 @@ utag.gdpr.setPreferencesValues(state, noCollect)
 | `state` | `Object` | `category:consentState`の形式のキー値ペア。 |
 | `noCollect` | `Boolean` | （オプション）同意を追跡するためにCollect APIを呼び出さないようにするには`true`を構成します。 |
 
-次の例は、`&#34;analytics&#34;`、`&#34;affiliates&#34;`、`&#34;personalization&#34;`カテゴリのクッキー値を構成します：  
+次の例は、`"analytics"`、`"affiliates"`、`"personalization"`カテゴリのクッキー値を構成します：  
 ```js
-Var cats = {&#34;analytics&#34;:&#34;1&#34;,&#34;affiliates&#34;:&#34;0&#34;,&#34;personalization&#34;:&#34;0&#34;}
+Var cats = {"analytics":"1","affiliates":"0","personalization":"0"}
 utag.gdpr.setPreferencesValues(cats)
 ```
 
@@ -347,7 +363,7 @@ utag.gdpr.showConsentPreferences()
 
 次の例は、フランス語で同意を表示します：  
 ```js
-utag.gdpr.showConsentPreferences(&#34;fr-fr&#34;)
+utag.gdpr.showConsentPreferences("fr-fr")
 ```
 
 ## `utag.gdpr.showDoNotSellBanner()`
@@ -370,7 +386,7 @@ utag.gdpr.showDoNotSellBanner()
 
 次の例は、フランス語でOpt-outバナーを表示します：  
 ```js
-utag.gdpr.showDoNotSellBanner(&#34;fr-fr&#34;)
+utag.gdpr.showDoNotSellBanner("fr-fr")
 ```
 
 ## `utag.gdpr.showDoNotSellPrompt()`
@@ -388,12 +404,12 @@ utag.gdpr.showDoNotSellPrompt(_lang)
 次の例は、デフォルトの言語またはデータレイヤーで構成された言語でCCPAポップアップを表示します：  
 
 ```js
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt()&#34;&gt;同意を変更&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt()">同意を変更</a>
 ```
 
 次の例は、フランス語でOpt-out Modelポップアップを表示します：  
 ```js
-&lt;a href=&#34;javascript: utag.gdpr.showDoNotSellPrompt(&#39;fr-fr&#39;)&#34;&gt;同意を変更&lt;/a&gt;
+<a href="javascript: utag.gdpr.showDoNotSellPrompt('fr-fr')">同意を変更</a>
 ```
 
 ## `utag.gdpr.showExplicitConsent()`
@@ -414,7 +430,7 @@ utag.gdpr.showExplicitConsent()
 ```
 次の例は、フランス語で明示的な同意を表示します：  
 ```js
-utag.gdpr.showExplicitConsent(&#34;fr-fr&#34;)
+utag.gdpr.showExplicitConsent("fr-fr")
 ```
 
 ## `utag.gdpr.updateConsentCookie()`

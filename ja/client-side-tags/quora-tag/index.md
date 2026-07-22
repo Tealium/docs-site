@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quora-tag/
 
 ## タグ構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Quoraタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Quoraタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/client-side-tags/quora-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -28,20 +28,20 @@ url: https://docs.tealium.com/ja/client-side-tags/quora-tag/
 
 | 変数   | 説明                      |
 |:-----------|:---------------------------------|
-| `pixel_id` | &lt;ul&gt;&lt;li&gt;Quora Pixel ID&lt;/li&gt;&lt;/ul&gt; |
+| `pixel_id` | <ul><li>Quora Pixel ID</li></ul> |
 
 ### イベント
 
 | 変数               | 説明                                      |
 |:-----------------------|:-------------------------------------------------|
-| `ViewContent`          | &lt;ul&gt;&lt;li&gt;ページビュー&lt;/li&gt;&lt;li&gt;コンテンツ表示&lt;/li&gt;&lt;/ul&gt; |
-| `Generic`              | &lt;ul&gt;&lt;li&gt;一般&lt;/li&gt;&lt;/ul&gt;                        |
-| `Purchase`             | &lt;ul&gt;&lt;li&gt;購入&lt;/li&gt;&lt;/ul&gt;                       |
-| `GenerateLead`         | &lt;ul&gt;&lt;li&gt;リード生成&lt;/li&gt;&lt;/ul&gt;                  |
-| `CompleteRegistration` | &lt;ul&gt;&lt;li&gt;登録完了&lt;/li&gt;&lt;/ul&gt;          |
-| `AddPaymentInfo`       | &lt;ul&gt;&lt;li&gt;支払い情報追加&lt;/li&gt;&lt;/ul&gt;        |
-| `AddToCart`            | &lt;ul&gt;&lt;li&gt;カートに追加&lt;/li&gt;&lt;/ul&gt;                    |
-| `AddToWishlist`        | &lt;ul&gt;&lt;li&gt;ウィッシュリストに追加&lt;/li&gt;&lt;/ul&gt;               |
-| `InitiateCheckout`     | &lt;ul&gt;&lt;li&gt;チェックアウト開始&lt;/li&gt;&lt;/ul&gt;              |
-| `Search`               | &lt;ul&gt;&lt;li&gt;検索&lt;/li&gt;&lt;/ul&gt;                         |
-| `Custom`               | &lt;ul&gt;&lt;li&gt;カスタム&lt;/li&gt;&lt;/ul&gt;                         |
+| `ViewContent`          | <ul><li>ページビュー</li><li>コンテンツ表示</li></ul> |
+| `Generic`              | <ul><li>一般</li></ul>                        |
+| `Purchase`             | <ul><li>購入</li></ul>                       |
+| `GenerateLead`         | <ul><li>リード生成</li></ul>                  |
+| `CompleteRegistration` | <ul><li>登録完了</li></ul>          |
+| `AddPaymentInfo`       | <ul><li>支払い情報追加</li></ul>        |
+| `AddToCart`            | <ul><li>カートに追加</li></ul>                    |
+| `AddToWishlist`        | <ul><li>ウィッシュリストに追加</li></ul>               |
+| `InitiateCheckout`     | <ul><li>チェックアウト開始</li></ul>              |
+| `Search`               | <ul><li>検索</li></ul>                         |
+| `Custom`               | <ul><li>カスタム</li></ul>                         |

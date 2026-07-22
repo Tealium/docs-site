@@ -17,10 +17,12 @@ Snowflake用Tealium Audience Discoveryは、Snowflakeデータからオーディ
 1. Tealiumで、オーディエンスに接続するSnowflakeデータソースを作成します。
 1. Tealiumはコネクタとデータワークフローを通じてデータをアクティベーションのためにロードします。
 
-![](/images/server-side/data-sources/tealium-audience-discovery-architecture.png)
+![](https://docs.tealium.com/images/server-side/data-sources/tealium-audience-discovery-architecture.png)
 
 
+<blockquote>
 アプリはSnowflakeからデータを読み取り、オーディエンステーブルを作成します。既存の顧客データを変更することはありません。オーディエンスアクティベーションと下流のワークフローはTealiumで実行されます。
+</blockquote>
 
 
 ## 要件
@@ -30,10 +32,12 @@ Snowflake用Tealium Audience Discoveryは、Snowflakeデータからオーディ
 * データソースを構成する権限を持つTealiumアカウント。
 
 
+<blockquote>
 CloudStreamは、自動的に受信データに基づいて属性を作成するため、セットアップが容易です。AudienceStreamを使用する場合は、属性とオーディエンスを手動で作成する必要があります。
+</blockquote>
 
 
-インストール手順については、[Snowflake用Tealium Audience Discoveryのインストール]()を参照してください。
+インストール手順については、[Snowflake用Tealium Audience Discoveryのインストール](https://docs.tealium.com/install-tealium-audience-discovery/)を参照してください。
 
 ## 使用例
 
@@ -43,7 +47,7 @@ CloudStreamは、自動的に受信データに基づいて属性を作成する
 
 ## 次のステップ
 
-* [Snowflake用Tealium Audience Discoveryの使い始め]()
-* [Snowflake用Tealium Audience Discoveryのインストール]()
-* [Snowflake用Tealium Audience Discoveryでオーディエンスを管理する]()
-* [SnowflakeオーディエンスをTealiumに接続する]()
+* [Snowflake用Tealium Audience Discoveryの使い始め](https://docs.tealium.com/get-started/)
+* [Snowflake用Tealium Audience Discoveryのインストール](https://docs.tealium.com/install-tealium-audience-discovery/)
+* [Snowflake用Tealium Audience Discoveryでオーディエンスを管理する](https://docs.tealium.com/manage-discovery-audiences/)
+* [SnowflakeオーディエンスをTealiumに接続する](https://docs.tealium.com/connect-snowflake-audiences/)

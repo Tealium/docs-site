@@ -17,19 +17,19 @@ Install the Ad Identifier module with Maven or manually.
 
 To install the Ad Identifier module with Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
 
-2. In your project module&#39;s `build.gradle` file, add the following Maven dependency:
+2. In your project module's `build.gradle` file, add the following Maven dependency:
       ```groovy
       dependencies{
-            implementation &#39;com.tealium:library:5.8.0&#39; //only required if you do not have this reference
-            implementation &#39;com.tealium:adidentifier:1.0.4&#39;
-            implementation &#39;com.tealium:lifecycle:1.1.4&#39; //only required if you do not already have this reference and require lifecycle tracking
+            implementation 'com.tealium:library:5.8.0' //only required if you do not have this reference
+            implementation 'com.tealium:adidentifier:1.0.4'
+            implementation 'com.tealium:lifecycle:1.1.4' //only required if you do not already have this reference and require lifecycle tracking
       }
       ```
 
@@ -42,7 +42,7 @@ To install the Ad Identifier module with Maven:
       Context mContext = this;
 
       // substitute the example instance name here with the same instance name you used when initializing the Tealium library
-      private static final String TEALIUM_INSTANCENAME = &#34;INSTANCE_NAME&#34;;
+      private static final String TEALIUM_INSTANCENAME = "INSTANCE_NAME";
 
       // call this to store the referrer as Persistent data - recommended
       AdIdentifier.setIdPersistent(TEALIUM_INSTANCENAME, mContext);
@@ -63,38 +63,38 @@ To install the Ad Identifier module manually:
             repositories {
             mavenCentral()
             flatDir {
-                  dirs &#39;libs&#39;
+                  dirs 'libs'
             }
             }
       }
       ```
 
-3. Copy the file `tealium.adidentifier-1.0.4.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+3. Copy the file `tealium.adidentifier-1.0.4.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 4. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
             // only required if you do not already have this reference
-            implementation (name:&#39;tealium-5.8.0&#39;, ext:&#39;aar&#39;)
-            implementation (name:&#39;tealium.adidentifier-1.0.4&#39;, ext:&#39;aar&#39;)
+            implementation (name:'tealium-5.8.0', ext:'aar')
+            implementation (name:'tealium.adidentifier-1.0.4', ext:'aar')
             // only required if you do not already have this reference and require lifecycle tracking
-            implementation (name:&#39;tealium.lifecycle-1.1.4&#39;, ext:&#39;aar&#39;)
+            implementation (name:'tealium.lifecycle-1.1.4', ext:'aar')
       }
       ```
 
 ## Additional Considerations
 
 *  **Blocked Access**  
-If the user has not allowed access to the Ad Identifier, the module sets the `google_adid` variable to the string &#34;Ad Tracking Disabled&#34;, which is handled in your Tealium iQ configuration to ensure you pass the expected data to your third-party vendors.
+If the user has not allowed access to the Ad Identifier, the module sets the `google_adid` variable to the string "Ad Tracking Disabled", which is handled in your Tealium iQ configuration to ensure you pass the expected data to your third-party vendors.
 
 * **Delete the Ad Identifier**  
-To delete the stored Ad Identifier string, call the standard methods provided by the Tealium library to remove variables from persistent or volatile storage. The key name for the variable is exposed by the `TealiumAdIdentifier` class. Here&#39;s an example to remove the stored Ad Identifier from both persistent and volatile data. This code has no effect and does not throw an error if the variable doesn&#39;t already exist.
+To delete the stored Ad Identifier string, call the standard methods provided by the Tealium library to remove variables from persistent or volatile storage. The key name for the variable is exposed by the `TealiumAdIdentifier` class. Here's an example to remove the stored Ad Identifier from both persistent and volatile data. This code has no effect and does not throw an error if the variable doesn't already exist.
 
       ```java
       // import the Tealium AdIdentifier module in the import section
       import com.tealium.adidentifier.AdIdentifier;
 
-      private static final String TEALIUM_INSTANCENAME = &#34;INSTANCE_NAME&#34;;
+      private static final String TEALIUM_INSTANCENAME = "INSTANCE_NAME";
       final Tealium instance = Tealium.getInstance(TEALIUM_INSTANCENAME);
 
       // remove from persistent data store

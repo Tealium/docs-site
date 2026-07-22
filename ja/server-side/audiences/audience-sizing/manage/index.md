@@ -5,24 +5,32 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 ---
 訪問を検索し、結果に基づいてジョブを作成するには、まず日付範囲を指定し、少なくとも1つのルールを構成する必要があります。ルールは、訪問のエンリッチメントやオーディエンス作成で使用されるのと同じです。
 
+
+<blockquote>
 クエリされる歴史データの性質上、訪問レベルの属性を含むルールのみが許可されます。
+</blockquote>
+
 
 ## 訪問の発見
 
 ジョブの日付範囲を構成し、ルール条件を選択するには、以下の手順を使用します：
 
-1. サイドバーから **Activate &gt; Discover** へ移動します。
+1. サイドバーから **Activate > Discover** へ移動します。
 2. **Audience Sizing** タブをクリックします。
 3. **Historical Date Range** の下で、カレンダーツールを使用して日付範囲の開始日と終了日を選択します。
-   システムは選択された日付間で活動があった訪問のみを見つけます（発見します）。指定された日付範囲内に活動がなかった訪問や、[プロファイル保持時間]()によって削除された訪問は検索されません。
+   システムは選択された日付間で活動があった訪問のみを見つけます（発見します）。指定された日付範囲内に活動がなかった訪問や、[プロファイル保持時間](https://docs.tealium.com/manage-audiences/)によって削除された訪問は検索されません。
 4. **Choose Rules** の下で、ドロップダウンリストを使用して最大3つのルールを選択します。
-   日付範囲は訪問が活動していた時間を指定するものであり、ルール条件は活動時のプロファイルではなく、現在の訪問プロファイルに対して評価されます。
-   ![](/images/server-side/audience-sizing-choose-rules.png)
+   
+<blockquote>
+日付範囲は訪問が活動していた時間を指定するものであり、ルール条件は活動時のプロファイルではなく、現在の訪問プロファイルに対して評価されます。
+</blockquote>
+
+   ![](https://docs.tealium.com/images/server-side/audience-sizing-choose-rules.png)
    ルールを選択するとクエリがすぐに開始され、訪問数と総訪問の割合が100%に達するまで表示されます。
 
 5. （オプション）クエリから1つ以上のルールを削除するには、訪問数の横にある **X** をクリックします。
 6. 結果はインタラクティブなカラーコードのベン図として表示され、選択した各ルールが1つの円で表されます。
-   ![](/images/server-side/audience-sizing-venn-diagram-100%.png)
+   ![](https://docs.tealium.com/images/server-side/audience-sizing-venn-diagram-100%.png)
 
 ## ジョブの作成
 
@@ -32,12 +40,12 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 1. **Select Segments** の下で、1つ以上のセグメントをチェックします。
    少なくとも1つのセグメントを選択する必要があります。
 1. **Set up job** をクリックします。
-   ![](/images/server-side/audience-sizing-set-up-job.png)
+   ![](https://docs.tealium.com/images/server-side/audience-sizing-set-up-job.png)
    **Create Job** ダイアログが表示され、選択したセグメントの要約が含まれます。ジョブが作成された後、コネクタとアクションを割り当てることができます。
 1. **What would you like to name your job?** の下で、`Retarget Jeans Buyers Post Holidays` のようなユニークな名前を入力します。
    この名前はコネクタアクションで構成する際にジョブを識別するために使用されます。
 1. **What time range do you want to target when the job runs?** の下で、ジョブ実行時にターゲットにしたい日付範囲をカレンダードロップダウンから選択します。
-   ![](/images/server-side/audience-sizing-create-job-and-save.png)
+   ![](https://docs.tealium.com/images/server-side/audience-sizing-create-job-and-save.png)
 1. **Save** をクリックします。
    ジョブが正常に作成されます。
 
@@ -46,9 +54,9 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 ジョブが作成されたら、以下の手順を使用してコネクタアクションにリンクします：
 
 1. **Go To Job** をクリックしてコネクタアクションを割り当てます。
-   ![](/images/server-side/whiteui-audiencestream-audiencesizing-go-to-job.png)
+   ![](https://docs.tealium.com/images/server-side/whiteui-audiencestream-audiencesizing-go-to-job.png)
 1. ジョブリストでジョブ名を選択します。
-   ![](/images/server-side/audience-sizing-no-action-assigned.png)
+   ![](https://docs.tealium.com/images/server-side/audience-sizing-no-action-assigned.png)
    この時点でジョブはまだコネクタアクションにリンクされていないため、非アクティブです。
 1. 使用したいコネクタに移動するか、新しいコネクタを選択するためにコネクタマーケットプレイスに行きます。
 1. リターゲティングベンダーを選択し、追加および構成します。
@@ -62,9 +70,12 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 
 ジョブがコネクタにリンクされたので、以下の手順を使用してアクティブ化します：
 
-1. サイドバーから **Connect &gt; Audience Connectors** へ移動します。
+1. サイドバーから **Connect > Audience Connectors** へ移動します。
 1. **Jobs** タブをクリックします。
 1. ジョブをクリックして開きます。
 1. **Start** をクリックします。
 1. プロファイルを保存/公開します。
+
+<blockquote>
 Save/Publish ステップが成功しない限り、ジョブは開始されません。
+</blockquote>

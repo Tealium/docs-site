@@ -3,11 +3,15 @@ title: Google Universal Analytics Tag Advanced Mapping
 description: Learn how to properly configure a data mappings between Tealium and Google Universal Analytics (GUA) for events, campaign tracking, social interactions, e-commerce, content groups, custom variables, and mobile.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-advanced-mapping/
 ---
- As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](). 
+
+<blockquote>
+As of July 1, 2023, Google Universal Analytics properties stopped processing hits. This tag has been deprecated and no longer available in the tag marketplace. For the current tag, see [Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/).
+</blockquote>
+
 
 ## Requirements
 
-Before you begin make sure you add the [E-Commerce extension](). This extension automatically maps e-commerce data to Google Universal Analytics. See the E-Commerce section below to see which destinations the E-Commerce variables map to.
+Before you begin make sure you add the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/). This extension automatically maps e-commerce data to Google Universal Analytics. See the E-Commerce section below to see which destinations the E-Commerce variables map to.
 
 ## Standard mapping
 
@@ -31,19 +35,19 @@ Identifies the url the visitor is viewing. By default Google returns the full UR
 * **UID**
 Identifies the visitor or customer. Map to this destination to manually specify the user’s ID. This value is unique and persistent, and if used with an authentication system, lets you track a single user across sessions and devices.
 * **Cookie Domain**
-The Cookie Domain parameter specifies the domain used to store the analytics cookie. Setting this to &#34;none&#34; sets the cookie without specifying a domain. See the &#34;Domain&#34; in the &#34;Tag Configuration&#34; section of the [Google Universal Analytics: Basic Configuration]() article for more information.
+The Cookie Domain parameter specifies the domain used to store the analytics cookie. Setting this to "none" sets the cookie without specifying a domain. See the "Domain" in the "Tag Configuration" section of the [Google Universal Analytics: Basic Configuration](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/) article for more information.
 * **Cookie Expires**
 By default, cookies created by the Google Universal Analytics tag are set to expire after 2 years. This expiration is refreshed every time a hit is sent. Passing this parameter with a value of 0 turns it into a session-based cookie, otherwise the value is measured in seconds.
 * **Legacy Cookie Domain**
-The Legacy Cookie Domain parameter overrides the domain used to store the analytics cookie. Google will auto-detect this value if you leave it blank. Setting this to &#34;none&#34; creates the cookie without specifying a domain. Read &#34;Domain&#34; in the &#34;Tag Configuration&#34; section of the [Google Universal Analytics: Basic Configuration]() article for more information.
+The Legacy Cookie Domain parameter overrides the domain used to store the analytics cookie. Google will auto-detect this value if you leave it blank. Setting this to "none" creates the cookie without specifying a domain. Read "Domain" in the "Tag Configuration" section of the [Google Universal Analytics: Basic Configuration](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/) article for more information.
 * **Legacy History Import**
-Determines whether or not to import history data from `ga.js` cookies. Make sure the Variable you are mapping to this destination contains Boolean value &#34;true&#34; or &#34;false&#34;.
+Determines whether or not to import history data from `ga.js` cookies. Make sure the Variable you are mapping to this destination contains Boolean value "true" or "false".
 * **nonInteraction**
-Allows you specify whether or not the event will impact your bounce rate. By default, Google identifies an event as an Interaction. See the section describing Non-Interaction Events within Google&#39;s [About Events](https://support.google.com/analytics/answer/1033068#NonInteractionEvents) article.
+Allows you specify whether or not the event will impact your bounce rate. By default, Google identifies an event as an Interaction. See the section describing Non-Interaction Events within Google's [About Events](https://support.google.com/analytics/answer/1033068#NonInteractionEvents) article.
 * **Enhanced Link Attribution**
-Lets you turn enhanced link attribution on or off and will override the configuration. Default is **Off**. Enhanced Link Attribution improves the accuracy of your In-Page Analytics report by automatically differentiating between multiple links to the same URL on a single page by using link element IDs. For more information see Google&#39;s [Enhanced Link Attribution](https://support.google.com/analytics/answer/2558867?hl=en) article.
+Lets you turn enhanced link attribution on or off and will override the configuration. Default is **Off**. Enhanced Link Attribution improves the accuracy of your In-Page Analytics report by automatically differentiating between multiple links to the same URL on a single page by using link element IDs. For more information see Google's [Enhanced Link Attribution](https://support.google.com/analytics/answer/2558867?hl=en) article.
 * **setAllowLinker (allowLinker)**
-Lets you turn cross-domain tracking on or off. By default this is **Off**. For more information see Google&#39;s [Linker](https://developers.google.com/analytics/devguides/collection/analyticsjs/linker) article.
+Lets you turn cross-domain tracking on or off. By default this is **Off**. For more information see Google's [Linker](https://developers.google.com/analytics/devguides/collection/analyticsjs/linker) article.
 * **Auto Linking Domain (crossDomainTrack)**
 Used to provide the list of domains you want to track activity across. If there is more than one domain then each must be comma-separated in the list.
 * **Site Speed Sample Rate (siteSpeedSampleRate)**
@@ -51,27 +55,31 @@ Used to specify the size of the user sample from which Google determines page ti
 * **Sample Rate (sampleRate)**
 Indicates the percentage of visitors that should be tracked. The default value is 100, meaning 100% of users are sampled in. See the Google developers section [Sample Rate](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#sampleRate) for additional details.
 * **Autofill E-Commerce Params (autofill\_params)**
-Lets you turn ON/OFF the &#34;Autofill E-Commerce values&#34; and override the toggle in the Tag settings.
+Lets you turn ON/OFF the "Autofill E-Commerce values" and override the toggle in the Tag settings.
 * **Optimizely Integration (optimizely)**
-Lets you turn ON/OFF the &#34;Optimizely Integration&#34; and override the toggle in the Tag settings.
+Lets you turn ON/OFF the "Optimizely Integration" and override the toggle in the Tag settings.
 * **Initialize tracker before Extensions (init\_before\_extensions)**
-Lets you turn ON/OFF the &#34;Enable create before Extensions&#34; and override the toggle in the Tag settings.
+Lets you turn ON/OFF the "Enable create before Extensions" and override the toggle in the Tag settings.
 * **Session Control (sessionControl)**
-Lets you set the session duration either to &#34;start&#34; or &#34;end&#34;. See the Google developers reference [Session Control](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters?hl=en#sc) for additional details.
+Lets you set the session duration either to "start" or "end". See the Google developers reference [Session Control](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters?hl=en#sc) for additional details.
 * **Anonymize IP (anonymizeip)**
-Lets you turn ON/OFF the &#34;Anonymize IP&#34; and override the toggle in the Tag settings. See the Google developers reference [Anonymize IP](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters?hl=en#aip) for additional details.
+Lets you turn ON/OFF the "Anonymize IP" and override the toggle in the Tag settings. See the Google developers reference [Anonymize IP](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters?hl=en#aip) for additional details.
 * **Data Source (dataSource)**
 This is the variable value of the hit. Examples include web, mobile, crm, etc. See the Google developers reference [Data Source](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters?hl=en#ds) for additional details.
 * **Clear Vars**  
-Recommended for single page applications only. Mapping to destination overrides the [Clear Vars Tag setting]().
+Recommended for single page applications only. Mapping to destination overrides the [Clear Vars Tag setting](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/).
 * **Client ID**  
 Randomly generated ID for the browser instance. [Learn more](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#clientId).
 * **Custom Set Command (set.###)**
-Lets you pass custom parameters to the &#34;set&#34; command. For example, `ga(‘set’, ‘dataSource’, ‘web’)`.
+Lets you pass custom parameters to the "set" command. For example, `ga(‘set’, ‘dataSource’, ‘web’)`.
 
 ## Event mapping
 
+
+<blockquote>
 Events are only sent if both the Event Category and Event Action are defined.
+</blockquote>
+
 
 The other two parameters, Event Label and Event Value, are optional. These are often used to mark specific conversions, like if someone played a video on a web page or added an item to their shopping cart.
 
@@ -86,15 +94,15 @@ Lets you map a variable that identifies the count of events. For example: 4 time
 * **ga\_events**  
 Lets you map a variable that contains an array of event hits.
 * **Global View Callback and Standard Event Callback**  
-These destinations correspond to [Google&#39;s hitCallback function](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#hitCallback). Map to the Global View Callback destination to call the function for all hit types, including page views. Map to the Standard Event Callback destination to call the function only when Event Category and Event Action destinations are populated. You must first set the value of your data layer variable (the one you are mapping) to the callback function.  
+These destinations correspond to [Google's hitCallback function](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#hitCallback). Map to the Global View Callback destination to call the function for all hit types, including page views. Map to the Standard Event Callback destination to call the function only when Event Category and Event Action destinations are populated. You must first set the value of your data layer variable (the one you are mapping) to the callback function.  
 Use the following steps map the variable to your callback destination:
-  1. [Add a new Set Data Value Extension]() and scope it to Google Universal Analytics Tag
+  1. [Add a new Set Data Value Extension](https://docs.tealium.com/set-data-values-extension/) and scope it to Google Universal Analytics Tag
   1. Under Configuration, select your Variable from the Set drop-down list.
   1. Set the **To** drop-down selection to **JS Code** and write your callback function in the text field.
   1. Go back to the Data Mappings tab for the tag and map the same variable to your preferred callback destination.
   1. Save and publish.
   
-For additional information, see [Event Tracking Guide for Google Universal Analytics]().
+For additional information, see [Event Tracking Guide for Google Universal Analytics](https://docs.tealium.com/google-universal-analytics-event-tracking/).
 
 
 ## Campaign mapping
@@ -127,7 +135,7 @@ Specifies the target of a social interaction. This value is typically a URL but 
 
 ## E-Commerce mapping
 
-These variables are related to E-Commerce and will automatically pick up values from the corresponding E-Commerce extension variables. Note that these values are only sent on a ‘transaction’ page. They do not get used on any other type of E-commerce page (for example, ‘product’ or ‘cart’). If you&#39;ve added and configured the E-Commerce extension, any mappings you configure here will override the E-Commerce extension&#39;s mappings.
+These variables are related to E-Commerce and will automatically pick up values from the corresponding E-Commerce extension variables. Note that these values are only sent on a ‘transaction’ page. They do not get used on any other type of E-commerce page (for example, ‘product’ or ‘cart’). If you've added and configured the E-Commerce extension, any mappings you configure here will override the E-Commerce extension's mappings.
 
 * **Order ID (Transaction ID)**
 When mapped, this variable will overwrite the value in `_corder`, representing the order ID of a completed purchase.
@@ -161,40 +169,48 @@ This parameter describes the exception. See the section within [Exception Descri
 
 ## Content groups
 
-Content groups let you organize your site or app&#39;s content into collections that reflect the way you think about your content. You can place similar content into the same group, then view content by group name.
+Content groups let you organize your site or app's content into collections that reflect the way you think about your content. You can place similar content into the same group, then view content by group name.
 
 **Event Type** lets you map a custom metric based on event types:
 
-![](/images/client-side-tags/dimeventtypes-1.png)
+![](https://docs.tealium.com/images/client-side-tags/dimeventtypes-1.png)
 
 Choose the event type you want to categorize your content group.
 
+
+<blockquote>
 Google currently lets you define up to 10 content groups, **contentGroup1** through **contentGroup10**. For more information see the Google [Content Group](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#contentGroup) article.
+</blockquote>
+
 
 ## Dimensions
 
 Dimensions correspond to the rows in a report and allow you to break down a metric by a particular value, like screen views by screen name.
 
-![](/images/client-side-tags/dimensions-1.png)
+![](https://docs.tealium.com/images/client-side-tags/dimensions-1.png)
 
-This parameter lets you map a custom dimension based on event types. Selecting an option other than &#34;All Page Hits (set)&#34; will cause the mapping to only be applied for the selected event type.
+This parameter lets you map a custom dimension based on event types. Selecting an option other than "All Page Hits (set)" will cause the mapping to only be applied for the selected event type.
 
 If the mapping applies to a specific event type the type will appear in the mapping name in the format of: `{{event_type}}-dimension#`.
 
 For example, a mapping for dimension 9 for transaction events would look like this: `transaction-dimension9`.
 
-![](/images/client-side-tags/dimeventtypes-1.png)
+![](https://docs.tealium.com/images/client-side-tags/dimeventtypes-1.png)
 
-There is a maximum of 20 custom dimensions, **dimension1** through **dimension20**, for standard accounts. For Premium accounts, you may utilize **dimension21** through **dimension200**.&lt;br&gt;
+
+<blockquote>
+There is a maximum of 20 custom dimensions, **dimension1** through **dimension20**, for standard accounts. For Premium accounts, you may utilize **dimension21** through **dimension200**.<br>
 To set a dimension in this range, select **dimension21** **-****dimension200** in the Dimension drop-down list and then click in the field that displays at the top of the window and edit the number to the dimension you want.
+</blockquote>
+
 
 ## Metrics
 
 A custom metric is a count of some data type, like page views. A standard metric value is an integer. If set to a currency in the GUA configuration, this value can be a fixed decimal value instead.
 
-![](/images/client-side-tags/metrics-1.png)
+![](https://docs.tealium.com/images/client-side-tags/metrics-1.png)
 
-This parameter lets you map a custom metric based on event types. Selecting an option other than &#34;All Page Hits (set)&#34; will cause the mapping to only be applied for the selected event type.
+This parameter lets you map a custom metric based on event types. Selecting an option other than "All Page Hits (set)" will cause the mapping to only be applied for the selected event type.
 
 If the mapping applies to a specific event type the type will appear in the mapping name in the format of: `{{event_type}}-metric#`.
 
@@ -205,11 +221,11 @@ There is a maximum of 20 custom metrics, **metric1** through **metric20**, for s
 
 ## Enhanced E-Commerce
 
-The destinations in this tab correspond to the E-commerce actions supported by GUA&#39;s Enhanced E-commerce functionality. You must map to these destinations if you have turned ON the functionality in the GUA Tag settings. Mapping to the destination is automatically accomplished when you configure Tealium&#39;s [E-Commerce Extension]().
+The destinations in this tab correspond to the E-commerce actions supported by GUA's Enhanced E-commerce functionality. You must map to these destinations if you have turned ON the functionality in the GUA Tag settings. Mapping to the destination is automatically accomplished when you configure Tealium's [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/).
 
 If you want to override the mappings in the extension or add mappings not supported in the extension, you must manually map them.
 
-More details on mapping enhanced E-Commerce actions can be found in the [GUA: Enhanced E-Commerce]() article. Use this reference if interested in the following E-commerce actions:
+More details on mapping enhanced E-Commerce actions can be found in the [GUA: Enhanced E-Commerce](https://docs.tealium.com/google-universal-analytics-tag-enhanced-e-commerce/) article. Use this reference if interested in the following E-commerce actions:
 
 * Enhanced E-Commerce: Impressions/Promo
 * Enh E-Comm: Events

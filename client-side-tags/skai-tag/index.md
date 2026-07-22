@@ -6,7 +6,7 @@ url: https://docs.tealium.com/client-side-tags/skai-tag/
 ## Tag Tips
 
 * You may dynamically overwrite or set the tag configurations with mappings.
-* To trigger conversion tracking, you must set `cid`, `conversion_code`, and `conversionType`. The `conversionType` parameter defaults to &#39;conv&#39; if not otherwise set.
+* To trigger conversion tracking, you must set `cid`, `conversion_code`, and `conversionType`. The `conversionType` parameter defaults to 'conv' if not otherwise set.
 * To track custom parameters, you must map to custom destinations.
 * Supports these E-Commerce extension parameters:
     * Order ID (`_corder`)
@@ -16,21 +16,21 @@ url: https://docs.tealium.com/client-side-tags/skai-tag/
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Customer ID**: Your Skai Customer ID.
 * **Conversion Code**: The Skai-provided Conversion Code.
-* **Conversion Type**: The conversion type. Defaults to &#39;conv&#39; if not set.
+* **Conversion Type**: The conversion type. Defaults to 'conv' if not set.
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

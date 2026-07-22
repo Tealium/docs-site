@@ -14,7 +14,7 @@ Use the following steps to create a new library:
 The **Create Library** dialog appears.
 1. In the **Name** field, enter the name for your library.  
 As a best practice, use a naming convention to differentiate your libraries from your profiles. For example, adding `lib-` in front of your library names makes it easy to determine if you are working with a library or a profile. Profiles and libraries cannot share names.  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-create-a-library.jpg)  
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-create-a-library.jpg)  
     Library names have the same limitations as profile names: no spaces and only lowercase letters, numbers, periods, and dashes.
 1. Select one of the following checkboxes to determine if the library is optional or required:
     * **Require All profiles to include library**  
@@ -41,8 +41,12 @@ Use the following steps to edit a library:
 1. In the admin menu, click **Manage Profiles**.  
 The **Manage Profiles** window appears with all libraries and profiles for your account on the left.
 1. Click the library you want to view and select the correct profile from the **Profiles** drop-down list and then click **Edit**.  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-edit-library.jpg)
-1. Select **Require All profiles to include library** or **Optionally include this library in other profiles** and click **OK**. When editing a library, the changes go into effect immediately. Although changing a required library to an optional library does not affect the profiles that are linked to it, changing an optional library to a required library automatically links the library to each profile.
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-edit-library.jpg)
+1. Select **Require All profiles to include library** or **Optionally include this library in other profiles** and click **OK**. When editing a library, the changes go into effect immediately. 
+<blockquote>
+Although changing a required library to an optional library does not affect the profiles that are linked to it, changing an optional library to a required library automatically links the library to each profile.
+</blockquote>
+
 1. Click **Apply** to exit the window.
 
 ## Save a library
@@ -53,14 +57,18 @@ Consider the following before saving your library:
 * As a best practice, develop a naming convention to keep track of your library versions. By default, the **Version** field displays a date and timestamp.
 * Changes to a library do not automatically propagate to all the profiles that load it. You must re-publish each profile to include the changes to the library.
 
-For more information, see [Save and publish a version]()
+For more information, see [Save and publish a version](https://docs.tealium.com/save-publish-a-version/)
 
 Use the following steps to save a library:
 
 1. Click **Save/Publish**.
 1. In the **Version** field, enter the name of the new version.
 1. In the **Notes** field, enter notes about changes you made to the profile library. This is a required field, you cannot save the profile library without entering notes. The notes entered in this field are useful if you need to roll back to this profile library in the future. 
-1. (Optional) Select one or more [Publish Locations]() to publish this version to a publishing environment. You can also select the **Custom** checkbox to select a [custom environment](). You cannot link to a profile library in a custom environment and any custom environments on a library are not recognized in links to child profiles.
+1. (Optional) Select one or more [Publish Locations](https://docs.tealium.com/about-publishing/) to publish this version to a publishing environment. You can also select the **Custom** checkbox to select a [custom environment](https://docs.tealium.com/custom-publish-environments/). 
+<blockquote>
+You cannot link to a profile library in a custom environment and any custom environments on a library are not recognized in links to child profiles.
+</blockquote>
+
 1. Click **Publish**.
 
 After you publish your changes to the library, you need to load each profile that is linked to the library to import the latest changes, and then save those profiles.
@@ -75,10 +83,10 @@ To link a library to a profile:
 1. From the profiles list, select the profile that you want to link to the library.
 Optionally, select a library that you want to link.
 1. Select the library from the drop-down list at the top of the window.
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library.jpg)
-1. Click **&#43; Link to Library**. The library selected appears.
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library.jpg)
+1. Click **+ Link to Library**. The library selected appears.
 1. Select the publish environment (Dev, QA, Prod) of the library you want to link to the profile.  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library-select-publish-environment.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-link-to-library-select-publish-environment.jpg)
 1. To remove a link, click **Remove Link**.  
 You cannot remove a link to required libraries.
 1. Click **Apply**.
@@ -92,7 +100,7 @@ Use the following steps to determine which profiles are linked to a library:
 1. In the admin menu, click **Manage Profiles**. The **Manage Profiles** dialog appears.
 1. Under the **Libraries** section, click the library to inspect.  
 The profiles linked to this library appear in the main window on the right. The **Library Version** column displays which publish environment of this library the profile is linked to.  
-    ![](/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-view-library-version.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-profile-libraries-view-library-version.jpg)
 1. Click **Cancel** to close the window.
 
 ## Delete a library

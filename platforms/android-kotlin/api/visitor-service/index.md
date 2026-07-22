@@ -19,7 +19,7 @@ The following summarizes the commonly used methods and properties of the `Visito
 Extension property on the `TealiumConfig` object; only available when the VisitorService module is included in your project.
 
 Overrides the URL used by the VisitorService module to get the VisitorProfile object.
-Default URL: `&#34;https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}&#34;`
+Default URL: `"https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}"`
 
 ```java
 val config = TealiumConfig(...)
@@ -34,14 +34,14 @@ Overrides the Tealium profile name used by the VisitorService module to fetch th
 
 ```java
 val config = TealiumConfig(...)
-config.overrideVisitorServiceProfile = &#34;main&#34;
+config.overrideVisitorServiceProfile = "main"
 ```
 
 ### `requestVisitorProfile`
 
 Method to request that the VisitorProfile be updated. This happens after each dispatch, or batch of dispatches, has been sent to the Tealium Customer Data Hub.
 
-Use this method to request an update at any other point in time. It&#39;s a `suspend` function that needs to be called from a coroutine. As it makes a network request, your coroutine is not called on main thread.
+Use this method to request an update at any other point in time. It's a `suspend` function that needs to be called from a coroutine. As it makes a network request, your coroutine is not called on main thread.
 
 ```java
 runBlocking(Dispatchers.IO) {
@@ -72,10 +72,10 @@ Implement the `onVisitorUpdated` method on an existing class, or pass in an anon
 val tealium = Tealium.create(...) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            Logger.dev(&#34;--&#34;, &#34;VisitorProfile updated: $visitorProfile&#34;)
+            Logger.dev("--", "VisitorProfile updated: $visitorProfile")
         }
     })
 }
 ```
 
-See the [VisitorProfile](/platforms/android-kotlin/api/visitor-profile/) documentation for full details on available properties.
+See the [VisitorProfile](https://docs.tealium.com/platforms/android-kotlin/api/visitor-profile/) documentation for full details on available properties.

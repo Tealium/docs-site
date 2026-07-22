@@ -9,12 +9,12 @@ url: https://docs.tealium.com/ja/server-side/data-connect/manage-data-connect-in
 * **データの清潔さ**   
 Tealiumにデータをインポートする前に、送信されるデータの品質と清潔さを確認してください。
 * **地域のTealium APIドメイン**   
-Tealium Eventsアプリを構成する際は、地域のTealium APIドメインを使用してください。地域のTealium APIドメインは、[Tealium Connectデータソース]()で見つけることができます。
+Tealium Eventsアプリを構成する際は、地域のTealium APIドメインを使用してください。地域のTealium APIドメインは、[Tealium Connectデータソース](https://docs.tealium.com/tealium-connect-data-source/)で見つけることができます。
 * **アプリごとの接続**  
 Workatoアカウント内のアプリごとに1つの接続を使用してください。例えば、Salesforceアプリを使用する必要がある2つのレシピがある場合、最初のレシピでSalesforce接続を作成し、2つ目のレシピでアクティブな接続のリストから既存の接続を選択します。
 * **タスクの削減**  
 タスクコストを削減し、処理効率を向上させるために、ファイルバッチを最大化し、ビジネス目標を達成するために必要なWorkatoタスクの数を最小限に抑えてください。
-  * レシピで使用されるタスクの数を確認するには、**Integrations &gt; Jobs**に移動し、ジョブを選択します。**Job Details**セクションの**Tasks Used**には、その特定のジョブで使用されたタスクの数が表示されます。
+  * レシピで使用されるタスクの数を確認するには、**Integrations > Jobs**に移動し、ジョブを選択します。**Job Details**セクションの**Tasks Used**には、その特定のジョブで使用されたタスクの数が表示されます。
   * バッチトリガーを使用する場合、**Batch size**を最大サイズに構成します。
   * Workatoのデフォルト構成では、ソースデータからすべてのフィールドを取得しますが、Tealiumに送信されるフィールドのみを取得するようにします。
     Tealiumに送信する特定のフィールドを選択するには：

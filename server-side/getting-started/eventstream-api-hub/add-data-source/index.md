@@ -5,13 +5,13 @@ url: https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/ad
 ---
 To add a data source:
 
-1. Go to **Connect &gt; Data Sources** and click **&#43; Add Data Source**.  
+1. Go to **Connect > Data Sources** and click **+ Add Data Source**.  
 The data source modal appears.
 1. In the **Categories** side panel, click **Developer Languages** and select **HTTP API**.  
-    ![](/images/tutorials/eventstream-getting-started-data-source-http.png)
+    ![](https://docs.tealium.com/images/tutorials/eventstream-getting-started-data-source-http.png)
 1. Enter a name and click **Continue** (You can change the name later).
 1. Click **Continue** and skip the steps about event specifications (We will return to that topic later). The **Get Code** screen displays the basic installation code.
-1. Click **Download PDF** to save this information for offline use, then click **Save &amp; Continue**.
+1. Click **Download PDF** to save this information for offline use, then click **Save & Continue**.
 1. The summary screen confirms that your data source has been created and provides the next steps:
     * **Save and Publish** - You must save and publish your account for the data source to be recognized with incoming events.
     * **Install Code** - Installing the base code is the easy first step, but implementing event tracking throughout your application will take more time and planning.
@@ -20,12 +20,12 @@ The data source modal appears.
 
 Note the newly generated data source key or reference the downloaded installation instructions for the next tutorial.
 
-However, before we move on, let&#39;s do a quick save and publish so you can complete the set up of your data source.
+However, before we move on, let's do a quick save and publish so you can complete the set up of your data source.
 
 1. At the top of the screen, click **Save/Publish**.
 1. Select the **Save As** option.
 1. Enter a **Title** such as `Getting Started with EventStream`.
 1. Enter a description of your changes.
 1. Select the **Publish** checkbox.  
-    ![](/images/tutorials/eventstream-getting-started-save-publish.png)
+    ![](https://docs.tealium.com/images/tutorials/eventstream-getting-started-save-publish.png)
 1. Click **OK**.

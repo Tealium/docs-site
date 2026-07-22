@@ -23,7 +23,7 @@ url: https://docs.tealium.com/client-side-tags/nextag-roi-tracker-tag/
 
 ### Adding the Tag
 
-Tealium iQ&#39;s Tag marketplace offers a wide variety of tags. Click [here]() to learn how to add a tag to your profile.
+Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a tag to your profile.
 
 ### Configuring the Tag
 
@@ -32,17 +32,21 @@ Tealium iQ&#39;s Tag marketplace offers a wide variety of tags. Click [here]() t
 
 ### Applying Load Rules
 
-[Load Rules]() determine when and where to load an instance of this tag. The **Load on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag. The **Load on All Pages** rule is the default load rule. To load this tag on a specific page, create a new load rule with the relevant conditions.
 
 **Best Practice**: Set up load rule conditions to load this tag on the order confirmation page (Thank You or Receipt) of your site.
 
 ### Setting up Mappings
 
-[Mapping]() is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The Mapping toolbox for this tag does not offer any pre-defined destination variables. However, you can dynamically set the Account ID with a mapping. To do so, select the appropriate data source from the drop-down list and enter `id` in the adjacent text field (see example screenshot below).
+[Mapping](https://docs.tealium.com/about-data-mappings/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The Mapping toolbox for this tag does not offer any pre-defined destination variables. However, you can dynamically set the Account ID with a mapping. To do so, select the appropriate data source from the drop-down list and enter `id` in the adjacent text field (see example screenshot below).
 
- Make certain that the [E-Commerce Extension]() is set up and configured before you configure this tag. The E-Commerce variables this tag uses are `_cprod`, `_corder`, `_ccat`, `_cquan`, and `_ctotal`. 
+
+<blockquote>
+Make certain that the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) is set up and configured before you configure this tag. The E-Commerce variables this tag uses are `_cprod`, `_corder`, `_ccat`, `_cquan`, and `_ctotal`.
+</blockquote>
+
 
 ## Vendor Documentation
 
 * [Nextag Merchant Help Center](http://blog.nextag.com/merchants/)
-* [Quick guide to Nextag&#39;s ROI Optimizer](http://blog.nextag.com/merchants/wp-content/uploads/2012/03/ROI_Optimizer.pdf)
+* [Quick guide to Nextag's ROI Optimizer](http://blog.nextag.com/merchants/wp-content/uploads/2012/03/ROI_Optimizer.pdf)

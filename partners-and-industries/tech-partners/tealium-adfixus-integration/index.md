@@ -26,12 +26,12 @@ Add the AdFixus ID to your organization’s iQ Tag Management Data Layer, and th
 
 To integrate the AdFixus ID into iQ Tag Management:
 
-1. Create an AdFixus [data layer variable]() with your iQ Tag Management instance.
+1. Create an AdFixus [data layer variable](https://docs.tealium.com/manage-variables/#add-a-variable) with your iQ Tag Management instance.
     * Create this variable in every Tealium account profile that uses the AdFixus ID.
-    * Your AdFixus ID will likely be stored in a cookie on your website. For more information, ask the [AdFixus Implementation Team](https://www.adfixus.com/contact).![](/images/tech-partners/adfixus-add-variable.png)
-1. Identify the relevant tags that should send the AdFixus ID variable and [map the data points]().
-    1. From the **Variables** drop-down list, select the data variable and click **Select Destination**.![](/images/tech-partners/adfixus-select-destination.png)
-    1. Click **Add Custom Destination**, enter the expected name for the AdFixus ID in **Custom Destination** field, and click **&#43;Add**.![](/images/tech-partners/adfixus-custom-destination.png)
+    * Your AdFixus ID will likely be stored in a cookie on your website. For more information, ask the [AdFixus Implementation Team](https://www.adfixus.com/contact).![](https://docs.tealium.com/images/tech-partners/adfixus-add-variable.png)
+1. Identify the relevant tags that should send the AdFixus ID variable and [map the data points](https://docs.tealium.com/manage-data-mappings/).
+    1. From the **Variables** drop-down list, select the data variable and click **Select Destination**.![](https://docs.tealium.com/images/tech-partners/adfixus-select-destination.png)
+    1. Click **Add Custom Destination**, enter the expected name for the AdFixus ID in **Custom Destination** field, and click **+Add**.![](https://docs.tealium.com/images/tech-partners/adfixus-custom-destination.png)
         * Repeat this process for every new or existing tag that will use the AdFixus ID.
 1. Save and publish.
 
@@ -39,25 +39,25 @@ To integrate the AdFixus ID into iQ Tag Management:
 
 To integrate the AdFixus ID into AudienceStream and EventStream:
 
-1. If you are also using iQ Tag Management, configure the [Tealium Collect tag]().
-  * The AdFixus ID appears as a universal variable under your [event attributes]().
-1. If you are not using iQ Tag Management, [create an event attribute]() for the AdFixus ID.
-    1. Go to **Event Attributes** and click **&#43; Add Attribute**.
+1. If you are also using iQ Tag Management, configure the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+  * The AdFixus ID appears as a universal variable under your [event attributes](https://docs.tealium.com/about-attributes/).
+1. If you are not using iQ Tag Management, [create an event attribute](https://docs.tealium.com/manage-es-attributes/#add-an-attribute) for the AdFixus ID.
+    1. Go to **Event Attributes** and click **+ Add Attribute**.
     1. Select **Universal Variable** and click **Continue**.
     1. Select **String** and click **Continue**.
-    1. Enter the attribute name and any other relevant information.![](/images/tech-partners/adfixus-add-attribute.png)
+    1. Enter the attribute name and any other relevant information.![](https://docs.tealium.com/images/tech-partners/adfixus-add-attribute.png)
     1. Click **Finish**.
         * If you plan to send more data from AdFixus to Tealium, create attributes for that data too.
-        * We recommend that you create [event specifications]() for all attributes in the dataset.
-1. [Create a visitor attribute]() for the AdFixus ID.
-    1. Go to **Visitor/Visit Attributes** and click **&#43; Add Attribute**.
+        * We recommend that you create [event specifications](https://docs.tealium.com/manage-event-specifications/) for all attributes in the dataset.
+1. [Create a visitor attribute](https://docs.tealium.com/manage-as-attributes/#add-an-attribute) for the AdFixus ID.
+    1. Go to **Visitor/Visit Attributes** and click **+ Add Attribute**.
     1. Select **Visitor** and click **Continue**.
     1. Select **String** or **Visitor ID** and click **Continue**.
         * If you select **Visitor ID**, you cannot change the data type later.
     1. Enter the attribute name and any other relevant information.
     1. Click **Add Enrichment**.
     1. Select the AdFixus ID event attribute that you created in step 1 or 2 and click **Create Rule**.
-    1. Create a rule that checks if your attribute `is assigned` and `does not equal (ignore case) none`.![](/images/tech-partners/adfixus-attribute-ready.png)
+    1. Create a rule that checks if your attribute `is assigned` and `does not equal (ignore case) none`.![](https://docs.tealium.com/images/tech-partners/adfixus-attribute-ready.png)
 1. Save and publish.
 
 The AdFixus ID is now available as a mappable attribute for AudienceStream connectors and can be mapped in any related integrations.

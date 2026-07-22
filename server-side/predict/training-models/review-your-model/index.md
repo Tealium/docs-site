@@ -7,7 +7,11 @@ url: https://docs.tealium.com/server-side/predict/training-models/review-your-mo
 
 Use the following sections as a guide to review your model and start training. Revising your model using these steps is optional.
 
+
+<blockquote>
 If no changes are needed, skip this section and click **Save/Publish** to Start Training.
+</blockquote>
+
 
 ### Edit the model and output attribute name (Optional)
 
@@ -18,7 +22,11 @@ Use the following steps to view and edit the your model name and/or your output 
 1. In the **Edit Model Information** screen, edit the model name and/or the output attribute name and descriptive notes.
 1. Click **Done**.
 
- Configurations should not be changed in the target attribute. If you need to change Target Attribute details or your Output Attribute (for example, add or remove attributes to exclude from your model, prediction timeframe, or training date range), you will need to create a new attribute to collect the required data and create a new model.
+
+<blockquote>
+Configurations should not be changed in the target attribute. If you need to change Target Attribute details or your Output Attribute (for example, add or remove attributes to exclude from your model, prediction timeframe, or training date range), you will need to create a new attribute to collect the required data and create a new model.
+</blockquote>
+
 
 ### View your included and excluded attributes (Optional)
 

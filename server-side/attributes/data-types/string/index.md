@@ -9,7 +9,7 @@ Strings are used for customer information such as First Name and Postal Code, or
 
 The string attribute is available in the following scopes: Event, Visit, Visitor.
 
-![](/images/server-side/attribute-scopes-table-all.png)
+![](https://docs.tealium.com/images/server-side/attribute-scopes-table-all.png)
 
 ### Size limits
 
@@ -29,20 +29,20 @@ This enrichment sets the value of a string attribute, either from a constant val
 
 **Attribute Name**: `customer_type`
 
-* **Starting Value**: `&#34;&#34;`
-* **Enriched With**: `&#34;unknown&#34;`
-* **Resulting Value**: `&#34;unknown&#34;`
+* **Starting Value**: `""`
+* **Enriched With**: `"unknown"`
+* **Resulting Value**: `"unknown"`
 
 ### Split string
 
 This enrichment lets you set multiple values based on a distribution percentage. Each value you set also has a percentage setting. There can be multiple value/percentage entries, but the distribution must total 100%. The distribution is based on a random number generator, so smaller samples might not match the distribution, but as more values are assigned the distribution ratio will become more accurate. The source values can only be a string, iQ variable, or Omnichannel attribute.
 
-In this example an attribute named `test_group` is used to segment users into two equal groups (50/50), one named &#34;GroupA&#34; and the other &#34;GroupB&#34;. This attribute can then be used to identify activity associated with each group.
+In this example an attribute named `test_group` is used to segment users into two equal groups (50/50), one named "GroupA" and the other "GroupB". This attribute can then be used to identify activity associated with each group.
 
 **Attribute Name**: `test_group`
 
-* **Starting Value**: `&#34;&#34;`
-* **Resulting Value**: Set string&#39;s value to `&#34;GroupA&#34;` for `50%` of string population&lt;br&gt; Set string&#39;s value to `&#34;GroupB&#34;` for `50%` of string populartion
+* **Starting Value**: `""`
+* **Resulting Value**: Set string's value to `"GroupA"` for `50%` of string population<br> Set string's value to `"GroupB"` for `50%` of string populartion
 
 See also: [Enrichment Example: Split String](https://support.tealiumiq.com/en/support/solutions/articles/36000363487-enrichment-example-split-string)
 
@@ -50,7 +50,7 @@ See also: [Enrichment Example: Split String](https://support.tealiumiq.com/en/su
 
 This enrichment removes the entire value from the attribute.
 
-* **Starting Value**: `&#34;Jane Smith&#34;`
+* **Starting Value**: `"Jane Smith"`
 * **Resulting Value**: (Removed)
 
 ### Lowercase string
@@ -59,8 +59,8 @@ This enrichment will lowercase the current value of the string attribute.
 
 **Attribute Name**: `email_address`
 
-* **Starting Value**: `&#34;First.Last@Example.com&#34;`
-* **Resulting Value**: `&#34;first.last@example.com&#34;`
+* **Starting Value**: `"First.Last@Example.com"`
+* **Resulting Value**: `"first.last@example.com"`
 
 ### Join attributes
 
@@ -68,20 +68,20 @@ This enrichment joins multiple values with a delimiter to form a single text val
 
 **Attribute Name**: `page_path`
 
-* **Starting Value**: `&#34;&#34;`
+* **Starting Value**: `""`
 * **Enriched With**:  
-Attribute 1: `site_region=&#34;en-us&#34;`  
-Attribute 2: `site_section=&#34;Electronics&#34;`  
-Attribute 3: `category_name=&#34;Tablets&#34;`  
-Delimiter: `&#34;:&#34;`
-* **Resulting Value**: `&#34;en-us:Electronics:Tablets&#34;`
+Attribute 1: `site_region="en-us"`  
+Attribute 2: `site_section="Electronics"`  
+Attribute 3: `category_name="Tablets"`  
+Delimiter: `":"`
+* **Resulting Value**: `"en-us:Electronics:Tablets"`
 
 ### Set string to date
 
-This enrichment converts a date value to a string and allows for custom formatting. The source values can be a date, string, iQ variable, or file import attribute. For more information about the date formatter, see [Date attribute]())
+This enrichment converts a date value to a string and allows for custom formatting. The source values can be a date, string, iQ variable, or file import attribute. For more information about the date formatter, see [Date attribute](https://docs.tealium.com/date-attribute/#date-formatter))
 
 **Attribute Name**: `last_purchase_date`
 
-* **Starting Value**: `&#34;&#34;`
-* **Enriched With**: Last Login Date with format `&#34;yyy-MM-dd&#34;`
-* **Resulting Value**: `&#34;2019-12-31&#34;`
+* **Starting Value**: `""`
+* **Enriched With**: Last Login Date with format `"yyy-MM-dd"`
+* **Resulting Value**: `"2019-12-31"`

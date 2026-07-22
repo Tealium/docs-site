@@ -3,7 +3,11 @@ title: Bing Ads - Microsoft adCenter タグの構成ガイド
 description: この記事では、Tealium iQタグ管理アカウントでBing Ads - Microsoft adCenterタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/bing-ads-microsoft-adcenter-tag/
 ---
-Bing Adsはこのタグを廃止し、[Bing Ads Universal Event Tracking Tag](/ja/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/)に置き換えることを推奨しています。
+
+<blockquote>
+Bing Adsはこのタグを廃止し、[Bing Ads Universal Event Tracking Tag](https://docs.tealium.com/ja/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/)に置き換えることを推奨しています。
+</blockquote>
+
 
 ## タグのヒント
 
@@ -16,7 +20,7 @@ Bing Adsはこのタグを廃止し、[Bing Ads Universal Event Tracking Tag](/j
 
 ## タグの構成
 
-まず、タグマーケットプレイスに移動し、Bing Ads - Microsoft adCenterタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、タグマーケットプレイスに移動し、Bing Ads - Microsoft adCenterタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -30,7 +34,7 @@ Bing Adsはこのタグを廃止し、[Bing Ads Universal Event Tracking Tag](/j
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリーは以下の通りです：
 

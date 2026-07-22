@@ -6,12 +6,12 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/
 ## Requirements
 
 * One of the following mobile libraries:
-    * [Tealium for Android-Kotlin](/platforms/android-kotlin/) (1.0.0&#43;)
-    * [Tealium for Android-Java](/platforms/android-java/) (5.9.0&#43; for FullStory 1.0.0&#43; or &lt;5.9.0 for previous versions)
-    * [Tealium for iOS-Swift](/platforms/ios-swift/) (2.18.0&#43;)
+    * [Tealium for Android-Kotlin](https://docs.tealium.com/platforms/android-kotlin/) (1.0.0+)
+    * [Tealium for Android-Java](https://docs.tealium.com/platforms/android-java/) (5.9.0+ for FullStory 1.0.0+ or <5.9.0 for previous versions)
+    * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/) (2.18.0+)
 * One of the following remote command integrations:
-    * [FullStory Remote Command JSON File](/platforms/remote-commands/integrations/fullstory/#json-template) (Requires Android-Kotlin 1.0.0&#43; or iOS-Swift 2.18.0&#43;)
-    * [FullStory Remote Command tag]() in Tealium iQ Tag Management
+    * [FullStory Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.18.0+)
+    * [FullStory Remote Command tag](https://docs.tealium.com/fullstory-tag/) in Tealium iQ Tag Management
 
 ## How it works
 
@@ -23,14 +23,18 @@ The FullStory integration uses three components:
 
 Adding the FullStory remote command module to your app automatically installs and builds the required FullStory libraries. If you are using a dependency manager installation, you do not need to install the FullStory SDK separately.
 
+
+<blockquote>
 If you are using CocoaPods or Carthage as your dependency manager, you will have to manually download the FullStory command line tool so you can add it as a [build script](#ios-build-script)
+</blockquote>
+
 
 There are two remote command options:
 
 * Use a JSON configuration file (Recommended), hosted either remotely or locally within the app.
 * Use iQ Tag Management to configure the mappings and add the Remote Command tag for the vendor integration.
 
-For more information, see [vendor integrations](/platforms/remote-commands/how-it-works/#vendor-integrations).
+For more information, see [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 
@@ -41,7 +45,7 @@ We recommend installing modules with one of the following dependency managers:
 
 
 
-1. In your Xcode project, select **File &gt; Add Packages... &gt; Add Package Dependency**.
+1. In your Xcode project, select **File > Add Packages... > Add Package Dependency**.
 1. Enter the following repository URL: `https://github.com/tealium/tealium-ios-fullstory-remote-command` .
 1. Configure the version rules. We recommend the `Up to next major` setting. If the current `TealiumFullstory` version does not appear in the list, then reset your Swift package cache.
 1. Select the `TealiumFullstory` module to install, and select the app target you want the module to be installed in.
@@ -52,9 +56,9 @@ To install `TealiumFullstory` in additional app targets:
 
 1. Select your Xcode project in the **Project Navigator**.
 1. In your Xcode project, select the app target under the **TARGETS** section.
-1. Navigate to **General &gt; Frameworks, Libraries &amp; Embedded Content** and select the `TealiumFullstory` module to add it to your app target.
+1. Navigate to **General > Frameworks, Libraries & Embedded Content** and select the `TealiumFullstory` module to add it to your app target.
 
-To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
+To add additional modules from the Tealium Swift library, follow the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) instructions.
 
 
 
@@ -63,13 +67,13 @@ To install FullStory remote commands for iOS using CocoaPods:
 1. Remove `tealium-swift` if it already exists your Podfile. The dependency for `tealium-swift` is already included in the `TealiumFullstory` framework.
 2. Add the following dependency to your Podfile:  
     ```ruby
-    pod &#34;TealiumFullstory&#34;
+    pod "TealiumFullstory"
     ```
     The `TealiumFullstory` pod includes the following `TealiumSwift` dependencies:  
     ```bash
-    &#39;tealium-swift/Core&#39;
-    &#39;tealium-swift/RemoteCommands&#39;
-    &#39;tealium-swift/TagManagement&#39;
+    'tealium-swift/Core'
+    'tealium-swift/RemoteCommands'
+    'tealium-swift/TagManagement'
     ```
 3. Import the modules `TealiumSwift` and `TealiumFullstory` into your `TealiumHelper` file, and any other files that access the `Tealium` class, or the FullStory Remote Command.
 
@@ -83,7 +87,7 @@ To install FullStory remote commands for iOS using Carthage:
 `tealium-swift` is already included in the `TealiumFullstory` framework.
 1. Add the following dependency to your Cartfile:
     ```bash
-    github &#34;tealium/tealium-ios-fullstory-remote-command&#34;
+    github "tealium/tealium-ios-fullstory-remote-command"
     ```
 
 
@@ -92,33 +96,33 @@ To install FullStory remote commands for iOS using Carthage:
 To install FullStory remote commands for Android using Maven:
 
 1. Install [Tealium for Android 
-(Kotlin)](/platforms/android-kotlin/install/) or [Tealium for Android (Java)](/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven&#39;t done so already.
+(Kotlin)](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for Android (Java)](https://docs.tealium.com/platforms/android-java/install/) and add the Tealium Maven URL to your project’s top-level `build.gradle` file, if you haven't done so already.
     ```groovy
     allprojects {
         repositories {
             mavenCentral()
             maven {
-                url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+                url "https://maven.tealiumiq.com/android/releases/"
             }
             maven {
-                url &#34;https://maven.fullstory.com&#34;
+                url "https://maven.fullstory.com"
             }
         }
     }
     ```
 2. Import both the FullStory SDK and Tealium-FullStory remote commands by 
-adding the following dependencies in your app project&#39;s `build.gradle` 
+adding the following dependencies in your app project's `build.gradle` 
 file:
     ```groovy
     dependencies {
-        implementation &#39;com.tealium.remotecommands:fullstory:1.1.0&#39;
+        implementation 'com.tealium.remotecommands:fullstory:1.1.0'
     }
     ```
-3. Add the FullStory gradle plugin to your App/Module `build.gradle`. Replace `&lt;PLUGIN PROPERTIES&gt;` with [available 
+3. Add the FullStory gradle plugin to your App/Module `build.gradle`. Replace `<PLUGIN PROPERTIES>` with [available 
 properties](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Data-Capture#01F5E7XFMG19SNYS77NYETKDMQ):
     ```groovy
     fullstory {
-        &lt;PLUGIN PROPERTIES&gt;
+        <PLUGIN PROPERTIES>
     }
     ```
 
@@ -126,13 +130,13 @@ properties](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-St
 
 ### Manual installation (iOS)
 
-The manual installation for FullStory remote commands requires the [Tealium for Swift](/platforms/ios-swift/) library to be installed. To install the FullStory remote commands for your iOS project:
+The manual installation for FullStory remote commands requires the [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) library to be installed. To install the FullStory remote commands for your iOS project:
 
 1. Install the [FullStory 
-SDK](https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Data-Capture), if you haven&#39;t already done so.
+SDK](https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Data-Capture), if you haven't already done so.
 1. Clone the [Tealium iOS FullStory remote command](https://github.com/tealium/tealium-ios-fullstory-remote-command) repo and drag the files in the `Sources` folder into your project.
 1. Add `Dispatchers.RemoteCommands` as a dispatcher.
-1. Set the [`remoteAPIEnabled`](/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
+1. Set the [`remoteAPIEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#remoteapienabled) configuration flag to `true`.
 
 ## Initialize
 
@@ -142,7 +146,7 @@ initialize.
 ### Android (Kotlin)
 
 Initialize remote commands with a JSON configuration file or the Remote 
-Command tag for Tealium&#39;s Android (Kotlin) library.
+Command tag for Tealium's Android (Kotlin) library.
 
 
 
@@ -151,8 +155,8 @@ The following code is designed for use with the JSON Remote Commands
 feature, using the local file option:
 ```kotlin
 val config = TealiumConfig(application,
-    &#34;ACCOUNT&#34;,
-    &#34;PROFILE&#34;,
+    "ACCOUNT",
+    "PROFILE",
     Environment.DEV,
     dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 
@@ -160,7 +164,7 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     // Initialize FullStory Remote Command
     val fullstoryCommand = FullStoryRemoteCommand()
     // register the command
-    remoteCommands?.add(fullstoryCommand, filename = &#34;tealium-fullstory.json&#34;)
+    remoteCommands?.add(fullstoryCommand, filename = "tealium-fullstory.json")
 }
 ```
 
@@ -168,8 +172,8 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 The following code is designed for use with the Remote Command tag feature:
 ```kotlin
 val config = TealiumConfig(application,
-    &#34;ACCOUNT&#34;,
-    &#34;PROFILE&#34;,
+    "ACCOUNT",
+    "PROFILE",
     Environment.DEV,
     dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 
@@ -194,7 +198,7 @@ The JSON Remote Command file feature for Android is only available in the Kotlin
 
 The following code is designed for use with the Remote Command tag feature:
 ```java
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 FullStoryRemoteCommand fullstory = new FullStoryRemoteCommand();
@@ -207,7 +211,7 @@ teal.addRemoteCommand(fullstory);
 
 ### iOS (Swift)
 
-Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&#39;s iOS (Swift) library.
+Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium's iOS (Swift) library.
 
 
 
@@ -215,10 +219,10 @@ Initialize remote commands with a JSON configuration file or the Remote Command 
 The following code is designed for use with the JSON Remote Commands feature, using the local file option:
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-    profile: &#34;PROFILE&#34;,
-    environment: &#34;ENVIRONMENT&#34;,
-    dataSource: &#34;DATASOURCE&#34;,
+let config = TealiumConfig(account: "ACCOUNT",
+    profile: "PROFILE",
+    environment: "ENVIRONMENT",
+    dataSource: "DATASOURCE",
     options: nil)
 config.dispatchers = [Dispatchers.TagManagement, 
 Dispatchers.RemoteCommands]
@@ -228,7 +232,7 @@ tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
-    let fullstory = FullstoryRemoteCommand(type: .local(file: &#34;fullstory&#34;))
+    let fullstory = FullstoryRemoteCommand(type: .local(file: "fullstory"))
     remoteCommands.add(fullstory)
 }
 ```
@@ -238,10 +242,10 @@ tealium = Tealium(config: config) { _ in
 The following code is designed for use with the Remote Command tag feature:
 ```swift
 var tealium : Tealium?
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-    profile: &#34;PROFILE&#34;,
-    environment: &#34;ENVIRONMENT&#34;,
-    dataSource: &#34;DATASOURCE&#34;,
+let config = TealiumConfig(account: "ACCOUNT",
+    profile: "PROFILE",
+    environment: "ENVIRONMENT",
+    dataSource: "DATASOURCE",
     options: nil)
 config.dispatchers = [Dispatchers.TagManagement, 
 Dispatchers.RemoteCommands]
@@ -262,27 +266,27 @@ tealium = Tealium(config: config) { _ in
 
 ## JSON template
 
-If you are configuring remote commands using a [JSON configuration file](/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
+If you are configuring remote commands using a [JSON configuration file](https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file), refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.
 
 ```json
 {
-  &#34;config&#34;: {},
-  &#34;mappings&#34;: {
-    &#34;tealium_event&#34;: &#34;event_name&#34;,
-    &#34;uid&#34;: &#34;uid_str&#34;,
-    &#34;email&#34;: &#34;user_variables.email_str&#34;,
-    &#34;phone&#34;: &#34;user_variables.phone_str&#34;,
-    &#34;cart_id&#34;: &#34;event.cart_id_str&#34;,
-    &#34;product_id&#34;: &#34;event.product_id_str&#34;,
-    &#34;price&#34;: &#34;event.price_real&#34;,
-    &#34;name&#34;: &#34;event.name_str&#34;,
-    &#34;category&#34;: &#34;event.categoryProperties&#34;
+  "config": {},
+  "mappings": {
+    "tealium_event": "event_name",
+    "uid": "uid_str",
+    "email": "user_variables.email_str",
+    "phone": "user_variables.phone_str",
+    "cart_id": "event.cart_id_str",
+    "product_id": "event.product_id_str",
+    "price": "event.price_real",
+    "name": "event.name_str",
+    "category": "event.categoryProperties"
   },
-  &#34;commands&#34;: {
-    &#34;launch&#34;: &#34;logevent&#34;,
-    &#34;identify_user&#34;: &#34;identify&#34;,
-    &#34;tealiumSampleEvent&#34;: &#34;logevent&#34;,
-    &#34;tealiumSampleEventWithData&#34;: &#34;logevent&#34;
+  "commands": {
+    "launch": "logevent",
+    "identify_user": "identify",
+    "tealiumSampleEvent": "logevent",
+    "tealiumSampleEventWithData": "logevent"
   }
 }
 ```
@@ -303,7 +307,11 @@ We map a command to each FullStory method. To trigger a FullStory method, pass t
 | `resetidletimer` | `FS.resetIdleTimer()` |
 | `log` | `FS.log()` |
 
+
+<blockquote>
 Since the FullStory SDK is installed alongside the Tealium SDK, you can trigger any native FullStory functionality by calling the SDK directly, even if the functionality is not provided by the Tealium FullStory Remote Command tag.
+</blockquote>
+
 
 ### SDK setup
 
@@ -357,7 +365,11 @@ FullStory Developer Guide: Identify
 | --------- | ---- |
 | `user_variables` (required) | Map |
 
- The `user_variables` parameter takes an object of key-value pairs, where keys are `strings` and the values are suffixed with the data type (for example: `_str`, `_int`, `_bool`). For more information, see [Setting custom API properties](https://developer.fullstory.com/mobile/user-identification/set-user-properties/)
+
+<blockquote>
+The `user_variables` parameter takes an object of key-value pairs, where keys are `strings` and the values are suffixed with the data type (for example: `_str`, `_int`, `_bool`). For more information, see [Setting custom API properties](https://developer.fullstory.com/mobile/user-identification/set-user-properties/)
+</blockquote>
+
 
 FullStory Developer Guide: Set User Variables
 

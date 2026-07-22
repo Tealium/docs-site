@@ -7,14 +7,14 @@ url: https://docs.tealium.com/iq-tag-management/save-publish/save-publish-a-vers
 
 When you are ready to save and publish your settings, click **Save/Publish**.
 
-![](/images/iq-tag-management/save-publish/client-side-publish-window.png)
+![](https://docs.tealium.com/images/iq-tag-management/save-publish/client-side-publish-window.png)
 
 ### Publish Details
 
 The **Publish Details** table displays information about your changes in this version:
 
 * **Changes**  
-This tab lists changed elements that will be saved to this version and published, including any changes as a result of updated [profile libraries](). Changes to a library do not automatically propagate to all the profiles that load it. You must re-publish each profile to include the changes to the library.
+This tab lists changed elements that will be saved to this version and published, including any changes as a result of updated [profile libraries](https://docs.tealium.com/about-profile-libraries/). Changes to a library do not automatically propagate to all the profiles that load it. You must re-publish each profile to include the changes to the library.
     * **Type**: The type of element (`extension`, `tag`, `event`, `load rule`, `variable` or `template`).
     * **Element Name**: The title of the element.
     * **Change**: The change performed on the element (`Added`, `Updated`, `Removed`, `Toggled On`, `Toggled Off`).
@@ -39,13 +39,17 @@ To save and publish a new version that contains your changes, perform the follow
 1. (Optional) If you want to overwrite the current version, select **Overwrite current version**. This option will replace the current version, and you cannot undo your changes to it.
 1. In the **Notes** field, enter notes about changes you made to the version.
 The notes entered in this field are useful if you need to roll back to this version in the future. This is a required field, you cannot save the version without entering notes.
-1. (Optional) Select one or more [Publish Locations]() to publish this version to a publishing environment. You can also select **Custom** to select a [custom environment]().
+1. (Optional) Select one or more [Publish Locations](https://docs.tealium.com/about-publishing/) to publish this version to a publishing environment. You can also select **Custom** to select a [custom environment](https://docs.tealium.com/custom-publish-environments/).
 
 When you are ready to save or publish, click **Save** or **Publish**.
 
 If you select at least one publish environment, the action button displays **Publish**. Otherwise, it displays **Save**. Click **Publish** or **Save** to begin the process of saving and/or publishing your version.
 
- For more information about approval workflows, see [Publish Workflow Management]() 
+
+<blockquote>
+For more information about approval workflows, see [Publish Workflow Management](https://docs.tealium.com/publish-workflow-management/)
+</blockquote>
+
 
 ## Validating
 
@@ -57,10 +61,14 @@ For more information, see [Web Companion]().
 
 The version number, or timestamp of the current version, is the best way to verify that your changes are live on the site. Match the timestamp from Web Companion to the timestamp of your last publish to verify that your changes are live.
 
-![](/images/iq-tag-management/iq-versions-timestamp.png)
+![](https://docs.tealium.com/images/iq-tag-management/iq-versions-timestamp.png)
 
 Compare the timestamp to the version displayed in **Web Companion** once the version has been reloaded on the page.
 
-![](/images/iq-tag-management/wc2.png)
+![](https://docs.tealium.com/images/iq-tag-management/wc2.png)
 
+
+<blockquote>
 The timezone reported in **Tealium iQ** is GMT, while the local timezone is reported within **Web Companion**.
+</blockquote>
+

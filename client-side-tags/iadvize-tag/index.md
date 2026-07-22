@@ -12,7 +12,7 @@ url: https://docs.tealium.com/client-side-tags/iadvize-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -21,7 +21,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -29,12 +29,12 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`sid`|  &lt;ul&gt;&lt;li&gt;Site ID&lt;/li&gt;&lt;/ul&gt; |
-|`lang`|  &lt;ul&gt;&lt;li&gt;Language&lt;/li&gt;&lt;/ul&gt; |
+|`sid`|  <ul><li>Site ID</li></ul> |
+|`lang`|  <ul><li>Language</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order/Transaction ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub Total/Cart Amount.&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order/Transaction ID.</li><li>Overrides `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub Total/Cart Amount.</li><li>Overrides `_csubtotal`.</li></ul> |

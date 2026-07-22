@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/scroll-eve
 
 スクロールイベントは、訪問者が画面をスクロールするときに追跡します。訪問者がアクションを実行すると、トラッキングコールがトリガーされます。
 
-イベントリスナーの追加方法についての詳細は、[イベントの管理]()を参照してください。
+イベントリスナーの追加方法についての詳細は、[イベントの管理](https://docs.tealium.com/manage-events/)を参照してください。
 
 ## イベントトリガー
 
@@ -27,11 +27,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/scroll-eve
 * **パーセント** - スクロール距離を画面のパーセンテージで測定します。
 * **ピクセル** - スクロール距離をピクセル数で測定します。
 
+
+<blockquote>
 複数の値をコンマで区切ったリストとして入力して、異なる画面位置でトリガーします。例えば、パーセンテージを測定するには `25, 50, 75, 100`、ピクセルを測定するには `2000, 5000` を入力します。
+</blockquote>
+
 
 ### 要素セレクタ
 
-要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ]()を参照してください。
+要素セレクタは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、[イベント要素セレクタ](https://docs.tealium.com/event-element-selector/)を参照してください。
 
 ## イベントトリガー変数
 
@@ -51,17 +55,17 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/scroll-eve
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;scroll&#34;`| 訪問者が指定した方向と量で画面をスクロールしました。|
+|`tealium_event="scroll"`| 訪問者が指定した方向と量で画面をスクロールしました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;scroll&#34;,
-   &#34;scroll_depth&#34; : &#34;500&#34;,
-   &#34;scroll_depth_type&#34; : &#34;pixels&#34;,
-   &#34;scroll_direction&#34; : &#34;horizontal&#34;,
-   &#34;iq_event_id:&#34; : &#34;scroll_depth_events_1&#34;
+   "tealium_event"  : "scroll",
+   "scroll_depth" : "500",
+   "scroll_depth_type" : "pixels",
+   "scroll_direction" : "horizontal",
+   "iq_event_id:" : "scroll_depth_events_1"
 }
 ```
 
@@ -69,16 +73,16 @@ url: https://docs.tealium.com/ja/iq-tag-management/events/event-types/scroll-eve
 
 |識別子| 説明|
 |---| ---|
-|`tealium_event=&#34;scroll&#34;`| 訪問者が指定した方向と量で画面をスクロールしました。|
+|`tealium_event="scroll"`| 訪問者が指定した方向と量で画面をスクロールしました。|
 
 **例**
 
 ```json
 {
-   &#34;tealium_event&#34;  : &#34;scroll&#34;,
-   &#34;scroll_depth&#34; : &#34;50&#34;,
-   &#34;scroll_depth_type&#34; : &#34;percent&#34;,
-   &#34;scroll_direction&#34; : &#34;vertical&#34;,
-   &#34;iq_event_id:&#34; : &#34;scroll_depth_events_2&#34;
+   "tealium_event"  : "scroll",
+   "scroll_depth" : "50",
+   "scroll_depth_type" : "percent",
+   "scroll_direction" : "vertical",
+   "iq_event_id:" : "scroll_depth_events_2"
 }
 ```

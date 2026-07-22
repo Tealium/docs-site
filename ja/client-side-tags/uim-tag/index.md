@@ -8,24 +8,24 @@ url: https://docs.tealium.com/ja/client-side-tags/uim-tag/
 * マッピングを使用してタグの構成を上書きしたり、動的に構成します。
 * マッピングを使用してイベントをトリガーします。
 * 以下のE-Commerce拡張パラメータをサポートしています：
-    &#43; 注文ID（`_corder`を上書き）
-    &#43; 注文アイテム（`_cprod`を上書き）
-    &#43; 注文合計（`_ctotal`を上書き）
-    &#43; 注文の配送（`_cship`を上書き）
-    &#43; 注文通貨（`_ccurrency`を上書き）
-    &#43; 商品ID（`_cprod`を上書き）
-    &#43; 商品名（`_cprodname`を上書き）
-    &#43; 商品価格（`_cprice`を上書き）
-    &#43; 商品通貨（`_ccurrency`を上書き）
-    &#43; バスケット合計（`_ctotal`を上書き）
-    &#43; バスケットアイテム（`_cprod`を上書き）
-    &#43; バスケット通貨（`_ccurrency`を上書き）
+    + 注文ID（`_corder`を上書き）
+    + 注文アイテム（`_cprod`を上書き）
+    + 注文合計（`_ctotal`を上書き）
+    + 注文の配送（`_cship`を上書き）
+    + 注文通貨（`_ccurrency`を上書き）
+    + 商品ID（`_cprod`を上書き）
+    + 商品名（`_cprodname`を上書き）
+    + 商品価格（`_cprice`を上書き）
+    + 商品通貨（`_ccurrency`を上書き）
+    + バスケット合計（`_ctotal`を上書き）
+    + バスケットアイテム（`_cprod`を上書き）
+    + バスケット通貨（`_ccurrency`を上書き）
 
 
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて]()を参照してください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -33,11 +33,11 @@ url: https://docs.tealium.com/ja/client-side-tags/uim-tag/
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて]()を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて]()を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -71,7 +71,7 @@ url: https://docs.tealium.com/ja/client-side-tags/uim-tag/
 |  `order_currency` (Overrides `_ccurrency`)  | String | 注文通貨 |
 
 ### イベントトリガー
-イベントをマップするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -82,7 +82,7 @@ url: https://docs.tealium.com/ja/client-side-tags/uim-tag/
 | `checkout` | チェックアウト |
 
 ### イベント固有のパラメータ
-イベントをマップするには、[イベントマッピングの作成](/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|

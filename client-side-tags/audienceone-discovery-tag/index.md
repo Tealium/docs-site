@@ -17,7 +17,7 @@ url: https://docs.tealium.com/client-side-tags/audienceone-discovery-tag/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the AudienceOne Discovery Tag tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the AudienceOne Discovery Tag tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -32,7 +32,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -40,6 +40,6 @@ The available categories are:
 
 | Variable          | Description                       |
 |:------------------|:----------------------------------|
-| `account_id`      | &lt;ul&gt;&lt;li&gt;Account ID&lt;/li&gt;&lt;/ul&gt;      |
-| `tealium_account` | &lt;ul&gt;&lt;li&gt;Tealium Account&lt;/li&gt;&lt;/ul&gt; |
-| `tealium_profile` | &lt;ul&gt;&lt;li&gt;Tealium Profile&lt;/li&gt;&lt;/ul&gt; |
+| `account_id`      | <ul><li>Account ID</li></ul>      |
+| `tealium_account` | <ul><li>Tealium Account</li></ul> |
+| `tealium_profile` | <ul><li>Tealium Profile</li></ul> |

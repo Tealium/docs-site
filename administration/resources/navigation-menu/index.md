@@ -7,7 +7,7 @@ url: https://docs.tealium.com/administration/resources/navigation-menu/
 
 The navigation menu is organized by actions instead of product names. Categories are grouped by common jobs across different user roles.
 
-![](/images/administration/navigation-menu-after.png) 
+![](https://docs.tealium.com/images/administration/navigation-menu-after.png) 
 
 * **Tag Management**  
 Manage your client-side tags, rules, events, and consent.
@@ -28,15 +28,15 @@ Use reporting and analytics tools to monitor performance, generate insights, and
 
 ### Provide feedback
 
-Share your new navigation experience with us. Go to **Resource Center &gt; New Navigation Feedback** to leave feedback.
+Share your new navigation experience with us. Go to **Resource Center > New Navigation Feedback** to leave feedback.
 
-## What&#39;s new
+## What's new
 
 ### Before and after
 
 | Before | After |
 |--------|-------|
-| ![](/images/administration/navigation-menu-before.png) | ![](/images/administration/navigation-menu-after.png) |
+| ![](https://docs.tealium.com/images/administration/navigation-menu-before.png) | ![](https://docs.tealium.com/images/administration/navigation-menu-after.png) |
 {.vtop}
 
 ### Renamed items
@@ -46,70 +46,70 @@ The following items from the old navigation menu have been renamed. Use this tab
 | Old item | New item |
 | -------- | -------- |
 | iQ Tag Management | Tag Management |
-| Server-Side Tools &gt; Manage Rules | Transform &gt; Rules |
-| Server-Side Tools &gt; Visitor Profile Sampler | Validate &gt; Live Visitors |
-| Server-Side Tools &gt; Visitor Lookup | Govern &gt; Visitor Search |
-| Data Supply Chain &gt; Usage Reports | Analyze &gt; Usage |
-| Insights &gt; Manage Users | Analyze &gt; Insights &gt; QuickSight Users |
+| Server-Side Tools > Manage Rules | Transform > Rules |
+| Server-Side Tools > Visitor Profile Sampler | Validate > Live Visitors |
+| Server-Side Tools > Visitor Lookup | Govern > Visitor Search |
+| Data Supply Chain > Usage Reports | Analyze > Usage |
+| Insights > Manage Users | Analyze > Insights > QuickSight Users |
 
 ### New navigation menu hierarchy
 
 The full list of navigation menu items.
 
-* [Tag Management]() 
+* [Tag Management](https://docs.tealium.com/iq-tag-management/) 
   * Dashboard 
-  * [Data Layer]() 
-  * [Load Rules]() 
-  * [Events]() 
-  * [Tags]() 
-  * [Extensions]() 
-  * [Consent Integrations]() 
+  * [Data Layer](https://docs.tealium.com/about-the-data-layer/) 
+  * [Load Rules](https://docs.tealium.com/about-load-rules/) 
+  * [Events](https://docs.tealium.com/about-events/) 
+  * [Tags](https://docs.tealium.com/about-tags/) 
+  * [Extensions](https://docs.tealium.com/about-extensions/) 
+  * [Consent Integrations](https://docs.tealium.com/about-consent-integrations/) 
   * Client-Side Tools
-    * [Browser Tools](/tools/tealium-tools/) 
-    * [Tag Reporting]() 
-    * [Consent Management]() 
-  * [Client-Side Versions]() 
+    * [Browser Tools](https://docs.tealium.com/tools/tealium-tools/) 
+    * [Tag Reporting](https://docs.tealium.com/tag-reporting/) 
+    * [Consent Management](https://docs.tealium.com/about-consent-management/) 
+  * [Client-Side Versions](https://docs.tealium.com/client-side-versions/) 
 * Connect 
-  * [Data Supply Chain]() 
-  * [Data Sources]() 
-  * [Connectors]() 
+  * [Data Supply Chain](https://docs.tealium.com/data-supply-chain-dashboard/) 
+  * [Data Sources](https://docs.tealium.com/about-data-sources/) 
+  * [Connectors](https://docs.tealium.com/about-connectors/) 
   * Event Connectors 
   * Audience Connectors 
   * Marketplace 
-  * [Data Connect]() 
-    * [Integrations]() 
-    * [Dashboard]() 
+  * [Data Connect](https://docs.tealium.com/about-data-connect/) 
+    * [Integrations](https://docs.tealium.com/about-data-connect-integrations/) 
+    * [Dashboard](https://docs.tealium.com/data-connect-dashboard/) 
 * Govern 
-  * [Consent Orchestration]() 
-  * [Visitor Search]() 
+  * [Consent Orchestration](https://docs.tealium.com/about-consent-orchestration/) 
+  * [Visitor Search](https://docs.tealium.com/visitor-search/) 
 * Transform 
-  * [Event Attributes]() 
-  * [Visitor / Visit Attributes]() 
-  * [Rules]() 
-  * [Functions]() 
-  * [Predict]() 
+  * [Event Attributes](https://docs.tealium.com/about-attributes/) 
+  * [Visitor / Visit Attributes](https://docs.tealium.com/about-attributes/) 
+  * [Rules](https://docs.tealium.com/rule-condition-definitions/) 
+  * [Functions](https://docs.tealium.com/about-functions/) 
+  * [Predict](https://docs.tealium.com/about-predict/) 
 * Activate 
-  * [Audiences]() 
+  * [Audiences](https://docs.tealium.com/about-audiences/) 
   * Audience Jobs 
-  * [Discover]() 
-  * [Moments API]() 
+  * [Discover](https://docs.tealium.com/audience-discovery/) 
+  * [Moments API](https://docs.tealium.com/about-moments-api/) 
 * Validate 
-  * [Trace]() 
-  * [Live Events]() 
-  * [Live Visitors]() 
-  * [Event Specs]() 
+  * [Trace](https://docs.tealium.com/about-trace/) 
+  * [Live Events](https://docs.tealium.com/about-live-events/) 
+  * [Live Visitors](https://docs.tealium.com/visitor-profile-sampler/) 
+  * [Event Specs](https://docs.tealium.com/about-event-specifications/) 
 * Store 
-  * [EventStore]() 
-  * [AudienceStore]() 
-  * [EventDB / AudienceDB]() 
-  * [EventStore Legacy]() 
+  * [EventStore](https://docs.tealium.com/audiencestore-and-eventstore/) 
+  * [AudienceStore](https://docs.tealium.com/audiencestore-and-eventstore/) 
+  * [EventDB / AudienceDB](https://docs.tealium.com/audiencedb-and-eventdb/) 
+  * [EventStore Legacy](https://docs.tealium.com/audiencedb-and-eventdb/) 
 * Analyze 
-  * [Usage]() 
-  * [Audience Dashboard]() 
-  * [Insights]()
-    * [Dashboards]() 
-    * [Templates]() 
-    * [QuickSight Users]()
+  * [Usage](https://docs.tealium.com/understanding-the-usage-report/) 
+  * [Audience Dashboard](https://docs.tealium.com/audiencestream-dashboard/) 
+  * [Insights](https://docs.tealium.com/about-data-insights/)
+    * [Dashboards](https://docs.tealium.com/manage-dashboards/) 
+    * [Templates](https://docs.tealium.com/data-insights-templates/) 
+    * [QuickSight Users](https://docs.tealium.com/about-data-insights/)
 
 ## Feature mapping
 
@@ -119,111 +119,111 @@ Use this table to find where a feature from the classic navigation is located in
 
 | Old location | New location |
 | ------------ | ------------ |
-| iQ Tag Management &gt; Dashboard | Tag Management &gt; Dashboard |
-| iQ Tag Management &gt; Data Layer | Tag Management &gt; Data Layer |
-| iQ Tag Management &gt; Load Rules | Tag Management &gt; Load Rules |
-| iQ Tag Management &gt; Events | Tag Management &gt; Events |
-| iQ Tag Management &gt; Tags | Tag Management &gt; Tags |
-| iQ Tag Management &gt; Extensions | Tag Management &gt; Extensions |
-| iQ Tag Management &gt; Consent Integrations | Tag Management &gt; Consent Integrations |
-| iQ Tag Management &gt; Client-Side Tools &gt; Browser Tools | Client-Side Tools &gt; Browser Tools |
-| iQ Tag Management &gt; Client-Side Tools &gt; Tag Reporting | Client-Side Tools &gt; Tag Reporting |
-| iQ Tag Management &gt; Client-Side Tools &gt; Consent Management | Client-Side Tools &gt; Consent Management |
-| iQ Tag Management &gt; Client-Side Tools &gt; Client-Side Versions | Client-Side Versions |
+| iQ Tag Management > Dashboard | Tag Management > Dashboard |
+| iQ Tag Management > Data Layer | Tag Management > Data Layer |
+| iQ Tag Management > Load Rules | Tag Management > Load Rules |
+| iQ Tag Management > Events | Tag Management > Events |
+| iQ Tag Management > Tags | Tag Management > Tags |
+| iQ Tag Management > Extensions | Tag Management > Extensions |
+| iQ Tag Management > Consent Integrations | Tag Management > Consent Integrations |
+| iQ Tag Management > Client-Side Tools > Browser Tools | Client-Side Tools > Browser Tools |
+| iQ Tag Management > Client-Side Tools > Tag Reporting | Client-Side Tools > Tag Reporting |
+| iQ Tag Management > Client-Side Tools > Consent Management | Client-Side Tools > Consent Management |
+| iQ Tag Management > Client-Side Tools > Client-Side Versions | Client-Side Versions |
 
 ### Data Supply Chain
 
 | Old location | New location |
 | ------------ | ------------ |
-| Data Supply Chain &gt; Overview | Connect &gt; Data Supply Chain |
-| Data Supply Chain &gt; Usage Reports | Analyze &gt; Usage |
+| Data Supply Chain > Overview | Connect > Data Supply Chain |
+| Data Supply Chain > Usage Reports | Analyze > Usage |
 
 ### Sources
 
 | Old location | New location |
 | ------------ | ------------ |
-| Sources &gt; Data Sources | Connect &gt; Data Sources |
+| Sources > Data Sources | Connect > Data Sources |
 
 ### EventStream
 
 | Old location | New location |
 | ------------ | ------------ |
-| EventStream &gt; Live Events | Validate &gt; Live Events |
-| EventStream &gt; Event Specs | Validate &gt; Event Specs |
-| EventStream &gt; Event Attributes | Transform &gt; Event Attributes |
+| EventStream > Live Events | Validate > Live Events |
+| EventStream > Event Specs | Validate > Event Specs |
+| EventStream > Event Attributes | Transform > Event Attributes |
 
 ### AudienceStream
 
 | Old location | New location |
 | ------------ | ------------ |
-| AudienceStream &gt; Dashboard | Analyze &gt; Audience Dashboard |
-| AudienceStream &gt; Discover | Activate &gt; Discover |
-| AudienceStream &gt; Visitor / Visit Attributes | Transform &gt; Visitor / Visit Attributes |
-| AudienceStream &gt; Audiences | Activate &gt; Audiences |
-| AudienceStream &gt; Audience Jobs | Activate &gt; Audience Jobs |
-| AudienceStream &gt; Moments API | Activate &gt; Moments API |
+| AudienceStream > Dashboard | Analyze > Audience Dashboard |
+| AudienceStream > Discover | Activate > Discover |
+| AudienceStream > Visitor / Visit Attributes | Transform > Visitor / Visit Attributes |
+| AudienceStream > Audiences | Activate > Audiences |
+| AudienceStream > Audience Jobs | Activate > Audience Jobs |
+| AudienceStream > Moments API | Activate > Moments API |
 
 ### Connectors
 
 | Old location | New location |
 | ------------ | ------------ |
-| Connectors &gt; Overview | Connect &gt; Connectors |
-| Connectors &gt; Marketplace | Connect &gt; Marketplace |
+| Connectors > Overview | Connect > Connectors |
+| Connectors > Marketplace | Connect > Marketplace |
 
 ### DataAccess
 
 | Old location | New location |
 | ------------ | ------------ |
-| DataAccess &gt; EventStore | Store &gt; EventStore |
-| DataAccess &gt; AudienceStore | Store &gt; AudienceStore |
-| DataAccess &gt; EventDB / AudienceDB | Store &gt; EventDB / AudienceDB |
+| DataAccess > EventStore | Store > EventStore |
+| DataAccess > AudienceStore | Store > AudienceStore |
+| DataAccess > EventDB / AudienceDB | Store > EventDB / AudienceDB |
 
 ### Insights
 
 | Old location | New location |
 | ------------ | ------------ |
-| Insights &gt; Dashboards | Analyze &gt; Insights &gt; Dashboards |
-| Insights &gt; Manage Users | Analyze &gt; Insights &gt; QuickSight Users |
-| Insights &gt; Templates | Analyze &gt; Insights &gt; Templates |
+| Insights > Dashboards | Analyze > Insights > Dashboards |
+| Insights > Manage Users | Analyze > Insights > QuickSight Users |
+| Insights > Templates | Analyze > Insights > Templates |
 
 ### Data Connect
 
 | Old location | New location |
 | ------------ | ------------ |
-| Data Connect &gt; Integrations | Connect &gt; Data Connect &gt; Integrations |
-| Data Connect &gt; Dashboard | Connect &gt; Data Connect &gt; Dashboard |
+| Data Connect > Integrations | Connect > Data Connect > Integrations |
+| Data Connect > Dashboard | Connect > Data Connect > Dashboard |
 
 ### Predict
 
 | Old location | New location |
 | ------------ | ------------ |
-| Predict | Transform &gt; Predict |
+| Predict | Transform > Predict |
 
 ### Functions
 
 | Old location | New location |
 | ------------ | ------------ |
-| Functions &gt; Overview | Transform &gt; Functions |
+| Functions > Overview | Transform > Functions |
 
 ### Consent Orchestration
 
 | Old location | New location |
 | ------------ | ------------ |
-| Consent Orchestration | Govern &gt; Consent Orchestration |
+| Consent Orchestration | Govern > Consent Orchestration |
 
 ### Trace
 
 | Old location | New location |
 | ------------ | ------------ |
-| Trace | Validate &gt; Trace |
+| Trace | Validate > Trace |
 
 ### Server-Side Tools
 
 | Old location | New location |
 | ------------ | ------------ |
-| Server-Side Tools &gt; Visitor Profile Sampler | Validate &gt; Live Visitors |
-| Server-Side Tools &gt; Manage Rules | Transform &gt; Rules |
-| Server-Side Tools &gt; Visitor Lookup | Govern &gt; Visitor Search |
+| Server-Side Tools > Visitor Profile Sampler | Validate > Live Visitors |
+| Server-Side Tools > Manage Rules | Transform > Rules |
+| Server-Side Tools > Visitor Lookup | Govern > Visitor Search |
 
 ### Server-Side Versions
 

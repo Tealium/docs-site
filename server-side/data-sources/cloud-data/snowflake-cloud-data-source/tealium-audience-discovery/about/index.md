@@ -17,10 +17,12 @@ The overall flow is:
 1. In Tealium, create a Snowflake data source that connects to the audience.
 1. Tealium loads the data for activation through connectors and data workflows.
 
-![](/images/server-side/data-sources/tealium-audience-discovery-architecture.png)
+![](https://docs.tealium.com/images/server-side/data-sources/tealium-audience-discovery-architecture.png)
 
 
+<blockquote>
 The app reads data from Snowflake and creates audience tables. It does not modify existing customer data. Audience activation and downstream workflows run in Tealium.
+</blockquote>
 
 
 ## Requirements
@@ -30,10 +32,12 @@ The app reads data from Snowflake and creates audience tables. It does not modif
 * A Tealium account with permission to configure data sources.
 
 
+<blockquote>
 CloudStream is recommended for easier setup because it automatically creates attributes based on incoming data. If you use AudienceStream, you must manually create attributes and audiences.
+</blockquote>
 
 
-For installation instructions, see [Install Tealium Audience Discovery for Snowflake]().
+For installation instructions, see [Install Tealium Audience Discovery for Snowflake](https://docs.tealium.com/install-tealium-audience-discovery/).
 
 ## Use cases
 
@@ -43,7 +47,7 @@ For installation instructions, see [Install Tealium Audience Discovery for Snowf
 
 ## Next steps
 
-* [Get started with Tealium Audience Discovery for Snowflake]()
-* [Install Tealium Audience Discovery for Snowflake]()
-* [Manage audiences in Tealium Audience Discovery for Snowflake]()
-* [Connect Snowflake audiences to Tealium]()
+* [Get started with Tealium Audience Discovery for Snowflake](https://docs.tealium.com/get-started/)
+* [Install Tealium Audience Discovery for Snowflake](https://docs.tealium.com/install-tealium-audience-discovery/)
+* [Manage audiences in Tealium Audience Discovery for Snowflake](https://docs.tealium.com/manage-discovery-audiences/)
+* [Connect Snowflake audiences to Tealium](https://docs.tealium.com/connect-snowflake-audiences/)

@@ -17,7 +17,7 @@ Amobee is a global digital marketing technology company and a wholly-owned subsi
 
 Amobee unifies audiences to drive customers’ growth for brands, agencies, and media companies so they can optimize results across all TV, connected TV, and digital and social media. This integration relies on ID syncing to ingest data into the Amobee DMP from Tealium with a server-to-server format. The Amobee Cookie Matching Service tag available within the Tealium iQ platform makes this happen.
 
-For more information, please see how to configure the [Amobee Cookie Matching Service tag]().
+For more information, please see how to configure the [Amobee Cookie Matching Service tag](https://docs.tealium.com/amobee-cookie-matching-service-tag/).
 
 This ID sync value will be passed as a User ID to Amobee to subscribe a user to Categories available within the Amobee taxonomy in this Connector configuration.
 
@@ -25,7 +25,7 @@ The Amobee taxonomy file is an Excel document (`.xls/xlsx` format) that helps to
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 

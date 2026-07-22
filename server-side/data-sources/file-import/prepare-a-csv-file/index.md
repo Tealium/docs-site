@@ -14,11 +14,19 @@ We recommend using the file import data source with the following types of data 
 
 To ensure efficient processing of your files, we strongly recommend breaking up large files into smaller files of 100,000 rows each. While larger file sizes are supported, we don’t recommend exceeding file sizes of 50 MB as it may increase the likelihood of errors.
 
- To get the most out of your imported data, ensure that every row in your CSV file has a column with a unique visitor ID that associates the data to a customer. For more information, see [Visitor Identification using Tealium Data Sources]().
+
+<blockquote>
+To get the most out of your imported data, ensure that every row in your CSV file has a column with a unique visitor ID that associates the data to a customer. For more information, see [Visitor Identification using Tealium Data Sources](https://docs.tealium.com/visitor-identification-data-sources/).
+</blockquote>
+
 
 ## File naming conventions
 
+
+<blockquote>
 Multiple files uploaded through SFTP or S3 are processed alphabetically by their file names.
+</blockquote>
+
 
 ### File name prefix
 
@@ -29,7 +37,11 @@ CSV files must use the following name format: `{prefix}_{version}.csv`. This for
 |`prefix`| A unique identifier for groups of files that share the same CSV column names. The prefix can contain underscores, but do not include an underscore at the end. For example, `test` or `test_file`.|
 |`version`| (Optional) If there are multiple files with the same CSV column names, this value represents a unique identifier for a file with a prefix. This is usually a timestamp, a version number, or both. For example, `test_20251225.csv`, `test_20251226.csv`, and `test_2025-1227.csv`.|
 
- We strongly recommend using a version number to differentiate CSV file versions.
+
+<blockquote>
+We strongly recommend using a version number to differentiate CSV file versions.
+</blockquote>
+
 
 The file name prefix you use must be unique. For example, using the prefixes `store-transactions` and `store-transactions-returns` will cause unexpected results because they share the same initial prefix: `store-transactions`.
 
@@ -71,7 +83,7 @@ We recommend that you organize your files with the following guidelines:
 * **Field separator**  
 The field separator must be a comma (`,`).
 * **Column names**  
-  * The first line of the CSV file must contain the file column names. Each line after that represents an event or a visitor record and must contain at least one [visitor identifier attribute]().
+  * The first line of the CSV file must contain the file column names. Each line after that represents an event or a visitor record and must contain at least one [visitor identifier attribute](https://docs.tealium.com/visitor-id-attribute/).
   * Column names may not contain hash (`#`), caret (`^`), or whitespace characters.
   * Column names are case-sensitive and must match the attribute names exactly.
 * **Column values**  
@@ -81,7 +93,7 @@ The field separator must be a comma (`,`).
 * **Extra/Missing columns**  
   Extra columns that are not configured as AudienceStream attributes will be ignored. Mapped columns not present in the CSV file will be skipped.
 * **Group rows by visitor ID**  
-  Each row has a [visitor ID]() column and file may contain multiple rows for the same visitor. Rows that contain the same visitor ID should be grouped together to optimize the import process.
+  Each row has a [visitor ID](https://docs.tealium.com/visitor-id-attribute/) column and file may contain multiple rows for the same visitor. Rows that contain the same visitor ID should be grouped together to optimize the import process.
 * **Line endings**  
 The following line endings are supported: LF (Line Feed), CR (Carriage Return), and CR LF (Carriage Return Line Feed).
 
@@ -90,21 +102,21 @@ The following line endings are supported: LF (Line Feed), CR (Carriage Return), 
 We recommend that you format the following data types accordingly:
 
 * **Double-quote values with commas**  
-If a value contains a comma (`,`), it must be surrounded by double-quotes to ensure the integrity of the CSV columns. We recommend putting all values in double-quotes. Use a doubled double quote (`&#34;&#34;`) to indicate a double quote character in the data.
+If a value contains a comma (`,`), it must be surrounded by double-quotes to ensure the integrity of the CSV columns. We recommend putting all values in double-quotes. Use a doubled double quote (`""`) to indicate a double quote character in the data.
 * **Array of strings format**  
 Use the following example format for file attributes that are to be mapped to an array of strings:  
   ```
-  &#34;[&#34;&#34;one&#34;&#34;,&#34;&#34;two&#34;&#34;,&#34;&#34;three&#34;&#34;]&#34;
+  "[""one"",""two"",""three""]"
   ```
 * **Array of numbers format**  
 Use the following example format for file attributes that are to be mapped to an array of numbers:  
   ```
-  &#34;[1.99,20.99]&#34;
+  "[1.99,20.99]"
   ```
 * **Array of booleans format**  
 Use the following example format for file attributes that are to be mapped to an array of booleans:  
   ```
-  &#34;[0, 1]&#34;,&#34;[0, 1]&#34;
+  "[0, 1]","[0, 1]"
   ```
 * **Normalize dates**  
   * Date values must be consistent throughout a file for a given field. 
@@ -112,9 +124,9 @@ Use the following example format for file attributes that are to be mapped to an
   * The following date components are supported: Year, Month, Day, Hour, Minutes, Seconds, Milliseconds, AM/PM, ISO, RFC, Era. For more information about supported date components, see [Java SimpleDateFormat Patterns](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
   * Dates are stored in Tealium as epoch timestamps in milliseconds.
 * **Normalize empty values**  
-Some rows might not contain a value for each column. Ensure that these columns are empty and do not contain placeholder values such as &#34;null&#34;, &#34;empty&#34;, &#34;blank&#34;, etc.
+Some rows might not contain a value for each column. Ensure that these columns are empty and do not contain placeholder values such as "null", "empty", "blank", etc.
 * **Omit special characters from currency amounts**  
-Columns that represent currency amounts, such as &#34;OrderTotal&#34; or &#34;ProductPrice&#34;, must not contain symbols or commas.
+Columns that represent currency amounts, such as "OrderTotal" or "ProductPrice", must not contain symbols or commas.
 
 |Valid Values| Invalid Values|
 |---| ---|

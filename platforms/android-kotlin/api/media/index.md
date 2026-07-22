@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/api/media/
 ---
 ## Class: Media
 
-The `Media` class provides methods for tracking streaming media in apps through the use of custom events. Learn more about [media tracking](/platforms/getting-started-mobile/media/).
+The `Media` class provides methods for tracking streaming media in apps through the use of custom events. Learn more about [media tracking](https://docs.tealium.com/platforms/getting-started-mobile/media/).
 
 The following summarizes the commonly used methods of the `Media` class for Tealium Kotlin.
 
@@ -135,7 +135,7 @@ Sends an interval event to the data layer. This method is called automatically e
 tealium?.media?.ping()
 ```
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 ### `play()`
 
@@ -173,7 +173,7 @@ Milestone values:
 | 88.0 - 92.0    | `90%`           |
 | 97.0 - 100.0   | `100%`          |
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 ### `sendSummary()`
 
@@ -183,7 +183,7 @@ Sends summary data to the data layer. This method is called automatically on `en
 tealium?.media?.sendSummary()
 ```
 
-Learn more about [media tracking types](/platforms/getting-started-mobile/media/#trackingtype).
+Learn more about [media tracking types](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype).
 
 ### `skipAd()`
 
@@ -216,7 +216,7 @@ tealium?.media?.startAd(ad)
 
 Example:
 ```java
-tealium?.media?.startAd(Ad(&#34;Ad  1&#34;))
+tealium?.media?.startAd(Ad("Ad  1"))
 ```
 
 ### `startAdBreak()`
@@ -234,7 +234,7 @@ tealium?.media?.startAdBreak(break)
 Example:
 
 ```java
-val adBreak = AdBreak(name = &#34;Ad Break 1&#34;)
+val adBreak = AdBreak(name = "Ad Break 1")
 tealium?.media?.startAdBreak(adBreak)
 ```
 
@@ -262,7 +262,7 @@ tealium?.media?.startChapter(chapter)
 Example:
 
 ```java
-tealium?.media?.startChapter(Chapter(name = &#34;Chapter 1&#34;))
+tealium?.media?.startChapter(Chapter(name = "Chapter 1"))
 ```
 
 
@@ -322,7 +322,7 @@ Example:
 tealium?.media?.updatePlayerState(fullscreen)
 ```
 
-Learn more about the [player state](/platforms/getting-started-mobile/media/#state).
+Learn more about the [player state](https://docs.tealium.com/platforms/getting-started-mobile/media/#state).
 
 ### `updateQOE()`
 
@@ -365,16 +365,16 @@ val mediaContent: MediaContent = MediaContent(
 | Variable Name  | Type                                                             | Description                                                              | Required |
 |:---------------|:-----------------------------------------------------------------|:-------------------------------------------------------------------------|:---------|
 | `name`         | `String`                                                         | The name of the media content.                                           | Yes      |
-| `streamType`   | [`StreamType`](/platforms/getting-started-mobile/media/#streamtype)     | The type of media stream.                                                | Yes      |
-| `mediaType`    | [`MediaType`](/platforms/getting-started-mobile/media/#mediatype)       | The type of media (video or audio).                                      | Yes      |
-| `qoe`          | [`QoE`](/platforms/getting-started-mobile/media/#quality-of-experience) | The quality of experience bitrate value.                                 | Yes      |
-| `trackingType` | [`TrackingType`](/platforms/getting-started-mobile/media/#trackingtype) | The level of event tracking. (default: `TrackingType.FULL_PLAYBACK`)     | Yes      |
-| `state`        | [`PlayerState`](/platforms/getting-started-mobile/media/#state)         | The media player state type.                                             |          |
+| `streamType`   | [`StreamType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#streamtype)     | The type of media stream.                                                | Yes      |
+| `mediaType`    | [`MediaType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#mediatype)       | The type of media (video or audio).                                      | Yes      |
+| `qoe`          | [`QoE`](https://docs.tealium.com/platforms/getting-started-mobile/media/#quality-of-experience) | The quality of experience bitrate value.                                 | Yes      |
+| `trackingType` | [`TrackingType`](https://docs.tealium.com/platforms/getting-started-mobile/media/#trackingtype) | The level of event tracking. (default: `TrackingType.FULL_PLAYBACK`)     | Yes      |
+| `state`        | [`PlayerState`](https://docs.tealium.com/platforms/getting-started-mobile/media/#state)         | The media player state type.                                             |          |
 | `customId`     | `String`                                                         | The custom identifier name.                                              |          |
 | `duration`     | `Int`                                                            | The media duration, in seconds, such as `130`                            |          |
 | `playerName`   | `String`                                                         | The media player name.                                                   |          |
 | `channelName`  | `String`                                                         | The media channel name.                                                  |          |
-| `metadata`     | `[String: Any]`                                                  | Additional media [metadata](/platforms/getting-started-mobile/media/#metadata). |          |
+| `metadata`     | `[String: Any]`                                                  | Additional media [metadata](https://docs.tealium.com/platforms/getting-started-mobile/media/#metadata). |          |
 
 ## Class: `Ad`
 
@@ -456,4 +456,4 @@ The following are the `Chapter` object parameters. Parameters must be in order i
 | `name`        | `String`        | The name of the chapter.                                                         | Yes      |
 | `duration`    | `Double`        | The chapter duration, in seconds, such as `130`                                  |          |
 | `position`    | `Int`           | The chapter position index.                                                      |          |
-| `metadata`    | `[String: Any]` | Additional chapter media [metadata](/platforms/getting-started-mobile/media/#metadata). |          |
+| `metadata`    | `[String: Any]` | Additional chapter media [metadata](https://docs.tealium.com/platforms/getting-started-mobile/media/#metadata). |          |

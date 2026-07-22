@@ -20,21 +20,21 @@ For additional information, see the [AMP Analytics](https://www.ampproject.org/d
 AMP Analytics JSON configuration example:  
     ```json
         {
-          &#34;requests&#34;: {
-            &#34;pageview&#34;: &#34;https://example.com/analytics?url=${canonicalUrl}&amp;title=${title}&amp;acct=${account}&#34;
+          "requests": {
+            "pageview": "https://example.com/analytics?url=${canonicalUrl}&title=${title}&acct=${account}"
           },
-          &#34;vars&#34;: {
-            &#34;account&#34;: &#34;A0123456789&#34;
+          "vars": {
+            "account": "A0123456789"
           },
-          &#34;triggers&#34;: {
-            &#34;trackPageview&#34;: {
-              &#34;on&#34;: &#34;visible&#34;,
-              &#34;request&#34;: &#34;pageview&#34;
+          "triggers": {
+            "trackPageview": {
+              "on": "visible",
+              "request": "pageview"
             },
-            &#34;links&#34;: {
-              &#34;on&#34;: &#34;click&#34;,
-              &#34;selector&#34;: &#34;.tracked-links-selector&#34;,
-              &#34;request&#34;: &#34;event&#34;
+            "links": {
+              "on": "click",
+              "selector": ".tracked-links-selector",
+              "request": "event"
             }
           }
         }
@@ -49,5 +49,5 @@ Your AMP configuration file can have any name, for example amp.analytics.config.
 1. **Tag your AMP page**  
 The new hosted data layer JSON file can be referenced in your AMP pages using the `amp-analytics` tag:  
     ```
-    &lt;amp-analytics config=&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/amp.analytics.config.json&#34;&gt;
+    <amp-analytics config="https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/amp.analytics.config.json">
     ```

@@ -13,59 +13,59 @@ url: https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/vendo
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {
-                            &#34;ksid&#34;: &#34;95784&#34;
+                            "ksid": "95784"
                         },
                         {
-                            &#34;ksid&#34;: &#34;97899&#34;
+                            "ksid": "97899"
                         }
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {
-                                    &#34;name&#34;: &#34;trip_type&#34;,
-                                    &#34;content&#34;: &#34;o&#34;
+                                    "name": "trip_type",
+                                    "content": "o"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;o&#34;,
-                                    &#34;content&#34;: &#34;LAX&#34;
+                                    "name": "o",
+                                    "content": "LAX"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;d&#34;,
-                                    &#34;content&#34;: &#34;NRT&#34;
+                                    "name": "d",
+                                    "content": "NRT"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;dd&#34;,
-                                    &#34;content&#34;: &#34;2016-01-09&#34;
+                                    "name": "dd",
+                                    "content": "2016-01-09"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;rd&#34;,
-                                    &#34;content&#34;: &#34;2016-01-20&#34;
+                                    "name": "rd",
+                                    "content": "2016-01-20"
                                 }
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -76,7 +76,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/vendo
 #### ノート
 
 * 購読者の配列は動的で、1つ以上の購読者IDを含むことができます。
-* &#34;customData&#34;キーの配列は動的で、1つ以上の名前とコンテンツのオブジェクトを含むことができます。
+* "customData"キーの配列は動的で、1つ以上の名前とコンテンツのオブジェクトを含むことができます。
 
 ## アクションの実装
 
@@ -88,7 +88,11 @@ url: https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/vendo
 
 PutsReqバケットURLに構成します。
 
+
+<blockquote>
 一般的な実装をここで示すために、PutsReq URLが適しています。Kony APIのドキュメンテーションを参照してURLを確認してください。
+</blockquote>
+
 
 ### ボディコンテンツタイプ
 
@@ -112,32 +116,36 @@ PutsReqバケットURLに構成します。
 |`customData.name`| Kony Data Names| 文字列のセット属性|
 |`customData.content`| Kony Data Contents| 文字列のセット属性|
 
+
+<blockquote>
 変数は内部的にJSONに変換され、すべてのテンプレートで利用可能になります。
+</blockquote>
+
 
 #### 結果のJSON構造:
 
 ```json
 {
-    &#34;subscribers&#34;: [
+    "subscribers": [
         {
-            &#34;ksid&#34;: &#34;sub-id-1&#34;
+            "ksid": "sub-id-1"
         },
         {
-            &#34;ksid&#34;: &#34;sub-id-2&#34;
+            "ksid": "sub-id-2"
         }
     ],
-    &#34;customData&#34;: [
+    "customData": [
         {
-            &#34;name&#34;: &#34;name-1&#34;,
-            &#34;content&#34;: &#34;Content A&#34;
+            "name": "name-1",
+            "content": "Content A"
         },
         {
-            &#34;name&#34;: &#34;name-2&#34;,
-            &#34;content&#34;: &#34;Content B&#34;
+            "name": "name-2",
+            "content": "Content B"
         },
         {
-            &#34;name&#34;: &#34;name-3&#34;,
-            &#34;content&#34;: &#34;Content C&#34;
+            "name": "name-3",
+            "content": "Content C"
         }
     ]
 }
@@ -150,44 +158,44 @@ PutsReqバケットURLに構成します。
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {{#subscribers}}
                         {
-                            &#34;ksid&#34;: &#34;{{ksid}}&#34;
+                            "ksid": "{{ksid}}"
                         }{{#iter.hasNext}}, {{/iter.hasNext}}
                         {{/subscribers}}
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {{#customData}}
                                 {
-                                    &#34;name&#34;: &#34;{{name}}&#34;,
-                                    &#34;content&#34;: &#34;{{content}}&#34;
+                                    "name": "{{name}}",
+                                    "content": "{{content}}"
                                 }{{#iter.hasNext}}, {{/iter.hasNext}}
                                 {{/customData}}
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -202,51 +210,51 @@ PutsReqバケットURLに構成します。
 
 ```json
 {
-    &#34;messageRequest&#34;: {
-        &#34;appId&#34;: &#34;IceMobile&#34;,
-        &#34;global&#34;: {},
-        &#34;messages&#34;: {
-            &#34;message&#34;: {
-                &#34;content&#34;: {
-                    &#34;priorityService&#34;: &#34;false&#34;,
-                    &#34;data&#34;: &#34;Message Body&#34;,
-                    &#34;mimeType&#34;: &#34;text/plain&#34;
+    "messageRequest": {
+        "appId": "IceMobile",
+        "global": {},
+        "messages": {
+            "message": {
+                "content": {
+                    "priorityService": "false",
+                    "data": "Message Body",
+                    "mimeType": "text/plain"
                 },
-                &#34;overrideMessageId&#34;: 0,
-                &#34;startTimestamp&#34;: 0,
-                &#34;expiryTimestamp&#34;: 0,
-                &#34;subscribers&#34;: {
-                    &#34;subscriber&#34;: [
+                "overrideMessageId": 0,
+                "startTimestamp": 0,
+                "expiryTimestamp": 0,
+                "subscribers": {
+                    "subscriber": [
                         {
-                            &#34;ksid&#34;: &#34;sub-id-1&#34;
+                            "ksid": "sub-id-1"
                         },
                         {
-                            &#34;ksid&#34;: &#34;sub-id-2&#34;
+                            "ksid": "sub-id-2"
                         }
                     ]
                 },
-                &#34;platformSpecificProps&#34;: {
-                    &#34;iphone&#34;: {
-                        &#34;badge&#34;: 0,
-                        &#34;customData&#34;: {
-                            &#34;key&#34;: [
+                "platformSpecificProps": {
+                    "iphone": {
+                        "badge": 0,
+                        "customData": {
+                            "key": [
                                 {
-                                    &#34;name&#34;: &#34;name-1&#34;,
-                                    &#34;content&#34;: &#34;Content A&#34;
+                                    "name": "name-1",
+                                    "content": "Content A"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;name-2&#34;,
-                                    &#34;content&#34;: &#34;Content B&#34;
+                                    "name": "name-2",
+                                    "content": "Content B"
                                 },
                                 {
-                                    &#34;name&#34;: &#34;name-3&#34;,
-                                    &#34;content&#34;: &#34;Content C&#34;
+                                    "name": "name-3",
+                                    "content": "Content C"
                                 }
                             ]
                         }
                     }
                 },
-                &#34;type&#34;: &#34;PUSH&#34;
+                "type": "PUSH"
             }
         }
     }
@@ -255,4 +263,4 @@ PutsReqバケットURLに構成します。
 
 ## アクション構成のスクリーンショット
 
-![](/images/server-side/example)
+![](https://docs.tealium.com/images/server-side/example)

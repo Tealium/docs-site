@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/campaigner-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -49,26 +49,26 @@ Map an array of strings for the following fields. If a string is mapped, it is t
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email | The contact&#39;s email address. |
-| First Name | The contact&#39;s first name. |
-| Last Name | The contact&#39;s last name. |
-| Phone | The contact&#39;s phone number. |
-| Mobile Phone | The contact&#39;s mobile number. |
-| Fax | The contact&#39;s fax number. |
-| Email Message Format | The contact&#39;s preferred email message format. |
-| Email Status | The contact&#39;s email status. |
-| Sms Status | The contact&#39;s SMS status. |
+| Email | The contact's email address. |
+| First Name | The contact's first name. |
+| Last Name | The contact's last name. |
+| Phone | The contact's phone number. |
+| Mobile Phone | The contact's mobile number. |
+| Fax | The contact's fax number. |
+| Email Message Format | The contact's preferred email message format. |
+| Email Status | The contact's email status. |
+| Sms Status | The contact's SMS status. |
 | Is Test Contact | Whether this contact is marked as a test contact. |
-| Owner Email | The contact owner&#39;s email address. |
-| Owner First Name | The contact owner&#39;s first name. |
-| Owner Last Name | The contact owner&#39;s last name. |
+| Owner Email | The contact owner's email address. |
+| Owner First Name | The contact owner's first name. |
+| Owner Last Name | The contact owner's last name. |
 
 #### Trigger Workflows
 
 | **Parameter** | **Description** |
 | --- | --- |
 | Trigger All Workflows | Set to `true` if Campaigner should trigger all applicable workflows after this contact is created or updated. Default is `false`.  |
-| Trigger Specific Workflows | An array of workflow IDs to trigger for this contact&#39;s creation or update. Raises an error if `triggerAllWorkflows` is set to `true` and `triggerSpecificWorkflows` have values specified. |
+| Trigger Specific Workflows | An array of workflow IDs to trigger for this contact's creation or update. Raises an error if `triggerAllWorkflows` is set to `true` and `triggerSpecificWorkflows` have values specified. |
 
 ### Add a subscriber
 
@@ -76,7 +76,7 @@ Map an array of strings for the following fields. If a string is mapped, it is t
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email Address | The subscriber&#39;s email address. |
+| Email Address | The subscriber's email address. |
 
 #### Custom Fields
 
@@ -116,7 +116,7 @@ Map an array of strings for the following fields. If a string is mapped, it is t
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email Address | The subscriber&#39;s email address. |
+| Email Address | The subscriber's email address. |
 
 #### Custom Fields
 
@@ -156,5 +156,5 @@ Map an array of strings for the following fields. If a string is mapped, it will
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Email Address | The subscriber&#39;s email address. |
+| Email Address | The subscriber's email address. |
 

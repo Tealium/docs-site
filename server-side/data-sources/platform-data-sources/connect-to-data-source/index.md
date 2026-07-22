@@ -9,14 +9,14 @@ To install the code for the data source, you need the data source key and links 
 
 To get the data source key:
 
-1. In the sidebar, select **Connect &gt; Data Sources**.
+1. In the sidebar, select **Connect > Data Sources**.
 1. Click the name of the data source you want to install to expand the details.
 1. From the detailed view, copy the **Data Source Key** value.  
-      ![](/images/server-side/whiteui-viewdatasource-datasourcekey.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-viewdatasource-datasourcekey.png)
 1. Use the installation instructions for your platform to paste the data source key-value into your code.
 1. With the data source details expanded, click **Get Code**.  
-      ![](/images/server-side/whiteui-editdatasource-getcode.png)The **Get Code** dialog displays. From this dialog, you can download a PDF with installation instructions, view and copy the base code, or view and copy event tracking code.  
-      ![](/images/server-side/whiteui-getcode.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-editdatasource-getcode.png)The **Get Code** dialog displays. From this dialog, you can download a PDF with installation instructions, view and copy the base code, or view and copy event tracking code.  
+      ![](https://docs.tealium.com/images/server-side/whiteui-getcode.png)
 1. Copy the code displayed in the window.
 1. Use the installation instructions for your platform to install the code.
 1. Click **Close** to close the Get Code dialog.

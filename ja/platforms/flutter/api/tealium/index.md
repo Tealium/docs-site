@@ -42,13 +42,13 @@ Tealium.addCustomRemoteCommand(id, callback);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `id` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
+| `id` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```dart
-Tealium.addCustomRemoteCommand(&#39;CUSTOM_COMMAND_ID&#39;, (payload) {
+Tealium.addCustomRemoteCommand('CUSTOM_COMMAND_ID', (payload) {
   print(JsonEncoder().convert(payload));
 });
 ```
@@ -68,8 +68,8 @@ Tealium.addRemoteCommand(remoteCommand);
 例:
 
 ```dart
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: &#34;firebase.json&#34;)); // local
-Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: &#34;www.tealium.com/path_to_remote_command/firebase.json&#34;)); // remote
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: "firebase.json")); // local
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: "www.tealium.com/path_to_remote_command/firebase.json")); // remote
 Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName)); // webview
 ```
 
@@ -83,7 +83,7 @@ Tealium.addToDataLayer(data, expiry);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map&lt;String, Object&gt;` | 文字列のキーと文字列または文字列の配列の値を持つJSONオブジェクト | `{&#39;persistent_key&#39; : &#39;persistent_val&#39;}` |
+| `data` | `Map<String, Object>` | 文字列のキーと文字列または文字列の配列の値を持つJSONオブジェクト | `{'persistent_key' : 'persistent_val'}` |
 | `expiry` | `Expiry` | データを永続させる時間の長さ | `Expiry.forever` |
 
 ### `clearStoredVisitorIds()`
@@ -106,13 +106,13 @@ Tealium.getFromDataLayer(key);
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
 | `key` | `String` | データレイヤーから取得するキー|
-| `N/A` | `Future&lt;dynamic&gt;` | `Tealium.dataLayer`から値が正常に取得された後にFutureが成功します |
+| `N/A` | `Future<dynamic>` | `Tealium.dataLayer`から値が正常に取得された後にFutureが成功します |
 
 例:
 
 ```dart
-Tealium.getFromDataLayer(&#39;key&#39;)
-    .then((value) =&gt; print(&#39;データレイヤーからの値: $value&#39;));
+Tealium.getFromDataLayer('key')
+    .then((value) => print('データレイヤーからの値: $value'));
 ```
 
 
@@ -126,14 +126,14 @@ Tealium.getConsentCategories();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;List&lt;dynamic&gt;&gt;` | `Tealium.ConsentManager`から同意カテゴリが正常に取得された後にFutureが完了します |
+| `N/A` | `Future<List<dynamic>>` | `Tealium.ConsentManager`から同意カテゴリが正常に取得された後にFutureが完了します |
 
 例:
 
 ```dart
 Tealium.getConsentCategories()
-  .then((categories) =&gt;
-      print(&#39;同意カテゴリ: &#39; &#43; categories.join(&#34;,&#34;)));
+  .then((categories) =>
+      print('同意カテゴリ: ' + categories.join(",")));
 ```
 
 
@@ -147,13 +147,13 @@ Tealium.getConsentStatus();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | `Tealium.ConsentManager`から同意状態が正常に取得された後にFutureが完了します |
+| `N/A` | `Future<String>` | `Tealium.ConsentManager`から同意状態が正常に取得された後にFutureが完了します |
 
 例:
 
 ```dart
 Tealium.getConsentStatus()
-  .then((status) =&gt; print(&#39;同意状態: $status&#39;));
+  .then((status) => print('同意状態: $status'));
 ```
 
 ### `getVisitorId()`
@@ -166,7 +166,7 @@ Tealium.getVisitorId();
 
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
-| `N/A` | `Future&lt;String&gt;` | `Tealium.visitorId`が正常に取得された後にFutureが返されます |
+| `N/A` | `Future<String>` | `Tealium.visitorId`が正常に取得された後にFutureが返されます |
 
 例:
 
@@ -185,15 +185,15 @@ Tealium.initialize(config);
 | パラメータ | タイプ | 説明 |
 |-----------|-------------| ---- |
 | `config`  | `TealiumConfig` | 構成 |
-| `N/A` | `Future&lt;void&gt;` | Tealiumが正常に初期化されたときにFutureが完了します。失敗時には`PlatformException`をスローします。 |
+| `N/A` | `Future<void>` | Tealiumが正常に初期化されたときにFutureが完了します。失敗時には`PlatformException`をスローします。 |
 
 
 例:
 
 ```dart
 final config = TealiumConfig(
-    &#39;ACCOUNT&#39;,
-    &#39;PROFILE&#39;,
+    'ACCOUNT',
+    'PROFILE',
     TealiumEnvironment.dev,
     [Collectors.AppData, Collectors.DeviceData, Collectors.Lifecycle, Collectors.Connectivity],
     [Dispatchers.Collect, Dispatchers.TagManagement, Dispatchers.RemoteCommands],
@@ -205,16 +205,16 @@ final config = TealiumConfig(
 try {
     await Tealium.initialize(config);
     Tealium.setConsentStatus(ConsentStatus.consented);
-    Tealium.setConsentExpiryListener(() =&gt; print(&#39;同意期限切れ&#39;));
+    Tealium.setConsentExpiryListener(() => print('同意期限切れ'));
 } on PlatformException catch (e) {
-    print(&#39;Tealium初期化エラー: ${e.message}&#39;);
+    print('Tealium初期化エラー: ${e.message}');
 }
 ```
 
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。[Trace](/ja/platforms/getting-started-mobile/trace/)についてもっと学びましょう。
+指定されたIDでトレースに参加します。[Trace](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/)についてもっと学びましょう。
 
 ```dart
 Tealium.joinTrace(id);
@@ -222,7 +222,7 @@ Tealium.joinTrace(id);
 
 | パラメータ | タイプ | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | CDHから取得したトレースID |  `&#34;abc123xy&#34;` |
+| `id` | `String` | CDHから取得したトレースID |  `"abc123xy"` |
 
 ### `leaveTrace()`
 
@@ -241,7 +241,7 @@ Tealium.removeFromDataLayer(keys);
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | キー名の配列 |  `[&#34;key1&#34;, &#34;key2&#34;]` |
+| `keys` | `List<String>` | キー名の配列 |  `["key1", "key2"]` |
 
 ### `removeRemoteCommand()`
 
@@ -253,12 +253,12 @@ Tealium.removeRemoteCommand(id);
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `id` | `String` | 削除するコマンドIDの名前 |  `&#34;test_command&#34;` |
+| `id` | `String` | 削除するコマンドIDの名前 |  `"test_command"` |
 
 例:
 
 ```dart
-Tealium.removeRemoteCommand(&#39;test_command&#39;);
+Tealium.removeRemoteCommand('test_command');
 ```
 
 ### `resetVisitorId()`
@@ -279,7 +279,7 @@ Tealium.setConsentCategories(categories);
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `categories` | `List&lt;ConsentCategories&gt;` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `List<ConsentCategories>` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 例:
 
@@ -322,7 +322,7 @@ Tealium.setConsentExpiryListener(callback);
 | `callback`  | `Function` | 同意が期限切れになった後に実行するコード |
 
 ```dart
-Tealium.setConsentExpiryListener(() =&gt; print(&#39;Consent Expired&#39;));
+Tealium.setConsentExpiryListener(() => print('Consent Expired'));
 ```
 
 ### `setConsentStatus()`
@@ -368,5 +368,5 @@ Tealium.setVisitorIdListener(callback);
 例:
 
 ```dart
-Tealium.setVisitorIdListener((newVisitorId) =&gt; print(newVisitorId));
+Tealium.setVisitorIdListener((newVisitorId) => print(newVisitorId));
 ```

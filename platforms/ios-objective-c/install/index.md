@@ -3,14 +3,18 @@ title: Install
 description: Learn to install the Tealium SDK for iOS (Objective-C).
 url: https://docs.tealium.com/platforms/ios-objective-c/install/
 ---
-This section covers the previous iOS library, Objective-C. [Swift](/platforms/ios-swift/) is the preferred programming language for macOS, iOS, watchOS, tvOS and beyond. Swift code co-exists along side your existing Objective-C files in the same project, with full access to your Objective-C API, making it easy to adopt.
+
+<blockquote>
+This section covers the previous iOS library, Objective-C. [Swift](https://docs.tealium.com/platforms/ios-swift/) is the preferred programming language for macOS, iOS, watchOS, tvOS and beyond. Swift code co-exists along side your existing Objective-C files in the same project, with full access to your Objective-C API, making it easy to adopt.
+</blockquote>
+
 
 ## Requirements
 
-* Xcode 7.0&#43;
-* iOS 8.1&#43;
-* [Tealium iQ Mobile Profile]()
-* [Tealium Customer Data Hub account]()
+* Xcode 7.0+
+* iOS 8.1+
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
 
@@ -21,7 +25,11 @@ To abstract the Tealium implementation from the rest of your app, we recommend t
 - [TealiumHelper for Objective-C](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_ObjC/UIKitCatalog/TealiumHelper.m)
 - [TealiumHelper for Swift](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_Swift/UIKitCatalog/TealiumHelper.swift)
 
+
+<blockquote>
 See the [TealiumIOS API](https://tealium.github.io/tealium-ios/) for a complete listing of Tealium classes and methods for iOS.
+</blockquote>
+
 
 ## Install
 
@@ -33,7 +41,7 @@ To install Tealium for iOS (Objective-C) for your app with CocoaPods (Recommende
 
 1. Add the following dependency to your Podfile:
       ```perl
-      pod &#34;TealiumIOS&#34;
+      pod "TealiumIOS"
       ```
 
 2. Save the file and run the following in your project directory:
@@ -50,14 +58,18 @@ To install Tealium for iOS (Objective-C) for your app with Carthage:
 
 1.  Add the following to your Cartfile:  
       ```perl
-      github &#34;tealium/tealium-ios&#34;
+      github "tealium/tealium-ios"
       ```
 
 2. To download and extract the frameworks, run the following command:  
       ```perl
       carthage update --platform ios --use-xcframeworks
       ```
-      Be sure to use the `--use-xcframeworks` flag, or the build will fail. This requires [Carthage 0.38.0](https://github.com/Carthage/Carthage/releases/tag/0.38.0).
+      
+<blockquote>
+Be sure to use the `--use-xcframeworks` flag, or the build will fail. This requires [Carthage 0.38.0](https://github.com/Carthage/Carthage/releases/tag/0.38.0).
+</blockquote>
+
 
 3. For the required frameworks to be copied automatically at build-time, verify sure that Carthage is [properly integrated](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) into your Xcode project. 
 
@@ -69,8 +81,12 @@ To install Tealium for iOS (Objective-C) for your app manually:
 
 2.  Copy framework to project in the resulting dialog box.
 
-3.  In the Target go to **General &gt; Frameworks, Libraries &amp; Embedded Content** and add `TealiumIOS.xcframework` with the &#34;Embed &amp; Sign&#34; option selected.
-For Swift projects go to the **Build Settings &gt; Swift Compiler &gt; Objective-C Bridging Header** option and include the file `TealiumIOSBridgingHeader.h`. 
+3.  In the Target go to **General > Frameworks, Libraries & Embedded Content** and add `TealiumIOS.xcframework` with the "Embed & Sign" option selected.
+
+<blockquote>
+For Swift projects go to the **Build Settings > Swift Compiler > Objective-C Bridging Header** option and include the file `TealiumIOSBridgingHeader.h`.
+</blockquote>
+
 
 
 ## Initialize
@@ -81,13 +97,13 @@ In the Application Delegate or within a helper class setup method use the follow
 
 ```swift
 // set your account, profile, and environment
-let tealConfig = TEALConfiguration.init(account: &#34;ACCOUNT&#34;,
-                                        profile: &#34;PROFILE&#34;,
-                                    environment: &#34;ENVIRONMENT&#34;,
-                                     datasource: &#34;DATASOURCE&#34;)
+let tealConfig = TEALConfiguration.init(account: "ACCOUNT",
+                                        profile: "PROFILE",
+                                    environment: "ENVIRONMENT",
+                                     datasource: "DATASOURCE")
 
 // Initialize with a unique key for this instance
-guard let tealium = Tealium.newInstanceForKey(&#34;INSTANCE&#34;, configuration: tealConfig) else {
+guard let tealium = Tealium.newInstanceForKey("INSTANCE", configuration: tealConfig) else {
      // Any additional failure response here           
      return
 }
@@ -100,13 +116,13 @@ guard let tealium = Tealium.newInstanceForKey(&#34;INSTANCE&#34;, configuration:
 @import TealiumIOS;
 
 // Set your account, profile, and environment
-TEALConfiguration *tealConfig = [TEALConfiguration configurationWithAccount:@&#34;ACCOUNT&#34;
-                          profile:@&#34;PROFILE&#34;
-                          environment:@&#34;ENVIRONMENT&#34;
-                          datasource:@&#34;DATASOURCE&#34;];
+TEALConfiguration *tealConfig = [TEALConfiguration configurationWithAccount:@"ACCOUNT"
+                          profile:@"PROFILE"
+                          environment:@"ENVIRONMENT"
+                          datasource:@"DATASOURCE"];
 
 // Initialize with a unique key for this instance
-Tealium *tealium = [Tealium newInstanceForKey:@&#34;INSTANCE&#34; configuration:tealConfig]; 
+Tealium *tealium = [Tealium newInstanceForKey:@"INSTANCE" configuration:tealConfig]; 
 ```
 
 
@@ -133,8 +149,8 @@ The Tealium instance must be configured with the following parameters before it 
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` |Tealium account name | `&#34;companyXYZ&#34;` |
-| `profile` | `String` |Tealium profile name  | `&#34;main&#34;`  |
-| `environment` | `String` |Tealium environment name  | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `datasource` | `String` |(Optional) data source key | `&#34;abc123&#34;` |
-| `instance` | `String` |Unique name for your instance (multiple instances are supported)  | `&#34;tealium_main&#34;` |
+| `account` | `String` |Tealium account name | `"companyXYZ"` |
+| `profile` | `String` |Tealium profile name  | `"main"`  |
+| `environment` | `String` |Tealium environment name  | [`"dev"`, `"qa"`, `"prod"`] |
+| `datasource` | `String` |(Optional) data source key | `"abc123"` |
+| `instance` | `String` |Unique name for your instance (multiple instances are supported)  | `"tealium_main"` |

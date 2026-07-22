@@ -9,9 +9,9 @@ url: https://docs.tealium.com/server-side/settings/user-permissions/faq/
 No. When a user exists in both client-side and server-side, removing the user from one does not impact the other.
 
 #### Can I grant a user access to a server-side profile without allowing access to a client-side profile?
-Yes. If a user already exists in the account and has been granted permission to a profile on the server-side, go to **Tag Management &gt; Manage Users** and remove that user from the client-side interface. For more information, see Add a server-side only user above.
+Yes. If a user already exists in the account and has been granted permission to a profile on the server-side, go to **Tag Management > Manage Users** and remove that user from the client-side interface. For more information, see Add a server-side only user above.
 
-#### How does the &#34;All current and future profiles&#34; option impact server-side permissions?
+#### How does the "All current and future profiles" option impact server-side permissions?
 There is no impact to server-side users. All server-side users have the default permission role of **No Access** to all new server-side profiles.
 
 #### What happens if a user has access to only one profile on the server-side and no profile access on the client-side?
@@ -21,10 +21,10 @@ If the user selects server-side at the login screen, they are automatically load
 Yes. A server-side admin user (granted by the **Manage Account** permission) can change permissions for all server-side users, including their own.
 
 #### Can a server-side admin update manage permissions for all server-side profiles?
-Yes. A server-side admin user&#39;s access is granted by the **Manage Account** permission, which is an account-level permission. Users with this permission level have access to the **Manage Users** screen in the server-side interface where they can manage user permissions for all profiles.
+Yes. A server-side admin user's access is granted by the **Manage Account** permission, which is an account-level permission. Users with this permission level have access to the **Manage Users** screen in the server-side interface where they can manage user permissions for all profiles.
 
 #### How do the new server-side permissions affect the Omnichannel File Status API?
-Access control to the [Omichannel File Status API]() will change upon final release of the server-side permissions feature. In addition to the standard requirement of needing [an API key to authenticate with the API](), users must have read access to the relevant Customer Data Hub account. Users using the [v1 API]() only need read access to the Customer Data Hub account.
+Access control to the [Omichannel File Status API](https://docs.tealium.com/about-omnichannel-file-status-api/) will change upon final release of the server-side permissions feature. In addition to the standard requirement of needing [an API key to authenticate with the API](https://docs.tealium.com/api-keys/), users must have read access to the relevant Customer Data Hub account. Users using the [v1 API](https://docs.tealium.com/omnichannel-file-status-objects-v1/) only need read access to the Customer Data Hub account.
 
 #### Can a server-side admin add new users to an account?
 No. The **Manage Account** permission does not grant access to add new users or delete users from an account. While they can remove access to profiles, only users who have the **Manage Users** permission assigned in the iQ Tag Management workflow can invite a new user to an account or completely delete a user from an account.

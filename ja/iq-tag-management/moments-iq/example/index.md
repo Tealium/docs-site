@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/example/
 
 以下の体験はホームページに表示されます。
 
-[Create a Moments iQ experience]() を使用して、訪問との最初のエンゲージメントにTealium Moments iQタグを追加します。以下のプロパティを構成します：
+[Create a Moments iQ experience](https://docs.tealium.com/manage-moments-iq/#create-a-moments-iq-tag) を使用して、訪問との最初のエンゲージメントにTealium Moments iQタグを追加します。以下のプロパティを構成します：
 
 * **タイトル**: `Visitor expertise`
 * **体験の配置**: `Center`
@@ -38,9 +38,9 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/example/
 [
   [
     {
-      &#34;input&#34;: &#34;js.page_type&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;home&#34;
+      "input": "js.page_type",
+      "operator": "equals (ignore case)",
+      "filter": "home"
     }
   ] 
 ]
@@ -52,16 +52,16 @@ url: https://docs.tealium.com/ja/iq-tag-management/moments-iq/example/
 
 訪問の回答を使用して訪問の体験をパーソナライズするには、訪問の回答を保存する必要があります。この例ではクライアントサイドの機能のみを使用し、訪問のWebブラウザで、Persist data values拡張機能を使用してクッキーに値を保存します：
 
-![](/images/early-access/moments-iq/manage-moments-persist-data-value.png)
+![](https://docs.tealium.com/images/early-access/moments-iq/manage-moments-persist-data-value.png)
 
 拡張機能が `momentsiq_submit` イベントが発生したときのみ実行されるように条件を追加してください。この場合、`momentsiq_id` が `123` と等しいかを確認します。
 
-データはJavaScript拡張機能を通じて `b[&#34;MomentsiQExp123&#34;,&#34;momentsiq_answer1&#34;]` または `MomentsiQExp123` クッキー変数を通じてアクセスできます。
+データはJavaScript拡張機能を通じて `b["MomentsiQExp123","momentsiq_answer1"]` または `MomentsiQExp123` クッキー変数を通じてアクセスできます。
 
-詳細については、[Persist data value extension]()を参照してください。
+詳細については、[Persist data value extension](https://docs.tealium.com/persist-data-value-extension/)を参照してください。
 
 ## 結果
 
 訪問がホームページをロードすると、ホームページは `div.col-main` 要素の始まりの後に体験を埋め込みます。
 
-![](/images/moments-iq/momentsiq-example-home-theater.png)
+![](https://docs.tealium.com/images/moments-iq/momentsiq-example-home-theater.png)

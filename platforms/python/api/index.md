@@ -23,10 +23,10 @@ Tealium(account, profile, environment, path, datasource)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` |Tealium account name |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` |Tealium profile name |  `&#34;main&#34;`  |
-| `environment` | `String` |Tealium environment name | `&#34;prod&#34;`|
-| `datasource`  | `String` |(Optional) data source key (required if PATH is omitted)  | `&#34;abc123&#34;` |
+| `account` | `String` |Tealium account name |  `"companyXYZ"` |
+| `profile` | `String` |Tealium profile name |  `"main"`  |
+| `environment` | `String` |Tealium environment name | `"prod"`|
+| `datasource`  | `String` |(Optional) data source key (required if PATH is omitted)  | `"abc123"` |
 
 ### `trackEvent()`
 
@@ -38,6 +38,6 @@ trackEvent(title, data, callback)
 
 | Parameter | Type | Description | Example
 |-----------| ---- | -------------| --- |
-| `title`   | `String` | A name to identify the event, such as a `user_login` variable | `&#34;test&#34;` |
-| `data`    | `Dictionary` | (Optional) Object with event data as key-value pairs | `{&#34;foo&#34;: &#34;bar&#34;, &#34;tealium_visitor_id&#34;: &#34;1234567890&#34;}` |
-| `callback`| `Dictionary`   | (Optional) Object with a function assigned to the &#34;callback&#34; key | `callback = self.tealiumCallback` |
+| `title`   | `String` | A name to identify the event, such as a `user_login` variable | `"test"` |
+| `data`    | `Dictionary` | (Optional) Object with event data as key-value pairs | `{"foo": "bar", "tealium_visitor_id": "1234567890"}` |
+| `callback`| `Dictionary`   | (Optional) Object with a function assigned to the "callback" key | `callback = self.tealiumCallback` |

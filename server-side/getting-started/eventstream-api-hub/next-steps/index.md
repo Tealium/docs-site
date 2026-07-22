@@ -7,19 +7,19 @@ url: https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/ne
 
 To learn more about Tealium EventStream, explore the following documentation:
 
-* [Data sources]()
-* [Event specifications]()
-* [Live Events]()
-* [Event feeds]()
-* [Connectors]()
-* [Trace]()
-* [Saving and publishing]()
-* [Managing user permissions]()
+* [Data sources](https://docs.tealium.com/about-data-sources/)
+* [Event specifications](https://docs.tealium.com/about-event-specifications/)
+* [Live Events](https://docs.tealium.com/about-live-events/)
+* [Event feeds](https://docs.tealium.com/about-event-feeds/)
+* [Connectors](https://docs.tealium.com/about-connectors/)
+* [Trace](https://docs.tealium.com/about-trace/)
+* [Saving and publishing](https://docs.tealium.com/about-save-publish/)
+* [Managing user permissions](https://docs.tealium.com/about-managing-server-side-user-permissions/)
 
 ## More guides
 
-* [Getting Started with iQ Tag Management]()
-* [Getting Started with AudienceStream]()
+* [Getting Started with iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
+* [Getting Started with AudienceStream](https://docs.tealium.com/audiencestream-tutorial/)
 
 ## More resources
 

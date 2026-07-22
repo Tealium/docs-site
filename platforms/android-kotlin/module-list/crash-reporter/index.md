@@ -11,17 +11,17 @@ Install the Crash Reporter module using Maven (Recommended) or manually.
 
 To install the module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:  
+1. In your project's top-level `build.gradle` file, add the following Maven repository:  
       ```groovy
       maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
-2. In your project module&#39;s `build.gradle` file, add the Maven dependencies for the Tealium library and Crash Reporter:  
+2. In your project module's `build.gradle` file, add the Maven dependencies for the Tealium library and Crash Reporter:  
       ```groovy
       dependencies {
-            implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-            implementation &#39;com.tealium:kotlin-crash-reporter:1.1.1&#39;
+            implementation 'com.tealium:kotlin-core:1.6.0'
+            implementation 'com.tealium:kotlin-crash-reporter:1.1.1'
       }
       ```
 
@@ -31,12 +31,12 @@ To install the Crash Reporter manually:
 
 1. Download the Tealium [Crash Reporter](https://github.com/Tealium/tealium-kotlin/tree/master/crashreporter) module.
 
-2. Copy the file `tealium-kotlin.crashreporter-1.1.1.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+2. Copy the file `tealium-kotlin.crashreporter-1.1.1.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 3. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-kotlin.crashreporter-1.1.1&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-kotlin.crashreporter-1.1.1', ext:'aar')
       }
       ```
 
@@ -46,8 +46,8 @@ Initialize the Crash Reporter module, as shown in the following example:
 
 ```kotlin
 val config = TealiumConfig(application,
-              &#34;ACCOUNT&#34;,
-              &#34;PROFILE&#34;,
+              "ACCOUNT",
+              "PROFILE",
               ENVIRONMENT,
               modules = mutableSetOf(Modules.CrashReporter), // Crash Reporter module
               dispatchers = mutableSetOf(Dispatchers.Collect,
@@ -56,7 +56,7 @@ val config = TealiumConfig(application,
 )
 ```
 
-To truncate the Crash Reporter&#39;s stack trace, set the configuration option `truncateCrashReporterStackTraces` to `true` (default: `false`).
+To truncate the Crash Reporter's stack trace, set the configuration option `truncateCrashReporterStackTraces` to `true` (default: `false`).
 
 ```java
 config.truncateCrashReporterStackTraces = true
@@ -66,9 +66,13 @@ config.truncateCrashReporterStackTraces = true
 
 Once initialized, the Crash Reporter module automatically captures crash data. If a thread abruptly terminates, `.uncaughtExceptionHandler()` is invoked and the crash information is saved to disk. Upon the next launch, the saved crash information will be dispatched along with your other events.
 
-Crash events are tracked as `tealium_event=&#34;crash&#34;`.
+Crash events are tracked as `tealium_event="crash"`.
 
+
+<blockquote>
 Crash Reporter is a singleton instance call. Chaining handlers is not currently supported.
+</blockquote>
+
 
 ## Data Layer
 
@@ -86,13 +90,13 @@ Example:
 
 ```json
 {
-  &#34;tealium_event&#34; : &#34;crash&#34;,
-  &#34;crash_cause&#34;   : &#34;java.lang.RuntimeException&#34;,
-  &#34;crash_count&#34;   : &#34;1&#34;,
-  &#34;crash_name&#34;    : &#34;Connection refused by server&#34;,
-  &#34;crash_threads&#34; : [
-    &#34;{ \&#34;crashed\&#34;: \&#34;true\&#34;, \&#34;state\&#34;: \&#34;RUNNABLE\&#34;, \&#34;threadNumber\&#34;: \&#34;1\&#34;, \&#34;threadId\&#34;: \&#34;main\&#34;, \&#34;priority\&#34;: \&#34;5\&#34;, \&#34;stack\&#34;:  [ { \&#34;fileName\&#34;: \&#34;MainActivity.java\&#34;, \&#34;className\&#34;: \&#34;com.tealium.libraryproject.MainActivity$1\&#34;, \&#34;methodName\&#34;: \&#34;onClick\&#34;, \&#34;lineNumber\&#34;: \&#34;38\&#34; }] }&#34;
+  "tealium_event" : "crash",
+  "crash_cause"   : "java.lang.RuntimeException",
+  "crash_count"   : "1",
+  "crash_name"    : "Connection refused by server",
+  "crash_threads" : [
+    "{ \"crashed\": \"true\", \"state\": \"RUNNABLE\", \"threadNumber\": \"1\", \"threadId\": \"main\", \"priority\": \"5\", \"stack\":  [ { \"fileName\": \"MainActivity.java\", \"className\": \"com.tealium.libraryproject.MainActivity$1\", \"methodName\": \"onClick\", \"lineNumber\": \"38\" }] }"
   ],
-  &#34;crash_uuid&#34;    : &#34;3c91d707-949e-445f-8ad1-4d6e200bfd6f&#34;
+  "crash_uuid"    : "3c91d707-949e-445f-8ad1-4d6e200bfd6f"
 }
 ```

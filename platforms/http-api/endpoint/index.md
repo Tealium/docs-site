@@ -17,7 +17,11 @@ https://collect.tealiumiq.com/event
 
 The Tealium Collect API supports a maximum rate limit of 100 requests/second.
 
+
+<blockquote>
 If your business needs require higher call limits, contact your Tealium account manager.
+</blockquote>
+
 
 ## Standard parameters
 
@@ -25,16 +29,16 @@ Tealium Collect supports the following standard parameters in each request:
 
 * `tealium_account`: The name of your Tealium account.
 * `tealium_profile`: The name of your Tealium profile. The default is **main**.
-* `tealium_datasource`: (Optional) The data source key from Customer Data Hub. See [About data sources]() for more information.
+* `tealium_datasource`: (Optional) The data source key from Customer Data Hub. See [About data sources](https://docs.tealium.com/about-data-sources/) for more information.
 * `tealium_event`: Recommended. The name of the event for tracking purposes.
 * `tealium_visitor_id`: Required for AudienceStream. A unique identifier for the visitor associated with the event (see the [Visitor identifiers](#visitor-identifiers) section). Depending on the source of the data, this identifier may be an anonymous GUID (Globally Unique Identifier) that is associated with a device the visitor is using, or may be based on a known user identifier for the visitor.
-* `tealium_trace_id`: (Optional) For use with [Trace]().
+* `tealium_trace_id`: (Optional) For use with [Trace](https://docs.tealium.com/about-trace/).
 
 The format of the request varies depending on the HTTP method used. In the examples below, placeholder values are represented with curly braces in the following format: `{VALUE}`.
 
 ## Custom event parameters
 
-Additional event attributes are sent as custom parameters according to your tracking needs. These parameters should also be defined as event attributes in the Customer Data Hub. For more information about event attributes, see [About attributes]().
+Additional event attributes are sent as custom parameters according to your tracking needs. These parameters should also be defined as event attributes in the Customer Data Hub. For more information about event attributes, see [About attributes](https://docs.tealium.com/about-attributes/).
 
 ## Visitor identifiers
 
@@ -57,9 +61,13 @@ Depending on your business case, you can use anonymous values or values based on
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) &gt; Data Layer]().
+If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
+
+<blockquote>
 If you are using Adobe Launch or Google Tag Manager, then the value needs to match the `v` part of the **TEAL** cookie.
+</blockquote>
+
 
 #### Known-visitors server-to-server
 
@@ -72,7 +80,11 @@ When sending data for known visitors (when a value exists for a visitor ID attri
 * Account
 * Profile  
 Including the profile name ensures the `tealium_visitor_id` is unique to each server-side profile, which is essential when the same visitor profile is sent to multiple server-side profiles within a region.
-* Visitor ID attribute ID and value You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes]().
+* Visitor ID attribute ID and value 
+<blockquote>
+You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see [About Attributes](https://docs.tealium.com/about-attributes/#attribute-ids).
+</blockquote>
+
 * Value in the `tealium_visitor_id` parameter
 
 For example, for the following values:
@@ -85,25 +97,33 @@ For example, for the following values:
 you would concatenate these values in the following way:
 
 ```
-tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
+tealium_visitor_id":"__my-account_main__7688_45653454__"
 ```
 
- Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters cause errors in AudienceStream and may not track properly.
+
+<blockquote>
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters cause errors in AudienceStream and may not track properly.
+</blockquote>
+
 
 Example JSON:
 
 ```json
 {
-    &#34;tealium_account&#34;    : &#34;my-account&#34;,
-    &#34;tealium_profile&#34;    : &#34;main&#34;,
-    &#34;tealium_event&#34;      : &#34;user_login&#34;,
-    &#34;email_address&#34;      : &#34;user@example.com&#34;,
-    &#34;customer_number&#34;    : &#34;45653454&#34;, 
-    &#34;tealium_visitor_id&#34; : &#34;__my-account_main__7688_45653454__&#34;
+    "tealium_account"    : "my-account",
+    "tealium_profile"    : "main",
+    "tealium_event"      : "user_login",
+    "email_address"      : "user@example.com",
+    "customer_number"    : "45653454", 
+    "tealium_visitor_id" : "__my-account_main__7688_45653454__"
 }
 ```
 
- Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent `tealium_visitor_id`, each event  generates a new visit and visitor stitching will not be possible.
+
+<blockquote>
+Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent `tealium_visitor_id`, each event  generates a new visit and visitor stitching will not be possible.
+</blockquote>
+
 
 ### User Identifiers
 
@@ -111,7 +131,7 @@ When using AudienceStream, you can pass a known user identifier with a tracking 
 
 A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes]().
+In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ### Visitor switching
 
@@ -142,11 +162,15 @@ Server-side bot filtering is essential for maintaining the accuracy of data coll
 
 Bot traffic refers to non-human visits to a site or app. Tealium server-side products automatically filter out bot traffic by comparing the user agent of each event to a list of known bots. Filtered events are not processed and do not count towards your usage.
 
-For more information and a complete list of user agents recognized as bots, see .
+For more information and a complete list of user agents recognized as bots, see [server-side-bot-filtering](https://docs.tealium.com/server-side-bot-filtering/).
 
 ## Methods
 
- When sending Collect API traffic from a browser, the GET method bases the page URL on the HTTP referrer URL for the request, which includes only the host name of the current page. Using the GET method does not include the query parameters or pathname of the current page. To include this information, use the POST method.
+
+<blockquote>
+When sending Collect API traffic from a browser, the GET method bases the page URL on the HTTP referrer URL for the request, which includes only the host name of the current page. Using the GET method does not include the query parameters or pathname of the current page. To include this information, use the POST method.
+</blockquote>
+
 
 ### GET
 
@@ -155,7 +179,7 @@ The GET method is used to request data from a specified resource. It passes data
 Example using curl:
 
 ```bash
-curl -i -X GET &#34;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&#34; 
+curl -i -X GET "https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&tealium_profile={PROFILE}&tealium_event=user_login&email_address=user@example.com" 
 ```
 
 ### POST
@@ -166,24 +190,24 @@ Example of `user_login` event:
 
 ```javascript
 {
-    &#34;tealium_account&#34;   : &#34;ACCOUNT&#34;,
-    &#34;tealium_profile&#34;   : &#34;PROFILE&#34;,
-    &#34;tealium_event&#34;     : &#34;EVENT_NAME&#34;,
-    &#34;email_address&#34;     : &#34;EMAIL_ADDRESS&#34;
+    "tealium_account"   : "ACCOUNT",
+    "tealium_profile"   : "PROFILE",
+    "tealium_event"     : "EVENT_NAME",
+    "email_address"     : "EMAIL_ADDRESS"
 }
 ```
 
 Example using curl:
 
 ```bash
-curl -X POST -H &#39;Content-type: application/json&#39;
---data &#39;{&#34;tealium_account&#34;:&#34;{ACCOUNT}&#34;,&#34;tealium_profile&#34;:&#34;{PROFILE}&#34;,&#34;tealium_event&#34;:&#34;user_login&#34;,&#34;email_address&#34;:&#34;user@example.com&#34;}&#39;
+curl -X POST -H 'Content-type: application/json'
+--data '{"tealium_account":"{ACCOUNT}","tealium_profile":"{PROFILE}","tealium_event":"user_login","email_address":"user@example.com"}'
 https://collect.tealiumiq.com/event
 ```
 
 ## Status codes
 
-The following table summarizes Tealium&#39;s HTTP response status codes:
+The following table summarizes Tealium's HTTP response status codes:
 
 | Status Code | Description |
 | --- | --- |
@@ -201,33 +225,33 @@ The `400 Bad Request` status code occurs when at least one of the following is t
 The following is an example of a `400 Bad Request` response, shown in the `X-Error` header, when the required `tealium_account` or `tealium_profile` parameter values are missing:
 
 ```
-&gt; GET /event?tealium_account=jentest-as&amp;tealium_profile=&amp;tealium_visitor_id=sendgeteventhttps@testing.com&amp;tealium_datasource=utc2cj&amp;customer_city=Honolulu&amp;customer_state=Hawaii&amp;Flag=true&amp;Number=45&amp;String=ascent&amp;String_Array=[hello,howareyou,whatsup,yoyoyo]&amp;Number_Array=[2.222,3.000,19.12,28.3]&amp;Flag_Array=[true,false,false,true]&amp;Combo_Array=[1,salutations,2324,world,22jjfssl]&amp;Array_of_Array=[[1,2,3],heyworld]&amp;myvariable=unicorns HTTP/1.1
-&gt; Host: qa21-collect.tealiumiq.com
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 400 Bad Request
-&lt; Cache-Control: no-transform,private,no-cache,no-store,max-age=0,s-maxage=0
-&lt; Content-Type: application/json
-&lt; Date: Wed, 23 Oct 2019 17:10:51 GMT
-&lt; Expires: Wed, 23 Oct 2019 17:10:51 GMT
-&lt; P3P: policyref=&#34;/w3c/p3p.xml&#34;, CP=&#34;NOI DSP COR NID CUR ADM DEV OUR BUS&#34;
-&lt; Pragma: no-cache
-&lt; Vary: Origin
-&lt; X-Error: Missing required tealium_account or tealium_profile param value
-&lt; X-Region: us-east-1
-&lt; X-ServerID: uconnect_i-9a157d19
-&lt; X-ULVer: 1.0.331-SNAPSHOT
-&lt; X-UUID: d4fc78d1-8204-412c-a6cb-57869d2370a7
-&lt; Content-Length: 0
-&lt; Connection: keep-alive
+> GET /event?tealium_account=jentest-as&tealium_profile=&tealium_visitor_id=sendgeteventhttps@testing.com&tealium_datasource=utc2cj&customer_city=Honolulu&customer_state=Hawaii&Flag=true&Number=45&String=ascent&String_Array=[hello,howareyou,whatsup,yoyoyo]&Number_Array=[2.222,3.000,19.12,28.3]&Flag_Array=[true,false,false,true]&Combo_Array=[1,salutations,2324,world,22jjfssl]&Array_of_Array=[[1,2,3],heyworld]&myvariable=unicorns HTTP/1.1
+> Host: qa21-collect.tealiumiq.com
+> User-Agent: curl/7.54.0
+> Accept: */*
+>
+< HTTP/1.1 400 Bad Request
+< Cache-Control: no-transform,private,no-cache,no-store,max-age=0,s-maxage=0
+< Content-Type: application/json
+< Date: Wed, 23 Oct 2019 17:10:51 GMT
+< Expires: Wed, 23 Oct 2019 17:10:51 GMT
+< P3P: policyref="/w3c/p3p.xml", CP="NOI DSP COR NID CUR ADM DEV OUR BUS"
+< Pragma: no-cache
+< Vary: Origin
+< X-Error: Missing required tealium_account or tealium_profile param value
+< X-Region: us-east-1
+< X-ServerID: uconnect_i-9a157d19
+< X-ULVer: 1.0.331-SNAPSHOT
+< X-UUID: d4fc78d1-8204-412c-a6cb-57869d2370a7
+< Content-Length: 0
+< Connection: keep-alive
 ```
 
 ## Examples
 
 ### HTML example
 
-Tealium Collect is referenced in an `&lt;img&gt;` tag within your HTML. Due to browser caching, it&#39;s important to include a cache buster, an additional parameter that contains a randomly generated value, as shown in the following example:
+Tealium Collect is referenced in an `<img>` tag within your HTML. Due to browser caching, it's important to include a cache buster, an additional parameter that contains a randomly generated value, as shown in the following example:
 
 ```javascript
 var cb=Math.random()*100000000000;
@@ -236,7 +260,7 @@ var cb=Math.random()*100000000000;
 This variable is added to the query string of the Tealium Collect pixel:
 
 ```html
-&lt;img height=&#34;1&#34; width=&#34;1&#34; style=&#34;display:none&#34; src=&#34;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=&#39; &#43; cb &#43; &#39;&#34;/&gt;
+<img height="1" width="1" style="display:none" src="//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&tealium_profile={PROFILE}&tealium_event=user_login&email_address=user@example.com&cb=' + cb + '"/>
 ```
 
 ### JavaScript example
@@ -245,12 +269,12 @@ Tealium Collect supports cross-domain requests, allowing you to send a POST from
 
 ```javascript
 var event = {
-    &#34;tealium_account&#34; : &#34;ACCOUNT&#34;,
-    &#34;tealium_profile&#34; : &#34;PROFILE&#34;,
-    &#34;tealium_event&#34;   : &#34;EVENT_NAME&#34;,
-    &#34;email_address&#34;   : &#34;EMAIL_ADDRESS&#34;};
+    "tealium_account" : "ACCOUNT",
+    "tealium_profile" : "PROFILE",
+    "tealium_event"   : "EVENT_NAME",
+    "email_address"   : "EMAIL_ADDRESS"};
 var xhr = new XMLHttpRequest();
-xhr.open(&#34;POST&#34;, &#34;https://collect.tealiumiq.com/event&#34;);
+xhr.open("POST", "https://collect.tealiumiq.com/event");
 xhr.send(JSON.stringify(event));
 ```
 

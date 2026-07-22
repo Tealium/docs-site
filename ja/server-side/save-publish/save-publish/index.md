@@ -17,13 +17,13 @@ url: https://docs.tealium.com/ja/server-side/save-publish/save-publish/
 
 **保存/公開**をクリックすると、変更の保存方法を選択する以下の画面が表示されます。各オプションは特定のシナリオに対応するように設計されており、構成を効果的に管理するのに役立ちます：
 
-![](/images/server-side/save-publish/save-your-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/save-your-changes.png)
 
 * **新しいバージョンとして保存**  
 現在のバージョンに対する変更をリビジョンとして保存するかどうかを選択します。また、新しいバージョンや新しいチームバージョンを開始することもできます。このチェックボックスはデフォルトでは選択されていません。長期的なプロジェクトを開始するために変更を新しいバージョンとして保存する場合は、**新しいバージョンとして保存**を選択します。
 * **最新の公開変更を含む**  
 このオプションは、公開バージョンより遅れている場合に表示されます。このプロファイルで公開されている最新の変更を含めるかどうかを選択します。このオプションを選択しない場合、他のバージョンの公開変更はあなたのバージョンに統合されません。公開するとき、このチェックボックスはデフォルトで選択されています。  
-![](/images/server-side/save-publish/integrate-changes-by-others.png)
+![](https://docs.tealium.com/images/server-side/save-publish/integrate-changes-by-others.png)
 * **バージョン名**  
 バージョンに名前を入力します。この名前は、さまざまな画面でこのバージョンを識別するために表示されるので、このバージョンの変更を要約する説明的な名前を選んでください。デフォルトでは、**バージョン**フィールドに日付とタイムスタンプが表示されます。現在のバージョンに保存する場合、バージョン名を変更することはできません。
 * **ノート**  
@@ -33,7 +33,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/save-publish/
 
 ### 変更のレビュー
 
-![](/images/server-side/save-publish/review-changes.png)
+![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
 **保存される変更**または**公開される変更**のテーブルには、保存している変更と最新の公開バージョンから含まれる変更に関する情報が表示されます：
 

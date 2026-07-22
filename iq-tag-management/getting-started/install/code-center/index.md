@@ -3,15 +3,19 @@ title: Code Center
 description: The Code Center is where you get the code to add the Universal Tag (utag.js) to your website.
 url: https://docs.tealium.com/iq-tag-management/getting-started/install/code-center/
 ---
- The Code Center screen has been replaced by the [Manage Environments]() screen on accounts with [platform permissions](). Accounts that use legacy permissions still use the Code Center screen. 
 
-For more information about installing Tealium on your website, see the [Quick Start Guide for Web]().
+<blockquote>
+The Code Center screen has been replaced by the [Manage Environments](https://docs.tealium.com/manage-environments/) screen on accounts with [platform permissions](https://docs.tealium.com/about-platform-permissions/). Accounts that use legacy permissions still use the Code Center screen.
+</blockquote>
+
+
+For more information about installing Tealium on your website, see the [Quick Start Guide for Web](https://docs.tealium.com/getting-started-web/).
 
 ## Access Code Center
 
 1. In the admin menu, click **Code Center**. The **Code Center** dialog appears.
 1. In the side panel, select the environment you want.  
-    ![](/images/platforms/getting-started-web/iq-code-center.png)
+    ![](https://docs.tealium.com/images/platforms/getting-started-web/iq-code-center.png)
 1. Click **OK** to close the Code Center.
 
 ## Code Center settings
@@ -31,30 +35,34 @@ Enter a custom name for one of the default environments. This new name will appe
 
 The **Tealium Script** tab displays the code based on your selections. The code includes the Universal Data Object (a sample of `utag_data`) and the Universal Tag code (`utag.js`). The Universal Data Object displayed here is generated from the variables defined in your data layer.
 
+
+<blockquote>
 The Universal Data Object seen in Code Center is only a placeholder. You must dynamically populate it with real values to send data to your tags.
+</blockquote>
+
 
 Use the following steps to copy your code snippet:
 
 1. Select the code displayed in the text box by either method:
     * Click and drag to select all the code.
     * Click the **Select All** button that appears when you mouse over the code.  
-        ![](/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
 
 1. Copy the code.
 1. Paste the code into your site authoring tool or back-end system.
 
 ### Sample HTML
 
-The **Sample HTML** tab provides an example of what the code would look like when added to a web page. The sample code appears after the opening `&lt;body&gt;` tag, in accordance with our best practices.
+The **Sample HTML** tab provides an example of what the code would look like when added to a web page. The sample code appears after the opening `<body>` tag, in accordance with our best practices.
 
 ## Custom publish environments
 
 Custom publish environments is a feature that must be enabled to use.
 
-To learn more, see [Custom Publish Environments]().
+To learn more, see [Custom Publish Environments](https://docs.tealium.com/custom-publish-environments/).
 
 ## China CDN
 
 Tealium offers a separate CDN domain to serve files within the China network.
 
-To learn more, see [load the Universal Tag on the China network]().
+To learn more, see [load the Universal Tag on the China network](https://docs.tealium.com/load-utag-china/).

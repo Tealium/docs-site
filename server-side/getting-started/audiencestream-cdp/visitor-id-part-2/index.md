@@ -9,7 +9,7 @@ Since we now that the string attribute, **Email Address**, is working as expecte
 
 To create a visitor ID attribute:
 
-1. Navigate to **Transform &gt; Visitor/Visit Attributes** and click **&#43; Add Attribute**.
+1. Navigate to **Transform > Visitor/Visit Attributes** and click **+ Add Attribute**.
 1. Select the scope of **Visitor** and click **Continue**.
 1. Select the data type **Visitor ID** and click **Continue**.
 1. Enter the name of the attribute, `Email Address`.
@@ -22,6 +22,6 @@ Now you can save and publish your account.
 
 ## Enable visitor stitching
 
-The last and easiest step is to turn on visitor stitching. This feature is not enabled by default. It&#39;s only after you&#39;ve carefully identified, configured, and validated your identity resolution strategy that visitor stitching should be turned on. Contact your account manager to enable this feature in your account.
+The last and easiest step is to turn on visitor stitching. This feature is not enabled by default. It's only after you've carefully identified, configured, and validated your identity resolution strategy that visitor stitching should be turned on. Contact your account manager to enable this feature in your account.
 
 Click **Next** to move on to audiences and learn how to activate your customer data with your preferred vendors.

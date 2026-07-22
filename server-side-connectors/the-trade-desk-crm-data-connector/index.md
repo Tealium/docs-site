@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 
 After adding the connector, configure the following settings:
@@ -69,7 +69,7 @@ Optional Parameters:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Conversion Segment | Enter the Conversion Segment ID, shown as Tracking Tag ID in The Trade Desk UI.&lt;ul&gt;&lt;li&gt;Click **Create Conversion Segment** to create a new conversion segment.&lt;/li&gt;&lt;li&gt;After creation, the segment ID appears in the **Conversion Segment** field.&lt;/li&gt;&lt;li&gt;Before uploading, the conversion segment must be attached to a campaign in The Trade Desk UI. You can’t attribute uploaded data to a campaign until this step is complete.&lt;/li&gt;&lt;/ul&gt; |
+| Conversion Segment | Enter the Conversion Segment ID, shown as Tracking Tag ID in The Trade Desk UI.<ul><li>Click **Create Conversion Segment** to create a new conversion segment.</li><li>After creation, the segment ID appears in the **Conversion Segment** field.</li><li>Before uploading, the conversion segment must be attached to a campaign in The Trade Desk UI. You can’t attribute uploaded data to a campaign until this step is complete.</li></ul> |
 
 #### User Identifier
 
@@ -96,6 +96,6 @@ Optional Parameters:
 | Metro | The numerical metropolitan area geotargeting code where the conversion occurred. |
 | City | The city where the conversion occurred. |
 | Order ID | The unique identifier for a transaction or conversion event. The maximum length is 64 characters. |
-| Privacy Type | Specifies the applicable privacy regulation based on the user&#39;s geographical location (`GDPR`, `GPP`). |
+| Privacy Type | Specifies the applicable privacy regulation based on the user's geographical location (`GDPR`, `GPP`). |
 | Is Applicable | Indicates if the value specified in the privacy type property is applicable. |
-| Consent String | The user&#39;s consent when the privacy regulations are in effect (`TCF` string, `GPP` string). |
+| Consent String | The user's consent when the privacy regulations are in effect (`TCF` string, `GPP` string). |

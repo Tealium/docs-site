@@ -27,29 +27,29 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/sp
 
 拡張機能を追加すると、以下の構成オプションが利用可能になります：
 
-* **宛先クッキー**：出力を受け取るクッキー変数を選択します。クッキー変数がまだ存在しない場合は、右側の**&#43;**ボタンをクリックして作成します。
+* **宛先クッキー**：出力を受け取るクッキー変数を選択します。クッキー変数がまだ存在しない場合は、右側の**+**ボタンをクリックして作成します。
 * **クッキードメイン**：このフィールドを空白のままにしてドメインを自動検出します。
 * **期間**：ドロップダウンメニューから期間を選択します。
     * **セッション**：セグメントクッキーは現在のセッションが終了するまで持続します。
     * **訪問**：クッキーが`utag_main`クッキーに配置されているかどうかによって、その有効期限が決まります。`utag_main`クッキーに配置されていないスプリットセグメンテーションクッキー値の有効期限は2099年です。`utag_main`に配置されたクッキー値は、その有効期限を共有します。したがって、`utag.js`バージョン4.27以降では、その有効期限は1年です。4.27以前のバージョンでは、有効期限は2099年です。
 * **セグメントラベル**：ラベルを入力し、そのセグメントに配置される訪問の割合を選択します。
-    * セグメントを追加するには**&#43;**ボタンをクリックし、削除するには**-**ボタンをクリックします。追加するセグメントの数に関わらず、合計は100％に等しくなければなりません。
+    * セグメントを追加するには**+**ボタンをクリックし、削除するには**-**ボタンをクリックします。追加するセグメントの数に関わらず、合計は100％に等しくなければなりません。
 
 ## 例
 
 この例では、ユーザーをセグメント化するために3つのグループを作成します。グループを区別するために、各グループに固有の値を含む変数`_group`を作成します。グループに応じて異なるアナリティクスタグを実行します。
 
 1. スコープをプリローダーに構成します。
-1. **宛先クッキー**ドロップダウンリストの隣にある**&#43;**ボタンをクリックして新しいクッキー変数を追加します。  
+1. **宛先クッキー**ドロップダウンリストの隣にある**+**ボタンをクリックして新しいクッキー変数を追加します。  
 変数名には`_group`を入力し、**説明**には`スプリットセグメンテーションクッキー`を入力します。
 1. **適用**をクリックし、新しい変数が選択されます。  
-    ![](/images/iq-tag-management/no-title-560i505e1db17cc44218.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/no-title-560i505e1db17cc44218.png)
 1. **クッキードメイン**フィールドは空白のままにして、デフォルトドメインを使用します。
 1. **期間**を**訪問**に構成します。
 1. `グループA`、`グループB`、`グループC`とラベル付けされた3つのグループを作成します。  
-**&#43;**ボタンをクリックして追加のグループを追加します。各グループのラベルは`_group`変数に保存されます。
+**+**ボタンをクリックして追加のグループを追加します。各グループのラベルは`_group`変数に保存されます。
 1. 訪問をこれらのグループに均等に分けるため、それぞれに33％を選択しますが、合計が100％になるようにグループBには34％を選択します。  
-    ![](/images/iq-tag-management/no-title-561ibcf8c96a47cdf8ff.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/no-title-561ibcf8c96a47cdf8ff.png)
 
 ### ロードルールの構成
 
@@ -61,26 +61,26 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/sp
 [
   [
     {
-      &#34;input&#34;: &#34;domain (dom)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "domain (dom)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group A&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group A"
     }
   ],
   [
     {
-      &#34;input&#34;: &#34;page_name (js)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "page_name (js)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group A&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group A"
     }
   ]  
 ]
@@ -92,26 +92,26 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/sp
 [
   [
     {
-      &#34;input&#34;: &#34;domain (dom)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "domain (dom)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group B&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group B"
     }
   ],
   [
     {
-      &#34;input&#34;: &#34;page_name (js)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "page_name (js)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group B&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group B"
     }
   ]  
 ]
@@ -121,26 +121,26 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/sp
 [
   [
     {
-      &#34;input&#34;: &#34;domain (dom)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "domain (dom)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group C&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group C"
     }
   ],
   [
     {
-      &#34;input&#34;: &#34;page_name (js)&#34;,
-      &#34;operator&#34;: &#34;contains&#34;,
-      &#34;filter&#34;: &#34;tealium&#34;
+      "input": "page_name (js)",
+      "operator": "contains",
+      "filter": "tealium"
     },
     {
-      &#34;input&#34;: &#34;_group (cp)&#34;,
-      &#34;operator&#34;: &#34;equals (ignore case)&#34;,
-      &#34;filter&#34;: &#34;Group C&#34;
+      "input": "_group (cp)",
+      "operator": "equals (ignore case)",
+      "filter": "Group C"
     }
   ]  
 ]
@@ -148,6 +148,6 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/sp
 
 これらのロードルールを適切なタグに適用します。この例では、グループAのロードルールはGoogle Analyticsに、グループBのロードルールはSiteCatalystに、グループCのロードルールはIBM Digital Analyticsに適用されます。
 
-![](/images/iq-tag-management/no-title-565i08f4725670c58bec.png)
+![](https://docs.tealium.com/images/iq-tag-management/no-title-565i08f4725670c58bec.png)
 
 グループAの訪問がページに来ると、Google Analyticsが実行されます。グループBの訪問がページに来ると、SiteCatalystが実行されます。グループCの訪問がページに来ると、IBM Digital Analyticsが実行されます。

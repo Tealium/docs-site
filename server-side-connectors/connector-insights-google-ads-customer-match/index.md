@@ -19,13 +19,13 @@ The Google Ads Customer Match insight offers the following information about the
 
 If the number of users is yet to be determined, these values are null.
 
-![](/images/server-side-connectors/connector-insights-google-ads-customer-match.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-google-ads-customer-match.png)
 
 ## Using Connector Insights
 
-To access Connector Insights, go to **Connect &gt; Audience Connectors**, search for the **Google Ads Customer Match (Tealium-Provided Credentials) Connector** connector, and click **Insights**.
+Go to **Connect > Connectors**, find the **Google Ads Customer Match (Tealium-Provided Credentials) Connector**, and select an action. On the action screen, click the **Insights** tab.
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 ## Understanding Google Ads Custom Audiences Insights
 
@@ -43,11 +43,11 @@ The Google Ads Customer Match insight performs a [Google Ads API user_list query
 
 The Job ID summary shows the processing status of your records in the Google Ads platform:
 
-![](/images/server-side-connectors/connector-insights-google-ads-customer-match-offline-user-data-jobs.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-google-ads-customer-match-offline-user-data-jobs.png)
 
 ## Additional Resources
 
 * [About Customer Match - Google Ads Help](https://support.google.com/google-ads/answer/6379332?hl=en)
-* [Customer Match Audience - Display &amp; Video 360 Help](https://support.google.com/displayvideo/answer/9539301)
+* [Customer Match Audience - Display & Video 360 Help](https://support.google.com/displayvideo/answer/9539301)
 * [Google Ads API: user_list](https://developers.google.com/google-ads/api/fields/v14/user_list)
-* [Google Ads Customer Match (Tealium-Provided Credentials) Connector Setup Guide]()
+* [Google Ads Customer Match (Tealium-Provided Credentials) Connector Setup Guide](https://docs.tealium.com/google-ads-customer-match-connector/)

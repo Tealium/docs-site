@@ -5,7 +5,11 @@ url: https://docs.tealium.com/server-side/connectors/batched-actions/
 ---
 Many connectors support batch-based actions. When using batched actions, the system accumulates connector requests into a batch and then calls the vendor once for the entire batch. Using batched actions reduces the load on the vendor system and helps you remain within vendor API rate limits.
 
- Batching is ignored when using [Trace]().
+
+<blockquote>
+Batching is ignored when using [Trace](https://docs.tealium.com/about-trace/).
+</blockquote>
+
 
 Connectors that support batching contain batch-based parameter logic. Requests are queued until one of the following three thresholds is met:
 
@@ -15,7 +19,11 @@ Connectors that support batching contain batch-based parameter logic. Requests a
 
 When the maximum threshold value is reached, the connector sends the batch. These thresholds operate on an OR basis, meaning that any one of them will trigger a batch send.
 
+
+<blockquote>
 When you publish a profile, the connector batch queues are processed regardless of whether the batch limits have been reached.
+</blockquote>
+
 
 ## Batch components
 
@@ -33,13 +41,13 @@ In this example, the Tealium connector has a single batching component. It recei
 
 In this case, the **Maximum requests** parameter would be triggered regularly to send the batched data, because threshold is reached before either of the other two parameters are triggered.
 
-![](/images/server-side/single-component-batching.png)
+![](https://docs.tealium.com/images/server-side/single-component-batching.png)
 
 ### Multiple components
 
 In reality, Tealium connectors have multiple batching components. In this example, there are two batching components with the same incoming flow of data (150 requests per minute). The requests are equally distributed between the two components. Because each component monitors its batch independently, the flow of data into each component is now only 75 requests per minute. This data flow is not high enough to trigger the **Maximum requests** threshold. In this case, the data flow would first trigger the **Maximum time** threshold instead. We still see regular calls to the vendor API, but with each containing only 75 records.
 
-![](/images/server-side/multiple-component-batching.png)
+![](https://docs.tealium.com/images/server-side/multiple-component-batching.png)
 
 In real-world scenarios, there are more than one or two components in a Tealium connector. Tealium scales the number of batching components up and down to meet demand.
 

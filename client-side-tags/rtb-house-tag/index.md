@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/rtb-house-tag/
 ---
 ## Tag tips
 
-* Supports the following [E-Commerce extension]() parameters:
+* Supports the following [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) parameters:
     * Offer ID (`_cprod`)
     * Conversion ID (`_corder`)
     * Conversion Value (`_ctotal`)
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/client-side-tags/rtb-house-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -23,11 +23,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -53,7 +53,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|
@@ -76,5 +76,5 @@ To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappin
 
 Use this category to map parameters only for the selected event.
 
-To map events, refer to [Create an Event Mapping](/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
 

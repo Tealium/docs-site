@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ### はじめに
 
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### カスタマーデータハブ
 
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-product-eventstream.svg)
+![](https://docs.tealium.com/images/icons/icon-product-eventstream.svg)
 
 #### イベントストリームAPIハブ
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-cubes.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
 #### 属性
 
@@ -32,7 +32,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ### データ収集
 
 
-![](/images/icons/icon-arrow-right-into.svg)
+![](https://docs.tealium.com/images/icons/icon-arrow-right-into.svg)
 
 #### データソース
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-product-data-connect.svg)
+![](https://docs.tealium.com/images/icons/icon-product-data-connect.svg)
 
 #### データコネクト
 
@@ -48,7 +48,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-file-arrow-up.svg)
+![](https://docs.tealium.com/images/icons/icon-file-arrow-up.svg)
 
 #### ファイルインポート
 
@@ -56,7 +56,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-cubes-check.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes-check.svg)
 
 #### 仕様
 
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-arrows-merge.svg)
+![](https://docs.tealium.com/images/icons/icon-arrows-merge.svg)
 
 #### フィード
 
@@ -74,7 +74,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ### 統合
 
 
-![](/images/icons/icon-connector.svg)
+![](https://docs.tealium.com/images/icons/icon-connector.svg)
 
 #### コネクタ
 
@@ -82,7 +82,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
-![](/images/icons/icon-code.svg)
+![](https://docs.tealium.com/images/icons/icon-code.svg)
 
 #### Webhooks
 
@@ -92,54 +92,54 @@ Webhookコネクタを使用してカスタム統合を構築します。
 ### 人気のコネクタ
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Ads カスタマーマッチ
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebook コンバージョン
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebook オーディエンス
 
 
 
-![](/images/integrations/linkedin.png)
+![](https://docs.tealium.com/images/integrations/linkedin.png)
 
 LinkedIn マッチドオーディエンス
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google ディスプレイ＆ビデオ360
 
 
 
-![](/images/integrations/tiktok.png)
+![](https://docs.tealium.com/images/integrations/tiktok.png)
 
 TikTok イベント
 
 
 
-![](/images/integrations/pinterest.png)
+![](https://docs.tealium.com/images/integrations/pinterest.png)
 
 Pinterest コンバージョン
 
 
 
-![](/images/integrations/snapchat.svg)
+![](https://docs.tealium.com/images/integrations/snapchat.svg)
 
 Snapchat コンバージョン
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Ads ウェブ向け拡張コンバージョン

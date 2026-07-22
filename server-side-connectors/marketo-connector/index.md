@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/marketo-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
-* **REST API Client ID**: (Required) Provide the client ID found in **Marketo &gt; Admin &gt; LaunchPoint**. The API user must have permissions for **Read-Write Lead**, **Read/Execute Campaigns**, and **Read Lists**. For more information, see [Marketo: Create a Custom Service for Use with ReST API](http://docs.marketo.com/display/public/DOCS/Create&#43;a&#43;Custom&#43;Service&#43;for&#43;Use&#43;with&#43;ReST&#43;API).
-* **REST API Client Secret**: (Required) Provide the client secret found in **Marketo &gt; Admin &gt; LaunchPoint**.
-* **REST API Endpoint URL**: (Required) REST API Endpoint found in **Marketo &gt; Admin &gt; Web Service**. For example, `https://123-ABC-123.mktorest.com/rest`.
-* **REST API Identity URL**: (Required) REST API Identity found in **Marketo &gt; Admin &gt; Web Service**. For example, `https://123-ABC-123.mktorest.com/identity`.
+* **REST API Client ID**: (Required) Provide the client ID found in **Marketo > Admin > LaunchPoint**. The API user must have permissions for **Read-Write Lead**, **Read/Execute Campaigns**, and **Read Lists**. For more information, see [Marketo: Create a Custom Service for Use with ReST API](http://docs.marketo.com/display/public/DOCS/Create+a+Custom+Service+for+Use+with+ReST+API).
+* **REST API Client Secret**: (Required) Provide the client secret found in **Marketo > Admin > LaunchPoint**.
+* **REST API Endpoint URL**: (Required) REST API Endpoint found in **Marketo > Admin > Web Service**. For example, `https://123-ABC-123.mktorest.com/rest`.
+* **REST API Identity URL**: (Required) REST API Identity found in **Marketo > Admin > Web Service**. For example, `https://123-ABC-123.mktorest.com/identity`.
 
 ## Actions
 
@@ -47,7 +47,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300
 * Max time since oldest request: 30 minutes
@@ -77,7 +77,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300
 * Max time since oldest request: 30 minutes
@@ -109,14 +109,14 @@ This action uses batched requests to support high-volume data transfers to the v
 |**Parameter**| **Description**|
 |---| ---|
 | Update Strategy | (Required) Select the update strategy. |
-| Lead Lookup Filter | &lt;ul&gt;&lt;li&gt;(Optional) Select the filter field to look up an existing lead.&lt;/li&gt;&lt;li&gt;The selected lookup filter field must have a value set in the **Lead Data** section.&lt;/li&gt;&lt;/ul&gt; |
+| Lead Lookup Filter | <ul><li>(Optional) Select the filter field to look up an existing lead.</li><li>The selected lookup filter field must have a value set in the **Lead Data** section.</li></ul> |
 | Lead Data to Set | (Required) Map values to lead property names. Date attributes are automatically formatted to ISO 8601 format. |
 
 ### Create or Update a Lead (Batched)
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 300
 * Max time since oldest request: 30 minutes
@@ -127,7 +127,7 @@ This action uses batched requests to support high-volume data transfers to the v
 |**Parameter**| **Description**|
 |---| ---|
 | Update Strategy | (Required) Select the update strategy. |
-| Lead Lookup Filter | &lt;ul&gt;&lt;li&gt;(Optional) Select the filter field to look up an existing lead.&lt;/li&gt;&lt;li&gt;The selected lookup filter field must have a value set in the **Lead Data** section.&lt;/li&gt;&lt;/ul&gt; |
+| Lead Lookup Filter | <ul><li>(Optional) Select the filter field to look up an existing lead.</li><li>The selected lookup filter field must have a value set in the **Lead Data** section.</li></ul> |
 | Lead Data to Set | (Required) Map values to lead property names. Date attributes are automatically formatted to ISO 8601 format. |
 
 ### Merge a Lead
@@ -136,7 +136,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 |**Parameter**| **Description**|
 |---| ---|
-| General Data to Set | (Required) &lt;ul&gt;&lt;li&gt;**Winning Lead ID**: The winning lead.&lt;/li&gt;&lt;li&gt;**Losing Lead ID**: Lead to merge (losing lead).&lt;/li&gt;&lt;/ul&gt; |
+| General Data to Set | (Required) <ul><li>**Winning Lead ID**: The winning lead.</li><li>**Losing Lead ID**: Lead to merge (losing lead).</li></ul> |
 | Merge in CRM | Specify if the merge should also occur in CRM. |
 
 ### Bulk Import Leads (optionally add to list)
@@ -154,5 +154,5 @@ This action uses batched requests to support high-volume data transfers to the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Target Static List | (Required) Select a list. The platform loads a maximum of 300 lists. If the list does not appear, enter the list ID.  |
-| Lead Lookup Field | (Required) Field used for lead lookup.&lt;ul&gt;&lt;li&gt;The selected lookup field must have a value set in **Lead Data** section.&lt;/li&gt;&lt;li&gt;Possible values: `id`, `cookies`, `email`, `twitterId`, `facebookId`, `linkedInId`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerId`, `sfdcOpptyId`.&lt;/li&gt;&lt;/ul&gt; |
+| Lead Lookup Field | (Required) Field used for lead lookup.<ul><li>The selected lookup field must have a value set in **Lead Data** section.</li><li>Possible values: `id`, `cookies`, `email`, `twitterId`, `facebookId`, `linkedInId`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerId`, `sfdcOpptyId`.</li></ul> |
 | Lead Data | (Required) Map values to lead property names. The lookup field must also be mapped. |

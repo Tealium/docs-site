@@ -14,7 +14,7 @@ Visit attributes relate to the current visit (or session) of the user. The data 
 
 ## Visitor Attributes
 
-![](/images/server-side/audiencestream-profile.png)
+![](https://docs.tealium.com/images/server-side/audiencestream-profile.png)
 
 Visitor attributes relate to the current user. The data stored in these attributes persist for the lifetime of the user. Some example visitor attributes would be:
 

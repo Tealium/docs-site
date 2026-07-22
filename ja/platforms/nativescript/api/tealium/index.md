@@ -36,36 +36,36 @@ Tealium.addRemoteCommand(id, callback);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `id` | `String` | タグ構成からのリモートコマンドIDの名前 | `&#34;test_command&#34;` |
+| `id` | `String` | タグ構成からのリモートコマンドIDの名前 | `"test_command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行されるコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```javascript
-Tealium.addRemoteCommand(&#39;mycommand&#39;, (result: any): void =&gt; {
-	console.log(result[&#34;payload&#34;][&#34;command_id&#34;]);            // &#34;mycommand&#34;をログに記録
-	console.log(result[&#34;payload&#34;][&#34;my_remote_command_key&#34;]); // キー&#34;my_remote_command_key&#34;の値をログに記録
+Tealium.addRemoteCommand('mycommand', (result: any): void => {
+	console.log(result["payload"]["command_id"]);            // "mycommand"をログに記録
+	console.log(result["payload"]["my_remote_command_key"]); // キー"my_remote_command_key"の値をログに記録
 });
 ```
 
 ### `addData()`
 
-指定された[有効期限](/ja/platforms/nativescript/api/tealium-config/#expiry)のために永続データ保存にデータを追加します。
+指定された[有効期限](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#expiry)のために永続データ保存にデータを追加します。
 
 ```javascript
 Tealium.addData(data, expiry);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Object` | 文字列のキーと、値が文字列または文字列の配列であるキー値ペアのマップ | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
-| `expiry` | [`Expiry`](/ja/platforms/nativescript/api/tealium-config/#expiry) | データを永続させる時間の長さ | `Expiry.forever` |
+| `data` | `Object` | 文字列のキーと、値が文字列または文字列の配列であるキー値ペアのマップ | `{"persistent_key2" : "persistent_val2"}` |
+| `expiry` | [`Expiry`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#expiry) | データを永続させる時間の長さ | `Expiry.forever` |
 
 例:
 
 ```javascript
-let data: Map&lt;string, any&gt; = new Map([[&#39;test_session_data&#39;, &#39;test&#39;]]);
-data.set(&#39;my_test_value&#39;, 1);
-data[&#39;my_test_value&#39;] = 1;
+let data: Map<string, any> = new Map([['test_session_data', 'test']]);
+data.set('my_test_value', 1);
+data['my_test_value'] = 1;
 Tealium.addData(data, Expiry.session);
 ```
 
@@ -166,10 +166,10 @@ let data = Tealium.getData(key);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `key` | `String` | 取得するデータのキー | `&#34;KEY&#34;` |
+| `key` | `String` | 取得するデータのキー | `"KEY"` |
 
 ```javascript
-let data: Tealium.getData(&#34;KEY&#34;)
+let data: Tealium.getData("KEY")
 ```
 
 ### `initialize()`
@@ -182,15 +182,15 @@ Tealium.initialize(config);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `config` | [`TealiumConfig`](/ja/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealiumの構成パラメータ | (例を参照) |
+| `config` | [`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealiumの構成パラメータ | (例を参照) |
 
 例:
 
 ```javascript
 let config: TealiumConfig =
 {
-	account: &#39;ACCOUNT&#39;,
-	profile: &#39;PROFILE&#39;,
+	account: 'ACCOUNT',
+	profile: 'PROFILE',
 	environment: TealiumEnvironment.dev,
 	dispatchers: [Dispatchers.Collect,
 	 			  Dispatchers.TagManagement,
@@ -209,7 +209,7 @@ Tealium.initialize(config);
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。Tealium Customer Data Hubの[Trace]()機能について詳しくはこちらをご覧ください。
+指定されたIDでトレースに参加します。Tealium Customer Data Hubの[Trace](https://docs.tealium.com/manage-traces/)機能について詳しくはこちらをご覧ください。
 
 ```javascript
 Tealium.joinTrace(id);
@@ -222,7 +222,7 @@ Tealium.joinTrace(id);
 例:
 
 ```javascript
-Tealium.joinTrace(&#34;abc123xy&#34;);
+Tealium.joinTrace("abc123xy");
 ```
 
 ### `leaveTrace()`
@@ -243,12 +243,12 @@ Tealium.removeData(keys);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `keys` | `String[]` | キー名の配列  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `String[]` | キー名の配列  | `["foo", "bar"]` |
 
 例:
 
 ```javascript
-Tealium.removeData([&#34;foo&#34;, &#34;bar&#34;]);
+Tealium.removeData(["foo", "bar"]);
 ```
 
 ### `gatherTrackData()`
@@ -256,7 +256,7 @@ Tealium.removeData([&#34;foo&#34;, &#34;bar&#34;]);
 
 例:
 ```javascript
-Tealium.gatherTrackData((response: Map&lt;string, any&gt;): void =&gt; {				
+Tealium.gatherTrackData((response: Map<string, any>): void => {				
 	console.log(response);
 });
 ```
@@ -270,18 +270,18 @@ Tealium.removeRemoteCommand(id);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `id` | `String` | 削除するコマンドIDの名前 | `&#34;test_command&#34;` |
+| `id` | `String` | 削除するコマンドIDの名前 | `"test_command"` |
 
 例:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;test_command&#34;);
+Tealium.removeRemoteCommand("test_command");
 ```
 
 ### `setVisitorServiceListener()`
-訪問プロファイルが更新されたときに実行するコールバックを定義します。更新された[`VisitorProfile`](/ja/platforms/nativescript/api/tealium-config/#visitorprofile)はコールバックレスポンスで提供されます。
+訪問プロファイルが更新されたときに実行するコールバックを定義します。更新された[`VisitorProfile`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#visitorprofile)はコールバックレスポンスで提供されます。
 
-VisitorServiceモジュールはTealium Customer Data Hubの[Data Layer Enrichment]()機能を実装しています。
+VisitorServiceモジュールはTealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
 
 このモジュールの使用は、Tealium AudienceStreamのライセンスを持っていて、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスがない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
@@ -296,9 +296,9 @@ Tealium.setVisitorServiceListener(callback);
 次の例では、訪問のオーディエンスとバッジをコンソールにログします：
 
 ```javascript
-Tealium.setVisitorServiceListener(profile =&gt; {
-    console.log(profile[&#34;audiences&#34;]);
-    console.log(profile[&#34;badges&#34;]);
+Tealium.setVisitorServiceListener(profile => {
+    console.log(profile["audiences"]);
+    console.log(profile["badges"]);
 });
 ```
 
@@ -320,18 +320,18 @@ tealium?.track(tealEvent)
 
 | パラメータ | 型  | 説明 | 
 |:-----------|:------|:------------|
-| `tealEvent` | string | [TealiumDispatch](/ja/platforms/nativescript/api/tealium-config/#dispatchers) で、イベント名を `tealium_event` 属性として渡し、オプショナルなイベントデータオブジェクトを含みます。 |
+| `tealEvent` | string | [TealiumDispatch](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#dispatchers) で、イベント名を `tealium_event` 属性として渡し、オプショナルなイベントデータオブジェクトを含みます。 |
 
 イベントを追跡するには、`track()` メソッドに [`TealiumEvent`](#class-tealiumevent) のインスタンスを渡します：
 
 ```javascript
 let tealEvent = new TealiumEvent(
-	&#34;cart_add&#34;, 
+	"cart_add", 
 	new Map([
 		[
-			&#34;customer_id&#34;: &#34;abc123&#34;, 
-			&#34;product_id&#34;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#34;product_price&#34;: [4.00, 6.00]
+			"customer_id": "abc123", 
+			"product_id": ["PROD123", "PROD456"], 
+			"product_price": [4.00, 6.00]
 		]
 	])
 );
@@ -362,18 +362,18 @@ Tealium.track(tealEvent);
 | パラメータ  | 型    | 説明      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent` | `string` | イベント名で、`tealium_event` 属性として渡されます。 |
-| `eventData` | `&lt;string, object&gt;` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
+| `eventData` | `<string, object>` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
 
 例:
 
 ```javascript
 let tealEvent = new TealiumEvent(
-	&#34;cart_add&#34;, 
+	"cart_add", 
 	new Map([
 		[
-			&#34;customer_id&#34;: &#34;abc123&#34;, 
-			&#34;product_id&#34;: [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#34;product_price&#34;: [4.00, 6.00]
+			"customer_id": "abc123", 
+			"product_id": ["PROD123", "PROD456"], 
+			"product_price": [4.00, 6.00]
 		]
 	])
 );
@@ -392,19 +392,19 @@ Tealium.track(screenView);
 | パラメータ  | 型    | 説明      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent`  | `string`| イベント名で、`tealium_event` 属性として渡されます。          | 
-| `eventData` | `Dictionary&lt;string, object&gt;` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
+| `eventData` | `Dictionary<string, object>` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
 
 例:
 
 ```javascript
 let screenView = new TealiumView(
-	&#39;purchase&#39;, 
+	'purchase', 
 	new Map([
 		[
-			&#39;customer_id&#39;, &#39;abc123&#39;, 
-			&#39;order_total&#39;, 10.00, 
-			&#39;product_id&#39;, [&#34;PROD123&#34;, &#34;PROD456&#34;], 
-			&#39;order_id&#39;: &#34;0123456789&#34;
+			'customer_id', 'abc123', 
+			'order_total', 10.00, 
+			'product_id', ["PROD123", "PROD456"], 
+			'order_id': "0123456789"
 		]
 	])
 );

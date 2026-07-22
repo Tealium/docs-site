@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/dialogone-connector/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -27,11 +27,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/dialogone-connector/
 
 | **パラメータ** | **説明**                                                                                                                                                                                                                                                                                                         |
 |:--------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ドメイン        | &lt;ul&gt;&lt;li&gt;使用中の環境に基づくドメイン値:  &lt;ul&gt;&lt;li&gt;本番: `secure-ip-api.dialogone.jp`&lt;/li&gt;&lt;li&gt;ステージング: `secure-ip-apistg.dialogone.jp`&lt;/li&gt;&lt;li&gt;開発: `secure-ip-apidev.dialogone.jp`&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;APIドキュメンテーションへのアクセスについては、DialogOneのアカウントマネージャーにお問い合わせください。&lt;/li&gt;&lt;/ul&gt; |
-| アカウントID    | &lt;ul&gt;&lt;li&gt;LINEビジネスアカウントのアカウントID。&lt;/li&gt;&lt;li&gt;通常は16桁の英数字の値。&lt;/li&gt;&lt;li&gt;追加のヘルプが必要な場合は、DialogOneのアカウントマネージャーにお問い合わせください。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                          |
-| ユーザーID       | &lt;ul&gt;&lt;li&gt;TiQ DialogOne User Matchタグから取得したユーザーID。&lt;/li&gt;&lt;li&gt;これはメッセージを受け取るユーザーのIDです。&lt;/li&gt;&lt;li&gt;追加のヘルプが必要な場合は、DialogOneのアカウントマネージャーにお問い合わせください。&lt;/li&gt;&lt;/ul&gt;                                                                                                  |
-| コンテンツID 1  | &lt;ul&gt;&lt;li&gt;DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。&lt;/li&gt;&lt;li&gt;これはユーザーが受け取るコンテンツです。&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                                    |
-| コンテンツID 2  | &lt;ul&gt;&lt;li&gt;DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。&lt;/li&gt;&lt;li&gt;これはユーザーが受け取るコンテンツです。&lt;/li&gt;&lt;li&gt;1つのリクエストには最大5つのコンテンツIDを含めることができます。&lt;/li&gt;&lt;li&gt;コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。&lt;/li&gt;&lt;/ul&gt;                                       |
-| コンテンツID 3  | &lt;ul&gt;&lt;li&gt;DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。&lt;/li&gt;&lt;li&gt;これはユーザーが受け取るコンテンツです。&lt;/li&gt;&lt;li&gt;1つのリクエストには最大5つのコンテンツIDを含めることができます。&lt;/li&gt;&lt;li&gt;コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。&lt;/li&gt;&lt;/ul&gt;                                       |
-| コンテンツID 4  | &lt;ul&gt;&lt;li&gt;DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。&lt;/li&gt;&lt;li&gt;これはユーザーが受け取るコンテンツです。&lt;/li&gt;&lt;li&gt;1つのリクエストには最大5つのコンテンツIDを含めることができます。&lt;/li&gt;&lt;li&gt;コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。&lt;/li&gt;&lt;/ul&gt;                                       |
-| コンテンツID 5  | &lt;ul&gt;&lt;li&gt;DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。&lt;/li&gt;&lt;li&gt;これはユーザーが受け取るコンテンツです。&lt;/li&gt;&lt;li&gt;1つのリクエストには最大5つのコンテンツIDを含めることができます。&lt;/li&gt;&lt;li&gt;コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。&lt;/li&gt;&lt;/ul&gt;                                       |
+| ドメイン        | <ul><li>使用中の環境に基づくドメイン値:  <ul><li>本番: `secure-ip-api.dialogone.jp`</li><li>ステージング: `secure-ip-apistg.dialogone.jp`</li><li>開発: `secure-ip-apidev.dialogone.jp`</li></ul> </li><li>APIドキュメンテーションへのアクセスについては、DialogOneのアカウントマネージャーにお問い合わせください。</li></ul> |
+| アカウントID    | <ul><li>LINEビジネスアカウントのアカウントID。</li><li>通常は16桁の英数字の値。</li><li>追加のヘルプが必要な場合は、DialogOneのアカウントマネージャーにお問い合わせください。</li></ul>                                                                                                                                          |
+| ユーザーID       | <ul><li>TiQ DialogOne User Matchタグから取得したユーザーID。</li><li>これはメッセージを受け取るユーザーのIDです。</li><li>追加のヘルプが必要な場合は、DialogOneのアカウントマネージャーにお問い合わせください。</li></ul>                                                                                                  |
+| コンテンツID 1  | <ul><li>DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。</li><li>これはユーザーが受け取るコンテンツです。</li></ul>                                                                                                                                                                    |
+| コンテンツID 2  | <ul><li>DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。</li><li>これはユーザーが受け取るコンテンツです。</li><li>1つのリクエストには最大5つのコンテンツIDを含めることができます。</li><li>コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。</li></ul>                                       |
+| コンテンツID 3  | <ul><li>DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。</li><li>これはユーザーが受け取るコンテンツです。</li><li>1つのリクエストには最大5つのコンテンツIDを含めることができます。</li><li>コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。</li></ul>                                       |
+| コンテンツID 4  | <ul><li>DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。</li><li>これはユーザーが受け取るコンテンツです。</li><li>1つのリクエストには最大5つのコンテンツIDを含めることができます。</li><li>コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。</li></ul>                                       |
+| コンテンツID 5  | <ul><li>DialogOneプラットフォームで構成されたメッセージに関連するコンテンツID。</li><li>これはユーザーが受け取るコンテンツです。</li><li>1つのリクエストには最大5つのコンテンツIDを含めることができます。</li><li>コンテンツを追加するときは、コンテンツID `2`をコンテンツID `5`に構成します。</li></ul>                                       |

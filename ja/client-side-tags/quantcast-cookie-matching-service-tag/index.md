@@ -3,7 +3,11 @@ title: Quantcast Cookie Matching Serviceタグ構成ガイド
 description: この記事では、Tealium iQタグ管理アカウントでQuantcast Cookie Matching Serviceタグを構成する方法について説明します。このタグは、[Quantcast Audiences]({{< relref "quantcast-audiences-connector" >}})コネクタで使用するQuantcast IDを生成するために使用されます。
 url: https://docs.tealium.com/ja/client-side-tags/quantcast-cookie-matching-service-tag/
 ---
- このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成]()を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、[utag 4.50リリースノート]()と[utag 4.50&#43;へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+
+<blockquote>
+このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)と[utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+</blockquote>
+
 
 Quantcast Cookie Matching Serviceは、Tealiumの匿名IDクッキーとQuantcastの訪問IDを関連付けます。
 
@@ -15,7 +19,7 @@ Quantcast Cookie Matching Serviceは、Tealiumの匿名IDクッキーとQuantcas
 
 ## タグ構成
 
-まず、タグマーケットプレイスに移動し、Quantcast Cookie Matching Serviceタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、タグマーケットプレイスに移動し、Quantcast Cookie Matching Serviceタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加した後、以下の構成を行います：
 
@@ -25,7 +29,7 @@ Quantcast Cookie Matching Serviceは、Tealiumの匿名IDクッキーとQuantcas
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -41,7 +45,7 @@ Quantcast Cookie Matching Serviceは、Tealiumの匿名IDクッキーとQuantcas
 
 このタグは、`quantcast_id`という名前のイベント属性を持つ各訪問に対して、セッションごとにサーバーサイドイベントを送信します。この属性を使用して、Quantcast Audiencesコネクタで使用する同じ名前の訪問属性を作成します。
 
-![](/images/client-side-tags/quantcast-id-attribute.png)
+![](https://docs.tealium.com/images/client-side-tags/quantcast-id-attribute.png)
 
 AudienceStreamでQuantcast IDを構成するには：
 

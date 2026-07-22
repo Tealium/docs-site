@@ -2,7 +2,7 @@
 title: APIリファレンス
 description: Tealium for Rokuで提供されているクラスとメソッドに関するリファレンスガイド。
 url: https://docs.tealium.com/ja/platforms/roku/api/
----以下では、Tealium for Rokuライブラリで提供されている関数を示します。Roku用アプリは、強力なスクリプト言語であるBrightScriptで作成されています。BrightScriptの詳細については、[こちら](https://sdkdocs.roku.com/display/sdkdoc/BrightScript&#43;Language&#43;Reference)を参照してください。
+---以下では、Tealium for Rokuライブラリで提供されている関数を示します。Roku用アプリは、強力なスクリプト言語であるBrightScriptで作成されています。BrightScriptの詳細については、[こちら](https://sdkdocs.roku.com/display/sdkdoc/BrightScript+Language+Reference)を参照してください。
 
 ## クラス：`TealiumBuilder`
 
@@ -25,7 +25,7 @@ SetDatasource(datasource)
 
 | パラメータ | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `datasource` | `String` | データソースキー| &#34;def456&#34;|
+| `datasource` | `String` | データソースキー| "def456"|
 
 
 ### `SetEnvironment()`
@@ -38,7 +38,7 @@ SetEnvironment(environment)
 
 | パラメータ | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `environment` | `String` | Tealium環境の名前| [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`]|
+| `environment` | `String` | Tealium環境の名前| [`"dev"`, `"qa"`, `"prod"`]|
 
 ### `SetLogLevel()`
 
@@ -63,8 +63,8 @@ TealiumBuilder(account, profile, logLevel)
 
 | パラメータ | 型| 説明| 例|
 | --- | ---| --- | --- |
-| `account` | `String` | Tealiumアカウントの名前| `&#34;account123&#34;` |
-| `profile` | `String` | Tealiumプロファイルの名前（デフォルト：`&#34;main&#34;`）| `&#34;main&#34;` |
+| `account` | `String` | Tealiumアカウントの名前| `"account123"` |
+| `profile` | `String` | Tealiumプロファイルの名前（デフォルト：`"main"`）| `"main"` |
 | `logLevel` | `String` | ログレベル| `1` |
 
 
@@ -87,7 +87,7 @@ ToStr()
 
 | 戻り値 | 戻り値の型| 例|
 | --- | ---| --- |
-| Readable String containing the configuration details of the current Tealium instance | `String` | `&#34;Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV&#34;` |
+| Readable String containing the configuration details of the current Tealium instance | `String` | `"Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV"` |
 
 
 ### `TrackEvent()`
@@ -103,7 +103,7 @@ trackEvent(eventType, eventName, data, callback)
 | `eventType` | `String` | Tealiumのイベントの種類（アクティビティ、コンバージョン、インタラクション、ビュー）|
 | `eventName` | `String` | イベントの名前（Tealium Customer Data Hubの`event_name`属性になります）|
 | `data` | `Object` | コンテクスチュアルイベントデータである、キーと値のペアを含む`roAssociativeArray`オブジェクト|
-| `callback` | `Object` | `roEvent`引数を受け取る&#34;callback&#34;という名前の関数プロパティを持つオブジェクト。このコールバック関数は、TrackEventコールの完了時にトリガーされます。|
+| `callback` | `Object` | `roEvent`引数を受け取る"callback"という名前の関数プロパティを持つオブジェクト。このコールバック関数は、TrackEventコールの完了時にトリガーされます。|
 
 コールバック関数は、以下を含む複数の目的で使用されます。
 

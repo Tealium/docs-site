@@ -10,13 +10,13 @@ url: https://docs.tealium.com/ja/client-side-tags/acton-tag/
 ## サンプルコードスニペット
 
 ```javascript
-&lt;script type=&#34;text/javascript&#34;&gt;
-    /* &lt;![CDATA[ */
+<script type="text/javascript">
+    /* <![CDATA[ */
     document.write (
-        &#39;&lt;img src=&#34;http://www.tealium.com/acton/bn/1234/visitor.gif?ts=&#39;&#43;new Date().getTime()&#43;&#39;&amp;ref=&#39;&#43;escape(document.referrer) &#43; &#39;&#34;&gt;&#39;
+        '<img src="http://www.tealium.com/acton/bn/1234/visitor.gif?ts='+new Date().getTime()+'&ref='+escape(document.referrer) + '">'
     );
-    /* ]]&gt; */
- &lt;/script&gt; 
+    /* ]]> */
+ </script> 
 ```
 
 ## Tealium iQ構成

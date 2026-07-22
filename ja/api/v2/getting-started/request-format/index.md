@@ -3,7 +3,11 @@ title: Tealium APIのリクエスト形式
 description: この記事では、Tealium APIのリクエスト形式について説明します。
 url: https://docs.tealium.com/ja/api/v2/getting-started/request-format/
 ---
-[以前のv1 API]()はまだ利用可能ですが、最終的には廃止される予定です。
+
+<blockquote>
+[以前のv1 API](https://docs.tealium.com/request-format-v1/)はまだ利用可能ですが、最終的には廃止される予定です。
+</blockquote>
+
 
 ## ルートURL
 

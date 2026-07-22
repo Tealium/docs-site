@@ -11,14 +11,14 @@ This feature requires the following:
 
 ## Supported vendors
 
-The configuration for cloud data sources is nearly the same for every vendor. For an overview, see .
+The configuration for cloud data sources is nearly the same for every vendor. For an overview, see [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/).
 
 For vendor-specific configuration details, see the following:
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/)
+* [Snowflake](https://docs.tealium.com/about-snowflake-cloud-data-source/)
 
 ## How it works
 
@@ -37,19 +37,23 @@ A cloud data source connects your cloud data warehouse or database to Tealium, s
 
 Each imported row is processed as an event in Tealium, which lets you bring in bulk data from your cloud systems and use it alongside other event data for real-time processing, segmentation, and activation.
 
+
+<blockquote>
 A maximum of 10 cloud data warehouse data sources per profile can be enabled at a time.
+</blockquote>
+
 
 ## Event processing
 
 Each imported row is processed as an event with columns mapped to event attributes. Columns not mapped to an event attribute are ignored. 
 
-In the default Tealium [data collection order of operations](), events from a cloud data source are processed before the **Event received** step and do not change the order of operations.
+In the default Tealium [data collection order of operations](https://docs.tealium.com/server-side-order-of-operations/), events from a cloud data source are processed before the **Event received** step and do not change the order of operations.
 
 Cloud data source rows are processed in EventStream and AudienceStream in the same way as events from other data sources, but with the following important exceptions:
 
 * **Browser-specific attributes**: Browser-specific attributes, such as `User agent`, are not set.
 * **Enrichments**: AudienceStream enriches only the `First visit` preloaded attribute. All other enrichments for preloaded attributes are skipped.
-* **Single-page visits**: Incoming events are exempt from the single-page visit  criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information, see [How are single-page visits processed in AudienceStream?]()
+* **Single-page visits**: Incoming events are exempt from the single-page visit  criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information, see [How are single-page visits processed in AudienceStream?](https://docs.tealium.com/single-event-visitor/)
 * **Visit length**: A visit started by a cloud data source event lasts for 60 seconds.
 * **Visitor ID mapping**: If you map an AudienceStream visitor ID attribute in your cloud data source configuration, the visitor ID is set directly to the value of the column you choose without the need for an enrichment.
 
@@ -68,7 +72,11 @@ Select how often to import data:
 | **Daily**          | Runs once per day at the hour of the day you set (UTC).                |
 | **Weekly**         | Runs once per week at the day and hour you set (UTC).          |
 
+
+<blockquote>
 Fetching data with high frequency (near real-time or hourly) may lead to increased costs and system strain in your data warehouse.
+</blockquote>
+
 
 ### Batch size
 
@@ -91,7 +99,7 @@ This behavior is important to consider when selecting a [query mode](#query-mode
 
 ### Rate limits
 
-Imports from cloud data sources are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see [About attributes &gt; Size limits]().
+Imports from cloud data sources are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see [About attributes > Size limits](https://docs.tealium.com/about-attributes/#size-limits).
 
 ## Query configurations
 
@@ -115,16 +123,16 @@ The cloud data source supports all data types. In general, use the following dat
 
 For more vendor-specific data types, see:
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#data-types)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#data-types)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#data-types)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#data-types)
 
 ### Query modes
 
 The cloud data source supports the following three query modes to control how data is imported from your table or view:
 
-* Timestamp &#43; Incrementing
+* Timestamp + Incrementing
 * Timestamp
 * Incrementing
 
@@ -145,14 +153,14 @@ A numeric column that increments in value for every row added. A recommended def
 
 For vendor-specific requirements, see:
 
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#query-configurations)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#query-configurations)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#query-configurations)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#query-configurations)
 
 Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see [Query mode batch processing behavior](#query-mode-batch-processing-behavior).
 
-#### Timestamp &#43; Incrementing (Recommended)
+#### Timestamp + Incrementing (Recommended)
 
 This mode uses both a timestamp column and an incrementing column to import new or modified rows.
 
@@ -184,7 +192,7 @@ Each query mode determines what boundary values the system records at the end of
 
 | Query mode | Values recorded at batch boundary |
 |---|---|
-| Timestamp &#43; Incrementing | Last timestamp value and last increment value |
+| Timestamp + Incrementing | Last timestamp value and last increment value |
 | Timestamp | Last timestamp value only |
 | Incrementing | Last increment value only |
 
@@ -205,15 +213,15 @@ In the following table, `modification_time` is the timestamp column, `customer_i
 
 After processing Batch A (rows 1-1000), the system records the maximum values found depending on the selected query mode. The next batch uses these values to determine which rows to fetch.
 
-#### Timestamp &#43; Incrementing
+#### Timestamp + Incrementing
 
-Using the Timestamp &#43; Incrementing mode successfully processes all rows with the following SQL queries:
+Using the Timestamp + Incrementing mode successfully processes all rows with the following SQL queries:
 
 **Batch A** query:
 
 ```sql
 SELECT * FROM customers
-WHERE modification_time &lt; NOW()
+WHERE modification_time < NOW()
 ORDER BY modification_time, customer_id ASC
 LIMIT 1000
 ```
@@ -227,9 +235,9 @@ After Batch A finishes processing, the system records:
 
 ```sql
 SELECT * FROM customers
-WHERE modification_time &lt; NOW()
-AND ((modification_time = &#39;01Apr 13:00&#39; AND customer_id &gt; 1000)
-OR modification_time &gt; &#39;01Apr 13:00&#39;)
+WHERE modification_time < NOW()
+AND ((modification_time = '01Apr 13:00' AND customer_id > 1000)
+OR modification_time > '01Apr 13:00')
 ORDER BY modification_time, customer_id ASC
 LIMIT 1000
 ```
@@ -256,7 +264,7 @@ After Batch A finishes processing, the system records:
 
 ```sql
 SELECT * FROM customers
-WHERE customer_id &gt; 1000
+WHERE customer_id > 1000
 ORDER BY customer_id ASC
 LIMIT 1000
 ```
@@ -271,7 +279,7 @@ Using the Timestamp mode results in missing rows.
 
 ```sql
 SELECT * FROM customers
-WHERE modification_time &lt; NOW()
+WHERE modification_time < NOW()
 ORDER BY modification_time ASC
 LIMIT 1000
 ```
@@ -284,14 +292,18 @@ After Batch A finishes processing, the system records:
 
 ```sql
 SELECT * FROM customers
-WHERE modification_time &gt; &#39;01Apr 13:00&#39;
+WHERE modification_time > '01Apr 13:00'
 ORDER BY modification_time ASC
 LIMIT 1000
 ```
 
 The system skips row 1001 because it has the same timestamp value as the previous batch boundary. Only row 1002 is imported.
 
- When thousands of records share the same timestamp at a batch boundary, entire batches can be skipped. Records sharing the same timestamp is a common problem for bulk imports into the source data warehouse where many records are inserted or updated simultaneously. 
+
+<blockquote>
+When thousands of records share the same timestamp at a batch boundary, entire batches can be skipped. Records sharing the same timestamp is a common problem for bulk imports into the source data warehouse where many records are inserted or updated simultaneously.
+</blockquote>
+
 
 ## Column mapping
 
@@ -302,10 +314,10 @@ Column names are often different from the attribute names in your Tealium accoun
 For information about mapping cloud data types to Tealium data types, see the [Data Types](#data-types) section.
 
 For vendor-specific data types, see the following:
-* [Amazon Redshift]()
-* [Databricks]()
-* [Google BigQuery]()
-* [Snowflake]()
+* [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/#data-types)
+* [Databricks](https://docs.tealium.com/databricks-cloud-data-source/#data-types)
+* [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/#data-types)
+* [Snowflake](https://docs.tealium.com/snowflake-cloud-data-source/#data-types)
 
 ## Visitor ID mapping
 
@@ -313,7 +325,7 @@ To ensure your imported data is stitched with other sources, such as web, mobile
 
 Map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
 
-For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources]().
+For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources](https://docs.tealium.com/visitor-identification-data-sources/).
 
 ## IP addresses to allow
 

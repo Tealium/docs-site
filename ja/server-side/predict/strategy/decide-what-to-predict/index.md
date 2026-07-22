@@ -32,7 +32,11 @@ url: https://docs.tealium.com/ja/server-side/predict/strategy/decide-what-to-pre
   * 訪問日または購入日に基づく属性。これらの属性はトレーニング期間外で値が繰り返されません。
   * 一回限りのキャンペーンランディングパラメーターなど、トレーニング期間外で値が繰り返されない他の情報に基づく属性。
 
+
+<blockquote>
 ターゲット属性は自動的に除外され、手動で除外属性として追加する必要はありません。
+</blockquote>
+
 
 ## 出力属性
 

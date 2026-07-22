@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |変数| 説明| 例| タイプ|
 |---| ---| ---| ---|
-|`avg_room_rate`| 各部屋の平均料金の配列| `[&#34;100.25&#34;]`| 配列|
+|`avg_room_rate`| 各部屋の平均料金の配列| `["100.25"]`| 配列|
 |`cancellation_id`| 予約がキャンセルされた際のID| `12254875`| 文字列|
 |`check_in`| 利用者の到着日| `02/18/2017`| 文字列|
 |`check_out`| 利用者の出発日| `02/24/2017`| 文字列|
@@ -21,20 +21,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`customer_postal_code`| 予約者の郵便番号| `92121`| 文字列|
 |`customer_state`| 予約者の州| `CA`| 文字列|
 |`days_till_checkin`| 今日からチェックインまでの日数| `45`| 文字列|
-|`displayed_properties`| ホテル選択ページに表示される全ての物件のIDの配列| `[&#34;345&#34;,&#34;4567&#34;]`| 配列|
+|`displayed_properties`| ホテル選択ページに表示される全ての物件のIDの配列| `["345","4567"]`| 配列|
 |`displayed_rate_amount`| 部屋選択ページに表示される料金| `150.00`| 文字列|
-|`displayed_rate_amounts`| ホテル選択ページに表示される各物件の料金の配列| `[&#34;100.25&#34;,&#34;150.00&#34;,&#34;340.00&#34;]`| 配列|
-|`displayed_rate_codes`| ホテル選択ページに表示される各物件の料金コードの配列| `[&#34;economy&#34;,&#34;economy&#34;,&#34;luxury&#34;]`| 配列|
-|`displayed_room_rates`| 部屋選択ページに表示される部屋タイプごとの料金の配列| `[&#34;340.00&#34;,&#34;500.00&#34;,&#34;650.00&#34;]`| 配列|
-|`displayed_room_types`| 部屋選択ページに表示される部屋タイプの配列| `[&#34;2 Queen Beds&#34;,&#34;Ocean View&#34;,&#34;Ocean Front&#34;]`| 配列|
+|`displayed_rate_amounts`| ホテル選択ページに表示される各物件の料金の配列| `["100.25","150.00","340.00"]`| 配列|
+|`displayed_rate_codes`| ホテル選択ページに表示される各物件の料金コードの配列| `["economy","economy","luxury"]`| 配列|
+|`displayed_room_rates`| 部屋選択ページに表示される部屋タイプごとの料金の配列| `["340.00","500.00","650.00"]`| 配列|
+|`displayed_room_types`| 部屋選択ページに表示される部屋タイプの配列| `["2 Queen Beds","Ocean View","Ocean Front"]`| 配列|
 |`error_message`| ユーザーに表示されるエラーメッセージ| `Room no longer available`| 文字列|
 |`favorite_property_id`| 「お気に入り」として登録された物件ID| `123`| 文字列|
-|`filter_amenities`| 適用された選択肢の配列| `[&#34;pool&#34;,&#34;microwave&#34;]`| 配列|
+|`filter_amenities`| 適用された選択肢の配列| `["pool","microwave"]`| 配列|
 |`filter_distance`| イベントからのフィルター距離| `20`| 文字列|
-|`filter_hotel_type`| ユーザーによってフィルターされたホテルタイプの配列| `[&#34;economy&#34;,&#34;luxury&#34;]`| 配列|
+|`filter_hotel_type`| ユーザーによってフィルターされたホテルタイプの配列| `["economy","luxury"]`| 配列|
 |`filter_max_rate`| 適用された料金| `150`| 文字列|
 |`filter_rate_change`| フィルター変更| `AAA to 20% Off`| 文字列|
-|`filter_ta_rating`| ユーザーによってフィルターされたトラベルアドバイザーの評価の配列| `[&#34;3&#34;,&#34;4&#34;,&#34;5&#34;]`| 配列|
+|`filter_ta_rating`| ユーザーによってフィルターされたトラベルアドバイザーの評価の配列| `["3","4","5"]`| 配列|
 |`language_code`| 言語コード| `us`| 文字列|
 |`link_category`| クリック追跡イベント中、クリックされた要素のカテゴリ| `Navigation`| 文字列|
 |`link_name`| クリック追跡イベント中、クリックされた要素の名前| `properties`| 文字列|
@@ -47,20 +47,20 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`num_of_children`| 子供の総数| `3`| 文字列|
 |`num_of_nights`| 宿泊数| `5`| 文字列|
 |`num_of_rooms`| 部屋数| `1`| 文字列|
-|`occupancy_detail`| 検索された各部屋の総宿泊人数の配列| `[&#34;4&#34;,&#34;2&#34;]`| 配列|
-|`order_cancellation_policy`| 注文ごとの各部屋のキャンセルポリシーの配列| `[&#34;24hours&#34;,&#34;5days&#34;]`| 配列|
+|`occupancy_detail`| 検索された各部屋の総宿泊人数の配列| `["4","2"]`| 配列|
+|`order_cancellation_policy`| 注文ごとの各部屋のキャンセルポリシーの配列| `["24hours","5days"]`| 配列|
 |`order_corp_id`| 注文に添付された企業ID（ある場合）| `987646`| 文字列|
 |`order_discount_amount`| 注文レベルの割引額| `100.00`| 文字列|
 |`order_iata`| 注文に添付された国際航空運送協会番号（旅行代理店番号）| `646879`| 文字列|
 |`order_id`| 注文の一意のID、注文確認ページでのみ入力| `1234`| 文字列|
 |`order_payment_method`| 支払い方法| `visa`| 文字列|
 |`order_payment_type`| 標準収入またはポイント| `revenue`| 文字列|
-|`order_points_used`| 注文の各部屋の総ポイント数の配列| `[&#34;1000&#34;,&#34;5000&#34;]`| 配列|
+|`order_points_used`| 注文の各部屋の総ポイント数の配列| `["1000","5000"]`| 配列|
 |`order_postal_code`| 予約された物件の郵便番号| `00267`| 文字列|
 |`order_promo_code`| 注文に添付されたプロモーションコード（ある場合）| `SALE`| 文字列|
-|`order_rate_code`| 注文の各部屋に予約された料金コードの配列| `[&#34;AAA&#34;,&#34;&#34;]`| 配列|
-|`order_room_occupancy`| 注文の各部屋の総宿泊人数の配列| `[&#34;5&#34;,&#34;2&#34;]`| 配列|
-|`order_room_type`| 注文の各部屋に予約された部屋タイプの配列| `[&#34;double&#34;,&#34;ocean view&#34;]`| 配列|
+|`order_rate_code`| 注文の各部屋に予約された料金コードの配列| `["AAA",""]`| 配列|
+|`order_room_occupancy`| 注文の各部屋の総宿泊人数の配列| `["5","2"]`| 配列|
+|`order_room_type`| 注文の各部屋に予約された部屋タイプの配列| `["double","ocean view"]`| 配列|
 |`order_special_requests`| レビュー＆予約ページの「特別リクエスト」欄に入力されたフリーテキスト（部屋ごと）| `No Feathers`| 文字列|
 |`order_subtotal`| 商品または注文レベルの割引を含む総小計（税金や手数料を除く）| `1000.00`| 文字列|
 |`order_tax_amount`| 総税金と手数料| `75.00`| 文字列|
@@ -70,15 +70,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`page_name`| ページ名を識別するTealium変数| `homepage`| 文字列|
 |`page_type`| ホーム、物件、確認などの高レベルページタイプ| `home`| 文字列|
 |`promo_registration_page`| プロモーション登録が行われたページ| `offers`| 文字列|
-|`property_brand`| 物件のブランド名| `[&#34;economy brand&#34;]`| 配列|
-|`property_city`| 物件が位置する都市| `[&#34;Chula Vista&#34;]`| 配列|
-|`property_country`| 物件が位置する国| `[&#34;USA&#34;]`| 配列|
-|`property_id`| 物件番号の配列| `[&#34;354498765467&#34;]`| 配列|
-|`property_name`| 物件名の配列| `[&#34;hotel Chula Vista&#34;]`| 配列|
-|`property_position`| 選択された物件のインデックスの配列| `[&#34;1&#34;]`| 配列|
-|`property_postal_code`| 物件の郵便番号の配列| `[&#34;92121&#34;]`| 配列|
-|`property_state`| 物件が位置する州の配列| `[&#34;CA&#34;]`| 配列|
-|`proximity`| 市中心部と物件位置の距離（マイル）の配列| `[&#34;24&#34;]`| 配列|
+|`property_brand`| 物件のブランド名| `["economy brand"]`| 配列|
+|`property_city`| 物件が位置する都市| `["Chula Vista"]`| 配列|
+|`property_country`| 物件が位置する国| `["USA"]`| 配列|
+|`property_id`| 物件番号の配列| `["354498765467"]`| 配列|
+|`property_name`| 物件名の配列| `["hotel Chula Vista"]`| 配列|
+|`property_position`| 選択された物件のインデックスの配列| `["1"]`| 配列|
+|`property_postal_code`| 物件の郵便番号の配列| `["92121"]`| 配列|
+|`property_state`| 物件が位置する州の配列| `["CA"]`| 配列|
+|`proximity`| 市中心部と物件位置の距離（マイル）の配列| `["24"]`| 配列|
 |`registration_id`| 特別オファーやプロモの登録にユーザーが入力したID; メールまたはロイヤルティID| `example@example.com`| 文字列|
 |`search_city`| 検索された目的地の都市| `Chula Vista`| 文字列|
 |`search_country`| 検索された目的地の国| `USA`| 文字列|
@@ -89,15 +89,15 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 |`search_state`| 検索された目的地の州| `WA`| 文字列|
 |`search_type`| 目的地のタイプ（空港、地域、国立公園など、Googleによって定義）| `airport`| 文字列|
 |`select_room_position`| 部屋選択ページでホテル選択ページから表示された料金の最高位置| `1`| 文字列|
-|`selected_rate_price`| 部屋選択ページでユーザーによって選択された部屋の料金の配列| `[&#34;100.00&#34;,&#34;150.00&#34;]`| 配列|
-|`selected_rate_type`| 部屋選択ページでユーザーによって選択された部屋の料金タイプの配列| `[&#34;Best Rate&#34;,&#34;loyalty&#34;,&#34;AAA&#34;]`| 配列|
-|`selected_room_type`| 部屋選択ページでユーザーによって選択された部屋タイプの配列| `[&#34;2 double beds&#34;,&#34;Ocean View&#34;]`| 配列|
+|`selected_rate_price`| 部屋選択ページでユーザーによって選択された部屋の料金の配列| `["100.00","150.00"]`| 配列|
+|`selected_rate_type`| 部屋選択ページでユーザーによって選択された部屋の料金タイプの配列| `["Best Rate","loyalty","AAA"]`| 配列|
+|`selected_room_type`| 部屋選択ページでユーザーによって選択された部屋タイプの配列| `["2 double beds","Ocean View"]`| 配列|
 |`show_available`| 利用可能なホテルのみを表示する構成| `true`| 文字列|
 |`site`| ユーザーが使用しているサイト| `economy site`| 文字列|
 |`site_section`| サイトの高レベルセクション| `offers`| 文字列|
 |`social_channel`| ソーシャルメディアで情報が共有されたときに使用されるイベント | `facebook`| 文字列|
 |`sort_by`| 並び替え選択（距離、低から高、高から低）| `distance`| 文字列|
-|`sort_order`| 部屋のタイプ、料金コード、料金額、通貨が選択された部屋のページに表示される配列 | `[&#34;room type&#34;,&#34;distance&#34;]`| 配列|
+|`sort_order`| 部屋のタイプ、料金コード、料金額、通貨が選択された部屋のページに表示される配列 | `["room type","distance"]`| 配列|
 |`video_action`| 現在ビデオで行われているアクション、再生、再生中、一時停止、停止、完了 | `play`| 文字列|
 |`video_content_type`| 視聴されたビデオのタイプ | `Property Video`| 文字列|
 |`video_name`| 視聴されたビデオの名前 | `Video Name`| 文字列|
@@ -114,16 +114,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-   &#34;currency&#34;         : &#34;USD&#34;,     
-   &#34;customer_email&#34;   : &#34;example@example.com&#34;,     
-   &#34;customer_id_type&#34; : &#34;loyalty id&#34;,     
-   &#34;language_code&#34;    : &#34;us&#34;,     
-   &#34;loyalty_id&#34;       : &#34;99568784521&#34;,     
-   &#34;page_name&#34;        : &#34;homepage&#34;,     
-   &#34;page_type&#34;        : &#34;home&#34;,     
-   &#34;site&#34;             : &#34;economy site&#34;,     
-   &#34;site_section&#34;     : &#34;offers&#34;,     
-   &#34;tealium_event&#34;    : &#34;page_view&#34;
+   "currency"         : "USD",     
+   "customer_email"   : "example@example.com",     
+   "customer_id_type" : "loyalty id",     
+   "language_code"    : "us",     
+   "loyalty_id"       : "99568784521",     
+   "page_name"        : "homepage",     
+   "page_type"        : "home",     
+   "site"             : "economy site",     
+   "site_section"     : "offers",     
+   "tealium_event"    : "page_view"
 }
 ```
 
@@ -136,45 +136,45 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-   &#34;check_in&#34;               : &#34;02/18/2017&#34;,     
-   &#34;check_out&#34;              : &#34;02/24/2017&#34;,     
-   &#34;currency&#34;               : &#34;USD&#34;,     
-   &#34;customer_email&#34;         : &#34;example@example.com&#34;,     
-   &#34;customer_id_type&#34;       : &#34;loyalty id&#34;,     
-   &#34;days_till_checkin&#34;      : &#34;45&#34;,     
-   &#34;displayed_properties&#34;   : [&#34;345&#34;,&#34;4567&#34;],     
-   &#34;displayed_rate_amounts&#34; : [&#34;100.25&#34;,&#34;150.00&#34;,&#34;340.00&#34;],     
-   &#34;displayed_rate_codes&#34;   : [&#34;economy&#34;,&#34;economy&#34;,&#34;luxury&#34;],     
-   &#34;filter_amenities&#34;       : [&#34;pool&#34;,&#34;microwave&#34;],     
-   &#34;filter_distance&#34;        : &#34;20&#34;,     
-   &#34;filter_hotel_type&#34;      : [&#34;economy&#34;,&#34;luxury&#34;],     
-   &#34;filter_max_rate&#34;        : &#34;150&#34;,     
-   &#34;filter_rate_change&#34;     : &#34;AAA to 20% Off&#34;,     
-   &#34;filter_ta_rating&#34;       : [&#34;3&#34;,&#34;4&#34;,&#34;5&#34;],     
-   &#34;language_code&#34;          : &#34;us&#34;,     
-   &#34;loyalty_id&#34;             : &#34;99568784521&#34;,     
-   &#34;modify_stay&#34;            : &#34;true&#34;,     
-   &#34;num_of_adults&#34;          : &#34;2&#34;,     
-   &#34;num_of_children&#34;        : &#34;3&#34;,     
-   &#34;num_of_nights&#34;          : &#34;5&#34;,     
-   &#34;num_of_rooms&#34;           : &#34;1&#34;,     
-   &#34;page_name&#34;              : &#34;Select Hotel&#34;,     
-   &#34;page_type&#34;              : &#34;select_hotel&#34;,     
-   &#34;proximity&#34;              : [&#34;24&#34;],     
-   &#34;search_city&#34;            : &#34;Chula Vista&#34;,     
-   &#34;search_country&#34;         : &#34;USA&#34;,     
-   &#34;search_full&#34;            : &#34;Chula Vista, California, United States&#34;,     
-   &#34;search_rate&#34;            : &#34;Corporate&#34;,     
-   &#34;search_rate_value&#34;      : &#34;Tealium&#34;,     
-   &#34;search_results&#34;         : &#34;22&#34;,     
-   &#34;search_state&#34;           : &#34;WA&#34;,     
-   &#34;search_type&#34;            : &#34;airport&#34;,     
-   &#34;show_available&#34;         : &#34;true&#34;,     
-   &#34;site&#34;                   : &#34;economy site&#34;,     
-   &#34;site_section&#34;           : &#34;offers&#34;,     
-   &#34;sort_by&#34;                : &#34;distance&#34;,     
-   &#34;sort_order&#34;             : [&#34;roomtype&#34;,&#34;distance&#34;],     
-   &#34;tealium_event&#34;          : &#34;page_view&#34;
+   "check_in"               : "02/18/2017",     
+   "check_out"              : "02/24/2017",     
+   "currency"               : "USD",     
+   "customer_email"         : "example@example.com",     
+   "customer_id_type"       : "loyalty id",     
+   "days_till_checkin"      : "45",     
+   "displayed_properties"   : ["345","4567"],     
+   "displayed_rate_amounts" : ["100.25","150.00","340.00"],     
+   "displayed_rate_codes"   : ["economy","economy","luxury"],     
+   "filter_amenities"       : ["pool","microwave"],     
+   "filter_distance"        : "20",     
+   "filter_hotel_type"      : ["economy","luxury"],     
+   "filter_max_rate"        : "150",     
+   "filter_rate_change"     : "AAA to 20% Off",     
+   "filter_ta_rating"       : ["3","4","5"],     
+   "language_code"          : "us",     
+   "loyalty_id"             : "99568784521",     
+   "modify_stay"            : "true",     
+   "num_of_adults"          : "2",     
+   "num_of_children"        : "3",     
+   "num_of_nights"          : "5",     
+   "num_of_rooms"           : "1",     
+   "page_name"              : "Select Hotel",     
+   "page_type"              : "select_hotel",     
+   "proximity"              : ["24"],     
+   "search_city"            : "Chula Vista",     
+   "search_country"         : "USA",     
+   "search_full"            : "Chula Vista, California, United States",     
+   "search_rate"            : "Corporate",     
+   "search_rate_value"      : "Tealium",     
+   "search_results"         : "22",     
+   "search_state"           : "WA",     
+   "search_type"            : "airport",     
+   "show_available"         : "true",     
+   "site"                   : "economy site",     
+   "site_section"           : "offers",     
+   "sort_by"                : "distance",     
+   "sort_order"             : ["roomtype","distance"],     
+   "tealium_event"          : "page_view"
 }
 ```
 
@@ -187,38 +187,38 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-   &#34;check_in&#34;              : &#34;02/18/2017&#34;,     
-   &#34;check_out&#34;             : &#34;02/24/2017&#34;,     
-   &#34;currency&#34;              : &#34;USD&#34;,     
-   &#34;customer_email&#34;        : &#34;example@example.com&#34;,     
-   &#34;customer_id_type&#34;      : &#34;loyalty id&#34;,     
-   &#34;days_till_checkin&#34;     : &#34;45&#34;,     
-   &#34;displayed_rate_amount&#34; : &#34;150.00&#34;,     
-   &#34;displayed_room_rates&#34;  : [&#34;340.00&#34;,&#34;500.00&#34;,&#34;650.00&#34;],     
-   &#34;displayed_room_types&#34;  : [&#34;2 Queen Beds&#34;,&#34;Ocean View&#34;,&#34;Ocean Front&#34;],     
-   &#34;language_code&#34;         : &#34;us&#34;,     
-   &#34;loyalty_id&#34;            : &#34;99568784521&#34;,     
-   &#34;modify_stay&#34;           : &#34;true&#34;,     
-   &#34;num_of_adults&#34;         : &#34;2&#34;,     
-   &#34;num_of_children&#34;        : &#34;3&#34;,     
-   &#34;num_of_nights&#34;         : &#34;5&#34;,     
-   &#34;num_of_rooms&#34;          : &#34;1&#34;,     
-   &#34;page_name&#34;             : &#34;Select a Room&#34;,     
-   &#34;page_type&#34;             : &#34;select_room&#34;,     
-   &#34;property_brand&#34;        : [&#34;economy brand&#34;],     
-   &#34;property_city&#34;         : [&#34;Chula Vista&#34;],     
-   &#34;property_country&#34;      : [&#34;USA&#34;],     
-   &#34;property_id&#34;           : [&#34;354498765467&#34;],     
-   &#34;property_name&#34;         : [&#34;hotel Chula Vista&#34;],     
-   &#34;property_position&#34;     : [&#34;1&#34;],     
-   &#34;property_postal_code&#34;  : [&#34;92121&#34;],     
-   &#34;property_state&#34;        : [&#34;CA&#34;],     
-   &#34;proximity&#34;             : [&#34;24&#34;],     
-   &#34;select_room_position&#34;  : &#34;1&#34;,     
-   &#34;site&#34;                  : &#34;economy site&#34;,     
-   &#34;site_section&#34;          : &#34;offers&#34;,     
-   &#34;social_channel&#34;        : &#34;facebook&#34;,     
-   &#34;tealium_event&#34;         : &#34;page_view&#34;
+   "check_in"              : "02/18/2017",     
+   "check_out"             : "02/24/2017",     
+   "currency"              : "USD",     
+   "customer_email"        : "example@example.com",     
+   "customer_id_type"      : "loyalty id",     
+   "days_till_checkin"     : "45",     
+   "displayed_rate_amount" : "150.00",     
+   "displayed_room_rates"  : ["340.00","500.00","650.00"],     
+   "displayed_room_types"  : ["2 Queen Beds","Ocean View","Ocean Front"],     
+   "language_code"         : "us",     
+   "loyalty_id"            : "99568784521",     
+   "modify_stay"           : "true",     
+   "num_of_adults"         : "2",     
+   "num_of_children"        : "3",     
+   "num_of_nights"         : "5",     
+   "num_of_rooms"          : "1",     
+   "page_name"             : "Select a Room",     
+   "page_type"             : "select_room",     
+   "property_brand"        : ["economy brand"],     
+   "property_city"         : ["Chula Vista"],     
+   "property_country"      : ["USA"],     
+   "property_id"           : ["354498765467"],     
+   "property_name"         : ["hotel Chula Vista"],     
+   "property_position"     : ["1"],     
+   "property_postal_code"  : ["92121"],     
+   "property_state"        : ["CA"],     
+   "proximity"             : ["24"],     
+   "select_room_position"  : "1",     
+   "site"                  : "economy site",     
+   "site_section"          : "offers",     
+   "social_channel"        : "facebook",     
+   "tealium_event"         : "page_view"
  }
  ```
 
@@ -231,36 +231,36 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {    
-   &#34;check_in&#34;               : &#34;02/18/2017&#34;,     
-   &#34;check_out&#34;              : &#34;02/24/2017&#34;,    
-    &#34;currency&#34;              : &#34;USD&#34;,     
-    &#34;customer_email&#34;        : &#34;example@example.com&#34;,     
-    &#34;customer_id_type&#34;      : &#34;loyalty id&#34;,     
-    &#34;days_till_checkin&#34;     : &#34;45&#34;,     
-    &#34;language_code&#34;         : &#34;us&#34;,     
-    &#34;loyalty_id&#34;            : &#34;99568784521&#34;,     
-    &#34;num_of_adults&#34;         : &#34;2&#34;,     
-    &#34;num_of_children&#34;       : &#34;3&#34;,     
-    &#34;num_of_nights&#34;         : &#34;5&#34;,     
-    &#34;num_of_rooms&#34;          : &#34;1&#34;,     
-    &#34;occupancy_detail&#34;      : [&#34;4&#34;,&#34;2&#34;],     
-    &#34;order_total_occupancy&#34; : &#34;5&#34;,     
-    &#34;page_name&#34;             : &#34;Review Room&#34;,     
-    &#34;page_type&#34;             : &#34;review_reserve&#34;,     
-    &#34;property_brand&#34;        : [&#34;economy brand&#34;],     
-    &#34;property_city&#34;         : [&#34;Chula Vista&#34;],     
-    &#34;property_country&#34;      : [&#34;USA&#34;],     
-    &#34;property_id&#34;           : [&#34;354498765467&#34;],     
-    &#34;property_name&#34;         : [&#34;hotel Chula Vista&#34;],     
-    &#34;property_postal_code&#34;  : [&#34;92121&#34;],     
-    &#34;property_state&#34;        : [&#34;CA&#34;],     
-    &#34;proximity&#34;             : [&#34;24&#34;],     
-    &#34;selected_rate_price&#34;   : [&#34;100.00&#34;,&#34;150.00&#34;],     
-    &#34;selected_rate_type&#34;    : [&#34;Best Rate&#34;,&#34;loyalty&#34;,&#34;AAA&#34;],     
-    &#34;selected_room_type&#34;    : [&#34;2 double beds&#34;,&#34;Ocean View&#34;],     
-    &#34;site&#34;                  : &#34;economy site&#34;,     
-    &#34;site_section&#34;          : &#34;offers&#34;,     
-    &#34;tealium_event&#34;         : &#34;page_view&#34;
+   "check_in"               : "02/18/2017",     
+   "check_out"              : "02/24/2017",    
+    "currency"              : "USD",     
+    "customer_email"        : "example@example.com",     
+    "customer_id_type"      : "loyalty id",     
+    "days_till_checkin"     : "45",     
+    "language_code"         : "us",     
+    "loyalty_id"            : "99568784521",     
+    "num_of_adults"         : "2",     
+    "num_of_children"       : "3",     
+    "num_of_nights"         : "5",     
+    "num_of_rooms"          : "1",     
+    "occupancy_detail"      : ["4","2"],     
+    "order_total_occupancy" : "5",     
+    "page_name"             : "Review Room",     
+    "page_type"             : "review_reserve",     
+    "property_brand"        : ["economy brand"],     
+    "property_city"         : ["Chula Vista"],     
+    "property_country"      : ["USA"],     
+    "property_id"           : ["354498765467"],     
+    "property_name"         : ["hotel Chula Vista"],     
+    "property_postal_code"  : ["92121"],     
+    "property_state"        : ["CA"],     
+    "proximity"             : ["24"],     
+    "selected_rate_price"   : ["100.00","150.00"],     
+    "selected_rate_type"    : ["Best Rate","loyalty","AAA"],     
+    "selected_room_type"    : ["2 double beds","Ocean View"],     
+    "site"                  : "economy site",     
+    "site_section"          : "offers",     
+    "tealium_event"         : "page_view"
  }
  ```
 ### 確認ページ
@@ -272,61 +272,61 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {  
-   &#34;avg_room_rate&#34;             : [&#34;100.25&#34;],     
-   &#34;check_in&#34;                  : &#34;02/18/2017&#34;,     
-   &#34;check_out&#34;                 : &#34;02/24/2017&#34;,     
-   &#34;check_reservation&#34;         : &#34;information&#34;,     
-   &#34;currency&#34;                  : &#34;USD&#34;,     
-   &#34;customer_city&#34;             : &#34;San Diego&#34;,     
-   &#34;customer_country&#34;          : &#34;USA&#34;,     
-   &#34;customer_email&#34;            : &#34;example@example.com&#34;,     
-   &#34;customer_first_name&#34;       : &#34;Tealium&#34;,     
-   &#34;customer_id_type&#34;          : &#34;loyalty id&#34;,     
-   &#34;customer_last_name&#34;        : &#34;Tealium&#34;,     
-   &#34;customer_postal_code&#34;      : &#34;92121&#34;,     
-   &#34;customer_state&#34;            : &#34;CA&#34;,     
-   &#34;days_till_checkin&#34;         : &#34;45&#34;,     
-   &#34;language_code&#34;             : &#34;us&#34;,     
-   &#34;loyalty_id&#34;                : &#34;99568784521&#34;,     
-   &#34;loyalty_point_balance&#34;     : &#34;1000&#34;,     
-   &#34;loyalty_tier&#34;              : &#34;Silver&#34;,     
-   &#34;num_of_adults&#34;             : &#34;2&#34;,     
-   &#34;num_of_children&#34;           : &#34;3&#34;,     
-   &#34;num_of_nights&#34;             : &#34;5&#34;,     
-   &#34;num_of_rooms&#34;              : &#34;1&#34;,     
-   &#34;occupancy_detail&#34;          : [&#34;4&#34;,&#34;2&#34;],     
-   &#34;order_cancellation_policy&#34; : [&#34;24hours&#34;,&#34;5days&#34;],     
-   &#34;order_corp_id&#34;             : &#34;987646&#34;,     
-   &#34;order_discount_amount&#34;     : &#34;100.00&#34;,     
-   &#34;order_iata&#34;                : &#34;646879&#34;,     
-   &#34;order_id&#34;                  : &#34;1234&#34;,     
-   &#34;order_payment_method&#34;      : &#34;visa&#34;,     
-   &#34;order_payment_type&#34;        : &#34;revenue&#34;,    
-   &#34;order_points_used&#34;         : [&#34;1000&#34;,&#34;5000&#34;],     
-   &#34;order_postal_code&#34;         : &#34;00267&#34;,     
-   &#34;order_promo_code&#34;          : &#34;SALE&#34;,     
-   &#34;order_rate_code&#34;           : [&#34;AAA&#34;,&#34;&#34;],     
-   &#34;order_room_occupancy&#34;      : [&#34;5&#34;,&#34;2&#34;],     
-   &#34;order_room_type&#34;           : [&#34;double&#34;,&#34;ocean view&#34;],     
-   &#34;order_special_requests&#34;    : &#34;No Feathers&#34;,     
-   &#34;order_subtotal&#34;            : &#34;1000.00&#34;,     
-   &#34;order_tax_amount&#34;          : &#34;75.00&#34;,     
-   &#34;order_total&#34;               : &#34;1175.00&#34;,     
-   &#34;order_total_occupancy&#34;     : &#34;5&#34;,     
-   &#34;page_name&#34;                 : &#34;Confirmation&#34;,     
-   &#34;page_type&#34;                 : &#34;confirmation&#34;,     
-   &#34;property_brand&#34;            : [&#34;economy brand&#34;],     
-   &#34;property_city&#34;             : [&#34;Chula Vista&#34;],     
-   &#34;property_country&#34;          : [&#34;USA&#34;],     
-   &#34;property_id&#34;               : [&#34;354498765467&#34;],     
-   &#34;property_name&#34;             : [&#34;hotel Chula Vista&#34;],     
-   &#34;property_postal_code&#34;      : [&#34;92121&#34;],     
-   &#34;property_state&#34;            : [&#34;CA&#34;],     
-   &#34;proximity&#34;                 : [&#34;24&#34;],     
-   &#34;site&#34;                      : &#34;economy site&#34;,     
-   &#34;site_section&#34;              : &#34;offers&#34;,     
-   &#34;social_channel&#34;            : &#34;facebook&#34;,     
-   &#34;tealium_event&#34;             : &#34;purchase&#34;
+   "avg_room_rate"             : ["100.25"],     
+   "check_in"                  : "02/18/2017",     
+   "check_out"                 : "02/24/2017",     
+   "check_reservation"         : "information",     
+   "currency"                  : "USD",     
+   "customer_city"             : "San Diego",     
+   "customer_country"          : "USA",     
+   "customer_email"            : "example@example.com",     
+   "customer_first_name"       : "Tealium",     
+   "customer_id_type"          : "loyalty id",     
+   "customer_last_name"        : "Tealium",     
+   "customer_postal_code"      : "92121",     
+   "customer_state"            : "CA",     
+   "days_till_checkin"         : "45",     
+   "language_code"             : "us",     
+   "loyalty_id"                : "99568784521",     
+   "loyalty_point_balance"     : "1000",     
+   "loyalty_tier"              : "Silver",     
+   "num_of_adults"             : "2",     
+   "num_of_children"           : "3",     
+   "num_of_nights"             : "5",     
+   "num_of_rooms"              : "1",     
+   "occupancy_detail"          : ["4","2"],     
+   "order_cancellation_policy" : ["24hours","5days"],     
+   "order_corp_id"             : "987646",     
+   "order_discount_amount"     : "100.00",     
+   "order_iata"                : "646879",     
+   "order_id"                  : "1234",     
+   "order_payment_method"      : "visa",     
+   "order_payment_type"        : "revenue",    
+   "order_points_used"         : ["1000","5000"],     
+   "order_postal_code"         : "00267",     
+   "order_promo_code"          : "SALE",     
+   "order_rate_code"           : ["AAA",""],     
+   "order_room_occupancy"      : ["5","2"],     
+   "order_room_type"           : ["double","ocean view"],     
+   "order_special_requests"    : "No Feathers",     
+   "order_subtotal"            : "1000.00",     
+   "order_tax_amount"          : "75.00",     
+   "order_total"               : "1175.00",     
+   "order_total_occupancy"     : "5",     
+   "page_name"                 : "Confirmation",     
+   "page_type"                 : "confirmation",     
+   "property_brand"            : ["economy brand"],     
+   "property_city"             : ["Chula Vista"],     
+   "property_country"          : ["USA"],     
+   "property_id"               : ["354498765467"],     
+   "property_name"             : ["hotel Chula Vista"],     
+   "property_postal_code"      : ["92121"],     
+   "property_state"            : ["CA"],     
+   "proximity"                 : ["24"],     
+   "site"                      : "economy site",     
+   "site_section"              : "offers",     
+   "social_channel"            : "facebook",     
+   "tealium_event"             : "purchase"
 }
 ```
 
@@ -339,18 +339,18 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;              : &#34;USD&#34;,
-    &#34;customer_email&#34;        : &#34;example@example.com&#34;,
-    &#34;customer_id_type&#34;      : &#34;loyalty id&#34;,
-    &#34;language_code&#34;         : &#34;us&#34;,
-    &#34;loyalty_id&#34;            : &#34;99568784521&#34;,
-    &#34;loyalty_point_balance&#34; : &#34;1000&#34;,
-    &#34;loyalty_tier&#34;          : &#34;Silver&#34;,
-    &#34;page_name&#34;             : &#34;Loyalty Page&#34;,
-    &#34;page_type&#34;             : &#34;loyalty&#34;,
-    &#34;site&#34;                  : &#34;economy site&#34;,
-    &#34;site_section&#34;          : &#34;offers&#34;,
-    &#34;tealium_event&#34;         : &#34;page_view&#34;
+    "currency"              : "USD",
+    "customer_email"        : "example@example.com",
+    "customer_id_type"      : "loyalty id",
+    "language_code"         : "us",
+    "loyalty_id"            : "99568784521",
+    "loyalty_point_balance" : "1000",
+    "loyalty_tier"          : "Silver",
+    "page_name"             : "Loyalty Page",
+    "page_type"             : "loyalty",
+    "site"                  : "economy site",
+    "site_section"          : "offers",
+    "tealium_event"         : "page_view"
 }
 ```
 
@@ -363,16 +363,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;         : &#34;USD&#34;,
-    &#34;customer_email&#34;   : &#34;example@example.com&#34;,
-    &#34;customer_id_type&#34; : &#34;loyalty id&#34;,
-    &#34;language_code&#34;    : &#34;us&#34;,
-    &#34;loyalty_id&#34;       : &#34;99568784521&#34;,
-    &#34;page_name&#34;        : &#34;Offers&#34;,
-    &#34;page_type&#34;        : &#34;offers&#34;,
-    &#34;site&#34;             : &#34;economy site&#34;,
-    &#34;site_section&#34;     : &#34;offers&#34;,
-    &#34;tealium_event&#34;    : &#34;page_view&#34;
+    "currency"         : "USD",
+    "customer_email"   : "example@example.com",
+    "customer_id_type" : "loyalty id",
+    "language_code"    : "us",
+    "loyalty_id"       : "99568784521",
+    "page_name"        : "Offers",
+    "page_type"        : "offers",
+    "site"             : "economy site",
+    "site_section"     : "offers",
+    "tealium_event"    : "page_view"
 }
  ```
 
@@ -385,45 +385,45 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;check_in&#34;               : &#34;02/18/2017&#34;,
-    &#34;check_out&#34;              : &#34;02/24/2017&#34;,
-    &#34;currency&#34;               : &#34;USD&#34;,
-    &#34;customer_email&#34;         : &#34;example@example.com&#34;,
-    &#34;customer_id_type&#34;       : &#34;loyalty id&#34;,
-    &#34;days_till_checkin&#34;      : &#34;45&#34;,
-    &#34;displayed_properties&#34;   : [&#34;345&#34;,&#34;4567&#34;],
-    &#34;displayed_rate_amounts&#34; : [&#34;100.25&#34;,&#34;150.00&#34;,&#34;340.00&#34;],
-    &#34;displayed_rate_codes&#34;   : [&#34;economy&#34;,&#34;economy&#34;,&#34;luxury&#34;],
-    &#34;filter_amenities&#34;       : [&#34;pool&#34;,&#34;microwave&#34;],
-    &#34;filter_distance&#34;        : &#34;20&#34;,
-    &#34;filter_hotel_type&#34;      : [&#34;economy&#34;,&#34;luxury&#34;],
-    &#34;filter_max_rate&#34;        : &#34;150&#34;,
-    &#34;filter_rate_change&#34;     : &#34;AAA to 20% Off&#34;,
-    &#34;filter_ta_rating&#34;       : [&#34;3&#34;,&#34;4&#34;,&#34;5&#34;],
-    &#34;language_code&#34;          : &#34;us&#34;,
-    &#34;loyalty_id&#34;             : &#34;99568784521&#34;,
-    &#34;modify_stay&#34;            : &#34;true&#34;,
-    &#34;num_of_adults&#34;          : &#34;2&#34;,
-    &#34;num_of_children&#34;        : &#34;3&#34;,
-    &#34;num_of_nights&#34;          : &#34;5&#34;,
-    &#34;num_of_rooms&#34;           : &#34;1&#34;,
-    &#34;page_name&#34;              : &#34;Destinations&#34;,
-    &#34;page_type&#34;              : &#34;hotels_destinations&#34;,
-    &#34;proximity&#34;              : [&#34;24&#34;],
-    &#34;search_city&#34;            : &#34;Chula Vista&#34;,
-    &#34;search_country&#34;         : &#34;USA&#34;,
-    &#34;search_full&#34;            : &#34;Chula Vista, California, United States&#34;,
-    &#34;search_rate&#34;            : &#34;Corporate&#34;,
-    &#34;search_rate_value&#34;      : &#34;Tealium&#34;,
-    &#34;search_results&#34;         : &#34;22&#34;,
-    &#34;search_state&#34;           : &#34;WA&#34;,
-    &#34;search_type&#34;            : &#34;airport&#34;,
-    &#34;show_available&#34;         : &#34;true&#34;,
-    &#34;site&#34;                   : &#34;economy site&#34;,
-    &#34;site_section&#34;           : &#34;offers&#34;,
-    &#34;sort_by&#34;                : &#34;distance&#34;,
-    &#34;sort_order&#34;             : [&#34;roomtype&#34;,&#34;distance&#34;],
-    &#34;tealium_event&#34;          : &#34;page_view&#34;
+    "check_in"               : "02/18/2017",
+    "check_out"              : "02/24/2017",
+    "currency"               : "USD",
+    "customer_email"         : "example@example.com",
+    "customer_id_type"       : "loyalty id",
+    "days_till_checkin"      : "45",
+    "displayed_properties"   : ["345","4567"],
+    "displayed_rate_amounts" : ["100.25","150.00","340.00"],
+    "displayed_rate_codes"   : ["economy","economy","luxury"],
+    "filter_amenities"       : ["pool","microwave"],
+    "filter_distance"        : "20",
+    "filter_hotel_type"      : ["economy","luxury"],
+    "filter_max_rate"        : "150",
+    "filter_rate_change"     : "AAA to 20% Off",
+    "filter_ta_rating"       : ["3","4","5"],
+    "language_code"          : "us",
+    "loyalty_id"             : "99568784521",
+    "modify_stay"            : "true",
+    "num_of_adults"          : "2",
+    "num_of_children"        : "3",
+    "num_of_nights"          : "5",
+    "num_of_rooms"           : "1",
+    "page_name"              : "Destinations",
+    "page_type"              : "hotels_destinations",
+    "proximity"              : ["24"],
+    "search_city"            : "Chula Vista",
+    "search_country"         : "USA",
+    "search_full"            : "Chula Vista, California, United States",
+    "search_rate"            : "Corporate",
+    "search_rate_value"      : "Tealium",
+    "search_results"         : "22",
+    "search_state"           : "WA",
+    "search_type"            : "airport",
+    "show_available"         : "true",
+    "site"                   : "economy site",
+    "site_section"           : "offers",
+    "sort_by"                : "distance",
+    "sort_order"             : ["roomtype","distance"],
+    "tealium_event"          : "page_view"
 }
 ```
 
@@ -436,18 +436,18 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cancellation_id&#34;   : &#34;12254875&#34;,
-    &#34;check_reservation&#34; : &#34;information&#34;,
-    &#34;currency&#34;          : &#34;USD&#34;,
-    &#34;customer_email&#34;    : &#34;example@example.com&#34;,
-    &#34;customer_id_type&#34;  : &#34;loyalty id&#34;,
-    &#34;language_code&#34;     : &#34;us&#34;,
-    &#34;loyalty_id&#34;        : &#34;99568784521&#34;,
-    &#34;page_name&#34;         : &#34;Your Reservations&#34;,
-    &#34;page_type&#34;         : &#34;reservations&#34;,
-    &#34;site&#34;              : &#34;economy site&#34;,
-    &#34;site_section&#34;      : &#34;offers&#34;,
-    &#34;tealium_event&#34;     : &#34;page_view&#34;
+    "cancellation_id"   : "12254875",
+    "check_reservation" : "information",
+    "currency"          : "USD",
+    "customer_email"    : "example@example.com",
+    "customer_id_type"  : "loyalty id",
+    "language_code"     : "us",
+    "loyalty_id"        : "99568784521",
+    "page_name"         : "Your Reservations",
+    "page_type"         : "reservations",
+    "site"              : "economy site",
+    "site_section"      : "offers",
+    "tealium_event"     : "page_view"
 }
 ```
 
@@ -460,16 +460,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;currency&#34;         : &#34;USD&#34;,
-    &#34;customer_email&#34;   : &#34;example@example.com&#34;,
-    &#34;customer_id_type&#34; : &#34;loyalty id&#34;,
-    &#34;language_code&#34;    : &#34;us&#34;,
-    &#34;loyalty_id&#34;       : &#34;99568784521&#34;,
-    &#34;page_name&#34;        : &#34;Other Page&#34;,
-    &#34;page_type&#34;        : &#34;content&#34;,
-    &#34;site&#34;             : &#34;economy site&#34;,
-    &#34;site_section&#34;     : &#34;offers&#34;,
-    &#34;tealium_event&#34;    : &#34;page_view&#34;
+    "currency"         : "USD",
+    "customer_email"   : "example@example.com",
+    "customer_id_type" : "loyalty id",
+    "language_code"    : "us",
+    "loyalty_id"       : "99568784521",
+    "page_name"        : "Other Page",
+    "page_type"        : "content",
+    "site"             : "economy site",
+    "site_section"     : "offers",
+    "tealium_event"    : "page_view"
 }
 ```
 
@@ -484,8 +484,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;favorite_property_id&#34; : &#34;123&#34;,
-    &#34;tealium_event&#34;        : &#34;add_favorite&#34;
+    "favorite_property_id" : "123",
+    "tealium_event"        : "add_favorite"
 }
 ```
 
@@ -498,10 +498,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;selected_rate_price&#34; : [&#34;100.00&#34;,&#34;150.00&#34;],
-    &#34;selected_rate_type&#34;  : [&#34;Best Rate&#34;,&#34;loyalty&#34;,&#34;AAA&#34;],
-    &#34;selected_room_type&#34;  : [&#34;2 double beds&#34;,&#34;Ocean View&#34;],
-    &#34;tealium_event&#34;       : &#34;button_selection&#34;
+    "selected_rate_price" : ["100.00","150.00"],
+    "selected_rate_type"  : ["Best Rate","loyalty","AAA"],
+    "selected_room_type"  : ["2 double beds","Ocean View"],
+    "tealium_event"       : "button_selection"
 }
 ```
 
@@ -514,9 +514,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;cancellation_id&#34;           : &#34;12254875&#34;,
-    &#34;order_cancellation_policy&#34; : [&#34;24hours&#34;,&#34;5days&#34;],
-    &#34;tealium_event&#34;             : &#34;cancellation&#34;
+    "cancellation_id"           : "12254875",
+    "order_cancellation_policy" : ["24hours","5days"],
+    "tealium_event"             : "cancellation"
 }
 ```
 
@@ -529,8 +529,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;check_reservation&#34; : &#34;information&#34;,
-    &#34;tealium_event&#34;     : &#34;check_reservation&#34;
+    "check_reservation" : "information",
+    "tealium_event"     : "check_reservation"
 }
 ```
 ### メール登録
@@ -542,8 +542,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;example@example.com&#34;,
-    &#34;tealium_event&#34;  : &#34;email_signup&#34;
+    "customer_email" : "example@example.com",
+    "tealium_event"  : "email_signup"
 }
 ```
 
@@ -556,8 +556,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;error_message&#34; : &#34;Room no longer available&#34;,
-    &#34;tealium_event&#34; : &#34;error_message&#34;
+    "error_message" : "Room no longer available",
+    "tealium_event" : "error_message"
 }
 ```
 
@@ -570,13 +570,13 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;filter_amenities&#34;   : [&#34;pool&#34;,&#34;microwave&#34;],
-    &#34;filter_distance&#34;    : &#34;20&#34;,
-    &#34;filter_hotel_type&#34;  : [&#34;economy&#34;,&#34;luxury&#34;],
-    &#34;filter_max_rate&#34;    : &#34;150&#34;,
-    &#34;filter_rate_change&#34; : &#34;AAA to 20% Off&#34;,
-    &#34;filter_ta_rating&#34;   : [&#34;3&#34;,&#34;4&#34;,&#34;5&#34;],
-    &#34;tealium_event&#34;      : &#34;form_submit&#34;
+    "filter_amenities"   : ["pool","microwave"],
+    "filter_distance"    : "20",
+    "filter_hotel_type"  : ["economy","luxury"],
+    "filter_max_rate"    : "150",
+    "filter_rate_change" : "AAA to 20% Off",
+    "filter_ta_rating"   : ["3","4","5"],
+    "tealium_event"      : "form_submit"
 }
 ```
 
@@ -589,9 +589,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;link_category&#34; : &#34;Navigation&#34;,
-    &#34;link_name&#34;     : &#34;properties&#34;,
-    &#34;tealium_event&#34; : &#34;custom_click&#34;
+    "link_category" : "Navigation",
+    "link_name"     : "properties",
+    "tealium_event" : "custom_click"
 }
 ```
 
@@ -604,9 +604,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;link_category&#34; : &#34;Navigation&#34;,
-    &#34;link_name&#34;     : &#34;properties&#34;,
-    &#34;tealium_event&#34; : &#34;map_engagement&#34;
+    "link_category" : "Navigation",
+    "link_name"     : "properties",
+    "tealium_event" : "map_engagement"
 }
 ```
 
@@ -619,12 +619,12 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;modify_stay&#34;     : &#34;true&#34;,
-    &#34;num_of_adults&#34;   : &#34;2&#34;,
-    &#34;num_of_children&#34; : &#34;3&#34;,
-    &#34;num_of_nights&#34;   : &#34;5&#34;,
-    &#34;num_of_rooms&#34;    : &#34;1&#34;,
-    &#34;tealium_event&#34;   : &#34;modify_stay&#34;
+    "modify_stay"     : "true",
+    "num_of_adults"   : "2",
+    "num_of_children" : "3",
+    "num_of_nights"   : "5",
+    "num_of_rooms"    : "1",
+    "tealium_event"   : "modify_stay"
 }
 ```
 
@@ -637,10 +637,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;page_joined&#34;             : &#34;homepage&#34;,
-    &#34;promo_registration_page&#34; : &#34;offers&#34;,
-    &#34;registration_id&#34;         : &#34;example@example.com&#34;,
-    &#34;tealium_event&#34;           : &#34;register_offer&#34;
+    "page_joined"             : "homepage",
+    "promo_registration_page" : "offers",
+    "registration_id"         : "example@example.com",
+    "tealium_event"           : "register_offer"
 }
 ```
 
@@ -653,29 +653,29 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;filter_amenities&#34;    : [&#34;pool&#34;,&#34;microwave&#34;],
-    &#34;filter_distance&#34;     : &#34;20&#34;,
-    &#34;filter_hotel_type&#34;   : [&#34;economy&#34;,&#34;luxury&#34;],
-    &#34;filter_max_rate&#34;     : &#34;150&#34;,
-    &#34;filter_rate_change&#34;  : &#34;AAA to 20% Off&#34;,
-    &#34;filter_ta_rating&#34;    : [&#34;3&#34;,&#34;4&#34;,&#34;5&#34;],
-    &#34;modify_stay&#34;         : &#34;true&#34;,
-    &#34;num_of_adults&#34;       : &#34;2&#34;,
-    &#34;num_of_children&#34;     : &#34;3&#34;,
-    &#34;num_of_nights&#34;       : &#34;5&#34;,
-    &#34;num_of_rooms&#34;        : &#34;1&#34;,
-    &#34;page_name&#34;           : &#34;homepage&#34;,
-    &#34;search_city&#34;         : &#34;Chula Vista&#34;,
-    &#34;search_country&#34;      : &#34;USA&#34;,
-    &#34;search_full&#34;         : &#34;Chula Vista, California, United States&#34;,
-    &#34;search_rate&#34;         : &#34;Corporate&#34;,
-    &#34;search_rate_value&#34;   : &#34;Tealium&#34;,
-    &#34;search_results&#34;      : &#34;22&#34;,
-    &#34;search_state&#34;        : &#34;WA&#34;,
-    &#34;selected_rate_price&#34; : [&#34;100.00&#34;,&#34;150.00&#34;],
-    &#34;selected_rate_type&#34;  : [&#34;Best Rate&#34;,&#34;loyalty&#34;,&#34;AAA&#34;],
-    &#34;selected_room_type&#34;  : [&#34;2 double beds&#34;,&#34;Ocean View&#34;],
-    &#34;tealium_event&#34;       : &#34;select_dropdown&#34;
+    "filter_amenities"    : ["pool","microwave"],
+    "filter_distance"     : "20",
+    "filter_hotel_type"   : ["economy","luxury"],
+    "filter_max_rate"     : "150",
+    "filter_rate_change"  : "AAA to 20% Off",
+    "filter_ta_rating"    : ["3","4","5"],
+    "modify_stay"         : "true",
+    "num_of_adults"       : "2",
+    "num_of_children"     : "3",
+    "num_of_nights"       : "5",
+    "num_of_rooms"        : "1",
+    "page_name"           : "homepage",
+    "search_city"         : "Chula Vista",
+    "search_country"      : "USA",
+    "search_full"         : "Chula Vista, California, United States",
+    "search_rate"         : "Corporate",
+    "search_rate_value"   : "Tealium",
+    "search_results"      : "22",
+    "search_state"        : "WA",
+    "selected_rate_price" : ["100.00","150.00"],
+    "selected_rate_type"  : ["Best Rate","loyalty","AAA"],
+    "selected_room_type"  : ["2 double beds","Ocean View"],
+    "tealium_event"       : "select_dropdown"
 }
 ```
 
@@ -688,8 +688,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {  
-  &#34;select_room_position&#34; : &#34;1&#34;,     
-  &#34;tealium_event&#34;        : &#34;select_room_position&#34;
+  "select_room_position" : "1",     
+  "tealium_event"        : "select_room_position"
 }
 ```
 
@@ -702,8 +702,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;social_channel&#34; : &#34;facebook&#34;,
-    &#34;tealium_event&#34;  : &#34;social_click&#34;
+    "social_channel" : "facebook",
+    "tealium_event"  : "social_click"
 }
 ```
 
@@ -716,9 +716,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;sort_by&#34;      : &#34;distance&#34;,
-    &#34;sort_order&#34;   : [&#34;roomtype&#34;,&#34;distance&#34;],
-    &#34;tealium_event&#34;: &#34;sort_order&#34;
+    "sort_by"      : "distance",
+    "sort_order"   : ["roomtype","distance"],
+    "tealium_event": "sort_order"
 }
 ```
 
@@ -731,9 +731,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;example@example.com&#34;,
-    &#34;login_status&#34;   : &#34;logged in&#34;,
-    &#34;tealium_event&#34;  : &#34;user_login&#34;
+    "customer_email" : "example@example.com",
+    "login_status"   : "logged in",
+    "tealium_event"  : "user_login"
 }
 ```
 
@@ -746,14 +746,14 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34;       : &#34;example@example.com&#34;,
-    &#34;customer_first_name&#34;  : &#34;Tealium&#34;,
-    &#34;customer_id_type&#34;     : &#34;loyalty id&#34;,
-    &#34;customer_last_name&#34;   : &#34;Tealium&#34;,
-    &#34;customer_postal_code&#34; : &#34;92121&#34;,
-    &#34;customer_state&#34;       : &#34;CA&#34;,
-    &#34;login_status&#34;         : &#34;logged in&#34;,
-    &#34;tealium_event&#34;        : &#34;user_logout&#34;
+    "customer_email"       : "example@example.com",
+    "customer_first_name"  : "Tealium",
+    "customer_id_type"     : "loyalty id",
+    "customer_last_name"   : "Tealium",
+    "customer_postal_code" : "92121",
+    "customer_state"       : "CA",
+    "login_status"         : "logged in",
+    "tealium_event"        : "user_logout"
 }
 ```
 
@@ -766,9 +766,9 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;example@example.com&#34;
-    &#34;page_joined&#34;    : &#34;homepage&#34;,
-    &#34;tealium_event&#34;  : &#34;user_register&#34;
+    "customer_email" : "example@example.com"
+    "page_joined"    : "homepage",
+    "tealium_event"  : "user_register"
 }
 ```
 
@@ -781,8 +781,8 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;customer_email&#34; : &#34;example@example.com&#34;,
-    &#34;tealium_event&#34;  : &#34;user_update&#34;
+    "customer_email" : "example@example.com",
+    "tealium_event"  : "user_update"
 }
 ```
 
@@ -795,10 +795,10 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 サンプル:  
 ```javascript
 {
-    &#34;tealium_event&#34;      : &#34;video&#34;,
-    &#34;video_action&#34;       : &#34;play&#34;,
-    &#34;video_content_type&#34; : &#34;Property Video&#34;,
-    &#34;video_name&#34;         : &#34;Video Name&#34;,
-    &#34;video_segments&#34;     : &#34;75&#34;
+    "tealium_event"      : "video",
+    "video_action"       : "play",
+    "video_content_type" : "Property Video",
+    "video_name"         : "Video Name",
+    "video_segments"     : "75"
 }
 ```

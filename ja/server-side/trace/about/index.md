@@ -10,7 +10,11 @@ url: https://docs.tealium.com/ja/server-side/trace/about/
 * Tealium EventStream または AudienceStream  
 * [Tealium Tools ブラウザ拡張機能](https://chrome.google.com/webstore/detail/tealium-tools/gidnphnamcemailggkemcgclnjeeokaa)  
 
-一括イベントにトレースIDを追加しないでください。&lt;br&gt;本番データを監視するためにトレースIDを永続的なパラメータとして追加しないでください。
+
+<blockquote>
+一括イベントにトレースIDを追加しないでください。<br>本番データを監視するためにトレースIDを永続的なパラメータとして追加しないでください。
+</blockquote>
+
 
 ## 動作原理
 
@@ -27,7 +31,11 @@ url: https://docs.tealium.com/ja/server-side/trace/about/
 * イベントまたは処理ステップの詳細を表示
 * 訪問プロファイルのスナップショットを表示
 
+
+<blockquote>
 無効なトレースIDはイベントデータから削除されます。
+</blockquote>
+
 
 ## 制限事項
 

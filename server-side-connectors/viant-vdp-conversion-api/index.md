@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -38,7 +38,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1,000
 * Max time since oldest request: 10 minutes
@@ -48,7 +48,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Conversion Event Type | **PageView** - Page view event&lt;br&gt;**LandingPage** - Landing page event&lt;br&gt;**ItemView** - Item view event&lt;br&gt;**AddToCart** - Add to cart event&lt;br&gt;**InitiateCheckout** - Initiate checkout event&lt;br&gt;**AddPaymentInfo** - Add payment info event&lt;br&gt;**Purchase** - Purchase event&lt;br&gt;**Lead** - Lead event |
+| Conversion Event Type | **PageView** - Page view event<br>**LandingPage** - Landing page event<br>**ItemView** - Item view event<br>**AddToCart** - Add to cart event<br>**InitiateCheckout** - Initiate checkout event<br>**AddPaymentInfo** - Add payment info event<br>**Purchase** - Purchase event<br>**Lead** - Lead event |
 
 #### Sales Data
 
@@ -97,7 +97,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Batch Limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1,000
 * Max time since oldest request: 10 minutes

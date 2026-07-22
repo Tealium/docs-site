@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/slack-connector/
 
 ### Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](/server-side/connectors/manage/) article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, there are no settings to configure. Click **Done** to proceed to the next step.
 
@@ -28,7 +28,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Webhook URL from App| Your Webhook URL generated through the App.&lt;br&gt; For more information, see: [Getting started with Incoming Webhooks](https://api.slack.com/messaging/webhooks#getting_started).|
+|Webhook URL from App| Your Webhook URL generated through the App.<br> For more information, see: [Getting started with Incoming Webhooks](https://api.slack.com/messaging/webhooks#getting_started).|
 |Message| The message to send to the channel associated with the webhook URL specified above. Learn more about [Slack message formatting](https://api.slack.com/docs/message-formatting).|
 
 #### Action — Post Enhanced Message in Channel
@@ -37,7 +37,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Webhook URL from App| Your Webhook URL generated through the App.&lt;br&gt; For more information, see: [Getting started with Incoming Webhooks](https://api.slack.com/messaging/webhooks#getting_started).|
-|Blocks Template Variables| Provide template variables as data input for Blocks. For more information, see .&lt;br&gt; Name nested template variables with the dot notation (For example, `items.name`).&lt;br&gt; Nested template variables are typically built from data layer list attributes.|
-|Blocks| Block Kit visual components to enhance message.&lt;br&gt; Provide an array template for the **blocks** array to be sent.&lt;br&gt; You can use template variables. For more information, see .|
+|Webhook URL from App| Your Webhook URL generated through the App.<br> For more information, see: [Getting started with Incoming Webhooks](https://api.slack.com/messaging/webhooks#getting_started).|
+|Blocks Template Variables| Provide template variables as data input for Blocks. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).<br> Name nested template variables with the dot notation (For example, `items.name`).<br> Nested template variables are typically built from data layer list attributes.|
+|Blocks| Block Kit visual components to enhance message.<br> Provide an array template for the **blocks** array to be sent.<br> You can use template variables. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).|
 |Message| The message to send to the channel associated with the webhook URL specified above. Learn more about [Slack message formatting](https://api.slack.com/docs/message-formatting).|

@@ -11,11 +11,15 @@ The steps describes in this article assume that you already have a Facebook acco
 
 ## Set up Facebook Pixel in Tealium iQ
 
-First, you will need to add the [Facebook tag]() in TiQ.
+First, you will need to add the [Facebook tag](https://docs.tealium.com/facebook-pixel-legacy/) in TiQ.
 
 If you have already added the Facebook tag, you can use that one. You do not need to add another instance.
 
+
+<blockquote>
 Ensure that you are using the latest version of the Facebook tag template. To check what version you are on, use the **Tag Status Checker**. If it is not the latest version, update your template.
+</blockquote>
+
 
 ## Set up Required Events
 
@@ -40,7 +44,7 @@ In this example, `page_type` is used.
 1. Click the **Events** tab.
 1. In the **Trigger** field, enter the `page_type` value for the product page.  
 1. From the **Event** drop-down list, select **ViewContent**.
-1. Click **&#43; Add**.  
+1. Click **+ Add**.  
 An orange text field displays your mapping.
 1. Click **Close** to submit your mapping.  
 1. Save and publish your changes to save your settings.
@@ -59,15 +63,15 @@ Use the following steps to set up the AddToCart event:
 1. Click the **Events** tab.
 1. In the **Trigger** field, enter `event_name` value for an add-to-cart event.
 1. From the **Event** drop-down list, select **AddToCart**.
-1. Click **&#43; Add**. An orange text field displays with your mapping.
+1. Click **+ Add**. An orange text field displays with your mapping.
 1. Click **Close** to submit your mapping.
 1. Save and publish your changes to save your settings.
 
 ### The Purchase Event
 
-You do not have to set up a mapping for the Purchase event if you already have the E-Commerce extension set up with the order ID mapped. If you have the e-commerce extension configured, the purchase event will automatically fire when an order ID is populated. ([Learn more]()).
+You do not have to set up a mapping for the Purchase event if you already have the E-Commerce extension set up with the order ID mapped. If you have the e-commerce extension configured, the purchase event will automatically fire when an order ID is populated. ([Learn more](https://docs.tealium.com/e-commerce-extension/)).
 
-If you do not have the E-Commerce extension, set up the Purchase event using theViewContent event setup steps as a guideline. Use a mapping based off of `page_type` equaling &#34;order confirmation&#34; as an example.
+If you do not have the E-Commerce extension, set up the Purchase event using theViewContent event setup steps as a guideline. Use a mapping based off of `page_type` equaling "order confirmation" as an example.
 
 ## Set up Required Parameters to Send with Events
 
@@ -75,23 +79,27 @@ Each of these events requires that you send certain parameters, namely `content_
 
 ### The content_ids Parameter
 
-The `content_ids` parameter contains the IDs or SKUs of the products viewed by your visitor. If you have the e-commerce extension configured, these parameters are mapped and populated by the data source you selected for the List of Product IDs field in the extension.  ([Learn more]()).
+The `content_ids` parameter contains the IDs or SKUs of the products viewed by your visitor. If you have the e-commerce extension configured, these parameters are mapped and populated by the data source you selected for the List of Product IDs field in the extension.  ([Learn more](https://docs.tealium.com/e-commerce-extension/)).
 
 If you do not have the E-Commerce extension or you want to use another data source, map a data source to the `content_ids` parameter for each of the three (3) events.
 
 ### The content_type Parameter
 
-The `content_type` parameter indicates to Facebook whether the content/product IDs signify a single product or a group of products. You must set this parameter to either &#34; `product`&#34; or &#34; `product_group`&#34;, respectively. To accomplish this, use the Set Data Value extension..
+The `content_type` parameter indicates to Facebook whether the content/product IDs signify a single product or a group of products. You must set this parameter to either " `product`" or " `product_group`", respectively. To accomplish this, use the Set Data Value extension..
 
+
+<blockquote>
 This requirement is specific to Facebook. It is unlikely you already have a data source that is doing this for you.
+</blockquote>
+
 
 Use the following steps to set `content_type` with a Set Data Value extension:
 
-1. Add a Set Data Value extension. ([Learn more]()).
+1. Add a Set Data Value extension. ([Learn more](https://docs.tealium.com/set-data-values-extension/)).
 Use a descriptive title such as `Facebook: Setting content_type`.
 1. Set the scope of the extension to your Facebook tag.
 This extension is only needed for the Facebook tag and only needs to run when the Facebook tag loads.
-1. To create a data source, click the plus (**&#43;**) button next to the **Set** drop-down list.
+1. To create a data source, click the plus (**+**) button next to the **Set** drop-down list.
 1. Use a meaningful name for the data source, such as `fb_content_type`.
 The purpose of this data source is to provide the value for `content_type`.
 1. In the **To:** field, ensure that **Text** is selected.
@@ -103,7 +111,7 @@ An extension that sets a data source with the proper value for `content_type` is
 This lets you set up the parameter mappings for the event of your choice.
 1. From the **Event** drop-down list, select the first event that you want to map content type to, starting with `ViewContent`.
 1. From the **Parameter** drop-down list, select **Content Type**.
-1. Click **&#43; Add.**
+1. Click **+ Add.**
 A blue text field appears in the **Mappings** dialog indicating that your mapping was successful.
 1. Repeat the steps above for the `AddToCart` and `Purchase` events.
 1. Click **Close**.

@@ -3,19 +3,19 @@ title: Locationモジュール
 description: イベントのデバイス位置データに加え、目標物の周囲にジオフェンスを追加する機能を提供します。
 url: https://docs.tealium.com/ja/platforms/android-java/module-list/location/
 ---
-Locationモジュールを使用すると、Androidアプリが位置情報を受信し、ジオフェンスを構成および監視できるようになります。位置追跡とジオフェンシングの詳細については、[こちら](/ja/platforms/getting-started/location/)を参照してください。
+Locationモジュールを使用すると、Androidアプリが位置情報を受信し、ジオフェンスを構成および監視できるようになります。位置追跡とジオフェンシングの詳細については、[こちら](https://docs.tealium.com/ja/platforms/getting-started/location/)を参照してください。
 
 ## サポートされているプラットフォーム
 
 以下のプラットフォームがサポートされています。
 
-* [Android](/ja/platforms/android-java/)
-* [Android TV](/ja/platforms/android-java/tv/)
-* [Android Wear](/ja/platforms/android-java/wear/)
+* [Android](https://docs.tealium.com/ja/platforms/android-java/)
+* [Android TV](https://docs.tealium.com/ja/platforms/android-java/tv/)
+* [Android Wear](https://docs.tealium.com/ja/platforms/android-java/wear/)
 
 ## 要件
 
-* [Tealium for Android](/ja/platforms/android-java/)（5.6.0以降）
+* [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)（5.6.0以降）
 * Google Play Services [Location](https://developer.android.com/training/location)（11.0.0以降）
 
 このモジュールはFirebase Cloud Messagingをサポートしています。
@@ -38,15 +38,15 @@ Mavenを使用してモジュールをインストールするには：
 1. プロジェクトの最上位の`build.gradle`ファイルに、次のMavenレポジトリを追加します。
 ```groovy
 maven {
-      url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+      url "https://maven.tealiumiq.com/android/releases/"
 }
 ```
 2. プロジェクトモジュールの`build.gradle`ファイルに、Tealiumライブラリ、Locationモジュール、およびGoogle Play Services Location APIのMaven依存関係を追加します。
 ```groovy
 dependencies {
-      implementation &#39;com.tealium:library:5.8.0&#39;
-      implementation &#39;com.tealium:location:1.0.0&#39;
-      runtimeOnly &#39;com.google.android.gms:play-services-location:17.0.0&#39;
+      implementation 'com.tealium:library:5.8.0'
+      implementation 'com.tealium:location:1.0.0'
+      runtimeOnly 'com.google.android.gms:play-services-location:17.0.0'
 }
 ```
 
@@ -64,32 +64,32 @@ allprojects {
           ...
           google()
           flatDir {
-              dirs &#39;libs&#39;
+              dirs 'libs'
           }
           ...
       }
 }
 ```
-3. ファイル`tealium.location-1.0.0.aar`をプロジェクトの`&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`ディレクトリにコピーします。
+3. ファイル`tealium.location-1.0.0.aar`をプロジェクトの`<PROJECT_ROOT>/<MODULE>/libs`ディレクトリにコピーします。
 
 4. Tealiumライブラリの依存関係をプロジェクトモジュールの`build.gradle`ファイルに追加します。
 ```groovy
 dependencies {
       // only required if you do not already have this reference
-      implementation(name:&#39;tealium-5.6.0&#39;, ext:&#39;aar&#39;)
+      implementation(name:'tealium-5.6.0', ext:'aar')
       // location module reference
-      implementation(name:&#39;tealium.location-1.0.0&#39;, ext:&#39;aar&#39;)
-      // Google&#39;s Location Services API reference
-      runtimeOnly &#39;com.google.android.gms:play-services-location:17.0.0&#39;
+      implementation(name:'tealium.location-1.0.0', ext:'aar')
+      // Google's Location Services API reference
+      runtimeOnly 'com.google.android.gms:play-services-location:17.0.0'
   }
 ```
 
 ## 初期化
 
-Tealium インスタンス名を [`TealiumLocation.setupInstance()`](/ja/platforms/android-java/api/tealium-location/#setupinstance)に渡して、Location モジュールを初期化します。
+Tealium インスタンス名を [`TealiumLocation.setupInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#setupinstance)に渡して、Location モジュールを初期化します。
 
 ```java
-Set&lt;String&gt; tealiumInstances = new HashSet&lt;&gt;();
+Set<String> tealiumInstances = new HashSet<>();
 tealiumInstances.add(TealiumHelper.TEALIUM_MAIN);
 
 mInstance = TealiumLocation.setupInstance(this, tealiumInstances);
@@ -107,7 +107,7 @@ Android位置情報の精度構成の詳細については、[こちら](https:/
 
 Android位置情報の間隔構成の詳細については、[こちら](https://developer.android.com/guide/topics/location/battery#frequency)を参照してください。
 
-位置追跡を開始するには、 [`TealiumLocation.startLocationUpdates()`](/ja/platforms/android-java/api/tealium-location/#startlocationupdates)を呼び出します。最初のパラメータを高精度のトラッキングの場合は`true`、精度を下げたトラッキングの場合は`false`に構成します。
+位置追跡を開始するには、 [`TealiumLocation.startLocationUpdates()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#startlocationupdates)を呼び出します。最初のパラメータを高精度のトラッキングの場合は`true`、精度を下げたトラッキングの場合は`false`に構成します。
 
 次の例では、高精度と60000ミリ秒（60秒）の時間間隔を使用します。
 ```java
@@ -115,7 +115,7 @@ TealiumLocation.getInstance().startLocationUpdates(true, 60000);
 
 ```
 
-継続的な位置追跡を無効にするには、 `TealiumLocation.destroyInstance()` または [`TealiumLocation.stopLocationUpdates()`](/ja/platforms/android-java/api/tealium-location/#stoplocationupdates)メソッドを呼び出します。
+継続的な位置追跡を無効にするには、 `TealiumLocation.destroyInstance()` または [`TealiumLocation.stopLocationUpdates()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#stoplocationupdates)メソッドを呼び出します。
 
 ### 位置情報へのアクセス許可
 
@@ -144,7 +144,7 @@ public void requestLocationPermission() {
 ```java
 if ((ContextCompat.checkSelfPermission(getApplicationContext(),
       Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-      &amp;&amp; ContextCompat.checkSelfPermission(getApplicationContext(),
+      && ContextCompat.checkSelfPermission(getApplicationContext(),
       Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
           requestLocationPermission();
   }
@@ -159,14 +159,14 @@ public void onRequestPermissionsResult(int requestCode,
         String message;
         if (requestCode == LOCATION_REQUEST_CODE) {
             // If request is cancelled, the result arrays are empty.
-            if ((grantResults.length &gt; 0) &amp;&amp; (grantResults[0]
+            if ((grantResults.length > 0) && (grantResults[0]
               == PackageManager.PERMISSION_GRANTED)) {
-                message = &#34;Location Permission Granted&#34;;
+                message = "Location Permission Granted";
             } else {
-                message = &#34;Location Permission Not Granted&#34;;
+                message = "Location Permission Not Granted";
             }
         } else {
-            message = &#34;Location Permission Not Granted&#34;;
+            message = "Location Permission Not Granted";
         }
         showToast(message);
   }
@@ -180,25 +180,25 @@ private void showToast(String message) {
 
 ### 最後に認識された位置
 
-継続的な位置追跡が無効になっている場合は、メソッド [`TealiumLocation.requestDeviceLastLocation()`](/ja/platforms/android-java/api/tealium-location/#requestdevicelastlocation)を使用して、最後に認識された位置をリクエストします。このメソッドは、デバイス上の他のアプリによって精度を確保する目的で使用されているロケーションクライアントに依存します。他のアプリが最新の位置情報を受信して​​いない場合、このメソッドは最後に認識された位置情報（またはその位置情報が使用不可の場合は`null`）を返します。
+継続的な位置追跡が無効になっている場合は、メソッド [`TealiumLocation.requestDeviceLastLocation()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#requestdevicelastlocation)を使用して、最後に認識された位置をリクエストします。このメソッドは、デバイス上の他のアプリによって精度を確保する目的で使用されているロケーションクライアントに依存します。他のアプリが最新の位置情報を受信して​​いない場合、このメソッドは最後に認識された位置情報（またはその位置情報が使用不可の場合は`null`）を返します。
 ```java
 TealiumLocation.getInstance().requestDeviceLastLocation();
 ```
 
 ## ジオフェンシング
 
-ジオフェンシングを有効にして初期化するには、次のいずれかの方法で、[ジオフェンスJSONファイル](/ja/platforms/getting-started/location/#json-file)をセットアップメソッドに指定します。
+ジオフェンシングを有効にして初期化するには、次のいずれかの方法で、[ジオフェンスJSONファイル](https://docs.tealium.com/ja/platforms/getting-started/location/#json-file)をセットアップメソッドに指定します。
 
 * **ホスト型URL**
-メソッド [`TealiumLocation.setupInstanceWithUrl()`](/ja/platforms/android-java/api/tealium-location/#setupinstancewithurl)への URL として指定されている独自のホスト型ジオフェンス ファイルを使用します。
+メソッド [`TealiumLocation.setupInstanceWithUrl()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#setupinstancewithurl)への URL として指定されている独自のホスト型ジオフェンス ファイルを使用します。
 このオプションは、公開構成URLをオーバーライドした場合、または[ホスト型データレイヤー](https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572)を使用する必要がある場合に推奨されます。
 ```java
-TealiumLocation.setupInstanceWithUrl(this, tealiumInstances, &#34;https://example.com/geofences.json&#34;);
+TealiumLocation.setupInstanceWithUrl(this, tealiumInstances, "https://example.com/geofences.json");
 ```
 * **ローカルファイル**
-アプリの Assets ディレクトリに保存されているジオフェンス ファイルを [`TealiumLocation.setupInstanceWithFile()`](/ja/platforms/android-java/api/tealium-location/#setupinstancewithfile)で使用します。
+アプリの Assets ディレクトリに保存されているジオフェンス ファイルを [`TealiumLocation.setupInstanceWithFile()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#setupinstancewithfile)で使用します。
 ```java
-TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.json&#34;);
+TealiumLocation.setupInstanceWithFile(this, tealiumInstances, "geofences.json");
 ```
 
 ## 追加の検討事項
@@ -210,7 +210,7 @@ TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.jso
 ジオフェンス遷移タイプがトリガーされると、`GEOFENCE_EVENT`ブロードキャストが送信されます。Androidは、複数の`BroadcastReceiver`が定義されている場合でも、_最初_のレシーバのみをこの特定のブロードキャストに対して呼び出します。`GEOFENCE_EVENT`ブロードキャストに対応したサードパーティSDKの場合は、`GEOFENCE_EVENT`ブロードキャストの各レシーバの`onReceive()`メソッドを呼び出す「プロキシ」`BroadcastReceiver`を実装します。
 
 **ジオフェンスの初期化**
-作成時にユーザーがジオフェンス内にいる場合、`&#34;enter&#34;`遷移イベントはトリガーされません。これは、`&#34;exit&#34;`および`&#34;enter&#34;`の遷移イベントが境界を横断するときにトリガーされ、境界内に存在するときにはトリガーされないためです。
+作成時にユーザーがジオフェンス内にいる場合、`"enter"`遷移イベントはトリガーされません。これは、`"exit"`および`"enter"`の遷移イベントが境界を横断するときにトリガーされ、境界内に存在するときにはトリガーされないためです。
 
 **遅延：**
 ジオフェンシング機能を使用するときは、次の点を考慮してください。
@@ -228,9 +228,9 @@ TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.jso
 
 | 変数名       | 型| 説明| 例|
 |:--------------------|:---------|:--------------------------------------------------------------------------|:--------------|
-| `latitude`          | `String` | 最後に記録されたユーザーの位置の緯度| `&#34;32.906119&#34;` |
-| `longitude`         | `String` | 最後に記録されたユーザーの位置の経度| `&#34;-117.2367&#34;` |
-| `location_accuracy` | `String` | Locationモジュールの精度構成（`&#34;high&#34;`、`&#34;low&#34;`など）| `&#34;high&#34;`      |
+| `latitude`          | `String` | 最後に記録されたユーザーの位置の緯度| `"32.906119"` |
+| `longitude`         | `String` | 最後に記録されたユーザーの位置の経度| `"-117.2367"` |
+| `location_accuracy` | `String` | Locationモジュールの精度構成（`"high"`、`"low"`など）| `"high"`      |
 
 ジオフェンシング中にユーザーの遷移状態が変化すると、位置データを含むトラッキングコールが送信されます。遷移状態の変化には、指定された期間にユーザーがジオフェンス内に進入、退出、滞留することなどが含まれます。Androidメソッド[setLoiteringDelay()](https://developers.google.com/android/reference/com/google/android/gms/location/Geofence.Builder#setLoiteringDelay(int))を使用して、滞留アラート送信の基準とする徘徊期間を構成する必要があります。
 
@@ -238,11 +238,11 @@ TealiumLocation.setupInstanceWithFile(this, tealiumInstances, &#34;geofences.jso
 
 | 変数名              | 型| 説明| 例|
 |:---------------------------|:---------|:--------------------------------------|:-----------------------------------------------------------------|
-| `tealium_event`            | `String` | Tealiumのトラッキング対象ジオフェンスイベント| `&#34;geofence_entered&#34;`、`&#34;geofence_exited&#34;`、または`&#34;geofence_dwell&#34;`|
-| `geofence_name`            | `String` | ジオフェンス地域の名前| `&#34;Tealium_San_Diego&#34;`                                            |
-| `geofence_transition_type` | `String` | ジオフェンス遷移イベントのタイプ| `&#34;geofence_entered&#34;`、`&#34;geofence_exited&#34;`、または`&#34;geofence_dwell&#34;`|
+| `tealium_event`            | `String` | Tealiumのトラッキング対象ジオフェンスイベント| `"geofence_entered"`、`"geofence_exited"`、または`"geofence_dwell"`|
+| `geofence_name`            | `String` | ジオフェンス地域の名前| `"Tealium_San_Diego"`                                            |
+| `geofence_transition_type` | `String` | ジオフェンス遷移イベントのタイプ| `"geofence_entered"`、`"geofence_exited"`、または`"geofence_dwell"`|
 
 ## APIリファレンス
 
-Location モジュールで使用されるメソッドのリファレンスについては、Tealium SDK for Android API の [`TealiumLocation`](/ja/platforms/android-java/api/tealium-location/#class-tealiumlocation) クラスを参照してください。
+Location モジュールで使用されるメソッドのリファレンスについては、Tealium SDK for Android API の [`TealiumLocation`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-location/#class-tealiumlocation) クラスを参照してください。
 

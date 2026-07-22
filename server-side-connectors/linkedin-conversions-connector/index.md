@@ -3,7 +3,7 @@ title: LinkedIn Conversions Connector Setup Guide
 description: This article describes how to set up the LinkedIn Conversions connector.
 url: https://docs.tealium.com/server-side-connectors/linkedin-conversions-connector/
 ---
-The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser&#39;s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API strengthens performance and decreases cost per action with more complete attribution, improved reliability, and optimized delivery.
+The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser's server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API strengthens performance and decreases cost per action with more complete attribution, improved reliability, and optimized delivery.
 
 ## API information
 
@@ -12,11 +12,11 @@ This connector uses the following vendor API:
 * API Name: LinkedIn API
 * API Version: 202601
 * API Endpoint: `https://api.linkedin.com/rest`
-* Documentation: [LinkedIn: Conversions API](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads-reporting/conversions-api?view=li-lms-2026-01&amp;tabs=http)
+* Documentation: [LinkedIn: Conversions API](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads-reporting/conversions-api?view=li-lms-2026-01&tabs=http)
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -32,7 +32,7 @@ Sign in to LinkedIn to use the connector.
 
 ## Deduplication
 
-Deduplication works by comparing events sent from both the Insight Tag and CAPI. If both sources send the same event, the system keeps only one and discards the duplicate to ensure accurate counting. Send the same events through both sources to combine CAPI data with your [LinkedIn Insight tag]() for complete visibility into campaign conversions.
+Deduplication works by comparing events sent from both the Insight Tag and CAPI. If both sources send the same event, the system keeps only one and discards the duplicate to ensure accurate counting. Send the same events through both sources to combine CAPI data with your [LinkedIn Insight tag](https://docs.tealium.com/linkedin-insight-tag/) for complete visibility into campaign conversions.
 
 To configure this connector action to receive event IDs from the LinkedIn Insights tag in your iQ Tag Management account, look for event attributes using the following naming convention:
 
@@ -40,9 +40,9 @@ To configure this connector action to receive event IDs from the LinkedIn Insigh
 linkedin_event_id_{CONVERSION_ID}_{TAG_UID}
 ```
 
-Find your tag&#39;s UID in the Tealium iQ **Tags** table or the tag details screen:
+Find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
 
-![](/images/server-side-connectors/linkedin-insight-tag-uid.png)
+![](https://docs.tealium.com/images/server-side-connectors/linkedin-insight-tag-uid.png)
 
 For example, an event from a tag with a UID of `172` would send the following attribute value:
 
@@ -52,18 +52,18 @@ linkedin_event_id_11563522_172
 
 Your **Conversion ID** can be found in your LinkedIn **Campaign Manager** account while configuring your LinkedIn Insights tag to track a specific event:
 
-1. Go to **Analyze** &gt; **Conversion Tracking**. 
-1. Select **Create Conversion** &gt; **Conversions API or CSV**. For more information, see [LinkedIn: Conversion Tracking](https://www.linkedin.com/help/lms/answer/a420536).
+1. Go to **Analyze** > **Conversion Tracking**. 
+1. Select **Create Conversion** > **Conversions API or CSV**. For more information, see [LinkedIn: Conversion Tracking](https://www.linkedin.com/help/lms/answer/a420536).
 1. Select the integration and enter the required **Settings** values, including the **Key Conversion Behavior** that you want to track.
 1. Select **Next Step**.
 1. Select any campaigns to be tracked.
-1. From the left side menu, select **Analyze &gt; Insight Tag**.
+1. From the left side menu, select **Analyze > Insight Tag**.
 1. If you use a tag manager, click **I will use a tag manager** and copy the partner ID listed on the page. The Partner ID value is required in the Insights Tag configuration, but is not a required mapping for CAPI.
 1. After all required forms are created, click **Create**.
 
 ### Automatic deduplication
 
-When the **Automatic Deduplication** values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. Enable Generate Event ID on the LinkedIn Insights tag with the tag&#39;s UID. Also, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. Enable Generate Event ID on the LinkedIn Insights tag with the tag's UID. Also, the following approach may still be needed when using EventStream without Tealium iQ.
 
 The connector uses the following order of operations:
 
@@ -92,17 +92,21 @@ Each approach carries trade-offs in accuracy, visibility, and reporting alignmen
 
 If you are using the LinkedIn Insight Tag with this connector, persist the LinkedIn Click ID as a first-party cookie.
 
- By default, the connector reads `li_fat_id` from the querystring parameter automatically. Follow these steps only if you have disabled automapping or need to persist `li_fat_id` as a first-party cookie. 
 
-1. Create a [Persist Data Value extension]().
+<blockquote>
+By default, the connector reads `li_fat_id` from the querystring parameter automatically. Follow these steps only if you have disabled automapping or need to persist `li_fat_id` as a first-party cookie.
+</blockquote>
+
+
+1. Create a [Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/).
 1. Add the querystring parameter `li_fat_id` to your data layer.
-1. Set the value of `li_fat_id` to the `li_fat_id` cookie.![](/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-1.png)
+1. Set the value of `li_fat_id` to the `li_fat_id` cookie.![](https://docs.tealium.com/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-1.png)
 1. In EventStream, create a first party cookie attribute named `li_fat_id_cookie`.
-1. In the connector, map `li_fat_id_cookie` to the LinkedIn First Party Ads Tracking UUID.![](/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png)
+1. In the connector, map `li_fat_id_cookie` to the LinkedIn First Party Ads Tracking UUID.![](https://docs.tealium.com/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png)
 
 ## Create a conversion
 
-If you create a conversion in Tealium, you do not need to configure a conversion event in LinkedIn Campaign Manager. Use Tealium to create a conversion event tracked in your **Campaign Manager** interface. These values track conversion events and associate them with campaigns. The conversion events appear in the **Analyze &gt; Conversion Tracking** section with a data source value of `Tealium` in the LinkedIn Campaign Manager platform.
+If you create a conversion in Tealium, you do not need to configure a conversion event in LinkedIn Campaign Manager. Use Tealium to create a conversion event tracked in your **Campaign Manager** interface. These values track conversion events and associate them with campaigns. The conversion events appear in the **Analyze > Conversion Tracking** section with a data source value of `Tealium` in the LinkedIn Campaign Manager platform.
 
 | Field / parameter | Description | Type |
 | --- | --- | --- |
@@ -142,7 +146,7 @@ The `type` parameter specifies the type of conversion to track for this conversi
 | Job Apply | The user clicked apply to a job on LinkedIn. |
 | Key Page View | The user viewed an important web page or app screen. |
 | Lead | The user filled out a lead generation form. |
-| Login | The user logged in to the advertiser&#39;s service account. |
+| Login | The user logged in to the advertiser's service account. |
 | Other | Something that is not listed. |
 | Outbound Click | The user left the app or page by clicking a link. |
 | Phone Call | The user started a call or performed a phone-call specific event or submission. |
@@ -159,7 +163,7 @@ The `type` parameter specifies the type of conversion to track for this conversi
 | Start Trial | The user started a trial subscription. |
 | Submit Application | The user submitted an application (same as Complete Signup). |
 | Subscribe | The user subscribed to a service. |
-| Talent Lead | User submitted their information as a lead on LinkedIn Talent Media&#39;s Pipeline Builder page. |
+| Talent Lead | User submitted their information as a lead on LinkedIn Talent Media's Pipeline Builder page. |
 | View Content | The user viewed a section of the page or app screen (webview). |
 | View Video | The user played a video. |
 
@@ -189,7 +193,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 10 minutes
@@ -197,7 +201,11 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Parameters
 
- You must send at least one of the following parameters: **Email Address**, **LinkedIn First Party Ads Tracking UUID**, **Acxiom ID**, **Oracle Moat ID**, or **First Name** and **Last Name**. If you send any user information (for example: **Company**, **Title**, or **Country Code**), you must include the **First Name** and **Last Name** parameters, regardless if you provide other identity parameters. 
+
+<blockquote>
+You must send at least one of the following parameters: **Email Address**, **LinkedIn First Party Ads Tracking UUID**, **Acxiom ID**, **Oracle Moat ID**, or **First Name** and **Last Name**. If you send any user information (for example: **Company**, **Title**, or **Country Code**), you must include the **First Name** and **Last Name** parameters, regardless if you provide other identity parameters.
+</blockquote>
+
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -214,13 +222,13 @@ This action uses batched requests to support high-volume data transfers to the v
 | Country Code | ISO 3166 standardized two letter country code representing the country of the contact. |
 | External IDs | A list of `externalIds`. An `externalId` contains an advertiser-provided identifier representing the user who triggered the conversion event. For more information, see [LinkedIn: Custom Matching Identifiers](https://learn.microsoft.com/en-us/linkedin/marketing/conversions/custom-matching-identifiers?view=li-lms-2025-03). |
 | Client IP Address (IPv4) | Client IPv4 address sent unhashed to LinkedIn. Only valid IPv4 values are sent; IPv6 and invalid values are ignored. |
-| Google Advertising ID (GAID) | Google Advertising ID sourced from an explicit attribute mapping. Map a dedicated attribute (for example, `google_advertising_id` or `gaid`) that your app or mobile backend populates with the device&#39;s GAID. The value must be a UUID-format string (for example, `38400000-8cf0-11bd-b23e-10b96e40000d`). If the mapped value fails format validation or no mapping is configured, the connector omits GAID from the event. Note: `_ga` or `_gid` are not valid GAIDs. |
+| Google Advertising ID (GAID) | Google Advertising ID sourced from an explicit attribute mapping. Map a dedicated attribute (for example, `google_advertising_id` or `gaid`) that your app or mobile backend populates with the device's GAID. The value must be a UUID-format string (for example, `38400000-8cf0-11bd-b23e-10b96e40000d`). If the mapped value fails format validation or no mapping is configured, the connector omits GAID from the event. Note: `_ga` or `_gid` are not valid GAIDs. |
 
 #### GAID sourcing
 
 GAID is sourced only from an explicit attribute mapping. The connector does not infer GAID from any other data in the event.
 
-To send GAID, create a dedicated attribute in your data layer (for example, `google_advertising_id` or `gaid`) and populate it from your mobile app or backend using the device&#39;s Google Advertising ID. Map that attribute to the **Google Advertising ID (GAID)** field in the connector action.
+To send GAID, create a dedicated attribute in your data layer (for example, `google_advertising_id` or `gaid`) and populate it from your mobile app or backend using the device's Google Advertising ID. Map that attribute to the **Google Advertising ID (GAID)** field in the connector action.
 
 The value must match UUID format (36 characters, hex digits separated by hyphens). If the mapped value does not match this format, the connector drops GAID and sends the event without it. No error is raised and other identifiers are unaffected.
 

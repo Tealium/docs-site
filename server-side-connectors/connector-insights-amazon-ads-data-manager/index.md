@@ -9,9 +9,9 @@ The Amazon Ads Data Manager connector insights is an integration with Amazon Ads
 
 ## Access
 
-To access connector insights, go to **Connect &gt; Audience Connectors**, find the Amazon Ads Data Manager connector action, and click **Insights**.
+Go to **Connect > Connectors**, find the **Amazon Ads Data Manager** connector, and select an action. On the action screen, click the **Insights** tab.
 
-![](/images/server-side-connectors/connector-insights-btn.png)
+![](https://docs.tealium.com/images/server-side-connectors/connector-insights-btn.png)
 
 ## Metrics
 

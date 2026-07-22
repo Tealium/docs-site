@@ -9,4 +9,4 @@ url: https://docs.tealium.com/ja/server-side/attributes/enrichments/enrichments/
 
 2つ以上のエンリッチメントが同じ属性に依存している場合、それらは_リンクされたエンリッチメント_となります。以下の例は、訪問の開始と終了に適用されたエンリッチメントを示しています。`Visit Start`属性のエンリッチメントは`Visit End`属性を使用し、その逆も同様です。各エンリッチメントが属性によって他方にリンクされているため、それらはリンクされたエンリッチメントと見なされます。
 
-![](/images/server-side/whiteui-usingenrichments-visitstart-and-visitend-linked-enrichments-combined-screens.png)
+![](https://docs.tealium.com/images/server-side/whiteui-usingenrichments-visitstart-and-visitend-linked-enrichments-combined-screens.png)

@@ -12,11 +12,15 @@ url: https://docs.tealium.com/ja/iq-tag-management/labels/about/
 * ロードルール
 * 拡張機能
 
-ラベルは、[リソースロック]()という機能を使用して特定の構成アイテムへのアクセスを制限するために使用できます。
+
+<blockquote>
+ラベルは、[リソースロック](https://docs.tealium.com/resource-locks/)という機能を使用して特定の構成アイテムへのアクセスを制限するために使用できます。
+</blockquote>
+
 
 ラベルを作成し、アイテムに割り当てた後、ラベルでビューをフィルタリングできます。ラベルは、別のチームが管理するアイテムや、特定の地理的地域に関連する構成、特定のタイプのベンダータグの構成など、関連する要素をグループ化するのに便利です。
 
-![](/images/iq-tag-management/whiteui-tiq-labels-viewlabelscolumn.png)
+![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-labels-viewlabelscolumn.png)
 
 ### サンプルラベル
 

@@ -9,15 +9,15 @@ When you add, edit, or delete an element in your Customer Data Hub account you m
 
 The **Save/Publish** button will change to green to indicate that there are unsaved changes:
 
-![](/images/tutorials/getting-started-save-publish-button.png)
+![](https://docs.tealium.com/images/tutorials/getting-started-save-publish-button.png)
 
 ## Publish
 
 Once you save your changes, you can log out or close the browser and your configuration will be preserved for you or the next user that logs into the account.
 
-Saving ensures that you don&#39;t lose your work between working sessions, whereas publishing activates your changes. Publishing affects your connectors and actions. For example, you could set up a new connector action and save it without publishing and no actions would get triggered. But once you publish, the changes are activated and connector actions begin triggering and sending data to your vendors.
+Saving ensures that you don't lose your work between working sessions, whereas publishing activates your changes. Publishing affects your connectors and actions. For example, you could set up a new connector action and save it without publishing and no actions would get triggered. But once you publish, the changes are activated and connector actions begin triggering and sending data to your vendors.
 
-The Customer Data Hub only has one publish environment, the production one, so every publish affects your production environment. In lieu of a QA environment, you can create &#34;test&#34; attributes that you populate during your testing to isolate new configurations.
+The Customer Data Hub only has one publish environment, the production one, so every publish affects your production environment. In lieu of a QA environment, you can create "test" attributes that you populate during your testing to isolate new configurations.
 
 ## Versions
 

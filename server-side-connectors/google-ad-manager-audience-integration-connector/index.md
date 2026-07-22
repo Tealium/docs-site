@@ -8,7 +8,7 @@ The Google Ad Manager Audience Integration connector allows publishers to add vi
 ## Prerequisites
 
 * Link Tealium to Google Ad Manager using the **Linked Accounts** section in the Google Ad Manager UI.
-* Generate and send a PPID client-side for logged-in users using [Google Ad Manager 360 Audience Pixel tag]() or [Google Publisher tag]().
+* Generate and send a PPID client-side for logged-in users using [Google Ad Manager 360 Audience Pixel tag](https://docs.tealium.com/google-ad-manager-360-audience-pixel-tag/) or [Google Publisher tag](https://docs.tealium.com/google-publisher-tag/).
 * Set up the PPID as a Tealium attribute for use in the connector.
 
 ## API Information
@@ -28,12 +28,12 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Customer ID**. 
-(Required) Customer ID for the account linked to Tealium in the Ad Manager UI. In Ad Manager, go to **Tools and Settings &gt; Linked Accounts** to create a link to Tealium.
+(Required) Customer ID for the account linked to Tealium in the Ad Manager UI. In Ad Manager, go to **Tools and Settings > Linked Accounts** to create a link to Tealium.
 
 ## Actions
 
@@ -43,7 +43,7 @@ The following section lists the supported parameters for each action.
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100,000
 * Max time since oldest request: 1440 minutes
@@ -53,14 +53,14 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience List | Select an Audience List.&lt;br&gt;Note: Only lists created using the connector are available. |
+| Audience List | Select an Audience List.<br>Note: Only lists created using the connector are available. |
 | Publisher Provided ID | (Required) Must be an alphanumeric or UUID HEX value between 32 and 150 characters. |
 
 ### Remove from Audience List
 
 #### Batch limits
 
-This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 100,000
 * Max time since oldest request: 1440 minutes
@@ -70,7 +70,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience List | Select an Audience List.&lt;br&gt;Note: Only lists created using the connector are available. |
+| Audience List | Select an Audience List.<br>Note: Only lists created using the connector are available. |
 | Publisher Provided ID | (Required) Must be an alphanumeric or UUID HEX value between 32 and 150 characters. |
 
 ## Consent

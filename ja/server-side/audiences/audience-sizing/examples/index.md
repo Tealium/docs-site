@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 
 以下の手順を使用します：
 
-1. サイドバーで **Activate &gt; Discover** に移動します。
+1. サイドバーで **Activate > Discover** に移動します。
 1. **Audience Sizing** タブをクリックします。
 1. 過去7日間を表す日付範囲を選択します。
 1. 次のルールを選択または作成します：
@@ -31,19 +31,19 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 [
   [
     {
-      &#34;input&#34;: &#34;Favorite Product Category (favorite)&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;Jeans&#34;
+      "input": "Favorite Product Category (favorite)",
+      "operator": "equals",
+      "filter": "Jeans"
     },
     {
-      &#34;input&#34;: &#34;Lifetime Order Value&#34;,
-      &#34;operator&#34;: &#34;less than or equal to&#34;,
-      &#34;filter&#34;: &#34;500&#34;
+      "input": "Lifetime Order Value",
+      "operator": "less than or equal to",
+      "filter": "500"
     },
     {
-      &#34;input&#34;: &#34;Days since last purchase&#34;,
-      &#34;operator&#34;: &#34;greater than&#34;,
-      &#34;filter&#34;: &#34;30&#34;
+      "input": "Days since last purchase",
+      "operator": "greater than",
+      "filter": "30"
     }
   ]
 ]
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 * 最もエンゲージメントのあるマーケティングチャネル。
 * 彼らのクーポン使用頻度。
 
-1. サイドバーで **Activate &gt; Discover** に移動します。
+1. サイドバーで **Activate > Discover** に移動します。
 1. **Audience Sizing** タブをクリックします。
 1. 12月のホリデーシーズンを表す日付範囲を選択します（例：12月1日 - 12月31日）。
 1. 次のルールを選択または作成します：
@@ -73,19 +73,19 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 [
   [
     {
-      &#34;input&#34;: &#34;VIP Customer&#34;,
-      &#34;operator&#34;: &#34;is assigned&#34;,
-      &#34;filter&#34;: &#34;&#34;
+      "input": "VIP Customer",
+      "operator": "is assigned",
+      "filter": ""
     },
     {
-      &#34;input&#34;: &#34;Marketing Channel Engagement (favorite)&#34;,
-      &#34;operator&#34;: &#34;equals&#34;,
-      &#34;filter&#34;: &#34;email&#34;
+      "input": "Marketing Channel Engagement (favorite)",
+      "operator": "equals",
+      "filter": "email"
     },
     {
-      &#34;input&#34;: &#34;Coupon Usage Ratio&#34;,
-      &#34;operator&#34;: &#34;greater than or equal to&#34;,
-      &#34;filter&#34;: &#34;0.50&#34;
+      "input": "Coupon Usage Ratio",
+      "operator": "greater than or equal to",
+      "filter": "0.50"
     }
   ]
 ]

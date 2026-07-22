@@ -4,7 +4,9 @@ description: This article describes the request format for Tealium APIs.
 url: https://docs.tealium.com/api-v1/getting-started/request-format/
 ---
 
-This is an older version of [the current Tealium API]().
+<blockquote>
+This is an older version of [the current Tealium API](https://docs.tealium.com/api-authentication/).
+</blockquote>
 
 
 ## Root URL

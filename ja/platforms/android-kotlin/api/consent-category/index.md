@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-category/
 | ----- | ------ |
 | [`ALL`](#all) | サポートされているすべての同意カテゴリのリストを返します |
 | [`consentCategory(String)`](#consentcategory-string) | 与えられたStringに関連するConsentCategoryを返します。それ以外の場合はnull |
-| [`consentCategories(Set&lt;String&gt;)`](#consentcategories-set-string) | 与えられたStringsに関連する`ConsentCategory`オブジェクトのセットを返します。無効なエントリは無視されます。 |
+| [`consentCategories(Set<String>)`](#consentcategories-set-string) | 与えられたStringsに関連する`ConsentCategory`オブジェクトのセットを返します。無効なエントリは無視されます。 |
 
 
 ### `ALL`
@@ -49,14 +49,14 @@ setOf(
 与えられたStringに対応する`ConsentCategory`を返します。パラメータは大文字小文字を区別しません。
 
 ```java
-ConsentCategory.consentCategory(&#34;cdp&#34;) // ConsentCategory.CDPを返します
+ConsentCategory.consentCategory("cdp") // ConsentCategory.CDPを返します
 ```
 
-### `consentCategories(Set&lt;String&gt;)`
+### `consentCategories(Set<String>)`
 
 与えられたStringsに対応する`ConsentCategory`オブジェクトのセットを返します。パラメータは大文字小文字を区別しません。
 
 ```java
-ConsentCategory.consentCategories(setOf(&#34;cdp&#34;, &#34;invalid&#34;, &#34;email&#34;))
+ConsentCategory.consentCategories(setOf("cdp", "invalid", "email"))
 // setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)を返します
 ```

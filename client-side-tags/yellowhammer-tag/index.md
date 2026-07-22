@@ -6,20 +6,20 @@ url: https://docs.tealium.com/client-side-tags/yellowhammer-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
-* Path (tr): Path is part of the image pixel just after jump.omnitarget.com. For example, `tr123456` in &lt;http://jump.omnitarget.com/tr123456&gt;?.
+* Path (tr): Path is part of the image pixel just after jump.omnitarget.com. For example, `tr123456` in <http://jump.omnitarget.com/tr123456>?.
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The destination variables for the YellowHammer (Omnitarget) tag are built into its **Data Mapping** tab. Available categories are:
 

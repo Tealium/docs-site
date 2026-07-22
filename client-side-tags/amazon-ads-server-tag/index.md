@@ -31,7 +31,7 @@ Amazon Ads Server is a single and secure tool to deploy, manage, and update digi
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Amazon Ads Server tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Amazon Ads Server tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -40,7 +40,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -48,33 +48,33 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-| `id` |  &lt;ul&gt;&lt;li&gt;VersaTag ID&lt;/li&gt;&lt;/ul&gt; |
-|`url`|  &lt;ul&gt;&lt;li&gt;URL&lt;/li&gt;&lt;/ul&gt; |
-|`mobile`|  &lt;ul&gt;&lt;li&gt;Mobile&lt;/li&gt;&lt;li&gt;Default value is `0`.&lt;/li&gt;&lt;/ul&gt; |
-|`sync`|  &lt;ul&gt;&lt;li&gt;Sync&lt;/li&gt;&lt;li&gt;Default value is `0`.&lt;/li&gt;&lt;/ul&gt; |
-|`dispType`|  &lt;ul&gt;&lt;li&gt;Display type.&lt;/li&gt;&lt;li&gt;Default value is `js`.&lt;/li&gt;&lt;/ul&gt; |
-|`ActivityID`|  &lt;ul&gt;&lt;li&gt;Activity ID&lt;/li&gt;&lt;/ul&gt; |
-|`Session`|  &lt;ul&gt;&lt;li&gt;Session&lt;/li&gt;&lt;/ul&gt; |
+| `id` |  <ul><li>VersaTag ID</li></ul> |
+|`url`|  <ul><li>URL</li></ul> |
+|`mobile`|  <ul><li>Mobile</li><li>Default value is `0`.</li></ul> |
+|`sync`|  <ul><li>Sync</li><li>Default value is `0`.</li></ul> |
+|`dispType`|  <ul><li>Display type.</li><li>Default value is `js`.</li></ul> |
+|`ActivityID`|  <ul><li>Activity ID</li></ul> |
+|`Session`|  <ul><li>Session</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID.</li><li>Overrides `_corder`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li></ul> |
 
 ### Configurable Parameters
 
 |Variable| Description|
 |---| ---|
-|`act.###`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Activity Params.&lt;/li&gt;&lt;/ul&gt; |
-|`rtp.###`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Retargeting Params.&lt;/li&gt;&lt;/ul&gt; |
-|`drtp.###`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Dynamic Retargeting Params.&lt;/li&gt;&lt;/ul&gt; |
-|`cp.###`|  &lt;ul&gt;&lt;li&gt;String&lt;/li&gt;&lt;li&gt;Conditional Params.&lt;/li&gt;&lt;/ul&gt; |
-|`activityParams`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;Activity Params.&lt;/li&gt;&lt;/ul&gt; |
-|`retargetParams`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;Retargeting Params.&lt;/li&gt;&lt;/ul&gt; |
-|`dynamicRetargetParams`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;Dynamic Retargeting Params.&lt;/li&gt;&lt;/ul&gt; |
-|`conditionalParams`|  &lt;ul&gt;&lt;li&gt;Object&lt;/li&gt;&lt;li&gt;`meta charset=&#34;utf-8&#34;`&lt;/li&gt;&lt;li&gt;Conditional Params.&lt;/li&gt;&lt;/ul&gt; |
+|`act.###`|  <ul><li>String</li><li>Activity Params.</li></ul> |
+|`rtp.###`|  <ul><li>String</li><li>Retargeting Params.</li></ul> |
+|`drtp.###`|  <ul><li>String</li><li>Dynamic Retargeting Params.</li></ul> |
+|`cp.###`|  <ul><li>String</li><li>Conditional Params.</li></ul> |
+|`activityParams`|  <ul><li>Object</li><li>Activity Params.</li></ul> |
+|`retargetParams`|  <ul><li>Object</li><li>Retargeting Params.</li></ul> |
+|`dynamicRetargetParams`|  <ul><li>Object</li><li>Dynamic Retargeting Params.</li></ul> |
+|`conditionalParams`|  <ul><li>Object</li><li>`meta charset="utf-8"`</li><li>Conditional Params.</li></ul> |

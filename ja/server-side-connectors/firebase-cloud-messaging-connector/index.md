@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -44,13 +44,17 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 
 #### パラメータ
 
- メッセージの対象を指定するには、以下のパラメータのうち**いずれか一つ**を構成してください: `Token`, `Topic`, `Condition`。
+
+<blockquote>
+メッセージの対象を指定するには、以下のパラメータのうち**いずれか一つ**を構成してください: `Token`, `Topic`, `Condition`。
+</blockquote>
+
 
 | **パラメータ** | **説明** |
 | --- | --- |
 | Token | メッセージを送信する登録トークン。 |
 | Topic | メッセージを送信する購読済みトピック名。例: `weather`。注: `/topics/` プレフィックスは含めないでください。 |
-| Condition | トピックの購読条件を指定してメッセージを送信します。例: `foo in topics &amp;&amp; bar in topics`。 |
+| Condition | トピックの購読条件を指定してメッセージを送信します。例: `foo in topics && bar in topics`。 |
 | Analytics Label | メッセージの分析データに関連付けられたラベル。 |
 | Collapse Key | メッセージのグループを識別するキーで、配信が再開されたときに最後のメッセージのみが送信されるようにすることができます。同時に許可される異なるコラプスキーは最大4つです。 |
 | Priority | メッセージの優先度。値は `NORMAL` または `HIGH` があります。詳細については、[メッセージの優先度の構成](https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message)を参照してください。 |
@@ -85,11 +89,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 | Color Red | 全体のライトカラーの中で赤の量を表す `0` から `1` の間の値です。この値を Color Green および Color Blue で構成した値と組み合わせて、全体の色を決定します。例えば、Color Red = `1`, Color Blue = `.5`, Color Green = `0` はフューシャまたは濃いピンクを作り出します。 |
 | Color Green | 全体のライトカラーの中で緑の量を表す `0` から `1` の間の値です。この値を Color Red および Color Blue で構成した値と組み合わせて、全体の色を決定します。 |
 | Color Blue | 全体のライトカラーの中で青の量を表す `0` から `1` の間の値です。この値を Color Green および Color Red で構成した値と組み合わせて、全体の色を決定します。 |
-| Color Alpha | この色がピクセルに適用されるべき割合を表す分数です。つまり、最終的なピクセルの色は次の方程式によって定義されます: **ピクセルの色 = alpha \* (この色) &#43; (1.0 - alpha) \* (背景色)**。 |
+| Color Alpha | この色がピクセルに適用されるべき割合を表す分数です。つまり、最終的なピクセルの色は次の方程式によって定義されます: **ピクセルの色 = alpha \* (この色) + (1.0 - alpha) \* (背景色)**。 |
 | Image | 通知に表示される画像のURL。 |
-| Data | `&#34;key&#34; : &#34;value&#34;` ペア形式のユーザー指定データ。 |
-| テンプレート変数 | **テンプレート**用のテンプレート変数をデータ入力として提供します。詳細と使用例については、を参照してください。&lt;ul&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。例：`{{template_name}}` |
+| Data | `"key" : "value"` ペア形式のユーザー指定データ。 |
+| テンプレート変数 | **テンプレート**用のテンプレート変数をデータ入力として提供します。詳細と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。<ul><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。例：`{{template_name}}` |
 
 * [リソース: メッセージ](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#resource:-message)、[AndroidConfig](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig)のドキュメントを参照して使用例を確認してください。
 
@@ -99,13 +103,17 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 
 #### パラメータ
 
- メッセージのターゲットを指定するには、次のパラメータの**いずれか一つ**を構成します：`Token`、`Topic`、または`Condition`。 
+
+<blockquote>
+メッセージのターゲットを指定するには、次のパラメータの**いずれか一つ**を構成します：`Token`、`Topic`、または`Condition`。
+</blockquote>
+
 
 | **パラメータ** | **説明** |
 | --- | --- |
 | Token | メッセージを送信する登録トークン。 |
 | Topic | メッセージを送信する購読済みトピック名。例：`weather`。注：`/topics/`プレフィックスは含めないでください。 |
-| Condition | トピックの購読条件を送信する。例：`foo in topics &amp;&amp; bar in topics`。 |
+| Condition | トピックの購読条件を送信する。例：`foo in topics && bar in topics`。 |
 | Analytics Label | メッセージの分析データに関連付けられたラベル。 |
 | Image | 通知に表示される画像のURL。 |
 | Title | 通知のタイトル。Apple Watchはこの文字列を短い見た目の通知インターフェースで表示します。 |
@@ -134,10 +142,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 | Content State | **Live Activity**の更新されたコンテンツまたは最終コンテンツを含むJSONオブジェクト。このパラメータの内容は、カスタム[ActivityAttributes](https://developer.apple.com/documentation/activitykit/activityattributes)実装で説明するデータと一致する必要があります。このオプションはテンプレートをサポートしています。 |
 | Timestamp | リモート通知が**Live Activity**を更新または終了するために送信される時刻を指定するUNIXタイムスタンプ。 |
 | Events | リモートプッシュ通知で進行中の**Live Activity**を更新または終了するかどうかを指定します。値は`update`または`end`になります。 |
-| Data | `&#34;key&#34; : &#34;value&#34;`ペア形式のユーザー指定データ。 |
+| Data | `"key" : "value"`ペア形式のユーザー指定データ。 |
 | Headers | Apple Push Notification Serviceで定義されたHTTPリクエストヘッダー。**apns-expiration**や**apns-priority**などのサポートされているヘッダーについては、[APNsリクエストヘッダー](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)を参照してください。[Firebaseリソース: メッセージ](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification)の詳細を参照してください。|
-| テンプレート変数 | **テンプレート**用のテンプレート変数をデータ入力として提供します。詳細と使用例については、を参照してください。&lt;ul&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| テンプレート | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。例：`{{template_name}}` |
+| テンプレート変数 | **テンプレート**用のテンプレート変数をデータ入力として提供します。詳細と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。<ul><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| テンプレート | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。例：`{{template_name}}` |
 
 * [AndroidConfig](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig)のドキュメントを参照して使用例を確認してください。
 
@@ -147,13 +155,17 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 
 #### パラメータ
 
- メッセージの対象を指定するには、以下のパラメータのうち**いずれか一つ**を構成してください: `Token`, `Topic`, `Condition`。
+
+<blockquote>
+メッセージの対象を指定するには、以下のパラメータのうち**いずれか一つ**を構成してください: `Token`, `Topic`, `Condition`。
+</blockquote>
+
 
 | **パラメータ** | **説明** |
 | --- | --- |
 | Token | メッセージを送信する登録トークン。 |
 | Topic | メッセージを送信する購読済みトピック名。例: `weather`。注: `/topics/` プレフィックスは含めないでください。 |
-| Condition | トピックの購読条件を指定してメッセージを送信します。例: `foo in topics &amp;&amp; bar in topics`。 |
+| Condition | トピックの購読条件を指定してメッセージを送信します。例: `foo in topics && bar in topics`。 |
 | Analytics Label | メッセージの分析データに関連付けられたラベル。 |
 | Link | ユーザーが通知をクリックしたときに開くセキュアリンク。値は `https://` で始まる必要があります。 |
 | Action | 通知に表示されるユーザーアクションを識別する文字列。 |
@@ -173,11 +185,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/firebase-cloud-messaging
 | Tag | 通知のID。 |
 | Timestamp | 通知が作成される時間、または適用される時間（過去、現在、または未来）を指定します。 |
 | Vibrate | 振動ハードウェアを持つデバイスが発する振動パターンを指定します。秒単位で最大9桁の小数点以下の桁数を持つ期間。例: `3.5s`。[Firebase Resource: Message](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification)を参照してください。 |
-| Data | `&#34;key&#34; : &#34;value&#34;` 形式のユーザー指定データ。 |
-| Headers | Webpushプロトコルで定義されたHTTPヘッダー。サポートされるヘッダーについては、[Webpush protocol](https://www.rfc-editor.org/rfc/rfc8030#section-5)を参照してください。例: `&#34;TTL&#34;: &#34;15&#34;`。詳細については、[Firebase Resource: Message](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification)を参照してください。 |
-| Template Variables | **テンプレート**にデータ入力としてテンプレート変数を提供します。詳細と使用例については、を参照してください。&lt;ul&gt;&lt;li&gt;ドット表記を使用してネストされたテンプレート変数に名前を付けます。例: `items.name`。&lt;/li&gt;&lt;li&gt;ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。&lt;/li&gt;&lt;/ul&gt; |
-| Templates | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、を参照してください。テンプレートは、対応するフィールドに名前で二重中括弧を使用して注入されます。例: `{{template_name}}` |
+| Data | `"key" : "value"` 形式のユーザー指定データ。 |
+| Headers | Webpushプロトコルで定義されたHTTPヘッダー。サポートされるヘッダーについては、[Webpush protocol](https://www.rfc-editor.org/rfc/rfc8030#section-5)を参照してください。例: `"TTL": "15"`。詳細については、[Firebase Resource: Message](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification)を参照してください。 |
+| Template Variables | **テンプレート**にデータ入力としてテンプレート変数を提供します。詳細と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。<ul><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例: `items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
+| Templates | **メッセージオプション**および**通知オプション**セクションで参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。テンプレートは、対応するフィールドに名前で二重中括弧を使用して注入されます。例: `{{template_name}}` |
 
 * 使用例については、[AndroidConfig](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig)のドキュメントを参照してください。
 
-* ネストされたオブジェクトをサポートするには、**テンプレート**セクションでテンプレートを定義し、**カスタムテキスト**オプションを使用して名前でマッピングします: `{{template_name}}`。&lt;/li&gt;&lt;/ul&gt;
+* ネストされたオブジェクトをサポートするには、**テンプレート**セクションでテンプレートを定義し、**カスタムテキスト**オプションを使用して名前でマッピングします: `{{template_name}}`。</li></ul>

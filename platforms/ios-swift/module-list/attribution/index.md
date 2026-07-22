@@ -30,65 +30,69 @@ Install the Attribution module with Swift Package Manager, CocoaPods or Carthage
 
 Supported in version 1.9.0 and later, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
 
-1. In your Xcode project, select **File &gt; Add Package Dependencies**.
+1. In your Xcode project, select **File > Add Package Dependencies**.
 1. Enter the repository URL: `https://github.com/tealium/tealium-swift`
-1. Configure the version rules. Typically, `&#34;Up to next major&#34;` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
+1. Configure the version rules. Typically, `"Up to next major"` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
 1. Select the `Attribution` module from the list of modules to install and add it each of your app targets in your Xcode project, under **Frameworks and Libraries**.
 
-Learn more about the [Swift Package Manager installation for iOS](/platforms/ios-swift/install/#swift-package-manager-recommended).
+Learn more about the [Swift Package Manager installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended).
 
 ### CocoaPods
 
 To install the Attribution module with CocoaPods, add the following pod to your Podfile:  
 ```perl
-pod &#39;tealium-swift/Attribution&#39;
+pod 'tealium-swift/Attribution'
 ```
 
-Learn more about the [CocoaPods installation for iOS](/platforms/ios-swift/install/#cocoapods).
+Learn more about the [CocoaPods installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods).
 
 ### Carthage
 
 To install the Attribution module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 1. Add the following framework to the **Embedded Binaries** section:  
       ```perl
       TealiumAttribution.framework
       ```
 
-Learn more about the [Carthage installation for iOS](/platforms/ios-swift/install/#carthage).
+Learn more about the [Carthage installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#carthage).
 
 
 ## Initialize
 
-To initialize the module include it in the [`collectors`](/platforms/ios-swift/api/tealium-config/#collectors) property.
+To initialize the module include it in the [`collectors`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#collectors) property.
 
 ```swift
 config.collectors = [Collectors.Attribution]
 ```
 
-Review the [Collectors](/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
 
-## Attribution in iOS 14&#43;
+<blockquote>
+Review the [Collectors](https://docs.tealium.com/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
+</blockquote>
 
-In iOS 14 and later, apps are required to receive user permission to access the device&#39;s advertising identifier (IDFA). The user is prompted to grant &#34;Permission to track&#34; when the app launches for the first time. If the user declines, then the IDFA is not available to the app.
+
+## Attribution in iOS 14+
+
+In iOS 14 and later, apps are required to receive user permission to access the device's advertising identifier (IDFA). The user is prompted to grant "Permission to track" when the app launches for the first time. If the user declines, then the IDFA is not available to the app.
 
 When the IDFA is not available, `SKAdNetwork` provides a method for registered advertising networks to attribute app installs to a campaign by receiving a signed signal directly from Apple. The advertising network only receives confirmation that the app was successfully installed, along with the campaign ID and optional conversion value.
 
-Learn more about the `AppTrackingTransparency` and `SKAdNetwork` frameworks in [Consent and the Apple IDFA (Identifier for Advertisers)](/platforms/getting-started-mobile/idfa/).
+Learn more about the `AppTrackingTransparency` and `SKAdNetwork` frameworks in [Consent and the Apple IDFA (Identifier for Advertisers)](https://docs.tealium.com/platforms/getting-started-mobile/idfa/).
 
 ### AppTrackingTransparency (ATT)
 
-With the attribution module enabled, the user&#39;s tracking authorization status is automatically added to the dispatch payload as `device_tracking_authorization` and the value is a string representation of the [`ATTrackingManager.AuthorizationStatus`](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus) enumeration.
+With the attribution module enabled, the user's tracking authorization status is automatically added to the dispatch payload as `device_tracking_authorization` and the value is a string representation of the [`ATTrackingManager.AuthorizationStatus`](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus) enumeration.
 
-If applicable, call `ATTrackingManager.requestTrackingAuthorization` separately. Learn more about [requesting tracking authorization to enable the Tealium SDK](/platforms/getting-started-mobile/idfa/).
+If applicable, call `ATTrackingManager.requestTrackingAuthorization` separately. Learn more about [requesting tracking authorization to enable the Tealium SDK](https://docs.tealium.com/platforms/getting-started-mobile/idfa/).
 
 ### SKAdNetwork
 
 Tealium automatically calls `SKAdNetwork.registerAppForAdNetworkAttribution()` on launch if `config.skAdAttributionEnabled` is set to `true`. This permits advertising networks to anonymously validate app installs. If the `config.skAdConversionKeys` dictionary is defined, then `SKAdNetwork.updateConversionValue()` is automatically called on the specified event and sent the value of the specified conversion key.
 
 ```swift
-config.skAdConversionKeys = [&#34;EVENT_NAME&#34;: &#34;DATA_LAYER_VARIABLE&#34;]
+config.skAdConversionKeys = ["EVENT_NAME": "DATA_LAYER_VARIABLE"]
 ```
 
 The conversion value must be an `Int` with a value between `0` and `63`. If the conversion value is a decimal, it must be converted to an integer before calling the conversion event.
@@ -96,18 +100,18 @@ The conversion value must be an `Int` with a value between `0` and `63`. If the 
 For example:
 
 ```swift
-config.skAdConversionKeys = [&#34;purchase&#34;: &#34;conversion_value&#34;]
+config.skAdConversionKeys = ["purchase": "conversion_value"]
 ...
-tealium?.track(&#34;purchase&#34;, dataLayer: [&#34;order_subtotal&#34;: 456.87, &#34;conversion_value&#34;: conversionValue])
+tealium?.track("purchase", dataLayer: ["order_subtotal": 456.87, "conversion_value": conversionValue])
 ```
 
-Learn more about the [`SKAdNetwork` framework](/platforms/getting-started-mobile/idfa/). &lt;!-- blog --&gt;
+Learn more about the [`SKAdNetwork` framework](https://docs.tealium.com/platforms/getting-started-mobile/idfa/). <!-- blog -->
 
 #### Process
 
-The following diagram shows the path of an ad&#39;s install validation. App A is the source app that displays an ad, and App B is the advertised app that the user installs.
+The following diagram shows the path of an ad's install validation. App A is the source app that displays an ad, and App B is the advertised app that the user installs.
 
-![](/images/platforms/ios/skad-custom.png)
+![](https://docs.tealium.com/images/platforms/ios/skad-custom.png)
 
 When a user clicks an ad within an app or mobile web browser, the App Store is launched and the user is taken to the product screen for the ad campaign. In iOS 14.5 and later, advertisers have the option to choose to display a custom view-through ad or a StoreKit-rendered ad. If the user installs the advertised app, the device stores a pending install validation. If the user opens the app within an attribution time window, the device sends the install validation postback to the ad network.
 
@@ -115,9 +119,9 @@ The notification is signed by Apple and includes the campaign ID, but excludes u
 
 Learn more about [advertisement-driven app installations](https://developer.apple.com/documentation/storekit/skadnetwork).
 
-#### Tealium&#39;s Role
+#### Tealium's Role
 
-There are three main parties involved in Apple&#39;s `SKAdNetwork` solution:
+There are three main parties involved in Apple's `SKAdNetwork` solution:
 
 * Ad networks
 * Source app
@@ -125,13 +129,17 @@ There are three main parties involved in Apple&#39;s `SKAdNetwork` solution:
 
 Tealium wraps calls to `SKAdNetwork`. If the `TealiumAttribution` module and the configuration flag are enabled, then `SKAdNetwork.registerAppForAdNetworkAttribution()` is called on app launch.
 
-Additionally, if you have defined the [`skAdConversionKeys`](/platforms/ios-swift/api/tealium-config/#skadconversionkeys), then the `SKAdNetwork.updateConversionValue(_:)` method is called and passed in the specified conversion value. Tealium permits you to manage your calls to `SKAdNetwork` through the tracking you already have in place.
+Additionally, if you have defined the [`skAdConversionKeys`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#skadconversionkeys), then the `SKAdNetwork.updateConversionValue(_:)` method is called and passed in the specified conversion value. Tealium permits you to manage your calls to `SKAdNetwork` through the tracking you already have in place.
 
- You may need to request tracking authorization from your users and add the appropriate keys to your `.plist` file. 
+
+<blockquote>
+You may need to request tracking authorization from your users and add the appropriate keys to your `.plist` file.
+</blockquote>
+
 
 The following diagram shows shows how Tealium works with `SKAdNetwork`:
 
-![](/images/platforms/ios/skad-tealium-custom.png)
+![](https://docs.tealium.com/images/platforms/ios/skad-tealium-custom.png)
 
 #### Validation
 
@@ -139,9 +147,9 @@ Learn about [validating the calls to `SKAdNetwork`](https://developer.apple.com/
 
 ## Search Ads API
 
-To use Apple Search Ads API, enable the [`searchAdsEnabled`](/platforms/ios-swift/api/tealium-config/#searchadsenabled) property of the [`TealiumConfig`](/platforms/ios-swift/api/tealium-config/#tealiumconfig) object. Then we use the [`AAAttribution`](https://developer.apple.com/documentation/adservices/aaattribution) class to retrieve a token used to fetch the attribution object. The Tealium library does this as soon as the app launches, but it is possible that the information is not retrieved in a timely manner. The information is added to the data layer after receiving it from Apple, typically during the launch event.
+To use Apple Search Ads API, enable the [`searchAdsEnabled`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#searchadsenabled) property of the [`TealiumConfig`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#tealiumconfig) object. Then we use the [`AAAttribution`](https://developer.apple.com/documentation/adservices/aaattribution) class to retrieve a token used to fetch the attribution object. The Tealium library does this as soon as the app launches, but it is possible that the information is not retrieved in a timely manner. The information is added to the data layer after receiving it from Apple, typically during the launch event.
 
-In some cases there may be several events after launch. These variables are only retrieved from Apple&#39;s servers once during the app&#39;s lifetime, and are stored as persistent variables so that they become available on future app launches.
+In some cases there may be several events after launch. These variables are only retrieved from Apple's servers once during the app's lifetime, and are stored as persistent variables so that they become available on future app launches.
 
 ### From iAd framework to AdServices framework
 
@@ -167,22 +175,26 @@ The only required action for our customers is to update to version 2.11.0 or lat
 
 The following variables are transmitted with each tracking call while the module is enabled:
 
+
+<blockquote>
 Variables prefixed with `ad_` are only set if [Search Ads](#search-ads-api) has been enabled.
+</blockquote>
+
 
 | Variable Name | Description | Example |
 | --- | --- | --- |
-| `ad_campaign_id` | The corresponding ad&#39;s campaign ID. | `1234567890` |
-| `ad_campaign_name` (deprecated) |  The corresponding ad&#39;s campaign name. | `CampaignName` |
+| `ad_campaign_id` | The corresponding ad's campaign ID. | `1234567890` |
+| `ad_campaign_name` (deprecated) |  The corresponding ad's campaign name. | `CampaignName` |
 | `ad_creativeset_id` (deprecated) | The ID of the creative set which the corresponding advertisement was part of. | `456093` |
 | `ad_creativeset_name` (deprecated) | The name of the creative set which the corresponding advertisement was part of.| `Beast Images` |
-| `ad_group_id` |  The corresponding ad&#39;s campaign group ID .| `1234567890` |
-| `ad_group_name` (deprecated) |  The corresponding ad&#39;s campaign group name.| `AdGroupName` |
+| `ad_group_id` |  The corresponding ad's campaign group ID .| `1234567890` |
+| `ad_group_name` (deprecated) |  The corresponding ad's campaign group name.| `AdGroupName` |
 | `ad_keyword` | The keyword from `iAd` or the keywordId from `AdServices`. | `1234567890` |
 | `ad_keyword_matchtype` (deprecated) | This may either be Broad, Exact or Search Match. | `Exact` |
 | `ad_id` |  The identifier representing the assignment relationship between an ad object and an ad group (only for iOS 15.2 and later). | `AdID` |
-| `ad_org_id` |  The corresponding ad&#39;s campaign organization ID.| `OrgID` |
-| `ad_org_name` (deprecated) |  The corresponding ad&#39;s campaign organization name. | `OrgName` |
-| `ad_purchase_date` (deprecated) | Date and time the user first downloaded your app. In the case where `iadconversion-type = &#34;Redownload&#34;`, this represents the original purchase date. This parameter may or may not have been associated with an Apple Search Ad.| `2016-12-05T17:31:40Z` |
+| `ad_org_id` |  The corresponding ad's campaign organization ID.| `OrgID` |
+| `ad_org_name` (deprecated) |  The corresponding ad's campaign organization name. | `OrgName` |
+| `ad_purchase_date` (deprecated) | Date and time the user first downloaded your app. In the case where `iadconversion-type = "Redownload"`, this represents the original purchase date. This parameter may or may not have been associated with an Apple Search Ad.| `2016-12-05T17:31:40Z` |
 | `ad_region` | Identifies the country or region associated with the campaign which drove this install. | `US` |
 | `ad_user_clicked_last_30_days` | Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download. | `true` |
 | `ad_user_conversion_type` | Identifies new download or re-download of the app.| `Download` |

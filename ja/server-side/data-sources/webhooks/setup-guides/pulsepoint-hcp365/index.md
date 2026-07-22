@@ -19,18 +19,18 @@ PulsePoint HCP365は、指定したエンドポイントに対して送信リク
 PulsePointデータソースを構成するには、以下の手順を実行します：
 
 1. **Sources**に移動します。
-1. サイドバーで、**Connect &gt; Data Sources**を選択します。
-1. **&#43;Add Data Source**をクリックします。
+1. サイドバーで、**Connect > Data Sources**を選択します。
+1. **+Add Data Source**をクリックします。
 1. **Select a Platform**画面で、**Categories**の下の**Pharma**を選択し、次に**PulsePoint HCP365**を選択します。
 1. **Summary**の下の**Name**フィールドに名前を入力し、**Continue**をクリックします。
 1. **Continue**をクリックします。
-1. **Pharma**カテゴリの下の`pulsepoint_hcp_identity`イベント仕様を選択し、**Continue**をクリックします：![](/images/server-side/data-sources/webhooks/pulsepoint1.png)
+1. **Pharma**カテゴリの下の`pulsepoint_hcp_identity`イベント仕様を選択し、**Continue**をクリックします：![](https://docs.tealium.com/images/server-side/data-sources/webhooks/pulsepoint1.png)
 1. （オプション）データソースキー、ベースコード、イベントトラッキングコードを含むインストール手順をダウンロードするには、**Download as PDF**をクリックします。
-1. **Save &amp; Continue**をクリックします。
+1. **Save & Continue**をクリックします。
 データソースの概要が表示されます。
 1. **Close**をクリックします。
 
-詳細については、[Create a data source]()を参照してください。
+詳細については、[Create a data source](https://docs.tealium.com/create-data-source/)を参照してください。
 
 PulsePointデータソースは、PulsePoint構成内のHTTP GETまたはPOST URLとして使用するためのユニークなURLを生成します。生成されたURLは次の形式を使用します：
 

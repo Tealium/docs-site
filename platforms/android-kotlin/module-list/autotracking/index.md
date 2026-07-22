@@ -24,7 +24,7 @@ Use the following annotations to adjust the behavior of the module:
 Use this annotation to override the default screen name.
 
       ```kotlin
-      @Autotracked(name = &#34;MyCustomName&#34;)
+      @Autotracked(name = "MyCustomName")
       private class AnnotatedActivityWithOverride : Activity()
       ```
 * **Include in tracking**  
@@ -44,7 +44,7 @@ In full tracking mode, use this annotation to omit activities from being tracked
 
 ### Full Tracking
 
-The full tracking mode uses `Application.ActivityLifecycleCallbacks` to determine when a new activity comes into focus and then triggers a `TealiumView` event. In the event, `tealium_event` is set to the class name, but with &#34;Activity&#34; trimmed from the name.
+The full tracking mode uses `Application.ActivityLifecycleCallbacks` to determine when a new activity comes into focus and then triggers a `TealiumView` event. In the event, `tealium_event` is set to the class name, but with "Activity" trimmed from the name.
 
 Use annotations to override the screen name or to prevent activities from being tracked.
 
@@ -58,11 +58,11 @@ The partial tracking mode relies on Annotations to determine which activities to
 
 The block list is a JSON file that contains a single array of strings. The strings represent activities to omit from automatic tracking. If a string in the block list appears anywhere in the activity name, it will not be tracked. The string comparisons are case-insensitive.
 
-For example, if you don&#39;t want to track activities that contain the strings &#34;Settings&#34; or &#34;Profile&#34;, then the block list could contain:
+For example, if you don't want to track activities that contain the strings "Settings" or "Profile", then the block list could contain:
 
 ```json
 [
-  &#34;settings&#34;, &#34;profile&#34;
+  "settings", "profile"
 ]
 ```
 
@@ -70,8 +70,8 @@ The block list file can be stored locally in the `assets` directory of your app 
 
 Use the one of the following `TealiumConfig` properties to use a block list:
 
-* [`autoTrackingBlocklistFilename`](/platforms/android-kotlin/api/tealium-config/#autotrackingblocklistfilename)
-* [`autoTrackingBlocklistUrl`](/platforms/android-kotlin/api/tealium-config/#autotrackingblocklisturl)
+* [`autoTrackingBlocklistFilename`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#autotrackingblocklistfilename)
+* [`autoTrackingBlocklistUrl`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#autotrackingblocklisturl)
 
 ## Install
 
@@ -81,23 +81,23 @@ Install the module with Maven (Recommended) or manually.
 
 To install the AutoTracking Tracking module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
       ```groovy
       allprojects {
           repositories {
             mavenCentral()
             maven {
-                url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+                url "https://maven.tealiumiq.com/android/releases/"
             }
           }
       }
       ```
 
-2. In your project module&#39;s `build.gradle` file, add the following Maven dependency:
+2. In your project module's `build.gradle` file, add the following Maven dependency:
       ```groovy
       dependencies {
-          implementation &#39;com.tealium:kotlin-core:1.6.0&#39;
-          implementation &#39;com.tealium:kotlin-autotracking:1.0.1&#39;
+          implementation 'com.tealium:kotlin-core:1.6.0'
+          implementation 'com.tealium:kotlin-autotracking:1.0.1'
       }
       ```
 
@@ -107,12 +107,12 @@ To install the AutoTracking module manually, following these steps:
 
 1. Download the Tealium [AutoTracking Module](https://github.com/Tealium/tealium-kotlin/tree/master/autotracking/) module.
 
-2. Copy the file `tealium-kotlin.autotracking-1.0.1.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+2. Copy the file `tealium-kotlin.autotracking-1.0.1.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 3. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium-kotlin.autotracking-1.0.1&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium-kotlin.autotracking-1.0.1', ext:'aar')
       }
       ```
 
@@ -124,8 +124,8 @@ Example of initializing the AutoTracking module:
 
 ```kotlin
 val config = TealiumConfig(application,
-              &#34;ACCOUNT&#34;,
-              &#34;PROFILE&#34;,
+              "ACCOUNT",
+              "PROFILE",
               ENVIRONMENT,
               modules = mutableSetOf(Modules.AutoTracking)
               ).apply {
@@ -133,7 +133,7 @@ val config = TealiumConfig(application,
               }
 ```
 
-See [`TealiumConfig.autoTrackingMode`](/platforms/android-kotlin/api/tealium-config/#autotrackingmode) for more options.
+See [`TealiumConfig.autoTrackingMode`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/#autotrackingmode) for more options.
 
 ## Data Layer
 
@@ -151,10 +151,10 @@ To set the delegate:
 
 ```kotlin
 config.autoTrackingCollectorDelegate = object: ActivityDataCollector {
-    override fun onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
+    override fun onCollectActivityData(activityName: String): Map<String, Any>? {
         when (activityName) {
-            &#34;some_activity&#34; -&gt; return mapOf(&#34;some_key&#34; to &#34;some_value&#34;)
-            else -&gt; return null
+            "some_activity" -> return mapOf("some_key" to "some_value")
+            else -> return null
         }
     }
 }
@@ -164,8 +164,8 @@ Alternatively, to add context data to a specific activity, make your `Activity` 
 
 ```kotlin
 class ActivityWithDataCollector : Activity(), ActivityDataCollector {
-    override fun onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
-        return mapOf(&#34;some_key&#34; to &#34;some_value&#34;)
+    override fun onCollectActivityData(activityName: String): Map<String, Any>? {
+        return mapOf("some_key" to "some_value")
     }
 }
 ```
@@ -174,4 +174,4 @@ Both delegates are executed for each tracked activity, so add common data at the
 
 ## API Reference
 
-* [`TealiumConfig`](/platforms/android-kotlin/api/tealium-config/)
+* [`TealiumConfig`](https://docs.tealium.com/platforms/android-kotlin/api/tealium-config/)

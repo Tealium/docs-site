@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/agillic-recipients-connecto
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -48,8 +48,8 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Recipient ID|  &lt;ul&gt;&lt;li&gt;(Required) Map any unique Person Data, such as EMAIL or MOBILE.&lt;/li&gt;&lt;li&gt;Use Recipient ID for general purpose.&lt;/li&gt;&lt;li&gt;For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).&lt;/li&gt;&lt;/ul&gt; |
-|Recipient Data|  &lt;ul&gt;&lt;li&gt;(Required) Map values to the Person Data fields.&lt;/li&gt;&lt;/ul&gt; |
+|Recipient ID|  <ul><li>(Required) Map any unique Person Data, such as EMAIL or MOBILE.</li><li>Use Recipient ID for general purpose.</li><li>For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).</li></ul> |
+|Recipient Data|  <ul><li>(Required) Map values to the Person Data fields.</li></ul> |
 
 ### Add or Update Recipient (Batched)
 
@@ -65,9 +65,9 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Recipient ID|  &lt;ul&gt;&lt;li&gt;(Required) Map any unique Person Data, such as EMAIL or MOBILE.&lt;/li&gt;&lt;li&gt;Use Recipient ID for general purpose.&lt;/li&gt;&lt;li&gt;For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).&lt;/li&gt;&lt;/ul&gt; |
-|Recipient Data|  &lt;ul&gt;&lt;li&gt;(Required) Map values to the Person Data fields.&lt;/li&gt;&lt;/ul&gt; |
-| Recipient ID Attribute Name |&lt;ul&gt;&lt;li&gt;(Optional) Overwrites which Person Data value is used to match with existing recipients.&lt;/li&gt;&lt;li&gt;Map any unique Person Data, such as EMAIL or MOBILE.&lt;/li&gt;&lt;li&gt;For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).&lt;/li&gt;&lt;/ul&gt; |
+|Recipient ID|  <ul><li>(Required) Map any unique Person Data, such as EMAIL or MOBILE.</li><li>Use Recipient ID for general purpose.</li><li>For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).</li></ul> |
+|Recipient Data|  <ul><li>(Required) Map values to the Person Data fields.</li></ul> |
+| Recipient ID Attribute Name |<ul><li>(Optional) Overwrites which Person Data value is used to match with existing recipients.</li><li>Map any unique Person Data, such as EMAIL or MOBILE.</li><li>For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).</li></ul> |
 
 ### Update Recipient Table Records
 
@@ -75,9 +75,9 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Recipient ID|  &lt;ul&gt;&lt;li&gt;(Required) Map any unique Person Data, such as EMAIL or MOBILE.&lt;/li&gt;&lt;li&gt;Use Recipient ID for general purpose.&lt;/li&gt;&lt;li&gt;For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).&lt;/li&gt;&lt;/ul&gt; |
-|Table|  &lt;ul&gt;&lt;li&gt;(Required) Table ID of the records that will be batch updated.&lt;/li&gt;&lt;/ul&gt; |
-|Table Record|  &lt;ul&gt;&lt;li&gt;(Required) Map one or more values to each table record field.&lt;/li&gt;&lt;li&gt;ID or Primary Key must be specified.&lt;/li&gt;&lt;/ul&gt; |
+|Recipient ID|  <ul><li>(Required) Map any unique Person Data, such as EMAIL or MOBILE.</li><li>Use Recipient ID for general purpose.</li><li>For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).</li></ul> |
+|Table|  <ul><li>(Required) Table ID of the records that will be batch updated.</li></ul> |
+|Table Record|  <ul><li>(Required) Map one or more values to each table record field.</li><li>ID or Primary Key must be specified.</li></ul> |
 
 ### Achieve Event
 
@@ -85,5 +85,5 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Recipient ID|  &lt;ul&gt;&lt;li&gt;(Required) Map any unique Person Data, such as EMAIL or MOBILE.&lt;/li&gt;&lt;li&gt;Use Recipient ID for general purpose.&lt;/li&gt;&lt;li&gt;For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).&lt;/li&gt;&lt;/ul&gt; |
-|Event ID|  &lt;ul&gt;&lt;li&gt;(Required) Event ID to be achieved.&lt;/li&gt;&lt;/ul&gt; |
+|Recipient ID|  <ul><li>(Required) Map any unique Person Data, such as EMAIL or MOBILE.</li><li>Use Recipient ID for general purpose.</li><li>For more information, see [APIs: Recipient API](https://developers.agillic.com/apis/recipients-api#api-documentation).</li></ul> |
+|Event ID|  <ul><li>(Required) Event ID to be achieved.</li></ul> |

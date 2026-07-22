@@ -15,18 +15,18 @@ Tealium mobile libraries are integrated into your React Native application using
 ## Requirements
 
 * Access to your native build environments
-* [Tealium for React Native v2.2.0&#43;](/platforms/react-native/)
-* [React Native 0.63&#43;](https://github.com/Tealium/tealium-react-native) and tools installed. 
-* [Tealium iQ Mobile Profile]()
+* [Tealium for React Native v2.2.0+](https://docs.tealium.com/platforms/react-native/)
+* [React Native 0.63+](https://github.com/Tealium/tealium-react-native) and tools installed. 
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
-* [Tealium for Android](/platforms/android-kotlin/) or [Tealium for iOS](/platforms/ios-swift/)
+* [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 
 
 ## Install (NPM/YARN)
 
 To install the Tealium Location module for React Native with NPM:
 
-1. Follow the installation instructions for the main `tealium-react-native` library installation [here](/platforms/react-native/install/). Ensure you have installed at least verion 2.2.0 or above.
+1. Follow the installation instructions for the main `tealium-react-native` library installation [here](https://docs.tealium.com/platforms/react-native/install/). Ensure you have installed at least verion 2.2.0 or above.
 
 2. Navigate to the root of your React Native project.
 
@@ -41,8 +41,8 @@ To install the Tealium Location module for React Native with NPM:
 To import the relevant classes into your app, do the following:
 
 ```javascript
-import TealiumLocation from &#39;tealium-react-native-location&#39;;
-import { TealiumLocationConfig, Accuracy, DesiredAccuracy, LocationData } from &#39;tealium-react-native-location/common&#39;;
+import TealiumLocation from 'tealium-react-native-location';
+import { TealiumLocationConfig, Accuracy, DesiredAccuracy, LocationData } from 'tealium-react-native-location/common';
 ```
 
 ## Initialize
@@ -54,8 +54,8 @@ You can configure all your required options in one single method, or by calling 
 ```javascript
 let locationConfig: TealiumLocationConfig = {
     accuracy: Accuracy.high,
-    geofenceUrl: &#34;...&#34;,
-    geofenceFile: &#34;...&#34;,
+    geofenceUrl: "...",
+    geofenceFile: "...",
     interval: 6000,                         // android only
     geofenceEnabled: false,                 // iOS only
     desiredAccuracy: DesiredAccuracy.best,  // iOS only
@@ -66,7 +66,7 @@ TealiumLocation.configure(locationConfig);
 
 // or call them individually:
 TealiumLocation.setAccuracy(Accuracy.high);
-TealiumLocation.setGeofenceUrl(&#34;.../...&#34;);
+TealiumLocation.setGeofenceUrl(".../...");
 // etc
 ```
 
@@ -96,7 +96,7 @@ TealiumLocation.stopLocationTracking();
 Requests the last known location, and returns an object containing the latitude and longitude coordinates as `lat` and `lng` keys - only relevant if you are currently tracking location data.
 
 ```javascript
-TealiumLocation.lastLocation((loc) =&gt; {
+TealiumLocation.lastLocation((loc) => {
     if (loc) {
         Alert.alert(`Lat: ${loc.lat} | Lng: ${loc.lng}`)
     }

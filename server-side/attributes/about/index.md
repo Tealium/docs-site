@@ -3,13 +3,17 @@ title: About attributes
 description: This article provides an overview of how attributes are used and steps to add, duplicate, or remove an attribute.
 url: https://docs.tealium.com/server-side/attributes/about/
 ---
-Attributes are the foundation of your implementation and are used to define your customers&#39; behaviors and interactions with your brand. Attributes define the properties of a visitor, a visitor&#39;s session, and events collected. Common examples of attributes include Email Address, Member ID, Product Category, Date of Last Visit, and Active Browser.
+Attributes are the foundation of your implementation and are used to define your customers' behaviors and interactions with your brand. Attributes define the properties of a visitor, a visitor's session, and events collected. Common examples of attributes include Email Address, Member ID, Product Category, Date of Last Visit, and Active Browser.
 
 Each profile can contain a maximum of 500 visitor and visit attributes. You can see your current attribute total on the **Visit/Visitor Attributes** screen:
 
-![](/images/server-side/attributes/count-of-attributes.png)
+![](https://docs.tealium.com/images/server-side/attributes/count-of-attributes.png)
 
- If you need more than 500 attributes in a profile, contact your Customer Success Manager. 
+
+<blockquote>
+If you need more than 500 attributes in a profile, [contact support](https://docs.tealium.com/support/).
+</blockquote>
+
 
 ## Scope
 
@@ -17,16 +21,16 @@ Scope refers to how long an attribute persists in real-time. The following table
 
 |Scope| Description / Examples| Uses|
 |---| ---| ---|
-| Event |  Attributes associated with individual events that describe the page, content, and real-time actions being taken by a customer. Examples: Page Name, Product Price, Event Name, Order Total, etc. | **Attribute Sources**&lt;br&gt; Event attributes are sourced from the following:&lt;br&gt; &lt;ul&gt;&lt;li&gt;**Universal Variables** [Universal Data Object]()&lt;/li&gt;&lt;li&gt;**Javascript Page Variables** Global JavaScript variables (browser)&lt;/li&gt;&lt;li&gt;**HTML Metadata** Metadata tag (browser)&lt;/li&gt;&lt;li&gt;**First-Party Cookies** Browser cookie&lt;/li&gt;&lt;li&gt;**Querystring Parameters** Current page&#39;s URL querystring (browser)&lt;/li&gt;&lt;/ul&gt; |
-| Visit |  Attributes about a particular visit (or session). Data persists for the length of the visit. Examples: Visit Duration, Browser Used, Referring URL, and Carted Products. |  These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. See [Session Length]() for more detail. |
+| Event |  Attributes associated with individual events that describe the page, content, and real-time actions being taken by a customer. Examples: Page Name, Product Price, Event Name, Order Total, etc. | **Attribute Sources**<br> Event attributes are sourced from the following:<br> <ul><li>**Universal Variables** [Universal Data Object](https://docs.tealium.com/universal-data-object/)</li><li>**Javascript Page Variables** Global JavaScript variables (browser)</li><li>**HTML Metadata** Metadata tag (browser)</li><li>**First-Party Cookies** Browser cookie</li><li>**Querystring Parameters** Current page's URL querystring (browser)</li></ul> |
+| Visit |  Attributes about a particular visit (or session). Data persists for the length of the visit. Examples: Visit Duration, Browser Used, Referring URL, and Carted Products. |  These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. See [Session Length](https://docs.tealium.com/server-side-session-length/) for more detail. |
 | Visitor |  Attributes about a particular visitor across all visits. Examples: Email Address, Member ID, Lifetime Order Total, and Category Views. |  This data follows a visitor from session to session and across different devices. Visitor data persists even after the current visit ends. |
-| Omnichannel | For importing offline data through the Omnichannel service. This scope does not require a data type. |  Omnichannel attributes are defined when you define your file imports. Omnichannel is a legacy scope and has been replaced with [File Import](). |
+| Omnichannel | For importing offline data through the Omnichannel service. This scope does not require a data type. |  Omnichannel attributes are defined when you define your file imports. Omnichannel is a legacy scope and has been replaced with [File Import](https://docs.tealium.com/about-file-import/). |
 
 ### Session length
 
 Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.
 
-For more information, see [Server-side session length]().
+For more information, see [Server-side session length](https://docs.tealium.com/server-side-session-length/).
 
 ## Data types
 
@@ -38,7 +42,7 @@ The following data types are supported:
 |---| ---|
 |[Number]()| Stores numerical values such as order total, lifetime event count, or number of days since last visit.|
 |[String]()| Stores text values such as first/last name, address, favorite product, and page name.|
-|[Boolean]()| Stores only one of two values: &#39;true&#39; and &#39;false&#39;. Boolean can be used for indicating the status of a visitor action or visit.|
+|[Boolean]()| Stores only one of two values: 'true' and 'false'. Boolean can be used for indicating the status of a visitor action or visit.|
 |[Array of Numbers]()| Stores multiple numeric values as an array. The array may contain unique or duplicate numeric values.|
 |[Array of Strings]()| Stores multiple string values as an array. The array may contain unique or duplicate string values.|
 |[Array of Booleans]()| Stores multiple Boolean values as an array. The array may contain unique or duplicate Boolean values.|
@@ -48,7 +52,7 @@ The following data types are supported:
 |[Funnel]()| Tracks the status of every step in a multi-step event, such as payment funnel and registration.|
 |[Timeline]()| Records all occurrences of a visitor action within a time range.|
 |[Badge]()| Assigns a visual mark or symbol to visitors who meet certain criteria or browsing behavior.|
-|[Visitor ID]()| Stores visitor&#39;s unique traits as their secondary identifier.|
+|[Visitor ID](https://docs.tealium.com/visitor-id-attribute/)| Stores visitor's unique traits as their secondary identifier.|
 
 ### Scope and data type matrix
 
@@ -77,10 +81,10 @@ All event, visit, and visitor attributes have a unique attribute identifier. The
 You can find the attribute ID next to the attribute name in the attribute list or within the expanded details.
 
 **Event Attributes**
-![](/images/server-side/event-attribute-id.png)  
+![](https://docs.tealium.com/images/server-side/event-attribute-id.png)  
 
 **Visit/Visitor Attributes**
-![](/images/server-side/attributes/attribute-details-slideout-id.png)
+![](https://docs.tealium.com/images/server-side/attributes/attribute-details-slideout-id.png)
 
 ## Size limits
 
@@ -94,7 +98,11 @@ If a visitor reaches 10,000 events in a single visit, the visitor is permanently
 
 The ban is permanent, or until maintenance is performed by the Tealium Operations team to purge the banned visitors collection. If you believe a visitor has been banned incorrectly, or you have a visitor that needs to be removed from the banned list, contact Tealium Support.
 
+
+<blockquote>
 If a permanent visitor ban is removed and the visitor again exceeds the 10,000 events in a visit limit, another ban will occur.
+</blockquote>
+
 
 ## Event attributes
 
@@ -102,7 +110,7 @@ If a permanent visitor ban is removed and the visitor again exceeds the 10,000 e
 |---| ---| ---|
 |**Strings**| 1,500 characters| Strings are truncated to 1,500 characters if they are longer than the limit.|
 |**Arrays of any type**| 30,000 entries | If an attribute is set or updated to exceed the limit, the attribute is trimmed to 30,000 entries and set. |
-|**Dates**|  Minimum: &#34;-292275055-05-16T16:47:04.192Z&#34; maximum: &#34;&#43;292278994-08-17T07:12:55.807Z&#34; |
+|**Dates**|  Minimum: "-292275055-05-16T16:47:04.192Z" maximum: "+292278994-08-17T07:12:55.807Z" |
 |**Numbers**| Represented with `java.lang.Number`, which has dynamic precision.|
 
 ## Visit/visitor attributes
@@ -114,7 +122,7 @@ If a permanent visitor ban is removed and the visitor again exceeds the 10,000 e
 |**Tallies**| 30,000 entries. | If an attribute is set or updated to exceed the limit, the attribute is trimmed to 30,000 entries and set. |
 |**Arrays of any type**| 30,000 entries. | If an attribute is set or updated to exceed the limit, the attribute is trimmed to 30,000 entries and set. |
 |**Set of Strings**| 30,000 entries. | If an attribute is set or updated to exceed the limit, the attribute is trimmed to 30,000 entries and set. |
-|**Dates**|  Minimum: &#34;-292275055-05-16T16:47:04.192Z&#34; Maximum: &#34;&#43;292278994-08-17T07:12:55.807Z&#34; |
+|**Dates**|  Minimum: "-292275055-05-16T16:47:04.192Z" Maximum: "+292278994-08-17T07:12:55.807Z" |
 |**Numbers**|Represented with `java.lang.Number`, which has dynamic precision.| |
 |**Visitor ID**| 2 KB| If the visitor ID is over 2 KB, the record is not saved. |
 |**Funnel**| No limits\*| |
@@ -127,14 +135,18 @@ If a permanent visitor ban is removed and the visitor again exceeds the 10,000 e
 
 An imported attribute is a variable that was originally created in the corresponding Tealium iQ profile. Tealium iQ variables are automatically exported to the server-side profile of the same name as event-scoped attributes. These attributes use the **Any** data type. When you modify a variable in Tealium iQ (and publish to **prod**), the changes are instantly applied to the matching attribute in EventStream.
 
+
+<blockquote>
 Imported attributes are not editable. You must use Tealium iQ to manage them.
+</blockquote>
 
-![](/images/server-side/imported-tealium-iq-variables1.png)  
-![](/images/server-side/imported-tealium-iq-variables2.png)  
 
-Imported attributes only contain data if you use the [Tealium Collect tag]() to gather that data.
+![](https://docs.tealium.com/images/server-side/imported-tealium-iq-variables1.png)  
+![](https://docs.tealium.com/images/server-side/imported-tealium-iq-variables2.png)  
 
-You cannot enrich imported attributes directly. However, you can duplicate the imported attribute, enrich the duplicate attribute with the imported attribute&#39;s value, and then further enrich the duplicate attribute as needed.
+Imported attributes only contain data if you use the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) to gather that data.
+
+You cannot enrich imported attributes directly. However, you can duplicate the imported attribute, enrich the duplicate attribute with the imported attribute's value, and then further enrich the duplicate attribute as needed.
 
 #### Troubleshooting
 
@@ -144,7 +156,7 @@ If variables from Tealium iQ do not appear in EventStream, verify that the Teali
 
 To make server-side attributes available as iQ Tag Management variables, use Data Layer Enrichment.
 
-For more information, see .
+For more information, see [about-data-layer-enrichment](https://docs.tealium.com/about-data-layer-enrichment/).
 
 ## Restricted data
 
@@ -152,21 +164,25 @@ This property is used to identify attributes that contain data that should not b
 
 ## Rules
 
-A rule provides additional logic for the purpose of triggering an enrichment. For more information about how rules work and when to use them, see [About enrichment rules]().
+A rule provides additional logic for the purpose of triggering an enrichment. For more information about how rules work and when to use them, see [About enrichment rules](https://docs.tealium.com/about-enrichment-rules/).
 
 * To apply a predefined rule, make a selection from the drop-down list and click **Add Rule**.  
-      Creating a new rule through the enrichments dialog box automatically applies it to the enrichment.
+      
+<blockquote>
+Creating a new rule through the enrichments dialog box automatically applies it to the enrichment.
+</blockquote>
+
 
 * To apply a new rule, click **Create Rule**.  
-      ![](/images/server-side/whiteui-using-attributes-rules.png)
+      ![](https://docs.tealium.com/images/server-side/whiteui-using-attributes-rules.png)
 
 ## Preloaded attributes
 
 AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes that are preconfigured with statistical information to help you determine useful information about each visitor, visit, or event.
 
-![](/images/server-side/attributes/preloaded-attribute-filter.png)
+![](https://docs.tealium.com/images/server-side/attributes/preloaded-attribute-filter.png)
 
-For more information about these attributes, see [Preloaded attributes]().
+For more information about these attributes, see [Preloaded attributes](https://docs.tealium.com/preloaded-attributes/).
 
 ## Dependencies
 
@@ -182,6 +198,6 @@ Dependencies are all of the objects that are dependent on this attribute, such a
 
 You cannot delete an attribute if a dependency includes that attribute.
 
-To view an attribute&#39;s dependencies, click the attribute in the **Attributes** table and then click the **Dependencies** tab. To view a dependency&#39;s details, click **Go To**.
+To view an attribute's dependencies, click the attribute in the **Attributes** table and then click the **Dependencies** tab. To view a dependency's details, click **Go To**.
 
-![](/images/server-side/ea-visitor-dependencies.png)
+![](https://docs.tealium.com/images/server-side/ea-visitor-dependencies.png)

@@ -22,7 +22,11 @@ Magento の詳細については、[Magento Documentation](http://devdocs.magent
 
 ## インストール
 
- 以下の手順は Ubuntu サーバー環境のコマンドを使用しています。他のサーバー環境の場合は、コマンドを適宜調整してください。 
+
+<blockquote>
+以下の手順は Ubuntu サーバー環境のコマンドを使用しています。他のサーバー環境の場合は、コマンドを適宜調整してください。
+</blockquote>
+
 
 Magento システムに Tealium をインストールするには：
 
@@ -47,7 +51,7 @@ Magento システムに Tealium をインストールするには：
 
 Magento 2 を構成するには、次の手順を実行します：
 
-1. 管理パネルで、**Stores &gt; Configuration &gt; Tealium &gt; Tag Management** に移動します。
+1. 管理パネルで、**Stores > Configuration > Tealium > Tag Management** に移動します。
 1. 拡張機能を有効にし、Tealium iQ アカウント、プロファイル、および環境を入力します。
 1. ファーストパーティドメインを使用している場合は、**First Party Domain** フィールドにクライアントドメインを入力します。
 1. プレーンテキストの顧客メールアドレスを許可する場合は、**Allow plain text customer email** ドロップダウンリストの下で **No** を選択します。それ以外の場合、メールアドレスは SHA-256 ハッシュを使用して暗号化されます。

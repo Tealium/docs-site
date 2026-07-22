@@ -10,7 +10,7 @@ A Google Ads conversion occurs when a user performs a specified action after cli
 ## Requirements
 
 * To send offline conversions, configure a Google Ads Import conversion action, and specify either calls or clicks as the source. For more information, see [Google Help documentation regarding offline conversions](https://support.google.com/google-ads/answer/2998031?sjid=13815989904284925133-NC). 
-* To adjust a conversion, you must have the original conversion&#39;s transaction ID or have the `gclid` and conversion date and time to locate the conversion you want to adjust.
+* To adjust a conversion, you must have the original conversion's transaction ID or have the `gclid` and conversion date and time to locate the conversion you want to adjust.
 
 ## Connector actions
 
@@ -34,7 +34,7 @@ This connector uses the following vendor API:
 
 ## Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 2000
 * Max time since oldest request: 10 minutes
@@ -42,9 +42,13 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Delayed actions
 
-Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see Google&#39;s [Best practices for uploading offline conversions](https://support.google.com/searchads/answer/6074338?hl=en) documentation.
+Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see Google's [Best practices for uploading offline conversions](https://support.google.com/searchads/answer/6074338?hl=en) documentation.
 
-Actions are not delayed when using [trace]() in EventStream or AudienceStream.
+
+<blockquote>
+Actions are not delayed when using [trace](https://docs.tealium.com/manage-traces/) in EventStream or AudienceStream.
+</blockquote>
+
 
 ### Consent
 
@@ -52,7 +56,7 @@ The connector sends the value of `GRANTED` for `adUserData` and `adPersonalizati
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors]() article.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -80,7 +84,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Caller ID| (Required) The caller ID from which this call was placed. Caller ID is expected in E.164 format and preceded by the plus (`&#43;`) character. For example, `&#43;16502531234`. |
+|Caller ID| (Required) The caller ID from which this call was placed. Caller ID is expected in E.164 format and preceded by the plus (`+`) character. For example, `+16502531234`. |
 |Call Start Datetime| (Required) The date and time at which the call occurred. The timezone must be specified. The format is **yyyy-mm-dd hh:mm:ss±hh:mm**. For example, `2020-01-01 12:32:45-8:00`. |
 |Conversion Datetime|  (Required) The date and time at which the conversion occurred. This date and time must be after the call time. The timezone must be specified. The format is **yyyy-mm-dd hh:mm:ss±hh:mm**.  For example, `2020-01-01 12:32:45-8:00`. |
 |Conversion Value|  The value of the conversion for the advertiser. |
@@ -145,10 +149,10 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Conversion Action| Select existing conversion action. For more information, see [Google: Google Ads Conversion Adjustments](https://support.google.com/google-ads/answer/7686447). |
 |Restatement Value| (Required) The value of the conversion after restatement.|
-|Restatement Date Time| (Required) The date and time at which the adjustment occurred. The format is **yyyy-mm-dd hh:mm:ss&#43;&amp;#124;-hh:mm**. Date attributes are converted to the format Google expects.|
+|Restatement Date Time| (Required) The date and time at which the adjustment occurred. The format is **yyyy-mm-dd hh:mm:ss+&#124;-hh:mm**. Date attributes are converted to the format Google expects.|
 |Order ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
 |Google Click ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
-|Conversion Date Time| The date and time of the conversion. The format is **yyyy-mm-dd hh:mm:ss&#43;&amp;#124;-hh:mm**. Date attributes will be converted to the format Google expects.|
+|Conversion Date Time| The date and time of the conversion. The format is **yyyy-mm-dd hh:mm:ss+&#124;-hh:mm**. Date attributes will be converted to the format Google expects.|
 |Currency Code| The currency of the restated value. If not provided, then the default currency from the conversion action is used.|
 
 #### Optional parameter
@@ -166,10 +170,10 @@ The following section describes how to set up parameters and options for each ac
 |**Parameter**| **Description**|
 |---| ---|
 |Conversion Action| Select existing conversion action. For more information, see [Google: Google Ads Conversion Adjustments](https://support.google.com/google-ads/answer/7686447).|
-|Retraction Date Time| (Required) The date and time at which the retraction occurred. The format is **yyyy-mm-dd hh:mm:ss&#43;&amp;#124;-hh:mm**. Date attributes are converted to the format Google expects.|
+|Retraction Date Time| (Required) The date and time at which the retraction occurred. The format is **yyyy-mm-dd hh:mm:ss+&#124;-hh:mm**. Date attributes are converted to the format Google expects.|
 |Order ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
 |Google Click ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
-|Conversion Date Time| This parameter must be in the format **yyyy-mm-dd hh:mm:ss&#43;&amp;#124;-hh:mm**. Date attributes will be converted to the format Google expects. |
+|Conversion Date Time| This parameter must be in the format **yyyy-mm-dd hh:mm:ss+&#124;-hh:mm**. Date attributes will be converted to the format Google expects. |
 | Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. You can use EventStream variables to populate the **Conversion Action ID** parameter. |
 | Customer ID Override | (Optional) Provide a customer ID to override the **Customer ID** in the connector configuration. If you use this option, you must also use the Conversion Action Override. |
 | Manager Customer ID Override | (Optional) If you are using the Customer ID Override and accessing a client customer, provide a Manager Customer ID. |
@@ -186,7 +190,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-|Caller ID| (Required) The caller ID from which this call was placed. Caller ID is expected in E.164 format and preceded by plus (`&#43;`). For example, `&#43;16502531234`. |
+|Caller ID| (Required) The caller ID from which this call was placed. Caller ID is expected in E.164 format and preceded by plus (`+`). For example, `+16502531234`. |
 |Call Start Datetime| (Required) The date and time at which the call occurred. The timezone must be specified. The format is **yyyy-mm-dd hh:mm:ss±hh:mm**. For example, `2020-01-01 12:32:45-8:00±hh:mm`. |
 |Conversion Datetime|  (Required) The date and time at which the conversion occurred. This date and time must be after the call time. The timezone must be specified. The format is **yyyy-mm-dd hh:mm:ss±hh:mm**.  For example, `2020-01-01 12:32:45-8:00±hh:mm`. |
 |Conversion Value|  The value of the conversion for the advertiser. |

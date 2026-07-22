@@ -17,22 +17,22 @@ url: https://docs.tealium.com/ja/iq-tag-management/frequently-asked-questions/ho
 
 ## 解決策
 
-デフォルトでutag.viewのみをサポートしているタグにutag.linkサポートを追加したい場合があります。始めるには、タグテンプレートを編集する方法についてのこのドキュメントに従ってください：[タグテンプレートを編集する]()。
+デフォルトでutag.viewのみをサポートしているタグにutag.linkサポートを追加したい場合があります。始めるには、タグテンプレートを編集する方法についてのこのドキュメントに従ってください：[タグテンプレートを編集する](https://docs.tealium.com/manage-templates/)。
 
 テンプレートを編集している間、次のように始まる行を探します：
 
 ```js
-u.ev= {&#39;view&#39;: 1};
+u.ev= {'view': 1};
 ```
 
-![](/images/iq-tag-management/viewonly.png)
+![](https://docs.tealium.com/images/iq-tag-management/viewonly.png)
 
 この行を次のように編集します：
 
 ```js
-u.ev = {&#39;view&#39; : 1, &#39;link&#39;: 1};
+u.ev = {'view' : 1, 'link': 1};
 ```
 
-![](/images/iq-tag-management/view-link.png)
+![](https://docs.tealium.com/images/iq-tag-management/view-link.png)
 
 タグテンプレートを保存し、プロファイルを再公開します。これで、あなたのタグはutag.viewとutag.linkの両方のイベントに対応するようになります。

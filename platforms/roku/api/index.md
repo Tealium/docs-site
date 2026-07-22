@@ -3,7 +3,7 @@ title: API Reference
 description: Reference guide for classes and methods provided by Tealium for Roku.
 url: https://docs.tealium.com/platforms/roku/api/
 ---
-The following lists the available functions in the Tealium for Roku library. Apps for Roku are written in BrightScript, a powerful scripting language. [Learn more](https://sdkdocs.roku.com/display/sdkdoc/BrightScript&#43;Language&#43;Reference) about BrightScript.
+The following lists the available functions in the Tealium for Roku library. Apps for Roku are written in BrightScript, a powerful scripting language. [Learn more](https://sdkdocs.roku.com/display/sdkdoc/BrightScript+Language+Reference) about BrightScript.
 
 ## Class: `TealiumBuilder`
 
@@ -26,7 +26,7 @@ SetDatasource(datasource)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `datasource` | String | Data source key | `&#34;def456&#34;` |
+| `datasource` | String | Data source key | `"def456"` |
 
 ### `SetEnvironment()`
 
@@ -38,7 +38,7 @@ SetEnvironment(environment)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `environment` | String | Tealium environment name | [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
+| `environment` | String | Tealium environment name | [`"dev"`, `"qa"`, `"prod"`] |
 
 ### `SetLogLevel()`
 
@@ -62,8 +62,8 @@ TealiumBuilder(account, profile, logLevel)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | String | Tealium account name | `&#34;account123&#34;` |
-| `profile` | String | Tealium profile name (default: `&#34;main&#34;`) | `&#34;main&#34;` |
+| `account` | String | Tealium account name | `"account123"` |
+| `profile` | String | Tealium profile name (default: `"main"`) | `"main"` |
 | `logLevel` | String | Log level  | `1` |
 
 ## Class: `TealiumCore`
@@ -86,7 +86,7 @@ ToStr()
 
 | Returns | Return Type | Example |
 | --- | --- | --- |
-| Human-readable String containing the configuration details of the current Tealium instance. | String | `&#34;Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV&#34;` |
+| Human-readable String containing the configuration details of the current Tealium instance. | String | `"Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV"` |
 
 ### `TrackEvent()`
 

@@ -14,17 +14,21 @@ url: https://docs.tealium.com/client-side-tags/sprinklr-universal-pixel-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information, see .
+Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Client ID**: Your Sprinklr-provided client ID.
 * **Generate Event ID**: Automatically generate an event ID for every Sprinklr tracking event.
-&lt;!--
+<!--
 
 ### Leads API
 
- This feature requires an active [Tealium Collect tag](). 
+
+<blockquote>
+This feature requires an active [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+</blockquote>
+
 
 To support Sprinklr Leads API Connector, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Sprinklr Leads API Connector and passes it to the Sprinklr Universal Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
@@ -38,7 +42,7 @@ For example, a purchase event from tag #32 would send the following attribute an
 
 ```json
 {
-  &#34;sprinklr_event_id_Purchase_32&#34;: &#34;028b2ade7478...&#34;
+  "sprinklr_event_id_Purchase_32": "028b2ade7478..."
 }
 ```
 
@@ -46,7 +50,7 @@ A page view event from the same tag would send the following attribute and value
 
 ```json
 {
-  &#34;sprinklr_event_id_PageView_32&#34;: &#34;084b1cda7461...&#34;
+  "sprinklr_event_id_PageView_32": "084b1cda7461..."
 }
 ```
 
@@ -56,15 +60,15 @@ To ensure proper event deduplication, the event ID from the Sprinklr Universal P
 
 * From the **Tag Timing** drop-down, select **Prioritized**.
 * Set the **Bundle Flag** toggle to `On`.
-* Use the [Load Order Manager screen]() to fire the Sprinklr Universal Pixel tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last. --&gt;
+* Use the [Load Order Manager screen](https://docs.tealium.com/load-order-manager/) to fire the Sprinklr Universal Pixel tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last. -->
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

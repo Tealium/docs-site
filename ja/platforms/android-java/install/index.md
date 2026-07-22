@@ -7,8 +7,8 @@ url: https://docs.tealium.com/ja/platforms/android-java/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android（KitKat/4.4以降/APIレベル19以上）
-* [Tealium iQモバイルプロファイル]()
-* [Tealium Customer Data Hubアカウント]()
+* [Tealium iQモバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
 
@@ -18,7 +18,11 @@ url: https://docs.tealium.com/ja/platforms/android-java/install/
 
 [Tealium Androidライブラリ](https://github.com/Tealium/tealium-android)をクローンします。ライブラリをダウンロードせずクローンすることで、今後のリリースに向けたアップデートがしやすくなります。
 
+
+<blockquote>
 Android向けTealiumクラスおよびメソッドの完全なリストについては、[Tealium API](https://tealium.github.io/tealium-android/)を参照してください。
+</blockquote>
+
 
 ## インストール
 
@@ -35,7 +39,7 @@ allprojects {
       repositories {
         mavenCentral()
         maven {
-          url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+          url "https://maven.tealiumiq.com/android/releases/"
         }
       }
 }
@@ -45,7 +49,7 @@ allprojects {
 
 ```groovy
 dependencies {
-      implementation &#39;com.tealium:library:5.8.0&#39;
+      implementation 'com.tealium:library:5.8.0'
 }
 ```
 
@@ -59,18 +63,18 @@ allprojects {
       repositories {
          mavenCentral()
          flatDir {
-             dirs &#39;libs&#39;
+             dirs 'libs'
          }
       }
 }
 ```  
 
-2. `tealium-5.x.x.aar`を`&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs`に追加します。
+2. `tealium-5.x.x.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
 3. Tealiumライブラリの依存関係を`build.gradle`ファイルに追加します。
 ```groovy
 dependencies {
-      implementation(name:&#39;tealium-5.6.1&#39;, ext:&#39;aar&#39;)
+      implementation(name:'tealium-5.6.1', ext:'aar')
 }
 ```
 
@@ -78,40 +82,44 @@ dependencies {
 
 初期化するには、次の変更をアプリの`onCreate()`メソッドに加えます。
 
-1. [`Tealium.Config`](/ja/platforms/android-java/api/tealium-config/#class-tealium-config) オブジェクトのインスタンスを作成します。
+1. [`Tealium.Config`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#class-tealium-config) オブジェクトのインスタンスを作成します。
 ```java
 Tealium.Config tealConfig = Tealium.Config.create(
         this,
-        &#34;ACCOUNT&#34;,
-        &#34;PROFILE&#34;,
-        &#34;ENVIRONMENT&#34;);
+        "ACCOUNT",
+        "PROFILE",
+        "ENVIRONMENT");
 ```
 
-2. 追加の必要なメソッド ( [`setDatasourceId()`](/ja/platforms/android-java/api/tealium-config/#setdatasourceid)など) を呼び出して、構成データを構成します。
+2. 追加の必要なメソッド ( [`setDatasourceId()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setdatasourceid)など) を呼び出して、構成データを構成します。
 ```java
-tealConfig.setDatasourceId(&#34;DATASOURCE_ID&#34;);
+tealConfig.setDatasourceId("DATASOURCE_ID");
 ```
 
-3. [`setupInstance()`](/ja/platforms/android-java/api/life-cycle/#setupinstance) メソッドを呼び出して、アプリのライフサイクル インスタンスを構成します。
+3. [`setupInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/life-cycle/#setupinstance) メソッドを呼び出して、アプリのライフサイクル インスタンスを構成します。
 ```java
-LifeCycle.setupInstance(&#34;INSTANCE_NAME&#34;, config, true);
+LifeCycle.setupInstance("INSTANCE_NAME", config, true);
 ```
 
-4. [`createInstance()`](/ja/platforms/android-java/api/tealium/#createinstance) メソッドを呼び出して Tealium インスタンスを作成し、構成インスタンスをコンストラクタ引数として渡します。
+4. [`createInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#createinstance) メソッドを呼び出して Tealium インスタンスを作成し、構成インスタンスをコンストラクタ引数として渡します。
 ```java
-tealium = Tealium.createInstance(&#34;INSTANCE_NAME&#34;, tealConfig);
+tealium = Tealium.createInstance("INSTANCE_NAME", tealConfig);
 ```
 
-Collectがバージョン5.5.1以降で有効になっている場合、データは`Tealium.Config`オブジェクトで提供されるプロファイルに送信されます。それより前のバージョンでは、データはデフォルトのプロファイル（`&#34;main&#34;`）に送信されます。
+
+<blockquote>
+Collectがバージョン5.5.1以降で有効になっている場合、データは`Tealium.Config`オブジェクトで提供されるプロファイルに送信されます。それより前のバージョンでは、データはデフォルトのプロファイル（`"main"`）に送信されます。
+</blockquote>
+
 
 ## ログレベル
 
 ログレベルはリモート公開構成により管理され、初期化の際に構成された環境から推測されます。
 
-バージョン 5.3.1 以降、次の例に示すように [`setForceOverrideLogLevel()`](/ja/platforms/android-java/api/tealium-config/#setforceoverrideloglevel) メソッドを使用して、ログ レベルをローカルでオーバーライドすることができます。
+バージョン 5.3.1 以降、次の例に示すように [`setForceOverrideLogLevel()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setforceoverrideloglevel) メソッドを使用して、ログ レベルをローカルでオーバーライドすることができます。
 
 ```java
-tealConfig.setForceOverrideLogLevel(&#34;LOG_LEVEL&#34;);
+tealConfig.setForceOverrideLogLevel("LOG_LEVEL");
 ```
 
 ## Cookie
@@ -129,13 +137,13 @@ private static WebViewCreatedListener createCookieEnablerListener() {
             final CookieManager mgr = CookieManager.getInstance();
             // Accept all cookies
             mgr.setAcceptCookie(true);
-            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mgr.setAcceptThirdPartyCookies(webView, true);
             }
-            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
                 CookieManager.setAcceptFileSchemeCookies(true);
             }
-            Log.d(TAG, &#34;WebView &#34; &#43; webView &#43; &#34; created and cookies enabled.&#34;);
+            Log.d(TAG, "WebView " + webView + " created and cookies enabled.");
         }
     };
 }
@@ -143,17 +151,25 @@ private static WebViewCreatedListener createCookieEnablerListener() {
 
 このコードを使用すると、タグ管理`Webview`は、ファーストパーティ、サードパーティ、およびファイルスキームのCookieを[受け入れる](https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()ことができます。
 
+
+<blockquote>
 バージョン5.1.0以降では、`CookieManager`がデフォルトで**有効**になっています。バージョン5.0.4以前では、`CookieManager`がデフォルトで**無効**になっています。
+</blockquote>
+
 
 ## イベントバッチ処理
 
-イベントバッチ処理を有効にするには、[モバイル公開構成]()に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。
+イベントバッチ処理を有効にするには、[モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。
 
-イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド [`setSecondsBeforeBatchTimeout()`](/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout)を呼び出します。
+イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド [`setSecondsBeforeBatchTimeout()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout)を呼び出します。
 
-バッチ サイズとバッチ タイムアウト チェックをオーバーライドするには、メソッド [`requestFlush()`](/ja/platforms/android-java/api/tealium/#requestflush)を呼び出してキューを即座にフラッシュします。
+バッチ サイズとバッチ タイムアウト チェックをオーバーライドするには、メソッド [`requestFlush()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#requestflush)を呼び出してキューを即座にフラッシュします。
 
+
+<blockquote>
 デバイスがオフラインであるか、Consent Managerが有効になっている場合は、フラッシュオーバーライドを行っても効果がありません。
+</blockquote>
+
 
 
 ## マルチプロセスアプリ

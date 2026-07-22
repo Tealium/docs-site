@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-journey-build
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を読んでください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を読んでください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -44,9 +44,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-journey-build
 
 |**パラメータ**| **説明**|
 |---| ---|
-|イベントエントリ定義|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;イベントエントリ定義を選択するか、手動で入力します。&lt;/li&gt;&lt;li&gt;ドロップダウンリストは新しい順にリストされ、最大2000エントリが表示されます。&lt;/li&gt;&lt;li&gt;詳細については、[Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|コンタクトキー|  &lt;ul&gt;&lt;li&gt;必須。&lt;/li&gt;&lt;li&gt;コンタクトキーを提供してください。&lt;/li&gt;&lt;/ul&gt; |
-|イベントデータ|  &lt;ul&gt;&lt;li&gt;カスタムイベントで定義されている場合、またはイベントによって指定されている場合は必須。&lt;/li&gt;&lt;li&gt;コンタクトイベント属性に値をマッピングします。&lt;/li&gt;&lt;li&gt;詳細については、[Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|イベントエントリ定義|  <ul><li>必須。</li><li>イベントエントリ定義を選択するか、手動で入力します。</li><li>ドロップダウンリストは新しい順にリストされ、最大2000エントリが表示されます。</li><li>詳細については、[Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html)を参照してください。</li></ul> |
+|コンタクトキー|  <ul><li>必須。</li><li>コンタクトキーを提供してください。</li></ul> |
+|イベントデータ|  <ul><li>カスタムイベントで定義されている場合、またはイベントによって指定されている場合は必須。</li><li>コンタクトイベント属性に値をマッピングします。</li><li>詳細については、[Salesforce: POST /interaction/v1/events](https://developer.salesforce.com/docs/marketing/marketing-cloud/references/mc_rest_interaction/postEvent.html)を参照してください。</li></ul> |
 
 ## ベンダー文書
 

@@ -11,8 +11,8 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/module-list/collectors
 
 ```kotlin
 val config = TealiumConfig(application,
-                 &#34;ACCOUNT&#34;,
-                 &#34;PROFILE&#34;,
+                 "ACCOUNT",
+                 "PROFILE",
                  Environment.DEV,
                  collectors = mutableSetOf(
                      Collectors.Tealium,
@@ -69,7 +69,7 @@ Tealiumアカウントに関する情報を収集します。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
-| `device` | 小売デバイス名（メーカー&#43;モデル） | `Google Pixel 8`, `Sony Xperia 1 V` |
+| `device` | 小売デバイス名（メーカー+モデル） | `Google Pixel 8`, `Sony Xperia 1 V` |
 | `device_android_runtime` | Androidランタイムバージョン | `2.1.0` |
 | `device_architecture` | デバイスのビットアーキテクチャ | `64` |
 | `device_battery_percent` | デバイスの残り電力の整数パーセンテージ表現 | `50` |

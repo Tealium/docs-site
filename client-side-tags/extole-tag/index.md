@@ -3,7 +3,7 @@ title: Extole Tag Setup Guide
 description: This article describes how to set up the Extole tag.
 url: https://docs.tealium.com/client-side-tags/extole-tag/
 ---
-Extole&#39;s platform powers rich, cross-channel referral programs for the world&#39;s biggest brands. With all the capabilities to market, measure, and optimize large-scale refer-a-friend, the Extole platform helps marketers turn the love existing customers have for your brand into new customers.
+Extole's platform powers rich, cross-channel referral programs for the world's biggest brands. With all the capabilities to market, measure, and optimize large-scale refer-a-friend, the Extole platform helps marketers turn the love existing customers have for your brand into new customers.
 
 ## Tag tips
 
@@ -14,7 +14,7 @@ Extole&#39;s platform powers rich, cross-channel referral programs for the world
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -23,11 +23,11 @@ When adding the tag, configure the following settings:
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -39,7 +39,11 @@ The available categories are:
 | `registration.custom` | Registration Custom Data  |
 | `conversion.custom` | Conversion Custom Data  | 
 
+
+<blockquote>
 Replace `custom` with your variable name, for instance `registration.date`.
+</blockquote>
+
 
 ### E-Commerce
 
@@ -81,7 +85,11 @@ Because the Extole tag is e-commerce enabled, it automatically uses the default 
 |  `cta.overlay` | Overlay  |
 |  `cta.mobile_menu` | Mobile menu  |
 
+
+<blockquote>
 If you are not mapping an element ID or selector, map the string `n/a`.
+</blockquote>
+
 
 #### Standard CTA Names
 
@@ -97,7 +105,7 @@ If you want to send the date for a referral CTA, map to the **Referral Page** de
 
 ### Event Triggers
 
-To map events, see [Create an Event Mapping]().
+To map events, see [Create an Event Mapping](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping).
 
 Map to the following destinations for triggering specific events on a page. To trigger an event:
 

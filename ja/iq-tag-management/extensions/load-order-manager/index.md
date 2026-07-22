@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 * アイテムのスコープを一括で変更します。
 * 非アクティブなアイテムを非表示にしたり表示したりします。
 
-![](/images/iq-tag-management/load-order-manager-overview.png)
+![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-overview.png)
 
 詳細については、[操作の順序]()について読んでください。
 
@@ -34,20 +34,20 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 
 ロードオーダーマネージャーを使用するには、次の手順に従います：
 
-1. **タグ管理 &gt; タグ**（または**拡張機能**）に移動します。
+1. **タグ管理 > タグ**（または**拡張機能**）に移動します。
 1. リストビューで**ロードオーダーの編集**をクリックします。  
 ロードオーダーマネージャー画面に、スコープごとに実行順序でタグと拡張機能が表示されます。
     * サイドパネルでは、各スコープがそのスコープのタグ数を表示します。  
-        ![](/images/iq-tag-management/load-order-manager-number-of-tags-per-scope.png)
+        ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-number-of-tags-per-scope.png)
     * 個々のタグと拡張機能の詳細と実行順序番号がメインパネルに表示されます。  
-![](/images/iq-tag-management/load-order-manager-order-of-execution-column.png)
+![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-order-of-execution-column.png)
 
 ### スコープ内の順序変更
 
 ロードオーダーマネージャー画面から、次の手順でタグまたは拡張機能をドラッグアンドドロップして、スコープ内の実行順序を変更します：
 
 1. ロードオーダーマネージャー画面で、移動したいタグまたは拡張機能の行をクリックして保持します。  
-    ![](/images/iq-tag-management/load-order-manager-drag-to-new-position-in-same-scope.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-drag-to-new-position-in-same-scope.png)
 1. 上または下にドラッグして、希望の位置に移動し、リリース（ドロップ）します。  
 編集したタグまたは拡張機能は新しい位置にあり、順序番号が更新されます。
 1. **変更を適用**をクリックします。
@@ -59,8 +59,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 1. ロードオーダーマネージャー画面で、移動したいタグまたは拡張機能をクリックして保持します。  
 アイテムをドラッグアンドドロップするときには、開いた手のアイコンが表示されます。
 1. アイテムを左にドラッグし、移動したいスコープでリリース（ドロップ）します。  
-    ![](/images/iq-tag-management/load-order-manager-move-to-new-scope.png)  
-    無効な移動は防止されます。有効なスコープにのみドロップできます。
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-move-to-new-scope.png)  
+    
+<blockquote>
+無効な移動は防止されます。有効なスコープにのみドロップできます。
+</blockquote>
+
     移動したタグまたは拡張機能は新しい位置にあります。
 1. **変更を適用**をクリックします。
 1. 変更を保存して公開します。
@@ -74,7 +78,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 1. ロードオーダーマネージャー画面で、タグまたは拡張機能の右側にあるドロップダウンメニューをクリックします。
 1. **セクションの先頭に移動**、**セクションの最後に移動**、または有効なスコープを選択します。  
 リストに表示されるのは有効なオプションのみで、それ以外はグレーアウトされます。  
-    ![](/images/iq-tag-management/load-order-manager-quick-links-for-moves.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-quick-links-for-moves.png)
 1. **変更を適用**をクリックします。
 
 ### 順序番号の使用
@@ -82,7 +86,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 ロードオーダーマネージャー画面から、次の手順でスコープ内の実行順序を順序番号を編集して変更します：
 
 1. ロードオーダーマネージャー画面で、移動したいタグまたは拡張機能の順序フィールドをクリックします。  
-    ![](/images/iq-tag-management/load-order-manager-manually-update-order-number.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-manually-update-order-number.png)
 1. 新しい実行順序番号をボックスに入力して順序番号を編集します。
 1. **変更を適用**をクリックします。  
 移動したタグまたは拡張機能は新しい位置にあります。
@@ -93,12 +97,12 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 
 1. ロードオーダーマネージャー画面で、1つ以上のタグまたは拡張機能の左側にあるチェックボックスをクリックします。  
 画面の上部には、**スコープへ**、**移動**、および選択したアイテムの数を表示する3つの新しいドロップダウンリストが表示されます。  
-    ![](/images/iq-tag-management/load-order-manager-select-bulk.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-select-bulk.png)
 1. 選択したすべてのアイテムを新しいスコープに移動するには、**スコープへ**ドロップダウンリストをクリックし、新しいスコープを選択します。  
 選択したすべてのアイテムに対して有効なスコープのみが移動先として利用可能で、それ以外はグレーアウトされます。  
-    ![](/images/iq-tag-management/load-order-manager-bulk-scope-to-dropdown.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-bulk-scope-to-dropdown.png)
 1. 選択したすべてのアイテムをセクションの先頭または最後に移動するには、**移動**ドロップダウンリストをクリックし、**セクションの先頭に移動**または**セクションの最後に移動**を選択します。  
-    ![](/images/iq-tag-management/load-order-manager-move-section-to-top-or-bottom.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-move-section-to-top-or-bottom.png)
 1. **変更を適用**をクリックします。  
 移動したタグまたは拡張機能は新しい位置にあります。
 1. 変更を保存して公開します。
@@ -112,6 +116,6 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/load-order-manager
 GAラベルのアイテムを検索するための次の手順を使用します：
 
 1. ロードオーダーマネージャーインターフェースで、検索フィールドに移動し、検索フィールドに入力したいテキストを入力します。  
-    ![](/images/iq-tag-management/load-order-manager-search-results.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/load-order-manager-search-results.png)
 1. 検索結果には、タイトル、タイプ、またはラベルの列に「extension」という単語が含まれているすべてのアイテムが表示されます。  
 検索結果が複数ページにわたる場合は、検索フィールドの右側にある上または下の矢印をクリックして結果をスクロールします。

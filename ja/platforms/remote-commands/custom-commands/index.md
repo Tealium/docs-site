@@ -16,7 +16,11 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/custom-commands/
 - **ペイロード**  
 ネイティブアプリに渡され、ハンドラのレスポンスコールバックで`requestPayload`という名前のオブジェクトとして受け取られるデータ。
 
+
+<blockquote>
 ビルド時にネイティブアプリでリモートコマンドを定義します。カスタムリモートコマンドタグは、デバイス上で事前に定義されたコードのみを実行します。
+</blockquote>
+
 
 ### ネイティブコード
 
@@ -26,9 +30,9 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/custom-commands/
 
 ```swift
 tealium = Tealium(config: config) { [weak self] _ in
-	let remoteCommand = RemoteCommand(commandId: &#34;myRemoteCommand&#34;, description: &#34;&#34;) { response in
+	let remoteCommand = RemoteCommand(commandId: "myRemoteCommand", description: "") { response in
 		guard let payload = response.payload,
-	    let myVariable = payload[&#34;myVariable&#34;] as? String else {
+	    let myVariable = payload["myVariable"] as? String else {
 			return
 		}
 		print(myVariable)
@@ -39,9 +43,9 @@ tealium = Tealium(config: config) { [weak self] _ in
 
 
 ```kotlin
-val remoteCommand = object : RemoteCommand(&#34;sample&#34;, &#34;testing RCs&#34;) {
+val remoteCommand = object : RemoteCommand("sample", "testing RCs") {
     override fun onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, &#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;)
+        Logger.dev(BuildConfig.TAG, "ResponsePayload for webView RemoteCommand ${response.requestPayload}")
     }
 }
 val tealium = Tealium.create(instanceName, config) {
@@ -55,11 +59,11 @@ val tealium = Tealium.create(instanceName, config) {
 
 インストールするには、ベンダーの依存関係をTealiumのリモートコマンド依存関係に置き換えます。例えば、以下の行を削除します：  
 ```bash
-pod &#34;VendorXYZ-iOS-SDK&#34;
+pod "VendorXYZ-iOS-SDK"
 ```
 次に、以下の行を追加します：
 ```bash
-pod &#34;TealiumVendorXYZ&#34;
+pod "TealiumVendorXYZ"
 ```
 
 
@@ -93,8 +97,8 @@ iQタグ管理では、リモートコマンドがカスタムリモートコマ
 
 ```swift
 tealium?.track(
-    title: &#34;My Screen&#34;,
-    data: [&#34;tealium_event&#34;: &#34;my_event&#34;, &#34;my_variable&#34;: &#34;my_value&#34;]
+    title: "My Screen",
+    data: ["tealium_event": "my_event", "my_variable": "my_value"]
 );
 ```
 
@@ -105,8 +109,8 @@ tealium?.track(
 * **ロードルール**  
 `IF tealium_event EQUALS my_event`
 * **マップされた変数**  
-`my_variable -&gt; myVariable`
+`my_variable -> myVariable`
 
 以下のスクリーンショットは、iQタグ管理で構成された例を示しています。
 
-![](/images/platforms/remote-commands/tag-example.png)
+![](https://docs.tealium.com/images/platforms/remote-commands/tag-example.png)

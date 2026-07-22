@@ -18,7 +18,11 @@ Use the following steps to help you build your migration strategy:
 1. Test saving and publishing rights with your users.
 1. Adjust the permission groups and admin roles as needed.
 
+
+<blockquote>
 If you need assistance with this process, please contact Tealium Support.
+</blockquote>
+
 
 ## Migration suggestions
 

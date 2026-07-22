@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 ## 訪問属性の作成
 
-![](/images/server-side/getting-started-audiencestream-lifetime-order-value.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-lifetime-order-value.png)
 
 例として、**Lifetime Order Value**（生涯注文価値）と呼ばれる人気のあるeコマース訪問属性を見てみましょう。これは、顧客が完了したすべての注文で費やした累積金額を計算する訪問属性です。この値を計算するには、購入がいつ発生するかとその購入額も知る必要がありますので、属性の依存関係は以下の通りです：
 
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 この属性を追加するための手順は以下の通りです：
 
-1. **Transform &gt; Visitor / Visit Attributes** に移動し、**Add Attribute** をクリックします。
+1. **Transform > Visitor / Visit Attributes** に移動し、**Add Attribute** をクリックします。
 1. スコープを **Visitor** に構成し、**Continue** をクリックします。
 1. データタイプ **Number** を選択し、**Continue** をクリックします。
 1. 属性の名前を `Lifetime Order Value` と入力します。
@@ -40,6 +40,6 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 これで、完了した注文の合計金額を追跡するエンリッチメントを持つ訪問属性を作成しました。
 
-![](/images/server-side/getting-started-audiencestream-enrichment.png)
+![](https://docs.tealium.com/images/server-side/getting-started-audiencestream-enrichment.png)
 
 次に、バッジと訪問IDと呼ばれるさらに特別な属性について学びます。

@@ -5,17 +5,21 @@ url: https://docs.tealium.com/ja/server-side/data-sources/platform-data-sources/
 ---
 ウェブ、モバイル、サーバーサイド、またはウェブフックのデータソースを追加するには、次の2つのステップが必要です：プラットフォームを選択し、インストール用のコードを取得します。
 
-オフラインデータのデータソースを追加するには、[ファイルインポートデータソース]()を参照してください。
+
+<blockquote>
+オフラインデータのデータソースを追加するには、[ファイルインポートデータソース](https://docs.tealium.com/about-file-import/)を参照してください。
+</blockquote>
+
 
 データソースを追加するには、以下の手順に従ってください：
 
-1. サイドバーで **Connect &gt; Data Sources** を選択します。
-1. **&#43; Add Data Source** をクリックします。
+1. サイドバーで **Connect > Data Sources** を選択します。
+1. **+ Add Data Source** をクリックします。
 1. **Select a Platform** 画面から、インストールのための言語またはプラットフォームを選択します。カテゴリー別に選択を絞り込むには、左パネルのカテゴリーをクリックします。
 1. **Summary** の下の **Name** フィールドに名前を入力し、**Continue** をクリックします。これは必須フィールドです。
-1. **Continue** をクリックします。ダイアログは **Get Code** ステップに進み、データソースキーとインストールコードまたは指示が表示されます。![](/images/server-side/whiteui-getcode.png)
+1. **Continue** をクリックします。ダイアログは **Get Code** ステップに進み、データソースキーとインストールコードまたは指示が表示されます。![](https://docs.tealium.com/images/server-side/whiteui-getcode.png)
 1. （オプション）インストール指示、データソースキー、ベースコード、イベントトラッキングコードを含む指示をPDFでダウンロードするには、**Download as PDF** をクリックします。
-1. **Save &amp; Continue** をクリックします。
+1. **Save & Continue** をクリックします。
 データソースの概要が表示されます。
 1. **Close** をクリックします。
 新しいデータソースがアクション可能な項目の概要と共に表示されます。

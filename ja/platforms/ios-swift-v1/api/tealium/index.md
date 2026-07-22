@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium/
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。トレースはアプリセッションの間アクティブのままで、`leaveTrace()`が呼ばれるまで続きます。Tealium Customer Data Hubのトレース機能について[詳しくはこちら]()。
+指定されたIDでトレースに参加します。トレースはアプリセッションの間アクティブのままで、`leaveTrace()`が呼ばれるまで続きます。Tealium Customer Data Hubのトレース機能について[詳しくはこちら](https://docs.tealium.com/manage-traces/)。
 
 ```swift
 joinTrace(traceId: String)
@@ -26,7 +26,7 @@ joinTrace(traceId: String)
 
 | パラメータ | タイプ | 説明 | 例 |
 |------------|----------------------|-----------------| ---- |
-| `traceId`  | `String` | トレースツールから取得したトレースID | `&#34;12345&#34;` |
+| `traceId`  | `String` | トレースツールから取得したトレースID | `"12345"` |
 
 
 ### `leaveTrace()`
@@ -51,7 +51,7 @@ Tealium(config: TealiumConfig, completion: Closure)
 | パラメータ | タイプ | 説明 |
 |------------|----------------------|--------------------------------------------------------------------------------------------|
 | `config`| `TealiumConfig` | アカウントの詳細を含む `TealiumConfig` オブジェクトで Tealium オブジェクトを初期化します。 |
-| `completion`  | `Closure` | (オプション) 初期化完了時に呼び出される完了クロージャ `()-&gt; Void )?` |
+| `completion`  | `Closure` | (オプション) 初期化完了時に呼び出される完了クロージャ `()-> Void )?` |
 
 
 ### `track()`
@@ -64,8 +64,8 @@ track(title:String, data:[String:Any], completion:ClosureType)
 
 | パラメータ | タイプ | 説明 | 例 |
 |---------------|---------------|------------------| --- |
-| `title`| `String` | 追跡するイベントの名前 | `title: &#34;Buy Now&#34;` |
-| `data`| `Dictionary` | イベント追跡に関連するキーと値のペアのオブジェクト | `data: [&#34;product_id&#34; : [&#34;widget123&#34;]]` |
+| `title`| `String` | 追跡するイベントの名前 | `title: "Buy Now"` |
+| `data`| `Dictionary` | イベント追跡に関連するキーと値のペアのオブジェクト | `data: ["product_id" : ["widget123"]]` |
 | `completion`| `ClosureType` | 追跡コールの完了時に実行する関数 (なしの場合は `nil` を使用) | `nil` |
 
 
@@ -78,8 +78,8 @@ trackView(title:String, data:[String:Any], completion:ClosureType)
 
 | パラメータ | タイプ | 説明 | 例 |
 |---------------|---------------|------------------| --- |
-| `title`| `String` | 追跡する画面ビューの名前 | `title: &#34;Homescreen&#34;` |
-| `data`| `Dictionary` | イベント追跡に関連するキーと値のペアのオブジェクト | `data: [&#34;customer_id&#34;: &#34;1234567890-a&#34;]` |
+| `title`| `String` | 追跡する画面ビューの名前 | `title: "Homescreen"` |
+| `data`| `Dictionary` | イベント追跡に関連するキーと値のペアのオブジェクト | `data: ["customer_id": "1234567890-a"]` |
 | `completion`| `ClosureType` | 追跡コールの完了時に実行する関数 (なしの場合は `nil` を使用) | `nil` |
 
 

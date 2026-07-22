@@ -24,11 +24,15 @@ initialize(account, profile, datasource)
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealium account name | `&#34;account123&#34;` |
-| `profile` | `String` | Tealium profile name | `&#34;main&#34;` |
-| `datasource` | String | Data source key (`nil` if none provided) | `&#34;abc123&#34;` |
+| `account` | `String` | Tealium account name | `"account123"` |
+| `profile` | `String` | Tealium profile name | `"main"` |
+| `datasource` | String | Data source key (`nil` if none provided) | `"abc123"` |
 
- When you call the method `new` on the Tealium class, as in `Tealium.new`, the class creates a new instance of itself. It will then, internally, call the `initialize()` method on the new object. Doing so it will simply pass all the arguments that you passed to new on to the `initialize()` method.
+
+<blockquote>
+When you call the method `new` on the Tealium class, as in `Tealium.new`, the class creates a new instance of itself. It will then, internally, call the `initialize()` method on the new object. Doing so it will simply pass all the arguments that you passed to new on to the `initialize()` method.
+</blockquote>
+
 
 ### `track()`
 
@@ -40,5 +44,5 @@ track(event_name, data)
 
 | Parameter | Type |  Description | Example |
 |------|------|-------| ------|
-| `event`   | `String` |Title of the tracked event |  `&#34;some event&#34;` |
-| `data`    | `Hash` | (Optional) Event data as key-value pairs |  `{:key =&gt; &#34;value&#34;}` |
+| `event`   | `String` |Title of the tracked event |  `"some event"` |
+| `data`    | `Hash` | (Optional) Event data as key-value pairs |  `{:key => "value"}` |

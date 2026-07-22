@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/google-ads-remarketing-tag/
 ---
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -19,15 +19,19 @@ When adding the tag, configure the following settings:
   * Enter a value that you want to assign to the conversion action.
   * You can leave this field blank if you prefer to use the order subtotal value or otherwise set it dynamically with the Data Mapping toolbox.
 
+
+<blockquote>
 Optionally, set all of the above settings in the Data Mappings toolbox.
+</blockquote>
+
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/about-data-mappings/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 ### Standard
 
@@ -37,31 +41,31 @@ The following table describes destination names and descriptions for Standard va
 
 |Destination Name| Description|
 |---| ---|
-| Conversion ID `google_conversion_id` |  &lt;ul&gt;&lt;li&gt;Value of the `google_conversion_id` parameter.&lt;/li&gt;&lt;/ul&gt; |
-|Conversion Label|  &lt;ul&gt;&lt;li&gt;Set a default label here and use mapping to dynamically override this value.&lt;/li&gt;&lt;li&gt;Use a comma-separated list to send data for multiple labels.&lt;/li&gt;&lt;li&gt;This list can use a matching number of Conversion Labels as Conversion IDs or use a single label for all Conversion IDs.&lt;/li&gt;&lt;/ul&gt; |
-|Conversion Value (value)|  &lt;ul&gt;&lt;li&gt;Set a default value here or leave this blank to use the Subtotal value from the E-Commerce extension.&lt;/li&gt;&lt;li&gt;Use mapping to dynamically override this value and the E-Commerce extension value.&lt;/li&gt;&lt;li&gt;When you use conversion tracking, you can assign the same value to all conversion actions of a certain type (a static value) or let a conversion action have different values (dynamic, representing transaction-specific values).&lt;/li&gt;&lt;li&gt;If you assign values to your conversions, you will be able to distinguish the total value driven by your advertising across different conversions and be able to identify and focus on high-value conversions.&lt;/li&gt;&lt;li&gt;If you leave this field empty, the tag will auto-fill using the E-commerce value for subtotal ( `_csubtotal`).&lt;/li&gt;&lt;/ul&gt; |
-|Global Object|  &lt;ul&gt;&lt;li&gt;The name of the Global Object used for the event queue.&lt;/li&gt;&lt;li&gt;If not specified, &#34;gtag&#34; is used.&lt;/li&gt;&lt;li&gt;Not required for most implementations.&lt;/li&gt;&lt;/ul&gt; |
-|Data Layer Name|  &lt;ul&gt;&lt;li&gt;By default, the data layer initiated and referenced by the global site tag is named **dataLayer**.&lt;/li&gt;&lt;li&gt;Rename the data layer only if your project requires a separate name.&lt;/li&gt;&lt;/ul&gt; |
-|Enable Remarketing|  &lt;ul&gt;&lt;li&gt;Values are **On** or **Off**.&lt;/li&gt;&lt;li&gt;Default value is **Off**.&lt;/li&gt;&lt;li&gt;When Remarketing is enabled, this tag will automatically pull in data from the E-Commerce Extension to populate the Google Ads &#34;Retail&#34; parameters (prefix `ecomm_`).&lt;/li&gt;&lt;li&gt;Mapping directly to the &#34;Retail&#34; tab in the toolbox will override the data pulled in through the E-Commerce Extension.&lt;/li&gt;&lt;/ul&gt; |
-| Page Type `pagetype` |  &lt;ul&gt;&lt;li&gt;Type of page where you are tracking conversions.&lt;/li&gt;&lt;li&gt;Select a default page type here and use mapping to dynamically override this value.&lt;/li&gt;&lt;/ul&gt; |
-|Cross-Tracking Domains|  &lt;ul&gt;&lt;li&gt;A comma-separated list of domains to use with Cross-Domain Tracking (setAllowLinker).&lt;/li&gt;&lt;li&gt;Should be the top level domain, such as &#34;tealiumiq.com&#34;.&lt;/li&gt;&lt;/ul&gt; |
-|Custom|  &lt;ul&gt;&lt;li&gt;You may define customized parameters not predefined by Google Ads.&lt;/li&gt;&lt;li&gt;See &#34;Advanced&#34; below for more information.&lt;/li&gt;&lt;/ul&gt; |
+| Conversion ID `google_conversion_id` |  <ul><li>Value of the `google_conversion_id` parameter.</li></ul> |
+|Conversion Label|  <ul><li>Set a default label here and use mapping to dynamically override this value.</li><li>Use a comma-separated list to send data for multiple labels.</li><li>This list can use a matching number of Conversion Labels as Conversion IDs or use a single label for all Conversion IDs.</li></ul> |
+|Conversion Value (value)|  <ul><li>Set a default value here or leave this blank to use the Subtotal value from the E-Commerce extension.</li><li>Use mapping to dynamically override this value and the E-Commerce extension value.</li><li>When you use conversion tracking, you can assign the same value to all conversion actions of a certain type (a static value) or let a conversion action have different values (dynamic, representing transaction-specific values).</li><li>If you assign values to your conversions, you will be able to distinguish the total value driven by your advertising across different conversions and be able to identify and focus on high-value conversions.</li><li>If you leave this field empty, the tag will auto-fill using the E-commerce value for subtotal ( `_csubtotal`).</li></ul> |
+|Global Object|  <ul><li>The name of the Global Object used for the event queue.</li><li>If not specified, "gtag" is used.</li><li>Not required for most implementations.</li></ul> |
+|Data Layer Name|  <ul><li>By default, the data layer initiated and referenced by the global site tag is named **dataLayer**.</li><li>Rename the data layer only if your project requires a separate name.</li></ul> |
+|Enable Remarketing|  <ul><li>Values are **On** or **Off**.</li><li>Default value is **Off**.</li><li>When Remarketing is enabled, this tag will automatically pull in data from the E-Commerce Extension to populate the Google Ads "Retail" parameters (prefix `ecomm_`).</li><li>Mapping directly to the "Retail" tab in the toolbox will override the data pulled in through the E-Commerce Extension.</li></ul> |
+| Page Type `pagetype` |  <ul><li>Type of page where you are tracking conversions.</li><li>Select a default page type here and use mapping to dynamically override this value.</li></ul> |
+|Cross-Tracking Domains|  <ul><li>A comma-separated list of domains to use with Cross-Domain Tracking (setAllowLinker).</li><li>Should be the top level domain, such as "tealiumiq.com".</li></ul> |
+|Custom|  <ul><li>You may define customized parameters not predefined by Google Ads.</li><li>See "Advanced" below for more information.</li></ul> |
 
 ### Retail
 
-We recommend setting up the [E-Commerce Extension]() for this tag since it will automatically send the necessary product and order details to the appropriate Ads parameters. You also have the option to override the Extension variables with a mapping.
+We recommend setting up the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) for this tag since it will automatically send the necessary product and order details to the appropriate Ads parameters. You also have the option to override the Extension variables with a mapping.
 
 The following table describes destination names and descriptions for Retail variables.
 
 |Destination Name| Description|
 |---| ---|
-|`ecomm.prodid`|  &lt;ul&gt;&lt;li&gt;(Required) This is the product ID of the product or products displayed on the current page - the IDs used here should match the IDs in your feed.&lt;/li&gt;&lt;li&gt;When using the E-commerce extension, mapping this parameter overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on product, cart and purchase page types and should contain the value of a single product on product pages, or the total sum of the values of one or more products on the cart and purchase pages.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.category`|  &lt;ul&gt;&lt;li&gt;This parameter contains the category of the currently viewed product or category pages.&lt;/li&gt;&lt;li&gt;When using the E-commerce extension, this parameter overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`category`&lt;/li&gt;&lt;li&gt;`product`&lt;/li&gt;&lt;li&gt;`cart`&lt;/li&gt;&lt;li&gt;`purchase`&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;If you choose to include this parameter, map your data source to `ecomm.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.value`|  &lt;ul&gt;&lt;li&gt;Deprecated.&lt;/li&gt;&lt;li&gt;This parameter is no longer used by Google Ads for this Remarketing tag.&lt;/li&gt;&lt;/ul&gt; |
-|`ecomm.quantity`|  &lt;ul&gt;&lt;li&gt;Deprecated.&lt;/li&gt;&lt;li&gt;This parameter is no longer used by Google Ads for this Remarketing tag.&lt;/li&gt;&lt;/ul&gt; |
-|`Custom`|  &lt;ul&gt;&lt;li&gt;You may define customized parameters not predefined by Google Ads.&lt;/li&gt;&lt;li&gt;See &#34;Advanced&#34; below for more information.&lt;/li&gt;&lt;/ul&gt; |
+|`ecomm.prodid`|  <ul><li>(Required) This is the product ID of the product or products displayed on the current page - the IDs used here should match the IDs in your feed.</li><li>When using the E-commerce extension, mapping this parameter overrides `_cprod`.</li></ul> |
+|`ecomm.totalvalue`|  <ul><li>This parameter should be used on product, cart and purchase page types and should contain the value of a single product on product pages, or the total sum of the values of one or more products on the cart and purchase pages.</li></ul> |
+|`ecomm.category`|  <ul><li>This parameter contains the category of the currently viewed product or category pages.</li><li>When using the E-commerce extension, this parameter overrides `_ccat`.</li></ul> |
+|`ecomm.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:</li> <ul><li>`home`</li><li>`searchresults`</li><li>`category`</li><li>`product`</li><li>`cart`</li><li>`purchase`</li></ul> <ul><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> <li>If you choose to include this parameter, map your data source to `ecomm.pagetype`.</li></ul> |
+|`ecomm.value`|  <ul><li>Deprecated.</li><li>This parameter is no longer used by Google Ads for this Remarketing tag.</li></ul> |
+|`ecomm.quantity`|  <ul><li>Deprecated.</li><li>This parameter is no longer used by Google Ads for this Remarketing tag.</li></ul> |
+|`Custom`|  <ul><li>You may define customized parameters not predefined by Google Ads.</li><li>See "Advanced" below for more information.</li></ul> |
 
 ### Education
 
@@ -69,9 +73,9 @@ The following table describes destination names and descriptions for Education v
 
 |Destination Name| Description|
 |---| ---|
-|`edu.pid`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the program that the visitor is currently viewing on either the program or lead page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in the &#34;Education Program&#34; in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`edu.plocid`|  &lt;ul&gt;&lt;li&gt;This parameter is the ID for the location of the program that the user is currently viewing on either the program or lead page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in the &#34;Location ID&#34; in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`edu.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`program`&lt;/li&gt;&lt;li&gt;`lead`&lt;/li&gt;&lt;li&gt;`complete` or&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;If you choose to include this parameter map your data source to `edu.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`edu.pid`|  <ul><li>(Required) This parameter is the ID of the program that the visitor is currently viewing on either the program or lead page types.</li><li>This ID must match a value in the "Education Program" in your feed.</li></ul> |
+|`edu.plocid`|  <ul><li>This parameter is the ID for the location of the program that the user is currently viewing on either the program or lead page types.</li><li>This ID must match a value in the "Location ID" in your feed.</li></ul> |
+|`edu.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:</li> <ul><li>`home`</li><li>`searchresults`</li><li>`program`</li><li>`lead`</li><li>`complete` or</li></ul> <ul><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> <li>If you choose to include this parameter map your data source to `edu.pagetype`.</li></ul> |
 
 ### Flights
 
@@ -79,12 +83,12 @@ The following table describes destination names and descriptions for Flights var
 
 |Destination Name| Description|
 |---| ---|
-|`flight.originid`|  &lt;ul&gt;&lt;li&gt;This parameter is the origin of the flight itinerary being viewed on search results, cart and purchase page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed though Google recommends you use three-letter airport codes.&lt;/li&gt;&lt;/ul&gt; |
-|`flight.destid`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the destination of the flight itinerary being viewed on search results, cart and purchase page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed though Google recommends you use three-letter airport codes.&lt;/li&gt;&lt;/ul&gt; |
-|`flight.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the cart and purchase page type and should contain the total value of the flight itinerary.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`flight.startdate`|  &lt;ul&gt;&lt;li&gt;The date when the flight itinerary starts.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`flight.enddate`|  &lt;ul&gt;&lt;li&gt;The date when the flight itinerary ends.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`flight.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`cart`&lt;/li&gt;&lt;li&gt;`purchase`&lt;/li&gt;&lt;li&gt;`cancel` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;If you choose to include this parameter map your data source to `flight.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`flight.originid`|  <ul><li>This parameter is the origin of the flight itinerary being viewed on search results, cart and purchase page types.</li><li>This ID must match a value in your feed though Google recommends you use three-letter airport codes.</li></ul> |
+|`flight.destid`|  <ul><li>(Required) This parameter is the destination of the flight itinerary being viewed on search results, cart and purchase page types.</li><li>This ID must match a value in your feed though Google recommends you use three-letter airport codes.</li></ul> |
+|`flight.totalvalue`|  <ul><li>This parameter should be used on the cart and purchase page type and should contain the total value of the flight itinerary.</li><li>Do not include any currency symbols.</li></ul> |
+|`flight.startdate`|  <ul><li>The date when the flight itinerary starts.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`flight.enddate`|  <ul><li>The date when the flight itinerary ends.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`flight.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`cart`</li><li>`purchase`</li><li>`cancel` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li><li>If you choose to include this parameter map your data source to `flight.pagetype`.</li></ul> |
 
 ### Hotels and rental
 
@@ -92,11 +96,11 @@ The following table describes destination names and descriptions for Hotels and 
 
 |Destination Name| Description|
 |---| ---|
-|`hrental.id`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the hotel or rental property that the visitor is currently viewing on the property page type.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.startdate`|  &lt;ul&gt;&lt;li&gt;The date when the booking is to begin.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.enddate`|  &lt;ul&gt;&lt;li&gt;The date when the booking is to end.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent and conversion page types and should contain the total sum of the values of all properties in the visitor&#39;s cart.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`hrental.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;If you choose to include this parameter map your data source to `hrental.pagetype.`&lt;/li&gt;&lt;/ul&gt; |
+|`hrental.id`|  <ul><li>(Required) This parameter is the ID of the hotel or rental property that the visitor is currently viewing on the property page type.</li><li>This ID must match a value in your feed.</li></ul> |
+|`hrental.startdate`|  <ul><li>The date when the booking is to begin.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`hrental.enddate`|  <ul><li>The date when the booking is to end.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`hrental.totalvalue`|  <ul><li>This parameter should be used on the conversion intent and conversion page types and should contain the total sum of the values of all properties in the visitor's cart.</li><li>Do not include any currency symbols.</li></ul> |
+|`hrental.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li></ul> <ul><li>If you choose to include this parameter map your data source to `hrental.pagetype.`</li></ul> |
 
 ### Jobs
 
@@ -104,10 +108,10 @@ The following table describes destination names and descriptions for Jobs variab
 
 |Destination Name| Description|
 |---| ---|
-|`job.id`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the job opening being viewed on `searchresults`, `offerdetail`, `conversionintent` and `conversion` page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`job.locid`|  &lt;ul&gt;&lt;li&gt;This parameter represents a location ID or name and is used as a secondary matching key in your feed allowing for multiple job\_ids of the same value, but using separate location IDs and should be present on search results, offer detail, conversion intent and conversion page types.&lt;/li&gt;&lt;/ul&gt; |
-|`job.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent and conversion page types and should contain the total value of the job listings that the user has selected.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`job.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;If you choose to include this parameter map your data source to `job.pagetype.`&lt;/li&gt;&lt;/ul&gt; |
+|`job.id`|  <ul><li>(Required) This parameter is the ID of the job opening being viewed on `searchresults`, `offerdetail`, `conversionintent` and `conversion` page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`job.locid`|  <ul><li>This parameter represents a location ID or name and is used as a secondary matching key in your feed allowing for multiple job\_ids of the same value, but using separate location IDs and should be present on search results, offer detail, conversion intent and conversion page types.</li></ul> |
+|`job.totalvalue`|  <ul><li>This parameter should be used on the conversion intent and conversion page types and should contain the total value of the job listings that the user has selected.</li><li>Do not include any currency symbols.</li></ul> |
+|`job.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li><li>If you choose to include this parameter map your data source to `job.pagetype.`</li></ul> |
 
 ### Local
 
@@ -115,9 +119,9 @@ The following table describes destination names and descriptions for Local varia
 
 |Destination Name| Description|
 |---| ---|
-|`local.id`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the offer or deal being viewed on search results, offer detail, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`local.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent and conversion page types and should contain the total value of the offer or offers that the user has purchased.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`local.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;If you choose to include this parameter map your data source to `local.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`local.id`|  <ul><li>(Required) This parameter is the ID of the offer or deal being viewed on search results, offer detail, conversion intent and conversion page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`local.totalvalue`|  <ul><li>This parameter should be used on the conversion intent and conversion page types and should contain the total value of the offer or offers that the user has purchased.</li><li>Do not include any currency symbols.</li></ul> |
+|`local.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li><li>If you choose to include this parameter map your data source to `local.pagetype`.</li></ul> |
 
 ### Real estate
 
@@ -125,9 +129,9 @@ The following table describes destination names and descriptions for Real Estate
 
 |Destination Name| Description|
 |---| ---|
-|`listing.id`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the property being viewed on search results, offer detail, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`listing.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent and conversion page types and should contain the total value of the property&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`listing.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;If you choose to include this parameter map your data source to `listing.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`listing.id`|  <ul><li>(Required) This parameter is the ID of the property being viewed on search results, offer detail, conversion intent and conversion page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`listing.totalvalue`|  <ul><li>This parameter should be used on the conversion intent and conversion page types and should contain the total value of the property</li><li>Do not include any currency symbols.</li></ul> |
+|`listing.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li><li>If you choose to include this parameter map your data source to `listing.pagetype`.</li></ul> |
 
 ### Travel
 
@@ -135,12 +139,12 @@ The following table describes destination names and descriptions for Travel vari
 
 |Destination Name| Description|
 |---| ---|
-|`travel.destid`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the travel destination being viewed on search results, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`travel.originid`|  &lt;ul&gt;&lt;li&gt;(Optional) This parameter is the ID of the travel origin location being viewed on search results, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This value is used as a secondary matching key in your feed and does not need to represent anything, but Google recommends that you use three-letter airport codes or two-letter country codes.&lt;/li&gt;&lt;/ul&gt; |
-|`travel.startdate`|  &lt;ul&gt;&lt;li&gt;The date when the travel itinerary starts.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`travel.enddate`|  &lt;ul&gt;&lt;li&gt;The date when the travel itinerary ends.&lt;/li&gt;&lt;li&gt;Should be in the `YYYY-MM-DD` format.&lt;/li&gt;&lt;/ul&gt; |
-|`travel.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent and conversion page types and should contain the total value of the travel itinerary.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`travel.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on.&lt;/li&gt;&lt;li&gt;Use one of the following values:  &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion`&lt;/li&gt;&lt;li&gt;`cancel` or&lt;/li&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;/li&gt;&lt;li&gt;If you choose to include this parameter map your data source to `travel.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`travel.destid`|  <ul><li>(Required) This parameter is the ID of the travel destination being viewed on search results, conversion intent and conversion page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`travel.originid`|  <ul><li>(Optional) This parameter is the ID of the travel origin location being viewed on search results, conversion intent and conversion page types.</li><li>This value is used as a secondary matching key in your feed and does not need to represent anything, but Google recommends that you use three-letter airport codes or two-letter country codes.</li></ul> |
+|`travel.startdate`|  <ul><li>The date when the travel itinerary starts.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`travel.enddate`|  <ul><li>The date when the travel itinerary ends.</li><li>Should be in the `YYYY-MM-DD` format.</li></ul> |
+|`travel.totalvalue`|  <ul><li>This parameter should be used on the conversion intent and conversion page types and should contain the total value of the travel itinerary.</li><li>Do not include any currency symbols.</li></ul> |
+|`travel.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on.</li><li>Use one of the following values:  <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion`</li><li>`cancel` or</li><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> </li><li>If you choose to include this parameter map your data source to `travel.pagetype`.</li></ul> |
 
 ### Phone conversion options
 
@@ -150,19 +154,19 @@ The following table describes destination names and descriptions for Phone Conve
 
 |Destination Name| Description|
 |---| ---|
-|`phone_conversion_number`|  &lt;ul&gt;&lt;li&gt;(Required) In the following example, replace &#34;REPLACE WITH VALUE&#34; with your business phone number. &lt;/li&gt;&lt;li&gt;Ensure that the number matches the number on your page exactly and includes any relevant country codes.&lt;/li&gt;&lt;/ul&gt; |
-|`phone_conversion_css_class`|  &lt;ul&gt;&lt;li&gt;(Required) Enter a CSS class name.&lt;/li&gt;&lt;li&gt;All elements of that class will have their contents replaced with a formatted telephone number.&lt;/li&gt;&lt;/ul&gt; |
+|`phone_conversion_number`|  <ul><li>(Required) In the following example, replace "REPLACE WITH VALUE" with your business phone number. </li><li>Ensure that the number matches the number on your page exactly and includes any relevant country codes.</li></ul> |
+|`phone_conversion_css_class`|  <ul><li>(Required) Enter a CSS class name.</li><li>All elements of that class will have their contents replaced with a formatted telephone number.</li></ul> |
 
 ### Other
 
-The following table describes destination names and descriptions for variables categorized as &#34;Other&#34;.
+The following table describes destination names and descriptions for variables categorized as "Other".
 
 |Destination Name| Description|
 |---| ---|
-|`dynx.itemid`|  &lt;ul&gt;&lt;li&gt;(Required) This parameter is the ID of the product being viewed on search results, offer detail, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.itemid2`|  &lt;ul&gt;&lt;li&gt;(Optional) This parameter is the secondary ID of the product being viewed on search results, offer detail, conversion intent and conversion page types.&lt;/li&gt;&lt;li&gt;This ID must match a value in your feed.&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.totalvalue`|  &lt;ul&gt;&lt;li&gt;This parameter should be used on the conversion intent page type and should contain the total value of the products that the visitor has purchased.&lt;/li&gt;&lt;li&gt;Do not include any currency symbols.&lt;/li&gt;&lt;/ul&gt; |
-|`dynx.pagetype`|  &lt;ul&gt;&lt;li&gt;Recommended.&lt;/li&gt;&lt;li&gt;Indicates the type of page that the tag is on. Use one of the following values:&lt;/li&gt; &lt;ul&gt;&lt;li&gt;`home`&lt;/li&gt;&lt;li&gt;`searchresults`&lt;/li&gt;&lt;li&gt;`offerdetail`&lt;/li&gt;&lt;li&gt;`conversionintent`&lt;/li&gt;&lt;li&gt;`conversion`&lt;/li&gt;&lt;li&gt;`cancel`&lt;/li&gt;&lt;/ul&gt; &lt;ul&gt;&lt;li&gt;`other` Used when your page does not fit into the page types listed above, for example, a &#34;Contact Us&#34; or &#34;About Us&#34; page.&lt;/li&gt;&lt;/ul&gt; &lt;li&gt;If you choose to include this parameter map your data source to `dynx.pagetype`.&lt;/li&gt;&lt;/ul&gt; |
+|`dynx.itemid`|  <ul><li>(Required) This parameter is the ID of the product being viewed on search results, offer detail, conversion intent and conversion page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`dynx.itemid2`|  <ul><li>(Optional) This parameter is the secondary ID of the product being viewed on search results, offer detail, conversion intent and conversion page types.</li><li>This ID must match a value in your feed.</li></ul> |
+|`dynx.totalvalue`|  <ul><li>This parameter should be used on the conversion intent page type and should contain the total value of the products that the visitor has purchased.</li><li>Do not include any currency symbols.</li></ul> |
+|`dynx.pagetype`|  <ul><li>Recommended.</li><li>Indicates the type of page that the tag is on. Use one of the following values:</li> <ul><li>`home`</li><li>`searchresults`</li><li>`offerdetail`</li><li>`conversionintent`</li><li>`conversion`</li><li>`cancel`</li></ul> <ul><li>`other` Used when your page does not fit into the page types listed above, for example, a "Contact Us" or "About Us" page.</li></ul> <li>If you choose to include this parameter map your data source to `dynx.pagetype`.</li></ul> |
 
 ### Advanced
 
@@ -170,15 +174,15 @@ The following table describes destination names and descriptions for Advanced va
 
 |Destination Name| Description|
 |---| ---|
-|Recommended Product IDs `custom.ecomm_rec_prodid`|  &lt;ul&gt;&lt;li&gt;This parameter may be used to pass product IDs of recommended products on the page.&lt;/li&gt;&lt;/ul&gt; |
-|Visitor&#39;s Age `custom.a`|  &lt;ul&gt;&lt;li&gt;This parameter may be used to pass a visitor&#39;s age.&lt;/li&gt;&lt;/ul&gt; |
-|Visitor&#39;s Gender `custom.g`|  &lt;ul&gt;&lt;li&gt;This parameter may be used to pass a visitor&#39;s gender.&lt;/li&gt;&lt;/ul&gt; |
-|Visitor Has Account `custom.hasaccount`|  &lt;ul&gt;&lt;li&gt;This parameter may be used to indicate if the visitor has an account.&lt;/li&gt;&lt;/ul&gt; |
-|Customer Quality Score `custom.cqs`|  &lt;ul&gt;&lt;li&gt;This parameter can be used to report a visitor&#39;s customer quality score.&lt;/li&gt;&lt;/ul&gt; |
-|Repeat Purchaser`custom.rp`|  &lt;ul&gt;&lt;li&gt;This parameter can be used to identify if the visitor is a repeat purchaser.&lt;/li&gt;&lt;/ul&gt; |
-| Visitor Loyalty Score `custom.ly` |  &lt;ul&gt;&lt;li&gt;This parameter is used to identify the visitor&#39;s loyalty score.&lt;/li&gt;&lt;/ul&gt; |
-|Visitor High Spender Score `custom.hs`|  &lt;ul&gt;&lt;li&gt;This parameter is used to identify the visitor&#39;s high spender score.&lt;/li&gt;&lt;/ul&gt; |
-|Custom `custom.myvar`|  &lt;ul&gt;&lt;li&gt;This parameter can be used to pass any customized parameters.&lt;/li&gt;&lt;li&gt;Replace `myvar` with your own parameter name.&lt;/li&gt;&lt;/ul&gt; |
+|Recommended Product IDs `custom.ecomm_rec_prodid`|  <ul><li>This parameter may be used to pass product IDs of recommended products on the page.</li></ul> |
+|Visitor's Age `custom.a`|  <ul><li>This parameter may be used to pass a visitor's age.</li></ul> |
+|Visitor's Gender `custom.g`|  <ul><li>This parameter may be used to pass a visitor's gender.</li></ul> |
+|Visitor Has Account `custom.hasaccount`|  <ul><li>This parameter may be used to indicate if the visitor has an account.</li></ul> |
+|Customer Quality Score `custom.cqs`|  <ul><li>This parameter can be used to report a visitor's customer quality score.</li></ul> |
+|Repeat Purchaser`custom.rp`|  <ul><li>This parameter can be used to identify if the visitor is a repeat purchaser.</li></ul> |
+| Visitor Loyalty Score `custom.ly` |  <ul><li>This parameter is used to identify the visitor's loyalty score.</li></ul> |
+|Visitor High Spender Score `custom.hs`|  <ul><li>This parameter is used to identify the visitor's high spender score.</li></ul> |
+|Custom `custom.myvar`|  <ul><li>This parameter can be used to pass any customized parameters.</li><li>Replace `myvar` with your own parameter name.</li></ul> |
 
 ### E-Commerce
 
@@ -192,27 +196,31 @@ The following table describes destination names and descriptions for E-Commerce 
 
 |Destination Name| Description|
 |---| ---|
-|Order ID `_corder`|  &lt;ul&gt;&lt;li&gt;Represents the unique identifier assigned to the final order.&lt;/li&gt;&lt;li&gt;One advantage of using Ecommerce parameters is the tag will automatically use `_csubtotal` for the total value for any business type you configure.&lt;/li&gt;&lt;li&gt;For example, for the Retail business type, the value of `ecomm.totalvalue` will use `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|Sub Total (`_csubtotal`)|  &lt;ul&gt;&lt;li&gt;Represents the sub total amount of the final order.&lt;/li&gt;&lt;li&gt;The value within `_csubtotal` will automatically use `_csubtotal` for the total value for any business type being reported.&lt;/li&gt;&lt;li&gt;For example, for the Retail business type, the value of `ecomm.totalvalue` will use `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|List of Product IDs `_cprod`|  &lt;ul&gt;&lt;li&gt;Represents the unique identifier of each product in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.prodid will contain the contents of `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|List of Categories `_ccat`|  &lt;ul&gt;&lt;li&gt;Represents the category of each product in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.category will contain the contents of `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|List of Quantities `_cquan`|  &lt;ul&gt;&lt;li&gt;Represents the quantity of each product in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.quantity will contain the contents of `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|List of Prices `_cprice`|  &lt;ul&gt;&lt;li&gt;Represents the product unit price of each product in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.pvalue will contain the contents of `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-|Currency `_ccurrency`|  &lt;ul&gt;&lt;li&gt;Represents the currency of the prices in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.currency will contain the contents of `_ccurrency`.&lt;/li&gt;&lt;/ul&gt; |
-|List of Discounts `product_discount`|  &lt;ul&gt;&lt;li&gt;Represents the product unit discount of each product in the product array.&lt;/li&gt;&lt;li&gt;When present, a custom parameter ecomm.discount will contain the contents of `_cdisc`.&lt;/li&gt;&lt;/ul&gt; |
+|Order ID `_corder`|  <ul><li>Represents the unique identifier assigned to the final order.</li><li>One advantage of using Ecommerce parameters is the tag will automatically use `_csubtotal` for the total value for any business type you configure.</li><li>For example, for the Retail business type, the value of `ecomm.totalvalue` will use `_csubtotal`.</li></ul> |
+|Sub Total (`_csubtotal`)|  <ul><li>Represents the sub total amount of the final order.</li><li>The value within `_csubtotal` will automatically use `_csubtotal` for the total value for any business type being reported.</li><li>For example, for the Retail business type, the value of `ecomm.totalvalue` will use `_csubtotal`.</li></ul> |
+|List of Product IDs `_cprod`|  <ul><li>Represents the unique identifier of each product in the product array.</li><li>When present, a custom parameter ecomm.prodid will contain the contents of `_cprod`.</li></ul> |
+|List of Categories `_ccat`|  <ul><li>Represents the category of each product in the product array.</li><li>When present, a custom parameter ecomm.category will contain the contents of `_ccat`.</li></ul> |
+|List of Quantities `_cquan`|  <ul><li>Represents the quantity of each product in the product array.</li><li>When present, a custom parameter ecomm.quantity will contain the contents of `_cquan`.</li></ul> |
+|List of Prices `_cprice`|  <ul><li>Represents the product unit price of each product in the product array.</li><li>When present, a custom parameter ecomm.pvalue will contain the contents of `_cprice`.</li></ul> |
+|Currency `_ccurrency`|  <ul><li>Represents the currency of the prices in the product array.</li><li>When present, a custom parameter ecomm.currency will contain the contents of `_ccurrency`.</li></ul> |
+|List of Discounts `product_discount`|  <ul><li>Represents the product unit discount of each product in the product array.</li><li>When present, a custom parameter ecomm.discount will contain the contents of `_cdisc`.</li></ul> |
 
 ## Verifying the tag
 
-You will need the Chrome Web browser to use [Google Tag Assistant](https://support.google.com/tagassistant/answer/2947093?hl=en&amp;ref_topic=6000196). If the browser is already installed on your computer, install the Google Tag Assistant from the [Google Chrome Store](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk). Once successfully installed, follow these steps:
+You will need the Chrome Web browser to use [Google Tag Assistant](https://support.google.com/tagassistant/answer/2947093?hl=en&ref_topic=6000196). If the browser is already installed on your computer, install the Google Tag Assistant from the [Google Chrome Store](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk). Once successfully installed, follow these steps:
 
 1. Go to your site and open the target page.
 1. Click on the assistant icon at the top right corner in your browser.
 1. Click **Check this page now**.  
-![](/images/client-side-tags/test-page.png)
+![](https://docs.tealium.com/images/client-side-tags/test-page.png)
+
+<blockquote>
 The color indicator on the icon may display red instead of green since you are implementing the tag through Tealium and not the traditional way.
- Once the Tag Assistant runs, you will be able to see the values being populated. The following sample use case shows testing the homepage. In the example, you will notice the request is &#39;working&#39; and the data sources are being grabbed. Also note that the `ecomm_pagetype` is populated with a value of `home`, but, `ecomm_value` and `ecomm_prodid` are not populated because the homepage does not contain those values.  
-![](/images/client-side-tags/home-page.png)The following example shows how Tag Assistant looks for Product Detail pages.  
-![](/images/client-side-tags/product-detail.png)
+</blockquote>
+
+ Once the Tag Assistant runs, you will be able to see the values being populated. The following sample use case shows testing the homepage. In the example, you will notice the request is 'working' and the data sources are being grabbed. Also note that the `ecomm_pagetype` is populated with a value of `home`, but, `ecomm_value` and `ecomm_prodid` are not populated because the homepage does not contain those values.  
+![](https://docs.tealium.com/images/client-side-tags/home-page.png)The following example shows how Tag Assistant looks for Product Detail pages.  
+![](https://docs.tealium.com/images/client-side-tags/product-detail.png)
 
 ## Vendor documentation
 

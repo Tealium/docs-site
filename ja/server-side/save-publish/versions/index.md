@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/versions/
 
 サイドバーで **サーバーサイドバージョン** をクリックすると、Customer Data Hubのバージョン履歴がわかりやすく表示されます。
 
-![](/images/server-side/diff3.png)
+![](https://docs.tealium.com/images/server-side/diff3.png)
 
 ### ダッシュボードフィルター
 
@@ -15,17 +15,17 @@ url: https://docs.tealium.com/ja/server-side/save-publish/versions/
 
 **すべてのリビジョン**リストは、最近のすべてのリビジョンを表示します。リストを変更するには、開始日と終了日のフィールドで日付範囲を選択し、**日付範囲を更新**をクリックします。
 
-![](/images/server-side/diff-date-range.png)
+![](https://docs.tealium.com/images/server-side/diff-date-range.png)
 
 ### バージョンオプション
 
 **表示**リストのバージョンをクリックしてチャートを変更します。追加のバージョンを表示するには、**別のバージョンを追加**をクリックします。
 
-![](/images/server-side/diff4.png)
+![](https://docs.tealium.com/images/server-side/diff4.png)
 
 次のチャートは、選択された2つのバージョンを示しています。色付きボックスの右側にある **X** アイコンをクリックすることで、いつでもバージョンを閉じることができます。
 
-![](/images/server-side/diff5.png)
+![](https://docs.tealium.com/images/server-side/diff5.png)
 
 チャート上の各バージョンは、異なる色の線として表示され、各ポイントはリビジョンを表します。
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/versions/
 
 ### バージョンの復元
 
-**このリビジョンに戻す**オプションは、[プロファイルへの公開権限]()を持つユーザーに対して、選択したリビジョンが3ヶ月以内に公開された場合に表示されます。**このリビジョンに戻す**をクリックして、選択したリビジョンのコピーを作成し、公開します。チャートは新しい情報で更新されます。
+**このリビジョンに戻す**オプションは、[プロファイルへの公開権限](https://docs.tealium.com/permission-groups/#publishing-permissions)を持つユーザーに対して、選択したリビジョンが3ヶ月以内に公開された場合に表示されます。**このリビジョンに戻す**をクリックして、選択したリビジョンのコピーを作成し、公開します。チャートは新しい情報で更新されます。
 
 新しく公開されたバージョンをロードするには、以下のいずれかを行う必要があります：
 
@@ -53,7 +53,7 @@ url: https://docs.tealium.com/ja/server-side/save-publish/versions/
 
 **すべてのリビジョン**リストから2つ以上のリビジョンを選択し、**差分を表示**をクリックして、2つのリビジョン間の差分を確認します。
 
-![](/images/server-side/diff1a.png)
+![](https://docs.tealium.com/images/server-side/diff1a.png)
 
 新しい画面には、2つのリビジョン間の差分が表示されます（ある場合）。
 
@@ -61,8 +61,11 @@ url: https://docs.tealium.com/ja/server-side/save-publish/versions/
 * **変更**列は、どのルールまたは属性が変更されたかを示します。
 * **削除**列は、どのルールまたは属性が削除されたかを示します。
 
-![](/images/server-side/diff2.png)
+![](https://docs.tealium.com/images/server-side/diff2.png)
 
 diff画面は読み取り専用で、変更を加えることはできません。
 
+
+<blockquote>
 **戻る**リンクをクリックすると、前の画面に戻りますが、サーバーサイドバージョンチャート上で行った変更は失われます。また、ブラウザの **戻る** ボタンをクリックすると、Customer Data Hubの概要ページがロードされ、サーバーサイドバージョンチャート上で行った変更は失われます。
+</blockquote>

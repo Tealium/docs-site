@@ -5,38 +5,38 @@ url: https://docs.tealium.com/ja/platforms/flutter/data-management/
 ---
 ## データの追加
 
-永続データレイヤーにデータを追加するには、[`addToDataLayer()`](/ja/platforms/flutter/api/tealium/#addtodatalayer) メソッドを呼び出します。
+永続データレイヤーにデータを追加するには、[`addToDataLayer()`](https://docs.tealium.com/ja/platforms/flutter/api/tealium/#addtodatalayer) メソッドを呼び出します。
 
-次の例では、アプリが再起動するまでの[Expiry](/ja/platforms/flutter/api/tealium-config/#expiry)を構成してデータレイヤーにデータを追加します：
+次の例では、アプリが再起動するまでの[Expiry](https://docs.tealium.com/ja/platforms/flutter/api/tealium-config/#expiry)を構成してデータレイヤーにデータを追加します：
 ```dart
-Tealium.addToDataLayer({&#39;PERSISTENT_KEY&#39;: &#39;PERSISTENT_VALUE&#39;},
+Tealium.addToDataLayer({'PERSISTENT_KEY': 'PERSISTENT_VALUE'},
     Expiry.untilRestart);
 ```
 
 ## データの取得
 
-永続データレイヤーで指定されたキーの値をコールバック関数として取得するには、[`getFromDataLayer()`](/ja/platforms/flutter/api/tealium/#getfromdatalayer) メソッドを呼び出します。
+永続データレイヤーで指定されたキーの値をコールバック関数として取得するには、[`getFromDataLayer()`](https://docs.tealium.com/ja/platforms/flutter/api/tealium/#getfromdatalayer) メソッドを呼び出します。
 
 次の例では、指定されたキーの値を取得します：
 ```dart
-Tealium.getFromDataLayer(&#39;PERSISTENT_KEY&#39;)
-    .then((value) =&gt; print(&#39;Value From data layer: $value&#39;));
+Tealium.getFromDataLayer('PERSISTENT_KEY')
+    .then((value) => print('Value From data layer: $value'));
 ```
 
 ## データの削除
 
-データレイヤーからデータを削除するには、[`removeFromDataLayer()`](/ja/platforms/flutter/api/tealium/#removefromdatalayer) メソッドを呼び出します。
+データレイヤーからデータを削除するには、[`removeFromDataLayer()`](https://docs.tealium.com/ja/platforms/flutter/api/tealium/#removefromdatalayer) メソッドを呼び出します。
 
 次の例では、指定されたキーのキー値ペアをデータレイヤーから削除します：
 ```dart
-Tealium.removeFromDataLayer([&#39;PERSISTENT_KEY&#39;]);
+Tealium.removeFromDataLayer(['PERSISTENT_KEY']);
 ```
 
 ## トラックデータの収集
 
-コレクターやデータレイヤーからすべてのデータを収集するには、[`gatherTrackData()`](/ja/platforms/flutter/api/tealium/#gathertrackdata) メソッドを呼び出します。
+コレクターやデータレイヤーからすべてのデータを収集するには、[`gatherTrackData()`](https://docs.tealium.com/ja/platforms/flutter/api/tealium/#gathertrackdata) メソッドを呼び出します。
 
 ```dart
 Tealium.gatherTrackData()
-    .then((data) =&gt; print(&#39;Gather track data: $data&#39;));
+    .then((data) => print('Gather track data: $data'));
 ```

@@ -12,6 +12,6 @@ To set the AudienceStream profile used for data layer enrichment:
 1. Select the appropriate **Data Layer Enrichment Profile**.
 1. Click **Apply** and continue to save and publish your changes to the **Prod** environment.
 
-![](/images/server-side/whiteui-datalayerenrichment-selectdatalayerenrichmentprofile.png)
+![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-selectdatalayerenrichmentprofile.png)
 
  

@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/xandr-connector-legacy/
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいセグメントコネクタを追加します。コネクタの追加方法については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいセグメントコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 ベンダーを構成するには、次の手順に従います：
 
@@ -41,18 +41,18 @@ url: https://docs.tealium.com/ja/server-side-connectors/xandr-connector-legacy/
 
 | **オプション**         | **説明**                                                                                                                                          |
 |:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `uuid2` (必須) | &lt;ul&gt;&lt;li&gt;Tealium iQのXandr Cookie Matchタグを使用して、訪問のブラウザからXandrの`uuid2`値を取得します&lt;/li&gt;&lt;/ul&gt;                              |
-| `sess`             | &lt;ul&gt;&lt;li&gt;自動的に`sess=1`を構成し、Cookie Headerの`uuid2`値とともにXandrに送信します。デフォルトを上書きするには、`sess`を`0`にマップします。&lt;/li&gt;&lt;/ul&gt;   |
-| `add`              | &lt;ul&gt;&lt;li&gt;ユーザーに追加するセグメントをカンマで区切って列挙します&lt;/li&gt;&lt;/ul&gt;                                                                                           |
-| `add_code`         | &lt;ul&gt;&lt;li&gt;ユーザーに追加するセグメントコードをカンマで区切って列挙します。&lt;/li&gt;&lt;li&gt;コードを使用する場合は、`member`パラメータが必要です。&lt;/li&gt;&lt;/ul&gt;            |
-| `remove`           | &lt;ul&gt;&lt;li&gt;ユーザーから削除するセグメントをカンマで区切って列挙します&lt;/li&gt;&lt;/ul&gt;                                                                                        |
-| `remove_code`      | &lt;ul&gt;&lt;li&gt;ユーザーから削除するセグメントコードをカンマで区切って列挙します。&lt;/li&gt;&lt;li&gt;コードを使用する場合は、`member`パラメータが必要です&lt;/li&gt;&lt;/ul&gt;          |
-| `member`           | &lt;ul&gt;&lt;li&gt;セグメントを所有するメンバーのID。&lt;/li&gt;&lt;/ul&gt;                                                                                                 |
-| `other`            | &lt;ul&gt;&lt;li&gt;レポート用に保存される整数値を持つユーザー定義フィールド。&lt;/li&gt;&lt;li&gt;一部のメンバーはこれをデータのソースとして使用します。&lt;/li&gt;&lt;/ul&gt; |
-| `redir`            | &lt;ul&gt;&lt;li&gt;別のピクセルをピギーバックするために使用されるリダイレクトURL&lt;/li&gt;&lt;/ul&gt;                                                                                         |
-| `external_uid`     | &lt;ul&gt;&lt;li&gt;このユーザーの外部ユーザーIDに対応する文字列&lt;/li&gt;&lt;/ul&gt;                                                                         |
+| `uuid2` (必須) | <ul><li>Tealium iQのXandr Cookie Matchタグを使用して、訪問のブラウザからXandrの`uuid2`値を取得します</li></ul>                              |
+| `sess`             | <ul><li>自動的に`sess=1`を構成し、Cookie Headerの`uuid2`値とともにXandrに送信します。デフォルトを上書きするには、`sess`を`0`にマップします。</li></ul>   |
+| `add`              | <ul><li>ユーザーに追加するセグメントをカンマで区切って列挙します</li></ul>                                                                                           |
+| `add_code`         | <ul><li>ユーザーに追加するセグメントコードをカンマで区切って列挙します。</li><li>コードを使用する場合は、`member`パラメータが必要です。</li></ul>            |
+| `remove`           | <ul><li>ユーザーから削除するセグメントをカンマで区切って列挙します</li></ul>                                                                                        |
+| `remove_code`      | <ul><li>ユーザーから削除するセグメントコードをカンマで区切って列挙します。</li><li>コードを使用する場合は、`member`パラメータが必要です</li></ul>          |
+| `member`           | <ul><li>セグメントを所有するメンバーのID。</li></ul>                                                                                                 |
+| `other`            | <ul><li>レポート用に保存される整数値を持つユーザー定義フィールド。</li><li>一部のメンバーはこれをデータのソースとして使用します。</li></ul> |
+| `redir`            | <ul><li>別のピクセルをピギーバックするために使用されるリダイレクトURL</li></ul>                                                                                         |
+| `external_uid`     | <ul><li>このユーザーの外部ユーザーIDに対応する文字列</li></ul>                                                                         |
 
 ## ベンダー文書
 
-* [セグメントサービス](https://wiki.appnexus.com/display/api/Segment&#43;Service)
+* [セグメントサービス](https://wiki.appnexus.com/display/api/Segment+Service)
 

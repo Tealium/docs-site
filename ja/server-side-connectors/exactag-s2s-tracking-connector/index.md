@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/exactag-s2s-tracking-con
 
 ## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -63,8 +63,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/exactag-s2s-tracking-con
 | consent_string | IAB GDPR同意文字列。 |
 | protocol | プロトコル。`http`または`https`。 |
 | params | Exactagに送信する追加パラメータを含むJSONオブジェクト。より複雑なデータ構造を作成するには、**イベント属性テンプレート**セクションでテンプレート名を提供します。 |
-| イベント属性テンプレート変数 | データ入力としてテンプレート変数を提供します。詳細については、を参照してください。ドット表記（例：`items.name`）でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
-| イベント属性テンプレート | **イベント属性**で参照されるテンプレートを提供します。詳細については、を参照してください。テンプレートは、名前でサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。 |
+| イベント属性テンプレート変数 | データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。ドット表記（例：`items.name`）でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
+| イベント属性テンプレート | **イベント属性**で参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。テンプレートは、名前でサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。 |
 
 ### オンサイトコンバージョンリクエスト送信
 
@@ -98,5 +98,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/exactag-s2s-tracking-con
 | totalprice | 推奨。総バスケット価値。 |
 | consent | タイプまたはパートナーベースの同意のためのURLエンコードされたJSONオブジェクト（例：`{“comfort”:1,”analytics”:0,”marketing”:0}`）。より複雑なデータ構造を作成するには、**リクエスト属性テンプレート**セクションでテンプレート名を提供します。 |
 | protocol | プロトコル `http` または `https`。 |
-| リクエスト属性テンプレート変数 | データ入力としてテンプレート変数を提供します。詳細については、を参照してください。ドット表記（例：`items.name`）でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
-| リクエスト属性テンプレート | **リクエスト属性**で参照されるテンプレートを提供します。詳細については、を参照してください。テンプレートは、名前でサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。 |
+| リクエスト属性テンプレート変数 | データ入力としてテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。ドット表記（例：`items.name`）でネストされたテンプレート変数を名前付けします。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。 |
+| リクエスト属性テンプレート | **リクエスト属性**で参照されるテンプレートを提供します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。テンプレートは、名前でサポートされるフィールドに注入されます。例：`{{SomeTemplateName}}`。 |

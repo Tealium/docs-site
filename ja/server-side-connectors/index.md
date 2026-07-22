@@ -4,7 +4,7 @@ description: Tealiumは数百のサーバーサイドコネクタと統合して
 url: https://docs.tealium.com/ja/server-side-connectors/
 ---
 
-![](/images/icons/icon-connector.svg)
+![](https://docs.tealium.com/images/icons/icon-connector.svg)
 
 #### コネクタ
 
@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/
 
 
 
-![](/images/icons/icon-code.svg)
+![](https://docs.tealium.com/images/icons/icon-code.svg)
 
 #### Webhookの構築
 
@@ -20,7 +20,7 @@ Webhookコネクタを使用してカスタム統合を構築します。
 
 
 
-![](/images/icons/icon-timer.svg)
+![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
 #### 最近のコネクタ
 
@@ -31,54 +31,54 @@ Webhookコネクタを使用してカスタム統合を構築します。
 ### 人気のコネクタ
 
 
-![](/images/integrations/pinterest.png)
+![](https://docs.tealium.com/images/integrations/pinterest.png)
 
 Pinterestオーディエンス
 
 
 
-![](/images/integrations/facebook.png)
+![](https://docs.tealium.com/images/integrations/facebook.png)
 
 Facebookコンバージョン
 
 
 
-![](/images/integrations/snowflake.svg)
+![](https://docs.tealium.com/images/integrations/snowflake.svg)
 
 Snowflakeストリーミング
 
 
 
-![](/images/integrations/databricks.svg)
+![](https://docs.tealium.com/images/integrations/databricks.svg)
 
 Databricks
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Adsコンバージョン
 
 
 
-![](/images/integrations/reddit.svg)
+![](https://docs.tealium.com/images/integrations/reddit.svg)
 
 Redditコンバージョン
 
 
 
-![](/images/integrations/snapchat.svg)
+![](https://docs.tealium.com/images/integrations/snapchat.svg)
 
 Snapchatコンバージョン
 
 
 
-![](/images/integrations/google-ads-conversion.png)
+![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
 Google Analytics 4 測定プロトコル
 
 
 
-![](/images/integrations/tiktok.png)
+![](https://docs.tealium.com/images/integrations/tiktok.png)
 
 TikTokイベント

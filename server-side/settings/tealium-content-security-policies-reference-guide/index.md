@@ -10,15 +10,19 @@ CSP (Content Security Policy) is a security feature that helps prevent malicious
 For example, consider the following CSP directive:
 
 ```
-Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; tealium.com;
+Content-Security-Policy: default-src 'self'; script-src 'self' tealium.com;
 ```
 
-* `default-src` instructs the visitor&#39;s browser to only load resources from the same origin as the document unless additional directives set different policies for specific resource types.
+* `default-src` instructs the visitor's browser to only load resources from the same origin as the document unless additional directives set different policies for specific resource types.
 * `script-src` instructs the visitor’s browser to load scripts only from the same origin as the document. It also allows scripts from `tealium.com`.
 
 For each Tealium product or service you use, add its data center domains to your CSP. This ensures that your site visitors can load the necessary scripts. Also, add the domains of any vendors loaded through Tealium iQ Tag Management.
 
+
+<blockquote>
 Each list includes all data center domains that may be used in the future.
+</blockquote>
+
 
 For more information about CSP, see [MDN: Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 

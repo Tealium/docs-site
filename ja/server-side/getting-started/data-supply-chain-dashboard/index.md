@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **データフローサマリー** - データフローのサマリーメトリクスと重要なステータスアラートを確認します。
 * **データフローの詳細** - 特定のコンポーネントを調査して、データコネクトと健康状態を確認します。
 
-![](/images/server-side/8593c23c-ae2f-452d-80ce-a921c493fd71-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/8593c23c-ae2f-452d-80ce-a921c493fd71-1-201-a.jpeg)
 
 ## データサプライチェーンのビュー
 
@@ -25,13 +25,13 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 ### ヘッディング
 
-![](/images/server-side/server-side-dashboard-heading.png)
+![](https://docs.tealium.com/images/server-side/server-side-dashboard-heading.png)
 
 ヘッディングバーはTealiumウィンドウの上部に表示されます。以下の項目が含まれています：
 
 * プロファイルスイッチャー：別のアカウントまたはプロファイルに切り替えます。
 * 検索バー：プロファイル内の属性、ルール、アクションを検索します。
-* [保存/公開]()：変更をバージョンに保存して公開します。このボタンは、保存または公開の権限がない場合に**読み取り専用モード**を表示します。
+* [保存/公開](https://docs.tealium.com/save-publish-a-version/)：変更をバージョンに保存して公開します。このボタンは、保存または公開の権限がない場合に**読み取り専用モード**を表示します。
 * リソースセンター：このボタンをクリックしてサポートタブを開きます。このタブから、サポートチケットを提出したり、製品ガイドを検索したり、製品発表を見たり、マーケティングコンテンツや今後のイベントを読んだり、製品に対するアイデアを提出したりすることができます。
 * 同時ユーザー：他のユーザーがログオンしてプロファイルを使用している場合、このアイコンが表示されます。アイコンをクリックして、どのユーザーがいるかを確認し、プロファイルを閲覧する人にメッセージを投稿します。
 * プロファイルアイコン：プロファイルアイコンをクリックして**管理**メニューを表示します。**管理**メニューには、アカウントで使用できるすべての機能が含まれています。
@@ -40,11 +40,11 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 ナビゲーションバーはTealiumウィンドウの左側に表示されます。利用可能なすべての製品、機能、ツールへのリンクが含まれています。どのアイテムもクリックするとTealiumウィンドウでロードされます。クライアントサイドの**タグ管理**リンクをクリックすると、ブラウザの新しいタブが開いてクライアントサイドのプロファイルがロードされます。
 
-![](/images/server-side/server-side-dashboard-navigation-bar1.png)
+![](https://docs.tealium.com/images/server-side/server-side-dashboard-navigation-bar1.png)
 
 ナビゲーションバーを最小化するには、ナビゲーションバーの下部にある左矢印をクリックします。Tealiumアプリケーションは、製品の機能を表示するボタンとして表示されるか、開く製品を説明するツールチップが表示されます。ナビゲーションバーを再度展開するには、ナビゲーションバーの下部にある右矢印をクリックします。
 
-![](/images/server-side/server-side-dashboard-navigation-bar2.png)
+![](https://docs.tealium.com/images/server-side/server-side-dashboard-navigation-bar2.png)
 
 ### 全製品
 
@@ -53,7 +53,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **トリガーされたアクション** – 成功したコネクタアクションと失敗したコネクタアクションの数を表示
 * **コネクター** – EventStreamおよびAudienceStreamコネクタへのクイックリンク
 
-![](/images/server-side/70b4eafe-6314-478a-90ce-a5fa7fd1b9d5.jpeg)
+![](https://docs.tealium.com/images/server-side/70b4eafe-6314-478a-90ce-a5fa7fd1b9d5.jpeg)
 
 ### EventStream
 
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **EventStreamアクションのトリガー** – 成功したEventStreamアクションまたは失敗したEventStreamアクションの数を表示
 * **EventStreamコネクター** – EventStreamコネクタへのクイックリンク
 
-![](/images/server-side/c6026834-1bcd-44c8-8c8c-229d27728a60.jpeg)
+![](https://docs.tealium.com/images/server-side/c6026834-1bcd-44c8-8c8c-229d27728a60.jpeg)
 
 ### AudienceStream
 
@@ -75,7 +75,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **AudienceStreamアクションのトリガー** – 成功したAudienceStreamアクションまたは失敗したAudienceStreamアクションの数を表示
 * **AudienceStreamコネクター** – AudienceStreamコネクタへのクイックリンク
 
-![](/images/server-side/7cf9d59e-5e87-4d4e-b379-fb31ee428d1c.jpeg)
+![](https://docs.tealium.com/images/server-side/7cf9d59e-5e87-4d4e-b379-fb31ee428d1c.jpeg)
 
 ### EventStore
 
@@ -84,7 +84,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **EventStoreフィード** – フィードへのクイックリンク
 * **S3へ送信されたイベント** – S3バケットに送信されたイベント数を表示
 
-![](/images/server-side/39b1d6db-89e8-4199-90f7-6496cbcbfa08.jpeg)
+![](https://docs.tealium.com/images/server-side/39b1d6db-89e8-4199-90f7-6496cbcbfa08.jpeg)
 
 ### EventDB
 
@@ -93,7 +93,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **EventDBフィード** – フィードへのクイックリンク
 * **Redshiftへ送信されたイベント** – Redshiftに送信されたイベント数を表示
 
-![](/images/server-side/627e279a-9eeb-4ca6-a5a9-ce4b5be26fef.jpeg)
+![](https://docs.tealium.com/images/server-side/627e279a-9eeb-4ca6-a5a9-ce4b5be26fef.jpeg)
 
 ### AudienceStore
 
@@ -102,7 +102,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **アクティブなオーディエンス** – オーディエンスへのクイックリンク
 * **S3へ送信された訪問** – S3バケットに送信された訪問数を表示
 
-![](/images/server-side/b748d370-f2d6-4bb2-913e-7bd9c8a661a8.jpeg)
+![](https://docs.tealium.com/images/server-side/b748d370-f2d6-4bb2-913e-7bd9c8a661a8.jpeg)
 
 ### AudienceDB
 
@@ -111,7 +111,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * **アクティブなオーディエンス** – オーディエンスへのクイックリンク
 * **RedShiftへ送信された訪問** – RedShiftに送信された訪問数を表示
 
-![](/images/server-side/df400ce6-152e-4f30-bc9c-36b6a4c07eed.jpeg)
+![](https://docs.tealium.com/images/server-side/df400ce6-152e-4f30-bc9c-36b6a4c07eed.jpeg)
 
 ## 追加のビューとナビゲーション
 
@@ -121,34 +121,34 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 画面の下部にはデータの関係とデータフローが明確に表示されます。これらの関係とフローをすばやく確認し、関連するアイテムの詳細にドリルダウンして編集できます。
 
-![](/images/server-side/e44f1444-fdc8-40f6-a6b1-2e181191468e-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/e44f1444-fdc8-40f6-a6b1-2e181191468e-1-201-a.jpeg)
 
 ### 機能
 
 **全製品**ビューは、画面の下部に作成された[機能]()とその状態のリストを表示します。
 
-![](/images/server-side/fad612e7-1509-4630-a6d1-949138cca8b4-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/fad612e7-1509-4630-a6d1-949138cca8b4-1-201-a.jpeg)
 
 ### 展開と折りたたみ
 
 アイテムの詳細を展開または折りたたみます。
 
-![](/images/server-side/03e5df61-b085-4831-87f0-9cb4b7e1990d-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/03e5df61-b085-4831-87f0-9cb4b7e1990d-1-201-a.jpeg)
 
 ### 結果の並べ替え
 
 上 (▲) または下 (▼) の矢印を使用して、量、アクションの成功、または失敗によって結果を並べ替えます。
 
-![](/images/server-side/e2735efb-d75d-40e7-8da4-91e21d7f006e-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/e2735efb-d75d-40e7-8da4-91e21d7f006e-1-201-a.jpeg)
 
 ### その他のオプション
 
 その他のオプションアクションボタン (**︙**) をクリックして、データソース、コネクタ、またはイベントフィードを直接編集します。
 
-![](/images/server-side/83d88822-a938-44b0-8e60-6f3481dcb5ff-1-201-a.jpeg)
+![](https://docs.tealium.com/images/server-side/83d88822-a938-44b0-8e60-6f3481dcb5ff-1-201-a.jpeg)
 
 ### エラーと警告の表示
 
 警告アイコンの上にポインタを置いてエラーメッセージまたは警告メッセージを表示し、**詳細を学ぶ**リンクをクリックして問題の解決方法について読みます。
 
-![](/images/server-side/99f270cb-e58e-4302-beb1-0eb311f495eb.jpeg)
+![](https://docs.tealium.com/images/server-side/99f270cb-e58e-4302-beb1-0eb311f495eb.jpeg)

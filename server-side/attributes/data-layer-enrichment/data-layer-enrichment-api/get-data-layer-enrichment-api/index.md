@@ -12,11 +12,15 @@ GET https://visitor-service-{REGION}.tealiumiq.com/{ACCOUNT}/{PROFILE}/{VISITOR_
 
 ```
 
-To determine your region-specific host, go to **Admin menu &gt; Server-Side Settings &gt; Region**. You can then locate your region value in [Tealium IP addresses to allow]().
+To determine your region-specific host, go to **Admin menu > Server-Side Settings > Region**. You can then locate your region value in [Tealium IP addresses to allow](https://docs.tealium.com/ip-allow-list/).
 
-You can find the visitor ID from the value of the `v_id` key from the `utag_main` cookie namespace, also known as `utag.data[&#34;cp.utag_main_v_id&#34;]`.  
+You can find the visitor ID from the value of the `v_id` key from the `utag_main` cookie namespace, also known as `utag.data["cp.utag_main_v_id"]`.  
 
+
+<blockquote>
 If the supplied visitor ID is invalid, or if the visitor does not currently have an active visit, the API returns status code 200 and an empty JSON response.
+</blockquote>
+
 
 ## Example request
 
@@ -28,38 +32,38 @@ curl https://visitor-service-us-west-2.tealiumiq.com/myaccount/main/015d1de1af41
 
 ```json
    {
-        &#34;metrics&#34; : {
-            &#34;5117&#34; : 6.0,
-            &#34;22&#34; : 6.0
+        "metrics" : {
+            "5117" : 6.0,
+            "22" : 6.0
         },
-        &#34;dates&#34; : {
-            &#34;5111&#34; : 1420223771043
+        "dates" : {
+            "5111" : 1420223771043
         },
-        &#34;properties&#34; : {
-            &#34;account&#34; : &#34;myaccount&#34;,
-            &#34;5123&#34; : &#34;set&#34;,
-            &#34;profile&#34; : &#34;main&#34;
+        "properties" : {
+            "account" : "myaccount",
+            "5123" : "set",
+            "profile" : "main"
         },
-        &#34;flags&#34; : { &#34;5115&#34; : true } ,
-        &#34;current_visit&#34; : {
-            &#34;metrics&#34; : {
-                &#34;7&#34; : 6.0
+        "flags" : { "5115" : true } ,
+        "current_visit" : {
+            "metrics" : {
+                "7" : 6.0
             },
-            &#34;dates&#34; : {
-                &#34;5202&#34; : 1420225387000
+            "dates" : {
+                "5202" : 1420225387000
             },
-            &#34;properties&#34; : {
-                &#34;48&#34; : &#34;Chrome&#34;,
-                &#34;45&#34; : &#34;Mac OS X&#34;,
-                &#34;44&#34; : &#34;Chrome&#34;,
-                &#34;47&#34; : &#34;browser&#34;,
-                &#34;46&#34; : &#34;Mac desktop&#34;
+            "properties" : {
+                "48" : "Chrome",
+                "45" : "Mac OS X",
+                "44" : "Chrome",
+                "47" : "browser",
+                "46" : "Mac desktop"
             },
-            &#34;flags&#34; : { }
+            "flags" : { }
         },
-        &#34;badges&#34; : { &#34;5113&#34; : true },
-        &#34;audiences&#34; : {
-            &#34;myaccount_main_101&#34; : &#34;Sample Audience&#34;
+        "badges" : { "5113" : true },
+        "audiences" : {
+            "myaccount_main_101" : "Sample Audience"
         }
     }
 

@@ -3,7 +3,11 @@ title: Visitor Deletion Jobs (Early Access)
 description: This article describes how to set up automated visitor deletion jobs to delete visitor records from the Tealium Customer Data Hub.
 url: https://docs.tealium.com/administration/early-access/data-storage/visitor-deletion-jobs/
 ---
+
+<blockquote>
 The Visitor Deletion Jobs feature is currently in early access and only open to select customers at this time. If you are interested in trying out this feature, please contact your account manager for information about early access.
+</blockquote>
+
 
 ## How it works
 
@@ -19,14 +23,18 @@ When a visitor deletion job is enabled, it checks the S3 bucket every hour for a
 
 You can use the visitor deletion job interface to check the status and results of each CSV file that is processed. After a file is processed, a log file of the results can be downloaded from the interface for legal record-keeping and GDPR compliance auditing.
 
-You can also use [visitor search]() or the [visitor lookup API]() to delete visitor records, but with those methods you can only delete one visitor at a time. A visitor deletion job lets you delete multiple visitors at once.
+You can also use [visitor search](https://docs.tealium.com/visitor-search/) or the [visitor lookup API](https://docs.tealium.com/about-visitor-privacy/) to delete visitor records, but with those methods you can only delete one visitor at a time. A visitor deletion job lets you delete multiple visitors at once.
 
- When a visitor record is deleted, it does not trigger the &#34;Left Audience&#34; action in connectors. Connector actions for audiences are executed only when rules are re-evaluated and a visitor&#39;s status transitions from being included in the audience to being excluded. 
+
+<blockquote>
+When a visitor record is deleted, it does not trigger the "Left Audience" action in connectors. Connector actions for audiences are executed only when rules are re-evaluated and a visitor's status transitions from being included in the audience to being excluded.
+</blockquote>
+
 
 ### Requirements
 
 * Permission Needed: Publisher role.  
-For more information, see [Managing Server-Side User Permissions]().
+For more information, see [Managing Server-Side User Permissions](https://docs.tealium.com/about-managing-server-side-user-permissions/).
 * Access to an Amazon S3 bucket to upload the CSV files.
 
 ### File processing limits
@@ -46,10 +54,10 @@ A visitor deletion job processes CSV (Comma Separated Values) files containing a
 For example:
 
 ```
-&#34;customer_id&#34;
-&#34;00003579&#34;
-&#34;00035728&#34;
-&#34;00000352&#34;
+"customer_id"
+"00003579"
+"00035728"
+"00000352"
 ...
 ```
 
@@ -64,9 +72,13 @@ The input files must be named using the following format:
 |`prefix`| A unique identifier for a specific visitor deletion job.|
 |`version`| A unique identifier for a file within a prefix, usually a timestamp and an optional version number.|
 
-If a file with a duplicate file name is uploaded, it will not be processed.
 
-File names are case-sensitive and cannot contain special characters other than hyphen &#39;-&#39; and underscore &#39;\_&#39;.
+<blockquote>
+If a file with a duplicate file name is uploaded, it will not be processed.
+</blockquote>
+
+
+File names are case-sensitive and cannot contain special characters other than hyphen '-' and underscore '\_'.
 
 For example, if a job deletes visitor data based on the `customer_id` attribute, the prefix for the CSV files could be `customer_id_deletes` and the version could be the month, day, and year in `mmddyyyy` format.
 
@@ -99,7 +111,7 @@ Before you add a visitor deletion job, first determine which visitor ID attribut
 
 To create a visitor deletion job:
 
-1. Navigate to **Server-Side Tools &amp;gt; Visitor Deletion Jobs**, then click **&#43; Add Visitor Deletion Job**.
+1. Navigate to **Server-Side Tools &gt; Visitor Deletion Jobs**, then click **+ Add Visitor Deletion Job**.
 1. Enter a name for the job.
 1. Select a **File Service** from the list.
 1. Enter the prefix of the file names for this job.  
@@ -110,13 +122,13 @@ All CSV files for this job must begin with this prefix.
 
 After you have added a visitor deletion job, you can delete visitor data by creating a CSV file and uploading it to the Amazon S3 bucket for the job.
 
-For more information on uploading a CSV file, see [Upload a File to a File Service]().
+For more information on uploading a CSV file, see [Upload a File to a File Service](https://docs.tealium.com/about-file-import/).
 
 ### Editing a visitor deletion job
 
 To modify a visitor deletion job:
 
-1. In the **Visitor Deletion Jobs** list, select a job. ![](/images/early-access/visitordeletionjobsummary.png)  
+1. In the **Visitor Deletion Jobs** list, select a job. ![](https://docs.tealium.com/images/early-access/visitordeletionjobsummary.png)  
 The **Job Summary** is displayed and shows the following for each file in the S3 bucket:  
     * **Date** - The date the job was run.
     * **File Name** - The name of the input file that was processed.

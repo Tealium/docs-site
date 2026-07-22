@@ -10,7 +10,7 @@ url: https://docs.tealium.com/ja/client-side-tags/rtoaster-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Rtoasterタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Rtoasterタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/client-side-tags/rtoaster-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -34,20 +34,20 @@ url: https://docs.tealium.com/ja/client-side-tags/rtoaster-tag/
 
 |変数| 説明|
 |---| ---|
-|`account_id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;アカウントID&lt;/li&gt;&lt;/ul&gt; |
-|`element_id`|  &lt;ul&gt;&lt;li&gt;文字列、配列&lt;/li&gt;&lt;li&gt;要素ID&lt;/li&gt;&lt;/ul&gt; |
-|`popup_element_id`|  &lt;ul&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;ポップアップ要素ID&lt;/li&gt;&lt;/ul&gt; |
-|`category`|  &lt;ul&gt;&lt;li&gt;文字列、配列&lt;/li&gt;&lt;li&gt;カテゴリ&lt;/li&gt;&lt;/ul&gt; |
-|`price_min`|  &lt;ul&gt;&lt;li&gt;文字列、数値&lt;/li&gt;&lt;li&gt;最低価格&lt;/li&gt;&lt;/ul&gt; |
-|`price_max`|  &lt;ul&gt;&lt;li&gt;文字列、数値&lt;/li&gt;&lt;li&gt;最高価格&lt;/li&gt;&lt;/ul&gt; |
+|`account_id`|  <ul><li>文字列</li><li>アカウントID</li></ul> |
+|`element_id`|  <ul><li>文字列、配列</li><li>要素ID</li></ul> |
+|`popup_element_id`|  <ul><li>文字列</li><li>ポップアップ要素ID</li></ul> |
+|`category`|  <ul><li>文字列、配列</li><li>カテゴリ</li></ul> |
+|`price_min`|  <ul><li>文字列、数値</li><li>最低価格</li></ul> |
+|`price_max`|  <ul><li>文字列、数値</li><li>最高価格</li></ul> |
 
 ### E-コマース
 
 |変数| 説明|
 |---| ---|
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;送料。&lt;/li&gt;&lt;li&gt;`_cship`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;顧客ID&lt;/li&gt;&lt;li&gt;`_ccustid`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;商品IDのリスト。&lt;/li&gt;&lt;li&gt;`_cprod`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト。&lt;/li&gt;&lt;li&gt;`_cquan`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;li&gt;`_cprice`を上書きします。&lt;/li&gt;&lt;/ul&gt; |
+|`order_subtotal`|  <ul><li>小計</li><li>`_csubtotal`を上書きします。</li></ul> |
+|`order_shipping`|  <ul><li>送料。</li><li>`_cship`を上書きします。</li></ul> |
+|`customer_id`|  <ul><li>顧客ID</li><li>`_ccustid`を上書きします。</li></ul> |
+|`product_id`|  <ul><li>配列</li><li>商品IDのリスト。</li><li>`_cprod`を上書きします。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量のリスト。</li><li>`_cquan`を上書きします。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>価格のリスト</li><li>`_cprice`を上書きします。</li></ul> |

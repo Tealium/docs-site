@@ -16,7 +16,11 @@ The name of the command, or command ID, registered with native code in your app.
 - **Payload**  
 The data passed to the native app and received as an object named `requestPayload` in the response callback of the handler.
 
+
+<blockquote>
 Define remote commands in your native app at build time. The Custom Remote Command tag only executes pre-defined code on the device.
+</blockquote>
+
 
 ### Native Code
 
@@ -26,9 +30,9 @@ In the native code, the `add()` function registers a remote command handler. The
 
 ```swift
 tealium = Tealium(config: config) { [weak self] _ in
-	let remoteCommand = RemoteCommand(commandId: &#34;myRemoteCommand&#34;, description: &#34;&#34;) { response in
+	let remoteCommand = RemoteCommand(commandId: "myRemoteCommand", description: "") { response in
 		guard let payload = response.payload,
-	    let myVariable = payload[&#34;myVariable&#34;] as? String else {
+	    let myVariable = payload["myVariable"] as? String else {
 			return
 		}
 		print(myVariable)
@@ -39,9 +43,9 @@ tealium = Tealium(config: config) { [weak self] _ in
 
 
 ```kotlin
-val remoteCommand = object : RemoteCommand(&#34;sample&#34;, &#34;testing RCs&#34;) {
+val remoteCommand = object : RemoteCommand("sample", "testing RCs") {
     override fun onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, &#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;)
+        Logger.dev(BuildConfig.TAG, "ResponsePayload for webView RemoteCommand ${response.requestPayload}")
     }
 }
 val tealium = Tealium.create(instanceName, config) {
@@ -53,13 +57,13 @@ val tealium = Tealium.create(instanceName, config) {
 
 Add a module for the vendor integration to the build script for your platform. Modules are named in the format of `TealiumVendorXYZ`, for example `TealiumBraze`.
 
-To install, replace the vendor&#39;s dependency with the Tealium remote command dependency. For example, remove the following line:  
+To install, replace the vendor's dependency with the Tealium remote command dependency. For example, remove the following line:  
 ```bash
-pod &#34;VendorXYZ-iOS-SDK&#34;
+pod "VendorXYZ-iOS-SDK"
 ```
 Then add the following line:
 ```bash
-pod &#34;TealiumVendorXYZ&#34;
+pod "TealiumVendorXYZ"
 ```
 
 
@@ -93,8 +97,8 @@ The following is an example of a tracked event in Swift.
 
 ```swift
 tealium?.track(
-    title: &#34;My Screen&#34;,
-    data: [&#34;tealium_event&#34;: &#34;my_event&#34;, &#34;my_variable&#34;: &#34;my_value&#34;]
+    title: "My Screen",
+    data: ["tealium_event": "my_event", "my_variable": "my_value"]
 );
 ```
 
@@ -105,9 +109,9 @@ The tag setup is defined as follows:
 * **Load rule**  
 `IF tealium_event EQUALS my_event`
 * **Mapped variable**  
-`my_variable -&gt; myVariable`
+`my_variable -> myVariable`
 
 The following screenshots show the example configured in iQ Tag Management.
 
-![](/images/platforms/remote-commands/tag-example.png)
+![](https://docs.tealium.com/images/platforms/remote-commands/tag-example.png)
 

@@ -7,13 +7,21 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/li
 
 リンクトラッキング拡張は、ウェブページの一般的なリンクトラッキングソリューションを提供します。
 
+
+<blockquote>
 イベントトラッキングのより詳細な制御のために、[jQuery onHandler Extension]()の使用を推奨します。
+</blockquote>
+
 
 ## 拡張の使用
 
 始める前に、[拡張の仕組み]()について理解しておいてください。
 
+
+<blockquote>
 リンクトラッキング拡張はDOM Readyスコープで実行されます。これは変更できません。
+</blockquote>
+
 
 拡張が追加されると、以下の構成オプションが利用可能になります：
 
@@ -27,7 +35,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/li
 * **リンクURL出力**：（非推奨）チェックボックスをチェックすると、`link_url`パラメータのクエリストリングパラメータが保持されます。
 * **カスタムハンドリング**：Tealiumのコードによって生成されたオブジェクト、`link`と`obj`を使用してカスタムコードを含めるオプションを提供します。
 
-![](/images/iq-tag-management/screen-shot-2019-09-16-at-4.19.00-pm.png)
+![](https://docs.tealium.com/images/iq-tag-management/screen-shot-2019-09-16-at-4.19.00-pm.png)
 
 ## 出力変数
 

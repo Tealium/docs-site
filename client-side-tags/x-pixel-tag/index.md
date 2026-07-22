@@ -23,20 +23,20 @@ The X Pixel helps you measure your return on investment by tracking the actions 
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
-* **Pixel ID**: Also referred to as your X Pixel ID. You can find it in your X Pixel code snippet. For example, `pid` in the following snippet: `twq(&#39;config&#39;,&#39;pid&#39;);`.
+* **Pixel ID**: Also referred to as your X Pixel ID. You can find it in your X Pixel code snippet. For example, `pid` in the following snippet: `twq('config','pid');`.
 * **Generate Event ID**: Automatically generate an event ID for every X tracking event.
 
 ## Load rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules]().
+Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The **Events** category is used to configure an event to trigger the pixel. The **Event-specific Parameters** category can be used to map other variables when the trigger event occurs.
 
@@ -45,18 +45,18 @@ The **Events** category is used to configure an event to trigger the pixel. The 
 Use the following steps to configure an event to trigger the pixel:
 
 1. Click **Data Mappings**.
-1. Select a variable to trigger the pixel, then click **&#43; Select Destination**.
+1. Select a variable to trigger the pixel, then click **+ Select Destination**.
 1. For **Category**, select **Events**. 
 1. In the **Mapped variable equals** field, enter the value of the variable to trigger the pixel.
 1. From your X Ads account, copy the Event ID for the event and paste it into the **Event Code ID** field.  
 For example, `tw-o6ou1-o9l96`.
-1. Click **&#43; Add**.
+1. Click **+ Add**.
 1. To map additional variables when the event occurs, follow these steps:  
-    1. Select a variable, then click **&#43; Select Destination**.  
+    1. Select a variable, then click **+ Select Destination**.  
     1. For **Category**, select **Event-specific Parameters**.  
     1. Select the parameter to map the variable to.  
     1. Enter the Event ID from your X Ads account in the **Event Code ID** field.  
-    1. Click **&#43; Add**.
+    1. Click **+ Add**.
 1. Click **Finish**.
 1. Save and publish.
 
@@ -89,7 +89,7 @@ For example, `tw-o6ou1-o9l96`.
 
 ### Event-specific Parameters
 
-For more information on mapping variables, see [Manage data mappings]().
+For more information on mapping variables, see [Manage data mappings](https://docs.tealium.com/manage-data-mappings/).
 
 
 | Variable             | Description                                 |

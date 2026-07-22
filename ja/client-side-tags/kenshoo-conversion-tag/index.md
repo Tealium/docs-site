@@ -6,11 +6,11 @@ url: https://docs.tealium.com/ja/client-side-tags/kenshoo-conversion-tag/
 
 * E-commerce拡張機能を使用（`_corder`、`_csubtotal`、`_cpromo`、`_ccurrency`）
 * 注文ID、金額、プロモーションコード、通貨は自動的に構成されます。これらの値はマッピングを作成することで上書きできます。
-* &#39;type&#39;に値をマップすると、動的なConversion Typeを構成できます。
+* 'type'に値をマップすると、動的なConversion Typeを構成できます。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグの概要]()の記事を読んでください。
+新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を行います：
 
@@ -20,13 +20,13 @@ url: https://docs.tealium.com/ja/client-side-tags/kenshoo-conversion-tag/
 * **プロフィールトークン**
   * URLのcidクエリストリングパラメータに適用される長い英数字の値を指します。
 * **Conversion Type**
-  * この値はconversion typeの詳細を示し、デフォルトでは&#39;conv&#39;に構成されているべきです。
+  * この値はconversion typeの詳細を示し、デフォルトでは'conv'に構成されているべきです。
   * この値は、サイト内の他の関連するconversion typeに変更できます。
-  * 例えば、登録を追跡したい場合は、それを&#39;reg&#39;に、リードを追跡したい場合は&#39;lead&#39;に変更します。
+  * 例えば、登録を追跡したい場合は、それを'reg'に、リードを追跡したい場合は'lead'に変更します。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

@@ -6,11 +6,11 @@ url: https://docs.tealium.com/ja/server-side/predict/deploy/deploy-a-model/
 モデルをデプロイするには3つの方法があります：
 
 1. **モデルダッシュボード**から、**Deploy Trained**をクリックします。  
-![](/images/predict/predictv2-deploy.png)
+![](https://docs.tealium.com/images/predict/predictv2-deploy.png)
 1. **モデル詳細**画面から、**Deploy**をクリックします。  
-![](/images/predict/predictv2-model-details-deploy.png)
+![](https://docs.tealium.com/images/predict/predictv2-model-details-deploy.png)
 1. **トレーニング詳細**画面から、トレーニングの詳細を確認した後、デプロイを選択できます。  
-![](/images/predict/predictv2-training-details-deploy.png)
+![](https://docs.tealium.com/images/predict/predictv2-training-details-deploy.png)
 
 モデルのデプロイを選択した後、以下の手順を完了します：
 

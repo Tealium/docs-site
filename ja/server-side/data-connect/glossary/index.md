@@ -16,7 +16,11 @@ url: https://docs.tealium.com/ja/server-side/data-connect/glossary/
 **[ステップ](https://docs.workato.com/recipes/steps.html#action-step)**: レシピステップは、アクションであったり、ビジネスロジックを記述するのに役立つ制御フローステートメントであったりします。Tealiumレシピのステップの例には、アクションステップ、リピートステップ、エラーハンドリングステップなどがあります。
 
 **[タスク](https://docs.workato.com/recipes/tasks.html#tasks)**: 計算リソースが必要なレシピのサブユニットです。例えば、各コネクタアクション（バッチ処理、結果のメール送信、エラーハンドリングなど）は1つのタスクとしてカウントされます。レシピジョブは複数のタスクで構成されることがあり、タスクの数はレシピのロジックとトリガーイベントのデータによります。
- Data Connectが有効化された各Tealiumアカウントには、そのアカウント内のすべてのプロファイルに対するタスクの制限があります。Data Connectのタスク制限については、Tealiumのカスタマーサクセスマネージャーにお問い合わせください。
+
+<blockquote>
+Data Connectが有効化された各Tealiumアカウントには、そのアカウント内のすべてのプロファイルに対するタスクの制限があります。Data Connectのタスク制限については、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
+</blockquote>
+
 
 **[トリガー](https://docs.workato.com/workato-concepts.html#triggers)**: レシピで記述されたアクションを実行するために何を監視するかを決定します。トリガーはリアルタイムまたはスケジュールされたものであることがあります。
 

@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/swrve-app-events-connect
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
@@ -45,10 +45,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/swrve-app-events-connect
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントが関連するユニークなユーザー識別子。&lt;/li&gt;&lt;/ul&gt; |
-|イベント名|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;文字列&lt;/li&gt;&lt;li&gt;イベントの名前。&lt;/li&gt;&lt;li&gt;例：`app_started`&lt;/li&gt;&lt;li&gt;名前はドット表記を使用して階層を示すことができます。&lt;/li&gt;&lt;li&gt;名前は文字、数字、ダッシュ、アンダースコア、ドットのみを含む必要があります。&lt;/li&gt;&lt;li&gt;最初の有効な文字列がイベント名として取られます。&lt;/li&gt;&lt;li&gt;例えば、名前**level.start/**が提供された場合、それは`level.start`と解釈されます。&lt;/li&gt;&lt;/ul&gt; |
-|アプリバージョン|  &lt;ul&gt;&lt;li&gt;ユーザーが現在使用しているアプリケーションのバージョン。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムペイロード|  &lt;ul&gt;&lt;li&gt;属性をカスタムペイロードのペアにマッピングします。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：[カスタムペイロードガイド](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/)。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザーID|  <ul><li>必須</li><li>イベントが関連するユニークなユーザー識別子。</li></ul> |
+|イベント名|  <ul><li>必須</li><li>文字列</li><li>イベントの名前。</li><li>例：`app_started`</li><li>名前はドット表記を使用して階層を示すことができます。</li><li>名前は文字、数字、ダッシュ、アンダースコア、ドットのみを含む必要があります。</li><li>最初の有効な文字列がイベント名として取られます。</li><li>例えば、名前**level.start/**が提供された場合、それは`level.start`と解釈されます。</li></ul> |
+|アプリバージョン|  <ul><li>ユーザーが現在使用しているアプリケーションのバージョン。</li></ul> |
+|カスタムペイロード|  <ul><li>属性をカスタムペイロードのペアにマッピングします。</li><li>詳細については、次を参照してください：[カスタムペイロードガイド](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/)。</li></ul> |
 
 ### アクション - ユーザーを更新
 
@@ -56,7 +56,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/swrve-app-events-connect
 
 |**パラメータ**| **説明**|
 |---| ---|
-|ユーザーID|  &lt;ul&gt;&lt;li&gt;必須&lt;/li&gt;&lt;li&gt;イベントが関連するユニークなユーザー識別子。&lt;/li&gt;&lt;/ul&gt; |
-|ユーザーが開始|  &lt;ul&gt;&lt;li&gt;`false`と指定された場合、イベントは一部のパフォーマンス指標にはカウントされません。&lt;/li&gt;&lt;li&gt;プロパティが他の値を持つか指定されていない場合、イベントは通常どおりすべてのパフォーマンス指標にカウントされます。&lt;/li&gt;&lt;/ul&gt; |
-|アプリバージョン|  &lt;ul&gt;&lt;li&gt;ユーザーが現在使用しているアプリケーションのバージョン。&lt;/li&gt;&lt;/ul&gt; |
-|カスタムペイロード|  &lt;ul&gt;&lt;li&gt;属性をカスタムペイロードのペアにマッピングします。&lt;/li&gt;&lt;li&gt;詳細については、次を参照してください：[カスタムペイロードガイド](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/)。&lt;/li&gt;&lt;/ul&gt; |
+|ユーザーID|  <ul><li>必須</li><li>イベントが関連するユニークなユーザー識別子。</li></ul> |
+|ユーザーが開始|  <ul><li>`false`と指定された場合、イベントは一部のパフォーマンス指標にはカウントされません。</li><li>プロパティが他の値を持つか指定されていない場合、イベントは通常どおりすべてのパフォーマンス指標にカウントされます。</li></ul> |
+|アプリバージョン|  <ul><li>ユーザーが現在使用しているアプリケーションのバージョン。</li></ul> |
+|カスタムペイロード|  <ul><li>属性をカスタムペイロードのペアにマッピングします。</li><li>詳細については、次を参照してください：[カスタムペイロードガイド](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/)。</li></ul> |

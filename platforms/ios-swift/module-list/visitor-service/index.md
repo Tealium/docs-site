@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/
 
 ## Usage
 
-The VisitorService module implements the [Data Layer Enrichment]() feature of the Tealium Customer Data Hub.
+The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
 Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
 
@@ -23,11 +23,11 @@ Install the VisitorService module with Swift Package Manager, CocoaPods or Carth
 
 ### Swift Package Manager (Recommended)
 
-Supported in version 1.9.0&#43;, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
+Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:
 
-1. In your Xcode project, select **File &gt; Add Package Dependencies**.
+1. In your Xcode project, select **File > Add Package Dependencies**.
 1. Enter the repository URL: `https://github.com/tealium/tealium-swift`
-1. Configure the version rules. Typically, `&#34;Up to next major&#34;` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
+1. Configure the version rules. Typically, `"Up to next major"` is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.
 1. Select the `VisitorService`, `Core`, and either `Collect` or `TagManagement` modules from the list of modules to install and add it each of your app targets in your Xcode project, under **Frameworks and Libraries**.
 
 ### CocoaPods
@@ -35,18 +35,18 @@ Supported in version 1.9.0&#43;, the Swift Package Manager is the recommended an
 To install the VisitorService module with CocoaPods, add the following pods to your Podfile:  
 
 ```perl
-pod &#39;tealium-swift/Core&#39;
-pod &#39;tealium-swift/Collect&#39; //or &#39;tealium-swift/TagManagement&#39;
-pod &#39;tealium-swift/VisitorService&#39;
+pod 'tealium-swift/Core'
+pod 'tealium-swift/Collect' //or 'tealium-swift/TagManagement'
+pod 'tealium-swift/VisitorService'
 ```
 
-Learn more about the [CocoaPods installation for iOS](/platforms/ios-swift/install/#cocoapods).
+Learn more about the [CocoaPods installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods).
 
 ### Carthage
 
 To install the VisitorService module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
 
@@ -61,11 +61,11 @@ To install the VisitorService module with Carthage, following these steps:
       import TealiumVisitorService
       ```
 
-Learn more about the [Carthage installation for iOS](/platforms/ios-swift/install/#carthage).
+Learn more about the [Carthage installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#carthage).
 
 ## Initialize
 
-To initialize the module, verify that it&#39;s specified on the `TealiumConfig` [`collectors`](/platforms/ios-swift/api/tealium-config/#collectors) property
+To initialize the module, verify that it's specified on the `TealiumConfig` [`collectors`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#collectors) property
 
 `config.collectors = [Collectors.VisitorService]`
 
@@ -77,35 +77,39 @@ The visitor profile is an object that contains friendly names for each attribute
 
 | Parameters         | Properties                                                                                                       | Value                                                                                                                             |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `arraysOfBooleans` | id: String, value: [Bool]                                                                                        | `id: &#34;5129&#34;, value: [true,false,true,true]`                                                                                       |
-| `arraysOfNumbers`  | id: String, value: [Double]                                                                                      | `id: &#34;57&#34;, value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
-| `arraysOfStrings`  | id: String, value: [String]                                                                                      | `id: &#34;5213&#34;, value: [&#34;green shirts&#34;, &#34;green shirts&#34;, &#34;blue shirts&#34;]`                                                              |
-| `audiences`        | id: String, value: String                                                                                        | `id: &#34;tealiummobile\_demo\_103&#34;, value: &#34;iOS Users&#34;`                                                                              |
-| `badges`           | id: String, value: Bool                                                                                          | `id: &#34;2815&#34;, value: true`                                                                                                         |
-| `booleans`         | id: String, value: Bool                                                                                          | `id: &#34;4868&#34;, value: true`                                                                                                         |
-| `currentVisit`     | All attributes for current visit visitorProfile. The current visit profile does not contain Audiences or Badges. | `TealiumCurrentVisitProfile(dates: [&#34;5376&#34;: 1567536668080, &#34;10&#34;: 1567536668000], booleans: [&#34;4530&#34;: true], numbers: [&#34;32&#34;: 3.8])` |
-| `dates`            | id: String, value: Int                                                                                           | `id: &#34;22&#34;, value: 1567120112000`                                                                                                  |
-| `numbers`          | id: String, value: Double                                                                                        | `id: &#34;5728&#34;, value: 4.82125`                                                                                                      |
-| `setOfStrings`     | id: String, value: Set&lt;String&gt;                                                                                   | `id: &#34;5211&#34;, value: [&#34;green shirts&#34;, &#34;red shirts&#34;, &#34;blue shirts&#34;]`                                                                |
-| `strings`          | id: String, value: String                                                                                        | `id: &#34;5380&#34;, value: &#34;green shirts&#34;`                                                                                               |
-| `tallies`          | id: String, value: [String:Double]                                                                               | `&#34;57&#34;: [[&#34;category 1&#34;: 2.0], &#34;category 2&#34;: 1.0]]`                                                                                 |
-| `tallyValue`       | id: String, value: Double                                                                                        | `[&#34;category 1&#34;: 2.0]`                                                                                                             |
+| `arraysOfBooleans` | id: String, value: [Bool]                                                                                        | `id: "5129", value: [true,false,true,true]`                                                                                       |
+| `arraysOfNumbers`  | id: String, value: [Double]                                                                                      | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]`                                                                            |
+| `arraysOfStrings`  | id: String, value: [String]                                                                                      | `id: "5213", value: ["green shirts", "green shirts", "blue shirts"]`                                                              |
+| `audiences`        | id: String, value: String                                                                                        | `id: "tealiummobile\_demo\_103", value: "iOS Users"`                                                                              |
+| `badges`           | id: String, value: Bool                                                                                          | `id: "2815", value: true`                                                                                                         |
+| `booleans`         | id: String, value: Bool                                                                                          | `id: "4868", value: true`                                                                                                         |
+| `currentVisit`     | All attributes for current visit visitorProfile. The current visit profile does not contain Audiences or Badges. | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
+| `dates`            | id: String, value: Int                                                                                           | `id: "22", value: 1567120112000`                                                                                                  |
+| `numbers`          | id: String, value: Double                                                                                        | `id: "5728", value: 4.82125`                                                                                                      |
+| `setOfStrings`     | id: String, value: Set<String>                                                                                   | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`                                                                |
+| `strings`          | id: String, value: String                                                                                        | `id: "5380", value: "green shirts"`                                                                                               |
+| `tallies`          | id: String, value: [String:Double]                                                                               | `"57": [["category 1": 2.0], "category 2": 1.0]]`                                                                                 |
+| `tallyValue`       | id: String, value: Double                                                                                        | `["category 1": 2.0]`                                                                                                             |
 
+
+<blockquote>
 If an Audience or Badge is not assigned, `nil` is returned.
+</blockquote>
+
 
 #### `arraysOfBooleans`
 
 | Usage                                     | Description                                                | Type               | Example                                       |
 | ----------------------------------------- | ---------------------------------------------------------- | ------------------ | --------------------------------------------- |
-| `visitorProfile.arraysOfBooleans`         | Returns all the arrays of booleans in the visitor profile. | `[String: [Bool]]` | `[&#34;2333&#34;: [true,false], &#34;1123&#34;: [true,true]]` |
-| `visitorProfile.arraysOfBooleans[&#34;2815&#34;]` | Returns the array of booleans by id.                       | `[Bool]`           | `[true,true]`                                 |
+| `visitorProfile.arraysOfBooleans`         | Returns all the arrays of booleans in the visitor profile. | `[String: [Bool]]` | `["2333": [true,false], "1123": [true,true]]` |
+| `visitorProfile.arraysOfBooleans["2815"]` | Returns the array of booleans by id.                       | `[Bool]`           | `[true,true]`                                 |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return an array of booleans value
-    if let arraysOfBooleans = visitorProfile.arraysOfBooleans?[&#34;5279&#34;] {
+    if let arraysOfBooleans = visitorProfile.arraysOfBooleans?["5279"] {
         let numberOfPositiveBools = arraysOfBooleans.filter { $0 == true }.count
         print(numberOfPositiveBools)
     }
@@ -116,17 +120,17 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                                    | Description                                               | Type                 | Example                                        |
 | ---------------------------------------- | --------------------------------------------------------- | -------------------- | ---------------------------------------------- |
-| `visitorProfile.arraysOfNumbers`         | Returns all the arrays of numbers in the visitor profile. | `[String: [Double]]` | `[&#34;2333&#34;: [2.0, 1.0], &#34;1123&#34;: [4.82125, 3.0]]` |
-| `visitorProfile.arraysOfNumbers[&#34;2815&#34;]` | Returns the array of numbers by id.                       | `[Double]`           | `[4.82125, 3.0]`                               |
+| `visitorProfile.arraysOfNumbers`         | Returns all the arrays of numbers in the visitor profile. | `[String: [Double]]` | `["2333": [2.0, 1.0], "1123": [4.82125, 3.0]]` |
+| `visitorProfile.arraysOfNumbers["2815"]` | Returns the array of numbers by id.                       | `[Double]`           | `[4.82125, 3.0]`                               |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return an array of numbers value
-    if let arraysOfNumbers = visitorProfile.arraysOfNumbers?[&#34;5279&#34;] {
+    if let arraysOfNumbers = visitorProfile.arraysOfNumbers?["5279"] {
         arraysOfNumbers.forEach { number in
-    		if number &gt; 3.0 {
+    		if number > 3.0 {
     			// ... take action
     		}
         }
@@ -138,17 +142,17 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                                    | Description                                               | Type                 | Example                                                                     |
 | ---------------------------------------- | --------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------- |
-| `visitorProfile.arraysOfStrings`         | Returns all the arrays of strings in the visitor profile. | `[String: [String]]` | `[&#34;1033&#34;: [&#34;Foundation&#34;, &#34;Perfume&#34;], &#34;3390&#34;: [&#34;Bootleg Jeans&#34;, &#34;Dresses&#34;]]` |
-| `visitorProfile.arraysOfStrings[&#34;3390&#34;]` | Returns the array of strings by id.                       | `[String]`           | `[&#34;Bootleg Jeans&#34;, &#34;Dresses&#34;]`                                              |
+| `visitorProfile.arraysOfStrings`         | Returns all the arrays of strings in the visitor profile. | `[String: [String]]` | `["1033": ["Foundation", "Perfume"], "3390": ["Bootleg Jeans", "Dresses"]]` |
+| `visitorProfile.arraysOfStrings["3390"]` | Returns the array of strings by id.                       | `[String]`           | `["Bootleg Jeans", "Dresses"]`                                              |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return an array of strings value
-    if let arraysOfStrings = visitorProfile.arraysOfStrings?[&#34;3390&#34;] {
+    if let arraysOfStrings = visitorProfile.arraysOfStrings?["3390"] {
         arraysOfStrings.forEach { string in
-    		if string.lowercased().contains(&#34;Jeans&#34;) {
+    		if string.lowercased().contains("Jeans") {
     			// ... take action
     		}
         }
@@ -159,10 +163,14 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                             | Description                                                                                                       | Type               | Example                                                                                     |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------- |
-| `visitorProfile.audiences`        | Returns all audiences for which the visitor is a member.                                                          | `[String: String]` | `[&#34;tealiummobile\_demo\_103&#34;: &#34;iOS Users&#34;, &#34;tealiummobile\_demo\_110&#34;: &#34;Visitors - Known&#34;]` |
-| `visitorProfile.audiences[&#34;103&#34;]` | Returns true/false depending on whether or not the visitor is a member of the audience based on the id passed in. | `Bool`             | `true`                                                                                      |
+| `visitorProfile.audiences`        | Returns all audiences for which the visitor is a member.                                                          | `[String: String]` | `["tealiummobile\_demo\_103": "iOS Users", "tealiummobile\_demo\_110": "Visitors - Known"]` |
+| `visitorProfile.audiences["103"]` | Returns true/false depending on whether or not the visitor is a member of the audience based on the id passed in. | `Bool`             | `true`                                                                                      |
 
+
+<blockquote>
 If an Audience is not assigned, `nil` is returned.
+</blockquote>
+
 
 Example usage:
 
@@ -170,11 +178,11 @@ Example usage:
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return the current Audiences for which the user is assigned
     if let audiences = visitorProfile.audiences {
-        print(&#34;Visitor audiences: \(audiences)&#34;)
+        print("Visitor audiences: \(audiences)")
 
         // Check if an Audience is assigned to a user by id
-        if audiences[&#34;account_profile_106&#34;] != nil {
-            print(&#34;Visitor is a member of audience id 106&#34;)
+        if audiences["account_profile_106"] != nil {
+            print("Visitor is a member of audience id 106")
             // ... Visitor is a member of this audience, take appropriate action
         }
 
@@ -186,35 +194,39 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                           | Description                                                                       | Type             | Example                        |
 | ------------------------------- | --------------------------------------------------------------------------------- | ---------------- | ------------------------------ |
-| `visitorProfile.badges`         | Returns all badges in the visitor profile.                                        | `[String: Bool]` | `[&#34;2815&#34;: true, &#34;2813&#34;: true]` |
-| `visitorProfile.badges[&#34;2815&#34;]` | Returns true/false depending on whether or not the visitor is assigned the badge. | `Bool`           | `true`                         |
+| `visitorProfile.badges`         | Returns all badges in the visitor profile.                                        | `[String: Bool]` | `["2815": true, "2813": true]` |
+| `visitorProfile.badges["2815"]` | Returns true/false depending on whether or not the visitor is assigned the badge. | `Bool`           | `true`                         |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a badge value
-    if let badgeAssigned = visitorProfile.badges?[&#34;5279&#34;] {
-        print(badgeAssigned ? &#34;Badge id 5279 is assigned&#34; : &#34;Badge id 5945 is not assigned&#34;)
+    if let badgeAssigned = visitorProfile.badges?["5279"] {
+        print(badgeAssigned ? "Badge id 5279 is assigned" : "Badge id 5945 is not assigned")
     }
 }
 ```
 
+
+<blockquote>
 If a Badge is not assigned, `nil` is returned.
+</blockquote>
+
 
 #### `booleans`
 
 | Usage                             | Description                                      | Type             | Example                         |
 | --------------------------------- | ------------------------------------------------ | ---------------- | ------------------------------- |
-| `visitorProfile.booleans`         | Returns all the booleans in the visitor profile. | `[String: Bool]` | `[&#34;5784&#34;: true, &#34;1453&#34;: false]` |
-| `visitorProfile.booleans[&#34;4692&#34;]` | Returns the boolean by id.                       | `Bool`           | `true`                          |
+| `visitorProfile.booleans`         | Returns all the booleans in the visitor profile. | `[String: Bool]` | `["5784": true, "1453": false]` |
+| `visitorProfile.booleans["4692"]` | Returns the boolean by id.                       | `Bool`           | `true`                          |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a boolean value
-    if let booleanValue = visitorProfile.booleans?[&#34;4479&#34;] {
+    if let booleanValue = visitorProfile.booleans?["4479"] {
         if booleanValue {
         	// ... do something
         }
@@ -227,7 +239,7 @@ Access to the attributes for the current visit instead of the lifetime attribute
 
 | Usage                             | Description                                                                                                                                                                                      | Type                         | Example                                                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `visitorProfile.currentVisit`     | Returns the current visit scoped attributes.                                                                                                                                                     | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile(dates: [&#34;5376&#34;: 1567536668080, &#34;10&#34;: 1567536668000], booleans: [&#34;4530&#34;: true], numbers: [&#34;32&#34;: 3.8])` |
+| `visitorProfile.currentVisit`     | Returns the current visit scoped attributes.                                                                                                                                                     | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
 | `visitorProfile.currentVisit.###` | Returns the attribute you want, depending on ###. All the same methods listed above apply except for audiences and badges. These are exclusively visitor attributes and do not apply to the visit. | Varies                       | Varies                                                                                                                            |
 
 Example usage:
@@ -236,7 +248,7 @@ Example usage:
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a current visit string attribute
     if let currentVisit = visitorProfile.currentVisit,
-       let string = currentVisit.strings?[&#34;34&#34;] {
+       let string = currentVisit.strings?["34"] {
         print(string)
         // ... take action
     }
@@ -247,15 +259,15 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                          | Description                                   | Type            | Example                                      |
 | ------------------------------ | --------------------------------------------- | --------------- | -------------------------------------------- |
-| `visitorProfile.dates`         | Returns all the dates in the visitor profile. | `[String: Int]` | `[&#34;25&#34;: 1567120112000, &#34;13&#34;: 1567120145666]` |
-| `visitorProfile.dates[&#34;4692&#34;]` | Returns the date by id.                       | `Int`           | `1567120112000`                              |
+| `visitorProfile.dates`         | Returns all the dates in the visitor profile. | `[String: Int]` | `["25": 1567120112000, "13": 1567120145666]` |
+| `visitorProfile.dates["4692"]` | Returns the date by id.                       | `Int`           | `1567120112000`                              |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a date value
-    if let date = visitorProfile.dates?[&#34;33&#34;] {
+    if let date = visitorProfile.dates?["33"] {
         print(date)
         // .. take action
     }
@@ -266,16 +278,16 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usege                            | Description                                     | Type               | Example                                   |
 | -------------------------------- | ----------------------------------------------- | ------------------ | ----------------------------------------- |
-| `visitorProfile.numbers`         | Returns all the numbers in the visitor profile. | `[String: Double]` | `[&#34;83&#34;: 0.5714285714285714, &#34;1399&#34;: 2.0]` |
-| `visitorProfile.numbers[&#34;1399&#34;]` | Returns the number by id.                       | `Double`           | `4.82125`                                 |
+| `visitorProfile.numbers`         | Returns all the numbers in the visitor profile. | `[String: Double]` | `["83": 0.5714285714285714, "1399": 2.0]` |
+| `visitorProfile.numbers["1399"]` | Returns the number by id.                       | `Double`           | `4.82125`                                 |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a number value
-    if let number = visitorProfile.numbers?[&#34;1399&#34;] {
-        if number &gt; 3.0 {
+    if let number = visitorProfile.numbers?["1399"] {
+        if number > 3.0 {
         	// ... take action
         }
     }
@@ -287,16 +299,16 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                                  | Description                                             | Type                    | Example                                                              |
 | -------------------------------------- | ------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------- |
-| `visitorProfile.setsOfStrings`         | Returns all the sets of strings in the visitor profile. | `[String: Set&lt;String&gt;]` | `[&#34;9938&#34;: [&#34;shirts&#34;], &#34;2300&#34;: [&#34;Luxury Couch 1&#34;, &#34;Luxury Couch 2&#34;]]` |
-| `visitorProfile.setsOfStrings[&#34;2300&#34;]` | Returns the set of strings by id.                       | `Set&lt;String&gt;`           | `[&#34;Luxury Couch 1&#34;, &#34;Luxury Couch 2&#34;]`                               |
+| `visitorProfile.setsOfStrings`         | Returns all the sets of strings in the visitor profile. | `[String: Set<String>]` | `["9938": ["shirts"], "2300": ["Luxury Couch 1", "Luxury Couch 2"]]` |
+| `visitorProfile.setsOfStrings["2300"]` | Returns the set of strings by id.                       | `Set<String>`           | `["Luxury Couch 1", "Luxury Couch 2"]`                               |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return an set of strings value
-    if let setOfStrings = visitorProfile.setsOfStrings?[&#34;5279&#34;] {
-        if setOfStrings.contains(&#34;toys&#34;) {
+    if let setOfStrings = visitorProfile.setsOfStrings?["5279"] {
+        if setOfStrings.contains("toys") {
         	// ... take action
         }
     }
@@ -308,15 +320,15 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                            | Description                                     | Type     | Example                                     |
 | -------------------------------- | ----------------------------------------------- | -------- | ------------------------------------------- |
-| `visitorProfile.strings`         | Returns all the strings in the visitor profile. | `String` | `&#34;83&#34;: &#34;Toy Truck&#34;, &#34;5699&#34;: &#34;Toy Tea Set&#34;]` |
-| `visitorProfile.strings[&#34;5699&#34;]` | Returns the string by id.                       | `String` | `&#34;Toy Tea Set&#34;`                             |
+| `visitorProfile.strings`         | Returns all the strings in the visitor profile. | `String` | `"83": "Toy Truck", "5699": "Toy Tea Set"]` |
+| `visitorProfile.strings["5699"]` | Returns the string by id.                       | `String` | `"Toy Tea Set"`                             |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return a string value
-    if let string = visitorProfile.strings?[&#34;5699&#34;] {
+    if let string = visitorProfile.strings?["5699"] {
         print(string)
         // ... take action
     }
@@ -327,22 +339,22 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | Usage                                      | Description                                     | Type                         | Example                                                                                                        |
 | ------------------------------------------ | ----------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `visitorProfile.tallies`                   | Returns all the tallies in the visitor profile. | `[String: [String: Double]]` | `[&#34;2983&#34;: [&#34;red shirts category&#34;: 4.0, &#34;green shirts category&#34;: 2.0], &#34;5643&#34;: [&#34;girls&#34;: 3.0, &#34;womens&#34;: 1.0]]`] |
-| `visitorProfile.tallies[&#34;1399&#34;]`           | Returns the tally by id.                        | `[String: Double]`           | `[&#34;girls&#34;: 3.0, &#34;womens&#34;: 1.0]`                                                                                |
-| `visitorProfile.tallies[&#34;1399&#34;][&#34;womens&#34;]` | Returns the tally by id.                        | `Double`                     | `3.0`                                                                                                          |
+| `visitorProfile.tallies`                   | Returns all the tallies in the visitor profile. | `[String: [String: Double]]` | `["2983": ["red shirts category": 4.0, "green shirts category": 2.0], "5643": ["girls": 3.0, "womens": 1.0]]`] |
+| `visitorProfile.tallies["1399"]`           | Returns the tally by id.                        | `[String: Double]`           | `["girls": 3.0, "womens": 1.0]`                                                                                |
+| `visitorProfile.tallies["1399"]["womens"]` | Returns the tally by id.                        | `Double`                     | `3.0`                                                                                                          |
 
 Example usage:
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // Return an entire tally
-    if let tally = visitorProfile.tallies?[&#34;1399&#34;] {
-        print(&#34;Tally id 5377: \(tally)&#34;)
+    if let tally = visitorProfile.tallies?["1399"] {
+        print("Tally id 5377: \(tally)")
     }
 
     // Return a tally value by using the tally id and the key for the value you want
-    if let tally = visitorProfile.tallies?[&#34;5381&#34;], let tallyValue = tally[&#34;red shirts&#34;] {
-        print(&#34;Tally value for id 5381 and key &#39;red shirts&#39;: \(tallyValue)&#34;)
+    if let tally = visitorProfile.tallies?["5381"], let tallyValue = tally["red shirts"] {
+        print("Tally value for id 5381 and key 'red shirts': \(tallyValue)")
     }
 }
 ```
@@ -409,10 +421,10 @@ class MyHelperClass {
     var tealium: Tealium?
 
     public init () {
-        let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-            profile: &#34;PROFILE&#34;,
-            environment: &#34;ENVIRONMENT&#34;,
-            datasource: &#34;DATASOURCE&#34;,
+        let config = TealiumConfig(account: "ACCOUNT",
+            profile: "PROFILE",
+            environment: "ENVIRONMENT",
+            datasource: "DATASOURCE",
             optionalData: nil)
 
         config.visitorServiceDelegate = self
@@ -482,10 +494,10 @@ Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium VisitorService module config methods
       config.visitorServiceDelegate = self
@@ -509,25 +521,25 @@ Overrides the profile from which to fetch the visitor profile. Align it with the
 
 
 ```swift
-config.visitorServiceOverrideProfile = &#34;PROFILE&#34;
+config.visitorServiceOverrideProfile = "PROFILE"
 ```
 
 | Type | Description | Example |
 | --- | --- | --- |
-| `String` | Sets the Audience Stream profile from which to fetch the visitor profile | `&#34;main&#34;` |
+| `String` | Sets the Audience Stream profile from which to fetch the visitor profile | `"main"` |
 
 
 Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium Visitor Service module config methods
-      config.visitorServiceOverrideProfile = &#34;main&#34;
+      config.visitorServiceOverrideProfile = "main"
   }
 ```
 
@@ -537,25 +549,25 @@ Overrides the base URL from which the visitor profile is retrieved. ACCOUNT, PRO
 
 
 ```swift
-config.visitorServiceOverrideURL = &#34;https://overridden-subdomain.yourdomain.com/&#34;
+config.visitorServiceOverrideURL = "https://overridden-subdomain.yourdomain.com/"
 ```
 
 | Type | Description | Example |
 | --- | --- | --- |
-| `String` | Sets the URL from which to fetch the visitor profile | `&#34;https://overridden-subdomain.yourdomain.com/&#34;` |
+| `String` | Sets the URL from which to fetch the visitor profile | `"https://overridden-subdomain.yourdomain.com/"` |
 
 
 Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium Visitor Service module config methods
-      config.visitorServiceOverrideURL = &#34;https://overridden-subdomain.yourdomain.com/&#34;
+      config.visitorServiceOverrideURL = "https://overridden-subdomain.yourdomain.com/"
   }
 ```
 
@@ -579,10 +591,10 @@ Usage example:
 
 ```swift
 func start() {
-      let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-                                 profile: &#34;NAME&#34;,
-                                 environment: &#34;ENVIRONMENT&#34;,
-                                 datasource: &#34;DATASOURCE&#34;,
+      let config = TealiumConfig(account: "ACCOUNT",
+                                 profile: "NAME",
+                                 environment: "ENVIRONMENT",
+                                 datasource: "DATASOURCE",
                                  optionalData: nil)
       // Tealium Visitor Service module config methods
       config.visitorServiceRefresh = .every(3, .seconds)

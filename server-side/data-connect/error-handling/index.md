@@ -20,7 +20,11 @@ Errors that occur while a recipe is already running, for example, if something i
 
 To ensure all of your data is properly processed, you must fix the error in the recipe and reprocess the Workato job(s) that failed.
 
- We strongly recommend wrapping your Workato actions within a **Handle errors** step for any recipe you create. This step lets you stop a recipe from running additional jobs when an error occurs. For more information about configuring a **Handle errors** step in your recipes, see [Create a recipe](). 
+
+<blockquote>
+We strongly recommend wrapping your Workato actions within a **Handle errors** step for any recipe you create. This step lets you stop a recipe from running additional jobs when an error occurs. For more information about configuring a **Handle errors** step in your recipes, see [Create a recipe](https://docs.tealium.com/create-recipe-data-connect/).
+</blockquote>
+
 
 ## Error notifications
 
@@ -30,12 +34,16 @@ You can configure email notifications for trigger and recipe errors at the accou
 
 To set up email notifications:
 
-1. Navigate to **Manage Platform &gt; Data Connect Workato Settings** in the server-side admin menu.
-1. Under **Error notification emails**, enter any email addresses that should receive a notification when a trigger error occurs. Separate each email address with a comma. Error notifications are configured at the account level. Email addresses you supply will receive error notifications for all recipes in the account, regardless of their profile assignment.
+1. Navigate to **Manage Platform > Data Connect Workato Settings** in the server-side admin menu.
+1. Under **Error notification emails**, enter any email addresses that should receive a notification when a trigger error occurs. Separate each email address with a comma. 
+<blockquote>
+Error notifications are configured at the account level. Email addresses you supply will receive error notifications for all recipes in the account, regardless of their profile assignment.
+</blockquote>
+
 1. Click **Save**.
 
 ### Recipe-level notifications
 
 We strongly recommend wrapping Workato actions within a **Handle errors** step. This in-recipe error handler stops the recipe from running additional jobs and also stops the current job in an error state. You can configure this step to send an email notification with error details. Additionally, the error handler will trigger the account-level email notifications mentioned above.
 
-For more information about configuring a **Handle errors** step in your recipes, see [Create a recipe]().
+For more information about configuring a **Handle errors** step in your recipes, see [Create a recipe](https://docs.tealium.com/create-recipe-data-connect/).

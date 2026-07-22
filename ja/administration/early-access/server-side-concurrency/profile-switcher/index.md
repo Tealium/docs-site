@@ -3,15 +3,23 @@ title: プロファイル切り替え機能
 description: この記事では、サーバーサイドのプロファイル切り替え機能の使用方法について説明します。
 url: https://docs.tealium.com/ja/administration/early-access/server-side-concurrency/profile-switcher/
 ---
+
+<blockquote>
 サーバーサイドの並行処理はアーリーアクセス中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
+</blockquote>
+
 
 ## 動作原理
 
 各アカウントは複数のプロファイルを含むことができます。プロファイル切り替え機能を使用すると、アカウント、プロファイル、およびプロファイルのバージョンをすばやく切り替えることができます。
 
-![](/images/server-side/save-publish/ea-server-side-profile-switcher.png)
+![](https://docs.tealium.com/images/server-side/save-publish/ea-server-side-profile-switcher.png)
 
+
+<blockquote>
 クライアントサイドのプロファイルからサーバーサイドプラットフォームに切り替えると、プロファイルの最新保存バージョンが読み込まれます。これは以前作業していたバージョンと同じではないかもしれません。
+</blockquote>
+
 
 ### バージョンステータスメッセージ
 
@@ -24,7 +32,7 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 * **公開バージョンより遅れています**  
 現在公開されているバージョンには、現在のバージョンにはない変更が含まれています。これらの変更を見るには、**最新の公開変更を見る**をクリックしてください。
 
-これらのステータスメッセージとその使用方法の詳細については、[サーバーサイドの保存と公開について]()を参照してください。
+これらのステータスメッセージとその使用方法の詳細については、[サーバーサイドの保存と公開について](https://docs.tealium.com/about-server-side-saving-and-publishing/#version-status)を参照してください。
 
 ## プロファイルとバージョンを切り替える
 
@@ -36,4 +44,4 @@ url: https://docs.tealium.com/ja/administration/early-access/server-side-concurr
 1. バージョンを選択すると、プロファイル切り替えは選択されたバージョンに加えられた変更を現在公開されているバージョンと比較します。
 1. **バージョンを読み込む**をクリックします。
 
-また、[バージョン履歴]()の**このバージョンを読み込む**オプションを使用してバージョンを切り替えることもできます。
+また、[バージョン履歴](https://docs.tealium.com/ss-version-history/)の**このバージョンを読み込む**オプションを使用してバージョンを切り替えることもできます。

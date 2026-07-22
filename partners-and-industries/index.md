@@ -4,7 +4,7 @@ description: Explore industry-specific integrations and partnership opportunitie
 url: https://docs.tealium.com/partners-and-industries/
 ---
 
-![](/images/icons/icon-code-compare.svg)
+![](https://docs.tealium.com/images/icons/icon-code-compare.svg)
 
 #### Tealium for AI
 
@@ -12,7 +12,7 @@ Integrate Tealium with AI platforms and models to enrich visitor profiles, activ
 
 
 
-![](/images/icons/icon-automotive.svg)
+![](https://docs.tealium.com/images/icons/icon-automotive.svg)
 
 #### Tealium for Automotive
 
@@ -20,7 +20,7 @@ Tealium for Automotive combines strategic technology integrations and partnershi
 
 
 
-![](/images/icons/icon-pharma.svg)
+![](https://docs.tealium.com/images/icons/icon-pharma.svg)
 
 #### Tealium for Pharma
 
@@ -28,7 +28,7 @@ Tealium for Pharma combines strategic technology integrations and partnerships t
 
 
 
-![](/images/icons/icon-id.svg)
+![](https://docs.tealium.com/images/icons/icon-id.svg)
 
 #### Tealium Identity Partners
 

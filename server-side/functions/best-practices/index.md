@@ -20,7 +20,7 @@ The execution environment provides standard modules that support partial import,
 Import only the required functionality for a module, instead of importing the entire module. For example:
 
 ```
-import { MD5 } from &#39;crypto-es/lib/md5.js&#39;;
+import { MD5 } from 'crypto-es/lib/md5.js';
 ```
 
 ## Avoid the use of debugging log messages
@@ -47,7 +47,7 @@ Use JavaScript optimizations for intensive tasks, such as iterating over an arra
 const array = [1, 2, 3];
 const arrayLength = array.length;
 
-for (let i = 0; i &lt; arrayLength; i&#43;&#43;) {
+for (let i = 0; i < arrayLength; i++) {
     const arrayItem = array[i];
 }
 ```
@@ -59,7 +59,7 @@ const obj = { a: 1, b: 2, c: 3 };
 const keys = Object.getOwnPropertyNames(obj);
 const keysLength = keys.length;
 
-for (let i = 0; i &lt; keysLength; i&#43;&#43;) {
+for (let i = 0; i < keysLength; i++) {
     const keyName = keys[i];
     const value = obj[keyName];
 }
@@ -71,14 +71,14 @@ Authentication tokens are available only when a function runs within the context
 
 ```js
 // Correct: Access token inside HTTP request handler
-activate(async ({ visitor, helper }) =&gt; {
+activate(async ({ visitor, helper }) => {
   const response = await fetch(
-    &#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;,
+    "https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send",
     {
-      method: &#34;POST&#34;,
+      method: "POST",
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;firebase_cloud_messaging&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('firebase_cloud_messaging'),
+        'Content-Type': 'application/json'
       },
       body:body
     }
@@ -87,5 +87,5 @@ activate(async ({ visitor, helper }) =&gt; {
 }
 
 // Incorrect: Access token outside HTTP request handler
-const token = helper.getAuth(&#39;firebase_cloud_messaging&#39;); // This will be replaced by a UUID placeholder
+const token = helper.getAuth('firebase_cloud_messaging'); // This will be replaced by a UUID placeholder
 ```

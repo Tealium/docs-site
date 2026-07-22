@@ -25,37 +25,37 @@ Install the DispatchQueue module with CocoaPods or Carthage.
 
 To install the DispatchQueue module with CocoaPods, add the following pod to your Podfile:  
 ```ruby
-pod &#39;tealium-swift/TealiumDispatchQueue&#39;
+pod 'tealium-swift/TealiumDispatchQueue'
 ```
 
-The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
+The framework is auto-instantiated. It has a dependency on the `TealiumCore` pod. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#cocoapods) about CocoaPods installation for iOS.
 
 
 ### Carthage
 
 To install the DispatchQueue module with Carthage, following these steps:
 
-1. Go to the app target&#39;s General configuration page in Xcode.
+1. Go to the app target's General configuration page in Xcode.
 
 2. Add the following framework to the **Embedded Binaries** section:  
       ```ruby
       TealiumDispatchQueue.framework
       ```
 
-The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
+The framework is auto-instantiated. It has a dependency on `TealiumCore`. No additional import statements are necessary. [Learn more](https://docs.tealium.com/platforms/ios-swift-v1/install/#carthage) about Carthage installation for iOS.
 
 ## Data Layer
 The following variables are transmitted with each tracking call while the module is enabled:
 
 | Variable| Description| Example Value|
 |-----------------------------------|--------------------------------|--------------------------------------|
-|`was_queued`|Indicates that the dispatch was queued|[`&#34;true&#34;`, `&#34;false&#34;`]|
+|`was_queued`|Indicates that the dispatch was queued|[`"true"`, `"false"`]|
 
 ## API Reference
 
 There are no public API methods for this module. Successes and failures may be monitored through the Delegate module.
 
-The following additional methods are provided by the [`TealiumConfig`](/platforms/ios-swift-v1/api/tealium-config/) class:
+The following additional methods are provided by the [`TealiumConfig`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium-config/) class:
 
 ### `setMaxQueueSize()`
 

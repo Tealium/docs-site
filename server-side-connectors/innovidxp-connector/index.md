@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/innovidxp-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -31,13 +31,17 @@ After adding the connector, configure the following settings:
 
 The following table lists URL parameter to be encoded in the server-to-server request:
 
+
+<blockquote>
 The `servertrack` and `RAND` parameters are automatically set by Tealium.
+</blockquote>
+
 
 |**Parameter**| **Description**|
 |---| ---|
-|Visitor ID (`VISITORID`)|  &lt;ul&gt;&lt;li&gt;(Required) Unique ID for the visitor.&lt;/li&gt;&lt;li&gt;URL parameters to be encoded in the server-to-server request.&lt;/li&gt;&lt;li&gt;For example, `0123456789ABCDEF`.&lt;/li&gt;&lt;/ul&gt; |
-|User Agent (`UA`)|  &lt;ul&gt;&lt;li&gt;User agent, if applicable.&lt;/li&gt;&lt;li&gt;For example, `Mozilla/5.0`.&lt;/li&gt;&lt;/ul&gt; |
-|Browser Language (`LANG`)|  &lt;ul&gt;&lt;li&gt;Browser language, if applicable.&lt;/li&gt;&lt;li&gt;For example, `en`.&lt;/li&gt;&lt;/ul&gt; |
+|Visitor ID (`VISITORID`)|  <ul><li>(Required) Unique ID for the visitor.</li><li>URL parameters to be encoded in the server-to-server request.</li><li>For example, `0123456789ABCDEF`.</li></ul> |
+|User Agent (`UA`)|  <ul><li>User agent, if applicable.</li><li>For example, `Mozilla/5.0`.</li></ul> |
+|Browser Language (`LANG`)|  <ul><li>Browser language, if applicable.</li><li>For example, `en`.</li></ul> |
 
 #### Session Parameters (`_cvar`)
 
@@ -45,18 +49,18 @@ The following table lists the fine-grained session-level tracking information:
 
 |**Parameter**| **Description**|
 |---| ---|
-|`appid`|  &lt;ul&gt;&lt;li&gt;ID of the app.&lt;/li&gt;&lt;li&gt;For example, `com.myapp.appster`.&lt;/li&gt;&lt;/ul&gt; |
-|`appname`|  &lt;ul&gt;&lt;li&gt;Name of the app.&lt;/li&gt;&lt;li&gt;For example, My Application.&lt;/li&gt;&lt;/ul&gt; |
-|`country`|  &lt;ul&gt;&lt;li&gt;Country.&lt;/li&gt;&lt;li&gt;For example, `US`.&lt;/li&gt;&lt;/ul&gt; |
-|`deviceid`|  &lt;ul&gt;&lt;li&gt;Device ID.&lt;/li&gt;&lt;li&gt;For example, `e3f5536a141811db40efd6400f1d0a4e`.&lt;/li&gt;&lt;/ul&gt; |
-|`deviceidtype`|  &lt;ul&gt;&lt;li&gt;Device ID type.&lt;/li&gt;&lt;li&gt;For example, `AAID` or `IDFA`.&lt;/li&gt;&lt;/ul&gt; |
-|`ip`|  &lt;ul&gt;&lt;li&gt;(Required) The IP address of the mobile device.&lt;/li&gt;&lt;li&gt;For example, `8.8.8.8`.&lt;/li&gt;&lt;/ul&gt; |
-|`lang`|  &lt;ul&gt;&lt;li&gt;User language.&lt;/li&gt;&lt;li&gt;For example, `en`.&lt;/li&gt;&lt;/ul&gt; |
-|`medium`|  &lt;ul&gt;&lt;li&gt;(Required) Set to `app` for mobile app.&lt;/li&gt;&lt;li&gt;For example, `app`.&lt;/li&gt;&lt;/ul&gt; |
-|`os`|  &lt;ul&gt;&lt;li&gt;Operating system.&lt;/li&gt;&lt;li&gt;For example, `ANDROID`.&lt;/li&gt;&lt;/ul&gt; |
-|`source`|  &lt;ul&gt;&lt;li&gt;(Required) Identifies the name of the partner supplying the data.&lt;/li&gt;&lt;li&gt;For example, `myApplication`&lt;/li&gt;&lt;/ul&gt; |
-|`ua`|  &lt;ul&gt;&lt;li&gt;User Agent.&lt;/li&gt;&lt;li&gt;For example, `Mozilla/5.0`.&lt;/li&gt;&lt;/ul&gt; |
-|`user`|  &lt;ul&gt;&lt;li&gt;User ID.&lt;/li&gt;&lt;li&gt;Client-supplied private unique user identifier, such as an internal ID from a billing system.&lt;/li&gt;&lt;li&gt;For example, `U1234`.&lt;/li&gt;&lt;/ul&gt; |
+|`appid`|  <ul><li>ID of the app.</li><li>For example, `com.myapp.appster`.</li></ul> |
+|`appname`|  <ul><li>Name of the app.</li><li>For example, My Application.</li></ul> |
+|`country`|  <ul><li>Country.</li><li>For example, `US`.</li></ul> |
+|`deviceid`|  <ul><li>Device ID.</li><li>For example, `e3f5536a141811db40efd6400f1d0a4e`.</li></ul> |
+|`deviceidtype`|  <ul><li>Device ID type.</li><li>For example, `AAID` or `IDFA`.</li></ul> |
+|`ip`|  <ul><li>(Required) The IP address of the mobile device.</li><li>For example, `8.8.8.8`.</li></ul> |
+|`lang`|  <ul><li>User language.</li><li>For example, `en`.</li></ul> |
+|`medium`|  <ul><li>(Required) Set to `app` for mobile app.</li><li>For example, `app`.</li></ul> |
+|`os`|  <ul><li>Operating system.</li><li>For example, `ANDROID`.</li></ul> |
+|`source`|  <ul><li>(Required) Identifies the name of the partner supplying the data.</li><li>For example, `myApplication`</li></ul> |
+|`ua`|  <ul><li>User Agent.</li><li>For example, `Mozilla/5.0`.</li></ul> |
+|`user`|  <ul><li>User ID.</li><li>Client-supplied private unique user identifier, such as an internal ID from a billing system.</li><li>For example, `U1234`.</li></ul> |
 
 #### Action Parameters (`cvar`)
 
@@ -64,13 +68,13 @@ The following table lists the fine-grained per-action tracking information:
 
 |**Parameter**| **Description**|
 |---| ---|
-|Action Name|  &lt;ul&gt;&lt;li&gt;(Required) Name of the action being performed.&lt;/li&gt;&lt;li&gt;For example, `INSTALL`.&lt;/li&gt;&lt;/ul&gt; |
-|`adchannel`|  &lt;ul&gt;&lt;li&gt;Advertising channel name.&lt;/li&gt;&lt;li&gt;For example, `Social`.&lt;/li&gt;&lt;/ul&gt; |
-|`campaign`|  &lt;ul&gt;&lt;li&gt;Campaign name.&lt;/li&gt;&lt;li&gt;For example, `NY_Acquisition`.&lt;/li&gt;&lt;/ul&gt; |
-|`currency`|  &lt;ul&gt;&lt;li&gt;Currency of revenue.&lt;/li&gt;&lt;li&gt;For example, `USD`.&lt;/li&gt;&lt;/ul&gt; |
-|`id`|  &lt;ul&gt;&lt;li&gt;Action ID of an individual user action, such as an order ID.&lt;/li&gt;&lt;li&gt;For example, `42342`.&lt;/li&gt;&lt;/ul&gt; |
-|`preattributed`|  &lt;ul&gt;&lt;li&gt;Whether the event has already been attributed.&lt;/li&gt;&lt;li&gt;For example, `1`.&lt;/li&gt;&lt;/ul&gt; |
-|`prod`|  &lt;ul&gt;&lt;li&gt;Product name.&lt;/li&gt;&lt;li&gt;For example, `angry birds`.&lt;/li&gt;&lt;/ul&gt; |
-|`promo`|  &lt;ul&gt;&lt;li&gt;The promo code, if the user used one.&lt;/li&gt;&lt;li&gt;For example, `ABCD`.&lt;/li&gt;&lt;/ul&gt; |
-|`rev`|  &lt;ul&gt;&lt;li&gt;Revenue amount.&lt;/li&gt;&lt;li&gt;If not specified, is supplied by default.&lt;/li&gt;&lt;li&gt;For example, `12`.&lt;/li&gt;&lt;/ul&gt; |
-|`ts`|  &lt;ul&gt;&lt;li&gt;Exact Unix timestamp of event, in UTC format.&lt;/li&gt;&lt;li&gt;If not provided, will be provided by default.&lt;/li&gt;&lt;li&gt;For example, `1538996046`.&lt;/li&gt;&lt;/ul&gt; |
+|Action Name|  <ul><li>(Required) Name of the action being performed.</li><li>For example, `INSTALL`.</li></ul> |
+|`adchannel`|  <ul><li>Advertising channel name.</li><li>For example, `Social`.</li></ul> |
+|`campaign`|  <ul><li>Campaign name.</li><li>For example, `NY_Acquisition`.</li></ul> |
+|`currency`|  <ul><li>Currency of revenue.</li><li>For example, `USD`.</li></ul> |
+|`id`|  <ul><li>Action ID of an individual user action, such as an order ID.</li><li>For example, `42342`.</li></ul> |
+|`preattributed`|  <ul><li>Whether the event has already been attributed.</li><li>For example, `1`.</li></ul> |
+|`prod`|  <ul><li>Product name.</li><li>For example, `angry birds`.</li></ul> |
+|`promo`|  <ul><li>The promo code, if the user used one.</li><li>For example, `ABCD`.</li></ul> |
+|`rev`|  <ul><li>Revenue amount.</li><li>If not specified, is supplied by default.</li><li>For example, `12`.</li></ul> |
+|`ts`|  <ul><li>Exact Unix timestamp of event, in UTC format.</li><li>If not provided, will be provided by default.</li><li>For example, `1538996046`.</li></ul> |

@@ -36,15 +36,15 @@ Tealium(config);
 
 | パラメータ | 型| 説明| 例
 |-----------|------| --- | --- |
-| `config` | var| キーと値のペアとしてのTealium構成オブジェクトデータ| `{&#34;account&#34;:&#34;ACCOUNT&#34;, &#34;profile&#34;:&#34;PROFILE&#34;, &#34;datasource&#34;:&#34;DATASOURCE&#34;};` |
+| `config` | var| キーと値のペアとしてのTealium構成オブジェクトデータ| `{"account":"ACCOUNT", "profile":"PROFILE", "datasource":"DATASOURCE"};` |
 
 `config`オブジェクトパラメータには次のキーと値のペアがあります
 
 | パラメータ | 型| 説明| 例
 |-----------|------| --- | --- |
-| `account` |  `String` |  Tealiumプロファイルの名前| `&#34;companyXYZ&#34;` |
-| `profile` | `String`| Tealiumプロファイルの名前| `&#34;main&#34;` |
-| `datasource` | `String` | （オプション）データソースキー| `&#34;abc123&#34;` |
+| `account` |  `String` |  Tealiumプロファイルの名前| `"companyXYZ"` |
+| `profile` | `String`| Tealiumプロファイルの名前| `"main"` |
+| `datasource` | `String` | （オプション）データソースキー| `"abc123"` |
 ### `track()`
 
 ビューとイベントをトラッキングします。
@@ -55,5 +55,5 @@ tealium.track(event, data); 
 
 | パラメータ | 型| 説明| 例|
 | --- |  ---| --- | --- |
-| `event` | `String` | イベントの名前（`tealium_event`の値を構成）| `&#34;event&#34;` |
-| `data` | `Dictionary` | キーと値のペアとしてのイベントデータを持つオブジェクト| `{&#34;some_key&#34;: &#34;some_value&#34;}` |
+| `event` | `String` | イベントの名前（`tealium_event`の値を構成）| `"event"` |
+| `data` | `Dictionary` | キーと値のペアとしてのイベントデータを持つオブジェクト| `{"some_key": "some_value"}` |

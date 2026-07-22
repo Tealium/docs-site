@@ -5,48 +5,48 @@ url: https://docs.tealium.com/platforms/java/track/
 ---
 ## Track Views
 
-Track views with the [`track()`](/platforms/java/api/#track) method, as shown in the following examples:
+Track views with the [`track()`](https://docs.tealium.com/platforms/java/api/#track) method, as shown in the following examples:
 
 ```java
 // Set event attributes
 Udo data = new Udo();
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
+data.put("KEY", "VALUE");
 
 // With optional callback
 DispatchCallBack callback = new DispatchCallBack() {
     public void dispatchComplete(boolean success, String encodedURLString, String error){
        // Callback handling
-       System.out.println(&#34;Dispatch successful: &#34; &#43; String.valueOf(success));    
+       System.out.println("Dispatch successful: " + String.valueOf(success));    
    }
 }
-tealium.track(&#34;EVENT_NAME&#34;, data, callback);
+tealium.track("EVENT_NAME", data, callback);
 ```
 
 The following example tracks a page view:
 
 ```java
-tealium.track(&#34;SCREEN_VIEW&#34;, data, callback);
+tealium.track("SCREEN_VIEW", data, callback);
 ```
 
 The data and callback arguments are optional.
 
 ## Track Events
 
-Track events with the same [`track()`](/platforms/java/api/#track) method used to track views, as shown in the following example:
+Track events with the same [`track()`](https://docs.tealium.com/platforms/java/api/#track) method used to track views, as shown in the following example:
 
 ```java
 // Set event attributes
 Udo data = new Udo();
-data.put(&#34;KEY&#34;, &#34;VALUE&#34;);
+data.put("KEY", "VALUE");
 
 // With optional callback
 DispatchCallBack callback = new DispatchCallBack() {
     public void dispatchComplete(boolean success, String encodedURLString, String error){
        // Callback handling
-       System.out.println(&#34;Dispatch successful: &#34; &#43; String.valueOf(success));    
+       System.out.println("Dispatch successful: " + String.valueOf(success));    
    }
 }
-tealium.track(&#34;EVENT_NAME&#34;, data, callback);
+tealium.track("EVENT_NAME", data, callback);
 ```
 
 The following example tracks a user login:
@@ -54,8 +54,8 @@ The following example tracks a user login:
 ```java
 // Event attributes
 Udo data = new Udo();
-data.put(&#34;user_id&#34;, &#34;0123456789&#34;);
-data.put(&#34;email_address&#34;, &#34;user@example.com&#34;);
+data.put("user_id", "0123456789");
+data.put("email_address", "user@example.com");
 
 // With optional callback
 DispatchCallBack callBack = new DispatchCallBack(){    
@@ -63,7 +63,7 @@ DispatchCallBack callBack = new DispatchCallBack(){
         // Callback handling  
     }
 }
-tealium.track(&#34;user_login&#34;, data, callback);
+tealium.track("user_login", data, callback);
 ```
 
 The data and callback arguments are optional.

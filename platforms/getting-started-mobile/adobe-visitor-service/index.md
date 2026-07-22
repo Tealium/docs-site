@@ -5,16 +5,16 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-ser
 ---
 The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors. The ECID identifies the same visitor in different parts of the Adobe ecosystem, such as Adobe Target and Adobe Analytics, and identifies unique visitors.
 
-If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. The new ECID in the data layer may be mapped in the server-side Adobe connectors in Tealium EventStream or Tealium AudienceStream. The Adobe Visitor Service module provides a seamless transition to the Tealium SDK by reusing the existing ECID if it exists and generating a new one if it doesn&#39;t, ensuring an accurate count of visitors in your app.
+If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. The new ECID in the data layer may be mapped in the server-side Adobe connectors in Tealium EventStream or Tealium AudienceStream. The Adobe Visitor Service module provides a seamless transition to the Tealium SDK by reusing the existing ECID if it exists and generating a new one if it doesn't, ensuring an accurate count of visitors in your app.
 
 ## Supported platforms
 
 The following platforms support the Adobe Visitor Service module:
 
-- [Tealium for Android](/platforms/android-kotlin/module-list/adobe-visitor-service/)
-- [Tealium for iOS](/platforms/ios-swift/module-list/adobe-visitor-service/)
-- [Tealium for React Native](/platforms/react-native/adobe-visitor-service/)
-- [Tealium for Flutter](/platforms/flutter/adobe-visitor-service/)
+- [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/module-list/adobe-visitor-service/)
+- [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/module-list/adobe-visitor-service/)
+- [Tealium for React Native](https://docs.tealium.com/platforms/react-native/adobe-visitor-service/)
+- [Tealium for Flutter](https://docs.tealium.com/platforms/flutter/adobe-visitor-service/)
 
 ## Use Cases
 
@@ -38,7 +38,7 @@ If you detect different visitor accounts in your app, reset the ECID to ensure e
 
 Use the `adobeVisitorCustomVisitorId`, `adobeVisitorDataProviderId`, and `adobeVisitorAuthState` config properties only if all three values are known at the start of the app session. Set `adobeVisitorAuthState` only when you also set `adobeVisitorCustomVisitorId`.
 
-If the visitor&#39;s ID is not known at initialization (for example, before the user logs in), omit these properties and call `linkEcidToKnownIdentifier` once the ID becomes available.
+If the visitor's ID is not known at initialization (for example, before the user logs in), omit these properties and call `linkEcidToKnownIdentifier` once the ID becomes available.
 
 If all values are known at initialization, set them on the `TealiumConfig` object when the module starts:
 
@@ -46,36 +46,36 @@ If all values are known at initialization, set them on the `TealiumConfig` objec
 
 
 ```kotlin
-config.adobeVisitorDataProviderId = &#34;01&#34; // Data provider ID for this type of visitor ID
+config.adobeVisitorDataProviderId = "01" // Data provider ID for this type of visitor ID
 config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_AUTHENTICATED
-config.adobeVisitorCustomVisitorId = &#34;customeremail@emailprovider.com&#34;
+config.adobeVisitorCustomVisitorId = "customeremail@emailprovider.com"
 ```
 
 
 
 
 ```swift
-config.adobeVisitorDataProviderId = &#34;01&#34; // Data provider ID for this type of visitor ID
+config.adobeVisitorDataProviderId = "01" // Data provider ID for this type of visitor ID
 config.adobeVisitorAuthState = .authenticated
-config.adobeVisitorCustomVisitorId = &#34;customeremail@emailprovider.com&#34;
+config.adobeVisitorCustomVisitorId = "customeremail@emailprovider.com"
 ```
 
 
 
 
 ```javascript
-config.adobeVisitorDataProviderId = &#34;01&#34; // Data provider ID for this type of visitor ID
+config.adobeVisitorDataProviderId = "01" // Data provider ID for this type of visitor ID
 config.adobeVisitorAuthState = AuthState.authenticated
-config.adobeVisitorCustomVisitorId = &#34;customeremail@emailprovider.com&#34;
+config.adobeVisitorCustomVisitorId = "customeremail@emailprovider.com"
 ```
 
 
 
 
 ```dart
-config.adobeVisitorDataProviderId = &#34;01&#34; // Data provider ID for this type of visitor ID
+config.adobeVisitorDataProviderId = "01" // Data provider ID for this type of visitor ID
 config.adobeVisitorAuthState = AuthState.authenticated
-config.adobeVisitorCustomVisitorId = &#34;customeremail@emailprovider.com&#34;
+config.adobeVisitorCustomVisitorId = "customeremail@emailprovider.com"
 ```
 
 
@@ -83,28 +83,28 @@ config.adobeVisitorCustomVisitorId = &#34;customeremail@emailprovider.com&#34;
 
 The module automatically requests a new ID if needed, and subsequently sends an additional API call to link the ECID to the known ID supplied in the `TealiumConfig` properties.
 
-If you need to pass the ID and authentication state when the visitor logs in, call the following method to link the visitor&#39;s known ID to the anonymous ECID:
+If you need to pass the ID and authentication state when the visitor logs in, call the following method to link the visitor's known ID to the anonymous ECID:
 
 
 
 
 ```kotlin
-tealium.adobeVisitorApi?.linkEcidToKnownIdentifier(&#34;myidentifier&#34;, &#34;123456&#34;, AdobeAuthState.AUTH_STATE_AUTHENTICATED, null)
+tealium.adobeVisitorApi?.linkEcidToKnownIdentifier("myidentifier", "123456", AdobeAuthState.AUTH_STATE_AUTHENTICATED, null)
 ```
 
 
 
 
 ```swift
-tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(&#34;myidentifier&#34;, adobeDataProviderId: &#34;123456&#34;, .unknown)
+tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier("myidentifier", adobeDataProviderId: "123456", .unknown)
 ```
 
 
 
 
 ```javascript
-TealiumAdobeVisitor.linkEcidToKnownIdentifier(&#34;myidentifier&#34;, &#34;123456&#34;, AuthState.unknown, value =&gt; {
-                console.log(&#34;AdobeVisitor Data: &#34; &#43; JSON.stringify(value))
+TealiumAdobeVisitor.linkEcidToKnownIdentifier("myidentifier", "123456", AuthState.unknown, value => {
+                console.log("AdobeVisitor Data: " + JSON.stringify(value))
 });
 ```
 
@@ -112,7 +112,7 @@ TealiumAdobeVisitor.linkEcidToKnownIdentifier(&#34;myidentifier&#34;, &#34;12345
 
 
 ```dart
-TealiumAdobeVisitor.linkEcidToKnownIdentifier(&#34;myidentifier&#34;, &#34;123456&#34;, AuthState.unknown)
+TealiumAdobeVisitor.linkEcidToKnownIdentifier("myidentifier", "123456", AuthState.unknown)
 ```
 
 
@@ -131,9 +131,13 @@ The module attempts to retry up to the retry limit (default: 5). After the retry
 * **Adobe API returns an error or an empty response**  
 In the event that an error is returned while sending a request, such as connectivity failure, the module attempts to retry up to the retry limit (default: 5). After the retry limit has exceeded, tracking calls continue as normal without the ECID, and any queued requests are sent immediately.
 
-* The module encounters either (2) or (3) above, but the visitor&#39;s previous ECID has been provided on the `TealiumConfig` object. After the maximum retries, the module uses the provided visitor ID value and does not block any requests.
+* The module encounters either (2) or (3) above, but the visitor's previous ECID has been provided on the `TealiumConfig` object. After the maximum retries, the module uses the provided visitor ID value and does not block any requests.
 
+
+<blockquote>
 If your top priority is getting data to Tealium, then set the number of retries to 0 to skip retrieving the ECID in case of failure. The number of retries is controlled by the `config.adobeVisitorRetries` property.
+</blockquote>
+
 
 ## Data Layer
 
@@ -159,7 +163,11 @@ The resulting URL is:
 
 `https://tealium.com/?adobe_mc=MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247`
 
+
+<blockquote>
 The `adobe_mc` parameter is URL-encoded.
+</blockquote>
+
 
 The Adobe Visitor Service module provides two methods to support this feature, which are described below.
 
@@ -169,11 +177,15 @@ The `adobe_mc` parameter is automatically appended to the URL used by the Tealiu
 
 ### Custom Webviews
 
-If your app uses webviews to display content, you need to make the Adobe ECID available in that webview so that all Adobe products loaded in the webview know the user&#39;s ECID. This prevents the user from appearing as two different users in the native app and in the webview.
+If your app uses webviews to display content, you need to make the Adobe ECID available in that webview so that all Adobe products loaded in the webview know the user's ECID. This prevents the user from appearing as two different users in the native app and in the webview.
 
 The Adobe Visitor Service module provides a method to decorate a webview URL with a query string parameter. This causes Adobe Analytics to use the ECID generated by the module instead of using the Experience Cloud ID Service JavaScript tag. As shown in the example, you must pass the URL to the `decorateURL` method and then load the returned URL when you want to load a webview in your app.
 
+
+<blockquote>
 This method preserves any query parameters already present on the URL
+</blockquote>
+
 
 
 
@@ -183,8 +195,8 @@ adobeVisitorModule?.decorateUrl(
             URL(url),
             object : UrlDecoratorHandler {
                 override fun onDecorateUrl(url: URL) {
-                  // Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
-                  // Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+                  // Resulting URL = https://tealium.com/?myparam=abc&myparam2=bcd&adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+                  // Only for demonstration purposes; launch your app's webview with the resulting URL
                     myApp.launchWebview(url)
                 }
             }
@@ -195,10 +207,10 @@ adobeVisitorModule?.decorateUrl(
 
 
 ```swift
-let url = URL(string: &#34;https://tealium.com/?myparam=abc&amp;myparam2=bcd&#34;)!
+let url = URL(string: "https://tealium.com/?myparam=abc&myparam2=bcd")!
 tealium.adobeVisitorApi?.decorateURL(url) { url in
-    // Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
-    // Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+    // Resulting URL = https://tealium.com/?myparam=abc&myparam2=bcd&adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+    // Only for demonstration purposes; launch your app's webview with the resulting URL
     myApp.launchWebview(url)
 }
 ```
@@ -207,9 +219,9 @@ tealium.adobeVisitorApi?.decorateURL(url) { url in
 
 
 ```javascript
-TealiumAdobeVisitor.decorateUrl(&#34;https://tealium.com&#34;, value =&gt; {
-    // Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
-    // Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+TealiumAdobeVisitor.decorateUrl("https://tealium.com", value => {
+    // Resulting URL = https://tealium.com/?myparam=abc&myparam2=bcd&adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+    // Only for demonstration purposes; launch your app's webview with the resulting URL
     launchUrl(value);
 });
 ```
@@ -218,10 +230,10 @@ TealiumAdobeVisitor.decorateUrl(&#34;https://tealium.com&#34;, value =&gt; {
 
 
 ```
-// Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
-// Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
-TealiumAdobeVisitor.decorateUrl(&#34;https://tealium.com&#34;).then(
-                    (value) =&gt;
+// Resulting URL = https://tealium.com/?myparam=abc&myparam2=bcd&adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+// Only for demonstration purposes; launch your app's webview with the resulting URL
+TealiumAdobeVisitor.decorateUrl("https://tealium.com").then(
+                    (value) =>
                         launchUrl(value));
 ```
 
@@ -236,10 +248,10 @@ If your app loads a webview with a non-standard URL scheme, such as Angular, you
 ```kotlin
 adobeVisitorApi?.getUrlParameters(
     object : GetUrlParametersHandler {
-        override fun onRetrieveParameters(params: Map&lt;String, String&gt;?) {
+        override fun onRetrieveParameters(params: Map<String, String>?) {
             params?.let {
                 params.forEach {
-                    Log.d(&#34;ADB Visitor&#34;,&#34;Retrieved URL Parameters:${it.key} = ${it.value}&#34;)
+                    Log.d("ADB Visitor","Retrieved URL Parameters:${it.key} = ${it.value}")
                 }
             }
         }
@@ -259,7 +271,7 @@ tealium.adobeVisitorApi.adobeVisitorApi?.getURLParameters { params in
             // Result: params.name = adobe_mc
             //         params.value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
             // Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
-            print(&#34;Retrieved URL Parameters:\(params.name) = \(params.value)&#34;)
+            print("Retrieved URL Parameters:\(params.name) = \(params.value)")
 }
 ```
 
@@ -267,16 +279,16 @@ tealium.adobeVisitorApi.adobeVisitorApi?.getURLParameters { params in
 
 
 ```javascript
-TealiumAdobeVisitor.getUrlParameters(value =&gt; {
+TealiumAdobeVisitor.getUrlParameters(value => {
     if (value === null || value === undefined) {
-        console.log(&#34;Adobe Visitor was null&#34;);
+        console.log("Adobe Visitor was null");
         return;
     } else {
         for (var key of Object.keys(value)) {
             // Result: key = adobe_mc
             //         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
             // Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
-            console.log(&#34;Retrieved URL Parameters: &#34;, key &#43; &#34;=&#34; &#43; value[key]);
+            console.log("Retrieved URL Parameters: ", key + "=" + value[key]);
             break;
         }
     }
@@ -288,12 +300,12 @@ TealiumAdobeVisitor.getUrlParameters(value =&gt; {
 
 ```
 TealiumAdobeVisitor.getUrlParameters().then(
-                            (value) =&gt;
+                            (value) =>
                             value?.forEach((key, value) {
                                 // Result: key = adobe_mc
                                 //         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
                                 // Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
-                                print(&#34;Retrieved URL Parameters: $key = $value&#34;);
+                                print("Retrieved URL Parameters: $key = $value");
                             })
                     )
 ```

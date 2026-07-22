@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/client-side-tags/cheetah-digital-tag/
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、[タグの管理]()を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加する際に、以下の構成を構成します：
 
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/client-side-tags/cheetah-digital-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法の指示については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法の指示については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -42,19 +42,19 @@ url: https://docs.tealium.com/ja/client-side-tags/cheetah-digital-tag/
 
 |変数| 説明|
 |---| ---|
-|`tagtype`|  &lt;ul&gt;&lt;li&gt;タグタイプ&lt;/li&gt;&lt;li&gt;`img` または `iframe`&lt;/li&gt;&lt;/ul&gt; |
-|`cdomain`|  &lt;ul&gt;&lt;li&gt;クライアントドメイン&lt;/li&gt;&lt;/ul&gt; |
-|`aid`|  &lt;ul&gt;&lt;li&gt;アフィリエイトID&lt;/li&gt;&lt;/ul&gt; |
-|`cname`|  &lt;ul&gt;&lt;li&gt;クライアント名&lt;/li&gt;&lt;/ul&gt; |
-|`nval`|  &lt;ul&gt;&lt;li&gt;N値&lt;/li&gt;&lt;/ul&gt; |
-|`custom.myvar`|  &lt;ul&gt;&lt;li&gt;カスタム&lt;/li&gt;&lt;/ul&gt; |
+|`tagtype`|  <ul><li>タグタイプ</li><li>`img` または `iframe`</li></ul> |
+|`cdomain`|  <ul><li>クライアントドメイン</li></ul> |
+|`aid`|  <ul><li>アフィリエイトID</li></ul> |
+|`cname`|  <ul><li>クライアント名</li></ul> |
+|`nval`|  <ul><li>N値</li></ul> |
+|`custom.myvar`|  <ul><li>カスタム</li></ul> |
 
 ### Eコマース
 
 |変数| 説明|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;注文ID&lt;/li&gt;&lt;li&gt;`_corder`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;小計&lt;/li&gt;&lt;li&gt;`_csubtotal`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;名前のリスト&lt;/li&gt;&lt;li&gt;`_cprodname`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;数量のリスト&lt;/li&gt;&lt;li&gt;`_cquan`を上書き。&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;配列&lt;/li&gt;&lt;li&gt;価格のリスト&lt;/li&gt;&lt;li&gt;`_cprice`を上書き。&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>注文ID</li><li>`_corder`を上書き。</li></ul> |
+|`order_subtotal`|  <ul><li>小計</li><li>`_csubtotal`を上書き。</li></ul> |
+|`product_name`|  <ul><li>配列</li><li>名前のリスト</li><li>`_cprodname`を上書き。</li></ul> |
+|`product_quantity`|  <ul><li>配列</li><li>数量のリスト</li><li>`_cquan`を上書き。</li></ul> |
+|`product_unit_price`|  <ul><li>配列</li><li>価格のリスト</li><li>`_cprice`を上書き。</li></ul> |

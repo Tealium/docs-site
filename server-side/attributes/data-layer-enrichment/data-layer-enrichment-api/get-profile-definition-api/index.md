@@ -7,7 +7,11 @@ url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/data-
 
 The Data Layer Enrichment Public API returns audience and badge data using only IDs. To reference the names of badges in the visitor data, you can request profile data using the Profile Definition API.
 
+
+<blockquote>
 The Profile Definition API returns badge and audience data associated with a Tealium profile and is not restricted to any specific user.
+</blockquote>
+
 
 Use the following GET command to retrieve a profile definition:
 
@@ -24,28 +28,28 @@ curl https://visitor-service.tealiumiq.com/datacloudprofiledefinitions/myaccount
 
 ```json
     {
-        &#34;audiences&#34; : [
+        "audiences" : [
             {
-                &#34;id&#34; : &#34;myaccount_main_101&#34;,
-                &#34;name&#34; : &#34;Sample Audience&#34;
+                "id" : "myaccount_main_101",
+                "name" : "Sample Audience"
             }
         ],
-        &#34;badges&#34; : [
+        "badges" : [
             {
-                &#34;id&#34; : 5113,
-                &#34;name&#34; : &#34;Cart abandoner&#34;
+                "id" : 5113,
+                "name" : "Cart abandoner"
             },
             {
-                &#34;id&#34; : 32,
-                &#34;name&#34; : &#34;Unbadged&#34;
+                "id" : 32,
+                "name" : "Unbadged"
             },
             {
-                &#34;id&#34; : 31,
-                &#34;name&#34; : &#34;Frequent visitor&#34;
+                "id" : 31,
+                "name" : "Frequent visitor"
             },
             {
-                &#34;id&#34; : 30,
-                &#34;name&#34; : &#34;Fan&#34;
+                "id" : 30,
+                "name" : "Fan"
             }
         ]
     }

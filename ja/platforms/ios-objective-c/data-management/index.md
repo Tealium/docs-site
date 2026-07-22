@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/platforms/ios-objective-c/data-management/
 
 永続的なデータと揮発性のデータの値は、[NSDictionary](https://developer.apple.com/documentation/foundation/nsdictionary)オブジェクトとしてデバイスに保存されます。
 
-データ管理について[詳しく学ぶ](/ja/platforms/getting-started-mobile/mobile-concepts/#data-management)。
+データ管理について[詳しく学ぶ](https://docs.tealium.com/ja/platforms/getting-started-mobile/mobile-concepts/#data-management)。
 
 
 ## 永続的なデータ
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/platforms/ios-objective-c/data-management/
 [`addPersistentDataSources()`](https://tealium.github.io/tealium-ios/Classes/Tealium.html#//api/name/addPersistentDataSources:)メソッドは、以下の例に示すように、ライブラリインスタンスの永続的なデータストアにキー値データを追加します：
 
 ```obj-c
-[self.tealium addPersistentDataSources:@{@&#34;KEY&#34;: @&#34;VALUE&#34;}];
+[self.tealium addPersistentDataSources:@{@"KEY": @"VALUE"}];
 NSDictionary *persistentDataSources = [self.tealium persistentDataSourcesCopy];
 ```
 
@@ -31,6 +31,6 @@ NSDictionary *persistentDataSources = [self.tealium persistentDataSourcesCopy];
 [`addVolatileDataSources()`](https://tealium.github.io/tealium-ios/Classes/Tealium.html#//api/name/addVolatileDataSources:)メソッドは、以下の例に示すように、一時的なデータソースの辞書にキー値データを追加します：
 
 ```obj-c
-[self.tealium addVolatileDataSources:@{@&#34;KEY&#34;: @&#34;VALUE&#34;}];
+[self.tealium addVolatileDataSources:@{@"KEY": @"VALUE"}];
 NSDictionary *volatileDataSources = [self.tealium volatileDataSourcesCopy];
 ```

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 ---
 同意構成マネージャーは、以下のタブを使用して構成されます：
 
-![](/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
+![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
 
 * **コンテンツ**  
 このタブでは、顧客に表示されるメッセージを入力し、複数の言語翻訳を追加し、会社のロゴのURLとプライバシーポリシーのリンクを提供します。
@@ -20,8 +20,8 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 
 同意構成マネージャーの構成を開始するには、以下の手順を使用します：
 
-1. 左サイドバーで **クライアントサイドツール &gt; 同意管理** に移動します。**同意構成ダイアログ** セクションで、**開始** をクリックして構成モーダルを起動します。  
-    ![](/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
+1. 左サイドバーで **クライアントサイドツール > 同意管理** に移動します。**同意構成ダイアログ** セクションで、**開始** をクリックして構成モーダルを起動します。  
+    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
     既にプロンプトが構成されている場合は、この画面からオンまたはオフに切り替えます。
 
 ### コンテンツ
@@ -46,29 +46,33 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 パラメータを使用したサンプルHTMLコード：
 
 ``` html
-&lt;div class=&#34;example_body&#34;&gt;
-  &lt;div class=&#34;privacy_prompt&#34;&gt;
-    &lt;div class=&#34;privacy_prompt_content&#34;&gt;
-      &lt;h1&gt;{{title}}&lt;/h1&gt;
-      &lt;p&gt;{{message}}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;privacy_prompt_footer&#34;&gt;
-      &lt;div class=&#34;button right&#34;&gt;{{confirmation_button}}&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;close_btn_thick&#34;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="example_body">
+  <div class="privacy_prompt">
+    <div class="privacy_prompt_content">
+      <h1>{{title}}</h1>
+      <p>{{message}}</p>
+    </div>
+    <div class="privacy_prompt_footer">
+      <div class="button right">{{confirmation_button}}</div>
+    </div>
+    <div class="close_btn_thick"></div>
+  </div>
+</div>
 ```
 
 ### カスタムパラメータ
 
 ポップアップをさらにカスタマイズするためにカスタムパラメータを追加します。カスタムパラメータは、標準パラメータ内またはCSS/HTML/JavaScriptコード内で参照されます。
 
+
+<blockquote>
 ベストプラクティス：HTMLまたはJavaScriptに直接翻訳可能なテキストを入れないでください。代わりに、`{{parameters}}` を使用してコードを構築し、カスタムパラメータを使用して値を定義します。
+</blockquote>
+
 
 カスタムパラメータを追加するには：
 
-1. **&#43; パラメータを追加** をクリックします。  
+1. **+ パラメータを追加** をクリックします。  
 **カスタムパラメータ** ダイアログが表示されます。
 1. パラメータの名前を入力します。
 1. **適用** をクリックします。  
@@ -85,12 +89,12 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 
 ```
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
-window.utag_cfg_ovrd.gdprDLRef = &#34;&lt;some data layer var, for example: meta.lang/page_lang&gt;&#34;;
+window.utag_cfg_ovrd.gdprDLRef = "<some data layer var, for example: meta.lang/page_lang>";
 ```
 
 言語を追加する手順は以下の通りです：
 
-1. **言語** サイドパネルで **&#43; 追加** をクリックします。  
+1. **言語** サイドパネルで **+ 追加** をクリックします。  
 **言語を追加** ダイアログが表示されます。
 1. 言語を選択して **適用** をクリックします。  
 新しい言語が **言語** サイドパネルに表示されます。
@@ -100,7 +104,7 @@ window.utag_cfg_ovrd.gdprDLRef = &#34;&lt;some data layer var, for example: meta
 
 言語タイトルバーにある **デフォルト言語に構成** ボックスをチェックすることでデフォルト言語を構成します。デフォルト言語は、顧客の検出されたブラウザ言語に対応する言語が同意プロンプトマネージャーに構成されていない場合に、構成ポップアップに表示されます。
 
-![](/images/iq-tag-management/consent-prompt-content-make-default.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
 
 ## カスタマイズ（CSS、HTML、JavaScript）
 
@@ -167,7 +171,7 @@ utag.gdpr.showConsentPreferences()
 例：
 
 ```html
-&lt;a href=&#34;#&#34; onClick=&#34;utag.gdpr.showConsentPreferences()&#34;&gt;同意プリファレンス&lt;/a&gt;
+<a href="#" onClick="utag.gdpr.showConsentPreferences()">同意プリファレンス</a>
 ```
 
 言語を動的に構成するには、関数に言語コード値を渡します。これは、`window.utag_cfg_ovrd.gdprDLRef`の構成とブラウザ検出ロジックの両方を上書きします。
@@ -175,6 +179,6 @@ utag.gdpr.showConsentPreferences()
 例：
 
 ```js
-utag.gdpr.showConsentPreferences(&#39;de-DE&#39;); // ドイツ語/ドイツ
-utag.gdpr.showConsentPreferences(&#39;fr&#39;);    // フランス語
+utag.gdpr.showConsentPreferences('de-DE'); // ドイツ語/ドイツ
+utag.gdpr.showConsentPreferences('fr');    // フランス語
 ```

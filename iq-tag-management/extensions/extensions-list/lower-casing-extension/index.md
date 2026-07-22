@@ -21,7 +21,7 @@ Once the extension is added, the following configuration options are available:
     * **No**: only set specific variables to lower-case.  
   
 Select a variable from the drop-down.  
-Click the **&#43;** button to add more variables, or the **-** button to remove variables.
+Click the **+** button to add more variables, or the **-** button to remove variables.
 
 ## Example
 
@@ -34,4 +34,4 @@ Step to configure:
 1. Set **All Variables to Lower Case** to **No**.
 1. From the variable drop-down, select **Search Keyword**.
 
-![](/images/iq-tag-management/lowercasing.png)
+![](https://docs.tealium.com/images/iq-tag-management/lowercasing.png)

@@ -11,15 +11,15 @@ url: https://docs.tealium.com/ja/client-side-tags/firebase-remote-command-order-
 
 カスタムコマンドタグは、Tealiumモバイルライブラリに登録したカスタムネイティブコードブロックをトリガーするために必要なAPIの実装を含む特別なタグです。
 
-[詳細を見る](/ja/client-side-tags/firebase-remote-command-tag/) Tealium iQタグ管理アカウントでFirebaseモバイルリモートコマンドタグを構成する方法について。
+[詳細を見る](https://docs.tealium.com/ja/client-side-tags/firebase-remote-command-tag/) Tealium iQタグ管理アカウントでFirebaseモバイルリモートコマンドタグを構成する方法について。
 
 アプリからのトラッキングコールを介して送信されるデータを更新するために拡張機能が必要になる場合があります。例えば、「注文確認」画面でTealium SDKを使用して画面ビューをトラッキングしている場合、Firebase SDKでこれをログに記録することも望まれるかもしれません。
 
 以下は、iOS（Swift）でTealiumのトラッキングコールの例です：
 
 ```
-tealium?.trackView(&#34;order_confirmation&#34;, [&#34;order_id&#34;:&#34;A123456&#34;,
-&#34;user_id&#34;: &#34;john.doe@someprovider.com&#34;, &#34;user_loyalty_status&#34;:&#34;vip&#34;, &#34;travel_class&#34; : &#34;first&#34;])
+tealium?.trackView("order_confirmation", ["order_id":"A123456",
+"user_id": "john.doe@someprovider.com", "user_loyalty_status":"vip", "travel_class" : "first"])
 ```
 
 Firebase SDKでは、`logEvent` APIコールを使用してこのイベントをログに記録し、`user_id`というユーザープロパティを構成することが望まれます。Tealium iQでは、これはいくつかの異なる方法で行われます。
@@ -82,7 +82,7 @@ FirebaseApp.configure()
 
 |TiQ変数名| タイプ| 例| 備考|
 |---| ---| ---| ---|
-|`firebase_command_name`| JSコード| `b.firebase_command_name &#43; &#34;,setUserId&#34;`| 大文字小文字を区別、コンマ区切り、スペースなし|
+|`firebase_command_name`| JSコード| `b.firebase_command_name + ",setUserId"`| 大文字小文字を区別、コンマ区切り、スペースなし|
 |`firebase_user_id`| テキスト| `john.doe@someprovider.com`| （必須）有効な文字列|
 
 これにより、ネイティブFirebase APIで以下のコールが生成されます：
@@ -90,13 +90,13 @@ FirebaseApp.configure()
 Android：
 
 ```
-FirebaseAnalytics.setUserId(&#34;john.doe@someprovider.com&#34;);
+FirebaseAnalytics.setUserId("john.doe@someprovider.com");
 ```
 
 Swift：
 
 ```
-Analytics.setUserID(&#34;john.doe@someprovider.com&#34;)
+Analytics.setUserID("john.doe@someprovider.com")
 ```
 
 #### setScreenName
@@ -105,7 +105,7 @@ Analytics.setUserID(&#34;john.doe@someprovider.com&#34;)
 
 |TiQ変数名| タイプ| 例| 備考|
 |---| ---| ---| ---|
-|`firebase_command_name`| JSコード| `b.firebase_command_name &#43; &#34;,setScreenName&#34;`| 大文字小文字を区別、コンマ区切り、スペースなし|
+|`firebase_command_name`| JSコード| `b.firebase_command_name + ",setScreenName"`| 大文字小文字を区別、コンマ区切り、スペースなし|
 |`firebase_screen_name`| テキスト| `Order Confirmation`| （必須）有効な文字列|
 |`firebase_screen_class`| テキスト| `Order`| （任意）有効な文字列|
 
@@ -114,13 +114,13 @@ Analytics.setUserID(&#34;john.doe@someprovider.com&#34;)
 Android：
 
 ```
-FirebaseAnalytics.setCurrentScreen(&lt;current activity reference&gt;, &#34;Order Confirmation&#34;, &#34;Order&#34;);
+FirebaseAnalytics.setCurrentScreen(<current activity reference>, "Order Confirmation", "Order");
 ```
 
 Swift：
 
 ```
-Analytics.setScreenName(&#34;Order Confirmation&#34;, screenClass: &#34;Order&#34;)
+Analytics.setScreenName("Order Confirmation", screenClass: "Order")
 ```
 
 #### setUserProperty
@@ -129,7 +129,7 @@ Analytics.setScreenName(&#34;Order Confirmation&#34;, screenClass: &#34;Order&#3
 
 |TiQ変数名| タイプ| 例| 備考|
 |---| ---| ---| ---|
-|`firebase_command_name`| JSコード| `b.firebase_command_name &#43; &#34;,setUserProperty&#34;`| 大文字小文字を区別、コンマ区切り、スペースなし|
+|`firebase_command_name`| JSコード| `b.firebase_command_name + ",setUserProperty"`| 大文字小文字を区別、コンマ区切り、スペースなし|
 |`firebase_property_name`| テキスト| `user_loyalty_status`| （必須）有効な文字列|
 |`firebase_property_value`| テキスト| `vip`| （必須）有効な文字列。以前に構成された値をクリアするには空の文字列に構成します。|
 
@@ -138,13 +138,13 @@ Analytics.setScreenName(&#34;Order Confirmation&#34;, screenClass: &#34;Order&#3
 Android：
 
 ```
-FirebaseAnalytics.setUserProperty(&#34;user_loyalty_status&#34;, &#34;vip&#34;);
+FirebaseAnalytics.setUserProperty("user_loyalty_status", "vip");
 ```
 
 Swift：
 
 ```
-Analytics.setUserProperty(&#34;vip&#34;, forName: &#34;user_loyalty_status&#34;)
+Analytics.setUserProperty("vip", forName: "user_loyalty_status")
 ```
 
 #### logEvent
@@ -153,9 +153,9 @@ Analytics.setUserProperty(&#34;vip&#34;, forName: &#34;user_loyalty_status&#34;)
 
 |TiQ変数名| 変数| 例| 備考|
 |---| ---| ---| ---|
-|`firebase_command_name`| JSコード| `b.firebase_command_name &#43; &#34;,logEvent&#34;`| 大文字小文字を区別、コンマ区切り、スペースなし|
+|`firebase_command_name`| JSコード| `b.firebase_command_name + ",logEvent"`| 大文字小文字を区別、コンマ区切り、スペースなし|
 |`firebase_event_name`| テキスト| `event_ecommerce_purchase`| （必須）有効な文字列。最適な結果を得るために、上記で推奨されているイベントタイプのいずれかを使用します。|
-|`firebase_event_params`| JSコード| `{&#34;param_travel_class&#34; : b.travel_class, &#34;param_transaction_id&#34;: b.order_id};`| （任意）有効なJSONオブジェクト。最適な結果を得るために、上記で推奨されているデフォルトパラメータのいずれかを使用します。カスタムパラメータはFirebaseコンソールで定義される必要があります。|
+|`firebase_event_params`| JSコード| `{"param_travel_class" : b.travel_class, "param_transaction_id": b.order_id};`| （任意）有効なJSONオブジェクト。最適な結果を得るために、上記で推奨されているデフォルトパラメータのいずれかを使用します。カスタムパラメータはFirebaseコンソールで定義される必要があります。|
 
 これにより、ネイティブFirebase APIで以下のコールが生成されます：
 
@@ -163,8 +163,8 @@ Android：
 
 ```
 Bundle b = new Bundle();
-b.putString(&#34;param_travel_class&#34;, &#34;first&#34;);
-b.putString(&#34;param_transaction_id&#34;, &#34;A123456&#34;)
+b.putString("param_travel_class", "first");
+b.putString("param_transaction_id", "A123456")
 
 FirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, b);
 ```
@@ -172,5 +172,5 @@ FirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, b);
 Swift：
 
 ```
-Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [AnalyticsParameterTravelClass: &#34;first&#34;, AnalyticsParameterTransactionID: &#34;A123456&#34;])
+Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [AnalyticsParameterTravelClass: "first", AnalyticsParameterTransactionID: "A123456"])
 ```

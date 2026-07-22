@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 仕組みは以下の通りです：
 
 * **イベント名と属性**  
-イベント仕様には名前と必須/任意の属性のリストがあります。名前は `tealium_event` 属性で構成された値です。例えば、ユーザーが検索を実行したときのイベントは `tealium_event=&#34;search&#34;` で表され、必須属性には検索された用語 `search_term` と返された結果の数 `search_results` が含まれます。
+イベント仕様には名前と必須/任意の属性のリストがあります。名前は `tealium_event` 属性で構成された値です。例えば、ユーザーが検索を実行したときのイベントは `tealium_event="search"` で表され、必須属性には検索された用語 `search_term` と返された結果の数 `search_results` が含まれます。
 * **データソース**  
 仕様を追加した後、それらをデータソースに関連付けることができます。仕様はプラットフォームに中立であるため、`search` のような標準イベントは各プラットフォームで同じように実装されるべきです。ただし、すべての仕様がすべてのタイプのデータソースに適用されるわけではありません。**データソース**画面で、それらを実装するデータソースに仕様を関連付けます。
 * **コード取得とインストールガイド**  
@@ -22,14 +22,14 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 ## イベント仕様の例
 
-![](/images/server-side/eventstream-getting-started-spec.png)
+![](https://docs.tealium.com/images/server-side/eventstream-getting-started-spec.png)
 
 ```json
 {
-    &#34;tealium_event&#34;   : &#34;search&#34;,
-    &#34;search_keyword&#34;  : &#34;STRING&#34;,  // 検索された用語
-    &#34;search_results&#34;  : NUMBER,    // 結果の数
-    &#34;product_on_page&#34; : [&#34;STRING&#34;] // 製品文字列の配列
+    "tealium_event"   : "search",
+    "search_keyword"  : "STRING",  // 検索された用語
+    "search_results"  : NUMBER,    // 結果の数
+    "product_on_page" : ["STRING"] // 製品文字列の配列
 }
 ```
 

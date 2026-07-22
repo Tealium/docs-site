@@ -18,7 +18,7 @@ Scenarios to use **Save As**:
 * When beginning a new project, use **Save As** to create a new version to separate it from the previous work.
 * When you are unsure which option to choose, the **Save As** method is safest because it lets you revert to the previous version.
 
-For more information, see [About saving]() and [About publishing]().
+For more information, see [About saving](https://docs.tealium.com/about-saving/) and [About publishing](https://docs.tealium.com/about-publishing/).
 
 #### Example: Save As vs Overwrite to preserve the Prod version
 
@@ -26,11 +26,11 @@ In this example, there is a version published to Prod and we want to preserve th
 
 ##### Correct
 
-&#34;Version A&#34; is published to all three environments (Dev, QA, and Prod). After making changes, a **Save As** is performed to create a new version, &#34;Version B&#34;. It is then published to all environments again. This provides the option to rollback to the previous Prod version (Version A) if necessary.
+"Version A" is published to all three environments (Dev, QA, and Prod). After making changes, a **Save As** is performed to create a new version, "Version B". It is then published to all environments again. This provides the option to rollback to the previous Prod version (Version A) if necessary.
 
 ##### Incorrect
 
-&#34;Version A&#34; is published to Prod multiple times using an **Overwrite**. There is no way to roll back to the previous Prod version if needed.
+"Version A" is published to Prod multiple times using an **Overwrite**. There is no way to roll back to the previous Prod version if needed.
 
 |Pros| Cons|
 |---| ---|
@@ -48,11 +48,11 @@ Use descriptive titles, such as `Step 1 of 3`.
 | Helps maintain the order of operations for extensions. |  Minimal effort to assign labels. |
 | Ability to filter on labels to easily find tags and extensions. | |
 
-For more information, see [About Labels]().
+For more information, see [About Labels](https://docs.tealium.com/about-labels/).
 
 ## Data layer object
 
-See [Data layer best practices]().
+See [Data layer best practices](https://docs.tealium.com/data-layer-best-practices/).
 
 ## Event tracking
 
@@ -83,10 +83,10 @@ Standardized event names offer the following benefits:
 
 ```js
 utag.link({
-    tealium_event    : &#34;cart_add&#34;,
-    product_id       : [&#34;shrt123&#34;],
-    product_price    : [&#34;12.50&#34;],
-    product_quantity : [&#34;2&#34;]
+    tealium_event    : "cart_add",
+    product_id       : ["shrt123"],
+    product_price    : ["12.50"],
+    product_quantity : ["2"]
 });
 ```
 
@@ -94,29 +94,29 @@ utag.link({
 
 ### Update utag.js
 
-We recommend that you keep current with the [latest version of `utag.js`](/release-notes/?filter=tealium-universal-tag) to reduce your QA work and to ensure that your profile contains the test optimizations and features.
+We recommend that you keep current with the [latest version of `utag.js`](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag) to reduce your QA work and to ensure that your profile contains the test optimizations and features.
 
-For more information, see [Manage Templates]().
+For more information, see [Manage Templates](https://docs.tealium.com/manage-templates/).
 
 ### Update tag templates to latest version
 
-We recommend that you update all tags and tag templates to the latest versions to ensure that tags fire correctly. Run the [Template Status Checker]() tool to see which tags need to be updated. Also, check the [release notes]() for news of updated or deprecated tags.
+We recommend that you update all tags and tag templates to the latest versions to ensure that tags fire correctly. Run the [Template Status Checker](https://docs.tealium.com/template-status-checker/) tool to see which tags need to be updated. Also, check the [release notes](https://docs.tealium.com/release-notes/) for news of updated or deprecated tags.
 
-For more information, see [Update a template]().
+For more information, see [Update a template](https://docs.tealium.com/manage-templates/#update-a-template).
 
 ### Combine multiple vendor tags
 
 When you combine multiple tags from one vendor into a single instance of the tag, the page performance improves because fewer `utag.#.js` files are loaded on the page. This approach also makes it easier to maintain the configuration for the vendor tag in Tealium iQ.
 
-For more information, see [Configuring Multiple Floodlight Tags]()
+For more information, see [Configuring Multiple Floodlight Tags](https://docs.tealium.com/configuring-multiple-floodlight-tags/)
 
 ### Load utag.js asynchronously
 
 The best practice is to load all tags and vendor code asynchronously. In this method, tags are loaded in parallel to the rest of the page content. Even if the tag is slow to respond or to load, it will not slow down the rest of the site.
 
-Synchronous loading is necessary is when tags or vendor code are dependent on each other to load, such as when code to retrieve data for personalization of page content is needed. This option will slow down the loading of the site, but it will ensure that the correct data is loaded (for example, the visitor&#39;s name or shipping location) before the rest of the page is displayed.
+Synchronous loading is necessary is when tags or vendor code are dependent on each other to load, such as when code to retrieve data for personalization of page content is needed. This option will slow down the loading of the site, but it will ensure that the correct data is loaded (for example, the visitor's name or shipping location) before the rest of the page is displayed.
 
-For more information, see [Synchronous Load]().
+For more information, see [Synchronous Load](https://docs.tealium.com/tag-advanced-settings/#synchronous-load).
 
 |Pros| Cons|
 |---| ---|
@@ -128,7 +128,7 @@ For more information, see [Synchronous Load]().
 
 The **Bundle Tags** feature is set within the publish settings of the profile. Enabling this feature will cause the vendor tag code to be included in the main `utag.js` file. This reduces the number of HTTP requests that are sent from your page and improves performance.
 
-For more information, see [Bundle Flag]().
+For more information, see [Bundle Flag](https://docs.tealium.com/tag-advanced-settings/#bundle-flag).
 
 |Pros| Cons|
 |---| ---|
@@ -140,7 +140,7 @@ For more information, see [Bundle Flag]().
 
 We recommend that the Universal Tag (`utag.js`) be placed at the top of the body tag (as opposed to the head or footer), keeping in mind that the data layer object must be declared and populated prior to this. This placement provides the best compatibility with the greatest number of vendors.
 
-For more information, see .
+For more information, see [manage-environments](https://docs.tealium.com/manage-environments/).
 
 |Pros| Cons|
 |---| ---|
@@ -149,11 +149,15 @@ For more information, see .
 
 ### Tag timing
 
-The **Tag Timing** setting determines if a tag is fired immediately or at DOM Ready. When **Tag Timing** is set to `Prioritized`, the tag is executed as soon as it&#39;s loaded into the page. When **Tag Timing** is set to `DOM Ready`, the tag waits until the DOM Ready event to execute. This setting is found in the [Advanced Settings for each tag]().
+The **Tag Timing** setting determines if a tag is fired immediately or at DOM Ready. When **Tag Timing** is set to `Prioritized`, the tag is executed as soon as it's loaded into the page. When **Tag Timing** is set to `DOM Ready`, the tag waits until the DOM Ready event to execute. This setting is found in the [Advanced Settings for each tag](https://docs.tealium.com/tag-advanced-settings/#tag-timing).
 
+
+<blockquote>
 To prioritize the execution of important tags (such as analytics), set the **Wait Flag** to off.
+</blockquote>
 
-For more information, see [Tag Timing]().
+
+For more information, see [Tag Timing](https://docs.tealium.com/tag-advanced-settings/#tag-timing).
 
 |Pros| Cons|
 |---| ---|
@@ -162,9 +166,9 @@ For more information, see [Tag Timing]().
 
 ### Only load event listeners when necessary
 
-If you do not set any event rules for an event listener, it will load on every page. Loading event listeners on every page will slow down delivery of pages on the site and collect unnecessary data. We recommend that you use rules to load event listeners only on pages where you expect the trigger&#39;s actions to happen or where you require visitor action data.
+If you do not set any event rules for an event listener, it will load on every page. Loading event listeners on every page will slow down delivery of pages on the site and collect unnecessary data. We recommend that you use rules to load event listeners only on pages where you expect the trigger's actions to happen or where you require visitor action data.
 
-For more information, see [Event Rules]().
+For more information, see [Event Rules](https://docs.tealium.com/event-rules/).
 
 ## Extensions
 
@@ -176,7 +180,7 @@ Built-in extensions offer the following benefits:
 
 * **Managed Dependencies**  
 If the name of a data layer variable is changed, all built-in extensions that reference that variable are automatically updated because they contain a reference to the original variable.  
-Data layer variables referenced in code, such as `b[&#39;user_login_status&#39;]`, must be updated manually if the name of the variable ever changes.
+Data layer variables referenced in code, such as `b['user_login_status']`, must be updated manually if the name of the variable ever changes.
 * **Friendly Variable Names**  
 Built-in extensions will always display the user-friendly name of a variable (Alias) if it exists. This improves readability of the configuration.  
 Variables referenced in code must use the actual name, which can be cryptic or unclear, making it more difficult to understand what the code does or to identify its dependencies.
@@ -184,7 +188,7 @@ Variables referenced in code must use the actual name, which can be cryptic or u
 Built-in extensions are guaranteed to generate the same consistent code every time you publish, eliminating the risk of syntax errors.  
 Custom JavaScript code always runs the risk of introducing unexpected syntax errors (although the publish engine will usually catch these) or runtime errors.
 
-For more information, see [About Extensions]().
+For more information, see [About Extensions](https://docs.tealium.com/about-extensions/).
 
 |Pros| Cons|
 |---| ---|
@@ -203,17 +207,17 @@ In JavaScript Code extensions, be sure to explicitly define global and local var
 Incorrect:
 
 ```js
-variable_name = &#34;some value&#34;;
+variable_name = "some value";
 ```
 
 Correct:
 
 ```js
-var variable_name = &#34;local value&#34;;
+var variable_name = "local value";
 ```
 
 ```js
-window.variable_name = &#34;global value&#34;;
+window.variable_name = "global value";
 ```
 
 |Pros| Cons|
@@ -224,11 +228,11 @@ window.variable_name = &#34;global value&#34;;
 
 ### Check variables to ensure they exist
 
-We recommend that you verify that a variable exists before you check the value of that variable. The following example verifies if `MyVariable` is defined before checking if its value is equal to 1000: ![](/images/iq-tag-management/load-rules/variable-is-defined.png)
+We recommend that you verify that a variable exists before you check the value of that variable. The following example verifies if `MyVariable` is defined before checking if its value is equal to 1000: ![](https://docs.tealium.com/images/iq-tag-management/load-rules/variable-is-defined.png)
 
 If you do not verify that the variable exists and its value is `null`, the code throws an error and may cause the tag not to fire.
 
-For more information, see [About Load Rules]().
+For more information, see [About Load Rules](https://docs.tealium.com/about-load-rules/).
 
 |Pros| Cons|
 |---| ---|

@@ -21,7 +21,7 @@ The integration requires configuration in both your CloudStream profile and Mome
 
 In your CloudStream profile, configure the Moments API integration for each cloud data source you want to use with Moments API:
 
-1. Go to **Connect &gt; Data Sources** in your CloudStream profile.
+1. Go to **Connect > Data Sources** in your CloudStream profile.
 1. Either create a new cloud data source or edit an existing one.
 1. Navigate to the **Moments API Integration** section in the data source configuration.
 1. Enable **Moments API Integration**.
@@ -47,7 +47,7 @@ These segments will be available to select when configuring your Moments API eng
 
 In your Moments API configuration, add the CloudStream data sources and segments you want to include in the API response:
 
-1. Go to **CloudStream &gt; Moments API** in your CloudStream profile.
+1. Go to **CloudStream > Moments API** in your CloudStream profile.
 1. Either create a new engine or edit an existing one.
 1. In the **Details** screen, configure the engine name, enable status, and domain allow list.
 1. Click **Next**.
@@ -77,9 +77,9 @@ GET https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/ac
 
 | **Parameter** | **Type** | **Description** |
 |---|---|---|
-| `momentsApiId` | String&lt;br&gt;Path parameter | The value of the cloud attribute configured in the cloud data source Moments API Integration. This is the value of the attribute for the column you selected in Step 1. Special characters must be encoded.
+| `momentsApiId` | String<br>Path parameter | The value of the cloud attribute configured in the cloud data source Moments API Integration. This is the value of the attribute for the column you selected in Step 1. Special characters must be encoded.
 |
-| `suppressNotFound` | Boolean&lt;br&gt;Query parameter | Determines the response type when a visitor is not found. Default is `false`.&lt;br&gt; `true` - Returns HTTP 200 with an empty response body.&lt;br&gt; `false` - Returns HTTP 404. |
+| `suppressNotFound` | Boolean<br>Query parameter | Determines the response type when a visitor is not found. Default is `false`.<br> `true` - Returns HTTP 200 with an empty response body.<br> `false` - Returns HTTP 404. |
 
 ### Example request
 
@@ -96,20 +96,20 @@ The response follows the standard Moments API response format with audiences fro
 
 ```json
 {
-    &#34;audiences&#34;: [
-        &#34;30 Days Since Last Login&#34;
+    "audiences": [
+        "30 Days Since Last Login"
     ],
-    &#34;metrics&#34;: {
-        &#34;Total direct visits&#34;: 1
+    "metrics": {
+        "Total direct visits": 1
     },
-    &#34;properties&#34;: {
-        &#34;Company Name&#34;: &#34;&lt;attr_value&gt;&#34;
+    "properties": {
+        "Company Name": "<attr_value>"
     },
-    &#34;flags&#34;: {
-        &#34;Returning visitor&#34;: false
+    "flags": {
+        "Returning visitor": false
     },
-    &#34;dates&#34;: {
-        &#34;First visit&#34;: 1491233145706
+    "dates": {
+        "First visit": 1491233145706
     }
 }
 ```
@@ -123,9 +123,9 @@ The response follows the standard Moments API response format with audiences fro
 
 ## Related documentation
 
-* 
-* 
-* 
-* 
-* 
-* 
+* [about-cloudstream](https://docs.tealium.com/about-cloudstream/)
+* [about-cloud-data-sources](https://docs.tealium.com/about-cloud-data-sources/)
+* [manage-cloud-data-source](https://docs.tealium.com/manage-cloud-data-source/)
+* [about-moments-api](https://docs.tealium.com/about-moments-api/)
+* [moments-api-endpoint](https://docs.tealium.com/moments-api-endpoint/)
+* [moments-api-manage-engines](https://docs.tealium.com/moments-api-manage-engines/)

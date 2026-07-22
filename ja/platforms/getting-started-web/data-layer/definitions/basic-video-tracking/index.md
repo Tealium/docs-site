@@ -21,16 +21,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-|`tealium_event=&#34;video_load&#34;`| ビデオがロードされ、視聴者に利用可能になりました。|
+|`tealium_event="video_load"`| ビデオがロードされ、視聴者に利用可能になりました。|
 
 サンプル:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_load&#34;,
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,
-   &#34;video_length&#34;   : 300,
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_load",
+   "video_id"       : "xWlEk2i9r5Q",
+   "video_length"   : 300,
+   "video_name"     : "How to track videos in Tealium",
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -38,16 +38,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-| `tealium_event=&#34;video_start&#34;`| ビデオが初めて再生されました（自動再生またはユーザーのクリックによる）。|
+| `tealium_event="video_start"`| ビデオが初めて再生されました（自動再生またはユーザーのクリックによる）。|
 
 サンプル:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_start&#34;,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_start",     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -55,17 +55,17 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-|`tealium_event=&#34;video_play&#34;`| ビデオの再生が再開されました。|
+|`tealium_event="video_play"`| ビデオの再生が再開されました。|
 
 サンプル:  
 ```javascript
 {  
-   &#34;tealium_event&#34;  : &#34;video_play&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_play",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -73,17 +73,17 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-|`tealium_event=&#34;video_pause&#34;`| ビデオの再生が一時停止しました。|
+|`tealium_event="video_pause"`| ビデオの再生が一時停止しました。|
 
 サンプル:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_pause&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_pause",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -91,17 +91,17 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-| `tealium_event=&#34;video_seek&#34;`| ビデオの再生位置が前後に移動しました。|
+| `tealium_event="video_seek"`| ビデオの再生位置が前後に移動しました。|
 
 サンプル:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_seek&#34;,     
-   &#34;video_playhead&#34; : 75,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_seek",     
+   "video_playhead" : 75,     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -109,16 +109,16 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-| `tealium_event=&#34;video_complete&#34;`| ビデオの再生が完了しました。|
+| `tealium_event="video_complete"`| ビデオの再生が完了しました。|
 
 サンプル:  
 ```javascript
 {
-   &#34;tealium_event&#34;  : &#34;video_complete&#34;,     
-   &#34;video_id&#34;       : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;   : 300,     
-   &#34;video_name&#34;     : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34; : &#34;YouTube&#34;
+   "tealium_event"  : "video_complete",     
+   "video_id"       : "xWlEk2i9r5Q",     
+   "video_length"   : 300,     
+   "video_name"     : "How to track videos in Tealium",     
+   "video_platform" : "YouTube"
 }
 ```
 
@@ -126,17 +126,17 @@ url: https://docs.tealium.com/ja/platforms/getting-started-web/data-layer/defini
 
 |識別子|説明|
 |---|---|
-| `tealium_event=&#34;video_milestone&#34;`| ビデオの再生が特定のパーセンテージのマイルストーンに達しました。|
+| `tealium_event="video_milestone"`| ビデオの再生が特定のパーセンテージのマイルストーンに達しました。|
 
 サンプル:  
 ```javascript
 {   
-   &#34;tealium_event&#34;   : &#34;video_milestone&#34;,     
-   &#34;video_playhead&#34;  : 75,     
-   &#34;video_id&#34;        : &#34;xWlEk2i9r5Q&#34;,     
-   &#34;video_length&#34;    : 300,     
-   &#34;video_milestone&#34; : 25,     
-   &#34;video_name&#34;      : &#34;How to track videos in Tealium&#34;,     
-   &#34;video_platform&#34;  : &#34;YouTube&#34;
+   "tealium_event"   : "video_milestone",     
+   "video_playhead"  : 75,     
+   "video_id"        : "xWlEk2i9r5Q",     
+   "video_length"    : 300,     
+   "video_milestone" : 25,     
+   "video_name"      : "How to track videos in Tealium",     
+   "video_platform"  : "YouTube"
 }
 ```

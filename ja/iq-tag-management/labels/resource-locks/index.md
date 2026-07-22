@@ -26,13 +26,17 @@ url: https://docs.tealium.com/ja/iq-tag-management/labels/resource-locks/
 1. ラベルの色を選択します。
 1. **リソースロックとして有効化**のトグルを**はい**に構成します。
 1. このリソースロックに割り当てるユーザーを選択します。  
-    ![](/images/iq-tag-management/resource-lock-select-users.png)
+    ![](https://docs.tealium.com/images/iq-tag-management/resource-lock-select-users.png)
 1. **変更を保存**をクリックします。  
 別のリソースロックを作成するには、**保存して別の追加**をクリックします。
 
 新しいリソースロックはラベルのリストに表示され、要素に適用することができます。リソースロックのアイコンにはロックが含まれており、リソースロックとラベルを区別できます。要素には複数のリソースロックを適用することができますが、ユーザーはリソースロックのいずれかに割り当てられていれば要素を編集することができます。
 
+
+<blockquote>
 リソースロックを通常のラベルに戻すと、そのリソースロックに割り当てたユーザーのリストは失われます。
+</blockquote>
+
 
 ### リソースロックのコピーと継承
 

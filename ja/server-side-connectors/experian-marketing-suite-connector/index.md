@@ -18,7 +18,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 ベンダーを構成するには、以下の手順に従います：
 
@@ -77,7 +77,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite
 |MM/DD/YYYY| 05/25/1977|
 |MM/dd/yyyy hh:mm a| 05/25/1977 07:15 PM|
 |yyyy/MM/dd HH:mm:ss| 1977/05/25 19:15:37|
-|yyyy/MM/dd HH:mm:ss x| 1977/05/25 19:15:37 &#43;0000|
+|yyyy/MM/dd HH:mm:ss x| 1977/05/25 19:15:37 +0000|
 
 カスタム/受信日は、1970年1月1日UTC（エポック）以来のミリ秒として想定されます。
 

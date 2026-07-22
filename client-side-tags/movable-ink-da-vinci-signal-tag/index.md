@@ -22,7 +22,7 @@ url: https://docs.tealium.com/client-side-tags/movable-ink-da-vinci-signal-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,7 +30,7 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 For more information on the events and expected event details, see the [Da Vinci Javascript SDK documentation](https://help.coherentpath.com/guides/technical/javascript-sdk). You must be logged into the Da Vinci Help Center to access the documentation. If there are any issues accessing, contact your Da Vinci account team.
 
@@ -59,7 +59,7 @@ The available categories are:
 | `product_variant_id`| Array| List of product variant IDs. |
 | `product_variant_name`| Array| List of product variant names. |
 | `product_variant_price`| Array| List of product variant prices.|
-| `product_variant_product_id` | Array| List of product variant&#39;s product IDs. (Links Product Variant to Product.) |
+| `product_variant_product_id` | Array| List of product variant's product IDs. (Links Product Variant to Product.) |
 | `search_term`| String| Search term.|
 | `source`| String| How the user arrived at the page. |
 | `metadata_tags`| Array| List of metadata tags. |

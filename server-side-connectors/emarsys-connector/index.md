@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/emarsys-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors]().
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -49,7 +49,7 @@ The following section describes how to set up parameters and options for each ac
 
 #### Batch limits
 
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1000
 * Max time since oldest request: 4 minutes and 45 seconds
@@ -61,8 +61,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The contact list to add the contact to.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List|  <ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 ### Add Contact to Contact List (Batched)
 
@@ -70,8 +70,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The contact list to add the contact to.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt;|
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List|  <ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul>|
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 ### Create or Update Email Contact (Real-Time)
 
@@ -80,14 +80,14 @@ This connector uses batched requests to support high-volume data transfers to th
 |**Parameter**| **Description**|
 |---| ---|
 |Create If Not Exists| When enabled, if the contact does not exist, it is created automatically.|
-|Contact Identifier Data|  &lt;ul&gt;&lt;li&gt;(Required) This is the field used to identify a contact.&lt;/li&gt;&lt;li&gt;If you know the ID of the target contact field and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt;At least one field is required to identify the contact.&lt;/li&gt;&lt;li&gt;The only date format supported by the contact fields is `YYYY-MM-DD`.&lt;/li&gt;&lt;li&gt;Some contact fields have limited acceptable values. For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field).&lt;/li&gt;&lt;li&gt;If you know the ID of the target contact field and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
+|Contact Identifier Data|  <ul><li>(Required) This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is `YYYY-MM-DD`.</li><li>Some contact fields have limited acceptable values. For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field).</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul> |
 
 #### Optional
 
 |**Parameter**| **Description**|
 |---| ---|
-|Source ID|  &lt;ul&gt;&lt;li&gt;An ID assigned to a customer&#39;s external application, and is used to identify contacts created or modified by the external applications.&lt;/li&gt;&lt;/ul&gt; |
+|Source ID|  <ul><li>An ID assigned to a customer's external application, and is used to identify contacts created or modified by the external applications.</li></ul> |
 
 ### Create or Update Email Contact (Batched)
 
@@ -96,14 +96,14 @@ This connector uses batched requests to support high-volume data transfers to th
 |**Parameter**| **Description**|
 |---| ---|
 |Create If Not Exists| When enabled, if the contact does not exist, it is created automatically.|
-|Contact Identifier Data|  &lt;ul&gt;&lt;li&gt;(Required) This is the field used to identify a contact.&lt;/li&gt;&lt;li&gt;If you know the ID of the target contact field and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt;At least one field is required to identify the contact.&lt;/li&gt;&lt;li&gt;The only date format supported by the contact fields is `YYYY-MM-DD`.&lt;/li&gt;&lt;li&gt;Some contact fields have limited acceptable values. For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field).&lt;/li&gt;&lt;li&gt;If you know the ID of the target contact field and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
+|Contact Identifier Data|  <ul><li>(Required) This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is `YYYY-MM-DD`.</li><li>Some contact fields have limited acceptable values. For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field).</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul> |
 
 #### Optional
 
 |**Parameter**| **Description**|
 |---| ---|
-|Source ID|  &lt;ul&gt;&lt;li&gt;An ID assigned to a customer&#39;s external application, and is used to identify contacts created or modified by the external applications.&lt;/li&gt;&lt;/ul&gt; |
+|Source ID|  <ul><li>An ID assigned to a customer's external application, and is used to identify contacts created or modified by the external applications.</li></ul> |
 
 ### Remove Contact From Contact List (Real-Time)
 
@@ -111,8 +111,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List| &lt;ul&gt;&lt;li&gt;(Required) The contact list to add the contact to.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt;If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List| <ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 ### Remove Contact From Contact List (Batched)
 
@@ -120,8 +120,8 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|Target Contact List| &lt;ul&gt;&lt;li&gt;(Required) The contact list to add the contact to.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Target Contact List| <ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 ### Trigger Transactional Email (Real-Time)
 
@@ -129,14 +129,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|External Event|  &lt;ul&gt;&lt;li&gt;(Required) Select the event set to trigger email.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
+|External Event|  <ul><li>(Required) Select the event set to trigger email.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul> |
 
 #### Optional
 
 |**Parameter**| **Description**|
 |---| ---|
-|Content Personalization Data|  &lt;ul&gt;&lt;li&gt;(Optional) Placeholder in email and the value to replace it with.&lt;/li&gt;&lt;/ul&gt; |
+|Content Personalization Data|  <ul><li>(Optional) Placeholder in email and the value to replace it with.</li></ul> |
 
 ### Trigger Transactional Email (Batched)
 
@@ -144,14 +144,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 |**Parameter**| **Description**|
 |---| ---|
-|External Event|  &lt;ul&gt;&lt;li&gt;(Required) Select the event set to trigger email.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Data|  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;/ul&gt; |
+|External Event|  <ul><li>(Required) Select the event set to trigger email.</li></ul> |
+|Contact Data|  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul> |
 
 #### Optional
 
 |**Parameter**| **Description**|
 |---| ---|
-|Content Personalization Data|  &lt;ul&gt;&lt;li&gt;(Optional) Placeholder in email and the value to replace it with.&lt;/li&gt;&lt;/ul&gt; |
+|Content Personalization Data|  <ul><li>(Optional) Placeholder in email and the value to replace it with.</li></ul> |
 
 ### Unsubscribe Contact From Email Campaign
 
@@ -170,15 +170,15 @@ This connector uses batched requests to support high-volume data transfers to th
 | **Parameter** | **Description** |
 | --- | --- |
 | External Event | Select the event to trigger. |
-|Contact Data |  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Contact Data |  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 #### Optional
 
 | **Parameter** | **Description** |
 | --- | --- |
 | External Event Data | The external data used for the trigger. 
-| Template Variables | Provide template variables as data input for Templates. For more information, see . Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in External Event Data. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+| Template Variables | Provide template variables as data input for Templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in External Event Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
 
 ### Trigger an External Event (Batched)
 
@@ -187,15 +187,15 @@ This connector uses batched requests to support high-volume data transfers to th
 | **Parameter** | **Description** |
 | --- | --- |
 | External Event | Select the event to trigger. |
-|Contact Data |  &lt;ul&gt;&lt;li&gt;(Required) The field and corresponding field data to identify the contact.&lt;/li&gt;&lt;li&gt; If you know the ID of the target contact list and want to configure it manually, use a custom value.&lt;/li&gt;&lt;li&gt;For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).&lt;/li&gt;&lt;/ul&gt; |
+|Contact Data |  <ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see [Emarsys: Core API Reference](https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list).</li></ul> |
 
 #### Optional
 
 | **Parameter** | **Description** |
 | --- | --- |
 | External Event Data | The external data used for the trigger. 
-| Template Variables | Provide template variables as data input for Templates. For more information, see . Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
-| Templates | Provide templates to be referenced in External Event Data. For more information, see . Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+| Template Variables | Provide template variables as data input for Templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in External Event Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
 
 ### Upsert record in an RDS table (Real-Time)
 

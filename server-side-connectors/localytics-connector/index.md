@@ -29,7 +29,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It&#39;s where you&#39;ll set up actions and trigger them.
+Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
 
 This section describes how to set up parameters and options for each action.
 

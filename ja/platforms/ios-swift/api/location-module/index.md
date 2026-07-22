@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/api/location-module/
 ---
 ## クラス: LocationModule
 
-`LocationModule`クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下に、Tealium iOS（Swift）の`LocationModule`クラスのメソッドをまとめています。これらは、Location Moduleのデフォルトの動作にカスタム変更を加えるために使用できます。詳細については、[Location](/ja/platforms/ios-swift/module-list/location/)をご覧ください。
+`LocationModule`クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下に、Tealium iOS（Swift）の`LocationModule`クラスのメソッドをまとめています。これらは、Location Moduleのデフォルトの動作にカスタム変更を加えるために使用できます。詳細については、[Location](https://docs.tealium.com/ja/platforms/ios-swift/module-list/location/)をご覧ください。
 
 | メソッド | 説明 |
 | ----- | ------ |
@@ -80,7 +80,7 @@ tealium.location?.requestAuthorization()
 精密な精度が無効になっている場合に自動的に一時的な完全精度を要求します。
 
 ```swift
-let purposeKey = &#34;a key in the NSLocationTemporaryUsageDescriptionDictionary&#34;
+let purposeKey = "a key in the NSLocationTemporaryUsageDescriptionDictionary"
 tealium.location?.requestTemporaryFullAccuracyAuthorization(purposeKey: purposeKey)
 ```
 

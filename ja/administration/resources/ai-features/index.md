@@ -58,11 +58,11 @@ TealiumのAI機能には、以下が含まれます：
 
 AIノート生成機能（NoteGenエージェントとしても知られています）は、Tealium iQ変数やAudienceStreamオーディエンスなどのサポートされている構成コンポーネントに対して、明確で文脈に即したノートを自動生成します。これにより、ユーザーはコンポーネントの構成と目的を迅速に理解することが容易になります。
 
-![](/images/administration/notegen.png)
+![](https://docs.tealium.com/images/administration/notegen.png)
 
 **ノート**フィールドの下にある**AIノート**をクリックして、選択した構成コンポーネントのノートを生成します。
 
-![](/images/administration/notegen-accept.png)
+![](https://docs.tealium.com/images/administration/notegen-accept.png)
 
 そのノートを使用するには**承認**をクリックします。
 
@@ -82,13 +82,13 @@ Tealium AIアシスタントは、Tealiumの構成や使用に関する質問に
 
 AIアシスタントにアクセスするには、以下に示すように、トップヘッダーの右側にあるアイコンをクリックします。
 
-![](/images/administration/ai-assistant-icon.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-icon.png)
 
 #### 質問する
 
 AIアシスタントは、以下の図に示すように、質問をするためのシンプルなインターフェースを提供します。
 
-![](/images/administration/ai-assistant-initial-screen.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-initial-screen.png)
 
 質問をすると、AIアシスタントは回答を提供します。完全な回答を見るためには、スクロールダウンする必要があるかもしれません。回答の最後には**ソース**リンクが含まれており、関連するドキュメントへのリンクが[docs.tealium.com](https://docs.tealium.com/)に提供されています。
 
@@ -96,11 +96,11 @@ AIアシスタントからのヘルプを得るには、画面の下部にある
 
 以下の例は、「新しい属性をどのように作成しますか？」と尋ねた結果を示しています。
 
-![](/images/administration/ai-assistant-example-question.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-example-question.png)
 
 以下の例は、回答の最後に展開された**ソース**リンクを示しています：
 
-![](/images/administration/ai-assistant-sources-link.png)
+![](https://docs.tealium.com/images/administration/ai-assistant-sources-link.png)
 
 ----
 

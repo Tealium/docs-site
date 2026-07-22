@@ -24,11 +24,15 @@ initialize(account, profile, datasource)
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealiumのアカウント名 | `&#34;account123&#34;` |
-| `profile` | `String` | Tealiumのプロファイル名 | `&#34;main&#34;` |
-| `datasource` | String | データソースキー（提供されていない場合は`nil`） | `&#34;abc123&#34;` |
+| `account` | `String` | Tealiumのアカウント名 | `"account123"` |
+| `profile` | `String` | Tealiumのプロファイル名 | `"main"` |
+| `datasource` | String | データソースキー（提供されていない場合は`nil`） | `"abc123"` |
 
- `Tealium.new`のようにTealiumクラスに`new`メソッドを呼び出すと、クラスは自身の新しいインスタンスを作成します。その後、内部的に新しいオブジェクトの`initialize()`メソッドを呼び出します。これにより、`new`に渡したすべての引数が`initialize()`メソッドに渡されます。
+
+<blockquote>
+`Tealium.new`のようにTealiumクラスに`new`メソッドを呼び出すと、クラスは自身の新しいインスタンスを作成します。その後、内部的に新しいオブジェクトの`initialize()`メソッドを呼び出します。これにより、`new`に渡したすべての引数が`initialize()`メソッドに渡されます。
+</blockquote>
+
 
 ### `track()`
 
@@ -40,6 +44,6 @@ track(event_name, data)
 
 | パラメータ | タイプ |  説明 | 例 |
 |------|------|-------| ------|
-| `event`   | `String` |追跡されるイベントのタイトル |  `&#34;some event&#34;` |
-| `data`    | `Hash` | (オプション) キーと値のペアとしてのイベントデータ |  `{:key =&gt; &#34;value&#34;}` |
+| `event`   | `String` |追跡されるイベントのタイトル |  `"some event"` |
+| `data`    | `Hash` | (オプション) キーと値のペアとしてのイベントデータ |  `{:key => "value"}` |
 

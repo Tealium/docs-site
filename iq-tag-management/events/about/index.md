@@ -5,7 +5,11 @@ url: https://docs.tealium.com/iq-tag-management/events/about/
 ---
 ## How it works
 
+
+<blockquote>
 The events system replaces previous event tracking solutions, such as the JQuery extension.
+</blockquote>
+
 
 Event listeners, also known as _events_, are prebuilt, configurable JavaScript listeners that track specific visitor actions on pages. 
 
@@ -25,18 +29,18 @@ With no-code event listeners, you can do the following:
 
 The following types of events are available through this feature:
 
-* [**Click**]() - When a visitor clicks their mouse on a page.
-* [**Mouseover**]() - When a visitor hovers their mouse over a specific element on a page.
-* [**Form Submission**]() - When a visitor submits a form on a page.
-* [**YouTube**]() - When a visitor interacts with an embedded YouTube video on a page.
-* [**Vimeo**]() - When a visitor interacts with an embedded Vimeo video on a page.
-* [**HTML5 Video**]() - When a visitor interacts with an embedded HTML5 video on a page.
-* [**Page Load**]() - When a visitor loads a page.
-* [**Scroll**]() - When a visitor scrolls through a page, vertically or horizontally.
-* [**Element Visibility**]() - When the page displays a screen element to a visitor.
-* [**Browser History Change**]() - When a visitor navigates through a single page application (SPA).
-* [**Hash Change**]() - When the anchor part of the page&#39;s URL after the hash symbol (`#`) changes.
+* [**Click**](https://docs.tealium.com/click-event/) - When a visitor clicks their mouse on a page.
+* [**Mouseover**](https://docs.tealium.com/mouseover-event/) - When a visitor hovers their mouse over a specific element on a page.
+* [**Form Submission**](https://docs.tealium.com/form-submission-event/) - When a visitor submits a form on a page.
+* [**YouTube**](https://docs.tealium.com/youtube-event/) - When a visitor interacts with an embedded YouTube video on a page.
+* [**Vimeo**](https://docs.tealium.com/vimeo-event/) - When a visitor interacts with an embedded Vimeo video on a page.
+* [**HTML5 Video**](https://docs.tealium.com/html5-video-event/) - When a visitor interacts with an embedded HTML5 video on a page.
+* [**Page Load**](https://docs.tealium.com/page-load-event/) - When a visitor loads a page.
+* [**Scroll**](https://docs.tealium.com/scroll-event/) - When a visitor scrolls through a page, vertically or horizontally.
+* [**Element Visibility**](https://docs.tealium.com/element-visibility-event/) - When the page displays a screen element to a visitor.
+* [**Browser History Change**](https://docs.tealium.com/browser-history-change-event/) - When a visitor navigates through a single page application (SPA).
+* [**Hash Change**](https://docs.tealium.com/hash-change-event/) - When the anchor part of the page's URL after the hash symbol (`#`) changes.
 
 Each of these events is preconfigured with a `tealium_event` value specific to that event (for example, `scroll` for scroll events). Some of these event types include additional event variables by default, and you can customize or add event variables as needed.
 
-For more information, see [Best Practices - Event tracking]().
+For more information, see [Best Practices - Event tracking](https://docs.tealium.com/best-practices-for-iq/#event-tracking).

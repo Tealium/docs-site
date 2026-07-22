@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Teadsタグを追加します（[タグの追加方法]()について詳しくはこちら）。
+まず、Tealiumのタグマーケットプレイスに移動し、Teadsタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
 
 タグを追加したら、以下の構成を行います：
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-tag/
 
 * **Slot**
   * 広告を配置するためのセレクタ。
-  * 例：`.article .article_body &amp;gt; p`
+  * 例：`.article .article_body &gt; p`
 
 * **Format**
 * **minSlot**
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-tag/
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -44,11 +44,11 @@ url: https://docs.tealium.com/ja/client-side-tags/teads-tag/
 | Slot       |                           |
 | Format     |                           |
 | minSlot    |                           |
-| mobile     | &lt;ul&gt;&lt;li&gt;ブーリアン&lt;/li&gt;&lt;/ul&gt; |
+| mobile     | <ul><li>ブーリアン</li></ul> |
 | Skip delay |                           |
 | Mute delay |                           |
 | CSS        |                           |
-| BTF        | &lt;ul&gt;&lt;li&gt;ブーリアン&lt;/li&gt;&lt;/ul&gt; |
-| Mutable    | &lt;ul&gt;&lt;li&gt;ブーリアン&lt;/li&gt;&lt;/ul&gt; |
+| BTF        | <ul><li>ブーリアン</li></ul> |
+| Mutable    | <ul><li>ブーリアン</li></ul> |
 | AdBreaks   |                           |
 | avoidSlot  |                           |

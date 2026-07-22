@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/cheetah-digital-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -34,7 +34,7 @@ Affiliate ID used to send mailings to be tracked. For multiple affiliates in the
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -42,19 +42,19 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`tagtype`|  &lt;ul&gt;&lt;li&gt;Tag Type&lt;/li&gt;&lt;li&gt;`img` or `iframe`&lt;/li&gt;&lt;/ul&gt; |
-|`cdomain`|  &lt;ul&gt;&lt;li&gt;Client Domain&lt;/li&gt;&lt;/ul&gt; |
-|`aid`|  &lt;ul&gt;&lt;li&gt;Affiliate ID&lt;/li&gt;&lt;/ul&gt; |
-|`cname`|  &lt;ul&gt;&lt;li&gt;Client Name&lt;/li&gt;&lt;/ul&gt; |
-|`nval`|  &lt;ul&gt;&lt;li&gt;N Value&lt;/li&gt;&lt;/ul&gt; |
-|`custom.myvar`|  &lt;ul&gt;&lt;li&gt;Custom&lt;/li&gt;&lt;/ul&gt; |
+|`tagtype`|  <ul><li>Tag Type</li><li>`img` or `iframe`</li></ul> |
+|`cdomain`|  <ul><li>Client Domain</li></ul> |
+|`aid`|  <ul><li>Affiliate ID</li></ul> |
+|`cname`|  <ul><li>Client Name</li></ul> |
+|`nval`|  <ul><li>N Value</li></ul> |
+|`custom.myvar`|  <ul><li>Custom</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub Total&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub Total</li><li>Overrides `_csubtotal`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names</li><li>Overrides `_cprodname`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices</li><li>Overrides `_cprice`.</li></ul> |

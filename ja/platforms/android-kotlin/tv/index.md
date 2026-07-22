@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/tv/
 ---
 ## 必要条件
 
-* [Tealium for Android](/ja/platforms/android-kotlin/)を使用したAndroid TVアプリ
-* [Tealium iQ Mobile Profile]()
-* [Tealium Customer Data Hub account]()
+* [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)を使用したAndroid TVアプリ
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## APIリファレンス
 
@@ -21,7 +21,7 @@ Tealiumの実装をアプリの他の部分から抽象化するために、[sam
 
 ### Android TVデバイス
 
-Tealium for Android TVをインストールするには、[Tealium for Android](/ja/platforms/android-kotlin/install/)のインストールガイドに記載されている手順と同じです。
+Tealium for Android TVをインストールするには、[Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/install/)のインストールガイドに記載されている手順と同じです。
 
 ### Amazon Fire TV
 
@@ -36,7 +36,7 @@ Amazonの[Fire App Builder](https://github.com/jonwongswong/fire-app-builder)ラ
 `TealiumView`メソッドは、次の例に示すように、画面のビューをトラッキングします：
 
 ```java
-tealium.track(TealiumView(&#34;SCREEN_NAME&#34;, mapOf(&#34;key&#34; to &#34;context value&#34;)))
+tealium.track(TealiumView("SCREEN_NAME", mapOf("key" to "context value")))
 ```
 
 ### イベントのトラッキング
@@ -44,6 +44,6 @@ tealium.track(TealiumView(&#34;SCREEN_NAME&#34;, mapOf(&#34;key&#34; to &#34;con
 `TealiumEvent`メソッドは、次の例に示すように、ビュー以外のイベントをトラッキングします：
 
 ```java
-tealium.track(TealiumEvent(&#34;EVENT_NAME&#34;, mapOf(&#34;key&#34; to &#34;context value&#34;)))
+tealium.track(TealiumEvent("EVENT_NAME", mapOf("key" to "context value")))
 ```
 

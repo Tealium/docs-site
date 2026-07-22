@@ -70,7 +70,7 @@ Twitterが提供するページビューイベント（Twitterで定義された
 
 Twitterコンバージョンでは、Twitterアカウントでの許可リストへの登録が必要です。許可リストに関する支援が必要な場合は、Twitterの担当者に連絡してください。
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する方法の一般的な手順については、[コネクタについて](/ja/server-side/connectors/manage/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する方法の一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -107,10 +107,10 @@ Twitterコンバージョンでは、Twitterアカウントでの許可リスト
 | TwitterクリックID | クリックスルーURLから解析されたTwitterクリックIDです。TwitterクリックIDまたはメールのいずれかを指定する必要があります。両方を指定すると、一致率が向上します。 |
 | メールアドレス（すでにSHA256ハッシュ化されている） | スペースをトリムし、小文字に変換し、SHA256ハッシュ化されたメールアドレスを指定します。 |
 | メールアドレス（SHA256ハッシュを適用） | プレーンテキストのメールアドレスを指定し、コネクタがこの値をスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。 |
-| コンバージョン値 | &#39;price_currency&#39;通貨で表される購入アイテムの価格値です。 |
+| コンバージョン値 | 'price_currency'通貨で表される購入アイテムの価格値です。 |
 | アイテム数 | 購入されるアイテムの数。ゼロより大きい正の数でなければなりません。**アイテム数**が指定されていない場合、**Contents**配列の要素の総数が使用されます。 |
-| 通貨 | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)で識別される、結果をフィルタリングするための通貨の種類です。これは&#39;USD&#39;などの3文字の文字列です。 |
-| コンバージョンID | ピクセルとコンバージョンAPIのコンバージョン間の重複排除のための識別子。同じイベントタグ内のWeb PixelとConversion APIのコンバージョンの重複排除に使用できるコンバージョンイベントの識別子です。詳細については、&lt;a target=&#34;_blank&#34; href=&#34;https://developer.twitter.com/en/docs/twitter-ads-api/measurement/web-conversions/conversion-api&#34;&gt;Conversions Guide&lt;/a&gt;を参照してください。 |
+| 通貨 | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)で識別される、結果をフィルタリングするための通貨の種類です。これは'USD'などの3文字の文字列です。 |
+| コンバージョンID | ピクセルとコンバージョンAPIのコンバージョン間の重複排除のための識別子。同じイベントタグ内のWeb PixelとConversion APIのコンバージョンの重複排除に使用できるコンバージョンイベントの識別子です。詳細については、<a target="_blank" href="https://developer.twitter.com/en/docs/twitter-ads-api/measurement/web-conversions/conversion-api">Conversions Guide</a>を参照してください。 |
 | 説明 | コンバージョンに関する追加情報を含む説明です。 |
 | 検索文字列 | 広告主のウェブサイトで検索されたテキストです。 |
 | コンテンツID | コンテンツを表すSKUまたはGTIN識別子です。 |

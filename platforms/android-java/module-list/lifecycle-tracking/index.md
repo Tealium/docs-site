@@ -11,7 +11,7 @@ Install the Lifecycle Tracking module with Maven or manually.
 
 To install the Lifecycle Tracking module using Maven:
 
-1. In your project&#39;s top-level `build.gradle` file, add the following Maven repository:
+1. In your project's top-level `build.gradle` file, add the following Maven repository:
       ```groovy
       // Top-level build file where you add configuration options common to all sub-projects/modules.
       allprojects {
@@ -19,19 +19,19 @@ To install the Lifecycle Tracking module using Maven:
             mavenCentral()
             // Tealium Maven repo directive
             maven {
-            url &#34;https://maven.tealiumiq.com/android/releases/&#34;
+            url "https://maven.tealiumiq.com/android/releases/"
             }
       }
       }
       ```
 
-2. In your project module&#39;s `build.gradle` file, add the following Maven dependency:
+2. In your project module's `build.gradle` file, add the following Maven dependency:
       ```groovy
       dependencies {
       // only add if not already present
-      implementation &#39;com.tealium:library:5.8.0&#39;
+      implementation 'com.tealium:library:5.8.0'
       // add lifecycle to list of dependencies
-      implementation &#39;com.tealium:lifecycle:1.1.4&#39;
+      implementation 'com.tealium:lifecycle:1.1.4'
       }
       ```
 
@@ -41,12 +41,12 @@ To install the Lifecycle Tracking module manually, following these steps:
 
 1. Download the Tealium [Lifecycle Tracking Module](https://github.com/Tealium/tealium-android/tree/master/Modules/LifeCycle) module.
 
-2. Copy the file `tealium.lifecycle-1.1.4.aar` into your project&#39;s `&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs` directory.
+2. Copy the file `tealium.lifecycle-1.1.4.aar` into your project's `<PROJECT_ROOT>/<MODULE>/libs` directory.
 
 3. Add the Tealium library dependency to your project module’s `build.gradle` file:
       ```groovy
       dependencies {
-            implementation(name:&#39;tealium.lifecycle-1.1.4&#39;, ext:&#39;aar&#39;)
+            implementation(name:'tealium.lifecycle-1.1.4', ext:'aar')
       }
       ```
 
@@ -67,13 +67,13 @@ The library leverages the [Application.ActivityLifecycleCallbacks](http://develo
 It is enabled with the following code:
 
 ```java
-Tealium.Config config = Tealium.Config.create(application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, &#34;ENVIRONMENT&#34;);
+Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 boolean isAutoTracking = true;
 
 // Additional instance for Lifecycle Tracking
-LifeCycle.setupInstance(&#34;INSTANCE_NAME&#34;, config, isAutoTracking);
+LifeCycle.setupInstance("INSTANCE_NAME", config, isAutoTracking);
 // Standard Tealium instance
-Tealium.createInstance(&#34;INSTANCE_NAME&#34;, config);
+Tealium.createInstance("INSTANCE_NAME", config);
 ```
 
 ## Manually Tracked Events
@@ -88,8 +88,8 @@ LifeCycle lifeCycle = LifeCycle.getInstance(TEALIUM_INSTANCE_ID);
 if(lifeCycle != null) {
 
     // OPTIONAL
-    Map&lt;String, String&gt; data = new HashMap&lt;&gt;();
-    data.put(&#34;boot_time&#34;, &#34;5ms&#34;);
+    Map<String, String> data = new HashMap<>();
+    data.put("boot_time", "5ms");
 
     lifeCycle.trackLaunchEvent(data);
 }
@@ -103,8 +103,8 @@ LifeCycle lifeCycle = LifeCycle.getInstance(TEALIUM_INSTANCE_ID);
 if(lifeCycle != null) {
 
     // OPTIONAL
-    Map&lt;String, String&gt; data = new HashMap&lt;&gt;();
-    data.put(&#34;foreground_time&#34;, &#34;4000ms&#34;);
+    Map<String, String> data = new HashMap<>();
+    data.put("foreground_time", "4000ms");
 
     lifeCycle.trackSleepEvent(data);
 }
@@ -118,14 +118,18 @@ LifeCycle lifeCycle = LifeCycle.getInstance(TEALIUM_INSTANCE_ID);
 if(lifeCycle != null) {
 
     // OPTIONAL
-    Map&lt;String, String&gt; data = new HashMap&lt;&gt;();
-    data.put(&#34;background_time&#34;, &#34;600000ms&#34;);
+    Map<String, String> data = new HashMap<>();
+    data.put("background_time", "600000ms");
 
     lifeCycle.trackWakeEvent(data);
 }
 ```
 
+
+<blockquote>
 Tealium and the attached LifeCycle multitons are remote-killable by publish settings in Tealium iQ. Perform Null checks when getting the instances to call their methods.
+</blockquote>
+
 
 ## Crash Detection
 
@@ -135,8 +139,8 @@ When a crash event is detected, the `launch` or `wake` event data has the `lifec
 
 ```javascript
 {
-    &#34;lifecycle_type&#34; : &#34;launch&#34;,
-    &#34;lifecycle_diddetectcrash&#34; : &#34;true&#34;,
+    "lifecycle_type" : "launch",
+    "lifecycle_diddetectcrash" : "true",
     //...
 }
 ```
@@ -152,9 +156,9 @@ The Lifecycle Tracking module adds the following additional variables for the li
 | `lifecycle_ dayssinceupdate` | `Number` | Days since the last detected app version update in integer increments| `46` | all |
 | `lifecycle_ dayssincelastwake` | `Number` | Days since last detected wake in integer increments | `1` | all |
 | `lifecycle_ diddetectcrash` | `Boolean` | Crash inferred from missing prior sleep event (only present if a launch event follows a wake event) | [`true`, `false`] | launch |
-| `lifecycle_ firstlaunchdate` | `String` | GMT timestamp of the first detected launch/wake in ISO 8601 format from UTC | `&#34;2013-07-11T17:55:04Z&#34;`  | all  |
-| `lifecycle_ firstlaunchdate_ MMDDYYYY ` | `String` | GMT Timestamp formatted as MM/DD/YYYY  | `&#34;01/17/2012&#34;` |  all |
-| `lifecycle_ hourofday_local` | `String` | Local hour of day that call was made (24 hour format)  | `&#34;12&#34;` |  all |
+| `lifecycle_ firstlaunchdate` | `String` | GMT timestamp of the first detected launch/wake in ISO 8601 format from UTC | `"2013-07-11T17:55:04Z"`  | all  |
+| `lifecycle_ firstlaunchdate_ MMDDYYYY ` | `String` | GMT Timestamp formatted as MM/DD/YYYY  | `"01/17/2012"` |  all |
+| `lifecycle_ hourofday_local` | `String` | Local hour of day that call was made (24 hour format)  | `"12"` |  all |
 | `lifecycle_ isfirstlaunch` | `Boolean` |Only present if call is the first launch call | [`true`, `false`] | launch |
 | `lifecycle_ isfirstlaunchupdate` | `Boolean` |Only present if call is first launch after a detected updated  | [`true`, `false`] | launch |
 | `lifecycle_ isfirstwakemonth` | `Boolean` |Only present if call is first launch/wake of the month | [`true`, `false`] | launch, wake  |
@@ -167,10 +171,10 @@ The Lifecycle Tracking module adds the following additional variables for the li
 | `lifecycle_ totallaunchcount` | `Number` |Total number of launches since install (only reset if app deleted)  | `3`  |  all |
 | `lifecycle_ totalsecondsawake` | `Number` |Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted) | `36` |  all |
 | `lifecycle_ totalsleepcount` |`Number` | Total number of times your app has gone into the background since app install (only reset if app deleted) |  `400` |  all |
-| `lifecycle_ totalwakecount` | `Number` |Total number of launches &#43; wakes since install (only reset if app deleted)  |`563` |  all |
-| `lifecycle_type` | `String` | Type of lifecycle call |  [`&#34;initial&#34;`, `&#34;launch&#34;`, `&#34;wake&#34;`, `&#34;sleep&#34;`, `&#34;terminate&#34;`] |  all |
-| `lifecycle_ updatelaunchdate` | `String` |GMT timestamp of first wake/launch after a version update has been detected | `&#34;2014-09-08T18:10:01Z&#34;` |  all |
-| `lifecycle_ wakecount` | `Number` | Total number of launches &#43; wakes in this version of your app (resets if updated) | ` 29` |  all |
+| `lifecycle_ totalwakecount` | `Number` |Total number of launches + wakes since install (only reset if app deleted)  |`563` |  all |
+| `lifecycle_type` | `String` | Type of lifecycle call |  [`"initial"`, `"launch"`, `"wake"`, `"sleep"`, `"terminate"`] |  all |
+| `lifecycle_ updatelaunchdate` | `String` |GMT timestamp of first wake/launch after a version update has been detected | `"2014-09-08T18:10:01Z"` |  all |
+| `lifecycle_ wakecount` | `Number` | Total number of launches + wakes in this version of your app (resets if updated) | ` 29` |  all |
 
 
 ## API Reference

@@ -17,7 +17,7 @@ url: https://docs.tealium.com/ja/client-side-tags/xandr-universal-pixel-tag/
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要]()の記事を読んでください。
+タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
 
 タグを追加する際には、以下の構成を構成します：
 
@@ -25,14 +25,14 @@ url: https://docs.tealium.com/ja/client-side-tags/xandr-universal-pixel-tag/
   * XandrユニバーサルピクセルIDを入力します。
   * 複数のIDをカンマ区切りリストで入力できます。
 * **広告保存の同意**: 広告保存のデフォルト同意を構成します。`ad_storage`パラメータを**データマッピング**セクションでマッピングすることにより、この値を動的に更新します。
-* **Tealium同意クッキーから自動的に読み取る**: `true`に構成すると、[Tealium同意マネージャ]()に基づいて同意が構成されます。
+* **Tealium同意クッキーから自動的に読み取る**: `true`に構成すると、[Tealium同意マネージャ](https://docs.tealium.com/about-consent-management/)に基づいて同意が構成されます。
 
 ## 同意モード
 
 このタグの同意モードを実装するには、次の2つのオプションがあります：
 
-* [クライアントサイド同意管理]()を使用し、Tealium同意クッキーを自動的に読み取ります。
-* [JavaScriptコード拡張]()を追加して、同意管理プラットフォーム（CMP）からこのタグへの同意選択とカテゴリマッピングをマップします。
+* [クライアントサイド同意管理](https://docs.tealium.com/about-consent-management/)を使用し、Tealium同意クッキーを自動的に読み取ります。
+* [JavaScriptコード拡張](https://docs.tealium.com/javascript-code-extension/)を追加して、同意管理プラットフォーム（CMP）からこのタグへの同意選択とカテゴリマッピングをマップします。
 
 訪問が同意選択を行うと、タグは第一者および第三者クッキーに対して適切なアプローチを選択します：
 
@@ -52,23 +52,23 @@ url: https://docs.tealium.com/ja/client-side-tags/xandr-universal-pixel-tag/
 * CMP用のJavaScriptコードを入力します。次のコードテンプレートをCMPのロジックで`CUSTOM_LOGIC`を置き換えてカスタマイズできます：
 
 ```js
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? 'granted' : 'denied';
 ```
 
 たとえば、以下のコードはOneTrust用です：
 
 ```js
 // ロードルール後 - 常に実行
-b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
-b.microsoft_ad_storage_consent = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1  ? &#39;granted&#39; : &#39;denied&#39;;
+b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
+b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? 'granted' : 'denied';
 ```
 
 これらの正確な変数名を使用する場合、追加のマッピングは必要ありません。タグの最新バージョンはデフォルトでこれらの変数を使用します。特定のケースの属性に`ad_storage`パラメータをマッピングすることにより、これらの変数を上書きします。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数]()からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

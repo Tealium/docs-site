@@ -11,21 +11,21 @@ url: https://docs.tealium.com/ja/client-side-tags/tealium-collect-tag/
 
 Tealium Collectタグは、ページからの事前定義されたデータと動的データの両方をキャプチャします。このタグはマッピングを必要とせず、`utag.data`に構成されているすべてのデータまたはトラッキングコールに渡されたデータを自動的に送信します。
 
-収集される変数の完全なリストについては、を参照してください。このデータがEventDBでどのように表示されるかについては、を参照してください。
+収集される変数の完全なリストについては、[eventstore-data-guide](https://docs.tealium.com/eventstore-data-guide/)を参照してください。このデータがEventDBでどのように表示されるかについては、[eventdb-data-guide](https://docs.tealium.com/eventdb-data-guide/)を参照してください。
 
-Tealium Collectタグからの受信データを確認するには、[Live Events]()を参照してください。
+Tealium Collectタグからの受信データを確認するには、[Live Events](https://docs.tealium.com/about-live-events/)を参照してください。
 
 以下の機能でTealium Collectタグを使用します：
 
 * **EventStreamでピクセルリクエストを削減**  
-  このタグをEventStreamおよびイベントフィードと共に使用し、クライアントサイドタグをサーバーサイドコネクター、例えば[Webhook connector]()に移行します。
+  このタグをEventStreamおよびイベントフィードと共に使用し、クライアントサイドタグをサーバーサイドコネクター、例えば[Webhook connector](https://docs.tealium.com/about-webhook-connectors/)に移行します。
 * **AudienceStream**  
   このタグをAudienceStreamと共に使用して、訪問を識別し、アクションを起こします。
 * **DataAccess**  
   このタグからのイベントデータはDataAccessでも利用可能で、選択したビジネスインテリジェンス（BI）ツールを使用して分析できます。
 * **データレイヤーをエンリッチする**  
   AudienceStreamからの訪問および訪問属性をデータレイヤーに追加するためにデータエンリッチメント構成を使用します。  
-  詳細については、を参照してください。
+  詳細については、[enable-data-layer-enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)を参照してください。
 
 ## タグのヒント
 
@@ -39,11 +39,11 @@ Tealium Collectタグからの受信データを確認するには、[Live Event
 
 * サードパーティのクライアントサイドタグを優先するために、Tealium Collectタグをタグリストの最後に配置し、他のタグが先に実行されるようにします。
 * プロファイルにTealium Collectタグのインスタンスを複数追加しないでください。
-* uTag Loaderテンプレートの最新バージョンを使用してください。詳細については、を参照してください。
+* uTag Loaderテンプレートの最新バージョンを使用してください。詳細については、[version-4-50](https://docs.tealium.com/version-4-50/)を参照してください。
 
 ## タグの構成
 
-まず、タグマーケットプレースにアクセスしてTealium Collectタグを追加します。詳細については、[Manage tags]()を参照してください。
+まず、タグマーケットプレースにアクセスしてTealium Collectタグを追加します。詳細については、[Manage tags](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
 
 タグを追加した後、次の構成を構成します：
 
@@ -80,7 +80,7 @@ Tealium Collectタグからの受信データを確認するには、[Live Event
   * SendBeaconは少量のデータに適しており、ほとんどのブラウザでデータサイズの制限は64Kbです。詳細については、[Navigator:sendBeacon() method](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)を参照してください。
   * デフォルト：`true`。
 * **HTTP APIエンドポイントの使用**
-  * Tealium Collectエンドポイントの代わりに[HTTP APIエンドポイント]()を使用するにはtrueに構成します。
+  * Tealium Collectエンドポイントの代わりに[HTTP APIエンドポイント](https://docs.tealium.com/platforms/http-api/endpoint-spec/)を使用するにはtrueに構成します。
   * デフォルト：`false`。
 * **訪問サービスのオーバーライド**
   * データレイヤーエンリッチメントのためにTealium AudienceStreamから訪問プロファイルデータを取得するために使用されるドメインを指定します。
@@ -90,7 +90,7 @@ Tealium Collectタグからの受信データを確認するには、[Live Event
   * Tealium匿名ID（TAPIDクッキー）を構成するために使用されるドメインです。
   * デフォルト値を上書きするためにカスタムドメインを入力します。
   * この値は通常、`.yourdomain.com`のようなファーストパーティドメインに構成されます。
-  * このオプションは、[ファーストパーティドメイン機能]()が有効になっており、Tealium Collectタグがそのファーストパーティドメインにある場合にのみ適用されます。
+  * このオプションは、[ファーストパーティドメイン機能](https://docs.tealium.com/about-first-party-domains/)が有効になっており、Tealium Collectタグがそのファーストパーティドメインにある場合にのみ適用されます。
 * **Tealium Cookieの有効期限**（オプション）
   * TAPIDクッキーの有効期限（秒単位）です。
 * Tealium Collectエンドポイントに送信されるデータを次の構成を使用してフィルタリングします：
@@ -106,7 +106,7 @@ Tealium Collectタグからの受信データを確認するには、[Live Event
 データレイヤーエンリッチメントのために使用されるTealium訪問サービスエンドポイントのファーストパーティCNAMEを上書きするには、Tealium CollectタグにスコープされたJavaScript Code拡張機能を使用して、次のコードでURLを上書きします：
 
 ```js
-u.visitor_service_override = &#34;https://visitor-service.example.co.uk&#34;;
+u.visitor_service_override = "https://visitor-service.example.co.uk";
 ```
 
 ## 読み込みルール
@@ -123,27 +123,27 @@ u.visitor_service_override = &#34;https://visitor-service.example.co.uk&#34;;
 ut.event equals (ignore case) kill_visitor_session
 ```
 
-![](/images/client-side-tags/tealium-collect-load-rule-for-trace.png)
+![](https://docs.tealium.com/images/client-side-tags/tealium-collect-load-rule-for-trace.png)
 
 
 ## モバイルでの実装
 
-[Tealium for Android]()または[Tealium for iOS]()を使用するデプロイメントでは、以下の点に注意してください：
+[Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/install/)または[Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/install/)を使用するデプロイメントでは、以下の点に注意してください：
 
-* デフォルトの[モバイル公開構成]()では、ネイティブモバイルTealium Collectサービスがデフォルトで有効になっています。
-モバイル用の[native Collectモジュール]()について詳しく学びましょう。
-* モバイル用の[Tag ManagementモジュールとTealium Collectタグ]()を使用する場合は、[モバイル公開構成]()の**Tealium Collect**オプションがオフになっていることを確認してください。これにより、重複したトラッキングを避けることができます。
+* デフォルトの[モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings)では、ネイティブモバイルTealium Collectサービスがデフォルトで有効になっています。
+モバイル用の[native Collectモジュール](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#native-module)について詳しく学びましょう。
+* モバイル用の[Tag ManagementモジュールとTealium Collectタグ](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#javascript-tag)を使用する場合は、[モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings)の**Tealium Collect**オプションがオフになっていることを確認してください。これにより、重複したトラッキングを避けることができます。
 
 ## クッキー
 
 Tealium Collectタグは以下のクッキーを作成します：
 
-* `utag_main_v_id`: データプライバシーおよび同意ルールに準拠するための一意で部分的にランダムな識別子。このクッキーは、[`always_set_v_id` utag構成]()が`true`に構成されている場合、`utag.js`バージョン4.50以降でCollectタグによって作成されます。それ以外の場合、以下の条件でクッキーが作成されます：
+* `utag_main_v_id`: データプライバシーおよび同意ルールに準拠するための一意で部分的にランダムな識別子。このクッキーは、[`always_set_v_id` utag構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)が`true`に構成されている場合、`utag.js`バージョン4.50以降でCollectタグによって作成されます。それ以外の場合、以下の条件でクッキーが作成されます：
     * `suppress_v_id` Collect構成が`false`に構成されているか、構成されていない。
     * クッキーの値がまだ構成されていない。
-    このクッキーについての詳細は、[`utag.js`リリースノートバージョン4.50]()を参照してください。
+    このクッキーについての詳細は、[`utag.js`リリースノートバージョン4.50](https://docs.tealium.com/platforms/javascript/version-4-50/)を参照してください。
 * `utag_main_dc_group`: **サンプルサイズ**構成で使用するランダムな数値。
-* `utag_main_dc_region`: 訪問セッションが保存されるAudienceStream地域。このクッキーは、[データレイヤーのエンリッチメント]()のエンドポイントを決定するために使用されます。
+* `utag_main_dc_region`: 訪問セッションが保存されるAudienceStream地域。このクッキーは、[データレイヤーのエンリッチメント](https://docs.tealium.com/data-layer-enrichment/)のエンドポイントを決定するために使用されます。
 
 ### レガシークッキー
 
@@ -152,4 +152,4 @@ Tealium Collectタグは以下のクッキーを作成します：
 * `utag_main_dc_visit`: Tealium Collectタグが発火したセッションの数。
 * `utag_main_dc_event`: Tealium Collectタグが発火したイベントの数。
 
-これらのクッキーについての詳細は、[データレイヤー：クッキー]()を参照してください。
+これらのクッキーについての詳細は、[データレイヤー：クッキー](https://docs.tealium.com/platforms/javascript/data-layer/#cookies)を参照してください。

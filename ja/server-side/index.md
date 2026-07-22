@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/server-side/
 ## はじめに
 
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### カスタマーデータハブ
 
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### 操作の順序
 
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-forward.svg)
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
 #### Tealium Collectのインストール
 
@@ -32,7 +32,7 @@ url: https://docs.tealium.com/ja/server-side/
 ## 収集
 
 
-![](/images/icons/icon-arrow-right-into.svg)
+![](https://docs.tealium.com/images/icons/icon-arrow-right-into.svg)
 
 #### データソース
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-product-data-connect.svg)
+![](https://docs.tealium.com/images/icons/icon-product-data-connect.svg)
 
 #### データコネクト
 
@@ -48,7 +48,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-cloud-down.svg)
+![](https://docs.tealium.com/images/icons/icon-cloud-down.svg)
 
 #### クラウドストリーム
 
@@ -58,7 +58,7 @@ url: https://docs.tealium.com/ja/server-side/
 ## 変換
 
 
-![](/images/icons/icon-cubes.svg)
+![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
 #### 属性
 
@@ -66,7 +66,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-id.svg)
+![](https://docs.tealium.com/images/icons/icon-id.svg)
 
 #### アイデンティティ解決
 
@@ -74,7 +74,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-bolt.svg)
+![](https://docs.tealium.com/images/icons/icon-bolt.svg)
 
 #### 関数
 
@@ -84,7 +84,7 @@ url: https://docs.tealium.com/ja/server-side/
 ## 活性化
 
 
-![](/images/icons/icon-audience.svg)
+![](https://docs.tealium.com/images/icons/icon-audience.svg)
 
 #### オーディエンス
 
@@ -92,7 +92,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-chart-line.svg)
+![](https://docs.tealium.com/images/icons/icon-chart-line.svg)
 
 #### オーディエンスディスカバリー
 
@@ -100,7 +100,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-moments-api.svg)
+![](https://docs.tealium.com/images/icons/icon-moments-api.svg)
 
 #### Moments API
 
@@ -110,7 +110,7 @@ url: https://docs.tealium.com/ja/server-side/
 ## 分析
 
 
-![](/images/icons/icon-product-audiencestream.svg)
+![](https://docs.tealium.com/images/icons/icon-product-audiencestream.svg)
 
 #### オーディエンスダッシュボード
 
@@ -118,7 +118,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/icon-timer.svg)
+![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
 #### 使用レポート
 
@@ -126,7 +126,7 @@ url: https://docs.tealium.com/ja/server-side/
 
 
 
-![](/images/icons/prod_icon_din.svg)
+![](https://docs.tealium.com/images/icons/prod_icon_din.svg)
 
 #### Tealium Insights
 
@@ -136,7 +136,7 @@ EventDBおよびAudienceDBからのデータを含むダッシュボードのビ
 ## 管理
 
 
-![](/images/icons/icon-user-solid.svg)
+![](https://docs.tealium.com/images/icons/icon-user-solid.svg)
 
 #### 訪問検索
 
@@ -144,7 +144,7 @@ EventDBおよびAudienceDBからのデータを含むダッシュボードのビ
 
 
 
-![](/images/icons/icon-shield.svg)
+![](https://docs.tealium.com/images/icons/icon-shield.svg)
 
 #### サーバーサイドの同意
 
@@ -152,7 +152,7 @@ EventDBおよびAudienceDBからのデータを含むダッシュボードのビ
 
 
 
-![](/images/icons/icon-circles-overlap.svg)
+![](https://docs.tealium.com/images/icons/icon-circles-overlap.svg)
 
 #### 同意の調整
 

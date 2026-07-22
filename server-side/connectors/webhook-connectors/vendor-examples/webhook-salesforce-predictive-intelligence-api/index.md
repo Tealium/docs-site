@@ -20,32 +20,32 @@ URL parameter `payload` value is JSON:
 
 ```json
 {
-    &#34;cart&#34;: [
+    "cart": [
         {
-            &#34;item&#34;: &#34;2890-17738&#34;,
-            &#34;quantity&#34;: &#34;1&#34;,
-            &#34;price&#34;: &#34;94.00&#34;,
-            &#34;unique_id&#34;: &#34;1233388&#34;
+            "item": "2890-17738",
+            "quantity": "1",
+            "price": "94.00",
+            "unique_id": "1233388"
         },
         {
-            &#34;item&#34;: &#34;2890-60773&#34;,
-            &#34;quantity&#34;: &#34;2&#34;,
-            &#34;price&#34;: &#34;133.00&#34;,
-            &#34;unique_id&#34;: &#34;7113048&#34;
+            "item": "2890-60773",
+            "quantity": "2",
+            "price": "133.00",
+            "unique_id": "7113048"
         },
         {
-            &#34;item&#34;: &#34;3414-301727&#34;,
-            &#34;quantity&#34;: &#34;3&#34;,
-            &#34;price&#34;: &#34;1.99&#34;,
-            &#34;unique_id&#34;: &#34;7107457&#34;
+            "item": "3414-301727",
+            "quantity": "3",
+            "price": "1.99",
+            "unique_id": "7107457"
         }
     ],
-    &#34;order_number&#34;: &#34;830100487001&#34;,
-    &#34;discount&#34;: &#34;89.99&#34;,
-    &#34;shipping&#34;: &#34;0.00&#34;,
-    &#34;user_info&#34;: {
-        &#34;email&#34;: &#34;abc.xxx@tealium.com&#34;,
-        &#34;details&#34;: {}
+    "order_number": "830100487001",
+    "discount": "89.99",
+    "shipping": "0.00",
+    "user_info": {
+        "email": "abc.xxx@tealium.com",
+        "details": {}
     }
 }
 
@@ -55,7 +55,7 @@ URL parameter `payload` value is JSON:
 
 ### Method field
 
-Set to &#34;GET&#34;.
+Set to "GET".
 
 ### URL field
 
@@ -85,38 +85,42 @@ Set name and value pairs to be referenced and replaced in templates. Variable va
 |`shipping`| `0.00`|
 |`userEmail`| `abc.xxx@tealium.com`|
 
+
+<blockquote>
 Variables are internally translated to JSON and made available to all templates.
+</blockquote>
+
 
 #### Resulting JSON structure:
 
 ```json
 {
 
-  &#34;shipping&#34;: &#34;0.00&#34;,
-  &#34;orderNumber&#34;: &#34;830100487001&#34;,
-  &#34;userEmail&#34;: &#34;abc.xxx@tealium.com&#34;,
-  &#34;cart&#34;: [
+  "shipping": "0.00",
+  "orderNumber": "830100487001",
+  "userEmail": "abc.xxx@tealium.com",
+  "cart": [
     {
-      &#34;id&#34;: &#34;7113048&#34;,
-      &#34;price&#34;: &#34;1.99&#34;,
-      &#34;item&#34;: &#34;3414-301727&#34;,
-      &#34;quantity&#34;: &#34;3&#34;
+      "id": "7113048",
+      "price": "1.99",
+      "item": "3414-301727",
+      "quantity": "3"
     },
     {
-      &#34;id&#34;: &#34;7107457&#34;,
-      &#34;price&#34;: &#34;133.00&#34;,
-      &#34;item&#34;: &#34;2890-60773&#34;,
-      &#34;quantity&#34;: &#34;2&#34;
+      "id": "7107457",
+      "price": "133.00",
+      "item": "2890-60773",
+      "quantity": "2"
     },
     {
-      &#34;id&#34;: &#34;1233388&#34;,
-      &#34;price&#34;: &#34;94.00&#34;,
-      &#34;item&#34;: &#34;2890-17738&#34;,
-      &#34;quantity&#34;: &#34;1&#34;
+      "id": "1233388",
+      "price": "94.00",
+      "item": "2890-17738",
+      "quantity": "1"
     }
   ],
-  &#34;projectId&#34;: &#34;6391707&#34;,
-  &#34;discount&#34;: &#34;89.99&#34;
+  "projectId": "6391707",
+  "discount": "89.99"
 
 }
 
@@ -134,22 +138,22 @@ https://nova.collect.igodigital.com/c2/{{projectId}}/track_conversion
 
 ```json
 {
-    &#34;cart&#34;: [
+    "cart": [
         {{#cart}}
         {
-            &#34;item&#34;: &#34;{{item}}&#34;,
-            &#34;quantity&#34;: &#34;{{quantity}}&#34;,
-            &#34;price&#34;: &#34;{{price}}&#34;,
-            &#34;unique_id&#34;: &#34;{{id}}&#34;
+            "item": "{{item}}",
+            "quantity": "{{quantity}}",
+            "price": "{{price}}",
+            "unique_id": "{{id}}"
         }{{#iter.hasNext}}, {{/iter.hasNext}}
         {{/cart}}
     ],
-    &#34;order_number&#34;: &#34;{{orderNumber}}&#34;,
-    &#34;discount&#34;: &#34;{{discount}}&#34;,
-    &#34;shipping&#34;: &#34;{{shipping}}&#34;,
-    &#34;user_info&#34;: {
-        &#34;email&#34;: &#34;{{userEmail}}&#34;,
-        &#34;details&#34;: {}
+    "order_number": "{{orderNumber}}",
+    "discount": "{{discount}}",
+    "shipping": "{{shipping}}",
+    "user_info": {
+        "email": "{{userEmail}}",
+        "details": {}
     }
 }
 ```
@@ -168,32 +172,32 @@ https://nova.collect.igodigital.com/c2/6391707/track_conversion
 
 ```json
 {
-    &#34;cart&#34;: [
+    "cart": [
         {
-            &#34;item&#34;: &#34;3414-301727&#34;,
-            &#34;quantity&#34;: &#34;3&#34;,
-            &#34;price&#34;: &#34;1.99&#34;,
-            &#34;unique_id&#34;: &#34;7113048&#34;
+            "item": "3414-301727",
+            "quantity": "3",
+            "price": "1.99",
+            "unique_id": "7113048"
         },
         {
-            &#34;item&#34;: &#34;2890-60773&#34;,
-            &#34;quantity&#34;: &#34;2&#34;,
-            &#34;price&#34;: &#34;133.00&#34;,
-            &#34;unique_id&#34;: &#34;7107457&#34;
+            "item": "2890-60773",
+            "quantity": "2",
+            "price": "133.00",
+            "unique_id": "7107457"
         },
         {
-            &#34;item&#34;: &#34;2890-17738&#34;,
-            &#34;quantity&#34;: &#34;1&#34;,
-            &#34;price&#34;: &#34;94.00&#34;,
-            &#34;unique_id&#34;: &#34;1233388&#34;
+            "item": "2890-17738",
+            "quantity": "1",
+            "price": "94.00",
+            "unique_id": "1233388"
         }
     ],
-    &#34;order_number&#34;: &#34;830100487001&#34;,
-    &#34;discount&#34;: &#34;89.99&#34;,
-    &#34;shipping&#34;: &#34;0.00&#34;,
-    &#34;user_info&#34;: {
-        &#34;email&#34;: &#34;abc.xxx@tealium.com&#34;,
-        &#34;details&#34;: {}
+    "order_number": "830100487001",
+    "discount": "89.99",
+    "shipping": "0.00",
+    "user_info": {
+        "email": "abc.xxx@tealium.com",
+        "details": {}
     }
 }
 ```
@@ -201,4 +205,4 @@ https://nova.collect.igodigital.com/c2/6391707/track_conversion
 
 ## Action configuration screenshot
 
-![](/images/server-side/example)
+![](https://docs.tealium.com/images/server-side/example)

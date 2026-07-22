@@ -17,9 +17,9 @@ url: https://docs.tealium.com/server-side-connectors/listrak-connector/
 |Unsubscribe Contact| ✓| ✗|
 |Send Transactional Message| ✓| ✗|
 
-## Configure Settings&lt;br&gt;
+## Configure Settings<br>
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -45,13 +45,13 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The list the contact belongs to, if updating, or the list to add the contact to, if creating.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Double Opt-In|  &lt;ul&gt;&lt;li&gt;Whether a double opt-in email should be sent if a new contact is being created.&lt;/li&gt;&lt;/ul&gt; |
-|Events|  &lt;ul&gt;&lt;li&gt;Events that should be raised after the contact is created or updated.&lt;/li&gt;&lt;/ul&gt; |
-|New Email|  &lt;ul&gt;&lt;li&gt;If updating an existing contact, the contact&#39;s email address will be changed to this value.&lt;/li&gt;&lt;/ul&gt; |
-|Update Type|  &lt;ul&gt;&lt;li&gt;If updating an existing contact, the type of update that will be performed on any submitted segmentation fields.&lt;/li&gt;&lt;li&gt;If not set, the default value is `Update`.&lt;/li&gt;&lt;/ul&gt; |
-|Segmentation Group|  &lt;ul&gt;&lt;li&gt;The Segmentation Group that contains a list of segmentation fields.&lt;/li&gt;&lt;/ul&gt; |
+|Contact List|  <ul><li>(Required) The list the contact belongs to, if updating, or the list to add the contact to, if creating.</li></ul> |
+|Contact Email|  <ul><li>(Required) The email address of the contact.</li></ul> |
+|Double Opt-In|  <ul><li>Whether a double opt-in email should be sent if a new contact is being created.</li></ul> |
+|Events|  <ul><li>Events that should be raised after the contact is created or updated.</li></ul> |
+|New Email|  <ul><li>If updating an existing contact, the contact's email address will be changed to this value.</li></ul> |
+|Update Type|  <ul><li>If updating an existing contact, the type of update that will be performed on any submitted segmentation fields.</li><li>If not set, the default value is `Update`.</li></ul> |
+|Segmentation Group|  <ul><li>The Segmentation Group that contains a list of segmentation fields.</li></ul> |
 
 ### Action - Subscribe Contact
 
@@ -59,9 +59,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The list the contact belongs to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Events|  &lt;ul&gt;&lt;li&gt;Events that should be raised after the contact is subscribed.&lt;/li&gt;&lt;/ul&gt; |
+|Contact List|  <ul><li>(Required) The list the contact belongs to.</li></ul> |
+|Contact Email|  <ul><li>(Required) The email address of the contact.</li></ul> |
+|Events|  <ul><li>Events that should be raised after the contact is subscribed.</li></ul> |
 
 ### Action - Unsubscribe Contact
 
@@ -69,9 +69,9 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The list the contact belongs to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Events|  &lt;ul&gt;&lt;li&gt;Events that should be raised after the contact is unsubscribed.&lt;/li&gt;&lt;/ul&gt; |
+|Contact List|  <ul><li>(Required) The list the contact belongs to.</li></ul> |
+|Contact Email|  <ul><li>(Required) The email address of the contact.</li></ul> |
+|Events|  <ul><li>Events that should be raised after the contact is unsubscribed.</li></ul> |
 
 ### Action - Send Transactional Message
 
@@ -79,10 +79,10 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Contact List|  &lt;ul&gt;&lt;li&gt;(Required) The list the contact belongs to.&lt;/li&gt;&lt;/ul&gt; |
-|Contact Email|  &lt;ul&gt;&lt;li&gt;(Required) The email address of the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Transactional Message|  &lt;ul&gt;&lt;li&gt;(Required) The message to send to the contact.&lt;/li&gt;&lt;/ul&gt; |
-|Segmentation Group|  &lt;ul&gt;&lt;li&gt;The Segmentation Group that contains a list of segmentation fields.&lt;/li&gt;&lt;/ul&gt; |
+|Contact List|  <ul><li>(Required) The list the contact belongs to.</li></ul> |
+|Contact Email|  <ul><li>(Required) The email address of the contact.</li></ul> |
+|Transactional Message|  <ul><li>(Required) The message to send to the contact.</li></ul> |
+|Segmentation Group|  <ul><li>The Segmentation Group that contains a list of segmentation fields.</li></ul> |
 
 ## Vendor Documentation
 

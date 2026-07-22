@@ -3,7 +3,11 @@ title: API リファレンス
 description: Tealium for Unity 1.x によって提供されるクラスとメソッドのリファレンスガイド。
 url: https://docs.tealium.com/ja/platforms/unity-v1/api/
 ---
-これはTealium for Unityの以前のバージョン（1.x）です。現行バージョンについては、[Tealium for Unity 2.x](/ja/platforms/unity/)をご覧ください。
+
+<blockquote>
+これはTealium for Unityの以前のバージョン（1.x）です。現行バージョンについては、[Tealium for Unity 2.x](https://docs.tealium.com/ja/platforms/unity/)をご覧ください。
+</blockquote>
+
 
 ## クラス: `Tealium`
 
@@ -25,7 +29,7 @@ Tealium.TrackEvent(event, data);
 | パラメータ | タイプ         | 説明                                                                             | 例                                                   |
 |:-----------|:-------------|:----------------------------------------------------------------------------------------|:----------------------------------------------------------------|
 | `event`    | `String`     | 現在のゲームイベントで、データレイヤーの`tealium_event`変数に入力されます。 | `game_started`                                                  |
-| `data`     | `Dictionary` | （オプション）イベントに関連するデータ。                                                | `new Dictionary &lt; string, string &gt; ( ) { {&#34;weapon&#34;, &#34;sword&#34;} }` |
+| `data`     | `Dictionary` | （オプション）イベントに関連するデータ。                                                | `new Dictionary < string, string > ( ) { {"weapon", "sword"} }` |
 
 
 ### `TrackView()`
@@ -39,4 +43,4 @@ Tealium.TrackView(title, data);
 | パラメータ | タイプ         | 説明                                                                               | 例                                            |
 |:-----------|:-------------|:------------------------------------------------------------------------------------------|:---------------------------------------------------------|
 | `title`    | `String`     | 現在の画面タイトルで、データレイヤーの`tealium_event`変数に入力されます。 | `level_1`                                                |
-| `data`     | `Dictionary` | （オプション）画面に関連するデータ。                                                 | `new Dictionary &lt; string, int &gt; ( ) { {&#34;score&#34;, 1575} }` |
+| `data`     | `Dictionary` | （オプション）画面に関連するデータ。                                                 | `new Dictionary < string, int > ( ) { {"score", 1575} }` |

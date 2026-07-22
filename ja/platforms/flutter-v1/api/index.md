@@ -2,7 +2,11 @@
 title: API リファレンス
 description: TealiumのFlutter用クラスとメソッドのリファレンスガイドです。
 url: https://docs.tealium.com/ja/platforms/flutter-v1/api/
----これはTealiumのFlutter用の以前のバージョン（1.x）です。最新バージョンについては、[Tealium for Flutter](/ja/platforms/flutter/)をご覧ください。
+---
+<blockquote>
+これはTealiumのFlutter用の以前のバージョン（1.x）です。最新バージョンについては、[Tealium for Flutter](https://docs.tealium.com/ja/platforms/flutter/)をご覧ください。
+</blockquote>
+
 
 ## クラス: `Tealium`
 
@@ -44,17 +48,17 @@ Tealium.addRemoteCommand(commandID, description, callback);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
-| `description` | `String ` | リモートコマンドの説明 | `&#34;Firebase remote command&#34;` |
+| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
+| `description` | `String ` | リモートコマンドの説明 | `"Firebase remote command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```dart
-Tealium.addRemoteCommand(&#34;firebase&#34;, &#34;Firebase Remote Command&#34;, (payload) {
+Tealium.addRemoteCommand("firebase", "Firebase Remote Command", (payload) {
 
-  final eventName = payload[&#34;firebase_event_name&#34;];
-  final eventProperties = payload[&#34;firebase_event_properties&#34;];
+  final eventName = payload["firebase_event_name"];
+  final eventProperties = payload["firebase_event_properties"];
 
   analytics.logEvent(name: eventName, parameters: eventProperties);
 });
@@ -70,18 +74,18 @@ Tealium.addRemoteCommandForInstance(instanceName, commandID, description, callba
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
-| `description` | `String ` | リモートコマンドの説明 | `&#34;Firebase remote command&#34;` |
+| `instanceName` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
+| `description` | `String ` | リモートコマンドの説明 | `"Firebase remote command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```dart
-Tealium.addRemoteCommandForInstance(&#34;instance-2&#34;, &#34;verify_email&#34;, &#34;Verify User Email&#34;, (user) {
+Tealium.addRemoteCommandForInstance("instance-2", "verify_email", "Verify User Email", (user) {
 
-	print(&#39;Howdy, ${user.name}!&#39;);
-	print(&#39;We sent the verification link to ${user.email}.&#39;);
+	print('Howdy, ${user.name}!');
+	print('We sent the verification link to ${user.email}.');
 
 	// Send data to email service to send email to user
 	// ...
@@ -98,7 +102,7 @@ Tealium.getPersistentData(key)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `key` | `String` | キー名 | `&#34;key1&#34;` |
+| `key` | `String` | キー名 | `"key1"` |
 
 ### `getPersistentDataForInstance()`
 
@@ -110,8 +114,8 @@ Tealium.getPersistentDataForInstance(instance, key)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `key` | `String` | キー名 | `&#34;key1&#34;` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `key` | `String` | キー名 | `"key1"` |
 
 ### `getVolatileData()`
 
@@ -123,7 +127,7 @@ Tealium.getVolatileData(key)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `key` | `String` | キー名 | `&#34;key1&#34;` |
+| `key` | `String` | キー名 | `"key1"` |
 
 ### `getVolatileDataForInstance()`
 
@@ -135,8 +139,8 @@ Tealium.getVolatileDataForInstance(instance, key)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `key` | `String` | キー名 | `&#34;key1&#34;` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `key` | `String` | キー名 | `"key1"` |
 
 ### `initialize()`
 
@@ -150,12 +154,12 @@ Tealium.initialize(account, profile, environment,
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealiumアカウント名 |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealiumプロファイル名 |  `&#34;main&#34;` |
-| `environment` | `String` | Tealium環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (オプション) データソースキー  (ない場合は`null`を構成) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealiumアカウント名 |  `"companyXYZ"` |
+| `profile` | `String` | Tealiumプロファイル名 |  `"main"` |
+| `environment` | `String` | Tealium環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (オプション) データソースキー  (ない場合は`null`を構成) |  `"abc123"` |
 | `androidDataSource` | `String` | (オプション) Androidデータソースキー (ない場合は`null`を構成) |  `null` |
-| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (オプション) ライフサイクル追跡イベントを有効にする (デフォルト: `true`)|  [`true`, `false`] |
 ### `initializeCustom()`
 
@@ -175,12 +179,12 @@ Tealium.initializeCustom(account, profile, environment,
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealiumのアカウント名 |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealiumのプロファイル名 |  `&#34;main&#34;` |
-| `environment` | `String` | Tealiumの環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (オプション) データソースキー (ない場合は `null`) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealiumのアカウント名 |  `"companyXYZ"` |
+| `profile` | `String` | Tealiumのプロファイル名 |  `"main"` |
+| `environment` | `String` | Tealiumの環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (オプション) データソースキー (ない場合は `null`) |  `"abc123"` |
 | `androidDataSource` | `String` | (オプション) Androidのデータソースキー (ない場合は `null`) |  `null` |
-| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (オプション) ライフサイクル追跡イベントを有効にする (デフォルト: `true`)|  [`true`, `false`] |
 | `overridePublishSettingsUrl` | `String` | (オプション) カスタム公開構成URLをオーバーライドする場合の文字列 (ない場合は `null`)| |
 | `overrideTagManagementUrl` | `String` | (オプション) カスタムタグ管理URLをオーバーライドする場合の文字列 (ない場合は `null`)| |
@@ -199,12 +203,12 @@ Tealium.initializeWithConsentManager(account, profile, environment,
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `account` | `String` | Tealiumのアカウント名 |  `&#34;companyXYZ&#34;` |
-| `profile` | `String` | Tealiumのプロファイル名 |  `&#34;main&#34;` |
-| `environment` | `String` | Tealiumの環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDataSource` | `String` | (オプション) データソースキー (ない場合は `null`) |  `&#34;abc123&#34;` |
+| `account` | `String` | Tealiumのアカウント名 |  `"companyXYZ"` |
+| `profile` | `String` | Tealiumのプロファイル名 |  `"main"` |
+| `environment` | `String` | Tealiumの環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDataSource` | `String` | (オプション) データソースキー (ない場合は `null`) |  `"abc123"` |
 | `androidDataSource` | `String` | (オプション) Androidのデータソースキー (ない場合は `null`) |  `null` |
-| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `&#34;main&#34;`) |  `&#34;main&#34;` |
+| `instance` | `String` | (オプション) Tealiumインスタンス名 (デフォルト: `"main"`) |  `"main"` |
 | `isLifecycleEnabled` | `bool` | (オプション) ライフサイクル追跡イベントを有効にする (デフォルト: `true`)|  [`true`, `false`] |
 
 ### `removePersistentData()`
@@ -217,7 +221,7 @@ Tealium.removePersistentData(keys)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | 文字列キー名のリスト | `[&#34;persistent_var&#34;, &#34;persistent_var2&#34;]` |
+| `keys` | `List<String>` | 文字列キー名のリスト | `["persistent_var", "persistent_var2"]` |
 
 ### `removePersistentDataForInstance()`
 
@@ -229,8 +233,8 @@ Tealium.removePersistentDataForInstance(instance, keys)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `keys` | `List&lt;String&gt;` | 文字列キー名のリスト | `[&#34;persistent_var&#34;, &#34;persistent_var2&#34;]` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `keys` | `List<String>` | 文字列キー名のリスト | `["persistent_var", "persistent_var2"]` |
 
 ### `removeRemoteCommand()`
 
@@ -242,12 +246,12 @@ Tealium.removeRemoteCommand(commandID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `commandID ` | `String` | 削除するコマンドIDの名前  | `&#34;test_command&#34;` |
+| `commandID ` | `String` | 削除するコマンドIDの名前  | `"test_command"` |
 
 例：
 
 ```dart
-Tealium.removeRemoteCommand(&#34;firebase&#34;);
+Tealium.removeRemoteCommand("firebase");
 ```
 
 
@@ -261,11 +265,11 @@ Tealium.removeRemoteCommandForInstance(instanceName, commandID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `commandID ` | `String` | 削除するコマンドIDの名前  | `&#34;test_command&#34;` |
+| `instanceName` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `commandID ` | `String` | 削除するコマンドIDの名前  | `"test_command"` |
 
 ```dart
-Tealium.removeRemoteCommandForInstance(&#34;instance-2&#34;, &#34;firebase&#34;);
+Tealium.removeRemoteCommandForInstance("instance-2", "firebase");
 ```
 
 ### `removeVolatileData()`
@@ -278,7 +282,7 @@ Tealium.removeVolatileData(keys)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `keys` | `List&lt;String&gt;` | 文字列キー名のリスト | `[&#34;volatile_var1&#34;, &#34;volatile_var2&#34;]` |
+| `keys` | `List<String>` | 文字列キー名のリスト | `["volatile_var1", "volatile_var2"]` |
 
 ### `removeVolatileDataForInstance()`
 
@@ -290,8 +294,8 @@ Tealium.removeVolatileDataForInstance(instance, keys)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `keys` | `List&lt;String&gt;` | 文字列キー名のリスト | `[&#34;volatile_var1&#34;, &#34;volatile_var2&#34;]` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `keys` | `List<String>` | 文字列キー名のリスト | `["volatile_var1", "volatile_var2"]` |
 
 ### `setPersistentData()`
 
@@ -303,7 +307,7 @@ Tealium.setPersistentData(data)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `data` | `Map&lt;String, dynamic&gt;` | キーと値のペアとしての永続データ | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `data` | `Map<String, dynamic>` | キーと値のペアとしての永続データ | `{"key1": "value1"}` |
 
 ### `setPersistentDataForInstance()`
 
@@ -315,8 +319,8 @@ Tealium.setPersistentDataForInstance(instance, data)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | キーと値のペアとしての永続データ | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `data` | `Map<String, dynamic>` | キーと値のペアとしての永続データ | `{"key1": "value1"}` |
 
 ### `setVolatileData()`
 
@@ -328,7 +332,7 @@ Tealium.setVolatileData(data)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `data` | `Map&lt;String, dynamic&gt;` | キーと値のペアとしての揮発性データ | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `data` | `Map<String, dynamic>` | キーと値のペアとしての揮発性データ | `{"key1": "value1"}` |
 
 ### `setVolatileDataForInstance()`
 
@@ -340,8 +344,8 @@ Tealium.setVolatileDataForInstance(instance, data)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance`  | `String` | 特定のTealiumインスタンス名 | `&#34;instance123&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | キーと値のペアとしての揮癲性データ | `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance`  | `String` | 特定のTealiumインスタンス名 | `"instance123"` |
+| `data` | `Map<String, dynamic>` | キーと値のペアとしての揮癲性データ | `{"key1": "value1"}` |
 
 ### `trackEvent()`
 
@@ -353,8 +357,8 @@ Tealium.trackEvent(eventName, data)
 
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `eventName` | `String` | イベントを識別する名前 |  `&#34;Event button click&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (オプション) キーと値のペアとしてのイベントデータ |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `eventName` | `String` | イベントを識別する名前 |  `"Event button click"` |
+| `data` | `Map<String, dynamic>` | (オプション) キーと値のペアとしてのイベントデータ |  `{"key1": "value1"}` |
 
 ### `trackEventForInstance()`
 
@@ -365,9 +369,9 @@ Tealium.trackEventForInstance(instance, eventName, data)
 ```
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance` | `String` | Tealiumインスタンス名 | `&#34;instance123&#34;` |
-| `eventName` | `String` | イベントを識別する名前 | `&#34;Event button click&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (オプション) キーと値のペアとしてのイベントデータ |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance` | `String` | Tealiumインスタンス名 | `"instance123"` |
+| `eventName` | `String` | イベントを識別する名前 | `"Event button click"` |
+| `data` | `Map<String, dynamic>` | (オプション) キーと値のペアとしてのイベントデータ |  `{"key1": "value1"}` |
 
 ### `trackView()`
 
@@ -379,8 +383,8 @@ Tealium.trackView(viewName, data)
 
 | パラメータ | 型 | 説明 |  例 |
 |-----------|-------------| ---- | ------- |
-| `viewName` | `String` | 画面ビューを識別する名前 | `&#34;View screen&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (オプション) キーと値のペアとしてのイベントデータ|  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `viewName` | `String` | 画面ビューを識別する名前 | `"View screen"` |
+| `data` | `Map<String, dynamic>` | (オプション) キーと値のペアとしてのイベントデータ|  `{"key1": "value1"}` |
 ### `trackViewForInstance()`
 
 特定のTealiumインスタンスのための画面ビューを追跡します。
@@ -390,6 +394,6 @@ Tealium.trackViewForInstance(instance, viewName, data)
 ```
 | パラメータ | 型 | 説明 | 例 |
 |-----------|-------------| ---- | ------- |
-| `instance` | `String` | Tealiumインスタンス名 | `&#34;instance123&#34;` |
-| `viewName` | `String` | ビューを識別する名前 | `&#34;View screen&#34;` |
-| `data` | `Map&lt;String, dynamic&gt;` | (オプション) キーと値のペアとしてのイベントデータ |  `{&#34;key1&#34;: &#34;value1&#34;}` |
+| `instance` | `String` | Tealiumインスタンス名 | `"instance123"` |
+| `viewName` | `String` | ビューを識別する名前 | `"View screen"` |
+| `data` | `Map<String, dynamic>` | (オプション) キーと値のペアとしてのイベントデータ |  `{"key1": "value1"}` |

@@ -6,30 +6,34 @@ url: https://docs.tealium.com/server-side/audiences/rule-conditions/
 
 ## Condition Operators
 
+
+<blockquote>
 Some operators apply only to certain attribute types, which is indicated in the **Applies to** column.
+</blockquote>
+
 
 |Operators| Description| Applies to|
 |---| ---| ---|
-|array contains|  An item in the array is an exact match to the value you specify.&lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `[&#34;iOS&#34;, &#34;Android&#34;]` array contains &#34;Android&#34; &lt;br&gt;&lt;br&gt;**False**&lt;br&gt; `[&#34;Women&#39;s Clothing&#34;, &#34;Shoes&#34;]` array contains &#34;Women&#34; |  Array |
-|array does not contain|  No item in the array is an exact match to the value you specify. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `[&#34;iOS&#34;, &#34;Android&#34;]` array does not contain &#34;Samsung&#34; &lt;br&gt;&lt;br&gt;**False**&lt;br&gt; `[&#34;Women&#39;s Clothing&#34;, &#34;Shoes&#34;]` array does not contain &#34;Shoes&#34; |  Array |
-|contains|  Attribute value includes the value you specify. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `&#34;user@tealium.com&#34;` contains &#34;tealium&#34;&lt;br&gt; `[&#34;iOS&#34;, &#34;Android&#34;]` array contains &#34;Android&#34; &lt;br&gt;&lt;br&gt;**False**&lt;br&gt; `[&#34;Women&#39;s Clothing&#34;, &#34;Shoes&#34;]` array contains &#34;Women&#34; |  Array&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Visitor ID |
-| contains&lt;br&gt; (ignore case) | Attribute value includes the value you specify.|  String&lt;br&gt; Visitor ID |
-|does not contain| Attribute value excludes the value you specify.|  Array&lt;br&gt; String&lt;br&gt; Visitor ID&lt;br&gt; Tally |
-| does not contain&lt;br&gt; (ignore case) | Attribute value excludes the value you specify.|  Array&lt;br&gt; String&lt;br&gt; Visitor ID&lt;br&gt; Tally |
-|contains partial string|  Attribute value partially matches the value you specify. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `[&#34;Women&#39;s Clothing&#34;, &#34;Shoes&#34;]` array contains &#34;Women&#34; &lt;br&gt;&lt;br&gt;**False**&lt;br&gt; `[&#34;Women&#39;s Clothing&#34;, &#34;Shoes&#34;]` array contains &#34;Tops&#34; |  Array&lt;br&gt; Tally&lt;br&gt; Visitor ID |
-| contains partial string&lt;br&gt; (ignore case) | Attribute value partially matches the value you specify, regardless of case.|  Array&lt;br&gt; Tally&lt;br&gt; Visitor ID |
-|equals|  Attribute value matches the whole value you specify. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `&#34;purchase&#34;` equals &#34;purchase&#34;&lt;br&gt;  equals 0 &lt;br&gt;&lt;br&gt;**False**&lt;br&gt; `&#34;Luggage&#34;` equals &#34;luggage&#34;&lt;br&gt;  equals 1 |  Number&lt;br&gt; String&lt;br&gt; Visitor ID |
-| equals (ignore case) | Attribute value matches the whole value you specify.|  String&lt;br&gt; Visitor ID |
-|does not equal| Attribute value does not match the whole value you specify.|  Number&lt;br&gt; String&lt;br&gt; Visitor ID |
-| does not equal (ignore case) | Attribute value does not match the whole value you specify.|  String&lt;br&gt; Visitor ID |
-|less than| Attribute value is less than the value you specify.|  Number&lt;br&gt; Date |
-|less than or equal to| Attribute value is either less than or equal to the value you specify.|  Number&lt;br&gt; Date |
-|greater than| Attribute value exceeds the value you specify.|  Number&lt;br&gt; Date |
-|greater than or equal to| Attribute value either exceeds or equals the value you specify.|  Number&lt;br&gt; Date |
-|is assigned|  Attribute exists, but may or may not have a value. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `&#34;Shirts&#34;` is assigned &lt;br&gt;`[&#34;iOS&#34;, &#34;Android&#34;]` is assigned&lt;br&gt; `[]` is assigned &lt;br&gt;`&#34;&#34;` is assigned is assigned &lt;br&gt;`Is VIP` is assigned |  Number&lt;br&gt; Timeline&lt;br&gt; List&lt;br&gt; Badge&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Visitor ID&lt;br&gt; Date |
-|is not assigned| Attribute does not exist.|  Number&lt;br&gt; Timeline&lt;br&gt; List&lt;br&gt; Badge&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Date&lt;br&gt; Visitor ID |
-|is empty|  Tealium iQ variable does not contain any value (for example, value is undefined, null, or blank string). &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `{ page_name : undefined }`&lt;br&gt; `{ page_name : null }`&lt;br&gt; `{ page_name : &#34;&#34; }`&lt;br&gt; `{ product_id : [] }` |  Imported from Tealium iQ Tag Management |
-|is not empty|  Tealium iQ variable contains any value. For example, a string containing one or more characters, a number with a value (including `0`), or an array with one or more items. &lt;br&gt;&lt;br&gt;**True**&lt;br&gt; `{ page_name : &#34;Title&#34; }`&lt;br&gt; `{ page_num : 1 }`&lt;br&gt; `{ product_id : [&#34;WidgetXYZ&#34;] }` |  Imported from Tealium iQ Tag Management |
+|array contains|  An item in the array is an exact match to the value you specify.<br><br>**True**<br> `["iOS", "Android"]` array contains "Android" <br><br>**False**<br> `["Women's Clothing", "Shoes"]` array contains "Women" |  Array |
+|array does not contain|  No item in the array is an exact match to the value you specify. <br><br>**True**<br> `["iOS", "Android"]` array does not contain "Samsung" <br><br>**False**<br> `["Women's Clothing", "Shoes"]` array does not contain "Shoes" |  Array |
+|contains|  Attribute value includes the value you specify. <br><br>**True**<br> `"user@tealium.com"` contains "tealium"<br> `["iOS", "Android"]` array contains "Android" <br><br>**False**<br> `["Women's Clothing", "Shoes"]` array contains "Women" |  Array<br> String<br> Tally<br> Visitor ID |
+| contains<br> (ignore case) | Attribute value includes the value you specify.|  String<br> Visitor ID |
+|does not contain| Attribute value excludes the value you specify.|  Array<br> String<br> Visitor ID<br> Tally |
+| does not contain<br> (ignore case) | Attribute value excludes the value you specify.|  Array<br> String<br> Visitor ID<br> Tally |
+|contains partial string|  Attribute value partially matches the value you specify. <br><br>**True**<br> `["Women's Clothing", "Shoes"]` array contains "Women" <br><br>**False**<br> `["Women's Clothing", "Shoes"]` array contains "Tops" |  Array<br> Tally<br> Visitor ID |
+| contains partial string<br> (ignore case) | Attribute value partially matches the value you specify, regardless of case.|  Array<br> Tally<br> Visitor ID |
+|equals|  Attribute value matches the whole value you specify. <br><br>**True**<br> `"purchase"` equals "purchase"<br>  equals 0 <br><br>**False**<br> `"Luggage"` equals "luggage"<br>  equals 1 |  Number<br> String<br> Visitor ID |
+| equals (ignore case) | Attribute value matches the whole value you specify.|  String<br> Visitor ID |
+|does not equal| Attribute value does not match the whole value you specify.|  Number<br> String<br> Visitor ID |
+| does not equal (ignore case) | Attribute value does not match the whole value you specify.|  String<br> Visitor ID |
+|less than| Attribute value is less than the value you specify.|  Number<br> Date |
+|less than or equal to| Attribute value is either less than or equal to the value you specify.|  Number<br> Date |
+|greater than| Attribute value exceeds the value you specify.|  Number<br> Date |
+|greater than or equal to| Attribute value either exceeds or equals the value you specify.|  Number<br> Date |
+|is assigned|  Attribute exists, but may or may not have a value. <br><br>**True**<br> `"Shirts"` is assigned <br>`["iOS", "Android"]` is assigned<br> `[]` is assigned <br>`""` is assigned is assigned <br>`Is VIP` is assigned |  Number<br> Timeline<br> List<br> Badge<br> String<br> Tally<br> Visitor ID<br> Date |
+|is not assigned| Attribute does not exist.|  Number<br> Timeline<br> List<br> Badge<br> String<br> Tally<br> Date<br> Visitor ID |
+|is empty|  Tealium iQ variable does not contain any value (for example, value is undefined, null, or blank string). <br><br>**True**<br> `{ page_name : undefined }`<br> `{ page_name : null }`<br> `{ page_name : "" }`<br> `{ product_id : [] }` |  Imported from Tealium iQ Tag Management |
+|is not empty|  Tealium iQ variable contains any value. For example, a string containing one or more characters, a number with a value (including `0`), or an array with one or more items. <br><br>**True**<br> `{ page_name : "Title" }`<br> `{ page_num : 1 }`<br> `{ product_id : ["WidgetXYZ"] }` |  Imported from Tealium iQ Tag Management |
 |is true| Boolean value equals **True**.|  Boolean |
 |is false| Boolean value equals **False**.|  Boolean |
 |occurred less than| Date value is not yet past the number of minutes/hours/days/weeks/months you specify.|  Date |
@@ -45,17 +49,21 @@ Some operators apply only to certain attribute types, which is indicated in the 
 
 You can create a rule condition to check if the key for a [Tally]() attribute contains a specific value using the `contains` operator.
 
+
+<blockquote>
 This extended rule condition is available only when using the `contains` operator.
+</blockquote>
+
 
 Follow these steps to include a Tally attribute key and its value in a rule:
 
-1. Navigate to **Transform &gt; Rules**.
+1. Navigate to **Transform > Rules**.
 1. Add a new rule or select an existing rule to edit.
 1. Under **Conditions**, select the Tally attribute you want to check from the first drop-down list.
 1. Select the **contains** operator in the next drop-down list.
 1. In the third drop-down list, select **Custom Value**.
 1. Enter the key-value that you expect in the Tally attribute.  
-      ![](/images/server-side/tally-rule.png)
+      ![](https://docs.tealium.com/images/server-side/tally-rule.png)
 
 1. Click **Perform rule on value** and select the operator you want to use to evaluate the key you specified.
 1. Specify the value you want to evaluate against the key. You can use an attribute or type in a custom value.
@@ -65,10 +73,13 @@ Follow these steps to include a Tally attribute key and its value in a rule:
 
 The `matches regex` operator is available only for string attributes. The condition returns `true` if any part of the string matches the regular expression (regex). 
 
+
+<blockquote>
 Enter a regular expression into the rule condition without slashes (`/`).For example, for the value `abc1234567890`, enter `^[a-z0-9]{13}$` to match the entire string.
+</blockquote>
 
 
-![](/images/server-side/audiences/regex_example_ui.png)
+![](https://docs.tealium.com/images/server-side/audiences/regex_example_ui.png)
 
 The `matches regex` operator has two options:
 

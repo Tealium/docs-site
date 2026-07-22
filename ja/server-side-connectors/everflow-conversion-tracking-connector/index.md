@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/everflow-conversion-trac
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて]()の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
 
 コネクタを追加した後、次の構成を構成します：
 
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/everflow-conversion-trac
 
 |**パラメータ**| **説明**|
 |---| ---|
-|トランザクションID|  &lt;ul&gt;&lt;li&gt;ランディングページから取得したEverflowによって追跡された一意のクリックIDを渡します。&lt;/li&gt;&lt;li&gt;詳細については、[Everflowサポート](https://help.everflow.io/support/solutions/articles/22000221125-advertiser-conversion-tracking-postback-url)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
+|トランザクションID|  <ul><li>ランディングページから取得したEverflowによって追跡された一意のクリックIDを渡します。</li><li>詳細については、[Everflowサポート](https://help.everflow.io/support/solutions/articles/22000221125-advertiser-conversion-tracking-postback-url)を参照してください。</li></ul> |
 
 ### アクション - 広告主のポストコンバージョンイベントを送信
 
@@ -37,5 +37,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/everflow-conversion-trac
 
 |**パラメータ**| **説明**|
 |---| ---|
-|トランザクションID|  &lt;ul&gt;&lt;li&gt;ランディングページから取得したEverflowによって追跡された一意のクリックIDを渡します。&lt;/li&gt;&lt;li&gt;詳細については、[Everflowヘルプデスク](https://help.everflow.io/support/solutions/articles/22000221125-advertiser-conversion-tracking-postback-url)を参照してください。&lt;/li&gt;&lt;/ul&gt; |
-|イベントデータ|  &lt;ul&gt;&lt;li&gt;オファービューで利用可能な**event\_id**を含むポストコンバージョンイベントを追跡するためのイベントデータを追加します。&lt;/li&gt;&lt;/ul&gt; |
+|トランザクションID|  <ul><li>ランディングページから取得したEverflowによって追跡された一意のクリックIDを渡します。</li><li>詳細については、[Everflowヘルプデスク](https://help.everflow.io/support/solutions/articles/22000221125-advertiser-conversion-tracking-postback-url)を参照してください。</li></ul> |
+|イベントデータ|  <ul><li>オファービューで利用可能な**event\_id**を含むポストコンバージョンイベントを追跡するためのイベントデータを追加します。</li></ul> |

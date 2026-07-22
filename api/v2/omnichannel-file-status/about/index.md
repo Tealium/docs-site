@@ -10,11 +10,15 @@ The Omnichannel File Status API returns a File Status that details when the file
 
 To use the Omnichannel File Status API, you will need the following:
 
-* A configured [file import data source]()
+* A configured [file import data source](https://docs.tealium.com/about-file-import/)
 * An API key from Tealium iQ Tag Management
 
 ## Authentication
 
-The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call.
 
-See the [Getting Started]() guide to learn about generating a bearer token from the API key.
+<blockquote>
+The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call.
+</blockquote>
+
+
+See the [Getting Started](https://docs.tealium.com/api-authentication/) guide to learn about generating a bearer token from the API key.

@@ -5,11 +5,11 @@ url: https://docs.tealium.com/platforms/ios-swift/module-list/adobe-visitor-serv
 ---
 The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors.
 
-Learn more about the [AdobeVisitorService](/platforms/getting-started-mobile/adobe-visitor-service/) module.
+Learn more about the [AdobeVisitorService](https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-service/) module.
 
 ## Requirements
 
-* [Tealium for Swift](/platforms/ios-swift/) (2.0.0&#43;)
+* [Tealium for Swift](https://docs.tealium.com/platforms/ios-swift/) (2.0.0+)
 * Valid Adobe account and Adobe organization ID
 * [TealiumAdobeVisitorAPI GitHub Repo](https://github.com/Tealium/tealium-swift-adobe-visitor-api)
 
@@ -34,28 +34,28 @@ Possible causes for no ECID being retrieved are:
 To install the AdobeService module with Carthage, add the following to your cartfile:
 
 ```bash
-github &#34;tealium/tealium-swift-adobe-visitor-api&#34;
+github "tealium/tealium-swift-adobe-visitor-api"
 ```
 
-[Learn more](/platforms/ios-swift/install/#carthage) about Carthage installation for iOS.
+[Learn more](https://docs.tealium.com/platforms/ios-swift/install/#carthage) about Carthage installation for iOS.
 
 ### CocoaPods
 
 
 To install the AdobeVisitor module with CocoaPods, add the following pod to your podfile:  
 ```perl
-pod &#39;TealiumAdobeVisitorAPI&#39;
+pod 'TealiumAdobeVisitorAPI'
 ```
 
-Learn more about the [CocoaPods installation for iOS](/platforms/ios-swift/install/#cocoapods).
+Learn more about the [CocoaPods installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#cocoapods).
 
 ### Swift Package Manager (Recommended)
 
 Swift Package Manager is the recommended way to install the Tealium Swift library:
 
-1. In your Xcode project, select **File &gt; Add Package Dependencies**.
+1. In your Xcode project, select **File > Add Package Dependencies**.
 1. Enter the repository URL: `https://github.com/Tealium/tealium-swift-adobe-visitor-api`.
-1. Configure the version rules. The default, `&#34;Up to next major&#34;`, is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.
+1. Configure the version rules. The default, `"Up to next major"`, is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.
 1. Select the `TealiumAdobeVisitorAPI` module from the list of modules to install. Add the module to each of your app targets in your Xcode project under **Frameworks and Libraries**.
 
 Learn more about the [Swift Package Manager](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended) installation for iOS.
@@ -63,9 +63,9 @@ Learn more about the [Swift Package Manager](https://docs.tealium.com/platforms/
 ```swift
 import TealiumAdobeVisitorAPI
 
-let config = TealiumConfig(account: &#34;ACCOUNT&#34;,
-    profile: &#34;PROFILE&#34;,
-    environment: &#34;ENVIRONMENT&#34;)
+let config = TealiumConfig(account: "ACCOUNT",
+    profile: "PROFILE",
+    environment: "ENVIRONMENT")
 config.collectors = [Collectors.AppData,
     Collectors.Connectivity,
     Collectors.Device,
@@ -75,9 +75,17 @@ config.dispatchers = [Dispatchers.Collect]
 self.tealium = Tealium(config: config)
 ```
 
-Review the [Collectors](/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
 
-Learn more about the [Swift Package Manager installation for iOS](/platforms/ios-swift/install/#swift-package-manager-recommended).
+<blockquote>
+Review the [Collectors](https://docs.tealium.com/platforms/ios-swift/modules/#collectors) documentation to understand how to correctly specify the collectors you require.
+</blockquote>
 
-To link a known visitor ID or set the authentication state, see [Set a known visitor ID and authentication state](/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state).
+
+Learn more about the [Swift Package Manager installation for iOS](https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended).
+
+
+<blockquote>
+To link a known visitor ID or set the authentication state, see [Set a known visitor ID and authentication state](https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state).
+</blockquote>
+
 

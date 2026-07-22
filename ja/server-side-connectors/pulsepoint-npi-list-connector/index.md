@@ -3,7 +3,7 @@ title: PulsePoint NPIリストコネクタ構成ガイド
 description: この記事では、PulsePoint NPIリストコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/pulsepoint-npi-list-connector/
 ---
-このインテグレーションは、Life by PulsePointに接続します。Lifeは、医療広告に特化したDSPで、HCPを対象としたデジタル医療広告キャンペーンの計画、活性化、分析を行うことができます。当社のPulsePoint NPIリストコネクタは、LifeのNPIリストへの直接アクセスと完全な制御を提供し、[Tealium for Pharma CDP](/ja/industries/tealium-for-pharma/)へのシームレスな統合を実現します。
+このインテグレーションは、Life by PulsePointに接続します。Lifeは、医療広告に特化したDSPで、HCPを対象としたデジタル医療広告キャンペーンの計画、活性化、分析を行うことができます。当社のPulsePoint NPIリストコネクタは、LifeのNPIリストへの直接アクセスと完全な制御を提供し、[Tealium for Pharma CDP](https://docs.tealium.com/ja/industries/tealium-for-pharma/)へのシームレスな統合を実現します。
 
 ## API情報
 
@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/pulsepoint-npi-list-conn
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて]()を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 

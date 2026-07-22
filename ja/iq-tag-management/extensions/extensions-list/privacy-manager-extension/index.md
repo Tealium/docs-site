@@ -3,7 +3,11 @@ title: プライバシーマネージャー拡張機能
 description: この記事では、プライバシーマネージャー拡張機能を追加して構成する方法について説明します。プライバシーマネージャー拡張機能は、お客様にプライバシーオプションを表示するために使用されます。
 url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/privacy-manager-extension/
 ---
+
+<blockquote>
 このレガシー拡張機能の代わりに[同意管理機能]()の使用をお勧めします。
+</blockquote>
+
 
 ## 前提条件
 
@@ -13,7 +17,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pr
 
 プライバシーマネージャー拡張機能を使用すると、ユーザーに提示されるプライバシーオプションを制御し、この機能をウェブサイトに追加する手順を簡素化できます。プライバシーダイアログは各タグカテゴリのオン/オフ状態を表示し、ユーザーの構成をクッキーに保存します。これにより、ページ上でロードできるタグが制御されます。
 
-![](/images/iq-tag-management/consent-preferences-prompt.png)
+![](https://docs.tealium.com/images/iq-tag-management/consent-preferences-prompt.png)
 
 ## 拡張機能の使用
 
@@ -47,24 +51,32 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pr
         * **ノードの置換**：参照される要素全体をボタンで置き換えます。
 
 1. **条件を追加**ボタンをクリックして、ここに示されるようにプライバシーマネージャーの条件を追加します：
-    ![](/images/iq-tag-management/privacy-manager-extension-add-condition.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/privacy-manager-extension-add-condition.jpg)
 1. **訪問オプション**タブをクリックして、訪問がタグ追跡のオプトインまたはオプトアウトを選択するオプションを選択します。
-    ![](/images/iq-tag-management/privacy-manager-extension-edit-visitor-options-tab.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/privacy-manager-extension-edit-visitor-options-tab.jpg)
     * **オプト方式**：訪問がデフォルトでタグ追跡のオプトインまたはオプトアウトになるかを決定するための以下のいずれかを選択します。
         * **デフォルトでオプトイン**
         * **デフォルトでオプトアウト**
     * **訪問選択タイプ**：訪問がタグまたはタグのカテゴリに基づいてオプトアウトするかどうかを決定するための以下のいずれかを選択します。
         * **タグによる**
         * **カテゴリによる**  
-        カテゴリに基づいてオプトイン/アウトする方法についての詳細は、カテゴリによる訪問タイプの選択セクションを参照してください。
+        
+<blockquote>
+カテゴリに基づいてオプトイン/アウトする方法についての詳細は、カテゴリによる訪問タイプの選択セクションを参照してください。
+</blockquote>
+
     * **シングルクッキー制限**：Tealiumクッキーを保持するか削除するかを決定するための以下のいずれかを選択します。
         * **Tealiumクッキーを保持**
         * **Tealiumクッキーを削除**  
-    デフォルトでは、Tealiumクッキーは訪問、セッション、タイムスタンプ情報に使用されます。Tealiumクッキーは、永続的なクッキー情報を保存するPersist拡張機能とも連携して使用されます。
+    
+<blockquote>
+デフォルトでは、Tealiumクッキーは訪問、セッション、タイムスタンプ情報に使用されます。Tealiumクッキーは、永続的なクッキー情報を保存するPersist拡張機能とも連携して使用されます。
+</blockquote>
+
 
 1. **省略するタグ**タブをクリックし、オプトアウトのオプションから免除したいタグを選択します。
 選択したタグは緑色で強調表示されます。これらのタグは、訪問がオプトインまたはオプトアウトに関わらずロードされます。
-    ![](/images/iq-tag-management/privacy-manager-extension-edit-tags-to-omit.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/privacy-manager-extension-edit-tags-to-omit.jpg)
 1. **適用**をクリックし、その後**保存/公開**して変更を反映させます。
 
 ### カテゴリによる訪問タイプの選択
@@ -75,9 +87,9 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pr
 1. **訪問オプション**タブをクリックし、その後**訪問選択タイプ**セクションの**カテゴリによる**ラジオボタンを選択します。
 1. **新しいカテゴリ**フィールドが表示されます。**新しいカテゴリ**の下に新しいカテゴリの名前を入力し、**追加**をクリックします。
 1. 新しいカテゴリが表示されます。提供されたスペースに新しいカテゴリの説明を追加します。この説明はウィジェットで訪問に表示されます。
-    ![](/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-add-new-category-desciption.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-add-new-category-desciption.jpg)
 1. 構成内の任意のタグをクリックし、適切なカテゴリにタグをドラッグアンドドロップして配置します。
-    ![](/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-drag-and-drop-tags-into-categories.jpg)
+    ![](https://docs.tealium.com/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-drag-and-drop-tags-into-categories.jpg)
 1. **適用**をクリックし、その後**保存して公開**して変更を反映させます。
 
 ## FAQ
@@ -94,7 +106,11 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/pr
 
 2015年11月10日に、非ASCII/アクセント文字を含むカテゴリ名が正しくエンコードされなかったバグが解決されました。既存のプライバシーマネージャー拡張機能にバグ修正を適用するには、プロファイルでMulti-Opt-Outテンプレートを再生成する必要があります。
 
+
+<blockquote>
 テンプレートを再生成すると、適用されていたカスタマイズは保持されません。処理を進める前に、カスタムコードのバックアップを取ってください。
+</blockquote>
+
 
 プロファイルでMulti-Opt-Outテンプレートを再生成するための手順は以下の通りです：
 

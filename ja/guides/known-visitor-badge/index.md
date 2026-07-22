@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/guides/known-visitor-badge/
 ---
 ## 仕組み
 
-![](/images/server-side/badges-known-visitor.png)
+![](https://docs.tealium.com/images/server-side/badges-known-visitor.png)
 
 `Known Visitor` バッジは、訪問が一意で信頼性のあるユーザー識別子を提供するアクションを取ったときに割り当てられます。一度作成されると、このバッジは通常、コネクタでターゲットできる訪問を選択するためのオーディエンスセグメントを作成するために使用されます。
 
@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/guides/known-visitor-badge/
 
 バッジは、より洗練されたオーディエンスセグメントを作成するために組み合わせることができます。例えば、以下のオーディエンスには、`Known Visitor` および `Cart Abandoner` バッジを持ち、メールアドレスを提供した訪問が含まれています。このオーディエンスは、カートに残されたアイテムについて訪問にメールでリマインドするためのコネクタをトリガーするために使用できます：
 
-![](/images/guides/server-side/known-visitor-purchaser-abandoned.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-purchaser-abandoned.png)
 
 ## 利点
 
@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/guides/known-visitor-badge/
 * **ロイヤルティプログラム登録**: 訪問がロイヤルティまたは報酬プログラムに登録するとき、通常はメールアドレスや会員IDなどの個人情報を提供します。
 * **カスタマーサポートの対話**: ライブチャットセッション、サポートチケット、または電話通話中に、訪問はしばしばメールアドレスや電話番号のような識別子を提供して自分の身元を確認します。
 
-ユーザー識別子についての詳細は、[User identifiers]()を参照してください。
+ユーザー識別子についての詳細は、[User identifiers](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#user-identifiers)を参照してください。
 
 ## シナリオ
 
@@ -41,7 +41,7 @@ url: https://docs.tealium.com/ja/guides/known-visitor-badge/
 
 `Known Visitor` バッジは、カート放棄者のより効果的なリターゲティングのための直接的でパーソナライズされたコミュニケーションを可能にします。
 
-![](/images/guides/server-side/known-visitor-cart-abandoner-email.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-cart-abandoner-email.png)
 
 * **既知の訪問**: カートを放棄し、メールアドレスを提供した訪問。このセグメントは、カートに残されたアイテムについてのパーソナライズされたメールリマインダーをターゲットにすることができ、購入を完了するための割引やインセンティブが含まれる可能性があります。
 * **未知の訪問**: カートを放棄したがメールアドレスを提供していない訪問。このセグメントは、ディスプレイ広告やサイト内リマインダーなど、より一般的な方法でのみリターゲティングが可能です。
@@ -50,7 +50,7 @@ url: https://docs.tealium.com/ja/guides/known-visitor-badge/
 
 `Known Visitor` バッジは、より強固な顧客関係を築くためのテーラーメイドのロイヤルティキャンペーンを可能にします。
 
-![](/images/guides/server-side/known-visitor-purchased-email.png)
+![](https://docs.tealium.com/images/guides/server-side/known-visitor-purchased-email.png)
 
 * **既知の訪問**: 複数回の購入を行い、メールアドレスまたはアカウントを持つ訪問。このセグメントは、ロイヤルティ報酬、独占オファー、またはVIPプログラムでターゲットにすることができます。
 * **未知の訪問**: 複数回の購入を行ったが、識別可能な情報を提供していない訪問。このセグメントは、一般的なプロモーションやサイト内メッセージングでのみターゲットにすることができます。

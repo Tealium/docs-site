@@ -18,7 +18,7 @@ url: https://docs.tealium.com/client-side-tags/quantcast-easy-tag-for-advertise/
 
 ## Tag Configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Quantcast Easy Tag for Advertise tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Quantcast Easy Tag for Advertise tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -29,7 +29,7 @@ After adding the tag, configure the following settings:
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -37,17 +37,17 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-|`qacct`|  &lt;ul&gt;&lt;li&gt;Account Code (P-code).&lt;/li&gt;&lt;li&gt;A 13-character, case sensitive, alpha-numeric code that begins with `p-`.&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.event`|  &lt;ul&gt;&lt;li&gt;Event&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.channel`|  &lt;ul&gt;&lt;li&gt;Channel&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.subchannel`|  &lt;ul&gt;&lt;li&gt;Subchannel&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.customer`|  &lt;ul&gt;&lt;li&gt;Customer&lt;/li&gt;&lt;/ul&gt; |
-|`_fp.pcat`|  &lt;ul&gt;&lt;li&gt;Product Category&lt;/li&gt;&lt;/ul&gt; |
-|`mylabel`|  &lt;ul&gt;&lt;li&gt;Custom Label&lt;/li&gt;&lt;/ul&gt; |
+|`qacct`|  <ul><li>Account Code (P-code).</li><li>A 13-character, case sensitive, alpha-numeric code that begins with `p-`.</li></ul> |
+|`_fp.event`|  <ul><li>Event</li></ul> |
+|`_fp.channel`|  <ul><li>Channel</li></ul> |
+|`_fp.subchannel`|  <ul><li>Subchannel</li></ul> |
+|`_fp.customer`|  <ul><li>Customer</li></ul> |
+|`_fp.pcat`|  <ul><li>Product Category</li></ul> |
+|`mylabel`|  <ul><li>Custom Label</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`orderid`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides E-Comm Order ID.&lt;/li&gt;&lt;/ul&gt; |
-|`revenue`|  &lt;ul&gt;&lt;li&gt;Revenue.&lt;/li&gt;&lt;li&gt;Overrides E-Comm Order Subtotal.&lt;/li&gt;&lt;/ul&gt; |
+|`orderid`|  <ul><li>Order ID.</li><li>Overrides E-Comm Order ID.</li></ul> |
+|`revenue`|  <ul><li>Revenue.</li><li>Overrides E-Comm Order Subtotal.</li></ul> |

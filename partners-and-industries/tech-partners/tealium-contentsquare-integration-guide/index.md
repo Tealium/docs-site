@@ -20,7 +20,11 @@ Contentsquare empowers brands to act on unique behavioral insights to turn user 
 
 For more information, visit [contentsquare.com](https://contentsquare.com/).
 
+
+<blockquote>
 Previously, Fraud and Ad blocking triggers were available as configuration settings in the Contentsquare tag. These settings are now built-in to the tag and enabled by default.
+</blockquote>
+
 
 ### Fraud
 
@@ -33,7 +37,11 @@ Triggers when thresholds are met that identify abnormal and potentially fraudule
 
 * **Ad Blocker Signal**
 Identifies when or if certain files are blocked, which signifies that an ad blocker is present.
+
+<blockquote>
 You can optionally use signals from your EventStream event specifications and your AudienceStream visitor attributes.
+</blockquote>
+
 
 ## Tag tips
 
@@ -50,25 +58,25 @@ You can optionally use signals from your EventStream event specifications and yo
 
 ## Tag configuration
 
-First, go to the Tealium tag marketplace and add the Contentsquare UX User Analytics tag (Learn more about [how to add a tag]()).
+First, go to the Tealium tag marketplace and add the Contentsquare UX User Analytics tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
-See: [Contentsquare UX User Analytics Tag Setup Guide]()
+See: [Contentsquare UX User Analytics Tag Setup Guide](https://docs.tealium.com/contentsquare-ux-analytics-tag/)
 
 After adding the tag, go to the **Data Mappings** section to configure any additional mappings.
 
 ## Load rules
 
-[Load Rules]() determine when and where to load an instance of this tag. The &#39;Load on All Pages&#39; rule is the default load rule.
+[Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag. The 'Load on All Pages' rule is the default load rule.
 
-To load this tag on a specific page, create a new load rule with the relevant conditions and load the Contentsquare tag on the page where you want to track the visitor&#39;s mouse movements.
+To load this tag on a specific page, create a new load rule with the relevant conditions and load the Contentsquare tag on the page where you want to track the visitor's mouse movements.
 
 ## Extensions
 
 You must set `tealium_datasource` in your data layer to allow Contentsquare to send data server-side.
 
-1. Go to **Server-Side &amp;gt; Data Sources.**
+1. Go to **Server-Side &gt; Data Sources.**
 1. Add the HTTP API data source
-1. Set the name to &#34;Contentsquare Server-Side Events&#34;.
+1. Set the name to "Contentsquare Server-Side Events".
 
 When you finish, note the data source key. In iQ Tag Management, use an extension to assign this value to the variable `tealium_datasource`.
 
@@ -78,11 +86,11 @@ If you are running the Tealium Universal Tag (utag.js) version 4.41 or older, yo
 * `tealium_profile`
 * `tealium_visitor_id`
 
-These variables are set automatically in version 4.42&#43;.
+These variables are set automatically in version 4.42+.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -90,31 +98,31 @@ The available categories are:
 
 |Variable| Description|
 |---| ---|
-| `title` |  &lt;ul&gt;&lt;li&gt;(Required) Identifies the tag instance.&lt;/li&gt;&lt;li&gt;Contentsquare UX Analytics is the default name.&lt;/li&gt;&lt;li&gt;When using multiple tags by the same vendor, assign a unique name.&lt;/li&gt;&lt;/ul&gt; |
-| `id_project` |  &lt;ul&gt;&lt;li&gt;The Project Tag ID specific to your project.&lt;/li&gt;&lt;li&gt;Map to this variable to set the project guide field.&lt;/li&gt;&lt;/ul&gt; |
-| `base_url` |  &lt;ul&gt;&lt;li&gt;Base URL&lt;/li&gt;&lt;/ul&gt; |
-| `send_replay_link` |  &lt;ul&gt;&lt;li&gt;Send Contentsquare Replay Link&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;li&gt;Also known as `contensquare_replay_link`. Note: This variable and session replay capability is currently in development for Contentsquare tag and is expected to be released in H1 2020. &lt;/li&gt;&lt;/ul&gt; |
-| `send_udh_audiences` |  &lt;ul&gt;&lt;li&gt;Send Customer Data Hub (CDH) audiences.&lt;/li&gt;&lt;li&gt;Values are **true** or **false**.&lt;/li&gt;&lt;/ul&gt; |
-| `tealium_account` |  &lt;ul&gt;&lt;li&gt;Tealium account.&lt;/li&gt;&lt;/ul&gt; |
-| `tealium_profile` |  &lt;ul&gt;&lt;li&gt;Tealium profile.&lt;/li&gt;&lt;/ul&gt; |
+| `title` |  <ul><li>(Required) Identifies the tag instance.</li><li>Contentsquare UX Analytics is the default name.</li><li>When using multiple tags by the same vendor, assign a unique name.</li></ul> |
+| `id_project` |  <ul><li>The Project Tag ID specific to your project.</li><li>Map to this variable to set the project guide field.</li></ul> |
+| `base_url` |  <ul><li>Base URL</li></ul> |
+| `send_replay_link` |  <ul><li>Send Contentsquare Replay Link</li><li>Values are **true** or **false**.</li><li>Also known as `contensquare_replay_link`. Note: This variable and session replay capability is currently in development for Contentsquare tag and is expected to be released in H1 2020. </li></ul> |
+| `send_udh_audiences` |  <ul><li>Send Customer Data Hub (CDH) audiences.</li><li>Values are **true** or **false**.</li></ul> |
+| `tealium_account` |  <ul><li>Tealium account.</li></ul> |
+| `tealium_profile` |  <ul><li>Tealium profile.</li></ul> |
 
 ### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID.&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;Order total.&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping amount.&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax amount.&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_sku`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of SKUs.&lt;/li&gt;&lt;li&gt;Overrides `_csku`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories.&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;li&gt;Required for transactions.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID.</li><li>Overrides `_corder`.</li><li>Required for transactions.</li></ul> |
+|`order_total`|  <ul><li>Order total.</li><li>Overrides `_ctotal`.</li><li>Required for transactions.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping amount.</li><li>Overrides `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax amount.</li><li>Overrides `_ctax`.</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li><li>Required for transactions.</li></ul> |
+|`product_sku`|  <ul><li>Array</li><li>List of SKUs.</li><li>Overrides `_csku`.</li><li>Required for transactions.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories.</li><li>Overrides `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li><li>Required for transactions.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li><li>Required for transactions.</li></ul> |
 
 ### Badges
 
 |Variable| Description|
 |---| ---|
-| `title` |  &lt;ul&gt;&lt;li&gt;Badge Identifier.&lt;/li&gt;&lt;li&gt;To send the mapped badge to Contentsquare, enter the name by which the badge will be identified in Contentsquare.&lt;/li&gt;&lt;li&gt;Tealium automatically includes the badge title as a child property of a new object `send_udh_data`&lt;/li&gt;&lt;li&gt;Your badge name will appear as mapped to `send_udh_data`.&lt;/li&gt;&lt;/ul&gt; |
+| `title` |  <ul><li>Badge Identifier.</li><li>To send the mapped badge to Contentsquare, enter the name by which the badge will be identified in Contentsquare.</li><li>Tealium automatically includes the badge title as a child property of a new object `send_udh_data`</li><li>Your badge name will appear as mapped to `send_udh_data`.</li></ul> |

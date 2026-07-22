@@ -28,7 +28,7 @@ url: https://docs.tealium.com/client-side-tags/piwik-pro-tag/
 
 ## Tag configuration
 
-First, go to Tealium&#39;s tag marketplace and add the Piwik PRO tag (Learn more about [how to add a tag]()).
+First, go to Tealium's tag marketplace and add the Piwik PRO tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
 
 After adding the tag, configure the following settings:
 
@@ -40,7 +40,7 @@ After adding the tag, configure the following settings:
   * Include `//` at the beginning.
   * Example: `//example.com`
 
-* **Enable Download &amp; Outlink tracking**
+* **Enable Download & Outlink tracking**
 
 * **Tracking all content impressions within a page**  
 To track content, it has to have the data-track-content attribute or `piwikTrackContent` CSS class attached to it.
@@ -69,7 +69,7 @@ To track content, it has to have the data-track-content attribute or `piwikTrack
 
 ### Data Mappings
 
-Mapping is the process of sending data from a [data layer variable]() to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](/iq-tag-management/data-mappings/manage/).
+Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
 
 The available categories are:
 
@@ -77,94 +77,94 @@ The available categories are:
 
 | Variable                             | Description                                                  |
 | ------------------------------------ | ------------------------------------------------------------ |
-| `appId`                              | &lt;ul&gt;&lt;li&gt;App ID.&lt;/li&gt;&lt;/ul&gt;                                    |
-| `base_url`                           | &lt;ul&gt;&lt;li&gt;PPAS Instance Address.&lt;/li&gt;&lt;/ul&gt;                     |
-| `tracking_url`                       | &lt;ul&gt;&lt;li&gt;Analytics Tracker URL.&lt;/li&gt;&lt;/ul&gt;                     |
-| `category`                           | &lt;ul&gt;&lt;li&gt;Event Category.&lt;/li&gt;&lt;/ul&gt;                            |
-| `action`                             | &lt;ul&gt;&lt;li&gt;Event Action.&lt;/li&gt;&lt;/ul&gt;                              |
-| `name`                               | &lt;ul&gt;&lt;li&gt;Event Name.&lt;/li&gt;&lt;/ul&gt;                                |
-| `value`                              | &lt;ul&gt;&lt;li&gt;Event Value.&lt;/li&gt;&lt;/ul&gt;                               |
-| `goal_name`                          | &lt;ul&gt;&lt;li&gt;Goal Name.&lt;/li&gt;&lt;/ul&gt;                                 |
-| `goal_value`                         | &lt;ul&gt;&lt;li&gt;Goal Value.&lt;/li&gt;&lt;/ul&gt;                                |
-| `title`                              | &lt;ul&gt;&lt;li&gt;Custom Page Name/Document Title.&lt;/li&gt;&lt;/ul&gt;           |
-| `beat`                               | &lt;ul&gt;&lt;li&gt;Time Between Heartbeat Requests.&lt;/li&gt;&lt;/ul&gt;           |
-| `keyword`                            | &lt;ul&gt;&lt;li&gt;Keyword&lt;/li&gt;&lt;/ul&gt;                                    |
-| `searchCount`                        | &lt;ul&gt;&lt;li&gt;Search Count&lt;/li&gt;&lt;/ul&gt;                               |
-| `isAnonymous`                        | &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Enable Anonymous Tracking.&lt;/li&gt;&lt;/ul&gt; |
-| `CustomUrl`                          | &lt;ul&gt;&lt;li&gt;Custom URL&lt;/li&gt;&lt;/ul&gt;                                 |
-| `ReferrerUrl`                        | &lt;ul&gt;&lt;li&gt;Referrer URL.&lt;/li&gt;&lt;/ul&gt;                              |
-| `cookieDomain`                       | &lt;ul&gt;&lt;li&gt;Cookie Domain.&lt;/li&gt;&lt;/ul&gt;                             |
-| `cookiePath`                         | &lt;ul&gt;&lt;li&gt;Cookie Path.&lt;/li&gt;&lt;/ul&gt;                               |
-| `updateTimingDataOnPageLoadSampling` | &lt;ul&gt;&lt;li&gt;Update Timing Data On Page Load Sampling.&lt;/li&gt;&lt;/ul&gt;  |
-| `enableHeartBeatTimer`               | &lt;ul&gt;&lt;li&gt;Enable Heart Beat Timer.&lt;/li&gt;&lt;/ul&gt;                   |
-| `sendPageView`  | &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Send Page View&lt;/li&gt;&lt;/ul&gt;  |
+| `appId`                              | <ul><li>App ID.</li></ul>                                    |
+| `base_url`                           | <ul><li>PPAS Instance Address.</li></ul>                     |
+| `tracking_url`                       | <ul><li>Analytics Tracker URL.</li></ul>                     |
+| `category`                           | <ul><li>Event Category.</li></ul>                            |
+| `action`                             | <ul><li>Event Action.</li></ul>                              |
+| `name`                               | <ul><li>Event Name.</li></ul>                                |
+| `value`                              | <ul><li>Event Value.</li></ul>                               |
+| `goal_name`                          | <ul><li>Goal Name.</li></ul>                                 |
+| `goal_value`                         | <ul><li>Goal Value.</li></ul>                                |
+| `title`                              | <ul><li>Custom Page Name/Document Title.</li></ul>           |
+| `beat`                               | <ul><li>Time Between Heartbeat Requests.</li></ul>           |
+| `keyword`                            | <ul><li>Keyword</li></ul>                                    |
+| `searchCount`                        | <ul><li>Search Count</li></ul>                               |
+| `isAnonymous`                        | <ul><li>Boolean</li><li>Enable Anonymous Tracking.</li></ul> |
+| `CustomUrl`                          | <ul><li>Custom URL</li></ul>                                 |
+| `ReferrerUrl`                        | <ul><li>Referrer URL.</li></ul>                              |
+| `cookieDomain`                       | <ul><li>Cookie Domain.</li></ul>                             |
+| `cookiePath`                         | <ul><li>Cookie Path.</li></ul>                               |
+| `updateTimingDataOnPageLoadSampling` | <ul><li>Update Timing Data On Page Load Sampling.</li></ul>  |
+| `enableHeartBeatTimer`               | <ul><li>Enable Heart Beat Timer.</li></ul>                   |
+| `sendPageView`  | <ul><li>Boolean</li><li>Send Page View</li></ul>  |
 
 
 #### Content Tracking
 
 |Variable| Description|
 |---| ---|
-|`trackAllContentImpressions`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Track All Content Impressions.&lt;/li&gt;&lt;/ul&gt; |
-|`checkOnScroll`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Impression Check On Scroll.&lt;/li&gt;&lt;/ul&gt; |
-| `watchInterval` |  &lt;ul&gt;&lt;li&gt;Impression WatchInterval.&lt;/li&gt;&lt;/ul&gt; |
-| `impressionDomNode` |  &lt;ul&gt;&lt;li&gt;Impression Dom Node.&lt;/li&gt;&lt;/ul&gt; |
-|`domNode`|  &lt;ul&gt;&lt;li&gt;Interaction Dom Node.&lt;/li&gt;&lt;/ul&gt; |
-| `contentInteraction` |  &lt;ul&gt;&lt;li&gt;Content Interaction Name.&lt;/li&gt;&lt;/ul&gt; |
-|`contentName`|  &lt;ul&gt;&lt;li&gt;Content Name.&lt;/li&gt;&lt;/ul&gt; |
-|`contentPiece`|  &lt;ul&gt;&lt;li&gt;Content Piece.&lt;/li&gt;&lt;/ul&gt; |
-|`contentTarget`|  &lt;ul&gt;&lt;li&gt;Content Target.&lt;/li&gt;&lt;/ul&gt; |
+|`trackAllContentImpressions`|  <ul><li>Boolean</li><li>Track All Content Impressions.</li></ul> |
+|`checkOnScroll`|  <ul><li>Boolean</li><li>Impression Check On Scroll.</li></ul> |
+| `watchInterval` |  <ul><li>Impression WatchInterval.</li></ul> |
+| `impressionDomNode` |  <ul><li>Impression Dom Node.</li></ul> |
+|`domNode`|  <ul><li>Interaction Dom Node.</li></ul> |
+| `contentInteraction` |  <ul><li>Content Interaction Name.</li></ul> |
+|`contentName`|  <ul><li>Content Name.</li></ul> |
+|`contentPiece`|  <ul><li>Content Piece.</li></ul> |
+|`contentTarget`|  <ul><li>Content Target.</li></ul> |
 
 #### Download and Outlink Tracking
 
 |Variable| Description|
 |---| ---|
-|`link_tracking`|  &lt;ul&gt;&lt;li&gt;Boolean&lt;/li&gt;&lt;li&gt;Enable Link Tracking.&lt;/li&gt;&lt;/ul&gt; |
-|`domains`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Ignore Alias Domains.&lt;/li&gt;&lt;/ul&gt; |
-|`outLinkClassName`|  &lt;ul&gt;&lt;li&gt;Outlink Class Name.&lt;/li&gt;&lt;/ul&gt; |
-|`linkAddress`|  &lt;ul&gt;&lt;li&gt;Link Address.&lt;/li&gt;&lt;/ul&gt; |
-|`addDownloadExtensions`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Add Download Extensions.&lt;/li&gt;&lt;/ul&gt; |
-|`setDownloadExtensions`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Replace Default Extensions.&lt;/li&gt;&lt;/ul&gt; |
-|`setDownloadClassName`|  &lt;ul&gt;&lt;li&gt;Set Download ClassName.&lt;/li&gt;&lt;/ul&gt; |
-|`time`|  &lt;ul&gt;&lt;li&gt;Link Tracking Delay.&lt;/li&gt;&lt;/ul&gt; |
-|`setIgnoreClasses`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;Disable Outlink Tracking Classes.&lt;/li&gt;&lt;/ul&gt; |
+|`link_tracking`|  <ul><li>Boolean</li><li>Enable Link Tracking.</li></ul> |
+|`domains`|  <ul><li>Array</li><li>Ignore Alias Domains.</li></ul> |
+|`outLinkClassName`|  <ul><li>Outlink Class Name.</li></ul> |
+|`linkAddress`|  <ul><li>Link Address.</li></ul> |
+|`addDownloadExtensions`|  <ul><li>Array</li><li>Add Download Extensions.</li></ul> |
+|`setDownloadExtensions`|  <ul><li>Array</li><li>Replace Default Extensions.</li></ul> |
+|`setDownloadClassName`|  <ul><li>Set Download ClassName.</li></ul> |
+|`time`|  <ul><li>Link Tracking Delay.</li></ul> |
+|`setIgnoreClasses`|  <ul><li>Array</li><li>Disable Outlink Tracking Classes.</li></ul> |
 
 #### Events
 
 |Variable| Description|
 |---| ---|
-|`trackEvent`|  &lt;ul&gt;&lt;li&gt;Trigger Custom Event.&lt;/li&gt;&lt;/ul&gt; |
-|`trackGoal`|  &lt;ul&gt;&lt;li&gt;Track Goal Conversion.&lt;/li&gt;&lt;/ul&gt; |
-|`addEcommerceItem`|  &lt;ul&gt;&lt;li&gt;Add Ecommerce Item.&lt;/li&gt;&lt;/ul&gt; |
-|`trackEcommerceOrder`|  &lt;ul&gt;&lt;li&gt;Track Ecommerce Order.&lt;/li&gt;&lt;/ul&gt; |
-|`trackEcommerceCartUpdate`|  &lt;ul&gt;&lt;li&gt;Update Cart.&lt;/li&gt;&lt;/ul&gt; |
-|`setEcommerceView`|  &lt;ul&gt;&lt;li&gt;Track Product / Category View.&lt;/li&gt;&lt;/ul&gt; |
-|`trackAllContentImpressions`|  &lt;ul&gt;&lt;li&gt;Tracking all content impressions within a page.&lt;/li&gt;&lt;/ul&gt; |
-|`trackVisibleContentImpressions`|  &lt;ul&gt;&lt;li&gt;Tracking all visible content impressions.&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentImpressionsWithinNode`|  &lt;ul&gt;&lt;li&gt;Tracking only content impressions for specific page part.&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentInteractionNode`|  &lt;ul&gt;&lt;li&gt;Track interactions manually with auto detection.&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentImpression`|  &lt;ul&gt;&lt;li&gt;Track impression manually.&lt;/li&gt;&lt;/ul&gt; |
-|`trackContentInteraction`|  &lt;ul&gt;&lt;li&gt;Track user interaction manually.&lt;/li&gt;&lt;/ul&gt; |
-|`trackLink`|  &lt;ul&gt;&lt;li&gt;Force Tracking download using JS function.&lt;/li&gt;&lt;/ul&gt; |
-|`setUserId`|  &lt;ul&gt;&lt;li&gt;Set UserId.&lt;/li&gt;&lt;/ul&gt; |
-|`resetUserId`|  &lt;ul&gt;&lt;li&gt;Reset UserId.&lt;/li&gt;&lt;/ul&gt; |
-|`setDocumentTitle`|  &lt;ul&gt;&lt;li&gt;Set Custom Page Name.&lt;/li&gt;&lt;/ul&gt; |
-|`trackSiteSearch`|  &lt;ul&gt;&lt;li&gt;Tracking Site Search.&lt;/li&gt;&lt;/ul&gt; |
-|`setUserIsAnonymous`|  &lt;ul&gt;&lt;li&gt;Track User Anonymously.&lt;/li&gt;&lt;/ul&gt; |
-|`deanonymizeUser`|  &lt;ul&gt;&lt;li&gt;Disable tracking user anonymously (after visitor consent).&lt;/li&gt;&lt;/ul&gt; |
+|`trackEvent`|  <ul><li>Trigger Custom Event.</li></ul> |
+|`trackGoal`|  <ul><li>Track Goal Conversion.</li></ul> |
+|`addEcommerceItem`|  <ul><li>Add Ecommerce Item.</li></ul> |
+|`trackEcommerceOrder`|  <ul><li>Track Ecommerce Order.</li></ul> |
+|`trackEcommerceCartUpdate`|  <ul><li>Update Cart.</li></ul> |
+|`setEcommerceView`|  <ul><li>Track Product / Category View.</li></ul> |
+|`trackAllContentImpressions`|  <ul><li>Tracking all content impressions within a page.</li></ul> |
+|`trackVisibleContentImpressions`|  <ul><li>Tracking all visible content impressions.</li></ul> |
+|`trackContentImpressionsWithinNode`|  <ul><li>Tracking only content impressions for specific page part.</li></ul> |
+|`trackContentInteractionNode`|  <ul><li>Track interactions manually with auto detection.</li></ul> |
+|`trackContentImpression`|  <ul><li>Track impression manually.</li></ul> |
+|`trackContentInteraction`|  <ul><li>Track user interaction manually.</li></ul> |
+|`trackLink`|  <ul><li>Force Tracking download using JS function.</li></ul> |
+|`setUserId`|  <ul><li>Set UserId.</li></ul> |
+|`resetUserId`|  <ul><li>Reset UserId.</li></ul> |
+|`setDocumentTitle`|  <ul><li>Set Custom Page Name.</li></ul> |
+|`trackSiteSearch`|  <ul><li>Tracking Site Search.</li></ul> |
+|`setUserIsAnonymous`|  <ul><li>Track User Anonymously.</li></ul> |
+|`deanonymizeUser`|  <ul><li>Disable tracking user anonymously (after visitor consent).</li></ul> |
 
 #### E-Commerce
 
 |Variable| Description|
 |---| ---|
-|`order_id`|  &lt;ul&gt;&lt;li&gt;Order ID&lt;/li&gt;&lt;li&gt;Overrides `_corder`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_total`|  &lt;ul&gt;&lt;li&gt;Order Total&lt;/li&gt;&lt;li&gt;Overrides `_ctotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_subtotal`|  &lt;ul&gt;&lt;li&gt;Sub Total&lt;/li&gt;&lt;li&gt;Overrides `_csubtotal`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_shipping`|  &lt;ul&gt;&lt;li&gt;Shipping Amount&lt;/li&gt;&lt;li&gt;Overrides `_cship`.&lt;/li&gt;&lt;/ul&gt; |
-|`order_tax`|  &lt;ul&gt;&lt;li&gt;Tax Amount&lt;/li&gt;&lt;li&gt;Overrides `_ctax`.&lt;/li&gt;&lt;/ul&gt; |
-|`customer_id`|  &lt;ul&gt;&lt;li&gt;Customer ID&lt;/li&gt;&lt;li&gt;Overrides `_ccustid` .&lt;/li&gt;&lt;/ul&gt; |
-|`product_id`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Product IDs.&lt;/li&gt;&lt;li&gt;Overrides `_cprod`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_name`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Names.&lt;/li&gt;&lt;li&gt;Overrides `_cprodname`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_category`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Categories&lt;/li&gt;&lt;li&gt;Overrides `_ccat`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_quantity`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Quantities.&lt;/li&gt;&lt;li&gt;Overrides `_cquan`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_unit_price`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Prices.&lt;/li&gt;&lt;li&gt;Overrides `_cprice`.&lt;/li&gt;&lt;/ul&gt; |
-|`product_discount`|  &lt;ul&gt;&lt;li&gt;Array&lt;/li&gt;&lt;li&gt;List of Discounts.&lt;/li&gt;&lt;li&gt;Overrides `_cpdisc`.&lt;/li&gt;&lt;/ul&gt; |
+|`order_id`|  <ul><li>Order ID</li><li>Overrides `_corder`.</li></ul> |
+|`order_total`|  <ul><li>Order Total</li><li>Overrides `_ctotal`.</li></ul> |
+|`order_subtotal`|  <ul><li>Sub Total</li><li>Overrides `_csubtotal`.</li></ul> |
+|`order_shipping`|  <ul><li>Shipping Amount</li><li>Overrides `_cship`.</li></ul> |
+|`order_tax`|  <ul><li>Tax Amount</li><li>Overrides `_ctax`.</li></ul> |
+|`customer_id`|  <ul><li>Customer ID</li><li>Overrides `_ccustid` .</li></ul> |
+|`product_id`|  <ul><li>Array</li><li>List of Product IDs.</li><li>Overrides `_cprod`.</li></ul> |
+|`product_name`|  <ul><li>Array</li><li>List of Names.</li><li>Overrides `_cprodname`.</li></ul> |
+|`product_category`|  <ul><li>Array</li><li>List of Categories</li><li>Overrides `_ccat`.</li></ul> |
+|`product_quantity`|  <ul><li>Array</li><li>List of Quantities.</li><li>Overrides `_cquan`.</li></ul> |
+|`product_unit_price`|  <ul><li>Array</li><li>List of Prices.</li><li>Overrides `_cprice`.</li></ul> |
+|`product_discount`|  <ul><li>Array</li><li>List of Discounts.</li><li>Overrides `_cpdisc`.</li></ul> |

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/location-manager/
 ---
 ## クラス: LocationManager
 
-`LocationManager` クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下は、Tealium Kotlinの`LocationManager`クラスで一般的に使用されるメソッドをまとめたものです。詳細については、[Location module](/ja/platforms/android-kotlin/module-list/location/)を参照してください。
+`LocationManager` クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下は、Tealium Kotlinの`LocationManager`クラスで一般的に使用されるメソッドをまとめたものです。詳細については、[Location module](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/location/)を参照してください。
 
 | メソッド | 説明 |
 | ----- | ------ |
@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/api/location-manager/
 
 ```java
 tealiumInstance.location?.addGeofence(
-							&#34;Tealium-HQ&#34;,
+							"Tealium-HQ",
 							45.0, // 緯度
 							100.0, // 経度
 							100, // 半径
@@ -35,7 +35,7 @@ tealiumInstance.location?.addGeofence(
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | 位置の名前 | `&#34;Tealium-HQ&#34;` |
+| `name` | `String` | 位置の名前 | `"Tealium-HQ"` |
 | `latitude` | `Double` | 位置の緯度 | `45.0` |
 | `longitude` | `Double` | 位置の経度 | `100.0` |
 | `radius` | `Int` | ジオフェンスの半径（メートル） | `100` |

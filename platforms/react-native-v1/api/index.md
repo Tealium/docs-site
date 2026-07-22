@@ -3,8 +3,12 @@ title: API Reference
 description: Reference guide for classes and methods provided by Tealium for React Native.
 url: https://docs.tealium.com/platforms/react-native-v1/api/
 ---
+
+<blockquote>
 This is the previous version (1.x) of Tealium for React Native.  
-For the current version, see [Tealium for React Native 2.x](/platforms/react-native/).
+For the current version, see [Tealium for React Native 2.x](https://docs.tealium.com/platforms/react-native/).
+</blockquote>
+
 
 ## Class: `Tealium`
 
@@ -37,8 +41,8 @@ The following summarizes the commonly used methods of the `Tealium` class for Re
 | `removeVolatileDataForInstanceName()`| Remove volatile data that has been previously set using `setVolatileData()`, for a specific Tealium instance|
 | `resetUserConsentPreferences()`|Resets the user consent status and categories of a user |
 | `resetUserConsentPreferencesForInstanceName()`|Resets the user consent status and categories of a user, for a specific Tealium instance|
-| `setConsentLoggingEnabled()`| Sets user&#39;s consent logging|
-| `setConsentLoggingEnabledForInstanceName()`| Sets user&#39;s consent logging, for a specific Tealium instance|
+| `setConsentLoggingEnabled()`| Sets user's consent logging|
+| `setConsentLoggingEnabledForInstanceName()`| Sets user's consent logging, for a specific Tealium instance|
 | `setPersistentData()`|Set persistent data to be sent with each subsequent event or view, even between app restarts |
 | `setPersistentDataForInstanceName()`|Set persistent data to be sent with each subsequent event or view, even between app restarts, for a specific Tealium instance |
 | `setUserConsentCategories()`| Sets the consent categories of a user|
@@ -62,17 +66,17 @@ addRemoteCommand(commandID, description, callback);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `commandID` | `String` | Name of the command ID from the tag configuration | `&#34;test_command&#34;` |
-| `description` | `String ` | Description of the remote command | `&#34;Firebase remote command&#34;` |
+| `commandID` | `String` | Name of the command ID from the tag configuration | `"test_command"` |
+| `description` | `String ` | Description of the remote command | `"Firebase remote command"` |
 | `callback` | `Function ` | A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```javascript
-Tealium.addRemoteCommand(&#34;firebase&#34;, &#34;Firebase remote command&#34;, function(payload) {
+Tealium.addRemoteCommand("firebase", "Firebase remote command", function(payload) {
 
-  var eventName = payload[&#34;firebase_event_name&#34;];
-  var eventProperties = payload[&#34;firebase_event_properties&#34;];
+  var eventName = payload["firebase_event_name"];
+  var eventProperties = payload["firebase_event_properties"];
 
   analytics.logEvent(eventName, eventProperties);
 });
@@ -88,21 +92,21 @@ addRemoteCommandForInstanceName(instanceName, commandID, description, callback);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `commandID` | `String` | Name of the command ID from the tag configuration | `&#34;test_command&#34;` |
-| `description` | `String ` | Description of the remote command | `&#34;Firebase remote command&#34;` |
+| `instanceName` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `commandID` | `String` | Name of the command ID from the tag configuration | `"test_command"` |
+| `description` | `String ` | Description of the remote command | `"Firebase remote command"` |
 | `callback` | `Function ` |  A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings. | (see example) |
 
 Example:
 
 ```javascript
-Tealium.addRemoteCommand(&#34;instance-2&#34;, &#34;survey&#34;, &#34;Display feedback survey&#34;, function(payload) {
+Tealium.addRemoteCommand("instance-2", "survey", "Display feedback survey", function(payload) {
 
-	var title = payload[&#34;survey_title&#34;];
-	var question = payload[&#34;survey_question&#34;];
+	var title = payload["survey_title"];
+	var question = payload["survey_question"];
 
-	Alert.alert(title, question, [{text: &#39;Yes&#39;, onPress: () =&gt; surveyHandler()},
-								  {text: &#39;No&#39;, onPress: () =&gt; surveyHandler()}]);
+	Alert.alert(title, question, [{text: 'Yes', onPress: () => surveyHandler()},
+								  {text: 'No', onPress: () => surveyHandler()}]);
 
 });
 ```
@@ -116,8 +120,8 @@ Tealium.getPersistentData(key, value);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `key` | `String` | Key name of value  | `&#34;foo&#34;` |
-| `value` | `Object` | JSON object of key-value pairs | `function(value) {console.log(&#34;get persistent: &#34; &#43; value);}` |
+| `key` | `String` | Key name of value  | `"foo"` |
+| `value` | `Object` | JSON object of key-value pairs | `function(value) {console.log("get persistent: " + value);}` |
 
 
 ### `getPersistentDataForInstanceName()`
@@ -128,9 +132,9 @@ Tealium.getPersistentDataForInstanceName(instanceName, key, value);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name  | `&#34;instance-2&#34;` |
-| `key` | `String` | Key name of value  | `&#34;foo&#34;` |
-| `data` | `Object` | JSON object of key-value pairs | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `name` | `String` | Instance name  | `"instance-2"` |
+| `key` | `String` | Key name of value  | `"foo"` |
+| `data` | `Object` | JSON object of key-value pairs | `function(value) {console.log("get volatile: " + value);}` |
 
 ### `getUserConsentCategories()`
 Gets the consent categories of a user. Pass in a callback to use the userConsentCategories.
@@ -141,7 +145,7 @@ Tealium.getUserConsentCategories(userConsentCategories);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `userConsentCategories` | `Callback` | Callback function to use the user consent categories | `function (consentCategories) {console.log(&#34;categories &#39;main&#39;: &#34; &#43; consentCategories);}` |
+| `userConsentCategories` | `Callback` | Callback function to use the user consent categories | `function (consentCategories) {console.log("categories 'main': " + consentCategories);}` |
 
 
 ### `getUserConsentCatgoriesForInstanceName()`
@@ -152,8 +156,8 @@ Tealium.getUserConsentCategoriesForInstanceName(name, userConsentCategories);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `userConsentCategories` | `Callback` | Callback function to use the user consent categories | `function (consentCategories) {console.log(&#34;categories &#39;main&#39;: &#34; &#43; consentCategories);}` |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `userConsentCategories` | `Callback` | Callback function to use the user consent categories | `function (consentCategories) {console.log("categories 'main': " + consentCategories);}` |
 
 ### `getUserConsentStatus()`
 Gets the consent status of a user. Pass in a callback to use the userConsentStatus.
@@ -164,7 +168,7 @@ Tealium.getUserConsentStatus(userConsentStatus);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `userConsentStatus` | `Callback` | Callback function to use the user consent status | `function(userConsentStatus) {console.log(&#34;consent status &#39;instance-2&#39;: &#34; &#43; userConsentStatus);}` |
+| `userConsentStatus` | `Callback` | Callback function to use the user consent status | `function(userConsentStatus) {console.log("consent status 'instance-2': " + userConsentStatus);}` |
 
 
 ### `getUserConsentStatusForInstanceName()`
@@ -176,8 +180,8 @@ Tealium.getUserConsentStatusForInstanceName(name, userConsentStatus);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `userConsentStatus` | `Callback` | Callback function to use the user consent status | `function(userConsentStatus) {console.log(&#34;consent status &#39;instance-2&#39;: &#34; &#43; userConsentStatus);}` |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `userConsentStatus` | `Callback` | Callback function to use the user consent status | `function(userConsentStatus) {console.log("consent status 'instance-2': " + userConsentStatus);}` |
 
 ### `getVisitorID()`
 Gets the visitorID of a user. Pass in a callback to use the visitorID.
@@ -188,7 +192,7 @@ Tealium.getVisitorID(visitorID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `visitorID` | `Callback` | Callback function to use the visitor ID | `function (visitorID) {console.log(&#34;visitorID: &#34; &#43; visitorID);}` |
+| `visitorID` | `Callback` | Callback function to use the visitor ID | `function (visitorID) {console.log("visitorID: " + visitorID);}` |
 
 
 ### `getVisitorIDForInstanceName()`
@@ -200,8 +204,8 @@ Tealium.getVisitorIDForInstanceName(name, visitorID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `visitorID` | `Callback` | Callback function to use the visitor ID | `function (visitorID) {console.log(&#34;visitorID: &#34; &#43; visitorID);}` |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `visitorID` | `Callback` | Callback function to use the visitor ID | `function (visitorID) {console.log("visitorID: " + visitorID);}` |
 
 ### `getVolatileData()`
 Gets the value for the key passed in.
@@ -212,8 +216,8 @@ Tealium.getVolatileData(key, value);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `key` | `String` | Key name of value  | `&#34;foo&#34;` |
-| `value` | `Object` | JSON object of key-value pairs | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `key` | `String` | Key name of value  | `"foo"` |
+| `value` | `Object` | JSON object of key-value pairs | `function(value) {console.log("get volatile: " + value);}` |
 
 
 ### `getVolatileDataForInstanceName()`
@@ -224,9 +228,9 @@ Tealium.getVolatileDataForInstanceName(instanceName, key, value);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name  | `&#34;instance-2&#34;` |
-| `key` | `String` | Key name of value  | `&#34;foo&#34;` |
-| `data` | `Object` | JSON object of key-value pairs | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `name` | `String` | Instance name  | `"instance-2"` |
+| `key` | `String` | Key name of value  | `"foo"` |
+| `data` | `Object` | JSON object of key-value pairs | `function(value) {console.log("get volatile: " + value);}` |
 
 ### `initialize()`
 
@@ -244,12 +248,12 @@ initialize(account,
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealium account name | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealium profile name | `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `&#34;xyz123&#34;` |
-| `instance` | `String` | Tealium instance name (default: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealium account name | `"companyXYZ" `|
+| `profile` | `String` | Tealium profile name | `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `"abc123"` |
+| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `"xyz123"` |
+| `instance` | `String` | Tealium instance name (default: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (Optional) To enable lifecycle tracking (default: `true`) | [`true`, `false`] |
 
 ### `initializeCustom()`
@@ -274,12 +278,12 @@ initializeCustom(account,
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealium account name | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealium profile name | `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `&#34;xyz123&#34;` |
-| `instance` | `String` | Tealium instance name (default: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealium account name | `"companyXYZ" `|
+| `profile` | `String` | Tealium profile name | `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `"abc123"` |
+| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `"xyz123"` |
+| `instance` | `String` | Tealium instance name (default: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (Optional) To enable lifecycle tracking  (default: `true`) | [`true`, `false`] |
 | `overridePublishSettingsURL` | `String` | The publish settings URL if overriding (default: `null`) | `null` |
 | `overrideTagManagementURL` | `String` | The tag management URL if overriding (default: `null`) | `null` |
@@ -303,12 +307,12 @@ initializeWithConsentManager(account,
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealium account name | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealium profile name | `&#34;main&#34;` |
-| `environment` | `String` | Tealium environment name |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `&#34;xyz123&#34;` |
-| `instancee` | `String` | Tealium instance name (default: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealium account name | `"companyXYZ" `|
+| `profile` | `String` | Tealium profile name | `"main"` |
+| `environment` | `String` | Tealium environment name |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (Optional) Tealium iOS data source key | `"abc123"` |
+| `androidDatasource` | `String` | (Optional) Tealium Android data source key | `"xyz123"` |
+| `instancee` | `String` | Tealium instance name (default: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (Optional) To enable lifecycle tracking  (default: `true`) | [`true`, `false`] |
 
 
@@ -321,12 +325,12 @@ isConsentLoggingEnabled(enabled);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `callback` | `Callback` | Checks if consent logging is enabled for a user | &#39;function (enabled) {console.log(&#34;consent logging enabled &#39;main&#39;: &#34; &#43; enabled);}&#39; |
+| `callback` | `Callback` | Checks if consent logging is enabled for a user | 'function (enabled) {console.log("consent logging enabled 'main': " + enabled);}' |
 
 
 ### `isConsentLoggingEnabledForInstanceName()`
 
-Checks if user&#39;s consent logging is enabled, for a specific Tealium instance. Pass in a callback to use the value of consent logging. For use if you have multiple instances of Tealium in your app.
+Checks if user's consent logging is enabled, for a specific Tealium instance. Pass in a callback to use the value of consent logging. For use if you have multiple instances of Tealium in your app.
 
 ```javascript
 Tealium.isConsentLoggingEnabledForInstanceName(name, enabled);
@@ -334,8 +338,8 @@ Tealium.isConsentLoggingEnabledForInstanceName(name, enabled);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `callback` | `Callback` | Checks if consent logging is enabled for a user | &#39;function (enabled) {console.log(&#34;consent logging enabled &#39;main&#39;: &#34; &#43; enabled);}&#39; |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `callback` | `Callback` | Checks if consent logging is enabled for a user | 'function (enabled) {console.log("consent logging enabled 'main': " + enabled);}' |
 
 ### `removePersistentData()`
 Remove persistent data that has been previously set using `Tealium.setPersistentData()`.
@@ -346,7 +350,7 @@ Tealium.removePersistentData(keys);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `keys` | `[String]` | Array of key names  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `[String]` | Array of key names  | `["foo", "bar"]` |
 
 
 ### `removePersistentDataForInstanceName()`
@@ -358,8 +362,8 @@ Tealium.removePersistentDataForInstanceName(instanceName, keys);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name  | `&#34;instance-2&#34;` |
-| `keys` | `[String]` | Array of key names  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `name` | `String` | Instance name  | `"instance-2"` |
+| `keys` | `[String]` | Array of key names  | `["foo", "bar"]` |
 
 ### `removeRemoteCommand()`
 
@@ -371,12 +375,12 @@ removeRemoteCommand(commandID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `commandID ` | `String` | Name of the command ID to remove  | `&#34;test_command&#34;` |
+| `commandID ` | `String` | Name of the command ID to remove  | `"test_command"` |
 
 Example:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;firebase&#34;);
+Tealium.removeRemoteCommand("firebase");
 ```
 
 ### `removeRemoteCommandForInstanceName()`
@@ -389,13 +393,13 @@ removeRemoteCommandForInstanceName(instanceName, commandID);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `commandID ` | `String` | Name of the command ID to remove  | `&#34;test_command&#34;` |
+| `instanceName` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `commandID ` | `String` | Name of the command ID to remove  | `"test_command"` |
 
 Example:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;instance-2&#34;, &#34;firebase&#34;);
+Tealium.removeRemoteCommand("instance-2", "firebase");
 ```
 
 ### `removeVolatileData()`
@@ -407,7 +411,7 @@ Tealium.removeVolatileData(keys);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `keys` | `[String]` | Array of key names  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `[String]` | Array of key names  | `["foo", "bar"]` |
 
 
 ### `removeVolatileDataForInstanceName()`
@@ -419,8 +423,8 @@ Tealium.removeVolatileDataForInstanceName(name, keys);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name  | `&#34;instance-2&#34;` |
-| `keys` | `[String]` | Array of key names  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `name` | `String` | Instance name  | `"instance-2"` |
+| `keys` | `[String]` | Array of key names  | `["foo", "bar"]` |
 
 
 
@@ -441,7 +445,7 @@ Tealium.resetUserConsentPreferencesForInstanceName(name);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
+| `name` | `String` | Instance name | `"instance-2"` |
 
 
 
@@ -453,11 +457,11 @@ Tealium.setConsentLoggingEnabled(enabled);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `enabled` | `boolean` | Enables consent logging for a user | [`&#34;true&#34;`, `&#34;false&#34;`] |
+| `enabled` | `boolean` | Enables consent logging for a user | [`"true"`, `"false"`] |
 
 
 ### `setConsentLoggingEnabledForInstanceName()`
-Sets user&#39;s consent logging, for a specific Tealium instance. For use if you have multiple instances of Tealium in your app.
+Sets user's consent logging, for a specific Tealium instance. For use if you have multiple instances of Tealium in your app.
 
 ```javascript
 Tealium.setConsentLoggingEnabledForInstanceName(name, enabled);
@@ -465,8 +469,8 @@ Tealium.setConsentLoggingEnabledForInstanceName(name, enabled);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `enabled` | `boolean` | Enables consent logging for a user | [`&#34;true&#34;`, `&#34;false&#34;`] |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `enabled` | `boolean` | Enables consent logging for a user | [`"true"`, `"false"`] |
 
 ### `setPersistentData()`
 Set persistent data to be sent with each subsequent event or view, even between app restarts.
@@ -476,7 +480,7 @@ Tealium.setPersistentData(data);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
+| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{"persistent_key2" : "persistent_val2"}` |
 
 
 ### `setPersistentDataForInstanceName()`
@@ -487,8 +491,8 @@ Tealium.setPersistentDataForInstanceName(instanceName, data);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name  | `&#34;instance-2&#34;` |
-| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
+| `name` | `String` | Instance name  | `"instance-2"` |
+| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{"persistent_key2" : "persistent_val2"}` |
 
 
 ### `setUserConsentCategories()`
@@ -500,7 +504,7 @@ Tealium.setUserConsentCategories(userConsentCategories);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `userConsentCategories` | `[String]` | Array of  user consent categories | `[&#34;email&#34;, &#34;personalization&#34;]` |
+| `userConsentCategories` | `[String]` | Array of  user consent categories | `["email", "personalization"]` |
 
 ### `setUserConsentCategoriesForInstanceName()`
 Sets the consent ;categories of a user, for a specific Tealium instance. Pass in an array of Strings to set the categories. For use if you have multiple instances of Tealium in your app.
@@ -511,8 +515,8 @@ Tealium.setUserConsentCategoriesForInstanceName(name, userConsentCategories);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
-| `userConsentCategories` | `[String]` | Array of  user consent categories | `[&#34;analytics&#34;, &#34;big_data&#34;]` |
+| `name` | `String` | Instance name | `"instance-2"` |
+| `userConsentCategories` | `[String]` | Array of  user consent categories | `["analytics", "big_data"]` |
 
 
 ### `setUserConsentStatus()`
@@ -543,7 +547,7 @@ Tealium.setUserConsentStatusForInstanceName(name, userConsentStatus);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Instance name | `&#34;instance-2&#34;` |
+| `name` | `String` | Instance name | `"instance-2"` |
 | `userConsentStatus` | `int` | User consent status | [`0`, `1`, `2`, `3`] |
 
 | Consent Status Value | Description |
@@ -561,7 +565,7 @@ Tealium.setVolatileData(data);
 ```
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{&#34;volatile_var&#34;: &#34;volatile_val&#34;, &#34;volatile_var2&#34;: &#34;volatile_val2&#34;}` |
+| `data` | `Object` | JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings | `{"volatile_var": "volatile_val", "volatile_var2": "volatile_val2"}` |
 
 
 ### `setVolatileDataForInstanceName()`
@@ -573,8 +577,8 @@ Tealium.setVolatileDataForInstanceName(name, data);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Key name of value | &#34;instance-2&#34; |
-| `data` | `Object` | JSON object of key-value pairs | `{&#34;foo&#34;: &#34;bar&#34;}` |
+| `name` | `String` | Key name of value | "instance-2" |
+| `data` | `Object` | JSON object of key-value pairs | `{"foo": "bar"}` |
 
 ### `trackEvent()`
 
@@ -586,8 +590,8 @@ trackEvent(stringTitle, data);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `stringTitle` | `String` | Name of event (becomes the `event_name` attribute in Tealium Customer Data Hub) | `&#34;test_event&#34;` |
-| `data` | `Object` | JSON object of key-value pairs | `{&#34;title&#34;: &#34;test_event&#34;, &#34;event_title&#34;: &#34;test_event&#34;, &#34;testkey&#34;: &#34;testval&#34;, &#34;anotherkey&#34;: &#34;anotherval&#34;}` |
+| `stringTitle` | `String` | Name of event (becomes the `event_name` attribute in Tealium Customer Data Hub) | `"test_event"` |
+| `data` | `Object` | JSON object of key-value pairs | `{"title": "test_event", "event_title": "test_event", "testkey": "testval", "anotherkey": "anotherval"}` |
 
 
 ### `trackEventForInstanceName()`
@@ -600,8 +604,8 @@ trackEvent(name, stringTitle, data);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `stringTitle` | `String` | Name of event (becomes the `event_name` attribute in Customer Data Hub) | `&#34;test_event_2&#34;` |
+| `name` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `stringTitle` | `String` | Name of event (becomes the `event_name` attribute in Customer Data Hub) | `"test_event_2"` |
 | `data` | `Object` | JSON object of key-value pairs | |
 
 
@@ -615,8 +619,8 @@ trackView(screenName, data);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `stringTitle` | `String` | Name of event (becomes the `screen_title` attribute in Customer Data Hub) | `&#34;test_view&#34;` |
-| `data` | `Object` | JSON object of key-value pairs | `{&#34;title&#34;: &#34;test_view&#34;, &#34;event_title&#34;: &#34;test_view&#34;, &#34;testkey&#34;: &#34;testval&#34;, &#34;anotherkey&#34;: &#34;anotherval&#34;}` |
+| `stringTitle` | `String` | Name of event (becomes the `screen_title` attribute in Customer Data Hub) | `"test_view"` |
+| `data` | `Object` | JSON object of key-value pairs | `{"title": "test_view", "event_title": "test_view", "testkey": "testval", "anotherkey": "anotherval"}` |
 
 
 ### `trackViewForInstanceName()`
@@ -629,6 +633,6 @@ Tealium.trackViewForInstanceName(instanceName, screenName, data);
 
 | Parameters | Type | Description | Example |
 | --- | --- | --- | --- |
-| `name` | `String` | Name of the Tealium instance | `&#34;instance-2&#34;` |
-| `stringTitle` | `String` | Name of event (becomes the `screen_title` attribute in Customer Data Hub) | `&#34;instance_2_view&#34;` |
+| `name` | `String` | Name of the Tealium instance | `"instance-2"` |
+| `stringTitle` | `String` | Name of event (becomes the `screen_title` attribute in Customer Data Hub) | `"instance_2_view"` |
 | `data` | `Object` | (Optional) JSON object of key-value pairs | |

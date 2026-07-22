@@ -2,11 +2,15 @@
 title: データレイヤー
 description: 各モジュールによって提供されるデータレイヤー変数の完全なリスト。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
----これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、[Tealium for iOS (Swift) 2.x](/ja/platforms/ios-swift/)を参照してください。
+---
+<blockquote>
+これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、[Tealium for iOS (Swift) 2.x](https://docs.tealium.com/ja/platforms/ios-swift/)を参照してください。
+</blockquote>
+
 
 ## AppData
 
-以下の変数は[`AppData`](/ja/platforms/ios-swift-v1/module-list/appdata/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`AppData`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/appdata/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -20,7 +24,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## Attribution
 
-以下の変数は[`Attribution`](/ja/platforms/ios-swift-v1/module-list/attribution/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`Attribution`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/attribution/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -34,7 +38,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 | `ad_keyword_matchtype` | ブロード、エグザクト、またはサーチマッチのいずれか。 | `Exact` |
 | `ad_org_id` | 対応する広告のキャンペーン組織ID | `OrgID` |
 | `ad_org_name` | 対応する広告のキャンペーン組織名 | `OrgName` |
-| `ad_purchase_date` | ユーザーが初めてアプリをダウンロードした日時。`iadconversion-type = &#34;Redownload&#34;`の場合、これは元の購入日を表します。これはApple Search Adと関連しているかもしれませんし、そうでないかもしれません。| `2016-12-05T17:31:40Z` |
+| `ad_purchase_date` | ユーザーが初めてアプリをダウンロードした日時。`iadconversion-type = "Redownload"`の場合、これは元の購入日を表します。これはApple Search Adと関連しているかもしれませんし、そうでないかもしれません。| `2016-12-05T17:31:40Z` |
 | `ad_region` | このインストールを引き起こしたキャンペーンに関連する国または地域を識別します。 | `US` |
 | `ad_user_clicked_last_30_days` | ユーザーがアプリのダウンロードの30日前にSearch Adsのインプレッションをクリックしたかどうかを示すブール値 | [`true`, `false`] |
 | `ad_user_conversion _type` | アプリの新規ダウンロードまたは再ダウンロードを識別します| `Download` |
@@ -46,7 +50,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## Autotracking
 
-以下の変数は[`Autotracking`](/ja/platforms/ios-swift-v1/module-list/autotracking/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`Autotracking`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/autotracking/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -54,17 +58,17 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## ConsentManager
 
-以下の変数は[`ConsentManager`](/ja/platforms/ios-swift-v1/consent-management/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`ConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
-| `consent_categories` | ユーザーが選択した同意カテゴリの配列| [`&#34;analytics&#34;`, `&#34;cdp&#34;`] |
+| `consent_categories` | ユーザーが選択した同意カテゴリの配列| [`"analytics"`, `"cdp"`] |
 | `consent_status` | ユーザーの現在の同意状態| [`consented`, `notConsented`] |
-| `policy` | 同意ポリシー| `&#34;gdpr&#34;` |
+| `policy` | 同意ポリシー| `"gdpr"` |
 
 ## Connectivity
 
-以下の変数は[`Connectivity`](/ja/platforms/ios-swift-v1/module-list/connectivity/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`Connectivity`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/connectivity/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -77,22 +81,22 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 | 変数名 | 説明 | 例 |
 | --- | --- |  --- |
-| `enabled_modules` | 現在有効になっているすべてのモジュールのリスト| `[&#34;tagmanagement&#34;, &#34;collect&#34;]` |
-| `screen_title` | trackViewコールに渡された画面タイトル| `&#34;homescreen&#34; `|
-| `tealium_datasource` | すべてのディスパッチに追加されるデータソース名を指定します| `&#34;a1b2c3&#34;` |
-| `tealium_event` | トラッキングされているイベントの名前| `&#34;checkout&#34;` |
+| `enabled_modules` | 現在有効になっているすべてのモジュールのリスト| `["tagmanagement", "collect"]` |
+| `screen_title` | trackViewコールに渡された画面タイトル| `"homescreen" `|
+| `tealium_datasource` | すべてのディスパッチに追加されるデータソース名を指定します| `"a1b2c3"` |
+| `tealium_event` | トラッキングされているイベントの名前| `"checkout"` |
 
 
 ##  Crash Reporter
 
-以下の変数は[`CrashReporter`](/ja/platforms/ios-swift-v1/module-list/crash-reporter/)モジュールによってデータレイヤーに追加されます。
+以下の変数は[`CrashReporter`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/crash-reporter/)モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
 | `app_memory_usage` | クラッシュ時のデバイス上のアプリによって使用されている現在のメモリ| `143.57MB` |
 | `crash_cause` | クラッシュの原因| `Crash Reason` |
 | `crash_name` | 利用可能な場合、クラッシュのフレンドリー名| `Crash Name` |
-| `crash_libraries` | クラッシュ時にロードされていたライブラリのリスト| `[{ &#34;baseAddress&#34;: &#34;0xa3e0000&#34;, &#34;codeType&#34;: { &#34;arch&#34;: 64, &#34;typeEncoding&#34;: &#34;Mach&#34;}, &#34;imageName&#34;: &#34;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&#34;, &#34;imageSize&#34;: 212992, &#34;imageUuid&#34;: &#34;4015e9b70bde&#34; }]` |
+| `crash_libraries` | クラッシュ時にロードされていたライブラリのリスト| `[{ "baseAddress": "0xa3e0000", "codeType": { "arch": 64, "typeEncoding": "Mach"}, "imageName": "/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim", "imageSize": 212992, "imageUuid": "4015e9b70bde" }]` |
 | `crash_process_id` | クラッシュ時のアプリのPID| `84351` |
 | `crash_process_path` | アプリが実行されていたパス| `/DemoApp.app/DemoApp` |
 | `crash_parent_process` | アプリを起動した親プロセス| `launchd_sim` |
@@ -100,7 +104,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 | `crash_signal_address` | クラッシュのシグナルアドレス| `4572945982` |
 | `crash_signal_code` | クラッシュを引き起こしたシグナルコード| `#0` |
 | `crash_signal_name` | クラッシュを引き起こしたシグナル名| `SIGABRT` |
-| `crash_threads` | クラッシュ時のすべてのアクティブスレッドを返します| `{&#34;crashed&#34;: 1,&#34;registers&#34;: {&#34;cs&#34;: &#34;0x07&#34;},&#34;stack&#34;: {&#34;instructionPointer&#34;: 4572945982,&#34;symbolInfo&#34;: {&#34;symbolName&#34;: &#34;&#34;,&#34;symbolStartAddr&#34;: 0},&#34;threadId&#34;: &#34;&#34;}}` |
+| `crash_threads` | クラッシュ時のすべてのアクティブスレッドを返します| `{"crashed": 1,"registers": {"cs": "0x07"},"stack": {"instructionPointer": 4572945982,"symbolInfo": {"symbolName": "","symbolStartAddr": 0},"threadId": ""}}` |
 | `crash_uuid` | この特定のクラッシュのための一意の識別子| `CC2DA0E9-E544-429A-AC5E-A268FC62F02A` |
 | `device_memory_usage` | クラッシュ時のデバイス上のアプリによって使用されている現在のメモリ| `143.57MB` |
 | `device_memory_available` | クラッシュ時のデバイス上の空きメモリ| `1068.88MB` |
@@ -108,7 +112,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 | `memory_free` | クラッシュ時のデバイス上の空きメモリ| `1068.88MB` |
 ## DeviceData
 
-以下の変数は、[`DeviceData`](/ja/platforms/ios-swift-v1/module-list/device-data/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`DeviceData`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/device-data/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明  | 例 |
 |---|---| --- |
@@ -154,7 +158,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## DispatchQueue
 
-以下の変数は、[`DispatchQueue`](/ja/platforms/ios-swift-v1/module-list/dispatch-queue/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`DispatchQueue`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/dispatch-queue/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -163,7 +167,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## Lifecycle
 
-以下の変数は、[`Lifecycle`](/ja/platforms/ios-swift-v1/module-list/lifecycle/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Lifecycle`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/lifecycle/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -186,27 +190,27 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 | `lifecycle_totalcrashcount` | インストール以来カウントされたクラッシュの総数（アプリが削除されない限りリセットされません）| `21` |
 | `lifecycle_totallaunchcount` | インストール以来の起動回数の合計（アプリが削除されない限りリセットされません）| `3` |
 | `lifecycle_totalsecondsawake` | アプリがインストールされてから起きている/アクティブ状態にある総秒数（アプリが削除されない限りリセットされません）| `36` |
-| `lifecycle_totalsleepcount` | アプリがインストールされてからバックグラウンドに入った回数の合計（アプリが削除されない限りリセットされません）| `&#34;400&#34;` |
-| `lifecycle_totalwakecount` | インストール以来の起動&#43;起床の合計回数（アプリが削除されない限りリセットされません）| `&#34;563&#34;` |
-| `lifecycle_type` | ライフサイクルコールのタイプ。| [`&#34;launch&#34;`, `&#34;wake&#34;`, `&#34;sleep&#34;` ]|
+| `lifecycle_totalsleepcount` | アプリがインストールされてからバックグラウンドに入った回数の合計（アプリが削除されない限りリセットされません）| `"400"` |
+| `lifecycle_totalwakecount` | インストール以来の起動+起床の合計回数（アプリが削除されない限りリセットされません）| `"563"` |
+| `lifecycle_type` | ライフサイクルコールのタイプ。| [`"launch"`, `"wake"`, `"sleep"` ]|
 | `lifecycle_updatelaunchdate` | バージョン更新が検出された後の最初の起床/起動のGMTタイムスタンプ| `2014-09-08T18:10:01Z` |
-| `lifecycle_wakecount` | アプリのこのバージョンの起動&#43;起床の合計回数（更新されるとリセットされます）| `&#34;29&#34;` |
+| `lifecycle_wakecount` | アプリのこのバージョンの起動+起床の合計回数（更新されるとリセットされます）| `"29"` |
 
 ## Location
 
-以下の変数は、[`Location`](/ja/platforms/ios-swift-v1/module-list/location/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`Location`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/location/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名                     | 説明| 例              |
 |------------------------------------|---------|----------------------|
-| `geofence_name`     | ジオフェンス領域の名前| `&#34;Tealium_San_Diego&#34;`|
-| `geofence_transition_type` | ジオフェンス遷移イベントのタイプ| `&#34;entered&#34;` または `&#34;exited&#34;`|
-| `latitude`          | ユーザーの最も最近記録された位置の緯度| `&#34;32.906119&#34;`|
-| `location_timestamp` | ユーザーがジオフェンス領域に入った/出た時の記録された日時（GMT）| `&#34;2020-01-28 16:29:46 &#43;0000&#34;`|
-| `longitude`        | ユーザーの最も最近記録された位置の経度| `&#34;-117.23791632509666&#34;`|
-| `movement_speed` | デバイスの瞬間速度、メートル毎秒で測定| `&#34;1.0&#34;`|
+| `geofence_name`     | ジオフェンス領域の名前| `"Tealium_San_Diego"`|
+| `geofence_transition_type` | ジオフェンス遷移イベントのタイプ| `"entered"` または `"exited"`|
+| `latitude`          | ユーザーの最も最近記録された位置の緯度| `"32.906119"`|
+| `location_timestamp` | ユーザーがジオフェンス領域に入った/出た時の記録された日時（GMT）| `"2020-01-28 16:29:46 +0000"`|
+| `longitude`        | ユーザーの最も最近記録された位置の経度| `"-117.23791632509666"`|
+| `movement_speed` | デバイスの瞬間速度、メートル毎秒で測定| `"1.0"`|
 ## タグ管理
 
-以下の変数は、[`TagManagement`](/ja/platforms/ios-swift-v1/module-list/tag-management/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`TagManagement`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/tag-management/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |
@@ -214,7 +218,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/data-layer/
 
 ## 揮発性データ
 
-以下の変数は、[`VolatileData`](/ja/platforms/ios-swift-v1/module-list/volatile-data/) モジュールによってデータレイヤーに追加されます。
+以下の変数は、[`VolatileData`](https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/volatile-data/) モジュールによってデータレイヤーに追加されます。
 
 | 変数名 | 説明 | 例 |
 | --- | --- | --- |

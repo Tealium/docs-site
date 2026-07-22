@@ -17,30 +17,30 @@ The following methods are available for the `DataLayer` class.
 | [`count()`](#count)                     | Returns a count of all values currently in the data layer |
 | [`get()`](#get)                         | Retrieves the value for the given key        |
 | [`getBoolean()`](#getboolean)           | Retrieves the `Boolean` for the given key    |
-| [`getBooleanArray()`](#getbooleanarray) | Retrieves the `Array&lt;Boolean&gt;` for the given key |
+| [`getBooleanArray()`](#getbooleanarray) | Retrieves the `Array<Boolean>` for the given key |
 | [`getDouble()`](#getdouble)             | Retrieves the `Double` for the given key     |
-| [`getDoubleArray()`](#getdoublearray)   | Retrieves the `Array&lt;Double&gt;` for the given key |
+| [`getDoubleArray()`](#getdoublearray)   | Retrieves the `Array<Double>` for the given key |
 | [`getInt()`](#getint)                   | Retrieves the `Int` for the given key        |
-| [`getIntArray()`](#getintarray)         | Retrieves the `Array&lt;Int&gt;` for the given key |
+| [`getIntArray()`](#getintarray)         | Retrieves the `Array<Int>` for the given key |
 | [`getJsonArray()`](#getjsonarray)       | Retrieves the `org.json.JSONArray` for the given key |
 | [`getJsonObject()`](#getjsonobject)     | Retrieves the `org.json.JSONObject` for the given key |
 | [`getLong()`](#getlong)               | Retrieves the `Long` for the given key       |
-| [`getLongArray()`](#getlongarray)       | Retrieves the `Array&lt;Long&gt;` for the given key |
+| [`getLongArray()`](#getlongarray)       | Retrieves the `Array<Long>` for the given key |
 | [`getString()`](#getstring)             | Retrieves the `String` for the given key     |
-| [`getStringArray()`](#getstringarray)   | Retrieves the `Array&lt;String&gt;` for the given key |
-| [`keys()`](#keys)                       | Returns a `List&lt;String&gt;` of all keys currently in the data layer |
+| [`getStringArray()`](#getstringarray)   | Retrieves the `Array<String>` for the given key |
+| [`keys()`](#keys)                       | Returns a `List<String>` of all keys currently in the data layer |
 | [`putBoolean()`](#putboolean)           | Stores a `Boolean` for the given key         |
-| [`putBooleanArray()`](#putbooleanarray) | Stores a `Array&lt;Boolean&gt;` for the given key  |
+| [`putBooleanArray()`](#putbooleanarray) | Stores a `Array<Boolean>` for the given key  |
 | [`putDouble()`](#putdouble)             | Stores a `Double` for the given key          |
-| [`putDoubleArray()`](#putdoublearray)   | Stores a `Array&lt;Double&gt;` for the given key   |
+| [`putDoubleArray()`](#putdoublearray)   | Stores a `Array<Double>` for the given key   |
 | [`putInt()`](#putint)                   | Stores an `Int` for the given key            |
-| [`putIntArray()`](#putintarray)         | Stores an `Array&lt;Int&gt;` for the given key     |
+| [`putIntArray()`](#putintarray)         | Stores an `Array<Int>` for the given key     |
 | [`putJsonArray()`](#putjsonarray)       | Stores a `org.json.JSONArray` for the given key |
 | [`putJsonObject()`](#putjsonobject)     | Stores a `org.json.JSONObject` for the given key |
 | [`putLong()`](#putlong)                 | Stores a `Long` for the given key            |
-| [`putLongArray()`](#putlongarray)       | Stores a `Array&lt;Long&gt;` for the given key     |
+| [`putLongArray()`](#putlongarray)       | Stores a `Array<Long>` for the given key     |
 | [`putString()`](#putstring)             | Stores a `String` for the given key          |
-| [`putStringArray()`](#putstringarray)   | Stores a `Array&lt;String&gt;` for the given key   |
+| [`putStringArray()`](#putstringarray)   | Stores a `Array<String>` for the given key   |
 | [`remove()`](#remove)                   | Removes the value for the given key          |
 
 ### `all`
@@ -68,7 +68,7 @@ Returns `true` if the given key exists in the data layer, otherwise `false`.
 | `key`      | `String` | The name of the variable to be removed |
 
 ```java
-tealium.dataLayer.contains(&#34;KEY&#34;)
+tealium.dataLayer.contains("KEY")
 ```
 
 ### `count`
@@ -90,7 +90,7 @@ The method gets a variable of type `Any` (equivalent to Java’s `Object`). Insp
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val any = tealium.dataLayer.get(&#34;KEY&#34;)
+val any = tealium.dataLayer.get("KEY")
 ```
 
 ### `getBoolean`
@@ -102,19 +102,19 @@ Retrieves the `Boolean` value at the given key. If the value at this key is not 
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val bool = tealium.dataLayer.getBoolean(&#34;KEY&#34;)
+val bool = tealium.dataLayer.getBoolean("KEY")
 ```
 
 ### `getBooleanArray`
 
-Retrieves the `Array&lt;Boolean&gt;` value at the given key. If the value at this key is not a `Array&lt;Boolean&gt;`, then `null` is returned.
+Retrieves the `Array<Boolean>` value at the given key. If the value at this key is not a `Array<Boolean>`, then `null` is returned.
 
 | Parameters | Type     | Description                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val booleanArray = tealium.dataLayer.getBooleanArray(&#34;KEY&#34;)
+val booleanArray = tealium.dataLayer.getBooleanArray("KEY")
 ```
 
 ### `getDouble`
@@ -126,19 +126,19 @@ Retrieves the `Double` value at the given key. If the value at this key is not a
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val double = tealium.dataLayer.getDouble(&#34;KEY&#34;)
+val double = tealium.dataLayer.getDouble("KEY")
 ```
 
 ### `getDoubleArray`
 
-Retrieves the `Array&lt;Double&gt;` value at the given key. If the value at this key is not a `Array&lt;Double&gt;`, then `null` is returned.
+Retrieves the `Array<Double>` value at the given key. If the value at this key is not a `Array<Double>`, then `null` is returned.
 
 | Parameters | Type     | Description                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val doubleArray = tealium.dataLayer.getDoubleArray(&#34;KEY&#34;)
+val doubleArray = tealium.dataLayer.getDoubleArray("KEY")
 ```
 
 ### `getInt`
@@ -150,19 +150,19 @@ Retrieves the `Int` value at the given key. If the value at this key is not a `I
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val int = tealium.dataLayer.getInt(&#34;KEY&#34;)
+val int = tealium.dataLayer.getInt("KEY")
 ```
 
 ### `getIntArray`
 
-Retrieves the `Array&lt;Int&gt;` value at the given key. If the value at this key is not a `Array&lt;Int&gt;`, then `null` is returned.
+Retrieves the `Array<Int>` value at the given key. If the value at this key is not a `Array<Int>`, then `null` is returned.
 
 | Parameters | Type     | Description                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val intArray = tealium.dataLayer.getIntArray(&#34;KEY&#34;)
+val intArray = tealium.dataLayer.getIntArray("KEY")
 ```
 
 ### `getJsonArray`
@@ -174,7 +174,7 @@ Retrieves the `org.json.JSONArray` value at the given key. If the value at this 
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val jsonArray = tealium.dataLayer.getJsonArray(&#34;KEY&#34;)
+val jsonArray = tealium.dataLayer.getJsonArray("KEY")
 ```
 
 ### `getJsonObject`
@@ -186,7 +186,7 @@ Retrieves the `org.json.JSONObject` value at the given key. If the value at this
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val jsonObject = tealium.dataLayer.getJsonObject(&#34;KEY&#34;)
+val jsonObject = tealium.dataLayer.getJsonObject("KEY")
 ```
 
 ### `getLong`
@@ -198,19 +198,19 @@ Retrieves the `Long` value at the given key. If the value at this key is not a `
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val long = tealium.dataLayer.getLong(&#34;KEY&#34;)
+val long = tealium.dataLayer.getLong("KEY")
 ```
 
 ### `getLongArray`
 
-Retrieves the `Array&lt;Long&gt;` value at the given key. If the value at this key is not a `Array&lt;Long&gt;`, then `null` is returned.
+Retrieves the `Array<Long>` value at the given key. If the value at this key is not a `Array<Long>`, then `null` is returned.
 
 | Parameters | Type     | Description                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val longArray = tealium.dataLayer.getLongArray(&#34;KEY&#34;)
+val longArray = tealium.dataLayer.getLongArray("KEY")
 ```
 
 ### `getString`
@@ -222,24 +222,24 @@ Retrieves the `String` value at the given key. If the value at this key is not a
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val string = tealium.dataLayer.getString(&#34;KEY&#34;)
+val string = tealium.dataLayer.getString("KEY")
 ```
 
 ### `getStringArray`
 
-Retrieves the `Array&lt;String&gt;` value at the given key. If the value at this key is not a `Array&lt;String&gt;`, then `null` is returned.
+Retrieves the `Array<String>` value at the given key. If the value at this key is not a `Array<String>`, then `null` is returned.
 
 | Parameters | Type     | Description                              |
 |:-----------|:---------|:-----------------------------------------|
 | `key`      | `String` | The name of the variable to be retrieved |
 
 ```java
-val stringArray = tealium.dataLayer.getStringArray(&#34;KEY&#34;)
+val stringArray = tealium.dataLayer.getStringArray("KEY")
 ```
 
 ### `keys`
 
-Returns the `List&lt;String&gt;` of all keys currently stored in the data layer
+Returns the `List<String>` of all keys currently stored in the data layer
 
 ```java
 tealium.dataLayer.keys()
@@ -256,21 +256,21 @@ Stores a `Boolean` value at the given key.
 | `expiry`   | `Expiry`  | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putBoolean(&#34;KEY&#34;, true, Expiry.FOREVER)
+tealium.dataLayer.putBoolean("KEY", true, Expiry.FOREVER)
 ```
 
 ### `putBooleanArray`
 
-Stores a `Array&lt;Boolean&gt;` value at the given key.
+Stores a `Array<Boolean>` value at the given key.
 
 | Parameters | Type             | Description                                 |
 |:-----------|:-----------------|:--------------------------------------------|
 | `key`      | `String`         | The name of the variable being stored       |
-| `value`    | `Array&lt;Boolean&gt;` | The `Array&lt;Boolean&gt;` value to be store      |
+| `value`    | `Array<Boolean>` | The `Array<Boolean>` value to be store      |
 | `expiry`   | `Expiry`         | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putBooleanArray(&#34;KEY&#34;, arrayOf(true, false, true), Expiry.FOREVER)
+tealium.dataLayer.putBooleanArray("KEY", arrayOf(true, false, true), Expiry.FOREVER)
 ```
 
 ### `putDouble`
@@ -284,21 +284,21 @@ Stores a `Double` value at the given key.
 | `expiry`   | `Expiry` | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putDouble(&#34;KEY&#34;, 10.5, Expiry.FOREVER)
+tealium.dataLayer.putDouble("KEY", 10.5, Expiry.FOREVER)
 ```
 
 ### `putDoubleArray`
 
-Stores a `Array&lt;Double&gt;` value at the given key.
+Stores a `Array<Double>` value at the given key.
 
 | Parameters | Type            | Description                                 |
 |:-----------|:----------------|:--------------------------------------------|
 | `key`      | `String`        | The name of the variable being stored       |
-| `value`    | `Array&lt;Double&gt;` | The `Array&lt;Double&gt;` value to be store       |
+| `value`    | `Array<Double>` | The `Array<Double>` value to be store       |
 | `expiry`   | `Expiry`        | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putDoubleArray(&#34;KEY&#34;, arrayOf(0.1, 10.5), Expiry.FOREVER)
+tealium.dataLayer.putDoubleArray("KEY", arrayOf(0.1, 10.5), Expiry.FOREVER)
 ```
 
 
@@ -313,21 +313,21 @@ Stores a `Int` value at the given key.
 | `expiry`   | `Expiry` | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putInt(&#34;KEY&#34;, 10, Expiry.FOREVER)
+tealium.dataLayer.putInt("KEY", 10, Expiry.FOREVER)
 ```
 
 ### `putIntArray`
 
-Stores a `Array&lt;Int&gt;` value at the given key.
+Stores a `Array<Int>` value at the given key.
 
 | Parameters | Type         | Description                                 |
 |:-----------|:-------------|:--------------------------------------------|
 | `key`      | `String`     | The name of the variable being stored       |
-| `value`    | `Array&lt;Int&gt;` | The `Array&lt;Int&gt;` value to be store          |
+| `value`    | `Array<Int>` | The `Array<Int>` value to be store          |
 | `expiry`   | `Expiry`     | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putIntArray(&#34;KEY&#34;, arrayOf(100, Int.MAX_VALUE), Expiry.FOREVER)
+tealium.dataLayer.putIntArray("KEY", arrayOf(100, Int.MAX_VALUE), Expiry.FOREVER)
 ```
 
 ### `putJsonArray`
@@ -342,9 +342,9 @@ Stores an `org.json.JSONArray` value at the given key.
 
 ```java
 val my_list = new JSONArray();
-my_list.put(&#34;value_1&#34;);
-my_list.put(&#34;value_2&#34;);
-tealium.dataLayer.putJsonArray(&#34;KEY&#34;, my_list, Expiry.FOREVER);
+my_list.put("value_1");
+my_list.put("value_2");
+tealium.dataLayer.putJsonArray("KEY", my_list, Expiry.FOREVER);
 ```
 
 ### `putJsonObject`
@@ -359,8 +359,8 @@ Stores an `org.json.JSONObject` value at the given key.
 
 ```java
 val my_obj = new JSONObject();
-my_obj.put(&#34;key&#34;, &#34;value&#34;);
-tealium.dataLayer.putJsonObject(&#34;KEY&#34;, my_obj, Expiry.FOREVER);
+my_obj.put("key", "value");
+tealium.dataLayer.putJsonObject("KEY", my_obj, Expiry.FOREVER);
 ```
 
 ### `putLong`
@@ -374,21 +374,21 @@ Stores a `Long` value at the given key.
 | `expiry`   | `Expiry` | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putLong(&#34;KEY&#34;, Long.MAX_VALUE, Expiry.FOREVER)
+tealium.dataLayer.putLong("KEY", Long.MAX_VALUE, Expiry.FOREVER)
 ```
 
 ### `putLongArray`
 
-Stores a `Array&lt;Long&gt;` value at the given key.
+Stores a `Array<Long>` value at the given key.
 
 | Parameters | Type          | Description                                 |
 |:-----------|:--------------|:--------------------------------------------|
 | `key`      | `String`      | The name of the variable being stored       |
-| `value`    | `Array&lt;Long&gt;` | The `Array&lt;Long&gt;` value to be store         |
+| `value`    | `Array<Long>` | The `Array<Long>` value to be store         |
 | `expiry`   | `Expiry`      | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putLongArray(&#34;KEY&#34;, arrayOf(1000L, Long.MAX_VALUE), Expiry.FOREVER)
+tealium.dataLayer.putLongArray("KEY", arrayOf(1000L, Long.MAX_VALUE), Expiry.FOREVER)
 ```
 
 ### `putString`
@@ -402,22 +402,22 @@ Stores a `String` value at the given key.
 | `expiry`   | `Expiry` | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putString(&#34;KEY&#34;, &#34;String Value&#34;, Expiry.FOREVER)
+tealium.dataLayer.putString("KEY", "String Value", Expiry.FOREVER)
 ```
 
 ### `putStringArray`
 
-Stores a `Array&lt;String&gt;` value at the given key.
+Stores a `Array<String>` value at the given key.
 
 | Parameters | Type            | Description                                 |
 |:-----------|:----------------|:--------------------------------------------|
 | `key`      | `String`        | The name of the variable being stored       |
-| `value`    | `Array&lt;String&gt;` | The `Array&lt;String&gt;` value to be store       |
+| `value`    | `Array<String>` | The `Array<String>` value to be store       |
 | `expiry`   | `Expiry`        | (Optional) The Expiry time of this variable |
 
 ```java
-tealium.dataLayer.putStringArray(&#34;KEY&#34;,
-    arrayOf(&#34;String 1&#34;, &#34;String 2&#34;), Expiry.FOREVER)
+tealium.dataLayer.putStringArray("KEY",
+    arrayOf("String 1", "String 2"), Expiry.FOREVER)
 ```
 
 ### `remove`
@@ -429,5 +429,5 @@ Removes the value stored at the given key
 | `key`      | `String` | The name of the variable to be removed |
 
 ```java
-tealium.dataLayer.remove(&#34;KEY&#34;)
+tealium.dataLayer.remove("KEY")
 ```

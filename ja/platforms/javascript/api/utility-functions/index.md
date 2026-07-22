@@ -33,8 +33,8 @@ utag.ut.decode(encodedStr)
 例：
 
 ```js
-utag.ut.decode(&#34;Tealium%20Developer%20Docs!&#34;);     // &#34;Tealium Developer Docs!&#34;
-utag.ut.decode(&#34;https%3A%2F%2Fdocs.tealium.com&#34;);  // &#34;https://docs.tealium.com&#34;
+utag.ut.decode("Tealium%20Developer%20Docs!");     // "Tealium Developer Docs!"
+utag.ut.decode("https%3A%2F%2Fdocs.tealium.com");  // "https://docs.tealium.com"
 ```
 
 ## `utag.ut.encode()`
@@ -52,8 +52,8 @@ utag.ut.encode(decodedStr)
 例：
 
 ```js
-utag.ut.encode(&#34;Tealium Developer Docs!&#34;);   // &#34;Tealium%20Developer%20Docs!&#34;
-utag.ut.encode(&#34;https://docs.tealium.com&#34;);  // &#34;https%3A%2F%2Fdocs.tealium.com&#34;
+utag.ut.encode("Tealium Developer Docs!");   // "Tealium%20Developer%20Docs!"
+utag.ut.encode("https://docs.tealium.com");  // "https%3A%2F%2Fdocs.tealium.com"
 ```
 
 ## `utag.ut.flatten()`
@@ -71,8 +71,8 @@ utag.ut.flatten(obj)
 例：
 
 ```js
-utag.ut.flatten({&#34;order_id&#34;: &#34;0123567&#34;, &#34;cart&#34;: {&#34;total_items&#34;: 3, &#34;total_amount&#34;: 123.45},&#34;order_tax&#34;: 9.97});
-// {order_id: &#34;0123567&#34;, cart.total_items: 3, cart.total_amount: 123.45, order_tax: 9.97}
+utag.ut.flatten({"order_id": "0123567", "cart": {"total_items": 3, "total_amount": 123.45},"order_tax": 9.97});
+// {order_id: "0123567", cart.total_items: 3, cart.total_amount: 123.45, order_tax: 9.97}
 ```
 
 
@@ -95,8 +95,8 @@ utag.ut.hasOwn(obj, key)
 var obj = new Object();     // オブジェクトを作成
 obj.x = 3.14;               // 非継承のローカルプロパティを定義
 
-utag.ut.hasOwn(obj, &#39;x&#39;);          // true - xはobjのローカルプロパティ
-utag.ut.hasOwn(obj, &#39;y&#39;);          // false - objはプロパティyを持っていない
+utag.ut.hasOwn(obj, 'x');          // true - xはobjのローカルプロパティ
+utag.ut.hasOwn(obj, 'y');          // false - objはプロパティyを持っていない
 ```
 
 ## `utag.ut.isEmpty()`
@@ -126,8 +126,8 @@ utag.ut.isEmpty(NaN);       // true
 utag.ut.isEmpty(undefined); // true
 utag.ut.isEmpty(true);      // false
 utag.ut.isEmpty(false);     // false
-utag.ut.isEmpty(&#34;Tealium&#34;); // false
-utag.ut.isEmpty(&#34;&#34;);        // true
+utag.ut.isEmpty("Tealium"); // false
+utag.ut.isEmpty("");        // true
 
 ```
 
@@ -148,7 +148,7 @@ utag.ut.isEmptyObject(obj)
 
 ```js
 utag.ut.isEmptyObject({});              // true
-utag.ut.isEmptyObject({ foo: &#34;bar&#34; });  // false
+utag.ut.isEmptyObject({ foo: "bar" });  // false
 ```
 
 ## `utag.ut.loader()`
@@ -166,7 +166,7 @@ utag.ut.loader(object)
 | パラメータ  | 説明 |
 | --- | --- |
 | `src` | ロードするファイルのURL |
-| `type` | ロードするタグのタイプ：&#34;iframe&#34;, &#34;img&#34;, &#34;script&#34;（デフォルト）|
+| `type` | ロードするタグのタイプ："iframe", "img", "script"（デフォルト）|
 | `id` | （オプション）要素のID |
 | `cb` | （オプション）コールバック関数 |
 | `attrs`| （オプション）追加のHTML要素属性のオブジェクト |
@@ -175,14 +175,14 @@ utag.ut.loader(object)
 
 ```js
 utag.ut.loader({
-  type: &#34;iframe&#34;,
-  src: &#34;https://example.com/path/file.js&#34;,
-  id: &#34;teal-tag1&#34;,
+  type: "iframe",
+  src: "https://example.com/path/file.js",
+  id: "teal-tag1",
   cb: function() {},
-  attrs: {&#34;async&#34;:&#34;true&#34;}})
+  attrs: {"async":"true"}})
 // 以下のHTML要素を結果とします：
-// &lt;iframe id=&#34;teal-tag1&#34;  async=&#34;true&#34; height=&#34;1&#34; width=&#34;1&#34; style=&#34;display:none&#34;
-//   src=&#34;https://example.com/path/file.js&#34;&gt; &lt;/iframe&gt;
+// <iframe id="teal-tag1"  async="true" height="1" width="1" style="display:none"
+//   src="https://example.com/path/file.js"> </iframe>
 ```
 
 ## `utag.ut.merge()`
@@ -202,17 +202,17 @@ utag.ut.merge(obj1, obj2, flag)
 例：
 
 ```js
-foo = { &#34;key1&#34;:&#34;value1&#34;, &#34;key2&#34;:&#34;value2&#34; }
-bar = { &#34;key1&#34;:&#34;value4&#34;, &#34;key3&#34;:&#34;value3&#34; }
+foo = { "key1":"value1", "key2":"value2" }
+bar = { "key1":"value4", "key3":"value3" }
 utag.ut.merge(foo, bar, 0)
-// foo: {key1: &#34;value1&#34;, key2: &#34;value2&#34;, key3: &#34;value3&#34;}
-// bar: {key1: &#34;value4&#34;, key3: &#34;value3&#34;}
+// foo: {key1: "value1", key2: "value2", key3: "value3"}
+// bar: {key1: "value4", key3: "value3"}
 
-foo = { &#34;key1&#34;:&#34;value1&#34;, &#34;key2&#34;:&#34;value2&#34; }
-bar = { &#34;key1&#34;:&#34;value4&#34;, &#34;key3&#34;:&#34;value3&#34; }
+foo = { "key1":"value1", "key2":"value2" }
+bar = { "key1":"value4", "key3":"value3" }
 utag.ut.merge(foo, bar, 1)
-// foo: {key1: &#34;value4&#34;, key2: &#34;value2&#34;, key3: &#34;value3&#34;}
-// bar: {key1: &#34;value4&#34;, key3: &#34;value3&#34;}
+// foo: {key1: "value4", key2: "value2", key3: "value3"}
+// bar: {key1: "value4", key3: "value3"}
 ```
 
 ## `utag.ut.typeOf()`
@@ -229,11 +229,11 @@ utag.ut.typeOf(arg)
 
 例：
 ```js
-utag.ut.typeOf(5);         // &#34;number&#34;
-utag.ut.typeOf(&#34;Tealium&#34;); // &#34;string&#34;
-utag.ut.typeOf(imgObj);    // &#34;htmlimagelement&#34;
-utag.ut.typeOf(obj);       // &#34;object&#34;
-utag.ut.typeOf(null);      // &#34;null&#34;
-utag.ut.typeOf(undefined); // &#34;undefined&#34;
-utag.ut.typeOf(obj.cb);    // &#34;function&#34;
+utag.ut.typeOf(5);         // "number"
+utag.ut.typeOf("Tealium"); // "string"
+utag.ut.typeOf(imgObj);    // "htmlimagelement"
+utag.ut.typeOf(obj);       // "object"
+utag.ut.typeOf(null);      // "null"
+utag.ut.typeOf(undefined); // "undefined"
+utag.ut.typeOf(obj.cb);    // "function"
 ```

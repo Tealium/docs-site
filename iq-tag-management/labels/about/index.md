@@ -12,11 +12,15 @@ You can add a label to these items:
 * Load rules
 * Extensions
 
-Labels can be used to restrict access to specific configuration items with a feature called [resource locks]().
+
+<blockquote>
+Labels can be used to restrict access to specific configuration items with a feature called [resource locks](https://docs.tealium.com/resource-locks/).
+</blockquote>
+
 
 After you create labels and assign them to items, you can filter the views by label. Labels are useful for grouping related elements, such as items managed by a separate team, or configuration related to a geographic region, or configuration for a specific type of vendor tag.
 
-![](/images/iq-tag-management/labels/tag_labels_example.png)
+![](https://docs.tealium.com/images/iq-tag-management/labels/tag_labels_example.png)
 
 ### Sample labels
 

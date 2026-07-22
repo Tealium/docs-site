@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/swrve-app-events-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -41,10 +41,10 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|User ID|  &lt;ul&gt;&lt;li&gt;(Required) Unique user identifier the event relates to.&lt;/li&gt;&lt;/ul&gt; |
-|Event Name|  &lt;ul&gt;&lt;li&gt;(Required) String&lt;/li&gt;&lt;li&gt;The name of the event.&lt;/li&gt;&lt;li&gt;Example: `app_started`&lt;/li&gt;&lt;li&gt;The name can use dot notation to indicate a hierarchy.&lt;/li&gt;&lt;li&gt;The name must contain only letters, numbers, dashes, underscores, and dots.&lt;/li&gt;&lt;li&gt;The first string of valid characters is taken as the event name.&lt;/li&gt;&lt;li&gt;For example, if the name **level.start/** is supplied, it is interpreted as `level.start` .&lt;/li&gt;&lt;/ul&gt; |
-|App Version|  &lt;ul&gt;&lt;li&gt;The version of the application that the user is currently using.&lt;/li&gt;&lt;/ul&gt; |
-|Custom Payload|  &lt;ul&gt;&lt;li&gt;Map attributes to Custom Payload pairs.&lt;/li&gt;&lt;li&gt;For more information, see: [Custom Payload Guide](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/).&lt;/li&gt;&lt;/ul&gt; |
+|User ID|  <ul><li>(Required) Unique user identifier the event relates to.</li></ul> |
+|Event Name|  <ul><li>(Required) String</li><li>The name of the event.</li><li>Example: `app_started`</li><li>The name can use dot notation to indicate a hierarchy.</li><li>The name must contain only letters, numbers, dashes, underscores, and dots.</li><li>The first string of valid characters is taken as the event name.</li><li>For example, if the name **level.start/** is supplied, it is interpreted as `level.start` .</li></ul> |
+|App Version|  <ul><li>The version of the application that the user is currently using.</li></ul> |
+|Custom Payload|  <ul><li>Map attributes to Custom Payload pairs.</li><li>For more information, see: [Custom Payload Guide](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/).</li></ul> |
 
 ### Action - Update User
 
@@ -52,7 +52,7 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|User ID|  &lt;ul&gt;&lt;li&gt;(Required) Unique user identifier the event relates to.&lt;/li&gt;&lt;/ul&gt; |
-|User Initiated|  &lt;ul&gt;&lt;li&gt;If specified as `false`, then event does not count towards some performance indicators.&lt;/li&gt;&lt;li&gt;If property has any other value or is not specified, then event counts towards all performance indicators as normal.&lt;/li&gt;&lt;/ul&gt; |
-|App Version|  &lt;ul&gt;&lt;li&gt;The version of the application that the user is currently using.&lt;/li&gt;&lt;/ul&gt; |
-|Custom Payload|  &lt;ul&gt;&lt;li&gt;Map attributes to Custom Payload pairs.&lt;/li&gt;&lt;li&gt;For more information, see: [Custom Payload Guide](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/).&lt;/li&gt;&lt;/ul&gt; |
+|User ID|  <ul><li>(Required) Unique user identifier the event relates to.</li></ul> |
+|User Initiated|  <ul><li>If specified as `false`, then event does not count towards some performance indicators.</li><li>If property has any other value or is not specified, then event counts towards all performance indicators as normal.</li></ul> |
+|App Version|  <ul><li>The version of the application that the user is currently using.</li></ul> |
+|Custom Payload|  <ul><li>Map attributes to Custom Payload pairs.</li><li>For more information, see: [Custom Payload Guide](https://docs.swrve.com/swrves-apis/api-guides/events-api-payloads-guide/).</li></ul> |

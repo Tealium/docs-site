@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/data-sources/file-import/file-trans
 1. サービスの資格情報（ユーザー名とパスワード）を入力します。  
     * **Tealium S3バケット** - Tealium S3バケットの資格情報は、ファイルサービスをファイルインポートデータソースで構成すると自動的に生成されます。
         * Tealium S3の資格情報は、**データソースダッシュボード**でデータソースを展開し、**サービス構成**タブをクリックすることで見つけることができます。  
-        ![](/images/server-side/data-sources/tealium-s3-bucket-credentials.png)
+        ![](https://docs.tealium.com/images/server-side/data-sources/tealium-s3-bucket-credentials.png)
         * Cyberduckで以下を入力します：
             * **サーバー**: `s3.amazonaws.com`
             * **アクセスキーID**: Tealium S3 **アクセスキー**
@@ -19,6 +19,10 @@ url: https://docs.tealium.com/ja/server-side/data-sources/file-import/file-trans
 1. サービスに必要な他の詳細（サーバー、パス、ポートなど）を提供します。Cyberduckを使用してサードパーティのS3バケットにアクセスする方法について詳しくは、[Cyberduck: Amazon S3](https://docs.cyberduck.io/protocols/s3/#Accessthirdpartybuckets)を参照してください。
 1. 接続を保存します。
 
-CyberduckにCSVファイルをドラッグアンドドロップしてファイルをアップロードします。これが新しいS3バケット（空のバケット）の場合は、最初のファイルをアップロードする方法については[空のS3バケットにファイルをアップロードする]()を参照してください。
+CyberduckにCSVファイルをドラッグアンドドロップしてファイルをアップロードします。これが新しいS3バケット（空のバケット）の場合は、最初のファイルをアップロードする方法については[空のS3バケットにファイルをアップロードする](https://docs.tealium.com/aws-s3/#use-amazon-cli-to-upload-files-to-an-empty-s3-bucket)を参照してください。
 
+
+<blockquote>
 SFTPを使用する場合、ファイルはルートフォルダに配置する必要があります。SFTP接続のサブフォルダにはファイルを配置できません。
+</blockquote>
+

@@ -20,7 +20,7 @@ url: https://docs.tealium.com/ja/server-side/functions/best-practices/
 モジュール全体をインポートするのではなく、必要な機能のみをインポートしてください。例えば：
 
 ```
-import { MD5 } from &#39;crypto-es/lib/md5.js&#39;;
+import { MD5 } from 'crypto-es/lib/md5.js';
 ```
 
 ## デバッグログメッセージの使用を避ける
@@ -47,7 +47,7 @@ console.log(event.data.udo.property_to_track);
 const array = [1, 2, 3];
 const arrayLength = array.length;
 
-for (let i = 0; i &lt; arrayLength; i&#43;&#43;) {
+for (let i = 0; i < arrayLength; i++) {
     const arrayItem = array[i];
 }
 ```
@@ -59,7 +59,7 @@ const obj = { a: 1, b: 2, c: 3 };
 const keys = Object.getOwnPropertyNames(obj);
 const keysLength = keys.length;
 
-for (let i = 0; i &lt; keysLength; i&#43;&#43;) {
+for (let i = 0; i < keysLength; i++) {
     const keyName = keys[i];
     const value = obj[keyName];
 }
@@ -71,14 +71,14 @@ for (let i = 0; i &lt; keysLength; i&#43;&#43;) {
 
 ```js
 // 正しい: HTTPリクエストハンドラ内でのアクセストークン
-activate(async ({ visitor, helper }) =&gt; {
+activate(async ({ visitor, helper }) => {
   const response = await fetch(
-    &#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;,
+    "https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send",
     {
-      method: &#34;POST&#34;,
+      method: "POST",
       headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39; &#43; helper.getAuth(&#39;firebase_cloud_messaging&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
+        'Authorization': 'Bearer ' + helper.getAuth('firebase_cloud_messaging'),
+        'Content-Type': 'application/json'
       },
       body:body
     }
@@ -87,5 +87,5 @@ activate(async ({ visitor, helper }) =&gt; {
 }
 
 // 不正確: HTTPリクエストハンドラの外でのアクセストークン
-const token = helper.getAuth(&#39;firebase_cloud_messaging&#39;); // これはUUIDプレースホルダーに置き換えられます
+const token = helper.getAuth('firebase_cloud_messaging'); // これはUUIDプレースホルダーに置き換えられます
 ```

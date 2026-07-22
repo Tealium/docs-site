@@ -3,7 +3,11 @@ title: Tealium API request format
 description: This article describes the request format for Tealium APIs.
 url: https://docs.tealium.com/api/v2/getting-started/request-format/
 ---
-The [previous v1 API]() is still available, but will eventually be deprecated.
+
+<blockquote>
+The [previous v1 API](https://docs.tealium.com/request-format-v1/) is still available, but will eventually be deprecated.
+</blockquote>
+
 
 ## Root URL
 

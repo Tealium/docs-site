@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/neustar-platformone-conversion-ta
 ---
 This article describes how to set up the Neustar PlatformOne Conversion Tag in your Tealium iQ Tag Management account.
 
-Neustar® PlatformOne is an integrated marketing platform that enables advertisers to deliver precision marketing across all marketing activities. Powered by Neustar&#39;s Authoritative Identity Engine, PlatformOne provides a single, unbiased and accurate view of customers and prospects to improve conversion rates, optimize spend, and ultimately increase sales.
+Neustar® PlatformOne is an integrated marketing platform that enables advertisers to deliver precision marketing across all marketing activities. Powered by Neustar's Authoritative Identity Engine, PlatformOne provides a single, unbiased and accurate view of customers and prospects to improve conversion rates, optimize spend, and ultimately increase sales.
 
 ## Tag Tips
 
@@ -21,7 +21,7 @@ Neustar® PlatformOne is an integrated marketing platform that enables advertise
 
 ## Tag Configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags]().
+Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,11 +30,11 @@ When adding the tag, configure the following settings:
 
 ## Load Rules
 
-Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules]() documentation.
+Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 ## Data Mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings]().
+Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

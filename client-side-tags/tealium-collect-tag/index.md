@@ -11,21 +11,21 @@ url: https://docs.tealium.com/client-side-tags/tealium-collect-tag/
 
 The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. This tag requires no mapping; it automatically sends everything set in `utag.data` or any data passed to a tracking call.
 
-For a full list of collected variables, see . For information about how this data appears in EventDB, see .
+For a full list of collected variables, see [eventstore-data-guide](https://docs.tealium.com/eventstore-data-guide/). For information about how this data appears in EventDB, see [eventdb-data-guide](https://docs.tealium.com/eventdb-data-guide/).
 
-To see the incoming data from the Tealium Collect tag, see [Live Events]().
+To see the incoming data from the Tealium Collect tag, see [Live Events](https://docs.tealium.com/about-live-events/).
 
 Use the Tealium Collect tag with the following features:
 
 * **Reduce pixel requests with EventStream**  
-Use this tag with EventStream and event feeds to transition client-side tags to server-side connectors, such as the [Webhook connector]().
+Use this tag with EventStream and event feeds to transition client-side tags to server-side connectors, such as the [Webhook connector](https://docs.tealium.com/about-webhook-connectors/).
 * **AudienceStream**  
 Use this tag with AudienceStream to identify and action your visitors.
 * **DataAccess**  
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.
 * **Enrich your data layer**  
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.  
-For more information, see .
+For more information, see [enable-data-layer-enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
 
 ## Tag tips
 
@@ -39,11 +39,11 @@ Apply the following best practices in your implementation:
 
 * To prioritize third-party client-side tags, position the Tealium Collect tag last in your list of tags to allow them to run first.
 * Do not add more than one instance of the Tealium Collect tag in your profile.
-* Use the latest version of the uTag Loader template. For more information, see .
+* Use the latest version of the uTag Loader template. For more information, see [version-4-50](https://docs.tealium.com/version-4-50/).
 
 ## Tag configuration
 
-First, go to the tag marketplace and add the Tealium Collect tag. For more information, see [Manage tags]().
+First, go to the tag marketplace and add the Tealium Collect tag. For more information, see [Manage tags](https://docs.tealium.com/manage-tags/#add-a-tag).
 
 After adding the tag, configure the following settings:
 
@@ -80,7 +80,7 @@ After adding the tag, configure the following settings:
   * SendBeacon is intended for small amounts of data and has a data size limit of 64Kb in most browsers. For more information, see [Navigator:sendBeacon() method](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon).
   * Default: `true`.
 * **Use HTTP API Endpoint**
-  * Set to true to use the [HTTP API endpoint]() instead of the Tealium Collect endpoint.
+  * Set to true to use the [HTTP API endpoint](https://docs.tealium.com/platforms/http-api/endpoint-spec/) instead of the Tealium Collect endpoint.
   * Default: `false`.
 * **Visitor Service Override**
   * Specifies the domain used to retrieve visitor profile data from Tealium AudienceStream for data layer enrichment.
@@ -90,7 +90,7 @@ After adding the tag, configure the following settings:
   * The domain used to set the Tealium anonymous ID (TAPID cookie).
   * Enter a custom domain to override the default value.
   * This value is usually set to a first-party domain, such as `.yourdomain.com`.
-  * This option only applies if the [first-party domains feature]() is enabled and the Tealium Collect tag is on that first-party domain.
+  * This option only applies if the [first-party domains feature](https://docs.tealium.com/about-first-party-domains/) is enabled and the Tealium Collect tag is on that first-party domain.
 * **Tealium Cookie Expiry** (Optional)
   * The expiration time of the TAPID cookie in seconds.
 * Filter data sent to the Tealium Collect endpoint using the following settings:
@@ -106,7 +106,7 @@ After adding the tag, configure the following settings:
 For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:
 
 ```js
-u.visitor_service_override = &#34;https://visitor-service.example.co.uk&#34;;
+u.visitor_service_override = "https://visitor-service.example.co.uk";
 ```
 
 ## Load rules
@@ -115,7 +115,7 @@ The best practice is to use the **All Pages and Events** load rule. Loading this
 
 ### Working with trace
 
-If you use a more restrictive load rule and you&#39;ve noticed that you can&#39;t end a session in the trace tool, a custom load rule is needed to allow the special event triggered by trace.
+If you use a more restrictive load rule and you've noticed that you can't end a session in the trace tool, a custom load rule is needed to allow the special event triggered by trace.
 
 Create the following load rule and assign it to the Tealium Collect tag.
 
@@ -123,26 +123,26 @@ Create the following load rule and assign it to the Tealium Collect tag.
 ut.event equals (ignore case) kill_visitor_session
 ```
 
-![](/images/client-side-tags/tealium-collect-load-rule-for-trace.png)
+![](https://docs.tealium.com/images/client-side-tags/tealium-collect-load-rule-for-trace.png)
 
 ## Implementing with mobile
 
-For deployments using [Tealium for Android]() or [Tealium for iOS](), note the following:
+For deployments using [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/install/), note the following:
 
-* The default [mobile publish settings]() enable the native mobile Tealium Collect service by default.  
-Learn more about the [native Collect module for mobile]().
-* When using the [Tealium Collect tag with the Tag Management module for mobile](), ensure that the **Tealium Collect** option in the [mobile publish settings]() is off to avoid duplicate tracking.
+* The default [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings) enable the native mobile Tealium Collect service by default.  
+Learn more about the [native Collect module for mobile](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#native-module).
+* When using the [Tealium Collect tag with the Tag Management module for mobile](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#javascript-tag), ensure that the **Tealium Collect** option in the [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings) is off to avoid duplicate tracking.
 
 ## Cookies
 
 The Tealium Collect tag creates the following cookies:
 
-* `utag_main_v_id`: a unique, partially random identifier to ensure compliance with data privacy and consent rules. The Collect tag creates this cookie in `utag.js` version 4.50 and later if the [`always_set_v_id` utag setting]() is set to `true`. Otherwise, the Collect tag creates the cookie under the following conditions:
+* `utag_main_v_id`: a unique, partially random identifier to ensure compliance with data privacy and consent rules. The Collect tag creates this cookie in `utag.js` version 4.50 and later if the [`always_set_v_id` utag setting](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id) is set to `true`. Otherwise, the Collect tag creates the cookie under the following conditions:
     * The `suppress_v_id` Collect setting is set to `false` or not set.
-    * The cookie&#39;s value is not already set.  
-    For more information about this cookie, see [`utag.js` Release Notes version 4.50]().
+    * The cookie's value is not already set.  
+    For more information about this cookie, see [`utag.js` Release Notes version 4.50](https://docs.tealium.com/platforms/javascript/version-4-50/).
 * `utag_main_dc_group`: a random number to use with the **Sample Size** setting.
-* `utag_main_dc_region`: the AudienceStream region where the visit session is stored. This cookie is used for determining the endpoints for [data layer enrichment]().
+* `utag_main_dc_region`: the AudienceStream region where the visit session is stored. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/).
 
 ### Legacy cookies
 
@@ -151,4 +151,4 @@ For compatibility reasons, the Tealium Collect tag creates the following legacy 
 * `utag_main_dc_visit`: The number of sessions for which the Tealium Collect tag has fired.
 * `utag_main_dc_event`: The number of events for which the Tealium Collect tag has fired.
 
-For more information about these cookies, see [Data Layer: Cookies]().
+For more information about these cookies, see [Data Layer: Cookies](https://docs.tealium.com/platforms/javascript/data-layer/#cookies).

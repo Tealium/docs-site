@@ -5,7 +5,11 @@ url: https://docs.tealium.com/ja/consent/server-side/consent-orchestration/about
 ---
 Tealium Consent Orchestrationは、イベントレベルのアクティベーションのための同意条件を中央で制御することができます。これにより、ユーザーの同意をリアルタイムで遵守し、データ処理がユーザーの好みと法的要件に合致することを保証します。
 
-現在、イベントレベルでの強制のみが利用可能で、Audiencesでは[手動強制]()が必要です。
+
+<blockquote>
+現在、イベントレベルでの強制のみが利用可能で、Audiencesでは[手動強制](https://docs.tealium.com/manual-enforcement/)が必要です。
+</blockquote>
+
 
 ## 動作原理
 
@@ -16,7 +20,7 @@ Tealium Consent Orchestrationは、イベントレベルのアクティベーシ
 Consent Orchestrationは、以下の機能に対する同意ルールの中央制御を提供します：
 
 * EventStreamコネクタアクション
-* [イベント機能]()
+* [イベント機能](https://docs.tealium.com/about-event-and-visitor-functions/)
 * EventStore
 * EventDB
 * AudienceStreamが処理を許可されているイベント
@@ -52,9 +56,9 @@ Consent OrchestrationはAudienceStreamのアクティベーションを制御し
 
 ### レガシー強制の置き換え
 
-この機能は[サーバーサイド同意管理]()を無効にしますが、目的ルールの`consent_categories`配列を引き続き使用することができます。
+この機能は[サーバーサイド同意管理](https://docs.tealium.com/server-side-consent-management/)を無効にしますが、目的ルールの`consent_categories`配列を引き続き使用することができます。
 
 ## コンセントオーケストレーションのフロー
 
-![](/images/early-access/consent-orchestration-flow.png)
+![](https://docs.tealium.com/images/early-access/consent-orchestration-flow.png)
 

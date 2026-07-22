@@ -3,8 +3,12 @@ title: API リファレンス
 description: TealiumのReact Native用クラスとメソッドのリファレンスガイドです。
 url: https://docs.tealium.com/ja/platforms/react-native-v1/api/
 ---
+
+<blockquote>
 これはTealiumのReact Native用の以前のバージョン（1.x）です。  
-現在のバージョンについては、[Tealium for React Native 2.x](/ja/platforms/react-native/)をご覧ください。
+現在のバージョンについては、[Tealium for React Native 2.x](https://docs.tealium.com/ja/platforms/react-native/)をご覧ください。
+</blockquote>
+
 
 ## クラス: `Tealium`
 
@@ -62,17 +66,17 @@ addRemoteCommand(commandID, description, callback);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
-| `description` | `String ` | リモートコマンドの説明 | `&#34;Firebase remote command&#34;` |
+| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
+| `description` | `String ` | リモートコマンドの説明 | `"Firebase remote command"` |
 | `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```javascript
-Tealium.addRemoteCommand(&#34;firebase&#34;, &#34;Firebase remote command&#34;, function(payload) {
+Tealium.addRemoteCommand("firebase", "Firebase remote command", function(payload) {
 
-  var eventName = payload[&#34;firebase_event_name&#34;];
-  var eventProperties = payload[&#34;firebase_event_properties&#34;];
+  var eventName = payload["firebase_event_name"];
+  var eventProperties = payload["firebase_event_properties"];
 
   analytics.logEvent(eventName, eventProperties);
 });
@@ -88,21 +92,21 @@ addRemoteCommandForInstanceName(instanceName, commandID, description, callback);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `&#34;test_command&#34;` |
-| `description` | `String ` | リモートコマンドの説明 | `&#34;Firebase remote command&#34;` |
+| `instanceName` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `commandID` | `String` | タグ構成からのコマンドIDの名前 | `"test_command"` |
+| `description` | `String ` | リモートコマンドの説明 | `"Firebase remote command"` |
 | `callback` | `Function ` |  リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。 | (例を参照) |
 
 例:
 
 ```javascript
-Tealium.addRemoteCommand(&#34;instance-2&#34;, &#34;survey&#34;, &#34;Display feedback survey&#34;, function(payload) {
+Tealium.addRemoteCommand("instance-2", "survey", "Display feedback survey", function(payload) {
 
-	var title = payload[&#34;survey_title&#34;];
-	var question = payload[&#34;survey_question&#34;];
+	var title = payload["survey_title"];
+	var question = payload["survey_question"];
 
-	Alert.alert(title, question, [{text: &#39;Yes&#39;, onPress: () =&gt; surveyHandler()},
-								  {text: &#39;No&#39;, onPress: () =&gt; surveyHandler()}]);
+	Alert.alert(title, question, [{text: 'Yes', onPress: () => surveyHandler()},
+								  {text: 'No', onPress: () => surveyHandler()}]);
 
 });
 ```
@@ -116,8 +120,8 @@ Tealium.getPersistentData(key, value);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `key` | `String` | 値のキー名  | `&#34;foo&#34;` |
-| `value` | `Object` | キー値ペアのJSONオブジェクト | `function(value) {console.log(&#34;get persistent: &#34; &#43; value);}` |
+| `key` | `String` | 値のキー名  | `"foo"` |
+| `value` | `Object` | キー値ペアのJSONオブジェクト | `function(value) {console.log("get persistent: " + value);}` |
 
 
 ### `getPersistentDataForInstanceName()`
@@ -128,9 +132,9 @@ Tealium.getPersistentDataForInstanceName(instanceName, key, value);
 ```
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名  | `&#34;instance-2&#34;` |
-| `key` | `String` | 値のキー名  | `&#34;foo&#34;` |
-| `data` | `Object` | キー値ペアのJSONオブジェクト | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `name` | `String` | インスタンス名  | `"instance-2"` |
+| `key` | `String` | 値のキー名  | `"foo"` |
+| `data` | `Object` | キー値ペアのJSONオブジェクト | `function(value) {console.log("get volatile: " + value);}` |
 
 ### `getUserConsentCategories()`
 ユーザーの同意カテゴリを取得します。ユーザー同意カテゴリを使用するためのコールバックを渡します。
@@ -141,7 +145,7 @@ Tealium.getUserConsentCategories(userConsentCategories);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `userConsentCategories` | `Callback` | ユーザー同意カテゴリを使用するコールバック関数 | `function (consentCategories) {console.log(&#34;categories &#39;main&#39;: &#34; &#43; consentCategories);}` |
+| `userConsentCategories` | `Callback` | ユーザー同意カテゴリを使用するコールバック関数 | `function (consentCategories) {console.log("categories 'main': " + consentCategories);}` |
 ### `getUserConsentCatgoriesForInstanceName()`
 特定のTealiumインスタンスに対してユーザーの同意カテゴリを取得します。ユーザーの同意カテゴリを使用するためにコールバックを渡します。アプリにTealiumの複数のインスタンスがある場合に使用します。
 
@@ -150,8 +154,8 @@ Tealium.getUserConsentCategoriesForInstanceName(name, userConsentCategories);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `userConsentCategories` | `Callback` | ユーザーの同意カテゴリを使用するコールバック関数 | `function (consentCategories) {console.log(&#34;categories &#39;main&#39;: &#34; &#43; consentCategories);}` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `userConsentCategories` | `Callback` | ユーザーの同意カテゴリを使用するコールバック関数 | `function (consentCategories) {console.log("categories 'main': " + consentCategories);}` |
 
 ### `getUserConsentStatus()`
 ユーザーの同意状態を取得します。ユーザーの同意状態を使用するためにコールバックを渡します。
@@ -162,7 +166,7 @@ Tealium.getUserConsentStatus(userConsentStatus);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `userConsentStatus` | `Callback` | ユーザーの同意状態を使用するコールバック関数 | `function(userConsentStatus) {console.log(&#34;consent status &#39;instance-2&#39;: &#34; &#43; userConsentStatus);}` |
+| `userConsentStatus` | `Callback` | ユーザーの同意状態を使用するコールバック関数 | `function(userConsentStatus) {console.log("consent status 'instance-2': " + userConsentStatus);}` |
 
 ### `getUserConsentStatusForInstanceName()`
 特定のTealiumインスタンスに対してユーザーの同意状態を取得します。ユーザーの同意状態を使用するためにコールバックを渡します。アプリにTealiumの複数のインスタンスがある場合に使用します。
@@ -173,8 +177,8 @@ Tealium.getUserConsentStatusForInstanceName(name, userConsentStatus);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `userConsentStatus` | `Callback` | ユーザーの同意状態を使用するコールバック関数 | `function(userConsentStatus) {console.log(&#34;consent status &#39;instance-2&#39;: &#34; &#43; userConsentStatus);}` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `userConsentStatus` | `Callback` | ユーザーの同意状態を使用するコールバック関数 | `function(userConsentStatus) {console.log("consent status 'instance-2': " + userConsentStatus);}` |
 
 ### `getVisitorID()`
 ユーザーの訪問IDを取得します。訪問IDを使用するためにコールバックを渡します。
@@ -185,7 +189,7 @@ Tealium.getVisitorID(visitorID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `visitorID` | `Callback` | 訪問IDを使用するコールバック関数 | `function (visitorID) {console.log(&#34;visitorID: &#34; &#43; visitorID);}` |
+| `visitorID` | `Callback` | 訪問IDを使用するコールバック関数 | `function (visitorID) {console.log("visitorID: " + visitorID);}` |
 
 ### `getVisitorIDForInstanceName()`
 特定のTealiumインスタンスに対してユーザーの訪問IDを取得します。訪問IDを使用するためにコールバックを渡します。アプリにTealiumの複数のインスタンスがある場合に使用します。
@@ -196,8 +200,8 @@ Tealium.getVisitorIDForInstanceName(name, visitorID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `visitorID` | `Callback` | 訪問IDを使用するコールバック関数 | `function (visitorID) {console.log(&#34;visitorID: &#34; &#43; visitorID);}` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `visitorID` | `Callback` | 訪問IDを使用するコールバック関数 | `function (visitorID) {console.log("visitorID: " + visitorID);}` |
 
 ### `getVolatileData()`
 渡されたキーの値を取得します。
@@ -208,8 +212,8 @@ Tealium.getVolatileData(key, value);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `key` | `String` | 値のキー名 | `&#34;foo&#34;` |
-| `value` | `Object` | キーと値のペアのJSONオブジェクト | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `key` | `String` | 値のキー名 | `"foo"` |
+| `value` | `Object` | キーと値のペアのJSONオブジェクト | `function(value) {console.log("get volatile: " + value);}` |
 
 ### `getVolatileDataForInstanceName()`
 特定のTealiumインスタンスとキーに対して揮発性データ値を取得します。アプリにTealiumの複数のインスタンスがある場合に使用します。
@@ -219,9 +223,9 @@ Tealium.getVolatileDataForInstanceName(instanceName, key, value);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `key` | `String` | 値のキー名 | `&#34;foo&#34;` |
-| `data` | `Object` | キーと値のペアのJSONオブジェクト | `function(value) {console.log(&#34;get volatile: &#34; &#43; value);}` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `key` | `String` | 値のキー名 | `"foo"` |
+| `data` | `Object` | キーと値のペアのJSONオブジェクト | `function(value) {console.log("get volatile: " + value);}` |
 
 ### `initialize()`
 
@@ -239,12 +243,12 @@ initialize(account,
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealiumアカウント名 | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealiumプロファイル名 | `&#34;main&#34;` |
-| `environment` | `String` | Tealium環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `&#34;xyz123&#34;` |
-| `instance` | `String` | Tealiumインスタンス名 (デフォルト: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealiumアカウント名 | `"companyXYZ" `|
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `environment` | `String` | Tealium環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `"abc123"` |
+| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `"xyz123"` |
+| `instance` | `String` | Tealiumインスタンス名 (デフォルト: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (オプション) ライフサイクル追跡を有効にする (デフォルト: `true`) | [`true`, `false`] |
 
 ### `initializeCustom()`
@@ -269,12 +273,12 @@ initializeCustom(account,
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealiumアカウント名 | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealiumプロファイル名 | `&#34;main&#34;` |
-| `environment` | `String` | Tealium環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `&#34;xyz123&#34;` |
-| `instance` | `String` | Tealiumインスタンス名 (デフォルト: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealiumアカウント名 | `"companyXYZ" `|
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `environment` | `String` | Tealium環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `"abc123"` |
+| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `"xyz123"` |
+| `instance` | `String` | Tealiumインスタンス名 (デフォルト: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (オプション) ライフサイクル追跡を有効にする  (デフォルト: `true`) | [`true`, `false`] |
 | `overridePublishSettingsURL` | `String` | パブリッシュ構成URLを上書きする場合 (デフォルト: `null`) | `null` |
 | `overrideTagManagementURL` | `String` | タグ管理URLを上書きする場合 (デフォルト: `null`) | `null` |
@@ -298,12 +302,12 @@ initializeWithConsentManager(account,
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` | Tealiumアカウント名 | `&#34;companyXYZ&#34; `|
-| `profile` | `String` | Tealiumプロファイル名 | `&#34;main&#34;` |
-| `environment` | `String` | Tealium環境名 |  [`&#34;dev&#34;`, `&#34;qa&#34;`, `&#34;prod&#34;`] |
-| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `&#34;abc123&#34;` |
-| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `&#34;xyz123&#34;` |
-| `instancee` | `String` | Tealiumインスタンス名 (デフォルト: `&#34;MAIN&#34;`) | `&#34;MAIN&#34;` |
+| `account` | `String` | Tealiumアカウント名 | `"companyXYZ" `|
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `environment` | `String` | Tealium環境名 |  [`"dev"`, `"qa"`, `"prod"`] |
+| `iosDatasource` | `String` | (オプション) Tealium iOSデータソースキー | `"abc123"` |
+| `androidDatasource` | `String` | (オプション) Tealium Androidデータソースキー | `"xyz123"` |
+| `instancee` | `String` | Tealiumインスタンス名 (デフォルト: `"MAIN"`) | `"MAIN"` |
 | `isLifecycleEnabled` | `Boolean` | (オプション) ライフサイクル追跡を有効にする  (デフォルト: `true`) | [`true`, `false`] |
 
 ### `isConsentLoggingEnabled()`
@@ -315,7 +319,7 @@ isConsentLoggingEnabled(enabled);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `callback` | `Callback` | ユーザーの同意ログ記録が有効かどうかを確認する | &#39;function (enabled) {console.log(&#34;consent logging enabled &#39;main&#39;: &#34; &#43; enabled);}&#39; |
+| `callback` | `Callback` | ユーザーの同意ログ記録が有効かどうかを確認する | 'function (enabled) {console.log("consent logging enabled 'main': " + enabled);}' |
 
 ### `isConsentLoggingEnabledForInstanceName()`
 
@@ -327,8 +331,8 @@ Tealium.isConsentLoggingEnabledForInstanceName(name, enabled);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `callback` | `Callback` | ユーザーの同意ログ記録が有効かどうかを確認する | &#39;function (enabled) {console.log(&#34;consent logging enabled &#39;main&#39;: &#34; &#43; enabled);}&#39; |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `callback` | `Callback` | ユーザーの同意ログ記録が有効かどうかを確認する | 'function (enabled) {console.log("consent logging enabled 'main': " + enabled);}' |
 ### `removePersistentData()`
 `Tealium.setPersistentData()`を使用して以前に構成された永続的なデータを削除します。
 
@@ -338,7 +342,7 @@ Tealium.removePersistentData(keys);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `keys` | `[String]` | キー名の配列  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `[String]` | キー名の配列  | `["foo", "bar"]` |
 
 
 ### `removePersistentDataForInstanceName()`
@@ -350,8 +354,8 @@ Tealium.removePersistentDataForInstanceName(instanceName, keys);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名  | `&#34;instance-2&#34;` |
-| `keys` | `[String]` | キー名の配列  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `name` | `String` | インスタンス名  | `"instance-2"` |
+| `keys` | `[String]` | キー名の配列  | `["foo", "bar"]` |
 
 ### `removeRemoteCommand()`
 
@@ -363,12 +367,12 @@ removeRemoteCommand(commandID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `commandID ` | `String` | 削除するコマンドIDの名前  | `&#34;test_command&#34;` |
+| `commandID ` | `String` | 削除するコマンドIDの名前  | `"test_command"` |
 
 例:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;firebase&#34;);
+Tealium.removeRemoteCommand("firebase");
 ```
 
 ### `removeRemoteCommandForInstanceName()`
@@ -381,13 +385,13 @@ removeRemoteCommandForInstanceName(instanceName, commandID);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `instanceName` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `commandID ` | `String` | 削除するコマンドIDの名前  | `&#34;test_command&#34;` |
+| `instanceName` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `commandID ` | `String` | 削除するコマンドIDの名前  | `"test_command"` |
 
 例:
 
 ```javascript
-Tealium.removeRemoteCommand(&#34;instance-2&#34;, &#34;firebase&#34;);
+Tealium.removeRemoteCommand("instance-2", "firebase");
 ```
 
 ### `removeVolatileData()`
@@ -399,7 +403,7 @@ Tealium.removeVolatileData(keys);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `keys` | `[String]` | キー名の配列  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `keys` | `[String]` | キー名の配列  | `["foo", "bar"]` |
 
 
 ### `removeVolatileDataForInstanceName()`
@@ -411,8 +415,8 @@ Tealium.removeVolatileDataForInstanceName(name, keys);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名  | `&#34;instance-2&#34;` |
-| `keys` | `[String]` | キー名の配列  | `[&#34;foo&#34;, &#34;bar&#34;]` |
+| `name` | `String` | インスタンス名  | `"instance-2"` |
+| `keys` | `[String]` | キー名の配列  | `["foo", "bar"]` |
 
 
 
@@ -433,7 +437,7 @@ Tealium.resetUserConsentPreferencesForInstanceName(name);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
 
 
 
@@ -445,7 +449,7 @@ Tealium.setConsentLoggingEnabled(enabled);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `enabled` | `boolean` | ユーザーの同意ログを有効にする | [`&#34;true&#34;`, `&#34;false&#34;`] |
+| `enabled` | `boolean` | ユーザーの同意ログを有効にする | [`"true"`, `"false"`] |
 
 
 ### `setConsentLoggingEnabledForInstanceName()`
@@ -457,8 +461,8 @@ Tealium.setConsentLoggingEnabledForInstanceName(name, enabled);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `enabled` | `boolean` | ユーザーの同意ログを有効にする | [`&#34;true&#34;`, `&#34;false&#34;`] |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `enabled` | `boolean` | ユーザーの同意ログを有効にする | [`"true"`, `"false"`] |
 
 ### `setPersistentData()`
 アプリの再起動間でも、各後続のイベントまたはビューに送信される永続的なデータを構成します。
@@ -468,7 +472,7 @@ Tealium.setPersistentData(data);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
+| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{"persistent_key2" : "persistent_val2"}` |
 
 
 ### `setPersistentDataForInstanceName()`
@@ -479,8 +483,8 @@ Tealium.setPersistentDataForInstanceName(instanceName, data);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名  | `&#34;instance-2&#34;` |
-| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{&#34;persistent_key2&#34; : &#34;persistent_val2&#34;}` |
+| `name` | `String` | インスタンス名  | `"instance-2"` |
+| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{"persistent_key2" : "persistent_val2"}` |
 
 
 ### `setUserConsentCategories()`
@@ -492,7 +496,7 @@ Tealium.setUserConsentCategories(userConsentCategories);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `userConsentCategories` | `[String]` | ユーザーの同意カテゴリの配列 | `[&#34;email&#34;, &#34;personalization&#34;]` |
+| `userConsentCategories` | `[String]` | ユーザーの同意カテゴリの配列 | `["email", "personalization"]` |
 
 ### `setUserConsentCategoriesForInstanceName()`
 特定のTealiumインスタンスに対してユーザーの同意カテゴリを構成します。カテゴリの文字列配列を渡して構成します。アプリにTealiumの複数のインスタンスがある場合に使用します。
@@ -503,8 +507,8 @@ Tealium.setUserConsentCategoriesForInstanceName(name, userConsentCategories);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
-| `userConsentCategories` | `[String]` | ユーザーの同意カテゴリの配列 | `[&#34;analytics&#34;, &#34;big_data&#34;]` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
+| `userConsentCategories` | `[String]` | ユーザーの同意カテゴリの配列 | `["analytics", "big_data"]` |
 
 
 ### `setUserConsentStatus()`
@@ -535,7 +539,7 @@ Tealium.setUserConsentStatusForInstanceName(name, userConsentStatus);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | インスタンス名 | `&#34;instance-2&#34;` |
+| `name` | `String` | インスタンス名 | `"instance-2"` |
 | `userConsentStatus` | `int` | ユーザーの同意状態 | [`0`, `1`, `2`, `3`] |
 
 | 同意状態値 | 説明 |
@@ -553,7 +557,7 @@ Tealium.setVolatileData(data);
 ```
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{&#34;volatile_var&#34;: &#34;volatile_val&#34;, &#34;volatile_var2&#34;: &#34;volatile_val2&#34;}` |
+| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{"volatile_var": "volatile_val", "volatile_var2": "volatile_val2"}` |
 
 
 ### `setVolatileDataForInstanceName()`
@@ -565,8 +569,8 @@ Tealium.setVolatileDataForInstanceName(name, data);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | キー名 | &#34;instance-2&#34; |
-| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{&#34;foo&#34;: &#34;bar&#34;}` |
+| `name` | `String` | キー名 | "instance-2" |
+| `data` | `Object` | キーが文字列で値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{"foo": "bar"}` |
 ### `trackEvent()`
 
 イベント名とイベントデータでイベントを追跡します。
@@ -577,8 +581,8 @@ trackEvent(stringTitle, data);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `stringTitle` | `String` | イベント名（Tealium Customer Data Hubでの`event_name`属性になります） | `&#34;test_event&#34;` |
-| `data` | `Object` | キーと値のペアのJSONオブジェクト | `{&#34;title&#34;: &#34;test_event&#34;, &#34;event_title&#34;: &#34;test_event&#34;, &#34;testkey&#34;: &#34;testval&#34;, &#34;anotherkey&#34;: &#34;anotherval&#34;}` |
+| `stringTitle` | `String` | イベント名（Tealium Customer Data Hubでの`event_name`属性になります） | `"test_event"` |
+| `data` | `Object` | キーと値のペアのJSONオブジェクト | `{"title": "test_event", "event_title": "test_event", "testkey": "testval", "anotherkey": "anotherval"}` |
 
 
 ### `trackEventForInstanceName()`
@@ -591,8 +595,8 @@ trackEvent(name, stringTitle, data);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `stringTitle` | `String` | イベント名（Customer Data Hubでの`event_name`属性になります） | `&#34;test_event_2&#34;` |
+| `name` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `stringTitle` | `String` | イベント名（Customer Data Hubでの`event_name`属性になります） | `"test_event_2"` |
 | `data` | `Object` | キーと値のペアのJSONオブジェクト | |
 
 
@@ -606,8 +610,8 @@ trackView(screenName, data);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `stringTitle` | `String` | イベント名（Customer Data Hubでの`screen_title`属性になります） | `&#34;test_view&#34;` |
-| `data` | `Object` | キーと値のペアのJSONオブジェクト | `{&#34;title&#34;: &#34;test_view&#34;, &#34;event_title&#34;: &#34;test_view&#34;, &#34;testkey&#34;: &#34;testval&#34;, &#34;anotherkey&#34;: &#34;anotherval&#34;}` |
+| `stringTitle` | `String` | イベント名（Customer Data Hubでの`screen_title`属性になります） | `"test_view"` |
+| `data` | `Object` | キーと値のペアのJSONオブジェクト | `{"title": "test_view", "event_title": "test_view", "testkey": "testval", "anotherkey": "anotherval"}` |
 
 
 ### `trackViewForInstanceName()`
@@ -620,6 +624,6 @@ Tealium.trackViewForInstanceName(instanceName, screenName, data);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `name` | `String` | Tealiumインスタンスの名前 | `&#34;instance-2&#34;` |
-| `stringTitle` | `String` | イベント名（Customer Data Hubでの`screen_title`属性になります） | `&#34;instance_2_view&#34;` |
+| `name` | `String` | Tealiumインスタンスの名前 | `"instance-2"` |
+| `stringTitle` | `String` | イベント名（Customer Data Hubでの`screen_title`属性になります） | `"instance_2_view"` |
 | `data` | `Object` | （オプション）キーと値のペアのJSONオブジェクト | |
