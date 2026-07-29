@@ -36,8 +36,9 @@ Environment to make API calls against.
 | Trigger Transactional Email (Real-Time) | ✓ | ✗ |
 | Trigger Transactional Email (Batched) | ✓ | ✗ |
 | Unsubscribe Contact From Email Campaign | ✓ | ✗ |
-| Trigger an External Event (Real-Time) | ✓ | ✓ |
-| Trigger an External Event (Batched) | ✓ | ✓ |
+| Trigger an Engagement Event | ✓ | ✓ |
+| Trigger an External Event (Real-Time) (Deprecated) | ✓ | ✓ |
+| Trigger an External Event (Batched) (Deprecated) | ✓ | ✓ |
 | Upsert record in an RDS table (Real-Time) | ✓ | ✗ |
 | Upsert record in an RDS table (Batched) | ✓ | ✗ |
 | Delete record in an RDS table (Real-Time) | ✓ | ✗ |
@@ -163,7 +164,25 @@ This connector uses batched requests to support high-volume data transfers to th
 |Email Campaign ID| (Required) Provide the email campaign ID from the unsubscribe link in email.|
 |Contact ID| (Required) Map a randomly generated string to contact ID. Provided by unsubscribe link in email.|
 
-### Trigger an External Event (Real-Time)
+### Trigger an Engagement Event
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Integration ID | (Required) The ID of the Engagement Event integration provided by Emarsys. |
+| Event Configuration ID | (Required) The ID of the Emarsys Engagement Event type. |
+| Draft | When enabled, the event is processed by the draft version of the Emarsys event configuration. |
+| Template Variables | Provide template variables as data input for Templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
+| Templates | Provide templates to be referenced in Event Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
+
+### Trigger an External Event (Real-Time) (Deprecated)
+
+
+<blockquote>
+This action is now deprecated and can no longer be added. For the current action, see [Trigger an Engagement Event](#trigger-an-engagement-event).
+</blockquote>
+
 
 #### Parameters
 
@@ -180,7 +199,13 @@ This connector uses batched requests to support high-volume data transfers to th
 | Template Variables | Provide template variables as data input for Templates. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
 | Templates | Provide templates to be referenced in External Event Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. |
 
-### Trigger an External Event (Batched)
+### Trigger an External Event (Batched) (Deprecated)
+
+
+<blockquote>
+This action is now deprecated and can no longer be added. For the current action, see [Trigger an Engagement Event](#trigger-an-engagement-event).
+</blockquote>
+
 
 #### Parameters
 

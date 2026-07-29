@@ -44,7 +44,7 @@ Functions insights is off by default and can be turned on at any time. Use the f
 1. Under **Feature Insights**, click the **Functions Dashboard** toggle to turn it on.
 1. Save and publish your changes.
 
-After you turn on functions insights dashboards, it may take up to 2 hours for data to appear in the reports. If you turn off functions insights later on, the dashboard and its data is deleted 30 days after the change is published.
+After you turn on functions insights dashboards, it may take up to 2 hours for data to appear in the reports. If you turn off functions insights later on, the dashboard and its data are deleted 30 days after you publish this change. To retain your data, re-enable the feature within this period.
 
 ## View functions insights
 

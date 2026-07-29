@@ -5,7 +5,9 @@ url: https://docs.tealium.com/server-side/moments-api/insights/
 ---
 ## How it works
 
-The Moments API **Insights** tab displays visualizations and data about Moments API engine writes and engine reads. An engine write occurs when visitor data used in an engine is updated. An engine read occurs when a `GET` request is made to the endpoint. 
+The Moments API **Insights** tab displays visualizations and data about Moments API engine writes and engine reads. An engine write occurs when visitor data used in an engine is updated. An engine read occurs when a `GET` request is made to the endpoint.
+
+If you turn off the Moments API Insights feature, the dashboard and its data are deleted 30 days after you publish this change. To retain your data, re-enable the feature within this period.
 
 The Moments API **Insights** tab displays the following visualizations and data:
 
@@ -57,20 +59,7 @@ The display is refreshed with the new data.
 
 ## Updates to the Moments API Insights tab
 
-The visuals shown in the Moments API **Insights** tab are also available in Tealium Insights as the Moments API Dashboard. Tealium Insights dashboards and the Moments API **Insights** tab display messages when the insights template or data needs to be updated. The following sections describe how to update the template or the dataset when these messages are displayed on the Moments API **Insights** tab.
-
-### Update the Moments API Insights template
-
-The following message is displayed when the Moments API Insights template needs to be updated:
-![](https://docs.tealium.com/images/server-side/data-insights/datainsights-updates-available-message.png)
-
-To update the template, use the following steps:
-
-1. Click **View Updates** in the message.
-1. Click **View Details** for the Moments API Insights template.
-1. Click **Update Dashboard**.
-1. In the **Confirm Update** dialog, click **Update**.  
-Save and publish is not required after updating a template.
+The visuals shown in the Moments API **Insights** tab are also available in Tealium Insights as the Moments API Dashboard. The Moments API **Insights** tab displays a message when the dataset structure or capacity needs attention.
 
 ### Update the Moments API Insights dataset
 

@@ -1,14 +1,8 @@
 ---
 title: Connector error logging
 description: This article explains how to configure connector error log sources, review log parameters, and troubleshoot connector errors.
-url: https://docs.tealium.com/administration/early-access/log-streaming/connector-error-logging/
+url: https://docs.tealium.com/administration/log-streaming/connector-error-logging/
 ---
-
-<blockquote>
-Log streaming is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.
-</blockquote>
-
-
 ## How it works
 
 When a monitored connector action returns an error, Tealium generates a structured JSON log record and forwards it through the log source to the associated destination connector. The destination platform indexes these records for dashboards, alerts, and analysis.

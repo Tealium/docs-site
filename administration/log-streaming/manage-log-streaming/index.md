@@ -1,14 +1,8 @@
 ---
 title: Manage log streaming
 description: This article explains how to configure, verify, and manage log streaming destinations and log sources.
-url: https://docs.tealium.com/administration/early-access/log-streaming/manage-log-streaming/
+url: https://docs.tealium.com/administration/log-streaming/manage-log-streaming/
 ---
-
-<blockquote>
-Log streaming is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.
-</blockquote>
-
-
 ## Enable log streaming
 
 1. Go to **Server-Side Settings > Log Streaming**.

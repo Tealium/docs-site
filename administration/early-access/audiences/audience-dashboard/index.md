@@ -27,7 +27,7 @@ To generate the audience dashboard:
 
 After you generate the audience dashboard, it may take up to 2 hours for data to appear. The dashboard updates once an hour.
 
-If you disable the Audience Dashboard feature on your profile, the dashboard and associated dataset are scheduled for deletion after 30 days. To retain your data, re-enable the feature within this period.
+If you disable the Audience Dashboard feature on your profile, the dashboard and its data are deleted 30 days after you publish this change. To retain your data, re-enable the feature within this period.
 
 ## Access the dashboard
 
@@ -91,3 +91,13 @@ The following charts update based on the selected controls:
 **Joined vs. Left**
 
 ![](https://docs.tealium.com/images/server-side/data-insights/audience-dashboard-joined-vs-left.png)
+
+## Export
+
+### Export to CSV
+
+Select a visual, then click the visual menu and select **Export to CSV**. The CSV file is automatically downloaded to your default downloads folder.
+
+## Applied filters
+
+To filter visual data, select a visual and click **Applied filters**, then click **View dashboard filters**. In the **Filters** slideout, click **Add filter**.

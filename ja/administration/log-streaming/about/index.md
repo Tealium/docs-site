@@ -1,14 +1,8 @@
 ---
 title: ログストリーミングについて
 description: この記事では、Tealiumシステムログを外部の監視、保存、およびアラートプラットフォームにルーティングするためのログストリーミングの使用方法について説明します。
-url: https://docs.tealium.com/ja/administration/early-access/log-streaming/about/
+url: https://docs.tealium.com/ja/administration/log-streaming/about/
 ---
-
-<blockquote>
-ログストリーミングはアーリーアクセス中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
-</blockquote>
-
-
 ## 概要
 
 ログストリーミングはTealiumのログを既存の監視、保存、およびアラートプラットフォームにルーティングし、既に使用しているツールでシステムの動作を監視できます。

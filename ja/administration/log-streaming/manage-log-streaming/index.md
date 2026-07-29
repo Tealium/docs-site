@@ -1,14 +1,8 @@
 ---
 title: ログストリーミングの管理
 description: この記事では、ログストリーミングの送信先とログソースを構成、確認、管理する方法について説明します。
-url: https://docs.tealium.com/ja/administration/early-access/log-streaming/manage-log-streaming/
+url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streaming/
 ---
-
-<blockquote>
-ログストリーミングはEarly Access中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
-</blockquote>
-
-
 ## ログストリーミングを有効にする
 
 1. **Server-Side Settings > Log Streaming**に移動します。

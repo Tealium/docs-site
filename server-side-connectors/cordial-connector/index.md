@@ -41,6 +41,9 @@ Click **Done** when you are finished configuring the connector.
 | Create a new order | ✗ | ✓ |
 | Send notification | ✓ | ✓ |
 | Record contact activity (batch) | ✓ | ✓ |
+| Upsert Contact (batch) | ✓ | ✓ |
+| Add Contacts to a List (batch) | ✓ | ✓ |
+| Remove Contacts from a List (batch) | ✓ | ✓ |
 
 Click **Continue** to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.
 
@@ -249,3 +252,82 @@ This action uses batched requests to support high-volume data transfers to the v
 | Can be created | (Optional) The default value is `false`. Creates a new contact if it doesn't already exist. |
 | Can be updated | (Optional) The default value is `false`. Updates the contact if it already exists. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between 1 and 60 minutes. The default value is 10 minutes. |
+
+### Upsert Contact (batch)
+
+This action uses Cordial's asynchronous batch contact upsert API. A successful response means the batch was accepted for processing. Contact-level updates may complete after the API response is returned.
+
+#### Batch limits
+
+This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:
+
+* Max number of requests: 99
+* Max time since oldest request: 10 minutes
+* Max size of requests: 10 MB
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Host | Specify your Cordial region:<ul><li>usw1: `https://integrations-ingest-svc.cordial.com`</li><li>usw2: `https://integrations-ingest-svc.usw2.cordial.com`</li><li>use1: `https://integrations-ingest-svc.use1.cordial.com`</li></ul> |
+| Source | Data source. The default value is `TEALIUM`. |
+
+#### Identifiers
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Contact ID | Contact ID. |
+| Email | Contact email address. |
+| Phone | Contact phone number. |
+| Custom ID | Primary or secondary keys set up in your account. For more information, see [Cordial: Primary v. secondary keys](https://support.cordial.com/hc/en-us/articles/13084804213517-Primary-v-secondary-keys). |
+| Identifiers Priority | The order in which identifiers are used when searching for a contact. |
+
+#### Contact attributes
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Contact Attributes | Contact attributes to update. This is an optional multi-row mapping to custom destinations. |
+
+#### Contact options
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Force subscribe | Force subscribe. This must be set to `true` if changing subscribe status from unsubscribed to subscribed. |
+| Merge allowed | Determines whether contact merging is allowed for this upsert. |
+| Mergeable secondary keys | Secondary keys, such as `email`, that do not prevent a merge when there are conflicts. |
+| Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between 1 and 60 minutes. The default value is 10 minutes. |
+
+### Add Contacts to a List (batch)
+
+This action uses Cordial's asynchronous batch contact upsert API. A successful response means the batch was accepted for processing. Contact-level updates may complete after the API response is returned.
+
+#### Batch limits
+
+This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:
+
+* Max number of requests: 99
+* Max time since oldest request: 10 minutes
+* Max size of requests: 10 MB
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Host | Specify your Cordial region:<ul><li>usw1: `https://integrations-ingest-svc.cordial.com`</li><li>usw2: `https://integrations-ingest-svc.usw2.cordial.com`</li><li>use1: `https://integrations-ingest-svc.use1.cordial.com`</li></ul> |
+| Source | Data source. The default value is `TEALIUM`. |
+| List | Select the list or enter the list name. |
+
+#### Identifiers
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Contact ID | Contact ID. |
+| Email | Contact email address. |
+| Phone | Contact phone number. |
+| Custom ID | Primary or secondary keys set up in your account. For more information, see [Cordial: Primary v. secondary keys](https://support.cordial.com/hc/en-us/articles/13084804213517-Primary-v-secondary-keys). |
+| Identifiers Priority | The order in which identifiers are used when searching for a contact. |
+| Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between 1 and 60 minutes. The default value is 10 minutes. |
+
+### Remove Contacts from a List (batch)
+
+The configuration for this action is identical to [Add Contacts to a List (batch)](#add-contacts-to-a-list-batch).

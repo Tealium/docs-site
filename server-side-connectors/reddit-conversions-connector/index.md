@@ -129,13 +129,13 @@ At least one attribution signal is required with each conversion event. Reddit r
 | **Parameter** | **Description** |
 | --- | --- |
 | Reddit Click ID | The Reddit-generated ID associated with a single ad click. The connector automatically maps this value from the `rdt_cid` query parameter unless you configure a mapping for this field. |
-| Email Address | (apply SHA256 hash) Provide a plain text email address. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| Phone Number | (apply SHA256 hash) Provide a plain text phone number. The connector whitespace trims, normalizes, and hashes this value using SHA256. |
+| Email Address | (apply SHA256 hash) Provide a plain text email address. The connector canonicalizes this value before hashing: lowercases the address, strips the email alias (removes everything from the first `+` up to the `@`), removes non-alphanumeric characters from the username, then hashes the result with SHA-256. |
+| Phone Number | (apply SHA256 hash) Provide a plain text phone number. The connector canonicalizes this value before hashing: removes extensions, strips all non-numeric characters, ensures the number starts with `+` (E.164 format), then hashes the result with SHA-256. |
 | IP Address | The connector SHA256-hashes the mapped IP address. |
 | User Agent | The user agent of the user's browser. |
 | External ID | (apply SHA256 hash) An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| IDFA | (apply SHA256 hash) The IDFA of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| AAID | (apply SHA256 hash) The AAID of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| IDFA | (apply SHA256 hash) The IDFA of the user's device. The connector normalizes this value to uppercase UUID format with dashes before hashing with SHA-256. Placeholder values such as `00000000-0000-0000-0000-000000000000` are discarded. |
+| AAID | (apply SHA256 hash) The AAID of the user's device. The connector normalizes this value to lowercase UUID format with dashes before hashing with SHA-256. Placeholder values such as `00000000-0000-0000-0000-000000000000` are discarded. |
 | Screen Height | The height of the user's screen in pixels. |
 | Screen Width | The width of the user's screen in pixels. |
 | UUID | The value from the first-party pixel `_rdt_uuid` cookie on your domain. Use the full value or just the UUID portion. This value is not hashed. The connector automatically maps this value from the `_rdt_uuid` cookie unless you configure a mapping for this field. |

@@ -35,7 +35,7 @@ After adding the connector, configure the following settings:
 
 | Parameter | Description |
 | --- | --- |
-| Event Type | Required. Select the type of event to send to OpenAI.<br>Supported event types: **Appointment Scheduled**, **Checkout Started**, **Contents Viewed**, **Custom**, **Items Added**, **Lead Created**, **Order Created**, **Page Viewed**, **Registration Completed**, **Subscription Created**, **Trial Started**. |
+| Event Type | Required. Select the type of event to send to OpenAI. Each value maps to the `type` field in the OpenAI Events API and is required for every event.<br>Supported event types:<br>``appointment_scheduled``<br>``checkout_started``<br>``contents_viewed``<br>`custom`<br>``items_added``<br>``lead_created``<br>``order_created``<br>``page_viewed``<br>``registration_completed``<br>``subscription_created``<br>``trial_started``<br><br><br>Each event type maps to one of four data type objects: **contents**, **`customer_action`**, **`plan_enrollment`**, or **custom**.<br>Appointment Scheduled<br>Checkout Started<br>Contents Viewed<br>Custom<br>Items Added<br>Lead Created<br>Order Created<br>Page Viewed<br>Registration Completed<br>Subscription Created<br>Trial Started |
 | Custom Event Name | Required when Event Type is **Custom**. Provide a custom name for the event.<br>This value is ignored for all other event types. |
 
 #### Event Data
@@ -53,7 +53,10 @@ Map Tealium attributes to OpenAI top-level event fields.
 
 #### User Data
 
-Map applicable user identifiers to improve attribution accuracy. You may either pre-hash PII values yourself or let the connector hash them. Hashable fields appear as two columns: **(apply SHA256 hash)** for raw values the connector normalizes and hashes, and **(already SHA256 hashed)** for pre-hashed values.
+* Map applicable user identifiers to improve attribution accuracy. For each PII field you may either pre-hash the value yourself or let the connector hash it for you.
+* Hashable fields offer two columns: (apply SHA256 hash) for raw values that the connector should normalize and hash, and (already SHA256 hashed) for values you have already hashed.
+* Supported PII keys, required hashing: `email_address`, `phone_number`, `external_id`, `country`, `city`, `zip_code`.
+* Fields sent un-hashed: `external_id_raw`, `ip_address`, `user_agent`.
 
 | Parameter | Description |
 | --- | --- |
@@ -82,9 +85,22 @@ For Customer Action events (**Appointment Scheduled**, **Lead Created**, **Regis
 | Amount | An integer in minor units (for example, cents). If provided, Currency is required. |
 | Currency | The currency code in ISO 4217 format (for example, `USD`). |
 
-#### Disable Automapping
+#### Disable E-Commerce Automapping
 
-When checked, disables the default Tealium-to-OpenAI automappings for this action (timestamp, source URL, IP address, user agent, and retail extension attributes `_csubtotal`, `_ccurrency`, `_csku`, `_cprodname`, `_ccat`, `_cquan`, `_cprice`). Explicit field mappings always take precedence. Unchecking this only fills in the blanks.
+* When checked, disables the default Tealium-to-OpenAI e-commerce automappings for this action: `timestamp_ms` (from Tealium event time), `source_url` (from standard URL attribute), and retail extension attributes `_csubtotal`, `_ccurrency`, `_csku`, `_cprodname`, `_ccat`, `_cquan`, `_cprice`.
+* Explicit field mappings always take precedence; unchecking this only fills in the blanks.
+* Identity automapping (IP Address and User Agent) is controlled separately by the **Disable Identity Automapping** checkbox.
+
+
+<blockquote>
+If you had the legacy **Disable Automapping** checkbox enabled to suppress IP address and user agent from being auto-mapped, you must also enable **Disable Identity Automapping**. The legacy checkbox now controls only e-commerce field automapping.
+</blockquote>
+
+
+#### Disable Identity Automapping
+
+* When checked, the connector will not automatically map IP Address and User Agent. Use this if you prefer full manual control over identity metadata or must suppress these fields for privacy reasons.
+* When unchecked (default), the connector automaticaly maps `ip_address` (from Tealium standard IP attribute) and `user_agent` (from Tealium standard User Agent attribute).
 
 #### Debug Mode
 

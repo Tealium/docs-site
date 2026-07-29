@@ -48,7 +48,7 @@ Use the two-stage validation pattern when you need to enforce governance or reda
 Benefits include:
 
 * Reduces the number of requests to AWS Comprehend by using a lightweight pattern match to filter most events.
-* Keeps event processing under 300 milliseconds by routing only flagged events to stage two validation.
+* Helps keep event processing real-time by routing only flagged events to stage two validation.
 * Detects and redacts PII before the data is stored or analyzed.
 * Adapts to other workflows where only a small subset of events require detailed validation.
 * Improves data quality for AI/ML pipelines and compliance checks.

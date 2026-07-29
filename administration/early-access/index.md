@@ -37,15 +37,6 @@ Get access to beta features through the Early Access program.
 
 
 
-![](https://docs.tealium.com/images/icons/icon-cloud-up.svg)
-
-#### Log Streaming
-
-* [About log streaming](https://docs.tealium.com/about-log-streaming/)
-* [Manage log streaming](https://docs.tealium.com/manage-log-streaming/)
-* [Connector error logging](https://docs.tealium.com/connector-error-logging/)
-
-
 
 
 #### More Features

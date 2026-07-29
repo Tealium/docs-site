@@ -1,14 +1,8 @@
 ---
 title: コネクターエラーログ
 description: この記事では、コネクターエラーログソースの構成方法、ログパラメータの確認方法、およびコネクターエラーのトラブルシューティング方法について説明します。
-url: https://docs.tealium.com/ja/administration/early-access/log-streaming/connector-error-logging/
+url: https://docs.tealium.com/ja/administration/log-streaming/connector-error-logging/
 ---
-
-<blockquote>
-ログストリーミングはEarly Accessであり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
-</blockquote>
-
-
 ## 動作原理
 
 監視されたコネクターアクションがエラーを返すと、Tealiumは構造化されたJSONログレコードを生成し、ログソースを通じて関連する宛先コネクターに転送します。宛先プラットフォームはこれらのレコードをダッシュボード、アラート、および分析のためにインデックス付けします。

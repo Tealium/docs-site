@@ -87,6 +87,26 @@ IPアドレス許可リスト
 APIキー
 
 
+## ログストリーミング
+
+
+![](https://docs.tealium.com/images/icons/icon-cloud-up.svg)
+
+ログストリーミングについて
+
+
+
+![](https://docs.tealium.com/images/icons/icon-gear.svg)
+
+ログストリーミングの管理
+
+
+
+![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
+
+コネクタエラーログ
+
+
 ## アーリーアクセス
 
 

@@ -87,6 +87,26 @@ IP Address Allow List
 API Keys
 
 
+## Log Streaming
+
+
+![](https://docs.tealium.com/images/icons/icon-cloud-up.svg)
+
+About Log Streaming
+
+
+
+![](https://docs.tealium.com/images/icons/icon-gear.svg)
+
+Manage Log Streaming
+
+
+
+![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
+
+Connector Error Logging
+
+
 ## Early Access
 
 

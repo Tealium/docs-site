@@ -38,5 +38,12 @@ To configure mTLS authentication for the webhook connector:
 1. In the connector configuration, select **OAuth2 (2-legged) with mTLS** as the authentication type.
 1. Select a **Key Algorithm** and click **Generate**.
 1. Click **Download Certificate** and provide the certificate to the administrator of your API gateway or server.
+1. Save and publish your profile.
+
+
+<blockquote>
+The certificate and private key are stored in your profile with no backup copy. If you do not save and publish the profile after generating the certificate, the certificate is not stored and you must contact Tealium Support to recover access.
+</blockquote>
+
 
 For all other webhook configuration, see [webhook-actions](https://docs.tealium.com/webhook-actions/).

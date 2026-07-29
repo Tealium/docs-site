@@ -1,14 +1,8 @@
 ---
 title: About log streaming
 description: This article explains how to use log streaming to route Tealium system logs to external observability, storage, and alerting platforms.
-url: https://docs.tealium.com/administration/early-access/log-streaming/about/
+url: https://docs.tealium.com/administration/log-streaming/about/
 ---
-
-<blockquote>
-Log streaming is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.
-</blockquote>
-
-
 ## Overview
 
 Log streaming routes Tealium logs to your existing observability, storage, and alerting platforms so you can monitor system behavior in the tools you already use.

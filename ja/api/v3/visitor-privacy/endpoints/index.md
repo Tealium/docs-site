@@ -1,9 +1,9 @@
 ---
-title: ビジタープライバシーAPIエンドポイント
-description: ビジタープライバシーAPIを使用すると、特定のビジターに関する既知のデータを取得したり、ビジターレコードを削除したり、削除リクエストのステータスを確認したりすることができます。
+title: 訪問プライバシーAPIエンドポイント
+description: 訪問プライバシーAPIを使用して、特定の訪問に関する既知のデータを取得したり、訪問レコードを削除したり、削除リクエストのステータスを確認したりすることができます。
 url: https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/
 ---
-## GET Visitor
+## GET 訪問
 
 
 <blockquote>
@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/
 </blockquote>
 
 
-以下のGETコマンドを使用して、ビジターレコードを取得します：
+訪問レコードを取得するには、次のGETコマンドを使用します：
 
 ```bash
 GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&attributeValue={attributeValue}&prettyName={prettyName}
@@ -20,21 +20,21 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeId={attri
 このコマンドは以下のパラメータを使用します：
 
 * `attributeId`
-  * アカウントからの[ビジターID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
+  * アカウントからの[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
 * `attributeValue`
   * 検索する値。
   * 特殊文字を含む値はURLエンコードする必要があります。
 * `prettyName`
-  * 属性キーがレスポンスにどのように表示されるかを示すブール値：
-    * **True** – 属性はユーザーフレンドリーな名前、例えば "Lifetime Order Value" として表示されます。
-    * **False** – 属性は数値ID、例えば "28471" として表示されます。
+  * 属性キーがレスポンスでどのように表示されるかを示すブール値：
+    * **True** – 属性は「Lifetime Order Value」のようなユーザーフレンドリーな名前で表示されます。
+    * **False** – 属性は「28471」のような数値IDで表示されます。
 
 ### 権限要件
 
 * サーバーサイドのリーダー、エディター、またはパブリッシャーのレガシー権限、または
-* 最小限の **View** ビジタールックアッププラットフォーム権限
+* 最低限の**閲覧**訪問ルックアッププラットフォーム権限
 
-### 例：cURLリクエスト
+### cURLリクエストの例
 
 ```bash
 curl -H 'Authorization: Bearer {token}' \
@@ -45,23 +45,23 @@ curl -H 'Authorization: Bearer {token}' \
  --data 'prettyName=true'
 ```
 
-### 例：レスポンス
+### レスポンスの例
 
-レスポンスの形式については、例のビジターオブジェクトを参照してください。
+レスポンスの形式については、訪問オブジェクトの例を参照してください。
 
 ### エラーメッセージ
 
-このタスクの可能性のあるエラーメッセージは以下の通りです：
+このタスクに関連する可能性のあるエラーメッセージは以下の通りです：
 
 |エラーメッセージ| 説明|
 |---| ---|
-|400|  `{ "message": "属性IDまたは属性値が欠落しています"}` |
-|401|  `{ "message": "認証されていません"}` |
-| 404 | `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|400|  `{ "message": "属性IDまたは属性値が不足しています"}` |
+|401|  `{ "message": "許可されていません"}` |
+| 404 | `システムに訪問が見つかりません {  "transactionId": {transactionId}  }` |
 |429| `{ "message": "リクエストが多すぎます"}` |
 | 500 |`{ "message": "内部サーバーエラー"}` |
 
-## DELETE visitor
+## 訪問の削除
 
 
 <blockquote>
@@ -69,14 +69,13 @@ curl -H 'Authorization: Bearer {token}' \
 </blockquote>
 
 
-ビジターレコードを1つ以上削除する前に、以下の点を考慮してください：
+一つまたは複数の訪問レコードを削除する前に、以下の点を考慮してください：
 
-* ビジターレコードの削除リクエストは、ビジターID値に関連するすべてのデータの削除を引き起こします。これには、ステッチされたビジターレコードも含まれます。
+* 訪問レコードの削除リクエストは、訪問ID値に関連付けられたすべてのデータの削除を引き起こします。これには、ステッチされた訪問レコードも含まれます。
 * 削除リクエストは処理のためにキューに入れられ、完了までに最大30日かかる場合があります。
-* ビジターが他のビジターに置き換えられた場合、または他のビジターに置き換えられた場合、ステッチされたすべてのビジターが削除されます。
-* DELETEコマンドへのパラメータは、クエリストリングパラメータではなく、コンテンツタイプ " `application/x-www-form-urlencoded`" を使用してURLエンコードされたフォームフィールドとして渡す必要があります。
+* 訪問が別の訪問に置き換えられた場合、または置き換えられた場合、ステッチされたすべての訪問が削除されます。
 
-以下のDELETEコマンドを使用して、ビジターレコードを削除します：
+訪問レコードを削除するには、次のDELETEコマンドを使用します：
 
 ```bash
 DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={value}&attributeValue={value}
@@ -85,30 +84,31 @@ DELETE /v3/privacy/visitor/accounts/{account}/profiles/{profile}?attributeID={va
 このコマンドは以下のパラメータを使用します：
 
 * `attributeId`  
-アカウントからの[ビジターID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
+アカウントからの[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値ID。
 * `attributeValue`  
-検索する値。
+検索する値。特殊文字を含む値はURLエンコードする必要があります。
 
 ### 権限要件
 
-* サーバーサイドのパブリッシャーレガシー権限、または
-* **View, Edit, & Delete** ビジタールックアッププラットフォーム権限
+* サーバーサイドのパブリッシャーのレガシー権限、または
+* **閲覧、編集、および削除**訪問ルックアッププラットフォーム権限
 
-### 例：cURLリクエスト
+### cURLリクエストの例
 
 ```bash
 curl -H 'Authorization: Bearer {token}' \
 -X DELETE \
+-G \
 'https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
---data-urlencode "attributeId=86"
+--data-urlencode "attributeId=86" \
 --data-urlencode "attributeValue=user@example.com"
 ```
 
-### 例：レスポンス
+### レスポンスの例
 
-削除リクエストへのレスポンスには、`transaction_id`とステータスが含まれます。`transaction_id`は、以前のリクエストのステータスを確認するためのGETトランザクション呼び出しで使用されます。次のステータス文字列が可能です：**PENDING**、**SUCCESS**、または**FAILED**。
+削除リクエストへのレスポンスには、`transaction_id`とステータスが含まれます。`transaction_id`は、以前のリクエストのステータスを確認するためにGETトランザクションコールで使用されるIDです。可能なステータス文字列には、**PENDING**、**SUCCESS**、または**FAILED**があります。
 
-成功したレスポンスは、`transactionId`値を持つ202 Acceptedメッセージを表示します。同じ`account`、`profile`、`attributeId`、および`attributeValue`を持つリクエストが既に存在し、そのトランザクションステータスが**PENDING**である場合、既存のトランザクションIDが返されます。以下のようになります：
+成功したレスポンスは、`transactionId`値を持つ202 Acceptedメッセージを表示します。同じ`account`、`profile`、`attributeId`、および`attributeValue`を持つリクエストが**PENDING**のトランザクションステータスで既に存在する場合、既存のトランザクションIDが次のように返されます：
 
 ```json
 {
@@ -118,16 +118,16 @@ curl -H 'Authorization: Bearer {token}' \
 
 ### エラーメッセージ
 
-このタスクの可能性のあるエラーメッセージは以下の通りです：
+このタスクに関連する可能性のあるエラーメッセージは以下の通りです：
 
 |エラーメッセージ| 説明|
 |---| ---|
-|400|  `{ "message": "属性IDまたは属性値が欠落しています"}` |
-|401|  `{ "message": "認証されていません"}` |
-|404|  `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|400|  `{ "message": "属性IDまたは属性値が不足しています"}` |
+|401|  `{ "message": "許可されていません"}` |
+|404|  `システムに訪問が見つかりません {  "transactionId": {transactionId}  }` |
 |429| `{ "message": "リクエストが多すぎます"}` |
 
-## GET transaction
+## トランザクションの取得
 
 
 <blockquote>
@@ -135,9 +135,9 @@ curl -H 'Authorization: Bearer {token}' \
 </blockquote>
 
 
-トランザクションとは、任意のDELETEビジターリクエストを指します。DELETEビジターリクエストは後で処理するためにキューに入れられます。これにより、`transaction_id`がそのリクエストの一意のレコードとなり、処理ステータスを確認するためのIDとして使用されます。
+トランザクションは、任意のDELETE訪問リクエストを指します。DELETE訪問リクエストは後で処理されるため、`transaction_id`はそのリクエストとIDのためのユニークなレコードとして使用され、処理ステータスを確認する際に使用されます。
 
-以下のGETコマンドを使用して、トランザクションのステータスを確認します：
+トランザクションのステータスを確認するために、次のGETコマンドを使用します：
 
 ```bash
 GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/transactions/{transaction_id}
@@ -146,20 +146,20 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/transactions/{tran
 ### 権限要件
 
 * サーバーサイドのリーダー、エディター、またはパブリッシャーのレガシー権限、または
-* 最小限の **View** ビジタールックアッププラットフォーム権限
+* 最低限の**閲覧**訪問ルックアッププラットフォーム権限
 
-### 例：cURLリクエスト
+### cURLリクエストの例
 
-APIキーからベアラートークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。ベアラートークンはAPIキーではなく、API呼び出しで使用されます。
+APIキーからベアラートークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。APIキーではなく、APIコールでベアラートークンが使用されます。
 
 ```bash
 curl -H 'Authorization: Bearer {token}' \
 https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/transactions/0123456789
 ```
 
-### 例：レスポンス
+### レスポンスの例
 
-レスポンスには、キーが`transaction_id`で値が次のステータス文字列のいずれかであるキー-値ペアを含むオブジェクトが含まれます：**PENDING**、**SUCCESS**、または**FAILED**。
+レスポンスには、キーが`transaction_id`で値が次のいずれかのステータス文字列であるオブジェクトが含まれます：**PENDING**、**SUCCESS**、または**FAILED**。
 
 ```json
 {
@@ -169,17 +169,17 @@ https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_accoun
 
 ### エラーメッセージ
 
-このタスクの可能性のあるエラーメッセージは以下の通りです：
+このタスクに関連する可能性のあるエラーメッセージは以下の通りです：
 
 |エラーメッセージ| 説明|
 |---| ---|
-|401|  `{ "message": "認証されていません"}` |
-|404|  `システム内にビジターが見つかりません {  "transactionId": {transactionId}  }` |
+|401|  `{ "message": "許可されていません"}` |
+|404|  `システムに訪問が見つかりません {  "transactionId": {transactionId}  }` |
 |429| `{ "message": "リクエストが多すぎます"}` |
 
-## GET Visitor ID Attributes
+## 訪問ID属性の取得
 
-以下のGETコマンドを使用して、アカウントで利用可能なビジターID属性のリストを取得します：
+アカウントで利用可能な訪問ID属性のリストを取得するために、次のGETコマンドを使用します：
 
 ```bash
 GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
@@ -188,18 +188,18 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
 ### 権限要件
 
 * サーバーサイドのリーダー、エディター、またはパブリッシャーのレガシー権限、または
-* 最小限の **View** ビジタールックアッププラットフォーム権限
+* 最低限の**閲覧**訪問ルックアッププラットフォーム権限
 
-### 例：cURLリクエスト
+### cURLリクエストの例
 
 ```bash
 curl -H 'Authorization: Bearer {token}' \
 https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main/ids
 ```
 
-### 例：レスポンス
+### レスポンスの例
 
-このコマンドのレスポンスは、ビジターID属性の数値IDと名前を表すキー-値ペアのオブジェクトです。
+このコマンドのレスポンスは、訪問ID属性の数値IDと名前を表すキーと値のペアのオブジェクトです。
 
 ```json
 {
@@ -210,11 +210,11 @@ https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles
 
 ### エラーメッセージ
 
-このタスクの可能性のあるエラーメッセージは以下の通りです：
+このタスクに関連する可能性のあるエラーメッセージは以下の通りです：
 
 |エラーメッセージ| 説明|
 |---| ---|
-|401|  `{ "message": "認証されていません"}` |
-|404|  `{ "message" : "アカウントとプロファイルにビジターIDが見つかりませんでした"}` |
+|401|  `{ "message": "許可されていません"}` |
+|404|  `{ "message" : "アカウントとプロファイルに訪問IDが見つかりません"}` |
 |429| `{ "message": "リクエストが多すぎます"}` |
 |500|  `{ "message" : "内部サーバーエラー"}` |

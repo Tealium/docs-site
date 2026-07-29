@@ -100,9 +100,16 @@ This action uses batched requests to support high-volume data transfers to the v
 
 #### Conversion Data
 
+
+<blockquote>
+Each unique conversion name sent to Amazon creates a new conversion definition in Amazon Ads. Amazon limits each advertiser account to 100 conversion definitions.  
+Do not map the `Name` field to high-cardinality or dynamic data such as page name, page URL, pathname, query string, or search term. Doing so can quickly exhaust the limit.
+</blockquote>
+
+
 | Parameter | Description |
 | --- | --- |
-| Name | (Required) The name of the imported event. For example, Website Purchase, Newsletter Signup, etc. |
+| Name | (Required) The name of the imported event. Use a small, stable set of names that represent business actions, such as `product_view`, `search`, `lead`, `checkout`, or `purchase`. |
 | Country Code | (Required) ISO 3166-1 alpha-2 country code indicating where the user performing the event was located. |
 | Dataset Name | Event Dataset Name to which this event should be added. Must be a 1–100 character string beginning with a letter and may then contain only letters, digits, underscores, or hyphens. |
 | Event Time | The timestamp of the conversion in ISO format (`YYYY-MM-DDThh:mm:ssTZD`). If not mapped, the connector use the event time. |
@@ -111,6 +118,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Units Sold | The number of items purchased. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
 | Data Processing Options | A flag for signaling how an event is processed. Events marked for limited data use are not processed. For example, `LIMITED_DATA_USE` |
 | Dedupe ID | A unique identifier used to deduplicate conversion events sent from both the tag and the connector. Set the same value in both to prevent duplicate conversion reporting. |
+
 
 #### User Data
 

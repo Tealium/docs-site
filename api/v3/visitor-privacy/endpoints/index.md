@@ -74,7 +74,6 @@ Consider the following prior to deleting one or more visitor records:
 * Requests to delete visitor records result in the deletion of all data associated to the visitor ID value, including stitched visitor records.
 * Delete requests are queued for processing and may take up to 30 days to complete.
 * If a visitor replaces or has been replaced by another visitor, all visitors that have been stitched are deleted.
-* The parameters to the DELETE command must be passed as URL-encoded form fields using the content-type " `application/x-www-form-urlencoded`", and not as query string parameters.
 
 Use the following DELETE command to delete a visitor record:
 
@@ -87,7 +86,7 @@ This command uses the following parameters:
 * `attributeId`  
 The numeric ID representing a [Visitor ID attribute](https://docs.tealium.com/visitor-id-attribute/) from your account.
 * `attributeValue`  
-The value to look up.
+The value to look up. Values containing special characters must be URL encoded.
 
 ### Permission requirements
 
@@ -99,8 +98,9 @@ The value to look up.
 ```bash
 curl -H 'Authorization: Bearer {token}' \
 -X DELETE \
+-G \
 'https://us-east1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles/main' \
---data-urlencode "attributeId=86"
+--data-urlencode "attributeId=86" \
 --data-urlencode "attributeValue=user@example.com"
 ```
 

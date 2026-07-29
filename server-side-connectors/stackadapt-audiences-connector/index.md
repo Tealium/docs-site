@@ -42,7 +42,7 @@ Create or update a profile in StackAdapt and add it to an existing profile list.
 | --- | --- |
 | Raw email | Customer's email address. |
 | Advertiser ID | Override the default advertiser ID set in the configuration. |
-| Is Opted In | Whether the profiles have opted into email marketing. |
+| Profile Owned Status | Optional. Whether the uploaded profiles are user-owned or third-party. Valid values are `INDETERMINATE`, `OPTED_IN`, and `PROSPECT`. |
 | Profile list ID | The ID of the profile list associated with the uploaded profile(s). |
 
 #### Schema

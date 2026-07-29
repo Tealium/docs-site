@@ -20,6 +20,8 @@ Total actions sent may be lower than the total events/visitors sent because batc
 
 For more information about connectors, see [About connectors](https://docs.tealium.com/about-connectors/).
 
+If you turn off the Connectors Dashboard, the dashboard and its data are deleted 30 days after you publish this change. To retain your data, re-enable the feature within this period.
+
 ## Visuals on connectors dashboard tabs
 
 * **1. Connector and Action Activity** tab 
@@ -71,7 +73,7 @@ The following message is displayed when your PDF is ready to download:
 To download the PDF later, use the following steps:
 
 1. Click the **Export** icon, then select **View exports**.
-2. For the PDF file you want to download, click **Click to download**.
+1. For the PDF file you want to download, click **Click to download**.
 
 ## Export to CSV file
 
@@ -90,11 +92,9 @@ The CSV file is automatically downloaded to your default downloads folder.
 To download the CSV file later, use the following steps:
 
 1. Click the **Export** icon, then select **View exports**.
-2. For the CSV file you want to download, click **Click to download**.
+1. For the CSV file you want to download, click **Click to download**.
 
 ## Add a filter
-
-Visual data can be filtered based on the value of the attributes used in the visual. For example, you can add a filter on the time attribute to change the time frame of a visual.
 
 To add a filter to a visual, use the following steps:
 
@@ -103,5 +103,6 @@ To add a filter to a visual, use the following steps:
 1. Select a visual and click **Applied filters**.  
 ![](https://docs.tealium.com/images/server-side/connectors-dashboard-applied-filters.png)
 1. Click **View dashboard filters**.
-1. In the **Filters** section, click **ADD FILTER**.  
+1. In the **Filters** slideout, click **Add filter**.
+
 For information about configuring filters, see [Using filters on dashboard data](https://docs.aws.amazon.com/quicksight/latest/user/filtering-dashboard-data.html).
