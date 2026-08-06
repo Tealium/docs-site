@@ -15,6 +15,8 @@ In CloudStream, segment data is not persisted or stored in Tealium systems. Afte
 A connector represents the connection to your vendor account. The connection is configured using credentials such as an account ID, username and password, or an API key.
 * **Action**  
 An action is a vendor operation, such as triggering an email, building a custom audience, or managing leads. Actions vary depending on the vendor service. Multiple actions can be associated with a single connector.
+* **Connector metadata**  
+Mappable values that describe the connector context (audience name, action ID, and similar). Use them to pass connector information downstream without manual copy/paste. For more information, see [Connector metadata](https://docs.tealium.com/add-connector/#connector-metadata).
 * **Frequency Cap**  
 A connector action performs in real-time, but some actions are designed to have a wait period before they are triggered. The frequency cap lets you set a downtime period for actions so that they do not trigger immediately. For more information, see [action-frequency-capping-amp-prioritization](https://docs.tealium.com/action-frequency-capping-amp-prioritization/).
 * **Source**  

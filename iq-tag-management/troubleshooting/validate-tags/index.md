@@ -94,7 +94,7 @@ The data that appears is the data sent to Facebook.
 
 ## Validate with Adobe Analytics Debugger
 
-There are a number of parameters that will be displayed in the Adobe Analytics debugger. Go to [Adobe Query Parameters](https://marketing.adobe.com/resources/help/en_US/sc/implement/query_parameters.html) to learn more about the parameters for the Adobe Analytics (AppMeasurement) tag.
+There are a number of parameters that will be displayed in the Adobe Analytics debugger. Go to [Adobe Query Parameters](https://experienceleague.adobe.com/en/docs/analytics/implementation/validate/query-parameters) to learn more about the parameters for the Adobe Analytics (AppMeasurement) tag.
 
 Use the following steps to validate using the Adobe Analytics Debugger:
 

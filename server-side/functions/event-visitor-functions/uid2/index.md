@@ -19,7 +19,7 @@ For details about visitor functions, see [About event and visitor functions]().
 
 Before you create a visitor function to generate a UID2:
 
-* **Define UID2 event spec**: Create a UID2 event spec with attributes for the data received from The Trade Desk (`uid_identifier`, `uid2`, `uid_timestamp`). The function uses this event spec to send an event to Tealium Collect. For more information, see [Manage event specifications]() and [About enrichments]().  
+* **Define UID2 event spec**: Create a UID2 event spec with attributes for the data received from The Trade Desk (`uid_identifier`, `uid2`, `uid2_timestamp`). The function uses this event spec to send an event to Tealium Collect. For more information, see [Manage event specifications]() and [About enrichments]().  
   ![](https://docs.tealium.com/images/server-side/functions-uid2_event_spec.png)
 * **Select PII attributes**: Choose a PII attribute or attributes to identify users. UID2 version 3 supports a phone number, an email address, or both. Version 2 supports either a phone number or an email address.
 * **Create UID2 visitor attribute**: Create a visitor attribute to store the UID2. Add an enrichment to update this visitor attribute with the value of the event UID2 attribute. For more information, see [Using Attributes]() and [About enrichments]().
@@ -186,8 +186,8 @@ activate(async ({ visitor, visit, helper }) => {
       const event_data = {
         tealium_event: "UID2_event_data",
         tealium_visitor_id: tealium_vid,
-        uid: uid2,
-        uid_timestamp: JSON.stringify(data.timestamp)
+        uid2: uid2,
+        uid2_timestamp: JSON.stringify(data.timestamp)
       };
       // Send the event_data object to Tealium for processing.
       await track(event_data, tealium_config)
@@ -383,8 +383,8 @@ activate(async ({ visitor, visit, helper }) => {
     let event_data = {
       tealium_event: "UID2_event_data",
       tealium_visitor_id: tealium_vid,
-      uid: data.developed.body.mapped[0].advertising_id,
-      uid_timestamp: JSON.stringify(data.timestamp)
+      uid2: data.developed.body.mapped[0].advertising_id,
+      uid2_timestamp: JSON.stringify(data.timestamp)
     };
 
     // Send the event_data object to Tealium for processing.

@@ -36,7 +36,7 @@ Consider the following items before you begin:
 The name of your JavaScript library file may be different.
 </blockquote>
 
-  * [Learn more about s_code.js](https://marketing.adobe.com/resources/help/en_US/sc/implement/impl_js_file.html).
+  * [Learn more about s_code.js](https://experienceleague.adobe.com/en/docs/analytics/implementation/js/h-code/overview).
 
 * **Solution Design Reference**
   * (Optional) This document defines all of the props, eVars, and events that are tracked in your Adobe Analytics solution.
@@ -75,7 +75,7 @@ After adding the tag, configure the following settings:
 
 * **Enterprise Cloud ID**
   * If using the Visitor API in version H.27 and higher, enter your Enterprise Cloud ID here.
-  * Learn more about the [Adobe Enterprise Cloud ID Service](https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-requirements.html).
+  * Learn more about the [Adobe Enterprise Cloud ID Service](https://experienceleague.adobe.com/en/docs/id-service/using/intro/overview).
 
 * **Auto Link Tracking**
   * The recommended values is the default value, **Yes**.

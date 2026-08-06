@@ -51,7 +51,7 @@ Click the user profile icon to access the following additional options:
 * **Login**  
   Manage login credentials and configure Single Sign-On (SSO). For more information, see [Using SSO](#using-sso).
 * **Settings**  
-  Customize tool behavior and set domain or environment preferences for tools like the Environment Switcher. For details, see [Using the Environment Switcher with custom domains or path overrides](https://docs.tealium.com/environment-switcher/#using-the-environment-switcher-with-custom-domains-or-path-overrides).
+  Configure the domain prefix for private cloud environments so Tealium Tools can make platform API calls. For details, see [Private cloud environments](https://docs.tealium.com/environment-switcher/#private-cloud-environments).
 * **About**  
   View version details, build information, and learn about the Community tag used to label community tools.
 * **Feedback**  

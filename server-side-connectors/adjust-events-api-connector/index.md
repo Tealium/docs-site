@@ -18,7 +18,7 @@ After adding the connector, configure the following settings:
 * **Authentication Token**
   * With Adjust's S2S Security feature, you can guarantee the security of your S2S events and protect against spoofed requests.
   * After you set up S2S authentication, each incoming request must carry a token generated in your Adjust dashboard.
-  * See [Server-to-server (S2S) Security](https://help.adjust.com/en/article/server-to-server-s2s-security) for more details.
+  * See [Server-to-server (S2S) Security](https://dev.adjust.com/en/api/s2s-api/security/) for more details.
   * Leave the field empty if you haven't set up S2S authentication.
 
 ## Action Settings - Parameters and Options
@@ -35,12 +35,12 @@ This section describes how to set up parameters and options for each action.
 |---| ---|
 |Event Token|  <ul><li>Adjust event token from the dashboard.</li></ul> |
 |App Token|  <ul><li>Adjust app token from the dashboard.</li></ul> |
-|Android ID|  <ul><li>Android ID</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
-|Open Advertising ID|  <ul><li>Platform-dependent Open Advertising ID.</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
-|Raw Amazon Fire Advertising ID|  <ul><li>Platform-dependent Raw Amazon Fire Advertising ID.</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
-|Raw IDFA|  <ul><li>iOS only.</li><li>Raw IDFA Identifier.</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
-|Raw IDFV|  <ul><li>Raw IDFV Identifier.</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
-|Raw Google Advertising ID|  <ul><li>Raw Google Advertising ID Identifier.</li><li>See [Accepted device identifiers](https://help.adjust.com/en/article/s2s-api-reference#accepted-identifiers).</li></ul> |
+|Android ID|  <ul><li>Android ID</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
+|Open Advertising ID|  <ul><li>Platform-dependent Open Advertising ID.</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
+|Raw Amazon Fire Advertising ID|  <ul><li>Platform-dependent Raw Amazon Fire Advertising ID.</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
+|Raw IDFA|  <ul><li>iOS only.</li><li>Raw IDFA Identifier.</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
+|Raw IDFV|  <ul><li>Raw IDFV Identifier.</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
+|Raw Google Advertising ID|  <ul><li>Raw Google Advertising ID Identifier.</li><li>See [Accepted device identifiers](https://dev.adjust.com/en/api/s2s-api/events/#device-ids).</li></ul> |
 |Adjust Device ID|  <ul><li>Identifying LAT users on iOS without idfa information.</li></ul> |
 |Created At Timestamp (Formatted)|  <ul><li>Telling the exact moment an event occurred.</li><li>The connector encodes the value.</li><li>Example:__ `2017-01-02T15:04:05.000+0000` becomes `2017-01-02T15%3A04%3A05.000%2B0000`</li></ul> |
 |Created At Timestamp (Unix)|  <ul><li>Telling the exact moment an event occurred.</li><li>Can be specified using either seconds or milliseconds.</li></ul> |

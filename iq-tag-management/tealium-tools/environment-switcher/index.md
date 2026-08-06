@@ -105,25 +105,18 @@ Use the following setup instructions to use the Environment Switcher in self-hos
 
 ### First-party or self-hosted domains
 
-To use the Environment Switcher with a self-hosted or first-party domain:
-
-1. Click the user icon in the upper-right corner of the **Tealium Tools** extension.
-1. Click the **Settings** tab.
-1. In the **Domain Prefix** field, enter the domain loading the `utag.js` script (for example, `tags.domain.com`).
-1. Click **Update Settings**.  
-   The **Environment Switcher** screen loads.
-1. Select the environment you want to switch to and click **Start**.
-   The page refreshes, and a blue **Environment Switcher** bar appears at the bottom of the screen to indicate that the redirect is active.
+The Environment Switcher attempts to detect first-party domains automatically. If your domain is not detected, use a [URL redirect](#url-redirects) in the **Advanced** tab to load `utag.js` from your custom domain.
 
 ### Private cloud environments
 
-To use the Environment Switcher with a private cloud environment:
+Private Cloud customers must configure a domain prefix in Tealium Tools Settings before using the extension. The domain prefix tells Tealium Tools which domain to use for platform API calls. For example, a prefix of `pc-company` directs calls to `pc-company-my.tealiumiq.com` instead of the default `my.tealiumiq.com`. Once the prefix is set, the environment switcher works normally.
+
+To configure the domain prefix for a private cloud environment:
 
 1. Click the user icon in the upper-right corner of the **Tealium Tools** extension.
 1. Click the **Settings** tab.
-1. In the **Domain Prefix** field, enter the account prefix used to load the `utag.js` script. For example, if your private cloud domain is `pc-company-my.tealiumiq.com`, the prefix is `pc-company`.
-1. Click **Update Settings**.  
-   The **Environment Switcher** screen loads.
+1. In the **Domain Prefix** field, enter the account prefix for your private cloud. For example, if your private cloud domain is `pc-company-my.tealiumiq.com`, enter `pc-company`.
+1. Click **Update Settings**.
 1. Select the environment you want to switch to and click **Start**.
    The page refreshes, and a blue **Environment Switcher** bar appears at the bottom of the screen to indicate that the redirect is active.
 

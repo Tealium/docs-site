@@ -1,11 +1,11 @@
 ---
 title: 構成
-description: `utag.js`の挙動を調整する構成について学びましょう。
+description: `utag.js`の挙動を調整する構成について学びます。
 url: https://docs.tealium.com/ja/platforms/javascript/settings/
 ---
 ## 動作原理
 
-`utag.js`の多くの挙動は、`utag.cfg`オブジェクト内の構成で制御されます。これらのデフォルトの挙動は、`utag_cfg_ovrd`という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、`utag.js`の読み込み前にページコード内で構成するか、**Pre Loader**にスコープされた[JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)内で以下のように構成します：
+`utag.js`の多くの挙動は、`utag.cfg`オブジェクト内の構成で制御されます。これらのデフォルトの挙動は、`utag_cfg_ovrd`という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、`utag.js`の読み込み前または[JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)内で**Pre Loader**にスコープされた状態でページコードに構成します。
 
 ```js
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
@@ -24,30 +24,31 @@ window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
 | [`dom_complete`](#dom_complete) | DOM完了（ロード）イベントまでタグの実行を遅延させます。 |
 | [`domain`](#domain) | クッキーを構成するドメインを上書きします。 |
 | [`gdprDLRef`](#gdprdlref) | 同意管理者に使用される言語構成を格納するデータレイヤー変数の名前を指定します。 |
-| [`ignoreLocalStorage`](#ignorelocalstorage) | データレイヤーにローカル保存変数を追加しないようにします。 |
-| [`ignoreSessionStorage`](#ignoresessionstorage) | データレイヤーにセッション保存変数を追加しないようにします。 |
+| [`ignoreLocalStorage`](#ignorelocalstorage) | ローカル保存変数をデータレイヤーに追加しないようにします。 |
+| [`ignoreSessionStorage`](#ignoresessionstorage) | セッション保存変数をデータレイヤーに追加しないようにします。 |
 | [`load_rules_ajax`](#load_rules_ajax) | ページ読み込み後のロードルールを無効にします（レガシー）。 |
-| [`load_rules_at_wait`](#load_rules_at_wait) | 拡張機能の後にロードルールを実行します（レガシー）。 |
+| [`load_rules_at_wait`](#load_rules_at_wait) | 拡張機能の後でロードルールを実行します（レガシー）。 |
 | [`lowermeta`](#lowermeta)| メタタグの名前と値を小文字にします（レガシー）。 |
 | [`lowerqp`](#lowerqp)| クエリ文字列パラメータの名前と値を小文字にします（レガシー）。 |
 | [`noload`](#noload) | すべての機能を無効にします。 |
 | [`noview`](#noview) | 初回ページ読み込み時の自動トラッキングコールを無効にします。 |
 | [`nocookie`](#nocookie) | `utag_main`クッキーを無効にします。 |
+| [`noconsole`](#noconsole) | `utag.DB`コンソール出力を抑制します。 |
 | [`nonblocking_tags`](#nonblocking_tags) | すべてのタグを非ブロッキングにして、極端なケースでのパフォーマンスとInteraction to Next Paint (INP)スコアを向上させます。デフォルト：`false`。 |
 | [`path`](#path) | 公開パスを指定します。 |
 | [`readywait`](#readywait) | DOM-readyブラウザイベントまで操作を停止します。 |
 | [`secure_cookie`](#secure_cookie) | [Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/)および[`utag.loader.SC`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utagloadersc)メソッドによって構成されるすべての`utag_main`クッキーの属性文字列を`secure`に構成します。 |
-| [`session_timeout`](#session_timeout)| セッションの有効期限（ミリ秒単位）を構成します。 |
+| [`session_timeout`](#session_timeout)| セッションの有効期限を構成します（ミリ秒単位）。 |
 | [`split_cookie`](#split_cookie)| `utag_main`クッキーをスタンドアロンのクッキーに分割します。デフォルト：`true` |
 | [`split_cookie_allowlist`](#split_cookie_allowlist)| 許可された`utag_main`サブクッキーまたはスタンドアロンクッキーの配列。 |
 | [`suppress_before_load_rules_with_uids`](#suppress_before_load_rules_with_uids) | UIDによるトラッキングタグの場合、**Before Load Rules**にスコープされた拡張機能をスキップするレガシー動作を強制します。デフォルト：`false`。 |
-| [`waittimer`](#waittimer) | タグの読み込み前に遅延する時間（ミリ秒単位）を構成します。|
+| [`waittimer`](#waittimer) | タグの読み込み前に遅延する時間を構成します（ミリ秒単位）。|
 
 ### `always_set_v_id`
 
 **`utag.js`に`utag_main_v_id`クッキーまたは`utag_main`の`v_id`コンポーネントを構成させる**  
-([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
-`utag_main`の`v_id`変数は、データプライバシーと同意目的に準拠するためにTealium Collectタグによって構成されます。これを`true`に構成すると、すべての訪問に対してこのクッキーを構成するよう`utag.js`に強制します。（デフォルト：`false`）
+（[`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入）  
+`v_id`変数はTealium Collectタグによって構成され、データプライバシーと同意目的に準拠することを保証します。これを`true`に構成すると、`utag.js`はすべての訪問に対してこのクッキーを構成するように強制されます。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.always_set_v_id = true;
@@ -56,7 +57,7 @@ window.utag_cfg_ovrd.always_set_v_id = true;
 ### `cmcookiens`
 
 **同意管理クッキー名**  
-同意管理クッキーの名前をカスタマイズします。同じドメイン名で複数のプロファイルを持っている場合は、クッキー間の競合や潜在的なデータ漏洩を防ぐために、各プロファイルに固有の同意管理クッキー名を付けます。
+同意管理クッキー名をカスタマイズします。同じドメイン名で複数のプロファイルを持っている場合は、クッキー間の競合や潜在的なデータ漏洩を防ぐために、各プロファイルに固有の同意管理クッキー名を構成してください。
 
 ```js
 window.utag_cfg_ovrd.cmcookiens = "CONSENTMGR_NL-CMB-CG1";
@@ -64,7 +65,7 @@ window.utag_cfg_ovrd.cmcookiens = "CONSENTMGR_NL-CMB-CG1";
 
 ### `consentPeriod`
 
-**同意構成の保持期間**  
+**同意構成保持期間**  
 GDPRおよびCCPAの同意ステータスを保持する日数を構成します。GDPRの場合は365日、CCPAの場合は395日が組み込みの有効期限です。
 
 ```js
@@ -75,11 +76,11 @@ window.utag_cfg_ovrd.consentPeriod = 60;
 
 **システム定義の属性の上書きを防ぐ**  
 
-([`utag.js` 4.54](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22)で新規導入)
+（[`utag.js` 4.54](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22)で新規導入）
 
 `true`に構成すると、この構成は受信データが`tealium_visitor_id`などの`tealium_`で始まるシステム定義の属性を上書きするのをブロックします。
 
-`utag.js`のバージョン4.52および4.53では、この保護はデフォルトで有効になっており、一部のモバイルWebビュー環境で問題が発生していました。バージョン4.54では、保護はオプトインになり、完全な制御が可能です。
+`utag.js`のバージョン4.52および4.53では、この保護はデフォルトで有効になっており、一部のモバイルWebビュー環境で問題を引き起こしていました。バージョン4.54では、この保護はオプトインになり、完全な制御が可能です。
 
 （デフォルト：`false`）
 
@@ -90,7 +91,7 @@ window.utag_cfg_ovrd.disable_tealium_attribute_override = true;
 ### `dom_complete`
 
 **DOM完了（ロード）ブラウザイベントまでタグを遅延させる**  
-DOM Readyではなく、[document load event](https://developer.mozilla.org/en-US/docs/Web/Events/load)でタグを読み込みます。これにより、DOM Readyにスコープされた拡張機能も遅延されます。（デフォルト：`false`）
+タグをDOM Readyではなく[document load event](https://developer.mozilla.org/en-US/docs/Web/Events/load)で読み込みます。これにより、DOM Readyにスコープされた拡張機能も遅延されます。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.dom_complete = true;
@@ -154,21 +155,20 @@ window.utag_cfg_ovrd.load_rules_ajax = false;
 
 ### `load_rules_at_wait`
 
-**拡張機能の後にロードルールを実行する（レガシー）**  
-拡張機能の後にロードルールを評価します。`utag.js`の古いバージョンや、`utag.js`の読み込み後にデータレイヤーオブジェクトが構成されるインストールで使用されます。新しいバージョンの`utag.js`では、この構成の代わりに拡張機能の実行順序を使用します。（デフォルト：`false`）
+**拡張機能の後でロードルールを実行する（レガシー）**  
+拡張機能の後でロードルールを評価します。`utag.js`の古いバージョンや、`utag.js`の読み込み後にデータレイヤーオブジェクトが生成されるインストールで使用されます。新しいバージョンの`utag.js`では、この構成の代わりに拡張機能の実行順序を使用します。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.load_rules_at_wait = true;
 ```
-
 ### `lowermeta`
 
 **メタタグデータを小文字にする（レガシー）**  
-すべてのメタデータ変数名と値を小文字にします。`utag.js`の4.2xより前のバージョンの動作を再現します。（デフォルト：`false`）
+すべてのメタデータ変数名と値を小文字にします。`utag.js`のバージョン4.2x以前の動作を再現します。（デフォルト：`false`）
 
-例のメタタグ：
+メタタグの例：
 ```html
-<meta content="Tag Management" property="Article:Section">
+<meta content="iQ Tag Management" property="Article:Section">
 ```
 
 結果の値：
@@ -179,13 +179,14 @@ utag.data['meta.article:section']="iq tag management"
 ```js
 window.utag_cfg_ovrd.lowermeta = true;
 ```
+
 ### `lowerqp`
 
 **クエリ文字列パラメータ名と値を小文字にする（レガシー）**  
-すべてのクエリ文字列変数名と値を小文字にします。これは、`utag.js` バージョン4.2x以前の動作を再現します。（デフォルト：`false`）
+すべてのクエリ文字列変数名と値を小文字にします。`utag.js`のバージョン4.2x以前の動作を再現します。（デフォルト：`false`）
 
-例えばクエリ文字列パラメータ： `&RefId=Abc123`
-結果の値： `utag.data['qp.refid']="abc123"`
+クエリ文字列パラメータの例：`&RefId=Abc123`
+結果の値：`utag.data['qp.refid']="abc123"`
 
 ```js
 window.utag_cfg_ovrd.lowerqp = true;
@@ -194,7 +195,7 @@ window.utag_cfg_ovrd.lowerqp = true;
 ### `noload`
 
 **すべての操作を停止**  
-**Pre Loader** にスコープされた拡張機能の後にすべてのコードの実行が停止します。**DOM Ready** にスコープされた拡張機能は実行されます。これは通常、**Prevent Tag Load** の公開構成を使用して調整されます。（デフォルト：`0`）
+**Pre Loader**にスコープされた拡張機能の後でコードの実行が停止します。**DOM Ready**にスコープされた拡張機能は実行されます。通常、**Prevent Tag Load**の公開構成を使用して調整されます。（デフォルト：`0`）
 
 ```js
 window.utag_cfg_ovrd.noload = true;
@@ -202,8 +203,8 @@ window.utag_cfg_ovrd.noload = true;
 
 ### `noview`
 
-**初期ページロード時の自動トラッキングコールを無効にする**  
-初期ページロード時に自動的に発生するトラッキングコールを抑制します。この構成は、シングルページアプリケーションサイトでよく使用されます。（デフォルト：`false`）
+**初回ページロード時の自動トラッキングコールを無効にする**  
+初回ページロード時に自動的に発生するトラッキングコールを抑制します。この構成は、シングルページアプリケーションサイトでよく使用されます。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.noview = true;
@@ -215,21 +216,30 @@ window.utag_cfg_ovrd.noview = true;
 訪問がすべてのCookieの使用を明示的にオプトアウトした場合のみ、このオプションを構成してください。（デフォルト：`false`）
 
 <blockquote>
-このオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問が「シングルページセッション」のように見えるようになります。
+このオプションを使用すると、訪問数とセッション数が増加し、すべての訪問が「シングルページセッション」のように見えます。
 </blockquote>
 
 
-このオプションは、`utag.js` によって構成されるすべてのCookieの保存を無効にし、[Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/)で構成されるCookieやセッションCookieも含まれます。また、Cookieが利用できない場合には、`ut.visitor_id`、`tealium_visitor_id`、`cp.utag_main_v_id` の変数に新しいタイムスタンプを構成します。
+このオプションは、`utag.js`によって構成されるすべてのCookieの保存を無効にします。これには、[Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/)で構成されるCookieやセッションCookieも含まれます。また、Cookieが利用できない場合には、`ut.visitor_id`、`tealium_visitor_id`、`cp.utag_main_v_id`の変数に新しいタイムスタンプを構成します。
 
 ```js
 window.utag_cfg_ovrd.nocookie = true
 ```
 
+### `noconsole`
+
+**デバッグコンソール出力を抑制**  
+ブラウザコンソールに表示される`utag.DB`デバッグメッセージの出現を防ぎます。デバッグ出力は`utag.db_log`配列に引き続き書き込まれます。（デフォルト：`false`）
+
+```js
+window.utag_cfg_ovrd.noconsole = true;
+```
+
 ### `nonblocking_tags`
 
-**非同期でタグをロード**  
-([`utag.js` 4.52](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
-このオプションは、すべてのタグの非ブロッキング動作を有効にし、INPスコアと全体的なページパフォーマンスを向上させることができます。ユーザーのインタラクションを遅くし、INPスコアを低下させるリソース集約型のタグがあるページでこの構成を使用してくださいが、出口リンクのトラッキングを徹底的にテストすることを確認してください。（デフォルト：`false`）
+**タグを非同期でロード**  
+（[`utag.js` 4.52](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新設）  
+すべてのタグの非ブロッキング動作を有効にします。これにより、INPスコアと全体的なページパフォーマンスが向上します。ユーザーのインタラクションを遅くし、INPスコアを低下させるリソース集約型のタグがあるページでこの構成を使用してくださいが、退出リンクのトラッキングを徹底的にテストすることを確認してください。（デフォルト：`false`）
 
 ```js
 window.utag_cfg_ovrd.nonblocking_tags = true;
@@ -237,101 +247,8 @@ window.utag_cfg_ovrd.nonblocking_tags = true;
 
 #### ベストプラクティス
 
-`nonblocking_tags` 構成を使用する際のベストプラクティス：
+`nonblocking_tags`構成を使用する際のベストプラクティス：
 
-* ページを測定し、監視し、タグの実装を軽くする前に `nonblocking_tags` 構成の使用を検討してください。
-* INPスコアが200ミリ秒を超え、DOMのレンダリングをブロックする必要がないページでのみ `nonblocking_tags` を使用してください。
-* 非ブロッキングタグはページを保持せずにロードされるため、重要なナビゲーションや出口イベントの遅延に注意してください（これがINPスコアを改善する理由です）。
-
-### `path`
-
-**公開URLパスを構成**  
-タグテンプレートの公開URLパスを構成し、指定されている場合は[公開構成ダイアログ]()の公開URLフィールドを上書きします。公開URLパスの構成は、自己ホスティングおよび[First Party Domains]()の顧客にとって有用です。
-
-```js
-window.utag_cfg_ovrd.path = '//tags.example.com/main/prod';
-```
-
-### `readywait`
-
-**DOM-readyまで操作を遅延**  
-ブラウザからDOM-ready信号を受信するまで、すべての操作を停止します。**Pre Loader** にスコープされた拡張機能は、`utag.js` がロードされたときに実行されます。（デフォルト：`0`）
-
-```js
-window.utag_cfg_ovrd.readywait = true;
-```
-
-### `secure_cookie`
-
-**セキュアCookie**  
-([`utag.js` 4.48](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01)で新規導入)  
-[Persist Data Values extension](https://docs.tealium.com/persist-data-value-extension/)および[`SC()`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utag-loader-sc)関数によって構成されるすべての`utag_main`クッキーに対して、属性文字列を`secure`に構成します。セキュアクッキーはHTTPSページでのみ構成およびアクセスが可能です。（デフォルト：`false`）
-
-```js
-window.utag_cfg_ovrd.secure_cookie = true;
-```
-
-### `session_timeout`
-
-**セッションタイムアウト** 
-現在のセッションが期限切れになるまでの待ち時間をミリ秒単位で構成します。これは通常、セッションタイムアウトの公開構成を使用して調整されます。（デフォルト：`1800000` (30分)）
-
-タイムアウトを900000ミリ秒（15分）に構成する例：
-```js
-window.utag_cfg_ovrd.session_timeout = 900000;
-```
-
-### `split_cookie`
-
-**スタンドアロンクッキー**  
-([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
-`utag_`名前空間のクッキー（組み込みの`utag_main`クッキーなど）がマルチバリュークッキーとして書き込まれるか、[`utag.loader.SC`](https://docs.tealium.com/ja/platforms/javascript/api/cookie-functions/#utagloadersc)によってスタンドアロンクッキーとして書き込まれるかを決定します。（デフォルト：`true`）
-
-```js
-window.utag_cfg_ovrd.split_cookie = false;
-```
-
-### `split_cookie_allowlist`
-
-**`utag_main`サブクッキー**  
-([`utag.js` 4.50](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01)で新規導入)  
-許可された`utag_main`サブクッキーの配列を指定します。許可リストは、`split_cookie`が`true`に構成されている場合にのみ適用されます。これは、バージョン4.50以降のデフォルト構成です。
-
-`split_cookie_allowlist`が定義されており、アクティブである場合、以下が適用されます：
-
-* `utag.loader.SC`は`utag_main`クッキーのみを構成します。
-* このリストにあるサブクッキーのみが`utag_main`名前空間で構成されます。
-
-`split_cookie_allowlist`が定義されていない場合、または`split_cookie`が`true`でない場合、すべての`utag_`名前空間のクッキーが許可されます。
-
-
-<blockquote>
-`ses_id`、`_st`、`_ss`を許可せずにこのオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問がシングルページセッションのように見えるようになります。
-</blockquote>
-
-
-```js
-window.utag_cfg_ovrd.split_cookie_allowlist = ["v_id", "_ss", "_st", "ses_id"];
-```
-
-### `suppress_before_load_rules_with_uids`
-
-**UIDによるトラッキングタグの場合、Before Load Rules拡張機能をスキップ**  
-([`utag.js` 4.52](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18)で新規導入)  
-
-デフォルトでは、**Before Load Rules**にスコープされた拡張機能は、[UIDによるトラッキングタグ](https://docs.tealium.com/tracking-functions/)の場合でもすべてのトラッキングコールに対して実行されます。以前は、UIDによるトラッキングタグの場合、これらの拡張機能は実行されませんでした。
-
-このオプションを`true`に構成すると、UIDによるトラッキングタグの場合、**Before Load Rules**にスコープされた拡張機能をスキップします（レガシー動作）。（デフォルト：`false`）
-
-```js
-window.utag_cfg_ovrd.suppress_before_load_rules_with_uids = true;
-```
-
-### `waittimer`
-
-**タイマーでタグを遅延**
-DOM Readyイベントの後、タグのロードを待つ時間をミリ秒単位で構成します。（デフォルト：構成なし）
-
-```js
-window.utag_cfg_ovrd.waittimer = 1000;
-```
+* ページを測定および監視し、`nonblocking_tags`構成を使用する前にタグ実装を軽量化します。
+* INPスコアが200 msを超え、DOMレンダリングをブロックする必要がないページでのみ`nonblocking_tags`を使用します。
+* 非ブロッキングタグはページを保持せずにロードされるため、重要なナビゲーションや退出イベントの遅延に注意してください（これがINPスコアを改善する理由です）。

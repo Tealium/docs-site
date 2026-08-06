@@ -3,6 +3,8 @@ title: RTB House オーディエンスコネクタ構成ガイド
 description: RTB House管理のGoogle Cloud Storageバケットにオーディエンスメンバーシップの変更をJSONL形式で配信するためのRTB Houseオーディエンスコネクタを使用します。
 url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-connector/
 ---
+
+
 ## API情報
 
 このコネクタは以下のベンダーAPIを使用します：
@@ -13,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 
 <blockquote>
@@ -32,9 +34,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
-* 最大リクエスト数：100,000
+* リクエストの最大数：100,000
 * 最古のリクエストからの最大時間：60分
 * リクエストの最大サイズ：100 MB
 
@@ -46,22 +48,22 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### ユーザー識別子
 
-アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされ、入力されている必要があります。
+アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされている必要があります。
 
 | パラメータ | 説明 |
 | --- | --- |
 | AAID | Androidデバイスの広告ID。 |
 | IDFA | iOSデバイスの広告ID。 |
 | UID | サイトピクセルから同期されたRTB HouseのユーザーID。 |
-| AID | 代替ユーザーID（ハッシュ化されたメールや内部IDなど）。 |
+| AID | ハッシュ化されたメールや内部IDなどの代替ユーザーID。 |
 
 ### RTB Houseセグメントからユーザーを削除
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
-* 最大リクエスト数：100,000
+* リクエストの最大数：100,000
 * 最古のリクエストからの最大時間：60分
 * リクエストの最大サイズ：100 MB
 
@@ -73,7 +75,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### ユーザー識別子
 
-アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされ、入力されている必要があります。
+アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされている必要があります。
 
 
 <blockquote>
@@ -86,4 +88,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 | AAID | Androidデバイスの広告ID。 |
 | IDFA | iOSデバイスの広告ID。 |
 | UID | サイトピクセルから同期されたRTB HouseのユーザーID。 |
-| AID | 代替ユーザーID（ハッシュ化されたメールや内部IDなど）。 |
+| AID | ハッシュ化されたメールや内部IDなどの代替ユーザーID。 |

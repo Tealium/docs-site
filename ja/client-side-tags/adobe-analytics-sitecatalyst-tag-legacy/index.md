@@ -5,13 +5,13 @@ url: https://docs.tealium.com/ja/client-side-tags/adobe-analytics-sitecatalyst-t
 ---
 
 <blockquote>
-これは新しい（推奨）バージョンのレガシーAdobeタグであり、タグマーケットプレイスから[Adobe AppMeasurement for JavaScriptタグ](https://docs.tealium.com/adobe-appmeasurement-for-js-tag/)が利用可能です。
+これは新しい（推奨）バージョンである[Adobe AppMeasurement for JavaScript tag](https://docs.tealium.com/adobe-appmeasurement-for-js-tag/)がタグマーケットプレイスから利用可能になるためのレガシーAdobeタグです。
 </blockquote>
 
 
 ## 動作原理
 
-Adobe Analytics（SiteCatalyst）は、AdobeのWebアナリティクスを提供するソフトウェア・アズ・ア・サービス（SaaS）アプリケーションです。
+Adobe Analytics（SiteCatalyst）は、AdobeのWebアナリティクスを提供するSaaSアプリケーションです。
 
 ## 開始する前に
 
@@ -20,23 +20,23 @@ Adobe Analytics（SiteCatalyst）は、AdobeのWebアナリティクスを提供
 * Adobe Experience Cloud IDサービスを使用する場合は、このタグを追加する**前に**Adobe Experience Cloud IDサービスタグを追加してください。
 * S-Codeバージョンを変更する際は、正しいテンプレートを取り込むために既存のテンプレートを削除してください。
 * 変数値に基づいてレポートスイートを構成するために`s_account`にマッピングしてください。これにより、デフォルト構成と動的アカウントリスト構成が上書きされます。
-* `s_account`にマッピングする場合は、動的アカウント構成を**はい**に変更してください。
+* `s_account`にマッピングする場合は、動的アカウント構成を**Yes**に変更してください。
 * **AAM**オプションを含むS-Codeバージョンを選択してください。これにはパートナー値が必要です。
 * サードパーティトラッキングの場合、デフォルトのサーバー位置は**122**(`122.2o7.net`)です。
-  * `112.2o7.net`データ収集サーバーの場合、**サーバー**と**サーバーセキュア**を直接構成してください。
+  * `112.2o7.net`データ収集サーバーの場合は、**Server**および**Server Secure**を直接構成してください。
   * 例：`mysite.112.2o7.net`
 
 ### 前提条件
 
 * **`s_code.js`のローカルコピー**
   * このタグを構成するには、Adobeアカウントから生成された`s_code.js` JavaScriptファイルが必要です。
-  * そのコードのセクションはTiQ構成にコピーされます。  
+  * そのコードのセクションはTiQ構成にコピーされます。
 
 <blockquote>
 JavaScriptライブラリファイルの名前は異なる場合があります。
 </blockquote>
 
-  * [s_code.jsについてもっと学ぶ](https://marketing.adobe.com/resources/help/en_US/sc/implement/impl_js_file.html).
+  * [s_code.jsについてもっと学ぶ](https://experienceleague.adobe.com/en/docs/analytics/implementation/js/h-code/overview).
 
 * **ソリューションデザインリファレンス**
   * （オプション）このドキュメントは、Adobe Analyticsソリューションで追跡されるすべてのprops、eVars、およびイベントを定義します。
@@ -74,15 +74,15 @@ JavaScriptライブラリファイルの名前は異なる場合があります�
   * 参照`s_code.js`: `s.namespace`
 
 * **エンタープライズクラウドID**
-  * バージョンH.27以降でVisitor APIを使用する場合、ここにエンタープライズクラウドIDを入力します。
-  * [Adobe Enterprise Cloud IDサービスについてもっと学ぶ](https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-requirements.html).
+  * バージョンH.27以降でVisitor APIを使用する場合は、ここにエンタープライズクラウドIDを入力してください。
+  * [Adobe Enterprise Cloud IDサービスについてもっと学ぶ](https://experienceleague.adobe.com/en/docs/id-service/using/intro/overview).
 
 * **自動リンクトラッキング**
-  * 推奨値はデフォルト値の**はい**です。
-  * **いいえ**に構成する場合は、[リンクトラッキングエクステンション](https://docs.tealium.com/link-tracking-extension/)などの他の方法を使用してすべての自動リンクトラッキングを複製する必要があります。
+  * 推奨値はデフォルト値の**Yes**です。
+  * **No**に構成する場合は、[Link Tracking Extension](https://docs.tealium.com/link-tracking-extension/)などの他の方法を使用してすべての自動リンクトラッキングを複製する必要があります。
 
 * **ダウンロードタイプ**
-  * ダウンロードリンクとして追跡したいファイル拡張子のタイプをリストします。
+  * ダウンロードリンクとしてトラッキングしたいファイル拡張子のタイプをリストします。
   * 参照`s_code.js`: `s.linkDownloadFileTypes`
 
 * **内部リンクフィルター**
@@ -94,10 +94,10 @@ JavaScriptライブラリファイルの名前は異なる場合があります�
   * 参照`s_code.js`: `s.currencyCode`
 
 * **動的アカウント使用**
-  * ドメインまたは他の動的値に基づいて異なるレポートスイートにデータを送信するために`はい`に構成します。
+  * ドメインまたは他の動的値に基づいて異なるレポートスイートにデータを送信するために`Yes`に構成します。
 
 * **動的アカウントリスト**
-  * ドメインまたは他の動的値に基づいてレポートスイートを動的に構成するために使用されます。
+  * ドメインまたは他の動的値に基づいて動的にレポートスイートを構成するために使用します。
   * 例：`testreportsuite=testing.example.com,qa.example.com;prodreportsuite=www.example.com`
   * [SiteCatalystで動的アカウントリストを使用する方法について学ぶ](http://omniture.custhelp.com/app/answers/detail/a_id/1440).
 
@@ -105,30 +105,30 @@ JavaScriptライブラリファイルの名前は異なる場合があります�
   * デフォルト名は`s`です。
   * ページ上で複数のレガシーAdobe AnalyticsタグまたはAdobe AppMeasurementタグを実行している場合は、異なる名前を構成します。
 
-* **クリア変数**
+* **Clear Vars**
   * 各トラッキングコール後にprops、eVars、およびイベントをクリアします。
-  * デフォルト値は`いいえ`です。
+  * デフォルト値は`No`です。
 
 * **パートナー**
-  * Adobe Audience Managerを使用する場合は、パートナーIDを入力します。それ以外の場合は空白のままにしてください。
+  * Adobe Audience Managerを使用する場合は、パートナーIDを入力してください。それ以外の場合は空白のままにしてください。
   * 参照`s_code.js:` `DIL.create()`
 
 ## ロードルール
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、サイト上でこのタグのインスタンスをいつ、どこでロードするかを決定します。
+[Load Rules](https://docs.tealium.com/about-load-rules/)は、サイト上でこのタグのインスタンスをいつ、どこでロードするかを決定します。
 
-Adobe Analyticsの推奨ロードルール：**すべてのページ**
+Adobe Analyticsの推奨ロードルール：**全ページ**
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法の説明については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法の説明については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
 
 データレイヤー変数（eVars、propsなど）はマッピングツールボックスを使用してマッピングできます。
 
-1. データマッピングタブをクリックし、**+ 宛先を選択**をクリックします。  
-マッピングツールボックスが表示されます。  
+1. データマッピングタブをクリックし、**+ Select Destination**をクリックします。
+マッピングツールボックスが表示されます。
 ![](https://docs.tealium.com/images/client-side-tags/data-mappings-select-destination.jpg)
-1. **+ カスタム宛先を追加**をクリックして別のpropまたはeVarをテキストボックスに入力することで、追加のマッピングをすばやく追加できます。  
+1. **+ Add Custom Destination**をクリックして別のpropまたはeVarをテキストボックスに入力することで、追加のマッピングをすばやく追加できます。
 
 <blockquote>
 同じ変数の複数のpropsとeVarsはカンマ(`,`)で区切る必要があります。Adobeの構文に合わせてeVarに大文字の`V`を使用してください。
@@ -146,7 +146,7 @@ Adobe Analyticsの推奨ロードルール：**すべてのページ**
 | `server`                | サーバー                |
 | `hier1` から `hier3` | 階層                 |
 | `visitorID`             | 訪問ID            |
-| `s_account`             | レポートスイートの上書き |
+| `s_account`             | レポートスイートオーバーライド |
 
 #### イベント
 
@@ -176,7 +176,7 @@ Adobe Analyticsの推奨ロードルール：**すべてのページ**
 | 変数                 | 説明  |
 |:-------------------------|:-------------|
 | `campaign`               | (eVar0)      |
-| `eVar1` から `eVar75` | evars        |
+| `eVar1` から `eVar75` | eVars        |
 | `contextData.myvar`      | コンテキストデータ |
 
 #### マーチャンダイジングeVars
@@ -192,23 +192,23 @@ Adobe Analyticsの推奨ロードルール：**すべてのページ**
 | `transactionID`        | <ul><li>トランザクションID</li></ul>               |
 | `state`                | <ul><li>州</li></ul>                              |
 | `zip`                  | <ul><li>郵便番号</li></ul>                        |
-| `PRODUCTS_id`          | <ul><li>製品ID</li><li>配列</li></ul>             |
-| `PRODUCTS_category`    | <ul><li>製品カテゴリ</li><li>配列</li></ul>       |
-| `PRODUCTS_quantity`    | <ul><li>製品数量</li><li>配列</li></ul>           |
-| `PRODUCTS_price`       | <ul><li>製品価格</li><li>配列</li></ul>           |
+| `PRODUCTS_id`          | <ul><li>商品ID</li><li>配列</li></ul>              |
+| `PRODUCTS_category`    | <ul><li>商品カテゴリ</li><li>配列</li></ul>        |
+| `PRODUCTS_quantity`    | <ul><li>商品数量</li><li>配列</li></ul>            |
+| `PRODUCTS_price`       | <ul><li>商品価格</li><li>配列</li></ul>            |
 
 #### その他
 
-| 変数                                 | 説明         |
-|:-------------------------------------|:-------------|
-| リンク追跡 - `doneAction` パラメータ | (H25のみ)    |
-| `List 1` から `List 3`                | リスト       |
+| 変数                                 | 説明          |
+|:-------------------------------------|:--------------|
+| リンク追跡 - `doneAction` パラメータ | (H25のみ)     |
+| `List 1` から `List 3`                | リスト        |
 
 ## E-コマース マッピング
 
 Adobe製品の文字列を適切にフォーマットし、収益データをレポートスイートに送信するには、[E-コマース拡張機能](https://docs.tealium.com/e-commerce-extension/)を追加して構成する必要があります。拡張機能で構成された変数は、タグ統合によって自動的に期待される構文にフォーマットされます。
 
-たとえば、製品カテゴリ、製品ID、製品数量、製品価格の変数は、次の例のように製品文字列に変換されます。ここでは複数の製品が扱われています：
+例えば、商品カテゴリ、商品ID、商品数量、商品価格の変数は、複数の商品を扱う次の例のように商品文字列に変換されます：
 
 `s.products= product_category;product_id;product_quantity;product_price;;`
 
@@ -227,7 +227,7 @@ Adobe製品の文字列を適切にフォーマットし、収益データをレ
 
 ### マーチャンダイジング eVars
 
-Adobeの実装では、`s.products` 文字列にeVar値を添付することで、製品にeVarを関連付けることができます。たとえば、製品文字列の各製品に関連付けたい配列変数 `product_discount` がある場合、マーチャンダイジングeVarマッピングは次のように `s.products` 文字列を作成します。
+Adobeの実装では、`s.products` 文字列にeVar値を添付することで、製品にeVarを関連付けることができます。例えば、製品文字列の各製品に関連付けたい配列変数 `product_discount` がある場合、マーチャンダイジングeVarマッピングは次のように `s.products` 文字列を作成します。
 
 #### 例：
 
@@ -237,11 +237,11 @@ utag_data.product_price    = ["25.12", "10.99"];
 utag_data.product_discount = ["**12.34**", "**1.23**"];
 ```
 
-次に、`product_discount` をマーチャンダイジング `eVar4` にマッピングすると、次のような `s.products` 文字列が得られます：
+次に、`product_discount` をマーチャンダイジング `eVar4` にマッピングすると、次のような `s.products` 文字列が生成されます：
 
 `s.products=";prodA;1;25.12;;**evar4=12.34**,;prodB;1;10.99;;**evar4=1.23**"`
 
-配列でない変数（単一の値）をマーチャンダイジング `eVar` にマッピングする場合、その単一の値が各製品に適用されます。
+配列でない変数（単一値）をマーチャンダイジング `eVar` にマッピングする場合、その単一値は各製品に適用されます。
 
 #### 例：
 
@@ -251,13 +251,13 @@ utag_data.product_price    = ["25.12", "10.99"];
 utag_data.product_discount = "**1.99**";
 ```
 
-上記と同じマッピングで、得られる `s.products` 文字列は次のようになります：
+上記と同じマッピングで、生成される `s.products` 文字列は次のようになります：
 
 `s.products=";prodA;1;25.12;;**evar4=1.99**,;prodB;1;10.99;;**evar4=1.99**"`
 
 ### 製品レベルのイベント
 
-製品レベルのイベントは、マーチャンダイジング `eVars` と同様に機能します。単一の値を使用して製品文字列のすべての製品に同じ変数を適用するか、値の配列を使用して製品文字列の各製品に異なる値を適用することができます。
+製品レベルのイベントは、マーチャンダイジング `eVars` と同様に機能します。単一値を使用して製品文字列のすべての製品に同じ変数を適用するか、値の配列を使用して各製品に異なる値を適用することができます。
 
 #### 例：
 
@@ -267,7 +267,7 @@ utag_data.product_price    = ["25.12", "10.99"];
 utag_data.order_discount   = "**12.00**";
 ```
 
-次に、`order_discount` を `product event15` にマッピングすると、次のような `s.products` 文字列が得られます。
+次に、`order_discount` を `product event15` にマッピングすると、次のような `s.products` 文字列が生成されます。
 
 `s.products=";prodA;1;25.12;**event15=12.00**;,;prodB;1;10.99;**event15=12.00**;"`
 
@@ -275,11 +275,11 @@ utag_data.order_discount   = "**12.00**";
 
 
 <blockquote>
-マーチャンダイジング `eVars` および製品レベルのイベントの配列マッピングは、バージョンH.26以降で利用可能です。
+マーチャンダイジング `eVars` と製品レベルのイベントの配列マッピングは、バージョン H.26 以降で利用可能です。
 </blockquote>
 
 
-## doPluginsのための必要な拡張機能
+## doPlugins のための必要な拡張機能
 
 `s_code.js` ファイルの次の2つのセクションのコードを、TiQ構成の拡張機能にコピーする必要があります：
 
@@ -291,7 +291,7 @@ utag_data.order_discount   = "**12.00**";
 **Do Plugins** セクションは常に **プラグインとモジュール** セクションの上にあります。このセクションは通常、次の行で始まります：
 
 ```
-/* プラグイン構成 */
+/* Plugin Config */
 s.usePlugins=true;
 ```
 
@@ -307,7 +307,7 @@ s.doPlugins=s_doPlugins;
 
 ### プラグインとモジュール
 
-`s_code` のプラグインとモジュールセクションは次の行で始まります：
+`s_code` のプラグインとモジュールセクションは次のように始まります：
 
 ```
 /***********************PLUGINS SECTION ********************/
@@ -316,7 +316,7 @@ s.doPlugins=s_doPlugins;
 そして、この行の直前で終わります：
 
 ```
-/************* この行以下は何も変更しないでください ! **************/
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
 ```
 
 このコードセクション全体をコピーして、Adobe Analyticsタグに適用される別のJavaScript Code拡張機能に貼り付けます。この拡張機能の名前を `Plugins and Modules` とします：
@@ -325,36 +325,36 @@ s.doPlugins=s_doPlugins;
 
 次に、**プラグインとモジュール** JavaScript拡張機能を **Do Plugins** セクション JavaScript拡張機能の直上にドラッグします。
 
-次の行で始まるコードセクション
+次のセクションのコードで始まる
 
 ```
-/************* この行以下は何も変更しないでください ! **************/
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
 ```
 
-は、TiQ内のタグテンプレートを通じてロードされるAdobe `s_code` ライブラリのコア部分です。
+は、TiQ内のタグテンプレートを通じてロードされるAdobe `s_code` ライブラリのコアです。
 
 ## 新しいバージョンへのアップグレード
 
 Adobeタグの新しいベースコードにアップグレードするには、次の手順を使用します：
 
 1. タグを開いて **編集** をクリックします。
-1. **S-Codeバージョン** フィールドで、ドロップダウンリストから希望するバージョンを選択します。たとえば **H.27**。
+1. **S-Code Version** フィールドで、ドロップダウンリストから希望するバージョンを選択します。例えば **H.27**。
 ![](https://docs.tealium.com/images/client-side-tags/adobe-analytics-legacey-tag-select-upgrade-version.jpg)
-タグテンプレートが更新される必要があることを示す警告モーダルが表示されます。
+警告モーダルが表示され、タグテンプレートを更新する必要があることを示します。
 1. **OK** をクリックします。
 ![](https://docs.tealium.com/images/client-side-tags/adobe-analytics-legacy-upgrade-message.jpg)
-1. **詳細構成** までスクロールダウンし、クリックして展開します。
+1. **詳細構成** までスクロールダウンし、展開します。
 1. **テンプレートの編集** を選択します。
-1. テキストフィールドに、バックアップとしてテキストファイルにテンプレート全体をコピーして貼り付けます。
-1. 現在のテンプレートを選択してゴミ箱アイコンをクリックして削除します。
+1. テキストフィールドに、バックアップとしてテンプレート全体をテキストファイルにコピーして貼り付けます。
+1. 現在のテンプレートを選択し、ゴミ箱アイコンをクリックして削除します。
 1. 変更を保存して公開します。
 最新のタグバージョンがロードされます。
 
 ## 高度な構成
 
-### s.eventsの構成
+### s.events の構成
 
-Adobeタグテンプレート内で、Tealiumは `s.event` 文字列を構成するのに役立つ `u.addEvent()` という関数を提供しています。この方法は、`s.events` の最後に新しい値を追加することで、すでに構成されているすべてのイベントを保持し、必要に応じて別のイベントを追加することができます。この方法を使用するには、構成に `sc_events` という変数が必要です。
+Adobeタグテンプレート内では、`s.event` 文字列を構成するために `u.addEvent()` という関数をTealiumが提供しています。この方法は `s.events` の最後に新しい値を追加することができ、以前に構成されたイベントをすべて保持しながら必要に応じて別のイベントを追加することができます。この方法を使用するには、構成に `sc_events` という変数が必要です。
 
 `s.events` をカスタマイズするための次の手順を使用します：
 
@@ -362,16 +362,16 @@ Adobeタグテンプレート内で、Tealiumは `s.event` 文字列を構成す
 1. **Scope** を Adobe Analyticsタグに構成します。
 1. **Set** メニューから **sc_events** を選択します。
 1. **To** メニューから **JS Code** を選択します。
-1. テキストフィールドに次のように入力します：`u.addEvent("CUSTOM_EVENT")`  
-ここで、`CUSTOM_EVENT` は `s.events` 文字列に追加したいイベントです。たとえば **event10** です。
-1. 一度に複数のイベントを追加するには、次のように `u.addEvent` に配列を渡します：  
+1. テキストフィールドに次のように入力します：`u.addEvent("CUSTOM_EVENT")`
+ここで、`CUSTOM_EVENT` は `s.events` 文字列に追加したいイベントです。例えば **event10**。
+1. 一度に複数のイベントを追加するには、次のように `u.addEvent` に配列を渡します：
 `u.addEvent(["event1","event2","scView"]);`
 ### SiteCatalyst ダイナミック変数
 
-Adobeは、複数のプロパティに現れる値を再利用することで、トラッキングピクセルのサイズを最小限に抑えるためのダイナミック変数と呼ばれる表記法をサポートしています。
+Adobeは、複数のプロパティに現れる値を再利用する「ダイナミック変数」と呼ばれる表記法をサポートしており、トラッキングピクセルのサイズを最小限に抑えるのに役立ちます。
 
-TiQのAdobeタグは、ピクセルリクエストをAdobeに送信する際にこの表記法を自動的に適用します。これは、あなたの変数の中で `v3:D=c2` のような値を見るかもしれないことを意味します。この場合、`v3` は `eVar3` であり、`D=c2` は `s.prop2` からの値です。`s.prop2` の値を繰り返す代わりに、この短縮表記が `prop2` への参照として使用され、Adobeのサーバーで適切に解釈されます。結果として得られるトラッキングピクセルはより小さく、速くなり、一つのピクセルリクエストに最大量のデータを詰め込むことができます。
+TiQのAdobeタグは、ピクセルリクエストをAdobeに送信する際にこの表記法を自動的に適用します。これは、変数の中に `v3:D=c2` のような値が表示されることを意味します。この場合、`v3` は `eVar3` であり、`D=c2` は `s.prop2` からの値です。`s.prop2` の値を繰り返す代わりに、この短縮表記が `prop2` への参照として使用され、Adobeのサーバーが適切に解釈します。その結果、トラッキングピクセルはより小さく、より速くなり、1つのピクセルリクエストに最大量のデータを詰め込むことができます。
 
 ![](https://docs.tealium.com/images/client-side-tags/sitecatalyst-dynamic-variables.jpg)
 
-[SiteCatalyst ダイナミック変数](http://omniture.custhelp.com/app/answers/detail/a_id/10099)についてもっと学びましょう。
+[SiteCatalyst ダイナミック変数](http://omniture.custhelp.com/app/answers/detail/a_id/10099)についてもっと学ぶ。

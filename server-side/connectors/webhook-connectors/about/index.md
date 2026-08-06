@@ -19,6 +19,8 @@ The following authentication methods are supported for HTTP-based webhook connec
 * **BasicAuth**: Authenticate webhook requests using a username and password sent with the request.
 * **OAuth2 3-Legged**: Authenticate webhook requests through a user-consent flow that issues access tokens on the user's behalf. Requires the user to log in to the service to obtain an access token.
 * **OAuth2 2-Legged**: Authenticate webhook requests using server-to-server access tokens without any user involvement.
+* **OAuth2 (2-legged) with mTLS**: Authenticate webhook requests using server-to-server access tokens combined with a DigiCert-issued mutual TLS client certificate. The certificate is presented during the TLS handshake on the token request leg. Optionally, apply mTLS to the delivery leg as well.
+* **mTLS**: Authenticate webhook requests using a DigiCert-issued mutual TLS client certificate, with no OAuth2 token flow.
 * **JWT**: Authenticate webhook requests with a JSON web token.
 
 Webhook OAuth2 is used for services that explicitly require OAuth 2.0 authentication.

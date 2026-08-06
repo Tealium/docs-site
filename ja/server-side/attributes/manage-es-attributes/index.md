@@ -3,7 +3,7 @@ title: イベント属性の管理
 description: この記事では、イベント属性の管理方法について説明します。
 url: https://docs.tealium.com/ja/server-side/attributes/manage-es-attributes/
 ---
-**Govern > Event Attributes** にアクセスして、イベント属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+**Transform > Event Attributes** にアクセスして、イベント属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
 
 ![](https://docs.tealium.com/images/server-side/ea-filter-es-attributes.png)
 

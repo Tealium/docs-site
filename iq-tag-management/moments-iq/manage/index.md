@@ -94,9 +94,10 @@ Configure the question and answers with the following settings:
 * **Answer Required**: Select `True` to require the visitor to enter or select an answer before submitting the experience.
 * **Redirect Opens Tab**: Select `True` to open a new tab when the visitor clicks an answer or experience with a **Redirect URL** set.
 * **Answers**: For **Radio**, **Checkbox**, and **Button** types, specify labels and optional **Redirect URLs** for each answer.
-  * Leave the **Redirect URL** empty if no redirection is needed for that answer.
-  If you enter a **Redirect URL** for any answer, the general **Redirect URL** setting is disabled.
-  * The **Text** type ignores the **Answer** field, and **Button** type uses only the first two answers and their **Redirect URLs**.
+  * Leave the **Redirect URL** empty if no redirection is needed for that answer. Per-answer **Redirect URLs** apply only when the general **Redirect URL** is empty.
+  * For **Checkbox** answers, per-answer **Redirect URLs** are ignored. Use the general **Redirect URL** to redirect visitors after a checkbox submission.
+  * For **Text** answers, the first answer is used as placeholder text in the input field. If provided, the first answer's **Redirect URL** is used after submission.
+  * **Button** type uses only the first two answers and their **Redirect URLs**.
   * Click **+ Add** to include more answers.
 * **Redirect URL**: The URL to redirect the visitor to when no **Redirect URLs** are set for individual answers and the primary button is clicked.
 * **Primary Button Text**: The text label for the primary button. The default value is `Submit`.

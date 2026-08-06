@@ -28,7 +28,7 @@ Google Ads のコンバージョンは、ユーザーが広告をクリックし
 このコネクタは以下のベンダー API を使用します：
 
 * API 名: Google Ads API
-* API バージョン: v18
+* API バージョン: v22
 * API エンドポイント: `https://googleads.googleapis.com/`
 * ドキュメント: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 

@@ -10,7 +10,6 @@ url: https://docs.tealium.com/client-side-tags/rakuten-advertising-tag/
 * Affiliate functionality is only available when **Allow Commission** is set to `True`.
 * Supports these E-Commerce extension parameters:
   * Order ID (`_corder`)
-  * Sub Total (`_csubtotal`)
   * Tax Amount (`_ctax`)
   * Currency (`_ccurrency`)
   * Promo Code (`_cpromo`)
@@ -30,11 +29,9 @@ After adding the tag, configure the following settings:
 * **Tracking Key**: Your site-specific tracking key issued by your Rakuten Marketing integration contact.
 * **Rakuten Affiliate Merchant ID**: A 4 or 5-digit merchant ID.
 * **Tax Rate**: Tax rate as a percentage value. For example, `20` for UK VAT of 20%.
-* **Rakuten Display Merchant ID**: * A 4-digit merchant ID.
-* **Rakuten Search Merchant ID**: Search Config rsMID (`rsMID`).
 * **Conversion Type**: The default value is `sale`, but can be set to anything.
-* **Discount Type**: The discount type for affiliate sales. The default value is `amount`, but can be set to `percentage`.
-* **Include Status**: Whether to include the order status in the tag. The default value is `true`.
+* **Discount Type**: The discount type for affiliate sales. The default value is `order`, but can be set to `item`.
+* **Include Status**: Whether to include the order status in the tag. The default value is `false`.
 
 ### Data mappings
 
@@ -47,7 +44,6 @@ The available categories are:
 |Variable| Description|
 |---| ---|
 |`trackingKey`|  <ul><li>Tracking Key</li></ul> |
-|`siteSection`|  <ul><li>Site Section</li></ul> |
 |`conversionType`|  <ul><li>Conversion Type</li></ul> |
 |`customerStatus`|  <ul><li>Customer Status</li></ul> |
 |`discountAmount`|  <ul><li>Discount Amount</li></ul> |
@@ -55,10 +51,11 @@ The available categories are:
 
 #### E-Commerce
 
+Array variables (`product_id`, `product_name`, `product_quantity`, `product_unit_price`, `product_sku`) are mapped into Rakuten line items. The Rakuten library then builds the `skulist`, `namelist`, `qlist`, `amtlist`, and other list-style payload fields from those line items.
+
 |Variable| Description|
 |---| ---|
 |`order_id`|  <ul><li>Order ID.</li><li>Overrides `_corder` .</li></ul> |
-|`order_subtotal`|  <ul><li>Sub Total.</li><li>Overrides `_csubtotal`.</li></ul> |
 |`order_tax`|  <ul><li>Tax Amount.</li><li>Overrides `_ctax`.</li></ul> |
 |`order_currency`|  <ul><li>Currency.</li><li>Overrides `_ccurrency`.</li></ul> |
 |`order_coupon_code`|  <ul><li>Promo Code.</li><li>Overrides `_cpromo`.</li></ul> |
@@ -100,24 +97,3 @@ The available categories are:
 |`affiliateConfig.centValues`|  <ul><li>Cent Values.</li><li>Values are `true` or `false`.</li></ul> |
 |`affiliateConfig.nonCentCurrencies`|  <ul><li>Non cent currencies.</li><li>Can accept an Array or a String containing a comma-separated list of currencies.</li></ul> |
 
-#### Display
-
-|Variable| Description|
-|---| ---|
-|`displayConfig.rdMID`|  <ul><li>rdMID</li></ul> |
-|`displayConfig.domain`|  <ul><li>Domain</li></ul> |
-|`displayConfig.tagType`|  <ul><li>Tag Type</li></ul> |
-|`displayConfig.includeStatus`|  <ul><li>Include Status</li></ul> |
-|`displayConfig.allowCommission`|  <ul><li>Allow Commission</li></ul> |
-|`displayConfig.removeTaxFromProducts`|  <ul><li>Remove Tax From Products</li><li>Values are `true` or `false`.</li></ul> |
-|`displayConfig.removeTaxFromDiscount`|  <ul><li>Remove Tax From Discount</li><li>Values are `true` or `false`.</li></ul> |
-|`displayConfig.taxRate`|  <ul><li>Tax Rate</li></ul> |
-
-#### Search
-
-|Variable| Description|
-|---| ---|
-|`searchConfig.rsMID`|  <ul><li>rsMID</li></ul> |
-|`searchConfig.conversionType`|  <ul><li>Conversion Type</li></ul> |
-|`searchConfig.accountID`|  <ul><li>Account ID</li></ul> |
-|`searchConfig.clickID`|  <ul><li>Click ID</li></ul> |

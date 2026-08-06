@@ -33,6 +33,7 @@ The following table summarizes the available settings:
 | [`noload`](#noload) | Disable all functionality. |
 | [`noview`](#noview) | Disable the automatic tracking call on initial page load. |
 | [`nocookie`](#nocookie) | Disable the `utag_main` cookie. |
+| [`noconsole`](#noconsole) | Suppress `utag.DB` console output. |
 | [`nonblocking_tags`](#nonblocking_tags) | Make all tags nonblocking to improve performance and Interaction to Next Paint (INP) scores in extreme cases. Default: `false`. |
 | [`path`](#path) | Specifies the publishing path. |
 | [`readywait`](#readywait) | Halt operations until the DOM-ready browser event. |
@@ -224,6 +225,15 @@ This option disables _all_ cookies from being stored by `utag.js`, including coo
 
 ```js
 window.utag_cfg_ovrd.nocookie = true
+```
+
+### `noconsole`
+
+**Suppress debug console output**  
+Prevents `utag.DB` debug messages from appearing in the browser console. Debug output is still written to the `utag.db_log` array. (Default: `false`)
+
+```js
+window.utag_cfg_ovrd.noconsole = true;
 ```
 
 ### `nonblocking_tags`

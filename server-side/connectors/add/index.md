@@ -103,6 +103,29 @@ The list of attributes is populated based on the **Source** you selected. For ex
 1. Click **Back** to modify, or click **Finish**.
 1. Save and Publish.
 
+### Connector metadata
+
+Connector metadata are mappable values that describe the connector context. They identify which connector, action, audience, or event feed triggered the action. They appear only in the mapping dropdown when configuring connector actions and are not available in visitor profiles or attribute management.
+
+For example, to send the audience name to a vendor API, map the **Audience Name** attribute instead of manually entering the audience name. If the audience is renamed, the attribute reflects the new name automatically.
+
+The following connector metadata attributes are available in the mapping dropdown:
+
+| Attribute | Available for | Description |
+|---|---|---|
+| `AUDIENCE_ID` | Visitor actions | ID of the audience that triggered the action |
+| `AUDIENCE_NAME` | Visitor actions | Name of the audience that triggered the action |
+| `VISITOR_AUDIENCE_IDS` | Visitor actions | IDs of all audiences the visitor currently belongs to (array) |
+| `VISITOR_AUDIENCE_NAMES` | Visitor actions | Names of all audiences the visitor currently belongs to (array) |
+| `EVENT_FEED_ID` | Event actions | ID of the event feed that triggered the action |
+| `EVENT_FEED_NAME` | Event actions | Name of the event feed that triggered the action |
+| `ACTION_ID` | All actions | ID of the connector action |
+| `ACTION_NAME` | All actions | Name of the connector action |
+| `CONNECTOR_ID` | All actions | ID of the connector |
+| `CONNECTOR_NAME` | All actions | Name of the connector |
+
+Only attributes that match the action's source type appear in the mapping dropdown.
+
 ### Copy mappings
 
 The **Copy Mappings** feature lets you copy data mappings to or from an existing connector action. This screen lets you select the action to copy to or from and select how to handle overwrites.

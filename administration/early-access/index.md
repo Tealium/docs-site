@@ -38,6 +38,21 @@ Get access to beta features through the Early Access program.
 
 
 
+![](https://docs.tealium.com/images/icons/icon-tag.svg)
+
+#### Tag Management
+
+* [Tag Monitoring](https://docs.tealium.com/tag-monitoring/)
+
+
+
+
+#### Predictive Intelligence
+
+* [Predictive Intelligence Discovery Program](https://docs.tealium.com/predictive-intelligence-discovery-program/)
+
+
+
 
 #### More Features
 

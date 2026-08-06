@@ -1,68 +1,73 @@
 ---
-title: Tealium feedback policy
-description: This document explains our feedback policy.
+title: Submit product feedback
+description: Submit product ideas, vote on existing requests, and track items on the Tealium roadmap through the Ideas Portal in the Resource Center.
 url: https://docs.tealium.com/administration/resources/feedback-policy/
 ---
-Use the Feedback module in the [Resource Center](https://docs.tealium.com/resource-center/) to submit product ideas, vote on ideas the product team is considering, and track items on the roadmap. This article explains how Tealium collects, reviews, and acts on product feedback.
+Use the **Feedback** module in the [Resource Center](https://docs.tealium.com/resource-center/) to submit product ideas, vote on ideas the product team is considering, and track items on the roadmap.
 
-## Our approach to product feedback
+## Submit a product idea
 
-We always invite feedback from our customers and partners to identify features, ideas, problems, and opportunities to build the best possible products and maximize value for you.
+![](https://docs.tealium.com/images/administration/product-feedback-resource-center.png)
 
-## Why give us product feedback
+1. Log into the [Tealium platform](https://my.tealiumiq.com/).
+1. Select **Resource Center** in the header.
+1. Select **Feedback**.
+1. Select **Give Feedback**.
+1. Describe the problem you're trying to solve and select an importance level: **Must have** or **Nice to have**.
+1. Select **Submit**.
 
-Your feedback plays a vital role in helping us understand how you're currently interacting with our products and where we can enhance your experience. By sharing your insights, you enable us to identify key areas for improvement and innovation, ensuring that our tools empower you to deliver even greater value to your customers.
-
-We offer several ways for you to share product feedback:
-
-* **Resource Center**: To access the Tealium Ideas Portal, select the **Feedback** option in the [Resource Center](https://docs.tealium.com/resource-center/). You can browse, vote on, and provide feedback on ideas that our product team is considering or actively developing. To share additional feedback, click **Give Feedback** in the upper-right corner.  
-* **Feedback Guides**: Look for the "i" badge in the breadcrumb of a page. These guides provide additional information as well as enable you to provide feedback on Tealium features.
-* **In-app Product Surveys**: Our team uses in-app surveys to gather targeted feedback on products, features, or user experiences.
-* **NPS Surveys**: You may receive an in-app Net Promoter Score (NPS) survey to measure overall satisfaction and loyalty. Unlike in-app product surveys, which focus on specific features, NPS surveys gather broader feedback. We encourage detailed responses to help improve your Tealium experience.
-
-## Tips for submitting your product ideas 
-
-Here are some tips for submitting helpful feedback to our Product Team: 
-
-* **Be Specific**: Clearly describe what you like, dislike, or want to see improved. Include examples or scenarios to illustrate your point.
-* **Focus on Value**: Explain how the feature or improvement would benefit your workflow or solve a problem for you.
-* **Be Constructive**: Offer actionable suggestions and frame your feedback in a way that encourages positive improvements.
 ![](https://docs.tealium.com/images/administration/product-feedback-form.png)
 
-## What happens after you submit an idea
+## View and vote on existing ideas
 
-No matter how you share your feedback&mdash;whether through our Ideas Portal, in-app polls, email, NPS surveys, or conversations&mdash;we centralize all input to provide context and deeper insights. This feedback is combined with platform engagement data to help us better understand how customers are using our tool.
+Browse the Ideas Portal to find existing ideas and cast your vote.
 
-Our Product team thoroughly reviews every piece of feedback. Once reviewed, feedback can be linked to an idea, which represents a potential solution we’d like customer input on. You can find these ideas in the Ideas Portal, accessible in the Resource Center. In the portal, customers can vote and comment on ideas, helping our Product team assess the demand for specific solutions.
+1. In the Resource Center, select **Feedback**.
+1. Browse or search for existing ideas.
+1. Select an idea to open it.
+1. Select a status to cast your vote: **Must have**, **Nice to have**, or **Not interested**.
+1. Optionally add a comment and select **Submit**.
 
-If we decide to move forward with developing an idea, it will appear in the On the Roadmap section of the Ideas Portal. Once a feature enhancement or new product is released, the associated idea will be moved to the Released section.
+![](https://docs.tealium.com/images/administration/product-feedback-vote.png)
 
-## Frequently Asked Questions
+You can change your vote at any time.
+
+## Other ways to share feedback
+
+* **Feedback Guides**: Look for the "i" badge in the breadcrumb of a page. These guides provide additional information and let you submit feedback on specific Tealium features.
+* **In-app product surveys**: Tealium uses in-app surveys to gather targeted feedback on specific products, features, or user experiences.
+* **NPS surveys**: You may receive an in-app Net Promoter Score (NPS) survey to measure overall satisfaction. These gather broader feedback than product surveys.
+
+## What happens after you submit
+
+The product team centralizes and reviews all feedback. After review, the team may link your feedback to an idea in the Ideas Portal.
+
+In the portal, you can vote and comment on ideas, helping the product team assess demand for specific solutions. Ideas move through the following statuses:
+
+* **Under Review**: The product team is reviewing the idea.
+* **Planned**: The product team has committed to the idea and is planning development.
+* **In Progress**: Development is underway.
+* **Early Access**: The feature is available to a limited set of customers.
+* **Released**: The feature or improvement has shipped.
+
+## Frequently asked questions
 
 #### When will the product team review my feedback?
 
-Our product team reviews feedback regularly to identify trends and opportunities for improvement. To help us take action, please provide clear and detailed feedback. If your feedback aligns with an idea we’re considering or actively developing, we may reach out for additional insights.
+The product team reviews feedback regularly to identify trends and opportunities. To help prioritize your feedback, provide clear and detailed descriptions. If your feedback aligns with an idea the team is considering or developing, the team may reach out for additional insights.
 
 #### How do I vote for or de-prioritize an idea?
 
-You can vote by selecting a status that best reflects your preference. The status options are the following:
-
-* Must have
-* Nice to have
-* Not interested
-
-You can change your vote at any time to reflect your evolving priorities. While voting helps our team gauge customer interest, final decisions also consider feasibility, strategic priorities, and technical limitations.
+Select a status that best reflects your preference: **Must have**, **Nice to have**, or **Not interested**. You can change your vote at any time.
 
 #### How soon can I expect my feedback to be implemented?
 
-Implementation timelines vary based on whether your feedback is linked to an idea and its alignment with our product roadmap. Our team reviews feedback regularly and may create new ideas based on common themes. If you believe your feedback aligns with an existing idea, you can add more details in your feedback submission or encourage others to submit similar feedback to increase visibility.
+Timelines vary based on alignment with the product roadmap, feasibility, and strategic priorities. The team reviews feedback regularly and may create new ideas based on common themes.
 
-#### How will I know if my feedback is being considered? 
+#### How will I know if my feedback is being considered?
 
-Currently, there is no automatic notification when feedback is linked to an idea. However, our team regularly reviews submissions and associates relevant feedback with existing ideas in the Ideas Portal. We recommend checking the portal periodically to see if a related idea has been created or updated. If an idea moves to **On the Roadmap**, it is actively being developed.
+You receive no automatic notification when the team links your feedback to an idea. Check the Ideas Portal periodically to see if a related idea has been created or updated. If an idea moves to **Planned** or **In Progress**, the product team is actively working on it.
 
-#### How do I escalate urgent feedback? 
+#### How do I escalate urgent feedback?
 
 For technical issues, contact [Tealium Support](https://docs.tealium.com/support/).
-
-Thank you for your feedback and support as we work together to build the best products for the most trusted customer experiences possible.

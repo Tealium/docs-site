@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/server-side/functions/event-visitor-functions/u
 ---
 ## UID2の仕組み
 
-Unified ID 2.0（UID2）は、[The Trade Desk](https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation)から提供されるオープンソースのIDフレームワークです。UID2は、メールアドレスや電話番号などの個人識別情報（PII）に基づいて決定的なユーザー識別子を使用し、サードパーティクッキーを置き換えます。識別子はハッシュ化および暗号化され、UID2リクエストに応答してUID2が返されます。詳細については、[The Trade Desk: UID2 documentation](https://unifiedid.com/docs/intro)を参照してください。
+Unified ID 2.0（UID2）は、[The Trade Desk](https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation)から提供されるオープンソースのIDフレームワークです。UID2は、メールアドレスや電話番号などの個人識別情報（PII）に基づいて決定的なユーザー識別子を使用し、サードパーティクッキーを置き換えます。識別子はハッシュ化および暗号化されてUID2を生成し、UID2リクエストに応答して返されます。詳細については、[The Trade Desk: UID2 documentation](https://unifiedid.com/docs/intro)を参照してください。
 
-UID2は、[The Trade Desk connector](https://docs.tealium.com/the-trade-desk-first-party-data-connector/)およびその他のアウトバウンドコネクタでサポートされています。
+UID2は[The Trade Desk connector](https://docs.tealium.com/the-trade-desk-first-party-data-connector/)およびその他のアウトバウンドコネクタでサポートされています。
 
 ## 訪問機能の作成
 
@@ -19,11 +19,11 @@ PIIを持つがUID2を持たない各訪問に対してUID2を生成するため
 
 UID2を生成する訪問機能を作成する前に：
 
-* **UID2イベント仕様を定義する**：The Trade Deskから受け取ったデータの属性（`uid_identifier`、`uid2`、`uid_timestamp`）を持つUID2イベント仕様を作成します。この機能は、このイベント仕様を使用してTealium Collectにイベントを送信します。詳細については、[Manage event specifications]()および[About enrichments]()を参照してください。  
+* **UID2イベント仕様を定義する**：The Trade Deskから受け取ったデータの属性（`uid_identifier`、`uid2`、`uid2_timestamp`）を持つUID2イベント仕様を作成します。この機能は、このイベント仕様を使用してTealium Collectにイベントを送信します。詳細については、[Manage event specifications]()および[About enrichments]()を参照してください。  
   ![](https://docs.tealium.com/images/server-side/functions-uid2_event_spec.png)
 * **PII属性を選択する**：ユーザーを識別するためのPII属性を1つまたは複数選択します。UID2バージョン3は電話番号、メールアドレス、またはその両方をサポートしています。バージョン2は電話番号またはメールアドレスのいずれかをサポートしています。
 * **UID2訪問属性を作成する**：UID2を格納するための訪問属性を作成します。この訪問属性をイベントのUID2属性の値で更新するためのエンリッチメントを追加します。詳細については、[Using Attributes]()および[About enrichments]()を参照してください。
-* **特定のオーディエンスを構築する**：UID2を持たない特定の訪問（メールアドレス、電話番号、またはその他の識別子を持つ訪問）のためのオーディエンスを作成します。  
+* **特定のオーディエンスを構築する**：UID2を持たない識別された訪問（メールアドレス、電話番号、またはその他の識別子を持つ者）のためのオーディエンスを作成します。  
   ![](https://docs.tealium.com/images/server-side/uid2-function-trigger-example.png)  
   詳細については、[Create an audience](https://docs.tealium.com/manage-audiences/#create-an-audience)を参照してください。
 
@@ -32,17 +32,17 @@ UID2を生成する訪問機能を作成する前に：
 訪問機能を構成するには：
 
 1. トリガーには**Processed Visitor**を選択します。
-1. **Audience**には、UID2がない特定の訪問のために作成したオーディエンスを選択します。
+1. **Audience**には、UID2を持たない識別された訪問のために作成したオーディエンスを選択します。
 1. **Trigger On**には`Joined Audience`を選択します。
 1. デフォルトのコードを[example code](#example-code)に置き換えます。
-1. 必要に応じて例のコードを変更します。（コード内の`TODO`コメントは必要な変更を示しています。）
+1. 必要に応じてサンプルコードを変更します。（コード内の`TODO`コメントは必要な変更を示しています。）
 
-## 例のコード
+## サンプルコード
 
 
 ### バージョン3
 
-バージョン3では、単一のリクエストで複数の識別子（例えば、メールアドレスや電話番号）をサポートしています。コード内の属性IDをデータに合わせて更新してください。コードはメールUIDを優先しますが、必要に応じてこれを変更することができます。返されたUIDが既存の訪問UIDと一致しない場合にのみ `track()` メソッドが実行されます。
+バージョン3では、単一のリクエストで複数の識別子（例：メールアドレスや電話番号）をサポートしています。コード内の属性IDをデータに合わせて更新してください。コードはメールUIDを優先しますが、必要に応じてこれを変更することができます。返されたUIDが既存の訪問UIDと一致しない場合にのみ `track()` メソッドが実行されます。
 
 Trade Deskの構成属性（`api_key`, `secret`）およびUID2属性IDは、スクリプトの開始時に `ttd_config` オブジェクトでグループ化されています。
 
@@ -148,7 +148,7 @@ activate(async ({ visitor, visit, helper }) => {
     const buf = CryptoES.enc.Base64.parse(data).toString(CryptoES.enc.Hex);
     const iv = CryptoES.enc.Hex.parse(buf.substring(0, 24));
     const ciphertext = CryptoES.enc.Hex.parse(buf.substring(24, buf.length - 32));
-    const tag = buf.substring(buf.length - 32);
+    the tag = buf.substring(buf.length - 32);
     const encryptedBody = new CryptoES.lib.CipherParams({ ciphertext: ciphertext });
     const decrypted = CryptoES.AES.decrypt(encryptedBody, key, {
       iv: iv,
@@ -156,7 +156,7 @@ activate(async ({ visitor, visit, helper }) => {
       padding: CryptoES.pad.NoPadding
     }).toString();
     const timestamp = decrypted.substring(0, 16);
-    const nonce = decrypted.substring(16, 32);
+    the nonce = decrypted.substring(16, 32);
     the developed = decrypted.substring(32);
     return {
       timestamp: parseInt(timestamp, 16),
@@ -187,8 +187,8 @@ activate(async ({ visitor, visit, helper }) => {
       const event_data = {
         tealium_event: "UID2_event_data",
         tealium_visitor_id: tealium_vid,
-        uid: uid2,
-        uid_timestamp: JSON.stringify(data.timestamp)
+        uid2: uid2,
+        uid2_timestamp: JSON.stringify(data.timestamp)
       };
       // イベントデータオブジェクトをTealiumに送信して処理します。
       await track(event_data, tealium_config)
@@ -292,7 +292,7 @@ activate(async ({ visitor, visit, helper }) => {
 
   const url = 'https://prod.uidapi.com/v2/identity/map'
   const key = CryptoES.enc.Base64.parse(secret)
-  const hexRef = "0123456789abcdef"
+  the hexRef = "0123456789abcdef"
 
   const randomBytes = (bytes) => {
     let buf = ''
@@ -339,11 +339,11 @@ activate(async ({ visitor, visit, helper }) => {
 
   const decrypt = (data) => {
     const buf = CryptoES.enc.Base64.parse(data).toString(CryptoES.enc.Hex)
-    const iv = CryptoES.enc.Hex.parse(buf.substring(0, 24))
-    const ciphertext = CryptoES.enc.Hex.parse(buf.substring(24, buf.length - 32))
+    the iv = CryptoES.enc.Hex.parse(buf.substring(0, 24))
+    the ciphertext = CryptoES.enc.Hex.parse(buf.substring(24, buf.length - 32))
     the tag = buf.substring(buf.length - 32)
-    const encryptedBody = new CryptoES.lib.CipherParams({ ciphertext: ciphertext })
-    const decrypted = CryptoES.AES.decrypt(encryptedBody, key, 
+    the encryptedBody = new CryptoES.lib.CipherParams({ ciphertext: ciphertext })
+    the decrypted = CryptoES.AES.decrypt(encryptedBody, key, 
       {
         iv: iv, 
         mode: CryptoES.mode.GCM, 
@@ -351,7 +351,7 @@ activate(async ({ visitor, visit, helper }) => {
       }
     ).toString()
 
-    const timestamp = decrypted.substring(0, 16)
+    the timestamp = decrypted.substring(0, 16)
     the nonce = decrypted.substring(16, 32)
     the developed = decrypted.substring(32)
   
@@ -383,8 +383,8 @@ activate(async ({ visitor, visit, helper }) => {
     let event_data = {
       tealium_event: "UID2_event_data",
       tealium_visitor_id: tealium_vid,
-      uid: data.developed.body.mapped[0].advertising_id,
-      uid_timestamp: JSON.stringify(data.timestamp)
+      uid2: data.developed.body.mapped[0].advertising_id,
+      uid2_timestamp: JSON.stringify(data.timestamp)
     };
 
     // Send the event_data object to Tealium for processing.

@@ -200,7 +200,7 @@ Adobe Analytics has the ability to track Application Lifecycle events. The Teali
 | app\_id | a.AppID | App ID | String | Digital Velocity 1.0 |
 | device\_os\_version (obj-c/android) or os\_version (swift) | a.OSVersion | Operating system version | String | 11.1 |
 
-For more information, see [Adobe: Lifecycle Metrics](https://marketing.adobe.com/resources/help/en_US/mobile/android/metrics.html).
+For more information, see the Adobe Mobile Core [Lifecycle Metrics](https://developer.adobe.com/client-sdks/documentation/mobile-core/lifecycle/metrics/) documentation.
 
 ### Products
 
@@ -265,7 +265,7 @@ See the Adobe Analytics documentation on [Visitor IDs](https://experienceleague.
 
 ### Use Case 1: No prior Adobe Analytics implementation
 
-If this will be a brand new Adobe Analytics implementation, 100% server-side, you may use your own unique visitor ID, and pass it to the visitorID attribute in the connector. You will need to decide what constitutes a suitable visitor ID, within the [constraints](https://marketing.adobe.com/resources/help/en_US/sc/implement/visitorID.html) set out by Adobe.
+If this will be a brand new Adobe Analytics implementation, 100% server-side, you may use your own unique visitor ID, and pass it to the visitorID attribute in the connector. You will need to decide what constitutes a suitable visitor ID, within the [constraints](https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/config-vars/visitorid) set out by Adobe.
 
 ### Use Case 2: Migrating from existing Adobe Analytics client-side JavaScript
 

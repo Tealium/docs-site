@@ -12,7 +12,7 @@ The Adobe Heartbeat tag lets you collect extensive data on how visitors interact
 * **jQuery**  
 Ensure that your site has jQuery installed on it. If you are not using jQuery, you can add and configure a new jQuery tag from the Tealium iQ tag Marketplace.
 * **Adobe Enterprise Cloud ID Service Tag**  
-[The Adobe Cloud Service](https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-overview.html) generates a unique ID for every visitor on your site and persists the ID across all their Enterprise Cloud Solutions, thus preventing duplicate counts. Add and configure the tag in your profile, if you have not already done and enable the bundle flag setting for the tag so that it can be bundled into `utag.js` on all pages.
+[The Adobe Cloud Service](https://experienceleague.adobe.com/en/docs/id-service/using/intro/overview) generates a unique ID for every visitor on your site and persists the ID across all their Enterprise Cloud Solutions, thus preventing duplicate counts. Add and configure the tag in your profile, if you have not already done and enable the bundle flag setting for the tag so that it can be bundled into `utag.js` on all pages.
 * [**AppMeasurement JavaScript Tag**](https://docs.tealium.com/client-side-tags/adobe-appmeasurement-for-js-tag/)  
 Add and configure the tag in the same profile and enable the bundle flag, if you have not done so already. This is required for JavaScript implementations. Bundling is only required for Tag version 1.6.3, as the prior versions already have the Enterprise Cloud Service bundled by default.  
 
@@ -129,7 +129,7 @@ The following tables lists the available event destinations:
 
 ### Video
 
-These destinations correspond to the [Adobe Video Measurement parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/video_params.html).
+These destinations correspond to the [Adobe Video Measurement parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/audio-video-parameters).
 
 |Destination Name| Description|
 |---| ---|
@@ -153,7 +153,7 @@ These destinations correspond to the [Adobe Video Measurement parameters](https:
 
 ### Chapter
 
-These destinations correspond to [Adobe Video Chapter Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/video_params.html).
+These destinations correspond to [Adobe Video Chapter Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/chapter-parameters).
 
 |Destination Name| Description|
 |---| ---|
@@ -165,7 +165,7 @@ These destinations correspond to [Adobe Video Chapter Parameters](https://market
 
 ### Ad
 
-These destinations correspond to [Adobe Video Ad Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/video_params.html).
+These destinations correspond to [Adobe Video Ad Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/ad-parameters).
 
 |Destination Name| Description|
 |---| ---|
@@ -180,7 +180,7 @@ These destinations correspond to [Adobe Video Ad Parameters](https://marketing.a
 
 ### Video Metadata
 
-These destinations correspond to [Adobe Standard Metadata Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/metadata_params.html).
+These destinations correspond to [Adobe Standard Metadata Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/audio-video-parameters).
 
 |Destination Name| Description|
 |---| ---|
@@ -203,7 +203,7 @@ These destinations correspond to [Adobe Standard Metadata Parameters](https://ma
 
 ### Ad Metadata
 
-These destinations correspond to [Adobe Standard Ad Metadata Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/metadata_params.html).
+These destinations correspond to [Adobe Standard Ad Metadata Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/ad-parameters).
 
 |Destination Name| Description|
 |---| ---|
@@ -263,9 +263,8 @@ The `s:asset:type` value equals `ad` and the `l:event:playhead` value is `8`. Th
 
 ## Vendor Documentation
 
-* [About Adobe Video Heartbeat](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/ios_2.0/)
-* [Video Heartbeat Library Configuration](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/c_vhl_setup-and-config.html)
-* [Nielsen appinfo Parameters](https://marketing.adobe.com/resources/help/en_US/dtm/nielsen.html)
-* [Video Measurement Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/ios_2.0/c_vhl_ios_video_params.html)
-* [Metadata Parameters](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/hbvideo/ios_2.0/c_vhl_stand-metadata_params_ios.html)
-* [Video Player Event](https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/video/video_js_events.html)
+* [About Adobe Video Heartbeat](https://experienceleague.adobe.com/en/docs/media-analytics/using/media-overview)
+* [Video Heartbeat Library Configuration](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/overview)
+* [Video Measurement Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/audio-video-parameters)
+* [Metadata Parameters](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/audio-video-parameters)
+* [Video Player Event](https://experienceleague.adobe.com/en/docs/media-analytics/using/implementation/variables/overview)

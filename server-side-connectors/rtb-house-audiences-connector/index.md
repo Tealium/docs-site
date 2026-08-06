@@ -3,6 +3,8 @@ title: RTB House Audiences Connector Setup Guide
 description: Use the RTB House Audiences connector to deliver audience membership changes to an RTB House-managed Google Cloud Storage bucket in JSONL format.
 url: https://docs.tealium.com/server-side-connectors/rtb-house-audiences-connector/
 ---
+
+
 ## API information
 
 This connector uses the following vendor API:

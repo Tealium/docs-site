@@ -19,7 +19,7 @@ If you do not see the option to toggle a partner integration, contact your Teali
 
 
 <blockquote>
-The Facebook Pixel tag automatically hashes user data. This functionality cannot be changed. If you are converting Facebook Pixel tag data or other data that is already hashed, enable the **User Data is already hashed** option to avoid hashing the data twice.
+The Facebook Pixel tag automatically hashes user data. If you are converting Facebook Pixel tag values or other pre-hashed values, map them to the `Already SHA256 Hashed` variants of those parameters to avoid hashing them twice.
 </blockquote>
 
 
@@ -144,6 +144,15 @@ The connector automatically maps the following parameters from the e-commerce ex
 
 To prevent the connector from automatically sending these parameters to the vendor, enable **Disable Automapping** by setting it to `true`.
 
+## Hashing user data
+
+Each hashable identifier field has two mapping targets:
+
+* **Apply SHA256 Hash**: Use when the value is plaintext. The connector normalizes and hashes the value using SHA-256 before sending it to Meta.
+* **Already SHA256 Hashed**: Use when the value has already been normalized and hashed upstream, for example by Meta's ParamBuilder SDK or your own hashing pipeline. The connector forwards the value unmodified.
+
+Do not map both variants for the same field. If both are somehow present (for example, after restoring an older profile version), the **Already SHA256 Hashed** value takes precedence.
+
 ## Actions
 
 | Action Name | AudienceStream | EventStream |
@@ -162,6 +171,12 @@ This section describes how to set up parameters and options for each action.
 
 For **User Data** parameters, the following table notes the level of importance for some parameters. The importance level describes the parameter's influence on your event match quality. For example, **Email (em)** has an importance level of **Highest** while **Phone Number (ph)** has an importance level of **High**.
 
+
+<blockquote>
+If you configured this action before the per-field hashing parameters were introduced, your action is automatically migrated. Actions that had **User Data is already hashed** enabled are migrated to the corresponding `Already SHA256 Hashed` parameters. All other actions are migrated to the `Apply SHA256 Hash` parameters. Outbound payloads are unchanged after migration.
+</blockquote>
+
+
 | Parameter   | Description                              |
 |:----------------|:---------------------------------------------|
 | Event Source URL | The browser URL where the event happened. This parameter is required if the **Action Source** is set to `website`. <ul><li>**EventStream** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the attribute Current URL in EventStream.</li><li>**AudienceStream** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the **Last Event URL** attribute in AudienceStream.</li></ul>                                                       |
@@ -170,33 +185,44 @@ For **User Data** parameters, the following table notes the level of importance 
 | Event Name   | (Required) A Facebook pixel standard or custom event name. |
 | Debugging Level | Specifies the trace level for the event.  <ul><li>`1` for Error</li><li>`2` for Info</li><li>`3` for Debug</li></ul></li></ul>If you use Trace to verify hashing of data, the data shown at the top of Trace, such as `user_data - EMAIL`, is the data that came into the connector, not the data sent to Facebook. The data sent to Facebook is shown in the **Request Body Section** of Trace. |
 | Action Source |(Required) This field specifies where your conversions occurred. Valid action sources are:  <ul><li>`email`</li><li>`website`</li><li>`app`</li><li>`phone_call`</li><li>`chat`</li><li>`physical_store`</li><li>`system_generated`</li><li>`other`</li></ul>   |
-| Dataset ID Override   | This string value can be used to override the value used for the initial connector configuration. If not provided, the Dataset ID from the connector configuration is used.  |
+| Dataset ID Override   | Use this string to override the Dataset ID from the connector configuration. If not provided, the Dataset ID from the connector configuration is used.  |
 | Data Processing Options Country | Map the country code associated with the user event. This parameter is required if **Data Processing Options** is mapped to `LDU`.  Accepted code values:  <ul><li>`1` for the United States of America</li><li>`0` to request country to be geolocated by Facebook</li></ul>  Geolocation also requires mapping the **Client IP Address** attribute.   |
 | Event ID   |  An ID used by Facebook to de-duplicate the same event sent from both server and browser. Verify that this value is a unique ID to one pair of events sent from browser and server.  |
 | Event Time  | A Unix timestamp in seconds indicating when the actual event occurred. The connector converts a mapped date attribute to seconds and, if the attribute is absent, auto-populates the event time.     |
-| Data Processing Options State   | This parameter is required if **Data Processing Options** is mapped to `LDU`. Map the state code associated with the user event. Accepted code values: <ul><li>`0` — Meta-performed geolocation (requires Client IP Address)</li><li>`1000` — California</li><li>`1001` — Colorado</li><li>`1002` — Connecticut</li><li>`1003` — Florida</li><li>`1004` — Oregon</li><li>`1005` — Texas</li><li>`1006` — Montana</li><li>`1007` — Delaware</li><li>`1008` — Nebraska</li><li>`1009` — New Hampshire</li><li>`1010` — New Jersey</li><li>`1011` — Minnesota</li><li>`1012` — Maryland</li><li>`1013` — Rhode Island</li></ul> Geolocation (`0`) requires mapping the **Client IP Address** attribute. For offline events where no Client IP Address is available, use an explicit state code (`1000`–`1013`).   |
+| Data Processing Options State   | This parameter is required if **Data Processing Options** is mapped to `LDU`. Map the state code associated with the user event. Accepted code values: <ul><li>`0`: Meta-performed geolocation (requires Client IP Address)</li><li>`1000`: California</li><li>`1001`: Colorado</li><li>`1002`: Connecticut</li><li>`1003`: Florida</li><li>`1004`: Oregon</li><li>`1005`: Texas</li><li>`1006`: Montana</li><li>`1007`: Delaware</li><li>`1008`: Nebraska</li><li>`1009`: New Hampshire</li><li>`1010`: New Jersey</li><li>`1011`: Minnesota</li><li>`1012`: Maryland</li><li>`1013`: Rhode Island</li></ul> Geolocation (`0`) requires mapping the **Client IP Address** attribute. For offline events where no Client IP Address is available, use an explicit state code (`1000`–`1013`).   |
 | Opt Out  |  A boolean indicating to not use this event for ads delivery optimization. Set this value to `true` to only use the event for attribution. |
 | Zip (`zip`) |  Postal zip code. This parameter accepts strings or an array of strings. For example, `90120` or `["90120", "90121"]`. **Importance: Medium**  |
 | FB Login ID  |  ID issued by Facebook when a person first logs into an instance of an app. This parameter is also known as the [App-Scoped ID](https://developers.facebook.com/docs/development/support#app-scoped-ids). Do not hash this value.   |
-| Partner ID  | The partner's ID. This parameter can be used by third-party ID providers such as Liveramp and TradeDesk as an additional user identifier. Do not hash this value.  |
-| Partner Name  |  The partner's name. This parameter can be used by third-party ID providers such as Liveramp and TradeDesk as an additional user identifier. Do not hash this value.  |
+| Partner ID  | The partner's ID. Third-party ID providers such as Liveramp and TradeDesk can use this parameter as an additional user identifier. Do not hash this value.  |
+| Partner Name  |  The partner's name. Third-party ID providers such as Liveramp and TradeDesk can use this parameter as an additional user identifier. Do not hash this value.  |
 | Client User Agent (`ua`)    | This parameter is required if the **Action Source** is set to website. The user agent for the browser corresponding to the event. Do not hash this value.  <ul><li>**EventStream** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the User Agent attribute in EventStream.</li><li>**AudienceStream** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the visitor's last User Agent in AudienceStream.</li></ul> **Importance: High** |
 | Client IP Address (`ip`)          |   The IP address of the browser corresponding to the event. Tealium can capture the client IP address, but it is not available by default. For more information, see [Enabling IP Address Collection in Server-Side Tealium Products](https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products). Do not hash this value. **Importance: High**    |
-| Phone (`ph`)   | A phone number. Include only digits with country code, area code, and number. This parameter accepts strings or an array of strings. For example, `16505551212` or `["16505551212", "16505551213"]`. **Importance: High**    |
-| State (`st`)  |  US State abbreviation. This parameter accepts strings or an array of strings. For example, `ca` or `["ca", "tx"]`. **Importance: Medium**   |
-| Email (`em`)| Email address. This parameter accepts strings or an array of strings. For example, `user@example.com` or `["user@example.com", "user2@example.com"]`. **Importance: Highest**    |
-| Last Name (`ln`) |  Last name in lowercase. This parameter accepts strings or an array of strings. For example, `smith` or `["smith", "jones"]`. **Importance: Medium**   |
-| First Name (`fn`)  |  First name in lowercase. This parameter accepts strings or an array of strings. For example, `joe` or `["joe", "jane"]`. **Importance: Medium**   |
+| Email Apply SHA256 Hash | Email address in plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `user@example.com` or `["user@example.com", "user2@example.com"]`. **Importance: Highest** |
+| Email Already SHA256 Hashed | Email address that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Highest** |
+| Phone Apply SHA256 Hash | Phone number in plaintext. Include only digits with country code, area code, and number. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `16505551212` or `["16505551212", "16505551213"]`. **Importance: High** |
+| Phone Already SHA256 Hashed | Phone number that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: High** |
+| First Name Apply SHA256 Hash | First name in lowercase plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `joe` or `["joe", "jane"]`. **Importance: Medium** |
+| First Name Already SHA256 Hashed | First name that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| Last Name Apply SHA256 Hash | Last name in lowercase plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `smith` or `["smith", "jones"]`. **Importance: Medium** |
+| Last Name Already SHA256 Hashed | Last name that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| City Apply SHA256 Hash | City in lowercase without spaces or punctuation, in plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `menlopark` or `["menlopark", "sandiego"]`. **Importance: Medium** |
+| City Already SHA256 Hashed | City that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| State Apply SHA256 Hash | US state abbreviation in lowercase plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `ca` or `["ca", "tx"]`. **Importance: Medium** |
+| State Already SHA256 Hashed | State that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| ZIP/Postal Apply SHA256 Hash | Postal code in plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `90120` or `["90120", "90121"]`. **Importance: Medium** |
+| ZIP/Postal Already SHA256 Hashed | Postal code that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| Country Apply SHA256 Hash | Two-letter country code in lowercase plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `us` or `["us", "ca"]`. **Importance: Medium** |
+| Country Already SHA256 Hashed | Country code that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Medium** |
+| Date of Birth Apply SHA256 Hash | Date of birth in plaintext, given as year, month, and day. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `19971226` for December 26, 1997. |
+| Date of Birth Already SHA256 Hashed | Date of birth that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. |
+| Gender Apply SHA256 Hash | Gender as a lowercase single-letter value (`f` or `m`) in plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. |
+| Gender Already SHA256 Hashed | Gender that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. |
+| External ID Apply SHA256 Hash | Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs, in plaintext. The connector normalizes and hashes this value before sending. Map array type attributes to add multiple IDs. |
+| External ID Already SHA256 Hashed | Any unique ID from the advertiser that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. Map array type attributes to add multiple IDs. |
 | Lead ID |  ID associated with a lead generated by Facebook [Lead Ads](https://developers.facebook.com/docs/marketing-api/guides/lead-ads). Do not hash this value.  |
-| City (`ct`)  |  City in lowercase without spaces or punctuation. This parameter accepts strings or an array of strings. For example, `menlopark` or `["menlopark", "sandiego"]`. **Importance: Medium** |
-| Country (`country`)  | Two-letter country code in lowercase. This parameter accepts strings or an array of strings. For example, `us` or `["us", "ca"]`. **Importance: Medium**   |
-| External ID  |  Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs. Map array type attributes to add multiple IDs. This mapping is automatically populated with the Tealium Visitor ID unless automatic mapping is disabled.  |
-| Browser ID (`fpb`)   |  The browser ID value stored in Facebook's `_fbp` cookie. This parameter is automatically mapped unless you disable automatic mapping. Do not hash this value. **Importance: High**   |
-| Subscription ID |  The subscription ID for the user in this transaction. This is similar to the order ID for an individual product. Do not hash this value.  For example, `anid1234`.  |
-| Gender   | Lowercase single-letter value for gender.  This parameter accepts strings or an array of strings. For example, `["<first value>", "<second value>"]`. Options are:  <ul><li>`f` for female</li><li>`m` for male</li></ul>    |
-| Date of Birth   |  Date of birth given as year, month, and day.  This parameter accepts strings or an array of strings. For example, `19971226` for December 26, 1997 or `["19971226", "19971227"]`.  |
-| Click ID (`fbc`)  | The Facebook click ID value stored in Facebook's `_fbc` cookie. This parameter is automatically mapped unless automatic mapping is disabled. Do not hash this value. Facebook recommends storing and persisting the `fbclid` cookie. **Importance: High**   |
-| User Data is already hashed   | For web events, the Facebook Conversions connector uses the Facebook Pixel tag, which automatically hashes user data. This pixel functionality cannot be changed. Select this option to avoid hashing the data again. However, if the data is coming unhashed from other sources, such as Tealium Collect, do not select this option. |
+| Browser ID (`fpb`)   |  The browser ID value stored in Facebook's `_fbp` cookie. This parameter is automatically mapped unless you disable identifier automapping. Do not hash this value. **Importance: High**   |
+| Click ID (`fbc`)  | The Facebook click ID value stored in Facebook's `_fbc` cookie. This parameter is automatically mapped unless identifier automapping is disabled. Do not hash this value. Facebook recommends storing and persisting the `fbclid` cookie. **Importance: High**   |
+| Subscription ID |  The subscription ID for the user in this transaction. This field is similar to the order ID for an individual product. Do not hash this value.  For example, `anid1234`.  |
 | Currency  |  The currency for the value specified if applicable. Currency must be a valid ISO 4217 three-digit currency code.  The connector automatically maps this parameter when it appears in the event. For example, `usd`. |
 | Content Name  |  The name of the page or product associated with the event. The connector automatically maps this parameter when it appears in the event. For example, `lettuce`.|
 | Number of Items   |  Use only with **InitiateCheckout** events. The number of items that a user tries to buy during checkout. For example, `4`.   |
@@ -250,30 +276,46 @@ This Facebook action has limited availability. Contact your Facebook representat
 | Parameter | Description |
 | --- | --- |
 | Event Name | (Required) A Facebook pixel standard event name.|
-| Event Time | A Unix timestamp, in seconds, indicating when the actual event occurred. The connector will convert a mapped date attribute to seconds and will auto-populate the event time if absent. |
-| Event Source Url | The browser URL where the event happened. Required if **Action Source** is set to `website`. If **Action Source** is set to `website` and this field is not mapped, in EventStream it will be auto-mapped to the attribute `Current URL`. If **Action Source** is set to `website` and this field is not mapped, in AudienceStream it will be auto-mapped to the attribute `Last Event URL`. |
-| Opt Out | A flag that indicates we should not use this event for ads delivery optimization. Set this to `true` to use the event for attribution only. |
+| Event Time | A Unix timestamp, in seconds, indicating when the actual event occurred. The connector converts a mapped date attribute to seconds and auto-populates the event time if the attribute is absent. |
+| Event Source Url | The browser URL where the event happened. Required if **Action Source** is set to `website`. If **Action Source** is set to `website` and this field is not mapped, in EventStream it is auto-mapped to the attribute `Current URL`. If **Action Source** is set to `website` and this field is not mapped, in AudienceStream it is auto-mapped to the attribute `Last Event URL`. |
+| Opt Out | A flag that indicates this event should not be used for ads delivery optimization. Set this to `true` to use the event for attribution only. |
 | Event ID | An ID used by Facebook to de-duplicate the same event sent from both server and browser. Verify that this is an ID unique to one pair of events sent from browser and server. |
 | Debugging Level |  Set the `trace` level for the event. Accepted values: `1` for Error, `2` for Info, or `3` for Debug. |
 | Test Event Code |  Send the test ID as a `test_event_code` parameter to start seeing event activity appear in the Test Events window. Events sent with `test_event_code` are not dropped. They flow into Events Manager and are used for targeting and ads measurement purposes.|
-| Pixel/Dataset ID Override | If not provided, then the Pixel ID from the connector configuration is used. |
+| Pixel/Dataset ID Override | If not provided, the Pixel ID from the connector configuration is used. |
 
 #### User Data
 
- All user data parameters accept strings or an array of strings. For example, `["<first value>", "<second value>"]`.
+All user data parameters accept strings or an array of strings.
+
+
+<blockquote>
+If you configured this action before the per-field hashing parameters were introduced, your action is automatically migrated. Actions that had **User Data is already hashed** enabled are migrated to the corresponding `Already SHA256 Hashed` parameters. All other actions are migrated to the `Apply SHA256 Hash` parameters. Outbound payloads are unchanged after migration.
+</blockquote>
+
 
 | Parameter | Description |
 | --- | --- |
-| Email | Unhashed lowercase or hashed SHA-256. |
-| First Name | A first name in lowercase. |
-| Last Name | A last name in lowercase. |
-| Phone | A phone number. Digits only including country code and area code. For example, `16505554444`. |
-| Gender | Single lowercase letter, `f` or `m`, if unknown, leave blank. |
-| Date of Birth | A date of birth given as year, month, and day. For example, `19971226` for December 26, 1997. |
-| City | A city in lower case without spaces or punctuation. For example, `menlopark`. |
-| State or Province | A two-letter state code in lowercase. For example, `ca`. |
-| Zip or Postal Code | A five-digit zip code. For example, `94035`. |
-| Country | A two-letter country code in lowercase. For example, `us`.  |
+| Email Apply SHA256 Hash | Email address in lowercase plaintext. The connector normalizes and hashes this value before sending. |
+| Email Already SHA256 Hashed | Email address that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Phone Apply SHA256 Hash | Phone number in plaintext. Digits only including country code and area code. For example, `16505554444`. The connector normalizes and hashes this value before sending. |
+| Phone Already SHA256 Hashed | Phone number that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| First Name Apply SHA256 Hash | First name in lowercase plaintext. The connector normalizes and hashes this value before sending. |
+| First Name Already SHA256 Hashed | First name that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Last Name Apply SHA256 Hash | Last name in lowercase plaintext. The connector normalizes and hashes this value before sending. |
+| Last Name Already SHA256 Hashed | Last name that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| City Apply SHA256 Hash | City in lowercase without spaces or punctuation, in plaintext. For example, `menlopark`. The connector normalizes and hashes this value before sending. |
+| City Already SHA256 Hashed | City that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| State or Province Apply SHA256 Hash | Two-letter state code in lowercase plaintext. For example, `ca`. The connector normalizes and hashes this value before sending. |
+| State or Province Already SHA256 Hashed | State or province that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Zip or Postal Code Apply SHA256 Hash | Postal code in plaintext. For example, `94035`. The connector normalizes and hashes this value before sending. |
+| Zip or Postal Code Already SHA256 Hashed | Postal code that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Country Apply SHA256 Hash | Two-letter country code in lowercase plaintext. For example, `us`. The connector normalizes and hashes this value before sending. |
+| Country Already SHA256 Hashed | Country code that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Date of Birth Apply SHA256 Hash | Date of birth in plaintext, given as year, month, and day. For example, `19971226` for December 26, 1997. The connector normalizes and hashes this value before sending. |
+| Date of Birth Already SHA256 Hashed | Date of birth that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
+| Gender Apply SHA256 Hash | Gender as a lowercase single-letter value (`f` or `m`) in plaintext. The connector normalizes and hashes this value before sending. |
+| Gender Already SHA256 Hashed | Gender that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. |
 | Advanced Measurement Table | The data table for Advanced Measurement API. |
 
 #### Custom Data
@@ -282,11 +324,11 @@ Map custom data either as plain text values or using a JSON template by referenc
 
 | Parameter | Description |
 | --- | --- |
-| Value | A numeric value associated with this event. This could be a monetary value or a value in some other metric: `142.54`. The connector automatically maps this parameter when it appears in the event.|
+| Value | A numeric value associated with this event, such as a monetary value or a value in another metric. For example, `142.54`. The connector automatically maps this parameter when it appears in the event. |
 | Currency | The currency for the value specified, if applicable. Currency must be a valid ISO 4217 three digit currency code. For example, `usd`. The connector automatically maps this parameter when it appears in the event. |
 | Content Name | The name of the page or product associated with the event. The connector automatically maps this parameter when it appears in the event. For example, `lettuce`. |
 | Content Category | The category of the content associated with the event. The connector automatically maps this parameter when it appears in the event. For example, `grocery`. |
-| Content IDs | <ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example, `[ABC123, XYZ789]`.</li> <li>If a non-array event attribute is provided, it will be converted into a single-item array.</li> <li>If <b>Content Type</b> is `product`, this mapped value must be a non-array event attribute or single-element array.</li><li>The connector automatically maps this parameter when it appears in the event.</li></ul> |
+| Content IDs | <ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example, `[ABC123, XYZ789]`.</li> <li>If a non-array event attribute is provided, the connector converts it into a single-item array.</li> <li>If <b>Content Type</b> is `product`, this mapped value must be a non-array event attribute or single-element array.</li><li>The connector automatically maps this parameter when it appears in the event.</li></ul> |
 | Content Type | <ul><li>Allowed values are `product` or `product_group`.</li> <li>Set to `product` if the keys you send in **Content IDs** or **Content Product** represent products.</li> <li>Set to `product_group` if the keys you send in **Content IDs** represent product groups. </li></ul> |
 | Order ID | The order ID for this transaction. The connector automatically maps this parameter when it appears in the event. For example, `order1234`. |
 | Predicted Lifetime Value | The predicted lifetime value of a conversion event. For example, `432.12`. |
@@ -332,7 +374,7 @@ Required for app events.
 | Storage Size (GB) | The external storage size in GB. For example, `13`. |
 | Free Storage (GB) | The free space on external storage in GB. For example, `8`. |
 | Device Timezone | The device timezone. For example, `USA/New York`. |
-| Campaign IDs | An encrypted string and non-user metadata appended to the outbound URL (For example, `ad_destination_url`) or deep link (for App Aggregated Event Manager) when a user clicked on a link from Facebook. |
+| Campaign IDs | An encrypted string and non-user metadata appended to the outbound URL (For example, `ad_destination_url`) or deep link (for App Aggregated Event Manager) when a user clicks a link from Facebook. |
 | Install Referrer | Third-party install referrer, currently available for Android only. For more information, see [Google Analytics (Android) > Campaign Measurement](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA). |
 | Installer Package | Used internally by the Android SDKs. |
 | Url Schemes (Array) | Used internally by the iOS and Android SDKs. |

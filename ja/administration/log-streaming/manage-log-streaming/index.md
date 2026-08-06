@@ -5,8 +5,8 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 ---
 ## ログストリーミングを有効にする
 
-1. **Server-Side Settings > Log Streaming**に移動します。
-1. **Enable Log Streaming**をオンにします。
+1. **サーバーサイド構成 > ログストリーミング**に移動します。
+1. **ログストリーミングを有効にする**をオンにします。
 1. プロファイルを保存して公開します。
 
 ## 送信先を作成する
@@ -19,17 +19,17 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 
 送信先を作成するには：
 
-1. 管理メニューで**Manage Log Streaming**をクリックします。
-1. **+ New Destination**をクリックします。
-1. コネクタを選択して**Next**をクリックします。
-1. **Status**をオンにして送信先を有効にします。
-1. 送信先の**Name**を入力します。
-1. （オプション）送信先の説明として**Notes**を入力します。
+1. 管理メニューで**ログストリーミングの管理**をクリックします。
+1. **+ 新しい送信先**をクリックします。
+1. コネクタを選択して**次へ**をクリックします。
+1. **ステータス**をオンにして送信先を有効にします。
+1. 送信先の**名前**を入力します。
+1. （オプション）送信先の説明として**ノート**を入力します。
 1. 認証と接続構成を構成します。必要なフィールドは選択したコネクタによって異なります。
-1. **Test Connection**をクリックして接続を確認します。
-1. **Done**をクリックします。
+1. **接続テスト**をクリックして接続性を確認します。
+1. **完了**をクリックします。
 
-各送信先には独自の構成要件があります。必要なフィールドとサポートされているパラメータについては、コネクタのドキュメントを参照してください。利用可能なコネクタのリストについては、[Available destination connectors](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)を参照してください。
+各送信先には独自の構成要件があります。必要なフィールドとサポートされているパラメータについては、コネクタのドキュメントを参照してください。利用可能なコネクタのリストについては、[利用可能な送信先コネクタ](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)を参照してください。
 
 ## ログソースを作成する
 
@@ -42,40 +42,40 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 ログソースを作成するには：
 
 1. 次のいずれかを使用してログソースダイアログを開きます：
-   * **Manage Log Streaming**テーブルから、送信先行で**+ New Source**をクリックします。
-   * 送信先を選択し、**+ New Source**をクリックします。
+   * **ログストリーミングの管理**テーブルから、送信先行で**+ 新しいソース**をクリックします。
+   * 送信先を選択し、**+ 新しいソース**をクリックします。
 
-1. **New Log Source**ダイアログで：
-   1. **Log Source Name**を入力します。
-   1. **Log Streaming Scope**を選択します：
-      * **Send Entire Log Event**：ペイロードのすべてのログ属性を送信します。
-      * **Send Log Event**：ペイロードのマップされた属性のみを送信します。
+1. **新しいログソース**ダイアログで：
+   1. **ログソース名**を入力します。
+   1. **ログストリーミングの範囲**を選択します：
+      * **全ログイベントを送信**：ペイロード内のすべてのログ属性を送信します。
+      * **ログイベントを送信**：ペイロード内のマップされた属性のみを送信します。
       
-      利用可能なオプションが一つのみの場合、それがデフォルトで選択されます。詳細については、[Available destination connectors](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)を参照してください。
-   1. **Log Source Type**は**Connector Errors**に構成されます。
+      利用可能なオプションが一つのみの場合、それがデフォルトで選択されます。詳細については、[利用可能な送信先コネクタ](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)を参照してください。
+   1. **ログソースタイプ**は**コネクタエラー**に構成されます。
    1. 右側のサンプルペイロードを確認して、利用可能なフィールドを理解します。
-   1. **Continue**をクリックします。
+   1. **続ける**をクリックします。
 
 1. 監視するコネクタを選択します：
    1. リストから一つ以上のコネクタを選択します。
-   1. ログに記録する内容を絞り込むには、コネクタで**Select Action Logs**をクリックします。
+   1. ログされる内容を絞り込むには、コネクタの**アクションログを選択**をクリックします。
 
-1. アクションレベルのログ記録を構成します（オプション）：
-   1. **Select Actions to Log**ダイアログで、**Log Streaming Mode**を選択します：
-      * **Send All**（コネクタレベルのログ記録）
+1. アクションレベルのログ構成（オプション）：
+   1. **ログアクションを選択**ダイアログで、**ログストリーミングモード**を選択します：
+      * **すべて送信**（コネクタレベルのログ）
         コネクタのすべてのアクションのエラーログを送信します。後で追加されたアクションも含まれます。
-      * **Send Selected Actions**（アクションレベルのログ記録）
-        選択したアクションのみのログを送信します。
-   1. **Send Selected Actions**を使用する場合、監視するアクションを選択します。
-   1. **Done**をクリックします。
+      * **選択したアクションを送信**（アクションレベルのログ）
+        選択したアクションのログのみを送信します。
+   1. **選択したアクションを送信**を使用する場合、監視するアクションを選択します。
+   1. **完了**をクリックします。
 
-1. コネクタの選択を保存するために**Done**をクリックします。
+1. コネクタの選択を保存するために**完了**をクリックします。
 
 ## イベント属性をベンダーパラメータにマッピングする
 
-ログソースを構成した後、Tealiumのログ属性を送信先システムの必要なパラメータにマッピングします。ログソースの**Settings**タブで行います。
+ログソースを構成した後、Tealiumのログ属性を送信先システムで必要とされるパラメータにマッピングします。ログソースの**構成**タブで行います。
 
-利用可能なベンダーパラメータについての情報は、[destination connector and action](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)および[connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)のドキュメントを参照してください。
+利用可能なベンダーパラメータについての情報は、[送信先コネクタとアクション](https://docs.tealium.com/about-log-streaming/#available-destination-connectors)および[コネクタログパラメータ](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)のドキュメントを参照してください。
 
 ### マッピングの仕組み
 
@@ -83,24 +83,24 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 
 マッピングには二つのステップがあります：
 
-1. **イベント属性をエンリッチメントを使用して作成する**
+1. **イベント属性を使用してエンリッチメントを作成する**
 
    送信先に送りたい各ログフィールドに対して文字列イベント属性を作成します。その属性にログパラメータを値として持つ文字列構成エンリッチメントを追加します。二重中括弧を使用します。
 
-   例えば、重大度レベルをマッピング可能にするために：
+   例えば、重要度レベルをマッピング可能にするために：
    
    * `dd_severity`という名前の文字列イベント属性を作成します。
    * 値として`{{severityText}}`を持つ文字列構成エンリッチメントを追加します。
 
    配信時に、エンリッチメントはログレコードから値を抽出してイベント属性に書き込みます。
 
-   利用可能なログパラメータの完全なリストについては、[Connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)を参照してください。
+   利用可能なログパラメータの完全なリストについては、[コネクタログパラメータ](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)を参照してください。
 
 1. **イベント属性をベンダーパラメータにマッピングする**
 
    ログソースの構成で、イベント属性を適切なベンダーパラメータにマッピングします。利用可能なパラメータは使用している送信先コネクタに依存します。
 
-   例えば、Datadogの**Send Log Event**ログソース構成で、イベント属性`dd_severity`をDatadogの**Severity**パラメータにマッピングします。
+   例えば、Datadogの**ログイベントを送信**ログソース構成で、イベント属性`dd_severity`をDatadogの**重要度**パラメータにマッピングします。
 
 ### マッピング例（Datadog）
 
@@ -113,7 +113,7 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 | `dd_content` | `{{result.failure.error.0.message}}` |
 | `dd_severity` | `{{severityText}}` |
 
-その後、これらのイベント属性をログソースの**Settings**タブでベンダーパラメータにマッピングします：
+その後、これらのイベント属性をログソースの**構成**タブでベンダーパラメータにマッピングします：
 
 | イベント属性 | ベンダーパラメータ |
 | --- | --- |
@@ -130,7 +130,7 @@ url: https://docs.tealium.com/ja/administration/log-streaming/manage-log-streami
 
 ログソースビューのサンプルペイロードを使用して、参照しているフィールドが存在し、期待される値を含んでいることを確認します。
 
-完全なパラメータ定義については、[Connector log parameters](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)を参照してください。
+完全なパラメータ定義については、[コネクタログパラメータ](https://docs.tealium.com/connector-error-logging/#connector-log-parameters)を参照してください。
 
 ## 配信を確認する
 
@@ -144,7 +144,7 @@ Tealiumでは、ログストリーミングダッシュボードを使用して�
 
 ## ログストリーミング活動を監視する
 
-**Manage Log Streaming**ページを使用して、配信パフォーマンスを監視し、送信先を管理します。
+**ログストリーミングの管理**ページを使用して、配信パフォーマンスを監視し、送信先を管理します。
 
 ![](https://docs.tealium.com/images/early-access/log-streaming/log-streaming-manage-table.png)
 
@@ -152,15 +152,15 @@ Tealiumでは、ログストリーミングダッシュボードを使用して�
 
 概要セクションでは、選択した時間範囲の配信メトリックを表示します。
 
-* **Total Volume**：送信されたログイベントの数
-* **Retries**：再試行の回数
-* **Total Success**：正常に配信されたイベント
-* **Success after Retry**：一回以上の再試行後に配信されたイベント
-* **Total Errors**：配信に失敗したイベント
+* **総ボリューム**：送信されたログイベントの数
+* **リトライ**：リトライ試行の数
+* **総成功**：正常に配信されたイベント
+* **リトライ後の成功**：一回以上のリトライ後に配信されたイベント
+* **総エラー**：配信に失敗したイベント
 
 これらのメトリックは、コネクタの実行ではなく、ログ配信パイプラインの健全性を反映しています。
 
-エラーの数が多い場合は、通常、以下のような問題を示しています：
+高いエラー数は通常、以下のような問題を示しています：
 
 * 認証の失敗
 * 接続問題
@@ -218,19 +218,19 @@ Tealiumでは、ログストリーミングダッシュボードを使用して�
    * **アクションからマッピングを挿入**: 選択したアクションから現在のアクションにマッピングをコピーします。
    * **アクションへマッピングをコピー**: 現在のアクションから選択したアクションにマッピングをコピーします。
 1. 競合の取り扱い方法を選択します：
-   * **元のマッピングを保持**: ソースからの新しいマッピングを追加し、宛先の既存のマッピングを変更しません。
-   * **すべてのマッピングを上書き**: 宛先のすべての既存のマッピングをソースアクションのもので置き換えます。
+   * **元のマッピングを保持**: ソースからの新しいマッピングを追加し、宛先の既存のマッピングは変更しません。
+   * **すべてのマッピングを上書き**: 宛先のすべての既存のマッピングをソースアクションからのものに置き換えます。
 1. アクションのリストを絞り込むためにフィルターを適用するか、検索を行い、アクションを選択します。
 1. **完了**をクリックします。
 
 
 <blockquote>
-同じログソースを複数の宛先に送信したい場合は、追加の宛先を作成し、ログソースを追加してから、マッピングのコピー機能を使用して、あるログソースから他のログソースへマッピングを複製します。
+同じログソースを複数の宛先に送信したい場合は、追加の宛先を作成し、ログソースを追加してから、マッピングのコピー オプションを使用して、あるログソースから他のログソースへマッピングを複製します。
 </blockquote>
 
 
 ## 関連リソース
 
-* [コネクタエラーロギング](https://docs.tealium.com/connector-error-logging/)
+* [コネクタエラーログ](https://docs.tealium.com/connector-error-logging/)
 * [エンリッチメントについて](https://docs.tealium.com/about-enrichments/)
 * [ログストリーミングについて](https://docs.tealium.com/about-log-streaming/)

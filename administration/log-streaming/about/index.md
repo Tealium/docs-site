@@ -7,14 +7,16 @@ url: https://docs.tealium.com/administration/log-streaming/about/
 
 Log streaming routes Tealium logs to your existing observability, storage, and alerting platforms so you can monitor system behavior in the tools you already use.
 
-In this Early Access release, log streaming supports connector error logs.
-
 Use log streaming to:
 
 * Monitor connector reliability in a central location.
 * Investigate failures with detailed log records.
 * Build dashboards and alerts in your destination platform.
 * Store logs in your own systems for retention or compliance needs.
+
+## Requirements
+
+Log streaming enabled in **Server-Side Settings**. For more information, see [Enable log streaming](https://docs.tealium.com/manage-log-streaming/#enable-log-streaming).
 
 ## How it works
 

@@ -31,19 +31,19 @@ This section describes how to set up parameters and options for each action.
 #### Parameters
 
 1. **Domain Alias**: (Required) Provide domain alias assigned by your Audience Manager.
-1. **Region ID**: (Required) Provide region ID assigned to user sending the event. For more info see [Get User ID and Region](https://marketing.adobe.com/resources/help/en_US/aam/dcs-aam-ids.html) and [Regions and Hostname](https://marketing.adobe.com/resources/help/en_US/aam/dcs-regions.html).
-1. **Event Data**: (Required) Map Attribute(s) to event parameters (see: [Supported Event Parameters](https://marketing.adobe.com/resources/help/en_US/aam/dcs-keys.html)). Options `Data Provider ID `and `Data Provider User ID`/`Integration Code` are automatically combined with `%01` separator for `d_cid` and `d_cid_ic` parameters respectively (see: [CID and CID_IC](https://marketing.adobe.com/resources/help/en_US/aam/cid.html))
+1. **Region ID**: (Required) Provide region ID assigned to user sending the event. For more info see [Get User ID and Region](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive) and [Regions and Hostname](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-regions).
+1. **Event Data**: (Required) Map Attribute(s) to event parameters (see: [Supported Event Parameters](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)). Options `Data Provider ID `and `Data Provider User ID`/`Integration Code` are automatically combined with `%01` separator for `d_cid` and `d_cid_ic` parameters respectively (see: [CID and CID_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid))
 
 
 <blockquote>
-For more information, see: [Making Event API Calls](https://marketing.adobe.com/resources/help/en_US/aam/dcs-s2s-calls.html)
+For more information, see: [Making Event API Calls](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)
 </blockquote>
 
 
 ## Vendor Documentation
 
-* [Making Event API Calls](https://marketing.adobe.com/resources/help/en_US/aam/dcs-s2s-calls.html)
-* [Get User ID and Region](https://marketing.adobe.com/resources/help/en_US/aam/dcs-aam-ids.html)
-* [Regions and Hostname](https://marketing.adobe.com/resources/help/en_US/aam/dcs-regions.html)
-* [Supported Event Parameters](https://marketing.adobe.com/resources/help/en_US/aam/dcs-keys.html)
-* [CID and CID\_IC](https://marketing.adobe.com/resources/help/en_US/aam/cid.html)
+* [Making Event API Calls](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)
+* [Get User ID and Region](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)
+* [Regions and Hostname](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-regions)
+* [Supported Event Parameters](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)
+* [CID and CID\_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid)

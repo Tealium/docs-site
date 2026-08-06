@@ -28,7 +28,7 @@ A Google Ads conversion occurs when a user performs a specified action after cli
 This connector uses the following vendor API:
 
 * API Name: Google Ads API
-* API Version: v18
+* API Version: v22
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 
