@@ -1,6 +1,6 @@
 ---
 title: ティーリウム同意
-description: クライアントサイドとサーバーサイドの環境でユーザーの同意を取得し、解釈し、適用します。
+description: クライアントサイドとサーバーサイドの環境でユーザーの同意を取得、解釈、および適用します。
 url: https://docs.tealium.com/ja/consent/
 ---
 ## はじめに

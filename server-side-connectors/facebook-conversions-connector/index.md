@@ -382,6 +382,8 @@ Required for app events.
 
 ### Send CRM (CAPI) Event
 
+
+
 #### Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:

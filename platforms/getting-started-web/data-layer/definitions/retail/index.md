@@ -74,7 +74,7 @@ url: https://docs.tealium.com/platforms/getting-started-web/data-layer/definitio
 | `page_view`| The home page.|`http://www.example.com/`|
 
 Sample:  
-```javascript
+```json
 {
     "cart_total_items" : "4",
     "cart_total_value" : "77.96",

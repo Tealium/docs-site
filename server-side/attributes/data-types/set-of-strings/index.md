@@ -126,3 +126,19 @@ Remove an entry from a set of strings based on a set of conditions. For example,
 * **Starting Value**:  `"iPhone 10", "AirPods Pro", "iPhone Case"`
 * **Enriched With**:  Remove `purchased_product` (value "iPhone Case") 
 * **Resulting Value**: `"iPhone 10", "AirPods Pro"`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The set of strings attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+| Union | Combine values from both. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

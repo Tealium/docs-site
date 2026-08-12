@@ -1,6 +1,6 @@
 ---
-title: Reddit Pixel Tag Setup Guide
-description: This article describes how to set up the Reddit Pixel tag in your Tealium iQ Tag Management account.
+title: Reddit Pixel tag setup guide
+description: Set up the Reddit Pixel tag to track post-ad interactions, measure conversions, and enable retargeting in Tealium iQ.
 url: https://docs.tealium.com/client-side-tags/reddit-pixel-tag/
 ---
 The Reddit Pixel tag tracks post-ad interactions and supports conversion measurement and retargeting. 
@@ -16,9 +16,12 @@ The Reddit Pixel tag tracks post-ad interactions and supports conversion measure
 * Purchase event fires when **Order ID** is set.
 * To make Reddit Pixel event IDs available as server-side attributes, set **Generate Event ID** to `true` and use the latest version of the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 * We recommend using the [Reddit Conversions connector](https://docs.tealium.com/reddit-conversions-connector/) conversion ID configuration only if you are implementing both the Reddit Pixel tag and the Reddit Conversions connector. Using the conversion ID configuration prevents the same conversion event from being counted twice if it is sent across both sources. If this value is passed improperly, it impacts attribution and campaign performance.
-* We recommend using advanced matching for the most accurate conversion tracking and reporting from Reddit. Email addresses and phone numbers can be passed as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.
+* We recommend using advanced matching for the most accurate conversion tracking and reporting from Reddit. Pass email addresses and phone numbers as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.
 * Map only parameters you intend to use and confirm support in Reddit documentation.
 * Use event-specific parameters for fine-grained control when different events require different metadata.
+* For revenue events, send both event-level `value` and `itemCount`, and product-level `quantity` and `itemPrice`. Sending only one set of fields can limit reporting or optimization in Reddit Ads.
+* Keep product arrays aligned by index. Avoid mixing single values and arrays unless you intend a single-product payload.
+* Use event-specific parameters to avoid accidentally applying purchase-only metadata to other events.
 * The tag enforces the Reddit event-level parameter requirements. Undefined or empty values are removed and parameters not supported by Reddit for a given event are dropped from the payload.
 
 ## Tag configuration
@@ -29,9 +32,9 @@ To add the tag, configure the following settings:
 
 * **Pixel ID**: Your Reddit Pixel ID.
 * **Send Page Visit**
-    * By default, page visit events are automatically recorded for each page on your site.
+    * By default, the tag automatically records a page visit event for each page on your site.
     * If you do not want to send a page visit event to the Reddit Pixel, set this option to `false`.
-* **Send Default Purchase Event**: By default, purchase events are tracked on your site. However, if you don’t want to send a purchase event to the Reddit Pixel, set this option to `false`.
+* **Send Default Purchase Event**: By default, the tag tracks purchase events on your site. To disable purchase events, set this option to `false`.
 * **Generate Event ID**: Automatically generate an event ID for every Reddit tracking event.
 
 ### Conversions API
@@ -42,7 +45,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support the Reddit Conversions API, set **Generate Event ID** to `true`. When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Reddit Conversions connector and passes it to the Reddit Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
+To support the Reddit Conversions API, set **Generate Event ID** to `true`. When **Generate Event ID** is enabled, the tag generates a unique event ID for each tracked event. The tag sends the event ID as an attribute to Tealium EventStream for use in the Reddit Conversions connector, and passes it to the Reddit Pixel in the `event_id` parameter. Map this event ID attribute in the connector to synchronize the web-based tag with server-side integration.
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -91,7 +94,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
-Parameters can be mapped using the categories below. However, if a mapped parameter is not supported by Reddit for a given event, it is dropped from the payload. Use [Event-specific parameters](#event-specific-parameters) to control which parameters are sent per event.
+Map parameters using the categories below. If a mapped parameter is not supported by Reddit for a given event, the tag drops it from the payload. Use [Event-specific parameters](#event-specific-parameters) to control which parameters are sent per event.
 
 The available categories are:
 
@@ -120,9 +123,11 @@ The available categories are:
 
 | Variable   | Type/Values | Description                            |
 |:-----------|:------------|:---------------------------------------|
-| `id`       | Array       | Product ID (Overrides `_cprod`).       |
-| `category` | Array       | Product category (Overrides `_ccat`).  |
-| `name`     | Array       | Product name (Overrides `_cprodname`). |
+| `id`        | Array       | Product ID (overrides `_cprod`).         |
+| `category`  | Array       | Product category (overrides `_ccat`).    |
+| `name`      | Array       | Product name (overrides `_cprodname`).   |
+| `quantity`  | Array       | Product quantity (overrides `_cquan`).   |
+| `itemPrice` | Array       | Product item price (overrides `_cprice`).|
 
 ### Events
 
@@ -150,6 +155,8 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 | `category`      | Product category.         |
 | `name`          | Product name.             |
 | `id`            | Product ID.               |
+| `quantity`      | Product quantity.         |
+| `itemPrice`     | Product item price.       |
 | `content_type`  | Content type.             |
 | `contents`      | Contents.                 |
 | `predicted_ltv` | Predicted lifetime value. |

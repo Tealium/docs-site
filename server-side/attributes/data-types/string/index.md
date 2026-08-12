@@ -85,3 +85,18 @@ This enrichment converts a date value to a string and allows for custom formatti
 * **Starting Value**: `""`
 * **Enriched With**: Last Login Date with format `"yyy-MM-dd"`
 * **Resulting Value**: `"2019-12-31"`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The string attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

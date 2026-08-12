@@ -44,7 +44,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 #### データコネクト
 
-イベントと訪問のデータをTealiumに統合し、データを豊かにします。
+内部システムからのデータをTealiumに統合して、イベントと訪問のエンリッチメントを行います。
 
 
 
@@ -64,6 +64,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 
 
+
 ![](https://docs.tealium.com/images/icons/icon-arrows-merge.svg)
 
 #### フィード
@@ -78,7 +79,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 #### コネクタ
 
-コネクタを使用して、イベントと訪問のデータをお好みのベンダーAPIと統合します。
+コネクタを使用して、イベントと訪問データをお好みのベンダーAPIと統合します。
 
 
 

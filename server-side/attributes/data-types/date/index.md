@@ -105,3 +105,20 @@ The **Remove date** enrichment erases the value of a date attribute. This enrich
 ### Convert from date format
 
 The **Convert from date format** enrichment sets the value based on an expected date format of incoming values. This enrichment is used to convert string values sent from the Collect tag or HTTP API. Use the [Date Formatter](#date-formatter) to convert the string value to a date. This enrichment is available for event attributes.
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The date attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Max | Keep the later date. |
+| Min | Keep the earlier date. |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

@@ -10,7 +10,7 @@ This connector uses the following vendor API:
 * API Name: Reddit API
 * API Version: v3
 * API Endpoint: `https://ads-api.reddit.com/api/v3`
-* Documentation: [Reddit Advertising API](https://ads-api.reddit.com/docs/v3/)
+* Documentation: [Reddit Advertising API](https://ads-api.reddit.com/docs/v3/api/post-conversion-events)
 
 ## Batch limits
   
@@ -170,6 +170,8 @@ At least one attribution signal is required with each conversion event. Reddit r
 <blockquote>
 Reddit launched Conversions API v3, so this action is deprecated. We recommend using **Copy Mappings to an Action** to migrate your existing action mappings to the **Send Conversion V3** action.
 </blockquote>
+
+
 
 
 #### API information

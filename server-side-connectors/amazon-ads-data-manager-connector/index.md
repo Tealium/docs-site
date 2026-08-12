@@ -3,6 +3,8 @@ title: Amazon Ads Data Manager Connector Setup Guide
 description: This article describes how to set up the Amazon Ads Data Manager connector.
 url: https://docs.tealium.com/server-side-connectors/amazon-ads-data-manager-connector/
 ---
+
+
 ## Batch Limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:

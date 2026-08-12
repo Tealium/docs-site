@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 #### オーディエンス
 
-最も価値のある顧客を特定するためのオーディエンスセグメントを作成します。
+価値の高い顧客を特定するためのオーディエンスセグメントを作成します。
 
 
 
@@ -71,7 +71,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 #### Webhooks
 
-Webhookコネクタを使用してカスタム統合を構築します。
+Webhookコネクタでカスタム統合を構築します。
 
 
 ### 人気のコネクタ

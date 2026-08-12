@@ -130,6 +130,12 @@ Only attributes that match the action's source type appear in the mapping dropdo
 
 The **Copy Mappings** feature lets you copy data mappings to or from an existing connector action. This screen lets you select the action to copy to or from and select how to handle overwrites.
 
+
+<blockquote>
+**Insert Mappings From an Action** and **Copy Mappings to an Action** are also available from the actions menu on the **Actions** tab. For more information, see [Copy connector action mappings](https://docs.tealium.com/manage-connectors/#copy-connector-action-mappings).
+</blockquote>
+
+
 To copy mappings to or from an existing action, follow these steps:
 
 1. **Select the copy action.**  

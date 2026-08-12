@@ -111,3 +111,13 @@ Use this enrichment to determine when an entry should be removed from the timeli
 The expiration does not apply to the timeline itself, only to the entries within it.
 </blockquote>
 
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The timeline attribute supports the following stitching merge rules:
+
+* **Merge timeline**: Merge events and apply the shortest expiration (if set).
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

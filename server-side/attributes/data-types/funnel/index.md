@@ -329,3 +329,13 @@ This audience can now be used to trigger any connector to help get the customer 
 #### Trace
 
 To see how this works, perform a trace and navigate through each step of the conversion funnel.
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The funnel attribute supports the following stitching merge rules:
+
+* **Merge funnel**: Retain the earliest valid occurrence of each funnel step and maintain sequence integrity.
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

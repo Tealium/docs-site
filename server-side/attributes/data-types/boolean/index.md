@@ -41,3 +41,20 @@ Rule: tealium_event equals "cart_add"
 * **Starting Value**: `""`
 * **Enriched With**: `true`
 * **Resulting Value** `true`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The boolean attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| And | Set to `true` only if both are `true`. |
+| Or | Set to `true` if either is `true`. |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

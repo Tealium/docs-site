@@ -1,56 +1,59 @@
 ---
 title: Reddit Pixel タグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで Reddit Pixel タグを構成する方法について説明します。
+description: Tealium iQで広告後のインタラクションを追跡し、コンバージョンを測定し、リターゲティングを有効にするためのReddit Pixelタグを構成します。
 url: https://docs.tealium.com/ja/client-side-tags/reddit-pixel-tag/
 ---
-Reddit Pixel タグは、広告後のインタラクションを追跡し、コンバージョン測定とリターゲティングをサポートします。
+Reddit Pixelタグは広告後のインタラクションを追跡し、コンバージョン測定とリターゲティングをサポートします。
 
-## 必要条件
+## 要件
 
-* Reddit 広告アカウント
+* Reddit広告アカウント
 * Reddit Pixel ID
 
 ## タグのヒント
 
-* マッピングを使用して標準構成値を上書きし、イベントをトリガーします。
-* **Order ID** が構成されているときに購入イベントが発火します。
-* Reddit Pixel イベント ID をサーバーサイド属性として利用可能にするには、**Generate Event ID** を `true` に構成し、[Tealium Collect タグ](https://docs.tealium.com/tealium-collect-tag/)の最新バージョンを使用します。
-* Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、[Reddit Conversions コネクタ](https://docs.tealium.com/reddit-conversions-connector/)のコンバージョン ID 構成を使用することをお勧めします。コンバージョン ID 構成を使用すると、同じコンバージョンイベントが両方のソースに送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。
-* 最も正確なコンバージョン追跡とレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化されたものとして渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシュを適用します。
-* 使用する予定のパラメータのみをマッピングし、Reddit のドキュメントでサポートを確認してください。
-* 異なるイベントが異なるメタデータを必要とする場合に、イベント固有のパラメータを使用して細かな制御を行います。
-* タグは Reddit のイベントレベルのパラメータ要件を強制します。未定義または空の値は削除され、特定のイベントに対して Reddit がサポートしていないパラメータはペイロードから削除されます。
+* マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。
+* **Order ID**が構成されているときに購入イベントが発火します。
+* Reddit PixelイベントIDをサーバーサイド属性として利用可能にするには、**Generate Event ID**を`true`に構成し、[Tealium Collectタグ](https://docs.tealium.com/tealium-collect-tag/)の最新バージョンを使用します。
+* Reddit PixelタグとReddit Conversionsコネクタの両方を実装している場合のみ、[Reddit Conversionsコネクタ](https://docs.tealium.com/reddit-conversions-connector/)のコンバージョンID構成を使用することをお勧めします。コンバージョンID構成を使用すると、同じコンバージョンイベントが両方のソースから送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与える可能性があります。
+* 最も正確なコンバージョン追跡とレポートのために、Redditでの高度なマッチングを使用することをお勧めします。メールアドレスと電話番号をプレーン値またはSHA256で事前ハッシュされた形式で渡します。Redditライブラリは、送信前にプレーンメールアドレスにSHA256ハッシングを適用します。
+* 使用する予定のパラメータのみをマッピングし、Redditのドキュメントでサポートを確認してください。
+* 異なるイベントが異なるメタデータを必要とする場合に、イベント固有のパラメータを使用して細かい制御を行います。
+* 収益イベントの場合、イベントレベルの`value`と`itemCount`、製品レベルの`quantity`と`itemPrice`の両方を送信します。一方のフィールドセットのみを送信すると、Reddit広告のレポートや最適化が制限される可能性があります。
+* 製品配列をインデックスで揃えます。単一の値と配列を混在させるのは、単一製品のペイロードを意図している場合のみにしてください。
+* イベント固有のパラメータを使用して、誤って購入専用のメタデータを他のイベントに適用するのを避けます。
+* タグはRedditのイベントレベルパラメータ要件を強制します。未定義または空の値は削除され、特定のイベントに対してRedditがサポートしていないパラメータはペイロードから削除されます。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法の詳細については、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
 タグを追加するには、次の構成を構成します：
 
-* **Pixel ID**: あなたの Reddit Pixel ID。
+* **Pixel ID**: あなたのReddit Pixel ID。
 * **Send Page Visit**
-    * デフォルトでは、サイトの各ページに対してページ訪問イベントが自動的に記録されます。
-    * Reddit Pixel にページ訪問イベントを送信したくない場合は、このオプションを `false` に構成します。
-* **Send Default Purchase Event**: デフォルトでは、購入イベントがサイト上で追跡されます。しかし、Reddit Pixel に購入イベントを送信したくない場合は、このオプションを `false` に構成します。
-* **Generate Event ID**: すべての Reddit トラッキングイベントに対してイベント ID を自動生成します。
+    * デフォルトでは、タグはサイトの各ページに対してページ訪問イベントを自動的に記録します。
+    * Reddit Pixelにページ訪問イベントを送信したくない場合は、このオプションを`false`に構成します。
+* **Send Default Purchase Event**: デフォルトでは、タグはサイト上の購入イベントを追跡します。購入イベントを無効にするには、このオプションを`false`に構成します。
+* **Generate Event ID**: すべてのReddit追跡イベントに対してイベントIDを自動生成します。
 
 ### Conversions API
 
 
 <blockquote>
-この機能にはアクティブな [Tealium Collect タグ](https://docs.tealium.com/tealium-collect-tag/)が必要です。
+この機能にはアクティブな[Tealium Collectタグ](https://docs.tealium.com/tealium-collect-tag/)が必要です。
 </blockquote>
 
 
-Reddit Conversions API をサポートするには、**Generate Event ID** を `true` に構成します。**Generate Event ID** が有効になっている場合、このタグは追跡される各イベントに対して一意のイベント ID を生成し、それを `event_id` パラメータとして Reddit Pixel に渡し、Tealium EventStream で使用するために属性として送信します。このイベント ID 属性は、コネクタでマッピングされ、ウェブベースのタグとサーバーサイドの統合を同期させることができます。
+Reddit Conversions APIをサポートするには、**Generate Event ID**を`true`に構成します。**Generate Event ID**が有効になっている場合、タグは追跡された各イベントに対して一意のイベントIDを生成します。タグはイベントIDをTealium EventStreamの属性として送信し、Reddit Conversionsコネクタで使用し、`event_id`パラメータとしてReddit Pixelに渡します。このイベントID属性をコネクタでマップして、ウェブベースのタグとサーバーサイドの統合を同期します。
 
-タグは次の命名規則を使用してイベント ID を生成した属性を送信します：
+タグは次の命名規則を使用してイベントIDを生成されたイベント属性として送信します：
 
 ```nohl
 reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 ```
 
-例えば、タグ #32 からの購入イベントは次の属性と値を送信します：
+たとえば、タグ＃32からの購入イベントは次の属性と値を送信します：
 
 ```json
 {
@@ -68,17 +71,17 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 #### 重複排除
 
-適切なイベントの重複排除を確実に行うために、Reddit Pixel タグからのイベント ID を Tealium Collect タグによって送信されるペイロードに含める必要があります。これを行うには、次の手順を使用します：
+適切なイベントの重複排除を確実に行うために、Reddit PixelタグからのイベントIDをTealium Collectタグによって送信されるペイロードに含める必要があります。これを行うには、次の手順を使用します：
 
-* **Tag Timing** ドロップダウンから **Prioritized** を選択します。
-* **Bundle Flag** トグルを `On` に構成します。
-* [Load Order Manager screen](https://docs.tealium.com/load-order-manager/)を使用して、Tealium Collect タグの前に Reddit Pixel タグを発火させます。Tealium Collect タグは最後に発火させることをお勧めします。
+* **Tag Timing**ドロップダウンから**Prioritized**を選択します。
+* **Bundle Flag**トグルを`On`に構成します。
+* [Load Order Manager画面](https://docs.tealium.com/load-order-manager/)を使用して、Tealium Collectタグの前にReddit Pixelタグを発火させます。Tealium Collectタグは最後に発火させることをお勧めします。
 
-これらのイベント ID 属性の使用に関する情報については、[Reddit Conversions コネクタ: ウェブイベントの重複排除](https://docs.tealium.com/reddit-conversions-connector/#deduplication-for-web-events)を参照してください。
+これらのイベントID属性の使用に関する情報については、[Reddit Conversionsコネクタ: ウェブイベントの重複排除](https://docs.tealium.com/reddit-conversions-connector/#deduplication-for-web-events)を参照してください。
 
 ## 検証
 
-タグが期待通りに動作していることを確認するには、ブラウザの開発者ツールと [Reddit Pixel Helper](https://business.reddithelp.com/s/article/Reddit-Pixel-Helper-Chrome-extension) ブラウザ拡張機能を使用します：
+タグが期待通りに動作していることを確認するには、ブラウザの開発者ツールと[Reddit Pixel Helper](https://business.reddithelp.com/s/article/Reddit-Pixel-Helper-Chrome-extension)ブラウザ拡張機能を使用します：
 
 * 各イベントに対して期待されるパラメータが表示されることを確認します。
 * サポートされていないメタデータや無効なメタデータに関する警告が表示されないことを確認します。
@@ -91,7 +94,7 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 
 マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-以下のカテゴリを使用してパラメータをマッピングできます。ただし、マップされたパラメータが特定のイベントに対して Reddit によってサポートされていない場合は、ペイロードから削除されます。[イベント固有のパラメータ](#event-specific-parameters)を使用して、イベントごとに送信されるパラメータを制御します。
+以下のカテゴリを使用してパラメータをマップします。マップされたパラメータが特定のイベントに対してRedditによってサポートされていない場合、タグはそれをペイロードから削除します。[イベント固有のパラメータ](#event-specific-parameters)を使用して、イベントごとに送信されるパラメータを制御します。
 
 利用可能なカテゴリは次のとおりです：
 
@@ -102,27 +105,29 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 | `pixel_id`            | 文字列    | Pixel ID.            |
 | `send_page_visit`     | ブール値   | ページ訪問を送信する。     |
 | `send_purchase_event` | ブール値   | 購入イベントを送信する。 |
-| `generate_event_id`   | ブール値   | イベント ID を生成する。 |
-| `event_id`            | 文字列    | イベント ID。            |
-| `conversion_id`       | 文字列    | コンバージョン ID。       |
-| `transaction_id`      | 文字列    | トランザクション ID。      |
+| `generate_event_id`   | ブール値   | イベントIDを生成する。   |
+| `event_id`            | 文字列    | イベントID。            |
+| `conversion_id`       | 文字列    | コンバージョンID。       |
+| `transaction_id`      | 文字列    | トランザクションID。      |
 
-### E-commerce
+### Eコマース
 
 | 変数            | データタイプ | 説明                            |
 |-----------------|-----------|------------------------------------|
 | `itemCount`     | 数値      | アイテム数。                        |
-| `value`         | 数値      | 価値。                             |
-| `currency`      | 文字列    | 通貨 (Overrides `_ccurrency`). |
-| `transactionId` | 文字列    | トランザクション ID。                    |
+| `value`         | 数値      | 値。                             |
+| `currency`      | 文字列    | 通貨（`_ccurrency`を上書き）。 |
+| `transactionId` | 文字列    | トランザクションID。                    |
 
 ### 製品データ
 
-| 変数       | タイプ/値     | 説明                                |
+| 変数       | タイプ/値      | 説明                                |
 |:-----------|:------------|:---------------------------------------|
-| `id`       | 配列       | 製品 ID (Overrides `_cprod`).       |
-| `category` | 配列       | 製品カテゴリ (Overrides `_ccat`).  |
-| `name`     | 配列       | 製品名 (Overrides `_cprodname`). |
+| `id`        | 配列       | 製品ID（`_cprod`を上書き）。         |
+| `category`  | 配列       | 製品カテゴリ（`_ccat`を上書き）。    |
+| `name`      | 配列       | 製品名（`_cprodname`を上書き）。   |
+| `quantity`  | 配列       | 製品数量（`_cquan`を上書き）。   |
+| `itemPrice` | 配列       | 製品単価（`_cprice`を上書き）。|
 
 ### イベント
 
@@ -131,48 +136,50 @@ reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 | 変数            | 説明          |
 |:----------------|:-----------------|
 | `PageVisit`     | ページ訪問。      |
-| `ViewContent`   | コンテンツ表示。    |
+| `ViewContent`   | コンテンツ閲覧。    |
 | `Search`        | 検索。          |
 | `AddToCart`     | カートに追加。     |
 | `AddToWishlist` | ウィッシュリストに追加。|
 | `Purchase`      | 購入。          |
-| `Lead`          | リード。          |
-| `SignUp`        | サインアップ。     |
+| `Lead`          | リード。        |
+| `SignUp`        | サインアップ。    |
 | `Custom`        | カスタムイベント。   |
-
 ### イベント固有のパラメータ
 
 イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
-| 変数            | 説明                   |
-|:----------------|:--------------------------|
+| 変数             | 説明                   |
+|:----------------|:----------------------|
 | `currency`      | 通貨。                 |
-| `category`      | 製品カテゴリ。         |
-| `name`          | 製品名。             |
-| `id`            | 製品 ID。               |
-| `content_type`  | コンテンツタイプ。             |
+| `category`      | 商品カテゴリ。         |
+| `name`          | 商品名。               |
+| `id`            | 商品ID。               |
+| `quantity`      | 商品数量。             |
+| `itemPrice`     | 商品単価。             |
+| `content_type`  | コンテンツタイプ。     |
 | `contents`      | 内容。                 |
-| `predicted_ltv` | 予測される生涯価値。 |
-| `search_string` | 検索文字列。            |
-| `status`        | 状態。                   |
-| `itemCount`     | アイテム数。               |
-| `value`         | 価値。                    |
+| `predicted_ltv` | 予測される生涯価値。   |
+| `search_string` | 検索文字列。           |
+| `status`        | ステータス。           |
+| `itemCount`     | アイテム数。           |
+| `value`         | 価値。                 |
+
 ### 高度なマッチング
 
-| 変数          | データ型   | 説明           | 
-|:--------------|:----------|:------------------|
-| `email`       | 文字列    | メールアドレス。    |
-| `phoneNumber` | 文字列    | 電話番号。     |
-| `idfa`        | 文字列    | IDFA。             |
-| `aaid`        | 文字列    | AAID。             | 
-| `externalId`  | 文字列    | 外部ID。      | 
+| 変数           | データタイプ | 説明             | 
+|:--------------|:------------|:----------------|
+| `email`       | 文字列      | メールアドレス。 |
+| `phoneNumber` | 文字列      | 電話番号。       |
+| `idfa`        | 文字列      | IDFA。           |
+| `aaid`        | 文字列      | AAID。           | 
+| `externalId`  | 文字列      | 外部ID。         | 
 
 ### LDU
 
 Reddit Pixelがデータ処理モードで初期化されると、ページから発火されるすべてのコンバージョンイベントには自動的に以下のパラメータが含まれます：
 
-| 変数   | データ型 | 説明 |
-|:---------|:----------|:------------|
-|  `dpm`   | 文字列    | データ処理モード。デフォルト値は `LDU`です。 |
-|  `dpcc`  | 文字列    | データ処理国コード。ISO 3166-1 アルファ-2国コード形式。 |
-|  `dprc`  | 文字列    | データ処理地域コード。ISO 3166-2 地域コード形式で、国のプレフィックスがあるかないか。 |
+| 変数   | データタイプ | 説明 |
+|:-------|:------------|:----|
+|  `dpm` | 文字列      | データ処理モード。デフォルト値は `LDU`。 |
+|  `dpcc`| 文字列      | データ処理国コード。ISO 3166-1 アルファ-2 国コード形式。 |
+|  `dprc`| 文字列      | データ処理地域コード。ISO 3166-2 地域コード形式で、国のプレフィックスがあるかないか。 |

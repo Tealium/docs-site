@@ -1,14 +1,14 @@
 ---
 title: プラットフォーム管理
-description: Tealiumは、権限グループと管理者ロールを通じて、アカウントとプロファイルへのユーザーアクセスを管理する統一された権限システムを提供します。
+description: Tealiumプラットフォームのユーザーアクセス、権限、セキュリティ構成、およびアカウント管理を行います。
 url: https://docs.tealium.com/ja/administration/
 ---
-## スタートガイド
+## 開始する
 
 
 ![](https://docs.tealium.com/images/icons/icon-sitemap-light.svg)
 
-アカウントの組織化
+アカウント組織
 
 
 
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/administration/
 
 ![](https://docs.tealium.com/images/icons/icon-user-solid.svg)
 
-ユーザー管理
+ユーザーの管理
 
 
 
@@ -46,7 +46,7 @@ url: https://docs.tealium.com/ja/administration/
 
 ![](https://docs.tealium.com/images/icons/icon-lock.svg)
 
-PIIおよびアカウントレベルのロール（早期アクセス）
+PIIおよびアカウントレベルのロール（アーリーアクセス）
 
 
 ## セキュリティとアクセス
@@ -104,7 +104,7 @@ APIキー
 
 ![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
 
-コネクタエラーログ
+コネクタエラーロギング
 
 
 ## アーリーアクセス
@@ -151,4 +151,3 @@ AI機能
 ![](https://docs.tealium.com/images/icons/icon-triangle-exclamation.svg)
 
 ステータスページ
-

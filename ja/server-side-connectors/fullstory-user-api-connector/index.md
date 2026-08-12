@@ -1,6 +1,6 @@
 ---
 title: FullStory APIコネクタ構成ガイド
-description: この記事では、FullStory APIコネクタの構成方法について説明します。
+description: FullStoryでユーザーを作成、更新、または削除するためのFullStory APIコネクタを構成します。
 url: https://docs.tealium.com/ja/server-side-connectors/fullstory-user-api-connector/
 ---
 ## API情報
@@ -8,62 +8,47 @@ url: https://docs.tealium.com/ja/server-side-connectors/fullstory-user-api-conne
 このコネクタは以下のベンダーAPIを使用します：
 
 * API名：FullStory API
-* APIバージョン：v1.0
-* APIエンドポイント：`https://api.fullstory.com/users/v1/`
-* ドキュメンテーション：[FullStory API](https://developer.fullstory.com/server/v1/users/introduction/)
+* APIバージョン：v2
+* APIエンドポイント：`https://api.fullstory.com/v2/users`
+* ドキュメント：[FullStory API](https://developer.fullstory.com/server/getting-started/)
 
-## コネクタアクション
+## コネクタのアクション
 
 | アクション名 | AudienceStream | EventStream |
 | --- | :---: | :---: |
-| サーバーイベント | ✓ | ✓ |
-| ユーザープロパティの構成 | ✓ | ✓ |
+| ユーザーの作成または更新 | ✓ | ✓ |
 | ユーザーの削除 | ✓ | ✓ |
 
-## 構成の構成
+## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
 * **APIキー**
-  * 必須。HTTP APIは、FullStoryアプリから生成できるAPIキーを必要とします。APIキーは、AdminまたはArchitectレベルの権限を持つ必要があります。詳細については、<a target="_blank" href="https://help.fullstory.com/hc/en-us/articles/360020624834">APIキーはどこで見つけることができますか</a>を参照してください。
+  * （必須）HTTP APIには、FullStoryアプリから生成できるAPIキーが必要です。APIキーはAdminまたはArchitectレベルの権限を持っている必要があります。詳細については、[FullStory: 私のAPIキーはどこで見つけることができますか](https://help.fullstory.com/hc/en-us/articles/360020624834)を参照してください。
 
 ## アクション
 
-**アクション名**を入力し、ドロップダウンメニューから**アクションタイプ**を選択します。
-
-以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
-
-### サーバーイベント
+### ユーザーの作成または更新
 
 #### パラメータ
 
-| **パラメータ** | **説明** |
-| --- | --- |
-| UID | 必須。ユーザーに与えられた一意のユーザーIDで、`FS.identify`ブラウザAPI関数を通じて渡されます。 |
-| イベント名 | 必須。カスタムイベントの一意の名前。 |
-| タイムスタンプ | イベントが発生した時間を<a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601形式</a>で表現します。提供されていない場合、現在のFullStoryサーバー時間が使用されます。 |
-| 最近のセッションを使用 | カスタムイベントがユーザーの最近のセッションに関連付けられるべき場合は`true`に構成します。最近のセッションは、過去30分以内に活動があった必要があります。`session_url`または`device_session`が定義されている場合は使用できません。 |
-| ID |  |
-| 優先度 |  |
-| ソース |  |
-| タイトル |  |
-
-### ユーザープロパティの構成
-
-#### パラメータ
+必要なパラメータ：
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| UID | 必須。ユーザーに与えられた一意のユーザーIDで、`FS.identify`ブラウザAPI関数を通じて渡されます。 |
-| ボディ | ユーザーに関連付けられたカスタムプロパティ。クライアントは任意の訪問属性をマップすることが許可されるべきです。プロパティ名は、<a target="_blank" href="https://help.fullstory.com/hc/en-us/articles/4446290296599-Setting-custom-API-properties">ここ</a>で文書化されているカスタムフィールド形式に従う必要があります。<br> |
+| UID | ユーザーに与えた一意のID。[FS.identify](https://developer.fullstory.com/identify)ブラウザAPI関数を通じて渡されるID。 |
+| 表示名 | FullStoryでユーザーに表示するための人間に優しい名前。 |
+| メール | ユーザーのメールアドレス。 |
+| プロパティ | ユーザーに関連付けられたカスタムプロパティ。訪問属性を任意にマッピングできます。値はそのネイティブタイプで送信されます。コネクタはマッピングされた属性からFullStoryプロパティタイプを推測します。詳細については、[FullStory: カスタムプロパティ](https://developer.fullstory.com/server/custom-properties/)を参照してください。 |
 
 ### ユーザーの削除
 
 #### パラメータ
 
+必要なパラメータ：
+
 | **パラメータ** | **説明** |
 | --- | --- |
-| UID | 必須。ユーザーに与えられた一意のユーザーIDで、`FS.identify`ブラウザAPI関数を通じて渡されます。 |
-
+| UID | ユーザーに与えた一意のID。[FS.identify](https://developer.fullstory.com/identify)ブラウザAPI関数を通じて渡されるID。 |

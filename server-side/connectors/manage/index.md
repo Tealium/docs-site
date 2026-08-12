@@ -84,6 +84,34 @@ To delete a connector action, use the following steps:
 1. Save and publish.
 
 
+## Copy connector action mappings
+
+The actions menu on the **Actions** tab includes two copy options: **Insert Mappings From an Action** and **Copy Mappings to an Action**. Both start the copy mappings workflow directly from the **Actions** tab, without opening **Action Details** first.
+
+![](https://docs.tealium.com/images/server-side/connectors/connector-action-menu.png)
+
+For information about overwrite modes and action selection, see [Copy mappings](https://docs.tealium.com/add-connector/#copy-mappings).
+
+### Insert mappings from an action
+
+To copy mappings from another action into the current action, use the following steps:
+
+1. Go to **Connect > Connectors > Overview**.
+1. Click the connector, then click the **Actions** tab.
+1. Click the actions menu for the action you want to copy mappings into, then click **Insert Mappings From an Action**.
+1. Select an overwrite mode, select the source action, then click **Done**.
+1. Save and publish.
+
+### Copy mappings to an action
+
+To copy mappings from the current action to another action, use the following steps:
+
+1. Go to **Connect > Connectors > Overview**.
+1. Click the connector, then click the **Actions** tab.
+1. Click the actions menu for the action you want to copy mappings from, then click **Copy Mappings to an Action**.
+1. Select an overwrite mode, select the target action, then click **Done**.
+1. Save and publish.
+
 ## Add to favorites
 
 Mark a connector as a favorite to make it easy to find using the **Favorite** filter menu.

@@ -49,7 +49,7 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 #### 予測インテリジェンス
 
-* [予測インテリジェンスディスカバリープログラム](https://docs.tealium.com/predictive-intelligence-discovery-program/)
+* [予測インテリジェンス発見プログラム](https://docs.tealium.com/predictive-intelligence-discovery-program/)
 
 
 

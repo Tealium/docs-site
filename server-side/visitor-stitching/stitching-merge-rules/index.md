@@ -1,7 +1,7 @@
 ---
 title: Stitching merge rules
 description: Stitching merge rules are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
-url: https://docs.tealium.com/administration/early-access/visitor-stitching/stitching-merge-rules/
+url: https://docs.tealium.com/server-side/visitor-stitching/stitching-merge-rules/
 ---
 ## Requirements
 

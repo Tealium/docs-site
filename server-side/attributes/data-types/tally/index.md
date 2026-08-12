@@ -225,3 +225,21 @@ Increment by one (1) for each item in an array. For example, use a tally named "
 * **Starting Value**: `{"Shoes": 1, "Pants": 1, "Shirts": 3}`
 * **Enriched With**: `product_category : ["Pants", "Ties"]`
 * **Resulting Value**: `{"Shoes": 1, "Pants": 2, "Shirts": 3, "Ties": 1}`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The tally attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+| Union Min | Merge keys and keep the lower value for matching keys. |
+| Union Max | Merge keys and keep the higher value for matching keys. |
+| Union Sum | Merge keys and add values for matching keys. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

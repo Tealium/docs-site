@@ -67,3 +67,19 @@ This enrichment takes two arrays as input, looks for values that occur in one an
 * **Starting value**: `[]`
 * **Enriched With**:  Difference between: `Gift Card Amounts` `[5.00, 10.00, 25.00, 50.00, 100.00, 250.00]` and `Gift Cards Purchased` `[25.00, 50.00]` 
 * **Resulting value**: `[5.00, 10.00, 100.00, 250.00]`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The array of numbers attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+| Union | Combine values from both, preserving consistent order across arrays. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

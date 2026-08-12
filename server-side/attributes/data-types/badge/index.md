@@ -106,3 +106,20 @@ The **Car badge** in the center is currently assigned to qualifying visitors. He
 1. **Car badge** visitors are automatically assigned **Fancy cars** and **Electric** badges.
 1. **Tesla** badge visitors are automatically assigned **Car badge**, **Fancy cars**, and **Electric cars** badges.
 1. **Fun cars** badge visitors are automatically assigned **Car badge**, **Fancy cars** and **Electric** badges.
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The badge attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| And | Set to assigned only if both are assigned. |
+| Or | Set to assigned if either is assigned. |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).

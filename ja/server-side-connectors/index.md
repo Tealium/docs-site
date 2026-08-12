@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/
 
 #### Webhookの構築
 
-Webhookコネクタを使用してカスタム統合を構築します。
+Webhookコネクタを使用してカスタム統合を構築する。
 
 
 
@@ -82,3 +82,4 @@ Google Analytics 4 測定プロトコル
 ![](https://docs.tealium.com/images/integrations/tiktok.png)
 
 TikTokイベント
+

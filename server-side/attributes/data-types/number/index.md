@@ -295,3 +295,21 @@ Set to the number of items in an array. For example, to store the number of prod
 * **Initial**: ---
 * **Enriched With**: product_id: `["prod123", "prod456"]`
 * **Result**: `2.00`
+
+## Stitching merge rules
+
+Stitching merge rules (if enabled) are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+
+The number attribute supports the following stitching merge rules:
+
+| Rule | Description |
+| ---- | ----------- |
+| Max | Keep the higher value. |
+| Min | Keep the lower value. |
+| Newer | Keep the more recently updated value (including removed values). |
+| Older | Keep the earlier updated value (including removed values). |
+| Recalculate | Discard previous values and run enrichments on the final merged profile. |
+| Recalculate (Force) | Discard previous values and run enrichments on the final merged profile, force some conditions to `true`. |
+| Sum | Add values from both visitors. |
+
+For more information, see [stitching-merge-rules](https://docs.tealium.com/stitching-merge-rules/).
