@@ -3,7 +3,7 @@ title: Server-side account settings
 description: The following article describes all Customer Data Hub profile settings.
 url: https://docs.tealium.com/server-side/settings/account-settings/
 ---
-To view your profile settings, log in to your account and click your initials in the upper-right corner of the screen. Then, select **Settings** from the drop-down list.
+To view your profile settings, log in to your account and click your initials in the upper-right corner of the screen. Then, select **Server-Side Settings** from the drop-down list.
 
 After you change editable settings, click **Save**, followed by **Save/Publish**, to apply the changes.
 

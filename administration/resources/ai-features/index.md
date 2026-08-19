@@ -102,6 +102,14 @@ The following example shows an expanded **Sources** link at the end of the respo
 
 ![](https://docs.tealium.com/images/administration/ai-assistant-sources-link.png)
 
+### SQL Writer
+
+The SQL writer AI assistant generates SQL queries from natural language prompts against specified cloud data source tables, views, schemas, or databases. When this feature is enabled at the account level, you can turn it on or off in each profile.
+
+This assistant is available in the advanced query configuration when creating or editing a cloud data source. For more information, see [Manage a cloud data source](https://docs.tealium.com/manage-cloud-data-source/#sql-writer).
+
+![](https://docs.tealium.com/images/administration/sql-writer-ai-assistant.png)
+
 ----
 
 ## Terms of Service for the Tealium AI Assistant

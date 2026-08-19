@@ -71,7 +71,7 @@ In the **Query Configuration** screen, select from Basic or Advanced configurati
 * Basic mode: Your data is imported using the default schema specified in the data source configuration. You can process data from only one table or view. 
 * Advanced mode: You can specify one or more tables to join using an advanced SQL editor. The tables can be from multiple schemas. 
 
-### 1. Build query
+### Step 1. Build query
 
 #### Basic mode
 
@@ -81,9 +81,9 @@ Optionally include a SQL `WHERE` clause to import only those records that match 
 
 #### Advanced mode
 
-In Advanced mode, use the SQL editor to enter valid, read-only SQL queries and connect with one or more tables or schemas. The SQL editor supports advanced SQL commands, such as `CAST` and `JOIN`. Either incrementing, timestamp, or incrementing and timestamp columns must be included in your selection.
+In Advanced mode, use the SQL editor to enter valid, read-only SQL queries and connect with one or more tables or schemas. The SQL editor supports advanced SQL commands, such as `CAST` and `JOIN`. Either incrementing, timestamp, or incrementing and timestamp columns must be included in your selection. When you are done configuring your query, click **Continue to Query Mode**.
 
-#### SQL query best practices
+##### SQL query best practices
 
 * **Calculated fields**  
 The Advanced SQL query supports calculated (derived) fields. Calculated values are re-evaluated on each batch fetch and may behave differently depending on your vendor. Using calculated fields in query mode columns (timestamp, incrementing, or timestamp and incrementing) may lead to errors in importing data (for example, skipped rows or loops in ingestion). We recommend avoiding calculated fields for query mode columns.
@@ -92,9 +92,33 @@ Due to the streaming nature of Tealium data sources, LIMIT clauses do not reduce
 * **Read-only**  
 Only read-only SQL queries are supported. Ensure that your queries do not modify schema or data (for example, using `DELETE`, `UPDATE`, `INSERT`, `DROP`, `ALTER`).
 
-When you are done, click **Continue to Query Mode**.
+##### SQL writer
 
-### 2. Set query mode
+
+<blockquote>
+This feature is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
+</blockquote>
+
+
+The data sources SQL writer is an AI assistant that generates SQL queries from natural language prompts. To use the SQL writer, enable the feature in [AI settings](https://docs.tealium.com/ai-features/). 
+
+To generate a query using the SQL writer:
+
+1. Click **+ Select Tables** and select the schema and tables to use as context for your query.
+1. Click **AI Assistant** to open the SQL writer panel.
+1. Describe the query you want in natural language. The assistant may ask follow-up questions about your tables or columns before generating SQL. 
+    ```wrap
+    Show me all customers who made a purchase in the last 30 days. Join with the orders table on customer_id and include their email address, total spend, and most recent order date.
+    ```
+1. Copy and paste the query into the SQL editor.
+
+
+<blockquote>
+Before you can test the query, you must continue to **Step 2. Set Query Mode** and select a query mode.
+</blockquote>
+
+
+### Step 2. Set query mode
 
 The query mode determines how to select new rows, modified rows, or both for import.
 
@@ -105,7 +129,7 @@ For more information, see .
 
 When you are done, click **Test Query** to preview the results.
 
-### 3. Preview test query
+### Step 3. Preview test query
 
 Use the test query preview to validate your query results.
 

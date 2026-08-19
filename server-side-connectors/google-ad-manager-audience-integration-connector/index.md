@@ -1,9 +1,9 @@
 ---
 title: Google Ad Manager Audience Integration Connector Setup Guide
-description: This article describes how to set up the Google Ad Manager Audience Integration connector.
+description: Set up the Google Ad Manager Audience Integration connector to add or remove visitors from Google Ad Manager audience lists using Publisher Provided IDs (PPIDs).
 url: https://docs.tealium.com/server-side-connectors/google-ad-manager-audience-integration-connector/
 ---
-The Google Ad Manager Audience Integration connector allows publishers to add visitors to Google Ad Manager user lists using a Publisher Provided ID (PPID). Publishers can then serve ads based on the PPID and target new users by matching audiences similar to your most valuable customers. For more information, see [Google Ad Manager Help: About publisher provided identifiers](https://support.google.com/admanager/answer/2880055?hl=en).
+The Google Ad Manager Audience Integration connector lets publishers add visitors to Google Ad Manager user lists using a Publisher Provided ID (PPID). Publishers can then serve ads based on the PPID and target new users by matching audiences similar to your most valuable customers. For more information, see [Google Ad Manager Help: About publisher provided identifiers](https://support.google.com/admanager/answer/2880055?hl=en).
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Audience List | Select an Audience List.<br>Note: Only lists created using the connector are available. |
-| Publisher Provided ID | (Required) Must be an alphanumeric or UUID HEX value between 32 and 150 characters. |
+| Publisher Provided ID | (Required) A single alphanumeric or UUID HEX value, or an array of values. Each value must be between 32 and 150 characters. |
 
 ### Remove from Audience List
 
@@ -71,7 +71,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | **Parameter** | **Description** |
 | --- | --- |
 | Audience List | Select an Audience List.<br>Note: Only lists created using the connector are available. |
-| Publisher Provided ID | (Required) Must be an alphanumeric or UUID HEX value between 32 and 150 characters. |
+| Publisher Provided ID | (Required) A single alphanumeric or UUID HEX value, or an array of values. Each value must be between 32 and 150 characters. |
 
 ## Consent
 
@@ -79,4 +79,4 @@ For actions like **Add to Audience List**, the connector automatically sends `ad
 
 ## Tips and troubleshooting
 
-* To ensure the PPID is present, include logic in the event feed or audience setup used for the connector action. This helps avoid `MISSING_USER_IDENTIFIER` errors.
+* To ensure the connector receives a PPID, include logic in the event feed or audience setup used for the connector action. This logic helps avoid `MISSING_USER_IDENTIFIER` errors.

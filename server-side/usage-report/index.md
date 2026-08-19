@@ -11,9 +11,9 @@ Reports are available for all profiles in the account or for a specific profile.
 
 ## Billing estimation
 
-Usage costs for Tealium EventStream, Tealium EventDB, and Tealium EventStore, as well as customers with EDF and CDH bundles, are calculated based on the [**Total Inbound Events**](#data-collection-reports) report. This report represents the total volume of events flowing into your account.
+Usage costs for Tealium Event Streaming, Tealium EventDB, and Tealium EventStore, as well as customers with Tealium Collect and CDH bundles, are calculated based on the [**Total Inbound Events**](#data-collection-reports) report. This report represents the total volume of events flowing into your account.
 
-Usage costs for Tealium AudienceStream, Tealium AudienceDB, Tealium AudienceStore, and Tealium Predict are calculated based on the **AudienceStream Filtered Events** report.
+Usage costs for Tealium Customer Data Platform (CDP), Tealium AudienceDB, Tealium AudienceStore, and Tealium Predict are calculated based on the **Total Real-Time Customer Data Platform Events** report.
 
 Every event, at its point of entry into the Tealium Customer Data Hub, counts towards the total volume and is charged equally.
 
@@ -43,11 +43,13 @@ Displays all reports sequentially in the reports dashboard. This is the default 
 Connector reports correspond to event usage by connectors and return the following reports:
 
 * **Total Connector Calls**  
-Sum total of server requests made for triggering EventStream and AudienceStream connector actions.
-* **Connector Calls - EventStream**  
-Number of server requests made by EventStream connector actions. The number of connector calls contracted with EventStream is based on this report.
-* **Connector Calls - AudienceStream**  
-Number of server requests made by AudienceStream connector actions.
+Total server requests made for triggering Event Streaming and Customer Data Platform connector actions.
+* **Connector Calls - Event Streaming**  
+Number of server requests made by Event Streaming connector actions. The number of connector calls contracted with Event Streaming is based on this report.
+* **Connector Calls - Customer Data Platform**  
+Number of server requests made by Customer Data Platform connector actions.
+* **Connector Calls - Data Cloud Activation**  
+Number of server requests made by Data Cloud Activation connector actions. This report is only available for accounts with Data Cloud Activation.
 
 ### DataAccess Reports
 
@@ -69,34 +71,38 @@ The number of visitor records stored in AudienceStore.
 Data Collection reports correspond to real-time and offline events flowing into your Customer Data Hub profile and return the following reports:
 
 * **Total Inbound Events**  
-The sum total of real-time and file import events. Data usage cost for EventStream is calculated based on the **Total Inbound Events** report.
+The total of real-time and file import events. Data usage cost for Event Streaming is calculated based on the **Total Inbound Events** report.
 * **Total Real-time Events**  
-The number of events that are captured by the [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/) tag from your website or mobile app in the date range specified. For more information, see [Live Events and Feeds](https://docs.tealium.com/about-live-events/).
+The number of events the [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/) tag captures from your website or mobile app in the date range specified. For more information, see [Live Events and Feeds](https://docs.tealium.com/about-live-events/).
 * **Total File Import Events**  
-The number of [file import]() rows or lines imported into AudienceStream.
+The number of [file import]() rows or lines imported into Customer Data Platform.
 * **Total Omnichannel Events**  
-For users of the legacy Omnichannel feature. The number of Omnichannel rows or lines imported into AudienceStream.
-* **Total AudienceStream Events**  
-The total number of events received by AudienceStream. If the AudienceStream event filter is enabled, this report only includes filtered AudienceStream events.
-* **Real-time AudienceStream Events**  
-The number of real-time events received by AudienceStream. This graph does not include Omnichannel, File Import, or Data Connect events. If the AudienceStream event filter is enabled, this report only includes filtered AudienceStream events.
-* **Bulk AudienceStream Events**  
-The number of offline and bulk events received by AudienceStream. This graph includes Omnichannel and File Import events. If the AudienceStream event filter is enabled, this report only includes filtered AudienceStream events.
+For users of the legacy Omnichannel feature. The number of Omnichannel rows or lines imported into Customer Data Platform.
+* **Total Data Cloud Events**  
+The number of events imported from Data Cloud Activation data sources.
+* **Data Cloud Activation: Total Number of Events (Data Records) Received**  
+The total number of data records received by Data Cloud Activation. This report is only available for accounts with Data Cloud Activation.
+* **Total Customer Data Platform Events**  
+The total number of events received by Customer Data Platform. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
+* **Total Real-Time Customer Data Platform Events**  
+The number of real-time events received by Customer Data Platform. This graph does not include Omnichannel, File Import, or Data Connect events. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
+* **Bulk Customer Data Platform Events**  
+The number of offline and bulk events received by Customer Data Platform. This graph includes Omnichannel and File Import events. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
 
-#### Total Real-time Events vs. Total AudienceStream Events
+#### Total Real-time Events vs. Total Customer Data Platform Events
 
-The number of real-time events may not match the number of AudienceStream events due to any of the following expected reasons:
+The number of real-time events may not match the number of Customer Data Platform events due to any of the following expected reasons:
 
 * **Filtered events**  
-If the [AudienceStream event filter](https://docs.tealium.com/server-side-account-settings/#general-settings) is set, only events that match the filter will be processed.
+If the [AudienceStream event filter](https://docs.tealium.com/server-side-account-settings/#general-settings) is set, only events that match the filter are processed.
 * **Consent**  
-If consent is in use, AudienceStream will not process events unless the visitor has opted into the CDP consent category. For more information, see .
+If consent is in use, Customer Data Platform will not process events unless the visitor has opted into the CDP consent category. For more information, see .
 * **Exceeding data size limits**  
 To ensure the stability of the platform, event or visitor data exceeding specified size limits may not be processed. These measures safeguard against overloading the system to maintain optimal performance for all customers. For more information, see .
 
 
 <blockquote>
-Data usage cost for AudienceStream is calculated based on the **Total AudienceStream Events** report.
+Tealium calculates data usage cost for Customer Data Platform based on the **Total Customer Data Platform Events** report.
 </blockquote>
 
 
@@ -111,7 +117,10 @@ The number of Workato tasks performed.
 
 ### Data Layer Enrichment Reports
 
-Data Layer Enrichment reports correspond to the [AudienceStream Data Layer Enrichment]() service. This report returns the number of times the Tealium Collect tag made requests to the AudienceStream data layer for fetching the latest visitor profile.
+Data Layer Enrichment reports correspond to the [Customer Data Platform Data Layer Enrichment]() service.
+
+* **Total CDP Data Layer Enrichment Calls**  
+The number of times the Tealium Collect tag made requests to the Customer Data Platform data layer for fetching visitor profiles.
 
 ### Functions Reports
 

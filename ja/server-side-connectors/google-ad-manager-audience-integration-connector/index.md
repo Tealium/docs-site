@@ -1,23 +1,23 @@
 ---
 title: Google Ad Manager オーディエンス統合コネクタ構成ガイド
-description: この記事では、Google Ad Manager オーディエンス統合コネクタの構成方法について説明します。
+description: Google Ad Manager オーディエンスリストに訪問を追加または削除するために、Publisher Provided IDs (PPIDs) を使用して Google Ad Manager オーディエンス統合コネクタを構成します。
 url: https://docs.tealium.com/ja/server-side-connectors/google-ad-manager-audience-integration-connector/
 ---
-Google Ad Manager オーディエンス統合コネクタを使用すると、公開社は Publisher Provided ID (PPID) を使用して訪問を Google Ad Manager のユーザーリストに追加できます。その後、PPIDに基づいて広告を配信し、最も価値のある顧客に似たオーディエンスをターゲットにして新しいユーザーを獲得できます。詳細については、[Google Ad Manager ヘルプ: 公開社提供の識別子について](https://support.google.com/admanager/answer/2880055?hl=ja)をご覧ください。
+Google Ad Manager オーディエンス統合コネクタは、Publisher Provided ID (PPID) を使用して公開社が訪問を Google Ad Manager ユーザーリストに追加できるようにします。その後、公開社は PPID を基に広告を配信し、最も価値のある顧客に似たオーディエンスとマッチングすることで新しいユーザーをターゲットにできます。詳細については、[Google Ad Manager ヘルプ: 公開社提供の識別子について](https://support.google.com/admanager/answer/2880055?hl=ja)をご覧ください。
 
 ## 前提条件
 
-* Google Ad Manager のUI内の **Linked Accounts** セクションを使用して、TealiumとGoogle Ad Managerをリンクします。
-* [Google Ad Manager 360 Audience Pixel タグ](https://docs.tealium.com/google-ad-manager-360-audience-pixel-tag/)または[Google Publisher タグ](https://docs.tealium.com/google-publisher-tag/)を使用して、ログインユーザーのPPIDをクライアントサイドで生成して送信します。
-* コネクタで使用するために、PPIDをTealium属性として構成します。
+* Google Ad Manager の **Linked Accounts** セクションで Tealium とリンクします。
+* [Google Ad Manager 360 Audience Pixel タグ](https://docs.tealium.com/google-ad-manager-360-audience-pixel-tag/) または [Google Publisher タグ](https://docs.tealium.com/google-publisher-tag/) を使用して、ログインユーザーに対してクライアントサイドで PPID を生成して送信します。
+* コネクタで使用するために Tealium 属性として PPID を構成します。
 
-## API情報
+## API 情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは以下のベンダー API を使用します：
 
-* API名：Google Data Manager API
-* APIバージョン：v1
-* APIエンドポイント：`https://datamanager.googleapis.com`
+* API 名: Google Data Manager API
+* API バージョン: v1
+* API エンドポイント: `https://datamanager.googleapis.com`
 
 ## コネクタのアクション
 
@@ -28,12 +28,12 @@ Google Ad Manager オーディエンス統合コネクタを使用すると、�
 
 ## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタの追加方法についての一般的な説明は、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
-* **Customer ID**。
-(必須) Ad Manager UIでTealiumにリンクされたアカウントのカスタマーID。Ad Managerで **ツールと構成 > リンクされたアカウント** に移動して、Tealiumへのリンクを作成します。
+* **Customer ID**.
+(必須) Ad Manager UI で Tealium にリンクされたアカウントのカスタマー ID。Ad Manager で **ツールと構成 > リンクされたアカウント** に移動して Tealium へのリンクを作成します。
 
 ## アクション
 
@@ -45,16 +45,16 @@ Google Ad Manager オーディエンス統合コネクタを使用すると、�
 
 このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
-* リクエストの最大数：100,000
-* 最古のリクエストからの最大時間：1440分
-* リクエストの最大サイズ：50 MB
+* 最大リクエスト数: 100,000
+* 最古のリクエストからの最大時間: 1440 分
+* リクエストの最大サイズ: 50 MB
 
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| オーディエンスリスト | オーディエンスリストを選択します。<br>注意：コネクタを使用して作成されたリストのみが利用可能です。 |
-| Publisher Provided ID | (必須) 32文字から150文字の間の英数字またはUUID HEX値でなければなりません。 |
+| オーディエンスリスト | オーディエンスリストを選択します。<br>注意: コネクタを使用して作成されたリストのみが利用可能です。 |
+| Publisher Provided ID | (必須) 単一の英数字または UUID HEX 値、または値の配列。各値は 32 から 150 文字の間でなければなりません。 |
 
 ### オーディエンスリストから削除
 
@@ -62,16 +62,16 @@ Google Ad Manager オーディエンス統合コネクタを使用すると、�
 
 このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
-* リクエストの最大数：100,000
-* 最古のリクエストからの最大時間：1440分
-* リクエストの最大サイズ：50 MB
+* 最大リクエスト数: 100,000
+* 最古のリクエストからの最大時間: 1440 分
+* リクエストの最大サイズ: 50 MB
 
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| オーディエンスリスト | オーディエンスリストを選択します。<br>注意：コネクタを使用して作成されたリストのみが利用可能です。 |
-| Publisher Provided ID | (必須) 32文字から150文字の間の英数字またはUUID HEX値でなければなりません。 |
+| オーディエンスリスト | オーディエンスリストを選択します。<br>注意: コネクタを使用して作成されたリストのみが利用可能です。 |
+| Publisher Provided ID | (必須) 単一の英数字または UUID HEX 値、または値の配列。各値は 32 から 150 文字の間でなければなりません。 |
 
 ## 同意
 
@@ -79,4 +79,4 @@ Google Ad Manager オーディエンス統合コネクタを使用すると、�
 
 ## ヒントとトラブルシューティング
 
-* PPIDが存在することを確認するために、コネクタアクション用のイベントフィードまたはオーディエンス構成にロジックを含めます。これにより、`MISSING_USER_IDENTIFIER` エラーを避けることができます。
+* コネクタが PPID を受け取るようにするためには、コネクタアクションに使用されるイベントフィードまたはオーディエンス構成にロジックを含めてください。このロジックは `MISSING_USER_IDENTIFIER` エラーを避けるのに役立ちます。

@@ -1,6 +1,6 @@
 ---
 title: Amazon Ads Conversions Connector Setup Guide
-description: This article describes how to set up the Amazon Ads Conversions connector.
+description: Set up the Amazon Ads Conversions connector to send conversion events to Amazon Ads.
 url: https://docs.tealium.com/server-side-connectors/amazon-ads-conversions-connector/
 ---
 ## API information
@@ -112,7 +112,7 @@ Do not map the `Name` field to high-cardinality or dynamic data such as page nam
 | Name | (Required) The name of the imported event. Use a small, stable set of names that represent business actions, such as `product_view`, `search`, `lead`, `checkout`, or `purchase`. |
 | Country Code | (Required) ISO 3166-1 alpha-2 country code indicating where the user performing the event was located. |
 | Dataset Name | Event Dataset Name to which this event should be added. Must be a 1–100 character string beginning with a letter and may then contain only letters, digits, underscores, or hyphens. |
-| Event Time | The timestamp of the conversion in ISO format (`YYYY-MM-DDThh:mm:ssTZD`). If not mapped, the connector use the event time. |
+| Event Time | The timestamp of the conversion in ISO format (`YYYY-MM-DDThh:mm:ssTZD`). If not mapped, the connector uses the event time. |
 | Value | The value of the event. |
 | Currency Code | Currency in ISO-4217 format. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
 | Units Sold | The number of items purchased. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
@@ -121,6 +121,16 @@ Do not map the `Name` field to high-cardinality or dynamic data such as page nam
 
 
 #### User Data
+
+Amazon matches uploaded records to Amazon Ads users by evaluating identifiers from most precise to least precise. Three identifier types are supported: hashed PII, mobile advertising IDs (MAIDs), and external IDs.
+
+Email produces the highest match rate because it is the primary credential used to create Amazon accounts and has the broadest coverage in Amazon identity graphs. Phone and MAID work as standalone identifiers but produce lower match rates. Phone numbers can be shared across household members or recycled by carriers. MAIDs are subject to ongoing deprecation.
+
+
+<blockquote>
+We recommend mapping multiple identifier types with email as the priority (for example, email + phone + MAID) to maximize the match rate. If current match rates are acceptable, adding hashed email is the highest-impact improvement available.
+</blockquote>
+
 
 | Parameter | Description |
 | --- | --- |
@@ -225,9 +235,19 @@ This action uses batched requests to support high-volume data transfers to the v
 | Conversion Value | The value of the conversion. |
 | Currency | The currency in ISO 4217 format. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
 | Units Sold | The number of items purchased. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
-| Dedupe ID | If you are tracking conversions in both the tag and the connector, specify a deduplication ID. The value should match for both events. |
+| Dedupe ID | If you are tracking conversions in both the tag and the connector, specify a deduplication ID. The value must match for both events. |
 
 ##### User Data
+
+Amazon matches uploaded records to Amazon Ads users by evaluating identifiers from most precise to least precise. Three identifier types are supported: hashed PII, MAIDs, and external IDs.
+
+Email produces the highest match rate because it is the primary credential used to create Amazon accounts and has the broadest coverage in Amazon identity graphs. Phone and MAID work as standalone identifiers but produce lower match rates. Phone numbers can be shared across household members or recycled by carriers. MAIDs are subject to ongoing deprecation.
+
+
+<blockquote>
+We recommend mapping multiple identifier types with email as the priority (for example, email + phone + MAID) to maximize the match rate. If current match rates are acceptable, adding hashed email is the highest-impact improvement available.
+</blockquote>
+
 
 | Parameter | Description |
 | --- | --- |
