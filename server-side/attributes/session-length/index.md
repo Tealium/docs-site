@@ -1,6 +1,6 @@
 ---
 title: Session length
-description: This article explains visit session length in AudienceStream.
+description: Learn how visit session length works, including default platform timeouts and custom session duration settings.
 url: https://docs.tealium.com/server-side/attributes/session-length/
 ---
 ## How it works

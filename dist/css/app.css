@@ -84,7 +84,8 @@ a {
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-b {
+b,
+strong {
   font-weight: bolder;
 }
 /**
@@ -98,6 +99,9 @@ code {
 /**
  * Add the correct font size in all browsers.
  */
+small {
+  font-size: 80%;
+}
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
@@ -275,9 +279,10 @@ header,
 pre,
 code,
 a,
-h1,h2,h3,h4,
+h1,h2,h3,h4,h5,h6,
 p,
 ul,
+ol,
 li,
 dl,
 dt,
@@ -741,6 +746,7 @@ img { max-width: 100%; }
 .h2 { height: 2rem; }
 .h3 { height: 4rem; }
 .h4 { height: 8rem; }
+.h5 { height: 16rem; }
 /* Height Percentages - Based off of height of parent */
 /* Screen Height Percentage */
 .vh-100 { height: 100vh; }
@@ -1452,7 +1458,8 @@ img { max-width: 100%; }
 
 */
 .nested-copy-line-height p,
-.nested-copy-line-height ul {
+.nested-copy-line-height ul,
+.nested-copy-line-height ol {
   line-height: 1.5;
 }
 .nested-links a {
@@ -1588,7 +1595,7 @@ img { max-width: 100%; }
 a:active, a:focus, a.link:focus {
   outline: none;
 }
-b {
+b, strong {
   font-weight: 500;
 }
 .f11 {
@@ -1828,6 +1835,7 @@ code.hljs{padding:3px 5px}
 .DocSearch-Label{color:var(--docsearch-secondary-text-color);font-size:.875em;font-weight:400;line-height:1.6em}
 .DocSearch-NoResults-Help,.DocSearch-Help{color:var(--docsearch-secondary-text-color);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;margin:0;font-size:.8em;font-weight:300;line-height:1.5em}
 .DocSearch-Title{color:var(--docsearch-text-color);vertical-align:middle;word-wrap: anywhere;font-size:1.1em;font-weight:300;line-height:1.5em}
+.DocSearch-Title strong{font-weight:500}
 .DocSearch-Logo a{display:-ms-flexbox;display:flex}
 .DocSearch-Logo svg{color:var(--docsearch-logo-color);-webkit-margin-start:8px;margin-inline-start:8px}
 .DocSearch-Hits:last-of-type{-webkit-margin-after:24px;margin-block-end:24px}
@@ -1913,6 +1921,8 @@ code.hljs{padding:3px 5px}
     --docsearch-footer-height: 44px;
     --docsearch-footer-background: #fff;
     --docsearch-footer-shadow: 0 -1px 0 0 #e0e3e8,0 -3px 6px 0 rgba(69, 98, 155, .12);
+    --docsearch-chip-background: #e8f2fb;
+    --docsearch-chip-text-color: #147dc0;
 }
 html[data-theme=dark] {
     --docsearch-text-color: #f5f6f7;
@@ -1929,6 +1939,8 @@ html[data-theme=dark] {
     --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, .5),0 -4px 8px 0 rgba(0, 0, 0, .2);
     --docsearch-logo-color: #fff;
     --docsearch-muted-color: #7f8497;
+    --docsearch-chip-background: #1e3a5f;
+    --docsearch-chip-text-color: #9ac8ff;
 }
 [data-theme=dark] .DocSearch-Button {
     border-color: #4a5568;
@@ -1999,6 +2011,10 @@ html[data-theme=dark] {
     -webkit-backdrop-filter: none;
             backdrop-filter: none;
     border-radius: 0;
+}
+/* Ensure facet menu popup sits above the modal overlay */
+.DocSearch-Menu-Positioner {
+    z-index: 20001;
 }
 .DocSearch-Container a {
     text-decoration: none
@@ -2111,6 +2127,7 @@ html[data-theme=dark] {
 .DocSearch-LoadingIndicator,
 .DocSearch-Button-Key,
 .DocSearch-Button-Keys,
+.DocSearch-FacetSelectionBar-Action,
 .DocSearch-Hit-path {
     display: none
 }
@@ -2208,6 +2225,10 @@ section.DocSearch-Hits {
 .DocSearch-Hit-Container {
     color: var(--docsearch-hit-color);
 }
+.DocSearch-Hit-path {
+    color: var(--docsearch-highlight-color);
+    display: none;
+}
 .DocSearch-Hit[aria-selected=true] a {
     background-color: var(--docsearch-hover-color);
 }
@@ -2218,6 +2239,10 @@ section.DocSearch-Hits {
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit-title,
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit-Tree {
     color: var(--docsearch-text-color);
+}
+.DocSearch-Menu-Trigger {
+    background: var(--docsearch-menu-trigger-active-background);
+    color: var(--docsearch-menu-trigger-active-text-color);
 }
 .header-link:after {
   position: relative;
@@ -2530,7 +2555,7 @@ body {
 p {
   margin-bottom: 1.3em;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   margin: 1.414em 0 0.5em;
   line-height: 1.2;
 }
@@ -2541,6 +2566,8 @@ h1 {
 h2 {font-size: 1.65em;}
 h3 {font-size: 1.25em;}
 h4 {font-size: 1.15em;}
+h5 {font-size: 1em; font-weight: bold;}
+small {font-size: 0.8em;}
 nav#breadcrumb ul {
   display: -ms-flexbox;
   display: flex;

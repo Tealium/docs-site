@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/google-ads-enhanced-convers
 This connector uses the following vendor API:
 
 * API Name: Google Ads API
-* API Version: v18
+* API Version: v24
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API: Upload Enhanced Conversions For Leads](https://developers.google.com/google-ads/api/docs/conversions/upload-identifiers)
 

@@ -24,7 +24,7 @@ Use the Google Ads Enhanced Conversions for Web connector to improve the accurac
 This connector uses the following vendor API:
 
 * API Name: Google Ads API
-* API Version: v18
+* API Version: v24
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API: Enhanced Conversions](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions)
 

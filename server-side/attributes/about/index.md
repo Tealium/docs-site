@@ -28,7 +28,7 @@ Scope refers to how long an attribute persists in real-time. The following table
 
 ### Session length
 
-Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.
+Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit  length of 24 hours, regardless of event activity.
 
 For more information, see [Server-side session length](https://docs.tealium.com/server-side-session-length/).
 

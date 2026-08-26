@@ -21,14 +21,6 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 
 
-![](https://docs.tealium.com/images/icons/icon-connector.svg)
-
-#### サーバーサイドコネクタ
-
-* [webhook-oauth2-2-legged-mtls](https://docs.tealium.com/webhook-oauth2-2-legged-mtls/)
-
-
-
 ![](https://docs.tealium.com/images/icons/icon-globe.svg)
 
 #### オーディエンス

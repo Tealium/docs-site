@@ -21,14 +21,6 @@ Get access to beta features through the Early Access program.
 
 
 
-![](https://docs.tealium.com/images/icons/icon-connector.svg)
-
-#### Server-side Connectors
-
-* [webhook-oauth2-2-legged-mtls](https://docs.tealium.com/webhook-oauth2-2-legged-mtls/)
-
-
-
 ![](https://docs.tealium.com/images/icons/icon-globe.svg)
 
 #### Audiences

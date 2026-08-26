@@ -1,4 +1,4 @@
 ---
-title: Data Layer Enrichment
+title: Data layer enrichment
 url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/
 ---

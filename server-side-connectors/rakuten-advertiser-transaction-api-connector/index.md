@@ -1,6 +1,6 @@
 ---
 title: Rakuten Advertiser Transaction API Connector Setup Guide
-description: This article describes how to set up the Rakuten Advertiser Transaction API connector.
+description: Set up the Rakuten Advertiser Transaction API connector to report affiliate transactions.
 url: https://docs.tealium.com/server-side-connectors/rakuten-advertiser-transaction-api-connector/
 ---
 
@@ -20,9 +20,9 @@ Go to the Connector Marketplace and add a new connector. For general instruction
 
 After adding the connector, configure the following settings:
 
-* **Rakuten Advertiser ID**: Your Rakuten Advertiser ID.
-* **Client ID**: The OAuth client ID provided by Rakuten.
-* **Client Secret**: The OAuth client secret key provided by Rakuten.
+* **Rakuten Advertiser ID:** Your Rakuten Advertiser ID.
+* **Client ID:** The OAuth client ID provided by Rakuten.
+* **Client Secret:** The OAuth client secret key provided by Rakuten.
 
 The connector uses OAuth 2.0 client credentials authentication. It exchanges the client ID and client secret for a bearer token at `https://api.linksynergy.com/token`. Bearer tokens expire after 4 hours.
 
@@ -39,7 +39,7 @@ The connector uses OAuth 2.0 client credentials authentication. It exchanges the
 
 | Parameter | Description |
 | --- | --- |
-| Transaction Timestamp | (Required) UTC time the user completed the online commissionable action. |
+| Transaction Timestamp | UTC time in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS.SSSZ`) the user completed the online commissionable action. If not mapped, defaults to the event timestamp. |
 | Order ID | (Required) Unique order ID, preferably consumer-facing for replies to transaction inquiries. |
 | Currency | (Required) Order currency code. |
 | Click ID | Required if not reporting linkless. The 34-character ID sent from Rakuten in redirects or on the final landing page. |
@@ -99,7 +99,7 @@ The connector uses OAuth 2.0 client credentials authentication. It exchanges the
 
 #### Disable product prices calculation
 
-Rakuten requires product prices to be sent as price × quantity. The connector performs this calculation automatically. Enable this checkbox to send the mapped price values without modification.
+Rakuten requires product prices as price × quantity. The connector performs this calculation automatically. Enable this checkbox to send the mapped price values without modification.
 
 ### Send Refund
 
@@ -107,7 +107,7 @@ Rakuten requires product prices to be sent as price × quantity. The connector p
 
 | Parameter | Description |
 | --- | --- |
-| Transaction Timestamp | (Required) UTC time the user completed the original commissionable action. |
+| Transaction Timestamp | UTC time in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS.SSSZ`) the user completed the original commissionable action. If not mapped, defaults to the event timestamp. |
 | Order ID | (Required) Unique order ID for the transaction being refunded. |
 | Currency | (Required) Order currency code. |
 | Click ID | (Required) The 34-character ID sent from Rakuten in redirects or on the final landing page. |
@@ -124,7 +124,7 @@ Rakuten requires product prices to be sent as price × quantity. The connector p
 
 #### Disable product prices calculation
 
-Rakuten requires product prices to be sent as price × quantity. The connector performs this calculation automatically. Enable this checkbox to send the mapped price values without modification.
+Rakuten requires product prices as price × quantity. The connector performs this calculation automatically. Enable this checkbox to send the mapped price values without modification.
 
 ## Optional data by vertical
 
@@ -135,7 +135,7 @@ The Rakuten Advertising API supports vertical-specific optional data fields that
 | API field | Description | Usage |
 | --- | --- | --- |
 | `autopay` | Indicates whether a consumer set up an account to make payments automatically. | Order level |
-| `customer_segment_group` | Advertiser-defined segmentation of users into one of five groups; shown in reporting as quintiles score. | Item level |
+| `customer_segment_group` | Advertiser-defined segmentation of users into one of five groups, shown in reporting as quintiles score. | Item level |
 | `designated_marketing_area` | ID of the consumer offer designated marketing area. | Order level |
 | `estimated_aum` | Estimated assets under management for the consumer after the account has been opened. | Order level |
 | `funded_amount` | Updated total balance of each opened account. | Item level |
@@ -163,8 +163,8 @@ The Rakuten Advertising API supports vertical-specific optional data fields that
 | API field | Description | Usage |
 | --- | --- | --- |
 | `artist_curation_id` | ID of an artist used for customized product curation for a customer. | Order level |
-| `commission_estimate` | Estimated commission for marketplace advertisers; not shown to publishers. | Order level |
-| `credit_card_last_four` | Last four digits of the credit card; intended as an identifier for card-linked offers. | Order level |
+| `commission_estimate` | Estimated commission for marketplace advertisers. Not shown to publishers. | Order level |
+| `credit_card_last_four` | Last four digits of the credit card, intended as an identifier for card-linked offers. | Order level |
 | `discount_amount` | Discount amount applied at the order level. | Order level |
 | `discount_amount` | Discount amount applied at the item level. | Item level |
 | `discount_type` | Type of discount used at the order level. | Order level |
@@ -215,7 +215,7 @@ The Rakuten Advertising API supports vertical-specific optional data fields that
 | `property_type` | Type of property, such as hotel or motel. | Item level |
 | `reservation_end_datetime` | Reservation end date. | Order level |
 | `reservation_length_in_days` | Number of days in the reservation. | Order level |
-| `reservation_region` | Region associated with the travel reservation; useful where the advertiser has multiple locations. | Item level |
+| `reservation_region` | Region associated with the travel reservation, useful where the advertiser has multiple locations. | Item level |
 | `reservation_start_datetime` | Reservation start date. | Order level |
 | `travel_reason` | Reason for travel, such as personal or business. | Order level |
 | `travel_type` | Type of travel reservation, such as airline, cruise, hotel, rental car, or activity. | Item level |

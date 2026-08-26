@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/google-ads-store-sales-conn
 This connector uses the following vendor API:
 
 * API Name: Google Ads API
-* API Version: v18
+* API Version: v24
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 

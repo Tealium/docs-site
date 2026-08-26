@@ -136,7 +136,7 @@ This connector action can use batched requests to support high-volume data trans
 This connector uses the following vendor API:
 
 * API Name: Google Ads API
-* API Version: v18
+* API Version: v24
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 

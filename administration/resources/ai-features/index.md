@@ -1,5 +1,5 @@
 ---
-title: Tealium AI Features
+title: Tealium AI features
 description: Tealium offers AI features to enhance your experience in the product interface.
 url: https://docs.tealium.com/administration/resources/ai-features/
 ---
@@ -54,6 +54,16 @@ To enable or disable a feature at the profile level, it must first be enabled at
 
 Tealium AI features include the following:
 
+### AI recommendations
+
+AI recommendations analyzes your attributes and visitor data to suggest audiences to create. It applies an industry-specific knowledge base to generate each recommendation. Each recommendation includes suggested conditions, an explanation of why the audience was recommended, next best actions, and an estimated audience size.
+
+When this feature is enabled at the account level, you can turn it on or off in each profile.
+
+![](https://docs.tealium.com/images/server-side/audiences/ai-recommendations-tab.png)
+
+For more information, see [AI audience recommendations](https://docs.tealium.com/ai-audience-recommendations/).
+
 ### AI Note Generation
 
 The AI Note Generation feature (also known as NoteGen Agent) automatically generates clear, contextually relevant notes for supported configuration components, such as Tealium iQ variables and AudienceStream audiences. This makes it easier for users to quickly understand a component's configuration and purpose.
@@ -102,7 +112,15 @@ The following example shows an expanded **Sources** link at the end of the respo
 
 ![](https://docs.tealium.com/images/administration/ai-assistant-sources-link.png)
 
-### SQL Writer
+### Functions AI Assistant
+
+The functions writer is a context-aware AI assistant built into the functions code editor. It generates JavaScript code, trigger rules, and test payloads for any function type based on plain-language descriptions. When this feature is enabled at the account level, you can turn it on or off in each profile.
+
+For more information, see [Functions writer AI assistant](https://docs.tealium.com/functions-writer/).
+
+![](https://docs.tealium.com/images/server-side/functions-ai-assistant.png)
+
+### SQL writer
 
 The SQL writer AI assistant generates SQL queries from natural language prompts against specified cloud data source tables, views, schemas, or databases. When this feature is enabled at the account level, you can turn it on or off in each profile.
 

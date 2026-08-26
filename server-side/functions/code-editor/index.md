@@ -11,6 +11,12 @@ The Tealium Functions code editor provides tabs for creating, configuring, testi
 
 When you create a new function, the **Code** tab displays example function code with explanations in comments. You can modify the example code, or replace it with your own code.
 
+
+<blockquote>
+If functions writer is enabled on your profile, use the **Ask AI** button to generate code. For more information, see [functions writer](https://docs.tealium.com/functions-writer/).
+</blockquote>
+
+
 ## Monitoring tab
 
 The **Monitoring** tab displays the following function statistics for the last hour, 12 hours, day, 7 days, or 30 days:

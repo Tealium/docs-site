@@ -94,12 +94,6 @@ Only read-only SQL queries are supported. Ensure that your queries do not modify
 
 ##### SQL writer
 
-
-<blockquote>
-This feature is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
-</blockquote>
-
-
 The data sources SQL writer is an AI assistant that generates SQL queries from natural language prompts. To use the SQL writer, enable the feature in [AI settings](https://docs.tealium.com/ai-features/). 
 
 To generate a query using the SQL writer:

@@ -5,18 +5,25 @@ url: https://docs.tealium.com/server-side/connectors/about/
 ---
 ## How it works
 
-A connector is an integration that transmits data between Tealium and another vendor in real-time. A connector offers actions that represent vendor-supported APIs. An action is triggered in real-time by an incoming event from a feed or a visitor joining or leaving an audience. An action sends data based on mappings that associate Tealium attributes to the expected vendor parameters.
+A connector is an integration that transmits data between Tealium and another vendor in real-time. A connector offers actions that represent vendor-supported APIs. An action is triggered in real-time by an incoming event from a feed or a visitor's status in an audience. An action sends data based on mappings that associate Tealium attributes to the expected vendor parameters.
 
-In CloudStream, segment data is not persisted or stored in Tealium systems. After retrieving the data and sending it to configured connectors, Tealium discards it.
+In [CloudStream](https://docs.tealium.com/about-cloudstream/), segment data is not persisted or stored in Tealium systems. After retrieving the data and sending it to configured connectors, Tealium discards it.
 
 ### Terminology
 
 * **Connector**  
-A connector represents the connection to your vendor account. The connection is configured using credentials such as an account ID, username and password, or an API key.
+A connector represents a connection to a vendor. The connection is configured using credentials such as an account ID, username and password, an API key, or other authentication method.
 * **Action**  
-An action is a vendor operation, such as triggering an email, building a custom audience, or managing leads. Actions vary depending on the vendor service. Multiple actions can be associated with a single connector.
+An action is a vendor operation, such as tracking a conversion, building a custom audience, or managing leads. Actions vary depending on the vendor service. Multiple actions can be associated with a single connector.
+* **Triggers**
+  * For event connectors, an action is triggered for every real-time event in the feed.
+  * For audience connectors, an action is triggered based on the visitor's status within the audience:
+    * **Joined Audience**: The visitor joined the audience during this visit.
+    * **Left Audience**: The visitor left the audience during this visit. This action does not occur when a visitor is deleted. For more information, see [Deleting a visitor](https://docs.tealium.com/visitor-search/#deleting-a-visitor).
+    * **In Audience at start of visit**: The visitor was in the audience at the start of the visit.
+    * **In Audience at end of visit**: The visitor was in the audience at the end of the visit.
 * **Connector metadata**  
-Mappable values that describe the connector context (audience name, action ID, and similar). Use them to pass connector information downstream without manual copy/paste. For more information, see [Connector metadata](https://docs.tealium.com/add-connector/#connector-metadata).
+Mappable values that describe the connector context (audience name, action ID, and similar). Use them to pass connector information downstream without copying and pasting manually. For more information, see [Connector metadata](https://docs.tealium.com/add-connector/#connector-metadata).
 * **Frequency Cap**  
 A connector action performs in real-time, but some actions are designed to have a wait period before they are triggered. The frequency cap lets you set a downtime period for actions so that they do not trigger immediately. For more information, see [action-frequency-capping-amp-prioritization](https://docs.tealium.com/action-frequency-capping-amp-prioritization/).
 * **Source**  

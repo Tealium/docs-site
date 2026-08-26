@@ -3,7 +3,7 @@ title: イベント属性の管理
 description: この記事では、イベント属性の管理方法について説明します。
 url: https://docs.tealium.com/ja/server-side/attributes/manage-es-attributes/
 ---
-**Transform > Event Attributes** にアクセスして、イベント属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+**Transform > Event Attributes** に移動して、イベント属性を表示します。テーブルの左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックすると、その詳細が表示されます。
 
 ![](https://docs.tealium.com/images/server-side/ea-filter-es-attributes.png)
 
@@ -41,7 +41,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-es-attributes/
 
 
 <blockquote>
-事前にロードされた属性は変更できませんが、それを複製してコピーを変更することができます。複製には元のものからすべてのエンリッチメントとルールが含まれます。
+事前にロードされた属性は変更できませんが、複製してコピーを変更することができます。複製には元のものからすべてのエンリッチメントとルールが含まれます。
 </blockquote>
 
 
@@ -59,8 +59,8 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-es-attributes/
 1. 削除する属性をクリックします。
 1. 削除アイコンをクリックします。
       ![](https://docs.tealium.com/images/server-side/delete-es-attribute.png)  
-ルール、エンリッチメント、またはオーディエンスによって現在使用中の属性を削除しようとすると、次のメッセージが表示されます：
+ルール、エンリッチメント、またはオーディエンスで現在使用中の属性を削除しようとすると、次のメッセージが表示されます：
       ![](https://docs.tealium.com/images/server-side/attribute-delete-in-use.png)  
-属性を削除するには、ルール、エンリッチメント、またはオーディエンスからそれを削除してから再試行してください。
+属性を削除するには、ルール、エンリッチメント、またはオーディエンスから削除してから再試行してください。
 1. **Delete Attribute** ダイアログで、**Delete** をクリックして属性を削除します。
 1. 変更を適用するためにプロファイルを保存して公開します。
