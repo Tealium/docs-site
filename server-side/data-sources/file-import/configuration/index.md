@@ -42,7 +42,7 @@ The **Sample File** preview screen displays the file contents in table format.
 
 Use the **Map Columns** table to map preconfigured column labels to event attributes or manually enter your file column labels for mapping. Each row of the CSV file is processed as an event. 
 
-Columns not mapped to an event attribute will be ignored. Mapped columns not present in the CSV file will be skipped.
+Columns not mapped to an event attribute will be ignored. Mapped columns not present in the CSV file will also be ignored.
 
 Complete the following steps to map your file column labels to event attributes:
 

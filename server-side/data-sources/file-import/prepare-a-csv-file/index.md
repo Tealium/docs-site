@@ -91,7 +91,7 @@ The field separator must be a comma (`,`).
 * **Column order**  
   The order of the columns does not matter, but we recommend placing the visitor ID column first.
 * **Extra/Missing columns**  
-  Extra columns that are not configured as AudienceStream attributes will be ignored. Mapped columns not present in the CSV file will be skipped.
+  Extra columns that are not mapped to event attributes will be ignored. Mapped columns not present in the CSV file will also be ignored.
 * **Group rows by visitor ID**  
   Each row has a [visitor ID](https://docs.tealium.com/visitor-id-attribute/) column and file may contain multiple rows for the same visitor. Rows that contain the same visitor ID should be grouped together to optimize the import process.
 * **Line endings**  

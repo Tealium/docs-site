@@ -43,7 +43,7 @@ An account admin must enable Studio at the account-level and profile-level befor
 To enable Studio:
 
 1. In Tealium Classic, open **AI Settings**.
-1. Tun on the **Tealium Studio** setting at the account level.
+1. Turn on the **Tealium Studio** setting at the account level.
 1. Turn on the **Tealium Studio** setting for each server-side profile where it should be available.
 1. Save the settings.
 1. Assign users access through platform permissions, or confirm their existing profile role if your organization uses legacy permissions.
