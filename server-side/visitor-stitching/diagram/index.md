@@ -41,3 +41,11 @@ A few days later, a nurture campaign sends an email to `user@example.com`.
         * A `replaces` array that contains links to profile C and profile D.
     * The `replaced by` attribute in profiles C and D contains a link to profile E.
     * Lookup can still be performed on the anonymous IDs in profiles A, B, C, and D.
+
+## Audience membership after a stitch
+
+After a stitch, the stitched profile's attribute values are determined by replaying all events from both profiles in chronological order. Audience membership is re-evaluated based on the resulting attribute values.
+
+### Connector trigger behavior
+
+When two profiles are stitched, their audience memberships are combined, then re-evaluated against the stitched profile's attribute values. A **Joined Audience** connector action triggers only if the stitched profile qualifies for an audience that neither profile belonged to before the stitch. A **Left Audience** connector action triggers if the stitched profile no longer qualifies for an audience that at least one profile belonged to before the stitch.

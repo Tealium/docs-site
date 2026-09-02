@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/ai-studio/
 ---
 
 <blockquote>
-Tealium Studioは選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
+Tealium Studioはリクエストによってのみ利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
 </blockquote>
 
 

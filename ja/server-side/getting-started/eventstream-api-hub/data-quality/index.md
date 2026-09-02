@@ -1,23 +1,27 @@
 ---
-title: イベント仕様: データ品質
-description: イベント仕様を定義した後、Live Eventsはあなたの受信データの品質を表示します。
+title: イベント仕様：データ品質
+description: イベント仕様を定義した後、Live Eventsは受信データの品質を表示します。
 url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub/data-quality/
 ---
-チャートの色分けされたバーは、イベント仕様の検証に基づいてあなたのデータに対して区分されています。
+チャートのカラーコード付きバーは、データに対するイベント仕様の検証に応じて区切られています。
 
 ![](https://docs.tealium.com/images/server-side/getting-started-eventstream-live-events-all-filters.png)
+<!-- GAP: replace getting-started-eventstream-live-events-all-filters.png with a screenshot of the live events chart showing all four segments: Valid (green), Warn (yellow), Invalid (red), and No Spec (blue) -->
 
-イベント仕様の検証を持つLive Events：
+イベント仕様検証付きのLive Events：
 
-* **有効（緑）**  
-有効なイベントはイベント仕様の要件を満たします。イベントは`tealium_event`属性の既知の値を持ち、必要なすべての属性を含んでいます。
+* **Valid (Green)**  
+有効なイベントはイベント仕様の要件を満たしています。イベントには`tealium_event`属性の既知の値があり、必要な属性がすべて正しいデータ型で含まれています。
 
-* **無効（赤）**  
-無効なイベントはイベント仕様に一致しますが、必要な属性を含んでいません。イベントは`tealium_event`属性の既知の値を持っていますが、必要な属性が欠落しているか予期しない値を含んでいます。
+* **Warn (Yellow)**  
+警告イベントはイベント仕様と一致し、必要な属性はすべて検証を通過しますが、1つ以上のオプション属性が欠落しているか、間違ったデータ型を持っています。
 
-* **仕様なし（青）**  
-**仕様なし**とマークされたイベントは、一致するイベント仕様を持っていません。イベントは`tealium_event`属性を持っていないか、値が対応するイベント仕様を持っていません。
+* **Invalid (Red)**  
+無効なイベントはイベント仕様と一致しますが、少なくとも1つの必要な属性が欠けているか、間違ったデータ型を持っているか、構成されたデータ値ルールと一致しません。
 
-フィルタのいずれかをクリックして、その値をオンまたはオフに切り替え、チャートの表示を調整します。
+* **No Spec (Blue)**  
+**No Spec**とマークされたイベントは対応するイベント仕様がありません。イベントには`tealium_event`属性がないか、値に対応するイベント仕様がありません。
 
-これで、データレイヤーのインストールと設定の基本が終了しました。次のチュートリアルでは、アクション可能なイベントフィードの作成方法を示します。
+フィルターのいずれかをクリックして、その値の表示を切り替えてチャートの表示を調整します。
+
+これでデータレイヤーのインストールと構成の基本が完了しました。次のチュートリアルでは、アクション可能なイベントフィードを作成する方法を示します。

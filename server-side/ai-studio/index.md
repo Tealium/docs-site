@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/ai-studio/
 ---
 
 <blockquote>
-Tealium Studio is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
+Tealium Studio is only available by request. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
 </blockquote>
 
 

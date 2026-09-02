@@ -49,6 +49,8 @@ Learn more about [data sources](https://docs.tealium.com/about-data-sources/).
 
 Establish a solid data foundation by creating event specifications. Specifications define your data layer by identifying the events you want to track and their associated attributes. Specifications ensure that you maintain a high quality of data for EventStream to process. Specs and attributes help you establish a universal data strategy across all of your digital properties.
 
+<!-- GAP: add a screenshot of the Event Specifications overview page showing the Total Volume, Valid Events, Warn Events, Invalid Events, and No Spec metric tiles and the Defined Events table -->
+
 Learn more about [event specifications](https://docs.tealium.com/about-event-specifications/) and [attributes](https://docs.tealium.com/about-attributes/).
 
 ## Live Events
@@ -56,8 +58,9 @@ Learn more about [event specifications](https://docs.tealium.com/about-event-spe
 **Live Events** is a real-time chart that shows incoming data from your data sources. After your data source is installed and sending data, the events appear on this screen. In the **Live Events** chart, click a bar to see the details of the event received. From there, you can define event attributes, see data validation of events, or define new specifications based on incoming events.
 
 ![](https://docs.tealium.com/images/server-side/white-ui-event-feed-live-events.png)
+<!-- GAP: replace white-ui-event-feed-live-events.png with a screenshot of the live events chart showing all four status segments including Warn (yellow) in the chart legend -->
 
-In addition, if you activate specifications, the data quality of the incoming events is reflected in the bar chart so you can quickly see if there are invalid events that need to be fixed.
+In addition, if you activate specifications, the data quality of the incoming events is reflected in the bar chart so you can quickly see if there are warn or invalid events that need attention.
 
 Learn more about [Live Events](https://docs.tealium.com/about-live-events/).
 

@@ -115,19 +115,21 @@ The available categories are:
 |  `evt.type` |String |HTML event type.  |
 | `evt.preventDefault` |Boolean |Use prevent default.  | 
 | `evt.params` | Object | Mbox parameters.   |
-| `evt.params.###` | String | Mbox parameters item.  | 
+| `evt.params.###` | String | Custom mbox parameter. Replace `###` with the parameter name (for example, `evt.params.param1`).  | 
 | `evt.timeout` | Integer | Timeout.   | 
 |  `evt.success` | Function | Success function.  |
 |  `evt.error` | Function | Error function.  |
 
 ### Parameters
 
+In parameter variable names, `###` is a placeholder. Replace it with your custom parameter name. For example, to pass a parameter named `param1` to all mboxes on the current page, map a variable to `targetPageParams.param1`.
+
 | Variable | Description |
 |:---------|:------------|
-| `mboxParams.###` |mboxParams.###  | 
-| `targetPageParamsAll.###` |targetPageParamsAll.###  | 
-|  `targetPageParams.###` |targetPageParams.###  |
-| `targetPageParams.at_property` |targetPageParams.at_property  | 
+| `mboxParams.###` | Replace `###` with the parameter name (for example, `mboxParams.param1`). |
+| `targetPageParamsAll.###` | Custom parameters passed to all mboxes. Replace `###` with the parameter name (for example, `targetPageParamsAll.param1`). |
+|  `targetPageParams.###` | Custom parameters passed to the global mbox. Replace `###` with the parameter name (for example, `targetPageParams.param1`). |
+| `targetPageParams.at_property` | Adobe Target workspace property token. |
 
 ### Multiple Offers and SPA
 

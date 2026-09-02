@@ -18,6 +18,8 @@ Next, return to your site or app to trigger the test event. If you are using the
 Click the bar to see the event details. Notice that the event name (`search`) and the data source (`My Sample App`) are displayed prominently in the top header section. Below the event name is a list of all the data attributes contained in the event, some of which are set automatically for every event.
 
 ![](https://docs.tealium.com/images/server-side/eventstream-getting-started-live-events-event-details.png)
+<!-- GAP: replace eventstream-getting-started-live-events-event-details.png with an updated screenshot of the search event details showing the updated tab bar with Valid, Warn, Invalid, and No Spec counts -->
+
 
 Try experimenting with different event names and adding additional parameters to the event.
 

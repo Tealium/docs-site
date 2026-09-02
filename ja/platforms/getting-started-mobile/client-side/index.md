@@ -61,7 +61,7 @@ var mps = {
 クライアントサイドのアプローチには以下の利点があります：
 
 * **タグベンダーサポート**
-クライアントサイドソリューションはiQタグ管理を使用してデプロイされるため、既存の[Tag Marketplace](https://docs.tealium.com/search-tag-marketplace/)の統合にアクセスできます。
+クライアントサイドソリューションはiQタグ管理を使用してデプロイされるため、既存のTag Marketplaceの統合にアクセスできます。
 * **データレイヤーカスタマイズ**
 [extensions](https://docs.tealium.com/about-extensions/)を使用したデータレイヤーのカスタマイズオプションが増えます。
 

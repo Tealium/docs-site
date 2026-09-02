@@ -18,7 +18,7 @@ After you add specifications, they can be associated to data sources. Specs are 
 * **Get code and installation guide**  
 When specifications are associated to a data source, the installation guide automatically includes code samples for each one.
 * **Data validation**  
-The **Live Events** screen now reflects the quality of your data based on the events that match specifications and if they contain the required attributes.
+The **Live Events** screen now reflects the quality of your data based on whether events include all required attributes with the correct data types and configured data value rules. Optional attributes that fail a type check, a data value rule, or are missing appear as **Warn** events.
 
 ## Example event specification
 
