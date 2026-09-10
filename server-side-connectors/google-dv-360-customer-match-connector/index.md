@@ -3,7 +3,7 @@ title: Google Display & Video 360 Customer Match Connector Setup Guide
 description: This article describes how to set up the Google Display & Video 360 Customer Match connector.
 url: https://docs.tealium.com/server-side-connectors/google-dv-360-customer-match-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -30,7 +30,7 @@ When you add this connector, you are prompted to accept the vendor's data platfo
 
 After adding the connector, configure the following settings:
 
-* **Customer ID**: (Required) Your Google DV360 Partner ID that is linked to Tealium. To find your Partner ID from the Google DV360 dashboard go to **Partner Settings > Basic Details**.
+* **Customer ID**: (Required) Your Google DV360 Partner ID that is linked to Tealium. To find your Partner ID, go to **Partner Settings > Basic Details** in the Google DV360 dashboard.
 * **Target Product**: (Required) The target product of the linked account.
 
 Click **Done** when you are finished configuring the connector.
@@ -42,7 +42,7 @@ To create a customer match list, click **Create Customer Match List** and enter 
 | **Parameter** | **Description** |
 | --- | --- |
 | List Name | (Required) Customer match list name. |
-| List Type | (Required) The List Type. This affects the type of user identification information to be used with this list:<ul><li>Contact Info - members are matched from customer info such as email address, phone number, or physical address.</li><li>Mobile Advertising - members are matched from mobile advertising IDs.</li></ul> |
+| List type | (Required) The list type. This affects the type of user identification information to be used with this list:<ul><li>Contact Info - members are matched from customer info such as email address, phone number, or physical address.</li><li>Mobile Advertising - members are matched from mobile advertising IDs.</li></ul> |
 | App ID | Required for Mobile Advertising list types. A string that uniquely identifies the mobile application from which the data was collected. |
 |  List Membership Lifespan | (Optional) The number of days a user stays on the list since their most recent addition to the list. Number must be between `0` and `540`. The default lifespan is 540 days. |
 | List Description | (Optional) List description. |
@@ -51,8 +51,8 @@ To create a customer match list, click **Create Customer Match List** and enter 
 
 | Action Name | AudienceStream | EventStream |
 | --- | :---: | :---: |
-| Add to Customer Match List (multiple identifiers) | ✓ | ✓ |
-| Remove from Customer Match List (multiple identifiers) | ✓ | ✓ |
+| Add to Customer Match List (Data Manager API) | ✓ | ✓ |
+| Remove from Customer Match List (Data Manager API) | ✓ | ✓ |
 | Add to Customer Match List (Deprecated) | ✓ | ✓ |
 | Remove from Customer Match List (Deprecated) | ✓ | ✓ |
 
@@ -66,7 +66,7 @@ Each action requires a user identifier and these values must be normalized and h
 
 Either map attributes that are already normalized and hashed or allow the connector to normalize and hash them for you. Select the appropriate mapping for your scenario.
 
-The `User List` type you select determines the type of user identifier. The `User List` type can be one of the following:
+The `User List` type you select determines the type of user identifier. The `User List` type is one of the following:
 
 * `CONTACT_INFO`
 * `MOBILE_ADVERTISING_ID`
@@ -75,12 +75,12 @@ The following user identifier fields are supported:
 
 |User Identifier Field| Description|
 |---| ---|
-| `CONTACT_INFO` |  <ul><li>Provide Hashed Email, Hashed Phone Number, or Address Info.</li><li>**Address Info: Country Code** - 2-letter country code for user's address in ISO 3166-1 alpha-2 format.</li><li>**Address Info: First Name (already SHA256 hashed)** - Provide first name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: First Name (apply SHA256 hash)** - Provide a plain text first name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Last Name (already SHA256 hashed)** - Provide last name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: Last Name (apply SHA256 hash)** - Provide a plain text last name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Postal Code** - Postal code of the user's address.</li><li>**Email Address (already SHA256 hashed)** - Provide an email address, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Email Address (apply SHA256 hash)** - Provide a plain text email address. The connector hashes this value using SHA256 hash.</li><li>**Phone Number (already SHA256 hashed)** - Provide a phone number, with whitespace trimmed, that has been SHA256 hashed.</li><li>**Phone Number (apply SHA256 hash)** - Provide a plain text phone number. The connector hashes this value using SHA256 hash.</li></ul> |
+| `CONTACT_INFO` |  <ul><li>Provide Hashed Email, Hashed Phone Number, or Address Info.</li><li>When providing address info, all four fields are required: country code, first name, last name, and postal code. If any Address Info field is missing, the connector removes the entire address object from the request. If no user data remains after removal, the action fails with a validation error and is not retried.</li><li>**Address Info: Country Code** - 2-letter country code for user's address in ISO 3166-1 alpha-2 format.</li><li>**Address Info: First Name (already SHA256 hashed)** - Provide first name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: First Name (apply SHA256 hash)** - Provide a plain text first name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Last Name (already SHA256 hashed)** - Provide last name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Address Info: Last Name (apply SHA256 hash)** - Provide a plain text last name. The connector hashes this value using SHA256 hash.</li><li>**Address Info: Postal Code** - Postal code of the user's address.</li><li>**Email Address (already SHA256 hashed)** - Provide an email address, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li>**Email Address (apply SHA256 hash)** - Provide a plain text email address. The connector hashes this value using SHA256 hash.</li><li>**Phone Number (already SHA256 hashed)** - Provide a phone number, with whitespace trimmed, that has been SHA256 hashed.</li><li>**Phone Number (apply SHA256 hash)** - Provide a plain text phone number. The connector hashes this value using SHA256 hash.</li></ul> |
 |`MOBILE_ADVERTISING_ID`|  <ul><li>**Mobile ID** (Required) - Mobile device ID (advertising ID/IDFA).</li></ul> |
 
-### Add to Customer Match List (multiple identifiers)
+### Add to Customer Match List (Data Manager API)
 
-#### API Information
+#### API information
 
 This connector uses the following vendor API:
 
@@ -89,7 +89,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://datamanager.googleapis.com`
 * Documentation: [Google Data Manager API](https://developers.google.com/data-manager/api/reference/rest)
 
-#### Batch Limits
+#### Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -108,11 +108,17 @@ This action uses batched requests to support high-volume data transfers to the v
 
 When using the **Add Visitor to Customer Match List** action, the connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. Use audience logic to prevent non-consented visitors from being added to lists. Use the **Remove from Customer Match List** action to remove non-consented visitors from lists.
 
-### Remove from Customer Match List (multiple identifiers)
+### Remove from Customer Match List (Data Manager API)
 
-For mapping options, see [Add to Customer Match List (multiple identifiers)](#add-to-customer-match-list-multiple-identifiers).
+For mapping options, see [Add to Customer Match List (Data Manager API)](#add-to-customer-match-list-data-manager-api).
 
 ### Add to Customer Match List (Deprecated)
+
+
+<blockquote>
+This action is deprecated and will be removed in a future release. Migrate to [Add to Customer Match List (Data Manager API)](#add-to-customer-match-list-data-manager-api).
+</blockquote>
+
 
 
 <blockquote>
@@ -129,7 +135,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 
-#### Batch Limits
+#### Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -149,6 +155,12 @@ When using the **Add Visitor to Customer Match List** action, the connector send
 
 ### Remove from Customer Match List (Deprecated)
 
+
+<blockquote>
+This action is deprecated and will be removed in a future release. Migrate to [Remove from Customer Match List (Data Manager API)](#remove-from-customer-match-list-data-manager-api).
+</blockquote>
+
+
 #### API information
 
 This connector uses the following vendor API:
@@ -158,7 +170,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://googleads.googleapis.com/`
 * Documentation: [Google Ads API](https://developers.google.com/google-ads/api/docs/start)
 
-#### Batch Limits
+#### Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 

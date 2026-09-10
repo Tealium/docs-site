@@ -9,15 +9,15 @@ AI enrichments is only available to select customers. If you are interested in t
 </blockquote>
 
 
-AI enrichments apply LLM-based processing to real-time customer data inside the Tealium customer data pipeline. Configure an AI enrichment by writing a prompt, selecting a trigger, and choosing input and output attributes. The AI enrichment evaluates that data, generates a new event containing the output data, and sends it back to the Tealium data pipeline, making it available for audiences, connectors, and downstream activation.
+AI enrichments apply LLM-based processing to real-time customer data inside the Tealium customer data pipeline. Configure an AI enrichment by writing AI instructions, selecting a trigger, and choosing attributes to evaluate and output event attributes. The AI enrichment evaluates that data, generates a new event containing the output data, and sends it back to the Tealium data pipeline, making it available for audiences, connectors, and downstream activation.
 
 ## How it works
 
 Each AI enrichment follows this flow:
 
-**Trigger → Inputs → Prompt → Generate event (Outputs)**
+**Trigger → Evaluate attributes → Run AI instructions → Generate event (Output event attributes)**
 
-When the trigger fires, the AI enrichment evaluates the input attributes according to the prompt and produces output values. The AI enrichment generates a new AI enrichment event with the output attributes and sends it back to the Tealium data collection pipeline. To complete the enrichment, configure attributes, audiences, and connectors to act on that event.
+When the trigger fires, the AI enrichment evaluates the attributes to evaluate according to the AI instructions and produces output values. The AI enrichment generates a new AI enrichment event with the output event attributes and sends it back to the Tealium data collection pipeline. To complete the enrichment, configure attributes, audiences, and connectors to act on that event.
 
 Every trigger execution generates a new event. 
 
@@ -38,24 +38,26 @@ The AI enrichment runs when a visitor joins or leaves a selected audience. Use t
 * **Processed event**  
 The AI enrichment runs after an event feed processes an event. Use this trigger for high-signal interactions that warrant immediate evaluation.
 
-### Inputs and outputs
+### Attributes to evaluate
 
-_Inputs_ are the visitor, visit, and event attributes the AI enrichment evaluates. To optimize the enrichment, use attributes that meaningfully reflect the condition you want the AI enrichment to detect, such as engagement trends, subscription changes, support interactions, or financial signals.
+_Attributes to evaluate_ are the visitor, visit, and event attributes the AI enrichment evaluates. To optimize the enrichment, use attributes that meaningfully reflect the condition you want the AI enrichment to detect, such as engagement trends, subscription changes, support interactions, or financial signals.
 
-_Outputs_ are event attributes that appear in the generated AI enrichment event. To persist an output attribute to the visitor profile, configure an enrichment rule that sets the attribute from the generated event.
+### Output event attributes
 
-### Prompts
+_Output event attributes_ are event attributes that appear in the generated AI enrichment event. To persist an output attribute to the visitor profile, configure an enrichment rule that sets the attribute from the generated event.
 
-The prompt is the task instruction for the AI enrichment. It describes the business outcome, the behavior to evaluate, decision criteria, and how to interpret the input attributes.
+### AI instructions
 
-Tealium automatically appends the configured input attributes to the prompt before sending it to the model.
+AI instructions are the task instruction for the AI enrichment. They describe the business outcome, the behavior to evaluate, decision criteria, and how to interpret the attributes to evaluate.
+
+Tealium automatically appends the configured attributes to evaluate to the AI instructions before sending them to the model.
 
 The AI enrichment receives the following:
 
-* System message: Tealium-controlled prompt guardrails covering safety, scope, and output format.
-* Custom message: Your prompt combined with the input data.
+* System message: Tealium-controlled guardrails covering safety, scope, and output format.
+* Custom message: Your AI instructions combined with the input data.
 
-For the best results, include the following in your prompt:
+For the best results, include the following in your AI instructions:
 
 * The business goal or decision to make.
 * The behavior or signal to detect.
@@ -63,17 +65,17 @@ For the best results, include the following in your prompt:
 * Guidance for interpreting the selected input data.
 * Instructions about missing data or ambiguous scenarios.
 
-Do not include the following:
+Do not include the following in your AI instructions:
 
 * JSON formatting instructions such as "return only JSON".
 * A manually written output schema, field list, or data types.
-* Tealium identifiers or fields you did not select as inputs.
+* Tealium identifiers or fields you did not select as attributes to evaluate.
 * Assumptions about data that is not present.
 * Requests for long-form content or media generation.
 
 ### AI enrichment event
 
-After processing the input attributes and prompt, the AI enrichment generates a new enrichment event. This event contains `tealium_event` and your output attributes and it flows back into the data collection pipeline. The `tealium_event` value is in the format `async_processed_AI_ENRICHMENT_ID` where `AI_ENRICHMENT_ID` is unique to each enrichment you configure. Use this value when configuring downstream components, such as enrichment rules or event feeds.
+After processing the attributes to evaluate against the AI instructions, the AI enrichment generates a new enrichment event. This event contains `tealium_event` and your output event attributes and it flows back into the data collection pipeline. The `tealium_event` value is in the format `async_processed_AI_ENRICHMENT_ID` where `AI_ENRICHMENT_ID` is unique to each enrichment you configure. Use this value when configuring downstream components, such as enrichment rules or event feeds.
 
 Example AI enrichment event:
 ```json
@@ -88,12 +90,12 @@ Example AI enrichment event:
 **Example: Classify product review sentiment**
 
 * **Trigger**: Product review event
-* **Input**: Product review text (`product_review_text`)
-* **Prompt**:  
+* **Attributes to evaluate**: Product review text (`product_review_text`)
+* **AI instructions**:  
     ```wrap
     Based on the product review, classify the customer's sentiment as one of: "dissatisfied", "neutral", or "satisfied".
     ```
-* **Outputs**: `ai_review_sentiment`
+* **Output event attributes**: `ai_review_sentiment`
 
 Generated AI enrichment event:
 ```json
@@ -106,12 +108,12 @@ Generated AI enrichment event:
 **Example: Infer shopping intent**
 
 * **Trigger**: Joined "Abandoned cart" audience
-* **Input**: `cart_product_names`, `cart_total_value`, `visit_count_7d`
-* **Prompt**:  
+* **Attributes to evaluate**: `cart_product_names`, `cart_total_value`, `visit_count_7d`
+* **AI instructions**:  
     ```wrap
     Infer the shopping mission. Set "mission" to a summary of 6 words or fewer, set "urgency" to "high", "med", or "low", and set "sensitive" to "true" if the mission implies health, pregnancy, minors, or financial distress.
     ```
-* **Outputs**: `shopping_mission` (string), `shopping_urgency` (string), `shopping_sensitive` (boolean)
+* **Output event attributes**: `shopping_mission` (string), `shopping_urgency` (string), `shopping_sensitive` (boolean)
 
 Generated AI enrichment event:
 ```json
@@ -133,28 +135,28 @@ Select **Processed Visitor** to run the AI enrichment based on a visitor's statu
 
 Select **Processed Event** to run the AI enrichment after an event feed processes an event. After selecting this option, choose an event feed from the list.
 
-### Step 2: Select inputs and outputs
+### Step 2: Select attributes to evaluate and output event attributes
 
-**Inputs**  
-Select the attributes the AI enrichment uses as inputs. Choose attributes that reflect the behavior or condition described in your prompt. If the trigger is a processed event, only event attributes can be selected as input attributes. If the trigger is a processed visitor, only visit or visitor attributes can be selected as input attributes.
+**Attributes to evaluate**  
+Select the attributes the AI enrichment evaluates. Choose attributes that reflect the behavior or condition described in your AI instructions. If the trigger is a processed event, only event attributes can be selected. If the trigger is a processed visitor, only visit or visitor attributes can be selected.
 
-**Outputs**  
+**Output event attributes**  
 Select the event attributes for the AI enrichment to output. Click **Add Attribute** and define the attribute name and type. These attributes appear in the generated AI enrichment event.
 
-### Step 3: Write a prompt
+### Step 3: Write AI instructions
 
-Describe the business outcome, the behavior to evaluate, and the output values the AI enrichment should produce. For guidance on writing effective prompts, see [Prompts](#prompts).
+Describe the business outcome, the behavior to evaluate, and the output values the AI enrichment should produce. For guidance on writing effective AI instructions, see [AI instructions](#ai-instructions).
 
 ### Step 4: Review and create
 
 Review the AI enrichment configuration:
 
-* **AI Enrichment Instructions**: Confirm the prompt you wrote.
+* **AI Enrichment Instructions**: Confirm the AI instructions you wrote.
 * **AI Enrichment Name**: Enter a name for the AI enrichment.
 * **Status**: New AI enrichments are inactive by default. Activate the AI enrichment after you create it.
 * **Trigger**: The audience or event feed that triggers the AI enrichment.
-* **Attributes to evaluate**: The input attributes evaluated by the AI enrichment.
-* **Outcomes**: The event attributes set in the generated AI enrichment event.
+* **Attributes to evaluate**: The attributes evaluated by the AI enrichment.
+* **Outcomes**: The output event attributes set in the generated AI enrichment event.
 
 Click **Create** to save the AI enrichment.
 
@@ -204,7 +206,7 @@ Use Trace to confirm the AI enrichment is running and producing the expected out
 
 * Confirmation that the AI enrichment triggered.  
 ![](https://docs.tealium.com/images/server-side/ai-enrichment-trace-agent-triggered.png)
-* The inputs, outputs, and AI enrichment instructions.  
+* The attributes to evaluate, output event attributes, and AI instructions.  
 ![](https://docs.tealium.com/images/server-side/ai-enrichment-trace-details.png)
 * A failure indicator if the AI enrichment did not complete processing.  
 ![](https://docs.tealium.com/images/server-side/ai-enrichment-trace-failure.png)

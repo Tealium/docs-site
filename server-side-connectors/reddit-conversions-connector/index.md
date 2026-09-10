@@ -96,7 +96,7 @@ The connector follows this order of operations:
 | Action Name | AudienceStream | EventStream |
 | --- | :---: | :---: |
 | Send Conversion V3 | ✗ | ✓ |
-| Send Conversion (deprecated) | ✗ | ✓ |
+| Send Conversion V2 (deprecated) | ✗ | ✓ |
 
 Enter a name for the action and select the action type from the drop-down menu.
 
@@ -131,7 +131,7 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Reddit Click ID | The Reddit-generated ID associated with a single ad click. The connector automatically maps this value from the `rdt_cid` query parameter unless you configure a mapping for this field. |
 | Email Address | (apply SHA256 hash) Provide a plain text email address. The connector canonicalizes this value before hashing: lowercases the address, strips the email alias (removes everything from the first `+` up to the `@`), removes non-alphanumeric characters from the username, then hashes the result with SHA-256. |
 | Phone Number | (apply SHA256 hash) Provide a plain text phone number. The connector canonicalizes this value before hashing: removes extensions, strips all non-numeric characters, ensures the number starts with `+` (E.164 format), then hashes the result with SHA-256. |
-| IP Address | The connector SHA256-hashes the mapped IP address. |
+| IP Address | The IP address of the user, in IPv4 or IPv6 format. Sent to Reddit as provided (not hashed). |
 | User Agent | The user agent of the user's browser. |
 | External ID | (apply SHA256 hash) An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector whitespace trims, lowercases, and hashes this value using SHA256. |
 | IDFA | (apply SHA256 hash) The IDFA of the user's device. The connector normalizes this value to uppercase UUID format with dashes before hashing with SHA-256. Placeholder values such as `00000000-0000-0000-0000-000000000000` are discarded. |
@@ -147,6 +147,8 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Product ID | An array of product IDs. |
 | Product Name | An array of product names. |
 | Product Category | An array of product categories. |
+| Quantity | The number of units of the product. These product-level attributes do not replace the event-level Value and Item Count parameters. |
+| Item Price | The price of a single unit of the product. These product-level attributes do not replace the event-level Value and Item Count parameters. |
 
 #### Data Processing Options
 
@@ -157,14 +159,18 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Region | The region code of the user in ISO 3166-2 standard or the region code without country prefix. |
 | Account ID Override | The ID of the Reddit Ad account that the conversion event belongs to. |
 | Conversion Access Token Override | Overrides the conversion access token set in the connector configuration for this event. Use this to route events to multiple Reddit Ad accounts or to assign tokens from a secure attribute. If this field is empty or not mapped, the connector uses the configured value. If neither is set, the event is skipped. Events with different override tokens are split into separate requests. |
+| Automatic Deduplication | When the Tealium iQ tag UID is provided, the connector automatically looks for the Conversion ID or Event ID value sent from Tealium. |
+| Action Source | The source of the conversion event. Supported values are **WEBSITE**, **APP**, **PHYSICAL_STORE**, and **OTHER**. If left blank, the connector defaults to **WEBSITE**. |
+| Event Source URL | The full URL of the web page where the conversion event occurred. Reddit recommends including query parameters to enable improved attribution via automatic click ID extraction. If left blank and E-Commerce Automapping is enabled, the connector automaps the current page URL. |
 
 #### Disable Automapping
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Disable Automapping | When enabled, the connector does not send automapped values to the vendor by default. Explicit mappings are still applied. |
+| Disable Identifier Automapping | When enabled, this setting suppresses automatic mapping of identifier signals. This suppression includes Reddit Click ID (from `rdt_cid`), UUID (from the `_rdt_uuid` cookie), IP Address (from the Tealium Client IP attribute), and User Agent. Explicit mappings always take precedence.  |
+| Disable E-Commerce Automapping | When enabled, this setting suppresses automatic mapping of non-identifier signals. This suppression includes screen dimensions (from Tealium Collect viewport fields), the Event At timestamp fallback, and the Event Source URL (from the current page URL). Explicit mappings always take precedence. |
 
-### Send Conversion (deprecated)
+### Send Conversion V2 (deprecated)
 
 
 <blockquote>
@@ -187,7 +193,7 @@ This connector uses the following vendor API:
 
 | Parameter | Description |
 | --- | --- |
-| Event Name | The type of the conversion tracking event. The event name can be one of the listed values, or it can be a custom string value. |
+| Event Name | The type of the conversion tracking event. The event name is one of the listed values or a custom string value. |
 | Event Time | The RFC3339 timestamp when the conversion event occurred. By default, the connector sends the current time.|
 |Conversion ID | The unique conversion ID that corresponds to a distinct conversion event. Conversion ID is used for deduplication and prevents the same conversion event from being processed more than once if it is sent multiple times. |
 | Transaction Value (Decimal) | The value of the transaction in the base unit of the currency. |
@@ -196,17 +202,17 @@ This connector uses the following vendor API:
 | Test Mode | Set to `true` to test the API integration. No data is posted to the account. |
 | Reddit Click ID | The Reddit-generated ID associated with a single ad click. |
 | Phone Number (already SHA256 hashed) | Provide a phone number, already whitespace trimmed, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | Provide a plain text phone number and the connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| Phone Number (apply SHA256 hash) | Provide a plain text phone number. The connector removes extensions, strips all non-numeric characters, ensures the number starts with `+` (E.164 format), then hashes the result with SHA256. |
 | Email Address (already SHA256 hashed) | Provide an email address, already whitespace trimmed, lowercased, and SHA256 hashed. |
-| Email Address (apply SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using SHA256. |
-| IP Address | The connector SHA256-hashes the mapped IP address. |
+| Email Address (apply SHA256 hash) | Provide a plain text email address. The connector lowercases the address, strips the email alias (for example, `user+alias@example.com` becomes `user@example.com`), removes non-alphanumeric characters from the username, then hashes the result with SHA256. |
+| IP Address | The IP address of the user, in IPv4 or IPv6 format. Sent to Reddit as provided (not hashed). |
 | User Agent | The user agent of the user's browser. |
 | External ID (already SHA256 hashed) | An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
 | External ID (apply SHA256 hash) | An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector whitespace trims, lowercases, and hashes this value using SHA256. |
 | IDFA (already SHA256 hashed) | The IDFA of the user's device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| IDFA (apply SHA256 hash) | The IDFA of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| IDFA (apply SHA256 hash) | The IDFA of the user's device. The connector normalizes this value to uppercase UUID format with dashes before hashing with SHA256. Placeholder values such as `00000000-0000-0000-0000-000000000000` are discarded. |
 | AAID (already SHA256 hashed) | The AAID of the user's device. Provide a value that has already been whitespace trimmed, lowercased, and SHA256 hashed. |
-| AAID (apply SHA256 hash) | The AAID of the user's device. The connector whitespace trims, lowercases, and hashes this value using SHA256. |
+| AAID (apply SHA256 hash) | The AAID of the user's device. The connector normalizes this value to lowercase UUID format with dashes before hashing with SHA256. Placeholder values such as `00000000-0000-0000-0000-000000000000` are discarded. |
 | Opt Out | A flag indicating whether the user has opted out of tracking. |
 | Screen Height | The height of the user's screen in pixels. If you do not set **Screen Height**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_height`. |
 | Screen Width | The width of the user's screen in pixels. If you do not set **Screen Width**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_width`. |

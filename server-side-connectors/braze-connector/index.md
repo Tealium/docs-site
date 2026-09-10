@@ -72,7 +72,7 @@ During peak traffic conditions, Braze prioritizes non-batch requests over batch 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 75
-* Max time since oldest request: 10 minutes
+* Max time since oldest request: 60 minutes
 * Max size of requests: 1 MB
 
 #### User ID
@@ -246,6 +246,12 @@ When a template is defined, the mappings from the **Purchases** section are igno
 Provide templates to be referenced in Body Data. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).
 
 Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`.
+
+#### Batch Time To Live
+
+| **Parameter** | **Description** |
+|:--------------|:----------------|
+| Batch Time To Live | (Optional) Time to live, in minutes, for the batch. Enter a value between 1 to 60. The default value is 10 minutes. Shorter intervals send data sooner but can increase API request frequency. |
 
 ### Delete User (Non-Batch)
 

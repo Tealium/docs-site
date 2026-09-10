@@ -3,7 +3,7 @@ title: About data transformation functions
 description: This article provides an overview of data transformation functions.
 url: https://docs.tealium.com/server-side/functions/data-transformation-functions/about/
 ---
-Data transformation functions execute when data enters the Tealium system but before the data is processed. Transformation fucntions are useful for a variety of purposes, including the following:
+Data transformation functions execute when data enters the Tealium system but before the data is processed. Transformation functions are useful for a variety of purposes, including the following:
 
 * Flattening the event object passed to the function.
 * Removing sensitive data, such as a phone number or an email address.

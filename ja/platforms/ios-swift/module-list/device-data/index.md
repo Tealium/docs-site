@@ -13,7 +13,7 @@ DeviceDataモジュールは、現在のデバイスに関する情報を収集�
 * watchOS
 * macOS
 
-## 必要条件
+## 要件
 
 * UIKit
 * Darwin
@@ -43,7 +43,7 @@ config.collectors = [Collectors.DeviceData]
 
 | 変数名 | 説明  | 例 |
 |---|---| --- |
-| `app_memory_usage`   | 現在のプロセス/アプリが使用しているメモリ（メガバイト）| `35.75MB`|
+| `app_memory_usage`   | 現在のプロセス/アプリが使用しているメモリ（メガバイト）| `35`|
 | `carrier`                    | モバイルネットワークキャリア名| `EE`|
 | `carrier_iso`                | モバイルキャリアISO| `gb`|
 | `carrier_mcc`                | キャリアのモバイル国コード| `234`|
@@ -57,22 +57,22 @@ config.collectors = [Collectors.DeviceData]
 | `device_language`            | 現在のデバイス言語| `en-US`|
 | `device_logical_resolution`            | ポイント（ピクセルではない）での画面寸法| `430x932`|
 | `device_manufacturer`            | 製品/ハードウェアメーカー| `Apple`|
-| `device_orientation`         | シンプルな方向| `Portrait`, `Landscape`|
-| `device_orientation_extended`| 完全な方向| `Face Up`|
+| `device_orientation`         | 単純な向き| `Portrait`, `Landscape`|
+| `device_orientation_extended`| 完全な向き| `Face Up`|
 | `device_os_build`          | オペレーティングシステムビルド| `20A372`|
 | `device_os_version`          | オペレーティングシステムバージョン| `11.1`|
 | `device_resolution`          | 画面解像度| `1080x1920`|
 | `device_type`            | Apple内部デバイス識別子| `iPhone8,4`|
-| `memory_active*`             | デバイス上のアクティブメモリの合計| `997.78MB`|
-| `memory_compressed*`         | デバイス上の圧縮メモリの合計| `153.39MB`|
-| `memory_free*`               | デバイス上の空きメモリの合計| `120.81MB`|
-| `memory_inactive*`           | デバイス上の非アクティブメモリの合計| `441.83MB`|
-| `memory_physical*`           | デバイス上の物理メモリ（RAM）の合計（メガバイト）| `2013.50MB`|
-| `memory_wired*`              | デバイス上のワイヤードメモリの合計| `207.12MB`|
+| `memory_active*`             | デバイス上のアクティブメモリの合計（メガバイト）| `997`|
+| `memory_compressed*`         | デバイス上の圧縮メモリの合計（メガバイト）| `153`|
+| `memory_free*`               | デバイス上の空きメモリの合計（メガバイト）| `120`|
+| `memory_inactive*`           | デバイス上の非アクティブメモリの合計（メガバイト）| `441`|
+| `memory_physical*`           | デバイスの物理メモリ（RAM）の合計（メガバイト）| `2013`|
+| `memory_wired*`              | デバイス上のワイヤードメモリの合計（メガバイト）| `207`|
 | `model_name`                 | モデル名| `iPhone 7 Plus`|
-| `model_variant`              | モデルバリアント（通常、デバイスで利用可能な無線技術を示します）| `CDMA`, `GSM`, `WiFi`, `Cellular`|
+| `model_variant`              | モデルバリアント（通常、デバイスで利用可能な無線技術を示す）| `CDMA`, `GSM`, `WiFi`, `Cellular`|
 | `network_iso_country_code`   | モバイルネットワークISO国コード| `gb`|
 | `os_name`                    | オペレーティングシステム名| `iOS`, `tvOS`, `watchOS`, `macOS`|
 | `platform`                   | オペレーティングシステム名（小文字）| `ios`, `tvos`, `watchos`, `macos`|
 
-\* これらの変数は、`TealiumConfig`オブジェクトを介してメモリデータ収集を明示的に有効にした場合にのみ送信されます。デフォルトでは無効になっています。
+\* これらの変数は、`TealiumConfig`オブジェクトを通じてメモリデータ収集を明示的に有効にした場合にのみ送信されます。デフォルトでは無効になっています。

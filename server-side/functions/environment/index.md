@@ -16,8 +16,8 @@ If a function attempts to use more than 32 MB, the following error is written to
 * The maximum function size is 64 KB, which is approximately 1500 lines of code.  
 Functions larger than 64 KB cannot be saved until the size has been reduced.
 * Function log messages are limited as follows:  
-    * **Limit per function per account**: 5 MB of log messages per minute. If this limit is reached, logging for the function is throttled for 1 minute. When a function is throttled, information messages are not written to the log. Error and warning messages continue to be written to the log. Full logging resumes after 1 minute.
-    * **Account limit for all functions**: 50 MB of log messages per minute. Currently, logging will not be throttled. If this limit is exceeded, Tealium may request that you limit the number of log messages.
+    * **Limit per function per account**: 5 MB of log messages per minute for each log level. If the function reaches this limit, Tealium throttles logging for one minute. During throttling, messages at that log level are not written to the log. Full logging resumes after 1 minute.
+    * **Account limit for all functions**: 50 MB of log messages per minute. If this limit is exceeded, Tealium throttles logging until the next minute.
 
 ### Runtime Versions
 

@@ -25,7 +25,7 @@ dependencyResolutionManagement {
 In your project module's `build.gradle` file, add the following dependencies. You only need to specify the version number for the `platform()` entry:
 
 ```ruby
-implementation(platform("com.tealium.prism:prism-bom:0.4.0"))
+implementation(platform("com.tealium.prism:prism-bom:0.6.0"))
 implementation("com.tealium.prism:prism-core")
 implementation("com.tealium.prism:prism-lifecycle")
 implementation("com.tealium.prism:prism-moments-api")  

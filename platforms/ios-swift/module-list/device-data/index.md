@@ -43,7 +43,7 @@ The following variables are transmitted with each tracking call while the module
 
 | Variable Name | Description  | Example |
 |---|---| --- |
-| `app_memory_usage`   | Memory being used by the current process/app in Megabytes| `35.75MB`|
+| `app_memory_usage`   | Memory being used by the current process/app in megabytes| `35`|
 | `carrier`                    | Mobile network carrier name| `EE`|
 | `carrier_iso`                | Mobile carrier ISO| `gb`|
 | `carrier_mcc`                | Carrier mobile country code| `234`|
@@ -63,12 +63,12 @@ The following variables are transmitted with each tracking call while the module
 | `device_os_version`          | Operating system version| `11.1`|
 | `device_resolution`          | Screen resolution| `1080x1920`|
 | `device_type`            | Apple internal device identifier| `iPhone8,4`|
-| `memory_active*`             | Total active memory on the device| `997.78MB`|
-| `memory_compressed*`         | Total compressed memory on the device| `153.39MB`|
-| `memory_free*`               | Total free memory on the device| `120.81MB`|
-| `memory_inactive*`           | Total inactive memory on the device| `441.83MB`|
-| `memory_physical*`           | Total physical memory on the device (RAM) in Megabytes| `2013.50MB`|
-| `memory_wired*`              | Total wired memory on the device| `207.12MB`|
+| `memory_active*`             | Total active memory on the device in megabytes| `997`|
+| `memory_compressed*`         | Total compressed memory on the device in megabytes| `153`|
+| `memory_free*`               | Total free memory on the device in megabytes| `120`|
+| `memory_inactive*`           | Total inactive memory on the device in megabytes| `441`|
+| `memory_physical*`           | Total physical memory on the device (RAM) in megabytes| `2013`|
+| `memory_wired*`              | Total wired memory on the device in megabytes| `207`|
 | `model_name`                 | Model name| `iPhone 7 Plus`|
 | `model_variant`              | Model variant (generally indicates which radio technology is available on the device)| `CDMA`, `GSM`, `WiFi`, `Cellular`|
 | `network_iso_country_code`   | Mobile network ISO country code| `gb`|
