@@ -78,7 +78,7 @@ Some areas of the platform do not require you to save the profile to preserve yo
 The following areas of the platform can be edited and saved directly without needing to save the profile:
 
 * Segments (only segments not used in an audience)
-* Moments API
+* Context API
 * First-party domains
 * Users and permission groups
 * DataAccess credentials

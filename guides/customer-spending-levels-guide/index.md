@@ -225,4 +225,4 @@ This guide illustrates how to build a basic spending level-based campaign. You c
 | Average item price              | Number         | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.           |
 | Favorite categories             | Tally          | Visitor| Lifetime Behavior | General behavioral understanding and future use case expansions.          |
 
-After creating attributes and audiences, you can further enhance campaigns by integrating additional customer behavior attributes or utilizing advanced personalization features like the Tealium Moments API. For more information, see [About Moments API](https://docs.tealium.com/about-moments-api/).
+After creating attributes and audiences, you can further enhance campaigns by integrating additional customer behavior attributes or utilizing advanced personalization features like the Tealium Context API. For more information, see [About Context API](https://docs.tealium.com/about-context-api/).

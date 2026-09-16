@@ -173,6 +173,6 @@ The products viewed have a total value less than a high custom value, and have n
 * **Browse Abandoner - Medium Value**  
 The products viewed have a total value between the high and low custom values.
 
-The configuration in this guide can also be used for personalization with Tealium solutions like Moments API. For more information, see [About Moments API](https://docs.tealium.com/about-moments-api/). The audiences you have created can also be used in social and display marketing for retargeting as illustrated below:
+The configuration in this guide can also be used for personalization with Tealium solutions like Context API. For more information, see [About Context API](https://docs.tealium.com/about-context-api/). The audiences you have created can also be used in social and display marketing for retargeting as illustrated below:
 
 ![](https://docs.tealium.com/images/guides/browse-abandonment-flow-diagram.png)

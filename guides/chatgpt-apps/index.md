@@ -12,7 +12,7 @@ This solution for ChatGPT uses an MCP-friendly design to achieve the following:
 * Track key interactions (product views, button clicks, purchases).
 * Unify identity across client, server, and ChatGPT contexts.
 * Stream events in real time using Tealium Collect.
-* Personalize experiences using Tealium Moments API and Tealium AudienceStream.
+* Personalize experiences using Tealium Context API and Tealium AudienceStream.
 
 ## Option 1: Client-side tracking
 
@@ -285,15 +285,15 @@ Expose a simple MCP tool from your server for ChatGPT to call. This approach let
 * `visitorId` must match the regular expression `/^[a-z0-9]{32}$/`.
 * `event` must be in list of allowed events (`interface_loaded`, `view_pdp`, `button_click`, `purchase`).
 
-## Moments API MCP
+## Context API MCP
 
-Add the [Moments MCP server](https://docs.tealium.com/moments-api-mcp-server/) to your app to enable personalization.
+Add the [Context API MCP server](https://docs.tealium.com/context-api-mcp-server/) to your app to enable personalization.
 
 **Example flow:**
 
 1. Track events `view_pdp`, `button_click`, and `purchase`.
 2. **AudienceStream** builds the visitor profile.
-3. Chat UI (or MCP tool) queries **Moments API** with `tealium_visitor_id`.
+3. Chat UI (or MCP tool) queries **Context API** with `tealium_visitor_id`.
 4. Responses adapt (recommendations, offers, tone).
 
 ## Data privacy and compliance

@@ -25,7 +25,7 @@ dependencyResolutionManagement {
 プロジェクトモジュールの `build.gradle` ファイルに以下の依存関係を追加します。`platform()` エントリーのバージョン番号のみを指定する必要があります：
 
 ```ruby
-implementation(platform("com.tealium.prism:prism-bom:0.4.0"))
+implementation(platform("com.tealium.prism:prism-bom:0.6.0"))
 implementation("com.tealium.prism:prism-core")
 implementation("com.tealium.prism:prism-lifecycle")
 implementation("com.tealium.prism:prism-moments-api")  
@@ -35,10 +35,10 @@ implementation("com.tealium.prism:prism-moments-api")
 
 Swift Package Managerを使用してTealium Prism Swiftをインストールするには：
 
-1. Xcodeプロジェクトで、**File > Swift Packages > Add Package Dependency**を選択します。
+1. Xcodeプロジェクトで、**File > Swift Packages > Add Package Dependency** を選択します。
 1. リポジトリURLを入力します：`https://github.com/tealium/tealium-prism-swift`。
-1. バージョンルールを構成します。**次のメジャーバージョンまで**を構成することをお勧めします。現在のTealium Prism Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-1. インストールするモジュールを選択し、Xcodeプロジェクトの各アプリターゲットにモジュールを追加します。**Frameworks > Libraries & Embedded Content**の下にあります。
+1. バージョンルールを構成します。**次のメジャーまで**を構成することをお勧めします。現在のTealium Prism Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
+1. インストールするモジュールを選択し、Xcodeプロジェクトの各アプリターゲットにモジュールを追加します。**Frameworks > Libraries & Embedded Content** の下にあります。
 
 Cocoapodsを使用してインストールする場合、podfileに以下の行を追加します：
 
@@ -53,7 +53,7 @@ pod 'tealium-prism'
 
 
 
-Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/) インスタンスを [`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/) メソッドに渡します。Tealium Kotlinライブラリはアプリのグローバルアプリケーションクラスの `onCreate()` メソッド内で初期化することをお勧めします。
+Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/) インスタンスを [`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/) メソッドに渡します。アプリのグローバルアプリケーションクラスの `onCreate()` メソッド内でTealium Kotlinライブラリを初期化することをお勧めします。
 
 ```kotlin
 import com.tealium.prism.core.api.Tealium
@@ -95,7 +95,7 @@ let config = TealiumConfig(account: "my_account",
 let tealium = Tealium.create(config: config)
 ```
 
-リモート構成を使用しない場合、または異なるデフォルトを提供するために構成のローカルコピーが必要な場合は、ローカル構成ファイルを指定します：
+リモート構成を使用しない場合、または異なるデフォルトを提供するためにそれらの構成のローカルコピーが必要な場合は、ローカル構成ファイルを指定します：
 
 ```swift
 #if COCOAPODS
@@ -112,7 +112,7 @@ let config = TealiumConfig(account: "my_account",
 let tealium = Tealium.create(config: config)
 ```
 
-SDK全体をプログラムで構成し、特定のモジュールをデフォルトで有効にするか、モジュール構成を変更するには、モジュールを構成に追加します：
+SDK全体をプログラムで構成し、特定のモジュールをデフォルトで有効にするか、モジュール構成を変更するには、構成にモジュールを追加します：
 
 ```swift
 #if COCOAPODS
@@ -158,13 +158,13 @@ Modules.collect { enforcedSettings in
 
 
 
-## トラッキング
+## トラック
 
-イベントをトラッキングするには、イベント名とオプションのタイプおよびデータを `track()` メソッドに渡します。イベント名はデータレイヤーに `tealium_event` として表示されます。
+イベントをトラックするには、イベント名とオプションのタイプおよびデータを `track()` メソッドに渡します。イベント名はデータレイヤーに `tealium_event` として表示されます。
 
 
 
-イベントをトラッキングするには、[track()](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html) を呼び出します。
+イベントをトラックするには、[track()](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html) を呼び出します。
 
 ```kotlin
 tealium.track("user_login", DataObject.create {
@@ -173,7 +173,7 @@ tealium.track("user_login", DataObject.create {
 ```
 
 
-イベントをトラッキングするには、[track()](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html) を呼び出します。
+イベントをトラックするには、[track()](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html) を呼び出します。
 
 ```swift
 /// 基本的なトラック、デフォルトのイベントタイプと空のデータレイヤーで。
@@ -217,7 +217,7 @@ val globalContext = DataObject.Builder()
 dataLayer.put(globalContext, Expiry.FOREVER)
 ```
 
-個々の `put` 操作は、各呼び出しが独立して順番に実行されるため、原子性が必要ない場合にのみ使用します。複数の値を構成し、タイミングや一貫性が重要な場合は、`transactionally` を使用してすべての更新を単一の原子操作で適用し、すべてが成功するかすべてが失敗するようにします。
+個々の `put` 操作は、各呼び出しが独立して順番に実行されるため、原子性が必要ない場合にのみ使用します。複数の値を構成し、タイミングや一貫性が重要な場合は、`transactionally` を使用してすべての更新を単一の原子操作で適用し、すべてが成功するかすべてが失敗します。
 
 ```kotlin
 tealium.dataLayer.transactionally { editor ->
@@ -286,7 +286,7 @@ tealium.dataLayer.put(data: [
     "customer_id": "12345",
     "is_logged_in": true,
     "consent_status": "consented",
-    "product_category": ["electronics", "headphones", "/ja/early-access/tealium-prism/quick-start"]
+    "product_category": ["electronics", "headphones", "/early-access/tealium-prism/quick-start"]
 ])
 ```
 
@@ -305,7 +305,7 @@ tealium.dataLayer.put(key: "order_total",
 
 ## 検証
 
-ログファイルを検査し、トレースを実行し、ライブイベントを表示してデータを検証します。
+ログファイルを調べたり、トレースを実行したり、ライブイベントを表示することでデータを検証します。
 
 ### ログ
 
@@ -323,7 +323,7 @@ val config = TealiumConfig.Builder(...)
 詳細については、[LogLevel](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.logger/-log-level/index.html) を参照してください。
 
 
-ログレベルを構成するには、[TealiumConfig ビルダー](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CoreSettingsBuilder.html)の構成で `setMinLogLevel()` を呼び出します：
+ログレベルを構成するには、[TealiumConfig ビルダー](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CoreSettingsBuilder.html) の構成で `setMinLogLevel()` を呼び出します：
 
 ```swift
 var config = TealiumConfig(account: "your_account",

@@ -208,6 +208,6 @@ For more robust retargeting, combine this basic cart abandonment configuration w
 
 ## Next steps
 
-Now that you've defined attributes for cart abandoners, they can also be used for personalization with solutions like Moments API.
+Now that you've defined attributes for cart abandoners, they can also be used for personalization with solutions like Context API.
 
-For more information, see [about-moments-api](https://docs.tealium.com/about-moments-api/).
+For more information, see [about-context-api](https://docs.tealium.com/about-context-api/).

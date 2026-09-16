@@ -1,20 +1,20 @@
 ---
 title: Tealium + ChatGPT アプリ
-description: クライアントサイド、サーバーサイド、ハイブリッドアプローチで一貫した訪問IDを持つChatGPTアプリにTealiumトラッキングを実装します。
+description: クライアントサイド、サーバーサイド、ハイブリッドアプローチで一貫した訪問IDを持つChatGPTアプリでのTealiumトラッキングの実装。
 url: https://docs.tealium.com/ja/guides/chatgpt-apps/
 ---
 ## はじめに
 
-Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインターフェースでアプリのような体験のためのデータ基盤を提供します。これは、プラットフォーム間で一貫したデータ収集と訪問ID管理をサポートします。
+Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインターフェースでアプリのような体験のためのデータ基盤を提供します。プラットフォーム全体で一貫したデータ収集と訪問ID管理をサポートします。
 
 このChatGPTソリューションは、MCPフレンドリーな設計を使用して以下を実現します：
 
 * 主要なインタラクション（製品閲覧、ボタンクリック、購入）の追跡。
-* クライアント、サーバー、およびChatGPTコンテキスト間でのIDの統合。
+* クライアント、サーバー、ChatGPTコンテキスト間でのIDの統合。
 * Tealium Collectを使用したリアルタイムでのイベントストリーミング。
-* Tealium Moments APIおよびTealium AudienceStreamを使用した体験のパーソナライズ。
+* Tealium Context APIとTealium AudienceStreamを使用した体験のパーソナライズ。
 
-## オプション1：クライアントサイドトラッキング
+## オプション 1: クライアントサイドトラッキング
 
 このアプローチは、Tealium iQの専用プロファイルからの標準的な[Universal Tag (`utag.js`)](https://docs.tealium.com/ja/platforms/javascript/)インストールを使用します。唯一の違いは、`utag.js`によって生成された匿名IDに依存しないため、独自のIDを生成して永続化することです。
 
@@ -89,22 +89,22 @@ Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインター
 </script>
 ```
 
-## オプション2：サーバーサイドトラッキング
+## オプション 2: サーバーサイドトラッキング
 
-サーバーサイドトラッキングは、[HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を使用してイベントを直接Tealiumに送信します。クライアントサイドソリューションと同様に、独自の匿名訪問IDを生成して永続化するための追加のユーティリティ関数を使用します。
+サーバーサイドトラッキングは、[HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を使用してイベントを直接Tealiumに送信します。クライアントサイドソリューションと同様に、追加のユーティリティ関数を使用して独自の匿名訪問IDを生成して永続化します。
 
 次のシナリオでこのアプローチを推奨します：
 
 * CSP制限により外部JavaScriptのロードが防止される場合。
 * 購入などの重要なイベントのデータトラッキングを保証するため。
 
-以下に利用可能なサーバーサイドトラッキングソリューションを示します：
+以下のサーバーサイドトラッキングソリューションが利用可能です：
 
 ### Node.jsアプリ（推奨）
 
 Node.jsソリューションには、匿名訪問IDを生成して永続化するクライアントコードと、追跡されたイベントのためのラッパー関数の呼び出しが含まれています。
 
-たとえば、次のサンプルコードは訪問IDを生成し、顧客が購入を完了したときにアプリから取得される`order`オブジェクトを使用してサーバーに注文追跡リクエストを送信します。
+たとえば、次のサンプルコードは訪問IDを生成し、顧客が購入を完了したときにアプリから取得される`order`オブジェクトを使用して注文追跡リクエストをサーバーに送信します。
 
 ```js
 // 32文字の小文字英数字の訪問IDを生成
@@ -173,7 +173,7 @@ app.post('/api/tealium/track', async (req, res) => {
     res.status(204).end();
   } catch (e) {
     console.error('Tealium track error:', e);
-    res.status 500).json({ error: 'Tracking failed' });
+    res.status(500).json({ error: 'Tracking failed' });
   }
 });
 
@@ -238,17 +238,17 @@ app.listen(3000, () => console.log('Tealium server listening on 3000'));
 
 ## オプション3: ハイブリッド（推奨）
 
-ハイブリッドアプローチは、クライアントサイドソリューションを使用して `interface_loaded`、`view_pdp`、`button_click` などのインタラクションイベントを追跡し、サーバーサイドソリューションを使用して `purchase` などの権威あるイベントを追跡します。このアプローチを使用することで、アプリの追跡を最も完全に行うことができます。
+ハイブリッドアプローチは、クライアントサイドソリューションを使用して `interface_loaded`、`view_pdp`、`button_click` などのインタラクションイベントを追跡し、サーバーサイドソリューションを使用して `purchase` などの権威あるイベントを追跡します。このアプローチを推奨します。
 
 
 <blockquote>
-ハイブリッドソリューションを実行する際は、iQプロファイルでTealium Collectタグをロードしないでください。これにより、イベントの重複追跡が防止されます。
+ハイブリッドソリューションを実行するときは、iQプロファイルでTealium Collectタグを読み込まないでください。これにより、イベントの重複追跡が防止されます。
 </blockquote>
 
 
 ## 訪問のアイデンティティ
 
-正確な追跡と統一された訪問プロファイルを確保するためには、クライアントサイドとサーバーサイドのイベントの両方で同じ匿名訪問IDを常に使用してください。このアプローチにより、ChatGPT、ウェブ、モバイルを通じて単一の訪問アイデンティティが維持され、一貫した追跡とリアルタイムのパーソナライゼーションが可能になります。
+正確な追跡と統一された訪問プロファイルを確保するために、クライアントサイドとサーバーサイドのイベントの両方で同じ匿名訪問IDを常に使用してください。このアプローチは、ChatGPT、ウェブ、モバイルを通じて単一の訪問アイデンティティを維持し、一貫した追跡とリアルタイムのパーソナライゼーションを可能にします。
 
 
 <blockquote>
@@ -256,9 +256,9 @@ app.listen(3000, () => console.log('Tealium server listening on 3000'));
 </blockquote>
 
 
-## MCP統合（オプション）
+## MCP統合（オプショナル）
 
-サーバーからChatGPTが呼び出すシンプルなMCPツールを公開します。このアプローチにより、ChatGPTは会話ロジックを処理し、サーバーは形式、アイデンティティ、ポリシーを強制します。
+サーバーからシンプルなMCPツールを公開して、ChatGPTが会話ロジックを処理できるようにします。このアプローチでは、サーバーが形式、アイデンティティ、ポリシーを強制します。
 
 **ツール:** `tealium-track-event`
 
@@ -284,120 +284,21 @@ app.listen(3000, () => console.log('Tealium server listening on 3000'));
 * `visitorId` は正規表現 `/^[a-z0-9]{32}$/` に一致する必要があります。
 * `event` は許可されたイベントリスト（`interface_loaded`, `view_pdp`, `button_click`, `purchase`）に含まれている必要があります。
 
-## Moments API MCP
+## Context API MCP
 
-[Moments MCP server](https://docs.tealium.com/moments-api-mcp-server/) をアプリに追加してパーソナライゼーションを有効にします。
+アプリに [Context API MCP server](https://docs.tealium.com/context-api-mcp-server/) を追加してパーソナライゼーションを有効にします。
 
 **例のフロー:**
 
-1. `view_pdp`, `button_click`, `purchase` のイベントを追跡します。
+1. イベント `view_pdp`, `button_click`, `purchase` を追跡します。
 2. **AudienceStream** が訪問プロファイルを構築します。
-3. Chat UI（またはMCPツール）が `tealium_visitor_id` で **Moments API** を照会します。
-4. 応答は（推奨、オファー、トーンなど）適応します。
+3. Chat UI（またはMCPツール）が `tealium_visitor_id` で **Context API** を照会します。
+4. 応答は（推奨事項、オファー、トーンなど）適応します。
 
 ## データプライバシーとコンプライアンス
 
 このアプリは、以下の機能を通じてデータプライバシーとコンプライアンスをサポートします：
 
-* Tealium iQ Consent Managerを通じた同意駆動のアクティベーション。
+* Tealium iQ Consent Managerを通じた同意駆動型アクティベーション。
 * データを送信する前に省略またはハッシュ化することによるPIIガバナンス。
 * 地域コンプライアンス（GDPR、CCPA、データ居住）。
-
-## サンプルアプリ
-
-### 前提条件
-
-* Node.js 18+ (LTS)
-* `npm` または `pnpm`
-* Tealium アカウント、プロファイル、環境
-* (オプション) ngrok for MCP exposure
-
-### インストール
-
-1. メインプロジェクトの依存関係をインストールします：
-    ```bash
-    pnpm install
-    ```
-2. サーバーの依存関係をインストールします：
-    ```bash
-    cd server
-    pnpm install
-    cd ..
-    ```
-
-### アプリケーションの実行
-
-1. フロントエンドバンドルをビルドします：
-    ```sh
-    pnpm run build
-    ```
-2. MCPサーバーを起動します：
-    ```sh
-    cd server
-    pnpm start
-    ```
-2. サーバーは [http://localhost:8000/mcp](http://localhost:8000/mcp) で実行されます
-3. 新しいターミナルでngrokトンネルを生成します：
-    ```sh
-    ngrok http 8000
-    ```
-3. ngrokは次の出力を返します：
-    ```none
-    Session Status    online
-    Account           Your Account (Plan: Free)
-    Update            update available (version 3.x.x, Ctrl-C to update)
-    Version           3.x.x
-    Region            United States (us)
-    Web Interface     http://127.0.0.1:4040
-    Forwarding        https://abc123def456.ngrok-free.app -> http://localhost:8000
-    ```
-4. サーバーコードのCSPドメインを更新します：
-    * ターミナル出力からngrok URLをコピーします（例：`https://abc123def456.ngrok-free.app`）。
-    * `server/index.ts` の30行目と34行目で、`https://resolvedly-pouched-nena.ngrok-free.dev` を新しいngrok URLに置き換えます。
-    * `src/tealium/TealiumTracker.tsx` の134行目でも同じ更新を行います。
-5. サーバーを再起動します：
-    ```sh
-    # 現在のサーバーを終了します（Ctrl+C）
-    cd server
-    pnpm start
-    ```
-6. 新しいURLでフロントエンドを再ビルドします：
-    ```sh
-    cd ..
-    pnpm run build
-    ```
-
-次のアクセスポイントに注意してください：
-
-* ローカルMCPサーバー：[http://localhost:8000/mcp](http://localhost:8000/mcp)
-* ヘルスチェック：[http://localhost:8000/health](http://localhost:8000/health)
-* APIエンドポイント：[http://localhost:8000/api/tealium/track](http://localhost:8000/api/tealium/track)
-* 公開ngrok URL：ngrok URL + `/mcp`
-* 公開API：ngrok URL + `/api/tealium/track`
-
-### ChatGPTでアプリを追加
-
-1. **ChatGPT > 構成 > アプリとコネクタ**に移動します。
-2. **詳細構成**の下で**開発者モード**を有効にします。
-3. **MCPサーバーフィールド**に**ngrok URL**を貼り付けます。
-
-### Tealiumアプリの起動
-
-1. プロンプトが表示されたら、`tealium-tracker` ツールを使用します。
-1. Tealiumアカウント、プロファイル、環境を入力します。
-1. Tealium Universalタグ (`utag.js`) がロードされ、ウェブアプリでイベントを追跡します。
-
-
-<blockquote>
-サードパーティのライブラリがブロックされている場合は、CSPでそのリソースを許可してください。
-</blockquote>
-
-
-### **サーバーサイドイベント追跡**
-
-サーバーサイドの追跡をオンにすると、クライアントサイドの呼び出しが `/api/tealium/track` に送信され、Tealium Collect NPMモジュールを使用して追跡リクエストが行われます。
-
-
-
-[Tealium Trace](https://docs.tealium.com/about-trace/)で結果を検証します。
-

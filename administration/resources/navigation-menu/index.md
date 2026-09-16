@@ -18,7 +18,7 @@ Manage data quality, privacy, and consent, including consent orchestration and v
 * **Transform**  
 Manage data attributes and create data assets with enrichments such as rules, functions, and predictive scoring.
 * **Activate**  
-Manage data activation, including audience creation, audience jobs, and visitor profile activation through the Moments API.
+Manage data activation, including audience creation, audience jobs, and visitor profile activation through the Context API.
 * **Validate**  
 Test and verify use cases in production using tools such as trace, live events, live visitors (formerly called “visitor profile sampler”), and event specifications.
 * **Store**  
@@ -92,7 +92,7 @@ The full list of navigation menu items.
   * [Audiences](https://docs.tealium.com/about-audiences/) 
   * Audience Jobs 
   * [Discover](https://docs.tealium.com/audience-discovery/) 
-  * [Moments API](https://docs.tealium.com/about-moments-api/) 
+  * [Context API](https://docs.tealium.com/about-context-api/) 
 * Validate 
   * [Trace](https://docs.tealium.com/about-trace/) 
   * [Live Events](https://docs.tealium.com/about-live-events/) 
@@ -161,7 +161,7 @@ Use this table to find where a feature from the classic navigation is located in
 | AudienceStream > Visitor / Visit Attributes | Transform > Visitor / Visit Attributes |
 | AudienceStream > Audiences | Activate > Audiences |
 | AudienceStream > Audience Jobs | Activate > Audience Jobs |
-| AudienceStream > Moments API | Activate > Moments API |
+| AudienceStream > Context API (formerly Moments API) | Activate > Context API |
 
 ### Connectors
 

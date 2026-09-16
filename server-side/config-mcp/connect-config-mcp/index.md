@@ -75,7 +75,7 @@ You can create separate groups for view and edit access to serve users with diff
 
 
 <blockquote>
-Individual product component permissions may be adjusted to match the minimum permissions required for MCP access.
+Tealium may adjust individual product component permissions to match the minimum required for MCP access.
 </blockquote>
 
 
@@ -87,17 +87,23 @@ Each user selects the default Tealium profile for MCP to use.
 1. Under **Tealium Configuration MCP**, select the **Account** and **Profile** to use as the default.
 1. Click **Apply Configuration**.
 
-To connect to a different profile later, return to this screen, select the new profile, and click **Apply Configuration**. Changing the profile invalidates the current MCP session. After switching profiles, reconnect the Tealium Configuration MCP connector and start a new chat.
+To use a different profile, return to this screen, select the profile, and click **Apply Configuration**.
+
+
+<blockquote>
+Changing the profile invalidates the current MCP session. After switching, reconnect Tealium Configuration MCP and start a new chat.
+</blockquote>
+
 
 ## Step 5: Connect Claude to Tealium (user)
 
 Authenticate the Tealium connector in Claude and enable it in a chat.
 
-**Connect the connector**
+**Authenticate the connector**
 
 1. In Claude, go to **Settings > Connectors**.
 1. Click **Connect** next to **Tealium Configuration MCP**.
-1. A Tealium sign-in window opens. Enter your account name and click **Sign In**.
+1. A Tealium sign-in window opens. Enter your account name and click **Sign In**. If your organization uses SSO, enter your SSO account name. If you don't know it, contact your account administrator.
 
    ![](https://docs.tealium.com/images/server-side/config-mcp-setup-signin-account.png)
 

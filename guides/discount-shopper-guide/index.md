@@ -166,4 +166,4 @@ The following additional discount shopper behaviors are also useful to track:
 * Track visitors who add products to a wish list and buy them when they are on sale.
 * Track visitors who use a loyalty program to buy discounted products.
 
-Now that you've defined attributes for discount shoppers, these attributes can also be used for personalization with Tealium solutions like Moments API. For more information, see [About Moments API](https://docs.tealium.com/about-moments-api/).
+Now that you've defined attributes for discount shoppers, these attributes can also be used for personalization with Tealium solutions like Context API. For more information, see [About Context API](https://docs.tealium.com/about-context-api/).

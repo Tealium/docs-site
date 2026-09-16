@@ -10,7 +10,7 @@ This connector uses the following vendor API:
 * API Name: Google Firebase API
 * API Version: v1
 * API Endpoint: `https://fcm.googleapis.com/`
-* Documentation: [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/concept-options)
+* Documentation: [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
 
 ## Connector Actions
 

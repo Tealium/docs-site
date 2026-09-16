@@ -51,7 +51,7 @@ Configure the following settings to control how the experience behaves:
   * **After close button selected**
   * **After answer submitted**
   * **After answer submitted or close button selected**  
-  The browser stores this information in local storage as the `momentsiq_suppress` key.
+  The browser stores this information in local storage as the `momentsiq_suppress` key. To confirm whether suppression is active for a visitor, open browser developer tools and go to **Application > Local Storage**. The value is a JSON object keyed by survey ID. To reset suppression during testing, delete the key and reload the page.
 
 * **Track Load**: Select `True` to send a tracking call when the experience loads on the page for the first time.
 * **Tealium Track Type**: The type of event used in the `utag.track` calls that are triggered when tracking modal close and submit actions.
@@ -200,7 +200,7 @@ Guidelines for editing the CSS:
 
 #### Experience settings with CSS dependencies
 
-CSS properties that appear between slashes and asterisks (for example, `/*width:800px;*/`) are commented out. They represent alternate values for those properties when you set a use particular **Experience Type**, **Experience Background Image**, or **Answer Type** settings.
+CSS properties that appear between slashes and asterisks (for example, `/*width:800px;*/`) are commented out. They provide alternative values for specific **Experience Type**, background image, or **Answer Type** configurations.
 
 ##### Background image CSS settings
 
@@ -287,9 +287,32 @@ To avoid data collisions, only one Moments iQ experience can appear on a page at
 </blockquote>
 
 
+## Multi-question surveys
+
+A single Moments iQ tag can display multiple questions in sequence. Each question can use a different answer type: radio, text, checkbox, or button. When the visitor submits the experience, Moments iQ sends one `momentsiq_submit` event containing a set of variables for each question: `momentsiq_question1`, `momentsiq_answer1`, `momentsiq_question2`, `momentsiq_answer2`, and so on.
+
+The button answer type supports only two answers. For surveys where you need more than two answer options, use the radio or checkbox answer type instead.
+
+The following example shows a two-question survey that collects an NPS score and an open-text follow-up:
+
+```json
+{
+  "tealium_event": "momentsiq_submit",
+  "momentsiq_id": "72",
+  "momentsiq_question1_type": "radio",
+  "momentsiq_question1": "How likely are you to recommend us?",
+  "momentsiq_answer1": "Very likely",
+  "momentsiq_question2_type": "text",
+  "momentsiq_question2": "What is the main reason for your score?",
+  "momentsiq_answer2": "Great support experience"
+}
+```
+
 ## Data mappings
 
-Use the following mappings with extensions to get dynamic values in the configurations or keep styling consistent from experience to experience:
+You can map data layer variables to configuration parameters to override the tag's static configuration for the current page load. For example, mapping the data layer variable `page_survey_question` to the `questionText` parameter lets you serve a different question on each page without creating a separate tag for each one. This override applies to `questionText`, `answers`, `answerType`, and all styling parameters.
+
+Use the following mappings with extensions to set configuration values dynamically or reuse styling across experiences:
 
 ### Basic parameters
 
@@ -351,8 +374,8 @@ Use the following mappings with extensions to get dynamic values in the configur
 
 ### Container formatting parameters
 
-| Variable | Description |
-|:---------|:------------|
+| Variable | Type | Description |
+|:---------|:-----|:------------|
 |  `outerContainer.background`  | String | Outer container background color|
 |  `outerContainer.margin`  | String | Outer container margin|
 |  `outerContainer.borderStyle`  | String | Outer container border style|
@@ -392,15 +415,15 @@ Use the following mappings with extensions to get dynamic values in the configur
 
 ### Data layer variables
 
-The experience automatically adds the following variables to the data layer tab:
+The experience automatically adds the following variables to the data layer tab. For multi-question surveys, the tag adds `momentsiq_question{n}`, `momentsiq_question{n}_type`, and `momentsiq_answer{n}` once per question, where `n` is the question's key number (for example, `1` for `question1`).
 
-```
-momentsiq_id, UDO Variable
-momentsiq_question1, UDO Variable
-momentsiq_question1_type, UDO Variable
-momentsiq_questions_answered, UDO Variable
-momentsiq_answer1, UDO Variable
-```
+| Variable | Type |
+|:---------|:-----|
+| `momentsiq_id` | UDO Variable |
+| `momentsiq_question{n}` | UDO Variable |
+| `momentsiq_question{n}_type` | UDO Variable |
+| `momentsiq_questions_answered` | UDO Variable |
+| `momentsiq_answer{n}` | UDO Variable |
 
 ## Client-side data persistence
 

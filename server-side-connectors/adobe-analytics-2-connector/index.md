@@ -7,12 +7,6 @@ url: https://docs.tealium.com/server-side-connectors/adobe-analytics-2-connector
 
 The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.
 
-
-<blockquote>
-The end of life date for Adobe Analytics 1.4 is August 12, 2026, including WSSE authentication. Although the Data Insertion API will remain accessible beyond that date, it will not receive updates or active support. We recommend that you use the Adobe Analytics 2 connector instead.
-</blockquote>
-
-
 ## Adobe Analytics 2.0 connector differences
 
 The following Adobe Analytics 1.4 connector features are not available in the Adobe Analytics 2.0 connector:

@@ -9,7 +9,7 @@ The Adobe Analytics 1.4 Connector in the Tealium Customer Data Hub uses Adobe's 
 
 
 <blockquote>
-The end of life date for Adobe Analytics 1.4 is August 12, 2026, including WSSE authentication. Although the Data Insertion API will remain accessible beyond that date, it will not receive updates or active support. Adobe strongly recommends migrating to Adobe Analytics 2.0, and we recommend that you migrate to use the [Adobe Analytics 2 connector](https://docs.tealium.com/adobe-analytics-2-connector/).
+Adobe Analytics 1.4 APIs and WSSE authentication reached end of life on August 12, 2026. The Data Insertion API used by this connector is not affected by the Adobe Analytics 1.4 API end of life and remains available. You do not need to migrate to the Adobe Analytics 2.0 connector because of this end of life.
 </blockquote>
 
 

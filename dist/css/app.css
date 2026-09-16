@@ -490,6 +490,7 @@ img { max-width: 100%; }
    -l  = large
 
  */
+.shadow-4 { box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .2); }
 /*@import 'tachyons/src/_code';*/
 /*
 
@@ -518,6 +519,7 @@ img { max-width: 100%; }
 
 */
 .right-0  { right:  0; }
+.left-0   { left:   0; }
 /*
 
    CLEARFIX
@@ -960,6 +962,7 @@ img { max-width: 100%; }
 .color-inherit { color: inherit; }
 /* Background colors */
 .bg-white {         background-color: var(--white); }
+.bg-transparent {   background-color: var(--transparent); }
 /* 
   
    SKINS:PSEUDO
@@ -968,6 +971,8 @@ img { max-width: 100%; }
    it is focused or hovered over.
  
  */
+.hover-bg-light-gray:hover, 
+.hover-bg-light-gray:focus { background-color: var(--light-gray); }
 /* Variables */
 :root {
   --spacing-none: 0;
@@ -1020,7 +1025,6 @@ img { max-width: 100%; }
 .pl2 { padding-left: var(--spacing-small); }
 .pl3 { padding-left: var(--spacing-medium); }
 .pl4 { padding-left: var(--spacing-large); }
-.pr1 { padding-right: var(--spacing-extra-small); }
 .pr2 { padding-right: var(--spacing-small); }
 .pr3 { padding-right: var(--spacing-medium); }
 .pr4 { padding-right: var(--spacing-large); }
@@ -1082,6 +1086,7 @@ img { max-width: 100%; }
 .mb3  {  margin-bottom: var(--spacing-medium); }
 .mb4  {  margin-bottom: var(--spacing-large); }
 .mt0  {  margin-top: var(--spacing-none); }
+.mt1 {  margin-top: var(--spacing-extra-small); }
 .mt2  {  margin-top: var(--spacing-small); }
 .mt3  {  margin-top: var(--spacing-medium); }
 .mt4  {  margin-top: var(--spacing-large); }
@@ -1106,6 +1111,8 @@ img { max-width: 100%; }
   margin-right: var(--spacing-none);
 }
 @media screen and (min-width: 62.5em) {
+
+  .pl0-ns  {  padding-left: var(--spacing-none); }
   .pr4-ns  {  padding-right: var(--spacing-large); }
 
   .pb0-ns  {  padding-bottom: var(--spacing-none); }
@@ -1299,6 +1306,11 @@ img { max-width: 100%; }
   margin-bottom: 0;
 }
 /* Combine this class with a width to truncate text (or just leave as is to truncate at width of containing element. */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 /*
 
    UTILITIES
@@ -3710,6 +3722,7 @@ pre > code.language-wrap {
 }
 [data-theme="dark"] .dropdown-toggle input {
   color: var(--text-color-secondary);
+  background-color: var(--secondary-color);
 }
 [data-theme="dark"] .dropdown-menu label {
   color: var(--text-color-secondary);
@@ -3783,6 +3796,31 @@ pre > code.language-wrap {
 /* ── Teal styling: .bg-subtle ────────────────────────────── */
 [data-theme="dark"] .bg-subtle {
   background-color: var(--subtle-color-light);
+}
+/* ── Section switcher ────────────────────────────────────── */
+[data-theme="dark"] .section-switcher__btn {
+  border-color: var(--light-outline);
+  color: var(--text-color-primary);
+  background-color: transparent !important;
+}
+[data-theme="dark"] .section-switcher__btn:hover,
+[data-theme="dark"] .section-switcher__btn:focus {
+  background-color: var(--secondary-color) !important;
+}
+[data-theme="dark"] .section-switcher__menu {
+  background-color: var(--primary-color-light);
+  border: 1px solid var(--light-outline);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+}
+[data-theme="dark"] .section-switcher__item a {
+  color: var(--text-color-primary);
+}
+[data-theme="dark"] .section-switcher__item a:hover {
+  background-color: var(--secondary-color) !important;
+}
+[data-theme="dark"] .section-switcher__item a.bg-secondary {
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
 }
 /* ── Lightbox overlay ────────────────────────────────────── */
 

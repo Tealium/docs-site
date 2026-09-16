@@ -56,18 +56,18 @@ Moments iQ is set up through the following screens in the [Moments iQ tag](https
 
 ## Events
 
-When the visitor submits or closes the experience, the browser sends a `utag.track` call with the relevant data for your tags and extensions to process.
+Moments iQ sends a `utag.track` call when a visitor submits or closes an experience. If **Track Load** is enabled, it also sends a call when the experience loads.
 
 Moments iQ events use the following variables:
 
 | Variable | Type | Description | Example |
 | -------- | ---- | ----------- | ------- |
-| `tealium_event` | String | The event will contain one of the following values:<ul><li>`momentsiq_close`: If the visitor closed the window, usually with the close button.</li><li>`momentsiq_submit`: If the visitor clicked the submit button, whether they answered the question or not.</li></ul> | `momentsiq_close` |
-| `momentsiq_question1` | String | The question asked in the experience. | `What is your favorite color?` |
-| `momentsiq_questions_answered` | String | This variable only appears if the visitor closed the experience without submitting. The value will either be blank or contain any selection or text they entered before closing the experience. This variable lets you filter out incomplete values to avoid contaminating your data. | `"test1"` |
-| `momentsiq_question1_type` | String | If the visitor clicked the primary button, the type of question (`checkbox`, `text`, or `radio`) | `radio` |
-| `momentsiq_id` |  Number | The tag UID. | `34` | 
-| `momentsiq_answer1` | String |  If the visitor clicked the primary button, the answer or answers that the visitor entered or selected. Multiple answers are separated by the pipe (&#124;) character. | `Red` |
+| `tealium_event` | String | Event type. Possible values:<ul><li>`momentsiq_close`: The visitor closed the experience without submitting it.</li><li>`momentsiq_submit`: The visitor submitted the experience, with or without answering a question.</li><li>`momentsiq_view`: The experience loaded while **Track Load** was enabled.</li></ul> | `momentsiq_close` |
+| `momentsiq_question1` | String | The text of the first question in the experience. For multi-question surveys, the tag adds additional variables per question: `momentsiq_question2`, `momentsiq_question3`, and so on. | `What is your favorite color?` |
+| `momentsiq_questions_answered` | String | Only present on `momentsiq_close` events. Contains a comma-separated list of the IDs of questions the visitor answered before closing (for example, `question1,question2`). Empty if the visitor closed without answering any questions. Use this variable to identify which questions a visitor answered before closing the experience. | `question1,question2` |
+| `momentsiq_question1_type` | String | The answer type of the first question (`checkbox`, `text`, or `radio`). For multi-question surveys, the tag adds additional variables per question: `momentsiq_question2_type`, `momentsiq_question3_type`, and so on. | `radio` |
+| `momentsiq_id` | String | The tag UID. | `34` | 
+| `momentsiq_answer1` | String | The answer or answers that the visitor entered or selected for the first question. Multiple answers are separated by the pipe (&#124;) character. For multi-question surveys, the tag adds additional variables per question: `momentsiq_answer2`, `momentsiq_answer3`, and so on. | `Red` |
 
 
 ### Examples
@@ -106,7 +106,19 @@ The following example is the event for an experience that the visitor closed bef
 }
 ```
 
-The following example is the event for an experience that loaded and the value of the **Track On Load** setting is `True`:
+The following example shows a `momentsiq_close` event when the visitor answers the first two questions of a three-question experience before closing it:
+
+```json
+{
+  "tealium_event": "momentsiq_close",
+  "momentsiq_id": "72",
+  "momentsiq_questions_answered": "question1,question2"
+}
+```
+
+Use `momentsiq_questions_answered` to track survey abandonment. The variable lists which questions a visitor answered before closing. Use it to calculate completion rates per question, identify where visitors drop off in multi-question surveys, and build audiences of partial responders. To measure the overall completion rate, compare `momentsiq_submit` and `momentsiq_close` events using an audience rule or an analytics tag.
+
+The following example is the event for an experience that loaded and the value of the **Track Load** setting is `True`:
 
 ```json
 {

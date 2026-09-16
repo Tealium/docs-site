@@ -1,0 +1,115 @@
+---
+title: Moments API module (now Context API)
+description: Learn how to install the Tealium Context API module for Flutter.
+url: https://docs.tealium.com/platforms/flutter-v2/context-api/
+---
+<blockquote>
+This is the previous version (2.x) of Tealium for Flutter. For the latest version, see [Tealium for Flutter](https://docs.tealium.com/platforms/flutter/).
+</blockquote>
+
+
+
+<blockquote>
+Moments API has been renamed to Context API. For full product documentation, see [About Context API](https://docs.tealium.com/about-context-api/).
+</blockquote>
+
+
+Tealium for Flutter lets you use the Tealium mobile libraries (iOS, Android) to install the Context API Module for the Tealium Flutter plugin.
+
+## How it works
+
+Tealium mobile libraries can be integrated into your Flutter application using one of the following methods:
+
+* Dart package (Recommended)
+* Manually with [GitHub](https://github.com/Tealium/tealium-flutter)
+
+## Requirements
+
+* [Flutter](https://flutter.dev/) application development framework
+* IDE, such as [Android Studio](https://developer.android.com/studio) or [VS Code](https://code.visualstudio.com/)
+* Flutter [plugin](https://github.com/flutter/plugins) installed on the IDE
+
+## Install
+
+To install the Tealium library for Flutter:
+
+1. In your Flutter app project, run the following command:
+    ```bash
+    dart pub add tealium_moments_api
+    ```
+1. Import the following Dart code into your project:   
+    ```dart
+    import 'package:tealium_moments_api/common.dart';
+    import 'package:tealium_moments_api/tealium_moments_api.dart';
+    ```
+
+## Initialize
+
+Configure the Context API module before initializing the main Tealium Flutter integration.
+
+Set the Context API Region as specified in the Context API interface. The following regions are available:
+
+* `GERMANY`
+* `US_EAST`
+* `SYDNEY`
+* `OREGON`
+* `TOKYO`
+* `HONG_KONG`
+
+If you are using the [domain allow list](https://docs.tealium.com/about-context-api/#domain-allow-list), set the referrer to an allowed domain.
+
+The following example code uses the `US_EAST` region and `example.com` as the referrer to match the allowed domain:
+
+```dart
+final config = MomentsApiConfig(
+    MomentsApiRegion.US_EAST,   // required
+    "https://example.com");     // optional
+
+// Configure the module
+TealiumMomentsApi.configure(config);
+
+// ... Initialize main Tealium plugin
+```
+
+## Class: TealiumMomentsApi
+
+After the Context API Module and the main Tealium Flutter integration have both been initialized, you can retrieve engine data by ID.
+
+### `fetchEngineResponse`
+
+Retrieves the engine response for the given engine ID. 
+
+```dart
+TealiumMomentsApi.fetchEngineResponse(
+    engineId: "ENGINEID",
+    callback: (response) {
+        if (response is EngineResponse) {
+            // handle success
+            final audiences = response.audiences;
+            // do something
+        } else if (response is String) {
+            // handle error
+        }
+    }
+);
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ---- | ---- | ---- |
+| `engineId` | `String` | The ID of the engine to check |
+| `callback` | `Function(dynamic)` | Callback that receives an `EngineResponse` on success or a `String` error message on failure |
+
+### `EngineResponse`
+
+The `EngineResponse` class contains the visitor data returned from the Context API engine.
+
+| Property | Type | Description |
+| ---- | ---- | ---- |
+| `audiences` | `List<String>?` | Audience IDs the visitor belongs to |
+| `badges` | `List<String>?` | Badges assigned to the visitor |
+| `strings` | `Map<String, String>?` | String attributes |
+| `booleans` | `Map<String, bool>?` | Boolean attributes |
+| `dates` | `Map<String, int>?` | Date attributes (as timestamps) |
+| `numbers` | `Map<String, double>?` | Numeric attributes |

@@ -102,7 +102,7 @@ Explore and validate visitor segments using graphical visualizations of your att
 
 ![](https://docs.tealium.com/images/icons/icon-moments-api.svg)
 
-#### Moments API
+#### Context API
 
 Retrieve high-performance visitor data for real-time personalization with a composable API.
 

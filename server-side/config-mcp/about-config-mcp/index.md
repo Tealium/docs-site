@@ -165,7 +165,7 @@ Tealium Configuration MCP supports the following profile objects.
 The following are not supported in Tealium Configuration MCP:
 
 * Cloud data sources, CloudStream, segments, audiences with segments, fill an audience, audience discovery, audience sizing, audience jobs
-* Tealium Insights, Moments API, Functions, DataAccess, Data Connect, Predict
+* Tealium Insights, Context API, Functions, DataAccess, Data Connect, Predict
 * Tealium iQ (client-side), consent orchestration
 
 ## Limitations

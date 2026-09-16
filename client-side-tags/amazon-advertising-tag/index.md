@@ -77,6 +77,7 @@ The available categories are:
 |`auto_purchase_tracking`  | Boolean | <ul><li>Toggle to enable or disable automatic Purchase tracking.</li><li>Toggles whether to automatically trigger a Purchase event when `order_id` is present.</li><li>Overrides tag configuration selection.</li></ul>  |
 | `generate_event_id`  | Boolean | <ul><li>Automatically generate an event ID for every Amazon Ads tracking event.</li><li>The event ID attribute names are in the format `amazon_event_id_<Event Name>_<Tag UID>`. For example: `amazon_event_id_PageView_512`.</li></ul> |
 | `event_id`  | String | <ul><li>The generated event ID.</li></ul>  |
+| `match_id`  | String | <ul><li>A privacy-safe, advertiser-defined identifier for cross-channel conversion measurement.</li><li>Use a stable, unique identifier, such as a loyalty ID, CRM ID, or internal user ID. Do not use personally identifiable information (PII), such as names, email addresses, or phone numbers.</li><li>The tag passes the value without modification.</li><li>If you hash `match_id`, use the same hashing method for the Amazon Advertising tag and the Amazon Ads Conversions connector.</li></ul> |
 
 ### E-Commerce
 

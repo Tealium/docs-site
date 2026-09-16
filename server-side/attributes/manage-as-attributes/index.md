@@ -107,7 +107,7 @@ Before deleting an attribute, review its dependencies and the potential impact a
 The attribute is removed from connector data mappings. This can break integrations or cause incomplete data to be sent to external systems.
 
 **APIs and exports**  
-Any API endpoints, exports, or scheduled jobs that reference the deleted attribute fail or return incomplete data. For example, the deleted attribute is no longer collected by the Moments API endpoint. However, data related to the attribute remains in Moments API engine caches until it expires (after a new visit or the 30-day retention window ends) or it is explicitly purged.
+Any API endpoints, exports, or scheduled jobs that reference the deleted attribute fail or return incomplete data. For example, the deleted attribute is no longer collected by the Context API endpoint. However, data related to the attribute remains in Context API engine caches until it expires (after a new visit or the 30-day retention window ends) or it is explicitly purged.
 
 **DataAccess**  
 The attribute is removed from EventStore, AudienceStore, EventDB, and AudienceDB. External systems may still reference the attribute even if it appears to have no dependencies in the UI. This can lead to unexpected data loss or integration failures.
