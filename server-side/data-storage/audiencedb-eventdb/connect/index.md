@@ -7,11 +7,6 @@ url: https://docs.tealium.com/server-side/data-storage/audiencedb-eventdb/connec
 
 To access to your EventDB and AudienceDB data, a third-party tool with the ability to connect to a PostgreSQL-style database is required.
 
-* **First Time Users**
-After EventDB and AudienceDB are enabled for your account, Redshift Spectrum is automatically enabled.
-* **Existing Customers** 
-Before enabling Spectrum for existing customers that have been using DataAccess, a data migration is needed to ensure all existing and new data are written to the correct location. Coordinate with your team in advance to proceed.  
-
 ## Get database credentials
 
 Third-party tools with PostgreSQL support require authentication credentials to connect. Authentication credentials are provided in the DataAccess Console.

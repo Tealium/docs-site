@@ -31,7 +31,7 @@ Built on the enterprise-class solutions Amazon Redshift and Amazon S3, DataAcces
 
 #### Structured data
 
-Structured data is stored in Amazon Redshift Spectrum. The data has fixed fields and a high degree of organization, which makes it easy to upload, extract, load, store, query, and analyze data. Structured data can be accessed using third-party business intelligence tools.
+Structured data is stored in Amazon Redshift. The data has fixed fields and a high degree of organization, which makes it easy to upload, extract, load, store, query, and analyze data. Structured data can be accessed using third-party business intelligence tools.
 
 Structured data is used for the following products:
 
@@ -63,10 +63,10 @@ Semi-structured data is used for the following products:
 |Offerings name| Description| Structure type| Technology used|
 |---| ---| ---| ---|
 |EventStore|  <ul><li>EventStore collects raw event data from your web, mobile, internet of things (IoT), and offline channels.</li><li>The data is stored in a semi-structured data format in [JavaScript Object Notation (JSON)](http://www.json.org/) on an Amazon Simple Storage Service S3 bucket.</li></ul> | Semi-structured| Amazon S3|
-|EventDB|  <ul><li>EventDB extends the capabilities of EventStore by taking the raw event data and organizing it into a structured Amazon Redshift database instance.</li><li>Any Postgres-enabled platform can access this data and users can run SQL directly against the database.</li><li>The structured data can then be used by business intelligence (BI) tools, such as Splunk and data visualization tools, such as Tableau.</li></ul> | Structured| Amazon Redshift Spectrum|
+|EventDB|  <ul><li>EventDB extends the capabilities of EventStore by taking the raw event data and organizing it into a structured Amazon Redshift database instance.</li><li>Any Postgres-enabled platform can access this data and users can run SQL directly against the database.</li><li>The structured data can then be used by business intelligence (BI) and data visualization tools.</li></ul> | Structured| Amazon Redshift|
 |EventDirect|  <ul><li>EventDirect sends event data, such as the following, directly to an Enterprise Data Warehouse (EDW) of your choice:  <ul><li>Metadata</li><li>Querystring parameters</li><li>Web cookie data</li><li>In-content events</li><li>JavaScript variables</li><li>Marketing source</li><li>URL parameters</li><li>Data manipulation / Tealium iQ extension data - privacy, lookup tables, attribution)</li></ul> </li></ul> <ul><li>The data is sent in HTTP POST format.</li></ul> | Customer Choice| Customer Host|
 |AudienceStore|  <ul><li>AudienceStore provides raw storage of audience data and attributes collected from AudienceStream.</li><li>Like EventStore, the data is stored in a semi-structured format on an Amazon S3 instance.</li><li>[JavaScript Object Notation (JSON](http://www.json.org/)) or Comma Separated Value (.csv) are employed to create this file.</li><li>The data is made available for download through the Amazon S3 bucket.</li></ul> | Semi-structured| Amazon S3|
-|AudienceDB|  <ul><li>Like EventDB, AudienceDB expands on the capabilities of AudienceStore and stores audience data and attributes collected from AudienceStream in a structured format.</li><li>Any Postgres-enabled platform can access this data and users can run SQL directly against the database.</li><li>The structured data can be tapped and used for historical analysis or visualization at a later date by BI tools such as Splunk and data visualization tools, such as Tableau.</li></ul> | Structured| Amazon Redshift|
+|AudienceDB|  <ul><li>Like EventDB, AudienceDB expands on the capabilities of AudienceStore and stores audience data and attributes collected from AudienceStream in a structured format.</li><li>Any Postgres-enabled platform can access this data and users can run SQL directly against the database.</li><li>The structured data can be tapped and used for historical analysis or visualization at a later date by business intelligence (BI) and data visualization tools.</li></ul> | Structured| Amazon Redshift|
 |Webhook (Event/Audience)|  <ul><li>Webhook (Event/Audience) sends audience data (attributes / profiles, badges, and omnichannel / offline data) directly to the EDW of your choice.</li></ul> | Customer Choice| Customer Host|
 
 

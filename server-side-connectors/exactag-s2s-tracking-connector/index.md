@@ -99,5 +99,6 @@ The following section lists the supported parameters for each action.
 | totalprice | Recommended. Total basket value. |
 | consent | URL encoded JSON object for type or partner based consent (for example: `{“comfort”:1,”analytics”:0,”marketing”:0}`). To create more complex data structures, provide the template name in the **Request Attributes Templates** section. |
 | protocol | Protocol `http` or `https`. |
+| params | A JSON object containing additional parameters to send to Exactag. For complex data structures, use a template defined in the **Request Attributes Templates** section. |
 | Request Attributes Template Variables | Provide template variables as data input. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). Name nested template variables with the dot notation (for example: `items.name`). Nested template variables are typically built from data layer list attributes. |
 | Request Attributes Templates | Provide templates to be referenced in **Request Attributes**. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). Templates are injected into supported fields by name with double curly braces. For example, `{{SomeTemplateName}}`. |   

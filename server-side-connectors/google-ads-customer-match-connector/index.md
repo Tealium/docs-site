@@ -44,6 +44,45 @@ To create a user list, click **Create User List** and enter the following inform
 | List Membership Lifespan | (Optional) The number of days a user stays on the list since their most recent addition to the list. Number must be between `0` and `540`. The default lifespan is 540 days. |
 | List Description | (Optional) List description. |
 
+## Link Google Ads to Tealium
+
+The Google Data Manager API actions require a product link between Google Ads and Tealium. You can create the link in either Tealium or Google Ads. Both options support new Data Manager API actions and actions migrated from the legacy Google Ads API actions.
+
+### Option 1: Create the product link in Tealium
+
+Use this option to complete the linking process from the connector configuration.
+
+1. Open the Google Ads Customer Match connector in Tealium.
+1. For a new connector, authenticate with Google. For an existing connector, reauthenticate so the credentials include the Google Data Manager API scope.
+1. In the connector configuration, find the **Link Customer ID to Tealium** section.
+1. Enter the Google Ads customer ID that owns the Customer Match user list.
+1. Click **Create Product Link** and wait for the confirmation message.
+1. Configure or migrate the Data Manager API action, then select the appropriate user list and map identifiers that match the list key type.
+
+If an action uses a **Customer ID Override**, create a product link for each customer account that owns a user list used by the action.
+
+### Option 2: Create the product link in Google Ads
+
+Use this option to create the product link in Google Ads without using the Google OAuth flow in Tealium.
+
+1. Sign in to Google Ads.
+1. Go to **Tools > Data manager**.
+1. Click **+ Connect product**.
+1. Select Tealium from the available products.
+1. If prompted, select **Audiences** as the use case.
+1. Review and accept the customer data policy, then complete the link.
+1. In Tealium, configure or migrate the Data Manager API action using the linked Google Ads customer account and the appropriate user list.
+
+After linking, you must still configure the connector action and provide the customer ID and user list settings required by the action.
+
+### Link a manager account
+
+You can create a product link for a Google Ads manager account instead of linking each customer account separately. A manager-account link can be used for the manager account and the client accounts under that manager account.
+
+When configuring an action, use the customer ID of the specific Google Ads account that receives the audience update. The manager-account link doesn't extend to accounts outside that manager-account hierarchy, such as a parent manager account or accounts that aren't children of the linked manager account.
+
+The target Google Ads account must also have the required permissions, and the target user list must belong to the customer account used by the action.
+
 ## Actions
 
 | Action Name | AudienceStream | EventStream |
@@ -53,7 +92,7 @@ To create a user list, click **Create User List** and enter the following inform
 | Add User to Remarketing List| ✓ | ✓ |
 | Remove User from Remarketing List| ✓ | ✓ |
 
-### User Identifiers
+### User identifiers
 
 Each action requires a user identifier. The vendor requires that these values are normalized and hashed using SHA-256. Each mapped user identifier value is expected to meet the following requirements:
 
@@ -81,13 +120,13 @@ The following user identifier fields are supported:
 | `CONTACT_INFO` (Google Ads API)|  Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.<ul><li>**Address Info: Country Code**: 2-letter country code, in ISO 3166-1 alpha-2 format, of the user's address.</li><li>**Address Info: First Name (already SHA256 hashed)**: Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Address Info: First Name (apply SHA256 hash)**: Provide a plain text first name and the connector hashes this value using SHA256 hash.</li><li>**Address Info: Last Name (already SHA256 hashed)**: Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Address Info: Last Name (apply SHA256 hash)**: Provide a plain text last name and the connector hashes this value using the SHA256 hash.</li><li>**Address Info: Postal Code**: Provide a postal code of the user's address.</li><li>**Email Address (already SHA256 hashed)**: Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.</li><li>**Email Address (apply SHA256 hash)**: Provide a plain text email address or array of email addresses and the connector hashes these values using the SHA256 hash.</li><li>**Phone Number (already SHA256 hashed)**: Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.</li><li>**Phone Number (apply SHA256 hash)**: Provide a plain text phone number or array of phone numbers and the connector hashes the values using the SHA256 hash.</li></ul> |
 |`CRM_ID` (Google Ads API)|  <ul><li>**User ID**: (Required) Advertiser-assigned user ID for customer match upload.</li></ul> |
 |`MOBILE_ADVERTISING_ID` (Google Ads API)|  <ul><li>**Mobile ID**: (Required) Mobile device ID (advertising ID/IDFA).</li></ul> |
-|`CONTACT_ID` (Data Manager API)| **Contact info**: Email address, phone number, and address. When providing address info, all four fields are required: country code, first name, last name, and postal code. If any Address Info field is missing, the connector removes the entire address object from the request. If no user data remains after removal, the action fails with a validation error and is not retried. |
+| `CONTACT_ID` (Data Manager API) | **Contact info**: Email address, phone number, and address. Pre-hashed email and phone values must be valid SHA-256 hex strings containing 64 hexadecimal characters. The connector removes invalid values before sending the request. For address information, all four fields are required: country code, first name, last name, and postal code. If any address field is missing, the connector removes the entire address object. If no valid user identifiers remain after validation, the action fails with a validation error and is not retried. |
 |`MOBILE_ID` (Data Manager API)|  **Mobile ID**: Mobile device ID. |
 |`USER_ID` (Data Manager API)|  **User ID**: First-party identifier. |
 
 ### Add User to List (Data Manager API)
 
-#### API Information
+#### API information
 
 This connector uses the following vendor API:
 
@@ -108,14 +147,22 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | Parameter | Description |
 | --- | --- |
-| User List | Select a user list from the Data Manager API. For more information, see: [Data Manager API: Customer match overview](https://developers.google.com/data-manager/api/devguides/audiences/google-ads/customer-match). |
+| User List | Select a user list from the Data Manager API. For more information, see [Data Manager API: Customer match overview](https://developers.google.com/data-manager/api/devguides/audiences/google-ads/customer-match). |
 
-#### User Identifier
+#### User identifier
 
 | Parameter | Description |
 | --- | --- |
-| Customer ID Override | (Optional) Provide a Customer ID to override the Customer ID in the connector configuration. If using this option you must also use the User List ID Override. |
-| User List ID Override | (Optional) Provide a User List ID to override the user list in the Required Section. This field lets you use event attributes to populate the User List ID. This is required if using Customer ID Override. The value must be the list ID, such as `9310271231`. |
+| Customer ID Override | (Optional) Provide a Customer ID to override the Customer ID in the connector configuration. If using this option, you must also use the User List ID Override. |
+| User List ID Override | (Optional) Provide a User List ID to override the user list in the Required Section. This field lets you use event attributes to populate the User List ID. This field is required if using Customer ID Override. The value must be the list ID, such as `9310271231`. |
+
+#### IP Data
+
+| Parameter | Description |
+| --- | --- |
+| IP Address | IP address captured during the customer interaction. |
+| Observe Start Time | Time of the first interaction from the IP address during the session. |
+| Observe End Time | Time of the last interaction from the IP address during the session. |
 
 ### Remove User from List (Data Manager API)
 
@@ -123,7 +170,7 @@ For mapping options, see [Add User to List (Data Manager API)](#add-user-to-list
 
 ### Add User to Remarketing List (Deprecated)
 
-#### Batch Limits
+#### Batch limits
 
 This connector action can use batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -147,7 +194,7 @@ This connector uses the following vendor API:
 | Remarketing List | Select a remarketing user list. For more information, see [Google Ads: Remarketing and Audience Targeting](https://developers.google.com/google-ads/api/docs/remarketing/overview). Available options contain only user lists of first-party CRM data type. To create a user list, see [Create user list](#create-user-list).|
 | Customer ID Override | (Optional) Provide a customer ID to override the customer ID in the connector configuration. If using this option, you must also enter a **User List ID Override**. |
 | Manager Customer ID Override | (Optional) Provide a Manager Customer ID if using a **Customer ID Override** and accessing a client customer. |
-| User List ID Override | (Optional) Provide a user list resource name (list ID and type) to override the user list. This field lets you use EventStream variables to populate the user list ID. This is required if using a **Customer ID Override**. The value should be in the following format `ID:TYPE`, for example `123456:CONTACT_INFO`. |
+| User List ID Override | (Optional) Provide a user list resource name (list ID and type) to override the user list. This field lets you use EventStream variables to populate the user list ID. This field is required if using a **Customer ID Override**. The value must be in the following format: `ID:TYPE`, for example `123456:CONTACT_INFO`. |
 
 #### Consent
 

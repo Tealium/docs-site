@@ -3,19 +3,25 @@ title: コンテキストAPIエンドポイント
 description: この記事では、コンテキストAPIエンドポイントについて説明します。
 url: https://docs.tealium.com/ja/server-side/context-api/endpoint/
 ---
+
+<blockquote>
+このページのエンドポイントは、**Public**アクセスを持つエンジンに適用されます。認証が必要なエンジンの場合、デベロッパーポータルでコンテキストAPIを購読し、認証済みリクエストを行うためにそこにあるAPIリファレンスを使用してください。詳細については、[dev-portal-api-catalog](https://docs.tealium.com/dev-portal-api-catalog/)を参照してください。
+</blockquote>
+
+
 ## 動作原理
 
 コンテキストAPIエンジンは、あなたの地域、アカウント、およびプロファイルに対してユニークなエンドポイントを作成します。各エンジンは、各エンドポイントにユニークなエンジンIDを割り当てます。
 
-訪問のデータは、エンジンを有効にして訪問がアクティブなセッションを記録し、システム内でイベントを生成した後に利用可能になります。訪問のデータをリクエストしても、彼らがまだアクティブなセッションを記録していない場合、APIはデータを返しません。
+訪問のデータは、エンジンを有効にし、訪問がアクティブなセッションをログし、システムでイベントを生成した後に利用可能になります。訪問のデータをリクエストしても、彼らがまだアクティブなセッションをログしていない場合、APIはデータを返しません。
 
-訪問のデータを取得するには、[Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を構成して、コンテキストAPIエンドポイントにリクエストを行います。
+訪問データを取得するには、[Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を構成して、コンテキストAPIエンドポイントにリクエストを行います。
 
 ## GETメソッド
 
 GETメソッドを使用して、コンテキストAPIエンジンで指定したオーディエンス、バッジ、および属性データを取得します。
 
-### Tealium匿名訪問ID
+### ティーリウム匿名訪問ID
 
 ```bash
 GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/accounts/{ACCOUNT}/profiles/{PROFILE}/engines/{ENGINE_ID}/visitors/{IDENTIFIER}?suppressNotFound={SUPPRESS_NOT_FOUND}
@@ -25,8 +31,8 @@ GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/a
 
 | **パラメータ** |**タイプ**| **説明**|
 |---| ---| ---|
-|`identifier` |文字列<br>パスパラメータ| Tealiumの匿名訪問IDです。|
-| `suppressNotFound`| ブール値<br>クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
+|`identifier` |String<br>パスパラメータ| ティーリウムの匿名訪問IDです。|
+| `suppressNotFound`| Boolean<br>クエリパラメータ | 訪問が見つからない場合の返されるレスポンスタイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
 
 ### 訪問ID属性
 
@@ -38,9 +44,9 @@ GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/a
 
 | **パラメータ** |**タイプ**| **説明**|
 |---| ---| ---|
-|`attributeId` |文字列<br>クエリパラメータ| アカウントからの[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値UIDです。|
-|`attributeValue`|文字列<br>クエリパラメータ | 検索する値です。特殊文字を含む値はURLエンコードする必要があります。 |
-| `suppressNotFound`| ブール値<br>クエリパラメータ | 訪問が見つからない場合の応答タイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
+|`attributeId` |String<br>クエリパラメータ| アカウントからの[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)を表す数値UIDです。|
+|`attributeValue`|String<br>クエリパラメータ | 検索する値です。特殊文字を含む値はURLエンコードする必要があります。 |
+| `suppressNotFound`| Boolean<br>クエリパラメータ | 訪問が見つからない場合の返されるレスポンスタイプを決定します。デフォルトは `false` です。 <ul><li>`true` - HTTP 200コードと空のレスポンスボディを返します。</li><li>`false` - HTTP 404コードを返します。</li></ul>|
 
 匿名ID、ユーザー識別子、および訪問ID属性についての詳細は、[Anonymous IDs, user identifiers, and visitor ID attributes](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)を参照してください。
 
@@ -58,7 +64,7 @@ GET  https://personalization-api.{REGION}.prod.tealiumapis.com/personalization/a
 
 PIIとしてマークされた属性はサポートされていません。
 
-オーディエンスと訪問属性は、次のボディ例に示すように、UIDまたは名前で返されるように構成できます：
+オーディエンスと訪問属性は、UIDまたは名前で返されるように構成できます。次のボディ例を参照してください：
 
 ### 名前の例
 
@@ -132,5 +138,6 @@ PIIとしてマークされた属性はサポートされていません。
 |---|---|
 |200 |ステータスOK。リクエストは成功しました。|
 |400 |不正なリクエストです。|
+|401 |エンジンは認証を必要とします。デベロッパーポータルでコンテキストAPIを購読し、`Authorization`ヘッダーにベアラートークンを含めてください。詳細については、[dev-portal-subscriptions](https://docs.tealium.com/dev-portal-subscriptions/)を参照してください。|
 |403 |コンテキストAPIエンジンが有効になっていません。|
-|404 |見つかりません。Tealium訪問IDにはデータベースにデータが保存されていません。|
+|404 |見つかりません。ティーリウムの訪問IDにはデータベースにデータが保存されていません。|

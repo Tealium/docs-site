@@ -3,42 +3,55 @@ title: Salesforce Data 360 コネクタ構成ガイド
 description: この記事では、Salesforce Data 360 コネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/salesforce-data-360-connector/
 ---
-## API 情報
 
-このコネクタは以下のベンダー API を使用します：
 
-* API 名：Salesforce Data 360 取り込み API
-* API バージョン：v1
-* API エンドポイント：[Salesforce Data Cloud 取り込み API](https://developer.salesforce.com/docs/data/data-cloud-int/references/data-cloud-ingestionapi-ref/c360-a-api-get-started.html)
+## 要件
+
+このコネクタには、以下のSalesforce Data 360リソースが必要です：
+
+* Tealiumから受信したいオブジェクトとフィールドで構成された[Ingestion API ソース](https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-connect-an-ingestion-source.html)
+* Ingestion API ソースのデータストリーム
+* Data 360 Ingestion APIへのアクセス権を持つConnected AppまたはExternal Client App
+
+詳細については、[Salesforce: Connect an ingestion source](https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-connect-an-ingestion-source.html)を参照してください。
+
+## API情報
+
+このコネクタは以下のベンダーAPIを使用します：
+
+* API名：Salesforce Data 360 Ingestion API
+* APIバージョン：v1
+* APIエンドポイント：[Salesforce Data Cloud Ingestion API](https://developer.salesforce.com/docs/data/data-cloud-int/references/data-cloud-ingestionapi-ref/c360-a-api-get-started.html)
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、以下の構成を構成します：
 
-* **Salesforce ドメイン**
-  * （必須）Salesforce 組織の My Domain URL です。例：`https://company.my.salesforce.com`。クライアント認証フローには My Domain URL が必要です。他の Salesforce ホストでは `このドメインではリクエストがサポートされていません` エラーが返されます。
-* **クライアント ID**
-  * （必須）Salesforce Connected App または External Client App のコンシューマーキー。
-  * アプリはクライアント認証フローが有効で、Run As ユーザーが構成されており、`cdp_ingest_api` および `api` の OAuth スコープが必要です。
-  * Salesforce が `クライアント認証ユーザーが有効ではありません` と返した場合、Run As ユーザーが構成されているか確認してください。このエラーはクライアントシークレットが間違っていることを示すものではありません。
+* **Salesforceドメイン**
+  * （必須）Salesforce組織のMy Domain URL。例：`https://company.my.salesforce.com`。クライアント資格情報フローにはMy Domain URLが必要です。他のSalesforceホストでは`request not supported on this domain`エラーが返されます。
+* **クライアントID**
+  * （必須）Salesforce Connected AppまたはExternal Client AppからのConsumer Key。
+  * アプリはクライアント資格情報フローを有効にし、Run Asユーザーを構成し、`cdp_ingest_api`および`api` OAuthスコープを持っている必要があります。
+  * Connected AppまたはExternal Client AppのコールバックURLを`https://my.tealiumiq.com/oauth/salesforce/callback.html`に構成します。
+  * Salesforceが`no client credentials user enabled`を返した場合、Run Asユーザーが構成されているか確認してください。このエラーはクライアントシークレットが間違っていることを示すものではありません。
 * **クライアントシークレット**
-  * （必須）Salesforce Connected App または External Client App のコンシューマーシークレット。
-* **ソース API 名**
-  * （必須）Salesforce Data 360 の取り込み API ソースのソース API 名。
+  * （必須）Salesforce Connected AppまたはExternal Client AppからのConsumer Secret。
+* **ソースAPI名**
+  * （必須）Salesforce Data 360のIngestion APIソースのソースAPI名。
 
 ## アクション
 
 | アクション名 | AudienceStream | EventStream |
 | ----------- | :------------: | :---------: |
-| 取り込み API レコード送信 | ✓ | ✓ |
+| Send Ingestion API Records | ✓ | ✓ |
 
-### 取り込み API レコード送信
+### Send Ingestion API Records
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。イベントの順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。イベントの順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[Batched Actions](https://docs.tealium.com/batched-actions/)を参照してください。
 
 リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
 
@@ -49,28 +62,28 @@ url: https://docs.tealium.com/ja/server-side-connectors/salesforce-data-360-conn
 
 | パラメータ | 説明 |
 | --- | --- |
-| オブジェクト API 名 | （必須）レコードを送信する Salesforce Data 360 オブジェクト。利用可能なオブジェクトは選択された取り込み API ソースから取得されます。オブジェクトがリストにない場合は、そのオブジェクト API 名を入力して Enter キーを押します。名前は大文字と小文字が区別され、Salesforce スキーマと完全に一致する必要があります。 |
-| レコードデータ | （必須）Tealium の属性を Salesforce Data 360 オブジェクトスキーマの宛先フィールドにマッピングします。マッピング要件については、[レコードデータ](#record-data)を参照してください。 |
+| Object API Name | （必須）レコードを送信するSalesforce Data 360オブジェクト。利用可能なオブジェクトは選択したIngestion APIソースから取得されます。オブジェクトがリストにない場合は、そのObject API Nameを入力してEnterキーを押してください。名前は大文字と小文字が区別され、Salesforceスキーマと正確に一致する必要があります。 |
+| Record Data | （必須）Tealiumの属性をSalesforce Data 360オブジェクトスキーマの宛先フィールドにマッピングします。マッピング要件については、[Record Data](#record-data)を参照してください。 |
 
-#### レコードデータ
+#### Record Data
 
-選択した Salesforce Data 360 オブジェクトの宛先フィールドに Tealium の属性をマッピングします。マッピングを構成する際には、以下の要件に従ってください：
+選択したSalesforce Data 360オブジェクトの宛先フィールドにTealiumの属性をマッピングします。マッピングを構成する際には、以下の要件に従ってください：
 
-* フィールドがネストされたオブジェクトまたは配列を必要とする場合は、**テンプレート**タブでテンプレートを定義し、マッピング値としてテンプレート名を入力します。
-* Salesforce の取り込みスキーマで必須とされているデータストリームの主キーとその他のフィールドを含めます。
-* 部分更新の場合は、構成された**レコード変更**フィールドを含めます。エンゲージメントオブジェクトの場合は、構成された**イベント時間**フィールドも含めます。
-* マッピングされた値が Salesforce が期待するデータタイプや形式、例えば ISO 8601 タイムスタンプ、数値、ブール値と一致することを確認します。
-* ソースに複数のオブジェクトが含まれている場合、例えば `SalesCustomer` と `Order` の場合、各オブジェクト API 名に対して別々のアクションを作成し、各**レコードデータ**マッピングが単一のオブジェクトスキーマに対応するようにします。
+* フィールドがネストされたオブジェクトまたは配列を必要とする場合は、**Templates**タブでテンプレートを定義し、マップされた値としてテンプレート名を入力します。
+* Data Streamの主キーおよびSalesforce摂取スキーマで必須とされている他のフィールドを含めます。
+* 部分更新の場合は、構成された**Record Modified**フィールドを含めます。エンゲージメントオブジェクトの場合は、構成された**Event Time**フィールドも含めます。
+* マップされた値がSalesforceによって期待されるデータタイプとフォーマット、例えばISO 8601タイムスタンプ、数字、およびブール値と一致することを確認します。
+* ソースに複数のオブジェクトが含まれている場合、例えば`SalesCustomer`と`Order`の場合、各Object API Nameに対して別のアクションを作成し、各**Record Data**マッピングが単一のオブジェクトスキーマに対応するようにします。
 
 
 <blockquote>
-Salesforce は取り込みリクエストを非同期で処理します。成功したレスポンスは Salesforce が処理のためにリクエストを受け入れたことを確認しますが、すべてのレコードが取り込まれたことを確認するものではありません。必要な値が欠けている、データタイプが無効である、または他のスキーマの不一致が原因で、下流の処理中にレコードが失敗することがありますが、Tealium にエラーが返されることはありません。
+Salesforceは摂取リクエストを非同期で処理します。成功したレスポンスはSalesforceが処理のためにリクエストを受け入れたことを確認しますが、すべてのレコードが摂取されたことを確認するものではありません。必要な値が欠けている、データタイプが無効である、または他のスキーマの不一致が原因で、下流の処理中にレコードが失敗する可能性がありますが、Tealiumにエラーが返されることはありません。
 </blockquote>
 
 
-#### テンプレート
+#### Templates
 
 | パラメータ | 説明 |
 | --- | --- |
-| テンプレート | （オプション）ネストされたオブジェクトや配列、条件付きフィールド、フォーマットされたタイムスタンプ、派生値または静的値、スキーマ固有の変換が必要なフィールド用にテンプレートを作成します。左側にテンプレート名を入力し、右側に有効な JSON をレンダリングするテンプレートを入力します。テンプレートを使用するには、その名前を**レコードデータ**の宛先フィールドにマッピングします。テンプレートは、マッピングされたフィールドによって参照される場合にのみ送信されます。トップレベルの `data` ラッパーは含めないでください。Tealium が自動的に追加します。 |
-| テンプレート変数 | （オプション）Tealium の属性をテンプレートで使用される変数名にマッピングします。 |
+| Templates | （オプション）ネストされたオブジェクトや配列、条件付きフィールド、フォーマットされたタイムスタンプ、派生値または静的値、またはスキーマ固有の変換が必要なフィールドのためにテンプレートを作成します。左側にテンプレート名を入力し、右側に有効なJSONをレンダリングするテンプレートを入力します。テンプレートを使用するには、その名前を**Record Data**の宛先フィールドにマッピングします。テンプレートは、マップされたフィールドによって参照される場合にのみ送信されます。トップレベルの`data`ラッパーは含めないでください。Tealiumが自動的に追加します。 |
+| Template Variables | （オプション）Tealiumの属性をテンプレートで使用される変数名にマッピングします。 |

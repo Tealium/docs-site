@@ -3,14 +3,14 @@ title: Migrate Google Ads Customer Match actions to the Google Data Manager API
 description: This article explains the new Google Ads Customer Match actions that use the Google Data Manager API, why we are introducing them, and how to migrate from the existing Google Ads API–based actions.
 url: https://docs.tealium.com/server-side-connectors/google-ads-customer-match-data-manager-api-migration/
 ---
-## What’s changing
+## What's changing
 
 We are introducing two new actions for the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/) that use the Google Data Manager API:
 
 * Add User to List (Data Manager API)  
 * Remove User from List (Data Manager API)
 
-These actions are designed to closely mirror the existing Add User to List and Remove User from List actions in the connector UI, but they send audience updates through Google’s Data Manager API instead of the legacy Google Ads API.
+These actions are designed to closely mirror the existing Add User to List and Remove User from List actions in the connector UI, but they send audience updates through Google's Data Manager API instead of the legacy Google Ads API.
 
 In addition, the connector configuration now includes a linking step that establishes a product link between your Google Ads account and Tealium. This link is required before you use the new Data Manager API actions.
 
@@ -39,63 +39,55 @@ Until then, note the following:
 
 The new actions appear with your existing Google Ads Customer Match actions in the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/):
 
-* Add User to List (Data Manager API)  
-* Remove User from List (Data Manager API)
+* **Add User to List (Data Manager API)**
+* **Remove User from List (Data Manager API)**
 
 Key points:
 
-* **UI layout**: The configuration screens for these actions closely follow the existing Google Ads Customer Match actions, so most of your mappings and settings will look familiar.  
-* **Consent and terms**: Data Manager requires explicit consent and Customer Match terms of service to be provided with each ingestion call. The connector ensures that required consent and terms fields are present in the payload.  
-* **Identifier formatting**: Map plain-text or pre-hashed identifiers (such as email, phone, and postal address). When you choose fields labeled **apply SHA256 hash**, Tealium performs the normalization (trim, lowercase, hash) required by Google. When you choose fields labeled **already SHA256 hashed**, you are responsible for providing data that already meets Google’s formatting requirements. When providing address info, all four fields are required: country code, first name, last name, and postal code. If any address field is missing, the connector removes the entire address object from the request.  
-* **List key types**: Lists created and managed using the Data Manager API use a list key type such as `CONTACT_ID` (email/phone/address), `USER_ID` (first-party IDs), or `MOBILE_ID` (device IDs). Your action configuration must map identifiers compatible with the list’s key type.
+* **UI layout**: The configuration screens for these actions closely follow the existing Google Ads Customer Match actions, so most mappings and settings look familiar.
 
-The **Manager Customer ID** override and other Ads API–specific sections are not used by Data Manager API actions. Configuration related to Data Manager is handled through the product link and the selected list and identifiers.
+* **Consent and terms**: Data Manager requires explicit consent and Customer Match terms of service with each ingestion call. The connector ensures that the required consent and terms fields are present in the payload.
+
+* **Identifier formatting**: Map plain-text or pre-hashed identifiers, such as email addresses, phone numbers, and postal addresses.
+
+  * **apply SHA256 hash**: Tealium performs the normalization (trim, lowercase, hash) required by Google.
+  * **already SHA256 hashed**: The connector validates that the value is a valid SHA-256 hex string containing exactly 64 hexadecimal characters with no `0x` prefix.
+  * **Invalid identifiers**: The connector removes invalid values before sending the request. If a record contains both valid and invalid identifiers, the valid identifiers are sent. If no valid identifiers remain after validation, the action fails with a validation error and is not retried.
+  * **Address information**: All four fields are required: country code, first name, last name, and postal code. If any address field is missing, the connector removes the entire address object from the request.
+
+* **List key types**: Lists created and managed using the Data Manager API use a list key type such as `CONTACT_ID` (email, phone, or address), `USER_ID` (first-party IDs), or `MOBILE_ID` (device IDs). Map identifiers that are compatible with the list's key type.
+
+The **Manager Customer ID** override and other Google Ads API-specific sections are not used by Data Manager API actions. Data Manager configuration is handled through the product link and the selected list and identifiers.
+
 
 ## Before you migrate
 
-Review and complete these prerequisites before switching actions.
+Before using the Google Data Manager API actions, create a product link between your Google Ads account and Tealium.
 
-### Step 1: Re-authenticate the connector to include Data Manager API access
+You can create the product link in either Tealium or Google Ads.
 
-If you already have a Google Ads Customer Match connector configured in Tealium, you must re-authenticate the connector so that the Google OAuth token includes the Data Manager API scope.
+### Create the product link in Tealium
 
-To re-authenticate:
+If you create the product link from Tealium, reauthenticate the connector so the Google OAuth token includes the Data Manager API scope:
 
-1. Open your existing [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/).  
-1. Use the authentication controls (**Sign in With Google** button) to sign in again with your Google account.  
-1. During this process, the connector requests access that includes `https://www.googleapis.com/auth/datamanager` in addition to the existing Google Ads permissions.
+1. Open your existing [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/).
+1. Click **Sign in With Google** and sign in again with your Google account.
+1. During authentication, the connector requests access to `https://www.googleapis.com/auth/datamanager` in addition to the existing Google Ads permissions.
+1. Use the **Link Customer ID to Tealium** section in the connector configuration to create the product link.
 
-This step is required before you can create the product link and use the Google Data Manager API actions.
+### Create the product link in Google Ads
 
-### Step 2: Link your Google Ads customer ID to Tealium (product linking)
+You can also create the product link from Google Ads Data Manager. This option doesn't require the Google OAuth flow in Tealium to create the product link.
 
-After re-authenticating, you must create a product link between your Google Ads customer account and Tealium.
+For more information, see [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/).
 
-The product link is created at the Google Ads customer account level (the owning account of the user lists) and is a prerequisite for using all Google Data Manager API actions.
-
-If the product linking fails (for example, the link already exists or the user does not have permission), review the error message in the UI and adjust your Google Ads permissions or account selection accordingly.
-
-To link your Google Ads customer ID to Tealium:
-
-1. In the connector configuration, locate the section labeled **Link Customer ID to Tealium**.  
-1. Enter the Google Ads customer ID used for Customer Match in this connector.  
-1. Click the button labeled **Create Product Link** (or equivalent).  
-1. Wait for the confirmation message in the Tealium UI indicating that the link was created successfully.
-
-After successful linking, Tealium can submit updates to your Google Ads account using the Google Data Manager API as an approved data partner.
+Create the product link for the Google Ads account that owns the Customer Match user list. If an action uses a **Customer ID Override**, make sure each list-owning customer account used by the action is covered by a product link.
 
 ## How to migrate from existing Google Ads API actions
 
 The goal is to move each existing Google Ads Customer Match action to its Google Data Manager API equivalent with minimal changes in behavior.
 
-### Step 1: Re-authenticate and link
-
-For each account profile where you use the [Google Ads Customer Match connector](https://docs.tealium.com/google-ads-customer-match-connector/):
-
-1. Re-authenticate the connector so that it includes the Google Data Manager API scope.  
-1. Use the **Link Customer ID to Tealium** section to create the product link for the Google Ads customer ID used by each connector action. If you are using the customer ID override feature in your action, repeat the linking process here for each list-owning customer account ID.
-
-### Step 2: Move an existing action to the new Google Data Manager API
+### Step 1: Move an existing action to the new Google Data Manager API
 
 Either create a new action based on the existing one (recommended if you want to run both side-by-side during testing), or switch the existing action in place.
 
@@ -103,12 +95,12 @@ Either create a new action based on the existing one (recommended if you want to
 
 For each existing Google Ads API actions:
 
-1. In the connector’s **Actions** tab, locate your existing Google Ads Customer Match action.  
+1. In the connector's **Actions** tab, locate your existing Google Ads Customer Match action.  
 1. Use the **Copy to new action** option to duplicate the configuration.  
 1. In the new copy, change the action type to the Data Manager API action, for example, **Add User to List (Data Manager API)** or **Remove User from List (Data Manager API)**.  
 1. Verify the following:  
    * The same user list is selected, or that any override fields are updated to use the correct list ID format for Data Manager.  
-   * All required identifier mappings are present and match the list’s key type. For example, at least one of hashed email, hashed phone, or address fields for `CONTACT_ID` lists; a first-party user ID for `USER_ID` lists; or a mobile device ID for `MOBILE_ID` lists.  
+   * All required identifier mappings are present and match the list's key type. For example, at least one of hashed email, hashed phone, or address fields for `CONTACT_ID` lists, a first-party user ID for `USER_ID` lists, or a mobile device ID for `MOBILE_ID` lists.  
 1. Save the new Data Manager API action.
 
 This approach lets you reuse your existing trigger conditions and most field mappings while switching to the new API.
@@ -123,7 +115,7 @@ If you would rather not make a copy, but switch an action to the new API:
 1. Verify the selected user list and mappings were persisted.  
 1. Save the Data Manager API action.
 
-### Step 3: Test and validate
+### Step 2: Test and validate
 
 Regardless of whether you copied an action (Option A) or switched it in place (Option B):
 
@@ -131,11 +123,11 @@ Regardless of whether you copied an action (Option A) or switched it in place (O
 1. Verify in Google Ads that the target Customer Match list begins receiving users as expected (for add actions) or sees users removed as expected (for remove actions).  
 1. Check Tealium connector logs for any errors related to Data Manager (for example, invalid identifiers, consent issues, or list configuration problems) and adjust mappings as needed.
 
-### Step 4: Clean up legacy actions (if applicable)
+### Step 3: Clean up legacy actions (if applicable)
 
 If you created a copy of the action and have validated the new Data Manager API action:
 
-1. Return to the connector’s **Actions** tab.  
+1. Return to the connector's **Actions** tab.  
 1. Disable or remove the old Google Ads Customer Match action to avoid duplicate updates.
 
 If you switched an action in place using Option B, no additional cleanup is required for that action.

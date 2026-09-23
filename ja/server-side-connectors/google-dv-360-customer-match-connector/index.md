@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 ## 要件
 
-このコネクタを構成する前に、Google Display & Video 360アカウントでTealiumをリンクアカウントとして追加してください。
+このコネクタを構成する前に、Google Display & Video 360アカウントにTealiumをリンクされたアカウントとして追加してください。
 
 詳細については、[Google Display & Video 360: Sharing audience lists from external data management platforms or customer match uploader partners](https://support.google.com/displayvideo/answer/9649053?hl=ja)を参照してください。
 
@@ -42,8 +42,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 | **パラメータ** | **説明** |
 | --- | --- |
 | List Name | （必須）カスタマーマッチリスト名。 |
-| List type | （必須）リストタイプ。このタイプは、このリストで使用されるユーザー識別情報のタイプに影響します：<ul><li>Contact Info - メンバーは顧客情報（メールアドレス、電話番号、または物理的な住所）からマッチされます。</li><li>Mobile Advertising - メンバーはモバイル広告IDからマッチされます。</li></ul> |
-| App ID | Mobile Advertisingリストタイプに必要。データが収集されたモバイルアプリケーションを一意に識別する文字列。 |
+| List type | （必須）リストのタイプ。このタイプは、このリストで使用されるユーザー識別情報のタイプに影響します：<ul><li>Contact Info - メンバーは、メールアドレス、電話番号、または物理的住所などの顧客情報からマッチされます。</li><li>Mobile Advertising - メンバーはモバイル広告IDからマッチされます。</li></ul> |
+| App ID | Mobile Advertisingリストタイプに必要です。データが収集されたモバイルアプリケーションを一意に識別する文字列。 |
 | List Membership Lifespan | （オプション）ユーザーがリストに追加されてからリストに残る日数。数値は`0`から`540`の間でなければなりません。デフォルトの寿命は540日です。 |
 | List Description | （オプション）リストの説明。 |
 
@@ -58,15 +58,15 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 ### ユーザー識別子
 
-各アクションにはユーザー識別子が必要であり、これらの値は正規化され、SHA-256でハッシュ化する必要があります。マッピングする各ユーザー識別子値は、以下の要件を満たす必要があります：
+各アクションにはユーザー識別子が必要であり、これらの値は正規化され、SHA-256でハッシュ化される必要があります。マッピングされる各ユーザー識別子値は、以下の要件を満たす必要があります：
 
 * 小文字
 * テキストの先頭と末尾から空白をトリム
 * SHA-256でハッシュ化
 
-既に正規化されハッシュ化された属性をマッピングするか、コネクタに正規化とハッシュ化を許可します。シナリオに適したマッピングを選択してください。
+既に正規化されハッシュ化された属性をマッピングするか、コネクタに正規化とハッシュ化をさせます。シナリオに適したマッピングを選択してください。
 
-選択する`User List`タイプはユーザー識別子のタイプを決定します。`User List`タイプは以下のいずれかです：
+選択する`User List`タイプによって、ユーザー識別子のタイプが決まります。`User List`タイプは以下のいずれかです：
 
 * `CONTACT_INFO`
 * `MOBILE_ADVERTISING_ID`
@@ -75,8 +75,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 |ユーザー識別子フィールド| 説明|
 |---| ---|
-| `CONTACT_INFO` |  <ul><li>ハッシュ化されたメール、ハッシュ化された電話番号、または住所情報を提供します。</li><li>住所情報を提供する場合、すべての4つのフィールドが必要です：国コード、名、姓、郵便番号。住所情報フィールドのいずれかが欠けている場合、コネクタはリクエストから住所オブジェクト全体を削除します。削除後にユーザーデータが残っていない場合、アクションは検証エラーで失敗し、再試行されません。</li><li>**住所情報：国コード** - ISO 3166-1 alpha-2形式のユーザーの住所の2文字国コード。</li><li>**住所情報：名（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された名を提供します。</li><li>**住所情報：名（SHA256ハッシュを適用）** - プレーンテキストの名を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**住所情報：姓（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化された姓を提供します。</li><li>**住所情報：姓（SHA256ハッシュを適用）** - プレーンテキストの姓を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**住所情報：郵便番号** - ユーザーの住所の郵便番号。</li><li>**メールアドレス（既にSHA256ハッシュ化済み）** - 空白をトリムし、小文字にしてSHA256でハッシュ化されたメールアドレスを提供します。</li><li>**メールアドレス（SHA256ハッシュを適用）** - プレーンテキストのメールアドレスを提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li><li>**電話番号（既にSHA256ハッシュ化済み）** - 空白をトリムし、SHA256でハッシュ化された電話番号を提供します。</li><li>**電話番号（SHA256ハッシュを適用）** - プレーンテキストの電話番号を提供します。コネクタはこの値をSHA256ハッシュでハッシュ化します。</li></ul> |
-|`MOBILE_ADVERTISING_ID`|  <ul><li>**モバイルID**（必須） - モバイルデバイスID（広告ID/IDFA）。</li></ul> |
+| `CONTACT_INFO` | <ul><li>ハッシュ化されたメールアドレス、ハッシュ化された電話番号、または住所情報を提供します。</li><li>住所情報を提供する場合、すべての4つのフィールドが必要です：国コード、名、姓、郵便番号。**Address Info**フィールドのいずれかが欠けている場合、コネクタはリクエストから住所オブジェクト全体を削除します。削除後にユーザーデータが残っていない場合、アクションは検証エラーで失敗し、再試行されません。</li><li>**Address Info: Country Code**: ISO 3166-1 alpha-2形式のユーザーの住所の2文字国コードを提供します。</li><li>**Address Info: First Name (already SHA256 hashed)**: 先頭と末尾の空白を削除し、小文字に変換し、SHA-256でハッシュ化された名を提供します。</li><li>**Address Info: First Name (apply SHA256 hash)**: 名をプレーンテキストで提供します。コネクタが値をSHA-256でハッシュ化します。</li><li>**Address Info: Last Name (already SHA256 hashed)**: 先頭と末尾の空白を削除し、小文字に変換し、SHA-256でハッシュ化された姓を提供します。</li><li>**Address Info: Last Name (apply SHA256 hash)**: 姓をプレーンテキストで提供します。コネクタが値をSHA-256でハッシュ化します。</li><li>**Address Info: Postal Code**: ユーザーの住所の郵便番号を提供します。</li><li>**Email Address (already SHA256 hashed)**: 先頭と末尾の空白を削除し、小文字に変換し、SHA-256でハッシュ化されたメールアドレスを提供します。値は64文字の16進数文字を含む有効なSHA-256ヘックス文字列でなければなりません。無効な値はリクエストが送信される前に削除されます。</li><li>**Email Address (apply SHA256 hash)**: メールアドレスをプレーンテキストで提供します。コネクタが値をSHA-256でハッシュ化します。</li><li>**Phone Number (already SHA256 hashed)**: 先頭と末尾の空白を削除し、SHA-256でハッシュ化された電話番号を提供します。値は64文字の16進数文字を含む有効なSHA-256ヘックス文字列でなければなりません。無効な値はリクエストが送信される前に削除されます。有効なユーザー識別子が残っていない場合、アクションは検証エラーで失敗し、再試行されません。</li><li>**Phone Number (apply SHA256 hash)**: 電話番号をプレーンテキストで提供します。コネクタが値をSHA-256でハッシュ化します。</li></ul> |
 
 ### Add to Customer Match List (Data Manager API)
 
@@ -106,39 +105,39 @@ url: https://docs.tealium.com/ja/server-side-connectors/google-dv-360-customer-m
 
 ##### 同意
 
-**Add Visitor to Customer Match List**アクションを使用する場合、コネクタはデフォルトで`adUserData`および`adPersonalization`の同意に`GRANTED`の値を送信します。リストに追加されないように非同意の訪問に対するオーディエンスロジックを使用してください。リストから非同意の訪問を削除するには、**Remove from Customer Match List**アクションを使用してください。
+**Add Visitor to Customer Match List**アクションを使用する場合、コネクタはデフォルトで`adUserData`および`adPersonalization`の同意に対して`GRANTED`の値を送信します。リストに追加される非同意訪問を防ぐためにオーディエンスロジックを使用してください。**Remove from Customer Match List**アクションを使用して、リストから非同意訪問を削除します。
 
 ### Remove from Customer Match List (Data Manager API)
 
 マッピングオプションについては、[Add to Customer Match List (Data Manager API)](#add-to-customer-match-list-data-manager-api)を参照してください。
-
-### Add to Customer Match List (Deprecated)
+### 顧客マッチリストへの追加（非推奨）
 
 
 <blockquote>
-このアクションは非推奨であり、将来のリリースで削除されます。[Add to Customer Match List (Data Manager API)](#add-to-customer-match-list-data-manager-api)に移行してください。
+このアクションは非推奨であり、将来のリリースで削除される予定です。[顧客マッチリストへの追加（データマネージャーAPI）](#add-to-customer-match-list-data-manager-api)に移行してください。
 </blockquote>
 
 
 
 <blockquote>
-TealiumはGoogle DV 360から直接リスト統計を取得するため、このコネクタと[Google DV 360 Customer Match connector insight](https://docs.tealium.com/connector-insights-google-dv360-customer-match/)のマッチ数とコネクタリクエストの総量に差が生じる場合があります。
+TealiumはGoogle DV 360から直接リスト統計を取得するため、このコネクタと[Google DV 360 顧客マッチコネクタの洞察](https://docs.tealium.com/connector-insights-google-dv360-customer-match/)でのマッチ数とコネクタリクエストの総量に差異が生じる場合があります。
 </blockquote>
 
 
 #### API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは以下のベンダーAPIを使用しています：
 
 * API名：Google Ads API
 * APIバージョン：v18
 * APIエンドポイント：`https://googleads.googleapis.com/`
 * ドキュメント：[Google Ads API](https://developers.google.com/google-ads/api/docs/start)
+
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。以下のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：
 
-* リクエストの最大数：100,000
+* 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：1440分
 * リクエストの最大サイズ：50 MB
 
@@ -146,23 +145,23 @@ TealiumはGoogle DV 360から直接リスト統計を取得するため、この
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| カスタマーマッチリスト | カスタマーマッチリストを選択します。Tealiumコネクタを通じて作成されたリストのみが利用可能です。カスタマーマッチリストを作成するには、[カスタマーマッチリストの作成](#create-customer-match-list)を参照してください。 |
+| 顧客マッチリスト | 顧客マッチリストを選択します。Tealiumコネクタを通じて作成されたリストのみが利用可能です。顧客マッチリストを作成するには、[顧客マッチリストの作成](#create-customer-match-list)を参照してください。 |
 
 ##### 同意
 
-**カスタマーマッチリストへの訪問追加** アクションを使用する際、コネクタはデフォルトで `adUserData` と `adPersonalization` の同意に対して `GRANTED` の値を送信します。同意していない訪問がリストに追加されないようにオーディエンスロジックを使用してください。同意していない訪問をリストから削除するには、**カスタマーマッチリストから削除** アクションを使用してください。
+**顧客マッチリストへの訪問追加** アクションを使用する際、コネクタはデフォルトで `adUserData` および `adPersonalization` の同意に `GRANTED` の値を送信します。同意していない訪問がリストに追加されないようにオーディエンスロジックを使用してください。同意していない訪問をリストから削除するには、**顧客マッチリストからの削除** アクションを使用してください。
 
-### カスタマーマッチリストからの削除（非推奨）
+### 顧客マッチリストからの削除（非推奨）
 
 
 <blockquote>
-このアクションは非推奨であり、将来のリリースで削除されます。[カスタマーマッチリストからの削除（データマネージャAPI）](#remove-from-customer-match-list-data-manager-api)に移行してください。
+このアクションは非推奨であり、将来のリリースで削除される予定です。[顧客マッチリストからの削除（データマネージャーAPI）](#remove-from-customer-match-list-data-manager-api)に移行してください。
 </blockquote>
 
 
 #### API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは以下のベンダーAPIを使用しています：
 
 * API名：Google Ads API
 * APIバージョン：v18
@@ -171,9 +170,9 @@ TealiumはGoogle DV 360から直接リスト統計を取得するため、この
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。以下のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：
 
-* リクエストの最大数：100,000
+* 最大リクエスト数：100,000
 * 最古のリクエストからの最大時間：1440分
 * リクエストの最大サイズ：50 MB
 
@@ -181,4 +180,4 @@ TealiumはGoogle DV 360から直接リスト統計を取得するため、この
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| カスタマーマッチリスト | カスタマーマッチリストを選択します。Tealiumコネクタを通じて作成されたリストのみが利用可能です。 |
+| 顧客マッチリスト | 顧客マッチリストを選択します。Tealiumコネクタを通じて作成されたリストのみが利用可能です。 |

@@ -21,7 +21,7 @@ Use the `PATCH` method to create, update, and delete components in the iQ Profil
 PATCH /v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}
 ```
 
-When you use the PATCH method you are making changes to your profile configuration programmatically using a save or save-as. After making changes with the API you must still log into the application to publish.
+When you use the PATCH method you are making changes to your profile configuration programmatically using a save or save-as. To publish after saving, use the [iQ Publish API](https://docs.tealium.com/iq-publish-api/).
 
 ### Example cURL Request
 

@@ -1,19 +1,19 @@
 ---
 title: iQ変数API
-description: iQ変数APIを使用すると、iQタグ管理プロファイル内の変数をプログラムで作成、更新、削除できます。
+description: iQ変数APIを使用すると、iQタグ管理プロファイルで変数をプログラム的に作成、更新、削除できます。
 url: https://docs.tealium.com/ja/api/v3/iq-profiles/iq-variables-api/
 ---
-このAPIと利用可能なオブジェクトフィールドについて詳しくは、[iQプロファイルAPI](https://docs.tealium.com/iq-profiles-v3-api/)および[iQプロファイルオブジェクト](https://docs.tealium.com/iq-profiles-api-objects/)を参照してください。
+このAPIと利用可能なオブジェクトフィールドについて詳しくは、[iQプロファイルAPI](https://docs.tealium.com/iq-profiles-v3-api/)と[iQプロファイルオブジェクト](https://docs.tealium.com/iq-profiles-api-objects/)を参照してください。
 
 ## 動作原理
 
-`PATCH` メソッドを使用して、iQプロファイルオブジェクト内の変数を作成、更新、削除します。
+`PATCH` メソッドを使用して、iQプロファイルオブジェクトの変数を作成、更新、削除します。
 
 ```bash
 PATCH /v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}
 ```
 
-PATCHメソッドを使用すると、保存または名前を付けて保存を使用してプログラムでプロファイル変数を変更します。APIで変更を加えた後でも、アプリケーションにログインして公開する必要があります。
+PATCHメソッドを使用すると、保存または名前を付けて保存を使用してプログラム的にプロファイル変数を変更します。保存後に公開するには、[iQ公開API](https://docs.tealium.com/iq-publish-api/)を使用します。
 
 ### cURLリクエストの例
 
@@ -28,11 +28,11 @@ curl --location --request PATCH 'https://platform.tealiumapis.com/v3/tiq/account
 
 
 <blockquote>
-Bearerトークンは、すべてのAPI呼び出しを認証するために使用され、APIキーは認証呼び出しでのみ使用されます。Bearerトークンに加えて、認証応答には、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれています。
+すべてのAPI呼び出しにはベアラートークンが使用され、APIキーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証応答には、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれています。
 </blockquote>
 
 
-APIキーからBearerトークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
+APIキーからベアラートークンを生成する方法については、[認証](https://docs.tealium.com/api/v3/getting-started/authentication/)を参照してください。
 
 ## プロファイルフィールド
 
@@ -47,9 +47,9 @@ APIキーからBearerトークンを生成する方法については、[認証]
 |`op`| 文字列| 必須| 実行する操作: `add`、`replace`、または`remove`。|
 |`path`| 文字列| 必須| 更新するコンポーネントタイプとIDの形式:`/variables`。|
 |`value.object`| 文字列| 必須| 更新されるオブジェクトタイプ: `variable`または`extension`。|
-|`value.name`| 文字列| 必須（add/replaceの場合）| 変数のタイトル。|
+|`value.name`| 文字列| 必須 (add/replaceの場合)| 変数のタイトル。|
 |`value.alias`| 文字列| 必須| 変数名。|
-|`value.type`| 文字列| 必須| 変数タイプを表すプレフィックス。<br> `ls` - ローカル保存 <br> `ss` - セッション保存 <br> `udo` - ユニバーサルデータオブジェクト<br> `qp` - クエリ文字列パラメータ<br> `cp` - クッキー<br> `js_page` - JavaScript変数<br> `meta` - メタデータ要素<br> `va` - AudienceStream属性（読み取り専用。このタイプは他のiQプロファイルAPI要素で使用できますが、APIを使用して作成することはできません。）|
+|`value.type`| 文字列| 必須| 変数タイプを表すプレフィックス。<br> `ls` - ローカル保存 <br> `ss` - セッション保存 <br> `udo` - ユニバーサルデータオブジェクト<br> `qp` - クエリ文字列パラメータ<br> `cp` - クッキー<br> `js_page` - JavaScript変数<br> `meta` - メタデータ要素<br> `va` - AudienceStream属性 (読み取り専用。このタイプは他のiQプロファイルAPI要素で使用できますが、APIを使用して作成することはできません。)|
 |`value.notes`| 文字列| 任意| 変数に関する注記。|
 
 ### リクエストの例
@@ -71,7 +71,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
         "notes":"udo variable"
       }
     }
-  , "/ja/early-access/api/api-v3/iq-profiles/iq-variables-api"]
+  ]
 }
 ```
 
@@ -125,7 +125,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
         "notes":"udo variable"
       }
     }
-  , "/ja/early-access/api/api-v3/iq-profiles/iq-variables-api"]
+  ]
 }
 ```
 
@@ -152,7 +152,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
         "notes":"udo variable"
       }
     }
-  , "/ja/early-access/api/api-v3/iq-profiles/iq-variables-api"]
+  ,]
 }
 ```
 
@@ -175,7 +175,7 @@ APIキーからBearerトークンを生成する方法については、[認証]
         "object": "variable"
       }
     }
-  , "/ja/early-access/api/api-v3/iq-profiles/iq-variables-api"]
+  ]
 }
 ```
 

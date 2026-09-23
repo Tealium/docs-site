@@ -65,7 +65,7 @@ The following section describes how to set up parameters and options for each ac
 |Email Address (apply SHA256 hash)| Provide a plain text email address and the connector will remove all periods (`.`) that precede the domain name in `gmail.com` and `googlemail.com` email addresses, whitespace trim, lowercase, and hash this value using SHA256 hash.|
 |Phone Number (already SHA256 hashed)| Provide a phone number according to the [E164 standard](https://en.wikipedia.org/wiki/E.164) that has been already whitespace trimmed and SHA256 hashed.|
 |Phone Number (apply SHA256 hash)| Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (`+`), whitespace trim, and hash this value using SHA256 hash.|
-|gclid| Google click ID (gclid) associated with the conversion. Note: If you provide `gclid` and `user_identifiers` (email/phone) for a conversion, Google Ads will ignore the `user_identifiers`.|
+| gclid | The Google click ID (GCLID) associated with the conversion. If you provide both `gclid` and `user_identifiers` (email or phone), Google Ads ignores `user_identifiers`. If no GCLID is present, `conversionDateTime` is omitted, even if **Conversion Time** is mapped. |
 | Address Info: First Name (already SHA256 hashed) | Provide a first name which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Address Info: First Name (apply SHA256 hash) | Provide a plain text first name and the connector will lowercase, trim whitespaces, and hash this value using SHA256 hash. |
 | Address Info: Last Name (already SHA256 hashed) | Provide a last name which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
@@ -83,7 +83,7 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 |Conversion Value| Monetary value of the conversion.|
 |Conversion Currency| Currency code of the conversion.|
-|Conversion Time| The date and time when the original conversion occurred. The time zone must be specified. The format is <code>yyyy-mm-dd hh:mm:ss+&#124;-hh:mm</code>. For example, `2022-01-01 12:32:45-08:00` or `2022-01-01 12:32:45+08:00`. If no value is mapped, the value is set to the current time.|
+|Conversion Time| The date and time when the original conversion occurred. The time zone must be specified. The format is <code>yyyy-mm-dd hh:mm:ss+&#124;-hh:mm</code>. For example, `2022-01-01 12:32:45-08:00` or `2022-01-01 12:32:45+08:00`. If no value is mapped, the value is set to the current time. This default applies only when a GCLID is also present. When no GCLID is present, `conversionDateTime` is omitted even when Conversion Time is mapped.|
 |Order ID| The order ID associated with the conversion. An order ID can only be used for one conversion per conversion action.|
 |Custom Variables| The custom variables associated with this conversion. Map the value to the custom variable ID. The connector will send `conversion_custom_variable` field in the following format: `customers/{customer_id}/conversionCustomVariables/{custom_variable_id}`.|
 

@@ -53,10 +53,6 @@ The Client IP attribute is not visible in **Live Events** or **Trace**. To see t
     * A signed contract is required before enabling Event Data Storage.
 * **Audience Data Storage** (Read Only) Enable Audience Data Storage on the account.
     * A signed contract is required before enabling Audience Data Storage
-* **Enable Spectrum** (Read Only): Enable Spectrum on the account.
-    * Before enabling Spectrum for existing customers who have been using DataAccess, a data migration is needed to ensure all existing and new data are written to the correct location. 
-    * To request this feature, open a ticket with Tealium Support.
-    * Default value is **OFF**.
 * **EventStore Retention Time** (Read Only): Determines how long EventStore data is retained.
     * Default value is **390 days** (13 months).
 * **EventDB Retention Time** (Read Only): Determines how long EventDB data is retained.

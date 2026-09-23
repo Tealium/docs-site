@@ -112,6 +112,12 @@ The following section describes how to set up parameters and options for each ac
 | Custom Event Type | A custom event name when tracking type is set to `CUSTOM`. Free-form, case-sensitive, up to 64 characters including spaces. For example, `Promotion Event` and `PromotionEvent` are considered two distinct events. Reddit recommends setting this to a value that doesn't match pre-existing events. |
 | Event Testing | Enable testing by providing the Reddit Test ID. |
 
+
+<blockquote>
+Do not enable **Event Testing** for production traffic. Reddit limits test events to 10 events per second. Requests that exceed this limit can return an HTTP `429` error. Leave **Event Testing** empty when sending production traffic.
+</blockquote>
+
+
 #### Conversion Event Parameters
 
 | **Parameter** | **Description** |
@@ -199,7 +205,7 @@ This connector uses the following vendor API:
 | Transaction Value (Decimal) | The value of the transaction in the base unit of the currency. |
 | Currency | The three-character ISO 4217 currency code for the value provided. |
 | Item Count | The number of items in the event. |
-| Test Mode | Set to `true` to test the API integration. No data is posted to the account. |
+| Test Mode | Set to `true` to test the API integration. Test data isn't posted to the account. Leave this setting disabled for production traffic. |
 | Reddit Click ID | The Reddit-generated ID associated with a single ad click. |
 | Phone Number (already SHA256 hashed) | Provide a phone number, already whitespace trimmed, lowercased, and SHA256 hashed. |
 | Phone Number (apply SHA256 hash) | Provide a plain text phone number. The connector removes extensions, strips all non-numeric characters, ensures the number starts with `+` (E.164 format), then hashes the result with SHA256. |

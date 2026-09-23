@@ -280,3 +280,7 @@ The following parameters are required:
 | **Parameter** | **Description** |
 | --- | --- |
 | Access Token | Access Token generated through the Pinterest Ads Manager. For more information, see [Pinterest: Conversions Guide](https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint). |
+
+## Connector Insights
+
+The Pinterest Conversions connector supports Connector Insights, which displays Pinterest Conversion Event Quality Score (EQS) data directly in Tealium. For more information, see [Connector Insights: Pinterest Conversions](https://docs.tealium.com/connector-insights-pinterest-conversions/).

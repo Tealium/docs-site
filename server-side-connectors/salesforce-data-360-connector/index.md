@@ -3,6 +3,18 @@ title: Salesforce Data 360 Connector Setup Guide
 description: This article describes how to set up the Salesforce Data 360 connector.
 url: https://docs.tealium.com/server-side-connectors/salesforce-data-360-connector/
 ---
+
+
+## Requirements
+
+This connector requires the following Salesforce Data 360 resources:
+
+* An [Ingestion API source](https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-connect-an-ingestion-source.html) configured with the objects and fields you want to receive from Tealium
+* A data stream for the Ingestion API source
+* A Connected App or External Client App with access to the Data 360 Ingestion API
+
+For more information, see [Salesforce: Connect an ingestion source](https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-connect-an-ingestion-source.html).
+
 ## API information
 
 This connector uses the following vendor API:
@@ -22,6 +34,7 @@ After adding the connector, configure the following settings:
 * **Client ID**
   * (Required) The Consumer Key from your Salesforce Connected App or External Client App.
   * The app must have the client credentials flow enabled, a Run As user configured, and the `cdp_ingest_api` and `api` OAuth scopes.
+  * Set the callback URL for the connected app or external client app to `https://my.tealiumiq.com/oauth/salesforce/callback.html`.
   * If Salesforce returns `no client credentials user enabled`, verify that a Run As user is configured. This error doesn't indicate that the Client Secret is incorrect.
 * **Client Secret**
   * (Required) The Consumer Secret from your Salesforce Connected App or External Client App.

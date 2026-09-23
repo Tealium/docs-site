@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/api/v3/iq-profiles/iq-events-api/
 PATCH /v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}
 ```
 
-PATCH メソッドを使用すると、保存または名前を付けて保存を使用してプログラムでプロファイルイベントを変更します。API を使用して変更を加えた後でも、アプリケーションにログインして公開する必要があります。
+PATCH メソッドを使用すると、保存または名前を付けて保存を使用してプログラムでプロファイルイベントを変更します。保存後に公開するには、[iQ 公開 API](https://docs.tealium.com/iq-publish-api/) を使用します。
 
 ### cURL リクエストの例
 
@@ -28,7 +28,7 @@ curl --location --request PATCH 'https://platform.tealiumapis.com/v3/tiq/account
 
 
 <blockquote>
-API キーではなく、すべての API 呼び出しを認証するためにベアラートークンが使用されます。API キーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証応答には、後続のサーバーサイド API 呼び出しで使用する必要がある地域固有のホスト名が含まれています。
+すべての API 呼び出しにはベアラートークンが使用され、API キーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証応答には後続のサーバーサイド API 呼び出しで使用する必要がある地域固有のホスト名が含まれています。
 </blockquote>
 
 
@@ -51,8 +51,8 @@ API キーからベアラートークンを生成する方法については、[
 | `value.notes` | 文字列 | 任意 | イベントに関する注記。 |
 | `value.status` | 文字列 | 必須 | オン/オフの状態： `active` または `inactive`。 |
 |`value.occurrence`| 文字列| 任意| イベントトリガーがトラッキングコールを結果として発生させる回数を決定します。値： `Run Once` または `Run Always`。デフォルト： `Run Always`。 |
-| `value.type` | 文字列 | 必須 | 追跡されるイベントのタイプ。追跡されるイベントのタイプ。<ul><li>[`mouseEvents`](https://docs.tealium.com/click-event/)\- 次のユーザーアクションを含みます：<ul><li>`click` \- 訪問がページ上でマウスをクリックしたとき。</li><li>`mousedown` \- 訪問がマウスを押し下げたとき。</li><li>`mouseup` \- 訪問がマウスを押し下げたとき。</li></ul><li>[`mouseOver`](https://docs.tealium.com/mouseover-event/) \- 訪問がページ上の特定の要素にマウスをホバーしたとき。</li><li> [`formSubmit`](https://docs.tealium.com/form-submission-event/) \- 訪問がページ上のフォームを提出したとき。</li><li>[`youtubeVideo`](https://docs.tealium.com/youtube-event/) \- 訪問がページ上の埋め込まれた YouTube ビデオと対話したとき。</li><li>[`vimeoVideo`](https://docs.tealium.com/vimeo-event/) \- 訪問がページ上の埋め込まれた Vimeo ビデオと対話したとき。</li><li>[`html5Video`](https://docs.tealium.com/html5-video-event/) \- 訪問がページ上の埋め込まれた HTML5 ビデオと対話したとき。</li><li>[`pageView`](https://docs.tealium.com/page-view-event/) \- 訪問がページを閲覧したとき。</li><li>[`scroll`](https://docs.tealium.com/scroll-event/) \- 訪問がページを縦または横にスクロールしたとき。</li><li>[`elementVisibility`](https://docs.tealium.com/element-visibility-event/) \- ページが訪問に画面要素を表示したとき。</li></li></ul>|
-|`value.scope`| 文字列| 任意|  イベントのスコープの名前。<br>`DOM Ready`<br> `After Load Rules` |
+| `value.type` | 文字列 | 必須 | 追跡されるイベントのタイプ。追跡されるイベントのタイプ。 <ul><li>[`mouseEvents`](https://docs.tealium.com/click-event/)\- 次のユーザーアクションを含みます：<ul><li>`click` \- 訪問がページ上でマウスをクリックしたとき。</li><li>`mousedown` \- 訪問がマウスを下に動かしたとき。</li><li>`mouseup` \- 訪問がマウスを下に動かしたとき。</li></ul><li>[`mouseOver`](https://docs.tealium.com/mouseover-event/) \- 訪問がページ上の特定の要素にマウスをホバーしたとき。</li><li> [`formSubmit`](https://docs.tealium.com/form-submission-event/) \- 訪問がページ上のフォームを提出したとき。</li><li>[`youtubeVideo`](https://docs.tealium.com/youtube-event/) \- 訪問がページ上に埋め込まれた YouTube ビデオと対話したとき。</li><li>[`vimeoVideo`](https://docs.tealium.com/vimeo-event/) \- 訪問がページ上に埋め込まれた Vimeo ビデオと対話したとき。</li><li>[`html5Video`](https://docs.tealium.com/html5-video-event/) \- 訪問がページ上に埋め込まれた HTML5 ビデオと対話したとき。</li><li>[`pageView`](https://docs.tealium.com/page-view-event/) \- 訪問がページを閲覧したとき。</li><li>[`scroll`](https://docs.tealium.com/scroll-event/) \- 訪問がページを縦または横にスクロールしたとき。</li><li>[`elementVisibility`](https://docs.tealium.com/element-visibility-event/) \- ページが訪問に画面要素を表示したとき。</li></li></ul>|
+|`value.scope`| 文字列| 任意|  イベントのスコープの名前。 <br>`DOM Ready`<br> `After Load Rules` |
 | `value.trackingEvent` | 文字列 | 必須 |イベントリスナーのトラッキングイベント：<br>`link` <br> `view`<br>`custom-event-of-anytype `|
 |`value.selectedTargets`| マップ &lt;string, Boolean&gt;|  任意 |  コンポーネントを公開する環境のオブジェクト：<br> `{   "prod" : true\|false,   "qa" : true\|false,   "dev" : true\|false }` <br>デフォルト：すべての環境が `true` に構成されています。 |
 | `value.eventTriggers` | オブジェクト | 必須 | 各イベントタイプに固有の構成。値は `"object": "[value.Type]"` の形式で、イベントの構成に続きます。 |
@@ -73,7 +73,7 @@ API キーからベアラートークンを生成する方法については、[
       "path": "/events",
       "value":{
         "object": "event",
-        "name": "新しいAPIイベント",
+        "name": "新しい API イベント",
         "notes": "イベントの注記",
         "status": "active",
         "occurence": "Run Always",
@@ -114,7 +114,7 @@ API キーからベアラートークンを生成する方法については、[
             {
               "and": [{"or": [{"uid": 52, "type": "loadRule"}]}]}
             ],
-          "exclude": [, "/ja/early-access/api/api-v3/iq-profiles/iq-events-api"]
+          "exclude": []
         }
       }
     } 
@@ -204,7 +204,7 @@ API キーからベアラートークンを生成する方法については、[
             {
               "and": [{"or": [{"uid": 52, "type": "loadRule"}]}]}
             ],
-          "exclude": [, "/ja/early-access/api/api-v3/iq-profiles/iq-events-api"]
+          "exclude": []
         }
       }
     } 
@@ -269,7 +269,7 @@ API キーからベアラートークンを生成する方法については、[
             {
               "and": [{"or": [{"uid": 52, "type": "loadRule"}]}]}
             ],
-          "exclude": [, "/ja/early-access/api/api-v3/iq-profiles/iq-events-api"]
+          "exclude": []
         }
       }
     } 

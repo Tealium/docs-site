@@ -38,6 +38,17 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 
 
+![](https://docs.tealium.com/images/icons/icon-terminal.svg)
+
+#### 開発者ポータル
+
+* [スタートガイド](https://docs.tealium.com/administration/early-access/developer-portal/dev-portal-getting-started/)
+* [アプリケーション](https://docs.tealium.com/administration/early-access/developer-portal/dev-portal-applications/)
+* [サブスクリプション](https://docs.tealium.com/administration/early-access/developer-portal/dev-portal-subscriptions/)
+* [認証](https://docs.tealium.com/administration/early-access/developer-portal/dev-portal-authentication/)
+
+
+
 
 #### 予測インテリジェンス
 

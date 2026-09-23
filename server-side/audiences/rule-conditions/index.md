@@ -3,12 +3,11 @@ title: Rule Condition Definitions
 description: This article lists the operators available when building conditions for audiences and rules.
 url: https://docs.tealium.com/server-side/audiences/rule-conditions/
 ---
-
-## Condition Operators
+## Condition operators
 
 
 <blockquote>
-Some operators apply only to certain attribute types, which is indicated in the **Applies to** column.
+Some operators apply only to specific attribute types, as indicated in the **Applies to** column.
 </blockquote>
 
 
@@ -45,62 +44,89 @@ Some operators apply only to certain attribute types, which is indicated in the 
 |is executed| Tag has successfully fired on the page.| Tags in your Tealium iQ Tag Management profile|
 |matches regex|  Lets you use regular expressions (regex) in rules, enrichments, and audiences. For more information, see [Regular expressions](#regular-expressions)  |  String |
 
-## Using the Extended Rule Condition for the Tally Attribute
+## Unassigned attributes in Excluding conditions
 
-You can create a rule condition to check if the key for a [Tally]() attribute contains a specific value using the `contains` operator.
+When an attribute used in an **Excluding** condition is unassigned, the result depends on the operator.
+
+| Operator                       | Result  | Visitor outcome |
+| ------------------------------ | ------- | --------------- |
+| array does not contain         | `true`  | Retained        |
+| does not contain               | `true`  | Retained        |
+| does not contain (ignore case) | `true`  | Retained        |
+| does not equal                 | `true`  | Retained        |
+| does not equal (ignore case)   | `true`  | Retained        |
+| is not assigned                | `true`  | Retained        |
+| step not completed             | `true`  | Retained        |
+| contains                       | `false` | Excluded        |
+| contains (ignore case)         | `false` | Excluded        |
+| array contains                 | `false` | Excluded        |
+| equals                         | `false` | Excluded        |
+| equals (ignore case)           | `false` | Excluded        |
+| is assigned                    | `false` | Excluded        |
+| step completed                 | `false` | Excluded        |
+| is completed                   | `false` | Excluded        |
+
+### Number attributes
+
+Number attributes handle unassigned values differently. When an unassigned number attribute is the first operand in a comparison, Tealium evaluates its value as `0.0`.
+
+For example:
+
+* `equals 0` evaluates to `true`.
+* Other numeric comparisons evaluate the attribute against `0.0`.
+* `does not equal <value>` evaluates to `true` for an unassigned number attribute.
+
+The `0.0` default applies only when the unassigned number attribute is the first operand. If the second operand is an unassigned number attribute, the condition matches no visitors.
+
+## Using an extended rule condition for a tally attribute
+
+For a [tally]() attribute, you can use the `contains` operator to check for a specific key and then evaluate the value associated with that key.
 
 
 <blockquote>
-This extended rule condition is available only when using the `contains` operator.
+This extended rule condition is available only with the `contains` operator.
 </blockquote>
 
 
-Follow these steps to include a Tally attribute key and its value in a rule:
+To create an extended condition for a tally attribute:
 
-1. Navigate to **Transform > Rules**.
-1. Add a new rule or select an existing rule to edit.
-1. Under **Conditions**, select the Tally attribute you want to check from the first drop-down list.
-1. Select the **contains** operator in the next drop-down list.
-1. In the third drop-down list, select **Custom Value**.
-1. Enter the key-value that you expect in the Tally attribute.  
-      ![](https://docs.tealium.com/images/server-side/tally-rule.png)
-
-1. Click **Perform rule on value** and select the operator you want to use to evaluate the key you specified.
-1. Specify the value you want to evaluate against the key. You can use an attribute or type in a custom value.
+1. Go to **Transform > Rules**.
+1. Add a rule or select an existing rule to edit.
+1. Under **Conditions**, select the tally attribute to evaluate.
+1. Select the **contains** operator.
+1. Select **Custom Value**.
+1. Enter the tally key to evaluate.  
+   ![](https://docs.tealium.com/images/server-side/tally-rule.png)
+1. Click **Perform rule on value**, and then select the operator to use to evaluate the value associated with the key.
+1. Specify the value to compare. You can select an attribute or enter a custom value.
 1. Click **Save**.
 
 ## Regular expressions
 
-The `matches regex` operator is available only for string attributes. The condition returns `true` if any part of the string matches the regular expression (regex). 
+The `matches regex` operator is available only for string attributes. The condition returns `true` when any part of the attribute value matches the regular expression.
 
 
 <blockquote>
-Enter a regular expression into the rule condition without slashes (`/`).For example, for the value `abc1234567890`, enter `^[a-z0-9]{13}$` to match the entire string.
+Enter the regular expression without forward slashes (`/`). For example, to match the entire value `abc1234567890`, enter `^[a-z0-9]{13}$`.
 </blockquote>
 
 
 ![](https://docs.tealium.com/images/server-side/audiences/regex_example_ui.png)
 
-The `matches regex` operator has two options:
+The `matches regex` operator provides the following options:
 
-* **Multiline Mode**:  
-Instead of matching `^` and `$` at only the beginning or end of the entire string, matches `^` and `$` at the beginning and end of any line within the string in the attribute value.
-* **Case Insensitive**:  
-Ignores letter case when comparing the string to the attribute value.
+* **Multiline Mode**: Matches `^` and `$` at the beginning and end of each line instead of only at the beginning and end of the entire string.
+* **Case Insensitive**: Ignores letter case when matching the regular expression against the attribute value.
 
-The following regular expressions illustrate return values for various common string qualifiers for the example value `abc1234567890`:
+The following examples show the results of common regular expressions for the value `abc1234567890`:
 
-|Regex|Return Value|Description|
-|-----|------------|-----------|
-|`\d{3}`|`true`|No boundary qualifiers, matches anywhere within the string.|
-|`^abc`|`true`|Start of string qualifier (`^`) matches at the start of the string.|
-|`\d{3}$`|`true`|End of string qualifier (`$`) matches at the end of the string.|
-|`^[a-z0-9]{13}$`|`true`|Start and end qualifier matches the entire string.|
-|`^[a-zA-Z]{4}`|`false`|Start of string qualifier: does not match four consecutive uppercase or lowercase letters.|
-|`[a-zA-Z]{4}$`|`false`|End of string qualifier: no letters at the end of the string.|
-|`^[a-z0-9]{15}$`|`false`|Start and end qualifier: requires a value 15 characters long, which is not present.|
-
-
-
-
+| Regex            | Return value | Description                                              |
+| ---------------- | ------------ | -------------------------------------------------------- |
+| `\d{3}`          | `true`       | Matches three consecutive digits anywhere in the string. |
+| `^abc`           | `true`       | `^` matches the beginning of the string.                 |
+| `\d{3}$`         | `true`       | `$` matches the end of the string.                       |
+| `^[a-z0-9]{13}$` | `true`       | `^` and `$` match the entire 13-character string.        |
+| `^[a-zA-Z]{4}`   | `false`      | The string does not start with four consecutive letters. |
+| `[a-zA-Z]{4}$`   | `false`      | The string does not end with four consecutive letters.   |
+| `^[a-z0-9]{15}$` | `false`      | The string is not 15 characters long.                    |
 

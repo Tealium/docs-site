@@ -35,6 +35,8 @@ Connectors that use an event feed as a data source always receive restricted att
 
 * **Data Layer Enrichment**  
 By default, restricted attributes are omitted from the visitor attributes returned to the on-page data layer with data layer enrichment with AudienceStream. When the Tealium Collect tag requests the latest visitor profile, AudienceStream returns attributes that are not restricted. This behavior cannot be changed.
+* **Context API**  
+By default, restricted attributes cannot be included in engine responses. Engines configured to require authentication can include restricted attributes when **Allow PII** is enabled in the engine configuration. For more information, see [Manage Context API engines](https://docs.tealium.com/context-api-manage-engines/).
 
 Restricted data settings do not apply to the following services:
 
@@ -51,6 +53,7 @@ A warning message appears if your connector request contains one or more restric
 ## Summary
 
 * Marking an attribute as restricted protects it from being sent to select Tealium services.
-* EventStore, EventDB, and Data Layer Enrichment services honor restricted data.
+* EventStore, EventDB, Data Layer Enrichment, and Context API honor restricted data by default.
+* Context API engines configured to require authentication can include restricted attributes when **Allow PII** is enabled.
 * AudienceStore, AudienceDB, and Connectors do not honor restricted data.
 * Restricted attributes are available to all enrichments.

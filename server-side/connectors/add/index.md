@@ -119,6 +119,7 @@ The following connector metadata attributes are available in the mapping dropdow
 | `VISITOR_AUDIENCE_NAMES` | Visitor actions | Names of all audiences the visitor currently belongs to (array) |
 | `EVENT_FEED_ID` | Event actions | ID of the event feed that triggered the action |
 | `EVENT_FEED_NAME` | Event actions | Name of the event feed that triggered the action |
+| `EVENT_ID` | Event actions | ID of the event that triggered the action |
 | `ACTION_ID` | All actions | ID of the connector action |
 | `ACTION_NAME` | All actions | Name of the connector action |
 | `CONNECTOR_ID` | All actions | ID of the connector |

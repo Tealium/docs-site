@@ -110,12 +110,19 @@ For more information, see [Anonymous IDs, user identifiers, and visitor ID attri
 
 ### Governance
 
+
+<blockquote>
+Authentication and Allow PII are only available by request. If you are interested in trying these features, [contact support](https://docs.tealium.com/support/).
+</blockquote>
+
+
 Context API includes built-in controls for secure, production-grade deployment:
 
-* **No PII access**: Attributes designate as [restricted data](https://docs.tealium.com/about-restricted-data/) cannot be included in API responses.
+* **Authentication**: Set each engine to **Public** or **Require Authentication**. Authenticated engines accept only requests with a valid bearer token from the Developer Portal. Recommended for engines that return PII or restricted data. For more information, see [dev-portal-subscriptions](https://docs.tealium.com/dev-portal-subscriptions/).
+* **PII access controls**: Attributes marked as [restricted data](https://docs.tealium.com/about-restricted-data/) are excluded from API responses by default. Authenticated engines can include restricted attributes when **Allow PII** is enabled in the engine configuration.
 * **Domain allow lists**: Restrict which domains can query your engine endpoints.
 * **Permissions**: Control who can create, edit, or delete engines using role-based access.
-* **Purge data**: Delete outdated engine data at any time without affecting visitor records.
+* **Purge data**: Make outdated engine data inaccessible at any time without affecting visitor records.
 
 For details, see [Domain allowlist](#domain-allowlist), [Permissions](#permissions), and [Purge data](#purge-data).
 
@@ -136,19 +143,20 @@ If you need higher limits for your use case, contact your Tealium account manage
 
 ## Purge data
 
-Context API lets you delete outdated data from an endpoint using the purge data feature.
+Context API lets you make outdated engine data inaccessible using the purge data feature.
 
 The following examples describe situations in which you may want to purge data from an endpoint:
 
 * Renaming or deleting an audience, badge, or attribute included in your engine configuration.
 * Changing the personally identifiable information (PII) status of an attribute. If you change the PII status of an attribute, sensitive information may still be stored in the API endpoint.
 * Removing an audience, badge, or attribute from an engine configuration.
+* Turning off **Allow PII** on an engine. Restricted attributes are removed from future responses immediately, but previously stored data remains in the engine until you purge. Purging makes that data inaccessible.
 
 If an audience, badge, or attribute used in an engine is deleted from AudienceStream or the engine configuration, that item is no longer populated in the endpoint moving forward. Engine data that contains the removed attributes are unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data. 
 
 
 <blockquote>
-Purging data only deletes Context API engine data. Visitor records in AudienceStream are not affected.
+Purging data only affects Context API engine data. Visitor records are not affected.
 </blockquote>
 
 
@@ -196,8 +204,8 @@ Both Context API and [Data Layer Enrichment API](https://docs.tealium.com/data-l
 |**Active visitor session required** | No | Yes|
 |**Available data**| Audience, badge, or [supported attribute data types](https://docs.tealium.com/context-api-endpoint/#objects).<br> Names and IDs of audiences and badges available. | Attributes other than visitor IDs, funnels, and timelines, listed by attribute IDs. For badges and audiences, names are available.<br>For badge names, combine with [Profile Definition API](https://docs.tealium.com/get-profile-definition-api/).|
 |**Lookup ID**| Tealium anonymous ID or visitor ID attribute value | Tealium anonymous ID|
-|**Authenticated endpoint**| No| No|
-|**Access to PII** | No | No |
+|**Authenticated endpoint**| Optional. Engines can require authentication via the Developer Portal. | No|
+|**Access to PII** | Optional. Restricted attributes can be included on authenticated engines with **Allow PII** enabled. | No |
 |**Custom response object** | Yes | No|
 |**Implementation**|API| API or Tealium Collect tag|
 

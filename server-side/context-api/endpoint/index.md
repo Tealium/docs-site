@@ -3,13 +3,19 @@ title: Context API endpoint
 description: This article describes the Context API endpoint.
 url: https://docs.tealium.com/server-side/context-api/endpoint/
 ---
+
+<blockquote>
+The endpoint on this page applies to engines with **Public** access. For engines that require authentication, subscribe to the Context API in the Developer Portal and use the API reference there to make authenticated requests. For more information, see [dev-portal-api-catalog](https://docs.tealium.com/dev-portal-api-catalog/).
+</blockquote>
+
+
 ## How it works
 
 The Context API engine creates a unique endpoint for your region, account, and profile. Each engine assigns a unique engine ID to each endpoint.
 
 Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. If you request data for a visitor and they have not logged an active session yet, the API will not return any data.
 
-To retrieve visitor data, configure a [Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) to make a request to the Context API endpoint. 
+To retrieve visitor data, configure an [Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) to make a request to the Context API endpoint.
 
 ## GET method
 
@@ -132,5 +138,6 @@ Potential error messages for this endpoint:
 |---|---|
 |200 |Status OK. The request succeeded.|
 |400 |Bad request.|
+|401 |The engine requires authentication. Subscribe to the Context API in the Developer Portal and include a bearer token in the `Authorization` header. For more information, see [dev-portal-subscriptions](https://docs.tealium.com/dev-portal-subscriptions/).|
 |403 |The Context API engine is not enabled.|
 |404 |Not Found. The Tealium visitor ID does not have data stored in the database.|

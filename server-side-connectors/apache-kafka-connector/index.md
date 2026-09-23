@@ -5,42 +5,67 @@ url: https://docs.tealium.com/server-side-connectors/apache-kafka-connector/
 ---
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
+* **Authentication type**
+  * **SASL/PLAIN** (default): Uses a username and password for authentication.
+  * **SASL SCRAM-SHA-512**: Uses SCRAM-SHA-512 challenge-response authentication. Before selecting this option, configure your Kafka broker to support the `SCRAM-SHA-512` mechanism.
 * **Bootstrap Server**
-  * (Required) Kafka bootstrap server for your endpoint (for example, a Conduktor Gateway host or direct Kafka broker: `gateway.customer-domain.com:6969`). This must point to an endpoint reachable from Tealium, typically via PrivateLink, VPN, or peering.
+  * (Required) The Kafka bootstrap server for the endpoint, for example, a Conduktor Gateway host or Kafka broker: `gateway.customer-domain.com:6969`.
+  * The endpoint must be reachable from Tealium, typically through PrivateLink, VPN, or network peering.
 * **CA Certificate (PEM)**
-  * Trust anchor to validate the TLS certificate presented by the Kafka broker or Gateway. PEM-encoded CA chain. Required only for internal PKI, private CA, or self-signed certificates.
+  * The PEM-encoded CA certificate chain used to validate the TLS certificate presented by the Kafka broker or gateway.
+  * Required when the endpoint uses an internal PKI, private CA, or self-signed certificate.
 * **Disable Hostname Verification**
-  * Toggle Kafka client hostname verification. Disable this setting if you use SNI or non-standard hostnames. Default: verification enabled.
+  * Disables verification that the hostname matches the TLS certificate.
+  * Disable this setting if you use SNI or non-standard hostnames. Default: verification enabled.
 * **Confluent Schema Registry URL**
-  * (Optional) The URL of the Schema Registry (for example, `https://schema-registry.example.com:8081`). Required when using schema validation with custom actions.
+  * (Optional) The Schema Registry URL, for example, `https://schema-registry.example.com:8081`.
+  * Required when using schema validation with custom actions.
 * **Confluent Schema Registry Username**
-  * (Optional) The username used to authenticate with the Schema Registry via HTTP Basic authentication. Required if your Schema Registry enforces authentication.
+  * (Optional) The username used to authenticate with the Schema Registry using HTTP Basic authentication.
+  * Required if the Schema Registry requires authentication.
 * **Confluent Schema Registry Password**
-  * (Optional) The password or API secret used to authenticate with the Schema Registry via HTTP Basic authentication. Required if your Schema Registry enforces authentication.
+  * (Optional) The password or API secret used to authenticate with the Schema Registry using HTTP Basic authentication.
+  * Required if the Schema Registry requires authentication.
 * **Service Account Username**
-  * (Required) Kafka principal used to authenticate with SASL/PLAIN.
+  * (Required) The Kafka principal used to authenticate with the broker.
+  * For SASL/PLAIN, enter the SASL username. For SASL SCRAM-SHA-512, enter the SCRAM principal.
 * **Service Account Token / Password**
-  * (Required) JWT token or equivalent credential for the service account principal.
+  * (Required) The credential for the service account principal.
+  * For SASL/PLAIN, enter the JWT token or equivalent credential. For SASL SCRAM-SHA-512, enter the SCRAM password.
 * **Compression Type**
-  * Compression algorithm for messages sent to Kafka. Reduces bandwidth and storage costs. If left blank, GZIP is used.
+  * The compression algorithm to use for messages sent to Kafka. Reduces bandwidth and storage costs.
+  * Defaults to `GZIP`.
 * **Maximum Message Size (bytes)**
-  * The maximum size in bytes of a single message or batch sent in one request. Raise this value to accommodate large visitor profiles, but ensure it matches the broker's configuration. Default: 1,048,576 (1 MB). Maximum: 2,097,152 (2 MB). Must not exceed your Kafka broker's `message.max.bytes` setting.
+  * The maximum size, in bytes, of a single message or batch sent in one request. Raise this value to accommodate large visitor profiles, but ensure it matches the broker's configuration.
+  * Defaults to `1,048,576` bytes (1 MB). The maximum is `2,097,152` bytes (2 MB).
+  * The value must not exceed the Kafka broker's `message.max.bytes` setting.
 * **Client ID**
-  * A string identifier sent to the broker with every request for logging, monitoring attribution, and quota enforcement. If left blank, an auto-generated identifier in the format `tealium-{account}-{profile}-{connectorId}` is used. Allowed characters: letters, numbers, dots, hyphens, underscores.
+  * An identifier sent to the broker with each request for logging, monitoring attribution, and quota enforcement.
+  * Defaults to an automatically generated identifier in the following format: `tealium-{account}-{profile}-{connectorId}`.
+  * Supported characters are letters, numbers, periods (`.`), hyphens (`-`), and underscores (`_`).
 * **Acknowledgments (acks)**
-  * How many broker replicas must confirm receipt of a message. **1** (leader only) is fastest. **All** waits for all in-sync replicas, adding 50-100ms latency but eliminating data loss risk. **0** provides no acknowledgment, which is fastest but risks silent data loss.
+  * Specifies the number of broker acknowledgments required before a message is considered successfully written.
+  * **0**: No acknowledgment. Fastest but risks silent data loss.
+  * **1**: The partition leader acknowledges the message after writing it locally. Fastest with a delivery guarantee.
+  * **All**: All in-sync replicas must acknowledge, adding 50–100ms latency but eliminating data loss risk.
 * **Partitioner Strategy**
-  * Controls how the producer assigns messages to partitions when no partition is specified. **Default** uses sticky batching for optimal throughput. **Round Robin** distributes messages evenly across all partitions. When a message key is set, messages are always partitioned by key hash regardless of this setting.
+  * Controls how the producer assigns messages to partitions when no partition is specified.
+  * **Default**: Uses sticky batching for optimal throughput.
+  * **Round Robin**: Distributes messages evenly across all partitions.
+  * When a message key is set, messages are always partitioned by key hash regardless of this setting.
 * **Producer - Reconnect Backoff**
-  * Time in milliseconds to wait before attempting to reconnect to a broker after a connection failure. If left blank, the Kafka client default of 50ms is used.
+  * The time, in milliseconds, to wait before reconnecting to a broker after a connection failure.
+  * Defaults to `50` milliseconds.
 * **Producer - Retries**
-  * Maximum number of retry attempts for failed send operations. If left blank, the Kafka client default is used.
+  * The maximum number of retry attempts for failed send operations.
+  * If left blank, the Kafka client default is used.
 * **Producer - Retries Backoff**
-  * Time in milliseconds to wait between successive send retries for the same record. If left blank, the Kafka client default of 100ms is used.
+  * The time, in milliseconds, to wait between retry attempts for the same record.
+  * Defaults to `100` milliseconds.
 
 ## Actions
 
@@ -53,7 +78,7 @@ After adding the connector, configure the following settings:
 | Send Entire Log Event | ✗ | ✓ |
 | Send Log Event | ✗ | ✓ |
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
+Click **Next** or go to the **Actions** tab to configure connector actions.
 
 The following sections describe how to set up parameters and options for each action.
 

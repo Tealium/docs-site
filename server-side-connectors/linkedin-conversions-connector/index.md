@@ -216,12 +216,15 @@ You must send at least one of the following parameters: **Email Address**, **Lin
 | Acxiom ID | User identifier for matching with LiveRamp identity graph. |
 | Oracle Moat ID | User identifier for matching with Oracle Moat Identity. |
 | First Name | The first name of the contact to match the conversion. Required if **Company**, **Title**, or **Country Code** attributes are populated. |
+| First Name (already SHA256 hashed) | Provide a first name that has already been SHA-256 hashed. The connector sends the value without hashing it again. Invalid hashes are ignored. You can also provide the plain-text first name. |
 | Last Name | The last name of the contact to match the conversion. Required if **Company**, **Title**, or **Country Code** attributes are populated. |
+| Last Name (already SHA256 hashed) | Provide a last name that has already been SHA-256 hashed. The connector sends the value without hashing it again. Invalid hashes are ignored. You can also provide the plain-text last name. |
 | Company | Represents the company of the contact to match. |
 | Title | Title name of the contact to match. |
 | Country Code | ISO 3166 standardized two letter country code representing the country of the contact. |
 | External IDs | A list of `externalIds`. An `externalId` contains an advertiser-provided identifier representing the user who triggered the conversion event. For more information, see [LinkedIn: Custom Matching Identifiers](https://learn.microsoft.com/en-us/linkedin/marketing/conversions/custom-matching-identifiers?view=li-lms-2025-03). |
-| Client IP Address (IPv4) | Client IPv4 address sent unhashed to LinkedIn. Only valid IPv4 values are sent; IPv6 and invalid values are ignored. |
+| Plain text Client IP Address (IPv4) | Client IPv4 address sent unhashed to LinkedIn. The connector ignores IPv6 addresses and invalid values. |
+| SHA256 Hashed Client IP Address (IPv4) | Provide a valid IPv4 address that has already been SHA-256 hashed. The connector sends the value without hashing it again. Invalid hashes, IPv6 addresses, and blank values are ignored. |
 | Google Advertising ID (GAID) | Google Advertising ID sourced from an explicit attribute mapping. Map a dedicated attribute (for example, `google_advertising_id` or `gaid`) that your app or mobile backend populates with the device's GAID. The value must be a UUID-format string (for example, `38400000-8cf0-11bd-b23e-10b96e40000d`). If the mapped value fails format validation or no mapping is configured, the connector omits GAID from the event. Note: `_ga` or `_gid` are not valid GAIDs. |
 
 #### GAID sourcing
@@ -254,7 +257,14 @@ Because LinkedIn recommends using a separate conversion ID for tags and for the 
 
 #### Disable Identifier Automapping
 
-By default, the connector automatically maps Client IPv4 and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the `li_fat_id` querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the **Disable Identifier Automapping** option to turn off automapping for these identifiers.
+By default, the connector automatically maps the following identifiers from the data layer:
+
+* **LinkedIn First Party Ads Tracking UUID**: Reads the `li_fat_id` query string parameter.
+* **Client IPv4**: If no IP address field is explicitly mapped, derives a SHA-256-hashed IPv4 value from Tealium Client IP and sends it as `SHA256_IP_ADDRESS`.
+
+If you map **Plain text Client IP Address (IPv4)** or **SHA256 Hashed Client IP Address (IPv4)**, the explicit mapping takes precedence.
+
+Use the **Disable Identifier Automapping** option to turn off automapping for these identifiers.
 
 | **Parameter** | **Description** |
 | --- | --- |
