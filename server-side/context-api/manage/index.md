@@ -17,6 +17,12 @@ Ensure profile changes have been published before selecting engine attributes.
 </blockquote>
 
 
+
+<blockquote>
+The **Filter Rule** field in the details screen is only visible after the profile has been migrated to versioned storage. For more information, see [Migrate engine configuration](#migrate-engine-configuration).
+</blockquote>
+
+
 To create an engine, complete the following steps:
 
 1. Go to **Activate > Context API** and click **+ New Engine**.
@@ -35,7 +41,8 @@ Authentication and Allow PII are only available by request. If you are intereste
         * Turning off **Allow PII** removes all restricted attributes from the engine immediately. A confirmation dialog lists the affected attributes before the change takes effect. These attributes cannot be restored.
         * Turning off **Allow PII** does not delete previously saved PII. To make previously stored data inaccessible, purge the engine data after turning off **Allow PII**. For more information, see [Purge data](#purge-data).
         * Switching back to **Public** turns off **Allow PII** automatically and triggers the same confirmation dialog.
-    * **Domain Allow List**: Specify domains that can use this endpoint. For more information, see [About Context API > Domain allow list](https://docs.tealium.com/about-context-api/#domain-allowlist).
+    * **Filter Rule**: Optionally add a rule to limit which visitors are written to and read from this engine. For more information, see [About Context API: Filter rule](https://docs.tealium.com/about-context-api/#filter-rule).
+    * **Domain Allow List**: Specify domains that can use this endpoint. For more information, see [About Context API: Domain allow list](https://docs.tealium.com/about-context-api/#domain-allowlist).
 1. Click **Next**.
 1. In the **Response** screen, select the audiences, badges, and attributes to include in the engine. Verify your selections using the **Example Response** panel. 
 <blockquote>
@@ -45,7 +52,7 @@ If you use the **Select all current and future audiences** feature, if an audien
 1. Select whether to use the ID (UID) or name for audiences and visitor attributes in the payload. Using audience, badge, and attribute names instead of IDs in large responses  may impact payload size.
 1. Click **Next** to create the engine.
 1. On the **Summary** screen, review endpoint details, including the unique endpoint URL.
-1. Click **Done**. You do not need to publish your profile after creating an engine.
+1. Click **Done**, then click **Save and Publish** to apply the engine configuration.
 
 Visitor data is collected after the engine is enabled and your visitors have active sessions.
 
@@ -57,9 +64,31 @@ Turning off **Allow PII** from the edit screen triggers the same confirmation di
 
 
 <blockquote>
-You do not need to publish your profile after editing an engine. Changes to Context API engines are available five minutes after saving any configuration changes.
+Click **Save and Publish** after editing an engine to apply your changes.
 </blockquote>
 
+
+### Add a filter rule
+
+
+<blockquote>
+The **Filter Rule** section is only visible after the profile has been migrated to versioned storage. If you do not see it, see [Migrate engine configuration](#migrate-engine-configuration).
+</blockquote>
+
+
+A filter rule limits which visitors are written to and read from an engine. For a conceptual overview, see [About Context API: Filter rule](https://docs.tealium.com/about-context-api/#filter-rule).
+
+To add a filter rule to an existing engine:
+
+1. Go to **Activate > Context API** and click the engine you want to update.
+1. In the **Details** tab, go to the **Filter Rule** section.
+1. Click **+ Add Rule**.
+1. In the rule builder, configure the conditions using visitor attributes. Only visitor attributes are available. The **has changed** operator is not available.
+1. Click **Save**.
+
+After the filter rule is active, only visitors that match the conditions are written to and returned from the engine. Visitors that do not match return a 404 on read.
+
+To remove a filter rule, open the **Filter Rule** section, click the drop-down arrow next to **+ Add Rule**, and select **Remove rule**.
 
 ## Purge data
 
@@ -69,7 +98,7 @@ We recommend purging engine data in the following situations:
 * Removing an audience, badge, or attribute from an engine configuration.
 * Turning off **Allow PII** on an engine. Restricted attributes are removed from future responses immediately, but previously stored data remains in the engine until you purge. Purging makes that data inaccessible.
 
-For more information about purging data, see [About Context API > Purge data](https://docs.tealium.com/about-context-api/#purge-data).
+For more information about purging data, see [About Context API: Purge data](https://docs.tealium.com/about-context-api/#purge-data).
 
 Context API provides two ways for you to purge engine data when needed:
 
@@ -77,3 +106,32 @@ Context API provides two ways for you to purge engine data when needed:
 1. In the **Edit Engines** screen, click **Purge Data** from the slideout actions.
 
 After a data purge, previously stored engine data is no longer returned.
+
+## Migrate engine configuration
+
+Starting September 30, 2026, Context API engine configurations are moving into the standard save and publish workflow. After migration, engine configuration changes are versioned and roll back with your profile.
+
+To help you migrate your legacy configuration, a migration pop-up appears when you log in. The pop-up explains the migration and gives you the option to migrate or dismiss the message and migrate later.
+
+The migration pop-up appears when all of the following conditions are met:
+
+* You have publish permissions on the profile.
+* The profile is on its current published version.
+* There are no other pending unsaved changes.
+
+Users without publish permissions are not prompted to migrate and can continue using Context API as normal. To complete the migration, a user with publish permissions must accept the prompt and click **Save and Publish**.
+
+If you select **Not now**, the prompt closes and reappears on future page loads until you complete the migration.
+
+To migrate your engine configuration:
+
+1. When the migration prompt appears, click **Migrate engines**.
+1. Click **Save and Publish** to apply the changes and complete the migration.
+
+
+<blockquote>
+Accepting the migration prompt moves your existing engine configuration to the save and publish workflow. No engines are deleted or replaced. Engine configuration is versioned going forward from the point of migration. Changes made before migration are not retroactively versioned.
+</blockquote>
+
+
+New engines are versioned on profiles that have already completed migration. New engines added to profiles that have not yet migrated are not versioned until migration is complete.

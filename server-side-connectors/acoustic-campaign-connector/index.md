@@ -3,17 +3,7 @@ title: Acoustic Campaign Connector Setup Guide
 description: This article describes how to set up the Acoustic Campaign connector.
 url: https://docs.tealium.com/server-side-connectors/acoustic-campaign-connector/
 ---
-## Connector Actions
-
-| Action Name | AudienceStream | EventStream |
-| --- | :---: | :---: |
-|Upsert Contact in Database| ✓| ✗|
-|Insert Contact into Contact List| ✓| ✗|
-|Upsert Contact in Database and Add to Program| ✓| ✗|
-|Send Email using Custom Triggered Autoresponder| ✓| ✗|
-|Upsert Contact in Relational Table| ✓| ✗|
-
-## Configure Settings
+## Configuration
 
 Navigate to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
 
@@ -32,13 +22,17 @@ Do not include HTTP(S) protocol. Example: `api-campaign-us-5.goacoustic.com`.
 
 Click **Done** when you are finished configuring the connector.
 
-## Action Settings — Parameters and Options
+## Actions
 
-Click **Continue** to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.
+| Action Name | AudienceStream | EventStream |
+| --- | :---: | :---: |
+|Upsert Contact in Database| ✓| ✗|
+|Insert Contact into Contact List| ✓| ✗|
+|Upsert Contact in Database and Add to Program| ✓| ✗|
+|Send Email using Custom Triggered Autoresponder| ✓| ✗|
+|Upsert Contact in Relational Table| ✓| ✗|
 
-The following section describes how to set up parameters and options for each action.
-
-### Action — Upsert Contact in Database
+### Upsert Contact in Database
 
 #### Parameters
 
@@ -50,7 +44,7 @@ The following section describes how to set up parameters and options for each ac
 |Contact Identifier(s)| If your database has a key other than Email, you must include all unique key columns with their corresponding name/value pairs. If adding and/or updating contacts in a flexible database, one or more Sync Fields must be specified to look up the contact.|
 |Enable Contact Database Column Update Criteria|
 
-### Action — Insert Contact into Contact List
+### Insert Contact into Contact List
 
 #### Parameters
 
@@ -59,7 +53,7 @@ The following section describes how to set up parameters and options for each ac
 |Contact List Name| Select the contact list name to add the contact to.<br> It can be found by logging into your Acoustic account and<br> navigating to **Data &gt; Contact Lists**.| 
 |Contact List's Corresponding Database| Select the corresponding contact list's database name to add the contact to.<br> It can be found by logging into your Acoustic account and navigating to **Data &gt; Databases**.|
 
-### Action — Upsert Contact in Database and Add to Program
+### Upsert Contact in Database and Add to Program
 
 #### Parameters
 
@@ -72,7 +66,7 @@ The following section describes how to set up parameters and options for each ac
 |Program ID| Unique ID of the Program.|
 |Enable Contact Database Column Update Criteria|
 
-### Action — Send Email using Custom Triggered Autoresponder
+### Send Email using Custom Triggered Autoresponder
 
 #### Parameters
 
@@ -81,7 +75,7 @@ The following section describes how to set up parameters and options for each ac
 |Autoresponder Mailing Send ID| For this operation to work, the autoresponder has to be custom triggered. Choose "Custom" option when creating the Automated Mailing Send and use a Database as its "Contact Source".<br> You can find the **Autoresponder ID** by logging into your Acoustic Campaign account Autoresponder listing page and hovering your mouse over the mailing name.|
 |Autoresponder's Corresponding Database| Provide the database name that was used when creating the selected Autoresponder.|
 
-### Action — Upsert Contact in Relational Table
+### Upsert Contact in Relational Table
 
 #### Parameters
 

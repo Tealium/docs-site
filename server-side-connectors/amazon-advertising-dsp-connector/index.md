@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-advertising-dsp-conn
 ---
 
 <blockquote>
-This connector is now deprecated. For the current connector, see [Amazon Ads Audience Management connector](https://docs.tealium.com/amazon-ads-audience-management-connector/).
+This connector is now deprecated. For the current connector, see [Amazon Ads Data Manager connector](https://docs.tealium.com/amazon-ads-data-manager-connector/).
 </blockquote>
 
 

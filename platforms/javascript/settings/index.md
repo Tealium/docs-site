@@ -78,7 +78,7 @@ window.utag_cfg_ovrd.consentPeriod = 60;
 
 (New in [`utag.js` 4.54](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22))
 
-When set to `true`, this setting blocks incoming data from overwriting system-defined attributes that start with `tealium_`, such as `tealium_visitor_id`.  
+When set to `true`, this setting blocks incoming data from overwriting system-defined attributes that start with `tealium_`, except for `tealium_visitor_id` and `tealium_event`.  
 
 In `utag.js` versions 4.52 and 4.53, this protection was enabled by default, which caused issues in some mobile webview environments. In version 4.54, the protection is now opt-in, allowing full control.
 

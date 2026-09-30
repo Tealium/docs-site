@@ -15,22 +15,18 @@ Use a SCIM provisioning connector in your IdP or invoke the SCIM API directly.
 
 The Tealium SCIM integration uses a long-lived bearer token to authenticate with applications. Use this bearer token as the OAuth bearer token when you configure your user provisioning application.
 
-All SCIM API calls are authenticated with this bearer token.
+This bearer token authenticates all SCIM API calls.
 
-
-<blockquote>
-The API key and bearer token are linked to the user who generates them. Use a dedicated service user with the required Tealium permissions, for example `scim@example.com`. A service user is a user account not linked to a person that is used to manage resources. This approach prevents access issues if a regular user account becomes unavailable.
-</blockquote>
-
+The API key and bearer token are linked to the user who generates them. Use a dedicated service user (an account not linked to a person), such as `scim@example.com`, to prevent access issues if a regular user account becomes unavailable.
 
 To generate the bearer token:
 
 1. Log in to Tealium as a dedicated service user. 
 1. Generate an [API key](https://docs.tealium.com/api-keys/).
-1. Call the long-lived token endpoint to generate a long-lived bearer token using the following cURL command. Replace the placeholders with your account name, profile name, dedicated username, and the API key:  
+1. Call the long-lived token endpoint to generate a bearer token using the following cURL command. Replace the placeholders with your account name, profile name, dedicated username, and the API key:  
 
 ```bash
-curl --location 'https://developer.tealiumapis.com/v2/auth-long-lived/token' \
+curl --location 'https://developer.tealiumapis.com/v1/auth-long-lived/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'account={ACCOUNT}' \
 --data-urlencode 'profile=main' \
@@ -38,7 +34,7 @@ curl --location 'https://developer.tealiumapis.com/v2/auth-long-lived/token' \
 --data-urlencode 'key={API_KEY}'
 ```
 
-The token should resemble the following example:
+The token resembles the following example:
 
 ```json
 {
@@ -49,11 +45,11 @@ The token should resemble the following example:
 }
 ```
 
-The token expires after 90 days. Regenerate it as needed, or use the revoke token endpoint to proactively manage and invalidate tokens when appropriate.
+The token expires after 90 days. Regenerate it as needed, or use the revoke token endpoint to invalidate a token before it expires.
 
 The token generation endpoint has a rate limit of 10 requests per minute per IP address.
 
-If you need assistance generating a token or have questions about permissions, contact Tealium Support.
+If you need assistance generating a token or have questions about permissions, contact [Tealium Support](https://docs.tealium.com/support/).
 
 ## Revoke a token
 
@@ -64,7 +60,7 @@ Revocation takes effect within seconds and is permanent. Revoking a token cannot
 To revoke a token, call the following endpoint using the same credentials used to generate it:
 
 ```bash
-curl --location 'https://developer.tealiumapis.com/v2/auth-long-lived/revoke' \
+curl --location 'https://developer.tealiumapis.com/v1/auth-long-lived/revoke' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'token={ACCESS_TOKEN}' \
 --data-urlencode 'account={ACCOUNT}' \
@@ -156,11 +152,11 @@ Membership in Account Admins, User Admins, or Privacy Admins automatically grant
 
 Removing a user from an admin group automatically removes them from inherited groups:
 
-* **Account Admins**: Removes from User Admins, Privacy Admins, Technical Admins, Profile Admins, and revokes PII access
-* **User Admins**: Removes from Technical Admins and revokes PII access
-* **Privacy Admins**: Removes from User Admins, Technical Admins, and revokes PII access
-* **Technical Admins**: No automatic removal
-* **Profile Admins**: No automatic removal
+* **Account Admins**: Removes from User Admins, Privacy Admins, Technical Admins, Profile Admins, and revokes PII access.
+* **User Admins**: Removes from Technical Admins and revokes PII access.
+* **Privacy Admins**: Removes from User Admins, Technical Admins, and revokes PII access.
+* **Technical Admins**: No automatic removal.
+* **Profile Admins**: No automatic removal.
 
 ### Built-in group protection
 

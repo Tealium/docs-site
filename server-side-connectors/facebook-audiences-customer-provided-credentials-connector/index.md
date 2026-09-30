@@ -92,11 +92,34 @@ Four types of identifiers are supported: emails, phone numbers, user or app IDs,
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
 | Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use AudienceStream variables to populate the Audience ID. |
-| User Identifier Already Hashed | Check this box if the Target User Identifier is already hashed. 
+|Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
+|Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
+|Phone Apply SHA256 Hash|  <ul><li>Plain-text phone number. Include only digits with country code, area code, and number. The connector trims whitespace and hashes the value using SHA256 before sending.</li></ul> |
+|First Name Already SHA256 Hashed|  <ul><li>First name already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|First Name Apply SHA256 Hash|  <ul><li>Plain-text first name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Last Name Already SHA256 Hashed|  <ul><li>Last name already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|Last Name Apply SHA256 Hash|  <ul><li>Plain-text last name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|City Already SHA256 Hashed|  <ul><li>City in lowercase without spaces or punctuation and SHA256 hashed. For example, `menlopark`.</li></ul> |
+|City Apply SHA256 Hash|  <ul><li>Plain-text city name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|State Already SHA256 Hashed|  <ul><li>Two-letter state code already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|State Apply SHA256 Hash|  <ul><li>Plain-text two-letter state code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|ZIP/Postal Already SHA256 Hashed|  <ul><li>Postal ZIP code already whitespace-trimmed and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|ZIP/Postal Apply SHA256 Hash|  <ul><li>Plain-text postal ZIP code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Country Already SHA256 Hashed|  <ul><li>Two-letter country code already whitespace-trimmed, lowercased, and SHA256 hashed. For example, `us`. Accepts a string or array of strings.</li></ul> |
+|Country Apply SHA256 Hash|  <ul><li>Plain-text two-letter country code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|External ID Already SHA256 Hashed|  <ul><li>External ID already SHA256 hashed. Meta recommends hashing external IDs.</li></ul> |
+|External ID Apply SHA256 Hash|  <ul><li>Plain-text external ID. The connector hashes the value using SHA256 before sending.</li></ul> |
+|Date of Birth Already SHA256 Hashed|  <ul><li>Date of birth already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Date of Birth Apply SHA256 Hash|  <ul><li>Plain-text date of birth. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+|Gender Already SHA256 Hashed|  <ul><li>Gender already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Gender Apply SHA256 Hash|  <ul><li>Plain-text gender value. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+
+
 <blockquote>
-Facebook only accepts the SHA256 hashing method.
+Existing saved actions that use the legacy **User Identifier Already Hashed** checkbox continue to work without reconfiguration. If both the Already SHA256 Hashed and Apply SHA256 Hash variants are mapped for the same identifier, Already SHA256 Hashed takes precedence.
 </blockquote>
-  |
+
 
 ### Remove User from Custom Audience
 
@@ -125,11 +148,34 @@ Four types of identifiers are supported: emails, phone numbers, user or app IDs,
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
 | Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use AudienceStream variables to populate the Audience ID. |
-| User Identifier Already Hashed | Check this box if the Target User Identifier is already hashed. 
+|Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
+|Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
+|Phone Apply SHA256 Hash|  <ul><li>Plain-text phone number. Include only digits with country code, area code, and number. The connector trims whitespace and hashes the value using SHA256 before sending.</li></ul> |
+|First Name Already SHA256 Hashed|  <ul><li>First name already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|First Name Apply SHA256 Hash|  <ul><li>Plain-text first name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Last Name Already SHA256 Hashed|  <ul><li>Last name already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|Last Name Apply SHA256 Hash|  <ul><li>Plain-text last name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|City Already SHA256 Hashed|  <ul><li>City in lowercase without spaces or punctuation and SHA256 hashed. For example, `menlopark`.</li></ul> |
+|City Apply SHA256 Hash|  <ul><li>Plain-text city name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|State Already SHA256 Hashed|  <ul><li>Two-letter state code already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|State Apply SHA256 Hash|  <ul><li>Plain-text two-letter state code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|ZIP/Postal Already SHA256 Hashed|  <ul><li>Postal ZIP code already whitespace-trimmed and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|ZIP/Postal Apply SHA256 Hash|  <ul><li>Plain-text postal ZIP code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Country Already SHA256 Hashed|  <ul><li>Two-letter country code already whitespace-trimmed, lowercased, and SHA256 hashed. For example, `us`. Accepts a string or array of strings.</li></ul> |
+|Country Apply SHA256 Hash|  <ul><li>Plain-text two-letter country code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|External ID Already SHA256 Hashed|  <ul><li>External ID already SHA256 hashed. Meta recommends hashing external IDs.</li></ul> |
+|External ID Apply SHA256 Hash|  <ul><li>Plain-text external ID. The connector hashes the value using SHA256 before sending.</li></ul> |
+|Date of Birth Already SHA256 Hashed|  <ul><li>Date of birth already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Date of Birth Apply SHA256 Hash|  <ul><li>Plain-text date of birth. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+|Gender Already SHA256 Hashed|  <ul><li>Gender already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Gender Apply SHA256 Hash|  <ul><li>Plain-text gender value. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+
+
 <blockquote>
-Facebook only accepts the SHA256 hashing method.
+Existing saved actions that use the legacy **User Identifier Already Hashed** checkbox continue to work without reconfiguration. If both the Already SHA256 Hashed and Apply SHA256 Hash variants are mapped for the same identifier, Already SHA256 Hashed takes precedence.
 </blockquote>
-   |
+
 
 ### Opt Out User from All Custom Audiences
 
@@ -154,11 +200,33 @@ Email Address|  <ul><li>Identify a user based on their email address.</li></ul> 
 |Month of Birth|  <ul><li>Birth month for user.</li><li>`MM` format.</li><li>Values from `01` to `12`.</li></ul> |
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
-| User Identifier Already Hashed | Check this box if the Target User Identifier is already hashed. 
+|Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
+|Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
+|Phone Apply SHA256 Hash|  <ul><li>Plain-text phone number. Include only digits with country code, area code, and number. The connector trims whitespace and hashes the value using SHA256 before sending.</li></ul> |
+|First Name Already SHA256 Hashed|  <ul><li>First name already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|First Name Apply SHA256 Hash|  <ul><li>Plain-text first name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Last Name Already SHA256 Hashed|  <ul><li>Last name already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|Last Name Apply SHA256 Hash|  <ul><li>Plain-text last name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|City Already SHA256 Hashed|  <ul><li>City in lowercase without spaces or punctuation and SHA256 hashed. For example, `menlopark`.</li></ul> |
+|City Apply SHA256 Hash|  <ul><li>Plain-text city name. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|State Already SHA256 Hashed|  <ul><li>Two-letter state code already whitespace-trimmed, lowercased, and SHA256 hashed.</li></ul> |
+|State Apply SHA256 Hash|  <ul><li>Plain-text two-letter state code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|ZIP/Postal Already SHA256 Hashed|  <ul><li>Postal ZIP code already whitespace-trimmed and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
+|ZIP/Postal Apply SHA256 Hash|  <ul><li>Plain-text postal ZIP code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|Country Already SHA256 Hashed|  <ul><li>Two-letter country code already whitespace-trimmed, lowercased, and SHA256 hashed. For example, `us`. Accepts a string or array of strings.</li></ul> |
+|Country Apply SHA256 Hash|  <ul><li>Plain-text two-letter country code. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending.</li></ul> |
+|External ID Already SHA256 Hashed|  <ul><li>External ID already SHA256 hashed. Meta recommends hashing external IDs.</li></ul> |
+|External ID Apply SHA256 Hash|  <ul><li>Plain-text external ID. The connector hashes the value using SHA256 before sending.</li></ul> |
+|Date of Birth Already SHA256 Hashed|  <ul><li>Date of birth already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Date of Birth Apply SHA256 Hash|  <ul><li>Plain-text date of birth. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+|Gender Already SHA256 Hashed|  <ul><li>Gender already SHA256 hashed. Meta requires hashing for this field.</li></ul> |
+|Gender Apply SHA256 Hash|  <ul><li>Plain-text gender value. The connector hashes the value using SHA256 before sending. Meta requires hashing for this field.</li></ul> |
+
+
 <blockquote>
-Facebook only accepts the SHA256 hashing method.
+Existing saved actions that use the legacy **User Identifier Already Hashed** checkbox continue to work without reconfiguration. If both the Already SHA256 Hashed and Apply SHA256 Hash variants are mapped for the same identifier, Already SHA256 Hashed takes precedence.
 </blockquote>
-   |
 
 
 ## Using the Facebook Audiences Customer-Provided Credentials connector

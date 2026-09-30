@@ -121,6 +121,7 @@ Context API includes built-in controls for secure, production-grade deployment:
 * **Authentication**: Set each engine to **Public** or **Require Authentication**. Authenticated engines accept only requests with a valid bearer token from the Developer Portal. Recommended for engines that return PII or restricted data. For more information, see [dev-portal-subscriptions](https://docs.tealium.com/dev-portal-subscriptions/).
 * **PII access controls**: Attributes marked as [restricted data](https://docs.tealium.com/about-restricted-data/) are excluded from API responses by default. Authenticated engines can include restricted attributes when **Allow PII** is enabled in the engine configuration.
 * **Domain allow lists**: Restrict which domains can query your engine endpoints.
+* **Filter rules**: Restrict which visitors are written to and readable from an engine. For details, see [Filter rule](#filter-rule).
 * **Permissions**: Control who can create, edit, or delete engines using role-based access.
 * **Purge data**: Make outdated engine data inaccessible at any time without affecting visitor records.
 
@@ -192,6 +193,27 @@ Context API functionality is managed through the following permission levels:
   * Write or delete access in platform permissions  
 * **View engine list**
   * Viewer legacy permissions or read access in platform permissions
+
+## Filter rule
+
+A filter rule is an optional condition you configure in the **Details** tab of each engine. When active, it limits which visitors are written to and read from that engine.
+
+Use a filter rule for consent enforcement, to guarantee that only consented visitors are accessible, or for cost control, to reduce billable write volumes on test or limited-scope engines.
+
+By default, all visitors are written and readable. Adding a filter rule changes both behaviors:
+
+* **Writes**: Only visitors whose visitor attributes match the rule conditions trigger a write to the engine.
+* **Reads**: The engine returns only visitors that match the filter. Visitors that do not match return a 404, even if a write previously occurred for that visitor.
+
+Filter rules are built using visitor attributes only. Visit and event attributes are not available as conditions, and the **has changed** operator is not available.
+
+
+<blockquote>
+The **Filter Rule** section is only visible after the profile has been migrated to versioned storage. If you have legacy engines, complete the [migration](https://docs.tealium.com/context-api-manage-engines/#migrate-engine-configuration) before configuring a filter rule.
+</blockquote>
+
+
+For steps to add or remove a filter rule, see [Add a filter rule](https://docs.tealium.com/context-api-manage-engines/#add-a-filter-rule).
 
 ## Context API compared with Data Layer Enrichment API
 

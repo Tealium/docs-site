@@ -231,6 +231,7 @@ If you configured this action before the per-field hashing parameters were intro
 | Order ID   |  The order ID for this transaction.  The connector automatically maps this parameter when it appears in the event. For example, `order1234`. |
 | Content Type   |  This value must be either `product` or `product_group`. <ul><li>Set to `product` if the keys you send are in **Content IDs** or **Content Product**. **Content Product** represents products.</li><li>Set to `product_group` if the keys you send are in **Content IDs**. **Content Product** represents product groups.</li></ul>  |
 | Predicted Lifetime Value    | The predicted lifetime value of a conversion event. For example, `432.12`. |
+| Net Revenue | The margin value of a conversion event. Map **Currency** alongside this field. For example, `20`. |
 | Content IDs   |  The Content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example, `['ABC123', 'XYZ789']`. If a non-array event attribute is provided, it is converted into a single-item array. If **Content Type** is `product`, this mapped value must be a non-array event attribute or single-element array. The connector automatically maps this parameter when it appears in the event. |
 | Value |  A numeric value associated with this event. This may be a monetary value or a value in another metric.  The connector automatically maps this parameter when it appears in the event.  For example, `142.54`. |
 | Content Category    |  The category of the content associated with the event. The connector automatically maps this parameter when it appears in the event. For example, `grocery`.  |
@@ -332,6 +333,7 @@ Map custom data either as plain text values or using a JSON template by referenc
 | Content Type | <ul><li>Allowed values are `product` or `product_group`.</li> <li>Set to `product` if the keys you send in **Content IDs** or **Content Product** represent products.</li> <li>Set to `product_group` if the keys you send in **Content IDs** represent product groups. </li></ul> |
 | Order ID | The order ID for this transaction. The connector automatically maps this parameter when it appears in the event. For example, `order1234`. |
 | Predicted Lifetime Value | The predicted lifetime value of a conversion event. For example, `432.12`. |
+| Net Revenue | The margin value of a conversion event. Map **Currency** alongside this field. For example, `20`. |
 | Number of Items |Use only with `InitiateCheckout` events. The number of items that a user tries to buy during checkout. For example, `4`.  |
 | Search String | Use only with Search events. A search query made by a user. For example, `lettuce`. |
 | Status | Use only with `CompleteRegistration` events. The status of the registration event. For example, `registered`.|

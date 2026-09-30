@@ -5,9 +5,11 @@ url: https://docs.tealium.com/server-side-connectors/adobe-analytics-2-connector
 ---
 ## How it works
 
-The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.
+The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data to Adobe Analytics.
 
 ## Adobe Analytics 2.0 connector differences
+
+The Adobe Bulk Data Insertion API has a rate limit that does not support real-time or near-real-time connector actions. For this reason, the **Send Analytics Event** action is deprecated in the Adobe Analytics 2.0 connector. If your use case does not require a real-time connector action, migrate to the **Send Analytics Event (Batch)** action. If your use case requires a real-time connector action, use the [Adobe Analytics 1.4 connector](https://docs.tealium.com/adobe-analytics-connector/).
 
 The following Adobe Analytics 1.4 connector features are not available in the Adobe Analytics 2.0 connector:
 
@@ -92,36 +94,29 @@ For general instructions on how to add a connector, see [Connector Overview](htt
 
 The next step is [configuring an action]().
 
-### Batch limits
-
-Adobe Analytics 2.0 only allows a compressed file to be sent in each call, which means the connector cannot perform a real-time action. The connector performs a 30-second micro-batched action instead. 
-
-This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
-
-* Maximum number of requests: 250,000
-* Maximum time since oldest request: 30 minutes
-* Maximum size of requests: Compressed file 100 MB; Uncompressed file 300 MB
-
-
-<blockquote>
-If your requests exceed the size limits, create more connector actions with smaller batch sizes per action.
-</blockquote>
-
-
 ## Actions
 
 | Action Name      | AudienceStream | EventStream |
 |:---------------------|:-------------------|:----------------|
-| Send Analytics Event | ✓                  | ✓               |
 | Send Analytics Event (Batch) | ✓          | ✓               |
+| Send Analytics Event (Deprecated) | ✓                  | ✓               |
 
-### Configure an action
+### Send Analytics Event (Batch)
 
-Select an action, then configure the following parameters:
+#### Batch limits
+
+This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
+
+* Maximum number of requests: 250,000
+* Maximum time since oldest request: 30 minutes (Configurable from 1-60 minutes)
+* Maximum size of requests: 300 MB
+
+#### Parameters
+
+For event parameters, see [General Attributes](#general-attributes).
 
 | **Group**  | **Description** |
 |-------------|-----------------|
-| Event Parameters | <ul><li>For more information, see [General Attributes](#general-attributes).</li></ul> |
 | Context Data | <ul><li>Specify keys using the dot format.</li><li>For example `my.a`.</li><li>Multiple key-value pairs can be specified.</li></ul> |
 | eVars | <ul><li>Specify the event eVars by mapping an attribute to a number.</li><li>For example: Map `event_count` to `1` for **eVar1**.</li><li>Valid range is `1` through `100`, `250` for Premium Accounts</li></ul> |
 | Hierarchy | <ul><li>A hierarchy string.</li><li>Select from `1` through `5`.</li></ul> |
@@ -137,7 +132,21 @@ Select an action, then configure the following parameters:
 | Brands | <ul><li>Specify brand attributes.</li><li>Available attributes are **brand** and **version**.</li><li>All arrays must be equal-sized.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `30` minutes. |
 
-When you are done configuring parameters, click **Save**, and then Save and Publish your changes.
+### Send Analytics Event (Deprecated)
+
+
+<blockquote>
+This action is deprecated and can no longer be added. Use [Send Analytics Event (Batch)](#send-analytics-event-batch) instead.
+</blockquote>
+
+
+#### Batch limits
+
+Although this action is not labeled as a batch action, it does not send requests in real time. Requests are queued until one of the following thresholds is met or the profile is published:
+
+* Maximum number of requests: 250,000
+* Maximum time since oldest request: 45 seconds
+* Maximum size of requests: 100 MB
 
 ## General attributes
 
@@ -196,7 +205,7 @@ Map an array value containing a list of event names that has been populated else
 
 If you need to rename any event name above by an event X, it can be renamed by mapping.
 
-For example, mapping `purchase` to `4`, replaces `purchase` with `event4`, so the final output based on the Events Mapping example in the [Configure an action]() section would change from `event1,event2,event3,purchase` to `event1,event2,event3,event4`.
+For example, mapping `purchase` to `4`, replaces `purchase` with `event4`, so the final output based on the Events Mapping example in the [Send Analytics Event (Batch)](#send-analytics-event-batch) section would change from `event1,event2,event3,purchase` to `event1,event2,event3,event4`.
 
 | Map From | Data Type | Map To | Example Input | Sample Connector Output  |
 |:---------|:----------|:-------|:--------------|:-------------------------|
@@ -325,7 +334,7 @@ You may rename these variables if you want to, but be sure to retain the `utag_m
 </blockquote>
 
 1. Create a JavaScript Code extension, scoped to the Adobe Experience Cloud ID Service tag, and paste in the following code:  
-    ```
+    ```js
     if (typeof vAPI !== "undefined") {
       vAPI.getInstance(u.data.adobe_org_id,
         function (visitor) {
@@ -388,9 +397,9 @@ You do not need to enter the full URL value into the connector configuration; Te
 
 ## Migrator tool
 
-Using the Adobe Analytics 2.0 Migrator tool, you can migrate existing Adobe Analytics 1.4 connectors into the Adobe Analytics 2.0 connector.
+Using the Adobe Analytics 2.0 migrator tool, you can migrate existing Adobe Analytics 1.4 connectors into the Adobe Analytics 2.0 connector. The Adobe Analytics 1.4 connector is not deprecated and there is no requirement to migrate. Only migrate 1.4 connector actions if you want to use the **Send Analytics Event (Batch)** action and your use case does not require real-time connector actions.
 
-Before using the Migrator Tool, note the following limitations:
+Before using the migrator tool, note the following limitations:
 
 * This tool does not migrate the 1.4 attributes that are unavailable in version 2.0. For more information, refer to the table of 1.4 and 2.0 attributes in the [Adobe Analytics 2.0 connector differences]() section.
 * Lifecycle Event Attributes for mobile data-source attributes are unavailable in the 2.0 API, so the auto-mapping of these attributes will not be migrated.
@@ -409,6 +418,6 @@ To migrate Adobe Analytics 1.4 connectors, use the following steps:
     * Specific Adobe Analytics 1.4 connector
 1. Enter the Adobe Analytics **Client ID** and **Client secret** for the project.
 1. Click **Start**.  
-  The Migrator tool automatically migrates existing Adobe Analytics 1.4 connectors to new Adobe Analytics 2.0 connectors. The name of the connector will be the same, with the suffix "2.0 (Migrated)".
+  The migrator tool automatically migrates existing Adobe Analytics 1.4 connectors to new Adobe Analytics 2.0 connectors. The name of the connector will be the same, with the suffix "2.0 (Migrated)".
 1. Verify the new connector configurations and actions.
 1. Save and publish your profile.
