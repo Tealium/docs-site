@@ -5,7 +5,7 @@ url: https://docs.tealium.com/administration/early-access/predictive-intelligenc
 ---
 
 <blockquote>
-The Predictive Intelligence Discovery Program is in Early Access and is only available to select customers. Contact your Customer Success Manager to learn more.
+The Predictive Intelligence Discovery Program is in Early Access and is only available to select customers. Contact your Tealium representative to learn more.
 </blockquote>
 
 
@@ -48,4 +48,4 @@ Models built during this program are for evaluation purposes only and cannot be 
 
 ## Join the program
 
-To join the Predictive Intelligence Discovery Program, contact your Customer Success Manager. For more information about the Early Access program, see [About Early Access](https://docs.tealium.com/about-early-access/).
+To join the Predictive Intelligence Discovery Program, contact your Tealium representative. For more information about the Early Access program, see [About Early Access](https://docs.tealium.com/about-early-access/).

@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/launchdarkly-metric-import-
 This connector uses the following vendor API:
 
 * API Name: LaunchDarkly API
-* API Version: v2
+* API Version: 20240415
 * API Endpoint: `https://events.launchdarkly.com`
 * Documentation: [LaunchDarkly API](https://docs.launchdarkly.com/home/creating-experiments/import-metric-events)
 

@@ -88,7 +88,7 @@ Optional Parameters:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Timestamp | The timestamp of the conversion. If not populated, the connector sends the current timestamp. |
+| Timestamp | The timestamp of the conversion. Map a Tealium date attribute containing an epoch timestamp. The connector converts the value to UTC and sends it in `yyyy-MM-dd'T'HH:mm:ss.SSS'Z'` format. If not mapped, the connector sends the current timestamp. |
 | Value | The value of the conversion to two decimal places. |
 | Currency | The currency of the value amount. For example, `USD`. |
 | Country | The full name of the country where the conversion occurred. |

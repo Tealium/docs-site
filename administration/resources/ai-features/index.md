@@ -138,7 +138,7 @@ This Terms of Service ("TOS") governs your use of the AI Assistant, which is pro
 
 1. **Purpose and Functionality.** The AI Assistant is an AI-powered chatbot designed to answer questions about how to use and configure Tealium’s software-as-a-service products. The AI Assistant is built on the AWS Bedrock platform. **The results are not reviewed by a human.** Therefore, use of the AI Assistant is not a substitute for professional advice.
 
-1. **Ability to Opt Out; Additional Questions.** If, for any reason, you do not want to use the AI Assistant, you can contact your assigned CSM for assistance with opting out. You can also email legal@tealium.com to opt out or to ask any questions about this TOS.
+1. **Ability to Opt Out; Additional Questions.** If, for any reason, you do not want to use the AI Assistant, you can contact your Tealium representative for assistance with opting out. You can also email legal@tealium.com to opt out or to ask any questions about this TOS.
 
 1. **User Responsibilities.**
 By using the AI Assistant, you agree that you will:  
@@ -158,6 +158,6 @@ By using the AI Assistant, you agree that you will:
 1. **Additional thoughts about the AI Assistant**  
     * As with any AI system, Tealium cannot and does not guarantee the accuracy or reliability of AI Assistant responses.
     * Tealium is not liable for any harm arising from reliance on AI Assistant responses.
-    * We are still here to help if the AI Assistant doesn’t answer your question. Never hesitate to reach out to your assigned CSM or other Tealium team member if you need additional help. 
+    * We are still here to help if the AI Assistant doesn’t answer your question. Never hesitate to reach out to your Tealium representative if you need additional help. 
 
 1. **Modifications to the TOS.** Tealium reserves the right to update these Terms of Service. Users will be notified of significant changes.

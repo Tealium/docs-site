@@ -112,7 +112,7 @@ This section describes the steps to activate and set up PII Permissions.
 
 ### Step 1: Request early access
 
-Request access to this feature by sending a message to your Customer Success Manager.
+Request access to this feature by sending a message to your Tealium representative.
 
 When the feature is enabled, an in-product announcement displays with a summary of the new feature. A persistent alert bar displays throughout all server-side screens until enforcement of the feature is enabled.
 

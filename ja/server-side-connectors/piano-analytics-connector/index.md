@@ -1,7 +1,7 @@
 ---
-title: ATインターネットピアノアナリティクスコネクタ構成ガイド
-description: この記事では、ATインターネットピアノアナリティクスコネクタの構成方法について説明します。
-url: https://docs.tealium.com/ja/server-side-connectors/at-internet-piano-analytics-connector/
+title: Piano Analyticsコネクタ構成ガイド
+description: この記事では、Piano Analyticsコネクタの構成方法について説明します。
+url: https://docs.tealium.com/ja/server-side-connectors/piano-analytics-connector/
 ---
 ## 構成
 

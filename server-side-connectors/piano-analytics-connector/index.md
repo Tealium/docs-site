@@ -1,7 +1,7 @@
 ---
-title: AT Internet Piano Analytics Connector Setup Guide
-description: This article describes how to set up the AT Internet Piano Analytics connector.
-url: https://docs.tealium.com/server-side-connectors/at-internet-piano-analytics-connector/
+title: Piano Analytics connector setup guide
+description: This article describes how to set up the Piano Analytics connector.
+url: https://docs.tealium.com/server-side-connectors/piano-analytics-connector/
 ---
 ## Configuration
 
@@ -23,7 +23,7 @@ Click **Done** when you are finished configuring the connector.
 
 Click **Continue** to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.
 
-The following section describes how to set up parameters and options for each action. For more information about AT Internet Piano Analytics Connector parameters, see the [Collection API](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns) documentation.
+The following section describes how to set up parameters and options for each action. For more information about Piano Analytics connector parameters, see the [Piano Analytics: Collection API](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns) documentation.
 
 ### Batch limits
 
@@ -59,7 +59,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 #### Common Contextual Properties
 
-AT Internet Piano Analytics recommends additional properties to enhance analysis.
+Piano Analytics recommends using additional properties to enhance analysis.
 
 |Parameter| Description|
 | --- | --- |
@@ -82,7 +82,7 @@ Map fields in this section to track marketing campaigns.
 | --- | --- |
 |Campaign Medium| Required property for tracking marketing campaigns.|
 |Campaign Name| Required property for tracking marketing campaigns.|
-|Campaign Creation| The campaign creation. For usage examples, see [AT Internet Piano: Analytics Connector Collection API](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns).|
+|Campaign Creation| The campaign creation. For usage examples, see the [Piano Analytics Collection API](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns) documentation.|
 |Campaign Variant| The campaign variant.|
 |Campaign Format| The campaign format.|
 |Campaign Type| The campaign type.|

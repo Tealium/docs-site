@@ -1,17 +1,41 @@
 ---
-title: Salesforce Connector Setup Guide
-description: This article describes how to set up the Salesforce Connector.
+title: Salesforce (Customer-Provided Credentials) Connector Setup Guide
+description: This article describes how to set up the Salesforce (Customer-Provided Credentials) connector.
 url: https://docs.tealium.com/server-side-connectors/salesforce-connector/
 ---
+
+<blockquote>
+If your existing Salesforce connector shows **Tealium-Provided Credentials (Deprecated)** as its authentication type, migrate it to the [Salesforce (Tealium-Provided Credentials)](https://docs.tealium.com/salesforce-tealium-provided-credentials-connector/) connector or change the authentication type to Client Credentials. The connector continues to send data until you migrate.
+</blockquote>
+
+
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
-After adding the connector, configure the following settings to establish a connection to Salesforce:
+To use Tealium-managed OAuth credentials instead of your own connected app, see [Salesforce (Tealium-Provided Credentials)](https://docs.tealium.com/salesforce-tealium-provided-credentials-connector/).
 
-* **Account Type**: Select an account type to connect to: **Developer**, **Production**, or **Sandbox**.
-    * Click **Establish Connection** to initiate the OAuth process and follow the prompts to completion.
-    * For more information on sandboxes, see [Salesforce: Create a Sandbox for Account Engagement](https://help.salesforce.com/s/articleView?id=mktg.pardot_sf_connector_sandbox.htm&type=5).
+### Set up a Salesforce connected app
+
+Before you configure this connector, set up a Salesforce connected app with Client Credentials Flow enabled:
+
+1. In Salesforce Setup, go to **App Manager** and create a new Connected App.
+1. Enable **OAuth Settings** and add the following callback URL: `https://my.tealiumiq.com/oauth/salesforce/callback.html`
+1. Select the required OAuth scopes. The minimum required scopes are `api` and `refresh_token`.
+1. Enable **Client Credentials Flow** under OAuth Settings.
+1. Under Client Credentials Flow, nominate a **Run As** user. The Run As user's permissions determine what data the connector can access.
+1. Save and wait a few minutes for the app to activate.
+1. Copy the Consumer Key and Consumer Secret to use in the fields below.
+
+### Connect the connector
+
+After adding the connector, configure the following settings:
+
+* **Login URL (My Domain)**: (Required) Enter your Salesforce My Domain URL (for example, `https://mycompany.my.salesforce.com`). Client Credentials Flow requires your org-specific My Domain URL. Do not use `login.salesforce.com` or `test.salesforce.com`.
+* **Consumer Key (Client ID)**: (Required) Enter the Consumer Key from your Salesforce Connected App or External Client App.
+* **Consumer Secret (Client Secret)**: (Required) Enter the Consumer Secret from your Salesforce Connected App or External Client App. The app may take a few minutes to activate after creation.
+
+Click **Test Connection** to verify the connection.
 
 ## Actions
 

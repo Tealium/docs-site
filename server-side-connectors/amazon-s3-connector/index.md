@@ -212,7 +212,8 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Bucket | Select the Amazon S3 bucket or provide a custom value. |
 | File Path | Specify the path to the S3 object where you want the data to be appended. |
-| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
+| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. The separator character is placed between File Path and the suffix, and between multiple suffix values. Configure the separator with **File Path Separator**. |
+| File Path Separator | The character placed between File Path and File Path Suffix, and between multiple suffix values. Options: **Underscore** (default), **Hyphen**, **Period**, **Forward Slash**, or **None**. Existing configurations keep the underscore behavior. |
 | Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
@@ -231,7 +232,8 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Event Attribute | Define custom mappings between event attributes and vendor parameters. |
-| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
+| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. The separator character is placed between File Path and the suffix, and between multiple suffix values. Configure the separator with **File Path Separator**. |
+| File Path Separator | The character placed between File Path and File Path Suffix, and between multiple suffix values. Options: **Underscore** (default), **Hyphen**, **Period**, **Forward Slash**, or **None**. Existing configurations keep the underscore behavior. |
 | Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 | Template Variables | <ul><li>Provide template variables as data input for **Templates**.  For more information and usage examples, see  [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |
@@ -245,7 +247,8 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | Bucket | Select the Amazon S3 bucket or provide a custom value. |
 | File Path | Specify the path to the S3 object where you want the data to be appended. |
-| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
+| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. The separator character is placed between File Path and the suffix, and between multiple suffix values. Configure the separator with **File Path Separator**. |
+| File Path Separator | The character placed between File Path and File Path Suffix, and between multiple suffix values. Options: **Underscore** (default), **Hyphen**, **Period**, **Forward Slash**, or **None**. Existing configurations keep the underscore behavior. |
 | Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Print Attribute Names | By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
@@ -264,7 +267,8 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. If you enter multiple suffix values, they are separated by an underscore. |
+| File Path Suffix | If you want to dynamically add a suffix to the file path, such as an attribute with the current timestamp, select it here. This creates a unique file for each event and prevents overwriting existing files. The separator character is placed between File Path and the suffix, and between multiple suffix values. Configure the separator with **File Path Separator**. |
+| File Path Separator | The character placed between File Path and File Path Suffix, and between multiple suffix values. Options: **Underscore** (default), **Hyphen**, **Period**, **Forward Slash**, or **None**. Existing configurations keep the underscore behavior. |
 | Record Suffix | <ul><li>A suffix to add on the end of each record as a delimiter.</li><li>The default is `Newline`. </li><li>Available options are `Newline` and `No Delimiter`.</li></ul> |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 | Template Variables | <ul><li>Provide template variables as data input for **Templates**.  For more information and usage examples, see  [connector-template-variables](https://docs.tealium.com/connector-template-variables/).</li><li>Name nested template variables with the dot notation. Example: `items.name.`</li><li>Nested template variables are typically built from data layer list attributes.</li></ul> |

@@ -81,7 +81,7 @@ It's also important to only set one user identifier in an event. Setting more th
 
 
 <blockquote>
-After you enable visitor stitching, we recommend consulting the Tealium Customer Success team before adding additional visitor ID attributes.
+After you enable visitor stitching, we recommend consulting your Tealium representative before adding additional visitor ID attributes.
 </blockquote>
 
 

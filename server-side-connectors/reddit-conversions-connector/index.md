@@ -26,10 +26,10 @@ Navigate to the Connector Marketplace and add a new connector. For general instr
 
 After adding the connector, configure the following settings:
 
-* **Account ID**  
-  * (Required) The ID of the Reddit Ad account that the conversion event belongs to.
-  * To find the Reddit Ad account ID, go to **Conversions Events > Pixel ID** in the Reddit Ads UI.
-  * The Reddit Ad account must have the following permissions: `adsread`, `history`, `adsconversions`, and `adsleadgendownloader`.
+* **Pixel ID**  
+  * (Required) The Pixel ID of the Reddit ad account that the conversion event belongs to.
+  * To find your Pixel ID, go to **Conversion Events > Pixel ID** in the Reddit Ads UI.
+  * The Reddit ad account must have the following permissions: `adsread`, `history`, `adsconversions`, and `adsleadgendownloader`.
   * For more information, see [Reddit: Authentication](https://ads-api.reddit.com/docs/v2/#section/Authentication).
 * **Conversion Access Token**  
   * A conversion access token is a non-expiring secure key that lets you send conversion event data to the Reddit Conversions API.
@@ -163,7 +163,7 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Modes | An array of data processing modes for this conversion event. Reddit only supports `LDU` (Limited Data Use). |
 | Country | The country code of the user in ISO 3166-1 alpha-2 standard. |
 | Region | The region code of the user in ISO 3166-2 standard or the region code without country prefix. |
-| Account ID Override | The ID of the Reddit Ad account that the conversion event belongs to. |
+| Pixel ID Override | The Pixel ID of the Reddit ad account that the conversion event belongs to. |
 | Conversion Access Token Override | Overrides the conversion access token set in the connector configuration for this event. Use this to route events to multiple Reddit Ad accounts or to assign tokens from a secure attribute. If this field is empty or not mapped, the connector uses the configured value. If neither is set, the event is skipped. Events with different override tokens are split into separate requests. |
 | Automatic Deduplication | When the Tealium iQ tag UID is provided, the connector automatically looks for the Conversion ID or Event ID value sent from Tealium. |
 | Action Source | The source of the conversion event. Supported values are **WEBSITE**, **APP**, **PHYSICAL_STORE**, and **OTHER**. If left blank, the connector defaults to **WEBSITE**. |
@@ -222,7 +222,7 @@ This connector uses the following vendor API:
 | Opt Out | A flag indicating whether the user has opted out of tracking. |
 | Screen Height | The height of the user's screen in pixels. If you do not set **Screen Height**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_height`. |
 | Screen Width | The width of the user's screen in pixels. If you do not set **Screen Width**, `events.user.screen_dimensions` is populated from the Tealium Collect event data. For example, from `data.com.viewport_width`. |
-| Account ID Override | The ID of the Reddit ad account associated with the conversion event. Use this mapping to dynamically override the account ID and, if needed, use multiple Reddit accounts with one instance of the connector. |
+| Pixel ID Override | The Pixel ID of the Reddit ad account associated with the conversion event. Use this mapping to dynamically override the Pixel ID and, if needed, use multiple Reddit ad accounts with one instance of the connector. |
 
 #### Products Data
 

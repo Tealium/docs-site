@@ -60,7 +60,7 @@ To connect Invoca to your Tealium account, use the following steps:
 1. In the Invoca sidebar menu, click **Integrations**.
 1. Select **Manage Integrations**.
 1. Click the **Tealium** tile.
-    * If the tile in your account says **Learn More**, talk with your Customer Success Manager or account manager to discuss adding the integration, enabling access, or both.
+    * If the tile in your account says **Learn More**, talk with your Tealium representative about adding the integration, enabling access, or both.
 1. Enter a name to identify your Tealium account.
 1. Enter the Tealium account name, profile, and data source key.
 

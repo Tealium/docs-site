@@ -20,8 +20,8 @@ Advantages of participating in the Early Access program:
 Participating in the Early Access program is easy. Follow these steps to get started:
 
 1. **Check eligibility**: Ensure that you meet the eligibility criteria specified for the Early Access program, which may include using a particular product or service, volume, or product settings.
-1. **Contact us**: Contact your Customer Success Manager to let them know you want to join the program.
-1. **Agree to terms**: Review and accept the Tealium terms and conditions to participate in an Early Access program, which may include confidentiality agreements and participation guidelines. Your Customer Success Manager can guide you through this process. 
+1. **Contact us**: Contact your Tealium representative to let them know you want to join the program.
+1. **Agree to terms**: Review and accept the Tealium terms and conditions to participate in an Early Access program, which may include confidentiality agreements and participation guidelines. Your Tealium representative can guide you through this process. 
 1. **Receive access**: After your participation is approved, you will receive access to the Early Access products or features, which may also include access to relevant resources and early documentation.
 
 ## Expectations and responsibilities
@@ -38,7 +38,7 @@ To ensure a mutually beneficial partnership in the Early Access program, it's im
 When you use an Early Access feature, you agree to provide feedback to Tealium about that feature. Your feedback is important for shaping our products and services. Here's how you can effectively provide feedback: 
 
 * **Be specific**: Clearly communicate your experiences, positive and negative, with the Early Access products or features.
-* **Use provided channels**: Use the designated feedback channels, such as surveys or forums, to share your input. You can also send feedback directly to your Customer Success Manager.
+* **Use provided channels**: Use the designated feedback channels, such as surveys or forums, to share your input. You can also send feedback directly to your Tealium representative.
 * **Include context**: Describe the context in which you used the product or feature and any challenges you faced.
 * **Offer suggestions**: If you have ideas for improvement, share them constructively.
 
@@ -58,4 +58,4 @@ Early Access features come with the following limitations:
 
 Thank you for considering participation in our Early Access program. Your involvement is integral to our continued growth and development. Together, we can create innovative solutions that better serve your needs and those of our broader customer base.
 
-If you have any questions or need further assistance, don't hesitate to contact your Customer Success Manager.
+If you have any questions or need further assistance, don't hesitate to contact your Tealium representative.

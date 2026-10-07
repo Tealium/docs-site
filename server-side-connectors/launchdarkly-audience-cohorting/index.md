@@ -3,6 +3,15 @@ title: LaunchDarkly Audience Cohorting Connector Setup Guide
 description: This article describes how to set up the LaunchDarkly Audience Cohorting connector.
 url: https://docs.tealium.com/server-side-connectors/launchdarkly-audience-cohorting/
 ---
+## API information
+
+This connector uses the following vendor API:
+
+* API Name: LaunchDarkly API
+* API Version: 20240415
+* API Endpoint: `https://app.launchdarkly.com`
+* Documentation: [LaunchDarkly API](https://docs.launchdarkly.com/)
+
 ## Actions
 
 | Action Name | AudienceStream | EventStream |

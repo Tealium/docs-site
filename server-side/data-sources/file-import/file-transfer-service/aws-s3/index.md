@@ -54,7 +54,7 @@ Use the following configuration details to allow Tealium access to the Amazon S3
             "Condition": {
                 "NotIpAddress": {
                     "aws:SourceIp": [
-                        "18.158.6.183", //An example of a Tealium Office VPN.  Add this IP if you want to allow Tealium staff to browse the bucket from their office. Get the value for your Tealium office from your CSM.
+                        "18.158.6.183", //An example of a Tealium Office VPN.  Add this IP if you want to allow Tealium staff to browse the bucket from their office. Get the value for your Tealium office from your Tealium representative.
                         "50.18.192.141", //This and the following IP addresses are for the us-west-1 Tealium region. They must always be included for the CDH show the files present in the bucket.
                         "52.52.159.89",
                         "54.153.15.248",

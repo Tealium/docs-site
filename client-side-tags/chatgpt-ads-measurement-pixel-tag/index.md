@@ -25,7 +25,8 @@ ChatGPT Ads Measurement Pixel lets you measure conversions and customer actions 
 * To fire a custom ChatGPT Ads event, select **Custom** on the **Events** or **Event-specific Parameters** tab and enter the vendor event name in the field that appears. Any event name mapped here that is not in the ChatGPT Ads standard event list is auto-routed as a `custom` event with that name.
 * Obtain your **Pixel ID** from your OpenAI account team. Self-serve provisioning via ChatGPT Ads Manager is not supported.
 * Respects the Tealium consent state via `utag.gdpr.getConsentState()` and skips firing when consent is denied. Map the **Consent** destination to forward grant or revoke directly to the Measurement Pixel SDK.
-* Do not send **User Object** fields (email, phone, IP, and so on).
+* Use the **User data** mappings to send hashed identity signals for advanced conversion matching. Phone number, first name, and last name are normalized and SHA-256 hashed before sending. Region and postal code are sent as raw strings. Supply a pre-hashed value (lowercase 64-character hex) to skip normalization and send the value as-is.
+* The OpenAI Measurement Pixel supports automatic advanced matching, which detects and hashes supported identity information in the browser. If automatic advanced matching is active on your account, avoid mapping the same fields manually to prevent sending duplicate user data.
 
 ## Tag configuration
 
@@ -65,6 +66,21 @@ The available categories are:
 | `event_id` | `String` | Event ID |
 | `plan_id` | `String` | Plan ID |
 | `consent` | `String` | Consent |
+
+
+### User data
+
+User data fields are placed in the `init.user` object when the Open AI Measurement Pixel initializes. Identity fields are normalized and SHA-256 hashed. Geographic fields are sent as raw strings.
+
+For more information, see [OpenAI Measurement Pixel: Send user data](https://developers.openai.com/ads/measurement-pixel#send-user-data).
+
+| Variable | Type/Values | Description |
+|:---------|:-----|:------------|
+| `phone_number_sha256` | `String` | Phone number. Normalized (country code retained; whitespace, punctuation, leading `+`, and leading zeroes removed) and SHA-256 hashed. Pre-hashed values (lowercase 64-character hex) pass through unchanged. |
+| `first_name_sha256` | `String` | First name. Lowercased with whitespace and ASCII punctuation removed (non-ASCII characters preserved), then SHA-256 hashed. Pre-hashed values pass through unchanged. |
+| `last_name_sha256` | `String` | Last name. Lowercased with whitespace and ASCII punctuation removed (non-ASCII characters preserved), then SHA-256 hashed. Pre-hashed values pass through unchanged. |
+| `region` | `String` | State, province, or region. Sent as a raw string. Maximum 128 characters. |
+| `postal_code` | `String` | Postal or ZIP code. Sent as a raw string. Maximum 32 characters. |
 
 
 ### E-Commerce
