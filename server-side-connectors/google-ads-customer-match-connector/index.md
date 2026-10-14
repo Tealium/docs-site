@@ -89,8 +89,8 @@ The target Google Ads account must also have the required permissions, and the t
 | ------------| :------------: | :---------: |
 | Add User to List (Data Manager API) | ✓ | ✓ |
 | Remove User from List (Data Manager API) | ✓ | ✓ |
-| Add User to Remarketing List| ✓ | ✓ |
-| Remove User from Remarketing List| ✓ | ✓ |
+| Add User to Remarketing List (Deprecated)| ✓ | ✓ |
+| Remove User from Remarketing List (Deprecated)| ✓ | ✓ |
 
 ### User identifiers
 
@@ -170,6 +170,12 @@ For mapping options, see [Add User to List (Data Manager API)](#add-user-to-list
 
 ### Add User to Remarketing List (Deprecated)
 
+
+<blockquote>
+This action is deprecated and will be removed in a future release. Migrate to [Add User to List (Data Manager API)](#add-user-to-list-data-manager-api). To use the replacement action, reauthenticate the connector and [link Google Ads to Tealium](#link-google-ads-to-tealium).
+</blockquote>
+
+
 #### Batch limits
 
 This connector action can use batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
@@ -201,5 +207,11 @@ This connector uses the following vendor API:
 When using the **Add User to Remarketing List** action, the connector sends values of `GRANTED` for the `adUserData` and `adPersonalization` parameters. To prevent non-consented visitors from being added to lists, create an audience with rules that check visitor profile consent status. Then use the **Remove from Remarketing List** action to remove visitors that have not given consent from lists.
 
 ### Remove User from Remarketing List (Deprecated)
+
+
+<blockquote>
+This action is deprecated and will be removed in a future release. Migrate to [Remove User from List (Data Manager API)](#remove-user-from-list-data-manager-api). To use the replacement action, reauthenticate the connector and [link Google Ads to Tealium](#link-google-ads-to-tealium).
+</blockquote>
+
 
 For mapping options, see [Add User to Remarketing List](#add-user-to-remarketing-list-deprecated).

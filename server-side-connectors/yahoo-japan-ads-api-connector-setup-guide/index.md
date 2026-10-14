@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/yahoo-japan-ads-api-connect
 This connector uses the following vendor API:
 
 * API Name: Yahoo! JAPAN API
-* API Version: v18
+* API Version: v20
 * API Endpoint: `https://ads-display.yahooapis.jp`
 * Documentation: [Yahoo! JAPAN API](https://ads-developers.yahoo.co.jp/developercenter/en/)
 

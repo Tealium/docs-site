@@ -116,12 +116,12 @@ When mapping items, use array of string data attributes to assign multiple items
 
 #### Privacy setting properties
 
-All three privacy setting properties are required.
+Privacy settings are optional. If you map any privacy setting property, all three properties are required.
 
 | **Parameter** | **Description** |
 | --- | --- |
 | `privacy_type` | Only one value per object from the following values: <ul><li>GDPR (General Data Protection Regulation), applicable to the European Economic Area (EEA).</li><li>GPP (Global Privacy Platform), intended for users in US states with applicable privacy regulations.</li></ul> |
-| `is_applicable` | Indicates if the value specified in the `privacy_type` parameter is applicable. |
+| `is_applicable` | Indicates if the value specified in the `privacy_type` parameter is applicable. Valid values are `true` or `1`. |
 | `consent_string` | The user's consent when the privacy regulations are in effect. For more information, see the [IAB Tech Lab: GDPR Transparency and Consent Framework](https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/). |
 
 #### Custom properties

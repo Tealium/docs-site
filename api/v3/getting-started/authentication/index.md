@@ -15,6 +15,10 @@ Do not generate a new bearer token for every call. Use the token until it expire
 </blockquote>
 
 
+### Permission requirements
+
+The authentication endpoint requires only an API key. No additional platform permissions are required to obtain a bearer token. However, access to each v3 API endpoint is determined by the user's platform permission level. For permission requirements, see the documentation for each endpoint.
+
 ### Region-specific host
 
 The authentication response contains a token and host value.

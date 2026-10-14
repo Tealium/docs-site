@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/administration/
 移行ガイド
 
 
-## プラットフォーム権限の管理
+## プラットフォーム権限を管理する
 
 
 ![](https://docs.tealium.com/images/icons/icon-users.svg)
@@ -34,7 +34,7 @@ url: https://docs.tealium.com/ja/administration/
 
 ![](https://docs.tealium.com/images/icons/icon-user-solid.svg)
 
-ユーザーの管理
+ユーザーを管理する
 
 
 
@@ -98,7 +98,7 @@ APIキー
 
 ![](https://docs.tealium.com/images/icons/icon-gear.svg)
 
-ログストリーミングの管理
+ログストリーミングを管理する
 
 
 
@@ -133,6 +133,12 @@ AI機能
 ![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
 プロファイル保持ポリシー
+
+
+
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
+
+製品リリースライフサイクル
 
 
 

@@ -5,9 +5,9 @@ url: https://docs.tealium.com/ja/server-side/connectors/templates/help-functions
 ---
 コネクタテンプレートは、Mustacheに基づいたJavaテンプレートエンジンであるTrimouを使用して構築されています。
 
-詳細については、[Trimou 2.3.0 ドキュメント](http://trimou.org/doc/2.3.0.Final/trimou-doc.html)を参照してください。
+詳細については、[Trimou documentation](https://github.com/trimou/trimou/blob/master/doc/src/asciidoc/trimou-doc.asciidoc)を参照してください。
 
-コネクタテンプレートは、ヘルパー関数を通じて追加およびカスタム機能をサポートしています。これにより、データを変換して、ベンダーのAPIに必要な正確な形式を生成しやすくなります。
+コネクタテンプレートは、ヘルパー関数を通じて追加およびカスタム機能をサポートします。これにより、データを変換して、ベンダーのAPIに必要な正確な形式を生成しやすくなります。
 
 ## castIntegers
 
@@ -72,9 +72,9 @@ XMLドキュメントで使用するために値をエスケープします。
 
 秘密鍵を使用してハッシュベースのメッセージ認証コード（HMAC）を生成します。HMACは、メッセージの性質を認証するのに役立つデータの小さなセットであり、メッセージの完全性と真正性を保護します。
 
-秘密鍵は、HMACを計算するために使用される一意の情報であり、メッセージの送信者と受信者の両方によって知られています。この鍵の長さは使用するアルゴリズムによって異なります。
+秘密鍵は、HMACを計算するために使用される一意の情報であり、メッセージの送信者と受信者の両方によって知られています。この鍵は使用するアルゴリズムに応じて長さが異なります。
 
-次の例では、テンプレートのためにマップされた`testKey`、`timestamp`、`ip`、`lang`がテンプレート変数として仮定されています。
+次の例では、`testKey`、`timestamp`、`ip`、および`lang`がテンプレートのマップされたテンプレート変数として想定されています。
 
 **テンプレート変数:**
 ```js
@@ -96,22 +96,22 @@ testKey   = "w8sZzy8EaPaxFKfaoTqUi6"
 a0afb572e3fc174c2dea112e1a9922fb9903caa65e6aa9e50e47758b8a611542
 ```
 
-ハッシュ関数の利用可能なオプションを以下の表に示します:
+ハッシュ関数の利用可能なオプションを以下の表に示します：
 
 |**オプション**| **必須**| **可能な値**| **説明**|
 |---| ---| ---| ---|
-|algorithm| はい| 例: `HmacSHA256`| 利用可能なオプションは:<br> - `secretKey="true"`の場合は[Java Mac Algorithms](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#Mac)を参照<br> - `secretKey="false"`の場合は[Java MessageDigest Algorithms](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)を参照|
+|algorithm| はい| 例: `HmacSHA256`| 利用可能なオプションは：<br> - `secretKey="true"`の場合は[Java Mac Algorithms](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#Mac)を参照<br> - `secretKey="false"`の場合は[Java MessageDigest Algorithms](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)を参照|
 |encodingCharset| いいえ| `UTF-8` (デフォルト), `US-ASCII`|
 |binaryEncoding| いいえ| `base64` (デフォルト), `hex`|
 |binaryEncodingOptions| いいえ| `lowercase` (デフォルト), `uppercase`| `binaryEncoding="hex"`の場合のみ適用|
 |joinOn| いいえ| 結合セパレータ; 空の値 `""`が必要な場合は提供|
 |useSecretKey| いいえ| `false` (デフォルト) または `true`|
 |secretKey| いいえ|
-|variables| はい| 最後に指定されたオプションの後にすべての変数を配置します。例えば、`secretKey="true"`の場合、すべてのオプションが指定された後の最初の変数が`secretKey`として使用され、その他すべてが`joinOn`オプションで結合される変数として使用されます。`secretKey="false"`を使用する場合、すべての変数が`joinOn`オプションで使用されます。|
+|variables| はい| 最後に指定されたオプションの後にすべての変数を配置します。たとえば、`secretKey="true"`を使用する場合、すべてのオプションが指定された後の最初の変数が`secretKey`として使用され、その他のすべてが`joinOn`オプションで結合される変数として使用されます。`secretKey="false"`を使用する場合、すべての変数が`joinOn`オプションで使用されます。|
 
 ## if
 
-変数が存在し、内容がある場合に内容を印刷します。次の例では、テンプレートに`lang`が有効な入力変数として存在すると仮定しています。
+変数が存在し、内容がある場合に内容を印刷します。次の例では、`lang`がテンプレートの有効な入力変数として存在すると想定されています。
 
 |**テンプレート**| **レンダリングされた値**|
 |---| ---|
@@ -143,7 +143,7 @@ a0afb572e3fc174c2dea112e1a9922fb9903caa65e6aa9e50e47758b8a611542
 
 ## join
 
-リストをオプショナルなジョイナーを使用して文字列に変換します。`empty_list`が空のリストであると仮定します。
+リストをオプショナルなジョイナーを使用して文字列に変換します。`empty_list`が空のリストであると仮定すると、値はレンダリングされません。
 
 |**テンプレート**| **レンダリングされた値**|
 |---| ---|
@@ -239,7 +239,7 @@ a0afb572e3fc174c2dea112e1a9922fb9903caa65e6aa9e50e47758b8a611542
 
 ## sum
 
-リストまたは集計の値を合計します。
+リストまたは集計内の値を合計します。
 
 |**テンプレート**| **レンダリングされた値**|
 |---| ---|

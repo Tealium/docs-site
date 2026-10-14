@@ -9,6 +9,12 @@ The Data Layer Enrichment Public API returns audience and badge data using only 
 
 
 <blockquote>
+This API is controlled by the data layer enrichment setting. If data layer enrichment is disabled, the API returns a `404` response. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+</blockquote>
+
+
+
+<blockquote>
 The Profile Definition API returns badge and audience data associated with a Tealium profile and is not restricted to any specific user.
 </blockquote>
 

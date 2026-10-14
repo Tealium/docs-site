@@ -25,7 +25,7 @@ Use this tag with AudienceStream to identify and action your visitors.
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.
 * **Enrich your data layer**  
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.  
-For more information, see [enable-data-layer-enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+For more information, see [configure-data-layer-enrichment-iq](https://docs.tealium.com/configure-data-layer-enrichment-iq/).
 
 ## Tag tips
 

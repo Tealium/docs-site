@@ -31,11 +31,13 @@ A summary of the data source appears.
 
 For more information, see [Create a data source](https://docs.tealium.com/create-data-source/).
 
-The PulsePoint data source generates a unique URL to use as the HTTP GET OR POST URL in your PulsePoint configuration. The generated URL uses the following format:
+The PulsePoint data source generates a unique URL to use as the webhook URL in your PulsePoint configuration. The generated URL uses the following format:
 
 ```
-https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
+https://{collect_subdomain}.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
+
+The `{collect_subdomain}` is `collect` for standard accounts. Private cloud customers use a subdomain specific to their environment (for example, `pc-xwy`).
 
 After you create the PulsePoint HCP365 data source, note the following values: **Tealium Account Name**, **Tealium Profile Name**, and the **Data Source Key**. You will need these when configuring the webhook within PulsePoint HCP365.
 
@@ -44,10 +46,23 @@ After you create the PulsePoint HCP365 data source, note the following values: *
 After you configure your data source endpoint, configure the webhook in your PulsePoint account.
 
 1. Log in to your PulsePoint HCP365 Application.
-1. Navigate to **Webhook Support**.
+1. Navigate to **Smart Actions > Response > Trigger a Webhook**.
 1. Select `GET` or `POST` as the **Request Method**.
 1. In the **URL** field, enter the endpoint URL that was generated when creating the data source in Tealium.
-1. In the **Body** field, the event parameters must be included in each request to connect to your Tealium instance and the specific data source. See the [Event attributes](#event-attributes) section for a list of event parameters..  
+1. In the **Body** field, configure the webhook body using the following example as a reference:
+
+```json
+{
+  "tealium_account": "YOUR_TEALIUM_ACCOUNT",
+  "tealium_profile": "YOUR_TEALIUM_PROFILE",
+  "tealium_datasource": "TEALIUM_DATASOURCE_KEY",
+  "tealium_event": "pulsepoint_hcp_identity",
+  "pulsepoint_npi": "%%NPI%%",
+  "pulsepoint_url": "%%URL%%",
+  "pulsepoint_channel": "%%CHANNEL%%",
+  "pulsepoint_param1": "%%PARAM1%%"
+}
+```
 
 ## Event attributes
 

@@ -22,6 +22,12 @@ If the supplied visitor ID is invalid, or if the visitor does not currently have
 </blockquote>
 
 
+
+<blockquote>
+This API is controlled by the data layer enrichment setting. If data layer enrichment is disabled, the API returns a `404` response. This response is distinct from the `200` status with an empty JSON response returned when the visitor is not found or has no active visit. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+</blockquote>
+
+
 ## Example request
 
 ```bash

@@ -14,6 +14,7 @@ url: https://docs.tealium.com/client-side-tags/tiktok-pixel-tag/
 *   The `value` parameter is automatically calculated and set based on product prices and quantities.
 *   By default, the TikTok pixel base code tracks a `Pageview` event on every page. Disable this in the tag configuration or with a data mapping for `auto_page_tracking`.
 *   By default, the `CompletePayment` event occurs when an order ID is populated. Disable this in the tag configuration or with a data mapping for `auto_purchase_tracking`.
+*   For single-page applications where you manage Pageview events manually, set **History Observer** to `false` and disable **Automatic Pageview Tracking**. Then send an explicit Tealium Pageview event each time the application route changes. This prevents TikTok's library from firing duplicate Pageview events on browser history changes.
 
   
 <blockquote>
@@ -34,6 +35,7 @@ When adding the tag, configure the following settings:
 * **Automatic Purchase Tracking**: Automatically track the `CompletePayment` event when an order ID is detected. Override this setting by mapping `auto_purchase_tracking`.
 * **Automatic Identity Tracking**: Enable the TikTok Advanced Matching feature that helps you match customer information such as email, phone number, and other identifiers with actions people take on your website. When enabled, the tag calls `ttq.identify()` for every event where user data (email or phone number) is detected. For more information, see [TiKTok: About advanced matching for web](https://ads.tiktok.com/help/article/advanced-matching-web).
 * **Limited Data Use**: A feature to help facilitate advertiser's compliance with the right to opt-out of sale and sharing of personal data under certain U.S. state privacy laws. For more information, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1770092377990145).
+* **History Observer**: Controls whether TikTok automatically reports Pageview events when SPA browser history changes. Set to `false` to disable TikTok's automatic SPA history tracking. When not configured, TikTok's default behavior is preserved. For more information, see [TikTok: Work with Single Page Applications](https://business-api.tiktok.com/portal/docs?id=1801524003169281).
 
 ## Load rules
 
@@ -55,6 +57,7 @@ The available categories are:
 |  `auto_purchase_tracking`  | Boolean | Automatic purchase tracking. |
 |  `auto_identity_tracking`  | Boolean | Automatic identity tracking. |
 |  `ldu`  | Boolean | Limited data use. |
+|  `historyObserver`  | Boolean | Controls whether TikTok automatically reports Pageview events when SPA browser history changes. Set to `false` to disable TikTok's automatic SPA history tracking. When not mapped, TikTok's default behavior is preserved. |
 
 ### User Parameters
 

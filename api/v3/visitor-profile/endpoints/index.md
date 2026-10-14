@@ -39,6 +39,11 @@ This command uses the following parameters:
     * The maximum number of `attributeId` values that the API will return at one time is 150. If you provide more than 150 `attributeId` values, the API will return only the first 150 IDs.
     * Example: `responseFilters=["5051", "5016"]`
 
+### Permission requirements
+
+* Server-side reader, editor, or publisher legacy permissions, or
+* Minimum **View** visitor lookup platform permissions
+
 ### Example cURL request
 
 ```bash
@@ -90,6 +95,11 @@ This command uses the following parameters:
      * `false` – Attributes display as numeric ID's, such as "28471".
 * `responseFilters`
     * A JSON array of IDs for filtering visitor data. If left unset, the API will return all the visitor data. When set, the `attributeId` values included in `responseFilters` will be returned in the response. The maximum number of `attributeId` values that the API will return at one time is 150. If you provide more than 150 `attributeId` values, the API will return only the first 150 IDs.
+
+### Permission requirements
+
+* Server-side reader, editor, or publisher legacy permissions, or
+* Minimum **View** visitor lookup platform permissions
 
 ### Example cURL request
 

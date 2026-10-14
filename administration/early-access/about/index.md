@@ -3,7 +3,9 @@ title: About Early Access
 description: This document guides you through the process of joining and getting the most out of the Early Access program.
 url: https://docs.tealium.com/administration/early-access/about/
 ---
-The Early Access program lets you experience our latest products and features prior to their official platform release. Your active participation in the Early Access program plays a pivotal role in shaping and refining our offerings to align with your specific requirements and preferences.
+The Early Access program lets you experience our latest products and features before their official platform release. For an overview of Early Access, open beta, and general availability, see [Product release lifecycle](https://docs.tealium.com/product-release-lifecycle/).
+
+Your active participation in the Early Access program helps shape and refine our products and features based on your feedback.
 
 ## Why should you participate?
 
@@ -49,7 +51,7 @@ Early Access features are a work in progress, and not equivalent to production f
 Early Access features come with the following limitations:
 
 * Early Access features may not always be made available to an entire account.
-* Early Access features may not be promoted to General Availability.
+* Early Access features may not be promoted to general availability.
 * Early Access features may evolve or change significantly based on feedback.
 * Tealium reserves the right to remove a user or account from the Early Access program.
 * Tealium may impose usage limitations on Early Access features.

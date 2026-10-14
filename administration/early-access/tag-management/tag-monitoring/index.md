@@ -5,7 +5,7 @@ url: https://docs.tealium.com/administration/early-access/tag-management/tag-mon
 --- 
 
 <blockquote>
-Tag monitoring is in Early Access and is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
+Tag monitoring is in [open beta](https://docs.tealium.com/product-release-lifecycle/) and is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
 </blockquote>
 
 

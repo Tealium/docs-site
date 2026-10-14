@@ -19,7 +19,13 @@ For more information about JSON objects, see [Data Layer Enrichment API objects]
 
 
 <blockquote>
-If you intend to use the Data Layer Enrichment API from a browser, you may need to set up an allow list. For more information, see [About Data Layer Enrichment - Domain Allow List](https://docs.tealium.com/about-data-layer-enrichment/).
+The Data Layer Enrichment Public API and the Profile Definition API are controlled by the data layer enrichment setting. If data layer enrichment is disabled, both APIs return a `404` response. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+</blockquote>
+
+
+
+<blockquote>
+If you intend to use the Data Layer Enrichment API from a browser, you may need to set up an allow list. For more information, see [Domain allow list](https://docs.tealium.com/enable-data-layer-enrichment/#domain-allow-list).
 </blockquote>
 
 

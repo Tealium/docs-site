@@ -21,14 +21,6 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 
 
-![](https://docs.tealium.com/images/icons/icon-globe.svg)
-
-#### オーディエンス
-
-* [オーディエンスダッシュボード](https://docs.tealium.com/audience-dashboard/)
-
-
-
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/connectors/templates/help-functions/
 ---
 Connector templates are built on Trimou, a Java templating engine based on Mustache.
 
-For more information, see: [Trimou 2.3.0 Documentation](http://trimou.org/doc/2.3.0.Final/trimou-doc.html)
+For more information, see: [Trimou documentation](https://github.com/trimou/trimou/blob/master/doc/src/asciidoc/trimou-doc.asciidoc)
 
 Connector templates support additional and custom functionality through helper functions. They allow for transforming data to make it easier to generate the exact format required by your vendor's API.
 

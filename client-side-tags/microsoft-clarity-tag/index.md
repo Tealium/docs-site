@@ -17,9 +17,12 @@ When adding the tag, configure the following settings:
 
 * **Project ID**: The Clarity project ID. You can find your project ID from your Clarity project URL. For example, `https://clarity.microsoft.com/projects/view/PROJECT_ID/`.
 * **Ad Storage Consent**: Set the default consent for Ad Storage. Dynamically update this value by mapping the `ad_storage` parameter in the **Data Mappings** section.
+* **Analytics Storage Consent**: Set the default consent for Analytics Storage. Options are **Not set**, **Granted**, and **Denied**. When set to **Not set**, analytics storage follows the **Ad Storage Consent** setting. Dynamically update this value by mapping the `analytics_storage` parameter in the **Data Mappings** section.
 * **Automatically read from Tealium Consent Cookie**: If set to true, consent is set based on the [Tealium consent manager](https://docs.tealium.com/about-consent-management/). 
 
 ## Consent mode
+
+This tag uses Clarity's [Consent API v2](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-consent-api-v2), which sends independent ad and analytics storage signals. Consent API v2 is enforced for EEA, UK, and Switzerland visitors.
 
 There are two options to implement consent mode for this tag:
 
@@ -71,6 +74,8 @@ The available categories are:
 | Variable | Description |
 |:---------|:------------|
 | `project_id` | The Clarity project ID. You can find your project ID from your Clarity project URL. For example, `https://clarity.microsoft.com/projects/view/PROJECT_ID/`. |
+| `ad_storage` | Ad Storage Consent. Overrides the **Ad Storage Consent** configuration setting. Valid values: `granted` or `denied`. |
+| `analytics_storage` | Analytics Storage Consent. Overrides the **Analytics Storage Consent** configuration setting. Valid values: `granted` or `denied`. |
 
 
 ### Events
@@ -81,5 +86,45 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 |:------|:------------|
 | `enable_consent` | Enable consent |
 | `disable_consent` | Disable consent |
+
+Custom event names configured in the Events tab are forwarded to Clarity as custom events. Use the `custom_event_name` destination in the **Custom Events** category for event-specific mapping.
+
+### Cookie Consent
+
+Map to the Cookie Consent destination to control cookie consent based on a user's consent state.
+
+| Variable | Description |
+|:---------|:------------|
+| `grant` | Grant cookie consent. Sends Consent API v2 signals with `granted` for both ad and analytics storage. |
+| `revoke` | Revoke cookie consent. Erases Clarity cookies. |
+
+### Identify
+
+Map the following destinations to call the Clarity [Identify API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/identify-api) on each tag fire. The Identify API is called only when `custom_user_id` is mapped and non-empty.
+
+| Variable | Description |
+|:---------|:------------|
+| `custom_user_id` | Custom user identifier. Required to trigger the Identify API call. |
+| `session_id` | Session identifier. |
+| `page_id` | Page identifier. |
+| `friendly_name` | Human-readable label for the session. |
+
+### Custom Tags
+
+| Variable | Description |
+|:---------|:------------|
+| `tag.{key}` | Custom tag. Calls `clarity('set', key, value)` with the mapped value. Accepts a string or an array of strings. Replace `{key}` with the tag key name. |
+
+### Custom Events
+
+| Variable | Description |
+|:---------|:------------|
+| `custom_event_name` | A custom event name forwarded to Clarity. Calls `clarity('event', name)`. |
+
+### Upgrade
+
+| Variable | Description |
+|:---------|:------------|
+| `upgrade_reason` | Reason for upgrading the Clarity session recording quality. Calls `clarity('upgrade', reason)`. For more information, see [Clarity API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api). |
 
     

@@ -32,7 +32,7 @@ This command uses the following parameters:
 ### Permission requirements
 
 * Server-side reader, editor, or publisher legacy permissions, or
-* Minimum **View** Visitor Lookup platform permissions
+* Minimum **View** visitor lookup platform permissions
 
 ### Example cURL request
 
@@ -91,7 +91,7 @@ The value to look up. Values containing special characters must be URL encoded.
 ### Permission requirements
 
 * Server-side publisher legacy permissions, or
-* **View, Edit, & Delete** Visitor Lookup platform permissions
+* **View, Edit, & Delete** visitor lookup platform permissions
 
 ### Example cURL request
 
@@ -146,7 +146,7 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/transactions/{tran
 ### Permission requirements
 
 * Server-side reader, editor, or publisher legacy permissions, or
-* Minimum **View** Visitor Lookup platform permissions
+* Minimum **View** visitor lookup platform permissions
 
 ### Example cURL request
 
@@ -188,7 +188,7 @@ GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
 ### Permission requirements
 
 * Server-side reader, editor, or publisher legacy permissions, or
-* Minimum **View** Visitor Lookup platform permissions
+* Minimum **View** visitor lookup platform permissions
 
 ### Example cURL request
 

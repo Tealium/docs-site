@@ -11,15 +11,14 @@ Tealium Configuration MCP is only available to select customers. If you are inte
 
 Tealium Configuration MCP connects AI clients to your server-side profile so you can explore configuration, make changes, and commit new versions using natural language instead of navigating the Tealium UI.
 
-Describe a business goal, such as creating an audience, understanding dependencies, or identifying unused configuration, and the MCP server translates that goal into the required profile configuration.
+Describe a business goal, such as creating an audience, understanding dependencies, or identifying unused configuration, and Tealium Configuration MCP translates that goal into the required profile configuration.
 
-The MCP server stages AI-generated changes as draft profile revisions. Publishing requires a separate review and action in the Tealium UI.
+Tealium Configuration MCP stages AI-generated changes as draft profile revisions. Publishing requires a separate review and action in the Tealium UI.
 
 ## Requirements
 
 This feature requires the following:
 
-* **Tealium Platform Permissions:** Your account must use Tealium Platform Permissions. Legacy permissions are not supported.
 * **Paid Claude plan:** You must have a Claude Pro, Max, Team, or Enterprise plan. Free plans cannot add custom connectors.
 
 Tealium Configuration MCP is not available for private cloud accounts.
@@ -28,19 +27,19 @@ To enable Tealium Configuration MCP for your account, [contact support](https://
 
 ## How it works
 
-Tealium Configuration MCP works as a guided, stateful session rather than a collection of independent commands. The MCP server manages session state, maintains a profile draft, and controls when changes are validated and applied. Ask questions or describe the changes you want to make, and the MCP server executes the required steps.
+Tealium Configuration MCP works as a guided, stateful session rather than a collection of independent commands. Tealium Configuration MCP manages session state, maintains a profile draft, and controls when changes are validated and applied. Ask questions or describe the changes you want to make, and Tealium Configuration MCP executes the required steps.
 
 Each session uses the following workflow:
 
 1. **Select a version.** At the start of a chat session, the agent asks which profile version to work against: **Latest Published**, **Latest Saved**, or a specific revision. A temporary draft copy is created. All changes during the session apply to that draft.
-1. **Explore.** Ask questions about the profile or request changes. The agent can explain existing configuration, trace dependencies, and create a plan for any changes you want to make. Review the plan before the MCP server proceeds.
-1. **Apply patch.** After you confirm the plan, the MCP server applies changes to the draft in sequential patches and continuously validates the profile integrity, attempting to resolve conflicts automatically.
+1. **Explore.** Ask questions about the profile or request changes. The agent can explain existing configuration, trace dependencies, and create a plan for any changes you want to make. Review the plan before Tealium Configuration MCP proceeds.
+1. **Apply patch.** After you confirm the plan, Tealium Configuration MCP applies changes to the draft in sequential patches and continuously validates the profile integrity, attempting to resolve conflicts automatically.
 1. **Commit.** After all changes are complete, the agent provides a summary. Confirm the summary to commit.
 1. **Review in UI.** Open the new saved version in the Tealium UI, review the changes, and publish manually after completing your organization's approval process.
 
 
 <blockquote>
-Tealium Configuration MCP never publishes profile changes. All changes are saved as a new saved version that requires a manual publish in the Tealium UI.
+Tealium Configuration MCP never publishes profile changes. All saved versions require a manual publish in the Tealium UI.
 </blockquote>
 
 
@@ -154,11 +153,17 @@ Tealium Configuration MCP supports the following profile objects.
 
 **Connectors**
 
-* Adobe Campaign Classic, AudienceStore, Braze, Facebook Audiences, Facebook Conversions, Google Ads Customer Match (Tealium-Provided Credentials), Google Ads Enhanced Conversions for Web, Google Analytics 4 Measurement Protocol, Google Display & Video 360 Customer Match, Google Cloud Pub/Sub (Service Account), Google Sheets, Pinterest Conversions, Reddit Conversions, Snowflake Streaming, Adobe Analytics 1.4, Snapchat Conversions, TikTok Events, Webhook, Databricks
+* Adobe Campaign Classic, Adobe Analytics 1.4, Amplitude, AudienceStore, Braze, Databricks, Facebook Audiences, Facebook Conversions, Google Ads Customer Match (Tealium-Provided Credentials), Google Ads Enhanced Conversions for Web, Google Analytics 4 Measurement Protocol, Google Cloud Pub/Sub (Service Account), Google Display & Video 360 Customer Match, Google Sheets, Pinterest Conversions, Reddit Conversions, Snapchat Conversions, Snowflake Streaming, TikTok Events, Webhook
 
 **Server-side tools**
 
 * Rules, labels
+
+### Audience editing compatibility
+
+Tealium Configuration MCP can explore existing audiences and create or modify audiences that do not use segments. Some existing audiences can be viewed through Tealium Configuration MCP but cannot have their conditions changed until they have been published in the current Audiences UI.
+
+To make an audience editable, open it in **Activate > Audiences**, make no changes, and save and publish it. Publishing upgrades the audience to the current configuration format automatically. After publishing, start a new MCP session. On the next tool call, Tealium Configuration MCP notifies you that a new published version is available, but the current session draft still holds the older audience version. This upgrade is permanent and cannot be reverted.
 
 **Not supported**
 
@@ -172,18 +177,16 @@ The following are not supported in Tealium Configuration MCP:
 
 **One profile per session:** Each session connects to one profile. To switch profiles, update your User Preferences and reconnect to Tealium Configuration MCP. The current session becomes invalid when the profile changes.
 
-**No credential creation for connectors:** The MCP server cannot create outbound connector credentials. You can re-use existing connectors and create new connector actions against them. Alternatively, create a new connector in an incomplete state and add the credentials manually in the Tealium UI.
+**No credential creation for connectors:** Tealium Configuration MCP cannot create outbound connector credentials. You can re-use existing connectors and create new connector actions against them. Alternatively, create a new connector in an incomplete state and add the credentials manually in the Tealium UI.
 
-**Secrets not accessible:** Credentials stored in the profile, such as access tokens and passwords, are filtered before reaching the agent. The MCP server cannot retrieve or display them.
+**Secrets not accessible:** Credentials stored in the profile, such as access tokens and passwords, are filtered before reaching the agent. Tealium Configuration MCP cannot retrieve or display them.
 
-**No publishing:** Tealium Configuration MCP never publishes profile changes. Updates made through MCP are saved as a new saved version in Tealium, available for review, and require a manual publish.
+**No publishing:** Changes require a manual publish in the Tealium UI.
 
-**Concurrency:** If a new version is published in the Tealium UI while your session is active, the agent notifies you. You can continue the session and resolve any merge conflicts manually later, or discard the current session and start a new one from the latest published version.
+**Concurrent edits via Tealium UI and Tealium Configuration MCP:** If a new version is published in the Tealium UI while your session is active, the agent notifies you the next time an MCP tool makes a call. You can continue the session and resolve any merge conflicts manually later, or discard the current session and start a new one from the latest published version.
 
 **Session expiry:** Sessions expire after 4 days of inactivity. Commit your changes before leaving a session for an extended period. After returning, start a new session and load the committed version as `Latest Saved`.
 
 **Token usage:** Large or complex profiles require more tokens per session. A Claude Pro, Max, Team, or Enterprise plan is required.
 
-**Platform Permissions only:** Accounts using Legacy permissions are not supported.
-
-**Supported AI client:** Tealium Configuration MCP works with Claude (claude.ai and Claude Desktop). 
+**Supported AI client:** Tealium Configuration MCP works with Claude (claude.ai, Claude Desktop, and Claude Code CLI).

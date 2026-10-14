@@ -8,7 +8,7 @@ url: https://docs.tealium.com/api/v3/visitor-profile/about/
 This feature requires the following:
 
 * Server-side reader, editor, or publisher legacy permissions, or
-* Minimum **View** Visitor Lookup platform permissions
+* Minimum **View** visitor lookup platform permissions
 
 ## How it works
 

@@ -6,42 +6,44 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 ## タグのヒント
 
 *   マッピングを使用して、タグ構成をオーバーライドし、動的に構成します。
-*   デフォルトでは、タグテンプレートはマップされた製品パラメータがイベントごとに単一の製品か複数の製品かを検出します。単一の製品が検出された場合、個々のTikTok製品変数（`content_id`、`content_category`、`content_name`）が使用されます。複数の製品が検出された場合、`contents` 配列が自動的に生成され使用されます。
-*   デフォルトでは、ユーザーデータ（ハッシュ化された、または非ハッシュ化されたメールアドレスまたは電話番号）が入力された各イベントに対して `Identify` メソッドが自動的に送信されます。タグ構成でこれを無効にします。ベストプラクティスとして、TikTokは顧客情報をサーバーに入力する前にSHA256で自動的にハッシュ化します。
-*   TikTokが非ハッシュ化されたメールを収集するには、値に `@` 文字が含まれている必要があり、ドメイン指定で終わる必要があります。
-*   TikTokが非ハッシュ化された電話番号を収集するには、値が E.164 形式に従う必要があります: `+{国コード}{電話番号}`。例えば、`+14135552671`（米国）、`+442071838750`（英国）、`+551155256325`（ブラジル）。
-*   ハッシュ化されたメールアドレスと電話番号の値を暗号化して入力するために、Crypto Extensionを使用します。
+*   デフォルトでは、タグテンプレートはマップされた製品パラメータがイベントごとに1つの製品か複数の製品を含むかどうかを検出します。1つの製品が検出された場合、個々のTikTok製品変数（`content_id`、`content_category`、`content_name`）が使用されます。複数の製品が検出された場合、`contents` 配列が自動的に生成され使用されます。
+*   デフォルトでは、ユーザーデータ（ハッシュ化された、またはハッシュ化されていないメールアドレスまたは電話番号）が入力された各イベントに対して `Identify` メソッドが自動的に送信されます。タグ構成でこれを無効にします。ベストプラクティスとして、TikTokは生の顧客情報をサーバーに入力する前にSHA256で自動的にハッシュ化します。
+*   TikTokがハッシュ化されていないメールアドレスを収集するには、値に `@` 文字が含まれていること、そしてドメイン指定で終わる必要があります。
+*   TikTokがハッシュ化されていない電話番号を収集するには、値がE.164形式に従う必要があります：`+{国コード}{電話番号}`。例えば、`+14135552671`（米国）、`+442071838750`（英国）、`+551155256325`（ブラジル）。
+*   ハッシュ化されたメールアドレスと電話番号の値を暗号化して入力するためにCrypto Extensionを使用します。
 *   `value` パラメータは、製品の価格と数量に基づいて自動的に計算され構成されます。
-*   デフォルトでは、TikTokピクセルベースコードはすべてのページで `Pageview` イベントを追跡します。タグ構成またはデータマッピングで `auto_page_tracking` を使用してこれを無効にします。
-*   デフォルトでは、注文IDが入力されたときに `CompletePayment` イベントが発生します。タグ構成またはデータマッピングで `auto_purchase_tracking` を使用してこれを無効にします。
+*   デフォルトでは、TikTokピクセルベースコードはすべてのページで `Pageview` イベントを追跡します。タグ構成または `auto_page_tracking` のデータマッピングでこれを無効にします。
+*   デフォルトでは、注文IDが入力されたときに `CompletePayment` イベントが発生します。タグ構成または `auto_purchase_tracking` のデータマッピングでこれを無効にします。
+*   シングルページアプリケーションでPageviewイベントを手動で管理する場合は、**History Observer** を `false` に構成し、**Automatic Pageview Tracking** を無効にします。その後、アプリケーションのルートが変更されるたびに明示的なTealium Pageviewイベントを送信します。これにより、ブラウザの履歴変更時にTikTokのライブラリが重複するPageviewイベントを発火するのを防ぎます。
 
   
 <blockquote>
-カスタムまたは非標準のパラメータはTikTokによって処理されません。広告主はTikTokアカウント担当者にカスタムレポートを依頼して、カスタムパラメータのメトリクスを計算することができます。
+カスタムまたは非標準のパラメータはTikTokによって処理されません。広告主はTikTokアカウント担当者にカスタムレポートを依頼して、カスタムパラメータのメトリックを計算することができます。
 </blockquote>
 
 
 ## タグ構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレースにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
 
-タグを追加する際に、以下の構成を構成します：
+タグを追加する際には、次の構成を構成します：
 
 * **Pixel ID**: あなたのTikTok Pixel ID。
 * **Content Type**: `content_type` を構成して、製品カタログの形式に基づいて製品を追跡する方法を決定します。個々の製品（通常はSKUとしてフォーマットされます）に関連するイベントを追跡するために `Product` を選択するか、製品グループ（製品IDのプレフィックスが多い）に関連するイベントを追跡するために `Product Group` を選択します。詳細については、[TikTok: パラメータについて](https://ads.tiktok.com/help/article/about-parameters?lang=en)を参照してください。
-* **Generate Event ID**: 有効にする場合、[TikTok Events connector](https://docs.tealium.com/tiktok-events-connector/)と連携してイベントIDパラメータをマッピングし、ウェブとサーバーベースの統合を同期します。この機能にはアクティブなTealium Collectタグが必要です。
-* **Automatic Pageview Tracking**: すべてのページで `Pageview` イベントを自動的に追跡します。この構成を `auto_page_tracking` をマッピングしてオーバーライドします。
-* **Automatic Purchase Tracking**: 注文IDが検出されたときに `CompletePayment` イベントを自動的に追跡します。この構成を `auto_purchase_tracking` をマッピングしてオーバーライドします。
-* **Automatic Identity Tracking**: 顧客情報（メール、電話番号、その他の識別子）をウェブサイトでの人々の行動と照合するのに役立つTikTok Advanced Matching機能を有効にします。有効にすると、タグはユーザーデータ（メールまたは電話番号）が検出されるたびに `ttq.identify()` を呼び出します。詳細については、[TiKTok: ウェブ用高度なマッチングについて](https://ads.tiktok.com/help/article/advanced-matching-web)を参照してください。
+* **Generate Event ID**: 有効にする場合、[TikTok Events connector](https://docs.tealium.com/tiktok-events-connector/)と一緒に使用し、コネクタ内のイベントIDパラメータをマッピングして、ウェブとサーバーベースの統合を同期します。この機能にはアクティブなTealium Collectタグが必要です。
+* **Automatic Pageview Tracking**: すべてのページで `Pageview` イベントを自動的に追跡します。この構成を `auto_page_tracking` のマッピングでオーバーライドします。
+* **Automatic Purchase Tracking**: 注文IDが検出されたときに `CompletePayment` イベントを自動的に追跡します。この構成を `auto_purchase_tracking` のマッピングでオーバーライドします。
+* **Automatic Identity Tracking**: 顧客情報（メールアドレス、電話番号、その他の識別子）をウェブサイトでの人々の行動と照合するのに役立つTikTok Advanced Matching機能を有効にします。有効にすると、タグはユーザーデータ（メールまたは電話番号）が検出されるたびに `ttq.identify()` を呼び出します。詳細については、[TikTok: ウェブ用の高度なマッチングについて](https://ads.tiktok.com/help/article/advanced-matching-web)を参照してください。
 * **Limited Data Use**: 特定の米国州のプライバシー法に基づいて個人データの販売および共有のオプトアウト権を行使する広告主を支援する機能です。詳細については、[TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1770092377990145)を参照してください。
+* **History Observer**: SPAブラウザの履歴が変更されたときにTikTokが自動的にPageviewイベントを報告するかどうかを制御します。TikTokの自動SPA履歴追跡を無効にするには `false` に構成します。構成されていない場合、TikTokのデフォルトの動作が保持されます。詳細については、[TikTok: シングルページアプリケーションでの作業](https://business-api.tiktok.com/portal/docs?id=1801524003169281)を参照してください。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグのロード条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 
@@ -55,6 +57,7 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 |  `auto_purchase_tracking`  | ブール値 | 自動購入追跡。 |
 |  `auto_identity_tracking`  | ブール値 | 自動アイデンティティ追跡。 |
 |  `ldu`  | ブール値 | 限定データ使用。 |
+|  `historyObserver`  | ブール値 | SPAブラウザの履歴が変更されたときにTikTokが自動的にPageviewイベントを報告するかどうかを制御します。TikTokの自動SPA履歴追跡を無効にするには `false` に構成します。マッピングされていない場合、TikTokのデフォルトの動作が保持されます。 |
 
 ### ユーザーパラメータ
 
@@ -64,32 +67,31 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 |  `phone_number`  | 文字列 | ユーザーの電話番号。| 
 |  `sha256_email`  | 文字列 | ユーザーのハッシュ化されたメール。| 
 | `sha256_phone_number`  | 文字列 | ユーザーのハッシュ化された電話番号。 | 
-| `external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表す識別子（顧客ID、ロイヤルティカード番号、注文IDなど）。プレーンテキストで提供された場合、TikTokライブラリは摂取前にIDをハッシュ化します。 | 
-| `sha256_external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表すSHA256ハッシュ化された識別子（顧客ID、ロイヤルティカード番号、注文IDなど）。ハッシュ化する前に先頭と末尾のスペースをトリミングします。 | 
+| `external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表す識別子、例えば顧客ID、ロイヤルティカード番号、または注文IDです。プレーンテキストで提供された場合、TikTokライブラリは摂取前にIDをハッシュ化します。 | 
+| `sha256_external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表すSHA256ハッシュ化された識別子、例えば顧客ID、ロイヤルティカード番号、または注文IDです。ハッシュ化する前に先頭または末尾のスペースをトリミングします。 | 
 
 ### 標準トラッキングパラメータ
 
 | 変数 | タイプ | 説明 |
 |:---------|:------------|:------------|
 |  `currency`   | 文字列 | 通貨（`_ccurrency`をオーバーライド）。 |
-|  `value`   | 数値 | 価値（`_ctotal`をオーバーライド）。 |
+|  `value`   | 数値 | 値（`_ctotal`をオーバーライド）。 |
 |  `query`  | 文字列 | クエリ。 |
 |  `description`  | 文字列 | 説明。 |
 |  `status`  | 文字列 | 状態。 |
-|  `contents`  | オブジェクトの配列 | コンテンツ。 |
+|  `contents`  | オブジェクトの配列 | 内容。 |
 |  `content_id`   | 文字列の配列 | コンテンツID（`_cprod`をオーバーライド）。 |
 |  `content_name`  | 文字列の配列 | コンテンツ名（`_cprodname`をオーバーライド）。 |
 |  `content_category`   | 文字列の配列 | コンテンツカテゴリ（`_ccat`をオーバーライド）。 |
 |  `quantity`   | 数値の配列 | 数量（`_cquan`をオーバーライド）。 | 
 |  `price`   | 数値の配列 | 価格（`_cprice`をオーバーライド）。 |
-
 ### イベント
 
-イベントマッピングの作成についての詳細は、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントマッピングについての詳細は、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `AddPaymentInfo` | 決済情報を追加 |
+| `AddPaymentInfo` | 決済情報の追加 |
 | `AddToCart` | カートに追加 |
 | `AddToWishlist` | ほしい物リストに追加 |
 | `ClickButton` | ボタンをクリック |
@@ -97,19 +99,17 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 | `CompleteRegistration` | 登録完了 |
 | `Contact` | 連絡 |
 | `Download` | ダウンロード |
-| `InitiateCheckout` | チェックアウト開始 |
+| `InitiateCheckout` | チェックアウトの開始 |
 | `PlaceAnOrder` | 注文 |
 | `Search` | 検索 |
-| `SubmitForm` | フォームを送信 |
-| `Subscribe` | 登録 |
-| `ViewContent` | コンテンツを表示 |
+| `SubmitForm` | フォームの送信 |
+| `Subscribe` | 購読 |
+| `ViewContent` | コンテンツの閲覧 |
 | `Custom` | カスタム |
 
+### 旅行 - ホテルパラメータ
 
-
-### 旅行 - ホテルのパラメータ
-
-| 変数 | 型/値 | 説明 |
+| 変数 | タイプ/値 | 説明 |
 |:---------|:-----|:------------|
 | `hotel.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
 | `hotel.city` | `String` | ホテルの都市 |
@@ -121,9 +121,9 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 | `hotel.num_children` | `Number` | 子供の数 |
 | `hotel.suggested_hotels` | `String or Array of Strings` | このユーザーに推奨されるホテル |
 
-### 旅行 - フライトのパラメータ
+### 旅行 - フライトパラメータ
 
-| 変数 | 型/値 | 説明 |
+| 変数 | タイプ/値 | 説明 |
 |:---------|:-----|:------------|
 | `flight.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
 | `flight.destination_city` | `String` | 目的地の都市名 |
@@ -138,11 +138,11 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 | `flight.num_infants` | `Number` | 幼児の数 |
 | `flight.travel_class` | `String` | フライトチケットのクラス。受け入れられる値: `eco`, `prem`, `bus`, `first`。 |
 | `flight.user_score` | `Number` | この潜在顧客の広告主に対する相対的な価値を表す |
-| `flight.preferred_num_stops` | `Number` | 希望の停留回数 |
+| `flight.preferred_num_stops` | `Number` | 希望の停留数 |
 
-### 旅行 - 目的地のパラメータ
+### 旅行 - 目的地パラメータ
 
-| 変数 | 型/値 | 説明 |
+| 変数 | タイプ/値 | 説明 |
 |:---------|:-----|:------------|
 | `destination.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
 | `destination.city` | `String` | 目的地の都市 |

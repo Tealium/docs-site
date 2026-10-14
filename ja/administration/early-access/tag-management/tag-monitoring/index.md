@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/administration/early-access/tag-management/tag-
 ---
 
 <blockquote>
-タグモニタリングはEarly Access中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
+タグモニタリングは[オープンベータ](https://docs.tealium.com/product-release-lifecycle/)中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
 </blockquote>
 
 

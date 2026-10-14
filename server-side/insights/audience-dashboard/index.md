@@ -1,11 +1,11 @@
 ---
 title: Audience dashboard
 description: This article provides information about the audience dashboard.
-url: https://docs.tealium.com/administration/early-access/audiences/audience-dashboard/
+url: https://docs.tealium.com/server-side/insights/audience-dashboard/
 ---
 
 <blockquote>
-The audience dashboard is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Account Manager.
+The audience dashboard is in [open beta](https://docs.tealium.com/product-release-lifecycle/) and is only available to select customers. If you are interested in trying this feature, [contact support](https://docs.tealium.com/support/).
 </blockquote>
 
 

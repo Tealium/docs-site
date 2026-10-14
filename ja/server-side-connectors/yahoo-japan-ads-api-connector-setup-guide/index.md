@@ -8,7 +8,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/yahoo-japan-ads-api-conn
 このコネクタは以下のベンダー API を使用します：
 
 * API 名: Yahoo! JAPAN API
-* API バージョン: v18
+* API バージョン: v20
 * API エンドポイント: `https://ads-display.yahooapis.jp`
 * ドキュメント: [Yahoo! JAPAN API](https://ads-developers.yahoo.co.jp/developercenter/en/)
 
@@ -49,14 +49,14 @@ url: https://docs.tealium.com/ja/server-side-connectors/yahoo-japan-ads-api-conn
 |---| ---|
 |アカウント ID| (必須) アカウント ID。|
 |オーディエンスリスト ID| (必須) オーディエンスリスト ID。|
-|ベースアカウント ID | (必須) アカウント ID がMCCアカウントの場合のベースアカウント ID。 |
+|ベースアカウント ID | (必須) アカウント ID が MCC アカウントの場合のベースアカウント ID。 |
 
 #### ユーザー ID
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Email (既に SHA256 ハッシュ化されている)| 空白をトリムし、小文字に変換し、SHA256でハッシュ化されたメールアドレスを提供してください。|
-|Email (SHA256 ハッシュを適用)| プレーンテキストのメールアドレスを提供し、コネクタがこの値を空白トリム、小文字変換、SHA256ハッシュを使用してハッシュ化します。|
+|Email (既に SHA256 ハッシュ化されている)| すでに空白トリム、小文字化、SHA256 ハッシュ化されたメールアドレスを提供します。|
+|Email (SHA256 ハッシュを適用)| プレーンテキストのメールアドレスを提供し、コネクタがこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。|
 |IDFA| iOSデバイスの広告識別子。|
 |AAID| Androidデバイスの広告識別子。|
-|Unknown| 未知の値。|
+|Unknown| 不明な値。|

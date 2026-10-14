@@ -58,7 +58,7 @@ To create a new rule:
 
 
 <blockquote>
-If you are using OneTrust default vendor categories for the first time, after creating your integration, follow the steps in [edit purpose group](#edit-a-purpose-group) to assign tags to the **Default** purpose group.
+If you are using default vendor categories for the first time, after creating your integration, follow the steps in [edit purpose group](#edit-a-purpose-group) to assign tags to the **Default** purpose group.
 </blockquote>
 
 

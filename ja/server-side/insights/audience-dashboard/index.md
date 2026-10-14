@@ -1,11 +1,11 @@
 ---
 title: オーディエンスダッシュボード
 description: この記事では、オーディエンスダッシュボードについての情報を提供します。
-url: https://docs.tealium.com/ja/administration/early-access/audiences/audience-dashboard/
+url: https://docs.tealium.com/ja/server-side/insights/audience-dashboard/
 ---
 
 <blockquote>
-オーディエンスダッシュボードはEarly Access中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumアカウントマネージャーに連絡してください。
+オーディエンスダッシュボードはPublic Previewで、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumアカウントマネージャーに連絡してください。EA覚書への署名は不要です。
 </blockquote>
 
 

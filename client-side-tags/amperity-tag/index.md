@@ -110,28 +110,6 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 | `addToWishlist` |  Add to wish list  |
 
 ### Event-specific Parameters
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
 
-| Variable | Description |
-|:---------|:------------|
-| `purchase` | Purchase |
-| `productDetailPageBrowse` | Product Detail Page Browse |
-| `viewProduct` | View Product |
-| `categoryPageBrowse` | Category Page browse |
-| `viewCartAbandon` | View Cart Abandon |
-| `storeLocatorSearch` | Store Locator Search |
-| `highValuePageView` | High-Value Page View |
-| `productFilterSelections` | Product Filter selections |
-| `accountCreation` | Account Creation |
-| `emailListServ` | Email List Serv |
-| `promoCodeSignup` | Promo Code Signup |
-| `creditCardBrowse` | Credit Card Browse |
-| `creditCardSignup` | Credit Card Signup |
-| `checkOrderStatus` | Check Order Status |
-| `leaveReview` | Leave a Review |
-| `siteSearch` | Site Search | 
-| `supportContact` | | Support/Contact |
-| `productRestockAlert` | Product Restock Alert |
-| `addToWishlist` | Add to wish list |
-
+Any of the available mappings can be set specific to an event trigger by selecting this option.
     

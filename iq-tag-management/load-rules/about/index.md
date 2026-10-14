@@ -73,8 +73,8 @@ Each rule condition uses a comparison operator and a variable from the data laye
 |`equals`<br> `equals (ignore case)`| The variable equals the specified value.|
 |`greater than`| The variable is greater than the specified value.|
 |`greater than or equal to`| The variable is greater than or equal to the specified value.|
-|`is badge assigned`| The badge is assigned to the visitor.<br> For use with [data layer enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).|
-|`is badge not assigned`| The badge is not assigned to the visitor.<br> For use with [data layer enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).|
+|`is badge assigned`| The badge is assigned to the visitor.<br> For use with [data layer enrichment](https://docs.tealium.com/configure-data-layer-enrichment-iq/).|
+|`is badge not assigned`| The badge is not assigned to the visitor.<br> For use with [data layer enrichment](https://docs.tealium.com/configure-data-layer-enrichment-iq/).|
 |`is defined`| The variable is defined in the data layer.|
 |`is not defined`| The variable is not defined in the data layer.|
 |`is populated`| The variable is defined in the data layer and is not blank or empty.|

@@ -1,13 +1,16 @@
 ---
 title: About Data Layer Enrichment
-description: Data Layer Enrichment makes AudienceStream visit and visitor attributes available in your Tealium iQ configuration and populates that data in your data layer.
+description: Data Layer Enrichment imports AudienceStream attributes into your Tealium iQ data layer and provides access to visitor profile data through public APIs.
 url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/about/
 ---
-Data Layer Enrichment imports your AudienceStream [attributes]() into your Tealium iQ account and makes them available as part of your data layer. The visitor data collected in AudienceStream is populated in the data layer on your website. Those attributes can then be used in load rules, extensions, and tags in your iQ account to create personalized experiences for your visitors.
+Data layer enrichment has two components:
+
+* The Tealium iQ configuration imports AudienceStream [attributes]() into your data layer and populates them on your website, where they can be used in load rules, extensions, and tags to create personalized experiences for your visitors.
+* The server-side component provides access to visitor profile data through the Data Layer Enrichment API and Profile Definition API.
 
 ## Requirements
 
-Data Layer Enrichment requires the following:
+Data layer enrichment requires the following:
 
 * An active **AudienceStream** profile with visit and visitor attributes defined.
 * An active **Tealium Collect tag**.
@@ -15,7 +18,9 @@ Data Layer Enrichment requires the following:
 
 ## How it works
 
-Data Layer Enrichment is a profile-level setting in iQ that links to a corresponding AudienceStream profile. After Data Layer Enrichment is enabled, a new type of data layer variable called AudienceStream Attribute appears in the list of variables on the Data Layer screen. The visit and visitor attributes from the AudienceStream profile are imported and become available to use just like any other data layer variable.
+### Data layer enrichment profile in Tealium iQ
+
+The Tealium iQ configuration links your iQ profile to a corresponding AudienceStream profile. After you configure the data layer enrichment profile in Tealium iQ, a new type of data layer variable called AudienceStream Attribute appears in the list of variables on the Data Layer screen. The visit and visitor attributes from the AudienceStream profile are imported and become available to use just like any other data layer variable.
 
 ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png)
 
@@ -31,40 +36,24 @@ Because tags load asynchronously, the most recently retrieved set of attributes 
 </blockquote>
 
 
-### Same origin policy
+#### Same origin policy
 
 It's important to note that visitor data is stored in the browser using `localStorage` which adheres to the [same origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) for security purposes. This means that data layer enrichment does not persist across `http` protocols or subdomains.
 
 For example, when going from a page on `www.tealium.com` to a page on `secure.tealium.com`, the data layer enrichment data stored in `localStorage` does not persist to the new subdomain. Therefore, when a user changes subdomains or protocols, a new data layer enrichment call must be made to re-populate `localStorage` and the data may not be available until the subsequent tracking call.
 
-### Domain allow list
+### Server-side data layer enrichment
 
-By default, Data Layer Enrichment will look up the visitor profile based on the TAPID cookie, if present, regardless of the domain the request came from. 
+The server-side component exposes visitor profile data through two public endpoints: 
 
-Creating an allow list prevents non-trusted domains from accessing visitor profiles based on the TAPID cookie. 
+* The Data Layer Enrichment API, which returns the full visitor profile without filtering.
+* The Profile Definition API, which returns badge and audience definitions.
 
-Data Layer Enrichment retrieves the visitor ID depending on the request domain and allow list you set up:
+If the server-side component is disabled, both APIs return a `404` response and no visitor data is available through those endpoints.
 
-* **Domains match**  
-If the referrer matches a domain in the allow list, Data Layer Enrichment uses the visitor ID in the third-party TAPID cookie, if present. Otherwise the visitor ID from the URL path is used.
-* **Domains do not match**  
-If the referrer does not match a domain in the allow list, Data Layer Enrichment ignores the TAPID cookie and uses the visitor ID in the URL path.
+You can also create a domain allow list to restrict which domains can access visitor profiles using the TAPID cookie. For more information, see [Domain allow list](https://docs.tealium.com/enable-data-layer-enrichment/#domain-allow-list).
 
-#### Subdomains
+## Next steps
 
-When you add a domain to the allow list, all of its subdomains are automatically included. For example, if you allow `example.com`, any subdomain that matches `*.example.com` is included.
-
-```
-http://example.com
-https://mobile.example.com/xyz/index.html
-http://app.mobile.example.com
-```
-
-#### Create an allow list
-
-To limit requests from only specific, trusted domains, create an allow list in your profile.
-
-1. Go to **Admin menu > Data Layer Enrichment**.
-1. Enter the comma-separated list of domains you trust. You can add a maximum of 250 domains per profile. Do not include the `http` or `https` protocol before the domain (for example, `example.com`).
-1. Click **Save**.
-1. Save and publish your changes.
+* [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)
+* [Configure Data Layer Enrichment in Tealium iQ](https://docs.tealium.com/configure-data-layer-enrichment-iq/)

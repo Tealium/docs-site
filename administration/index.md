@@ -136,6 +136,12 @@ Profile Retention Policy
 
 
 
+![](https://docs.tealium.com/images/icons/icon-forward.svg)
+
+Product Release Lifecycle
+
+
+
 ![](https://docs.tealium.com/images/icons/icon-comments.svg)
 
 Feedback Policy

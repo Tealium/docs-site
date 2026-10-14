@@ -21,14 +21,6 @@ Get access to beta features through the Early Access program.
 
 
 
-![](https://docs.tealium.com/images/icons/icon-globe.svg)
-
-#### Audiences
-
-* [Audience dashboard](https://docs.tealium.com/audience-dashboard/)
-
-
-
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
 

@@ -5,6 +5,12 @@ url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/teali
 ---
 For detailed instructions see the [Tealium Collect Tag Setup Guide](https://docs.tealium.com/tealium-collect-tag/).
 
+
+<blockquote>
+This configuration enables client-side attribute sync in Tealium iQ. The Data Layer Enrichment API and Profile Definition API are controlled by a separate server-side setting. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+</blockquote>
+
+
 ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-tealiumcollecttagconfiguration.png)
 
 ## Data enrichment frequency
