@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android SDK (Lollipop/5.0+ / API Level 21+)
-* [Tealium iQ モバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub アカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ

@@ -13,7 +13,7 @@ The current Tealium for Swift SDK version is 2.x. For previous versions, see [Sw
 
 * Xcode 7.0+
 * iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -302,7 +302,7 @@ config.appDelegateProxyEnabled = false
 
 ## Event Batching
 
-Event Batching is either be configured locally on the `TealiumConfig` instance, or by using the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/). Local settings override remote settings.
+Event Batching is either be configured locally on the `TealiumConfig` instance, or by using the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/). Local settings override remote settings.
 
 This example enables event batching and sets the batch size and queue size.
 

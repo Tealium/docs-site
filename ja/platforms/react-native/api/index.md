@@ -17,15 +17,15 @@ url: https://docs.tealium.com/ja/platforms/react-native/api/
 | [`getConsentStatus()`](#getConsentStatus)                   | ユーザーの同意状態を取得します                                   |
 | [`getSessionId()`](#getSessionId)                           | 現在の`tealium_session_id`を取得します                            |
 | [`getVisitorId()`](#getVisitorId)                           | 現在の訪問IDを取得します                                      |
-| [`initialize()`](#initialize)                               | 構成パラメータを使用してTealiumを初期化します                     |
+| [`initialize()`](#initialize)                               | 構成パラメータでTealiumを初期化します                     |
 | [`joinTrace()`](#joinTrace)                                 | 与えられたIDでトレースに参加します                                       |
 | [`leaveTrace()`](#leaveTrace)                               | アクティブなトレースセッションを離れます                                           |
 | [`removeData()`](#removeData)                               | `addData()`を使用して以前に構成された永続データを削除します |
 | [`removeRemoteCommand()`](#removeRemoteCommand)             | リモートコマンドマネージャーからリモートコマンドを削除します              |
 | [`setConsentCategories()`](#setConsentCategories)           | ユーザーの同意カテゴリを構成します                                 |
-| [`setConsentExpiryListener()`](#setConsentExpiryListener)   | 同意期限が切れたときのリスナー/コールバックを構成します                            |
+| [`setConsentExpiryListener()`](#setConsentExpiryListener)   | 同意期限が切れたリスナー/コールバックを構成します                            |
 | [`setConsentStatus()`](#setConsentStatus)                   | ユーザーの同意状態を構成します                                     |
-| [`setVisitorServiceListener()`](#setVisitorServiceListener) | 訪問サービスのリスナー/コールバックを定義します                         |
+| [`setVisitorServiceListener()`](#setVisitorServiceListener) | 訪問サービスリスナー/コールバックを定義します                         |
 | [`terminateInstance()`](#terminateInstance)                 | Tealiumインスタンスを無効にして破棄します                            |
 | [`track()`](#track)                                         | イベントまたは画面表示をトラックします                                         |
 
@@ -37,10 +37,10 @@ url: https://docs.tealium.com/ja/platforms/react-native/api/
 Tealium.addRemoteCommand(id, callback);
 ```
 
-| パラメータ | タイプ        | 説明                                                                                                                                                     | 例          |
-|:-----------|:------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
-| `id`       | `String`    | タグ構成からのコマンドIDの名前                                                                                                                           | `"test_command"` |
-| `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキーと値のペアのペイロードを返します。 | (例を参照)    |
+| パラメータ | 型        | 説明                                                                                                                                                     | 例          |
+|:-----------|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
+| `id`       | `String`    | タグ構成からのコマンドIDの名前                                                                                                               | `"test_command"` |
+| `callback` | `Function ` | リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキーバリューペアのペイロードを返します。 | (例を参照)    |
 
 例:
 
@@ -61,14 +61,14 @@ Tealium.addRemoteCommand("firebase", payload => {
 ```javascript
 Tealium.addData(data, expiry);
 ```
-| パラメータ | タイプ                | 説明                                                                                                   | 例                                   |
-|:-----------|:--------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------|
-| `data`     | `Object`            | 文字列のキーと、値が文字列または文字列の配列であるキーバリューペアのJSONオブジェクト | `{"persistent_key2" : "persistent_val2"}` |
+| パラメータ | 型                | 説明                                                                                                   | 例                                   |
+|:-----------|:--------------------|:--------------------------------------------------------------------------------------------------------------|:------------------------------------------|
+| `data`     | `Object`            | 文字列のキーと、文字列または文字列の配列の値を持つキーバリューペアのJSONオブジェクト | `{"persistent_key2" : "persistent_val2"}` |
 | `expiry`   | [`Expiry`](#expiry) | データを永続させる時間の長さ                                                                  | `Expiry.forever`                          |
 
 ### コレクター
 
-コレクターは、デバイスから補足情報を収集し、Tealium Customer Data Hubに送信される前にデータレイヤーに追加するモジュールです。いくつかのコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてインストールされています。
+コレクターは、デバイスから補足情報を収集し、データレイヤーに追加してからTealium Customer Data Hubに送信するモジュールです。いくつかのコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてオプションでインストールされます。
 
 以下の表は、利用可能なコレクターをリストしています。デフォルトのコレクターはコレクター名の隣に`*`が付けられています。
 
@@ -86,8 +86,8 @@ Tealium.addData(data, expiry);
 
 同意の構成の有効期限を定義します
 
-| パラメータ | タイプ       | 説明                          | 例         |
-|:-----------|:-----------|:-----------------------------|:----------------|
+| パラメータ | 型       | 説明                          | 例         |
+|:-----------|:-----------|:-------------------------------------|:----------------|
 | `time`     | `Number`   | 有効期限までの時間 | `90`            |
 | `unit`     | `TimeUnit` | 有効期限までの時間単位   | `TimeUnit.days` |
 
@@ -119,7 +119,7 @@ Tealium.addData(data, expiry);
 
 ### ディスパッチャー
 
-ディスパッチャーは、データレイヤーからのデータを収集し、Tealiumのエンドポイントに送信するモジュールです。現在利用可能なディスパッチャーは以下の通りです:
+ディスパッチャーは、データレイヤーからのデータを収集し、Tealiumのエンドポイントに送信するモジュールです。現在利用可能なディスパッチャーは以下の通りです：
 
 | ディスパッチャー名  | TealiumConfig 参照      |
 |:-----------------|:-----------------------------|
@@ -168,7 +168,7 @@ Tealium.gatherTrackData(callback);
 
 | パラメータ | タイプ       | 説明                                          | 例               |
 |:-----------|:-----------|:---------------------------------------------|:----------------|
-| `callback` | `Function` | 取得した値を使用するコールバック関数。コールバックはJSONオブジェクトを返します。 | (例を参照) |
+| `callback` | `Function` | キーの取得値を使用するコールバック関数。コールバックはJSONオブジェクトを返します。 | (例を参照) |
 
 例：
 
@@ -189,7 +189,7 @@ Tealium.getData(key, callback);
 | パラメータ | タイプ       | 説明                                          | 例               |
 |:-----------|:-----------|:---------------------------------------------|:----------------|
 | `key`      | `String`   | データレイヤーから取得するキー                | (例を参照) |
-| `callback` | `Function` | 取得した値を使用するコールバック関数 | (例を参照) |
+| `callback` | `Function` | キーの取得値を使用するコールバック関数 | (例を参照) |
 
 例：
 
@@ -261,7 +261,7 @@ Tealium.getSessionId(value => {
 
 ### `getVisitorId()`
 
-ユーザーのビジターIDを取得し、コールバック関数の形で返します。
+ユーザーの訪問IDを取得し、コールバック関数の形で返します。
 
 ```javascript
 Tealium.getVisitorId(callback);
@@ -269,7 +269,7 @@ Tealium.getVisitorId(callback);
 
 | パラメータ | タイプ       | 説明                             | 例               |
 |:-----------|:-----------|:--------------------------------|:----------------|
-| `callback` | `Function` | ビジターIDを使用するコールバック関数 | (例を参照) |
+| `callback` | `Function` | 訪問IDを使用するコールバック関数 | (例を参照) |
 
 例：
 
@@ -290,7 +290,7 @@ Tealium.initialize(config);
 | パラメータ | タイプ                              | 説明                                                      | 例               |
 |:-----------|:----------------------------------|:---------------------------------------------------------|:----------------|
 | `config`   | [`TealiumConfig`](#tealiumconfig) | Tealiumの構成パラメータ                                   | (例を参照) |
-| `callback` | `Function`                        | (オプション) Tealiumインスタンスが準備できた後のコールバック関数 | (例を参照) |
+| `callback` | `Function`                        | (オプション) Tealiumインスタンスが準備完了後のコールバック関数 | (例を参照) |
 
 例：
 
@@ -316,20 +316,20 @@ Tealium.initialize(config, success => {
     if (!success) {
         // インスタンスの作成に失敗しました。
     }
-    // 準備ができたら何かを行います
+    // 準備完了時に何かを行う
 });
 ```
 
 ### `joinTrace()`
 
-指定されたIDでトレースに参加します。Tealium Customer Data Hubの[Trace](https://docs.tealium.com/manage-traces/)機能についてもっと学びましょう。
+指定されたIDでトレースに参加します。Tealium Customer Data Hubの[Trace](https://docs.tealium.com/manage-traces/)機能について詳しくはこちらをご覧ください。
 
 ```javascript
 Tealium.joinTrace(id);
 ```
 
-| パラメータ | タイプ     | 説明                       | 例          |
-|:-----------|:---------|:--------------------------|:-----------|
+| パラメータ | タイプ     | 説明                     | 例          |
+|:-----------|:---------|:------------------------|:-----------|
 | `id`       | `String` | CDHから取得したトレースID | `abc123xy` |
 
 ### `leaveTrace()`
@@ -342,14 +342,14 @@ Tealium.leaveTrace();
 
 ### LogLevel
 
-ログレベルプロパティを構成し、どれだけの情報がログに記録されるかを以下の値のいずれかで制御します：
+ログレベルプロパティを構成し、どの程度の情報がログに記録されるかを以下の値のいずれかに制御します：
 
 | 値         | 説明                                                         |
 |:----------|:------------------------------------------------------------|
 | `.dev`    | アプリケーションの進行を強調する情報イベント                 |
 | `.qa`     | アプリケーションのデバッグに使用されるデバッグレベルのイベント |
 | `.prod`   | 重大なエラーや失敗などのエラーイベント                       |
-| `.silent` | ログなし（デフォルト）                                       |
+| `.silent` | ログなし（デフォルト）                                        |
 
 例：
 
@@ -374,23 +374,23 @@ Tealium.setConsentCategories([ConsentCategories.analytics, ConsentCategories.ema
 ```
 #### 同意カテゴリー
 
-| 値                  | 説明             |
-|:------------------|:----------------|
-| `analytics`       | アナリティクス   |
-| `affiliates`      | アフィリエイト   |
-| `displayAds`      | ディスプレイ広告 |
-| `email`           | メール           |
-| `personalization` | パーソナライゼーション |
-| `search`          | 検索             |
-| `social`          | ソーシャル       |
-| `bigData`         | ビッグデータ     |
-| `mobile`          | モバイル         |
-| `engagement`      | エンゲージメント |
-| `monitoring`      | モニタリング     |
-| `crm`             | CRM             |
-| `cdp`             | CDP             |
-| `cookieMatch`     | クッキーマッチ   |
-| `misc`            | その他           |
+| 値                  | 説明           |
+|:--------------------|:---------------|
+| `analytics`         | アナリティクス |
+| `affiliates`        | アフィリエイト |
+| `displayAds`        | ディスプレイ広告 |
+| `email`             | メール         |
+| `personalization`   | パーソナライゼーション |
+| `search`            | 検索           |
+| `social`            | ソーシャル     |
+| `bigData`           | ビッグデータ   |
+| `mobile`            | モバイル       |
+| `engagement`        | エンゲージメント |
+| `monitoring`        | モニタリング   |
+| `crm`               | CRM            |
+| `cdp`               | CDP            |
+| `cookieMatch`       | クッキーマッチ |
+| `misc`              | その他         |
 
 ### `setConsentExpiryListener()`
 
@@ -400,9 +400,9 @@ Tealium.setConsentCategories([ConsentCategories.analytics, ConsentCategories.ema
 Tealium.setConsentExpiryListener(callback);
 ```
 
-| パラメータ | タイプ       | 説明                               | 例             |
-|:-----------|:-----------|:--------------------------------------|:--------------|
-| `callback` | `Function` | 同意が期限切れになった後に実行するコード | (例を参照) |
+| パラメータ | 型         | 説明                             | 例              |
+|:-----------|:-----------|:--------------------------------|:----------------|
+| `callback` | `Function` | 同意が期限切れになった後に実行するコード | (例を参照)       |
 
 例:
 
@@ -420,9 +420,9 @@ Tealium.setConsentExpiryListener(() => {
 Tealium.setConsentStatus(status);
 ```
 
-| パラメータ | タイプ            | 説明             | 例                           |
-|:-----------|:----------------|:--------------------|:--------------------------|
-| `status`   | `ConsentStatus` | ユーザーの同意状態 | `ConsentStatus.consented` |
+| パラメータ | 型              | 説明           | 例                          |
+|:-----------|:----------------|:--------------|:----------------------------|
+| `status`   | `ConsentStatus` | ユーザーの同意状態 | `ConsentStatus.consented`   |
 
 例:
 
@@ -432,27 +432,27 @@ Tealium.setConsentStatus(ConsentStatus.consented);
 
 #### 同意状態
 
-| 値                  | 説明             |
-|:----------------|:--------------|
-| `.consented`    | 同意済み       |
-| `.notConsented` | 同意していない |
-| `.unknown`      | 不明           |
+| 値                  | 説明           |
+|:--------------------|:---------------|
+| `.consented`        | 同意済み       |
+| `.notConsented`     | 同意していない |
+| `.unknown`          | 不明           |
 
 ### `setVisitorServiceListener()`
 
 訪問プロファイルが更新されたときに実行するコールバックを定義します。更新された[`VisitorProfile`](#visitorprofile)がコールバックの応答で提供されます。
 
-VisitorServiceモジュールはTealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
+Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)機能を実装するVisitorServiceモジュールです。
 
-このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、訪問プロファイルを使用してモバイルアプリケーションのユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
+このモジュールは、Tealium AudienceStreamのライセンスを持っていて、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に使用することをお勧めします。AudienceStreamのライセンスがない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
 ```javascript
 Tealium.setVisitorServiceListener(callback);
 ```
 
-| パラメータ | タイプ       | 説明                                                   | 例             |
-|:-----------|:-----------|:--------------------------------------------------------------|:--------------|
-| `callback` | `Function` | 更新された訪問プロファイルが返された後に実行するコード | (例を参照) |
+| パラメータ | 型         | 説明                                                   | 例              |
+|:-----------|:-----------|:------------------------------------------------------|:----------------|
+| `callback` | `Function` | 更新された訪問プロファイルが返された後に実行するコード | (例を参照)       |
 
 例:
 
@@ -464,15 +464,15 @@ Tealium.setVisitorServiceListener(profile => {
 
 ### `removeData()`
 
-以前に`Tealium.setPersistentData()`を使用して構成された永続データを削除します。
+`Tealium.setPersistentData()`を使用して以前に構成された永続データを削除します。
 
 ```javascript
 Tealium.removeData(keys);
 ```
 
-| パラメータ | タイプ       | 説明            | 例                |
-|:-----------|:-----------|:-------------------|:-----------------|
-| `keys`     | `String[]` | キー名の配列       | `["foo", "bar"]` |
+| パラメータ | 型         | 説明            | 例                |
+|:-----------|:-----------|:---------------|:-----------------|
+| `keys`     | `String[]` | キー名の配列   | `["foo", "bar"]` |
 
 ### `removeRemoteCommand()`
 
@@ -482,9 +482,9 @@ Tealium.removeData(keys);
 Tealium.removeRemoteCommand(id);
 ```
 
-| パラメータ | タイプ     | 説明                          | 例                |
-|:-----------|:---------|:---------------------------------|:-----------------|
-| `id`       | `String` | 削除するコマンドIDの名前       | `"test_command"` |
+| パラメータ | 型       | 説明                        | 例                |
+|:-----------|:---------|:---------------------------|:-----------------|
+| `id`       | `String` | 削除するコマンドIDの名前   | `"test_command"` |
 
 例:
 
@@ -494,47 +494,47 @@ Tealium.removeRemoteCommand("firebase");
 
 ### TealiumEnvironment
 
-環境はデフォルトの3つの環境（Dev, QA, Prod）またはTealiumが公開する任意のカスタム環境のいずれかです。これらの環境のいずれかを選択します。
+環境は、デフォルトの3つの環境（Dev, QA, Prod）またはTealiumが公開する任意のカスタム環境のいずれかです。これらの環境のいずれかを選択します。
 
 例:
 
 `TealiumEnvironment.dev`
 
-| 値       | 説明         |
+| 値       | 説明       |
 |:--------|:------------|
-| `.dev`  | 開発         |
+| `.dev`  | 開発       |
 | `.qa`   | QA/UAT      |
-| `.prod` | 本番         |
+| `.prod` | 本番       |
 ### TealiumConfig
 
 以下は、`TealiumConfig` クラスのプロパティについての要約です。
 
-| パラメータ                         | タイプ                                          | 説明                                                                                                                                                                                                                                                       | 例                                                                                                            |
+| パラメーター                     | タイプ                                        | 説明                                                                                                                                                                                                                                                 | 例                                                                                                       |
 |:-------------------------------|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `account`                      | `String`                                    | （必須）Tealiumアカウント名                                                                                                                                                                                                                                 | `"companyXYZ" `                                                                                               |
-| `profile`                      | `String`                                    | （必須）Tealiumプロファイル名                                                                                                                                                                                                                               | `"main"`                                                                                                      |
-| `environment`                  | [`TealiumEnvironment`](#tealiumenvironment) | （必須）Tealium環境名                                                                                                                                                                                                                                       | `"TealiumEnvironment.dev"`                                                                                    |
+| `account`                      | `String`                                    | (必須) Tealiumアカウント名                                                                                                                                                                                                                             | `"companyXYZ" `                                                                                               |
+| `profile`                      | `String`                                    | (必須) Tealiumプロファイル名                                                                                                                                                                                                                             | `"main"`                                                                                                      |
+| `environment`                  | [`TealiumEnvironment`](#tealiumenvironment) | (必須) Tealium環境名                                                                                                                                                                                                                         | `"TealiumEnvironment.dev"`                                                                                    |
 | `dataSource`                   | `String`                                    | CDHデータソースキー                                                                                                                                                                                                                                         | `"abc123"`                                                                                                    |
-| `collectors`                   | `Collectors[]`                              | （必須）Tealiumライブラリを初期化するための[`Collectors`](#collectors)のリストを構成します                                                                                                                                                                  | `[Collectors.AppData]`                                                                                        |
-| `dispatchers`                  | `Dispatchers[]`                             | （必須）Tealiumライブラリを初期化するための[`Dispatchers`](#dispatchers)のリストを構成します                                                                                                                                                                | `[Dispatchers.Collect]`                                                                                       |
-| `customVisitorId`              | `String`                                    | カスタムビジターIDを構成します                                                                                                                                                                                                                              | `ALK2398LSDKJ3289SLKJ3298SLKJ3`                                                                               |
-| `memoryReportingEnabled`       | `Boolean`                                   | DeviceDataモジュールでのメモリレポートを有効または無効にします（デフォルト：無効）。                                                                                                                                                                        | `true`                                                                                                        |
-| `overrideCollectURL`           | `String`                                    | Tealium Collect URLをオーバーライドして、データを別のエンドポイントに送信します。イベントバッチ機能を使用する場合は、`overrideCollectBatchURL`プロパティもオーバーライドしてください。                                                                 | `https://custom-domain.com/event`                                                                             |
-| `overrideCollectBatchURL`      | `String`                                    | Tealium CollectバッチURLをオーバーライドして、データを別のエンドポイントに送信します。                                                                                                                                                                       | `https://custom-domain.com/batch-event`                                                                       |
-| `overrideCollectProfile`       | `String`                                    | Tealium Collectプロファイルをオーバーライドして、データを別のTealiumプロファイルに送信します。                                                                                                                                                               | `custom-profile`                                                                                              |
-| `overrideCollectDomain`        | `String`                                    | Tealium Collect URLのドメイン名をオーバーライドして、データを別のエンドポイントに送信します。                                                                                                                                                               | `custom-domain`                                                                                               |
+| `collectors`                   | `Collectors[]`                              | (必須) Tealiumライブラリを初期化するための[`Collectors`](#collectors)のリストを構成します                                                                                                                                                              | `[Collectors.AppData]`                                                                                        |
+| `dispatchers`                  | `Dispatchers[]`                             | (必須) Tealiumライブラリを初期化するための[`Dispatchers`](#dispatchers)のリストを構成します                                                                                                                                                            | `[Dispatchers.Collect]`                                                                                       |
+| `customVisitorId`              | `String`                                    | カスタムビジターIDを構成します                                                                                                                                                                                                                                    | `ALK2398LSDKJ3289SLKJ3298SLKJ3`                                                                               |
+| `memoryReportingEnabled`       | `Boolean`                                   | DeviceDataモジュールでのメモリレポートを有効または無効にします (デフォルト: 無効)。                                                                                                                                                                          | `true`                                                                                                        |
+| `overrideCollectURL`           | `String`                                    | Tealium Collect URLをオーバーライドして、データを別のエンドポイントに送信します。イベントバッチ機能を使用する場合は、`overrideCollectBatchURL`プロパティもオーバーライドしてください。                                                                                          | `https://custom-domain.com/event`                                                                             |
+| `overrideCollectBatchURL`      | `String`                                    | Tealium CollectバッチURLをオーバーライドして、データを別のエンドポイントに送信します。                                                                                                                                                                               | `https://custom-domain.com/batch-event`                                                                       |
+| `overrideCollectProfile`       | `String`                                    | Tealium Collectプロファイルをオーバーライドして、データを別のTealiumプロファイルに送信します。                                                                                                                                                                                               | `custom-profile`                                                                                              |
+| `overrideCollectDomain`        | `String`                                    | Tealium Collect URLのドメイン名をオーバーライドして、データを別のエンドポイントに送信します。                                                                                                                                                                                                 | `custom-domain`                                                                                              |
 | `overrideLibrarySettingsURL`   | `String`                                    | 公開構成URLをオーバーライドします。                                                                                                                                                                                                                         | `https://custom-domain.com/mobile.html`                                                                       |
-| `overrideTagManagementURL`     | `String`                                    | タグ管理モジュールで使用されるデフォルトURLをオーバーライドします。これは、TealiumのJavaScriptファイルを自己ホスティングする場合に必要です。                                                                                                               | `https://custom-domain.com/path/env/utag.js`                                                                  |
-| `deepLinkTrackingEnabled`      | `Boolean`                                   | [標準的なディープリンクの自動追跡](https://docs.tealium.com/ja/platforms/getting-started-mobile/deep-linking/#readout)を有効または無効にします。これには、FacebookなどのソースからアプリへのリンクやQRトレースなどが含まれます（デフォルト：有効）。                                  | `false`                                                                                                       |
+| `overrideTagManagementURL`     | `String`                                    | タグ管理モジュールで使用されるデフォルトURLをオーバーライドします。これは、TealiumのJavaScriptファイルを自己ホスティングする場合に必要です。                                                                                                                          | `https://custom-domain.com/path/env/utag.js`                                                                  |
+| `deepLinkTrackingEnabled`      | `Boolean`                                   | Facebookやその他のソースからのアプリへのリンクなど、[標準ディープリンクの自動追跡](https://docs.tealium.com/ja/platforms/getting-started-mobile/deep-linking/#readout)を有効または無効にします (デフォルト: 有効)。                                        | `false`                                                                                                       |
 | `qrTraceEnabled`               | `Boolean`                                   | QRトレースを有効または無効にします。 (デフォルト: 有効)                                                                                                                                                           | `false`                                                                                                       |
 | `loglevel`                     | [`LogLevel`](#loglevel)                     | ログレベルプロパティを構成し、どれだけの情報がログに記録されるかを制御します (デフォルト: サイレント)                                                                                                                                                                | `LogLevel.dev`                                                                                                |
-| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)           | ユーザーの同意の有効期限を構成します。 (デフォルトはポリシーに依存)                                                                                                                                                                     | `ConsentExpiry(90, TimeUnit.days)`                                                                            |
+| `consentExpiry`                | [`ConsentExpiry`](#consentexpiry)           | ユーザーの同意の有効期限を構成します。 (ポリシーに依存するデフォルト値)                                                                                                                                                                     | `ConsentExpiry(90, TimeUnit.days)`                                                                            |
 | `consentLoggingEnabled`        | `Boolean`                                   | 同意ログ機能を有効にします。これにより、すべての同意状態の変更が監査目的でTealium Customer Data Hubに送信されます。 (デフォルト: 有効)   | true                                                                                                          |
-| `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)           | 同意ポリシーを構成します。例えば、CCPAやGDPRなどです。このプロパティが構成されている場合のみConsent Managerが有効になります。                                                                                                                                                        | `ConsentPolicy.gdpr`                                                                                          |
+| `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)           | 同意ポリシーを構成します。例えば、CCPAやGDPRなどです。このプロパティが構成されている場合のみ同意マネージャーが有効になります。                                                                                                                                                        | `ConsentPolicy.gdpr`                                                                                          |
 | `lifecycleAutotrackingEnabled` | `Boolean`                                   | ライフサイクル自動追跡を有効または無効にします。 (デフォルト: 有効)                                                                                                                                                                                             | `false`                                                                                                       |
 | `useRemoteLibrarySettings`     | `Boolean`                                   | モバイルパブリッシュ構成を有効または無効にします。 (デフォルト: 有効) Tealium iQタグ管理でモバイルパブリッシュ構成を構成するか、この機能を無効にします。 | `false`                                                                                                       |
 | `visitorServiceEnabled`        | `Boolean`                                   | データレイヤーエンリッチメントAPIを使用して訪問プロファイルの自動取得を有効または無効にします。 (デフォルト: 無効)                                | `true`                                                                                                        |
-| `sessionCountingEnabled`       | `Boolean`                                   | Tealium iQアカウントのセッションカウントを有効または無効にします。TealiumのJavaScriptファイルを自己ホスティングしている場合は、これを`false`に構成します。 (デフォルト: 有効)                                                                                                            | `false`                                                                                                        |
+| `sessionCountingEnabled`       | `Boolean`                                   | Tealium iQアカウントのセッションカウントを有効または無効にします。TealiumのJavaScriptファイルを自己ホスティングしている場合は、これを`false`に構成してください。 (デフォルト: 有効)                                                                                                            | `false`                                                                                                        |
 | `remoteCommands`               | `RemoteCommand[]`                           | インスタンスが準備ができたときに追加する[RemoteCommand](#RemoteCommand)オブジェクトのリストを構成します                                                                                                                                                                    | `[{ id: "hello-world", callback: (payload) => { console.log("hello-world: " + JSON.stringify(payload)); } }]` |
 
 ### `terminateIntance()`
@@ -564,9 +564,9 @@ let tealEvent = new TealiumEvent(
 );
 Tealium.track(tealEvent);
 ```
-### 訪問プロファイル
+### VisitorProfile
 
-訪問プロファイルは、各属性に対して親しみやすい名前が含まれているオブジェクトです。`currentVisit`プロパティを使用して、訪問/訪問属性のタイプを区別できます。サブスクリプトを使用してIDで各属性値にアクセスします。属性が存在しない場合は、`null`が返されます。以下のリストを参照してください。
+訪問プロファイルは、各属性に対してフレンドリーな名前が含まれているオブジェクトです。`currentVisit`プロパティを使用して、訪問/訪問属性タイプを区別できます。サブスクリプトを使用してIDで各属性値にアクセスします。属性が存在しない場合は`null`が返されます。以下のリストを参照してください。
 
 **属性タイプ**
 
@@ -586,9 +586,9 @@ Tealium.track(tealEvent);
 | `tallies`          | id: String, value: Object                                                                                        | `"57": [["category 1": 2.0], "category 2": 1.0]]`                                                                                 |
 | `tallyValue`       | id: String, value: Number                                                                                        | `["category 1": 2.0]`                                                                                                             |
 
-### リモートコマンド
+### RemoteCommand
 
-リモートコマンドを定義するインターフェース
+リモートコマンドを定義するインターフェースです。
 
 | 値          | 説明                                                      |
 |:-----------|:---------------------------------------------------------|
@@ -599,7 +599,7 @@ Tealium.track(tealEvent);
 
 パスとURLはオプションですが、どちらか一方のみを提供するか、Tealium iQタグ管理でタグによってマッピングが処理される場合は両方を省略します。
 
-コマンドがReact Nativeアプリの範囲内で処理される場合は、コールバックを提供します。ハンドラが既にネイティブに登録されている場合は、コールバックを省略します。
+コマンドがReact Nativeアプリ内で処理される場合はコールバックを提供します。ハンドラが既にネイティブに登録されている場合はコールバックを省略します。
 
 以下は、Javascriptで処理されるコマンドのローカルマッピングファイルの例です：
 ```javascript
@@ -622,11 +622,11 @@ let remoteNativeCommand: RemoteCommand = {
 
 ## インターフェース: `TealiumDispatch`
 
-追跡するイベントのタイプを定義するインターフェース。以下のクラスが`TealiumDispatch`を実装しています：
+追跡するイベントのタイプを定義するインターフェースです。以下のクラスが`TealiumDispatch`を実装しています：
 
 ### クラス: `TealiumEvent`
 
-ユーザーの画面とのやり取りを追跡するには、`TealiumEvent(tealiumEvent, dataLayer)`のインスタンスを[`track()`](#track)メソッドに渡します。`TealiumEvent`は、追跡コールに`tealium_event`として表示されるイベント名と、オプションのイベントデータオブジェクトで構成されます。
+ユーザーの画面とのやり取りを追跡するには、`TealiumEvent(tealiumEvent, dataLayer)`のインスタンスを[`track()`](#track)メソッドに渡します。`TealiumEvent`は、追跡コールに`tealium_event`として表示されるイベント名と、オプションのイベントデータオブジェクトで構成されています。
 
 ```javascript
 let tealEvent = TealiumEvent(tealiumEvent, {eventData})
@@ -654,7 +654,7 @@ Tealium.track(tealEvent);
 
 ### クラス: `TealiumView`
 
-画面ビューを追跡するには、`TealiumView(tealiumEvent, dataLayer)`のインスタンスを[`Track()`](#track)メソッドに渡します。`TealiumView`は、追跡コールに`tealium_event`として表示されるビュー名と、オプションのデータ辞書で構成されます。
+画面ビューを追跡するには、`TealiumView(tealiumEvent, dataLayer)`のインスタンスを[`Track()`](#track)メソッドに渡します。`TealiumView`は、追跡コールに`tealium_event`として表示されるビュー名と、オプションのデータ辞書で構成されています。
 
 ```swift
 let screenView = TealiumView(tealiumEvent, {eventData})
@@ -663,8 +663,8 @@ tealium?.track(screenView)
 
 | パラメータ      | タイプ    | 説明      | 例    |
 |:------------|:--------|:-----------------|:-----------|
-| `tealiumEvent`  | `string`                     | ビューイベントまたは画面の`tealium_event`名。          | `purchase`                                                 |
-| `eventData` | `Dictionary<string, object>` | オプション。イベントに送信されるキー値形式のデータ。 | `'purchase', {"customer_id", "abc123", "order_total": 10.00, "product_id": ["PROD123", "PROD456"], "order_id": "0123456789"}` |
+| `tealiumEvent`  | `string`                     | `tealium_event`のビューイベントまたは画面の名前。          | `purchase`                                                 |
+| `eventData` | `Dictionary<string, object>` | (オプション) イベントに送信されるキー値形式のデータ。 | `'purchase', {"customer_id", "abc123", "order_total": 10.00, "product_id": ["PROD123", "PROD456"], "order_id": "0123456789"}` |
 
 例：
 
@@ -680,4 +680,3 @@ let screenView = new TealiumView(
 );
 Tealium.track(screenView);
 ```
-

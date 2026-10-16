@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android SDK (Lollipop/5.0+ / API Level 21+)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -143,7 +143,7 @@ Cookies are enabled by default in the webview.
 
 ## Event Batching
 
-Event Batching can be configured locally on the `TealiumConfig` instance, or remotely using the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/). Setting the batch size to a value greater than 1 will enable it. Events are dispatched when the number of events in the queue equals the batch size.
+Event Batching can be configured locally on the `TealiumConfig` instance, or remotely using the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/). Setting the batch size to a value greater than 1 will enable it. Events are dispatched when the number of events in the queue equals the batch size.
 
 The following shows the possible options when configuring batching locally:
 

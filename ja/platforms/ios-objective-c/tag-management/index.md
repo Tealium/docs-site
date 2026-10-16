@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/ios-objective-c/tag-management/
 
 ## 仕組み
 
-タグ管理が有効になっているTealium iQで[モバイルプロファイルを作成](https://docs.tealium.com/creating-a-mobile-profile/)した後、アプリでTealiumインスタンスを初期化すると、非レンダリングのウェブビューが作成され、TealiumからシンプルなHTMLファイルをロードし、その中でUniversal Tag `utag.js`をロードします。このウェブビューはユーザーには表示されません。
+タグ管理が有効になっているTealium iQで[モバイルプロファイルを作成](https://docs.tealium.com/create-mobile-profile/)した後、アプリでTealiumインスタンスを初期化すると、非レンダリングのウェブビューが作成され、TealiumからシンプルなHTMLファイルをロードし、その中でUniversal Tag `utag.js`をロードします。このウェブビューはユーザーには表示されません。
 
 * バージョン5.5.0以降、およびiOS 11.0以降を実行している場合は、[WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)を使用します。
 * バージョン5.4.x以前、またはiOS 10.0以前を実行している場合は、[UIWebView](https://developer.apple.com/documentation/uikit/uiwebview)を使用します。

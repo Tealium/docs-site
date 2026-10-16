@@ -1,6 +1,6 @@
 ---
 title: 訪問プライバシーAPIエンドポイント
-description: 訪問プライバシーAPIを使用して、特定の訪問に関する既知のデータを取得したり、訪問レコードを削除したり、削除リクエストのステータスを確認したりすることができます。
+description: 訪問プライバシーAPIを使用すると、特定の訪問に関する既知のデータを取得したり、訪問レコードを削除したり、削除リクエストのステータスを確認することができます。
 url: https://docs.tealium.com/ja/api/v3/visitor-privacy/endpoints/
 ---
 ## GET 訪問
@@ -69,7 +69,7 @@ curl -H 'Authorization: Bearer {token}' \
 </blockquote>
 
 
-一つまたは複数の訪問レコードを削除する前に、以下の点を考慮してください：
+訪問レコードを一つまたは複数削除する前に、以下の点を考慮してください：
 
 * 訪問レコードの削除リクエストは、訪問ID値に関連付けられたすべてのデータの削除を引き起こします。これには、ステッチされた訪問レコードも含まれます。
 * 削除リクエストは処理のためにキューに入れられ、完了までに最大30日かかる場合があります。
@@ -108,7 +108,7 @@ curl -H 'Authorization: Bearer {token}' \
 
 削除リクエストへのレスポンスには、`transaction_id`とステータスが含まれます。`transaction_id`は、以前のリクエストのステータスを確認するためにGETトランザクションコールで使用されるIDです。可能なステータス文字列には、**PENDING**、**SUCCESS**、または**FAILED**があります。
 
-成功したレスポンスは、`transactionId`値を持つ202 Acceptedメッセージを表示します。同じ`account`、`profile`、`attributeId`、および`attributeValue`を持つリクエストが**PENDING**のトランザクションステータスで既に存在する場合、既存のトランザクションIDが次のように返されます：
+成功したレスポンスは、`transactionId`値を含む202 Acceptedメッセージを表示します。同じ`account`、`profile`、`attributeId`、および`attributeValue`を持つリクエストが既に**PENDING**のトランザクションステータスで存在する場合、既存のトランザクションIDが次のように返されます：
 
 ```json
 {
@@ -135,7 +135,7 @@ curl -H 'Authorization: Bearer {token}' \
 </blockquote>
 
 
-トランザクションは、任意のDELETE訪問リクエストを指します。DELETE訪問リクエストは後で処理されるため、`transaction_id`はそのリクエストとIDのためのユニークなレコードとして使用され、処理ステータスを確認する際に使用されます。
+トランザクションは、任意のDELETE訪問リクエストを指します。DELETE訪問リクエストは後で処理されるため、`transaction_id`はそのリクエストとIDのためのユニークなレコードであり、処理ステータスを確認する際に使用されます。
 
 トランザクションのステータスを確認するために、次のGETコマンドを使用します：
 
@@ -179,7 +179,7 @@ https://us-east-1-platform.tealiumapis.com/v3/privacy/visitor/accounts/my_accoun
 
 ## 訪問ID属性の取得
 
-アカウントで利用可能な訪問ID属性のリストを取得するために、次のGETコマンドを使用します：
+アカウントで利用可能な訪問ID属性のリストを取得するには、次のGETコマンドを使用します：
 
 ```bash
 GET /v3/privacy/visitor/accounts/{account}/profiles/{profile}/ids
@@ -215,6 +215,6 @@ https://platform.tealiumapis.com/v3/privacy/visitor/accounts/my_account/profiles
 |エラーメッセージ| 説明|
 |---| ---|
 |401|  `{ "message": "許可されていません"}` |
-|404|  `{ "message" : "アカウントとプロファイルに訪問IDが見つかりません"}` |
+|404|  `{ "message" : "アカウントおよびプロファイルに訪問IDが見つかりませんでした"}` |
 |429| `{ "message": "リクエストが多すぎます"}` |
 |500|  `{ "message" : "内部サーバーエラー"}` |

@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/platforms/android-java/data-layer/
 
 
 <blockquote>
-これらの変数は、[モバイル用のプロファイルを有効化する](https://docs.tealium.com/creating-a-mobile-profile/)ときに、あなたのTealium iQタグ管理アカウントに追加されます。
+これらの変数は、[モバイル用のプロファイルを有効化する](https://docs.tealium.com/create-mobile-profile/)ときに、あなたのTealium iQタグ管理アカウントに追加されます。
 </blockquote>
 
 

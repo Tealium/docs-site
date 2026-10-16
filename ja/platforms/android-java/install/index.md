@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/android-java/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android（KitKat/4.4以降/APIレベル19以上）
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
@@ -159,7 +159,7 @@ private static WebViewCreatedListener createCookieEnablerListener() {
 
 ## イベントバッチ処理
 
-イベントバッチ処理を有効にするには、[モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。
+イベントバッチ処理を有効にするには、[モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。
 
 イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド [`setSecondsBeforeBatchTimeout()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout)を呼び出します。
 

@@ -414,7 +414,7 @@ tealium.Track(new TealiumEvent("cart_add", new Dictionary<string, object> {
 | `consentLoggingEnabled` | `Boolean` | [同意ログ記録](https://docs.tealium.com/consent-change-event-specifications/)機能を有効にする。これにより、すべての同意ステータス変更が監査目的でTealium Customer Data Hubに送信される（デフォルト: 有効）。 | `true` |
 | `consentPolicy` | [`ConsentPolicy`](#consentpolicy) | 同意ポリシーを構成する。例えば、CCPAやGDPR。このプロパティが構成されている場合のみ、Consent Managerが有効になる。 | `ConsentPolicy.gdpr` |
 | `lifecycleAutotrackingEnabled` | `Boolean` | ライフサイクル自動追跡を有効または無効にする（デフォルト: 有効）。 | `false` |
-| `useRemoteLibrarySettings` | `Boolean` | [モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)を有効または無効にする（デフォルト: 有効）。Tealium iQタグ管理でモバイル公開構成を構成するか、この機能を無効にする。 | `false` |
+| `useRemoteLibrarySettings` | `Boolean` | [モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)を有効または無効にする（デフォルト: 有効）。Tealium iQタグ管理でモバイル公開構成を構成するか、この機能を無効にする。 | `false` |
 | `visitorServiceEnabled` | `Boolean` | [データレイヤーエンリッチメントAPI](https://docs.tealium.com/data-layer-enrichment-api/)を使用して訪問プロファイルの自動取得を有効または無効にする（デフォルト: 無効）。 | `true` |
 | `remoteCommands` | `RemoteCommand[]` | インスタンスが準備完了時に追加する[RemoteCommand](#RemoteCommand)オブジェクトのリストを構成する。 | `[{ id: "hello-world", callback: (payload) => { console.log("hello-world: " + JSON.stringify(payload)); } }]` |
 | `overrideConsentCategoriesKey` | `String` | 同意カテゴリイベント属性の名前を上書きする。サーバーサイドの同意の自動適用を無効にする方法について詳しくは[こちら](https://docs.tealium.com/server-side-consent-management/)を参照。（デフォルト: `consent_categories`） | `consent_categories_granted` |

@@ -33,7 +33,7 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `qrTraceEnabled` | `bool` | Enables or disables [QR trace](https://docs.tealium.com/platforms/getting-started-mobile/trace/#how-it-works). (default: enabled) | `false` |
 | `remoteCommands` | `List<RemoteCommand>` | List of remote commands to add during initialization | `[RemoteCommand("firebase", path: "firebase.json")]` |
 | `sessionCountingEnabled` | `bool` | Enables or disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files (default: enabled) | `false` |
-| `useRemoteLibrarySettings`| `bool` | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: enabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. | `false` |
+| `useRemoteLibrarySettings`| `bool` | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. | `false` |
 | [`visitorIdentityKey`](#visitoridentitykey) | `String` | Specifies the data layer key that represents the customer identifier. This key can be used to enable [visitor switching](https://docs.tealium.com/platforms/getting-started-mobile/identity-resolution/#visitor-switching). | |
 | `visitorServiceEnabled`| `bool` | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled) | `true` |
 | `webViewLoggingEnabled` | `bool` | Enables or disables WebView console logging (default: disabled) | `true` |

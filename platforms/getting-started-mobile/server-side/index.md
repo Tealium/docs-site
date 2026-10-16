@@ -38,7 +38,7 @@ Learn more about [how to set up the Tealium Collect tag](https://docs.tealium.co
 
 ### Native Module
 
-The Tealium Collect module is enabled using the [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/) of your iQ account. The Collect module runs as native code in your app and dispatches tracking calls directly to the Tealium servers using HTTPS.
+The Tealium Collect module is enabled using the [mobile publish settings](https://docs.tealium.com/create-mobile-profile/) of your iQ account. The Collect module runs as native code in your app and dispatches tracking calls directly to the Tealium servers using HTTPS.
 
 **Recommended For:**
 

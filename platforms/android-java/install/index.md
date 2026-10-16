@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-java/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android (KitKat/4.4+ / API Level 19+)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -159,7 +159,7 @@ In versions 5.1.0+, `CookieManager` is **enabled** by default. In versions 5.0.4
 
 ## Event Batching
 
-To enable event batching, go to the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.
+To enable event batching, go to the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.
 
 The dispatch of events can also be triggered based on the _batch timeout_ setting. This setting ensures that, when the batch size is not reached, the queue is still dispatched after an elapsed period of time.  Set the batch timeout by calling the method [`setSecondsBeforeBatchTimeout()`](https://docs.tealium.com/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout).
 

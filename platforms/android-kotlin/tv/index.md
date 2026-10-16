@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/tv/
 ## Requirements
 
 * Android TV app with [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## API Reference

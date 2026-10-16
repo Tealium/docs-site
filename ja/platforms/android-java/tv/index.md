@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/platforms/android-java/tv/
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)を使用したAndroid TVアプリ
 * Android (Lollipop/5.0+ / API Level 21+ for Android TV)
 * Android (Lollipop/5.1+ / API Level 22+ for Fire TV)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## APIリファレンス

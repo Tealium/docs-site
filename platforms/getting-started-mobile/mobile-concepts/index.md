@@ -48,7 +48,7 @@ Each platform has its own lifecycle module, which enables automatic tracking of 
 ## Mobile Profiles
 An app that uses the Tag Management module must have a corresponding profile in iQ Tag Management that has been activated for mobile use. A mobile profile includes the built-in mobile data layer variables and additional settings for the Tealium SDK that can be adjusted without needing to deploy an app update.
 
-Learn more about [creating a mobile profile](https://docs.tealium.com/creating-a-mobile-profile/).
+Learn more about [creating a mobile profile](https://docs.tealium.com/create-mobile-profile/).
 
 ## Data Management
 Some data layer variables need to remain consistent throughout your app's lifecycle. Instead of including these variables with every tracking call, use one of the storage solutions to set less volatile data layer variables.

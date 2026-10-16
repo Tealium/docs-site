@@ -190,7 +190,7 @@ Tealium iQでモバイルプロファイルをアクティブにすると、次�
 
 #### モバイルパブリッシュ構成JavaScriptオブジェクトの検査
 
-`mobile.html`ページでは、JavaScriptオブジェクトである`mps`を使用して[モバイルパブリッシュ構成](https://docs.tealium.com/creating-a-mobile-profile/)の値を格納します。このオブジェクトを検査して構成を確認します。
+`mobile.html`ページでは、JavaScriptオブジェクトである`mps`を使用して[モバイルパブリッシュ構成](https://docs.tealium.com/create-mobile-profile/)の値を格納します。このオブジェクトを検査して構成を確認します。
 
 `mps`オブジェクトを検査するには：
 

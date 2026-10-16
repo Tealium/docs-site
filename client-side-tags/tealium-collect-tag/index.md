@@ -129,9 +129,9 @@ ut.event equals (ignore case) kill_visitor_session
 
 For deployments using [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/install/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/install/), note the following:
 
-* The default [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings) enable the native mobile Tealium Collect service by default.  
+* The default [mobile publish settings](https://docs.tealium.com/create-mobile-profile/#configure-mobile-settings) enable the native mobile Tealium Collect service by default.  
 Learn more about the [native Collect module for mobile](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#native-module).
-* When using the [Tealium Collect tag with the Tag Management module for mobile](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#javascript-tag), ensure that the **Tealium Collect** option in the [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/#configure-mobile-settings) is off to avoid duplicate tracking.
+* When using the [Tealium Collect tag with the Tag Management module for mobile](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#javascript-tag), ensure that the **Tealium Collect** option in the [mobile publish settings](https://docs.tealium.com/create-mobile-profile/#configure-mobile-settings) is off to avoid duplicate tracking.
 
 ## Cookies
 

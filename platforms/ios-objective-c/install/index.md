@@ -13,7 +13,7 @@ This section covers the previous iOS library, Objective-C. [Swift](https://docs.
 
 * Xcode 7.0+
 * iOS 8.1+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps

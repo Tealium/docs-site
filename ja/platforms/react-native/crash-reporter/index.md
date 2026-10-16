@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/platforms/react-native/crash-reporter/
 * ネイティブビルド環境へのアクセス
 * [Tealium for React Native v2.2.0+](https://docs.tealium.com/ja/platforms/react-native/)
 * [React Native 0.63+](https://github.com/Tealium/tealium-react-native)とツールがインストールされていること。
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/)または[Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)または[Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)
 

@@ -3,7 +3,7 @@ title: GETデータレイヤーエンリッチメントパブリックAPI
 description: GETデータレイヤーエンリッチメントパブリックAPIを使用して、アクティブな訪問のプロファイルデータを取得します。
 url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/
 ---
-## 動作方法
+## 動作原理
 
 次のGETメソッドを使用して訪問プロファイルを取得します：
 
@@ -11,13 +11,19 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/da
 GET https://visitor-service-{REGION}.tealiumiq.com/{ACCOUNT}/{PROFILE}/{VISITOR_ID}
 ```
 
-地域固有のホストを決定するには、**管理メニュー > サーバーサイド構成 > 地域**にアクセスしてください。その後、[Tealiumの許可されたIPアドレス](https://docs.tealium.com/ip-allow-list/)で地域値を見つけることができます。
+地域固有のホストを決定するには、**管理メニュー > サーバーサイド構成 > 地域**にアクセスしてください。その後、[Tealium IPアドレスを許可](https://docs.tealium.com/ip-allow-list/)で地域値を見つけることができます。
 
 訪問IDは、`utag_main`クッキー名前空間の`v_id`キーの値、または`utag.data["cp.utag_main_v_id"]`から見つけることができます。
 
 
 <blockquote>
 提供された訪問IDが無効である場合、または訪問が現在アクティブな訪問を持っていない場合、APIはステータスコード200と空のJSONレスポンスを返します。
+</blockquote>
+
+
+
+<blockquote>
+このAPIはデータレイヤーエンリッチメント構成によって制御されます。データレイヤーエンリッチメントが無効になっている場合、APIは`404`レスポンスを返します。このレスポンスは、訪問が見つからないか、アクティブな訪問がない場合に返される空のJSONレスポンスとは異なる`200`ステータスです。詳細については、[サーバーサイドデータレイヤーエンリッチメントを有効にする](https://docs.tealium.com/enable-data-layer-enrichment/)を参照してください。
 </blockquote>
 
 

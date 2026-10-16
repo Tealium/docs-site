@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/module-list/visitor-service
 ---
 ## 使用方法
 
-VisitorServiceモジュールは、Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
+VisitorServiceモジュールは、Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)機能を実装しています。
 
 このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合は、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
@@ -22,16 +22,16 @@ VisitorServiceモジュールは、Swift Package Manager、CocoaPods、または
 
 ### Swift Package Manager（推奨）
 
-バージョン1.9.0以降でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：
+バージョン1.9.0以上でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：
 
 1. Xcodeプロジェクトで、**File > Add Package Dependencies**を選択します。
 1. リポジトリURLを入力します：`https://github.com/tealium/tealium-swift`
-1. バージョンルールを構成します。通常は「"Up to next major"」が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-1. インストールするモジュールのリストから`VisitorService`、`Core`、`Collect`または`TagManagement`を選択し、Xcodeプロジェクトのアプリターゲットの**Frameworks and Libraries**に追加します。
+1. バージョンルールを構成します。通常、`"Up to next major"`が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
+1. インストールするモジュールのリストから`VisitorService`、`Core`、`Collect`または`TagManagement`を選択し、Xcodeプロジェクトのアプリターゲットの**Frameworks and Libraries**の下に追加します。
 
 ### CocoaPods
 
-CocoaPodsでVisitorServiceモジュールをインストールするには、Podfileに以下のポッドを追加します：
+CocoaPodsでVisitorServiceモジュールをインストールするには、Podfileに次のポッドを追加します：
 
 ```perl
 pod 'tealium-swift/Core'
@@ -43,16 +43,16 @@ pod 'tealium-swift/VisitorService'
 
 ### Carthage
 
-CarthageでVisitorServiceモジュールをインストールするには、以下の手順に従います：
+CarthageでVisitorServiceモジュールをインストールするには、次の手順に従います：
 
 1. XcodeでアプリターゲットのGeneral構成ページに移動します。
 
-2. **Embedded Binaries**セクションに以下のフレームワークを追加します：
+2. **Embedded Binaries**セクションに次のフレームワークを追加します：
 
       ```perl
       TealiumVisitorService.framework
       ```
-3. VisitorServiceモジュールを構成するために、プロジェクトに以下の必要なインポート文を追加します：
+3. VisitorServiceモジュールを構成するために、プロジェクトに次の必要なインポート文を追加します：
 
       ```swift
       import TealiumCore
@@ -82,7 +82,7 @@ CarthageでVisitorServiceモジュールをインストールするには、以�
 | `audiences`        | id: String, value: String                                                                                        | `id: "tealiummobile\_demo\_103", value: "iOS Users"`                                                                              |
 | `badges`           | id: String, value: Bool                                                                                          | `id: "2815", value: true`                                                                                                         |
 | `booleans`         | id: String, value: Bool                                                                                          | `id: "4868", value: true`                                                                                                         |
-| `currentVisit`     | 現在の訪問の訪問プロファイル。現在の訪問プロファイルにはAudiencesやBadgesが含まれていません。 | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
+| `currentVisit`     | 現在の訪問の訪問プロファイルです。現在の訪問プロファイルにはAudiencesやBadgesが含まれていません。 | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
 | `dates`            | id: String, value: Int                                                                                           | `id: "22", value: 1567120112000`                                                                                                  |
 | `numbers`          | id: String, value: Double                                                                                        | `id: "5728", value: 4.82125`                                                                                                      |
 | `setOfStrings`     | id: String, value: Set<String>                                                                                   | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]`                                                                |
@@ -97,10 +97,10 @@ AudienceやBadgeが割り当てられていない場合、`nil`が返されま�
 
 #### `arraysOfBooleans`
 
-| 使用法                                     | 説明                                                | タイプ               | 例                                       |
-| ----------------------------------------- | -------------------------------------------------- | ------------------ | --------------------------------------- |
-| `visitorProfile.arraysOfBooleans`         | 訪問プロファイルのブール値の配列をすべて返します。 | `[String: [Bool]]` | `["2333": [true,false], "1123": [true,true]]` |
-| `visitorProfile.arraysOfBooleans["2815"]` | IDによってブール値の配列を返します。               | `[Bool]`           | `[true,true]`                           |
+| 使用法                                     | 説明                                                      | タイプ               | 例                                             |
+| ----------------------------------------- | -------------------------------------------------------- | ------------------ | --------------------------------------------- |
+| `visitorProfile.arraysOfBooleans`         | 訪問プロファイルのブール値の配列をすべて返します。       | `[String: [Bool]]` | `["2333": [true,false], "1123": [true,true]]` |
+| `visitorProfile.arraysOfBooleans["2815"]` | IDによってブール値の配列を返します。                     | `[Bool]`           | `[true,true]`                                 |
 
 使用例:
 
@@ -116,10 +116,10 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 #### `arraysOfNumbers`  
 
-| 使用法                                    | 説明                                               | タイプ                 | 例                                        |
-| ---------------------------------------- | ------------------------------------------------- | -------------------- | ------------------------------------------ |
-| `visitorProfile.arraysOfNumbers`         | 訪問プロファイルの数値の配列をすべて返します。 | `[String: [Double]]` | `["2333": [2.0, 1.0], "1123": [4.82125, 3.0]]` |
-| `visitorProfile.arraysOfNumbers["2815"]` | IDによって数値の配列を返します。                   | `[Double]`           | `[4.82125, 3.0]`                           |
+| 使用法                                    | 説明                                                      | タイプ                 | 例                                              |
+| ---------------------------------------- | -------------------------------------------------------- | -------------------- | ---------------------------------------------- |
+| `visitorProfile.arraysOfNumbers`         | 訪問プロファイルの数値の配列をすべて返します。           | `[String: [Double]]` | `["2333": [2.0, 1.0], "1123": [4.82125, 3.0]]` |
+| `visitorProfile.arraysOfNumbers["2815"]` | IDによって数値の配列を返します。                         | `[Double]`           | `[4.82125, 3.0]`                               |
 
 使用例:
 
@@ -138,10 +138,10 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 #### `arraysOfStrings`  
 
-| 使用法                                    | 説明                                               | タイプ                 | 例                                                                     |
-| ---------------------------------------- | ------------------------------------------------- | -------------------- | ----------------------------------------------------------------------- |
-| `visitorProfile.arraysOfStrings`         | 訪問プロファイルの文字列の配列をすべて返します。 | `[String: [String]]` | `["1033": ["Foundation", "Perfume"], "3390": ["Bootleg Jeans", "Dresses"]]` |
-| `visitorProfile.arraysOfStrings["3390"]` | IDによって文字列の配列を返します。                   | `[String]`           | `["Bootleg Jeans", "Dresses"]`                                          |
+| 使用法                                    | 説明                                                      | タイプ                 | 例                                                                         |
+| ---------------------------------------- | -------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------- |
+| `visitorProfile.arraysOfStrings`         | 訪問プロファイルの文字列の配列をすべて返します。         | `[String: [String]]` | `["1033": ["Foundation", "Perfume"], "3390": ["Bootleg Jeans", "Dresses"]]` |
+| `visitorProfile.arraysOfStrings["3390"]` | IDによって文字列の配列を返します。                       | `[String]`           | `["Bootleg Jeans", "Dresses"]`                                              |
 
 使用例:
 
@@ -161,8 +161,8 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 | 使用法                             | 説明                                                                                                       | タイプ               | 例                                                                                     |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------- |
-| `visitorProfile.audiences`        | 訪問がメンバーであるすべてのオーディエンスを返します。                                                          | `[String: String]` | `["tealiummobile\_demo\_103": "iOS Users", "tealiummobile\_demo\_110": "Visitors - Known"]` |
-| `visitorProfile.audiences["103"]` | 渡されたIDに基づいて、訪問がオーディエンスのメンバーであるかどうかをtrue/falseで返します。 | `Bool`             | `true`                                                                                      |
+| `visitorProfile.audiences`        | 訪問がメンバーであるすべてのオーディエンスを返します。                                                    | `[String: String]` | `["tealiummobile\_demo\_103": "iOS Users", "tealiummobile\_demo\_110": "Visitors - Known"]` |
+| `visitorProfile.audiences["103"]` | 渡されたIDに基づいて、訪問がオーディエンスのメンバーであるかどうかをtrue/falseで返します。               | `Bool`             | `true`                                                                                   |
 
 
 <blockquote>
@@ -181,7 +181,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
         // IDによってユーザーにオーディエンスが割り当てられているかを確認する
         if audiences["account_profile_106"] != nil {
             print("Visitor is a member of audience id 106")
-            // ... 訪問はこのオーディエンスのメンバーです、適切なアクションを取る
+            // ... このオーディエンスのメンバーである場合、適切なアクションを取る
         }
 
     }
@@ -190,10 +190,10 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 
 #### `badges`  
 
-| 使用法                           | 説明                                                                       | タイプ             | 例                        |
-| ------------------------------- | ------------------------------------------------------------------------- | ---------------- | -------------------------- |
-| `visitorProfile.badges`         | 訪問プロファイルのすべてのバッジを返します。                                        | `[String: Bool]` | `["2815": true, "2813": true]` |
-| `visitorProfile.badges["2815"]` | 訪問にバッジが割り当てられているかどうかをtrue/falseで返します。 | `Bool`           | `true`                     |
+| 使用法                           | 説明                                                                       | タイプ             | 例                          |
+| ------------------------------- | ------------------------------------------------------------------------- | ---------------- | ---------------------------- |
+| `visitorProfile.badges`         | 訪問プロファイルのすべてのバッジを返します。                              | `[String: Bool]` | `["2815": true, "2813": true]` |
+| `visitorProfile.badges["2815"]` | 訪問にバッジが割り当てられているかどうかをtrue/falseで返します。           | `Bool`           | `true`                       |
 
 使用例:
 
@@ -232,12 +232,12 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 }
 ```
 #### `currentVisit`
-訪問のライフタイム属性ではなく、現在の訪問の属性にアクセスします。
+現在の訪問の属性にアクセスし、訪問の生涯属性ではなく、現在の訪問の属性を取得します。
 
 | 使用法                             | 説明                                                                                                                                                                                      | タイプ                         | 例                                                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `visitorProfile.currentVisit`     | 現在の訪問の属性を返します。                                                                                                                                                     | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
-| `visitorProfile.currentVisit.###` | ###に応じて属性を返します。上記のすべてのメソッドが適用されますが、オーディエンスとバッジは除外されます。これらは訪問の属性であり、訪問には適用されません。 | 変動                         | 変動                                                                                                                            |
+| `visitorProfile.currentVisit`     | 現在の訪問のスコープ属性を返します。                                                                                                                                                     | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])` |
+| `visitorProfile.currentVisit.###` | ###に応じて、必要な属性を返します。上記のすべてのメソッドが適用されますが、オーディエンスとバッジは除外されます。これらは訪問属性のみであり、訪問には適用されません。 | 変動                       | 変動                                                                                                                            |
 
 使用例:
 
@@ -247,7 +247,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
     if let currentVisit = visitorProfile.currentVisit,
        let string = currentVisit.strings?["34"] {
         print(string)
-        // ... アクションを取る
+        // ... アクションを実行
     }
 }
 ```
@@ -257,7 +257,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 | 使用法                          | 説明                                   | タイプ            | 例                                      |
 | ------------------------------ | --------------------------------------------- | --------------- | -------------------------------------------- |
 | `visitorProfile.dates`         | 訪問プロファイルのすべての日付を返します。 | `[String: Int]` | `["25": 1567120112000, "13": 1567120145666]` |
-| `visitorProfile.dates["4692"]` | IDによる日付を返します。                       | `Int`           | `1567120112000`                              |
+| `visitorProfile.dates["4692"]` | IDによって日付を返します。                       | `Int`           | `1567120112000`                              |
 
 使用例:
 
@@ -266,7 +266,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // 日付値を返す
     if let date = visitorProfile.dates?["33"] {
         print(date)
-        // .. アクションを取る
+        // .. アクションを実行
     }
 }
 ```
@@ -276,7 +276,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 | 使用法                            | 説明                                     | タイプ               | 例                                   |
 | -------------------------------- | ----------------------------------------------- | ------------------ | ----------------------------------------- |
 | `visitorProfile.numbers`         | 訪問プロファイルのすべての数値を返します。 | `[String: Double]` | `["83": 0.5714285714285714, "1399": 2.0]` |
-| `visitorProfile.numbers["1399"]` | IDによる数値を返します。                       | `Double`           | `4.82125`                                 |
+| `visitorProfile.numbers["1399"]` | IDによって数値を返します。                       | `Double`           | `4.82125`                                 |
 
 使用例:
 
@@ -285,7 +285,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // 数値を返す
     if let number = visitorProfile.numbers?["1399"] {
         if number > 3.0 {
-        	// ... アクションを取る
+        	// ... アクションを実行
         }
     }
 }
@@ -296,7 +296,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 | 使用法                                  | 説明                                             | タイプ                    | 例                                                              |
 | -------------------------------------- | ------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------- |
 | `visitorProfile.setsOfStrings`         | 訪問プロファイルのすべての文字列セットを返します。 | `[String: Set<String>]` | `["9938": ["shirts"], "2300": ["Luxury Couch 1", "Luxury Couch 2"]]` |
-| `visitorProfile.setsOfStrings["2300"]` | IDによる文字列セットを返します。                       | `Set<String>`           | `["Luxury Couch 1", "Luxury Couch 2"]`                               |
+| `visitorProfile.setsOfStrings["2300"]` | IDによって文字列セットを返します。                       | `Set<String>`           | `["Luxury Couch 1", "Luxury Couch 2"]`                               |
 
 使用例:
 
@@ -305,7 +305,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // 文字列セットの値を返す
     if let setOfStrings = visitorProfile.setsOfStrings?["5279"] {
         if setOfStrings.contains("toys") {
-        	// ... アクションを取る
+        	// ... アクションを実行
         }
     }
 }
@@ -316,7 +316,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 | 使用法                            | 説明                                     | タイプ     | 例                                     |
 | -------------------------------- | ----------------------------------------------- | -------- | ------------------------------------------- |
 | `visitorProfile.strings`         | 訪問プロファイルのすべての文字列を返します。 | `String` | `"83": "Toy Truck", "5699": "Toy Tea Set"]` |
-| `visitorProfile.strings["5699"]` | IDによる文字列を返します。                       | `String` | `"Toy Tea Set"`                             |
+| `visitorProfile.strings["5699"]` | IDによって文字列を返します。                       | `String` | `"Toy Tea Set"`                             |
 
 使用例:
 
@@ -325,7 +325,7 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
     // 文字列値を返す
     if let string = visitorProfile.strings?["5699"] {
         print(string)
-        // ... アクションを取る
+        // ... アクションを実行
     }
 }
 ```
@@ -335,8 +335,8 @@ func didUpdate(visitorProfile: TealiumVisitorProfile) {
 | 使用法                                      | 説明                                     | タイプ                         | 例                                                                                                        |
 | ------------------------------------------ | ----------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `visitorProfile.tallies`                   | 訪問プロファイルのすべての集計を返します。 | `[String: [String: Double]]` | `["2983": ["red shirts category": 4.0, "green shirts category": 2.0], "5643": ["girls": 3.0, "womens": 1.0]]`] |
-| `visitorProfile.tallies["1399"]`           | IDによる集計を返します。                        | `[String: Double]`           | `["girls": 3.0, "womens": 1.0]`                                                                                |
-| `visitorProfile.tallies["1399"]["womens"]` | IDによる集計値を返します。                        | `Double`                     | `3.0`                                                                                                          |
+| `visitorProfile.tallies["1399"]`           | IDによって集計を返します。                        | `[String: Double]`           | `["girls": 3.0, "womens": 1.0]`                                                                                |
+| `visitorProfile.tallies["1399"]["womens"]` | IDによって集計値を返します。                        | `Double`                     | `3.0`                                                                                                          |
 
 使用例:
 
@@ -363,11 +363,11 @@ VisitorServiceモジュールの一般的に使用されるメソッドとプロ
 | メソッド/プロパティ | 説明 |
 | ----- | ------ |
 | [`cachedProfile`](#cachedprofile) | 新しいリクエストをトリガーせずに、永続保存から最近取得した訪問プロファイルを返します|
-| [`requestVisitorProfile()`](#requestvisitorprofile) | VisitorServiceに現在の訪問プロファイルを即時に取得するリクエストをトリガーします |
+| [`requestVisitorProfile()`](#requestvisitorprofile) | VisitorServiceに現在の訪問プロファイルを即座に取得するリクエストをトリガーします |
 | [`visitorService`](#visitorservice)  | VisitorServiceモジュールのプロパティ |
 #### `cachedProfile`
 
-最後に取得した訪問プロファイルを永続的な保存から取得し、新しいリクエストをトリガーせずに返します。インターネット接続がない状況で以前に成功したリクエストがあった場合に便利です。
+最後に取得した訪問プロファイルを新しいリクエストをトリガーせずに永続的な保存から返します。インターネット接続がない状況で以前に成功したリクエストがあった場合に便利です。
 
 使用例：
 
@@ -407,7 +407,7 @@ VisitorServiceモジュール。
 ```swift
 self.tealium?.visitorService?.####
 ```
-`####`は`visitorService`オブジェクトの任意の公開APIメソッドです。以下は完全な使用例です：
+`####` は `visitorService` オブジェクトの公開APIメソッドです。以下は完全な使用例です：
 
 ```swift
 class MyHelperClass {
@@ -439,15 +439,15 @@ VisitorServiceモジュールの一般的に使用されるメソッドとプロ
 
 | メソッド/プロパティ | 説明 |
 | ----- | ------ |
-| [`didUpdate()`](#didupdate)  | プロファイルが更新されたとき、または`requestVisitorProfile()`メソッドが呼び出されたときに更新された訪問プロファイルを返すコールバックメソッドです。 |
+| [`didUpdate()`](#didupdate)  | プロファイルが更新されたとき、または `requestVisitorProfile()` メソッドが呼び出されたときに更新された訪問プロファイルを返すコールバックメソッドです。 |
 
 #### `didUpdate()`
 
-プロファイルが更新されたとき、または`requestVisitorProfile()`メソッドが呼び出されたときに更新された訪問プロファイルを返すコールバックメソッドです。これは構成された更新間隔に依存しますが、デフォルトは5分です。
+プロファイルが更新されたとき、または `requestVisitorProfile()` メソッドが呼び出されたときに更新された訪問プロファイルを返すコールバックメソッドです。これは構成された更新間隔に依存します。デフォルトは5分です。
 
 ```swift
 func didUpdate(visitorProfile: TealiumVisitorProfile) {
-    // プロファイル属性に基づいて行動します
+    // プロファイル属性に対応する
     print(visitorProfile.audiences)
     //...
 }
@@ -464,9 +464,9 @@ VisitorServiceモジュールの一般的に使用されるメソッドとプロ
 
 | メソッド/プロパティ | 説明 |
 | ----- | ------ |
-| [`visitorServiceDelegate`](#visitorservicedelegate) | `didUpdate`デリゲートメソッドを使用するためのデリゲートを構成します |
+| [`visitorServiceDelegate`](#visitorservicedelegate) | `didUpdate` デリゲートメソッドを使用するためのデリゲートを構成します |
 | [`visitorServiceOverrideProfile`](#visitorserviceoverrideprofile) | 訪問プロファイルを取得するためのプロファイルを上書きします |
-| [`visitorServiceOverrideURL`](#visitorserviceoverrideurl) | 訪問プロファイルを取得するための基本URLを上書きします |
+| [`visitorServiceOverrideURL`](#visitorserviceoverrideurl) | 訪問プロファイルが取得される基本URLを上書きします |
 | [`visitorServiceRefresh`](#visitorservicerefresh) | 訪問プロファイルの取得頻度を構成します |
 
 
@@ -510,7 +510,7 @@ extension TealiumHelper: VisitorServiceDelegate {
 
 #### `visitorServiceOverrideProfile`
 
-訪問プロファイルを取得するためのプロファイルを上書きします。Collectモジュールで使用されるプロファイルと一致させます。
+訪問プロファイルを取得するためのプロファイルを上書きします。Collectモジュールで使用されるプロファイルに合わせてください。
 
 
 ```swift
@@ -538,7 +538,7 @@ func start() {
 
 #### `visitorServiceOverrideURL`
 
-訪問プロファイルを取得するための基本URLを上書きします。ACCOUNT、PROFILE、および訪問IDは自動的にURLに追加されます。
+訪問プロファイルが取得される基本URLを上書きします。ACCOUNT、PROFILE、および訪問IDは自動的にURLに追加されます。
 
 
 ```swift
@@ -547,7 +547,7 @@ config.visitorServiceOverrideURL = "https://overridden-subdomain.yourdomain.com/
 
 | タイプ | 説明 | 例 |
 | --- | --- | --- |
-| `String` | 訪問プロファイルを取得するためのURLを構成します | `"https://overridden-subdomain.yourdomain.com/"` |
+| `String` | 訪問プロファイルを取得するURLを構成します | `"https://overridden-subdomain.yourdomain.com/"` |
 
 
 使用例：
@@ -566,7 +566,7 @@ func start() {
 
 #### `visitorServiceRefresh`
 
-訪問プロファイルの取得頻度を調整するためのプロパティです。デフォルト値は5分です。`requestVisitorProfile()`メソッドをすべてのトラッキングコールに追加しても、この値を0に構成しない限り、プロファイルは毎回取得されません。
+訪問プロファイルの取得頻度を調整するためにこのプロパティを使用します。デフォルト値は5分です。`requestVisitorProfile()` メソッドをすべてのトラッキングコールに追加しても、この値を0に構成しない限り、プロファイルは毎回取得されません。
 
 ```swift
 let config = TealiumConfig(...)
@@ -605,7 +605,7 @@ func start() {
 
 **小さな変更点**
 
-* 更新間隔のオプションを追加
+* リフレッシュ間隔のオプションを追加
 * クラス名を一貫性のあるものに更新
 * デリゲートメソッドのシグネチャを更新
 * テストの改善

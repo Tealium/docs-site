@@ -23,7 +23,7 @@ Tealium mobile libraries are integrated into your React Native application using
 
 * Access to your native build environments
 * [React Native 0.63+](https://github.com/Tealium/tealium-react-native) and tools installed. 
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 

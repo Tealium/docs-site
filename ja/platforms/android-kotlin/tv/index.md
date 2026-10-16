@@ -6,7 +6,7 @@ url: https://docs.tealium.com/ja/platforms/android-kotlin/tv/
 ## 必要条件
 
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)を使用したAndroid TVアプリ
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## APIリファレンス

@@ -33,7 +33,7 @@ url: https://docs.tealium.com/ja/platforms/flutter/api/tealium-config/
 | `qrTraceEnabled` | `bool` | [QRトレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#how-it-works)を有効または無効にします（デフォルト：有効） | `false` |
 | `remoteCommands` | `List<RemoteCommand>` | 初期化中に追加するリモートコマンドのリスト | `[RemoteCommand("firebase", path: "firebase.json")]` |
 | `sessionCountingEnabled` | `bool` | Tealium iQアカウントのセッションカウントを有効または無効にします。Tealium JavaScriptファイルを自己ホスティングしている場合に使用します（デフォルト：有効） | `false` |
-| `useRemoteLibrarySettings`| `bool` | [モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)を有効または無効にします（デフォルト：有効）。iQタグ管理でモバイル公開構成を構成するか、機能を無効にします。 | `false` |
+| `useRemoteLibrarySettings`| `bool` | [モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)を有効または無効にします（デフォルト：有効）。iQタグ管理でモバイル公開構成を構成するか、機能を無効にします。 | `false` |
 | [`visitorIdentityKey`](#visitoridentitykey) | `String` | 顧客識別子を表すデータレイヤーキーを指定します。このキーを使用して[訪問の切り替え](https://docs.tealium.com/ja/platforms/getting-started-mobile/identity-resolution/#visitor-switching)を有効にすることができます。 | |
 | `visitorServiceEnabled`| `bool` | [データレイヤーエンリッチメントAPI](https://docs.tealium.com/data-layer-enrichment-api/)を使用して訪問プロファイルの自動取得を有効または無効にします（デフォルト：無効） | `true` |
 | `webViewLoggingEnabled` | `bool` | WebViewコンソールログを有効または無効にします（デフォルト：無効） | `true` |

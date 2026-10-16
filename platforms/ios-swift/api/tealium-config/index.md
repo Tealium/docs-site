@@ -765,7 +765,7 @@ The [`shouldAddCookieObserver`](#shouldaddcookieobserver) property permits using
 
 ### `shouldUseRemotePublishSettings`
 
-Sets the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (version 1.9.0+) to enabled (default) or disabled.
+Sets the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (version 1.9.0+) to enabled (default) or disabled.
 
 ```swift
 config.shouldUseRemotePublishSettings = false

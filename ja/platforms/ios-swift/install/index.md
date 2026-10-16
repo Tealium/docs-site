@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/install/
 
 * Xcode 7.0+
 * iOS 9.0+, macOS 10.11+, watchOS 3.0+, tvOS 9.2+
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealiumカスタマーデータハブアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
@@ -301,7 +301,7 @@ config.appDelegateProxyEnabled = false
 
 ## イベントバッチ処理
 
-イベントバッチ処理は、`TealiumConfig`インスタンスでローカルに構成するか、[モバイルパブリッシュ構成](https://docs.tealium.com/creating-a-mobile-profile/)を使用して構成します。ローカル構成はリモート構成を上書きします。
+イベントバッチ処理は、`TealiumConfig`インスタンスでローカルに構成するか、[モバイルパブリッシュ構成](https://docs.tealium.com/create-mobile-profile/)を使用して構成します。ローカル構成はリモート構成を上書きします。
 
 この例では、イベントバッチ処理を有効にし、バッチサイズとキューサイズを構成します。
 

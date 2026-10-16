@@ -25,7 +25,7 @@ The Tealium Context API module requires the following:
 * Access to your native build environments
 * [Tealium for React Native 2.2.0 or later](https://docs.tealium.com/platforms/react-native/)
 * [React Native 0.63 or later](https://github.com/Tealium/tealium-react-native) and tools 
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 

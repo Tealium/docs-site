@@ -31,7 +31,7 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `profile` | `String` | (Required) Tealium profile name | `main` |
 | `qrTraceEnabled` | `Boolean` | Enables or disables [QR trace](https://docs.tealium.com/platforms/getting-started-mobile/trace/#mobile-trace-tool). (default: enabled) | `false` |
 | [`sessionCountingEnabled`](#sessioncountingenabled) | `Boolean` | Enables or disables session counting for Tealium iQ accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled) | `false` |
-| `useRemoteLibrarySettings`| `Boolean` | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: enabled) Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. | `false` |
+| `useRemoteLibrarySettings`| `Boolean` | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled) Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. | `false` |
 | `visitorServiceEnabled`| `Boolean` | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled) | `true` |
 | `visitorServiceRefreshInterval`| `String` | Sets the number of minutes between visitor profile refreshes. Only integers are supported, for example, "2" would be 2 minutes. | `"2"` |
 

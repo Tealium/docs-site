@@ -3,9 +3,9 @@ title: Adobe Launch用Tealiumデータエンリッチメント拡張機能
 description: Adobe Experience Platform Launch用Tealiumデータレイヤーエンリッチメント拡張機能について学びましょう。
 url: https://docs.tealium.com/ja/platforms/adobe-launch/data-enrichment-extension/
 ---
-Tealium Data Enrichment拡張機能は、Tealium AudienceStreamのサーバーサイド属性を取得し、データレイヤーに注入します。
+Tealiumデータエンリッチメント拡張機能は、Tealium AudienceStreamのサーバーサイド属性を取得し、データレイヤーに注入します。
 
-Tealium Data Enrichment拡張機能をインストールするには、以下の手順を使用します：
+Tealiumデータエンリッチメント拡張機能をインストールするには、以下の手順を使用します：
 
 1. Adobe Extension Catalogで**Tealium Data Enrichment**拡張機能を検索します。
 1. **Install**ボタンをクリックして拡張機能を追加します。
@@ -14,9 +14,9 @@ Tealium Data Enrichment拡張機能をインストールするには、以下の
       * **Tealium Account**：（必須）あなたのTealiumアカウント名。
       * **Tealium Profile**：（必須）あなたのTealiumプロファイル名。
       * **Endpoint**：（オプション）デフォルトのエンドポイントを独自のカスタムファーストパーティエンドポイント（例：`https://visitor-service.collect.example.co.uk`）で上書きします。
-1. Adobe Launchでローカル保存のデータを読み取るデータエレメントを追加します。詳細については、[Adobe: Data Elements](https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements)を参照してください。
+1. Adobe Launchでローカル保存内のデータを読み取るデータエレメントを追加します。詳細については、[Adobe: Data Elements](https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements)を参照してください。
 
-[data layer enrichment object](https://docs.tealium.com/enable-data-layer-enrichment/)は、`localStorage`の`teal_adobe_enrichment_data`キーの下に保存されます。このキーを取得すると、データレイヤーエンリッチメントオブジェクトが返されます。
+[data layer enrichment object](https://docs.tealium.com/configure-data-layer-enrichment-iq/)は、`localStorage`のキー`teal_adobe_enrichment_data`の下に保存されます。このキーを取得すると、データレイヤーエンリッチメントオブジェクトが返されます。
 
 次の例では、`localStorage`からデータレイヤーエンリッチメントオブジェクトを取得し、すべてのオーディエンスを配列に保存します：
 

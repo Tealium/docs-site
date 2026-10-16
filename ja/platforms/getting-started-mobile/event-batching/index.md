@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/event-batching
 
 デバイスは以下の条件でバッチングを使用します：
 
-* **Publish Configuration > Mobile Library Publishing > Batching**でバッチングが有効になっています。詳細については、[モバイルプロファイルの作成](https://docs.tealium.com/creating-a-mobile-profile/#batching)を参照してください。
+* **Publish Configuration > Mobile Library Publishing > Batching**でバッチングが有効になっています。詳細については、[モバイルプロファイルの作成](https://docs.tealium.com/create-mobile-profile/#batching)を参照してください。
 * デバイスが安定したインターネット接続を持っていません。デバイスは接続が利用可能になるまでイベントを保存します。
 * ユーザーが**Consent Manager**で何も選択していません。デバイスはユーザーが**Consent Manager**の構成を選択するまでイベントを保存します。詳細については、[同意管理について](https://docs.tealium.com/about-consent-management/)を参照してください。
 

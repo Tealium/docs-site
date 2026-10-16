@@ -1,0 +1,37 @@
+/* Light only, like the Swift and Kotlin builds: the plugin pins the stored theme to light. */
+.tsd-theme-toggle {
+    display: none;
+}
+
+/* Palette matching the white Hugo nav, so there is no seam between the two. */
+:root {
+    --light-color-background: #fff;
+    --light-color-text: #15263b;
+    --light-color-link: #218bd1;
+}
+
+body {
+    font-family:
+        "proxima-nova", "Proxima", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+}
+
+/* The Hugo utility classes sit in a lower layer than TypeDoc's styles, so TypeDoc's `a` and
+   `ul` rules win in the injected nav and side-nav. These restore the Hugo values. */
+body > nav a.mid-gray {
+    color: var(--mid-gray);
+}
+
+.site-menu > ul a {
+    color: var(--text-color-primary);
+}
+
+body > nav ul,
+.site-menu > ul {
+    margin: 0;
+}
+
+/* TypeDoc caps the footer height for a single line, and the copyright adds a second one. */
+footer {
+    max-height: none;
+}

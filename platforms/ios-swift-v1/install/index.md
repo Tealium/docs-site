@@ -13,7 +13,7 @@ This is the previous version (1.x) of Tealium for iOS (Swift). For the latest ve
 
 * Xcode 7.0+
 * iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -307,7 +307,7 @@ config.setLogLevel(.verbose)
 
 ## Event Batching
 
-Prior to version 1.9.0, the Tealium Swift library did not use [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/). Therefore, event batching must be enabled and configured when the SDK is initialized. Version 1.9.0+ provides Mobile Publish Settings support, allowing event batching to be configured remotely.
+Prior to version 1.9.0, the Tealium Swift library did not use [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/). Therefore, event batching must be enabled and configured when the SDK is initialized. Version 1.9.0+ provides Mobile Publish Settings support, allowing event batching to be configured remotely.
 
 This example enables event batching and sets the batch size and queue size.
 

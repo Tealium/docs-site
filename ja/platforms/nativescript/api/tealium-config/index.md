@@ -31,7 +31,7 @@ url: https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/
 | `profile` | `String` | (必須) Tealiumプロファイル名 | `main` |
 | `qrTraceEnabled` | `Boolean` | [QRトレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool)を有効または無効にします。 (デフォルト: 有効) | `false` |
 | [`sessionCountingEnabled`](#sessioncountingenabled) | `Boolean` | Tealium iQアカウントのセッションカウントを有効または無効にします。TealiumのJavaScriptファイルを自己ホストしている場合は、これを`false`に構成します。 (デフォルト: 有効) | `false` |
-| `useRemoteLibrarySettings`| `Boolean` | [モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)を有効または無効にします (デフォルト: 有効)。iQタグ管理でモバイル公開構成を構成するか、機能を無効にします。 | `false` |
+| `useRemoteLibrarySettings`| `Boolean` | [モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)を有効または無効にします (デフォルト: 有効)。iQタグ管理でモバイル公開構成を構成するか、機能を無効にします。 | `false` |
 | `visitorServiceEnabled`| `Boolean` | [データレイヤー拡張API](https://docs.tealium.com/data-layer-enrichment-api/)を使用してビジタープロファイルの自動取得を有効または無効にします (デフォルト: 無効) | `true` |
 | `visitorServiceRefreshInterval`| `String` | ビジタープロファイルのリフレッシュ間隔を分単位で構成します。整数のみがサポートされています。例えば、"2"は2分です。 | `"2"` |
 

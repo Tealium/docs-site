@@ -188,7 +188,7 @@ To verify the publish timestamp:
 
 #### Inspecting Mobile Publish Settings JavaScript Object
 
-The `mobile.html` page uses a JavaScript object named `mps` to store the values of the [mobile publish settings](https://docs.tealium.com/creating-a-mobile-profile/). Inspect this object to verify your settings.
+The `mobile.html` page uses a JavaScript object named `mps` to store the values of the [mobile publish settings](https://docs.tealium.com/create-mobile-profile/). Inspect this object to verify your settings.
 
 To inspect the `mps` object:
 

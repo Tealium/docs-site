@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/api/v3/visitor-profile/endpoints/
 </blockquote>
 
 
-訪問の記録を取得するには、以下のGETコマンドを使用します：
+訪問記録を取得するには、以下のGETコマンドを使用します：
 
 ```bash
 GET /v3/customer/visitor/accounts/{account}/profiles/{profile}?attributeId={attributeId}&attributeValue={attributeValue}&prettyName={prettyName}&responseFilters=["{attributeId}", "{attributeId}"]
@@ -26,20 +26,25 @@ GET /v3/customer/visitor/accounts/{account}/profiles/{profile}?attributeId={attr
   * 特殊文字を含む値はURLエンコードする必要があります。
 * `prettyName`
   * 属性キーがレスポンスでどのように表示されるかを示すブール値：
-    * `true` – 属性は「Lifetime Order Value」のようなユーザーフレンドリーな名前で表示されます。
+    * `true` – 属性は「ライフタイムオーダーバリュー」のようなユーザーフレンドリーな名前で表示されます。
     * `false` – 属性は「28471」のような数値IDで表示されます。
 * `searchPriority`
-    * JSON文字列配列として渡されるリクエストのデータソース。デフォルトは `["live", "historical"]` です。
+    * リクエストのデータソースをJSON文字列配列として渡します。デフォルトは `["live", "historical"]` です。
         * `["live"]` – 現在の訪問に関するウェブサイトからのライブデータを取得します。
-        * `["historical"]` — 訪問が完了した後30分間の待機期間を経て、ウェブサイトからの歴史的データを取得します。
+        * `["historical"]` — 30分の待機期間後に完了した訪問に関するウェブサイトからの歴史的データを取得します。
         * `["live", "historical"]` — APIはライブ訪問データを取得しようとします。ライブ訪問データが利用できない場合、APIは歴史的訪問データを取得します。
         * `["historical", "live"]` — APIは歴史的訪問データを取得しようとします。歴史的データが利用できない場合、APIはライブ訪問データを取得します。
 * `responseFilters`
-    * 訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、`responseFilters`に含まれる`attributeId`の値がレスポンスに返されます。
-    * APIが一度に返すことができる`attributeId`の最大数は150です。150を超える`attributeId`の値を提供した場合、APIは最初の150のIDのみを返します。
+    * 訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、`responseFilters`に含まれる`attributeId`値がレスポンスで返されます。
+    * APIが一度に返すことができる`attributeId`値の最大数は150です。150を超える`attributeId`値を提供した場合、APIは最初の150個のIDのみを返します。
     * 例：`responseFilters=["5051", "5016"]`
 
-### 例 cURLリクエスト
+### 権限要件
+
+* サーバーサイドのリーダー、エディター、またはパブリッシャーのレガシー権限、または
+* 最低限の**閲覧**訪問ルックアッププラットフォーム権限
+
+### cURLリクエストの例
 
 ```bash
 curl --location -g --request \
@@ -47,19 +52,19 @@ GET 'https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/{ac
 --header 'Authorization: Bearer {token}'
 ```
 
-### 例 レスポンス
+### レスポンスの例
 
-レスポンスの形式については、訪問オブジェクトの例を参照してください。
+レスポンスの形式については、例の訪問オブジェクトを参照してください。
 
 ### エラーメッセージ
 
-このエンドポイントに関連する可能性のあるエラーメッセージは次のとおりです：
+このエンドポイントに関する潜在的なエラーメッセージは以下の通りです：
 
 | エラーメッセージ | 説明 |
 | --- | --- |
-| 400 | `{"message": "You are missing an attribute Id or Attribute Value"}` |
-| 401 | `{"message": "Unauthorized"}` |
-| 404 | `訪問が見つかりませんでした、空のレスポンスです。`<br>`{"message": "Invalid query parameter value for 'searchPriority' detected."}` |
+| 400 | `{"message": "属性IDまたは属性値が不足しています"}` |
+| 401 | `{"message": "許可されていません"}` |
+| 404 | `訪問が見つかりませんでした、空のレスポンスです。`<br>`{"message": "'searchPriority'の無効なクエリパラメータ値が検出されました。"}` |
 
 ## GET 歴史的訪問
 
@@ -71,7 +76,7 @@ GET 'https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/{ac
 
 GET 歴史的訪問メソッドは、歴史的訪問のみを検索することにより、より高速なレスポンス時間を実現するために最適化されています。
 
-歴史的訪問の記録を取得するには、以下のGETコマンドを使用します：
+歴史的訪問記録を取得するには、以下のGETコマンドを使用します：
 
 ```bash
 GET '/v3/customer/visitor/historical/accounts/{account}/profiles/{profile}?attributeId={attributeId}&attributeValue={attributeValue}&prettyName={prettyName}&responseFilters=["{attributeId}", "{attributeId}"]'
@@ -86,12 +91,17 @@ GET '/v3/customer/visitor/historical/accounts/{account}/profiles/{profile}?attri
     * 特殊文字を含む値はURLエンコードする必要があります。
 * `prettyName`
   * 属性キーがレスポンスでどのように表示されるかを示すブール値：
-     * `true` – 属性は「Lifetime Order Value」のようなユーザーフレンドリーな名前で表示されます。
+     * `true` – 属性は「ライフタイムオーダーバリュー」のようなユーザーフレンドリーな名前で表示されます。
      * `false` – 属性は「28471」のような数値IDで表示されます。
 * `responseFilters`
-    * 訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、`responseFilters`に含まれる`attributeId`の値がレスポンスに返されます。APIが一度に返すことができる`attributeId`の最大数は150です。150を超える`attributeId`の値を提供した場合、APIは最初の150のIDのみを返します。
+    * 訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、`responseFilters`に含まれる`attributeId`値がレスポンスで返されます。APIが一度に返すことができる`attributeId`値の最大数は150です。150を超える`attributeId`値を提供した場合、APIは最初の150個のIDのみを返します。
 
-### 例 cURLリクエスト
+### 権限要件
+
+* サーバーサイドのリーダー、エディター、またはパブリッシャーのレガシー権限、または
+* 最低限の**閲覧**訪問ルックアッププラットフォーム権限
+
+### cURLリクエストの例
 
 ```bash
 curl --location -g --request \
@@ -99,16 +109,16 @@ GET 'https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/historical/{
 --header 'Authorization: Bearer {token}'
 ```
 
-### 例 レスポンス
+### レスポンスの例
 
-レスポンスの形式については、訪問オブジェクトの例を参照してください。
+レスポンスの形式については、例の訪問オブジェクトを参照してください。
 
 ### エラーメッセージ
 
-このエンドポイントに関連する可能性のあるエラーメッセージは次のとおりです：
+このエンドポイントに関する潜在的なエラーメッセージは以下の通りです：
 
 | エラーメッセージ | 説明 |
 | --- | --- |
-| 400 | `{"message": "You are missing an attribute Id or Attribute Value"}` |
-| 401 | `{"message": "Unauthorized"}` |
+| 400 | `{"message": "属性IDまたは属性値が不足しています"}` |
+| 401 | `{"message": "許可されていません"}` |
 | 404 |`訪問が見つかりませんでした、空のレスポンスです。` |

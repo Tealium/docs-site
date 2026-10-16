@@ -12,7 +12,7 @@ Tealium iQタグ管理は、ベンダータグの構成とビジネスロジッ�
 
 ## モバイル
 
-iQタグ管理では、モバイルアプリのタグと構成を管理するために、iOSとAndroidのそれぞれに対して別々の[モバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)を使用します。モバイルプロファイルは`mobile.html`というファイルを生成し、以下のTealiumのパスに公開します：
+iQタグ管理では、モバイルアプリのタグと構成を管理するために、iOSとAndroidのそれぞれに対して別々の[モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)を使用します。モバイルプロファイルは`mobile.html`というファイルを生成し、以下のTealiumのパスに公開します：
 
 `http://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html`
 

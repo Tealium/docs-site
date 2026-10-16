@@ -25,7 +25,7 @@ Tealium Context APIモジュールには以下が必要です：
 * ネイティブビルド環境へのアクセス
 * [Tealium for React Native 2.2.0以降](https://docs.tealium.com/ja/platforms/react-native/)
 * [React Native 0.63以降](https://github.com/Tealium/tealium-react-native)およびツール
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/)または[Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)または[Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)
 

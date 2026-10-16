@@ -7,7 +7,7 @@ This tag management feature lets you integrate JavaScript based vendor tags into
 
 ## How It Works
 
-Once you have [created a mobile profile in Tealium iQ](https://docs.tealium.com/creating-a-mobile-profile/) with Tag Management enabled, when you initialize the Tealium instance in your app, a non-rendered web view is created to load a simple HTML file from Tealium  in which to load the Universal Tag `utag.js`. This web view is never rendered to the user.
+Once you have [created a mobile profile in Tealium iQ](https://docs.tealium.com/create-mobile-profile/) with Tag Management enabled, when you initialize the Tealium instance in your app, a non-rendered web view is created to load a simple HTML file from Tealium  in which to load the Universal Tag `utag.js`. This web view is never rendered to the user.
 
 * Versions 5.5.0 and newer, running iOS 11.0 and newer use [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 * Versions 5.4.x and older, running iOS 10.0 and older use [UIWebView](https://developer.apple.com/documentation/uikit/uiwebview).

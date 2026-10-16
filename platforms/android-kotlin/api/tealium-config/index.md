@@ -34,7 +34,7 @@ The `TealiumConfig` class provides methods to set configuration options for the 
 | [`sessionCountingEnabled`](#sessioncountingenabled)                         | Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files                                        |
 | [`TealiumConfig`](#tealiumconfig)                                           | Constructor method that creates an instance of `TealiumConfig`.                                                                                                                      |
 | [`timedEventTriggers`](#timedeventtriggers)                                 | A list of `EventTrigger` objects for automatically tracking timed events.                                        |
-| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. |
+| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. |
 
 ### `adobeVisitorAuthState`
 
@@ -357,7 +357,7 @@ The following are `EventTrigger` parameters:
 
 ### `useRemoteLibrarySettings`
 
-Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/creating-a-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.                     
+Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.                     
 
 ```swift
 config.useRemoteLibrarySettings = true

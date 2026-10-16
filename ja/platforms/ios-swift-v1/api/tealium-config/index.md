@@ -11,33 +11,33 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/
 | ----- | ------ |
 | `addDelegate()` | TealiumDelegateプロトコルに準拠する新しいデリゲートを追加します |
 | `addRemoteCommand()` | 後で実行するリモートコマンドを追加します |
-| `batchingBypassKeys` | バッチ処理をバイパスするイベント名のリストを構成します（個別のイベントとして送信されます） |
+| `batchingBypassKeys` | バッチ処理をバイパスするイベント名のリストを構成します（個別のイベントとして送信） |
 | `batchingEnabled` | イベントバッチ処理を有効または無効にします（デフォルトは無効） |
-| `batchSize` | 単一のバッチリクエストに組み合わせるイベントの量を構成します（最大：10） |
+| `batchSize` | 単一のバッチリクエストに組み合わせるイベントの数を構成します（最大：10） |
 | `collectOverrideProfile` | データを異なるTealiumプロファイルに送信するためにTealium Collectプロファイルを上書きします |
 | `collectOverrideURL` | データを異なるエンドポイントに送信するためにTealium Collect URLを上書きします |
 | `connectivityRefreshEnabled` | 有効にすると（デフォルト）、接続性モジュールは指定された間隔で接続をチェックします |
 | `connectivityRefreshInterval` | デフォルトの接続性リフレッシュ間隔を秒単位で構成します |
 | `consentLoggingEnabled` | 同意ログ機能を有効または無効にします |
 | `delegates` | 有効になっているデリゲートの配列を返します |
-| `dispatchAfter` | キューがフラッシュされるイベントの数を構成します |
-| `dispatchExpiration` | デバイスが長期間オフラインの場合、古いイベントが削除されるバッチの有効期限を日数で構成します |
-| `dispatchQueueLimit` | キューされたイベントの最大数を構成します。この数に達し、キューがフラッシュされていない場合、最も古いイベントが削除されます |
+| `dispatchAfter` | キューをフラッシュするイベントの数を構成します |
+| `dispatchExpiration` | ディスパッチの有効期限を日数で構成します。デバイスが長期間オフラインの場合、古いイベントは削除されます |
+| `dispatchQueueLimit` | キューに保存するイベントの最大数を構成します。この数に達し、キューがフラッシュされていない場合、最も古いイベントは削除されます |
 | `enableRemoteHTTPCommand()` | 組み込みのリモートHTTPコマンドを有効にします |
-| `existingVisitorId` | 既存の訪問IDを構成します。アプリ拡張機能での第一者IDとして使用されます |
+| `existingVisitorId` | 既存の訪問IDを構成します。アプリ拡張でファーストパーティIDとして使用されます |
 | `geofenceFileName` | ローカルのジオフェンスJSONファイルアセットの名前を構成します。_ファイル拡張子は含めないでください。_ |
-| `geofenceUrl` | ホストされたJSONファイルのURLを構成します |
+| `geofenceUrl` | ホストされているJSONファイルのURLを構成します |
 | `initialUserConsentCategories` | ライブラリが初めて起動するときにユーザーの初期同意カテゴリを構成します |
 | `initialUserConsentStatus` | 初期ユーザー同意ステータスを構成します |
 | `logLevel` | 新しいログレベルを構成します |
 | `memoryReportingEnabled` | DeviceDataモジュールでのメモリレポートを有効または無効にします |
 | `modulesList`| 有効または無効にするモジュールのリスト |
 | `overrideConsentPolicy` | デフォルトの同意`policy`パラメータを上書きします |
-| `remoteAPIEnabled` | `remote_api`イベントを有効（`true`）または無効（`false`）にします。RemoteCommandsモジュールを使用する場合、DispatchQueueモジュールが必要です。 |
+| `remoteAPIEnabled` | `remote_api`イベントを有効（`true`）または無効（`false`）にします。RemoteCommandsモジュールがDispatchQueueモジュールを使用している場合に必要です。 |
 | `remoteCommand` | 登録されているすべてのリモートコマンドの配列を返します |
 | `remoteHTTPCommandDisabled` | 組み込みのリモートHTTPコマンドを無効にします（`true`の場合）|
 | `rootView` | `WKWebView`をアタッチするための現在の`UIView`を構成します|
-| `searchAdsEnabled` | AttributionモジュールでのApple Search Ads APIを有効または無効にします |
+| `searchAdsEnabled` | AttributionモジュールでApple Search Ads APIを有効または無効にします |
 | `shouldAddCookieObserver` | Tealiumが`WKWebView` Cookie Observerを追加するかどうかを決定します |
 | `shouldUseRemotePublishSettings` | モバイルパブリッシュ構成を構成します（デフォルト：有効）|
 | `tagManagementOverrideURL` | タグ管理モジュールで使用されるデフォルトURLを上書きします |
@@ -89,7 +89,7 @@ config.addRemoteCommand(remoteCommand)
 
 ### `batchingBypassKeys`
 
-バッチ処理をバイパスするイベント名のリストを構成します（個別のイベントとして送信されます）。
+バッチ処理をバイパスするイベント名のリストを構成します（個別のイベントとして送信）。
 
 ```swift
 config.batchingBypassKeys = ["home_screen"]
@@ -105,7 +105,7 @@ config.batchingEnabled = true
 
 ### `batchSize`
 
-単一のバッチリクエストに組み合わせるイベントの量を構成します。最大は10です。
+単一のバッチリクエストに組み合わせるイベントの数を構成します。最大は10です。
 
 ```swift
 config.batchSize = 8
@@ -149,7 +149,7 @@ config.collectOverrideURL = url
 
 ### `connectivityRefreshEnabled`
 
-有効にすると（デフォルト）、接続性モジュールは指定された間隔で接続をチェックします（`setConnectivityRefreshInterval`を介して制御されます）。接続が再開されると、キューに入れられたディスパッチが送信されます。
+有効にすると（デフォルト）、接続性モジュールは指定された間隔で接続をチェックします（`setConnectivityRefreshInterval`によって制御されます）。接続が再開されると、キューに入れられたディスパッチが送信されます。
 
 ```swift
 config.connectivityRefreshEnabled = true
@@ -185,7 +185,7 @@ let delegates = config.delegates
 
 ### `dispatchAfter`
 
-自動的にキューをフラッシュするイベントの数。
+キューを自動的にフラッシュするイベントの数。
 
 ```swift
 config.dispatchAfter = 20
@@ -193,7 +193,7 @@ config.dispatchAfter = 20
 
 ### `dispatchExpiration`
 
-デバイスが長期間オフラインの場合、古いイベントが削除されるディスパッチの有効期限を日数で構成します。
+ディスパッチの有効期限を日数で構成します。デバイスが長期間オフラインの場合、古いイベントは削除されます。
 
 ```swift
 config.dispatchExpiration = 5
@@ -201,7 +201,7 @@ config.dispatchExpiration = 5
 
 ### `dispatchQueueLimit`
 
-イベントキューに格納するイベントの最大数を構成します。この数に達し、キューがフラッシュされていない場合、最も古いイベントが削除されます。
+キューに保存するイベントの最大数を構成します。この数に達し、キューがフラッシュされていない場合、最も古いイベントは削除されます。
 
 ```swift
 config.dispatchQueueLimit = 50
@@ -219,7 +219,7 @@ enableRemoteHTTPCommand()
 
 ### `existingVisitorId`
 
-既存の訪問IDを構成します。アプリ拡張機能での第一者IDとして使用されます |
+既存の訪問IDを構成します。アプリ拡張でファーストパーティIDとして使用されます |
 
 ```swift
 config.existingVisitorId = id
@@ -260,7 +260,7 @@ config.initialUserConsentCategories = [.cdp, .analytics]
 
 ユーザーの初期同意状態を構成します。これはライブラリが初めて起動するときにユーザーに対して行われます。保存された構成がある場合、これらは構成オブジェクトで渡された構成を上書きします。
 
-同意状態が `.consented` の場合、利用可能なすべての同意カテゴリを含むように同意カテゴリのリストを構成します。カテゴリを選択的に構成することはできません。
+利用可能なすべての同意カテゴリを含むカテゴリリストを構成し、状態が `.consented` の場合は選択的にカテゴリを構成することはできません。
 
 この方法を使用して、同意が与えられる前に追跡されたすべてのイベントを無視し、同意が与えられる前にイベントをキューに入れるデフォルトの動作を上書きします。構成オブジェクトに次の行を追加します：
 
@@ -272,16 +272,16 @@ config.initialUserConsentStatus = .notConsented
 | --- | --- | --- | --- |
 | `status` | `TealiumConsentStatus` | TealiumConsentStatus列挙型からの値 | [`.unknown`, `.consented`, `.notConsented`] |
 
-以下は `TealiumConsentStatus` 列挙型からのTealium同意ステータスの異なるタイプを定義しています。
+以下は `TealiumConsentStatus` 列挙型からの異なるTealium同意状態を定義しています。
 
 **.unknown**  
-`unknown` ステータスは同意マネージャーのデフォルト構成です。この状態では、同意マネージャーはローカルにイベントをキューに入れ、肯定的な `consented`/`notConsented` ステータスが提供されるまで待ちます。
+`unknown` 状態は同意マネージャーのデフォルト構成です。この状態では、同意マネージャーはローカルにイベントをキューに入れ、肯定的な `consented`/`notConsented` 状態が提供されるまで待ちます。
 
 **.consented**  
-ユーザーが追跡に同意した場合に構成される `consented` ステータスです。この状態では、同意マネージャーは通常どおりすべての追跡コールを続行させます。
+ユーザーが追跡に同意した場合に構成される `consented` 状態です。この状態では、同意マネージャーは通常どおりすべての追跡呼び出しを続行させます。
 
 **.notConsented**  
-ユーザーが追跡を拒否した場合に構成される `notConsented` ステータスです。この状態では、同意マネージャーはすべての追跡コールをドロップし、SDKによるさらなる処理を停止します。
+ユーザーが追跡を拒否した場合に構成される `notConsented` 状態です。この状態では、同意マネージャーはすべての追跡呼び出しをドロップし、SDKによるさらなる処理を停止します。
 ### `updateDistance`
 
 位置更新が受信される距離間隔（メートル）を構成します。
@@ -300,7 +300,7 @@ config.updateDistance = <Double>
 | --- | --- | --- |
 | `Double` | 位置更新が受信される距離間隔（メートル） | `150.0` |
 
-使用例:
+使用例：
 
 ```swift
 func start() {
@@ -321,11 +321,11 @@ func start() {
 
 このプロパティはデフォルトで無効（`false`）に構成されており、位置精度を低精度に構成します。位置情報を有効にしたデバイスが500メートル以上移動すると、これは重要な位置変更と見なされ、位置更新が行われます。この構成では、位置更新には通常5分以上かかります。
 
-[Appleの重要変更位置サービスについての詳細を学ぶ](https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service)。
+[Appleの重要な変更位置サービスについての詳細はこちら](https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service)。
 
 有効にすると（`true`）、このプロパティは可能な限り最高の精度で位置データの精度を構成します。初期イベントはできるだけ早く配信され、その後、位置を特定し、データが利用可能になったときに必要に応じて追加のイベントを配信します。
 
-[Appleの位置データの精度についての詳細を学ぶ](https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift)。
+[Appleの位置データの精度についての詳細はこちら](https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift)。
 
 高精度を使用すると、位置更新が頻繁に行われるため、低精度よりもデバイスのバッテリー消費が増加します。
 
@@ -337,7 +337,7 @@ config.useHighAccuracy = <Bool>
 | --- | --- | --- |
 | `Boolean` | 位置データの精度を構成 | `true` |
 
-使用例:
+使用例：
 
 ```swift
 func start() {

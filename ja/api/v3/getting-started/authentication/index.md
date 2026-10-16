@@ -5,19 +5,23 @@ url: https://docs.tealium.com/ja/api/v3/getting-started/authentication/
 ---
 ## 認証
 
-認証（ログイン）には、Tealium iQタグ管理からのAPIキーが必要です。Tealium APIキーについて詳しくは、[APIキーの管理と生成](https://docs.tealium.com/api-keys/)を参照してください。
+認証（ログイン）には、Tealium iQタグ管理からのAPIキーが必要です。Tealium APIキーについての詳細は、[APIキーの管理と生成](https://docs.tealium.com/api-keys/)を参照してください。
 
-認証コールには2つのパラメーターがあります：ユーザー名とAPIキー。APIキーは、APIにログインするためのパスワードの代わりに使用されます。APIへの成功したログイン後、認証コールはJWTを返します。これをベアラートークンと呼びます。ベアラートークンは30分間有効で、その後のAPIコールを認証するために使用する必要があります。
+認証コールには2つのパラメーターがあります：ユーザー名とAPIキー。APIキーはパスワードの代わりにAPIにログインするために使用されます。APIへのログインが成功すると、認証コールはJWTを返し、これをベアラートークンと呼びます。ベアラートークンは30分間有効で、その後のAPIコールを認証するために使用する必要があります。
 
 
 <blockquote>
-各コールごとに新しいベアラートークンを生成しないでください。トークンが期限切れになるまで使用してください。各トークンは30分以内に期限切れになります。この方法でトークンを使用しないと、Tealiumの裁量により認証コールがスロットリングされる可能性があります。
+各コールごとに新しいベアラートークンを生成しないでください。トークンが期限切れになるまで使用してください。各トークンは30分で期限切れになります。この方法でトークンを使用しないと、Tealiumの裁量により認証コールの制限が行われる可能性があります。
 </blockquote>
 
 
-### リージョン固有のホスト
+### 権限要件
 
-認証のレスポンスにはトークンとホストの値が含まれています。
+認証エンドポイントはAPIキーのみを要求します。ベアラートークンを取得するために追加のプラットフォーム権限は必要ありません。ただし、各v3 APIエンドポイントへのアクセスは、ユーザーのプラットフォーム権限レベルによって決まります。権限要件については、各エンドポイントのドキュメントを参照してください。
+
+### 地域固有のホスト
+
+認証応答にはトークンとホスト値が含まれます。
 
 ```json
 {
@@ -26,7 +30,7 @@ url: https://docs.tealium.com/ja/api/v3/getting-started/authentication/
 }
 ```
 
-ホストの値は、リージョン固有の後続のAPIコールで使用する必要があります。例えば、ビジターAPIエンドポイントは次のようになります：
+ホスト値は、地域固有のAPIコールで使用する必要があります。たとえば、訪問APIエンドポイントは以下のようになります：
 
 ```none
 https://us-east-1-platform.tealiumapis.com/v3/visitor/accounts/{account}/profiles/{profile}
@@ -34,7 +38,7 @@ https://us-east-1-platform.tealiumapis.com/v3/visitor/accounts/{account}/profile
 
 ### cURLリクエスト
 
-次のcURLリクエストは、JWTトークンのAPIキー交換に必要な変数を示しています。URL、ユーザー名、APIキーがエンコードされています。
+次のcURLリクエストは、JWTトークンの交換に必要な変数を示しています。URL、ユーザー名、およびAPIキーはエンコードされています。
 
 ```bash
 curl -X POST \
@@ -44,7 +48,7 @@ https://platform.tealiumapis.com/v3/auth/accounts/{account}/profiles/{profile} \
 --data-urlencode 'key={api_key}'
 ```
 
-#### 例：リクエスト
+#### 例のリクエスト
 
 ```bash
 curl -X POST \
@@ -54,7 +58,7 @@ https://platform.tealiumapis.com/v3/auth/accounts/{account}/profiles/{profile} \
 --data-urlencode 'key=7O4Pjn8tuc0%5B3Nc2)%7DyXJW8EaCuDRA1U8Jn%23p)qc*O94(*ubIeEUz%25%5D%242~)WKlLB'
 ```
 
-#### 例：レスポンス
+#### 例の応答
 
 ```bash
 * Trying 10.220.2.176...

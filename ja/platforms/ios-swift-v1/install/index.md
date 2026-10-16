@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/install/
 
 * Xcode 7.0+
 * iOS 9.0+、macOS 10.11+、watchOS 3.0+、またはtvOS 9.2+
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/creating-a-mobile-profile/)
+* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealiumカスタマーデータハブアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
@@ -299,7 +299,7 @@ config.setLogLevel(.verbose)
 
 ## イベントバッチ処理
 
-バージョン 1.9.0 以前では、Tealium Swift ライブラリは [モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/) を使用していませんでした。したがって、SDK の初期化時にイベントバッチ処理を有効にして構成する必要があります。バージョン 1.9.0 以降では、モバイル公開構成のサポートが提供され、イベントバッチ処理をリモートで構成できます。
+バージョン 1.9.0 以前では、Tealium Swift ライブラリは [モバイル公開構成](https://docs.tealium.com/create-mobile-profile/) を使用していませんでした。したがって、SDK の初期化時にイベントバッチ処理を有効にして構成する必要があります。バージョン 1.9.0 以降では、モバイル公開構成のサポートが提供され、イベントバッチ処理をリモートで構成できます。
 
 この例では、イベントバッチ処理を有効にし、バッチサイズとキューサイズを構成します。
 

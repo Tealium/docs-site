@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/android-java/data-layer/
 
 
 <blockquote>
-These variables are added to your Tealium iQ Tag Management account when you [activate the profile for mobile use](https://docs.tealium.com/creating-a-mobile-profile/).
+These variables are added to your Tealium iQ Tag Management account when you [activate the profile for mobile use](https://docs.tealium.com/create-mobile-profile/).
 </blockquote>
 
 

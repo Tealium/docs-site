@@ -11,7 +11,7 @@ Event batching refers to how a device transmits data across the network. The eve
 
 The device uses batching under the following conditions:
 
-* Batching is enabled in **Publish Configuration > Mobile Library Publishing > Batching**. For more information, see [Create a mobile profile](https://docs.tealium.com/creating-a-mobile-profile/#batching).
+* Batching is enabled in **Publish Configuration > Mobile Library Publishing > Batching**. For more information, see [Create a mobile profile](https://docs.tealium.com/create-mobile-profile/#batching).
 * The device has no stable internet connection. The device stores events until a connection is available.
 * The user has not selected any preferences in the **Consent Manager**. The device stores events until the user selects a **Consent Manager** preference. For more information, see [About consent management](https://docs.tealium.com/about-consent-management/).
 

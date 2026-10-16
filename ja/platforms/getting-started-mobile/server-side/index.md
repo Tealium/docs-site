@@ -38,7 +38,7 @@ Tealium CollectタグはiQタグ管理構成に追加され、タグ管理モジ
 
 ### ネイティブモジュール
 
-Tealium Collectモジュールは、iQアカウントの[モバイル公開構成](https://docs.tealium.com/creating-a-mobile-profile/)を使用して有効化されます。Collectモジュールはアプリのネイティブコードとして実行され、HTTPSを使用してトラッキングコールを直接Tealiumサーバーにディスパッチします。
+Tealium Collectモジュールは、iQアカウントの[モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)を使用して有効化されます。Collectモジュールはアプリのネイティブコードとして実行され、HTTPSを使用してトラッキングコールを直接Tealiumサーバーにディスパッチします。
 
 **推奨されるのは：**
 

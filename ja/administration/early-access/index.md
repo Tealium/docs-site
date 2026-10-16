@@ -53,3 +53,4 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 * [スティッチングマージルール](https://docs.tealium.com/stitching-merge-rules/)
 * [訪問削除ジョブ](https://docs.tealium.com/visitor-deletion-jobs/)
+

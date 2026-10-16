@@ -1,6 +1,6 @@
 ---
 title: Publish mobile settings
-description: Publish Prism mobile profile settings to the Tealium CDN using the mobile settings publisher.
+description: Publish Prism mobile settings to the Tealium CDN using the mobile settings publisher.
 url: https://docs.tealium.com/administration/early-access/tealium-prism/publish-mobile-settings/
 ---
 
@@ -28,7 +28,7 @@ This feature requires the following:
 
 The tool reads the configuration of your currently open mobile profile and publishes it as a Prism settings file.
 
-The published file is the remote tier of the SDK settings. Programmatic (enforced) settings in your app override it. For more information, see [Configuration governance](https://docs.tealium.com/about-tealium-prism/#configuration-governance).
+The published file is the remote tier of the SDK settings. Programmatic (enforced) settings in your app override it. For more information, see [Advanced configuration](https://docs.tealium.com/about-prism-mobile/#advanced-configuration).
 
 ### Environments
 
@@ -40,7 +40,7 @@ The tool publishes a separate file for each environment. The tool does not suppo
 | QA | `mobile_settings_qa` | `https://tags.tiqcdn.com/dle/<account>/<profile>/mobile_settings_qa.json` |
 | Prod | `mobile_settings_prod` | `https://tags.tiqcdn.com/dle/<account>/<profile>/mobile_settings_prod.json` |
 
-Set the URL of the file for each environment as the settings URL in the `TealiumConfig` of your app. For more information, see [Quick start guide](https://docs.tealium.com/quick-start/). The SDK does not derive the URL from the account, profile, or environment. The URL in your app must match the published file exactly.
+Set the URL of the file for each environment as the settings URL in your app. Use `TealiumConfig` on iOS and Android, or the `settingsUrl` argument of `Tealium.create()` on React Native. The SDK does not derive the URL from the account, profile, or environment. The URL in your app must match the published file exactly. For more information, see [Quick start guide](https://docs.tealium.com/quick-start-prism/).
 
 ### Custom settings file name
 
@@ -52,7 +52,7 @@ The tool removes a trailing `.json` and any character other than letters, digits
 
 Click **Download JSON** to generate the settings file, then bundle it in your app as the local settings file. A bundled file fully configures the SDK on first launch, even with limited connectivity. Remote settings override the bundled file after the SDK fetches them.
 
-For more information about specifying a local settings file, see the [Quick start guide](https://docs.tealium.com/quick-start/).
+For more information about specifying a local settings file, see the [Quick start guide](https://docs.tealium.com/quick-start-prism/).
 
 ### API key
 

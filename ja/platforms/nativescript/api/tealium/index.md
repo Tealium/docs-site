@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/platforms/nativescript/api/tealium/
 | [`consentStatus`](#consentstatus)| ユーザーの同意状態を取得または構成します |
 | [`getData()`](#getdata)| データレイヤーからデータを取得します |
 | [`gatherTrackData()`](#gathertrackdata)| すべてのコレクターとデータレイヤーからデータを収集します |
-| [`initialize()`](#initialize) | 構成パラメータでTealiumを初期化します |
+| [`initialize()`](#initialize) | 構成パラメーターでTealiumを初期化します |
 | [`joinTrace()`](#jointrace)| 指定されたIDでトレースに参加します |
 | [`leaveTrace()`](#leavetrace)| アクティブなトレースセッションを離れます |
 | [`removeData()`](#removedata)| `addData()`を使用して以前に構成された永続データを削除します |
@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/platforms/nativescript/api/tealium/
 | [`removeVisitorServiceListener()`](#removevisitorservicelistener)| 訪問サービスリスナー/コールバックを削除します |
 | [`setVisitorServiceListener()`](#setvisitorservicelistener)| 訪問サービスリスナー/コールバックを定義します |
 | [`terminateInstance()`](#terminateinstance)| Tealiumライブラリを無効にし、すべてのモジュール参照を削除します |
-| [`track()`](#track)| イベントまたは画面表示を追跡します |
+| [`track()`](#track)| イベントまたは画面表示をトラッキングします |
 | [`visitorId`](#visitorid) | 現在の訪問IDを取得します |
 
 ### `addRemoteCommand()`
@@ -71,9 +71,9 @@ Tealium.addData(data, Expiry.session);
 
 #### `Expiry`
 
-プロパティの有効期限を構成するための有効期限を定義します。
+プロパティの有効期限を構成するためのオプションです。
 
-利用可能な有効期限オプションは次のとおりです：
+利用可能な有効期限オプションは以下の通りです：
 
 | 値 | 説明 |
 | :-- | :-- |
@@ -98,7 +98,7 @@ let categories = Tealium.consentCategories
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `categories` | `ConsentCategories[]` | ユーザー同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
+| `categories` | `ConsentCategories[]` | ユーザーの同意カテゴリの配列 | `[ConsentCategories.email, ConsentCategories.personalization]` |
 
 例:
 
@@ -106,7 +106,7 @@ let categories = Tealium.consentCategories
 Tealium.consentCategories = [ConsentCategories.analytics, ConsentCategories.email];
 ```
 
-利用可能な同意カテゴリは次のとおりです：
+利用可能な同意カテゴリは以下の通りです：
 
 | 値 | 説明 |
 | --- | --- |
@@ -150,7 +150,7 @@ let status = Tealium.consentStatus
 Tealium.consentStatus = ConsentStatus.consented;
 ```
 
-利用可能な同意状態は次のとおりです：
+利用可能な同意状態は以下の通りです：
 
 | 値 | 説明 |
 | --- | --- |
@@ -182,7 +182,7 @@ Tealium.initialize(config);
 
 | パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `config` | [`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealiumの構成パラメータ | (例を参照) |
+| `config` | [`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#tealiumconfig) | Tealiumの構成パラメーター | (例を参照) |
 
 例:
 
@@ -227,7 +227,7 @@ Tealium.joinTrace("abc123xy");
 
 ### `leaveTrace()`
 
-`leaveTrace()`メソッドが呼ばれるまで、トレースはアプリセッションの間アクティブなままです。これにより、以前に参加したトレースを離れ、訪問セッションが終了します。
+`leaveTrace()`メソッドが呼ばれるまで、トレースはアプリセッションの間アクティブなままです。これにより、以前に参加したトレースを離れ、訪問セッションを終了します。
 
 ```javascript
 Tealium.leaveTrace();
@@ -281,9 +281,9 @@ Tealium.removeRemoteCommand("test_command");
 ### `setVisitorServiceListener()`
 訪問プロファイルが更新されたときに実行するコールバックを定義します。更新された[`VisitorProfile`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#visitorprofile)はコールバックレスポンスで提供されます。
 
-VisitorServiceモジュールはTealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
+VisitorServiceモジュールはTealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)機能を実装しています。
 
-このモジュールの使用は、Tealium AudienceStreamのライセンスを持っていて、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスがない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
+このモジュールの使用は、Tealium AudienceStreamのライセンスを持っていて、訪問プロファイルを使用してモバイルアプリケーションのユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスがない場合は、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
 ```javascript
 Tealium.setVisitorServiceListener(callback);
@@ -312,7 +312,7 @@ Tealium.terminateInstance();
 
 ### `track()`
 
-オプショナルな関連データを持つ画面表示またはイベントを追跡します。
+オプションの関連データを持つ画面表示またはイベントを追跡します。
 
 ```
 tealium?.track(tealEvent)
@@ -320,9 +320,9 @@ tealium?.track(tealEvent)
 
 | パラメータ | 型  | 説明 | 
 |:-----------|:------|:------------|
-| `tealEvent` | string | [TealiumDispatch](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#dispatchers) で、イベント名を `tealium_event` 属性として渡し、オプショナルなイベントデータオブジェクトを含みます。 |
+| `tealEvent` | string | [TealiumDispatch](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/#dispatchers) で、イベント名を `tealium_event` 属性として渡し、オプショナルなイベントデータオブジェクトを伴います。 |
 
-イベントを追跡するには、`track()` メソッドに [`TealiumEvent`](#class-tealiumevent) のインスタンスを渡します：
+イベントを追跡するには、[`TealiumEvent`](#class-tealiumevent) のインスタンスを `track()` メソッドに渡します：
 
 ```javascript
 let tealEvent = new TealiumEvent(
@@ -348,11 +348,11 @@ let visitorId = Tealium.visitorId;
 
 ## インターフェース: `TealiumDispatch`
 
-追跡するディスパッチのタイプを定義するインターフェースです。次のクラスが `TealiumDispatch` を実装しています：
+追跡するディスパッチのタイプを定義するインターフェースです。以下のクラスが `TealiumDispatch` を実装しています：
 
 ### クラス: `TealiumEvent`
 
-ユーザーの画面とのやり取りまたは画面表示を追跡するには、[`Track()`](#track) メソッドに `TealiumEvent(tealiumEvent, dataLayer)` のインスタンスを渡します。`TealiumEvent` はイベント名を含み、追跡コールで `tealium_event` として表示され、オプショナルなデータ辞書が含まれます。
+ユーザーの画面とのインタラクションまたは画面表示を追跡するには、[`Track()`](#track) メソッドに `TealiumEvent(tealiumEvent, dataLayer)` のインスタンスを渡します。`TealiumEvent` はイベント名を含み、追跡コールで `tealium_event` として表示され、オプショナルなデータ辞書があります。
 
 ```javascript
 let tealEvent = new TealiumEvent(tealiumEvent, eventData);
@@ -362,7 +362,7 @@ Tealium.track(tealEvent);
 | パラメータ  | 型    | 説明      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent` | `string` | イベント名で、`tealium_event` 属性として渡されます。 |
-| `eventData` | `<string, object>` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
+| `eventData` | `<string, object>` | (オプショナル) イベントに送信されるキーと値の形式のデータ。 | 
 
 例:
 
@@ -375,14 +375,14 @@ let tealEvent = new TealiumEvent(
 			"product_id": ["PROD123", "PROD456"], 
 			"product_price": [4.00, 6.00]
 		]
-	])
+	)
 );
 Tealium.track(tealEvent);
 ```
 
 ### クラス: `TealiumView`
 
-画面表示を追跡するには、[`Track()`](#track) メソッドに `TealiumView(tealiumEvent, dataLayer)` のインスタンスを渡します。`TealiumView` はビュー名を含み、追跡コールで `tealium_event` として表示され、オプショナルなデータ辞書が含まれます。
+画面表示を追跡するには、[`Track()`](#track) メソッドに `TealiumView(tealiumEvent, dataLayer)` のインスタンスを渡します。`TealiumView` はビュー名を含み、追跡コールで `tealium_event` として表示され、オプショナルなデータ辞書があります。
 
 ```javascript
 let screenView = new TealiumEvent(tealiumEvent, eventData);
@@ -392,7 +392,7 @@ Tealium.track(screenView);
 | パラメータ  | 型    | 説明      | 
 |:------------|:--------|:-----------------|
 | `tealiumEvent`  | `string`| イベント名で、`tealium_event` 属性として渡されます。          | 
-| `eventData` | `Dictionary<string, object>` | オプショナル。イベントに送信されるキーと値の形式のデータ。 | 
+| `eventData` | `Dictionary<string, object>` | (オプショナル) イベントに送信されるキーと値の形式のデータ。 | 
 
 例:
 

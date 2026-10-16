@@ -12,7 +12,7 @@ Learn more about [how iQ Tag Management works](https://docs.tealium.com/how-teal
 
 ## Mobile
 
-In iQ Tag Management you use a separate [mobile profile](https://docs.tealium.com/creating-a-mobile-profile/), one for iOS and one for Android, to manage the tags and configuration for your mobile app. A mobile profile generates a file named `mobile.html` that is published to the following path at Tealium:
+In iQ Tag Management you use a separate [mobile profile](https://docs.tealium.com/create-mobile-profile/), one for iOS and one for Android, to manage the tags and configuration for your mobile app. A mobile profile generates a file named `mobile.html` that is published to the following path at Tealium:
 
 `http://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html`
 

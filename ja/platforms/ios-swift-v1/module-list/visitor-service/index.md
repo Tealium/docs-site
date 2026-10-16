@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/visitor-serv
 ---
 ## 使用方法
 
-VisitorServiceモジュールは、Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)機能を実装しています。
+VisitorServiceモジュールは、Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)機能を実装しています。
 
 このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合は、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
 
@@ -30,7 +30,7 @@ pod 'tealium-swift/TealiumCollect' //or 'tealium-swift/TealiumTagManagement'
 pod 'tealium-swift/TealiumVisitorService'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podと、ディスパッチサービスpods（`TealiumCollect`または`TealiumTagManagement`のいずれか）に依存しています。iOSのCocoaPodsインストールについて[詳しくはこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)。
+フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しており、ディスパッチサービスpods（`TealiumCollect`または`TealiumTagManagement`のいずれか）のいずれかが必要です。iOSのCocoaPodsインストールについて[詳しくはこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)。
 
 ### Carthage
 
@@ -43,7 +43,7 @@ CarthageでVisitorServiceモジュールをインストールするには、以�
       ```ruby
       TealiumVisitorService.framework
       ```
-3. VisitorServiceモジュールを構成するために、プロジェクトに以下の必要なインポートステートメントを追加します：
+3. VisitorServiceモジュールを構成するために、プロジェクトに以下の必要なインポート文を追加します：
 
       ```swift
       import TealiumCore
@@ -51,13 +51,13 @@ CarthageでVisitorServiceモジュールをインストールするには、以�
       import TealiumVisitorService
       ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`と少なくとも1つのディスパッチサービス（`TealiumCore`または`TealiumTagManagement`）に依存しています。追加のインポートステートメントは必要ありません。
+フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しており、少なくとも1つのディスパッチサービス（`TealiumCore`または`TealiumTagManagement`）が必要です。追加のインポート文は必要ありません。
 
 iOSのCarthageインストールについて[詳しくはこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)。
 
 ## 訪問データオブジェクト
 
-訪問プロファイルは、各属性タイプのネイティブ構造体を含むオブジェクトです。訪問プロファイルオブジェクト内には、訪問/訪問属性タイプを区別するための`currentVisit`プロパティがあります。オーディエンスを除き、各属性値はIDを使用してサブスクリプトでアクセス可能です。`audiences`属性は、サブスクリプトを介してクエリされたオーディエンスのメンバーであるかどうかを`true`/`false`で単純に返します。以下のリストで例を参照してください。
+訪問プロファイルは、各属性タイプのネイティブ構造体を含むオブジェクトです。訪問プロファイルオブジェクト内には、訪問/訪問属性タイプを区別するための`currentVisit`プロパティがあります。オーディエンスを除き、各属性値はIDを使用してサブスクリプトでアクセス可能です。`audiences`属性は、サブスクリプトを通じてクエリされたオーディエンスのメンバーであるかどうかを`true`/`false`で返します。以下のリストを参照してください。
 
 **属性タイプ**
 
@@ -82,7 +82,7 @@ iOSのCarthageインストールについて[詳しくはこちら](https://docs
 
 | 使用法 | 説明 |  タイプ | 例 |
 | --- | --- | --- | --- |
-| `profile.arraysOfBooleans` | 訪問プロファイルのすべてのブール値の配列を返します。 | `[BooleanArray]` | `[BooleanArray(id: "2333", value: [true,false]), BooleanArray(id: "1123", value: [true,true])]` |
+| `profile.arraysOfBooleans` | 訪問プロファイル内のすべてのブール値の配列を返します。 | `[BooleanArray]` | `[BooleanArray(id: "2333", value: [true,false]), BooleanArray(id: "1123", value: [true,true])]` |
 | `profile.arraysOfBooleans["2815"]` | idによるブール値の配列を返します。 | `[Bool]` | `true` |
 
 使用例：
@@ -104,7 +104,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
-| `profile.arraysOfNumbers` | 訪問プロファイルのすべての数値の配列を返します。 | `[NumberArray]` | `[NumberArray(id: "2333", value: [2.0, 1.0]), NumberArray(id: "1123", value: [4.82125, 3.0])]`|
+| `profile.arraysOfNumbers` | 訪問プロファイル内のすべての数値の配列を返します。 | `[NumberArray]` | `[NumberArray(id: "2333", value: [2.0, 1.0]), NumberArray(id: "1123", value: [4.82125, 3.0])]`|
 | `profile.arraysOfNumbers["2815"]` | idによる数値の配列を返します。 | `[Double]` | `[4.82125, 3.0]` |
 
 使用例：
@@ -114,7 +114,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
         guard let profile is profile else { return }
 
         // 数値の配列を返す
-        if let arraysOfNumbers = profile. arraysOfNumbers?["5279"] {
+        if let arraysOfNumbers = profile.arraysOfNumbers?["5279"] {
             arraysOfNumbers.forEach { number in
         		if number > 3.0 {
         			// ... take action
@@ -129,7 +129,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
-| `profile.arraysOfStrings` | 訪問プロファイルのすべての文字列の配列を返します。 | `[StringArray]` | `[StringArray(id: "1033", value: ["Foundation", "Perfume"), StringArray(id: "3390", value: ["Bootleg Jeans", "Dresses"])]` |
+| `profile.arraysOfStrings` | 訪問プロファイル内のすべての文字列の配列を返します。 | `[StringArray]` | `[StringArray(id: "1033", value: ["Foundation", "Perfume"), StringArray(id: "3390", value: ["Bootleg Jeans", "Dresses"])]` |
 | `profile.arraysOfStrings["3390"]` | idによる文字列の配列を返します。 | `[String]` | `["Bootleg Jeans", "Dresses"]` |
 
 使用例：
@@ -149,11 +149,11 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 }
 ```
 #### `audiences`
-カスタムサブスクリプションにより、訪問のオーディエンスIDと名前に基づいてオーディエンスメンバーシップのチェックが可能です。
+カスタムサブスクリプションにより、訪問のオーディエンスIDと名前でのメンバーシップのチェックが可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
-| `profile.audiences` | 訪問がメンバーである全オーディエンスを返します。 | `[Audience]` | `[Audience(id: "tealiummobile\_demo\_103", name: "iOS Users"), Audience(id: "tealiummobile\_demo\_110", name: "Visitors - Known")]` |
+| `profile.audiences` | 訪問がメンバーである全オーディエンスを返します。 | `[Audience]` | `[Audience(id: "tealiummobile_demo_103", name: "iOS Users"), Audience(id: "tealiummobile_demo_110", name: "Visitors - Known")]` |
 | `profile.audiences[id: "103"]` | IDに基づいて訪問がオーディエンスのメンバーかどうかをtrue/falseで返します。 | `Bool` | `true`|
 | `profile.audiences[name: "ios users"]` | 名前に基づいて訪問がオーディエンスのメンバーかどうかをtrue/falseで返します。名前は大文字小文字を区別しません。 | `Bool` | `false` |
 
@@ -183,7 +183,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `badges`
-カスタムサブスクリプションにより、IDによるバッジ値のクエリが可能です。
+カスタムサブスクリプションにより、IDによるバッジ値の照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -204,7 +204,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `booleans`
-カスタムサブスクリプションにより、IDによるブール値のクエリが可能です。
+カスタムサブスクリプションにより、IDによるブール値の照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -215,7 +215,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 
 ```swift
 func profileDidUpdate(profile: TealiumVisitorProfile?) {
-        guard let profile is profile else { return }
+        guard let profile = profile else { return }
 
         // ブール値を返す
         if let booleanValue = profile.booleans?["4479"] {
@@ -227,18 +227,18 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `currentVisit`
-訪問のライフタイム属性ではなく、現在の訪問に関する属性へのアクセス。
+訪問のライフタイム属性ではなく、現在の訪問の属性にアクセスします。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
-| `profile.currentVisit` | 現在の訪問に関する属性を返します。 | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile (dates: [DateTime(id: "5376", value: 1567536668080), DateTime(id: "10", value: 1567536668000)], booleans: [Boolean(id: "4530", value: true)], numbers: [Number(id: "32", value: 3.8)])` |
-| `profile.currentVisit.###` | ###に応じて属性を返します。上記にリストされたメソッドはすべて適用されますが、オーディエンスとバッジは訪問属性専用であり、訪問には適用されません。 | 変動 | 変動 |
+| `profile.currentVisit` | 現在の訪問のスコープ属性を返します。 | `TealiumCurrentVisitProfile` | `TealiumCurrentVisitProfile (dates: [DateTime(id: "5376", value: 1567536668080), DateTime(id: "10", value: 1567536668000)], booleans: [Boolean(id: "4530", value: true], numbers: [Number(id: "32", value: 3.8)])` |
+| `profile.currentVisit.###` | ###に応じて属性を返します。上記に記載されているメソッドはすべて適用されますが、オーディエンスとバッジは訪問属性のみで訪問には適用されません。 | 変動 | 変動 |
 
 使用例:
 
 ```swift
 func profileDidUpdate(profile: TealiumVisitorProfile?) {
-        guard let profile = profile else { return }
+        guard let profile is a member of this audience, take appropriate action = profile else { return }
 
         // 現在の訪問の文字列属性を返す
         if let currentVisit = profile.currentVisit,
@@ -250,7 +250,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `dates`
-カスタムサブスクリプションにより、IDによる日付値のクエリが可能です。
+カスタムサブスクリプションにより、IDによる日付値の照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -272,7 +272,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `numbers`
-カスタムサブスクリプションにより、IDによる数値のクエリが可能です。
+カスタムサブスクリプションにより、IDによる数値の照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -296,7 +296,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 
 #### `setsOfStrings`
 
-カスタムサブスクリプションにより、IDによる文字列セットのクエリが可能です。
+カスタムサブスクリプションにより、IDによる文字列セットの照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -307,7 +307,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 
 ```swift
 func profileDidUpdate(profile: TealiumVisitorProfile?) {
-        guard let profile is profile else { return }
+        guard let profile = profile else { return }
 
         // 文字列セットの値を返す
         if let setOfStrings = profile.setsOfStrings?["5279"] {
@@ -319,7 +319,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 ```
 
 #### `strings`
-カスタムサブスクリプションにより、IDによる文字列値のクエリが可能です。
+カスタムサブスクリプションにより、IDによる文字列値の照会が可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -340,7 +340,7 @@ func profileDidUpdate(profile: TealiumVisitorProfile?) {
 }
 ```
 #### `tallies` と `tallyValue`
-カスタム添字を使用して、IDによる集計のクエリとIDによる集計値のクエリが可能です。
+カスタム添字を使用して、IDによる集計のクエリと、IDによる集計値のクエリが可能です。
 
 | 使用法 | 説明 |  タイプ | 例  |
 | --- | --- | --- | --- |
@@ -393,7 +393,7 @@ class MyHelperClass {
 
 			// self.tealiumは完了ブロック内で初期化が保証されています
 
-			self.tealium?.visitorService()? // visitorProfileオブジェクトの公開APIメソッドを参照してください
+			self.tealium?.visitorService()?.
 		}
 	}
 }
@@ -401,9 +401,9 @@ class MyHelperClass {
 
 #### `requestVisitorProfile()`
 
-このメソッドは、VisitorServiceに現在のプロファイルを即時に要求します。プロファイルが最後のフェッチ以降に更新されていた場合、`profileDidUpdate`デリゲートメソッドが呼び出されます。
+このメソッドは、VisitorServiceに現在のプロファイルを即時に要求します。プロファイルが最後のフェッチ以来更新されている場合、`profileDidUpdate` デリゲートメソッドが呼び出されます。
 
-このメソッドは、トラックリクエストが送信されるたびに自動的に呼び出されますが、訪問プロファイルの更新間隔を`0`に構成していない限り、毎回プロファイルが取得されるわけではありません。更新間隔を高い値に構成している場合は、次のスケジュールされた更新を待たずにこのメソッドを呼び出してプロファイルを即座に取得することができます。
+このメソッドは、トラックリクエストが送信されるたびに自動的に呼び出されますが、訪問プロファイルの更新間隔を `0` に構成していない限り、プロファイルは毎回取得されません。更新間隔を高い値に構成している場合は、次のスケジュールされた更新を待たずに、このメソッドを呼び出してプロファイルを即座に取得することができます。
 
 ```swift
 self.tealium?.visitorService()?.requestVisitorProfile()
@@ -428,20 +428,20 @@ func track(title: String, data: [String: Any]?) {
 
 #### `getCachedProfile()`
 
-最近取得した訪問プロファイルを永続保存から返します。新たなリクエストをトリガーせずに、インターネット接続がない状況でも以前の成功したリクエストがあれば役立ちます。
+最近取得した訪問プロファイルを永続保存から返しますが、新しいリクエストはトリガーされません。インターネット接続がない状況で以前の成功したリクエストが行われている場合に便利です。
 
 例:
 
 ```swift
 self.tealium?.visitorService()?.getCachedProfile(completion: { profile in
                 guard let profile = profile else { return }
-                if let json = try? JSONEncoder().encode(profile), let string = String(data: json, encoding: .utf8) {
+                if let json = try? JSONEncoder().encode(profile), let string = String(data: 					json, encoding: .utf8) {
                     print(string)
-   		}
+   		})
 })
 ```
 
-| パラメータ | 説明 | 例値 |
+| パラメータ | 説明 | 例の値 |
 | --- | --- | --- |
 | completion: TealiumVisitorProfile? | |  |
 
@@ -474,7 +474,7 @@ self.tealium?.visitorService()?.addVisitorServiceDelegate(self)
 ```swift
 self.tealium?.visitorService()?.removeSingleDelegate(self)
 ```
-| パラメータ | 説明 | 例値 |
+| パラメータ | 説明 | 例の値 |
 | --- | --- | --- |
 | delegate: `VisitorServiceDelegate`に準拠するクラス | | `ViewController, TealiumHelper` |
 
@@ -483,11 +483,11 @@ self.tealium?.visitorService()?.removeSingleDelegate(self)
 
 #### `profileDidUpdate()`
 
-訪問プロファイルが更新されたときにこのメソッドが呼び出されます。これは、`requestVisitorProfile()`メソッドが使用されるたびにほとんどの場合呼び出されます。
+訪問プロファイルが更新されたときにこのメソッドが呼び出されます。これは、`requestVisitorProfile()`メソッドが使用されるたびにほとんどの場合呼び出されるでしょう。
 
 ```swift
 func profileDidUpdate(profile: TealiumVisitorProfile?) {
-        guard let profile is profile else { return }
+        guard let profile = profile else { return }
 
         // プロファイル属性に対応する
         print(profile.audiences)
@@ -535,13 +535,13 @@ config.getVisitorServiceDelegates()
 訪問プロファイルを取得するプロファイルを上書きします。Collectモジュールで使用されるプロファイルと一致する必要があります。
 
 ```swift
-config.setVisitorServiceOverrideProfile("PROFILE")
+config. setVisitorServiceOverrideProfile("PROFILE")
 ```
 
 #### `setVisitorServiceOverrideURL()`
 
 ```swift
-config.setVisitorServiceOverrideURL("https://overridden-subdomain.yourdomain.com/")
+config. setVisitorServiceOverrideURL("https://overridden-subdomain.yourdomain.com/")
 ```
 訪問プロファイルが取得される基本URLを上書きします。ACCOUNT、PROFILE、および訪問IDは自動的にURLに追加されます。
 

@@ -133,4 +133,4 @@ Toggle on or off to set this value if this profile uses a `utag.footer.js` file 
 
 ## Mobile library publishing
 
-In this tab, you can activate mobile library support by clicking **Activate Mobile Library**. Learn more about [Creating a Mobile Profile]().
+In this tab, you can activate mobile library support by clicking **Activate Mobile Library**. Learn more about [Creating a Mobile Profile](https://docs.tealium.com/create-mobile-profile/).

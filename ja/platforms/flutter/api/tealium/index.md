@@ -21,16 +21,16 @@ url: https://docs.tealium.com/ja/platforms/flutter/api/tealium/
 | [`initialize()`](#initialize) | 構成パラメーターでTealiumを初期化します |
 | [`joinTrace()`](#jointrace) | 指定されたIDでトレースに参加します |
 | [`leaveTrace()`](#leavetrace) | 以前に参加したトレースを離れ、訪問セッションを終了します |
-| [`removeFromDataLayer()`](#removefromdatalayer) | `addToDataLayer()`を使用して以前に構成された永続的なデータキー値ペアのリストを削除します |
+| [`removeFromDataLayer()`](#removefromdatalayer) | 以前に`addToDataLayer()`を使用して構成された永続的なデータキー値ペアのリストを削除します |
 | [`removeRemoteCommand()`](#removeremotecommand) | リモートコマンドマネージャーからリモートコマンドを削除します |
-| [`resetVisitorId()`](#resetvisitorid) | ユーザーのために新しい訪問IDを生成します。 |
+| [`resetVisitorId()`](#resetvisitorid) | ユーザーの新しい訪問IDを生成します。 |
 | [`setConsentCategories()`](#setconsentcategories) | ユーザーの同意カテゴリを構成します |
-| [`setConsentExpiryListener()`](#setconsentexpirylistener) | 同意期限切れリスナー/コールバックを構成します |
+| [`setConsentExpiryListener()`](#setconsentexpirylistener) | 同意期限が切れたときのリスナー/コールバックを構成します |
 | [`setConsentStatus()`](#setconsentstatus) | ユーザーの同意状態を構成します |
 | [`setVisitorIdListener()`](#setvisitoridlistener) | `visitorId`の変更に関するリスナーを追加します。 |
-| [`setVisitorServiceListener()`](#setvisitorservicelistener) | 訪問サービスリスナー/コールバックを構成します |
+| [`setVisitorServiceListener()`](#setvisitorservicelistener) | 訪問サービスのリスナー/コールバックを構成します |
 | [`terminateInstance()`](#terminateinstance) | Tealiumライブラリを無効にし、すべてのモジュール参照を削除することでTealiumインスタンスを終了します |
-| [`track()`](#track) | イベントまたは画面表示をトラックします |
+| [`track()`](#track) | イベントまたは画面表示を追跡します |
 
 ### `addCustomRemoteCommand()`
 
@@ -63,7 +63,7 @@ Tealium.addRemoteCommand(remoteCommand);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `remoteCommand` | `RemoteCommand` | パス、URL、またはwebview構成を持つ事前に構築されたリモートコマンド。 | 下記の例を参照。 |
+| `remoteCommand` | `RemoteCommand` | パス、URL、またはWebView構成を持つ事前に構築されたリモートコマンド。 | 下記の例を参照。 |
 
 例:
 
@@ -75,7 +75,7 @@ Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName)); // webview
 
 ### `addToDataLayer()`
 
-指定された有効期限のために永続的なデータレイヤーにデータを追加します。
+指定された有効期限で永続的なデータレイヤーにデータを追加します。
 
 ```dart
 Tealium.addToDataLayer(data, expiry);
@@ -83,7 +83,7 @@ Tealium.addToDataLayer(data, expiry);
 
 | パラメータ | タイプ | 説明 | 例 |
 | --- | --- | --- | --- |
-| `data` | `Map<String, Object>` | 文字列のキーと文字列または文字列の配列の値を持つJSONオブジェクト | `{'persistent_key' : 'persistent_val'}` |
+| `data` | `Map<String, Object>` | 文字列のキーと値が文字列または文字列の配列であるキー値ペアのJSONオブジェクト | `{'persistent_key' : 'persistent_val'}` |
 | `expiry` | `Expiry` | データを永続させる時間の長さ | `Expiry.forever` |
 
 ### `clearStoredVisitorIds()`
@@ -271,7 +271,7 @@ Tealium.resetVisitorId();
 
 ### `setConsentCategories()`
 
-ユーザーの同意カテゴリを構成します。カテゴリの配列を渡して構成します。デフォルトは空の配列で、`ConsentStatus`が`ConsentStatus.consented`に構成されるまでです。同意ステータスが`ConsentStatus.consented`で、`setConsentCategories()`メソッドでカテゴリが指定されていない場合、すべてのカテゴリが構成されます。
+ユーザーの同意カテゴリを構成します。文字列の配列を渡してカテゴリを構成します。デフォルトは、`ConsentStatus`が`ConsentStatus.consented`に構成されるまで空の配列です。同意ステータスが`ConsentStatus.consented`で`setConsentCategories()`メソッドでカテゴリが指定されていない場合、すべてのカテゴリが構成されます。
 
 ```dart
 Tealium.setConsentCategories(categories);
@@ -311,7 +311,7 @@ Tealium.setConsentCategories([ConsentCategories.analytics, ConsentCategories.ema
 
 ### `setConsentExpiryListener()`
 
-ユーザーの同意構成が`ConsentExpiry`に従って期限切れになった後に実行するコールバックを構成します。
+ユーザーの同意構成が期限切れになった後に実行するコールバックを構成します。
 
 ```dart
 Tealium.setConsentExpiryListener(callback);
@@ -327,7 +327,7 @@ Tealium.setConsentExpiryListener(() => print('Consent Expired'));
 
 ### `setConsentStatus()`
 
-ユーザーの同意ステータスを構成します。デフォルトは`ConsentStatus.unknown`で、ステータスが更新されるまでです。
+ユーザーの同意ステータスを構成します。デフォルトはステータスが更新されるまで`ConsentStatus.unknown`です。
 
 ```dart
 Tealium.setConsentStatus(status);
@@ -369,4 +369,135 @@ Tealium.setVisitorIdListener(callback);
 
 ```dart
 Tealium.setVisitorIdListener((newVisitorId) => print(newVisitorId));
+```
+
+
+### `setVisitorServiceListener()`
+
+訪問プロファイルが更新されたときに実行するコールバックを構成します。更新された`VisitorProfile`はコールバックのレスポンスで提供されます。
+
+Tealium Customer Data Hubの[Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/)機能を実装するVisitorServiceモジュールです。
+
+このモジュールの使用は、Tealium AudienceStreamのライセンスを持っていて、訪問プロファイルを使用してモバイルアプリケーションのユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。
+
+```dart
+Tealium.setVisitorServiceListener(callback);
+```
+
+| パラメータ | 型 | 説明 |
+|-----------|-------------| ---- |
+| `callback`  | `Function` | 更新された訪問プロファイルが返された後に実行するコード |
+
+例:
+
+```dart
+Tealium.setVisitorServiceListener((profile) {
+    print(JsonEncoder().convert(profile));
+});
+```
+
+### `terminateInstance()`
+
+Tealiumライブラリを無効にし、すべてのモジュール参照を削除することでTealiumインスタンスを終了します。必要に応じて新しいTealiumインスタンスを作成することで再度有効にします。
+
+```dart
+Tealium.terminateInstance();
+```
+
+### `track()`
+
+オプションのイベントデータを持つ画面表示またはイベントを追跡します。
+
+```dart
+Tealium.track(tealEvent);
+```
+
+| パラメータ | 型 | 説明 |  
+|-----------|-------------| ---- |
+| `tealEvent` | `TealiumDispatch` | イベント名とイベントデータを持つTealiumディスパッチ。 |
+
+画面表示またはイベントを追跡するには、[`TealiumView`](#class-tealiumview)または[`TealiumEvent`](#class-tealiumevent)のインスタンスを`track()`メソッドに渡します:
+
+```dart
+final tealEvent = TealiumEvent(
+  'cart_add', 
+  {
+    'customer_id': 'abc123', 
+    'product_id': ["PROD123", "PROD456"], 
+    'product_price': [4.00, 6.00]
+  }
+);
+Tealium.track(tealEvent);
+```
+
+### `gatherTrackData()`
+
+すべてのコレクターとデータレイヤーからすべてのデータを収集します。
+
+例:
+
+```dart
+Tealium.gatherTrackData()
+  .then((data) => print('Gather track data: $data'));
+```
+
+## インターフェース: `TealiumDispatch`
+
+追跡するディスパッチのタイプを定義するインターフェースです。以下のクラスが`TealiumDispatch`を実装しています:
+
+### クラス: `TealiumEvent`
+
+ユーザーの画面操作または画面表示を追跡するには、`TealiumEvent(eventName, dataLayer)`のインスタンスを[`track()`](#track)メソッドに渡します。`TealiumEvent`は、追跡コールに`tealium_event`として表示されるイベント名と、オプションのデータ辞書を含みます。
+
+```dart
+final tealEvent = TealiumEvent(eventName, dataLayer);
+Tealium.track(tealEvent);
+```
+
+| パラメータ  | 型    | 説明      | 
+|:------------|:--------|:-----------------|
+| `eventName` | `String` | `tealium_event`属性として渡されるイベント名。  |
+| `dataLayer` | `Map<String, Object>` | (オプション) イベントに送信されるキー値形式のデータ。 |
+
+例:
+
+```dart
+final tealEvent = TealiumEvent(
+  'cart_add', 
+  {
+    'customer_id': 'abc123', 
+    'product_id': ["PROD123", "PROD456"], 
+    'product_price': [4.00, 6.00]
+  }
+);
+Tealium.track(tealEvent);
+```
+
+### クラス: `TealiumView`
+
+画面表示を追跡するには、`TealiumView(viewName, dataLayer)`のインスタンスを[`track()`](#track)メソッドに渡します。`TealiumView`は、追跡コールに`tealium_event`として表示されるビュー名と、オプションのデータオブジェクトを含みます。
+
+```dart
+final screenView = TealiumView(viewName, dataLayer);
+Tealium.track(screenView);
+```
+
+| パラメータ  | 型    | 説明      |
+|:------------|:--------|:-----------------|
+| `viewName`  | `String`| `tealium_event`属性として渡されるビュー名。|
+| `dataLayer` | `Map<String, Object>` | (オプション) イベントに送信されるキー値形式のデータ。 | 
+
+例:
+
+```dart
+final screenView = TealiumView(
+  'purchase', 
+  {
+    'customer_id': 'abc123', 
+    'order_total': 10.00, 
+    'product_id': ["PROD123", "PROD456"], 
+    'order_id': '0123456789'
+  }
+);
+Tealium.track(screenView);
 ```

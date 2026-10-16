@@ -28,7 +28,7 @@ url: https://docs.tealium.com/ja/administration/early-access/tealium-prism/publi
 
 このツールは、現在開いているモバイルプロファイルの構成を読み取り、Prism構成ファイルとして公開します。
 
-公開されたファイルはSDK構成のリモート層です。アプリのプログラム構成がそれを上書きします。詳細については、[構成ガバナンス](https://docs.tealium.com/about-tealium-prism/#configuration-governance)を参照してください。
+公開されたファイルはSDK構成のリモート層です。アプリのプログラム構成がそれを上書きします。詳細については、[構成ガバナンス](https://docs.tealium.com/about-prism-mobile/#advanced-configuration)を参照してください。
 
 ### 環境
 
@@ -40,7 +40,7 @@ url: https://docs.tealium.com/ja/administration/early-access/tealium-prism/publi
 | QA | `mobile_settings_qa` | `https://tags.tiqcdn.com/dle/<account>/<profile>/mobile_settings_qa.json` |
 | Prod | `mobile_settings_prod` | `https://tags.tiqcdn.com/dle/<account>/<profile>/mobile_settings_prod.json` |
 
-各環境のファイルのURLをアプリの`TealiumConfig`の構成URLとして構成します。詳細については、[クイックスタートガイド](https://docs.tealium.com/quick-start/)を参照してください。SDKはアカウント、プロファイル、または環境からURLを導出しません。アプリのURLは公開されたファイルと正確に一致する必要があります。
+各環境のファイルのURLをアプリの`TealiumConfig`の構成URLとして構成します。詳細については、[クイックスタートガイド](https://docs.tealium.com/quick-start-prism/)を参照してください。SDKはアカウント、プロファイル、または環境からURLを導出しません。アプリのURLは公開されたファイルと正確に一致する必要があります。
 
 ### カスタム構成ファイル名
 
@@ -52,7 +52,7 @@ url: https://docs.tealium.com/ja/administration/early-access/tealium-prism/publi
 
 **JSONをダウンロード**をクリックして構成ファイルを生成し、それをアプリにローカル構成ファイルとしてバンドルします。バンドルされたファイルは、接続性が限られている場合でも最初の起動時にSDKを完全に構成します。リモート構成は、SDKがそれらをフェッチした後、バンドルされたファイルを上書きします。
 
-ローカル構成ファイルを指定する方法の詳細については、[クイックスタートガイド](https://docs.tealium.com/quick-start/)を参照してください。
+ローカル構成ファイルを指定する方法の詳細については、[クイックスタートガイド](https://docs.tealium.com/quick-start-prism/)を参照してください。
 
 ### APIキー
 
