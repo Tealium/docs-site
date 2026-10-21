@@ -38,7 +38,7 @@ When you are logged in and anticipate changes from concurrent users, it's import
 
 When you want to start a new long-term project, load the currently published version using the profile switcher and perform a **Save As** to create a new version for your planned changes. Make all configuration changes to the new version. When the changes are completed and tested, publish the new version to production.
 
-When you make changes to a version, logged-in users who have that version loaded are notified, even if you haven’t saved or published the changes. After you save the changes, those other users are notified that they can integrate those changes into their versions to ensure they have the latest updates. If you do not immediately update your version to include those changes, you can include the changes the next time you save or publish.
+When you make changes to a version, logged-in users who have that version loaded are notified, even if you have not saved or published the changes. After you save the changes, those other users are notified that they can integrate those changes into their versions to ensure they have the latest updates. If you do not immediately update your version to include those changes, you can include the changes the next time you save or publish.
 
 ## Viewing other active users
 
@@ -72,7 +72,7 @@ If you have made changes, the following notification appears:
 
 ![](https://docs.tealium.com/images/server-side/save-publish/concurrency-notification-changesmade.png)
 
-Click **Save** to integrate the other user’s changes into your work. A new dialog opens that contains information about the save:
+Click **Save** to integrate the other user's changes into your work. A new dialog opens that contains information about the save:
 
 ![](https://docs.tealium.com/images/server-side/save-publish/review-changes.png)
 
@@ -88,6 +88,8 @@ If both your changes and those in the latest published version have altered the 
 ![](https://docs.tealium.com/images/server-side/save-publish/concurrent-user-publish-conflict.png)
 
 Publishing your version replaces the existing items in the published version with yours.
+
+The save/publish modal also surfaces **Excluded deletes** (items that cannot be deleted because of dependencies in the published configuration) and **Warnings** (active validation issues). For more information, see [Server-side save and publish workflow](https://docs.tealium.com/ss-save-and-publish/).
 
 ## Another user publishes
 

@@ -14,7 +14,7 @@ This setting is separate from the [Data Layer Enrichment configuration in Tealiu
 
 When data layer enrichment is enabled, both APIs are available and return data for valid requests.
 
-When data layer enrichment is disabled, both APIs return a `404` response. Integrations that rely on these APIs stop receiving data. The Tealium Collect tag also uses this endpoint to retrieve visitor attributes, so disabling data layer enrichment also stops client-side attribute sync in Tealium iQ.
+When data layer enrichment is disabled, both the Data Layer Enrichment API and the Profile Definition API return a `200` response with an empty JSON object. Existing integrations that rely on these APIs stop receiving data from them. The Tealium Collect tag also uses this endpoint to retrieve visitor attributes, so disabling data layer enrichment also stops client-side attribute sync in Tealium iQ.
 
 Data layer enrichment is enabled by default on existing profiles and disabled by default on new profiles. If you are setting up data layer enrichment on a new profile, enable this setting before using the APIs.
 

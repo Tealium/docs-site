@@ -5,6 +5,10 @@ url: https://docs.tealium.com/server-side-connectors/connector-insights-pinteres
 ---
 Connector Insights for the Pinterest Conversions connector helps you monitor the quality of conversion events sent to Pinterest. Use it to review EQS status, source platform data, component coverage and overlap, and issues detected by Pinterest.
 
+
+
+The API Insights detail panel provides an actionable view of conversion event quality. For each event, you can review component-level coverage and overlap, identify issues detected by Pinterest, and open a detailed breakdown to understand which components require attention and why. Use these insights to diagnose data or mapping gaps, make targeted updates to your Tealium implementation, and monitor improvements in the quality and reliability of your Pinterest conversion signals.
+
 ## Access
 
 Go to **Connect > Connectors**, find the **Pinterest Conversions** connector, and click the **Insights** tab.

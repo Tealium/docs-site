@@ -29,6 +29,8 @@ Any time your current version is behind the published version, integrate the pub
     The currently published version includes changes that are not in your current version. To view those changes, click **View latest published changes**. For more about these status messages and how to use them, see [About Server-Side Saving and Publishing](https://docs.tealium.com/about-save-publish/).
 * **Delete items only from the published version**:  
 To permanently delete an item, delete it from the published version. If you delete an item from a version that is not the published version and then save and publish, the platform will restore the deleted item during publishing. This is to prevent accidental removal of dependencies, such as attributes required by audiences.
+* **Resolve validation warnings before publishing**:  
+When you open the save/publish modal, review any warnings listed in the **Warnings** section. Warnings do not block save or publish, but unresolved warnings can indicate misconfigured items that may cause unexpected behavior in production. Resolve warnings before publishing to reduce the risk of disrupting live workflows.
 
 ## Example workflows
 

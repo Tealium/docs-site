@@ -1,6 +1,6 @@
 ---
 title: mParticle by Rokt Tag Setup Guide
-description: This article describes how to set up the mParticle by Rokt tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the mParticle by Rokt tag in your Tealium Tag Management account.
 url: https://docs.tealium.com/client-side-tags/mparticle-by-rokt-tag/
 ---
 ## Tag tips
@@ -10,6 +10,12 @@ Use mappings to:
   * Map event-specific parameters to event names.
   * Dynamically override standard config values.
   * Dynamically override E-Commerce extension values.
+
+
+<blockquote>
+A tag template update is required to use the new identity, attribute, and placement mappings added in the v3 update. Existing mappings continue to work with older templates.
+</blockquote>
+
 
 ## Tag configuration
 
@@ -45,26 +51,37 @@ The available categories are:
 | Variable | Type/Values | Description |
 |:---------|:-----|:------------|
 | `userIdentities.email` | String | Email. |
-| `userIdentities.other` | String | Hashed email. |
+| `userIdentities.email_sha256` | String | Hashed email. |
+| `userIdentities.mobile_number` | String | Mobile number in E.164 format. |
+| `userIdentities.mobile_sha256` | String | Hashed mobile number. |
+| `userIdentities.customerid` | String | Customer or account identifier. |
+| `userIdentities.other` | String | (Deprecated) Hashed email. Use `userIdentities.email_sha256` instead. |
 
 ### User attributes
 
 | Variable | Type/Values | Description |
 |:---------|:-----|:------------|
 | `firstname` | String | First name. |
+| `firstnamesha256` | String | Hashed first name. |
 | `lastname` | String | Last name. |
-| `mobile` | String | Mobile number. |
+| `lastnamesha256` | String | Hashed last name. |
+| `mobile_number` | String | Mobile number. |
+| `mobilesha256` | String | Hashed mobile number. |
+| `mobile` | String | (Deprecated) Mobile number. Use `mobile_number` instead. |
 | `age` | String | Age. |
 | `gender` | String | Gender. |
 | `city` | String | City. |
 | `state` | String | State. |
 | `zip` | String | Zip code. |
+| `zipsha256` | String | Hashed zip code. |
+| `zip4sha256` | String | Hashed zip code +4. |
+| `billingzipsha256` | String | Hashed billing zip code. |
+| `billingzip4sha256` | String | Hashed billing zip code +4. |
 | `dob` | String | Date of birth. |
 | `title` | String | Title. |
 | `language` | String | Language. |
 | `value` | String | Value. |
 | `predictedltv` | String | LTV. |
-| `cartItems` | Array of Strings | Cart items array. |
 
 ### Page view attributes
 
@@ -81,27 +98,42 @@ The available categories are:
 | `amount` | String | Amount (Overrides `_csubtotal`). |
 | `currency` | String | Currency (Overrides `_ccurrency`). |
 
+### Select placements
+
+| Variable | Type/Values | Description |
+|:---------|:-----|:------------|
+| `identifier` | String | Rokt placement identifier. |
+| `cartItems` | Array of Objects | Cart line items. Each item is a structured object. |
+
 ### Event-specific parameters
 
-To map events, refer to [Create an event mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
-
-| Event | Description |
+| Parameter | Description |
 |:------|:------------|
-| `email` | Email. |
-| `firstname` | Customer first name. |
-| `lastname` | Customer last name. |
-| `paymenttype` | Payment type. |
-| `shippingtype` | Shipping type. |
-| `ccbin` | Credit card BIN. |
-| `billingaddress1` | Billing address. |
-| `billingaddress2` | Billing address line 2. |
-| `billingzipcode` | Billing zip code. |
-| `mobile` | Mobile/cell. |
-| `country` | Country. |
-| `language` | Language. |
-| `age` | Age. |
-| `gender` | Gender. |
-| `identifier` | Page identifier. |
-| `cartItems` | Cart items array. |
-| `pageView` | Page view. |
-| `selectPlacements` | Select placements. |
+| `email` | Email |
+| `firstname` | Customer First Name |
+| `lastname` | Customer Last Name |
+| `paymenttype` | Payment Type |
+| `shippingtype` | Shipping Type |
+| `shippingmethod` | Shipping Method |
+| `paymentServiceProvider` | Payment Service Provider |
+| `ccbin` | ccbin |
+| `billingaddress1` | Billing Address |
+| `billingaddress2` | Billing Address 2 |
+| `billingzipcode` | Billing Zip Code |
+| `mobile` | Mobile/Cell |
+| `mobile_number` | Mobile Number |
+| `mobilesha256` | Mobile SHA256 |
+| `firstnamesha256` | First Name SHA256 |
+| `lastnamesha256` | Last Name SHA256 |
+| `zipsha256` | Zip SHA256 |
+| `zip4sha256` | Zip4 SHA256 |
+| `billingzipsha256` | Billing Zip SHA256 |
+| `billingzip4sha256` | Billing Zip4 SHA256 |
+| `country` | Country |
+| `language` | Language |
+| `age` | Age |
+| `gender` | Gender |
+| `identifier` | Page Identifier |
+| `cartItems` | Cart Items |
+| `pageView` | Page View |
+| `selectPlacements` | Select Placements |
