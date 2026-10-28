@@ -33,14 +33,46 @@ After adding the connector, configure the following settings:
 
 #### Parameters
 
-| Parameter | Description |
-| --- | --- |
-| Event Type | Required. Select the type of event to send to OpenAI. Each value maps to the `type` field in the OpenAI Events API and is required for every event.<br>Supported event types:<br>``appointment_scheduled``<br>``checkout_started``<br>``contents_viewed``<br>`custom`<br>``items_added``<br>``lead_created``<br>``order_created``<br>``page_viewed``<br>``registration_completed``<br>``subscription_created``<br>``trial_started``<br><br><br>Each event type maps to one of four data type objects: **contents**, **`customer_action`**, **`plan_enrollment`**, or **custom**.<br>Appointment Scheduled<br>Checkout Started<br>Contents Viewed<br>Custom<br>Items Added<br>Lead Created<br>Order Created<br>Page Viewed<br>Registration Completed<br>Subscription Created<br>Trial Started |
-| Custom Event Name | Required when Event Type is **Custom**. Provide a custom name for the event.<br>This value is ignored for all other event types. |
+**Event Type**
+
+Required. Select the type of event to send to OpenAI. Each value maps to the `type` field in the OpenAI Events API. Supported values:
+
+* `appointment_scheduled`
+* `attribution_appended`
+* `checkout_started`
+* `contents_viewed`
+* `custom`
+* `items_added`
+* `lead_created`
+* `order_created`
+* `page_viewed`
+* `registration_completed`
+* `subscription_created`
+* `trial_started`
+
+Each event type maps to one of five data type objects: `contents`, `customer_action`, `plan_enrollment`, `custom`, or `attribution`. See [Original Event Data](#original-event-data) and [Attribution Data](#attribution-data) for the `attribution_appended` fields.
+
+`attribution_appended` sends a separate attribution report that references an earlier conversion. In **Event Data**, **Event ID** is the attribution report ID. It must be unique and reused on exact retries. **Timestamp** is the report-generation time and defaults to the send time.
+
+
+<blockquote>
+`attribution_appended` is only available after OpenAI enables it for your advertiser pixel. Contact your OpenAI account team to confirm availability before using it in production.
+</blockquote>
+
+
+**Custom Event Name**
+
+Required when Event Type is **Custom**. Provide a custom name for the event. This value is ignored for all other event types.
 
 #### Event Data
 
 Map Tealium attributes to OpenAI top-level event fields.
+
+
+<blockquote>
+For **Attribution Appended** events, only **Event ID**, **Timestamp**, **Action Source**, **Source URL**, and **OPPRef** are sent. **Event ID** is the attribution report ID. It must be unique and reused on exact retries. **Timestamp** is the report-generation time and defaults to the send time if not mapped.
+</blockquote>
+
 
 | Parameter | Description |
 | --- | --- |
@@ -49,9 +81,15 @@ Map Tealium attributes to OpenAI top-level event fields.
 | OPPRef | The OpenAI privacy-preserving identifier. |
 | Source URL | Required when Action Source is `web`. The URL of the page where the event occurred. |
 | Action Source | The source of the conversion event. Supported values: `web`, `mobile_app`, `offline`, `physical_store`, `phone_call`, `email`, `other`. |
-| Opt Out | Set to `true` to flag the event as opted out from personalization. |
+| Opt Out | Set to `true` to flag the event as opted out of personalization. |
 
 #### User Data
+
+
+<blockquote>
+User Data is not sent for **Attribution Appended** events.
+</blockquote>
+
 
 * Map applicable user identifiers to improve attribution accuracy. For each PII field you may either pre-hash the value yourself or let the connector hash it for you.
 * Hashable fields offer two columns: (apply SHA256 hash) for raw values that the connector should normalize and hash, and (already SHA256 hashed) for values you have already hashed.
@@ -76,14 +114,47 @@ Map Tealium attributes to OpenAI top-level event fields.
 | IP Address | The IP address of the device. |
 | User Agent | The user agent string of the user's web browser. |
 
-#### E-Commerce
+#### Original Event Data
 
-For Customer Action events (**Appointment Scheduled**, **Lead Created**, **Registration Completed**) only the order-summary fields are accepted. OpenAI drops all other e-commerce fields from the outbound payload.
+These fields apply only when **Event Type** is set to `attribution_appended`. Map them to the original conversion event that this attribution report references.
 
 | Parameter | Description |
 | --- | --- |
-| Amount | An integer in minor units (for example, cents). If provided, Currency is required. |
-| Currency | The currency code in ISO 4217 format (for example, `USD`). |
+| Event ID | Required. The `event_id` of the original conversion event. Copy this value exactly. Do not regenerate it. |
+| Event Type | Required. The `type` value from the original conversion event. Supported values: `app_installed`, `app_opened`, `appointment_scheduled`, `checkout_started`, `contents_viewed`, `custom`, `items_added`, `lead_created`, `order_created`, `page_viewed`, `registration_completed`, `subscription_created`, `trial_started`. |
+| Timestamp (ms) | Required. The timestamp of the original conversion event in Unix milliseconds. May be older than 7 days. |
+| Custom Event Name | Required when original Event Type is `custom`. Omit for all other event types. |
+| Order ID | Optional. A metadata reference to the original order. Not a replacement for **Event ID**. |
+
+#### Attribution Data
+
+These fields apply only when **Event Type** is set to `attribution_appended`. They describe the OpenAI ad touchpoint credited for the original conversion and are never automapped or generated by Tealium.
+
+If any required attribution field is missing, the connector does not send the event. A validation error appears in Trace and the connector logs.
+
+| Parameter | Description |
+| --- | --- |
+| Ad ID | Required. The OpenAI ad (`ad_id`) receiving credit. |
+| Touchpoint Timestamp (ms) | Required. The timestamp of the ad touchpoint in Unix milliseconds. May be older than 7 days. |
+| Touchpoint Type | Required. The type of touchpoint (for example, `ad_click`). |
+| Attribution Share | Required. A number from 0 through 1 inclusive. |
+| Attributed Amount | Required. An integer in currency minor units (for example, `6500` = $65.00). |
+| Attribution Model | Required. Supported values: `customized_multi_touch`, `data_driven`, `first_click`, `first_touch`, `last_click`, `last_touch`, `linear`, `position_based`, `time_decay`. |
+| Total Credit | Optional. A number representing the total credit value. |
+| Attribution Window (days) | Optional. A nonnegative whole number of days for the attribution window. |
+
+#### E-Commerce
+
+For Customer Action events (**Appointment Scheduled**, **Lead Created**, **Registration Completed**), only the order-summary fields are accepted. OpenAI drops all other e-commerce fields from the outbound payload.
+
+For **Attribution Appended** events, only **Currency**, **Amount**, **Data Content Type**, and **Customer Segmentation** are accepted. No e-commerce automapping applies.
+
+| Parameter | Description |
+| --- | --- |
+| Amount | An integer in minor units (for example, cents). If provided, Currency is required. For Attribution Appended events, this is the original conversion value. |
+| Currency | Required for Attribution Appended events. The currency code in ISO 4217 format (for example, `USD`). |
+| Data Content Type | Attribution Appended events only. Optional. |
+| Customer Segmentation | Attribution Appended events only. Optional. |
 
 #### Disable E-Commerce Automapping
 
@@ -99,8 +170,8 @@ If you had the legacy **Disable Automapping** checkbox enabled to suppress IP ad
 
 #### Disable Identity Automapping
 
-* When checked, the connector will not automatically map IP Address and User Agent. Use this if you prefer full manual control over identity metadata or must suppress these fields for privacy reasons.
-* When unchecked (default), the connector automaticaly maps `ip_address` (from Tealium standard IP attribute) and `user_agent` (from Tealium standard User Agent attribute).
+* When checked, the connector does not automatically map IP Address and User Agent. Use this if you prefer full manual control over identity metadata or must suppress these fields for privacy reasons.
+* When unchecked (default), the connector automatically maps `ip_address` (from Tealium standard IP attribute) and `user_agent` (from Tealium standard User Agent attribute).
 
 #### Debug Mode
 
@@ -125,3 +196,8 @@ This action uses batched requests to support high-volume data transfers to the v
 * Max size of requests: 1 MB
 
 This action uses the same parameters and mapping options as the **Send Event (Real-Time)** action. For more information, see [Send Event (Real-Time)](#send-event-real-time).
+
+
+<blockquote>
+Batched delivery for the `attribution_appended` event type is not yet supported. Use the **Send Event (Real-Time)** action for attribution events.
+</blockquote>

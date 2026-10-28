@@ -118,7 +118,8 @@ val config = TealiumConfig.Builder(
     application,
     "ACCOUNT",
     "PROFILE",
-    Environment.DEV
+    Environment.DEV,
+    emptyList()
 ).addModule(Modules.collect(
     { builder ->
         builder.setModuleId("PrimaryCollect")
@@ -146,7 +147,7 @@ let config = TealiumConfig(account: "ACCOUNT",
                                   { builder in
                                       builder.setModuleId("SecondaryCollect")
                                              .setUrl("https://secondary.collect.example.com/event")
-                                             .setRules(.just(["purchase_rule_id"]))
+                                             .setRules(.just("purchase_rule_id"))
                                   }
                               ),
                               // other modules...
@@ -173,12 +174,7 @@ The equivalent configuration in JSON format:
             "configuration": {
                 "url": "https://secondary.collect.example.com/event"
             },
-            "rules": {
-                "operator": "just",
-                "children": [
-                    "purchase_rule_id"
-                ]
-            }
+            "rules": "purchase_rule_id"
         }
     }
 }

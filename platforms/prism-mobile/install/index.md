@@ -10,13 +10,13 @@ The Tealium Prism SDK is distributed as a set of modules. Install only the modul
 
 
 * [Android Studio](https://developer.android.com/studio)
-* Android SDK (Lollipop/5.0+ / API Level 21+)
+* Android SDK (Marshmallow/6.0+ / API Level 23+)
 * [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
-* Xcode 14.0+
-* iOS 12.0+, macOS 10.14+, tvOS 12.0+, watchOS 4.0+
+* Xcode 16.0+
+* iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 7.0+
 * [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
@@ -39,14 +39,14 @@ The Tealium Prism library is divided into modules. Install only the modules you 
 
 To install the Tealium Prism Kotlin library with Maven:
 
-1. Add the Tealium Maven URL to your project's top-level `build.gradle` file:
+1. Add the Tealium Maven URL to your project's `settings.gradle` file:
 
     ```kotlin
     dependencyResolutionManagement {
         repositories {
             // .. other repos
             maven {
-                url = URI("https://maven.tealiumiq.com/android/releases/")
+                url = uri("https://maven.tealiumiq.com/android/releases/")
             }
         }
     }
@@ -58,7 +58,7 @@ To install the Tealium Prism Kotlin library with Maven:
     implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
     implementation("com.tealium.prism:prism-core")
     implementation("com.tealium.prism:prism-lifecycle")
-    implementation("com.tealium.prism:prism-moments-api")
+    implementation("com.tealium.prism:prism-context-api")
     ```
 
 
@@ -80,19 +80,6 @@ To install with CocoaPods, add the following line to your Podfile:
 pod 'tealium-prism'
 ```
 
-### Carthage
-
-To install with Carthage:
-
-1. Add the following to your Cartfile:
-    ```bash
-    github "tealium/tealium-prism-swift"
-    ```
-1. To produce frameworks for iOS, macOS, tvOS, and watchOS, run the following command:
-    ```sh
-    carthage update --use-xcframeworks
-    ```
-1. Drag the frameworks you require into your Xcode project in the section **General > Embedded Binaries**.
 
 
 Install the core package with npm:
@@ -127,8 +114,12 @@ To initialize Tealium, pass a [`TealiumConfig`](https://docs.tealium.com/tealium
 ```kotlin
 import com.tealium.prism.core.api.Tealium
 import com.tealium.prism.core.api.TealiumConfig
+import com.tealium.prism.core.api.Modules
+import com.tealium.prism.core.api.misc.Environment
+import com.tealium.prism.lifecycle.lifecycle
 
 val config = TealiumConfig.Builder(
+   application = application,
    accountName = "my_account",
    profileName = "my_profile",
    environment = Environment.PROD,
@@ -168,7 +159,7 @@ import TealiumPrism
 #else
 import TealiumPrismCore
 import TealiumPrismLifecycle
-import TealiumPrismMomentsAPI
+import TealiumPrismContextAPI
 #endif
 
 let config = TealiumConfig(account: "my_account",
@@ -181,12 +172,12 @@ let config = TealiumConfig(account: "my_account",
                             Modules.deepLink(),
                             Modules.deviceData(),
                             Modules.lifecycle(),
-                            Modules.momentsAPI(),
+                            Modules.contextAPI(),
                             Modules.timeData(),
                             Modules.trace(),
                            ],
                            settingsFile: "my_settings",
-                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/settings.json")
+                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/mobile_settings_prod.json")
 let tealium = Tealium.create(config: config)
 ```
 
@@ -239,16 +230,19 @@ Configure remote and local settings using the `TealiumConfig.Builder`:
 
 ```kotlin
 val config = TealiumConfig.Builder(
+   application = application,
    accountName = "my_account",
    profileName = "my_profile",
    environment = Environment.PROD,
    modules = listOf(Modules.collect())
-).build()
+).setSettingsFile("my_settings.json")
+ .setSettingsUrl("https://tags.tiqcdn.com/dle/my_account/my_profile/mobile_settings_prod.json")
+ .build()
 ```
 
 
 <blockquote>
-Remote settings are fetched automatically based on your account, profile, and environment. The Kotlin SDK resolves the settings URL from these values.
+The SDK does not derive the settings URL from your account, profile, or environment. To fetch remote settings, pass the URL of your published settings file to `setSettingsUrl()`. For more information, see [Publish mobile settings](https://docs.tealium.com/publish-mobile-settings/).
 </blockquote>
 
 
@@ -260,7 +254,7 @@ let config = TealiumConfig(account: "my_account",
                            profile: "my_profile",
                            environment: "prod",
                            settingsFile: "my_settings",
-                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/prod/settings.json")
+                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/mobile_settings_prod.json")
 let tealium = Tealium.create(config: config)
 ```
 
@@ -291,7 +285,7 @@ To set the log level, call `setLogLevel()` in the settings of the `TealiumConfig
 
 ```kotlin
 val config = TealiumConfig.Builder(...)
-  .configureSettings { settings ->
+  .configureCoreSettings { settings ->
     settings.setLogLevel(LogLevel.WARN)
   }
 ```
@@ -345,6 +339,7 @@ Configure module-specific settings in the `TealiumConfig.Builder`:
 
 ```kotlin
 val config = TealiumConfig.Builder(
+   application = application,
    accountName = "my_account",
    profileName = "my_profile",
    environment = Environment.PROD,
@@ -352,7 +347,7 @@ val config = TealiumConfig.Builder(
         Modules.collect(),
         Modules.lifecycle(),
        )
-).configureSettings { settings ->
+).configureCoreSettings { settings ->
     settings.setLogLevel(LogLevel.DEBUG)
 }.build()
 ```

@@ -1,13 +1,13 @@
 ---
 title: DeepLinkHandlerモジュール
-description: ディープリンクを追跡し、キャンペーンやリファラーに帰属します。
+description: ディープリンクを追跡し、キャンペーンまたは参照元にアトリビューションします。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/deep-link/
 ---
-DeepLinkHandlerモジュールは、帰属とトレース管理のために受信ディープリンクを追跡します。アプリがディープリンクから起動されたとき、このモジュールはURLをキャプチャし、そのクエリパラメータをデータレイヤーに抽出します。ディープリンクの処理はデフォルトで自動的に実行されます。
+DeepLinkHandlerモジュールは、アトリビューションとトレース管理のために受信したディープリンクを追跡します。アプリがディープリンクから起動されると、モジュールはURLを取得し、そのクエリパラメータをデータレイヤーに抽出します。デフォルトでは、ディープリンクの処理は自動的に実行されます。
 
-## 動作方法
+## 仕組み
 
-ディープリンクでアプリが開かれると、モジュールはデータレイヤーに完全なURLを `deep_link_url` として追加します。各クエリパラメータは `deep_link_param_` のプレフィックスを使用して個別に抽出され、追加されます。例えば、`https://example.com/?campaign_code=SUMMER` は以下を生成します：
+ディープリンクによってアプリが開かれると、モジュールは完全なURLを`deep_link_url`としてデータレイヤーに追加します。各クエリパラメータは抽出され、接頭辞`deep_link_param_`を使用して個別に追加されます。たとえば、`https://example.com/?campaign_code=SUMMER`の場合、次の値が生成されます。
 
 ```
 deep_link_url = "https://example.com/?campaign_code=SUMMER"
@@ -16,35 +16,35 @@ deep_link_param_campaign_code = "SUMMER"
 
 
 <blockquote>
-ディープリンクのデータレイヤー属性はセッション中のみ保存されます。
+ディープリンクのデータレイヤー属性は、セッション中のみ保存されます。
 </blockquote>
 
 
 ## データレイヤー
 
-ディープリンクが処理されると、以下の属性がデータレイヤーに追加されます：
+ディープリンクが処理されると、次の属性がデータレイヤーに追加されます。
 
-| 属性 | タイプ | 説明 |
+| 属性 | 型 | 説明 |
 | :--- | :--- | :--- |
-| `deep_link_url` | `String` | クエリパラメータを含むディープリンクの完全なURL。 |
-| `deep_link_param_X` | `String` | ディープリンクURLの各クエリパラメータで、`X`はパラメータ名です。 |
-| `deep_link_referrer_url` | `String` | このディープリンクを参照したページまたはリソースのURL。 |
-| `deep_link_referrer_app` (iOSのみ) | `String` | このディープリンクをカスタムURLスキームを介して開いたアプリのバンドル識別子。 |
+| `deep_link_url` | `String` | クエリパラメータを含む、ディープリンクの完全なURL。 |
+| `deep_link_param_X` | `String` | ディープリンクURLの各クエリパラメータ。`X`はパラメータ名です。 |
+| `deep_link_referrer_url` | `String` | このディープリンクの参照元となったページまたはリソースのURL。 |
+| `deep_link_referrer_app`（iOSのみ） | `String` | カスタムURLスキームを介してこのディープリンクを開いたアプリのバンドル識別子。 |
 
 ## インストール
 
 
 
-DeepLinkHandlerモジュールは `prism-core` に含まれており、これは他のすべてのPrismモジュールの推移的依存関係です。
+DeepLinkHandlerモジュールは`prism-core`に含まれています。`prism-core`は、他のすべてのPrismモジュールの推移的依存関係です。
 
 
-DeepLinkHandlerモジュールは `TealiumPrismCore` に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift` を使用してSwift Package Managerの依存関係として追加するか、CocoaPodsのためにPodfileに追加してください：
+DeepLinkHandlerモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift`を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに追加します。
 
 ```ruby
 pod 'tealium-prism/Core'
 ```
 
-代わりに完全なPrismライブラリをインストールする場合：
+代わりにPrismライブラリ全体をインストールするには、次のようにします。
 
 ```ruby
 pod 'tealium-prism'
@@ -54,18 +54,19 @@ pod 'tealium-prism'
 
 ## 初期化
 
-`TealiumConfig`の `modules` リストにモジュールを追加します。
+`TealiumConfig`の`modules`リストにモジュールを追加します。
 
 
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,
     modules = listOf(
         Modules.deepLink(),
-        // 他のモジュール...
+        // other modules...
     )
 ).build()
 ```
@@ -78,34 +79,34 @@ let config = TealiumConfig(
     environment: "prod",
     modules: [
         Modules.deepLink(),
-        // 他のモジュール...
+        // other modules...
     ]
 )
 ```
 
 
 
-## ディープリンクを手動で処理
+## ディープリンクの手動処理
 
-ディープリンクを手動で処理するには、`Tealium`インスタンスのディープリンクプロパティで `handle` を呼び出します。
+ディープリンクを手動で処理するには、`Tealium`インスタンスのディープリンクプロパティで`handle`を呼び出します。
 
 
 
 ```kotlin
-tealium.deeplink.handle(uri).subscribe { result ->
-    // ここで結果をオプションで処理します
+tealium.deepLink.handle(uri).subscribe { result ->
+    // Optionally handle result here
 }
 
-// リファラーURL付き：
-tealium.deeplink.handle(uri, referrerUri).subscribe { result ->
-    // ここで結果をオプションで処理します
+// With a referrer URL:
+tealium.deepLink.handle(uri, referrerUri).subscribe { result ->
+    // Optionally handle result here
 }
 ```
 
 
 ```swift
 tealium.deepLink.handle(link: url, referrer: .fromUrl(referrerUrl)).subscribe { result in
-    // ここで結果をオプションで処理します
+    // Optionally handle result here
 }
 ```
 
@@ -113,11 +114,11 @@ tealium.deepLink.handle(link: url, referrer: .fromUrl(referrerUrl)).subscribe { 
 
 ## 構成
 
-### 自動ディープリンク追跡を無効にする
+### ディープリンクの自動追跡を無効にする
 
-デフォルトでは、モジュールはアプリがディープリンクから起動されたときに自動的にディープリンクを処理します。
+デフォルトでは、アプリがディープリンクから起動されると、モジュールがディープリンクを自動的に処理します。
 
-自動ディープリンク追跡を無効にするには：
+ディープリンクの自動追跡を無効にするには、次のようにします。
 
 
 
@@ -128,13 +129,13 @@ Modules.deepLink { settings ->
 ```
 
 
-アプリの `Info.plist` ファイルにキー `TealiumAutotrackingDeepLinkEnabled` と値 `false` を追加します。
+アプリの`Info.plist`ファイルに、値を`false`に構成したキー`TealiumAutotrackingDeepLinkEnabled`を追加します。
 
 
 
 ### ディープリンクイベントを有効にする
 
-デフォルトでは、モジュールはディープリンクが処理されたときに別のトラッキングイベントを送信しません。ディープリンクイベントを有効にすると、モジュールはディープリンクが開かれるたびに `deep_link` イベントも追跡します。
+デフォルトでは、ディープリンクが処理されても、モジュールは個別の追跡イベントを送信しません。ディープリンクイベントを有効にすると、ディープリンクが開かれるたびに、モジュールは`deep_link`イベントも追跡します。
 
 
 
@@ -153,11 +154,11 @@ Modules.deepLink(forcingSettings: { builder in
 
 
 
-### ディープリンクを介したトレースを有効にする
+### ディープリンク経由のトレースを有効にする
 
-デフォルトでは、Tealium QR TraceツールからのQRコードをスキャンすると、自動的にトレースセッションに参加します。
+デフォルトでは、Tealium QR TraceツールからQRコードをスキャンすると、トレースセッションに自動的に参加します。
 
-ディープリンクを使用してトレースに参加する機能を無効にするには：
+ディープリンクを使用してトレースに参加する機能を無効にするには、次のようにします。
 
 
 
@@ -178,7 +179,7 @@ Modules.deepLink(forcingSettings: { builder in
 
 ### JSON構成
 
-ローカルまたはリモートの構成JSONファイルでモジュールを構成します：
+ローカルまたはリモートの構成JSONファイルでモジュールを構成します。
 
 ```json
 {
@@ -195,7 +196,7 @@ Modules.deepLink(forcingSettings: { builder in
 }
 ```
 
-## 構成ビルダー参照
+## Settings Builderリファレンス
 
 
 
@@ -203,11 +204,11 @@ Modules.deepLink(forcingSettings: { builder in
 
 | メソッド | 説明 |
 | :--- | :--- |
-| `setAutomaticDeepLinkTrackingEnabled(enabled: Boolean)` | 自動ディープリンク処理を有効または無効にします。 |
+| `setAutomaticDeepLinkTrackingEnabled(enabled: Boolean)` | ディープリンクの自動処理を有効または無効にします。 |
 | `setDeepLinkTraceEnabled(enabled: Boolean)` | ディープリンクからのトレース機能を有効または無効にします。デフォルト：`true`。 |
-| `setSendDeepLinkEventEnabled(enabled: Boolean)` | ディープリンクが開かれたときに `deep_link` イベントを送信することを有効または無効にします。デフォルト：`false`。 |
-| `setEnabled(enabled: Boolean)` | モジュールを永久に有効または無効にします。 |
-| `setOrder(order: Int)` | モジュールが初期化される順序を構成します。 |
+| `setSendDeepLinkEventEnabled(enabled: Boolean)` | ディープリンクが開かれたときの`deep_link`イベントの送信を有効または無効にします。デフォルト：`false`。 |
+| `setEnabled(enabled: Boolean)` | モジュールを永続的に有効または無効にします。 |
+| `setOrder(order: Int)` | モジュールを初期化する順序を構成します。 |
 
 
 詳細については、[`DeepLinkSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/DeepLinkSettingsBuilder.html)を参照してください。
@@ -215,8 +216,8 @@ Modules.deepLink(forcingSettings: { builder in
 | メソッド | 説明 |
 | :--- | :--- |
 | `setDeepLinkTraceEnabled(_:)` | ディープリンクからのトレース機能を有効または無効にします。デフォルト：`true`。 |
-| `setSendDeepLinkEvent(_:)` | ディープリンクが開かれたときに `deep_link` イベントを送信することを有効または無効にします。デフォルト：`false`。 |
-| `setEnabled(_:)` | モジュールを永久に有効または無効にします。 |
-| `setOrder(_:)` | モジュールが初期化される順序を構成します。 |
-| `setRules(_:)` | モジュールが実行されるタイミングを決定するルールを構成します。 |
+| `setSendDeepLinkEvent(_:)` | ディープリンクが開かれたときの`deep_link`イベントの送信を有効または無効にします。デフォルト：`false`。 |
+| `setEnabled(_:)` | モジュールを永続的に有効または無効にします。 |
+| `setOrder(_:)` | モジュールを初期化する順序を構成します。 |
+| `setRules(_:)` | モジュールを実行するタイミングを決定するルールを構成します。 |
 

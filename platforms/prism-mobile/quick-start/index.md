@@ -22,7 +22,7 @@ dependencyResolutionManagement {
     repositories {
         // .. other repos
         maven {
-            url = URI("https://maven.tealiumiq.com/android/releases/")
+            url = uri("https://maven.tealiumiq.com/android/releases/")
         }
     }
 }
@@ -34,27 +34,22 @@ In your project module's `build.gradle` file, add the following dependencies. Yo
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
 implementation("com.tealium.prism:prism-core")
 implementation("com.tealium.prism:prism-lifecycle")
-implementation("com.tealium.prism:prism-moments-api")
+implementation("com.tealium.prism:prism-context-api")
 ```
 
 The following Prism Kotlin modules are available as individual dependencies:
 
 * `prism-core` (required)
 * `prism-lifecycle`
-* `prism-moments-api`
-* `prism-appdata`
-* `prism-collect`
-* `prism-connectivity-data`
-* `prism-deeplink`
-* `prism-device-data`
-* `prism-time-data`
-* `prism-trace`
+* `prism-context-api`
+
+The AppData, Collect, ConnectivityData, DeepLink, DeviceData, TimeData, and Trace modules are included in `prism-core`.
 
 
 
 To install Tealium Prism Swift with Swift Package Manager:
 
-1. In your Xcode project, select **File > Swift Packages > Add Package Dependency**.
+1. In your Xcode project, select **File > Add Package Dependencies**.
 1. Enter the repository URL: `https://github.com/tealium/tealium-prism-swift`.
 1. Configure the version rules. We recommend configuring **Up to next major**. If the current Tealium Prism Swift library version does not appear in the list, reset your Swift package cache.
 1. Select the modules to install and add the modules to each of your app targets in your Xcode project, under **Frameworks > Libraries & Embedded Content**.
@@ -69,15 +64,9 @@ The following Prism Swift modules are available as individual dependencies:
 
 * `TealiumPrismCore` (required)
 * `TealiumPrismLifecycle`
-* `TealiumPrismMomentsAPI`
-* `TealiumPrismAppData`
-* `TealiumPrismCollect`
-* `TealiumPrismConnectivityData`
-* `TealiumPrismDeepLink`
-* `TealiumPrismDeviceData`
-* `TealiumPrismDataLayer`
-* `TealiumPrismTimeData`
-* `TealiumPrismTrace`
+* `TealiumPrismContextAPI`
+
+The AppData, Collect, ConnectivityData, DeepLink, DeviceData, DataLayer, TimeData, and Trace modules are included in `TealiumPrismCore`.
 
 
 Tealium Prism React Native requires React Native 0.85 with the New Architecture (TurboModules).
@@ -104,7 +93,7 @@ Android requires no additional steps.
 
 
 
-For detailed installation instructions including CocoaPods, Carthage, and manual installation, see [Install](https://docs.tealium.com/install/).
+For detailed installation instructions including CocoaPods, see [Install](https://docs.tealium.com/install/).
 
 ## Initialize
 
@@ -116,8 +105,12 @@ To initialize Tealium, pass a [`TealiumConfig`](https://docs.tealium.com/tealium
 ```kotlin
 import com.tealium.prism.core.api.Tealium
 import com.tealium.prism.core.api.TealiumConfig
+import com.tealium.prism.core.api.Modules
+import com.tealium.prism.core.api.misc.Environment
+import com.tealium.prism.lifecycle.lifecycle
 
 val config = TealiumConfig.Builder(
+   application = application,
    accountName = "my_account",
    profileName = "my_profile",
    environment = Environment.PROD,
@@ -149,7 +142,7 @@ import TealiumPrismCore
 let config = TealiumConfig(account: "my_account",
                            profile: "my_profile",
                            environment: "prod",
-                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/prod/settings.json")
+                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/mobile_settings_prod.json")
 let tealium = Tealium.create(config: config)
 ```
 
@@ -161,7 +154,7 @@ import TealiumPrism
 #else
 import TealiumPrismCore
 import TealiumPrismLifecycle
-import TealiumPrismMomentsAPI
+import TealiumPrismContextAPI
 #endif
 
 let config = TealiumConfig(account: "my_account",
@@ -174,12 +167,12 @@ let config = TealiumConfig(account: "my_account",
                             Modules.deepLink(),
                             Modules.deviceData(),
                             Modules.lifecycle(),
-                            Modules.momentsAPI(),
+                            Modules.contextAPI(),
                             Modules.timeData(),
                             Modules.trace(),
                            ],
                            settingsFile: "my_settings",
-                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/settings.json")
+                           settingsUrl: "https://tags.tiqcdn.com/dle/my_account/my_profile/mobile_settings_prod.json")
 let tealium = Tealium.create(config: config)
 ```
 
@@ -229,7 +222,7 @@ To track events, call [`track()`](https://docs.tealium.com/tealium-prism-swift/T
 tealium.track("homepage")
 
 // Track with full parameters
-tealium.track("user_login", type: .event, dataLayer: ["customer_id": "1234567890"])
+tealium.track("user_login", type: .event, data: ["customer_id": "1234567890"])
 
 // Track with view type
 tealium.track("homepage", type: .view)
@@ -283,7 +276,7 @@ val globalContext = DataObject.Builder()
     .put("consent_status", "consented")
     .build()
 
-dataLayer.put(globalContext, Expiry.FOREVER)
+dataLayer.putAll(globalContext, Expiry.FOREVER)
 ```
 
 Use individual `put` operations only when atomicity is not required, because each call runs independently and in sequence. When setting multiple values and timing or consistency is important, use `transactionally` to apply all updates in a single atomic operation so they either all succeed or all fail.
@@ -310,14 +303,14 @@ dataLayer.put(
     key = "product_category",
     value = productCategories,
     expiry = Expiry.SESSION
-).subscribe({ }, { err -> })
+).onFailure { err -> }
 ```
 
 To set an expiration of the data use `Expiry`:
 ```kotlin
 dataLayer.put(
     key = "currency",
-    value = DataItem(any = "USD"),
+    value = "USD",
     expiry = Expiry.UNTIL_RESTART
 )
 dataLayer.put(
@@ -347,10 +340,10 @@ To set a data layer value, use the [`put()`](https://docs.tealium.com/tealium-pr
 tealium.dataLayer.put(key: "some_key", value: "some value")
 ```
 
-To set multiple data layer values at once, pass a dictionary to [`put(data:)`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html):
+To set multiple data layer values at once, pass a dictionary to [`putAll(dataObject:)`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html):
 
 ```swift
-tealium.dataLayer.put(data: [
+tealium.dataLayer.putAll(dataObject: [
     "customer_id": "12345",
     "is_logged_in": true,
     "consent_status": "consented",
@@ -438,7 +431,7 @@ To set the log level, call `setLogLevel()` in the settings of the `TealiumConfig
 
 ```kotlin
 val config = TealiumConfig.Builder(...)
-  .configureSettings { settings ->
+  .configureCoreSettings { settings ->
     settings.setLogLevel(LogLevel.WARN)
   }
 ```

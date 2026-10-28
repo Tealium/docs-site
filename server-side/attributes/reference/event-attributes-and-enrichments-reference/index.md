@@ -190,7 +190,7 @@ This reference uses the following icons for attribute types:
 * Event-level attribute
 * Can be used in a webhook
 * Any data format
-* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/).
+* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/attributes-offline-data/).
 
 #### Rule Conditions
 
@@ -209,7 +209,7 @@ This reference uses the following icons for attribute types:
 * Event-level attribute
 * Can be used in a webhook
 * Uses the Java Simple Date Format
-* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/).
+* For more information about omnichannel attributes, see [Attributes: Offline Data (Omnichannel)](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/attributes-offline-data/).
 
 #### Rule Conditions
 

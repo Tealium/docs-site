@@ -10,8 +10,8 @@ Tealiumは現在、以下の種類の関数をサポートしています：
 * **データ変換関数**: Tealium Collectにイベントが受信された後、および関数のトリガー条件が満たされたときにトリガーされる関数です。
 詳細については、[データ変換関数について]()を参照してください。
 * **イベント関数**: イベントが処理された後にトリガーされる関数です。詳細については、[イベントおよび訪問関数について]()を参照してください。
-処理されたイベントによってトリガーされる関数を使用するには、Tealium EventStream API Hubが有効になっている必要があります。詳細については、[EventStreamの紹介]()を参照してください。
-* **訪問関数**: 訪問が処理された後にトリガーされる関数です。詳細については、[イベントおよび訪問関数について]()を参照してください。処理された訪問によってトリガーされる関数を使用するには、Tealium AudienceStream CDPが有効になっている必要があります。詳細については、[AudienceStreamの紹介]()を参照してください。
+処理されたイベントによってトリガーされる関数を使用するには、Tealium EventStream API Hubが有効になっている必要があります。詳細については、[EventStreamの紹介](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)を参照してください。
+* **訪問関数**: 訪問が処理された後にトリガーされる関数です。詳細については、[イベントおよび訪問関数について]()を参照してください。処理された訪問によってトリガーされる関数を使用するには、Tealium AudienceStream CDPが有効になっている必要があります。詳細については、[AudienceStreamの紹介](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)を参照してください。
 
 ## 主な利点
 

@@ -15,7 +15,7 @@ DataAccessを使用するには、ユーザーはData Warehouse Adminの役割�
 
 ## 仕組み
 
-Tealium DataAccessは、[Tealium iQタグ管理](https://docs.tealium.com/ja/iq-tag-management/)、[Tealium AudienceStream CDP](https://docs.tealium.com/introduction-to-audiencestream/)、および[Tealium EventStream API Hub](https://docs.tealium.com/introduction-to-eventstream/)の機能を拡張し、ウェブやモバイルの接点、オンラインおよびオフラインのチャネル、リアルタイムのオーディエンスから収集されたデータの長期保存を提供するエンタープライズデータハブソリューションです。
+Tealium DataAccessは、[Tealium iQタグ管理](https://docs.tealium.com/ja/iq-tag-management/)、[Tealium AudienceStream CDP](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)、および[Tealium EventStream API Hub](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)の機能を拡張し、ウェブやモバイルの接点、オンラインおよびオフラインのチャネル、リアルタイムのオーディエンスから収集されたデータの長期保存を提供するエンタープライズデータハブソリューションです。
 
 DataAccessは、イベントデータを保存するためにEventStreamフィードと連携し、訪問プロファイルデータを保存するためにAudienceStreamオーディエンスと連携します。
 

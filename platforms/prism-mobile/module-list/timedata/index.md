@@ -23,18 +23,18 @@ The following variables are added to each tracking call while the module is enab
 
 
 
-Add the `prism-time-data` dependency to your `build.gradle` file:
+The TimeData module is included in `prism-core`. Add it to your `build.gradle` file:
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-time-data")
+implementation("com.tealium.prism:prism-core")
 ```
 
 
-Add `TealiumPrismTimeData` as a Swift Package Manager dependency using the repo URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
+The TimeData module is included in `TealiumPrismCore`. Add it as a Swift Package Manager dependency using the repo URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
 
 ```ruby
-pod 'tealium-prism/TimeData'
+pod 'tealium-prism/Core'
 ```
 
 
@@ -45,6 +45,7 @@ pod 'tealium-prism/TimeData'
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,

@@ -45,7 +45,7 @@ Once your data is flowing into Customer Data Hub, you have the ability to enrich
 
 Further reading:
 
-* [Introduction to EventStream](https://docs.tealium.com/introduction-to-eventstream/)
+* [Introduction to EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
 * [Using Attributes](https://docs.tealium.com/about-attributes/)
 * [Using Enrichments](https://docs.tealium.com/about-enrichments/)
 * [Badge Attribute](https://docs.tealium.com/badge-attribute/)
@@ -56,7 +56,7 @@ An audience is a collection of visitor profiles that have acquired a shared set 
 
 Further reading:
 
-* [Introduction to AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/)
+* [Introduction to AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
 * [Building an Audience](https://docs.tealium.com/manage-audiences/)
 * [Audience Sizing](https://docs.tealium.com/about-audience-sizing/)
 

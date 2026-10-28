@@ -1,74 +1,74 @@
 ---
 title: バリア
-description: Tealium Prism SDKでのイベント配信制御とディスパッチャーごとのバリア構成について。
+description: Tealium Prism SDKで、バリアとディスパッチャーごとのバリア構成を使用してイベント配信を制御します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/barriers/
 ---
-バリアはTealium Prism SDK内でディスパッチャーへのディスパッチが送信されるタイミングを制御します。これらは、ネットワーク接続、バッチサイズ要件、またはカスタムビジネスロジックなどの条件に基づいてイベントの流れをブロックまたは許可するゲートとして機能します。
+バリアは、Tealium Prism SDKでディスパッチがディスパッチャーへ送信されるタイミングを制御します。バリアはゲートとして機能し、ネットワーク接続、バッチサイズの要件、カスタムビジネスロジックなどの条件に基づいて、イベントの流れをブロックまたは許可します。
 
-## 動作原理
+## 仕組み
 
-バリアはイベントディスパッチパイプライン内のゲートです。SDKがイベントをディスパッチャーに送信する前に、構成された各バリアがディスパッチを進行させるかどうかをチェックします。バリアが閉じている場合、イベントはバリアが開くまでキューに入れられます。
+バリアは、イベントディスパッチパイプライン内のゲートです。SDKがイベントをディスパッチャーへ送信する前に、構成された各バリアがディスパッチを続行するかどうかを確認します。バリアが閉じている場合、イベントはバリアが開くまでキューに格納されます。
 
-各バリアは、**開いている**（ディスパッチが進行する）か**閉じている**（ディスパッチがキューに入る）のどちらかです。
+各バリアは、**開いている**（ディスパッチが続行される）か、**閉じている**（ディスパッチがキューに格納される）のいずれかです。
 
-バリアの範囲は、それが適用されるディスパッチャーを決定します：すべてのディスパッチャーまたはIDによる特定のディスパッチャー。
+バリアのスコープにより、そのバリアが適用されるディスパッチャーが決まります。すべてのディスパッチャー、またはIDで指定した特定のディスパッチャーのいずれかです。
 
-バリアはフラッシュ可能とマークされることがあり、これはイベントキューが手動でフラッシュされるときにバイパスされることを意味します。
+バリアはフラッシュ可能として構成できます。これは、イベントキューを手動でフラッシュしたときに、そのバリアがバイパスされることを意味します。
 
 
 <blockquote>
-フラッシュ不可能なバリアが閉じている場合、フラッシュ可能なバリアの状態に関わらずディスパッチは進行しません。
+フラッシュできないバリアが1つでも閉じている場合、フラッシュ可能なバリアの状態にかかわらず、ディスパッチは続行されません。
 </blockquote>
 
 
 ## UIでのバリアの構成
 
-アプリコードを変更することなく、モバイルプロファイルでバリアを構成します。
+アプリのコードを変更せずに、モバイルプロファイルでバリアを構成できます。
 
-UIでバリアを追加するには：
+UIでバリアを追加するには、次の手順を実行します。
 
-1. モバイルプロファイルにログインし、**バリア**に移動します。
-1. **バリア追加**を選択し、バリアタイプを選びます。
+1. モバイルプロファイルにログインし、**Barriers**へ移動します。
+1. **Add Barrier**を選択し、バリアタイプを選択します。
 1. バリア構成を構成します。
-1. 変更を保存して公開します。
+1. 変更を保存してパブリッシュします。
 
-SDKは次のリモート構成のリフレッシュまたはアプリの起動時に更新されたバリア構成を取得します。
+SDKは、次回のリモート構成の更新時またはアプリの起動時に、更新されたバリア構成を取得します。
 
-## 組み込みのバリア
+## 組み込みバリア
 
-SDKには、接続バリアとバッチングバリアの2つの組み込みバリアが提供されています。デフォルトでは、接続バリアはCollectディスパッチャーに適用され、バッチングバリアは無効化されています。
+SDKには、接続バリアとバッチ処理バリアという2つの組み込みバリアがあります。デフォルトでは、接続バリアのスコープはCollectディスパッチャーに構成され、バッチ処理バリアは無効になっています。
 
 ### 接続バリア
 
-接続バリアは、ネットワーク接続が利用不可能または指定された要件を満たしていない場合にディスパッチをブロックします。
+接続バリアは、ネットワーク接続を利用できない場合、または指定された要件を満たしていない場合に、ディスパッチをブロックします。
 
 動作：
 
-* ネットワーク接続が利用不可能な場合にディスパッチをブロックします。
-* `wifi_only`が有効になっている場合、セルラー接続をオプションでブロックします。
-* 任意のネットワーク接続が利用可能な場合はフラッシュ可能です。
-* 接続が復旧すると自動的に開きます。
+* ネットワーク接続を利用できない場合、ディスパッチをブロックします。
+* `wifi_only`が有効な場合、必要に応じてモバイルネットワーク接続をブロックします。
+* いずれかのネットワーク接続を利用できる場合、フラッシュ可能になります。
+* 接続が復旧すると、自動的に開きます。
 
-### バッチングバリア
+### バッチ処理バリア
 
-バッチングバリアは、ディスパッチャーにキューされたイベントの指定された数に達するまでディスパッチをブロックします。
+バッチ処理バリアは、指定された数のイベントがディスパッチャーのキューに格納されるまで、ディスパッチをブロックします。
 
 動作：
 
-* キューサイズが構成されたバッチサイズに達するまでディスパッチをブロックします。
-* 構成された値が`Dispatcher.dispatchLimit`を超える場合は、バッチサイズとして`Dispatcher.dispatchLimit`を使用します。
-* 構成された値が負またはゼロの場合は、バッチサイズを1として使用します。
+* キューサイズが構成されたバッチサイズに達するまで、ディスパッチをブロックします。
+* 構成値が`Dispatcher.dispatchLimit`を超える場合、バッチサイズとして`Dispatcher.dispatchLimit`を使用します。
+* 構成値が負の値またはゼロの場合、バッチサイズとして1を使用します。
 * フラッシュ操作中は常にフラッシュ可能です。
 
 ## 高度な構成
 
-実行時の条件に依存する構成が必要な場合や、リモート変更に対してロックをかける必要がある場合には、プログラムでバリアを構成します。たとえば、ディスクスペースが少ないデバイスでバッチングバリアのキューサイズを減らすか、予期しないデータ使用を防ぐために本番ビルドでwifiのみのディスパッチを強制することが考えられます。
+実行時の条件に応じて構成を変更する必要がある場合や、リモートから変更されないように構成を固定する必要がある場合は、プログラムでバリアを構成します。たとえば、ディスク空き容量が少ないデバイスではバッチ処理バリアのキューサイズを小さくしたり、本番ビルドではWi-Fiのみのディスパッチを強制したりできます。これにより、リモート構成の変更によって意図しないデータ使用が発生するのを防げます。
 
 ### プログラムによる構成
 
 
 <blockquote>
-プログラムによるバリア構成はReact Nativeでは利用できません。Tealiumのモバイルプロファイルまたは構成JSONでバリアを構成してください。
+React Nativeでは、プログラムによるバリア構成を利用できません。Tealiumモバイルプロファイルまたは構成JSONでバリアを構成してください。
 </blockquote>
 
 
@@ -76,75 +76,75 @@ SDKには、接続バリアとバッチングバリアの2つの組み込みバ�
 
 構成オプション：
 
-* `wifi_only`: `true`の場合、WiFiまたはEthernet接続でのみディスパッチを許可します。
+* `wifi_only`：`true`の場合、Wi-FiまたはEthernet接続経由のディスパッチのみを許可します。
 
 
 
 ```kotlin
-// WiFiのみ、Collectディスパッチャーに適用
+// WiFi-only, scoped to the Collect dispatcher
 config.addBarrier(
-    Barriers.connectivity(
-        defaultScopes = listOf(BarrierScope.dispatcher("collect_dispatcher")),
-        configuration = mapOf("wifi_only" to true)
-    )
+    Barriers.connectivity {
+        it.setScope(BarrierScope.Dispatchers(Modules.Types.COLLECT))
+            .setWifiOnly(true)
+    }
 )
 
-// すべてのネットワーク接続を許可、すべてのディスパッチャーに適用
+// Allow any network connection, scoped to all dispatchers
 config.addBarrier(
-    Barriers.connectivity(defaultScopes = listOf(BarrierScope.ALL))
+    Barriers.connectivity { it.setScope(BarrierScope.All) }
 )
 ```
 
 
 ```swift
-// WiFiのみ、Collectディスパッチャーに適用
+// WiFi-only, scoped to the Collect dispatcher
 config.addBarrier(
-    Barriers.connectivity(
-        defaultScopes: [.dispatcher(id: Modules.Types.collect)],
-        configuration: ["wifi_only": true]
-    )
+    Barriers.connectivity(forcingSettings: { enforcedSettings in
+        enforcedSettings.setScope(.dispatchers([Modules.Types.collect]))
+            .setWifiOnly(true)
+    })
 )
 
-// すべてのネットワーク接続を許可、すべてのディスパッチャーに適用
+// Allow any network connection, scoped to all dispatchers
 config.addBarrier(
-    Barriers.connectivity(defaultScopes: [.all])
+    Barriers.connectivity(forcingSettings: { $0.setScope(.all) })
 )
 ```
 
 
 
-#### バッチングバリア
+#### バッチ処理バリア
 
 構成オプション：
 
-* `batch_size`: バリアを開く前に必要なキューイベントの数。
+* `batch_size`：バリアを開くために必要な、キューに格納されたイベントの数。
 
 
 
 ```kotlin
-// 10イベントをバッチ処理する前にディスパッチ、すべてのディスパッチャーに適用
+// Batch 10 events before dispatching, scoped to all dispatchers
 config.addBarrier(
-    Barriers.batching(
-        defaultScopes = listOf(BarrierScope.ALL),
-        configuration = mapOf("batch_size" to 10)
-    )
+    Barriers.batching {
+        it.setScope(BarrierScope.All)
+            .setBatchSize(10)
+    }
 )
 
-// デフォルトのバッチサイズを使用、Collectディスパッチャーに適用
+// Use default batch size, scoped to the Collect dispatcher
 config.addBarrier(Barriers.batching())
 ```
 
 
 ```swift
-// 10イベントをバッチ処理する前にディスパッチ、すべてのディスパッチャーに適用
+// Batch 10 events before dispatching, scoped to all dispatchers
 config.addBarrier(
-    Barriers.batching(
-        defaultScopes: [.all],
-        configuration: ["batch_size": 10]
-    )
+    Barriers.batching(forcingSettings: { enforcedSettings in
+        enforcedSettings.setScope(.all)
+            .setBatchSize(10)
+    })
 )
 
-// デフォルトのバッチサイズを使用、Collectディスパッチャーに適用
+// Use default batch size, scoped to the Collect dispatcher
 config.addBarrier(Barriers.batching())
 ```
 
@@ -152,21 +152,21 @@ config.addBarrier(Barriers.batching())
 
 ### JSON構成
 
-バリア構成はリモート構成またはローカルJSONファイルを通じて処理されます。バリアはファクトリによって作成されたときにその構成を受け取ります。
+バリア構成は、リモート構成またはローカルJSONファイルを通じて処理されます。バリアは、ファクトリによって作成される際に構成を受け取ります。
 
 ```json
 {
   "barriers": {
     "ConnectivityBarrier": {
       "barrier_id": "ConnectivityBarrier",
-      "scopes": ["all"],
+      "scope": "all",
       "configuration": {
         "wifi_only": true
       }
     },
     "BatchingBarrier": {
       "barrier_id": "BatchingBarrier",
-      "scopes": ["analytics_dispatcher", "collect_dispatcher"],
+      "scope": ["analytics_dispatcher", "Collect"],
       "configuration": {
         "batch_size": 10
       }
@@ -175,13 +175,13 @@ config.addBarrier(Barriers.batching())
 }
 ```
 
-構成が変更されると、バリアは自動的に`updateConfiguration()`コールを受け取ります。
+構成が変更されると、バリアは自動的に`updateConfiguration()`の呼び出しを受け取ります。
 
 ## カスタムバリアの作成
 
 ### 構成可能なバリア
 
-リモートまたはローカルの構成を通じて構成可能なバリアを作成します：
+リモート構成またはローカル構成を通じて構成できるバリアを作成します。
 
 
 
@@ -191,8 +191,10 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
         const val ID = "CustomBusinessLogicBarrier"
     }
 
+    override val id: String = ID
+
     private var settings = BusinessLogicSettings(configuration)
-    private val stateSubject = StateSubject(BarrierState.OPEN)
+    private val stateSubject = Observables.stateSubject(BarrierState.Open)
 
     override fun onState(dispatcherId: String): Observable<BarrierState> = stateSubject
 
@@ -205,7 +207,7 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
 
     private fun updateBarrierState() {
         val shouldBlock = settings.maintenanceMode
-        stateSubject.value = if (shouldBlock) BarrierState.CLOSED else BarrierState.OPEN
+        stateSubject.onNext(if (shouldBlock) BarrierState.Closed else BarrierState.Open)
     }
 }
 ```
@@ -213,7 +215,7 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
 
 ```swift
 class CustomBusinessLogicBarrier: ConfigurableBarrier {
-    static var id: String = "CustomBusinessLogicBarrier"
+    static let id: String = "CustomBusinessLogicBarrier"
 
     @StateSubject(.open)
     private var state: ObservableState<BarrierState>
@@ -246,51 +248,52 @@ class CustomBusinessLogicBarrier: ConfigurableBarrier {
 ```
 
 
+### バリアを登録する
 
-### バリアの登録
+SDK の初期化時にカスタムバリアを登録します。
 
-SDKの初期化中にカスタムバリアを登録します：
 
 
 
 ```kotlin
 config.addBarrier(
-    CustomBusinessLogicBarrier.Factory(defaultScopes = listOf(BarrierScope.ALL))
+    CustomBusinessLogicBarrier.Factory(defaultScope = BarrierScope.All)
 )
 ```
 
 
 ```swift
 config.addBarrier(
-    CustomBusinessLogicBarrier.Factory(defaultScopes: [.all])
+    CustomBusinessLogicBarrier.Factory(defaultScope: .all)
 )
 ```
 
 
-### ランタイムバリア管理
 
-モジュール実装でランタイムでバリアを登録する必要がある場合は、`BarrierRegistrar`を使用してください：
+### ランタイムでのバリア管理
+
+モジュール実装でランタイムにバリアを登録する必要がある場合は、`BarrierRegistrar` を使用します。
 
 ```swift
-// TealiumContextからバリアレジストラーを取得
+// Get the barrier registrar from TealiumContext
 let barrierRegistrar = context.barrierRegistrar
 
-// カスタムバリアを作成して登録
+// Create and register a custom barrier
 let customBarrier = CustomTimerBarrier(interval: 30.0)
 barrierRegistrar.registerScopedBarrier(
     customBarrier,
-    scopes: [.dispatcher(id: "my_dispatcher")]
+    scope: .dispatchers(["my_dispatcher"])
 )
 
-// 不要になったら登録解除
+// Unregister when no longer needed
 barrierRegistrar.unregisterScopedBarrier(customBarrier)
 ```
 
-## APIリファレンス
+## API リファレンス
 
-詳細なクラスとメソッドのシグネチャについては、APIリファレンスドキュメントを参照してください：
+クラスおよびメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
 
-* [バリア (Swift)](https://docs.tealium.com/tealium-prism-swift/Barriers.html)
-* [バリア (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Barrier.html)
-* [構成可能バリア (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/ConfigurableBarrier.html)
-* [バリア (Kotlin)](https://docs.tealium.com/tealium-prism-kotlin/)
+* [バリア（Swift）](https://docs.tealium.com/tealium-prism-swift/Barriers.html)
+* [Barrier（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Barrier.html)
+* [ConfigurableBarrier（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/ConfigurableBarrier.html)
+* [バリア（Kotlin）](https://docs.tealium.com/tealium-prism-kotlin/)

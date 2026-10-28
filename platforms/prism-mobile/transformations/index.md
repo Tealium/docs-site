@@ -33,7 +33,7 @@ Drop dispatches based on specific conditions. Return `nil` (Swift) or `null` (Ko
 
 ### Scope-specific transformations
 
-Apply different transformations at different pipeline stages. Use `afterCollectors` for enrichment that applies to all dispatchers, and `dispatcher(id:)` for filtering specific to a single destination.
+Apply different transformations at different pipeline stages. Use `afterCollectors` for enrichment that applies to all dispatchers, and `dispatchers` for filtering specific to a single destination.
 
 ## Configure transformations in the UI
 
@@ -70,16 +70,16 @@ Scope constants for reference:
 
 
 ```kotlin
-TransformationScope.AFTER_COLLECTORS
-TransformationScope.ALL_DISPATCHERS
-TransformationScope.dispatcher("my_dispatcher")
+TransformationScope.AfterCollectors
+TransformationScope.AllDispatchers
+TransformationScope.Dispatchers("my_dispatcher")
 ```
 
 
 ```swift
 TransformationScope.afterCollectors
 TransformationScope.allDispatchers
-TransformationScope.dispatcher(id: "my_dispatcher")
+TransformationScope.dispatchers(["my_dispatcher"])
 ```
 
 
@@ -90,33 +90,46 @@ Example: configure a transformation in code:
 
 
 ```kotlin
-val enrichmentTransformation = TransformationSettings(
-    id = "user_enrichment",
-    transformerId = "DataEnrichmentTransformer",
-    scopes = listOf(TransformationScope.AFTER_COLLECTORS),
-    configuration = mapOf(
-        "enable_enrichment" to true,
-        "enrichment_type" to "user_data"
-    ),
-    conditions = Rule.just(Condition.isDefined("user_id"))
-)
+class DataEnrichmentSettingsBuilder(transformationId: String) :
+    TransformationSettingsBuilder<DataEnrichmentSettingsBuilder>(
+        transformationId,
+        "DataEnrichmentTransformer"
+    ) {
+    override fun onBuildConfiguration(): DataObject = DataObject.create {
+        put("enable_enrichment", true)
+        put("enrichment_type", "user_data")
+    }
+}
 
-config.setTransformation(enrichmentTransformation)
+val enrichmentTransformation = DataEnrichmentSettingsBuilder("user_enrichment")
+    .setScope(TransformationScope.AfterCollectors)
+    .setCondition(Rule.just(Condition.isDefined("user_id")))
+
+config.addTransformation(enrichmentTransformation)
 ```
 
 
 ```swift
-let enrichmentTransformation = TransformationSettings(
-    id: "user_enrichment",
-    transformerId: "DataEnrichmentTransformer",
-    scopes: [.afterCollectors],
-    configuration: [
-        "enable_enrichment": true,
-        "enrichment_type": "user_data",
-        "source": "user_profile"
-    ],
-    conditions: .just(Condition.isDefined(variable: "user_id"))
-)
+class DataEnrichmentSettingsBuilder: TransformationSettingsBuilder {
+    init(id: String) {
+        super.init(id: id, transformerId: "DataEnrichmentTransformer")
+    }
+
+    override func build() -> DataObject {
+        var settings = super.build()
+        let configuration: DataObject = [
+            "enable_enrichment": true,
+            "enrichment_type": "user_data",
+            "source": "user_profile"
+        ]
+        settings.set(converting: configuration, key: "configuration")
+        return settings
+    }
+}
+
+let enrichmentTransformation = DataEnrichmentSettingsBuilder(id: "user_enrichment")
+    .setScope(.afterCollectors)
+    .setConditions(.just(Condition.isDefined(variable: "user_id")))
 
 config.setTransformation(enrichmentTransformation)
 ```
@@ -131,7 +144,7 @@ Transformations can also be defined in JSON format for remote or local configura
 {
   "transformation_id": "user_enrichment",
   "transformer_id": "MyCustomTransformer",
-  "scopes": ["aftercollectors"],
+  "scope": "aftercollectors",
   "configuration": {
     "enable_enrichment": true,
     "enrichment_type": "user_data",
@@ -160,22 +173,22 @@ class MyCustomTransformer : Transformer {
         transformation: TransformationSettings,
         dispatch: Dispatch,
         scope: DispatchScope,
-        completion: (Dispatch?) -> Unit
-    ) {
+        completion: Callback<Dispatch?>
+    ): Disposable {
         val enableEnrichment: Boolean =
-            transformation.configuration.get("enable_enrichment") ?: true
-
-        val modifiedDispatch = dispatch.toMutableDispatch()
+            transformation.configuration.getBoolean("enable_enrichment") ?: true
 
         if (enableEnrichment) {
-            modifiedDispatch.enrich(mapOf("transformed" to "true"))
+            dispatch.addAll(DataObject.create { put("transformed", "true") })
         }
 
         // Return the modified dispatch
-        completion(modifiedDispatch)
+        completion.onComplete(dispatch)
 
         // Or return null to drop the dispatch entirely
-        // completion(null)
+        // completion.onComplete(null)
+
+        return Disposables.disposed()
     }
 }
 ```
@@ -190,7 +203,7 @@ class MyCustomTransformer: Transformer {
     func applyTransformation(_ transformation: TransformationSettings,
                            to dispatch: Dispatch,
                            scope: DispatchScope,
-                           completion: @escaping (Dispatch?) -> Void) {
+                           completion: @escaping (Dispatch?) -> Void) -> any Disposable {
         let enableEnrichment: Bool =
             transformation.configuration.get(key: "enable_enrichment") ?? true
 
@@ -205,6 +218,8 @@ class MyCustomTransformer: Transformer {
 
         // Or return nil to drop the dispatch entirely
         // completion(nil)
+
+        return Disposables.disposed()
     }
 }
 ```

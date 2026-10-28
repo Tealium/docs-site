@@ -11,7 +11,7 @@ The following variables are added to each tracking call while the module is enab
 
 | Variable | Description | Example |
 | :--- | :--- | :--- |
-| `connection_type` | A list of current network connection types.<br>Possible values: `wifi`, `cellular`, `ethernet`, `none` | `["wifi", "cellular"]` |
+| `connection_type` | The current network connection type.<br>Possible values: `wifi`, `cellular`, `ethernet`, `none`, `unknown` | `"wifi"` |
 
 ## Install
 

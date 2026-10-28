@@ -1,9 +1,9 @@
 ---
 title: モジュール
-description: Tealium Prism SDKのKotlin、Swift、React Native用の利用可能なモジュールのリストです。
+description: Kotlin、Swift、React Native向けTealium Prism SDKで利用可能なモジュールの一覧です。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/modules/
 ---
-Tealium Prismライブラリはモジュラー構造を採用しています。リソースフットプリントを小さく保つために必要なモジュールのみをインストールしてください。すべてのモジュールはCoreモジュールに依存しています。
+Tealium Prismライブラリはモジュール式アーキテクチャを採用しています。リソース使用量を抑えるため、必要なモジュールのみをインストールしてください。すべてのモジュールはCoreモジュールに依存します。
 
 ## 利用可能なモジュール
 
@@ -12,40 +12,38 @@ Tealium Prismライブラリはモジュラー構造を採用しています。�
 | モジュール | パッケージ | 説明 |
 | :--- | :--- | :--- |
 | Core | `prism-core` | 必須。Tealiumインスタンス、構成、トラッキング、データレイヤーを提供します。 |
-| [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `prism-lifecycle` | アプリのライフサイクルイベント（起動、起床、休止など）を追跡します。 |
-| [Moments API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `prism-moments-api` | Tealium AudienceStreamからリアルタイム訪問プロファイルへのアクセスを提供します。 |
-| [Moments iQ](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-iq/) | — | Tealium iQモバイルプロファイルからのアプリ内調査および体験ウィジェットを構成します。 |
-| [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `prism-appdata` | アプリレベルのデータ（アプリ名、バージョン、ビルド番号など）を収集します。 |
-| [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `prism-collect` | Tealium Collectエンドポイントへのイベントを送信します。 |
-| [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `prism-connectivity-data` | デバイスの接続情報（ネットワークタイプなど）を収集します。 |
-| [DeepLink](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/deep-link/) | `prism-deeplink` | ディープリンクURLを処理し、ディープリンクデータをデータレイヤーに渡します。 |
-| [DeviceData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/devicedata/) | `prism-device-data` | デバイス情報（モデル、OSバージョン、画面解像度など）を収集します。 |
-| [TimeData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/timedata/) | `prism-time-data` | トラッキングコールにタイムスタンプデータを追加します。 |
-| Trace | `prism-trace` | デバッグおよび検証のためのトレースセッションを有効にします。 |
+| [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `prism-lifecycle` | 起動、復帰、スリープなど、アプリのライフサイクルイベントを追跡します。 |
+| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `prism-context-api` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
+| [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `prism-core` | アプリ名、バージョン、ビルド番号など、アプリレベルのデータを収集します。 |
+| [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `prism-core` | Tealium Collectエンドポイントにイベントを送信します。 |
+| [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `prism-core` | ネットワークタイプなど、デバイスの接続情報を収集します。 |
+| [DeepLink](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/deep-link/) | `prism-core` | ディープリンクURLを処理し、ディープリンクデータをデータレイヤーに渡します。 |
+| [DeviceData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/devicedata/) | `prism-core` | モデル、OSバージョン、画面解像度などのデバイス情報を収集します。 |
+| [TimeData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/timedata/) | `prism-core` | トラッキング呼び出しにタイムスタンプデータを追加します。 |
+| Trace | `prism-core` | デバッグと検証のためのトレースセッションを有効にします。 |
 
 
 | モジュール | パッケージ | 説明 |
 | :--- | :--- | :--- |
 | Core | `TealiumPrismCore` | 必須。Tealiumインスタンス、構成、トラッキング、データレイヤーを提供します。 |
-| [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `TealiumPrismLifecycle` | アプリのライフサイクルイベント（起動、起床、休止など）を追跡します。 |
-| [Moments API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `TealiumPrismMomentsAPI` | Tealium AudienceStreamからリアルタイム訪問プロファイルへのアクセスを提供します。 |
-| [Moments iQ](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-iq/) | — | Tealium iQモバイルプロファイルからのアプリ内調査および体験ウィジェットを構成します。 |
-| [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismAppData` | アプリレベルのデータ（アプリ名、バージョン、ビルド番号など）を収集します。 |
-| [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCollect` | Tealium Collectエンドポイントへのイベントを送信します。 |
-| [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismConnectivityData` | デバイスの接続情報（ネットワークタイプなど）を収集します。 |
-| [DeepLink](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/deep-link/) | `TealiumPrismDeepLink` | ディープリンクURLを処理し、ディープリンクデータをデータレイヤーに渡します。 |
-| [DeviceData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/devicedata/) | `TealiumPrismDeviceData` | デバイス情報（モデル、OSバージョン、画面解像度など）を収集します。 |
-| DataLayer | `TealiumPrismDataLayer` | データレイヤーの操作と永続性を拡張します。 |
-| [TimeData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/timedata/) | `TealiumPrismTimeData` | トラッキングコールにタイムスタンプデータを追加します。 |
-| Trace | `TealiumPrismTrace` | デバッグおよび検証のためのトレースセッションを有効にします。 |
+| [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `TealiumPrismLifecycle` | 起動、復帰、スリープなど、アプリのライフサイクルイベントを追跡します。 |
+| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `TealiumPrismContextAPI` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
+| [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismCore` | アプリ名、バージョン、ビルド番号など、アプリレベルのデータを収集します。 |
+| [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCore` | Tealium Collectエンドポイントにイベントを送信します。 |
+| [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismCore` | ネットワークタイプなど、デバイスの接続情報を収集します。 |
+| [DeepLink](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/deep-link/) | `TealiumPrismCore` | ディープリンクURLを処理し、ディープリンクデータをデータレイヤーに渡します。 |
+| [DeviceData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/devicedata/) | `TealiumPrismCore` | モデル、OSバージョン、画面解像度などのデバイス情報を収集します。 |
+| DataLayer | `TealiumPrismCore` | 拡張されたデータレイヤー操作と永続化を提供します。 |
+| [TimeData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/timedata/) | `TealiumPrismCore` | トラッキング呼び出しにタイムスタンプデータを追加します。 |
+| Trace | `TealiumPrismCore` | デバッグと検証のためのトレースセッションを有効にします。 |
 
 
 React Nativeモジュールはnpmパッケージです。アプリに必要なパッケージのみをインストールしてください。
 
 | モジュール | パッケージ | 説明 |
 | :--- | :--- | :--- |
-| Core | `@tealium/prism-react-native` | 必須。ネイティブのiOSおよびAndroid Prism SDKをラップします。Tealiumインスタンス、トラッキング、データレイヤーを提供します。 |
-| Lifecycle | `@tealium/prism-react-native-lifecycle` | アプリのライフサイクルイベント（起動、起床、休止など）を追跡します。 |
+| Core | `@tealium/prism-react-native` | 必須。ネイティブのiOSおよびAndroid Prism SDKをラップし、Tealiumインスタンス、トラッキング、データレイヤーを提供します。 |
+| Lifecycle | `@tealium/prism-react-native-lifecycle` | 起動、復帰、スリープなど、アプリのライフサイクルイベントを追跡します。 |
 
 モジュールの有効化は、個々のパッケージではなく、Tealium構成JSONによって制御されます。
 
@@ -55,32 +53,31 @@ React Nativeモジュールはnpmパッケージです。アプリに必要な�
 
 
 
-`build.gradle`ファイルにPrism BOMと必要なモジュールを追加します：
+Prism BOMと必要なモジュールを`build.gradle`ファイルに追加します。
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
 implementation("com.tealium.prism:prism-core")
 implementation("com.tealium.prism:prism-lifecycle")
-implementation("com.tealium.prism:prism-collect")
 ```
 
 
-Swiftパッケージ依存関係を追加する際に必要なモジュールを選択するか、CocoaPodsのPodfileで指定します。
+Swiftパッケージの依存関係を追加するときに必要なモジュールを選択するか、CocoaPods用のPodfileで指定します。
 
 
-npmでコアパッケージをインストールします：
+npmを使用してコアパッケージをインストールします。
 
 ```bash
 npm install @tealium/prism-react-native
 ```
 
-Lifecycleモジュールを追加するには：
+Lifecycleモジュールを追加するには、次のコマンドを実行します。
 
 ```bash
 npm install @tealium/prism-react-native-lifecycle
 ```
 
-ネイティブのiOS依存関係をインストールします：
+ネイティブiOSの依存関係をインストールします。
 
 ```bash
 cd ios && pod install
@@ -90,25 +87,25 @@ cd ios && pod install
 
 ## UIでのモジュール構成
 
-SDKモジュールは、タグに似たマーケットプレイスとしてTealiumモバイルプロファイルで利用可能です。アプリコードを変更することなく、UIからモジュールを追加、構成、管理できます。
+SDKモジュールは、タグと同様に、Tealiumモバイルプロファイル内でマーケットプレイスとして利用できます。アプリのコードを変更することなく、UIからモジュールを追加、構成、管理できます。
 
-UIでモジュールを追加するには：
+UIでモジュールを追加するには、次の手順を実行します。
 
-1. Tealiumモバイルプロファイルにアクセスします。
+1. Tealiumモバイルプロファイルに移動します。
 1. **モジュール**に移動します。
-1. **モジュールを追加**を選択し、マーケットプレイスからモジュールを選びます。
-1. モジュール構成を構成します。
-1. 変更を保存して公開します。
+1. **モジュールを追加**を選択し、マーケットプレイスからモジュールを選択します。
+1. モジュールの構成を構成します。
+1. 変更を保存してパブリッシュします。
 
-SDKは次のリモート構成のリフレッシュまたはアプリの起動時に更新されたモジュール構成を取得します。
+SDKは、次回のリモート構成の更新時またはアプリの起動時に、更新されたモジュール構成を取得します。
 
 ## 高度な構成：プログラムによるモジュールの有効化
 
-SDKの初期化中に`TealiumConfig`でモジュールを指定することにより、プログラムによってモジュールを有効化できます：
+プログラムでモジュールを有効にするには、SDKの初期化時に`TealiumConfig`でモジュールを指定します。
 
 
 <blockquote>
-React Nativeはプログラムによるモジュールの有効化をサポートしていません。モジュールを有効にし、Tealiumモバイルプロファイルまたは構成JSONで構成してください。
+React Nativeでは、プログラムによるモジュールの有効化はサポートされていません。Tealiumモバイルプロファイルまたは構成JSONでモジュールを有効化して構成してください。
 </blockquote>
 
 
@@ -116,6 +113,7 @@ React Nativeはプログラムによるモジュールの有効化をサポー�
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "my_account",
     profileName = "my_profile",
     environment = Environment.PROD,
@@ -134,7 +132,6 @@ import TealiumPrism
 #else
 import TealiumPrismCore
 import TealiumPrismLifecycle
-import TealiumPrismCollect
 #endif
 
 let config = TealiumConfig(account: "my_account",

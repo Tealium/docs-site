@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/prism-mobile/migrate-helper-class/
 ---
 
 <blockquote>
-This guide covers iOS (Swift) and Android (Kotlin) apps migrating from the legacy Tealium SDK to Tealium Prism. React Native does not have a legacy Prism SDK to migrate from.
+This guide covers iOS (Swift) and Android (Kotlin) apps migrating from the legacy Tealium SDK to Tealium Prism.
 </blockquote>
 
 
@@ -43,7 +43,7 @@ Prism does not include the Tag Management (webview) dispatcher, remote commands,
 Update your dependencies before importing Prism:
 
 * **iOS**  
-Replace `TealiumSwift` with `TealiumPrism` (CocoaPods) or `TealiumPrismCore` and `TealiumPrismLifecycle` (Swift Package Manager).
+Replace `tealium-swift` with `tealium-prism` (CocoaPods) or `TealiumPrismCore` and `TealiumPrismLifecycle` (Swift Package Manager).
 * **Android**  
 Replace `com.tealium:kotlin-core` with the `com.tealium.prism:prism-bom` BOM and `prism-core`, `prism-lifecycle`.
 
@@ -114,7 +114,6 @@ tealium.track(TealiumView("home"))
 tealium.track("purchase", data: ["order_id": "123"])
 tealium.track("home", type: .view)
 ```
-<!-- TODO verify: does DataObject conform to ExpressibleByDictionaryLiteral, or must the sample use a DataObject builder? Signature confirmed: track(_ name: String, type: DispatchType = .event, data: DataObject? = nil). -->
 
 
 ```kotlin
@@ -168,7 +167,7 @@ To write multiple values in one transaction, use `dataLayer.transactionally { }`
 
 ## Consent
 
-Prism has no consent status or categories of its own. Your consent management platform (CMP) is the source of truth. You implement a small adapter that publishes the user's decision as a set of purposes, and map each purpose to the dispatchers it releases.
+Consent management is not currently available in Prism. Prism has no equivalent of the legacy consent manager, and it does not hold or block events based on consent. Instead, pass the user's consent choices into the data layer and enforce them server-side with [consent orchestration](https://docs.tealium.com/about-consent-orchestration/). For details, see [Consent](https://docs.tealium.com/platforms/prism-mobile/consent-management/).
 
 
 
@@ -179,14 +178,7 @@ tealium.consentManager?.userConsentStatus = .consented
 tealium.consentManager?.userConsentCategories = [.analytics]
 
 // Prism
-final class MyCMPAdapter: CMPAdapter {
-    let id = "my_cmp"
-    let allPurposes: Set<String>? = ["analytics", "marketing"]
-    let consentDecision: Observable<ConsentDecision?>   // emit on every user decision
-}
-config.enableConsentIntegration(with: MyCMPAdapter(), forcingConfiguration: {
-    $0.addPurpose("analytics", dispatcherIds: ["Collect"])
-})
+tealium.dataLayer.put(key: "consent_categories", converting: ["analytics"], expiry: .forever)
 ```
 
 
@@ -196,20 +188,14 @@ config.consentManagerPolicy = ConsentPolicy.GDPR
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 
 // Prism
-class MyCmpAdapter : CmpAdapter {
-    override val id = "my_cmp"
-    override val allPurposes: Set<String>? = setOf("analytics", "marketing")
-    override val consentDecision: Observable<ConsentDecision?> = TODO()
-}
-TealiumConfig.Builder(https://docs.tealium.com/* ... */)
-    .enableConsentIntegration(MyCmpAdapter()) { it.addPurpose("analytics", listOf("Collect")) }
+tealium.dataLayer.put("consent_categories", DataList.create { add("analytics") }, Expiry.FOREVER)
 ```
 
 
 
-<!-- TODO verify: ConsentDecision.DecisionType case names. Also verify addPurpose parameter types on Kotlin ConsentConfigurationBuilder. Consent surface is the least stable API at 0.6.0 (MT-2080 replay fix open). -->
-
 ## Visitor ID
+
+Visitor ID methods move to `tealium.visitorId`, and reads are asynchronous. The identity key moves from the config to the Visitor ID Manager module settings.
 
 
 
@@ -217,12 +203,16 @@ TealiumConfig.Builder(https://docs.tealium.com/* ... */)
 // Legacy
 let id = tealium.visitorId
 tealium.resetVisitorId()
+tealium.clearStoredVisitorIds()
 config.visitorIdentityKey = "customer_id"
 
 // Prism
-tealium.resetVisitorId()          // returns the new ID in a result
-tealium.clearStoredVisitorIds()
-// identity switching: forcingSettings: { $0.setVisitorIdentityKey("customer_id") }
+tealium.visitorId.current().subscribe { result in
+    // Result<String, ModuleError<Error>>
+}
+tealium.visitorId.regenerate()          // returns the new ID in a result
+tealium.visitorId.eraseLocalHistory()
+// identity switching: Modules.visitorId(forcingSettings: { $0.setVisitorIdentityKey("customer_id") })
 ```
 
 
@@ -230,21 +220,23 @@ tealium.clearStoredVisitorIds()
 // Legacy
 val id = tealium.visitorId
 tealium.resetVisitorId()
+tealium.clearStoredVisitorIds()
 config.visitorIdentityKey = "customer_id"
 
 // Prism
-tealium.resetVisitorId()          // SingleResult<String>
-tealium.clearStoredVisitorIds()
-// identity switching: .configureCoreSettings { it.setVisitorIdentityKey("customer_id") }
+tealium.visitorId.current().subscribe { result -> /* TealiumResult<String> */ }
+tealium.visitorId.regenerate()          // SingleResult<String>
+tealium.visitorId.eraseLocalHistory()
+// identity switching: Modules.visitorId { it.setVisitorIdentityKey("customer_id") }
 ```
 
 
 
-Prism 0.6.0 has no method to read the current visitor ID. The ID is sent on every event as `tealium_visitor_id`.
+To read the current visitor ID, call `visitorId.current()`. The ID is also sent on every event as `tealium_visitor_id`.
 
 ## Remote commands become dispatchers
 
-In Prism, each vendor is a dispatcher module with the same role and lifecycle as Collect: native, queued on disk, gated by consent and barriers, configured from the settings file. Use a published dispatcher where one exists (Firebase for iOS today), or write one.
+In Prism, each vendor is a dispatcher module with the same role and lifecycle as Collect: native, queued on disk, gated by barriers, configured from the settings file. Use a published dispatcher where one exists (Firebase for iOS today), or write one.
 
 
 
@@ -261,6 +253,7 @@ final class MyDispatcher: Dispatcher {
     let version = "1.0.0"
     func dispatch(_ data: [Dispatch], completion: @escaping ([Dispatch]) -> Void) -> any Disposable {
         // send each dispatch payload to the vendor SDK; complete with the dispatches that succeeded
+        return Disposables.disposed()
     }
     func updateConfiguration(_ configuration: DataObject) -> Self? { self }
     func shutdown() {}
@@ -337,11 +330,11 @@ Before calling `shutdown()`, dispose any subscriptions you hold.
 | Area | Legacy | Prism |
 |---|---|---|
 | Queueing | One queue. Batching and offline are handled per config flag. | One SQLite queue per dispatcher. Every event is written before send and removed after a confirmed send. Barriers (connectivity, batching) release the queue. `flushEventQueue()` forces it. |
-| Consent | SDK stores status and categories. Events queue until consented. | SDK stores nothing. Your CMP adapter publishes purposes. Each purpose releases named dispatchers. Held events refire for the dispatchers you list. |
+| Consent | SDK stores status and categories. Events queue until consented. | Not currently available. Events are not held or blocked. Pass consent choices in the data layer and enforce them server-side. |
 | Settings | Programmatic config plus `mobile.json` from Tealium iQ | Local file < remote URL (cached for offline) < programmatic. Programmatic values can never be overridden remotely. A module only starts when settings exist for it. |
 | Tag logic | utag.js in a webview | Transformers on device: set values, lowercase, persist, JavaScript in an isolated runtime. No webview. |
 | Threading and results | Mixed. Some sync reads. Fire and forget. | All public calls are safe from any thread and run on one SDK queue. Every write or read returns a `SingleResult` or `Single`. Subscribe to see errors, or ignore it. Completions run on the SDK queue, not yours. |
-| Stored data | Persists across SDK upgrades | Not carried over from legacy at 0.6.0 |
+| Stored data | Persists across SDK upgrades | Not carried over from legacy at 0.7.0 |
 
 ## Checklist
 
@@ -353,7 +346,7 @@ Before calling `shutdown()`, dispose any subscriptions you hold.
 1. Replace `TealiumEvent` / `TealiumView` with `track(name, type:, data:)`.
 1. Rename `add` to `put` and `delete` to `remove`.
 1. Make reads asynchronous.
-1. Replace the consent manager with a CMP adapter and purpose mapping.
+1. Replace the consent manager with consent data in the data layer and server-side enforcement.
 1. Replace each remote command with a dispatcher module.
 1. Move log level into settings.
 1. Replace `disable()` and `destroy()` with `shutdown()`.

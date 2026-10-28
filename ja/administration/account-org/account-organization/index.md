@@ -114,7 +114,7 @@ Tealiumにログインする各人はユーザーアカウントを持ってい�
 
 サーバーサイドは、プロファイルの保存、名前を付けて保存、および公開のオプションを提供します。バッジ、ルール、テストユーザー、Traceを使用して、本番環境を中断することなく新しいサーバーサイドの機能をテストできます。
 
-詳細については、[テストについて](https://docs.tealium.com/ss-test-publish/)と[Trace: Traceでテスト](https://docs.tealium.com/audiencestream-trace-test-with-trace/)を参照してください。
+詳細については、[テストについて](https://docs.tealium.com/ss-test-publish/)と[Trace: Traceでテスト](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/trace-test/)を参照してください。
 
 以下の図は、単純なサーバーサイドのワークフローを示しています：
 

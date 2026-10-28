@@ -14,8 +14,8 @@ Tealium Collect is activated using one of these methods:
 
 Once added, Tealium Collect sends HTTPS requests to the Customer Data Hub data collection servers for use with the following server-side products:
 
-* [Tealium EventStream](https://docs.tealium.com/introduction-to-eventstream/)
-* [Tealium AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/)
+* [Tealium EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
+* [Tealium AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
 * [Tealium EventStore](https://docs.tealium.com/about-dataaccess/)
 * [Tealium AudienceDB & EventDB](https://docs.tealium.com/audiencedb-and-eventdb/)
 

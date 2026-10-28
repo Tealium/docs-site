@@ -75,12 +75,21 @@ Complete the following steps to see important information about your CMP integra
 
 ## Debug collisions and Enforcement Rules after publishing
 
-​`window.tealiumCmpIntegrations` has a number of useful properties that help you understand which integrations are enforced on a page. For instance, `loadRules` has child properties that show which consent integrations are enforced and whether there was a collision (which blocks Tealium iQ and all tags).
- - `map` and `tagBasedMap` show different views of the relationship between tag UIDs and Purpose Keys.
- - `tiqGroupName` shows the mapping of the Purpose Key to Tealium iQ itself.
- - `cmpName` shows the currently active CMP (according to the template).
- - `cmpIntegrationVersion` shows the current version of the vendor specific integration template you're using.
- - `version` shows the version of the underlying consent enforcement framework you're using.
+Use `window.tealiumCmpIntegration` to inspect consent enforcement, identify collisions, and troubleshoot blocked tags after publishing.
 
-For more information about each of the specific integration features also included in this object, see the related [documentation](https://docs.tealium.com/custom-cmp-integrations/) on writing custom integrations.
+The object contains the following properties:
 
+* `loadRules`: Contains properties that identify which consent integrations are enforced and whether a collision occurred. A collision blocks Tag Management and all tags.
+* `map` and `tagBasedMap`: Show different mappings between tag UIDs and purpose keys.
+* `tiqGroupName`: Maps the purpose key to Tag Management.
+* `cmpName`: Identifies the active Consent Management Platform (CMP), as determined by the integration template.
+* `cmpIntegrationVersion`: Identifies the version of the vendor-specific integration template.
+* `version`: Identifies the version of the underlying consent enforcement framework.
+* `originalEvents`: Stores the original event payload for each event that triggers enforcement, keyed by event ID (`tci.event_id`). Event IDs are assigned automatically and passed downstream in the data layer.
+* `blockedTagsByEvent`: Records tags blocked by consent decisions, organized by event. Each key uses the format `<tci.event_id>||<consent-type>` (for example, `1234567890||implicit`). Each value is an object containing blocked tag UIDs set to `1`.
+
+  To inspect the event payload associated with a blocked tag, use the event ID to find the corresponding entry in `originalEvents`.
+
+  Blocked tags are logged to the browser console whenever blocking occurs. Starting with version 1.4.0, `blockedTagsByEvent` includes only tags blocked by consent decisions. Tags that do not meet load rule conditions are excluded.
+
+For more information about integration-specific properties, see [Custom CMP integrations](https://docs.tealium.com/custom-cmp-integrations/).

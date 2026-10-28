@@ -14,11 +14,11 @@ Event specifications contain a set of definitions, which consist of:
 * Their expected data types, such as string, number, or boolean. Defining data types helps ensure that each attribute contains the correct kind of information. Defined data types reduce errors, improve data consistency, and make it easier to validate and process events across different systems.
 * Whether they are required for a valid event. Required attributes must be present in an event for it to be considered valid. Required attributes ensure that critical information is always included, which is essential for accurate analysis and decision-making.
 
-During validation, each attribute is evaluated for presence, data type, and any configured data value rules. Required attribute failures produce an invalid event. Optional attribute failures produce a warn event. For information about configuring data value rules, see [Add a validation rule to an attribute](https://docs.tealium.com/manage-event-specifications/#add-a-validation-rule-to-an-attribute).
+During validation, each attribute is evaluated for presence, data type, and any configured data value rules. A required attribute that is missing or fails validation produces an invalid event. An optional attribute that is present but fails a type check or data value rule also produces an invalid event. Optional attributes that are absent from the event are not evaluated and do not affect the result. For information about configuring data value rules, see [Add a validation rule to an attribute](https://docs.tealium.com/manage-event-specifications/#add-a-validation-rule-to-an-attribute).
 
 
 <blockquote>
-Validation is limited to 100 attributes per event. Required attributes are evaluated first in alphabetical order, followed by optional attributes in alphabetical order. Attributes beyond the limit are not validated and are marked as warn with the reason **Spec limit reached**.
+Validation is limited to 100 attributes per event. Required attributes are evaluated first in alphabetical order, followed by optional attributes in alphabetical order. Attributes beyond the limit are not validated.
 </blockquote>
 
 
@@ -53,33 +53,48 @@ Event specifications provide two primary benefits for data management:
 * To standardize the implementation of events across all platforms.
 * To evaluate the data quality of incoming events.
 
+## Validation status attribute
+
+After validation runs, events that match a specification carry the reserved `tealium_event_spec_status` string attribute in their payload.
+
+The attribute has the following values:
+
+| Status | Description |
+|---|---|
+| `PASS` | The event matches a specification and passes validation. |
+| `FAIL` | The event matches a specification and fails validation. |
+| Not present | The event does not match a specification, so the attribute is not added to the payload. |
+
+The `tealium_event_spec_status` attribute is reserved. If an incoming event already contains this attribute, the value is removed before processing to prevent spoofing.
+
+To use the validation status in downstream systems, define `tealium_event_spec_status` as an [event attribute](https://docs.tealium.com/manage-es-attributes/). No enrichment is required.
+
+After you define the attribute, you can use it in connectors, event feeds, and other features that support event attributes.
+
 ## View event specification statistics
 
 ![](https://docs.tealium.com/images/server-side/event-health-table.png)
-<!-- GAP: replace event-health-table.png with a screenshot of the Event Specifications overview showing the Warn Events metric tile and the Warn Events column in the Defined Events table -->
 
 The **Event Health** window displays the total statistics for all event specifications. The table shows the statistics for each individual event specification. You can select a time frame to view the statistics for that period.
 
-The following statistics are displayed:
+The **Event Health** window displays the following statistics:
 
 * **Total Volume**  
 The total number of events received in the selected time frame.
 * **Valid Events**  
 The number of events that satisfy the requirements of an active event specification. Valid events have a known value for the `tealium_event` attribute and all the required attributes from the specification. The more valid events you see, the better your data quality. Higher counts indicate your installations are sending the data expected in your specifications.
-* **Warn Events**  
-The number of events that match a specification and pass all required attribute checks, but have one or more optional attributes that are missing, have the wrong data type, or don't match a configured data value rule. Fixing warn events improves the completeness of your optional attribute data.
 * **Invalid Events**  
-The number of events that match an event specification, but have at least one required attribute that is missing, has the wrong data type, or doesn't match a configured data value rule. These issues can be resolved by fixing the installation code that is sending the events or adjusting the event specification.
+The number of events that match an event specification but have at least one attribute that is missing or invalid. Required attributes that are missing or have the wrong data type, and optional attributes that are present with the wrong data type or that fail a configured data value rule, all produce an invalid event. These issues can be resolved by fixing the installation code that is sending the events or adjusting the event specification.
 * **No Spec**  
 The number of events that do not have a matching event specification. No Spec events either do not have the `tealium_event` attribute or do not have a corresponding event specification.
 
-The **Defined Events** table lists all existing event specifications and the **Total Volume**, **Valid Events**, **Warn Events**, **Invalid Events**, and **No Spec** statistics for each event specification.
+The **Defined Events** table lists all existing event specifications and the **Total Volume**, **Valid Events**, **Invalid Events**, and **No Spec** statistics for each event specification.
 
 ## View event specification details
 
 Click any event specification in the **Defined Events** table to view its details.
 
-Statistics about the event specification are displayed at the top of the page, including the total volume of events matching the specification, and the percentage of valid, warn, and invalid events.
+Statistics about the event specification are displayed at the top of the page, including the total volume of events matching the specification, and the percentage of valid, invalid, and no-spec events.
 
 The **Definitions** table provides contextual information about the event and defines the required attributes, their expected data types, and whether they are required for a valid event.
 
@@ -93,6 +108,6 @@ The following code sample demonstrates the tracking code for the `video_complete
 
 ## Event specifications in live events
 
-Once an event specification is created and the tracking code is implemented, use the live events chart to view incoming events in real-time to evaluate their data quality.
+After you create an event specification and implement the tracking code, use the live events chart to view incoming events in real-time and evaluate their data quality.
 
 For more information, see [Live events](https://docs.tealium.com/about-live-events/#event-specification-display-filters).

@@ -11,6 +11,32 @@ Templates define the structure of your API request and template variables provid
 
 For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).
 
+## Reserved variables
+
+Reserved variables are automatically available in every template-capable webhook connector action. You do not need to create a variable mapping to use them.
+
+| Variable | Description |
+|---|---|
+| `tealium_event_payload` | The entire current event, including `account`, `profile`, `env`, `data` (`udo`, `dom`, `firstparty_tealium_cookies`), `post_time`, `useragent`, `event_id`, and `visitor_id`. |
+| `tealium_visitor_payload` | The entire visitor profile, including attributes, current visit data, and secondary IDs. The structure matches the payload from **Send Visitor Data via HTTP Request**. |
+
+Use dot notation to access a single value from a reserved variable:
+
+```json
+{
+    "eventId": "{{tealium_event_payload.event_id}}",
+    "email": "{{tealium_event_payload.data.udo.email}}"
+}
+```
+
+Use `.toJson` to serialize the entire object or a nested object as a JSON string:
+
+```json
+{
+    "event": {{tealium_event_payload.toJson}},
+    "udo": {{tealium_event_payload.data.udo.toJson}}
+}
+```
 
 ## How it works
 

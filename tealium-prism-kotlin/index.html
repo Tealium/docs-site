@@ -86,7 +86,7 @@ var utag_data = {
           <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-auto dn sticky-l pt3" style="min-width: 280px;">
             <nav class="side-nav f6 pb6 pl125" role="navigation" id="leftColumn" class="sidebar" data-item-type="SECTION">
               <ul class="list pa0 mt0 mb1">
-                <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/platforms/prism-mobile/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow-left.svg" height="10" width="16" class="di v-mid pr1">Back</a></li>
+                <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/early-access/mobile/quick-start/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow-left.svg" height="10" width="16" class="di v-mid pr1">Back</a></li>
               </ul>
               <ul class="list pa0" data-nav-section="ios-kotlin">
                 <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">  
@@ -127,7 +127,7 @@ var utag_data = {
         </span></div>
       <p class="paragraph">Then add your required tealium-prism dependencies</p>
       <div class="sample-container">
-        <pre><code class="block lang-kotlin" theme="idea">implementation(platform(&quot;com.tealium.prism:prism-bom:0.6.0&quot;))<br>implementation(&quot;com.tealium.prism:prism-core&quot;)<br>implementation(&quot;com.tealium.prism:prism-lifecycle&quot;)<br>implementation(&quot;com.tealium.prism:prism-moments-api&quot;) </code></pre>
+        <pre><code class="block lang-kotlin" theme="idea">implementation(platform(&quot;com.tealium.prism:prism-bom:0.7.0&quot;))<br>implementation(&quot;com.tealium.prism:prism-core&quot;)<br>implementation(&quot;com.tealium.prism:prism-lifecycle&quot;)<br>implementation(&quot;com.tealium.prism:prism-context-api&quot;) </code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
@@ -151,11 +151,95 @@ var utag_data = {
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
       <p class="paragraph">For more advanced usage and detailed documentation, visit our <a href="https://tealium.github.io/tealium-prism-kotlin/">developer documentation</a>.</p>
+      <h3 class="">Guides</h3>
+      <ul>
+        <li>
+          <p class="paragraph">../core/VisitorId.md: the anonymous visitor ID, Visitor Switching, and the <code class="lang-kotlin">tealium.visitorId</code> API. Published on the core module page.</p>
+        </li>
+      </ul>
+      <h2 class="">Custom Modules</h2>
+      <h3 class="">Lifecycle of a Module</h3>
+      <p class="paragraph">Modules are created, updated and shut down by settings passes. A pass runs whenever settings are loaded: at startup, and each time remote settings are downloaded. A download is attempted at launch, and when the app returns to the foreground once the refresh interval has elapsed; a download that fails, or finds the settings unchanged on the server (HTTP 304), does not run a pass. Every pass calls <code class="lang-kotlin">updateConfiguration()</code> on every live module, even when its configuration has not changed. Within a pass, the modules are processed one at a time in the <code class="lang-kotlin">order</code> from the settings.</p>
+      <ul>
+        <li>
+          <p class="paragraph"><strong>Creation.</strong> A module that is enabled in the settings and has no live instance is created through its <code class="lang-kotlin">ModuleFactory.create()</code>. A module may track from its constructor (the Lifecycle module does): that event is collected and dispatched by the modules of the pass that is creating it, including modules created later in the same pass. It is never served by the modules of the previous pass.</p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>Reconfiguration.</strong> A module that already has a live instance receives the new configuration through <code class="lang-kotlin">updateConfiguration()</code>. The return value decides what happens next:</p>
+          <ul>
+            <li>
+              <p class="paragraph"><code class="lang-kotlin">this</code> keeps the current instance with the new configuration.</p>
+            </li>
+            <li>
+              <p class="paragraph"><code class="lang-kotlin">null</code> disables the module, and the current instance is shut down.</p>
+            </li>
+          </ul>
+          <p class="paragraph">Returning any other instance is not supported.</p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>Shutdown.</strong> <code class="lang-kotlin">onShutdown()</code> is called exactly once on a module that leaves the list: it was disabled in the settings, it returned <code class="lang-kotlin">null</code> from <code class="lang-kotlin">updateConfiguration()</code>, its entry disappeared from the settings entirely, or the <code class="lang-kotlin">Tealium</code> instance was shut down. Dispose subscriptions and release resources there.</p>
+        </li>
+      </ul>
+      <h3 class="">Reaching Other Modules</h3>
+      <p class="paragraph">A module reaches the other modules through the <code class="lang-kotlin">ModuleManager</code> exposed on the <code class="lang-kotlin">TealiumContext</code> as <code class="lang-kotlin">context.moduleManager</code>.</p>
+      <p class="paragraph">These lookups are asynchronous, and there is deliberately no synchronous alternative, because of <i>when</i> a module is created. The modules of a settings pass are created one at a time, so when your module's constructor or <code class="lang-kotlin">create()</code> runs, the module you are looking for may not exist yet. A synchronous answer at that point couldn't tell &quot;that module is not enabled&quot; from &quot;that module hasn't been created yet&quot;, so instead of handing back a premature <code class="lang-kotlin">null</code>, these methods withhold the answer until the pass has created every module.</p>
+      <ul>
+        <li>
+          <p class="paragraph"><code class="strong lang-kotlin"><strong>getModuleOfType(clazz, callback)</strong></code> — a one-shot lookup, for when you need the module once, at a specific moment. The callback is called exactly once. It returns a <code class="lang-kotlin">Disposable</code>, so a lookup still waiting for the modules can be abandoned, for example from your module's own <code class="lang-kotlin">onShutdown()</code>.</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea">context.moduleManager.getModuleOfType(OtherCustomModule::class.java) { other -&gt;<br>    // Called once, after the modules have been created; null means not enabled<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+        <li>
+          <p class="paragraph"><code class="strong lang-kotlin"><strong>observeModule(clazz)</strong></code> — the same lookup, followed over time. Use it when the module can come and go: a settings update can enable or disable it, and each change is emitted.</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea">context.moduleManager.observeModule(OtherCustomModule::class.java)<br>    .subscribe { other -&gt; this.other = other }<br>    .addTo(disposables)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+        <li>
+          <p class="paragraph"><code class="strong lang-kotlin"><strong>observeModules(clazz)</strong></code> — every module matching a class or interface, in the module order from the settings. This is how to reach modules you only know through an interface, such as every <code class="lang-kotlin">Dispatcher</code>.</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea">context.moduleManager.observeModules(Dispatcher::class.java)<br>    .subscribe { dispatchers -&gt; this.dispatchers = dispatchers }<br>    .addTo(disposables)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+      </ul>
+      <p class="paragraph">Three behaviors are worth spelling out, as none is visible from the signatures:</p>
+      <ul>
+        <li>
+          <p class="paragraph">No module is resolved while the modules are being created or updated. A subscriber arriving mid-pass waits for that pass to complete instead of being handed the answer of the previous one.</p>
+        </li>
+        <li>
+          <p class="paragraph">Once one of these has started emitting, a <code class="lang-kotlin">null</code> (or an <code class="lang-kotlin">emptyList()</code>) means <strong>the module is not enabled</strong>. It never means &quot;not created yet&quot;. After the SDK has been shut down you get a <code class="lang-kotlin">null</code> (or an <code class="lang-kotlin">emptyList()</code>) as well, rather than a lookup that never resolves.</p>
+        </li>
+        <li>
+          <p class="paragraph">The resolved module(s) are re-emitted only when they change by identity or order. A module reconfigured in place by <code class="lang-kotlin">updateConfiguration()</code> is not re-emitted. A value that varies over time for the same module is not re-emitted — observe it through the module itself.</p>
+        </li>
+      </ul>
+      <p class="paragraph">Never assume the other modules exist while your module is being created — resolve them through <code class="lang-kotlin">context.moduleManager</code>, which withholds the answer until the modules of the current settings pass have been created.</p>
       <h2 class="">License</h2>
       <p class="paragraph">tealium-prism is available under a commercial license. See the ./LICENSE file for more info.</p>
     </div>
     <h2 class="">All modules:</h2>
-    <div class="table"><a data-name="-387464810%2FMain%2F0" anchor-label="core" id="-387464810%2FMain%2F0" data-filterable-set=""></a>
+    <div class="table"><a data-name="1912530346%2FMain%2F0" anchor-label="contextapi" id="1912530346%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="contextapi/index.html">contextapi</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1912530346%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The Context API module provides support for real-time visitor personalization using Tealium's  <a href="https://docs.tealium.com/server-side/context-api/">Context API</a> Server Side technology.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="-387464810%2FMain%2F0" anchor-label="core" id="-387464810%2FMain%2F0" data-filterable-set=""></a>
       <div class="table-row">
         <div class="main-subrow ">
           <div class="w-100"><span class="inline-flex">
@@ -230,19 +314,6 @@ var utag_data = {
               </span></span></div>
           <div><span class="brief-comment">
               <p class="paragraph">The Lifecycle module provides application lifecycle event tracking. It can automatically  track <code class="lang-kotlin">launch</code>, <code class="lang-kotlin">wake</code> and <code class="lang-kotlin">sleep</code> events which coincide with the application starting,  being put into the foreground and being put into the background.</p>
-            </span></div>
-        </div>
-      </div>
-<a data-name="-1913167762%2FMain%2F0" anchor-label="momentsapi" id="-1913167762%2FMain%2F0" data-filterable-set=""></a>
-      <div class="table-row">
-        <div class="main-subrow ">
-          <div class="w-100"><span class="inline-flex">
-              <div><a href="momentsapi/index.html">momentsapi</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1913167762%2FMain%2F0"></span>
-                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-              </span></span></div>
-          <div><span class="brief-comment">
-              <p class="paragraph">The Moments API module provides support for real-time visitor personalization using Tealium's  <a href="https://docs.tealium.com/server-side/moments-api/">Moments API</a> Server Side technology.</p>
             </span></div>
         </div>
       </div>

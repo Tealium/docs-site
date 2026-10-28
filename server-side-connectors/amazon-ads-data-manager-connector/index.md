@@ -20,8 +20,16 @@ Go to the Connector Marketplace and add a new connector. For general instruction
 After adding the connector, configure the following settings:
 * **API Base URL**  
   * Select your API Base URL.
-* **Amazon Ads Data Manager ID**  
-  * Your Ads data manager (ADM) Manager ID. To find it, click Manager Account in the upper-right menu of the ADM UI.
+* **Amazon Ads Manager Account ID**  
+  * Your ADM Manager Account ID. To find it, click Manager Account in the upper-right menu of the ADM UI. Use if you have a manager account.
+* **Amazon Ads Account ID**  
+  * Your ADM Account ID. Use if you do not have a manager account. Non-manager accounts cannot create datasets.
+
+
+<blockquote>
+Do not set both the Amazon Ads Manager Account ID and the Amazon Ads Account ID.
+</blockquote>
+
 
 ## Actions
 
@@ -40,7 +48,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience Dataset | Select your ADM audience dataset. Click **Create Audience Dataset** to create an ADM audience dataset. |
+| Audience Dataset | Manager accounts: select your ADM audience dataset from the dropdown, or click **Create Audience Dataset** to create a new dataset. Non-manager accounts: enter the ADM Audience Dataset ID manually. Dataset creation and listing are not available for non-manager accounts. |
 
 #### External User ID
 
@@ -86,7 +94,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Audience Dataset | Select the ADM Audience Dataset. |
+| Audience Dataset | Manager accounts: select the ADM audience dataset from the dropdown. Non-manager accounts: enter the ADM Audience Dataset ID manually. Dataset creation and listing are not available for non-manager accounts. |
 
 #### External User ID
 

@@ -20,6 +20,8 @@ When a trace session is active, the Trace module collects the following data:
 
 The Trace module can be configured using programmatic, remote JSON, or local JSON settings.
 
+To limit the events that include the trace ID, add the Trace module to your mobile profile and assign a rule to it. For more information, see [Rules](https://docs.tealium.com/rules/).
+
 
 <blockquote>
 In React Native, the Trace module is enabled via your Tealium settings JSON. No programmatic setup is required.
@@ -35,10 +37,9 @@ val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.trace())
-.build()
+    environment = "dev",
+    modules = listOf(Modules.trace())
+).build()
 ```
 
 To configure with enforced settings:
@@ -48,13 +49,12 @@ val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.trace {
-    setEnabled(true)
-    setTrackErrors(true)
-})
-.build()
+    environment = "dev",
+    modules = listOf(Modules.trace {
+        it.setEnabled(true)
+            .setTrackErrors(true)
+    })
+).build()
 ```
 
 

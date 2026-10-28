@@ -10,8 +10,8 @@ Tealium currently supports the following function types:
 * **Data Transformation Functions**: Functions that are triggered after an event is received by Tealium Collect and when the trigger conditions for the function are met.
 For more information, see [About Data Transformation Functions]().
 * **Event Functions**: Functions that are triggered after an event is processed. For more information, see [About Event and Visitor Functions]().
-To use functions that are triggered by processed events, you must have Tealium EventStream API Hub enabled. For more information, see [Introduction to EventStream]().
-* **Visitor Functions**: Functions that are triggered after a visitor is processed. For more information, see [About Event and Visitor Functions](). To use functions that are triggered by processed visitors, you must have Tealium AudienceStream CDP enabled. For more information, see [Introduction to AudienceStream]().
+To use functions that are triggered by processed events, you must have Tealium EventStream API Hub enabled. For more information, see [Introduction to EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/).
+* **Visitor Functions**: Functions that are triggered after a visitor is processed. For more information, see [About Event and Visitor Functions](). To use functions that are triggered by processed visitors, you must have Tealium AudienceStream CDP enabled. For more information, see [Introduction to AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/).
 <!-- * **Data Record Functions**: Functions that are triggered after a data record is processed. To use functions that are triggered by processed data records, you must have a CloudStream profile. For more information, see [About CloudStream](). -->
 
 ## Key benefits

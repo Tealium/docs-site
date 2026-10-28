@@ -14,7 +14,7 @@ The Tealium Swift library generates a randomized and unique persistent visitor I
 
 If you are using AudienceStream, this will become the main first-party visitor ID that's associated with this visitor. You may provide additional known visitor IDs as needed, by sending them as variables in your tracking calls.
 
-[Learn more](https://docs.tealium.com/audiencestream-visitor-stitching-visitor-id/) about configuring visitor IDs in AudienceStream.
+[Learn more](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/) about configuring visitor IDs in AudienceStream.
 
 ```swift
 class TealiumHelper {

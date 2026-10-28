@@ -11,7 +11,7 @@ To track events, pass an event name and optional type and data to the `track()` 
 
 
 
-To track events, call [`track()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html) with an event name and an optional `DataObject`:
+To track events, call [`track()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html) with an event name and a `DataObject`:
 
 ```kotlin
 tealium.track("user_login", DataObject.create {
@@ -22,7 +22,7 @@ tealium.track("user_login", DataObject.create {
 To track an event without additional data:
 
 ```kotlin
-tealium.track("homepage")
+tealium.track("homepage", DataObject.EMPTY_OBJECT)
 ```
 
 To track an event with multiple data values:
@@ -36,14 +36,14 @@ tealium.track("purchase", DataObject.create {
 ```
 
 
-To track events, call [`track()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html) with an event name and optional type and data layer parameters:
+To track events, call [`track()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html) with an event name and optional type and data parameters:
 
 ```swift
-// Basic track with default event type and empty data layer
+// Basic track with default event type and no data
 tealium.track("homepage")
 
 // Track with event type and data
-tealium.track("user_login", type: .event, dataLayer: ["customer_id": "1234567890"])
+tealium.track("user_login", type: .event, data: ["customer_id": "1234567890"])
 
 // Track with view type
 tealium.track("homepage", type: .view)
@@ -76,7 +76,7 @@ To track screen views, use the `.view` type parameter.
 
 
 ```kotlin
-tealium.track("product_detail", DataObject.create {
+tealium.track("product_detail", DispatchType.View, DataObject.create {
     put("product_id", "SKU123")
     put("product_name", "Running Shoes")
     put("product_price", 89.99)
@@ -87,7 +87,7 @@ tealium.track("product_detail", DataObject.create {
 ```swift
 tealium.track("product_detail",
     type: .view,
-    dataLayer: [
+    data: [
         "product_id": "SKU123",
         "product_name": "Running Shoes",
         "product_price": 89.99
@@ -128,19 +128,20 @@ tealium.track("purchase", DataObject.create {
 ```
 
 
-Pass a dictionary of key-value pairs as the `dataLayer` parameter:
+Pass event data as a dictionary literal. Swift builds the `DataObject` directly from typed values, with no parsing.
 
 ```swift
-tealium.track("purchase",
-    type: .event,
-    dataLayer: [
-        "customer_id": "abc123",
-        "order_total": 249.95,
-        "product_id": ["PROD123", "PROD456"],
-        "product_price": [4.00, 6.00]
-    ]
-)
+tealium.track("purchase", data: [
+    "order_id": "0123456789",
+    "order_total": 149.99,
+    "product": ["id": "SKU123", "price": 89.99] as DataObject,
+    "tags": ["new", "sale"]
+])
 ```
+
+Mark nested objects with `as DataObject`, and arrays of objects with `as [DataObject]`. Use `DataObject(compacting:)` when some values are optional.
+
+If your data is already a `[String: Any]` dictionary, for example parsed JSON or values from a cross-platform bridge, use `try DataObject(jsonObject:)`. It validates the dictionary with a JSON round trip, so it costs more per call than a literal. Use it only for dynamic data.
 
 
 Pass a plain JavaScript object as the third argument. Arrays and nested values are supported:

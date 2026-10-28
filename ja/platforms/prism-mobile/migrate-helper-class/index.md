@@ -1,37 +1,37 @@
 ---
-title: レガシーSDKからTealium Prismへのヘルパークラスの移行
-description: iOSまたはAndroidアプリのTealiumHelperクラスをTealium for SwiftまたはTealium for Android（Kotlin）からTealium Prismを介してイベントをルーティングするように変更します。
+title: ヘルパークラスを従来のSDKからTealium Prismに移行する
+description: iOSまたはAndroidアプリのTealiumHelperクラスを変更し、Tealium for SwiftまたはTealium for Android（Kotlin）ではなく、Tealium Prismを介してイベントをルーティングします。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/migrate-helper-class/
 ---
 
 <blockquote>
-このガイドは、レガシーTealium SDKからTealium Prismへ移行するiOS（Swift）およびAndroid（Kotlin）アプリを対象としています。React Nativeは移行元のレガシーPrism SDKが存在しないため、対象外です。
+このガイドでは、従来のTealium SDKからTealium Prismへ移行するiOS（Swift）およびAndroid（Kotlin）アプリについて説明します。
 </blockquote>
 
 
-## このページの対象者
+## 対象読者
 
-Tealium for Swift 2.xまたはTealium for Android（Kotlin）1.xを使用しているアプリと、SDKをラップする`TealiumHelper`クラスを持っている方。このページでは、各レガシーコールを置き換えるPrismコールを示します。SDK間で保存されたデータを移動する方法については説明しません。
+Tealium for Swift 2.xまたはTealium for Android（Kotlin）1.xを使用するアプリがあり、SDKをラップする`TealiumHelper`クラスを使用している方を対象としています。このページでは、従来の各呼び出しを置き換えるPrismの呼び出しを示します。SDK間での保存データの移行については説明しません。
 
-## 開始する前に
+## 始める前に
 
-### 必要条件
+### 要件
 
-* PrismはiOS 13またはAndroid API 23を要求します。
-* ネイティブのPrism SDKはSwiftとKotlinのみをサポートします。JavaアプリはKotlin APIを呼び出します。Objective-Cはサポートされていません。
+* PrismにはiOS 13またはAndroid API 23が必要です。
+* ネイティブPrism SDKはSwiftとKotlinのみをサポートします。JavaアプリはKotlin APIを呼び出します。Objective-Cはサポートされていません。
 
-### 保存されたデータ
+### 保存データ
 
-保存されたデータは移動しません。アップグレード後、ユーザーは新しい訪問ID、空の永続データレイヤー、リセットされたライフサイクルカウンターを取得します。同じアカウントとプロファイルを維持します。データ移行は後のリリースで計画されています。
+保存データは移行されません。アップグレード後、ユーザーには新しい訪問IDが割り当てられ、永続データレイヤーは空になり、ライフサイクルカウンターはリセットされます。同じアカウントとプロファイルを引き続き使用してください。データ移行は今後のリリースで提供される予定です。
 
 ### ディスパッチャーとモジュール
 
-Prismにはタグ管理（Webビュー）ディスパッチャー、リモートコマンド、組み込みの同意管理者、タイムドイベント、以下のモジュールが含まれていません：
-  * 広告識別子
+Prismには、タグ管理（WebView）ディスパッチャー、リモートコマンド、組み込みの同意マネージャー、時間指定イベント、および以下のモジュールは含まれていません。
+  * 広告ID
   * アトリビューション
-  * 自動追跡
+  * 自動トラッキング
   * クラッシュレポーター
-  * ホストされたデータレイヤー
+  * ホステッドデータレイヤー
   * アプリ内購入
   * インストールリファラー
   * 位置情報
@@ -40,21 +40,21 @@ Prismにはタグ管理（Webビュー）ディスパッチャー、リモート
 
 ### 依存関係
 
-Prismをインポートする前に依存関係を更新してください：
+Prismをインポートする前に、依存関係を更新します。
 
 * **iOS**  
-`TealiumSwift`を`TealiumPrism`（CocoaPods）または`TealiumPrismCore`および`TealiumPrismLifecycle`（Swift Package Manager）に置き換えます。
+`tealium-swift`を`tealium-prism`（CocoaPods）、または`TealiumPrismCore`と`TealiumPrismLifecycle`（Swift Package Manager）に置き換えます。
 * **Android**  
 `com.tealium:kotlin-core`を`com.tealium.prism:prism-bom` BOMおよび`prism-core`、`prism-lifecycle`に置き換えます。
 
 ## 初期化
 
-レガシーにはコレクターとディスパッチャーの2つのリストがあります。Prismにはモジュールの1つのリスト、ローカル構成ファイル、リモート構成URL、およびプログラム構成のブロックがあります。
+従来のSDKには、コレクターとディスパッチャーという2つのリストがあります。Prismには1つのモジュールリストに加えて、ローカル構成ファイル、リモート構成URL、プログラムによる構成ブロックがあります。
 
 
 
 ```swift
-// レガシー
+// Legacy
 let config = TealiumConfig(account: "ACCOUNT", profile: "PROFILE",
                            environment: "prod", dataSource: "DATASOURCE")
 config.collectors = [Collectors.AppData, Collectors.Lifecycle]
@@ -76,7 +76,7 @@ tealium = Tealium.create(config: config) { result in
 
 
 ```kotlin
-// レガシー
+// Legacy
 val config = TealiumConfig(application, "ACCOUNT", "PROFILE", Environment.PROD,
     dataSourceId = "DATASOURCE",
     collectors = mutableSetOf(Collectors.App, Collectors.Device),
@@ -97,16 +97,16 @@ tealium = Tealium.create(config) { result -> /* TealiumResult<Tealium> */ }
 
 
 
-Prismは`ACCOUNT-PROFILE`でインスタンスをキーにします。`Tealium["main"]`はAndroidで非同期の`Tealium.get("ACCOUNT-PROFILE") { }`に、iOSでは`TealiumInstanceManager.get(_:completion:)`になります。ほとんどのヘルパーは自分自身の参照を保持します。
+Prismは`ACCOUNT-PROFILE`をキーとしてインスタンスを管理します。`Tealium["main"]`は、Androidでは非同期の`Tealium.get("ACCOUNT-PROFILE") { }`に、iOSでは`TealiumInstanceManager.get(_:completion:)`に置き換わります。ほとんどのヘルパーは独自の参照を保持します。
 
-## イベントまたはビューをトラックする
+## イベントまたはビューをトラッキングする
 
-Prismには1つの`track`メソッドがあります。ビューまたはイベントタイプはパラメータであり、データは`DataObject`です。
+Prismには`track`メソッドが1つあります。ビューまたはイベントのタイプはパラメーターとして指定し、データには`DataObject`を使用します。
 
 
 
 ```swift
-// レガシー
+// Legacy
 tealium.track(TealiumEvent("purchase", dataLayer: ["order_id": "123"]))
 tealium.track(TealiumView("home"))
 
@@ -117,7 +117,7 @@ tealium.track("home", type: .view)
 
 
 ```kotlin
-// レガシー
+// Legacy
 tealium.track(TealiumEvent("purchase", mapOf("order_id" to "123")))
 tealium.track(TealiumView("home"))
 
@@ -130,12 +130,12 @@ tealium.track("home", DispatchType.View, DataObject.EMPTY_OBJECT)
 
 ## データレイヤー
 
-`add`は`put`に、`delete`は`remove`になり、読み取りは非同期です。有効期限の名前は変更されていませんが、Swiftの`.afterCustom`はなくなりました。代わりに`.after(Date)`を使用します。
+`add`は`put`に、`delete`は`remove`に置き換わり、読み取りは非同期になります。有効期限の名前は変更されませんが、Swiftの`.afterCustom`は廃止されました。代わりに`.after(Date)`を使用します。
 
 
 
 ```swift
-// レガシー
+// Legacy
 tealium.dataLayer.add(key: "user_tier", value: "gold", expiry: .forever)
 tealium.dataLayer.delete(for: "user_tier")
 let tier = tealium.dataLayer.all["user_tier"]
@@ -150,7 +150,7 @@ tealium.dataLayer.get(key: "user_tier", as: String.self).subscribe { result in
 
 
 ```kotlin
-// レガシー
+// Legacy
 tealium.dataLayer.putString("user_tier", "gold", Expiry.FOREVER)
 tealium.dataLayer.remove("user_tier")
 val tier = tealium.dataLayer.getString("user_tier")
@@ -163,100 +163,96 @@ tealium.dataLayer.getString("user_tier").subscribe { result -> /* TealiumResult<
 
 
 
-1回のトランザクションで複数の値を書き込むには、両プラットフォームで`dataLayer.transactionally { }`を使用します。
+1つのトランザクションで複数の値を書き込むには、両方のプラットフォームで`dataLayer.transactionally { }`を使用します。
 
 ## 同意
 
-Prismには独自の同意ステータスやカテゴリーはありません。同意管理プラットフォーム（CMP）が真実の情報源です。ユーザーの決定を一連の目的として公開し、各目的を解放するディスパッチャーにマッピングする小さなアダプターを実装します。
+現在、Prismでは同意管理を使用できません。Prismには従来の同意マネージャーに相当する機能がなく、同意に基づいてイベントを保留またはブロックすることもありません。代わりに、ユーザーの同意選択をデータレイヤーに渡し、[同意オーケストレーション](https://docs.tealium.com/about-consent-orchestration/)を使用してサーバー側で適用します。詳細については、[同意](https://docs.tealium.com/platforms/prism-mobile/consent-management/)を参照してください。
 
 
 
 ```swift
-// レガシー
+// Legacy
 config.consentPolicy = .gdpr
 tealium.consentManager?.userConsentStatus = .consented
 tealium.consentManager?.userConsentCategories = [.analytics]
 
 // Prism
-final class MyCMPAdapter: CMPAdapter {
-    let id = "my_cmp"
-    let allPurposes: Set<String>? = ["analytics", "marketing"]
-    let consentDecision: Observable<ConsentDecision?>   // emit on every user decision
-}
-config.enableConsentIntegration(with: MyCMPAdapter(), forcingConfiguration: {
-    $0.addPurpose("analytics", dispatcherIds: ["Collect"])
-})
+tealium.dataLayer.put(key: "consent_categories", converting: ["analytics"], expiry: .forever)
 ```
 
 
 ```kotlin
-// レガシー
+// Legacy
 config.consentManagerPolicy = ConsentPolicy.GDPR
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 
 // Prism
-class MyCmpAdapter : CmpAdapter {
-    override val id = "my_cmp"
-    override val allPurposes: Set<String>? = set of("analytics", "marketing")
-    override val consentDecision: Observable<ConsentDecision?> = TODO()
-}
-TealiumConfig.Builder(https://docs.tealium.com/* ... */)
-    .enableConsentIntegration(MyCmpAdapter()) { it.addPurpose("analytics", listOf("Collect")) }
+tealium.dataLayer.put("consent_categories", DataList.create { add("analytics") }, Expiry.FOREVER)
 ```
 
 
-## 訪問ID
+## 訪問 ID
+
+訪問 ID のメソッドは `tealium.visitorId` に移動し、読み取りは非同期になります。ID キーは構成から Visitor ID Manager モジュールの構成に移動します。
 
 
 
 ```swift
-// レガシー
+// Legacy
 let id = tealium.visitorId
 tealium.resetVisitorId()
+tealium.clearStoredVisitorIds()
 config.visitorIdentityKey = "customer_id"
 
-// プリズム
-tealium.resetVisitorId()          // 新しいIDを結果として返す
-tealium.clearStoredVisitorIds()
-// アイデンティティの切り替え: forcingSettings: { $0.setVisitorIdentityKey("customer_id") }
+// Prism
+tealium.visitorId.current().subscribe { result in
+    // Result<String, ModuleError<Error>>
+}
+tealium.visitorId.regenerate()          // returns the new ID in a result
+tealium.visitorId.eraseLocalHistory()
+// identity switching: Modules.visitorId(forcingSettings: { $0.setVisitorIdentityKey("customer_id") })
 ```
 
 
 ```kotlin
-// レガシー
+// Legacy
 val id = tealium.visitorId
 tealium.resetVisitorId()
+tealium.clearStoredVisitorIds()
 config.visitorIdentityKey = "customer_id"
 
-// プリズム
-tealium.resetVisitorId()          // SingleResult<String>
-tealium.clearStoredVisitorIds()
-// アイデンティティの切り替え: .configureCoreSettings { it.setVisitorIdentityKey("customer_id") }
+// Prism
+tealium.visitorId.current().subscribe { result -> /* TealiumResult<String> */ }
+tealium.visitorId.regenerate()          // SingleResult<String>
+tealium.visitorId.eraseLocalHistory()
+// identity switching: Modules.visitorId { it.setVisitorIdentityKey("customer_id") }
 ```
 
 
 
-Prism 0.6.0では、現在の訪問IDを読み取る方法がありません。IDはすべてのイベントで `tealium_visitor_id` として送信されます。
+現在の訪問 ID を読み取るには、`visitorId.current()` を呼び出します。この ID は、すべてのイベントでも `tealium_visitor_id` として送信されます。
 
-## リモートコマンドがディスパッチャーになる
+## リモートコマンドからディスパッチャーへの移行
 
-Prismでは、各ベンダーはCollectと同じ役割とライフサイクルを持つディスパッチャーモジュールです：ネイティブ、ディスク上でキューイングされ、同意とバリアによって制御され、構成ファイルから構成されます。公開されているディスパッチャーを使用するか（今日のiOSではFirebase）、自分で書くかを選択します。
+Prism では、各ベンダーは Collect と同じ役割とライフサイクルを持つディスパッチャーモジュールです。ネイティブで動作し、ディスク上でキューに入れられ、バリアによって制御され、構成ファイルから構成されます。公開済みのディスパッチャーがある場合はそれを使用し（現在は iOS 用 Firebase が利用可能）、ない場合は独自に作成します。
 
 
 
 ```swift
-// レガシー
+// Legacy
 let firebase = RemoteCommand(commandId: "firebase", description: "Firebase", type: .webview) { response in
-    // Firebase SDKをレスポンスのペイロードで呼び出す
+    // call the Firebase SDK with response.payload
 }
 config.addRemoteCommand(firebase)
 
-// プリズム: Dispatcherを実装し、そのModuleFactoryを `modules` に登録する
+// Prism: implement Dispatcher, register its ModuleFactory in `modules`
 final class MyDispatcher: Dispatcher {
     let id = "my_vendor"
     let version = "1.0.0"
     func dispatch(_ data: [Dispatch], completion: @escaping ([Dispatch]) -> Void) -> any Disposable {
-        // 各ディスパッチペイロードをベンダーSDKに送信し、成功したディスパッチで完了する
+        // send each dispatch payload to the vendor SDK; complete with the dispatches that succeeded
+        return Disposables.disposed()
     }
     func updateConfiguration(_ configuration: DataObject) -> Self? { self }
     func shutdown() {}
@@ -265,97 +261,97 @@ final class MyDispatcher: Dispatcher {
 
 
 ```kotlin
-// レガシー
+// Legacy
 tealium.remoteCommands?.add(FirebaseRemoteCommand(application))
 
-// プリズム: 名前付きコマンドでCommandDispatcherを拡張し、そのModuleFactoryを `modules` に登録する
-val commands = listOf(Command.synchronous("log_event") { payload -> /* ベンダーSDK呼び出し */ })
+// Prism: extend CommandDispatcher with named commands, register its ModuleFactory in `modules`
+val commands = listOf(Command.synchronous("log_event") { payload -> /* vendor SDK call */ })
 ```
 
 
 
-<!-- TODO 確認: iOSモジュール用Firebaseディスパッチャーファクトリーの名前（別のリポジトリ tealium-prism-ios-firebase-dispatcher）。また、Kotlinの完全なCommandDispatcherコンストラクタ（id, version, commands, logger, logCategory, scheduler）とModuleFactoryのボイラープレートを確認する。マージされたらModulesページへのリンクを追加する。 -->
+<!-- TODO 確認事項：iOS モジュール（別リポジトリ tealium-prism-ios-firebase-dispatcher）の Firebase ディスパッチャーファクトリ名。また、Kotlin の CommandDispatcher の完全なコンストラクター（id、version、commands、logger、logCategory、scheduler）と ModuleFactory のボイラープレートも確認すること。マージ後に Modules ページへのリンクを追加すること。 -->
 
 ## ロギング
 
 
 
 ```swift
-// レガシー
+// Legacy
 config.logLevel = .info            // info, debug, error, fault, silent
 
-// プリズム
+// Prism
 forcingSettings: { $0.setMinLogLevel(.debug) }   // trace, debug, info, warn, error, silent
-config.loggerType = .custom(myLogHandler)        // オプション
+config.loggerType = .custom(myLogHandler)        // optional
 ```
 
 
 ```kotlin
-// レガシー
+// Legacy
 config.logLevel = LogLevel.DEV     // DEV, QA, PROD, SILENT
 
-// プリズム
+// Prism
 .configureCoreSettings { it.setLogLevel(LogLevel.DEBUG) }  // TRACE, DEBUG, INFO, WARN, ERROR, SILENT
-.setLogHandler(myLogHandler)                                // オプション
+.setLogHandler(myLogHandler)                                // optional
 ```
 
 
 
-ログレベルは、`mobile_settings.json`の`core`の下の`log_level`キーでリモートで構成することもできますが、プログラムによる値が優先されます。
+レベルは、`mobile_settings.json` の `core` にある `log_level` キーを使用してリモートから構成することもできます。プログラムで指定した値が優先されます。
 
-## シャットダウン
+## 終了処理
 
 
 
 ```swift
-// レガシー
+// Legacy
 tealium.disable()
 
-// プリズム
-tealium.shutdown()   // 以降の呼び出しはTealiumError.instanceShutdownで失敗する
+// Prism
+tealium.shutdown()   // later calls fail with TealiumError.instanceShutdown
 ```
 
 
 ```kotlin
-// レガシー
+// Legacy
 Tealium.destroy("main")
 
-// プリズム
-tealium.shutdown()   // または Tealium.shutdown("ACCOUNT-PROFILE")
+// Prism
+tealium.shutdown()   // or Tealium.shutdown("ACCOUNT-PROFILE")
 ```
 
 
 
-`shutdown()`を呼び出す前に、保持しているすべてのサブスクリプションを破棄してください。
+`shutdown()` を呼び出す前に、保持しているすべてのサブスクリプションを破棄してください。
 
-## 挙動の違い
+## 動作の違い
 
-| 領域 | レガシー | プリズム |
+| 項目 | Legacy | Prism |
 |---|---|---|
-| キューイング | 1つのキュー。バッチ処理とオフラインは構成フラグごとに処理される。 | ディスパッチャーごとに1つのSQLiteキュー。すべてのイベントは送信前に書き込まれ、確認された送信後に削除される。バリア（接続性、バッチ処理）がキューを解放する。`flushEventQueue()`で強制的に実行する。 |
-| 同意 | SDKが状態とカテゴリを保存する。同意されるまでイベントはキューに入る。 | SDKは何も保存しない。CMPアダプタが目的を公開する。各目的は名前付きディスパッチャーを解放する。保持されたイベントはリストにあるディスパッチャーのために再発火する。 |
-| 構成 | プログラムによる構成とTealium iQからの`mobile.json` | ローカルファイル < リモートURL（オフライン用にキャッシュ）< プログラムによる構成。プログラムによる値はリモートで上書きされることはない。モジュールはそれに対する構成が存在するときのみ開始される。 |
-| タグロジック | utag.js in a webview | デバイス上のトランスフォーマー：値を構成、小文字に変換、永続化、分離されたランタイムのJavaScript。ウェブビューなし。 |
-| スレッディングと結果 | 混在。いくつかの同期読み取り。発射して忘れる。 | すべての公開呼び出しは任意のスレッドから安全で、1つのSDKキュー上で実行される。すべての書き込みまたは読み取りは`SingleResult`または`Single`を返す。エラーを確認するか無視するために購読する。完了はSDKキューで実行され、あなたのものではない。 |
-| 保存されたデータ | SDKのアップグレードをまたいで持続する | 0.6.0でレガシーから持ち越されない |
+| キューイング | キューは 1 つです。バッチ処理とオフライン処理は、構成フラグごとに処理されます。 | ディスパッチャーごとに 1 つの SQLite キューがあります。各イベントは送信前に書き込まれ、送信が確認された後に削除されます。バリア（接続状態、バッチ処理）によってキューが解放されます。`flushEventQueue()` を使用すると強制的に解放できます。 |
+| 同意 | SDK がステータスとカテゴリーを保存します。同意が得られるまでイベントはキューに保持されます。 | 現在は利用できません。イベントは保持もブロックもされません。同意内容をデータレイヤーで渡し、サーバー側で適用してください。 |
+| 構成 | プログラムによる構成と、Tealium iQ の `mobile.json` | ローカルファイル < リモート URL（オフライン用にキャッシュ）< プログラムによる構成、の順で優先されます。プログラムで指定した値がリモートから上書きされることはありません。モジュールは、そのモジュール用の構成が存在する場合にのみ起動します。 |
+| タグロジック | WebView 内の utag.js | デバイス上の Transformer：値の構成、小文字への変換、永続化、分離されたランタイムでの JavaScript 実行。WebView は使用しません。 |
+| スレッド処理と結果 | 混在しています。一部には同期読み取りがあります。処理結果を待ちません。 | すべての公開呼び出しは任意のスレッドから安全に実行でき、1 つの SDK キュー上で処理されます。すべての書き込みまたは読み取りは `SingleResult` または `Single` を返します。エラーを確認するにはサブスクライブします。確認が不要な場合は無視できます。完了処理は呼び出し元のキューではなく、SDK キュー上で実行されます。 |
+| 保存済みデータ | SDK のアップグレード後も保持されます | 0.7.0 では Legacy から引き継がれません |
 
 ## チェックリスト
 
-1. 配備ターゲットをiOS 13またはAPI 23に上げる。
-1. 依存関係と`import`を交換する。
-1. 2つのコレクターとディスパッチャーリストを1つの`modules`リストに置き換える。タグ管理とリモートコマンドを削除する。
-1. `settingsFile`または`settingsUrl`を追加する。モジュールごとのオプションを構成ファイルまたは`forcingSettings` / `configureCoreSettings`に移動する。
-1. `Tealium(config:)`または`Tealium.create(name, config)`を`Tealium.create(config)`に置き換える。
-1. `TealiumEvent` / `TealiumView`を`track(name, type:, data:)`に置き換える。
-1. `add`を`put`に、`delete`を`remove`に名前変更する。
-1. 読み取りを非同期にする。
-1. 同意マネージャーをCMPアダプターと目的マッピングに置き換える。
-1. 各リモートコマンドをディスパッチャーモジュールに置き換える。
-1. ログレベルを構成に移動する。
-1. `disable()`と`destroy()`を`shutdown()`に置き換える。
-1. 新規インストールとレガシーアプリからのアップグレードでテストする。
-1. アップグレード時に新しい訪問IDが発行されることを期待する。
+1. デプロイメントターゲットを iOS 13 または API 23 に引き上げます。
+1. 依存関係と `import` を置き換えます。
+1. コレクターとディスパッチャーの 2 つのリストを、1 つの `modules` リストに置き換えます。Tag Management と Remote Commands を削除します。
+1. `settingsFile` または `settingsUrl` を追加します。モジュールごとのオプションを構成ファイル、または `forcingSettings` / `configureCoreSettings` に移動します。
+1. `Tealium(config:)` または `Tealium.create(name, config)` を `Tealium.create(config)` に置き換えます。
+1. `TealiumEvent` / `TealiumView` を `track(name, type:, data:)` に置き換えます。
+1. `add` を `put` に、`delete` を `remove` に名前変更します。
+1. 読み取りを非同期にします。
+1. 同意マネージャーを、データレイヤー内の同意データとサーバー側での適用に置き換えます。
+1. 各リモートコマンドをディスパッチャーモジュールに置き換えます。
+1. ログレベルを構成に移動します。
+1. `disable()` と `destroy()` を `shutdown()` に置き換えます。
+1. 新規インストール時と Legacy アプリからのアップグレード時の両方をテストします。
+1. アップグレード時には新しい訪問 ID が生成されることを想定してください。
 
-## ヘルプの入手先
+## サポート情報
 
-移行のタイムラインについての質問は、[サポートに連絡](https://docs.tealium.com/support/)してください。SDKの欠陥は[tealium-prism-swift](https://github.com/tealium/tealium-prism-swift/issues)と[tealium-prism-kotlin](https://github.com/tealium/tealium-prism-kotlin/issues)で報告してください。
+移行スケジュールに関する質問については、[サポートにお問い合わせください](https://docs.tealium.com/support/)。SDK の不具合は、[tealium-prism-swift](https://github.com/tealium/tealium-prism-swift/issues) および [tealium-prism-kotlin](https://github.com/tealium/tealium-prism-kotlin/issues) に報告してください。

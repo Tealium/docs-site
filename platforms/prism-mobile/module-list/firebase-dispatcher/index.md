@@ -12,12 +12,162 @@ The Firebase dispatcher requires the following:
 | Requirement | iOS | Android |
 | :--- | :--- | :--- |
 | Operating system | iOS 15+, macOS 10.15+, or tvOS 15+ | Android API 23+ |
-| Tealium Prism | 0.5.0+ | 0.5.0+ |
+| Tealium Prism | 0.7.0+ | 0.7.0+ |
 | Firebase SDK | Firebase iOS SDK 12.x (FirebaseAnalytics) | Firebase Android BoM 34.6.0+ (firebase-analytics) |
 | Firebase project files | `GoogleService-Info.plist` in the app target | `google-services.json` in the app module and the `com.google.gms.google-services` plugin |
 | Kotlin | N/A | 2.0+ |
 
-## Install
+## Add the module
+
+1. In your Tealium mobile profile, go to **Modules**, and add the **Firebase** module.
+1. Set the module settings. Each is optional. If omitted, Firebase applies its own default.
+1. Add mappings from your data layer variables to Firebase destinations. See [Data mappings](#data-mappings).
+1. Optionally restrict the module with load rules. For more information, see [Rules](https://docs.tealium.com/platforms/prism-mobile/rules/).
+1. Save and publish the mobile settings. The SDK fetches the published file at startup and on each remote settings refresh. See [publish mobile settings](https://docs.tealium.com/publish-mobile-settings/).
+
+### Settings
+
+| Setting | Settings key | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Session timeout | `session_timeout_seconds` | Number | Firebase session timeout in seconds. |
+| Analytics collection enabled | `analytics_collection_enabled` | Boolean | Turns Firebase Analytics collection on or off. |
+| Log level | `log_level` | String | (iOS only) One of `min`, `error`, `warning`, `notice`, `info`, `debug`, `max`. |
+
+`session_timeout_seconds` and `analytics_collection_enabled` are also available as commands. Module settings apply when the module starts and again whenever the SDK fetches updated settings. The matching command applies at event time.
+
+## Data mappings
+
+A mapping copies a data layer variable to a destination in the Firebase command payload. The following mapping runs `logevent` when `tealium_event` is `purchase`, uses the event name as the Firebase event name, and sends `order_total` as the Firebase `value` parameter:
+
+![](https://docs.tealium.com/images/platforms/prism/prism-modules-firebase-mappings.png)
+
+The available mappings are:
+
+### Firebase Config
+
+| Destination | Type  |
+|:---------|:-----|
+| `session_timeout_seconds` | Integer as String |
+| `analytics_collection_enabled` | Boolean as String |
+
+
+### Standard
+
+| Destination | Type/Values | Description |
+|:---------|:-----|:------------|
+| `parameters.achievement_id` | `String` | Achievement ID |
+| `parameters.aclid` | `String` | Ad Network Click ID |
+| `parameters.affiliation` | `String` | Affiliation |
+| `parameters.cp1` | `String` | CP1 |
+| `parameters.campaign` | `String` | Campaign |
+| `parameters.character` | `String` | Character |
+| `parameters.content` | `String` | Content |
+| `parameters.content_type` | `String` | Content Type |
+| `parameters.coupon` | `String` | Coupon |
+| `parameters.creative_name` | `String` | Creative Name |
+| `parameters.creative_slot` | `String` | Creative Slot |
+| `parameters.currency` | `String` | Currency |
+| `parameters.destination` | `String` | Destination |
+| `parameters.end_date` | `String` | End Date |
+| `parameters.flight_number` | `String` | Flight Number |
+| `parameters.group_id` | `String` | Group ID |
+| `parameters.index` | `Long` | Index |
+| `parameters.item_brand` | `String` | Item Brand |
+| `parameters.item_category` | `String` | Item Category |
+| `parameters.item_id` | `String` | Item ID |
+| `parameters.item_name` | `String` | Item Name |
+| `parameters.item_variant` | `String` | Item Variant |
+| `parameters.level` | `Long` | Level |
+| `parameters.location` | `String` | Location |
+| `parameters.medium` | `String` | Medium |
+| `parameters.number_of_nights` | `Long` | Number Of Nights |
+| `parameters.number_of_passengers` | `Long` | Number Of Passengers |
+| `parameters.number_of_rooms` | `Long` | Number Of Rooms |
+| `parameters.origin` | `String` | Origin |
+| `parameters.price` | `Double` | Price |
+| `parameters.quantity` | `Long` | Quantity |
+| `parameters.screen_name` | `String` | Screen Name |
+| `parameters.screen_class` | `String` | Screen Class |
+| `parameters.score` | `Long` | Score |
+| `parameters.search_term` | `String` | Search Term |
+| `parameters.shipping` | `Double` | Shipping |
+| `parameters.method` | `String` | Method |
+| `parameters.source` | `String` | Source |
+| `parameters.travel_class` | `String` | Travel Class |
+| `parameters.virtual_currency_name` | `String` | Virtual Currency Name |
+| `parameters.start_date` | `String` | Start Date |
+| `parameters.term` | `String` | Term |
+| `parameters.tax` | `Double` | Tax |
+| `parameters.transaction_id` | `String` | Transaction ID |
+| `parameters.value` | `Long or Double` | Value |
+| `parameters.level_name` | `String` | Level Name |
+| `parameters.success` | `Long` | Success |
+| `parameters.ad_format` | `String` | Ad Format |
+| `parameters.ad_platform` | `String` | Ad Platform |
+| `parameters.ad_source` | `String` | Ad Source |
+| `parameters.ad_unit_name` | `String` | Ad Unit Name |
+| `parameters.campaign_id` | `String` | Campaign ID |
+| `parameters.creative_format` | `String` | Creative Format |
+| `parameters.discount` | `Double` | Discount |
+| `parameters.extend_session` | `String` | Extend Session |
+| `parameters.item_category2` | `String` | Item Category2 |
+| `parameters.item_category3` | `String` | Item Category3 |
+| `parameters.item_category4` | `String` | Item Category4 |
+| `parameters.item_category5` | `String` | Item Category5 |
+| `parameters.item_list_id` | `String` | Item List ID |
+| `parameters.item_list_name` | `String` | Item List Name |
+| `parameters.items` | `Array` | Items |
+| `parameters.location_id` | `String` | Location ID |
+| `parameters.marketing_tactic` | `String` | Marketing Tactic |
+| `parameters.payment_type` | `String` | Payment Type |
+| `parameters.promotion_id` | `String` | Promotion ID |
+| `parameters.promotion_name` | `String` | Promotion Name |
+| `parameters.shipping_tier` | `String` | Shipping Tier |
+| `parameters.source_platform` | `String` | Source Platform |
+| `email_address` | `String` | Email Address |
+| `phone_number` | `String` | Phone Number |
+| `hashed_email_address` | `String` | Hashed Email Address |
+| `hashed_phone_number` | `String` | Hashed Phone Number |
+
+
+### E-Commerce
+
+| Destination | Type/Values | Description |
+|:---------|:-----|:------------|
+| `parameters.transaction_id` | `String` | Order ID |
+| `parameters.value` | `Long or Double` | Order Total |
+| `parameters.shipping` | `Double` | Shipping Amount |
+| `parameters.tax` | `Double` | Tax Amount |
+| `parameters.currency` | `String` | Currency |
+| `parameters.coupon` | `String` | Promo Code |
+| `parameters.items.item_id` | `Array` | List of Product IDs |
+| `parameters.items.item_name` | `Array` | List of Names |
+| `parameters.items.item_brand` | `Array` | List of Brands |
+| `parameters.items.item_category` | `Array` | List of Categories |
+| `parameters.items.quantity` | `Array` | List of Quantities |
+| `parameters.items.price` | `Array` | List of Prices |
+| `parameters.items.item_list_name` | `Array` | List of Presentation Lists |
+| `parameters.items.item_variant` | `Array` | List of Variants |
+| `parameters.items.index` | `Array` | List of Indexes |
+
+
+### Consent settings
+
+| Destination | Type/Values | Description |
+|:---------|:-----|:------------|
+| `consent_settings.ad_storage` | `String` | Ad Storage |
+| `consent_settings.analytics_storage` | `String` | Analytics Storage |
+| `consent_settings.ad_user_data` | `String` | Ad User Data |
+| `consent_settings.ad_personalization` | `String` | Ad Personalization |
+
+
+## Install in code
+
+
+<blockquote>
+If you add the Firebase module in your mobile profile, skip the install and initialize steps. For more information, see [Add the module](#add-the-module).
+</blockquote>
+
 
 
 
@@ -81,21 +231,21 @@ The package depends on `TealiumPrismCore` and `FirebaseAnalytics`. Do not add th
 
 
 
-## Initialize
-
-No code is needed when your remote or local settings include the Firebase module. The dispatcher registers itself when the app starts and stays inactive until settings for it exist. For more information, see [Remote and local settings](https://docs.tealium.com/platforms/prism-mobile/install/#remote-and-local-settings).
-
-The dispatcher initializes Firebase for you. On iOS, the dispatcher calls `FirebaseApp.configure()` on first use and skips it if your app already did. On Android, the `firebase-analytics` content provider initializes Firebase at startup.
+## Initialize in code
 
 
 <blockquote>
-When the device is offline, the Firebase SDK queues events and delivers them when connectivity is restored.
+If you add the Firebase module in your mobile profile, skip the install and initialize steps. For more information, see [Add the module](#add-the-module).
 </blockquote>
 
+
+The dispatcher initializes Firebase for you. When the device is offline, the Firebase SDK queues events and delivers them when connectivity is restored.
 
 If your app configures modules in code, add the module to the `modules` list in `TealiumConfig`:
 
 
+
+The `firebase-analytics` content provider initializes Firebase at startup.
 
 ```kotlin
 import com.tealium.prism.core.api.Tealium
@@ -120,6 +270,8 @@ val tealium = Tealium.create(config)
 ```
 
 
+
+The dispatcher calls `FirebaseApp.configure()` on first use and skips it if your app already did.
 
 ```swift
 import TealiumPrismCore
@@ -155,152 +307,6 @@ Modules.firebaseDispatcher { builder in
 }
 ```
 
-
-
-## Configure the module
-
-1. In your Tealium mobile profile, go to **Modules**, and add the **Firebase** module.
-1. Set the module settings. Each is optional. If omitted, Firebase applies its own default.
-1. Add mappings from your data layer variables to Firebase destinations. See [Data mappings](#data-mappings).
-1. Optionally restrict the module with load rules. For more information, see [Rules](https://docs.tealium.com/platforms/prism-mobile/rules/).
-1. Save and publish the mobile settings. The SDK fetches the published file at startup and on each remote settings refresh. See [publish mobile settings](https://docs.tealium.com/publish-mobile-settings/).
-
-| Setting | Settings key | Type | Description |
-| :--- | :--- | :--- | :--- |
-| Session timeout | `session_timeout_seconds` | Number | Firebase session timeout in seconds. |
-| Analytics collection enabled | `analytics_collection_enabled` | Boolean | Turns Firebase Analytics collection on or off. |
-| Log level | `log_level` | String | (iOS only) One of `min`, `error`, `warning`, `notice`, `info`, `debug`, `max`. |
-
-`session_timeout_seconds` and `analytics_collection_enabled` are also available as commands. Module settings apply when the module starts and again whenever the SDK fetches updated settings. The matching command applies at event time.
-
-## Data mappings
-
-A mapping copies a data layer variable to a destination in the Firebase command payload. The following mapping runs `logevent` when `tealium_event` is `purchase`, uses the event name as the Firebase event name, and sends `order_total` as the Firebase `value` parameter:
-
-![](https://docs.tealium.com/images/platforms/prism/prism-modules-firebase-mappings.png)
-
-The available mappings are:
-
-### Firebase Config
-
-| Variable | Type  |
-|:---------|:-----|
-| `firebase_session_timeout_seconds` | Integer as String |
-| `firebase_analytics_collection_enabled` | Boolean as String |
-| `firebase_log_level` | String |
-
-
-### Standard
-
-| Variable | Type/Values | Description |
-|:---------|:-----|:------------|
-| `param_achievement_id` | `String` | Achievement ID |
-| `param_ad_network_click_id` | `String` | Ad Network Click ID |
-| `param_affiliation` | `String` | Affiliation |
-| `param_cp1` | `String` | CP1 |
-| `param_campaign` | `String` | Campaign |
-| `param_character` | `String` | Character |
-| `param_content` | `String` | Content |
-| `param_content_type` | `String` | Content Type |
-| `param_coupon` | `String` | Coupon |
-| `param_creative_name` | `String` | Creative Name |
-| `param_creative_slot` | `String` | Creative Slot |
-| `param_currency` | `String` | Currency |
-| `param_destination` | `String` | Destination |
-| `param_end_date` | `String` | End Date |
-| `param_flight_number` | `String` | Flight Number |
-| `param_group_id` | `String` | Group ID |
-| `param_index` | `String` | Index |
-| `param_item_brand` | `String` | Item Brand |
-| `param_item_category` | `String` | Item Category |
-| `param_item_id` | `String` | Item ID |
-| `param_item_list` | `String` | Item List |
-| `param_item_name` | `String` | Item Name |
-| `param_item_variant` | `String` | Item Variant |
-| `param_level` | `Long` | Level |
-| `param_location` | `Long` | Location |
-| `param_medium` | `String` | Medium |
-| `param_number_nights` | `Long` | Number Of Nights |
-| `param_number_pax` | `Long` | Number Of Passengers |
-| `param_number_rooms` | `Long` | Number Of Rooms |
-| `param_origin` | `String` | Origin |
-| `param_price` | `Double` | Price |
-| `param_quantity` | `Long` | Quantity |
-| `param_screen_name` | `String` | Screen Name |
-| `param_screen_class` | `String` | Screen Class |
-| `param_score` | `Long` | Score |
-| `param_search_term` | `String` | Search Term |
-| `param_shipping` | `Double` | Shipping |
-| `param_method` | `String` | Method |
-| `param_source` | `String` | Source |
-| `param_travel_class` | `String` | Travel Class |
-| `param_virtual_currency_name` | `String` | Virtual Currency Name |
-| `param_start_date` | `String` | Start Date |
-| `param_term` | `String` | Term |
-| `param_tax` | `Double` | Tax |
-| `param_transaction_id` | `String` | Transaction ID |
-| `param_value` | `Long or Double` | Value |
-| `param_level_name` | `String` | Level Name |
-| `param_success` | `String` | Success |
-| `param_ad_format` | `String` | Ad Format |
-| `param_ad_platform` | `String` | Ad Platform |
-| `param_ad_source` | `String` | Ad Source |
-| `param_ad_unit_name` | `String` | Ad Unit Name |
-| `param_campaign_id` | `String` | Campaign ID |
-| `param_creative_format` | `String` | Creative Format |
-| `param_discount` | `String` | Discount |
-| `param_extend_session` | `String` | Extend Session |
-| `param_item_category2` | `String` | Item Category2 |
-| `param_item_category3` | `String` | Item Category3 |
-| `param_item_category4` | `String` | Item Category4 |
-| `param_item_category5` | `String` | Item Category5 |
-| `param_item_list_id` | `String` | Item List ID |
-| `param_item_list_name` | `String` | Item List Name |
-| `param_items` | `Array` | Items |
-| `param_location_id` | `String` | Location ID |
-| `param_marketing_tactic` | `String` | Marketing Tactic |
-| `param_payment_type` | `String` | Payment Type |
-| `param_promotion_id` | `String` | Promotion ID |
-| `param_promotion_name` | `String` | Promotion Name |
-| `param_shipping_tier` | `String` | Shipping Tier |
-| `param_source_platform` | `String` | Source Platform |
-| `param_user_signup_method` | `String` | User Signup Method |
-| `param_user_allow_ad_personalization_signals` | `String` | User Allow Ad Personalization Signals |
-| `param_email_address` | `String` | Email Address |
-| `param_phone_number` | `String` | Phone Number |
-| `param_hashed_email_address` | `String` | Hashed Email Address |
-| `param_hashed_phone_number` | `String` | Hashed Phone Number |
-
-
-### E-Commerce
-
-| Variable | Type/Values | Description |
-|:---------|:-----|:------------|
-| `order_id` | `String` | Order ID |
-| `order_total` | `Long or Double` | Order Total |
-| `order_shipping` | `Double` | Shipping Amount |
-| `order_tax` | `Double` | Tax Amount |
-| `order_currency` | `String` | Currency |
-| `order_coupon_code` | `String` | Promo Code |
-| `product_id` | `Array` | List of Product IDs |
-| `product_name` | `Array` | List of Names |
-| `product_brand` | `Array` | List of Brands |
-| `product_category` | `Array` | List of Categories |
-| `product_quantity` | `Array` | List of Quantities |
-| `product_unit_price` | `Array` | List of Prices |
-| `param_item_list` | `Array` | List of Presentation Lists |
-| `param_item_variant` | `Array` | List of Variants |
-| `param_index` | `Array` | List of Indexes |
-
-
-### Consent settings
-
-| Variable | Type/Values | Description |
-|:---------|:-----|:------------|
-| `ad_storage` | `String` | Ad Storage |
-| `analytics_storage` | `String` | Analytics Storage |
-| `ad_user_data` | `String` | Ad User Data |
-| `ad_personalization` | `String` | Ad Personalization |
 
 
 ## Events

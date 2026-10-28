@@ -29,7 +29,7 @@ TealiumはiOSおよびAndroid用のネイティブSDKを提供しており、他
 
 一部のパートナーシステムは、Tealiumが提供するWebhook URLにイベントを投稿してTealiumに送信します。このタイプのデータソースを作成するとき、TealiumはURLと構成コードを生成し、送信システムを構成するために使用します。
 
-詳細については、[インカミングWebhooks](https://docs.tealium.com/server-side/data-sources/webhooks/setup-guides/)を参照してください。
+詳細については、[インカミングWebhooks](https://docs.tealium.com/server-side/data-sources/webhooks/)を参照してください。
 
 ## クラウドデータソース
 

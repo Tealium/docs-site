@@ -1,115 +1,116 @@
 ---
 title: ルール
-description: Tealium Prism SDKのネイティブルールエンジンを使用して、モジュールが機能を実行するタイミングを制御します。
+description: Tealium Prism SDK のネイティブルールエンジンを使用して、モジュールが機能を実行するタイミングを制御します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/rules/
 ---
-LoadRulesは、Tealium Prism SDKのモジュールが操作を実行するタイミングを制御する方法を提供します。ルールを使用して条件ロジックを定義し、アプリケーションデータの現在の状態に基づいてデータ収集、イベントディスパッチ、またはその他のモジュール操作が発生するかどうかを決定します。
+LoadRules を使用すると、Tealium Prism SDK のモジュールが処理を実行するタイミングを制御できます。ルールを使用して、アプリケーションデータの現在の状態に基づき、データ収集、イベントのディスパッチ、その他のモジュール処理を実行するかどうかを決定する条件ロジックを定義します。
 
-## 動作原理
+## 仕組み
 
-ルールは、モジュールが特定のディスパッチを処理するかどうかを制御します。各ルールは、現在のディスパッチペイロードのフィールドを評価する論理式です。式が偽の場合、モジュールはそのディスパッチをスキップします。
+ルールは、モジュールが特定のディスパッチを処理するかどうかを制御します。各ルールは、現在のディスパッチペイロード内のフィールドを評価する論理式です。式が false の場合、モジュールはそのディスパッチをスキップします。
 
-ルールは1つ以上の条件で構成されます。条件は、等しい、含む、またはより大きいなどの演算子を使用して特定の変数を値と比較します。複数の条件はAND、OR、またはNOTロジックで組み合わせられます。
+ルールは、1 つ以上の条件で構成されます。条件では、特定の変数を、等しい、含む、より大きいなどの演算子を使用して値と比較します。複数の条件は、AND、OR、または NOT ロジックで組み合わせます。
 
-ルールはディスパッチごとに評価されます。イベントが追跡されるたびに評価され、起動時には評価されません。
+ルールはディスパッチごと、つまり起動時ではなく、イベントがトラッキングされるたびに評価されます。
 
-## UIでのルール構成
+## UI でルールを構成する
 
-ルールはTealiumモバイルプロファイルで構成できます。
+ルールは、Tealium モバイルプロファイルで構成できます。
 
-1. モバイルプロファイルにログインし、**Load Rules**に移動します。
-1. **Add Rule**を選択します。
+1. モバイルプロファイルにログインし、**Load Rules** に移動します。
+1. **Add Rule** を選択します。
 1. ルールの条件と論理演算子を定義します。
 1. ルールを関連するモジュールに割り当てます。
-1. 変更を保存して公開します。
+1. 変更を保存してパブリッシュします。
 
 ## 高度な構成
 
-条件が静的に表現できない場合やロックが必要な場合は、コードでルールを構築します。たとえば、起動時に利用可能なメモリをチェックし、メモリが少ないデバイスで重い分析モジュールを無効にするルールを構築するか、リモート構成に関係なく内部テストユーザーを常にフィルタリングするルールをハードコードすることができます。
+条件を静的に表現できない場合や、条件を固定する必要がある場合は、コードでルールを作成します。たとえば、起動時に使用可能なメモリを確認し、メモリが少ないデバイスでは負荷の高い分析モジュールを無効にするルールを作成できます。また、リモート構成の指定内容に関係なく、社内テストユーザーを常に除外するルールをハードコードすることもできます。
 
 ### プログラムによる構成
 
 
 <blockquote>
-プログラムによるルール構成はReact Nativeでは利用できません。ルールはTealiumモバイルプロファイルまたは構成JSONで構成してください。
+Programmatic rule configuration is not available in React Native. Configure rules in your Tealium mobile profile or settings JSON.
 </blockquote>
 
 
 #### 条件
 
-`Condition`は、アプリケーションのデータが特定の要件を満たしているかどうかをチェックする単一の基準を表します。
+`Condition` は、アプリケーション内のデータが特定の要件を満たしているかどうかを確認する単一の基準を表します。
 
 
 
 ```kotlin
-// ユーザータイプが「プレミアム」であるかチェック
-val condition = Condition.equals(
+// Check if user type equals "premium"
+val condition = Condition.isEqual(
     ignoreCase = false,
     variable = "user_type",
     target = "premium"
 )
 
-// 購入金額が100より大きいかチェック
-val condition = Condition.isGreaterThan(
+// Check if purchase amount is greater than 100
+val amountCondition = Condition.isGreaterThan(
     orEqual = false,
-    variable = JSONPath["order"]["amount"],
+    variable = JsonPath["order"]["amount"],
     number = "100"
 )
 ```
 
 
 ```swift
-// ユーザータイプが「プレミアム」であるかチェック
-let condition = Condition.equals(ignoreCase = false,
-                                variable = "user_type",
-                                target = "premium")
+// Check if user type equals "premium"
+let condition = Condition.equals(ignoreCase: false,
+                                variable: "user_type",
+                                target: "premium")
 
-// 購入金額が100より大きいかチェック
-let condition = Condition.isGreaterThan(orEqual = false,
-                                       variable = JSONPath["order"]["amount"],
-                                       number = "100")
+// Check if purchase amount is greater than 100
+let amountCondition = Condition.isGreaterThan(orEqual: false,
+                                             variable: JSONPath["order"]["amount"],
+                                             number: "100")
 ```
 
 
 
 #### ルール
 
-`Rule`を使用すると、複数の条件を論理演算子を使用して組み合わせることができます：
+`Rule` を使用すると、論理演算子を使用して複数の条件を組み合わせることができます。
+
 
 
 
 ```kotlin
-// 条件が1つだけのシンプルなルール
+// Simple rule with just one condition
 val simpleRule = Rule.just(condition)
 
-// ANDルール - すべての結果が真である必要がある
-val andRule = Rule.and(listOf(rule1, rule2, rule3))
+// AND rule - all results must be true
+val andRule = Rule.all(listOf(rule1, rule2, rule3))
 
-// ORルール - 少なくとも1つの結果が真である必要がある
-val orRule = Rule.or(listOf(rule1, rule2))
+// OR rule - at least one result must be true
+val orRule = Rule.any(listOf(rule1, rule2))
 
-// NOTルール - 結果を否定する
+// NOT rule - negates the result
 val notRule = Rule.not(anotherRule)
 ```
 
 
 ```swift
-// 条件が1つだけのシンプルなルール
+// Simple rule with just one condition
 let simpleRule = Rule.just(condition)
 
-// ANDルール - すべての結果が真である必要がある
+// AND rule - all results must be true
 let andRule = Rule.and([rule1, rule2, rule3])
 
-// ORルール - 少なくとも1つの結果が真である必要がある
+// OR rule - at least one result must be true
 let orRule = Rule.or([rule1, rule2])
 
-// NOTルール - 結果を否定する
+// NOT rule - negates the result
 let notRule = Rule.not(anotherRule)
 ```
 
 
 
-#### 条件タイプ
+#### 条件の種類
 
 **存在チェック**
 
@@ -152,9 +153,9 @@ Condition.isLessThan(orEqual: true, variable: "session_duration", number: "3600"
 Condition.regularExpression(variable: "email", regex: "^[A-Za-z0-9+_.-]+@(.+)$")
 ```
 
-#### データアクセス
+#### データへのアクセス
 
-ペイロードのルートレベルのデータには、単純な文字列キーを使用します：
+ペイロードのルートレベルにあるデータには、単純な文字列キーを使用します。
 
 ```swift
 let condition = Condition.equals(ignoreCase: false,
@@ -162,39 +163,40 @@ let condition = Condition.equals(ignoreCase: false,
                                 target: "12345")
 ```
 
-ネストされたデータ構造にアクセスするには、オブジェクトや配列をナビゲートするために`JSONPath`を使用します：
+ネストされたデータ構造では、`JSONPath` を使用してオブジェクトと配列内を移動します。
 
 ```swift
-// payload.user.profile.subscription.typeにアクセス
+// Accesses payload.user.profile.subscription.type
 let path = JSONPath["user"]["profile"]["subscription"]["type"]
 let condition = Condition.equals(ignoreCase: false,
                                 variable: path,
                                 target: "premium")
 
-// payload.items[0].priceにアクセス
+// Accesses payload.items[0].price
 let arrayPath = JSONPath["items"][0]["price"]
 ```
 
 #### 複雑なルール構成
 
-複数の条件をネストされたロジックで組み合わせます：
+ネストされたロジックを使用して複数の条件を組み合わせます。
+
 
 
 
 ```kotlin
-// (プレミアムユーザーまたはVIPユーザー) AND (メンテナンスモードではない)
-val complexRule = Rule.and(listOf(
-    Rule.or(listOf(
-        Rule.just(Condition.equals(false, "subscription", "premium")),
-        Rule.just(Condition.equals(false, "vip_status", "true"))
+// (Premium users OR VIP users) AND (not in maintenance mode)
+val complexRule = Rule.all(listOf(
+    Rule.any(listOf(
+        Rule.just(Condition.isEqual(false, "subscription", "premium")),
+        Rule.just(Condition.isEqual(false, "vip_status", "true"))
     )),
-    Rule.not(Rule.just(Condition.equals(false, "maintenance_mode", "true")))
+    Rule.not(Rule.just(Condition.isEqual(false, "maintenance_mode", "true")))
 ))
 ```
 
 
 ```swift
-// (プレミアムユーザーまたはVIPユーザー) AND (メンテナンスモードではない)
+// (Premium users OR VIP users) AND (not in maintenance mode)
 let complexRule = Rule.and([
     .or([
         .just(Condition.equals(ignoreCase: false, variable: "subscription", target: "premium")),
@@ -206,9 +208,9 @@ let complexRule = Rule.and([
 
 
 
-### JSON構成
+### JSON 構成
 
-SDK構成JSONでリモートまたはローカル構成のためにルールを定義できます：
+リモートまたはローカル構成用の SDK 構成 JSON でルールを定義できます。
 
 ```json
 {
@@ -223,7 +225,8 @@ SDK構成JSONでリモートまたはローカル構成のためにルールを�
     }
   },
   "modules": {
-    "analytics_collector": {
+    "DeviceData": {
+      "module_type": "DeviceData",
       "enabled": true,
       "rules": {
         "operator": "or",
@@ -234,11 +237,11 @@ SDK構成JSONでリモートまたはローカル構成のためにルールを�
 }
 ```
 
-## APIリファレンス
+## API リファレンス
 
-詳細なクラスとメソッドの署名については、APIリファレンスドキュメントを参照してください：
+クラスおよびメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
 
-* [Rules (Swift)](https://docs.tealium.com/tealium-prism-swift/Rules.html)
-* [Rule (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Enums/Rule.html)
-* [Condition (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Structs/Condition.html)
-* [Rules (Kotlin)](https://docs.tealium.com/tealium-prism-kotlin/)
+* [Rules（Swift）](https://docs.tealium.com/tealium-prism-swift/Rules.html)
+* [Rule（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Enums/Rule.html)
+* [Condition（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Structs/Condition.html)
+* [Rules（Kotlin）](https://docs.tealium.com/tealium-prism-kotlin/)

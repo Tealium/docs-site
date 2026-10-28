@@ -11,11 +11,11 @@ The AppData module is a collector that automatically enriches tracking data with
 
 
 
-Add the `prism-appdata` dependency to your `build.gradle` file:
+The AppData module is included in `prism-core`. Add it to your `build.gradle` file:
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-appdata")
+implementation("com.tealium.prism:prism-core")
 ```
 
 
@@ -45,6 +45,7 @@ To force the module to initialize with default values, even when no platform or 
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "my_account",
     profileName = "my_profile",
     environment = Environment.PROD,
@@ -75,7 +76,7 @@ The following variables are added to each tracking call while the module is enab
 | Variable | Description | Example |
 | :--- | :--- | :--- |
 | `app_build` | Build number of the app | `"42"` |
-| `app_memory_usage` | Current app memory usage | `"775 MB"` |
+| `app_memory_usage` | Current app memory usage, in MB | `775` |
 | `app_name` | Application display name (iOS: `CFBundleName`; Android: `android:label`) | `"Digital Velocity"` |
 | `app_rdns` | Reverse DNS application ID (iOS: `CFBundleIdentifier`; Android: manifest `package`) | `"com.tealium.digitalvelocity"` |
 | `app_uuid` | Random identifier that persists for the lifetime of the app installation. Resets if the app is uninstalled. | `"4AB81234-C2A8-46DE-9AED-7ACE555521E0"` |

@@ -1,30 +1,30 @@
 ---
-title: コレクトモジュール
-description: Tealium Collectサービスへのトラッキングコールをディスパッチします。
+title: Collectモジュール
+description: トラッキング呼び出しをTealium Collectサービスに送信します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/
 ---
-## 動作原理
+## 仕組み
 
-Collectモジュールは、トラッキングイベントをTealium Collectサービスに送信するディスパッチャーです。単一イベントのディスパッチとバッチイベント処理の両方を処理し、イベント数と訪問IDに基づいて配信を自動的に最適化します。カスタマイズ可能なエンドポイント、プロファイルのオーバーライド、ドメイン構成をサポートしています。
+Collectモジュールは、トラッキングイベントをTealium Collectサービスに送信するDispatcherです。単一イベントの送信とイベントのバッチ処理の両方を処理し、イベント数と訪問IDに基づいて配信を自動的に最適化します。カスタマイズ可能なエンドポイント、プロファイルのオーバーライド、ドメイン構成をサポートしています。
 
 ## 構成
 
-Collectモジュールは以下の構成オプションを提供します：
+Collectモジュールでは、次の構成オプションを使用できます。
 
-| 構成                | JSONキー             | 説明                                                                         | デフォルト値                                  |
-|--------------------|----------------------|------------------------------------------------------------------------------|----------------------------------------------|
-| URL                | `url`                | 単一イベントを送信するためのURL。                                             | `https://collect.tealiumiq.com/event`        |
-| バッチURL          | `batch_url`          | イベントのバッチを送信するためのURL。                                         | `https://collect.tealiumiq.com/bulk-event`   |
-| プロファイルの上書き | `override_profile`   | イベントデータの`TealiumConfig.profile`を上書きするプロファイル。              | なし                                         |
-| ドメインの上書き    | `override_domain`    | デフォルトURLドメインを置き換える（明示的なURLは上書きしない）。                | なし                                         |
+| 構成               | JSONキー             | 説明                                                                        | デフォルト値                                 |
+|--------------------|----------------------|-----------------------------------------------------------------------------|----------------------------------------------|
+| URL                | `url`                | 単一イベントの送信に使用するURL。                                           | `https://collect.tealiumiq.com/event`        |
+| バッチURL          | `batch_url`          | イベントのバッチ送信に使用するURL。                                         | `https://collect.tealiumiq.com/bulk-event`   |
+| プロファイルのオーバーライド | `override_profile` | イベントデータ内の`TealiumConfig.profile`をオーバーライドするプロファイル。 | なし                                         |
+| ドメインのオーバーライド | `override_domain` | デフォルトURLのドメインを置き換えるドメイン（明示的なURLはオーバーライドしません）。 | なし                                         |
 
-モジュールはJSON構成ファイル、プログラムによる構成、またはその両方を使用して構成します。
+JSON構成ファイル、プログラム、またはその両方を組み合わせてモジュールを構成します。
 
-### JSONファイル構成
+### JSONファイルによる構成
 
-ローカル構成ファイルを使用する場合は、`settingsFile`にファイル名を`TealiumConfig`に渡します。リモート構成を使用する場合は、URLを`settingsUrl`に渡します。両方を同時に使用することもできます。
+ローカル構成ファイルを使用するには、`TealiumConfig`の`settingsFile`にファイル名を渡します。リモート構成を使用するには、`settingsUrl`にURLを渡します。両方を同時に使用することもできます。
 
-以下の例はサポートされているJSON構造を示しています。
+次の例は、サポートされているJSON構造を示しています。
 
 **デフォルト構成：**
 ```json
@@ -58,11 +58,11 @@ Collectモジュールは以下の構成オプションを提供します：
 
 ### プログラムによる構成
 
-`TealiumConfig`のモジュールに追加することでプログラムによりモジュールを構成します。
+`TealiumConfig`のモジュールに追加することで、モジュールをプログラムで構成します。
 
 
 <blockquote>
-プログラムによる構成は常にローカルおよびリモート構成より優先されます。
+プログラムによる構成は、常にローカル構成およびリモート構成より優先されます。
 </blockquote>
 
 
@@ -107,9 +107,9 @@ let config = TealiumConfig(account: "ACCOUNT",
 
 ### 複数のインスタンス
 
-異なるエンドポイントに異なる構成でイベントを送信する必要がある場合は、複数のCollectインスタンスを使用します。たとえば、すべてのイベントをプライマリエンドポイントに送信し、ルールによってフィルタリングされたイベントのサブセットをセカンダリエンドポイントにルーティングします。
+異なる構成の異なるエンドポイントにイベントを送信する必要がある場合は、複数のCollectインスタンスを使用します。たとえば、すべてのイベントをプライマリエンドポイントに送信しながら、ルールでフィルタリングした一部のイベントをセカンダリエンドポイントにもルーティングできます。
 
-各インスタンスには一意の`moduleId`が必要です。ルールを使用して、各インスタンスが処理するイベントを制御します。
+各インスタンスには一意の`moduleId`が必要です。各インスタンスが処理するイベントを制御するには、ルールを使用します。
 
 
 
@@ -118,7 +118,8 @@ val config = TealiumConfig.Builder(
     application,
     "ACCOUNT",
     "PROFILE",
-    Environment.DEV
+    Environment.DEV,
+    emptyList()
 ).addModule(Modules.collect(
     { builder ->
         builder.setModuleId("PrimaryCollect")
@@ -146,7 +147,7 @@ let config = TealiumConfig(account: "ACCOUNT",
                                   { builder in
                                       builder.setModuleId("SecondaryCollect")
                                              .setUrl("https://secondary.collect.example.com/event")
-                                             .setRules(.just(["purchase_rule_id"]))
+                                             .setRules(.just("purchase_rule_id"))
                                   }
                               ),
                               // other modules...
@@ -155,7 +156,7 @@ let config = TealiumConfig(account: "ACCOUNT",
 
 
 
-JSON形式での同等の構成：
+JSON形式での同等の構成は次のとおりです。
 
 ```json
 {
@@ -173,19 +174,14 @@ JSON形式での同等の構成：
             "configuration": {
                 "url": "https://secondary.collect.example.com/event"
             },
-            "rules": {
-                "operator": "just",
-                "children": [
-                    "purchase_rule_id"
-                ]
-            }
+            "rules": "purchase_rule_id"
         }
     }
 }
 ```
 ## 構成ビルダーのリファレンス
 
-Collectモジュールは、構成のために`CollectSettingsBuilder`を使用します。以下のメソッドが利用可能です：
+Collectモジュールの構成には、`CollectSettingsBuilder`を使用します。以下のメソッドを利用できます。
 
 
 
@@ -194,13 +190,13 @@ Collectモジュールは、構成のために`CollectSettingsBuilder`を使用�
 
 | メソッド | 説明 |
 |---|---|
-| `setUrl(url: String)` | 個々のイベントを送信するためのURLを構成します。 |
-| `setBatchUrl(url: String)` | イベントのバッチを送信するためのURLを構成します。 |
-| `setProfile(profile: String)` | イベント送信時に使用するTealiumプロファイルを構成します。 |
-| `setDomain(domain: String)` | デフォルトの単一およびバッチURLの代わりに使用するドメインを構成します。 |
-| `setModuleId(moduleId: String)` | このモジュールインスタンスのユニークな識別子を構成します。 |
-| `setEnabled(enabled: Boolean)` | モジュールを永久に有効または無効にします。 |
-| `setOrder(order: Int)` | モジュールが初期化される順序を構成します。 |
+| `setUrl(url: String)` | 個々のイベントの送信に使用するURLを構成します。 |
+| `setBatchUrl(url: String)` | イベントのバッチ送信に使用するURLを構成します。 |
+| `setProfile(profile: String)` | イベントの送信時に使用するTealiumプロファイルを構成します。 |
+| `setDomain(domain: String)` | デフォルトの単一イベント送信用URLおよびバッチ送信用URLの代わりに使用するドメインを構成します。 |
+| `setModuleId(moduleId: String)` | このモジュールインスタンスの一意の識別子を構成します。 |
+| `setEnabled(enabled: Boolean)` | モジュールを永続的に有効または無効にします。 |
+| `setOrder(order: Int)` | モジュールを初期化する順序を構成します。 |
 | `setRules(rules: Rule<String>)` | このモジュールがイベントを処理するために一致する必要があるルールを構成します。 |
 | `setMappings(mappings: ...)` | このモジュールのマッピングを構成します。 |
 
@@ -209,13 +205,13 @@ Collectモジュールは、構成のために`CollectSettingsBuilder`を使用�
 
 | メソッド | 説明 |
 |---|---|
-| `setUrl(_:)` | 個々のイベントを送信するためのURLを構成します。 |
-| `setBatchUrl(_:)` | イベントのバッチを送信するためのURLを構成します。 |
-| `setOverrideProfile(_:)` | イベントデータの`TealiumConfig.profile`を上書きするプロファイルを構成します。 |
-| `setOverrideDomain(_:)` | デフォルトURLドメインを置き換えるドメインを構成します。 |
-| `setModuleId(_:)` | このモジュールインスタンスのユニークな識別子を構成します。 |
-| `setEnabled(_:)` | モジュールを永久に有効または無効にします。 |
-| `setOrder(_:)` | モジュールが初期化される順序を構成します。 |
+| `setUrl(_:)` | 個々のイベントの送信に使用するURLを構成します。 |
+| `setBatchUrl(_:)` | イベントのバッチ送信に使用するURLを構成します。 |
+| `setOverrideProfile(_:)` | イベントデータ内の`TealiumConfig.profile`を上書きするプロファイルを構成します。 |
+| `setOverrideDomain(_:)` | デフォルトURLのドメインを置き換えるドメインを構成します。 |
+| `setModuleId(_:)` | このモジュールインスタンスの一意の識別子を構成します。 |
+| `setEnabled(_:)` | モジュールを永続的に有効または無効にします。 |
+| `setOrder(_:)` | モジュールを初期化する順序を構成します。 |
 | `setRules(_:)` | このモジュールがイベントを処理するために一致する必要があるルールを構成します。 |
 | `setMappings(_:)` | このモジュールのマッピングを構成します。 |
 

@@ -30,7 +30,7 @@ For setup instructions, see [Install on server](https://docs.tealium.com/platfor
 
 Some partner systems send events to Tealium by posting to a Tealium-provided webhook URL. When you create one of these data sources, Tealium generates a URL and configuration code that you use to configure the sending system.
 
-For more information, see [Incoming webhooks](https://docs.tealium.com/server-side/data-sources/webhooks/setup-guides/).
+For more information, see [Incoming webhooks](https://docs.tealium.com/server-side/data-sources/webhooks/).
 
 ## Cloud data sources
 

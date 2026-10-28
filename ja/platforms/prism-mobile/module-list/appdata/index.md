@@ -5,27 +5,27 @@ url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/
 ---
 ## AppDataモジュールについて
 
-AppDataモジュールは、アプリケーションのメタデータに必要な情報を自動的に追加するコレクターです。アプリバンドルからアプリケーション固有の情報を収集し、すべてのトラッキングイベントで利用可能にします。
+AppDataモジュールは、重要なアプリケーションメタデータをトラッキングデータに自動的にエンリッチメントするコレクターです。アプリバンドルからアプリケーション固有の情報を収集し、すべてのトラッキングイベントで利用できるようにします。
 
 ## インストール
 
 
 
-`build.gradle`ファイルに`prism-appdata`依存関係を追加してください：
+AppDataモジュールは`prism-core`に含まれています。`build.gradle`ファイルに以下を追加します。
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-appdata")
+implementation("com.tealium.prism:prism-core")
 ```
 
 
-AppDataモジュールは`TealiumPrismCore`に含まれています。Swift Package Manager依存関係としてリポジトリURL`https://github.com/Tealium/tealium-prism-swift`を使用して追加するか、CocoaPodsのためにPodfileに追加してください：
+AppDataモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift`を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに以下を追加します。
 
 ```ruby
 pod 'tealium-prism/Core'
 ```
 
-完全なPrismライブラリをインストールする場合：
+代わりにPrismライブラリ全体をインストールするには、以下を使用します。
 
 ```ruby
 pod 'tealium-prism'
@@ -35,22 +35,23 @@ pod 'tealium-prism'
 
 ## 初期化
 
-AppDataモジュールは構成時に自動的に初期化されます。ほとんどの統合ではコード変更は必要ありません。TealiumプラットフォームUIでモジュールを構成するか、アプリにローカルJSON構成ファイルをバンドルしてください。
+AppDataモジュールは、構成されると自動的に初期化されます。ほとんどの統合ではコードを変更する必要はありません。TealiumプラットフォームのUIでモジュールを構成するか、ローカルのJSON構成ファイルをアプリにバンドルします。
 
-### 上級者向け：プログラムによる初期化
+### 高度な構成：プログラムによる初期化
 
-プラットフォームまたはローカルJSON構成が存在しない場合でも、デフォルト値でモジュールを初期化するには、`TealiumConfig`の`modules`リストに追加します。`TealiumConfig`にモジュールを追加することは、テスト時やランタイムで動的に値を構成する必要がある場合に便利です。
+プラットフォームまたはローカルのJSON構成が存在しない場合でも、モジュールをデフォルト値で強制的に初期化するには、`TealiumConfig`の`modules`リストに追加します。モジュールを`TealiumConfig`に追加する方法は、テストを行う場合や、実行時に値を動的に構成する必要がある場合に便利です。
 
 
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "my_account",
     profileName = "my_profile",
     environment = Environment.PROD,
     modules = listOf(
         Modules.appData(),
-        // 他のモジュール...
+        // other modules...
     )
 ).build()
 ```
@@ -62,7 +63,7 @@ let config = TealiumConfig(account: "my_account",
                            environment: "prod",
                            modules: [
                                Modules.appData(),
-                               // 他のモジュール...
+                               // other modules...
                            ])
 ```
 
@@ -70,13 +71,13 @@ let config = TealiumConfig(account: "my_account",
 
 ## データレイヤー
 
-モジュールが有効な間、以下の変数が各トラッキングコールに追加されます：
+モジュールが有効な間、各トラッキング呼び出しに以下の変数が追加されます。
 
 | 変数 | 説明 | 例 |
 | :--- | :--- | :--- |
 | `app_build` | アプリのビルド番号 | `"42"` |
-| `app_memory_usage` | 現在のアプリメモリ使用量 | `"775 MB"` |
-| `app_name` | アプリケーションの表示名（iOS: `CFBundleName`; Android: `android:label`） | `"Digital Velocity"` |
-| `app_rdns` | 逆DNSアプリケーションID（iOS: `CFBundleIdentifier`; Android: マニフェスト `package`） | `"com.tealium.digitalvelocity"` |
-| `app_uuid` | アプリインストールの寿命にわたって持続するランダム識別子。アプリがアンインストールされるとリセットされます。 | `"4AB81234-C2A8-46DE-9AED-7ACE555521E0"` |
-| `app_version` | ユーザーに向けたアプリのバージョン | `"1.0.0"` |
+| `app_memory_usage` | 現在のアプリのメモリ使用量（MB） | `775` |
+| `app_name` | アプリケーションの表示名（iOS：`CFBundleName`、Android：`android:label`） | `"Digital Velocity"` |
+| `app_rdns` | 逆引きDNS形式のアプリケーションID（iOS：`CFBundleIdentifier`、Android：マニフェストの`package`） | `"com.tealium.digitalvelocity"` |
+| `app_uuid` | アプリがインストールされている間維持されるランダムな識別子。アプリをアンインストールするとリセットされます。 | `"4AB81234-C2A8-46DE-9AED-7ACE555521E0"` |
+| `app_version` | ユーザー向けのアプリバージョン | `"1.0.0"` |

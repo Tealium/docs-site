@@ -1,102 +1,105 @@
 ---
-title: リアルタイムで個人識別情報（PII）を検出するための2段階検証パターンの使用
-description: Tealiumの機能とAWS Comprehendを使用して、リアルタイムイベントデータ内の個人識別情報（PII）を検出し、修正するためのスケーラブルな2段階検証パターンを使用します。
+title: 2 段階検証パターンを使用してリアルタイムで PII を検出する
+description: Tealium Functions と AWS Comprehend を使用したスケーラブルな 2 段階検証パターンにより、リアルタイムのイベントデータから個人を特定できる情報（PII）を検出し、秘匿化します。
 url: https://docs.tealium.com/ja/guides/two-stage-pii-detection/
 ---
-2段階検証パターンは、リアルタイムイベントデータ内の個人識別情報（PII）を検出し管理するためのスケーラブルな方法を提供します。これは、サーバーサイドの機能とAWS Comprehendを使用して、高速な正規表現ベースのフィルタリングと高度な機械学習検証を組み合わせています。
+2 段階検証パターンは、リアルタイムのイベントデータから個人を特定できる情報（PII）を検出し、管理するためのスケーラブルな方法です。サーバーサイド関数と AWS Comprehend を使用し、高速な正規表現ベースのフィルタリングと高度な機械学習による検証を組み合わせます。
 
-このガイドには以下が含まれます：
+このガイドでは、以下について説明します。
 
-* 高スループットデータストリームでPIIを検出するための実用的なアプローチ。
-* Tealium EventStream、機能、およびAWSサービスを統合するためのステップバイステップの指示。
-* データ変換機能、処理済みイベント機能、およびAWS Lambdaの例示実装。
+* 高スループットのデータストリームから PII を検出するための実用的なアプローチ。
+* Tealium EventStream、Functions、AWS サービスを統合するための手順。
+* データ変換関数、処理済みイベント関数、AWS Lambda の実装例。
 
 ## 仕組み
 
-リアルタイムで高容量のデータストリーム内でPIIを識別し管理するために、2段階検証パターンを使用します。このパターンは、軽量で低遅延のチェックを遅いが正確な機械学習（ML）検証から分離して、パフォーマンスを維持し処理コストを削減します。
+2 段階検証パターンを使用して、リアルタイムかつ大量のデータストリームから PII を特定し、管理します。このパターンでは、軽量かつ低レイテンシーのチェックと、低速ながらより高精度な機械学習（ML）による検証を分離することで、パフォーマンスを維持し、処理コストを削減します。
 
-このアプローチは、`message_text`、`form_input`、または`user_comment`などの非構造化またはフリーテキストフィールドでPIIを検出するのに理想的です。
+このアプローチは、`message_text`、`form_input`、`user_comment` などの非構造化フィールドや自由記述フィールドから PII を検出する場合に最適です。
 
-パターンには2つの段階があります：
+このパターンは、次の 2 つの段階で構成されます。
 
-* **ステージ1（正規表現フィルター）**：軽量のサーバーサイド機能は正規表現を使用してPIIを含む可能性のあるイベントを識別します。この機能は、`message_text`、`form_input`、または`user_comment`などのフィールドをスキャンして潜在的に機密性の高いデータを識別します。
-* **ステージ2（検証）**：Webhookはフラグが付けられたイベントのみを自然言語処理（NLP）ベースの検出およびオプションの修正のためにAWS Comprehendに送信します。
+* **第 1 段階（正規表現フィルター）**：軽量なサーバーサイド関数が正規表現を使用し、PII が含まれている可能性のあるイベントを特定します。この関数は、`message_text`、`form_input`、`user_comment` などのフィールドをスキャンし、機密性のある可能性があるデータを特定します。
+* **第 2 段階（検証）**：Webhook が、フラグの付いたイベントのみを AWS Comprehend に送信し、自然言語処理（NLP）ベースの検出と、必要に応じた秘匿化を行います。
 
-ステージ1でフラグが付けられたイベントのみがステージ2に進み、不要なAPI呼び出しと遅延を最小限に抑えます。
+第 1 段階でフラグが付いたイベントのみが第 2 段階に進むため、不要な API 呼び出しとレイテンシーを最小限に抑えられます。
 
-### 主要コンポーネントを理解する
+### 主要なコンポーネント
 
-* **データ変換機能**  
-  イベントデータを評価し、潜在的なPIIを識別するために軽量の正規表現を適用するサーバーサイド機能。オプションで、検出された値をハッシュ化して転送することができます。
+* **データ変換関数**  
+  受信したイベントデータを評価し、軽量な正規表現を適用して潜在的な PII を特定するサーバーサイド関数です。必要に応じて、転送前に検出された値をハッシュ化できます。
 
 * **派生属性**  
-  データ変換機能の出力から派生したブールイベント属性。PIIを検出すると、機能はそれを`true`に構成し、イベントにフラグを追加します。
+  データ変換関数の出力から派生するブール型のイベント属性です。PII が検出されると、関数によって `true` に構成され、イベントにフラグが追加されます。
 
-* **AudienceStreamイベントフィルター**  
-  派生属性に基づいて受信イベントをフィルタリングし、PIIを含まないイベントのみが訪問プロファイルを豊かにします。
+* **AudienceStream イベントフィルター**  
+  派生属性に基づいて受信イベントをフィルタリングし、PII を含まないイベントのみが訪問プロファイルをエンリッチするようにします。
 
 * **イベントフィード**  
-  派生属性に基づいてフィルタリングされたフラグ付きイベントのストリームで、コネクタ、保存、または他の機能に送信することができます。
+  派生属性に基づいてフラグが付けられたイベントのフィルタリング済みストリームです。追加処理のために、コネクタ、保存、または他の関数へ送信できます。
 
-* **処理済みイベント機能**  
-  エンリッチメントとフィルタリングの後に実行される機能。フラグが付けられたイベントを外部エンドポイント（AWS Lambda + Comprehendなど）に送信して高度な検証を行います。
+* **処理済みイベント関数**  
+  エンリッチメントとフィルタリングの後に実行される関数です。高度な検証を行うため、フラグが付いたイベントを外部エンドポイント（AWS Lambda + Comprehend など）へ送信します。
 
 ## 利点
 
-データがエンリッチメントされたり、保存されたり、下流システムと共有される前にガバナンスまたは修正ポリシーを適用する必要がある場合に、2段階検証パターンを使用します。
+データがエンリッチ、保存、または下流システムと共有される前に、ガバナンスポリシーや秘匿化ポリシーを適用する必要がある場合は、2 段階検証パターンを使用します。
 
-利点には以下が含まれます：
+主な利点は次のとおりです。
 
-* 軽量なパターンマッチを使用してほとんどのイベントをフィルタリングすることにより、AWS Comprehendへのリクエスト数を減らします。
-* ステージ2検証にのみフラグが付けられたイベントをルーティングすることで、イベント処理をリアルタイムに保ちます。
-* データが保存または分析される前にPIIを検出し修正します。
-* 詳細な検証が必要なイベントの小さなサブセットのみに適応します。
-* AI/MLパイプラインおよびコンプライアンスチェックのためのデータ品質を向上させます。
+* 軽量なパターンマッチングで大部分のイベントをフィルタリングすることにより、AWS Comprehend へのリクエスト数を削減します。
+* フラグが付いたイベントのみを第 2 段階の検証へルーティングすることで、イベント処理のリアルタイム性を維持できます。
+* データが保存または分析される前に PII を検出し、秘匿化します。
+* イベントのうち少数のみが詳細な検証を必要とする、他のワークフローにも適用できます。
+* AI/ML パイプラインおよびコンプライアンスチェックのデータ品質を向上させます。
 
-## 使用例
+## ユースケース
 
-ユーザーが誤ってPIIを含む可能性のある非構造化入力を収集する場合にこのパターンを使用します。
-例には以下が含まれます：
+ユーザーが誤って PII を含める可能性のある非構造化入力を収集する場合に、このパターンを使用します。
+例は次のとおりです。
 
 * チャットメッセージ
 * サポートフォーム
 * 製品レビュー
 * 検索フィールド
 
-2段階検証パターンは、訪問プロファイル、分析ツール、またはAIパイプラインに入る前に、電子メールアドレス、電話番号、クレジットカードの詳細などの機密データを検出し管理します。
+2 段階検証パターンは、メールアドレス、電話番号、クレジットカード情報などの機密データが、訪問プロファイル、分析ツール、または AI パイプラインに取り込まれる前に検出し、管理します。
 
-EventStreamを通じてデータをフィルタリングおよび検証することで、コンプライアンス要件を満たしながら、システム全体で使用される顧客および行動データの正確性を保持することができます。
+EventStream を通過するデータをフィルタリングして検証することで、システム全体で使用される顧客データおよび行動データの正確性を維持しながら、コンプライアンス要件を満たすことができます。
 
 ## 要件
 
-このパターンを実装するには、以下が必要です：
+このパターンを実装するには、以下が必要です。
 
 * EventStream
-* 機能
-* AWSアカウントで：
-  * AWS Comprehendへのアクセス
-  * デプロイされたLambda関数
-  * （オプション）API GatewayまたはEventBridge統合
-* 基本的な知識：
-  * JavaScript（機能用）
+* Functions
+* 以下を備えた AWS アカウント：
+  * AWS Comprehend へのアクセス
+  * デプロイ済みの Lambda 関数
+  * （任意）API Gateway または EventBridge との統合
+* 以下に関する基本的な知識：
+  * JavaScript（関数用）
   * 正規表現
   * HTTP API
 
 ## 統合手順
 
-### ステップ1: 潜在的なPIIをフラグするためのデータ変換機能を作成する
+### 手順 1：潜在的な PII にフラグを付けるデータ変換関数を作成する
 
-潜在的な個人識別情報（PII）を含むイベントをフラグし、オプションでハッシュ化するために、正規表現パターンマッチングを使用するデータ変換機能を作成します。
+個人を特定できる情報（PII）が含まれている可能性のあるイベントにフラグを付け、必要に応じてハッシュ化するには、正規表現によるパターンマッチングを使用するデータ変換関数を作成します。
 
-[データ変換機能を作成する](https://docs.tealium.com/create-function/#create-a-data-transformation-function)の手順に従い、このユースケースに対する次の構成を適用します：
+[データ変換関数を作成する](https://docs.tealium.com/create-function/#create-a-data-transformation-function)手順に従い、このユースケースに次の構成を適用します。
 
 #### トリガー条件を構成する
 
-**データ変換**を機能タイプとして選択し、トリガー名を入力した後、機能をアクティブにする条件を定義します。
+関数のタイプとして **Data Transformation** を選択してトリガー名を入力したら、関数を起動する条件を定義します。
 
-機能がPIIを検出する一般的な形式の正規表現パターンに対してイベントペイロードをマッチさせる条件を追加します。また、AWS Comprehendによって既にフラグが付けられているイベント（ステージ2検証を既に通過したイベントなど）をスキップする条件を追加します。
+未処理で、機密性がある可能性のあるイベントのみが関数をトリガーするように、次の条件を追加します。
 
-例えば：
+* メールアドレスなど、一般的な PII 形式を検出する正規表現パターンとイベントペイロードを照合する条件。
+* 第 2 段階の検証をすでに通過したイベント（AWS Comprehend によってフラグが付けられたイベントなど）をスキップする条件。
+
+例：
 
 
 [
@@ -119,15 +122,15 @@ EventStreamを通じてデータをフィルタリングおよび検証するこ
 
 #### 変換コードを追加する
 
-**コード**タブの下で、デフォルトのロジックを疑わしいPIIを含むイベントにフラグを追加し、機密フィールドをオプションでハッシュ化するコードに置き換えます。
+**Code** タブで、デフォルトのロジックを、PII の疑いがあるイベントにフラグを追加し、必要に応じて機密フィールドをハッシュ化するコードに置き換えます。
 
 ```js
 import CryptoES from "crypto-es";
 
-// 特定のキーを許可したい場合は、ここでそれらを定義します
+// If you want to allow specific keys, define them here
 const allowedPIIKeys = ["mid_email"];
 
-// メール検出用の正規表現
+// Email detection regex
 const emailRegex = /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/im;
 
 function findAndHashEmailKeys(jsonData, hashFunction) {
@@ -150,40 +153,40 @@ transform((event) => {
 });
 ```
 
-このスクリプトは次のことを行います：
+このスクリプトは、次の処理を行います。
 
-* イベントペイロードを再帰的にスキャンして、メールパターンに一致する文字列を検出します。
-* 明示的に許可されたキー（`mid_email`など）を除いて、メールパターンに一致する値をハッシュ化します。
-* イベントに`potential_pii_detected: true`フラグを追加して、下流のフィルタリングおよびルーティングで使用します。
+* イベントペイロードを再帰的にスキャンし、メールアドレスのパターンと一致する文字列を検出します。
+* 明示的に許可されたキー（`mid_email` など）を除き、メールアドレスのパターンと一致する値をハッシュ化します。
+* 下流でのフィルタリングとルーティングに使用するため、イベントに `potential_pii_detected: true` フラグを追加します。
 
 ![](https://docs.tealium.com/images/guides/data-transformation-function-code.png)
 
-#### 保存、テスト、公開
+#### 保存、テスト、公開する
 
-1. **テスト**タブを使用して、サンプルペイロードでロジックを検証します。
-1. **構成**タブに移動し、**ステータス**を**ON**に構成します。
-1. **完了**をクリックし、**保存して公開**をクリックします。
+1. **Test** タブを使用し、サンプルペイロードでロジックを検証します。
+1. **Configuration** タブに移動し、**Status** を **ON** に構成します。
+1. **Done**、**Save and Publish** の順にクリックします。
 
-### ステップ2: 派生属性を使用してAudienceStreamエンリッチメントをフィルタリングする
+### 手順 2：派生属性を使用して AudienceStream のエンリッチメントをフィルタリングする
 
-データ変換機能を使用して潜在的なPIIを含むイベントをフラグした後、派生属性とAudienceStreamイベントフィルターを使用して、それらのイベントが訪問プロファイルをエンリッチするのを防ぎます。
-#### ブール型イベント属性の作成
+データ変換関数を使用して潜在的な PII を含むイベントにフラグを付けた後、派生属性と AudienceStream イベントフィルターを使用し、それらのイベントによって訪問プロファイルがエンリッチされないようにします。
+#### ブール型イベント属性を作成する
 
-ステップ1で追加された `potential_pii_detected` フラグからその値を導出するブール型イベント属性を作成します。
+手順1で追加した `potential_pii_detected` フラグから値を取得するブール型イベント属性を作成します。
 
 1. **Transform > Event Attributes > Add Attribute** に移動します。
 1. **attribute type** で **Universal Variable** を選択します。
 1. **Continue** をクリックします。
-1. データタイプとして **Boolean** を選択します。
-1. 属性の名前を `Email_Check` のように構成します。
-1. **Enrichments** の下で以下の構成を行います：
-    * すべてのイベントに対してデフォルトで `false` を構成：
+1. **Boolean** データ型を選択します。
+1. 属性に `Email_Check` などの名前を付けます。
+1. **Enrichments** で、次のエンリッチメントを構成します。
+    * すべてのイベントのデフォルトを `false` にします。
         * Boolean を `false` に構成
-        * **WHEN**: `ANY EVENT`
-    * フラグが立てられたPIIイベントに対して `true` を構成：
+        * **WHEN**：`ANY EVENT`
+    * PII の可能性があるとフラグ付けされたイベントを `true` に構成します。
         * Boolean を `true` に構成
-        * **WHEN**: `ANY EVENT`
-        * **AND**:
+        * **WHEN**：`ANY EVENT`
+        * **AND**：
 
             
             [
@@ -201,31 +204,31 @@ transform((event) => {
             ]
             
 
-これにより、すべてのイベントに `true` または `false` の値が構成され、フラグが立てられたイベントのみが `true` とマークされます。
+これにより、すべてのイベントに `true` または `false` の値が構成され、フラグ付けされたイベントのみが `true` になります。
 
 ![](https://docs.tealium.com/images/guides/email-check-attribute.png)
 
-#### AudienceStreamのイベントフィルターを使用してフラグ付きイベントを除外
+#### AudienceStream のイベントフィルターを使用して、フラグ付けされたイベントを除外する
 
-`Email_Check` 属性を使用して、AudienceStreamでリアルタイム訪問プロファイルのエンリッチメントからフラグ付きイベントを防ぎます。
+`Email_Check` 属性を使用し、フラグ付けされたイベントによって AudienceStream のリアルタイム訪問プロファイルがエンリッチされないようにします。
 
 1. **Server-Side Settings > General Settings** に移動します。
-1. **Activate AudienceStream > Event Filter** の下でフィルターを構成します：
+1. **Activate AudienceStream > Event Filter** で、フィルターを次のように構成します。
 
-   * **Attribute name**: `Email_Check`
-   * **Value**: `false`
+   * **Attribute name**：`Email_Check`
+   * **Value**：`false`
 
-`Email_Check` が `false` のイベントのみがAudienceStreamによって処理されます。AudienceStreamは潜在的なPII（`Email_Check: true`）としてフラグが立てられたイベントを除外します。
+`Email_Check` が `false` のイベントのみが AudienceStream で処理されます。PII の可能性があるとフラグ付けされたイベント（`Email_Check: true`）は、AudienceStream によって除外されます。
 
 ![](https://docs.tealium.com/images/guides/audiencestream-event-filter.png)
 
-### ステップ3: フラグ付きイベントをルーティングするためのイベントフィードの作成
+### 手順3：フラグ付けされたイベントを振り分けるイベントフィードを作成する
 
-イベントフィードを使用すると、属性条件に基づいてイベントをグループ化して分離することができます。このステップでは、潜在的なPIIを含むとフラグ付けされたイベントを収集するフィードを作成します。これにより、それらを別々に処理することができます。たとえば、二次検証のためにAPIに送信します。
+イベントフィードを使用すると、属性の条件に基づいてイベントをグループ化し、分離できます。この手順では、PII が含まれている可能性があるとフラグ付けされたイベントを収集するフィードを作成します。これにより、たとえば二次検証のために API に送信するなど、イベントを個別に処理できます。
 
 1. **Validate > Live Events** に移動し、**+ Add Event Feed** をクリックします。
-1. **Title** を `Email_Check is True` またはお好みの説明的な名前に構成します。
-1. **Capture events that...** セクションに以下の条件を追加します：
+1. **Title** を `Email_Check is True`、または任意のわかりやすい名前に構成します。
+1. **Capture events that...** セクションで、次の条件を追加します。
 
     
     [
@@ -243,50 +246,50 @@ transform((event) => {
     ]
     
 
-これらの条件は以下のイベントに一致します：
+これらの条件は、以下のすべてに該当するイベントのみと一致します。
 
-* データ変換機能によってフラグが立てられた（`potential_pii_detected`）
-* `Email_Check = true` にエンリッチされた
-* まだ二段階検証によって処理されていない
+* データ変換関数によってフラグ付けされている（`potential_pii_detected`）
+* `Email_Check = true` にエンリッチされている
+* 第2段階の検証でまだ処理されていない
 
 ![](https://docs.tealium.com/images/guides/email-check-event-feed.png)
 
 
 <blockquote>
-このフィードをコネクタ、ウェブフック、またはEventDBやEventStoreのような保存ソリューションに接続して、さらなる処理を行います。
+さらに処理するには、このフィードをコネクタ、Webhook、または EventDB や EventStore などの保存ソリューションに接続します。
 </blockquote>
 
 
-イベントフィードについての詳細は、[about-event-feeds](https://docs.tealium.com/about-event-feeds/)を参照してください。
+イベントフィードの詳細については、[about-event-feeds](https://docs.tealium.com/about-event-feeds/)を参照してください。
 
-### ステップ4: 処理済みイベント関数を構成してペイロードをAWSに送信
+### 手順4：ペイロードを AWS に送信する処理済みイベント関数を構成する
 
-処理済みイベント関数は、サーバーサイドデータパイプラインの最後に実行されます。この関数を使用して、さらなるPII分析のためにAWS Lambda + Comprehendなどの外部サービスにフラグ付きイベントを送信します。詳細については、[about-functions](https://docs.tealium.com/about-functions/)を参照してください。
+処理済みイベント関数は、サーバーサイドデータパイプラインの最後に実行されます。この関数を使用して、フラグ付けされたイベントを AWS Lambda + Comprehend などの外部サービスに送信し、PII をさらに分析します。詳細については、[about-functions](https://docs.tealium.com/about-functions/)を参照してください。
 
-イベントフィードで定義された基準に一致するイベントが発生すると（ステップ3）、この関数がトリガーされます。この関数は、受信イベントから関連する値を抽出し、API Gatewayを通じてAWS Lambdaに送信し、その後イベントに結果（PII検出など）を追加します。
+イベントがイベントフィード（手順3）で定義した基準に一致すると、この関数がトリガーされます。この関数は受信イベントから関連する値を抽出し、API Gateway 経由で AWS Lambda に送信した後、PII 検出などの結果をイベントに追加します。
 
-#### 処理済みイベント関数の作成
+#### 処理済みイベント関数を作成する
 
 1. **Transform > Functions** に移動します。
 1. **+ Add Function** をクリックします。
-1. 関数の名前を入力します。
+1. 関数名を入力します。
 1. **Processed Event** トリガーを選択し、**Continue** をクリックします。
-1. トリガー名を `Check for PII` のように構成します。
-1. トリガーをステップ3で作成したイベントフィードに構成します（例：`Email_Check is True`）。
+1. `Check for PII` などのトリガー名を入力します。
+1. トリガーを、手順3で作成したイベントフィード（`Email_Check is True` など）に構成します。
 1. **Continue** をクリックします。
 
-#### 関数コードの更新
+#### 関数コードを更新する
 
-コードエディタに以下のサンプルコードを貼り付けます。このコードは、`tealium_profile` や `tealium_event` などのデフォルトを除外して属性を収集し、ペイロードを準備し、API Gatewayを通じてAWS Lambdaエンドポイントに送信します。
+次のサンプルコードをコードエディターに貼り付けます。このコードは、検査対象の属性を収集してペイロードを準備します。その際、`tealium_profile` や `tealium_event` などのデフォルト属性は除外されます。その後、API Gateway 経由で AWS Lambda エンドポイントにペイロードを送信します。
 
 ```js
-const url = "https://your-url"; // 実際のAPI Gateway URLに置き換えてください。
+const url = "https://your-url"; // Replace with your actual API Gateway URL.
 
 activate(async ({ event, helper }) => {
-//グローバル変数を通じてデフォルト値を構成し、コードとエラーを減らします。    
+//Set default values through global variables to reduce code and errors.    
 
 
-    // 元のイベントの変更は変異を通じて適用されます
+    // changes are applied through mutation of the original event
     const IGNORE = ['tealium_profile', 'tealium_account', 'tealium_event']
     var TOCHECK = ""
 
@@ -333,9 +336,9 @@ activate(async ({ event, helper }) => {
             toReturn['pii_type_value'] = Array.from(tempSet)
 
             track(toReturn, {
-                tealium_account: "TEALIUM_ACCOUNT", // Tealiumアカウントに置き換えてください。
-                tealium_profile: "TEALIUM_PROFILE", // Tealiumプロファイルに置き換えてください。
-                tealium_datasource: "TEALIUM_DATASOURCE", // Tealiumデータソースに置き換えてください。
+                tealium_account: "TEALIUM_ACCOUNT", // Replace with your Tealium account.
+                tealium_profile: "TEALIUM_PROFILE", // Replace with your Tealium profile.
+                tealium_datasource: "TEALIUM_DATASOURCE", // Replace with your Tealium datasource.
             })
             .then(response => {
                 if(!response.ok){
@@ -355,46 +358,46 @@ activate(async ({ event, helper }) => {
 
 ![](https://docs.tealium.com/images/guides/check-for-pii-processed-event-function.png)
 
-#### 関数のテスト
+#### 関数をテストする
 
-1. 関数エディタの **Test** タブに移動します。
+1. 関数エディターの **Test** タブに移動します。
 1. **Test Payload** パネルを使用して、実際のサンプルイベントペイロードを読み込むか貼り付けます。
-1. **Run Test** をクリックして、関数が正しく実行され、データが正しく送信されることを確認します。
-1. 準備ができたら、関数を有効にして **Save and Publish** をクリックします。
+1. **Run Test** をクリックし、関数が実行され、データが正しく送信されることを確認します。
+1. 準備ができたら関数を有効にし、**Save and Publish** をクリックします。
 
-送信リクエストと応答またはエラーメッセージがログに記録されます。必要に応じてペイロードまたはコードを調整します。
+送信リクエストと、応答またはエラーメッセージを確認できるログが表示されます。必要に応じてペイロードまたはコードを調整します。
 
 詳細については、を参照してください。
 
-#### 認証の構成（オプション）
+#### 認証を構成する（任意）
 
-API GatewayまたはLambdaエンドポイントが認証を要求する場合、**Advanced** タブに移動して関数で使用する認証トークンを構成します。
+API Gateway または Lambda エンドポイントで認証が必要な場合は、**Advanced** タブに移動し、関数で使用する認証トークンを構成します。
 
 #### 結果
 
-関数がライブで公開されると、フィードの基準を満たすイベント（例：`Email_Check = true`）がこの関数をトリガーし、ペイロードをLambdaサービスに送信します。
-### ステップ5: AWS LambdaとComprehendの構成
+関数を公開して稼働させると、フィードの基準（`Email_Check = true` など）を満たすイベントによってこの関数がトリガーされ、ペイロードが Lambda サービスに送信されます。
+### ステップ5：AWS LambdaとComprehendを構成する
 
-このステップでは、個人を特定できる情報（PII）を含むイベントを分析するためのAWSインフラを構成します。これには、API Gatewayの構成、Lambda関数の作成、およびエンティティ検出を行うためのAmazon Comprehendの使用が含まれます。Lambdaは、下流のイベントのエンリッチメントとルーティングに使用できる結果を返します。
+このステップでは、フラグが付けられたイベントに個人を特定できる情報（PII）が含まれているか分析するためのAWSインフラストラクチャを構成します。これには、API Gatewayの構成、Lambda関数の作成、Amazon Comprehendを使用したエンティティ検出が含まれます。Lambdaは、後続処理でイベントのエンリッチメントとルーティングに使用できる結果を返します。
 
-#### API Gatewayの構成
+#### API Gatewayを構成する
 
-Tealium関数からイベントを受け取り、Lambda関数に転送するAPI Gatewayエンドポイントを作成します。エンドポイントはPOSTリクエストを受け入れ、Lambdaプロキシ統合で構成する必要があります。
+Tealium Functionsからイベントを受信し、Lambda関数に転送するAPI Gatewayエンドポイントを作成します。このエンドポイントがPOSTリクエストを受け入れるようにし、Lambdaプロキシ統合を構成します。
 
-詳細な手順については、[AWS Lambda: Amazon API Gatewayエンドポイントを使用してLambda関数を呼び出す](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)を参照してください。
+詳しい手順については、[AWS Lambda：Amazon API Gatewayエンドポイントを使用したLambda関数の呼び出し](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)を参照してください。
 
-#### PII検出用のLambda関数の作成
+#### PII検出用のLambda関数を作成する
 
-受信イベントペイロードを処理し、Amazon Comprehendを使用してPIIをチェックし、元のイベントと分析結果を含むレスポンスを返すLambda関数を作成します。
+受信したイベントペイロードを処理し、Amazon Comprehendを使用してPIIを確認して、元のイベントと分析結果の両方を含むレスポンスを返すLambda関数を作成します。
 
-Lambdaは以下を行う必要があります：
+Lambdaでは、次の処理を行う必要があります。
 
-* Tealiumからの完全なイベントペイロードを受け入れる。
-* 分析のための関連フィールドを抽出する（例：`event.data`）。
+* Tealiumからイベントペイロード全体を受け取る。
+* 分析に必要なフィールド（例：`event.data`）を抽出する。
 * AWS Comprehendを使用してPII（特にメールアドレス）を検出する。
-* Comprehendの結果とともに元のペイロードを返す。
+* 元のペイロードとComprehendの結果を返す。
 
-こちらはNode.jsでのサンプル実装の概要です：
+以下は、Node.jsによる実装概要の例です。
 
 ```js
 const AWS = require("aws-sdk");
@@ -433,9 +436,9 @@ exports.handler = async (event) => {
 };
 ```
 
-完全な例については、[Amazon Comprehend: AWS SDKまたはCLIを使用してDetectPiiEntitiesを使用する](https://docs.aws.amazon.com/comprehend/latest/dg/example_comprehend_DetectPiiEntities_section.html)を参照してください。
+完全な例については、[Amazon Comprehend：AWS SDKまたはCLIでDetectPiiEntitiesを使用する](https://docs.aws.amazon.com/comprehend/latest/dg/example_comprehend_DetectPiiEntities_section.html)を参照してください。
 
-#### 例のレスポンス構造
+#### レスポンス構造の例
 
 ```json
 {
@@ -459,50 +462,50 @@ exports.handler = async (event) => {
 }
 ```
 
-このエンリッチメントは、追加の処理、アラート、または抑制のための下流ロジックで使用できます。
+このエンリッチメント結果は、追加処理、アラート、抑制など、後続のロジックで使用できます。
 
 
 <blockquote>
-処理中の問題をキャプチャするために、Lambdaにログ記録とエラーハンドリングを追加します。検出率やエラーに基づいてアラートを構成するために、構造化されたログを使用してイベントを追跡します。
+処理上の問題を把握できるように、Lambdaにログ記録とエラー処理を追加してください。構造化ログを使用してイベントを追跡し、検出率やエラーに基づいてアラートを構成します。
 </blockquote>
 
 
-### ステップ6: レビューとテスト
+### ステップ6：確認してテストする
 
-確認するために：
+検証するには、次の手順を実行します。
 
-* PIIを含むサンプルテキストでテストイベントを送信します。
-* `potential_pii_detected`が正しく構成されていることを確認します。
-* AWSから返された赤字テキストを確認します。
-* APIのパフォーマンスとレイテンシーに関するログを確認します。
-* ステージ2が必要な場合にのみ呼び出されることを確認するために、呼び出し回数を監視します。
+* PIIを含むサンプルテキストを使用してテストイベントを送信する。
+* `potential_pii_detected`が正しく構成されていることを確認する。
+* マスキングされたテキストがAWSから返されることを確認する。
+* APIのパフォーマンスとレイテンシーに関するログを確認する。
+* 呼び出し回数を監視し、必要な場合にのみ第2段階が呼び出されていることを確認する。
 
-### ステップ7: レスポンスを下流のルーティングと決定に使用する
+### ステップ7：レスポンスを後続のルーティングと意思決定に使用する
 
-AWS Lambdaからエンリッチされたイベントを受け取った後、イベントペイロードの`pii_analysis`オブジェクトを使用してさらなるアクションを取ります。このステップは、PIIが確認されたかどうかに基づいてイベントを解釈し、ルーティングする方法に焦点を当てています。
+AWS Lambdaからエンリッチされたイベントを受信した後、イベントペイロード内の`pii_analysis`オブジェクトを使用して、以降のアクションを実行します。このステップでは、PIIが確認されたかどうかに基づいてイベントを解釈し、ルーティングする方法を説明します。
 
-#### PII結果に基づいてシステムを更新する
+#### PIIの検出結果に基づいてシステムを更新する
 
-返されたフィールド`pii_analysis.pii_detected`を使用して、異なる処理パスをトリガーします。例えば：
+返されたフィールド`pii_analysis.pii_detected`を使用して、異なる処理パスを起動します。例：
 
 * `pii_detected`が`true`の場合：
-  * 赤字化ワークフローに送信します。
-  * パーソナライゼーションまたは分析パイプラインから抑制します。
-  * プライバシーチームにアラートを送信するか、監査をトリガーします。
+  * マスキングワークフローに送信する。
+  * パーソナライゼーションまたは分析パイプラインから除外する。
+  * プライバシー担当チームに通知するか、監査を開始する。
 * `pii_detected`が`false`の場合：
-  * エンリッチメント、セグメント化、またはコネクタ配信などの通常の処理を再開します。
+  * エンリッチメント、セグメンテーション、コネクタへの配信など、通常の処理を再開する。
 
-これらの決定を以下のいずれかを使用して構成します：
+次のうち1つ以上を使用して、これらの判断を構成します。
 
-* **Tealium関数**：結果に基づいて別の変換または処理されたイベント関数を使用します。
-* **AudienceStream**：検出ステータスを反映する訪問またはイベントレベルの属性を作成し、ルールやバッジで使用します。
-* **イベントフィード**：PII分析結果に基づいて新しいフィードを作成し、コネクタやデータ保存（EventStore、EventDB）へのターゲットルーティングを行います。
+* **Tealium Functions**：別の変換関数または処理済みイベント関数を使用して、結果に基づく処理を実行します。
+* **AudienceStream**：検出ステータスを反映する訪問レベルまたはイベントレベルの属性を作成し、ルールやバッジで使用します。
+* **イベントフィード**：PII分析の結果に基づいて新しいフィードを作成し、コネクタまたはデータ保存（EventStore、EventDB）に対象を絞ってルーティングします。
 
 ## リソース
 
-* [関数](https://docs.tealium.com/about-functions/)
-* [AWS Comprehend: 個人を特定できる情報（PII）](https://docs.aws.amazon.com/comprehend/latest/dg/pii.html)
-* [AWS Lambda: Amazon API Gatewayエンドポイントを使用してLambda関数を呼び出す](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)
-* [Amazon API Gatewayとは何か？](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html)
-* [Amazon EventBridgeとは何か？](https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html)
-* [Amazon Comprehend: AWS SDKまたはCLIを使用してDetectPiiEntitiesを使用する](https://docs.aws.amazon.com/comprehend/latest/dg/example_comprehend_DetectPiiEntities_section.html)
+* [Functions](https://docs.tealium.com/about-functions/)
+* [AWS Comprehend：個人を特定できる情報（PII）](https://docs.aws.amazon.com/comprehend/latest/dg/pii.html)
+* [AWS Lambda：Amazon API Gatewayエンドポイントを使用したLambda関数の呼び出し](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)
+* [Amazon API Gatewayとは](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html)
+* [Amazon EventBridgeとは](https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html)
+* [Amazon Comprehend：AWS SDKまたはCLIでDetectPiiEntitiesを使用する](https://docs.aws.amazon.com/comprehend/latest/dg/example_comprehend_DetectPiiEntities_section.html)

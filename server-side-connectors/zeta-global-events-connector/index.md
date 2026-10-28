@@ -16,10 +16,11 @@ This connector uses the following vendor API:
 
 Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
 
-After adding the connector, configure the following settings:
+After adding the connector, select an authentication mode and configure the settings for that mode.
 
-* **Access Token**: Your ZMP (Zeta Marketing Platform) Access Token. The connector sends this value as the password of the HTTP Basic Authorization header. The username is fixed to `api`.
-* **Site ID**: Your ZMP Site ID. The connector uses this value in a `POST` request to `https://api.zetaglobal.net/ver2/{site_id}/activities`.
+* **Refresh Token**: (JWT authentication) Your ZMP refresh token (ZMP > Settings > Integrations > Keys & Apps). Use this for new configurations.
+* **Access Token**: (Basic authentication) Your ZMP Access Token. The connector sends this value as the password of the HTTP Basic Authorization header. The username is fixed to `api`. Existing Basic authentication configurations continue to work.
+* **Site ID**: Your ZMP Site ID. The connector uses this value in API request paths, for example `https://api.zetaglobal.net/ver2/{site_id}/activities`.
 
 ## Actions
 
@@ -39,6 +40,9 @@ Map Tealium attributes to the top-level fields of `activity`.
 | --- | --- |
 | Event | (Required) The name of the event. The event name must match the event naming configured in ZMP. |
 | Timestamp | The time of the event in ISO-8601 format, for example `2026-08-07T15:56:00Z`. Epoch milliseconds are rejected with a 422 Invalid date format error. If unmapped, Zeta stamps its own server time. |
+| Sub-Site IDs | One or more child-account IDs sent as a top-level array at `activity.sub_site_ids`. A single value is normalized to a one-element array. |
+
+The connector places any custom key you add into the top-level `activity` object. Custom keys cannot overwrite the reserved fields `event`, `timestamp`, `subscriber`, `identify_person`, `properties`, or `sub_site_ids`.
 
 #### Subscriber data
 
@@ -46,7 +50,8 @@ Map Tealium attributes to `activity.subscriber` fields for the person associated
 
 | Parameter | Description |
 | --- | --- |
-| UID | (Required) The unique identifier of the person, sent as `activity.subscriber.uid`. The UID must be stable across events for Zeta to resolve them to one profile. |
+| UID | The unique identifier of the person, sent as `activity.subscriber.uid`. The UID must be stable across events for Zeta to resolve them to one profile. At least one of UID, a Unique Client ID pair, or BSIN is required. An event with none of these is skipped. |
+| BSIN | The encrypted Zeta BSIN of an anonymous visitor, usually sourced from the Zync cookie. Defaults to the `cp.bsin` event attribute when not explicitly mapped. When mapped, the connector resolves an anonymous ID (`anon_id`) from the Zeta Identify API and uses it for subsequent events in the session. UID is not required when `anon_id` is resolved. |
 | Unique Client ID Name | The identifier type for a `subscriber.unique_client_id` entry. Map together with **Unique Client ID Value**. The identifier type must be registered in ZMP before use. An unregistered name is accepted with a 202 and silently discarded. |
 | Unique Client ID Value | The identifier value for a `subscriber.unique_client_id` entry. Map together with **Unique Client ID Name**. |
 
@@ -108,6 +113,9 @@ Map Tealium attributes to the top-level fields of `activity`.
 | --- | --- |
 | Event | (Required) The name of the event. The event name must match the event naming configured in ZMP. |
 | Timestamp | The time of the event in ISO-8601 format, for example `2026-08-07T15:56:00Z`. Epoch milliseconds are rejected with a 422 Invalid date format error. If unmapped, Zeta stamps its own server time. |
+| Sub-Site IDs | One or more child-account IDs sent as a top-level array at `activity.sub_site_ids`. A single value is normalized to a one-element array. |
+
+The connector places any custom key you add into the top-level `activity` object. Custom keys cannot overwrite the reserved fields `event`, `timestamp`, `subscriber`, `identify_person`, `properties`, or `sub_site_ids`.
 
 #### Subscriber data
 
@@ -115,7 +123,8 @@ Map Tealium attributes to `activity.subscriber` fields for the person associated
 
 | Parameter | Description |
 | --- | --- |
-| UID | (Required) The unique identifier of the person, sent as `activity.subscriber.uid`. The UID must be stable across events for Zeta to resolve them to one profile. |
+| UID | The unique identifier of the person, sent as `activity.subscriber.uid`. The UID must be stable across events for Zeta to resolve them to one profile. At least one of UID, a Unique Client ID pair, or BSIN is required. An event with none of these is skipped. |
+| BSIN | The encrypted Zeta BSIN of an anonymous visitor, usually sourced from the Zync cookie. Defaults to the `cp.bsin` event attribute when not explicitly mapped. When mapped, the connector resolves an anonymous ID (`anon_id`) from the Zeta Identify API and uses it for subsequent events in the session. UID is not required when `anon_id` is resolved. |
 | Unique Client ID Name | The identifier type for an entry in the `unique_client_ids` list. Map together with **Unique Client ID Value**. Up to 25 identifier pairs per call. The identifier type must be registered in ZMP before use. An unregistered name is accepted with a 202 and silently discarded. |
 | Unique Client ID Value | The identifier value for an entry in the `unique_client_ids` list. Map together with **Unique Client ID Name**. |
 | First Name | The first name of the person. Persisted on the profile because this action sets `identify_person`. |

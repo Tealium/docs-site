@@ -1110,7 +1110,7 @@ Usercentrics v2 supports callback functions through `cmpAddCallbackToTriggerRech
 
 Test this snippet on your website by following the instructions in the [How it works](#how-it-works) section to check compatibility and get the information needed for integration.
 
-The Usercentrics v3 integration is for the Usercentrics Browser SDK V3 and uses **Vendors** as **Purposes**.
+The Usercentrics v3 integration is for the Usercentrics Browser SDK V3 and uses **Vendors** as **Purposes**. The Usercentrics v3 integration requires a **Vendor ID**. The Vendor ID is your Usercentrics Settings ID.
 
 
 ```js

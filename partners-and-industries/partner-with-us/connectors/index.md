@@ -12,9 +12,9 @@ A _connector_ is an integration between Tealium and a vendor for transmitting da
 
 ### Event and Customer Data
 
-Connectors that send _event data_, such as web analytics, are used in [Tealium EventStream](https://docs.tealium.com/introduction-to-eventstream/).
+Connectors that send _event data_, such as web analytics, are used in [Tealium EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/).
 
-Connectors that send _customer data_, such as email subscription status, are used in [Tealium AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/).
+Connectors that send _customer data_, such as email subscription status, are used in [Tealium AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/).
 
 ### Configuration
 
@@ -42,7 +42,7 @@ Create a lead or contact, convert a lead, or upsert (insert or update) a record.
 * **Mobile**  
 Send an SMS or a push notification, track an app install, or send in-app events.
 
-[Learn more about connectors](https://docs.tealium.com/audiencestream-connectors/).
+[Learn more about connectors](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/connectors/).
 
 ## Example: Facebook Audiences Connector
 

@@ -1,64 +1,64 @@
 ---
 title: トレース
-description: Tealium Prism SDKの実装をデバッグおよび検証するためのトレースセッションを使用します。
+description: Tealium Prism SDK の実装をデバッグおよび検証するためにトレースセッションを使用します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/trace/
 ---
-トレースモジュールは、Tealium Prism SDKのデバッグとテスト機能を提供します。リアルタイムイベントモニタリングのためのトレースセッションを使用して、イベントが正しく追跡およびディスパッチされていることを確認します。トレースがアクティブな場合、トレースIDはすべてのトラッキングイベントに自動的に追加され、サーバー側のフィルタリングと分析のために使用されます。
+Trace モジュールは、Tealium Prism SDK のデバッグおよびテスト機能を提供します。トレースセッションを使用してイベントをリアルタイムで監視し、イベントが正しくトラッキングおよび送信されていることを確認します。トレースがアクティブな間は、サーバー側でのフィルタリングと分析のため、すべてのトラッキングイベントにトレース ID が自動的に追加されます。
 
-トレースツールについての詳細は、[トレースでデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
+トレースツールの詳細については、[トレースによるデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
 
 ## 収集されるデータポイント
 
-トレースセッションがアクティブな場合、トレースモジュールは以下のデータを収集します：
+トレースセッションがアクティブな場合、Trace モジュールは次のデータを収集します。
 
 | データポイント | キー | 説明 |
 |:-----------|:----|:------------|
-| トレースID | `cp.trace_id` | アクティブなトレースセッションの一意の識別子（レガシー互換性） |
-| トレースID | `tealium_trace_id` | アクティブなトレースセッションの一意の識別子 |
+| トレース ID | `cp.trace_id` | アクティブなトレースセッションの一意の識別子（レガシー互換性用） |
+| トレース ID | `tealium_trace_id` | アクティブなトレースセッションの一意の識別子 |
 
 ## インストール
 
-トレースモジュールは、プログラム、リモートJSON、またはローカルJSON構成を使用して構成できます。
+Trace モジュールは、プログラム、リモート JSON、またはローカル JSON の構成を使用して構成できます。
+
+トレース ID を含めるイベントを制限するには、モバイルプロファイルに Trace モジュールを追加し、ルールを割り当てます。詳細については、[ルール](https://docs.tealium.com/rules/)を参照してください。
 
 
 <blockquote>
-React Nativeでは、Tealium構成JSONを介してトレースモジュールが有効になります。プログラム構成は必要ありません。
+React Native では、Tealium 構成 JSON を使用して Trace モジュールを有効にします。プログラムによる構成は必要ありません。
 </blockquote>
 
 
 
 
-Tealium構成にトレースモジュールを追加します：
+Tealium 構成に Trace モジュールを追加します。
 
 ```kotlin
 val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.trace())
-.build()
+    environment = "dev",
+    modules = listOf(Modules.trace())
+).build()
 ```
 
-強制構成で構成する場合：
+強制構成を使用して構成するには、次のようにします。
 
 ```kotlin
 val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.trace {
-    setEnabled(true)
-    setTrackErrors(true)
-})
-.build()
+    environment = "dev",
+    modules = listOf(Modules.trace {
+        it.setEnabled(true)
+            .setTrackErrors(true)
+    })
+).build()
 ```
 
 
-Tealium構成にトレースモジュールを追加します：
+Tealium 構成に Trace モジュールを追加します。
 
 ```swift
 let config = TealiumConfig(account: "tealiummobile",
@@ -66,11 +66,11 @@ let config = TealiumConfig(account: "tealiummobile",
                           environment: "dev",
                           modules: [
                               Modules.trace(),
-                              // 他のモジュール...
+                              // other modules...
                           ])
 ```
 
-強制構成で構成する場合：
+強制構成を使用して構成するには、次のようにします。
 
 ```swift
 let config = TealiumConfig(account: "tealiummobile",
@@ -81,15 +81,15 @@ let config = TealiumConfig(account: "tealiummobile",
                                   builder.setEnabled(true)
                                          .setTrackErrors(true)
                               }),
-                              // 他のモジュール...
+                              // other modules...
                           ])
 ```
 
 
 
-### JSON構成
+### JSON 構成
 
-ローカルまたはリモートの構成JSONファイルでトレースモジュールを構成します：
+ローカルまたはリモートの構成 JSON ファイルで Trace モジュールを構成します。
 
 ```json
 {
@@ -105,23 +105,23 @@ let config = TealiumConfig(account: "tealiummobile",
 }
 ```
 
-## トレースセッションに参加する
+## トレースセッションへの参加
 
-トレースセッションを開始するには、トレースIDを指定して`trace.join()`を呼び出します。トレースIDは、`leave()`を呼び出すかセッションが期限切れになるまで、すべての将来のイベントに追加されます。
+トレースセッションを開始するには、トレース ID を指定して `trace.join()` を呼び出します。`leave()` を呼び出すかセッションが期限切れになるまで、以降のすべてのイベントにトレース ID が追加されます。
 
 
 
 ```kotlin
 tealium.trace.join("your-trace-id")
     .subscribe { result ->
-        // 必要に応じてここで結果を処理します
+        // Optionally handle result here
     }
 ```
 
 
 ```swift
 tealium.trace.join(id: "your-trace-id").subscribe { result in
-    // 必要に応じてここで結果を処理します
+    // Optionally handle result here
 }
 ```
 
@@ -132,23 +132,23 @@ await tealium.trace.join("your-trace-id");
 
 
 
-## トレースセッションを終了する
+## トレースセッションからの退出
 
-トレースセッションを停止するには、`trace.leave()`を呼び出します。これにより、将来のイベントからトレースIDが削除されます。
+トレースセッションを停止するには、`trace.leave()` を呼び出します。これにより、以降のイベントからトレース ID が削除されます。
 
 
 
 ```kotlin
 tealium.trace.leave()
     .subscribe { result ->
-        // 必要に応じてここで結果を処理します
+        // Optionally handle result here
     }
 ```
 
 
 ```swift
 tealium.trace.leave().subscribe { result in
-    // 必要に応じてここで結果を処理します
+    // Optionally handle result here
 }
 ```
 
@@ -161,21 +161,21 @@ await tealium.trace.leave();
 
 ## 訪問の強制終了
 
-AudienceStreamで「訪問の終了」アクションをテストするために、セッションが期限切れになるのを待たずに、セッションを直ちに終了させます：
+AudienceStream の「End of Visit」アクションをテストするには、セッションが期限切れになるのを待たず、セッションを直ちに強制終了します。
 
 
 
 ```kotlin
 tealium.trace.forceEndOfVisit()
     .subscribe { result ->
-        // トラック結果を処理します
+        // Handle the track result
     }
 ```
 
 
 ```swift
 tealium.trace.forceEndOfVisit().subscribe { result in
-    // トラック結果を処理します
+    // Handle the track result
 }
 ```
 
@@ -186,25 +186,25 @@ await tealium.trace.forceEndOfVisit();
 
 
 
-トレースは`leave()`が呼ばれるまでアクティブのままです。`forceEndOfVisit()`メソッドは、セッションを終了するトラックコールをディスパッチし、標準のデキュー処理に従います。
+`leave()` が呼び出されるまで、トレースはアクティブなままです。`forceEndOfVisit()` メソッドは、標準のデキュー処理フローに従って、セッションの終了を通知するトラッキング呼び出しを送信します。
 
 ## エラートラッキング
 
-エラートラッキングが有効になっている場合（`track_errors: true`）、トレースモジュールはアクティブなトレースセッション中に発生したSDKエラーを自動的に追跡します。重複するエラーレポートを防ぐために、モジュールはカテゴリ別にエラーを重複排除します：
+エラートラッキングが有効な場合（`track_errors: true`）、Trace モジュールは、アクティブなトレースセッション中に発生した SDK エラーを自動的にトラッキングします。重複するエラーレポートを防ぐため、モジュールはカテゴリ別にエラーを重複排除します。
 
-* 各カテゴリからの最初のエラーのみがトレースセッションごとに追跡されます
-* 同じカテゴリからの後続のエラーは、新しいトレースセッションが始まるまで無視されます
-* 新しいトレースセッションに参加するか、現在のセッションを離れると、重複排除キャッシュがリセットされます
+* トレースセッションごとに、各カテゴリの最初のエラーのみがトラッキングされます
+* 同じカテゴリの後続エラーは、新しいトレースセッションが開始されるまで無視されます
+* 新しいトレースセッションへの参加または現在のセッションからの退出により、重複排除キャッシュがリセットされます
 
-## QRトレース
+## QR トレース
 
-ディープリンクから直接トレースを開始することもできます。開かれたURLに適切なクエリパラメータが含まれている場合、トレースは自動的に開始されます。これは通常、TealiumプラットフォームのQRトレースツールで行われます。詳細は、[トレースでデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
+ディープリンクから直接トレースを開始することもできます。開いた URL に適切なクエリパラメータが含まれている場合、トレースが自動的に開始されます。通常、これは Tealium プラットフォームの QR トレースツールを使用して行います。詳細については、[トレースによるデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
 
-## APIリファレンス
+## API リファレンス
 
-詳細なクラスとメソッドの署名については、APIリファレンスドキュメントを参照してください：
+クラスおよびメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
 
-* [Trace (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Trace.html)
-* [TraceSettingsBuilder (Swift)](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/TraceSettingsBuilder.html)
-* [Trace (Kotlin)](https://docs.tealium.com/tealium-prism-kotlin/)
-* [Trace (React Native)](https://docs.tealium.com/tealium-prism-react-native/interfaces/Trace.html)
+* [Trace（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Trace.html)
+* [TraceSettingsBuilder（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/TraceSettingsBuilder.html)
+* [Trace（Kotlin）](https://docs.tealium.com/tealium-prism-kotlin/)
+* [Trace（React Native）](https://docs.tealium.com/tealium-prism-react-native/interfaces/Trace.html)

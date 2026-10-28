@@ -12,9 +12,9 @@ _コネクター_ は、Tealiumとベンダー間のデータ伝送のための�
 
 ### イベントと顧客データ
 
-_イベントデータ_ を送信するコネクターは、[Tealium EventStream](https://docs.tealium.com/introduction-to-eventstream/)で使用されます。
+_イベントデータ_ を送信するコネクターは、[Tealium EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)で使用されます。
 
-_顧客データ_ を送信するコネクターは、[Tealium AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/)で使用されます。
+_顧客データ_ を送信するコネクターは、[Tealium AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)で使用されます。
 
 ### 構成
 
@@ -42,7 +42,7 @@ _顧客データ_ を送信するコネクターは、[Tealium AudienceStream](h
 * **モバイル**  
 SMSまたはプッシュ通知の送信、アプリのインストールの追跡、またはアプリ内イベントの送信。
 
-[コネクターについてもっと学ぶ](https://docs.tealium.com/audiencestream-connectors/).
+[コネクターについてもっと学ぶ](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/connectors/).
 
 ## 例：Facebook Audiences Connector
 

@@ -30,15 +30,15 @@ The following device attributes are added to each tracking call while the module
 
 ### Battery and screen
 
-The following battery and screen attributes can be enabled or disabled based on your builder settings. For more information, see [Initialize](#initialize).
+On iOS, the following battery and screen attributes can be enabled or disabled based on your builder settings. On Android, they are always sent. For more information, see [Initialize](#initialize).
 
 | Variable | Description | Example |
 | :--- | :--- | :--- |
-| `device_battery_percent` | (iOS only) Battery charge percentage | `"58"` |
-| `device_ischarging` | (iOS only) Whether the device is charging | `"true"` |
+| `device_battery_percent` | Battery charge percentage | `"58"` |
+| `device_ischarging` | Whether the device is charging | `"true"` |
 | `device_logical_resolution` | Logical screen resolution | `"390x844"` |
 | `device_orientation` | Device orientation | `"Portrait"` |
-| `device_orientation_extended` | Detailed orientation | `"Face Up"` |
+| `device_orientation_extended` | (iOS only) Detailed orientation | `"Face Up"` |
 | `device_resolution` | Physical screen resolution | `"1170x2532"` |
 
 ### Memory (iOS only)
@@ -58,18 +58,18 @@ iOS apps can enable attributes to track memory usage. These memory attributes ar
 
 
 
-Add the `prism-device-data` dependency to your `build.gradle` file:
+The DeviceData module is included in `prism-core`. Add it to your `build.gradle` file:
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-device-data")
+implementation("com.tealium.prism:prism-core")
 ```
 
 
-Add `TealiumPrismDeviceData` as a Swift Package Manager dependency using the repo URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
+The DeviceData module is included in `TealiumPrismCore`. Add it as a Swift Package Manager dependency using the repo URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
 
 ```ruby
-pod 'tealium-prism/DeviceData'
+pod 'tealium-prism/Core'
 ```
 
 
@@ -82,6 +82,7 @@ The DeviceData module initializes automatically when it is configured. No code c
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,

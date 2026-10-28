@@ -14,8 +14,8 @@ The module tracks the following lifecycle events:
 | Event | Description |
 | :--- | :--- |
 | `launch` | Tracked on first app start in a session. |
-| `wake` | Tracked when the app returns to the foreground from being in the background for 5 or more seconds. |
-| `sleep` | Tracked when the app moves to the background and does not return to the foreground within 5 seconds. |
+| `wake` | Tracked when the app returns to the foreground. |
+| `sleep` | Tracked when the app moves to the background. |
 
 ### Crash detection
 
@@ -23,7 +23,7 @@ The Lifecycle module infers a crash when a launch event occurs without a precedi
 
 ### Data layer
 
-The following variables are added to each tracking call while the module is enabled:
+By default, the following variables are added only to lifecycle events. To add them to every tracking call, pass `.allEvents` (Swift) or `LifecycleDataTarget.AllEvents` (Kotlin) to `setDataTarget`.
 
 | Variable | Description | Example |
 | :--- | :--- | :--- |
@@ -76,6 +76,7 @@ To initialize the module, add it to the `modules` list in your `TealiumConfig`.
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "my_account",
     profileName = "my_profile",
     environment = Environment.PROD,
@@ -138,8 +139,8 @@ tealium.lifecycle.sleep(dataObject)
 
 
 ```swift
-tealium.lifecycle.launch(dataObject)
-tealium.lifecycle.wake(dataObject)
-tealium.lifecycle.sleep(dataObject)
+tealium.lifecycle().launch(dataObject)
+tealium.lifecycle().wake(dataObject)
+tealium.lifecycle().sleep(dataObject)
 ```
 

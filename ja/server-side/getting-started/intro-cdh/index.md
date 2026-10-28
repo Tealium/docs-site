@@ -45,7 +45,7 @@ iQタグ管理を使用して、クライアント側のデータとベンダー
 
 さらに読む：
 
-* [EventStream入門](https://docs.tealium.com/introduction-to-eventstream/)
+* [EventStream入門](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
 * [属性の使用](https://docs.tealium.com/about-attributes/)
 * [エンリッチメントの使用](https://docs.tealium.com/about-enrichments/)
 * [バッジ属性](https://docs.tealium.com/badge-attribute/)
@@ -56,7 +56,7 @@ iQタグ管理を使用して、クライアント側のデータとベンダー
 
 さらに読む：
 
-* [AudienceStream入門](https://docs.tealium.com/introduction-to-audiencestream/)
+* [AudienceStream入門](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
 * [オーディエンスの構築](https://docs.tealium.com/manage-audiences/)
 * [オーディエンスサイジング](https://docs.tealium.com/about-audience-sizing/)
 

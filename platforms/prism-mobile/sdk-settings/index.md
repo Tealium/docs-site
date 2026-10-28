@@ -20,7 +20,9 @@ The SDK picks up the new settings on the next remote settings refresh or at the 
 | Setting | Description |
 | :--- | :--- |
 | `max_queue_size` | The maximum number of dispatches the queue can hold. The queue uses FIFO order: when the limit is reached, the oldest dispatch is removed to make room for the new one. |
-| `queue_expiration` | The expiration time for dispatches in the queue. A dispatch that is not sent within this time is removed from the queue. |
+| `expiration` | The expiration time for dispatches in the queue. A dispatch that is not sent within this time is removed from the queue. |
 | `log_level` | The minimum log level for messages emitted by the SDK. |
-| `remote_settings_refresh_interval` | The minimum time between remote settings refreshes. A refresh also occurs at every app startup when a settings URL is provided in `TealiumConfig`. |
-| `visitor_identity_key` | The data layer key the SDK checks to perform automatic visitor switching. |
+| `refresh_interval` | The minimum time between remote settings refreshes. A refresh also occurs at every app startup when a settings URL is provided in `TealiumConfig`. |
+| `session_timeout` | The length of time without activity after which the current session ends. The default is 5 minutes. |
+
+To set the data layer key for automatic visitor switching (`visitor_identity_key`), configure the Visitor ID module.

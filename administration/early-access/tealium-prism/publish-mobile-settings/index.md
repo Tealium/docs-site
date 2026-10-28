@@ -72,7 +72,7 @@ Before publishing, the tool checks the generated file for settings that the SDK 
 | A barrier or transformation scope is empty | The scope matches no dispatcher and never takes effect. | Select the intended dispatchers, or remove the item. |
 | A transformation uses a transformer that the SDK does not have | The transformation never runs. | Replace the extension with a type that Prism supports. |
 | A module references a load rule that is not in the file | The module is blocked for every dispatch. | Check that the load rule exists and is active. |
-| Consent references a dispatcher that is not a module | The consent setting gates nothing. | Update the consent configuration to reference active modules. |
+| Consent references a dispatcher that is not a module | No effect. Consent management is not currently available in Prism, so the SDK ignores the consent section. | No action is needed. To enforce consent, use [consent orchestration](https://docs.tealium.com/about-consent-orchestration/). |
 | A module type is unknown to the SDK | The SDK drops the module at startup. | Remove web-only tags from the mobile profile. |
 
 ## Publish mobile settings

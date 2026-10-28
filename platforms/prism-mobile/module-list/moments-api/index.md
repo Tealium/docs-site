@@ -9,15 +9,15 @@ The Context API module (formerly Moments API) provides integration with the [Tea
 
 
 
-Add the `prism-moments-api` dependency to your `build.gradle` file:
+Add the `prism-context-api` dependency to your `build.gradle` file:
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-moments-api")
+implementation("com.tealium.prism:prism-context-api")
 ```
 
 
-Add `TealiumPrismMomentsAPI` as a Swift Package Manager dependency using the repository URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
+Add `TealiumPrismContextAPI` as a Swift Package Manager dependency using the repository URL `https://github.com/Tealium/tealium-prism-swift`, or add it to your Podfile for CocoaPods:
 
 ```ruby
 pod 'tealium-prism'
@@ -39,12 +39,13 @@ A region must be set for the Moments API module to initialize.
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,
     modules = listOf(
-        Modules.momentsAPI {
-            setRegion(MomentsApiRegion.UsEast)
+        Modules.contextApi {
+            it.setRegion(ContextApiRegion.UsEast)
         }
     )
 ).build()
@@ -57,7 +58,7 @@ let config = TealiumConfig(
     profile: "PROFILE",
     environment: "prod",
     modules: [
-        Modules.momentsAPI(forcingSettings: { builder in
+        Modules.contextAPI(forcingSettings: { builder in
             builder.setRegion(.usEast)
         }),
         // other modules...
@@ -74,7 +75,7 @@ Call `fetchEngineResponse()` with your engine ID to retrieve visitor profile dat
 
 
 ```kotlin
-tealium.momentsAPI().fetchEngineResponse("your-engine-id")
+tealium.contextApi.fetchEngineResponse("your-engine-id")
     .subscribe { result ->
         result.onSuccess { response ->
             println("Audiences: ${response.audiences}")
@@ -92,7 +93,7 @@ tealium.momentsAPI().fetchEngineResponse("your-engine-id")
 
 
 ```swift
-tealium.momentsAPI().fetchEngineResponse(engineID: "your-engine-id").subscribe { result in
+tealium.contextAPI().fetchEngineResponse(engineID: "your-engine-id").subscribe { result in
     switch result {
     case .success(let response):
         print("Audiences: \(response.audiences ?? [])")
@@ -130,24 +131,24 @@ Configure the region that matches the [endpoint of your Context API engine](http
 
 | Kotlin | Swift | Raw value |
 |:-------|:------|:----------|
-| `MomentsApiRegion.Germany` | `.germany` | `eu-central-1` |
-| `MomentsApiRegion.UsEast` | `.usEast` | `us-east-1` |
-| `MomentsApiRegion.Sydney` | `.sydney` | `ap-southeast-2` |
-| `MomentsApiRegion.Oregon` | `.oregon` | `us-west-2` |
-| `MomentsApiRegion.Tokyo` | `.tokyo` | `ap-northeast-1` |
-| `MomentsApiRegion.HongKong` | `.hongKong` | `ap-east-1` |
+| `ContextApiRegion.Germany` | `.germany` | `eu-central-1` |
+| `ContextApiRegion.UsEast` | `.usEast` | `us-east-1` |
+| `ContextApiRegion.Sydney` | `.sydney` | `ap-southeast-2` |
+| `ContextApiRegion.Oregon` | `.oregon` | `us-west-2` |
+| `ContextApiRegion.Tokyo` | `.tokyo` | `ap-northeast-1` |
+| `ContextApiRegion.HongKong` | `.hongKong` | `ap-east-1` |
 
 
 
 ```kotlin
-Modules.momentsAPI {
-    setRegion(MomentsApiRegion.UsEast)
+Modules.contextApi {
+    it.setRegion(ContextApiRegion.UsEast)
 }
 ```
 
 
 ```swift
-Modules.momentsAPI(forcingSettings: { builder in
+Modules.contextAPI(forcingSettings: { builder in
     builder.setRegion(.usEast)
 })
 ```
@@ -166,14 +167,14 @@ https://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html
 
 
 ```kotlin
-Modules.momentsAPI {
-    setReferrer("https://yourcustomreferrer.example.com")
+Modules.contextApi {
+    it.setReferrer("https://yourcustomreferrer.example.com")
 }
 ```
 
 
 ```swift
-Modules.momentsAPI(forcingSettings: { builder in
+Modules.contextAPI(forcingSettings: { builder in
     builder.setReferrer("https://yourcustomreferrer.example.com")
 })
 ```
@@ -184,17 +185,17 @@ Modules.momentsAPI(forcingSettings: { builder in
 
 
 
-For more information, see [`MomentsApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/momentsapi/com.tealium.prism.momentsapi/-moments-api-settings-builder/).
+For more information, see [`ContextApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/momentsapi/com.tealium.prism.momentsapi/-moments-api-settings-builder/).
 
 | Method | Description |
 |:-------|:------------|
-| `setRegion(region: MomentsApiRegion)` | Sets the region for the Moments API engine. Required. |
+| `setRegion(region: ContextApiRegion)` | Sets the region for the Moments API engine. Required. |
 | `setReferrer(referrer: String)` | Sets the referrer URL for Moments API requests. |
 | `setEnabled(enabled: Boolean)` | Permanently enables or disables the module. |
 | `setOrder(order: Int)` | Sets the order in which the module is initialized. |
 
 
-For more information, see [`MomentsAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismMomentsAPI/Classes/MomentsAPISettingsBuilder.html).
+For more information, see [`ContextAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismMomentsAPI/Classes/MomentsAPISettingsBuilder.html).
 
 | Method | Description |
 |:-------|:------------|

@@ -32,10 +32,10 @@ url: https://docs.tealium.com/ja/client-side-tags/microsoft-advertising-universa
 タグを追加する際には、以下の構成を構成します:
 
 * **Tag ID**: あなたのMicrosoft Advertisingタグ識別子。
-* **ID Sync Beacon**: 内部ユーザーIDをMicrosoftサードパーティクッキーIDに持続させます。[Microsoft UET Conversion APIコネクタ](https://docs.tealium.com/microsoft-uet-conversion-api-connector/)を使用する場合に推奨されます。
+* **ID Sync Beacon**: 内部ユーザーIDをMicrosoftサードパーティクッキーIDに持続させます。[Microsoft Advertising Conversion APIコネクタ](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/)を使用する場合に推奨されます。
 * **Ad Storage Consent**: 広告保存のデフォルト同意を構成します。`ad_storage`パラメータを**Data Mappings**セクションでマッピングすることにより、この値を動的に更新します。
 * **Automatically read from Tealium Consent Cookie**: `true`に構成すると、[Tealium consent manager](https://docs.tealium.com/about-consent-management/)に基づいて同意が構成されます。
-* **Generate Event ID**: すべてのトラッキングイベントに対して自動的にイベントIDを生成します。[Microsoft UET Conversion APIコネクタ](https://docs.tealium.com/microsoft-uet-conversion-api-connector/)を使用する際の重複排除に推奨されます。
+* **Generate Event ID**: すべてのトラッキングイベントに対して自動的にイベントIDを生成します。[Microsoft Advertising Conversion APIコネクタ](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/)を使用する際の重複排除に推奨されます。
 
 ### Conversions API
 
@@ -45,7 +45,7 @@ url: https://docs.tealium.com/ja/client-side-tags/microsoft-advertising-universa
 </blockquote>
 
 
-Microsoft UET Conversion APIをサポートするためには、**Generate Event ID**を`true`に構成します。**Generate Event ID**が有効になっている場合、このタグは各イベントに対して一意のイベントIDを生成し、それをTealium EventStreamに属性として送信し、Microsoft UET Conversion APIコネクタで使用し、`event_id`パラメータでMicrosoft Advertising UETタグに渡します。このイベントID属性は、コネクタでウェブベースのタグとサーバーサイドの統合を同期するためにマッピングされる場合があります。
+Microsoft Advertising Conversion APIをサポートするためには、**Generate Event ID**を`true`に構成します。**Generate Event ID**が有効になっている場合、このタグは各イベントに対して一意のイベントIDを生成し、それをTealium EventStreamに属性として送信し、Microsoft Advertising Conversion APIコネクタで使用し、`event_id`パラメータでMicrosoft Advertising UETタグに渡します。このイベントID属性は、コネクタでウェブベースのタグとサーバーサイドの統合を同期するためにマッピングされる場合があります。
 
 タグは次の命名規則を使用してイベントIDを生成したイベント属性を送信します:
 
@@ -75,7 +75,7 @@ microsoft_event_id_{EVENT_TYPE}_{TAG_UID}
 * **Tag Timing** ドロップダウンから **Prioritized** を選択します。
 * **Bundle Flag** トグルを `On` に構成します。
 * [Load Order Manager screen](https://docs.tealium.com/load-order-manager/)を使用して、Tealium Collectタグの前にMicrosoft Advertising UETタグを発火させます。Tealium Collectタグは最後に発火させることをお勧めします。
-これらのイベントID属性の使用に関する情報については、[Microsoft UET Conversion APIコネクタ: 重複排除](https://docs.tealium.com/microsoft-uet-conversion-api-connector/#deduplication)を参照してください。
+これらのイベントID属性の使用に関する情報については、[Microsoft Advertising Conversion APIコネクタ: 重複排除](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/#deduplication)を参照してください。
 
 ## ロードルール
 

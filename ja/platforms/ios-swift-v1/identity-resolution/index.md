@@ -14,7 +14,7 @@ Tealium Swiftライブラリは、最初に[`getVisitorId()`](https://docs.teali
 
 AudienceStreamを使用している場合、これがこの訪問に関連付けられた主要な第一者訪問IDになります。必要に応じて、追跡コールで変数として追加の既知の訪問IDを提供することができます。
 
-[AudienceStreamで訪問IDの構成についてもっと学ぶ](https://docs.tealium.com/audiencestream-visitor-stitching-visitor-id/)。
+[AudienceStreamで訪問IDの構成についてもっと学ぶ](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/)。
 
 ```swift
 class TealiumHelper {

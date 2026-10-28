@@ -78,7 +78,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. |
+| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. The connector will convert mapped date attributes to this format (without timezone offset). |
 | Transaction Amount | (Required) Transaction amount in micros, where one million is equivalent to one currency unit. |
 | Currency Code | (Required) The transaction currency code in an ISO 4217 three-letter format. |
 | Transaction Upload Fraction | (Required) The ratio of sales uploaded compared to the overall sales associated with a customer. This value must be between 0 and 1 (excluding 0). For example, if you upload half the sales that you are able to associate with a customer, this value would be 0.5. |
@@ -137,7 +137,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. |
+| Transaction DateTime | (Required) Timestamp when the transaction occurred in the format: `YYYY-MM-DD HH:MM:SS[+/-HH:MM]`, where `[+/-HH:MM]` is an optional timezone offset from UTC. The connector will convert mapped date attributes to this format (without timezone offset). |
 | Transaction Amount | (Required) Transaction amount in micros, where one million is equivalent to one currency unit. |
 | Currency Code | (Required) The transaction currency code in an ISO 4217 three-letter format. |
 | Transaction Upload Fraction | (Required) The ratio of sales uploaded compared to the overall sales associated with a customer. This value must be between 0 and 1 (excluding 0). For example, if you upload half the sales that you are able to associate with a customer, this value would be 0.5. |

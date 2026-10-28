@@ -190,7 +190,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/reference/event-attribut
 * イベントレベルの属性
 * ウェブフックで使用可能
 * 任意のデータ形式
-* オムニチャネル属性についての詳細は、[属性：オフラインデータ（オムニチャネル）](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/)を参照してください。
+* オムニチャネル属性についての詳細は、[属性：オフラインデータ（オムニチャネル）](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/attributes-offline-data/)を参照してください。
 
 #### ルール条件
 
@@ -209,7 +209,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/reference/event-attribut
 * イベントレベルの属性
 * Webhookで使用可能
 * Java Simple Date Formatを使用
-* オムニチャネル属性についての詳細は、[属性: オフラインデータ (オムニチャネル)](https://docs.tealium.com/audiencestream-attributes-offline-data-omnichannel/)を参照してください。
+* オムニチャネル属性についての詳細は、[属性: オフラインデータ (オムニチャネル)](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/attributes-offline-data/)を参照してください。
 
 #### ルール条件
 

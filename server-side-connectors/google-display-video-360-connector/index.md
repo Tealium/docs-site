@@ -61,7 +61,11 @@ After adding the connector, configure the following settings:
 Use the following steps to create a new segment in AudienceStream:
 
 1. Click **Create a New Segment** from the top of the **Actions** selection drop-down list.
-2. Enter the **Segment Name**, **Segment Member Lifespan**, **Integration Code**, and **Segment Description**.  
+2. Complete the following fields:
+   * **Segment Name** (Required)
+   * **Segment Member Lifespan** (Optional): Enter a whole number of days. Tealium converts this value to seconds before sending the request to Google. If left blank, the lifespan is omitted from the request.
+   * **Integration Code** (Optional): An ID used by user list sellers to correlate IDs on their systems. If no ID is available, enter a random number between `1` and `1000`.
+   * **Segment Description** (Optional)  
 ![](https://docs.tealium.com/images/server-side-connectors/audiencestream-create-segment.jpg)
 
 <blockquote>
@@ -69,7 +73,7 @@ If you use a [DataAccess](https://docs.tealium.com/about-dataaccess/) product (E
 </blockquote>
 
 3. Click **Create Segment**.  
-The Integration Code is an ID used by user list sellers to correlate IDs on their systems. If no ID is available, you can manually enter a random number between `1` and `1000`. Confirmation will appear in the form of a check mark next to the Create Segment button to verify that the segment has been created.
+Confirmation appears in the form of a check mark next to the **Create Segment** button.
 
 
 <blockquote>

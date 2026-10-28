@@ -32,10 +32,10 @@ Go to the tag marketplace to add a new tag. For more information, see [About tag
 When adding the tag, configure the following settings:
 
 * **Tag ID**: Your Microsoft Advertising tag identifier.
-* **ID Sync Beacon**: Persist internal user IDs to Microsoft third-party cookie IDs. Recommended when using the [Microsoft UET Conversion API connector](https://docs.tealium.com/microsoft-uet-conversion-api-connector/).
+* **ID Sync Beacon**: Persist internal user IDs to Microsoft third-party cookie IDs. Recommended when using the [Microsoft Advertising Conversion API connector](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/).
 * **Ad Storage Consent**: Set the default consent for Ad Storage. Dynamically update this value by mapping the `ad_storage` parameter in the **Data Mappings** section.
 * **Automatically read from Tealium Consent Cookie**: If set to `true`, consent is set based on the [Tealium consent manager](https://docs.tealium.com/about-consent-management/). 
-* **Generate Event ID**: Automatically generate an event ID for every tracking event. Recommended for deduplication when using the [Microsoft UET Conversion API connector](https://docs.tealium.com/microsoft-uet-conversion-api-connector/)
+* **Generate Event ID**: Automatically generate an event ID for every tracking event. Recommended for deduplication when using the [Microsoft Advertising Conversion API connector](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/)
 
 ### Conversions API
 
@@ -45,7 +45,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support the Microsoft UET Conversion API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Microsoft UET Conversion API connector and passes it to the Microsoft Advertising UET tag in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
+To support the Microsoft Advertising Conversion API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Microsoft Advertising Conversion API connector and passes it to the Microsoft Advertising UET tag in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -75,7 +75,7 @@ To ensure proper event deduplication, the event ID from the Microsoft Advertisin
 * From the **Tag Timing** drop-down, select **Prioritized**.
 * Set the **Bundle Flag** toggle to `On`.
 * Use the [Load Order Manager screen](https://docs.tealium.com/load-order-manager/) to fire the Microsoft Advertising UET tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last.
-For information on using these event ID attributes, see [Microsoft UET Conversion API connector: Deduplication](https://docs.tealium.com/microsoft-uet-conversion-api-connector/#deduplication).
+For information on using these event ID attributes, see [Microsoft Advertising Conversion API connector: Deduplication](https://docs.tealium.com/microsoft-advertising-conversion-api-connector/#deduplication).
 
 ## Load rules
 

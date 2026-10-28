@@ -1,17 +1,17 @@
 ---
-title: トラック
-description: Tealium Prism SDK for Android (Kotlin)、iOS (Swift)、および React Native を使用してイベントとビューをトラックします。
+title: トラッキング
+description: Android（Kotlin）、iOS（Swift）、React Native向けTealium Prism SDKを使用してイベントとビューをトラッキングします。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/track/
 ---
-`track()` メソッドを使用して、Tealium および構成されたディスパッチャーにイベントとビューを送信します。
+`track()`メソッドを使用して、イベントとビューをTealiumおよび構成済みのディスパッチャーに送信します。
 
 ## イベントのトラッキング
 
-イベントをトラッキングするには、イベント名とオプショナルなタイプおよびデータを `track()` メソッドに渡します。イベント名はデータレイヤーに `tealium_event` として表示されます。
+イベントをトラッキングするには、イベント名と、任意でタイプおよびデータを`track()`メソッドに渡します。イベント名は、データレイヤーに`tealium_event`として表示されます。
 
 
 
-イベントをトラッキングするには、イベント名とオプショナルな `DataObject` を指定して [`track()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html) を呼び出します：
+イベントをトラッキングするには、イベント名と`DataObject`を指定して[`track()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium/track.html)を呼び出します。
 
 ```kotlin
 tealium.track("user_login", DataObject.create {
@@ -19,13 +19,13 @@ tealium.track("user_login", DataObject.create {
 })
 ```
 
-追加データなしでイベントをトラッキングする場合：
+追加データなしでイベントをトラッキングするには、次のようにします。
 
 ```kotlin
-tealium.track("homepage")
+tealium.track("homepage", DataObject.EMPTY_OBJECT)
 ```
 
-複数のデータ値でイベントをトラッキングする場合：
+複数のデータ値を含むイベントをトラッキングするには、次のようにします。
 
 ```kotlin
 tealium.track("purchase", DataObject.create {
@@ -36,30 +36,30 @@ tealium.track("purchase", DataObject.create {
 ```
 
 
-イベントをトラッキングするには、イベント名とオプショナルなタイプおよびデータレイヤーパラメータを指定して [`track()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html) を呼び出します：
+イベントをトラッキングするには、イベント名と、任意のタイプおよびデータパラメータを指定して[`track()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html)を呼び出します。
 
 ```swift
-// デフォルトのイベントタイプと空のデータレイヤーで基本トラック
+// Basic track with default event type and no data
 tealium.track("homepage")
 
-// イベントタイプとデータでトラック
-tealium.track("user_login", type: .event, dataLayer: ["customer_id": "1234567890"])
+// Track with event type and data
+tealium.track("user_login", type: .event, data: ["customer_id": "1234567890"])
 
-// ビュータイプでトラック
+// Track with view type
 tealium.track("homepage", type: .view)
 ```
 
 
-イベントをトラッキングするには、[`track()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#track) を呼び出します：
+イベントをトラッキングするには、[`track()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#track)を呼び出します。
 
 ```javascript
-// データなしでイベントをトラック
+// Track an event without data
 await tealium.track("homepage");
 
-// データを持つイベントをトラック
+// Track an event with data
 await tealium.track("user_login", "event", { customer_id: "1234567890" });
 
-// 複数の値を持つイベントをトラック
+// Track an event with multiple values
 await tealium.track("purchase", "event", {
   customer_id: "abc123",
   order_total: 149.99,
@@ -71,12 +71,12 @@ await tealium.track("purchase", "event", {
 
 ## ビューのトラッキング
 
-画面ビューをトラッキングするには、`.view` タイプパラメータを使用します。
+画面ビューをトラッキングするには、`.view`タイプパラメータを使用します。
 
 
 
 ```kotlin
-tealium.track("product_detail", DataObject.create {
+tealium.track("product_detail", DispatchType.View, DataObject.create {
     put("product_id", "SKU123")
     put("product_name", "Running Shoes")
     put("product_price", 89.99)
@@ -87,7 +87,7 @@ tealium.track("product_detail", DataObject.create {
 ```swift
 tealium.track("product_detail",
     type: .view,
-    dataLayer: [
+    data: [
         "product_id": "SKU123",
         "product_name": "Running Shoes",
         "product_price": 89.99
@@ -110,7 +110,7 @@ await tealium.track("product_detail", "view", {
 
 
 
-トラッキングコール用の構造化データを構築するには `DataObject.create` を使用します。`DataObject.create` はネストされたオブジェクトと型指定された値をサポートします：
+`DataObject.create`を使用して、トラッキング呼び出し用の構造化データを作成します。`DataObject.create`は、ネストされたオブジェクトと型付きの値をサポートします。
 
 ```kotlin
 tealium.track("purchase", DataObject.create {
@@ -128,22 +128,23 @@ tealium.track("purchase", DataObject.create {
 ```
 
 
-`dataLayer` パラメータとしてキーと値のペアの辞書を渡します：
+イベントデータを辞書リテラルとして渡します。Swiftは解析を行わず、型付きの値から`DataObject`を直接構築します。
 
 ```swift
-tealium.track("purchase",
-    type: .event,
-    dataLayer: [
-        "customer_id": "abc123",
-        "order_total": 249.95,
-        "product_id": ["PROD123", "PROD456"],
-        "product_price": [4.00, 6.00]
-    ]
-)
+tealium.track("purchase", data: [
+    "order_id": "0123456789",
+    "order_total": 149.99,
+    "product": ["id": "SKU123", "price": 89.99] as DataObject,
+    "tags": ["new", "sale"]
+])
 ```
 
+ネストされたオブジェクトには`as DataObject`を、オブジェクトの配列には`as [DataObject]`を指定します。一部の値がオプショナルの場合は、`DataObject(compacting:)`を使用します。
 
-第三引数としてプレーンな JavaScript オブジェクトを渡します。配列やネストされた値もサポートされています：
+解析済みのJSONやクロスプラットフォームブリッジから取得した値など、データがすでに`[String: Any]`辞書である場合は、`try DataObject(jsonObject:)`を使用します。このメソッドはJSONのラウンドトリップによって辞書を検証するため、リテラルよりも呼び出しごとのコストが高くなります。動的データにのみ使用してください。
+
+
+第3引数としてプレーンなJavaScriptオブジェクトを渡します。配列とネストされた値がサポートされています。
 
 ```javascript
 await tealium.track("purchase", "event", {

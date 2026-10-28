@@ -60,6 +60,7 @@ Add the module to the `modules` list in your `TealiumConfig`.
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,
@@ -92,12 +93,12 @@ To handle deep links manually, call `handle` on the deep link property of the `T
 
 
 ```kotlin
-tealium.deeplink.handle(uri).subscribe { result ->
+tealium.deepLink.handle(uri).subscribe { result ->
     // Optionally handle result here
 }
 
 // With a referrer URL:
-tealium.deeplink.handle(uri, referrerUri).subscribe { result ->
+tealium.deepLink.handle(uri, referrerUri).subscribe { result ->
     // Optionally handle result here
 }
 ```

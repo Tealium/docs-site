@@ -1,43 +1,43 @@
 ---
 title: TealiumDataモジュール
-description: 各トラッキングイベントに対して、Tealium SDKのコアメタデータをデータレイヤーに追加します。
+description: すべてのトラッキングイベントのデータレイヤーに、Tealium SDKのコアメタデータを追加します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/tealiumdata/
 ---
-TealiumDataモジュールは、トラッキングデータをTealium SDKのコア構成とメタデータで自動的にエンリッチするコレクターです。このモジュールは常にアクティブであり、無効にすることはできません。
+TealiumDataモジュールは、Tealium SDKのコア構成とメタデータをトラッキングデータへ自動的に追加するコレクターです。このモジュールは常に有効であり、無効にすることはできません。
 
 ## データレイヤー
 
-以下の変数が各トラッキングコールに追加されます：
+各トラッキング呼び出しに、次の変数が追加されます。
 
 | 変数 | 説明 | 例 |
 | :--- | :--- | :--- |
 | `tealium_account` | Tealiumアカウント識別子 | `"my_account"` |
 | `tealium_profile` | Tealiumプロファイル識別子 | `"my_profile"` |
 | `tealium_environment` | Tealium環境 | `"prod"` |
-| `tealium_datasource` | データソース識別子（構成されている場合） | `"abc123"` |
-| `tealium_library_name` | Tealiumライブラリの名前 | `"tealium-prism-swift"` |
-| `tealium_library_version` | Tealiumライブラリのバージョン | `"0.4.0"` |
-| `tealium_visitor_id` | ユニークな訪問識別子 | `"612040730c8c11ed"` |
+| `tealium_datasource` | 構成されている場合はデータソース識別子 | `"abc123"` |
+| `tealium_library_name` | Tealiumライブラリの名前 | `"prism-swift"`, `"prism-kotlin"` |
+| `tealium_library_version` | Tealiumライブラリのバージョン | `"0.7.0"` |
+| `tealium_visitor_id` | 一意の訪問識別子 | `"612040730c8c11ed"` |
 | `enabled_modules` | 有効なモジュールIDのリスト | `["AppData", "Lifecycle"]` |
-| `enabled_modules_versions` | 有効なモジュールのバージョン | `["1.0.0", "1.0.0"]` |
-| `tealium_random` | イベント重複排除用のランダム16桁の数値 | `"7715219888555792"` |
+| `enabled_modules_versions` | 有効なモジュールのバージョン | `["0.7.0", "0.7.0"]` |
+| `tealium_random` | イベントの重複排除に使用するランダムな16桁の数値 | `"7715219888555792"` |
 
 ## インストール
 
-TealiumDataモジュールはTealium PrismコアSDKの一部です。別途インストールは必要ありません。
+TealiumDataモジュールは、Tealium PrismコアSDKの一部です。個別にインストールする必要はありません。
 
 
 
-このモジュールは`prism-core`に含まれており、他のすべてのPrismモジュールの推移的依存関係です。
+このモジュールは`prism-core`に含まれており、これは他のすべてのPrismモジュールの推移的依存関係です。
 
 
-このモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift` を使用してSwift Package Managerの依存関係として追加するか、CocoaPodsのためにPodfileに追加してください：
+このモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift`を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに追加します。
 
 ```ruby
 pod 'tealium-prism/Core'
 ```
 
-代わりに全てのPrismライブラリをインストールする場合：
+代わりにPrismライブラリ全体をインストールするには、次のようにします。
 
 ```ruby
 pod 'tealium-prism'
@@ -51,5 +51,5 @@ TealiumDataモジュールは自動的に初期化されます。
 
 
 <blockquote>
-このモジュールは常にアクティブであり、無効にすることはできません。`setEnabled(false)`を呼び出しても効果はありません。
+このモジュールは常に有効であり、無効にすることはできません。`setEnabled(false)`を呼び出しても効果はありません。
 </blockquote>

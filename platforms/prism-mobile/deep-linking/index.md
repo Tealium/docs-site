@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/prism-mobile/deep-linking/
 ---
 The DeepLink module automatically handles incoming deep links for attribution tracking and trace management. It captures deep link URLs, extracts query parameters, manages referrer information, and integrates with the Trace module for debugging.
 
-On iOS, the module automatically listens for deep link events unless explicitly disabled.
+On iOS and Android, the module automatically listens for deep link events unless explicitly disabled. The module runs only when you add it to the `modules` list or provide settings for it in local or remote settings JSON.
 
 ## Collected data points
 
@@ -37,10 +37,9 @@ val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.deepLink())
-.build()
+    environment = "dev",
+    modules = listOf(Modules.deepLink())
+).build()
 ```
 
 To configure with enforced settings:
@@ -50,14 +49,13 @@ val config = TealiumConfig.Builder(
     application = application,
     accountName = "tealiummobile",
     profileName = "your-profile",
-    environment = "dev"
-)
-.addModule(Modules.deepLink {
-    setEnabled(true)
-    setDeepLinkTraceEnabled(true)
-    setSendDeepLinkEvent(false)
-})
-.build()
+    environment = "dev",
+    modules = listOf(Modules.deepLink {
+        it.setEnabled(true)
+            .setDeepLinkTraceEnabled(true)
+            .setSendDeepLinkEventEnabled(false)
+    })
+).build()
 ```
 
 

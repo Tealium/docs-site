@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side/
 
 ![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
-#### Customer Data Hub
+#### Introduction
 
 Start here to learn how it works and get started.
 

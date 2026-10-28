@@ -1,31 +1,31 @@
 ---
-title: サポートされているベンダー統合
-description: この記事では、クライアントサイドの同意統合でサポートされているCMPについて説明し、同意統合の構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。
+title: サポートされているベンダー連携
+description: この記事では、クライアント側の同意連携でサポートされているCMPと、同意連携の構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。
 url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/supported-vendors/
 ---
 ## 仕組み
 
-クライアントサイドの同意統合は、さまざまな同意管理プラットフォーム（CMP）との統合をサポートしています。サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェースまたはウェブページから、関連するベンダー固有の情報にアクセスできます。このドキュメントを信頼性が高くユーザーフレンドリーに保つために、このセクションではウェブページからベンダー固有の情報を取得する手順のみをカバーしています。各パートナーCMPのユーザーインターフェースでベンダーIDと目的を取得する手順については、各CMPのドキュメントを参照してください。
+クライアント側の同意連携では、さまざまな同意管理プラットフォーム（CMP）との連携がサポートされています。サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェイスまたはWebページから、関連するベンダー固有の情報にアクセスできます。このドキュメントの信頼性と使いやすさを維持するため、このセクションではWebページからベンダー固有の情報を取得する手順のみを説明します。各パートナーCMPのユーザーインターフェイスでベンダーIDと目的を取得する手順については、該当するCMPのドキュメントを参照してください。
 
-ウェブページから関連情報を取得するには、次の手順に従ってください：
+Webページから関連情報を取得するには、次の手順に従います。
 
-1. CMPが実装されているウェブサイトを訪問します。
-1. すべてのトラッキングを受け入れます。
+1. CMPが実装されているWebサイトにアクセスします。
+1. すべてのトラッキングを許可します。
 1. 開発者ツールのJavaScriptコンソールを開きます。
-1. 下記のコードスニペットからCMP固有のコードを開発者ツールのJavaScriptコンソールに貼り付けます。
-1. 表示された**ベンダーID**、**目的キー**、および**目的名**をあなたの同意統合に入力します。
+1. 以下のコードスニペットからCMP固有のコードをコピーし、開発者ツールのJavaScriptコンソールに貼り付けます。
+1. 表示された**ベンダーID**、**目的キー**、および**目的名**を同意連携に入力します。
 
 
 <blockquote>
-同意決定を更新した後、最新の解釈を確認するためにコードを再度貼り付けてください。
+After you update your consent decision, paste the code again to see the latest interpretation.
 </blockquote>
 
 
-## 統合固有の指示とコードスニペット
+## 連携固有の手順とコードスニペット
 
 ### Cookiebot
 
-[cookiebot.com](https://www.cookiebot.com/) またはあなたのウェブサイトでこのスニペットをテストし、[仕組みセクション](#how-it-works)の指示に従って互換性を確認し、統合に必要な情報を取得します。
+互換性を確認し、連携に必要な情報を取得するには、[cookiebot.com](https://www.cookiebot.com/)またはご自身のWebサイトで、[仕組みのセクション](#how-it-works)の手順に従ってこのスニペットをテストします。
 
 
 ```js
@@ -41,52 +41,52 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/suppor
     window.tealiumCmpIntegration.cmpCheckForExplicitConsentDecision = cmpCheckForExplicitConsentDecision
     window.tealiumCmpIntegration.cmpCheckForTiqConsent = cmpCheckForTiqConsent
     window.tealiumCmpIntegration.cmpConvertResponseToGroupList = cmpConvertResponseToGroupList
-    // GDPRスタイルの「オプトイン」モデルを実行しているかどうかを真偽値で返す必要があります
+    // Should return a boolean, true if the CMP is running the 'Opt-in' model (GDPR style)
     function cmpCheckIfOptInModel () {
       if (!window.Cookiebot || !window.Cookiebot.regulations || typeof window.Cookiebot.regulations.gdprApplies !== 'boolean') return false
       return Cookiebot.regulations.gdprApplies
     }
-    // 必要な情報についての決定を含むCMP固有の生のオブジェクト（オブジェクトでなければならない）を返す必要があります。
-    // この出力は、以下の関数でcmpRawOutput引数として使用されます。
+    // Should return some CMP-specific raw object (must be an object) that contains the needed information about the decision.
+    // This output is used as the cmpRawOutput argument in functions below.
     function cmpFetchCurrentConsentDecision () {
       if (!window.Cookiebot || typeof window.Cookiebot.hasResponse !== 'boolean') return false
       return cmpRawOutput = window.Cookiebot.consent;
     }
-    // Tealium iQが正しいCMP構成を持っていることを確認するのに役立つ文字列を返す必要があります（他のページ/ CMPの顧客ではない）
+    // Should return a string that helps Tealium iQ confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
     function cmpFetchCurrentLookupKey() {
         if (!window.Cookiebot || typeof window.Cookiebot.serial !== 'string') return false
         return Cookiebot.serial
     }
-    // 生の決定がCMPの期待に合っているかどうかを真偽値で返す必要があります
+    // Should return a boolean - true if the raw decision meets our expectations for the CMP
     function cmpCheckForWellFormedDecision (cmpRawOutput) {
       return typeof cmpRawOutput === 'object' &&  typeof cmpRawOutput.stamp ==='string'
     }
-    // 同意決定がユーザーによって明示的に行われたかどうかを真偽値で返す必要があります
+    // Should return a boolean - true if the consent decision was explicitly made by the user
     function cmpCheckForExplicitConsentDecision (cmpRawOutput) {
-      // この例で決定が明示的であるかどうかを判断する唯一の方法は、オプトアウトクッキーが構成されているかどうかを確認することです
+      // The only way we can tell if the decision is explicit in this example is to check if an opt-out cookie is set
       return cmpRawOutput.method === 'explicit'? true : false;
     }
-    // 同意されたベンダー/目的の配列を返す必要があります - これらはTealium iQの目的と正確に一致する必要があります
+    // Should return an array of consented vendors/purposes - these should match the Purposes in Tealium iQ exactly
     function cmpConvertResponseToGroupList(cmpRawOutput) {
         var consentDecision = []
-        // データの販売/共有が許可されているかどうかを判断するために、空でないオプトアウトクッキーを非常に単純にチェックします
+        // very simple check for a non-empty opt-out cookie to determine if tags that sell data are allowed
         if (cmpRawOutput.necessary) {
-            consentDecision.push('necessary') // クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
+            consentDecision.push('necessary') // we don't see a cookie, so we have to assume selling/sharing data is fine
         }
         if (cmpRawOutput.preferences) {
-            consentDecision.push('preferences') // クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
+            consentDecision.push('preferences') // we don't see a cookie, so we have to assume selling/sharing data is fine
         }
         if (cmpRawOutput.marketing) {
-            consentDecision.push('marketing') // クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
+            consentDecision.push('marketing') // we don't see a cookie, so we have to assume selling/sharing data is fine
         }
         if (cmpRawOutput.statistics) {
-            consentDecision.push('statistics') // クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
+            consentDecision.push('statistics') // we don't see a cookie, so we have to assume selling/sharing data is fine
         }
         return consentDecision
     }
-    // この関数やそれ以下のものを変更する必要はありません
+    // You shouldn't need to change this function, or anything below it
     function cmpCheckForTiqConsent (cmpRawOutput, tiqGroupName) {
-      // 理解できないものはオプトアウトとして扱います
+      // treat things we don't understand as an opt-out
       if (cmpCheckForWellFormedDecision(cmpRawOutput) !== true) return false
       tiqGroupName = tiqGroupName || 'tiq-group-name-missing'
       var allowedGroups = cmpConvertResponseToGroupList(cmpRawOutput)
@@ -94,7 +94,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/suppor
     }
   })(window)
   /*
-    // デバッグ/開発出力 - このブロックのコメントを外し、このテンプレート全体をテストページに貼り付け/再貼り付けしてください
+    // Debugging / development output - uncomment this block, then paste/repaste this entire template on your test pages
     var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
     Checks:
       - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
@@ -104,17 +104,17 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/suppor
     `
     console.log(outputString);
   */
-```
+ ```
 
 ### Didomi（レガシー）
 
-このスニペットを [didomi.io](https://didomi.io) または [上記の指示に従って](#how-it-works) あなたのウェブサイトでテストして、互換性を確認し、統合に必要な情報を取得してください。
+[上記の手順](#how-it-works)に従って、このスニペットを [didomi.io](https://didomi.io) またはご自身のウェブサイトでテストし、互換性を確認して、統合に必要な情報を取得してください。
 
-Didomi（レガシー）統合は、**ベンダー**を**目的**として使用します。
+Didomi（レガシー）統合では、**Vendors** を **Purposes** として使用します。
 
 
 <blockquote>
-Didomi（レガシー）は、暗黙的に同意された目的やベンダーを返しません。暗黙的なトリガーを有効にするために、この統合は無条件に `always_consented` という目的キーをアウトバウンドの同意決定に追加します。新しい構成の場合は、[Didomi v2](#didomi-v2) を使用してください。v2 統合はこの回避策が必要ありません。
+Didomi (legacy) does not return implicitly consented purposes or vendors. To enable implicit triggering, this integration unconditionally adds the purpose key `always_consented` to outbound consent decisions. For new setups, use [Didomi v2](#didomi-v2). The v2 integration does not need this workaround.
 </blockquote>
 
 
@@ -230,20 +230,19 @@ Checks:
 console.log(outputString)
 ```
 
-
 ### Didomi v2
 
-このスニペットを [didomi.io](https://didomi.io) または [上記の指示に従って](#how-it-works) あなたのウェブサイトでテストして、互換性を確認し、統合に必要な情報を取得してください。
+[上記の手順](#how-it-works)に従い、このスニペットを [didomi.io](https://didomi.io) またはお客様のウェブサイトでテストして、互換性を確認し、統合に必要な情報を取得してください。
 
-Didomi v2 統合は、**ベンダー**を**目的**として使用します。
+Didomi v2 統合では、**ベンダー（Vendors）**を**目的（Purposes）**として使用します。
 
-新しいDidomi構成にはDidomi v2を推奨します。Didomi v2を使用するには、新しい同意統合を作成し、ベンダーとして**Didomi v2**を選択してください。既存のDidomi（レガシー）統合は変更なしで引き続き機能します。
+Didomi を新規にセットアップする場合は、Didomi v2 を推奨します。Didomi v2 を使用するには、新しい同意統合を作成し、ベンダーとして **Didomi v2** を選択します。既存の Didomi（レガシー）統合は、変更せずに引き続き機能します。
 
-Didomi v2は、Didomi（レガシー）と以下の点で異なります：
+Didomi v2 と Didomi（レガシー）には、次の相違点があります。
 
-* **ベンダーID**フィールドがありません。
-* デフォルトの目的グループがありません。目的キーはベンダー固有であり、Didomiの構成によって異なります。
-* コールバックサポート。統合はDidomiからの`consent.changed`イベントをリッスンし、自動的に同意を再確認します。詳細については、[同意更新の監視とトリガー](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+* **ベンダー ID（Vendor ID）**フィールドがありません。
+* デフォルトの目的グループがありません。目的キーはベンダー固有であり、Didomi の構成ごとに異なります。
+* コールバックをサポートします。この統合は Didomi の `consent.changed` イベントをリッスンし、同意を自動的に再確認します。詳細については、[同意の更新を監視およびトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
 
 
 ```js
@@ -382,10 +381,9 @@ Checks:
 */
 ```
 
+### Digital Control Room
 
-### デジタルコントロールルーム
-
-このスニペットを [digitalcontrolroom.com](https://www.digitalcontrolroom.com/) またはお使いのウェブサイトでテストし、[操作方法セクション](#how-it-works) の指示に従って互換性を確認し、統合に必要な情報を取得してください。
+互換性を確認し、統合に必要な情報を取得するには、[digitalcontrolroom.com](https://www.digitalcontrolroom.com/) またはご自身のウェブサイトで、[仕組みのセクション](#how-it-works)の手順に従ってこのスニペットをテストしてください。
 
 
 ```js
@@ -474,27 +472,26 @@ console.log(outputString);
 */
 ```
 
-
 ### OneTrust
 
-このスニペットを https://onetrust.com またはあなたのウェブサイトでテストして、[上記の指示に従って](#how-it-works)互換性を確認し、統合に必要な情報を取得してください。
+https://onetrust.com またはご自身のウェブサイトで、[上記の手順](#how-it-works)に従ってこのスニペットをテストし、互換性を確認して統合に必要な情報を取得します。
 
 
 <blockquote>
-OneTrustは構成をプレビューするためのテストモードを提供しており、ベンダーIDに `-test` を追加することでアクティブ化できます。統合を簡素化するために、OneTrustの同意統合はベンダーIDから `-test` 接尾辞を削除します。ページ上で `-test` 接尾辞を使用している場合でも、統合構成時に同意統合UIに `-test` を含まないベンダーIDを入力してください。Tealium iQ UIとアクティブな統合間でベンダーIDが一致しないと、Tealium iQタグ管理がページ上でクッキーを構成したりタグをトリガーしたりするのを防ぎます。
+OneTrust には構成をプレビューするためのテストモードが用意されており、ベンダー ID に `-test` を追加すると有効になります。統合を簡素化するため、OneTrust の同意統合ではベンダー ID から `-test` サフィックスが削除されます。シームレスに統合するには、ページ上で `-test` サフィックスを使用している場合でも、統合の構成時に同意統合 UI へ `-test` を付けずにベンダー ID を入力してください。Tealium iQ UI と有効な統合の間でベンダー ID が一致していない場合、Tealium iQ Tag Management はページ上で Cookie を構成したり、タグをトリガーしたりできません。
 </blockquote>
 
 
-OneTrustは `cmpAddCallbackToTriggerRecheck` を通じてコールバック関数をサポートしています。このコールバックにより、Tealium iQはポーリングせずに同意状態の変更に関するリアルタイムの更新を受け取ることができます。詳細については、[同意更新の監視とトリガー](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium iQ はポーリングを行うことなく、同意ステータスの変更に関する更新をリアルタイムで受信できます。詳細については、[同意の更新を監視してトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
 
 
 ```js
 ;(function oneTrust(window) {
-    // 名前/IDの動作を簡単に調整する
+    // allows simple adjustment of the name/id behavior
     var useNamesInsteadOfKeys = false;
-    // 構成の簡素化のために予想されるベンダーIDの安全チェックを回避することを許可するが、リスクが増加する
+    // allow the safety check of the expected Vendor ID to be circumvented to simplify setup at the cost of increased risk
     var disableVendorIdValidation = false;
-    // CMP特有の機能とラベル
+    // CMP specific functionality and labels
     window.tealiumCmpIntegration = window.tealiumCmpIntegration || {};
     window.tealiumCmpIntegration.cmpName = "OneTrust";
     window.tealiumCmpIntegration.cmpIntegrationVersion = "onetrust-2.1.0";
@@ -521,8 +518,8 @@ OneTrustは `cmpAddCallbackToTriggerRecheck` を通じてコールバック関�
         return cmpRawOutput;
     }
     function cmpFetchCurrentLookupKey() {
-        // 2022年末からの新しいバージョンのOneTrustでは、cctIdが定義されていない
-        // しかし、このHTML属性はOneTrustが識別する方法です
+        // newer versions of OneTrust, starting at the end of 2022 no longer have cctId defined
+        // but this HTML attribute is the way OneTrust can tell
         var scrapeOneTrustVendorId = function () {
             var allScripts = document.getElementsByTagName("script");
             var re = /\/otSDKStub\.js(\?.*)*$/;
@@ -595,35 +592,100 @@ OneTrustは `cmpAddCallbackToTriggerRecheck` を通じてコールバック関�
          jQuery v1.9.1 (c) 2005, 2012
          jQuery Foundation, Inc. jquery.org/license.
         */
+
+
+            var f = /\[object (Boolean|Number|String|Function|Array|Date|RegExp|Arguments)\]/; function g(a) { return null == a ? String(a) : (a = f.exec(Object.prototype.toString.call(Object(a)))) ? a[1].toLowerCase() : "object" } function m(a, b) { return Object.prototype.hasOwnProperty.call(Object(a), b) } function n(a) { if (!a || "object" != g(a) || a.nodeType || a == a.window) return !1; try { if (a.constructor && !m(a, "constructor") && !m(a.constructor.prototype, "isPrototypeOf")) return !1 } catch (c) { return !1 } for (var b in a); return void 0 === b || m(a, b) }; function p(a, b) { var c = {}, d = c; a = a.split("."); for (var e = 0; e < a.length - 1; e++)d = d[a[e]] = {}; d[a[a.length - 1]] = b; return c } function q(a, b) { var c = !a._clear, d; for (d in a) if (m(a, d)) { var e = a[d]; "array" === g(e) && c ? ("array" === g(b[d]) || (b[d] = []), q(e, b[d])) : n(e) && c ? (n(b[d]) || (b[d] = {}), q(e, b[d])) : b[d] = e } delete b._clear };/* Copyright 2012 Google Inc. All rights reserved. */
+            function r(a, b, c) {
+                b = void 0 === b ? {} : b; "function" === typeof b ? b = { listener: b, listenToPast: void 0 === c ? !1 : c, processNow: !0, commandProcessors: {} } : b = { listener: b.listener || function () { }, listenToPast: b.listenToPast || !1, processNow: void 0 === b.processNow ? !0 : b.processNow, commandProcessors: b.commandProcessors || {} }; this.a = a; this.l = b.listener; this.j = b.listenToPast; this.g = this.i = !1; this.c = {}; this.f = []; this.b = b.commandProcessors; this.h = u(this); var d = this.a.push, e = this; this.a.push = function () {
+                    var k = [].slice.call(arguments,
+                        0), l = d.apply(e.a, k); v(e, k); return l
+                }; b.processNow && this.process()
+            } r.prototype.process = function () { this.registerProcessor("set", function () { var c = {}; 1 === arguments.length && "object" === g(arguments[0]) ? c = arguments[0] : 2 === arguments.length && "string" === g(arguments[0]) && (c = p(arguments[0], arguments[1])); return c }); this.i = !0; for (var a = this.a.length, b = 0; b < a; b++)v(this, [this.a[b]], !this.j) }; r.prototype.get = function (a) { var b = this.c; a = a.split("."); for (var c = 0; c < a.length; c++) { if (void 0 === b[a[c]]) return; b = b[a[c]] } return b };
+            r.prototype.flatten = function () { this.a.splice(0, this.a.length); this.a[0] = {}; q(this.c, this.a[0]) }; r.prototype.registerProcessor = function (a, b) { a in this.b || (this.b[a] = []); this.b[a].push(b) };
+            function v(a, b, c) {
+                c = void 0 === c ? !1 : c; if (a.i && (a.f.push.apply(a.f, b), !a.g)) for (; 0 < a.f.length;) {
+                    b = a.f.shift(); if ("array" === g(b)) a: { var d = a.c; g(b[0]); for (var e = b[0].split("."), k = e.pop(), l = b.slice(1), h = 0; h < e.length; h++) { if (void 0 === d[e[h]]) break a; d = d[e[h]] } try { d[k].apply(d, l) } catch (w) { } } else if ("arguments" === g(b)) { e = a; k = []; l = b[0]; if (e.b[l]) for (d = e.b[l].length, h = 0; h < d; h++)k.push(e.b[l][h].apply(e.h, [].slice.call(b, 1))); a.f.push.apply(a.f, k) } else if ("function" == typeof b) try { b.call(a.h) } catch (w) { } else if (n(b)) for (var t in b) q(p(t,
+                        b[t]), a.c); else continue; c || (a.g = !0, a.l(a.c, b), a.g = !1)
+                }
+            } r.prototype.registerProcessor = r.prototype.registerProcessor; r.prototype.flatten = r.prototype.flatten; r.prototype.get = r.prototype.get; r.prototype.process = r.prototype.process; window.DataLayerHelper = r; function u(a) { return { set: function (b, c) { q(p(b, c), a.c) }, get: function (b) { return a.get(b) } } };
+        })();
+        function listener(model, message) {
+            // Message has been pushed. 
+            // The helper has merged it onto the model.
+            // Now use the message and the updated model to do something.
+            if (["OneTrustGroupsUpdated", "OneTrustLoaded"].indexOf(message.event) !== -1) {
+                triggerRecheck()
+            }
+        }
+        window.dataLayer = window.dataLayer || [];
+        const helper = new DataLayerHelper(window.dataLayer, { listener: listener });
+        var oldWrapper = window.OptanonWrapper || function () { }
+        window.OptanonWrapper = function () {
+            oldWrapper();
+            triggerRecheck();
+        }
+        return true;
+    }
+    function cmpCheckForTiqConsent(cmpRawOutput, tiqGroupName) {
+        // treat things we don't understand as an opt-out
+        if (cmpCheckForWellFormedDecision(cmpRawOutput) !== true) return false;
+        tiqGroupName = tiqGroupName || "tiq-group-name-missing";
+        var allowedGroups = cmpConvertResponseToGroupList(cmpRawOutput);
+        return allowedGroups.indexOf(tiqGroupName) !== -1;
+    }
+})(window);
+
+
+/*
+// Debugging / development output - paste into the console, or uncomment and paste the whole template during development of a custom integration
+function outputDebuggingInfo () {
+  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
+  Checks:
+    - id:                 ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+    - well-formed:        ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+    - explicit:           ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+    - using callback:     ${typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === 'function'}
+    - consented purposes: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+  `
+  console.log(outputString);
+}
+// use the callback function to avoid console posting while debugging and allow testing of the callback function itself
+if (typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === 'function') {
+    tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(outputDebuggingInfo)
+}
+outputDebuggingInfo();
+*/
 ```
 
 
-### オプトアウトクッキー + GPC
 
-この統合は、CCPA/CPRAなどのシンプルなオプトアウトモデルをサポートしています。**Vendor ID** フィールドはオプトアウトクッキーのクッキー名として解釈され、大文字と小文字が区別されます。このクッキーが任意の値で見つかった場合、または [グローバルプライバシーコントロール (GPC)](https://docs.tealium.com/about-global-privacy-control/) のオプトアウトシグナルが見つかった場合、ユーザーはオプトアウトしたと見なされます。
 
-統合で使用される**目的キー**とデフォルトの**目的グループ**に含まれるものは以下の通りです：
+### オプトアウトCookie + GPC
 
-* `no-selling` - ユーザーのオプトアウトシグナルに関係なく許可するタグ。これらのタグはデータを販売/共有しないか、法務チームなどによって厳密に必要とされています。
-* `yes-selling` - オプトアウトしたユーザーに対してブロックするタグ。適用される規制やポリシーにより、ユーザーがオプトアウトした後の追跡が禁止されています。
-### セキュリティ
+この連携は、CCPA/CPRAなどのシンプルなオプトアウトモデルをサポートします。**Vendor ID**フィールドをオプトアウトCookieのCookie名として解釈し、大文字と小文字を区別します。このCookieが値を問わず見つかった場合、または[グローバルプライバシーコントロール（GPC）](https://docs.tealium.com/about-global-privacy-control/)のオプトアウトシグナルが検出された場合、ユーザーはオプトアウトしていると見なされます。
 
-このスニペットを[動作方法](#how-it-works)セクションの指示に従ってあなたのウェブサイトでテストし、互換性を確認し、統合に必要な情報を取得してください。
+この連携で使用され、デフォルトの**Purpose Group**に含まれる**Purpose Keys**は次のとおりです。
 
-Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数をサポートしています。このコールバックにより、Tealium iQはポーリングせずに同意状態の変更に関するリアルタイムの更新を受け取ることができます。詳細については、[同意更新の監視とトリガー](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+* `no-selling` - ユーザーのオプトアウトシグナルに関係なく許可するタグに使用します。これらのタグはデータを販売または共有しないか、法務チームによって厳密に必要であると判断されたものなどです。
+* `yes-selling` - 適用される規制またはポリシーにより、ユーザーのオプトアウト後のトラッキングが禁止されているため、オプトアウトしたユーザーに対してブロックするタグに使用します。
+### Securiti
 
-デフォルトの**目的グループ**における**目的キー**は以下の通りです：
+互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
+
+Securiti は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium iQ はポーリングを行わずに同意ステータスの変更をリアルタイムで受信できます。詳細については、[同意の更新を監視およびトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+
+デフォルトの**目的グループ**に含まれる**目的キー**は次のとおりです。
 
 * `essential`: 必須
 * `analytics_customization`: 分析とカスタマイズ
 * `advertising`: 広告
-* `performance_functionality`: パフォーマンスと機能性
+* `performance_functionality`: パフォーマンスと機能
 * `unclassified`: 未分類
 
 
 ```js
 ;(function securitiIntegration (window) {
-    // CMP特有の機能とラベル
+    // CMP specific functionality and labels
     window.tealiumCmpIntegration = window.tealiumCmpIntegration || {}
 
     window.tealiumCmpIntegration.cmpName = 'Securiti'
@@ -638,29 +700,30 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     window.tealiumCmpIntegration.cmpConvertResponseToGroupList = cmpConvertResponseToGroupList
     window.tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck = cmpAddCallbackToTriggerRecheck
 
-    // コンソール出力用に公開されている
+    // only exposed for the console output
     window.tealiumCmpIntegration.cmpConvertResponseToLookupObject = cmpConvertResponseToLookupObject
 
-    // CMPが「オプトイン」モデル（GDPRスタイル）を実行しているかどうかを返すべきです。真偽値を返すべきです。
+    // Should return a boolean, true if the CMP is running the 'Opt-in' model (GDPR style)
     function cmpCheckIfOptInModel () {
       var isOptInModel = window.tealiumCmpIntegration && window.tealiumCmpIntegration.decisionCache && window.tealiumCmpIntegration.decisionCache.isOptInModel
       return !isOptInModel
     }
 
-    // CMP特有の生のオブジェクト（オブジェクトでなければならない）を返すべきです。この出力は以下の関数でcmpRawOutput引数として使用されます。
+    // Should return some CMP-specific raw object (must be an object) that contains the needed information about the decision.
+    // This output is used as the cmpRawOutput argument in functions below.
     function cmpFetchCurrentConsentDecision () {
       window.tealiumCmpIntegration = window.tealiumCmpIntegration || {}
       window.tealiumCmpIntegration.decisionCache = window.tealiumCmpIntegration.decisionCache || {}
       return window.tealiumCmpIntegration.decisionCache
     }
 
-    // 今のところこの統合ではこの機能をサポートしていません
+    // Don't support this feature in this integration for now at least
     function cmpFetchCurrentLookupKey () {
-      // アクティブであると予想されるベンダーIDを返すことで、IDに基づくダブルチェックを短絡させる
-      return (window.tealiumCmpIntegration && window.tealiumCmpIntegration.map && Object.keys(window.tealiumCmpIntegration.map)[0]) || '(ベンダーIDチェック無効)'
+      // return whatever Vendor ID is expected be active to short-circuit the ID-based double check
+      return (window.tealiumCmpIntegration && window.tealiumCmpIntegration.map && Object.keys(window.tealiumCmpIntegration.map)[0]) || '(Vendor ID check disabled)'
     }
 
-    // 生の決定がこの特定のCMPからの決定に対する私たちの期待を満たしているかどうかを返すべきです。真偽値を返すべきです。
+    // Should return a boolean - true if the raw decision meets our expectations for decisions from this particular CMP
     function cmpCheckForWellFormedDecision (cmpRawOutput) {
       return typeof cmpRawOutput === 'object' &&
              typeof cmpRawOutput.category === 'object' &&
@@ -668,7 +731,7 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
              typeof cmpRawOutput.isOptInModel === 'boolean'
     }
 
-    // 同意決定がユーザーによって明示的に行われたかどうかを返すべきです。真偽値を返すべきです。
+    // Should return a boolean - true if the consent decision was explicitly made by the user
     function cmpCheckForExplicitConsentDecision (cmpRawOutput) {
       if (typeof cmpRawOutput === 'object' && cmpRawOutput.isExplicit === true) return true
       return false
@@ -679,7 +742,7 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     }
 
     function cmpConvertResponseToLookupObject (cmpRawOutput) {
-        // 'Performance & Analytics'を'performance_analytics'に変換します
+        // Turns 'Performance & Analytics' into 'performance_analytics'
       var tokenizeName = function (name) {
         if (typeof name !== 'string') return name
         return name.toLowerCase().replace(https://docs.tealium.com/[^a-z0-9]+/g, '_')
@@ -694,29 +757,29 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     }
 
     function cmpAddCallbackToTriggerRecheck (triggerRecheck) {
-        if (typeof triggerRecheck !== 'function') return false; // トリガーするタイミングで呼び出す関数がない限り何もしない
+        if (typeof triggerRecheck !== 'function') return false; // don't do anything unless we have a function to call when it's time to trigger
 
         window.tealiumCmpIntegration = window.tealiumCmpIntegration || {}
 
-        // 重複登録を防ぐ
+        // Guard against duplicate registration
         if (window.tealiumCmpIntegration._callbacksRegistered) return false
         window.tealiumCmpIntegration._callbacksRegistered = true
 
-        // コールバックに呼び出すヘルパー
+        // a helper, to be called on the callbacks
         var fetchAndCacheDecision = function (sdk) {
           var isExplicit = sdk.isConsentGiven()
           var defaultConsentState = sdk.getDefaultConsentState()
           var consentDecision = isExplicit ? sdk.getConsent() : defaultConsentState
-          // 原子的な割り当て – 中間の空オブジェクトウィンドウはありません
+          // Atomic assignment – no intermediate empty-object window
           window.tealiumCmpIntegration.decisionCache = {
             category: (consentDecision && consentDecision.category) || {},
             isExplicit: !!isExplicit,
             isOptInModel: defaultConsentState && defaultConsentState.category ? (Object.keys(defaultConsentState.category).filter(function (categoryName) { return defaultConsentState.category[categoryName] === "granted" }).length === Object.keys(defaultConsentState.category).length) : undefined
           }
-          setTimeout(triggerRecheck, 1) // 現在の処理が終了するのを待ってから再チェックをトリガーします
+          setTimeout(triggerRecheck, 1) // let the current processing finish before we trigger the recheck
         }
 
-        // すでにロードされている場合は、コールバックをすぐにアタッチして信頼性を確保します
+        // if it's already loaded, attach the callback immediately to ensure it works reliably
         if (typeof window.SecuritiSDK !== 'undefined' && typeof window.SecuritiSDK.onReady === 'function') {
           window.SecuritiSDK.onReady(function (sdk) {
             fetchAndCacheDecision(sdk)
@@ -729,9 +792,9 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
         return true
     }
 
-    // この関数やそれ以下のものを変更する必要はありません
+    // You shouldn't need to change this function, or anything below it
     function cmpCheckForTiqConsent (cmpRawOutput, tiqGroupName) {
-      // 理解できないものはオプトアウトとして扱います
+      // treat things we don't understand as an opt-out
       if (cmpCheckForWellFormedDecision(cmpRawOutput) !== true) return false
 
       tiqGroupName = tiqGroupName || 'tiq-group-name-missing'
@@ -741,20 +804,23 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
 })(window)
 
 /*
-// デバッグ出力 - このブロックのコメントを外し、このテンプレート全体をテストページに貼り付けて/再貼り付けして、CMP決定と統合コードによる処理のコンソール出力を取得します。この出力を使用して、統合の開発中に必要に応じて上記のcmp*関数をデバッグおよび調整できます。
+// DEBUG OUTPUT - uncomment this block, then paste/repaste this entire template on your test pages to get console output
+// of the CMP decision and how it's being processed by our integration code. You can use this output to debug and adjust
+// the cmp* functions above as needed during development of the integration
 
   var setCallback = window.tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(function () {
     consoleOut()
   })
-  if (!setCallback) consoleOut() // コールバックを構成できなかった場合は、デバッグユーザーのために決定を出力します
+  if (!setCallback) consoleOut() // if we weren't able to set the callback, output the decision for the debugging user
 
 
  function consoleOut () {
-    // デバッグ/開発出力 - このブロックのコメントを外し、このテンプレート全体をテストページに貼り付けて/再貼り付けしてください
+    // Debugging / development output - uncomment this block, then paste/repaste this entire template on your test pages
     var decision = window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision()
     var outputString = `\n${window.tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
 
   Checks:
+
     - well-formed: ${window.tealiumCmpIntegration.cmpCheckForWellFormedDecision(decision)}
     - explicit:    ${window.tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(decision)}
     - lookup:      ${JSON.stringify(window.tealiumCmpIntegration.cmpConvertResponseToLookupObject(decision), null, 8)}
@@ -764,13 +830,12 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     console.log(outputString);
   }
   */
-
 ```
 
 
 ### TrustArc
 
-このスニペットを [trustarc.com](https://trustarc.com/) またはあなたのウェブサイトでテストし、[操作方法セクション](#how-it-works) の指示に従って互換性を確認し、統合に必要な情報を取得してください。
+[trustarc.com](https://trustarc.com/) でこのスニペットをテストするか、[仕組みのセクション](#how-it-works)の手順に従ってウェブサイト上でテストし、互換性を確認して統合に必要な情報を取得してください。
 
 
 ```js
@@ -852,7 +917,7 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     return output
   }
 
-  function cmpConvertResponse to GroupList (cmpRawOutput) {
+  function cmpConvertResponseToGroupList (cmpRawOutput) {
     var permittedPurposesWithNames = cmpConvertResponseToLookupObject(cmpRawOutput)
     var keysOrValues = 'keys'
     return Object[keysOrValues](permittedPurposesWithNames) 
@@ -866,15 +931,30 @@ Securitiは`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数�
     return allowedGroups.indexOf(tiqGroupName) !== -1
   }
 })(window)
+
+/*
+// Debugging - uncomment this code and paste the integration into the console on your test pages each time you make a change to your consent state to test without publishing
+var outputString = `CMP Found: ${window.tealiumCmpIntegration.cmpName} (${window.tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model)
+
+    Checks:
+      - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+      - well-formed: ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+      - explicit:    ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+      - group list:  ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+
+      - name lookup: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToLookupObject(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 6)}
+    `
+console.log(outputString)
+*/
 ```
 
 ### Usercentrics v2
 
-[How it works](#how-it-works)セクションの指示に従って、このスニペットをあなたのウェブサイトでテストし、互換性を確認し、統合に必要な情報を取得してください。
+互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
 
-Usercentrics v2統合は、Usercentrics Browser SDK v1およびv2用であり、**Vendors**を**Purposes**として使用します。
+Usercentrics v2 統合は Usercentrics Browser SDK v1 および v2 を対象としており、**Vendors** を **Purposes** として使用します。
 
-Usercentrics v2は、`cmpAddCallbackToTriggerRecheck`を通じてコールバック関数をサポートしています。このコールバックにより、Tealiumはポーリングせずに同意状態の変更に関するリアルタイムの更新を受け取ることができます。
+Usercentrics v2 は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium はポーリングを行わずに、同意ステータスの変更に関する更新をリアルタイムで受信できます。
 
 
 ```js
@@ -902,15 +982,20 @@ Usercentrics v2は、`cmpAddCallbackToTriggerRecheck`を通じてコールバッ
 
   function cmpFetchCurrentLookupKey () {
     var v2 = window.UC_UI && typeof window.UC_UI.getSettingsCore === 'function' && window.UC_UI.getSettingsCore().id
+    // var v3 = window.UC_UI && typeof window.UC_UI.getControllerId === 'function' && window.UC_UI.getControllerId()
+    // return v2 || v3 || ''
     return v2
   }
 
   function cmpCheckIfOptInModel () {
     return true // only opt-in for now
+    // return window.UC_UI && typeof window.UC_UI.isConsentRequired === 'function' && window.UC_UI.isConsentRequired() === true
   }
 
   function cmpCheckForWellFormedDecision (cmpRawOutput) {
+    // treat things we don't understand as an opt-out
     if (toString.call(cmpRawOutput) !== '[object Array]') return false
+    // use the first entry as a proxy for all
     if (cmpRawOutput && cmpRawOutput[0] && typeof cmpRawOutput[0].name === 'string' && cmpRawOutput[0].name.length > 0) {
       return true
     }
@@ -918,18 +1003,33 @@ Usercentrics v2は、`cmpAddCallbackToTriggerRecheck`を通じてコールバッ
   }
 
   function cmpCheckForExplicitConsentDecision (cmpRawOutput) {
+    // treat things we don't understand as an opt-out
     if (toString.call(cmpRawOutput) !== '[object Array]') return false
+    // use the first entry as a proxy for all
     if (!Array.isArray(window.dataLayer)) return false;
     const latestConsentStatus = [...window.dataLayer]
       .reverse()
       .find(entry => entry.event === 'consent_status');
     return latestConsentStatus && latestConsentStatus.type ? latestConsentStatus.type.toLowerCase() === 'explicit' : false;
+    // the old code below isn't reliable across all versions (check usercentrics.de for example)
+    /*
+    const consentHistory = (cmpRawOutput && cmpRawOutput[0] && cmpRawOutput[0].consent && cmpRawOutput[0].consent.history) || []
+    const lastHistoryEntryType = (consentHistory && consentHistory.length && consentHistory[consentHistory.length - 1].type) || ''
+    if (lastHistoryEntryType === 'explicit') {
+      return true
+    }
+    return false
+    */
   }
 
   function cmpCheckForTiqConsent (cmpRawOutput, tiqGroupName) {
     let foundOptIn = false
+    // treat things we don't understand as an opt-out
     if (toString.call(cmpRawOutput) !== '[object Array]') return false
+    // use the mapping if found, with a fallback (Usercentrics default value) if not specified in the mapping
+
     tiqGroupName = tiqGroupName || 'tiq-group-name-missing'
+    // check vendors if there's an object, look for at least one
     cmpRawOutput.forEach(function (tagInfo) {
       if ((tagInfo.consent && tagInfo.consent.status === true) && tagInfo.name === tiqGroupName) {
         foundOptIn = true
@@ -948,9 +1048,11 @@ Usercentrics v2は、`cmpAddCallbackToTriggerRecheck`を通じてコールバッ
     return vendorArray
   }
 
+  // see https://docs.usercentrics.com/#/v2-events
   function cmpAddCallbackToTriggerRecheck (triggerRecheck) {
-    if (typeof triggerRecheck !== 'function') return false;
+    if (typeof triggerRecheck !== 'function') return false; // don't do anything unless we have a function to call when it's time to trigger
 
+    // Guard against duplicate registration
     if (window.tealiumCmpIntegration._callbacksRegistered) return false
     window.tealiumCmpIntegration._callbacksRegistered = true
 
@@ -970,13 +1072,40 @@ Usercentrics v2は、`cmpAddCallbackToTriggerRecheck`を通じてコールバッ
     return true;
   }
 })(window)
+
+/*
+  // DEBUG OUTPUT - uncomment this block, then paste/repaste this entire template on your test pages to get console output
+  // of the CMP decision and how it's being processed by our integration code. You can use this output to debug and adjust
+  // the cmp* functions above as needed during development of the integration
+
+  var setCallback = window.tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(function () {
+    consoleOut()
+  })
+  if (!setCallback) consoleOut() // if we weren't able to set the callback, output the decision for the debugging user
+
+
+ function consoleOut () {
+    // Debugging / development output - uncomment this block, then paste/repaste this entire template on your test pages
+    var decision = window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision()
+    var outputString = `\n${window.tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
+
+  Checks:
+    - vendor id:   ${window.tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+    - well-formed: ${window.tealiumCmpIntegration.cmpCheckForWellFormedDecision(decision)}
+    - explicit:    ${window.tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(decision)}
+    - group list:  ${JSON.stringify(window.tealiumCmpIntegration.cmpConvertResponseToGroupList(decision), null, 8)}
+
+  `
+    console.log(outputString);
+  }
+*/
 ```
 
 ### Usercentrics v3
 
-[How it works](#how-it-works)セクションの指示に従って、このスニペットをあなたのウェブサイトでテストし、互換性を確認し、統合に必要な情報を取得してください。
+互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
 
-Usercentrics v3統合は、Usercentrics Browser SDK V3用であり、**Vendors**を**Purposes**として使用します。
+Usercentrics v3統合はUsercentrics Browser SDK V3向けであり、**Vendors**を**Purposes**として使用します。Usercentrics v3統合には**Vendor ID**が必要です。Vendor IDはUsercentrics Settings IDです。
 
 
 ```js
@@ -1083,9 +1212,36 @@ Usercentrics v3統合は、Usercentrics Browser SDK V3用であり、**Vendors**
   }
 
 })(window)
+
+/*
+// DEBUG OUTPUT - uncomment this block, then paste/repaste this entire template on your test pages to get console output
+// of the CMP decision and how it's being processed by our integration code. You can use this output to debug and adjust
+// the cmp* functions above as needed during development of the integration
+
+  var setCallback = window.tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(function () {
+    consoleOut()
+  })
+  if (!setCallback) consoleOut() // if we already set the callback, output the decision for the (debugging) user
+
+
+ function consoleOut () {
+    var decision = window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision()
+    var outputString = `\n${window.tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
+
+  Checks:
+    - vendor id:   ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+    - well-formed: ${window.tealiumCmpIntegration.cmpCheckForWellFormedDecision(decision)}
+    - explicit:    ${window.tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(decision)}
+    - lookup:      ${JSON.stringify(window.tealiumCmpIntegration.cmpConvertResponseToLookupObject(decision), null, 8)}
+    - group list:  ${JSON.stringify(window.tealiumCmpIntegration.cmpConvertResponseToGroupList(decision), null, 8)}
+
+  `
+    console.log(outputString);
+  }
+  */
 ```
 
 
 ### カスタム統合テンプレート
 
-カスタム統合テンプレートについての詳細と使用方法については、[カスタム統合](https://docs.tealium.com/custom-cmp-integrations/)を参照してください。
+カスタム統合テンプレートの詳細と使用方法については、[カスタム統合](https://docs.tealium.com/custom-cmp-integrations/)を参照してください。

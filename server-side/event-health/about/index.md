@@ -35,7 +35,7 @@ The following examples describe each validation status. They are based on the fo
 
 <!-- GAP: replace whiteui-eventspecifications-videocomplete.png with a screenshot of the video_complete spec showing defined types (String, Number) for each attribute, required toggles enabled for the four required attributes, and video_quality as an optional String attribute -->
 
-The specification lists its `tealium_event` value (`video_complete`) and defines four required attributes: `video_id`, `video_length`, `video_name`, and `video_platform`. It also defines one optional string attribute: `video_quality`. Each attribute has a defined data type that incoming events must match to receive a valid or warning status.
+The specification lists its `tealium_event` value (`video_complete`) and defines four required attributes: `video_id`, `video_length`, `video_name`, and `video_platform`. It also defines one optional string attribute: `video_quality`. Each attribute has a defined data type that incoming events must match.
 
 #### Example of valid event
 
@@ -78,20 +78,7 @@ The following event is checked against the preceding `video_complete` specificat
 
 This event is invalid because the `video_length` attribute is a string when the specification expects a number, and the required `video_name` attribute is missing.
 
-![](https://docs.tealium.com/images/server-side/invalid-video-complete-event.png)
-<!-- GAP: replace invalid-video-complete-event.png with a screenshot of the invalid video_complete event details showing the red header and per-attribute validation results, with failing attributes highlighted and the failure reason (missing or wrong data type) visible -->
-
-Identify errors in attributes, data types, and requirements to troubleshoot and resolve issues.
-
-#### Example of warn event
-
-An event with the warn status has the following conditions:
-
-* Has a `tealium_event` value that matches one of your event specifications.
-* Has all required attributes with the correct data types.
-* Has one or more optional attributes that are missing or have the wrong data type.
-
-For example, consider the following event where `video_quality` is an optional string attribute in the specification:
+The following event is also invalid. All required attributes are present and have the correct data types, but `video_quality` is an optional string attribute and the event sent a number:
 
 ```json
 {
@@ -104,9 +91,11 @@ For example, consider the following event where `video_quality` is an optional s
 }
 ```
 
-The required attributes are all present and have the correct data types, so this event passes required attribute validation. However, `video_quality` is a string in the specification and the event sent a number, so this event is marked as warn.
+Optional attributes that are present must match the data type defined in the specification. Optional attributes that are absent from the event are not evaluated.
 
-<!-- GAP: add a screenshot of the warn video_complete event details showing the amber/yellow header and the optional attribute that triggered the warn status -->
+![](https://docs.tealium.com/images/server-side/invalid-video-complete-event.png)
+
+Identify errors in attributes, data types, and requirements to troubleshoot and resolve issues.
 
 #### Examples of unknown events
 
@@ -160,7 +149,7 @@ From the **Live Events** or the **Event Specifications** page, create event spec
 ![](https://docs.tealium.com/images/server-side/whiteui-eventspecifications-videocomplete.png)
 <!-- GAP: replace whiteui-eventspecifications-videocomplete.png with a screenshot of the video_complete spec showing defined types (String, Number) for each attribute, required toggles enabled for the four required attributes, and video_quality as an optional String attribute -->
 
-After you create an event specification, events with a matching `tealium_event` value are validated against that specification and marked as **Valid**, **Warn**, **Invalid**, or **No Spec**. Each event specification creates a corresponding event feed that you can enable for connectors, EventDB, or EventStore.
+After you create an event specification, events with a matching `tealium_event` value are validated against that specification and marked as **Valid**, **Invalid**, or **No Spec**. Each event specification creates a corresponding event feed that you can enable for connectors, EventDB, or EventStore.
 
 ![](https://docs.tealium.com/images/server-side/video-complete-event-feed.png)
 
@@ -170,10 +159,9 @@ For more information, see [Manage event specifications]().
 
 ### Step 3 - Monitor event health and triage issues
 
-Use the live events chart and the event specification detail pages to monitor event health over time. Use **Valid**, **Warn**, **Invalid**, and **No Spec** filters to focus on specific health states. Use **Data Sources** and **Event Feeds** to narrow the chart to a subset of traffic.
+Use the live events chart and the event specification detail pages to monitor event health over time. Use **Valid**, **Invalid**, and **No Spec** filters to focus on specific health states. Use **Data Sources** and **Event Feeds** to narrow the chart to a subset of traffic.
 
 ![](https://docs.tealium.com/images/server-side/whiteui-eventstream-liveevents-filter-drop-down-lists.png)
-<!-- GAP: replace whiteui-eventstream-liveevents-filter-drop-down-lists.png with a screenshot showing the filter dropdown with the Warn (yellow) segment visible alongside Valid, Invalid, and No Spec -->
 
 Continuous monitoring helps you catch regressions quickly. For example, a new release that stops sending a required attribute or introduces a new, undefined event name.
 
@@ -189,8 +177,7 @@ For more information, see [Use a trace ID](https://docs.tealium.com/about-live-e
 
 Use the insights from monitoring to fix your data quality issues:
 
-* For invalid events, inspect the event samples to see which required attributes are missing or malformed. Update your implementation or adjust the specification as needed.
-* For warn events, inspect the event samples to see which optional attributes are missing or have the wrong data type. Update your implementation so the optional attributes are sent with the correct types.
+* For invalid events, inspect the event samples to see which attributes are missing or malformed. Required attributes that are missing or have the wrong data type, and optional attributes that are present with the wrong data type or that fail a data value rule, all produce invalid events. Update your implementation or adjust the specification as needed.
 * For events with no specification, decide whether to create a specification or treat them as out-of-scope noise. Click any event in the live events chart and use it as the basis of a new event specification.
 
 After you create or update event specifications, test the data again.
@@ -203,17 +190,15 @@ For more information, see [Live events]() and [Manage event specifications]().
 
 Event health helps you move from detection to resolution.
 
-In the live events chart, look for green bars (valid events), and a decreasing number of yellow (warn), red (invalid), and blue (no-spec) segments for your key events.
+In the live events chart, look for green bars (valid events), and a decreasing number of red (invalid) and blue (no-spec) segments for your key events.
 
-On the **Event Specifications** overview and detail pages, monitor **Total Volume**, **Valid Events**, **Warn Events**, **Invalid Events**, and **No Spec** counts per event over your chosen time range.
+On the **Event Specifications** overview and detail pages, monitor **Total Volume**, **Valid Events**, **Invalid Events**, and **No Spec** counts per event over your chosen time range.
 
 ![](https://docs.tealium.com/images/server-side/event-health-table.png)
-<!-- GAP: replace event-health-table.png with a screenshot of the Event Specifications overview showing the Warn Events metric tile and the Warn Events column in the Defined Events table -->
 
 These metrics show whether your changes are improving data quality and where to focus next:
 
-* Spikes in invalid events often indicate changes in your implementation or new attribute values.
-* Spikes in warn events indicate that optional attributes are missing or being sent with the wrong data type.
+* Spikes in invalid events often indicate changes in your implementation, new attribute values, or optional attributes being sent with the wrong data type.
 * Growth in events with no specification suggests new event types or missing specifications.
 * Unknown attributes are flagged as having an unknown data type. Define them directly from the event details view so they can be used in event specifications and other features.
 * If events are invalid because of missing or incorrect attributes, update your tracking code or tag management configuration so new events comply with the specification.

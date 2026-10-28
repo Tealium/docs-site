@@ -13,31 +13,29 @@ The Tealium Prism library uses a modular architecture. Install only the modules 
 | :--- | :--- | :--- |
 | Core | `prism-core` | Required. Provides the Tealium instance, configuration, tracking, and data layer. |
 | [Lifecycle](https://docs.tealium.com/platforms/prism-mobile/module-list/lifecycle/) | `prism-lifecycle` | Tracks app lifecycle events such as launch, wake, and sleep. |
-| [Moments API](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/) | `prism-moments-api` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
-| [Moments iQ](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-iq/) | — | Configures in-app survey and experience widgets from the Tealium iQ mobile profile. |
-| [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `prism-appdata` | Collects app-level data such as app name, version, and build number. |
-| [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `prism-collect` | Dispatches events to the Tealium Collect endpoint. |
-| [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `prism-connectivity-data` | Collects device connectivity information such as network type. |
-| [DeepLink](https://docs.tealium.com/platforms/prism-mobile/module-list/deep-link/) | `prism-deeplink` | Handles deep link URLs and passes deep link data to the data layer. |
-| [DeviceData](https://docs.tealium.com/platforms/prism-mobile/module-list/devicedata/) | `prism-device-data` | Collects device information such as model, OS version, and screen resolution. |
-| [TimeData](https://docs.tealium.com/platforms/prism-mobile/module-list/timedata/) | `prism-time-data` | Adds timestamp data to tracking calls. |
-| Trace | `prism-trace` | Enables trace sessions for debugging and validation. |
+| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/) | `prism-context-api` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
+| [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `prism-core` | Collects app-level data such as app name, version, and build number. |
+| [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `prism-core` | Dispatches events to the Tealium Collect endpoint. |
+| [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `prism-core` | Collects device connectivity information such as network type. |
+| [DeepLink](https://docs.tealium.com/platforms/prism-mobile/module-list/deep-link/) | `prism-core` | Handles deep link URLs and passes deep link data to the data layer. |
+| [DeviceData](https://docs.tealium.com/platforms/prism-mobile/module-list/devicedata/) | `prism-core` | Collects device information such as model, OS version, and screen resolution. |
+| [TimeData](https://docs.tealium.com/platforms/prism-mobile/module-list/timedata/) | `prism-core` | Adds timestamp data to tracking calls. |
+| Trace | `prism-core` | Enables trace sessions for debugging and validation. |
 
 
 | Module | Package | Description |
 | :--- | :--- | :--- |
 | Core | `TealiumPrismCore` | Required. Provides the Tealium instance, configuration, tracking, and data layer. |
 | [Lifecycle](https://docs.tealium.com/platforms/prism-mobile/module-list/lifecycle/) | `TealiumPrismLifecycle` | Tracks app lifecycle events such as launch, wake, and sleep. |
-| [Moments API](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/) | `TealiumPrismMomentsAPI` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
-| [Moments iQ](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-iq/) | — | Configures in-app survey and experience widgets from the Tealium iQ mobile profile. |
-| [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismAppData` | Collects app-level data such as app name, version, and build number. |
-| [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCollect` | Dispatches events to the Tealium Collect endpoint. |
-| [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismConnectivityData` | Collects device connectivity information such as network type. |
-| [DeepLink](https://docs.tealium.com/platforms/prism-mobile/module-list/deep-link/) | `TealiumPrismDeepLink` | Handles deep link URLs and passes deep link data to the data layer. |
-| [DeviceData](https://docs.tealium.com/platforms/prism-mobile/module-list/devicedata/) | `TealiumPrismDeviceData` | Collects device information such as model, OS version, and screen resolution. |
-| DataLayer | `TealiumPrismDataLayer` | Extended data layer operations and persistence. |
-| [TimeData](https://docs.tealium.com/platforms/prism-mobile/module-list/timedata/) | `TealiumPrismTimeData` | Adds timestamp data to tracking calls. |
-| Trace | `TealiumPrismTrace` | Enables trace sessions for debugging and validation. |
+| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/) | `TealiumPrismContextAPI` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
+| [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismCore` | Collects app-level data such as app name, version, and build number. |
+| [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCore` | Dispatches events to the Tealium Collect endpoint. |
+| [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismCore` | Collects device connectivity information such as network type. |
+| [DeepLink](https://docs.tealium.com/platforms/prism-mobile/module-list/deep-link/) | `TealiumPrismCore` | Handles deep link URLs and passes deep link data to the data layer. |
+| [DeviceData](https://docs.tealium.com/platforms/prism-mobile/module-list/devicedata/) | `TealiumPrismCore` | Collects device information such as model, OS version, and screen resolution. |
+| DataLayer | `TealiumPrismCore` | Extended data layer operations and persistence. |
+| [TimeData](https://docs.tealium.com/platforms/prism-mobile/module-list/timedata/) | `TealiumPrismCore` | Adds timestamp data to tracking calls. |
+| Trace | `TealiumPrismCore` | Enables trace sessions for debugging and validation. |
 
 
 React Native modules are npm packages. Install only the packages your app needs.
@@ -61,7 +59,6 @@ Add the Prism BOM and the modules you need to your `build.gradle` file:
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
 implementation("com.tealium.prism:prism-core")
 implementation("com.tealium.prism:prism-lifecycle")
-implementation("com.tealium.prism:prism-collect")
 ```
 
 
@@ -116,6 +113,7 @@ React Native does not support programmatic module activation. Enable and configu
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "my_account",
     profileName = "my_profile",
     environment = Environment.PROD,
@@ -134,7 +132,6 @@ import TealiumPrism
 #else
 import TealiumPrismCore
 import TealiumPrismLifecycle
-import TealiumPrismCollect
 #endif
 
 let config = TealiumConfig(account: "my_account",

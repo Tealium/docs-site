@@ -11,7 +11,7 @@ Tealium Prism is the mobile SDK for iOS (Swift), Android (Kotlin), and React Nat
 
 * **Unified event API**: A consistent event API for Swift and Kotlin with near-identical concepts and naming, and a TypeScript API for React Native.
 * **Multi-dispatcher pipeline**: Send the same event to Tealium Collect and on-device vendor SDKs in parallel.
-* **Rules engine and barriers**: Control event delivery based on connectivity, batching, consent, or other conditions.
+* **Rules engine and barriers**: Control event delivery based on connectivity, batching, or other conditions.
 * **On-device transformations**: Modify, enrich, or filter event payloads before they leave the device, with the ability to update logic without an App Store/Play Store release.
 * **Remote configuration**: Manage modules, rules, barriers, and transformations from a Tealium mobile profile without an app release.
 

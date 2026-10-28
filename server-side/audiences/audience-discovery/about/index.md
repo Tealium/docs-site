@@ -60,7 +60,7 @@ Use the following interactive tools to define and filter your search. The presen
 
 Visitor stitching is a form of identity resolution that works across platforms, devices, and browsers to associate activity to the same visitor. For visitor stitching to work properly, the selected visitor ID attribute must be unique for each visitor. You can use Audience Discovery to validate the uniqueness of visitor IDs before you enable visitor stitching.
 
-Learn more about testing visitor stitching strategies with Audience Discovery in the [Visitor ID Part 1]() tutorial. For instructions on creating a visitor ID attribute, including verification with Audience Discovery, see [Create a visitor ID attribute]().
+Learn more about testing visitor stitching strategies with Audience Discovery in the [Visitor ID Part 1](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-id-part-1/) tutorial. For instructions on creating a visitor ID attribute, including verification with Audience Discovery, see [Create a visitor ID attribute]().
 
 
 <blockquote>

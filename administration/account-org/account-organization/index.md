@@ -114,7 +114,7 @@ The developer performs a Save As to create Version 2 and publishes it to Dev. Af
 
 Server-side offers save, save as, and the option to publish a profile. You can use badges, rules, test users, and Trace to test new server-side functionality without disrupting the production environment.
 
-For more information, see [About testing](https://docs.tealium.com/ss-test-publish/) and [Trace: Test with Trace](https://docs.tealium.com/audiencestream-trace-test-with-trace/).
+For more information, see [About testing](https://docs.tealium.com/ss-test-publish/) and [Trace: Test with Trace](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/trace-test/).
 
 The following diagram demonstrates a simple server-side workflow:
 

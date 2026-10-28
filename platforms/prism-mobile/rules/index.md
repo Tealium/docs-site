@@ -43,16 +43,16 @@ A `Condition` represents a single criterion that checks if data in your applicat
 
 ```kotlin
 // Check if user type equals "premium"
-val condition = Condition.equals(
+val condition = Condition.isEqual(
     ignoreCase = false,
     variable = "user_type",
     target = "premium"
 )
 
 // Check if purchase amount is greater than 100
-val condition = Condition.isGreaterThan(
+val amountCondition = Condition.isGreaterThan(
     orEqual = false,
-    variable = JSONPath["order"]["amount"],
+    variable = JsonPath["order"]["amount"],
     number = "100"
 )
 ```
@@ -65,9 +65,9 @@ let condition = Condition.equals(ignoreCase: false,
                                 target: "premium")
 
 // Check if purchase amount is greater than 100
-let condition = Condition.isGreaterThan(orEqual: false,
-                                       variable: JSONPath["order"]["amount"],
-                                       number: "100")
+let amountCondition = Condition.isGreaterThan(orEqual: false,
+                                             variable: JSONPath["order"]["amount"],
+                                             number: "100")
 ```
 
 
@@ -84,10 +84,10 @@ A `Rule` allows you to combine multiple conditions using logical operators:
 val simpleRule = Rule.just(condition)
 
 // AND rule - all results must be true
-val andRule = Rule.and(listOf(rule1, rule2, rule3))
+val andRule = Rule.all(listOf(rule1, rule2, rule3))
 
 // OR rule - at least one result must be true
-val orRule = Rule.or(listOf(rule1, rule2))
+val orRule = Rule.any(listOf(rule1, rule2))
 
 // NOT rule - negates the result
 val notRule = Rule.not(anotherRule)
@@ -185,12 +185,12 @@ Combine multiple conditions with nested logic:
 
 ```kotlin
 // (Premium users OR VIP users) AND (not in maintenance mode)
-val complexRule = Rule.and(listOf(
-    Rule.or(listOf(
-        Rule.just(Condition.equals(false, "subscription", "premium")),
-        Rule.just(Condition.equals(false, "vip_status", "true"))
+val complexRule = Rule.all(listOf(
+    Rule.any(listOf(
+        Rule.just(Condition.isEqual(false, "subscription", "premium")),
+        Rule.just(Condition.isEqual(false, "vip_status", "true"))
     )),
-    Rule.not(Rule.just(Condition.equals(false, "maintenance_mode", "true")))
+    Rule.not(Rule.just(Condition.isEqual(false, "maintenance_mode", "true")))
 ))
 ```
 
@@ -225,7 +225,8 @@ Rules can be defined in SDK settings JSON for remote or local configuration:
     }
   },
   "modules": {
-    "analytics_collector": {
+    "DeviceData": {
+      "module_type": "DeviceData",
       "enabled": true,
       "rules": {
         "operator": "or",

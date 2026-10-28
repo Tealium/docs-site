@@ -1,40 +1,40 @@
 ---
 title: TimeDataモジュール
-description: すべてのトラッキングコールにタイムスタンプデータを追加します。
+description: すべてのトラッキング呼び出しにタイムスタンプデータを追加します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/timedata/
 ---
-TimeDataモジュールは、すべてのトラッキングコールにタイムスタンプとタイムゾーン情報を追加します。
+TimeDataモジュールは、すべてのトラッキング呼び出しにタイムスタンプとタイムゾーンの情報を追加します。
 
 ## データレイヤー
 
-このモジュールが有効な間、各トラッキングコールに以下の変数が追加されます：
+モジュールが有効な間、各トラッキング呼び出しに次の変数が追加されます。
 
 | 変数 | 説明 | 例 |
 | :--- | :--- | :--- |
 | `tealium_timestamp_epoch` | 秒単位のUnixタイムスタンプ | `1746547200` |
 | `tealium_timestamp_epoch_milliseconds` | ミリ秒単位のUnixタイムスタンプ | `1746547200000` |
-| `tealium_timestamp_local` | ISO 8601形式のローカル時間 | `"2025-05-06T07:30:45"` |
-| `tealium_timestamp_local_with_offset` | タイムゾーンオフセット付きのISO 8601形式のローカル時間 | `"2025-05-06T07:30:45-07:00"` |
-| `tealium_timestamp_offset` | タイムゾーンオフセット（小数時間） | `-7` |
+| `tealium_timestamp_local` | ISO 8601形式のローカル時刻 | `"2025-05-06T07:30:45"` |
+| `tealium_timestamp_local_with_offset` | タイムゾーンオフセットを含むISO 8601形式のローカル時刻 | `"2025-05-06T07:30:45-07:00"` |
+| `tealium_timestamp_offset` | 10進数の時間単位で表したタイムゾーンオフセット | `-7` |
 | `tealium_timestamp_timezone` | タイムゾーン識別子 | `"America/Los_Angeles"` |
-| `tealium_timestamp_utc` | ISO 8601形式のUTC時間 | `"2025-05-06T14:30:45Z"` |
+| `tealium_timestamp_utc` | ISO 8601形式のUTC時刻 | `"2025-05-06T14:30:45Z"` |
 
 ## インストール
 
 
 
-`build.gradle`ファイルに`prism-time-data`依存関係を追加します：
+TimeDataモジュールは`prism-core`に含まれています。`build.gradle`ファイルに次の内容を追加します。
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
-implementation("com.tealium.prism:prism-time-data")
+implementation("com.tealium.prism:prism-core")
 ```
 
 
-Swift Package Managerを使用して`TealiumPrismTimeData`を依存関係に追加するか、CocoaPods用にPodfileに追加します：
+TimeDataモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift`を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに追加します。
 
 ```ruby
-pod 'tealium-prism/TimeData'
+pod 'tealium-prism/Core'
 ```
 
 
@@ -45,18 +45,19 @@ pod 'tealium-prism/TimeData'
 
 ```kotlin
 val config = TealiumConfig.Builder(
+    application = application,
     accountName = "ACCOUNT",
     profileName = "PROFILE",
     environment = Environment.PROD,
     modules = listOf(
         Modules.timeData(),
-        // 他のモジュール...
+        // other modules...
     )
 ).build()
 ```
 
 
-プログラムでモジュールを構成し、`TealiumConfig`のmodulesパラメータに追加します。
+`TealiumConfig`のmodulesパラメータに追加して、プログラムでモジュールを構成します。
 
 モジュール構成の詳細については、[`TimeDataSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/timedata.html)を参照してください。
 
@@ -70,7 +71,7 @@ let config = TealiumConfig(account: "ACCOUNT",
                                           .setOrder(1)
                                           .setRules(.just("rule_id_from_settings"))
                                }),
-                               // 他のモジュール...
+                               // other modules...
                            ])
 ```
 

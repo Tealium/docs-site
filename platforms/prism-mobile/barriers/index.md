@@ -11,7 +11,7 @@ Barriers are gates in the event dispatch pipeline. Before the SDK sends an event
 
 Each barrier is either **open** (the dispatch proceeds) or **closed** (the dispatch queues).
 
-A barrier's scope determines which dispatchers it applies to: either all dispatchers or a specific one by ID.
+A barrier's scope determines which dispatchers it applies to: either all dispatchers or specific dispatchers by ID.
 
 Barriers can be marked as flushable, meaning they are bypassed when the event queue is flushed manually.
 
@@ -83,15 +83,15 @@ Configuration options:
 ```kotlin
 // WiFi-only, scoped to the Collect dispatcher
 config.addBarrier(
-    Barriers.connectivity(
-        defaultScopes = listOf(BarrierScope.dispatcher("collect_dispatcher")),
-        configuration = mapOf("wifi_only" to true)
-    )
+    Barriers.connectivity {
+        it.setScope(BarrierScope.Dispatchers(Modules.Types.COLLECT))
+            .setWifiOnly(true)
+    }
 )
 
 // Allow any network connection, scoped to all dispatchers
 config.addBarrier(
-    Barriers.connectivity(defaultScopes = listOf(BarrierScope.ALL))
+    Barriers.connectivity { it.setScope(BarrierScope.All) }
 )
 ```
 
@@ -99,15 +99,15 @@ config.addBarrier(
 ```swift
 // WiFi-only, scoped to the Collect dispatcher
 config.addBarrier(
-    Barriers.connectivity(
-        defaultScopes: [.dispatcher(id: Modules.Types.collect)],
-        configuration: ["wifi_only": true]
-    )
+    Barriers.connectivity(forcingSettings: { enforcedSettings in
+        enforcedSettings.setScope(.dispatchers([Modules.Types.collect]))
+            .setWifiOnly(true)
+    })
 )
 
 // Allow any network connection, scoped to all dispatchers
 config.addBarrier(
-    Barriers.connectivity(defaultScopes: [.all])
+    Barriers.connectivity(forcingSettings: { $0.setScope(.all) })
 )
 ```
 
@@ -125,10 +125,10 @@ Configuration options:
 ```kotlin
 // Batch 10 events before dispatching, scoped to all dispatchers
 config.addBarrier(
-    Barriers.batching(
-        defaultScopes = listOf(BarrierScope.ALL),
-        configuration = mapOf("batch_size" to 10)
-    )
+    Barriers.batching {
+        it.setScope(BarrierScope.All)
+            .setBatchSize(10)
+    }
 )
 
 // Use default batch size, scoped to the Collect dispatcher
@@ -139,10 +139,10 @@ config.addBarrier(Barriers.batching())
 ```swift
 // Batch 10 events before dispatching, scoped to all dispatchers
 config.addBarrier(
-    Barriers.batching(
-        defaultScopes: [.all],
-        configuration: ["batch_size": 10]
-    )
+    Barriers.batching(forcingSettings: { enforcedSettings in
+        enforcedSettings.setScope(.all)
+            .setBatchSize(10)
+    })
 )
 
 // Use default batch size, scoped to the Collect dispatcher
@@ -160,14 +160,14 @@ Barrier configuration is handled through remote settings or local JSON files. Th
   "barriers": {
     "ConnectivityBarrier": {
       "barrier_id": "ConnectivityBarrier",
-      "scopes": ["all"],
+      "scope": "all",
       "configuration": {
         "wifi_only": true
       }
     },
     "BatchingBarrier": {
       "barrier_id": "BatchingBarrier",
-      "scopes": ["analytics_dispatcher", "collect_dispatcher"],
+      "scope": ["analytics_dispatcher", "Collect"],
       "configuration": {
         "batch_size": 10
       }
@@ -193,8 +193,10 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
         const val ID = "CustomBusinessLogicBarrier"
     }
 
+    override val id: String = ID
+
     private var settings = BusinessLogicSettings(configuration)
-    private val stateSubject = StateSubject(BarrierState.OPEN)
+    private val stateSubject = Observables.stateSubject(BarrierState.Open)
 
     override fun onState(dispatcherId: String): Observable<BarrierState> = stateSubject
 
@@ -207,7 +209,7 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
 
     private fun updateBarrierState() {
         val shouldBlock = settings.maintenanceMode
-        stateSubject.value = if (shouldBlock) BarrierState.CLOSED else BarrierState.OPEN
+        stateSubject.onNext(if (shouldBlock) BarrierState.Closed else BarrierState.Open)
     }
 }
 ```
@@ -215,7 +217,7 @@ class CustomBusinessLogicBarrier(configuration: DataObject) : ConfigurableBarrie
 
 ```swift
 class CustomBusinessLogicBarrier: ConfigurableBarrier {
-    static var id: String = "CustomBusinessLogicBarrier"
+    static let id: String = "CustomBusinessLogicBarrier"
 
     @StateSubject(.open)
     private var state: ObservableState<BarrierState>
@@ -258,14 +260,14 @@ Register your custom barrier during SDK initialization:
 
 ```kotlin
 config.addBarrier(
-    CustomBusinessLogicBarrier.Factory(defaultScopes = listOf(BarrierScope.ALL))
+    CustomBusinessLogicBarrier.Factory(defaultScope = BarrierScope.All)
 )
 ```
 
 
 ```swift
 config.addBarrier(
-    CustomBusinessLogicBarrier.Factory(defaultScopes: [.all])
+    CustomBusinessLogicBarrier.Factory(defaultScope: .all)
 )
 ```
 
@@ -283,7 +285,7 @@ let barrierRegistrar = context.barrierRegistrar
 let customBarrier = CustomTimerBarrier(interval: 30.0)
 barrierRegistrar.registerScopedBarrier(
     customBarrier,
-    scopes: [.dispatcher(id: "my_dispatcher")]
+    scope: .dispatchers(["my_dispatcher"])
 )
 
 // Unregister when no longer needed

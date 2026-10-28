@@ -151,6 +151,8 @@ In this example:
 
 When active, you can interact with a consent integration in the browser console on pages where `utag.js` is loaded. Using the JavaScript console lets you get the current consent decision that is retrieved from the CMP on every event. The consent decision is never cached, which ensures that it is always up to date.
 
+As of framework v1.4.0, the framework only reports a tag as blocked if the consent decision stopped it. Tags that did not meet load rules are no longer included in the blocked count.
+
 For more information, see [Validate and debug consent integrations](https://docs.tealium.com/validate-and-debug-consent-integrations/).
 
 ## Consent register

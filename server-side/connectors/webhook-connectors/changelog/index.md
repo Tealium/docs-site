@@ -2,6 +2,14 @@
 title: Changelog
 url: https://docs.tealium.com/server-side/connectors/webhook-connectors/changelog/
 ---
+### 2026-10-27
+
+Added two reserved template variables available in all template-capable webhook connector actions:
+  * **`tealium_event_payload`**: The entire current event, including UDO, DOM, and cookie data. No attribute mapping required.
+  * **`tealium_visitor_payload`**: The entire visitor profile, including attributes and current visit data. No attribute mapping required.
+
+For more information, see [Reserved variables](https://docs.tealium.com/connector-template-variables/#reserved-variables).
+
 ### 2024-07-10
 
 Added the following actions to all HTTP-based webhook connectors:

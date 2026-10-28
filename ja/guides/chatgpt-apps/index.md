@@ -1,39 +1,39 @@
 ---
 title: Tealium + ChatGPT アプリ
-description: クライアントサイド、サーバーサイド、ハイブリッドアプローチで一貫した訪問IDを持つChatGPTアプリでのTealiumトラッキングの実装。
+description: クライアントサイド、サーバーサイド、ハイブリッドの各アプローチで一貫した訪問IDを維持しながら、ChatGPTアプリにTealiumトラッキングを実装します。
 url: https://docs.tealium.com/ja/guides/chatgpt-apps/
 ---
 ## はじめに
 
-Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインターフェースでアプリのような体験のためのデータ基盤を提供します。プラットフォーム全体で一貫したデータ収集と訪問ID管理をサポートします。
+Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインターフェイスにおけるアプリのようなエクスペリエンスのためのデータ基盤を提供します。プラットフォーム間で一貫したデータ収集と訪問ID管理をサポートします。
 
-このChatGPTソリューションは、MCPフレンドリーな設計を使用して以下を実現します：
+このChatGPT向けソリューションでは、MCPに対応した設計を採用し、次のことを実現します。
 
-* 主要なインタラクション（製品閲覧、ボタンクリック、購入）の追跡。
-* クライアント、サーバー、ChatGPTコンテキスト間でのIDの統合。
-* Tealium Collectを使用したリアルタイムでのイベントストリーミング。
-* Tealium Context APIとTealium AudienceStreamを使用した体験のパーソナライズ。
+* 主要なインタラクション（商品の表示、ボタンのクリック、購入）を追跡する。
+* クライアント、サーバー、ChatGPTの各コンテキストでIDを統合する。
+* Tealium Collectを使用してイベントをリアルタイムでストリーミングする。
+* Tealium Context APIとTealium AudienceStreamを使用してエクスペリエンスをパーソナライズする。
 
-## オプション 1: クライアントサイドトラッキング
+## オプション1：クライアントサイドトラッキング
 
-このアプローチは、Tealium iQの専用プロファイルからの標準的な[Universal Tag (`utag.js`)](https://docs.tealium.com/ja/platforms/javascript/)インストールを使用します。唯一の違いは、`utag.js`によって生成された匿名IDに依存しないため、独自のIDを生成して永続化することです。
+このアプローチでは、Tealium iQの専用プロファイルから標準の[ユニバーサルタグ（`utag.js`）](https://docs.tealium.com/ja/platforms/javascript/)をインストールします。唯一の違いは、`utag.js`によって生成される匿名IDに依存せず、ユーティリティ関数を使用して独自のIDを生成し、永続化する点です。
 
 **利点：**
 
-* Tealium iQタグ管理タグベンダーマーケットプレイスへのフルアクセス。
-* 同意のための組み込みサポート。
-* A/Bテストとパーソナライゼーショントリガーをサポート。
+* Tealium iQタグ管理のタグベンダーマーケットプレイスをすべて利用できる。
+* 同意管理が組み込まれている。
+* A/Bテストとパーソナライゼーショントリガーをサポートする。
 
-以下のサンプルコードは次のことを示しています：
+次のサンプルコードは、以下の処理を示しています。
 
-* ウェブサイトで行うように`utag.js`をロードします。
-* 匿名訪問IDを生成して永続化します。
-* ChatGPTアプリの初期ロードを追跡します。
-* カスタムメソッドで関連するユーザーアクションを追跡します。
+* Webサイトの場合と同様に、`utag.js`を読み込む。
+* 匿名の訪問IDを生成して永続化する。
+* ChatGPTアプリの初回読み込みを追跡する。
+* カスタムメソッドを使用して、関連するユーザー操作を追跡する。
 
 ```html
 <script>
-  // Tealium iQをロード
+  // Load Tealium iQ
   (function(a,b,c,d){
     a='https://tags.tiqcdn.com/utag/[ACCOUNT]/[PROFILE]/[ENVIRONMENT]/utag.js';
     b=document;c='script';d=b.createElement(c);d.src=a;
@@ -41,20 +41,20 @@ Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインター
     a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
   })();
 
-  // 32文字の小文字英数字の訪問IDを生成
+  // Generate a 32-char lowercase alphanumeric visitor ID
   function generateTealiumVisitorId() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     return Array.from({ length: 32 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
   }
 
-  // 訪問IDを取得または作成して永続化
+  // Retrieve or create & persist the visitor ID
   let tealium_visitor_id = localStorage.getItem('tealium_visitor_id');
   if (!tealium_visitor_id) {
     tealium_visitor_id = generateTealiumVisitorId();
     localStorage.setItem('tealium_visitor_id', tealium_visitor_id);
   }
 
-  // アプリ初期化
+  // App initialized
   utag.track('event', {
     'tealium_event': 'interface_loaded',
     'app_version': '2.1.0',
@@ -62,7 +62,7 @@ Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインター
     'tealium_visitor_id': tealium_visitor_id
   });
 
-  // PDPビュー
+  // PDP view
   function trackViewPdp(product) {
     utag.track('view', {
       'tealium_event': 'view_pdp',
@@ -75,7 +75,7 @@ Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインター
     });
   }
 
-  // ボタンクリック
+  // Button click
   function trackButtonClick(button) {
     utag.track('link', {
       'tealium_event': 'button_click',
@@ -89,31 +89,31 @@ Tealiumは、ブラウザ、ウィジェット、カスタムChatGPTインター
 </script>
 ```
 
-## オプション 2: サーバーサイドトラッキング
+## オプション2：サーバーサイドトラッキング
 
-サーバーサイドトラッキングは、[HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を使用してイベントを直接Tealiumに送信します。クライアントサイドソリューションと同様に、追加のユーティリティ関数を使用して独自の匿名訪問IDを生成して永続化します。
+サーバーサイドトラッキングでは、[HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を使用してイベントをTealiumに直接送信します。クライアントサイドのソリューションと同様に、追加したユーティリティ関数を使用して独自の匿名訪問IDを生成し、永続化します。
 
-次のシナリオでこのアプローチを推奨します：
+次のシナリオでは、このアプローチを推奨します。
 
-* CSP制限により外部JavaScriptのロードが防止される場合。
-* 購入などの重要なイベントのデータトラッキングを保証するため。
+* CSPの制限によって外部JavaScriptを読み込めない場合。
+* 購入などの重要なイベントのデータトラッキングを確実に行う必要がある場合。
 
-以下のサーバーサイドトラッキングソリューションが利用可能です：
+次のサーバーサイドトラッキングソリューションを利用できます。
 
 ### Node.jsアプリ（推奨）
 
-Node.jsソリューションには、匿名訪問IDを生成して永続化するクライアントコードと、追跡されたイベントのためのラッパー関数の呼び出しが含まれています。
+Node.jsソリューションには、匿名訪問IDを生成して永続化し、追跡対象イベントのラッパー関数を呼び出すクライアントコードが含まれています。
 
-たとえば、次のサンプルコードは訪問IDを生成し、顧客が購入を完了したときにアプリから取得される`order`オブジェクトを使用して注文追跡リクエストをサーバーに送信します。
+たとえば、次のサンプルコードは訪問IDを生成し、注文トラッキングリクエストをサーバーに送信します。`order`オブジェクトは、顧客が購入を完了したときにアプリから渡されます。
 
 ```js
-// 32文字の小文字英数字の訪問IDを生成
+// Generate a 32-char lowercase alphanumeric visitor ID
 function generateTealiumVisitorId() {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
   return Array.from({ length: 32 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 }
 
-// 訪問IDを取得または作成して永続化
+// Retrieve or create & persist the visitor ID
 let tealium_visitor_id = localStorage.getItem('tealium_visitor_id');
 if (!tealium_visitor_id) {
   tealium_visitor_id = generateTealiumVisitorId();
@@ -136,7 +136,7 @@ async function trackPurchaseServer(order) {
 }
 ```
 
-次のサンプルサーバーサイドコードは、トラッキングコールを受け入れるエンドポイントを構成し、[Tealium for Node.js](https://docs.tealium.com/ja/platforms/node/install/)を使用してそれらのイベントをTealium Collectに転送します。
+次のサンプルサーバーサイドコードでは、トラッキング呼び出しを受け付けるエンドポイントを構成し、[Tealium for Node.js](https://docs.tealium.com/ja/platforms/node/install/)を使用して、それらのイベントをTealium Collectに転送します。
 
 ```js
 // npm i tealium-collect express
@@ -179,19 +179,19 @@ app.post('/api/tealium/track', async (req, res) => {
 
 app.listen(3000, () => console.log('Tealium server listening on 3000'));
 ```
-### ブラウザアプリ
+### ブラウザーアプリ
 
-`<script>` タグを埋め込むことができるブラウザアプリでこのアプローチを使用します。このコードは `fetch()` と [HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/) を使用してイベントを直接 Tealium に送信し、匿名訪問 ID を生成および保持するための同じユーティリティメソッドを使用します。
+`<script>` タグを埋め込めるブラウザーアプリでは、この方法を使用します。このコードは、`fetch()` と [HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/) を使用してイベントを Tealium に直接送信し、同じユーティリティメソッドを使用して匿名訪問 ID を生成および永続化します。
 
 ```html
 <script>
-  // 32文字の小文字英数字の訪問IDを生成
+  // Generate a 32-char lowercase alphanumeric visitor ID
   function generateTealiumVisitorId() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     return Array.from({ length: 32 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
   }
 
-  // 訪問IDを取得または作成して保持
+  // Retrieve or create & persist the visitor ID
   let tealium_visitor_id = localStorage.getItem('tealium_visitor_id');
   if (!tealium_visitor_id) {
     tealium_visitor_id = generateTealiumVisitorId();
@@ -236,33 +236,33 @@ app.listen(3000, () => console.log('Tealium server listening on 3000'));
 </script>
 ```
 
-## オプション3: ハイブリッド（推奨）
+## オプション 3：ハイブリッド（推奨）
 
-ハイブリッドアプローチは、クライアントサイドソリューションを使用して `interface_loaded`、`view_pdp`、`button_click` などのインタラクションイベントを追跡し、サーバーサイドソリューションを使用して `purchase` などの権威あるイベントを追跡します。このアプローチを推奨します。
-
-
-<blockquote>
-ハイブリッドソリューションを実行するときは、iQプロファイルでTealium Collectタグを読み込まないでください。これにより、イベントの重複追跡が防止されます。
-</blockquote>
-
-
-## 訪問のアイデンティティ
-
-正確な追跡と統一された訪問プロファイルを確保するために、クライアントサイドとサーバーサイドのイベントの両方で同じ匿名訪問IDを常に使用してください。このアプローチは、ChatGPT、ウェブ、モバイルを通じて単一の訪問アイデンティティを維持し、一貫した追跡とリアルタイムのパーソナライゼーションを可能にします。
+ハイブリッド方式では、クライアント側のソリューションを使用して `interface_loaded`、`view_pdp`、`button_click` などのインタラクションイベントをトラッキングし、サーバー側のソリューションを使用して `purchase` などの信頼性が求められるイベントをトラッキングします。アプリを可能な限り完全にトラッキングするために、この方式を推奨します。
 
 
 <blockquote>
-利用可能な場合は、`customer_id` や `email_address_hash` などの既知のユーザー識別子を別のパラメータとして含めることをお勧めしますが、これらの値を `tealium_visitor_id` で置き換えることはしないでください。
+When running the hybrid solution, do not load the Tealium Collect tag in your iQ profile. This prevents duplicate event tracking.
 </blockquote>
 
 
-## MCP統合（オプショナル）
+## 訪問 ID
 
-サーバーからシンプルなMCPツールを公開して、ChatGPTが会話ロジックを処理できるようにします。このアプローチでは、サーバーが形式、アイデンティティ、ポリシーを強制します。
+正確なトラッキングと統合された訪問プロファイルを実現するために、クライアント側とサーバー側のイベントの両方で、常に同じ匿名訪問 ID を使用してください。この方式により、ChatGPT、Web、モバイル全体で単一の訪問 ID が維持され、一貫したトラッキングとリアルタイムのパーソナライゼーションが可能になります。
 
-**ツール:** `tealium-track-event`
 
-**例のスキーマ:**
+<blockquote>
+We recommend including known user identifiers as separate parameters when available, for example `customer_id` or `email_address_hash`, but do not use these values to replace `tealium_visitor_id`.
+</blockquote>
+
+
+## MCP 統合（任意）
+
+ChatGPT から呼び出せるシンプルな MCP ツールをサーバーから公開します。この方式では、ChatGPT が会話ロジックを処理し、サーバーが形式、ID、ポリシーを適用します。
+
+**ツール：** `tealium-track-event`
+
+**スキーマの例：**
 
 ```json
 {
@@ -279,26 +279,125 @@ app.listen(3000, () => console.log('Tealium server listening on 3000'));
 }
 ```
 
-**検証:**
+**検証：**
 
 * `visitorId` は正規表現 `/^[a-z0-9]{32}$/` に一致する必要があります。
-* `event` は許可されたイベントリスト（`interface_loaded`, `view_pdp`, `button_click`, `purchase`）に含まれている必要があります。
+* `event` は許可されたイベントのリスト（`interface_loaded`、`view_pdp`、`button_click`、`purchase`）に含まれている必要があります。
 
 ## Context API MCP
 
-アプリに [Context API MCP server](https://docs.tealium.com/context-api-mcp-server/) を追加してパーソナライゼーションを有効にします。
+パーソナライゼーションを有効にするには、[Context API MCP サーバー](https://docs.tealium.com/context-api-mcp-server/)をアプリに追加します。
 
-**例のフロー:**
+**フローの例：**
 
-1. イベント `view_pdp`, `button_click`, `purchase` を追跡します。
+1. `view_pdp`、`button_click`、`purchase` イベントをトラッキングします。
 2. **AudienceStream** が訪問プロファイルを構築します。
-3. Chat UI（またはMCPツール）が `tealium_visitor_id` で **Context API** を照会します。
-4. 応答は（推奨事項、オファー、トーンなど）適応します。
+3. チャット UI（または MCP ツール）が `tealium_visitor_id` を使用して **Context API** にクエリを実行します。
+4. レスポンスが状況に合わせて調整されます（レコメンデーション、オファー、トーン）。
 
 ## データプライバシーとコンプライアンス
 
-このアプリは、以下の機能を通じてデータプライバシーとコンプライアンスをサポートします：
+このアプリは、次の機能によってデータプライバシーとコンプライアンスをサポートします。
 
-* Tealium iQ Consent Managerを通じた同意駆動型アクティベーション。
-* データを送信する前に省略またはハッシュ化することによるPIIガバナンス。
-* 地域コンプライアンス（GDPR、CCPA、データ居住）。
+* Tealium iQ Consent Manager による同意ベースのアクティベーション。
+* データ送信前の省略またはハッシュ化による PII ガバナンス。
+* 地域別のコンプライアンス（GDPR、CCPA、データレジデンシー）。
+
+## サンプルアプリ
+
+### 前提条件
+
+* Node.js 18 以降（LTS）
+* `npm` または `pnpm`
+* Tealium のアカウント、プロファイル、環境
+* （任意）MCP を公開するための ngrok
+ 
+### インストール  
+    
+1. メインプロジェクトの依存関係をインストールします。   
+    ```bash
+    pnpm install
+    ```
+2. サーバーの依存関係をインストールします。   
+    ```bash
+    cd server
+    pnpm install
+    cd ..
+    ```
+
+### アプリケーションの実行  
+  
+1. フロントエンドバンドルをビルドします。  
+    ```sh
+    pnpm run build  
+    ```
+2. MCP サーバーを起動します。  
+    ```sh
+    cd server  
+    pnpm start
+    ```  
+2. サーバーは [http://localhost:8000/mcp](http://localhost:8000/mcp) で実行されます。
+3. ngrok トンネルを生成します（新しいターミナルで実行）。  
+    ```sh
+    ngrok http 8000  
+    ```
+3. ngrok から次の出力が返されます。  
+    ```none
+    Session Status    online  
+    Account           Your Account (Plan: Free)  
+    Update            update available (version 3.x.x, Ctrl-C to update)  
+    Version           3.x.x  
+    Region            United States (us)  
+    Web Interface     http://127.0.0.1:4040  
+    Forwarding        https://abc123def456.ngrok-free.app -> http://localhost:8000  
+    ```
+4. サーバーコード内の CSP ドメインを更新します。
+    * ターミナル出力から ngrok URL（例：`https://abc123def456.ngrok-free.app`）をコピーします。  
+    * `server/index.ts` の 30 行目と 34 行目で、`https://resolvedly-pouched-nena.ngrok-free.dev` を新しい ngrok URL に置き換えます。 
+    * `src/tealium/TealiumTracker.tsx` の 134 行目にも同じ変更を加えます。
+5. サーバーを再起動します。  
+    ```sh
+    # Kill the current server (Ctrl+C)
+    cd server
+    pnpm start
+    ``` 
+6. 新しい URL を使用してフロントエンドを再ビルドします。  
+    ```sh
+    cd ..  
+    pnpm run build
+    ```  
+
+次のアクセスポイントを記録しておいてください。  
+
+* ローカル MCP サーバー：[http://localhost:8000/mcp](http://localhost:8000/mcp)  
+* ヘルスチェック：[http://localhost:8000/health](http://localhost:8000/health)
+* API エンドポイント：[http://localhost:8000/api/tealium/track](http://localhost:8000/api/tealium/track)  
+* 公開 ngrok URL：ngrok URL + `/mcp`
+* 公開 API：ngrok URL + `/api/tealium/track`
+
+### ChatGPT へのアプリの追加
+
+1. **ChatGPT > Settings > Apps and Connectors** に移動します。
+2. **Advanced Settings** で **Developer Mode** を有効にします。
+3. **MCP server field** に **ngrok URL** を貼り付けます。
+
+### Tealium アプリの起動
+
+1. プロンプトが表示されたら、`tealium-tracker` ツールを使用します。  
+1. Tealium のアカウント、プロファイル、環境を入力します。  
+1. Tealium Universal タグ（`utag.js`）が読み込まれ、Web アプリの場合と同様にイベントがトラッキングされます。
+
+
+<blockquote>
+If third-party libraries are blocked, allow their resources in your CSP.
+</blockquote>
+
+
+### **サーバー側イベントトラッキング**
+
+サーバー側トラッキングを有効にすると、クライアント側の呼び出しが `/api/tealium/track` に送信されます。このエンドポイントは、Tealium Collect NPM モジュールを使用してトラッキングリクエストを実行します。
+
+
+
+[Tealium Trace](https://docs.tealium.com/about-trace/) で結果を検証します。
+

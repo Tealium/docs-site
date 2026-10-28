@@ -133,7 +133,7 @@ For detailed examples of configuring conversion APIs, see the following:
 * [X Conversions Connector]()
 * [Snapchat Conversions Connector]()
 * [Reddit Conversions Connector]()
-* [Microsoft UET Conversion API Connector]()
+* [Microsoft Advertising Conversion API Connector]()
 
 ## Use cases
 

@@ -15,7 +15,7 @@ Users must be assigned the Data Warehouse Admin role to use DataAccess. For more
 
 ## How it works
 
-Tealium DataAccess is an enterprise data hub solution that extends the power of [Tealium iQ Tag Management](https://docs.tealium.com/iq-tag-management/), [Tealium AudienceStream CDP](https://docs.tealium.com/introduction-to-audiencestream/), and [Tealium EventStream API Hub](https://docs.tealium.com/introduction-to-eventstream/) with long-term storage for data collected from web and mobile touch points, online and offline channels, and real-time audiences. 
+Tealium DataAccess is an enterprise data hub solution that extends the power of [Tealium iQ Tag Management](https://docs.tealium.com/iq-tag-management/), [Tealium AudienceStream CDP](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/), and [Tealium EventStream API Hub](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/) with long-term storage for data collected from web and mobile touch points, online and offline channels, and real-time audiences. 
 
 DataAccess works with EventStream feeds to store event data and with AudienceStream audiences to store visitor profile data.
 

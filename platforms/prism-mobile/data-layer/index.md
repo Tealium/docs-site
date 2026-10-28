@@ -33,6 +33,8 @@ You cannot disable this module, as it provides essential data storage capability
 </blockquote>
 
 
+To limit the events that include data layer values, add the DataLayer module to your mobile profile and assign a rule to it. For more information, see [Rules](https://docs.tealium.com/rules/).
+
 ## Get data
 
 
@@ -64,15 +66,17 @@ tealium.dataLayer.get(key: "customer_id",
 To retrieve a specific data item by key:
 
 ```swift
-if let userStatus = tealium.dataLayer.getDataItem(key: "user_status") as? String {
-    print("User status: \(userStatus)")
+tealium.dataLayer.getDataItem(key: "user_status").onSuccess { item in
+    if let userStatus = item?.get(as: String.self) {
+        print("User status: \(userStatus)")
+    }
 }
 ```
 
 To retrieve all key-value pairs in the data layer:
 
 ```swift
-if let allData = tealium.dataLayer.getAll() {
+tealium.dataLayer.getAll().onSuccess { allData in
     print("All data layer attributes: \(allData)")
 }
 ```
@@ -145,14 +149,14 @@ val globalContext = DataObject.Builder()
     .put("consent_status", "consented")
     .build()
 
-dataLayer.put(globalContext, Expiry.FOREVER)
+dataLayer.putAll(globalContext, Expiry.FOREVER)
 ```
 
 
-To set multiple key-value pairs at once, pass a dictionary to `put(data:)`:
+To set multiple key-value pairs at once, pass a `DataObject` to `putAll(dataObject:)`:
 
 ```swift
-tealium.dataLayer.put(data: [
+tealium.dataLayer.putAll(dataObject: [
     "customer_id": "12345",
     "is_logged_in": true,
     "consent_status": "consented",
@@ -163,11 +167,11 @@ tealium.dataLayer.put(data: [
 To set multiple values with an expiration:
 
 ```swift
-let data: [String: Any] = [
+let data: DataObject = [
     "campaign": "summer_sale",
     "discount": 20
 ]
-tealium.dataLayer.put(data: data, expiry: .untilRestart)
+tealium.dataLayer.putAll(dataObject: data, expiry: .untilRestart)
 ```
 
 
@@ -205,14 +209,14 @@ dataLayer.put(
     key = "product_category",
     value = productCategories,
     expiry = Expiry.SESSION
-).subscribe({ }, { err -> })
+).onFailure { err -> }
 ```
 
 
-Arrays are passed as standard Swift arrays in the data dictionary:
+Arrays are passed as standard Swift arrays in the `DataObject`:
 
 ```swift
-tealium.dataLayer.put(data: [
+tealium.dataLayer.putAll(dataObject: [
     "product_category": ["electronics", "headphones"]
 ], expiry: .session)
 ```
@@ -257,15 +261,15 @@ tealium.dataLayer.transactionally { editor ->
 The data layer is not changed until the transaction is committed. Applying after commit does nothing. Applied but not committed edits are not reflected in the items returned by this block.
 
 ```swift
-teal.dataLayer.transactionally { apply, getDataItem, commit in
-    apply(.put("key1", "value", .forever))
-    apply(.put("key2", "value2", .untilRestart))
-    apply(.remove("key3"))
-    if let count = getDataItem("key4")?.get(as: Int.self) {
-        apply(.put("key4", count + 1, .forever))
+tealium.dataLayer.transactionally { transaction in
+    transaction.put(key: "key1", value: "value", expiry: .forever)
+    transaction.put(key: "key2", value: "value2", expiry: .untilRestart)
+    transaction.remove(key: "key3")
+    if let count = transaction.get(key: "key4", as: Int.self) {
+        transaction.put(key: "key4", value: count + 1, expiry: .forever)
     }
     do {
-        try commit()
+        try transaction.commit()
     } catch {
         print(error)
     }
@@ -284,15 +288,15 @@ The following expiration types are available:
 
 | Type | Value | Description |
 | :--- | :--- | :--- |
-| Session (default) | `Expiry.SESSION` | Expires at the end of the current session. |
-| Forever | `Expiry.FOREVER` | Never expires while the app is installed. |
+| Session | `Expiry.SESSION` | Expires at the end of the current session. |
+| Forever (default) | `Expiry.FOREVER` | Never expires while the app is installed. |
 | Until restart | `Expiry.UNTIL_RESTART` | Expires when the app is closed or restarted. |
 | Custom duration | `Expiry.afterTimeUnit(time, units)` | Expires after the specified duration. |
 
 ```kotlin
 dataLayer.put(
     key = "currency",
-    value = DataItem(any = "USD"),
+    value = "USD",
     expiry = Expiry.UNTIL_RESTART
 )
 dataLayer.put(
@@ -307,9 +311,9 @@ The following expiration types are available:
 
 | Type | Value | Description |
 | :--- | :--- | :--- |
-| Session (default) | `.session` | Expires at the end of the current session. |
+| Session | `.session` | Expires at the end of the current session. |
 | Until restart | `.untilRestart` | Expires when the app is closed or restarted. |
-| Forever | `.forever` | Never expires. |
+| Forever (default) | `.forever` | Never expires. |
 | Custom date | `.after` | Expires on the date specified. |
 
 ```swift
@@ -327,8 +331,8 @@ Pass an [`Expiry`](https://docs.tealium.com/tealium-prism-react-native/types/Exp
 
 | Type | Value | Description |
 | :--- | :--- | :--- |
-| Session (default) | `"session"` | Expires at the end of the current session. |
-| Forever | `"forever"` | Never expires while the app is installed. |
+| Session | `"session"` | Expires at the end of the current session. |
+| Forever (default) | `"forever"` | Never expires while the app is installed. |
 | Until restart | `"untilRestart"` | Expires when the app is closed or restarted. |
 | Custom date | `new Date(...)` | Expires at the specified date and time. |
 

@@ -1,36 +1,36 @@
 ---
-title: EventDBおよびAudienceDBクエリとレポート
-description: このガイドでは、訪問の行動、セッション活動、デバイス使用、およびオムニチャネルの帰属に関するレポートを作成するためのEventDBおよびAudienceDBのサンプルSQLクエリを提供します。
+title: EventDBとAudienceDBのクエリおよびレポート
+description: このガイドでは、訪問の行動、セッションアクティビティ、デバイスの使用状況、オムニチャネルアトリビューションに関するレポートを作成するための、EventDBとAudienceDBのSQLクエリ例を紹介します。
 url: https://docs.tealium.com/ja/guides/eventdb-audiencedb-queries-guide/
 ---
-各セクションには、スキーマに合わせて調整できるサンプルクエリが含まれています。このガイドで取り上げるシナリオには以下が含まれます：
+各セクションには、スキーマに合わせて変更できるクエリ例が含まれています。このガイドでは、次のシナリオについて説明します。
 
-* バウンスセッションとセッション行動
-* 時間経過による訪問と訪問数
-* トップページとエントランス
-* 既知の訪問とアイデンティティのスティッチング
-* デバイス間の使用
-* チャネル帰属とオフライン購入活動
+* バウンスセッションとセッションの動作
+* 時系列での訪問数と訪問数
+* 上位ページと入口ページ
+* 既知の訪問とIDスティッチング
+* クロスデバイスでの利用
+* チャネルアトリビューションとオフライン購入アクティビティ
 
 ## 要件
 
-これらのクエリを実行するには、以下が必要です：
+これらのクエリを実行するには、次のものが必要です。
 
 * Tealium AudienceStream
-* アカウントとプロファイルに対して有効にされたEventDBおよびAudienceDB。[AudienceDBとEventDBの構成](https://docs.tealium.com/enable-audiencedb-eventdb/)を参照してください。
-* 以下の表にリストされている属性をAudienceStreamで構成する必要があります。デフォルト属性はすべてのアカウントで利用可能です。カスタム属性の構成については、アカウントマネージャーにお問い合わせください。
+* アカウントおよびプロファイルでEventDBとAudienceDBが有効になっていること。詳細については、[AudienceDBとEventDBの構成](https://docs.tealium.com/enable-audiencedb-eventdb/)を参照してください。
+* 以下の表に示す必須属性がAudienceStreamで構成されていること。デフォルト属性はすべてのアカウントで使用できます。カスタム属性の構成については、アカウントマネージャーにお問い合わせください。
 
-各クエリで、`ACCOUNT__PROFILE`をデータベース名に置き換えてください。この値は、例えば`mycompany__main`のように、Tealiumアカウントとプロファイルをダブルアンダースコアで結合したものです。
+各クエリで、`ACCOUNT__PROFILE`をデータベース名に置き換えてください。この値は、Tealiumのアカウント名とプロファイル名を二重アンダースコアで連結したものです（例：`mycompany__main`）。
 
 
 <blockquote>
-これらのクエリの列名は、属性タイトルに基づいてAudienceDBおよびEventDBビューの命名規則に従います。アカウントで属性を定義する方法によって、実際の列名が異なる場合があります。クエリを実行する前に、スキーマに対して列名を確認してください。
+Column names in these queries follow AudienceDB and EventDB view naming conventions based on attribute titles. The exact column names in your account depend on how you define attributes in AudienceStream. Verify column names against your schema before running queries.
 </blockquote>
 
 
-### 必要なAudienceDB属性
+### 必須のAudienceDB属性
 
-| テーブル | 属性 | タイプ |
+| テーブル | 属性 | 種類 |
 |---|---|---|
 | `visitor_replaces_view` | `visitor - id` | デフォルト |
 | `visitor_replaces_view` | `visitor - replaces id` | デフォルト |
@@ -41,9 +41,9 @@ url: https://docs.tealium.com/ja/guides/eventdb-audiencedb-queries-guide/
 | `visitors_view_normalized` | `visitor - id` | デフォルト |
 | `visitors_view_normalized` | `visitor - metric - average visit duration in minutes` | デフォルト |
 
-### 必要なEventDB属性
+### 必須のEventDB属性
 
-| テーブル | 属性 | タイプ |
+| テーブル | 属性 | 種類 |
 |---|---|---|
 | `events_view__all_events__all_events` | `event - visitor id` | デフォルト |
 | `events_view__all_events__all_events` | `event - first party cookies - utag_main_ses_id` | デフォルト |
@@ -56,13 +56,13 @@ url: https://docs.tealium.com/ja/guides/eventdb-audiencedb-queries-guide/
 
 ## EventDBクエリ
 
-EventDBはページビュー、セッション、タイムスタンプなどのイベントレベルデータを保存します。これらのクエリを使用して、トラフィックパターンとセッション行動を分析します。
+EventDBには、ページビュー、セッション、タイムスタンプなどのイベントレベルのデータが保存されます。これらのクエリを使用して、トラフィックパターンとセッションの動作を分析できます。
 
-EventDBテーブルとスキーマについての詳細は、[EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)を参照してください。
+EventDBのテーブルとスキーマの詳細については、[EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)を参照してください。
 
 ### バウンスセッション
 
-バウンスは単一ページビューのセッションです。`utag_main__pn`クッキーはセッション内のページ番号を追跡します。値が`1`の場合、訪問は最初のページを超えて進まなかったことを示します。
+バウンスとは、ページビューが1回だけのセッションです。`utag_main__pn` Cookieは、セッション内のページ番号を追跡します。値が`1`の場合、訪問が最初のページから先に進まなかったことを示します。
 
 ```sql
 SELECT
@@ -76,9 +76,9 @@ SELECT
 FROM ACCOUNT__PROFILE.events_view__all_events__all_events;
 ```
 
-### 時間ごとの訪問と訪問数
+### 1時間あたりの訪問数と訪問数
 
-このクエリは、時間ごとのユニークな訪問とセッション数をカウントします。
+このクエリは、1時間あたりのユニーク訪問数とセッション数をカウントします。
 
 ```sql
 SELECT
@@ -90,9 +90,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-### ビューとエントランスでトップのページ
+### ページビュー数と入口数による上位ページ
 
-エントランスは、URLがセッションの最初のページである場合に発生し、`utag_main__pn = 1`によって識別されます。
+入口は、URLがセッションの最初のページである場合に発生し、`utag_main__pn = 1`によって識別されます。
 
 ```sql
 SELECT
@@ -108,9 +108,9 @@ ORDER BY pageviews DESC
 LIMIT 10;
 ```
 
-### トップページのバウンスセッション
+### 上位ページのバウンスセッション
 
-このクエリは、ページビュー数とバウンスセッション数を組み合わせて、高トラフィックページでの高バウンス率を特定します。
+このクエリでは、ページビュー数とバウンスセッション数を組み合わせ、トラフィックとバウンス率の両方が高いページを特定します。
 
 ```sql
 SELECT
@@ -132,7 +132,7 @@ LIMIT 10;
 
 ### チャネルサマリー
 
-このクエリは、日付とチャネルごとにイベントをグループ化して、チャネルごとの日別訪問数を表示します。
+このクエリは、イベントを日付とチャネル別にグループ化し、チャネルごとの1日あたりの訪問数を表示します。
 
 ```sql
 SELECT
@@ -147,20 +147,20 @@ GROUP BY
 
 ## AudienceDBクエリ
 
-AudienceDBは訪問レベルのデータを保存し、アイデンティティのスティッチング結果、デバイスの集計、および長期的な指標を含みます。これらのクエリを使用して、既知の訪問の人口とエンゲージメントの傾向を分析します。
+AudienceDBには、IDスティッチングの結果、デバイスの集計、長期的な指標など、訪問レベルのデータが保存されます。これらのクエリを使用して、既知の訪問層とエンゲージメントの傾向を分析できます。
 
-AudienceDBテーブルとスキーマについての詳細は、[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)を参照してください。
+AudienceDBのテーブルとスキーマの詳細については、[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)を参照してください。
 
 ### 既知の訪問の割合
 
-AudienceStreamは`visitor_replaces_view`でステッチされた訪問のアイデンティティを記録します。これらの2つのクエリを別々に実行し、その後で式を適用します。詳細については、[訪問のスティッチング](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
+AudienceStreamは、スティッチングされた訪問IDを`visitor_replaces_view`に記録します。次の2つのクエリを個別に実行してから、数式を適用します。詳細については、[訪問スティッチング](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
 
 ```sql
--- 既知の訪問
+-- Known visitors
 SELECT COUNT(DISTINCT "visitor - id") AS known_visitors
 FROM ACCOUNT__PROFILE.visitor_replaces_view;
 
--- 合計訪問
+-- Total visitors
 SELECT COUNT(DISTINCT "visitor - id") AS total_visitors
 FROM ACCOUNT__PROFILE.visitors_view_normalized;
 ```
@@ -169,9 +169,9 @@ FROM ACCOUNT__PROFILE.visitors_view_normalized;
 % known visitors = known_visitors / total_visitors
 ```
 
-### ステッチされたアイデンティティを持つ合計訪問
+### スティッチングされたIDを持つ訪問の合計
 
-このクエリは、`visitor_replaces_view`に少なくとも1つのステッチされたアイデンティティを持つ訪問をカウントします。
+このクエリは、`visitor_replaces_view`にスティッチングされたIDが少なくとも1つ存在する訪問をカウントします。
 
 ```sql
 SELECT
@@ -191,7 +191,7 @@ WHERE "Total Replaces" >= 1;
 ```
 ### 既知の訪問のデバイス分布
 
-このクエリは、既知の訪問がセッション間で使用するデバイスの組み合わせを示します。各行はユニークなデバイスパターンを表し、例えばiPhoneとMacデスクトップの両方を使用した訪問は、`"iPhone used"` および `"Mac desktop used"` の列に表示されます。
+このクエリは、既知の訪問が複数のセッションにわたって使用するデバイスの組み合わせを示します。各行は一意のデバイス使用パターンを表します。たとえば、iPhoneとMacデスクトップの両方を使用した訪問は、`"iPhone used"`列と`"Mac desktop used"`列に表示されます。
 
 ```sql
 SELECT
@@ -260,9 +260,9 @@ GROUP BY
   "Windows tablet used";
 ```
 
-### 訪問ごとのデバイス数
+### 訪問あたりのデバイス数
 
-このクエリは、`visitors_view_normalized` と `visitor_tallies_view_normalized` を結合して、各訪問が使用するユニークなデバイスの数をカウントし、デバイス数ごとに訪問をグループ化します。
+このクエリは、`visitors_view_normalized`と`visitor_tallies_view_normalized`を結合して、各訪問が使用する一意のデバイス数をカウントし、デバイス数ごとに訪問をグループ化します。
 
 ```sql
 SELECT
@@ -285,7 +285,7 @@ GROUP BY "Unique Devices";
 
 ### 複数のデバイスを使用する既知の訪問の平均訪問時間
 
-このクエリは、2台以上のデバイスを使用する既知の訪問の合計訪問時間と訪問数を計算します。
+このクエリは、2台以上のデバイスを使用する既知の訪問について、訪問時間の合計と訪問数を計算します。
 
 ```sql
 SELECT
@@ -312,17 +312,17 @@ WHERE "Unique Devices" >= 2;
 
 ## EventDBとAudienceDBの組み合わせ
 
-`visitor_replaces_view` を使用して、EventDBとAudienceDBのデータを組み合わせる際に訪問のIDを解決します。
+EventDBとAudienceDBのデータを組み合わせる際は、訪問のIDを解決するために`visitor_replaces_view`を使用します。
 
 
 <blockquote>
-EventDBのイベントとAudienceDBの訪問テーブルは直接的な結合キーを共有していません。イベントレベルと訪問レベルのデータを組み合わせるには、以下に示すように `visitor_replaces_view` を通じて結合します。
+EventDB events and AudienceDB visits tables don't share a direct join key. To combine event-level and visitor-level data, join through `visitor_replaces_view` as shown below.
 </blockquote>
 
 
-### イベントを訪問プロファイルに結合
+### イベントと訪問プロファイルの結合
 
-このパターンは、イベントテーブルの訪問IDをAudienceDBの正規訪問IDに対して解決し、イベントレコードに訪問属性をエンリッチメントします。
+このパターンでは、イベントテーブルの訪問IDをAudienceDBの正規訪問IDと照合して解決し、イベントレコードに訪問属性を追加します。
 
 ```sql
 SELECT
@@ -335,9 +335,9 @@ LEFT JOIN ACCOUNT__PROFILE.visitors_view_normalized v
   ON vr."visitor - id" = v."visitor - id";
 ```
 
-### 訪問を訪問プロファイルに結合
+### 訪問と訪問プロファイルの結合
 
-このパターンは、訪問IDを使用してAudienceDB内の訪問を訪問に結合します。
+このパターンでは、訪問IDを使用して、AudienceDB内の訪問データと訪問データを結合します。
 
 ```sql
 SELECT
@@ -350,10 +350,10 @@ LEFT JOIN ACCOUNT__PROFILE.visits_view vs
 
 ## オムニチャネルクエリ
 
-これらのクエリは、カスタムEventDB属性を使用してオンライン行動とオフラインのコンバージョンを接続します。
+これらのクエリでは、EventDBのカスタム属性を使用して、オンラインでの行動とオフラインでのコンバージョンを関連付けます。
 ### オンライン訪問から1か月以内のオフライン購入
 
-このクエリは、オンライン訪問から1か月以内に発生したオフライン購入を、チャネルと日付ごとにグループ化して特定します。`visitor_replaces_view`を使用してオンラインイベントデータとオフライン購入記録を結合し、`ADD_MONTHS`を使用して1か月の帰属ウィンドウを定義します。
+このクエリは、オンライン訪問から1か月以内に発生したオフライン購入を特定し、チャネルと日付別にグループ化します。`visitor_replaces_view` を介してオンラインイベントデータとオフライン購入レコードを結合し、`ADD_MONTHS` を使用して1か月のアトリビューション期間を定義します。
 
 ```sql
 SELECT
@@ -409,6 +409,6 @@ GROUP BY
 ## 次のステップ
 
 * EventDBとAudienceDBを構成します。[AudienceDBとEventDBの構成](https://docs.tealium.com/enable-audiencedb-eventdb/)を参照してください。
-* クエリ結果をBIツール（例：TableauやLooker）にエクスポートしてダッシュボードを構築します。
-* 訪問のアイデンティティの解決方法を学びます。[訪問のスティッチングについて](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
-* [EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)および[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)で利用可能なテーブルとフィールドを確認してください。
+* クエリ結果をTableauやLookerなどのBIツールにエクスポートして、ダッシュボードを作成します。
+* 訪問IDがどのように統合されるかを確認します。[訪問のスティッチング](https://docs.tealium.com/about-visitor-stitching/)を参照してください。
+* [EventDBデータガイド](https://docs.tealium.com/eventdb-data-guide/)および[AudienceDBデータガイド](https://docs.tealium.com/audiencedb-data-guide/)で、利用可能なテーブルとフィールドを確認します。

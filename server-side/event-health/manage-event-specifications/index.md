@@ -48,7 +48,7 @@ To edit an event specification:
 
 ## Add a validation rule to an attribute
 
-Validation rules check the value of an attribute against conditions you define. A required attribute that fails the rule produces an invalid event. An optional attribute that fails the rule produces a warn event.
+Validation rules check the value of an attribute against conditions you define. An attribute that fails the rule, whether required or optional, produces an invalid event.
 
 To add a validation rule to an attribute in an event specification:
 

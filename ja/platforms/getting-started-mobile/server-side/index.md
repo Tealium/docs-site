@@ -14,8 +14,8 @@ Tealium Collectは以下の方法のいずれかで有効化されます：
 
 追加されると、Tealium CollectはHTTPSリクエストをCustomer Data Hubデータ収集サーバーに送信し、以下のサーバーサイド製品で使用します：
 
-* [Tealium EventStream](https://docs.tealium.com/introduction-to-eventstream/)
-* [Tealium AudienceStream](https://docs.tealium.com/introduction-to-audiencestream/)
+* [Tealium EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
+* [Tealium AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
 * [Tealium EventStore](https://docs.tealium.com/about-dataaccess/)
 * [Tealium AudienceDB & EventDB](https://docs.tealium.com/audiencedb-and-eventdb/)
 
