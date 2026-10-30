@@ -1,7 +1,7 @@
 ---
 title: Context API モジュール
 description: Tealium Prism SDK の Context API モジュール（旧 Moments API）を使用して、リアルタイムの訪問プロファイルデータを取得します。
-url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/
+url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/context-api/
 ---
 Context API モジュール（旧 Moments API）は、[Tealium Context API サービス](https://docs.tealium.com/about-context-api/)との統合を提供します。パーソナライゼーションや分析情報の取得に使用するリアルタイムの訪問プロファイルデータを取得できます。このモジュールは、構成済みの Context API エンジンからオーディエンス、バッジ、属性を返します。
 
@@ -185,7 +185,7 @@ Modules.contextAPI(forcingSettings: { builder in
 
 
 
-詳細については、[`ContextApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/momentsapi/com.tealium.prism.momentsapi/-moments-api-settings-builder/)を参照してください。
+詳細については、[`ContextApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/contextapi/com.tealium.prism.contextapi/-context-api-settings-builder/index.html)を参照してください。
 
 | メソッド | 説明 |
 |:-------|:------------|
@@ -195,7 +195,7 @@ Modules.contextAPI(forcingSettings: { builder in
 | `setOrder(order: Int)` | モジュールを初期化する順序を構成します。 |
 
 
-詳細については、[`ContextAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismMomentsAPI/Classes/MomentsAPISettingsBuilder.html)を参照してください。
+詳細については、[`ContextAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismContextAPI/Classes/ContextAPISettingsBuilder.html)を参照してください。
 
 | メソッド | 説明 |
 |:-------|:------------|

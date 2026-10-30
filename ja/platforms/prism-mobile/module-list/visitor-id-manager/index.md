@@ -115,7 +115,7 @@ modules: [
 * すべての `tealium.visitorId` メソッドが失敗を返します。
 * 訪問の切り替えが停止し、SDK はデータレイヤー内の ID の変更を無視します。
 * Collect モジュールは引き続きイベントを送信し、訪問 ID のないイベントをまとめてバッチ処理します。
-* [Context API モジュール](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/)はエンジンのレスポンスを取得できません。
+* [Context API モジュール](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/)はエンジンのレスポンスを取得できません。
 
 ## 訪問の切り替え
 

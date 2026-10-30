@@ -1,7 +1,7 @@
 ---
 title: Context API module
 description: Retrieve real-time visitor profile data using the Context API module (formerly Moments API) in the Tealium Prism SDK.
-url: https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/
+url: https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/
 ---
 The Context API module (formerly Moments API) provides integration with the [Tealium Context API service](https://docs.tealium.com/about-context-api/). Use it to retrieve real-time visitor profile data for personalization and insights. The module returns audiences, badges, and attributes from configured Context API engines.
 
@@ -185,7 +185,7 @@ Modules.contextAPI(forcingSettings: { builder in
 
 
 
-For more information, see [`ContextApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/momentsapi/com.tealium.prism.momentsapi/-moments-api-settings-builder/).
+For more information, see [`ContextApiSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/contextapi/com.tealium.prism.contextapi/-context-api-settings-builder/index.html).
 
 | Method | Description |
 |:-------|:------------|
@@ -195,7 +195,7 @@ For more information, see [`ContextApiSettingsBuilder`](https://docs.tealium.com
 | `setOrder(order: Int)` | Sets the order in which the module is initialized. |
 
 
-For more information, see [`ContextAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismMomentsAPI/Classes/MomentsAPISettingsBuilder.html).
+For more information, see [`ContextAPISettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismContextAPI/Classes/ContextAPISettingsBuilder.html).
 
 | Method | Description |
 |:-------|:------------|

@@ -13,7 +13,7 @@ Tealium Prismライブラリはモジュール式アーキテクチャを採用�
 | :--- | :--- | :--- |
 | Core | `prism-core` | 必須。Tealiumインスタンス、構成、トラッキング、データレイヤーを提供します。 |
 | [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `prism-lifecycle` | 起動、復帰、スリープなど、アプリのライフサイクルイベントを追跡します。 |
-| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `prism-context-api` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
+| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/context-api/) | `prism-context-api` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
 | [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `prism-core` | アプリ名、バージョン、ビルド番号など、アプリレベルのデータを収集します。 |
 | [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `prism-core` | Tealium Collectエンドポイントにイベントを送信します。 |
 | [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `prism-core` | ネットワークタイプなど、デバイスの接続情報を収集します。 |
@@ -27,7 +27,7 @@ Tealium Prismライブラリはモジュール式アーキテクチャを採用�
 | :--- | :--- | :--- |
 | Core | `TealiumPrismCore` | 必須。Tealiumインスタンス、構成、トラッキング、データレイヤーを提供します。 |
 | [Lifecycle](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/lifecycle/) | `TealiumPrismLifecycle` | 起動、復帰、スリープなど、アプリのライフサイクルイベントを追跡します。 |
-| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/moments-api/) | `TealiumPrismContextAPI` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
+| [Context API](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/context-api/) | `TealiumPrismContextAPI` | Tealium AudienceStreamのリアルタイム訪問プロファイルへのアクセスを提供します。 |
 | [AppData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismCore` | アプリ名、バージョン、ビルド番号など、アプリレベルのデータを収集します。 |
 | [Collect](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCore` | Tealium Collectエンドポイントにイベントを送信します。 |
 | [ConnectivityData](https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismCore` | ネットワークタイプなど、デバイスの接続情報を収集します。 |

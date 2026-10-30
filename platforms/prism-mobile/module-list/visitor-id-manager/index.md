@@ -115,7 +115,7 @@ To disable the module, set `enabled` to `false` in its settings or call `setEnab
 * Every `tealium.visitorId` method returns a failure.
 * Visitor switching stops, and the SDK ignores identity changes in the data layer.
 * The Collect module still sends events, and batches events without a visitor ID together.
-* The [Context API module](https://docs.tealium.com/platforms/prism-mobile/module-list/moments-api/) cannot fetch engine responses.
+* The [Context API module](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/) cannot fetch engine responses.
 
 ## Visitor switching
 
