@@ -1,32 +1,32 @@
 ---
-title: アイデンティティ解決
-description: アイデンティティ解決について学びましょう。
+title: ID 解決
+description: ID 解決について説明します。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/identity-resolution/
 ---
 <blockquote>
-これはTealium for iOS (Swift)の以前のバージョン（1.x）です。最新バージョンは[Tealium for iOS (Swift) 2.x](https://docs.tealium.com/ja/platforms/ios-swift/)をご覧ください。
+これは Tealium for iOS（Swift）の旧バージョン（1.x）です。最新バージョンについては、[Tealium for iOS（Swift）2.x](https://docs.tealium.com/ja/platforms/ios-swift/)を参照してください。
 </blockquote>
 
 
-## 動作原理
+## 仕組み
 
-Tealium Swiftライブラリは、最初に[`getVisitorId()`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium/#getvisitorid)メソッドで起動されたときにランダムかつ一意の永続的な訪問IDを生成します。この値は、`tealium_visitor_id`属性として各トラッキングイベントに含まれます。この値はTealium AudienceStreamで使用される主要な訪問IDです。必要に応じて、永続的なデータ保存に追加の訪問ID属性を追加することができます。
+Tealium Swift ライブラリは、初回起動時に [`getVisitorId()`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium/#getvisitorid) メソッドを使用して、ランダムかつ一意の永続的な訪問 ID を生成します。この値は、属性 `tealium_visitor_id` として、トラッキングされる各イベントに含まれます。この値は、Customer Data Platform（CDP）で使用されるプライマリ訪問 ID です。必要に応じて、セカンダリ訪問 ID 属性を永続データ保存に追加できます。
 
-AudienceStreamを使用している場合、これがこの訪問に関連付けられた主要な第一者訪問IDになります。必要に応じて、追跡コールで変数として追加の既知の訪問IDを提供することができます。
+Customer Data Platform（CDP）を使用している場合、これは対象の訪問に関連付けられる主要なファーストパーティ訪問 ID になります。必要に応じて、追加の既知の訪問 ID をトラッキング呼び出しの変数として送信できます。
 
-[AudienceStreamで訪問IDの構成についてもっと学ぶ](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/)。
+CDP での訪問 ID の構成について、[詳細はこちら](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/)を参照してください。
 
 ```swift
 class TealiumHelper {
 	var tealium: Tealium?
 	// ...
 
-	// 必要に応じてTealiumの第一者訪問IDを取得
+	// Retrieve Tealium's first party visitor ID, if needed
 	func getVisitorId() -> String? {
 		return self.tealium?.visitorId
 	}
 
-	// 永続的データストアに既知の訪問ID（例：メールアドレス）を追加
+	// adds a known visitor ID (such as an email address) to the persistent data store
 	func setKnownVisitorId(_ id: String) {
 		self.tealium?.persistentData()?.addPersistentData(["customer_id": id])
 	}

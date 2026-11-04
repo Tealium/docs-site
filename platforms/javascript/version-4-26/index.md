@@ -23,7 +23,7 @@ A blocking tag is a tag that must run before any other tags run. When you enter 
 
 The [wait flag is an advanced setting](https://docs.tealium.com/manage-templates/) within tag configuration.
 
-Tags whose **Wait Flag** is set to  "No" load and fire immediately after the `utag.js` file loads. Those tags, whose **Wait Flag** is set to "No," that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they're in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.
+Tags whose **Wait Flag** is set to  "No" load and fire immediately after the `utag.js` file loads. Those tags, whose **Wait Flag** is set to "No," that load sooner may fire sooner, regardless of their order in Tag Management. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tag Management, Tag 2 may still fire sooner, despite the order they're in. Previously, tags executed in the order specified in Tag Management. These tags then waited for tags placed higher in the order to load before loading themselves.
 
 This means that you may now have a mixture of tags with their Wait Flag set to 'No' and tags with their Wait Flag set to 'Yes' in the same profile. 
 
@@ -41,7 +41,7 @@ A `utag.link()` call does not load a new tag. Only a `utag.view()` call does thi
 
 ## Load a tag by UID
 
-For advanced implementations, especially those using AJAX, use the `utag.view()` call to bring in a new tag and fire it based on the tag's UID (as seen in the Tags tab of Tealium iQ). This bypasses all load rules.
+For advanced implementations, especially those using AJAX, use the `utag.view()` call to bring in a new tag and fire it based on the tag's UID (as seen in the Tags tab of Tag Management). This bypasses all load rules.
 
 ```javascript
 utag.view({page_name : "New Page"}, null, [5]);

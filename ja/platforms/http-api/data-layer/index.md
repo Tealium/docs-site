@@ -1,23 +1,23 @@
 ---
 title: データレイヤー
-description: HTTP APIライブラリからのデータレイヤー変数について学びます。
+description: HTTP APIライブラリのデータレイヤー変数について説明します。
 url: https://docs.tealium.com/ja/platforms/http-api/data-layer/
 ---
-## 標準パラメーター
+## 標準パラメータ
 
-Tealium Collectは、各リクエストで以下の標準パラメーターをサポートしています：
+Tealium Collectは、各リクエストで次の標準パラメータをサポートしています。
 
-| パラメーター | 説明 |
+| パラメータ | 説明 |
 | --- | --- |
-| `tealium_account` | あなたのTealiumアカウントの名前です。 |
-| `tealium_profile` | あなたのTealiumプロファイルの名前です。デフォルト値は `main` です。 |
-| `tealium_datasource` | 任意。データソースキーです。詳細については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。 |
-| `tealium_event` | 推奨。トラッキング目的のイベント名です。 |
-| `tealium_visitor_id` | Tealium AudienceStreamに必要です。イベントに関連付けられた訪問の匿名化された一意の識別子です |
-| `tealium_trace_id` | 任意。[トレース](https://docs.tealium.com/manage-traces/)で使用します。 |
+| `tealium_account` | Tealiumアカウントの名前。 |
+| `tealium_profile` | Tealiumプロファイルの名前。デフォルト値は`main`です。 |
+| `tealium_datasource` | （オプション）データソースキー。詳細については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。 |
+| `tealium_event` | 推奨。トラッキングに使用するイベントの名前。 |
+| `tealium_visitor_id` | Customer Data Platform（CDP）では必須。イベントに関連付けられた訪問を表す、匿名化された一意の識別子。 |
+| `tealium_trace_id` | （オプション）[Trace](https://docs.tealium.com/manage-traces/)で使用します。 |
 
-リクエストの形式は使用されるHTTPメソッドによって異なります。以下の例ではプレースホルダー値が次の形式で中括弧で表されています：`{VALUE}`。
+リクエストの形式は、使用するHTTPメソッドによって異なります。以下の例では、プレースホルダー値を`{VALUE}`の形式で中括弧を使用して表します。
 
-## カスタムイベントパラメーター
+## カスタムイベントパラメータ
 
-追加のイベント属性は、トラッキングニーズに応じてカスタムパラメーターとして送信されます。これらのパラメーターを[Tealium Customer Data Hubのイベント属性として定義](https://docs.tealium.com/add-enrichment/)してください。
+トラッキングの要件に応じて、追加のイベント属性をカスタムパラメータとして送信します。これらのパラメータは、[Tealium Customer Data Hubのイベント属性](https://docs.tealium.com/add-enrichment/)として定義します。

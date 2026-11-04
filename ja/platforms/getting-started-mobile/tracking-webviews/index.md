@@ -1,30 +1,30 @@
 ---
-title: Webviewsの追跡
-description: JavaScriptインターフェースを使用して、アプリ内のwebviewからイベントを追跡する方法を学びます。
+title: Webviewのトラッキング
+description: JavaScriptインターフェイスを使用して、アプリ内Webviewからイベントをトラッキングする方法について説明します。
 url: https://docs.tealium.com/ja/platforms/getting-started-mobile/tracking-webviews/
 ---
-ネイティブアプリは、webviewと呼ばれる組み込みブラウザに機能を委任してWebコンテンツを表示することができます。TealiumのiOSまたはAndroid SDKでwebviewからイベントを追跡するには、ネイティブコードへの通信ブリッジが必要です。これは、JavaScriptを使用してアプリにメッセージを送信することでネイティブコードを呼び出すことによって行われます。
+ネイティブアプリでは、Webコンテンツを表示し、Webviewと呼ばれる埋め込みブラウザーに機能を委任できます。Tealium iOSまたはAndroid SDKでWebviewからイベントをトラッキングするには、ネイティブコードとの通信ブリッジが必要です。これは、JavaScriptを使用してアプリにメッセージを送信し、ネイティブコードを呼び出すことで実現します。
 
 
 <blockquote>
-このソリューションは、Tealium Universal Tag（utag.js）がインストールされているかどうかに関係なく、webviewsで動作します。
+このソリューションは、Tealium Universal Tag（utag.js）がインストールされているかどうかにかかわらず、Webviewで動作します。
 </blockquote>
 
 
 ## 仕組み
 
-このソリューションは以下のコンポーネントを使用します：
+このソリューションでは、次のコンポーネントを使用します。
 
-* **Webview JavaScriptハンドラ**  
-このJavaScriptコードは、webベースのイベント追跡をラップして、イベントをネイティブアプリに送信します。
-    * Tealium iQタグ管理を使用 - 拡張機能を使用してこのコードをページに迅速に追加します。
-    * Tealiumを使用しない場合 - 既存のイベント追跡を使用するか、ページに追跡を追加します。
-* **ネイティブメッセージハンドラ**  
-このネイティブコードは、イベントデータを含むメッセージを受信するためのJavaScriptインターフェースを使用します。
+* **Webview JavaScriptハンドラー**  
+このJavaScriptコードは、Webベースのイベントトラッキングをラップし、イベントをネイティブアプリに送信します。
+    * タグ管理を使用する場合 - 拡張機能を使用して、このコードをページにすばやく追加します。
+    * Tealiumを使用しない場合 - 既存のイベントトラッキングを使用するか、ページにトラッキングを追加します。
+* **ネイティブメッセージハンドラー**  
+このネイティブコードは、JavaScriptインターフェイスを使用してイベントデータを含むメッセージを受信します。
 
-## Webview JavaScriptハンドラ
+## Webview JavaScriptハンドラー
 
-以下のJavaScriptコードは、ビューの追跡とイベントの追跡のための2つのラッパー関数を提供し、webベースの追跡呼び出しをネイティブコードに転送します。このコードはiOSとAndroidで動作します。
+次のJavaScriptコードには、Webベースのトラッキング呼び出しをネイティブコードに転送するために、ビューのトラッキング用とイベントのトラッキング用の2つのラッパー関数が用意されています。このコードはiOSとAndroidの両方で動作します。
 
 ```javascript
 function tealView(tealiumEvent, data) {
@@ -64,18 +64,18 @@ function tealEvent(tealiumEvent, data) {
 }
 ```
 
-### Tealium付きのWebview
+### Tealiumを使用するWebview
 
-webviewでロードされるページにすでにTealium Universal Tag（`utag.js`）がある場合、JavaScriptハンドラコードを2つの[JavaScript Code extensions](https://docs.tealium.com/advanced-javascript-code-extension/)を使用して追加します：一つはラッパー関数を初期化し、もう一つは既存の追跡呼び出しをJavaScriptインターフェースに転送します。
+Webviewに読み込まれるページにTealium Universal Tag（`utag.js`）がすでに含まれている場合は、2つの[JavaScriptコード拡張機能](https://docs.tealium.com/advanced-javascript-code-extension/)を使用してJavaScriptハンドラーコードを追加します。一方はラッパー関数を初期化するため、もう一方は既存のトラッキング呼び出しをJavaScriptインターフェイスに転送するために使用します。
 
 
 <blockquote>
-このシナリオでは、webviewのページとネイティブアプリは異なるTealium iQプロファイルを使用しなければなりません。
+このシナリオでは、Webviewページとネイティブアプリで異なるタグ管理プロファイルを使用する必要があります。
 </blockquote>
 
 
-1. [JavaScriptハンドラコード](#webview-javascript-handler)を**Pre Loader**の範囲にあるJavaScript Code extensionに追加します。
-2. 以下のコードを**All Tags - After Tags**の範囲にある2つ目のJavaScript Code extensionに追加します。これにより、webview内で既に発生しているTealiumの追跡呼び出しをネイティブのホストアプリに転送します。
+1. [JavaScriptハンドラーコード](#webview-javascript-handler)を、**Pre Loader**をスコープとするJavaScriptコード拡張機能に追加します。
+2. 次のコードを、**All Tags - After Tags**をスコープとする2つ目のJavaScriptコード拡張機能に追加します。これにより、Webview内ですでに発生している既存のTealiumトラッキング呼び出しが、ネイティブホストアプリに転送されます。
 
     ```javascript
     if (a == "view") {
@@ -85,16 +85,16 @@ webviewでロードされるページにすでにTealium Universal Tag（`utag.j
     }
     ```
 
-### TealiumなしのWebview
+### Tealiumを使用しないWebview
 
-webviewでロードされるページにTealiumがない場合、JavaScriptハンドラコードをwebview内でロードされる各ページに追加します。その後、ページビューを追跡するために`tealView`を呼び出し、ボタンクリックやカートイベントなどの非ページビューイベントが発生したときに`tealLink`を呼び出します。
+Webviewに読み込まれるページにTealiumが含まれていない場合は、Webview内に読み込まれる各ページにJavaScriptハンドラーコードを追加します。その後、ページビューをトラッキングするには`tealView`を呼び出し、ボタンのクリックやカートイベントなど、ページビュー以外のイベントが発生した場合は`tealLink`を呼び出します。
 
-## ネイティブメッセージハンドラ
-
-
+## ネイティブメッセージハンドラー
 
 
-JavaScriptからネイティブのAndroidコードを呼び出すには、[`@JavaScriptInterface`](https://developer.android.com/reference/android/webkit/JavascriptInterface)でマークされたメソッドを持つクラスを実装します：
+
+
+JavaScriptからAndroidのネイティブコードを呼び出すには、[`@JavaScriptInterface`](https://developer.android.com/reference/android/webkit/JavascriptInterface)でマークされたメソッドを持つクラスを実装します。
 
 ```java
 public class WebViewInterface {
@@ -111,7 +111,7 @@ public class WebViewInterface {
 }
 ```
 
-ネイティブインターフェースが作成されたら、それを`WebView`に登録して、`WebView`で実行されているJavaScriptコードから見えるようにします。
+ネイティブインターフェイスを作成したら、それを`WebView`に登録し、`WebView`内で実行されるJavaScriptコードから参照できるようにします。
 
 ```java
 mWebView.addJavascriptInterface(mInterface, "WebViewInterface");
@@ -119,20 +119,20 @@ mWebView.addJavascriptInterface(mInterface, "WebViewInterface");
 
 
 <blockquote>
-[`addJavascriptInterface()`](https://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object,%20java.lang.String))メソッドを`webView.loadUrl()`メソッドを呼び出す前に呼び出します。また、セキュリティ上の懸念から、[`JavaScriptInterface`](https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String))をAPIバージョンJELLY_BEAN_MR1以降にのみ追加します。
+[`addJavascriptInterface()`](https://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object,%20java.lang.String))メソッドは、`webView.loadUrl()`メソッドを呼び出す前に呼び出してください。また、セキュリティ上の理由から、[`JavaScriptInterface`](https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String))はAPIバージョンJELLY_BEAN_MR1以降でのみ追加してください。
 </blockquote>
 
 
 
 
 
-WebViewのユーザー[content controller](https://developer.apple.com/documentation/webkit/wkusercontentcontroller)に以下のメッセージハンドラを追加します：
+WebViewのユーザー[コンテンツコントローラー](https://developer.apple.com/documentation/webkit/wkusercontentcontroller)に、次のメッセージハンドラーを追加します。
 
 ```swift
 webView.configuration.userContentController.add(self, name: "tealium")
 ```
 
-JavaScriptからネイティブのiOSコードを呼び出すには、[`WKScriptMessageHandler`](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler)プロトコルに準拠したメッセージハンドラクラスを作成します。追跡のために、[`userContentController:didReceive:`](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler/1396222-usercontentcontroller)コールバック内で[`Tealium.track`](https://docs.tealium.com/ja/platforms/ios-swift/track/)を呼び出します：
+JavaScriptからiOSのネイティブコードを呼び出すには、[`WKScriptMessageHandler`](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler)プロトコルに準拠するメッセージハンドラークラスを作成します。トラッキングするには、[`userContentController:didReceive:`](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler/1396222-usercontentcontroller)コールバック内で[`Tealium.track`](https://docs.tealium.com/ja/platforms/ios-swift/track/)を呼び出します。
 
 ```swift
 func userContentController(_ userContentController: WKUserContentController,
@@ -167,7 +167,7 @@ func userContentController(_ userContentController: WKUserContentController,
 
 ## サポートされているライブラリ
 
-以下のプラットフォームはJavaScriptインターフェースソリューションをサポートしています：
+次のプラットフォームでは、JavaScriptインターフェイスソリューションがサポートされています。
 
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)
 * [Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)

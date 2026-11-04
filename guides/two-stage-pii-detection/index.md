@@ -214,7 +214,7 @@ This ensures every event has a `true` or `false` value, and only flagged events 
 Use the `Email_Check` attribute to prevent flagged events from enriching the real-time visitor profile in AudienceStream.
 
 1. Go to **Server-Side Settings > General Settings**.
-1. Under **Activate AudienceStream > Event Filter**, set the filter to:
+1. Under **Enable Customer Data Platform > Customer Data Platform - Event Filter**, set the filter to:
 
    * **Attribute name**: `Email_Check`
    * **Value**: `false`

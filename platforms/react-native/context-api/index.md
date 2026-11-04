@@ -1,5 +1,5 @@
 ---
-title: Moments API Module (now Context API)
+title: Context API Module (now Context API)
 description: Learn how to install the Tealium Context API module for React Native.
 url: https://docs.tealium.com/platforms/react-native/context-api/
 ---
@@ -25,7 +25,7 @@ The Tealium Context API module requires the following:
 * Access to your native build environments
 * [Tealium for React Native 2.2.0 or later](https://docs.tealium.com/platforms/react-native/)
 * [React Native 0.63 or later](https://github.com/Tealium/tealium-react-native) and tools 
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/) or [Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/platforms/android-kotlin/) or [Tealium for iOS](https://docs.tealium.com/platforms/ios-swift/)
 

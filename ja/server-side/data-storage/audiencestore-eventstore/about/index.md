@@ -1,81 +1,81 @@
 ---
-title: AudienceStoreとEventStoreについて
-description: この記事では、AudienceStoreとEventStoreサービスにアクセスする方法について説明します。
+title: AudienceStore と EventStore について
+description: この記事では、AudienceStore および EventStore サービスにアクセスする方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencestore-eventstore/about/
 ---
 
 <blockquote>
-AudienceStoreおよびEventStoreサービスをアカウントで有効にするには、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
+AudienceStore および EventStore サービスをアカウントで有効にするには、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
 </blockquote>
 
 
 ## 前提条件
 
-* Tealium DataAccessが有効である必要があります。
-* TealiumのS3バケットに訪問プロファイルデータを送信するには、有効なAudienceStoreコネクタが必要です。詳細については、[AudienceStoreコネクタ構成ガイド](https://docs.tealium.com/audiencestore-connector/)を参照してください。
-* TealiumのS3バケットにイベントデータを送信するには、少なくとも1つの有効なイベントフィードが必要です。
-* オーディエンス名は128文字未満である必要があります。より長いオーディエンス名は切り捨てられ、エラーが発生する可能性があります。
+* Tealium DataAccess が有効になっている必要があります。
+* 訪問プロファイルデータを Tealium S3 バケットに送信するには、有効な AudienceStore コネクタが必要です。詳細については、[AudienceStore コネクタ構成ガイド](https://docs.tealium.com/audiencestore-connector/)を参照してください。  
+* イベントデータを Tealium S3 バケットに送信するには、少なくとも 1 つの有効なイベントフィードが必要です。
+* オーディエンス名は 128 文字未満にする必要があります。これより長いオーディエンス名は切り詰められ、エラーが発生する可能性があります。
 
-## 動作原理
+## 仕組み
 
-AudienceStoreとEventStoreは、Tealiumが提供する顧客アクセス可能なAmazon S3バケットに半構造化された訪問およびイベントデータを保存するサービスです。データは以下の表に示すように保存されます：
+AudienceStore と EventStore は、Tealium が提供する、顧客がアクセス可能な Amazon S3 バケットに半構造化された訪問データとイベントデータを保存するサービスです。データは、次の表に示す形式で保存されます。
 
 | **サービス** | **保存形式** |
 |---|---|
 | EventStore | JSON |
-| AudienceStore | JSONまたはCSV |
+| AudienceStore | JSON または CSV |
 
-どちらのサービスも、ファイルが100MB（圧縮前）に達するか、1時間が経過するか、どちらか早い方が発生した時点でS3に新しいファイルを書き込みます。ほとんどの場合、それよりもはるかに頻繁にファイルが書き込まれます。
+どちらのサービスも、ファイルが 100 MB（圧縮前）に達するか、1 時間が経過するたびに、いずれか早い方のタイミングで新しいファイルを S3 に書き込みます。ほとんどの場合、ファイルはこれよりも大幅に高い頻度で書き込まれます。
 
 ### データ保持
 
-EventStoreおよびAudienceStoreに保存された半構造化データは、契約で指定された期間、Amazon S3に保持されます。イベント、訪問、または訪問レコードがその有効期限に達すると、そのレコードは自動的に削除されます。訪問レコードが更新された場合でも、有効期限は変わらず、レコードは削除されます。
+EventStore と AudienceStore は、データを 30 日間保持します。イベント、訪問、または訪問レコードが有効期限に達すると、そのレコードは自動的に削除されます。訪問レコードが更新された場合でも有効期限は変わらず、レコードは引き続き削除されます。
 
-詳細については、[サーバーサイドアカウント構成]()を参照してください。
+詳細については、[サーバーサイドのアカウント構成]()を参照してください。
 
-### EventStoreの有効化
+### EventStore の有効化
 
-イベントデータをEventStoreに保存するには、1つ以上のイベントフィードでEventStoreを有効にします。詳細については、[EventStoreの構成]()を参照してください。
+イベントデータを EventStore に保存するには、1 つ以上のイベントフィードに対して EventStore を有効にします。詳細については、[EventStore の構成]()を参照してください。
 
-イベントフィードでEventStoreが有効になると、EventDBはEventStoreをデータソースとして使用し、Tealiumが提供するAmazon RedshiftデータベースにEventStore S3バケットからデータをインポートします。
+イベントフィードに対して EventStore を有効にすると、EventDB は EventStore をデータソースとして使用し、EventStore の S3 バケットから Tealium が提供する Amazon Redshift データベースにデータをインポートします。
 
-### AudienceStoreの有効化
+### AudienceStore の有効化
 
-オーディエンスデータをAudienceStoreに保存するには、オーディエンスのAudienceStoreコネクタを追加します。詳細については、[AudienceStoreの構成]()を参照してください。
+オーディエンスデータを AudienceStore に保存するには、そのオーディエンスに AudienceStore コネクタを追加します。詳細については、[AudienceStore の構成]()を参照してください。
 
-AudienceStoreはAudienceDBを有効にするための前提条件ではありません。これらのサービスは独立して運用されます。詳細については、[AudienceDBとEventDBについて]()を参照してください。
+AudienceStore は AudienceDB を有効にするための前提条件ではありません。これらのサービスはそれぞれ独立して動作します。詳細については、[AudienceDB と EventDB について]()を参照してください。
 
-### AudienceStoreファイルパス
+### AudienceStore のファイルパス
 
-AudienceStoreのデータファイルは、アカウント名、プロファイル名、およびAudienceStoreコネクタのアクションIDに一致するパス構造でS3バケットに保存されます：
+AudienceStore のデータファイルは、アカウント名、プロファイル名、および AudienceStore コネクタのアクション ID に対応する次のパス構造で S3 バケットに保存されます。
 
 ```
 {ACCOUNT}/{PROFILE}/audiences/{ACTION_ID}
 ```
 
-アクションIDは、AudienceStoreコネクタアクションの**詳細**で見ることができます：
+アクション ID は、次に示すように、AudienceStore コネクタアクションの **詳細** で確認できます。
 
 ![](https://docs.tealium.com/images/server-side/actionid-asactiondetails.png)
 
-AudienceStoreファイルへの例示パス：
+AudienceStore ファイルへのパスの例：
 
 ```
 my-account/main/audiences/bafc28ca-9542-3929-3b94-577a84f3d672
 ```
 
-### EventStoreファイルパス
+### EventStore のファイルパス
 
-EventStoreのデータファイルは、次のようにS3バケットに保存されます：
+EventStore のデータファイルは、次のパスで S3 バケットに保存されます。
 
 ```
 {ACCOUNT}/{PROFILE}/events/{EVENT_FEED_ID}
 ```
 
-イベントフィードIDは、イベントフィードのURLで見ることができます。**ライブイベント**にアクセスし、フィードをクリックして選択します。URLを調べてフィードIDを取得します。以下に示すように：
+イベントフィード ID は、イベントフィードの URL で確認できます。**ライブイベント**に移動し、フィードをクリックして選択します。次に示すように、URL を調べてフィード ID を取得します。
 
 ![](https://docs.tealium.com/images/server-side/eventstore-id-in-url-highlighted.png)
 
-EventStoreファイルへの例示パス：
+EventStore ファイルへのパスの例：
 
 ```
 my-account/main/events/bafc28ca-9542-3929-3b94-577a84f3d672

@@ -85,7 +85,7 @@ To install the Ad Identifier module manually:
 ## Additional Considerations
 
 *  **Blocked Access**  
-If the user has not allowed access to the Ad Identifier, the module sets the `google_adid` variable to the string "Ad Tracking Disabled", which is handled in your Tealium iQ configuration to ensure you pass the expected data to your third-party vendors.
+If the user has not allowed access to the Ad Identifier, the module sets the `google_adid` variable to the string "Ad Tracking Disabled", which is handled in your Tag Management configuration to ensure you pass the expected data to your third-party vendors.
 
 * **Delete the Ad Identifier**  
 To delete the stored Ad Identifier string, call the standard methods provided by the Tealium library to remove variables from persistent or volatile storage. The key name for the variable is exposed by the `TealiumAdIdentifier` class. Here's an example to remove the stored Ad Identifier from both persistent and volatile data. This code has no effect and does not throw an error if the variable doesn't already exist.

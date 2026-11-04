@@ -29,7 +29,7 @@ In addition to this definition, Apple elaborates in the [Additional Guidance sec
 
 According to this definition, data is "collected" only if it is stored in a readable format for longer than it takes to service a request. Following this definition, none of the data that is sent by the Tealium SDK is being collected by our SDK. Therefore, no data use has been reported in our privacy manifest.
 
-However, Tealium's product offering is diverse, and in some cases it is possible that Tealium customers could be "collecting" data according to Apple's definition. For example, if a Tealium customer decided to save an app user's IP address in their visitor profile in Audiencestream or store it for later use through some Event Stream Connector, this action would fall under the "Collect" definition. Tealium customers are ultimately responsible for determining if they are collecting any data and disclosing this behavior in their own privacy manifest. Tealium customers should also check if they are sending any data to third parties through EventStream or AudienceStream that might fall into the "collect" definition
+However, Tealium's product offering is diverse, and in some cases it is possible that Tealium customers could be "collecting" data according to Apple's definition. For example, if a Tealium customer decided to save an app user's IP address in their visitor profile in Customer Data Platform (CDP) or store it for later use through some Event Streaming connector, this action would fall under the "Collect" definition. Tealium customers are ultimately responsible for determining if they are collecting any data and disclosing this behavior in their own privacy manifest. Tealium customers should also check if they are sending any data to third parties through Event Streaming or Customer Data Platform (CDP) that might fall into the "collect" definition
 
 When deciding what to declare in your app's privacy manifest, you should consider data that is automatically sent by the Tealium Swift SDK, as well as other types of data that the app is collecting and through the Tealium Swift SDK. The only exception would be if the impacted data is stripped out (for example, using a transformation or extension) before being stored.
 
@@ -63,7 +63,7 @@ You do not need to report all of these categories, unless the data sent to the C
 | `timed_event_start` | The start of an event duration timing | `NSPrivacyCollectedDataTypeProductInteraction` |
 | `timed_event_end` | The end of an event duration timing | `NSPrivacyCollectedDataTypeProductInteraction` |
 | `timed_event_duration` | The duration of an event timing | `NSPrivacyCollectedDataTypeProductInteraction` |
-| `tealium_visitor_id` | The ID used for AudienceStream | `NSPrivacyCollectedDataTypeUserID` |
+| `tealium_visitor_id` | The ID used for CDP | `NSPrivacyCollectedDataTypeUserID` |
 | `app_uuid` | A constant ID for an App installed on a specific device | `NSPrivacyCollectedDataTypeDeviceID` |
 | `device_battery_percent` | Current battery charge percentage | `NSPrivacyCollectedDataTypePerformanceData` |
 | `app_memory_usage` | How much memory is the app using | `NSPrivacyCollectedDataTypePerformanceData` |
@@ -177,11 +177,11 @@ For each data type that the app is collecting and must be reported, you must als
 
 ### Audience Stream use case
 
-An app using AudienceStream uses the `tealium_visitor_id` variable to store and fetch the visitor profile, and may use the `tealium_event` and `screen_name` variables to detect what is the visitor doing inside of the app. AudienceStream changes the visitor profile according to those events and screens the visitor navigated to.
+An app using CDP uses the `tealium_visitor_id` variable to store and fetch the visitor profile, and may use the `tealium_event` and `screen_name` variables to detect what is the visitor doing inside of the app. CDP changes the visitor profile according to those events and screens the visitor navigated to.
 
 This app might also use the Lifecycle module to infer some information about the visitor, such as how often and for how long the visitor has been using the app.
 
-Finally, this app uses location data to determine the generic location of the visitor and establish the country they live in, which AudienceStream saves in the visitor profile.
+Finally, this app uses location data to determine the generic location of the visitor and establish the country they live in, which CDP saves in the visitor profile.
 
 With those use cases in mind, we can determine the `NSPrivacyCollectedDataType` data objects they should report in their manifest files:
 

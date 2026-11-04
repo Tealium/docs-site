@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/module-list/collect/
 
 The Collect module dispatches tracking calls to the Tealium Customer Data Hub. Usage of this module is strongly recommended if you are using server-side products.
 
-Alternatively, if you have Tealium iQ, use the Tealium Collect tag in partnership with the [Tag Management Dispatcher](https://docs.tealium.com/platforms/android-kotlin/module-list/tag-management/).
+Alternatively, if you have Tag Management, use the Tealium Collect tag in partnership with the [Tag Management Dispatcher](https://docs.tealium.com/platforms/android-kotlin/module-list/tag-management/).
 
 ## Install
 

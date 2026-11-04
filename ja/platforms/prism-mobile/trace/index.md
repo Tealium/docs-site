@@ -1,36 +1,36 @@
 ---
 title: トレース
-description: Tealium Prism SDK の実装をデバッグおよび検証するためにトレースセッションを使用します。
+description: トレースセッションを使用して、Tealium Prism SDKの実装をデバッグおよび検証します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/trace/
 ---
-Trace モジュールは、Tealium Prism SDK のデバッグおよびテスト機能を提供します。トレースセッションを使用してイベントをリアルタイムで監視し、イベントが正しくトラッキングおよび送信されていることを確認します。トレースがアクティブな間は、サーバー側でのフィルタリングと分析のため、すべてのトラッキングイベントにトレース ID が自動的に追加されます。
+Traceモジュールは、Tealium Prism SDKのデバッグおよびテスト機能を提供します。トレースセッションを使用してイベントをリアルタイムで監視し、イベントが正しくトラッキングおよびディスパッチされていることを確認します。トレースがアクティブな場合、サーバー側でのフィルタリングと分析のために、すべてのトラッキングイベントへトレースIDが自動的に追加されます。
 
 トレースツールの詳細については、[トレースによるデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
 
 ## 収集されるデータポイント
 
-トレースセッションがアクティブな場合、Trace モジュールは次のデータを収集します。
+トレースセッションがアクティブな場合、Traceモジュールは次のデータを収集します。
 
 | データポイント | キー | 説明 |
 |:-----------|:----|:------------|
-| トレース ID | `cp.trace_id` | アクティブなトレースセッションの一意の識別子（レガシー互換性用） |
-| トレース ID | `tealium_trace_id` | アクティブなトレースセッションの一意の識別子 |
+| トレースID | `cp.trace_id` | アクティブなトレースセッションの一意の識別子（レガシー互換性用） |
+| トレースID | `tealium_trace_id` | アクティブなトレースセッションの一意の識別子 |
 
 ## インストール
 
-Trace モジュールは、プログラム、リモート JSON、またはローカル JSON の構成を使用して構成できます。
+Traceモジュールは、プログラムによる構成、リモートJSON構成、またはローカルJSON構成を使用して構成できます。
 
-トレース ID を含めるイベントを制限するには、モバイルプロファイルに Trace モジュールを追加し、ルールを割り当てます。詳細については、[ルール](https://docs.tealium.com/rules/)を参照してください。
+トレースIDを含めるイベントを制限するには、モバイルプロファイルにTraceモジュールを追加し、ルールを割り当てます。詳細については、[ルール](https://docs.tealium.com/rules/)を参照してください。
 
 
 <blockquote>
-React Native では、Tealium 構成 JSON を使用して Trace モジュールを有効にします。プログラムによる構成は必要ありません。
+React Nativeでは、Tealium構成JSONを通じてTraceモジュールを有効にします。プログラムによるセットアップは必要ありません。
 </blockquote>
 
 
 
 
-Tealium 構成に Trace モジュールを追加します。
+Tealium構成にTraceモジュールを追加します。
 
 ```kotlin
 val config = TealiumConfig.Builder(
@@ -58,7 +58,7 @@ val config = TealiumConfig.Builder(
 ```
 
 
-Tealium 構成に Trace モジュールを追加します。
+Tealium構成にTraceモジュールを追加します。
 
 ```swift
 let config = TealiumConfig(account: "tealiummobile",
@@ -87,9 +87,9 @@ let config = TealiumConfig(account: "tealiummobile",
 
 
 
-### JSON 構成
+### JSON構成
 
-ローカルまたはリモートの構成 JSON ファイルで Trace モジュールを構成します。
+ローカルまたはリモートの構成JSONファイルでTraceモジュールを構成します。
 
 ```json
 {
@@ -107,7 +107,7 @@ let config = TealiumConfig(account: "tealiummobile",
 
 ## トレースセッションへの参加
 
-トレースセッションを開始するには、トレース ID を指定して `trace.join()` を呼び出します。`leave()` を呼び出すかセッションが期限切れになるまで、以降のすべてのイベントにトレース ID が追加されます。
+トレースセッションを開始するには、トレースIDを指定して`trace.join()`を呼び出します。`leave()`を呼び出すかセッションが期限切れになるまで、以降のすべてのイベントにトレースIDが追加されます。
 
 
 
@@ -134,7 +134,7 @@ await tealium.trace.join("your-trace-id");
 
 ## トレースセッションからの退出
 
-トレースセッションを停止するには、`trace.leave()` を呼び出します。これにより、以降のイベントからトレース ID が削除されます。
+トレースセッションを停止するには、`trace.leave()`を呼び出します。これにより、以降のイベントからトレースIDが削除されます。
 
 
 
@@ -161,7 +161,7 @@ await tealium.trace.leave();
 
 ## 訪問の強制終了
 
-AudienceStream の「End of Visit」アクションをテストするには、セッションが期限切れになるのを待たず、セッションを直ちに強制終了します。
+Customer Data Platform（CDP）で「End of Visit」アクションをテストするには、セッションが期限切れになるのを待たずに、セッションを直ちに強制終了します。
 
 
 
@@ -186,23 +186,23 @@ await tealium.trace.forceEndOfVisit();
 
 
 
-`leave()` が呼び出されるまで、トレースはアクティブなままです。`forceEndOfVisit()` メソッドは、標準のデキュー処理フローに従って、セッションの終了を通知するトラッキング呼び出しを送信します。
+`leave()`が呼び出されるまで、トレースはアクティブなままです。`forceEndOfVisit()`メソッドは、標準のデキュー処理フローに従って、セッションの終了を通知するトラッキング呼び出しをディスパッチします。
 
 ## エラートラッキング
 
-エラートラッキングが有効な場合（`track_errors: true`）、Trace モジュールは、アクティブなトレースセッション中に発生した SDK エラーを自動的にトラッキングします。重複するエラーレポートを防ぐため、モジュールはカテゴリ別にエラーを重複排除します。
+エラートラッキングが有効な場合（`track_errors: true`）、Traceモジュールは、アクティブなトレースセッション中に発生したSDKエラーを自動的にトラッキングします。重複するエラーレポートを防ぐため、モジュールはカテゴリごとにエラーを重複排除します。
 
 * トレースセッションごとに、各カテゴリの最初のエラーのみがトラッキングされます
-* 同じカテゴリの後続エラーは、新しいトレースセッションが開始されるまで無視されます
-* 新しいトレースセッションへの参加または現在のセッションからの退出により、重複排除キャッシュがリセットされます
+* 同じカテゴリで後続のエラーが発生しても、新しいトレースセッションが開始されるまでは無視されます
+* 新しいトレースセッションへの参加または現在のセッションからの退出によって、重複排除キャッシュがリセットされます
 
-## QR トレース
+## QRトレース
 
-ディープリンクから直接トレースを開始することもできます。開いた URL に適切なクエリパラメータが含まれている場合、トレースが自動的に開始されます。通常、これは Tealium プラットフォームの QR トレースツールを使用して行います。詳細については、[トレースによるデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
+ディープリンクから直接トレースを開始することもできます。開いたURLに適切なクエリパラメータが含まれている場合、トレースは自動的に開始されます。通常、これはTealiumプラットフォームのQRトレースツールを使用して行います。詳細については、[トレースによるデバッグ](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)を参照してください。
 
-## API リファレンス
+## APIリファレンス
 
-クラスおよびメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
+クラスおよびメソッドの詳細なシグネチャについては、APIリファレンスドキュメントを参照してください。
 
 * [Trace（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Trace.html)
 * [TraceSettingsBuilder（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/TraceSettingsBuilder.html)

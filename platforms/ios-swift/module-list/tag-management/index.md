@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/ios-swift/module-list/tag-management/
 ---
 ## Usage
 
-The TagManagement module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WKWebView` instance to execute JavaScript. This module is required in apps that make use of Tealium iQ Tag Management. It is automatically included in Carthage and CocoaPods framework builds.
+The TagManagement module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WKWebView` instance to execute JavaScript. This module is required in apps that make use of Tag Management. It is automatically included in Carthage and CocoaPods framework builds.
 
 ## Supported Platforms
 
@@ -59,7 +59,7 @@ To initialize the module, verify that it's specified on the `TealiumConfig` [`co
 
 ### App Bound Domains
 
-If your app uses the [WKAppBoundDomains](https://webkit.org/blog/10882/app-bound-domains/) feature to limit which domains webviews in your app can communicate with, you must pass a custom `WKWebViewConfiguration` and set its `limitsNavigationsToAppBoundDomains` property to `true`. Failing to do this will result in all tracking calls being dropped by the operating system. You must also include "tags.tiqcdn.com" in your `Info.plist`'s `WKAppBoundDomains` list, as well as the domains for any tags you have set up in Tealium iQ (for example "google-analytics.com"). Be aware that a maximum of 10 domains can be configured for the entire app, so if you use multiple client-side tags, you may easily exceed this.
+If your app uses the [WKAppBoundDomains](https://webkit.org/blog/10882/app-bound-domains/) feature to limit which domains webviews in your app can communicate with, you must pass a custom `WKWebViewConfiguration` and set its `limitsNavigationsToAppBoundDomains` property to `true`. Failing to do this causes all tracking calls to be dropped by the operating system. You must also include "tags.tiqcdn.com" in your `Info.plist`'s `WKAppBoundDomains` list, as well as the domains for any tags you have set up in Tag Management (for example "google-analytics.com"). Be aware that a maximum of 10 domains can be configured for the entire app, so if you use multiple client-side tags, you may easily exceed this.
 
 ```
  let config = TealiumConfig(account: "ACCOUNT",

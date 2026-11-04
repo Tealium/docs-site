@@ -1,29 +1,30 @@
 ---
 title: インストール
-description: Tealium SDKをAngularにインストールする方法を学びます。
+description: Angular向けTealium SDKのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/angular/install/
----このサンプルは[Angular CLI Quickstart](https://angular.io/docs/ts/latest/cli-quickstart.html)に基づいています。
+---このサンプルは、[Angular CLIクイックスタート](https://angular.io/docs/ts/latest/cli-quickstart.html)に基づいています。
 
 ## 要件
 
-*   Tealium iQタグ管理アカウント
+*   タグ管理アカウント
 *   Angularアプリケーション
 
 ## サンプルアプリ
 
-Tealiumライブラリ、トラッキング方法、ベストプラクティスの実装について理解を深めるために、Tealium for Angularの[サンプルアプリ](https://github.com/Tealium/integration-angular)を探索してみてください。
+Tealiumライブラリ、トラッキングメソッド、実装のベストプラクティスについて理解を深めるには、Tealium for Angularの[サンプルアプリ](https://github.com/Tealium/integration-angular)を参照してください。
+
 
 ## インストール
 
-インストールには、アプリケーションに1つのファイルを追加するだけで済みます。このサービスは、アカウントのTealium `utag.js`ライブラリをロードし、トラッキング呼び出しを処理します。
+インストールでは、アプリケーションにファイルを1つ追加するだけです。このサービスは、アカウント用のTealium `utag.js` ライブラリの読み込みと、トラッキング呼び出しの処理を行います。
 
-Angular用のTealiumライブラリをインストールするには：
+Angular向けTealiumライブラリをインストールするには、次の手順を実行します。
 
-1. Angularアプリケーションでディレクトリ`./src/app/tealium`を作成します。
+1. Angularアプリケーション内にディレクトリ `./src/app/tealium` を作成します。
 
-2. ファイル[utag.service.ts](https://github.com/Tealium/integration-angular/tree/master/example/src/app/tealium)をアプリケーションのパス`./src/app/tealium/`にコピーします。
+2. ファイル[utag.service.ts](https://github.com/Tealium/integration-angular/tree/master/example/src/app/tealium)を、アプリケーションのパス `./src/app/tealium/` にコピーします。
 
-3. サンプルアプリの[`app.compontent.ts`](https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts)ファイルにある例に従って、アプリでTealiumサービスを定義し、呼び出します。
+3. サンプルアプリの [`app.compontent.ts`](https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts) ファイルにある例に従って、アプリ内でTealiumサービスを定義し、呼び出します。
 
       ```ruby
       import { Component, OnInit } from '@angular/core';
@@ -39,7 +40,7 @@ Angular用のTealiumライブラリをインストールするには：
 
 ## 初期化
 
-[`setConfig()`](https://docs.tealium.com/ja/platforms/angular/api/#setconfig)メソッドはTealiumを初期化し、`utag.js`ファイルへのパスを構築します。以下の例を参照してください：
+次の例に示すように、[`setConfig()`](https://docs.tealium.com/ja/platforms/angular/api/#setconfig) メソッドはTealiumを初期化し、`utag.js` ファイルへのパスを構築します。
 
 ```ruby
 constructor(private tealium: TealiumUtagService) {
@@ -49,11 +50,13 @@ constructor(private tealium: TealiumUtagService) {
         "environment" : "ENVIRONMENT"});
 }
 ```
-インストールにより、アプリケーションに新しいクラス`TealiumUtagService`が追加され、これはコンポーネントにプロバイダとして登録することで利用可能になります。
+
+インストールにより、`TealiumUtagService` という新しいクラスがアプリケーションに追加されます。このクラスは、コンポーネントにプロバイダーとして登録することで使用できます。
+
 
 ## 例
 
-以下は、Tealiumサービスをアプリケーションにインポートする完全な例です。[`app.component.ts`](https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts)。
+次に、Tealiumサービスをアプリケーションにインポートする完全な例を示します（[`app.component.ts`](https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts)）。
 
 ```ruby
 import { Component, OnInit } from '@angular/core';

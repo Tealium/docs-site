@@ -31,10 +31,10 @@ The `TealiumConfig` class provides methods to set configuration options for the 
 | [`hostedDataLayerEventMappings`](#hosteddatalayereventmappings)             | Sets the event mappings used by the hosted data layer module when looking up data layer IDs.                                                                                     |
 | [`logLevel`](#loglevel)                                                     | Sets the log level property, which controls how much information is logged.                                                                                                      |
 | [`remoteAPIEnabled`](#remoteapienabled)                                     | Enables or disables `remote_api` event. Required for the RemoteCommands module if the DispatchQueue module in use.                                     |
-| [`sessionCountingEnabled`](#sessioncountingenabled)                         | Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files                                        |
+| [`sessionCountingEnabled`](#sessioncountingenabled)                         | Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files                                        |
 | [`TealiumConfig`](#tealiumconfig)                                           | Constructor method that creates an instance of `TealiumConfig`.                                                                                                                      |
 | [`timedEventTriggers`](#timedeventtriggers)                                 | A list of `EventTrigger` objects for automatically tracking timed events.                                        |
-| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature. |
+| [`useRemoteLibrarySettings`](#useremotelibrarysettings)                     | Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in Tag Management, or disable the feature. |
 
 ### `adobeVisitorAuthState`
 
@@ -289,7 +289,7 @@ config.remoteAPIEnabled = true
 ```
 
 ### `sessionCountingEnabled`
-Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files. Default `true`.                        
+Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files. Default `true`.                        
 
 ```swift
 config.sessionCountingEnabled = false
@@ -357,7 +357,7 @@ The following are `EventTrigger` parameters:
 
 ### `useRemoteLibrarySettings`
 
-Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.                     
+Optional `Boolean` to enable or disable the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: disabled). Configure the Mobile Publish Settings in Tag Management, or disable the feature.                     
 
 ```swift
 config.useRemoteLibrarySettings = true

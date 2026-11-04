@@ -17,12 +17,12 @@ Learn more about sending data [server-side](https://docs.tealium.com/platforms/g
 
 ## Tag Management
 
-Tag Management is the module that enables Tealium iQ Tag Management within your mobile app. This client-side solution uses a hidden webview to run standard web-based vendor tags in your app. Use the Tag Management module to integrate with third-party vendors that do not support a server-side API.
+The Tag Management module enables client-side tagging within your mobile app. This client-side solution uses a hidden webview to run standard web-based vendor tags in your app. Use the Tag Management module to integrate with third-party vendors that do not support a server-side API.
 
 Benefits of the Tag Management module include:
 
-- Advanced data layer customization using [iQ Tag Management extensions](https://docs.tealium.com/about-extensions/).
-- Support client-side and server-side using the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+* Advanced data layer customization using [Tag Management extensions](https://docs.tealium.com/about-extensions/).
+* Support client-side and server-side using the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 
 <blockquote>
@@ -38,7 +38,7 @@ The data layer is a vendor-neutral and user-friendly representation of the activ
 Learn more about the [data layer variables](https://docs.tealium.com/platforms/getting-started-mobile/data-layer/) available on mobile.
 
 ## Remote Commands
-Remote commands are a client-side solution for triggering functionality in your native app. Use remote commands for custom native features or to integrate with third-party SDKs. Configure remote commands with a JSON file or a remote command tag in Tealium iQ Tag Management.
+Remote commands are a client-side solution for triggering functionality in your native app. Use remote commands for custom native features or to integrate with third-party SDKs. Configure remote commands with a JSON file or a remote command tag in Tag Management.
 
 Learn more about [remote commands](https://docs.tealium.com/platforms/remote-commands/).
 
@@ -46,7 +46,7 @@ Learn more about [remote commands](https://docs.tealium.com/platforms/remote-com
 Each platform has its own lifecycle module, which enables automatic tracking of app lifecycle events (launch, wake, sleep) and associated data.
 
 ## Mobile Profiles
-An app that uses the Tag Management module must have a corresponding profile in iQ Tag Management that has been activated for mobile use. A mobile profile includes the built-in mobile data layer variables and additional settings for the Tealium SDK that can be adjusted without needing to deploy an app update.
+An app that uses the Tag Management module must have a corresponding profile in Tag Management that has been activated for mobile use. A mobile profile includes the built-in mobile data layer variables and additional settings for the Tealium SDK that can be adjusted without needing to deploy an app update.
 
 Learn more about [creating a mobile profile](https://docs.tealium.com/create-mobile-profile/).
 

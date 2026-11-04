@@ -13,7 +13,7 @@ The Tealium Prism library uses a modular architecture. Install only the modules 
 | :--- | :--- | :--- |
 | Core | `prism-core` | Required. Provides the Tealium instance, configuration, tracking, and data layer. |
 | [Lifecycle](https://docs.tealium.com/platforms/prism-mobile/module-list/lifecycle/) | `prism-lifecycle` | Tracks app lifecycle events such as launch, wake, and sleep. |
-| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/) | `prism-context-api` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
+| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/) | `prism-context-api` | Provides access to real-time visitor profiles. |
 | [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `prism-core` | Collects app-level data such as app name, version, and build number. |
 | [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `prism-core` | Dispatches events to the Tealium Collect endpoint. |
 | [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `prism-core` | Collects device connectivity information such as network type. |
@@ -27,7 +27,7 @@ The Tealium Prism library uses a modular architecture. Install only the modules 
 | :--- | :--- | :--- |
 | Core | `TealiumPrismCore` | Required. Provides the Tealium instance, configuration, tracking, and data layer. |
 | [Lifecycle](https://docs.tealium.com/platforms/prism-mobile/module-list/lifecycle/) | `TealiumPrismLifecycle` | Tracks app lifecycle events such as launch, wake, and sleep. |
-| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/) | `TealiumPrismContextAPI` | Provides access to real-time visitor profiles from Tealium AudienceStream. |
+| [Context API](https://docs.tealium.com/platforms/prism-mobile/module-list/context-api/) | `TealiumPrismContextAPI` | Provides access to real-time visitor profiles. |
 | [AppData](https://docs.tealium.com/platforms/prism-mobile/module-list/appdata/) | `TealiumPrismCore` | Collects app-level data such as app name, version, and build number. |
 | [Collect](https://docs.tealium.com/platforms/prism-mobile/module-list/collect/) | `TealiumPrismCore` | Dispatches events to the Tealium Collect endpoint. |
 | [ConnectivityData](https://docs.tealium.com/platforms/prism-mobile/module-list/connectivitydata/) | `TealiumPrismCore` | Collects device connectivity information such as network type. |

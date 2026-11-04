@@ -29,7 +29,7 @@ For more information, see [Apple: App Store User privacy and data use](https://d
 
 According to the Apple definition of tracking, if you are collecting data in an analytics platform that does not incorporate third-party data, then this usage does not require explicit permission. However, if your analytics platform is linked to an ad network (for example, if your Google Analytics property is linked to your Google Ads account), this usage does require explicit permission from the app user.
 
-In the rare case that you are using the AudienceStream platform to build visitor profiles and act on this data without sending the data to another vendor, this is not considered tracking because no data brokers (DMPs) are involved and the data is not being sent anywhere outside of the Tealium platform. Tealium also does not natively provide any advertising or ad measurement capabilities.
+In the rare case that you are using Customer Data Platform (CDP) to build visitor profiles and act on this data without sending the data to another vendor, this is not considered tracking because no data brokers (DMPs) are involved and the data is not being sent anywhere outside of the Tealium platform. Tealium also does not natively provide any advertising or ad measurement capabilities.
 
 ## Tealium and visitor identification
 
@@ -45,14 +45,14 @@ The following scenarios explain when to use the AppTrackingTransparency framewor
 
 | Platform |  Scenario | Is Permission Required? | 
 | --- | --- | --- |
-| iQ Tag Management | Analytics data collected using JavaScript tags by third-party vendors. | No |
-| iQ Tag Management | Analytics data collected using JavaScript tags by third-party vendors linked to an ad network for personalized ads using JavaScript tags . | Yes |
-| EventStream | Forwards to analytics vendors. | No |
-| EventStream  |Forwards to analytics vendors linked to an ad network for personalized ads. | Yes | 
-| AudienceStream | Does not forward data to any connectors. | No |
-| AudienceStream | Forwards to third-party vendors for fraud detection and prevention on your behalf. | No |
-| AudienceStream | Forwards to third-party vendors for first-party context only (for example, for on-site personalization on your website or apps). | No |
-| AudienceStream | Forwarding to third-party vendors for other purposes. | Yes |
+| Tag Management | Analytics data collected using JavaScript tags by third-party vendors. | No |
+| Tag Management | Analytics data collected using JavaScript tags by third-party vendors linked to an ad network for personalized ads using JavaScript tags . | Yes |
+| Event Streaming | Forwards to analytics vendors. | No |
+| Event Streaming  |Forwards to analytics vendors linked to an ad network for personalized ads. | Yes | 
+| Customer Data Platform (CDP) | Does not forward data to any connectors. | No |
+| CDP | Forwards to third-party vendors for fraud detection and prevention on your behalf. | No |
+| CDP | Forwards to third-party vendors for first-party context only (for example, for on-site personalization on your website or apps). | No |
+| CDP | Forwarding to third-party vendors for other purposes. | Yes |
 
 ## Privacy legislation
 

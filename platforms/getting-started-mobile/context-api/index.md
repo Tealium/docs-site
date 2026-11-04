@@ -24,7 +24,7 @@ Before you begin, ensure that you have the following:
 
 ## How it Works
 
-The Context API retrieves visitor data from AudienceStream, which can be used for in-app personalization.
+The Context API retrieves visitor data from Customer Data Platform (CDP), which can be used for in-app personalization.
 
 ## Use Cases
 
@@ -78,7 +78,7 @@ val tealium = Tealium.create("your_instance_name", config)
 
 ### Step 2: Set the Context API Region
 
-Set the `momentsAPIRegion` property to the region where your AudienceStream profile resides. This must match exactly. If unsure, check with your account manager.
+Set the `momentsAPIRegion` property to the region where your CDP profile resides. This must match exactly. If unsure, check with your account manager.
 
 
 

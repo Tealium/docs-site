@@ -1,6 +1,6 @@
 ---
 title: データレイヤー
-description: Android（Kotlin）、iOS（Swift）、React Native向けTealium Prism SDKを使用して、永続的なデータレイヤー値を取得、構成、管理します。
+description: Android（Kotlin）、iOS（Swift）、React Native向けTealium Prism SDKを使用して、永続的なデータレイヤーの値を取得、構成、管理します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/data-layer/
 ---
 `dataLayer`は、トラッキング呼び出しにコンテキストデータを追加するための共有キーバリューストアを提供します。データレイヤーに保存された値は、トラッキングされるすべてのイベントに自動的に含まれます。イベント間で一貫している静的属性にはデータレイヤーを使用し、動的属性は`track()`呼び出しに直接渡します。
@@ -29,17 +29,17 @@ DataLayerモジュールは自動的に初期化されます。
 
 
 <blockquote>
-このモジュールは必須のデータ保存機能を提供するため、無効にすることはできません。`setEnabled(false)`メソッドは、このモジュールには効果がありません。
+このモジュールは重要なデータ保存機能を提供するため、無効にすることはできません。`setEnabled(false)`メソッドは、このモジュールには影響しません。
 </blockquote>
 
 
-データレイヤー値を含めるイベントを制限するには、モバイルプロファイルにDataLayerモジュールを追加し、ルールを割り当てます。詳細については、[ルール](https://docs.tealium.com/rules/)を参照してください。
+データレイヤーの値を含めるイベントを制限するには、モバイルプロファイルにDataLayerモジュールを追加し、ルールを割り当てます。詳細については、[ルール](https://docs.tealium.com/rules/)を参照してください。
 
 ## データの取得
 
 
 
-データレイヤー値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-data-layer/get.html)メソッドを使用し、結果を処理するためにサブスクライブします。
+データレイヤーの値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-data-layer/get.html)メソッドを使用し、結果を処理するためにサブスクライブします。
 
 ```kotlin
 tealium.dataLayer.getString("customer_id").subscribe { result ->
@@ -49,7 +49,7 @@ tealium.dataLayer.getString("customer_id").subscribe { result ->
 ```
 
 
-データレイヤー値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html)メソッドを呼び出します。
+データレイヤーの値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html)メソッドを呼び出します。
 
 ```swift
 tealium.dataLayer.get(key: "customer_id",
@@ -82,13 +82,13 @@ tealium.dataLayer.getAll().onSuccess { allData in
 ```
 
 
-データレイヤー値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#get)を呼び出します。
+データレイヤーの値を取得するには、[`get()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#get)を呼び出します。
 
 ```javascript
 const customerId = await tealium.dataLayer.get("customer_id");
 ```
 
-すべてのデータレイヤー値を取得するには、[`getAll()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#getall)を呼び出します。
+すべてのデータレイヤーの値を取得するには、[`getAll()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#getall)を呼び出します。
 
 ```javascript
 const allData = await tealium.dataLayer.getAll();
@@ -102,14 +102,14 @@ const allData = await tealium.dataLayer.getAll();
 
 
 
-データレイヤー値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-data-layer/put.html)メソッドを使用します。
+データレイヤーの値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-data-layer/put.html)メソッドを使用します。
 
 ```kotlin
 tealium.dataLayer.put("my_string", "my_string_value")
 ```
 
 
-データレイヤー値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html)メソッドを使用します。
+データレイヤーの値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html)メソッドを使用します。
 
 ```swift
 tealium.dataLayer.put(key: "some_key", value: "some value")
@@ -122,7 +122,7 @@ tealium.dataLayer.put(key: "user_status", value: "active", expiry: .session)
 ```
 
 
-データレイヤー値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#put)を呼び出します。
+データレイヤーの値を構成するには、[`put()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#put)を呼び出します。
 
 ```javascript
 await tealium.dataLayer.put("my_string", "my_string_value");
@@ -164,7 +164,7 @@ tealium.dataLayer.putAll(dataObject: [
 ])
 ```
 
-複数の値を有効期限付きで構成するには、次のようにします。
+有効期限付きで複数の値を構成するには、次のようにします。
 
 ```swift
 let data: DataObject = [
@@ -185,7 +185,7 @@ await tealium.dataLayer.putAll({
 });
 ```
 
-複数の値を有効期限付きで構成するには、次のようにします。
+有効期限付きで複数の値を構成するには、次のようにします。
 
 ```javascript
 await tealium.dataLayer.putAll({ campaign: "summer_sale", discount: 20 }, "untilRestart");
@@ -222,7 +222,7 @@ tealium.dataLayer.putAll(dataObject: [
 ```
 
 
-`putAll()`呼び出しで配列を値として渡します。
+配列を`putAll()`呼び出しの値として渡します。
 
 ```javascript
 await tealium.dataLayer.putAll({
@@ -233,17 +233,17 @@ await tealium.dataLayer.putAll({
 
 ## トランザクション更新
 
-`transactionally`メソッドを使用して、複数のデータレイヤー更新を単一のアトミック操作にまとめます。すべての更新が一括して適用されるため、一部のみが更新されるリスクを軽減できます。
+`transactionally` メソッドを使用して、データレイヤーに対する複数の更新を単一のアトミック操作にまとめます。すべての更新がまとめて適用されるため、一部のみが更新されるリスクを軽減できます。
 
 
 <blockquote>
-React Nativeはアトミックなトランザクション更新をサポートしていません。個別または一括の書き込みには、`put()`および`putAll()`を使用してください。
+React Native はアトミックなトランザクション更新をサポートしていません。個別または一括の書き込みには、`put()` および `putAll()` を使用してください。
 </blockquote>
 
 
 
 
-各呼び出しは独立して順番に実行されるため、アトミック性が不要な場合にのみ個別の`put`操作を使用してください。複数の値を構成する際に、タイミングや整合性が重要な場合は、`transactionally`を使用して、すべての更新を単一のアトミック操作として適用します。
+各呼び出しは独立して順番に実行されるため、アトミック性が不要な場合にのみ個別の `put` 操作を使用してください。複数の値を構成する際にタイミングや整合性が重要な場合は、`transactionally` を使用して、すべての更新を単一のアトミック操作として適用します。
 
 ```kotlin
 tealium.dataLayer.transactionally { editor ->
@@ -257,7 +257,7 @@ tealium.dataLayer.transactionally { editor ->
 ```
 
 
-トランザクションがコミットされるまで、データレイヤーは変更されません。コミット後に変更を適用しても何も起こりません。適用されていてもコミットされていない編集は、このブロックによって返される項目には反映されません。
+トランザクションがコミットされるまで、データレイヤーは変更されません。コミット後に変更を適用しても何も起こりません。適用されていてもコミットされていない編集内容は、このブロックから返される項目には反映されません。
 
 ```swift
 tealium.dataLayer.transactionally { transaction in
@@ -279,11 +279,11 @@ tealium.dataLayer.transactionally { transaction in
 
 ## データの有効期限
 
-データレイヤーの値を構成する際、必要に応じて有効期限を構成し、値がいつ失効するかを指定します。
+データレイヤーの値を構成する際、必要に応じて有効期限を構成し、その値が失効するタイミングを指定します。
 
 
 
-次の有効期限タイプを使用できます。
+以下の有効期限タイプを使用できます。
 
 | タイプ | 値 | 説明 |
 | :--- | :--- | :--- |
@@ -306,7 +306,7 @@ dataLayer.put(
 ```
 
 
-次の有効期限タイプを使用できます。
+以下の有効期限タイプを使用できます。
 
 | タイプ | 値 | 説明 |
 | :--- | :--- | :--- |
@@ -326,7 +326,7 @@ tealium.dataLayer.put(key: "order_total",
 ```
 
 
-[`Expiry`](https://docs.tealium.com/tealium-prism-react-native/types/Expiry.html)の値を`put()`または`putAll()`の最後の引数として渡します。
+`put()` または `putAll()` の最後の引数として、[`Expiry`](https://docs.tealium.com/tealium-prism-react-native/types/Expiry.html) 値を渡します。
 
 | タイプ | 値 | 説明 |
 | :--- | :--- | :--- |
@@ -348,7 +348,7 @@ await tealium.dataLayer.put("order_total", 249.95, new Date(Date.now() + sevenDa
 
 
 
-データレイヤーから特定のキーを削除するには、トランザクションブロック内で、または単独の操作として`remove()`メソッドを使用します。
+データレイヤーから特定のキーを削除するには、トランザクションブロック内または単独の操作として `remove()` メソッドを使用します。
 
 
 データレイヤーから特定のキーを削除するには、次のようにします。
@@ -370,7 +370,7 @@ tealium.dataLayer.clear()
 ```
 
 
-データレイヤーからキーを削除するには、[`remove()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#remove)を呼び出します。
+データレイヤーからキーを削除するには、[`remove()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#remove) を呼び出します。
 
 ```javascript
 await tealium.dataLayer.remove("user_status");
@@ -382,7 +382,7 @@ await tealium.dataLayer.remove("user_status");
 await tealium.dataLayer.remove(["campaign", "discount"]);
 ```
 
-データレイヤーのすべての値を消去するには、[`clear()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#clear)を呼び出します。
+データレイヤーのすべての値を消去するには、[`clear()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#clear) を呼び出します。
 
 ```javascript
 await tealium.dataLayer.clear();

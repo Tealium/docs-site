@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/salesforce/install/
 ## Requirements
 
 * Salesforce administrator access
-* Tealium account enabled for AudienceStream or EventStream
+* Tealium account enabled for Customer Data Platform (CDP) or Event Streaming
 
 ## Install the solution
 
@@ -16,7 +16,7 @@ The Tealium for Salesforce solution is installed as a number of Apex classes: on
 
 The Tealium for Salesforce solution can link records from the Customer Data Hub into Salesforce by specifying a shared identifier attribute. In Customer Data Hub this attribute can be any Visitor ID attribute that uniquely identifies records coming from an ingestion sync. In Salesforce you must create a custom field in the Object named **Tealium ID** to capture that Customer Data Hub attribute.
 
-For more information, see the [Salesforce Connector Setup Guide for AudienceStream](https://docs.tealium.com/salesforce-connector/).
+For more information, see the [Salesforce Connector Setup Guide for CDP](https://docs.tealium.com/salesforce-connector/).
 
 To add this custom field to the Lead object:
 

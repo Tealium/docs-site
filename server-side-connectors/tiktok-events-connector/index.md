@@ -26,8 +26,8 @@ Go to the Connector Marketplace and add a new connector. For general instruction
 
 After adding the connector, configure the following settings:
 
-* **Access Token**: The Access Token that is configured in TikTok.
-* **Pixel ID**: If a TikTok pixel is already integrated for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the `pixel_code`. Create one pixel per website.
+* **Access Token**: Your TikTok access token.
+* **Pixel ID**: If you have already integrated a TikTok pixel for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the `pixel_code`. Create one pixel per website.
 
 ## Deduplication
  
@@ -87,21 +87,20 @@ The following section describes how to set up parameters and options for each ac
 | Event Source ID | (Required) An ID to track events. <ul><li>If `event_source` is `web`, specify a pixel code in this field.</li><li>If `event_source` is `offline`, specify an offline event ID in this field.</li><li>If `event_source` is `app`, specify a TikTok App ID in this field.</li><li>If `event_source` is `crm`, specify a CRM event  ID in this field. To obtain a CRM event ID, use `/crm/list/`.</li></ul>|
 | Event Time  | (Required) The timestamp when the event took place in Unix epoch format, measured in seconds. If you do not provide a timestamp, the connector uses the current timestamp. |
 | Custom Event Name | The custom event name. Required when choosing **Custom** from the **Event Type** drop-down. |
-| Pixel ID Override  | Pixel ID that can be found in the **TikTok Events Manager**. This setting overrides **Pixel ID** used in the **Configuration** section. |
+| Pixel ID Override  | The pixel ID in **TikTok Events Manager**. This setting overrides **Pixel ID** used in the **Configuration** section. |
 | Access Token Override | A custom access token to override the value in the configuration. |
 | Event ID  | Any hashed ID that can identify a unique user or session. For example, `SessionID_RandomNumber`. If you set [Generate Event ID in the TikTok Pixel tag](https://docs.tealium.com/tiktok-pixel-tag/) to `true`, this ID is automatically generated for every TikTok tracking event. |
 | Limited Data Use | This field is only supported when the Event Source is `WEB` or `APP`. Limited data processing setting. To learn more about the Limited Data Use Feature, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1771101204435970). |
-| Test Event Code | Send test events to exclude them from production data in TikTok Events Manager (`TTEM`). Retrieve the `test_event_code` in the `Test Events` tab of `TTEM`. |
+| Test Event Code | Send test events to exclude them from production data in TikTok Events Manager (TTEM). Retrieve the `test_event_code` in the **Test Events** tab of TTEM. |
 
 #### Ad Data
 
 | Parameter | Description |
 | --- | --- |
-| Callback | The value of `ttclid` used to match website visitor events with TikTok ads. |
 | Campaign ID  | The campaign ID.  |
 | Ad ID  | The ad group ID.  |
-| Creative ID | The Ad ID. |
-| Is Retargeting   | Whether the user is retargeting a user.  |
+| Creative ID | The creative ID. |
+| Is Retargeting   | Whether the event is for a retargeted user.  |
 | Attributed | Whether the event is attributed to a provider.  |
 | Attribution Type   | The type of attribution.  |
 | Attribution Provider   | The attribution provider name.  |
@@ -120,6 +119,7 @@ The following section describes how to set up parameters and options for each ac
 | User Email | Recommended. The user's email address, hashed with SHA256. |
 | User Phone Number | Recommended. The user's phone number, hashed with SHA256. Include country code with `+` and remove any other characters (spaces, `-`) between numbers (for example, for the USA: `+12125551212`). If the country code is `86`, do not include country code (for example: `13800000000`). |
 | User External ID | Recommended. The external user ID, hashed with SHA256. |
+| TikTok Click ID (ttclid) | Recommended. The TikTok Click ID used to match website visitor events with TikTok ads. Not hashed. Unless you disable automapping, this parameter is automapped from the `ttclid` cookie, falling back to the `ttclid` query parameter. An explicit mapping takes precedence over the automapped value. |
 | Cookie ID  | The ID of the cookie.  |
 | IP | The non-hashed public IP address of the browser. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both **IP** and **User Agent**. |
 | User Agent | The non-hashed user agent from the user's device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both **IP** and **User Agent**. Unless you disable automapping, this parameter is automapped to the **User Agent** of the visitor. |
@@ -127,7 +127,7 @@ The following section describes how to set up parameters and options for each ac
 | IDFV |  The iOS identifier for vendors. |
 | GAID |  The Google Advertising ID.|
 | Locale | The locale language and locale in `la-CO` format where `la` is a two-letter code representing the language and `CO` is a two-letter uppercase code representing the country. |
-| Att Status |  Whether the user has authorized your mobile app to access app-related data for tracking the user or the device. This is an iOS-only field. Supported values are `AUTHORIZED`, `DENIED`, `NOT_DETERMINED`, `NOT_APPLICABLE`. |
+| Att Status |  Whether the user has authorized your mobile app to access app-related data for tracking the user or the device. This field applies to iOS only. Supported values are `AUTHORIZED`, `DENIED`, `NOT_DETERMINED`, `NOT_APPLICABLE`. |
 | Vertical Choice | Select the vertical to display vertical-specific parameters under **Property Data**. Available options are `Hotel`, `Flight`, `Destination`, and `No Vertical Selected`. |
 
 #### Property Data
@@ -221,8 +221,8 @@ The following section describes how to set up parameters and options for each ac
 
 The connector automatically maps the following parameters by default:
 
-* TikTok Click ID (`ttclid`)
-* User Agent
+* **TikTok Click ID (`ttclid`):** Reads from the `ttclid` cookie first, then falls back to the `ttclid` query parameter, serialized as `data[].user.ttclid`.
+* **User Agent:** Reads from the visitor's user agent.
 
 To disable automapping, set **Disable Automapping** to `true`. Any automatically mapped parameters are not sent to the vendor.
 

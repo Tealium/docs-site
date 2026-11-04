@@ -1,6 +1,6 @@
 ---
 title: Audience dashboard
-description: This article provides information about the audience dashboard.
+description: Monitor audience sizes, membership changes, and audience activity using the audience dashboard.
 url: https://docs.tealium.com/server-side/insights/audience-dashboard/
 ---
 
@@ -22,10 +22,12 @@ The audience dashboard is not available in the `ap-southeast-1` (Hong Kong) regi
 To generate the audience dashboard:
 
 1. Go to **Analyze > Insights > Templates**.
-1. Find the **Audience dashboard** template, and click **View Details**.
+1. Find the **Audience dashboard** template and click **View Details**.
 1. Click **Generate Dashboard**.
 
-After you generate the audience dashboard, it may take up to 2 hours for data to appear. The dashboard updates once an hour.
+After you generate the audience dashboard, it may take up to 2 hours for data to appear. The dashboard updates every hour.
+
+Changes made in a new profile revision appear in the dashboard approximately 24 hours after you save and publish the revision. For example, if you create a label and assign it to an audience, the label becomes available in the dashboard after this period.
 
 If you disable the Audience Dashboard feature on your profile, the dashboard and its data are deleted 30 days after you publish this change. To retain your data, re-enable the feature within this period.
 
@@ -37,7 +39,7 @@ For more information about managing dashboards, see [Manage dashboards]().
 
 ## Dashboard filters
 
-The following filters apply to all visuals on the dashboard:
+The following filters apply to all visuals on the dashboard. To add data filters to a specific visual, see [Applied filters](#applied-filters).
 
 * **Label**: Filter audiences by label. Supports multiple selections.
 * **Is Audience Active**: Filter to active audiences, inactive audiences, or both. Supports multiple selections.
@@ -67,7 +69,7 @@ Top Audience Changes shows the top audiences by membership change over the last 
 
 ### Audiences size
 
-The Audiences Size tile is a horizontal bar chart showing the current size of each audience. Audience Size is a point-in-time snapshot and does not update when the date range filter changes. For the time-series view, see **Audience Size** in the [Details](#details) section.
+The Audiences Size tile is a horizontal bar chart showing the current size of each audience. The chart shows a point-in-time snapshot of audience sizes and does not update when the date range filter changes. For the time-series view, see **Audience Size** in the [Details](#details) section.
 
 ![](https://docs.tealium.com/images/server-side/data-insights/audience-dashboard-audiences-size.png)
 
@@ -92,9 +94,8 @@ The following charts update based on the selected controls:
 
 ![](https://docs.tealium.com/images/server-side/data-insights/audience-dashboard-joined-vs-left.png)
 
-## Export
 
-### Export to CSV
+## Export to CSV
 
 Select a visual, then click the visual menu and select **Export to CSV**. The CSV file is automatically downloaded to your default downloads folder.
 

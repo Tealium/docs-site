@@ -1,13 +1,13 @@
 ---
 title: Install
-description: This article shows how to install Tealium in your Magento® 2 system using the Tealium iQ Tag Management extension from the Magento Marketplace.
+description: This article shows how to install Tealium in your Magento® 2 system using the Tag Management extension from the Magento Marketplace.
 url: https://docs.tealium.com/platforms/magento/install/
 ---
 ## Requirements
 
 The following items are required:
 
-* An active Tealium iQ Tag Management account
+* An active Tag Management account
 * Your Tealium account ID
 * Your Tealium profile name
 * The Tealium environment to use (prod, qa, dev, or custom)
@@ -52,7 +52,7 @@ To install Tealium in your Magneto system:
 To configure Magento 2, perform the following steps:
 
 1. In the admin panel, go to **Stores > Configuration > Tealium > Tag Management**.
-1. Enable the extension and enter your Tealium iQ account, profile, and environment.
+1. Enable the extension and enter your Tag Management account, profile, and environment.
 1. If you are using a first-party domain, enter your client domain in the **First Party Domain** field.
 1. To allow plain text customer email addresses, select **No** under the **Allow plain text customer email** drop-down list. Otherwise, email addresses will be encrypted using a SHA-256 hash.
 

@@ -10,11 +10,11 @@ This is the previous version (1.x) of Tealium for iOS (Swift). For the latest ve
 
 ## How it Works
 
-The Tealium Swift library generates a randomized and unique persistent visitor ID the first time it is launched with the [`getVisitorId()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium/#getvisitorid) method. This value is included in each tracked event as the attribute `tealium_visitor_id`. This value is the primary visitor ID used in Tealium AudienceStream. You can include secondary visitor ID attributes as needed by adding them to the persistent data storage.
+The Tealium Swift library generates a randomized and unique persistent visitor ID the first time it is launched with the [`getVisitorId()`](https://docs.tealium.com/platforms/ios-swift-v1/api/tealium/#getvisitorid) method. This value is included in each tracked event as the attribute `tealium_visitor_id`. This value is the primary visitor ID used in Customer Data Platform (CDP). You can include secondary visitor ID attributes as needed by adding them to the persistent data storage.
 
-If you are using AudienceStream, this will become the main first-party visitor ID that's associated with this visitor. You may provide additional known visitor IDs as needed, by sending them as variables in your tracking calls.
+If you are using Customer Data Platform (CDP), this becomes the main first-party visitor ID associated with this visitor. You may provide additional known visitor IDs as needed, by sending them as variables in your tracking calls.
 
-[Learn more](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/) about configuring visitor IDs in AudienceStream.
+[Learn more](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/visitor-stitching-id/) about configuring visitor IDs in CDP.
 
 ```swift
 class TealiumHelper {

@@ -17,7 +17,7 @@ This solution uses the following components:
 
 * **Webview JavaScript Handler**  
 This JavaScript code is a wrapper around your web-based event tracking to send the events to the native app.
-    * With Tealium iQ Tag Management - Use extensions to quickly add this code to your pages.
+    * With Tag Management - Use extensions to quickly add this code to your pages.
     * Without Tealium - Use existing event tracking or add tracking to the pages.
 * **Native Message Handler**  
 This native code uses a JavaScript interface to receive the messages containing the event data.
@@ -70,7 +70,7 @@ If the pages loaded in the webview already have the Tealium Universal Tag (`utag
 
 
 <blockquote>
-In this scenario the webview pages and the native app must be using different Tealium iQ profiles.
+In this scenario the webview pages and the native app must be using different Tag Management profiles.
 </blockquote>
 
 

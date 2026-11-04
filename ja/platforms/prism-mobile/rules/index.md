@@ -3,15 +3,15 @@ title: ルール
 description: Tealium Prism SDK のネイティブルールエンジンを使用して、モジュールが機能を実行するタイミングを制御します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/rules/
 ---
-LoadRules を使用すると、Tealium Prism SDK のモジュールが処理を実行するタイミングを制御できます。ルールを使用して、アプリケーションデータの現在の状態に基づき、データ収集、イベントのディスパッチ、その他のモジュール処理を実行するかどうかを決定する条件ロジックを定義します。
+LoadRules を使用すると、Tealium Prism SDK のモジュールが処理を実行するタイミングを制御できます。ルールを使用して条件ロジックを定義し、アプリケーションデータの現在の状態に基づいて、データ収集、イベント送信、その他のモジュール処理を実行するかどうかを決定します。
 
 ## 仕組み
 
 ルールは、モジュールが特定のディスパッチを処理するかどうかを制御します。各ルールは、現在のディスパッチペイロード内のフィールドを評価する論理式です。式が false の場合、モジュールはそのディスパッチをスキップします。
 
-ルールは、1 つ以上の条件で構成されます。条件では、特定の変数を、等しい、含む、より大きいなどの演算子を使用して値と比較します。複数の条件は、AND、OR、または NOT ロジックで組み合わせます。
+ルールは、1 つ以上の条件で構成されます。条件は、equals、contains、greater than などの演算子を使用して、特定の変数を値と比較します。複数の条件は、AND、OR、または NOT ロジックで組み合わせます。
 
-ルールはディスパッチごと、つまり起動時ではなく、イベントがトラッキングされるたびに評価されます。
+ルールはディスパッチごと、つまり起動時ではなくイベントがトラッキングされるたびに評価されます。
 
 ## UI でルールを構成する
 
@@ -20,18 +20,18 @@ LoadRules を使用すると、Tealium Prism SDK のモジュールが処理を�
 1. モバイルプロファイルにログインし、**Load Rules** に移動します。
 1. **Add Rule** を選択します。
 1. ルールの条件と論理演算子を定義します。
-1. ルールを関連するモジュールに割り当てます。
+1. ルールを該当するモジュールに割り当てます。
 1. 変更を保存してパブリッシュします。
 
 ## 高度な構成
 
-条件を静的に表現できない場合や、条件を固定する必要がある場合は、コードでルールを作成します。たとえば、起動時に使用可能なメモリを確認し、メモリが少ないデバイスでは負荷の高い分析モジュールを無効にするルールを作成できます。また、リモート構成の指定内容に関係なく、社内テストユーザーを常に除外するルールをハードコードすることもできます。
+条件を静的に表現できない場合や、条件を固定する必要がある場合は、コードでルールを作成します。たとえば、起動時に使用可能なメモリを確認し、メモリの少ないデバイスでは負荷の高い分析モジュールを無効にするルールを作成できます。また、リモート構成の内容にかかわらず、社内テストユーザーを常に除外するルールをハードコードすることもできます。
 
 ### プログラムによる構成
 
 
 <blockquote>
-Programmatic rule configuration is not available in React Native. Configure rules in your Tealium mobile profile or settings JSON.
+React Native では、プログラムによるルール構成を使用できません。Tealium モバイルプロファイルまたは構成 JSON でルールを構成してください。
 </blockquote>
 
 
@@ -74,8 +74,7 @@ let amountCondition = Condition.isGreaterThan(orEqual: false,
 
 #### ルール
 
-`Rule` を使用すると、論理演算子を使用して複数の条件を組み合わせることができます。
-
+`Rule` を使用すると、論理演算子で複数の条件を組み合わせることができます。
 
 
 
@@ -163,7 +162,7 @@ let condition = Condition.equals(ignoreCase: false,
                                 target: "12345")
 ```
 
-ネストされたデータ構造では、`JSONPath` を使用してオブジェクトと配列内を移動します。
+ネストされたデータ構造では、`JSONPath` を使用してオブジェクトや配列内を移動します。
 
 ```swift
 // Accesses payload.user.profile.subscription.type
@@ -176,10 +175,9 @@ let condition = Condition.equals(ignoreCase: false,
 let arrayPath = JSONPath["items"][0]["price"]
 ```
 
-#### 複雑なルール構成
+#### 複雑なルールの構成
 
-ネストされたロジックを使用して複数の条件を組み合わせます。
-
+ネストされたロジックを使用して、複数の条件を組み合わせます。
 
 
 
@@ -210,7 +208,7 @@ let complexRule = Rule.and([
 
 ### JSON 構成
 
-リモートまたはローカル構成用の SDK 構成 JSON でルールを定義できます。
+リモート構成またはローカル構成用の SDK 構成 JSON でルールを定義できます。
 
 ```json
 {
@@ -239,9 +237,9 @@ let complexRule = Rule.and([
 
 ## API リファレンス
 
-クラスおよびメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
+クラスとメソッドの詳細なシグネチャについては、API リファレンスドキュメントを参照してください。
 
-* [Rules（Swift）](https://docs.tealium.com/tealium-prism-swift/Rules.html)
+* [ルール（Swift）](https://docs.tealium.com/tealium-prism-swift/Rules.html)
 * [Rule（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Enums/Rule.html)
 * [Condition（Swift）](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Structs/Condition.html)
-* [Rules（Kotlin）](https://docs.tealium.com/tealium-prism-kotlin/)
+* [ルール（Kotlin）](https://docs.tealium.com/tealium-prism-kotlin/)

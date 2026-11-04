@@ -1,90 +1,90 @@
 ---
 title: Tealium Shopifyアプリについて
-description: この記事では、ShopifyマーケットプレイスのTealiumアプリケーションについての情報を提供します。
+description: この記事では、Shopify MarketplaceのTealiumアプリケーションについて説明します。
 url: https://docs.tealium.com/ja/platforms/shopify/about/
 ---
-ShopifyマーケットプレイスのTealiumアプリを使用すると、以下のことができます：
+Shopify MarketplaceのTealiumアプリでは、次のことができます。
 
-* ShopifyサイトでTealium iQタグ管理を使用します。このアプリは、各ページに`utag.js`や`utag.data`などのTealiumアセットをロードします。
-* ShopifyイベントデータをTealium EventStream API Hubに送信します。
-* カスタムチェックアウトピクセルを使用して、EventStreamにチェックアウトデータを送信します。
-* Shopify Marketsを使用して、単一のShopifyストアで複数の市場地域からのイベントを追跡します。
+* Shopifyサイトでタグ管理を使用できます。このアプリは、サイトの各ページで`utag.js`や`utag.data`などのTealiumアセットを読み込みます。
+* ShopifyのイベントデータをEvent Streaming API Hubに送信できます。
+* カスタムチェックアウトピクセルを使用して、チェックアウトデータをEvent Streamingに送信できます。
+* Shopify Marketsを使用して、単一のShopifyストアで複数の市場地域からのイベントをトラッキングできます。
 
-Shopifyの`purchase`イベントなど、一部のページイベントは、iQタグ管理ではなくShopifyによって管理されるページで発生するイベントであるため、異なる方法で処理されます。Tealiumアプリは、これらのイベントのデータをTealium EventStreamに送信します。
+Shopifyの`purchase`イベントなど、一部のページイベントはタグ管理によって管理されるページではなく、Shopifyが管理するページで発生するため、異なる方法で処理されます。Tealiumアプリは、これらのイベントのデータをEvent Streamingに送信します。
 
 ## 要件
 
-* 構成中にShopifyインスタンスへの管理アクセス。
-* Tealiumでデータソースを作成するためのTealiumアカウントとプロファイル情報。
-* ShopifyイベントデータをEventStreamに送信する場合はTealium EventStreamが必要です。
+* 構成時にShopifyインスタンスへの管理者アクセス権があること。
+* Tealiumでデータソースを作成するために必要なTealiumアカウントとプロファイル情報があること。
+* ShopifyのイベントデータをEvent Streamingに送信する場合は、Event Streamingを利用できること。
 
-## 追跡されるイベント
+## トラッキングされるイベント
 
-Tealiumアプリには標準データレイヤーが含まれており、Shopifyからの以下の標準イベントをサポートしています：
+標準データレイヤーはTealiumアプリに含まれており、Shopifyの次の標準イベントをサポートしています。
 
-| イベント | Shopifyアクション |
+| イベント | Shopifyでのアクション |
 |-------|----------------|
-| `cart_add` | カートに商品を追加。 |
-| `cart_remove` | カートから商品を削除。 |
-| `cart_view` | カートを閲覧した顧客。 |
-| `category_view` | カテゴリを閲覧した顧客。 |
-| `checkout` | チェックアウトを開始した顧客。 |
-| `checkout_address_info_submitted` | チェックアウトの住所情報を提出した顧客。 |
-| `page_view `| ページを閲覧した顧客。 |
-| `product_view` | 商品ページを閲覧した顧客。 |
-| `purchase` | 購入を完了した顧客。 |
-| `search` | 検索を実行した顧客。 |
+| `cart_add` | 商品がカートに追加された。 |
+| `cart_remove` | 商品がカートから削除された。 |
+| `cart_view` | 顧客がカートを表示した。 |
+| `category_view` | 顧客がカテゴリーを表示した。 |
+| `checkout` | 顧客がチェックアウトを開始した。 |
+| `checkout_address_info_submitted` | 顧客がチェックアウト時の住所情報を送信した。 |
+| `page_view `| 顧客がページを表示した。 |
+| `product_view` | 顧客が商品ページを表示した。 |
+| `purchase` | 顧客が購入を完了した。 |
+| `search` | 顧客が検索を実行した。 |
 
 詳細については、[data-layer-and-events](https://docs.tealium.com/data-layer-and-events/)を参照してください。
 
-ニュースレターのサインアップイベントや割引イベントは、各店舗でカスタマイズする必要があります。
+ニュースレター登録イベントと割引イベントは、ストアごとにカスタマイズする必要があります。
 
 ### Web Pixel Extensionイベント
 
 | Shopifyイベント | Tealiumイベント | トリガー |
 |---------------|---------------|---------|
-| `page_viewed` | `page_view` | 任意のストアフロントページがロードされる。 |
-| `product_viewed` | `product_view` | 顧客が商品詳細ページを閲覧する。 |
-| `collection_viewed` | `category_view` | 顧客がコレクション/カテゴリページを閲覧する。 |
-| `cart_viewed` | `cart_view` | 顧客がカートページを閲覧する。 |
-| `product_added_to_cart` | `cart_add` | 顧客が商品をカートに追加する。 |
-| `product_removed_from_cart` | `cart_remove` | 顧客がカートから商品を削除する。 |
-| `search_submitted` | `search` | 顧客が検索クエリを実行する。 |
+| `page_viewed` | `page_view` | ストアフロントのいずれかのページが読み込まれた。 |
+| `product_viewed` | `product_view` | 顧客が商品の詳細ページを表示した。 |
+| `collection_viewed` | `category_view` | 顧客がコレクションまたはカテゴリーページを表示した。 |
+| `cart_viewed` | `cart_view` | 顧客がカートページを表示した。 |
+| `product_added_to_cart` | `cart_add` | 顧客が商品をカートに追加した。 |
+| `product_removed_from_cart` | `cart_remove` | 顧客が商品をカートから削除した。 |
+| `search_submitted` | `search` | 顧客が検索クエリを実行した。 |
 
-### チェックアウトピクセルイベント
+### Checkout Pixelイベント
 
 | Shopifyイベント | Tealiumイベント | トリガー |
 |---------------|---------------|---------|
-| `checkout_started` | `checkout` | 顧客がチェックアウトプロセスを開始する。 |
-| `checkout_address_info_submitted` | `checkout_address_info_submitted` | 顧客が配送先住所を提出する。 |
-| `checkout_completed` | `purchase` | 注文が成功裏に完了する。 |
+| `checkout_started` | `checkout` | 顧客がチェックアウト処理を開始した。 |
+| `checkout_address_info_submitted` | `checkout_address_info_submitted` | 顧客が配送先住所を送信した。 |
+| `checkout_completed` | `purchase` | 注文が正常に完了した。 |
 
 ## Webhookイベント
 
-次のwebhookを有効にしてデータを収集することができます：
+データ収集のために、次のWebhookを有効にできます。
 
 | Webhookトピック | Tealiumイベント | トリガー |
 |---------------|---------------|---------|
-| `CARTS_CREATE` | `cart_create` | 新しいカートが作成される。 |
-| `CARTS_UPDATE` | `cart_update` | カートが変更される（追加/削除/数量変更）。 |
-| `CHECKOUTS_CREATE` | `checkouts_create` | チェックアウトセッションが開始される。 |
-| `ORDERS_CREATE` | `purchase` | 注文が完了し処理される。 |
-| `REFUNDS_CREATE` | `shopify_refund` | 注文に対して払い戻しが行われる。 |
-| `CUSTOMERS_CREATE` | `Shopify New Customer` | 新しい顧客アカウントが作成される。 |
-| `CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE` | `email_consent_change` | メールマーケティングのオプトイン/オプトアウトが変更される。 |
-| `CUSTOMERS_MARKETING_CONSENT_UPDATE` | `sms_consent_change` | SMSマーケティングのオプトイン/オプトアウトが変更される。 |
+| `CARTS_CREATE` | `cart_create` | 新しいカートが作成された。 |
+| `CARTS_UPDATE` | `cart_update` | カートが変更された（追加、削除、数量変更）。 |
+| `CHECKOUTS_CREATE` | `checkouts_create` | チェックアウトセッションが開始された。 |
+| `ORDERS_CREATE` | `purchase` | 注文が完了し、処理された。 |
+| `REFUNDS_CREATE` | `shopify_refund` | 注文に対する返金が行われた。 |
+| `CUSTOMERS_CREATE` | `Shopify New Customer` | 新しい顧客アカウントが作成された。 |
+| `CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE` | `email_consent_change` | メールマーケティングのオプトインまたはオプトアウト構成が変更された。 |
+| `CUSTOMERS_MARKETING_CONSENT_UPDATE` | `sms_consent_change` | SMSマーケティングのオプトインまたはオプトアウト構成が変更された。 |
 
-### システム/GDPR webhooks
+### システム／GDPR Webhook
 
 | Webhookトピック | トリガー |
 |---------------|---------|
-| `APP_UNINSTALLED` | マーチャントがアプリをアンインストールする。 |
-| `CUSTOMERS_DATA_REQUEST` | GDPRデータアクセスリクエスト。 |
-| `CUSTOMERS_REDACT` | GDPR顧客データ削除リクエスト。 |
-| `SHOP_REDACT` | GDPRショップデータ削除リクエスト。 |
+| `APP_UNINSTALLED` | マーチャントがアプリをアンインストールした。 |
+| `CUSTOMERS_DATA_REQUEST` | GDPRに基づくデータアクセス要求が行われた。 |
+| `CUSTOMERS_REDACT` | GDPRに基づく顧客データの削除要求が行われた。 |
+| `SHOP_REDACT` | GDPRに基づくショップデータの削除要求が行われた。 |
 
-## チェックアウト追跡
+## チェックアウトのトラッキング
 
-現在、Tealium iQタグ管理でShopifyチェックアウトを追跡するための最良のオプションはカスタムピクセルです。Tealium Shopifyアプリのインストールプロセスには、カスタムピクセルを構成するオプションが含まれています。
+現在、カスタムピクセルは、タグ管理を使用してShopifyのチェックアウトをトラッキングするための最適なオプションです。Tealium Shopifyアプリのインストールプロセスには、カスタムピクセルを構成するオプションが含まれています。
 
 詳細については、[Tealium Shopifyアプリのインストール](https://docs.tealium.com/install-tealium-shopify-app/#configure-the-checkout-pixel)を参照してください。

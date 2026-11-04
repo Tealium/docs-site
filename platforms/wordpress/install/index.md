@@ -24,7 +24,7 @@ For more information, see [Tealium WordPress Plugin page](https://wordpress.org/
 
 ## Requirements
 
-* Tealium iQ Tag Management account
+* Tag Management account
 * WordPress 3.0.1 or higher
 
 ## Install the plugin

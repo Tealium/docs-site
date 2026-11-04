@@ -10,7 +10,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/airship/
 * One of these mobile libraries:
   * [Tealium for Android](https://docs.tealium.com/platforms/android-java/)
   * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
-* Airship Remote Command tag in Tealium iQ Tag Management
+* Airship Remote Command tag in Tag Management
 
 ## How It Works
 

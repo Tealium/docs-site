@@ -1,26 +1,26 @@
 ---
-title: 仕組みについて
-description: モバイル向けのリモートコマンド機能について学びましょう。
+title: 仕組み
+description: モバイル向けリモートコマンド機能について説明します。
 url: https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/
 ---
-リモートコマンドは、TealiumのiOSおよびAndroidライブラリの機能で、サードパーティのベンダーSDKでネイティブコードをトリガーすることができます。
+リモートコマンドは、サードパーティベンダーのSDK内でネイティブコードをトリガーできる、TealiumのiOSおよびAndroidライブラリの機能です。
 
 
 <blockquote>
-Tealiumとの統合を検討しているパートナーの方は、[パートナー統合](https://docs.tealium.com/ja/partners-and-industries/partner-with-us/mobile/)をご覧ください。
+If you're a partner looking to integrate with Tealium, visit [Partner Integrations](https://docs.tealium.com/ja/partners/mobile/).
 </blockquote>
 
 
-リモートコマンドは次の2つの方法で実装されます：
+リモートコマンドは、次の2つの方法で実装されます。
 
 ### **ベンダー統合**
 
-ベンダー統合は、ベンダーのネイティブAPIを実装するプレビルトのリモートコマンドモジュールです。
+ベンダー統合は、ベンダーのネイティブAPIを実装する、あらかじめ構築されたリモートコマンドモジュールです。
 
-[ベンダー統合について詳しく学ぶ](https://docs.tealium.com/ja/platforms/remote-commands/vendor-integrations/)。
+[ベンダー統合の詳細](https://docs.tealium.com/ja/platforms/remote-commands/vendor-integrations/)。
 
 ### **カスタムコマンド**
 
-カスタムコマンドは、Tealium iQタグ管理のカスタムリモートコマンドタグをトリガーする独自のネイティブメソッドを定義するためのオープンフレームワークを提供します。
+カスタムコマンドは、タグ管理のCustom Remote Commandタグをトリガーする独自のネイティブメソッドを定義するためのオープンなフレームワークを提供します。
 
-[カスタムコマンドについて詳しく学ぶ](https://docs.tealium.com/ja/platforms/remote-commands/custom-commands/)。
+[カスタムコマンドの詳細](https://docs.tealium.com/ja/platforms/remote-commands/custom-commands/)。

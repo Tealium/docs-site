@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/angular/install/
 
 ## Requirements
 
-*   Tealium iQ Tag Management account
+*   Tag Management account
 *   Angular application
 
 ## Sample app

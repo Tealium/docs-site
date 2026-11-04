@@ -1,39 +1,39 @@
 ---
 title: 同意管理
-description: iOS（Swift）での同意管理の実装方法を学びます。
+description: iOS（Swift）向けの同意管理を実装する方法について説明します。
 url: https://docs.tealium.com/ja/platforms/ios-swift/consent-management/
 ---
 ## 使用方法
 
-同意管理モジュールは、細かいレベルでのトラッキング同意を管理するためのシンプルなAPIを提供します。これは、すべてのAppleプラットフォーム（iOS、iPadOS、tvOS、watchOS、macOS、macOS Catalyst）でサポートされています。
+同意管理モジュールは、トラッキングへの同意を詳細なレベルで管理するためのシンプルなAPIを提供します。すべてのAppleプラットフォーム（iOS、iPadOS、tvOS、watchOS、macOS、macOS Catalyst）でサポートされています。
 
-Tealium Swiftライブラリのバージョン2.xでは、同意管理モジュールに重要な変更が導入されています：
+Tealium Swiftライブラリのバージョン2.xでは、同意管理モジュールに以下の重要な変更が導入されています。
 
-* 同意管理はデフォルトで無効（有効にするには[完全同意](#full-consent)を参照）
-* `TealiumCore`モジュールに同意管理が組み込まれています
-* CCPAのサポートが導入されました
+* 同意管理はデフォルトで無効（有効にするには[完全な同意](#full-consent)を参照）
+* 同意管理を`TealiumCore`モジュールに統合
+* CCPAのサポートを導入
 * 同意の有効期限オプション
 
-[同意管理](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)と同意ポリシーについてもっと学びましょう。
+[同意管理](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)および同意ポリシーの詳細について確認してください。
 
 ## 同意
 
 ### ポリシーの構成
 
-初期化時に以下のいずれかを構成して同意ポリシーを構成します：
+初期化時に、同意ポリシーを以下のいずれかに構成します。
 
 * `.gdpr`
 * `.ccpa`
 
-同意管理モジュールはコアライブラリに含まれており、同意ポリシーが構成されるまでアクティブになりません。
+同意管理モジュールはコアライブラリに含まれていますが、同意ポリシーが構成されるまで有効になりません。
 
 
 <blockquote>
-任意の時点でデバイスに強制できるポリシーは1つだけです。
+1台のデバイスで同時に適用できるポリシーは1つだけです。
 </blockquote>
 
 
-GDPRポリシーを構成するには：
+GDPRポリシーを構成するには、次のようにします。  
 
 ```swift
 class TealiumHelper {
@@ -47,16 +47,17 @@ class TealiumHelper {
 }
 ```
 
-同意ステータスが変更されるたびに生成される同意ログイベントを構成するには：
+同意ステータスが変更されるたびに生成される同意ログイベントを構成するには、次のようにします。  
+
 ```swift
 config.consentLoggingEnabled = true
 ```
 
 ### 同意の有効期限
 
-[`consentExpiry`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#consentexpiry)プロパティを使用して、同意選択の有効期限を構成します。
+[`consentExpiry`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#consentexpiry)プロパティを使用して、同意の選択内容の有効期限を構成します。
 
-以下の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています：
+以下の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています。
 
 ```swift
 class TealiumHelper {
@@ -71,7 +72,7 @@ class TealiumHelper {
 }
 ```
 
-同意が期限切れになった場合にコールバックをトリガーするには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/)オブジェクトにコールバックを定義します：
+同意の有効期限が切れたときにコールバックを実行するには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/)オブジェクトにコールバックを定義します。
 
 ```swift
 class TealiumHelper {
@@ -88,7 +89,8 @@ class TealiumHelper {
 	}
 }
 ```
-または、[`TealiumConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/)オブジェクトにコールバックを定義します：
+
+または、[`TealiumConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/)オブジェクトにコールバックを定義します。
 
 ```swift
 tealium = Tealium(config: config) { [weak self] _ in
@@ -98,29 +100,32 @@ tealium = Tealium(config: config) { [weak self] _ in
 }
 ```
 
-### 完全同意の構成
+### 完全な同意の構成
 
-完全同意を構成するには：
+完全な同意を構成するには、次のようにします。  
+
 ```swift
 func grantFullConsent() {
 	self.tealium?.consentManager?.userConsentStatus = .consented
 }
 ```
 
-### カテゴリ別の部分同意の構成
+### カテゴリ別の部分的な同意の構成
 
-部分同意を構成するには、同意カテゴリのサブセットを指定します。これにより、暗黙的に[`userConsentStatus`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus)が`.consented`に構成されます。
+部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、[`userConsentStatus`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus)が暗黙的に`.consented`に構成されます。   
+
 ```swift
 func grantPartialConsent(categories: [TealiumConsentCategories]) {
 	self.tealium?.consentManager?.userConsentCategories = categories
 }
 ```
 
-使用例：`grantPartialConsent([.analytics, .cdp])`（パラメータカテゴリを参照）
+使用例：`grantPartialConsent([.analytics, .cdp])`（パラメータのカテゴリを参照）
 
-### 同意の拒否
+### 同意拒否の構成
 
-同意を拒否するには、同意ステータスを構成します：
+同意を拒否するには、同意ステータスを構成します。  
+
 ```swift
 func declineConsent() {
 	self.tealium?.consentManager?.userConsentStatus = .notConsented
@@ -129,35 +134,37 @@ func declineConsent() {
 
 ## カスタム同意
 
-組織の同意要件が標準のGDPRおよびCCPAポリシーに含まれていない場合、カスタム同意ポリシーを作成します。
+組織の同意要件が標準のGDPRおよびCCPAポリシーで対応できない場合は、カスタム同意ポリシーを作成します。
 
-1. `ConsentPolicy`プロトコルを実装します。
+1. `ConsentPolicy`プロトコルを実装します。   
+
 ```swift
 class SomeCustomConsentPolicy: ConsentPolicy {
-      // メソッドを実装...
+      // implement methods...
 }
 ```
 
-2. `TealiumConfig`オブジェクトの[`consentPolicy`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#consentpolicy)プロパティに新しいカスタムポリシーを構成します。`TealiumConsentPolicy.custom`列挙型を関連付けたタイプで使用します。
+2. 関連型を持つ`TealiumConsentPolicy.custom`列挙型を使用して、`TealiumConfig`オブジェクトの[`consentPolicy`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#consentpolicy)プロパティに新しいカスタムポリシーを構成します。   
+
 ```swift
 config.consentPolicy = .custom(SomeCustomConsentPolicy.self)
 ```
 
-カスタム同意ポリシーが実装された後、必要に応じて`ConsentPolicy`で利用可能な以下のプロパティをオーバーライドします：
+カスタム同意ポリシーを実装した後、必要に応じて`ConsentPolicy`で使用可能な以下のプロパティをオーバーライドします。
 
-| プロパティ | タイプ | 説明 |
+| プロパティ | 型 | 説明 |
 | ---- | ---- | ---- |
 | `name` | `String` | `ConsentPolicy`の名前 |
-| `consentPolicyStatusInfo` | `[String: Any]?`| 戻り値：各`TealiumDispatch`のペイロードに追加されるキー値データの`[String: Any]` |
-| `consentTrackingEventName` | `String` | 同意の変更をログに記録する際に使用するイベント名（キー：`tealium_event`）を構成します |
+| `consentPolicyStatusInfo` | `[String: Any]?` | 各`TealiumDispatch`のペイロードに追加するキーと値のデータを`[String: Any]`として返します |
+| `consentTrackingEventName` | `String` | 同意の変更を記録するときに使用するイベント名（キー：`tealium_event`）を構成します |
 | `defaultConsentExpiry` | `(time: Int, unit: TimeUnit)` | この`ConsentPolicy`のデフォルトの有効期限を構成します |
-| `preferences` | `UserConsentPreferences` | `ConsentManager`によって構成が変更されるたびに自動的に更新される現在の`UserConsentPreferences` |
-| `shouldLogConsentStatus` | `Bool` | 同意の変更のログ記録が必要かどうかを構成します |
-| `shouldUpdateConsentCookie` | `Bool` | TagManagementモジュールのウェブビューでクッキーを更新するかどうかを構成します |
-| `trackAction` | `TealiumConsentTrackAction`| 同意ステータスに基づくトラッキングアクション（許可、禁止、キュー） |
+| `preferences` | `UserConsentPreferences` | 現在の`UserConsentPreferences`。構成が変更されると、`ConsentManager`によって自動的に更新されます |
+| `shouldLogConsentStatus` | `Bool` | 同意の変更を記録する必要があるかどうかを構成します |
+| `shouldUpdateConsentCookie` | `Bool` | TagManagementモジュールのWebView内にあるCookieを更新するかどうかを構成します |
+| `trackAction` | `TealiumConsentTrackAction` | 同意ステータスに基づくトラッキングアクション（許可、禁止、キューへの追加） |
 | `updateConsentCookieEventName` | `String` | `shouldUpdateConsentCookie`がtrueに構成されている場合に使用するイベント名を構成します |
 
-以下はカスタム同意ポリシーの完全な例です：
+以下は、カスタム同意ポリシーの完全な例です。  
 
 ```swift
 class MyCustomConsentPolicy: ConsentPolicy {
@@ -165,7 +172,7 @@ class MyCustomConsentPolicy: ConsentPolicy {
     var preferences: UserConsentPreferences
 
     required init(_ preferences: UserConsentPreferences) {
-        this.preferences = preferences
+        self.preferences = preferences
     }
 
     var name: String = "my custom policy"
@@ -192,14 +199,14 @@ class MyCustomConsentPolicy: ConsentPolicy {
 var tealium: Tealium?
 let config = TealiumConfig(...)
 config.consentPolicy = .custom(MyCustomConsentPolicy.self)
-/// ... その他の構成オプション
+/// ... other configuration options
 tealium = Tealium(config: config)
 ```
 
-`GDPRConsentPolicyCreatable`または`CCPAConsentPolicyCreatable`プロトコルに準拠するカスタムポリシーを作成します。カスタムポリシーを作成し、オーバーライドしたいものをオーバーライドした後、`config.consentPolicy`を`.custom(YourCustomPolicy.self)`に構成します。
+`GDPRConsentPolicyCreatable`または`CCPAConsentPolicyCreatable`プロトコルのいずれかに準拠するカスタムポリシーを作成します。カスタムポリシーを作成し、必要な項目をオーバーライドした後、`config.consentPolicy`を`.custom(YourCustomPolicy.self)`に構成します。
 ### 例
 
-既存のGDPR実装を使用して、ポリシーの名前をオーバーライドする（トラッキングペイロードの `policy` 値をオーバーライドします）：
+既存の GDPR 実装を使用しつつ、ポリシー名をオーバーライドします（トラッキングペイロードの `policy` 値をオーバーライドします）。   
 ```swift
 class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
@@ -218,7 +225,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 config.consentPolicy = .custom(CustomGDPRConsentPolicy.self)
 ```
 
-Tealium EventStreamの固定同意値を避けるためにポリシーデータキーを再マッピングする：
+Event Streaming の固定された同意値を回避するため、ポリシーデータのキーを再マッピングします。   
 ```swift
 class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
@@ -237,7 +244,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 }
 ```
 
-送信される同意ログイベント名をカスタマイズする：
+送信される同意ログイベントの名前をカスタマイズします。   
 ```swift
 class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
@@ -261,7 +268,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 }
 ```
 
-代わりに第三者の同意値を返す場合、`thirdPartyConsentProvider` が別の同意プロバイダーを参照している場合：
+`thirdPartyConsentProvider` が別の同意プロバイダーへの参照である場合は、代わりにサードパーティの同意値を返します。   
 ```swift
 class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
@@ -285,7 +292,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 
 ### 完全な同意
 
-次の例は、ユーザーに同意ポリシーに同意または拒否するオプションを与える方法を示しています。ユーザーが同意または拒否すると、選択した同意ポリシーのルールが有効になります。[同意ポリシー](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/#consent-policies)についてもっと学びましょう。
+次の例は、同意ポリシーに同意するか拒否するかをユーザーが選択できるようにする方法を示しています。ユーザーが同意または拒否すると、選択した同意ポリシーのルールが適用されます。詳しくは、[同意ポリシー](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/#consent-policies)を参照してください。
 
 ```swift
 func setConsentStatusSimple(_ consented: Bool) {
@@ -294,15 +301,15 @@ func setConsentStatusSimple(_ consented: Bool) {
 }
 ```
 
-Tealium Helperクラスでこのメソッドを定義し、呼び出して、アプリユーザーがトラッキングに同意または拒否したときに使用します。ユーザーがトラッキングに同意すると、同意マネージャーは自動的にすべてのトラッキングカテゴリにユーザーを含めます。
+アプリのユーザーがトラッキングに同意または拒否したときに、Tealium Helper クラスでこのメソッドを定義して呼び出します。ユーザーがトラッキングに同意すると、同意マネージャーは自動的にそのユーザーをすべてのトラッキングカテゴリーに含めます。
 
 ![](https://docs.tealium.com/images/platforms/ios-swift/simple-consent)
 
-### カテゴリ別の部分同意（GDPR）
+### カテゴリー別の部分的な同意（GDPR）
 
-カテゴリベースの同意では、ユーザーはカテゴリの完全なリストから各カテゴリを明示的に選択する必要があります。
+カテゴリーに基づく同意では、ユーザーがカテゴリーの全リストから各カテゴリーを明示的に選択する必要があります。
 
-次のヘルパーメソッドは、[`TealiumConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/) APIのメソッドを呼び出します：
+次のヘルパーメソッドは、[`TealiumConsentManager`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-consent-manager/) API のメソッドを呼び出します。  
 ```swift
 func updateConsentPreferences(_ dict: [String: Any]) {
       var tealiumConsentCategories = [TealiumConsentCategories]()
@@ -317,7 +324,7 @@ func updateConsentPreferences(_ dict: [String: Any]) {
 }
 ```
 
-カテゴリのリストを更新するには：
+カテゴリーのリストを更新するには、次のようにします。  
 ```swift
 func setUserConsentPreferences(_ categories: [String]){
 	let settingsDict: [String: Any] = ["consentStatus": "consented", "consentCategories": categories]
@@ -325,11 +332,11 @@ func setUserConsentPreferences(_ categories: [String]){
 }
 ```
 
-#### カテゴリグループ（GDPR）
+#### カテゴリーグループ（GDPR）
 
-カテゴリベースの同意モデルでは、トラッキングカテゴリは、顧客によって定義された少数の高レベルのカテゴリにグループ化されます。
+カテゴリーに基づく同意モデルでは、トラッキングカテゴリーは、顧客が定義した少数の上位カテゴリーにグループ化されます。
 
-たとえば、Tealiumの同意カテゴリ `"big_data"`, `"analytics"`, `"monitoring"` を `"performance"` という単一のカテゴリにグループ化することを選択するかもしれません。これは、ユーザーがカテゴリの完全なリストから選択するよりも簡単かもしれません。最も許可されていないものから最も許可されているものまでの範囲のスライダーインターフェースでこれを表現することを選択するかもしれません。
+たとえば、Tealium の同意カテゴリーである `"big_data"`、`"analytics"`、`"monitoring"` を、`"performance"` という単一のカテゴリーにまとめることができます。ユーザーにとっては、カテゴリーの全リストから選択するよりも簡単な場合があります。これを、最も制限の厳しい構成から最も制限の緩い構成（すべてのカテゴリー）までを範囲とするスライダーインターフェイスで表現することもできます。
 
 ```swift
 func updateConsentPreferences(_ dict: [String: Any]) {
@@ -345,7 +352,7 @@ func updateConsentPreferences(_ dict: [String: Any]) {
 }
 ```
 
-次のヘルパー関数は、カテゴリのグループを定義し、ユーザーの同意構成を構成します：
+次のヘルパー関数は、カテゴリーのグループを定義し、ユーザーの同意構成を指定します。  
 
 ```swift
 func setUserConsentPreferences(){
@@ -368,6 +375,6 @@ func setUserConsentPreferences(){
 
 ## サンプルアプリ
 
-当社のライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れるために、Tealium for Swift [consent manager sample app](https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo)を探索してください。
+Tealium のライブラリ、トラッキングメソッド、実装のベストプラクティスについて理解を深めるには、Tealium for Swift の[同意マネージャーサンプルアプリ](https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo)を参照してください。
 
 ![](https://docs.tealium.com/images/platforms/ios-swift/category-based)

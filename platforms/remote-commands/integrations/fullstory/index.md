@@ -11,7 +11,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/
     * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/) (2.18.0+)
 * One of the following remote command integrations:
     * [FullStory Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.18.0+)
-    * [FullStory Remote Command tag](https://docs.tealium.com/fullstory-tag/) in Tealium iQ Tag Management
+    * [FullStory Remote Command tag](https://docs.tealium.com/fullstory-tag/) in Tag Management
 
 ## How it works
 
@@ -32,7 +32,7 @@ If you are using CocoaPods or Carthage as your dependency manager, you will have
 There are two remote command options:
 
 * Use a JSON configuration file (Recommended), hosted either remotely or locally within the app.
-* Use iQ Tag Management to configure the mappings and add the Remote Command tag for the vendor integration.
+* Use Tag Management to configure the mappings and add the Remote Command tag for the vendor integration.
 
 For more information, see [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 

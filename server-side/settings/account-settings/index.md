@@ -16,8 +16,8 @@ Read-only (non-editable) settings can only be changed by Tealium Support or the 
 ## General settings
 
 * **Enable Concurrency** (Read Only): Allow account admins to toggle Server-Side Concurrency at the profile level.
-* **Activate AudienceStream** (Read Only): Enable/disable all AudienceStream features for the current profile.
-* **AudienceStream Event Filter** (Read Only): Enter the **Event Attribute** name and value (case insensitive). Only events matching this condition are sent to AudienceStream. Leaving these fields empty sends all events to AudienceStream.
+* **Enable Customer Data Platform** (Read Only): Enables customer data and audience activation features for the current profile.
+* **Customer Data Platform - Event Filter** (Read Only): Enter the **Event Attribute** name and value (case insensitive). Only events matching this condition are sent to the customer data platform. Leaving these fields empty sends all events.
     
 <blockquote>
 While the filter only accepts a single attribute name and value, the event filter is applied after server-side enrichments are applied, which allows for more complex filtering based on a custom attribute using enrichments and rules.
@@ -25,7 +25,7 @@ While the filter only accepts a single attribute name and value, the event filte
 
 * **Visitor Stitching** (Read Only): Enable to merge visitor profiles across platforms, devices, and browsers when they originate from the same visitor. Default value is **ON**.
 * **Profile Retention Time** (Read Only): Set the retention time for visitor profiles. A visitor's last event determines the retention start time, in days.
-* **Display/UI Time Zone** (Read Only): Select the time zone to display for actions on the connectors dashboard, the AudienceStream dashboard, and the Tealium Insights dashboards.
+* **Display/UI Time Zone** (Read Only): Select the time zone to display for your Customer Data Hub dashboard.
     * Options are **Greenwich Mean Time (GMT)** or **Local Time**.
     * Selecting **Local Time** displays the browser time for the user currently logged in.
 * **Enable Rule Dependency Checking**: Ensure that attribute dependencies on rules are captured and executed in the correct order. Default value is **ON**.
@@ -54,13 +54,13 @@ The Client IP attribute is not visible in **Live Events** or **Trace**. To see t
 * **Audience Data Storage** (Read Only) Enable Audience Data Storage on the account.
     * A signed contract is required before enabling Audience Data Storage
 * **EventStore Retention Time** (Read Only): Determines how long EventStore data is retained.
-    * Default value is **390 days** (13 months).
+    * Default value is **30 days**.
 * **EventDB Retention Time** (Read Only): Determines how long EventDB data is retained.
     * Default value is **90 Days**.
 
-## EventStream connectors
+## Event Activation
 
-* **Activate EventStream Connectors** (Read Only): Enable/disable EventStream connectors for events features for the current profile.
+* **Enable Event Activation** (Read Only): Enables event activation and related connectors for the current profile.
     * Default value is **ON**.
 
 ## Region

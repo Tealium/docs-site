@@ -21,8 +21,8 @@ The following sections provide instructions for installing the Tealium App in Sh
 1. On the **Config** tab, enter your **Account**, **Profile**, and **Environment** information.  
     Environment values are `prod`, `dev`, or `qa`.
 1. Select a **Checkout Tracking** option:  
-    * **Client Side Only**: Select this option if you only have Tealium iQ Tag Management.
-    * **Client and Server Side**: Select this option if you use Shopify Webhooks to send data to EventStream.
+    * **Client Side Only**: Select this option if you only have Tag Management.
+    * **Client and Server Side**: Select this option if you use Shopify Webhooks to send data to Event Streaming.
 1. If you selected **Client and Server Side**, do the following:  
     1. In Tealium, go to **Server-Side > Data Sources**, and select the data source you created for Shopify.  
     1. Copy the **Data Source Key** for the selected data source.  
@@ -41,7 +41,7 @@ This loads the Tealium library `utag.js` and the standard data layer for Shopify
 
 ### Configure the checkout pixel
 
-The Tealium app uses a custom checkout pixel to send checkout event data to EventStream. If you do not have EventStream enabled, you do not need to configure the checkout pixel.
+The Tealium app uses a custom checkout pixel to send checkout event data to Event Streaming. If you do not have Event Streaming enabled, you do not need to configure the checkout pixel.
 
 Use the following steps to configure the Checkout Pixel: 
 
@@ -84,7 +84,7 @@ To add a consent integration for Shopify, create a purpose group and one or more
 | `preferences` | `personalization/preferences` |
 | `sale_of_data` | `sale_of_data` |
 
-Assign the appropriate Tealium iQ purpose before mapping tags to the different purposes. For each Tag, select the **Map** drop-down menu and assign the most appropriate purpose for the tag.
+Assign the appropriate Tag Management purpose before mapping tags to the different purposes. For each Tag, select the **Map** drop-down menu and assign the most appropriate purpose for the tag.
 
 For more information about creating a purpose group and purposes, see [Add a purpose group](https://docs.tealium.com/manage-consent-integrations/#add-a-purpose-group).
 
@@ -116,7 +116,7 @@ This automatically sets `utagdb=true`, which enables verbose output and loads th
 
 Debug mode applies only to the client-side. It cannot be used to validate server-side data collection. 
 
-Debugging of webhooks and events sent to EventStream can be done using the Live Events page in EventStream. The page being tested needs to be reloaded to see the events. This works on the whole site, including checkout. For more information, see [About Live Events]().
+Debugging of webhooks and events sent to Event Streaming can be done using the Live Events page in Event Streaming. The page being tested needs to be reloaded to see the events. This works on the whole site, including checkout. For more information, see [About Live Events]().
 
 1. In **Shopify Admin**, go to **Online Store > Themes > Customize > App embeds**.
 1. Enable debugging in the Tealium extension settings and click **Save**.
@@ -137,7 +137,7 @@ The **Server Events** tab lets you select which Shopify webhooks are registered 
 | sms_consent_change | CUSTOMERS_MARKETING_CONSENT_CREATE |
 | email_consent_change | CUSTOMERS_EMAIL_MARKETING_CONSENT_CREATE |
 
-Selected webhooks are automatically registered with Shopify and configured to send data to Tealium EventStream.
+Selected webhooks are automatically registered with Shopify and configured to send data to Event Streaming.
 
 ## Split cookie mode
 

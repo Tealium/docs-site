@@ -1,44 +1,44 @@
 ---
-title: Moments API（現在はContext API）
-description: Swift（iOS用）とKotlin（Android用）を使用してContext APIを実装する方法を学びます。
+title: Context API（現在はContext API）
+description: iOS向けのSwiftとAndroid向けのKotlinを使用してContext APIを実装する方法について説明します。
 url: https://docs.tealium.com/ja/platforms/getting-started-mobile/context-api/
 ---
 
 <blockquote>
-Moments APIはContext APIに名称が変更されました。製品の完全なドキュメントについては、[Context APIについて](https://docs.tealium.com/about-context-api/)をご覧ください。
+Moments APIはContext APIに名称変更されました。製品ドキュメント全体については、[Context APIについて](https://docs.tealium.com/about-context-api/)を参照してください。
 </blockquote>
 
 
-Context APIは、モバイルアプリケーションに統合できるユニークなエンドポイントを提供し、パーソナライズされたユーザーエクスペリエンスを実現します。このガイドでは、Swift（iOS用）とKotlin（Android用）を使用してContext APIを実装する手順を説明します。
+Context APIは、パーソナライズされたユーザーエクスペリエンスを実現するためにモバイルアプリケーションへ統合できる、一意のエンドポイントを提供します。このガイドでは、iOS向けのSwiftとAndroid向けのKotlinを使用してContext APIを実装する手順について説明します。
 
-## 対応プラットフォーム
+## サポート対象プラットフォーム
 
 - [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/module-list/context-api/)
 - [Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/module-list/context-api/)
 
 ## 前提条件
 
-開始する前に、以下のものを用意してください：
+開始する前に、以下が用意されていることを確認してください。
 
 - Context APIにアクセスできるTealiumアカウント。
 
-## 動作原理
+## 仕組み
 
-Context APIはAudienceStreamから訪問データを取得し、アプリ内パーソナライゼーションに使用できます。
+Context APIは、Customer Data Platform（CDP）から訪問データを取得します。このデータは、アプリ内のパーソナライゼーションに使用できます。
 
 ## ユースケース
 
 ### アプリ内パーソナライゼーション
 
-必要に応じて訪問情報を更新して取得し、アプリ内のパーソナライズされたコンテンツを提供します。
+必要に応じて最新の訪問情報を取得し、アプリ内でパーソナライズされたコンテンツを提供します。
 
-### 同意された訪問データを他のSDKに渡す
+### 同意を得た訪問データを他のSDKに渡す
 
-訪問プロファイルから特定の属性をアプリ内の他のSDKに渡し、パーソナライズされたメッセージングを有効にするか、特定のユーザーセグメントのA/Bテストを実行するのに使用できます。
+訪問プロファイルの特定の属性を、アプリ内に存在する他のSDKに渡します。この属性を使用して、パーソナライズされたメッセージを有効にしたり、特定のユーザーセグメントを対象にA/Bテストを実行したりできます。
 
 ## 初期化
 
-### ステップ1: Context APIモジュールでTealiumを初期化
+### ステップ1：Context APIモジュールを使用してTealiumを初期化する
 
 
 
@@ -76,22 +76,22 @@ val tealium = Tealium.create("your_instance_name", config)
 
 
 
-### ステップ2: Context APIリージョンを構成
+### ステップ2：Context APIのリージョンを構成する
 
-`momentsAPIRegion`プロパティを構成して、AudienceStreamプロファイルが存在するリージョンを指定します。確実に一致させる必要があります。不明な場合はアカウントマネージャーに確認してください。
+`momentsAPIRegion`プロパティを、CDPプロファイルが配置されているリージョンに構成します。この値は完全に一致している必要があります。不明な場合は、アカウントマネージャーに確認してください。
 
 
 
 
 ```swift
-config.momentsAPIRegion = .us_east // 例：リージョン
+config.momentsAPIRegion = .us_east // Example region
 ```
 
 
 
 
 ```kotlin
-config.momentsApiRegion = MomentsApiRegion.UsEast // 例：リージョン
+config.momentsApiRegion = MomentsApiRegion.UsEast // Example region
 ```
 
 
@@ -99,7 +99,7 @@ config.momentsApiRegion = MomentsApiRegion.UsEast // 例：リージョン
 
 
 <blockquote>
-`Custom`オプションは将来の使用のためのものであり、Tealiumアカウントマネージャーから明確な指示がない限り使用しないでください。
+`Custom`オプションは将来使用するためのものであり、Tealiumアカウントマネージャーから明示的な指示がない限り使用しないでください。
 </blockquote>
 
 
@@ -120,9 +120,9 @@ config.momentsApiRegion = MomentsApiRegion.Custom("custom_region_placeholder")
 
 
 
-利用可能なリージョンの表は以下の通りです：
+利用可能なリージョンを次の表に示します。
 
-| Swift | Kotlin | Underlying value       |
+| Swift | Kotlin | 基になる値 |
 |-----------------|---------------------|-----------------|
 | germany         | MomentsApiRegion.Germany             | eu-central-1    |
 | us_east         | MomentsApiRegion.UsEast              | us-east-1       |
@@ -130,12 +130,11 @@ config.momentsApiRegion = MomentsApiRegion.Custom("custom_region_placeholder")
 | oregon          | MomentsApiRegion.Oregon              | us-west-2       |
 | tokyo           | MomentsApiRegion.Tokyo               | ap-northeast-1  |
 | hong_kong       | MomentsApiRegion.HongKong            | ap-east-1       |
-| custom          | MomentsApiRegion.Custom              | Custom String   |
+| custom          | MomentsApiRegion.Custom              | カスタム文字列  |
 
+### ステップ3：セキュリティをエンリッチメントするためにリファラーを構成する
 
-### ステップ3: 追加のセキュリティのためにリファラーを構成
-
-リファラーオプションは追加のセキュリティのために使用できます。Tealium UIの「ドメイン許可リスト」と一致する必要があります。
+リファラーオプションを使用すると、セキュリティをエンリッチメントできます。この値は、Tealium UIの「Domain Allow List」と一致している必要があります。
 
 
 
@@ -154,13 +153,13 @@ config.momentsApiReferrer = "https://your.custom.referrer.url"
 
 
 
-### ステップ4: エンジンレスポンスを取得
+### ステップ4：エンジンレスポンスを取得する
 
-アプリユーザーに関する最新情報を取得するために、Context APIエンジンレスポンスを取得する関数を実装します。このメソッドを必要な時に呼び出します。
+Context APIのエンジンレスポンスを取得する関数を実装します。アプリユーザーに関する最新情報を取得する必要があるときは、いつでもこのメソッドを呼び出してください。
 
 
 <blockquote>
-現在のアプリユーザーのTealium訪問IDは、Context APIリクエストの一部として自動的に送信されます。
+現在のアプリユーザーのTealium Visitor IDは、Context APIリクエストの一部として自動的に送信されます。
 </blockquote>
 
 

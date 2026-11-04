@@ -13,7 +13,7 @@ The current Tealium for Swift SDK version is 2.x. For previous versions, see [Sw
 
 * Xcode 7.0+
 * iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -107,9 +107,9 @@ To disable specific modules from the Podfile, comment them out in the Podfile wi
 # All pods depend on Core. Supports all platforms.
 pod "tealium-swift/Core"
 pod "tealium-swift/Lifecycle"
-pod "tealium-swift/Collect" # for Server-side products. For example: EventStream - usually this or TealiumTagManagement, but not often both
+pod "tealium-swift/Collect" # for Server-side products. For example: Event Streaming - usually this or TealiumTagManagement, but not often both
 # OR
-pod "tealium-swift/TagManagement" # for Tealium iQ
+pod "tealium-swift/TagManagement" # for Tag Management
 pod "tealium-swift/RemoteCommands"
 
 # *** Optional modules: You may not need these modules. Enable as required.   *** #
@@ -167,7 +167,7 @@ The Tealium Swift SDK has been split up into separate modules/frameworks. Import
 **Module import statements**
 
 *  **TealiumCore** - required for Tealium, TealiumConfig, TealiumInstanceManager
-*  **TealiumTagManagement** - required to dispatch track calls to Tealium iQ
+*  **TealiumTagManagement** - required to dispatch track calls to Tag Management
 *  **TealiumCollect**  - required to dispatch track calls to Tealium's Customer Data Hub
 *  **TealiumRemoteCommands** - required if you need to interact with the remote commands API
 *  **TealiumLifecycle** - required if you need to collect lifecycle events and associated data
@@ -252,7 +252,7 @@ Replace the following:
 
 
 <blockquote>
-Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using `config.shouldUseRemotePublishSettings = false`.
+Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in Tag Management, or disable them using `config.shouldUseRemotePublishSettings = false`.
 </blockquote>
 
 

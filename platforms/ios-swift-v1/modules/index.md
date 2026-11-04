@@ -66,8 +66,8 @@ In addition to the base modules, these modules are needed for a tag management i
 * RemoteCommands
 * TagManagement
 
-### Tealium EventStream/AudienceStream
-In addition to the base modules, these modules are needed for an EventStream/ AudienceStream installation.
+### Event Streaming and Customer Data Platform (CDP)
+In addition to the base modules, these modules are needed for an Event Streaming and Customer Data Platform (CDP) installation.
 
 * Collect
 * Consent Manager

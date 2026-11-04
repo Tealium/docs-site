@@ -3,10 +3,10 @@ title: Tealium configuration
 description: This article provide information about the Tealium configuration steps that should be completed before installing the Tealium Shopify app.
 url: https://docs.tealium.com/platforms/shopify/tealium-shopify-configuration/
 ---
-To send event data to Tealium iQ Tag Management or Tealium EventStream API Hub from the Tealium Shopify app, the following are needed:
+To send event data to Tag Management or Event Streaming API Hub from the Tealium Shopify app, the following are needed:
 
 * A Tealium HTTP API data source
-* Event specifications for events to be sent to EventStream and for the data source
+* Event specifications for events to be sent to Event Streaming and for the data source
 * A data layer variable named `restock`
 
 The data source, data source event specification, and data layer variable are used during installation of the Tealium app, and should be created before installing the app.

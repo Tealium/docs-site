@@ -23,7 +23,7 @@ TimeDataモジュールは、すべてのトラッキング呼び出しにタイ
 
 
 
-TimeDataモジュールは`prism-core`に含まれています。`build.gradle`ファイルに次の内容を追加します。
+TimeDataモジュールは`prism-core`に含まれています。`build.gradle`ファイルに追加します。
 
 ```kotlin
 implementation(platform("com.tealium.prism:prism-bom:0.7.0"))
@@ -57,7 +57,7 @@ val config = TealiumConfig.Builder(
 ```
 
 
-`TealiumConfig`のmodulesパラメータに追加して、プログラムでモジュールを構成します。
+`TealiumConfig`のmodulesパラメータにモジュールを追加して、プログラムで構成します。
 
 モジュール構成の詳細については、[`TimeDataSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/timedata.html)を参照してください。
 

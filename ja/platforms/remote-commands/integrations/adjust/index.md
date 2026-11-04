@@ -1,74 +1,74 @@
 ---
-title: リモートコマンド：調整
-description: AndroidおよびSwift/iOSでのAdjustのTealiumリモートコマンド統合。
+title: リモートコマンド：Adjust
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドによるAdjust連携。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/adjust/
 ---
 ## 要件
 
-* Adjust [アプリトークン](https://help.adjust.com/en/article/app-settings#view-your-app-token)
-* 以下のいずれかのモバイルライブラリ：
-  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/) (1.0.0+)
-  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/) (5.9.0+)
+* Adjustの[アプリトークン](https://help.adjust.com/en/article/app-settings#view-your-app-token)
+* 以下のモバイルライブラリのいずれか：
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）
+  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（5.9.0以降）
   * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)
-* 以下のいずれかのリモートコマンド統合：
-  * [Adjust Remote Command JSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/adjust/#json-template) (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)
-  * [Tealium iQタグ管理内のAdjust Remote Commandタグ](https://docs.tealium.com/adjust-mobile-remote-command-tag/)
+* 以下のリモートコマンド連携のいずれか：
+  * [AdjustリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/adjust/#json-template)（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）
+  * [タグ管理のAdjustリモートコマンドタグ](https://docs.tealium.com/adjust-mobile-remote-command-tag/)
 
-## 動作原理
+## 仕組み
 
-Adjust統合は3つのアイテムを使用します：
+Adjust連携では、次の3つの項目を使用します。
 
 1. AdjustネイティブSDK
-2. Adjustメソッドをラップするリモートコマンドモジュール
-3. イベントトラッキングをネイティブのAdjustコールに変換するJSON構成ファイルまたはリモートコマンドタグ
+2. Adjustのメソッドをラップするリモートコマンドモジュール
+3. イベントトラッキングをAdjustのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ
 
-アプリにAdjustリモートコマンドモジュールを追加すると、アプリにベンダー固有のコードを追加することなく、必要なAdjustライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Adjust SDKを別途インストールする必要はありません。
+Adjustリモートコマンドモジュールをアプリに追加すると、アプリにベンダー固有のコードを追加することなく、必要なAdjustライブラリが自動的にインストールおよびビルドされます。依存関係マネージャーを使用してインストールする場合、Adjust SDKを個別にインストールする必要はありません。
 
-リモートコマンドオプションには2つのタイプがあります：JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合に推奨されるオプションで、アプリ内またはリモートでホストされます。iQタグ管理を使用する場合は、ベンダー統合のリモートコマンドタグを追加します。[ベンダー統合についての詳細はこちら](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)。
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー連携では、リモートまたはアプリ内のローカルにホストしたJSON構成ファイルを使用することを推奨します。タグ管理を使用する場合は、ベンダー連携用のリモートコマンドタグを追加します。詳しくは、[ベンダー連携](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を参照してください。
 
 
 <blockquote>
-iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイティブフレームワークを追加します：`AdSupport.framework`、`iAd.framework`、`AppTrackingTransparaceny.framework`。[Adjust iOS SKAdNetwork統合ガイド](https://help.adjust.com/en/article/app-tracking-transparency-att-framework)で詳細を確認してください。
+iOS：Adjustバージョン4.23.0以降では、SDKによって次のネイティブフレームワークが自動的に追加されます：`AdSupport.framework`、`iAd.framework`、`AppTrackingTransparaceny.framework`。詳しくは、[Adjust iOS SKAdNetwork連携](https://help.adjust.com/en/article/app-tracking-transparency-att-framework)ガイドを参照してください。
 </blockquote>
 
 
 ## インストール
 
-### 依存関係マネージャ
+### 依存関係マネージャー
 
 
 
 
 1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-ios-adjust-remote-command`
-3. バージョンルールを構成します。通常は`Up to next major`が推奨されます。現在の`TealiumAdjust`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールする`TealiumAdjust`モジュールを選択し、モジュールをインストールするアプリターゲットを選択します。
-5. Tealium Swiftライブラリから追加のモジュールを使用している場合は、[Swift Package Managerの指示](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)に従って追加してください。
+2. リポジトリのURLとして`https://github.com/tealium/tealium-ios-adjust-remote-command`を入力します。
+3. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumAdjust`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
+4. インストールする`TealiumAdjust`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
+5. Tealium Swiftライブラリの追加モジュールを使用する場合は、[Swift Package Managerの手順](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)に従って追加します。
 
-プロジェクトに複数のアプリターゲットがあり、`TealiumAdjust`モジュールを複数のアプリターゲットに追加する必要がある場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、複数のターゲットで`TealiumAdjust`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-追加のアプリターゲットに`TealiumAdjust`をインストールするには：
+追加のアプリターゲットに`TealiumAdjust`をインストールするには、次の手順を実行します。
 
 1. **Project Navigator**でXcodeプロジェクトを選択します。
-2. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumAdjust`モジュールをアプリターゲットに追加します。
+2. Xcodeプロジェクトの**TARGETS**セクションでアプリターゲットを選択します。
+3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumAdjust`モジュールを選択してアプリターゲットに追加します。
 
 
 
 
-1. Podfileから`pod "tealium-swift"`と`pod "Adjust"`を削除します。`tealium-swift`の依存関係はすでに`TealiumAdjust`フレームワークに含まれています。
+1. Podfileに`pod "tealium-swift"`および`pod "Adjust"`が存在する場合は削除します。`tealium-swift`への依存関係は、すでに`TealiumAdjust`フレームワークに含まれています。
 
-2. Podfileに次の依存関係を追加します：
+2. 次の依存関係をPodfileに追加します。  
       ```ruby
       pod "TealiumAdjust"
       ```  
-      `TealiumAdjust`ポッドには次の`TealiumSwift`依存関係が含まれています：
+      `TealiumAdjust` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       "tealium-swift/Core"
       "tealium-swift/RemoteCommands"
       ```
 
-3. インストールにディスパッチャーポッドを含めます。`tealium-swift/Collect`または`tealium-swift/TagManagement`のいずれかを選択し、Podfileに他の個々のサブモジュールを含めます。例：
+3. `tealium-swift/Collect`または`tealium-swift/TagManagement`のいずれかのディスパッチャーPodをインストールに含め、その他の個別のサブモジュールもPodfileに追加します。例：   
       ```ruby
       pod "TealiumAdjust"
       pod "tealium-swift/Collect"
@@ -76,19 +76,19 @@ iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイテ�
       pod "tealium-swift/Attribution"
       ```
 
-4. `TealiumHelper`ファイルおよび`Tealium`クラスまたはAdjustリモートコマンドにアクセスする他のファイルで`TealiumSwift`と`TealiumAdjust`モジュールをインポートします。
+4. `TealiumHelper`ファイル、および`Tealium`クラスまたはAdjustリモートコマンドにアクセスするその他のファイルで、`TealiumSwift`モジュールと`TealiumAdjust`モジュールをインポートします。
 
 
 
 
-1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係はすでに`TealiumAdjust`フレームワークに含まれています。
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`への依存関係は、すでに`TealiumAdjust`フレームワークに含まれています。
 
-2. Cartfileに存在する場合は次の行を削除します：
+2. Cartfileに次の行が存在する場合は削除します。  
       ```bash
       github "adjust/ios_sdk"
       ```
 
-3. Cartfileに次の依存関係を追加します：
+3. 次の依存関係をCartfileに追加します。  
       ```bash
       github "tealium/tealium-ios-adjust-remote-command"
       ```
@@ -98,7 +98,7 @@ iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイテ�
 
 
 
-1. [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、まだ行っていない場合はプロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+1. まだ実行していない場合は、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトの最上位の`build.gradle`ファイルにTealium Maven URLを追加します。
 
       ```groovy
       allprojects {
@@ -111,7 +111,7 @@ iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイテ�
       }
       ```
 
-2. アプリプロジェクトの`build.gradle`ファイルにAdjust SDKとTealium-Adjustリモートコマンドの依存関係を追加します：
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、Adjust SDKとTealium-Adjustリモートコマンドの両方をインポートします。  
       ```groovy
       dependencies {
             implementation 'com.tealium.remotecommands:adjust:1.0.0'
@@ -122,11 +122,11 @@ iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイテ�
 
 1. React Nativeプロジェクトのルートに移動します。
 
-2. 次のコマンドで`tealium-react-adjust`パッケージをダウンロードしてインストールします：
+2. 次のコマンドを使用して`tealium-react-adjust`パッケージをダウンロードし、インストールします。  
     ```bash
     yarn add tealium-react-adjust
     ```
-3. React Native AutolinkingはNPMパッケージのバージョン1.0.7で有効になっており、React Nativeのバージョン0.60+を使用している場合、`react-native link`を実行する必要はありません。
+3. NPMパッケージのバージョン1.0.7ではReact Native Autolinkingが有効になっているため、React Native 0.60以降を使用している場合は`react-native link`を実行する必要はありません。
 
 
 
@@ -136,11 +136,11 @@ iOS：Adjustバージョン4.23.0以降、SDKは自動的に以下のネイテ�
 
 
 
-Adjustリモートコマンドの手動インストールには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトのAdjustリモートコマンドをインストールするには：
+Adjustリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにAdjustリモートコマンドをインストールするには、次の手順を実行します。
 
-1. まだ行っていない場合は、[Adjust SDK](https://github.com/adjust/ios_sdk)をインストールします。
+1. まだインストールしていない場合は、[Adjust SDK](https://github.com/adjust/ios_sdk)をインストールします。
 
-2. [Tealium iOS Adjustリモートコマンド](https://github.com/tealium/tealium-ios-adjust-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+2. [Tealium iOS Adjustリモートコマンド](https://github.com/tealium/tealium-ios-adjust-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
 3. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
 
@@ -148,9 +148,9 @@ Adjustリモートコマンドの手動インストールには、[Tealium for S
 
 
 
-Adjustリモートコマンドの手動インストールには、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。AndroidプロジェクトのAdjustリモートコマンドをインストールするには：
+Adjustリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。AndroidプロジェクトにAdjustリモートコマンドをインストールするには、次の手順を実行します。
 
-1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します：
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。  
       ```groovy
       allprojects {
             repositories {
@@ -162,9 +162,9 @@ Adjustリモートコマンドの手動インストールには、[Tealium for A
       }
       ```
 
-2. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-adjust.aar`を追加します。
+2. `tealium-adjust.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+3. Tealiumライブラリの依存関係を`build.gradle`ファイルに追加します。  
       ```groovy
       dependencies {
             implementation(name:'tealium-adjust', ext:'aar')
@@ -174,12 +174,12 @@ Adjustリモートコマンドの手動インストールには、[Tealium for A
 
 ## 初期化
 
-Tealiumのすべてのライブラリで、初期化時にAdjust Remote Commandを登録します。
+すべての Tealium ライブラリで、初期化時に Adjust Remote Command を登録します。
 
 
 
 
-TealiumのiOS（Swift）ライブラリ用にJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+Tealium の iOS（Swift）ライブラリ向けに、JSON 構成ファイルまたは Remote Command タグを使用して Remote Command を初期化します。
 ```swift
 var tealium : Tealium?
 let config = TealiumConfig(account: "ACCOUNT",
@@ -187,20 +187,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let adjust = AdjustRemoteCommand()
 
-    // ローカルJSON
+    // Local JSON
     //let adjust = AdjustRemoteCommand(type: .local(file: "adjust")) 
 
-    // リモートJSON
+    // Remote JSON
     //let adjust = AdjustRemoteCommand(type: .remote(url: "https://some.domain.com/adjust.json"))
 
     remoteCommands.add(adjust)
@@ -209,7 +209,7 @@ tealium = Tealium(config: config) { _ in
 
 
 
-TealiumのAndroid（Kotlin）ライブラリ用にJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+Tealium の Android（Kotlin）ライブラリ向けに、JSON 構成ファイルまたは Remote Command タグを使用して Remote Command を初期化します。
 ```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
@@ -220,25 +220,25 @@ val adjust = AdjustRemoteCommand(application);
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(adjust); 
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(adjust, filename = "adjust.json");
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(adjust, remoteUrl = "https://some.domain.com/adjust.json"); 
 }
 ```
 
 
 
-TealiumのAndroid（Java）ライブラリ用にJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+Tealium の Android（Java）ライブラリ向けに、JSON 構成ファイルまたは Remote Command タグを使用して Remote Command を初期化します。
 ```java
 Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
-// Adjust Remote Commandを追加する新しいコード
+// New code to add the Adjust Remote Command
 AdjustRemoteCommand adjustRemoteCommand = new AdjustRemoteCommand(application)
 teal.addRemoteCommand(adjustRemoteCommand);
 ```
@@ -246,18 +246,18 @@ teal.addRemoteCommand(adjustRemoteCommand);
 
 
 
-React Native用にJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+React Native 向けに、JSON 構成ファイルまたは Remote Command タグを使用して Remote Command を初期化します。
 ```javascript
 import AdjustRemoteCommand from 'tealium-react-adjust';
 AdjustRemoteCommand.initialize();
 
-// Webviewタグ
+// Webview Tag
 let adjust = { id: AdjustRemoteCommand.name } 
 
-// ローカルJSON
+// Local JSON
 //let adjust = { id: AdjustRemoteCommand.name, path: "adjust.json" }
 
-// リモートJSON
+// Remote JSON
 //let adjust = { id: AdjustRemoteCommand.name, url: "https://some.domain.com/adjust.json" }
 
 let config = TealiumConfig {
@@ -269,9 +269,9 @@ let config = TealiumConfig {
 
 
 
-## JSONテンプレート
+## JSON テンプレート
 
-リモートコマンドを[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用して構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
+[JSON 構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用して Remote Command を構成する場合は、以下のテンプレートを使用して構成を開始してください。このテンプレートには、標準的な e コマース実装で使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -338,9 +338,9 @@ let config = TealiumConfig {
 
 ## サポートされているメソッド
 
-各Adjustメソッドに対応するコマンドをマッピングします。Adjustメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。
+各 Adjust メソッドにコマンドをマッピングします。Adjust メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-| リモートコマンド | Adjustメソッド |
+| Remote Command | Adjust メソッド |
 | :-- | :-- |
 | `initialize` | `initialize()` |
 | `sendEvent` | `trackEvent()` |
@@ -355,12 +355,12 @@ let config = TealiumConfig {
 | `gdprForgetMe` | `gdprForgetMe()` |
 | `trackThirdPartySharing` | `trackThirdPartySharing()` |
 | `trackMeasurementConsent` | `trackMeasurementConsent()` |
-| `addSessionCallbackParams` (非推奨) | `addSessionCallbackParams()` |
-| `removeSessionCallbackParams` (非推奨) | `removeSessionCallbackParams()` |
-| `resetSessionCallbackParams` (非推奨) | `resetSessionCallbackParams()` |
-| `addSessionPartnerParams` (非推奨) | `addSessionPartnerParams()` |
-| `removeSessionPartnerParams` (非推奨) | `removeSessionPartnerParams()` |
-| `resetSessionPartnerParams` (非推奨) | `resetSessionPartnerParams()` |
+| `addSessionCallbackParams`（非推奨） | `addSessionCallbackParams()` |
+| `removeSessionCallbackParams`（非推奨） | `removeSessionCallbackParams()` |
+| `resetSessionCallbackParams`（非推奨） | `resetSessionCallbackParams()` |
+| `addSessionPartnerParams`（非推奨） | `addSessionPartnerParams()` |
+| `removeSessionPartnerParams`（非推奨） | `removeSessionPartnerParams()` |
+| `resetSessionPartnerParams`（非推奨） | `resetSessionPartnerParams()` |
 | `addGlobalCallbackParams` | `addGlobalCallbackParams()` |
 | `removeGlobalCallbackParams` | `removeGlobalCallbackParams()` |
 | `resetGlobalCallbackParams` | `resetGlobalCallbackParams()` |
@@ -370,41 +370,41 @@ let config = TealiumConfig {
 
 
 <blockquote>
-iOSの`AppTrackingTransparency.framework`の一部としてのみサポートされています。[Adjust iOS SKAdNetwork統合](https://help.adjust.com/en/article/app-tracking-transparency-att-framework)ガイドで詳細を学びましょう。
+`AppTrackingTransparency.framework` の一部として、iOS でのみサポートされています。詳しくは、[Adjust iOS SKAdNetwork インテグレーション](https://help.adjust.com/en/article/app-tracking-transparency-att-framework)ガイドを参照してください。
 </blockquote>
 
 
-### SDKセットアップ
+### SDK のセットアップ
 
 #### 初期化
 
-Adjust SDKは起動時に自動的に初期化されます。Adjust APIキーはタグ構成で構成されます。
+Adjust SDK は起動時に自動的に初期化されます。Adjust API キーはタグ構成で指定します。
 
-| リモートコマンド | Adjustメソッド |
+| Remote Command | Adjust メソッド |
 |---|---|
 | `initialize`  | `initialize()` |
 
-Adjust開発者ガイド：初期SDKセットアップ
+Adjust 開発者ガイド：SDK の初期セットアップ
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/configuration)
 - [Android](https://dev.adjust.com/en/sdk/android/configuration)
 
-Adjust Remote Commandタグにはいくつかの構成オプションがあります。これらのいずれかが起動時に構成されている場合、`initialize()`メソッド中に送信されます。
+Adjust Remote Command タグでは、複数の構成オプションを利用できます。以下のいずれかを起動時に構成すると、`initialize()` メソッドの実行時に送信されます。
 ##### 構成オプション
 
-| 名前 | iQ変数マッピング | タイプ |
+| 名前 | iQ変数のマッピング | 型 |
 |---|---|---|
 | `environment`  | `sandbox` | `Bool` |
 | `logLevel`| `logLevel`  | `String` |
-| `delayStart` (非推奨) | `delay_start` | `Double` |
+| `delayStart`（非推奨） | `delay_start` | `Double` |
 | `allowiAdInfoReading`* | `allow_iad` | `Bool` |
 | `allowAdServicesInfoReading`* | `allow_ad_services` | `Bool` |
 | `allowIdfaReading`* | `allow_idfa` | `Bool` |
-| `appSecret` (非推奨) | `app_secret` | `String` |
-| `appSecretInfo1` (非推奨) | `app_secret_info_1` | `String` |
-| `appSecretInfo2` (非推奨) | `app_secret_info_2` | `String` |
-| `appSecretInfo3` (非推奨) | `app_secret_info_3` | `String` |
-| `appSecretInfo4` (非推奨) | `app_secret_info_4` | `String` |
+| `appSecret`（非推奨） | `app_secret` | `String` |
+| `appSecretInfo1`（非推奨） | `app_secret_info_1` | `String` |
+| `appSecretInfo2`（非推奨） | `app_secret_info_2` | `String` |
+| `appSecretInfo3`（非推奨） | `app_secret_info_3` | `String` |
+| `appSecretInfo4`（非推奨） | `app_secret_info_4` | `String` |
 | `defaultTracker`| `default_tracker` | `String` |
 | `externalDeviceId`| `external_device_id` | `String` |
 | `eventBufferingEnabled`| `event_buffering_enabled` | `String` |
@@ -416,67 +416,68 @@ Adjust Remote Commandタグにはいくつかの構成オプションがあり�
 | `useSubdomains`| `url_strategy_use_subdomains` | `Bool` |
 | `isResidency`| `url_strategy_is_residency` | `Bool` |
 
-`url_strategy`はv4 URL戦略のいずれかでなければならず、または、domains/useSubdomains/isResidencyの3つのパラメータを提供して将来追加される別の戦略を作成することができます。
+`url_strategy`には、v4 URLストラテジーのいずれかを指定する必要があります。または、代わりにdomains/useSubdomains/isResidencyの3つのパラメータをすべて指定し、今後追加される別のストラテジーを作成できます。
 
 
 <blockquote>
-iOSとAndroidのみ
+iOSおよびAndroidのみ
 </blockquote>
 
 
-#### イベントトラッキング
+#### イベントのトラッキング
 
 | リモートコマンド | Adjustメソッド |
 |---|---|
 | `sendevent`  | `trackEvent()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `event_token` (必須) | `String` |
-|  `order_id` | `String` |
-|  `deduplication_id` | `String` |
-|  `revenue` | `Double` |
-|  `currency` | `String` |
-|  `callback` | `Dictionary` または `Map` |
-|  `partner` | `Dictionary` または `Map` |
-|  `callback_id` | `String` |
+| `event_token`（必須） | `String` |
+| `order_id` | `String` |
+| `deduplication_id` | `String` |
+| `revenue` | `Double` |
+| `currency` | `String` |
+| `callback` | `Dictionary`または`Map` |
+| `partner` | `Dictionary`または`Map` |
+| `callback_id` | `String` |
 
-Adjust 開発者ガイド: イベントトラッキング
+
+Adjust開発者ガイド：イベントのトラッキング
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/events)
 - [Android](https://dev.adjust.com/en/sdk/android/features/events)
 
-#### サブスクリプショントラッキング
+#### サブスクリプションのトラッキング
 
 | リモートコマンド | Adjustメソッド |
 | :--- | :---|
 | `tracksubscription`  | `trackAppStoreSubscription()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `revenue` (必須) | `Double` |
-|  `currency` (必須) | `String ` |
-|  `order_id` (必須) | `String` |
-|  `deduplication_id` | `String` |
-|  `receipt` (非推奨) | `Data` |
-|  `sku` (Androidのみ必須) | `String` |
-|  `signature` (Androidのみ必須) | `String` |
-|  `purchase_token` (Androidのみ必須) | `String` |
-|  `purchase_time` | `Date` |
-|  `sales_region` | `String` |
-|  `callback` | `Dictionary` または `Map` |
-|  `partner` | `Dictionary` または `Map` |
+| `revenue`（必須） | `Double` |
+| `currency`（必須） | `String ` |
+| `order_id`（必須） | `String` |
+| `deduplication_id` | `String` |
+| `receipt`（非推奨） | `Data` |
+| `sku`（Androidのみ必須） | `String` |
+| `signature`（Androidのみ必須） | `String` |
+| `purchase_token`（Androidのみ必須） | `String` |
+| `purchase_time` | `Date` |
+| `sales_region` | `String` |
+| `callback` | `Dictionary`または`Map` |
+| `partner` | `Dictionary`または`Map` |
 
-Adjust APIリファレンス: サブスクリプショントラッキング
+Adjust APIリファレンス：サブスクリプションのトラッキング
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/subscriptions)
 - [Android](https://dev.adjust.com/en/sdk/android/features/subscriptions)
 
-#### トラッキング認証のリクエスト (iOS)
+#### トラッキング認証のリクエスト（iOS）
 
-Adjust SDKは自動的にユーザーからのトラッキング認証をリクエストします。完了を構成するには、`Adjust.trackingAuthorizationCompletion()`メソッドを使用し、リモートコマンドを追加します。
+Adjust SDKは、ユーザーにトラッキング認証を自動的にリクエストします。完了ハンドラーを構成するには、`Adjust.trackingAuthorizationCompletion()`メソッドを使用してから、リモートコマンドを追加します。
 
-例:
+例：
 
 ```swift
 tealium = Tealium(config: config) { _ in
@@ -499,231 +500,230 @@ tealium = Tealium(config: config) { _ in
 }
 ```
 
-Adjust APIリファレンス: アプリトラッキング認証ラッパー
+Adjust APIリファレンス：アプリトラッキング認証ラッパー
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/att)
 
-#### コンバージョン値の更新 (iOSのみ)
+#### コンバージョン値の更新（iOSのみ）
 
 | リモートコマンド | Adjustメソッド |
 |---|---|
 | `updateconversionvalue`  | `updateConversionValue()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `conversion_value` (必須) | `Int` |
-|  `coarse_value` | `low`, `medium`, `high` |
-|  `lock_window` | `Bool` |
+| `conversion_value`（必須） | `Int` |
+| `coarse_value` | `low`、`medium`、`high` |
+| `lock_window` | `Bool` |
 
-Adjust APIリファレンス: SKAdNetworkコンバージョン値の更新
+Adjust APIリファレンス：SKAdNetworkコンバージョン値の更新
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/skad)
 
 
-#### アプリが開かれる
+#### アプリの起動
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
 | `appwillopen`  | `appWillOpen()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `deeplink_open_url` (必須) | `String` |
+| `deeplink_open_url`（必須） | `String` |
 
 
-Adjust APIリファレンス: ディープリンク経由の再帰属
+Adjust APIリファレンス：ディープリンク経由のリアトリビューション
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/deep-links/)
 - [Android](https://dev.adjust.com/en/sdk/android/features/deep-links/)
 
 #### 広告収益のトラッキング
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
 | `trackadrevenue`  | `trackAdRevenue()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `ad_revenue_source` (必須) | `String` |
-| `ad_revenue_payload` | `Dictionary` または `Map` |
+| `ad_revenue_source`（必須） | `String` |
+| `ad_revenue_payload` | `Dictionary`または`Map` |
 
-ペイロードは以下のパラメータで構成されます:
+ペイロードは、以下のパラメータで構成されます。
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-|  `unit` | `String` |
-|  `network` | `String` |
-|  `amount` | `Double` |
-|  `currency` | `String` |
-|  `placement` | `String` |
-|  `impression_count` | `Int32` |
-|  `callback` | `Dictionary` または `Map` |
-|  `partner` | `Dictionary` または `Map` |
+| `unit` | `String` |
+| `network` | `String` |
+| `amount` | `Double` |
+| `currency` | `String` |
+| `placement` | `String` |
+| `impression_count` | `Int32` |
+| `callback` | `Dictionary`または`Map` |
+| `partner` | `Dictionary`または`Map` |
 
-Adjust APIリファレンス: 広告収益のトラッキング
+Adjust APIリファレンス：広告収益のトラッキング
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/ad-revenue)
 - [Android](https://dev.adjust.com/en/sdk/android/features/ad-revenue)
 
 #### プッシュトークンの構成
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
 | `setpushtoken`  | `setPushToken()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `push_token` (必須) | `String` |
+| `push_token`（必須） | `String` |
 
-Adjust追加API: プッシュトークンの構成
+Adjust追加API：プッシュトークンの構成
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/configuration/#set-push-tokens)
 - [Android](https://dev.adjust.com/en/sdk/android/configuration/#set-push-tokens)
 
 #### オフラインモードの構成
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
 | `setofflinemode`  | `switchToOfflineMode()`/`switchBackToOnlineMode()` |
 
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `offline` (必須) | Bool |
+| `offline`（必須） | Bool |
 
-Adjust追加API: オフラインモードの構成
+Adjust追加API：オフラインモードの構成
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/configuration/#activate-offline-mode)
 - [Android](https://dev.adjust.com/en/sdk/android/configuration/#activate-offline-mode)
 
 ### コールバックパラメータ
 
-Adjust追加API: コールバックパラメータ
+Adjust追加API：コールバックパラメータ
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/session-parameters)
 - [Android](https://dev.adjust.com/en/sdk/android/features/session-parameter)
 
 #### グローバルコールバックパラメータの追加
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `addsessioncallbackparams` (非推奨) | `addGlobalCallbackParams()` |
+| `addsessioncallbackparams`（非推奨） | `addGlobalCallbackParams()` |
 | `addglobalcallbackparams` | `addGlobalCallbackParams()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `session_callback` (非推奨) | `Dictionary` または `Map` |
-| `global_callback` (必須) | `Dictionary` または `Map` |
+| `session_callback`（非推奨） | `Dictionary`または`Map` |
+| `global_callback`（必須） | `Dictionary`または`Map` |
 
 
 #### グローバルパートナーパラメータの追加
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `addsessionpartnerparams` (非推奨) | `addGlobalPartnerParams()` |
+| `addsessionpartnerparams`（非推奨） | `addGlobalPartnerParams()` |
 | `addglobalpartnerparams` | `addGlobalPartnerParams()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `session_partner` (非推奨) | `Dictionary` または `Map` |
-| `global_partner` (必須) | `Dictionary` または `Map` |
+| `session_partner`（非推奨） | `Dictionary`または`Map` |
+| `global_partner`（必須） | `Dictionary`または`Map` |
 
 
 #### グローバルコールバックパラメータの削除
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `removesessioncallbackparams` (非推奨) | `removeGlobalCallbackParams()` |
+| `removesessioncallbackparams`（非推奨） | `removeGlobalCallbackParams()` |
 | `removeglobalcallbackparams` | `removeGlobalCallbackParams()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `remove_session_callback_params` (非推奨) | `[String]` |
-| `remove_global_callback_params` (必須) | `[String]` |
+| `remove_session_callback_params`（非推奨） | `[String]` |
+| `remove_global_callback_params`（必須） | `[String]` |
 
 
 #### グローバルパートナーパラメータの削除
 
-|  リモートコマンド | Adjustメソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `removesessionpartnerparams` (非推奨) | `removeGlobalPartnerParams()` |
+| `removesessionpartnerparams`（非推奨） | `removeGlobalPartnerParams()` |
 | `removeglobalpartnerparams` | `removeGlobalPartnerParams()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `remove_session_partner_params` (非推奨) | `[String]` |
-| `remove_global_partner_params` (必須) | `[String]` |
+| `remove_session_partner_params`（非推奨） | `[String]` |
+| `remove_global_partner_params`（必須） | `[String]` |
+#### セッションコールバックパラメーターのリセット
 
-
-
-#### セッションコールバックパラメータのリセット
-
-|  リモートコマンド | 調整メソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `resetsessioncallbackparams` (非推奨) | `resetGlobalCallbackParams()` |
+| `resetsessioncallbackparams`（非推奨） | `resetGlobalCallbackParams()` |
 | `resetglobalcallbackparams` | `resetGlobalCallbackParams()` |
 
-#### セッションパートナーパラメータのリセット
 
-|  リモートコマンド | 調整メソッド |
+#### セッションパートナーパラメーターのリセット
+
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `resetsessionpartnerparams` (非推奨) | `resetGlobalPartnerParams()` |
+| `resetsessionpartnerparams`（非推奨） | `resetGlobalPartnerParams()` |
 | `resetglobalpartnerparams` | `resetGlobalPartnerParams()` |
 
 ### 同意オプション
 
-#### 私を忘れてください
+#### ユーザー情報の消去
 
-|  リモートコマンド | 調整メソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `gdprforgetme`  | `gdprForgetMe()` |
+| `gdprforgetme` | `gdprForgetMe()` |
 
-Adjust 追加API: GDPR 忘れられる権利
+Adjust追加API：GDPRに基づく忘れられる権利
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/privacy/#send-erasure-request)
 - [Android](https://dev.adjust.com/en/sdk/android/features/privacy/#send-erasure-request)
 
-#### 有効化構成
+#### 有効化状態の構成
 
-| リモートコマンド | 調整プロパティ |
+| リモートコマンド | Adjustプロパティ |
 |---|---|
-| `setenabled`  | `enable()`/`disable()` |
+| `setenabled` | `enable()`/`disable()` |
 
-|  パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
-|  `enabled` (必須) | `Bool` |
+| `enabled`（必須） | `Bool` |
 
-Adjust API リファレンス: トラッキング無効化
+Adjust APIリファレンス：トラッキングの無効化
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/configuration#disable-the-sdk)
 - [Android](https://dev.adjust.com/en/sdk/android/configuration#disable-the-sdk)
 
-#### 測定同意の追跡
+#### 計測への同意の記録
 
-|  リモートコマンド | 調整メソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `trackmeasurementconsent`  | `trackMeasurementConsent()` |
+| `trackmeasurementconsent` | `trackMeasurementConsent()` |
 
-|  パラメータ | タイプ |
+
+| パラメーター | 型 |
 |----|---|
-| `measurement_consent` (必須) | Bool |
+| `measurement_consent`（必須） | Bool |
 
-Adjust 追加API: 特定ユーザーの測定同意
+Adjust追加API：計測への同意
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/privacy#consent-measurement-for-specific-users)
 - [Android](https://dev.adjust.com/en/sdk/android/features/privacy#consent-measurement-for-specific-users)
 
-#### 第三者共有の追跡
+#### サードパーティ共有の記録
 
-|  リモートコマンド | 調整メソッド |
+| リモートコマンド | Adjustメソッド |
 |---|---|
-| `trackthirdpartysharing`  | `trackThirdPartySharing()` |
+| `trackthirdpartysharing` | `trackThirdPartySharing()` |
 
-|  パラメータ | タイプ |
+| パラメーター | 型 |
 |----|---|
-| `enabled` (必須) | Bool |
+| `enabled`（必須） | Bool |
 
-Adjust 追加API: 第三者共有の有効化
+Adjust追加API：サードパーティ共有の有効化
 
 - [iOS](https://dev.adjust.com/en/sdk/ios/features/privacy#third-party-sharing-for-specific-users)
 - [Android](https://dev.adjust.com/en/sdk/android/features/privacy#third-party-sharing-for-specific-users)

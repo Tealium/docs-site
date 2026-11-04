@@ -1,13 +1,13 @@
 ---
 title: トラッキング
-description: Android（Kotlin）、iOS（Swift）、React Native向けTealium Prism SDKを使用してイベントとビューをトラッキングします。
+description: Android（Kotlin）、iOS（Swift）、React Native向けのTealium Prism SDKを使用して、イベントとビューをトラッキングします。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/track/
 ---
 `track()`メソッドを使用して、イベントとビューをTealiumおよび構成済みのディスパッチャーに送信します。
 
 ## イベントのトラッキング
 
-イベントをトラッキングするには、イベント名と、任意でタイプおよびデータを`track()`メソッドに渡します。イベント名は、データレイヤーに`tealium_event`として表示されます。
+イベントをトラッキングするには、イベント名と、任意のタイプおよびデータを`track()`メソッドに渡します。イベント名は、データレイヤーに`tealium_event`として表示されます。
 
 
 
@@ -128,7 +128,7 @@ tealium.track("purchase", DataObject.create {
 ```
 
 
-イベントデータを辞書リテラルとして渡します。Swiftは解析を行わず、型付きの値から`DataObject`を直接構築します。
+イベントデータを辞書リテラルとして渡します。Swiftは、解析処理を行わず、型付きの値から`DataObject`を直接作成します。
 
 ```swift
 tealium.track("purchase", data: [
@@ -141,10 +141,10 @@ tealium.track("purchase", data: [
 
 ネストされたオブジェクトには`as DataObject`を、オブジェクトの配列には`as [DataObject]`を指定します。一部の値がオプショナルの場合は、`DataObject(compacting:)`を使用します。
 
-解析済みのJSONやクロスプラットフォームブリッジから取得した値など、データがすでに`[String: Any]`辞書である場合は、`try DataObject(jsonObject:)`を使用します。このメソッドはJSONのラウンドトリップによって辞書を検証するため、リテラルよりも呼び出しごとのコストが高くなります。動的データにのみ使用してください。
+データがすでに`[String: Any]`辞書である場合（解析済みのJSONやクロスプラットフォームブリッジから取得した値など）は、`try DataObject(jsonObject:)`を使用します。このメソッドはJSONへのラウンドトリップによって辞書を検証するため、リテラルよりも呼び出しごとのコストが高くなります。動的データにのみ使用してください。
 
 
-第3引数としてプレーンなJavaScriptオブジェクトを渡します。配列とネストされた値がサポートされています。
+プレーンなJavaScriptオブジェクトを3番目の引数として渡します。配列とネストされた値がサポートされています。
 
 ```javascript
 await tealium.track("purchase", "event", {

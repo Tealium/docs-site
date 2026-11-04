@@ -2,7 +2,7 @@
 title: Data Layer
 description: Learn the differences between versions 4.x and 5.x of the Tealium for iOS libraries and how to migrate to the latest version.
 url: https://docs.tealium.com/platforms/ios-objective-c/data-layer/
----The following variables are populated by the Tealium iOS Library as part of the mobile data layer. These variables are included automatically in each tracking call from the library and used in your iQ or Tealium EventStream configurations.
+---The following variables are populated by the Tealium iOS Library as part of the mobile data layer. These variables are included automatically in each tracking call from the library and used in your iQ or Event Streaming configurations.
 
 Addition variables are available in the [Lifecycle Tracking Module](https://docs.tealium.com/platforms/ios-objective-c/module-list/lifecycle-tracking/) for 5.0.x.
 

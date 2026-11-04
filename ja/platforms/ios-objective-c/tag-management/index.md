@@ -1,54 +1,53 @@
 ---
 title: タグ管理
-description: Universal Tag (utag.js) JavaScriptクライアントサイドを実行するための非レンダリングWKWebViewインスタンスとしてのタグ管理の実装方法を学びます。
+description: Universal Tag（utag.js）JavaScript をクライアント側で実行するために、タグ管理がレンダリングされない WKWebView インスタンスとして実装される仕組みについて説明します。
 url: https://docs.tealium.com/ja/platforms/ios-objective-c/tag-management/
 ---
-このタグ管理機能により、JavaScriptベースのベンダータグをアプリに統合し、Tealium iQを使用してリモートで管理することができます。これはウェブサイトと同様の方法です。
+このタグ管理機能を使用すると、JavaScript ベースのベンダータグをアプリに統合し、Web サイトと同様に、タグ管理を使用してリモートで管理できます。
 
 ## 仕組み
 
-タグ管理が有効になっているTealium iQで[モバイルプロファイルを作成](https://docs.tealium.com/create-mobile-profile/)した後、アプリでTealiumインスタンスを初期化すると、非レンダリングのウェブビューが作成され、TealiumからシンプルなHTMLファイルをロードし、その中でUniversal Tag `utag.js`をロードします。このウェブビューはユーザーには表示されません。
+タグ管理を有効にして[タグ管理でモバイルプロファイルを作成](https://docs.tealium.com/create-mobile-profile/)した後、アプリで Tealium インスタンスを初期化すると、Universal Tag `utag.js` を読み込むための Tealium のシンプルな HTML ファイルをロードする、レンダリングされない Web ビューが作成されます。この Web ビューがユーザーに表示されることはありません。
 
-* バージョン5.5.0以降、およびiOS 11.0以降を実行している場合は、[WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)を使用します。
-* バージョン5.4.x以前、またはiOS 10.0以前を実行している場合は、[UIWebView](https://developer.apple.com/documentation/uikit/uiwebview)を使用します。
+* iOS 11.0 以降で動作するバージョン 5.5.0 以降では、[WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc) を使用します。
+* iOS 10.0 以前で動作するバージョン 5.4.x 以前では、[UIWebView](https://developer.apple.com/documentation/uikit/uiwebview) を使用します。
 
 
 <blockquote>
-iOS 11.0より低いバージョンをサポートしていてもWKWebViewを使用したい場合は、バージョン5.5.0以降にアップグレードしてください。ただし、visitor_idやその他のクッキーがリセットされるというデメリットがあります。これは、[WKHTTPCookieStore](https://developer.apple.com/documentation/webkit/wkhttpcookiestore)がiOS 11.0でのみサポートされているためです。
+iOS 11.0 より前のバージョンをサポートしながら WKWebView を使用する場合は、バージョン 5.5.0 以降にアップグレードしてください。ただし、visitor_id およびその他の Cookie はリセットされます。これは、[WKHTTPCookieStore](https://developer.apple.com/documentation/webkit/wkhttpcookiestore) が iOS 11.0 以降でのみサポートされているためです。
 </blockquote>
 
 
 ### サンプル
 
-Tealiumの`WKWebView`についてより詳しく知るために、[WKWebViewサンプル](https://github.com/Tealium/tealium-ios/tree/master/Samples/iOS_WKWebView%2BTealium_Objc)を探索してみてください。
+Tealium の `WKWebView` について詳しく理解するには、[WKWebView サンプル](https://github.com/Tealium/tealium-ios/tree/master/Samples/iOS_WKWebView%2BTealium_Objc)を参照してください。
 
-### 使用法
+### 使用方法
 
-`WKWebView`は、レンダリングされない場合でも`UIView`にアタッチする必要があります。これを実現するために、Tealium SDKは非レンダリングの`WKWebView`を`rootViewController.view`にアタッチしようとします。これは、ウィンドウの`rootViewController`が`UIViewController`のサブクラスまたはAppleのコンテナビューコントローラ(`UINavigationController`または`UITabBarController`)の一つである場合の最も一般的なシナリオです。
+`WKWebView` は、レンダリングされない場合でも `UIView` にアタッチする必要があります。これに対応するため、Tealium SDK は、レンダリングされない `WKWebView` を `rootViewController.view` にアタッチしようとします。これは、ウィンドウの `rootViewController` が `UIViewController` のサブクラス、または Apple のコンテナビューコントローラー（`UINavigationController` または `UITabBarController`）である場合の最も一般的な構成です。
 
-アプリが複雑なビュー階層を持っている場合は、`viewDidLoad`、`viewWillAppear:`、または`viewDidAppear:`で`TEALConfiguration`インスタンスにアタッチするビューを構成します。
+アプリに複雑なビュー階層がある場合は、`viewDidLoad`、`viewWillAppear:`、または `viewDidAppear:` で、アタッチ先のビューを `TEALConfiguration` インスタンスに構成します。
 
 ```obj-c
 TEALConfiguration *tealConfig = [TEALConfiguration configurationWithAccount:@"ACCOUNT"
                                               profile:@"PROFILE"
                                               environment:@"ENVIRONMENT"
                                               datasource:@"DATASOURCE"];
-tealConfig.view = <UIVIEW>; // 例えば、UIViewControllerのサブクラスのself.view
-// このインスタンスの一意のキーで初期化
+tealConfig.view = <UIVIEW>; // For example, self.view in a UIViewController subclass
+// Initialize with a unique key for this instance
 Tealium *tealium = [Tealium newInstanceForKey:@"INSTANCE" configuration:tealConfig]; 
 ```
 
-| パラメータ    | タイプ     | 説明                                        | 例        |
+| パラメータ | 型 | 説明 | 例 |
 |:--------------|:---------|:---------------------------------------------------|:---------------|
-| `account`     | `String` | Tealiumのアカウント名                               | `"companyXYZ"` |
-| `profile`     | `String` | Tealiumのプロファイル名                               | `"main" `      |
-| `environment` | `String` | Tealiumの環境名                           | `"prod"`       |
-| `datasource`  | `String` | (オプション) データソースキー (ない場合は`null`に構成) | `"abc123"`     |
+| `account`     | `String` | Tealium アカウント名 | `"companyXYZ"` |
+| `profile`     | `String` | Tealium プロファイル名 | `"main" `      |
+| `environment` | `String` | Tealium 環境名 | `"prod"`       |
+| `datasource`  | `String` | （任意）データソースキー（ない場合は `null` に構成） | `"abc123"`     |
 
+プッシュ通知を受信した際、アプリが `UIViewController` に遷移し、Tealium の初期化時とは異なるビュー階層になる場合は、古い Tealium インスタンスを削除し、アタッチ先のビューを指定して新しいインスタンスを作成する必要があります。サンプルアプリの [`GreenViewController.m`](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/GreenViewController.m) および [TealiumHelper.m](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/TealiumHelper.m) に、この実装例が示されています。
 
-プッシュ通知を受け取った後、アプリが`UIViewController`にジャンプし、Tealiumが初期化されたときとビュー階層が異なる場合は、古いTealiumのインスタンスを削除し、アタッチするビューで新しいインスタンスを作成する必要があります。この例は、サンプルアプリの[`GreenViewController.m`](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/GreenViewController.m)と[TealiumHelper.m](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/TealiumHelper.m)で示されています。
-
-Objective-C SDKは現在クローズドソースですが、より多くのコンテキストを提供するために、以下のコードスニペットはウェブビューがどのように作成されるかを示しています。
+Objective-C SDK は現在クローズドソースですが、詳細なコンテキストを示すため、Web ビューがどのように作成されるかを以下のコードスニペットに示します。
 
 ```obj-c
 - (UIView *_Nullable)webViewContainer {
@@ -74,19 +73,19 @@ Objective-C SDKは現在クローズドソースですが、より多くのコ�
 }
 ```
 
-ビューは`WKWebView`を初期化するために一度だけ使用されます。
+このビューは、`WKWebView` の初期化時に一度だけ使用されます。
 
 ## `TealiumConfig`
 
 ### `WKProcessPool`
 
-アプリで`WKWebView`ウェブビューを使用する場合は、シングルトンの`WKProcessPool`インスタンスを作成し、Tealiumをインスタンス化する前に構成します。これにより、アプリがTealium Tag Managementウェブビュー以外のウェブビューを含む場合のクッキー同期問題も防ぎます。
+アプリで `WKWebView` Web ビューを使用する場合は、シングルトンの `WKProcessPool` インスタンスを作成して保持し、Tealium をインスタンス化する前に構成します。これにより、アプリに Tealium タグ管理 Web ビュー以外の Web ビューが含まれている場合の Cookie 同期の問題も防止できます。
 
 ```obj-c
 WKProcessPool *wkProcessPool = [[WKProcessPool alloc] init];
 ```
 
-例:   
+例：
 
 ```obj-c
 _configuration = [TEALConfiguration configurationWithAccount:@"ACCOUNT" profile:@"PROFILE" environment:@"ENV"];
@@ -97,15 +96,15 @@ self.tealium = [Tealium newInstanceForKey:@"INSTANCE_KEY" configuration:_configu
 
 ### `WKWebviewConfiguration`
 
-カスタムの`WKWebviewConfiguration`オブジェクトを渡すことを許可し、これはTealium Tag Managementウェブビューによって使用されます。`webviewProcessPool`オプションの代わりにこのオプションを使用する場合は、カスタマイズ可能な`WKWebviewConfiguration`の`processPool`プロパティを通じてシングルトンの`WKProcessPool`を構成します。
+Tealium タグ管理 Web ビューで使用するカスタム `WKWebviewConfiguration` オブジェクトを渡すことができます。`webviewProcessPool` オプションの代わりにこのオプションを使用する場合は、カスタマイズ可能な `WKWebviewConfiguration` の `processPool` プロパティを通じて、シングルトンの `WKProcessPool` を構成します。
 
 
 <blockquote>
-`WKWebView`に対する将来のAPI変更が必要になる場合、このオプションを使用することを推奨します。
+今後 `WKWebView` の API が変更された場合に必要になる可能性があるため、このオプションの使用を推奨します。
 </blockquote>
 
 
-例:   
+例：
 
 ```obj-c
 _configuration = [TEALConfiguration configurationWithAccount:@"ACCOUNT" profile:@"PROFILE" environment:@"ENV"];
@@ -116,5 +115,3 @@ _configuration.wkWebViewConfig = webviewConfiguration
 
 self.tealium = [Tealium newInstanceForKey:@"INSTANCE_KEY" configuration:_configuration];
 ```
-
-

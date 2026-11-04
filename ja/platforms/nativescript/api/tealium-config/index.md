@@ -1,66 +1,66 @@
 ---
 title: TealiumConfig
-description: メインのTealiumクラスの構成オプションを構成するためのクラスです。個々のモジュールは、有効になっている場合にのみ、TealiumConfigクラスの拡張機能を提供します。
+description: メインの Tealium クラスの構成オプションを構成するためのクラスです。有効になっている各モジュールは、TealiumConfig クラス用の独自の拡張機能を提供します。
 url: https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/
 ---
 ## `TealiumConfig`
 
-以下は、`TealiumConfig`クラスのプロパティを要約したものです。
+以下に、`TealiumConfig` クラスのプロパティの概要を示します。
 
-| パラメータ | タイプ | 説明 | 例 |
+| パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` | (必須) Tealiumアカウント名 | `companyXYZ`|
-| `collectors` | `Collectors[]` | (必須) Tealiumライブラリを初期化するための[`Collectors`](#collectors)のリストを構成します。 | `[Collectors.AppData]` |
-| `consentExpiry`| [`ConsentExpiry`](#consentexpiry) | ユーザーの同意構成の有効期限を構成します。 (デフォルトはポリシーに依存します) | `new ConsentExpiry(90, TimeUnit.days)` |
-| `consentLoggingEnabled`| `Boolean` | [同意ログ](https://docs.tealium.com/consent-change-event-specifications/)機能を有効にし、すべての同意ステータスの変更を監査目的でTealium Customer Data Hubに送信します。 (デフォルト: 有効) | `true` |
-| `consentPolicy`| [`ConsentPolicy`](#consentpolicy) | CCPAやGDPRなどの同意ポリシーを構成します。このプロパティが構成されている場合にのみ、同意マネージャーが有効になります。 | `ConsentPolicy.gdpr` |
-| `customVisitorId` | `String` | カスタムのビジターIDを構成します。 | `ALK2398LSDKJ3289SLKJ3298SLKJ3` |
-| `dataSource` | `String` | CDHデータソースキー | `abc123` |
-| `deepLinkTrackingEnabled` | `Boolean` | Facebookやその他のソースからアプリへのリンクなどの[標準的なディープリンクの自動トラッキング](https://docs.tealium.com/ja/platforms/getting-started-mobile/deep-linking/#readout)を有効または無効にします。また、QRトレースも有効または無効にします。 (デフォルト: 有効) | `false` |
-| `dispatchers` | `Dispatchers[]` | (必須) Tealiumライブラリを初期化するための[`Dispatchers`](#dispatchers)のリストを構成します。| `[Dispatchers.Collect]` |
-| `environment` | [`TealiumEnvironment`](#tealiumenvironment) | (必須) Tealium環境名 |  `TealiumEnvironment.dev` |
-| `loglevel`| [`LogLevel`](#loglevel) | ログレベルプロパティを構成し、ログに記録される情報の量を制御します (デフォルト: silent) | `LogLevel.dev` |
-| `lifecycleAutotrackingEnabled`| `Boolean` | ライフサイクルの自動トラッキングを有効または無効にします。 (デフォルト: 有効) | `false` |
-| `memoryReportingEnabled` | `Boolean` | DeviceDataモジュールでのメモリレポートの有効または無効を構成します (デフォルト: 無効)。 | `true` |
-| `overrideCollectURL`| `String` | Tealium Collect URLを別のエンドポイントに送信するためにオーバーライドします。イベントバッチング機能を使用している場合は、`overrideCollectBatchURL`プロパティもオーバーライドします。 | `https://custom-domain.com/event` |
-| `overrideCollectBatchURL`| `String` | Tealium CollectバッチURLを別のエンドポイントに送信するためにオーバーライドします。 | `https://custom-domain.com/batch-event` |
-| [`overrideCollectProfile`](#overridecollectprofile)| `String` | Tealium Collectプロファイルを別のTealiumプロファイルに送信するためにオーバーライドします。 | `custom-profile` |
-| [`overrideCollectDomain`](#overridecollectdomain)| `String` | Tealium Collect URLのドメイン名を別のエンドポイントに送信するためにオーバーライドします。 | `custom-domain` |
-| `overrideLibrarySettingsURL` | `String` | 公開構成URLをオーバーライドします。 | `https://custom-domain.com/mobile.html` |
-| `overrideTagManagementURL` | `String` | タグ管理モジュールで使用されるデフォルトのURLをオーバーライドします。TealiumのJavaScriptファイルを自己ホストしている場合に必要です。 | `https://custom-domain.com/path/env/utag.js` |
-| `profile` | `String` | (必須) Tealiumプロファイル名 | `main` |
-| `qrTraceEnabled` | `Boolean` | [QRトレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool)を有効または無効にします。 (デフォルト: 有効) | `false` |
-| [`sessionCountingEnabled`](#sessioncountingenabled) | `Boolean` | Tealium iQアカウントのセッションカウントを有効または無効にします。TealiumのJavaScriptファイルを自己ホストしている場合は、これを`false`に構成します。 (デフォルト: 有効) | `false` |
-| `useRemoteLibrarySettings`| `Boolean` | [モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)を有効または無効にします (デフォルト: 有効)。iQタグ管理でモバイル公開構成を構成するか、機能を無効にします。 | `false` |
-| `visitorServiceEnabled`| `Boolean` | [データレイヤー拡張API](https://docs.tealium.com/data-layer-enrichment-api/)を使用してビジタープロファイルの自動取得を有効または無効にします (デフォルト: 無効) | `true` |
-| `visitorServiceRefreshInterval`| `String` | ビジタープロファイルのリフレッシュ間隔を分単位で構成します。整数のみがサポートされています。例えば、"2"は2分です。 | `"2"` |
+| `account` | `String` | （必須）Tealium アカウント名 | `companyXYZ`|
+| `collectors` | `Collectors[]` | （必須）Tealium ライブラリの初期化に使用する [`Collectors`](#collectors) のリストを構成します | `[Collectors.AppData]` |
+| `consentExpiry`| [`ConsentExpiry`](#consentexpiry) | ユーザーの同意構成の有効期限を構成します。（デフォルトはポリシーによって異なります） | `new ConsentExpiry(90, TimeUnit.days)` |
+| `consentLoggingEnabled`| `Boolean` | [同意ログ](https://docs.tealium.com/consent-change-event-specifications/)機能を有効にします。この機能は、監査のためにすべての同意ステータスの変更を Tealium Customer Data Hub に送信します。（デフォルト：有効） | `true` |
+| `consentPolicy`| [`ConsentPolicy`](#consentpolicy) | CCPA や GDPR などの同意ポリシーを構成します。このプロパティが構成されている場合にのみ、同意マネージャーが有効になります。 | `ConsentPolicy.gdpr` |
+| `customVisitorId` | `String` | カスタム訪問 ID を構成します | `ALK2398LSDKJ3289SLKJ3298SLKJ3` |
+| `dataSource` | `String` | CDH データソースキー | `abc123` |
+| `deepLinkTrackingEnabled` | `Boolean` | Facebook やその他のソースからアプリへのリンクなど、[標準ディープリンクの自動トラッキング](https://docs.tealium.com/ja/platforms/getting-started-mobile/deep-linking/#readout)と QR Trace を有効または無効にします。（デフォルト：有効） | `false` |
+| `dispatchers` | `Dispatchers[]` | （必須）Tealium ライブラリの初期化に使用する [`Dispatchers`](#dispatchers) のリストを構成します | `[Dispatchers.Collect]` |
+| `environment` | [`TealiumEnvironment`](#tealiumenvironment) | （必須）Tealium 環境名 | `TealiumEnvironment.dev` |
+| `loglevel`| [`LogLevel`](#loglevel) | 記録する情報量を制御するログレベルプロパティを構成します（デフォルト：サイレント） | `LogLevel.dev` |
+| `lifecycleAutotrackingEnabled`| `Boolean` | ライフサイクルの自動トラッキングを有効または無効にします。（デフォルト：有効） | `false` |
+| `memoryReportingEnabled` | `Boolean` | DeviceData モジュールのメモリレポートを有効または無効にします（デフォルト：無効）。 | `true` |
+| `overrideCollectURL`| `String` | Tealium Collect URL を上書きして、別のエンドポイントにデータを送信します。イベントバッチ処理機能を使用する場合は、`overrideCollectBatchURL` プロパティも上書きしてください。 | `https://custom-domain.com/event` |
+| `overrideCollectBatchURL`| `String` | Tealium Collect のバッチ URL を上書きして、別のエンドポイントにデータを送信します。 | `https://custom-domain.com/batch-event` |
+| [`overrideCollectProfile`](#overridecollectprofile)| `String` | Tealium Collect プロファイルを上書きして、別の Tealium プロファイルにデータを送信します。 | `custom-profile` |
+| [`overrideCollectDomain`](#overridecollectdomain)| `String` | Tealium Collect URL のドメイン名を上書きして、別のエンドポイントにデータを送信します。 | `custom-domain` |
+| `overrideLibrarySettingsURL` | `String` | パブリッシュ構成 URL を上書きします。 | `https://custom-domain.com/mobile.html` |
+| `overrideTagManagementURL` | `String` | Tag Management モジュールが使用するデフォルト URL を上書きします。Tealium JavaScript ファイルをセルフホスティングする場合に必要です。 | `https://custom-domain.com/path/env/utag.js` |
+| `profile` | `String` | （必須）Tealium プロファイル名 | `main` |
+| `qrTraceEnabled` | `Boolean` | [QR Trace](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool) を有効または無効にします。（デフォルト：有効） | `false` |
+| [`sessionCountingEnabled`](#sessioncountingenabled) | `Boolean` | Tag Management アカウントのセッションカウントを有効または無効にします。Tealium JavaScript ファイルをセルフホスティングする場合は、これを `false` に構成してください。（デフォルト：有効） | `false` |
+| `useRemoteLibrarySettings`| `Boolean` | [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) を有効または無効にします（デフォルト：有効）。Tag Management で Mobile Publish Settings を構成するか、この機能を無効にしてください。 | `false` |
+| `visitorServiceEnabled`| `Boolean` | [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) を使用した訪問プロファイルの自動取得を有効または無効にします（デフォルト：無効） | `true` |
+| `visitorServiceRefreshInterval`| `String` | 訪問プロファイルを更新する間隔を分単位で構成します。整数のみがサポートされます。たとえば、`"2"` は 2 分を表します。 | `"2"` |
 
 
 ### `Collectors`
 
-Collectorsは、デバイスから補足情報を収集し、Tealium Customer Data Hubに送信する前にデータレイヤーに追加するモジュールです。一部のCollectorsはコアライブラリに含まれており、他のものはオプションとして別のモジュールとしてインストールされます。
+コレクターは、デバイスから補足情報を収集し、Tealium Customer Data Hub に送信される前にデータレイヤーへ追加するモジュールです。一部のコレクターはコアライブラリに含まれていますが、その他は任意であり、個別のモジュールとしてインストールされます。
 
-以下の表は、利用可能なCollectorsをリストアップしています。デフォルトのCollectorsは、Collectorsの横に`*`が付いています。
+次の表に、利用可能なコレクターを示します。デフォルトのコレクターには、コレクター名の横に `*` が付いています。
 
-| Collector名 | TealiumConfig参照 |
+| コレクター名 | TealiumConfig の参照 |
 | --- | --- |
 | `AppData`* | `Collectors.AppData`|
 | `Connectivity`* | `Collectors.Connectivity`|
 | `Device` | `Collectors.Device`|
 | `Lifecycle` | `Collectors.Lifecycle`|
 
-これらのモジュールは、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/)の`collectors`プロパティを使用して有効または無効にできます。
+これらのモジュールは、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/) の `collectors` プロパティを使用して有効または無効にします。
 
 
 ### `ConsentPolicy`
 
-遵守する同意ポリシーを定義します。[`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/)オブジェクトに同意ポリシーが定義されていない場合、同意マネージャーは無効になります。
+準拠する同意ポリシーを定義します。[`TealiumConfig`](https://docs.tealium.com/ja/platforms/nativescript/api/tealium-config/) オブジェクトで同意ポリシーが定義されていない場合、同意マネージャーは無効になります。
 
-例:
+例：
 
 `ConsentPolicy.gdpr`
 
-以下の同意ポリシーが利用可能です:
+次の同意ポリシーを使用できます。
 
 | 値 | 説明 |
 | --- | --- |
@@ -72,18 +72,18 @@ Collectorsは、デバイスから補足情報を収集し、Tealium Customer Da
 
 ユーザーの同意構成の有効期限を定義します。
 
-| パラメータ | タイプ | 説明 | 例 |
+| パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `time` | `Number` | 有効期限までの時間の量 | `90` |
+| `time` | `Number` | 有効期限までの時間 | `90` |
 | `unit` | `TimeUnit` | 有効期限までの時間の単位 | `TimeUnit.days` |
 
-例:
+例：
 
 `new ConsentExpiry(90, TimeUnit.days)`
 
 #### TimeUnit
 
-以下の時間単位が利用可能です:
+次の時間単位を使用できます。
 
 | 値 | 説明 |
 | --- | --- |
@@ -95,9 +95,9 @@ Collectorsは、デバイスから補足情報を収集し、Tealium Customer Da
 
 ### `Dispatchers`
 
-Dispatchersは、データレイヤーからTealiumエンドポイントにデータを送信するモジュールです。現在利用可能なDispatchersは以下の通りです:
+ディスパッチャーは、データレイヤーから Tealium エンドポイントにデータを送信するモジュールです。現在、次のディスパッチャーを使用できます。
 
-| Dispatcher名 | TealiumConfig参照 |
+| ディスパッチャー名 | TealiumConfig の参照 |
 | --- | --- |
 | `Collect` | `Dispatchers.Collect`|
 | `RemoteCommands` | `Dispatchers.RemoteCommands`|
@@ -105,27 +105,27 @@ Dispatchersは、データレイヤーからTealiumエンドポイントにデ�
 
 
 <blockquote>
-少なくとも1つのdispatcherが必要です。dispatcherが指定されていない場合、トラッキングは行われません。
+少なくとも 1 つのディスパッチャーが必要です。ディスパッチャーが指定されていない場合、トラッキングは行われません。
 </blockquote>
 
 
 
 ### `LogLevel`
 
-`logLevel`プロパティを構成し、ログに記録される情報の量を制御します。
+記録する情報量を制御する `logLevel` プロパティを構成します。
 
-以下のログレベルが利用可能です:
+次のログレベルを使用できます。
 
 | 値 | 説明 |
 | --- | --- |
 | `LogLevel.dev` | アプリケーションの進行状況を示す情報イベント |
-| `LogLevel.qa` | アプリケーションのデバッグに使用されるデバッグレベルのイベント |
-| `LogLevel.prod` | クリティカルなエラーや障害などのエラーイベント |
-| `LogLevel.silent` | ログなし (デフォルト) |
+| `LogLevel.qa` | アプリケーションのデバッグに使用するデバッグレベルのイベント |
+| `LogLevel.prod` | 重大なエラーや障害などのエラーイベント |
+| `LogLevel.silent` | ログを記録しません（デフォルト） |
 
 ### `overrideCollectProfile`
 
-Tealium Collectプロファイルを別のTealiumプロファイルに送信するためにオーバーライドします。
+Tealium Collect プロファイルを上書きして、別の Tealium プロファイルにデータを送信します。
 
 ```swift
 config.overrideCollectProfile = "main"
@@ -133,24 +133,24 @@ config.overrideCollectProfile = "main"
 
 ### `overrideCollectDomain`
 
-Tealium Collect URLのドメイン名を別のエンドポイントに送信するためにオーバーライドします。
+Tealium Collect URL のドメイン名を上書きして、別のエンドポイントにデータを送信します。
 
 ```swift
 config.overrideCollectDomain = "my-company.com"
 ```
 
 ### `sessionCountingEnabled`
-Tealium iQアカウントのセッションカウントを有効または無効にします。TealiumのJavaScriptファイルを自己ホストしている場合は、これを`false`に構成します (デフォルト: 有効)。                         
+
+Tag Management アカウントのセッションカウントを有効または無効にします。Tealium JavaScript ファイルをセルフホスティングする場合は、これを `false` に構成してください（デフォルト：有効）。
 
 ```swift
 config.sessionCountingEnabled = false
 ```
-
 ### `TealiumEnvironment`
 
-環境は、Tealiumが公開する3つのデフォルト環境（Dev、QA、Prod）またはカスタム環境のいずれかです。これらの環境のいずれかを選択します。
+環境は、3つのデフォルト環境（開発、QA、本番）のいずれか、またはTealiumのパブリッシュ先として構成されたカスタム環境です。これらの環境から1つを選択します。
 
-例:
+例：
 
 `TealiumEnvironment.dev`
 
@@ -163,11 +163,11 @@ config.sessionCountingEnabled = false
 
 ### `VisitorProfile`
 
-ビジタープロファイルは、各属性のフレンドリーな名前を含むオブジェクトです。`currentVisit`プロパティがあり、ビジター/ビジット属性タイプを区別することができます。各属性の値は、サブスクリプトを使用してIDでアクセスします。属性が存在しない場合は、`null`が返されます。以下のリストを参照してください。
+訪問プロファイルは、各属性のわかりやすい名前を格納するオブジェクトです。訪問属性と訪問属性のタイプを区別するための`currentVisit`プロパティがあります。添字を使用し、IDで各属性値にアクセスします。属性が存在しない場合は、`null`が返されます。例については、以下のリストを参照してください。
 
 **属性タイプ**
 
-| パラメータ | プロパティ | 値 |
+| パラメーター | プロパティ | 値 |
 | --- | --- | --- |
 | `arraysOfBooleans` | id: String, value: Boolean[]   | `id: "5129", value: [true,false,true,true]` |
 | `arraysOfNumbers`  | id: String, value: Number[]    | `id: "57", value: [4.82125, 16.8, 0.5714285714285714]` |
@@ -175,12 +175,10 @@ config.sessionCountingEnabled = false
 | `audiences`        | id: String, value: String      | `id: "tealiummobile\_demo\_103", value: "iOS Users"` |
 | `badges`           | id: String, value: Boolean     | `id: "2815", value: true` |
 | `booleans`         | id: String, value: Boolean     | `id: "4868", value: true` |
-| `currentVisit`     | 現在のビジットのビジタープロファイルのすべての属性。現在のビジットプロファイルにはAudiencesやBadgesは含まれません。 | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])`  |
+| `currentVisit`     | 現在の訪問のvisitorProfileに含まれるすべての属性。現在の訪問プロファイルには、オーディエンスまたはバッジは含まれません。 | `TealiumCurrentVisitProfile(dates: ["5376": 1567536668080, "10": 1567536668000], booleans: ["4530": true], numbers: ["32": 3.8])`  |
 | `dates`            | id: String, value: Number      | `id: "22", value: 1567120112000` |
 | `numbers`          | id: String, value: Number      | `id: "5728", value: 4.82125` |
 | `setOfStrings`     | id: String, value: Set(String) | `id: "5211", value: ["green shirts", "red shirts", "blue shirts"]` |
 | `strings`          | id: String, value: String      | `id: "5380", value: "green shirts"` |
 | `tallies`          | id: String, value: Object      | `"57": [["category 1": 2.0], "category 2": 1.0]]` |
 | `tallyValue`       | id: String, value: Number      | `["category 1": 2.0]` |
-
-

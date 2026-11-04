@@ -20,7 +20,7 @@ Go to the Connector Marketplace and add a new connector. For general instruction
 After adding the connector, configure the following settings:
 
 * **Google Cloud Platform Project ID**: (Required) Your Google Cloud project ID with AI Commerce Search enabled.
-* **Private key JSON file**: (Required) Paste the JSON key generated for your service account. The service account requires access to `retail.userEvents.import`. Google recommends using the Retail Editor role.
+* **Private key JSON file**: (Required) Paste the JSON key generated for your service account. The service account requires the `retail.userEvents.create` and `retail.catalogs.list` permissions. Google recommends using the Retail Editor role, which includes both permissions.
 
 ## Actions
 

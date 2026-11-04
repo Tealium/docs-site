@@ -1,38 +1,38 @@
 ---
-title: Moments APIモジュール（現在はContext API）
-description: Flutter用Tealium Context APIモジュールのインストール方法を学びます。
+title: Context APIモジュール（現Context API）
+description: Flutter向けTealium Context APIモジュールのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/flutter/context-api/
 ---
 
 <blockquote>
-Moments APIはContext APIに名称が変更されました。製品の完全なドキュメントについては、[About Context API](https://docs.tealium.com/about-context-api/)をご覧ください。
+Moments APIはContext APIに名称変更されました。製品ドキュメント全体については、[Context APIについて](https://docs.tealium.com/about-context-api/)を参照してください。
 </blockquote>
 
 
-Tealium for Flutterでは、Tealiumモバイルライブラリ（iOS、Android）を使用してTealium FlutterプラグインのContext APIモジュールをインストールできます。
+Tealium for Flutterでは、Tealiumモバイルライブラリ（iOS、Android）を使用して、Tealium Flutterプラグイン用のContext APIモジュールをインストールできます。
 
-## 動作原理
+## 仕組み
 
-Tealiumモバイルライブラリは、以下の方法のいずれかを使用してFlutterアプリケーションに統合できます：
+Tealiumモバイルライブラリは、次のいずれかの方法でFlutterアプリケーションに統合できます。
 
 * Dartパッケージ（推奨）
-* [GitHub](https://github.com/Tealium/tealium-flutter)を使用した手動インストール
+* [GitHub](https://github.com/Tealium/tealium-flutter)を使用して手動で統合
 
-## 必要条件
+## 要件
 
-* [Flutter](https://flutter.dev/) アプリケーション開発フレームワーク
-* [Android Studio](https://developer.android.com/studio) や [VS Code](https://code.visualstudio.com/) などのIDE
-* IDEにインストールされたFlutter [プラグイン](https://github.com/flutter/plugins)
+* [Flutter](https://flutter.dev/)アプリケーション開発フレームワーク
+* [Android Studio](https://developer.android.com/studio)や[VS Code](https://code.visualstudio.com/)などのIDE
+* IDEにインストールされたFlutter[プラグイン](https://github.com/flutter/plugins)
 
 ## インストール
 
-Flutter用Tealiumライブラリをインストールするには：
+Flutter用Tealiumライブラリをインストールするには、次の手順を実行します。
 
-1. Flutterアプリプロジェクトで、以下のコマンドを実行します：
+1. Flutterアプリプロジェクトで、次のコマンドを実行します。
     ```bash
     dart pub add tealium_moments_api
     ```
-1. 次のDartコードをプロジェクトにインポートします：
+1. 次のDartコードをプロジェクトにインポートします。
     ```dart
     import 'package:tealium_moments_api/common.dart';
     import 'package:tealium_moments_api/tealium_moments_api.dart';
@@ -42,7 +42,7 @@ Flutter用Tealiumライブラリをインストールするには：
 
 メインのTealium Flutter統合を初期化する前に、Context APIモジュールを構成します。
 
-Context APIインターフェースで指定されたContext APIリージョンを構成します。以下のリージョンが利用可能です：
+Context APIインターフェイスで指定されているContext APIリージョンを構成します。次のリージョンを使用できます。
 
 * `GERMANY`
 * `US_EAST`
@@ -51,39 +51,39 @@ Context APIインターフェースで指定されたContext APIリージョン�
 * `TOKYO`
 * `HONG_KONG`
 
-[ドメイン許可リスト](https://docs.tealium.com/about-context-api/#domain-allow-list)を使用している場合、リファラーを許可されたドメインに構成します。
+[ドメイン許可リスト](https://docs.tealium.com/about-context-api/#domain-allow-list)を使用している場合は、リファラーを許可済みドメインに構成します。
 
-次の例のコードは、`US_EAST`リージョンと`example.com`をリファラーとして使用して、許可されたドメインと一致させます：
+次のサンプルコードでは、許可済みドメインと一致するように、`US_EAST`リージョンと`example.com`をリファラーとして使用しています。
 
 ```dart
 MomentsApiConfig config = MomentsApiConfig(
-    MomentsApiRegion.US_EAST,   // 必須
-    "https://example.com");     // オプション
+    MomentsApiRegion.US_EAST,   // required
+    "https://example.com");     // optional
 
-// モジュールを構成
+// Configure the module
 TealiumMomentsApi.configure(config);
 
-// ... メインTealiumプラグインを初期化
+// ... Initialize main Tealium plugin
 ```
 
-## クラス: TealiumMomentsApi
+## クラス：TealiumMomentsApi
 
-Context APIモジュールとメインのTealium Flutter統合が両方初期化された後、IDによってエンジンデータを取得できます。
+Context APIモジュールとメインのTealium Flutter統合の両方を初期化した後、IDを指定してエンジンデータを取得できます。
 
 ### `fetchEngineResponse`
 
-指定されたエンジンIDのエンジン応答を取得します。
+指定したエンジンIDのエンジンレスポンスを取得します。
 
 ```dart
 TealiumMomentsApi.fetchEngineResponse(
     engineId: "ENGINEID",
     callback: (response) {
         if (response is EngineResponse) {
-            // 成功を処理
+            // handle success
             final audiences = response.audiences;
-            // 何かをする
+            // do something
         } else if (response is String) {
-            // エラーを処理
+            // handle error
         } 
     }
 );
@@ -91,20 +91,20 @@ TealiumMomentsApi.fetchEngineResponse(
 
 #### パラメータ
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 | ---- | ---- | ---- |
-| `engineId` | `String` | チェックするエンジンのID |
-| `callback` | `Function(dynamic)` | 成功時に`EngineResponse`を受け取るコールバック、または失敗時に`String`エラーメッセージを受け取るコールバック |
+| `engineId` | `String` | 確認するエンジンのID |
+| `callback` | `Function(dynamic)` | 成功時に`EngineResponse`を、失敗時に`String`型のエラーメッセージを受け取るコールバック |
 
 ### `EngineResponse`
 
-`EngineResponse`クラスは、Context APIエンジンから返された訪問データを含みます。
+`EngineResponse`クラスには、Context APIエンジンから返された訪問データが含まれます。
 
-| プロパティ | タイプ | 説明 |
+| プロパティ | 型 | 説明 |
 | ---- | ---- | ---- |
-| `audiences` | `List<String>?` | 訪問が属するオーディエンスID |
+| `audiences` | `List<String>?` | 訪問が属するオーディエンスのID |
 | `badges` | `List<String>?` | 訪問に割り当てられたバッジ |
 | `strings` | `Map<String, String>?` | 文字列属性 |
 | `booleans` | `Map<String, bool>?` | ブール属性 |
-| `dates` | `Map<String, int>?` | 日付属性（タイムスタンプとして） |
+| `dates` | `Map<String, int>?` | 日付属性（タイムスタンプ形式） |
 | `numbers` | `Map<String, double>?` | 数値属性 |

@@ -3,7 +3,7 @@ title: Tealium Data Enrichment extension for Adobe Launch
 description: Learn about the Tealium Data Layer Enrichment extension for Adobe Experience Platform Launch.
 url: https://docs.tealium.com/platforms/adobe-launch/data-enrichment-extension/
 ---
-The Tealium Data Enrichment extension brings server-side attributes from Tealium AudienceStream and injects them into the data layer.
+The Tealium Data Enrichment extension injects server-side visit and visitor attributes into the data layer.
 
 To install the Tealium Data Enrichment extension, use the following steps:
 

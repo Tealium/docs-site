@@ -1,44 +1,42 @@
 ---
 title: ロケーションモジュール
-description: React Native用のTealiumロケーションモジュールのインストール方法を学びます。
+description: React Native向けTealiumロケーションモジュールのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/react-native/location/
 ---
-Tealium for React Nativeは、React NativeアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用することを可能にします。
+Tealium for React Nativeを使用すると、React NativeアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を利用できます。
 
 ## 仕組み
 
-Tealiumのモバイルライブラリは、以下の2つの方法のいずれかを使用してReact Nativeアプリケーションに統合されます：
+Tealiumモバイルライブラリは、次のいずれかの方法でReact Nativeアプリケーションに統合します。
 
 *   NPMパッケージ（推奨）
-*   手動で[GitHub](https://github.com/Tealium/tealium-react-native)から
+*   [GitHub](https://github.com/Tealium/tealium-react-native)を使用した手動統合
 
-## 必要条件
+## 要件
 
 * ネイティブビルド環境へのアクセス
-* [Tealium for React Native v2.2.0+](https://docs.tealium.com/ja/platforms/react-native/)
-* [React Native 0.63+](https://github.com/Tealium/tealium-react-native)とそのツールのインストール
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tealium for React Native v2.2.0以降](https://docs.tealium.com/ja/platforms/react-native/)
+* [React Native 0.63以降](https://github.com/Tealium/tealium-react-native)および関連ツールがインストールされていること
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Android Studio](https://developer.android.com/studio/)または[Xcode](https://developer.apple.com/xcode/)
 * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-kotlin/)または[Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)
 
-
 ## インストール（NPM/YARN）
 
-React Native用のTealiumロケーションモジュールをNPMでインストールするには：
+NPMを使用してReact Native向けTealiumロケーションモジュールをインストールするには、次の手順を実行します。
 
-1. メインの`tealium-react-native`ライブラリのインストール手順を[こちら](https://docs.tealium.com/ja/platforms/react-native/install/)で確認し、少なくともバージョン2.2.0以上をインストールしていることを確認します。
+1. メインの`tealium-react-native`ライブラリについて、[こちら](https://docs.tealium.com/ja/platforms/react-native/install/)のインストール手順に従います。バージョン2.2.0以降がインストールされていることを確認してください。
 
-2. React Nativeプロジェクトのルートに移動します。
+2. React Nativeプロジェクトのルートディレクトリに移動します。
 
-3. 以下のコマンドで`tealium-react-native-location`パッケージをダウンロードしてインストールします：  
+3. 次のコマンドを使用して、`tealium-react-native-location`パッケージをダウンロードしてインストールします。  
     ```bash
     yarn install tealium-react-native-location
     ```
 
-
 ## JavaScript
 
-アプリに関連するクラスをインポートするには、以下のようにします：
+関連するクラスをアプリにインポートするには、次のようにします。
 
 ```javascript
 import TealiumLocation from 'tealium-react-native-location';
@@ -49,7 +47,7 @@ import { TealiumLocationConfig, Accuracy, DesiredAccuracy, LocationData } from '
 
 メインのTealium React Native統合を初期化する前に、ロケーションモジュールを構成します。
 
-必要なすべてのオプションを1つのメソッドで構成するか、ヘルパーメソッドを個別に呼び出すことができます：
+必要なすべてのオプションを1つのメソッドで構成することも、ヘルパーメソッドを個別に呼び出して構成することもできます。
 
 ```javascript
 let locationConfig: TealiumLocationConfig = {
@@ -64,7 +62,7 @@ let locationConfig: TealiumLocationConfig = {
 
 TealiumLocation.configure(locationConfig);
 
-// または、それらを個別に呼び出します：
+// or call them individually:
 TealiumLocation.setAccuracy(Accuracy.high);
 TealiumLocation.setGeofenceUrl(".../...");
 // etc
@@ -72,11 +70,11 @@ TealiumLocation.setGeofenceUrl(".../...");
 
 ## APIリファレンス
 
-ロケーションモジュールとメインのTealium React Native統合が両方とも初期化された後、ロケーショントラッキングの開始または停止を要求したり、最新の既知のロケーションポイントデータを要求することができます。
+ロケーションモジュールとメインのTealium React Native統合の両方を初期化した後、位置情報トラッキングの開始または停止を要求したり、最新の既知の位置情報データを取得したりできます。
 
 ### `startLocationTracking()`
 
-ロケーションデータのトラッキングを開始します - ロケーショントラッキングを開始する前に、関連する権限が付与されていることを確認する必要があります。
+位置情報データのトラッキングを開始します。トラッキングを開始する前に、必要な権限が付与されていることを確認してください。
 
 ```javascript
 TealiumLocation.startLocationTracking();
@@ -84,16 +82,15 @@ TealiumLocation.startLocationTracking();
 
 ### `stopLocationTracking()`
 
-ロケーションデータのトラッキングを停止します - 現在ロケーションデータをトラッキングしている場合にのみ関連します。
+位置情報データのトラッキングを停止します。現在位置情報をトラッキングしている場合にのみ有効です。
 
 ```javascript
 TealiumLocation.stopLocationTracking();
 ```
 
-
 ### `lastLocation(callback)`
 
-最後に知られているロケーションを要求し、`lat`と`lng`キーとして緯度と経度の座標を含むオブジェクトを返します - 現在ロケーションデータをトラッキングしている場合にのみ関連します。
+最後に確認された位置情報を要求し、緯度と経度の座標をそれぞれ`lat`キーと`lng`キーとして含むオブジェクトを返します。現在位置情報をトラッキングしている場合にのみ有効です。
 
 ```javascript
 TealiumLocation.lastLocation((loc) => {
@@ -102,6 +99,3 @@ TealiumLocation.lastLocation((loc) => {
     }
 })
 ```
-
-
-

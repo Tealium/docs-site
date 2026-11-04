@@ -331,7 +331,7 @@ Before calling `shutdown()`, dispose any subscriptions you hold.
 |---|---|---|
 | Queueing | One queue. Batching and offline are handled per config flag. | One SQLite queue per dispatcher. Every event is written before send and removed after a confirmed send. Barriers (connectivity, batching) release the queue. `flushEventQueue()` forces it. |
 | Consent | SDK stores status and categories. Events queue until consented. | Not currently available. Events are not held or blocked. Pass consent choices in the data layer and enforce them server-side. |
-| Settings | Programmatic config plus `mobile.json` from Tealium iQ | Local file < remote URL (cached for offline) < programmatic. Programmatic values can never be overridden remotely. A module only starts when settings exist for it. |
+| Settings | Programmatic config plus `mobile.json` from Tag Management | Local file < remote URL (cached for offline) < programmatic. Programmatic values can never be overridden remotely. A module only starts when settings exist for it. |
 | Tag logic | utag.js in a webview | Transformers on device: set values, lowercase, persist, JavaScript in an isolated runtime. No webview. |
 | Threading and results | Mixed. Some sync reads. Fire and forget. | All public calls are safe from any thread and run on one SDK queue. Every write or read returns a `SingleResult` or `Single`. Subscribe to see errors, or ignore it. Completions run on the SDK queue, not yours. |
 | Stored data | Persists across SDK upgrades | Not carried over from legacy at 0.7.0 |

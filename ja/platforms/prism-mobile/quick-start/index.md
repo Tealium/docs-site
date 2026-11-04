@@ -1,13 +1,13 @@
 ---
 title: クイックスタート
-description: SDK のインストール、構成の初期化、データレイヤー値を含む最初のイベントの送信を行い、iOS、Android、React Native 向けに Tealium Prism をセットアップします。
+description: SDK のインストール、構成の初期化、データレイヤー値を使用した最初のイベント送信を行い、iOS、Android、React Native 向けに Tealium Prism をセットアップします。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/quick-start/
 ---
-このガイドでは、モバイルプロファイルの作成、Prism SDK のインストール、Tealium インスタンスの初期化、最初のトラッキング呼び出しの送信、結果の検証について説明します。
+このガイドでは、モバイルプロファイルの作成、Prism SDK のインストール、Tealium インスタンスの初期化、最初のトラッキングコールの送信、結果の検証について説明します。
 
-## モバイルプロファイルの作成
+## モバイルプロファイルを作成する
 
-SDK をインストールする前に、タグ管理でモバイルプロファイルを作成します。手順については、[モバイルプロファイルの作成](https://docs.tealium.com/create-mobile-profile/)を参照してください。
+SDK をインストールする前に、タグ管理でモバイルプロファイルを作成します。手順については、[モバイルプロファイルを作成する](https://docs.tealium.com/create-mobile-profile/)を参照してください。
 
 ## インストール
 
@@ -51,8 +51,8 @@ Swift Package Manager を使用して Tealium Prism Swift をインストール�
 
 1. Xcode プロジェクトで、**File > Add Package Dependencies** を選択します。
 1. リポジトリ URL `https://github.com/tealium/tealium-prism-swift` を入力します。
-1. バージョンルールを構成します。**Up to next major** を構成することをお勧めします。現在の Tealium Prism Swift ライブラリのバージョンがリストに表示されない場合は、Swift パッケージのキャッシュをリセットしてください。
-1. インストールするモジュールを選択し、Xcode プロジェクトの **Frameworks > Libraries & Embedded Content** で、各アプリターゲットにモジュールを追加します。
+1. バージョンルールを構成します。**Up to next major** に構成することをお勧めします。現在の Tealium Prism Swift ライブラリのバージョンがリストに表示されない場合は、Swift パッケージのキャッシュをリセットしてください。
+1. インストールするモジュールを選択し、Xcode プロジェクトの各アプリターゲットの **Frameworks > Libraries & Embedded Content** に追加します。
 
 CocoaPods を使用してインストールするには、Podfile に次の行を追加します。
 
@@ -100,7 +100,7 @@ CocoaPods を含む詳細なインストール手順については、[インス
 
 
 
-Tealium を初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/) インスタンスを [`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/) メソッドに渡します。Tealium Kotlin ライブラリは、アプリのグローバルアプリケーションクラス内の `onCreate()` メソッドで初期化することをお勧めします。
+Tealium を初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/) インスタンスを [`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/) メソッドに渡します。Tealium Kotlin ライブラリは、アプリのグローバルアプリケーションクラス内にある `onCreate()` メソッドで初期化することをお勧めします。
 
 ```kotlin
 import com.tealium.prism.core.api.Tealium
@@ -146,7 +146,7 @@ let config = TealiumConfig(account: "my_account",
 let tealium = Tealium.create(config: config)
 ```
 
-SDK をプログラムで構成して特定のモジュールを有効にするには、モジュールを構成に追加します。
+SDK をプログラムで構成して特定のモジュールを有効にするには、構成にモジュールを追加します。
 
 ```swift
 #if COCOAPODS
@@ -194,14 +194,14 @@ const tealium = Tealium.create(
 
 iOS では、構成ファイルをアプリターゲットに追加します。Android では、構成ファイルを `android/app/src/main/assets/` に配置します。
 
-実行されるモジュールは、インストールされたパッケージと Tealium の構成によって決まります。
+実行されるモジュールは、インストール済みのパッケージと Tealium の構成によって決まります。
 
 
 
 構成オプションの詳細については、[インストール](https://docs.tealium.com/install/)を参照してください。
 ## トラッキング
 
-イベントをトラッキングするには、イベント名と、任意でタイプおよびデータを `track()` メソッドに渡します。イベント名は、データレイヤーに `tealium_event` として表示されます。
+イベントをトラッキングするには、イベント名と、必要に応じてタイプおよびデータを `track()` メソッドに渡します。イベント名はデータレイヤーに `tealium_event` として表示されます。
 
 
 
@@ -228,7 +228,7 @@ tealium.track("homepage", type: .view)
 ```
 
 
-イベントをトラッキングするには、[`track()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#track) を呼び出します。SDKがデータをシリアライズできない場合、`track()` が返すPromiseは拒否されます。
+イベントをトラッキングするには、[`track()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#track) を呼び出します。SDK がデータをシリアル化できない場合、`track()` が返す Promise は拒否されます。
 
 ```javascript
 // Track an event with the default type.
@@ -247,7 +247,7 @@ await tealium.track("homepage", "view");
 
 ## データレイヤー
 
-データレイヤーにデータを追加するには、次のようにします。
+データレイヤーにデータを追加するには、次の操作を行います。
 
 
 
@@ -278,7 +278,7 @@ val globalContext = DataObject.Builder()
 dataLayer.putAll(globalContext, Expiry.FOREVER)
 ```
 
-個別の `put` 操作は、アトミック性が不要な場合にのみ使用してください。各呼び出しは独立して順番に実行されるためです。複数の値を構成する際にタイミングや一貫性が重要な場合は、`transactionally` を使用してすべての更新を単一のアトミック操作として適用し、すべて成功するか、すべて失敗するようにします。
+個々の `put` 操作は、アトミック性が必要ない場合にのみ使用してください。各呼び出しは独立して順番に実行されるためです。複数の値を構成する際にタイミングや一貫性が重要な場合は、`transactionally` を使用して、すべての更新を単一のアトミック操作として適用します。これにより、すべての更新が成功するか、すべて失敗するかのいずれかになります。
 
 ```kotlin
 tealium.dataLayer.transactionally { editor ->
@@ -342,7 +342,7 @@ tealium.dataLayer.get(key: "customer_id",
 tealium.dataLayer.put(key: "some_key", value: "some value")
 ```
 
-複数のデータレイヤー値を一度に構成するには、[`putAll(dataObject:)`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html) にディクショナリを渡します。
+複数のデータレイヤー値を一度に構成するには、[`putAll(dataObject:)`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/DataLayer.html) に辞書を渡します。
 
 ```swift
 tealium.dataLayer.putAll(dataObject: [
@@ -367,7 +367,7 @@ tealium.dataLayer.put(key: "order_total",
 
 
 
-データレイヤーの値を取得するには、[`tealium.dataLayer`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#datalayer) で [`get()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#get) を呼び出します。
+データレイヤーの値を取得するには、[`tealium.dataLayer`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#datalayer) の [`get()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#get) を呼び出します。
 
 ```javascript
 const customerId = await tealium.dataLayer.get("customer_id");
@@ -379,7 +379,7 @@ const customerId = await tealium.dataLayer.get("customer_id");
 await tealium.dataLayer.put("my_string", "my_string_value");
 ```
 
-1回の呼び出しで複数の値を構成するには、プレーンオブジェクトを [`putAll()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#putall) に渡します。
+1 回の呼び出しで複数の値を構成するには、[`putAll()`](https://docs.tealium.com/tealium-prism-react-native/interfaces/DataLayer.html#putall) にプレーンオブジェクトを渡します。
 
 ```javascript
 await tealium.dataLayer.putAll({
@@ -424,12 +424,12 @@ await tealium.dataLayer.clear();
 
 ## 検証
 
-ログファイルの確認、トレースの実行、ライブイベントの表示によってデータを検証します。
+ログファイルの確認、トレースの実行、ライブイベントの表示によって、データを検証します。
 ### ログ
 
 
 
-ログレベルを構成するには、`TealiumConfig`ビルダーの構成で`setLogLevel()`を呼び出します。
+ログレベルを構成するには、`TealiumConfig` ビルダーの構成で `setLogLevel()` を呼び出します。
 
 ```kotlin
 val config = TealiumConfig.Builder(...)
@@ -438,10 +438,10 @@ val config = TealiumConfig.Builder(...)
   }
 ```
 
-詳細については、[LogLevel](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.logger/-log-level/index.html)を参照してください。
+詳細については、[LogLevel](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.logger/-log-level/index.html) を参照してください。
 
 
-ログレベルを構成するには、[`TealiumConfig`ビルダー](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CoreSettingsBuilder.html)の構成で`setMinLogLevel()`を呼び出します。
+ログレベルを構成するには、[`TealiumConfig` ビルダー](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CoreSettingsBuilder.html)の構成で `setMinLogLevel()` を呼び出します。
 
 ```swift
 var config = TealiumConfig(account: "your_account",
@@ -456,7 +456,7 @@ var config = TealiumConfig(account: "your_account",
 ```
 
 
-ログレベルを構成するには、[`Tealium.create()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#create)の6番目の引数として[`LogLevel`](https://docs.tealium.com/tealium-prism-react-native/types/LogLevel.html)を渡します。使用しない構成の引数には`undefined`を渡してください。
+ログレベルを構成するには、[`Tealium.create()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#create) の6番目の引数として [`LogLevel`](https://docs.tealium.com/tealium-prism-react-native/types/LogLevel.html) を渡します。使用しない構成引数には `undefined` を渡します。
 
 ```javascript
 const tealium = Tealium.create(
@@ -471,13 +471,13 @@ const tealium = Tealium.create(
 
 
 
-### Trace
+### トレース
 
-[Mobile Trace Tool](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/)では、デバイスでスキャンできるQRコードが提供され、TealiumモバイルSDKからのイベントをリアルタイムで表示できます。
+[Mobile Trace Tool](https://docs.tealium.com/platforms/getting-started-mobile/debug-with-trace/) では、デバイスでスキャンして Tealium モバイル SDK からのイベントをリアルタイムで表示できる QR コードが提供されます。
 
 
 
-[Traceインターフェイス](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-trace/)の使用方法をご確認ください。
+[Trace インターフェイス](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.modules/-trace/)の使用方法について詳しく説明します。
 
 ```kotlin
 trace.join("TRACE_ID")
@@ -490,7 +490,7 @@ trace.forceEndOfVisit()
 ```
 
 
-[Traceプロトコルリファレンス](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Trace.html)の使用方法をご確認ください。
+[Trace プロトコルリファレンス](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Protocols/Trace.html)の使用方法について詳しく説明します。
 
 ```swift
 // Join a trace session
@@ -504,7 +504,7 @@ tealium.trace.forceEndOfVisit()
 ```
 
 
-[Traceインターフェイス](https://docs.tealium.com/tealium-prism-react-native/interfaces/Trace.html)の使用方法をご確認ください。
+[Trace インターフェイス](https://docs.tealium.com/tealium-prism-react-native/interfaces/Trace.html)の使用方法について詳しく説明します。
 
 ```javascript
 // Join a trace session.
@@ -517,12 +517,12 @@ await tealium.trace.forceEndOfVisit();
 await tealium.trace.leave();
 ```
 
-これらの呼び出しを使用するには、Tealium構成でTraceモジュールを有効にします。有効になっていない場合、Promiseは拒否されます。
+これらの呼び出しを使用するには、Tealium の構成で Trace モジュールを有効にします。有効になっていない場合、Promise は拒否されます。
 
 
 
 ### ライブイベント
 
-ライブイベントを使用して、[モバイルインストールのトラブルシューティング](https://docs.tealium.com/platforms/getting-started-mobile/troubleshooting/)を行います。
+ライブイベントを使用して、[モバイルインストールをトラブルシューティングします](https://docs.tealium.com/platforms/getting-started-mobile/troubleshooting/)。
 
-[ライブイベント](https://docs.tealium.com/about-live-events/)の詳細をご確認ください。
+[ライブイベント](https://docs.tealium.com/about-live-events/)について詳しく説明します。

@@ -127,7 +127,7 @@ if(lifeCycle != null) {
 
 
 <blockquote>
-Tealium and the attached LifeCycle multitons are remote-killable by publish settings in Tealium iQ. Perform Null checks when getting the instances to call their methods.
+Tealium and the attached LifeCycle multitons are remote-killable by publish settings in Tag Management. Perform Null checks when getting the instances to call their methods.
 </blockquote>
 
 

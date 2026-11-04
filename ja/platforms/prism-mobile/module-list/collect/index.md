@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/collect/
 ---
 ## 仕組み
 
-Collectモジュールは、トラッキングイベントをTealium Collectサービスに送信するDispatcherです。単一イベントの送信とイベントのバッチ処理の両方を処理し、イベント数と訪問IDに基づいて配信を自動的に最適化します。カスタマイズ可能なエンドポイント、プロファイルのオーバーライド、ドメイン構成をサポートしています。
+Collectモジュールは、トラッキングイベントをTealium Collectサービスに送信するディスパッチャーです。単一イベントの送信とイベントのバッチ処理の両方に対応し、イベント数と訪問IDに基づいて配信を自動的に最適化します。エンドポイント、プロファイルのオーバーライド、ドメイン構成をカスタマイズできます。
 
 ## 構成
 
@@ -15,8 +15,8 @@ Collectモジュールでは、次の構成オプションを使用できます�
 |--------------------|----------------------|-----------------------------------------------------------------------------|----------------------------------------------|
 | URL                | `url`                | 単一イベントの送信に使用するURL。                                           | `https://collect.tealiumiq.com/event`        |
 | バッチURL          | `batch_url`          | イベントのバッチ送信に使用するURL。                                         | `https://collect.tealiumiq.com/bulk-event`   |
-| プロファイルのオーバーライド | `override_profile` | イベントデータ内の`TealiumConfig.profile`をオーバーライドするプロファイル。 | なし                                         |
-| ドメインのオーバーライド | `override_domain` | デフォルトURLのドメインを置き換えるドメイン（明示的なURLはオーバーライドしません）。 | なし                                         |
+| プロファイルのオーバーライド | `override_profile`   | イベントデータ内の`TealiumConfig.profile`をオーバーライドするプロファイル。 | なし                                         |
+| ドメインのオーバーライド | `override_domain`    | デフォルトURLのドメインを置き換えるドメイン（明示的なURLはオーバーライドしません）。 | なし                                         |
 
 JSON構成ファイル、プログラム、またはその両方を組み合わせてモジュールを構成します。
 
@@ -62,7 +62,7 @@ JSON構成ファイル、プログラム、またはその両方を組み合わ�
 
 
 <blockquote>
-プログラムによる構成は、常にローカル構成およびリモート構成より優先されます。
+Programmatic settings always take precedence over local and remote settings.
 </blockquote>
 
 
@@ -181,19 +181,19 @@ JSON形式での同等の構成は次のとおりです。
 ```
 ## 構成ビルダーのリファレンス
 
-Collectモジュールの構成には、`CollectSettingsBuilder`を使用します。以下のメソッドを利用できます。
+Collect モジュールの構成には `CollectSettingsBuilder` を使用します。次のメソッドを使用できます。
 
 
 
-詳細については、[`CollectSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.settings.modules/-collect-settings-builder/)を参照してください。
+詳細については、[`CollectSettingsBuilder`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.settings.modules/-collect-settings-builder/) を参照してください。
 
 
 | メソッド | 説明 |
 |---|---|
-| `setUrl(url: String)` | 個々のイベントの送信に使用するURLを構成します。 |
-| `setBatchUrl(url: String)` | イベントのバッチ送信に使用するURLを構成します。 |
-| `setProfile(profile: String)` | イベントの送信時に使用するTealiumプロファイルを構成します。 |
-| `setDomain(domain: String)` | デフォルトの単一イベント送信用URLおよびバッチ送信用URLの代わりに使用するドメインを構成します。 |
+| `setUrl(url: String)` | 個々のイベントの送信に使用する URL を構成します。 |
+| `setBatchUrl(url: String)` | イベントのバッチ送信に使用する URL を構成します。 |
+| `setProfile(profile: String)` | イベントの送信時に使用する Tealium プロファイルを構成します。 |
+| `setDomain(domain: String)` | デフォルトの個別送信 URL およびバッチ送信 URL の代わりに使用するドメインを構成します。 |
 | `setModuleId(moduleId: String)` | このモジュールインスタンスの一意の識別子を構成します。 |
 | `setEnabled(enabled: Boolean)` | モジュールを永続的に有効または無効にします。 |
 | `setOrder(order: Int)` | モジュールを初期化する順序を構成します。 |
@@ -201,14 +201,14 @@ Collectモジュールの構成には、`CollectSettingsBuilder`を使用しま�
 | `setMappings(mappings: ...)` | このモジュールのマッピングを構成します。 |
 
 
-詳細については、[`CollectSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CollectSettingsBuilder.html)を参照してください。
+詳細については、[`CollectSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CollectSettingsBuilder.html) を参照してください。
 
 | メソッド | 説明 |
 |---|---|
-| `setUrl(_:)` | 個々のイベントの送信に使用するURLを構成します。 |
-| `setBatchUrl(_:)` | イベントのバッチ送信に使用するURLを構成します。 |
-| `setOverrideProfile(_:)` | イベントデータ内の`TealiumConfig.profile`を上書きするプロファイルを構成します。 |
-| `setOverrideDomain(_:)` | デフォルトURLのドメインを置き換えるドメインを構成します。 |
+| `setUrl(_:)` | 個々のイベントの送信に使用する URL を構成します。 |
+| `setBatchUrl(_:)` | イベントのバッチ送信に使用する URL を構成します。 |
+| `setOverrideProfile(_:)` | イベントデータ内の `TealiumConfig.profile` をオーバーライドするプロファイルを構成します。 |
+| `setOverrideDomain(_:)` | デフォルト URL のドメインを置き換えるドメインを構成します。 |
 | `setModuleId(_:)` | このモジュールインスタンスの一意の識別子を構成します。 |
 | `setEnabled(_:)` | モジュールを永続的に有効または無効にします。 |
 | `setOrder(_:)` | モジュールを初期化する順序を構成します。 |

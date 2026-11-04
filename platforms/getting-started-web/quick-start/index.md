@@ -130,7 +130,7 @@ Learn more:
 
 * [Introduction to the Data Layer](https://docs.tealium.com/an-introduction-to-the-data-layer/)
 * [Built-in data layer variables](https://docs.tealium.com/platforms/javascript/data-layer/)
-* [Using data layer variables in iQ Tag Management](https://docs.tealium.com/data-layer-variables/)
+* [Using data layer variables in Tag Management](https://docs.tealium.com/data-layer-variables/)
 * [About the Universal Data Object](https://docs.tealium.com/platforms/javascript/about-utag-data/)
 
 ## Track
@@ -183,7 +183,7 @@ Learn more:
 
 ### Tealium Event Variable
 
-To uniquely identify each type of interaction to be tracked, use the reserved variable `tealium_event`. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. For all other event data, use variable names of your choosing.
+To uniquely identify each type of interaction to be tracked, use the reserved variable `tealium_event`. This variable is referenced throughout Tag Management to configure load rules, extensions, and data mappings. For all other event data, use variable names of your choosing.
 
 The suggested `tealium_event` values include, but are not limited to:
 
@@ -263,17 +263,17 @@ Learn more:
 
 ### Live Events
 
-In Tealium EventStream, use the Live Events feature to manage and inspect incoming events in real-time. Verify that the events you send from your data source are being received.
+In Event Streaming, use the Live Events feature to manage and inspect incoming events in real-time. Verify that the events you send from your data source are being received.
 
 
 <blockquote>
-To use Live Events you must add the Tealium Collect tag to your iQ Tag Management configuration.
+To use Live Events you must add the Tealium Collect tag to your Tag Management configuration.
 </blockquote>
 
 
 Learn more:
 
 * [Live Events and Feeds](https://docs.tealium.com/about-live-events/)
-* [Data Sources for iQ Tag Management](https://docs.tealium.com/data-sources-for-iq-tag-management/)
+* [Data Sources for Tag Management](https://docs.tealium.com/data-sources-for-iq-tag-management/)
 * [Tealium Collect Tag Setup Guide](https://docs.tealium.com/tealium-collect-tag/)
 

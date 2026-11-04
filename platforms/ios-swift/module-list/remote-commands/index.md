@@ -1,6 +1,6 @@
 ---
 title: RemoteCommands Module
-description: Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
+description: Enables triggering of native code blocks from events in Tag Management, controlled by extensions and load rules.
 url: https://docs.tealium.com/platforms/ios-swift/module-list/remote-commands/
 ---
 Learn more about [remote commands](https://docs.tealium.com/platforms/remote-commands/).
@@ -67,13 +67,13 @@ There are two configuration options for remote commands:
 * **JSON File**  
 A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.
 * **Remote Command Tag**  
-A tag in iQ Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
+A tag in Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
 
 See the [list of remote command vendor integrations](https://docs.tealium.com/platforms/remote-commands/integrations/).
 
 ### Examples
 
-Configure the Remote Command tag in Tealium iQ Tag Management. You can also use a JSON file in your app or on a remote server. After configuration, register the remote command by using [`addRemoteCommand()`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#addremotecommand) on `TealiumConfig`. Complete registration before you initialize `Tealium`:
+Configure the Remote Command tag in Tag Management. You can also use a JSON file in your app or on a remote server. After configuration, register the remote command by using [`addRemoteCommand()`](https://docs.tealium.com/platforms/ios-swift/api/tealium-config/#addremotecommand) on `TealiumConfig`. Complete registration before you initialize `Tealium`:
 
 
 
@@ -261,7 +261,7 @@ config.remoteHTTPCommandDisabled = false
 
 ## Remote HTTP Command
 
-This is a reserved internal command with identifier `_http` which triggers an HTTP request from native code, and passes the response back to the Tealium iQ web view. This is used in some cases to bypass CORS restrictions that may be encountered in a web browser. To use this command, there are specific mapping names you must use:
+This is a reserved internal command with identifier `_http` which triggers an HTTP request from native code, and passes the response back to the Tag Management web view. This is used in some cases to bypass CORS restrictions that may be encountered in a web browser. To use this command, there are specific mapping names you must use:
 
 | Mapping Name | Description |
 | --- | --- |

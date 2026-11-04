@@ -1,5 +1,5 @@
 ---
-title: Moments API module (now Context API)
+title: Context API module (now Context API)
 description: Learn how to install the Tealium Context API module for Flutter.
 url: https://docs.tealium.com/platforms/flutter-v2/context-api/
 ---

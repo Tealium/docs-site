@@ -490,7 +490,7 @@ OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. T
 
 
 ```js
-;(function oneTrust(window) {
+;(function oneTrustWithPurposes(window) {
     // allows simple adjustment of the name/id behavior
     var useNamesInsteadOfKeys = false;
     // allow the safety check of the expected Vendor ID to be circumvented to simplify setup at the cost of increased risk
@@ -498,7 +498,7 @@ OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. T
     // CMP specific functionality and labels
     window.tealiumCmpIntegration = window.tealiumCmpIntegration || {};
     window.tealiumCmpIntegration.cmpName = "OneTrust";
-    window.tealiumCmpIntegration.cmpIntegrationVersion = "onetrust-2.1.0";
+    window.tealiumCmpIntegration.cmpIntegrationVersion = "onetrust-2.2.0";
     window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision = cmpFetchCurrentConsentDecision;
     window.tealiumCmpIntegration.cmpFetchCurrentLookupKey = cmpFetchCurrentLookupKey;
     window.tealiumCmpIntegration.cmpCheckIfOptInModel = cmpCheckIfOptInModel;
@@ -573,8 +573,18 @@ OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. T
             permittedPurposeIds = window.tealiumConsentRegister && window.tealiumConsentRegister.getCurrentDecision();
         }
         var permittedPurposesWithNames = {};
-        cmpRawOutput.Groups.forEach(function (groupInfo) {
-            if (permittedPurposeIds.indexOf(groupInfo.OptanonGroupId) !== -1) {
+        cmpRawOutput.Groups.forEach(function (groupInfo, index, array) {
+            // If the group has a custom vendor service, add it to the list and DON'T add the base categories
+            if (groupInfo.VendorServices && groupInfo.VendorServices.length && groupInfo.VendorServices.length > 0) {
+                groupInfo.VendorServices.forEach(function (vendor) {
+                    var purposeId = '';
+                    if (permittedPurposeIds.indexOf(vendor.CustomVendorServiceId) !== -1 || array[index].Status === 'always active') {
+                        purposeId = groupInfo.OptanonGroupId + '_' + vendor.CustomVendorServiceId
+                        permittedPurposesWithNames[purposeId] = groupInfo.GroupName + ' | ' + vendor.ServiceName + ' (' + vendor.ParentCompany + ')';
+                    }
+                })
+            } else if (permittedPurposeIds.indexOf(groupInfo.OptanonGroupId) !== -1) {
+                // No vendors, so we use the base category as the purpose if there's consent
                 permittedPurposesWithNames[groupInfo.OptanonGroupId] = groupInfo.GroupName || "ERROR-MISSING";
             }
         })
@@ -639,7 +649,7 @@ OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. T
 
 
 /*
-// Debugging / development output - paste into the console, or uncomment and paste the whole template during development of a custom integration
+// Debugging / development output - paste into the console, or uncomment and paste the whole template during development of a custom integration. Make sure to comment it again out before production use!
 function outputDebuggingInfo () {
   var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
   Checks:
@@ -647,7 +657,8 @@ function outputDebuggingInfo () {
     - well-formed:        ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
     - explicit:           ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
     - using callback:     ${typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === 'function'}
-    - consented purposes: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+    - consented purposes with names: \n\n${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToLookupObject(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 2)}
+    - consented purposes as a list:       \n\n${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 2)}
   `
   console.log(outputString);
 }
@@ -660,7 +671,7 @@ outputDebuggingInfo();
 ```
 
 
-
+The snippet returns the **Purpose Keys** to enter into your integration. A purpose key can be a category ID, such as `C0001`, or a vendor or service ID. A purpose group can contain both types.
 
 ### Opt-out Cookie + GPC
 

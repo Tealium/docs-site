@@ -1,25 +1,25 @@
 ---
 title: Tealium.Config
-description: Tealium for Androidで提供されているTealium.Configクラスおよびメソッドに関するリファレンスガイド。
+description: Android向けにTealiumが提供するTealium.Configクラスおよびメソッドのリファレンスガイド。
 url: https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/
 ---
 
 ## クラス：`Tealium.Config`
 
-以下は、一般的に使用される`Tealium.Config`クラスのメソッドをまとめたものです。
+以下に、`Tealium.Config`クラスでよく使用されるメソッドの概要を示します。
 
-| メソッド | 説明|
-| ----- | ------|
-| [`create()`](#create)| Create instance of the Config object |
-| [`enableConsentManager()`](#enableconsentmanager)| Enable Consent Manager |
-| [`isConsentManagerEnabled()`](#isconsentmanagerenabled)| Checks if Consent Manager is enabled |
-| [`sessionCountingEnabled`](#sessioncountingenabled) | Tealium iQ accountsアカウント用のセッション カウントを無効化します。Tealium JavaScript ファイルをセルフホストしている場合にこれを用います|
-| [`setDatasourceId()`](#setdatasourceid) | データソースキーを構成します|
-| [`setForceOverrideLogLevel()`](#setforceoverrideloglevel) | 初期化時に特定のログレベルを強制するように構成します|
-| [`setOverrideCollectDispatchProfile()`](#setoverridecollectdispatchprofile) | Tealium Collect プロファイルをオーバーライドします|
-| [`setOverrideCollectDispatchUrl()`](#setoverridecollectdispatchurl) | Tealium Collect URLをオーバーライドします|
-| [`setOverrideVisitorServiceDomain()`](#setoverridevisitorservicedomain) | Tealium Collect訪問サービスドメインをオーバーライドします|
-| [`setSecondsBeforeBatchTimeout()`](#setsecondsbeforebatchtimeout) | バッチタイムアウトまでの秒数を構成します|
+| メソッド | 説明 |
+| ----- | ------ |
+| [`create()`](#create)| Configオブジェクトのインスタンスを作成します |
+| [`enableConsentManager()`](#enableconsentmanager)| 同意管理を有効にします |
+| [`isConsentManagerEnabled()`](#isconsentmanagerenabled)| 同意管理が有効かどうかを確認します |
+| [`sessionCountingEnabled`](#sessioncountingenabled) | タグ管理アカウントのセッションカウントを無効にします。Tealium JavaScriptファイルをセルフホスティングする場合に使用します |
+| [`setDatasourceId()`](#setdatasourceid) | データソースキーを構成します |
+| [`setForceOverrideLogLevel()`](#setforceoverrideloglevel) | 初期化時に特定のログレベルを強制的に適用するよう構成します |
+| [`setOverrideCollectDispatchProfile()`](#setoverridecollectdispatchprofile) | Tealium Collectプロファイルを上書きします |
+| [`setOverrideCollectDispatchUrl()`](#setoverridecollectdispatchurl) | Tealium Collect URLを上書きします |
+| [`setOverrideVisitorServiceDomain()`](#setoverridevisitorservicedomain) | Tealium Collect訪問サービスドメインを上書きします |
+| [`setSecondsBeforeBatchTimeout()`](#setsecondsbeforebatchtimeout) | バッチがタイムアウトするまでの秒数を構成します |
 
 ### `create()`
 
@@ -33,18 +33,18 @@ Tealium.Config config = Tealium.Config.create(
       environment);
 ```
 
-Tealium `Config`インスタンスは、次のパラメータを使用して構成されます。
+Tealiumの`Config`インスタンスは、次のパラメータを使用して構成されます。
 
-| パラメータ  | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `application` | `Application` |アプリケーションインスタンス|  `applicationObj` |
-| `account` | `String` |Tealiumアカウントの名前|  `"companyXYZ"` |
-| `profile` | `String` |Tealiumプロファイルの名前|  `"main"` |
-| `environment` | `String` |Tealium環境の名前|  [`"dev"`, `"qa"`, `"prod"`]|
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `application` | `Application` | アプリケーションのインスタンス | `applicationObj` |
+| `account` | `String` | Tealiumアカウント名 | `"companyXYZ"` |
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `environment` | `String` | Tealium環境名 | [`"dev"`, `"qa"`, `"prod"`] |
 
 ### `enableConsentManager()`
 
-Consent Managerを有効にします。このメソッドは、Tealiumの初期化前に使用します。
+同意管理を有効にします。このメソッドは、Tealiumを初期化する前に使用します。
 
 ```java
 public final String TEALIUM_INSTANCE = "main";
@@ -52,20 +52,21 @@ final Tealium.Config config = Tealium.Config.create(...);
 config.enableConsentManager(TEALIUM_INSTANCE);
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `instance` | `String` | Tealiumインスタンス名| `"main"` |
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `instance` | `String` | Tealiumインスタンス名 | `"main"` |
 
 ### `isConsentManagerEnabled()`
 
-Consent Managerが有効かどうかを確認します。
+同意管理が有効かどうかを確認します。
 
 ```java
 config.isConsentMangerEnabled()
 ```
 
 ### `sessionCountingEnabled`
-Tealium iQ accountsアカウント用のセッション カウントを無効化します。Tealium JavaScript ファイルをセルフホストしている場合にこれを用います。デフォルトは `true`となっています。
+
+タグ管理アカウントのセッションカウントを無効にします。Tealium JavaScriptファイルをセルフホスティングする場合に使用します。デフォルトは`true`です。
 
 ```swift
 config.sessionCountingEnabled = false
@@ -78,61 +79,65 @@ config.sessionCountingEnabled = false
 ```java
 config.setDataSourceId(dataSourceId);
 ```
-| パラメータ  | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `dataSourceId` | `String` | データソースキー（ない場合は`null`に構成）| `"abc123"` |
+
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `dataSourceId` | `String` | データソースキー（存在しない場合は`null`に構成） | `"abc123"` |
 
 ### `setForceOverrideLogLevel()`
 
-初期化時に特定のログレベルを強制するように構成します。メソッドチェーンの構成オブジェクトのインスタンスを返します。
+初期化時に特定のログレベルを強制的に適用するよう構成します。メソッドチェーン用にConfigオブジェクトのインスタンスを返します。
 
 ```java
 config.setForceOverrideLogLevel(forceOverrideLogLevel);
 ```
 
-`forceOverrideLogLevel`には以下の`String`オプションを使用できます。
+`forceOverrideLogLevel`には、次の`String`オプションを使用できます。
 
-| ログレベル | 説明|
-|------------ | -------------------------------|
-| `"dev"`     | アクティビティ、情報提供、警告、エラー|
-| `"qa"`      | 情報提供、警告、エラー|
-| `"prod"`    | エラー|
-| `"silent"`  | なし|
+| ログレベル | 説明 |
+|------------ | ------------------------------- |
+| `"dev"`     | アクティビティ、情報、警告、およびエラー |
+| `"qa"`      | 情報、警告、およびエラー |
+| `"prod"`    | エラー |
+| `"silent"`  | なし |
 
 ### `setOverrideCollectDispatchProfile()`
 
-Tealium Collect ディスパッチ プロファイルをオーバーライドします。
+Tealium Collectの送信プロファイルを上書きします。
 
 ```java
 config.setOverrideCollectDispatchProfile(profile);
 ```
 
-| パラメータ  | 型| 説明|
-| --- | ---| --- |
-| `profile` | `String` | Tealium Collect プロファイルのオーバーライド|
+| パラメータ | 型 | 説明 |
+| --- | --- | --- |
+| `profile` | `String` | 上書きするTealium Collectプロファイル |
 
 
 ### `setOverrideCollectDispatchUrl()`
 
-データを別のエンドポイントに送信するようにTealium CollectのディスパッチURLをオーバーライドします。
+Tealium Collectの送信URLを上書きし、別のエンドポイントにデータを送信します。
 
 ```java
 config.setOverrideCollectDispatchUrl(url);
 ```
 
-| パラメータ  | 型| 説明|
-| --- | ---| --- |
-| `url` | `String` | オーバーライドするURL|
+| パラメータ | 型 | 説明 |
+| --- | --- | --- |
+| `url` | `String` | 上書きするURL |
 
-デフォルトのURLは次のとおりです。
+デフォルトのURLは次のとおりです。  
 ```bash
 https://collect.tealiumiq.com/event/
 ```
-イベントバッチ処理を使用するデフォルトのURLは次のとおりです。
+
+イベントのバッチ処理を使用する場合のデフォルトURLは次のとおりです。
+
 ```bash
 https://collect.tealiumiq.com/bulk-event/
 ```
-このメソッドは通常、カスタムホスト名を構成するため、または特定の地域のホスト名を構成するために使用されます。次の例では、Tealium CollectのベースURLが中央ヨーロッパ地域内に留まるように構成されます。
+
+通常、このメソッドはカスタムホスト名または特定のリージョンのホスト名を構成するために使用します。次の例では、EU中央リージョン内にデータを保持するようにTealium CollectのベースURLを構成します。
 
 ```java
 config.setOverrideCollectDispatchUrl("https://collect-eu-central-1.tealiumiq.com/event/");
@@ -141,25 +146,24 @@ config.setOverrideCollectDispatchUrl("https://collect-eu-central-1.tealiumiq.com
 
 ### `setOverrideVisitorServiceDomain()`
 
-データを別のドメインに送信するようにTealium Collectの訪問サービスドメインをオーバーライドします。
+Tealium Collectの訪問サービスドメインを上書きし、別のドメインにデータを送信します。
 
 ```java
 config.setOverrideVisitorServiceDomain(domain);
 ```
 
-| パラメータ  | 型| 説明|
-| --- | ---| --- |
-| `domain` | `String` | オーバーライドする訪問サービスドメイン|
+| パラメータ | 型 | 説明 |
+| --- | --- | --- |
+| `domain` | `String` | 上書きする訪問サービスドメイン |
 
 ### `setSecondsBeforeBatchTimeout()`
 
-バッチタイムアウトまでの秒数を構成します。タイムアウトに達する前にバッチサイズの制限に達しなかった場合、キューに入れられたイベントはディスパッチされます。
+バッチがタイムアウトするまでの秒数を構成します。タイムアウトに達するまでにバッチサイズの上限に達しなかった場合、キューに格納されているイベントが送信されます。
 
 ```java
 config.setSecondsBeforeBatchTimeout(timeout);
 ```
 
-| パラメータ  | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `timeout` | `int` |バッチが送信されるまでのタイムアウト時間（秒単位）。| `30` |
-
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `timeout` | `int` | バッチが送信されるまでのタイムアウト時間（秒）。 | `30` |

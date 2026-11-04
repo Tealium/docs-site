@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/ios-swift-v1/module-list/tag-management/
 ---
 ## Usage
 
-The TagManagement module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WKWebView` instance to execute JavaScript. This module is required in apps that make use of Tealium iQ Tag Management. It is automatically included in Carthage and CocoaPods framework builds.
+The TagManagement module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WKWebView` instance to execute JavaScript. This module is required in apps that make use of Tag Management. It is automatically included in Carthage and CocoaPods framework builds.
 
 ## Supported Platforms
 

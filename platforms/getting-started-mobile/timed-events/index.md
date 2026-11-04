@@ -12,7 +12,7 @@ The following platforms support timed events:
 
 ## How It Works
 
-A timed event measures the duration of an event or the time between two events and is set with automatic or manual triggers. When a timed event is complete it sends an event named `timed_event` to Tealium EventStream with the name of the timed event and the timing details.
+A timed event measures the duration of an event or the time between two events and is set with automatic or manual triggers. When a timed event is complete it sends an event named `timed_event` to Event Streaming with the name of the timed event and the timing details.
 
 Use automatic triggers to measure the duration between Tealium events that are already tracked in your app. A timed event is triggered automatically when the specified start event occurs and stops when the specified stop event occurs.
 

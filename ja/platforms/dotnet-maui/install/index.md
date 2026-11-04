@@ -1,19 +1,19 @@
 ---
 title: インストール
-description: Tealium for .NET MAUIのインストール方法を学びます。
+description: .NET MAUI向けTealiumのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/dotnet-maui/install/
 ---
-Tealium .NET MAUI統合は、Tealium for iOSとTealium for Androidとのインターフェースと構成クラスを提供するクロスプラットフォームインターフェースを提供します。
+Tealium .NET MAUI統合では、Tealium for iOSおよびTealium for Androidと連携するクロスプラットフォームのインターフェイスと構成クラスが提供されます。
 
 
 <blockquote>
-この統合はTealium Xamarinからの移行です。詳細は[Tealium for Xamarin](https://docs.tealium.com/ja/platforms/xamarin/)を参照してください。
+この統合はTealium Xamarinから移行されたものです。詳細については、[Tealium for Xamarin](https://docs.tealium.com/ja/platforms/xamarin/)を参照してください。
 </blockquote>
 
 
 ## サンプルアプリ
 
-ライブラリ、トラッキング方法、ベストプラクティスの実装について理解するために、サンプルアプリを使用します。
+サンプルアプリを使用して、ライブラリ、トラッキングメソッド、実装のベストプラクティスについて理解を深めてください。
 
 [.NET MAUIサンプルアプリをダウンロード](https://github.com/Tealium/tealium-dotnet-maui/tree/master/TealiumMauiExample)
 
@@ -21,15 +21,15 @@ Tealium .NET MAUI統合は、Tealium for iOSとTealium for Androidとのイン�
 
 ### インストール
 
-Visual Studioの組み込みNuGetパッケージマネージャを使用して、.NET MAUI用のTealiumライブラリを直接インストールします。
+組み込みのNuGetパッケージマネージャーを使用して、Visual Studioから.NET MAUI向けTealiumライブラリを直接インストールします。
 
-[NuGetパッケージ: Tealium.Maui](https://www.nuget.org/packages/Tealium.Maui/)
+[NuGetパッケージ：Tealium.Maui](https://www.nuget.org/packages/Tealium.Maui/)
 
 ## 初期化
 
-### インスタンスマネージャ
+### インスタンスマネージャー
 
-クラスインスタンスをインスタンス化する前に、プロジェクトが適切なライブラリを参照していることを確認します。スレッドセーフなTealiumインスタンス管理を提供する`TealiumInstanceManager`クラスの使用を推奨します。
+クラスのインスタンスを作成する前に、プロジェクトが適切なライブラリを参照していることを確認します。スレッドセーフなTealiumインスタンス管理を提供する`TealiumInstanceManager`クラスの使用を推奨します。
 
 
 
@@ -52,7 +52,7 @@ ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new Tealium
 
 ### 構成
 
-`TealiumInstanceManager`を作成した後、アカウント詳細と構成を含む`TealiumConfig`オブジェクトを作成します。
+`TealiumInstanceManager`を作成した後、アカウントの詳細と構成構成を使用して`TealiumConfig`オブジェクトを作成します。  
 
 ```csharp
 TealiumConfig tealConfig = new TealiumConfig(
@@ -68,7 +68,7 @@ TealiumConfig tealConfig = new TealiumConfig(
 );
 ```
 
-構成パラメータの完全なリストについては、[API: TealiumConfig](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#object-tealiumconfig)を参照してください。
+構成パラメーターの完全な一覧については、[API：TealiumConfig](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#object-tealiumconfig)を参照してください。
 
 ### インスタンス
 
@@ -77,26 +77,26 @@ TealiumConfig tealConfig = new TealiumConfig(
 ```csharp
 ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) => 
 {
-  // インスタンスが準備完了したときのコールバック。
-  // 例えば: 
+  // Callback for once the instance is ready.
+  // For example: 
   if (tealium != null) 
   {
-    // 成功
+    // success
   } 
   else 
   {
-    // 失敗
+    // failure
   }
 });
 ```
 
 ## リモートコマンド
 
-ベンダーSDK内のネイティブコードをトリガーするために[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/)を使用します。.NET MAUIでは、[`IRemoteCommand`](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#iremotecommand)インターフェースと`DelegateRemoteCommand`という組み込みの実装を使用してリモートコマンドがサポートされています。
+[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/)を使用して、ベンダーSDK内のネイティブコードをトリガーします。.NET MAUIでは、[`IRemoteCommand`](https://docs.tealium.com/ja/platforms/dotnet-maui/api/#iremotecommand)インターフェイスと、`DelegateRemoteCommand`という組み込み実装によってリモートコマンドがサポートされています。
 
-Tealium iQのカスタムコマンドタグと連携するリモートコマンドを作成するには、コマンドIDと説明を追加パラメータなしで渡し、レスポンスハンドラを定義します。`resp.Payload`のコマンドのデータペイロードにアクセスします。
+タグ管理のカスタムコマンドタグで動作するリモートコマンドを作成するには、追加のパラメーターを指定せずにコマンドIDと説明を渡し、レスポンスハンドラーを定義します。コマンドのデータペイロードには`resp.Payload`でアクセスします。
 
-ローカルファイルまたはリモートURLオプションを使用してリモートコマンドを作成するには、それぞれ`path`または`url`パラメータを追加します。
+ローカルファイルまたはリモートURLオプションを使用してリモートコマンドを作成するには、それぞれ`path`または`url`パラメーターを追加します。
 
 ```csharp
 var myCommand = new DelegateRemoteCommand("logger", "Logger command.", path: "FILENAME.json")
@@ -108,13 +108,13 @@ var myCommand = new DelegateRemoteCommand("logger", "Logger command.", path: "FI
         
         if (payload.GetValueForKey<Boolean>("frequent_visitor"))
         {
-            // アクションを実行
+            // take action
         }
     }
 };
 ```
 
-より高度なソリューションについては、独自のクラスで`IRemoteCommand`インターフェースを実装します。
+より高度なソリューションを実装するには、独自のクラスで`IRemoteCommand`インターフェイスを実装します。
 
 ```csharp
 public class MyRemoteCommand : IRemoteCommand
@@ -132,15 +132,15 @@ public class MyRemoteCommand : IRemoteCommand
 
     public string Description => "Logger command";
 
-    // ローカルのJSONマッピングファイルへのパスを構成します
+    // Sets the path to a local JSON mappings file
     public string Path => path;
 
-    // リモートのJSONマッピングファイルへのURLを構成します
+    // Sets the url to a remote JSON mappings file
     public string Url => url;
 
     public void Dispose()
     {
-        // リソースを整理します
+        // tidy up resources
     }
 
     public void HandleResponse(IRemoteCommandResponse response)
@@ -150,18 +150,18 @@ public class MyRemoteCommand : IRemoteCommand
 
         if (payload.GetValueForKey<Boolean>("frequent_visitor"))
         {
-            // アクションを実行
+            // take action
         }
     }
 }
 
-// Tealium iQマップ済みリモートコマンド
+// Tag Management mapped Remote Command
 var iqCommand = new MyRemoteCommand(null, null);
 
-// ローカルにマップされたリモートコマンド
+// Locally mapped Remote Command
 var localCommand = new MyRemoteCommand("FILENAME.json", null);
 
-// リモートにマップされたリモートコマンド
+// Remotely mapped Remote Command
 var remoteCommand = new MyRemoteCommand(null, "https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json");
 ```
 
@@ -195,18 +195,17 @@ InstanceManager.CreateInstance(config, (tealium) =>
     }
 });
 ```
-
 ## デリゲートメソッド
 
-Tealium SDK内の処理ロジックにコードを注入する5つのデリゲートメソッドがあります：
+Tealium SDK 内の処理ロジックにコードを挿入するデリゲートメソッドは、次の 5 つです。
 
 | デリゲートメソッド | 説明 |
 |:----------------|:-----------|
-| `DelegateDispatchValidator()`              | 既存のディスパッチがドロップされるかキューに入れられるかを決定するブール値を返す2つのデリゲートメソッド[`ShouldDropDispatchDelegate()`,  `ShouldQueueDispatchDelegate()`]を提供します。ユーザーがオフラインになる可能性があるアプリ内のステップがある場合や、独自のバッチ処理ロジックを書きたい場合に使用します。 |
+| `DelegateDispatchValidator()`              | 2 つのデリゲートメソッド [`ShouldDropDispatchDelegate()`, `ShouldQueueDispatchDelegate()`] を提供します。これらの Boolean 戻り値によって、既存のディスパッチを破棄するか、キューに追加するかが決まります。アプリ内にユーザーがオフラインになる可能性がある処理が含まれる場合や、独自のバッチ処理ロジックを実装する場合に使用します。 |
 | `DispatchSentDelegateEventListener()`      | ディスパッチが送信されたときに呼び出されます。|
-| `DispatchQueuedDelegateEventListener()`    | ディスパッチがキューに入れられたときに呼び出されます。|
-| `WebViewReadyDelegateEventListener()`      | タグ管理モジュールを使用している場合、非表示のウェブビューが完全にロードされて準備ができたときに呼び出されます。|
-| `SettingsPublishedDelegateEventListener()` | 更新されたパブリッシュ構成のセットが取得されたときに呼び出されます|
+| `DispatchQueuedDelegateEventListener()`    | ディスパッチがキューに追加されたときに呼び出されます。|
+| `WebViewReadyDelegateEventListener()`      | Tag Management モジュールを使用している場合に、非表示の Web ビューが完全に読み込まれ、準備が整ったときに呼び出されます。|
+| `SettingsPublishedDelegateEventListener()` | 更新されたパブリッシュ構成一式が取得されたときに呼び出されます。|
 
 デリゲートメソッドの使用例：
 
@@ -232,17 +231,17 @@ static TealiumAdvancedConfig SetupAdvancedConfig() {
     DispatchQueuedDelegateEventListener queuingListener = new DispatchQueuedDelegateEventListener() {
         DispatchQueued = (tealium, dispatch) => {
             System.Diagnostics.Debug.WriteLine("Inside DispatchQueued!");
-dispatch.PutString("KeyAddedByQueuedListener", "キューによって追加された値");
+            dispatch.PutString("KeyAddedByQueuedListener", "Value added by queuing listener.");
         }
     };
     WebViewReadyDelegateEventListener webViewListener = new WebViewReadyDelegateEventListener() {
         WebViewReady = (tealium, webView) =>  {
-            System.Diagnostics.Debug.WriteLine("WebViewReadyの中にいます！");
+            System.Diagnostics.Debug.WriteLine("Inside WebViewReady!");
         }
     };
     SettingsPublishedDelegateEventListener settingsListener = new SettingsPublishedDelegateEventListener() {
         SettingsPublished = (tealium) => {
-            System.Diagnostics.Debug.WriteLine("SettingsPublishedの中にいます！");
+            System.Diagnostics.Debug.WriteLine("Inside SettingsPublished!");
         }
     };
     TealiumAdvancedConfig advConfig = new TealiumAdvancedConfig(validator,

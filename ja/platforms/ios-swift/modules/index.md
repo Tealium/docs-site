@@ -1,18 +1,18 @@
 ---
 title: モジュール
-description: 利用可能なモジュールのリストです。
+description: 利用可能なモジュールの一覧。
 url: https://docs.tealium.com/ja/platforms/ios-swift/modules/
----Tealium Swiftライブラリは、モジュラーなアーキテクチャを採用して設計されています。ライブラリを初期化する際には、必要なモジュールを`TealiumConfig`インスタンスで指定する必要があります。
+---Tealium Swiftライブラリは、モジュール式アーキテクチャを中心に設計されています。必要なモジュールは、ライブラリを初期化する際に`TealiumConfig`インスタンスで指定する必要があります。
 
 すべてのモジュールは`TealiumCore`に依存しています。モジュールは、その目的に応じて`Collectors`と`Dispatchers`に分けられます。
 
-## Collectors
+## コレクター
 
-Collectorsは、デバイスから追加情報を収集し、Tealium Customer Data Hubに送信される前にデータレイヤーに追加するモジュールです。一部のコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてオプションでインストールされます。
+コレクターは、デバイスから補足情報を収集し、Tealium Customer Data Hubに送信される前にデータレイヤーへ追加するモジュールです。一部のコレクターはコアライブラリに含まれていますが、その他はオプションであり、個別のモジュールとしてインストールします。
 
-以下の表に利用可能なコレクターを示します。
+次の表に、利用可能なコレクターを示します。
 
-| コレクター名 | TealiumConfig 参照 |
+| コレクター名 | TealiumConfigの参照 |
 | --- | --- |
 | `AppData`* | `Collectors.AppData`|
 | `Attribution` | `Collectors.Attribution`|
@@ -24,11 +24,11 @@ Collectorsは、デバイスから追加情報を収集し、Tealium Customer Da
 | `Location` | `Collectors.Location`|
 | `VisitorService` | `Collectors.VisitorService`|
 
-アスタリスク（`*`）が付いているモジュールはコアライブラリに含まれており、デフォルトで有効になっていますが、以下に説明するように`TealiumConfig`の`collectors`プロパティを使用して無効にすることができます。
+アスタリスク（`*`）が付いたモジュールは、コアライブラリに含まれています。これらはデフォルトで有効ですが、以下で説明する`TealiumConfig`の`collectors`プロパティを使用して無効にできます。
 
 ### 使用方法
 
-`Collector`を追加するには、`TealiumConfig`インスタンスの`collectors`プロパティで指定します：
+`Collector`を追加するには、`TealiumConfig`インスタンスの`collectors`プロパティで指定します。
 
 ```swift
 import TealiumCore
@@ -39,23 +39,23 @@ let config = TealiumConfig(account: "ACCOUNT",
                                environment: "ENVIRONMENT",
                                datasource: "DATASOURCE")
 
-// 追加したいCollectorsを追加します。省略した場合、デフォルトのCollectorsが追加されます。
+// Adds the Collectors you want. If omitted, default Collectors are added.
 config.collectors = [Collectors.AppData, Collectors.Device, Collectors.Connectivity, Collectors.Lifecycle]                               
 ```
 
-デフォルトのコレクターのみを使用する場合は、初期化コードから`config.collectors`行を省略またはコメントアウトします。
+デフォルトのコレクターのみを使用するには、初期化コードから`config.collectors`の行を省略するか、コメントアウトします。
 
 
 <blockquote>
-新しいコレクターを追加する際は、`Collectors.Device`と`Collectors.Connectivity`も配列に含めることを忘れないでください。そうしないとこれらのコレクターは無効になります。
+When adding new collectors, be sure to also include `Collectors.Device` and `Collectors.Connectivity` in the array, otherwise these collectors will be disabled.
 </blockquote>
 
 
-AppDataコレクターは、Tealium Visitor IDなどの重要な情報を収集するため、無効にすることはできません。
+AppDataコレクターは、Tealium訪問IDなどの重要な情報を収集するため、無効にすることはできません。
 
 ### カスタムコレクター
 
-一般的にカスタムコレクターは必要ありませんが、`Collector`プロトコルに準拠した独自のクラスを作成することでカスタムコレクターを構築することが可能です。以下の例は、トラッキングコールごとに現在の曜日をデータレイヤーに追加するシンプルなコレクターを示しています。
+通常、カスタムコレクターは必要ありませんが、`Collector`プロトコルに準拠する独自のクラスを作成することで、カスタムコレクターを構築できます。次の例では、現在の曜日を収集し、トラッキング呼び出しごとにデータレイヤーへ追加するシンプルなコレクターを示します。
 
 ```swift
 class MyDateCollector: Collector {
@@ -71,7 +71,7 @@ class MyDateCollector: Collector {
                   delegate: ModuleDelegate?,
                   diskStorage: TealiumDiskStorageProtocol?,
                   completion: (ModuleResult) -> Void) {
-        this.context = context
+        self.context = context
     }
 
     var dayOfWeek: String {
@@ -79,7 +79,7 @@ class MyDateCollector: Collector {
     }
 }
 
-// Tealium初期化前にconfigインスタンスにコレクターを追加します
+// Add collector to your config instance prior to Tealium initialization
 
 class TealiumHelper {
 	// ...
@@ -89,7 +89,7 @@ class TealiumHelper {
                                environment: "ENVIRONMENT",
                                datasource: "DATASOURCE")
 
-// 追加したいCollectorsを追加します。省略した場合、デフォルトのCollectorsが追加されます。
+// Add the Collectors you want. If omitted, default Collectors are added.
 config.collectors = [Collectors.AppData,
 					  Collectors.Lifecycle,
 					  MyDateCollector.self]   
@@ -98,11 +98,11 @@ config.collectors = [Collectors.AppData,
 }
 ```
 
-## Dispatchers
+## ディスパッチャー
 
-Dispatchersは、データレイヤーからのデータをTealiumエンドポイントに送信するモジュールです。現在利用可能なディスパッチャーは以下の通りです：
+ディスパッチャーは、データレイヤーからデータを取得し、Tealiumエンドポイントへ送信するモジュールです。現在、次のディスパッチャーを利用できます。
 
-| ディスパッチャー名 | TealiumConfig 参照 |
+| ディスパッチャー名 | TealiumConfigの参照 |
 | --- | --- |
 | `Collect` | `Dispatchers.Collect`|
 | `RemoteCommands` | `Dispatchers.RemoteCommands`|
@@ -110,13 +110,13 @@ Dispatchersは、データレイヤーからのデータをTealiumエンドポ�
 
 
 <blockquote>
-少なくとも1つのディスパッチャーが必要です。ディスパッチャーが指定されていない場合、データはどこにも送信されません。
+At least one dispatcher is required. If no dispatchers are specified, your data is not sent anywhere.
 </blockquote>
 
 
 ### 使用方法
 
-`Dispatcher`を追加するには、`TealiumConfig`オブジェクトの`dispatchers`プロパティで指定します：
+`Dispatcher`を追加するには、`TealiumConfig`オブジェクトの`dispatchers`プロパティで指定します。
 
 ```swift
 import TealiumCore
@@ -127,13 +127,13 @@ let config = TealiumConfig(account: "ACCOUNT",
                                environment: "ENVIRONMENT",
                                datasource: "DATASOURCE")
 
-// 追加したいCollectorsを追加します。コンパイルされたCollectorsを使用する場合は含めないでください
+// Add the Collectors. you want Do not include if you want to use compiled Collectors
 config.dispatchers = [Dispatchers.Collect]                               
 ```
 
 ### カスタムディスパッチャー
 
-一般的にカスタムディスパッチャーは必要ありませんが、`Dispatcher`プロトコルに準拠した独自のクラスを作成することでカスタムディスパッチャーを構築することが可能です。以下の例は、各トラックリクエストのイベント名を印刷するシンプルなディスパッチャーを示しています。カスタム`Dispatcher`は、Tealiumエンドポイントに加えて独自のカスタムエンドポイントにデータを送信したい場合に役立つかもしれません。
+通常、カスタムディスパッチャーは必要ありませんが、`Dispatcher`プロトコルに準拠する独自のクラスを作成することで、カスタム`Dispatcher`を構築できます。次の例では、トラッキングリクエストごとにイベント名を出力するシンプルなディスパッチャーを示します。Tealiumエンドポイントに加えて、独自のカスタムエンドポイントへデータを送信する場合は、カスタム`Dispatcher`が役立つことがあります。
 
 ```swift
 class MyCustomDispatcher: Dispatcher {
@@ -142,25 +142,25 @@ class MyCustomDispatcher: Dispatcher {
     var config: TealiumConfig
 
     required init(config: TealiumConfig, delegate: ModuleDelegate, completion: ModuleCompletion?) {
-        this.config = config
-        this.isReady = true
+        self.config = config
+        self.isReady = true
     }
 
     func dynamicTrack(_ request: TealiumRequest, completion: ModuleCompletion?) {
         switch request {
         case let request as TealiumTrackRequest:
             print("Track received: \(request.event ?? "no event name")")
-            // トラックアクションを実行します。たとえば、カスタムエンドポイントに送信する
+            // perform track action. For example, send to custom endpoint
         case _ as TealiumBatchTrackRequest:
             print("Batch track received")
-            // バッチトラックアクションを実行します。たとえば、カスタムエンドポイントに送信する
+            // perform batch track action. For example, send to custom endpoint
         default:
             return
         }
     }
 }
 
-// Tealium初期化前にconfigインスタンスにディスパッチャーを追加します
+// Add dispatcher to your config instance prior to Tealium initialization
 class TealiumHelper {
 	// ...
 	func startTracking() {
@@ -169,7 +169,7 @@ class TealiumHelper {
                                environment: "ENVIRONMENT",
                                datasource: "DATASOURCE")
 
-   // 追加したいDispatchersを追加します
+   // add the Dispatchers you want
    config.dispatchers = [Dispatchers.Collect, MyCustomDispatcher.self]      
 					  self.tealium = Tealium(config: config) { _ in }
 }
@@ -179,37 +179,37 @@ class TealiumHelper {
 
 ### 基本実装
 
-基本実装のために、以下のモジュールリストが推奨されます。少なくとも1つの`Dispatcher`が有効になっている必要があります。これは、使用予定のTealium製品に依存します。
+基本実装では、次のモジュールを推奨します。使用予定のTealium製品に応じて、少なくとも1つの`Dispatcher`を有効にする必要があります。
 
-* AppData Collector
-* Device Collector
-* Lifecycle Collector
+* AppDataコレクター
+* Deviceコレクター
+* Lifecycleコレクター
 
-### クライアント側
+### クライアントサイド
 
-基本モジュールに加えて、これらのモジュールはTealium iQを使用してクライアント側でデータを処理することを可能にします。
+基本モジュールに加えて、次のモジュールを使用すると、TealiumライブラリがTag Managementを使用してクライアントサイドでデータを処理できるようになります。
 
-* TagManagement Dispatcher - Tealium iQを使用するために必要
-* RemoteCommands Dispatcher - Remote Commands機能が必要な場合のみ必要です
+* TagManagementディスパッチャー - Tag Managementを使用するために必要
+* RemoteCommandsディスパッチャー - Remote Commands機能が必要な場合にのみ必要
 
-### サーバー側
+### サーバーサイド
 
-基本モジュールに加えて、これらのモジュールはライブラリがTealiumのサーバー側製品（EventStream、AudienceStream、Event Data Framework）にデータを送信することを可能にします。
+基本モジュールに加えて、次のモジュールを使用すると、ライブラリからTealiumのサーバーサイド製品（Event Streaming、Customer Data Platform（CDP）、Event Data Framework）へデータを送信できるようになります。
 
-* Collect Dispatcher - 任意のサーバー側製品を使用するために必要
-* Visitor Service Collector - Tealium AudienceStreamから訪問プロファイルを取得するためにのみ必要です。
+* Collectディスパッチャー - サーバーサイド製品を使用するために必要
+* Visitor Serviceコレクター - Customer Data Platform（CDP）から訪問プロファイルを取得する場合にのみ必要
 
 ## モジュールのインストール
 
-CocoaPodsまたはCarthageでモジュールをインストールします。
+CocoaPodsまたはCarthageを使用してモジュールをインストールします。
 
 ### CocoaPods
 
-特定のモジュールを含めるまたは除外する方法については、[CocoaPodsでのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#cocoapods)を参照してください。
+特定のモジュールを含める方法と除外する方法については、[CocoaPodsを使用したインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#cocoapods)を参照してください。
 ### Carthage
 
-Carthageを使用してインストールする場合、必要なモジュールを明示的にインポートする必要があります。すべてのモジュールをインポートすることもできますが、以前に説明したモジュールリストを使用すると、必要なモジュールのみをインポートすることでアプリを軽量化できます。特定のモジュールを含める/除外する方法については、[Carthageでのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#carthage)を参照してください。
+Carthage でインストールする場合は、必要なモジュールを明示的にインポートする必要があります。必要に応じてすべてのモジュールをインポートし、前述のモジュールリストを使用することもできますが、必要なモジュールだけをインポートすることで、アプリを軽量化できます。特定のモジュールを含める、または除外する手順については、[Carthage でインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#carthage)を参照してください。
 
 ### Swift Package Manager
 
-特定のモジュールを含める/除外する方法については、[Swift Package Managerでのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install#swift-package-manager-recommended)を参照してください。
+特定のモジュールを含める、または除外する手順については、[Swift Package Manager でインストール](https://docs.tealium.com/ja/platforms/ios-swift/install#swift-package-manager-recommended)を参照してください。

@@ -49,7 +49,7 @@ The Tealium mobile libraries send a lot of [device information to the data layer
 
 The device compresses the event batch payload with gzip to minimize the size of the HTTP request. This compression reduces the size of each network request by up to 90%.
 
-### Event batching for Tealium iQ Tag Management
+### Event batching for Tag Management
 
 If the **Tag Management** module is in use and event batching is enabled, the device queues these events as normal, and then dispatches them as individual JavaScript calls to the WKWebView instance. The device triggers any configured tags individually, which results in multiple requests leaving the device (one per event in the batch). This reduces the device's battery consumption because the device's radio does not need to wake up as frequently as sending events in real-time.
 

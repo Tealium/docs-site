@@ -14,7 +14,7 @@ The Tealium consent manager is designed to support multiple regulatory requireme
 
 ### GDPR
 
-Tealium iQ Tag Management and EventStream support the General Data Protection Regulation (GDPR) as the default policy.
+Tag Management and Event Streaming support the General Data Protection Regulation (GDPR) as the default policy.
 
 | Consent Status |  Description |
 | :-- | :-- |
@@ -24,7 +24,7 @@ Tealium iQ Tag Management and EventStream support the General Data Protection Re
 
 ### CCPA
 
-Tealium iQ Tag Management supports the California Consumer Privacy Act (CCPA) policy.
+Tag Management supports the California Consumer Privacy Act (CCPA) policy.
 
 | Consent Status |  Description |
 | :-- | :-- |

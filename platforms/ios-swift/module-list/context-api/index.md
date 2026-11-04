@@ -1,5 +1,5 @@
 ---
-title: Moments API Module (now Context API)
+title: Moments API (now Context API)
 description: Fetches visitor data using the Context API.
 url: https://docs.tealium.com/platforms/ios-swift/module-list/context-api/
 ---
@@ -9,7 +9,7 @@ Moments API has been renamed to Context API. For full product documentation, see
 </blockquote>
 
 
-The Context API module enables you to retrieve detailed information about visitor profiles from the Tealium AudienceStream. This information can be used to enhance the customer experience in your app by accessing various attributes such as audiences, badges, strings, booleans, dates, and numbers.
+Use the Context API module to retrieve visitor profile data, including audiences, badges, strings, booleans, dates, and numbers.
 
 ## Supported Platforms
 
@@ -118,7 +118,7 @@ The `EngineResponse` object contains various types of attributes returned by the
 
 ### Region
 
-Configure the Context API region according to where your AudienceStream profile resides. If uncertain, consult your account manager.
+Configure the Context API region according to where your Customer Data Platform (CDP) profile resides. If uncertain, consult your account manager.
 
 | Enum Case    | Raw Value         |
 |--------------|-------------------|

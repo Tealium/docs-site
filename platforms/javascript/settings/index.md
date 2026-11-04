@@ -169,7 +169,7 @@ Lower-case all meta data variable names and values. Replicates behavior in `utag
 
 Example meta tag:
 ```html
-<meta content="iQ Tag Management" property="Article:Section">
+<meta content="Tag Management" property="Article:Section">
 ```
 
 Resulting value:

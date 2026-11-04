@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/data-layer/
 ---
 Each mobile component adds variables to the data layer. The following sections list every variable in each module.
 
-All values are converted to strings. However, numbers can be coerced back into a numeric type as needed using iQ extensions or Tealium EventStream enrichments.
+All values are converted to strings. However, numbers can be coerced back into a numeric type as needed using iQ extensions or Event Streaming enrichments.
 
 
 <blockquote>
@@ -118,7 +118,7 @@ Populates the following Event Attribute within the dispatch data that was queued
 
 ## Tag management
 
-Runs vendor tags configured in Tealium iQ Tag Management in a hidden webview.
+Runs vendor tags configured in Tag Management in a hidden webview.
 
 | Event Attribute | Value |
 | :-- | :-- |

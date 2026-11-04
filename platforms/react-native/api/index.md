@@ -446,7 +446,7 @@ Defines a callback to execute when the visitor profile has been updated. The upd
 
 The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
-Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
+Usage of this module is recommended if you are licensed for Customer Data Platform (CDP) and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for Customer Data Platform (CDP), usage of this module is not recommended as no visitor profile is returned.
 
 ```javascript
 Tealium.setVisitorServiceListener(callback);
@@ -535,9 +535,9 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `consentLoggingEnabled`        | `Boolean`                                   | Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)   | true                                                                                                          |
 | `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)           | Sets the consent policy, such as CCPA or GDPR. Consent manager is only enabled if this property is set.                                                                                                                                                        | `ConsentPolicy.gdpr`                                                                                          |
 | `lifecycleAutotrackingEnabled` | `Boolean`                                   | Enables or disables lifecycle auto tracking. (default: enabled)                                                                                                                                                                                             | `false`                                                                                                       |
-| `useRemoteLibrarySettings`     | `Boolean`                                   | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled) Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`                                                                                                       |
+| `useRemoteLibrarySettings`     | `Boolean`                                   | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled) Configure the Mobile Publish Settings in Tag Management, or disable the feature. | `false`                                                                                                       |
 | `visitorServiceEnabled`        | `Boolean`                                   | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled)                                | `true`                                                                                                        |
-| `sessionCountingEnabled`       | `Boolean`                                   | Enables or disables session counting for Tealium iQ accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled)                                                                                                            | `false`                                                                                                        |
+| `sessionCountingEnabled`       | `Boolean`                                   | Enables or disables session counting for Tag Management accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled)                                                                                                            | `false`                                                                                                        |
 | `remoteCommands`               | `RemoteCommand[]`                           | Sets a list of [RemoteCommand](#RemoteCommand) objects to add when the instance is ready                                                                                                                                                                    | `[{ id: "hello-world", callback: (payload) => { console.log("hello-world: " + JSON.stringify(payload)); } }]` |
 
 
@@ -602,7 +602,7 @@ An interface that defines a configured Remote Command
 | `url`      | (Optional) remote file to use for mappings         |
 | `callback` | (Optional) callback function for the RemoteCommand |
 
-The path and URL are optional, but either provide only one or the other, or omit both in the case where the mappings are handled by a tag in Tealium iQ Tag Management.
+The path and URL are optional, but either provide only one or the other, or omit both in the case where the mappings are handled by a tag in Tag Management.
 
 Provide the callback if the command is to be handled within the scope of your React Native app. Omit the callback if the handler has already been registered natively.
 

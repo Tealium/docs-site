@@ -1,6 +1,6 @@
 ---
 title: Visitor Service
-description: Use the visitor service module to retrieve AudienceStream visitor profile data in your mobile app.
+description: Use the visitor service module to retrieve Customer Data Platform (CDP) visitor profile data in your mobile app.
 url: https://docs.tealium.com/platforms/getting-started-mobile/tealium-visitor-service/
 ---
 ## Supported platforms
@@ -21,7 +21,7 @@ To save device resources, the module polls for updates up to five times after ea
 
 ## Visitor profile structure
 
-The visitor profile is an object containing attributes keyed by their **attribute ID** from AudienceStream. Attribute IDs are numeric strings (for example, `"22"` for Lifetime Event Count). Audiences are keyed by audience ID, with the audience name as the value.
+The visitor profile is an object containing attributes keyed by their **attribute ID** from CDP. Attribute IDs are numeric strings (for example, `"22"` for Lifetime Event Count). Audiences are keyed by audience ID, with the audience name as the value.
 
 For a full list of attribute types and usage examples, see the platform-specific reference:
 

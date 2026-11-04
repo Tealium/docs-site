@@ -1,19 +1,19 @@
 ---
-title: Moments APIモジュール（現在はContext API）
+title: Context APIモジュール（現Context API）
 description: Context APIを使用して訪問データを取得します。
 url: https://docs.tealium.com/ja/platforms/ios-swift/module-list/context-api/
 ---
 
 <blockquote>
-Moments APIはContext APIに名称が変更されました。製品の完全なドキュメントについては、[Context APIについて](https://docs.tealium.com/about-context-api/)をご覧ください。
+Moments APIはContext APIに名称変更されました。製品の完全なドキュメントについては、[Context APIについて](https://docs.tealium.com/about-context-api/)を参照してください。
 </blockquote>
 
 
-Context APIモジュールを使用すると、Tealium AudienceStreamから訪問プロファイルに関する詳細情報を取得できます。この情報を使用して、オーディエンス、バッジ、文字列、ブール値、日付、数値などのさまざまな属性にアクセスすることにより、アプリの顧客体験を向上させることができます。
+Context APIモジュールを使用すると、Customer Data Platform（CDP）から訪問プロファイルの詳細情報を取得できます。オーディエンス、バッジ、文字列、ブール値、日付、数値などのさまざまな属性にアクセスすることで、アプリ内の顧客体験を向上させるためにこの情報を利用できます。
 
-## 対応プラットフォーム
+## サポート対象プラットフォーム
 
-以下のプラットフォームがContext APIモジュールをサポートしています：
+Context APIモジュールは、以下のプラットフォームをサポートしています。
 
 - iOS
 - macOS
@@ -26,14 +26,14 @@ Swift Package Manager、CocoaPods、またはCarthageを使用してContext API�
 
 ### Swift Package Manager（推奨）
 
-1. Xcodeプロジェクトで、**File > Swift Packages > Add Package Dependency** を選択します
-1. リポジトリURLを入力します：`https://github.com/tealium/tealium-swift`
-1. バージョンルールを構成します。通常は「"Up to next major"」が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-1. インストールして追加するモジュールのリストから`TealiumMomentsAPI`、`TealiumCore`、および`TealiumCollect`または`TealiumTagManagement`モジュールを選択し、Xcodeプロジェクトの各アプリターゲットの**Frameworks and Libraries**の下に追加します。
+1. Xcodeプロジェクトで、**File > Swift Packages > Add Package Dependency**を選択します。
+1. リポジトリURLとして`https://github.com/tealium/tealium-swift`を入力します。
+1. バージョンルールを構成します。通常は`"Up to next major"`を推奨します。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
+1. インストールするモジュールのリストから`TealiumMomentsAPI`、`TealiumCore`、および`TealiumCollect`または`TealiumTagManagement`のいずれかを選択し、Xcodeプロジェクトの**Frameworks and Libraries**で各アプリターゲットに追加します。
 
 ### CocoaPods
 
-Podfileに以下のポッドを追加します：
+Podfileに以下のPodを追加します。
 
 ```perl
 pod 'tealium-swift/Core'
@@ -43,14 +43,14 @@ pod 'tealium-swift/MomentsAPI'
 
 ### Carthage
 
-1. XcodeのアプリターゲットのGeneral構成ページに移動します。
-2. 次のフレームワークを**Embedded Binaries**セクションに追加します：
+1. XcodeでアプリターゲットのGeneral構成ページに移動します。
+2. **Embedded Binaries**セクションに以下のフレームワークを追加します。
 
    ```
    TealiumMomentsAPI.xcframework
    ```
 
-3. プロジェクトに必要なインポート文を追加します：
+3. 必要なimport文をプロジェクトに追加します。
 
    ```swift
    import TealiumCore
@@ -62,22 +62,22 @@ pod 'tealium-swift/MomentsAPI'
 
 ### 初期化
 
-モジュールを初期化するには、`TealiumConfig`の`collectors`プロパティに指定する必要があります。
+モジュールを初期化するには、`TealiumConfig`の`collectors`プロパティにモジュールが指定されていることを確認します。
 
 ```swift
 config.collectors = [Collectors.MomentsAPI]
-config.momentsAPIRegion = .us_east // 下記の可能なリージョンオプションを参照
+config.momentsAPIRegion = .us_east // See possible region options below
 ```
 
 
 <blockquote>
-リージョンの構成は必須です。リージョンがない場合、Context APIモジュールは初期化されません。
+リージョンの構成は必須です。構成されていない場合、Context APIモジュールは初期化されません。
 </blockquote>
 
 
 ### 訪問データの取得
 
-`fetchEngineResponse`メソッドを呼び出してパーソナライズされた訪問データを取得します。これは、アプリ内パーソナライゼーションのユースケースをサポートするために、更新された訪問情報が必要な場合に呼び出す必要があります。
+パーソナライズされた訪問データを取得するには、`fetchEngineResponse`メソッドを呼び出します。アプリ内パーソナライゼーションのユースケースを実現する場合など、更新された訪問情報が必要になるたびに、このメソッドを呼び出してください。
 
 ```swift
 func fetchMoments(engineId: String, completion: @escaping (Result<EngineResponse, Error>) -> Void) {
@@ -103,32 +103,32 @@ func fetchMoments(engineId: String, completion: @escaping (Result<EngineResponse
 
 ## 訪問プロファイルデータ
 
-`EngineResponse`オブジェクトには、Context APIによって返されるさまざまなタイプの属性が含まれています。以下の表は、利用可能なプロパティとそのデータタイプを示しています：
+`EngineResponse`オブジェクトには、Context APIから返されるさまざまな種類の属性が含まれています。次の表に、使用可能なプロパティとそのデータ型を示します。
 
-| プロパティ   | データタイプ             | 説明                                                     |
-|------------|-----------------------|-----------------------------------------------------------------|
-| `audiences`| `[String]`          | 訪問が現在割り当てられているオーディエンスのリストです。     |
-| `badges`   | `[String]`          | 訪問に割り当てられているバッジのリストです。                     |
-| `booleans` | `[String: Bool]`  | 訪問に現在割り当てられているブール属性です。       |
-| `dates`    | `[String: Int64]`     | 訪問に現在割り当てられている日付属性（ミリ秒単位）。  |
-| `numbers`  | `[String: Double]`   | 訪問に現在割り当てられている数値属性です。        |
-| `strings`  | `[String: String]`  | 訪問に現在割り当てられている文字列属性です。        |
+| プロパティ | データ型 | 説明 |
+|------------|----------|------|
+| `audiences` | `[String]` | 訪問が現在割り当てられているオーディエンスのリスト。 |
+| `badges` | `[String]` | 訪問に割り当てられているバッジのリスト。 |
+| `booleans` | `[String: Bool]` | 訪問に現在割り当てられているブール属性。 |
+| `dates` | `[String: Int64]` | 訪問に現在割り当てられている日付属性（ミリ秒単位）。 |
+| `numbers` | `[String: Double]` | 訪問に現在割り当てられている数値属性。 |
+| `strings` | `[String: String]` | 訪問に現在割り当てられている文字列属性。 |
 
 ## 構成オプション
 
 ### リージョン
 
-AudienceStreamプロファイルが存在するリージョンに応じてContext APIリージョンを構成します。不明な場合は、アカウントマネージャーに相談してください。
+Customer Data Platform（CDP）のプロファイルが保存されている場所に応じて、Context APIのリージョンを構成します。不明な場合は、アカウントマネージャーにお問い合わせください。
 
-| Enum Case    | Raw Value         |
-|--------------|-------------------|
-| `.germany`   | `eu-central-1`    |
-| `.us_east`   | `us-east-1`       |
-| `.sydney`    | `ap-southeast-2`  |
-| `.oregon`    | `us-west-2`       |
-| `.tokyo`     | `ap-northeast-1`  |
-| `.hong_kong` | `ap-east-1`       |
-| `.custom`    | `<custom string>` |
+| 列挙型ケース | Raw値 |
+|--------------|-------|
+| `.germany` | `eu-central-1` |
+| `.us_east` | `us-east-1` |
+| `.sydney` | `ap-southeast-2` |
+| `.oregon` | `us-west-2` |
+| `.tokyo` | `ap-northeast-1` |
+| `.hong_kong` | `ap-east-1` |
+| `.custom` | `<custom string>` |
 
 ```swift
 config.momentsAPIRegion = .us_east
@@ -136,19 +136,19 @@ config.momentsAPIRegion = .us_east
 
 
 <blockquote>
-カスタムオプションは将来の拡張のためにありますが、指示がない限り使用しないでください。
+カスタムオプションは将来の拡張用です。指示がない限り使用しないでください。
 </blockquote>
 
 
 ### リファラー
 
-セキュリティをエンリッチメントするために、リファラーURLを指定することができます。このURLはTealium UIの「ドメイン許可リスト」と一致する必要があります。そうでない場合、Context APIはデータを返しません。デフォルトのリファラーURLは以下の通りです：
+セキュリティをエンリッチメントするために、リファラーURLを指定できます。このURLはTealium UIの「Domain Allow List」と一致している必要があります。一致していない場合、Context APIはデータを返しません。デフォルトのリファラーURLは次のとおりです。
 
 ```
 https://tags.tiqcdn.com/utag/{account}/{profile}/{environment}/mobile.html
 ```
 
-以下に示すようにカスタムリファラーURLを指定します：
+次のようにカスタムリファラーURLを指定します。
 
 ```swift
 let config = TealiumConfig(
@@ -158,7 +158,7 @@ let config = TealiumConfig(
 )
 config.momentsAPIReferrer = "https://example.com/"
 tealium = Tealium(config: config) { _ in
-    // 初期化完了
+    // Initialization complete
 }
 ```
 
@@ -166,14 +166,14 @@ tealium = Tealium(config: config) { _ in
 
 ### 一般的なエラー
 
-Context APIからデータをリクエストする際にエラーが発生することがあります。以下の表は、発生可能なエラーを示しています：
+Context APIからデータをリクエストする際に、エラーが発生することがあります。次の表に、発生する可能性のあるエラーを示します。
 
-| エラー                        | 説明                                                                                       | 解決策                                                                    |
-|----------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| `.badRequest`                    | リクエストが適切にフォーマットされていないか、無効なパラメータを含んでいます。                           | Context APIモジュールを使用している場合、発生する可能性は低いです。                         |
-| `.forbidden`                     | Context APIエンジンがアカウントで有効になっていないか、リクエストが認証されていません。          | Context APIエンジンが適切に構成され、有効になっていることを確認してください。             |
-| `.notFound`                      | Tealium訪問IDにデータベースにデータが保存されていません。                                 | この訪問にはまだデータが存在しません。                                          |
-| `.unsuccessful(statusCode: Int)` | サーバーが予期しないステータスコードで応答しました。                                              | ドキュメントを参照するか、さらなる支援のためにサポートに連絡してください。          |
-| `.missingVisitorID`              | リクエストに訪問IDが提供されていません。                                                   | Context APIモジュールを使用している場合、発生する可能性は低いです。                         |
-| `URLError`                       | Context APIと通信しようとする際にネットワークエラーが発生しました。                        | ネットワーク接続を確認して再試行してください。                                      |
-| `URLError(.cannotDecodeRawData)` | Context APIから返されたデータをデコードできませんでした。                                        | サポートに連絡してください。応答に予期しないデータタイプが含まれていました。              |
+| エラー | 説明 | 解決方法 |
+|--------|------|----------|
+| `.badRequest` | リクエストの形式が正しくないか、無効なパラメータが含まれています。 | Context APIモジュールを使用している場合、このエラーが発生する可能性は低いです。 |
+| `.forbidden` | アカウントでContext APIエンジンが有効になっていないか、リクエストが認証されていません。 | Context APIエンジンが正しく構成され、有効になっていることを確認してください。 |
+| `.notFound` | Tealium訪問IDのデータがデータベースに保存されていません。 | この訪問のデータはまだ存在しません。 |
+| `.unsuccessful(statusCode: Int)` | サーバーが予期しないステータスコードを返しました。 | 詳細についてはドキュメントを参照するか、サポートにお問い合わせください。 |
+| `.missingVisitorID` | リクエストに訪問IDが指定されていません。 | Context APIモジュールを使用している場合、このエラーが発生する可能性は低いです。 |
+| `URLError` | Context APIとの通信中にネットワークエラーが発生しました。 | ネットワーク接続を確認して、再試行してください。 |
+| `URLError(.cannotDecodeRawData)` | Context APIから返されたデータをデコードできませんでした。 | サポートにお問い合わせください。レスポンスに予期しないデータ型が含まれています。 |

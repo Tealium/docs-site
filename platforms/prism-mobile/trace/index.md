@@ -161,7 +161,7 @@ await tealium.trace.leave();
 
 ## Force end of visit
 
-To test "End of Visit" actions in AudienceStream, force the session to end immediately instead of waiting for the session to expire:
+To test "End of Visit" actions in Customer Data Platform (CDP), force the session to end immediately instead of waiting for the session to expire:
 
 
 

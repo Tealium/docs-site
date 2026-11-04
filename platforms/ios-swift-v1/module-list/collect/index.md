@@ -6,7 +6,7 @@ url: https://docs.tealium.com/platforms/ios-swift-v1/module-list/collect/
 ## Usage
 The Collect module dispatches tracking calls to Tealium Customer Data Hub. Usage of this module is strongly recommended if you are using Customer Data Hub.
 
-As an alternative, if you are using the Tag Management module, you may instead use the Collect tag with Tealium iQ. This may give greater control over the data and events dispatched to the Customer Data Hub, as you may then use load rules and extensions to manipulate the data prior to dispatch. If you are using the Collect tag with Tealium iQ, ensure that the Collect module is disabled to avoid duplicate tracking requests.
+As an alternative, if you are using the Tag Management module, you may instead use the Collect tag with Tag Management. This may give greater control over the data and events dispatched to the Customer Data Hub, as you may then use load rules and extensions to manipulate the data prior to dispatch. If you are using the Collect tag with Tag Management, ensure that the Collect module is disabled to avoid duplicate tracking requests.
 
 The following platforms are supported:
 

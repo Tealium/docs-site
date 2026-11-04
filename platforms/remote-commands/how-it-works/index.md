@@ -21,7 +21,7 @@ Vendor integrations are pre-built remote command modules that implement a vendor
 
 ### **Custom Commands**
 
-Custom commands offer an open framework to define your own native methods that trigger the Custom Remote Command tag in Tealium iQ Tag Management.
+Custom commands offer an open framework to define your own native methods that trigger the Custom Remote Command tag in Tag Management.
 
 [Learn more about custom commands](https://docs.tealium.com/platforms/remote-commands/custom-commands/).
 

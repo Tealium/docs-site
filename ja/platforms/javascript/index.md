@@ -1,5 +1,5 @@
 ---
-title: JavaScript用Tealium (utag.js)
-description: Tealium Universalタグ（utag.js）のインストール方法と、Tealium iQタグ管理アカウントのトラッキング実装方法を学びましょう。
+title: Tealium JavaScript版（utag.js）
+description: Tealiumユニバーサルタグ（utag.js）をインストールし、タグ管理アカウントのトラッキングを実装する方法について説明します。
 url: https://docs.tealium.com/ja/platforms/javascript/
 ---

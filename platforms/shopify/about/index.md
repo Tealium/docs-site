@@ -5,18 +5,18 @@ url: https://docs.tealium.com/platforms/shopify/about/
 ---
 The Tealium app in the Shopify Marketplace lets you do the following:
 
-* Use Tealium iQ Tag Management with your Shopify site. The app loads Tealium assets, such as `utag.js` and `utag.data`, on each page of your site.
-* Send Shopify event data to Tealium EventStream API Hub.
-* Use a custom checkout pixel to send checkout data to EventStream.
+* Use Tag Management with your Shopify site. The app loads Tealium assets, such as `utag.js` and `utag.data`, on each page of your site.
+* Send Shopify event data to Event Streaming API Hub.
+* Use a custom checkout pixel to send checkout data to Event Streaming.
 * Use Shopify Markets to track events from multiple market regions with a single Shopify store.
 
-Some page events, such as Shopify `purchase` events, are handled differently because they are events that occur on pages managed by Shopify, instead of being managed by iQ Tag Management. The Tealium app sends data for these events to Tealium EventStream.
+Some page events, such as Shopify `purchase` events, are handled differently because they are events that occur on pages managed by Shopify, instead of being managed by Tag Management. The Tealium app sends data for these events to Event Streaming.
 
 ## Requirements
 
 * Administrative access to your Shopify instance during configuration.
 * Your Tealium account and profile information to create a data source in Tealium.
-* Tealium EventStream, if you want to send Shopify event data to EventStream.
+* Event Streaming, if you want to send Shopify event data to Event Streaming.
 
 ## Tracked events
 
@@ -85,6 +85,6 @@ The following webhooks can be enabled for collecting data:
 
 ## Checkout tracking
 
-Custom pixels are currently the best option for Shopify checkout tracking with Tealium iQ Tag Management. The installation process for the Tealium Shopify app includes the option to configure a custom pixel.
+Custom pixels are currently the best option for Shopify checkout tracking with Tag Management. The installation process for the Tealium Shopify app includes the option to configure a custom pixel.
 
 For more information, see [Install the Tealium Shopify app](https://docs.tealium.com/install-tealium-shopify-app/#configure-the-checkout-pixel).

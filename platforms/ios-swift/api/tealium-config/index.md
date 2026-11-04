@@ -68,7 +68,7 @@ The following summarizes the commonly used methods and properties of the iOS (Sw
 | [`searchAdsEnabled`](#searchadsenabled) | Enables or disables the Apple Search Ads API in the Attribution module |
 | [`sendCrashDataOnCrashDetected`](#sendcrashdataoncrashdetected) | Sends a crash event when a crash is detected and only adds crash data to that event |
 | [`sendDeepLinkEvent`](#senddeeplinkevent) | Sends a `deep_link` event with related data every time a deep link is received |
-| [`sessionCountingEnabled`](#sessioncountingenabled) | Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files |
+| [`sessionCountingEnabled`](#sessioncountingenabled) | Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files |
 | [`shouldAddCookieObserver`](#shouldaddcookieobserver) | Determines whether to add a `WKWebView` cookie observer |
 | [`shouldUseRemotePublishSettings`](#shoulduseremotepublishsettings) | Sets the Mobile Publish Settings (default: enabled)|
 | [`skAdAttributionEnabled`](#skadattributionenabled) | Enables the use [SKAdNetwork](https://developer.apple.com/documentation/storekit/skadnetwork) framework |
@@ -742,7 +742,7 @@ config.sendDeepLinkEvent = true
 ```
 
 ### `sessionCountingEnabled`
-Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files (default: true).
+Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files (default: true).
 
 ```swift
 config.sessionCountingEnabled = false
@@ -773,7 +773,7 @@ config.shouldUseRemotePublishSettings = false
 
 
 <blockquote>
-Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature using `config.shouldUseRemotePublishSettings = false` in the Swift installation. Failure to do causes initialization failures and prevents tracking.
+Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in Tag Management, or disable the feature using `config.shouldUseRemotePublishSettings = false` in the Swift installation. Failure to do causes initialization failures and prevents tracking.
 </blockquote>
 
 

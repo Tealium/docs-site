@@ -11,7 +11,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/firebase/
   * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/)
 * One of the following remote command integrations:
   * [Firebase Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/firebase/#json-template) (Requires Android-Kotlin 1.0.0 and later or iOS-Swift 2.1.0 and later)
-  * [Firebase Remote Command tag](https://docs.tealium.com/firebase-remote-command-tag/) in Tealium iQ Tag Management
+  * [Firebase Remote Command tag](https://docs.tealium.com/firebase-remote-command-tag/) in Tag Management
 
 ## How It Works
 
@@ -23,7 +23,7 @@ The Firebase integration uses three items:
 
 Adding the Firebase remote command module to your app automatically installs and builds the required Firebase libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If you are using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If you are using Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 

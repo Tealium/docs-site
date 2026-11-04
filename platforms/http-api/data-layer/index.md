@@ -13,7 +13,7 @@ Tealium Collect supports the following standard parameters in each request:
 | `tealium_profile` | The name of your Tealium profile. The default value is `main`. |
 | `tealium_datasource` | (Optional) The data source key. For more information, see [ Data Sources](https://docs.tealium.com/about-data-sources/). |
 | `tealium_event` | Recommended. The name of the event for tracking purposes. |
-| `tealium_visitor_id` | Required for Tealium AudienceStream. An anonymized and unique identifier for the visitor associated with the event.  |
+| `tealium_visitor_id` | Required for Customer Data Platform (CDP). An anonymized and unique identifier for the visitor associated with the event.  |
 | `tealium_trace_id` | (Optional) For use with [Trace](https://docs.tealium.com/manage-traces/). |
 
 The format of the request varies depending on the HTTP method used. In the examples below placeholder values are represented with curly braces in the following format: `{VALUE}`.

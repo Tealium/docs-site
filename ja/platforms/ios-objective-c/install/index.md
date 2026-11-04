@@ -1,110 +1,110 @@
 ---
 title: インストール
-description: Tealium SDKをiOS（Objective-C）にインストールする方法を学びます。
+description: iOS（Objective-C）向けTealium SDKのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/ios-objective-c/install/
 ---
 
 <blockquote>
-このセクションでは、以前のiOSライブラリ、Objective-Cについて説明します。[Swift](https://docs.tealium.com/ja/platforms/ios-swift/)はmacOS、iOS、watchOS、tvOSなどで推奨されるプログラミング言語です。Swiftのコードは既存のObjective-Cファイルと同じプロジェクト内で共存し、Objective-C APIに完全にアクセスできるため、採用が容易です。
+このセクションでは、以前のiOSライブラリであるObjective-C版について説明します。macOS、iOS、watchOS、tvOSなどでは、[Swift](https://docs.tealium.com/ja/platforms/ios-swift/)が推奨されるプログラミング言語です。Swiftコードは、同じプロジェクト内の既存のObjective-Cファイルと共存でき、Objective-C APIにも完全にアクセスできるため、簡単に導入できます。
 </blockquote>
 
 
 ## 要件
 
-* Xcode 7.0+
-* iOS 8.1+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
-* [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
+* Xcode 7.0以降
+* iOS 8.1以降
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
 
-Tealiumライブラリ、トラッキング方法、ベストプラクティスの実装に慣れるために、iOS用Tealiumの[sample apps](https://github.com/Tealium/tealium-ios/tree/master/Samples)を探索してみてください。
+Tealiumライブラリ、トラッキングメソッド、および実装のベストプラクティスを理解するために、Tealium for iOSの[サンプルアプリ](https://github.com/Tealium/tealium-ios/tree/master/Samples)を参照してください。
 
-アプリの残りの部分からTealiumの実装を抽象化するために、`TealiumHelper`クラスの使用をお勧めします。これにより、初期化およびトラッキング呼び出しを行う単一のエントリポイントが提供されます。また、ヘルパーファイルのコードを更新し、すべての`ViewController`またはヘッダー/メソッドファイルで更新する必要がなくなります。
+Tealiumの実装をアプリの他の部分から分離するため、`TealiumHelper`クラスの使用をお勧めします。これにより、初期化やトラッキング呼び出しを行うための単一のエントリポイントを作成できます。また、個々の`ViewController`やヘッダー／メソッドファイルを変更することなく、ヘルパーファイル内のコードだけを更新できます。
 
-- [Objective-C用TealiumHelper](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_ObjC/UIKitCatalog/TealiumHelper.m)
-- [Swift用TealiumHelper](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_Swift/UIKitCatalog/TealiumHelper.swift)
+- [Objective-C向けTealiumHelper](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_ObjC/UIKitCatalog/TealiumHelper.m)
+- [Swift向けTealiumHelper](https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_Swift/UIKitCatalog/TealiumHelper.swift)
 
 
 <blockquote>
-iOS用のTealiumクラスとメソッドの完全なリストについては、[TealiumIOS API](https://tealium.github.io/tealium-ios/)を参照してください。
+iOS向けのTealiumクラスとメソッドの完全な一覧については、[TealiumIOS API](https://tealium.github.io/tealium-ios/)を参照してください。
 </blockquote>
 
 
 ## インストール
 
-CocoaPods、Carthage、または手動でiOS（Objective-C）用のTealium SDKをインストールします。
+CocoaPods、Carthage、または手動でiOS（Objective-C）向けTealium SDKをインストールします。
 
 ### CocoaPods
 
-アプリにiOS（Objective-C）用のTealiumをCocoaPods（推奨）でインストールするには：
+CocoaPodsを使用して、アプリにiOS（Objective-C）向けTealiumをインストールするには（推奨）：
 
-1. Podfileに以下の依存関係を追加します：
+1. Podfileに次の依存関係を追加します。
       ```perl
       pod "TealiumIOS"
       ```
 
-2. ファイルを保存し、プロジェクトディレクトリで以下を実行します：
+2. ファイルを保存し、プロジェクトディレクトリで次のコマンドを実行します。
 
       ```perl
       pod install --repo-update
       ```
 
-3. 作成された`.xcworkspace`ファイルを使用してアプリのビルドを続けます。`.xcworkspace`ファイルを使用しないと、アプリを正しくビルドできません。
+3. 作成された`.xcworkspace`ファイルを使用して、アプリのビルドを続行します。`.xcworkspace`ファイルを使用しない場合、アプリを正しくビルドできません。
 
 ### Carthage
 
-アプリにiOS（Objective-C）用のTealiumをCarthageでインストールするには：
+Carthageを使用して、アプリにiOS（Objective-C）向けTealiumをインストールするには：
 
-1.  Cartfileに以下を追加します：  
+1. Cartfileに次の内容を追加します。  
       ```perl
       github "tealium/tealium-ios"
       ```
 
-2. フレームワークをダウンロードして抽出するには、以下のコマンドを実行します：  
+2. フレームワークをダウンロードして展開するには、次のコマンドを実行します。  
       ```perl
       carthage update --platform ios --use-xcframeworks
       ```
       
 <blockquote>
-ビルドが失敗しないように、`--use-xcframeworks`フラグを使用してください。これには[Carthage 0.38.0](https://github.com/Carthage/Carthage/releases/tag/0.38.0)が必要です。
+必ず`--use-xcframeworks`フラグを使用してください。使用しない場合、ビルドが失敗します。これには[Carthage 0.38.0](https://github.com/Carthage/Carthage/releases/tag/0.38.0)が必要です。
 </blockquote>
 
 
-3. ビルド時に必要なフレームワークが自動的にコピーされるように、CarthageがXcodeプロジェクトに[適切に統合](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)されていることを確認します。
+3. ビルド時に必要なフレームワークが自動的にコピーされるように、CarthageがXcodeプロジェクトに[正しく統合されている](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)ことを確認します。
 
 ### 手動
 
-アプリにiOS（Objective-C）用のTealiumを手動でインストールするには：
+アプリにiOS（Objective-C）向けTealiumを手動でインストールするには：
 
-1.  `TealiumIOS.xcframework`をプロジェクトに追加します。
+1. `TealiumIOS.xcframework`をプロジェクトに追加します。
 
-2.  結果のダイアログボックスでフレームワークをプロジェクトにコピーします。
+2. 表示されたダイアログボックスで、フレームワークをプロジェクトにコピーします。
 
-3.  ターゲットで**General > Frameworks, Libraries & Embedded Content**に移動し、"Embed & Sign"オプションを選択して`TealiumIOS.xcframework`を追加します。
+3. ターゲットで、**General > Frameworks, Libraries & Embedded Content**に移動し、「Embed & Sign」オプションを選択して`TealiumIOS.xcframework`を追加します。
 
 <blockquote>
-Swiftプロジェクトの場合は、**Build Settings > Swift Compiler > Objective-C Bridging Header**オプションに移動し、`TealiumIOSBridgingHeader.h`ファイルを含めます。
+Swiftプロジェクトの場合は、**Build Settings > Swift Compiler > Objective-C Bridging Header**オプションに移動し、`TealiumIOSBridgingHeader.h`ファイルを指定します。
 </blockquote>
 
 
 
 ## 初期化
 
-Application Delegateまたはヘルパークラスのセットアップメソッド内で、以下の初期化コードを使用します：  
+Application Delegate、またはヘルパークラスのセットアップメソッド内で、次の初期化コードを使用します。  
 
 
 
 ```swift
-// アカウント、プロファイル、環境を構成します
+// set your account, profile, and environment
 let tealConfig = TEALConfiguration.init(account: "ACCOUNT",
                                         profile: "PROFILE",
                                     environment: "ENVIRONMENT",
                                      datasource: "DATASOURCE")
 
-// このインスタンスの一意のキーで初期化します
+// Initialize with a unique key for this instance
 guard let tealium = Tealium.newInstanceForKey("INSTANCE", configuration: tealConfig) else {
-     // ここで追加の失敗応答           
+     // Any additional failure response here           
      return
 }
 ```
@@ -112,47 +112,45 @@ guard let tealium = Tealium.newInstanceForKey("INSTANCE", configuration: tealCon
 
 
 ```obj-c
-// インポートエリア
+// import area
 @import TealiumIOS;
 
-// アカウント、プロファイル、環境を構成します
+// Set your account, profile, and environment
 TEALConfiguration *tealConfig = [TEALConfiguration configurationWithAccount:@"ACCOUNT"
                           profile:@"PROFILE"
                           environment:@"ENVIRONMENT"
                           datasource:@"DATASOURCE"];
 
-// このインスタンスの一意のキーで初期化します
+// Initialize with a unique key for this instance
 Tealium *tealium = [Tealium newInstanceForKey:@"INSTANCE" configuration:tealConfig]; 
 ```
 
 
 
-ログレベルはデフォルトでiQアカウントからの公開構成から構成されます。この構成を上書きするには、TEALConfigurationインスタンスの`logLevel`プロパティを構成します：
+ログレベルは、デフォルトではiQアカウントのパブリッシュ構成に基づいて構成されます。この構成を上書きするには、TEALConfigurationインスタンスの`logLevel`プロパティを構成します。
 
 
 
 ```swift
-// ログの詳細度をエラーのみに構成します
+// Set the log verbosity to errors only
 tealConfig.logLevel = .prod
 ```
 
 
 
 ```obj-c
-// ログの詳細度を最大に構成します
+// Set the log verbosity to maximum
 [tealConfig setLogLevel: TEALLogLevelDev];
 ```
 
 
 
-Tealiumインスタンスは、トラッキングを開始する前に以下のパラメータで構成する必要があります：
+トラッキングを開始する前に、Tealiumインスタンスを次のパラメータで構成する必要があります。
 
-| パラメータ | タイプ | 説明 | 例 |
+| パラメータ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
-| `account` | `String` |Tealiumアカウント名 | `"companyXYZ"` |
-| `profile` | `String` |Tealiumプロファイル名  | `"main"`  |
-| `environment` | `String` |Tealium環境名  | [`"dev"`, `"qa"`, `"prod"`] |
-| `datasource` | `String` |(オプション) データソースキー | `"abc123"` |
-| `instance` | `String` |インスタンスの一意の名前（複数のインスタンスがサポートされています）  | `"tealium_main"` |
-
-
+| `account` | `String` | Tealiumアカウント名 | `"companyXYZ"` |
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `environment` | `String` | Tealium環境名 | [`"dev"`, `"qa"`, `"prod"`] |
+| `datasource` | `String` | （任意）データソースキー | `"abc123"` |
+| `instance` | `String` | インスタンスの一意の名前（複数のインスタンスをサポート） | `"tealium_main"` |

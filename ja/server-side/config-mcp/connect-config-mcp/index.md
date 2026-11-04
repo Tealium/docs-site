@@ -1,153 +1,155 @@
 ---
-title: Tealium Configuration MCPへの接続
-description: お客様の組織のためにTealium Configuration MCPを構成し、AIクライアントをサーバーサイドプロファイルに接続します。
+title: Tealium Configuration MCP への接続
+description: 組織向けに Tealium Configuration MCP を構成し、AI クライアントをサーバーサイドプロファイルに接続します。
 url: https://docs.tealium.com/ja/server-side/config-mcp/connect-config-mcp/
 ---
 
 <blockquote>
-Tealium Configuration MCPは選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
+Tealium Configuration MCP は、一部のお客様のみご利用いただけます。この機能の利用を希望する場合は、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
 </blockquote>
 
 
-Tealium Configuration MCPの構成には、管理者とエンドユーザーの両方のステップが含まれます。AIクライアントを構成する前に、Tealium UIでステップ1から3を完了してください。これらのステップをスキップすると認証エラーが発生します。
+Tealium Configuration MCP のセットアップには、管理者とエンドユーザーの両方による手順が必要です。ステップ 4 で AI クライアントを構成する前に、Tealium UI でステップ 1～3 を完了してください。これらの手順を省略すると、認証エラーが発生します。
 
-## ステップ1: Tealium AI構成でTealium Configuration MCPを有効にする（管理者）
+## ステップ 1：Tealium AI Settings で Tealium Configuration MCP を有効にする（管理者）
 
-Tealium UIでアカウントレベルとプロファイルレベルの両方でTealium Configuration MCPを有効にします。
+Tealium UI で、アカウントレベルとプロファイルレベルの両方について Tealium Configuration MCP を有効にします。
 
-1. Tealiumで右上隅にあるイニシャルをクリックし、**AI構成**をクリックします。
-1. アカウントの**MCPサーバー**トグルを**オン**に構成します。
-1. Tealium Configuration MCPを有効にしたい各プロファイルに切り替え、プロファイルレベルで**MCPサーバー**トグルを**オン**に構成します。
+1. Tealium で、右上隅にある自分のイニシャルをクリックし、**AI Settings** をクリックします。
+1. アカウントの **MCP Server** トグルを **On** に構成します。
+1. Tealium Configuration MCP を有効にする各プロファイルに切り替え、同じ操作を繰り返します。プロファイルレベルの **MCP Server** トグルを **On** に構成してください。
 
-特定のプロファイルでTealium Configuration MCPを無効にするには、いつでもAI構成に戻り、トグルを**オフ**に構成します。
+特定のプロファイルについて Tealium Configuration MCP を無効にするには、いつでも AI Settings に戻り、トグルを **Off** に構成します。
 
 ![](https://docs.tealium.com/images/server-side/config-mcp-setup-ai-settings-toggle.png)
 
-## ステップ2: Tealium Configuration MCPアクセス委任を有効にする（管理者）
+## ステップ 2：Tealium Configuration MCP のアクセス委任を有効にする（管理者）
 
-ユーザーがTealiumプロファイルにTealium Configuration MCPを介して接続できるように許可します。ステップは、アカウントがレガシー権限を使用しているかプラットフォーム権限を使用しているかによって異なります。
+Tealium Configuration MCP を通じて Tealium プロファイルに接続する権限をユーザーに付与します。手順は、アカウントで従来の権限とプラットフォーム権限のどちらを使用しているかによって異なります。
 
-### アカウントがレガシー権限を使用している場合
+### アカウントで従来の権限を使用している場合
 
-Tealium Configuration MCPアクセスが必要な各ユーザーに必要なプロファイルレベルの権限を構成します。
+Tealium Configuration MCP へのアクセスが必要な各ユーザーに、必要なプロファイルレベルの権限を構成します。
 
-1. Tealiumで**ユーザー管理**に移動します。
-1. ユーザーを選択して**ユーザー編集**画面を開きます。
-1. **次へ**をクリックして**プロファイル権限**画面に進みます。
-1. **プロファイル権限**の下で、Tealium Configuration MCPアクセスを許可したい各プロファイルを見つけ、次のいずれかのアクセスレベルを構成します：
-   * **リーダー：** 読み取り専用。Tealium Configuration MCPはプロファイルを探索し説明することができますが、エンティティの作成、変更、または削除はできません。
-   * **エディター**または**パブリッシャー：** 読み書き可能。Tealium Configuration MCPは、サポートされているエンティティを探索、作成、変更、削除することができます。
-1. **保存**をクリックします。
+1. Tealium で、**Manage Users** に移動します。
+1. ユーザーを選択して **Edit Users** 画面を開きます。
+1. **Next** をクリックして **Profile Permissions** 画面に移動します。
+1. **Profile Permissions** で、Tealium Configuration MCP へのアクセス権を付与する各プロファイルを見つけ、次のいずれかのアクセスレベルを構成します。
+   * **Reader：** 読み取り専用。Tealium Configuration MCP はプロファイルを調査して説明できますが、エンティティの作成、変更、削除はできません。
+   * **Editor** または **Publisher：** 読み取りと書き込み。Tealium Configuration MCP は、サポート対象のエンティティを調査、作成、変更、削除できます。
+1. **Save** をクリックします。
 
-Tealium Configuration MCPアクセスが必要な各ユーザーに対して繰り返します。
+Tealium Configuration MCP へのアクセスが必要なユーザーごとに、この手順を繰り返します。
 
-### アカウントがプラットフォーム権限を使用している場合
+### アカウントでプラットフォーム権限を使用している場合
 
-適切なアクセスレベルを持つユーザーグループを作成することにより、ユーザーがTealiumプロファイルにTealium Configuration MCPを介して接続できるように許可します。
+適切なアクセスレベルを持つユーザーグループを作成し、Tealium Configuration MCP を通じて Tealium プロファイルに接続する権限をユーザーに付与します。
 
-1. Tealiumで**権限管理**に移動します。
-1. **+新規グループ**をクリックします。
-1. グループ名を入力し、**次へ**をクリックします。
-1. **AIアクセス**の下で**MCPサーバー**を見つけ、次のいずれかのアクセスレベルを選択します。完了したら**次へ**をクリックします。
-    * **閲覧者ー：** 読み取り専用。Tealium Configuration MCPはプロファイルを探索し説明することができますが、エンティティの作成、変更、または削除はできません。
-    * **エディター：** 読み書き可能。Tealium Configuration MCPは、サポートされているエンティティを探索、作成、変更、削除することができます。
+1. Tealium で、**Manage Permissions** に移動します。
+1. **+New Group** をクリックします。
+1. グループの名前を入力し、**Next** をクリックします。
+1. **AI Access** で **MCP Server** を見つけ、次のいずれかのアクセスレベルを選択します。完了したら **Next** をクリックします。
+    * **Viewer：** 読み取り専用。Tealium Configuration MCP はプロファイルを調査して説明できますが、エンティティの作成、変更、削除はできません。
+    * **Editor：** 読み取りと書き込み。Tealium Configuration MCP は、サポート対象のエンティティを調査、作成、変更、削除できます。
      ![](https://docs.tealium.com/images/server-side/config-mcp-setup-user-group-access.png)
-1. Tealium Configuration MCPの追加機能権限はありません。このステップをスキップするには**次へ**をクリックします。
-1. Tealium Configuration MCPアクセスが必要なプロファイルをグループに追加し、**次へ**をクリックします。
-1. Tealium Configuration MCPアクセスが必要なユーザーをグループに追加し、**保存**をクリックします。
+1. Tealium Configuration MCP に追加の機能権限はありません。**Next** をクリックして、この手順をスキップします。
+1. Tealium Configuration MCP へのアクセスが必要なプロファイルをグループに追加し、**Next** をクリックします。
+1. Tealium Configuration MCP へのアクセスが必要なユーザーをグループに追加し、**Save** をクリックします。
 
-異なるニーズを持つユーザーに対応するために、閲覧と編集アクセスのための別々のグループを作成することができます。
-
-
-<blockquote>
-Tealiumは、Tealium Configuration MCPアクセスに必要な最小限の権限に合わせて個々の製品コンポーネントの権限を調整する場合があります。
-</blockquote>
-
-
-## ステップ3: ユーザー構成でプロファイルを選択する（ユーザー）
-
-各ユーザーは、Tealium Configuration MCPが使用するデフォルトのTealiumプロファイルを選択します。
-
-1. サーバーサイドのTealium UIで、右上隅にあるイニシャルをクリックし、**ユーザー構成の編集/表示**を選択します。
-1. **Tealium Configuration MCP**の下で、デフォルトとして使用する**アカウント**と**プロファイル**を選択します。
-1. **構成を適用**をクリックします。
-
-別のプロファイルを使用する場合は、この画面に戻り、プロファイルを選択して**構成を適用**をクリックします。
+ニーズが異なるユーザーに対応するため、表示アクセス用と編集アクセス用に別々のグループを作成できます。
 
 
 <blockquote>
-プロファイルを変更した後は、AIクライアントでTealium Configuration MCPの接続を切断して再接続し、新しいチャットを開始してください。以前のセッションは無効になります。
+Tealium は、Tealium Configuration MCP へのアクセスに最低限必要な権限に合わせて、個々の製品コンポーネントの権限を調整する場合があります。
 </blockquote>
 
 
-## ステップ4: AIクライアントを接続する（管理者およびユーザー）
+## ステップ 3：ユーザー構成でプロファイルを選択する（ユーザー）
 
-AIクライアントをTealium Configuration MCPに接続します。クライアントの指示に従ってください。
+各ユーザーは、Tealium Configuration MCP で使用するデフォルトの Tealium プロファイルを選択します。
 
-### Claude Desktopを接続する
+1. サーバーサイドの Tealium UI で、右上隅にある自分のイニシャルをクリックし、**Edit/View User Settings** を選択します。
+1. **Tealium Configuration MCP** で、デフォルトとして使用する **Account** と **Profile** を選択します。
+1. **Apply Configuration** をクリックします。
+
+別のプロファイルを使用するには、この画面に戻ってプロファイルを選択し、**Apply Configuration** をクリックします。
+
+
+<blockquote>
+プロファイルを変更した後は、AI クライアントで Tealium Configuration MCP を切断して再接続し、新しいチャットを開始してください。以前のセッションは無効になります。
+</blockquote>
+
+
+## ステップ 4：AI クライアントを接続する（管理者およびユーザー）
+
+AI クライアントを Tealium Configuration MCP に接続します。お使いのクライアント向けの手順に従ってください。
+
+### Claude Desktop を接続する
 
 **開始する前に**
 
-開始する前に以下のことを確認してください：
+開始前に、次の項目を確認してください。
 
-* Claude Pro、Max、Team、またはEnterpriseプランを持っています。無料プランではカスタムコネクタを追加することはできません。
-* Claude Desktopがインストールされているか、[claude.ai](https://claude.ai)にアクセスできます。
-* Tealium Configuration MCPがアカウントで有効になっています。アクセスをリクエストするには、[サポートに連絡してください](https://docs.tealium.com/support/)。
+* Claude Pro、Max、Team、または Enterprise プランを契約していること。無料プランではカスタムコネクターを追加できません。
+* Claude Desktop がインストールされているか、[claude.ai](https://claude.ai) にアクセスできること。
+* アカウントで Tealium Configuration MCP が有効になっていること。アクセスをリクエストするには、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
 
-**コネクタを追加する**
+**コネクターを追加する**
 
-1. [claude.ai](https://claude.ai)で管理者としてサインインします。
-1. プロファイルアイコンをクリックし、**構成**を選択します。
-1. **コネクタ**を選択します。
-1. ページの一番下までスクロールし、**カスタムコネクタを追加**をクリックします。
-1. 信頼できるサービスに接続する際の警告が表示された場合は、確認して続行します。
-1. 次のコネクタの詳細を入力します：
+1. 管理者として [claude.ai](https://claude.ai) にサインインします。
+1. プロファイルアイコンをクリックし、**Settings** を選択します。
+1. **Connectors** を選択します。
+1. ページの下部までスクロールし、**Add custom connector** をクリックします。
+1. 信頼できるサービスへの接続に関する警告が表示された場合は、その内容を確認し、続行を承認します。
+1. 次のコネクター情報を入力します。
 
-   * **名前：** `Tealium Configuration MCP`
-   * **リモートMCPサーバーURL：** `https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp`
+   * **Name:** `Tealium Configuration MCP`
+   * **Remote MCP server URL:** `https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp`
 
-1. **詳細構成**は空白のままにします。
-1. **追加**をクリックします。コネクタがコネクタリストに表示されます。
+1. **Advanced settings** は空欄のままにします。
+1. **Add** をクリックします。コネクターが Connectors リストに表示されます。
 
 ![](https://docs.tealium.com/images/server-side/config-mcp-setup-add-connector.png)
 
 **認証して接続する**
 
-1. Claudeで**構成 > コネクタ**に移動します。
-1. **Tealium Configuration MCP**の隣にある**接続**をクリックします。
-1. [ステップ5: 認証する](#step-5-authenticate-user)でTealiumのサインイン手順を完了します。
-1. 認証が完了すると、コネクタのステータスが接続済みと表示されます。
+1. Claude で、**Settings > Connectors** に移動します。
+1. **Tealium Configuration MCP** の横にある **Connect** をクリックします。
+1. [ステップ 5：認証する](#step-5-authenticate-user)に記載されている Tealium のサインイン手順を完了します。
+1. 認証が完了すると、コネクターのステータスが接続済みと表示されます。
 
    ![](https://docs.tealium.com/images/server-side/config-mcp-setup-connected.png)
 
-いつでもコネクタを切断するには、Claudeで**構成 > コネクタ**に移動し、**Tealium Configuration MCP**を見つけて**切断**を選択します。
+コネクターを切断するには、Claude で **Settings > Connectors** に移動し、**Tealium Configuration MCP** を見つけて **Disconnect** を選択します。
 
-**チャットでコネクタを有効にする**
+**チャットでコネクターを有効にする**
 
-1. Claudeで新しいチャットを開きます。
-1. メッセージコンポーザーで**+**アイコンをクリックします。
-1. **Tealium Configuration MCP**をオンに切り替えます。
+1. Claude で新しいチャットを開きます。
+1. メッセージ作成欄の **+** アイコンをクリックします。
+1. **Tealium Configuration MCP** をオンに切り替えます。
 
 ![](https://docs.tealium.com/images/server-side/config-mcp-setup-enable-in-chat.png)
-
-### Claude Code CLIを接続する
+### Claude Code CLI に接続する
 
 **開始する前に**
 
-開始する前に以下のことを確認してください：
+開始前に、以下を確認してください。
 
-* Claude Codeがインストールされ、認証されています。
-* 任意のプロジェクトディレクトリでターミナルが開いています。空のディレクトリを含む任意のディレクトリで動作します。
+* Claude Code がインストールされ、認証済みであること。
+* 任意のプロジェクトディレクトリでターミナルが開いていること。空のディレクトリを含め、どのディレクトリでも使用できます。
 
-**Tealium Configuration MCPを登録する**
+**Tealium Configuration MCP を登録する**
 
-Claudeセッションを開始する前に、ターミナルで次のコマンドを実行します：
+Claude セッションを開始する前に、ターミナルで次のコマンドを実行します。
 
 ```bash
-claude mcp add --transport http tealium-configuration-mcp https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp
+claude mcp add --transport http \
+  --client-id tealium-mcp-for-web-platforms \
+  tealium-configuration-mcp \
+  https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp
 ```
 
-サーバーが追加されたことを確認します：
+サーバーが追加されたことを確認します。
 
 ```bash
 claude mcp list
@@ -155,39 +157,40 @@ claude mcp list
 
 **認証して接続する**
 
-1. `claude`を実行してClaudeセッションを開始します。
-1. `/mcp`を実行して構成されたMCPサーバーをリストします。
-1. `tealium-configuration-mcp`を見つけます。**認証が必要**と表示されます。
-1. **認証**アクションを選択します。Claude CodeがデフォルトのブラウザでTealiumのログイン画面を開きます。
-1. [ステップ5: 認証する](#step-5-authenticate-user)でTealiumのサインイン手順を完了します。
+1. `claude` を実行して Claude セッションを開始します。
+1. `/mcp` を実行して、構成済みの MCP サーバーを一覧表示します。
+1. `tealium-configuration-mcp` を見つけます。ステータスは **認証が必要** と表示されます。
+1. **認証**アクションを選択します。Claude Code により、デフォルトのブラウザーで Tealium のログイン画面が開きます。
+1. [ステップ5：認証](#step-5-authenticate-user)の手順に従って、Tealium へのサインインを完了します。
 1. 認証が完了すると、サーバーのステータスが接続済みに更新されます。
 
-いつでも切断するには、Claudeセッション内で`/mcp`に移動し、`tealium-configuration-mcp`を見つけて**無効にする**を選択します。
-## ステップ5: 認証 (ユーザー)
+切断するには、Claude セッション内で `/mcp` に移動し、`tealium-configuration-mcp` を見つけて **無効化**を選択します。
 
-Tealium構成MCP接続をアクティブにするために、Tealiumサインインチャレンジを完了してください。この手順は、Claude DesktopとClaude Code CLIの両方に適用されます。
+## ステップ5：認証（ユーザー）
 
-1. Tealiumのサインインウィンドウが開きます。アカウント名を入力して**サインイン**をクリックします。組織がSSOを使用している場合は、SSOアカウント名を入力します。わからない場合は、アカウント管理者に連絡してください。
+Tealium Configuration MCP への接続を有効にするため、Tealium のサインインチャレンジを完了します。以下の手順は、Claude Desktop と Claude Code CLI の両方に適用されます。
+
+1. Tealium のサインインウィンドウが開きます。アカウント名を入力し、**サインイン**をクリックします。組織で SSO を使用している場合は、SSO アカウント名を入力します。アカウント名がわからない場合は、アカウント管理者にお問い合わせください。
 
    ![](https://docs.tealium.com/images/server-side/config-mcp-setup-signin-account.png)
 
-1. Tealiumの認証情報でサインインします：
-   * **SSOなし：** ユーザー名またはメールアドレスとパスワードを入力し、**サインイン**をクリックします。
+1. Tealium の認証情報を使用してサインインします。
+   * **SSO を使用しない場合：** ユーザー名またはメールアドレスとパスワードを入力し、**サインイン**をクリックします。
 
      ![](https://docs.tealium.com/images/server-side/config-mcp-setup-signin-credentials.png)
 
-   * **SSOあり：** 身元確認プロバイダーがサインインページにリダイレクトします。SSO認証情報を入力します。
+   * **SSO を使用する場合：** ID プロバイダーによってサインイン画面にリダイレクトされます。SSO の認証情報を入力します。
 
-1. プロンプトが表示されたら、Tealiumプロファイルへのアクセスを許可するために**はい**を選択します。
+1. プロンプトが表示されたら、**はい**を選択して、AI クライアントに Tealium プロファイルへのアクセスを許可します。
 
    ![](https://docs.tealium.com/images/server-side/config-mcp-setup-grant-access.png)
 
-1. ウィンドウが閉じた後、AIクライアントに戻ります。コネクタのステータスが接続済みと表示されます。
+1. ウィンドウが閉じたら、AI クライアントに戻ります。コネクターのステータスが接続済みと表示されます。
 
-"アカウントは認証されましたが、Tealium MCP Early Accessが接続時にエラーを返しました"というエラーが表示された場合は、サポートに連絡する前にTealium UIで以下を確認してください：
+「アカウントは認証されましたが、Tealium MCP Early Access への接続時にエラーが返されました」などのエラーが表示された場合は、サポートに問い合わせる前に、Tealium UI で以下を確認してください。
 
-* AI構成のアカウントとプロファイルで**MCPサーバー**トグルが**オン**に構成されていること。
-* Tealium構成MCPアクセス用にユーザー権限が正しく構成されていること（[ステップ2](#step-2-enable-tealium-configuration-mcp-access-delegation-admin)を参照）。
-* **ユーザー構成の編集/表示**の下でデフォルトのアカウントとプロファイルが選択されていること（[ステップ3](#step-3-select-a-profile-in-user-preferences-user)を参照）。
+* AI Settings で、アカウントとプロファイルの両方について **MCP Server** トグルが **オン**に構成されていること。
+* Tealium Configuration MCP へのアクセスに必要なユーザー権限が正しく構成されていること（[ステップ2](#step-2-enable-tealium-configuration-mcp-access-delegation-admin)を参照）。
+* **Edit/View User Settings** でデフォルトのアカウントとプロファイルが選択されていること（[ステップ3](#step-3-select-a-profile-in-user-preferences-user)を参照）。
 
-コネクタは現在アクティブです。セッションの実行に関する詳細は、[Tealium構成MCPの管理](https://docs.tealium.com/manage-config-mcp/)を参照してください。
+これでコネクターが有効になりました。セッションの実行方法について詳しくは、[Tealium Configuration MCP を管理する](https://docs.tealium.com/manage-config-mcp/)を参照してください。

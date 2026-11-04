@@ -5,14 +5,14 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/client-side/
 ---
 ## Web
 
-Tealium iQ Tag Management is a client-side solution that saves your vendor tag configuration and business logic to a static JavaScript named `utag.js`. As visitors browse your site this file is loaded and run in the browser (client-side) to determine which vendor tags to load and how to send their data. After these files are retrieved by the browser they are cached for subsequent page views to optimize network traffic and page performance.
+Tag Management is a client-side solution that saves your vendor tag configuration and business logic to a static JavaScript named `utag.js`. As visitors browse your site this file is loaded and run in the browser (client-side) to determine which vendor tags to load and how to send their data. After these files are retrieved by the browser they are cached for subsequent page views to optimize network traffic and page performance.
 
-Learn more about [how iQ Tag Management works](https://docs.tealium.com/how-tealium-iq-works/).
+Learn more about [how Tag Management works](https://docs.tealium.com/how-tealium-iq-works/).
 
 
 ## Mobile
 
-In iQ Tag Management you use a separate [mobile profile](https://docs.tealium.com/create-mobile-profile/), one for iOS and one for Android, to manage the tags and configuration for your mobile app. A mobile profile generates a file named `mobile.html` that is published to the following path at Tealium:
+In Tag Management you use a separate [mobile profile](https://docs.tealium.com/create-mobile-profile/), one for iOS and one for Android, to manage the tags and configuration for your mobile app. A mobile profile generates a file named `mobile.html` that is published to the following path at Tealium:
 
 `http://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html`
 
@@ -52,7 +52,7 @@ var mps = {
 
 This client-side solution lets you follow the traditional tag management workflow to deploy tags to your app and to adjust mobile settings related to tracking behavior.
 
-The following diagram illustrates how iQ Tag Management loads your vendor tag configuration as visitors use your mobile app. This example shows how the Tealium SDK converts a tracked purchase event to a JavaScript tracking call in the hidden webview. Your vendor tags run in the hidden webview, just as they would on a mobile web page, and tracking data is transmitted directly from the app (client-side) to the vendor.
+The following diagram illustrates how Tag Management loads your vendor tag configuration as visitors use your mobile app. This example shows how the Tealium SDK converts a tracked purchase event to a JavaScript tracking call in the hidden webview. Your vendor tags run in the hidden webview, just as they would on a mobile web page, and tracking data is transmitted directly from the app (client-side) to the vendor.
 
 ![](https://docs.tealium.com/images/platforms/getting-started-mobile/tag_management_data_flow_diagram.png)
 
@@ -61,7 +61,7 @@ The following diagram illustrates how iQ Tag Management loads your vendor tag co
 The client-side approach has the following benefits:
 
 * **Tag Vendor Support**
-Since the client-side solution is deployed using iQ Tag Management, you have access to the existing tag marketplace integrations.
+Since the client-side solution is deployed using Tag Management, you have access to the existing tag marketplace integrations.
 * **Data Layer Customization**
 More options for data layer customization using [extensions](https://docs.tealium.com/about-extensions/).
 
@@ -80,14 +80,14 @@ The more tags you deploy to your app, the more network traffic is generated due 
 
 The client-side solution is best for the following scenarios.
 
-### iQ Tag Management Only
-You are only subscribed to iQ Tag Management and do not have access to Tealium EventStream.
+### Tag Management Only
+You are only subscribed to Tag Management and do not have access to Event Streaming.
 
 ### Complex Analytics
-You have a complex analytics implementation and either do not have the resources to add the required data layer or have a short timeline to deploy. The ability to run extension using the client-side Tag Management solution lets you manipulate the built-in data layer for your analytics needs and offload costly development time on your native app to the rapid configuration effort in iQ Tag Management.
+You have a complex analytics implementation and either do not have the resources to add the required data layer or have a short timeline to deploy. The ability to run extension using the client-side Tag Management solution lets you manipulate the built-in data layer for your analytics needs and offload costly development time on your native app to the rapid configuration effort in Tag Management.
 
 ### Required Vendor SDK
-You require mobile-specific features from a third-party vendor SDK, such as Firebase, push notifications, content modification, or attribution fingerprinting. The client-side solution offers [remote commands](https://docs.tealium.com/platforms/remote-commands/), a way to trigger native code blocks from within the hidden webview and configured within iQ Tag Management.
+You require mobile-specific features from a third-party vendor SDK, such as Firebase, push notifications, content modification, or attribution fingerprinting. The client-side solution offers [remote commands](https://docs.tealium.com/platforms/remote-commands/), a way to trigger native code blocks from within the hidden webview and configured within Tag Management.
 
 ## Supported Libraries
 
@@ -101,7 +101,7 @@ The following platforms support the Tag Management client-side solution:
 
 ## Tealium Collect Tag
 
-The [Tealium Collect Tag](https://docs.tealium.com/tealium-collect-tag/) sends data to the Tealium Customer Data Hub server-side product EventStream. This tag is the client-side solution for the [native Collect Module](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#tealium-collect-module). Using both in your app doubles your usage volume and result in additional charges on your account.
+The [Tealium Collect Tag](https://docs.tealium.com/tealium-collect-tag/) sends data to the Tealium Customer Data Hub server-side product Event Streaming. This tag is the client-side solution for the [native Collect Module](https://docs.tealium.com/platforms/getting-started-mobile/server-side/#tealium-collect-module). Using both in your app doubles your usage volume and result in additional charges on your account.
 
 The primary benefit of the client-side Tealium Collect tag is the ability to use extensions to customize the data layer prior to collection.
 

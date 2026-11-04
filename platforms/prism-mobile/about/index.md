@@ -49,7 +49,7 @@ For example, Tealium Collect uses connectivity and batching barriers to optimize
 
 ### Native transformations
 
-Use native transformations, with custom logic or built-in Tealium iQ extensions, to modify event payloads in Swift or Kotlin before they leave the device. Native transformations are ideal for correcting data issues or updating logic without an app update.
+Use native transformations, with custom logic or built-in Tag Management extensions, to modify event payloads in Swift or Kotlin before they leave the device. Native transformations are ideal for correcting data issues or updating logic without an app update.
 
 ### Advanced configuration
 

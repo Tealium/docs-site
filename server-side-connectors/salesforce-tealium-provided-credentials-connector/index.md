@@ -3,6 +3,21 @@ title: Salesforce (Tealium-Provided Credentials) Connector Setup Guide
 description: This article describes how to set up the Salesforce (Tealium-Provided Credentials) connector.
 url: https://docs.tealium.com/server-side-connectors/salesforce-tealium-provided-credentials-connector/
 ---
+## Prerequisites
+
+Before you configure this connector, a Salesforce administrator must install the Tealium AudienceStream package in each Salesforce org that you connect. The package adds the Tealium AudienceStream external client app that this connector uses to authenticate. Install the package once per org, before anyone clicks **Establish Connection**.
+
+To install the package, complete the following steps:
+
+1. Log in to the Salesforce org that you want to connect as an administrator.
+1. Open the install page for your org type:
+    * Production or Developer Edition org: [Install the Tealium AudienceStream package](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tUQ0000007GhZYAU)
+    * Sandbox: [Install the Tealium AudienceStream package in a sandbox](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tUQ0000007GhZYAU)
+1. Select who to install the package for. The user who clicks **Establish Connection** must be included.
+1. Click **Install** and wait for the installation to finish.
+
+If the package is not installed, the connection fails and Salesforce returns the following error: `External client app is not installed in this org`.
+
 ## Configuration
 
 Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).

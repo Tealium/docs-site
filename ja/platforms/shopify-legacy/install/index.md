@@ -1,38 +1,38 @@
 ---
 title: インストール
-description: この記事では、Tealium Shopifyインテグレーションを使用してShopifyテーマをカスタマイズし、Tealiumを使用する方法について説明します。
+description: この記事では、Tealium Shopify（レガシー）統合でTealiumを使用するために、Shopifyテーマをカスタマイズする方法について説明します。
 url: https://docs.tealium.com/ja/platforms/shopify-legacy/install/
 ---
 
 <blockquote>
-Tealium Shopifyインテグレーションは現在、Shopifyバージョン2.0をサポートしていません。代わりに、Webピクセルを使用してサーバーサイドに直接ネットワークリクエストを送信するために、[Tealium Shopify アプリ](https://docs.tealium.com/ja/platforms/shopify/)を使用することができます。
+Tealiumは現在、Shopifyサイトでタグ管理を使用できるShopifyアプリをShopifyマーケットプレイスで提供しています。詳細については、[Tealium Shopifyアプリについて]()を参照してください。
 </blockquote>
 
 
-## 動作原理
+## 仕組み
 
-ShopifyでTealiumを使用するには、Shopifyテーマをカスタマイズして、Tealium Shopifyインテグレーションと共にTealiumコードを使用する必要があります。Tealiumコードは、Universal Data Object（UDO）を提供し、サイトの各ページで必要なTealiumアセットを読み込みます。
+ShopifyでTealiumを使用するには、Tealium Shopify（レガシー）統合のTealiumコードを使用するようにShopifyテーマをカスタマイズする必要があります。Tealiumコードはユニバーサルデータオブジェクト（UDO）を提供し、サイトの各ページで必要なTealiumアセットを読み込みます。
 
-注文ステータスページのコードスニペットは、チェックアウトの「ありがとうございます」ページにも表示されます。コードスニペットは、コンバージョン追跡のためのUDOを提供します。注文ステータスページは注文後に再訪される可能性があるため、2回のコンバージョン追跡を行わないようにするために、Tealium iQタグ管理でロジックを設定することをお勧めします。
+注文状況ページ用のコードスニペットは、チェックアウトの「Thank you」ページにも表示されます。このコードスニペットは、コンバージョントラッキング用のUDOを提供します。注文後に注文状況ページが再度閲覧される可能性があるため、コンバージョンが二重にトラッキングされないよう、タグ管理でロジックを構成することをお勧めします。
 
-`checkout.liquid`ファイルをロードするShopify Plusの顧客のみが`checkout.liquid`ファイルにアクセスできます。このインテグレーションは現在、チェックアウトフローをサポートしていません。ただし、他のページで使用されているパターンに従って独自の`checkout.liquid`を実装することができます。
+チェックアウトファネル全体で`utag.js`を読み込む`checkout.liquid`ファイルにアクセスできるのは、Shopify Plusのお客様のみです。現在、この統合はチェックアウトファネルをサポートしていません。ただし、他のページで使用されているパターンに従って、独自の`checkout.liquid`を実装できます。
 
-## セットアップ手順
+## 構成手順
 
-TealiumインテグレーションのためにShopifyテーマをカスタマイズするには、次の手順に従ってください：
+Tealium統合用にShopifyテーマをカスタマイズするには、次の手順を実行します。
 
-1. [Tealium設定を有効にする](#enable-tealium-settings)。
-1. [utag.jsとオンページデータレイヤーをインストールする](#install-utagjs-and-on-page-data-layer)。
-1. [注文ステータスページのスクリプトをインストールする](#install-script-for-order-status-page)。
-1. （Shopify Plusの顧客向け）[チェックアウトプロセスのスクリプトをインストールする](#install-script-for-checkout-shopify-plus-only)。
+1. [Tealium構成を有効にする](#enable-tealium-settings)。
+1. [utag.jsとページ上のデータレイヤーをインストールする](#install-utagjs-and-on-page-data-layer)。
+1. [注文状況ページ用のスクリプトをインストールする](#install-script-for-order-status-page)。
+1. （Shopify Plusのお客様向け）[チェックアウトプロセス用のスクリプトをインストールする](#install-script-for-checkout-shopify-plus-only)。
 <blockquote>
-Shopifyは2024年8月13日に`checkout.liquid`テーマファイルを廃止する予定です。詳細については、[Shopify.devドキュメント：アップグレード](https://shopify.dev/docs/apps/checkout#upgrade)を参照してください。
+Shopifyは、2024年8月13日に`checkout.liquid`テーマファイルを廃止します。詳細については、[Shopify.devドキュメント：アップグレード](https://shopify.dev/docs/apps/checkout#upgrade)を参照してください。
 </blockquote>
 
 
-### Tealium設定を有効にする
+### Tealium構成を有効にする
 
-次のJSONオブジェクトをShopifyテーマの[Config/settings_schema.json](https://help.shopify.com/themes/development/theme-editor/settings-schema)ファイルのJSON配列にコピーして貼り付けます。このJSONオブジェクトにより、テーマのTealium固有の設定が有効になります。
+次のJSONオブジェクトをコピーし、Shopifyテーマの[Config/settings_schema.json](https://help.shopify.com/themes/development/theme-editor/settings-schema)ファイル内のJSON配列に貼り付けます。このJSONオブジェクトにより、テーマのTealium固有の構成が有効になります。
 
 ```json
 {
@@ -41,80 +41,81 @@ Shopifyは2024年8月13日に`checkout.liquid`テーマファイルを廃止す�
     {
       "type": "text",
       "id": "tealium_account",
-      "label": "アカウント",
-      "info": "アカウント名"
+      "label": "Account",
+      "info": "Name of your acount"
     },
     {
       "type": "text",
       "id": "tealium_profile",
-      "label": "プロファイル",
+      "label": "Profile",
       "default": "main",
-      "info": "どのプロファイルからタグを読み込むか",
+      "info": "Which profile to load your tags from",
       "placeholder": "main"
     },
     {
       "type": "text",
       "id": "tealium_environment",
-      "label": "環境",
+      "label": "Environment",
       "default": "prod",
-      "info": "どの環境からタグを読み込むか",
+      "info": "Which environment to load your tags from",
       "placeholder": "prod"
     },
     {
       "type": "checkbox",
       "id": "tealium_enabled",
-      "label": "有効にする",
+      "label": "Enable",
       "default": false,
-      "info": "Tealiumを有効にするにはチェックを入れます"
+      "info": "Check to enable Tealium"
     }
   ]
 }
 ```
 
-テーマをカスタマイズする際に、**一般設定**タブでTealium固有の設定を編集します。
+テーマをカスタマイズするときに、**一般構成**タブでTealium固有の構成を編集します。
 
-### utag.jsとオンページデータレイヤーをインストールする
+### utag.jsとページ上のデータレイヤーをインストールする
 
-Shopifyストアに`utag.js`をインストールし、オンページデータレイヤーを設定するには、次の手順に従ってください。このプロセスでは、[Tealium Integration for Shopify GitHubリポジトリ](https://github.com/Tealium/integration-shopify)で提供される特定のスニペットをShopifyテーマに追加する必要があります。これらのスニペットにより、ストア内のさまざまなページタイプでのトラッキングと分析に必要なUniversal Data Object（UDO）の実装が可能になります。
+次の手順に従って、Shopifyストアに`utag.js`をインストールし、ページ上のデータレイヤーを構成します。このプロセスでは、[Tealium Integration for Shopify GitHubリポジトリ](https://github.com/Tealium/integration-shopify)で提供されている特定のスニペットをShopifyテーマに追加します。これらのスニペットにより、ストア内のさまざまなページタイプでのトラッキングと分析に必要なユニバーサルデータオブジェクト（UDO）の実装が有効になります。
 
 #### ステップ1 - テーマのコードにアクセスする
 
 1. Shopifyアカウントにログインします。
-1. **オンラインストア > テーマ**に移動して現在のテーマを表示します。
-1. 編集したいテーマを見つけ、**アクション**ドロップダウンメニューをクリックし、**コードを編集**を選択します。または、テーマの**カスタマイズ**ボタンをクリックしてコードエディタに直接アクセスすることもできます。
+1. **オンラインストア > テーマ**に移動し、現在のテーマを表示します。
+1. 編集するテーマを見つけ、**アクション**ドロップダウンメニューをクリックして、**コードを編集**を選択します。または、テーマの**カスタマイズ**ボタンをクリックして、コードエディターに直接アクセスできます。
 
 #### ステップ2 - UDO実装スニペットを追加する
 
-1. [Tealium Integration for Shopify GitHubリポジトリ](https://github.com/Tealium/integration-shopify)にアクセスして、さまざまなページタイプに対するUDO実装のための必要なコードスニペットをダウンロードします。
-1. Shopifyテーマのコードエディタで、**スニペット**フォルダをクリックして展開します。
-1. GitHubリポジトリから適切なスニペットをShopifyテーマエディタの**スニペット**フォルダにドラッグアンドドロップします。詳細については、[Shopify.devドキュメント：テーマスニペット](https://help.shopify.com/themes/development/templates#snippets)を参照してください。
+1. [Tealium Integration for Shopify GitHubリポジトリ](https://github.com/Tealium/integration-shopify)にアクセスし、さまざまなページタイプでUDOを実装するために必要なコードスニペットをダウンロードします。
+1. Shopifyテーマのコードエディターで、**スニペット**フォルダーをクリックして展開します。
+1. GitHubリポジトリから適切なスニペットをドラッグし、Shopifyテーマエディターの**スニペット**フォルダーにドロップします。詳細については、[Shopify.devドキュメント：テーマスニペット](https://help.shopify.com/themes/development/templates#snippets)を参照してください。
 
 #### ステップ3 - テンプレートでスニペットを参照する
 
-1. スニペットを追加した後、**テンプレート**フォルダをクリックして展開します。
-1. 各テンプレートに対応するテンプレートに、関連するUDOスニペットへの参照をテンプレートファイルの先頭に挿入します。これらの参照により、各ページタイプのデータレイヤーが正しく初期化されます。
-
-    たとえば、データレイヤーを製品ページに統合するには、`product.liquid`テンプレートを次のように編集します：
-    * `product.liquid`ファイルの先頭に、**スニペット**フォルダに追加した`product_udo`スニペットを含めるために、次の行を追加します：
+1. スニペットを追加した後、**テンプレート**フォルダーをクリックして展開します。
+1. 各ページタイプ（商品、ホーム、会社概要など）に対応するテンプレートについて、テンプレートファイルの先頭に関連するUDOスニペットへの参照を挿入します。これらの参照により、ページタイプごとにデータレイヤーが正しく初期化されます。
+  
+    たとえば、商品ページにデータレイヤーを統合するには、次のように`product.liquid`テンプレートを編集します。
+    * `product.liquid`ファイルの先頭に次の行を追加し、先ほど**スニペット**フォルダーに追加した`product_udo`スニペットを組み込みます。
 
       ```liquid
       {% include 'product_udo' %}
       ```
 
-    * この行は、テンプレートファイル内の既存のコンテンツの前に配置する必要があります。これにより、他のスクリプトが実行される前にデータレイヤーが初期化されます。`product.liquid`テンプレートは、`product_udo`スニペットを含めた後、次のようになります：
+    * 他のスクリプトが実行される前にデータレイヤーが初期化されるように、この行はテンプレートファイル内の既存のコンテンツより前に配置する必要があります。`product_udo`スニペットを組み込んだ後の`product.liquid`テンプレートは、次のようになります。
 
       ```liquid
       {% include 'product_udo' %}
 
       {% comment %}
-        product.liquidテンプレートの内容は/sections/product-template.liquidにあります
+        The contents of the product.liquid template can be found in /sections/product-template.liquid
       {% endcomment %}
 
       {% section 'product-template' %}
 
       <script>
-        // 各テンプレートのshop.stringsのデフォルト値をオーバーライドします。
-        // 代替製品テンプレートでは、カートに追加ボタン、売り切れ、利用できない状態の値を変更できます。
+        // Override default values of shop.strings for each template.
+        // Alternate product templates can change values of
+        // add to cart button, sold out, and unavailable states here.
         theme.productStrings = {
           addToCart: {{ 'products.product.add_to_cart' | t | json }},
           soldOut: {{ 'products.product.sold_out' | t | json }},
@@ -123,19 +124,19 @@ Shopifyストアに`utag.js`をインストールし、オンページデータ�
       </script>
       ```
 
-    * 異なるページタイプに対応する各テンプレートに対してこのプロセスを続け、`product_udo`の代わりに適切なスニペット名を使用します。一般的に、スニペットの名前とそれに対応するテンプレートの名前は似ており、スニペット名には`_udo`の接尾辞はありません。たとえば：
-      * ホームページである`index.liquid`テンプレートの場合、`home_udo`スニペットを含めます。
-      * `404.liquid`のような汎用テンプレートの場合、広範なカバレッジを確保するために`page_udo`スニペットを使用します。詳細については、[Shopify.devドキュメント：テーマアーキテクチャ](https://help.shopify.com/themes/development/templates)を参照してください。
+    * 異なるページタイプに対応する各テンプレートについて、`product_udo`の代わりに適切なスニペット名を使用して、このプロセスを繰り返します。通常、スニペット名と対応するテンプレート名はよく似ていますが、スニペット名には`_udo`サフィックスが付きます。例：
+      * `index.liquid`テンプレート（ホームページ）には、`home_udo`スニペットを組み込みます。
+      * `404.liquid`などの汎用テンプレートには、幅広く対応できるように`page_udo`スニペットを使用します。
+      詳細については、[Shopify.devドキュメント：テーマアーキテクチャ](https://help.shopify.com/themes/development/templates)を参照してください。
 1. テンプレートに`include`ステートメントを追加した後、**保存**をクリックして変更を適用します。
-1. 変更が正常に適用されていることを確認するために、Webブラウザで開発者コンソールを開き、`utag.data`を検査します。
+1. 変更を確認するには、Webブラウザーで開発者コンソールを開き、`utag.data`を調べます。
+### 注文状況ページへのスクリプトのインストール
 
-### 注文ステータスページのスクリプトをインストールする
+他のページとは異なり、注文状況ページからは管理構成にアクセスできないため、Tealiumアカウント情報を再構成する必要があります。次の手順に従って構成を定義します。
 
-他のページとは異なり、注文ステータスページには管理設定へのアクセス権がありませんので、Tealiumアカウント情報を再設定する必要があります。次の手順に従ってこれらの設定を定義します：
-
-1. Shopify管理画面から**設定**をクリックし、**チェックアウト**をクリックします。
-1. **チェックアウト**設定で、ページの一番下にある**注文ステータスページ**までスクロールします。
-1. **追加スクリプト**に次のコードを追加します：
+1. Shopify管理画面で、**構成**をクリックしてから**チェックアウト**をクリックします。
+1. **チェックアウト**構成で、ページ下部付近にある**注文状況ページ**までスクロールします。
+1. **追加スクリプト**に、次のコードを追加します。
 
     ```liquid
     <script>
@@ -183,7 +184,7 @@ Shopifyストアに`utag.js`をインストールし、オンページデータ�
       }
     </script>
 
-    <!-- スクリプトを非同期で読み込む -->
+    <!-- Loading script asynchronously -->
     <script type="text/javascript">
         (function(a,b,c,d){
         a='//tags.tiqcdn.com/utag/{{ settings.tealium_account }}/{{ settings.tealium_profile }}/{{ settings.tealium_environment }}/utag.js';
@@ -192,34 +193,34 @@ Shopifyストアに`utag.js`をインストールし、オンページデータ�
         })();
     </script>
     {% else %}
-    <!-- 注文確認ページのTealiumアカウント情報を設定してください。 -->
+    <!-- Configure your Tealium account information for the order confirmation page. -->
     {% endif %}
     ```
 
-    詳細については、[Shopifyヘルプセンター：注文ステータスページ](https://help.shopify.com/themes/customization/order-status)を参照してください。
+    詳細については、[Shopifyヘルプセンター：注文状況ページ](https://help.shopify.com/themes/customization/order-status)を参照してください。
 
-1. `tealium_enabled`を`true`に設定します。
-1. `tealium_account`、`tealium_profile`、および`tealium_environment`の変数を設定で構成した内容に合わせて設定します。
+1. `tealium_enabled`を`true`に構成します。
+1. `tealium_account`、`tealium_profile`、`tealium_environment`変数を、構成で構成した内容と一致するように構成します。
 
-### チェックアウトのスクリプトをインストールする（Shopify Plusのみ）
+### チェックアウトへのスクリプトのインストール（Shopify Plusのみ）
 
-この手順は、`checkout.liquid`ファイルを使用してチェックアウトフロー全体に`utag.js`を統合したいShopify Plusの顧客向けです。
+この手順は、`checkout.liquid`ファイルを使用してチェックアウトファネル全体に`utag.js`を統合するShopify Plusのお客様を対象としています。
 
-#### `checkout.liquid`にアクセスする
+#### `checkout.liquid`へのアクセス
 
-* **Shopify Plusの顧客**：すでにアクセスできない場合は、`checkout.liquid`ファイルへのアクセスをリクエストすることができます。このファイルはチェックアウトプロセス中に`utag.js`をロードします。このファイルを以前に変更していない場合は、インストールを進める前にShopifyサポートに連絡してアクセスを取得する必要があります。
-* **Shopify Plus以外の顧客**：Shopifyサポートは、Shopify Plusアカウントを持たない顧客には`checkout.liquid`ファイルへのアクセス権限を付与しません。この制限により、チェックアウトページなどの重要なページには`utag.js`がインストールされません。ただし、前の手順を完了することで、ショッピングカートや注文確認ページなど、他の重要なページに`utag.js`がインストールされることが保証されます。
+* **Shopify Plusのお客様**：`checkout.liquid`ファイルにまだアクセスできない場合は、アクセス権をリクエストできます。このファイルは、チェックアウト処理中に`utag.js`を読み込みます。このファイルを以前に変更したことがない場合は、インストールを続行する前にShopifyサポートへ連絡してアクセス権を取得する必要があります。
+* **Shopify Plus以外のお客様**：Shopifyサポートは、Shopify Plusアカウントをお持ちでないお客様に`checkout.liquid`ファイルへのアクセス権を付与しません。この制限により、チェックアウトページに`utag.js`スクリプトをインストールすることはできません。ただし、前述の手順を完了することで、ショッピングカートや注文確認ページなど、その他の重要なページには`utag.js`がインストールされます。
 
 #### インストール手順
 
 1. `checkout_udo.liquid`ファイルを開きます。
-2. 10行目のプレースホルダーをTealium iQアカウントとプロファイル情報で置き換えます。
-3. 変更したコンテンツをコピーし、Shopifyのチェックアウトリキッドファイルに貼り付けます。
-4. 変更内容を保存し、統合が正常に機能するかテストします。
+2. 10行目のプレースホルダーを、Tag Managementのアカウント情報とプロファイル情報に置き換えます。
+3. 変更した内容をコピーし、ShopifyのチェックアウトLiquidファイルに貼り付けます。
+4. 変更を保存し、統合が想定どおりに機能することをテストで確認します。
 
 
 <blockquote>
-このチェックアウトコードは基本的なテンプレートとして機能します。Shopifyサイトの特定の要件とセットアップに応じて、最適なパフォーマンスを得るためにカスタマイズが必要な場合があります。
+このチェックアウトコードは、基本テンプレートとして機能します。最適なパフォーマンスを実現するために、Shopifyサイト固有の要件や構成に応じたカスタマイズが必要になる場合があります。
 </blockquote>
 
 
@@ -227,19 +228,19 @@ Shopifyストアに`utag.js`をインストールし、オンページデータ�
 
 #### 1.0.2
 
-* インテグレーションの機能をより明確に反映するように`README`を更新しました。
-* `order_status`スニペットを更新して、より多くのデータとより良い変数名を含めました。
-* 機能をよりよく反映するために、`checkout.liquid`を`order_status.liquid`に名前を変更しました。
+* 統合の機能がより明確に伝わるように、`README`を更新しました。
+* より多くのデータと分かりやすい変数名を含めるように、`order_status`スニペットを更新しました。
+* 機能をより適切に表すため、checkout.liquidの名前を`order_status.liquid`に変更しました。
 
 #### 1.0.1
 
-* `global_udo_vars`スニペットの変数名のスペルミスを修正しました。`customer_loggedin`を`customer_logged_in`に置き換えました。
+* global_udo_varsスニペット内の変数名のスペルミスを修正しました。`customer_loggedin`を`customer_logged_in`に置き換えました。
 
-#### 1.0.0 初版リリース
+#### 1.0.0 初回リリース
 
-* ShopifyテーマをカスタマイズしてTealiumを統合するために必要なすべてのスニペットと設定。
-* テーマのカスタマイズ手順。
+* Tealiumと統合するためにShopifyテーマをカスタマイズする際に必要な、すべてのスニペットと構成。
+* テーマをカスタマイズするための手順。
 
 ## ライセンス
 
-このソフトウェアの使用は、このリポジトリに含まれるファイルのライセンス契約の条件と規定に従うものとします。ファイルをダウンロードまたは使用する前に、ライセンスをお読みください。これらのファイルのいずれかをダウンロードまたは使用することにより、ライセンス契約に拘束され、その契約を遵守することに同意したものとみなされます。
+本ソフトウェアの使用には、[LICENSE.txt](https://github.com/Tealium/integration-shopify/blob/master/LICENSE.txt)ファイルに記載されているライセンス契約の条件が適用されます。このリポジトリに含まれるファイルをダウンロードまたは使用する前に、ライセンスをお読みください。これらのファイルをダウンロードまたは使用することにより、ライセンス契約に拘束され、その条件を遵守することに同意したものとみなされます。

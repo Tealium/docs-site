@@ -63,6 +63,9 @@ These settings affect how you implement the Universal Tag (`utag.js`).
 This will generate a distribution archive of all generated tag files. For more information, see [Self hosting](https://docs.tealium.com/self-hosting/#enable-the-zip-archive).
 * **Cookies Domain**  
 Enter the domain you want to set for the `utag_main` cookie. By default, Tealium automatically detects the domain of the page, so we recommend that you leave this field empty. By doing so, Tealium automatically detects the domain. However, you can set this value to the domain of your site. If you use multiple subdomains, you should set this to the root domain (for example, `tealium.com` instead of `www.tealium.com`)
+* **Deliver Files to Tealium CDN**  
+Controls whether published files are distributed to Tealium's global CDN. Turn this off only if you are self-hosting published files and do not want assets pushed to the CDN bucket. If you turn this off, you are responsible for distributing the files yourself. Default value is **ON**.  
+For more information about self-hosting, see [Self-Hosting utag.js](https://docs.tealium.com/self-hosting/).
 * **Page Data Object**  
 To use a data object other than Tealium's `utag_data`, enter your preferred data object name here.
 * **Base Variables**  

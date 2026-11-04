@@ -1,13 +1,13 @@
 ---
 title: RemoteCommands Module
-description: Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
+description: Enables triggering of native code blocks from events in Tag Management, controlled by extensions and load rules.
 url: https://docs.tealium.com/platforms/ios-swift-v1/module-list/remote-commands/
 ---
 [Learn more](https://docs.tealium.com/platforms/remote-commands/) about remote commands.
 
 ## Requirements
 
-* Tealium iQ Tag Management module. Not a compile-time dependency, but Remote Commands are triggered from the module.
+* Tag Management module. Not a compile-time dependency, but Remote Commands are triggered from the module.
 
 ## Supported Platforms
 
@@ -45,7 +45,7 @@ The framework is auto-instantiated. It has a dependency on `TealiumCore`. No add
 
 ## Example
 
-Once the Remote Command Tag is configured in Tealium IQ and the module is installed in your app, add the following lines to the initialization as shown in the following example:
+After the Remote Command Tag is configured in Tag Management and the module is installed in your app, add the following lines to the initialization as shown in the following example:
 
 ```swift
 class TealiumHelper {
@@ -201,7 +201,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()
 
 ## Remote HTTP Command
 
-This is a reserved internal command with identifier `_http` which triggers an HTTP request from native code, and passes the response back to the Tealium iQ web view. This is used in some cases to bypass CORS restrictions that may be encountered in a web browser. To use this command, there are specific mapping names you must use:
+This is a reserved internal command with identifier `_http` which triggers an HTTP request from native code, and passes the response back to the Tag Management web view. This is used in some cases to bypass CORS restrictions that may be encountered in a web browser. To use this command, there are specific mapping names you must use:
 
 | Mapping Name | Description |
 | --- | --- |

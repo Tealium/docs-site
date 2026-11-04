@@ -94,7 +94,7 @@ ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) =>
 
 Use [remote commands](https://docs.tealium.com/platforms/remote-commands/how-it-works/) to trigger native code within a vendor SDK. Remote commands is supported in .NET MAUI with the [`IRemoteCommand`](https://docs.tealium.com/platforms/dotnet-maui/api/#iremotecommand) interface and a built-in implementation called `DelegateRemoteCommand`.
 
-To create a remote command that works with the Custom Command tag in Tealium iQ, pass a command ID and description with no additional parameters, then define the response handler. Access the data payload of the command in `resp.Payload`.
+To create a remote command that works with the Custom Command tag in Tag Management, pass a command ID and description with no additional parameters, then define the response handler. Access the data payload of the command in `resp.Payload`.
 
 To create a remote command using the local file or remote URL option, add the `path` or `url` parameter respectively:
 
@@ -155,7 +155,7 @@ public class MyRemoteCommand : IRemoteCommand
     }
 }
 
-// Tealium iQ mapped Remote Command
+// Tag Management mapped Remote Command
 var iqCommand = new MyRemoteCommand(null, null);
 
 // Locally mapped Remote Command

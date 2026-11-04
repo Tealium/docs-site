@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-java/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android (KitKat/4.4+ / API Level 19+)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps

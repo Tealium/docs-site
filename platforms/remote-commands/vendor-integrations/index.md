@@ -15,7 +15,7 @@ See the [list of remote command vendor integrations](https://docs.tealium.com/pl
   * **JSON File**  
   A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers. See the [JSON file specification](https://docs.tealium.com/platforms/remote-commands/json-file/).
   * **Remote Command Tag**  
-  A tag in iQ Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
+  A tag in Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
 
 ## How it works
 

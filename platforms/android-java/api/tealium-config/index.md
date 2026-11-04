@@ -13,7 +13,7 @@ The following summarizes the commonly used methods of the `Tealium.Config` class
 | [`create()`](#create)| Create instance of the Config object |
 | [`enableConsentManager()`](#enableconsentmanager)| Enable consent manager |
 | [`isConsentManagerEnabled()`](#isconsentmanagerenabled)| Checks if consent manager is enabled |
-| [`sessionCountingEnabled`](#sessioncountingenabled) | Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files |
+| [`sessionCountingEnabled`](#sessioncountingenabled) | Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files |
 | [`setDatasourceId()`](#setdatasourceid) | Sets the data source key |
 | [`setForceOverrideLogLevel()`](#setforceoverrideloglevel) | Set to force a specific log level at init time |
 | [`setOverrideCollectDispatchProfile()`](#setoverridecollectdispatchprofile) | Overrides the Tealium Collect profile |
@@ -65,7 +65,7 @@ config.isConsentMangerEnabled()
 ```
 
 ### `sessionCountingEnabled`
-Disables session counting for Tealium iQ accounts. Use this if you are self-hosting your Tealium JavaScript files. Default `true`.                         
+Disables session counting for Tag Management accounts. Use this if you are self-hosting your Tealium JavaScript files. Default `true`.                         
 
 ```swift
 config.sessionCountingEnabled = false

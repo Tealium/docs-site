@@ -12,7 +12,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/braze/
   * [Tealium for iOS-Swift](https://docs.tealium.com/platforms/ios-swift/) (2.8.0+)
 * One of the following remote command integrations:
   * [Braze Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/braze/#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)
-  * Braze Remote Command tag in Tealium iQ Tag Management
+  * Braze Remote Command tag in Tag Management
 
 ## How It Works
 
@@ -24,7 +24,7 @@ The Braze integration uses the following items:
 
 Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Braze SDK separately.
 
-There are two remote command options: a JSON configuration file or using iQ Tag Management to configure the mappings. Using a JSON configuration file is recommended for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: a JSON configuration file or using Tag Management to configure the mappings. Using a JSON configuration file is recommended for your vendor integration, hosted either remotely or locally within your app. If using Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 
 ## Install
@@ -208,7 +208,7 @@ val braze = BrazeRemoteCommand(application,
                             inAppMessageBlacklist)
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
-    // Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+    // Optional: Set config options that may not be supported yet by the Tag in Tag Management
     //              or simply to override settings locally.
     braze.registerConfigOverride { builder ->
         // builder.setIsLocationCollectionEnabled(true);
@@ -253,7 +253,7 @@ braze = new BrazeRemoteCommand(config,
         true,                     // registerInAppMessageManager
         inAppMessageBlacklist);   // inAppMessageBlackList
 
-// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+// Optional: Set config options that may not be supported yet by the Tag in Tag Management
 //              or simply to override settings locally.
 braze.registerConfigOverride(new BrazeRemoteCommand.ConfigOverrider() {
     @Override

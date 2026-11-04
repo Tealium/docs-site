@@ -13,7 +13,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/appsflyer/
   * [Tealium for React Native](https://docs.tealium.com/platforms/react-native/)
 * One of these remote command integrations:
   * [AppsFlyer Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/appsflyer/#json-template) (Requires Android-Kotlin 1.0.0 or later, or iOS-Swift 2.1.0 or later)
-  * AppsFlyer Remote Command tag in Tealium iQ Tag Management
+  * AppsFlyer Remote Command tag in Tag Management
 
 ## How It Works
 
@@ -25,7 +25,7 @@ The AppsFlyer integration uses three items:
 
 Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 

@@ -1,6 +1,6 @@
 ---
 title: インストール
-description: Android（Kotlin）、iOS（Swift）、React Native向けTealium Prism SDKをインストールして初期化します。
+description: Android（Kotlin）、iOS（Swift）、React Native向けのTealium Prism SDKをインストールして初期化します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/install/
 ---
 Tealium Prism SDKは、一連のモジュールとして配布されています。アプリに必要なモジュールのみをインストールし、Tealiumアカウントの認証情報を使用してSDKを初期化します。
@@ -10,21 +10,21 @@ Tealium Prism SDKは、一連のモジュールとして配布されています
 
 
 * [Android Studio](https://developer.android.com/studio)
-* Android SDK（Marshmallow／6.0以降／APIレベル23以降）
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* Android SDK（Marshmallow/6.0以降／APIレベル23以降）
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealiumアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
 * Xcode 16.0以降
 * iOS 13.0以降、macOS 10.15以降、tvOS 13.0以降、watchOS 7.0以降
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealiumアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
-* New Architecture（TurboModules）を使用するReact Native 0.85
+* 新アーキテクチャ（TurboModules）を使用するReact Native 0.85
 * Android APIレベル24以降
 * iOS 15.1以降
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealiumアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
@@ -39,7 +39,7 @@ Tealium Prismライブラリは複数のモジュールに分割されていま�
 
 Mavenを使用してTealium Prism Kotlinライブラリをインストールするには、次の手順を実行します。
 
-1. プロジェクトの`settings.gradle`ファイルにTealium Maven URLを追加します。
+1. Tealium MavenのURLをプロジェクトの`settings.gradle`ファイルに追加します。
 
     ```kotlin
     dependencyResolutionManagement {
@@ -68,9 +68,9 @@ Mavenを使用してTealium Prism Kotlinライブラリをインストールす�
 Swift Package Managerを使用してTealium Prism Swiftをインストールするには、次の手順を実行します。
 
 1. Xcodeプロジェクトで、**File > Add Package Dependencies**を選択します。
-1. リポジトリURLとして`https://github.com/tealium/tealium-prism-swift`を入力します。
+1. リポジトリのURLとして`https://github.com/tealium/tealium-prism-swift`を入力します。
 1. バージョンルールを構成します。**Up to next major**の使用を推奨します。現在のTealium Prismライブラリのバージョンが一覧に表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
-1. インストールするモジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
+1. インストールするモジュールを選択し、そのモジュールのインストール先となるアプリターゲットを選択します。
 
 ### CocoaPods
 
@@ -109,7 +109,7 @@ Androidでは追加の手順は必要ありません。
 
 
 
-Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/)インスタンスを[`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/)メソッドに渡します。アプリのグローバルアプリケーションクラス内にある`onCreate()`メソッドでTealium Kotlinライブラリを初期化することを推奨します。
+Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-tealium-config/)インスタンスを[`Tealium.create()`](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api/-instance-manager/)メソッドに渡します。Tealium Kotlinライブラリは、アプリのグローバルApplicationクラスにある`onCreate()`メソッド内で初期化することを推奨します。
 
 ```kotlin
 import com.tealium.prism.core.api.Tealium
@@ -145,11 +145,11 @@ val tealium = Tealium.create(config)
 
 
 
-Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Structs/TealiumConfig.html)インスタンスを静的メソッド[`Tealium.create()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html)に渡します。
+Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Structs/TealiumConfig.html)インスタンスを[`Tealium.create()`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/Tealium.html)静的メソッドに渡します。
 
 
 <blockquote>
-Tealium iOSライブラリへの単一のエントリポイントを提供し、今後のアップグレードを簡素化するトラッキングヘルパークラスを使用して、`Tealium`インスタンスを管理することを推奨します。
+トラッキングヘルパークラスを使用して`Tealium`インスタンスを管理することを推奨します。これにより、Tealium iOSライブラリへの単一のエントリーポイントが提供され、将来のアップグレードが簡単になります。
 </blockquote>
 
 
@@ -212,15 +212,15 @@ const tealium = Tealium.create(
 
 ## 構成
 
-Prismは、次の優先順位で3つのソースからの構成をマージします。
+Prismは、次の優先順位で3つのソースから構成をマージします。
 
-| 方法 | 優先度 | 使用する場合 |
+| 方法 | 優先順位 | 使用する場合 |
 | :--- | :--- | :--- |
 | プログラムによる構成 | 1（最高） | 実行時に計算される値、またはコード内で固定する必要がある構成。 |
 | リモート構成 | 2 | モジュール、バリア、変換、ルールなどの標準的な運用構成。 |
 | ローカルJSON | 3 | アプリに同梱されるフォールバック用のデフォルト構成。 |
 
-この優先順位により、重要な構成やセキュリティ上重要な構成が、優先度の低いソースによって誤って上書きされることを防ぎます。
+この優先順位により、重要な構成やセキュリティ上重要な構成が、優先順位の低いソースによって誤って上書きされるのを防ぎます。
 ### リモート構成とローカル構成
 
 
@@ -241,12 +241,12 @@ val config = TealiumConfig.Builder(
 
 
 <blockquote>
-SDK は、アカウント、プロファイル、環境から構成 URL を生成しません。リモート構成を取得するには、公開済み構成ファイルの URL を `setSettingsUrl()` に渡します。詳細については、[モバイル構成の公開](https://docs.tealium.com/publish-mobile-settings/)を参照してください。
+SDK は、アカウント、プロファイル、環境から構成 URL を導出しません。リモート構成を取得するには、公開済み構成ファイルの URL を `setSettingsUrl()` に渡します。詳細については、[モバイル構成の公開](https://docs.tealium.com/publish-mobile-settings/)を参照してください。
 </blockquote>
 
 
 
-リモート構成 URL を指定するには `settingsUrl` パラメータを使用し、ローカルフォールバックには `settingsFile` パラメータを使用します。
+リモート構成の URL を指定するには `settingsUrl` パラメータを使用し、ローカルのフォールバックには `settingsFile` パラメータを使用します。
 
 ```swift
 let config = TealiumConfig(account: "my_account",
@@ -257,10 +257,10 @@ let config = TealiumConfig(account: "my_account",
 let tealium = Tealium.create(config: config)
 ```
 
-リモート構成を使用しない場合、または異なるデフォルト値を提供するためにそれらの構成のローカルコピーを使用する場合は、`settingsFile` でローカル構成ファイルを指定し、`settingsUrl` を省略します。
+リモート構成を使用しない場合、または異なるデフォルト値を提供するために構成のローカルコピーを使用する場合は、`settingsFile` でローカル構成ファイルを指定し、`settingsUrl` を省略します。
 
 
-`settingsFile` と `settingsUrl` を `Tealium.create()` の第4引数と第5引数として渡します。構成の優先順位は、ローカルファイル < リモート URL < プログラムによる構成です。
+`Tealium.create()` の第4引数と第5引数として、`settingsFile` と `settingsUrl` を渡します。構成の優先順位は、ローカルファイル < リモート URL < プログラムによる構成です。
 
 ```javascript
 const tealium = Tealium.create(
@@ -289,7 +289,7 @@ val config = TealiumConfig.Builder(...)
   }
 ```
 
-詳細については、[LogLevel](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.logger/-log-level/index.html) を参照してください。
+詳細については、[LogLevel](https://docs.tealium.com/tealium-prism-kotlin/core/com.tealium.prism.core.api.logger/-log-level/index.html)を参照してください。
 
 
 ログレベルを構成するには、[`TealiumConfig`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/CoreSettingsBuilder.html) の強制構成ビルダーで `setMinLogLevel()` を呼び出します。
@@ -309,7 +309,7 @@ var config = TealiumConfig(account: "your_account",
 使用可能なログレベルは、`.trace`、`.debug`、`.info`、`.warn`、`.error`、`.silent` です。
 
 
-ログレベルを構成するには、[`LogLevel`](https://docs.tealium.com/tealium-prism-react-native/types/LogLevel.html) を [`Tealium.create()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#create) の第6引数として渡します。使用しない構成引数には `undefined` を渡します。
+ログレベルを構成するには、[`Tealium.create()`](https://docs.tealium.com/tealium-prism-react-native/classes/Tealium.html#create) の第6引数として [`LogLevel`](https://docs.tealium.com/tealium-prism-react-native/types/LogLevel.html) を渡します。使用しない構成引数には `undefined` を渡します。
 
 ```javascript
 const tealium = Tealium.create(
@@ -352,7 +352,7 @@ val config = TealiumConfig.Builder(
 ```
 
 
-各モジュールでは、`Modules.collect { }` クロージャーパターンを使用して、追加のプログラムによる構成を指定できます。この方法で指定した構成はローカル構成とリモート構成を上書きし、リモートから変更することはできません。
+各モジュールでは、`Modules.collect { }` クロージャーパターンを使用して、追加の構成をプログラムで指定できます。この方法で指定した構成はローカル構成およびリモート構成を上書きし、リモートから変更することはできません。
 
 次の例では、Collect モジュールの構成を指定します。プログラムで構成されていないその他の構成は、リモートで更新できます。
 

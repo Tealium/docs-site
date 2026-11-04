@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/javascript/data-layer-object/
 
 The `b` variable is the JavaScript object in `utag.js` that represents the data layer. It holds the data layer object that is processed during a page load or tracking call.
 
-In Tealium iQ, data layer variables are typically referenced using drop-down lists, but they can also be referenced in JavaScript code using the `b` variable.
+In Tag Management, data layer variables are typically referenced using drop-down lists, but they can also be referenced in JavaScript code using the `b` variable.
 
 For example, a common use of the **Set Data Values** extension is to set a default value to a variable if it's not already set. The extension might look like this:
 

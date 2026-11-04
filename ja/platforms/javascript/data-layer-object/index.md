@@ -1,19 +1,19 @@
 ---
-title: データレイヤーオブジェクト (b)
-description: データレイヤーオブジェクトへの変数エイリアスの使用方法を学びます。
+title: データレイヤーオブジェクト（b）
+description: データレイヤーオブジェクトの変数エイリアスの使用方法について説明します。
 url: https://docs.tealium.com/ja/platforms/javascript/data-layer-object/
 ---
 ## 仕組み
 
-`b`変数は、データレイヤーを表す`utag.js`内のJavaScriptオブジェクトです。ページの読み込みやトラッキング呼び出し中に処理されるデータレイヤーオブジェクトを保持しています。
+`b` 変数は、データレイヤーを表す `utag.js` 内のJavaScriptオブジェクトです。ページの読み込み時またはトラッキング呼び出し時に処理されるデータレイヤーオブジェクトを保持します。
 
-Tealium iQでは、データレイヤー変数は通常、ドロップダウンリストを使用して参照されますが、`b`変数を使用してJavaScriptコード内で参照することもできます。
+タグ管理では通常、ドロップダウンリストを使用してデータレイヤー変数を参照しますが、JavaScriptコード内で `b` 変数を使用して参照することもできます。
 
-例えば、**Set Data Values**拡張の一般的な使用法は、変数がまだ構成されていない場合にデフォルト値を構成することです。拡張は次のようになるかもしれません：
+たとえば、**Set Data Values** 拡張機能の一般的な用途の1つは、変数に値がまだ構成されていない場合にデフォルト値を構成することです。この拡張機能は、次のようになります。
 
 ![](https://docs.tealium.com/images/platforms/javascript/b-object-extension-example.png)
 
-`utag.js`では、この拡張は次のようにJavaScriptコードで表されます：
+`utag.js` では、この拡張機能は次のようなJavaScriptコードで表されます。
 
 ```js
 function(a, b) {
@@ -27,35 +27,35 @@ function(a, b) {
 }
 ```
 
-`b`変数はデータレイヤーオブジェクトへのローカル参照であり、`b['page_type']`はUDO変数`page_type`への参照です。同様に、拡張機能でカスタムJavaScriptを使用するときは、`b`を使用してデータレイヤーオブジェクト内の任意の変数を参照できます。
+`b` 変数はデータレイヤーオブジェクトへのローカル参照であり、`b['page_type']` はUDO変数 `page_type` への参照です。同様に、拡張機能でカスタムJavaScriptを使用する場合、`b` を使用してデータレイヤーオブジェクト内の任意の変数を参照できます。
 
 
 <blockquote>
-`utag.js`バージョン4.39以前では、トラッキング呼び出し中の`b`オブジェクトの内容は`utag.data`の完全なコピーです。この更新については[リリース4.40](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2016-04-01)で詳しく説明しています。
+`utag.js` バージョン4.39以前では、トラッキング呼び出し時の `b` オブジェクトの内容は `utag.data` の完全なコピーです。この更新の詳細については、[リリース4.40](https://docs.tealium.com/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2016-04-01)を参照してください。
 </blockquote>
 
 
-### 使用場所
+### 使用できる場所
 
-`b`オブジェクトは`utag.js`の特定のセクション内のローカルスコープ変数であり、以下の拡張スコープで利用可能です：
+`b` オブジェクトは、`utag.js` の特定のセクション内でローカルスコープを持つ変数であり、次の拡張機能スコープで使用できます。
 
 * **Before Load Rules**
 * **After Load Rules**
 * **Tag Scope**
-* **After Tags** 
+* **After Tags**
 
-`b`オブジェクトは以下のスコープでは参照できません：
+次のスコープでは `b` オブジェクトを参照できません。
 
 * **Pre Loader**  
-**Pre Loader**にスコープされた拡張は、`b`オブジェクトが作成される前に実行されるため、`b`オブジェクトを参照できません。
+**Pre Loader** スコープの拡張機能は、`b` オブジェクトが作成される前に実行されるため、`b` オブジェクトを参照できません。
 * **DOM Ready**  
-**DOM Ready**にスコープされた拡張は、メインスコープの外部で実行されるため、`b`オブジェクトを参照できません。
+**DOM Ready** スコープの拡張機能はメインスコープの外部で実行されるため、`b` オブジェクトを参照できません。
 
 ### シナリオ：ページの読み込み
 
-標準的なページの読み込みでは、`b`オブジェクトはページ上のすべてのデータ、[ユニバーサルデータオブジェクト](https://docs.tealium.com/universal-data-object/)を含むコレクションです。
+標準的なページ読み込みでは、`b` オブジェクトは、[ユニバーサルデータオブジェクト](https://docs.tealium.com/universal-data-object/)を含む、ページ上のすべてのデータのコレクションです。
 
-例えば、次の例では、拡張機能で`b['page_type']`を参照できます：
+たとえば、次の例では、拡張機能内で `b['page_type']` を参照できます。
 
 ```html
 <script>
@@ -68,9 +68,9 @@ var utag_data = {
 
 ### シナリオ：トラッキング呼び出し
 
-トラッキング呼び出しでは、`b`オブジェクトはページ上のすべてのデータ（ユニバーサルデータオブジェクトを除く）と、トラッキング呼び出しに渡されたデータのコレクションです。
+トラッキング呼び出しでは、`b` オブジェクトは、ページ上のすべてのデータ（ユニバーサルデータオブジェクトを除く）と、トラッキング呼び出しに渡されたデータのコレクションです。
 
-例えば、これらのトラッキング呼び出しでは、拡張機能で`b['tealium_event']`を参照できます：
+たとえば、次のトラッキング呼び出しでは、拡張機能内で `b['tealium_event']` を参照できます。
 
 ```js
 var tmp = { tealium_event: "link_click" };
@@ -79,42 +79,42 @@ utag.link(tmp)
 utag.view({ tealium_event: "cart_add" })
 ```
 
-この例では、`b['page_type']`が定義されていないことに注意が必要です（`utag_data`で定義されていても）これは、トラッキング呼び出しで渡されたデータオブジェクトの一部ではないからです。
+この例では、`b['page_type']` は（`utag_data` で定義されている場合でも）定義されない点に注意してください。これは、トラッキング呼び出しで渡されるデータオブジェクトに含まれていないためです。
 
-ページから他のタイプのデータレイヤー変数を参照するには、[使用法](#usage)を参照してください。
+ページ上のその他の種類のデータレイヤー変数を参照する方法については、[使用方法](#usage)を参照してください。
 
 
 <blockquote>
-トラッキング呼び出しで`utag_data`から変数を含めるには、[公開構成の基本変数構成](https://docs.tealium.com/publish-configuration/)を使用してください。
+トラッキング呼び出しに `utag_data` の変数を含めるには、[パブリッシュ構成の基本変数構成](https://docs.tealium.com/publish-configuration/)を使用します。
 </blockquote>
 
 
-### タグスコープの拡張
+### タグスコープの拡張機能
 
-特定のタグにスコープされた拡張では、`b`オブジェクトはデータレイヤーオブジェクトのローカルコピーです。これは、`b`オブジェクトの値を他のタグに影響を与えずに変更できることを意味します。
+特定のタグをスコープとする拡張機能では、`b` オブジェクトはデータレイヤーオブジェクトのローカルコピーです。そのため、他のタグに影響を与えることなく `b` オブジェクトの値を変更できます。
 
-これらの例では、データレイヤー変数`order_id`がJavaScript Code拡張を使用して各タグでカスタマイズされています。各拡張では、`b`は`order_id`の同じ値から始まります：
+次の例では、JavaScript Code拡張機能を使用して、データレイヤー変数 `order_id` をタグごとにカスタマイズしています。各拡張機能の `b` は、同じ `order_id` の値から始まります。
 
 ![](https://docs.tealium.com/images/platforms/javascript/b-object-tag-scope-example-fb.png)
 
 ![](https://docs.tealium.com/images/platforms/javascript/b-object-tag-scope-example-ga.png)
 
 
-## 使用法
+## 使用方法
 
-タグテンプレートや拡張で`b`オブジェクト変数を参照するには、各変数タイプの正しい構文を使用する必要があります。
+タグテンプレートまたは拡張機能で `b` オブジェクトの変数を参照するには、変数の種類ごとに正しい構文を使用する必要があります。
 
-各変数タイプの構文は次のとおりです：
+各変数タイプの構文は次のとおりです。
 
-| 変数タイプ         | 構文 |
+| 変数タイプ | 構文 |
 | --------------------- | ------ |
 | ユニバーサルデータオブジェクト | `b['VAR_NAME']` |
-| JavaScriptページ       | `b['js_page.VAR_NAME']` |
-| クエリストリング          | `b['qp.VAR_NAME']` |
-| 標準クッキー       | `b['cp.VAR_NAME']` |
-| DOM要素           | `b['dom.VAR_NAME']` |
-| メタデータ             | `b['meta.VAR_NAME']` |
-| ローカル保存         | `b['ls.VAR_NAME']` |
-| セッション保存       | `b['ss.VAR_NAME']` |
+| JavaScriptページ | `b['js_page.VAR_NAME']` |
+| クエリ文字列 | `b['qp.VAR_NAME']` |
+| 標準Cookie | `b['cp.VAR_NAME']` |
+| DOM要素 | `b['dom.VAR_NAME']` |
+| メタデータ | `b['meta.VAR_NAME']` |
+| ローカル保存 | `b['ls.VAR_NAME']` |
+| セッション保存 | `b['ss.VAR_NAME']` |
 
-詳細については、[データレイヤー変数タイプ](https://docs.tealium.com/data-layer-variables/)を参照してください。
+詳細については、[データレイヤー変数のタイプ](https://docs.tealium.com/data-layer-variables/)を参照してください。

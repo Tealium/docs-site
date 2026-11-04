@@ -29,7 +29,7 @@ Both services write a new file to S3 whenever the file reaches 100MB (before com
 
 ### Data retention
 
-The semi-structured data stored in EventStore and AudienceStore remains available in Amazon S3 for the length of time specified in your contract. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged. Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged.
+EventStore and AudienceStore retain data for 30 days. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged. Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged.
 
 For more information, see [Server-Side Account Settings]().
 

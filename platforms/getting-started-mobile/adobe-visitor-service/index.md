@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-ser
 ---
 The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors. The ECID identifies the same visitor in different parts of the Adobe ecosystem, such as Adobe Target and Adobe Analytics, and identifies unique visitors.
 
-If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. The new ECID in the data layer may be mapped in the server-side Adobe connectors in Tealium EventStream or Tealium AudienceStream. The Adobe Visitor Service module provides a seamless transition to the Tealium SDK by reusing the existing ECID if it exists and generating a new one if it doesn't, ensuring an accurate count of visitors in your app.
+If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. Map the ECID in the server-side Adobe connectors. The module reuses the existing ECID if one exists, or generates a new one, ensuring an accurate visitor count.
 
 ## Supported platforms
 
@@ -20,11 +20,11 @@ The following platforms support the Adobe Visitor Service module:
 
 ### Migrating to Server-Side Analytics
 
-Migrate your Adobe integrations server-side and map the ECID to the `marketingCloudVisitorID` parameter in the connector using Adobe Analytics server-side through EventStream, and need a valid ECID for multiple Adobe products to work together. The Tealium SDK requests the ECID from Adobe before sending any calls to EventStream, and the ECID is mapped to the `marketingCloudVisitorID` property in the Adobe Analytics connector.
+Migrate your Adobe integrations server-side and map the ECID to the `marketingCloudVisitorID` parameter in the connector using Adobe Analytics server-side through Event Streaming, and need a valid ECID for multiple Adobe products to work together. The Tealium SDK requests the ECID from Adobe before sending any calls to Event Streaming, and the ECID is mapped to the `marketingCloudVisitorID` property in the Adobe Analytics connector.
 
-### Tealium iQ Tag Management
+### Tag Management
 
-We recommend using Tealium iQ Tag Management to generate the ECID when using the Adobe Analytics tag. This guarantees the ECID is readily available, persisted in storage, and independent of the cookie store in the hidden webview.
+We recommend using Tag Management to generate the ECID when using the Adobe Analytics tag. This guarantees the ECID is readily available, persisted in storage, and independent of the cookie store in the hidden webview.
 
 ### Migrating from Adobe SDK to Tealium SDK
 

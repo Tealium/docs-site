@@ -430,7 +430,7 @@ Defines a callback to execute when the visitor profile has been updated. The upd
 
 The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
-Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
+Usage of this module is recommended if you are licensed for Customer Data Platform (CDP) and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for Customer Data Platform (CDP), usage of this module is not recommended as no visitor profile is returned.
 
 ```javascript
 TealiumUnityPlugin.setVisitorServiceListener(callback);
@@ -565,9 +565,9 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `consentLoggingEnabled`        | `bool`                                            | Enables the [Consent Logging](https://docs.tealium.com/consent-change-event-specifications/) feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)    | `true`                                       |
 | `consentPolicy`                | [`ConsentPolicy`](#consentpolicy)                 | Sets the consent policy to either CCPA or GDPR. Consent manager is only enabled if this property is set.                                                                                                                                                     | `ConsentPolicy.GDPR`                         |
 | `lifecycleAutotrackingEnabled` | `bool`                                            | Enables or disables lifecycle auto tracking (default: enabled).                                                                                                                                                                                              | `false`                                      |
-| `useRemoteLibrarySettings`     | `bool`                                            | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled). Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature. | `false`                                      |
+| `useRemoteLibrarySettings`     | `bool`                                            | Enables or disables the [Mobile Publish Settings](https://docs.tealium.com/create-mobile-profile/) (default: enabled). Configure the Mobile Publish Settings in Tag Management, or disable the feature. | `false`                                      |
 | `visitorServiceEnabled`        | `bool`                                            | Enables or disables the automatic retrieval of the Visitor Profile using the [Data Layer Enrichment API](https://docs.tealium.com/data-layer-enrichment-api/) (default: disabled).                                | `true`                                       |
-| `sessionCountingEnabled`       | `Boolean`                                   | Enables or disables session counting for Tealium iQ accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled)                                                                                                            | `false`                                                                                                        |
+| `sessionCountingEnabled`       | `Boolean`                                   | Enables or disables session counting for Tag Management accounts. Set this to `false` if you are self-hosting your Tealium JavaScript files. (default: enabled)                                                                                                            | `false`                                                                                                        |
 
 
 ## Class: `TealiumEnvironment`

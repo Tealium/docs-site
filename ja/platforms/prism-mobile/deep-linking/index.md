@@ -3,9 +3,9 @@ title: ディープリンク
 description: アトリビューショントラッキングとトレース管理のために、Tealium Prism SDK でディープリンクを処理する方法について説明します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/deep-linking/
 ---
-DeepLink モジュールは、アトリビューショントラッキングとトレース管理のために、受信したディープリンクを自動的に処理します。ディープリンク URL の取得、クエリパラメータの抽出、リファラー情報の管理を行い、デバッグのために Trace モジュールと連携します。
+DeepLink モジュールは、アトリビューショントラッキングとトレース管理のために、受信したディープリンクを自動的に処理します。ディープリンク URL の取得、クエリパラメータの抽出、リファラー情報の管理を行い、デバッグ用の Trace モジュールと連携します。
 
-iOS と Android では、明示的に無効化しない限り、モジュールはディープリンクイベントを自動的にリッスンします。このモジュールは、`modules` リストに追加するか、ローカルまたはリモート構成 JSON で構成を指定した場合にのみ実行されます。
+iOS と Android では、明示的に無効にしない限り、モジュールがディープリンクイベントを自動的にリッスンします。このモジュールは、`modules` リストに追加するか、ローカルまたはリモート構成 JSON で構成を指定した場合にのみ実行されます。
 
 ## 収集されるデータポイント
 
@@ -24,13 +24,13 @@ DeepLink モジュールは、プログラムによる構成、リモート JSON
 
 
 <blockquote>
-React Native では DeepLink モジュールを構成できません。ネイティブの Prism SDK が、iOS と Android の両方でディープリンクを自動的に処理します。
+React Native では DeepLink モジュールを構成できません。ネイティブ Prism SDK が iOS と Android の両方でディープリンクを自動的に処理します。
 </blockquote>
 
 
 
 
-DeepLink モジュールを Tealium 構成に追加します。
+Tealium 構成に DeepLink モジュールを追加します。
 
 ```kotlin
 val config = TealiumConfig.Builder(
@@ -59,7 +59,7 @@ val config = TealiumConfig.Builder(
 ```
 
 
-DeepLink モジュールを Tealium 構成に追加します。
+Tealium 構成に DeepLink モジュールを追加します。
 
 ```swift
 let config = TealiumConfig(account: "tealiummobile",
@@ -112,8 +112,8 @@ let config = TealiumConfig(account: "tealiummobile",
 
 | 構成 | キー | 説明 | デフォルト |
 |:--------|:----|:------------|:--------|
-| ディープリンクのトレースを有効化 | `deep_link_trace_enabled` | ディープリンクからのトレースを有効または無効にします。有効にすると、QR Trace ツールの QR コードが自動的にトレースへ参加します。 | `true` |
-| ディープリンクイベントを送信 | `send_deep_link_event` | ディープリンクイベントの送信を有効または無効にします。有効にすると、ディープリンクイベントが自動的にトラッキングされます。 | `false` |
+| ディープリンクトレースの有効化 | `deep_link_trace_enabled` | ディープリンクからのトレースを有効または無効にします。有効にすると、QR Trace ツールの QR コードが自動的にトレースへ参加します。 | `true` |
+| ディープリンクイベントの送信 | `send_deep_link_event` | ディープリンクイベントの送信を有効または無効にします。有効にすると、ディープリンクイベントが自動的にトラッキングされます。 | `false` |
 
 ## ディープリンクの手動処理
 

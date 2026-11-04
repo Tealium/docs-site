@@ -11,20 +11,20 @@ The Tealium Prism SDK is distributed as a set of modules. Install only the modul
 
 * [Android Studio](https://developer.android.com/studio)
 * Android SDK (Marshmallow/6.0+ / API Level 23+)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
 * Xcode 16.0+
 * iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 7.0+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 
 * React Native 0.85 with the New Architecture (TurboModules)
 * Android API level 24 or later
 * iOS 15.1 or later
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 

@@ -117,13 +117,13 @@ The following is an example of the built-in data layer that is automatically ava
 ```
 ## How Data Layer Variables are Flattened
 
-Google Tag Manager events are flattened to Tealium attribute names to meet the Tealium Customer Data Hub specifications. The event data is received by Tealium EventStream.
+Google Tag Manager events are flattened to Tealium attribute names to meet the Tealium Customer Data Hub specifications. The event data is received by Event Streaming.
 
 The value of `tealium_event` is the value of the `event` in the `dataLayer.push` call. Google Tag Manager sets the default page view value to `gtm.js` as the name of the event.  To override the default, set the Tealium Event config setting to a variable that contains the event name.
 
 
 <blockquote>
-Attributes are not automatically added. You must add these attributes in Tealium EventStream.
+Attributes are not automatically added. You must add these attributes in Event Streaming.
 </blockquote>
 
 
@@ -203,7 +203,7 @@ window.dataLayer.push({
 });
 ```
 
-The data layer that arrives in Tealium EventStream looks as follows.  Only the `type_object` is flattened and the function is removed.
+The data layer that arrives in Event Streaming looks as follows.  Only the `type_object` is flattened and the function is removed.
 
 ```
 {

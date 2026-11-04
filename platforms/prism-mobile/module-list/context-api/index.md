@@ -31,7 +31,7 @@ Add the module to the `modules` list in `TealiumConfig`.
 
 
 <blockquote>
-A region must be set for the Moments API module to initialize.
+A region must be set for the Context API module to initialize.
 </blockquote>
 
 
@@ -157,7 +157,7 @@ Modules.contextAPI(forcingSettings: { builder in
 
 ### Referrer
 
-For added security, set a referrer URL. The referrer URL must match the [domain allow list](https://docs.tealium.com/about-context-api/#domain-allow-list), or the Moments API does not return data.
+For added security, set a referrer URL. The referrer URL must match the [domain allow list](https://docs.tealium.com/about-context-api/#domain-allow-list), or the Context API does not return data.
 
 The default referrer URL is:
 ```

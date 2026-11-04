@@ -1,6 +1,6 @@
 ---
 title: Install
-description: This article shows how to install Tealium in your Magento® 1 system using the Tealium iQ Tag Management Extension from the Magento Connect Extension Marketplace..
+description: This article shows how to install Tealium in your Magento® 1 system using the Tag Management Extension from the Magento Connect Extension Marketplace..
 url: https://docs.tealium.com/platforms/magento-v1/install/
 ---
 

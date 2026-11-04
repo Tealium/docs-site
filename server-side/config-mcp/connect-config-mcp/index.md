@@ -144,7 +144,10 @@ Confirm the following before starting:
 Before starting a Claude session, run the following command in your terminal:
 
 ```bash
-claude mcp add --transport http tealium-configuration-mcp https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp
+claude mcp add --transport http \
+  --client-id tealium-mcp-for-web-platforms \
+  tealium-configuration-mcp \
+  https://us-west-1.prod.developer.tealiumapis.com/2026-09/mcp/dcp
 ```
 
 Verify the server was added:

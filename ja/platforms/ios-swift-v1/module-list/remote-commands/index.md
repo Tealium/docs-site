@@ -1,51 +1,51 @@
 ---
 title: RemoteCommandsモジュール
-description: Tealium iQタグ管理のイベントからネイティブコードブロックをトリガーすることを可能にし、拡張機能とロードルールによって制御されます。
+description: 拡張機能と読み込みルールによって制御される、タグ管理のイベントからのネイティブコードブロックの実行を可能にします。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/remote-commands/
 ---
-[詳細はこちら](https://docs.tealium.com/ja/platforms/remote-commands/)をご覧ください。
+リモートコマンドについて[詳しくはこちら](https://docs.tealium.com/ja/platforms/remote-commands/)をご覧ください。
 
 ## 要件
 
-* Tealium iQタグ管理モジュール。コンパイル時の依存関係ではありませんが、リモートコマンドはこのモジュールからトリガーされます。
+* Tag Managementモジュール。コンパイル時の依存関係ではありませんが、リモートコマンドはこのモジュールからトリガーされます。
 
-## 対応プラットフォーム
+## サポートされるプラットフォーム
 
 * iOS
 
 ## インストール
 
-CocoaPodsまたはCarthageでRemoteCommandsモジュールをインストールします。
+CocoaPodsまたはCarthageを使用してRemoteCommandsモジュールをインストールします。
 
 ### CocoaPods
 
-CocoaPodsでRemoteCommandsモジュールをインストールするには、Podfileに以下のpodを追加します：
+CocoaPodsを使用してRemoteCommandsモジュールをインストールするには、次のpodをPodfileに追加します。  
 ```ruby
 pod 'tealium-swift/TealiumRemoteCommands'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存しています。[CocoaPodsを使用したiOSのインストールについての詳細はこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)。
+フレームワークは自動的にインスタンス化されます。このフレームワークは`TealiumCore` podに依存しています。iOSでのCocoaPodsのインストールについては、[詳しくはこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
 
 ### Carthage
 
-CarthageでRemoteCommandsモジュールをインストールするには、以下の手順に従ってください：
+Carthageを使用してRemoteCommandsモジュールをインストールするには、次の手順に従います。
 
-1. XcodeでアプリターゲットのGeneral構成ページに移動します。
+1. Xcodeで、アプリターゲットの「General」構成ページに移動します。
 
-2. **Embedded Binaries**セクションに以下のフレームワークを追加します：
+2. **Embedded Binaries**セクションに次のフレームワークを追加します。  
       ```ruby
       TealiumRemoteCommands.framework
       ```
-3. RemoteCommands APIと連携する必要がある場合は、プロジェクトに以下の必要なインポート文を追加します：
+3. RemoteCommands APIを操作する必要がある場合は、次の必須import文をプロジェクトに追加します。  
       ```swift
       import TealiumRemoteCommands
       ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存しています。追加のインポート文は必要ありません。[Carthageを使用したiOSのインストールについての詳細はこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)。
+フレームワークは自動的にインスタンス化されます。このフレームワークは`TealiumCore`に依存しています。追加のimport文は必要ありません。iOSでのCarthageのインストールについては、[詳しくはこちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
 
 ## 例
 
-Tealium IQでリモートコマンドタグが構成され、アプリにモジュールがインストールされたら、以下の例に示すように初期化に次の行を追加します：
+Tag ManagementでRemote Commandタグを構成し、アプリにモジュールをインストールしたら、次の例に示すように初期化処理へ以下の行を追加します。
 
 ```swift
 class TealiumHelper {
@@ -69,28 +69,30 @@ class TealiumHelper {
 ```
 
 ## データレイヤー
+
 このモジュールによって追加される変数はありません。
 
 ## APIリファレンス
 
 ### `init()`
-新しいリモートコマンドオブジェクトを作成し、`add`コマンドに渡す準備をします。
 
-| パラメータ   | 説明                                       | 例       |
+`add`コマンドに渡す準備ができた、新しいリモートコマンドオブジェクトを作成します。
+
+| パラメータ | 説明 | 例 |
 |-------------|---------------------------------------------------|--------------------|
-| `commandId`   | リモートコマンドのための必須の文字列識別子 | `"logger" `       |
-| `description` | リモートコマンドのオプションの文字列説明 | `"Log Response object to console"` |
-| `queue`       | コードブロックをトリガーするキュー          | `DispatchQueue.main` |
-| `completion`  | トリガーするコードブロック                      |                   |
+| `commandId` | リモートコマンドの必須の文字列識別子 | `"logger" ` |
+| `description` | リモートコマンドの任意の文字列による説明 | `"Log Response object to console"` |
+| `queue` | コードブロックをトリガーするキュー | `DispatchQueue.main` |
+| `completion` | トリガーするコードブロック | |
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
 let customCommand = TealiumRemoteCommand(commandId: "logger",
                                         description: "Log Response object to console",
                                         queue: DispatchQueue.main)
                                         { (response) in
-                                            // 実行するコード
+                                            // code to execute
                                             print("Custom command response: (response)")
                                         })
 ```
@@ -99,17 +101,17 @@ let customCommand = TealiumRemoteCommand(commandId: "logger",
 
 
 <blockquote>
-1.6.5以降、`TealiumConfig`の[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/#addremotecommand)メソッドを使用してリモートコマンドを追加することをお勧めします
+バージョン1.6.5以降では、`TealiumConfig`の[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/#addremotecommand)メソッドを使用してリモートコマンドを追加することを推奨します。
 </blockquote>
 
 
-指定されたリモートコマンドをTealiumに登録して、後でトリガーできるようにします。Tealiumは新しいリモートコマンドを追加する前に初期化されている必要があります。
+指定したリモートコマンドを、後でトリガーできるようTealiumに登録します。新しいリモートコマンドを追加する前に、Tealiumを初期化しておく必要があります。
 
 ```swift
 add(remoteCommand: TealiumRemoteCommand)
 ```
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
 var tealium: Tealium?
@@ -117,7 +119,7 @@ let customCommand = TealiumRemoteCommand(commandId: "logger",
     description: nil,
     queue: DispatchQueue.main)
     { response in
-        // 実行するコード
+        // code to execute
         print("Custom command response: (response)")
     })
 if let remoteCommands = self.tealium?.remoteCommands() {
@@ -128,14 +130,15 @@ print("Remote commands not available")
 ```
 
 ### `remove()`
-以前に登録されたリモートコマンドを削除して、再度トリガーされないようにします。
+
+以前に登録したリモートコマンドを削除し、再度トリガーされないようにします。
 
 ```swift
 remove(commandWithId: String)
 ```
 
 ```swift
-// "tealium"が以前にインスタンス化されたと仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.remove(commandWithId: "logger")
 ```
 
@@ -147,73 +150,74 @@ tealium?.remoteCommands()?.remove(commandWithId: "logger")
 disableRemoteCommands()
 ```
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
-// "tealium"が以前にインスタンス化されたと仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.disableRemoteCommands()
 ```
 
 ### `enableRemoteCommands()`
 
-リモートコマンドモジュールを有効にします（以前に無効にされていた場合のみ必要です。デフォルトは有効です）。
+リモートコマンドモジュールを有効にします（以前に無効化した場合にのみ必要です。デフォルトでは有効です）。
 
 ```TealiumSwift
 enabledRemoteCommands()
 ```
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
-// "tealium"が以前にインスタンス化されたと仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.enableRemoteCommands()
 ```
 
 ### `disableRemoteHTTPCommand()`
-組み込みのリモートHTTPコマンドを無効にしますが、他のコマンドのためにリモートコマンドモジュールは有効のままです。
+
+組み込みのリモートHTTPコマンドを無効にしますが、他のコマンドに対してリモートコマンドモジュールは有効なままにします。
 
 ```swift
 disableRemoteHTTPCommand()
 ```
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
-// "tealium"が以前にインスタンス化されたと仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.disableRemoteHTTPCommand()
 ```
 
 ### `enableRemoteHTTPCommand()`
-組み込みのリモートHTTPコマンドを有効にします（以前に無効にされていた場合のみ必要です。デフォルトは有効です）。
+
+組み込みのリモートHTTPコマンドを有効にします（以前に無効化した場合にのみ必要です。デフォルトでは有効です）。
 
 ```swift
 enableRemoteHTTPCommand()`
 ```
 
-以下は使用例です：
+使用例は次のとおりです。
 
 ```swift
-// "tealium"が以前にインスタンス化されたと仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands()?.enableRemoteHTTPCommand()
 ```
 
-
 ## リモートHTTPコマンド
 
-これは、ネイティブコードからHTTPリクエストをトリガーし、レスポンスをTealium iQウェブビューに戻す、識別子`_http`の予約された内部コマンドです。このコマンドを使用する場合、特定のマッピング名を使用する必要があります：
+これは、識別子`_http`を持つ予約済みの内部コマンドです。ネイティブコードからHTTPリクエストをトリガーし、そのレスポンスをTag ManagementのWebビューに返します。Webブラウザーで発生する可能性があるCORS制限を回避するために使用される場合があります。このコマンドを使用するには、次の特定のマッピング名を使用する必要があります。
 
 | マッピング名 | 説明 |
 | --- | --- |
-| `url` | (必須) トリガーしたいリクエストのURL。 |
-|`method`| (必須) 呼び出したいHTTPメソッド。現在サポートされているのはPUT、GET、POSTのみです。|
-|`headers` |(オプション) リクエストと一緒に渡すヘッダーキーバリューペアを含むJavaScriptオブジェクト（JSON）。例えば、`{"Content-Type": "application/json"}`。|
-|`callback_function`| (オプション) コマンドが完了したときに呼び出されるJavaScript関数。コールバック関数には2つのパラメータが渡されます：`code`は404や200などのHTTPレスポンスコードで、`body`はリクエストからのレスポンスボディです。|
+| `url` | （必須）トリガーするリクエストのURL。 |
+| `method` | （必須）呼び出すHTTPメソッド。現在サポートされているメソッドはPUT、GET、POSTのみです。v |
+| `headers` | （任意）リクエストとともに渡すヘッダーのキーと値のペアを含むJavaScriptオブジェクト（JSON）。例：`{"Content-Type": "application/json"}`。 |
+| `callback_function` | （任意）コマンドの完了時に呼び出されるJavaScript関数。コールバック関数には2つのパラメータが渡されます。`code`は404や200などのHTTPレスポンスコードで、`body`はリクエストのレスポンス本文です。 |
 
-こちらがサンプルのコールバック関数です：
+コールバック関数の例を次に示します。
 
 ```swift
 var my_callback = function(code, body) {
-   // レスポンスボディがJSONオブジェクトであったと仮定すると、これはウェブビューのコンソールにmy_response_variableという変数をログに記録します
+   // assuming the response body was a JSON object, this logs a variable called my_response_variable to the console in the web view
 	console.log(body.my_response_variable);
 }
 ```

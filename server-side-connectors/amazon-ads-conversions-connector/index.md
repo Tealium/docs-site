@@ -25,6 +25,7 @@ After adding the connector, configure the following settings:
 
 * **API Base URL**: (Required) Select your API Base URL.
 * **Amazon Advertiser ID**: (Required) Enter your Amazon Advertising account ID.
+* **Amazon Ads Manager Account ID**: (Optional) The identifier of an Amazon Ads Manager Account associated with the Advertiser ID. When populated, Tealium sends the value as the `Amazon-Ads-Manager-AccountId` request header. When not configured, the connector omits the header.
 
 ## Deduplication for web events
 
@@ -81,7 +82,7 @@ Enter a name for the action and select the action type.
 
 The following section describes how to set up parameters and options for each action.
 
-### Send Conversion 
+### Send Conversion
 
 #### Batch limits
 
@@ -116,8 +117,10 @@ Do not map the `Name` field to high-cardinality or dynamic data such as page nam
 | Value | The value of the event. |
 | Currency Code | Currency in ISO-4217 format. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
 | Units Sold | The number of items purchased. Only applicable for the `OFF_AMAZON_PURCHASES` conversion type. |
-| Data Processing Options | A flag for signaling how an event is processed. Events marked for limited data use are not processed. For example, `LIMITED_DATA_USE` |
+| Data Processing Options | A flag for signaling how an event is processed. Events marked for limited data use are not processed. For example, `LIMITED_DATA_USE`. |
 | Dedupe ID | A unique identifier used to deduplicate conversion events sent from both the tag and the connector. Set the same value in both to prevent duplicate conversion reporting. |
+| User Agent | Browser or application user agent associated with the conversion event. The connector sends this value un-hashed. |
+| Amazon Referral Measurement Tokens | Amazon referral token from an Amazon Attribution link. Provide as one or more pipe-separated `token.timestamp` pairs, where the token is 10 alphanumeric characters and the timestamp is a 13-digit UTC epoch-millisecond value. For example: `abc1234567.1786393292000`. |
 
 
 #### User Data
@@ -125,6 +128,8 @@ Do not map the `Name` field to high-cardinality or dynamic data such as page nam
 Amazon matches uploaded records to Amazon Ads users by evaluating identifiers from most precise to least precise. Three identifier types are supported: hashed PII, mobile advertising IDs (MAIDs), and external IDs.
 
 Email produces the highest match rate because it is the primary credential used to create Amazon accounts and has the broadest coverage in Amazon identity graphs. Phone and MAID work as standalone identifiers but produce lower match rates. Phone numbers can be shared across household members or recycled by carriers. MAIDs are subject to ongoing deprecation.
+
+The following identifier types do not require hashing: MAID, Ramp ID, Real ID, Merkle ID, Kantar ID, IP, and Match ID.
 
 
 <blockquote>
@@ -153,15 +158,18 @@ We recommend mapping multiple identifier types with email as the priority (for e
 | MAID | Mobile Identifier. Possible values are `MAID`, `ADID`, `IDFA`, and `FIREADID`. |
 | Ramp ID | The LiveRamp identifier. |
 | Match ID | A generic match identifier type that Amazon supports as a user identity key. | 
+| Real ID | Real ID user identifier. |
+| Merkle ID | Merkle ID user identifier. |
+| Kantar ID | Kantar ID user identifier. |
 | Custom Data | Map custom data associated with the conversion event. |
 
 #### Consent
 
 | Parameter | Description |
 | --- | --- |
-|  Amazon Ad Storage | Indicates whether the user granted consent to Amazon to store and access advertising identifiers. Possible values are `GRANTED` or `DENIED`. | 
+| Amazon Ad Storage | Indicates whether the user granted consent to Amazon to store and access advertising identifiers. Possible values are `GRANTED` or `DENIED`. |
 | Amazon User Data | Indicates whether the user granted consent to Amazon to use their user data for ads. Possible values are `GRANTED` or `DENIED`. |
-| IP Address | The IP address of the user.|
+| IP Address | The IP address of the user. |
 | GPP String | The GPP consent string. |
 | TCF String | The GDPR consent string using IAB (Interactive Advertising Bureau). |
 

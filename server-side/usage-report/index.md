@@ -94,7 +94,7 @@ The number of offline and bulk events received by Customer Data Platform. This g
 The number of real-time events may not match the number of Customer Data Platform events due to any of the following expected reasons:
 
 * **Filtered events**  
-If the [AudienceStream event filter](https://docs.tealium.com/server-side-account-settings/#general-settings) is set, only events that match the filter are processed.
+If the [Customer Data Platform event filter](https://docs.tealium.com/server-side-account-settings/#general-settings) is set, only events that match the filter are processed.
 * **Consent**  
 If consent is in use, Customer Data Platform will not process events unless the visitor has opted into the CDP consent category. For more information, see .
 * **Exceeding data size limits**  

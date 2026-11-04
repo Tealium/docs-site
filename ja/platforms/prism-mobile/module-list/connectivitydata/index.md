@@ -1,13 +1,13 @@
 ---
-title: ConnectivityDataモジュール
+title: ConnectivityData モジュール
 description: ネットワーク接続を監視し、すべてのトラッキングイベントに接続情報を追加します。
 url: https://docs.tealium.com/ja/platforms/prism-mobile/module-list/connectivitydata/
 ---
-ConnectivityDataモジュールはネットワーク接続を監視し、すべてのトラッキングイベントに現在の接続タイプを追加します。
+ConnectivityData モジュールはネットワーク接続を監視し、現在の接続タイプをすべてのトラッキングイベントに追加します。
 
 ## データレイヤー
 
-モジュールが有効な間、各トラッキング呼び出しに次の変数が追加されます。
+モジュールが有効になっている間、各トラッキング呼び出しに次の変数が追加されます。
 
 | 変数 | 説明 | 例 |
 | :--- | :--- | :--- |
@@ -17,7 +17,7 @@ ConnectivityDataモジュールはネットワーク接続を監視し、すべ�
 
 
 
-ConnectivityDataモジュールは`TealiumPrismCore`に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift`を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに追加します。
+ConnectivityData モジュールは `TealiumPrismCore` に含まれています。リポジトリURL `https://github.com/Tealium/tealium-prism-swift` を使用してSwift Package Managerの依存関係として追加するか、CocoaPods用のPodfileに追加します。
 
 ```ruby
 pod 'tealium-prism/Core'
@@ -29,7 +29,7 @@ pod 'tealium-prism/Core'
 
 
 
-`TealiumConfig`のmodulesパラメータにモジュールを追加し、プログラムで構成します。
+`TealiumConfig` のmodulesパラメータにモジュールを追加して、プログラムで構成します。
 
 モジュール構成の詳細については、[`ModuleSettingsBuilder`](https://docs.tealium.com/tealium-prism-swift/TealiumPrismCore/Classes/ModuleSettingsBuilder.html)を参照してください。
 

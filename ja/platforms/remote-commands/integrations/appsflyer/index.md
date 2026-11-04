@@ -1,83 +1,89 @@
 ---
 title: リモートコマンド：AppsFlyer
-description: AndroidおよびSwift/iOSにおけるAppsFlyerのTealiumリモートコマンド統合です。
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドとAppsFlyerの統合。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/appsflyer/
 ---
 ## 要件
 
-- AppsFlyer [アプリ ID](https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store) および [デバイス キー](https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key)
-- これらのモバイル ライブラリのうちのいずれか:
-  - [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/) (1.0.0 以降)
-  - [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/) (5.9.0 以降 (AppsFlyer 1.0.0 以降用) または 5.9.0 以前 (旧バージョン用))
-  - [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)
-- これらのリモート コマンド統合のいずれか:
-  - [AppsFlyer Remote Command JSON File](https://docs.tealium.com/ja/platforms/remote-commands/integrations/appsflyer/#json-template) (Android-Kotlin 1.0.0 以降または iOS-Swift 2.1.0 以降が必要)
-  - AppsFlyerリモート コマンド タグ (Tealium iQ タグ管理)
+* AppsFlyerの[アプリID](https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store)と[開発者キー](https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key)
+* 次のいずれかのモバイルライブラリ：
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）
+  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（AppsFlyer 1.0.0以降の場合は5.9.0以降、それ以前のバージョンの場合は5.9.0以前）
+  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)
+  * [Tealium for React Native](https://docs.tealium.com/ja/platforms/react-native/)
+* 次のいずれかのリモートコマンド統合：
+  * [AppsFlyerリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/appsflyer/#json-template)（Android-Kotlin 1.0.0以降、またはiOS-Swift 2.1.0以降が必要）
+  * タグ管理のAppsFlyerリモートコマンドタグ
 
 ## 仕組み
 
-AppsFlyer 統合は、これらのアイテムを使用します:
+AppsFlyer統合では、次の3つの項目を使用します。
 
-1. AppsFlyer ネイティブ SDK
-2. AppsFlyer メソッドをラップするリモート コマンド モジュール
-3. イベント トラッキングをネイティブ AppsFlyer コールに翻訳する、JSON 構成ファイルまたは Remote Command タグのいずれか
+1. AppsFlyerネイティブSDK
+1. AppsFlyerメソッドをラップするリモートコマンドモジュール
+1. イベントトラッキングをAppsFlyerのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ
 
-AppsFlyer リモート コマンド モジュールをアプリに追加すると、必要な AppsFlyer ライブラリが自動的にインストールされ、ビルドされます。この際、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャのインストールを使用している場合、AppsFlyer SDKを個別にインストールする必要はありません。
+AppsFlyerリモートコマンドモジュールをアプリに追加すると、必要なAppsFlyerライブラリが自動的にインストールおよびビルドされるため、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャーを使用してインストールする場合は、AppsFlyer SDKを個別にインストールする必要はありません。
 
-リモート コマンド オプションは、次の 2 つがあります: A JSON 構成ファイル、または、マッピングを構成するための iQ タグ管理の使用。A JSON 構成ファイルは、リモートでホスティングするか、またはアプリ内でローカルでホスティングするかのいずれでも、ベンダー統合の推奨オプションです。iQ タグ管理を使用する場合は、ベンダー統合用のリモート コマンド タグを追加します。[ベンダー統合](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)の詳細は、こちらから参照してください。
-
-
-<blockquote>
-iOS：AppsFlyerバージョン4.8.11以降の場合、SDKはネイティブフレームワーク`AdSupport.framework`および`iAd.framework`を自動的に追加します。詳細については、[AppsFlyer iOS SDK統合](https://support.appsflyer.com/hc/en-us/articles/207032066#integration)に関するガイドを参照してください。
-</blockquote>
-
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー統合には、リモートでホストするかアプリ内にローカルで配置したJSON構成ファイルの使用を推奨します。タグ管理を使用する場合は、ベンダー統合用のリモートコマンドタグを追加します。[ベンダー統合](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)の詳細を参照してください。
 
 ## インストール
 
-### 依存関係マネージャ
-
-次の依存関係マネージャのいずれかをインストールに使用することをお勧めします。
+### 依存関係マネージャー
 
 
 
 
-CocoaPodsを使用してiOSのAppsFlyerリモートコマンドをインストールするには：
+1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
+1. リポジトリURLとして`https://github.com/tealium/tealium-ios-appsflyer-remote-command`を入力します。
+1. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumAppsFlyer`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
+1. インストールする`TealiumAppsFlyer`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
 
-1. `tealium-swift`と`pod "AppsFlyerFramework"`がPodfileに存在する場合は削除します。`tealium-swift`の依存関係は`TealiumAppsFlyer`フレームワークに既に含まれています。
+プロジェクトに複数のアプリターゲットがあり、追加のアプリターゲットでも`TealiumAppsFlyer`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-2. 次の依存関係をPodfileに追加します。
-```ruby
-pod "TealiumAppsFlyer"
-```  
-`TealiumAppsFlyer`ポッドには以下の`TealiumSwift`依存関係が含まれています。
-```bash
-'tealium-swift/Core'
-'tealium-swift/RemoteCommands'
-'tealium-swift/TagManagement'
-```
+追加のアプリターゲットに`TealiumAppsFlyer`をインストールするには、次の手順を実行します。
 
-3. モジュール`TealiumSwift`および`TealiumAppsFlyer`を、`TealiumHelper`ファイル、`Tealium`クラスにアクセスするその他のファイル、またはAppsFlyerリモートコマンドにインポートします。
+1. **Project Navigator**でXcodeプロジェクトを選択します。
+1. Xcodeプロジェクトの**TARGETS**セクションでアプリターゲットを選択します。
+1. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumAppsFlyer`モジュールを選択してアプリターゲットに追加します。
+
+Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の手順に従ってください。
 
 
 
 
-Carthageを使用してiOSのAppsFlyerリモートコマンドをインストールするには：
+1. Podfileに`tealium-swift`および`pod "AppsFlyerFramework"`が存在する場合は削除します。`tealium-swift`への依存関係は、すでに`TealiumAppsFlyer`フレームワークに含まれています。
+2. Podfileに次の依存関係を追加します。  
+      ```ruby
+      pod "TealiumAppsFlyer"
+      ```  
+      `TealiumAppsFlyer` Podには、次の`TealiumSwift`依存関係が含まれています。  
+      ```bash
+      'tealium-swift/Core'
+      'tealium-swift/RemoteCommands'
+      ```
 
-1. `tealium-swift`をCartfileから削除します。`tealium-swift`の依存関係は`TealiumAppsFlyer`フレームワークに既に含まれています。
+3. `TealiumHelper`ファイル、および`Tealium`クラスまたはAppsFlyerリモートコマンドにアクセスするその他のファイルで、`TealiumSwift`モジュールと`TealiumAppsFlyer`モジュールをインポートします。
 
-2. 以下の行がCartfileに存在する場合は、その行を削除します。
-```bash
-`binary "https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json"`
-```
 
-3. 次の依存関係をCartfileに追加します。
-```bash
-github "tealium/tealium-ios-appsflyer-remote-command"
-```
+
+
+Carthageを使用してiOS向けAppsFlyerリモートコマンドをインストールするには、次の手順を実行します。
+
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`への依存関係は、すでに`TealiumAppsFlyer`フレームワークに含まれています。
+2. Cartfileに次の行が存在する場合は削除します。  
+      ```bash
+      `binary "https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json"`
+      ```
+
+3. Cartfileに次の依存関係を追加します。  
+      ```bash
+      github "tealium/tealium-ios-appsflyer-remote-command"
+      ```
 
 
 <blockquote>
-Tealium for Swift SDK (バージョン 1.x) および `TealiumAppsFlyer` バージョン 1.x では、 `TealiumDelegate` モジュールがインストールに含まれている必要があります。
+Tealium for Swift SDK（バージョン1.x）および`TealiumAppsFlyer`バージョン1.xでは、インストール時に`TealiumDelegate`モジュールを含める必要があります。
 </blockquote>
 
 
@@ -86,233 +92,176 @@ Tealium for Swift SDK (バージョン 1.x) および `TealiumAppsFlyer` バー�
 
 
 
-Mavenを使用してAndroidのAppsFlyerリモートコマンドをインストールするには：
 
-1. [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/) または [Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/) をインストールして、Tealium Maven URL を、プロジェクトのトップレベル `build.gradle` ファイルに追加します (まだ済んでいない場合)。
+1. まだインストールしていない場合は、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトの最上位`build.gradle`ファイルにTealium Maven URLを追加します。
 
-    ```groovy
-    allprojects {
-      repositories {
-        mavenCentral()
-        maven {
-          url "https://maven.tealiumiq.com/android/releases/"
+      ```groovy
+      allprojects {
+        repositories {
+          mavenCentral()
+          maven {
+            url "https://maven.tealiumiq.com/android/releases/"
+          }
         }
       }
-    }
-    ```
+      ```
 
-2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、AppsFlyer SDKとTealium-AppsFlyerの両方のリモートコマンドをインポートします。
-```groovy
-dependencies {
-    implementation 'com.tealium.remotecommands:appsflyer:1.0.0'
-}
-```
-
-
-
-
-### 手動による手順（iOS）
-
-AppsFlyer リモート コマンドを手動でインストールするには、 [Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/) ライブラリがインストールされている必要があります。iOSプロジェクトのAppsFlyerリモートコマンドをインストールするには：
-
-1. [AppsFlyer SDK](https://github.com/AppsFlyerSDK/AppsFlyerFramework)をまだインストールしていない場合はインストールします。
-
-2. [Tealium iOS AppsFlyerリモートコマンド](https://github.com/tealium/tealium-ios-appsflyer-remote-command)レポジトリをクローンして、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
-
-3. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled) 構成フラッグを `true`に構成します
-
-### 手動（Android）
-
-AppsFlyer リモート コマンドを手動でインストールするには、 [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/) または [Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/) がインストールされている必要があります。AndroidプロジェクトのAppsFlyerリモートコマンドをインストールするには：
-
-1. `flatDir`をプロジェクトのルートにある`build.gradle`ファイルに追加します。
-```groovy
-allprojects {
-      repositories {
-         mavenCentral()
-         flatDir {
-             dirs 'libs'
-         }
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、AppsFlyer SDKとTealium-AppsFlyerリモートコマンドの両方をインポートします。  
+      ```groovy
+      dependencies {
+      implementation 'com.tealium.remotecommands:appsflyer:1.0.0'
       }
-}
-```
+      ```
+
+
+
+メインの[Tealium React Nativeライブラリ](https://docs.tealium.com/ja/platforms/react-native)のインストール手順に従ってください。バージョン2.2.0以降がインストールされていることを確認してください。
+
+React Nativeプロジェクトのルートに移動します。
+
+次のコマンドを使用して、`tealium-react-appsflyer`パッケージをダウンロードしてインストールします。
+
+AppsFlyerリモートコマンドパッケージをインストールします。
+```yarn add tealium-react-appsflyer```
+
+
+
+
+### 手動インストール
+
+
+
+
+AppsFlyerリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにAppsFlyerリモートコマンドをインストールするには、次の手順を実行します。
+
+1. まだインストールしていない場合は、[AppsFlyer SDK](https://github.com/AppsFlyerSDK/AppsFlyerFramework)をインストールします。
+1. [Tealium iOS AppsFlyerリモートコマンド](https://github.com/tealium/tealium-ios-appsflyer-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
+1. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
+
+
+
+
+AppsFlyerリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。AndroidプロジェクトにAppsFlyerリモートコマンドをインストールするには、次の手順を実行します。
+
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。  
+      ```groovy
+      allprojects {
+            repositories {
+              mavenCentral()
+              flatDir {
+                  dirs 'libs'
+              }
+            }
+      }
+      ```
 
 2. `tealium-appsflyer.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. Tealiumライブラリの依存関係を`build.gradle`ファイルに追加します。
-```groovy
-dependencies {
-      implementation(name:'tealium-appsflyer', ext:'aar')
-}
-```
+3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。  
+      ```groovy
+      dependencies {
+            implementation(name:'tealium-appsflyer', ext:'aar')
+      }
+      ```
+
+
 
 ## 初期化
 
-すべてのTealiumライブラリについて、初期化時にAppsFlyerリモートコマンドを登録します。
-
-### Android (Kotlin)
-
-Tealium の Android (Kotlin) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。
+すべての Tealium ライブラリで、初期化時に AppsFlyer Remote Command を登録します。
 
 
 
-以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Command 機能とともに用いるために設計されています。
-```kotlin
+
+Tealium の iOS（Swift）ライブラリでは、JSON 構成ファイルまたは Remote Command タグを使用してリモートコマンドを初期化します。
+```swift
 // Sets up a config object and creates a Tealium instance
+    let config = TealiumConfig(account: "ACCOUNT",
+                               profile: "PROFILE",
+                               environment: "ENVIRONMENT")
+    
+    // Webview Tag
+    let appsFlyerRemoteCommand = AppsFlyerRemoteCommand()
+
+    // Local JSON
+    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .local(file: "appsflyer"))
+
+    // Remote JSON
+    //let appsFlyerRemoteCommand = AppsFlyerRemoteCommand(type: .remote(url: "https://some.domain.com/path/to/appsflyer.json"))
+
+    config.remoteAPIEnabled = true
+    config.collectors = [Collectors.Lifecycle]
+    config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+    
+    config.addRemoteCommand(appsFlyerRemoteCommand)
+    
+    var tealium = Tealium(config: config)
+```
+
+
+Tealium の Android（Kotlin）ライブラリでは、JSON 構成ファイルまたは Remote Command タグを使用してリモートコマンドを初期化します。  
+```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
         "PROFILE",
         Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-var tealium = Tealium.create(TEALIUM_MAIN, config) {
-    // New code to add the AppsFlyer Remote Command
-    val appsFlyerRemoteCommand = AppsFlyerRemoteCommand(application,
-                                      appsFlyerDevKey = devKey)
-    // register the command
-    remoteCommands?.add(appsFlyerRemoteCommand, filename = "appsflyer.json");
-}
-```
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
+val appsFlyer = AppsFlyerRemoteCommand(applicationm, appsFlyerDevKey = devKey);
 
-
-以下のコードは、Remote Command タグ機能とともに用いるために設計されています。
-```kotlin
-// Sets up a config object and creates a Tealium instance
-val config = TealiumConfig(application,
-        "ACCOUNT",
-        "PROFILE",
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
-    // New code to add the AppsFlyer Remote Command
-    val appsFlyer = AppsFlyerRemoteCommand(application,
-                                      appsFlyerDevKey = devKey)
-    // register the command
-    remoteCommands?.add(appsFlyer);
+
+    // Webview Tag
+    remoteCommands?.add(appsFlyer); 
+
+    // Local JSON
+    //remoteCommands?.add(appsFlyer, filename = "appsFlyer.json");
+
+    // Remote JSON
+    //remoteCommands?.add(appsFlyer, remoteUrl = "https://some.domain.com/appsFlyer.json");
 }
 ```
 
 
 
-### Android (Java)
-
-
-
-Android 向けの JSON Remote Command ファイル機能は、Kotlin SDK でのみ利用できます。
-
-
-
-以下のコードは、Remote Command タグ機能とともに用いるために設計されています。
+Tealium の Android（Java）ライブラリでは、Remote Command タグを使用してリモートコマンドを初期化します。  
 ```java
 // Sets up a config object and creates a Tealium instance
 Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE", "ENVIRONMENT");
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
-    // New code to add the AppsFlyer Remote Command
+
+// New code to add the AppsFlyer Remote Command
 AppsFlyerRemoteCommand appsFlyer = new AppsFlyerRemoteCommand(application, appsFlyerDevKey = devKey)
 teal.addRemoteCommand(appsFlyer);
 ```
 
 
+```js
+import AppsflyerRemoteCommand from 'tealium-react-appsflyer';
 
-### iOS (Swift)
+AppsflyerRemoteCommand.initialize();
 
-Tealium の iOS (Swift) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。
-
-
-
-
-以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Command 機能とともに用いるために設計されています。
-```swift
-var tealium : Tealium?
-let config = TealiumConfig(account: "ACCOUNT",
-                           profile: "PROFILE",
-                           environment: "ENVIRONMENT",
-                           dataSource: "DATASOURCE",
-                           optionalData: nil)
-
-config.remoteAPIEnabled = true // Required to use Remote Commands
-
-tealium = Tealium(config: config) { _ in
-    guard let remoteCommands = self.tealium?.remoteCommands else {
-        return
-    }
-
-	let appsflyer = AppsFlyerRemoteCommand(type: .local(file: "appsflyer"))
-	remoteCommands.add(appsflyer)
+let config = TealiumConfig {
+    // ...
+    remoteCommands: [{
+        id: AppsflyerRemoteCommand.name,
+        // Optional - path to local JSON mappings
+        // path: "appsflyer.json"
+        // Optional - path to remote JSON mappings
+        // url: "https://some.domain.com/appsflyer.json"
+    }]
 }
+Tealium.initialize(config, success => {});
 ```
 
 
 
+## プッシュメッセージのトラッキング（iOS）
 
-以下のコードは、Remote Command タグ機能とともに用いるために設計されています。
-```swift
-var tealium : Tealium?
-let config = TealiumConfig(account: "ACCOUNT",
-                           profile: "PROFILE",
-                           environment: "ENVIRONMENT",
-                           dataSource: "DATASOURCE",
-                           optionalData: nil)
-
-config.remoteAPIEnabled = true // Required to use Remote Commands
-
-tealium = Tealium(config: config) { _ in
-    guard let remoteCommands = self.tealium?.remoteCommands else {
-        return
-    }
-
-	let appsFlyer = AppsFlyerRemoteCommand()
-	remoteCommands.add(appsFlyer)
-}
-
-```
-
-
-
-
-## プッシュメッセージトラッキング
-
-Tealium Swiftライブラリには、Tealium と AppsFlyer リモート コマンドを介してプッシュ メッセージ トラッキングに対処するための `TealiumRegistration` プロトコルが含まれています。Tealium は ラッパー クラス `AppsFlyerInstance` でこのプロトコルに準拠し、プッシュ メッセージ認証イベントとプッシュ メッセージ オープン イベントの送信、およびトラッキングのアンインストールにこのプロトコルを使用しています。プッシュメッセージトラッキング機能を利用することをお勧めします。
-
-iOSプロジェクトのプッシュメッセージトラッキングを統合するには、次の手順を実行します。
-
-1. `TealiumHelper.swift`ファイルで、`TealiumRegistration`プロトコルに準拠しているオブジェクトの空の配列を初期化します。例：
-```swift
-var pushMessagingTrackers = [TealiumRegistration]()
-```
-2. `AppsFlyerRemoteCommand`の前に `AppsFlyerInstance` を初期化します
-3. 前述の配列に `AppsFlyerInstance` を追加します
-
-以下は、プッシュメッセージトラッキング統合の例の全文です。
-
-```swift
-var pushMessagingTrackers = [TealiumRegistration]()
-var tealium : Tealium?
-let config = TealiumConfig(account: "ACCOUNT",
-                           profile: "PROFILE",
-                           environment: "ENVIRONMENT",
-                           dataSource: "DATASOURCE",
-                           optionalData: nil)
-config.remoteAPIEnabled = true // Required to use Remote Commands
-
-tealium = Tealium(config: config) { _ in
-    guard let remoteCommands = self.tealium?.remoteCommands else {
-        return
-    }
-
-	let appsflyerInstance = AppsFlyerInstance()
-	let appsflyer = AppsFlyerRemoteCommand(appsflyerInstance: appsflyerInstance, type: .local(file: "appsflyer"))
-	pushMessagingTrackers.append(appsflyerInstance)
-	remoteCommands.add(appsflyer)
-}
-```
-
-`TealiumHelper.swift`ファイル全体を表示するには、[AppsFlyerリモートコマンドサンプルアプリ](https://github.com/Tealium/tealium-ios-appsflyer-remote-command/tree/master/TealiumAppsFlyerExample)を確認してください。ユーザーが通知の登録、プッシュメッセージのオープン、またはアプリのアンインストールを行った後でAppsFlyerにイベントを送信するには、ファイル`AppDelegate.swift`を参照してください
-
-AppsFlyerのプッシュメッセージ、およびトラッキング機能のアンインストールの詳細については、[開発者向けiOS SDK統合](https://support.appsflyer.com/hc/en-us/articles/207032066)に関するガイドを参照してください。
+iOS 向け TealiumAppsFlyer SDK バージョン 3.0.0 では、異なるリモートコマンド間でプッシュメッセージングを一般化し、統一するために以前使用されていた `TealiumRegistration` フレームワークのサポートを削除しました。プッシュ通知は、基盤となる `AppsFlyerLib` フレームワークで直接処理されます。詳細については、[AppsFlyer のプッシュ通知に関するドキュメント](https://dev.appsflyer.com/hc/docs/push-notifications)を参照してください。
 
 ## JSON テンプレート
 
-[JSON 構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモート コマンドを構成しようとする場合は、まず、以下のテンプレートを参照します。テンプレートには、標準的な E コマースのインストールに用いられる共通マッピングが含まれます。必要に応じて、マッピングを編集します。
+[JSON 構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、次のテンプレートを出発点として使用してください。このテンプレートには、標準的な e コマース実装で使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -386,10 +335,10 @@ AppsFlyerのプッシュメッセージ、およびトラッキング機能の�
 
 ## サポートされているメソッド
 
-以下のAppsFlyerメソッドは、以下のTealiumコマンドを使用し、AppsFlyerリモートコマンドタグのデータマッピングを使用してトリガーできます。
+各 AppsFlyer メソッドにコマンドをマッピングします。AppsFlyer メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-| リモートコマンド | AppsFlyerメソッド|
-| :-- | :--|
+| Remote Command | AppsFlyer メソッド |
+| :-- | :-- |
 | `initialize` | `initialize()` |
 | `trackLaunch` | `trackLaunch()` |
 | 以下のいずれかのイベント名 | `trackEvent()` |
@@ -400,16 +349,12 @@ AppsFlyerのプッシュメッセージ、およびトラッキング機能の�
 | `disableDeviceTracking` | `setDeviceTrackingDisabled` |
 | `disableTracking` | `isStopTracking (property on the AppsFlyerTracker.shared object)` |
 | `resolveDeeplinkUrls` | `resolveDeepLinkURLs (property on the AppsFlyerTracker.shared object)` |
-| `didReceiveRemoteNotification`内の`AppDelegate`で手動で呼び出されます| `handlePushNotification()` |
-| `didReceiveRemoteNotification`内の`AppDelegate`で手動で呼び出されます| `trackEvent() - event name: af_opened_from_push_notification` |
-| `didRegisterForRemoteNotificationsWithDeviceToken`内の`AppDelegate`で手動で呼び出されます| `registerPushToken()` |
-
 ### 標準イベント名
 
-以下は、`trackEvent`メソッドでサポートされている標準イベント名のリストです。以下のコマンド名のいずれかが送信された場合は、AppsFlyer SDKで自動的にトリガーされます。ここでは、その特定のイベントに対する必要なすべての変数のマッピングおよび定義も行われていることが前提となっています。[アプリ内イベントの記録](https://support.appsflyer.com/hc/en-us/articles/207032066#core-apis-5-recording-inapp-events)に関する詳細と、[推奨される業種別アプリ内イベント](https://support.appsflyer.com/hc/en-us/articles/115005544169#Verticals)のリストをご確認ください。
+以下は、`trackEvent` メソッドでサポートされている標準イベント名の一覧です。以下のコマンド名のいずれかが送信されると、AppsFlyer SDK で自動的にトリガーされます。ただし、そのイベントに必要なすべての変数がマッピングおよび定義されていることが前提です。[アプリ内イベントの記録](https://support.appsflyer.com/hc/en-us/articles/207032066#core-apis-5-recording-inapp-events)の詳細と、[業種別に推奨されるアプリ内イベントの全一覧](https://support.appsflyer.com/hc/en-us/articles/115005544169#Verticals)を参照してください。
 
-| リモートコマンド | AppsFlyerイベント名|
-| :-- | :--|
+| リモートコマンド | AppsFlyerイベント名 |
+| :-- | :-- |
 |`achievedLevel`| `"af_level_achieved"`|
 |`addPaymentInfo`| `"af_add_payment_info"`|
 |`addToCart`| `"af_add_to_cart"`|
@@ -439,7 +384,7 @@ AppsFlyerのプッシュメッセージ、およびトラッキング機能の�
 
 
 <blockquote>
-AppsFlyer SDKはTealium SDKとともにインストールされるので、対応するタグ構成があれば任意のネイティブAppsFlyer機能をトリガーできます。
+AppsFlyer SDKはTealium SDKとともにインストールされるため、対応するタグ構成を指定することで、AppsFlyerの任意のネイティブ機能をトリガーできます。
 </blockquote>
 
 
@@ -447,9 +392,9 @@ AppsFlyer SDKはTealium SDKとともにインストールされるので、対�
 
 #### 初期化
 
-AppsFlyer SDKは起動時に自動的に初期化されます。AppsFlyer APIキーはタグ構成で構成されます。
+AppsFlyer SDKは、起動時に自動的に初期化されます。AppsFlyer APIキーはタグ構成で指定します。
 
-| リモートコマンド | AppsFlyerメソッド|
+| リモートコマンド | AppsFlyerメソッド |
 |---|---|
 | `initialize`  | `initialize()` |
 
@@ -457,62 +402,59 @@ AppsFlyer開発者ガイド：SDKの初期セットアップ
 
 - [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk)
 
-AppsFlyer リモート コマンド タグで構成できる構成オプションはいくつかあります。以下のいずれかが起動時に構成された場合は、初期化メソッドの実行中に送信されます。
+AppsFlyerリモートコマンドタグでは、複数の構成オプションを指定できます。以下のいずれかが起動時に構成されている場合、初期化メソッドの実行中に送信されます。
 
 ##### 構成オプション
 
-| Name | iQ 変数マッピング| 型|
+| 名前 | iQ変数マッピング | 型 |
 |---|---|---|
 | `debug`  | `debug` | `Bool` |
 | `disableIAdTracking`| `disable_apple_ad_tracking`  | `Bool` |
 | `minTimeBetweenSessions` | `time_between_sessions` | `Int` |
 | `anonymizeUser`| `anonymize_user` | `Bool` |
 | `shouldCollectDeviceName`| `collect_device_name` | `Bool` |
-| `customData`| `custom_data` | `Dictionary`または`Map`|
+| `customData`| `custom_data` | `Dictionary`または`Map` |
 
-AppsFlyer開発者ガイド：追加のAPI
+AppsFlyer開発者ガイド：追加API
 
 - [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis)
 - [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis)
 
-#### 起動のトラッキング
+##### OnReady（iOS）
 
-| リモートコマンド | AppsFlyerメソッド|
-|---|---|
-| `initialize` or `launch`  | `trackLaunch()` |
+`AppsFlyerLib`を使用する必要があるものの、初期化済みかどうかが不明な場合は、このメソッドを使用します。  
+`AppsFlyerLib`がすでに初期化されている場合、完了処理は直ちに呼び出されます。初期化されていない場合は、初期化が完了するまで待機します。
 
+これは、クライアントがリモートコマンド構成を使用してライブラリを初期化しており、その結果、`AppsFlyerLib`が非同期で初期化される場合に役立ちます。
 
+例：
 
-<blockquote>
-ライフサイクルモジュールがインストールされている場合、このイベントはすべてのアプリ起動を自動的に送信します。
-</blockquote>
+```swift
+appsFlyerRemoteCommand.onReady { appsFlyer in
+    appsFlyer.registerUninstall(deviceToken)
+}
+```
 
+### 位置情報
 
-AppsFlyer開発者ガイド：SDKの初期化
+#### 位置情報のトラッキング
 
-- [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk)
-- [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#integration-3-implementing-and-initializing-the-sdk)
-
-### ロケーション
-
-#### ロケーションのトラッキング
-
-| リモートコマンド | AppsFlyerメソッド|
+| リモートコマンド | AppsFlyerメソッド |
 | :--- | :---|
-| `tracklocation`  | `trackEvent()` - イベント名`af_location_coordinates`|
+| `tracklocation`  | `trackEvent()` - イベント名 `af_location_coordinates` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |---|---|
-|  `latitude` (required) | `Bool` |
-|  `longitude` (required) | `Bool` |
+| `latitude`（必須） | `Bool` |
+| `longitude`（必須） | `Bool` |
 
 
 <blockquote>
-ロケーションモジュールがインストールされている場合は、緯度と経度がすべてのイベントで送信されます。
+位置情報モジュールをインストールしている場合、すべてのイベントで緯度と経度が送信されます。
 </blockquote>
 
 
-AppsFlyer APIリファレンス：ロケーショントラッキング
+AppsFlyer APIリファレンス：位置情報のトラッキング
 
 - [iOS](https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L443)
 
@@ -520,52 +462,52 @@ AppsFlyer APIリファレンス：ロケーショントラッキング
 
 #### ホストの構成
 
-|  リモートコマンド | AppsFlyerメソッド|
+| リモートコマンド | AppsFlyerメソッド |
 |---|---|
 | `sethost`  | `setHost` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |---|---|
-|  `host` (required) | `String` |
-|  `hostPrefix` (required) | `String` |
+| `host`（必須） | `String` |
+| `hostPrefix`（必須） | `String` |
 
 AppsFlyer APIリファレンス：ホストの構成
 
 - [iOS](https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L534)
 
-#### ユーザーのEメールの構成
+#### ユーザーのメールアドレスの構成
 
-|  リモートコマンド | AppsFlyerメソッド|
+| リモートコマンド | AppsFlyerメソッド |
 |---|---|
 | `setsermails`  | `setUserEmails` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |----|---|
-| `emails` (required) | `[String]` |
-| `cryptType` (required) | `Int` |
+| `emails`（必須） | `[String]` |
+| `cryptType`（必須） | `Int` |
 
-##### 暗号タイプリファレンス
+##### 暗号化タイプのリファレンス
 
-|  値| 型|
+| 値 | タイプ |
 |---|---|
 | `0` | `None` |
 | `1` | `SHA1` |
 | `2` | `MD5` |
 | `3` | `SHA256` |
 
-AppsFlyer APIリファレンス：ユーザーのEメールの構成
+AppsFlyer APIリファレンス：ユーザーのメールアドレスの構成
 
 - [iOS](https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L361)
 
 #### 通貨コードの構成
 
-|  リモートコマンド | AppsFlyerプロパティ|
+| リモートコマンド | AppsFlyerプロパティ |
 |---|---|
 | `setcurrencycode`  | `currencyCode` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |----|---|
-| `currency` (required) | `String` |
+| `currency`（必須） | `String` |
 
 AppsFlyer APIリファレンス：通貨コードの構成
 
@@ -573,45 +515,47 @@ AppsFlyer APIリファレンス：通貨コードの構成
 
 #### 顧客IDの構成
 
-|  リモートコマンド | AppsFlyerプロパティ|
+| リモートコマンド | AppsFlyerプロパティ |
 |---|---|
 | `setcustomerid`  | `customerUserID` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |----|---|
-| `customerId` (required) | `String` |
+| `customerId`（必須） | `String` |
 
-- AppsFlyer追加のAPI：顧客IDの構成
+- AppsFlyer追加API：顧客IDの構成
 - [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-set-customer-user-id)
 - [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setcustomeruserid)
 
 #### ディープリンクURLの解決
 
-| リモートコマンド | AppsFlyerプロパティ|
+| リモートコマンド | AppsFlyerプロパティ |
 |---|---|
 | resolvedeeplinkurls  | `resolveDeepLinkURLs` |
 
-|  パラメータ | 型|
+| パラメータ | 型 |
 |---|---|
-|  `deepLinkUrls` (required) | `[String]` |
+| `deepLinkUrls`（必須） | `[String]` |
 
 AppsFlyer APIリファレンス：ディープリンクURLの解決
 
 - [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#api-reference-resolvedeeplinkurls)
 - [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setresolvedeeplinkurls)
 
+
+### 同意オプション
+
 #### トラッキングの無効化
 
-|  リモートコマンド | AppsFlyerプロパティ|
+| リモートコマンド | AppsFlyerプロパティ |
 |---|---|
 | disabletracking  | `isStopTracking` |
 
-
-|  パラメータ | 型|
+| パラメータ | 型 |
 |----|---|
-| `stopTracking` (required) | ブーリアン|
+| `stopTracking`（必須） | Bool |
 
-AppsFlyer追加のAPI：トラッキングの停止（オプトアウト）
+AppsFlyer追加API：トラッキングの停止（オプトアウト）
 
 - [iOS](https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-optout)
 - [Android](https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis-optout)

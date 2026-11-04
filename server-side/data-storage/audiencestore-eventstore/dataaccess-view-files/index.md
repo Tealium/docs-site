@@ -20,7 +20,7 @@ The list of files will be empty immediately after configuring EventStore or Audi
 
 
 <blockquote>
-Files cannot be deleted from EventStore. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged.  Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged. The expiration time is determined by the EventStore retention time. The default retention time is 390 days (13 months). For more information, see [Server-Side Account Settings]().
+Files cannot be deleted from EventStore. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged.  Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged. The expiration time is determined by the EventStore retention time. The default retention time is 30 days. For more information, see [Server-Side Account Settings]().
 </blockquote>
 
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/module-list/tag-managemen
 ---
 ## Usage
 
-The Tag Management Dispatcher module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WebView` instance to execute JavaScript. This Dispatcher is required in apps that make use of Tealium iQ Tag Management.
+The Tag Management Dispatcher module is a client-side implementation of the Universal Tag (`utag.js`) which uses a non-rendered `WebView` instance to execute JavaScript. This Dispatcher is required in apps that make use of Tag Management.
 
 ## Install
 

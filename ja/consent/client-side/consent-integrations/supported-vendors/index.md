@@ -1,11 +1,11 @@
 ---
 title: サポートされているベンダー連携
-description: この記事では、クライアント側の同意連携でサポートされているCMPと、同意連携の構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。
+description: この記事では、クライアントサイドの同意連携でサポートされているCMPと、同意連携の構成を完了するために必要なベンダー固有の情報を簡単に取得する方法について説明します。
 url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/supported-vendors/
 ---
 ## 仕組み
 
-クライアント側の同意連携では、さまざまな同意管理プラットフォーム（CMP）との連携がサポートされています。サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェイスまたはWebページから、関連するベンダー固有の情報にアクセスできます。このドキュメントの信頼性と使いやすさを維持するため、このセクションではWebページからベンダー固有の情報を取得する手順のみを説明します。各パートナーCMPのユーザーインターフェイスでベンダーIDと目的を取得する手順については、該当するCMPのドキュメントを参照してください。
+クライアントサイドの同意連携では、さまざまな同意管理プラットフォーム（CMP）との連携がサポートされています。ベンダー固有の関連情報には、サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェイスまたはWebページからアクセスできます。このドキュメントの信頼性と使いやすさを維持するため、このセクションではWebページからベンダー固有の情報を取得する手順のみを説明します。各パートナーCMPのユーザーインターフェイスでベンダーIDと目的を取得する手順については、それぞれのCMPのドキュメントを参照してください。
 
 Webページから関連情報を取得するには、次の手順に従います。
 
@@ -25,7 +25,7 @@ After you update your consent decision, paste the code again to see the latest i
 
 ### Cookiebot
 
-互換性を確認し、連携に必要な情報を取得するには、[cookiebot.com](https://www.cookiebot.com/)またはご自身のWebサイトで、[仕組みのセクション](#how-it-works)の手順に従ってこのスニペットをテストします。
+互換性を確認し、連携に必要な情報を取得するには、[cookiebot.com](https://www.cookiebot.com/)またはご自身のWebサイトで、[仕組みのセクション](#how-it-works)の手順に従ってこのスニペットをテストしてください。
 
 
 ```js
@@ -108,13 +108,13 @@ After you update your consent decision, paste the code again to see the latest i
 
 ### Didomi（レガシー）
 
-[上記の手順](#how-it-works)に従って、このスニペットを [didomi.io](https://didomi.io) またはご自身のウェブサイトでテストし、互換性を確認して、統合に必要な情報を取得してください。
+[上記の手順](#how-it-works)に従って、このスニペットを [didomi.io](https://didomi.io) またはご自身のウェブサイトでテストし、互換性を確認して統合に必要な情報を取得してください。
 
 Didomi（レガシー）統合では、**Vendors** を **Purposes** として使用します。
 
 
 <blockquote>
-Didomi (legacy) does not return implicitly consented purposes or vendors. To enable implicit triggering, this integration unconditionally adds the purpose key `always_consented` to outbound consent decisions. For new setups, use [Didomi v2](#didomi-v2). The v2 integration does not need this workaround.
+Didomi（レガシー）は、暗黙的に同意された目的またはベンダーを返しません。暗黙的なトリガーを有効にするため、この統合では送信する同意判定に目的キー `always_consented` を無条件で追加します。新規構成では、[Didomi v2](#didomi-v2) を使用してください。v2 統合では、この回避策は不要です。
 </blockquote>
 
 
@@ -232,17 +232,17 @@ console.log(outputString)
 
 ### Didomi v2
 
-[上記の手順](#how-it-works)に従い、このスニペットを [didomi.io](https://didomi.io) またはお客様のウェブサイトでテストして、互換性を確認し、統合に必要な情報を取得してください。
+[didomi.io](https://didomi.io) またはご自身のウェブサイトで、[上記の手順](#how-it-works)に従ってこのスニペットをテストし、互換性を確認して統合に必要な情報を取得します。
 
-Didomi v2 統合では、**ベンダー（Vendors）**を**目的（Purposes）**として使用します。
+Didomi v2 統合では、**Vendors** を **Purposes** として使用します。
 
-Didomi を新規にセットアップする場合は、Didomi v2 を推奨します。Didomi v2 を使用するには、新しい同意統合を作成し、ベンダーとして **Didomi v2** を選択します。既存の Didomi（レガシー）統合は、変更せずに引き続き機能します。
+Didomi を新規に構成する場合は、Didomi v2 を推奨します。Didomi v2 を使用するには、新しい同意統合を作成し、ベンダーとして **Didomi v2** を選択します。既存の Didomi（レガシー）統合は、変更せずに引き続き機能します。
 
 Didomi v2 と Didomi（レガシー）には、次の相違点があります。
 
-* **ベンダー ID（Vendor ID）**フィールドがありません。
-* デフォルトの目的グループがありません。目的キーはベンダー固有であり、Didomi の構成ごとに異なります。
-* コールバックをサポートします。この統合は Didomi の `consent.changed` イベントをリッスンし、同意を自動的に再確認します。詳細については、[同意の更新を監視およびトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+* **Vendor ID** フィールドがありません。
+* デフォルトの目的グループがありません。目的キーはベンダー固有であり、Didomi の構成によって異なります。
+* コールバックをサポートします。統合は Didomi の `consent.changed` イベントをリッスンし、同意を自動的に再確認します。詳細については、[同意の更新を監視およびトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
 
 
 ```js
@@ -383,7 +383,7 @@ Checks:
 
 ### Digital Control Room
 
-互換性を確認し、統合に必要な情報を取得するには、[digitalcontrolroom.com](https://www.digitalcontrolroom.com/) またはご自身のウェブサイトで、[仕組みのセクション](#how-it-works)の手順に従ってこのスニペットをテストしてください。
+このスニペットを [digitalcontrolroom.com](https://www.digitalcontrolroom.com/) でテストするか、[仕組みのセクション](#how-it-works)の手順に従ってご自身のウェブサイトでテストし、互換性を確認して統合に必要な情報を取得してください。
 
 
 ```js
@@ -474,19 +474,19 @@ console.log(outputString);
 
 ### OneTrust
 
-https://onetrust.com またはご自身のウェブサイトで、[上記の手順](#how-it-works)に従ってこのスニペットをテストし、互換性を確認して統合に必要な情報を取得します。
+このスニペットを https://onetrust.com またはご自身のウェブサイトで、[上記の手順](#how-it-works)に従ってテストし、互換性を確認して統合に必要な情報を取得してください。
 
 
 <blockquote>
-OneTrust には構成をプレビューするためのテストモードが用意されており、ベンダー ID に `-test` を追加すると有効になります。統合を簡素化するため、OneTrust の同意統合ではベンダー ID から `-test` サフィックスが削除されます。シームレスに統合するには、ページ上で `-test` サフィックスを使用している場合でも、統合の構成時に同意統合 UI へ `-test` を付けずにベンダー ID を入力してください。Tealium iQ UI と有効な統合の間でベンダー ID が一致していない場合、Tealium iQ Tag Management はページ上で Cookie を構成したり、タグをトリガーしたりできません。
+OneTrust には構成をプレビューするためのテストモードが用意されており、ベンダー ID に `-test` を追加すると有効になります。統合を簡素化するため、OneTrust の同意統合ではベンダー ID から `-test` サフィックスが削除されます。シームレスに統合するには、ページで `-test` サフィックスを使用している場合でも、統合の構成時に同意統合 UI で `-test` を付けずにベンダー ID を入力してください。Tealium iQ UI と有効な統合の間でベンダー ID が一致していない場合、Tealium iQ Tag Management はページ上で Cookie を構成したりタグをトリガーしたりできません。
 </blockquote>
 
 
-OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium iQ はポーリングを行うことなく、同意ステータスの変更に関する更新をリアルタイムで受信できます。詳細については、[同意の更新を監視してトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium iQ はポーリングを行わずに、同意ステータスの変更に関する更新をリアルタイムで受信できます。詳細については、[同意の更新を監視してトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
 
 
 ```js
-;(function oneTrust(window) {
+;(function oneTrustWithPurposes(window) {
     // allows simple adjustment of the name/id behavior
     var useNamesInsteadOfKeys = false;
     // allow the safety check of the expected Vendor ID to be circumvented to simplify setup at the cost of increased risk
@@ -494,7 +494,7 @@ OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
     // CMP specific functionality and labels
     window.tealiumCmpIntegration = window.tealiumCmpIntegration || {};
     window.tealiumCmpIntegration.cmpName = "OneTrust";
-    window.tealiumCmpIntegration.cmpIntegrationVersion = "onetrust-2.1.0";
+    window.tealiumCmpIntegration.cmpIntegrationVersion = "onetrust-2.2.0";
     window.tealiumCmpIntegration.cmpFetchCurrentConsentDecision = cmpFetchCurrentConsentDecision;
     window.tealiumCmpIntegration.cmpFetchCurrentLookupKey = cmpFetchCurrentLookupKey;
     window.tealiumCmpIntegration.cmpCheckIfOptInModel = cmpCheckIfOptInModel;
@@ -569,8 +569,18 @@ OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
             permittedPurposeIds = window.tealiumConsentRegister && window.tealiumConsentRegister.getCurrentDecision();
         }
         var permittedPurposesWithNames = {};
-        cmpRawOutput.Groups.forEach(function (groupInfo) {
-            if (permittedPurposeIds.indexOf(groupInfo.OptanonGroupId) !== -1) {
+        cmpRawOutput.Groups.forEach(function (groupInfo, index, array) {
+            // If the group has a custom vendor service, add it to the list and DON'T add the base categories
+            if (groupInfo.VendorServices && groupInfo.VendorServices.length && groupInfo.VendorServices.length > 0) {
+                groupInfo.VendorServices.forEach(function (vendor) {
+                    var purposeId = '';
+                    if (permittedPurposeIds.indexOf(vendor.CustomVendorServiceId) !== -1 || array[index].Status === 'always active') {
+                        purposeId = groupInfo.OptanonGroupId + '_' + vendor.CustomVendorServiceId
+                        permittedPurposesWithNames[purposeId] = groupInfo.GroupName + ' | ' + vendor.ServiceName + ' (' + vendor.ParentCompany + ')';
+                    }
+                })
+            } else if (permittedPurposeIds.indexOf(groupInfo.OptanonGroupId) !== -1) {
+                // No vendors, so we use the base category as the purpose if there's consent
                 permittedPurposesWithNames[groupInfo.OptanonGroupId] = groupInfo.GroupName || "ERROR-MISSING";
             }
         })
@@ -592,7 +602,6 @@ OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
          jQuery v1.9.1 (c) 2005, 2012
          jQuery Foundation, Inc. jquery.org/license.
         */
-
 
             var f = /\[object (Boolean|Number|String|Function|Array|Date|RegExp|Arguments)\]/; function g(a) { return null == a ? String(a) : (a = f.exec(Object.prototype.toString.call(Object(a)))) ? a[1].toLowerCase() : "object" } function m(a, b) { return Object.prototype.hasOwnProperty.call(Object(a), b) } function n(a) { if (!a || "object" != g(a) || a.nodeType || a == a.window) return !1; try { if (a.constructor && !m(a, "constructor") && !m(a.constructor.prototype, "isPrototypeOf")) return !1 } catch (c) { return !1 } for (var b in a); return void 0 === b || m(a, b) }; function p(a, b) { var c = {}, d = c; a = a.split("."); for (var e = 0; e < a.length - 1; e++)d = d[a[e]] = {}; d[a[a.length - 1]] = b; return c } function q(a, b) { var c = !a._clear, d; for (d in a) if (m(a, d)) { var e = a[d]; "array" === g(e) && c ? ("array" === g(b[d]) || (b[d] = []), q(e, b[d])) : n(e) && c ? (n(b[d]) || (b[d] = {}), q(e, b[d])) : b[d] = e } delete b._clear };/* Copyright 2012 Google Inc. All rights reserved. */
             function r(a, b, c) {
@@ -637,7 +646,7 @@ OneTrust は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
 
 
 /*
-// Debugging / development output - paste into the console, or uncomment and paste the whole template during development of a custom integration
+// Debugging / development output - paste into the console, or uncomment and paste the whole template during development of a custom integration. Make sure to comment it again out before production use!
 function outputDebuggingInfo () {
   var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model
   Checks:
@@ -645,7 +654,8 @@ function outputDebuggingInfo () {
     - well-formed:        ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
     - explicit:           ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
     - using callback:     ${typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === 'function'}
-    - consented purposes: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+    - consented purposes with names: \n\n${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToLookupObject(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 2)}
+    - consented purposes as a list:       \n\n${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 2)}
   `
   console.log(outputString);
 }
@@ -658,29 +668,29 @@ outputDebuggingInfo();
 ```
 
 
+このスニペットは、統合に入力する**目的キー**を返します。目的キーには、`C0001` などのカテゴリ ID、またはベンダー ID やサービス ID を指定できます。目的グループには、両方の種類を含めることができます。
 
+### オプトアウト Cookie + GPC
 
-### オプトアウトCookie + GPC
+この統合は、CCPA/CPRA などのシンプルなオプトアウトモデルをサポートしています。**ベンダー ID** フィールドをオプトアウト Cookie の名前として解釈し、大文字と小文字を区別します。この Cookie が値にかかわらず検出された場合、または [Global Privacy Control（GPC）](https://docs.tealium.com/about-global-privacy-control/) のオプトアウトシグナルが検出された場合、ユーザーはオプトアウトしていると見なされます。
 
-この連携は、CCPA/CPRAなどのシンプルなオプトアウトモデルをサポートします。**Vendor ID**フィールドをオプトアウトCookieのCookie名として解釈し、大文字と小文字を区別します。このCookieが値を問わず見つかった場合、または[グローバルプライバシーコントロール（GPC）](https://docs.tealium.com/about-global-privacy-control/)のオプトアウトシグナルが検出された場合、ユーザーはオプトアウトしていると見なされます。
+統合で使用され、デフォルトの**目的グループ**に含まれる**目的キー**は次のとおりです。
 
-この連携で使用され、デフォルトの**Purpose Group**に含まれる**Purpose Keys**は次のとおりです。
-
-* `no-selling` - ユーザーのオプトアウトシグナルに関係なく許可するタグに使用します。これらのタグはデータを販売または共有しないか、法務チームによって厳密に必要であると判断されたものなどです。
-* `yes-selling` - 適用される規制またはポリシーにより、ユーザーのオプトアウト後のトラッキングが禁止されているため、オプトアウトしたユーザーに対してブロックするタグに使用します。
+* `no-selling` - ユーザーのオプトアウトシグナルにかかわらず許可するタグに使用します。これらのタグはデータを販売・共有しないか、法務チームなどによって厳密に必要であると見なされています。
+* `yes-selling` - ユーザーがオプトアウトした後のトラッキングが適用される規制やポリシーによって禁止されているため、オプトアウトしたユーザーに対してブロックするタグに使用します。
 ### Securiti
 
 互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
 
-Securiti は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium iQ はポーリングを行わずに同意ステータスの変更をリアルタイムで受信できます。詳細については、[同意の更新を監視およびトリガーする](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
+Securiti は、`cmpAddCallbackToTriggerRecheck` を通じてコールバック関数をサポートしています。このコールバックにより、Tealium iQ はポーリングを行わずに、同意ステータスの変更をリアルタイムで受信できます。詳細については、[同意の更新の監視とトリガー](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates)を参照してください。
 
 デフォルトの**目的グループ**に含まれる**目的キー**は次のとおりです。
 
-* `essential`: 必須
-* `analytics_customization`: 分析とカスタマイズ
-* `advertising`: 広告
-* `performance_functionality`: パフォーマンスと機能
-* `unclassified`: 未分類
+* `essential`：必須
+* `analytics_customization`：分析とカスタマイズ
+* `advertising`：広告
+* `performance_functionality`：パフォーマンスと機能
+* `unclassified`：未分類
 
 
 ```js
@@ -821,6 +831,7 @@ Securiti は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
 
   Checks:
 
+```
     - well-formed: ${window.tealiumCmpIntegration.cmpCheckForWellFormedDecision(decision)}
     - explicit:    ${window.tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(decision)}
     - lookup:      ${JSON.stringify(window.tealiumCmpIntegration.cmpConvertResponseToLookupObject(decision), null, 8)}
@@ -835,7 +846,7 @@ Securiti は、`cmpAddCallbackToTriggerRecheck` を介してコールバック�
 
 ### TrustArc
 
-[trustarc.com](https://trustarc.com/) でこのスニペットをテストするか、[仕組みのセクション](#how-it-works)の手順に従ってウェブサイト上でテストし、互換性を確認して統合に必要な情報を取得してください。
+互換性を確認し、統合に必要な情報を取得するには、このスニペットを[trustarc.com](https://trustarc.com/)でテストするか、[仕組みのセクション](#how-it-works)の手順に従ってご自身のウェブサイトでテストしてください。
 
 
 ```js
@@ -952,9 +963,9 @@ console.log(outputString)
 
 互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
 
-Usercentrics v2 統合は Usercentrics Browser SDK v1 および v2 を対象としており、**Vendors** を **Purposes** として使用します。
+Usercentrics v2 統合は、Usercentrics Browser SDK v1 および v2 を対象としており、**ベンダー**を**目的**として使用します。
 
-Usercentrics v2 は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium はポーリングを行わずに、同意ステータスの変更に関する更新をリアルタイムで受信できます。
+Usercentrics v2 は、`cmpAddCallbackToTriggerRecheck` を介してコールバック関数をサポートします。このコールバックにより、Tealium はポーリングを行わずに、同意ステータスの変更をリアルタイムで受信できます。
 
 
 ```js
@@ -1105,7 +1116,7 @@ Usercentrics v2 は、`cmpAddCallbackToTriggerRecheck` を介してコールバ�
 
 互換性を確認し、統合に必要な情報を取得するには、[仕組み](#how-it-works)セクションの手順に従って、このスニペットをウェブサイトでテストしてください。
 
-Usercentrics v3統合はUsercentrics Browser SDK V3向けであり、**Vendors**を**Purposes**として使用します。Usercentrics v3統合には**Vendor ID**が必要です。Vendor IDはUsercentrics Settings IDです。
+Usercentrics v3 統合は Usercentrics Browser SDK V3 を対象としており、**Vendors** を **Purposes** として使用します。Usercentrics v3 統合には **Vendor ID** が必要です。Vendor ID は Usercentrics Settings ID です。
 
 
 ```js
@@ -1244,4 +1255,4 @@ Usercentrics v3統合はUsercentrics Browser SDK V3向けであり、**Vendors**
 
 ### カスタム統合テンプレート
 
-カスタム統合テンプレートの詳細と使用方法については、[カスタム統合](https://docs.tealium.com/custom-cmp-integrations/)を参照してください。
+カスタム統合テンプレートとその使用方法について詳しくは、[カスタム統合](https://docs.tealium.com/custom-cmp-integrations/)を参照してください。

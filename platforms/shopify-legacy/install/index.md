@@ -5,7 +5,7 @@ url: https://docs.tealium.com/platforms/shopify-legacy/install/
 ---
 
 <blockquote>
-Tealium now provides a Shopify app in the Shopify marketplace that lets you use Tealium iQ Tag Management with your Shopify site. For more information, see [About Tealium Shopify app]().
+Tealium now provides a Shopify app in the Shopify marketplace that lets you use Tag Management with your Shopify site. For more information, see [About Tealium Shopify app]().
 </blockquote>
 
 
@@ -13,7 +13,7 @@ Tealium now provides a Shopify app in the Shopify marketplace that lets you use 
 
 To use Tealium with Shopify, you must customize your Shopify theme to use Tealium code with the Tealium Shopify (legacy) integration. The Tealium code provides a Universal Data Object (UDO) and loads the necessary Tealium assets on each page of your site.
 
-The code snippet for the order status page also appears on the "Thank you" page of the checkout. The code snippet provides the UDO for conversion tracking. Since the order status page may be revisited after the order is placed, it is recommended to configure logic in Tealium iQ Tag Management in order not to track conversions twice.
+The code snippet for the order status page also appears on the "Thank you" page of the checkout. The code snippet provides the UDO for conversion tracking. Since the order status page may be revisited after the order is placed, it is recommended to configure logic in Tag Management in order not to track conversions twice.
 
 Only Shopify Plus customers have access to the `checkout.liquid` file, which loads `utag.js` throughout the checkout funnel. This integration does not currently support the checkout funnel. However you may implement your own `checkout.liquid` following the patterns used on other pages.
 
@@ -215,7 +215,7 @@ This step is for Shopify Plus customers who want to integrate `utag.js` througho
 #### Installation instructions
 
 1. Open the `checkout_udo.liquid` file.
-2. In line 10, replace the placeholders with your Tealium iQ account and profile information.
+2. In line 10, replace the placeholders with your Tag Management account and profile information.
 3. Copy the modified content and paste it in the Shopify checkout liquid file.
 4. Save your changes and test to ensure the integration works as expected.
 

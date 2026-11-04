@@ -17,7 +17,7 @@ The SKAdNetwork integration uses two items:
 1. The remote commands module that sends the SKAdNetwork conversion value
 2. Either the JSON configuration file or Remote Command tag that translates event tracking into the conversion value
 
-A JSON configuration file is the recommended option for this integration, hosted either remotely or locally within your app. If you are using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
+A JSON configuration file is the recommended option for this integration, hosted either remotely or locally within your app. If you are using Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 

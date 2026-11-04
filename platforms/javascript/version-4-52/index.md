@@ -49,7 +49,7 @@ Do not modify the uTag loader script itself, as this can break `utag.js` by inte
 
 The new `nonblocking_tags` setting provides a way to make tags non-blocking, helping improve the Interaction to Next Paint (INP) score by allowing tags to load asynchronously. By default, tags are blocking, which ensures tracking can execute, but may delay page load times for large or resource-intensive tags. Enabling `nonblocking_tags` optimizes performance for customers prioritizing INP scores for SEO.
 
-For more information, see [Settings: `nonblocking_tags`](https://docs.tealium.com/platforms/javascript/settings/#nonblocking_tags) and [Interaction to Next Paint (INP) and Tealium iQ](https://tealium.com/blog/customer-data-platform/interaction-to-next-paint-inp-and-tealium-iq/).
+For more information, see [Settings: `nonblocking_tags`](https://docs.tealium.com/platforms/javascript/settings/#nonblocking_tags) and [Interaction to Next Paint (INP) and Tag Management](https://tealium.com/blog/customer-data-platform/interaction-to-next-paint-inp-and-tealium-iq/).
 
 ## Session counting for first-party setups
 
@@ -64,6 +64,6 @@ This release includes the following performance enhancements:
 
 * **Minimize cookie reads**  
 Updates to minimize unnecessary cookie reads, improving performance on pages with multiple or complex cookies. The `utag_main` cookie now avoids repetitive reads without affecting cookie-based tracking or data storage. This enhancement is applied automatically with version 4.52.
-* Addresses long-standing inconsistent behaviors that could create unexpected tracking issues. These fixes make Tealium iQ more predictable, particularly for advanced implementations:
+* Addresses long-standing inconsistent behaviors that could create unexpected tracking issues. These fixes make Tag Management more predictable, particularly for advanced implementations:
     * **Before Load Rules scoped Javascript extension**: All extensions scoped to Before Load Rules now execute once per page load, even for tags called by UID. To retain the legacy behavior, set `suppress_before_load_rules_with_uids` to `true`. For more information, see [Settings: `suppress_before_load_rules_with_uids`](https://docs.tealium.com/platforms/javascript/settings/#suppress_before_load_rules_with_uids).
     * **Event attribute overwrites**: In versions 4.52 and 4.53, all `tealium_*` event attributes are automatically overwritten by Tealium-generated values, except for `tealium_visitor_id` and `tealium_event`. From version 4.54, this protection is opt-in. Set [`disable_tealium_attribute_override`](https://docs.tealium.com/platforms/javascript/settings/#disable_tealium_attribute_override) to `true` to prevent incoming values from overwriting system-defined `tealium_*` attributes.

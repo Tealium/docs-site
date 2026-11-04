@@ -17,4 +17,4 @@ The following resources provide links to Tealium API reference for Android and i
 
 ## API for C\#
 
-Alternatively, if only using Tealium Customer Data Hub services (Tealium AudienceStream, Tealium EventStream, DataAccess), the [Tealium for C#](https://docs.tealium.com/platforms/csharp/api) library may be used as the native code in a Xamarin project.
+Alternatively, if only using Tealium Customer Data Hub services (Customer Data Platform (CDP), Event Streaming, DataAccess), the [Tealium for C#](https://docs.tealium.com/platforms/csharp/api) library may be used as the native code in a Xamarin project.

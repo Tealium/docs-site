@@ -1,122 +1,122 @@
 ---
 title: インストール
-description: Android (Java) 向け Tealium SDK のインストールについて説明します。
+description: Android（Java）向けTealium SDKのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/android-java/install/
 ---
 ## 要件
 
 * [Android Studio](https://developer.android.com/studio)
-* Android（KitKat/4.4以降/APIレベル19以上）
-* [Tealium iQモバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* Android（KitKat／4.4以降／APIレベル19以降）
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hubアカウント](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## サンプルアプリ
 
-当社のライブラリ、トラッキングメソッド、ベストプラクティスの実装に精通していただけるよう、Android向けTealiumの[サンプルアプリ](https://github.com/Tealium/tealium-android/tree/master/Samples)をご確認いただけるようになっています。
+Tealiumのライブラリ、トラッキングメソッド、および実装のベストプラクティスについて理解を深めるには、Tealium for Androidの[サンプルアプリ](https://github.com/Tealium/tealium-android/tree/master/Samples)を参照してください。
 
 ## コードの取得
 
-[Tealium Androidライブラリ](https://github.com/Tealium/tealium-android)をクローンします。ライブラリをダウンロードせずクローンすることで、今後のリリースに向けたアップデートがしやすくなります。
+[Tealium Androidライブラリ](https://github.com/Tealium/tealium-android)をクローンします。ダウンロードする代わりにライブラリをクローンすると、今後のリリースへの更新が容易になります。
 
 
 <blockquote>
-Android向けTealiumクラスおよびメソッドの完全なリストについては、[Tealium API](https://tealium.github.io/tealium-android/)を参照してください。
+Android向けTealiumのクラスとメソッドの完全な一覧については、[Tealium API](https://tealium.github.io/tealium-android/)を参照してください。
 </blockquote>
 
 
 ## インストール
 
-Android向けTealium SDKをMavenによって、または手動でインストールします。
+Mavenを使用するか、手動でAndroid向けTealium SDKをインストールします。
 
 ### Maven
 
-Tealium for AndroidライブラリをMavenによってインストールするには（推奨）：
+Mavenを使用してTealium for Androidライブラリをインストールするには（推奨）：
 
-1. Tealium MavenのURLを、プロジェクトの最上位にある`build.gradle`ファイルに追加します。
+1. プロジェクトの最上位の`build.gradle`ファイルにTealium Maven URLを追加します。
 
-```groovy
-allprojects {
-      repositories {
-        mavenCentral()
-        maven {
-          url "https://maven.tealiumiq.com/android/releases/"
-        }
+      ```groovy
+      allprojects {
+            repositories {
+            mavenCentral()
+            maven {
+            url "https://maven.tealiumiq.com/android/releases/"
+            }
+            }
       }
-}
-```
+      ```
 
-2. プロジェクトモジュールの`build.gradle`ファイルに、以下のようにMavenの依存関係を追加します。
+2. プロジェクトモジュールの`build.gradle`ファイルに、次のMaven依存関係を追加します。
 
-```groovy
-dependencies {
-      implementation 'com.tealium:library:5.8.0'
-}
-```
+      ```groovy
+      dependencies {
+            implementation 'com.tealium:library:5.8.0'
+      }
+      ```
 
 ### 手動
 
 Tealium for Androidライブラリを手動でインストールするには：
 
-1. `flatDir`をプロジェクトのルートにある`build.gradle`ファイルに追加します。
-```groovy
-allprojects {
-      repositories {
-         mavenCentral()
-         flatDir {
-             dirs 'libs'
-         }
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。  
+      ```groovy
+      allprojects {
+            repositories {
+            mavenCentral()
+            flatDir {
+                  dirs 'libs'
+            }
+            }
       }
-}
-```  
+      ```  
 
-2. `tealium-5.x.x.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
+2. `tealium-5.x.x.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。  
 
-3. Tealiumライブラリの依存関係を`build.gradle`ファイルに追加します。
-```groovy
-dependencies {
-      implementation(name:'tealium-5.6.1', ext:'aar')
-}
-```
+3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。      
+      ```groovy
+      dependencies {
+            implementation(name:'tealium-5.6.1', ext:'aar')
+      }
+      ```
 
 ## 初期化
 
-初期化するには、次の変更をアプリの`onCreate()`メソッドに加えます。
+初期化するには、アプリの`onCreate()`メソッドに次の変更を加えます。
 
-1. [`Tealium.Config`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#class-tealium-config) オブジェクトのインスタンスを作成します。
-```java
-Tealium.Config tealConfig = Tealium.Config.create(
-        this,
-        "ACCOUNT",
-        "PROFILE",
-        "ENVIRONMENT");
-```
+1. [`Tealium.Config`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#class-tealium-config)オブジェクトのインスタンスを作成します。  
+      ```java
+      Tealium.Config tealConfig = Tealium.Config.create(
+            this,
+            "ACCOUNT",
+            "PROFILE",
+            "ENVIRONMENT");
+      ```
 
-2. 追加の必要なメソッド ( [`setDatasourceId()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setdatasourceid)など) を呼び出して、構成データを構成します。
-```java
-tealConfig.setDatasourceId("DATASOURCE_ID");
-```
+2. [`setDatasourceId()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setdatasourceid)など、必要な追加メソッドを呼び出して構成データを指定します。
+      ```java
+      tealConfig.setDatasourceId("DATASOURCE_ID");
+      ```
 
-3. [`setupInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/life-cycle/#setupinstance) メソッドを呼び出して、アプリのライフサイクル インスタンスを構成します。
-```java
-LifeCycle.setupInstance("INSTANCE_NAME", config, true);
-```
+3. [`setupInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/life-cycle/#setupinstance)メソッドを呼び出して、アプリのライフサイクルインスタンスを構成します。
+      ```java
+      LifeCycle.setupInstance("INSTANCE_NAME", config, true);
+      ```
 
-4. [`createInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#createinstance) メソッドを呼び出して Tealium インスタンスを作成し、構成インスタンスをコンストラクタ引数として渡します。
-```java
-tealium = Tealium.createInstance("INSTANCE_NAME", tealConfig);
-```
+4. [`createInstance()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#createinstance)メソッドを呼び出してTealiumインスタンスを作成し、構成インスタンスをコンストラクター引数として渡します。    
+      ```java
+      tealium = Tealium.createInstance("INSTANCE_NAME", tealConfig);
+      ```
 
 
 <blockquote>
-Collectがバージョン5.5.1以降で有効になっている場合、データは`Tealium.Config`オブジェクトで提供されるプロファイルに送信されます。それより前のバージョンでは、データはデフォルトのプロファイル（`"main"`）に送信されます。
+バージョン5.5.1以降でCollectが有効になっている場合、データは`Tealium.Config`オブジェクトで指定されたプロファイルに送信されます。以前のバージョンでは、データはデフォルトプロファイル（`"main"`）に送信されます。
 </blockquote>
 
 
 ## ログレベル
 
-ログレベルはリモート公開構成により管理され、初期化の際に構成された環境から推測されます。
+ログレベルはリモートパブリッシュ構成によって制御され、初期化時に構成した環境から推定されます。
 
-バージョン 5.3.1 以降、次の例に示すように [`setForceOverrideLogLevel()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setforceoverrideloglevel) メソッドを使用して、ログ レベルをローカルでオーバーライドすることができます。
+バージョン5.3.1以降では、次の例のように[`setForceOverrideLogLevel()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setforceoverrideloglevel)メソッドを使用して、ローカルでログレベルを上書きできます。
 
 ```java
 tealConfig.setForceOverrideLogLevel("LOG_LEVEL");
@@ -124,9 +124,9 @@ tealConfig.setForceOverrideLogLevel("LOG_LEVEL");
 
 ## Cookie
 
-モバイルプロファイルでTag Managementを有効にしている場合は、Cookieを有効にする必要があります。
+モバイルプロファイルでタグ管理を有効にしている場合は、Cookieを有効にする必要があります。
 
-初期化ステートメントの後に次のコードを追加して、Cookie管理をアクティベートします。
+Cookie管理を有効にするには、初期化ステートメントの後に次のコードを追加します。
 
 ```java
 config.getEventListeners().add(createCookieEnablerListener());
@@ -149,25 +149,25 @@ private static WebViewCreatedListener createCookieEnablerListener() {
 }
 ```
 
-このコードを使用すると、タグ管理`Webview`は、ファーストパーティ、サードパーティ、およびファイルスキームのCookieを[受け入れる](https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()ことができます。
+このコードにより、タグ管理の`Webview`がファーストパーティ、サードパーティ、およびファイルスキームのCookieを[受け入れる](https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie())ことができます。
 
 
 <blockquote>
-バージョン5.1.0以降では、`CookieManager`がデフォルトで**有効**になっています。バージョン5.0.4以前では、`CookieManager`がデフォルトで**無効**になっています。
+バージョン5.1.0以降では、`CookieManager`はデフォルトで**有効**です。バージョン5.0.4以前では、`CookieManager`はデフォルトで**無効**です。
 </blockquote>
 
 
-## イベントバッチ処理
+## イベントのバッチ処理
 
-イベントバッチ処理を有効にするには、[モバイル公開構成](https://docs.tealium.com/create-mobile-profile/)に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。
+イベントのバッチ処理を有効にするには、[モバイルパブリッシュ構成](https://docs.tealium.com/create-mobile-profile/)に移動し、バッチサイズを1より大きい値に構成します。キュー内のイベント数がバッチサイズと等しくなると、イベントがディスパッチされます。
 
-イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド [`setSecondsBeforeBatchTimeout()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout)を呼び出します。
+イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達しなかった場合でも、一定時間が経過するとキューがディスパッチされます。[`setSecondsBeforeBatchTimeout()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout)メソッドを呼び出して、バッチタイムアウトを構成します。
 
-バッチ サイズとバッチ タイムアウト チェックをオーバーライドするには、メソッド [`requestFlush()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#requestflush)を呼び出してキューを即座にフラッシュします。
+バッチサイズとバッチタイムアウトのチェックを上書きするには、[`requestFlush()`](https://docs.tealium.com/ja/platforms/android-java/api/tealium/#requestflush)メソッドを呼び出して、キューを直ちにフラッシュします。
 
 
 <blockquote>
-デバイスがオフラインであるか、Consent Managerが有効になっている場合は、フラッシュオーバーライドを行っても効果がありません。
+デバイスがオフラインの場合、または同意マネージャーが有効になっている場合、フラッシュの上書きは機能しません。
 </blockquote>
 
 
@@ -176,12 +176,10 @@ private static WebViewCreatedListener createCookieEnablerListener() {
 
 #### Android 9以降のマルチプロセスアプリケーション
 
-Android 9では、マルチプロセスアプリケーションにおける`WebView`データディレクトリに関する挙動が変更されました。この変更により、複数の`WebView`がマルチプロセスで1つのデータディレクトリを共有しなくなりました。通常は、1つの`WebView`を共通して使用するActivityはいずれも、同一のプロセスで実行されます。
+Android 9では、マルチプロセスアプリケーションにおける`WebView`のデータディレクトリに関する動作が変更されました。この変更により、`WebView`は複数のプロセス間で単一のデータディレクトリを共有しなくなりました。通常、`WebView`を使用するすべてのActivityは、同じプロセス内で実行することを推奨します。  
 
-Tag Management モジュールを使用して `WebView`の追加のインスタンスを実装する場合は、アプリがクラッシュしないよう、Tealium のインスタンスを作成する前に `WebView.setDataDirectorySuffix()` を呼び出すことを推奨しています。
+タグ管理モジュールを使用し、追加の`WebView`インスタンスを実装する場合は、アプリのクラッシュを防ぐため、Tealiumインスタンスを作成する前に`WebView.setDataDirectorySuffix()`を呼び出すことを推奨します。
 
-Tag Management モジュールから Cookie とウェブ データにアクセスする必要がある場合は、 `CookieManager.getCookie()` と `CookieManager.setCookie()` メソッドを使用して、プロセス間でコピーします。
+タグ管理モジュールのCookieやWebデータにアクセスする必要がある場合は、`CookieManager.getCookie()`メソッドと`CookieManager.setCookie()`メソッドを使用して、プロセス間でコピーします。
 
-詳しく知るには、 [プロセスで分けられたウェブベース データ ディレクトリ](https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs) を参照します。
-
-
+詳しくは、[プロセスごとに分離されたWebベースのデータディレクトリ](https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs)を参照してください。

@@ -3,7 +3,7 @@ title: Trace
 description: Learn to use trace for debugging.
 url: https://docs.tealium.com/platforms/getting-started-mobile/trace/
 ---
-[Trace](https://docs.tealium.com/manage-traces/) is a testing and inspection tool for your Tealium EventStream and Tealium AudienceStream configuration. Use a trace to capture a visitor workflow and watch how events and customer data is processed in real-time.
+[Trace](https://docs.tealium.com/manage-traces/) is a testing and inspection tool for your Event Streaming and Customer Data Platform (CDP) configuration. Use a trace to capture a visitor workflow and watch how events and customer data is processed in real-time.
 
 ## Mobile Trace Tool
 
@@ -88,9 +88,9 @@ To leave a trace:
 1. Scan the QR code again with your device's camera.
 1. Click the link for your device to no longer participate in the trace session.
 
-### End of Visit (AudienceStream)
+### End of Visit (Customer Data Platform (CDP))
 
-Testing "End of Visit" actions in Tealium AudienceStream requires a signal to immediately end the visitor's session, otherwise it is necessary to wait for the session to expire normally.
+Testing "End of Visit" actions in CDP requires a signal to immediately end the visitor's session, otherwise it is necessary to wait for the session to expire normally.
 
 In the Mobile Trace Tool, end the session immediately by selecting the **End Visitor Session** checkbox, which adds a parameter to the QR code that makes the SDK send a `kill_visitor_session` event.
 
@@ -135,7 +135,7 @@ To add an action:
 1. In the **Replace** section, set **Value** to `"data":{"cp.trace_id":"TRACE_ID",` and select the **Replace first** checkbox.
 1. Click **OK** and **Apply** changes.
 
-After completing the steps, browse your application and view the requests in the AudienceStream or EventStream trace session. To run another trace, launch Charles and edit the existing rewrite rule to change the `TRACE_ID` placeholder to your new trace ID value.
+After completing the steps, browse your application and view the requests in the CDP or Event Streaming trace session. To run another trace, launch Charles and edit the existing rewrite rule to change the `TRACE_ID` placeholder to your new trace ID value.
 
 ## Manual
 

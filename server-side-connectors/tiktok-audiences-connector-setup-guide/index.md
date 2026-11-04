@@ -80,6 +80,12 @@ The following section describes how to set up parameters and options for each ac
 |Phone Number (apply SHA256 hash)| Provide a plain text phone number. The connector whitespace trims and hashes this value using SHA256 hash.|
 |Phone Number (already SHA256 hashed)| Provide a phone number that has already been SHA256 hashed.|
 
+You can map multiple identifiers in a single action. Click **Add Mapping** to add an identifier. Map at least one identifier. The connector sends multiple identifiers for the same visitor in a single request, not multiple visitors in one record. The following constraints apply to identifier mappings:
+
+* Only one source attribute per identifier type is allowed.
+* Duplicate mappings for the same identifier and hash combination are not allowed.
+* Mapping both a plaintext and an already-hashed value for the same identifier type is not allowed.
+
 ### Remove Visitor from Audience
 
 #### Parameters
@@ -99,3 +105,9 @@ The following section describes how to set up parameters and options for each ac
 |Email Address (already SHA256 hashed)| Provide an email address that has already been SHA256 hashed. |
 |Phone Number (apply SHA256 hash)| Provide a plain text phone number. The connector whitespace trims and hashes this value using SHA256 hash.|
 |Phone Number (already SHA256 hashed)| Provide a phone number that has already been SHA256 hashed.|
+
+You can map multiple identifiers in a single action. Click **Add Mapping** to add an identifier. Map at least one identifier. The connector sends multiple identifiers for the same visitor in a single request, not multiple visitors in one record. The following constraints apply to identifier mappings:
+
+* Only one source attribute per identifier type is allowed.
+* Duplicate mappings for the same identifier and hash combination are not allowed.
+* Mapping both a plaintext and an already-hashed value for the same identifier type is not allowed.

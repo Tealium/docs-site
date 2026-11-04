@@ -147,19 +147,31 @@ If any required attribution field is missing, the connector does not send the ev
 
 For Customer Action events (**Appointment Scheduled**, **Lead Created**, **Registration Completed**), only the order-summary fields are accepted. OpenAI drops all other e-commerce fields from the outbound payload.
 
-For **Attribution Appended** events, only **Currency**, **Amount**, **Data Content Type**, and **Customer Segmentation** are accepted. No e-commerce automapping applies.
+For **Attribution Appended** events, only **Currency**, **Amount**, **Amount - convert to minor units**, **Minor Unit Factor**, **Data Content Type**, and **Customer Segmentation** are accepted. No e-commerce automapping applies.
+
+Two approaches are available for monetary values:
+
+* **Pre-converted values**: Map a value already expressed in minor units (for example, `2990` for $29.90 USD) to **Amount** or **Content Amount (per unit)**.
+* **Convert on send**: Map a major-unit decimal value (for example, `29.90`) to **Amount - convert to minor units** or **Content Amount (per unit) - convert to minor units**, and set **Minor Unit Factor** to the appropriate multiplier for the currency (for example, `100` for USD/EUR/GBP, `1` for JPY/KRW, or `1000` for KWD/BHD/OMR).
+
+If both variants are mapped for the same field, the pre-converted value takes precedence.
 
 | Parameter | Description |
 | --- | --- |
-| Amount | An integer in minor units (for example, cents). If provided, Currency is required. For Attribution Appended events, this is the original conversion value. |
-| Currency | Required for Attribution Appended events. The currency code in ISO 4217 format (for example, `USD`). |
+| Amount | An integer already expressed in minor units (for example, `2990` for $29.90 USD). If provided, Currency is required. For Attribution Appended events, this is the original conversion value. If both **Amount** and **Amount - convert to minor units** are mapped, this value takes precedence. |
+| Amount - convert to minor units | A major-unit decimal value (for example, `29.90`). The connector multiplies this value by **Minor Unit Factor** and rounds the result half-up to an integer before sending. If provided, Currency is required. If no factor is set, the connector rounds the value to the nearest integer without multiplying. |
+| Minor Unit Factor | The multiplier to apply when using the convert-to-minor-units variants. Use `100` for USD, EUR, or GBP. Use `1` for JPY or KRW. Use `1000` for KWD, BHD, or OMR. Must be a positive number. This value is not sent to OpenAI. |
+| Currency | Required when **Amount** or **Amount - convert to minor units** is provided. Also required for Attribution Appended events. The currency code in ISO 4217 format (for example, `USD`). |
+| Content Amount (per unit) | An integer already expressed in minor units. The per-item price for line-item contents. If both **Content Amount (per unit)** and **Content Amount (per unit) - convert to minor units** are mapped, this value takes precedence. |
+| Content Amount (per unit) - convert to minor units | A major-unit decimal per-item price. The connector multiplies this value by **Minor Unit Factor** and rounds the result half-up to an integer before sending. If no factor is set, the connector rounds the value to the nearest integer without multiplying. |
 | Data Content Type | Attribution Appended events only. Optional. |
 | Customer Segmentation | Attribution Appended events only. Optional. |
 
 #### Disable E-Commerce Automapping
 
 * When checked, disables the default Tealium-to-OpenAI e-commerce automappings for this action: `timestamp_ms` (from Tealium event time), `source_url` (from standard URL attribute), and retail extension attributes `_csubtotal`, `_ccurrency`, `_csku`, `_cprodname`, `_ccat`, `_cquan`, `_cprice`.
-* Explicit field mappings always take precedence; unchecking this only fills in the blanks.
+* Explicit field mappings always take precedence. Unchecking this only fills in the blanks.
+* When **Minor Unit Factor** is mapped, the connector also multiplies automapped `_csubtotal` and `_cprice` values by the factor before sending.
 * Identity automapping (IP Address and User Agent) is controlled separately by the **Disable Identity Automapping** checkbox.
 
 

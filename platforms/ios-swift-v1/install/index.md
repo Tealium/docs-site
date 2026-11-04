@@ -13,7 +13,7 @@ This is the previous version (1.x) of Tealium for iOS (Swift). For the latest ve
 
 * Xcode 7.0+
 * iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -157,7 +157,7 @@ target 'CPodTest' do
     pod "tealium-swift/TealiumLogger"
     # iOS only. Used with the TagManagement module to trigger Remote Commands
     pod "tealium-swift/TealiumRemoteCommands"
-    # iOS only. Enables Tealium iQ Tag Management.
+    # iOS only. Enables Tag Management.
     pod "tealium-swift/TealiumTagManagement"
     # All platforms. Adds important data to each dispatch, and enables temporary storage of data for the current session.
     pod "tealium-swift/TealiumVolatileData"
@@ -286,7 +286,7 @@ var tealium: Tealium?
 
 
 <blockquote>
-In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using `config.shouldUseRemotePublishSettings = false`.
+In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in Tag Management, or disable it using `config.shouldUseRemotePublishSettings = false`.
 </blockquote>
 
 

@@ -1,48 +1,48 @@
 ---
 title: インストール
-description: Tealium for Xamarinのインストール方法を学びます。
+description: Xamarin向けTealiumのインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/xamarin/install/
----Tealium Xamarin統合は、Tealium for iOSおよびTealium for Androidとインターフェースを持つクロスプラットフォームインターフェースと構成クラスを提供します。
+---TealiumのXamarin統合では、Tealium for iOSおよびTealium for Androidと連携するクロスプラットフォームのインターフェイスと構成クラスが提供されます。
 
 
 <blockquote>
-前のバージョンについては、[Tealium for Xamarin 1.x](https://docs.tealium.com/ja/platforms/xamarin-v1)を参照してください。
+以前のバージョンについては、[Tealium for Xamarin 1.x](https://docs.tealium.com/ja/platforms/xamarin-v1)を参照してください。
 </blockquote>
 
 
 ## サンプルアプリ
 
-サンプルアプリを使用して、ライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れてください。
+サンプルアプリを使用して、ライブラリ、トラッキングメソッド、および実装のベストプラクティスについて理解を深めてください。
 
 [Xamarinサンプルアプリをダウンロード](https://github.com/Tealium/tealium-xamarin/tree/master/TealiumXamarinExample)
 
-## コードの取得
+## コードの入手
 
 ### インストール
 
-Visual Studioの組み込みNuGetパッケージマネージャーを使用して、TealiumライブラリをXamarinに直接インストールします。
+組み込みのNuGetパッケージマネージャーを使用して、Visual StudioからXamarin向けTealiumライブラリを直接インストールします。
 
-[NuGetパッケージ: Tealium.Xamarin](https://www.nuget.org/packages/Tealium.Xamarin/)
+[NuGetパッケージ：Tealium.Xamarin](https://www.nuget.org/packages/Tealium.Xamarin/)
 
 ### 利用可能なDLL
 
-Xamarin統合のためのいくつかの[dynamic-link libraries](https://github.com/Tealium/tealium-xamarin) (DLLs)が利用可能です：
+Xamarin統合では、複数の[ダイナミックリンクライブラリ](https://github.com/Tealium/tealium-xamarin)（DLL）を利用できます。
 
-*   **Common DLL**  
-このDLLには、クロスプラットフォームコード、インターフェース、およびXamarinアプリケーション内のすべてのプロジェクトで使用される共通コードが含まれています。このDLLを共有プロジェクトとプラットフォーム固有のプロジェクトの両方で参照として追加します。
+*   **共通DLL**  
+このDLLには、Xamarinアプリケーション内のすべてのプロジェクトで使用するクロスプラットフォームコード、インターフェイス、および共通コードが含まれています。このDLLを共有プロジェクトとプラットフォーム固有のプロジェクトの両方に参照として追加します。
     * `Tealium.Common.dll`
-*   **Abstraction DLL**  
-抽象化DLLは、プラットフォーム固有のプロジェクトでネイティブのTealium SDKをC# APIラッパーとして作成するために含まれています。これらのライブラリには、Tealium共通ライブラリによって提供されるインターフェースと抽象クラスの具体的なクラス実装が含まれています。すべてのクロスプラットフォームロジックを共通ライブラリに対してコード化します。
+*   **抽象化DLL**  
+抽象化DLLは、プラットフォーム固有のプロジェクトでネイティブTealium SDK用のC# APIラッパーを作成するために含まれています。これらのライブラリには、Tealium共通ライブラリが提供するインターフェイスおよび抽象クラスに対する、プラットフォーム固有の具象クラス実装が含まれています。すべてのクロスプラットフォームロジックは、共通ライブラリを対象として記述してください。
     *   `Tealium.Droid.dll` – Androidモバイルプラットフォーム用
     *   `Tealium.iOS.dll` – Appleモバイルプラットフォーム用
-*  **Platform DLL**  
-各モバイルプラットフォームに固有のDLLがあり、抽象化DLLによって参照されます。プラットフォームDLLはバインディングライブラリであり、ネイティブのTealium SDKに組み込まれています。これらは、ネイティブSDKと直接対話するための自動生成されたラッパーコードを提供します。
+*  **プラットフォームDLL**  
+抽象化DLLから参照される、各モバイルプラットフォーム固有のDLLがあります。プラットフォームDLLはバインディングライブラリであり、ネイティブTealium SDKが組み込まれています。ネイティブSDKを直接操作するための自動生成されたラッパーコードを提供します。
     *   `Tealium.Platform.Droid.dll`
     *   `Tealium.Platform.iOS.dll`
 
 
 <blockquote>
-バインディングライブラリはそれ自体で使用することができます。それらが自動的に生成されるため、各プラットフォームの名前空間が大幅に異なり、構成が複雑になる可能性があります。代わりに`Common`とプラットフォーム固有の抽象化ライブラリの使用をお勧めします。
+バインディングライブラリは単独でも使用できます。ただし、自動生成されるため、プラットフォームごとに名前空間が大きく異なり、セットアップが複雑になる場合があります。代わりに、`Common`ライブラリとプラットフォーム固有の抽象化ライブラリを使用することをお勧めします。
 </blockquote>
 
 
@@ -54,11 +54,11 @@ Xamarin統合のためのいくつかの[dynamic-link libraries](https://github.
 
 ### Androidの例
 
-次の例は、典型的なXamarinベースのアプリからの共有プロジェクトとAndroidプラットフォーム固有のプロジェクトを示しています：
+次の例は、一般的なXamarinベースのアプリに含まれる共有プロジェクトとAndroidプラットフォーム固有のプロジェクトを示しています。
 
 ![](https://docs.tealium.com/images/platforms/xamarin/consent-manager-model.png)
 
-例に示されているように、共有プロジェクトは`Tealium.Common.dll`ライブラリのみを参照し、Android固有のプロジェクトは以下のすべてを参照します：
+例に示すように、共有プロジェクトは`Tealium.Common.dll`ライブラリのみを参照しますが、Android固有のプロジェクトは次のすべてを参照します。
 
 *   `Tealium.Common.dll`
 *   `Tealium.Droid.dll`
@@ -68,7 +68,7 @@ Xamarin統合のためのいくつかの[dynamic-link libraries](https://github.
 
 ### インスタンスマネージャー
 
-クラスインスタンスをインスタンス化するには、まずプロジェクトが適切なライブラリを参照していることを確認します。スレッドセーフなTealiumインスタンス管理を提供する`TealiumInstanceManager`クラスの使用をお勧めします。
+クラスのインスタンスを生成する前に、各プロジェクトが適切なライブラリを参照していることを確認します。スレッドセーフなTealiumインスタンス管理を提供する`TealiumInstanceManager`クラスの使用をお勧めします。
 
 
 
@@ -89,9 +89,9 @@ ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new Tealium
 
 
 
-### Config
+### 構成
 
-`TealiumInstanceManager`を作成した後、アカウント詳細と構成を含む`TealiumConfig`オブジェクトを作成します：  
+`TealiumInstanceManager`を作成した後、アカウントの詳細と構成構成を指定して`TealiumConfig`オブジェクトを作成します。  
 
 ```csharp
 TealiumConfig tealConfig = new TealiumConfig(
@@ -107,35 +107,35 @@ TealiumConfig tealConfig = new TealiumConfig(
 );
 ```
 
-[TealiumConfig](https://docs.tealium.com/ja/platforms/xamarin/api/#object-tealiumconfig)の構成パラメータの完全なリストを参照してください。
+構成パラメータの完全な一覧については、[TealiumConfig](https://docs.tealium.com/ja/platforms/xamarin/api/#object-tealiumconfig)を参照してください。
 
 ### インスタンス
 
-`TealiumConfig`オブジェクトを作成した後、`TealiumInstanceManager`を使用してTealiumインスタンスを作成します：
+`TealiumConfig`オブジェクトを作成した後、`TealiumInstanceManager`を使用してTealiumインスタンスを作成します。
 
 ```csharp
 ITealium tealium = instanceManager.CreateInstance(tealConfig, (tealium) => 
 {
-  // インスタンスが準備完了したときのコールバック。
-  // 例えば： 
+  // Callback for once the instance is ready.
+  // For example: 
   if (tealium != null) 
   {
-    // 成功
+    // success
   } 
   else 
   {
-    // 失敗
+    // failure
   }
 });
 ```
 
 ## リモートコマンド
 
-ベンダーSDK内のネイティブコードをトリガーするために[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/)を使用します。リモートコマンドは、[`IRemoteCommand`](https://docs.tealium.com/ja/platforms/xamarin/api/#iremotecommand)インターフェースと`DelegateRemoteCommand`という名前の組み込み実装を使用してXamarinでサポートされています。
+[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/)を使用して、ベンダーSDK内のネイティブコードを実行します。Xamarinでは、[`IRemoteCommand`](https://docs.tealium.com/ja/platforms/xamarin/api/#iremotecommand)インターフェイスと、`DelegateRemoteCommand`という組み込み実装によってリモートコマンドがサポートされています。
 
-Tealium iQのカスタムコマンドタグと連携するリモートコマンドを作成するには、コマンドIDと説明を追加パラメータなしで渡し、レスポンスハンドラを定義します。`resp.Payload`のコマンドのデータペイロードにアクセスします。
+タグ管理のカスタムコマンドタグと連携するリモートコマンドを作成するには、追加のパラメータを指定せずにコマンドIDと説明を渡し、レスポンスハンドラーを定義します。コマンドのデータペイロードには`resp.Payload`でアクセスします。
 
-ローカルファイルまたはリモートURLオプションを使用してリモートコマンドを作成するには、それぞれ`path`または`url`パラメータを追加します：
+ローカルファイルまたはリモートURLオプションを使用するリモートコマンドを作成するには、それぞれ`path`または`url`パラメータを追加します。
 
 ```csharp
 var myCommand = new DelegateRemoteCommand("logger", "Logger command.", path: "FILENAME.json")
@@ -153,7 +153,7 @@ var myCommand = new DelegateRemoteCommand("logger", "Logger command.", path: "FI
 };
 ```
 
-より高度なソリューションとして、独自のクラスで`IRemoteCommand`インターフェースを実装します。
+より高度なソリューションを実装するには、独自のクラスで`IRemoteCommand`インターフェイスを実装します。
 
 ```csharp
 public class MyRemoteCommand : IRemoteCommand
@@ -194,7 +194,7 @@ public class MyRemoteCommand : IRemoteCommand
     }
 }
 
-// Tealium iQ mapped Remote Command
+// Tag Management mapped Remote Command
 var iqCommand = new MyRemoteCommand(null, null);
 
 // Locally mapped Remote Command
@@ -204,7 +204,7 @@ var localCommand = new MyRemoteCommand("FILENAME.json", null);
 var remoteCommand = new MyRemoteCommand(null, "https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json");
 ```
 
-リモートコマンドを使用するには、`TealiumConfig`オブジェクトに[`Dispatcher.RemoteCommands`](https://docs.tealium.com/ja/platforms/xamarin/api/#dispatchers)を含める必要があります。その後、リモートコマンドを`TealiumConfig`オブジェクトに追加するか、Tealiumインスタンスで[`AddRemoteCommand()`](https://docs.tealium.com/ja/platforms/xamarin/api/#addremotecommand)を呼び出します。
+リモートコマンドを使用するには、`TealiumConfig`オブジェクトに[`Dispatcher.RemoteCommands`](https://docs.tealium.com/ja/platforms/xamarin/api/#dispatchers)を含める必要があります。次に、リモートコマンドを`TealiumConfig`オブジェクトに追加するか、Tealiumインスタンスで[`AddRemoteCommand()`](https://docs.tealium.com/ja/platforms/xamarin/api/#addremotecommand)を呼び出して追加します。
 
 `TealiumConfig`を使用する場合：
 
@@ -234,19 +234,19 @@ InstanceManager.CreateInstance(config, (tealium) =>
     }
 });
 ```
-
 ## デリゲートメソッド
 
-Tealium SDK内の処理ロジックにコードを注入する5つのデリゲートメソッドがあります：
-| 委任メソッド | 説明 |
-|:----------------|:-----------|
-| `DelegateDispatchValidator()`              | [`ShouldDropDispatchDelegate()`,  `ShouldQueueDispatchDelegate()`]という2つの委任メソッドを提供し、そのブール値の戻り値が既存のディスパッチがドロップされるかキューに入れられるかを決定します。ユーザーがオフラインになる可能性があるアプリ内のステップがある場合や、独自のバッチ処理ロジックを書きたい場合に使用します。 |
-| `DispatchSentDelegateEventListener()`      | ディスパッチが送信されたときに呼び出されます。|
-| `DispatchQueuedDelegateEventListener()`    | ディスパッチがキューに入れられたときに呼び出されます。|
-| `WebViewReadyDelegateEventListener()`      | タグ管理モジュールを使用している場合、非表示のウェブビューが完全にロードされて準備ができたときに呼び出されます。|
-| `SettingsPublishedDelegateEventListener()` | 公開構成の更新セットが取得されたときに呼び出されます。|
+Tealium SDK 内の処理ロジックにコードを挿入する、5 つのデリゲートメソッドがあります。
 
-委任メソッドの使用例：
+| デリゲートメソッド | 説明 |
+|:----------------|:-----------|
+| `DelegateDispatchValidator()` | 2 つのデリゲートメソッド [`ShouldDropDispatchDelegate()`、`ShouldQueueDispatchDelegate()`] を提供します。これらのブール型の戻り値により、既存のディスパッチを破棄するか、キューに追加するかが決まります。ユーザーがオフラインになる可能性があることが分かっているアプリ内の処理や、独自のバッチ処理ロジックを実装する場合に使用します。 |
+| `DispatchSentDelegateEventListener()` | ディスパッチが送信されたときに呼び出されます。 |
+| `DispatchQueuedDelegateEventListener()` | ディスパッチがキューに追加されたときに呼び出されます。 |
+| `WebViewReadyDelegateEventListener()` | Tag Management モジュールを使用している場合、非表示の Web ビューが完全に読み込まれ、使用可能になったときに呼び出されます。 |
+| `SettingsPublishedDelegateEventListener()` | 更新されたパブリッシュ構成一式が取得されたときに呼び出されます。 |
+
+デリゲートメソッドの使用例：
 
 ```csharp
 static TealiumAdvancedConfig SetupAdvancedConfig() {
@@ -292,7 +292,7 @@ static TealiumAdvancedConfig SetupAdvancedConfig() {
 
 ## リソース
 
-以下のリソースは、TealiumのAndroidとiOSライブラリを追加するためのXamarinの詳細なドキュメンテーションへのリンクを提供します：
+以下のリソースには、Tealium の Android および iOS ライブラリを追加するための Xamarin の詳細なドキュメントへのリンクがあります。
 
-*   [Xamarin: Kotlinライブラリのバインディング](https://docs.microsoft.com/ja-jp/xamarin/android/platform/binding-kotlin-library/)
-*   [Xamarin: iOS Swiftライブラリのバインディング](https://docs.microsoft.com/ja-jp/xamarin/ios/platform/binding-swift/)
+*   [Xamarin：Kotlin ライブラリのバインド](https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/)
+*   [Xamarin：iOS Swift ライブラリのバインド](https://docs.microsoft.com/en-us/xamarin/ios/platform/binding-swift/)

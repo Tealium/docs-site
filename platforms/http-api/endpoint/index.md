@@ -31,7 +31,7 @@ Tealium Collect supports the following standard parameters in each request:
 * `tealium_profile`: The name of your Tealium profile. The default is **main**.
 * `tealium_datasource`: (Optional) The data source key from Customer Data Hub. See [About data sources](https://docs.tealium.com/about-data-sources/) for more information.
 * `tealium_event`: Recommended. The name of the event for tracking purposes.
-* `tealium_visitor_id`: Required for AudienceStream. A unique identifier for the visitor associated with the event (see the [Visitor identifiers](#visitor-identifiers) section). Depending on the source of the data, this identifier may be an anonymous GUID (Globally Unique Identifier) that is associated with a device the visitor is using, or may be based on a known user identifier for the visitor.
+* `tealium_visitor_id`: Required for Customer Data Platform (CDP). A unique identifier for the visitor associated with the event (see the [Visitor identifiers](#visitor-identifiers) section). Depending on the source of the data, this identifier may be an anonymous GUID (Globally Unique Identifier) that is associated with a device the visitor is using, or may be based on a known user identifier for the visitor.
 * `tealium_trace_id`: (Optional) For use with [Trace](https://docs.tealium.com/about-trace/).
 
 The format of the request varies depending on the HTTP method used. In the examples below, placeholder values are represented with curly braces in the following format: `{VALUE}`.
@@ -42,14 +42,14 @@ Additional event attributes are sent as custom parameters according to your trac
 
 ## Visitor identifiers
 
-AudienceStream tracks visitors using a combination of:
+Visitor tracking uses a combination of:
 
 * **Anonymous ID**: An ID usually used to track the visitor anonymously (for example, from a device or browser). In the case of a [known visitor](#known-visitors-server-to-server), you can use a value based on a user identifier.
 * **User Identifier**: Sent after the visitor is known. Based on a value that identifies the user instead of a particular device.
 
 ### Anonymous ID
 
-The Anonymous ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor. This value must also be unique to each server-side profile.
+The Anonymous ID is an anonymous identifier used by CDP to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor. This value must also be unique to each server-side profile.
 
 The key name of the anonymous ID is `tealium_visitor_id`.
 
@@ -57,11 +57,11 @@ Depending on your business case, you can use anonymous values or values based on
 
 #### Anonymous values
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
+If you are using Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
 
 <blockquote>
@@ -71,7 +71,7 @@ If you are using Adobe Launch or Google Tag Manager, then the value needs to mat
 
 #### Known-visitors server-to-server
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | Recommended |
 
@@ -102,7 +102,7 @@ tealium_visitor_id":"__my-account_main__7688_45653454__"
 
 
 <blockquote>
-Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters cause errors in AudienceStream and may not track properly.
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters cause errors in CDP and may not track properly.
 </blockquote>
 
 
@@ -127,11 +127,11 @@ Whether you use anonymous visitors or known visitors, if your API calls do not c
 
 ### User Identifiers
 
-When using AudienceStream, you can pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
+When using CDP, you can pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
 
-A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
+A user identifier is also needed if you are using Event Streaming and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
+In CDP, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ### Visitor switching
 
@@ -141,9 +141,9 @@ When a first-party cookie is unavailable, the server side uses incoming data in 
 * The `tealium_visitor_id`
 * The `utag_main v_id`, also called the `tealium_firstparty_visitor_id`
 
-Because AudienceStream gives the ID in `TAPID` precedence over other IDs to determine the visitor profile to use, this can cause problems with tracking multiple users on the same device.
+Because CDP gives the ID in `TAPID` precedence over other IDs to determine the visitor profile to use, this can cause problems with tracking multiple users on the same device.
 
-For example, if a user logs in and their ID is added to the `TAPID`, traffic from all the anonymous users on the device is logged to that user. If a second user logs in to that device, assuming that the anonymous cookie is not cleared, AudienceStream will continue logging activity to the first user. If the visitors use a shared smart television or a public kiosk, this can cause contamination of data in the visitors’ profiles.
+For example, if a user logs in and their ID is added to the `TAPID`, traffic from all the anonymous users on the device is logged to that user. If a second user logs in to that device, assuming that the anonymous cookie is not cleared, CDP continues logging activity to the first user. If the visitors use a shared smart television or a public kiosk, this can cause contamination of data in the visitors’ profiles.
 
 Use the following parameters to control how the endpoint handles the `tealium_visitor_id` and `tealium_thirdparty_visitor_id` values in the event:
 

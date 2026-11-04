@@ -36,7 +36,7 @@ class TealiumHelper {
 
 
 
-If you are using Tealium AudienceStream, `visitorId` is the anonymous ID associated with the visitor. Learn more about [anonymous IDs in AudienceStream](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
+If you are using Customer Data Platform (CDP), `visitorId` is the anonymous ID associated with the visitor. Learn more about [anonymous IDs in Customer Data Platform (CDP)](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
 ## Reset Anonymous ID
 
@@ -75,11 +75,11 @@ func setKnownVisitorId(_ id: String) {
 
 ## Visitor Switching
 
-If your app supports multiple users, it is important to separate their AudienceStream CDP profiles to avoid sending targeted messages or advertisements to the wrong user. When enabled, Tealium SDK's Visitor Switching feature automatically monitors the app for user changes, and resets the `tealium_visitor_id` whenever a new user is detected.
+If your app supports multiple users, it is important to separate their CDP profiles to avoid sending targeted messages or advertisements to the wrong user. When enabled, Tealium SDK's Visitor Switching feature automatically monitors the app for user changes, and resets the `tealium_visitor_id` whenever a new user is detected.
 
 To enable this feature, a visitor identity key must be passed to the `TealiumConfig` instance. This key tells the SDK which data layer item to monitor to determine if a new visitor has logged in. Once a new visitor is detected, a new visitor ID is assigned and inserted into the data layer, affecting any event generated from the point of the visitor switch.
 
-To reduce the number of visitor IDs assigned to each user (recommended for performance reasons in AudienceStream), if the SDK detects a switch to a user who has previously logged in, their original visitor ID is used. To support this feature, the `tealium_visitor_id` and the value of the custom data layer key are stored locally on the device. 
+To reduce the number of visitor IDs assigned to each user (recommended for performance reasons in CDP), if the SDK detects a switch to a user who has previously logged in, their original visitor ID is used. To support this feature, the `tealium_visitor_id` and the value of the custom data layer key are stored locally on the device. 
 
 
 <blockquote>
@@ -124,7 +124,7 @@ After clearing all previously saved identifiers, the `tealium_visitor_id` for th
 
 
 <blockquote>
-It is strongly advised that this is only performed when absolutely necessary, because clearing the stored IDs regularly prevents the feature from operating as intended, and could lead to problems with your AudienceStream configuration.
+Only do this when absolutely necessary. Clearing stored IDs regularly prevents the feature from operating as intended and can cause problems with your CDP configuration.
 </blockquote>
 
 

@@ -77,7 +77,7 @@ This rule triggers for all events excepting `gtm.load `and `gtm.dom` (two events
 
 ### Data Layer Enrichment
 
-The Tealium Data Layer Enrichment tag brings server-side attributes from Tealium AudienceStream and injects them into the data layer.
+The Tealium Data Layer Enrichment tag brings server-side attributes from Customer Data Platform (CDP) and injects them into the data layer.
 
 To install the Data Layer Enrichment tag:
 

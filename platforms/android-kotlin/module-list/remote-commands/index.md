@@ -1,6 +1,6 @@
 ---
 title: RemoteCommands Module
-description: Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
+description: Enables triggering of native code blocks from events in Tag Management, controlled by extensions and load rules.
 url: https://docs.tealium.com/platforms/android-kotlin/module-list/remote-commands/
 ---
 Learn more about [remote commands](https://docs.tealium.com/platforms/remote-commands/).
@@ -56,13 +56,13 @@ There are two configuration options for remote commands:
 * **JSON File**  
 A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.
 * **Remote Command Tag**  
-A tag in iQ Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
+A tag in Tag Management that offers configuration options for the vendor's API (for use with the Tag Management module).
 
 See the [list of remote command vendor integrations](https://docs.tealium.com/platforms/remote-commands/integrations/).
 
 ### Examples
 
-The Remote Command tag is configurable in Tealium iQ Tag Management, with a JSON file in your app, or JSON file on a remote server. Once the remote command is configured and the module is installed, add the following lines to the initialization:
+The Remote Command tag is configurable in Tag Management, with a JSON file in your app, or JSON file on a remote server. After the remote command is configured and the module is installed, add the following lines to the initialization:
 
 
 

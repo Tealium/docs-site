@@ -1,91 +1,92 @@
 ---
 title: リモートコマンド：Kochava
-description: AndroidおよびSwift/iOS用KochavaのTealiumリモートコマンド統合。
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドとKochavaの連携。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/kochava/
 ---
 ## 要件
 
-* [KochavaアプリGUID](https://support.kochava.com/reference-information/locating-an-app-guid/)
+* [Kochava App GUID](https://support.kochava.com/reference-information/locating-an-app-guid/)
 * 以下のいずれかのモバイルライブラリ：
-  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/) (1.0.0+)
-  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/) (5.9.0+)
-  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/) (2.1.0+)
-* 以下のいずれかのリモートコマンド統合：
-  * [Kochava Remote Command JSON File](https://docs.tealium.com/ja/platforms/remote-commands/integrations/kochava/#json-template) (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)
-  * Tealium iQタグ管理の[Kochava Remote Command tag](https://docs.tealium.com/kochava-mobile-remote-command-tag/)
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）
+  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（5.9.0以降）
+  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)（2.1.0以降）
+* 以下のいずれかのリモートコマンド連携：
+  * [KochavaリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/kochava/#json-template)（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）
+  * タグ管理の[Kochavaリモートコマンドタグ](https://docs.tealium.com/kochava-mobile-remote-command-tag/)
 
-## 動作原理
+## 仕組み
 
-Kochava統合は3つのアイテムを使用します：
+Kochava連携では、次の3つの項目を使用します。
 
 1. KochavaネイティブSDK
-2. Kochavaメソッドをラップするリモートコマンドモジュール
-3. イベントトラッキングをネイティブKochavaコールに変換するJSON構成ファイルまたはリモートコマンドタグ
+2. Kochavaのメソッドをラップするリモートコマンドモジュール
+3. イベントトラッキングをKochavaのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ
 
-アプリにKochavaリモートコマンドモジュールを追加すると、アプリにベンダー固有のコードを追加することなく、必要なKochavaライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Kochava SDKを別途インストールする必要はありません。
+Kochavaリモートコマンドモジュールをアプリに追加すると、必要なKochavaライブラリが自動的にインストールおよびビルドされるため、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャーを使用してインストールする場合は、Kochava SDKを別途インストールする必要はありません。
 
-リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のためにリモートまたはアプリ内にローカルでホストされることを推奨されるオプションです。iQタグ管理を使用する場合は、ベンダー統合のためのリモートコマンドタグを追加します。[ベンダー統合についての詳細](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー連携には、リモートでホストするかアプリ内にローカルに配置したJSON構成ファイルの使用を推奨します。タグ管理を使用する場合は、ベンダー連携用のリモートコマンドタグを追加します。[ベンダー連携](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)の詳細をご覧ください。
 
 ## インストール
 
-### 依存関係マネージャ
+### 依存関係マネージャー
 
 
 
 
 1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-ios-kochava-remote-command`。
-3. バージョンルールを構成します。通常は`Up to next major`が推奨されます。現在の`TealiumKochava`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールする`TealiumKochava`モジュールを選択し、そのモジュールをインストールしたいアプリターゲットを選択します。
+2. リポジトリのURLとして`https://github.com/tealium/tealium-ios-kochava-remote-command`を入力します。
+3. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumKochava`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
+4. インストールする`TealiumKochava`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
 
-プロジェクトに複数のアプリターゲットがあり、複数のアプリターゲットに`TealiumKochava`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、追加のアプリターゲットでも`TealiumKochava`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-追加のアプリターゲットに`TealiumKochava`をインストールするには：
+追加のアプリターゲットに`TealiumKochava`をインストールするには、次の手順を実行します。
 
 1. **Project Navigator**でXcodeプロジェクトを選択します。
-2. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumKochava`モジュールをアプリターゲットに追加します。
+2. Xcodeプロジェクトの**TARGETS**セクションでアプリターゲットを選択します。
+3. **General > Frameworks, Libraries & Embedded Content**に移動し、アプリターゲットに追加する`TealiumKochava`モジュールを選択します。
 
-Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の指示に従ってください。
-
-
+Tealium Swiftライブラリから追加のモジュールをインストールするには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の手順に従ってください。
 
 
-1. Podfileから`tealium-swift`と`pod "KochavaTrackeriOS"`を削除します。`tealium-swift`の依存関係はすでに`TealiumKochava`フレームワークに含まれています。
 
-2. Podfileに次の依存関係を追加します：
+
+1. Podfileに`tealium-swift`および`pod "KochavaTrackeriOS"`がすでに存在する場合は、それらを削除します。`tealium-swift`の依存関係は、すでに`TealiumKochava`フレームワークに含まれています。
+
+2. Podfileに次の依存関係を追加します。
       ```ruby
       pod "TealiumKochava"
       ```
-      `TealiumKochava`ポッドには次の`TealiumSwift`依存関係が含まれています：
+      `TealiumKochava` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       'tealium-swift/Core'
       'tealium-swift/RemoteCommands'
       'tealium-swift/TagManagement'
       ```
 
-3. `TealiumHelper`ファイルおよび`Tealium`クラスまたはKochavaリモートコマンドにアクセスする他のファイルで`TealiumSwift`および`TealiumKochava`モジュールをインポートします。
+3. `TealiumHelper`ファイル、および`Tealium`クラスまたはKochavaリモートコマンドにアクセスするその他のファイルに、`TealiumSwift`モジュールと`TealiumKochava`モジュールをインポートします。
 
 
 
 
-1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係はすでに`TealiumKochava`フレームワークに含まれています。
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係は、すでに`TealiumKochava`フレームワークに含まれています。
 
-2. Cartfileに次の依存関係を追加します：
+2. Cartfileに次の依存関係を追加します。  
       ```bash
       github "tealium/tealium-ios-kochava-remote-command"
       ```
 
 
 <blockquote>
-Tealium for Swift SDK (バージョン1.6.5+)は、インストール時に`TealiumDelegate`モジュールを含める必要があります。
+Tealium for Swift SDK（バージョン1.6.5以降）では、インストールに`TealiumDelegate`モジュールを含める必要があります。
 </blockquote>
 
 
 
 
 
-1. まだ行っていない場合は、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+
+1. まだ実行していない場合は、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
 
       ```groovy
       allprojects {
@@ -98,7 +99,7 @@ Tealium for Swift SDK (バージョン1.6.5+)は、インストール時に`Teal
       }
       ```
 
-2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、Kochava SDKとTealium-Kochavaリモートコマンドをインポートします：
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、Kochava SDKとTealium-Kochavaリモートコマンドの両方をインポートします。  
       ```groovy
       dependencies {
             implementation 'com.tealium.remotecommands:kochava:1.0.0'
@@ -114,22 +115,22 @@ Tealium for Swift SDK (バージョン1.6.5+)は、インストール時に`Teal
 
 
 
-Kochavaリモートコマンドの手動インストールには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリのインストールが必要です。iOSプロジェクト用のKochavaリモートコマンドをインストールするには：
+Kochavaリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにKochavaリモートコマンドをインストールするには、次の手順を実行します。
 
-1. まだ行っていない場合は、[Kochava SDK](https://support.kochava.com/sdk-integration/ios-sdk-integration/)をインストールします。
+1. まだインストールしていない場合は、[Kochava SDK](https://support.kochava.com/sdk-integration/ios-sdk-integration/)をインストールします。
 
-2. [Tealium iOS Kochavaリモートコマンド](https://github.com/tealium/tealium-ios-kochava-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+2. [Tealium iOS Kochavaリモートコマンド](https://github.com/tealium/tealium-ios-kochava-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
-3. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
-
-
+3. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true.`に構成します。
 
 
-Kochavaリモートコマンドの手動インストールには、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)のインストールが必要です。
 
-Androidプロジェクト用のKochavaリモートコマンドをインストールするには：
 
-1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します：
+Kochavaリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。
+
+AndroidプロジェクトにKochavaリモートコマンドをインストールするには、次の手順を実行します。
+
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。
 
       ```groovy
       allprojects {
@@ -142,9 +143,9 @@ Androidプロジェクト用のKochavaリモートコマンドをインストー
       }
       ```
 
-2. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-kochava.aar`を追加します。
+2. `tealium-kochava.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。
 
       ```groovy
       dependencies {
@@ -155,12 +156,12 @@ Androidプロジェクト用のKochavaリモートコマンドをインストー
 
 ## 初期化
 
-すべてのTealiumライブラリで、初期化時にKochavaモバイルリモートコマンドを登録します。
+すべての Tealium ライブラリで、初期化時に Kochava モバイルリモートコマンドを登録します。
 
 
 
 
-TealiumのiOS（Swift）ライブラリ用のJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：
+JSON 構成ファイルまたは Remote Command タグを使用して、Tealium の iOS（Swift）ライブラリ向けにリモートコマンドを初期化します。
 ```swift
 var tealium : Tealium?
 let config = TealiumConfig(account: "ACCOUNT",
@@ -168,20 +169,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let kochava = KochavaRemoteCommand() 
 
-    // ローカルJSON
+    // Local JSON
     //let kochava = KochavaRemoteCommand(type: .local(file: "kochava"))
 
-    // リモートJSON 
+    // Remote JSON 
     //let kochava = KochavaRemoteCommand(type: .remote(url: "https://some.domain.com/kochava.json")) 
 
     remoteCommands.add(kochava)
@@ -191,7 +192,7 @@ tealium = Tealium(config: config) { _ in
 
 
 
-TealiumのKotlinライブラリ用のJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：
+JSON 構成ファイルまたは Remote Command タグを使用して、Tealium の Kotlin ライブラリ向けにリモートコマンドを初期化します。
 ```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
@@ -202,13 +203,13 @@ val kochava = KochavaRemoteCommand(application);
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(kochava); 
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(kochava, filename = "kochava.json"); 
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(kochava, remoteUrl = "https://some.domain.com/kochava.json"); 
 }
 ```
@@ -216,7 +217,7 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 
 
-TealiumのAndroid（Java）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：
+Remote Command タグを使用して、Tealium の Android（Java）ライブラリ向けにリモートコマンドを初期化します。
 
 ```java
 RemoteCommand kochava = new KochavaRemoteCommand(application);
@@ -225,9 +226,9 @@ teal.addRemoteCommand(kochava);
 
 
 
-## JSONテンプレート
+## JSON テンプレート
 
-[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参考にしてください。このテンプレートには、標準的なインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
+[JSON 構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参考にしてください。このテンプレートには、標準インストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -315,18 +316,18 @@ teal.addRemoteCommand(kochava);
 
 ## プッシュメッセージトラッキング（iOS）
 
-Tealium Swiftライブラリには、TealiumおよびKochavaリモートコマンドを介してプッシュメッセージトラッキングを処理するための`TealiumRegistration`プロトコルが含まれています。このプロトコルに準拠するラッパークラス`KochavaInstance`を使用して、プッシュメッセージ認証イベント、プッシュメッセージオープンイベント、およびアンインストールトラッキングを送信します。プッシュメッセージトラッキング機能を活用することをお勧めします。
+Tealium Swift ライブラリには、Tealium および Kochava Remote Command を介したプッシュメッセージトラッキングを処理するための `TealiumRegistration` プロトコルが含まれています。プッシュメッセージの認証イベント、プッシュメッセージの開封イベント、およびアンインストールトラッキングの送信に使用するラッパークラス `KochavaInstance` で、このプロトコルに準拠しています。プッシュメッセージトラッキング機能を利用することをお勧めします。
 
-iOSプロジェクトでプッシュメッセージトラッキングを統合するための手順は次のとおりです：
+以下の手順で、iOS プロジェクトにプッシュメッセージトラッキングを統合します。
 
-1. `TealiumHelper.swift`ファイルで、`TealiumRegistration`プロトコルに準拠するオブジェクトの空の配列を初期化します。例えば：
+1. `TealiumHelper.swift` ファイルで、`TealiumRegistration` プロトコルに準拠するオブジェクトの空の配列を初期化します。例：  
       ```swift
       var pushMessagingHelpers = [TealiumRegistration]()
       ```
-2. `KochavaRemoteCommand`の前に`KochavaInstance`を初期化します
-3. 上記の配列に`KochavaInstance`を追加します
+2. `KochavaRemoteCommand` より前に `KochavaInstance` を初期化します。
+3. 上記の配列に `KochavaInstance` を追加します。
 
-以下はプッシュメッセージトラッキング統合の例です：
+以下は、プッシュメッセージトラッキングを統合する例です。  
 
 ```swift
 var pushMessagingHelpers = [TealiumRegistration]()
@@ -344,23 +345,23 @@ teal = Tealium(config: config) { responses in
 }
 ```
 
-`TealiumHelper.swift`ファイル全体を見るには、[Kochava Remote Command Example App](https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample)をご覧ください。ユーザーが通知に登録した後、プッシュメッセージを開いた後、またはアプリをアンインストールした後にKochavaにイベントを送信するには、ファイル[`AppDelegate.swift`](https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift)を参照してください。
+`TealiumHelper.swift` ファイル全体を確認するには、[Kochava Remote Command サンプルアプリ](https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample)を参照してください。ユーザーが通知を登録したとき、プッシュメッセージを開いたとき、またはアプリをアンインストールしたときに Kochava へイベントを送信する方法については、[`AppDelegate.swift`](https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift) ファイルを参照してください。
 
-Kochavaのプッシュメッセージトラッキングについての詳細は、[Kochava iOS push notification](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/)ドキュメントをご覧ください。
-## iOS向けエンリッチメントディープリンキング
+Kochava のプッシュメッセージトラッキングの詳細については、[Kochava iOS プッシュ通知](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/)のドキュメントを参照してください。
+## エンリッチメントされたディープリンク（iOS）
 
-Tealium Swiftライブラリには、TealiumおよびKochavaリモートコマンドを介してディープリンクを処理するための`TealiumDeepLinkable`プロトコルが含まれています。このプロトコルに準拠するラッパークラス`KochavaInstance`を使用して、ユーザーを希望の場所にリダイレクトする前に`.deepLink`イベントを送信します。
+Tealium Swift ライブラリには、Tealium および Kochava Remote Command を介してディープリンクを処理するための `TealiumDeepLinkable` プロトコルが含まれています。このプロトコルは、ユーザーを目的の場所へリダイレクトする前に `.deepLink` イベントを送信するために使用されるラッパークラス `KochavaInstance` に実装されています。
 
-以下は、iOSプロジェクトにエンリッチメントディープリンキングを統合する手順です：
+iOS プロジェクトにエンリッチメントされたディープリンクを統合する手順は次のとおりです。
 
-1. `TealiumHelper.swift`ファイルで、`TealiumDeepLinkable`プロトコルに準拠するオブジェクトの空の配列を初期化します。例えば：
+1. `TealiumHelper.swift` ファイルで、`TealiumDeepLinkable ` プロトコルに準拠するオブジェクトの空の配列を初期化します。例：  
       ```swift
       var deepLinkHelpers = [TealiumDeepLinkable]()
       ```
-2. `KochavaRemoteCommand`の前に`KochavaInstance`を初期化します。
-3. 上記の配列に`KochavaInstance`を追加します。
+2. `KochavaRemoteCommand` より前に `KochavaInstance` を初期化します。
+3. 上記の配列に `KochavaInstance` を追加します。
 
-以下は、エンリッチメントディープリンキング統合の完全な例です：
+以下は、エンリッチメントされたディープリンク統合の完全な例です。  
       ```swift
       var deepLinkHelpers = [TealiumDeepLinkable]()
 
@@ -377,46 +378,46 @@ Tealium Swiftライブラリには、TealiumおよびKochavaリモートコマ�
       }
       ```
 
-`TealiumHelper.swift`ファイル全体を見るには、[Kochava Remote Command Example App](https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample)を参照してください。
+`TealiumHelper.swift` ファイル全体については、[Kochava Remote Command サンプルアプリ](https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample)を参照してください。
 
-通知の登録、プッシュメッセージの開封、またはアプリのアンインストール後にKochavaにイベントを送信するには、[`AppDelegate.swift`](https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift)ファイルを参照してください。
+ユーザーが通知に登録したとき、プッシュメッセージを開いたとき、またはアプリをアンインストールしたときに Kochava へイベントを送信する方法については、[`AppDelegate.swift`](https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift) ファイルを参照してください。
 
-Kochavaのエンリッチメントディープリンキングについての詳細は、[Kochava iOS](http://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/)ドキュメントを参照してください。
+Kochava のエンリッチメントされたディープリンクの詳細については、[Kochava iOS](http://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/) のドキュメントを参照してください。
 
 ## サポートされているメソッド
 
-各Kochavaメソッドに対応するコマンドをマッピングします。Kochavaメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。
+各 Kochava メソッドにコマンドをマッピングします。Kochava メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-#### iOSリモートコマンド
+#### iOS Remote Command
 
-| iOSリモートコマンド | Kochavaメソッド |
+| iOS Remote Command | Kochava メソッド |
 | :-- | :-- |
 | `initialize` | `start()` |
-| `sleepTracker` | `sleepTracker (KochavaTracker.sharedオブジェクトのプロパティ)` |
+| `sleepTracker` | `sleepTracker (property on the KochavaTracker.shared object)` |
 | `invalidate` | `invalidate()` |
-| 下記のいずれかのイベント名 | `sendEvent()` |
+| 以下のいずれかのイベント名 | `sendEvent()` |
 | `sendIdentityLink` | `sendIdentityLink()` |
-| `AppDelegate`内の`didReceiveRemoteNotification`で手動で呼び出される | `sendEvent() - イベントタイプ: .pushOpened` |
-| `AppDelegate`内の`didRegisterForRemoteNotificationsWithDeviceToken`で`TealiumRegistration`プロトコル(`registerPushToken()`メソッド)を使用して手動で呼び出される | `addRemoteNotificationsDeviceToken()` |
-| `AppDelegate`内の`continue userActivity`で`TealiumDeeplinkable`プロトコルを使用して手動で呼び出される | `KVADeeplink.process()`および/または`sendEvent() - イベントタイプ: .deepLink` |
+| `AppDelegate` の `didReceiveRemoteNotification` 内で手動で呼び出す | `sendEvent() - event type: .pushOpened` |
+| `TealiumRegistration` プロトコル（`registerPushToken()` メソッド）を使用して、`AppDelegate` の `didRegisterForRemoteNotificationsWithDeviceToken` 内で手動で呼び出す | `addRemoteNotificationsDeviceToken()` |
+| `TealiumDeeplinkable` プロトコルを使用して、`AppDelegate` の `continue userActivity` 内で手動で呼び出す | `KVADeeplink.process()` and/or `sendEvent() - event type: .deepLink` |
 
-#### Androidリモートコマンド
+#### Android Remote Command
 
-| Androidリモートコマンド | Kochavaメソッド |
+| Android Remote Command | Kochava メソッド |
 | :-- | :-- |
 | `configure` | `configure()` |
 | `setsleep` | `setSleep()` |
-| 下記のいずれかのイベント名 | `sendEvent()` |
+| 以下のいずれかのイベント名 | `sendEvent()` |
 
 ### 標準イベント名
 
-`trackEvent`メソッドでサポートされる以下の標準イベントコマンド名があります。コマンドが送信され、イベントに必要なすべての変数がマッピングされ定義されている場合、コマンドは自動的にKochava SDKでトリガーされます。
+`trackEvent` メソッドでは、以下の標準イベントコマンド名がサポートされています。コマンドが送信され、そのイベントに必要なすべての変数がマッピングおよび定義されている場合、Kochava SDK でコマンドが自動的にトリガーされます。
 
-| リモートコマンド | Kochavaイベント名 (iOS)| Kochavaイベント名 (Android) |
+| Remote Command | Kochava イベント名（iOS）| Kochava イベント名（Android）
 | :-- | :-- | :-- |
 |`achievement`| `KVAEventType.achievement`| `Commands.ACHIEVEMENT` |
 |`addToCart`| `KVAEventType.addToCart`| `Commands.ADD_TO_CART` |
-|`addToWishlist`| `KVAEventType.addToWishList`| `Commands.ADD_TO_WISH_LIST` |
+|`addToWishlist`| `KVAEventType.addToWishList`| `Commands.Add_TO_WISH_LIST` |
 |`registrationComplete`| `KVAEventType.registrationComplete`| `Commands.REGISTRATION_COMPLETE` |
 |`tutorialComplete`| `KVAEventType.tutorialComplete`| `Commands.TUTORIAL_COMPLETE` |
 |`levelComplete`| `KVAEventType.levelComplete`| `Commands.LEVEL_COMPLETE` |
@@ -428,90 +429,90 @@ Kochavaのエンリッチメントディープリンキングについての詳�
 |`search`| `KVAEventType.search`| `Commands.SEARCH` |
 |`adView`| `KVAEventType.adView`| `Commands.AD_VIEW` |
 |`view`| `KVAEventType.view`| `Commands.VIEW` |
-|`pushOpened`| `KVAEventType.pushOpened`| `customEventNameString`がマッピングで必要です |
-|`pushRecieved`| `KVAEventType.pushReceived`| `customEventNameString`がマッピングで必要です |
-|`consentGranted`| `KochavaEventTypeEnumConsentGranted`| `customEventNameString`がマッピングで必要です |
-|`adClick`| `KVAEventType.adClick`| `customEventNameString`がマッピングで必要です |
-|`custom`| `KVAEventType.custom` (`customEventNameString`がマッピングで必要です)| `customEventNameString`がマッピングで必要です |
+|`pushOpened`| `KVAEventType.pushOpened`| マッピングに `customEventNameString` が必要 |
+|`pushRecieved`| `KVAEventType.pushReceived`| マッピングに `customEventNameString` が必要 |
+|`consentGranted`| `KochavaEventTypeEnumConsentGranted`| マッピングに `customEventNameString` が必要 |
+|`adClick`| `KVAEventType.adClick`| マッピングに `customEventNameString` が必要 |
+|`custom`| `KVAEventType.custom`（マッピングに `customEventNameString` が必要）| マッピングに `customEventNameString` が必要 |
 
 
 <blockquote>
-iOSでは、`KVAEvent.deepLink`イベントは、ネイティブの`KVAEvent.send()`メソッドまたは[`TealiumDeepLinkable`プロトコル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/kochava/#enhanced-deeplinking-ios)を使用して`AppDelegate`で送信する必要があります。
+iOS では、ネイティブの `KVAEvent.send()` メソッドまたは [`TealiumDeepLinkable` プロトコル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/kochava/#enhanced-deeplinking-ios)のいずれかを使用し、`AppDelegate` で `KVAEvent.deepLink` イベントを送信する必要があります。
 </blockquote>
 
 
-### SDKセットアップ
+### SDK のセットアップ
 
-Kochava SDKセットアップについてもっと学びましょう：
+Kochava SDK のセットアップについて詳しくは、以下を参照してください。
 
   - [Kochava iOS SDK](https://support.kochava.com/sdk-integration/ios-sdk-integration/)
   - [Kochava Android SDK](https://support.kochava.com/sdk-integration/android-sdk-integration/)
 
 #### 初期化
 
-Kochava SDKは起動時に自動的に初期化されます。Kochava App GUIDはTealiumリモートコマンド構成で構成されます。
+Kochava SDK は、起動時に自動的に初期化されます。Kochava App GUID は、Tealium Remote Command の構成で構成されます。
 
-| リモートコマンド | Kochavaメソッド |
+| Remote Command | Kochava メソッド |
 |---|---|
 | `initialize`  | `start()` |
 
-起動時に以下のいずれかが構成されている場合、それらは`configure()`メソッド中に送信されます。
+Kochava Remote Command タグでは、複数の構成オプションを使用できます。以下のいずれかが起動時に構成されている場合、`configure()` メソッドの実行時に送信されます。
 
 ##### 構成オプション
 
-| 名前 | TiQ変数マッピング | 説明 | タイプ |
+| 名前 | TiQ 変数マッピング | 説明 | 型 |
 |---|---|---|---|
-| ログレベル  | `log_level` | コンソールでのKochava出力のログレベル：`none`, `error`, `warn`, `info`, `debug`, `trace` ([ログレベルについてもっと学ぶ](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_10)) | `String` |
-| アトリビューションデータの取得 | `retrieve_attribution_data`  | アトリビューションデータが準備できたときにデリゲート/リスナーを構成するためのブール値。`TealiumKochava`では、`attributionDictionary`が[Volatile Storage](https://docs.tealium.com/ja/platforms/getting-started-mobile/mobile-concepts/#volatile-storage)に構成され、`tealium_event`の`track`コールとして送信されます。デリゲート/リスナーメソッドは`TealiumKochavaTracker`に追加されるかもしれません ([アトリビューションの取得についてもっと学ぶ](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_6))| `Bool` |
-| Identity Link ID | `identity_link_ids`  | キーと値のペアの形で異なるアイデンティティをリンクします ([アイデンティティリンキングについてもっと学ぶ](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_5)) | `Int` |
-| 広告追跡の制限 | `limit_ad_tracking`  | 有効にされている場合、アプリケーションレベルで広告追跡を制限します (デフォルト：`false`) | `Bool` |
-| アプリ追跡透明性の有効化 (iOS 14+) | `app_tracking_transparency_enabled`  | 有効にされている場合、KochavaのApp Tracking Transparencyの自動実装を有効にします (iOS 14+) (デフォルト：`false`) | `Bool` |
+| ログレベル | `log_level` | コンソールへの Kochava 出力に使用するログレベル：`none`、`error`、`warn`、`info`、`debug`、`trace`（[ログレベル](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_10)の詳細） | `String` |
+| アトリビューションデータの取得 | `retrieve_attribution_data` | アトリビューションデータの準備が整ったときにそのデータを取得するデリゲート／リスナーを構成するためのブール値です。`TealiumKochava` では、`attributionDictionary` が[揮発性保存](https://docs.tealium.com/ja/platforms/getting-started-mobile/mobile-concepts/#volatile-storage)に構成され、`tealium_event` が `attribution` の `track` 呼び出しが送信されます。デリゲート／リスナーメソッドは `TealiumKochavaTracker` に追加できます（[アトリビューションの取得](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_6)の詳細）| `Bool` |
+| Identity Link ID | `identity_link_ids` | キーと値のペアの形式で異なる ID を関連付けます（[ID の関連付け](https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/?scrollto=marker_5)の詳細） | `Int` |
+| 広告トラッキングの制限 | `limit_ad_tracking` | 有効にすると、アプリケーションレベルで広告トラッキングを制限します（デフォルト：`false`） | `Bool` |
+| App Tracking Transparency の有効化（iOS 14 以降） | `app_tracking_transparency_enabled` | 有効にすると、Kochava による App Tracking Transparency（iOS 14 以降）の自動実装を有効にします。（デフォルト：`false`） | `Bool` |
 
-#### スリープトラッカー
+#### トラッカーのスリープ
 
-| リモートコマンド | Kochavaメソッド |
+| Remote Command | Kochava メソッド |
 |---|---|
-| `sleeptracker` (iOS) | `sleepTracker` (`KochavaTracker.shared`オブジェクトのプロパティ) |
-| `setsleep` (Android) | `setSleep()` |
+| `sleeptracker`（iOS） | `sleepTracker`（`KochavaTracker.shared` オブジェクトのプロパティ） |
+| `setsleep`（Android） | `setSleep()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `sleep` (必須) | `Bool` |
+| `sleep`（必須） | `Bool` |
 
 
-#### 無効化 (iOS)
+#### 無効化（iOS）
 
-| リモートコマンド | Kochavaメソッド |
+| Remote Command | Kochava メソッド |
 | :--- | :---|
 | `invalidate`  | `invalidate()` |
 
 
-#### アイデンティティリンクの送信 (iOS)
+#### Identity Link の送信（iOS）
 
-|  リモートコマンド | Kochavaメソッド |
+| Remote Command | Kochava メソッド |
 |---|---|
 | `sendidentitylink`  | `sendIdentityLink()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `identityLinkIds` (必須) | キー値ペア |
-#### カスタムイベントの送信 (iOS)
+| `identityLinkIds`（必須） | キーと値のペア |
+#### カスタムイベントの送信（iOS）
 
-|  リモートコマンド | Kochavaメソッド |
+| リモートコマンド | Kochavaメソッド |
 |---|---|
 | [標準イベント名](#standard-event-names) | `send()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `event_parameters` (オプション) | キー値ペア |
+| `event_parameters`（任意） | キーと値のペア |
 
-#### カスタムイベントの送信 (iOS)
+#### カスタムイベントの送信（iOS）
 
-|  リモートコマンド | Kochavaメソッド |
+| リモートコマンド | Kochavaメソッド |
 |---|---|
-| `custom`  | `sendCustom()` |
+| `custom` | `sendCustom()` |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-|  `custom_event_name` (必須) | `String` |
-|  `info_dictionary` (オプション) | キー値ペア |
+| `custom_event_name`（必須） | `String` |
+| `info_dictionary`（任意） | キーと値のペア |

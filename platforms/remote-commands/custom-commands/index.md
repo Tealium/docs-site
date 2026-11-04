@@ -3,7 +3,7 @@ title: Custom Commands
 description: Learn about custom commands.
 url: https://docs.tealium.com/platforms/remote-commands/custom-commands/
 ---
-When using iQ Tag Management in your app, custom remote commands provide the ability to trigger native code blocks from the non-rendered webview. This is used in cases where data held inside the non-rendered webview needs to be passed back to the native code for further processing.
+When using Tag Management in your app, custom remote commands provide the ability to trigger native code blocks from the non-rendered webview. This is used in cases where data held inside the non-rendered webview needs to be passed back to the native code for further processing.
 
 Remote commands use custom URL schemes as a way for JavaScript tags to trigger methods in your app. A tag in the non-rendered webview sends the app requests which are processed by a remote command handler that triggers custom code or a vendor SDK.
 
@@ -24,7 +24,7 @@ Define remote commands in your native app at build time. The Custom Remote Comma
 
 ### Native Code
 
-In the native code, the `add()` function registers a remote command handler. The callback function `response` has  access to the payload with `response.payload`. In the following example, the referenced payload variables have a matching data layer variable configured in iQ Tag Management.
+In the native code, the `add()` function registers a remote command handler. The callback function `response` has  access to the payload with `response.payload`. In the following example, the referenced payload variables have a matching data layer variable configured in Tag Management.
 
 
 
@@ -73,16 +73,16 @@ The following steps demonstrate how to use a remote command to trigger a survey 
 
 1. Create native code that prompts the user to take a survey, passing the message and URL as method parameters (from the non-rendered webview).
 2. Register the block of code as a remote command with the Tealium API.
-3. Add the Custom Remote Command tag in iQ Tag Management and set the command ID to the same command registered in the native code.
+3. Add the Custom Remote Command tag in Tag Management and set the command ID to the same command registered in the native code.
 4. Set data mappings to pass specific variables back to the app, such as `survey_title` or `survey_url`.
 5. In the native code, use the variables passed back in the response payload to display the survey to the user.
 
-After completing these steps, you are able to configure the survey title, URL, and logic using extensions in iQ Tag Management without re-deploying your app.
+After completing these steps, you are able to configure the survey title, URL, and logic using extensions in Tag Management without re-deploying your app.
 
 
 ### Remote Command Tag
 
-Use iQ Tag Management where a remote command is set up as an instance of the custom Remote Command tag with the following settings:
+Use Tag Management where a remote command is set up as an instance of the custom Remote Command tag with the following settings:
 
 * **Command ID**  
 The name of the command (the same name used in the native method `addRemoteCommandID`).
@@ -111,7 +111,7 @@ The tag setup is defined as follows:
 * **Mapped variable**  
 `my_variable -> myVariable`
 
-The following screenshots show the example configured in iQ Tag Management.
+The following screenshots show the example configured in Tag Management.
 
 ![](https://docs.tealium.com/images/platforms/remote-commands/tag-example.png)
 

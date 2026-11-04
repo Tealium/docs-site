@@ -403,7 +403,7 @@ config.shouldUseRemotePublishSettings = false
 
 
 <blockquote>
-In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using `config.shouldUseRemotePublishSettings = false` in the Swift installation. Failure to do causes initialization failures and prevent tracking.
+In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in Tag Management, or disable it using `config.shouldUseRemotePublishSettings = false` in the Swift installation. Failure to do causes initialization failures and prevent tracking.
 </blockquote>
 
 

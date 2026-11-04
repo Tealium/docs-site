@@ -17,7 +17,7 @@ When you prompt a user for consent in your app there are three possible scenario
 
 If a user declines consent to all tracking, the Tealium mobile library prevents all standard tracking requests from leaving the device or from being sent to any remote commands. However, if the **Remote API** option is enabled, it generates an additional call with a special event type `remote_api`. This call ignores all offline queueing and consent restrictions. 
 
-The `remote_api` call does not any send data to JavaScript tags loaded by Tealium iQ, or to Tealium server-side products, such as AudienceStream or EventStream. Instead, it is used to trigger the following remote commands: 
+The `remote_api` call does not any send data to JavaScript tags loaded by Tag Management, or to Tealium server-side products, such as Customer Data Platform (CDP) or Event Streaming. Instead, it is used to trigger the following remote commands: 
 
 * Functional remote commands (such as those that support necessary functionality in the app).
 * Remote commands from third-party SDKs with built-in consent and/or offline queueing support, that expect an unfiltered stream of app events.
@@ -41,7 +41,7 @@ Learn more about [consent categories](https://docs.tealium.com/iq-tag-management
 
 ## Remote API Call
 
-How the **Remote API** option affects a remote command depends on whether the remote command is implemented using a JSON configuration file or by Tealium iQ.
+How the **Remote API** option affects a remote command depends on whether the remote command is implemented using a JSON configuration file or by Tag Management.
 
 ### JSON Remote Commands
 

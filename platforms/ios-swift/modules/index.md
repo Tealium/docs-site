@@ -187,18 +187,18 @@ For a base implementation, the following list of modules is recommended. At leas
 
 ### Client-side
 
-In addition to the base modules, these modules enable the Tealium library to process data client-side using Tealium iQ.
+In addition to the base modules, these modules enable the Tealium library to process data client-side using Tag Management.
 
-* TagManagement Dispatcher - Required to use Tealium iQ
+* TagManagement Dispatcher - Required to use Tag Management
 * RemoteCommands Dispatcher - Only required if you need Remote Commands functionality
 
 
 ### Server-side
 
-In addition to the base modules, these modules enable the library to send data to Tealium's server-side products (EventStream, AudienceStream, Event Data Framework).
+In addition to the base modules, these modules enable the library to send data to Tealium's server-side products (Event Streaming, Customer Data Platform (CDP), Event Data Framework).
 
 * Collect Dispatcher - Required to use any server-side products
-* Visitor Service Collector - Only required to retrieve Visitor Profiles from Tealium AudienceStream.
+* Visitor Service Collector - Only required to retrieve Visitor Profiles from Customer Data Platform (CDP).
 
 ## Install Modules
 

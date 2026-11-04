@@ -13,11 +13,11 @@ A common challenge for analytics vendors on hybrid apps is being able to track a
 
 To solve this problem, the native and webview components must share information. You can share information between these components by appending a query string parameter to the webview URL loaded by the native code. This parameter contains the shared session ID that is used in both the native and webview components.
 
-The initiation and sharing of that session ID is accomplished with some configuration in Tealium iQ and with some custom code in your native app. The custom remote command tag facilitates the sharing of that session ID between the hidden webview and the native code, where it's  passed to your website that loads from a visible webview.
+The initiation and sharing of that session ID is accomplished with some configuration in Tag Management and with some custom code in your native app. The custom remote command tag facilitates the sharing of that session ID between the hidden webview and the native code, where it's  passed to your website that loads from a visible webview.
 
 ### Solution
 
-This article demonstrates this solution using Google Analytics, but it applies to any vendor that supports session management. For the Google Analytics solution we retrieve a session ID (`clientId`) in the Tealium iQ SDK (generated in a hidden webview and passed to the native code through a remote command), pass it to the webview component of a hybrid app through a query string parameter, then use Tealium iQ to pass the session ID back to Google Analytics running on the website inside the webview. This example will focus mainly on Android, but the process for iOS is the same.
+This article demonstrates this solution using Google Analytics, but it applies to any vendor that supports session management. For the Google Analytics solution we retrieve a session ID (`clientId`) in the Tag Management SDK (generated in a hidden webview and passed to the native code through a remote command), pass it to the webview component of a hybrid app through a query string parameter, then use Tag Management to pass the session ID back to Google Analytics running on the website inside the webview. This example will focus mainly on Android, but the process for iOS is the same.
 
 Here are the requirements for this solution:
 
@@ -69,7 +69,7 @@ Although fully functional, this code is simply a sample to show how to accomplis
     Tealium inst = Tealium.createInstance(TEALIUM\_INSTANCENAME, config);
     // register a new RemoteCommand with Tealium called "syncGASession"
     inst.addRemoteCommand(new RemoteCommand("syncSessionId", "Syncs the Analytics Session ID") {
-        // onInvoke will be called when Tealium iQ triggers the command
+        // onInvoke will be called when Tag Management triggers the command
         @Override
         protected void onInvoke(Response response) throws Exception {
             // grab the response object
@@ -105,7 +105,7 @@ Tealium *instanceHandle = [Tealium instanceForKey: @"tealium"];
 [instanceHandle addRemoteCommandID:@"syncSessionId"
    description:@"Syncs the Session ID"
    targetQueue:dispatch_get_main_queue()
- // response is generated from the mappings set up in Tealium iQ
+ // response is generated from the mappings set up in Tag Management
    responseBlock:^(TEALRemoteCommandResponse * _Nonnull response) {
  // grab the Session ID from the response object
        NSString *session_id = response.requestPayload[@"sessionId"];

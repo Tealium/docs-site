@@ -1,86 +1,88 @@
 ---
 title: インストール
-description: React Native用Tealiumのインストール方法を学ぶ。
+description: React Native 向け Tealium のインストール方法について説明します。
 url: https://docs.tealium.com/ja/platforms/react-native-v1/install/
 ---
 
 <blockquote>
-これはReact Native用Tealiumの以前のバージョン（1.x）です。  
-現在のバージョンについては、[React Native用Tealium 2.x](https://docs.tealium.com/ja/platforms/react-native/)を参照してください。
+これは React Native 向け Tealium の旧バージョン（1.x）です。  
+現行バージョンについては、[React Native 向け Tealium 2.x](https://docs.tealium.com/ja/platforms/react-native/)を参照してください。
 </blockquote>
 
 
-React Native用Tealiumを使用すると、React NativeアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できます。
+React Native 向け Tealium を使用すると、React Native アプリケーションで Tealium のネイティブモバイルライブラリ（iOS、Android）を利用できます。
 
 
 
-## 動作原理
+## 仕組み
 
-Tealiumモバイルライブラリは、以下のいずれかの方法でReact Nativeアプリケーションに統合されます：
+Tealium モバイルライブラリは、次のいずれかの方法で React Native アプリケーションに統合します。
 
-*   NPMパッケージ（推奨）
-*   [GitHub](https://github.com/Tealium/tealium-react-native)を通じて手動で
+*   NPM パッケージ（推奨）
+*   [GitHub](https://github.com/Tealium/tealium-react-native) を使用した手動インストール
 
 ## 要件
 
 * ネイティブビルド環境へのアクセス
-* [React Native](https://github.com/Tealium/tealium-react-native)およびツールがインストールされていること
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
-* [Android Studio](https://developer.android.com/studio/)または[Xcode](https://developer.apple.com/xcode/)
-* [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)または[Tealium for iOS](https://docs.tealium.com/ja/platforms/ios-swift/)
+* [React Native](https://github.com/Tealium/tealium-react-native) および関連ツールがインストールされていること
+* [タグ管理モバイルプロファイル](https://docs.tealium.com/create-mobile-profile/)
+* [Android Studio](https://developer.android.com/studio/) または [Xcode](https://developer.apple.com/xcode/)
+* [Android 向け Tealium](https://docs.tealium.com/ja/platforms/android-java/) または [iOS 向け Tealium](https://docs.tealium.com/ja/platforms/ios-swift/)
 
 ## サンプルアプリ
 
-ライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れるために、[React Nativeサンプルアプリ](https://github.com/Tealium/tealium-react-native/tree/master/TealiumSampleApp)をダウンロードすることをお勧めします。
+Tealium ライブラリ、トラッキングメソッド、および実装のベストプラクティスについて理解を深めるため、[React Native サンプルアプリ](https://github.com/Tealium/tealium-react-native/tree/master/TealiumSampleApp)をダウンロードすることを推奨します。
+
 
 ## インストール（NPM/YARN）
 
-React Native用TealiumライブラリをNPMでインストールするには：
+NPM を使用して React Native 向け Tealium ライブラリをインストールするには、次の手順を実行します。
 
-1. React Nativeプロジェクトのルートに移動します。
+1. React Native プロジェクトのルートに移動します。
 
-2. 次のコマンドで`tealium-react-native`パッケージをダウンロードしてインストールします：  
+2. 次のコマンドを使用して、`tealium-react-native` パッケージをダウンロードしてインストールします。  
       ```bash
       yarn install tealium-react-native
       ```
-3. NPMパッケージのバージョン1.0.7ではReact Native Autolinkingが有効になっており、React Nativeのバージョン0.60+を使用している場合、`react-native link`を実行する必要はありません。
+3. NPM パッケージのバージョン 1.0.7 では React Native Autolinking が有効になっているため、React Native バージョン 0.60 以降を使用している場合、`react-native link` を実行する必要はありません。
 
 ### Android
 
-Androidプロジェクトのルート`build.gradle`ファイルにTealiumのMavenリポジトリへの参照を追加します。これは[Android Mavenインストール](https://docs.tealium.com/ja/platforms/android/install/#maven-install)のドキュメントで説明されています。プロジェクトの依存関係はAutolinkingプロセスによって自動的に処理されます。
+[Android Maven のインストール](https://docs.tealium.com/ja/platforms/android/install/#maven-install)ドキュメントの説明に従って、Android プロジェクトのルート `build.gradle` ファイルに Tealium の Maven リポジトリへの参照を追加します。プロジェクトの依存関係は、Autolinking プロセスによって自動的に処理されます。
 
 ### iOS
 
-React Native 0.60+のAutolinking機能は、必要なCocoaPods依存関係を自動的にiOSアプリケーションワークスペースに追加します。
+React Native 0.60 以降の Autolinking 機能により、必要な CocoaPods の依存関係が iOS アプリケーションのワークスペースに自動的に追加されます。
 
-ポッドをインストールするには、次のコマンドを実行します：
+Pod をインストールするには、次のコマンドを実行します。
 
 ```bash
-// React Nativeアプリケーションフォルダーから：
+// From your React Native application folder:
 cd ios && pod install
 ```
 
-場合によっては、フレームワークモジュール内の非モジュラーなインクルードを許可するためにclangパラメータを有効にする必要があります。clangパラメータを有効にするには：
+場合によっては、フレームワークモジュール内で非モジュール形式のインクルードを許可するために、clang パラメータを有効にする必要があります。clang パラメータを有効にするには、次の手順を実行します。
 
-1. Xcodeでアプリの`.xcworkspace`ファイルを開き、ナビゲーターから`Pods`を選択します。
+1. Xcode でアプリの `.xcworkspace` ファイルを開き、ナビゲーターから `Pods` を選択します。
 
-2. **Targets**の下で**tealium-react-native**ターゲットを選択し、**Build Settings**タブをクリックします。
+2. **Targets** で **tealium-react-native** ターゲットを選択し、**Build Settings** タブをクリックします。
 
-3. **Apple Clang - Language - Modules** > **Allow Non-modular Includes In Framework Modules**の下で次の構成を見つけて更新します：  
+3. **Apple Clang - Language - Modules** > **Allow Non-modular Includes In Framework Modules** にある次の構成を探し、更新します。  
       ```groovy
       CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
       ```
+
 
 
 ## インストール（手動）
 
 ### Android
 
-Androidアプリの場合、以下の手動インストール手順に従います：
+Android アプリでは、次の手順に従って手動でインストールします。
 
-1. AndroidアプリケーションにTealiumを統合するには、Tealium Mavenリポジトリを追加します：
+1. Tealium を Android アプリケーションに統合するため、Tealium Maven リポジトリに次の内容を追加します。
 
-2. プロジェクトのルート`build.gradle`にTealium Maven URLを追加します：
+2. プロジェクトルートの `build.gradle` に Tealium Maven URL を追加します。
       ```groovy
       allprojects {
             repositories {
@@ -92,7 +94,7 @@ Androidアプリの場合、以下の手動インストール手順に従いま�
       }
       ```
 
-3. プロジェクトモジュールの`build.gradle`ファイルにTealiumコアライブラリの依存関係を追加します。必要に応じてTealiumライフサイクル依存関係も追加します：
+3. プロジェクトモジュールの `build.gradle` ファイルに、Tealium コアライブラリの依存関係を追加します。また、必要に応じて Tealium ライフサイクルの依存関係も追加します。
 
       ```groovy
       dependencies {
@@ -101,59 +103,59 @@ Androidアプリの場合、以下の手動インストール手順に従いま�
       }
       ```
 
-ブリッジングロジックのコピー：
+ブリッジロジックをコピーするには、次の手順を実行します。
 
-1. Androidフォルダから、`TealiumModule.java`と`TealiumPackage.java`をプロジェクトファイルに追加します。
+1. Android フォルダーから、`TealiumModule.java` と `TealiumPackage.java` をプロジェクトファイルに追加します。
 
-2. `MainApplication.java`ファイルの`getPackages()`メソッドに`TealiumPackage`を含めます。
+2. `MainApplication.java` ファイルの `getPackages()` メソッドに `TealiumPackage` を追加します。
       ```java
       @Override
       protected List getPackages() {
             return Arrays.asList(
                 new MainReactPackage(),
-                new TealiumPackage()    // <--- TealiumPackageを追加
+                new TealiumPackage()    // <--- Add TealiumPackage
             );
       }
       ```
 
 ### iOS
 
-React NativeプロジェクトにiOS用Tealiumを追加するには、ブリッジングファイルを除いて、非React Nativeアプリケーションに追加するのと同じ手順が必要です。したがって、完全な詳細については[iOSアプリにTealiumを追加する](https://docs.tealium.com/ja/platforms/ios/)を参照してください。
+React Native プロジェクトに iOS 向け Tealium を追加する手順は、ブリッジファイルを除き、React Native 以外のアプリケーションの場合と同じです。詳細については、[iOS アプリへの Tealium の追加](https://docs.tealium.com/ja/platforms/ios/)を参照してください。
 
-コアライブラリが必要で、必要に応じてオプショナルモジュールが追加されます。これらは[iOS用のGitHubリポジトリ](https://github.com/Tealium/tealium-ios)から入手できます。
+コアライブラリは必須であり、オプションモジュールは必要に応じて追加します。これらは、[Tealium の iOS 向け GitHub リポジトリ](https://github.com/Tealium/tealium-ios)から入手できます。
 
-サンプルアプリは開発者の実験用であり、App Storeに公開するためのものではないため、`TealiumIOS.framework`と`TealiumIOSLifecycle.framework`のモジュールを使用しています（シミュレーターに適していますが、公開には適していません）。App Storeに公開するための自分のアプリを作業する際には、[デバイス専用フォルダ](https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly)のフレームワークを使用してください。
+サンプルアプリは開発者によるテストを目的としており、App Store での公開を目的としていません。そのため、`TealiumIOS.framework` および `TealiumIOSLifecycle.framework` モジュールを使用しています（シミュレーターには適していますが、公開用には適していません）。App Store での公開を目的として独自のアプリを開発する場合は、必ず[デバイス専用フォルダー](https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly)内のフレームワークを使用してください。
 
 ## インストール（CocoaPods）
 
-CocoaPodsはインストールを行う別の方法です。私たちのポッドは「TealiumIOS」という名前です。完全な詳細については[iOS用Tealiumガイド](https://docs.tealium.com/ja/platforms/ios/)を参照してください。コマンド`create-react-native-app`はPodfileを作成しないため、サンプルアプリは手動インストールを使用して構築されました。多くの依存関係を持つ複雑な本番アプリの場合、CocoaPodsが推奨される方法です。
+CocoaPods を使用してインストールすることもできます。Tealium の Pod 名は「TealiumIOS」です。詳細については、[iOS 向け Tealium ガイド](https://docs.tealium.com/ja/platforms/ios/)を参照してください。`create-react-native-app` コマンドでは Podfile が作成されないため、サンプルアプリは手動インストールを使用して構築されています。多数の依存関係を持つ複雑な本番アプリでは、CocoaPods の使用を推奨します。
 
-#### ブリッジングロジックのコピー
+#### ブリッジロジックのコピー
 
-[GitHubリポジトリ](https://github.com/Tealium/tealium-react-native/tree/master/ios)には、TealiumネイティブiOS SDKとReact NativeアプリのJavascript間のブリッジングを提供する2つのファイル、`TealiumModule.m`と`TealiumModule.h`があります。
+[GitHub リポジトリ](https://github.com/Tealium/tealium-react-native/tree/master/ios)には、Tealium のネイティブ iOS SDK と React Native アプリ内の JavaScript をブリッジするための `TealiumModule.m` と `TealiumModule.h` という 2 つのファイルがあります。
 
-これらの2つのファイルをアプリのメインプロジェクトにコピーします。
+これら 2 つのファイルをアプリのメインプロジェクトにコピーします。
 
 ## JavaScript
 
-モジュールをアプリにインポートする方法は、インストール方法によって異なります。
+モジュールをアプリにインポートする方法は、使用したインストール方法によって異なります。
 
-NPMを介してインストールした場合、コードにこの行を追加します：
+NPM を使用してインストールした場合は、コードに次の行を追加します。
 
 ```javascript
 import Tealium from 'tealium-react-native';
 ```
 
-手動でインストールした場合、[GitHubリポジトリ](https://github.com/Tealium/tealium-react-native)の`npm-package`フォルダから`index.js`ファイルを見つけ、`TealiumModule.js`に名前を変更してReact Native JavaScriptプロジェクトにコピーします。
+手動でインストールした場合は、[GitHub リポジトリ](https://github.com/Tealium/tealium-react-native)の `npm-package` フォルダーにある `index.js` ファイルを探し、ファイル名を `TealiumModule.js` に変更して、React Native JavaScript プロジェクトにコピーします。
 
-次に、Tealium JavaScriptモジュールをインポートするためにコードにこの行を追加します：
+次に、Tealium JavaScript モジュールをインポートするため、コードに次の行を追加します。
 
 ```javascript
 import Tealium from './TealiumModule';
 ```
 ## 初期化
 
-アプリがインストールされたら、以下の例に示すように[`initialize()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initialize)メソッドを使用して`Tealium`インスタンスを初期化します：
+アプリをインストールしたら、次の例に示すように、[`initialize()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initialize) メソッドを使用して `Tealium` インスタンスを初期化します。
 
 ```javascript
 Tealium.initialize("ACCOUNT",
@@ -163,17 +165,17 @@ Tealium.initialize("ACCOUNT",
                    "ANDROID_DATA_SOURCE_KEY")
 ```
 
-**コンセント管理**  
-コンセント管理を使用するには、同じパラメータを使用して[`initializeWithConsentManager()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initializewithconsentmanager)メソッドで初期化します。
+**同意管理**  
+同意管理を使用するには、同じパラメータを指定して [`initializeWithConsentManager()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initializewithconsentmanager) メソッドで初期化します。
 
-詳細はこちら：
+詳細：
 
-* [Androidのコンセントマネージャー](https://docs.tealium.com/ja/platforms/android-java/consent-management/)
-* [iOSのコンセントマネージャー](https://docs.tealium.com/ja/platforms/ios-swift/consent-management/)
+* [Android向け同意管理](https://docs.tealium.com/ja/platforms/android-java/consent-management/)
+* [iOS向け同意管理](https://docs.tealium.com/ja/platforms/ios-swift/consent-management/)
 
 
 **カスタム初期化**  
-すべての初期化オプションは、[`initializeCustom()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initializecustom)メソッドで利用可能です。
+すべての初期化オプションは、[`initializeCustom()`](https://docs.tealium.com/ja/platforms/react-native-v1/api/#initializecustom) メソッドで利用できます。
 
 ```javascript
 Tealium.initializeCustom('ACCOUNT',
@@ -182,11 +184,11 @@ Tealium.initializeCustom('ACCOUNT',
                          'IOS_DATA_SOURCE_KEY',
                          'ANDROID_DATA_SOURCE_KEY',
                          'INSTANCE',
-                         ENABLE_LIFECYCLE,        // ライフサイクル追跡を有効にする
-                         'PUBLISH_SETTINGS_URL',  // カスタム公開構成URL
-                         'TAG_MANAGEMENT_URL',    // カスタムタグ管理URL
-                         USE_COLLECT_ENDPOINT,    // データエンドポイント間で切り替える、true: Tealium Collect, false: Visitor Data
-                         ENABLE_CONSENT_MANAGER); // コンセント管理を有効にする
+                         ENABLE_LIFECYCLE,        // enable lifecycle tracking
+                         'PUBLISH_SETTINGS_URL',  // custom publish settings URL
+                         'TAG_MANAGEMENT_URL',    // custom tag management URL
+                         USE_COLLECT_ENDPOINT,    // toggle between data endpoints, true: Tealium Collect, false: Visitor Data
+                         ENABLE_CONSENT_MANAGER); // enable consent management
 ```
 
-詳細は[APIリファレンス](https://docs.tealium.com/ja/platforms/react-native-v1/api/)をご覧ください。
+詳細については、[APIリファレンス](https://docs.tealium.com/ja/platforms/react-native-v1/api/)を参照してください。

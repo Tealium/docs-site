@@ -1,31 +1,31 @@
 ---
 title: リモートコマンド：Facebook
-description: AndroidおよびSwift/iOS用FacebookのTealiumリモートコマンド統合。
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドによるFacebook連携。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/facebook/
 ---
 ## 要件
 
-* 以下のモバイルライブラリのいずれか：
-  * [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/) (1.0.0+).
-  * [Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/) (Facebook 1.0.0+の場合は5.9.0+、それ以前のバージョンの場合は<5.9.0).
-  * [Tealium for iOS (Swift)](https://docs.tealium.com/ja/platforms/ios-swift/).
-* 以下のリモートコマンド統合のいずれか：
-  * [Facebook Remote Command JSON File](https://docs.tealium.com/ja/platforms/remote-commands/integrations/facebook/.#json-template) (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要).
-  * Tealium Tag ManagementのFacebook Remote Commandタグ。
+* 以下のいずれかのモバイルライブラリ：
+  * [Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）。
+  * [Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/)（Facebook 1.0.0以降の場合は5.9.0以降、それより前のバージョンの場合は5.9.0未満）。
+  * [Tealium for iOS（Swift）](https://docs.tealium.com/ja/platforms/ios-swift/)。
+* 以下のいずれかのリモートコマンド連携：
+  * [FacebookリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/facebook/.#json-template)（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）。
+  * タグ管理のFacebookリモートコマンドタグ。
 
-iOSおよびAndroidに必要な要件は以下の通りです：
-
-
+iOSおよびAndroidの要件は次のとおりです。  
 
 
-`app/src/main/res/values/strings.xml`ファイルに以下のキーを追加します。`[APP_ID]`をあなたのFacebookアプリID、`[CLIENT_TOKEN]`をあなたのFacebookクライアントトークンに置き換えてください：
+
+
+次のキーを`app/src/main/res/values/strings.xml`ファイルに追加します。`[APP_ID]`をFacebookアプリIDに、`[CLIENT_TOKEN]`をFacebookクライアントトークンに置き換えます。
 ```xml
 <string name="facebook_app_id">[APP_ID]</string>
 <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
 <string name="facebook_client_token">[CLIENT_TOKEN]</string>
 ```
 
-`AndroidManifest.xml`ファイルには以下の`meta-data`要素が必要です：
+`AndroidManifest.xml`ファイルには、次の`meta-data`要素が必要です。
 ```xml
 <application android:label="@string/app_name" ...>
     ...
@@ -39,12 +39,12 @@ iOSおよびAndroidに必要な要件は以下の通りです：
 </application>
 ```
 
-詳細はこちら：[Facebook Android Getting Started - Integrate the Facebook SDK in Your Android App](https://developers.facebook.com/docs/app-events/getting-started-app-events-android).
+詳細については、[Facebook Androidスタートガイド - AndroidアプリへのFacebook SDKの統合](https://developers.facebook.com/docs/app-events/getting-started-app-events-android)を参照してください。
 
 
 
 
-`Info.plist`ファイルに以下のキーを追加します。`[APP_ID]`をあなたのFacebookアプリID、`[APP_NAME]`をあなたのアプリ名、`[CLIENT_TOKEN]`をあなたのFacebookクライアントトークンに置き換えてください：
+次のキーを`Info.plist`ファイルに追加します。`[APP_ID]`をFacebookアプリIDに、`[APP_NAME]`をアプリ名に、`[CLIENT_TOKEN]`をFacebookクライアントトークンに置き換えます。  
 ```xml
 <key>CFBundleURLTypes</key>
 <array>
@@ -62,18 +62,18 @@ iOSおよびAndroidに必要な要件は以下の通りです：
 <key>FacebookClientToken</key>
 <string>[CLIENT_TOKEN]</string>
 ```
-詳細はこちら：[Facebook iOS Getting Started - Configure Your Property List](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#plist-config).
+詳細については、[Facebook iOSスタートガイド - プロパティリストの構成](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#plist-config)を参照してください。
 
-`AppDelegate`コードを以下のように更新します：
+`AppDelegate`のコードを次のように更新します。
 
 1. `FBSDKCoreKit`をインポートします。
-2. `didFinishLaunchingWithOptions`メソッドに以下を追加します：
+2. `didFinishLaunchingWithOptions`メソッドに次のコードを追加します。  
       ```swift
       ApplicationDelegate.shared.application(
             application, 
             didFinishLaunchingWithOptions: launchOptions)
       ```
-3. `AppDelegate.swift`（またはObjective-Cの同等物）に以下の関数を追加します：
+3. `AppDelegate.swift`（または同等のObjective-Cコード）に次の関数を追加します。
       ```swift
       func application(
             _ app: UIApplication,
@@ -85,88 +85,89 @@ iOSおよびAndroidに必要な要件は以下の通りです：
             options: options)
       }
       ```
-詳細はこちら：[Facebook iOS Getting Started - Set Up Your Development Environment](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#dev-env-setup).
+詳細については、[Facebook iOSスタートガイド - 開発環境の構成](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#dev-env-setup)を参照してください。
 
 
 
 
-## 動作原理
+## 仕組み
 
-Facebook統合は3つの要素を使用します：
+Facebook連携では、次の3つの項目を使用します。
 
 1. FacebookネイティブSDK。
-2. Facebookメソッドをラップするリモートコマンドモジュール。
-3. イベントトラッキングをネイティブのFacebookコールに変換するJSON構成ファイルまたはRemote Commandタグのいずれか。
+2. Facebookのメソッドをラップするリモートコマンドモジュール。
+3. イベントトラッキングをFacebookのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ。
 
-Facebookリモートコマンドモジュールをアプリに追加すると、ベンダー固有のコードをアプリに追加することなく、必要なFacebookライブラリが自動的にインストールされビルドされます。依存関係マネージャーのインストールを使用している場合、Facebook SDKを別途インストールする必要はありません。
+Facebookリモートコマンドモジュールをアプリに追加すると、アプリにベンダー固有のコードを追加することなく、必要なFacebookライブラリが自動的にインストールおよびビルドされます。依存関係マネージャーを使用してインストールする場合、Facebook SDKを個別にインストールする必要はありません。
 
-リモートコマンドのオプションは2つあります：JSON構成ファイル、またはTag Managementを使用してマッピングを構成します。ベンダー統合には、リモートまたはアプリ内にローカルでホストされたJSON構成ファイルが推奨されます。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー連携には、リモートまたはアプリ内のローカルでホストされるJSON構成ファイルの使用を推奨します。タグ管理を使用する場合は、ベンダー連携用のリモートコマンドタグを追加します。詳しくは、[ベンダー連携](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を参照してください。
 
 ## インストール
 
-### 依存関係マネージャ
+### 依存関係マネージャー
 
 
 
 
 1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-ios-facebook-remote-command`.
-3. バージョンルールを構成します。通常は`Up to next major`が推奨されます。現在の`TealiumFacebook`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールする`TealiumFacebook`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
+2. リポジトリURLとして`https://github.com/tealium/tealium-ios-facebook-remote-command`を入力します。
+3. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumFacebook`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
+4. インストールする`TealiumFacebook`モジュールを選択し、モジュールのインストール先となるアプリターゲットを選択します。
 
-プロジェクトに複数のアプリターゲットがあり、`TealiumFacebook`モジュールを複数のアプリターゲットに追加する必要がある場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、追加のアプリターゲットでも`TealiumFacebook`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-追加のアプリターゲットに`TealiumFacebook`をインストールするには：
+追加のアプリターゲットに`TealiumFacebook`をインストールするには、次の手順を実行します。
 
 1. **Project Navigator**でXcodeプロジェクトを選択します。
-2. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumFacebook`モジュールをアプリターゲットに追加するために選択します。
+2. Xcodeプロジェクトの**TARGETS**セクションでアプリターゲットを選択します。
+3. **General > Frameworks, Libraries & Embedded Content**に移動し、アプリターゲットに追加する`TealiumFacebook`モジュールを選択します。
 
-Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の指示に従ってください。
-
-
+Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の手順に従ってください。
 
 
-1. Podfileから`tealium-swift`と`pod "FBSDKCoreKit"`を削除します。`TealiumFacebook`フレームワークには`tealium-swift`の依存関係がすでに含まれています。
 
-2. Podfileに以下の依存関係を追加します：
+
+1. Podfileに`tealium-swift`と`pod "FBSDKCoreKit"`がすでに存在する場合は削除します。`tealium-swift`への依存関係は、`TealiumFacebook`フレームワークにすでに含まれています。
+
+2. Podfileに次の依存関係を追加します。
       ```ruby
       pod "TealiumFacebook"
       ```
-      `TealiumFacebook`ポッドには以下の`TealiumSwift`依存関係が含まれています：
+      `TealiumFacebook` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       'tealium-swift/Core'
       'tealium-swift/RemoteCommands'
       'tealium-swift/TagManagement'
       ```
 
-3. `TealiumHelper`ファイルおよび`Tealium`クラスまたはFacebook Remote Commandにアクセスする他のファイルで`TealiumSwift`および`TealiumFacebook`モジュールをインポートします。
+3. `TealiumHelper`ファイル、および`Tealium`クラスまたはFacebookリモートコマンドにアクセスするその他のファイルで、`TealiumSwift`モジュールと`TealiumFacebook`モジュールをインポートします。
 
 
 
 
-1. Cartfileから`tealium-swift`を削除します。`TealiumFacebook`フレームワークには`tealium-swift`の依存関係がすでに含まれています。
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`への依存関係は、`TealiumFacebook`フレームワークにすでに含まれています。
 
-2. Cartfileに存在する場合は以下の行を削除します：
+2. Cartfileに次の行が存在する場合は削除します。  
       ```bash
       github "facebook/facebook-ios-sdk"
       ```
 
-3. Cartfileに以下の依存関係を追加します：
+3. Cartfileに次の依存関係を追加します。  
       ```bash
       github "tealium/tealium-ios-facebook-remote-command"
       ```
 
 
 <blockquote>
-最新のFacebook Remote Command統合にはTealium for Swift SDK（バージョン2.12+）が必要です。
+最新のFacebookリモートコマンド連携には、Tealium for Swift SDK（バージョン2.12以降）が必要です。
 </blockquote>
 
 
 
 
 
-1. [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、まだ行っていない場合はプロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+
+1. まだ実行していない場合は、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトの最上位`build.gradle`ファイルにTealium Maven URLを追加します。
 
 
       ```groovy
@@ -180,7 +181,7 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
       }
       ```
 
-2. アプリプロジェクトの`build.gradle`ファイルに以下の依存関係を追加して、Facebook SDKとTealium-Facebookリモートコマンドをインポートします：
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加し、Facebook SDKとTealium-Facebookリモートコマンドの両方をインポートします。  
       ```groovy
       dependencies {
             implementation 'com.tealium.remotecommands:facebook:3.0.0'
@@ -188,29 +189,29 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
       ```
 
 
-### マニュアルインストール
+### 手動インストール
 
 
 
 
-Facebookリモートコマンドの手動インストールには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリのインストールが必要です。iOSプロジェクトのFacebookリモートコマンドをインストールするには：
+Facebookリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにFacebookリモートコマンドをインストールするには、次の手順を実行します。
 
 1. まだインストールしていない場合は、[Facebook SDK](https://github.com/facebook/facebook-ios-sdk/tree/master/FBSDKCoreKit)をインストールします。
 
-2. [Tealium iOS Facebookリモートコマンド](https://github.com/tealium/tealium-ios-facebook-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+2. [Tealium iOS Facebookリモートコマンド](https://github.com/tealium/tealium-ios-facebook-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
 3. ディスパッチャーとして`Dispatchers.RemoteCommands`を追加します。
 
-4. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
+4. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true.`に構成します。
 
 
 
 
-Facebookリモートコマンドの手動インストールには、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)のインストールが必要です。
+Facebookリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。
 
-AndroidプロジェクトのFacebookリモートコマンドをインストールするには：
+AndroidプロジェクトにFacebookリモートコマンドをインストールするには、次の手順を実行します。
 
-1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します：
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。  
       ```groovy
       allprojects {
             repositories {
@@ -222,9 +223,9 @@ AndroidプロジェクトのFacebookリモートコマンドをインストー�
       }
       ```
 
-2. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-facebook.aar`を追加します。
+2. `tealium-facebook.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。  
       ```groovy
       dependencies {
             implementation(name:'tealium-facebook', ext:'aar')
@@ -241,7 +242,7 @@ AndroidプロジェクトのFacebookリモートコマンドをインストー�
 
 
 
-TealiumのiOS（Swift）ライブラリ用にJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：
+JSON構成ファイルまたはリモートコマンドタグを使用して、TealiumのiOS（Swift）ライブラリ用のリモートコマンドを初期化します。
 ```swift
 var tealium : Tealium?
 let config = TealiumConfig(account: "ACCOUNT",
@@ -249,20 +250,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let facebook = FacebookRemoteCommand(launchOptions: launchOptions) 
 
-    // ローカルJSON
+    // Local JSON
     //let facebook = FacebookRemoteCommand(type: .local(file: "facebook"), launchOptions: launchOptions) 
 
-    // リモートJSON
+    // Remote JSON
     //let facebook = FacebookRemoteCommand(type: .remote(url: "https://some.domain.com/facebook.json"), launchOptions: launchOptions) 
 
     remoteCommands.add(facebook)
@@ -271,7 +272,7 @@ tealium = Tealium(config: config) { _ in
 
 
 
-TealiumのKotlinライブラリ用にJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：
+JSON構成ファイルまたはリモートコマンドタグを使用して、TealiumのKotlinライブラリ用のリモートコマンドを初期化します。
 ```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
@@ -281,20 +282,20 @@ val config = TealiumConfig(application,
 val facebook = FacebookRemoteCommand(application);
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(facebook); 
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(facebook, filename = "facebook.json"); 
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(facebook, remoteUrl = "https://some.domain.com/facebook.json"); 
 }
 ```
 
 
 
-TealiumのAndroid（Java）ライブラリ用にリモートコマンドタグでリモートコマンドを初期化します：
+リモートコマンドタグを使用して、TealiumのAndroid（Java）ライブラリ用のリモートコマンドを初期化します。   
 ```java
 import com.tealium.remotecommands.facebook.FacebookRemoteCommand;
 
@@ -303,7 +304,7 @@ Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 FacebookRemoteCommand facebook = new FacebookRemoteCommand(this);
 
-// コマンドを登録
+// register the command
 teal.addRemoteCommand(facebook);
 ```
 
@@ -312,7 +313,7 @@ teal.addRemoteCommand(facebook);
 
 ## JSONテンプレート
 
-[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
+[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照して作業を開始してください。このテンプレートには、標準的なEコマース実装で使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -395,20 +396,20 @@ teal.addRemoteCommand(facebook);
   }
 }
 ```
-## Pushメッセージ追跡（iOS）
+## プッシュメッセージトラッキング（iOS）
 
-Tealium Swiftライブラリには、TealiumおよびFacebook Remote Commandを通じてプッシュメッセージ追跡を処理するための`TealiumRegistration`プロトコルが含まれています。このプロトコルに準拠するラッパークラス`FacebookInstance`を使用して、プッシュメッセージ認証イベント、プッシュメッセージオープンイベント、およびアンインストール追跡を送信します。プッシュメッセージ追跡機能を活用することをお勧めします。
+Tealium Swift ライブラリには、Tealium および Facebook リモートコマンドを通じてプッシュメッセージトラッキングを処理するための `TealiumRegistration` プロトコルが含まれています。ラッパークラス `FacebookInstance` でこのプロトコルに準拠しており、プッシュメッセージの許可イベント、プッシュメッセージの開封イベント、およびアンインストールのトラッキングを送信するために使用されます。プッシュメッセージトラッキング機能を活用することを推奨します。
 
-以下は、iOSプロジェクトにプッシュメッセージ追跡を統合する手順です：
+iOS プロジェクトにプッシュメッセージトラッキングを統合するには、次の手順を実行します。
 
-1. `TealiumHelper.swift`ファイルで、`TealiumRegistration`プロトコルに準拠するオブジェクトの空の配列を初期化します。例：
+1. `TealiumHelper.swift` ファイルで、`TealiumRegistration` プロトコルに準拠するオブジェクトの空の配列を初期化します。例：  
       ```swift
       var pushMessagingHelpers = [TealiumRegistration]()
       ```
-2. `FacebookRemoteCommand`の前に`FacebookInstance`を初期化します。
-3. 上記の配列に`FacebookInstance`を追加します。
+2. `FacebookRemoteCommand` より先に `FacebookInstance` を初期化します。
+3. 上記の配列に `FacebookInstance` を追加します。
 
-以下は、プッシュメッセージ追跡統合の例です：
+次に、プッシュメッセージトラッキングの統合例を示します。
 ```swift
 var pushMessagingHelpers = [TealiumRegistration]()
 
@@ -425,34 +426,34 @@ teal = Tealium(config: config) { responses in
 }
 ```
 
-`TealiumHelper.swift`ファイル全体を見るには、[Facebook Remote Commandサンプルアプリ](https://github.com/Tealium/tealium-ios-facebook-remote-command/tree/master/Examples)を参照してください。ユーザーが通知に登録した後、プッシュメッセージを開いたり、アプリをアンインストールしたりした場合にFacebookにイベントを送信するには、`AppDelegate.swift`ファイルを参照してください。
+`TealiumHelper.swift` ファイル全体を確認するには、[Facebook リモートコマンドのサンプルアプリ](https://github.com/Tealium/tealium-ios-facebook-remote-command/tree/master/Examples)を参照してください。ユーザーが通知に登録したとき、プッシュメッセージを開いたとき、またはアプリをアンインストールしたときに Facebook へイベントを送信する方法については、`AppDelegate.swift` ファイルを参照してください。
 
 ## サポートされているメソッド
 
-各Facebookメソッドにコマンドをマッピングします。Facebookメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。
+各 Facebook メソッドにコマンドをマッピングします。Facebook メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-| リモートコマンド | Facebookメソッド | サポートプラットフォーム |
+| リモートコマンド | Facebook メソッド | サポートされているプラットフォーム |
 | -------------- | --------------- | ------------------- |
-| `clearuser`(ios)/`clearuserdata`(android) | `clearUserData()` | iOS, Android |
-| `clearuserid` | `clearUserId()` | iOS, Android |
-| `enableadvertiseridcollection` | `setAdvertiserIDCollectionEnabled()` | iOS, Android |
-| `flush` | `flush()` | iOS, Android |
-| `initialize` | `initialize()` | iOS, Android |
-| `logproductitem` | `logProductItem()` | iOS, Android |
-| `logpurchase` | `logPurchase()` | iOS, Android |
+| `clearuser`(ios)/`clearuserdata`(android) | `clearUserData()` | iOS、Android |
+| `clearuserid` | `clearUserId()` | iOS、Android |
+| `enableadvertiseridcollection` | `setAdvertiserIDCollectionEnabled()` | iOS、Android |
+| `flush` | `flush()` | iOS、Android |
+| `initialize` | `initialize()` | iOS、Android |
+| `logproductitem` | `logProductItem()` | iOS、Android |
+| `logpurchase` | `logPurchase()` | iOS、Android |
 | `setautoinitenabled` | `setAutoInitEnabled()` | Android |
-| `setautologappeventsenabled` | `setAutoLogAppEventsEnabled()` | iOS, Android |
-| `setflushbehavior` | `setFlushBehavior()` | iOS, Android |
-| `setpushregistrationid` | `setPushNotificationsRegistrationId()` | Androidのみ |
-| `setuser`(ios, android)/`updateUserValue`(ios) | `setUserData()` | iOS, Android |
-| `setuserid` | `setUserId()` | iOS, Android |
-| 以下のいずれかのイベント名 | `logEvent()` | iOS, Android |
+| `setautologappeventsenabled` | `setAutoLogAppEventsEnabled()` | iOS、Android |
+| `setflushbehavior` | `setFlushBehavior()` | iOS、Android |
+| `setpushregistrationid` | `setPushNotificationsRegistrationId()` | Android のみ |
+| `setuser`(ios, android)/`updateUserValue`(ios) | `setUserData()` | iOS、Android |
+| `setuserid` | `setUserId()` | iOS、Android |
+| 以下のいずれかのイベント名 | `logEvent()` | iOS、Android |
 
 ### 標準イベント名
 
-以下は、`logEvent`メソッドでサポートされている標準イベント名のリストです。以下のコマンド名が送信された場合、それに対応するFacebook SDKで自動的にトリガーされます。これは、その特定のイベントに対して必要な変数もマッピングおよび定義されていると仮定しています。[アプリ内イベントの記録について学ぶ](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#manually-log-events)。
+次に、`logEvent` メソッドでサポートされている標準イベント名の一覧を示します。以下のいずれかのコマンド名が送信されると、Facebook SDK で自動的にトリガーされます。これは、該当するイベントに必要なすべての変数がマッピングおよび定義されていることを前提としています。[アプリ内イベントの記録](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#manually-log-events)について詳しく確認してください。
 
-| リモートコマンド               | Facebookイベント名                                |
+| リモートコマンド               | Facebook イベント名                                |
 | :--------------------------- | :------------------------------------------------ |
 | `activatedapp`               | `FBSDKAppEventNameActivatedApp`                   |
 | `achievedlevel`              | `FBSDKAppEventNameAchievedLevel`                  |
@@ -492,212 +493,213 @@ teal = Tealium(config: config) { responses in
 
 
 <blockquote>
-Facebook SDKがTealium SDKと一緒にインストールされているため、対応するタグ構成が与えられた場合、任意のネイティブFacebook機能をトリガーできます。
+Since the Facebook SDK is installed alongside the Tealium SDK, you are able to trigger any native Facebook functionality given the corresponding tag configuration.
 </blockquote>
 
 
-### ユーザークリア
+### ユーザーのクリア
 
 現在のユーザーデータをクリアします。
 
-| イベント名  | 必須 | オプション | タイプ |
+| イベント名  | 必須 | 任意 | 型 |
 | ----------- | -------- | -------- | ---- |
 | `clearuser` |          |          |      |
 
-- [Facebook iOS SDK統合 - clearUserData](https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L800)
-- [Facebook Android SDK統合 - clearUserData](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L708)
+- [Facebook iOS SDK の統合 - clearUserData](https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L800)
+- [Facebook Android SDK の統合 - clearUserData](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L708)
 
-### ユーザーIDクリア
+### ユーザー ID のクリア
 
-現在構成されているユーザーIDをクリアします。
+現在構成されているユーザー ID をクリアします。
 
-| イベント名     | 必須 | オプション | タイプ |
+| イベント名     | 必須 | 任意 | 型 |
 | -------------- | -------- | -------- | ---- |
 | `clearuserid`  |          |          |      |
 
-- [Facebook iOS SDK統合 - clearUserId](https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L761)
-- [Facebook Android SDK統合 - clearUserId](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L629)
-### 広告主IDコレクションの構成
+- [Facebook iOS SDK の統合 - clearUserId](https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L761)
+- [Facebook Android SDK の統合 - clearUserId](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L629)
+### 広告主 ID の収集構成
 
-アプリケーションの広告主IDコレクションフラグを構成します。
+アプリケーションの advertiserID 収集フラグを構成します。
 
-| イベント名                         | 必須                                      | 任意 | 型     |
-| ---------------------------------- | ----------------------------------------- | ---- | ------ |
-| `enableadvertiseridcollection`     | `advertiser_collection`(android)          |      | `bool` |
-|                                    | `advertiser_id_collection_enabled`(ios)   |      |        |
+| イベント名                     | 必須                                    | 任意 | 型     |
+| ------------------------------ | --------------------------------------- | ---- | ------ |
+| `enableadvertiseridcollection` | `advertiser_collection`（Android）      |      | `bool` |
+|                                | `advertiser_id_collection_enabled`（iOS） |    |        |
 
-- [Facebook iOS SDK統合 - setAdvertiserIDCollectionEnabled](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L155)
-- [Facebook Android SDK統合 - setAdvertiserIDCollectionEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L1011)
+- [Facebook iOS SDK インテグレーション - setAdvertiserIDCollectionEnabled](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L155)
+- [Facebook Android SDK インテグレーション - setAdvertiserIDCollectionEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L1011)
 
 ### フラッシュ
 
-Facebookにイベントのフラッシュを明示的に開始します。これは非同期メソッドですが、即時に開始されます。サーバーの障害はNotificationCenterを通じて通知ID `FBSDKAppEventsLoggingResultNotification`で報告されます。
+Facebook へのイベントのフラッシュを明示的に開始します。これは非同期メソッドですが、即座に処理を開始します。サーバーエラーは、通知 ID `FBSDKAppEventsLoggingResultNotification` を使用して NotificationCenter 経由で報告されます。
 
 | イベント名 | 必須 | 任意 | 型 |
-| ---------- | ---- | ---- | --- |
-| `flush`    |      |      |     |
+| ---------- | ---- | ---- | -- |
+| `flush`    |      |      |    |
 
-- [Facebook iOS SDK統合 - flush](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L730)
-- [Facebook Android SDK統合 - flush](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L560)
+- [Facebook iOS SDK インテグレーション - flush](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L730)
+- [Facebook Android SDK インテグレーション - flush](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L560)
 
 ### 初期化
 
-アプリケーションの認証情報を使用してFacebook SDKを初期化します。
+アプリケーションの認証情報を使用して Facebook SDK を初期化します。
 
-| イベント名   | 必須              | 任意            | 型        |
-| ------------ | ----------------- | --------------- | --------- |
-| `initialize` | `applicationid`   |                 | `String`  |
-|              |                   | `clienttoken`   | `String`  |
-|              |                   | `debug`         | `Boolean` |
+| イベント名   | 必須            | 任意          | 型        |
+| ------------ | --------------- | ------------- | --------- |
+| `initialize` | `applicationid` |               | `String`  |
+|              |                 | `clienttoken` | `String`  |
+|              |                 | `debug`       | `Boolean` |
 
-### 商品アイテムのログ
+### 商品アイテムのログ記録
 
 商品カタログの商品アイテムをアプリイベントとしてアップロードします。
 
-| イベント名           | 必須                        | 任意                 | 型                                           |
-| -------------------- | --------------------------- | -------------------- | -------------------------------------------- |
-| `logProductItem`     | `fb_product_item_id`        |                      | `String`                                     |
-|                      | `fb_product_availability`   |                      | `Int` (下記参照)                              |
-|                      | `fb_product_condition`      |                      | `Int` (下記参照)                              |
-|                      | `fb_product_description`    |                      | `String`                                     |
-|                      | `fb_product_image_link`     |                      | `String`                                     |
-|                      | `fb_product_link`           |                      | `String`                                     |
-|                      | `fb_product_title`          |                      | `String`                                     |
-|                      | `fb_product_price_amount`   |                      | `Double/Decimal`                             |
-|                      | `fb_product_price_currency` |                      | `String`                                     |
-|                      | `fb_product_parameters`     |                      | `[String: Any]` - JavaScriptオブジェクト（iQ内） |
-|                      |                             | `fb_product_gtin`    | `String`                                     |
-|                      |                             | `fb_product_mpn`     | `String`                                     |
-|                      |                             | `fb_product_brand`   | `String`                                     |
+| イベント名       | 必須                        | 任意                 | 型                                             |
+| ---------------- | --------------------------- | -------------------- | ---------------------------------------------- |
+| `logProductItem` | `fb_product_item_id`        |                      | `String`                                       |
+|                  | `fb_product_availability`   |                      | `Int`（以下の対応表を参照）                    |
+|                  | `fb_product_condition`      |                      | `Int`（以下の対応表を参照）                    |
+|                  | `fb_product_description`    |                      | `String`                                       |
+|                  | `fb_product_image_link`     |                      | `String`                                       |
+|                  | `fb_product_link`           |                      | `String`                                       |
+|                  | `fb_product_title`          |                      | `String`                                       |
+|                  | `fb_product_price_amount`   |                      | `Double/Decimal`                               |
+|                  | `fb_product_price_currency` |                      | `String`                                       |
+|                  | `fb_product_parameters`     |                      | `[String: Any]` - iQ では JavaScript オブジェクト |
+|                  |                             | `fb_product_gtin`    | `String`                                       |
+|                  |                             | `fb_product_mpn`     | `String`                                       |
+|                  |                             | `fb_product_brand`   | `String`                                       |
 
 
 <blockquote>
-`gtin`、`mpn`、または`brand`のいずれかが必要です。商品パラメーターはディープリンク仕様のための任意フィールドです。
+`gtin`、`mpn`、`brand` のいずれかが必須です。商品パラメーターは、ディープリンクを指定するための任意フィールドです。
 </blockquote>
 
 
-| 商品在庫入力 | 商品在庫参照                                 |
-| ------------ | ------------------------------------------- |
-| `0`          | 在庫あり - 即時出荷                         |
-| `1`          | 在庫なし - 再入荷予定なし                   |
-| `2`          | 予約注文 - 将来入荷予定                     |
-| `3`          | 注文可能 - 1-2週間で出荷                    |
-| `4`          | 販売終了 - 販売終了                         |
+| 商品の在庫状況の入力値 | 商品の在庫状況の対応表                     |
+| ---------------------- | ------------------------------------------ |
+| `0`                    | 在庫あり - 商品はすぐに発送されます        |
+| `1`                    | 在庫切れ - 再入荷の予定はありません        |
+| `2`                    | 予約注文 - 今後入手可能になります          |
+| `3`                    | 注文可能 - 1～2 週間以内に発送されます      |
+| `4`                    | 販売終了 - 販売は終了しています            |
 
-| 商品状態入力 | 商品状態参照 |
-| ------------ | ------------ |
-| `0`          | 新品         |
-| `1`          | 再生品       |
-| `2`          | 中古         |
+| 商品状態の入力値 | 商品状態の対応表 |
+| ---------------- | ---------------- |
+| `0`              | 新品             |
+| `1`              | 再生品           |
+| `2`              | 中古品           |
 
-- [Facebook iOS SDK統合 - logProductItem](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L642)
-- [Facebook Android SDK統合 - logProductItem](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L524)
+- [Facebook iOS SDK インテグレーション - logProductItem](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L642)
+- [Facebook Android SDK インテグレーション - logProductItem](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L524)
 
-### 購入のログ
+### 購入のログ記録
 
-指定された金額と通貨で購入を記録し、オプションで購入の追加特性を提供します。
+指定された金額および通貨での購入をログに記録します。必要に応じて、購入を説明する追加の特性セットも指定できます。
 
-特性の任意パラメーター辞書。この辞書のキーは`NSString`でなければならず、値は`NSString`または`NSNumber`であることが期待されます。パラメーターの数と名前の構造に関する制限は[FBSDKAppEvents](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-names)のドキュメントに記載されています。一般的に使用されるパラメーター名は[FBSDKAppEventParameterName](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-params)の定数で提供されています。
+特性を格納する任意のパラメーター辞書です。この辞書のキーは `NSString` である必要があり、値には `NSString` または `NSNumber` を指定します。パラメーター数および名前の構成に関する制限については、[FBSDKAppEvents](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-names) のドキュメントを参照してください。よく使用されるパラメーター名は、[FBSDKAppEventParameterName](https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#event-params) 定数で提供されています。
 
-| イベント名     | 必須                   | 任意                     | 型                                             |
-| -------------- | ---------------------- | ------------------------ | ---------------------------------------------- |
-| `logPurchase`  | `fb_purchase_amount`   |                          | `Decimal/Double` (iOS) / `Double` (Android)    |
-|                | `fb_purchase_currency` |                          | `String`                                       |
-|                |                        | `fb_purchase_parameters` | `[String: Any]` - JavaScriptオブジェクト（iQ内） |
+| イベント名    | 必須                   | 任意                     | 型                                           |
+| ------------- | ---------------------- | ------------------------ | -------------------------------------------- |
+| `logPurchase` | `fb_purchase_amount`   |                          | `Decimal/Double`（iOS）/ `Double`（Android） |
+|               | `fb_purchase_currency` |                          | `String`                                     |
+|               |                        | `fb_purchase_parameters` | `[String: Any]` - iQ では Javascript オブジェクト |
 
-- [Facebook iOS SDK統合 - logPurchase](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L547)
-- [Facebook Android SDK統合 - logPurchase](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L440)
+- [Facebook iOS SDK インテグレーション - logPurchase](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L547)
+- [Facebook Android SDK インテグレーション - logPurchase](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L440)
 
-### 自動初期化有効化の構成
+### 自動初期化の有効化構成
 
-アプリケーションの自動初期化SDKフラグを構成します。
+アプリケーションの SDK 自動初期化フラグを構成します。
 
-| イベント名             | 必須               | 任意 | 型        |
-| ---------------------- | ------------------ | ---- | --------- |
-| `setautoinitenabled`   | `auto_initialized` |      | `Boolean` |
+| イベント名            | 必須               | 任意 | 型        |
+| --------------------- | ------------------ | ---- | --------- |
+| `setautoinitenabled`  | `auto_initialized` |      | `Boolean` |
 
-- [Facebook Android SDK統合 - setAutoInitEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L957)
-### 自動ログアプリイベント有効構成
+- [Facebook Android SDK インテグレーション - setAutoInitEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L957)
+### アプリイベントの自動ログを有効に構成
 
-アプリケーションの自動ログイベントフラグを構成します。
+アプリケーションのイベント自動ログ記録フラグを構成します。
 
-| イベント名                     | 必須                           | 任意 | 型        |
-| ----------------------------- | ------------------------------ | ---- | --------- |
-| `setautologappeventsenabled` | `auto_log`(android)            |      | `Boolean` |
+| イベント名                  | 必須                           | 任意 | 型        |
+| --------------------------- | ------------------------------ | ---- | --------- |
+| `setautologappeventsenabled` | `auto_log`（Android）          |      | `Boolean` |
 
-- [Facebook iOS SDK 統合 - setAutoLogAppEventsEnabled](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L83)
-- [Facebook Android SDK 統合 - setAutoLogAppEventsEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L981)
+- [Facebook iOS SDK インテグレーション - setAutoLogAppEventsEnabled](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L83)
+- [Facebook Android SDK インテグレーション - setAutoLogAppEventsEnabled](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L981)
 
-### フラッシュ動作構成
+### フラッシュ動作を構成
 
-Facebook SDKがアプリイベントをサーバーにフラッシュするタイミングを構成します。
+Facebook SDK がアプリイベントをサーバーにフラッシュするタイミングを構成します。
 
-| イベント名          | 必須              | 任意 | 型       |
-| ----------------- | ----------------- | ---- | -------- |
+| イベント名         | 必須             | 任意 | 型       |
+| ------------------ | ---------------- | ---- | -------- |
 | `setFlushBehavior` | `flush_behavior` |      | `String` |
 
-- [Facebook iOS SDK 統合 - setFlushBehavior](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.m#L1752)
-- [Facebook Android SDK 統合 - setFlushBehavior](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L348)
+- [Facebook iOS SDK インテグレーション - setFlushBehavior](https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.m#L1752)
+- [Facebook Android SDK インテグレーション - setFlushBehavior](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L348)
 
-### プッシュ通知登録ID構成（Android）
+### プッシュ通知登録 ID を構成（Android）
 
-Androidプラットフォームで利用可能な追加のプッシュ通知方法。
+Android プラットフォームで利用可能な追加のプッシュ通知メソッドです。
 
-| イベント名                  | 必須              | 任意 | 型       |
-| --------------------------- | ----------------- | ---- | -------- |
-| `setPushRegistrationId`     | `registration_id` |      | `String` |
+| イベント名                | 必須              | 任意 | 型       |
+| ------------------------- | ----------------- | ---- | -------- |
+| `setPushRegistrationId`   | `registration_id` |      | `String` |
 
-利用可能なフラッシュ動作値:
+利用可能なフラッシュ動作の値：
+
 - `auto` - イベントは自動的にフラッシュされます（デフォルト）
-- `explicit_only` - イベントは明示的に呼び出されたときのみフラッシュされます
+- `explicit_only` - 明示的に呼び出された場合にのみイベントがフラッシュされます
 
-- [Facebook Android SDK 統合 - setPushNotificationsRegistrationId](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.kt#L453)
+- [Facebook Android SDK インテグレーション - setPushNotificationsRegistrationId](https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.kt#L453)
 
-### ユーザー構成
+### ユーザーを構成
 
-すべてのアプリイベントに関連付けるカスタムユーザーデータを構成します。すべてのユーザーデータはハッシュ化され、このアプリケーションのインスタンスからFacebookユーザーを照合するために使用されます。ユーザーデータはアプリケーションインスタンス間で保持されます。
+すべてのアプリイベントに関連付けるカスタムユーザーデータを構成します。すべてのユーザーデータはハッシュ化され、このアプリケーションのインスタンスから Facebook ユーザーを照合するために使用されます。ユーザーデータはアプリケーションのインスタンス間で保持されます。
 
 | イベント名 | 必須   | 任意 | 型              |
 | ---------- | ------ | ---- | --------------- |
-| `setUser`    | `user` |      | `[String: Any]` |
+| `setUser`  | `user` |      | `[String: Any]` |
 
-| ユーザー辞書のプロパティ | 任意 |
-| -------------------------- | ---- |
-| `em`                         | `String`   |
-| `fn`                         | `String`   |
-| `ln`                         | `String`   |
-| `dob`                        | `String`   |
-| `ge`                         | `String`   |
-| `ct`                         | `String`   |
-| `st`                         | `String`   |
-| `zp`                         | `String`   |
-| `country`                    | `String`   |
+| ユーザー辞書のプロパティ | 任意     |
+| ------------------------ | -------- |
+| `em`                     | `String` |
+| `fn`                     | `String` |
+| `ln`                     | `String` |
+| `dob`                    | `String` |
+| `ge`                     | `String` |
+| `ct`                     | `String` |
+| `st`                     | `String` |
+| `zp`                     | `String` |
+| `country`                | `String` |
 
-- [Facebook iOS SDK ユーザー構成](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L764)
-- [Facebook Android SDK 統合 - setUserData](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L674)
+- [Facebook iOS SDK setUser](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L764)
+- [Facebook Android SDK インテグレーション - setUserData](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L674)
 
-### ユーザーID構成
+### ユーザー ID を構成
 
-すべてのアプリイベントに関連付けるユーザーIDを構成します。このIDは、デバイス間のコンバージョン測定およびカスタムオーディエンスの構成に使用されます。
+すべてのアプリイベントに関連付けるユーザー ID を構成します。この ID は、クロスデバイスコンバージョンの測定とカスタムオーディエンスの構成に使用されます。
 
 | イベント名  | 必須         | 任意 | 型       |
 | ----------- | ------------ | ---- | -------- |
 | `setUserId` | `fb_user_id` |      | `String` |
 
-### ユーザー値の更新
+### ユーザー値を更新
 
-タイプ/キーに対するユーザー値を更新します。すべてのユーザーデータはハッシュ化され、このアプリケーションのインスタンスからFacebookユーザーを照合するために使用されます。ユーザーデータはアプリケーションインスタンス間で保持されます。
+指定されたタイプ／キーのユーザー値を更新します。すべてのユーザーデータはハッシュ化され、このアプリケーションのインスタンスから Facebook ユーザーを照合するために使用されます。ユーザーデータはアプリケーションのインスタンス間で保持されます。
 
-| イベント名          | 必須              | 任意 | 型       |
-| --------------- | ------------- | ---- | ------ |
+| イベント名        | 必須            | 任意 | 型       |
+| ----------------- | --------------- | ---- | -------- |
 | `updateUserValue` | `fb_user_value` |      | `String` |
-|                 | `fb_user_key`   |      | `String` |
+|                   | `fb_user_key`   |      | `String` |
 
-- [Facebook iOS SDK 統合 - setUserData](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L803)
-- [Facebook Android SDK 統合 - updateUserProperties](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L712)
-### ログイベント
+- [Facebook iOS SDK インテグレーション - setUserData](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L803)
+- [Facebook Android SDK インテグレーション - updateUserProperties](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L712)
+### イベントのログ記録
 
-以下は[Facebook標準イベント](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118)で、ペイロード内のオプショナルな[パラメータ](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195)を数多く受け入れます。
+以下は [Facebook 標準イベント](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118)であり、ペイロードで任意の[パラメータ](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195)を複数指定できます。
 
 - `activatedapp`
 - `achievedlevel`
@@ -736,17 +738,17 @@ Androidプラットフォームで利用可能な追加のプッシュ通知方�
 
 
 <blockquote>
-Facebook SDKはTealium SDKと一緒にインストールされているため、すべてのネイティブFacebook機能が利用可能です。
+Facebook SDK は Tealium SDK と併せてインストールされるため、Facebook のすべてのネイティブ機能を利用できます。
 </blockquote>
 
 
-特性の任意のパラメータ辞書。この辞書のキーは`NSString`でなければならず、値は`NSString`または`NSNumber`であることが期待されます。パラメータの数と名前の構造に関する制限は、[FBSDKAppEvents](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118s)のドキュメントで与えられています。一般的に使用されるパラメータ名は[FBSDKAppEventParameterName](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195)定数で提供されています。
+特性を表す任意のパラメータディクショナリです。このディクショナリのキーは `NSString` である必要があり、値には `NSString` または `NSNumber` が想定されています。パラメータ数と名前の構成に関する制限については、[FBSDKAppEvents](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118s) のドキュメントを参照してください。一般的に使用されるパラメータ名は、[FBSDKAppEventParameterName](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195) 定数で提供されています。
 
-| イベント名                          | 必須                                           | オプショナル                                                                                                                                                                          | タイプ                                    |
+| イベント名 | 必須 | 任意 | 型 |
 | ----------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-|                                     | `command_name` (上記リストのイベント名のいずれか) |                                                                                                                                                                                   |                                         |
-| 上記リストのイベント名のいずれか |                                                    | [パラメータリストを参照](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195) | 複数                                |
-|                                     |                                                    | `fb_value_to_sum`                                                                                                                                                                   | `Double/Decimal` (iOS) / `Double` (Android) |
+|                                     | `command_name`（上記のイベント名のいずれか） |                                                                                                                                                                                   |                                         |
+| 上記のイベント名のいずれか |                                                    | [パラメータ一覧を参照](https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195) | 複数 |
+|                                     |                                                    | `fb_value_to_sum`                                                                                                                                                                   | `Double/Decimal`（iOS）/ `Double`（Android） |
 
-- [Facebook iOS SDK統合 - logEvent](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L456)
-- [Facebook Android SDK統合 - logEvent](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L362)
+- [Facebook iOS SDK インテグレーション - logEvent](https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L456)
+- [Facebook Android SDK インテグレーション - logEvent](https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L362)

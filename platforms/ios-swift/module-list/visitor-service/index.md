@@ -8,7 +8,7 @@ url: https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/
 
 The VisitorService module implements the [Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/) feature of the Tealium Customer Data Hub.
 
-Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.
+Usage of this module is recommended if you are licensed for Customer Data Platform (CDP) and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for Customer Data Platform (CDP), usage of this module is not recommended as no visitor profile is returned.
 
 The following platforms are supported:
 

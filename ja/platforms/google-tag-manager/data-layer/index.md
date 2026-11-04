@@ -1,67 +1,69 @@
 ---
 title: データレイヤー
-description: Google Tag ManagerマーケットプレイスのCollectタグについて、組み込み（自動）データレイヤー変数を学びます。
+description: Google タグマネージャーのマーケットプレイスにある Collect タグで使用できる、組み込み（自動）データレイヤー変数について説明します。
 url: https://docs.tealium.com/ja/platforms/google-tag-manager/data-layer/
 ---
-データレイヤーには、追跡されているページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、クッキー、ページの標準DOM変数、ロードされた構成に関するTealium固有の変数が含まれます。
+データレイヤーには、トラッキング対象のページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、Cookie、ページの標準 DOM 変数、読み込まれた構成に関する Tealium 固有の変数が含まれます。
 
-[詳しくはこちら](https://docs.tealium.com/data-layer-variables/)で、利用可能なデータレイヤー変数の種類について学びましょう。
+利用可能なデータレイヤー変数の種類については、[詳細](https://docs.tealium.com/data-layer-variables/)を参照してください。
+
 
 ## 標準ページデータ
-以下の変数は、Webページで利用可能な標準JavaScriptプロパティから生成されます。
 
-示されている例の値は、次のページURLに基づいています：
+以下の変数は、Web ページで使用可能な標準 JavaScript プロパティから生成されます。
+
+以下に示す値の例は、次のページ URL に基づいています。
 
 `http://www.example.com/path/file.html?param1=value1#hash=fragment`
 
-| 変数                      | 説明                                                                                              | 例                                                                   |
-|:--------------------------|:-------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|
-| `dom.domain`              | URLの完全なドメイン。出典: location.hostname                                                    | `www.example.com`                                                   |
-| `dom.hash`                | URLのハッシュフラグメント（#文字を除く）。出典: location.hash                                    | `hash=fragment`                                                     |
-| `dom.pathname`            | クエリパラメータとドメインを除いたURLのパス。出典: location.pathname                            | `"/path/file.html"`                                                 |
-| `dom.query_string`        | URLの完全なクエリ文字列。出典: location.search                                                  | `param1=value1`                                                     |
-| `dom.referrer`            | 前のページのURL。出典: document.referrer                                                        |                                                                     |
-| `dom.title`               | &lt;title&gt;タグのテキスト。出典: document.title                                                | `"Page Title" `                                                     |
-| `dom.url`                 | ページの完全なURL。出典: document.URL                                                           | `http://www.example.com/ PATH/FILE.html?param1=VALUE#hash=FRAGMENT` |
-| `dom.viewport_height`     | ブラウザビューポートの高さ。出典: window.innerHeightまたはdocument.documentElement.clientHeight | `1320`                                                              |
-| `dom.viewport_width`      | ブラウザビューポートの幅。出典: window.innerWidthまたはdocument.documentElement.clientWidth    | `1278`                                                              |
+| 変数                  | 説明                                                                                                           | 例                                                                  |
+|:----------------------|:---------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|
+| `dom.domain`          | URL の完全なドメイン。ソース: location.hostname                                                                | `www.example.com`                                                   |
+| `dom.hash`            | URL のハッシュフラグメント（# 文字を除く）。ソース: location.hash                                               | `hash=fragment`                                                     |
+| `dom.pathname`        | クエリパラメータとドメインを除いた URL のパス。ソース: location.pathname                                        | `"/path/file.html"`                                                 |
+| `dom.query_string`    | URL の完全なクエリ文字列。ソース: location.search                                                              | `param1=value1`                                                     |
+| `dom.referrer`        | 前のページの URL。ソース: document.referrer                                                                    |                                                                     |
+| `dom.title`           | &lt;title&gt; タグ内のテキスト。ソース: document.title                                                         | `"Page Title" `                                                     |
+| `dom.url`             | ページの完全な URL。ソース: document.URL                                                                       | `http://www.example.com/ PATH/FILE.html?param1=VALUE#hash=FRAGMENT` |
+| `dom.viewport_height` | ブラウザーのビューポートの高さ。ソース: window.innerHeight または document.documentElement.clientHeight         | `1320`                                                              |
+| `dom.viewport_width`  | ブラウザーのビューポートの幅。ソース: window.innerWidth または document.documentElement.clientWidth             | `1278`                                                              |
 
-## クッキー
+## Cookie
 
-以下の変数は、`TEAL`という名前の単一のクッキーに保存および維持されます。それぞれが`TEAL`オブジェクトの変数です。
+以下の変数は、`TEAL` という名前の単一の Cookie に保存され、管理されます。それぞれが `TEAL` オブジェクト内の変数です。
 
-| 変数                              | 説明                                                            | 例               |
-|:----------------------------------|:---------------------------------------------------------------|:----------------|
-| `tealium)_session_event_number`   | 現在のセッションのイベント数。                                   | `2`             |
-| `tealium_session_number`          | このユニーク訪問のセッション数。                               | `1`             |
-| `tealium_session_id`              | セッションのユニーク識別子。                                     | `1628542077230` |
-| `tealium_visitor_id`              | 訪問のユニーク識別子。40文字以上の場合があります。             | `016297481...`  |
+| 変数                            | 説明                                                               | 例              |
+|:--------------------------------|:-------------------------------------------------------------------|:----------------|
+| `tealium)_session_event_number` | 現在のセッションにおけるイベント数。                               | `2`             |
+| `tealium_session_number`        | この一意の訪問のセッション数。                                   | `1`             |
+| `tealium_session_id`            | セッションの一意の識別子。                                         | `1628542077230` |
+| `tealium_visitor_id`            | 訪問の一意の識別子。40 文字以上になる場合があります。             | `016297481...`  |
 
-以下は、TEALクッキーのdocument.cookie形式の例であり、変数値が`$`文字で区切られて表示されます。
+以下は、TEAL Cookie の document.cookie 形式の例です。変数値が `$` 文字で区切られています。
 
 `TEAL=v:927b2ebc092a70110329356772472215264145f9fa1$t:1628543914615$s:1628542077230%3Bexp-sess$sn:1$en:3`
 
-## Tealiumデータ
+## Tealium データ
 
-| 変数                        | 名称                              | 例                        |
-|:----------------------------|:----------------------------------|:-------------------------|
-| tealium_account             | アカウント名                      | sandbox                  |
-| tealium_datasource          | データソースキー                   | abc123                   |
-| tealium_environment         | 公開環境                          | prod                     |
-| tealium_event               | Tealiumイベント名                  | my_event                 |
-| tealium_library_name        | ライブラリ名                      | tealium.js               |
-| tealium_library_version     | ライブラリバージョン               | 5.0.3                    |
-| tealium_profile             | アカウントプロファイル             | main                     |
-| tealium_random              | ランダム数                        | 7782219645308327         |
-| tealium_timestamp_epoch     | 現在のUnixタイムスタンプ（秒）     | 1522956509               |
-| tealium_timestamp_local     | ローカルタイムスタンプ             | 2018-04-05T12:28:29.019  |
-| tealium_timestamp_utc       | UTCタイムスタンプ                  | 2018-04-05T19:28:29.019z |
-| tealium_cookie_domain       | TEALクッキーが構成されているドメイン | example.com              |
-| tealium_domain              | ウェブサイトのドメイン             | example.com              |
+| 変数                    | 名前                              | 例                       |
+|:------------------------|:----------------------------------|:-------------------------|
+| tealium_account         | アカウント名                      | sandbox                  |
+| tealium_datasource      | データソースキー                  | abc123                   |
+| tealium_environment     | パブリッシュ環境                  | prod                     |
+| tealium_event           | Tealium イベント名                | my_event                 |
+| tealium_library_name    | ライブラリ名                      | tealium.js               |
+| tealium_library_version | ライブラリバージョン              | 5.0.3                    |
+| tealium_profile         | アカウントプロファイル            | main                     |
+| tealium_random          | 乱数                              | 7782219645308327         |
+| tealium_timestamp_epoch | 現在の Unix タイムスタンプ（秒）   | 1522956509               |
+| tealium_timestamp_local | ローカルタイムスタンプ            | 2018-04-05T12:28:29.019  |
+| tealium_timestamp_utc   | UTC タイムスタンプ                 | 2018-04-05T19:28:29.019z |
+| tealium_cookie_domain   | TEAL Cookie が構成されるドメイン   | example.com              |
+| tealium_domain          | Web サイトのドメイン              | example.com              |
 
-## 例示データ
+## データの例
 
-以下は、自動的に利用可能な組み込みデータレイヤーの例です。
+以下は、自動的に利用可能になる組み込みデータレイヤーの例です。
 
 ```
 {
@@ -116,79 +118,80 @@ url: https://docs.tealium.com/ja/platforms/google-tag-manager/data-layer/
 ```
 ## データレイヤー変数のフラット化
 
-Google Tag Managerのイベントは、Tealium Customer Data Hubの仕様に合わせてTealium属性名にフラット化されます。イベントデータはTealium EventStreamによって受信されます。
+Google Tag Manager のイベントは、Tealium Customer Data Hub の仕様を満たすために、Tealium の属性名にフラット化されます。イベントデータは Event Streaming によって受信されます。
 
-`tealium_event`の値は、`dataLayer.push`コールの`event`の値です。Google Tag Managerはイベント名としてデフォルトのページビュー値を`gtm.js`に構成します。デフォルトを上書きするには、イベント名を含む変数をTealiumイベント構成に構成します。
+`tealium_event` の値は、`dataLayer.push` 呼び出し内の `event` の値です。Google Tag Manager は、デフォルトのページビュー値として、イベント名に `gtm.js` を構成します。このデフォルト値を上書きするには、Tealium Event 構成構成にイベント名を含む変数を構成します。
 
 
 <blockquote>
-属性は自動的に追加されません。これらの属性をTealium EventStreamに追加する必要があります。
+属性は自動的には追加されません。Event Streaming でこれらの属性を追加する必要があります。
 </blockquote>
 
 
-## Eコマース
+## E コマース
 
-以下の購入イベントの例は、クライアントサイドのeコマースイベントがどのようにフラット化されるかを示しています。
+次の購入イベントの例は、クライアント側の E コマースイベントがどのようにフラット化されるかを示しています。
 
 ```js
 dataLayer.push({
   'ecommerce': {
     'purchase': {
       'actionField': {
-        'id': 'T12345',    // トランザクションID。購入および払い戻しに必要です。
-        'affiliation': 'オンラインストア',
+        'id': 'T12345',    // Transaction ID. Required for purchases and refunds.
+        'affiliation': 'Online Store',
         'revenue': '35.43',
         'tax':'4.90',
         'shipping': '5.99',
         'coupon': 'SUMMER_SALE'
       },
       'products': [{
-        'name': 'トライブレンド アンドロイド Tシャツ',     // 名前またはIDが必要です。
+        'name': 'Triblend Android T-Shirt',     // Name or ID is required.
         'id': '12345',
         'price': '15.25',
         'brand': 'Google',
-        'category': 'アパレル',
-        'variant': 'グレー',
+        'category': 'Apparel',
+        'variant': 'Gray',
         'quantity': 1,
         'coupon': ''
        },
        {
-        'name': 'ドーナツフライデー香るTシャツ',
+        'name': 'Donut Friday Scented T-Shirt',
         'id': '67890',
         'price': '33.75',
         'brand': 'Google',
-        'category': 'アパレル',
-        'variant': 'ブラック',
+        'category': 'Apparel',
+        'variant': 'Black',
         'quantity': 1
        }]
     }
   }
 });
 ```
-フラット化後、購入イベントは以下のようになります：
+
+フラット化後、購入イベントは次のようになります。
 
 ```js
-"ecommerce.purchase.actionField.affiliation": "オンラインストア"
+"ecommerce.purchase.actionField.affiliation": "Online Store"
 "ecommerce.purchase.actionField.coupon": "SUMMER_SALE"
 "ecommerce.purchase.actionField.id": "T12345"
 "ecommerce.purchase.actionField.revenue": "35.43"
 "ecommerce.purchase.actionField.shipping": "5.99"
 "ecommerce.purchase.actionField.tax": "4.90"
 "ecommerce.purchase.products.brand": [ "Google", "Google" ]
-"ecommerce.purchase.products.category": [ "アパレル", "アパレル" ]
+"ecommerce.purchase.products.category": [ "Apparel", "Apparel" ]
 "ecommerce.purchase.products.coupon": [ "", "" ]
 "ecommerce.purchase.products.id": [ "12345", "67890" ]
-"ecommerce.purchase.products.name": [ "トライブレンド アンドロイド Tシャツ", "ドーナツフライデー香るTシャツ" ]
+"ecommerce.purchase.products.name": [ "Triblend Android T-Shirt", "Donut Friday Scented T-Shirt" ]
 "ecommerce.purchase.products.price": [ "15.25", "33.75" ]
-"ecommerce.purchase.products.variant": [ "グレー", "ブラック" ]
+"ecommerce.purchase.products.variant": [ "Gray", "Black" ]
 "ecommerce.purchase.products.quantity": [ "1", "1" ]
 ```
 
-フラットナーはドット表記を使用してキーを作成し、購入イベントからのすべての値の配列を値として構成します。
+フラット化処理ではドット表記を使用してキーが作成され、値には購入イベントのすべての値を含む配列が構成されます。
 
 ## イベント
 
-以下の`dataLayer.push`コマンドは、データレイヤーに「event」が含まれるときに発火します：
+次の `dataLayer.push` コマンドは、データレイヤーに「event」が含まれている場合に実行されます。
 
 ```js
 window.dataLayer.push({
@@ -202,7 +205,7 @@ window.dataLayer.push({
 });
 ```
 
-Tealium EventStreamに到着するデータレイヤーは以下のようになります。`type_object`のみがフラット化され、関数は削除されます。
+Event Streaming に到達するデータレイヤーは次のようになります。`type_object` のみがフラット化され、関数は削除されます。
 
 ```
 {

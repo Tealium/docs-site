@@ -1,53 +1,53 @@
 ---
 title: リモートコマンド：Firebase
-description: AndroidおよびSwift/iOS用Firebaseに対するTealiumリモートコマンド統合
+description: AndroidおよびSwift/iOS向けTealiumリモートコマンドのFirebase連携
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/firebase/
 ---
 ## 要件
 
-* 以下のいずれかのライブラリ：
+* 次のいずれかのライブラリ：
   * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）
-  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（Firebase 2.0.0+の場合は5.9.0以降、それ以前のバージョンの場合は5.9.0以前）
+  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（Firebase 2.0.0以降の場合は5.9.0以降、それ以前のバージョンの場合は5.9.0以前）
   * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)
-* 以下のいずれかのリモートコマンド統合：
+* 次のいずれかのリモートコマンド連携：
   * [FirebaseリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/firebase/#json-template)（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）
-  * Tealium iQタグ管理の[Firebaseリモートコマンドタグ](https://docs.tealium.com/firebase-remote-command-tag/)
+  * タグ管理の[Firebaseリモートコマンドタグ](https://docs.tealium.com/firebase-remote-command-tag/)
 
-## 動作原理
+## 仕組み
 
-Firebase統合は3つの要素を使用します：
+Firebase連携では、次の3つの項目を使用します。
 
 1. FirebaseネイティブSDK
-1. Firebaseメソッドをラップするリモートコマンドモジュール
-1. イベントトラッキングをネイティブFirebaseコールに変換するJSON構成ファイルまたはリモートコマンドタグ
+1. Firebaseのメソッドをラップするリモートコマンドモジュール
+1. イベントトラッキングをFirebaseのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ
 
-Firebaseリモートコマンドモジュールをアプリに追加すると、アプリにベンダー固有のコードを追加することなく、必要なFirebaseライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Firebase SDKを別途インストールする必要はありません。
+Firebaseリモートコマンドモジュールをアプリに追加すると、必要なFirebaseライブラリが自動的にインストールおよびビルドされるため、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャーを使用してインストールする場合、Firebase SDKを個別にインストールする必要はありません。
 
-リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のためにリモートまたはアプリ内にローカルでホストされることを推奨されるオプションです。iQタグ管理を使用している場合は、ベンダー統合のリモートコマンドタグを追加します。[ベンダー統合についての詳細はこちら](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)。
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー連携には、リモートまたはアプリ内のローカルでホストされるJSON構成ファイルの使用を推奨します。タグ管理を使用する場合は、ベンダー連携用のリモートコマンドタグを追加します。[ベンダー連携](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)の詳細をご覧ください。
 
 ## インストール
 
-### 依存関係マネージャ
+### 依存関係マネージャー
 
 
 
 
 
-1. Cartfileから`tealium-swift`を削除します。`TealiumFirebase`フレームワークには`tealium-swift`の依存関係がすでに含まれています。
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係は、すでに`TealiumFirebase`フレームワークに含まれています。
 
-1. Cartfileに以下の行が存在する場合は削除します：  
+1. Cartfileに次の行が存在する場合は削除します。  
       ```bash
       binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
       ```
 
-1. Cartfileに以下の依存関係を追加します：  
+1. Cartfileに次の依存関係を追加します。  
       ```bash
       github "tealium/tealium-ios-firebase-remote-command"
       ```
 
 
 <blockquote>
-FirebaseはCarthageバイナリインストールを使用しているため、Carthageの`--use-xcframeworks`フラグを使用して`TealiumFirebase`モジュールを`xcframework`としてビルドすることはできません。依存関係をビルドするためにCarthage公式の[Xcode 12ワークアラウンド](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md)を使用することをお勧めします。
+FirebaseではCarthageのバイナリインストールが使用されるため、Carthageの`--use-xcframeworks`フラグを使用している場合、`TealiumFirebase`モジュールを`xcframework`としてビルドすることはできません。依存関係をビルドするには、Carthage公式の[Xcode 12向け回避策](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md)を使用することをお勧めします。
 </blockquote>
 
 
@@ -55,28 +55,28 @@ FirebaseはCarthageバイナリインストールを使用しているため、C
 
 
 
-1. Podfileに以下の行が存在する場合は削除します：  
+1. Podfileに次の行が存在する場合は削除します。  
       ```bash
       pod "Firebase/Analytics"
       ```  
 
-1. Podfileに以下の依存関係を追加します：  
+1. Podfileに次の依存関係を追加します。  
       ```swift
       pod "TealiumFirebase"
       ```  
-      `TealiumFirebase`ポッドには以下の`TealiumSwift`依存関係が含まれています：  
+      `TealiumFirebase` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       'tealium-swift/Core'
       'tealium-swift/RemoteCommands'
       ```
 
-1. `TealiumHelper`ファイルおよび`Tealium`クラスまたはFirebaseリモートコマンドにアクセスするその他のファイルで`TealiumSwift`および`TealiumFirebase`モジュールをインポートします。
+1. `TealiumHelper`ファイル、および`Tealium`クラスまたはFirebaseリモートコマンドにアクセスするその他すべてのファイルで、`TealiumSwift`モジュールと`TealiumFirebase`モジュールをインポートします。
 
 
 
 
 
-Cordovaアプリプロジェクトで以下のコマンドを実行して、Tealium Firebaseライブラリをインストールします：
+Cordova用Tealium Firebaseライブラリをインストールするには、Cordovaアプリプロジェクトで次のコマンドを実行します。
 
 ```
 cordova plugin add tealium-cordova-firebase-plugin
@@ -86,7 +86,7 @@ cordova plugin add tealium-cordova-firebase-plugin
 
 
 
-以下のコマンドを実行して、Flutter用のTealium Firebaseライブラリをインストールします：
+Flutter用Tealium Firebaseライブラリをインストールするには、次のコマンドを実行します。
 
 ```
 flutter pub add tealium_firebase
@@ -97,7 +97,7 @@ import 'package:tealium_firebase/tealium_firebase.dart';
 
 
 
-[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、まだ行っていない場合はプロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+1. まだ実行していない場合は、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトの最上位の`build.gradle`ファイルにTealium Maven URLを追加します。
 
 
       ```groovy
@@ -111,7 +111,7 @@ import 'package:tealium_firebase/tealium_firebase.dart';
       }
       ```
 
-1. `build.gradle`ファイルに以下の依存関係を追加します：
+1. `build.gradle`ファイルに次の依存関係を追加します。
 
       ```groovy
       dependencies {
@@ -125,36 +125,36 @@ import 'package:tealium_firebase/tealium_firebase.dart';
 
 1. React Nativeプロジェクトのルートに移動します。
 
-1. 以下のコマンドで`tealium-react-firebase`パッケージをダウンロードしてインストールします：  
+1. 次のコマンドを使用して、`tealium-react-firebase`パッケージをダウンロードしてインストールします。  
     ```bash
     yarn add tealium-react-firebase
     ```
-1. NPMパッケージのバージョン1.0.7ではReact Native Autolinkingが有効になっており、React Nativeのバージョン0.60+を使用している場合、`react-native link`を実行する必要はありません。
+1. NPMパッケージのバージョン1.0.7ではReact Native Autolinkingが有効になっているため、React Native 0.60以降を使用している場合は、`react-native link`を実行する必要はありません。
 
 
 
 
 
-1. Xcodeプロジェクトで**File > Add Packages... > Add Package Dependency**を選択します。
-1. リポジトリURLを入力します：`https://github.com/tealium/tealium-ios-firebase-remote-command`。
-1. バージョンルールを構成します。通常、`Up to next major`を推奨します。現在の`TealiumFirebase`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
+1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
+1. リポジトリURLとして`https://github.com/tealium/tealium-ios-firebase-remote-command`を入力します。
+1. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumFirebase`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
 1. インストールする`TealiumFirebase`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
 
-プロジェクトに複数のアプリターゲットがあり、複数のアプリターゲットに`TealiumFirebase`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、複数のアプリターゲットで`TealiumFirebase`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-`TealiumFirebase`を追加のアプリターゲットにインストールするには：
+追加のアプリターゲットに`TealiumFirebase`をインストールするには、次の手順を実行します。
 
 1. **Project Navigator**でXcodeプロジェクトを選択します。
-1. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-1. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumFirebase`モジュールをアプリターゲットに追加します。
+1. Xcodeプロジェクトの**TARGETS**セクションで、アプリターゲットを選択します。
+1. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumFirebase`モジュールを選択してアプリターゲットに追加します。
 
-Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の指示に従ってください。
-
-
+Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の手順に従ってください。
 
 
 
-Visual Studioの組み込みNuGetパッケージマネージャを使用して、Xamarin用のTealium Firebaseライブラリを直接インストールします。
+
+
+組み込みのNuGetパッケージマネージャーを使用して、Visual StudioからXamarin用Tealium Firebaseライブラリを直接インストールします。
 
 [NuGetパッケージ：Tealium.RemoteCommands.Firebase.Xamarin](https://www.nuget.org/packages/Tealium.RemoteCommands.Firebase.Xamarin)
 
@@ -166,22 +166,22 @@ Visual Studioの組み込みNuGetパッケージマネージャを使用して�
 
 
 
-Firebaseリモートコマンドの手動インストールには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクト用のFirebaseリモートコマンドをインストールするには：
+Firebaseリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにFirebaseリモートコマンドをインストールするには、次の手順を実行します。
 
-1. まだ行っていない場合は、[Firebase SDK](https://firebase.google.com/docs/ios/setup)をインストールします。
+1. まだインストールしていない場合は、[Firebase SDK](https://firebase.google.com/docs/ios/setup)をインストールします。
 
-1. [Tealium iOS Firebaseリモートコマンド](https://github.com/tealium/tealium-ios-firebase-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+1. [Tealium iOS Firebaseリモートコマンド](https://github.com/tealium/tealium-ios-firebase-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
-1. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
-
-
+1. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true.`に構成します。
 
 
-Firebaseリモートコマンドの手動インストールには、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。
 
-Androidプロジェクト用のFirebaseリモートコマンドをインストールするには：
 
-1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します：
+Firebaseリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。
+
+AndroidプロジェクトにFirebaseリモートコマンドをインストールするには、次の手順を実行します。
+
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。
 
       ```groovy
       allprojects {
@@ -194,9 +194,9 @@ Androidプロジェクト用のFirebaseリモートコマンドをインスト�
       }
       ```
 
-1. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-firebase.aar`を追加します。
+1. `tealium-firebase.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-1. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+1. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。
 
       ```groovy
       dependencies {
@@ -208,13 +208,13 @@ Androidプロジェクト用のFirebaseリモートコマンドをインスト�
 
 ## 初期化
 
-すべてのTealiumライブラリにおいて、初期化時にFirebaseモバイルリモートコマンドを登録します。
+すべての Tealium ライブラリで、初期化時に Firebase モバイルリモートコマンドを登録します。
 
 
 
 
 
-TealiumのAndroid（Java）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：
+Tealium の Android（Java）ライブラリでは、Remote Command タグを使用してリモートコマンドを初期化します。
 ```java
 RemoteCommand firebase = new FirebaseRemoteCommand(application);
 teal.addRemoteCommand(firebase);
@@ -223,7 +223,7 @@ teal.addRemoteCommand(firebase);
 
 
 
-JSON構成ファイルまたはTealiumのKotlinライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：
+Tealium の Kotlin ライブラリでは、JSON 構成ファイルまたは Remote Command タグを使用してリモートコマンドを初期化します。
 ```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
@@ -234,13 +234,13 @@ val firebase = FirebaseRemoteCommand(application);
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(firebase); 
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(firebase, filename = "firebase.json"); 
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(firebase, remoteUrl = "https://some.domain.com/firebase.json"); 
 }
 ```
@@ -254,13 +254,13 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
     let Environment = tealium.utils.Environment;
     let Dispatchers = tealium.utils.Dispatchers;
 
-    // Webviewタグ
+    // Webview Tag
     let firebase = window.tealium.remotecommands.firebase.create() 
 
-    // ローカルJSON
+    // Local JSON
     //let firebase = window.tealium.remotecommands.firebase.create().setPath("firebase.json") 
 
-    // リモートJSON
+    // Remote JSON
     //let firebase = window.tealium.remotecommands.firebase.create().setUrl("https://some.domain.com/firebase.json") 
     
     let config = { 
@@ -285,19 +285,19 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 
 
-プラットフォームオブジェクトに以下の内容の`Google-Servives.json`または`.plist`ファイルを追加します：
+次の内容を含む `Google-Servives.json` または `.plist` ファイルをプラットフォームオブジェクトに追加します。
 
 ```json
-// WebViewリモートコマンド
+// WebView remote command
 var webViewFirebase = RemoteCommand(TealiumFirebase.commandName)
 
-// ローカルJSONマッピング
+// Local JSON mappings
 var localFirebase = RemoteCommand(
   TealiumFirebase.commandName, 
   path: "firebase.json"
 )
 
-// リモートJSONマッピング
+// Remote JSON mappings
 var remoteFirebase = RemoteCommand(
   TealiumFirebase.commandName, 
   url: "https://some.domain.com/firebase.json"
@@ -306,7 +306,7 @@ var remoteFirebase = RemoteCommand(
 var config = TealiumConfig(
   // ...
   remoteCommands: [
-    webViewFirebase // または `localFirebase`, または `remoteFirebase`
+    webViewFirebase // or `localFirebase`, or `remoteFirebase`
   ])
 ```
 
@@ -318,13 +318,13 @@ var config = TealiumConfig(
 import FirebaseRemoteCommand from 'tealium-react-firebase';
 FirebaseRemoteCommand.initialize();
 
-// Webviewタグ
+// Webview Tag
 let firebase = { id: FirebaseRemoteCommand.name } 
 
-// ローカルJSON
+// Local JSON
 //let firebase = { id: FirebaseRemoteCommand.name, path: "firebase.json" } 
 
-// リモートJSON
+// Remote JSON
 //let firebase = { id: FirebaseRemoteCommand.name, url: "https://some.domain.com/firebase.json" } 
 let config = TealiumConfig {
     // ...
@@ -335,7 +335,7 @@ let config = TealiumConfig {
 
 
 
-JSON構成ファイルまたはTealiumのiOS（Swift）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：
+Tealium の iOS（Swift）ライブラリでは、JSON 構成ファイルまたは Remote Command タグを使用してリモートコマンドを初期化します。
 
 ```swift
 var tealium : Tealium?
@@ -344,20 +344,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let firebase = FirebaseRemoteCommand() 
 
-    // ローカルJSON
+    // Local JSON
     //let firebase = FirebaseRemoteCommand(type: .local(file: "firebase")) 
 
-    // リモートJSON
+    // Remote JSON
     //let firebase = FirebaseRemoteCommand(type: .remote(url: "https://some.domain.com/firebase.json")) 
     
     remoteCommands.add(firebase)
@@ -370,13 +370,13 @@ tealium = Tealium(config: config) { _ in
 
 ```csharp
 
-// Webviewタグ
+// Webview Tag
 var firebase = new FirebaseRemoteCommandDroid(this.Application, null, null); 
 
-// ローカルJSON
+// Local JSON
 //var firebase = new FirebaseRemoteCommandDroid(this.Application, "firebase.json", null); 
 
-// リモートJSON
+// Remote JSON
 //var firebase = new FirebaseRemoteCommandDroid(this.Application, null, "https://some.domain.com/firebase.json"); 
 
 var commands = new List<IRemoteCommand> {
@@ -398,13 +398,13 @@ TealiumConfig config = new TealiumConfig(ACCOUNT_NAME,
 
 ```csharp
 
-// Webviewタグ
+// Webview Tag
 var firebase = new FirebaseRemoteCommandIOS(new RemoteCommandTypeWrapper()); 
 
-// ローカルJSON
+// Local JSON
 //var firebase = new FirebaseRemoteCommandIOS(new RemoteCommandTypeWrapper("firebase", NSBundle.MainBundle));
 
-// リモートJSON
+// Remote JSON
 //var firebase = new FirebaseRemoteCommandIOS(new RemoteCommandTypeWrapper("https://some.domain.com/firebase.json")); 
 
 var commands = new List<IRemoteCommand> {
@@ -424,7 +424,7 @@ TealiumConfig config = new TealiumConfig(ACCOUNT_NAME,
 
 ## JSONテンプレート
 
-[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
+[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照して開始してください。このテンプレートには、標準的なEコマース環境で使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -524,9 +524,9 @@ TealiumConfig config = new TealiumConfig(ACCOUNT_NAME,
 }
 ```
 
-## サポートされているメソッド
+## サポートされるメソッド
 
-Firebaseメソッドに対応するコマンドをマッピングします。Firebaseメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。
+各Firebaseメソッドにコマンドをマッピングします。Firebaseメソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
 |リモートコマンド|Firebaseメソッド|
 |--------------|------------|
@@ -540,7 +540,7 @@ Firebaseメソッドに対応するコマンドをマッピングします。Fir
 | `setconsent` | `setConsent(consentSettings)` |
 | `resetdata` | `resetAnalyticsData` |
 
-### SDKの構成
+### SDKのセットアップ
 
 ### 構成
 
@@ -548,70 +548,68 @@ Firebaseメソッドに対応するコマンドをマッピングします。Fir
 |---|---|
 | `config` | `configure()` |
 
-SDKを構成するために使用されるパラメータは次のとおりです：
+SDKのセットアップには、以下のパラメーターを使用します。
 
-| パラメータ | タイプ | 説明 |
+| パラメーター | 型 | 説明 |
 |---|---|---|
-| `firebase_session_timeout_seconds` |  `String` | セッションの長さを秒単位で表した文字列です。 |
-| `firebase_analytics_enabled` |  `String` | 分析を有効または無効にするためのブール値を表す文字列（デフォルトは `true`）。 |
-| `firebase_log_level` (iOS) |  `String` | ログレベル min|max|error|debug|notice|warning|info (デフォルトは `min`)。 |
+| `firebase_session_timeout_seconds` |  `String` | セッションの長さを秒単位で表した文字列。 |
+| `firebase_analytics_enabled` |  `String` | アナリティクスを有効または無効にするブール値の文字列表現（デフォルトは`true`）。 |
+| `firebase_log_level` (iOS) |  `String` | ログレベル：min|max|error|debug|notice|warning|info（デフォルトは`min`）。 |
 
-### トラック
+### トラッキング
 
-アプリとの基本的なやり取りによってトリガーされるイベントは自動的に追跡されます。詳細については、[GA4: 自動収集されるイベント](https://support.google.com/firebase/answer/6317485?hl=ja)を参照してください。
+アプリでの基本的な操作によってトリガーされるイベントは、自動的にトラッキングされます。詳細については、[GA4：自動的に収集されるイベント](https://support.google.com/firebase/answer/6317485?hl=en)を参照してください。
 
-#### イベントログ
+#### イベントのログ記録
 
-パラメータと、オプションでアイテムの配列を使用してイベントをログします。
+パラメーターと、必要に応じてアイテムの配列を指定してイベントをログに記録します。
 
 | リモートコマンド | Firebaseメソッド |
 |---|---|
 | `logevent` | `logEvent(name, parameters)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメーター | 型 | 説明 |
 |---|---|---|
-| `firebase_event_name` |  `String` | 必須。イベント名で、Firebaseイベント名のリストにマッピングされます。 |
-| `event` (JSON) |  `[String:Any]` | このイベントのすべてのパラメータを含むオブジェクトで、Firebaseパラメータのリストにマッピングされます。 |
-| `firebase_event_params` (Tag) | `[String:Any]` | このイベントのすべてのパラメータを含むオブジェクト（タグによって使用されます）、Firebaseパラメータのリストにマッピングされます。 |
-| `items` (JSON) |  `[String:[Any]]` | このイベントのアイテムの配列を含むオブジェクト。すべての配列には同じ数の要素が含まれ、すべての要素は単一のアイテム配列に正規化できます。 |
-| `param_items` (Tag) | `[[String:Any]]` | このイベントのアイテムの配列（タグによって使用されます）。 |
+| `firebase_event_name` |  `String` | （必須）Firebaseイベント名のリストにマッピングされるイベント名。 |
+| `event` (JSON) |  `[String:Any]` | このイベントのすべてのパラメーターを含み、Firebaseパラメーターのリストにマッピングされるオブジェクト。 |
+| `firebase_event_params` (Tag) | `[String:Any]` | このイベントのすべてのパラメーターを含み、Firebaseパラメーターのリストにマッピングされるオブジェクト（タグで使用）。 |
+| `items` (JSON) |  `[String:[Any]]` | このイベントのアイテム配列を含むオブジェクト。すべての配列には同じ数の要素が含まれ、すべての要素を単一のアイテム配列に正規化できます。 |
+| `param_items` (Tag) | `[[String:Any]]` | このイベントのアイテム配列（タグで使用）。 |
 
-#### スクリーン名の構成
+#### 画面名の構成
 
-このコマンドは、ユーティリティとして追加された特定のログイベントです。
+このコマンドは、ユーティリティとして追加される特定のログイベントです。
 
-| リモートコマンド | Firebaseメソッド (iOS) | Firebaseメソッド (Android) |
+| リモートコマンド | Firebaseメソッド（iOS） | Firebaseメソッド（Android） |
 |---|---|---|
 | `setscreenname` | `logEvent(name (AnalyticsEventScreenView), parameters)` | `setCurrentScreen(currentActivity, screenName, screenClass)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメーター | 型 | 説明 |
 |---|---|---|
-| `firebase_screen_name` |  `String` | 必須。現在のスクリーンの名前です。 |
-| `firebase_screen_class` |  `String` | 現在のスクリーンのクラスです。 |
+| `firebase_screen_name` |  `String` | （必須）現在の画面の名前。 |
+| `firebase_screen_class` |  `String` | 現在の画面のクラス。 |
 
-#### デフォルトパラメータの構成
+#### デフォルトパラメーターの構成
 
-このコマンドは、すべてのログイベントで送信されるパラメータを構成します。
+このコマンドは、すべてのログイベントで送信されるパラメーターを構成します。
 
 | リモートコマンド | Firebaseメソッド |
 |---|---|
 | `setdefaultparameters` | `setDefaultEventParameters(parameters)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメーター | 型 | 説明 |
 |---|---|---|
-| `default` (JSON) |  `[String:Any]` | キーと値のデフォルトパラメータを含むオブジェクトです。 |
-| `firebase_default_params` (Tag) |  `String` | キーと値のデフォルトパラメータを含むオブジェクト（タグによって使用されます）。 |
-
-
+| `default` (JSON) |  `[String:Any]` | キーと値の形式のデフォルトパラメーターを含むオブジェクト。 |
+| `firebase_default_params` (Tag) |  `String` | キーと値の形式のデフォルトパラメーターを含むオブジェクト（タグで使用）。 |
 ### マッピング
 
-`logEvent` メソッドで送信されるパラメータとイベントは、Tealiumの値からFirebaseの定数名にマッピングされます。
+`logEvent` メソッドで送信されるパラメータとイベントは、Tealium の値から Firebase の定数名にマッピングされます。
 
-以下の表は、iOSとAndroidで利用可能なキーを定数にマッピングしたものです。Tealiumのマッピングからパラメータが欠けている場合は、Firebaseの定数値を直接使用できます。
+次の表は、iOS と Android の定数にマッピングされる利用可能なキーの一覧です。Tealium のマッピングにパラメータがない場合は、Firebase の定数値を直接使用できます。
 
-#### イベントマッピング
+#### イベントのマッピング
 
-| Tealium Key | Firebase Event (iOS) | Firebase Event (Android) |
+| Tealium キー | Firebase イベント（iOS） | Firebase イベント（Android） |
 |---|---|---|
 | `event_ad_impression` | `AnalyticsEventAdImpression` | `AD_IMPRESSION` |
 | `event_add_payment_info` | `AnalyticsEventAddPaymentInfo` | `ADD_PAYMENT_INFO` |
@@ -649,9 +647,9 @@ SDKを構成するために使用されるパラメータは次のとおりで�
 | `event_view_promotion` | `AnalyticsEventViewPromotion` | `VIEW_PROMOTION` |
 | `event_view_search_results` | `AnalyticsEventViewSearchResults` | `VIEW_SEARCH_RESULTS` |
 
-#### パラメータマッピング
+#### パラメータのマッピング
 
-| Tealium Key | Firebase Parameter (iOS) | Firebase Parameter (Android) |
+| Tealium キー | Firebase パラメータ（iOS） | Firebase パラメータ（Android） |
 |---|---|---|
 | `param_achievement_id` | `AnalyticsParameterAchievementID` | `ACHIEVEMENT_ID` |
 | `param_ad_format` | `AnalyticsParameterAdFormat` | `AD_FORMAT` |
@@ -725,43 +723,41 @@ SDKを構成するために使用されるパラメータは次のとおりで�
 | `param_user_signup_method` | `AnalyticsUserPropertySignUpMethod` | N/A |
 | `param_user_allow_ad_personalization_signals` | `AnalyticsUserPropertyAllowAdPersonalizationSignals` | N/A |
 
-### ユーザー構成
-
-
+### ユーザーの構成
 #### ユーザープロパティの構成
 
-このコマンドは、1つまたは複数のユーザープロパティ名と値を構成します。
+このコマンドは、単一または複数のユーザープロパティ名と値を構成します。
 
-| リモートコマンド | Firebase メソッド |
+| リモートコマンド | Firebaseメソッド |
 |---|---|
 | `setuserproperty` | `setUserProperty(value, name)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 |---|---|---|
-| `firebase_property_name` |  `String\|[String]` | 必須。プロパティ名またはプロパティ名の配列 |
-| `firebase_property_value` |  `String\|[String]` | 必須。プロパティ値またはプロパティ値の配列。このパラメータが配列の場合、`firebase_property_name` 配列の長さと項目の順序と一致する必要があります。 |
+| `firebase_property_name` |  `String\|[String]` | （必須）プロパティ名またはプロパティ名の配列 |
+| `firebase_property_value` |  `String\|[String]]` | （必須）プロパティ値またはプロパティ値の配列。このパラメータが配列の場合、`firebase_property_name`配列の長さおよび項目の順序と一致している必要があります。 |
 
 #### ユーザーIDの構成
 
 このコマンドはユーザーIDを構成します。
 
-| リモートコマンド | Firebase メソッド |
+| リモートコマンド | Firebaseメソッド |
 |---|---|
 | `setuserid` | `setUserId(id)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 |---|---|---|
-| `firebase_user_id`|  `String` | 必須。構成するユーザーID |
+| `firebase_user_id`|  `String` | （必須）構成するユーザーID |
 
 ### コンバージョン測定（iOS）
 
 このコマンドはコンバージョン測定を開始します。
 
-| リモートコマンド | Firebase メソッド |
+| リモートコマンド | Firebaseメソッド |
 |---|---|
 | `initiateconversionmeasurement` | `initiateOnDeviceConversionMeasurement()` |
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 |---|---|---|
 | `param_hashed_email_address` | `String` | ハッシュ化されたユーザーのメールアドレス |
 | `param_hashed_phone_number` | `String` | ハッシュ化されたユーザーの電話番号 |
@@ -770,7 +766,7 @@ SDKを構成するために使用されるパラメータは次のとおりで�
 
 
 <blockquote>
-パラメータをハッシュ化して送信する場合は、[Firebase ドキュメントの iOS 広告のコンバージョン測定](https://firebase.google.com/docs/tutorials/ads-ios-on-device-measurement/step-3)に従って正規化およびハッシュ化する必要があります。Tealiumはパラメータを `String` として受け取る必要があります。これは最終的に `Firebase` に渡す前に `Data` に変換されます。
+ハッシュ化したパラメータを送信する場合は、[iOS広告コンバージョンの測定に関するFirebaseドキュメント](https://firebase.google.com/docs/tutorials/ads-ios-on-device-measurement/step-3)に従って、正規化およびハッシュ化する必要があります。Tealiumがパラメータとして受け取る値は、引き続き`String`である必要があります。この値は、`Firebase`に渡される直前の最終ステップで`Data`に変換されます。
 </blockquote>
 
 
@@ -778,29 +774,29 @@ SDKを構成するために使用されるパラメータは次のとおりで�
 
 このコマンドは同意モードを構成します。
 
-| リモートコマンド | Firebase メソッド |
+| リモートコマンド | Firebaseメソッド |
 |---|---|
 | `setconsent` | `setConsent(consentSettings)` |
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 |---|---|---|
-| `firebase_consent_settings` |  `[String:String]` | 必須。同意構成を含むオブジェクト。キーは同意タイプ、値は `granted` または `denied` |
+| `firebase_consent_settings` |  `[String:String]` | （必須）同意構成を含むオブジェクト。キーは同意タイプ、値は`granted`または`denied`です。 |
 
-#### サポートされる同意タイプ
+#### サポートされている同意タイプ
 
-| 同意タイプ | 最小 Firebase iOS バージョン | 最小 Firebase Android バージョン |
+| 同意タイプ | Firebase iOSの最小バージョン | Firebase Androidの最小バージョン |
 |---|---|---|
 | `ad_storage`| 10.7.0 | 18.0.0 |
 | `analytics_storage` | 10.7.0 | 18.0.0 |
 | `ad_personalization`| 10.17.0 | 21.5.0 |
 | `ad_user_data` | 10.17.0 | 21.5.0 |
 
-詳細については、[Firebase: Mobile Remote Command Tag setup](https://docs.tealium.com/firebase-remote-command-tag/)を参照してください。
+詳細については、[Firebase：モバイルリモートコマンドタグの構成](https://docs.tealium.com/firebase-remote-command-tag/)を参照してください。
 
 ### アナリティクスデータのリセット
 
-このデバイスのすべてのアナリティクスデータをクリアし、アプリインスタンスIDをリセットします。
+このインスタンスのすべてのアナリティクスデータをデバイスから消去し、アプリインスタンスIDをリセットします。
 
-| リモートコマンド | Firebase メソッド |
+| リモートコマンド | Firebaseメソッド |
 |---|---|
 | `resetdata` | `resetAnalyticsData()` |

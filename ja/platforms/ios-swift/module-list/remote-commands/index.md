@@ -1,17 +1,17 @@
 ---
 title: RemoteCommandsモジュール
-description: Tealium iQタグ管理のイベントからネイティブコードブロックをトリガーすることを可能にし、拡張機能とロードルールによって制御されます。
+description: 拡張機能と読み込みルールによって制御される、タグ管理のイベントからのネイティブコードブロックのトリガーを有効にします。
 url: https://docs.tealium.com/ja/platforms/ios-swift/module-list/remote-commands/
 ---
-[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/)についてもっと学びましょう。
+[リモートコマンド](https://docs.tealium.com/ja/platforms/remote-commands/)の詳細をご覧ください。
 
 ## 要件
 
-* `webview`リモートコマンドを使用する場合、[TagManagementモジュール](https://docs.tealium.com/ja/platforms/ios-swift/module-list/tag-management/)が必要です。
+* `webview`リモートコマンドを使用する場合は、[TagManagementモジュール](https://docs.tealium.com/ja/platforms/ios-swift/module-list/tag-management/)が必要です。
 
-コンパイル時の依存関係ではありませんが、リモートコマンドはモジュールからトリガーされます。
+コンパイル時の依存関係ではありませんが、リモートコマンドはこのモジュールからトリガーされます。
 
-## 対応プラットフォーム
+## サポート対象プラットフォーム
 
 * iOS
 * macOS（JSONのみ）
@@ -20,60 +20,60 @@ url: https://docs.tealium.com/ja/platforms/ios-swift/module-list/remote-commands
 
 ## インストール
 
-Swift Package Manager、CocoaPods、またはCarthageでRemoteCommandsモジュールをインストールします。
+Swift Package Manager、CocoaPods、またはCarthageを使用してRemoteCommandsモジュールをインストールします。
 
 ### Swift Package Manager（推奨）
 
-バージョン1.9.0以降でサポートされているSwift Package Manager（SMP）は、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：
+バージョン1.9.0以降でサポートされているSwift Package Manager（SPM）は、Tealium Swiftライブラリをインストールするための推奨かつ最も簡単な方法です。
 
-1. Xcodeプロジェクトで**File > Add Package Dependencies**を選択します。
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-swift`
-3. バージョンルールを構成します。通常、`"Up to next major"`が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールするモジュールのリストからRemoteCommandsモジュールを選択し、Xcodeプロジェクトのアプリターゲットの**Frameworks and Libraries**に追加します。
+1. Xcodeプロジェクトで、**File > Add Package Dependencies**を選択します。
+2. リポジトリURLとして`https://github.com/tealium/tealium-swift`を入力します。
+3. バージョンルールを構成します。通常は`"Up to next major"`を推奨します。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
+4. インストールするモジュールのリストからRemoteCommandsモジュールを選択し、Xcodeプロジェクトの各アプリターゲットにある**Frameworks and Libraries**に追加します。
 
-[iOSのSPMインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)についてもっと学びましょう。
+[iOS向けSPMのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の詳細をご覧ください。
 
 ### CocoaPods
 
-CocoaPodsでRemoteCommandsモジュールをインストールするには、Podfileに次のポッドを追加します：
+CocoaPodsを使用してRemoteCommandsモジュールをインストールするには、Podfileに次のPodを追加します。  
 ```perl
 pod 'tealium-swift/RemoteCommands'
 ```
 
-[iOSのCocoaPodsインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#cocoapods)についてもっと学びましょう。
+[iOS向けCocoaPodsのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#cocoapods)の詳細をご覧ください。
 
 ### Carthage
 
-CarthageでRemoteCommandsモジュールをインストールするには、次の手順に従います：
+Carthageを使用してRemoteCommandsモジュールをインストールするには、次の手順に従います。
 
 1. XcodeでアプリターゲットのGeneral構成ページに移動します。
 
-2. **Embedded Binaries**セクションに次のフレームワークを追加します：
+2. **Embedded Binaries**セクションに次のフレームワークを追加します。  
       ```perl
       TealiumRemoteCommands.framework
       ```
-3. RemoteCommands APIと連携する必要がある場合は、プロジェクトに次の必要なインポートステートメントを追加します：
+3. RemoteCommands APIを操作する必要がある場合は、次の必須のimport文をプロジェクトに追加します。  
 
       ```swift
       import TealiumRemoteCommands
       ```
 
-[iOSのCarthageインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#carthage)についてもっと学びましょう。
+[iOS向けCarthageのインストール](https://docs.tealium.com/ja/platforms/ios-swift/install/#carthage)の詳細をご覧ください。
 
 ## リモートコマンドのオプション
 
-リモートコマンドには2つの構成オプションがあります：
+リモートコマンドには、次の2つの構成オプションがあります。
 
 * **JSONファイル**  
-ベンダー構成、データマッピング、イベントトリガーを含む、ローカルまたはリモートでホストされたJSONファイル。
+ローカルで読み込むかリモートでホストされるJSONファイルで、ベンダー構成、データマッピング、イベントトリガーが含まれます。
 * **リモートコマンドタグ**  
-iQタグ管理内のタグで、ベンダーのAPIの構成オプションを提供します（Tag Managementモジュールと使用する場合）。
+ベンダーのAPIに対する構成オプションを提供するタグ管理内のタグです（Tag Managementモジュールとともに使用します）。
 
-[リモートコマンドベンダー統合のリスト](https://docs.tealium.com/ja/platforms/remote-commands/integrations/)を参照してください。
+[リモートコマンドのベンダー統合一覧](https://docs.tealium.com/ja/platforms/remote-commands/integrations/)を参照してください。
 
 ### 例
 
-Tealium iQタグ管理でリモートコマンドタグを構成します。アプリ内またはリモートサーバー上のJSONファイルを使用することもできます。構成後、`TealiumConfig`の[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#addremotecommand)を使用してリモートコマンドを登録します。`Tealium`を初期化する前に登録を完了してください：
+タグ管理でリモートコマンドタグを構成します。アプリ内またはリモートサーバー上のJSONファイルも使用できます。構成後、`TealiumConfig`で[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#addremotecommand)を使用してリモートコマンドを登録します。`Tealium`を初期化する前に登録を完了してください。
 
 
 
@@ -133,7 +133,7 @@ let config = TealiumConfig(account: "ACCOUNT",
                            dataSource: "DATASOURCE")
 
 let remoteCommand = RemoteCommand(commandId: "display", description: "Display Prompt", type: .remote(url: "https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json")) { response in
-    guard let payload is response.payload else {
+    guard let payload = response.payload else {
         return
     }
     print("Use response payload: \(payload)")
@@ -149,9 +149,9 @@ tealium = Tealium(config: config)
 
 ### 初期化後にリモートコマンドを追加する
 
-`Tealium`を初期化した後、`tealium.remoteCommands`マネージャーを使用してリモートコマンドを追加します。可能な限り、すべてのイベントを受信するために`TealiumConfig`でリモートコマンドを追加することをお勧めします。デフォルトでは、`webview`コマンドはロード時に初期化されるため、後から`tealium.remoteCommands`を介して追加すると、初期化を逃す可能性があります。
+`Tealium`の初期化後にリモートコマンドを追加するには、`tealium.remoteCommands`マネージャーを使用します。すべてのイベントを確実に受信できるよう、可能な場合は`TealiumConfig`にリモートコマンドを追加してください。デフォルトでは、`webview`コマンドは読み込み時に初期化されるため、後から`tealium.remoteCommands`を使用して追加すると、初期化を受信できない場合があります。
 
-`Tealium`が初期化された後にリモートコマンドを追加する必要がある場合は、次のパターンを使用します：
+`Tealium`の初期化後にリモートコマンドを追加する必要がある場合は、次のパターンを使用します。
 
 ```swift
 tealium = Tealium(config: config)
@@ -175,23 +175,23 @@ tealium?.remoteCommands.add(remoteCommand)
 ## APIリファレンス
 
 ### `init()`
-`add`コマンドに渡すための新しいリモートコマンドオブジェクトを作成します。
+`add`コマンドに渡すことができる、新しいリモートコマンドオブジェクトを作成します。
 
-| パラメータ   | 説明                                       | 例       |
+| パラメータ | 説明 | 例 |
 |-------------|---------------------------------------------------|--------------------|
-| `commandId`   | リモートコマンドのための必須の文字列識別子 | `"logger" `       |
-| `description` | リモートコマンドのオプションの文字列説明 | `"Log Response object to console"` |
-| `type`       | リモートコマンドのタイプ（デフォルトはwebview、ローカルまたはリモートのJSON）     | `.local(file: "logger")` |
-| `completion`  | トリガーするコードブロック                      |                   |
+| `commandId` | リモートコマンドに必須の文字列識別子 | `"logger" ` |
+| `description` | リモートコマンドの任意の文字列説明 | `"Log Response object to console"` |
+| `type` | リモートコマンドのタイプ（webview（デフォルト）、ローカルJSON、またはリモートJSON） | `.local(file: "logger")` |
+| `completion` | トリガーするコードブロック | |
 
-以下は使用例です：
+使用例を次に示します。
 
 ```swift
 let customCommand = TealiumRemoteCommand(commandId: "logger",
                                         description: "Log Response object to console",
                                         type: .local(file: "logger"))
                                         { (response) in
-                                            // 実行するコード
+                                            // code to execute
                                             print("Custom command response: \(response)")
                                         })
 ```
@@ -199,35 +199,36 @@ let customCommand = TealiumRemoteCommand(commandId: "logger",
 
 
 <blockquote>
-1.6.5以降、`TealiumConfig`の[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#addremotecommand)メソッドを使用してリモートコマンドを追加することを推奨します。
+1.6.5以降では、`TealiumConfig`の[`addRemoteCommand()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#addremotecommand)メソッドを使用してリモートコマンドを追加することを推奨します。
 </blockquote>
 
 
-Tealiumに特定のリモートコマンドを登録し、後でトリガーできるようにします。新しいリモートコマンドを追加する前にTealiumが初期化されている必要があります。
+指定したリモートコマンドを、後でトリガーできるようTealiumに登録します。新しいリモートコマンドを追加する前に、Tealiumを初期化しておく必要があります。
 
 ```swift
 add(_ remoteCommand: TealiumRemoteCommandProtocol)
 ```
 
-以下は使用例です：
+以下に使用例を示します。
 
 ```swift
 var tealium: Tealium?
 let customCommand = RemoteCommand(commandId: "logger",
     description: nil)
     { response in
-        // 実行するコード
-        print("カスタムコマンドの応答: \(response)")
+        // code to execute
+        print("Custom command response: \(response)")
     }
 if let remoteCommands = self.tealium?.remoteCommands {
         remoteCommands.add(customCommand)
 } else {
-		print("リモートコマンドは利用できません")
+		print("Remote commands not available")
 }
 ```
 
 ### `remove()`
-以前に登録されたリモートコマンドを削除し、再度トリガーされるのを防ぎます。
+
+以前に登録したリモートコマンドを削除し、再度トリガーされないようにします。
 
 ```swift
 remove(commandWithId: String)
@@ -238,42 +239,43 @@ remove(jsonCommand: String)
 ```
 
 ```swift
-// "tealium"は以前にインスタンス化されていると仮定
+// assumes "tealium" previously instantiated
 tealium?.remoteCommands?.remove(commandWithId: "logger")
 
 tealium?.remoteCommands?.remove(jsonCommand: "logger")
 ```
 
 ### `remoteHTTPCommandDisabled`
-`true`の場合、組み込みのリモートHTTPコマンドを無効にしますが、他のコマンド用のリモートコマンドモジュールは有効のままです。デフォルトは`false` - [リモートHTTPコマンド](#remote-http-command)が有効です。
+
+`true`の場合、組み込みのリモートHTTPコマンドを無効にしますが、その他のコマンドで使用できるようリモートコマンドモジュールは有効なままになります。デフォルトは`false`です。つまり、[リモートHTTPコマンド](#remote-http-command)は有効です。
 
 ```swift
 remoteHTTPCommandDisabled
 ```
 
-以下は使用例です：
+以下に使用例を示します。
 
 ```swift
-// "config"は以前にインスタンス化されていると仮定 (`TealiumConfig()`)
+// assumes "config" previously instantiated (`TealiumConfig()`)
 config.remoteHTTPCommandDisabled = false
 ```
 
 ## リモートHTTPコマンド
 
-これは、ネイティブコードからHTTPリクエストをトリガーし、Tealium iQウェブビューにレスポンスを返す内部コマンドで、識別子は`_http`です。これは、ウェブブラウザで遭遇する可能性のあるCORS制限を回避するためにいくつかの場合に使用されます。このコマンドを使用するには、特定のマッピング名を使用する必要があります：
+これは、識別子が`_http`である予約済みの内部コマンドです。ネイティブコードからHTTPリクエストをトリガーし、そのレスポンスをタグ管理Webビューに返します。Webブラウザーで発生する可能性のあるCORS制限を回避するために使用されることがあります。このコマンドを使用するには、次の特定のマッピング名を使用する必要があります。
 
 | マッピング名 | 説明 |
 | --- | --- |
-| `url` | (必須) トリガーしたいリクエストのURL。 |
-|`method`| (必須) 呼び出すHTTPメソッド。現在サポートされているのはPUT、GET、POSTのみです。|
-|`headers` |(オプション) リクエストと共に渡すヘッダーのキーと値のペアを含むJavaScriptオブジェクト（JSON）。例えば、`{"Content-Type": "application/json"}`。|
-|`callback_function`| (オプション) コマンドが完了したときに呼び出されるJavaScript関数。コールバック関数には2つのパラメータが渡されます：`code`はHTTPレスポンスコード（例：404または200）、`body`はリクエストからのレスポンスボディです。|
+| `url` | （必須）トリガーするリクエストのURL。 |
+| `method` | （必須）呼び出すHTTPメソッド。現在サポートされているメソッドはPUT、GET、POSTのみです。 |
+| `headers` | （任意）リクエストとともに渡すヘッダーのキーと値のペアを含むJavaScriptオブジェクト（JSON）。例：`{"Content-Type": "application/json"}`。 |
+| `callback_function` | （任意）コマンドの完了時に呼び出されるJavaScript関数。コールバック関数には2つのパラメータが渡されます。`code`は404や200などのHTTPレスポンスコードで、`body`はリクエストのレスポンス本文です。 |
 
-以下はコールバック関数の例です：
+以下にコールバック関数の例を示します。
 
 ```swift
 var my_callback = function(code, body) {
-   // レスポンスボディがJSONオブジェクトであったと仮定すると、これはウェブビューのコンソールにmy_response_variableという変数をログに記録します
+   // assuming the response body was a JSON object, this logs a variable called my_response_variable to the console in the web view
 	console.log(body.my_response_variable);
 }
 ```

@@ -1,26 +1,26 @@
 ---
-title: リモートコマンド：エアシップ
-description: AndroidおよびSwift/iOSのエアシップに対するTealiumリモートコマンド統合。
+title: リモートコマンド：Airship
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドとAirshipの統合。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/airship/
 ---
 
-## 必要条件
+## 要件
 
-- [エアシップの資格情報](https://docs.airship.com/guides/messaging/user-guide/admin/security/app-keys-secrets/)
-- 以下のいずれかのモバイルライブラリ：
-  - [Android用Tealium](https://docs.tealium.com/ja/platforms/android-java/)
-  - [iOS-Swift用Tealium](https://docs.tealium.com/ja/platforms/ios-swift/)
-- Tealium iQタグ管理でのエアシップリモートコマンドタグ
+* [Airshipの認証情報](https://docs.airship.com/guides/messaging/user-guide/admin/security/app-keys-secrets/)
+* 次のいずれかのモバイルライブラリ：
+  * [Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/)
+  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)
+* タグ管理のAirshipリモートコマンドタグ
 
-## 動作方法
+## 仕組み
 
-エアシップ統合には3つのアイテムが使用されます：
+Airship統合では、次の3つの項目を使用します。
 
-1. エアシップネイティブSDK
-2. エアシップメソッドをラップするTealiumエアシップリモートコマンドモジュール
-3. イベントトラッキングをネイティブのエアシップコールに変換するエアシップリモートコマンドタグ
+1. AirshipネイティブSDK
+2. AirshipのメソッドをラップするTealium Airshipリモートコマンドモジュール
+3. イベントトラッキングをAirshipのネイティブ呼び出しに変換するAirshipリモートコマンドタグ
 
-エアシップリモートコマンドモジュールをアプリに追加すると、必要なエアシップライブラリが自動的にインストールされ、ベンダー固有のコードをアプリに追加する必要はありません。エアシップSDKを別途インストールする必要はありません。
+Airshipリモートコマンドモジュールをアプリに追加すると、ベンダー固有のコードをアプリに追加することなく、必要なAirshipライブラリが自動的にインストールされます。Airship SDKを個別にインストールする必要はありません。
 
 ## インストール
 ### 依存関係マネージャー
@@ -28,56 +28,61 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/airship/
 
 
 
-Swiftパッケージマネージャーは、TealiumAirshipパッケージをインストールするための推奨される最も簡単な方法です。Swiftパッケージマネージャーを使用してiOS向けのエアシップリモートコマンドをインストールするには、次の手順を実行します。
+Swift Package Managerは、TealiumAirshipパッケージをインストールするための推奨される最も簡単な方法です。Swift Package Managerを使用してiOS向けAirshipリモートコマンドをインストールするには、次の手順を実行します。
 
-1. Xcodeプロジェクトで、「ファイル」>「パッケージの追加...」>「パッケージの依存関係を追加」を選択します。
+1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
 
-2. リポジトリのURLを入力します：`https://github.com/tealium/tealium-ios-airship-remote-command`
+2. リポジトリURLとして`https://github.com/tealium/tealium-ios-airship-remote-command`を入力します。
 
-3. バージョンルールを構成します。通常は、「次のメジャーバージョンまで」が推奨されます。現在の`TealiumAirship`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。
+3. バージョンルールを構成します。通常は`Up to next major`を推奨します。現在の`TealiumAirship`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットしてください。
 
-4. インストールする`TealiumAirship`モジュールを選択し、モジュールをインストールするアプリのターゲットを選択します。
-5. Tealium Swiftライブラリから追加のモジュールを使用している場合は、[Swiftパッケージマネージャーの手順](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)に従って追加します。
+4. インストールする`TealiumAirship`モジュールを選択し、モジュールのインストール先となるアプリターゲットを選択します。
+5. Tealium Swiftライブラリの追加モジュールを使用する場合は、[Swift Package Managerの手順](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)に従って追加してください。
 
-プロジェクトに複数のアプリターゲットがある場合で、`TealiumAirship`モジュールを他のアプリターゲットに追加する必要がある場合は、**フレームワーク、ライブラリ、および埋め込みコンテンツ**セクションに手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、複数のターゲットで`TealiumAirship`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
 
-追加のアプリターゲットに`TealiumAirship`をインストールするには：
+追加のアプリターゲットに`TealiumAirship`をインストールするには、次の手順を実行します。
 
-1. **プロジェクトナビゲーター**でXcodeプロジェクトを選択します。
-2. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-3. **一般 > フレームワーク、ライブラリ、および埋め込みコンテンツ**に移動し、`TealiumAirship`モジュールをアプリターゲットに追加します。
-
-
+1. **Project Navigator**でXcodeプロジェクトを選択します。
+2. Xcodeプロジェクトの**TARGETS**セクションで、アプリターゲットを選択します。
+3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumAirship`モジュールを選択してアプリターゲットに追加します。
 
 
-1. Podfileに`pod "tealium-swift"`と`pod "Airship"`が存在する場合は、削除します。`tealium-swift`の依存関係は、`TealiumAirship`フレームワークにすでに含まれています。
 
-2. Podfileに次の依存関係を追加します：  
+
+1. Podfileに`pod "tealium-swift"`および`pod "Airship"`が存在する場合は削除します。`tealium-swift`の依存関係は、すでに`TealiumAirship`フレームワークに含まれています。
+
+2. 次の依存関係をPodfileに追加します。  
       ```ruby
       pod "TealiumAirship"
       ```
-      `TealiumAirship`ポッドには、次の`TealiumSwift`の依存関係が含まれています：  
+      `TealiumAirship` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       "tealium-swift/Core"
       "tealium-swift/RemoteCommands"
       "tealium-swift/TagManagement"
       ```
 
-3. その他の必要なモジュールを手動でPodfileに追加します。以下は例です：   
+3. 次のようなその他の必要なモジュールをPodfileに手動で追加します。   
       ```ruby
       pod "tealium-swift/Lifecycle"
       pod "tealium-swift/VisitorService"
       ```
-      iOS向けの[推奨モジュール](https://docs.tealium.com/ja/platforms/ios-swift/modules/)について詳しくは、ドキュメントを参照してください。
+      詳細については、[iOS向けの推奨モジュール](https://docs.tealium.com/ja/platforms/ios-swift/modules/)を参照してください。
 
-4. `TealiumSwift`および`TealiumAirship`モジュールを`TealiumHelper`ファイルおよび`Tealium`クラスにアクセスする他のファイルにインポートします。
-
-
+4. `TealiumHelper`ファイル、および`Tealium`クラスまたはAirshipリモートコマンドにアクセスするその他のファイルで、`TealiumSwift`モジュールと`TealiumAirship`モジュールをインポートします。
 
 
-1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係は、`TealiumAirship`フレームワークにすでに含まれています。
 
-2. Cartfileに次の依存関係を追加します：  
+
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係は、すでに`TealiumAirship`フレームワークに含まれています。
+
+2. Cartfileに次の行が存在する場合は削除します。  
+      ```bash
+      github "urbanairship/ios-library"
+      ```
+
+3. 次の依存関係をCartfileに追加します。  
       ```bash
       github "tealium/tealium-ios-airship-remote-command"
       ```
@@ -87,7 +92,7 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
 
 
 
-1. [Android用Tealium](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、プロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+1. まだ実行していない場合は、[Tealium for Android](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、Tealium Maven URLをプロジェクトの最上位`build.gradle`ファイルに追加します。
 
       ```groovy
       allprojects {
@@ -100,7 +105,7 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
       }
       ```
 
-2. アプリプロジェクトの`build.gradle`ファイルに、Tealium-Airshipリモートコマンドをインポートするために次の依存関係を追加します：  
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、Tealium-Airshipリモートコマンドをインポートします。  
       ```groovy
       dependencies {
             implementation 'com.tealium.remotecommands:airship:1.1.0'
@@ -114,11 +119,11 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
 
 
 
-エアシップリモートコマンドの手動インストールには、[Swift用Tealium](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリのインストールが必要です。iOSプロジェクトにエアシップリモートコマンドをインストールするには、次の手順を実行します。
+Airshipリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにAirshipリモートコマンドをインストールするには、次の手順を実行します。
 
-1. [エアシップSDK](https://github.com/urbanairship/ios-library)をインストールします（まだインストールしていない場合）。
+1. まだインストールしていない場合は、[Airship SDK](https://github.com/urbanairship/ios-library)をインストールします。
 
-2. [Tealium iOS Airshipリモートコマンド](https://github.com/tealium/tealium-ios-airship-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+2. [Tealium iOS Airshipリモートコマンド](https://github.com/tealium/tealium-ios-airship-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
 3. `Dispatchers.RemoteCommands`をディスパッチャーとして追加します。
 
@@ -127,9 +132,9 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
 
 
 
-エアシップリモートコマンドの手動インストールには、[Android（Kotlin）用Tealium](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Android（Java）用Tealium](https://docs.tealium.com/ja/platforms/android-java/install/)のインストールが必要です。Androidプロジェクトにエアシップリモートコマンドをインストールするには、次の手順を実行します。
+Airshipリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。AndroidプロジェクトにAirshipリモートコマンドをインストールするには、次の手順を実行します。
 
-1. プロジェクトのルート`build.gradle`ファイルに`flatDir`を追加します：  
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。  
       ```groovy
       repositories {
           flatDir {
@@ -138,9 +143,9 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
       }
       ```
 
-2. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-airship.aar`を追加します。
+2. `tealium-airship.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：  
+3. Tealiumライブラリの依存関係を`build.gradle`ファイルに追加します。  
       ```groovy
       dependencies {
             implementation(name:'tealium-airship', ext:'aar')
@@ -151,12 +156,12 @@ Swiftパッケージマネージャーは、TealiumAirshipパッケージをイ�
 
 ## 初期化
 
-JSON構成ファイルまたはTealiumのAndroidまたはSwiftライブラリのリモートコマンドタグを使用して、リモートコマンドを初期化します。
+JSON構成ファイル、またはTealiumのAndroidライブラリまたはSwiftライブラリ用のリモートコマンドタグを使用して、リモートコマンドを初期化します。
 
 
 
 
-以下の例では、Tealiumインスタンスを作成し、TealiumのSwiftライブラリ用にエアシップリモートコマンドを登録しています。
+次の例では、Tealiumインスタンスを作成し、iOS向けTealium SwiftライブラリにAirshipリモートコマンドを登録します。
 
 ```swift
 var tealium : Tealium?
@@ -165,20 +170,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let airship = AirshipRemoteCommand() 
 
-    // ローカルJSON
+    // Local JSON
     //let airship = AirshipRemoteCommand(type: .local(file: "airship"))
 
-    // リモートJSON
+    // Remote JSON
     //let airship = AirshipRemoteCommand(type: .remote(url: "https://some.domain.com/airship.json"))
     remoteCommands.add(airship)
 }
@@ -187,7 +192,7 @@ tealium = Tealium(config: config) { _ in
 
 
 
-以下の例では、Tealiumインスタンスを作成し、Android（Kotlin）用のエアシップリモートコマンドを登録しています。
+次の例では、Tealiumインスタンスを作成し、Android（Kotlin）向けのAirshipリモートコマンドを登録します。
 
 ```kotlin
 val config = TealiumConfig(application,
@@ -199,25 +204,24 @@ val airship = AirshipRemoteCommand(application);
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(airship);
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(airship, filename = "airship.json");
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(airship, remoteUrl = "https://some.domain.com/airship.json"); 
 }
 ```
 
 
 
-
 ## サポートされているメソッド
 
-次のAirshipメソッドは、Airshipリモートコマンドタグ内のデータマッピングを使用して、これらのTealiumコマンドをトリガーします。
+各 Airship メソッドにコマンドをマッピングします。Airship メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `initialize` | `takeOff()` |
 | `trackevent` | `UACustomEvent.track()` |
@@ -262,248 +266,248 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
 
 
 <blockquote>
-エアシップSDKはTealiumSDKと統合されているため、Tealiumエアシップリモートコマンドタグで提供されていない機能でも、SDKを直接呼び出すことでネイティブのAirship機能をトリガーすることができます。
+Airship SDK は Tealium SDK と統合されているため、Tealium Airship リモートコマンドタグで提供されていない機能であっても、SDK を直接呼び出すことで、Airship の任意のネイティブ機能をトリガーできます。
 </blockquote>
 
 
-### SDKのセットアップ
+### SDK のセットアップ
 
 #### 初期化
 
-Airship SDKは、起動時に自動的に初期化されます。AirshipのAPIキーは、タグの構成で構成されます。
+Airship SDK は起動時に自動的に初期化されます。Airship API キーはタグ構成で指定します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 |---|---|
 | `initialize`  | `takeOff()` |
 
-**可能なUAConfigパラメーター**
+**使用可能な UAConfig パラメータ**
 
-| パラメーター | タイプ | 例 |
+| パラメータ | 型 | 例 |
 | :-- | :-- | :-- |
 | `productionAppKey`（必須） | `String` | `MyProdKey` |
 | `productionAppSecret`（必須） | `String|MyProdSecret` |
 | `developmentAppKey`（必須） | `String` | `MyDevKey` |
 | `developmentAppSecret`（必須） | `String` | `MyDevSecret` |
-| `site`（オプション） | `String` | `eu/us` |
-| `isDataCollectionOptInEnabled`（オプション） | `Boolean` | `true` |
-| `isInProduction`（オプション） | `Boolean` | `true` |
-| `developmentLogLevel`（オプション） | `String` | `debug/error/info/none/trace/undefined/warn` |
-| `productionLogLevel`（オプション） | `String` | `debug/error/info/none/trace/undefined/warn` |
-| `isAnalyticsEnabled`（オプション） | `Boolean` | `true` |
+| `site`（任意） | `String` | `eu/us` |
+| `isDataCollectionOptInEnabled`（任意） | `Boolean` | `true` |
+| `isInProduction`（任意） | `Boolean` | `true` |
+| `developmentLogLevel`（任意） | `String` | `debug/error/info/none/trace/undefined/warn` |
+| `productionLogLevel`（任意） | `String` | `debug/error/info/none/trace/undefined/warn` |
+| `isAnalyticsEnabled`（任意） | `Boolean` | `true` |
 
-Airship Developer Guide: Initial SDK Setup
+Airship 開発者ガイド：SDK の初期セットアップ
 
 - [iOS](https://docs.airship.com/platform/ios/getting-started/#takeoff)
 - [Android](https://docs.airship.com/platform/android/getting-started/#takeoff)
 
 #### trackEvent
 
-カスタムイベントをAirshipに送信します。
+カスタムイベントを Airship に送信します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 |---|---|
 | `trackEvent`  | `UACustomEvent.track()` |
 
-| パラメーター | タイプ | 例 |
+| パラメータ | 型 | 例 |
 | :-- | :-- | :-- |
 | `event_name`（必須） | `String` | `Purchase` |
-| `event`（オプション） | `JSONオブジェクト` | `{"my_numeric_property": 1}` |
-| `event_value`（オプション） | `Number` | `1.5` |
+| `event`（任意） | `JSON object` | `{"my_numeric_property": 1}` |
+| `event_value`（任意） | `Number` | `1.5` |
 
-Airship Developer Guide: Event Tracking
+Airship 開発者ガイド：イベントトラッキング
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#ios-custom-events)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#android-custom-events)
 
 #### trackScreenView
 
-画面ビューをトラッキングします。
+画面表示をトラッキングします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `trackScreenView` | `UAirship.analytics()?.trackScreen` |
 
 
-| パラメーター | タイプ | 例 |
+| パラメータ | 型 | 例 |
 | :-- | :-- | :-- |
 | `screen_name`（必須） | `String` | `Home Screen` |
 
-Airship Developer Guide: Event Tracking
+Airship 開発者ガイド：イベントトラッキング
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#ios-screen-tracking)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#android-screen-tracking)
 
 #### enableAnalytics
 
-以前に無効になっていた場合、Airship Analyticsを有効にします（デフォルトは有効）。
+以前に無効化された Airship Analytics を有効化します（デフォルトでは有効です）。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableAnalytics` | `UAirship.analytics()?.isEnabled` |
 
-Airship Developer Guide: Enable Analytics
+Airship 開発者ガイド：Analytics の有効化
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#disabling-analytics)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#disabling-analytics)
 
 #### disableAnalytics
 
-以前に有効になっていた場合、Airship Analyticsを無効にします（デフォルトは有効）。
+以前に有効化された Airship Analytics を無効化します（デフォルトでは有効です）。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `disableAnalytics` | `UAirship.analytics()?.isEnabled` |
 
-Airship Developer Guide: Disable Analytics
+Airship 開発者ガイド：Analytics の無効化
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#disabling-analytics)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#disabling-analytics)
 
 #### setNamedUser
 
-現在のアプリユーザーの既知のユーザー識別子を構成します。
+現在のアプリユーザーに既知のユーザー識別子を構成します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setNamedUser` | `UAirship.namedUser()?.identifier` |
 
 
-| パラメーター | タイプ | 例 |
+| パラメータ | 型 | 例 |
 | :-- | :-- | :-- |
 | `named_user_identifier`（必須） | `String` | `email@tealium.com` |
 
-Airship Developer Guide: Event Tracking
+Airship 開発者ガイド：イベントトラッキング
 
 - [iOS](https://docs.airship.com/platform/ios/segmentation/#named-users-ios)
 - [Android](https://docs.airship.com/platform/android/segmentation/#named-users-android)
 
 #### setCustomIdentifiers
 
-ユーザーにとって重要と思われる追加のカスタム識別子を構成します。
+ユーザーにとって重要と判断した追加のカスタム識別子を構成します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setCustomIdentifiers` | `UAirship.analytics()?.associateDeviceIdentifiers` |
 
 
-| パラメーター | タイプ | 例 |
+| パラメータ | 型 | 例 |
 | :-- | :-- | :-- |
-| `custom`（必須） | `JSONオブジェクト`（文字列のみ） | `{"my_custom_identifier":"user@email.com"}` |
+| `custom`（必須） | `JSON Object`（文字列のみ） | `{"my_custom_identifier":"user@email.com"}` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#ios-custom-identifiers)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#android-custom-identifiers)
 
 #### enableAdvertisingIdentifiers
 
-広告識別子をカスタム識別子の辞書に追加します（IDFV、IDFA、Ad Tracking Enabled）。
+広告識別子をカスタム識別子のディクショナリに追加します（IDFV、IDFA、広告トラッキングの有効化）。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setCustomIdentifiers` | `UAirship.analytics()?.associateDeviceIdentifiers` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/analytics-and-reporting/#ios-custom-identifiers)
 - [Android](https://docs.airship.com/platform/android/analytics-and-reporting/#android-custom-identifiers)
-
 #### enableInAppMessaging
 
-インアプメッセージング機能を有効にします。
+アプリ内メッセージング機能を有効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableInAppMessaging` | `UAInAppMessageManager.shared()?.isEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/in-app-automation/#component-enablement)
 - [Android](https://docs.airship.com/platform/android/in-app-automation/#feature-enablement)
 
 #### disableInAppMessaging
 
-インアプメッセージング機能を無効にします。
+アプリ内メッセージング機能を無効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `disableInAppMessaging` | `UAInAppMessageManager.shared()?.isEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/in-app-automation/#component-enablement)
 - [Android](https://docs.airship.com/platform/android/in-app-automation/#feature-enablement)
 
 #### pauseInAppMessaging
 
-インアプメッセージング機能を一時停止します。
+アプリ内メッセージング機能を有効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `pauseInAppMessaging` | `UAInAppMessageManager.shared()?.isPaused` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/in-app-automation/#pausing-message-display)
 - [Android](https://docs.airship.com/platform/android/in-app-automation/#pausing-message-display)
 
 #### unPauseInAppMessaging
 
-インアプメッセージング機能を再開します。
+アプリ内メッセージング機能を有効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `unPauseInAppMessaging` | `UAInAppMessageManager.shared()?.isPaused` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/in-app-automation/#pausing-message-display)
 - [Android](https://docs.airship.com/platform/android/in-app-automation/#pausing-message-display)
 
 #### setInAppMessagingDisplayInterval
 
-新しいインアプメッセージを表示するまでの待機時間（秒単位）。
+Airship が新しいアプリ内メッセージを表示するまで待機する時間を、*秒単位*で指定します。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setInAppMessagingDisplayInterval` | `UAInAppMessageManager.shared()?.displayInterval` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
 | `in_app_messaging_display_interval`（必須） | `String` | `"10"` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/in-app-automation/#pausing-message-display)
 - [Android](https://docs.airship.com/platform/android/in-app-automation/#pausing-message-display)
 
 #### enableUserPushNotifications
 
-ユーザープッシュ通知を有効にします。
+ユーザー向けプッシュ通知を有効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableUserPushNotifications` | `UAirship.push()?.userPushNotificationsEnabled` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
-| `push_notification_options`（オプション） | `Stringの配列` | `["badge", "sound", "announcement"]` |
-可能なプッシュメッセージオプション：`"badge"`、`"sound"`、`"alert"`、`"carplay"`、`"announcement"`、`"critical"`、`"app_notification_settings"`
+| `push_notification_options`（任意） | `Array of Strings` | `["badge", "sound", "announcement"]` |
 
-Airship Developer Guide:
+指定可能なプッシュメッセージングオプション：`"badge"`、`"sound"`、`"alert"`、`"carplay"`、`"announcement"`、`"critical"`、`"app_notification_settings"`
+
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#enabling-user-notifications)
 - [Android](https://docs.airship.com/platform/android/push-notifications/#enabling-user-notifications)
 
 #### disableUserPushNotifications
 
-ユーザープッシュ通知を無効にします。
+ユーザー向けプッシュ通知を無効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableUserPushNotifications` | `UAirship.push()?.userPushNotificationsEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#enabling-user-notifications)
 - [Android](https://docs.airship.com/platform/android/push-notifications/#enabling-user-notifications)
@@ -512,11 +516,11 @@ Airship Developer Guide:
 
 バックグラウンドプッシュ通知を有効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableUserPushNotifications` | `UAirship.push()?. backgroundPushNotificationsEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#enabling-user-notifications)
 - [Android](https://docs.airship.com/platform/android/push-notifications/#enabling-user-notifications)
@@ -525,147 +529,377 @@ Airship Developer Guide:
 
 バックグラウンドプッシュ通知を無効にします。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `disableBackgroundPushNotifications` | `UAirship.push()?.backgroundPushNotificationsEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#enabling-user-notifications)
 - [Android](https://docs.airship.com/platform/android/push-notifications/#enabling-user-notifications)
 
 #### setPushNotificationOptions
 
-プッシュ通知オプションを構成します。iOSのみ。
+プッシュ通知オプションを構成します。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setPushNotificationOptions` | `UAirship.push()?.notificationOptions` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
-| `push_notification_options`（必須） | `Stringの配列` | `["badge", "sound", "announcement"]` |
+| `push_notification_options`（必須） | `Array of Strings` | `["badge", "sound", "announcement"]` |
 
-可能なプッシュメッセージオプション：`"badge"`、`"sound"`、`"alert"`、`"carplay"`、`"announcement"`、`"critical"`、`"app_notification_settings"`
+指定可能なプッシュメッセージングオプション：`"badge"`、`"sound"`、`"alert"`、`"carplay"`、`"announcement"`、`"critical"`、`"app_notification_settings"`
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#notification-options)
 
 #### setForegroundPresentationOptions
 
-プッシュ通知の表示オプションを構成します。iOSのみ。
+プッシュ通知の表示オプションを構成します。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setForegroundPresentationOptions` | `UAirship.push()?.defaultPresentationOptions` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
-| `foreground_presentation_options`（必須） | `Stringの配列` | `["badge", "sound", "alert"]` |
+| `foreground_presentation_options`（必須） | `Array of Strings` | `["badge", "sound", "alert"]` |
 
-可能なフォアグラウンドプレゼンテーションオプション：`"badge"`、`"sound"`、`"alert"`
+指定可能なフォアグラウンド表示オプション：`"badge"`、`"sound"`、`"alert"`
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#foreground-presentation-options)
 
 #### setBadgeNumber
 
-アプリのアイコンのバッジ番号を指定の番号に構成します。iOSのみ。
+アプリアイコンのバッジ番号を指定した数値に構成します。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setBadgeNumber` | `UAirship.push()?.badgeNumber` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
 | `badge_number`（必須） | `Number` | `3` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#ios-feature-badges)
 
 #### resetBadgeNumber
 
-バッジ番号をリセットします。iOSのみ。
+バッジ番号をリセットします。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setBadgeNumber` | `UAirship.push()?.badgeNumber` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#ios-feature-badges)
 
 #### enableAutoBadge
 
-自動バッジ機能を有効にします。iOSのみ。
+自動バッジ機能を有効にします。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableAutoBadge` | `UAirship.push()?.isAutobadgeEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#ios-feature-badges)
 
 #### disableAutoBadge
 
-自動バッジ機能を無効にします。iOSのみ。
+自動バッジ機能を無効にします。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `disableAutoBadge` | `UAirship.push()?.isAutobadgeEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#ios-feature-badges)
 
 #### enableQuietTime
 
-静音時間機能を有効にします。iOSのみ。
+Quiet Time 機能を有効にします。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `enableAutoBadge` | `UAirship.push()?.isQuietTimeEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#quiet-time)
 
 #### disableQuietTime
 
-静音時間機能を無効にします。iOSのみ。
+Quiet Time 機能を無効にします。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `disableAutoBadge` | `UAirship.push()?.isQuietTimeEnabled` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
 - [iOS](https://docs.airship.com/platform/ios/push-notifications/#quiet-time)
 
 #### setQuietTimeStart
 
-静音時間機能の時間制約を構成します。iOSのみ。
+Quiet Time 機能の時間制約を構成します。iOS のみ。
 
-| リモートコマンド | Airshipメソッド |
+| リモートコマンド | Airship メソッド |
 | :-- | :-- |
 | `setQuietTimeStart` | `UAirship.push()?.isQuietTimeEnabled` |
 
-| パラメーター | タイプ | 例 |
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
-| `quiet`（必須） | `JSONオブジェクト` | `{'start_hour': 3, 'start_minute': 30, 'end_hour': 4, 'end_minute': 30` |
-quietオブジェクト内で必要なもの：
+| `quiet`（必須） | `JSON Object` | `{'start_hour': 3, 'start_minute': 30, 'end_hour': 4, 'end_minute': 30` |
 
-| パラメーター | タイプ | 例 |
+quiet オブジェクト内で必須の項目：
+
+| パラメーター | 型 | 例 |
 | :-- | :-- | :-- |
 | `start_hour`（必須） | `Number` | `3` |
 | `start_minute`（必須） | `Number` | `30` |
 | `end_hour`（必須） | `Number` | `4` |
 | `end_minute`（必須） | `Number` | `30` |
 
-Airship Developer Guide:
+Airship 開発者ガイド：
 
-- [iOS](https://docs.airship.com/platform/ios/push-not
+- [iOS](https://docs.airship.com/platform/ios/push-notifications/#quiet-time)
+#### setChannelTags
+
+`updateRegistration` 関数を呼び出します。通知オプションを変更した後に呼び出す必要があります。iOS のみ。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `updateRegistration` | `UAirship.push()?.updateRegistration` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/push-notifications/#quiet-time)
+
+#### setNamedUserTags
+
+指定ユーザーのタグを構成し、以前に構成されたタグを上書きします。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `setNamedUserTags` | `UAirship.channel()?.addTags` | `UAirship.namedUser()?.addTags` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `named_user_tags`（必須） | `String Array` | `["silver-member", "gold-member"]` |
+| `tag_group`（必須） | `String` | `loyalty` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#ios-tag-groups)
+- [Android](https://docs.airship.com/platform/android/segmentation/#android-tag-groups)
+
+#### addTag
+
+チャネルタグを追加します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `addTag` | `UAirship.channel()?.addTag` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `channel_tag`（必須） | `String` | `"a_tag"` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#tags)
+- [Android](https://docs.airship.com/platform/android/segmentation/#tags)
+
+#### removeTag
+
+チャネルタグを削除します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `removeTag` | `UAirship.channel()?.removeTag` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `channel_tag`（必須） | `String` | `"a_tag"` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#tags)
+- [Android](https://docs.airship.com/platform/android/segmentation/#tags)
+
+#### addTagGroup
+
+指定ユーザーまたはチャネルにタググループを追加します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `addTagGroup` | `UAirship.channel()?.addTags` | `UAirship.namedUser()?.addTags` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `named_user_tags` | `channel_tags`（必須） | `String Array` | `["silver-member", "gold-member"]` |
+| `tag_group`（必須） | `String` | `loyalty` |
+| `tag_type`（必須） | `String` | `channel|named_user` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#ios-tag-groups)
+- [Android](https://docs.airship.com/platform/android/segmentation/#android-tag-groups)
+
+#### removeTagGroup
+
+指定ユーザーまたはチャネルからタググループを削除します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `removeTagGroup` | `UAirship.channel()?.removeTags` | `UAirship.namedUser()?.removeTags` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `named_user_tags` | `channel_tags`（必須） | `String Array` | `["silver-member", "gold-member"]` |
+| `tag_group`（必須） | `String` | `loyalty` |
+| `tag_type`（必須） | `String` | `channel` | `named_user` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#ios-tag-groups)
+- [Android](https://docs.airship.com/platform/android/segmentation/#android-tag-groups)
+
+#### setAttributes
+
+カスタム属性を構成します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `setAttributes` | `UAirship.channel()?.apply` |
+
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `attributes`（必須） | `JSON object` | `{"last\_product\_purchased": "A1234567"}` |
+
+属性値には文字列または数値のみを指定できます。
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/segmentation/#attributes)
+- [Android](https://docs.airship.com/platform/android/segmentation/#attributes)
+
+#### displayMessageCenter
+
+メッセージセンターを表示します。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `displayMessageCenter` | `UAMessageCenter.shared().display` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/message-center/#displaying-the-message-center)
+- [Android](https://docs.airship.com/platform/android/message-center/#android-rich-push-inbox-intents)
+
+#### setMessageCenterTitle
+
+メッセージセンターのタイトルを構成します。iOS のみ。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `setMessageCenterTitle` | `UAMessageCenter.shared().defaultUI.title` |
+
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `message_center_title`（必須） | `String` | `"Custom Message Center"` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/message-center/#title)
+
+#### setMessageCenterStyle
+
+メッセージセンターのスタイルを構成します。iOS のみ。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `setMessageCenterStyle` | `UAMessageCenter.shared().defaultUI.style` |
+
+| パラメーター | 型 | 例 |
+| :-- | :-- | :-- |
+| `message_center_style`（必須） | `JSON object` | 以下の例を参照 |
+
+```
+{"titleFont": {"size": Double, "name":"fontname"},
+ "cellTitleFont": {"size": Double, "name":"fontname"},
+ "cellDateFont": {"size": Double, "name":"fontname"},
+ "navigationBarColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
+ "titleColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
+ "tintColor": {"red": Double, "green": Double, "blue": Double, "alpha": Double}
+ }
+```
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/message-center/#styling-ios-mc)
+
+#### enableLocation
+
+位置情報を有効にします。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `enableLocation` | `UALocation.shared().isLocationUpdatesEnabled` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/location/#enabling-location)
+- [Android](https://docs.airship.com/platform/android/location-targeting/#continuous-location-updates)
+
+#### disableLocation
+
+位置情報を無効にします。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `disableLocation` | `UALocation.shared().isLocationUpdatesEnabled` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/location/#allow-background-location)
+- [Android](https://docs.airship.com/platform/android/location-targeting/#using-airship-location)
+
+#### enableBackgroundLocation
+
+バックグラウンドでの位置情報取得を有効にします。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `enableBackgroundLocation` | `UALocation.shared().isBackgroundLocationUpdatesAllowed` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/location/#allow-background-location)
+- [Android](https://docs.airship.com/platform/android/location-targeting/#continuous-location-updates)
+
+#### disableBackgroundLocation
+
+バックグラウンドでの位置情報取得を無効にします。
+
+| リモートコマンド | Airship メソッド |
+| :-- | :-- |
+| `disableBackgroundLocation` | `UALocation.shared().isBackgroundLocationUpdatesAllowed` |
+
+Airship 開発者ガイド：
+
+- [iOS](https://docs.airship.com/platform/ios/location/#allow-background-location)
+- [Android](https://docs.airship.com/platform/android/location-targeting/#continuous-location-updates)

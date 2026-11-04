@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/install/
 
 * [Android Studio](https://developer.android.com/studio)
 * Android SDK (Lollipop/5.0+ / API Level 21+)
-* [Tealium iQ Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
+* [Tag Management Mobile Profile](https://docs.tealium.com/create-mobile-profile/)
 * [Tealium Customer Data Hub account](https://docs.tealium.com/introduction-to-customer-data-hub/)
 
 ## Sample Apps
@@ -122,7 +122,7 @@ Replace the following:
 To send your data to the Tealium ecosystem, select from the following dispatchers:
 
 * **Tag Management**    
-Add the [TagManagement Dispatcher](https://docs.tealium.com/platforms/android-kotlin/module-list/tag-management/) to use Tealium iQ Tag Management and make use of its tag management configuration logic.
+Add the [TagManagement Dispatcher](https://docs.tealium.com/platforms/android-kotlin/module-list/tag-management/) to use Tag Management and make use of its tag management configuration logic.
 * **Collect**  
 Add the [Collect Dispatcher](https://docs.tealium.com/platforms/android-kotlin/module-list/collect/) to use the server-side solutions of the Tealium Customer Data Hub.
 

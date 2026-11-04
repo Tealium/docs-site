@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/android-kotlin/module-list/visitor-servi
 
 The Visitor Service module brings [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/) functionality to the native mobile app.
 
-Usage of this module requires a license for Tealium AudienceStream. Use the retrieved visitor profile to enhance the customer experience or data layer throughout your application.
+Usage of this module requires a license for Customer Data Platform (CDP). Use the retrieved visitor profile to enhance the customer experience or data layer throughout your application.
 
 ## Install
 

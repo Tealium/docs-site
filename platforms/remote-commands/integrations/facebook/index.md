@@ -11,7 +11,7 @@ url: https://docs.tealium.com/platforms/remote-commands/integrations/facebook/
   * [Tealium for iOS (Swift)](https://docs.tealium.com/platforms/ios-swift/).
 * One of these remote command integrations:
   * [Facebook Remote Command JSON File](https://docs.tealium.com/platforms/remote-commands/integrations/facebook/.#json-template) (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+).
-  * Facebook Remote Command tag in Tealium iQ Tag Management.
+  * Facebook Remote Command tag in Tag Management.
 
 The following are requirements for iOS and Android:  
 
@@ -100,7 +100,7 @@ The Facebook integration uses three items:
 
 Adding the Facebook remote command module to your app automatically installs and builds the required Facebook libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Facebook SDK separately.
 
-There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
+There are two remote command options: A JSON configuration file, or using Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using Tag Management, add the Remote Command tag for the vendor integration. Learn more about [vendor integrations](https://docs.tealium.com/platforms/remote-commands/how-it-works/#vendor-integrations).
 
 ## Install
 

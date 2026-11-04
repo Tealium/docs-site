@@ -1,78 +1,78 @@
 ---
 title: リモートコマンド：Braze
-description: AndroidおよびSwift/iOS用BrazeのTealiumリモートコマンド統合。
+description: AndroidおよびSwift/iOS向けのTealiumリモートコマンドによるBraze連携。
 url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/braze/
 ---
-## 必要条件
+## 要件
 
 * Braze APIキー
-* 以下のいずれかのモバイルライブラリ：
-  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/) (1.0.0+)
-  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/) (Braze 1.0.0+用は5.9.0+、それ以前のバージョン用は<5.9.0)
-  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/) (2.8.0+)
-* 以下のいずれかのリモートコマンド統合：
-  * [Braze Remote Command JSON File](https://docs.tealium.com/ja/platforms/remote-commands/integrations/braze/#json-template) (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)
-  * Tealium Tag Management内のBraze Remote Commandタグ
+* 次のいずれかのモバイルライブラリ：
+  * [Tealium for Android-Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/)（1.0.0以降）
+  * [Tealium for Android-Java](https://docs.tealium.com/ja/platforms/android-java/)（Braze 1.0.0以降の場合は5.9.0以降、以前のバージョンの場合は5.9.0未満）
+  * [Tealium for iOS-Swift](https://docs.tealium.com/ja/platforms/ios-swift/)（2.8.0以降）
+* 次のいずれかのリモートコマンド連携：
+  * [BrazeリモートコマンドJSONファイル](https://docs.tealium.com/ja/platforms/remote-commands/integrations/braze/#json-template)（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）
+  * タグ管理のBrazeリモートコマンドタグ
 
-## 動作原理
+## 仕組み
 
-Braze統合は以下の項目を使用します：
+Braze連携では、次の項目を使用します。
 
 1. BrazeネイティブSDK。
 2. Brazeメソッドをラップするリモートコマンドモジュール。
-3. JSON構成ファイルまたはイベントトラッキングをネイティブのBrazeコールに変換するRemote Commandタグのいずれか。
+3. イベントトラッキングをBrazeのネイティブ呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ。
 
-アプリにBrazeリモートコマンドモジュールを追加すると、アプリにベンダー固有のコードを追加することなく、必要なBrazeライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Braze SDKを別途インストールする必要はありません。
+Brazeリモートコマンドモジュールをアプリに追加すると、必要なBrazeライブラリが自動的にインストールおよびビルドされるため、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャーを使用してインストールする場合、Braze SDKを別途インストールする必要はありません。
 
-リモートコマンドオプションには、JSON構成ファイルを使用するか、Tag Managementを使用してマッピングを構成するかの2つがあります。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルの使用を推奨します。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細はこちら](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)をご覧ください。
+リモートコマンドには、JSON構成ファイルを使用する方法と、タグ管理を使用してマッピングを構成する方法の2つがあります。ベンダー連携には、リモートでホストするかアプリ内にローカルで配置したJSON構成ファイルの使用をお勧めします。タグ管理を使用する場合は、ベンダー連携用のリモートコマンドタグを追加します。[ベンダー連携](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#vendor-integrations)の詳細をご確認ください。
 
 
 ## インストール
 
-### 依存関係マネージャ
+### 依存関係マネージャー
 
 
 
 
 1. Xcodeプロジェクトで、**File > Add Packages... > Add Package Dependency**を選択します。
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-ios-braze-remote-command`。
-3. バージョンルールを構成します。通常は`Up to next major`が推奨されます。現在の`TealiumBraze`バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールする`TealiumBraze`モジュールを選択し、そのモジュールをインストールしたいアプリターゲットを選択します。
+2. リポジトリURLとして`https://github.com/tealium/tealium-ios-braze-remote-command`を入力します。
+3. バージョンルールを構成します。通常は`Up to next major`をお勧めします。現在の`TealiumBraze`バージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットします。
+4. インストールする`TealiumBraze`モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。
 
-プロジェクトに複数のアプリターゲットがあり、それらのターゲットに`TealiumBraze`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションで手動で追加する必要があります。
+プロジェクトに複数のアプリターゲットがあり、追加のアプリターゲットでも`TealiumBraze`モジュールが必要な場合は、**Frameworks, Libraries, and Embedded Content**セクションでそれらを手動で追加する必要があります。
 
-追加のアプリターゲットに`TealiumBraze`をインストールするには：
+追加のアプリターゲットに`TealiumBraze`をインストールするには、次の手順を実行します。
 
 1. **Project Navigator**でXcodeプロジェクトを選択します。
-2. Xcodeプロジェクトで、**TARGETS**セクションのアプリターゲットを選択します。
-3. **General > Frameworks, Libraries & Embedded Content**に移動し、アプリターゲットに`TealiumBraze`モジュールを追加します。
+2. Xcodeプロジェクトの**TARGETS**セクションでアプリターゲットを選択します。
+3. **General > Frameworks, Libraries & Embedded Content**に移動し、`TealiumBraze`モジュールを選択してアプリターゲットに追加します。
 
-Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の指示に従ってください。
-
-
+Tealium Swiftライブラリから追加のモジュールを追加するには、[Swift Package Manager](https://docs.tealium.com/ja/platforms/ios-swift/install/#swift-package-manager-recommended)の手順に従ってください。
 
 
-1. Podfileから`tealium-swift`と`pod "BrazeKit"`を削除します。`tealium-swift`の依存関係はすでに`TealiumBraze`フレームワークに含まれています。
 
-2. Podfileに次の依存関係を追加します：
+
+1. Podfileに`tealium-swift`および`pod "BrazeKit"`が存在する場合は削除します。`tealium-swift`の依存関係は、すでに`TealiumBraze`フレームワークに含まれています。
+
+2. 次の依存関係をPodfileに追加します。  
       ```ruby
       pod "TealiumBraze"
       ```  
-      `TealiumBraze`ポッドには次の`TealiumSwift`依存関係が含まれています：
+      `TealiumBraze` Podには、次の`TealiumSwift`依存関係が含まれています。  
       ```bash
       'tealium-swift/Core'
       'tealium-swift/RemoteCommands'
       ```
 
-3. `TealiumHelper`ファイルおよび`Tealium`クラスまたはBrazeリモートコマンドにアクセスするその他のファイルで`TealiumSwift`および`TealiumBraze`モジュールをインポートします。
+3. `TealiumHelper`ファイル、および`Tealium`クラスまたはBrazeリモートコマンドにアクセスするその他のファイルに、`TealiumSwift`モジュールと`TealiumBraze`モジュールをインポートします。
 
 
 
 
 
-1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係はすでに`TealiumBraze`フレームワークに含まれています。
+1. Cartfileから`tealium-swift`を削除します。`tealium-swift`の依存関係は、すでに`TealiumBraze`フレームワークに含まれています。
 
-2. Cartfileに次の依存関係を追加します：
+2. Cartfileに次の依存関係を追加します。  
       ```bash
       github "tealium/tealium-ios-braze-remote-command"
       ```
@@ -81,7 +81,7 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
 
 
 
-1. [Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、まだ行っていない場合はプロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
+1. [Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)をインストールし、まだ追加していない場合は、プロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します。
 
       ```groovy
       allprojects {
@@ -94,7 +94,7 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
       }
       ```
 
-2. アプリプロジェクトの`build.gradle`ファイルにBraze SDKとTealium-Brazeリモートコマンドの依存関係を追加します：
+2. アプリプロジェクトの`build.gradle`ファイルに次の依存関係を追加して、Braze SDKとTealium-Brazeリモートコマンドの両方をインポートします。  
       ```groovy
       dependencies {
             implementation 'com.tealium.remotecommands:braze:3.0.0'
@@ -106,11 +106,11 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
 
 1. React Nativeプロジェクトのルートに移動します。
 
-2. 次のコマンドで`tealium-react-braze`パッケージをダウンロードしてインストールします：
+2. 次のコマンドを使用して、`tealium-react-braze`パッケージをダウンロードしてインストールします。  
     ```bash
     yarn add tealium-react-braze
     ```
-3. NPMパッケージのバージョン1.0.7でReact Native Autolinkingが有効になっており、React Nativeのバージョン0.60+を使用している場合、`react-native link`を実行する必要はありません。
+3. React Nativeの自動リンクはNPMパッケージのバージョン1.0.7で有効になっています。React Nativeバージョン0.60以降を使用している場合、`react-native link`を実行する必要はありません。
 
 
 
@@ -119,22 +119,22 @@ Tealium Swiftライブラリから追加のモジュールを追加するには�
 
 
 
-Brazeリモートコマンドの手動インストールには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリのインストールが必要です。iOSプロジェクト用のBrazeリモートコマンドをインストールするには：
+Brazeリモートコマンドを手動でインストールするには、[Tealium for Swift](https://docs.tealium.com/ja/platforms/ios-swift/)ライブラリがインストールされている必要があります。iOSプロジェクトにBrazeリモートコマンドをインストールするには、次の手順を実行します。
 
-1. まだ行っていない場合は、[Braze SDK](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/)をインストールします。
+1. まだインストールしていない場合は、[Braze SDK](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/)をインストールします。
 
-2. [Tealium iOS Brazeリモートコマンド](https://github.com/tealium/tealium-ios-braze-remote-command)リポジトリをクローンし、`Sources`フォルダ内のファイルをプロジェクトにドラッグします。
+2. [Tealium iOS Brazeリモートコマンド](https://github.com/tealium/tealium-ios-braze-remote-command)リポジトリをクローンし、`Sources`フォルダー内のファイルをプロジェクトにドラッグします。
 
 3. [`remoteAPIEnabled`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled)構成フラグを`true`に構成します。
 
 
 
 
-Brazeリモートコマンドの手動インストールには、[Tealium for Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android (Java)](https://docs.tealium.com/ja/platforms/android-java/install/)のインストールが必要です。
+Brazeリモートコマンドを手動でインストールするには、[Tealium for Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/install/)または[Tealium for Android（Java）](https://docs.tealium.com/ja/platforms/android-java/install/)がインストールされている必要があります。
 
-Androidプロジェクト用のBrazeリモートコマンドをインストールするには：
+AndroidプロジェクトにBrazeリモートコマンドをインストールするには、次の手順を実行します。
 
-1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します：
+1. プロジェクトルートの`build.gradle`ファイルに`flatDir`を追加します。
 
       ```groovy
       allprojects {
@@ -147,9 +147,9 @@ Androidプロジェクト用のBrazeリモートコマンドをインストー�
       }
       ```
 
-2. `<PROJECT_ROOT>/<MODULE>/libs`に`tealium-braze.aar`を追加します。
+2. `tealium-braze.aar`を`<PROJECT_ROOT>/<MODULE>/libs`に追加します。
 
-3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+3. `build.gradle`ファイルにTealiumライブラリの依存関係を追加します。
 
       ```groovy
       dependencies {
@@ -163,7 +163,7 @@ Androidプロジェクト用のBrazeリモートコマンドをインストー�
 
 
 
-TealiumのiOS（Swift）ライブラリ用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+JSON 構成ファイルまたは Remote Command タグを使用して、Tealium の iOS（Swift）ライブラリ向けリモートコマンドを初期化します。  
 ```swift
 var tealium : Tealium?
 let config = TealiumConfig(account: "ACCOUNT",
@@ -171,20 +171,20 @@ let config = TealiumConfig(account: "ACCOUNT",
                            environment: "ENVIRONMENT",
                            dataSource: "DATASOURCE")
 config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = true // リモートコマンドを使用するために必要
+config.remoteAPIEnabled = true // Required to use Remote Commands
 
 tealium = Tealium(config: config) { _ in
     guard let remoteCommands = self.tealium?.remoteCommands else {
         return
     }
 
-    // Webviewタグ
+    // Webview Tag
     let braze = BrazeRemoteCommand(brazeLocation: BrazeLocationProvider()) 
 
-    // ローカルJSON
+    // Local JSON
     //let braze = BrazeRemoteCommand(type: .local(file: "braze"), brazeLocation: BrazeLocationProvider()) 
 
-    // リモートJSON
+    // Remote JSON
     //let braze = BrazeRemoteCommand(type: .remote(url: "https://some.domain.com/braze.json"), brazeLocation: BrazeLocationProvider()) 
 
     remoteCommands.add(braze)
@@ -192,14 +192,14 @@ tealium = Tealium(config: config) { _ in
 ```
 
 
-TealiumのKotlinライブラリ用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+JSON 構成ファイルまたは Remote Command タグを使用して、Tealium の Kotlin ライブラリ向けリモートコマンドを初期化します。
 ```kotlin
 val config = TealiumConfig(application,
         "ACCOUNT",
         "PROFILE",
         Environment.DEV,
         dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
-// Braze Remote Commandを追加する新しいコード
+// New code to add the Braze Remote Command
 val braze = BrazeRemoteCommand(application,
                             true,
                             sessionHandlingBlacklist,
@@ -207,8 +207,8 @@ val braze = BrazeRemoteCommand(application,
                             inAppMessageBlacklist)
 
 var tealium = Tealium.create(TEALIUM_MAIN, config) {
-    // オプション：Tealium IQのタグでまだサポートされていない構成オプションを構成するか、
-    //              ローカルで構成を上書きする。
+    // Optional: Set config options that may not be supported yet by the Tag in Tag Management
+    //              or simply to override settings locally.
     braze.registerConfigOverride { builder ->
         // builder.setIsLocationCollectionEnabled(true);
         // builder.setGeofencesEnabled(true);
@@ -216,21 +216,21 @@ var tealium = Tealium.create(TEALIUM_MAIN, config) {
         // builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
     }
 
-    // コマンドを登録
+    // register the command
 
-    // Webviewタグ
+    // Webview Tag
     remoteCommands?.add(braze); 
 
-    // ローカルJSON
+    // Local JSON
     //remoteCommands?.add(braze, filename = "braze.json"); 
 
-    // リモートJSON
+    // Remote JSON
     //remoteCommands?.add(braze, remoteUrl = "https://some.domain.com/braze.json"); 
 }
 ```
 
 
-TealiumのAndroid（Java）ライブラリ用のRemote Commandタグでリモートコマンドを初期化します：
+Remote Command タグを使用して、Tealium の Android（Java）ライブラリ向けリモートコマンドを初期化します。  
 ```java
 import com.tealium.remotecommands.BrazeRemoteCommand;
 
@@ -238,22 +238,22 @@ Tealium.Config config = Tealium.Config.create(application, "ACCOUNT", "PROFILE",
 Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
 
 BrazeRemoteCommand braze;
-// デフォルトの構成オプションで初期化。
+// Initialize with default configuration options.
 braze = new BrazeRemoteCommand(config);
 
-// または追加の構成オプションで初期化する場合：
+// Or alternatively initialize with some additional config options:
 Set<Class> sessionHandlingBlacklist = new HashSet<>();
 Set<Class> inAppMessageBlacklist = new HashSet<>();
 // sessionHandlingBlacklist.add(MainActivity.class);
 // inAppMessageBlacklist.add(UserActivity.class);
 braze = new BrazeRemoteCommand(config,
-        true,                     // sessionHandlingEnabled
+        true,                     // sessiongHandlingEnabled
         sessionHandlingBlacklist, // sessionHandlingBlacklist
         true,                     // registerInAppMessageManager
         inAppMessageBlacklist);   // inAppMessageBlackList
 
-// オプション：Tealium IQのタグでまだサポートされていない構成オプションを構成するか、
-//              ローカルで構成を上書きする。
+// Optional: Set config options that may not be supported yet by the Tag in Tag Management
+//              or simply to override settings locally.
 braze.registerConfigOverride(new BrazeRemoteCommand.ConfigOverrider() {
     @Override
     public void onOverride(AppboyConfig.Builder b) {
@@ -262,24 +262,24 @@ braze.registerConfigOverride(new BrazeRemoteCommand.ConfigOverrider() {
     }
 });
 
-// コマンドを登録
+// register the command
 teal.addRemoteCommand(braze);
 ```
 
  
 
-React Native用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：
+JSON 構成ファイルまたは Remote Command タグを使用して、React Native 向けリモートコマンドを初期化します。
 ```javascript
 import BrazeRemoteCommand from 'tealium-react-braze';
 BrazeRemoteCommand.initialize();
 
-// Webviewタグ
+// Webview Tag
 let braze = { id: BrazeRemoteCommand.name } 
 
-// ローカルJSON
+// Local JSON
 //let braze = { id: BrazeRemoteCommand.name, path: "braze.json" } 
 
-// リモートJSON
+// Remote JSON
 //let braze = { id: BrazeRemoteCommand.name, url: "https://some.domain.com/braze.json" } 
 
 let config = TealiumConfig {
@@ -292,9 +292,9 @@ let config = TealiumConfig {
 
 
 
-## JSONテンプレート
+## JSON テンプレート
 
-[JSON構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
+[JSON 構成ファイル](https://docs.tealium.com/ja/platforms/remote-commands/how-it-works/#json-configuration-file)を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照して作業を開始してください。このテンプレートには、標準的な e コマース実装で使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。
 
 ```json
 {
@@ -367,9 +367,9 @@ let config = TealiumConfig {
 ```
 ## サポートされているメソッド
 
-各Brazeメソッドにコマンドをマッピングします。Brazeメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。
+各 Braze メソッドにコマンドを対応付けます。Braze メソッドをトリガーするには、対応するコマンドを指定された形式で渡します。
 
-|リモートコマンド|Brazeメソッド|
+|リモートコマンド|Braze メソッド|
 |--------------|------------|
 | `addtosubscriptiongroup` | `user.addToSubscriptionGroup(id:)` |
 | `appendcustomarrayattribute` | `user.addToCustomAttributeArray()` |
@@ -395,102 +395,104 @@ let config = TealiumConfig {
 | `wipedata` | `wipeData()` |
 
 
+
 <blockquote>
-Braze SDKはTealium SDKと一緒にインストールされているため、対応するタグ構成でネイティブのBraze機能をトリガーできます。
+Braze SDK は Tealium SDK とともにインストールされるため、対応するタグ構成を指定することで、Braze のネイティブ機能をトリガーできます。
 </blockquote>
 
 
-### SDKのセットアップ
+### SDK のセットアップ
 
 #### 初期化
 
-Braze APIキーとカスタムエンドポイントが必要で、タグ構成で構成する必要があります。
+Braze API キーとカスタムエンドポイントは必須であり、タグ構成で指定する必要があります。
 
-| リモートコマンド | Brazeメソッド (iOS) | Brazeメソッド (Android) |
+| リモートコマンド | Braze メソッド（iOS） | Braze メソッド（Android） |
 |---|---|---|
 | `initialize` | `Braze(configuration:)` | `configure()` |
 
-以下のマッピングは起動オプションを構成するために使用されます。
+起動オプションの構成には、以下のマッピングを使用します。
 
-| パラメータ | タイプ | 説明 |
+| パラメータ | 型 | 説明 |
 |---|---|---|
-| `api_key` (必須) |  `String` | APIキーを構成します |
-| `custom_endpoint` (必須) |  `String` | カスタムAPIエンドポイントを構成します。この形式で送信されます `sdk.api.braze.eu` |
-| `device_options` |  `[String]` | Braze SDKによって収集されるデバイスフィールドのホワイトリスト（デフォルトでは、すべてのフィールドが収集されます）。 |
+| `api_key`（必須） |  `String` | API キーを構成します |
+| `custom_endpoint`（必須） |  `String` | カスタム API エンドポイントを構成します。これは `sdk.api.braze.eu` 形式で送信されます |
+| `device_options` |  `[String]` | Braze SDK が収集するデバイスフィールドの許可リストです（デフォルトでは、すべてのフィールドが収集されます）。 |
 | `enable_automatic_geofences` | `Bool` | ジオフェンスの自動収集を有効にします（`true` または `false`）。 |
 | `enable_automatic_location` | `Bool` | 位置情報の収集を有効にします（`true` または `false`）。 |
 | `enable_geofences` | `Bool` | ジオフェンスの収集を有効にします（`true` または `false`）。 |
-| `flush_interval` |  `Double` | データフラッシュ間隔を構成します（秒単位）。値はNSTimeIntervalsに変換され、`1.0`より大きくなければなりません。 |
-| `is_sdk_authentication_enabled` | `Bool` | SDK認証を有効にします、デフォルトは`false`です。 |
-| `push_story_identifier` |  `String` | このキーは、Push Story Notification Content拡張のアプリグループ名を表す文字列値に構成されます。 |
-| `request_processing_policy` |  `String` | SDKのリクエスト処理の可能な値（`manual` または `automatic`）。デフォルトは `automatic`です。 |
-| `session_timeout` |  `Int` (秒) | セッションタイムアウトは秒単位です（デフォルトは `30` 秒）。 |
-| `trigger_interval_seconds` | `Int` (秒) | アプリ内メッセージトリガー間の最小間隔をオーバーライドします（デフォルトは `30` 秒）。 |
-| `use_uuid_as_device_id` | `Bool` | (iOS) デバイスIDとしてランダムに生成されたUUIDを使用するかどうかを決定します（デフォルトは `true`）。 |
-| `forward_universal_links` | `Bool` | SDKが自動的にユニバーサルリンクを認識し、システムメソッドに転送するかどうかを指定します（デフォルトは `false`）。 |
+| `flush_interval` |  `Double` | データのフラッシュ間隔を秒単位で構成します。値は NSTimeInterval に変換され、`1.0` より大きくなければなりません。 |
+| `is_sdk_authentication_enabled` | `Bool` | SDK 認証を有効にします。デフォルトは `false` です。 |
+| `push_story_identifier` |  `String` | Push Story Notification Content 拡張機能のアプリグループ名を表す文字列値を、このキーに構成します。 |
+| `request_processing_policy` |  `String` | SDK のリクエスト処理に指定できる値です（`manual` または `automatic`）。デフォルトは `automatic` です。 |
+| `session_timeout` |  `Int`（秒） | セッションタイムアウトの秒数です（デフォルトは `30` 秒）。 |
+| `trigger_interval_seconds` | `Int`（秒） | アプリ内メッセージのトリガー間の最小間隔を上書きします（デフォルトは `30` 秒）。 |
+| `use_uuid_as_device_id` | `Bool` | （iOS）ランダムに生成された UUID をデバイス ID として使用するかどうかを決定します（デフォルトは `true`）。 |
+| `forward_universal_links` | `Bool` | SDK がユニバーサルリンクを自動的に認識し、システムメソッドに転送するかどうかを指定します（デフォルトは `false`）。 |
 
 Android  
 
-- [Braze開発者ガイド: 初期SDKセットアップ](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/)
+- [Braze 開発者ガイド：SDK の初期セットアップ](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/)
 
 iOS  
 
-- [Braze開発者ガイド: 初期SDKセットアップ](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup)   
-- [Braze開発者ガイド: ネットワークトラフィック制御の詳細](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/)  
-- [Braze開発者ガイド: 位置情報とジオフェンス](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/)  
-- [Braze開発者ガイド: Push Storyの構成](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/)  
-- [Braze開発者ガイド: セッションの追跡](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/)
+- [Braze 開発者ガイド：SDK 起動時の Braze のカスタマイズ](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup)   
+- [Braze 開発者ガイド：ネットワークトラフィックの詳細な制御](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/)  
+- [Braze 開発者ガイド：位置情報とジオフェンス](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/)  
+- [Braze 開発者ガイド：Push Story のセットアップ](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/)  
+- [Braze 開発者ガイド：セッションの追跡](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/)
 
 
-#### SDK認証署名の構成
+#### SDK 認証署名の構成
 
-| リモートコマンド | Brazeメソッド (iOS) | Brazeメソッド (Android)
+| リモートコマンド | Braze メソッド（iOS） | Braze メソッド（Android）
 |---|---|---|
 | `setsdkauthsignature`| `set(sdkAuthenticationSignature:)` | `setSdkAuthenticationSignature` |
 
-| パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
 | `sdk_authentication_signature` | `String` |
 
 #### フラッシュ
 
-| リモートコマンド | Brazeメソッド |
+| リモートコマンド | Braze メソッド |
 |---|---|
 | `flush`| `requestImmediateDataFlush` |
 
 
-- Braze開発者ガイド: アナリティクスの無効化  
+- Braze 開発者ガイド：分析の無効化  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/)
-### ユーザートラッキング
 
-#### ユーザーIDの割り当て
+### ユーザーの追跡
 
-| リモートコマンド | Brazeメソッド |
+#### ユーザー ID の割り当て
+
+| リモートコマンド | Braze メソッド |
 |---|---|
 | `useridentifier`  | `changeUser` |
 
-| パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-| `user_id` (必須) | `String` |
+| `user_id`（必須） | `String` |
 | `sdk_authentication_signature` | `String` |
 
 
-- Braze開発者ガイド: アナリティクス ユーザーID  
+- Braze 開発者ガイド：分析用ユーザー ID  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#assigning-a-user-id)
 
-#### ユーザーのエイリアス作成
+#### ユーザーのエイリアス構成
 
-| リモートコマンド | Brazeメソッド |
+| リモートコマンド | Braze メソッド |
 |---|---|
 | `useralias` | `user.add(alias:)` |
 
-| パラメータ | タイプ |
+| パラメータ | 型 |
 |----|---|
-| `user_alias` (必須) | `String` |
-| `alias_label` (必須) | `String` |
+| `user_alias`（必須） | `String` |
+| `alias_label`（必須） | `String` |
 
-- Braze開発者ガイド: アナリティクス ユーザーエイリアス     
+- Braze 開発者ガイド：分析用ユーザーのエイリアス     
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#aliasing-users)
 
@@ -498,11 +500,11 @@ iOS
 
 #### 標準属性
 
-| イベント | Brazeメソッド |
+| イベント | Braze メソッド |
 |---|---|
-| userattribute  | `Braze.User`オブジェクトのフィールドを構成 |
+| userattribute  | `Braze.User` オブジェクトのフィールドを構成 |
 
-|  パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
 | `first_name` | `String` |
 | `last_name` | `String` |
@@ -514,275 +516,278 @@ iOS
 | `phone` | `String` |
 | `gender` | `String` |
 
-- Braze開発者ガイド: アナリティクス ユーザー属性
+- Braze 開発者ガイド：分析用ユーザー属性
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-standard-user-attributes)
-- [Braze開発者ガイド: ユーザーデータAPI](https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification)
+- [Braze 開発者ガイド：ユーザーデータ API](https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification)
 
 #### カスタム属性の構成
 
-| リモートコマンド | Brazeメソッド |
+| リモートコマンド | Braze メソッド |
 |---|---|
 | `setcustomattribute` | `user.setCustomAttribute` |
 
 
-| パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
 | `set_custom_attribute.PROPERTY` | `[String: Any]` / `JSONObject` |
 
-- Braze開発者ガイド: アナリティクス カスタム属性  
+- Braze 開発者ガイド：分析用カスタム属性  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
-#### カスタム属性の解除
+#### カスタム属性の構成解除
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `setcustomattribute` | `user.unsetCustomAttribute` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
 | `set_custom_attribute.PROPERTY` | `String` |
 
-- Braze 開発者ガイド: アナリティクス カスタム属性  
+- Braze開発者ガイド：分析用カスタム属性  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
 
 #### カスタム属性のインクリメント
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `incrementcustomattribute` | `user.incrementCustomUserAttribute`|
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
 | `increment_custom_attribute.PROPERTY` | `String` |
 
-- Braze 開発者ガイド: アナリティクス 属性のインクリメント
+- Braze開発者ガイド：分析用属性のインクリメント
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
 
 #### カスタム配列属性の構成
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `setcustomarrayattribute` | `user.setCustomAttributeArray` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
 | `set_custom_array_attribute.PROPERTY` | `[String: [Any]]` / `JSONObject` |
 
-- Braze 開発者ガイド: アナリティクス 配列属性  
+- Braze開発者ガイド：分析用配列属性  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
 
-#### カスタム配列属性の追加
+#### カスタム配列属性への追加
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `appendcustomarrayattribute` | `user.addToCustomAttributeArray` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
 | `append_custom_array_attribute.PROPERTY` | `[String: String]` / `JSONObject` |
 
-- Braze 開発者ガイド: アナリティクス 配列属性  
+- Braze開発者ガイド：分析用配列属性  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
 
-#### カスタム配列属性の削除
+#### カスタム配列属性からの削除
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `removecustomarrayattribute`| `user.removeFromCustomAttributeArray`|
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
 | `remove_custom_array_attribute.PROPERTY` | `[String: String]` / `JSONObject` |
 
-- Braze 開発者ガイド: アナリティクス 配列属性  
+- Braze開発者ガイド：分析用配列属性  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes)
 
-### カスタムイベントトラッキング
+### カスタムイベントのトラッキング
 
 #### カスタムイベント
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 | --- | --- |
 | `logcustomevent`  | `logCustomEvent` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |--- | --- |
-|  `event_name` (必須) | `String` |
+|  `event_name`（必須） | `String` |
 |  `event_properties` | `[String: Any]` / `JSONObject` |
 
-- Braze 開発者ガイド: アナリティクス カスタムイベント
+- Braze開発者ガイド：分析用カスタムイベント
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/)
 
 ### 通知
 
-#### Eメール通知
+#### メール通知
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `emailnotification` | `setEmailNotificationSubscriptionType` |
 
-| パラメータ | タイプ | 例 |
+| パラメーター | 型 | 例 |
 |---|---|---|
 | `email_notification` | `String`| [`"optedin"`, `"subscribed"`, `"unsubscribed"`]|
 
-- Braze 開発者ガイド: アナリティクス Eメール登録   
+- Braze開発者ガイド：分析用メールサブスクリプション   
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions)
 
 #### サブスクリプショングループへの追加
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `addtosubscriptiongroup` | `user.addToSubscriptionGroup(id:)` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
-| `subscription_group_id` (必須) | `String` |
+| `subscription_group_id`（必須） | `String` |
 
-- [Braze 開発者ガイド: サブスクリプショングループ](https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states)
+- [Braze開発者ガイド：サブスクリプショングループ](https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states)
 
 #### サブスクリプショングループからの削除
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `removefromsubscriptiongroup` | `user.removeFromSubscriptionGroup(id:)` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
-| `subscription_group_id` (必須) | `String` |
+| `subscription_group_id`（必須） | `String` |
 
-- [Braze 開発者ガイド: サブスクリプショングループ](https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states)
+- [Braze開発者ガイド：サブスクリプショングループ](https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states)
 
 #### プッシュ通知
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `pushnotification` | `setPushNotificationSubscriptionType` |
 
-| パラメータ | タイプ | 例 |
+| パラメーター | 型 | 例 |
 |---|---|---|
 | `push_notification` | `String`| [`"optedin"`, `"subscribed"`, `"unsubscribed"`]|
 
-- Braze 開発者ガイド: アナリティクス プッシュ通知  
+
+- Braze開発者ガイド：分析用プッシュ通知  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions)
 
-### 購入トラッキング
+### 購入のトラッキング
 
-#### 購入ログ
+#### 購入の記録
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |--- | ---|
 | `logpurchase` | `logPurchase`|
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
-| `product_id` (必須)| `[String]` / `String[]` |
-| `product_currency` (必須) | `String` / `String` |
-| `price` (必須) | `[Double]` / `Double[]`|
+| `product_id`（必須）| `[String]` / `String[]` |
+| `product_currency`（必須） | `String` / `String` |
+| `price`（必須） | `[Double]` / `Double[]`|
 | `product_qty`  | `[Int]` / `Int[]` |
 | `purchase_properties` | `[AnyHashable: Any]` / `JSONObject` |
 
-- Braze 開発者ガイド: アナリティクス 購入イベント  
+
+- Braze開発者ガイド：分析用購入イベント  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/logging_purchases/)
 
-### 位置情報トラッキング
+### 位置情報のトラッキング
 
-#### ユーザーの最後の既知の位置の構成
+#### ユーザーの最終既知位置の構成
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `setlastknownlocation` | `user.setLastKnownLocation` |
 
-| パラメータ | タイプ |
+| パラメーター | 型 |
 |---|---|
-| `latitude` (必須) | `Double` |
-| `longitude` (必須) | `Double` |
-| `horizontalAccuracy` (必須) | `Double` |
+| `latitude`（必須） | `Double` |
+| `longitude`（必須） | `Double` |
+| `horizontalAccuracy`（必須） | `Double` |
 | `altitude`  | `Double` |
 | `verticalAccuracy` | `Double` |
 
-- [Braze 開発者ガイド: アナリティクス 位置情報トラッキング](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking)
+
+- [Braze開発者ガイド：分析用位置情報トラッキング](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking)
+
 
 ### データプライバシー（同意オプション）
 
 #### SDKの有効化
 
-| リモートコマンド | Braze メソッド (iOS) | Braze メソッド (Android) |
+| リモートコマンド | Brazeメソッド（iOS） | Brazeメソッド（Android） |
 |---|---|---|
 | `enablesdk` | `enabled` | `enableSdk` |
 
-- Braze 開発者ガイド: アナリティクス 無効化  
+- Braze開発者ガイド：分析の無効化  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/)
 
 #### SDKの無効化
 
-| リモートコマンド | Braze メソッド (iOS) | Braze メソッド (Android) |
+| リモートコマンド | Brazeメソッド（iOS） | Brazeメソッド（Android） |
 |---|---|---|
 | `disablesdk` | `enabled` | `disableSdk` |
 
-- Braze 開発者ガイド: アナリティクス 無効化  
+- Braze開発者ガイド：分析の無効化  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/)
 #### データの消去
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
-|  `wipedata`| `wipeData` |
+| `wipedata` | `wipeData` |
 
-
-- Braze 開発者ガイド: アナリティクスの無効化  
+- Braze開発者ガイド：分析の無効化  
   - [iOS](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/)
   - [Android](https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/)
 
 #### 広告トラッキングの有効化構成
 
-| リモートコマンド | Braze メソッド |
+| リモートコマンド | Brazeメソッド |
 |---|---|
 | `setadtrackingenabled` | `set(adTrackingEnabled:)` |
 
-| パラメータ | タイプ |
+| パラメータ | 型 |
 |---|---|
-| `ad_tracking_enabled` (必須)| `Bool` |
+| `ad_tracking_enabled`（必須）| `Bool` |
 
-## Braze インスタンスへのアクセス (iOS)
+## Brazeインスタンスへのアクセス（iOS）
 
-リモートコマンドは、イベントや購入のログ記録など、Brazeが提供する機能の一部をアプリにマッピングする便利な方法を提供します。
-しかし、コンテンツカード、機能フラグ、通知などのいくつかのBraze機能は、アプリにBrazeインスタンスを使用して統合する必要があります。
+リモートコマンドを使用すると、イベントや購入の記録など、Brazeが提供する一部の機能をアプリに簡単にマッピングできます。  
+ただし、コンテンツカード、機能フラグ、通知など、一部のBraze機能については、Brazeインスタンスを使用してアプリに統合する必要があります。
 
-Brazeインスタンスに直接アクセスするには、`onReady` メソッドを使用します。`onReady` メソッドは、適切に構成された後に完了ブロックでBrazeインスタンスを返します。
+Brazeインスタンスに直接アクセスするには、`onReady`メソッドを使用します。`onReady`メソッドは、Brazeインスタンスが正しく構成されると、完了ブロックでそのインスタンスを返します。
 
 ```swift
 brazeRemoteCommand.onReady { braze in
-    // ここでBrazeインスタンスを使用
+    // use the Braze instance here
 }
 ```
 
-Brazeインスタンスへの参照を取得したら、Brazeのドキュメントに記載されているように使用してください。
+Brazeインスタンスへの参照を取得したら、Brazeのドキュメントに記載されているとおりに使用してください。
 
-### 自動プッシュ統合
+### プッシュ通知の自動統合
 
-最新のBrazeバージョンは、リモート通知の処理を自動化する方法をサポートしています。詳細については、[Braze 開発者ガイド: 自動プッシュ統合](https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#automatic-push-integration)を参照してください。
+最新バージョンのBrazeでは、リモート通知の処理を自動化できます。詳細については、[Braze開発者ガイド：プッシュ通知の自動統合](https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#automatic-push-integration)を参照してください。
 
-この機能を使用するには、アプリデリゲートの `didFinishLaunchingWithOptions` メソッドでメインスレッド上で同期的にBrazeインスタンスを初期化する必要があります。これは、リモートコマンド構成を使用するのではなく、Brazeインスタンスを直接構成する必要があることを意味します。
+この機能を使用するには、アプリデリゲートの`didFinishLaunchingWithOptions`メソッド内で、メインスレッド上でBrazeインスタンスを同期的に初期化する必要があります。そのため、リモートコマンド構成を使用する代わりに、Brazeインスタンスを直接構成する必要があります。
 
-Brazeインスタンスを直接構成するには、このコードを使用します：
+Brazeインスタンスを直接構成するには、次のコードを使用します。
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     let brazeConfig = Braze.Configuration(apiKey: "YOUR_API_KEY", endpoint: "YOUR_ENDPOINT")
     brazeConfig.push.automation = true
     // ...
-    // 他のすべての構成をここに追加
+    // add all your other configuration here
     // ...
     let brazeInstanceWrapper = BrazeInstance()
     brazeInstanceWrapper.initializeBraze(brazeConfig: brazeConfig)
@@ -790,13 +795,13 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     let tealiumConfig = TealiumConfig(...)
     tealiumConfig.remoteCommands = [brazeCommand]
     // ... 
-    // tealiumの初期化を完了
+    // complete tealium initialization
     return true
 }
 ```
 
-### マニュアルプッシュ統合
+### プッシュ通知の手動統合
 
-マニュアルプッシュ統合を実装するには、リモートコマンド構成を維持し、Brazeインスタンスに直接アクセスしてプッシュ統合を有効にします。
+プッシュ通知の手動統合を実装するには、リモートコマンド構成を維持したまま、Brazeインスタンスに直接アクセスしてプッシュ通知の統合を有効にします。
 
-詳細については、[Braze 開発者ガイド: マニュアルプッシュ統合](https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#manual-push-integration)を参照してください。
+詳細については、[Braze開発者ガイド：プッシュ通知の手動統合](https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#manual-push-integration)を参照してください。

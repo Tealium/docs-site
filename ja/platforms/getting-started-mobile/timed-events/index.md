@@ -1,35 +1,35 @@
 ---
-title: タイムドイベント
-description: イベントの持続時間を追跡する方法を学びます。
+title: 時間計測イベント
+description: イベントの継続時間を追跡する方法について説明します。
 url: https://docs.tealium.com/ja/platforms/getting-started-mobile/timed-events/
 ---
-## サポートされているプラットフォーム
+## サポート対象プラットフォーム
 
-以下のプラットフォームではタイムドイベントがサポートされています：
+次のプラットフォームは時間計測イベントをサポートしています。
 
-- [Android (Kotlin)](https://docs.tealium.com/ja/platforms/android-kotlin/)
-- [iOS (Swift v2.x)](https://docs.tealium.com/ja/platforms/ios-swift/)
+- [Android（Kotlin）](https://docs.tealium.com/ja/platforms/android-kotlin/)
+- [iOS（Swift v2.x）](https://docs.tealium.com/ja/platforms/ios-swift/)
 
 ## 仕組み
 
-タイムドイベントは、イベントの持続時間や2つのイベント間の時間を測定し、自動または手動のトリガーで構成します。タイムドイベントが完了すると、タイムドイベントの名前とタイミングの詳細を持つ`timed_event`という名前のイベントをTealium EventStreamに送信します。
+時間計測イベントは、イベントの継続時間または2つのイベント間の時間を計測し、自動トリガーまたは手動トリガーを使用して構成します。時間計測イベントが完了すると、その時間計測イベントの名前と計測の詳細を含む `timed_event` という名前のイベントが Event Streaming に送信されます。
 
-すでにアプリで追跡されているTealiumイベント間の持続時間を測定するために自動トリガーを使用します。指定した開始イベントが発生すると自動的にタイムドイベントがトリガーされ、指定した停止イベントが発生すると停止します。
+アプリですでに追跡されている Tealium イベント間の時間を計測するには、自動トリガーを使用します。指定した開始イベントが発生すると時間計測イベントが自動的に開始され、指定した停止イベントが発生すると終了します。
 
-Tealiumで追跡されていないイベントや、複雑なイベントのシーケンスを含むイベント間の持続時間を測定するために手動トリガーを使用します。タイムドイベントは、カスタムロジックに基づいてアプリコードでタイムドイベントを開始および停止することで手動でトリガーされます。
+Tealium で追跡されていないイベント間の時間や、複雑な一連のイベントに要する時間を計測するには、手動トリガーを使用します。カスタムロジックに基づいてアプリコード内で時間計測イベントを開始および停止することで、手動でトリガーします。
 
-各タイムドイベントには、イベント属性`timed_event_name`に構成された名前があります。タイムドイベントが終了した後にイベント名を再利用することは可能ですが、同時に複数のタイムドイベントが同じ名前を使用することはできません。
+各時間計測イベントには名前があり、イベント属性 `timed_event_name` に構成されます。時間計測イベントの終了後はイベント名を再利用できますが、同時に実行される複数の時間計測イベントで同じ名前を使用することはできません。
 
-タイムドイベントは永続的ではなく、イベントが終了する前にアプリが終了すると破棄されます。
+時間計測イベントは永続化されないため、イベントが終了する前にアプリが終了すると破棄されます。
 
-タイムドイベントの使用方法を学びましょう：
+時間計測イベントの使用方法については、以下を参照してください。
 
 - [Android Kotlin](https://docs.tealium.com/ja/platforms/android-kotlin/track/#timed-events)
-- [iOS (Swift v2.x)](https://docs.tealium.com/ja/platforms/ios-swift/track/#timed-events)
+- [iOS（Swift v2.x）](https://docs.tealium.com/ja/platforms/ios-swift/track/#timed-events)
 
 ### 自動トリガー
 
-自動トリガーでタイムドイベントを追跡するには、開始と停止のTealiumイベント名を指定します。これらのイベントはすでにアプリで追跡されている必要があります。自動タイムドイベントの名前は、開始と停止のイベント名を二つのコロン(`::`)で結合して生成されます。例えば、`cart_add`イベントと`purchase`イベントの間の持続時間を追跡するために自動トリガーを構成すると、イベント属性`timed_event_name`は`cart_add::purchase`に構成されます。
+自動トリガーを使用して時間計測イベントを追跡するには、開始および停止の Tealium イベント名を指定します。これらのイベントは、アプリですでに追跡されている必要があります。自動時間計測イベントの名前は、開始イベント名と停止イベント名を2つのコロン（`::`）で連結して生成されます。たとえば、`cart_add` イベントと `purchase` イベントの間の時間を追跡するように自動トリガーを構成すると、イベント属性 `timed_event_name` は `cart_add::purchase` に構成されます。
 
 
 
@@ -51,7 +51,7 @@ config.timedEventTriggers = [TimedEventTrigger(
 
 
 
-自動トリガーからの結果となるタイムドイベント：  
+自動トリガーによって生成される時間計測イベントは次のとおりです。  
 
 ```bash
 {
@@ -65,21 +65,21 @@ config.timedEventTriggers = [TimedEventTrigger(
 
 ### 手動トリガー
 
-手動トリガーでタイムドイベントを追跡するには、タイムドイベントの名前を指定し、アプリコードでタイムドイベントを手動で開始および停止します。例えば、ユーザーが製品を閲覧する時間を手動で追跡するには、製品画面がロードされたときにタイムドイベントを開始し、ユーザーが製品画面を離れたときにタイムドイベントを停止します。タイムドイベントに使用する名前は、イベント属性`timed_event_name`の値に構成されます。
+手動トリガーを使用して時間計測イベントを追跡するには、時間計測イベントの名前を指定し、アプリコード内で時間計測イベントを手動で開始および停止します。たとえば、ユーザーが商品の閲覧に費やした時間を手動で追跡するには、商品画面が読み込まれたときに時間計測イベントを開始し、ユーザーが商品画面から離れたときに停止します。時間計測イベントに使用した名前が、イベント属性 `timed_event_name` の値に構成されます。
 
-手動でタイムドイベントを開始する：
+時間計測イベントを手動で開始します。
   
 ```swift
 tealium.startTimedEvent(name: "TimeSpentViewingProduct")
 ```
 
-手動でタイムドイベントを停止する：
+時間計測イベントを手動で停止します。
 
 ```swift
 tealium.stopTimedEvent(name: "TimeSpentViewingProduct")
 ```
 
-手動トリガーからの結果となるタイムドイベント：  
+手動トリガーによって生成される時間計測イベントは次のとおりです。  
 
 ```bash
 {
@@ -93,17 +93,17 @@ tealium.stopTimedEvent(name: "TimeSpentViewingProduct")
 
 ## データレイヤー
 
-タイムドイベントは、イベント名`timed_event`と以下の属性で追跡されます：
+時間計測イベントは、イベント名 `timed_event` と次の属性を使用して追跡されます。
 
-| 属性名                  | データタイプ | 値 |
+| 属性名 | データ型 | 値 |
 | ---------------------- | --------- | ------------------------------------ |
 | `tealium_event`        | `String`  | `"timed_event"` |
-| `timed_event_name`     | `String`  | タイムドイベントの名前（自動トリガーの場合はデフォルトで`"start_event_name::stop_event_name"`）  |
-| `timed_event_start`    | `String`  | タイムドイベントの開始時間（UNIX時間、ミリ秒） |
-| `timed_event_end`      | `String`  | タイムドイベントの終了時間（UNIX時間、ミリ秒）   |
-| `timed_event_duration` | `String`  | タイムドイベントの持続時間（合計ミリ秒：`timed_event_end` - `timed_event_start`）   |
+| `timed_event_name`     | `String`  | 時間計測イベントの名前（自動トリガーのデフォルトは `"start_event_name::stop_event_name"`） |
+| `timed_event_start`    | `String`  | 時間計測イベントの開始時刻（ミリ秒単位の UNIX 時刻） |
+| `timed_event_end`      | `String`  | 時間計測イベントの終了時刻（ミリ秒単位の UNIX 時刻） |
+| `timed_event_duration` | `String`  | 時間計測イベントの継続時間（合計ミリ秒：`timed_event_end` - `timed_event_start`） |
 
-以下はタイムドイベントの例です：  
+時間計測イベントの例を次に示します。  
 
 ```bash
 {

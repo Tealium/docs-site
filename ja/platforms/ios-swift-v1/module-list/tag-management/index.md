@@ -1,56 +1,57 @@
 ---
-title: TagManagement モジュール
-description: JavaScriptを実行するためにレンダリングされていないWKWebViewインスタンスを使用するUniversal Tag（utag.js）のクライアントサイド実装。
+title: TagManagementモジュール
+description: JavaScriptを実行するために、レンダリングされないWKWebViewインスタンスを使用するUniversal Tag（utag.js）のクライアント側実装です。
 url: https://docs.tealium.com/ja/platforms/ios-swift-v1/module-list/tag-management/
 ---
-## 使用法
+## 使用方法
 
-TagManagementモジュールは、レンダリングされていない`WKWebView`インスタンスを使用してJavaScriptを実行するUniversal Tag（`utag.js`）のクライアントサイド実装です。このモジュールは、Tealium iQタグ管理を使用するアプリで必要です。CarthageおよびCocoaPodsフレームワークビルドに自動的に含まれます。
+TagManagementモジュールは、JavaScriptを実行するために、レンダリングされない`WKWebView`インスタンスを使用するUniversal Tag（`utag.js`）のクライアント側実装です。このモジュールは、タグマネジメントを使用するアプリで必要です。CarthageおよびCocoaPodsのフレームワークビルドには自動的に含まれます。
 
-## サポートされているプラットフォーム
+## サポート対象プラットフォーム
 
 * iOS
 
-
-## 必要条件
+## 要件
 
 * WebKit（WKWebView）
 
 ## インストール
 
-CocoaPodsまたはCarthageでTagManagementモジュールをインストールします。
+CocoaPodsまたはCarthageを使用してTagManagementモジュールをインストールします。
 
 ### CocoaPods
 
-CocoaPodsでTagManagementモジュールをインストールするには、次のpodをPodfileに追加します：  
+CocoaPodsでTagManagementモジュールをインストールするには、Podfileに次のPodを追加します。  
 ```ruby
 pod 'tealium-swift/TealiumTagManagement'
 ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore` podに依存性があります。iOSのCocoaPodsインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)をご覧ください。
+フレームワークは自動的にインスタンス化されます。このフレームワークは`TealiumCore` Podに依存します。iOS向けのCocoaPodsによるインストールについては、[詳細をご覧ください](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#cocoapods)。
 
 ### Carthage
 
-CarthageでTagManagementモジュールをインストールするには、次の手順に従います：
+CarthageでTagManagementモジュールをインストールするには、次の手順に従います。
 
-1. Xcodeでアプリターゲットの一般構成ページに移動します。
+1. Xcodeでアプリターゲットの「General」構成ページに移動します。
 
-2. 次のフレームワークを**Embedded Binaries**セクションに追加します：  
+2. **Embedded Binaries**セクションに次のフレームワークを追加します。  
       ```ruby
       TealiumTagManagement.framework
       ```
 
-フレームワークは自動的にインスタンス化されます。`TealiumCore`に依存性があります。追加のインポートステートメントは必要ありません。iOSのCarthageインストールについては[こちら](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)をご覧ください。
+フレームワークは自動的にインスタンス化されます。このフレームワークは`TealiumCore`に依存します。追加のimport文は必要ありません。iOS向けのCarthageによるインストールについては、[詳細をご覧ください](https://docs.tealium.com/ja/platforms/ios-swift-v1/install/#carthage)。
 
 ## データレイヤー
-次の変数は、各トラッキング呼び出しで送信されます：
 
-| 変数         | タイプ | 説明                                                        | 例  |
+トラッキング呼び出しのたびに、次の変数が送信されます。
+
+| 変数 | 型 | 説明 | 例 |
 |------------------|-------| -------------------------------------------------------------|---------------|
-| `dispatch_service` | `String` | トラッキング呼び出しがどのモジュールから来たかを示す静的な文字列 | `"tagmanagement"` |
+| `dispatch_service` | `String` | トラッキング呼び出しの送信元モジュールを示す静的文字列 | `"tagmanagement"` |
 
-## Public API
-WKWebViewプロトコルは、モジュールのマルチキャストデリゲートに`WKWebView`デリゲートを準拠する別のオブジェクトを追加することでアクセス可能です：
+## パブリックAPI
+
+`WKWebView`デリゲートに準拠する別のオブジェクトをモジュールのマルチキャストデリゲートに追加することで、WKWebViewプロトコルにアクセスできます。
 
 ```swift
 tealium.tagManagement()?.delegates.add(MY_OBJECT)
@@ -58,17 +59,17 @@ tealium.tagManagement()?.delegates.add(MY_OBJECT)
 
 ## WKWebViewについて
 
-バージョン1.7.0以前、このモジュールは現在`WKWebView`に置き換えられて非推奨となっている`UIWebView`を使用していました。OSは`WKWebView`が常に`UIView`に接続されていることを要求します。これが`UIView`に接続されていない場合、OSはパフォーマンスを大幅に制限し、JavaScriptが最適に実行されません。**これに対応するため、Tag ManagementモジュールはレンダリングされていないWKWebViewをアプリのルートUIViewに接続しようとします。**
+バージョン1.7.0より前では、このモジュールは`UIWebView`を使用していましたが、現在は非推奨となり、`WKWebView`に置き換えられています。OSでは、`WKWebView`がレンダリングされない場合でも、常に`UIView`にアタッチされている必要があります。UIViewにアタッチされていない場合、OSによってパフォーマンスが大幅に制限され、JavaScriptが最適に実行されません。**これに対応するため、Tag Managementモジュールは、レンダリングされないWKWebViewをアプリのルートUIViewにアタッチしようとします。**
 
-アプリが複雑なビュー階層を持っていて、モジュールが`rootViewController`を検出できない場合は、`viewDidLoad`、`viewWillAppear:`、または`viewDidAppear:`でビューを接続するための[TealiumConfig](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/)を初期化します。
+アプリのビュー階層が複雑で、モジュールが`rootViewController`を検出できない場合は、`viewDidLoad`、`viewWillAppear:`、または`viewDidAppear:`で、アタッチ先となるビューを指定して[TealiumConfig](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/)を初期化してください。
 
 
 <blockquote>
-リリース1.7.1はビューの自動検出を大幅に改善し、ほとんどのシナリオでビューを指定する必要をなくします。ただし、トラッキング呼び出しが正しく送信されていることを確認するために、アプリでこれをテストする必要があります。詳細は[リリースノート](https://docs.tealium.com/ja/platforms/ios-swift-v1/release-notes/)をご覧ください。
+リリース1.7.1ではビューの自動検出機能が大幅に改善され、ほとんどの場合、ビューを指定する必要がなくなりました。ただし、トラッキング呼び出しが正しく送信されることを確認するため、アプリでテストする必要があります。詳細については、[リリースノート](https://docs.tealium.com/ja/platforms/ios-swift-v1/release-notes/)を参照してください。
 </blockquote>
 
 
-アプリがプッシュ通知を受け取ったときに`UIViewController`にジャンプし、Tealiumが初期化されたときとは異なるビュー階層を持っている場合は、次のAPIメソッドを使用して現在の`UIView`を更新する必要があります。
+プッシュ通知の受信時にアプリが`UIViewController`へ遷移し、そのビュー階層がTealiumの初期化時とは異なる場合は、次のAPIメソッドを使用して現在の`UIView`を更新する必要があります。
 
 ```swift
 override func viewDidLoad() {
@@ -82,13 +83,11 @@ override func viewDidLoad() {
 }
 ```
 
-完全な例については、サンプルアプリ[Swift-WKWebView](https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView)をご覧ください。
+完全な例については、サンプルアプリの[Swift-WKWebView](https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView)を参照してください。
 
-`WKWebView`と`UIWebView`は、クッキーを保存するために異なる方法（`WKHTTPCookieStore`と`HTTPCookieStorage`）を使用するため、モジュールはWKWebViewが初めて起動されたときにクッキーを自動的に同期します。`HTTPCookieStorage`のクッキーは削除されませんが、最終的に自己満了します。
+`WKWebView`と`UIWebView`ではCookieを保存する方法が異なるため（それぞれ`WKHTTPCookieStore`と`HTTPCookieStorage`）、モジュールはWKWebViewの初回起動時にCookieを自動的に同期します。`HTTPCookieStorage`内のCookieは削除されませんが、最終的には自然に期限切れになります。
 
 
 <blockquote>
-[`shouldAddCookieObserver`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/#shouldaddcookieobserver)メソッドを使用すると、クッキーの同期中に自分のクッキーオブザーバーを使用できます。これには、クッキーを構成した後にメインスレッドでクッキーを取得するためのクッキーオブザーバーが必要です。この問題は`WKWebView`のバグによって引き起こされ、自分のオブザーバーが呼び出されるのを防ぎます。
+[`shouldAddCookieObserver`](https://docs.tealium.com/ja/platforms/ios-swift-v1/api/tealium-config/#shouldaddcookieobserver)メソッドを使用すると、Cookieの同期中に独自のCookieオブザーバーを使用できます。この同期では、Cookieの構成後にメインスレッドでCookieを取得するためのCookieオブザーバーが必要です。この問題は`WKWebView`のバグによって発生し、独自のオブザーバーが呼び出されなくなります。
 </blockquote>
-  
-

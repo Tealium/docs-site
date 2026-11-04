@@ -147,7 +147,7 @@ After the custom consent policy is implemented, override the following propertie
 
 ### Examples
 
-The following example re-maps the policy data keys to avoid Tealium EventStream fixed consent values:   
+The following example re-maps the policy data keys to override the default consent values:   
 ```java
 class CustomPolicy(
         val superPolicy: ConsentManagementPolicy

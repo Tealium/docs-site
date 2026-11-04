@@ -1,27 +1,27 @@
 ---
 title: タグ管理ディスパッチャーモジュール
-description: JavaScriptを実行するために非表示のWebViewインスタンスを使用する、Universal Tag (`utag.js`)のクライアントサイド実装です。
+description: JavaScript の実行に非表示の WebView インスタンスを使用する Universal Tag（`utag.js`）のクライアントサイド実装。
 url: https://docs.tealium.com/ja/platforms/android-kotlin/module-list/tag-management/
 ---
 ## 使用方法
 
-タグ管理ディスパッチャーモジュールは、JavaScriptを実行するために非表示の`WebView`インスタンスを使用する、Universal Tag (`utag.js`)のクライアントサイド実装です。このディスパッチャーは、Tealium iQタグ管理を使用するアプリで必要とされます。
+タグ管理ディスパッチャーモジュールは、JavaScript の実行に非表示の `WebView` インスタンスを使用する Universal Tag（`utag.js`）のクライアントサイド実装です。タグ管理を使用するアプリでは、このディスパッチャーが必要です。
 
 ## インストール
 
-Maven（推奨）または手動でタグ管理ディスパッチャーモジュールをインストールします。
+Maven（推奨）を使用するか、手動でタグ管理ディスパッチャーモジュールをインストールします。
 
 ### Maven
 
-Mavenを使用してモジュールをインストールするには：
+Maven を使用してモジュールをインストールするには、次の手順を実行します。
 
-1. プロジェクトのトップレベルの`build.gradle`ファイルに、次のMavenリポジトリを追加します：  
+1. プロジェクトの最上位の `build.gradle` ファイルに、次の Maven リポジトリを追加します。  
       ```groovy
       maven {
             url "https://maven.tealiumiq.com/android/releases/"
       }
       ```
-2. プロジェクトモジュールの`build.gradle`ファイルに、Tealiumライブラリとタグ管理ディスパッチャーのMaven依存関係を追加します
+2. プロジェクトモジュールの `build.gradle` ファイルに、Tealium ライブラリとタグ管理ディスパッチャーの Maven 依存関係を追加します。
       ```groovy
       dependencies {
             implementation 'com.tealium:kotlin-core:1.6.0'
@@ -31,13 +31,13 @@ Mavenを使用してモジュールをインストールするには：
 
 ### 手動
 
-タグ管理ディスパッチャーを手動でインストールするには：
+タグ管理ディスパッチャーを手動でインストールするには、次の手順を実行します。
 
-1. Tealiumの[タグ管理ディスパッチャー](https://github.com/Tealium/tealium-kotlin/tree/master/tagmanagementdispatcher)モジュールをダウンロードします。
+1. Tealium の[タグ管理ディスパッチャー](https://github.com/Tealium/tealium-kotlin/tree/master/tagmanagementdispatcher)モジュールをダウンロードします。
 
-2. ファイル`tealium-kotlin.tagmanagement-1.2.1.aar`をプロジェクトの`<PROJECT_ROOT>/<MODULE>/libs`ディレクトリにコピーします。
+2. `tealium-kotlin.tagmanagement-1.2.1.aar` ファイルを、プロジェクトの `<PROJECT_ROOT>/<MODULE>/libs` ディレクトリにコピーします。
 
-3. プロジェクトモジュールの`build.gradle`ファイルにTealiumライブラリの依存関係を追加します：
+3. プロジェクトモジュールの `build.gradle` ファイルに、Tealium ライブラリの依存関係を追加します。
       ```groovy
       dependencies {
             implementation(name:'tealium-kotlin.tagmanagement-1.2.1', ext:'aar')
@@ -46,18 +46,18 @@ Mavenを使用してモジュールをインストールするには：
 
 ## 構成オプション
 
-次の`TealiumConfig`オプションを使用して、タグ管理ディスパッチャーでUniversal Tag (`utag.js`)をダウンロードして実行するために使用されるURLを上書きします：
+次の `TealiumConfig` オプションを使用して、タグ管理ディスパッチャーが Universal Tag（`utag.js`）をダウンロードして実行する際に使用する URL を上書きします。
+
 ```kotlin
 val config = TealiumConfig(...)
 
 config.overrideTagManagementUrl = "https://yourcustomdomain.com"
 ```
 
-タグ管理のwebviewに送信される`remote_api`イベントを有効または無効にします。これにより、webviewによってトリガーされるリモートコマンドが無効になります。これらはデフォルトで有効になっています。
+タグ管理 WebView に送信される `remote_api` イベントを有効または無効にします。これにより、WebView によってトリガーされるリモートコマンドを実質的に無効にできます。デフォルトでは有効になっています。
 
 ```kotlin
 val config = TealiumConfig(...)
 
 config.remoteApiEnabled = false
 ```
-

@@ -11,9 +11,9 @@ When publishing changes while debugging, you are subject to the five minute expi
 
 Each time you launch the app from a cold start (app was previously swiped away from the app tray), the Tealium SDK checks for new files, and subsequently every 15 minutes by default (controlled by [mobile publish settings](https://docs.tealium.com/publish-configuration/#mobile-library-publishing). However, if less than five minutes have passed since publishing, restarting the app does not always work until after the five minute expiry time. Switching between the `dev` and `qa` environments while testing may alleviate this problem, because the cache on the environment expires if not used within the last five minutes, and the new file becomes available immediately.
 
-## Tealium EventStream Live Events
+## Event Streaming Live Events
 
-The **Live Events** feature in Tealium EventStream is available to all Tealium customers for the purpose of debugging mobile installations.
+The **Live Events** feature in Event Streaming is available to all Tealium customers for the purpose of debugging mobile installations.
 
 
 <blockquote>
@@ -29,7 +29,7 @@ Add the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) fro
 
 #### Option 2 - Tealium Collect Module
 
-In your Tealium iQ account, go to the **Mobile Publish Settings** and enable **Tealium Collect**. The advantage to this method is that data is transmitted as a `GET` request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.
+In your Tag Management account, go to the **Mobile Publish Settings** and enable **Tealium Collect**. The advantage to this method is that data is transmitted as a `GET` request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.
 
 By default, data sent using this feature is sent to the "main" profile in your account and not the currently selected profile in your app. To adjust this behavior, override the dispatch URL using the following code snippets in your app, and substitute the appropriate account and profile combination:
 
@@ -46,13 +46,13 @@ TEALConfiguration *configuration = [TEALConfiguration configurationWithAccount:@
 
 
 
-After you have configured one of the collection methods above, log in to EventStream and go to **Live Events** to see the incoming events.
+After you have configured one of the collection methods above, log in to Event Streaming and go to **Live Events** to see the incoming events.
 
 For more information, see [Live Events](https://docs.tealium.com/about-live-events/).
 
 ## Charles Proxy
 
-The Charles web debugging proxy inspects all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tealium iQ Tag Management.
+The Charles web debugging proxy inspects all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tag Management.
 
 Set up Charles to proxy your [Android](https://docs.tealium.com/platforms/android-kotlin/charles-proxy-android) or [iOS](https://docs.tealium.com/platforms/ios-swift/charles-proxy-iosdevice) device.
 
@@ -81,7 +81,7 @@ The following table lists common examples of requests to inspect using Charles p
 
 | Request | Description |
 | :-- | :-- |
-| `\*.tealiumiq.com` | These hits are sent if you're using Tealium AudienceStream's Live Events feature for debugging, as described in Option 1 above. |
+| `\*.tealiumiq.com` | These hits are sent if you're using the Live Events feature for debugging, as described in Option 1 above. |
 | `mobile.html` | Initial hit retrieving settings from Tealium. |
 | `google-analytics.com, collect.gif` | If using Google Analytics, hits are sent to `collect.gif`, and the query parameters is inspected. |
 | `/b/ss` | This filter picks up all hits to Adobe Analytics, and Context Data and/or props/eVars is shown in the query string. |
@@ -158,9 +158,9 @@ If you filter your IDE console with `datasources payload`, you might see these l
 
 ## Debugging mobile.html
 
-This section shows how to troubleshoot a mobile implementation of Tealium iQ Tag Management through the published file `mobile.html`.
+This section shows how to troubleshoot a mobile implementation of Tag Management through the published file `mobile.html`.
 
-When you activate a mobile profile in Tealium iQ, a file named `mobile.html` is published to the following path:
+When you activate a mobile profile in Tag Management, a file named `mobile.html` is published to the following path:
 
 `http://tags.tiqcdn.com/utag/{ACCOUNT}/{PROFILE}/{ENVIRONMENT}/mobile.html`
 

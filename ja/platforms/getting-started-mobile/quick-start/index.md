@@ -1,16 +1,16 @@
 ---
-title: モバイル用クイックスタートガイド
+title: モバイル向けクイックスタートガイド
 url: https://docs.tealium.com/ja/platforms/getting-started-mobile/quick-start/
 ---
 ## インストール
 
-[Android](https://docs.tealium.com/ja/platforms/android-java/install)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/install)用のTealiumのインストールから始めましょう。
+[Android](https://docs.tealium.com/ja/platforms/android-java/install) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/install) 向けの Tealium をインストールします。
 
 
 
-Mavenを使用してAndroidライブラリのTealiumをインストールするには：
+Maven を使用して Android 向け Tealium ライブラリをインストールするには、次の手順を実行します。
 
-1. プロジェクトのトップレベルの`build.gradle`ファイルにTealium Maven URLを追加します：
+1. プロジェクトの最上位の `build.gradle` ファイルに Tealium Maven URL を追加します。
 
       ```ruby
       allprojects {
@@ -23,7 +23,7 @@ Mavenを使用してAndroidライブラリのTealiumをインストールする�
       }
       ```
 
-2. プロジェクトモジュールの`build.gradle`ファイルに以下のMaven依存関係を追加します：
+2. プロジェクトモジュールの `build.gradle` ファイルに、次の Maven 依存関係を追加します。
 
       ```ruby
       dependencies {
@@ -32,33 +32,33 @@ Mavenを使用してAndroidライブラリのTealiumをインストールする�
       ```
 
 <blockquote>
-最新のリリースは[Github](https://github.com/tealium/tealium-kotlin/releases)で確認し、1.X.Xを最新のリリース番号に置き換えてください。
+[GitHub](https://github.com/tealium/tealium-kotlin/releases) で最新リリースを確認し、1.X.X を最新のリリース番号に置き換えてください。
 </blockquote>
 
 
 
 
-Swift Package Managerを使用してiOSライブラリのTealiumをインストールするには：
+Swift Package Manager を使用して iOS 向け Tealium ライブラリをインストールするには、次の手順を実行します。
 
-1. Xcodeプロジェクトで**File > Swift Packages > Add Package Dependency**を選択します
-2. リポジトリURLを入力します：`https://github.com/tealium/tealium-swift`
-3. バージョンルールを構成します。通常、**Up to next major**が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。
-4. インストールするモジュールを選択し、Xcodeプロジェクトの**Frameworks > Libraries & Embedded Content**の各アプリターゲットにモジュールを追加します
+1. Xcode プロジェクトで、**File > Swift Packages > Add Package Dependency** を選択します。
+2. リポジトリの URL を入力します：`https://github.com/tealium/tealium-swift`
+3. バージョンルールを構成します。通常は **Up to next major** を推奨します。現在の Tealium Swift ライブラリのバージョンが一覧に表示されない場合は、Swift パッケージのキャッシュをリセットしてください。
+4. インストールするモジュールを選択し、Xcode プロジェクトの **Frameworks > Libraries & Embedded Content** で、各アプリターゲットにモジュールを追加します。
 
 
 
 ## 初期化
 
-[Android](https://docs.tealium.com/ja/platforms/android-java/install/#initialize)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/install/#initialize)用のTealiumの初期化から始めましょう。
+[Android](https://docs.tealium.com/ja/platforms/android-java/install/#initialize) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/install/#initialize) 向けの Tealium を初期化します。
 
 
 
 
-Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/)インスタンスを構成し、それを[`Tealium`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/)インスタンスに渡します。Tealium Kotlinライブラリは、アプリのグローバルアプリケーションクラスの`onCreate()`メソッド内で初期化することをお勧めします。
+Tealium を初期化するには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/) インスタンスを構成し、それを [`Tealium`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/) インスタンスに渡します。Tealium Kotlin ライブラリは、アプリのグローバルアプリケーションクラスの `onCreate()` メソッド内で初期化することを推奨します。
 
 
 <blockquote>
-[`Tealium`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#class-tealium)インスタンスをトラッキングヘルパークラスを使用して管理し、Tealium Kotlinライブラリのシングルポイントエントリを提供し、将来のアップグレードを簡素化します。
+トラッキングヘルパークラスを使用して [`Tealium`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#class-tealium) インスタンスを管理してください。これにより、Tealium Kotlin ライブラリへの単一のエントリポイントが提供され、今後のアップグレードが容易になります。
 </blockquote>
 
 
@@ -85,11 +85,11 @@ object TealiumHelper {
 
 
 
-Tealiumを初期化するには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/)インスタンスを[`Tealium()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#tealium)コンストラクタに渡します。
+Tealium を初期化するには、[`TealiumConfig`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/) インスタンスを [`Tealium()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#tealium) コンストラクターに渡します。
 
 
 <blockquote>
-[`Tealium`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#class-tealium)インスタンスをトラッキングヘルパークラスを使用して管理し、Tealium iOSライブラリのシングルポイントエントリを提供し、将来のアップグレードを簡素化します。
+トラッキングヘルパークラスを使用して [`Tealium`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#class-tealium) インスタンスを管理してください。これにより、Tealium iOS ライブラリへの単一のエントリポイントが提供され、今後のアップグレードが容易になります。
 </blockquote>
 
 
@@ -142,7 +142,7 @@ class TealiumHelper {
 
 
 <blockquote>
-モバイルパブリッシュ構成はデフォルトで有効になっており、使用しない場合は無効にする必要があります。iQタグ管理でモバイルパブリッシュ構成を構成するか、`config.shouldUseRemotePublishSettings = false`を使用して無効にしてください。
+モバイルパブリッシュ構成はデフォルトで有効になっているため、使用しない場合は無効にする必要があります。タグ管理でモバイルパブリッシュ構成を構成するか、`config.shouldUseRemotePublishSettings = false` を使用して無効にしてください。
 </blockquote>
 
 
@@ -151,15 +151,15 @@ class TealiumHelper {
 
 ## トラッキング
 
-[Android](https://docs.tealium.com/ja/platforms/android-kotlin/track/)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/track/)のビューやイベントのトラッキングを始めましょう。
+[Android](https://docs.tealium.com/ja/platforms/android-kotlin/track/) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/track/) でビューとイベントのトラッキングを開始します。
 
 ### ビューのトラッキング
 
-画面ビューをトラッキングするには、`TealiumView(viewName:dataLayer:)`のインスタンスを`track()`メソッドに渡します。`TealiumView`は、データレイヤーに`tealium_event`として表示されるビュー名と、オプションのデータ辞書で構成されています。
+画面ビューをトラッキングするには、`TealiumView(viewName:dataLayer:)` のインスタンスを `track()` メソッドに渡します。`TealiumView` は、データレイヤーに `tealium_event` として表示されるビュー名と、任意のデータディクショナリで構成されます。
 
 
 
-ビューをトラッキングするには：  
+ビューをトラッキングするには、次のようにします。  
 ```kotlin
 val tealView = TealiumView("screen_view", mutableMapOf("screen_name" to "Home"))
 tealium.track(tealView);
@@ -167,7 +167,7 @@ tealium.track(tealView);
 
 
 
-ビューをトラッキングするには：  
+ビューをトラッキングするには、次のようにします。  
 ```swift
 let tealView = TealiumView("screen_view", dataLayer: ["screen_name": "Home"])
 tealium?.track(tealView)
@@ -178,11 +178,11 @@ tealium?.track(tealView)
 
 ### イベントのトラッキング
 
-ビュー以外のイベントをトラッキングするには、`TealiumEvent(eventName:dataLayer:)`のインスタンスを`track()`メソッドに渡します。`TealiumEvent`は、データレイヤーに`tealium_event`として表示されるイベント名と、オプションのデータ辞書で構成されています。
+ビュー以外のイベントをトラッキングするには、`TealiumEvent(eventName:dataLayer:)` のインスタンスを `track()` メソッドに渡します。`TealiumEvent` は、データレイヤーに `tealium_event` として表示されるイベント名と、任意のデータディクショナリで構成されます。
 
 
 
-イベントをトラッキングするには：  
+イベントをトラッキングするには、次のようにします。  
 ```kotlin
 val tealEvent = TealiumEvent("user_login", mutableMapOf("customer_id" to "1234567890"))
 tealium.track(tealEvent);
@@ -190,44 +190,44 @@ tealium.track(tealEvent);
 
 
 
-イベントをトラッキングするには：  
+イベントをトラッキングするには、次のようにします。  
 ```swift
 let tealEvent = TealiumEvent("user_login", dataLayer: ["customer_id": "1234567890"])
 tealium?.track(tealEvent)
 ```
 
-[`track()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#track)メソッドは、イベント名とオプションのデータ辞書を含む`TealiumDispatch`タイプの`TealiumEvent`を受け入れてイベントをトラッキングします。
+[`track()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#track) メソッドは、イベント名と任意のデータディクショナリで構成される `TealiumEvent` 型の `TealiumDispatch` を受け取り、イベントをトラッキングします。
 
 
 ## データレイヤー
 
-[Android](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/data-layer/)で、一般的なデータレイヤー値と各モジュールによって提供されるデータの管理を始めましょう。
+一般的なデータレイヤー値と各モジュールによって提供されるデータの管理を、[Android](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/data-layer/) 向けに開始します。
 
-データレイヤーにデータを追加するには：
+データレイヤーにデータを追加するには、次のようにします。  
 
 
 
-`String` 値を構成するには、[putString()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putstring) メソッドを使用します：
+`String` 値を構成するには、[putString()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putstring) メソッドを使用します。   
 ```kotlin
 tealium.dataLayer.putString("my_string", "my_string_value")
 ```
 
-異なるデータタイプについても、メソッドは `put` で始まります。例えば、整数には [putInt()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putint)、浮動小数点数の配列には [putDoubleArray()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#getdoublearray) を使用します。異なる[データタイプ](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/#data-types)についてのメソッドをさらに学びましょう。
+他のデータ型についても同様に、メソッド名は `put` で始まります。たとえば、整数には [putInt()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#putint)、浮動小数点数の配列には [putDoubleArray()](https://docs.tealium.com/ja/platforms/android-kotlin/api/data-layer/#getdoublearray) を使用します。さまざまな[データ型](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/#data-types)のメソッドについて詳しく説明します。
 
-1日後に期限切れになる `String` 値を構成するには：
+`String` 値を1日後に期限切れになるよう構成するには、次のようにします。  
 ```kotlin
 tealium.dataLayer.putString("my_string", "my_string_value", Expiry.afterTimeUnit(1, TimeUnit.DAYS))
 ```
 
-[有効期限のタイプ](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/#data-expiration)についてさらに学びましょう。
+[有効期限の種類](https://docs.tealium.com/ja/platforms/android-kotlin/data-layer/#data-expiration)について詳しく説明します。
 
 
-任意のタイプの値を構成するには、[`add()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#add) メソッドを使用します：
+任意の型の値を構成するには、[`add()`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-data-layer/#add) メソッドを使用します。  
 ```swift
 tealium.dataLayer.add(key: "my_value", value: 123456)
 ```
 
-1日後に期限切れになる任意のタイプの値を構成するには：
+任意の型の値を1日後に期限切れになるよう構成するには、次のようにします。  
 ```swift
 tealium?.dataLayer.add(key: "my_value", value: 123456, expiry: .afterCustom((.days, 1)))
 ```
@@ -236,17 +236,17 @@ tealium?.dataLayer.add(key: "my_value", value: 123456, expiry: .afterCustom((.da
 
 
 
-## アイデンティティ解決
+## IDの解決
 
-Tealium の匿名 ID を使用し、独自のユーザー識別子を構成する方法を学びましょう。
+Tealiumの匿名IDを使用し、独自のユーザー識別子を構成する方法について説明します。
 
-### 匿名 ID
+### 匿名ID
 
-Tealium ライブラリは、アプリが初めて起動されたときに一意の永続的な匿名 ID を生成します。この値は `visitorId` に保存され、各トラッキングイベントに `tealium_visitor_id` 属性として含まれます。
+Tealiumライブラリは、アプリの初回起動時に一意で永続的な匿名IDを生成します。この値は `visitorId` に保存されます。また、この値は属性 `tealium_visitor_id` として、追跡される各イベントに含まれます。
 
 
 
-訪問 ID を取得するには：
+訪問IDを取得するには、次のようにします。  
 ```kotlin
 class TealiumHelper {
 	lateinit var tealium: Tealium
@@ -258,7 +258,7 @@ class TealiumHelper {
 ```
 
 
-訪問 ID を取得するには：
+訪問IDを取得するには、次のようにします。  
 ```swift
 class TealiumHelper {
 	var tealium: Tealium?
@@ -271,17 +271,17 @@ class TealiumHelper {
 
 
 
-Tealium AudienceStream を使用している場合、`visitorId` は訪問に関連付けられた匿名 ID です。[AudienceStream での匿名 ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)についてさらに学びましょう。
+Customer Data Platform（CDP）を使用している場合、`visitorId` は訪問に関連付けられた匿名IDです。[Customer Data Platform（CDP）の匿名ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)について詳しく説明します。
 
 ### ユーザー識別子
 
-既知のユーザーを識別する場合、永続的なデータ保存にユーザー識別子属性を追加します。
+既知のユーザーを識別する場合は、永続データ保存にユーザー識別子属性を追加します。
 
-[AudienceStream でのユーザー識別子](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)についてさらに学びましょう。
+[CDPのユーザー識別子](https://docs.tealium.com/anonymous-user-visitor-id-attributes/)について詳しく説明します。
 
 
 
-ユーザー識別子を追加するには、例えば顧客 ID を：
+顧客IDなどのユーザー識別子を追加するには、次のようにします。  
 ```kotlin
 fun setKnownVisitorId(id: String) {
     tealium.dataLayer.putString("customer_id", id, Expiry.FOREVER)
@@ -289,7 +289,7 @@ fun setKnownVisitorId(id: String) {
 ```
 
 
-ユーザー識別子を追加するには、例えば顧客 ID を：
+顧客IDなどのユーザー識別子を追加するには、次のようにします。  
 ```swift
 func setKnownVisitorId(_ id: String) {
 	tealium?.dataLayer.add(key: "customer_id", value: id, expiry: .forever)
@@ -300,55 +300,55 @@ func setKnownVisitorId(_ id: String) {
 
 ## 検証
 
-ログファイルを検査し、トレースを実行し、ライブイベントを表示することでデータを検証します。
+ログファイルの確認、トレースの実行、ライブイベントの表示によってデータを検証します。
 
 ### ログ
 
-[Android](https://docs.tealium.com/ja/platforms/android-kotlin/install/#log-level)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/install/#log-level)のログについて始めましょう。
+[Android](https://docs.tealium.com/ja/platforms/android-kotlin/install/#log-level) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/install/#log-level) のロギングを開始します。
 
 
 
-ログレベルを構成するには、[`logLevel`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#loglevel) プロパティを構成します：
+ログレベルを構成するには、[`logLevel`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#loglevel) プロパティを構成します。
 
 ```kotlin
-Logger.logLevel = LogLevel.DEV // または LogLevel.QA, LogLevel.PROD
+Logger.logLevel = LogLevel.DEV // or LogLevel.QA, LogLevel.PROD
 ```
 
 
-ログレベルを構成するには、[`logLevel`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#loglevel) プロパティを構成します：
+ログレベルを構成するには、[`logLevel`](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/#loglevel) プロパティを構成します。
 
 ```swift
-config.logLevel = .debug // または .info, .error, .fault, .silent
+config.logLevel = .debug // or .info, .error, .fault, .silent
 ```
 
 
 
 ### トレース
 
-[Android](https://docs.tealium.com/ja/platforms/android-kotlin/track/#trace)または[iOS](https://docs.tealium.com/ja/platforms/ios-swift/track/#trace)の[トレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/)について始めましょう。
+[Android](https://docs.tealium.com/ja/platforms/android-kotlin/track/#trace) または [iOS](https://docs.tealium.com/ja/platforms/ios-swift/track/#trace) で[トレース](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/)を開始します。
 
 
 
-トレースに参加するには、[joinTrace()](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#jointrace) メソッドを呼び出します：
+トレースに参加するには、[joinTrace()](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#jointrace) メソッドを呼び出します。
 
 ```kotlin
 Tealium["INSTANCE_NAME"]?.joinTrace("TRACE_ID")
 ```
 
-トレースを離れるには、[leaveTrace()](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#leavetrace) メソッドを呼び出します：
+トレースから離脱するには、[leaveTrace()](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#leavetrace) メソッドを呼び出します。
 
 ```kotlin
 Tealium["INSTANCE_NAME"]?.leaveTrace()
 ```
 
 
-トレースに参加するには、[joinTrace()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#jointrace) メソッドを呼び出します：
+トレースに参加するには、[joinTrace()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#jointrace) メソッドを呼び出します。
 
 ```swift
 tealium?.joinTrace(id: "TRACE_ID")
 ```
 
-トレースを離れるには、[leaveTrace()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#leavetrace) メソッドを呼び出します：
+トレースから離脱するには、[leaveTrace()](https://docs.tealium.com/ja/platforms/ios-swift/api/tealium/#leavetrace) メソッドを呼び出します。
 
 ```swift
 tealium?.leaveTrace()
@@ -357,10 +357,10 @@ tealium?.leaveTrace()
 
 
 
-[モバイルトレースツール](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool)は、デバイスでスキャン可能なQRコードを提供することでトレース機能をエンリッチメントし、TealiumモバイルSDKからのイベントを迅速に表示できます。
+[モバイルトレースツール](https://docs.tealium.com/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool)は、デバイスでスキャン可能なQRコードを提供することでトレース機能をエンリッチメントし、Tealium Mobile SDKから送信されるイベントをすばやく確認できるようにします。
 
 ### ライブイベント
 
-Tealium EventStreamのライブイベント機能は、[モバイルインストールのトラブルシューティング](https://docs.tealium.com/ja/platforms/getting-started-mobile/troubleshooting/)の目的で全てのTealium顧客に利用可能です。
+Event Streamingのライブイベント機能は、[モバイルインストールのトラブルシューティング](https://docs.tealium.com/ja/platforms/getting-started-mobile/troubleshooting/)を目的として、すべてのTealiumのお客様が利用できます。
 
-[ライブイベント](https://docs.tealium.com/about-live-events/)の使用についてさらに学びましょう。
+[ライブイベント](https://docs.tealium.com/about-live-events/)の使用方法について詳しく説明します。

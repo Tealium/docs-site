@@ -220,7 +220,7 @@ class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 config.consentPolicy = .custom(CustomGDPRConsentPolicy.self)
 ```
 
-Remapping the policy data keys to avoid Tealium EventStream fixed consent values:   
+Remapping the policy data keys to avoid Event Streaming fixed consent values:   
 ```swift
 class CustomGDPRConsentPolicy: GDPRConsentPolicyCreatable {
 

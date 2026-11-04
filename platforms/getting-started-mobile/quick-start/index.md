@@ -142,7 +142,7 @@ class TealiumHelper {
 
 
 <blockquote>
-Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using `config.shouldUseRemotePublishSettings = false`.
+Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in Tag Management, or disable them using `config.shouldUseRemotePublishSettings = false`.
 </blockquote>
 
 
@@ -273,13 +273,13 @@ class TealiumHelper {
 
 
 
-If you are using Tealium AudienceStream, `visitorId` is the anonymous ID associated with the visitor. Learn more about [anonymous IDs in AudienceStream](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
+If you are using Customer Data Platform (CDP), `visitorId` is the anonymous ID associated with the visitor. Learn more about [anonymous IDs in Customer Data Platform (CDP)](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
 ### User Identifier
 
 When you identify known users, add a user identifier attribute to the persistent data storage.
 
-Learn more about [user identifiers in AudienceStream](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
+Learn more about [user identifiers in CDP](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
 
 
@@ -363,6 +363,6 @@ The [Mobile Trace Tool](https://docs.tealium.com/platforms/getting-started-mobil
 
 ### Live Events
 
-The Live Events feature in Tealium EventStream is available to all Tealium customers for the purpose of [toubleshooting mobile installations](https://docs.tealium.com/platforms/getting-started-mobile/troubleshooting/).
+The Live Events feature in Event Streaming is available to all Tealium customers for the purpose of [toubleshooting mobile installations](https://docs.tealium.com/platforms/getting-started-mobile/troubleshooting/).
 
 Learn more about using [Live Events](https://docs.tealium.com/about-live-events/).

@@ -1,28 +1,28 @@
 ---
 title: 同意管理
-description: Android Kotlinの同意管理の実装方法を学びます。
+description: Android Kotlin 向けの同意管理の実装方法について説明します。
 url: https://docs.tealium.com/ja/platforms/android-kotlin/consent-management/
 ---
-## 使用法
+## 使用方法
 
-同意管理モジュールは推奨され、初期化時に自動的に有効化されます。AndroidモバイルとAndroid TVでサポートされています。
+同意管理モジュールの使用を推奨します。このモジュールは初期化時に自動的に有効になります。Android モバイルおよび Android TV でサポートされています。
 
-[`TealiumConfig`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy)内で同意管理ポリシーを初期化します。その後、[`tealium.consentManager`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#consentmanager)のTealiumインスタンスを使用してユーザーの同意を管理します。
+[`TealiumConfig`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) 内で同意管理ポリシーを初期化します。その後、[`tealium.consentManager`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium/#consentmanager) の Tealium インスタンスを使用してユーザーの同意を管理します。
 
-[同意管理](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)と同意ポリシーについて詳しく学びましょう。
+[同意管理](https://docs.tealium.com/ja/platforms/getting-started-mobile/consent-management/)と同意ポリシーの詳細をご覧ください。
 
 ## 同意
 
 ### ポリシーの構成
 
-初期化時に同意ポリシーを以下のいずれかに構成します：
+初期化時に、同意ポリシーを次のいずれかに構成します。
 
 * `ConsentPolicy.GDPR`
 * `ConsentPolicy.CCPA`
 
 
 <blockquote>
-一度に一つのポリシーしかデバイスに適用できません。
+Only one policy may be enforced on a device at any given time.
 </blockquote>
 
 
@@ -34,9 +34,9 @@ val config = TealiumConfig(...).apply {
 
 ### 同意の有効期限
 
-[`consentExpiry`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentexpiry)プロパティを使用して、同意選択の有効期限を構成します。
+[`consentExpiry`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentexpiry) プロパティを使用して、同意の選択内容の有効期限を構成します。
 
-以下の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています：
+次の例では、同意管理ポリシーを GDPR に構成し、有効期限を 90 日に構成します。
 
 ```java
 val config = TealiumConfig(...).apply {
@@ -45,7 +45,7 @@ val config = TealiumConfig(...).apply {
 }
 ```
 
-同意が期限切れになったときにコールバックをトリガーするには、[`onUserConsentPreferencesUpdated()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated)メソッドを使用して`ConsentStatus`が`UNKNOWN`になったときを確認します：
+同意の有効期限が切れたときにコールバックをトリガーするには、[`onUserConsentPreferencesUpdated()`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated) メソッドを使用して、`ConsentStatus` が `UNKNOWN` になったかどうかを確認します。
 
 ```java
 Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
@@ -60,9 +60,9 @@ Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
 }
 ```
 
-### 全面的な同意の構成
+### 完全な同意の構成
 
-全面的な同意を構成するには：
+完全な同意を構成するには、次のようにします。
 
 ```java
 tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
@@ -70,47 +70,47 @@ tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
 
 
 <blockquote>
-全面的な同意を構成すると、暗黙的に同意カテゴリが利用可能な[`ConsentCategory`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-category/#class-consentcategory)タイプの全リストに構成されます。
+Setting full consent implicitly sets the consent categories to the full list of available [`ConsentCategory`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-category/#class-consentcategory) types.
 </blockquote>
 
 
 ### カテゴリ別の部分的な同意の構成
 
-部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、[`userConsentStatus`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/#userconsentstatus)が`CONSENTED`に暗黙的に構成されます。
+部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、[`userConsentStatus`](https://docs.tealium.com/ja/platforms/android-kotlin/api/consent-manager/#userconsentstatus) は暗黙的に `CONSENTED` に構成されます。
 
 ```java
 tealium.consentManager.userConsentCategories = setOf(ConsentCategory.ANALYTICS, ConsentCategory.EMAIL)
 ```
 
-### 同意の拒否の構成
+### 同意拒否の構成
 
-同意を拒否するには、同意ステータスを構成します：  
+同意を拒否するには、同意ステータスを構成します。  
 ```java
 tealium.consentManager.userConsentStatus = ConsentStatus.NOT_CONSENTED
 ```
 
-あるいは、同意カテゴリを`null`に構成します。
+または、同意カテゴリを `null` に構成します。
 
 ## カスタム同意
 
-あなたの組織の同意要件が、私たちの標準的な[Opt-in](https://docs.tealium.com/ja/glossary/#opt-in-model-consent)および[Opt-out](https://docs.tealium.com/ja/glossary/#opt-out-model-consent)同意管理ポリシーによってカバーされていない場合、カスタム同意ポリシーを作成します。
+組織の同意要件が、標準の[オプトイン](https://docs.tealium.com/ja/glossary/#opt-in-model-consent)および[オプトアウト](https://docs.tealium.com/ja/glossary/#opt-out-model-consent)の同意管理ポリシーで対応できない場合は、カスタム同意ポリシーを作成します。
 
-1. `ConsentManagementPolicy`インターフェースを実装します。      
+1. `ConsentManagementPolicy` インターフェイスを実装します。      
       ```java
       val customPolicy = object: ConsentManagementPolicy {
             //implement methods...
       }
       ```
-2. `setCustomPolicy()`メソッドを使用して、`ConsentPolicy.CUSTOM`列挙型に`ConsentManagementPolicy`の実装を渡します。      
+2. `setCustomPolicy()` メソッドを使用して、`ConsentManagementPolicy` の実装を `ConsentPolicy.CUSTOM` 列挙型に渡します。      
       ```java
       ConsentPolicy.CUSTOM.setCustomPolicy(customPolicy)
       ```
-3. [`consentManagerPolicy`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy)プロパティを介して`TealiumConfig`オブジェクトに`ConsentPolicy.CUSTOM`オプションを渡します。   
+3. [`consentManagerPolicy`](https://docs.tealium.com/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy) プロパティを使用して、`TealiumConfig` オブジェクトに `ConsentPolicy.CUSTOM` オプションを渡します。   
       ```java
       config.consentManagerPolicy = ConsentPolicy.CUSTOM
       ```
 
-カスタム`ConsentManagementPolicy`の実装は、提供された`superPolicy`に既存の同意管理メソッドとプロパティを委任することができ、それぞれのイベントで`policy`キーを自身の名前で上書きします。
+カスタムの `ConsentManagementPolicy` 実装では、既存の同意管理のメソッドとプロパティを、指定された `superPolicy` に委任できます。`superPolicy` は各イベントの `policy` キーを独自の名前で上書きします。
 
 ```java
 class CustomPolicy(
@@ -129,24 +129,24 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
     UserConsentPreferences(ConsentStatus.UNKNOWN, null)))
 ```
 
-カスタム同意ポリシーが実装された後、必要に応じて`ConsentManagementPolicy`で利用可能な以下のプロパティとメソッドを上書きします：
+カスタム同意ポリシーを実装した後、必要に応じて `ConsentManagementPolicy` で使用可能な次のプロパティおよびメソッドをオーバーライドします。
 
-| プロパティ / メソッド | タイプ | 説明 |
+| プロパティ／メソッド | 型 | 説明 |
 | ----- | ------ | ----- |
-| `name` | `String` | `ConsentManagementPolicy`の名前|
-| `userConsentPreferences` | `UserConsentPreferences` | プリファレンスが変更されたときに`ConsentManager`によって自動的に更新される現在の`UserConsentPreferences`|
-| `consentLoggingEnabled` | `Boolean` | 同意の変更のログ記録が必要かどうかを構成します |
+| `name` | `String` | `ConsentManagementPolicy` の名前 |
+| `userConsentPreferences` | `UserConsentPreferences` | 現在の `UserConsentPreferences`。構成が変更されると、`ConsentManager` によって自動的に更新されます |
+| `consentLoggingEnabled` | `Boolean` | 同意の変更をログに記録する必要があるかどうかを構成します |
 | `consentLoggingEventName` | `String` | 同意の変更をログに記録するときに使用するイベント名（キー：`tealium_event`）を構成します |
-| `defaultConsentExpiry`] |`ConsentExpiry` | `ConsentManagementPolicy`のデフォルトの有効期限を構成します |
-| `cookieUpdateRequired`| `Boolean` | TagManagementモジュールのwebview内のクッキーを更新するかどうかを構成します|
-| `cookieUpdateEventName` |  `String` | `cookieUpdateRequired`が`true`に構成されているときに使用するイベント名を構成します|
-| `policyStatusInfo()` |`Map<String, Any>` | 各ディスパッチのペイロードに追加するキー値データのマップを返します |
-| `shouldQueue()` | `Boolean` | `ConsentPolicy`のルールに従ってディスパッチをキューに入れるかどうかを返します|
-| `shouldDrop()`| `Boolean` | `ConsentPolicy`のルールに従ってディスパッチをドロップするかどうかを返します|
+| `defaultConsentExpiry`] |`ConsentExpiry` | `ConsentManagementPolicy` のデフォルトの有効期限を構成します |
+| `cookieUpdateRequired`| `Boolean` | TagManagement モジュールの WebView で Cookie を更新するかどうかを構成します |
+| `cookieUpdateEventName` |  `String` | `cookieUpdateRequired` が `true` に構成されている場合に使用するイベント名を構成します |
+| `policyStatusInfo()` |`Map<String, Any>` | 各ディスパッチのペイロードに追加するキーと値のデータのマップを返します |
+| `shouldQueue()` | `Boolean` | `ConsentPolicy` のルールに従ってディスパッチをキューに追加するかどうかを返します |
+| `shouldDrop()`| `Boolean` | `ConsentPolicy` のルールに従ってディスパッチを破棄するかどうかを返します |
 
 ### 例
 
-以下の例では、ポリシーデータキーを再マップして、Tealium EventStreamの固定同意値を避けます：   
+次の例では、Event Streaming の固定された同意値を回避するために、ポリシーデータのキーを再マッピングします。   
 ```java
 class CustomPolicy(
         val superPolicy: ConsentManagementPolicy
@@ -164,7 +164,7 @@ class CustomPolicy(
 }
 ```
 
-以下の例では、送信される同意ログイベント名をカスタマイズします：   
+次の例では、送信される同意ログイベント名をカスタマイズします。   
 ```java
 class CustomPolicy(
         val superPolicy: ConsentManagementPolicy
@@ -180,7 +180,7 @@ class CustomPolicy(
 }
 ```
 
-以下の例では、`thirdPartyConsentProvider`が別の同意プロバイダーへの参照である場合、サードパーティの同意値を返します：   
+次の例では、サードパーティの同意値を返します。ここで、`thirdPartyConsentProvider` は別の同意プロバイダーへの参照です。   
 ```java
 class CustomPolicy(
         val superPolicy: ConsentManagementPolicy,
@@ -193,4 +193,3 @@ class CustomPolicy(
     }
 }
 ```
-
