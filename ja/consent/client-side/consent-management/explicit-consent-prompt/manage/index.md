@@ -86,7 +86,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 言語を追加するには：
 
 1. **言語** サイドパネルで、**+ 追加** をクリックします。  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
 
 1. 言語を選択し、**適用** をクリックします。  
 新しい言語がサイドパネルに表示されます。
@@ -98,7 +98,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 ユーザーの検出されたブラウザ言語が構成されていない場合に同意プロンプトを表示するために使用されるデフォルト言語を構成します：
 
 1. 言語タイトルバーにある **デフォルト言語に構成** ボックスをチェックします。  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 1. **プレビュー** をクリックして、言語構成を確認します。
 
 #### 言語を上書きする

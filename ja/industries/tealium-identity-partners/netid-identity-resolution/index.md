@@ -43,7 +43,7 @@ netIDパートナーとして、以下の方法のいずれかを使用して、
   }
   ```
 
-* **Universal Data Object (UDO)**: [UDO変数](https://docs.tealium.com/iq-tag-management/data-layer/data-layer-variables/#udo-variable)を使用して、`utag_data`にnetIDプロパティを明示的に保持します。例えば、ページのUDOに`netid_tpid`としてnetID識別プロパティを追加します：
+* **Universal Data Object (UDO)**: [UDO変数](https://docs.tealium.com/tag-management/data-layer/data-layer-variables/#udo-variable)を使用して、`utag_data`にnetIDプロパティを明示的に保持します。例えば、ページのUDOに`netid_tpid`としてnetID識別プロパティを追加します：
 
   ```js
   <script type="text/javascript">
@@ -108,4 +108,4 @@ AdformやThe Trade Deskなどの広告プラットフォームへのリアルタ
 * [Adform: セグメントコネクタ](https://docs.tealium.com/server-side-connectors/adform-segments-connector/)
 * [Adform: ファーストパーティIDの使用](https://www.adformhelp.com/hc/en-us/articles/9740579323153-Use-First-Party-IDs-for-Site-Tracking)
 * [The Trade Deskファーストパーティデータコネクタ](https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/)
-* [Tealiumデータレイヤー](https://docs.tealium.com/iq-tag-management/data-layer/about-the-data-layer/)
+* [Tealiumデータレイヤー](https://docs.tealium.com/tag-management/data-layer/about-the-data-layer/)

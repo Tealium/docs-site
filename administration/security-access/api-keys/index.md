@@ -53,7 +53,7 @@ Use the following steps to authorize a user to generate their own API keys:
 1. Click **Edit/View User Settings**.
 1. In the left side panel, click **API Key**.
 1. Click **Authorize Generation**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg)  
     A message displays that the API key authorization email was sent.
 1. Click **Close** to close the window.
 
@@ -83,7 +83,7 @@ Use the following steps to manage API keys for a single user:
 The **User Manager** dialog is displayed.
 1. Click the checkbox next to the user for which you want to manage the API key.
 1. Click **Edit/View User Settings**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-user-manager-editview-user-settings.jpg)
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-user-manager-editview-user-settings.jpg)
 1. In the left side panel, click **API Key**.
 1. Select one of the following actions:
       * **Authorize Generation**  
@@ -103,7 +103,7 @@ Use the following steps to manage API keys in bulk:
 1. In the admin menu, click **Manage Users** from the drop-down list. The **User Manager** dialog is displayed.
 1. Click the checkbox next to each user for which you want to manage the API key.
 1. Click the **More** drop-down list and select **Manage API Keys**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-admin-select-users.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-admin-select-users.jpg)  
     The selected users appear in the left panel.
 1. Select one of the following actions:
     * **Authorize / Reset Keys**  

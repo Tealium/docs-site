@@ -1,6 +1,6 @@
 ---
 title: CJ Affiliate Mobile Application Tag Setup Guide
-description: This article describes how to set up the CJ Affiliate Mobile Application Tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the CJ Affiliate Mobile Application Tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/cj-affiliate-mobile-application-tag/
 ---
 CJ Affiliate is the leading global affiliate marketing network, specializing in pay-for-performance programs that drive results for businesses around the world. The purpose of the CJ Affiliate Mobile Application Tag is to inform CJ of user activity across clients' Mobile Applications, allowing for tracking of installations and In App Events.
@@ -16,7 +16,7 @@ Use mappings to:
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -32,7 +32,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -75,7 +75,7 @@ The available categories are:
 
 ## Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/).
 
 |Variable| Description|
 |---| ---|

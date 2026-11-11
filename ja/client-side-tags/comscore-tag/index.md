@@ -3,53 +3,53 @@ title: Comscoreタグ構成ガイド
 description: この記事では、Comscoreタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/comscore-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* ファーストパーティクッキー機能はデフォルトで有効になっています。この動作を上書きするには、`enableFirstPartyCookie`を`false`に構成します。
-* iAB透明性と同意フレームワーク（TCF）バージョン2.0を実装するConsent Management Platform（CMP）を使用している場合、ComscoreタグはCMPと統合して自動的にユーザーの同意を収集します。
-* `cs_ucfr`パラメータを`0`（同意なし）または`1`（同意）に構成することで、訪問の同意を手動で示すことができます。
-* ファーストパーティクッキー機能が有効になっている場合、Publisher Tagは利用可能なユーザー同意信号を検査して、クッキーの構成が許可されているかどうかを判断します。`bypassUserConsentRequirementFor1PCookie`を`true`に構成して、ウェブサイト/パブリッシャーがユーザーの同意要件から免除されていることを示します。
+* ファーストパーティCookie機能はデフォルトで有効になっています。この動作を変更するには、`enableFirstPartyCookie`を`false`に構成します。
+* IABの透明性と同意に関するフレームワーク（TCF）バージョン2.0を実装する同意管理プラットフォーム（CMP）を使用している場合、ComscoreタグはCMPと連携してユーザーの同意を自動的に収集します。
+* `cs_ucfr`パラメーターを`0`（同意なし）または`1`（同意あり）に構成することで、訪問の同意を手動で指定できます。
+* ファーストパーティCookie機能が有効な場合、Publisher Tagは利用可能なユーザー同意シグナルを確認し、Cookieの構成が許可されているかどうかを判断します。Webサイトまたはパブリッシャーがユーザー同意要件の適用対象外であることを示すには、`bypassUserConsentRequirementFor1PCookie`を`true`に構成します。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の項目を構成します。
 
-* **Comscore Publisher ID**：各パブリッシャーに固有の、少なくとも7桁のComscoreが提供する番号。
+* **ComscoreパブリッシャーID**：Comscoreから提供される7桁以上の番号で、パブリッシャーごとに一意です。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:-----|:------------|
-| `c2` | String | Comscore publisher ID |
-| `enableFirstPartyCookie` | `String` | ファーストパーティクッキーを有効にする |
-| `bypassUserConsentRequirementFor1PCookie` | `String` | ユーザー同意をバイパスする |
-| `cs_ucfr` | String | 同意 |
+| `c2` | 文字列 | ComscoreパブリッシャーID |
+| `enableFirstPartyCookie` | `String` | ファーストパーティCookieを有効化 |
+| `bypassUserConsentRequirementFor1PCookie` | `String` | ユーザー同意を省略 |
+| `cs_ucfr` | 文字列 | 同意 |
 
 ### 自動収集データ
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:-----|:------------|
-| `c7` | String | フルページURL |
-| `c8` | String | 参照URL |
-| `cs_fpcu` | String | ファーストパーティ`_scor_uid`クッキー値 |
+| `c7` | 文字列 | ページの完全なURL |
+| `c8` | 文字列 | 参照元URL |
+| `cs_fpcu` | 文字列 | ファーストパーティの`_scor_uid` Cookie値 |
 
 ### デモグラフィックデータ
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:-----|:------------|
-| `cs_fpid` | String | ファーストパーティ識別子 |
-| `cs_fpit` | String | 識別子タイプ |
-| `cs_fpdm` | String | ファーストパーティデモグラフィックデータ |
-| `cs_fpdt` | String | デモグラフィックデータタイプ |
+| `cs_fpid` | 文字列 | ファーストパーティ識別子 |
+| `cs_fpit` | 文字列 | 識別子の種類 |
+| `cs_fpdm` | 文字列 | ファーストパーティのデモグラフィックデータ |
+| `cs_fpdt` | 文字列 | デモグラフィックデータの種類 |

@@ -1,20 +1,20 @@
 ---
-title: VWO非同期タグ構成ガイド
-description: この記事では、VWO非同期タグの構成方法について説明します。
+title: VWO 非同期タグ構成ガイド
+description: この記事では、VWO 非同期タグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/vwo-async-tag/
 ---
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳しくは、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を構成します。
 
-* **アカウント**：（必須）Visual Website OptimizerのアカウントID。
+* **アカウント**：（必須）Visual Website Optimizer のアカウント ID。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳しくは、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-このタグには利用可能なデータマッピングがありません。
+このタグで使用できるデータマッピングはありません。

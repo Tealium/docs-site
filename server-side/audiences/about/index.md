@@ -3,7 +3,7 @@ title: About audiences
 description: This article provides information about audiences, segments, and visitor retention time.
 url: https://docs.tealium.com/server-side/audiences/about/
 ---
-Tealium AudienceStream CDP Audiences provides a streamlined and powerful audience management experience with the following features:
+Customer Data Platform (CDP) Audiences provides a streamlined and powerful audience management experience with the following features:
 * The ability to create a set of conditions to define a dynamic, real-time audience.
 * The ability to connect an audience to a connector and define triggers that determine when connectors are fired.
 * The ability to save frequently used audience segments (groups of conditions) and reuse them in other audiences.
@@ -88,7 +88,7 @@ Joined audience actions generated during filling appear in profile activity, inc
 Fill an audience is not available in the following cases:
 
 * **Audience conditions with visit attributes**: Visit attributes are transitory and do not persist after the visitor's session ends, so they cannot be re-evaluated during an audience fill. If visit attributes are used in an audience condition, the **Fill Audience** checkbox is unavailable.
-* **CloudStream deployments**: Fill an audience is not supported for CloudStream.
+* **Data Cloud Activation deployments**: Fill an audience is not supported for Data Cloud Activation.
 * **Unsupported regions**: Fill an audience is not available in the `ap-southeast-1` (Hong Kong) region or the `me-central-1` (UAE) region.
 
 ## Audience conditions and segments
@@ -172,7 +172,7 @@ You can filter the list of segments by **Favorites** and only favorite segments 
 
 ## Visitor retention time
 
-Visitor retention time refers to how long Tealium AudienceStream retains visitor profiles after their last recorded activity. Each incoming event associated with a visitor profile resets the retention timer. If a visitor remains inactive for the length of the retention period, their profile is permanently deleted from the system.
+Visitor retention time refers to how long Customer Data Platform (CDP) retains visitor profiles after their last recorded activity. Each incoming event associated with a visitor profile resets the retention timer. If a visitor remains inactive for the length of the retention period, their profile is permanently deleted from the system.
 
 Retention time is specified in two places:
 
@@ -196,7 +196,7 @@ The maximum allowed profile and audience retention times are determined by your 
 
 ### Example
 
-If your account has a profile retention time of 395 days, all visitor profiles with a last event activity timestamp older than 395 days are removed from AudienceStream. This means the entire visitor profile is deleted. If that same visitor returns and triggers event activity, AudienceStream creates a new visitor profile for them.
+If your account has a profile retention time of 395 days, all visitor profiles with a last event activity timestamp older than 395 days are removed from Customer Data Platform (CDP). This means the entire visitor profile is deleted. If that same visitor returns and triggers event activity, CDP creates a new visitor profile for them.
 
 To store visitor profiles longer than your account or profile retention period, the visitor must belong to an audience that has a longer retention time.
 
@@ -206,7 +206,7 @@ The following example illustrates how visitor profile retention works with audie
 * **"Window Shopper" audience retention time**: 30 days
 * **"VIP Purchaser (> $500)" audience retention time**: 400 days
 
-|Action| Day| Days Inactive| "Window Shopper"| "VIP Purchaser"| AudienceStream|
+|Action| Day| Days Inactive| "Window Shopper"| "VIP Purchaser"| CDP|
 |---| ---| ---| ---| ---| ---|
 |Visits Website,<br> browses products| May 1, 2024 | 0 | ✓ Added| | ✓ New profile |
 |N/A| May 31, 2024 | 30| ✗ Removed | | ✗ Removed|

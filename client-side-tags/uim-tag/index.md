@@ -25,7 +25,7 @@ url: https://docs.tealium.com/client-side-tags/uim-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -37,7 +37,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -71,7 +71,7 @@ The available categories are:
 |  `order_currency` (Overrides `_ccurrency`)  | String | Order Currency |
 
 ### Event Triggers
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -82,7 +82,7 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 | `checkout` | Checkout |
 
 ### Event-specific Parameters
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

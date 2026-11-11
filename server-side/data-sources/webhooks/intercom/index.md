@@ -6,11 +6,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/intercom/
 ## Prerequisites
 
 * [Intercom account](https://app.intercom.com/admins/sign_in)
-* EventStream/AudienceStream account
+* Event Streaming and Customer Data Platform (CDP) account
 
 ## How it works
 
-Intercom offers a [Webhook API](https://developers.intercom.com/building-apps/docs/setting-up-webhooks) that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to EventStream to inform it about things that happened in your Intercom account. When you add the Intercom data source in the Customer Data Hub (CDH), a unique endpoint is generated. This endpoint is used to configure the Intercom webhook. After it is configured, you can create subscriptions based on topics and receive related push notifications to automate use cases, stay informed, and increase productivity.
+Intercom offers a [Webhook API](https://developers.intercom.com/building-apps/docs/setting-up-webhooks) that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to Event Streaming to inform it about things that happened in your Intercom account. When you add the Intercom data source in the Customer Data Hub (CDH), a unique endpoint is generated. This endpoint is used to configure the Intercom webhook. After it is configured, you can create subscriptions based on topics and receive related push notifications to automate use cases, stay informed, and increase productivity.
 
 ## Intercom data source
 

@@ -1,34 +1,34 @@
 ---
-title: Salesforce Marketing Cloud パーソナライゼーションタグ
-description: この記事では、Salesforce Marketing Cloud パーソナライゼーションタグの構成方法について説明します。
+title: Salesforce Marketing Cloud Personalizationタグ
+description: この記事では、Salesforce Marketing Cloud Personalizationタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/salesforce-marketing-cloud-personalization-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して、標準の構成値を動的に上書きします。
-* 次の E-Commerce 拡張パラメータをサポートします：
-  * 顧客ID (`_ccustid`)
+* マッピングを使用して、標準構成値を動的に上書きできます。
+* 次のEコマース拡張パラメータをサポートしています。
+  * 顧客ID（`_ccustid`）
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際は、次の項目を構成します。
 
-* **アカウント**: あなたのSalesforce MCPアカウント名。
-* **データセットID**: イベントトラッキング用のデータセットID。
+* **アカウント**：Salesforce MCPのアカウント名。
+* **データセットID**：イベントトラッキングに使用するデータセットID。
 
-アカウント名とデータセットIDは、SalesforceビーコンURLで見つけることができます。例えば、`{{MY_ACCOUNT}}`はアカウント名で、`{{MY_DATASET}}`はデータセットIDです。URLは`//cdn.evgnet.com/beacon/{{MY_ACCOUNT}}/{{MY_DATASET}}/scripts/evergage.min.js`です。
+アカウント名とデータセットIDは、SalesforceビーコンURLで確認できます。たとえば、`//cdn.evgnet.com/beacon/{{MY_ACCOUNT}}/{{MY_DATASET}}/scripts/evergage.min.js`では、`{{MY_ACCOUNT}}`がアカウント名、`{{MY_DATASET}}`がデータセットIDです。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
@@ -37,7 +37,7 @@ url: https://docs.tealium.com/ja/client-side-tags/salesforce-marketing-cloud-per
 | `acct` | アカウントID。 |
 | `dataset` | データセットID。 |
 | `company_name` | 会社名。 |
-| `customer_id` | 顧客ID（`_ccustid`を上書き）。 |
+| `customer_id` | 顧客ID（`_ccustid`を上書きします）。 |
 
 ### カスタム
 

@@ -1,13 +1,13 @@
 ---
 title: About connectors
-description: This article describes how to add and configure connectors for Tealium EventStream API Hub and Tealium AudienceStream CDP.
+description: This article describes how to add and configure connectors for Event Streaming API Hub and CDP.
 url: https://docs.tealium.com/server-side/connectors/about/
 ---
 ## How it works
 
 A connector is an integration that transmits data between Tealium and another vendor in real-time. A connector offers actions that represent vendor-supported APIs. An action is triggered in real-time by an incoming event from a feed or a visitor's status in an audience. An action sends data based on mappings that associate Tealium attributes to the expected vendor parameters.
 
-In [CloudStream](https://docs.tealium.com/about-cloudstream/), segment data is not persisted or stored in Tealium systems. After retrieving the data and sending it to configured connectors, Tealium discards it.
+In [Data Cloud Activation](https://docs.tealium.com/about-data-cloud-activation/), segment data is not persisted or stored in Tealium systems. After retrieving the data and sending it to configured connectors, Tealium discards it.
 
 ### Terminology
 
@@ -35,7 +35,7 @@ Each connector in the marketplace has one or more consent categories assigned fo
 
 ![](https://docs.tealium.com/images/server-side/eventstream-connector-consent-categories.png)
 
-AudienceStream is categorized in the **CDP** consent category and DataAccess is categorized in the **Big Data** consent category. For additional information about server-side consent, see [Consent Preferences Manager](https://docs.tealium.com/iq-tag-management/consent-management/consent-preferences-dialog/manage/).
+Customer Data Platform (CDP) is categorized in the **CDP** consent category and DataAccess is categorized in the **Big Data** consent category. For additional information about server-side consent, see [Consent Preferences Manager](https://docs.tealium.com/consent/client-side/consent-management/consent-preferences-dialog/manage/).
 
 ### Retries
 

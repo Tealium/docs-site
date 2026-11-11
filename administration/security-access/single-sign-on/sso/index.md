@@ -33,7 +33,7 @@ Tealium also supports SSO implementation to IdP platforms not listed above. Howe
 
 ## Tealium SSO login process
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration1.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration1.png)
 
 The Tealium SSO login process follows these steps:
 
@@ -67,7 +67,7 @@ Create a new SAML SSO connection by completing the following steps:
 
 1. Navigate to **Admin Menu > SSO (Single Sign-On)**.
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration2.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration2.png)
 
 2. In the **New SAML Single-Sign On (SSO) Connection > Configure IdP** screen, download the Tealium metadata file to your computer and then import this file into your IdP.
 3. Create a new Tealium application in your IdP and download your IdP metadata file. Each IdP requires a different configuration to access and download a metadata file for creating a new SSO connection.  
@@ -111,7 +111,7 @@ Connect to your IdP by completing the following steps:
 
 1. In the **Connect to IdP** screen, upload the SAML metadata file you downloaded from your IdP. The **Identity Provider** field auto-populates with the name of your IdP after the connection is established.
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration3.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration3.png)
 
 2. In the **IdP Admin Email** field, enter the email address of an administrator of your IdP account.
 3. (Optional) If your IdP provides you with a separate signing certificate, upload that file under **IdP SAML 2.0 Signing Certificate**.

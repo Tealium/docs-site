@@ -7,7 +7,7 @@ For detailed instructions see the [Tealium Collect Tag Setup Guide](https://docs
 
 
 <blockquote>
-This configuration enables client-side attribute sync in Tealium iQ. The Data Layer Enrichment API and Profile Definition API are controlled by a separate server-side setting. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
+This configuration enables client-side attribute sync in Tag Management. The Data Layer Enrichment API and Profile Definition API are controlled by a separate server-side setting. For more information, see [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/).
 </blockquote>
 
 
@@ -34,15 +34,15 @@ This option causes an additional HTTP request per page.
 
 We recommend leaving the default **Load on All Pages** load rule selected for the Tealium Collect tag. To ensure the data layer contains the necessary attributes, populate it with the most relevant data.
 
-### Using AudienceStream attributes in Tealium iQ
+### Using Customer Data Platform (CDP) attributes in Tag Management
 
-AudienceStream attributes are treated as imported variables in Tealium iQ. These variables cannot be edited or deleted. To delete or modify an AudienceStream attribute, make the change in your AudienceStream profile. Attributes cannot be imported into a [profile library](https://docs.tealium.com/about-profile-libraries/), they can only be imported into a regular profile.
+CDP attributes are treated as imported variables in Tag Management. These variables cannot be edited or deleted. To delete or modify a CDP attribute, make the change in your CDP profile. Attributes cannot be imported into a [profile library](https://docs.tealium.com/about-profile-libraries/), they can only be imported into a regular profile.
 
 ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png)
 
-### Which AudienceStream attribute types are imported?
+### Which CDP attribute types are imported?
 
-The following attribute types are imported into Tealium iQ and made available in the data layer:
+The following attribute types are imported into Tag Management and made available in the data layer:
 
 * Badges
 * Numbers
@@ -68,7 +68,7 @@ You can use supported attributes to create load rules. The following rule operat
 
 
 <blockquote>
-Deleting an attribute from AudienceStream automatically removes it from the data layer screen in Tealium iQ. However, load rules that reference the deleted attribute do not update automatically. You must manually update any load rules that still reference deleted attributes.
+Deleting an attribute from CDP automatically removes it from the data layer screen in Tag Management. However, load rules that reference the deleted attribute do not update automatically. You must manually update any load rules that still reference deleted attributes.
 </blockquote>
 
 

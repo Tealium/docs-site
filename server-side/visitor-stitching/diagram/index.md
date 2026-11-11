@@ -18,8 +18,8 @@ The next day, the same person visits your website from their tablet.
 1. The visitor logs in to the website using the same email address stored in profile A, user@example.com.
 ![](https://docs.tealium.com/images/server-side/visitor-stitching-example-second-visit.png)  
     A visitor ID attribute in profile B is set to the email address, user@example.com.
-1. AudienceStream performs a visitor ID lookup on the email address. Profile A and profile B have a visitor ID attribute set to the same email address and the profiles are determined to be associated.
-1. AudienceStream stitches profiles A and B together and creates profile C.  
+1. Customer Data Platform (CDP) performs a visitor ID lookup on the email address. Profile An and profile B have a visitor ID attribute set to the same email address and the profiles are determined to be associated.
+1. CDP stitches profiles An and B together and creates profile C.  
 ![](https://docs.tealium.com/images/server-side/visitor-stitching-profile-c-created.png)
     * Profile C is now used for both the desktop and tablet and contains the following:
         * All the events and historical data from profiles A and B.
@@ -31,7 +31,7 @@ The next day, the same person visits your website from their tablet.
 
 A few days later, a nurture campaign sends an email to `user@example.com`.
 1. The user opens the email on their phone and taps the link to your website.
-1. The email address is passed in a query string parameter in the URL, allowing AudienceStream to identify the user upon page load.
+1. The email address is passed in a query string parameter in the URL, allowing CDP to identify the user upon page load.
 1. Profile D is created with a user identifier set to the email address.  
 ![](https://docs.tealium.com/images/server-side/visitor-stitching-third-visit-profile-d-created.png)  
     The email address in profile D matches the email address in the visitor ID attribute in profile C and the two profiles are stitched together, creating profile E.

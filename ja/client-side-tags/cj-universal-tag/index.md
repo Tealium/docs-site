@@ -1,52 +1,52 @@
 ---
-title: CJユニバーサルタグ構成ガイド
-description: この記事では、CJユニバーサルタグの構成方法について説明します。
+title: CJ Universalタグ構成ガイド
+description: この記事では、CJ Universalタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/cj-universal-tag/
 ---
-CJユニバーサルタグは、Chrome、Safari、Firefoxなどのトラッキング制限があるブラウザを含むすべてのブラウザでプログラムの完全性を保ちながらトラッキング保護を提供します。この次世代タグは、状況に応じたコミッショニングのための縦型属性やトランザクションレベルの洞察など、高度なトラッキング機能を有効にすることで、CJネットワークでの成功を支援します。ユニバーサルタグはまた、アフィリエイトの増分性やクロスチャネル顧客ジャーニーのレポートなど、将来の機能エンリッチメントの基盤としても機能します。
+CJ Universalタグは、Chrome、Safari、Firefoxなど、トラッキング制限のあるブラウザー全体で完全なトラッキング保護を提供し、プログラムの整合性を維持します。この次世代タグは、状況に応じたコミッション構成のためのVertical Attributesやトランザクションレベルのインサイトなど、高度なトラッキング機能を有効にすることで、CJネットワークでの成功を支援します。Universalタグは、Affiliate Incrementalityやクロスチャネルのカスタマージャーニーレポートなど、将来の機能エンリッチメントの基盤としても機能します。
 
-## タグのヒント
+## タグに関するヒント
 
 * 注文IDが構成されている場合、コンバージョンタグが存在します。
-* CJのクライアント統合チームは、このタグをバンドルしないことを推奨します。
-* 以下のEコマース拡張パラメータをサポートします：
-    * 注文ID (`_corder`)
-    * 小計 (`_csubtotal`)
-    * 通貨 (`_ccurrency`)
-    * 顧客ID (`_ccustid`)
-    * 商品IDリスト (`_cprod`)
-    * 数量リスト (`_cquan`)
-    * 価格リスト (`_cprice`)
-    * 割引リスト (`_cpdisc`)
-* マッピングを使用して、タグ構成をオーバーライドまたは動的に構成します。
+* CJのClient Integrationチームは、このタグをバンドルしないことを推奨しています。
+* 次のEコマース拡張パラメーターをサポートしています。
+    * 注文ID（`_corder`）
+    * 小計（`_csubtotal`）
+    * 通貨（`_ccurrency`）
+    * 顧客ID（`_ccustid`）
+    * 商品IDのリスト（`_cprod`）
+    * 数量のリスト（`_cquan`）
+    * 価格のリスト（`_cprice`）
+    * 割引のリスト（`_cpdisc`）
+* マッピングを使用して、タグ構成を上書きまたは動的に構成します。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際は、次の構成を構成します。
 
 * **プロキシパス**：  
-CJのサーバーへのリバースプロキシを構成して、この統合の全利点を受け取ります。例：`//yourdomain.com/proxydir/tags/<YOUR_TAG_ID>/tag.js`。
+この統合のメリットを最大限に活用するには、CJのサーバーへのリバースプロキシを構成します。例：`//yourdomain.com/proxydir/tags/<YOUR_TAG_ID>/tag.js`。
 * **CJホストタグID**：  
-リバースプロキシを構成できない場合は、CJホストタグIDを入力してCJホストタグを使用します。CJのクライアント統合チームがこの値を提供します。
+リバースプロキシを構成できない場合は、CJホストタグを使用するためにCJホストタグIDを入力します。この値はCJのClient Integrationチームから提供されます。
 例：`//www.mczbf.com/tags/<TAG_ID>/tag.js`。
 * **アクショントラッカーID**：  
-CJのクライアント統合チームが提供する静的値。
-* **CJエンタープライズID**：  
-CJのクライアント統合チームが提供する静的値。
-* **ページ訪問を有効にする**：  
-変換ページを除くすべてのページでCJページ訪問タグを有効にします。
+CJのClient Integrationチームから提供される静的な値です。
+* **CJ Enterprise ID**：  
+CJのClient Integrationチームから提供される静的な値です。
+* **ページ訪問を有効化**：  
+コンバージョンページを除くすべてのページで、CJページ訪問タグを有効にします。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
@@ -55,10 +55,10 @@ CJのクライアント統合チームが提供する静的値。
 | `proxyPath` | プロキシパス。 |
 | `tagId` | CJホストタグID。 |
 | `actionTrackerId` | アクショントラッカーID。 |
-| `enterpriseId` | CJエンタープライズID。 |
+| `enterpriseId` | CJ Enterprise ID。 |
 | `enablePageVisit` | ブール値。ページ訪問タグを有効にします。 |
 | `bypassChannel.name` | バイパスチャネル名。 |
-| `bypassChannel.timestamp` | バイパスチャネルタイムスタンプ。 |
+| `bypassChannel.timestamp` | バイパスチャネルのタイムスタンプ。 |
 
 ### ページ訪問
 
@@ -66,36 +66,35 @@ CJのクライアント統合チームが提供する静的値。
 |:---------|:------------|
 | `pageType` | ページタイプ。 |
 | `emailHash` | メールアドレスのSHA-256ハッシュ。 |
-| `referringChannel` | 参照チャネル。 |
+| `referringChannel` | 参照元チャネル。 |
 
 ### Eコマース
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `order_id` | 注文ID（`_corder`をオーバーライド）。 |
-| `order_subtotal` | 小計（`_csubtotal`をオーバーライド）。 |
-| `order_currency` | 通貨（`_ccurrency`をオーバーライド）。 |
-| `order_coupon_code` | プロモコード（`_cpromo`をオーバーライド）。 |
+| `order_id` | 注文ID（`_corder`を上書き）。 |
+| `order_subtotal` | 小計（`_csubtotal`を上書き）。 |
+| `order_currency` | 通貨（`_ccurrency`を上書き）。 |
+| `order_coupon_code` | プロモーションコード（`_cpromo`を上書き）。 |
 | `order_discount` | 割引。 |
-| `customer_id` | ユーザーIDまたは顧客ID（`_ccustid`をオーバーライド）。 |
-| `product_id` | 商品IDの配列（`_cprod`をオーバーライド）。 |
-| `product_quantity` | 商品数量の配列（`_cquan`をオーバーライド）。 |
-| `product_unit_price` | 商品単価の配列（`_cprice`をオーバーライド）。 |
-| `product_discount` | 商品割引の配列（`_cpdisc`をオーバーライド）。 |
-| `brand` | 購入したアイテムのブランド。 |
+| `customer_id` | ユーザーIDまたは顧客ID（`_ccustid`を上書き）。 |
+| `product_id` | 商品IDの配列（`_cprod`を上書き）。 |
+| `product_quantity` | 商品数量の配列（`_cquan`を上書き）。 |
+| `product_unit_price` | 商品単価の配列（`_cprice`を上書き）。 |
+| `product_discount` | 商品割引の配列（`_cpdisc`を上書き）。 |
+| `brand` | 購入商品のブランド。 |
 | `brandId` | ブランド識別子。 |
-| `category` | 購入したアイテムのカテゴリ。 |
+| `category` | 購入商品のカテゴリー。 |
 | `customerStatus` | 顧客ステータス。 |
 | `delivery` | 配送方法。 |
 | `marketingChannel` | マーケティングチャネル。 |
 
-### ロイヤリティ
+### ロイヤルティ
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `loyaltyEarned` | 獲得したロイヤリティポイント。 |
-| `loyaltyFirstTimeSignup` | 初回サインアップ時のロイヤリティ。 |
-| `loyaltyLevel` | ロイヤリティレベル。 |
-| `loyaltyRedeemed` | 交換したロイヤリティポイント。 |
-| `loyaltyStatus` | ロイヤリティステータス。 |
-
+| `loyaltyEarned` | 獲得したロイヤルティポイント。 |
+| `loyaltyFirstTimeSignup` | ロイヤルティプログラムへの初回登録。 |
+| `loyaltyLevel` | ロイヤルティレベル。 |
+| `loyaltyRedeemed` | 使用したロイヤルティポイント。 |
+| `loyaltyStatus` | ロイヤルティステータス。 |

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/consent/client-side/consent-management/consent-pre
 ---
 The Consent Preferences Manager is configured using the following tabs:
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
+![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog.jpg)
 
 * **Content**  
 This tab is used to enter the message displayed to your customers, add multiple language translations, and provide your company's logo URL and privacy policy link.
@@ -22,7 +22,7 @@ This tab lets you adjust additional options, such as logging consent changes usi
 Use the following steps to begin setting up the Consent Preferences Manager:
 
 1. In the left sidebar, go to **Client-Side Tools > Consent Management**. In the **Consent Preferences Dialog** section, click **Get Started** to launch the configuration modal.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
     If your prompt is already set up, toggle it on or off from this screen.
 
 ### Content
@@ -105,7 +105,7 @@ The new language displays in the **Language** side panel.
 
 Set a default language by checking the box named **Make Default Language** located in the language title bar. The default language is used to display the preferences pop-up when the customer's detected browser language does not have a matching language configured in the consent prompt manager.
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 
 ## Customization (CSS, HTML, JavaScript)
 

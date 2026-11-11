@@ -1,6 +1,6 @@
 ---
 title: Nextag ROI Tracker Tag Setup Guide
-description: This article describes how to configure the Nextag ROI Tracker tag in your iQ Tag Management (TiQ) account.
+description: This article describes how to configure the Nextag ROI Tracker tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/nextag-roi-tracker-tag/
 ---
 ## Tag Specifications and Requirements
@@ -19,11 +19,11 @@ url: https://docs.tealium.com/client-side-tags/nextag-roi-tracker-tag/
 
 * Merchant ID
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### Adding the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a tag to your profile.
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configuring the Tag
 

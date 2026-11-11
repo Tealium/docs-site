@@ -9,7 +9,7 @@ The LINE connector requires the following:
 
 * LINE: Channel Access Token. For more information, see [Messaging API overview](https://developers.line.biz/en/docs/messaging-api/overview/).
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -18,7 +18,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://api.line.me/v2`
 * Documentation: [LINE: Audience API](https://developers.line.biz/en/docs/messaging-api/)
 
-## Batch Limits
+## Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -46,7 +46,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new LINE connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -56,9 +56,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab to set up actions and trigger them.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add Users to Audiences
 
@@ -373,7 +371,7 @@ All Template - Columns parameters are arrays.
 | Template Variables  | These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, `items.name`. For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/). |
 | Templates | <ul><li>(Required) Provide templates to be referenced in the Message Data section. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/).</li><li>Templates are injected by name with double curly braces into supported fields. For example: `{{SomeTemplateName}}`.</li></ul> |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [LINE: Developers - Messaging API](https://developers.line.biz/en/docs/messaging-api/)
 * [LINE: API Reference - Webhooks](https://developers.line.biz/en/reference/messaging-api/#webhooks)

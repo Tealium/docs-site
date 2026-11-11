@@ -317,11 +317,11 @@ Which results in the following output:
 "total_quantity": 3
 ```
 
-Finally, note that the aligned array iteration method only works with CDH array types. It does not work with the "Any" data type imported from Tealium iQ available in EventStream. If you want to use those, you need to convert them to CDH array types.
+Finally, note that the aligned array iteration method only works with CDH array types. It does not work with the "Any" data type imported from Tag Management available in Event Streaming. If you want to use those, you need to convert them to CDH array types.
 
 If you know that the incoming data will always be an array, you can delete the existing Tealium iQ attribute from server-side CDH and re-add it as an array CDH attribute.
 
-If you're unsure whether the data will always be an array, or there are too many CDH dependencies on the Tealium iQ attribute, you can use EventStream enrichments to make an array copy of the Tealium iQ attribute when the incoming data is an array, as follows:
+If you're unsure whether the data will always be an array, or there are too many CDH dependencies on the Tealium iQ attribute, you can use Event Streaming enrichments to make an array copy of the Tealium iQ attribute when the incoming data is an array, as follows:
 
 ![](https://docs.tealium.com/images/server-side/connectors/iteration-array-copy.png)
 

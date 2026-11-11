@@ -43,7 +43,7 @@ As a netID partner, use one of the following methods to include netID’s proper
   }
   ```
 
-* **Universal Data Object (UDO)**: Use a [UDO variable](https://docs.tealium.com/iq-tag-management/data-layer/data-layer-variables/#udo-variable) to explicitly persist the netID property in `utag_data`. For example, add the netID identity property as `netid_tpid` to the UDO of your pages:
+* **Universal Data Object (UDO)**: Use a [UDO variable](https://docs.tealium.com/tag-management/data-layer/data-layer-variables/#udo-variable) to explicitly persist the netID property in `utag_data`. For example, add the netID identity property as `netid_tpid` to the UDO of your pages:
 
   ```js
   <script type="text/javascript">
@@ -108,4 +108,4 @@ For real-time activation to advertising platforms such as Adform and The Trade D
 * [Adform: Segments Connector](https://docs.tealium.com/server-side-connectors/adform-segments-connector/)
 * [Adform: Using First Party IDs](https://www.adformhelp.com/hc/en-us/articles/9740579323153-Use-First-Party-IDs-for-Site-Tracking)
 * [The Trade Desk First Party Data Connector](https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/)
-* [Tealium Data Layer](https://docs.tealium.com/iq-tag-management/data-layer/about-the-data-layer/)
+* [Tealium Data Layer](https://docs.tealium.com/tag-management/data-layer/about-the-data-layer/)

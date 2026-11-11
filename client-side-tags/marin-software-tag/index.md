@@ -21,11 +21,11 @@ url: https://docs.tealium.com/client-side-tags/marin-software-tag/
 
 * Client ID
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### 1. Adding the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a Tag to your profile.
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### 2. Configuring the Tag
 
@@ -40,7 +40,7 @@ Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https:/
 
 ### 4. Setting up Mappings
 
-[Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag.
+[Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag.
 
 This tag requires that you add and configure the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/). The following data points are automatically sent to Marin by the E-Commerce extension. Mapping to these destinations in the Mappings Toolbox overrides the E-Commmerce mappings, where applicable.
 

@@ -26,11 +26,11 @@ url: https://docs.tealium.com/client-side-tags/sitecatalyst-tag/
 * Namespace
 * Internal Link Filters
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### 1. Add the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of Tags. To learn more, see [here](https://docs.tealium.com/about-tag-marketplace/).
+The Tag Management tag marketplace offers a wide variety of Tags. To learn more, see [here](https://docs.tealium.com/about-tag-marketplace/).
 
 ### 2. Configure the Tag
 
@@ -68,9 +68,9 @@ You may still use Tealium's link tracking extensions for custom tracking even if
 
 ### 4. Set up Mappings
 
-[Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) is the process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
+[Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/) is the process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
 
-To properly format the Products String and send revenue data to your SiteCatalyst report suite, you must add and configure the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) in your Tealium iQ profile.
+To properly format the Products String and send revenue data to your SiteCatalyst report suite, you must add and configure the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) in your Tag Management profile.
 
 
 <blockquote>
@@ -100,7 +100,7 @@ You can use mapping to trigger the following events events:
 * **purchase**
 * **event1 through event100**
 
-For more information on Event tracking in SiteCatalyst through Tealium iQ, click [here](https://docs.tealium.com/sitecatalyst-firing-multiple-events-and-event-serialization/).
+For more information on Event tracking in SiteCatalyst through Tag Management, click [here](https://docs.tealium.com/sitecatalyst-firing-multiple-events-and-event-serialization/).
 
 #### Product-level Events
 

@@ -36,7 +36,7 @@ Tealiumモバイルライブラリで[同意管理](https://docs.tealium.com/ja/
 * すべてのJSONリモートコマンドがトリガーされます。
 * リモートコマンドタグは、ユーザーが同意したカテゴリのいずれかに割り当てられている場合、またはそのタグが同意の対象外に構成されている場合にのみトリガーされます。
 
-[同意カテゴリ](https://docs.tealium.com/ja/iq-tag-management/consent-management/consent-preferences-dialog/manage/)および[同意イベントの仕様](https://docs.tealium.com/consent-change-event-specifications/)の詳細を確認してください。
+[同意カテゴリ](https://docs.tealium.com/ja/consent/client-side/consent-management/consent-preferences-dialog/manage/)および[同意イベントの仕様](https://docs.tealium.com/consent-change-event-specifications/)の詳細を確認してください。
 
 ## Remote API呼び出し
 

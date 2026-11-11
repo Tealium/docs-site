@@ -1,9 +1,9 @@
 ---
 title: LiveRamp Match Partner Tag Setup Guide
-description: This article describes how to set up the LiveRamp Match Partner tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the LiveRamp Match Partner tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/liveramp-match-partner-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Required parameters for the Email tag type:
   * Tag ID
@@ -21,9 +21,9 @@ url: https://docs.tealium.com/client-side-tags/liveramp-match-partner-tag/
   * Customer ID
 * If you are using the E-Commerce extension, and you have it configured to use Customer ID, no data mapping is needed for Customer ID for this tag.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -31,13 +31,13 @@ When adding the tag, configure the following settings:
 * **Tag ID**: Your LiveRamp tag ID.
 * **Account ID**: Your LiveRamp account ID (only for the **Customer ID** tag type).
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

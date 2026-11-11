@@ -83,7 +83,7 @@ For accounts using legacy permissions, go to **Tag Management > Code Center** to
 1. Select the code displayed in the text box by either of the following methods:
     * Click and drag to select all the code.
     * Click the **Select All** button that appears when you mouse over the code.  
-        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/tag-management/iq-code-center-select-all.png)
 1. Copy the code.
 1. Paste the code into your site authoring tool or back-end system.
 

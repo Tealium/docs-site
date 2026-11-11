@@ -1,29 +1,29 @@
 ---
 title: EventStoreデータガイド
-description: この記事では、EventStoreを通じて提供されるイベントレベルのデータポイントの概要を提供します。
+description: この記事では、EventStoreを通じて利用できるイベントレベルのデータポイントの概要について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/
 ---
-EventStoreは、サイトからのイベントレベルのデータを収集し、エクスポートする最も効率的な方法を提供します。
+EventStoreは、サイトからイベントレベルのデータを収集してエクスポートするための最も効率的な方法を提供します。
 
 ## 仕組み
 
-1. [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/)タグは、サイト上の[ライブイベントフィード](https://docs.tealium.com/about-event-feeds/)をキャプチャし、イベントをEventStoreにフィードします。これにより、基礎となるデータを表示し、ダウンロードすることができます。
-1. キャプチャしたデータは、フラット化されたJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。ファイル内の各JSONオブジェクトには、イベントに関連する名前-値のペアの1行または複数行が含まれる場合があります。  
+1. [Tealium Collect](https://docs.tealium.com/tealium-collect-tag/)タグは、サイト上の[ライブイベントフィード](https://docs.tealium.com/about-event-feeds/)を取得し、イベントをEventStoreに送信します。EventStoreでは、基となるデータを表示およびダウンロードできます。
+1. 取得されたデータはフラット化されたJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。ファイル内の各JSONオブジェクトには、イベントに関連付けられた名前と値のペアからなる行が1つ以上含まれる場合があります。  
       
 <blockquote>
-イベントデータ（イベントフィード）を別の場所（例えば、自分のS3バケットやサーバー）に送信する場合、フィードはEventStoreに表示されません。
+イベントデータ（イベントフィード）を独自のS3バケットやサーバーなどの別の場所に送信した場合、そのフィードはEventStoreに表示されません。
 </blockquote>
 
-1. S3バケットが100MB（非圧縮）のサイズに達するか、1時間が経過すると、いずれか早い方が来た時点で、データは圧縮され、Redshiftの準備が整います。
-1. 圧縮されたデータはコピーされ、あなたのアカウントのRedshiftデータベースにインポートされます。
+1. S3バケットのサイズが100 MB（非圧縮）に達するか、1時間が経過した時点のいずれか早い方で、データが圧縮され、Redshift向けに準備されます。
+1. 圧縮されたデータは、アカウントのRedshiftデータベースにコピーされ、インポートされます。
 
-## Tealium Collectタグデータ
+## Tealium Collectタグのデータ
 
-Tealium Collectタグは、以下のセクションで説明するように、いくつかの事前定義された変数とページからのデータを送信します。
+Tealium Collectタグは、以下のセクションで説明するように、事前定義された複数の変数とページ上のデータを送信します。
 
 
 <blockquote>
-データログファイル内の`_t`で始まるレガシー値は無視してください。
+データログファイルでは、接頭辞として`_t`が付いているレガシー値を無視してください。
 </blockquote>
 
 
@@ -33,7 +33,7 @@ Tealium Collectタグは、以下のセクションで説明するように、�
 |---| ---|
 |`visitorid`| 訪問の一意のID。|
 |`eventid`| イベントに固有の英数字識別子。|
-|`eventtime`| イベントのUNIX/エポックタイムスタンプ、UTCタイムゾーンに基づいています。|
+|`eventtime`| UTCタイムゾーンに基づくイベントのUNIX／エポックタイムスタンプ。|
 |`useragent`| ユーザーエージェントヘッダー。|
 
 ### DOM変数
@@ -42,119 +42,118 @@ Tealium Collectタグは、以下のセクションで説明するように、�
 |---| ---|
 |`dom_domain`| サイトのドメイン。|
 |`dom_pathname`| URLのパス名。|
-|`dom_query_string`| URLのクエリストリング部分（`?`文字の後）。|
-|`dom_url`| HTMLドキュメントの全URL。|
+|`dom_query_string`| URL内の疑問符（`?`）に続くクエリ文字列部分。|
+|`dom_url`| HTMLドキュメントの完全なURL。|
 |`dom_title`| HTMLドキュメントのタイトル。|
-|`dom_viewport_width`| デバイスの画面幅。|
-|`dom_viewport_height`| デバイスの画面高さ。|
+|`dom_viewport_width`| デバイス画面の幅。|
+|`dom_viewport_height`| デバイス画面の高さ。|
 
 ### ページURL変数
 
 | 変数 | 説明 |
 |---| ---|
-|`pageurl_scheme`| URIプロトコル（`http`や`https`など）。|
+|`pageurl_scheme`| `http`や`https`などのUniform Resource Identifier（URI）プロトコル。|
 |`pageurl_domain`| サイトのドメイン。|
 |`pageurl_path`| URLのパス名。|
-|`pageurl_querystring`| URLのクエリストリング部分（`?`文字の後）。|
-|`pageurl_query_params_key`| 各クエリストリングパラメータには、パラメータキーと値を含むデータポイントがあります。|
-|`pageurl_full_url`| クエリストリングパラメータなしのHTMLドキュメントのURL。|
+|`pageurl_querystring`| URL内の疑問符（`?`）に続くクエリ文字列部分。|
+|`pageurl_query_params_key`| クエリ文字列の各パラメータには、パラメータのキーと値を含むデータポイントがあります。|
+|`pageurl_full_url`| クエリ文字列パラメータを除いたHTMLドキュメントのURL。|
 
-### リファラーURL変数
+### 参照元URL変数
 
 | 変数 | 説明 |
 |---| ---|
-|`referrerurl_scheme`| リファラーURLのURIプロトコル（`http`や`https`など）。|
-|`referrerurl_domain`| リファラーURLサイトのドメイン。|
-|`referrerurl_path`| リファラーURLのパス名。|
-|`referrerurl_querystring`| リファラーURLのクエリストリング部分（`?`文字の後）。|
-|`referrerurl_query_params_key`| 各クエリストリングパラメータには、パラメータキーと値を含むデータポイントがあります。|
-|`referrerurl_full_url`| リファラーページの全URL。|
+|`referrerurl_scheme`| `http`や`https`など、参照元URLのURIプロトコル。|
+|`referrerurl_domain`| 参照元URLサイトのドメイン。|
+|`referrerurl_path`| 参照元URLのパス名。|
+|`referrerurl_querystring`| 参照元URL内の「?」文字に続くクエリ文字列部分。|
+|`referrerurl_query_params_key`| クエリ文字列の各パラメータには、パラメータのキーと値を含むデータポイントがあります。|
+|`referrerurl_full_url`| 参照元ページの完全なURL。|
 
 ### 実行されたタグ
 
 | 変数 | 説明 |
 |---| ---|
-|`tags_profile_tag-uid_executed`|  <ul><li>成功したプロファイルとタグ。</li><li>各成功したタグトリガーには独自のエントリが含まれます。</li></ul> |
+|`tags_profile_tag-uid_executed`| <ul><li>正常に実行されたプロファイルとタグ。</li><li>正常にトリガーされた各タグには、それぞれ独自のエントリが含まれます。</li></ul> |
 
 ### 環境詳細変数
 
 | 変数 | 説明 |
 |---| ---|
-|`ut.account`| Tealium iQアカウント。|
-|`ut.profile`| Tealium iQプロファイル。|
-|`ut.env`| `utag.js`ファイルに関連する公開環境。|
+|`ut.account`| Tag Managementアカウント。|
+|`ut.profile`| Tag Managementプロファイル。|
+|`ut.env`| `utag.js`ファイルに関連付けられたパブリッシュ環境。|
 
 ### Tealium組み込み変数
 
-Tealium組み込み変数の完全なリストは、[Built-In Data Layer Variables](https://docs.tealium.com/platforms/javascript/built-in-variables/)記事で提供されています。
+Tealium組み込み変数の完全なリストについては、[組み込みデータレイヤー変数](https://docs.tealium.com/platforms/javascript/built-in-variables/)の記事を参照してください。
 
 | 変数 | 説明 |
 |---| ---|
-|`ut.event`| トラッキングされているイベントの名前、例えばビューやリンク。 |
-|`ut.version`| `utag.js`のバージョン番号、公開タイムスタンプが続きます。 |
-|`ut.domain`| 現在読み込まれているウェブページのトップレベルドメイン。 |
-|`tealium_session_number`| `cp.utag_main__sn`の既存の値の複製。 |
-|`tealium_session_event_number`| 現在のセッション（訪問）でのutag.link/view/track呼び出しの数をカウントする`cp.utag_main__se`の新しいクッキー値。常に'1ページ'があり、そのページ上で多くのイベントが発生するシングルページアプリ（SPA）に便利です |
+|`ut.event`| ビューやリンクなど、トラッキング対象のイベント名。 |
+|`ut.version`| `utag.js`のバージョン番号と、それに続くパブリッシュタイムスタンプ。 |
+|`ut.domain`| 現在読み込まれているWebページのトップレベルドメイン。 |
+|`tealium_session_number`| `cp.utag_main__sn`内の既存値の複製。 |
+|`tealium_session_event_number`| 現在のセッション（訪問）におけるutag.link/view/track呼び出しの回数をカウントする、`cp.utag_main__se`内の新しいCookie値。常に「1ページ」で、そのページ上で多数のイベントが発生するシングルページアプリケーション（SPA）に役立ちます。 |
 
-### ファーストパーティTealiumクッキー
+### TealiumのファーストパーティCookie
 
 | 変数 | 説明 |
 |---| ---|
 |`_ses_id`| セッションの一意の識別子。`utag.js`バージョン4.27以降が必要です。 |
-|`_st`| 訪問が何もしない場合に訪問セッションが期限切れになる時間。これは訪問の現在の時間にセッションタイムアウト時間を加えたものです。このタイムアウト期間は通常30分（1800000ミリ秒）ですが、構成により異なる場合があります。`utag.cfg.session_timeout`の値は、[JavaScript Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を使用してこの変数を変更することで上書きできます。`utag.js`バージョン4.26以降が必要です。 |
-|`_v_id`| データプライバシーと同意ルールを遵守するための訪問に固有のID値。`utag.js`バージョン4.26以降が必要です。詳細については、[`utag.js`バージョン4.50](https://docs.tealium.com/platforms/javascript/version-4-50/)を参照してください。 |
+|`_st`| 訪問がそれ以上何もしなかった場合に、訪問セッションが期限切れになる時刻。訪問の現在時刻にセッションタイムアウト時間を加えた値です。このタイムアウト期間は、別途構成されていない限り、通常30分（1800000ミリ秒）です。`utag.cfg.session_timeout`の値は、[JavaScript拡張機能](https://docs.tealium.com/advanced-javascript-code-extension/)を使用してこの変数を変更することで上書きできます。`utag.js`バージョン4.26以降が必要です。 |
+|`_v_id`| データプライバシーおよび同意に関する規則への準拠を確保するための、訪問に固有のID値。`utag.js`バージョン4.26以降が必要です。詳細については、[`utag.js`バージョン4.50](https://docs.tealium.com/platforms/javascript/version-4-50/)を参照してください。 |
 |`_se`| 現在のセッション中のイベント数。 |
-|`_ss`| セッション開始を示すフラグ値。値は`0`または`1`です。`utag.js`バージョン4.26以降が必要です。 |
-|`_pn`| ページ番号値。新しいセッションごとに`1`から始まり、`utag.js`がロードされるたびに増加します。`utag.js`バージョン4.28以降が必要です。 |
+|`_ss`| セッションの開始を示すフラグ値。値は`0`または`1`です。`utag.js`バージョン4.26以降が必要です。 |
+|`_pn`| ページ番号の値。新しいセッションごとに`1`から始まり、`utag.js`が読み込まれるたびに増加します。`utag.js`バージョン4.28以降が必要です。 |
 |`_sn`| セッション数。`utag.js`バージョン4.28以降が必要です。 |
-|`_dc_group`| **Sample Size**構成と一緒に使用するランダムな数値。Tealium Collectタグがどのイベントをサンプリングするかを決定します。 |
-|`_dc_visit`| Collectタグが発火したセッション数。最初の訪問では`1`から始まります。 |
-|`_dc_event`| Collectタグが発火したイベント数。訪問の最初のページビューでは`1`から始まります。 |
-|`_dc_region`| 訪問セッションが保存されているAudienceStream地域、HTTPレスポンスヘッダーから収集されます。このクッキーは、[データレイヤーのエンリッチメント](https://docs.tealium.com/data-layer-enrichment/)のエンドポイントを決定するために使用されます。 |
+|`_dc_group`| Tealium Collectタグの**サンプルサイズ**構成とともに使用し、サンプリング対象となるイベントを決定するための乱数。 |
+|`_dc_visit`| Collectタグが発火したセッションの数。最初の訪問では`1`から始まります。 |
+|`_dc_event`| Collectタグが発火したイベントの数。訪問時の最初のページビューでは`1`から始まります。 |
+|`_dc_region`| 訪問セッションが保存されるCustomer Data Platform（CDP）リージョン。HTTPレスポンスヘッダーから収集されます。このCookieは、[データレイヤーエンリッチメント](https://docs.tealium.com/data-layer-enrichment/)のエンドポイントを決定するために使用されます。 |
+### その他の変数
 
-### 追加変数
+タグは、以下を含むさまざまなデータをページから収集します。
 
-タグは、以下を含むページからの他のデータを収集します：
-
-* データレイヤーで定義されたデータポイント。任意の値の最大文字長は255文字です。
-* ウェブページの要素、例えばメタデータ、クッキーパラメータ、JavaScriptページ変数。
-* リアルユーザーモニタリング（RUM）データを収集するためのパフォーマンスタイミングメトリクス。このデータは、ユーザーの体験を理解するために使用できます。例えば、あなたのサイトのページでのブラウザーのDOMインタラクティブ状態までの時間など。  
+* データレイヤーで定義されたデータポイント。各値の最大文字数は255文字です。
+* メタデータ、Cookieパラメータ、JavaScriptページ変数などのWebページ要素。
+* リアルユーザーモニタリング（RUM）データを収集するためのパフォーマンスタイミング指標。このデータを使用して、ユーザーエクスペリエンスを把握できます。たとえば、サイト上のページについて、ブラウザーがDOMインタラクティブ状態になるまでの時間を確認できます。
 
 | パフォーマンスタイミング変数 | 説明 |
 |---| ---|
 |`timing.domain`| タイミングデータが収集されたドメイン。|
-|`timing.pathname`| タイミングデータが収集されたパス名（ウェブページ）。|
-|`timing.query_string`| タイミングデータが収集されたURLのクエリストリング値。|
-|`timing.timestamp`| タイミングデータが収集された日時（クライアントのウェブブラウザのエポック時間）。|
+|`timing.pathname`| タイミングデータが収集されたパス名（Webページ）。|
+|`timing.query_string`| タイミングデータが収集されたURLのクエリ文字列値。|
+|`timing.timestamp`| タイミングデータが収集された日時（クライアントのWebブラウザーのエポック時間）。|
 |`timing.dns`| `t.domainLookupStart`|
 |`timing.connect`| `t.connectStart`|
 |`timing.response`| `t.responseStart`|
-|`timing.dom_loading_to_interactive`| `t.domInteractive`から`t.domLoading`を引いた値|
-|`timing.dom_interactive_to_complete`| `t.domComplete`から`t.domInteractive`を引いた値|
-|`timing.load`| `t.loadEventEnd`から`t.loadEventStart`を引いた値|
-|`timing.time_to_first_byte`| `t.responseStart`から`t.connectEnd`を引いた値|
-|`timing.front_end`| `t.loadEventStart`から`t.responseEnd`を引いた値|
-|`timing.fetch_to_response`| `t.responseStart`から`t.fetchStart`を引いた値|
-|`timing.fetch_to_complete`| `t.domComplete`から`t.fetchStart`を引いた値|
-|`timing.fetch_to_interactive`| `t.domInteractive` から `t.fetchStart `を引いたもの|
+|`timing.dom_loading_to_interactive`| `t.domInteractive`から` t.domLoading`を引いた値|
+|`timing.dom_interactive_to_complete`| `t.domComplete`から` t.domInteractive`を引いた値|
+|`timing.load`| `t.loadEventEnd`から` t.loadEventStart`を引いた値|
+|`timing.time_to_first_byte`| `t.responseStart`から` t.connectEnd`を引いた値|
+|`timing.front_end`| `t.loadEventStart`から` t.responseEnd`を引いた値|
+|`timing.fetch_to_response`| `t.responseStart`から` t.fetchStart`を引いた値|
+|`timing.fetch_to_complete`| `t.domComplete`から` t.fetchStart`を引いた値|
+|`timing.fetch_to_interactive`| `t.domInteractive`から` t.fetchStart `を引いた値|
 
 
 <blockquote>
-データポイントの値がゼロの場合、タイミング情報は取得されません。報告や平均を出す際にはゼロの値は無視できます。
+データポイントの値がゼロの場合、タイミング情報は取得されていません。レポート作成時や平均値の計算時には、ゼロの値を無視できます。
 </blockquote>
 
 
 ## 訪問のタイムゾーンの計算
 
-訪問のタイムゾーンはEventStoreデータには送信されません。`_ss`が`1`のレコードで`EventTime`と`_ses_id`の差を見ることでタイムゾーンを計算できます。そのレコードはセッションの開始を示しています。
+訪問のタイムゾーンは、EventStoreデータでは送信されません。`_ss`が`1`であるレコードはセッションの開始を示すため、そのレコードの`EventTime`と`_ses_id`の差を確認することで、タイムゾーンを計算できます。
 
-`utag.cfg.session_timeout`がわかっている場合、`_st`から`utag.cfg.session_timeout`を引くことでユーザーの現地時間を計算できます。その後、現在の時間と`EventTime`の差を見ることでタイムゾーンを計算できます。このアプローチは任意のレコードに使用できます。
+`utag.cfg.session_timeout`が既知の場合は、`_st`から`utag.cfg.session_timeout`を引くことでユーザーの現在のローカル時刻を計算し、その現在時刻と`EventTime`の差からタイムゾーンを計算できます。この方法は、どのレコードにも使用できます。
 
 ## utag.jsのバージョン
 
-個々のutagバージョンについての詳細情報は、[utag.jsリリースノート](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag/)をご覧ください。
+個々のutagバージョンの詳細については、[utag.jsリリースノート](https://docs.tealium.com/release-notes/?filter=tealium-universal-tag/)を参照してください。
 
-## サンプルJSONオブジェクト
+## JSONオブジェクトの例
 
 ```json
 {
@@ -201,7 +200,7 @@ Tealium組み込み変数の完全なリストは、[Built-In Data Layer Variabl
     "js_page.is_mobile": "false",
     "js_page.is_tablet": "false",
     "device_type": "desktop",
-    "udo_page_name": "AudienceStream | Real-time Data Action Engine | Tealium",
+    "udo_page_name": "CDP | Real-time Data Action Engine | Tealium",
     "udo_site_name": "Tealium",
     "udo_site_description": "Tag Management and Audience Segmentation",
     "udo_page_type": "page",
@@ -210,9 +209,9 @@ Tealium組み込み変数の完全なリストは、[Built-In Data Layer Variabl
 }
 ```
 
-## パフォーマンスタイミングメトリクス
+## パフォーマンスタイミング指標
 
-パフォーマンスタイミングメトリクスについての追加情報は、以下を参照してください：
+パフォーマンスタイミング指標の詳細については、以下を参照してください。
 
-* [Navigation Timingの実用ガイド](http://calendar.perfplanet.com/2011/a-practical-guide-to-the-navigation-timing-api/)
-* [Web APIs > Navigation Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API)
+* [Navigation Timingの実践ガイド](http://calendar.perfplanet.com/2011/a-practical-guide-to-the-navigation-timing-api/)
+* [Web API > Navigation Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API)

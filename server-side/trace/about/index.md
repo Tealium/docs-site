@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/trace/about/
 
 The following items are required to use trace:
 
-* Tealium EventStream or AudienceStream  
+* Event Streaming or Customer Data Platform (CDP)  
 * [Tealium Tools Browser Extension](https://chrome.google.com/webstore/detail/tealium-tools/gidnphnamcemailggkemcgclnjeeokaa)  
 
 
@@ -18,7 +18,7 @@ Do not add trace IDs to bulk events.<br>Do not add trace IDs as a permanent para
 
 ## How it works
 
-Trace provides an inside view into the inner workings of EventStream and AudienceStream. The trace tool is critical for testing your configuration. Use trace to observe the details of a  workflow, ensure that attributes update correctly, rules are correctly applied, and that actions trigger as expected.
+Trace provides an inside view into the inner workings of Event Streaming and CDP. The trace tool is critical for testing your configuration. Use trace to observe the details of a  workflow, ensure that attributes update correctly, rules are correctly applied, and that actions trigger as expected.
 
 The trace interface supports the following actions:
 

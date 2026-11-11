@@ -1,155 +1,155 @@
 ---
-title: Tealium構成MCPについて
-description: Tealium構成MCPは、自然言語を使用してサーバーサイドプロファイルを探索および構成するためのAIネイティブインターフェースです。
+title: Tealium Configuration MCP について
+description: Tealium Configuration MCP は、自然言語を使用してサーバーサイドプロファイルを調査・構成するための AI ネイティブなインターフェイスです。
 url: https://docs.tealium.com/ja/server-side/config-mcp/about-config-mcp/
 ---
 
 <blockquote>
-Tealium構成MCPは選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、[サポートに連絡してください](https://docs.tealium.com/support/)。
+Tealium Configuration MCP は、一部のお客様のみご利用いただけます。この機能の利用に関心がある場合は、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
 </blockquote>
 
 
-Tealium構成MCPは、AIクライアントをサーバーサイドプロファイルに接続し、Tealium UIを操作する代わりに自然言語を使用して構成を探索し、変更を加え、新しいバージョンをコミットできます。
+Tealium Configuration MCP は、AI クライアントをサーバーサイドプロファイルに接続します。これにより、Tealium UI を操作する代わりに、自然言語を使用して構成の調査、変更、および新しいバージョンのコミットを行えます。
 
-ビジネス目標を説明することで、例えばオーディエンスの作成、依存関係の理解、未使用の構成の特定など、Tealium構成MCPはその目標を必要なプロファイル構成に変換します。
+オーディエンスの作成、依存関係の把握、未使用の構成の特定など、ビジネス目標を記述すると、Tealium Configuration MCP がその目標を必要なプロファイル構成に変換します。
 
-Tealium構成MCPはAIによって生成された変更をドラフトプロファイル改訂としてステージングします。公開にはTealium UIでの別のレビューとアクションが必要です。
+Tealium Configuration MCP は、AI が生成した変更をプロファイルのドラフトリビジョンとしてステージングします。パブリッシュするには、Tealium UI で別途レビューおよび操作を行う必要があります。
 
 ## 要件
 
-この機能には以下が必要です：
+この機能を利用するには、以下が必要です。
 
-* **有料のClaudeプラン：** Claude Pro、Max、Team、またはEnterpriseプランを持っている必要があります。無料プランではカスタムコネクタを追加できません。
+* **有料の Claude プラン：** Claude Pro、Max、Team、または Enterprise プランが必要です。無料プランではカスタムコネクタを追加できません。
 
-Tealium構成MCPはプライベートクラウドアカウントでは利用できません。
+Tealium Configuration MCP は、プライベートクラウドアカウントでは利用できません。
 
-Tealium構成MCPをアカウントで有効にするには、[サポートに連絡してください](https://docs.tealium.com/support/)。
+アカウントで Tealium Configuration MCP を有効にするには、[サポートにお問い合わせください](https://docs.tealium.com/support/)。
 
-## 動作方法
+## 仕組み
 
-Tealium構成MCPは、独立したコマンドの集まりではなく、ガイド付きの状態保持セッションとして機能します。Tealium構成MCPはセッションの状態を管理し、プロファイルのドラフトを維持し、変更が検証され適用されるタイミングを制御します。変更を加えたい内容を質問したり説明したりすると、Tealium構成MCPは必要な手順を実行します。
+Tealium Configuration MCP は、独立したコマンドの集まりではなく、ガイド付きのステートフルなセッションとして機能します。Tealium Configuration MCP はセッションの状態を管理し、プロファイルのドラフトを維持するとともに、変更を検証して適用するタイミングを制御します。質問するか、加えたい変更について説明すると、Tealium Configuration MCP が必要な手順を実行します。
 
-各セッションは以下のワークフローを使用します：
+各セッションでは、以下のワークフローを使用します。
 
-1. **バージョンを選択します。** チャットセッションの開始時に、エージェントは作業対象のプロファイルバージョンを尋ねます：**最新の公開バージョン**、**最新の保存バージョン**、または特定のリビジョン。一時的なドラフトコピーが作成されます。セッション中のすべての変更はそのドラフトに適用されます。
-1. **探索します。** プロファイルについて質問したり、変更をリクエストしたりします。エージェントは既存の構成を説明し、依存関係を追跡し、行いたい変更の計画を作成します。Tealium構成MCPが進む前に計画をレビューします。
-1. **パッチを適用します。** 計画を確認した後、Tealium構成MCPはドラフトに変更を順次パッチとして適用し、プロファイルの整合性を継続的に検証し、自動的に競合を解決しようとします。
-1. **コミットします。** すべての変更が完了した後、エージェントは要約を提供します。要約を確認してコミットします。
-1. **UIでレビューします。** Tealium UIで新しい保存バージョンを開き、変更をレビューし、組織の承認プロセスを完了した後に手動で公開します。
+1. **バージョンを選択します。** チャットセッションの開始時に、エージェントが作業対象とするプロファイルバージョン（**最新のパブリッシュ済みバージョン**、**最新の保存済みバージョン**、または特定のリビジョン）を尋ねます。一時的なドラフトコピーが作成されます。セッション中のすべての変更は、そのドラフトに適用されます。
+1. **調査します。** プロファイルについて質問するか、変更を依頼します。エージェントは、既存の構成の説明、依存関係の追跡、および希望する変更の計画作成を行えます。Tealium Configuration MCP が処理を進める前に、計画を確認してください。
+1. **パッチを適用します。** 計画を確認すると、Tealium Configuration MCP は変更を順次パッチとしてドラフトに適用し、プロファイルの整合性を継続的に検証しながら、競合の自動解決を試みます。
+1. **コミットします。** すべての変更が完了すると、エージェントが概要を提示します。概要を確認してコミットします。
+1. **UI でレビューします。** Tealium UI で新しく保存されたバージョンを開いて変更を確認し、組織の承認プロセスを完了した後、手動でパブリッシュします。
 
 
 <blockquote>
-Tealium構成MCPはプロファイルの変更を公開しません。すべての保存されたバージョンはTealium UIでの手動公開が必要です。
+Tealium Configuration MCP がプロファイルの変更をパブリッシュすることはありません。保存されたすべてのバージョンは、Tealium UI で手動でパブリッシュする必要があります。
 </blockquote>
 
 
-## 使用例
+## ユースケース
 
-Tealium構成MCPは、通常Tealium UIを通じて完了するであろうほとんどの構成タスクをサポートしています。[サポートされているオブジェクト](#supported-objects)の範囲内です。一般的な使用例には以下が含まれます：
+Tealium Configuration MCP は、[サポート対象オブジェクト](#supported-objects)の範囲内で、通常 Tealium UI から実行するほとんどの構成タスクに対応しています。一般的なユースケースは次のとおりです。
 
-**既存の構成を探索する**
+**既存の構成を調査する**
 
-プロファイルを要約し、エンティティを見つけ、ルールとロジックを説明し、構成がどのように接続されているかを調査します。
+プロファイルの要約、エンティティの検索、ルールとロジックの説明、および構成間の接続関係の確認を行います。
 
 ```wrap
-私のTealiumプロファイルで利用可能な属性を要約してください。それらをスコープ（イベント/訪問/訪問）別にグループ化してください。
+Provide a summary of attributes available in my Tealium profile. Group them by their scope (event/visit/visitor).
 ```
 
 ```wrap
-オーディエンスAの背後にあるルールを要約してください。それによって、ユーザーがいつ参加または離脱するかをよりよく理解できます。
+Summarize the rules behind audience A, so I better understand when a user joins or leaves.
 ```
 
 ```wrap
-私の構成されたアクション全体でどのコネクタが最も使用されており、それらがサポートするユースケースは何ですか？
+Which connectors are being used most across my configured actions, and what use cases do they support?
 ```
 
-**依存関係と系譜を追跡する**
+**依存関係とリネージを追跡する**
 
-エンティティの上流および下流の参照を特定します。たとえば、どのエンリッチメント、オーディエンス、ルール、コネクタ、またはアクションが特定の属性を参照していますか。
-
-```wrap
-オーディエンスAによって使用されている属性は他のオーディエンスによって使用されていますか？
-```
+特定の属性を参照するエンリッチメント、オーディエンス、ルール、コネクタ、アクションなど、エンティティの上流および下流の参照関係を特定します。
 
 ```wrap
-属性Xのエンリッチメントを変更した場合の下流への影響は何ですか？
+Are attributes used by audience A used by any other audiences?
 ```
 
 ```wrap
-どのアクティブなオーディエンスがアクションやコネクタに接続されていないのですか？
-```
-
-**個々のエンティティを作成する**
-
-属性、オーディエンス、ルール、イベント仕様、または他の利用可能なエンティティなど、サポートされているプロファイルオブジェクトを追加します。
-
-```wrap
-VIPオーディエンスのための新しい基本的なWebhookアクションを作成してください。Webhook URLはhttps://webhook.site/a1b2c3d4-1234-5678-abcd-ef1234567890です。メソッドはPOSTです。訪問のペイロード全体を含めます。オーディエンスに参加する訪問がトリガーされます。
+What is the downstream impact if I change the enrichment of attribute X?
 ```
 
 ```wrap
-ユーザーが購入する異なる製品IDの数を数える訪問の集計を作成してください。tealium_eventが「purchase」の場合です。
+Which of my active audiences are not wired to any actions or connectors?
+```
+
+**個別のエンティティを作成する**
+
+属性、オーディエンス、ルール、イベント仕様、その他の利用可能なエンティティなど、サポート対象のプロファイルオブジェクトを追加します。
+
+```wrap
+Create a new basic webhook action for the VIP audience. The webhook URL is https://webhook.site/a1b2c3d4-1234-5678-abcd-ef1234567890. The method is POST. Include the entire visitor payload. Trigger when visitors join the audience.
+```
+
+```wrap
+Create a visitor tally that counts how many different product IDs the user purchases, when tealium_event is 'purchase'.
 ```
 
 **相互接続されたワークフローを作成する**
 
-ビジネスユースケースを説明し、それを実装するために必要な関連エンティティと参照のセットを作成します。
+ビジネスユースケースを記述し、その実装に必要な一連の関連エンティティと参照を作成します。
 
 ```wrap
-プロファイルに関連するeコマースサイトを閲覧しているユーザーの意図を理解するためのTealiumでのユースケースを開発してください。有料メディアでターゲットできる5つの異なるオーディエンスにユーザーを追加します。
+Develop a use case in Tealium to understand the intent of a user who is browsing the e-commerce site attached to the profile. Add users into five distinct audiences that can be targeted in paid media.
 ```
 
 ```wrap
-<業界>会社として、私のTealiumプロファイルで構成する追加のユースケースを推奨してください。
+As a <industry> company, recommend additional use cases to configure in my Tealium profile.
 ```
 
 **構成を変更する**
 
-自然言語を使用してサポートされているワークフローのロジック、条件、または関係を更新します。
+自然言語を使用して、サポート対象ワークフローのロジック、条件、または関係を更新します。
 
 ```wrap
-「High Value Customers」オーディエンスに条件を追加して、過去30日間に購入した訪問のみが含まれるようにしてください。
+Add a condition to the 'High Value Customers' audience so that only visitors who have made a purchase in the last 30 days are included.
 ```
 
 ```wrap
-すでにコンバージョンした訪問を「Prospecting」オーディエンスから除外してください。
+Exclude visitors who have already converted from the 'Prospecting' audience.
 ```
 
 ```wrap
-Send Campaign Message Brazeアクションの頻度上限を1日に1回から1週間に1回に変更してください。
+Change the frequency cap on the Send Campaign Message Braze action from once per day to once per week.
 ```
 
 **プロファイルの健全性を維持する**
 
-孤立しているまたは使用されていないエンティティを見つけ、クリーンアップまたは削除の候補を特定します。
+孤立している、または使用されていないエンティティを見つけ、クリーンアップまたは削除の候補を特定します。
 
 ```wrap
-現在使用されていない、またはオーディエンスルールやエンリッチメントで参照されていない属性はどれですか？
+Which of my attributes are currently unused, not referenced in any audience rules or enrichments?
 ```
 
 ```wrap
-オーディエンス、属性、コネクタをカバーする私のTealiumプロファイルの全体的な健全性の要約を教えてください。
+Give me an overall health summary of my Tealium profile, covering audiences, attributes, and connectors.
 ```
 
 ```wrap
-現在のプロファイル構成に基づいて、お勧めする上位3つのギャップまたは改善点は何ですか？
+What are the top three gaps or improvements you'd recommend based on my current profile configuration?
 ```
 
-## サポートされているオブジェクト
+## サポート対象オブジェクト
 
-Tealium構成MCPは、以下のプロファイルオブジェクトをサポートしています。
+Tealium Configuration MCP は、以下のプロファイルオブジェクトをサポートしています。
 
 **データソース**
 
-* Tealium iQ、Android、iOS、HTTP API、HTTP API - Advanced、ファイルインポート
+* タグ管理、Android、iOS、HTTP API、HTTP API - Advanced、ファイルインポート
 
 **イベント**
 
-* イベントフィード、イベント仕様、イベント属性（ユニバーサルデータオブジェクトのみ）、イベント属性エンリッチメント
+* イベントフィード、イベント仕様、イベント属性（ユニバーサルデータオブジェクトのみ）、イベント属性のエンリッチメント
 
 **訪問とオーディエンス**
 
-* 訪問属性、訪問属性、訪問/訪問属性エンリッチメント、オーディエンス（セグメントなし）
+* 訪問属性、訪問属性、訪問／訪問属性のエンリッチメント、オーディエンス（セグメントを除く）
 
 **コネクタ**
 
@@ -160,32 +160,32 @@ Tealium構成MCPは、以下のプロファイルオブジェクトをサポー�
 * ルール、ラベル
 ### オーディエンス編集の互換性
 
-Tealium Configuration MCPは、既存のオーディエンスを調査し、セグメントを使用しないオーディエンスを作成または変更することができます。一部の既存のオーディエンスはTealium Configuration MCPを通じて閲覧できますが、現在のAudiences UIで公開されるまで条件を変更することはできません。
+Tealium Configuration MCPでは、既存のオーディエンスを調査し、セグメントを使用しないオーディエンスを作成または変更できます。一部の既存オーディエンスはTealium Configuration MCPで表示できますが、現在のAudiences UIで公開されるまでは条件を変更できません。
 
-オーディエンスを編集可能にするには、**Activate > Audiences**で開き、変更を加えずに保存して公開します。公開すると、オーディエンスは自動的に現在の構成形式にアップグレードされます。公開後、新しいMCPセッションを開始します。次のツールコール時に、Tealium Configuration MCPは新しい公開バージョンが利用可能であることを通知しますが、現在のセッションドラフトは古いオーディエンスバージョンを保持しています。このアップグレードは永続的であり、元に戻すことはできません。
+オーディエンスを編集可能にするには、**Activate > Audiences**でそのオーディエンスを開き、何も変更せずに保存して公開します。公開すると、オーディエンスは現在の構成形式に自動的にアップグレードされます。公開後、新しいMCPセッションを開始します。次回のツール呼び出し時に、Tealium Configuration MCPは新しく公開されたバージョンが利用可能であることを通知しますが、現在のセッションのドラフトには古いバージョンのオーディエンスが引き続き保持されます。このアップグレードは恒久的なものであり、元に戻すことはできません。
 
-**サポートされていない機能**
+**サポート対象外**
 
-Tealium Configuration MCPでは以下がサポートされていません：
+Tealium Configuration MCPでは、以下はサポートされていません。
 
-* クラウドデータソース、CloudStream、セグメント、セグメントを使用するオーディエンス、オーディエンスの充填、オーディエンス発見、オーディエンスサイジング、オーディエンスジョブ
+* クラウドデータソース、Data Cloud Activation、セグメント、セグメントを含むオーディエンス、オーディエンスへのデータ投入、オーディエンス検出、オーディエンスサイズ算出、オーディエンスジョブ
 * Tealium Insights、Context API、Functions、DataAccess、Data Connect、Predict
-* Tealium iQ（クライアントサイド）、同意調整
+* タグ管理（クライアント側）、同意オーケストレーション
 
 ## 制限事項
 
-**セッションごとに一つのプロファイル：** 各セッションは一つのプロファイルに接続します。プロファイルを切り替えるには、ユーザー構成を更新してTealium Configuration MCPに再接続します。プロファイルが変更されると、現在のセッションは無効になります。
+**セッションごとに1つのプロファイル：** 各セッションは1つのプロファイルに接続します。プロファイルを切り替えるには、User Preferencesを更新し、Tealium Configuration MCPに再接続します。プロファイルを変更すると、現在のセッションは無効になります。
 
-**コネクターの資格情報の作成不可：** Tealium Configuration MCPはアウトバウンドコネクターの資格情報を作成することができません。既存のコネクターを再利用し、それに対して新しいコネクターアクションを作成することができます。または、新しいコネクターを不完全な状態で作成し、Tealium UIで手動で資格情報を追加します。
+**コネクタの認証情報は作成不可：** Tealium Configuration MCPでは、送信コネクタの認証情報を作成できません。既存のコネクタを再利用し、それらに対して新しいコネクタアクションを作成できます。または、不完全な状態で新しいコネクタを作成し、Tealium UIで認証情報を手動で追加します。
 
-**秘密情報にアクセス不可：** プロファイルに保存されている資格情報（アクセストークンやパスワードなど）はエージェントに到達する前にフィルタリングされます。Tealium Configuration MCPはこれらを取得または表示することができません。
+**シークレットにはアクセス不可：** アクセストークンやパスワードなど、プロファイルに保存されている認証情報は、エージェントに届く前に除外されます。Tealium Configuration MCPでは、それらを取得または表示できません。
 
-**公開不可：** 変更を適用するにはTealium UIで手動で公開する必要があります。
+**公開不可：** 変更を反映するには、Tealium UIで手動で公開する必要があります。
 
-**Tealium UIとTealium Configuration MCPによる同時編集：** Tealium UIで新しいバージョンが公開されると、セッションがアクティブな間にエージェントが次回MCPツールがコールされたときに通知します。セッションを続行し、後で手動でマージの競合を解決するか、現在のセッションを破棄して最新の公開バージョンから新しいセッションを開始することができます。
+**Tealium UIとTealium Configuration MCPによる同時編集：** セッションがアクティブな間にTealium UIで新しいバージョンが公開された場合、次回MCPツールが呼び出しを行ったときにエージェントから通知されます。セッションを継続し、後でマージ競合を手動で解決するか、現在のセッションを破棄して、公開された最新バージョンから新しいセッションを開始できます。
 
-**セッションの有効期限：** セッションは非活動状態が4日間続くと期限切れになります。長期間セッションを放置する前に変更をコミットしてください。戻った後、新しいセッションを開始し、コミットされたバージョンを`Latest Saved`としてロードします。
+**セッションの有効期限：** セッションは、4日間操作がないと期限切れになります。長期間セッションを離れる前に、変更をコミットしてください。戻った後、新しいセッションを開始し、コミットしたバージョンを`Latest Saved`として読み込みます。
 
-**トークンの使用：** 大規模または複雑なプロファイルでは、セッションごとにより多くのトークンが必要です。Claude Pro、Max、Team、またはEnterpriseプランが必要です。
+**トークン使用量：** 大規模または複雑なプロファイルでは、セッションごとにより多くのトークンが必要です。Claude Pro、Max、Team、またはEnterpriseプランが必要です。
 
-**サポートされているAIクライアント：** Tealium Configuration MCPはClaude（claude.ai、Claude Desktop、Claude Code CLI）と連携します。
+**サポートされているAIクライアント：** Tealium Configuration MCPは、Claude（claude.ai、Claude Desktop、Claude Code CLI）で動作します。

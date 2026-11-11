@@ -86,7 +86,7 @@ The consent prompt detects the language setting in the visitor's browser (two-ch
 To add a language:
 
 1. In the **Language** side panel, click **+ Add**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog-add-language.jpg)
 
 1. Select the language and click **Apply**.  
 The new language displays in the side panel.
@@ -100,7 +100,7 @@ The default language is used to display the consent prompt when the user's detec
 To set a default language:
 
 1. Check the **Make Default Language** box located in the language title bar.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 1. Click **Preview** to view your language configuration.
 
 #### Override the language

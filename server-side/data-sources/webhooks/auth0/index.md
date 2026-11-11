@@ -11,7 +11,7 @@ The Auth0 data source receives data from all Tealium actions available in the Au
 
 Auth0 incoming webhook requires the following:
 
-* Tealium EventStream or Tealium AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 * Auth0 account
 
 ### Add an Auth0 data source
@@ -39,7 +39,7 @@ For more information, see [Auth0: Understand How Auth0 Actions Work](https://aut
 
 ### Events and attributes
 
-All incoming Auth0 event attributes are prefixed with `auth0_`. For example, for the `user_id` attribute, Auth0 will send the matching EventStream event attribute `auth0_user_id` (all lowercase). The Auth0 webhook API sends flattened JSON objects to Tealium.
+All incoming Auth0 event attributes are prefixed with `auth0_`. For example, for the `user_id` attribute, Auth0 will send the matching Event Streaming event attribute `auth0_user_id` (all lowercase). The Auth0 webhook API sends flattened JSON objects to Tealium.
 
 |Key| Type| Example|
 |---| ---| ---|

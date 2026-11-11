@@ -1,74 +1,74 @@
 ---
-title: Adjustモバイルリモートコマンドタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAdjustモバイルリモートコマンドタグを構成する方法について説明します。
+title: Adjust Mobileリモートコマンドタグ構成ガイド
+description: この記事では、タグ管理アカウントでAdjust Mobileリモートコマンドタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adjust-mobile-remote-command-tag/
 ---
-Adjustは、モバイル測定と詐欺防止の業界リーダーです。マーケティングをよりシンプルでスマート、そして安全にすることで、データ駆動型のマーケターが成功を収めることを支援します。
+Adjustは、モバイル計測と不正防止の業界リーダーです。マーケティングをよりシンプル、スマート、かつ安全にすることで、データドリブンなマーケターの成功を支援します。
 
-## タグのヒント
+## タグに関するヒント
 
-* 標準の構成値を上書きするためにマッピングを使用します。
-* これはネイティブモバイルアプリSDKのリモートコマンドコンパニオンタグです。
+* マッピングを使用して、標準の構成値を上書きします。
+* これは、ネイティブモバイルアプリSDK用のリモートコマンドコンパニオンタグです。
 
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスしてAdjustモバイルリモートコマンドタグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照してください）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を行います：
+タグを追加する際に、以下の構成を構成します。
 
 * **Adjust APIトークン**
-  * Adjust APIトークンはユーザーごとに割り当てられ、任意のAdjustダッシュボードアカウントおよびAdjust統合アプリで使用できます。
-  * [Adjust APIトークンの検索方法](https://help.adjust.com/en/article/developer-guides#how-to-find-your-adjust-api-token)。
+  * Adjust APIトークンはユーザーごとに割り当てられ、Adjustダッシュボードの任意のアカウントおよびAdjustと連携する任意のアプリで使用できます。
+  * [Adjust APIトークンを確認する](https://help.adjust.com/en/article/developer-guides#how-to-find-your-adjust-api-token)。
 
 * **自動初期化**
-  * 初期化コマンドを自動的に送信します。
+  * Initializeコマンドを自動的に送信します。
 
 * **サンドボックス**
-  * アプリをテストしているあなたまたは他の誰かがtrueに構成します。
+  * 自分または他のユーザーがアプリをテストしている場合は、trueに構成します。
 
 * **ログレベル**
   * テスト中に表示されるログの量を増減します。
 
-* **遅延開始**
-  * Adjust SDKの開始を遅らせることで、アプリがインストール時に送信するためのセッションパラメーター（ユニークIDなど）を取得する時間を確保できます。
-  * Adjust SDKの最大遅延開始時間は10秒です。
+* **開始の遅延**
+  * Adjust SDKの開始を遅らせることで、インストール時に送信する一意の識別子などのセッションパラメータを取得する時間をアプリに確保できます。
+  * Adjust SDKの開始を遅らせることができる時間は、最大10秒です。
 
 * **iAd iOSフレームワークを許可**
-  * このフレームワークは、SDKがASAキャンペーンの帰属を自動的に処理するために必要です。
+  * このフレームワークは、実施している可能性のあるASAキャンペーンのアトリビューションをSDKが自動的に処理するために必要です。
 
 * **Ad Servicesフレームワークを許可**
-  * iOS 14.3以降を実行しているデバイスの場合、このフレームワークはSDKがASAキャンペーンの帰属を自動的に処理することを可能にします。
-  * Apple Ads Attribution APIを活用する際に必要です。
+  * iOS 14.3以降を実行しているデバイスでは、このフレームワークにより、SDKがASAキャンペーンのアトリビューションを自動的に処理できます。
+  * Apple Ads Attribution APIを利用する場合に必要です。
 
 * **iOS広告識別子を許可**
-  * 重複報告を防ぐために、デバイスIDとクライアントIDを調整する必要があるサービス（例：Google Analytics）があります。
+  * 一部のサービス（Google Analyticsなど）では、重複レポートを防ぐために、デバイスIDとクライアントIDを連携させる必要があります。
 
 * **アプリシークレットID**
-  * SDK署名機能に使用されます。
+  * SDK署名機能に使用します。
 
 * **アプリシークレット情報1**
-  * SDK署名機能に使用されます。
+  * SDK署名機能に使用します。
 
 * **アプリシークレット情報2**
-  * SDK署名機能に使用されます。
+  * SDK署名機能に使用します。
 
 * **アプリシークレット情報3**
-  * SDK署名機能に使用されます。
+  * SDK署名機能に使用します。
 
 * **アプリシークレット情報4**
-  * SDK署名機能に使用されます。
+  * SDK署名機能に使用します。
 
 * **イベントバッファリング**
-  * アプリがイベントトラッキングを頻繁に使用する場合、HTTPリクエストの一部を遅延させて、1分ごとに一括で送信することが望ましい場合があります。
+  * アプリでイベントトラッキングを頻繁に使用する場合は、一部のHTTPリクエストを遅延させ、1分ごとに1つのバッチとして送信できます。
 
 * **バックグラウンドトラッキング**
-  * Adjust SDKのデフォルトの動作は、アプリがバックグラウンドにある間はHTTPリクエストの送信を一時停止することです。
+  * Adjust SDKのデフォルトの動作では、アプリがバックグラウンドにある間、HTTPリクエストの送信を一時停止します。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### コマンド
 
@@ -92,76 +92,76 @@ Adjustは、モバイル測定と詐欺防止の業界リーダーです。マ�
 
 ### 標準
 
-| 変数                                                     | タイプ      |
+| 変数                                                          | 型        |
 |:-------------------------------------------------------------|:----------|
-| APIトークン (`api_token`)                                      | [String]  |
-| 自動初期化 (`auto_initialize`)                          | [Boolean] |
-| サンドボックス (`sandbox`)                                          | [Boolean] |
-| ログレベル (`settings.log_level`)                             | [String]  |
-| 遅延開始 (`settings.delay_start`)                         | [Float]   |
-| IADを許可 (`settings.allow_iad)                              | [Boolean] |
-| Adサービスを許可 (`settings.allow_ad_services`)             | [Boolean] |
-| IDFAを許可 (`settings.allow_idfa`)                           | [Boolean] |
-| アプリシークレット (`settings.app_secret`)                           | [String]  |
-| アプリシークレット情報1 (`settings.app_secret_info_1`)             | [String]  |
-| アプリシークレット情報2 (`settings.app_secret_info_2`)             | [String]  |
-| アプリシークレット情報3 (`settings.app_secret_info_3`)             | [String]  |
-| アプリシークレット情報4 (`settings.app_secret_info_4`)             | [String]  |
-| イベントバッファリング有効 (`settings.event_buffering_enabled`) | [Boolean] |
-| バックグラウンドで送信 (`settings.send_in_background`)           | [Boolean] |
+| APIトークン（`api_token`）                                      | [String]  |
+| 自動初期化（`auto_initialize`）                                  | [Boolean] |
+| サンドボックス（`sandbox`）                                      | [Boolean] |
+| ログレベル（`settings.log_level`）                               | [String]  |
+| 開始の遅延（`settings.delay_start`）                             | [Float]   |
+| IADを許可（`settings.allow_iad`）                                | [Boolean] |
+| Ad Servicesを許可（`settings.allow_ad_services`）                | [Boolean] |
+| IDFAを許可（`settings.allow_idfa`）                              | [Boolean] |
+| アプリシークレット（`settings.app_secret`）                        | [String]  |
+| アプリシークレット情報1（`settings.app_secret_info_1`）             | [String]  |
+| アプリシークレット情報2（`settings.app_secret_info_2`）             | [String]  |
+| アプリシークレット情報3（`settings.app_secret_info_3`）             | [String]  |
+| アプリシークレット情報4（`settings.app_secret_info_4`）             | [String]  |
+| イベントバッファリングを有効化（`settings.event_buffering_enabled`） | [Boolean] |
+| バックグラウンドで送信（`settings.send_in_background`）              | [Boolean] |
 
 ### イベントトラッキング
 
-| 変数                                          | タイプ                                        |
-|:--------------------------------------------------|:--------------------------------------------|
-| イベントトークン                                       | (`event_token`)                             |
-| 注文ID                                          | (`order_id`) (Overrides `_corder`)          |
-| 注文合計 (`order_total`) (Overrides `_ctotal`) | [Float]                                     |
-| 通貨                                          | (`order_currency`) (Overrides `_ccurrency`) |
-| 変換値                                          | (`conversion_value`)                        |
-| 販売地域                                      | (`sales_region`)                            |
-| SKU (`sku`)                                       | [String]                                    |
-| 購入トークン (`purchase_token`)                 | [String]                                    |
-| 署名 (`signature`)                           | [String]                                    |
+| 変数                                                    | 型                                          |
+|:-------------------------------------------------------|:--------------------------------------------|
+| イベントトークン                                           | （`event_token`）                             |
+| 注文ID                                                  | （`order_id`）（`_corder`を上書き）              |
+| 注文合計（`order_total`）（`_ctotal`を上書き）               | [Float]                                     |
+| 通貨                                                    | （`order_currency`）（`_ccurrency`を上書き）      |
+| コンバージョン値                                           | （`conversion_value`）                        |
+| 販売地域                                                 | （`sales_region`）                            |
+| SKU（`sku`）                                            | [String]                                    |
+| 購入トークン（`purchase_token`）                            | [String]                                    |
+| 署名（`signature`）                                      | [String]                                    |
 
 ### 広告収益トラッキング
 
-| 名前              | パラメータ             |
-|:------------------|:----------------------|
-| 広告収益ソース | (`ad_revenue_source`) |
+| 名前       | パラメータ                 |
+|:-----------|:--------------------------|
+| 広告収益ソース | （`ad_revenue_source`）     |
 
 ### サブスクリプション
 
-| 変数                           | タイプ              |
-|:-----------------------------------|:------------------|
-| アプリストアレシートデータ (`receipt`) | [JSON]            |
-| 購入タイムスタンプ                 | (`purchase_time`) |
+| 変数                                  | 型                  |
+|:-------------------------------------|:--------------------|
+| App Storeレシートデータ（`receipt`）     | [JSON]              |
+| 購入タイムスタンプ                        | （`purchase_time`）   |
 
-### コールバック/パートナーパラメータ
+### コールバック／パートナーパラメータ
 
-| 変数                       | パラメータ                          |
-|:-------------------------------|:-----------------------------------|
-| コールバックID                    | (`callback_id`)                    |
-| セッションコールバックパラメータを削除 | (`remove_session_callback_params`) |
-| セッションコールバックパラメータをリセット  | (`reset_session_callback_params`)  |
-| セッションパートナーパラメータを削除  | (`remove_session_partner_params`)  |
-| セッションパートナーパラメータをリセット   | (`reset_session_partner_params`)   |
+| 変数                                 | パラメータ                                  |
+|:------------------------------------|:-------------------------------------------|
+| コールバックID                         | （`callback_id`）                            |
+| セッションコールバックパラメータを削除      | （`remove_session_callback_params`）         |
+| セッションコールバックパラメータをリセット    | （`reset_session_callback_params`）          |
+| セッションパートナーパラメータを削除         | （`remove_session_partner_params`）          |
+| セッションパートナーパラメータをリセット       | （`reset_session_partner_params`）           |
 
-### ディープリンキング
+### ディープリンク
 
-| 変数      | 説明           |
-|:--------------|:----------------------|
-| ディープリンクURL | (`deeplink_open_url`) |
+| 変数          | 説明                    |
+|:--------------|:------------------------|
+| ディープリンクURL | （`deeplink_open_url`）   |
 
 ### メッセージング
 
-| 変数   | 説明    |
-|:-----------|:---------------|
-| プッシュトークン | (`push_token`) |
+| 変数          | 説明               |
+|:--------------|:-------------------|
+| プッシュトークン | （`push_token`）     |
 
-### 同意測定
+### 同意の計測
 
-| 変数            | 説明             |
-|:--------------------|:------------------------|
-| 同意が与えられた     | (`measurement_consent`) |
-| 有効 (`enabled`) | [Boolean]               |
+| 変数                 | 説明                        |
+|:--------------------|:----------------------------|
+| 同意済み              | （`measurement_consent`）     |
+| 有効（`enabled`）     | [Boolean]                   |

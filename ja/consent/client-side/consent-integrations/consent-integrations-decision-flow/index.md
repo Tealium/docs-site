@@ -42,13 +42,13 @@ Tealiumがロードされたときに同意決定が見つからない場合、�
 
 ## 同意統合の同意フロー
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-integrations-consent-flow.png)
+![](https://docs.tealium.com/images/tag-management/consent-integrations-consent-flow.png)
 
 フローがタグが実行可能かどうかを判断するステップに達したとき、以下のプロセスが各タグとイベントに適用されます：
 
 ### タグの発火の詳細
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-integrations-fire-tags.png)
+![](https://docs.tealium.com/images/tag-management/consent-integrations-fire-tags.png)
 
 ## オプトアウトモデル
 

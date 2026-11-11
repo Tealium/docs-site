@@ -5,11 +5,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/sendgrid/
 ---## Prerequisites
 
 * SendGrid account
-* EventStream/AudienceStream account
+* Event Streaming and Customer Data Platform (CDP) account
 
 ## How it works
 
-SendGrid offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to EventStream to inform it about things that happened in your SendGrid account. When you add the SendGrid data source in the UDH, a unique endpoint will be generated that you will use to configure Event notifications in your SendGrid account.
+SendGrid offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to Event Streaming to inform it about things that happened in your SendGrid account. When you add the SendGrid data source in the UDH, a unique endpoint will be generated that you will use to configure Event notifications in your SendGrid account.
 
 ## SendGrid data source
 

@@ -14,7 +14,7 @@ The Explicit Consent Prompt Manager works together with the [Consent Preferences
 
 Explicit Consent Prompt example:
 
-![](https://docs.tealium.com/images/iq-tag-management/example-consent-prompt.png)
+![](https://docs.tealium.com/images/tag-management/example-consent-prompt.png)
 
 The Explicit Consent Prompt Manager in iQ Tag Management makes it easy to create and deploy a consent prompt to your website using your existing installation. This feature can be used with the [Consent Preferences Manager]() to offer your customers more granular control over how they are tracked.
 
@@ -26,7 +26,7 @@ After you deploy to your website using the standard iQ JavaScript container ( `u
 
 
 <blockquote>
-The consent prompt can be displayed programmatically [using the JavaScript helper functions](https://docs.tealium.com/iq-tag-management/consent-management/explicit-consent-prompt/manage/#javascript-helper-functions).
+The consent prompt can be displayed programmatically [using the JavaScript helper functions](https://docs.tealium.com/consent/client-side/consent-management/explicit-consent-prompt/manage/#javascript-helper-functions).
 </blockquote>
 
 

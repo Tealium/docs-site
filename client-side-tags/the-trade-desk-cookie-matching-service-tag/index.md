@@ -1,6 +1,6 @@
 ---
 title: The Trade Desk Cookie Matching Service Tag Setup Guide
-description: This article describes how to set up the The Trade Desk Cookie Matching Service tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the The Trade Desk Cookie Matching Service tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/the-trade-desk-cookie-matching-service-tag/
 ---
 
@@ -11,14 +11,14 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 
 ## Requirements
 
-* iQ Tag Management
-* AudienceStream
+* Tag Management
+* Customer Data Platform (CDP)
 
 ## How it works
 
 The Trade Desk Cookie Matching Service tag sets a new variable named `ttd_uuid`. It is stored as a session cookie and as a standard data layer variable. The tag triggers only once per session, by default.
 
-The Trade Desk Cookie Matching Service tag communicates with the Trade Desk servers to request the current user's identifier. When this value is returned to the tag, the value is passed to AudienceStream so that it can be used to populate a visitor attribute containing the synced user ID. This attribute can then be used in The Trade Desk connector actions as a mapping to "Trade Desk ID (TDID)".
+The Trade Desk Cookie Matching Service tag communicates with the Trade Desk servers to request the current user's identifier. When this value is returned to the tag, the value is passed to CDP so that it can be used to populate a visitor attribute containing the synced user ID. This attribute can then be used in The Trade Desk connector actions as a mapping to "Trade Desk ID (TDID)".
 
 ## Data Layer Variables
 
@@ -31,16 +31,16 @@ These variables are populated automatically by the cookie matching tag.
 
 ![](https://docs.tealium.com/images/client-side-tags/the-trade-desk-cookie.png)
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tealium Account**: leave blank unless sending The Trade Desk user ID to a different account.
 * **Tealium Profile**: leave blank unless sending The Trade Desk user ID to a different profile.
 
-### Load Rules
+### Load rules
 
 [Load rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
@@ -50,9 +50,9 @@ This tag only needs to run if the cookie match has not already occurred. You can
 
 The tag also has built-in logic to only fire when the cookie is not defined, but using a load rule ensures that the tag is not loaded on a page when it has already run for the current session.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/about-data-mappings/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/manage-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 |**Destination Name**| **Type** | **Description**|
 |---| ---| ---|
@@ -63,9 +63,9 @@ Mapping is the process of sending data from a [data layer variable](https://docs
 | `domain` | String | The domain where the cookie synchronization initiates. <br> NOTE: You must add this domain to **Allowlist** in The Trade Desk configuration. |
 |`order_id`| String | Overrides the `_corder` e-commerce extension value.|
 
-## AudienceStream Setup
+## CDP Setup
 
-After you save and publish your changes to Prod, the new variables will be available in AudienceStream. The `ttd_uuid` variable appears as an event attribute, but you must create it as a visitor attribute so that it can be used in The Trade Desk connector action.
+After you save and publish your changes to Prod, the new variables will be available in CDP. The `ttd_uuid` variable appears as an event attribute, but you must create it as a visitor attribute so that it can be used in The Trade Desk connector action.
 
 To add a visitor attribute to store the `ttd_uuid` value:
 

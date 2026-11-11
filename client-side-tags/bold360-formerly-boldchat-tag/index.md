@@ -1,20 +1,20 @@
 ---
 title: Bold360 (formerly BoldChat) Tag Setup Guide
-description: This article describes how to set up the Bold360 (formerly BoldChat) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Bold360 (formerly BoldChat) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/bold360-formerly-boldchat-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Configuration values are found by going to Bold360 and clicking **Setup &gt; HTML &gt; Generate Visitor Monitor HTML.**
 * The Conversion Tracking event is sent automatically when there is an Order ID (`_corder`) from the E-Commerce extension.
 * Mapping a value to Conversion Ref also triggers Conversion Tracking.
 * Use the mapping toolbox to send additional visitor information.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Bold360 (formerly BoldChat) tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Account ID**
 * **Website ID**
@@ -30,9 +30,9 @@ After adding the tag, configure the following settings:
 
 * **Floating Chat Button Definition ID**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

@@ -16,11 +16,13 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Ad Account**: (Required) Select an ad account ID that aligns with your sponsored account.
+
+After you configure the connector, click **Done**.
 
 ### Authentication
 
@@ -34,13 +36,13 @@ Sign in to LinkedIn to use the connector.
 
 Deduplication works by comparing events sent from both the Insight Tag and CAPI. If both sources send the same event, the system keeps only one and discards the duplicate to ensure accurate counting. Send the same events through both sources to combine CAPI data with your [LinkedIn Insight tag](https://docs.tealium.com/linkedin-insight-tag/) for complete visibility into campaign conversions.
 
-To configure this connector action to receive event IDs from the LinkedIn Insights tag in your iQ Tag Management account, look for event attributes using the following naming convention:
+To configure this connector action to receive event IDs from the LinkedIn Insights tag in your Tag Management account, look for event attributes using the following naming convention:
 
 ```none
 linkedin_event_id_{CONVERSION_ID}_{TAG_UID}
 ```
 
-Find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+Find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/linkedin-insight-tag-uid.png)
 
@@ -63,7 +65,7 @@ Your **Conversion ID** can be found in your LinkedIn **Campaign Manager** accoun
 
 ### Automatic deduplication
 
-When the **Automatic Deduplication** values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. Enable Generate Event ID on the LinkedIn Insights tag with the tag's UID. Also, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tag Management. Enable Generate Event ID on the LinkedIn Insights tag with the tag's UID. Also, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector uses the following order of operations:
 
@@ -101,7 +103,7 @@ By default, the connector reads `li_fat_id` from the querystring parameter autom
 1. Create a [Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/).
 1. Add the querystring parameter `li_fat_id` to your data layer.
 1. Set the value of `li_fat_id` to the `li_fat_id` cookie.![](https://docs.tealium.com/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-1.png)
-1. In EventStream, create a first party cookie attribute named `li_fat_id_cookie`.
+1. In Event Streaming, create a first party cookie attribute named `li_fat_id_cookie`.
 1. In the connector, map `li_fat_id_cookie` to the LinkedIn First Party Ads Tracking UUID.![](https://docs.tealium.com/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png)
 
 ## Create a conversion
@@ -178,7 +180,7 @@ Associate each conversion event with the required campaign value. A conversion e
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Batch Conversion Events | ✓ | ✓ |
 
@@ -187,7 +189,6 @@ Send contact information from the conversion to LinkedIn using connector actions
 Enter a name for the action and select the action type from the drop-down menu.
 
 The following section describes how to set up parameters and options for each action.
-
 
 ### Batch Conversion Events
 
@@ -248,11 +249,11 @@ Do not map `_ga`, `_gid`, or any other Google Analytics cookie value to this fie
 
 #### Automatic Deduplication
 
-Because LinkedIn recommends using a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. When you provide the Tealium iQ Tag ID, the connector searches for the event ID value sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.
+Because LinkedIn recommends using a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. When you provide the Tealium iQ Tag ID, the connector searches for the event ID value sent from Tag Management. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.
 
 | **Parameter** | **Description** |
 | --- | --- |
-|Tealium iQ Tag ID| The Tealium iQ tag that provides the event ID value. |
+|Tealium iQ Tag ID| The Tag Management tag that provides the event ID value. |
 |LinkedIn Insight Tag Conversion ID| The LinkedIn Insight Tag Conversion ID to map the tag conversion ID to. |
 
 #### Disable Identifier Automapping

@@ -1,156 +1,158 @@
 ---
-title: TikTok Pixel タグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで TikTok Pixel タグを構成する方法について説明します。
+title: TikTok Pixelタグ構成ガイド
+description: この記事では、タグ管理アカウントでTikTok Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-*   マッピングを使用して、タグ構成をオーバーライドし、動的に構成します。
-*   デフォルトでは、タグテンプレートはマップされた製品パラメータがイベントごとに1つの製品か複数の製品を含むかどうかを検出します。1つの製品が検出された場合、個々のTikTok製品変数（`content_id`、`content_category`、`content_name`）が使用されます。複数の製品が検出された場合、`contents` 配列が自動的に生成され使用されます。
-*   デフォルトでは、ユーザーデータ（ハッシュ化された、またはハッシュ化されていないメールアドレスまたは電話番号）が入力された各イベントに対して `Identify` メソッドが自動的に送信されます。タグ構成でこれを無効にします。ベストプラクティスとして、TikTokは生の顧客情報をサーバーに入力する前にSHA256で自動的にハッシュ化します。
-*   TikTokがハッシュ化されていないメールアドレスを収集するには、値に `@` 文字が含まれていること、そしてドメイン指定で終わる必要があります。
-*   TikTokがハッシュ化されていない電話番号を収集するには、値がE.164形式に従う必要があります：`+{国コード}{電話番号}`。例えば、`+14135552671`（米国）、`+442071838750`（英国）、`+551155256325`（ブラジル）。
-*   ハッシュ化されたメールアドレスと電話番号の値を暗号化して入力するためにCrypto Extensionを使用します。
-*   `value` パラメータは、製品の価格と数量に基づいて自動的に計算され構成されます。
-*   デフォルトでは、TikTokピクセルベースコードはすべてのページで `Pageview` イベントを追跡します。タグ構成または `auto_page_tracking` のデータマッピングでこれを無効にします。
-*   デフォルトでは、注文IDが入力されたときに `CompletePayment` イベントが発生します。タグ構成または `auto_purchase_tracking` のデータマッピングでこれを無効にします。
-*   シングルページアプリケーションでPageviewイベントを手動で管理する場合は、**History Observer** を `false` に構成し、**Automatic Pageview Tracking** を無効にします。その後、アプリケーションのルートが変更されるたびに明示的なTealium Pageviewイベントを送信します。これにより、ブラウザの履歴変更時にTikTokのライブラリが重複するPageviewイベントを発火するのを防ぎます。
+*   マッピングを使用して、タグ構成を上書きしたり動的に構成したりできます。
+*   デフォルトでは、タグテンプレートは、マッピングされた商品パラメータにイベントごとに単一の商品が含まれているか、複数の商品が含まれているかを検出します。単一の商品が検出された場合は、個別のTikTok商品変数（`content_id`、`content_category`、`content_name`）が使用されます。複数の商品が検出された場合は、`contents`配列が自動的に構成され、使用されます。
+*   デフォルトでは、ユーザーデータ（ハッシュ化済みまたは未ハッシュ化のメールアドレスまたは電話番号）が構成されている各イベントに対して、`Identify`メソッドが自動的に送信されます。この動作はタグ構成で無効にできます。ベストプラクティスとして、TikTokは照合のために顧客の未加工情報がTikTokのサーバーに送信される前に、SHA256で自動的にハッシュ化します。
+*   TikTokが未ハッシュ化のメールアドレスを収集するには、値に`@`文字が含まれ、末尾がドメイン名である必要があります。
+*   TikTokが未ハッシュ化の電話番号を収集するには、値がE.164形式（`+{country code}{phone number}`）に従っている必要があります。例：`+14135552671`（米国）、`+442071838750`（英国）、`+551155256325`（ブラジル）。
+*   Crypto Extensionを使用して、ハッシュ化されたメールアドレスと電話番号の値を暗号化して構成します。
+*   `value`パラメータは、商品の価格と数量に基づいて自動的に計算および構成されます。
+*   デフォルトでは、TikTok Pixelのベースコードはすべてのページで`Pageview`イベントをトラッキングします。この動作は、タグ構成または`auto_page_tracking`のデータマッピングで無効にできます。
+*   デフォルトでは、注文IDが構成されると`CompletePayment`イベントが発生します。この動作は、タグ構成または`auto_purchase_tracking`のデータマッピングで無効にできます。
+*   Pageviewイベントを手動で管理するシングルページアプリケーションでは、**履歴オブザーバー**を`false`に構成し、**自動Pageviewトラッキング**を無効にします。その後、アプリケーションのルートが変更されるたびに、明示的なTealium Pageviewイベントを送信します。これにより、ブラウザー履歴の変更時にTikTokのライブラリから重複したPageviewイベントが発生するのを防ぎます。
 
   
 <blockquote>
-カスタムまたは非標準のパラメータはTikTokによって処理されません。広告主はTikTokアカウント担当者にカスタムレポートを依頼して、カスタムパラメータのメトリックを計算することができます。
+カスタムパラメータまたは標準外のパラメータは、TikTokでは処理されません。広告主はTikTokアカウントの担当者にカスタムレポートを依頼し、カスタムパラメータの指標を計算できます。
 </blockquote>
 
 
 ## タグ構成
 
-タグマーケットプレースにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、次の構成を構成します：
+タグを追加する際に、次の構成を構成します。
 
-* **Pixel ID**: あなたのTikTok Pixel ID。
-* **Content Type**: `content_type` を構成して、製品カタログの形式に基づいて製品を追跡する方法を決定します。個々の製品（通常はSKUとしてフォーマットされます）に関連するイベントを追跡するために `Product` を選択するか、製品グループ（製品IDのプレフィックスが多い）に関連するイベントを追跡するために `Product Group` を選択します。詳細については、[TikTok: パラメータについて](https://ads.tiktok.com/help/article/about-parameters?lang=en)を参照してください。
-* **Generate Event ID**: 有効にする場合、[TikTok Events connector](https://docs.tealium.com/tiktok-events-connector/)と一緒に使用し、コネクタ内のイベントIDパラメータをマッピングして、ウェブとサーバーベースの統合を同期します。この機能にはアクティブなTealium Collectタグが必要です。
-* **Automatic Pageview Tracking**: すべてのページで `Pageview` イベントを自動的に追跡します。この構成を `auto_page_tracking` のマッピングでオーバーライドします。
-* **Automatic Purchase Tracking**: 注文IDが検出されたときに `CompletePayment` イベントを自動的に追跡します。この構成を `auto_purchase_tracking` のマッピングでオーバーライドします。
-* **Automatic Identity Tracking**: 顧客情報（メールアドレス、電話番号、その他の識別子）をウェブサイトでの人々の行動と照合するのに役立つTikTok Advanced Matching機能を有効にします。有効にすると、タグはユーザーデータ（メールまたは電話番号）が検出されるたびに `ttq.identify()` を呼び出します。詳細については、[TikTok: ウェブ用の高度なマッチングについて](https://ads.tiktok.com/help/article/advanced-matching-web)を参照してください。
-* **Limited Data Use**: 特定の米国州のプライバシー法に基づいて個人データの販売および共有のオプトアウト権を行使する広告主を支援する機能です。詳細については、[TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1770092377990145)を参照してください。
-* **History Observer**: SPAブラウザの履歴が変更されたときにTikTokが自動的にPageviewイベントを報告するかどうかを制御します。TikTokの自動SPA履歴追跡を無効にするには `false` に構成します。構成されていない場合、TikTokのデフォルトの動作が保持されます。詳細については、[TikTok: シングルページアプリケーションでの作業](https://business-api.tiktok.com/portal/docs?id=1801524003169281)を参照してください。
+* **Pixel ID**：TikTok Pixel ID。
+* **コンテンツタイプ**：商品カタログの形式に基づいて商品をトラッキングする方法を決定するため、`content_type`を構成します。個々の商品（一般的にはSKU形式）に関連付けられたイベントをトラッキングするには`Product`を選択し、商品グループ（多くの場合、商品IDのプレフィックス）に関連付けられたイベントをトラッキングするには`Product Group`を選択します。詳細については、[TikTok：パラメータについて](https://ads.tiktok.com/help/article/about-parameters?lang=en)を参照してください。
+* **イベントIDを生成**：有効にした場合は、[TikTok Eventsコネクタ](https://docs.tealium.com/tiktok-events-connector/)と併用し、コネクタのイベントIDパラメータをマッピングして、Webベースとサーバーベースの統合を同期します。この機能を使用するには、有効なTealium Collectタグが必要です。
+* **自動Pageviewトラッキング**：すべてのページで`Pageview`イベントを自動的にトラッキングします。`auto_page_tracking`をマッピングすることで、この構成を上書きできます。
+* **自動購入トラッキング**：注文IDが検出されたときに、`CompletePayment`イベントを自動的にトラッキングします。`auto_purchase_tracking`をマッピングすることで、この構成を上書きできます。
+* **自動IDトラッキング**：メールアドレス、電話番号、その他の識別子などの顧客情報と、ユーザーがWebサイトで行ったアクションとの照合に役立つTikTok Advanced Matching機能を有効にします。有効にすると、ユーザーデータ（メールアドレスまたは電話番号）が検出されたすべてのイベントで、タグが`ttq.identify()`を呼び出します。詳細については、[TikTok：Web向けAdvanced Matchingについて](https://ads.tiktok.com/help/article/advanced-matching-web)を参照してください。
+* **データ使用の制限**：米国の一部の州のプライバシー法に基づき、個人データの販売および共有をオプトアウトする権利への広告主の準拠を支援する機能です。詳細については、[TikTok：データ使用の制限](https://business-api.tiktok.com/portal/docs?id=1770092377990145)を参照してください。
+* **履歴オブザーバー**：SPAのブラウザー履歴が変更されたときに、TikTokがPageviewイベントを自動的に報告するかどうかを制御します。TikTokによるSPA履歴の自動トラッキングを無効にするには、`false`に構成します。構成しない場合、TikTokのデフォルト動作が維持されます。詳細については、[TikTok：シングルページアプリケーションの操作](https://business-api.tiktok.com/portal/docs?id=1801524003169281)を参照してください。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグの対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### タグ構成
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
 |  `pixel_code`  | 文字列 | Pixel ID。 |
 |  `content_type`  | 文字列 | コンテンツタイプ。 |
-|  `auto_page_tracking`  | ブール値 | 自動ページビュー追跡。 |
-|  `auto_purchase_tracking`  | ブール値 | 自動購入追跡。 |
-|  `auto_identity_tracking`  | ブール値 | 自動アイデンティティ追跡。 |
-|  `ldu`  | ブール値 | 限定データ使用。 |
-|  `historyObserver`  | ブール値 | SPAブラウザの履歴が変更されたときにTikTokが自動的にPageviewイベントを報告するかどうかを制御します。TikTokの自動SPA履歴追跡を無効にするには `false` に構成します。マッピングされていない場合、TikTokのデフォルトの動作が保持されます。 |
+|  `auto_page_tracking`  | ブール値 | 自動Pageviewトラッキング。 |
+|  `auto_purchase_tracking`  | ブール値 | 自動購入トラッキング。 |
+|  `auto_identity_tracking`  | ブール値 | 自動IDトラッキング。 |
+|  `ldu`  | ブール値 | データ使用の制限。 |
+|  `historyObserver`  | ブール値 | SPAのブラウザー履歴が変更されたときに、TikTokがPageviewイベントを自動的に報告するかどうかを制御します。TikTokによるSPA履歴の自動トラッキングを無効にするには、`false`に構成します。マッピングされていない場合、TikTokのデフォルト動作が維持されます。 |
 
 ### ユーザーパラメータ
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `email`  | 文字列 | ユーザーのメール。| 
+|  `email`  | 文字列 | ユーザーのメールアドレス。| 
 |  `phone_number`  | 文字列 | ユーザーの電話番号。| 
-|  `sha256_email`  | 文字列 | ユーザーのハッシュ化されたメール。| 
+|  `sha256_email`  | 文字列 | ユーザーのハッシュ化されたメールアドレス。| 
 | `sha256_phone_number`  | 文字列 | ユーザーのハッシュ化された電話番号。 | 
-| `external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表す識別子、例えば顧客ID、ロイヤルティカード番号、または注文IDです。プレーンテキストで提供された場合、TikTokライブラリは摂取前にIDをハッシュ化します。 | 
-| `sha256_external_id`| 文字列 | 広告主のプラットフォーム上のユーザーを表すSHA256ハッシュ化された識別子、例えば顧客ID、ロイヤルティカード番号、または注文IDです。ハッシュ化する前に先頭または末尾のスペースをトリミングします。 | 
+| `external_id`| 文字列 | 顧客ID、ロイヤルティカード番号、注文IDなど、広告主のプラットフォーム上のユーザーを表す識別子。プレーンテキストで指定した場合、TikTokライブラリは取り込み前にIDをハッシュ化します。 | 
+| `sha256_external_id`| 文字列 | 顧客ID、ロイヤルティカード番号、注文IDなど、広告主のプラットフォーム上のユーザーを表すSHA256でハッシュ化された識別子。ハッシュ化する前に、先頭または末尾のスペースを削除してください。 | 
 
 ### 標準トラッキングパラメータ
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `currency`   | 文字列 | 通貨（`_ccurrency`をオーバーライド）。 |
-|  `value`   | 数値 | 値（`_ctotal`をオーバーライド）。 |
+|  `currency`   | 文字列 | 通貨（`_ccurrency`を上書き）。 |
+|  `value`   | 数値 | 値（`_ctotal`を上書き）。 |
 |  `query`  | 文字列 | クエリ。 |
 |  `description`  | 文字列 | 説明。 |
-|  `status`  | 文字列 | 状態。 |
-|  `contents`  | オブジェクトの配列 | 内容。 |
-|  `content_id`   | 文字列の配列 | コンテンツID（`_cprod`をオーバーライド）。 |
-|  `content_name`  | 文字列の配列 | コンテンツ名（`_cprodname`をオーバーライド）。 |
-|  `content_category`   | 文字列の配列 | コンテンツカテゴリ（`_ccat`をオーバーライド）。 |
-|  `quantity`   | 数値の配列 | 数量（`_cquan`をオーバーライド）。 | 
-|  `price`   | 数値の配列 | 価格（`_cprice`をオーバーライド）。 |
+|  `status`  | 文字列 | ステータス。 |
+|  `contents`  | オブジェクトの配列 | コンテンツ。 |
+|  `content_id`   | 文字列の配列 | コンテンツID（`_cprod`を上書き）。 |
+|  `content_name`  | 文字列の配列 | コンテンツ名（`_cprodname`を上書き）。 |
+|  `content_category`   | 文字列の配列 | コンテンツカテゴリ（`_ccat`を上書き）。 |
+|  `quantity`   | 数値の配列 | 数量（`_cquan`を上書き）。 | 
+|  `price`   | 数値の配列 | 価格（`_cprice`を上書き）。 |
+
 ### イベント
 
-イベントマッピングについての詳細は、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントのマッピングについて詳しくは、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `AddPaymentInfo` | 決済情報の追加 |
-| `AddToCart` | カートに追加 |
-| `AddToWishlist` | ほしい物リストに追加 |
-| `ClickButton` | ボタンをクリック |
-| `CompletePayment` | 決済完了 |
-| `CompleteRegistration` | 登録完了 |
-| `Contact` | 連絡 |
-| `Download` | ダウンロード |
-| `InitiateCheckout` | チェックアウトの開始 |
-| `PlaceAnOrder` | 注文 |
-| `Search` | 検索 |
-| `SubmitForm` | フォームの送信 |
-| `Subscribe` | 購読 |
-| `ViewContent` | コンテンツの閲覧 |
-| `Custom` | カスタム |
+| `AddPaymentInfo` | AddPaymentInfo |
+| `AddToCart` | AddToCart |
+| `AddToWishlist` | AddToWishlist |
+| `ClickButton` | ClickButton |
+| `CompletePayment` | CompletePayment |
+| `CompleteRegistration` | CompleteRegistration |
+| `Contact` | Contact |
+| `Download` | Download |
+| `InitiateCheckout` | InitiateCheckout |
+| `PlaceAnOrder` | PlaceAnOrder |
+| `Search` | Search |
+| `SubmitForm` | SubmitForm |
+| `Subscribe` | Subscribe |
+| `ViewContent` | ViewContent |
+| `Custom` | Custom |
+### 旅行 - ホテルのパラメーター
 
-### 旅行 - ホテルパラメータ
-
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
-| `hotel.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
-| `hotel.city` | `String` | ホテルの都市 |
-| `hotel.region` | `String` | ホテルの地域 |
-| `hotel.country` | `String` | ホテルの国 |
-| `hotel.checkin_date` | `String` | ホテルのチェックイン日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。 |
-| `hotel.checkout_date` | `String` | ホテルのチェックアウト日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。 |
-| `hotel.num_adults` | `Number` | 大人の数 |
-| `hotel.num_children` | `Number` | 子供の数 |
-| `hotel.suggested_hotels` | `String or Array of Strings` | このユーザーに推奨されるホテル |
+| `hotel.content_id` | `String or Array of Strings` | SKU など、イベントに関連付けられた商品 ID |
+| `hotel.city` | `String` | ホテルが所在する都市 |
+| `hotel.region` | `String` | ホテルが所在する地域 |
+| `hotel.country` | `String` | ホテルが所在する国 |
+| `hotel.checkin_date` | `String` | ホテルのチェックイン日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。 |
+| `hotel.checkout_date` | `String` | ホテルのチェックアウト日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。 |
+| `hotel.num_adults` | `Number` | 大人の人数 |
+| `hotel.num_children` | `Number` | 子供の人数 |
+| `hotel.suggested_hotels` | `String or Array of Strings` | このユーザーへのおすすめホテル |
 
-### 旅行 - フライトパラメータ
 
-| 変数 | タイプ/値 | 説明 |
+### 旅行 - フライトのパラメーター
+
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
-| `flight.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
+| `flight.content_id` | `String or Array of Strings` | SKU など、イベントに関連付けられた商品 ID。 |
 | `flight.destination_city` | `String` | 目的地の都市名 |
-| `flight.departing_departure_date` | `String` | 出発フライトの離陸日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。 |
-| `flight.departing_arrival_date` | `String` | 出発フライトの着陸日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。|
-| `flight.returning_departure_date` | `String` | 帰りのフライトの離陸日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。|
-| `flight.returning_arrival_date` | `String` | 帰りのフライトの着陸日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。|
-| `flight.origin_airport` | `String` | 出発空港コード、例えば `JFK` |
-| `flight.destination_airport` | `String` | 目的地空港コード、例えば `CDG` |
-| `flight.num_adults` | `Number` | 大人の数 |
-| `flight.num_children` | `Number` | 子供の数 |
-| `flight.num_infants` | `Number` | 幼児の数 |
-| `flight.travel_class` | `String` | フライトチケットのクラス。受け入れられる値: `eco`, `prem`, `bus`, `first`。 |
-| `flight.user_score` | `Number` | この潜在顧客の広告主に対する相対的な価値を表す |
-| `flight.preferred_num_stops` | `Number` | 希望の停留数 |
+| `flight.departing_departure_date` | `String` | 往路便の離陸日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。 |
+| `flight.departing_arrival_date` | `String` | 往路便の着陸日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。|
+| `flight.returning_departure_date` | `String` | 復路便の離陸日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。|
+| `flight.returning_arrival_date` | `String` | 復路便の着陸日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。|
+| `flight.origin_airport` | `String` | 出発空港のコード（例：`JFK`） |
+| `flight.destination_airport` | `String` | 到着空港のコード（例：`CDG`） |
+| `flight.num_adults` | `Number` | 人数 |
+| `flight.num_children` | `Number` | 子供の人数 |
+| `flight.num_infants` | `Number` | 乳幼児の人数 |
+| `flight.travel_class` | `String` | 航空券のクラス。使用できる値：`eco`、`prem`、`bus`、`first`。 |
+| `flight.user_score` | `Number` | この見込み顧客が広告主にとって持つ相対的な価値 |
+| `flight.preferred_num_stops` | `Number` | 希望する経由地の数 |
 
-### 旅行 - 目的地パラメータ
 
-| 変数 | タイプ/値 | 説明 |
+### 旅行 - 目的地のパラメーター
+
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
-| `destination.content_id` | `String or Array of Strings` | イベントに関連する製品ID、例えばSKU |
+| `destination.content_id` | `String or Array of Strings` | SKU など、イベントに関連付けられた商品 ID |
 | `destination.city` | `String` | 目的地の都市 |
 | `destination.region` | `String` | 目的地の地域 |
 | `destination.country` | `String` | 目的地の国 |
-| `destination.travel_start` | `String` | ユーザーの旅行開始日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。 |
-| `destination.travel_end` | `String` | ユーザーの旅行終了日。受け入れられる日付形式: `YYYYMMDD`, `YYYY-MM DD`, `YYYY-MM-DDThh:mmTZD`, `YYYY-MM-DDThh:mm:ssTZD`。例: `20250623`, `2025-06-23`,`2025-06-23T15:30GMT`, `2025-06-23T15:30:00GMT`。 |
-| `destination.num_adults` | `Number` | 大人の数 |
-| `destination.num_children` | `Number` | 子供の数 |
-| `destination.num_infants` | `Number` | 幼児の数 |
-| `destination.suggested_destinations` | `String or Array of Strings` | このユーザーに提案される目的地のIDリスト |
+| `destination.travel_start` | `String` | ユーザーの旅行開始日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。 |
+| `destination.travel_end` | `String` | ユーザーの旅行終了日。使用できる日付形式：`YYYYMMDD`、`YYYY-MM DD`、`YYYY-MM-DDThh:mmTZD`、`YYYY-MM-DDThh:mm:ssTZD`。例：`20250623`、`2025-06-23`、`2025-06-23T15:30GMT`、`2025-06-23T15:30:00GMT`。 |
+| `destination.num_adults` | `Number` | 人数 |
+| `destination.num_children` | `Number` | 子供の人数 |
+| `destination.num_infants` | `Number` | 乳幼児の人数 |
+| `destination.suggested_destinations` | `String or Array of Strings` | このユーザーへのおすすめ目的地を表す ID のリスト |

@@ -61,7 +61,7 @@ Clicktaleは、ユニークな行動洞察を活用してユーザーエクス�
 
 ## データマッピング
 
-マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/tag-management/data-mappings/manage/)を参照してください。
 
 利用可能なカテゴリは以下の通りです：
 

@@ -1,57 +1,59 @@
 ---
-title: Adition PostTracking構成ガイド
-description: この記事では、Adition PostTrackingコネクタの構成方法について説明します。
+title: Adition PostTracking セットアップガイド
+description: この記事では、Adition PostTrackingコネクターのセットアップ方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/adition-posttracking-connector/
 ---
-この記事では、Adition PostTrackingコネクタの構成方法について説明します。
+この記事では、Adition PostTrackingコネクターのセットアップ方法について説明します。
 
 ## API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクターでは、以下のベンダーAPIを使用します。
 
 * API名：Adition API
 * APIエンドポイント：`http://adfarm1.adition.com/trackdata`
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクターマーケットプレイスに移動し、新しいコネクターを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクターを追加したら、以下の項目を構成します。
 
-* **TrackingSpot ID (SID)**  
+* **TrackingSpot ID（SID）**  
   * TrackingSpotの内部ID。
-* **LandingPage ID (TID)**  
+* **LandingPage ID（TID）**  
   * LandingPageの内部ID。
 * **Aditionインスタンス**  
-  * （オプション）。使用しているAditionサーバーファームを指定します。これはベースURLにプレフィックスとして追加されます：`https://{adition_instance}.adfarm1.adition.com.`
+  * （任意）使用しているAditionサーバーファームを指定します。これは、ベースURLのプレフィックスとして追加されます：`https://{adition_instance}.adfarm1.adition.com.`
+
+コネクターの構成が完了したら、**完了**をクリックします。
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| イベントを追跡 | ✗ | ✓ |
+| イベントをトラッキング | ✗ | ✓ |
 
-アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。
+アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。
 
-次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+以下のセクションでは、各アクションのパラメーターとオプションを構成する方法について説明します。
 
-### イベントを追跡
+### イベントをトラッキング
 
-#### トラッキングパラメータ
+#### トラッキングパラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
 | kid | キャンペーンID。 |
 | bid | バナーID。 |
 | wp_id | コンテンツユニットID。 |
 
-#### 収益追跡パラメータ
+#### 収益トラッキングパラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
 | orderid | 注文の一意の識別子。 |
-| itemno | アイテムの一意の識別子。 |
-| quantity | 注文されたアイテムの数。 |
-| descr | アイテムの説明。 |
-| price | アイテムごとの価格。 |
-| total | 注文された数量の合計価格。 |
+| itemno | 商品の一意の識別子。 |
+| quantity | 注文された商品の数量。 |
+| descr | 商品の説明。 |
+| price | 商品1点あたりの価格。 |
+| total | 注文数量分の合計価格。 |

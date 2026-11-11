@@ -17,11 +17,11 @@ To get started, choose the user experience option that matches your site:
 
 * **Banner and Popup (Recommended)** 
 This option adds a cookie banner to be displayed on the page. You set the message and links and the consent manager takes care of the rest, displaying the banner on the page based on your configured settings. The banner contains a link that opens the popup where users set their **Do Not Sell** preferences.
-    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-banner-popup.png)
+    ![](https://docs.tealium.com/images/tag-management/ccpa-banner-popup.png)
 
 * **Popup Only**  
 Select this option if you already display a cookie banner on your site. This option makes the popup available using a JavaScript method that you add to a link in your banner.
-    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-popup.png)
+    ![](https://docs.tealium.com/images/tag-management/ccpa-popup.png)
 
 ### Content
 
@@ -138,7 +138,7 @@ The new language displays in the side panel.
 The default language is used to display the consent manager when the user's detected browser language does not have a matching language configured.
 
 To set a default language, select the **Make Default Language** checkbox located in the language title bar.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 
 ### Customization (CSS, HTML, JavaScript)
 

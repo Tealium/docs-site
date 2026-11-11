@@ -83,11 +83,11 @@ The number of events imported from Data Cloud Activation data sources.
 * **Data Cloud Activation: Total Number of Events (Data Records) Received**  
 The total number of data records received by Data Cloud Activation. This report is only available for accounts with Data Cloud Activation.
 * **Total Customer Data Platform Events**  
-The total number of events received by Customer Data Platform. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
+The total number of events received by Customer Data Platform. If the CDP event filter is enabled, this report only includes filtered Customer Data Platform events.
 * **Total Real-Time Customer Data Platform Events**  
-The number of real-time events received by Customer Data Platform. This graph does not include Omnichannel, File Import, or Data Connect events. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
+The number of real-time events received by Customer Data Platform. This graph does not include Omnichannel, File Import, or Data Connect events. If the CDP event filter is enabled, this report only includes filtered Customer Data Platform events.
 * **Bulk Customer Data Platform Events**  
-The number of offline and bulk events received by Customer Data Platform. This graph includes Omnichannel and File Import events. If the AudienceStream event filter is enabled, this report only includes filtered Customer Data Platform events.
+The number of offline and bulk events received by Customer Data Platform. This graph includes Omnichannel and File Import events. If the CDP event filter is enabled, this report only includes filtered Customer Data Platform events.
 
 #### Total Real-time Events vs. Total Customer Data Platform Events
 

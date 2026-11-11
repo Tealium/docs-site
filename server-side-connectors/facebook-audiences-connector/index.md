@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -60,13 +60,15 @@ Click **Create Custom Audience**, then configure the following settings:
   * `VALUE_BASED_AUDIENCE`: Identify customers that share similar behaviors with your highest-value customers.
   * `CUSTOMER_FILE_AUDIENCE`: (Default) Identify customers based on information from the customer file, such as their email address, phone number, or other identifiers.
 
+After you configure the connector, click **Done**.
+
 On the Facebook Audiences site, you have the option to create audiences based on a customer list, website traffic, or app activity. For this example, create your audience based on a customer list.
 
 For more information, see [Meta Business Help Center: Create a customer list custom audience](https://www.facebook.com/business/help/170456843145568?id=2469097953376494).
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 |---| ---| ---|
 |Add User to Custom Audience| ✓| ✗|
 |Remove User from Custom Audience| ✓| ✗|
@@ -98,7 +100,7 @@ The following section describes how to set up parameters and options for each ac
 |Year of Birth|  <ul><li>Year of birth for user.</li><li><code>YYYY</code> format.</li><li>Values from <code>1900</code> to current year.</li><li>No punctuation or special characters.</li><li>UTF-8 format.</li></ul> |
 |Day of Birth|  <ul><li>Day of birth for user.</li><li>`DD` format.</li><li>Values from `01` to `31`.</li></ul> |
 |Month of Birth|  <ul><li>Birth month for user.</li><li>`MM` format.</li><li>Values from `01` to `12`.</li></ul> |
-|Custom Audience Override|  <ul><li>(Optional) Provide a **Custom Audience ID** to override the value in the required section. This field lets you use AudienceStream variables to populate the Audience ID.</li></ul> |
+|Custom Audience Override|  <ul><li>(Optional) Provide a **Custom Audience ID** to override the value in the required section. This field lets you use Customer Data Platform (CDP) variables to populate the Audience ID.</li></ul> |
 |Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
 |Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
 |Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
@@ -153,7 +155,7 @@ Existing saved actions that use the legacy **User Identifier Already Hashed** ch
 |Month of Birth|  <ul><li>Birth month for user.</li><li>`MM` format.</li><li>Values from `01` to `12`.</li></ul> |
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
-|Custom Audience Override|  <ul><li>(Optional) Provide a **Custom Audience ID** to override the value in the required section. This field lets you use AudienceStream variables to populate the Audience ID.</li></ul> |
+|Custom Audience Override|  <ul><li>(Optional) Provide a **Custom Audience ID** to override the value in the required section. This field lets you use CDP variables to populate the Audience ID.</li></ul> |
 |Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
 |Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
 |Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
@@ -264,9 +266,9 @@ The most effective testing method is to run a [Trace](https://docs.tealium.com/a
 
 ## FAQ
 
-### Why can't I see my audiences in the AudienceStream drop-down list?
+### Why can't I see my audiences in the CDP drop-down list?
 
-If you have more than 2,000 audiences in Facebook, they are not all selectable in the drop-down list from an AudienceStream connector.
+If you have more than 2,000 audiences in Facebook, they are not all selectable in the drop-down list from a CDP connector.
 
 Use the following steps in Facebook to view all audiences and select the identifier for a specific audience:
 
@@ -280,4 +282,4 @@ If the Audience ID does not display, you can modify your table column view to in
   
 
     ![](https://docs.tealium.com/images/server-side-connectors/facebook-ads-find-audience-id.png)
-1. Return to AudienceStream and enter the Audience ID as custom value for your AudienceStream connector.
+1. Return to CDP and enter the Audience ID as custom value for your CDP connector.

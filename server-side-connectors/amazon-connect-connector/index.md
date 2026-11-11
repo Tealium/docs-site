@@ -3,7 +3,7 @@ title: AWS Amazon Connect Connector Setup Guide
 description: This article describes how to set up the Amazon Connect connector.
 url: https://docs.tealium.com/server-side-connectors/amazon-connect-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -29,9 +29,11 @@ After adding the connector, configure the following settings:
         * **STS - Assume Role: External ID**: (Optional) Unique identifier used by third parties when assuming roles in their customers' accounts. For more information, see: [AWS: Access to AWS accounts owned by third parties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html).
         * **Region**: (Required) Select the AWS Connect region you are using.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Start Outbound Voice Contact | ✓ | ✓ |
 | Update Profile Attributes | ✓ | ✓ |

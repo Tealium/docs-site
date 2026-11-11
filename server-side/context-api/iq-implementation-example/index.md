@@ -1,13 +1,13 @@
 ---
-title: Context API and iQ Tag Management example implementation guide
-description: See an example solution that integrates Context API into your Tealium iQ Tag Management installation.
+title: Context API and Tag Management example implementation guide
+description: See an example solution that integrates Context API into your Tag Management installation.
 url: https://docs.tealium.com/server-side/context-api/iq-implementation-example/
 ---
 ## How it works
 
 Context API creates a unique endpoint that you can integrate into your websites or applications.
 
-Complete the following steps to implement Context API into your Tealium workflow using the [Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/). The following example uses Fetch API to request the visitor's data from the Context API, but other JavaScript options, such as `XMLHttpRequest`, are also supported. 
+Complete the following steps to implement Context API into your Tealium workflow using the [Tag Management Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/). The following example uses Fetch API to request the visitor's data from the Context API, but other JavaScript options, such as `XMLHttpRequest`, are also supported. 
 
 ## Step 1: Get the visitor ID
 

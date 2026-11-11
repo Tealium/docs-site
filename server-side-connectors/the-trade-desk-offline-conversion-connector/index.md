@@ -5,16 +5,18 @@ url: https://docs.tealium.com/server-side-connectors/the-trade-desk-offline-conv
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Agency Secret Key**: The secret key provided to you by The Trade Desk.
 * **Merchant ID**: (Optional) The ID associated with the merchant account in The Trade Desk. The Trade Desk provides this ID.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| **Action Name** | **AudienceStream**| **EventStream**|
+| **Action Name** | **Visitor profile** | **Event data** |
 |---| ---| ---|
 | Send Offline Conversion | ✓ | ✓ |
 

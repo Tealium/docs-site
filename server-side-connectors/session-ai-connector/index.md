@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/session-ai-connector/
 ---
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Update CCPA consent | ✓ | ✓ |
 | Send Event | ✓ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -20,6 +20,8 @@ After adding the connector, configure the following settings:
  (Required) Select the host associated with your environment.
 To point to the Session AI sandbox environment, use `https://csb.zineone.com`. To point to the production environment, use `https://cloud.zineone.com`.
 * **API KEY**  
+
+After you configure the connector, click **Done**.
 To generate an API key, create a channel in **Session AI > Integrations > Data Channel**.
 
 ## Actions

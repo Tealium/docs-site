@@ -14,25 +14,25 @@ Tealium Customer Data Hub performs the following functions:
 
 This wide range of functionality is enabled through the use of the following product offerings within Customer Data Hub:
 
-* Tealium iQ Tag Management
-* Tealium EventStream API Hub
-* Tealium AudienceStream CDP
+* Tag Management
+* Event Streaming API Hub
+* CDP
 * Tealium Predict ML
 * Tealium DataAccess
 
 ## Manage client-side data and tags
 
-Configure and manage your client-side data and vendor tags using iQ Tag Management. Whether it's activating a data privacy policy, deploying new vendor tags, or customizing your data layer, iQ Tag Management can handle all of your client-side needs. Of course, the most important part of tag management is having a well-defined data layer to keep your data consistent and easy to understand from one implementation to the next. Your data layer is the foundation of your Customer Data Hub solution.
+Configure and manage your client-side data and vendor tags using Tag Management. Whether it's activating a data privacy policy, deploying new vendor tags, or customizing your data layer, Tag Management can handle all of your client-side needs. Of course, the most important part of tag management is having a well-defined data layer to keep your data consistent and easy to understand from one implementation to the next. Your data layer is the foundation of your Customer Data Hub solution.
 
 Further reading:
 
-* [Introduction to iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
-* [iQ Tag Management Concepts](https://docs.tealium.com/tag-basics/)
+* [Introduction to Tag Management](https://docs.tealium.com/what-is-tealium-tag-management/)
+* [Tag Management Concepts](https://docs.tealium.com/tag-basics/)
 * [Introduction to the Data Layer](https://docs.tealium.com/about-the-data-layer/)
 
 ## Collect data with Tealium Collect
 
-It all starts with the data. Collecting data across all of your customer touch-points is the first step towards unlocking the power of Customer Data Hub. Your customers' engagements with your brand are valuable sources of data. Whether it's your desktop website, native mobile app, connected device, or custom application, they can all send customer data seamlessly to Customer Data Hub using one of the Tealium installation libraries. Tealium iQ users can get started with sending data to Customer Data Hub even faster with the official Tealium Collect Tag available from the tag marketplace.
+It all starts with the data. Collecting data across all of your customer touch-points is the first step towards unlocking the power of Customer Data Hub. Your customers' engagements with your brand are valuable sources of data. Whether it's your desktop website, native mobile app, connected device, or custom application, they can all send customer data seamlessly to Customer Data Hub using one of the Tealium installation libraries. Tag Management users can get started with sending data to Customer Data Hub even faster with the official Tealium Collect Tag available from the tag marketplace.
 
 Further reading:
 
@@ -45,18 +45,18 @@ Once your data is flowing into Customer Data Hub, you have the ability to enrich
 
 Further reading:
 
-* [Introduction to EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
+* [Introduction to Event Streaming](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)
 * [Using Attributes](https://docs.tealium.com/about-attributes/)
 * [Using Enrichments](https://docs.tealium.com/about-enrichments/)
 * [Badge Attribute](https://docs.tealium.com/badge-attribute/)
 
 ## Discover audiences
 
-An audience is a collection of visitor profiles that have acquired a shared set of attributes during their engagement with your brand. An audience is the target of a real-time action from one of the many integrations available in the AudienceStream ecosystem. For example:  email, online advertising, social, and customer relationship management. Customer Data Hub provides a number of tools to help you discover and engage your most valuable audiences.
+An audience is a collection of visitor profiles that have acquired a shared set of attributes during their engagement with your brand. An audience is the target of a real-time action from one of the many integrations available in the Customer Data Platform (CDP) ecosystem. For example:  email, online advertising, social, and customer relationship management. Customer Data Hub provides a number of tools to help you discover and engage your most valuable audiences.
 
 Further reading:
 
-* [Introduction to AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
+* [Introduction to CDP](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)
 * [Building an Audience](https://docs.tealium.com/manage-audiences/)
 * [Audience Sizing](https://docs.tealium.com/about-audience-sizing/)
 
@@ -67,7 +67,7 @@ Now that you have all this data flowing through Customer Data Hub, it's time tak
 Further reading:
 
 * [About Connectors](https://docs.tealium.com/about-connectors/)
-* [EventStream Connectors](https://docs.tealium.com/server-side-connectors/)
+* [Event Streaming Connectors](https://docs.tealium.com/server-side-connectors/)
 
 ## Store data with DataAccess
 

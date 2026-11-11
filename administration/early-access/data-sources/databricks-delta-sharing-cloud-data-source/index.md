@@ -19,7 +19,7 @@ In this protocol, you are the provider and Tealium is the recipient. You create 
 
 You configure the secure connection to Tealium in Databricks using the Tealium sharing identifier (metastore ID). No database usernames, passwords, or access tokens leave Databricks.
 
-When used with [CloudStream](https://docs.tealium.com/about-cloudstream/), the data pipeline is zero-copy. Data remains in your Databricks environment and is accessed on demand for activation.
+When used with [Data Cloud Activation](https://docs.tealium.com/about-data-cloud-activation/), the data pipeline is zero-copy. Data remains in your Databricks environment and is accessed on demand for activation.
 
 ## Data types
 

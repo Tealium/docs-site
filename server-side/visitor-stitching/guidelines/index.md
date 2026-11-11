@@ -24,6 +24,6 @@ Before stitching is enabled, determine how to handle shared IDs, such as those u
 The maximum size of a visitor profile after encryption and compression is 400 KB.
 * **Shared devices**  
 When two users share a device, both users have the same anonymous ID. If they visit the same websites, but use different user identifiers (such as an email address or a customer ID), this is referred to as visitor switching. Tealium Support or Professional Services can assist you with implementing a solution to handle visitor switching. For more information, see the following Tealium knowledge base articles:  
-    * [Anonymous User Tracking under ITP with Visitor Switching in AudienceStream](https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream)
+    * [Anonymous User Tracking under ITP with Visitor Switching in Customer Data Platform (CDP)](https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream)
     * [Visitor Switching in iQ](https://support.tealiumiq.com/en/support/solutions/articles/36000419055-visitor-switching-in-iq)
     * [Visitor Switching in Tealium Mobile SDKs](https://support.tealiumiq.com/en/support/solutions/articles/36000493080-visitor-switching-in-tealium-mobile-sdks)

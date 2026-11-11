@@ -1,75 +1,73 @@
 ---
-title: Connexityピクセル構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでConnexityピクセルタグを構成する方法について説明します。
+title: Connexity Pixel セットアップガイド
+description: この記事では、タグ管理アカウントで Connexity Pixel タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/connexity-pixel/
 ---
-Connexityは、パフォーマンスマーケティング技術会社であり、その主な目的はオンライン小売業者が新しい顧客を見つけ、ROAS目標を満たすコストで販売を促進することです。
 
-## タグのヒント
+Connexity は、オンライン小売業者による新規顧客の獲得と、ROAS 目標に適合するコストでの売上拡大を支援することを主な目的とする、パフォーマンスマーケティングテクノロジー企業です。
 
-* マッピングを使用して：
+## タグに関するヒント
+
+* マッピングは、次の目的で使用します。
   * 構成データを動的に上書きする
-  * E-Commerce拡張値を動的に上書きする
+  * E コマース拡張機能の値を動的に上書きする
   * 追加のデータ値を送信する
-  * イベント固有のパラメータを提供する
+  * イベント固有のパラメータを指定する
   * イベントトリガーを指定する
-* 以下のE-Commerce拡張値をサポートしています：
-  * 注文ID
-  * 注文の小計
-  * 商品の数量
+* 次の E コマース拡張機能の値をサポートしています。
+  * 注文 ID
+  * 注文小計
+  * 商品数量
   * 通貨
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
-* **Merchant ID**: Connexityから提供されたMerchant ID
+* **マーチャント ID**：Connexity から提供されたマーチャント ID
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`mid`|Merchant ID|
-|`page_type`|ページタイプ| 
+|変数|説明|
+|---|---|
+|`mid`|マーチャント ID|
+|`page_type`|ページタイプ|
 
-### E-Commerce
+### E コマース
 
-|変数| タイプ | 説明|
+|変数|型|説明|
 |---|---|---|
-|`order_id` | String |注文ID (`_corder`を上書き)|
-|`order_value` | String | 注文価格 (`csubtotal`を上書き) |
-|`order_currency` | String | 通貨 (`_ccurrency`を上書き)|
-|`category_name` | String | カテゴリ名 (`ccat`を上書き)|
-|`product_sku` | Array |商品SKU (`csku`を上書き)|
-|`product_quantity` | Array | 商品の数量 (`_cquan`を上書き)|
-|`cust type` | String |カスタムタイプ|
-|`category_id`| String |カテゴリID|
-
-
+|`order_id`|文字列|注文 ID（`_corder` を上書き）|
+|`order_value`|文字列|注文金額（`csubtotal` を上書き）|
+|`order_currency`|文字列|通貨（`_ccurrency` を上書き）|
+|`category_name`|文字列|カテゴリー名（`ccat` を上書き）|
+|`product_sku`|配列|商品 SKU（`csku` を上書き）|
+|`product_quantity`|配列|商品数量（`_cquan` を上書き）|
+|`cust type`|文字列|カスタムタイプ|
+|`category_id`|文字列|カテゴリー ID|
 
 ### イベントトリガー
 
-|変数| 説明|
-|---| ---|
-| `pageview`|ページビュー|
-|`conversion`|コンバージョン| 
-| `addtocart`|カートに追加|
-| `Custom Event`|カスタムイベント|
+|変数|説明|
+|---|---|
+|`pageview`|ページビュー|
+|`conversion`|コンバージョン|
+|`addtocart`|カートに追加|
+|`Custom Event`|カスタムイベント|
 
 ### イベント固有のパラメータ
 
-|変数| 説明|
-|---| ---|
-|Page View| ページビュー|
-|Add to Cart| カートに追加|
-|Conversion| コンバージョン|
-|Custom Event| カスタムイベント|
-
+|変数|説明|
+|---|---|
+|ページビュー|ページビュー|
+|カートに追加|カートに追加|
+|コンバージョン|コンバージョン|
+|カスタムイベント|カスタムイベント|

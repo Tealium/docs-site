@@ -246,7 +246,7 @@ To run MCP Inspector and test the MCP server:
 ![](https://docs.tealium.com/images/server-side/moments-api/moments-mcp-server-inspector-config.png)
 
 <blockquote>
-This screenshot shows the previous product name "Moments API". It will be updated when the product UI is updated.
+This screenshot shows the previous product name "Context API". It will be updated when the product UI is updated.
 </blockquote>
 
 

@@ -1,6 +1,6 @@
 ---
 title: TradeDoubler Conversion Tracking Tag Setup Guide
-description: This article describes how to set up the TradeDoubler Conversion Tracking tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the TradeDoubler Conversion Tracking tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/tradedoubler-conversion-tracking-tag/
 ---
 ## Migrating from the legacy Trackback tag
@@ -15,7 +15,7 @@ The Trackback Tag is now deprecated in favor of the new Conversion Tracking vers
 
 Go to the tag marketplace to add a new tag. For more information, see [about-tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tag Type**: (Required) Choose the type of tag you want to load.
   * `Sale`: Loads the Sales tracking pixel hosted on `tbs.tradedoubler.com`.
@@ -38,7 +38,7 @@ After adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Tradedoubler Conversion Tracking Tag are built into its Data Mapping tab.
 

@@ -1,34 +1,34 @@
 ---
 title: About Data Layer Enrichment
-description: Data Layer Enrichment imports AudienceStream attributes into your Tealium iQ data layer and provides access to visitor profile data through public APIs.
+description: Data Layer Enrichment imports Customer Data Platform (CDP) attributes into your Tag Management data layer and provides access to visitor profile data through public APIs.
 url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/about/
 ---
 Data layer enrichment has two components:
 
-* The Tealium iQ configuration imports AudienceStream [attributes]() into your data layer and populates them on your website, where they can be used in load rules, extensions, and tags to create personalized experiences for your visitors.
+* The Tag Management configuration imports Customer Data Platform (CDP) [attributes]() into your data layer and populates them on your website, where they can be used in load rules, extensions, and tags to create personalized experiences for your visitors.
 * The server-side component provides access to visitor profile data through the Data Layer Enrichment API and Profile Definition API.
 
 ## Requirements
 
 Data layer enrichment requires the following:
 
-* An active **AudienceStream** profile with visit and visitor attributes defined.
+* An active **CDP** profile with visit and visitor attributes defined.
 * An active **Tealium Collect tag**.
 * `utag.js` version 4.27 or later. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
 
 ## How it works
 
-### Data layer enrichment profile in Tealium iQ
+### Data layer enrichment profile in Tag Management
 
-The Tealium iQ configuration links your iQ profile to a corresponding AudienceStream profile. After you configure the data layer enrichment profile in Tealium iQ, a new type of data layer variable called AudienceStream Attribute appears in the list of variables on the Data Layer screen. The visit and visitor attributes from the AudienceStream profile are imported and become available to use just like any other data layer variable.
+The Tag Management configuration links your iQ profile to a corresponding CDP profile. After you configure the data layer enrichment profile in Tag Management, a new type of data layer variable called AudienceStream Attribute appears in the list of variables on the Data Layer screen. The visit and visitor attributes from the CDP profile are imported and become available to use just like any other data layer variable.
 
 ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png)
 
 These attributes are populated with real-time customer data into the Universal Data Object (UDO) using the [Tealium Collect Tag](https://docs.tealium.com/tealium-collect-tag/).
 
-Upon a visitor's first visit to your site, the Tealium Collect tag sends a call to AudienceStream to retrieve the most recent visitor profile attributes. The data is placed in the browser's local storage for future use.
+Upon a visitor's first visit to your site, the Tealium Collect tag sends a call to CDP to retrieve the most recent visitor profile attributes. The data is placed in the browser's local storage for future use.
 
-On the second tracking call, the AudienceStream attributes are now in your UDO and affect any load rules, extensions, or tags that are configured with them.
+On the second tracking call, the CDP attributes are now in your UDO and affect any load rules, extensions, or tags that are configured with them.
 
 
 <blockquote>
@@ -56,4 +56,4 @@ You can also create a domain allow list to restrict which domains can access vis
 ## Next steps
 
 * [Enable server-side Data Layer Enrichment](https://docs.tealium.com/enable-data-layer-enrichment/)
-* [Configure Data Layer Enrichment in Tealium iQ](https://docs.tealium.com/configure-data-layer-enrichment-iq/)
+* [Configure Data Layer Enrichment in Tag Management](https://docs.tealium.com/configure-data-layer-enrichment-iq/)

@@ -38,7 +38,7 @@ In the package window, the component named **API Integration** displays the auth
 
 ## Connector Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:-------|:-------|:----------|
 | Send Email to User | ✓ | ✓ |
 | Add to Email List | ✓ | ✓ |
@@ -52,7 +52,7 @@ In the package window, the component named **API Integration** displays the auth
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -73,16 +73,13 @@ This connector requires the following information to connect to ExactTarget's SO
   * If your SOAP Base URL looks something like this: `https://mctg-xxxxxx.soap.marketingcloudapis.com/`, then provide the portion of this URL between two slashes and the first period, in this example it would be `mctg-xxxxxx`.
   * The connector will automatically augment this subdomain name with correct suffixes for authentication and for SOAP messaging.
 
-
 * **ExactTarget Account ID (MID)**
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 See [Salesforce Marketing Cloud Email Studio](https://docs.tealium.com/salesforce-email-studio-connector-legacy/) for details about actions setup.
-
-This section describes how to set up parameters and options for each action.
 
 ### Action - Send Email to User
 
@@ -227,7 +224,7 @@ This action uses batched requests to support high-volume data transfers to the v
 | Record Lookup | <ul><li>(Required) Map values to record fields by which to find existing record to update.</li></ul> |
 | Enable Asynchronous Processing | <ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: [Asynchronous Processing](https://architect.salesforce.com/decision-guides/async-processing).</li></ul> |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Salesforce Marketing Cloud: Create an OAuth 2.0 API Integration in Enhanced Packages](https://developer.salesforce.com/docs/atlas.en-us.mc-app-development.meta/mc-app-development/create-integration-enhanced.htm)
 * [Salesforce Marketing Cloud: API Integration](https://developer.salesforce.com/docs/atlas.en-us.mc-app-development.meta/mc-app-development/api-integration.htm)

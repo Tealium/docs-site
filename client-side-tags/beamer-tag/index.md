@@ -1,32 +1,32 @@
 ---
 title: Beamer Tag Setup Guide
-description: This article describes how to set up the Beamer tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Beamer tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/beamer-tag/
 ---
 ## How it works
 
 Beamer is a notification center and changelog plugin that lets you send announcements to users and site visitors for important news, latest products, special offers, and more.
 
-## Tag Tips
+## Tag tips
 
 * Widget configurations are set with mappings.
 * If you do not add an Element ID by default, Beamer will display a notification icon in the bottom-right corner of your page.
 * You can call the `callback`, `onclick`, `onopen`, and `onclose` functions by providing by mapping either the name of the function as a string or a reference to the functions. If you provide the name of the function, the function must be defined at the window level.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Beamer tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Product ID**  
 The Product ID is the unique identification code that appears in the top bar of your Beamer dashboard.
 * **Selector**  
 HTML identifier for the DOM element to be used as a trigger to show the panel.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

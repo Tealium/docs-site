@@ -1,20 +1,20 @@
 ---
 title: Mapp Intelligence Smart Pixel Tag Setup Guide
-description: This article describes how to set up the Mapp Intelligence Smart Pixel tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Mapp Intelligence Smart Pixel tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/mapp-intelligence-smart-pixel-tag/
 ---
 Mapp Intelligence offers analysts and marketers in depth analyses and valuable insights of website usage and a deeper understanding of their customers. It provides the necessary information to target audiences with the right message at the right time and in the right channel.
 
-## Tag Tips
+## Tag tips
 
 * Values added to the mapping are inserted into the `wt` object (for example, use mapping to set `contentId` or `internalSearch`).
 * The `formTrackInstall()` function is triggered automatically when you set a value for the form HTML ID.
 * Track events by calling the `utag.link()` function.
 * The E-Commerce Extension is required to automatically set order values.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -38,13 +38,13 @@ When adding the tag, configure the following settings:
 * **Enable auto-tracking page data only**: Enable auto-tracking with the `wtSmart.trackPage()` function for page data.
 * **Enable auto-tracking event data only**: Enable auto-tracking with the `wtSmart.trackAction()` function for event data.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

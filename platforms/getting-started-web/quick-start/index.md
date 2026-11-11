@@ -56,7 +56,7 @@ The **Code Center** dialog is displayed.
 1. Select the code displayed in the text box by either of the following methods:
     * Click and drag to select all the code.
     * Click the **Select All** button that appears when you mouse over the code.  
-        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/tag-management/iq-code-center-select-all.png)
 1. Copy the code.
 1. Paste the code into your site authoring tool or back-end system.
 
@@ -274,6 +274,6 @@ To use Live Events you must add the Tealium Collect tag to your Tag Management c
 Learn more:
 
 * [Live Events and Feeds](https://docs.tealium.com/about-live-events/)
-* [Data Sources for Tag Management](https://docs.tealium.com/data-sources-for-iq-tag-management/)
+* [Data Sources for Tag Management](https://docs.tealium.com/data-sources-for-tag-management/)
 * [Tealium Collect Tag Setup Guide](https://docs.tealium.com/tealium-collect-tag/)
 

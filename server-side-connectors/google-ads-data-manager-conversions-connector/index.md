@@ -52,7 +52,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -64,7 +64,7 @@ After you configure the connector, click **Done**.
 
 ## Actions
 
-| Action name | AudienceStream | EventStream |
+| Action name | Customer Data Platform (CDP) | Event Streaming |
 | --- | :---: | :---: |
 | Send Offline Conversion | ✓ | ✓ |
 | Send Online Conversion | ✓ | ✓ |

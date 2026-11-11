@@ -1,407 +1,404 @@
 ---
 title: Mapp Intelligence（レガシーピクセル）タグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでMapp Intelligence（レガシーピクセル）タグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントで Mapp Intelligence（レガシーピクセル）タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/mapp-intelligence-tag/
 ---
-Mapp Intelligenceは、ウェブサイトの使用状況と顧客の深い理解を分析者とマーケターに提供し、適切なメッセージを適切なタイミングで適切なチャネルでターゲットオーディエンスに提供するための必要な情報を提供します。
+Mapp Intelligence は、アナリストやマーケターに、Web サイトの利用状況に関する詳細な分析と有益なインサイトを提供し、顧客への理解を深めます。適切なタイミングとチャネルで、対象オーディエンスに適切なメッセージを届けるために必要な情報を提供します。
 
-## タグのヒント
+## タグに関するヒント
 
-* データマッピングに追加された値は、Webtrekk（`wt`）オブジェクトに挿入されます。例えば、`wt_config.contentId`や`internalSearch`を構成するためにデータマッピングを使用します。
-* Mapp Intelligenceタグは、**Form HTML ID**（`formTrackInstall`）に値を構成することで`formTrackInstall()`を自動的にトリガーします。
-* イベントトラッキングは、`utag.link()`を使用した関数呼び出しで行うことができます。
-* 注文値を自動的に構成するには、E-Commerce拡張が必要です。
+* データマッピングに追加した値は、Webtrekk（`wt`）オブジェクトに挿入されます。たとえば、データマッピングを使用して `wt_config.contentId` または `internalSearch` を構成します）。
+* Mapp Intelligence タグは、**フォーム HTML ID**（`formTrackInstall`）に値を構成することで、`formTrackInstall()` を自動的にトリガーします。
+* イベントトラッキングは、`utag.link()` を使用した関数呼び出しで実行できます。
+* 注文値を自動的に構成するには、E-Commerce 拡張機能が必要です。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、以下の構成を構成します。
 
-* **ライブラリバージョン**：使用しているライブラリのバージョン。
-* **トラックID**：リクエストをアカウントに割り当てるために使用されるID。Mapp **システム構成**の**データ収集**に移動してトラックIDを探します。同じ情報を複数のアカウントに記録する必要がある場合は、対応するトラックIDをカンマで区切ったリストとして入力します。
-* **トラックドメイン**：アカウントマネージャーから提供されたMapp Intelligenceのトラックドメイン。
-* **Param First**：最初に送信されるパラメータのセミコロンで区切られたリスト。
-* **ドメイン**：トラッキングされるウェブサイトのドメイン。セミコロンで区切って複数のドメインを入力することができます。
-* **リンクトラッキング**：Mapp IntelligenceタグはHTMLリンクをトラッキングする2つの方法を提供します：
-  * **リンク**：すべてのHTMLリンクは、クリックされたときに自動的にトラッキングされます
-  * **スタンダード**：ページのすべてのラベル付きHTMLリンクは、クリックされたときにトラッキングされます。
-* **Link Track Attribute**：リンク名に使用されるHTML属性の名前。
-* **Link Track Params**：リンクURLのクエリ文字列パラメータの名前。これはリンク名として使用されます。
-* **Link Track Downloads**：トラックするダウンロードファイルの拡張子。例えば、`.zip`、`.rar`、`.doc`
-* **Pixel Sampling**：ページ上でn番目のユーザーだけがトラッキングされるかどうかを定義します。
-* **Force HTTPS**：**on**または**off**を選択します。
-* **Cookie Handling**：使用するクッキーを選択します：ファーストパーティクッキーまたはサードパーティクッキー。
-* **Cookie Domain**
-* **mediaCode**：標準キャンペーントラッキングに使用するパラメータを識別するために**mediaCode**を構成します。
-* **mediaCodeCookie**：**mediaCode**クエリパラメータがアドレスバーにある場合（例えば、AJAX駆動のウェブサイトで）、**mediaCodeCookie**を`sid`に構成します。
-* **WT Object Name**：WTオブジェクトの名前。単一のWebtrekkインスタンスを使用している場合は、デフォルトの`wt`をそのまま使用します。
-* **Form Tracking**：グローバルフォームトラッキングを有効にします。単一のページでフォームトラッキングを有効にするには、データマッピングで**Form HTML ID**を使用します。
-* **Request Queue**：**on**または**off**を選択します。
-* **Server to Server Tracking**：**on**または**off**を選択します。
+* **ライブラリバージョン**：使用しているライブラリのバージョンです。
+* **トラック ID**：リクエストをアカウントに割り当てるために使用する ID です。Mapp の**システム構成**で**データ収集**に移動し、トラック ID を確認します。同じ情報を複数のアカウントに記録する必要がある場合は、対象アカウントのトラック ID をカンマ区切りのリストとして入力します。
+* **トラックドメイン**：アカウントマネージャーから提供された Mapp Intelligence のトラックドメインです。
+* **先行パラメータ**：最初に送信されるパラメータのセミコロン区切りリストです。
+* **ドメイン**：トラッキング対象の Web サイトのドメインです。複数のドメインをセミコロンで区切って入力できます。
+* **リンクトラッキング**：Mapp Intelligence タグには、HTML リンクをトラッキングする方法が 2 つあります。
+  * **リンク**：すべての HTML リンクは、クリック時に自動的にトラッキングされます。
+  * **標準**：ページ上でラベル付けされたすべての HTML リンクは、クリック時にトラッキングされます。
+* **リンクトラッキング属性**：リンク名に使用する HTML 属性の名前です。
+* **リンクトラッキングパラメータ**：リンク名として使用する、リンク URL 内のクエリ文字列パラメータの名前です。
+* **リンクトラッキング対象ダウンロード**：トラッキングするダウンロードファイルの拡張子です。例：`.zip`、`.rar`、`.doc`
+* **ピクセルサンプリング**：ページ上で n 人ごとのユーザーのみをトラッキングするかどうかを指定します。
+* **HTTPS の強制**：**オン**または**オフ**を選択します。
+* **Cookie の処理**：使用する Cookie（ファーストパーティ Cookie またはサードパーティ Cookie）を選択します。
+* **Cookie ドメイン**
+* **mediaCode**：標準キャンペーントラッキングに使用するパラメータを識別するために、**mediaCode** を構成します。
+* **mediaCodeCookie**：**mediaCode** クエリパラメータがアドレスバーに表示される場合（たとえば、AJAX 駆動型 Web サイト）、**mediaCodeCookie** を `sid` に構成します。
+* **WT オブジェクト名**：WT オブジェクトの名前です。Webtrekk インスタンスを 1 つ使用する場合は、デフォルトの `wt` のままにします。
+* **フォームトラッキング**：グローバルフォームトラッキングを有効にします。個別のページでフォームトラッキングを有効にするには、データマッピングで**フォーム HTML ID**を使用します。
+* **リクエストキュー**：**オン**または**オフ**を選択します。
+* **サーバー間トラッキング**：**オン**または**オフ**を選択します。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[Load Rules](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。読み込みルールの詳細については、[読み込みルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、[data mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは以下のとおりです。
 
-### スタンダード
+### 標準
 
-| 変数                                                              | 説明     |
-|:----------------------------------------------------------------------|:----------------|
-| WT Object Name (`wt_object_name`)                                     | [文字列]        |
-| Request of Obfusacation (`requestObfuscation`)                        | [ブーリアン]       |
-| Secure Configuration (`secureConfig`)                                 | [文字列]        |
-| Send via SDK ( `sendViaSDK` )                                         | [ブーリアン]       |
-| Parameters to Include First (`wt_config.paramFirst`)                  |                 |
-| Ignore Pre-rendering (`wt_config.ignorePrerendering`)                 | [ブーリアン]       |
-| Form Path Analysis (`wt_config.formPathAnalysis`)                     | [ブーリアン]       |
-| tabBrowsing (`wt_config.tabBrowsing`)                                 | [ブーリアン]       |
-| globalVisitorIds (`wt_config.globalVisitorIds`)                       | [ブーリアン]       |
-| execCDB (`wt_config.execCDB`)                                         | [ブーリアン]       |
-| useCDBCache (`wt_config.useCDBCache`)                                 | [ブーリアン]       |
-| useCDBScript (`wt_config.useCDBScript`)                               | [ブーリアン]       |
-| requestLimitAmount (`wt_config.requestLimitAmount`)                   |                 |
-| requestLimitTime (`wt_config.requestLimitTime`)                       |                 |
-| Track ID (`wt_config.trackId`)                                        |                 |
-| Track Domain (`wt_config.trackDomain`)                                |                 |
-| Domain (`wt_config.domain`)                                           |                 |
-| Link Track ( `wt_config.linkTrack` )                                  |                 |
-| Link Track Attribute (`wt_config.linkTrackAttribute`)                 |                 |
-| Link Track Params (`wt_config.linkTrackParams`)                       |                 |
-| Link Track Downloads (`wt_config.linkTrackDownloads`)                 | [RegExp Object] |
-| Link Track Pattern (`wt_config.linkTrackPattern`)                     |                 |
-| Llink Track Replace (`wt_config.linkTrackReplace`)                    |                 |
-| Link Track Ignore Pattern (`wt_config.linkTrackIgnorePattern`)        |                 |
-| No Delay Link Track Attribute (`wt_config.noDelayLinkTrackAttribute`) |                 |
-| Pixel Sampling (`wt_config.pixelSampling`)                            |                 |
-| Force HTTPS (`wt_config.forceHTTPS`)                                  |                 |
-| Cookie Handling (`wt_config.cookie`)                                  |                 |
-| Cookie Domain (`wt_config.cookieDomain`)                              |                 |
-| contentId (`wt_config.contentId`)                                     |                 |
-| Form (`wt_config.form`)                                               |                 |
-| executePluginFunction (`wt_config.executePluginFunction`)             |                 |
-| Media Code Cookie (`wt_config.mediaCodeCookie`)                       |                 |
-| Media Code (`wt_config.mediaCode`)                                    |                 |
-| Custom wt config item (`wt_config.###`)                               |                 |
-
+| 変数                                                                    | 説明               |
+|:------------------------------------------------------------------------|:-------------------|
+| WT オブジェクト名（`wt_object_name`）                                   | ［文字列］         |
+| 難読化リクエスト（`requestObfuscation`）                                | ［ブール値］       |
+| セキュア構成（`secureConfig`）                                          | ［文字列］         |
+| SDK 経由で送信（`sendViaSDK`）                                          | ［ブール値］       |
+| 最初に含めるパラメータ（`wt_config.paramFirst`）                        |                    |
+| プリレンダリングを無視（`wt_config.ignorePrerendering`）                | ［ブール値］       |
+| フォームパス分析（`wt_config.formPathAnalysis`）                        | ［ブール値］       |
+| tabBrowsing（`wt_config.tabBrowsing`）                                  | ［ブール値］       |
+| globalVisitorIds（`wt_config.globalVisitorIds`）                        | ［ブール値］       |
+| execCDB（`wt_config.execCDB`）                                          | ［ブール値］       |
+| useCDBCache（`wt_config.useCDBCache`）                                  | ［ブール値］       |
+| useCDBScript（`wt_config.useCDBScript`）                                | ［ブール値］       |
+| requestLimitAmount（`wt_config.requestLimitAmount`）                    |                    |
+| requestLimitTime（`wt_config.requestLimitTime`）                        |                    |
+| トラック ID（`wt_config.trackId`）                                      |                    |
+| トラックドメイン（`wt_config.trackDomain`）                             |                    |
+| ドメイン（`wt_config.domain`）                                          |                    |
+| リンクトラッキング（`wt_config.linkTrack`）                             |                    |
+| リンクトラッキング属性（`wt_config.linkTrackAttribute`）                |                    |
+| リンクトラッキングパラメータ（`wt_config.linkTrackParams`）             |                    |
+| リンクトラッキング対象ダウンロード（`wt_config.linkTrackDownloads`）    | ［RegExp オブジェクト］ |
+| リンクトラッキングパターン（`wt_config.linkTrackPattern`）              |                    |
+| リンクトラッキング置換（`wt_config.linkTrackReplace`）                  |                    |
+| リンクトラッキング除外パターン（`wt_config.linkTrackIgnorePattern`）    |                    |
+| 遅延なしリンクトラッキング属性（`wt_config.noDelayLinkTrackAttribute`） |                    |
+| ピクセルサンプリング（`wt_config.pixelSampling`）                       |                    |
+| HTTPS の強制（`wt_config.forceHTTPS`）                                  |                    |
+| Cookie の処理（`wt_config.cookie`）                                     |                    |
+| Cookie ドメイン（`wt_config.cookieDomain`）                             |                    |
+| contentId（`wt_config.contentId`）                                      |                    |
+| フォーム（`wt_config.form`）                                            |                    |
+| executePluginFunction（`wt_config.executePluginFunction`）              |                    |
+| メディアコード Cookie（`wt_config.mediaCodeCookie`）                    |                    |
+| メディアコード（`wt_config.mediaCode`）                                 |                    |
+| カスタム wt 構成項目（`wt_config.###`）                                 |                    |
 ### 一般
 
-| 変数                           | 説明  |
+| 変数                               | 説明         |
 |:-----------------------------------|:-------------|
-| Custom Visitor ID                  |              |
-| Login Status (`loginStatus`)       |              |
-| URM Categories (`urmCategory.###`) |              |
-| Email RID (`emailRID`)             |              |
-| Email Opt-In (`emailOptin`)        |              |
-| Gender (`gender`)                  |              |
-| Birthday (`birthday`)              | [`YYYYMMDD`] |
-| Birthday Year (`birthdayJ`)        | [`YYYY`]     |
-| Birthday Month (`birthdayM`)       | [`MM`]       |
-| Birthday Day (`birthdayD`)         |              |
-| CRM Category 1                     |              |
-| CRM Category 2                     |              |
-| CRMカテゴリー3                     |              |
-| CRMカテゴリー4                     |              |
-| CRMカテゴリー5                     |              |
-| CRMカテゴリー6                     |              |
-| CRMカテゴリー7                     |              |
-| CRMカテゴリー8                     |              |
-| CRMカテゴリー9                     |              |
-| CRMカテゴリー10                    |              |
-| カスタムセッションパラメーター1         |              |
-| カスタムセッションパラメーター2         |              |
-| カスタムセッションパラメーター3         |              |
-| カスタムセッションパラメーター4         |              |
-| カスタムセッションパラメーター5         |              |
-| カスタムセッションパラメーター6         |              |
-| カスタムセッションパラメーター7         |              |
-| カスタムセッションパラメーター8         |              |
-| カスタムセッションパラメーター9         |              |
-| カスタムセッションパラメーター10        |              |
+| カスタム訪問ID                   |              |
+| ログインステータス（`loginStatus`） |              |
+| URMカテゴリー（`urmCategory.###`）   |              |
+| メールRID（`emailRID`）             |              |
+| メール配信許可（`emailOptin`）      |              |
+| 性別（`gender`）                    |              |
+| 生年月日（`birthday`）              | [`YYYYMMDD`] |
+| 生年（`birthdayJ`）                 | [`YYYY`]     |
+| 生月（`birthdayM`）                 | [`MM`]       |
+| 生日（`birthdayD`）                 |              |
+| CRMカテゴリー1                      |              |
+| CRMカテゴリー2                      |              |
+| CRMカテゴリー3                      |              |
+| CRMカテゴリー4                      |              |
+| CRMカテゴリー5                      |              |
+| CRMカテゴリー6                      |              |
+| CRMカテゴリー7                      |              |
+| CRMカテゴリー8                      |              |
+| CRMカテゴリー9                      |              |
+| CRMカテゴリー10                     |              |
+| カスタムセッションパラメーター1    |              |
+| カスタムセッションパラメーター2    |              |
+| カスタムセッションパラメーター3    |              |
+| カスタムセッションパラメーター4    |              |
+| カスタムセッションパラメーター5    |              |
+| カスタムセッションパラメーター6    |              |
+| カスタムセッションパラメーター7    |              |
+| カスタムセッションパラメーター8    |              |
+| カスタムセッションパラメーター9    |              |
+| カスタムセッションパラメーター10   |              |
 
 ### ページデータ
 
-| 変数                                        | 説明 |
-|:------------------------------------------------|:------------|
-| ページタイトル (`pageTitle`)                        | [文字列]    |
-| コンテンツID (`contentId`)                        |             |
-| URLパターン (`pageURLPattern`)                  |             |
-| URL置換 (`pageURLReplace`)                  |             |
-| タブブラウジング (`tabBrowsing`)                    | [ブール値]   |
-| 内部検索 (`internalSearch`)              | [文字列]    |
-| 検索結果の数 (`numberSearchResults`) | [数値]    |
-| エラーメッセージ (`errorMessages`)                | [文字列]    |
-| ページタイプ (`pageType`)                          | [文字列]    |
-| ページ長 (`pageLength`)                          | [文字列]    |
-| 記事タイトル (`articleTitle`)                  | [文字列]    |
-| 公開からの日数 (`daysSincePublication`) | [数値]    |
-| ペイウェルコール (`paywell`)                       | [文字列]    |
-| コンテンツタグ (`contentTags`)                    | [文字列]    |
-| コンテンツグループ1                                 |             |
-| コンテンツグループ2                                 |             |
-| コンテンツグループ3                                 |             |
-| コンテンツグループ4                                 |             |
-| コンテンツグループ5                                 |             |
-| コンテンツグループ6                                 |             |
-| コンテンツグループ7                                 |             |
-| コンテンツグループ8                                 |             |
-| コンテンツグループ9                                 |             |
-| コンテンツグループ10                                |             |
-| コンテンツグループ11                                |             |
-| コンテンツグループ12                                |             |
-| コンテンツグループ13                                |             |
-| コンテンツグループ14                                |             |
-| コンテンツグループ15                                |             |
-| コンテンツグループ16                                |             |
-| コンテンツグループ17                                |             |
-| コンテンツグループ18                                |             |
-| コンテンツグループ19                                |             |
-| コンテンツグループ20                                |             |
-| コンテンツグループ21                                |             |
-| コンテンツグループ22                                |             |
-| コンテンツグループ23                                |             |
-| コンテンツグループ24                                |             |
-| コンテンツグループ25                                |             |
-| カスタムパラメーター1                              |             |
-| カスタムパラメーター2                              |             |
-| カスタムパラメーター3                              |             |
-| カスタムパラメーター4                              |             |
-| カスタムパラメーター5                              |             |
-| カスタムパラメーター6                              |             |
-| カスタムパラメーター7                              |             |
-| カスタムパラメーター8                              |             |
-| カスタムパラメーター9                              |             |
-| カスタムパラメーター10                             |             |
-| カスタムパラメーター11                             |             |
-| カスタムパラメーター12                             |             |
-| カスタムパラメーター13                             |             |
-| カスタムパラメーター14                             |             |
-| カスタムパラメーター15                             |             |
-| カスタムパラメーター16                             |             |
-| カスタムパラメーター17                             |             |
-| カスタムパラメーター18                             |             |
-| カスタムパラメーター19                             |             |
-| カスタムパラメーター20                             |             |
-| カスタムパラメーター21                             |             |
-| カスタムパラメーター22                             |             |
-| カスタムパラメーター23                             |             |
-| カスタムパラメーター24                             |             |
-| カスタムパラメーター25                             |             |
-| カスタムパラメーター26                             |             |
-| カスタムパラメーター27                             |             |
-| カスタムパラメーター28                             |             |
-| カスタムパラメーター29                             |             |
-| カスタムパラメーター30                             |             |
-| カスタムパラメーター31                             |             |
-| カスタムパラメーター32                             |             |
-| カスタムパラメーター33                             |             |
-| カスタムパラメーター34                             |             |
-| カスタムパラメーター35                             |             |
-| カスタムパラメーター36                             |             |
-| カスタムパラメーター37                             |             |
-| カスタムパラメーター38                             |             |
-| カスタムパラメーター39                             |             |
-| カスタムパラメーター40                             |             |
-| カスタムパラメーター41                             |             |
-| カスタムパラメーター42                             |             |
-| カスタムパラメーター43                             |             |
-| カスタムパラメーター44                             |             |
-| カスタムパラメーター45                             |             |
-| カスタムパラメーター46                             |             |
-| カスタムパラメーター47                             |             |
-| カスタムパラメーター48                             |             |
-| カスタムパラメーター49                             |             |
-| カスタムパラメーター50                             |             |
+| 変数                                              | 説明     |
+|:--------------------------------------------------|:---------|
+| ページタイトル（`pageTitle`）                     | [文字列] |
+| コンテンツID（`contentId`）                        |          |
+| URLパターン（`pageURLPattern`）                    |          |
+| URL置換（`pageURLReplace`）                        |          |
+| タブブラウジング（`tabBrowsing`）                  | [真偽値] |
+| 内部検索（`internalSearch`）                       | [文字列] |
+| 検索結果数（`numberSearchResults`）                | [数値]   |
+| エラーメッセージ（`errorMessages`）                | [文字列] |
+| ページタイプ（`pageType`）                         | [文字列] |
+| ページ長（`pageLength`）                           | [文字列] |
+| 記事タイトル（`articleTitle`）                     | [文字列] |
+| 公開後の経過日数（`daysSincePublication`）         | [数値]   |
+| Paywell呼び出し（`paywell`）                       | [文字列] |
+| コンテンツタグ（`contentTags`）                    | [文字列] |
+| コンテンツグループ1                                |          |
+| コンテンツグループ2                                |          |
+| コンテンツグループ3                                |          |
+| コンテンツグループ4                                |          |
+| コンテンツグループ5                                |          |
+| コンテンツグループ6                                |          |
+| コンテンツグループ7                                |          |
+| コンテンツグループ8                                |          |
+| コンテンツグループ9                                |          |
+| コンテンツグループ10                               |          |
+| コンテンツグループ11                               |          |
+| コンテンツグループ12                               |          |
+| コンテンツグループ13                               |          |
+| コンテンツグループ14                               |          |
+| コンテンツグループ15                               |          |
+| コンテンツグループ16                               |          |
+| コンテンツグループ17                               |          |
+| コンテンツグループ18                               |          |
+| コンテンツグループ19                               |          |
+| コンテンツグループ20                               |          |
+| コンテンツグループ21                               |          |
+| コンテンツグループ22                               |          |
+| コンテンツグループ23                               |          |
+| コンテンツグループ24                               |          |
+| コンテンツグループ25                               |          |
+| カスタムパラメーター1                              |          |
+| カスタムパラメーター2                              |          |
+| カスタムパラメーター3                              |          |
+| カスタムパラメーター4                              |          |
+| カスタムパラメーター5                              |          |
+| カスタムパラメーター6                              |          |
+| カスタムパラメーター7                              |          |
+| カスタムパラメーター8                              |          |
+| カスタムパラメーター9                              |          |
+| カスタムパラメーター10                             |          |
+| カスタムパラメーター11                             |          |
+| カスタムパラメーター12                             |          |
+| カスタムパラメーター13                             |          |
+| カスタムパラメーター14                             |          |
+| カスタムパラメーター15                             |          |
+| カスタムパラメーター16                             |          |
+| カスタムパラメーター17                             |          |
+| カスタムパラメーター18                             |          |
+| カスタムパラメーター19                             |          |
+| カスタムパラメーター20                             |          |
+| カスタムパラメーター21                             |          |
+| カスタムパラメーター22                             |          |
+| カスタムパラメーター23                             |          |
+| カスタムパラメーター24                             |          |
+| カスタムパラメーター25                             |          |
+| カスタムパラメーター26                             |          |
+| カスタムパラメーター27                             |          |
+| カスタムパラメーター28                             |          |
+| カスタムパラメーター29                             |          |
+| カスタムパラメーター30                             |          |
+| カスタムパラメーター31                             |          |
+| カスタムパラメーター32                             |          |
+| カスタムパラメーター33                             |          |
+| カスタムパラメーター34                             |          |
+| カスタムパラメーター35                             |          |
+| カスタムパラメーター36                             |          |
+| カスタムパラメーター37                             |          |
+| カスタムパラメーター38                             |          |
+| カスタムパラメーター39                             |          |
+| カスタムパラメーター40                             |          |
+| カスタムパラメーター41                             |          |
+| カスタムパラメーター42                             |          |
+| カスタムパラメーター43                             |          |
+| カスタムパラメーター44                             |          |
+| カスタムパラメーター45                             |          |
+| カスタムパラメーター46                             |          |
+| カスタムパラメーター47                             |          |
+| カスタムパラメーター48                             |          |
+| カスタムパラメーター49                             |          |
+| カスタムパラメーター50                             |          |
+### 検索・フォームトラッキング
 
-### 検索＆フォームトラッキング
-
-| 変数                                           | 説明      |
-|:---------------------------------------------------|:-----------------|
-| フォーム (`form`)                                      | [`0`/`1`]        |
-| フォーム属性 (`formAttribute`)                   | [文字列]         |
-| フォーム値属性 (`formValueAttribute`)        | [文字列]         |
-| フォームフィールド属性 (`formFieldAttribute`)        | [文字列]         |
-| フルコンテンツフォームトラッキング (`formFullContent`)     | [配列]          |
-| フォームパス分析 (`formPathAnalysis`)            | [`true`/`false`] |
-| 匿名フォームトラッキング (`formAnonymous`)          | [`0`/`1`]        |
-| フォームフィールドデフォルト値 (`formFieldDefaultValue`) | [文字列]         |
-| フォームHTML ID (`formTrackInstall`)                  |                  |
+| 変数                                               | 説明                 |
+|:---------------------------------------------------|:---------------------|
+| フォーム (`form`)                                  | [`0`/`1`]            |
+| フォーム属性 (`formAttribute`)                     | [文字列]             |
+| フォーム値属性 (`formValueAttribute`)              | [文字列]             |
+| フォームフィールド属性 (`formFieldAttribute`)      | [文字列]             |
+| フォーム全体のコンテンツトラッキング (`formFullContent`) | [配列]          |
+| フォームパス分析 (`formPathAnalysis`)              | [`true`/`false`]      |
+| 匿名フォームトラッキング (`formAnonymous`)         | [`0`/`1`]            |
+| フォームフィールドのデフォルト値 (`formFieldDefaultValue`) | [文字列]      |
+| フォームのHTML ID (`formTrackInstall`)             |                      |
 
 ### クリックトラッキング
 
-| 変数                                                    | 説明     |
-|:------------------------------------------------------------|:----------------|
-| リンクトラック (`linkTrack`)                                    | [link/standard] |
-| リンクトラック属性 (`linkTrackAttribute`)                 | [文字列]        |
-| リンクトラックパターン (`linkTrackPattern`)                     | [RegExp Object] |
-| リンクトラック無視パターン (`linkTrackIgnorePattern`)        | [String]        |
-| リンクトラック置換 (`linkTrackReplace`)                     | [String]        |
-| リンクトラックダウンロード (`linkTrackDownloads`)                 | [Array]         |
-| リンクトラック遅延 (`delayLinkTrack`)                         | [true/false]    |
-| リンクトラック遅延時間 (`delayLinkTrackTime`)                | [Number]        |
-| リンクトラック遅延なし属性 (`noDelayLinkTrackAttribute`) | [String]        |
-| リンクトラックパラメータ                                           |                 |
-| カスタムutag.linkトラッキングのためのリンクID (`linkId`)            |                 |
+| 変数                                                        | 説明                  |
+|:------------------------------------------------------------|:----------------------|
+| リンクトラッキング (`linkTrack`)                            | [リンク/標準]         |
+| リンクトラッキング属性 (`linkTrackAttribute`)               | [文字列]              |
+| リンクトラッキングパターン (`linkTrackPattern`)             | [正規表現オブジェクト] |
+| リンクトラッキング除外パターン (`linkTrackIgnorePattern`)   | [文字列]              |
+| リンクトラッキング置換 (`linkTrackReplace`)                 | [文字列]              |
+| リンクトラッキング対象のダウンロード (`linkTrackDownloads`) | [配列]                |
+| リンクトラッキングの遅延 (`delayLinkTrack`)                 | [true/false]          |
+| リンクトラッキングの遅延時間 (`delayLinkTrackTime`)         | [数値]                |
+| リンクトラッキングを遅延させない属性 (`noDelayLinkTrackAttribute`) | [文字列]       |
+| リンクトラッキングパラメーター                              |                       |
+| カスタムutag.linkトラッキング用のリンクID (`linkId`)        |                       |
 
 ### キャンペーントラッキング
 
-| 変数                              | 説明 |
-|:--------------------------------------|:------------|
-| メディアコード (`mediaCode`)              |             |
-| メディアコードクッキー (`mediaCodeCookie`) |             |
-| キャンペーンID (`campaignId`)            |             |
-| キャンペーンアクション (`campaignAction`)    |             |
-| カスタムキャンペーンパラメータ1           |             |
-| カスタムキャンペーンパラメータ2           |             |
-| カスタムキャンペーンパラメータ3           |             |
-| カスタムキャンペーンパラメータ4           |             |
-| カスタムキャンペーンパラメータ5           |             |
-| カスタムキャンペーンパラメータ6           |             |
-| カスタムキャンペーンパラメータ7           |             |
-| カスタムキャンペーンパラメータ8           |             |
-| カスタムキャンペーンパラメータ9           |             |
-| カスタムキャンペーンパラメータ10          |             |
+| 変数                                      | 説明 |
+|:------------------------------------------|:-----|
+| メディアコード (`mediaCode`)             |      |
+| メディアコードCookie (`mediaCodeCookie`) |      |
+| キャンペーンID (`campaignId`)            |      |
+| キャンペーンアクション (`campaignAction`) |     |
+| カスタムキャンペーンパラメーター1        |      |
+| カスタムキャンペーンパラメーター2        |      |
+| カスタムキャンペーンパラメーター3        |      |
+| カスタムキャンペーンパラメーター4        |      |
+| カスタムキャンペーンパラメーター5        |      |
+| カスタムキャンペーンパラメーター6        |      |
+| カスタムキャンペーンパラメーター7        |      |
+| カスタムキャンペーンパラメーター8        |      |
+| カスタムキャンペーンパラメーター9        |      |
+| カスタムキャンペーンパラメーター10       |      |
 
 ### サーバートラッキング
 
-| 変数                                                          | 説明      |
+| 変数                                                              | 説明             |
 |:------------------------------------------------------------------|:-----------------|
-| サーバー経由送信有効 (`sendViaServerActivated`)              | [`true`/`false`] |
-| サーバー経由送信ドメイン (`sendViaServerDomain`)                    | [String]         |
-| サーバー経由送信パス (`sendViaServerPath`)                        | [String]         |
-| サーバー経由送信ドロップリクエスト (`sendViaServerDroppedRequests`) |                  |
-| サーバー経由送信ブラックリスト (`sendViaServerBlacklist`)              |                  |
+| サーバー経由送信の有効化 (`sendViaServerActivated`)               | [`true`/`false`] |
+| サーバー経由送信のドメイン (`sendViaServerDomain`)                | [文字列]         |
+| サーバー経由送信のパス (`sendViaServerPath`)                      | [文字列]         |
+| サーバー経由送信で破棄されたリクエスト (`sendViaServerDroppedRequests`) |             |
+| サーバー経由送信のブラックリスト (`sendViaServerBlacklist`)       |                  |
 
-### クッキー
+### Cookie
 
-| 変数                                     | 説明 |
-|:---------------------------------------------|:------------|
-| クッキー更新 (`updateCookie`)               | [Boolean]   |
-| クッキーセキュア (`cookieSecure`)               | [Boolean]   |
-| クッキーEver IDタイムアウト (`cookieEidTimeout`)  | [Number]    |
-| Ever IDの検証 (`validateEverId`)          | [Boolean]   |
-| クッキーオプトアウト名 (`optoutName`)            | [String]    |
-| クッキーオプトアウトタイムフレーム (`optoutTimeFrame`) |             |
+| 変数                                         | 説明       |
+|:---------------------------------------------|:-----------|
+| Cookieの更新 (`updateCookie`)                | [真偽値]   |
+| セキュアCookie (`cookieSecure`)              | [真偽値]   |
+| Cookie Ever IDのタイムアウト (`cookieEidTimeout`) | [数値] |
+| Ever IDの検証 (`validateEverId`)             | [真偽値]   |
+| オプトアウトCookie名 (`optoutName`)          | [文字列]   |
+| オプトアウトCookieの期間 (`optoutTimeFrame`) |            |
 
 ### リクエストキュー
 
-| 変数                                                  | 説明 |
-|:----------------------------------------------------------|:------------|
-| リクエストキュー有効 (`requestQueueActivated`)         | [Boolean]   |
-| リクエストキュー再送間隔 (`requestQueueResendInterval`) | [Number]    |
-| リクエストキューTTL (`requestQueueTTL`)                    | [Number]    |
-| リクエストキューサイズ (`requestQueueSize`)                   | [Boolean]   |
+| 変数                                                      | 説明     |
+|:----------------------------------------------------------|:---------|
+| リクエストキューの有効化 (`requestQueueActivated`)       | [真偽値] |
+| リクエストキューの再送間隔 (`requestQueueResendInterval`) | [数値]   |
+| リクエストキューのTTL (`requestQueueTTL`)                 | [数値]   |
+| リクエストキューのサイズ (`requestQueueSize`)             | [真偽値] |
 
 ### 匿名トラッキング
 
-| 変数                                                              | 説明 |
-|:----------------------------------------------------------------------|:------------|
-| 匿名機能有効 (`enableAnonymousFunction`)                 | [Boolean]   |
-| 匿名オプトイン (`anonymousOptIn`)                                   | [Boolean]   |
-| 匿名クッキー名 (`anonymousCookieName`)                         | [String]    |
-| 識別パラメータの抑制 (`suppressIdentificationParameter`) | [Array]     |
+| 変数                                                              | 説明     |
+|:------------------------------------------------------------------|:---------|
+| 匿名機能の有効化 (`enableAnonymousFunction`)                      | [真偽値] |
+| 匿名オプトイン (`anonymousOptIn`)                                 | [真偽値] |
+| 匿名Cookie名 (`anonymousCookieName`)                              | [文字列] |
+| 識別パラメーターの抑制 (`suppressIdentificationParameter`)       | [配列]   |
+### Eコマース
 
-### E-コマース
-
-| 変数                                | 説明                                                   |
+| 変数                                    | 説明                                                          |
 |:----------------------------------------|:--------------------------------------------------------------|
-| 注文ID (`order_id`)                   | ( `_corder` を上書きします)                                        |
-| 注文合計 (`order_total`)             | ( `_ctotal` を上書きします)                                        |
-| 通貨 (`order_currency`)             | ( `_ccurrency` を上書きします)                                     |
-| クーポン値 (`order_couponValue`)      |                                                               |
-| 名前のリスト (`product_name`)          | [Array]<br> ( `_cprodname` を上書きします)                         |
-| 数量のリスト (`product_quantity`) | [Array]<br> ( `_cquan` を上書きします)                             |
-| 価格のリスト (`product_unit_price`)   | [Array] <br> ( `_cprice` を上書きします)                           |
-| 商品カテゴリ (`product_category`)    | [Array] <br> カテゴリのリスト <br> ( `_ccat` を上書きします)     |
-| 商品ブランド (`product_brand`)       | [Array]<br> ブランドのリスト <br> ( `_cbrand` を上書きします)        |
-| 商品サブカテゴリ (`product_subcategory`) | [Array]<br> サブカテゴリのリスト <br> ( `_ccat2` を上書きします) |
-| 商品ステータス (`productStatus`)        |                                                               |
-| 支払い方法 (`paymentMethod`)        | [String]                                                      |
-| 配送サービス (`shippingService`)    | [String]                                                      |
-| 配送速度 (`shippingSpeed`)        | [String]                                                      |
-| 配送費用 (`shippingCosts`)        | [Number]                                                      |
-| 粗利益 (`grossMargin`)            | [Number]                                                      |
-| 注文ステータス (`orderStatus`)            | [String]                                                      |
-| 商品バリエーション (`productVariant`)      | [String]                                                      |
-| 商品売り切れ (`productSoldOut`)     | [`0`/`1`]                                                     |
-| 商品カテゴリ1                      |                                                               |
-| 商品カテゴリ2                      |                                                               |
-| 商品カテゴリ3                      |                                                               |
-| 商品カテゴリ4                      |                                                               |
-| 商品カテゴリ5                      |                                                               |
-| 商品カテゴリ6                      |                                                               |
-| 商品カテゴリ7                      |                                                               |
-| 商品カテゴリ8                      |                                                               |
-| 商品カテゴリ9                      |                                                               |
-| 商品カテゴリ10                     |                                                               |
-| 商品カテゴリ11                     |                                                               |
-| 商品カテゴリ12                     |                                                               |
-| 商品カテゴリ13                     |                                                               |
-| 商品カテゴリ14                     |                                                               |
-| 商品カテゴリ15                     |                                                               |
-| 商品カテゴリ16                     |                                                               |
-| 商品カテゴリ17                     |                                                               |
-| 商品カテゴリ18                     |                                                               |
-| 商品カテゴリ19                     |                                                               |
-| 商品カテゴリ20                           |                                                               |
-| 商品カテゴリ21                           |                                                               |
-| 商品カテゴリ22                           |                                                               |
-| 商品カテゴリ23                           |                                                               |
-| 商品カテゴリ24                           |                                                               |
-| 商品カテゴリ25                           |                                                               |
-| カスタムEコマースパラメータ1             |                                                               |
-| カスタムEコマースパラメータ2             |                                                               |
-| カスタムEコマースパラメータ3             |                                                               |
-| カスタムEコマースパラメータ4             |                                                               |
-| カスタムEコマースパラメータ5             |                                                               |
-| カスタムEコマースパラメータ6             |                                                               |
-| カスタムEコマースパラメータ7             |                                                               |
-| カスタムEコマースパラメータ8             |                                                               |
-| カスタムEコマースパラメータ9             |                                                               |
-| カスタムEコマースパラメータ10            |                                                               |
-| カスタムEコマースパラメータ11            |                                                               |
-| カスタムEコマースパラメータ12            |                                                               |
-| カスタムEコマースパラメータ13            |                                                               |
-| カスタムEコマースパラメータ14            |                                                               |
-| カスタムEコマースパラメータ15            |                                                               |
-| カスタムEコマースパラメータ16            |                                                               |
-| カスタムEコマースパラメータ17            |                                                               |
-| カスタムEコマースパラメータ18            |                                                               |
-| カスタムEコマースパラメータ19            |                                                               |
-| カスタムEコマースパラメータ20            |                                                               |
-| カスタムEコマースパラメータ21            |                                                               |
-| カスタムEコマースパラメータ22            |                                                               |
-| カスタムEコマースパラメータ23            |                                                               |
-| カスタムEコマースパラメータ24            |                                                               |
-| カスタムEコマースパラメータ25            |                                                               |
-| カスタムEコマースパラメータ26            |                                                               |
-| カスタムEコマースパラメータ27            |                                                               |
-| カスタムEコマースパラメータ28            |                                                               |
-| カスタムEコマースパラメータ29            |                                                               |
-| カスタムEコマースパラメータ30            |                                                               |
-| カスタムEコマースパラメータ31            |                                                               |
-| カスタムEコマースパラメータ32            |                                                               |
-| カスタムEコマースパラメータ33            |                                                               |
-| カスタムEコマースパラメータ34            |                                                               |
-| カスタムEコマースパラメータ35            |                                                               |
-| カスタムEコマースパラメータ36            |                                                               |
-| カスタムEコマースパラメータ37            |                                                               |
-| カスタムEコマースパラメータ38            |                                                               |
-| カスタムEコマースパラメータ39            |                                                               |
-| カスタムEコマースパラメータ40            |                                                               |
-| カスタムEコマースパラメータ41            |                                                               |
-| カスタムEコマースパラメータ42            |                                                               |
-| カスタムEコマースパラメータ43            |                                                               |
-| カスタムEコマースパラメータ44            |                                                               |
-| カスタムEコマースパラメータ45            |                                                               |
-| カスタムEコマースパラメータ46            |                                                               |
-| カスタムEコマースパラメータ47            |                                                               |
-| カスタムEコマースパラメータ48            |                                                               |
-| カスタムEコマースパラメータ49            |                                                               |
-| カスタムEコマースパラメータ50            |                                                               |
+| 注文ID（`order_id`）                    | （`_corder` を上書き）                                        |
+| 注文合計（`order_total`）               | （`_ctotal` を上書き）                                        |
+| 通貨（`order_currency`）                | （`_ccurrency` を上書き）                                     |
+| クーポン金額（`order_couponValue`）     |                                                               |
+| 名前のリスト（`product_name`）          | [配列]<br>（`_cprodname` を上書き）                           |
+| 数量のリスト（`product_quantity`）      | [配列]<br>（`_cquan` を上書き）                               |
+| 価格のリスト（`product_unit_price`）    | [配列]<br>（`_cprice` を上書き）                              |
+| 商品カテゴリー（`product_category`）    | [配列]<br>カテゴリーのリスト<br>（`_ccat` を上書き）          |
+| 商品カテゴリー（`product_brand`）       | [配列]<br>ブランドのリスト<br>（`_cbrand` を上書き）          |
+| 商品カテゴリー（`product_subcategory`） | [配列]<br>サブカテゴリーのリスト<br>（`_ccat2` を上書き）     |
+| 商品ステータス（`productStatus`）       |                                                               |
+| 支払い方法（`paymentMethod`）           | [文字列]                                                      |
+| 配送サービス（`shippingService`）       | [文字列]                                                      |
+| 配送速度（`shippingSpeed`）             | [文字列]                                                      |
+| 配送料（`shippingCosts`）               | [数値]                                                        |
+| 粗利益（`grossMargin`）                 | [数値]                                                        |
+| 注文ステータス（`orderStatus`）         | [文字列]                                                      |
+| 商品バリエーション（`productVariant`）  | [文字列]                                                      |
+| 商品の売り切れ（`productSoldOut`）      | [`0`/`1`]                                                     |
+| 商品カテゴリー1                         |                                                               |
+| 商品カテゴリー2                         |                                                               |
+| 商品カテゴリー3                         |                                                               |
+| 商品カテゴリー4                         |                                                               |
+| 商品カテゴリー5                         |                                                               |
+| 商品カテゴリー6                         |                                                               |
+| 商品カテゴリー7                         |                                                               |
+| 商品カテゴリー8                         |                                                               |
+| 商品カテゴリー9                         |                                                               |
+| 商品カテゴリー10                        |                                                               |
+| 商品カテゴリー11                        |                                                               |
+| 商品カテゴリー12                        |                                                               |
+| 商品カテゴリー13                        |                                                               |
+| 商品カテゴリー14                        |                                                               |
+| 商品カテゴリー15                        |                                                               |
+| 商品カテゴリー16                        |                                                               |
+| 商品カテゴリー17                        |                                                               |
+| 商品カテゴリー18                        |                                                               |
+| 商品カテゴリー19                        |                                                               |
+| 商品カテゴリー20                        |                                                               |
+| 商品カテゴリー21                        |                                                               |
+| 商品カテゴリー22                        |                                                               |
+| 商品カテゴリー23                        |                                                               |
+| 商品カテゴリー24                        |                                                               |
+| 商品カテゴリー25                        |                                                               |
+| カスタムEコマースパラメーター1          |                                                               |
+| カスタムEコマースパラメーター2          |                                                               |
+| カスタムEコマースパラメーター3          |                                                               |
+| カスタムEコマースパラメーター4          |                                                               |
+| カスタムEコマースパラメーター5          |                                                               |
+| カスタムEコマースパラメーター6          |                                                               |
+| カスタムEコマースパラメーター7          |                                                               |
+| カスタムEコマースパラメーター8          |                                                               |
+| カスタムEコマースパラメーター9          |                                                               |
+| カスタムEコマースパラメーター10         |                                                               |
+| カスタムEコマースパラメーター11         |                                                               |
+| カスタムEコマースパラメーター12         |                                                               |
+| カスタムEコマースパラメーター13         |                                                               |
+| カスタムEコマースパラメーター14         |                                                               |
+| カスタムEコマースパラメーター15         |                                                               |
+| カスタムEコマースパラメーター16         |                                                               |
+| カスタムEコマースパラメーター17         |                                                               |
+| カスタムEコマースパラメーター18         |                                                               |
+| カスタムEコマースパラメーター19         |                                                               |
+| カスタムEコマースパラメーター20         |                                                               |
+| カスタムEコマースパラメーター21         |                                                               |
+| カスタムEコマースパラメーター22         |                                                               |
+| カスタムEコマースパラメーター23         |                                                               |
+| カスタムEコマースパラメーター24         |                                                               |
+| カスタムEコマースパラメーター25         |                                                               |
+| カスタムEコマースパラメーター26         |                                                               |
+| カスタムEコマースパラメーター27         |                                                               |
+| カスタムEコマースパラメーター28         |                                                               |
+| カスタムEコマースパラメーター29         |                                                               |
+| カスタムEコマースパラメーター30          |                                                               |
+| カスタムEコマースパラメーター31          |                                                               |
+| カスタムEコマースパラメーター32          |                                                               |
+| カスタムEコマースパラメーター33          |                                                               |
+| カスタムEコマースパラメーター34          |                                                               |
+| カスタムEコマースパラメーター35          |                                                               |
+| カスタムEコマースパラメーター36          |                                                               |
+| カスタムEコマースパラメーター37          |                                                               |
+| カスタムEコマースパラメーター38          |                                                               |
+| カスタムEコマースパラメーター39          |                                                               |
+| カスタムEコマースパラメーター40          |                                                               |
+| カスタムEコマースパラメーター41          |                                                               |
+| カスタムEコマースパラメーター42          |                                                               |
+| カスタムEコマースパラメーター43          |                                                               |
+| カスタムEコマースパラメーター44          |                                                               |
+| カスタムEコマースパラメーター45          |                                                               |
+| カスタムEコマースパラメーター46          |                                                               |
+| カスタムEコマースパラメーター47          |                                                               |
+| カスタムEコマースパラメーター48          |                                                               |
+| カスタムEコマースパラメーター49          |                                                               |
+| カスタムEコマースパラメーター50          |                                                               |

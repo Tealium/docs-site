@@ -13,16 +13,18 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Subdomain**: The Skai subdomain provided during onboarding, used to build the request host `https://{subdomain}.xg4ken.com/...` (for example, `1234`).
 * **Token**: The Skai secure token from onboarding. The connector sends this value as the `token` query parameter. To override this value per event, add an event-level mapping.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion | ✓ | ✓ |
 | Send Click | ✓ | ✓ |

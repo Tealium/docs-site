@@ -3,7 +3,7 @@ title: VKontakte Ads Connector Setup Guide
 description: This article describes how to set up the VKontakte Ads connector.
 url: https://docs.tealium.com/server-side-connectors/vkontakte-ads-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,7 +12,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://ads.vk.com/api`
 * Documentation: [VKontakte Ads API](https://ads.vk.com/doc/api/resource/RemarketingUsersLists#POST)
 
-## Batch Limits
+## Batch limits
   
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event | ✗ | ✓ |
 | Add user to audience (Batch) | ✓ | ✗ |
@@ -30,13 +30,15 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Client ID**  
 Your VKontakte application ID.
 * **Client Secret**  
+
+After you configure the connector, click **Done**.
 Your VKontakte application secret key.
 
 ## Actions
@@ -69,7 +71,6 @@ The following section lists the supported parameters for each action.
 
 ### Add user to audience (Batch)
 
-
 #### Parameters
 
 | **Parameter** | **Description** |
@@ -80,7 +81,6 @@ The following section lists the supported parameters for each action.
 | MD5 hash values | Select if you want the User ID attribute to be MD5 hashed. |
 
 ### Delete user from audience (Batch)
-
 
 #### Parameters
 

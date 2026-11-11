@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/khoros-connector/
 ---
 ## Supported Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add Role to User| ✓| ✗|
 |Remove Role from User| ✓| ✗|
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For more information, see  [Connector Overview](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -22,9 +22,7 @@ After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add Role to User
 
@@ -32,7 +30,7 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Add User to Role| Select the Khoros role to add the user to. Khoros badges must be linked to Khoros roles so AudienceStream can manage Khoros badges. When AudienceStream provisions the role, the badge will be awarded in Khoros. If the role is revoked, the badge **will not** be removed. The only way to remove a badge from a user in Khoros is to delete the badge from the system, removing it from all users.|
+|Add User to Role| Select the Khoros role to add the user to. Khoros badges must be linked to Khoros roles so Customer Data Platform (CDP) can manage Khoros badges. When CDP provisions the role, the badge will be awarded in Khoros. If the role is revoked, the badge **will not** be removed. The only way to remove a badge from a user in Khoros is to delete the badge from the system, removing it from all users.|
 |User Id| The user ID to search for.|
 |Username| The username to search for.|
 
@@ -42,6 +40,6 @@ This section describes how to set up parameters and options for each action.
 
 |**Parameter**| **Description**|
 |---| ---|
-|Remove User From Role| Select the Khoros role to remove the user from. Khoros badges must be linked to Khoros roles so AudienceStream can manage Khoros badges. When AudienceStream provisions the role, the badge will be awarded in Khoros. If the role is revoked, the badge **will not** be removed. The only way to remove a badge from a user in Khoros is to delete the badge from the system, removing it from all users.|
+|Remove User From Role| Select the Khoros role to remove the user from. Khoros badges must be linked to Khoros roles so CDP can manage Khoros badges. When CDP provisions the role, the badge will be awarded in Khoros. If the role is revoked, the badge **will not** be removed. The only way to remove a badge from a user in Khoros is to delete the badge from the system, removing it from all users.|
 |User Id| The user ID to search for.|
 |Username| The username to search for.|

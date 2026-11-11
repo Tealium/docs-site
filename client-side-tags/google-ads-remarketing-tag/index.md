@@ -1,11 +1,11 @@
 ---
 title: Google Ads Remarketing Tag Setup Guide
-description: This article describes setting up the Google Ads Remarketing tag in Tealium iQ Tag Management and how to use the Chrome Google Tag Assistant extension to check if custom parameters are being captured.
+description: This article describes setting up the Google Ads Remarketing tag in Tag Management and how to use the Chrome Google Tag Assistant extension to check if custom parameters are being captured.
 url: https://docs.tealium.com/client-side-tags/google-ads-remarketing-tag/
 ---
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -31,7 +31,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/about-data-mappings/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 ### Standard
 

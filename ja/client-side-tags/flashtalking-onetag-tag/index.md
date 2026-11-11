@@ -1,88 +1,87 @@
 ---
 title: Flashtalking OneTagタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでFlashtalking OneTagタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでFlashtalking OneTagタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/flashtalking-onetag-tag/
 ---
-Flashtalking OneTagは、データを使用して広告をリアルタイムでパーソナライズし、その効果を分析し、より良いエンゲージメントとROIを実現する最適化を可能にします。
+Flashtalking OneTagは、データを使用して広告をリアルタイムでパーソナライズし、その効果を分析するとともに、エンゲージメントとROIの向上につながる最適化を可能にします。
 
-## タグのヒント
+## タグに関するヒント
 
-マッピングを使用して：
+マッピングを使用して、以下を行います。
 
-* `ftXName`（トランザクション名）の値を構成します。
-* カスタム変数（U1 - U20）を送信します。
-* 標準の構成値を上書きします。
-* E-Commerce拡張の値を上書きします。
-* E-Commerce拡張を使用している場合、これらの値はデータレイヤーに記入されていると自動的に渡されます：
-    * `ftXRef`（E-Commerceの注文ID）
-    * `ftXValue`（E-Commerceの注文小計）
-    * `ftXType`（E-Commerceの注文タイプ）
-    * `ftXCurrency`（E-Commerceの注文通貨）
-    * `ftXNumItems`（E-Commerceの数量リスト）
+* `ftXName`（トランザクション名）の値を構成する。
+* カスタム変数（U1～U20）を送信する。
+* 標準構成値を上書きする。
+* Eコマース拡張機能の値を上書きする。
+* Eコマース拡張機能を使用している場合、データレイヤーに値が構成されると、以下の値が自動的に渡されます。
+    * `ftXRef`（Eコマース注文ID）
+    * `ftXValue`（Eコマース注文小計）
+    * `ftXType`（Eコマース注文タイプ）
+    * `ftXCurrency`（Eコマース注文通貨）
+    * `ftXNumItems`（Eコマースの数量リスト）
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際に、以下を構成します。
 
-* **広告主ID**：コードスニペット中の`/container/`の直後の番号。
-* **スポットライトID**：コードスニペット中の広告主IDの直後の番号。
-* **スポットライトグループID**：コードスニペット中のスポットライトIDの直後の番号。
+* **広告主ID**：コードスニペット内の`/container/`の直後にある数字。
+* **Spotlight ID**：コードスニペット内の広告主IDの直後にある数字。
+* **SpotlightグループID**：コードスニペット内のSpotlight IDの直後にある数字。
 
 例：`https://servedby.flashtalking.com/container/AdvertiserID;SpotlightID;SpotlightGroupID;iframe/?`
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです：
+使用可能なカテゴリーは以下のとおりです。
 
 ### 標準
 
 | **変数** | **説明** |
 |:---------|:------------|
 | `aid` | 広告主ID |
-| `sid` | スポットライトID |
-| `sgid` | スポットライトグループID |
+| `sid` | Spotlight ID |
+| `sgid` | SpotlightグループID |
 
-### E-Commerce
+### Eコマース
 
-| **変数** | **説明** | **データタイプ** |
+| **変数** | **説明** | **データ型** |
 |:---------|:------------|:------------|
-| `order_id` | 注文ID (ftXRef) (`_corder`を上書き) | 文字列 |
-| `order_subtotal` | 小計 (ftXValue) (`_csubtotal`を上書き) | 整数 |
-| `order_currency` | 通貨 (ftXCurrency) (`_ccurrency`を上書き) | 文字列 |
-| `order_type` | カートまたは注文タイプ (`_ctype`を上書き) | 文字列 |
-| `product_quantity` | 数量リスト (`_cquan`を上書き) | 配列 |
+| `order_id` | 注文ID（ftXRef）（`_corder`を上書き） | 文字列 |
+| `order_subtotal` | 小計（ftXValue）（`_csubtotal`を上書き） | 整数 |
+| `order_currency` | 通貨（ftXCurrency）（`_ccurrency`を上書き） | 文字列 |
+| `order_type` | カートまたは注文のタイプ（`_ctype`を上書き） | 文字列 |
+| `product_quantity` | 数量のリスト（`_cquan`を上書き） | 配列 |
 | `ft_vars.ftXName` | トランザクション名 | 文字列 |
 
 ### カスタム
 
 | **変数** | **説明** |
 |:---------|:------------|
-| `ft_vars.U1` | カスタム変数 1  |
-| `ft_vars.U2` | カスタム変数 2  |
-| `ft_vars.U3` | カスタム変数 3  |
-| `ft_vars.U4` | カスタム変数 4  |
-| `ft_vars.U5` | カスタム変数 5  |
-| `ft_vars.U6` | カスタム変数 6  |
-| `ft_vars.U7` | カスタム変数 7  |
-| `ft_vars.U8` | カスタム変数 8  |
-| `ft_vars.U9` | カスタム変数 9  |
-| `ft_vars.U10` | カスタム変数 10  |
-| `ft_vars.U11` | カスタム変数 11  |
-| `ft_vars.U12` | カスタム変数 12  |
-| `ft_vars.U13` | カスタム変数 13  |
-| `ft_vars.U14` | カスタム変数 14  |
-| `ft_vars.U15` | カスタム変数 15  |
-| `ft_vars.U16` | カスタム変数 16  |
-| `ft_vars.U17` | カスタム変数 17  |
-| `ft_vars.U18` | カスタム変数 18  |
-| `ft_vars.U19` | カスタム変数 19  |
-| `ft_vars.U20` | カスタム変数 20  |
-
+| `ft_vars.U1` | カスタム変数1 |
+| `ft_vars.U2` | カスタム変数2 |
+| `ft_vars.U3` | カスタム変数3 |
+| `ft_vars.U4` | カスタム変数4 |
+| `ft_vars.U5` | カスタム変数5 |
+| `ft_vars.U6` | カスタム変数6 |
+| `ft_vars.U7` | カスタム変数7 |
+| `ft_vars.U8` | カスタム変数8 |
+| `ft_vars.U9` | カスタム変数9 |
+| `ft_vars.U10` | カスタム変数10 |
+| `ft_vars.U11` | カスタム変数11 |
+| `ft_vars.U12` | カスタム変数12 |
+| `ft_vars.U13` | カスタム変数13 |
+| `ft_vars.U14` | カスタム変数14 |
+| `ft_vars.U15` | カスタム変数15 |
+| `ft_vars.U16` | カスタム変数16 |
+| `ft_vars.U17` | カスタム変数17 |
+| `ft_vars.U18` | カスタム変数18 |
+| `ft_vars.U19` | カスタム変数19 |
+| `ft_vars.U20` | カスタム変数20 |

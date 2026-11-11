@@ -3,7 +3,7 @@ title: Leanplum Connector Setup Guide
 description: This article describes how to set up the Leanplum connector.
 url: https://docs.tealium.com/server-side-connectors/leanplum-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Multi Request (Batched)| ✓| ✓|
 |Set User Attributes| ✓| ✓|
@@ -23,7 +23,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -34,8 +34,6 @@ After adding the connector, configure the following settings:
 ## Actions
 
 Enter a name for the action and select the action type from the drop-down menu.
-
-This section describes how to set up parameters and options for each action.
 
 ### Send Multi Request (Batched)
 

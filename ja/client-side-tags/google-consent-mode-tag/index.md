@@ -1,85 +1,85 @@
 ---
-title: Google コンセントモードタグ構成ガイド
-description: Tealium iQ タグ管理アカウントで Google コンセントモードタグを構成する方法を学びます。
+title: Google 同意モードタグ構成ガイド
+description: タグ管理アカウントで Google 同意モードタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/google-consent-mode-tag/
 ---
-Google コンセントモードは、ユーザーの同意状態を Google タグに通知し、指定された同意構成に応じてデータ収集および測定動作を調整することができます。
+Google 同意モードは、ユーザーの同意ステータスを Google タグに伝達し、指定された同意構成に応じてデータの収集および測定動作を調整できるようにします。
 
-## コンセントモードについて
+## 同意モードについて
 
-コンセントモードは、基本と高度の2つの方法で実装できます。
+同意モードは、基本モードと高度なモードの 2 つの方法で実装できます。
 
-詳細については、[Google 広告ヘルプ: コンセントモードについて](https://support.google.com/google-ads/answer/10000067?hl=ja)を参照してください。
+詳細については、[Google 広告ヘルプ：同意モードについて](https://support.google.com/google-ads/answer/10000067?hl=en)を参照してください。
 
-### 基本コンセントモード
+### 基本の同意モード
 
-基本コンセントモードを使用する場合、タグはユーザーが同意バナーと対話するまで完全にブロックされます。Google コンセントモードタグは常に発火するように設計されており、他の Google タグに同意信号を送信しますが、同意が与えられるまでデータは Google に送信されません。
+基本の同意モードを使用すると、ユーザーが同意バナーを操作するまで、タグの読み込みが完全にブロックされます。Google 同意モードタグは、他の Google タグに同意シグナルを送信できるよう常に配信される設計ですが、同意が得られるまでは Google にデータを送信しません。
 
-### 高度コンセントモード
+### 高度な同意モード
 
-高度コンセントモードを使用する場合、Google タグはロードされ、デフォルトで拒否された同意（Google で別途構成されていない限り）を前提とします。Google コンセントモードタグは同意信号を記録し、各 Google タグは更新された同意状態に反応します。同意が拒否されている間、Google タグはクッキーを使用せずに同意状態と匿名ユーザー活動を送信します。
+高度な同意モードを使用すると、Google タグが読み込まれ、デフォルトでは同意が拒否されたものとして扱われます（Google で別途構成されている場合を除く）。Google 同意モードタグは同意シグナルを記録し、各 Google タグは更新された同意ステータスに応じて動作します。同意が拒否されている間、Google タグは Cookie を使用しない ping を使用して、同意ステータスと匿名のユーザーアクティビティを送信します。
 
-詳細については、[Google アナリティクスヘルプ: コンセントモードピング](https://support.google.com/analytics/answer/10000067?sjid=16066762200831072014-NC#Pings)を参照してください。
+詳細については、[Google アナリティクス ヘルプ：同意モードの ping](https://support.google.com/analytics/answer/10000067?sjid=16066762200831072014-NC#Pings)を参照してください。
 
-このアプローチは、同意が得られた場合に限り個人を特定できる情報（PII）を選択的に使用しながら、分析および広告変換のための最大限のデータを収集することを目指しています。
+このアプローチは、同意が得られた場合に限って個人を特定できる情報（PII）を使用しながら、分析および広告コンバージョンのために最大限のデータを収集することを目的としています。
 
-## ヒント
+## タグに関するヒント
 
-このセクションでは、タグの構成とマッピングオプションに関する一般的な情報を提供します。Google コンセントモードを Tealium コンセントレジスター（クライアントサイド[コンセント統合](https://docs.tealium.com/about-consent-integrations/)および[コンセントマネージャー](https://docs.tealium.com/about-consent-management/)の機能）と統合する方法の詳細については、[Tealium コンセントレジスター](https://docs.tealium.com/consent-register/)を参照してください。これが推奨される実装アプローチです。
+このセクションでは、タグの構成とマッピングオプションに関する一般的な情報を提供します。Google 同意モードを Tealium 同意レジスター（クライアント側の[同意統合](https://docs.tealium.com/about-consent-integrations/)および[同意マネージャー](https://docs.tealium.com/about-consent-management/)の機能）と統合する方法については、[Tealium 同意レジスター](https://docs.tealium.com/consent-register/)を参照してください。これが推奨される実装方法です。
 
-Google コンセントモードタグがユーザーの同意状態に動的に適応することを可能にするために、以下を推奨します：
+Google 同意モードタグがユーザーの同意ステータスに動的に対応できるようにするには、以下を推奨します。
 
-* 基本コンセントモード：
-  * Google コンセントモードタグをコンセント統合で**必須**に構成するか、コンセント管理からタグを省略します。
-  * Google タグをそれぞれの同意カテゴリにマッピングします。
-* 高度コンセントモード：
-  * Google コンセントモードタグと Google タグをコンセント統合で**必須**に構成するか、コンセント管理からタグを省略します。
-  * エンドユーザーの同意選択を JavaScript 拡張を使用して Google コンセントモード構成にマッピングします。詳細については、[同意目的マッピング](https://docs.tealium.com/google-consent-mode/#consent-purpose-mapping)を参照してください。
+* 基本の同意モード：
+  * 同意統合で Google 同意モードタグを**厳密に必要**に構成するか、同意管理の対象からこのタグを除外します。
+  * 同意統合または同意管理で、Google タグをそれぞれ対応する同意カテゴリーにマッピングします。
+* 高度な同意モード：
+  * 同意統合で Google 同意モードタグおよび Google タグを**厳密に必要**に構成するか、同意管理の対象からこれらのタグを除外します。
+  * JavaScript 拡張機能を使用して、エンドユーザーの同意選択を Google 同意モードの構成にマッピングします。詳細については、[同意目的のマッピング](https://docs.tealium.com/google-consent-mode/#consent-purpose-mapping)を参照してください。
 
 ## タグ構成
 
-タグマーケットプレースに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動し、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際は、以下の構成を構成します。
 
-* **Tealium コンセントクッキーから自動的に読み取り**：`true`に構成されている場合、Google の同意は Tealium コンセントマネージャーに基づいて構成されます。正確な動作については他の構成説明を参照してください。
-* **広告保存**：コンセントマネージャーとの統合が有効で部分的な同意が与えられた場合、`ad_storage_consent`の値は`granted`に構成されます。完全な同意が与えられた場合、`granted`に構成されます。
-* **広告ユーザーデータ**：コンセントマネージャーとの統合が有効で部分的な同意が与えられた場合、この同意カテゴリを使用して`ad_user_data`の値を`granted`に構成します。完全な同意が与えられた場合、`granted`に構成されます。
-* **広告パーソナライゼーション**：コンセントマネージャーとの統合が有効で部分的な同意が与えられた場合、この同意カテゴリを使用して`ad_personalization`の値を`granted`に構成します。完全な同意が与えられた場合、`granted`に構成されます。
-* **アナリティクス保存**：コンセントマネージャーとの統合が有効で部分的な同意が与えられた場合、これにより`analytics_storage_consent`の値が`granted`に構成されます。完全な同意が与えられた場合、`granted`に構成されます。
-* **広告データ削減マッピング**  
-`ads_data_redaction`が`true`で`ad_storage`が`denied`の場合、Google 広告および Floodlight タグによってネットワークリクエストで送信される広告クリック識別子は削減されます。
-* **URL パススルー**：ページ間で情報を URL パラメーターを通じて渡すことを選択できます。これにより測定品質が向上します。
-* **更新を待つ**：あなたの同意ツールが非同期でロードされる場合、Google タグの前に常に実行されるとは限りません。これを考慮して、データ送信前に待つ時間をミリ秒単位で指定する`wait_for_update`を構成します。
-* **データレイヤー名**：デフォルトでは、グローバルサイトタグによって開始され参照されるデータレイヤーは`dataLayer`という名前です。プロジェクトが別の名前を必要とする場合のみ、データレイヤーの名前を変更します。
+* **Tealium 同意 Cookie から自動的に読み取る**：`true`に構成すると、Tealium 同意マネージャーに基づいて Google の同意が構成されます。正確な動作については、ほかの構成項目の説明を参照してください。
+* **広告保存**：同意マネージャーとの統合が有効で、部分的な同意が得られた場合、`ad_storage_consent`の値が`granted`に構成されます。完全な同意が得られた場合も、`granted`に構成されます。
+* **広告ユーザーデータ**：同意マネージャーとの統合が有効で、部分的な同意が得られた場合、この同意カテゴリーを使用して`ad_user_data`の値を`granted`に構成します。完全な同意が得られた場合も、`granted`に構成されます。
+* **広告のパーソナライズ**：同意マネージャーとの統合が有効で、部分的な同意が得られた場合、この同意カテゴリーを使用して`ad_personalization`の値を`granted`に構成します。完全な同意が得られた場合も、`granted`に構成されます。
+* **アナリティクス保存**：同意マネージャーとの統合が有効で、部分的な同意が得られた場合、`analytics_storage_consent`の値が`granted`に構成されます。完全な同意が得られた場合も、`granted`に構成されます。
+* **広告データの編集マッピング**  
+`ads_data_redaction`が`true`で、`ad_storage`が`denied`の場合、Google 広告タグおよび Floodlight タグがネットワークリクエストで送信する広告クリック識別子は編集されます。
+* **URL パススルー**：測定品質を向上させるため、ページ間で URL パラメータを介して情報を渡すよう任意で構成できます。
+* **更新を待機**：同意ツールが非同期で読み込まれる場合、Google タグより前に実行されるとは限りません。これに対応するには、`wait_for_update`にミリ秒単位の値を指定し、データを送信するまでの待機時間を制御します。
+* **データレイヤー名**：デフォルトでは、グローバルサイトタグによって初期化および参照されるデータレイヤーの名前は`dataLayer`です。プロジェクトで別の名前が必要な場合にのみ、データレイヤーの名前を変更してください。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする手順については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
 | 変数 | タイプ | 説明 |
 |:---------|:------------|:------------|
-|  `tealium_consent`  | Boolean | Tealium コンセントクッキーから読み取ります。 |
-|  `ad_storage_consent`  | String | 広告保存同意。 |
-|  `ad_user_data`  | String | 広告ユーザーデータ。 |
-|  `ad_personalization`  | String | 広告パーソナライゼーション。 |
-|  `analytics_storage_consent`  | String | アナリティクス保存同意。 | 
-|  `ads_data_redaction`  | Boolean | 広告データ削減マッピング。 |
-|  `url_passthrough`  | Boolean | URL パススルー。 |
-|  `wait_for_update`  | Number | 更新を待つ。 |
+| `tealium_consent` | Boolean | Tealium 同意 Cookie から読み取ります。 |
+| `ad_storage_consent` | String | 広告保存の同意。 |
+| `ad_user_data` | String | 広告ユーザーデータ。 |
+| `ad_personalization` | String | 広告のパーソナライズ。 |
+| `analytics_storage_consent` | String | アナリティクス保存の同意。 |
+| `ads_data_redaction` | Boolean | 広告データの編集マッピング。 |
+| `url_passthrough` | Boolean | URL パススルー。 |
+| `wait_for_update` | Number | 更新を待機。 |
 | `data_layer_name` | `String` | データレイヤー名。 |
 
 ### イベント
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -87,22 +87,22 @@ Google コンセントモードタグがユーザーの同意状態に動的に�
 
 ### イベント固有のパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | タイプ | 説明 |
 |:---------|:------------|:------------|
-|  `tealium_consent` | Boolean | Tealium コンセントクッキーから読み取ります。 |
-|  `ad_storage_consent` | String | 広告保存同意。 |
-|  `ad_user_data` | String | 広告ユーザーデータ。 |
-|  `ad_personalization` | String | 広告パーソナライゼーション。 |
-|  `analytics_storage_consent` | String | アナリティクス保存同意。 |
-|  `ads_data_redaction` | Boolean | 広告データ削減マッピング。 |
-|  `url_passthrough` | Boolean | URL パススルー。 |
-|  `wait_for_update` | Number | 更新を待つ。 |
-|  `Custom_Parameter` | | カスタムパラメータ。 |
-|  `update` | |更新。 |
+| `tealium_consent` | Boolean | Tealium 同意 Cookie から読み取ります。 |
+| `ad_storage_consent` | String | 広告保存の同意。 |
+| `ad_user_data` | String | 広告ユーザーデータ。 |
+| `ad_personalization` | String | 広告のパーソナライズ。 |
+| `analytics_storage_consent` | String | アナリティクス保存の同意。 |
+| `ads_data_redaction` | Boolean | 広告データの編集マッピング。 |
+| `url_passthrough` | Boolean | URL パススルー。 |
+| `wait_for_update` | Number | 更新を待機。 |
+| `Custom_Parameter` | | カスタムパラメータ。 |
+| `update` | | 更新。 |
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-* [Google コンセントモードについて](https://support.google.com/analytics/answer/9976101?hl=ja)
-* [Google 開発者: 同意に基づいてタグの動作を調整する](https://developers.google.com/gtagjs/devguide/consent)
+* [Google 同意モードについて](https://support.google.com/analytics/answer/9976101?hl=en)
+* [Google Developers：同意に基づいてタグの動作を調整する](https://developers.google.com/gtagjs/devguide/consent)

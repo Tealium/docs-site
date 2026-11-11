@@ -5,11 +5,11 @@ url: https://docs.tealium.com/server-side/attributes/session-length/
 ---
 ## How it works
 
-Session length determines when AudienceStream ends a visit. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.
+Session length determines when a visit ends. When a visit reaches the session length without a new event, the visit ends and end-of-visit processing runs. The next event from the visitor starts a new visit. The maximum visit length is of 24 hours, regardless of event activity.
 
 ## Session lengths
 
-In AudienceStream, the default session length is set based on the platform that sends the events:
+In Customer Data Platform (CDP), the default session length is set based on the platform that sends the events:
 
 * **Web**: 30 minutes for multiple events, 10 minutes for a single event without a follow-up event.
 * **Mobile App**: 2 minutes.

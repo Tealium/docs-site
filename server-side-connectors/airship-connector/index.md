@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/airship-connector/
 ---
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Create Custom Event| ✓| ✓|
 |Add Tags| ✓| ✓|
@@ -15,7 +15,7 @@ url: https://docs.tealium.com/server-side-connectors/airship-connector/
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -28,9 +28,7 @@ App Key is used to make API calls for the action "Create Custom Event".
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Create Custom Event
 

@@ -3,7 +3,7 @@ title: Google AI Commerce Search Connector Setup Guide
 description: AI Commerce Search, formerly known as Vertex AI Search for Commerce, provides Google-quality search, browse, and recommendations for ecommerce experiences.
 url: https://docs.tealium.com/server-side-connectors/google-ai-commerce-search-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,19 +12,20 @@ This connector uses the following vendor API:
 * API Endpoint: `https://retail.googleapis.com`
 * Documentation: [AI Commerce Search](https://docs.cloud.google.com/gemini-enterprise-cx/ai-commerce-search/reference/rest)
 
-
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Google Cloud Platform Project ID**: (Required) Your Google Cloud project ID with AI Commerce Search enabled.
 * **Private key JSON file**: (Required) Paste the JSON key generated for your service account. The service account requires the `retail.userEvents.create` and `retail.catalogs.list` permissions. Google recommends using the Retail Editor role, which includes both permissions.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Write User Event | ✗ | ✓ |
 

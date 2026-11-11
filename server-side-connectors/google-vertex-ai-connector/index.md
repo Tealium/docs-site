@@ -57,7 +57,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -65,9 +65,11 @@ After adding the connector, configure the following settings:
 * **Private key JSON file**: (Required) Paste the content of the JSON key generated for your Service Account. Grant the service account the Vertex AI User role (`roles/aiplatform.user`) in the project. This role allows the connector to both list available models and invoke the selected model through the Vertex AI Generative APIs.
 * **Location**: Select the Vertex AI location where your model runs. Use **global** for Google publisher Gemini models. Choose a regional location if required for data residency or if your Vertex resources are regional.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Prompt to Vertex AI | ✓ | ✓ |
 

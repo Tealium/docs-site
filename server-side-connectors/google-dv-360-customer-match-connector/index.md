@@ -22,7 +22,7 @@ The deprecated actions use the Google Ads API. For details, see [Add to Customer
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/manage-connectors/).
+Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About connectors](https://docs.tealium.com/manage-connectors/).
 
 
 <blockquote>
@@ -51,7 +51,7 @@ To create a customer match list, click **Create Customer Match List** and enter 
 
 ## Actions
 
-| Action name | AudienceStream | EventStream |
+| Action name | Customer Data Platform (CDP) | Event Streaming |
 | --- | :---: | :---: |
 | Add to Customer Match List (Data Manager API) | ✓ | ✓ |
 | Remove from Customer Match List (Data Manager API) | ✓ | ✓ |

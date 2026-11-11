@@ -13,7 +13,7 @@ For example, if you have two domains interlinking to each other `www.example.com
 
 ----
 
-### Tag Configuration
+### Tag configuration
 
 Google Universal Analytics is already enabled to track across multiple subdomains. For example: `test.example.com`, `example.com`, `store.example.com`. If you have specific subdomains to be tracked enter them in the **Domain** field..
 

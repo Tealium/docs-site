@@ -1,6 +1,6 @@
 ---
 title: Optimizely (Series)
-description: A series of posts about setting up Optimizely in Tealium iQ Tag Management.
+description: A series of posts about setting up Optimizely in Tag Management.
 url: https://docs.tealium.com/client-side-tags/optimizely-series/
 ---
 * [Optimizely Tag Setup Guide](https://docs.tealium.com/client-side-tags/optimizely-sync-tag/)  

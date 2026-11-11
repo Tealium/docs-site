@@ -1,6 +1,6 @@
 ---
 title: Connectors interface
-description: The connectors interface provides an intuitive workflow to add, edit, or delete server-side connectors and actions for AudienceStream Customer Data Platform (CDP) and EventStream API Hub.
+description: The connectors interface provides an intuitive workflow to add, edit, or delete server-side connectors and actions for Customer Data Platform (CDP) Customer Data Platform (CDP) and Event Streaming API Hub.
 url: https://docs.tealium.com/server-side/connectors/interface/
 ---
 On the **Connectors Overview** screen, you can add and configure new connectors, view and edit actions for existing connectors, and export connector metrics for success and error counts.

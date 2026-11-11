@@ -4,7 +4,7 @@ url: https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/
 ---
 ## Overview
 
-Implementing the Firebase Tag in Tealium iQ requires three components, each involving changes to both the native code and Tealium. First, add the Firebase SDK to your app. Next, integrate remote commands into the native code using the Tealium SDK. Finally, add the Firebase Tag in Tealium iQ. All three steps are required for Firebase to receive data.
+Implementing the Firebase Tag in Tag Management requires three components, each involving changes to both the native code and Tealium. First, add the Firebase SDK to your app. Next, integrate remote commands into the native code using the Tealium SDK. Finally, add the Firebase Tag in Tag Management. All three steps are required for Firebase to receive data.
 
 ## Tag tips  
 
@@ -23,7 +23,7 @@ Implementing the Firebase Tag in Tealium iQ requires three components, each invo
 
 For all libraries, you must register the Firebase Analytics Remote Command before the library can be used. This should be done when you initialize the library. [Follow the guide](https://docs.tealium.com/platforms/remote-commands/integrations/firebase/) to implement the remote command based on the mobile platform being used.
 
-## Tealium iQ configuration
+## Tag Management configuration
 
 ### Step 1 – Add the Firebase tag
 
@@ -249,7 +249,7 @@ Event parameters are sent along with the event and can be mapped to the paramete
 
 #### Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|
@@ -300,7 +300,7 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 
 #### Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|

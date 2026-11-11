@@ -31,9 +31,9 @@ The following image shows the parts of the trace interface. The **Trace Log** is
 Filtering lets you determine if the attributes and the configurations tied to them are functioning properly. Using filters, you can choose how to view the attributes and their values. Filter attributes by label (if you have added labels for attributes) or by Type, where Type is one of the following
 
 * **All**  
-Shows all attribute types and values set up in your AudienceStream profile.
+Shows all attribute types and values set up in your Customer Data Platform (CDP) profile.
 * **Existing**  
-Shows only the attributes that acquired a value after AudienceStream processing.
+Shows only the attributes that acquired a value after CDP processing.
 * **Modified**  
 Shows only the modified, or enriched, attributes.
 
@@ -54,7 +54,7 @@ The following table describes the meanings of various trace events:
 | Actions Without Cooldown Group: No Actions Triggered | No vendor actions were triggered after checking cooldown groups. |
 | Actions Without Cooldown Group: `x` Actions Triggered / `x` Actions Suppressed / `x` Actions Delayed | Shows the number of vendor actions triggered, suppressed, or delayed after checking cooldown groups. |
 | Activation Blocked | The action was blocked by consent orchestration. |
-| AudienceStream Processing Blocked | Consent orchestration blocked event processing. |
+| CDP Processing Blocked | Consent orchestration blocked event processing. |
 | Audience Joined | The visitor joined an audience after a profile update. |
 | Audience Left | The visitor left an audience after a profile update. |
 | Consent Orchestration Active | Consent orchestration is enabled for this account. |
@@ -66,13 +66,13 @@ The following table describes the meanings of various trace events:
 | Event Processing Blocked | The event was blocked from processing. |
 | Function Blocked | Consent orchestration blocked the function. |
 | Imported Data Record | An imported data record was processed. |
-| Log Streaming: x Actions Triggered | An action was triggered in EventStream log streaming. |
-| Log Streaming Action Processed (`x` Actions Processed / `x` Actions Failed) | Shows the number of actions triggered and failed in EventStream log streaming. |
-| New Visitor | A new visitor profile was created in AudienceStream. |
+| Log Streaming: x Actions Triggered | An action was triggered in Event Streaming log streaming. |
+| Log Streaming Action Processed (`x` Actions Processed / `x` Actions Failed) | Shows the number of actions triggered and failed in Event Streaming log streaming. |
+| New Visitor | A new visitor profile was created in CDP. |
 | Received Data Record | A data record was received for processing. |
 | Received (Known/Unknown) Event: `event_name` | An event was received and identified by type. |
 | Received event with specification: `event_name` | An event was received that matches a custom event specification. |
-| Returning Visitor | An existing visitor profile was updated in AudienceStream. |
+| Returning Visitor | An existing visitor profile was updated in CDP. |
 | Trace Has Stopped Due to Max Events | The trace stopped after reaching the maximum number of events in 12 hours. |
 | Trace Started | A new trace session has started. |
 | Visitor Did Not Join Or Leave Any Audience | The visitor profile update did not cause any audience changes. |
@@ -80,7 +80,7 @@ The following table describes the meanings of various trace events:
 | Visitor Stitched | The visitor profile was merged with another profile based on stitching rules. |
 | Visit Started | A new visitor session has started. |
 | `x` Actions Processed / `x` Actions Failed | Shows the number of actions triggered and failed. |
-| `x` Feed(s) Matched | Shows the number of EventStream feeds the event matched. |
+| `x` Feed(s) Matched | Shows the number of Event Streaming feeds the event matched. |
 | `x` Functions Triggered and `x` Functions Failed | Shows the number of functions triggered and failed. |
 
 ## Multiple visitor profiles in a trace

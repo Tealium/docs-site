@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/cj-tracking-api-connector/
 ---
 CJ recommends that you use the Universal Tag and Tracking API concurrently for web tracking events because each supports or enhances CJ's offerings. Using the Tracking API requires back-end changes on the CJ side and requires collaboration with your Client Integration team. Contact your CJ account team or `support@cj.com` for more details.
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -15,7 +15,7 @@ This connector uses the following vendor API:
     * With trace (test endpoint): `https://tracking.api.cj.com/graphqltest/`
 * Documentation: [CJ API](https://developers.cj.com/graphql/reference/private/Tracking)
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -25,7 +25,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Connector Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:----------------|:-------------------|:----------------|
 | Send Order Data | ✗  | ✓ |
 | Send Order Restatement | ✗ | ✓ |
@@ -33,7 +33,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 

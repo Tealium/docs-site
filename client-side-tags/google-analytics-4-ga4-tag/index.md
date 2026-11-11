@@ -1,6 +1,6 @@
 ---
 title: Google Analytics 4 (GA4) Tag Setup Guide
-description: This article describes how to set up the Google Analytics 4 tag (GA4) in your Tealium iQ Tag Management account and considerations to be aware of during implementation.
+description: This article describes how to set up the Google Analytics 4 tag (GA4) in your Tag Management account and considerations to be aware of during implementation.
 url: https://docs.tealium.com/client-side-tags/google-analytics-4-ga4-tag/
 ---
 ## How it works
@@ -37,7 +37,7 @@ For more information about migrating to GA4 from Google Universal Analytics, see
 
 ## Configuring the Google Analytics 4 tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -80,7 +80,7 @@ GA4 automatically generates some events, with no configuration required. For mor
 
 ### Enhanced measurement events
 
-You can enable enhanced measurement options (events) in the Google Analytics interface to measure interactions with your content. No configuration in Tealium iQ is required. When you enable enhanced measurement options, additional events are sent that provide information on user activity such as file downloads and searches. For more information, see the GA4 documentation for [Enhanced Measurement Events](https://support.google.com/analytics/answer/9216061?hl=en&ref_topic=9756175).
+You can enable enhanced measurement options (events) in the Google Analytics interface to measure interactions with your content. No configuration in Tag Management is required. When you enable enhanced measurement options, additional events are sent that provide information on user activity such as file downloads and searches. For more information, see the GA4 documentation for [Enhanced Measurement Events](https://support.google.com/analytics/answer/9216061?hl=en&ref_topic=9756175).
 
 ### Recommended events
 
@@ -123,11 +123,11 @@ This section provides mapping examples of event mapping for two events that will
 * Visitor logs in
 * Visitor clicks a contact us link
 
-To map an event in Tealium iQ, map a data layer variable value that specifies when an event should be fired. These examples use the `tealium_event` variable to identify the event to be sent.
+To map an event in Tag Management, map a data layer variable value that specifies when an event should be fired. These examples use the `tealium_event` variable to identify the event to be sent.
 
 ### Login event example
 
-For the login event, the following data is sent to Tealium iQ in a `utag.link` call:
+For the login event, the following data is sent to Tag Management in a `utag.link` call:
 
 ```
 utag.link({
@@ -143,11 +143,11 @@ Login is one of the GA4 recommended events, and has one parameter, `method`, tha
 * `signin_method` – Select **Event-specific Parameters** for the **Category**, and then enter `method` in the **Event parameter** field and select `login` for **For event**.  
 ![](https://docs.tealium.com/images/client-side-tags/map-signin-method.png)
 
-For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/tag-management/data-mappings/manage/).
 
 ### Contact Us link event example
 
-For the contact us link event, the following data is sent to Tealium iQ in a `utag.link` call:
+For the contact us link event, the following data is sent to Tag Management in a `utag.link` call:
 
 ```
 utag.link({
@@ -160,7 +160,7 @@ This event is not one of the GA4 recommended events, so it's mapped as a custom 
 * `tealium_event` – Select **Event Triggers** for the **Category**, and then enter `contact us` in the **Trigger** field. Select `Custom Event` for **Event** and enter `contact_us_click` in the **Custom Name** field.  
 ![](https://docs.tealium.com/images/client-side-tags/map-contactus-example.png)
 
-For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+For more information on mapping variables, see [Data Mappings](https://docs.tealium.com/tag-management/data-mappings/manage/).
 
 ## Tracking e-commerce events
 

@@ -7,12 +7,12 @@ url: https://docs.tealium.com/server-side/predict/getting-started/prerequisites/
 
 The following items are required to use Tealium Predict:
 
-* **Tealium AudienceStream**  
-To begin using the Tealium Predict product, you only need to have the Tealium AudienceStream CDP product with data collection enabled.
+* **Customer Data Platform (CDP)**  
+To begin using the Tealium Predict product, you only need to have the CDP product with data collection enabled.
 * **Data Volume Minimums**  
 To ensure that you have enough data to begin building meaningful models using past data, the following data volume minimums are required:
   * **21 Days of Data Collection**  
-Data collection must be active for AudienceStream for a minimum of 21 days of data collection prior to the feature release.
+Data collection must be active for Customer Data Platform (CDP) for a minimum of 21 days of data collection prior to the feature release.
   * **Minimum Average Daily Visits**  
 A minimum of 10,000 average daily visits during chosen training period.
   * **Target Attribute Volume Minimums**  
@@ -28,8 +28,8 @@ For additional information, see [Data Readiness for Machine Learning.](https://t
 
 ## Professional services
 
-Though no coding or data science knowledge is required to use the product, you can improve your results with a high quality implementation of AudienceStream.
+Though no coding or data science knowledge is required to use the product, you can improve your results with a high quality implementation of CDP.
 
-If you would like assistance in assessing the current state of your data layer, Tealium provides professional services centered around your current AudienceStream implementation and overall data wellness.
+If you would like assistance in assessing the current state of your data layer, Tealium provides professional services centered around your current CDP implementation and overall data wellness.
 
 For additional information about data readiness and data wellness services, see [Prepare your data]().

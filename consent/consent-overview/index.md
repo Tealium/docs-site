@@ -35,7 +35,7 @@ Together, these components give you scalable, centralized, and consistent consen
 
 ## About consent features and when to use them
 
-![](https://docs.tealium.com/images/iq-tag-management/tealium-consent-levels.png)
+![](https://docs.tealium.com/images/tag-management/tealium-consent-levels.png)
 
 |**Feature**| **When to use**|
 |---| ---|
@@ -204,7 +204,7 @@ No. Tealium does not participate in the TCF as a CMP or vendor. This applies to 
 
 **Is Tealium a Google Certified CMP?**
 
-No. Tealium is not a Google Certified CMP. This also applies to CookieConsent and earlier consent features. However, Tealium integrates with Google Certified CMPs and supports [Google consent mode](https://docs.tealium.com/iq-tag-management/consent/google-consent-mode/) through enforcement rules. For more information, see [The IAB’s Transparency and Consent Framework and Tealium](https://tealium.com/blog/data-strategy/the-iabs-transparency-and-consent-framework-and-tealium/).
+No. Tealium is not a Google Certified CMP. This also applies to CookieConsent and earlier consent features. However, Tealium integrates with Google Certified CMPs and supports [Google consent mode](https://docs.tealium.com/tag-management/consent/google-consent-mode/) through enforcement rules. For more information, see [The IAB’s Transparency and Consent Framework and Tealium](https://tealium.com/blog/data-strategy/the-iabs-transparency-and-consent-framework-and-tealium/).
 
 ## Related documentation
 

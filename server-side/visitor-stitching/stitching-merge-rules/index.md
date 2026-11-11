@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/visitor-stitching/stitching-merge-rule
 ---
 ## Requirements
 
-* Tealium AudienceStream enabled
+* Customer Data Platform (CDP) enabled
 * Visitor stitching enabled
 * Account admin permissions
 
@@ -48,7 +48,7 @@ For examples of stitching merge rules best suited for certain enrichments, see [
 
 ### Preloaded attributes
 
-Preloaded attributes are system‑managed attributes that exist in all profiles where AudienceStream is enabled. When stitching merge rules are enabled, these attributes receive appropriate, replay‑consistent merge rules automatically and the selections are not editable. This maintains consistency with their built-in enrichments.
+Preloaded attributes are system‑managed attributes that exist in all profiles where Customer Data Platform (CDP) is enabled. When stitching merge rules are enabled, these attributes receive appropriate, replay‑consistent merge rules automatically and the selections are not editable. This maintains consistency with their built-in enrichments.
 
 For more information, see [preloaded-attributes](https://docs.tealium.com/preloaded-attributes/).
 

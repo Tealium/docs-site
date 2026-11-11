@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/exactag-s2s-tracking-connec
 ---
 This article describes how to set up the Exactag S2S Tracking connector.
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -15,18 +15,20 @@ This connector uses the following vendor API:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Page Impression Event | ✗ | ✓ |
 | Send Onsite Conversion Request | ✗ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Campaign**  
+
+After you configure the connector, click **Done**.
 The 32-byte encrypted brand specific campaign code.
 
 ## Actions
@@ -43,7 +45,6 @@ The following section lists the supported parameters for each action.
 | mid | Use this parameter when the Mobile Device ID, such as IDFA or Google Play Store ID, is being used. It must be MD5 hashed and used as user key. |
 | uk | A unique identifier to identify the person or device. This value must be MD5 hashed. Use this parameter if using an Exactag User ID. |
 | gk | A unique identifier to identify an anonymous group of multiple users. This value must be MD5 hashed and combined with the group expire timestamp (urlEncoded or base64url). |
-
 
 #### Event Attributes
 

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/client-side-tags/mediamath-tag-basic-configuration
 
 * MediaMath Account
 
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the MediaMath (Adroit Digital) Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
@@ -24,13 +24,13 @@ Use Data Mappings (listed below) if you prefer to set these values dynamically. 
 </blockquote>
 
 
-### Load Rules
+### Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag on your site. You may load this on all pages of your site using the default **All Pages** rule. Or create and apply custom Load Rules if you want to load it on specific pages only.
 
-### Data Mappings
+### Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the MediaMath Tag are built into its Data Mapping tab. Available categories are:
 

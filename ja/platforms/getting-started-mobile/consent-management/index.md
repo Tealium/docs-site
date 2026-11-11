@@ -30,7 +30,7 @@ Tealium同意マネージャーは、複数の規制要件をサポートする�
 | :-- | :-- |
 | **未構成**（デフォルト）| トラッキング呼び出しが送信されます。<br>[`do_not_sell`](#data-layer)フラグが`false`に構成されます。<br>タグには影響しません。 |
 | **同意済み** | トラッキング呼び出しが送信されます。<br>[`do_not_sell`](#data-layer)フラグが`false`に構成されます。<br>タグには影響しません。 |
-| **拒否済み** | トラッキング呼び出しが送信されます。<br>[`do_not_sell`](#data-layer)フラグが`true`に構成されます。<br>[CCPA同意マネージャー](https://docs.tealium.com/ja/iq-tag-management/consent-management/privacy-banner-and-popup/manage/)の「影響を受けるタグ」セクションで構成されたタグはトリガーされません。 |
+| **拒否済み** | トラッキング呼び出しが送信されます。<br>[`do_not_sell`](#data-layer)フラグが`true`に構成されます。<br>[CCPA同意マネージャー](https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-banner-and-popup/manage/)の「影響を受けるタグ」セクションで構成されたタグはトリガーされません。 |
 
 ## 使用可能なアクション
 

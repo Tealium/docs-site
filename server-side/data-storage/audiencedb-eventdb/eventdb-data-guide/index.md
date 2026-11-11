@@ -28,7 +28,7 @@ Each event feed is stored in the Redshift schema `ACCOUNT__PROFILE`, where `ACCO
 * A base table named `events__{event-feed-id}`
 * A view with descriptive column names: `events_view__{feed-name}__{event-feed-id}`
 
-The event feed ID is the identifier for the feed in EventStream. To find the feed ID, go to **Live Events**, click the feed, and inspect the URL.
+The event feed ID is the identifier for the feed in Event Streaming. To find the feed ID, go to **Live Events**, click the feed, and inspect the URL.
 
 ![](https://docs.tealium.com/images/server-side/eventstore-id-in-url-highlighted.png)
 
@@ -143,7 +143,7 @@ First-party cookie values use columns prefixed with `firstpartycookies_`. EventD
 | `firstpartycookies_utag_main__pn` | The page number within the current session. Increments on each page load. |
 | `firstpartycookies_utag_main__sn` | The session count for this visitor. |
 | `firstpartycookies_utag_main__se` | The number of events during the current session. |
-| `firstpartycookies_utag_main_dc_region` | The AudienceStream region where the visit session data is kept, collected from the HTTP response header. |
+| `firstpartycookies_utag_main_dc_region` | The Customer Data Platform (CDP) region where the visit session data is kept, collected from the HTTP response header. |
 | `firstpartycookies_utag_main_dc_group` | A random number used with the **Sample Size** setting in the Tealium Collect tag to determine which events are sampled. |
 | `firstpartycookies_utag_main_dc_visit` | (Legacy) The number of sessions for which the Collect tag has fired. Starts at `1` for the first visit. |
 | `firstpartycookies_utag_main_dc_event` | (Legacy) The number of events for which the Collect tag has fired. Starts at `1` for the first page view of a visit. |
@@ -177,7 +177,7 @@ Each tag that fires on an event generates a column in the following format:
 tags_PROFILE_TAGID_executed
 ```
 
-`PROFILE` is the Tealium iQ profile name and `TAGID` is the numeric ID of the tag. The value is `true` when the tag executed on the event, and `(null)` when it did not.
+`PROFILE` is the Tag Management profile name and `TAGID` is the numeric ID of the tag. The value is `true` when the tag executed on the event, and `(null)` when it did not.
 
 For example, `tags_platform_3_executed` indicates that tag `3` in the `platform` profile executed on the event.
 
@@ -202,10 +202,10 @@ The Tealium Collect tag also sends several built-in variables in the `udo_` name
 | `udo_tealium_timestamp_utc` | The UTC timestamp of the event. |
 | `udo_tealium_timestamp_local` | The local timestamp of the event. |
 | `udo_tealium_account` | The Tealium account. |
-| `udo_tealium_profile` | The Tealium iQ profile name. |
+| `udo_tealium_profile` | The Tag Management profile name. |
 | `udo_tealium_environment` | The publish environment, such as `prod`. |
-| `udo_ut_account` | The Tealium iQ account. Earlier equivalent of `udo_tealium_account`. |
-| `udo_ut_profile` | The Tealium iQ profile. Earlier equivalent of `udo_tealium_profile`. |
+| `udo_ut_account` | The Tag Management account. Earlier equivalent of `udo_tealium_account`. |
+| `udo_ut_profile` | The Tag Management profile. Earlier equivalent of `udo_tealium_profile`. |
 | `udo_ut_env` | The publish environment associated with the `utag.js` file. Earlier equivalent of `udo_tealium_environment`. |
 | `udo_ut_event` | The event type, such as `view`. Earlier equivalent of `udo_tealium_event`. |
 | `udo_ut_domain` | The top-level domain of the page. |

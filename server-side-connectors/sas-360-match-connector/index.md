@@ -5,18 +5,20 @@ url: https://docs.tealium.com/server-side-connectors/sas-360-match-connector/
 ---
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send State Vector Tags | ✓ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Key**: The API key provided by SAS. Contact a SAS Technical Support to enable the API.
 * **Base URL**: The SAS endpoint base URL, up to but not including `/setsv/`. For example, `https://mydomain.aimatch.com/mycompany`.
+
+After you configure the connector, click **Done**.
 
 ## Actions
 

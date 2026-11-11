@@ -1,135 +1,135 @@
 ---
-title: 複数のFloodlightタグの構成
-description: この記事では、Tealium iQタグ管理アカウントで複数のFloodlightタグを構成する方法について説明します。
+title: 複数の Floodlight タグの構成
+description: この記事では、タグ管理アカウントで複数の Floodlight タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/configuring-multiple-floodlight-tags/
----もし多くのFloodlightタグを持っており、それぞれがわずかに異なる構成を持ちながらも、同じロード基準に基づいている場合（例えば、URLの異なるパス）、Floodlightタグの複数の類似したインスタンスを構成するのではなく、それぞれに異なるロードルールと構成値を持つようにする代わりに、それらを追加の構成を使用してFloodlightタグの1つのインスタンスに組み合わせることができます。
+---読み込み条件（URL 内の異なるパスなど）は同じでも、構成が少しずつ異なる Floodlight タグが多数ある場合、読み込みルールと構成値が異なる類似した Floodlight タグのインスタンスを複数構成する代わりに、追加構成を使用して 1 つの Floodlight タグのインスタンスにまとめることができます。
 
 
 <blockquote>
-Googleは、[Floodlightタグ](https://docs.tealium.com/ja/client-side-tags/floodlight-gtagjs-tag/)を実装することにより、Googleグローバルサイトタグへの移行を推奨しています。
+Google では、[Floodlight タグ](https://docs.tealium.com/ja/client-side-tags/floodlight-gtagjs-tag/)を実装して Google グローバルサイトタグに移行することを推奨しています。
 </blockquote>
 
 
 ## 仕組み
 
-このマルチタグソリューションは、データマッピングを使用してFloodlightパラメータを動的に構成し、データレイヤー変数に基づいてFloodlight値を構成するためのルックアップテーブルを使用します。ルックアップテーブルは、エントリごとに複数の値を含む区切り文字列を作成し、それをJavaScript Code拡張を使用して個々のFloodlightパラメータに分割します。
+このマルチタグソリューションでは、データマッピングを使用して Floodlight パラメータを動的に構成し、ルックアップテーブルを使用してデータレイヤー変数に基づく Floodlight の値を構成します。ルックアップテーブルは、エントリごとに複数の値を含む区切り文字付き文字列を作成します。この文字列は、JavaScript コード拡張機能を使用して個別の Floodlight パラメータに分割できます。
 
 ## 新しいデータレイヤー変数
 
-Floodlightタグとルックアップテーブル拡張のデータマッピングには、以下の変数が必要です。"dc_"プレフィックスは、これらの変数がFloodlight構成に使用されることを思い出させるためのベストプラクティスです。
+Floodlight タグのデータマッピングとルックアップテーブル拡張機能には、以下の変数が必要です。「dc_」プレフィックスは、これらの変数が Floodlight の構成に使用されることを示すためのベストプラクティスです。
 
-以下を作成します：
+以下を作成します。
 
-* **dc\_advertiserId** (マッピング)
-* **dc\_type** (マッピング)
-* **dc\_category** (マッピング)
-* **dc\_counterType** (マッピング)
-* **dc\_settings** (ルックアップテーブル拡張)
+* **dc\_advertiserId**（マッピング）
+* **dc\_type**（マッピング）
+* **dc\_category**（マッピング）
+* **dc\_counterType**（マッピング）
+* **dc\_settings**（ルックアップテーブル拡張機能）
 
 ## データマッピング
 
-このマルチタグソリューションでは、Floodlightパラメータはルックアップテーブル拡張の出力に基づいて動的に構成されるため、値はタグ構成でデータマッピングを使用して構成する必要があります。
+このマルチタグソリューションでは、Floodlight パラメータがルックアップテーブル拡張機能の出力に基づいて動的に構成されるため、タグ構成内でデータマッピングを使用して値を構成する必要があります。
 
-以下のデータマッピングを構成します：
+以下のデータマッピングを構成します。
 
 * `dc_advertiserId` を `src` に構成
 * `dc_counterType` を `countertype` に構成
 * `dc_type` を `type` に構成
 * `dc_category` を `cat` に構成
 
-これらを完了すると、マッピングは以下のようになります：
+完了すると、マッピングは次のようになります。
 
 ![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-data-mappings.png)
 
 ## 拡張機能
 
-このソリューションでは、発火させる予定のすべてのFloodlightタグを構築するために3つの拡張機能を使用します。以下の拡張機能が追加され、ここに表示される順序で並べ替える必要があります：
+このソリューションでは、配信するすべての Floodlight タグを構成するために 3 つの拡張機能を使用します。以下の拡張機能を追加し、ここに示す順序で並べる必要があります。
 
 * **ルックアップテーブル**  
-これは、選択基準（この場合はURLのパス名）に基づいて区切り文字列を構成します。
+選択条件（この例では URL のパス名）に基づいて、区切り文字付き文字列を構成します。
 * **データ値の構成**  
-これは、ルックアップテーブルからの区切り文字列を別々のFloodlight変数に変換します。
-* **JavaScriptコード**  
-これは、タグが発火するための値が存在することを確認し、そうでなければタグを抑制します。
+ルックアップテーブルから取得した区切り文字付き文字列を、個別の Floodlight 変数に変換します。
+* **JavaScript コード**  
+タグを配信するための値が存在することを確認します。値がない場合はタグを抑制します。
 
-### ルックアップテーブル拡張
+### ルックアップテーブル拡張機能
 
-この拡張機能は、基準変数に基づいて区切り文字列を構成するために使用されます。この例では、基準変数は`pathname`変数で、区切り文字列は以下の形式で構成された`dc_settings`変数です：
+この拡張機能は、条件変数に基づいて区切り文字付き文字列を構成するために使用します。この例では、条件変数は `pathname` 変数であり、区切り文字付き文字列は、次の形式で構成された `dc_settings` 変数です。
 
 ```
 ADVERTISER ID|TYPE|CATEGORY|COUNTERTYPE
 ```
 
-この拡張機能を追加するには：
+この拡張機能を追加するには、次の手順を実行します。
 
-1. [ルックアップテーブル拡張](https://docs.tealium.com/lookup-table-extension/)を追加します。
-1. **タイトル**を構成します。例えば、"DC Settings"。
-1. **スコープ**を先ほど追加したFloodlightタグに構成します。
-1. **Lookup Value In**に：`pathname`を構成します。
-1. **Destination**に：`dc_settings`を構成します。
-1. **Variable Type**に：Stringを構成します。
-1. **Match Type**に：Containsを構成します。
+1. [ルックアップテーブル拡張機能](https://docs.tealium.com/lookup-table-extension/)を追加します。
+1. **タイトル**を構成します。例：「DC 構成」。
+1. **スコープ**を、追加した Floodlight タグに構成します。
+1. **検索対象の値**を `pathname` に構成します。
+1. **宛先**を `dc_settings` に構成します。
+1. **変数タイプ**を「文字列」に構成します。
+1. **一致タイプ**を「含む」に構成します。
 
-各ルックアップテーブルエントリには、URLのパス名と区切り文字列の値が含まれます。この例では、以下のエントリを使用します：
+ルックアップテーブルの各エントリには、URL のパス名と区切り文字付き文字列値が含まれます。この例では、以下のエントリを使用します。
 
-|**Pathname**| **Output**|
+|**パス名**| **出力**|
 |---| ---|
 |/test1/test| 321123|Testing|Test001|standard|
 |/test2/test/something.htm| 321123|Testing|Test002|standard|
 |/test1/docs| 321123|Docs|Test003|standard|
 
-ルックアップテーブル拡張は以下のように表示されるべきです：
+ルックアップテーブル拡張機能は次のようになります。
 
 ![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-lookup-table.png)
 
 
 <blockquote>
-長いリストを管理するために**CSVからインポート...**オプションを使用します。
+長いリストを管理するには、**CSV からインポート...**オプションを使用してください。
 </blockquote>
 
 
-### データレイヤー拡張の構成
+### データレイヤー構成拡張機能
 
-この拡張機能は、区切り文字列を別々のFloodlight変数に分割します。
+この拡張機能は、区切り文字付き文字列を個別の Floodlight 変数に分割します。
 
-この拡張機能を追加するには：
+この拡張機能を追加するには、次の手順を実行します。
 
-1. [データ値構成拡張](https://docs.tealium.com/set-data-values-extension/)を追加します。
-1. **タイトル**を構成します。例えば："Floodlight Parameters"。
-1. **スコープ**を先ほど追加したFloodlightタグに構成します。
-1. Floodlightパラメータごとに変数を構成します：
+1. [データ値の構成拡張機能](https://docs.tealium.com/set-data-values-extension/)を追加します。
+1. **タイトル**を構成します。例：「Floodlight パラメータ」。
+1. **スコープ**を、追加した Floodlight タグに構成します。
+1. Floodlight パラメータごとに変数を構成します。
 
-|**Set Variable**| **Value Type**| **Value**|
+|**構成する変数**| **値のタイプ**| **値**|
 | --- | --- | --- |
-|dc\_advertiserId| JS Code| **b['dc_settings'].split("&#124;")[0]** |
-| dc\_type| JS Code| **b['dc_settings'].split("&#124;")[1]**|
-| dc\_category| JS Code| **b['dc_settings'].split("&#124;")[2]**|
-| dc\_counterType| JS Code| **b['dc_settings'].split("&#124;")[3]**|
+|dc\_advertiserId| JS コード| **b['dc_settings'].split("&#124;")[0]** |
+| dc\_type| JS コード| **b['dc_settings'].split("&#124;")[1]**|
+| dc\_category| JS コード| **b['dc_settings'].split("&#124;")[2]**|
+| dc\_counterType| JS コード| **b['dc_settings'].split("&#124;")[3]**|
 
-拡張機能は以下のように表示されるべきです：
+拡張機能は次のようになります。
 
 ![](https://docs.tealium.com/images/client-side-tags/doubleclick-multi-tag-set-data.png)
 
 
 <blockquote>
-`dc_settings`が入力されていることを確認するために**条件を追加**を使用します。これにより、値があるときだけ実行されることが保証されます。
+値が存在する場合にのみ実行されるようにするには、**条件を追加**を使用して `dc_settings` に値が構成されていることを確認してください。
 </blockquote>
 
 
-### JavaScriptコード
+### JavaScript コード
 
-この拡張機能は、ルックアップテーブル拡張が値を出力しなかった場合、つまりタグが発火するものがない場合、Floodlightタグを抑制します。これにより、Floodlightタグに"All Pages"ロードルールを構成したままにしておくことができ、現在のページに対する構成がない場合には発火しないようにすることができます。
+この拡張機能は、ルックアップテーブル拡張機能が値を出力しなかった場合、つまり配信するタグがない場合に、Floodlight タグを抑制します。これにより、Floodlight タグに「すべてのページ」の読み込みルールを構成したままにしても、現在のページに対応する構成がない場合はタグが配信されません。
 
-この拡張機能を追加するには：
+この拡張機能を追加するには、次の手順を実行します。
 
-1. [JavaScript Code拡張](https://docs.tealium.com/advanced-javascript-code-extension/)を追加します。
-1. **タイトル**を構成します。例えば："Check Value"。
-1. **スコープ**を先ほど追加したFloodlightタグに構成します。
-1. 以下のコードを入力します：  
+1. [JavaScript コード拡張機能](https://docs.tealium.com/advanced-javascript-code-extension/)を追加します。
+1. **タイトル**を構成します。例：「値の確認」。
+1. **スコープ**を、追加した Floodlight タグに構成します。
+1. 次のコードを入力します。  
 ```
 if(b['dc_settings']===''){
     return false;
 }
 ```
 
-1. テストのために変更を公開します。
+1. テストのために変更内容をパブリッシュします。

@@ -1,33 +1,33 @@
 ---
 title: Rokt Tag Setup Guide
-description: This article describes how to set up the Rokt tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Rokt tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/rokt-tag/
 ---
 For more information about Rokt's suite of SDKs and APIs, please read the [Rokt Integration Guides](https://docs.rokt.com/docs/developers/integration-guides/overview%20).
 
-## Tag Tips
+## Tag tips
 
 * Use mapping to override the standard config values and trigger events.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Rokt tag. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Rokt Account ID**: Your Rokt account ID.
 * **Two-step Email**: Send email address only on positive engagement.
 * **Use Sandbox**: Send events to sandbox account for testing.
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of the Rokt tag on your site.
 
 Create a load rule to load the Rokt tag on your conversion page.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

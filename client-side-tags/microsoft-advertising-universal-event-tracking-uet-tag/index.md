@@ -45,7 +45,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support the Microsoft Advertising Conversion API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Microsoft Advertising Conversion API connector and passes it to the Microsoft Advertising UET tag in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
+To support the Microsoft Advertising Conversion API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Event Streaming for use in the Microsoft Advertising Conversion API connector and passes it to the Microsoft Advertising UET tag in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -120,7 +120,7 @@ If you use these exact variable names, no additional mapping is required. The la
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

@@ -117,7 +117,7 @@ To validate the connector action, use test event code as follows:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -149,7 +149,7 @@ To configure the Pinterest Conversions connector to send offline events:
 
 ## Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Send Conversion Event | ✓ | ✓ |
 
@@ -261,7 +261,7 @@ The following parameters are required:
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Tealium iQ Tag ID | When the Tealium iQ Tag ID is provided, the event ID value sent from Tealium iQ is automatically identified and sent to Pinterest. The UDO value used to identify the event ID is `pinterest_event_id_EVENTNAME_TAGID`. |
+| Tealium iQ Tag ID | When the Tealium iQ Tag ID is provided, the event ID value sent from Tag Management is automatically identified and sent to Pinterest. The UDO value used to identify the event ID is `pinterest_event_id_EVENTNAME_TAGID`. |
 
 #### Testing Mode
 

@@ -33,7 +33,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -41,6 +41,8 @@ After adding the connector, configure the following settings:
   * The Facebook Pixel ID.
   * For your Facebook Pixel to work properly, ensure that you have followed the steps outlined in [Prerequisites]() to enable the partner integration for your Facebook Pixel.
   * For more information, see the [How to set up and install a Meta Pixel](https://www.facebook.com/business/m/pixel-set-up-step-1#step-1).
+
+After you configure the connector, click **Done**.
 
 ### Test connection
 
@@ -58,7 +60,7 @@ To configure this connector to deduplicate events from the [Facebook Pixel tag](
 fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}
 ```
 
-You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/facebook-pixel-tag-uid.png)
 
@@ -93,7 +95,7 @@ If you're only receiving event ID attributes using the naming format `fb_event_i
 
 ### Automatic deduplication
 
-When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an `Event ID` if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an `Event ID` if this section is populated and you are using Tag Management. However, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector follows this order of operations:
 
@@ -155,15 +157,13 @@ Do not map both variants for the same field. If both are somehow present (for ex
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 |:----------------|:-------------------|:----------------|
 | Send Event | ✓ | ✓ |
 | Send Advanced Measurement Event | ✓ | ✓ |
 | Send CRM (CAPI) Event | ✓ | ✓ |
 
-Click **Next** or click the **Actions** tab. You configure connector actions in the **Actions** tab.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Send Event
 
@@ -179,7 +179,7 @@ If you configured this action before the per-field hashing parameters were intro
 
 | Parameter   | Description                              |
 |:----------------|:---------------------------------------------|
-| Event Source URL | The browser URL where the event happened. This parameter is required if the **Action Source** is set to `website`. <ul><li>**EventStream** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the attribute Current URL in EventStream.</li><li>**AudienceStream** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the **Last Event URL** attribute in AudienceStream.</li></ul>                                                       |
+| Event Source URL | The browser URL where the event happened. This parameter is required if the **Action Source** is set to `website`. <ul><li>**Event Streaming** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the attribute Current URL in Event Streaming.</li><li>**Customer Data Platform (CDP)** - If the **Action Source** is set to `website` and this field is not mapped, it is automatically mapped to the **Last Event URL** attribute in CDP.</li></ul>                                                       |
 | Test Event Code   | Send the test ID in the `test_event_code` parameter to start seeing event activity in the Test Events window. Events sent with `test_event_code` are not dropped, instead they flow into Events Manager and are used for targeting and ads measurement purposes. |
 | Data Processing Options         | (Optional) Map this parameter to the value `LDU` to have Facebook process the event with Limited Data Use restrictions. Otherwise map this parameter to the value `None` to specify that the event should not be processed with Limited Data Use restrictions. For more information, see [Facebook: Data Processing Options](https://developers.facebook.com/docs/marketing-apis/data-processing-options). |
 | Event Name   | (Required) A Facebook pixel standard or custom event name. |
@@ -194,7 +194,7 @@ If you configured this action before the per-field hashing parameters were intro
 | FB Login ID  |  ID issued by Facebook when a person first logs into an instance of an app. This parameter is also known as the [App-Scoped ID](https://developers.facebook.com/docs/development/support#app-scoped-ids). Do not hash this value.   |
 | Partner ID  | The partner's ID. Third-party ID providers such as Liveramp and TradeDesk can use this parameter as an additional user identifier. Do not hash this value.  |
 | Partner Name  |  The partner's name. Third-party ID providers such as Liveramp and TradeDesk can use this parameter as an additional user identifier. Do not hash this value.  |
-| Client User Agent (`ua`)    | This parameter is required if the **Action Source** is set to website. The user agent for the browser corresponding to the event. Do not hash this value.  <ul><li>**EventStream** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the User Agent attribute in EventStream.</li><li>**AudienceStream** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the visitor's last User Agent in AudienceStream.</li></ul> **Importance: High** |
+| Client User Agent (`ua`)    | This parameter is required if the **Action Source** is set to website. The user agent for the browser corresponding to the event. Do not hash this value.  <ul><li>**Event Streaming** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the User Agent attribute in Event Streaming.</li><li>**CDP** - If the **Action Source** is set to website and this field is not mapped, it is automatically mapped to the visitor's last User Agent in CDP.</li></ul> **Importance: High** |
 | Client IP Address (`ip`)          |   The IP address of the browser corresponding to the event. Tealium can capture the client IP address, but it is not available by default. For more information, see [Enabling IP Address Collection in Server-Side Tealium Products](https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products). Do not hash this value. **Importance: High**    |
 | Email Apply SHA256 Hash | Email address in plaintext. The connector normalizes and hashes this value before sending. This parameter accepts strings or an array of strings. For example, `user@example.com` or `["user@example.com", "user2@example.com"]`. **Importance: Highest** |
 | Email Already SHA256 Hashed | Email address that has already been normalized and SHA-256 hashed. The connector forwards this value unmodified. This parameter accepts strings or an array of strings. **Importance: Highest** |
@@ -241,7 +241,7 @@ If you configured this action before the per-field hashing parameters were intro
 | JSON Templates   |  Provide valid JSON templates to be referenced in Custom Data section. Templates are injected by name with double curly braces into supported fields. For example, `{{SomeTemplateName}}`. For more information, see [about-connector-templates](https://docs.tealium.com/about-connector-templates/). |
 | Tealium iQ Tag ID | The Facebook Pixel Tag UID. |
 | Disable Automapping | Disable automatic mapping of parameters. |
-| Automatic Deduplication  | When you provide the Tealium iQ Tag ID, the connector automatically looks for the **Event ID** value that Tealium iQ sends. |
+| Automatic Deduplication  | When you provide the Tealium iQ Tag ID, the connector automatically looks for the **Event ID** value that Tag Management sends. |
 | Advertiser Tracking Enabled | (Required) Use this field to specify ATT permission on an iOS 14.5+ device. Set to `0` for disabled or `1` for enabled. |
 | Application Tracking Enabled | (Required) This parameter enables ad tracking at the app level. Your SDK should allow an app developer to put an opt-out setting into their app. Use this field to specify the person's choice. Use `0` for disabled, `1` for enabled. |
 | OS Version | (Required) OS version. For example, `13.4.1`. |
@@ -277,7 +277,7 @@ This Facebook action has limited availability. Contact your Facebook representat
 | --- | --- |
 | Event Name | (Required) A Facebook pixel standard event name.|
 | Event Time | A Unix timestamp, in seconds, indicating when the actual event occurred. The connector converts a mapped date attribute to seconds and auto-populates the event time if the attribute is absent. |
-| Event Source Url | The browser URL where the event happened. Required if **Action Source** is set to `website`. If **Action Source** is set to `website` and this field is not mapped, in EventStream it is auto-mapped to the attribute `Current URL`. If **Action Source** is set to `website` and this field is not mapped, in AudienceStream it is auto-mapped to the attribute `Last Event URL`. |
+| Event Source Url | The browser URL where the event happened. Required if **Action Source** is set to `website`. If **Action Source** is set to `website` and this field is not mapped, in Event Streaming it is auto-mapped to the attribute `Current URL`. If **Action Source** is set to `website` and this field is not mapped, in CDP it is auto-mapped to the attribute `Last Event URL`. |
 | Event ID | An ID used by Facebook to de-duplicate the same event sent from both server and browser. Verify that this is an ID unique to one pair of events sent from browser and server. This field supports JSON templates. Use `{{template_name}}` to reference a template. |
 | Debugging Level |  Set the `trace` level for the event. Accepted values: `1` for Error, `2` for Info, or `3` for Debug. |
 | Test Event Code |  Send the test ID as a `test_event_code` parameter to start seeing event activity appear in the Test Events window. Events sent with `test_event_code` are not dropped. They flow into Events Manager and are used for targeting and ads measurement purposes.|
@@ -348,7 +348,7 @@ Map custom data either as plain text values or using a JSON template by referenc
 
 | Parameter | Description |
 | --- | --- |
-| Tealium iQ Tag ID |  When the Tealium iQ Tag UID is provided, Tealium automatically looks for your Event ID value that is sent from Tealium iQ. |
+| Tealium iQ Tag ID |  When the Tag Management Tag UID is provided, Tealium automatically looks for your Event ID value that is sent from Tag Management. |
 
 #### App Data
 

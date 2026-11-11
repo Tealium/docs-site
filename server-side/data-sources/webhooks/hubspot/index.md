@@ -6,11 +6,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/hubspot/
 ## Prerequisites
 
 * HubSpot Marketing Professional, Sales Professional, or Enterprise account
-* Tealium EventStream and/or Tealium AudienceStream account
+* Event Streaming and/or Customer Data Platform (CDP) account
 
 ## How it works
 
-HubSpot offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to EventStream to inform it about things that happened in your HubSpot account. When you add the HubSpot data source in the UDH, a unique endpoint will be generated that you will use to configure the HubSpot webhook.
+HubSpot offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests act like push notifications to Event Streaming to inform it about things that happened in your HubSpot account. When you add the HubSpot data source in the UDH, a unique endpoint will be generated that you will use to configure the HubSpot webhook.
 
 ## Add the HubSpot data source
 

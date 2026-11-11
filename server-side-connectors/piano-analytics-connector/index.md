@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/piano-analytics-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -17,7 +17,7 @@ Click **Done** when you are finished configuring the connector.
 
 ## Actions
 
-|Action Name| AudienceStream| EventStream|
+|Action Name| Visitor profile| Event data|
 |---| ---| ---|
 |Send Event| ✓| ✓|
 
@@ -54,7 +54,7 @@ This connector uses batched requests to support high-volume data transfers to th
 |IP Address| IP address of the client.|
 |Referer| Address of the page sending the data.|
 | Site ID | ID of the site the data belongs to. This parameter overwrites the value defined in the **Configuration** tab if the value is not empty. |
-|User Agent| User agent of the client. If this field is not mapped, it is auto-mapped to the User Agent attribute in Tealium EventStream API Hub and to the visitor’s last User Agent attribute in Tealium AudienceStream CDP.|
+|User Agent| User agent of the client. If this field is not mapped, it is auto-mapped to the User Agent attribute in Event Streaming API Hub and to the visitor’s last User Agent attribute in Customer Data Platform (CDP).|
 |Visitor ID| Unique identifier of the visitor. If this field is not mapped, it is auto-mapped to the Tealium Visitor ID.|
 
 #### Common Contextual Properties
@@ -63,7 +63,7 @@ Piano Analytics recommends using additional properties to enhance analysis.
 
 |Parameter| Description|
 | --- | --- |
-|Previous URL| The previous page URL. If this field is not mapped, it is auto-mapped to the Current URL attribute in EventStream and to the Entry URL attribute in AudienceStream.|
+|Previous URL| The previous page URL. If this field is not mapped, it is auto-mapped to the Current URL attribute in Event Streaming and to the Entry URL attribute in Customer Data Platform (CDP).|
 |Device Timestamp UTC| Device timestamp UTC in seconds. Date attributes are converted to UNIX timestamp.|
 |Event Collection Platform| Collection platform used.|
 |Event Collection Version| Version of the collection platform.|

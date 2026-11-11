@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/google-ads-enhanced-convers
 ---
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Conversion| ✓| ✓|
 
@@ -28,11 +28,11 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ### Consent
 
-The connector sends the value of `GRANTED` for `adUserData` by default. To override the default, map a relevant EventStream attribute to `Ad User Data Consent` with a value of `DENIED`.
+The connector sends the value of `GRANTED` for `adUserData` by default. To override the default, map a relevant Event Streaming attribute to `Ad User Data Consent` with a value of `DENIED`.
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
@@ -100,5 +100,5 @@ The following section describes how to set up parameters and options for each ac
 |Unit Price| Unit price excluding tax, shipping, and any transaction level discounts. Provide array type attribute to add multiple items. Array type attributes must be of equal length. Single value attributes can be used and will apply to each item.|
 | Customer ID Override | (Optional) Provide a Customer ID to override the Customer `ID` in the connector configuration. If using this option you must also use the Conversion Action ID override. |
 | Manager Customer ID Override | (Optional) Provide a Manager Customer ID if using the Customer ID Override and accessing a client customer. |
-|Conversion Action Override | (Optional) Provide a Conversion Action ID to override the conversion action in the **Required** section. This parameter lets you use EventStream variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard, and click the conversion. The Conversion Action ID is the value of the `ctId` query parameter in the website URL. For example, if the URL is `https://ads.google.com/aw/conversions/detail?ctId=987654321`, the Conversion Action ID is `987654321`. |
+|Conversion Action Override | (Optional) Provide a Conversion Action ID to override the conversion action in the **Required** section. This parameter lets you use Event Streaming variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard, and click the conversion. The Conversion Action ID is the value of the `ctId` query parameter in the website URL. For example, if the URL is `https://ads.google.com/aw/conversions/detail?ctId=987654321`, the Conversion Action ID is `987654321`. |
 | Ad User Data Consent | (Optional) Consent for ad user data. The default value is `GRANTED`. Valid values are `GRANTED` or `DENIED`. |

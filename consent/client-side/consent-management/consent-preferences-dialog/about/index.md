@@ -23,7 +23,7 @@ The Consent Preferences Manager automatically suppresses tags in opted-out categ
 
 Preferences popup example:
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-preferences-prompt.png)
+![](https://docs.tealium.com/images/tag-management/consent-preferences-prompt.png)
 
 The iQ Tag Management Consent Preferences Manager simplifies the creation and deployment of a tracking preferences prompt to your website using your existing installation. After published, add a simple JavaScript function call to your page code to trigger the popup.
 
@@ -68,7 +68,7 @@ if (!checkForLoadedConsent()) {
 
 Changes in consent preferences are also honored by Tealium EventStream connectors. The consent category of a connector action is displayed on the **Action** configuration screen:
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-categories-connector-action.png)
+![](https://docs.tealium.com/images/tag-management/consent-categories-connector-action.png)
 
 When a customer sets consent category preferences, they are included in subsequent server-side requests. Only connector actions in the categories that the customer has opted into are triggered.
 
@@ -76,7 +76,7 @@ When a customer sets consent category preferences, they are included in subseque
 
 You have two connectors configured, one for `Analytics` and one for `Personalization`. A customer grants partial consent in the preference form by allowing `Analytics` tracking but not allowing `Personalization`.
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-server-side-categories-example.png)
+![](https://docs.tealium.com/images/tag-management/consent-server-side-categories-example.png)
 
 Only connector actions in the `Analytics` category are triggered. Any connector action categorized as `Personalization` is suppressed.
 

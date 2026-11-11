@@ -1,17 +1,17 @@
 ---
 title: Simility Tag Setup Guide
-description: This article describes how to set up the Simility tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Simility tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/simility-tag/
 ---
 ## Prerequisites
 
 * Simility account
 
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the Simility Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 1. **Customer ID**: The unique identifier that you (or your company) received from Simility during signup. Customer ID is required; you may specify it in this field or set it dynamically with Data Mappings.
 1. **Zone**: The location of the datacenter hosting your data. Available options are `US` (default) and `EU`.
@@ -24,13 +24,13 @@ After adding the tag, configure the below settings:
 </blockquote>
 
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Simility Tag are built into its Data Mapping tab. Available categories are:
 

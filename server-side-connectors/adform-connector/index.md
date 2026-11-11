@@ -4,21 +4,19 @@ description: Adform is a cloud technology built for agencies and advertisers, wh
 url: https://docs.tealium.com/server-side-connectors/adform-connector/
 ---## Supported Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Product Info| ✓| ✗|
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Product Info
 

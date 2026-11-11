@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/viant-connector/
 ---
 ## API情報
 
-このコネクタは、以下のベンダーAPIを使用します：
+このコネクタは、次のベンダーAPIを使用します。
 
 * API名：Viant API
 * APIバージョン：v1
@@ -13,26 +13,28 @@ url: https://docs.tealium.com/ja/server-side-connectors/viant-connector/
 
 ## バッチ制限
 
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。リクエストは、以下の3つの閾値のいずれかが満たされるまでキューに入れられます：
+このコネクタは、ベンダーへの大容量データ転送に対応するため、リクエストをバッチ処理します。次の3つのしきい値のいずれかに達するまで、リクエストはキューに保持されます。
 
 * リクエストの最大数：15,000
-* 最も古いリクエストからの最大時間：10分
+* 最も古いリクエストからの最大経過時間：10分
 * リクエストの最大サイズ：2 MB
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を行います：
+コネクタを追加したら、次の構成を構成します。
 
 * **ユーザー名**  
   * APIで使用するためにViantから提供されたユーザー名。
 * **パスワード**  
   * APIで使用するためにViantから提供されたパスワード。
 
+コネクタを構成したら、**完了**をクリックします。
+
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
 | データ送信（バッチ） | ✓ | ✓ |
 
@@ -46,23 +48,23 @@ url: https://docs.tealium.com/ja/server-side-connectors/viant-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| セグメント名 | 必須。セグメントの名前。 |
-| 広告主ID | 必須。Viant広告主`ID`。 |
-| TTL | 必須。レコードが期限切れになるまでの秒数。特に希望がない場合は、最大値の`32000000`を使用します。 |
-| セグメントID | 必須。セグメントの一意の識別子。Viant ID（例：タクソノミーIDやユーザープールID）または非Viant識別子（例：パートナーセグメントID）が可能です。 |
-| セグメントIDタイプ | 必須。セグメントIDタイプを定義します。許可される値は`userpool`、`taxonomy`、`third_party`です。 |
-| トランザクションID | 必須。購入イベントのトランザクションID。 |
-| 販売額 | 必須。購入イベントの販売額。 |
+| セグメント名 | （必須）セグメントの名前。 |
+| 広告主ID | （必須）Viant広告主の`ID`。 |
+| TTL | （必須）レコードが期限切れになるまでの時間（秒）。特に指定がない場合は、最大値の`32000000`を使用してください。 |
+| セグメントID | （必須）セグメントの一意の識別子。Viant ID（タクソノミーIDやユーザープールIDなど）またはViant以外の識別子（パートナーセグメントIDなど）を指定できます。 |
+| セグメントIDタイプ | （必須）セグメントIDのタイプを定義します。使用できる値は、`userpool`、`taxonomy`、`third_party`です。 |
+| トランザクションID | （必須）購入イベントのトランザクションID。 |
+| 売上金額 | （必須）購入イベントの売上金額。 |
 
 #### ペイロードパラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| ハッシュ化されたメール | 個人のメール、すべて小文字、ハッシュ化する前に先頭または末尾のスペースはなし。`md5`または`sha256`でハッシュ化可能。 |
-| ハッシュ化された物理アドレス | ハッシュ化する前の[アメリカ郵便システム形式](https://faq.usps.com/s/article/What-is-the-Format-and-Sequence-of-Information-for-the-Recipient-s-Address#:~:text=LINE%201%3A%20NAME%20OF%20ADDRESSEE,AND%20POSTAL%20CODE%20(IF%20KNOWN))のアドレス。md5またはsha256でハッシュ化可能。 |
+| ハッシュ化されたメールアドレス | 個人のメールアドレス。ハッシュ化する前にすべて小文字にし、先頭と末尾のスペースを削除します。`md5`または`sha256`でハッシュ化できます。 |
+| ハッシュ化された住所 | ハッシュ化する前に、[米国郵便公社の形式](https://faq.usps.com/s/article/What-is-the-Format-and-Sequence-of-Information-for-the-Recipient-s-Address#:~:text=LINE%201%3A%20NAME%20OF%20ADDRESSEE,AND%20POSTAL%20CODE%20(IF%20KNOWN))にした住所。md5またはsha256でハッシュ化できます。 |
 | IP | クライアント側のIPv4アドレス |
 | モバイルID | `AAID`または`IDFA` |
-| クッキー | Viantクッキー |
-| UID2 | ユニファイドID 2.0 |
+| Cookie | Viant Cookie |
+| UID2 | Unified ID 2.0 |
 | Ramp ID | Ramp ID |
 | ID5 | ID5 ID |

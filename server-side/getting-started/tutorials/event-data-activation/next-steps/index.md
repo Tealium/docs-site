@@ -18,7 +18,7 @@ To learn more, explore the following documentation:
 
 ## More guides
 
-* [Getting Started with iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
+* [Getting Started with Tag Management](https://docs.tealium.com/what-is-tealium-tag-management/)
 * [Visitor profile management tutorial](https://docs.tealium.com/tutorial/)
 
 ## More resources

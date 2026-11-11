@@ -15,7 +15,7 @@ For more about the new permissions management system, see [Platform Permissions 
 
 Before you plan out your migration strategy, review the following basic concepts:
 
-* **Product**: A grouping of features licensed at the account level (for example, AudienceStream CDP, EventStream API Hub, iQ Tag Management, etc.)
+* **Product**: A grouping of features licensed at the account level (for example, Customer Data Platform (CDP), Event Streaming API Hub, Tag Management, etc.)
 * **Feature**: A subsection of a product that allows management and access to data and configurations.
 * **Account**: Contains configuration and access that spans multiple profiles.
 * **Profile**: A configuration set for either server-side or client-side products and features.

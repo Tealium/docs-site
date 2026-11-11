@@ -15,7 +15,7 @@ Use the Google Ads Enhanced Conversions for Web connector to improve the accurac
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Conversion| ✓| ✓|
 
@@ -38,7 +38,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [about-connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -61,7 +61,7 @@ Google uses the transaction ID to deduplicate between client-side and server-sid
 
 The mapping in the connector is not required if **Enable Event Matching for Server-Side Enhanced Conversions** is turned on in the tag and **Automatic Transaction ID** is set up in the connector. 
 
-To set up **Automatic Transaction ID**, in the connector action configuration map the client-side tag UID of your Google Ads Conversion Tracking and Remarketing tag to `Tealium iQ Tag ID`. When `Tealium iQ Tag ID` is provided, we automatically look for the transaction ID value sent from Tealium iQ. The tag template must be a version after April 2023 and `transaction_id` or `order_id` must be mapped to take advantage of this feature. 
+To set up **Automatic Transaction ID**, in the connector action configuration map the client-side tag UID of your Google Ads Conversion Tracking and Remarketing tag to `Tealium iQ Tag ID`. When `Tealium iQ Tag ID` is provided, we automatically look for the transaction ID value sent from Tag Management. The tag template must be a version after April 2023 and `transaction_id` or `order_id` must be mapped to take advantage of this feature. 
 
 ## Action settings — parameters and options
 
@@ -96,8 +96,8 @@ The following section describes how to set up parameters and options for each ac
 |Address Info: State| State code of the user's address.|
 |Address Info: Postal Code| Postal code of the user's address.|
 |Address Info: Country Code| 2-letter country code in ISO 3166-1 alpha-2 of the user's address.|
-|Automatic Transaction ID|(Optional) When set to the Tealium iQ Tag ID, Tealium automatically looks for the transaction ID value that is sent from Tealium iQ. The tag template must be a version after April 2023 to use this feature. Either the Transaction ID or the Automatic Transaction ID must be provided.|
-|Conversion Action Override | (Optional) Provide a Conversion Action ID to override the conversion action in the **Required** section. You can use EventStream variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard and click the conversion. The Conversion Action ID is the value of the `ctId` query parameter in the website URL. For example, if the URL is `https://ads.google.com/aw/conversions/detail?ctId=987654321`, the Conversion Action ID is `987654321`. |
+|Automatic Transaction ID|(Optional) When set to the Tealium iQ Tag ID, Tealium automatically looks for the transaction ID value that is sent from Tag Management. The tag template must be a version after April 2023 to use this feature. Either the Transaction ID or the Automatic Transaction ID must be provided.|
+|Conversion Action Override | (Optional) Provide a Conversion Action ID to override the conversion action in the **Required** section. You can use Event Streaming variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard and click the conversion. The Conversion Action ID is the value of the `ctId` query parameter in the website URL. For example, if the URL is `https://ads.google.com/aw/conversions/detail?ctId=987654321`, the Conversion Action ID is `987654321`. |
 
 ## Error troubleshooting
 

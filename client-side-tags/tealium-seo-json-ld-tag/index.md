@@ -1,13 +1,13 @@
 ---
 title: Tealium SEO (JSON-LD) Tag Setup Guide
-description: This article describes how to set up the Tealium SEO (JSON-LD) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Tealium SEO (JSON-LD) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/tealium-seo-json-ld-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Tealium SEO Tag to your profile. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 * **Homepage URL**: Enter the complete homepage URL (including the protocol).
 * **Site Name**: Enter the name of your site/company.
@@ -21,15 +21,15 @@ For example, if your search URL is `http://query.example.com/search?q=smartphone
   * **Yes** (default): Use the E-Commerce extension to automatically build product data for product pages (recommended for E-Commerce sites).
   * **No**: Does not add product data.
 
-## Load Rules
+## Load rules
 
 [Load rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: **All Pages**.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Tealium SEO Tag are built into its data mapping tab. Available categories are:
 

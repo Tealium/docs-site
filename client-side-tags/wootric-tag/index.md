@@ -1,12 +1,12 @@
 ---
 title: Wootric Tag Setup Guide
-description: This article describes how to set up the Wootric tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Wootric tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/wootric-tag/
 ---Wootric helps you get the most from NPS—measure customer loyalty, optimize products, retain customers, and build an army of brand advocates. 
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -18,7 +18,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Wootric tag are built into its data mapping tab. Available categories are:
 

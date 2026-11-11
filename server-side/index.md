@@ -50,7 +50,7 @@ Integrate data from your internal systems into Tealium for event and visitor enr
 
 ![](https://docs.tealium.com/images/icons/icon-cloud-down.svg)
 
-#### CloudStream
+#### Data Cloud Activation
 
 Activate customer data directly from your data cloud, without storing or loading data into Tealium.
 

@@ -6,7 +6,7 @@ url: https://docs.tealium.com/server-side-connectors/pega-webhook-connector/
 ## Prerequisites
 
 * Set up [Pega Customer Decision Hub](https://docs.pega.com/pega-customer-decision-hub-implementation-guide/87/pega-customer-decision-hub-implementation-guide)
-* Tealium EventStream API Hub or Tealium AudienceStream CDP
+* Event Streaming API Hub or Customer Data Platform (CDP)
 
 ## How it works
 

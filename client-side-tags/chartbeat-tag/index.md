@@ -19,11 +19,11 @@ url: https://docs.tealium.com/client-side-tags/chartbeat-tag/
 
 * Chartbeat User ID
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### Adding the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configuring the Tag
 

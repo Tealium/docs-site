@@ -1,6 +1,6 @@
 ---
 title: Movable Ink Da Vinci Signal Tag Setup Guide
-description: This article describes how to set up the Movable Ink Da Vinci Signal tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Movable Ink Da Vinci Signal tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/movable-ink-da-vinci-signal-tag/
 ---
 ## Tag tips
@@ -22,7 +22,7 @@ url: https://docs.tealium.com/client-side-tags/movable-ink-da-vinci-signal-tag/
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,13 +30,13 @@ When adding the tag, configure the following settings:
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 For more information on the events and expected event details, see the [Da Vinci Javascript SDK documentation](https://help.coherentpath.com/guides/technical/javascript-sdk). You must be logged into the Da Vinci Help Center to access the documentation. If there are any issues accessing, contact your Da Vinci account team.
 
 The available categories are:
 
-### Tag Configuration
+### Tag configuration
 
 |Variable| Type | Description|
 |---| ---|---|

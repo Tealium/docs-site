@@ -1,15 +1,15 @@
 ---
 title: Akamai mPulse Tag Setup Guide
-description: This article describes how to set up the Akamai mPulse tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Akamai mPulse tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/akamai-mpulse-tag/
 ---
 Real time performance monitoring tools provide the capabilities needed for detailed performance and advanced error analysis and the ability to correlate the results directly to business metrics, such as conversions, page views, and revenue.
 
-You can easily add, implement, and manage the Akamai mPulse JavaScript tag through Tealium iQ. You can then create load rules to determine when and where to trigger this vendor and use the mapping feature to control which data points are shared with Akamai.
+You can easily add, implement, and manage the Akamai mPulse JavaScript tag through Tag Management. You can then create load rules to determine when and where to trigger this vendor and use the mapping feature to control which data points are shared with Akamai.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 

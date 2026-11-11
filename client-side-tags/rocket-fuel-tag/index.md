@@ -1,6 +1,6 @@
 ---
 title: Rocket Fuel Tag Setup Guide
-description: Learn how to set up the Rocket Fuel Tag in your Tealium iQ profile. Also learn how to use the Mapping Toolbox for sending data to this Tag's destinations.
+description: Learn how to set up the Rocket Fuel Tag in your Tag Management profile. Also learn how to use the Mapping Toolbox for sending data to this Tag's destinations.
 url: https://docs.tealium.com/client-side-tags/rocket-fuel-tag/
 ---
 ## Prerequisites
@@ -11,7 +11,7 @@ url: https://docs.tealium.com/client-side-tags/rocket-fuel-tag/
 
 ## Add the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ## Configure the Tag Settings
 

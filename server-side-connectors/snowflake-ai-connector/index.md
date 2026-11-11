@@ -11,7 +11,7 @@ For an overview of how AI connectors work and guidance on when to use an AI conn
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -21,9 +21,11 @@ After adding the connector, configure the following settings:
 * **Private Key Passphrase**: (Optional) Provide the encrypted private key passphrase if the private key is encrypted. Do not assign a value if the private key is unencrypted.
 * **User Role**: (Optional) Specify the Snowflake role to use for authentication and model endpoint access. If left blank, the user's default role is used. The selected role must be granted to the configured user and have permission to access Snowflake Cortex APIs and any deployed model endpoints.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Prompt to Snowflake Cortex | ✓ | ✓ |
 | Invoke Model Endpoint | ✓ | ✓ |

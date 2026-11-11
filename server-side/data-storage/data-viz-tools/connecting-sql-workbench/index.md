@@ -143,5 +143,5 @@ Click the **Search table data** tab to view random samples of data. You can use 
 
 The following items are noted as common errors to avoid:
 
-* Not declaring UDO variables within `utag_data` in your iQ Tag Management (TiQ) data layer. If the variables are not declared, they will not display in EventDB.
-* Not enabling an AudienceStream attribute to be sent to AudienceDB. Each attribute must be manually selected. There is a soft limit of 250 attributes. If more columns are needed, contact your Tealium account manager.
+* Not declaring UDO variables within `utag_data` in your Tag Management (TiQ) data layer. If the variables are not declared, they will not display in EventDB.
+* Not enabling a Customer Data Platform (CDP) attribute to be sent to AudienceDB. Each attribute must be manually selected. There is a soft limit of 250 attributes. If more columns are needed, contact your Tealium account manager.

@@ -17,21 +17,21 @@ Report app installs and in-app conversions through this API and send data back t
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Application ID**: The App ID listed on your app dashboard at Facebook for Developers.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name| AudienceStream | EventStream|
+| Action Name| Customer Data Platform (CDP) | Event Streaming|
 |:----------------|:-------------------|:----------------|
 | Send Event      | ✓                  | ✓               |
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Send Event
 

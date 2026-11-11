@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/predict/audiences/audience-considerati
 ---
 ## Choosing thresholds
 
-After a model is deployed and making predictions, a common next step is to use your predictions to create one or more audiences. The prediction values in an Tealium AudienceStream output attribute for any model are decimal numbers in a defined range (0 - 1). The typical approach is to choose one or more thresholds or cutoff points to define which portion of that prediction range you want included in your audience.
+After a model is deployed and making predictions, a common next step is to use your predictions to create one or more audiences. The prediction values in a Customer Data Platform (CDP) output attribute for any model are decimal numbers in a defined range (0 - 1). The typical approach is to choose one or more thresholds or cutoff points to define which portion of that prediction range you want included in your audience.
 
 For example, if your model is predicting a likelihood to purchase in the next 3 days, you may want an audience of only the visitors who are most likely to purchase. To achieve this, you can create an audience using a rule that defines the threshold as 0.8 as an example. In this scenario, the audience only includes visitors with values greater than or equal to 0.8.
 

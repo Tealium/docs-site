@@ -11,7 +11,7 @@ Tealium's best practice is to load all tags Asynchronously.
 
 **IMPORTANT**: **Optimizely Tool is unable to detect `utag.sync.js`**
 
-At the time of writing, Optimizely's tool is NOT able to detect their Synchronous script when served through a Tag Management System. Running the tool on a page where Tealium iQ is serving the script causes it to display an error message. Optimizely is working quickly to resolve this issue, until which point it is safe to ignore the error message. Our recommendation would be to use the Ghostery tool to verify whether or not Optimizely Synchronous is loading on the page as expected.
+At the time of writing, Optimizely's tool is NOT able to detect their Synchronous script when served through a Tag Management System. Running the tool on a page where Tag Management is serving the script causes it to display an error message. Optimizely is working quickly to resolve this issue, until which point it is safe to ignore the error message. Our recommendation would be to use the Ghostery tool to verify whether or not Optimizely Synchronous is loading on the page as expected.
 
 ## Loading Optimizely Sync using utag.sync.js container (RECOMMENDED)
 

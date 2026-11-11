@@ -3,20 +3,20 @@ title: Knotch Tag Setup Guide
 description: This article describes how to configure the Knotch Tag.
 url: https://docs.tealium.com/client-side-tags/knotch-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Minimum utag.js Version: 4.36. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
 * Use mapping to dynamically override the standard configuration values.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Knotch tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the settings in the Data Mapping section.
+When adding the tag, configure the following settings:
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

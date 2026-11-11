@@ -99,7 +99,7 @@ JavaScript エクステンションで使用する同意パラメータを特定
 1. ブラウザの開発者ツールを開き、コンソールに移動します。
 1. `TealiumConsentRegister` オブジェクトを表示するには、`tealiumConsentRegister` を入力します。このオブジェクトには `currentDecision` と `decisions` 配列が含まれています。`currentDecision` 配列には、現在許可されている目的が含まれています。
 
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-integrations.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-integrations.png)
 
 
 <blockquote>

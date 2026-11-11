@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -32,9 +32,11 @@ After adding the connector, configure the following settings:
 * **Advertisers ID**: (Required) Viant advertisers ID.
 * **Select audience**: Select an audience segment from the list, or click **Create New Segment** to create a new one. You can also enter a custom Viant segment ID directly.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action name | AudienceStream | EventStream |
+| Action name | Customer Data Platform (CDP) | Event Streaming |
 | ----------- | :------------: | :---------: |
 | Add audience data | ✓ | ✓ |
 | Expire individual audience IDs | ✓ | ✓ |

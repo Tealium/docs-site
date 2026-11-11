@@ -1,10 +1,10 @@
 ---
-title: Oracle Responsys Connector Setup Guide for AudienceStream (SOAP API)
+title: Oracle Responsys Connector Setup Guide for Customer Data Platform (CDP) (SOAP API)
 description: This article describes how to set up the Oracle Responsys connector in your Customer Data Hub account.
 url: https://docs.tealium.com/server-side-connectors/oracle-responsys-connector-soap-api/
 ---## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Merge Visitor into Profile Extension Table| ✓| ✗|
 |Merge Visitor into Supplemental Table| ✓| ✗|
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/oracle-responsys-connector-
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -30,9 +30,7 @@ When entering the server host, do not include the protocol or the path.
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Merge Visitor into Profile Extension Table
 
@@ -103,6 +101,6 @@ This section describes how to set up parameters and options for each action.
 |Custom Event Name|
 |Optional Data Map|  <ul><li>(Optional) Custom Event data that the user can set to any value</li></ul> |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Oracle Marketing Cloud - Oracle Responsys API](https://docs.oracle.com/cloud/latest/marketingcs_gs/responsys.html)

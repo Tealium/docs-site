@@ -1,6 +1,6 @@
 ---
 title: Bing Ads - Microsoft adCenter Tag Reference Guide
-description: This article describes how to set up the Bing Ads - Microsoft adCenter tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Bing Ads - Microsoft adCenter tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/bing-ads-microsoft-adcenter-tag/
 ---
 
@@ -10,7 +10,7 @@ Bing Ads has deprecated this tag and recommends replacing it with the [Bing Ads 
 </blockquote>
 
 
-## Tag Tips
+## Tag tips
 
 * Analytics tag allows for additional variables to be mapped (`actionid`, `revenue`, `nonadvertisingcost`, `taxcost`, `shippingcost`)
 * Use comma-separated lists in one or more of the following variables to send multiple tracking requests (iframe tag only):
@@ -19,11 +19,11 @@ Bing Ads has deprecated this tag and recommends replacing it with the [Bing Ads 
   * `domainId`
   * `cp`
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Bing Ads - Microsoft adCenter tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tag**: Use default (script) if not sure.
 * **Type**: Using the conversion type adds the `cp` value, but does not send revenue.
@@ -33,9 +33,9 @@ After adding the tag, configure the following settings:
 * **CP**: Used for conversion tag only (set to `5050` for default.)
 * **Revenue**: Analytics tag only. Leave blank to automatically send the `_csubtotal` value
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

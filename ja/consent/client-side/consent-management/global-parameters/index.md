@@ -19,7 +19,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/global-p
 
 1. 管理メニューで、ドロップダウンメニューから**グローバル同意カスタマイズ**をクリックします。**グローバル同意カスタマイズ**ダイアログが表示されます。
 1. 管理したい機能のタブを選択します。**明示的同意プロンプト**または**同意構成ダイアログ**。
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-global-consent-customization.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-global-consent-customization.jpg)
 
 ### パラメータ値の構成
 
@@ -52,7 +52,7 @@ HTMLやJavaScript内に直接翻訳可能なテキストを入れるのは避け
 カスタムパラメータを追加するには、以下の手順を実行します：
 
 1. **カスタムパラメータ**セクションまでスクロールダウンし、**+ パラメータ追加**をクリックします。
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-custom-parameters.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-custom-parameters.jpg)  
 **カスタムパラメータ**ダイアログが表示されます。
 1. パラメータの名前を入力します。
 1. **適用**をクリックします。  
@@ -68,7 +68,7 @@ HTMLやJavaScript内に直接翻訳可能なテキストを入れるのは避け
 言語を追加するには、以下の手順を実行します：
 
 1. **言語**の横にあるサイドパネルで、**+ 追加**をクリックします。
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-make-default-language-checkbox.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-make-default-language-checkbox.jpg)
 1. リストから言語を選択し、**適用**をクリックします。  
 新しい言語が**言語**サイドパネルの英語（en）の下に表示されます。
 1. 新しい言語をクリックしてその言語のコンテンツを構成します。

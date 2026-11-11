@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/visitor-stitching/scenarios/
 ---
 When the same user is identified by two email addresses, the result is based on the device and browser used for each.
 
-For example, a user visits a website for the first time and provides an email address when submitting a form. The email address is hashed, it enriches the `Email Address Hash` visitor ID attribute, and a new visitor profile is created in AudienceStream.
+For example, a user visits a website for the first time and provides an email address when submitting a form. The email address is hashed, it enriches the `Email Address Hash` visitor ID attribute, and a new visitor profile is created in Customer Data Platform (CDP).
 
 The resulting visitor profile might look like this:
 
@@ -35,7 +35,7 @@ The anonymous ID is the same, so the incoming event will match the profile that 
 
 Users sharing a device and visiting the same websites using different user identifiers (an email address in this case) is referred to as visitor switching. Tealium Support or Professional Services can assist you with implementing a solution to handle visitor switching. For more information, see the following Tealium knowledge base articles:
 
-* [Anonymous User Tracking under ITP with Visitor Switching in AudienceStream](https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream)
+* [Anonymous User Tracking under ITP with Visitor Switching in CDP](https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream)
 * [Visitor Switching in iQ](https://support.tealiumiq.com/en/support/solutions/articles/36000419055-visitor-switching-in-iq)
 * [Visitor Switching in Tealium Mobile SDKs](https://support.tealiumiq.com/en/support/solutions/articles/36000493080-visitor-switching-in-tealium-mobile-sdks)
 
@@ -79,7 +79,7 @@ Both HTTP API and file import send stateless events because the `tealium_visitor
 
 File import data sources typically include a user identifier that maps to a visitor ID attribute.
 
-If a `tealium_visitor_id` value is not included in an HTTP API request or in a file import mapping, AudienceStream assigns a random value to the anonymous ID and creates a new visitor profile prior to visitor stitching.
+If a `tealium_visitor_id` value is not included in a HTTP API request or in a file import mapping, CDP assigns a random value to the anonymous ID and creates a new visitor profile prior to visitor stitching.
 
 ## Additional scenarios
 
@@ -113,13 +113,13 @@ For example:
 
 First, it’s important to note a few important system functionalities.
 
-* As events feed into AudienceStream, these events are used to create a visitor profile.
+* As events feed into CDP, these events are used to create a visitor profile.
 * When a visitor’s visit expires, both the visitor and all of the events of their visit are stored in two different DB collections (separate from EventStore logs).
 * Over the lifetime of a visitor there can be hundreds or even thousands of events, and a majority of the time these persisted events are never used and will expire when the visitor profile expires.
 
-With that foundation set we can now discuss what occurs upon a stitching event. When matching profiles are found, AudienceStream will load up all past events for all of the visitors being stitched, sort each event chronologically, and replay all events to create a primary stitched profile.
+With that foundation set we can now discuss what occurs upon a stitching event. When matching profiles are found, CDP will load up all past events for all of the visitors being stitched, sort each event chronologically, and replay all events to create a primary stitched profile.
 
-So back to the question, whether the `Opt-In Status` flag will be set to `True` or `False`. The answer is that it depends on the outcome of all of the enrichments that are reprocessed when AudienceStream replays all of these visitors' past events.
+So back to the question, whether the `Opt-In Status` flag will be set to `True` or `False`. The answer is that it depends on the outcome of all of the enrichments that are reprocessed when CDP replays all of these visitors' past events.
 
 #### More notes and possible questions
 
@@ -134,7 +134,7 @@ Does this mean stitching is backwards compatible? Imagine this scenario of event
   * customer_type is passed to AS
   * customer_email is passed to AS
 
-* Within AudienceStream
+* Within CDP
 
   * Visitor ID is assigned using customer_email
   * customer_type is ignored
@@ -143,7 +143,7 @@ Does this mean stitching is backwards compatible? Imagine this scenario of event
 * 2 weeks later the visitor authenticates on Mobile with the same `customer_email` value (but no `customer_type` is passed)
 * We stitch the desktop and mobile profiles together
 
-The Trait capturing `customer_type` will not have existed in either device's visitor profile. However, when AS reprocesses all the events, AudienceStream will use the latest AudienceStream profile definition and re-evaluate the Trait's enrichment. This means the primary visitor profile will now have the Trait storing the `customer_type`.
+The Trait capturing `customer_type` will not have existed in either device's visitor profile. However, when AS reprocesses all the events, CDP will use the latest CDP profile definition and re-evaluate the Trait's enrichment. This means the primary visitor profile will now have the Trait storing the `customer_type`.
 
 #### How does this affect Omnichannel data?
 

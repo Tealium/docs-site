@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-audience-manager-dcs-
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -22,9 +22,7 @@ To configure your vendor, follow these steps:
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Data Collection Event
 
@@ -40,7 +38,7 @@ For more information, see: [Making Event API Calls](https://experienceleague.ado
 </blockquote>
 
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Making Event API Calls](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)
 * [Get User ID and Region](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)

@@ -3,7 +3,7 @@ title: Zoho CRM Connector Setup Guide
 description: This article describes how to set up the Zoho CRM connector.
 url: https://docs.tealium.com/server-side-connectors/zoho-crm-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,21 +13,19 @@ This connector uses the following vendor API:
 
 ## Connector Actions
 
-| **Action Name**         | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:------------------------|:-------------------|:----------------|
 | Create or Update Record | ✓                  | ✓               |
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
 ### Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Create or Update Record
 

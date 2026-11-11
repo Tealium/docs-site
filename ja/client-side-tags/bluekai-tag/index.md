@@ -1,34 +1,34 @@
 ---
 title: BlueKaiタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでBlueKaiタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでBlueKaiタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/bluekai-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-マッピングを使用して、標準の構成値を上書きするか、追加のパラメータを渡します。
+マッピングを使用すると、標準の構成値を上書きしたり、追加のパラメーターを渡したりできます。
 
 ## タグの構成
 
-タグマーケットプレイスに移動し、BlueKaiタグを追加します。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、次の変数を構成します：
+タグを追加する際は、次の構成を構成します。
 
-* **サイトID**：ピクセルが特定のDMPパートナーに所属していることを識別する一意の番号。
-* **制限**：BlueKaiによって発火されるメディアパートナーセグメントピクセルの最大数。
+* **サイトID**：ピクセルが特定のDMPパートナーに属していることを識別する一意の番号。
+* **上限**：BlueKaiによって配信されるメディアパートナーのセグメントピクセルの最大数。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-次の変数はBlueKaiタグで利用可能です：
+BlueKaiタグでは、次の変数を使用できます。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
+|変数|説明|
+|---|---|
 |サイトID| (siteid)|
-|制限| (limit)|
-|複数の呼び出しを許可する (`allow_multiple_calls`)| [boolean]|
+|上限| (limit)|
+|複数回の呼び出しを許可（`allow_multiple_calls`）| [ブール値]|
 |show| |
 |tod| |
 |lv| |
@@ -39,4 +39,3 @@ url: https://docs.tealium.com/ja/client-side-tags/bluekai-tag/
 |sub3| |
 |ref| |
 |srch| |
-

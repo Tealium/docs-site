@@ -3,7 +3,7 @@ title: Heap Tag Setup Guide
 description: This article describes how to configure the Heap Tag.
 url: https://docs.tealium.com/client-side-tags/heap-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the Heap Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)). After adding the Tag, configure the below settings:
 
@@ -17,15 +17,15 @@ Override, or dynamically populate, the **Application ID** and **String Delimiter
 </blockquote>
 
 
-### Load Rules
+### Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag on your site.
 
 Recommended Load Rule: The default **All Pages** Rule.
 
-### Data Mappings
+### Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a variable to a tag destination, see [Mapping Variables](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Heap Tag are built into its Data Mapping toolbox under the following categories:
 

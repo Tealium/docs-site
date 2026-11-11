@@ -10,7 +10,7 @@ The healthcare dashboard provides prebuilt visuals for healthcare organizations 
 The healthcare dashboard requires:
 
 * EventDB
-* The `utag_main__se` attribute which tracks the number of sessions for a visitor. If you encounter errors when generating the dashboard, this attribute may need to be configured as a first-party cookie in EventStream and made available in EventDB.
+* The `utag_main__se` attribute which tracks the number of sessions for a visitor. If you encounter errors when generating the dashboard, this attribute may need to be configured as a first-party cookie in Event Streaming and made available in EventDB.
 
 ## Generate the dashboard
 

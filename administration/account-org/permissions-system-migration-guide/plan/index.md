@@ -136,7 +136,7 @@ Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission al
 </blockquote>
 
 
-#### iQ Tag Management
+#### Tag Management
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
@@ -155,7 +155,7 @@ Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission al
 | Tag Templates|No Access, View, View & Edit|
 | Tags, Extensions, Load Rules, Data Layer|No Access, View, View & Edit, View Edit & Delete|
  
-#### AudienceStream
+#### Customer Data Platform (CDP)
  
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------| 
@@ -165,7 +165,7 @@ Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission al
 | Audience Connectors|No Access, View, View & Edit, View Edit & Delete|
 | Visitor/Visit Attributes|No Access, View, View & Edit, View Edit & Delete|
 
-#### EventStream
+#### Event Streaming
 
 | Feature|Available Permissions|
 |-----------------------------------------------|:-----------------------------------------------------------|
@@ -223,9 +223,9 @@ Users that have **View &amp; Edit** or **View, Edit &amp; Delete** permission al
 
 Carefully consider when you disable access to a feature or product. If you disable access to a feature for a user, that user cannot access the feature in any other features that depend on it. For example:
 
-* If you disable access to AudienceStream audiences for a user, that user cannot select an audience to action in an AudienceStream connector.
+* If you disable access to CDP audiences for a user, that user cannot select an audience to action in a CDP connector.
 * If you disable access to server-side labels for a user, the user cannot see labels on the server-side. They can access connectors or other features with labels on them, but they cannot see or edit the labels themselves.
-* EventStream and AudienceStream share some features, such as rules and labels. If a user only has access to EventStream but edits rules shared between EventStream and AudienceStream, the rules will still change in AudienceStream.
+* Event Streaming and CDP share some features, such as rules and labels. If a user only has access to Event Streaming but edits rules shared between Event Streaming and CDP, the rules will still change in CDP.
 
 ### Update the spreadsheet
 
@@ -246,7 +246,7 @@ Here are some suggestions:
 * Do you want separate permission groups for your client-side and server-side profiles because different parts of your organization manage these products?
 * Do you want to create permission groups based on job responsibilities (Developer, QA, Data Manager, Engineer, Compliance, et cetera) so that when you add, move, or remove users, you can quickly assign permissions based on their job title?
 * Do you want to break down permission groups by region because your profiles and users are organized by geographic campaigns and sites, and different data storage and data privacy laws apply to them?
-* Do you want to break down permission groups by product (AudienceStream, EventStream, Customer Data Hub, et cetera)?
+* Do you want to break down permission groups by product (CDP, Event Streaming, Customer Data Hub, et cetera)?
 
 For each Yes answer, add another column to the spreadsheet, and add notes in that column about how that question impacts that user's relationship to the organization and workflow.
 

@@ -1,6 +1,6 @@
 ---
 title: ActOn Tag Setup Guide
-description: This article describes how to set up the ActOn tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the ActOn tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/acton-tag/
 ---
 ## Website
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/client-side-tags/acton-tag/
  </script> 
 ```
 
-## Tealium iQ Configuration
+## Tag Management Configuration
 
 The ActOn tag requires little in the way of configuration.
 

@@ -1,6 +1,6 @@
 ---
 title: Google Cloud Pub/Sub Connector Setup Guide
-description: This article describes how to set up the Google Cloud Pub/Sub connectors. Tealium offers two Pub/Sub connectors in the Connector Marketplace: the Google Could Pub/Sub Connector (3-legged OAuth) and Google Cloud Pub/Sub (Service Account) Connector (2-legged OAuth).
+description: This article describes how to set up the Google Cloud Pub/Sub connectors. Tealium offers two Pub/Sub connectors in the connector marketplace: the Google Could Pub/Sub Connector (3-legged OAuth) and Google Cloud Pub/Sub (Service Account) Connector (2-legged OAuth).
 url: https://docs.tealium.com/server-side-connectors/google-cloud-pubsub-connector-service-account/
 ---
 ## Prerequisites
@@ -34,7 +34,7 @@ This connector uses two-legged OAuth flow, based on a Google Cloud service accou
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings based on which connector you added:
 
@@ -54,13 +54,15 @@ After adding the connector, configure the following settings based on which conn
 * **Client Email**  
 (Required) The service account email address used in your Google Cloud project.
 * **Private Key**  
+
+After you configure the connector, click **Done**.
 (Required) The private key generated for your Google Cloud project service account.
 
 ## Actions
 
 ### Google Cloud Pub/Sub Connector
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ----------- | :------------: | :---------: |
 | Send Event Data to Topic | ✗ | ✓ |
 | Send Visitor Data to Topic | ✓ | ✗ |
@@ -69,7 +71,7 @@ After adding the connector, configure the following settings based on which conn
 
 ### Google Cloud Pub/Sub (Service Account) Connector
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event Data to Topic | ✗ | ✓ |
 | Send Event Data with Custom URL | ✗ | ✓ |
@@ -137,7 +139,7 @@ If the Pub/Sub topic you are publishing to has a schema attached, use the **Send
 | Print Attribute Names | If attribute names are updated, the names in the payload will reflect the update. |
 |Ordering Key|Map or enter an ordering key-value to enable Pub/Sub topic subscribers to receive messages in the order they are published. For more information, see [Google: Order messages](https://cloud.google.com/pubsub/docs/ordering).|
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Pub/Sub: What is Pub/Sub?](https://cloud.google.com/pubsub/docs/overview)
 * [Setting Up Authentication for Server to Server Production Applications](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually)

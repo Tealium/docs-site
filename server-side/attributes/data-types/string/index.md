@@ -13,9 +13,9 @@ The string attribute is available in the following scopes: Event, Visit, Visitor
 
 ### Size limits
 
-EventStream string attributes have a maximum length of 1,500 characters. Strings are truncated to 1,500 characters if they exceed this limit.
+Event Streaming string attributes have a maximum length of 1,500 characters. Strings are truncated to 1,500 characters if they exceed this limit.
 
-AudienceStream string attributes values have a maximum length of 1,000 characters. If an enrichment results in a string larger than 1,000 characters, the value is not saved.
+Customer Data Platform (CDP) string attributes values have a maximum length of 1,000 characters. If an enrichment results in a string larger than 1,000 characters, the value is not saved.
 
 String attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).
 

@@ -1,94 +1,93 @@
 ---
-title: ユナイテッドインターネットメディア（UIM）リターゲティングタグ構成ガイド
-description: この記事では、ユナイテッドインターネットメディア（UIM）のリターゲティングタグの構成方法について説明します。
+title: United Internet Media（UIM）リターゲティングタグ構成ガイド
+description: この記事では、United Internet Media（UIM）リターゲティングタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/uim-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用してタグの構成を上書きしたり、動的に構成します。
+* マッピングを使用して、タグ構成を上書きまたは動的に構成します。
 * マッピングを使用してイベントをトリガーします。
-* 以下のE-Commerce拡張パラメータをサポートしています：
+* 次のEコマース拡張パラメータをサポートしています。
     + 注文ID（`_corder`を上書き）
-    + 注文アイテム（`_cprod`を上書き）
+    + 注文商品（`_cprod`を上書き）
     + 注文合計（`_ctotal`を上書き）
-    + 注文の配送（`_cship`を上書き）
+    + 注文の送料（`_cship`を上書き）
     + 注文通貨（`_ccurrency`を上書き）
     + 商品ID（`_cprod`を上書き）
     + 商品名（`_cprodname`を上書き）
-    + 商品価格（`_cprice`を上書き）
+    + 商品価格（` _cprice`を上書き）
     + 商品通貨（`_ccurrency`を上書き）
     + バスケット合計（`_ctotal`を上書き）
-    + バスケットアイテム（`_cprod`を上書き）
+    + バスケット内の商品（`_cprod`を上書き）
     + バスケット通貨（`_ccurrency`を上書き）
-
-
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
-* **広告主**：JS URLの広告主。必須
+* **広告主**：JS URL内の広告主。必須です。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+利用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `advertiser`  | String | 広告主 | 
-|  `uuid_netid`  | String | UUID netid |
-|  `privacy_law`  | String | プライバシー法 |
-|  `privacy_consent`  | String | プライバシー同意|
+| `advertiser` | 文字列 | 広告主 |
+| `uuid_netid` | 文字列 | UUID netid |
+| `privacy_law` | 文字列 | プライバシー法 |
+| `privacy_consent` | 文字列 | プライバシー同意 |
 
-### E-Commerce
+### Eコマース
 
-| 変数 | タイプ |説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `page_name`  | String | ページ名 |
-|  `category_id`  | String | カテゴリID |
-|  `category_name`  | String | カテゴリ名 |
-|  `product_id` (Overrides `_cprod`)  | String | 商品ID |
-|  `product_name` (Overrides `_cprodname`)  | String | 商品名 |
-|  `product_price` (Overrides `_cprice`)  | String | 商品価格 |
-|  `product_currency` (Overrides `_ccurrency`)  | String | 商品通貨 |
-|  `basket_total` (Overrides `_ctotal`)  | String | バスケット合計 |
-|  `basket_items` (Overrides `_cprod`)  | String | バスケットアイテム |
-|  `basket_currency` (Overrides `_ccurrency`)  | String | バスケット通貨 |
-|  `order_id` (Overrides `_corder`)  | String | 注文ID |
-|  `order_items` (Overrides `_cprod`)  | String | 注文アイテム |
-|  `order_total` (Overrides `_ctotal`)  | String | 注文合計 |
-|  `order_shipping` (Overrides `_cship`)  | String | 注文の配送 |
-|  `order_currency` (Overrides `_ccurrency`)  | String | 注文通貨 |
+| `page_name` | 文字列 | ページ名 |
+| `category_id` | 文字列 | カテゴリーID |
+| `category_name` | 文字列 | カテゴリー名 |
+| `product_id`（`_cprod`を上書き） | 文字列 | 商品ID |
+| `product_name`（`_cprodname`を上書き） | 文字列 | 商品名 |
+| `product_price`（`_cprice`を上書き） | 文字列 | 商品価格 |
+| `product_currency`（`_ccurrency`を上書き） | 文字列 | 商品通貨 |
+| `basket_total`（`_ctotal`を上書き） | 文字列 | バスケット合計 |
+| `basket_items`（`_cprod`を上書き） | 文字列 | バスケット内の商品 |
+| `basket_currency`（`_ccurrency`を上書き） | 文字列 | バスケット通貨 |
+| `order_id`（`_corder`を上書き） | 文字列 | 注文ID |
+| `order_items`（`_cprod`を上書き） | 文字列 | 注文商品 |
+| `order_total`（`_ctotal`を上書き） | 文字列 | 注文合計 |
+| `order_shipping`（`_cship`を上書き） | 文字列 | 注文の送料 |
+| `order_currency`（`_ccurrency`を上書き） | 文字列 | 注文通貨 |
 
 ### イベントトリガー
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
 | `general` | 一般 |
-| `category` | カテゴリ |
+| `category` | カテゴリー |
 | `product` | 商品 |
 | `basket` | バスケット |
 | `checkout` | チェックアウト |
 
 ### イベント固有のパラメータ
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
 | `general` | 一般 |
-| `category` | カテゴリ|
+| `category` | カテゴリー |
 | `product` | 商品 |
 | `basket` | バスケット |
 | `checkout` | チェックアウト |
-

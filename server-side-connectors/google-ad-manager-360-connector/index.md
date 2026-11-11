@@ -15,7 +15,7 @@ Previously, this connector required that you request for Google to add your acco
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add Visitor to User-List or Segment| ✓| ✓|
 |Remove Visitor from User-List or Segment| ✓| ✓|
@@ -37,7 +37,7 @@ This connector uses the following vendor APIs:
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -58,7 +58,7 @@ After adding the connector, configure the following settings:
 
 ### Create a New Segment
 
-Use the following steps to create a new segment in AudienceStream:
+Use the following steps to create a new segment in Customer Data Platform (CDP):
 
 1. Click **Create a New Segment** from the top of the Actions selection drop-down screen.
 2. Complete the following fields:

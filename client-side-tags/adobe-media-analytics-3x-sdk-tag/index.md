@@ -1,20 +1,20 @@
 ---
 title: Adobe Media Analytics (3.x SDK) Tag Setup Guide
-description: This article describes how to set up the Adobe Media Analytics (3.x SDK) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Adobe Media Analytics (3.x SDK) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adobe-media-analytics-3x-sdk-tag/
 ---
 Adobe Media Analytics provides support for tracking video and ad metrics, including total views/impressions, time spent, and completion rates.
 
-## Tag Tips
+## Tag tips
 
 * Adobe Media Analytics requires the Adobe Experience Cloud ID Service as well as AppMeasurement for JS to be loaded first, preferably bundled.
 * This tag is fired with `utag.track('video', data);` which should be implemented in your video event handlers.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Adobe Media Analytics (3.x SDK) tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tracking Server**: (Required) Adobe Media Analytics tracking server. (`example.hb.omtrdc.net`).
 * **Publisher**: (Required) Publisher name as provided by Adobe.
@@ -23,9 +23,9 @@ After adding the tag, configure the following settings:
 * **Video Platform Name**: The name of the online video platform through which content gets distributed. This field is optional.
 * **Video Player SDK**: The version of the video player app/SDK. This field is optional.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

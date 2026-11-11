@@ -7,7 +7,7 @@ url: https://docs.tealium.com/platforms/getting-started-mobile/client-side/
 
 Tag Management is a client-side solution that saves your vendor tag configuration and business logic to a static JavaScript named `utag.js`. As visitors browse your site this file is loaded and run in the browser (client-side) to determine which vendor tags to load and how to send their data. After these files are retrieved by the browser they are cached for subsequent page views to optimize network traffic and page performance.
 
-Learn more about [how Tag Management works](https://docs.tealium.com/how-tealium-iq-works/).
+Learn more about [how Tag Management works](https://docs.tealium.com/how-tag-management-works/).
 
 
 ## Mobile

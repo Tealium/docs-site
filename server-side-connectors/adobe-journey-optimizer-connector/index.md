@@ -3,7 +3,7 @@ title: Adobe Journey Optimizer Connector Setup Guide
 description: This article describes how to set up the Adobe Journey Optimizer connector.
 url: https://docs.tealium.com/server-side-connectors/adobe-journey-optimizer-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,14 +13,14 @@ This connector uses the following vendor API:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Unitary message execution (Real-time) | ✓ | ✓ |
 | Unitary message execution (Batched) | ✓ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -31,6 +31,8 @@ After adding the connector, configure the following settings:
 * **Organization ID**  
 (Required) The organization ID can be found in the Adobe Developer Console in your Adobe account.
 * **Sandbox**  
+
+After you configure the connector, click **Done**.
 Specify whether you want the API calls to refer to a different environment than the default (prod).
 
 ## Actions

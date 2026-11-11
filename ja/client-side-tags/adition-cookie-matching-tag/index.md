@@ -1,42 +1,42 @@
 ---
 title: Adition Cookie Matchingタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAdition Cookie Matchingタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでAdition Cookie Matchingタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adition-cookie-matching-tag/
 ---
 
 <blockquote>
-このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)と[utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+このタグを`utag`バージョン4.50以降で使用する場合は、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、Cookieの同期に訪問IDを使用できるようになります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50以降へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
 </blockquote>
 
 
-## タグのヒント
+## タグに関するヒント
 
-* これはAditionのCookie Matchingバージョンで、TealiumとAdition間で訪問ID情報を同期することができます。
-* このタグは別のAditionタグと連携して使用されます。
-* 以下のサーバーサイド属性をTealiumに戻送します：
+* これはAditionのCookie Matchingバージョンであり、TealiumとAditionの間で訪問ID情報を同期できます。
+* このタグは、別のAditionタグと組み合わせて使用します。
+* 次のサーバーサイド属性をTealiumに返します。
   * `adition_user_id`
 
-## タグ構成
+## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Adition Cookie Matchingタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際に、次の構成を構成します。
 
 * **Tealiumアカウント**
-  * あなたのTealiumアカウントの名前。
+  * Tealiumアカウントの名前。
   * 正しいvdataエンドポイントにリダイレクトするために必要です。
-  * デフォルトでは、あなたのTealium iQアカウント名になります。
+  * デフォルトでは、タグ管理アカウント名が使用されます。
 
 * **Tealiumプロファイル**
-  * あなたのTealiumプロファイルの名前。
+  * Tealiumプロファイルの名前。
   * 正しいvdataエンドポイントにリダイレクトするために必要です。
-  * デフォルトでは、あなたのTealium iQプロファイル名になります。
+  * デフォルトでは、タグ管理プロファイル名が使用されます。
 
 ## データマッピング
 
-マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 

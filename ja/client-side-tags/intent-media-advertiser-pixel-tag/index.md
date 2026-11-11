@@ -1,50 +1,49 @@
 ---
-title: Intent Media 広告主ピクセルタグ構成ガイド
-description: この記事では、Tealium iQタグ管理（TiQ）アカウントでIntent Media広告主ピクセルタグを構成する方法について説明します。
+title: Intent Media Advertiser Pixelタグ構成ガイド
+description: この記事では、タグ管理アカウントでIntent Media Advertiser Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/intent-media-advertiser-pixel-tag/
----## タグのヒント
+---## タグに関するヒント
 
-* 以下のE-Commerce変数を使用します
+* 次のEコマース変数を使用します
   * `_corder`
   * `_csubtotal`/`_ctotal`
   * `_ccurrency`
   * `_ccustid`
-* ページビュータイプ/ページカテゴリはマッピングで上書き可能です
+* ページビュータイプ／ページカテゴリーは、マッピングを使用して上書きできます
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
 * **エンティティID**
-  * Intent Media広告主ピクセルによって構成されます。
+  * Intent Media Advertiser Pixelによって構成されます。
 * **ページビュータイプ**
-  * 'HOME', 'LIST', 'DETAILS', 'CART', 'EMAIL', 'EMAIL_CONFIRMATION', 'CONVERSION', 'UNKNOWN'のいずれかでなければなりません。
-* **製品カテゴリ**
-  * 'HOME', 'FLIGHTS', 'CARS', 'HOTELS', 'PACKAGE', 'EMAIL', 'UNKNOWN'のいずれかでなければなりません。
+  * 'HOME'、'LIST'、'DETAILS'、'CART'、'EMAIL'、'EMAIL_CONFIRMATION'、'CONVERSION'、'UNKNOWN'のいずれかである必要があります。
+* **商品カテゴリー**
+  * 'HOME'、'FLIGHTS'、'CARS'、'HOTELS'、'PACKAGE'、'EMAIL'、'UNKNOWN'のいずれかである必要があります。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+利用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
-|変数| 説明|
-|---| ---|
-|`Entity` ID|  <ul><li>エンティティID。</li><li>Intent Media広告主ピクセルによって構成されます。</li></ul> |
-|`page_view_type`|  <ul><li>ページビュータイプ。</li><li>以下のいずれかでなければなりません：  <ul><li>HOME</li><li>LIST</li><li>DETAILS</li><li>CART</li><li>EMAIL</li><li>EMAIL\_CONFIRMATION</li><li>CONVERSION</li><li>UNKNOWN</li></ul> </li></ul> |
-|`product_category`|  <ul><li>製品カテゴリ。</li><li>以下のいずれかでなければなりません：  <ul><li>HOME</li><li>FLIGHTS</li><li>CARS</li><li>HOTELS</li><li>PACKAGE</li><li>EMAIL</li><li>UNKNOWN</li></ul> </li></ul> |
-|`page_id`|  <ul><li>ページID</li></ul> |
+|変数|説明|
+|---|---|
+|`Entity` ID| <ul><li>エンティティID。</li><li>Intent Media Advertiser Pixelによって構成されます。</li></ul> |
+|`page_view_type`| <ul><li>ページビュータイプ。</li><li>次のいずれかである必要があります。<ul><li>HOME</li><li>LIST</li><li>DETAILS</li><li>CART</li><li>EMAIL</li><li>EMAIL\_CONFIRMATION</li><li>CONVERSION</li><li>UNKNOWN</li></ul></li></ul> |
+|`product_category`| <ul><li>商品カテゴリー。</li><li>次のいずれかである必要があります。<ul><li>HOME</li><li>FLIGHTS</li><li>CARS</li><li>HOTELS</li><li>PACKAGE</li><li>EMAIL</li><li>UNKNOWN</li></ul></li></ul> |
+|`page_id`| <ul><li>ページID</li></ul> |
 
-### E-Commerce
+### Eコマース
 
-|変数| 説明|
-|---| ---|
-|`order_id`|  <ul><li>注文ID。</li><li>デフォルトの`_corder`を上書きします。</li></ul> |
-|`order_subtotal`|  <ul><li>注文の小計。</li><li>デフォルトの`_csubtotal`を上書きします。</li></ul> |
-|`currency`|  <ul><li>通貨。</li><li>デフォルトの`_ccurrency`を上書きします。</li></ul> |
-|`custid`|  <ul><li>顧客ID。</li><li>デフォルトの`_ccustid`（`user_member_id`）を上書きします。</li></ul> |
-
+|変数|説明|
+|---|---|
+|`order_id`| <ul><li>注文ID。</li><li>デフォルトの`_corder`を上書きします。</li></ul> |
+|`order_subtotal`| <ul><li>注文の小計。</li><li>（デフォルトの`_csubtotal`を上書きします。</li></ul> |
+|`currency`| <ul><li>通貨。</li><li>デフォルトの`_ccurrency`を上書きします。</li></ul> |
+|`custid`| <ul><li>顧客ID。</li><li>デフォルトの`_ccustid`（`user_member_id`）を上書きします。</li></ul> |

@@ -33,7 +33,7 @@ The app reads data from Snowflake and creates audience tables. It does not modif
 
 
 <blockquote>
-CloudStream is recommended for easier setup because it automatically creates attributes based on incoming data. If you use AudienceStream, you must manually create attributes and audiences.
+Data Cloud Activation is recommended for easier setup because it automatically creates attributes based on incoming data. If you use Customer Data Platform (CDP), you must manually create attributes and audiences.
 </blockquote>
 
 

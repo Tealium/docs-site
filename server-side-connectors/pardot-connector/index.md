@@ -1,5 +1,5 @@
 ---
-title: Salesforce Pardot Connector Setup Guide for AudienceStream
+title: Salesforce Pardot Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the Salesforce Pardot Connector service in your Customer Data Hub profile.
 url: https://docs.tealium.com/server-side-connectors/pardot-connector/
 ---
@@ -22,7 +22,7 @@ With the Salesforce Pardot Connector, you can send one-to-one emails based off o
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Pardot connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -38,9 +38,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab to set up actions and their triggers.
-
-This section describes how to set up parameters and options for each action:
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Email to Prospect
 
@@ -172,7 +170,7 @@ If you need to add a list that you don't see in the dropdown, you can find the l
   * **prospect_email:** An email address associated with a prospect
   * **id:** A Pardot ID that the prospect is known by
 
-## Vendor Documentation
+## Vendor documentation
 
 * [How are prospects associated with campaigns?](http://help.pardot.com/customer/en/portal/articles/2128387-how-are-prospects-associated-with-campaigns-#setting-campaigns-with-the-api)
 * [Sending one-to-one emails](http://developer.pardot.com/kb/api-version-4/emails/#sending-one-to-one-emails)

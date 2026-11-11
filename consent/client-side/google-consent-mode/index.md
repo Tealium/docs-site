@@ -99,7 +99,7 @@ To identify the consent parameters to use in the JavaScript extension, follow th
 1. Open your browser's developer tools and navigate to the console.
 1. To view the `TealiumConsentRegister` object, enter `tealiumConsentRegister`. This object contains the `currentDecision` and `decisions` arrays. The `currentDecision` array includes the currently allowed purposes.
 
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-integrations.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-integrations.png)
 
 
 <blockquote>

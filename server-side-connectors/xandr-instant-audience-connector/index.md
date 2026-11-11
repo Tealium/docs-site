@@ -54,7 +54,7 @@ Provide the following information in a [support request to Xandr](https://help.x
 
 Xandr typically responds to these requests within one to three  business days.
 
-## Batch Limits
+## Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -64,14 +64,14 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add User to Segment| ✓| ✓|
 |Remove User From Segment| ✓| ✓|
 
 ## Configure Settings
 
-Navigate to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After selecting your source, click **Continue** and then **Add Connector**. Enter a name for the connector.
 

@@ -22,14 +22,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Custom Audience | ✓ | ✗ |
 | Remove User from Custom Audience | ✓ | ✗ |
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 <blockquote>
 When you add this connector, you are prompted to accept the vendor's data platform policy.
@@ -40,7 +40,6 @@ After adding the connector, configure the following settings:
 
 * **Account ID**  
 (Required) The ID of the Reddit Ads account that the conversion event belongs to. You can find it as **Pixel ID** under **Conversion Events** in the Reddit Ads UI.
-
 
 ### Add User to Custom Audience
 

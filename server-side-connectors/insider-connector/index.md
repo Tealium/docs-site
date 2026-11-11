@@ -3,7 +3,7 @@ title: Insider Connector Setup Guide
 description: This article describes how to set up the Insider connector.
 url: https://docs.tealium.com/server-side-connectors/insider-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Connector Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Upsert and Subscribe (Batched) | ✓ | ✓ |
 | Upsert and Subscribe (Real-Time) | ✓ | ✓ |
@@ -32,7 +32,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -44,8 +44,6 @@ When you are finished configuring the connector, click **Done**.
 ## Action Settings — Parameters and Options
 
 Click **Continue** to configure the connector actions. Enter a name for the action and then select the action type.
-
-This section describes how to set up parameters and options for each action.
 
 ### Action — Upsert and Subscribe (Batched or Real-Time)
 

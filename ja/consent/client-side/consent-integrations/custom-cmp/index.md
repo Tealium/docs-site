@@ -81,7 +81,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom
     *
     * オプトアウトクッキーの（大文字と小文字を区別する）名前はUIの「Vendor ID」フィールドから取得されます。
     *
-    * 詳細については、https://docs.tealium.com/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc を参照してください。
+    * 詳細については、https://docs.tealium.com/tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc を参照してください。
     *
     * （上記の統合はこの例のために簡略化されました - GPCロジックは削除されました）
     */

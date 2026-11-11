@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 ---
 同意構成マネージャーは、以下のタブを使用して構成されます：
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog.jpg)
+![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog.jpg)
 
 * **コンテンツ**  
 このタブでは、顧客に表示されるメッセージを入力し、複数の言語翻訳を追加し、会社のロゴのURLとプライバシーポリシーのリンクを提供します。
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 同意構成マネージャーの構成を開始するには、以下の手順を使用します：
 
 1. 左サイドバーで **クライアントサイドツール > 同意管理** に移動します。**同意構成ダイアログ** セクションで、**開始** をクリックして構成モーダルを起動します。  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-consent-preferences-dialog-get-started.jpg)  
     既にプロンプトが構成されている場合は、この画面からオンまたはオフに切り替えます。
 
 ### コンテンツ
@@ -104,7 +104,7 @@ window.utag_cfg_ovrd.gdprDLRef = "<some data layer var, for example: meta.lang/p
 
 言語タイトルバーにある **デフォルト言語に構成** ボックスをチェックすることでデフォルト言語を構成します。デフォルト言語は、顧客の検出されたブラウザ言語に対応する言語が同意プロンプトマネージャーに構成されていない場合に、構成ポップアップに表示されます。
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 
 ## カスタマイズ（CSS、HTML、JavaScript）
 

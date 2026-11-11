@@ -22,16 +22,18 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Access Token**: Your TikTok access token.
 * **Pixel ID**: If you have already integrated a TikTok pixel for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the `pixel_code`. Create one pixel per website.
 
+After you configure the connector, click **Done**.
+
 ## Deduplication
  
-To configure this connector to receive event IDs from the TikTok Pixel tag in your Tealium iQ Tag Management account, look for event attributes using the following naming convention:
+To configure this connector to receive event IDs from the TikTok Pixel tag in your Tag Management account, look for event attributes using the following naming convention:
 
 ```nohl
 tiktok_event_id_<TIKTOK_EVENT>_<TAG_UID>
@@ -43,7 +45,7 @@ For example, an event from a tag with a UID of `174` sends the following attribu
 tiktok_event_id_Checkout_174
 ```
 
-Find your tag UID in the Tealium iQ **Tags** table or the tag details screen:
+Find your tag UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/tiktok-pixel-uid.png)
 
@@ -66,7 +68,7 @@ If a later event is received within five minutes of the first event, TikTok merg
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Track Event | ✓ | ✓ |
 

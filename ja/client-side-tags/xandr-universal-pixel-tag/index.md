@@ -1,122 +1,121 @@
 ---
-title: Xandrユニバーサルピクセルタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでXandrユニバーサルピクセルタグを構成する方法について説明します。
+title: Xandr Universal Pixelタグ構成ガイド
+description: この記事では、タグ管理アカウントでXandr Universal Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/xandr-universal-pixel-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* 複数のピクセルIDをカンマ区切りリストで入力できます。
-* 注文IDが入力されると、購入追跡が自動的に行われます。自動購入追跡を無効にするには、マッピングで`automatic_purchase_tracking`宛先を切り替えます。
-* PageView追跡は自動的に行われます。自動PageView追跡を無効にするには、マッピングで`automatic_pageview_tracking`宛先を切り替えます。
-* デフォルトでは、PageViewイベントは追加データなしで実行されます。PageViewイベントにデータを渡したい場合は、マッピングツールボックスのイベント固有パラメータタブでマップしたい変数を指定する必要があります。
-* 以下のEコマース拡張パラメータをサポートしています：
+* 複数のPixel IDをカンマ区切りのリストで入力できます。
+* 注文IDが構成されると、購入トラッキングが自動的に実行されます。購入の自動トラッキングを無効にするには、マッピングを使用して`automatic_purchase_tracking`宛先を切り替えます。
+* PageViewトラッキングは自動的に実行されます。PageViewの自動トラッキングを無効にするには、マッピングを使用して`automatic_pageview_tracking`宛先を切り替えます。
+* デフォルトでは、PageViewイベントは追加データなしで実行されます。PageViewイベントでデータを渡す場合は、マッピングツールボックスの「イベント固有のパラメータ」タブで、使用する変数をマッピングする必要があります。
+* 次のEコマース拡張機能パラメータをサポートしています。
   * 注文ID（`_corder`）
-  * 製品IDリスト（`_cprod`）
-  * 製品名リスト（`_cprodname`）
-  * 製品カテゴリリスト（`_ccat`）
+  * 商品IDのリスト（`_cprod`）
+  * 商品名のリスト（`_cprodname`）
+  * 商品カテゴリーのリスト（`_ccat`）
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際は、次の構成を構成します。
 
-* **ピクセルID**
-  * XandrユニバーサルピクセルIDを入力します。
-  * 複数のIDをカンマ区切りリストで入力できます。
-* **広告保存の同意**: 広告保存のデフォルト同意を構成します。`ad_storage`パラメータを**データマッピング**セクションでマッピングすることにより、この値を動的に更新します。
-* **Tealium同意クッキーから自動的に読み取る**: `true`に構成すると、[Tealium同意マネージャ](https://docs.tealium.com/about-consent-management/)に基づいて同意が構成されます。
+* **Pixel ID**
+  * Xandr Universal Pixel IDを入力します。
+  * 複数のIDをカンマ区切りのリストで入力できます。
+* **広告保存の同意**：広告保存に対するデフォルトの同意を構成します。**データマッピング**セクションで`ad_storage`パラメータをマッピングすることで、この値を動的に更新できます。
+* **Tealium同意Cookieから自動的に読み取る**：trueに構成すると、[Tealium同意マネージャー](https://docs.tealium.com/about-consent-management/)に基づいて同意が構成されます。
 
 ## 同意モード
 
-このタグの同意モードを実装するには、次の2つのオプションがあります：
+このタグに同意モードを実装する方法は2つあります。
 
-* [クライアントサイド同意管理](https://docs.tealium.com/about-consent-management/)を使用し、Tealium同意クッキーを自動的に読み取ります。
-* [JavaScriptコード拡張](https://docs.tealium.com/javascript-code-extension/)を追加して、同意管理プラットフォーム（CMP）からこのタグへの同意選択とカテゴリマッピングをマップします。
+* [クライアント側の同意管理](https://docs.tealium.com/about-consent-management/)を使用し、Tealium同意Cookieを自動的に読み取ります。
+* [JavaScriptコード拡張機能](https://docs.tealium.com/javascript-code-extension/)を追加し、同意管理プラットフォーム（CMP）の同意選択とカテゴリーマッピングをこのタグにマッピングします。
 
-訪問が同意選択を行うと、タグは第一者および第三者クッキーに対して適切なアプローチを選択します：
+訪問が同意を選択すると、タグはファーストパーティCookieとサードパーティCookieに対して適切な処理を選択します。
 
-* **許可された場合**：第一者および第三者クッキーの読み書きが可能です。
-* **拒否された場合**：第一者クッキーは読み書きされず、第三者クッキーは詐欺やスパム目的でのみ読み取り可能で、広告目的ではありません。
+* **許可**：ファーストパーティCookieとサードパーティCookieの両方を読み書きできます。
+* **拒否**：ファーストパーティCookieは読み書きされません。サードパーティCookieは広告目的では使用されず、不正行為やスパム対策の目的でのみ読み取られます。
 
-### クライアントサイド同意管理
+### クライアント側の同意管理
 
-このタグの同意モードをクライアントサイド同意管理を使用して実装するには、タグ構成で**Tealium同意クッキーから自動的に読み取る**を`true`に構成します。
+クライアント側の同意管理を使用してこのタグに同意モードを実装するには、タグ構成で**Tealium同意Cookieから自動的に読み取る**を`true`に構成します。
 
-### JavaScriptコード拡張
+### JavaScriptコード拡張機能
 
-エンドユーザーの同意選択をXandr同意モード構成にマッピングするには、JavaScriptコード拡張を使用します。拡張を次のように構成します：
+エンドユーザーの同意選択をXandrの同意モード構成にマッピングするには、JavaScriptコード拡張機能を使用します。拡張機能を次のように構成します。
 
-* **スコープ**を**ロードルール後（デフォルト）**に構成
-* **発生**を**常に実行**に構成
-* CMP用のJavaScriptコードを入力します。次のコードテンプレートをCMPのロジックで`CUSTOM_LOGIC`を置き換えてカスタマイズできます：
+* **スコープ**を**ロードルールの後（デフォルト）**に構成します。
+* **実行頻度**を**常に実行**に構成します。
+* CMP用のJavaScriptコードを入力します。次のコードテンプレート内の`CUSTOM_LOGIC`をベンダー固有のロジックに置き換えることで、CMPに合わせてカスタマイズできます。
 
 ```js
 b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
 b.microsoft_ad_storage_consent = CUSTOM_LOGIC ? 'granted' : 'denied';
 ```
 
-たとえば、以下のコードはOneTrust用です：
+たとえば、次のコードはOneTrust用です。
 
 ```js
-// ロードルール後 - 常に実行
+// After Load Rules - Run Always
 b.consent_decision = (tealiumConsentRegister && tealiumConsentRegister.currentDecision) || [];
 b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? 'granted' : 'denied';
 ```
 
-これらの正確な変数名を使用する場合、追加のマッピングは必要ありません。タグの最新バージョンはデフォルトでこれらの変数を使用します。特定のケースの属性に`ad_storage`パラメータをマッピングすることにより、これらの変数を上書きします。
+これらの変数名をそのまま使用する場合、追加のマッピングは必要ありません。最新バージョンのタグでは、これらの変数がデフォルトで使用されます。個別のユースケースに応じて、`ad_storage`パラメータを属性にマッピングし、これらの変数を上書きできます。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングでは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### タグ構成
 
-| 変数                      | タイプ            | 説明                               |
-|---------------------------|-----------------|-------------------------------------|
-| `pixel_id`                | 文字列          | ユニバーサルピクセルID。                 |
-| `auto_pageview_tracking`  | ブール値、文字列 | 自動ページビュー追跡の切り替え。 |
-| `auto_purchase_tracking`  | ブール値、文字列 | 自動購入追跡の切り替え。 |
+| 変数                      | 型              | 説明                                  |
+|---------------------------|-----------------|---------------------------------------|
+| `pixel_id`                | 文字列          | Universal Pixel ID。                  |
+| `auto_pageview_tracking`  | 真偽値、文字列  | PageViewの自動トラッキングを切り替えます。 |
+| `auto_purchase_tracking`  | 真偽値、文字列  | 購入の自動トラッキングを切り替えます。 |
 | `base_url`                | 文字列          | ベースURL。                           |
 
 ### Eコマース
 
-| 変数          | タイプ   | 説明                                       |
-|---------------|--------|-----------------------------------------------|
-| `item_type`   | 配列  | アイテムカテゴリのリスト。（`_ccat`を上書き）。 |
-| `item_id`     | 配列  | アイテムIDのリスト。（`_cprod`を上書き）。       |
-| `item_name`   | 配列  | アイテム名のリスト。（`_cprodname`を上書き）。 |
+| 変数          | 型     | 説明                                        |
+|---------------|--------|---------------------------------------------|
+| `item_type`   | 配列   | 商品カテゴリーのリスト（`_ccat`を上書き）。 |
+| `item_id`     | 配列   | 商品IDのリスト（`_cprod`を上書き）。        |
+| `item_name`   | 配列   | 商品名のリスト（`_cprodname`を上書き）。    |
 
 ### イベント
 
-| 変数               | 説明       |
-|--------------------|-------------------|
-| `AddPaymentInfo`   | 支払情報の追加。 |
-| `AddToCart`        | カートに追加。      |
-| `InitiateCheckout` | チェックアウトの開始。|
-| `ItemView`         | アイテム表示。        |
-| `LandingPage`      | ランディングページ。     |
-| `Lead`             | リード。             |
-| `PageView`         | ページビュー。        |
-| `Purchase`         | 購入。           |
-| `Custom`           | カスタムイベント。     |
+| 変数                 | 説明                       |
+|----------------------|----------------------------|
+| `AddPaymentInfo`     | 支払い情報の追加。         |
+| `AddToCart`          | カートへの追加。           |
+| `InitiateCheckout`   | チェックアウトの開始。     |
+| `ItemView`           | 商品の表示。               |
+| `LandingPage`        | ランディングページ。       |
+| `Lead`               | リード。                   |
+| `PageView`           | ページビュー。             |
+| `Purchase`           | 購入。                     |
+| `Custom`             | カスタムイベント。         |
 
-### イベント固有パラメータ
+### イベント固有のパラメータ
 
-| 変数                | 説明         |
-|---------------------|---------------------|
-| `item_type`         | アイテムタイプ。          |
-| `item_id`           | アイテムID。            |
-| `item_name`         | アイテム名。          |
-| `Custom_Parameter`  | カスタムパラメータ。   |
-| `AddPaymentInfo`    | 支払情報の追加。   |
-| `AddToCart`         | カートに追加。        |
-| `InitiateCheckout`  | チェックアウトの開始。  |
-| `ItemView`          | アイテム表示。        |
-| `LandingPage`       | ランディングページ。     |
-| `Lead`              | リード。             |
-| `Purchase`          | 購入。           |
-| `Custom_Event`      | カスタムイベント。       |
-
+| 変数                | 説明                       |
+|---------------------|----------------------------|
+| `item_type`         | 商品タイプ。               |
+| `item_id`           | 商品ID。                   |
+| `item_name`         | 商品名。                   |
+| `Custom_Parameter`  | カスタムパラメータ。       |
+| `AddPaymentInfo`    | 支払い情報の追加。         |
+| `AddToCart`         | カートへの追加。           |
+| `InitiateCheckout`  | チェックアウトの開始。     |
+| `ItemView`          | 商品の表示。               |
+| `LandingPage`       | ランディングページ。       |
+| `Lead`              | リード。                   |
+| `Purchase`          | 購入。                     |
+| `Custom_Event`      | カスタムイベント。         |

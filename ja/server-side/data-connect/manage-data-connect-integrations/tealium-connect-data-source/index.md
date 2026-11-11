@@ -1,45 +1,43 @@
 ---
-title: Tealium Connect データソースの構成
-description: この記事では、Tealium Connect データソースの構成方法について説明します。
+title: Tealium Connectデータソースの構成
+description: この記事では、Tealium Connectデータソースを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-connect/manage-data-connect-integrations/tealium-connect-data-source/
 ---
-Tealium Collectにイベントを送信し、Data Connectイベントを識別するためには、各統合に対してTealium Connectデータソースを使用します。各Data Connect統合に専用のデータソースを持つことで、[Live Events](https://docs.tealium.com/about-live-events/)で関連イベントを簡単に確認できます。また、Tealium EventStreamやAudienceStreamで、Data Connectイベントのみを処理するコネクタを構成することもできます。
+Tealium Collectにイベントを送信し、Data Connectイベントを識別するには、統合ごとにTealium Connectデータソースを使用します。Data Connect統合ごとに専用のデータソースを用意すると、関連するイベントを[ライブイベント](https://docs.tealium.com/about-live-events/)で簡単に確認できます。また、Data Connectイベントのみを処理するコネクタを、Event StreamingまたはCustomer Data Platform（CDP）で構成することもできます。
 
-Tealiumのデータソースについての詳細は、[About Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。
+Tealiumのデータソースの詳細については、[データソースについて](https://docs.tealium.com/about-data-sources/)を参照してください。
 
 
 <blockquote>
-各オリジナルデータソースごとに1つのTealium Connectデータソースを構成することを推奨します。例えば、Salesforceデータ用のTealium Connectデータソースと、Snowflakeデータ用の別のデータソースなどです。
+送信元データソースごとに1つのTealium Connectデータソースを構成することをお勧めします。たとえば、Salesforceデータ用のTealium Connectデータソースと、Snowflakeデータ用の別のデータソースを構成します。
 </blockquote>
 
 
-Tealium Connectデータソースを追加するには、以下の手順を完了します：
+Tealium Connectデータソースを追加するには、次の手順を実行します。
 
-1. **Connect > Data Sources**に移動します。
-1. **+ Add Data Source**をクリックします。
-1. **Select a Platform**画面から**Tealium Connect**を選択します。
-1. **Summary**の下の**Name**フィールドに名前を入力し、**Continue**をクリックします。
-1. **Choose Event Specifications**ステップで**Continue**をクリックします。
-1. イベント仕様を選択し、**Continue**をクリックするか、このステップをスキップするために**Skip**をクリックします。
-1. **Get Code**画面では、以下の形式でTealium ConnectエンドポイントURLが表示されます：  
+1. **Connect > データソース**に移動します。
+1. **+ データソースを追加**をクリックします。
+1. **プラットフォームを選択**画面で、**Tealium Connect**を選択します。
+1. **概要**の下にある**名前**フィールドに名前を入力し、**続行**をクリックします。
+1. **イベント仕様を選択**ステップで、**続行**をクリックします。
+1. イベント仕様を選択して**続行**をクリックするか、**スキップ**をクリックしてこのステップを省略します。
+1. **コードを取得**画面に、Tealium ConnectのエンドポイントURLが次の形式で表示されます。  
 ```
 https://collect-us-east-1.tealiumiq.com/dataconnect/event/{{account}}/{{profile}}/{{data source key}}
 ```
-このキーは、WorkatoのTealium Eventsアプリを構成するために必要です。
+WorkatoでTealium Eventsアプリを構成するには、このキーが必要です。
 <blockquote>
-Tealium APIドメインは、[Tealium Private Cloud](https://tealium.com/resource/fundamentals/tealium-private-cloud/)を使用するクライアントに対してカスタムされます。
+[Tealium Private Cloud](https://tealium.com/resource/fundamentals/tealium-private-cloud/)を使用するクライアントの場合、Tealium APIドメインはカスタムドメインになります。
 </blockquote>
 
-8. オプション。インストール手順をダウンロードするには、**Download as PDF**をクリックします。
-9. **Save & Continue**をクリックします。
+8. （任意）インストール手順をダウンロードするには、**PDFとしてダウンロード**をクリックします。
+9. **保存して続行**をクリックします。
 10. データソースの概要が表示されます。
-11. **Close**をクリックします。  
-新しいデータソースは**Data Sources**ダッシュボードで確認できます。
-12. データソースエンドポイントを有効化するには、プロファイルを**Save/Publish**します。
+11. **閉じる**をクリックします。  
+新しいデータソースが**データソース**ダッシュボードに表示されます。
+12. データソースのエンドポイントを有効化するには、プロファイルを**保存／パブリッシュ**します。
 
 
 <blockquote>
-Tealium Connectを構成した後でデータソースキーを見つけるには、**Data Sources**ダッシュボードに移動し、使用したいデータソースをクリックし、**Data Source Key**フィールドからキーをコピーします。
+Tealium Connectの構成後にデータソースキーを確認するには、**データソース**ダッシュボードに移動し、使用するデータソースをクリックして、**データソースキー**フィールドからキーをコピーします。
 </blockquote>
-
-

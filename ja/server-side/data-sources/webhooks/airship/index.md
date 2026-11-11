@@ -1,58 +1,59 @@
 ---
-title: Airshipインカミングウェブフック構成ガイド
-description: この記事では、Airshipデータソースを使用してAirshipアカウントにウェブフックを作成し、アクション可能なイベントをTealiumに送信する方法について説明します。
+title: Airship 受信 Webhook セットアップガイド
+description: この記事では、Airship データソースを使用して Airship アカウントに Webhook を作成し、対応可能なイベントを Tealium に送信する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/airship/
 ---
 
 ## 前提条件
 
-* Tealium EventStream および/または Tealium AudienceStream
-* Airshipアカウント
+* Event Streaming または Customer Data Platform（CDP）、あるいはその両方
+* Airship アカウント
 
 ## 仕組み
 
-AirshipをTealium EventStreamまたはTealium AudienceStreamに接続するには、[Airship Webhook API](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/)を使用して、TealiumアカウントのカスタムAirshipデータソースエンドポイントに送信リクエストを送ります。
+Airship を Event Streaming または CDP に接続するには、[Airship Webhook API](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/) を使用して、Tealium アカウント内のカスタム Airship データソースエンドポイントに送信リクエストを送ります。
 
-ウェブフックを構成した後、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受け取ってユースケースを自動化し、情報を得て、生産性を向上させることができます。
+Webhook を構成すると、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受信して、ユースケースの自動化、最新情報の把握、生産性の向上を実現できます。
 
-## Airshipデータソース
+## Airship データソース
 
-Tealium Customer Data HubプロファイルにAirshipデータソースを追加すると、ウェブフック構成で使用するためのユニークなURLが生成されます。その形式は次のとおりです：
+Airship データソースを Tealium Customer Data Hub プロファイルに追加すると、Webhook の構成で使用する次の形式の一意の URL が生成されます。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-Tealium Customer Data HubプロファイルにAirshipデータソースを追加する方法については、[Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加し、接続したら、プロファイルを保存して公開します。
+Airship データソースを Tealium Customer Data Hub プロファイルに追加する方法については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加して接続したら、プロファイルを保存してパブリッシュします。
 
-## Airshipの構成
+## Airship のセットアップ
 
-AirshipをTealium Customer Data Hubプロファイルに接続した後、以下の手順でウェブフックを構成します：
+Airship を Tealium Customer Data Hub プロファイルに接続した後、次の手順で Webhook を構成します。
 
-1. Airshipアカウントにログインし、**構成 &gt; プロジェクト構成**に移動し、**管理**をクリックしてリアルタイムデータストリーミングの統合を構成します。
-1. **リアルタイムデータストリーミング**の下で**Tealium**をクリックします。  
+1. Airship アカウントにログインし、**Settings &gt; Project Configuration** に移動して、**Manage** をクリックし、Real-Time Data Streaming 統合を構成します。
+1. **Real-Time Data Streaming** で、**Tealium** をクリックします。  
       
 <blockquote>
-以前に構成した統合は**有効な統合**の下にリストされます。
+以前に構成した統合は、**Enabled Integrations** に表示されます。
 </blockquote>
 
 
 1. 名前と説明を入力します。
-1. TealiumプロファイルにAirshipデータソースを追加して作成したカスタムエンドポイントURLを入力します。例えば
+1. Airship データソースを Tealium プロファイルに追加したときに作成されたカスタムエンドポイント URL を入力します。例：
 
       ```
       https://collect-us-east-1.tealiumiq.com/integration/event/{account}/{profile}/{data_source_key}
       ```
 
-1. 匿名の訪問をTealiumに送信するかどうかを選択します。
-1. Tealiumに送信するイベントタイプを選択します。
-1. **保存**をクリックします。
+1. 匿名訪問を Tealium に送信するかどうかを選択します。
+1. Tealium に送信するイベントタイプを選択します。
+1. **Save** をクリックします。
 
 ## イベントと属性
 
-すべての受信Airshipイベント属性は`airship_`で始まります。例えば、Airshipは`id`属性をTealiumに送信し、それは`airship_id`（すべて小文字）に変換されます。
+受信するすべての Airship イベント属性には、プレフィックス `airship_` がエンリッチメントされます。たとえば、Airship は `id` 属性を Tealium に送信し、その属性は `airship_id`（すべて小文字）に変換されます。
 
-AirshipウェブフックAPIは、以下のAirship Email Subscriptionイベントの例に示すように、フラット化されたJSONオブジェクトをTealiumに送信します：
+
+Airship Webhook API は、次の Airship メールサブスクリプションイベントの例に示すように、フラット化された JSON オブジェクトを Tealium に送信します。
 
 ```json
 {
@@ -74,10 +75,9 @@ AirshipウェブフックAPIは、以下のAirship Email Subscriptionイベン�
 }
 ```
 
-Airshipが生成するウェブフックイベントと属性の完全なリストについては、[Airship Events Documentation](https://docs.airship.com/api/connect/#schema-tag-events)を参照してください。
+Airship によって生成される Webhook イベントと属性の完全なリストについては、[Airship イベントのドキュメント](https://docs.airship.com/api/connect/#schema-tag-events)を参照してください。
 
-## ベンダーのドキュメンテーション
+## ベンダーのドキュメント
 
-* [Airship Real-Time Data Streaming Documentation](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/)
-* [Airship Events Documentation](https://docs.airship.com/api/connect/#schema-tag-events)
-
+* [Airship Real-Time Data Streaming のドキュメント](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/)
+* [Airship イベントのドキュメント](https://docs.airship.com/api/connect/#schema-tag-events)

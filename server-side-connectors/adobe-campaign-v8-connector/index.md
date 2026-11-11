@@ -20,7 +20,7 @@ Go to your project overview and select **OAuth Server-to-Server** in the **Crede
     * Client secret
     * Technical Account Email
 1. Note your credentials and return to Tealium to complete the connector configuration.
-1. In Tealium, go to the Connector Marketplace and add a new Adobe Campaign v8 connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+1. In Tealium, go to the connector marketplace and add a new Adobe Campaign v8 connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 1. After adding the connector, configure the following settings:
     * **Client ID**  
         * (Required) The Client ID (API Key).
@@ -65,7 +65,7 @@ For more information, see [Adobe Campaign: Allowlist IP addresses](https://exper
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Custom SOAP Request (Batched) | ✓ | ✓ |
 | Send Custom SOAP Request | ✓ | ✓ |

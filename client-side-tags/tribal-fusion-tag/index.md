@@ -1,6 +1,6 @@
 ---
 title: Tribal Fusion Tag Setup Guide
-description: This article describes how to set up the Tribal Fusion Tag tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Tribal Fusion Tag tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/tribal-fusion-tag/
 ---
 ## Requirements
@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/tribal-fusion-tag/
 
 ## Tag configuration 
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 

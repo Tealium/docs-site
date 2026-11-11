@@ -3,54 +3,54 @@ title: Upsellitタグ
 description: この記事では、Upsellitタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/upsellit-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* Launch JavaScriptコードはデフォルトで全てのページで実行されます。
-* 注文IDが構成されたときにConfirmation Pixelが発火します。
-* 次のE-Commerce拡張機能をサポートしています：  
+* Launch JavaScriptコードは、デフォルトですべてのページで実行されます。
+* 注文IDが構成されると、Confirmation Pixelが発火します。
+* E-Commerce拡張機能では、以下がサポートされています。  
   * 注文ID  
   * 小計
-* マッピングを使用して：  
-  * Launch Fileの標準構成値を上書きします。
-  * E-Commerce拡張機能の値を上書きします。  
-  * サイトIDと製品IDの値を構成します。  
-  * 位置の値を上書きします（デフォルトは`1`です）。
+* マッピングを使用すると、以下を実行できます。  
+  * Launch Fileの標準構成値を上書きする。
+  * E-Commerce拡張機能の値を上書きする。  
+  * Site IDとProduct IDの値を構成する。  
+  * Positionの値を上書きする（デフォルトは`1`）。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳しくは、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際に、以下を構成します。
 
-* **Launch File**:  
-Upsellitによって提供されるLaunch JavaScriptコード。この値は`.jsp`の前に表示されます。
-* **Site ID**:  
-Confirmation PixelのためのサイトID。例：`1234`。
-* **Product ID**:  
-Confirmation Pixelのための製品ID。例：`12`。
+* **Launch File**：  
+Upsellitから提供されるLaunch JavaScriptコード。`.jsp`の前に表示される値です。
+* **Site ID**：  
+Confirmation PixelのSite ID。例：`1234`。
+* **Product ID**：  
+Confirmation PixelのProduct ID。例：`12`。
 
 
 <blockquote>
-UpsellitタグのLaunch Fileは、Upsellitアカウントダッシュボードから直接取得できます。Upsellitアカウントにログインし、**インテグレーション**または**実装**セクションに移動します。提供されたJavaScriptライブラリURLおよび関連するアカウント詳細（アカウントIDおよびサイトIDなど）をダウンロードまたはコピーします。さらなる支援が必要な場合は、Upsellitアカウント担当者に連絡してください。
+UpsellitタグのLaunch Fileは、Upsellitアカウントのダッシュボードから直接取得できます。Upsellitアカウントにログインし、**Integration**または**Implementation**セクションに移動してください。提供されているJavaScriptライブラリのURLと、Account IDやSite IDなどの関連するアカウント情報をダウンロードまたはコピーします。さらにサポートが必要な場合は、Upsellitのアカウント担当者にお問い合わせください。
 </blockquote>
 
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳しくは、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳しくは、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは以下のとおりです。
 
 ### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
 | `launchfile` | Launch File |
-| `position` | 位置 |
-| `USI_orderID` |注文ID（`_corder`を上書き） |
-| `USI_orderAmt` |注文金額（`_csubtotal`を上書き） |
+| `position` | Position |
+| `USI_orderID` | 注文ID（`_corder`を上書き） |
+| `USI_orderAmt` | 注文金額（`_csubtotal`を上書き） |
 | `USI_currency` | 注文通貨（`_ccurrency`を上書き） |

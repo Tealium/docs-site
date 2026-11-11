@@ -21,7 +21,7 @@ Audience names must be fewer than 128 characters in length. Otherwise, DataAcces
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action Name | Customer Data Platform (CDP) | Event Streaming |
 | --- | --- | --- |
 | Send Visitor Data to Bucket (All Attributes) | ✓ | ✗ |
 | Send Visitor Data to Bucket (Selected Attributes) | ✓ | ✗ |
@@ -33,7 +33,7 @@ Audience names must be fewer than 128 characters in length. Otherwise, DataAcces
 | **Parameter** | **Description** |
 | --- | --- |
 | Include Current Visit Data | Select this checkbox to include all event data for the current visit. |
-| Send By Attribute ID | By default, the visitor data JSON property keys are based on AudienceStream attribute names. Select this checkbox to send data keyed by AudienceStream attribute ID. |
+| Send By Attribute ID | By default, the visitor data JSON property keys are based on CDP attribute names. Select this checkbox to send data keyed by CDP attribute ID. |
 
 #### Batching Options
 

@@ -1,50 +1,50 @@
 ---
 title: FullStoryリモートコマンドタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでFullStoryリモートコマンドタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでFullStoryリモートコマンドタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/fullstory-remote-command-tag/
 ---
-FullStoryは、お客様の体験データをすべて1つの強力で使いやすいプラットフォームに収集します。FullStoryの小さなスクリプトは、ピクセル完全なセッション再生、自動インサイト、ファネル分析、そして堅牢な検索とセグメンテーションを解放し、組織内の全員がお客様に最高のオンライン体験を提供するのを支援します。
+FullStoryは、すべての顧客体験データを、強力で使いやすい1つのプラットフォームに収集します。FullStoryの軽量なスクリプトにより、ピクセル単位で正確なセッション再生、自動インサイト、ファネル分析、強力な検索およびセグメンテーションが利用可能になり、組織の全員が顧客にとって最良のオンライン体験を構築できるようになります。
 
-## タグのヒント
+## タグに関するヒント
 
 * マッピングを使用してイベントをトリガーします。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+使用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
 |  `uid`  | 文字列 | UID |
-|  `user_variables.email_str`  | 文字列 | メール |
-|  `user_variables.phone_str`  | 文字列 | 電話 |
+|  `user_variables.email_str`  | 文字列 | メールアドレス |
+|  `user_variables.phone_str`  | 文字列 | 電話番号 |
 |  `tealium_event`  | 文字列 | Tealiumイベント |
 
-### E-コマース
+### Eコマース
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
 |  `event.cart_id_str`  | 文字列 | カートID |
-| `event.product_id_str`  | 文字列 | 商品ID  |
-|  `event.price_real`  | 数値 |実際の価格|
-|  `event.name_str`  | 文字列 | 名前|
-|  `event.categoryProperties`  | 文字列 | カテゴリプロパティ |
+| `event.product_id_str`  | 文字列 | 製品ID |
+|  `event.price_real`  | 数値 | 実価格 |
+|  `event.name_str`  | 文字列 | 名前 |
+|  `event.categoryProperties`  | 文字列 | カテゴリープロパティ |
 
 ### イベント
 
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -54,11 +54,10 @@ FullStoryは、お客様の体験データをすべて1つの強力で使いや�
 
 ### イベント固有のパラメータ
 
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
 |  `identify` | 識別 |
 |  `setuservariables` | ユーザー変数の構成 |
 |  `logevent` | イベントの記録 |
-

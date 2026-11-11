@@ -37,7 +37,7 @@ A permission group can also be granted publishing rights for server-side profile
 
 
 <blockquote>
-Granting publish permissions to a group may result in users receiving greater permissions on products and features than you intend to give them. For example, an AudienceStream-only developer that you grant publishing rights to will receive with full permissions on a profile, which would include EventStream, DataAccess, and every other server-side product and feature.<br><br>To avoid granting users greater permissions than necessary, we  recommend that you create a separate permission group with publishing permissions for each of your server-side profiles.
+Granting publish permissions to a group may result in users receiving greater permissions on products and features than you intend to give them. For example, granting publish permissions to a developer who has access only to Customer Data Platform (CDP) gives them full permissions on a profile, which would include Event Streaming, DataAccess, and every other server-side product and feature.<br><br>To avoid granting users greater permissions than necessary, we recommend that you create a separate permission group with publishing permissions for each of your server-side profiles.
 </blockquote>
 
 
@@ -47,7 +47,7 @@ For more information, see [About platform permissions](https://docs.tealium.com/
 
 Product access is divided into feature permissions.
 
-For example, access to AudienceStream is divided into the following feature permissions:
+For example, access to CDP is divided into the following feature permissions:
 
 * Dashboard
 * Discovery/Sizing
@@ -59,9 +59,9 @@ For example, access to AudienceStream is divided into the following feature perm
 
 Carefully consider when you set a user to **No Access** for a feature or product. If you disable feature access for a user, that user cannot access the feature or any other features that depend on it. For example:
 
-* If you set a user to **No Access** for AudienceStream, that user cannot select an audience to action in an AudienceStream connector.
+* If you set a user to **No Access** for CDP, that user cannot select an audience to action in a CDP connector.
 * If you set a user to **No Access** for server-side labels, the user does not see labels on the server-side. They can still access connectors or other features with labels on them, but they cannot see or edit the labels themselves.
-* AudienceStream and EventStream share several features, such as rules and labels. For example, if a user only has permissions for AudienceStream and they edit a rule in AudienceStream that is shared between AudienceStream and EventStream, the rule will change in EventStream, too.
+* CDP and Event Streaming share several features, such as rules and labels. For example, if a user only has permissions for CDP and they edit a rule in CDP that is shared between CDP and Event Streaming, the rule will change in Event Streaming, too.
 
 #### Tealium Insights permissions
 
@@ -82,9 +82,9 @@ Remember, a permission group can also be granted publishing rights for server-si
 
 <!-- #### Publishing changes to features in multiple products
 
-If you disable a product for a user, but the user has server-side publish permission and access to another product that shares features with the first product, the user can still publish changes to those shared features. For example, EventStream and AudienceStream share some features, such as rules and labels.
+If you disable a product for a user, but the user has server-side publish permission and access to another product that shares features with the first product, the user can still publish changes to those shared features. For example, Event Streaming and CDP share some features, such as rules and labels.
 
-If a user has publish permission and only has access to EventStream, they can publish changes made to rules and labels in EventStream, and those changes also affect AudienceStream. Similarly, if a user has publish permission and only has access to AudienceStream, their published changes to rules and labels also affect EventStream. -->
+If a user has publish permission and only has access to Event Streaming, they can publish changes made to rules and labels in Event Streaming, and those changes also affect CDP. Similarly, if a user has publish permission and only has access to CDP, their published changes to rules and labels also affect Event Streaming. -->
 
 ### Users in multiple permission groups
 

@@ -1,6 +1,6 @@
 ---
 title: Google Universal Analytics Event Tracking
-description: This guides shows two methods for tracking custom events in the Google Universal Analytics tag in your iQ Tag Management account.
+description: This guides shows two methods for tracking custom events in the Google Universal Analytics tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-event-tracking/
 ---
 
@@ -11,7 +11,7 @@ As of July 1, 2023, Google Universal Analytics properties stopped processing hit
 
 ## Overview
 
-There are two main methods for configuring custom events for Google Universal Analytics (GUA) in your iQ Tag Management account. The first method uses data mapping to set each event attribute individually. This is the most common approach and cover the majority of scenarios. The second method uses JavaScript and is more advanced, but lets you trigger multiple events at once.
+There are two main methods for configuring custom events for Google Universal Analytics (GUA) in your Tag Management account. The first method uses data mapping to set each event attribute individually. This is the most common approach and cover the majority of scenarios. The second method uses JavaScript and is more advanced, but lets you trigger multiple events at once.
 
 * Single Events Using Data Mapping
 * Multiple Events Using "GA Events" Array
@@ -36,7 +36,7 @@ Create a variable for each of the GUA event fields. (Learn more about [adding da
   * ga\_eventLabel
   * ga\_eventValue
 1. **Add Data Mappings**  
-Add a data mapping for each variable to the corresponding GUA field. ([Learn more about data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).)
+Add a data mapping for each variable to the corresponding GUA field. ([Learn more about data mappings](https://docs.tealium.com/tag-management/data-mappings/manage/).)
 1. **Add a Set Data Values Extension**  
 For each event to be tracked in GUA, you will add a [Set Data Values extension](https://docs.tealium.com/set-data-values-extension/) to set the GUA event variables to the expected values and uses a condition that identifies the event.  
 

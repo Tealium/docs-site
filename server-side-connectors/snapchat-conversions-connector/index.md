@@ -11,7 +11,7 @@ Snap Conversions API can be deployed standalone or in-conjunction with the clien
 
 For more information about Snap's Conversions API, see [Snap: Conversion API](https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US).
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -25,7 +25,7 @@ This connector uses the following vendor API:
 * We strongly recommend passing data in real-time. By doing so, you will see your campaign-driven results more quickly and ensure your bids are staying competitive with current marketplace demand.
 * Conversions API requests are tied to unique identifiers that link server events back to your Snapchat ad account. We use your [Pixel ID](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US) for web and offline events and your [Snapchat App ID](https://businesshelp.snapchat.com/s/article/snap-app-id?language=en_US) for app events.
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -66,7 +66,7 @@ In version 3, the connector uses **Event ID** for deduplication instead of **Cli
 </blockquote>
 
 
-When the **Automatic Deduplication** value is populated with a Tealium iQ tag UID, the connector looks for the corresponding event attribute. If this section is populated and you are using Tealium iQ, you are no longer required to add an **Event ID**. However, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** value is populated with a Tag Management tag UID, the connector looks for the corresponding event attribute. If this section is populated and you are using Tag Management, you are no longer required to add an **Event ID**. However, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector order of operations is as follows:
 
@@ -74,19 +74,19 @@ The connector order of operations is as follows:
 * If **Automatic Deduplication** is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, `6V5xX1T0n9pC42luElKD`).
 * If **Automatic Deduplication** is populated, but the value isn't found, the mapped **Event ID** is used, if it is populated.
 
-You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/snap-pixel-uid.png)
 
 ## Connector Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:----------------|:-------------------|:----------------|
 | Send Conversion V3 | ✓                  | ✓               |
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. See the [Connector Overview](https://docs.tealium.com/about-connectors/) for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -94,9 +94,7 @@ After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Conversion V3
 
@@ -185,7 +183,6 @@ This section describes how to set up parameters and options for each action.
 | Cookie1 | If you are using the Pixel SDK, you can access a first-party cookie by looking at the `_scid` value under your domain. This parameter is automapped. To override the automapping, map an attribute or disable automapping. |
 | Client User Agent | The user agent string of the user's web browser. This parameter is automapped. To override the automapping, map an attribute or disable automapping. |
 
-
 #### Dynamic Travel Ads
 
 | Parameter | Description |
@@ -239,7 +236,7 @@ This section describes how to set up parameters and options for each action.
 
 | Parameter | Description |
 | --- | --- |
-| Automatic Deduplication | When the Tealium iQ Tag ID is provided, we will automatically look for the Event ID value that is sent from Tealium iQ. |
+| Automatic Deduplication | When the Tealium iQ Tag ID is provided, we will automatically look for the Event ID value that is sent from Tag Management. |
 
 #### Disable Automapping
 

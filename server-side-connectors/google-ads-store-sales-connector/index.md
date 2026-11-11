@@ -3,7 +3,7 @@ title: Google Ads Store Sales Connector Setup Guide
 description: This article describes how to set up the Google Ads Store Sales connector.
 url: https://docs.tealium.com/server-side-connectors/google-ads-store-sales-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,14 +14,14 @@ This connector uses the following vendor API:
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Upload Transaction | ✓ | ✓ |
 | Upload Transaction (Multiple Identifiers) | ✓ | ✓ |
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -94,7 +94,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ##### Consent
 
-The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant EventStream attribute to `Ad User Data Consent` and/or `Ad Personalization Consent` with a value of `DENIED`.
+The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant Event Streaming attribute to `Ad User Data Consent` and/or `Ad Personalization Consent` with a value of `DENIED`.
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -153,7 +153,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ##### Consent
 
-The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant EventStream attribute to `Ad User Data Consent`, `Ad Personalization Consent`, or both with a value of `DENIED`.
+The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant Event Streaming attribute to `Ad User Data Consent`, `Ad Personalization Consent`, or both with a value of `DENIED`.
 
 | **Parameter** | **Description** |
 | --- | --- |

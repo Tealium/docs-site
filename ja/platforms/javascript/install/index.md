@@ -84,7 +84,7 @@ url: https://docs.tealium.com/ja/platforms/javascript/install/
 1. 次のいずれかの方法で、テキストボックスに表示されているコードを選択します。
     * クリックしてドラッグし、コード全体を選択します。
     * コードにマウスポインターを合わせると表示される**すべて選択**ボタンをクリックします。  
-        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/tag-management/iq-code-center-select-all.png)
 1. コードをコピーします。
 1. サイト作成ツールまたはバックエンドシステムにコードを貼り付けます。
 

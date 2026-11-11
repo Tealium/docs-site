@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/agillic-recipients-connecto
 ---
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add or Update Recipient| ✓| ✓|
 |Add or Update Recipient (Batched)| ✓| ✓|
@@ -14,7 +14,7 @@ url: https://docs.tealium.com/server-side-connectors/agillic-recipients-connecto
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -38,9 +38,7 @@ After adding the connector, configure the following settings:
 
 ## Actions
 
-Click **Next** or go to the **Actions** tab. Enter a name for the action and select the action type from the drop-down menu.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Add or Update Recipient
 

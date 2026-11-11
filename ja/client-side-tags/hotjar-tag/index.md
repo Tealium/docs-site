@@ -3,43 +3,43 @@ title: Hotjarタグ構成ガイド
 description: この記事では、Hotjarタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/hotjar-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-マッピングを使用して、標準の構成値を動的に上書きします。
+マッピングを使用すると、標準構成値を動的に上書きできます。
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Hotjarタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際は、以下の項目を構成します。
 
 * **Hotjar ID**
-  * あなたのHotjarサイトID。
+  * HotjarサイトID。
 
-* **Hotjarスニペットバージョン**
-  * Hotjarからのトラッキングコードのバージョン。
+* **Hotjar Snippet Version**
+  * Hotjarのトラッキングコードのバージョン。
 
-### コードからタグを追加（オプション）
+### コードからタグを追加する（任意）
 
-以下の手順でコードからHotjarタグを追加します：
+コードからHotjarタグを追加するには、以下の手順を実行します。
 
 1. Hotjarアカウントにログインします。
-1. アカウントダッシュボードから、**手動でコードをインストール**をクリックします。
-1. **クリップボードにコピー**をクリックします。
-1. Tealium iQタグ管理にログインし、**iQタグ管理 &gt; タグ**に移動します。
-1. **タグを追加**をクリックします。
-1. **コードからタグを検出**をクリックします。
-1. ステップ3でコピーしたコードを貼り付けます。
+1. アカウントダッシュボードで、**Install code manually**をクリックします。
+1. **Copy to clipboard**をクリックします。
+1. Tag Managementにログインし、**Tag Management &gt; Tags**に移動します。
+1. **Add Tag**をクリックします。
+1. **Detect Tag from Code**をクリックします。
+1. 手順3でコピーしたコードを貼り付けます。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`hjid`|  <ul><li>Hotjar ID</li></ul> |
-| `hjsv` |  <ul><li>Hotjarスニペットバージョン</li></ul> |
+|変数|説明|
+|---|---|
+|`hjid`| <ul><li>Hotjar ID</li></ul> |
+| `hjsv` | <ul><li>Hotjarスニペットバージョン</li></ul> |

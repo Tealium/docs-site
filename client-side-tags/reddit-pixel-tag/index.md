@@ -1,6 +1,6 @@
 ---
 title: Reddit Pixel tag setup guide
-description: Set up the Reddit Pixel tag to track post-ad interactions, measure conversions, and enable retargeting in Tealium iQ.
+description: Set up the Reddit Pixel tag to track post-ad interactions, measure conversions, and enable retargeting in Tag Management.
 url: https://docs.tealium.com/client-side-tags/reddit-pixel-tag/
 ---
 The Reddit Pixel tag tracks post-ad interactions and supports conversion measurement and retargeting. 
@@ -26,7 +26,7 @@ The Reddit Pixel tag tracks post-ad interactions and supports conversion measure
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 To add the tag, configure the following settings:
 
@@ -45,7 +45,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support the Reddit Conversions API, set **Generate Event ID** to `true`. When **Generate Event ID** is enabled, the tag generates a unique event ID for each tracked event. The tag sends the event ID as an attribute to Tealium EventStream for use in the Reddit Conversions connector, and passes it to the Reddit Pixel in the `event_id` parameter. Map this event ID attribute in the connector to synchronize the web-based tag with server-side integration.
+To support the Reddit Conversions API, set **Generate Event ID** to `true`. When **Generate Event ID** is enabled, the tag generates a unique event ID for each tracked event. The tag sends the event ID as an attribute to Event Streaming for use in the Reddit Conversions connector, and passes it to the Reddit Pixel in the `event_id` parameter. Map this event ID attribute in the connector to synchronize the web-based tag with server-side integration.
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -92,7 +92,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 Map parameters using the categories below. If a mapped parameter is not supported by Reddit for a given event, the tag drops it from the payload. Use [Event-specific parameters](#event-specific-parameters) to control which parameters are sent per event.
 
@@ -147,7 +147,7 @@ Enter the value of the mapped variable needed to trigger the selected event.
 
 ### Event-specific parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable        | Description               |
 |:----------------|:--------------------------|

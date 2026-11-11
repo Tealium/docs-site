@@ -1,6 +1,6 @@
 ---
 title: Amazon Advertising Cookie Matching Service Tag Setup Guide
-description: This article describes how to set up the Amazon Advertising Cookie Matching Service tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Amazon Advertising Cookie Matching Service tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/amazon-advertising-cookie-matching-service-tag/
 ---
 
@@ -9,16 +9,16 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 </blockquote>
 
 
-Amazon Advertising Cookie Matching Service enables a user to associate the Tealium Visitor ID with an Amazon cookie ID within the Amazon system. The Tealium Visitor ID can then be used as an identifier in the Amazon Advertising DSP AudienceStream connector configuration.
+Amazon Advertising Cookie Matching Service enables a user to associate the Tealium Visitor ID with an Amazon cookie ID within the Amazon system. The Tealium Visitor ID can then be used as an identifier in the Amazon Advertising DSP Customer Data Platform (CDP) connector configuration.
 
 ## Tag tips
 
 * This tag fires only once per Tealium Visit Session.
-* Amazon receives the Tealium Visitor ID and matches it to an Amazon Cookie ID. The Tealium Visitor ID can then be used as a cookie identifier in the Amazon Advertising DSP AudienceStream connector.
+* Amazon receives the Tealium Visitor ID and matches it to an Amazon Cookie ID. The Tealium Visitor ID can then be used as a cookie identifier in the Amazon Advertising DSP CDP connector.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -30,7 +30,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

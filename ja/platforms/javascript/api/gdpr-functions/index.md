@@ -69,7 +69,7 @@ utag.gdpr.getCategories(onlyEnabledCats)
 
 アクティブな言語でのカテゴリ名と説明を含む `Object` を返します。カテゴリの言語は、`getLanguage()` 関数が返す言語です。
 
-カテゴリに関する詳細情報は、[同意の構成を管理する](https://docs.tealium.com/iq-tag-management/consent-management/consent-preferences-dialog/manage#categories)を参照してください。
+カテゴリに関する詳細情報は、[同意の構成を管理する](https://docs.tealium.com/tag-management/consent-management/consent-preferences-dialog/manage#categories)を参照してください。
 
 ```js
 utag.gdpr.getCategoryLanguage(category)

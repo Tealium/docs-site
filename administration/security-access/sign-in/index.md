@@ -62,6 +62,17 @@ After you sign in, the profile selector appears.
 
 ![](https://docs.tealium.com/images/administration/sign-in-select-profile.png)
 
-Select the profile and version to load, then click **Continue**.
+1. In the **Account** field, select an account.
+1. In the **Profile** field, select a profile. The selector groups profiles by type. To search, type in the field.
+1. In the **Version** field, select a version, or accept the default (latest published version).
+1. Click **Continue**.
 
-The **Frequently visited** section shows your recently accessed versions for quick access.
+### Frequently visited
+
+The **Frequently visited** section shows your recently accessed account and profile combinations. Each card represents a unique account/profile pair. Click a card to open that profile at its latest published version.
+
+### MFA-protected accounts
+
+If you select an account that requires multi-factor authentication (MFA), Tealium prompts you to enter your verification code before continuing.
+
+For setup and troubleshooting, see [multi-factor-authentication-mfa](https://docs.tealium.com/multi-factor-authentication-mfa/).

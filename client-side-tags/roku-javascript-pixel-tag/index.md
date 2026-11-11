@@ -27,7 +27,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support the Roku Events API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Roku Events API connector and passes it to the Roku JavaScript Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
+To support the Roku Events API, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Event Streaming for use in the Roku Events API connector and passes it to the Roku JavaScript Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -68,7 +68,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -137,7 +137,7 @@ The available categories are:
 
 ### Event-specific parameters
 
-To map events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, see [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|

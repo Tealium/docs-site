@@ -1,22 +1,22 @@
 ---
 title: About data record functions
-description: This article provides an overview of data record functions in CloudStream.
+description: This article provides an overview of data record functions in Data Cloud Activation.
 url: https://docs.tealium.com/server-side/functions/data-record-functions/data-record-functions/
 ---
 
 <blockquote>
-To enable CloudStream functions, go to **Admin menu** > **Server-Side Settings** > **CloudStream Connectors**, set **Activate CloudStream Connectors** to `On`, and click **Save**.
+To enable Data Cloud Activation functions, go to **Admin menu** > **Server-Side Settings** > **CloudStream Connectors**, set **Activate CloudStream Connectors** to `On`, and click **Save**.
 </blockquote>
 
 
 ## How it works
 
-Functions in CloudStream run within the CloudStream data pipeline and have access to the queried data records from your cloud data sources. Use functions within a CloudStream profile to retrieve data from other systems, augment your data, or send data to other endpoints.
+Functions in Data Cloud Activation run within the Data Cloud Activation data pipeline and have access to the queried data records from your cloud data sources. Use functions within a Data Cloud Activation profile to retrieve data from other systems, augment your data, or send data to other endpoints.
 
-Adding and managing CloudStream functions is the same as managing other functions, with the following exceptions:
+Adding and managing Data Cloud Activation functions is the same as managing other functions, with the following exceptions:
 
-* When creating a custom action function, instead of selecting an audience or an event, you select a [cloud data source](https://docs.tealium.com/about-cloud-data-sources/) and a [segment](https://docs.tealium.com/manage-cloudstream-segments/).
-* Each CloudStream function can only use data from one data source. If you want to activate data from additional data sources, configure a separate function for each one.
+* When creating a custom action function, instead of selecting an audience or an event, you select a [cloud data source](https://docs.tealium.com/about-cloud-data-sources/) and a [segment](https://docs.tealium.com/manage-data-cloud-activation-segments/).
+* Each Data Cloud Activation function can only use data from one data source. If you want to activate data from additional data sources, configure a separate function for each one.
 * If a segment contains attributes mapped from multiple data sources, only the attributes from the selected data source are available in the function.
 
 ## Triggers
@@ -119,7 +119,7 @@ For transformation functions used with Tealium Collect, see [Event parameter](ht
 </blockquote>
 
 
-The `dataRecord` object is available for CloudStream functions and cloud data sources and contains the following properties:
+The `dataRecord` object is available for Data Cloud Activation functions and cloud data sources and contains the following properties:
 
 | Property | Data type | Description |
 | -------- | --------- | ----------- |

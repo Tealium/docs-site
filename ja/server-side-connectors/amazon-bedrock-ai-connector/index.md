@@ -1,54 +1,54 @@
 ---
-title: Amazon Bedrock AIコネクタ構成ガイド
-description: Amazon Bedrock AIコネクタを構成して、Tealiumのイベントデータと訪問データをリアルタイムでエンリッチするために、基盤モデル、管理されたプロンプト、または複数ステップのBedrockワークフローに送信します。
+title: Amazon Bedrock AI コネクタ構成ガイド
+description: Amazon Bedrock AI コネクタを構成し、Tealium のイベントデータと訪問データを基盤モデル、マネージドプロンプト、または複数ステップの Bedrock ワークフローに送信して、リアルタイムでエンリッチメントを行います。
 url: https://docs.tealium.com/ja/server-side-connectors/amazon-bedrock-ai-connector/
 ---
 
 <blockquote>
-AIコネクタの動作概要とAIコネクタまたはTealium機能をいつ使用するかについてのガイダンスについては、[AIコネクタとTealium機能](https://docs.tealium.com/ai-connectors-and-functions/)を参照してください。
+AI コネクタの仕組みの概要と、AI コネクタまたは Tealium Functions を使用する状況についてのガイダンスは、[AI コネクタと Tealium Functions](https://docs.tealium.com/ai-connectors-and-functions/)を参照してください。
 </blockquote>
 
 
-## サポートされているモデル
+## サポートされるモデル
 
-Amazon Bedrock AIコネクタは、幅広い基盤モデルをサポートしています。現在サポートされているモデルのリストについては、[Amazon Bedrock: Amazon Bedrockでサポートされている基盤モデル](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)を参照してください。
+Amazon Bedrock AI コネクタは、さまざまな基盤モデルをサポートしています。現在サポートされているモデルの一覧については、[Amazon Bedrock：Amazon Bedrock でサポートされる基盤モデル](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)を参照してください。
 
-一部のBedrockモデルはプロビジョニングされたスループットが必要であり、オンデマンド推論を使用して呼び出すことはできません。オンデマンドスループットエラーに遭遇した場合は、`ON_DEMAND`推論をサポートするモデルを使用するか、構成リストにプロビジョニングされたスループットまたは推論プロファイルARNを提供してください。
+一部の Bedrock モデルではプロビジョンドスループットが必要であり、オンデマンド推論を使用して呼び出すことはできません。オンデマンドスループットエラーが発生した場合は、`ON_DEMAND` 推論をサポートするモデルを使用するか、構成リストでプロビジョンドスループットまたは推論プロファイルの ARN を指定してください。
 
-## IAMロールと権限の作成
+## IAM ロールと権限の作成
 
-Tealiumは、サーバーサイドコネクタからAmazon Bedrockに接続するために、AWSアカウント内のIAMロールと権限が必要です。接続を認証するには2つのオプションがあります：
+サーバーサイドコネクタから Amazon Bedrock に接続するには、AWS アカウントに IAM ロールと権限が必要です。接続を認証するには、次の 2 つの方法があります。
 
-* [アクセスキーとアクセスシークレットを提供する](#access-key-and-secret-credentials)。
-* [STS認証情報を提供する](#sts-credentials)。
+* [アクセスキーとシークレットアクセスキーを指定する](#access-key-and-secret-credentials)。
+* [STS 認証情報を指定する](#sts-credentials)。
 
-### アクセスキーとシークレット認証情報
+### アクセスキーとシークレットの認証情報
 
-AWSアクセスキーとシークレットを作成するには：
+AWS アクセスキーとシークレットを作成するには、次の手順を実行します。
 
-1. AWS管理コンソールにログインし、**IAM**（Identity and Access Management）サービスに移動します。
-1. **ユーザー**をクリックし、**ユーザーを追加**をクリックします。
-1. ユーザー名を入力します。例：`TealiumBedrockUser`。
+1. AWS マネジメントコンソールにログインし、**IAM**（Identity and Access Management）サービスに移動します。
+1. **Users** をクリックし、次に **Add user** をクリックします。
+1. ユーザー名を入力します。例：`TealiumBedrockUser`
 1. ユーザーにポリシーをアタッチします。詳細については、[ポリシーのアタッチ](#attach-policies)を参照してください。
 1. キーを作成します。
-    * **セキュリティ認証情報**タブに移動し、**アクセスキーの作成**をクリックします。
-    * **アクセスキーID**と**シークレットアクセスキー**をコピーし、安全に保存します。
+    * **Security credentials** タブに移動し、**Create Access Key** をクリックします。
+    * **Access Key ID** と **Secret Access Key** をコピーし、安全に保存します。
 
-### STS認証情報
+### STS 認証情報
 
-STS認証情報を作成するには：
+STS 認証情報を作成するには、次の手順を実行します。
 
-1. AWS管理コンソールにログインし、**IAM**（Identity and Access Management）サービスに移動します。
-1. **ロール**をクリックし、**ロールの作成**をクリックします。
-1. **信頼されたエンティティタイプ**で、AWSアカウントを選択します。
-1. **別のAWSアカウント**を選択し、TealiumアカウントID：`757913464184`を入力します。
-1. （オプション）**外部IDが必要**チェックボックスを選択し、使用する外部IDを指定します。外部IDは最大256文字で、英数字（`A-Z`, `a-z`, `0-9`）およびハイフン（`-`）、アンダースコア（`_`）、ピリオド（`.`）などの記号を含めることができます。
-1. ロールの名前を入力します。ロール名は`TealiumBedrock`で始まる必要があります。例：`TealiumBedrock-RoleName`。
+1. AWS マネジメントコンソールにログインし、**IAM**（Identity and Access Management）サービスに移動します。
+1. **Roles** をクリックし、次に **Create role** をクリックします。
+1. **Trusted entity type** で AWS アカウントを選択します。
+1. **Another AWS account** を選択し、Tealium アカウント ID `757913464184` を入力します。
+1. （オプション）**Require external ID** チェックボックスを選択し、使用する外部 ID を指定します。外部 ID は最大 256 文字で、英数字（`A-Z`、`a-z`、`0-9`）と、ハイフン（`-`）、アンダースコア（`_`）、ピリオド（`.`）などの記号を使用できます。
+1. ロールの名前を入力します。ロール名は `TealiumBedrock` で始まる必要があります。例：`TealiumBedrock-RoleName`
 1. ロールにポリシーをアタッチします。詳細については、[ポリシーのアタッチ](#attach-policies)を参照してください。
 1. 信頼ポリシーを作成します。
-    * **信頼関係**タブに移動し、**信頼関係の編集**をクリックします。
-    * 作成したロールを使用するために特定の外部IDを許可する信頼ポリシーがあることを確認し、Tealiumの本番アカウントIDが`757913464184`であることを確認します。
-    * Tealiumとの接続に使用する`EXTERNAL_ID`値を構成します。IDは最大256文字で、英数字（`A-Z`, `a-z`, `0-9`）およびハイフン（`-`）、アンダースコア（`_`）、ピリオド（`.`）などの記号を含めることができます。
+    * **Trust relationships** タブに移動し、**Edit trust relationship** をクリックします。
+    * 作成したロールを特定の外部 ID が使用できるように信頼ポリシーが構成されていること、および Tealium の本番環境アカウント ID が `757913464184` であることを確認します。
+    * Tealium への接続用に `EXTERNAL_ID` の値を構成します。ID は最大 256 文字で、英数字（`A-Z`、`a-z`、`0-9`）と、ハイフン（`-`）、アンダースコア（`_`）、ピリオド（`.`）などの記号を使用できます。
 
 ```json
     {
@@ -72,11 +72,11 @@ STS認証情報を作成するには：
 
 ### ポリシーのアタッチ
 
-AWS管理コンソールで、コネクタアクションに必要なポリシーを入力します。各コネクタアクションには次のポリシーが必要です：
+AWS マネジメントコンソールで、使用するコネクタアクションに必要なポリシーを入力します。各コネクタアクションには、次のポリシーが必要です。
 
 
 <blockquote>
-必要なフローやLambda関数の特定のARNに対してのみ権限を制限することをお勧めします。
+権限は、必要なフローおよび Lambda 関数の特定の ARN に制限することをお勧めします。
 </blockquote>
 
 
@@ -128,7 +128,7 @@ AWS管理コンソールで、コネクタアクションに必要なポリシ�
 
 
 
-Lambdaを使用する場合：
+Lambda を使用している場合：
 
 ```json
 {
@@ -154,7 +154,7 @@ Lambdaを使用する場合：
 }
 ```
 
-Lambdaを使用しない場合：
+Lambda を使用していない場合：
 
 ```json
 {
@@ -174,68 +174,71 @@ Lambdaを使用しない場合：
 
 
 
-ポリシーを入力してアタッチするには：
+ポリシーを入力してアタッチするには、次の手順を実行します。
 
-1. AWSコンソールで**IAM > ポリシー**に移動し、**ポリシーの作成**をクリックします。
-1. ポリシーエディタで**JSON**タブを選択し、コネクタアクション用のポリシーを貼り付け、検証警告を解決し、**次へ**をクリックします。
-1. ポリシー名（例：`TealiumCustomAccessPolicy`）とオプションの説明を入力し、**ポリシーの作成**をクリックします。
-1. **IAM > ロール**に移動し、変更したいロールを選択します。
-1. **権限**タブで**権限の追加 > ポリシーのアタッチ**をクリックします。
-1. カスタムポリシーを検索し、選択して**ポリシーのアタッチ**をクリックします。
+1. AWS コンソールで **IAM > Policies** に移動し、**Create policy** をクリックします。
+1. ポリシーエディタで **JSON** タブを選択し、コネクタアクション用のポリシーを貼り付け、検証の警告をすべて解決してから、**Next** をクリックします。
+1. ポリシー名（例：`TealiumCustomAccessPolicy`）と、必要に応じて説明を入力し、**Create policy** をクリックします。
+1. **IAM > Roles** に移動し、変更するロールを選択します。
+1. **Permissions** タブで、**Add permissions > Attach policies** をクリックします。
+1. カスタムポリシーを検索して選択し、**Attach policies** をクリックします。
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、次の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
-* **認証タイプ**：（必須）使用する認証のタイプ。
-    * **アクセスキー**
-        * **アクセスキー**：（必須）IAMユーザーのアクセスキーを提供します。関連するIAMポリシー（IAMユーザーまたは想定されるロール用）は、データを送信するストリームに対して`bedrock:PutRecord`権限を付与する必要があります。
-        * **シークレットキー**：（必須）IAMユーザーのシークレットキーを提供します。
+* **Authentication Type**：（必須）使用する認証の種類です。
+    * **Access Key**
+        * **Access Key**：（必須）IAM ユーザーのアクセスキーを指定します。関連付けられた IAM ポリシー（IAM ユーザーまたは引き受けたロールのいずれか）には、データを送信するストリームに加えて、`bedrock:PutRecord` 権限を付与する必要があります。
+        * **Secret Key**：（必須）IAM ユーザーのシークレットキーを指定します。
     * **STS**
-        * **STS - Assume Role: ARN**：（必須）想定されるロールに割り当てられたAmazonリソース名。詳細については、[AWS: IAMロールへの切り替え](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html)を参照してください。
-        * **STS - Assume Role: Session Name**：（必須）想定されるロールセッションの一意の識別子。
-        * **STS - Assume Role: External ID**：（オプション）第三者が顧客のアカウントでロールを想定する際に使用する一意の識別子。詳細については、[AWS: 第三者によるAWSアカウントへのアクセス](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)を参照してください。
-* **リージョン**：（必須）リージョンを選択します。
+        * **STS - Assume Role: ARN**：（必須）引き受けるロールに割り当てられた Amazon リソースネームです。詳細については、[AWS：IAM ロールへの切り替え](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html)を参照してください。
+        * **STS - Assume Role: Session Name**：（必須）引き受けたロールセッションの一意の識別子です。
+        * **STS - Assume Role: External ID**：（オプション）第三者が顧客のアカウントでロールを引き受ける際に使用する一意の識別子です。詳細については、[AWS：第三者が所有する AWS アカウントへのアクセス](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)を参照してください。
+* **Region**：（必須）リージョンを選択します。
+
+コネクタを構成したら、**Done** をクリックします。
 ## プロンプト情報
 
-Tealiumから送信されたり、Amazon Bedrock内で管理されたり、フローで使用されたりするBedrock AIプロンプトは、Tealiumがレスポンスを正しく処理できるように、有効なJSONのみを返すように作成する必要があります。以下のガイドラインに従ってください：
+Tealium から送信する場合、Amazon Bedrock 内で管理する場合、またはフローで使用する場合のいずれであっても、Bedrock AI プロンプトは、Tealium がレスポンスを正しく処理できるよう、有効な JSON のみを返すように作成する必要があります。次のガイドラインに従ってください。
 
-* マップされたパラメータを参照するには二重中括弧を使用します。例：`{{tealium_account}}`、`{{tealium_profile}}`、`{{tealium_visitor_id}}`、`{{visitor_json}}`。
-* モデルに対して、説明、マークダウン、コードフェンス、JSONの前後の余分なテキストなしで、有効なJSONのみを返すように明確に指示します。
-* 出力を安全に解析できるように、期待する正確なJSON構造（フィールド名、必要なキー、値のタイプ）を定義します。
-* Tealiumフィールドを明示的に返すようにモデルに指示します（例：`tealium_account`、`tealium_profile`、`tealium_visitor_id`、`tealium_event`）。
-* プロンプトで特定の属性を参照する必要がある場合は、その属性をベンダーパラメータにマッピングします。例えば、`Last product viewed`を`last_product_viewed`にマッピングし、プロンプトで`{{last_product_viewed}}`として参照します。
-* 曖昧な指示を避けます。繰り返し呼び出しても同じJSONスキーマを生成する決定論的なプロンプトを書きます。
-* 最良の結果を得るために、次のような行を含めます："プローズ、バックティック、追加のフォーマットなしで、単一のJSONオブジェクトのみを返します。"
+* マッピングされたパラメータを参照するには、二重中括弧を使用します。例：`{{tealium_account}}`、`{{tealium_profile}}`、`{{tealium_visitor_id}}`、`{{visitor_json}}`。
+* 説明、Markdown、コードフェンス、および JSON の前後の余分なテキストを含めず、有効な JSON のみを返すようモデルに明確に指示します。
+* 出力を安全に解析できるよう、想定する正確な JSON 構造（フィールド名、必須キー、値の型）を定義します。
+* Tealium フィールド（`tealium_account`、`tealium_profile`、`tealium_visitor_id`、`tealium_event` など）を明示的に返すようモデルに指示します。
+* プロンプト内で特定の属性を参照する必要がある場合は、その属性をベンダーパラメータにマッピングします。たとえば、`Last product viewed` を `last_product_viewed` にマッピングし、プロンプト内では `{{last_product_viewed}}` として参照します。
+* 曖昧な指示は避けてください。呼び出しを繰り返しても同じ JSON スキーマが生成されるように、決定的なプロンプトを作成します。
+* 最良の結果を得るには、次のような行を含めます。「説明文、バッククォート、追加の書式構成を一切含めず、単一の JSON オブジェクトのみを返してください。」
 
-### プロンプト例
+### プロンプトの例
 
 ```none
-あなたは、有効なJSONのみを返す必要があるAIアシスタントです。
-説明、マークダウン、コードフェンス、またはJSONオブジェクトの外側のテキストを含めないでください。
+You are an AI assistant that must return only valid JSON.
+Do not include explanations, markdown, code fences, or any text outside the JSON object.
 
-以下の訪問データを使用して、このセッションでの訪問の変換可能性を表す0から100の間の数値スコアを計算します。
+Using the visitor data below, calculate a numeric score between 0 and 100 that represents
+the visitor's likelihood to convert in this session.
 
-単一のJSONオブジェクトのみを返し、この正確な構造で：
+Return a single JSON object only, with this exact structure:
 
 {
   "tealium_account": "{{tealium_account}}",
   "tealium_profile": "{{tealium_profile}}",
   "tealium_visitor_id": "{{tealium_visitor_id}}",
   "tealium_event": "bedrock_ai_insight",
-  "visitor_score": <0から100の間の整数>
+  "visitor_score": <integer between 0 and 100>
 }
 
-訪問データ：
+Visitor data:
 {{visitor_json}}
 
-{{last_product_viewed}}の値に特に注意してください。
+Pay particular attention to the value of {{last_product_viewed}}.
 
 ```
 
-レスポンスは以下のようになります：
+レスポンスは次のようになります。
 
 ```json
 {
@@ -262,21 +265,21 @@ Tealiumから送信されたり、Amazon Bedrock内で管理されたり、フ�
 }
 ```
 
-コネクタはレスポンスを受け取り、JSONイベントオブジェクトをTealium Collect APIエンドポイントに送信します。
+コネクタはレスポンスを受け取り、JSON イベントオブジェクトを Tealium Collect API エンドポイントに送信します。
 
-## Amazon Bedrockフロー
+## Amazon Bedrock Flows
 
-Amazon Bedrockフローは、プロンプト、ナレッジベース、Lambda関数、条件ロジック、外部データを組み合わせた複数ステップのAIオーケストレーションです。フローは、複雑なAI意思決定を単一のAPIエンドポイントに変換するために、入力データがプロンプト、エンリッチメントステップ、ビジネスロジック、最終出力を通過する方法を定義します。
+Amazon Bedrock Flows は、プロンプト、ナレッジベース、Lambda 関数、条件ロジック、外部データを組み合わせて、再利用可能な単一のワークフローを構成するマルチステップの AI オーケストレーションです。フローでは、入力データがプロンプト、エンリッチメントステップ、ビジネスロジック、最終出力をどのように通過するかを定義し、複雑な AI による意思決定を単一の API エンドポイントとして利用できるようにします。
 
-**Send Data to Bedrock Flow**アクションを使用するには、Tealiumから入力を受け取るAmazon Bedrockでフローを作成し、AIステップを処理して結果をLambda関数を通じてTealiumに返送します。
+**Send Data to Bedrock Flow** アクションを使用するには、Tealium からの入力を受け取り、AI ステップで処理し、Lambda 関数を介して結果を Tealium に返すフローを Amazon Bedrock で作成します。
 
-以下のセクションでは、フローの必須およびオプションのコンポーネントについて説明します。
+以下のセクションでは、フローの必須コンポーネントとオプションコンポーネントについて説明します。
 
-### ステップ1 - フロー入力の定義
+### ステップ 1 - フロー入力を定義する
 
-すべてのフローは入力ノードから始まります。このノードは、Tealiumがフローに送信するJSONドキュメントを表します。
+すべてのフローは入力ノードから始まります。このノードは、Tealium がフローに送信する JSON ドキュメントを表します。
 
-Tealiumは、次の例に似た形式でマップされた属性を送信します：
+Tealium は、マッピングされた属性を次の例のような形式で送信します。
 
 ```json
 "document": {
@@ -291,75 +294,75 @@ Tealiumは、次の例に似た形式でマップされた属性を送信しま�
 }
 ```
 
-フロー内でフィールドを参照するには、`$.data.attribute_name`を使用します。前の例に基づいて：
+フロー内では、`$.data.attribute_name` を使用してフィールドを参照します。前述の例に基づく参照方法は次のとおりです。
 
-| Tealium属性 | Bedrock参照 | 例 |
+| Tealium 属性 | Bedrock の参照 | 例 |
 | -----| ----- | ----- |
 | `tealium_account` | `$.data.tealium_account` または `{{tealium_account}}` | `services-example` |
 | `tealium_profile` | `$.data.tealium_profile` または `{{tealium_profile}}` | `ai` |
 | `tealium_visitor_id` | `$.data.tealium_visitor_id` または `{{tealium_visitor_id}}` | `1234567890abc` |
 | `visitor_profile` | `$.data.visitor_profile` |  `"visitor_profile": {"lifetime_value": "1200","total_orders": 5,...}` |
 
-### ステップ2 - プロンプトノードにデータをマッピングする（必須）
+### ステップ 2 - データをプロンプトノードにマッピングする（必須）
 
-次に、AI出力（スコア、推奨事項、または決定など）を生成するためのプロンプトノードを追加します。
+次に、AI 出力（スコア、レコメンデーション、判断など）を生成するためのプロンプトノードを追加します。
 
-プロンプトノード内で：
+プロンプトノード内で、次の操作を行います。
 
 1. プロンプトテキストを構成します。
-1. `{{fieldname}}`形式を使用して変数を挿入します。例：`{{tealium_account}}`。
-1. Bedrockモデルを選択します。
-1. プロンプトの出力として有効なJSONを返します。
+1. `{{fieldname}}` 形式を使用して変数を挿入します。例：`{{tealium_account}}`。
+1. Bedrock モデルを選択します。
+1. プロンプトの出力として有効な JSON を返します。
 
-例については、上記の[プロンプト例](#prompt-example)セクションを参照してください。
+例については、上記の[プロンプトの例](#prompt-example)セクションを参照してください。
 
-### ステップ3 - （オプション）ナレッジベースの取得を追加する
+### ステップ 3 - （オプション）ナレッジベース検索を追加する
 
-Amazon Bedrockナレッジベースを使用すると、AIワークフローをAmazon S3、Amazon Redshift、またはAmazon OpenSearch Serviceなどの外部データソースに接続できます。ナレッジベースはドキュメントを保存およびインデックス化し、プロンプト実行中の取得および接地に使用できるようにします。このステップはオプションですが、パーソナライゼーション、レコメンデーション、またはコンテキストに基づいた意思決定には価値があります。
+Amazon Bedrock Knowledge Bases を使用すると、AI ワークフローを Amazon S3、Amazon Redshift、Amazon OpenSearch Service などの外部データソースに接続できます。ナレッジベースはドキュメントを保存してインデックスを作成し、プロンプト実行時の検索やグラウンディングに利用できるようにします。フローにナレッジベースノードを追加すると、モデルはデータから関連情報を取得して使用し、より正確でコンテキストを考慮したレスポンスを生成できます。このステップはオプションですが、パーソナライゼーション、レコメンデーション、コンテキストに基づく意思決定に役立ちます。
 
-ナレッジベースを接続した後、`{{$.kbResults}}`のようなフィールドを使用して、ナレッジベースの結果をプロンプトに渡すことができます。
+ナレッジベースを接続した後、`{{$.kbResults}}` などのフィールドを使用して、ナレッジベースの結果をプロンプトに渡すことができます。
 
-ナレッジベースに関する詳細は、[Amazon Bedrock: Retrieve data and generate AI responses with Amazon Bedrock Knowledge Bases](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html)を参照してください。
+ナレッジベースの詳細については、[Amazon Bedrock：Amazon Bedrock Knowledge Bases でデータを取得し、AI レスポンスを生成する](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html)を参照してください。
 
-ナレッジベースの作成に関する詳細は、[Amazon Bedrock: Create a knowledge base by connecting to a data source in Amazon Bedrock Knowledge Bases](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html)を参照してください。
+ナレッジベースの作成方法については、[Amazon Bedrock：Amazon Bedrock Knowledge Bases でデータソースに接続してナレッジベースを作成する](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html)を参照してください。
 
-### ステップ4 - Tealiumとの統合に必要なLambdaノードを追加する
+### ステップ 4 - 結果を Tealium に返すための Lambda ノードを追加する（Tealium との連携には必須）
 
-プロンプトが構造化されたJSONを生成した後、その結果をプロファイルエンリッチメントのためにTealiumに戻す必要があります。
+プロンプトが構造化 JSON を生成したら、プロファイルをエンリッチするために、その結果を Tealium に返す必要があります。
 
-Lambdaノードを追加します：
+次の処理を行う Lambda ノードを追加します。
 
-* プロンプトノードからの出力（`$.data`）を受け取ります。
-* JSONを解析します。
-* Tealium Collectに投稿します：`POST https://collect.tealiumiq.com/event`。
-* 次のものを含みます：
+* プロンプトの出力（プロンプトノードからの `$.data`）を受け取ります。
+* JSON を解析します。
+* Tealium Collect（`POST https://collect.tealiumiq.com/event`）に送信します。
+* 次の項目を含めます。
   * `tealium_account`
   * `tealium_profile`
   * `tealium_visitor_id`
   * `tealium_event`（ユーザー定義）
-  * AI出力フィールド（例：`visitor_score`）
+  * AI の出力フィールド（例：`visitor_score`）
 
-[提供されたLambda例](#lambda-example)を使用するか、独自のものを構築します。
+[提供されている Lambda の例](#lambda-example)を使用するか、独自に作成してください。
 
-### ステップ5 - フロー出力ノードを追加する
+### ステップ 5 - フロー出力ノードを追加する
 
-TealiumはフローのAPIレスポンスを処理しませんが、出力ノードはフローを完了するために必要です。
+Tealium はフローの API レスポンスを処理しませんが、フローを完了するには出力ノードが必要です。
 
-Lambda出力を`FlowOutputNode`に接続することはTealiumの処理に影響を与えませんが、次のツールを使用してフローが機能していることを確認するのに役立ちます：
+Lambda の出力を `FlowOutputNode` に接続しても Tealium の処理には影響しませんが、次のツールを使用してフローが正常に動作していることを確認できます。
 
-* Bedrockコンソールでのデバッグ。
-* Lambda関数からのエラーの表示。
-* 検証のための最終JSON結果の検査。
-* Traceを使用したTealiumでの出力の表示。
-#### Lambdaの例
+* Bedrock コンソールでデバッグする。
+* Lambda 関数からのエラーを確認する。
+* 検証のために最終的な JSON 結果を調査する。
+* Trace を使用して Tealium の出力を確認する。
+#### Lambda の例
 
-以下は、プロンプト出力を受け入れ、JSONを解析し、TealiumのCollectエンドポイントにデータを送信してTealiumでエンリッチメントとアクティベーションを行うLambdaの例です。さまざまなデータ構造を考慮したフォールバックが含まれています。必要に応じて書き換えてください。
+以下は、プロンプト出力を受け取り、JSON を解析し、そのデータを Tealium Collect エンドポイントに送信して、Tealium でのエンリッチメントとアクティベーションに使用する Lambda の例です。さまざまなデータ構造に対応するためのフォールバックが含まれています。必要に応じて書き換えてください。
 
-アカウントとプロファイルは、指定されたデータソースでサーバーサイドイベントを受け入れるように構成する必要があります。
+指定したデータソースでサーバーサイドイベントを受け入れるように、アカウントとプロファイルを構成する必要があります。
 
 
 <blockquote>
-この例は、ランタイム環境としてNode.jsバージョン18.x以降が必要です。
+この例では、ランタイム環境として Node.js バージョン 18.x 以降が必要です。
 </blockquote>
 
 
@@ -417,106 +420,105 @@ export const handler = async (event) => {
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| Bedrock AIモデルへのプロンプト送信 | ✓ | ✓ |
-| Bedrock AI管理プロンプトへのデータ送信 | ✓ | ✓ |
-| Bedrock AIワークフローへのデータ送信 | ✓ | ✓ |
+| Bedrock AI モデルにプロンプトを送信 | ✓ | ✓ |
+| Bedrock AI マネージドプロンプトにデータを送信 | ✓ | ✓ |
+| Bedrock AI ワークフローにデータを送信 | ✓ | ✓ |
 
+### Bedrock AI モデルにプロンプトを送信
 
-### Bedrock AIモデルへのプロンプト送信
-
-**Bedrock AIモデルへのプロンプト送信**を使用する場合、コネクタを通じて同期的にレスポンスを返すシンプルな単一モデルコールが必要です。
+コネクタを通じて単一のモデルを呼び出し、応答を同期的に受け取るだけのシンプルな処理が必要な場合は、**Bedrock AI モデルにプロンプトを送信**を使用します。
 
 #### パラメータ
 
 | パラメータ | 説明 |
 | --- | --- |
-| モデルIDまたは推論プロファイルARN | オンデマンド推論を使用するAmazon Bedrockモデルを選択するか、プロビジョニングスループットモデルARNまたは推論プロファイルARNを手動で入力します。<br>オンデマンド推論とテキスト入出力をサポートするモデルのみが表示されます。<br>希望のモデルが表示されない場合は、そのモデルがAWSアカウントとリージョンで有効になっているか確認してください。<br><br><br>プロビジョニングスループットを使用する場合は、完全なモデルARN（例：`arn:aws:bedrock:region:account-id:provisioned-model/...`）を入力します。<br>AWSアカウントで構成されている場合は、推論プロファイルARNも使用できます。<br>モデルの可用性とサポートされる推論タイプは、AWSアカウントの権限とリージョン構成によって決まります。|
-| プロンプトパラメータ | プロンプト内のプレースホルダーにパラメータをマッピングします。デフォルトでは、コネクタは`{{tealium_account}}`、`{{tealium_profile}}`、`{{tealium_visitor_id}}`にアクセスできます。これらはマッピングで上書き可能です。 |
-| 訪問プロファイルの追加 | (オーディエンスアクションのみ) プロンプトテンプレートで訪問プロファイルを変数`{{visitor_profile}}`として使用することを許可します。 |
-| 現在の訪問の追加 | (オーディエンスアクションのみ) `{{visitor_profile}}`オブジェクトに現在の訪問データを含めるかどうか。 |
-| イベントペイロードの追加 | (イベントアクションのみ) イベントペイロードをプロンプトテンプレートの変数`{{event_payload}}`として使用することを許可します。 |
-| プロンプト | <ul><li>マッピングされたパラメータを参照するには、二重の中括弧を使用します。例：`{{tealium_account}}`, `{{visitor_id}}`, `{{event_value}}`。</li><li>`{{visitor_profile}}`を使用して、訪問プロファイルをプロンプトに含めます。<br>モデルには、説明、マークダウン、コードフェンス、余分なテキストなしで有効なJSONのみを返すように明確に指示します。</li><li>期待される正確なJSON構造を定義します（例：フィールド名、必要なキー、値の形式）。</li><li>Tealiumフィールドを含める必要がある場合は、プロンプトで明確に指定します。<br>あいまいな表現を避けます。決定論的なプロンプトを書きます。</li><li>「プローズ、バックティック、余分なフォーマットなしで、単一のJSONオブジェクトのみを返す」という直接的な指示を含めます。</li></ul> |
-| デバッグモード | デバッグモードが有効になっている場合、コネクタはTealium Collectに送信する前に生のBedrockレスポンスを受け入れます。完全な処理を有効にする前に、Traceを使用してレスポンス形式を検証します。 |
+| モデル ID または推論プロファイル ARN | オンデマンド推論で使用する Amazon Bedrock モデルを選択するか、プロビジョンドスループットモデルの ARN または推論プロファイルの ARN を手動で入力します。<br>オンデマンド推論およびテキスト入出力をサポートするモデルのみが表示されます。<br>使用するモデルが表示されない場合は、そのモデルが AWS アカウントとリージョンで有効になっており、オンデマンド推論をサポートしていることを確認してください。<br><br><br>プロビジョンドスループットを使用する場合は、完全なモデル ARN（例：`arn:aws:bedrock:region:account-id:provisioned-model/...`）を入力します。<br>AWS アカウントで構成されている場合は、推論プロファイルの ARN も使用できます。<br>モデルの利用可否とサポートされる推論タイプは、AWS アカウントの権限とリージョン構成によって決まります。|
+| プロンプトパラメータ | パラメータを、プロンプト内で置換するプレースホルダーにマッピングします。デフォルトでは、コネクタは `{{tealium_account}}`、`{{tealium_profile}}`、`{{tealium_visitor_id}}` にアクセスできます。これらはマッピングによって上書きできます。 |
+| 訪問プロファイルを追加 | （オーディエンスアクションのみ）訪問プロファイルを変数 `{{visitor_profile}}` としてプロンプトテンプレートで使用できるようにするかどうかを指定します。 |
+| 現在の訪問を追加 | （オーディエンスアクションのみ）現在の訪問データを `{{visitor_profile}}` オブジェクトに含めるかどうかを指定します。 |
+| イベントペイロードを追加 | （イベントアクションのみ）イベントペイロードを変数 `{{event_payload}}` としてプロンプトテンプレートで使用できるようにするかどうかを指定します。 |
+| プロンプト | <ul><li>マッピングされたパラメータを参照するには、二重中括弧を使用します。例：`{{tealium_account}}`、`{{visitor_id}}`、`{{event_value}}`。</li><li>訪問プロファイルをプロンプトに含めるには、`{{visitor_profile}}` を使用します。<br>説明、Markdown、コードフェンス、余分なテキストを含めず、有効な JSON のみを返すようモデルに明確に指示してください。</li><li>想定する正確な JSON 構造（フィールド名、必須キー、値の形式など）を定義します。</li><li>Tealium フィールドを含める必要がある場合は、プロンプト内で明示的に指定します。<br>曖昧な表現を避け、決定論的なプロンプトを記述してください。</li><li>「説明文、バッククォート、余分な書式を含めず、単一の JSON オブジェクトのみを返してください」のような直接的な指示を含めます。</li></ul> |
+| デバッグモード | デバッグモードを有効にすると、コネクタは未加工の Bedrock 応答を Tealium Collect に送信せずに受け入れます。完全な処理を有効にする前に、Trace を使用して応答形式を検証してください。 |
 
 #### 推論パラメータ
 
-詳細については、[Amazon Bedrock API Reference: InferenceConfiguration](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_InferenceConfiguration.html)を参照してください。
+詳細については、[Amazon Bedrock API リファレンス：InferenceConfiguration](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_InferenceConfiguration.html)を参照してください。
 
 | パラメータ | 説明 |
 | --- | --- |
-| `maxTokens` | モデルがレスポンスで生成可能なトークンの最大数。値が低いほど出力が短くなり、レイテンシ、コスト、スロットリングリスクが低減します。 |
-| `temperature` | 出力のランダム性を制御します。値が低い（例：`0.2`）とレスポンスがより決定論的になり、値が高い（例：`0.8`）とより創造的で多様な結果が得られます。 |
-| `topP` | トークン選択をこの値を超える累積確率を持つ最小セットに制限する核サンプリングパラメータ。値が低いほど出力が集中し、値が高いほど多様性が許容されます。 |
-| `stopSequences` | モデルが遭遇したときに生成を停止する一つまたは複数の文字列。レスポンスの切り捨てや構造化された出力境界の強制に役立ちます。 |
-### Bedrock AI 管理プロンプトへデータを送信
+| `maxTokens` | モデルが応答として生成できるトークンの最大数です。値を小さくすると出力が短くなり、レイテンシー、コスト、スロットリングのリスクを軽減できます。 |
+| `temperature` | 出力のランダム性を制御します。値を小さくすると（`0.2` など）応答がより決定論的になり、値を大きくすると（`0.8` など）より創造的で多様な結果が生成されます。 |
+| `topP` | 累積確率がこの値を超える最小のトークン集合にトークンの選択を制限する、核サンプリングのパラメータです。値を小さくすると出力の焦点が絞られ、値を大きくすると多様性が高まります。 |
+| `stopSequences` | モデルが生成中に検出すると生成を停止する、1 つ以上の文字列です。応答を切り詰める場合や、構造化された出力の境界を適用する場合に役立ちます。 |
+### Bedrock AI Managed Prompt にデータを送信
 
-**Bedrock AI 管理プロンプトへデータを送信**を使用する場合は、プロンプトがコネクタを通じて同期的に応答を返す、再利用可能でバージョン管理された呼び出しを行いたいときに使用します。
-
-| パラメータ | 説明 |
-| --- | --- |
-| プロンプト ARN | (必須) Bedrock プロンプト管理テンプレートの ARN を提供してください。プロンプト ARN は Bedrock のプロンプト詳細の **概要** セクションで見つけることができます。 |
-| プロンプトデータ | <ul><li>Tealium は、それを呼び出すときにマッピングされた属性をプロンプトに渡します。</li><li>コネクタには `tealium_account`、`tealium_profile`、`tealium_visitor_id` の変数が含まれており、マッピングで上書きすることができます。</li><li>モデルに JSON のみを返すように明確に指示するプロンプトを記述してください。説明、マークダウン、コードフェンス、JSON の前後の追加テキストは含まないでください。</li><li>モデルが JSON で `tealium_account`、`tealium_profile`、`tealium_visitor_id` を返すように指示を含めてプロンプトを作成する必要があります。</li><li>あいまいな表現を避けてください。出力が確実に解析できるように決定論的なプロンプトを記述してください。</li><li>最良の結果を得るためには、「JSON オブジェクトのみを返し、散文、バックティック、余分なフォーマットは含まない」という直接的な指示を含めてください。</li></ul> |
-| 訪問プロファイルを追加 | (オーディエンスアクションのみ) プロンプトテンプレートで訪問プロファイルを `{{visitor_profile}}` 変数として使用することを許可するかどうか。 |
-| 現在の訪問を追加 | (オーディエンスアクションのみ) `{{visitor_profile}}` オブジェクトに現在の訪問データを含めるかどうか。 |
-| イベントペイロードを追加 | (イベントアクションのみ) プロンプトテンプレートでイベントペイロードを `{{event_payload}}` 変数として使用することを許可するかどうか。 |
-| デバッグモード | デバッグモードが有効になっている場合、コネクタは Tealium Collect に送信することなく生の Bedrock 応答を受け入れます。完全な処理を有効にする前に応答形式を検証するために Trace を使用します。 |
-
-### Bedrock AI ワークフローへデータを送信
-
-**Bedrock AI ワークフローへデータを送信**を使用する場合は、Lambda を通じて非同期で実行されるマルチステップのオーケストレーションまたはナレッジベースの取得が必要なときに使用します。
+再利用可能でバージョン管理されたプロンプトを呼び出し、コネクタを介して同期的に応答を受け取る場合は、**Send Data to Bedrock AI Managed Prompt** を使用します。
 
 | パラメータ | 説明 |
 | --- | --- |
-| Bedrock Flow Alias ARN | (必須) このアクションが呼び出す Bedrock Flow Alias の ARN を入力してください。`live` などのエイリアスを作成し、ここでその ARN を使用することをお勧めします。 |
-| Flow データ | <ul><li>AWS でエイリアスが指す Flow バージョンをこのコネクタを更新せずに変更します。</li><li>コネクタはマッピングされたフィールドを document という JSON オブジェクトとして Flow に送信します。</li><li>Flow 内で、これらのフィールドを Prompt、Lambda、または他のノードで `$.data.<fieldName>` を使用して参照します。</li><li>デフォルトでは、`tealium_account`、`tealium_profile`、および `tealium_visitor_id` が自動的に含まれ、必要に応じてフィールドマッピングを通じて上書きすることができます。</li><li>Flow には `FlowOutputNode` を含める必要がありますが、Tealium はその出力を使用しません。</li><li>Collect エンドポイントを通じて Tealium にデータを送り返すために Lambda を使用します。</li><li>Bedrock コンソールでフローをテストする際に成功/エラー情報を確認するために、Lambda の出力を `FlowOutputNode` に接続することをお勧めします。</li></ul> |
-| 訪問プロファイルを追加 | (オーディエンスアクションのみ) Flow 入力に完全な訪問プロファイルを `visitor_profile` JSON オブジェクトとして含めるかどうか。 |
-| 現在の訪問を追加 | (オーディエンスアクションのみ) `visitor_profile` JSON オブジェクトに現在の訪問データを含めるかどうか。 |
-| イベントペイロードを追加 | (イベントアクションのみ) Flow 入力にイベントペイロードを `event_payload` JSON オブジェクトとして含めるかどうか。 |
+| Prompt ARN | （必須）Bedrock Prompt Management テンプレートの ARN を指定します。プロンプト ARN は、Bedrock のプロンプト詳細にある **Overview** セクションで確認できます。 |
+| Prompt Data | <ul><li>Tealium は、マッピングされた属性を呼び出し時にプロンプトへ渡します。</li><li>コネクタは、変数 `tealium_account`、`tealium_profile`、`tealium_visitor_id` をプロンプトに含めます。これらはマッピングによって上書きできます。</li><li>説明、Markdown、コードフェンス、および JSON の前後に追加テキストを含めず、有効な JSON のみを返すよう、モデルに明確に指示するプロンプトを作成してください。</li><li>JSON に `tealium_account`、`tealium_profile`、`tealium_visitor_id` を含めて返すようモデルに指示する内容を、プロンプトに含める必要があります。</li><li>曖昧な表現は避けてください。出力を確実に解析できるよう、決定論的なプロンプトを作成してください。</li><li>最良の結果を得るには、「説明文、バッククォート、追加の書式構成を含めず、単一の JSON オブジェクトのみを返してください。」のような直接的な指示を含めます。</li></ul> |
+| Add Visitor Profile | （オーディエンスアクションのみ）プロンプトテンプレートで訪問プロファイルを変数 `{{visitor_profile}}` として使用できるようにするかどうかを指定します。 |
+| Add Current Visit | （オーディエンスアクションのみ）現在の訪問データを `{{visitor_profile}}` オブジェクトに含めるかどうかを指定します。 |
+| Add Event Payload | （イベントアクションのみ）プロンプトテンプレートでイベントペイロードを変数 `{{event_payload}}` として使用できるようにするかどうかを指定します。 |
+| Debug Mode | デバッグモードを有効にすると、コネクタは未加工の Bedrock 応答を Tealium Collect に送信せずに受け取ります。完全な処理を有効にする前に、Trace を使用して応答形式を検証してください。 |
+
+### Bedrock AI Workflow にデータを送信
+
+Lambda を介して非同期に実行される、複数ステップのオーケストレーションまたはナレッジベース検索が必要な場合は、**Send Data to Bedrock AI Workflow** を使用します。
+
+| パラメータ | 説明 |
+| --- | --- |
+| Bedrock Flow Alias ARN | （必須）このアクションで呼び出す Bedrock Flow Alias の ARN を入力します。`live` などのエイリアスを作成し、その ARN をここで使用することをお勧めします。 |
+| Flow Data | <ul><li>このコネクタを更新せずに、エイリアスが参照する Flow Version を AWS で変更できます。</li><li>コネクタは、マッピングされたフィールドを document という名前の JSON オブジェクトとして Flow に送信します。</li><li>Flow 内の Prompt、Lambda、またはその他のノードでは、`$.data.<fieldName>` を使用してこれらのフィールドを参照します。</li><li>デフォルトでは、`tealium_account`、`tealium_profile`、`tealium_visitor_id` が自動的に含まれます。必要に応じて、フィールドマッピングによって上書きできます。</li><li>Flow には `FlowOutputNode` を含める必要がありますが、Tealium はその出力を使用しません。</li><li>Collect エンドポイントを介して Tealium にデータを送り返すには、Lambda を使用します。</li><li>Bedrock コンソールで Flow をテストするときに成功／エラー情報を確認できるよう、Lambda の出力を `FlowOutputNode` に接続することをお勧めします。</li></ul> |
+| Add Visitor Profile | （オーディエンスアクションのみ）完全な訪問プロファイルを `visitor_profile` JSON オブジェクトとして Flow の入力に含めるかどうかを指定します。 |
+| Add Current Visit | （オーディエンスアクションのみ）現在の訪問データを `visitor_profile` JSON オブジェクトに含めるかどうかを指定します。 |
+| Add Event Payload | （イベントアクションのみ）イベントペイロードを `event_payload` JSON オブジェクトとして Flow の入力に含めるかどうかを指定します。 |
 
 ## 一般的なエラーとトラブルシューティング
 
-以下は一般的なエラーコードと解決策です：
+一般的なエラーコードと解決方法は次のとおりです。
 
 ### 一般的な AWS エラーコード：
 
-* **`AccessDeniedException` または `NotAuthorized`**   
-IAM ユーザーまたはロールに必要な権限がありません（例：`bedrock:InvokeModel`, `bedrock:RenderPrompt`, `bedrock:InvokeFlow`, `bedrock:ListFoundationModels`）。  
-これを解決するには、ロールまたはアクセスキーに添付されている IAM ポリシーを更新して、必要な Bedrock アクションを正しいリソースに含めてください。
+* **`AccessDeniedException` または `NotAuthorized`**  
+IAM ユーザーまたはロールに必要な権限（`bedrock:InvokeModel`、`bedrock:RenderPrompt`、`bedrock:InvokeFlow`、`bedrock:ListFoundationModels` など）がありません。  
+解決するには、ロールまたはアクセスキーに関連付けられている IAM ポリシーを更新し、適切なリソースに対して必要な Bedrock アクションを許可します。
 
-* **`InvalidClientTokenId`, `UnrecognizedClientException`, または `ExpiredTokenException`**  
-構成されたアクセスキーまたは STS セッションが無効または期限切れです。  
-これを解決するには、コネクタで資格情報を回転させて再入力するか、STS ロールと外部 ID が正しく、期限切れでないことを確認してください。
+* **`InvalidClientTokenId`、`UnrecognizedClientException`、または `ExpiredTokenException`**  
+構成されたアクセスキーまたは STS セッションが無効か、有効期限が切れています。  
+解決するには、認証情報を更新してコネクタに再入力するか、STS ロールと外部 ID が正しく、有効期限が切れていないことを確認します。
 
 * **`OptInRequired` または `FTUFormNotFilled`**  
-AWS アカウントが Bedrock または特定のモデル（例：Anthropic）で完全に有効化されていません。  
-これを解決するには、AWS コンソールで必要な Bedrock 有効化手順と任意のモデル固有のフォームまたはマーケットプレースのサブスクリプションを完了してください。
+AWS アカウントで Bedrock または特定のモデル（Anthropic など）が完全に有効化されていません。  
+解決するには、AWS コンソールで Bedrock の有効化に必要な手順と、モデル固有のフォームまたは Marketplace サブスクリプションを完了します。
 
-これらのエラーが表示された場合は、まず AWS で IAM またはアカウント構成を解決してください。権限が修正されるまでコネクタアクションを再試行しても成功しません。
+これらのエラーが表示された場合は、まず AWS で IAM またはアカウントの構成を修正してください。権限を修正するまで、コネクタアクションを再試行するだけでは成功しません。
 
-### Bedrock API 呼び出しからの一般的なエラー
+### Bedrock API 呼び出しでよく発生するエラー
 
-以下のエラーは、リクエストが Bedrock に到達したが、サービスまたはモデルが正常に完了できなかったことを意味します。
+以下のエラーは、リクエストは Bedrock に到達したものの、サービスまたはモデルが正常に処理を完了できなかったことを示します。
 
 * **`ValidationException` または `ValidationError`**  
-リクエスト本体またはパラメータがターゲットモデルまたは API に対して無効です（例：間違ったモデル ID、サポートされていないパラメータ、入力が大きすぎる）。  
-これを解決するには、モデル ID / プロンプト ARN / フロー ARN を確認し、リクエスト本体がモデルの期待するスキーマに一致していることを確認し、必要に応じてプロンプトのサイズや最大トークン数を減らしてください。
+リクエスト本文またはパラメータが、対象のモデルまたは API に対して無効です（モデル ID が間違っている、サポートされていないパラメータが指定されている、入力が大きすぎるなど）。  
+解決するには、モデル ID、プロンプト ARN、Flow ARN を確認し、リクエスト本文がモデルで想定されているスキーマと一致していることを確認します。また、必要に応じてプロンプトのサイズまたは最大トークン数を減らします。
 
-* **`ResourceNotFound` または `ResourceNotFoundException`**   
-指定されたモデル、プロンプトバージョン、または Flow エイリアス ARN が存在しないか、その地域で利用できません。  
-これを解決するには、コネクタ構成の ARN と地域を Bedrock コンソールに表示されている値と照らし合わせて再確認してください。
+* **`ResourceNotFound` または `ResourceNotFoundException`**  
+指定されたモデル、プロンプトバージョン、または Flow Alias ARN が存在しないか、そのリージョンでは利用できません。  
+解決するには、コネクタ構成の ARN とリージョンが、Bedrock コンソールに表示されている値と一致しているか再確認します。
 
 * **`ThrottlingException` または `ServiceQuotaExceededException`**  
-呼び出しが Bedrock のクォータを超えています（例：TPS またはトークン制限）。  
-これを解決するには、呼び出し頻度を減らすか、AWS でクォータ増加をリクエストしてください。
+呼び出しが Bedrock のクォータ（TPS やトークン制限など）を超えています。  
+解決するには、呼び出し頻度を下げるか、AWS でクォータの引き上げをリクエストします。
 
-* **`ServiceUnavailable`, `InternalFailure`, または `InternalServerException`**  
-Bedrock 内の一時的または内部エラーです。  
-これを解決するには、エラーが持続する場合は AWS Service Health Dashboard を確認するか、AWS サポートケースを開いてください。
+* **`ServiceUnavailable`、`InternalFailure`、または `InternalServerException`**  
+Bedrock 内で一時的なエラーまたは内部エラーが発生しています。  
+解決するには、エラーが継続する場合、AWS Service Health Dashboard を確認するか、AWS Support のケースを作成します。
 
-* **`ModelErrorException`, `ModelNotReadyException`, または `ModelTimeoutException`** (プロンプトまたは管理プロンプトフロー)  
-モデルが失敗した、まだウォーミングアップ中、または応答に時間がかかりすぎました。  
-これを解決するには、待って再試行し、プロンプトを簡素化するかトークン使用を減らし、モデルまたはプロビジョニングされたスループットが完全にアクティブであることを確認してください。
+* **`ModelErrorException`、`ModelNotReadyException`、または `ModelTimeoutException`**（プロンプトまたはマネージドプロンプトのフロー）  
+モデルで処理に失敗したか、モデルがまだウォームアップ中であるか、応答に時間がかかりすぎました。  
+解決するには、しばらく待ってから再試行し、プロンプトを簡素化するかトークン使用量を減らします。また、モデルまたはプロビジョンドスループットが完全に有効になっていることを確認します。
 
-これらのエラーについては、Tealium は Bedrock からの元の AWS エラーメッセージを表示するため、トラブルシューティング時に AWS のドキュメントと照らし合わせることができます。
+これらすべてのエラーについて、Tealium は Bedrock から返された元の AWS エラーメッセージを表示します。トラブルシューティング時に、このメッセージを AWS ドキュメントと照合できます。

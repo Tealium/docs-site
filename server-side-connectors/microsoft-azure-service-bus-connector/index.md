@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/microsoft-azure-service-bus
 ---
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Event Data to Queue or Topic| ✗| ✓|
 |Send Visitor Data to Queue or Topic| ✓| ✗|
@@ -17,10 +17,9 @@ url: https://docs.tealium.com/server-side-connectors/microsoft-azure-service-bus
 * Service Bus Shared Access Policy Credentials
 * Queue or Topic to send data to
 
-
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -38,7 +37,7 @@ Shared Access Policies can claim three type of permissions: `Send`, `Listen` and
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up Actions to trigger.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 This section describes how to set up Parameters and Options for each Action.
 
@@ -107,7 +106,7 @@ If necessary, templates can also be referenced and injected in user and broker p
 </blockquote>
 
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Namespace &amp; Shared Access Policies](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-create-namespace-portal)
 * [Message User &amp; Broker Properties](https://docs.microsoft.com/en-us/rest/api/servicebus/message-headers-and-properties)

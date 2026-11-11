@@ -1,13 +1,13 @@
 ---
-title: PulsePoint NPIリストコネクタ構成ガイド
-description: この記事では、PulsePoint NPIリストコネクタの構成方法について説明します。
+title: PulsePoint NPI Listコネクタ構成ガイド
+description: この記事では、PulsePoint NPI Listコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/pulsepoint-npi-list-connector/
 ---
-このインテグレーションは、Life by PulsePointに接続します。Lifeは、医療広告に特化したDSPで、HCPを対象としたデジタル医療広告キャンペーンの計画、活性化、分析を行うことができます。当社のPulsePoint NPIリストコネクタは、LifeのNPIリストへの直接アクセスと完全な制御を提供し、[Tealium for Pharma CDP](https://docs.tealium.com/ja/industries/tealium-for-pharma/)へのシームレスな統合を実現します。
+この統合により、PulsePointのLifeに接続できます。Lifeはヘルスケア広告に特化したDSPで、医療分野および非医療分野のパブリッシャーを通じてHCPを対象とするデジタルヘルスケア広告キャンペーンを計画、実施、分析できます。PulsePoint NPI Listコネクタでは、LifeのNPI Listに直接アクセスして完全に制御できるため、[Tealium for Pharma CDP](https://docs.tealium.com/ja/industries/tealium-for-pharma/)とのシームレスな統合が実現します。
 
 ## API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタでは、次のベンダーAPIを使用します。
 
 * API名：PulsePoint API
 * APIバージョン：v2
@@ -15,28 +15,28 @@ url: https://docs.tealium.com/ja/server-side-connectors/pulsepoint-npi-list-conn
 
 ## コネクタアクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | ビジタープロファイル | イベントデータ |
 | --- | :---: | :---: |
-| NPIリストの作成 | ✓ | ✗ |
-| リストへのNPIの追加 | ✓ | ✗ |
-| リストからのNPIの削除 | ✓ | ✗ |
+| NPIリストを作成 | ✓ | ✗ |
+| リストにNPIを追加 | ✓ | ✗ |
+| リストからNPIを削除 | ✓ | ✗ |
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
 * **クライアントID**  
-(必須) PulsePointのアカウントID。
+（必須）PulsePointのアカウントID。
 * **クライアントシークレット**  
-(必須) PulsePointの担当者から提供されるアカウントのシークレット。
+（必須）PulsePointの担当者から提供される、PulsePointアカウントのシークレット。
 * **ユーザー名**  
-(必須) クライアントのPulsePoint Lifeユーザー名。
+（必須）クライアントのPulsePoint Lifeユーザー名。
 * **パスワード**  
-(必須) クライアントのユーザー名のPulsePoint Lifeパスワード。
+（必須）クライアントのユーザー名に対応するPulsePoint Lifeパスワード。
 * **アカウントID**  
-(必須) クライアントに関連付けられ、すべてのNPIリストを保持するアカウントID。
+（必須）クライアントに関連付けられ、すべてのNPIリストを保持するアカウントID。
 
 ## アクション
 
@@ -44,30 +44,30 @@ url: https://docs.tealium.com/ja/server-side-connectors/pulsepoint-npi-list-conn
 
 次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
 
-### NPIリストの作成
+### NPIリストを作成
 
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| 名前 | (必須) NPIリストにリンクされた広告主の名前。 |
-| 広告主 | (必須) NPIリスト名。 |
-| NPI | (必須) NPIリストに含めるNPIのリスト。 |
+| 名前 | （必須）NPIリストに関連付けられている広告主の名前。 |
+| 広告主 | （必須）NPIリスト名。 |
+| NPI | （必須）NPIリストに含めるNPIのリスト。 |
 
-### リストへのNPIの追加
-
-#### パラメータ
-
-| **パラメータ** | **説明** |
-| --- | --- |
-| リストID | (必須) 要求されたNPIが属するリスト番号。 |
-| NPI | (必須) NPIリストに含めるNPIのリスト。 |
-
-### リストからのNPIの削除
+### リストにNPIを追加
 
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| リストID | (必須) 要求されたNPIが属するリスト番号。 |
-| NPI | (必須) NPIリストで削除するNPIのリスト。 |
+| リストID | （必須）追加するNPIが属するリストの番号。 |
+| NPI | （必須）NPIリストに含めるNPIのリスト。 |
+
+### リストからNPIを削除
+
+#### パラメータ
+
+| **パラメータ** | **説明** |
+| --- | --- |
+| リストID | （必須）削除するNPIが属するリストの番号。 |
+| NPI | （必須）NPIリストから削除するNPIのリスト。 |

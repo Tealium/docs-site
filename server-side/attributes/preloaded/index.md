@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/attributes/preloaded/
 ---
 ## How it works
 
-For your convenience, AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes. Each attribute is configured to collect statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional data beyond the standard event data from the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+For your convenience, Customer Data Platform (CDP) and Event Streaming contain a set of preloaded event, visit, and visitor attributes. Each attribute is configured to collect statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional data beyond the standard event data from the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 
 <blockquote>
@@ -94,7 +94,7 @@ Preloaded attributes cannot be modified, but you can duplicate them and modify t
 |tealium_session_id|71|Number|This value is the epoch timestamp of when the first page view, event, or library finished starting up (in milliseconds). This value resets if there is no activity for 30 minutes on the web. | |
 |tealium_thirdparty_visitor_id|77|String|The visitor ID provided by the third-party cookie.| |
 |tealium_timestamp_epoch|73|Number|This value is when the event occurred, in seconds. If event was queued, this value is the time that the event originally occurred.| |
-|tealium_visitor_id|72|String|This value is the generated UUID, which is case sensitive on AudienceStream. This value was formerly `tealium_vid` in `vdata` calls.| |
+|tealium_visitor_id|72|String|This value is the generated UUID, which is case sensitive on CDP. This value was formerly `tealium_vid` in `vdata` calls.| |
 |User Agent|2|String|The user agent string.| |
 
 ### Support for IPv6

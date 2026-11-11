@@ -1,9 +1,9 @@
 ---
 title: Adobe Analytics AppMeasurement for JS Tag Setup Guide
-description: This article describes how to set up the Adobe Analytics AppMeasurement for JS tag in your iQ Tag Management account.
+description: This article describes how to set up the Adobe Analytics AppMeasurement for JS tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adobe-appmeasurement-for-js-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * To use the Adobe Experience Cloud ID Service, add the Adobe Experience Cloud ID Service tag before adding this tag.
 * Not all legacy H26 features are supported with the AppMeasurement tag.
@@ -12,11 +12,11 @@ url: https://docs.tealium.com/client-side-tags/adobe-appmeasurement-for-js-tag/
 * For a list of supported plug-ins, see: [Adobe: AppMeasurement Plug-ins Overview](https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/plugins/impl-plugins).
 * For additional information, see: [Adobe: Implement Adobe Analytics with AppMeasurement for JavaScript](https://experienceleague.adobe.com/en/docs/analytics/implementation/js/overview)
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Code Version**
   * The version of the `AppMeasurement.js` library.
@@ -76,15 +76,15 @@ After adding the tag, configure the following settings:
   * Default value is `false`.
   * For more information, see [Adobe: `decodeLinkParameters`](https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/config-vars/decodelinkparameters).
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: **All Pages**.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/about-the-data-layer/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

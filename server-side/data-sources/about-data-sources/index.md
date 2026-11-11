@@ -9,7 +9,7 @@ The type of data source you create depends on where your data originates and whe
 
 ## Tag management and web-based collection
 
-If you use Tealium Tag Management, your web data source is the Tealium Collect tag. Tealium Collect sends each web tracking call to your server-side profile. For more information, see [Data sources for Tag Management](https://docs.tealium.com/data-sources-for-iq-tag-management/).
+If you use Tealium Tag Management, your web data source is the Tealium Collect tag. Tealium Collect sends each web tracking call to your server-side profile. For more information, see [Data sources for Tag Management](https://docs.tealium.com/data-sources-for-tag-management/).
 
 You can also collect events using the Tealium Collect library for many other web platforms. For setup instructions, see [Install on web](https://docs.tealium.com/platforms//#install-on-web).
 
@@ -42,7 +42,7 @@ For more information, see [About cloud data sources](https://docs.tealium.com/ab
 
 
 <blockquote>
-To use zero-copy cloud data sources without replicating data into Tealium, use [Tealium CloudStream](https://docs.tealium.com/about-cloudstream/).
+To use zero-copy cloud data sources without replicating data into Tealium, use [Data Cloud Activation](https://docs.tealium.com/about-data-cloud-activation/).
 </blockquote>
 
 

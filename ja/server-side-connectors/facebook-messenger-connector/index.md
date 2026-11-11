@@ -1,11 +1,11 @@
 ---
-title: Facebookメッセンジャーコネクタ構成ガイド
-description: この記事では、Facebookメッセンジャーコネクタの構成方法について説明します。
+title: Facebook Messengerコネクタ構成ガイド
+description: この記事では、Facebook Messengerコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/facebook-messenger-connector/
 ---
 ## API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタでは、次のベンダーAPIを使用します。
 
 * API名：Facebook Graph API - Messenger Platform
 * APIバージョン：v25.0
@@ -14,26 +14,28 @@ url: https://docs.tealium.com/ja/server-side-connectors/facebook-messenger-conne
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加したら、次の項目を構成します。
 
 * **ページアクセストークン**  
-  * このトークンは、Messenger APIの呼び出しに使用されます。
-  * 詳細については、[Facebook: ページアクセストークン](https://developers.facebook.com/docs/facebook-login/access-tokens#pagetokens)を参照してください。
+  * このトークンは、Messenger APIの呼び出しに使用します。
+  * 詳細については、[Facebook：ページアクセストークン](https://developers.facebook.com/docs/facebook-login/access-tokens#pagetokens)を参照してください。
+
+コネクタを構成したら、**完了**をクリックします。
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
 | テキストのみのメッセージを送信 | ✓ | ✗ |
 | メディアメッセージを送信 | ✓ | ✗ |
 | 送信者アクションを送信 | ✓ | ✗ |
-| テンプレートメッセージを送信（高度） | ✓ | ✗ |
+| テンプレートメッセージを送信（詳細構成） | ✓ | ✗ |
 
 アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。
 
-次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+次のセクションでは、各アクションのパラメータとオプションを構成する方法について説明します。
 
 ### テキストのみのメッセージを送信
 
@@ -41,15 +43,15 @@ url: https://docs.tealium.com/ja/server-side-connectors/facebook-messenger-conne
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| メッセージングタイプ | (必須) 送信されるメッセージのメッセージングタイプを指定し、特定のメッセージングタイプに対するポリシーの遵守をより明確にし、人々の好みを尊重することを保証します。詳細については、[Facebook: メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
-|受信者識別子| (必須) メッセージを送信する受信者を識別します。ID、電話番号、またはユーザー参照を構成する必要があります。電話番号を使用して受信者を識別する場合、あなたのボットは[顧客マッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受け、国コード、エリアコード、番号（例：`16505551212`）のみを含む必要があります。電話番号を使用する場合、名と姓の構成も可能です。 |
-| メッセージテキスト | (必須) ユーザーに送信するメッセージの内容。このフィールドは2000文字に制限されています。このフィールドはTealiumのテンプレートエンジンもサポートしています。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
-| メッセージテキストテンプレート変数 | メッセージデータのテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| クイック返信| クイック返信は、タイトルとオプションの画像を含む最大11個のボタンのセットを会話中に提示する方法を提供し、コンポーザーの上に目立って表示されます。また、クイック返信を使用してユーザーの位置情報、メールアドレス、電話番号を要求することもできます。サポートされているのは配列属性のみであり、ここで指定される配列は同じサイズでなければなりません。詳細については、[Facebook: クイック返信ドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
-| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を通じて`message_echoes`フィールドで配信されるカスタム文字列。1,000文字制限。メタデータは自動的にテンプレート機能とテンプレート変数をサポートします。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
-| メタデータテンプレート変数 | メタデータのテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| 通知タイプ | プッシュ通知のタイプ。<ul><li>**通常:** 音/振動（構成されていない場合に使用されます）。</li><li>**サイレントプッシュ:** 画面上の通知のみ。</li><li>**ノープッシュ:** 通知なし</li></ul>。 |
-| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの完全なリストについては、[Facebook: メッセージタグドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
+| メッセージングタイプ | （必須）送信するメッセージのメッセージングタイプを指定します。これは、ボットが特定のメッセージングタイプに関するポリシーを遵守し、利用者の構成を尊重していることを、より明示的に保証するための方法です。詳細については、[Facebook：メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
+| 受信者識別子 | （必須）メッセージの送信先となる受信者を識別します。ID、電話番号、またはユーザー参照のいずれかを構成する必要があります。電話番号を使用して受信者を識別する場合、ボットが[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受けている必要があります。また、国番号、市外局番、電話番号を数字のみで指定してください（例：`16505551212`）。電話番号を使用する場合は、名と姓も構成できます。 |
+| メッセージテキスト | （必須）ユーザーに送信するメッセージの内容です。このフィールドは2,000文字までに制限されています。また、このフィールドではTealiumテンプレートエンジンもサポートされています。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
+| メッセージテキストのテンプレート変数 | メッセージデータのテンプレート変数を指定します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| クイック返信 | クイック返信を使用すると、タイトルと任意の画像を含む最大11個のボタンを会話内に表示できます。これらのボタンは、入力欄の上部に目立つように表示されます。また、クイック返信を使用して、ユーザーの位置情報、メールアドレス、電話番号を要求することもできます。配列属性のみがサポートされ、ここで指定する配列はすべて同じサイズである必要があります。詳細については、[Facebook：クイック返信のドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
+| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を介して`message_echoes`フィールドに配信されるカスタム文字列です。上限は1,000文字です。メタデータでは、テンプレート機能とテンプレート変数が自動的にサポートされます。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
+| メタデータのテンプレート変数 | メタデータのテンプレート変数を指定します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| 通知タイプ | プッシュ通知のタイプです。<ul><li>**通常：** 音／バイブレーション（構成されていない場合に使用されます）。</li><li>**サイレントプッシュ：** 画面上の通知のみ。</li><li>**プッシュなし：** 通知なし</li></ul> |
+| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの一覧については、[Facebook：メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
 
 ### メディアメッセージを送信
 
@@ -57,46 +59,44 @@ url: https://docs.tealium.com/ja/server-side-connectors/facebook-messenger-conne
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| メッセージングタイプ | (必須) 送信されるメッセージのメッセージングタイプを指定し、特定のメッセージングタイプに対するポリシーの遵守をより明確にし、ユーザーの好みを尊重することを保証します。詳細については、[Facebook: メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
-|受信者識別子| (必須) メッセージを送信する受信者を識別します。ID、電話番号、またはユーザー参照を構成する必要があります。電話番号を使用して受信者を識別する場合、あなたのボットは[顧客マッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受け、国コード、エリアコード、番号（例：`16505551212`）のみを含む必要があります。電話番号を使用する場合、名と姓の構成も可能です。 |
-| メディアタイプ | (必須) 受信者に送信するメディアのタイプ。サポートされている値は`Image`、`Audio`、`Video`、または`File`です。 |
-| メディアURL | (必須) 送信されるメディアのウェブ`URL`アドレス。 |
-| 再利用可能か | このオプションを選択して、他の受信者に送信できる再利用可能なコンテンツとしてコンテンツをマークします。 |
-| クイック返信| クイック返信は、タイトルとオプションの画像を含む最大11個のボタンのセットを会話中に提示する方法を提供し、コンポーザーの上に目立って表示されます。また、クイック返信を使用してユーザーの位置情報、メールアドレス、電話番号を要求することもできます。サポートされているのは配列属性のみであり、ここで指定される配列は同じサイズでなければなりません。詳細については、[Facebook: クイック返信ドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
-| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を通じて`message_echoes`フィールドで配信されるカスタム文字列。1,000文字制限。メタデータは自動的にテンプレート機能とテンプレート変数をサポートします。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
-| メタデータテンプレート変数 | メタデータのテンプレート変数を提供します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| 通知タイプ | プッシュ通知のタイプ。<ul><li>**通常:** 音/振動（構成されていない場合に使用されます）。</li><li>**サイレントプッシュ:** 画面上の通知のみ。</li><li>**ノープッシュ:** 通知なし</li></ul>。 |
-| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの完全なリストについては、[Facebook: メッセージタグドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
+| メッセージングタイプ | （必須）送信するメッセージのメッセージングタイプを指定します。これは、ボットが特定のメッセージングタイプに関するポリシーを遵守し、ユーザーの構成を尊重していることを、より明示的に保証するための方法です。詳細については、[Facebook：メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
+| 受信者識別子 | （必須）メッセージの送信先となる受信者を識別します。ID、電話番号、またはユーザー参照のいずれかを構成する必要があります。電話番号を使用して受信者を識別する場合、ボットが[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受けている必要があります。また、国番号、市外局番、電話番号を数字のみで指定してください（例：`16505551212`）。電話番号を使用する場合は、名と姓も構成できます。 |
+| メディアタイプ | （必須）受信者に送信するメディアのタイプです。サポートされている値は、`Image`、`Audio`、`Video`、または`File`です。 |
+| メディアURL | （必須）送信するメディアのWeb `URL`アドレスです。 |
+| 再利用可能 | コンテンツを他の受信者にも送信できる再利用可能なコンテンツとしてマークするには、このオプションを選択します。 |
+| クイック返信 | クイック返信を使用すると、タイトルと任意の画像を含む最大11個のボタンを会話内に表示できます。これらのボタンは、入力欄の上部に目立つように表示されます。また、クイック返信を使用して、ユーザーの位置情報、メールアドレス、電話番号を要求することもできます。配列属性のみがサポートされ、ここで指定する配列はすべて同じサイズである必要があります。詳細については、[Facebook：クイック返信のドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
+| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を介して`message_echoes`フィールドに配信されるカスタム文字列です。上限は1,000文字です。メタデータでは、テンプレート機能とテンプレート変数が自動的にサポートされます。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
+| メタデータのテンプレート変数 | メタデータのテンプレート変数を指定します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| 通知タイプ | プッシュ通知のタイプです。<ul><li>**通常：** 音／バイブレーション（構成されていない場合に使用されます）。</li><li>**サイレントプッシュ：** 画面上の通知のみ。</li><li>**プッシュなし：** 通知なし</li></ul> |
+| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの一覧については、[Facebook：メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
 
 ### 送信者アクションを送信
+#### パラメーター
 
-
-#### パラメータ
-
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| メッセージングタイプ | (必須) 送信されるメッセージのメッセージングタイプを指定し、特定のメッセージングタイプに対するポリシーの遵守とユーザーの構成を尊重するためのより明確な方法です。詳細については、[Facebook: メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
-| 受信者識別子 | (必須) メッセージを送信する受信者を識別します。ID、電話番号、またはユーザー参照が構成されている必要があります。受信者を識別するために電話番号を使用する場合、あなたのボットは[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受け、国コード、地域コード、番号（例：`16505551212`）のみを含む必要があります。電話番号を使用する場合、名と姓の構成も可能です。 |
-| 送信者アクション | (必須) 受信者に表示する送信者アクション。サポートされる値は `typing_on`、`typing_off`、または `mark_seen` です。 |
-| メッセージタグ | **メッセージングタイプ**が `メッセージタグ`に構成されている場合に使用します。すべてのメッセージタグの完全なリストについては、[Facebook: メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
+| メッセージングタイプ | （必須）送信するメッセージのメッセージングタイプを指定します。これは、ボットが特定のメッセージングタイプに関するポリシーを遵守し、ユーザー構成を尊重するための、より明示的な方法です。詳細については、[Facebook：メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
+|受信者識別子| （必須）メッセージの送信先となる受信者を識別します。ID、電話番号、またはユーザー参照を構成する必要があります。電話番号を使用して受信者を識別する場合、ボットが[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受けている必要があります。また、国番号、市外局番、電話番号を含む数字のみを指定してください（例：`16505551212`）。電話番号を使用する場合、名と姓を構成することもできます。 |
+| 送信者アクション | （必須）受信者に表示する送信者アクションです。サポートされる値は、`typing_on`、`typing_off`、または`mark_seen`です。 |
+| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの一覧については、[Facebook：メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
 
 ### テンプレートメッセージの送信（高度）
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| メッセージングタイプ | (必須) 送信されるメッセージのメッセージングタイプを指定し、特定のメッセージングタイプに対するポリシーの遵守とユーザーの構成を尊重するためのより明確な方法です。詳細については、[Facebook: メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
-| 受信者識別子 | (必須) メッセージを送信する受信者を識別します。ID、電話番号、またはユーザー参照が構成されている必要があります。受信者を識別するために電話番号を使用する場合、あなたのボットは[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受け、国コード、地域コード、番号（例：`16505551212`）のみを含む必要があります。電話番号を使用する場合、名と姓の構成も可能です。 |
-| テンプレートペイロード | (必須) 送信されるテンプレートペイロード。ペイロードはテンプレート機能とテンプレート変数をサポートしています。JSON形式でフォーマットされるべきです：`{ "template_type": "<TEMPLATE_TYPE>", ... }`。具体的なペイロード内容については、[メッセージテンプレートのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/templates)を参照してください。 |
-| テンプレート変数 | テンプレートエンジンを使用する場合、テンプレート変数が使用されます。これらのフィールドは属性をテンプレートペイロードで使用される変数名にマッピングします。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| クイック返信 | クイック返信は、会話中に最大11個のボタンをタイトルとオプションの画像を含めて提示する方法を提供し、コンポーザーの上に目立って表示されます。また、クイック返信を使用してユーザーの位置情報、メールアドレス、電話番号を要求することもできます。サポートされるのは配列属性のみで、ここで指定される配列は同じサイズでなければなりません。詳細については、[Facebook: クイック返信のドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
-| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を通じて `message_echoes` フィールドで配信されるカスタム文字列。1,000文字制限。メタデータは自動的にテンプレート機能とテンプレート変数をサポートします。詳細については、[Trimou テンプレートエンジン](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
-| メタデータテンプレート変数 | テンプレートエンジンを使用する場合、テンプレート変数が使用されます。これらのフィールドは属性をメタデータで使用される変数名にマッピングします。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| 通知タイプ | プッシュ通知のタイプ。<ul><li>**通常:** 音/振動（構成されていない場合に使用されます）。</li><li>**サイレントプッシュ:** 画面上の通知のみ。</li><li>**ノープッシュ:** 通知なし</li></ul>。 |
-| メッセージタグ | **メッセージングタイプ**が `メッセージタグ`に構成されている場合に使用します。すべてのメッセージタグの完全なリストについては、[Facebook: メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
+| メッセージングタイプ | （必須）送信するメッセージのメッセージングタイプを指定します。これは、ボットが特定のメッセージングタイプに関するポリシーを遵守し、ユーザー構成を尊重するための、より明示的な方法です。詳細については、[Facebook：メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages#`messaging_types`)を参照してください。 |
+|受信者識別子| （必須）メッセージの送信先となる受信者を識別します。ID、電話番号、またはユーザー参照を構成する必要があります。電話番号を使用して受信者を識別する場合、ボットが[カスタマーマッチング](https://developers.facebook.com/docs/messenger-platform/customer-matching)の承認を受けている必要があります。また、国番号、市外局番、電話番号を含む数字のみを指定してください（例：`16505551212`）。電話番号を使用する場合、名と姓を構成することもできます。 |
+| テンプレートペイロード | （必須）送信するテンプレートペイロードです。ペイロードは、テンプレート機能とテンプレート変数をサポートします。JSON形式で指定する必要があります：`{ "template_type": "<TEMPLATE_TYPE>", ... }`。具体的なペイロードの内容については、[メッセージテンプレートのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/templates)を参照してください。 |
+| テンプレート変数 | テンプレートエンジンを使用する場合、テンプレート変数が使用されます。これらのフィールドは、属性をテンプレートペイロードで使用される変数名にマッピングします。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| クイック返信| クイック返信を使用すると、タイトルと任意の画像を含む最大11個のボタンを会話内に表示できます。これらのボタンは、入力欄の上に目立つように表示されます。また、クイック返信を使用して、ユーザーの位置情報、メールアドレス、電話番号を要求することもできます。配列属性のみがサポートされ、ここで指定する配列はすべて同じサイズである必要があります。詳細については、[Facebook：クイック返信のドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/quick-replies)を参照してください。 |
+| メタデータ | [Facebook Messenger Webhook](https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/)を介して`message_echoes`フィールドで配信されるカスタム文字列です。上限は1,000文字です。メタデータは、テンプレート機能とテンプレート変数を自動的にサポートします。詳細については、[Trimouテンプレートエンジン](https://docs.tealium.com/about-connector-templates/)を参照してください。 |
+| メタデータテンプレート変数 | テンプレートエンジンを使用する場合、テンプレート変数が使用されます。これらのフィールドは、属性をメタデータで使用される変数名にマッピングします。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| 通知タイプ | プッシュ通知のタイプです。<ul><li>**通常：** 音／バイブレーション（未構成の場合に使用されます）。</li><li>**サイレントプッシュ：** 画面上の通知のみ。</li><li>**プッシュなし：** 通知なし</li></ul>。 |
+| メッセージタグ | **メッセージングタイプ**が`Message Tag`に構成されている場合に使用します。すべてのメッセージタグの一覧については、[Facebook：メッセージタグのドキュメント](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags)を参照してください。 |
 
-## ベンダー文書
+## ベンダーのドキュメント
 
 * [ページアクセストークン](https://developers.facebook.com/docs/facebook-login/access-tokens#pagetokens)
 * [メッセージングタイプ](https://developers.facebook.com/docs/messenger-platform/send-messages/#messaging_types)
@@ -107,4 +107,4 @@ url: https://docs.tealium.com/ja/server-side-connectors/facebook-messenger-conne
 
 ##### API
 
-* [Facebook 送信 HTTP API](https://developers.facebook.com/docs/messenger-platform/reference/send-api)
+* [Facebook Send HTTP API](https://developers.facebook.com/docs/messenger-platform/reference/send-api)

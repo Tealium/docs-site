@@ -16,7 +16,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -24,11 +24,13 @@ After adding the connector, configure the following settings:
 * **Client ID:** The OAuth client ID provided by Rakuten.
 * **Client Secret:** The OAuth client secret key provided by Rakuten.
 
+After you configure the connector, click **Done**.
+
 The connector uses OAuth 2.0 client credentials authentication. It exchanges the client ID and client secret for a bearer token at `https://api.linksynergy.com/token`. Bearer tokens expire after 4 hours.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Transaction | ✗ | ✓ |
 | Send Refund | ✗ | ✓ |

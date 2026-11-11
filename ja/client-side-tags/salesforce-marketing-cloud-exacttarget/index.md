@@ -1,57 +1,56 @@
 ---
-title: Salesforce Marketing Cloud (ExactTarget) タグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでSalesforce Marketing Cloud (ExactTarget) タグを構成する方法について説明します。
+title: Salesforce Marketing Cloud（ExactTarget）タグ構成ガイド
+description: この記事では、タグ管理アカウントで Salesforce Marketing Cloud（ExactTarget）タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/salesforce-marketing-cloud-exacttarget/
 ---
-Salesforce Marketing Cloud（旧ExactTarget）は、企業と顧客を全く新しい方法でつなぐ1対1の顧客旅行のプラットフォームです。
+Salesforce Marketing Cloud（旧称 ExactTarget）は、企業と顧客をまったく新しい方法で結び付け、1 対 1 のカスタマージャーニーを実現するプラットフォームです。
 
-## タグのヒント
+## タグに関するヒント
 
-* 以下のE-Commerce拡張パラメータをサポートしています：
-    * 注文ID
-    * 製品IDのリスト
+* 次の E-Commerce 拡張パラメータをサポートします。
+    * 注文 ID
+    * 商品 ID のリスト
     * 価格のリスト
 * このタグをランディングページとコンバージョンページに追加します。
-* 自動的に訪問情報をクッキーに保存し、確認ページで送信します。
-* マッピングを使用して、標準の構成値またはE-Commerce拡張値を動的に上書きします。
+* 訪問情報を Cookie に自動的に保存し、確認ページで送信します。
+* マッピングを使用すると、標準構成値または E-Commerce 拡張機能の値を動的に上書きできます。
 
-## タグ構成
+## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加するときに、次の構成を行います：
+タグを追加する際は、次の構成を構成します。
 
-* **アカウント**: ExactTargetメンバーID。ランディングページのクエリ文字列の`mid = param`と一致する必要があります。
-* **コンバージョンページID**: 複数のコンバージョンページを区別するための一意の番号。
-* **コンバージョンページエイリアス**: このコンバージョンページに対してExactTargetで表示される名前。
-* **コンバージョンページ順序**: コンバージョンページがExactTargetに表示される順序を表す番号。
-* **S4を使用する**: デフォルトは**いいえ**です。ピクセル位置`click.s4.exacttarget.com`を使用するには**はい**に構成します。
+* **アカウント**：ExactTarget のメンバー ID。ランディングページのクエリ文字列にある `mid = param` と一致する必要があります。
+* **コンバージョンページ ID**：複数のコンバージョンページを区別するために使用する一意の番号です。
+* **コンバージョンページのエイリアス**：このコンバージョンページについて ExactTarget に表示する名前です。
+* **コンバージョンページの表示順序**：ExactTarget でコンバージョンページを表示する順序を表す番号です。
+* **S4 を使用**：デフォルトは **いいえ** です。`click.exacttarget.com` の代わりにピクセルの送信先として `click.s4.exacttarget.com` を使用するには、**はい** に構成します。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `account` |アカウントID  |
-|  `convid` |コンバージョンリンクID  |
-|  `alias` |リンクエイリアス  |
-|  `displayorder` |表示順序  |
-|   `s4` |S4を使用する |
+| `account` | アカウント ID |
+| `convid` | コンバージョンリンク ID |
+| `alias` | リンクのエイリアス |
+| `displayorder` | 表示順序 |
+| `s4` | S4 を使用 |
 
 ### E-Commerce
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `order_id` (`_corder`を上書き) |注文ID  |
-| `product_id` (`_cprod`を上書き)  | 製品IDのリスト  |
-|  `product_unit_price` (`_cprice`を上書き)  | 価格のリスト |
-
+| `order_id`（`_corder` を上書き） | 注文 ID |
+| `product_id`（`_cprod` を上書き） | 商品 ID のリスト |
+| `product_unit_price`（`_cprice` を上書き） | 価格のリスト |

@@ -3,7 +3,7 @@ title: Reddit Conversions Connector Setup Guide
 description: This article describes how to set up the Reddit Conversions connector.
 url: https://docs.tealium.com/server-side-connectors/reddit-conversions-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -40,6 +40,8 @@ After adding the connector, configure the following settings:
   * To migrate from OAuth to conversion access token, enter the token in the conversion access token field and the connector uses that token instead of the OAuth token.
   * To override this token per event, map the **Conversion Access Token Override** field in the Send Conversion V3 action.
 
+After you configure the connector, click **Done**.
+
 ## Deduplication for web events
 
 To configure this connector to deduplicate events from the [Reddit Pixel tag](https://docs.tealium.com/reddit-pixel-tag/), use the event IDs sent as event attributes with the following naming convention:
@@ -48,7 +50,7 @@ To configure this connector to deduplicate events from the [Reddit Pixel tag](ht
 reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
 ```
 
-You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/facebook-pixel-tag-uid.png)
 
@@ -83,7 +85,7 @@ If you're only receiving event ID attributes using the naming format `reddit_pix
 
 ### Automatic deduplication
 
-When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to map `Event ID` if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to map `Event ID` if this section is populated and you are using Tag Management. However, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector follows this order of operations:
 
@@ -93,7 +95,7 @@ The connector follows this order of operations:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion V3 | ✗ | ✓ |
 | Send Conversion V2 (deprecated) | ✗ | ✓ |
@@ -165,7 +167,7 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Region | The region code of the user in ISO 3166-2 standard or the region code without country prefix. |
 | Pixel ID Override | The Pixel ID of the Reddit ad account that the conversion event belongs to. |
 | Conversion Access Token Override | Overrides the conversion access token set in the connector configuration for this event. Use this to route events to multiple Reddit Ad accounts or to assign tokens from a secure attribute. If this field is empty or not mapped, the connector uses the configured value. If neither is set, the event is skipped. Events with different override tokens are split into separate requests. |
-| Automatic Deduplication | When the Tealium iQ tag UID is provided, the connector automatically looks for the Conversion ID or Event ID value sent from Tealium. |
+| Automatic Deduplication | When the Tag Management tag UID is provided, the connector automatically looks for the Conversion ID or Event ID value sent from Tealium. |
 | Action Source | The source of the conversion event. Supported values are **WEBSITE**, **APP**, **PHYSICAL_STORE**, and **OTHER**. If left blank, the connector defaults to **WEBSITE**. |
 | Event Source URL | The full URL of the web page where the conversion event occurred. Reddit recommends including query parameters to enable improved attribution via automatic click ID extraction. If left blank and E-Commerce Automapping is enabled, the connector automaps the current page URL. |
 
@@ -244,4 +246,4 @@ This connector uses the following vendor API:
 
 | Parameter | Description |
 | --- | --- |
-| Tealium iQ Tag ID |  When the Tealium iQ Tag UID is provided, Tealium automatically looks for your event ID value sent from Tealium iQ. |
+| Tealium iQ Tag ID |  When the Tag Management Tag UID is provided, Tealium automatically looks for your event ID value sent from Tag Management. |

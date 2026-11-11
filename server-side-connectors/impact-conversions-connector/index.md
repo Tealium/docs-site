@@ -5,13 +5,13 @@ url: https://docs.tealium.com/server-side-connectors/impact-conversions-connecto
 ---
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion | ✓ | ✓ |
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For more information, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

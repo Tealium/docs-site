@@ -1,123 +1,123 @@
 ---
-title: HTTP API - 高度なインカミングウェブフック構成ガイド
-description: この記事では、HTTP API - 高度なデータソースの使用方法について説明します。
+title: HTTP API - 高度な受信 Webhook セットアップガイド
+description: この記事では、HTTP API - Advanced データソースの使用方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/http-api-advanced/
 ---
 ## 仕組み
 
-HTTP API - 高度なデータソースは、条件によって受信リクエストボディを解析できる汎用的なデータソースです。このデータソースは、HTTPエンドポイントを提供し、複雑なオブジェクトのフラット化とバッチイベントのサポートを備えた単一のHTTP呼び出しでリアルタイムのイベントデータを収集することができます。エンドポイントは柔軟で、ウェブページのトラッキングピクセルやカスタムアプリケーションのJSON APIとして実装することができます。
+HTTP API - Advanced データソースは、受信したリクエスト本文を条件に応じて解析できる汎用データソースです。このデータソースは、複雑なオブジェクトのフラット化とイベントのバッチ処理をサポートし、1 回の HTTP 呼び出しでリアルタイムのイベントデータを収集できる HTTP エンドポイントを提供します。このエンドポイントは柔軟性が高く、Web ページのトラッキングピクセルとして、またはカスタムアプリケーションの JSON API として実装できます。
 
-このデータソースは、HTTP APIデータソースと似ていますが、複雑なJSONオブジェクトとバッチ処理の追加サポートがあります。
+このデータソースは HTTP API データソースと似ていますが、複雑な JSON オブジェクトとバッチ処理もサポートしています。
 
-HTTP POSTを使用して複雑なJSONオブジェクトを送信すると、以下のようにフラット化されます：
+複雑な JSON オブジェクトを使用して HTTP POST で送信されたイベントは、次のようにフラット化されます。
 
-* イベント属性名は、オブジェクトのプロパティを小文字にしてアンダースコア("\_")で結合して作成されます。例えば：  
-元のデータ: `"alpha" : { "beta" : true }`  
-フラット化されたイベント属性: `"alpha_beta" : true`
-* 配列内の数値、ブーリアン、文字列は保持されます。
+* イベント属性名は、オブジェクトのプロパティを小文字に変換し、アンダースコア（「\_」）で結合して作成されます。例：  
+ソースデータ：`"alpha" : { "beta" : true }`  
+フラット化されたイベント属性：`"alpha_beta" : true`
+* 配列内の数値、ブール値、文字列は保持されます。
 * 配列内のオブジェクトと配列は文字列化されます。
 
-リアルタイムでデータを送信する必要があり、リクエストを標準のTealium Collectエンドポイントの形式要件に合わせて変更することができない場合、このデータソースタイプを使用します。
+リアルタイムでデータを送信する必要があり、標準の Tealium Collect エンドポイントの形式要件を満たすようにリクエストを変更できない場合は、このデータソースタイプを使用します。
 
 ### 要件
 
-* Tealium EventStreamまたはTealium AudienceStream
+* Event Streaming または Customer Data Platform（CDP）
 
 ### バッチイベント
 
-HTTP API - 高度なデータソースのHTTPエンドポイントは、単一のリクエストで複数のイベントをサポートします。これらのイベントはバッチイベントと呼ばれます。バッチイベントでは、すべてのレコードのステータスに基づいて一つのレスポンスコードを受け取ります。単一のレコード/イベントが失敗した場合、そのイベントのみが失敗し、残りは処理されます。
+HTTP API - Advanced データソースの HTTP エンドポイントは、1 回のリクエストで複数のイベントをサポートします。これらのイベントをバッチイベントと呼びます。バッチイベントでは、すべてのレコードのステータスに基づく 1 つのレスポンスコードを受信します。1 つのレコードまたはイベントが失敗しても、そのイベントのみが失敗し、残りは処理されます。
 
 ### レート制限
 
-HTTP API - 高度なデータソースは、最大レート制限として100イベント/秒をサポートしています。
+HTTP API - Advanced データソースでは、最大レートが 100 イベント/秒に制限されています。
 
-例えば、以下のように送信する場合：
+たとえば、次のように送信できます。
 
-* 1回の呼び出しにつき1イベントを送信する場合、1秒あたり100回の呼び出しが可能です。
-* 1回の呼び出しにつき10イベントを送信する場合、1秒あたり10回の呼び出しが可能です。
-* 1回の呼び出しにつき100イベントを送信する場合、1秒あたり1回の呼び出しが可能です。
+* 1 回の呼び出しにつき 1 イベントの場合、1 秒あたり 100 回呼び出せます。
+* 1 回の呼び出しにつき 10 イベントの場合、1 秒あたり 10 回呼び出せます。
+* 1 回の呼び出しにつき 100 イベントの場合、1 秒あたり 1 回呼び出せます。
 
-レート制限を超えると、TealiumはHTTP 429レスポンスを送信し、リクエストが多すぎることを示します。
+レート制限を超えると、リクエストが多すぎることを示す HTTP 429 レスポンスが Tealium から送信されます。
 
 
 <blockquote>
-ビジネスのニーズが高いイベント制限を必要とする場合は、Tealiumのアカウントマネージャーに連絡してください。
+ビジネス上、より高いイベント上限が必要な場合は、Tealium のアカウントマネージャーにお問い合わせください。
 </blockquote>
 
 
-## POSTメソッド
+## POST メソッド
 
-HTTP API - 高度なデータソースはPOSTメソッドをサポートしています。GETメソッドのリクエストについては、[HTTP API](https://docs.tealium.com/platforms/http-api/endpoint-spec/)を使用してください。
+HTTP API - Advanced データソースは POST メソッドをサポートしています。GET メソッドのリクエストには、[HTTP API](https://docs.tealium.com/platforms/http-api/endpoint-spec/) を使用してください。
 
-HTTP API - 高度なデータソースにアクセスするための次のエンドポイントを使用します：
+HTTP API - Advanced データソースにアクセスするには、次のエンドポイントを使用します。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-オプションの`tealium_trace_id`クエリパラメータ(`tealium_trace_id=TRACEID`)を使用して、Traceツールを使用したデバッグをサポートします。トレースの使用についての詳細は、[About Trace](https://docs.tealium.com/about-trace/)を参照してください。
+Trace ツールによるデバッグをサポートするには、オプションの `tealium_trace_id` クエリパラメータ（`tealium_trace_id=TRACEID`）を使用します。Trace の使用方法について詳しくは、[Trace について](https://docs.tealium.com/about-trace/)を参照してください。
 
 
 <blockquote>
-データソースキーを見つけるには、**Data Sources**ダッシュボードに移動し、使用したいデータソースをクリックし、**Data Source Key**フィールドからキーをコピーします。
+データソースキーを確認するには、**データソース**ダッシュボードに移動し、使用するデータソースをクリックして、**データソースキー**フィールドからキーをコピーします。
 </blockquote>
 
 
 ## 訪問識別子
 
-AudienceStreamは以下の組み合わせで訪問を追跡します：
+訪問のトラッキングでは、次の組み合わせを使用します。
 
-* **匿名ID**：通常、訪問を匿名で追跡するために使用されるID（例えば、デバイスやブラウザから）。[既知の訪問](#known-visitors-server-to-server)の場合、ユーザー識別子に基づく値を使用できます。
-* **ユーザー識別子**：訪問が既知であることが確認された後に送信されます。特定のデバイスではなく、ユーザーを識別する値に基づいています。
+* **匿名 ID**：通常、訪問を匿名でトラッキングするために使用する ID（デバイスやブラウザから取得する ID など）です。[既知の訪問](#known-visitors-server-to-server)の場合は、ユーザー識別子に基づく値を使用できます。
+* **ユーザー識別子**：訪問が判明した後に送信されます。特定のデバイスではなく、ユーザーを識別する値に基づきます。
 
-### 匿名ID
+### 匿名 ID
 
-匿名IDは、AudienceStreamがイベントと訪問の間で訪問を関連付けるために使用する匿名識別子です。この値はGUIDであることと、訪問に対して一貫性があることを確認してください。また、この値は各サーバーサイドプロファイルごとに一意である必要があります。
+匿名 ID は、Customer Data Platform（CDP）がイベントや訪問をまたいで訪問を関連付けるために使用する匿名識別子です。この値が GUID であり、同じ訪問に対して一貫していることを確認してください。また、この値はサーバーサイドプロファイルごとに一意である必要があります。
 
-匿名IDのキー名は`tealium_visitor_id`です。
+匿名 ID のキー名は `tealium_visitor_id` です。
 
-ビジネスケースに応じて、匿名値または既知のユーザー識別子に基づく値を使用できます。
+ビジネス上のユースケースに応じて、匿名の値または既知のユーザー識別子に基づく値を使用できます。
 
-#### 匿名値
+#### 匿名の値
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
-| 必須 | N/A |
+| 必須 | 該当なし |
 
-Tealium iQタグ管理を使用し、API呼び出しをサーバー間で送信して匿名訪問プロファイルをエンリッチする場合、`tealium_visitor_id`の値は`utag_main_v_id`クッキーの値と一致する必要があります。utag.jsからの組み込み変数についての詳細は、[JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/)を参照してください。
+Tag Management を使用し、匿名訪問プロファイルを拡充するためにサーバー間で API 呼び出しを送信している場合、`tealium_visitor_id` の値は `utag_main_v_id` Cookie の値と一致する必要があります。utag.js の組み込み変数について詳しくは、[JavaScript（Web）> データレイヤー](https://docs.tealium.com/platforms/javascript/data-layer/)を参照してください。
 
 
 <blockquote>
-Adobe LaunchまたはGoogle Tag Managerを使用している場合、値は**TEAL**クッキーの`v`部分と一致する必要があります。
+Adobe Launch または Google Tag Manager を使用している場合、この値は **TEAL** Cookie の `v` 部分と一致する必要があります。
 </blockquote>
 
 
-#### 既知の訪問サーバー間
+#### サーバー間通信における既知の訪問
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | 必須 | 推奨 |
 
-既知の訪問のデータを送信する場合（`email_address`などの訪問ID属性に値が存在する場合）、以下のものを連結して含めます：
+既知の訪問のデータ（`email_address` など、訪問 ID 属性の値が存在する場合）を送信するときは、次の項目を連結した値を含めます。
 
 * アカウント
 * プロファイル  
-プロファイル名を含めることで、`tealium_visitor_id`が各サーバーサイドプロファイルごとに一意になり、同じ訪問プロファイルが一つの地域内の複数のサーバーサイドプロファイルに送信される場合に必要となります。
-* 訪問ID属性IDと値 
+プロファイル名を含めることで、`tealium_visitor_id` がサーバーサイドプロファイルごとに一意になります。これは、同じ訪問プロファイルを同一リージョン内の複数のサーバーサイドプロファイルに送信する場合に不可欠です。
+* 訪問 ID 属性の ID と値 
 <blockquote>
-訪問ID属性IDは、属性リストの属性名の隣や詳細を展開した中にあります。詳細については、[About Attributes](https://docs.tealium.com/about-attributes/#attribute-ids)を参照してください。
+訪問 ID 属性の ID は、属性リストの属性名の横、または展開した詳細内で確認できます。詳しくは、[属性について](https://docs.tealium.com/about-attributes/#attribute-ids)を参照してください。
 </blockquote>
 
-* `tealium_visitor_id`パラメータの値
+* `tealium_visitor_id` パラメータの値
 
-例えば、以下の値の場合：
+たとえば、次の値があるとします。
 
 * アカウント名：`my-account`
 * プロファイル：`main`
-* 訪問ID属性ID：`7688`
-* 伝えたい顧客番号の値：`45653454`
+* 訪問 ID 属性の ID：`7688`
+* 渡す顧客番号の値：`45653454`
 
-これらの値を以下のように連結します：
+これらの値は、次のように連結します。
 
 ```
 tealium_visitor_id":"__my-account_main__7688_45653454__"
@@ -125,11 +125,11 @@ tealium_visitor_id":"__my-account_main__7688_45653454__"
 
 
 <blockquote>
-`tealium_visitor_id`が正しくフォーマットされていることを確認してから進めてください。フォーマットが正しくないパラメータはAudienceStreamでエラーを引き起こし、正しく追跡されない可能性があります。
+続行する前に、`tealium_visitor_id` が正しくフォーマットされていることを確認してください。パラメータのフォーマットが正しくない場合、CDP でエラーが発生し、適切にトラッキングされない可能性があります。
 </blockquote>
 
 
-JSONの例：
+JSON の例：
 
 ```json
 {
@@ -144,47 +144,46 @@ JSONの例：
 
 
 <blockquote>
-匿名訪問を使用するか既知の訪問を使用するかに関わらず、API呼び出しに一貫した`tealium_visitor_id`が含まれていない場合、各イベントは新しい訪問を生成し、訪問のスティッチングは不可能になります。
+匿名訪問と既知の訪問のどちらを使用する場合でも、API 呼び出しに一貫した `tealium_visitor_id` が含まれていないと、イベントごとに新しい訪問が生成され、訪問のスティッチングができなくなります。
 </blockquote>
 
 
 ### ユーザー識別子
 
-AudienceStreamを使用する場合、トラッキング呼び出しに既知のユーザー識別子を渡すことができます。例えば、`email_address`や`login_id`などです。
+CDP を使用する場合、トラッキング呼び出しで既知のユーザー識別子を渡すことができます。たとえば、`email_address` や `login_id` です。
 
-ユーザー識別子は、EventStreamを使用していてベンダーコネクタにIDを提供する必要がある場合にも必要です。
+Event Streaming を使用し、ベンダーコネクタに ID を提供する必要がある場合にも、ユーザー識別子が必要です。
 
-AudienceStreamでは、これらのユーザー識別子は[訪問ID属性](https://docs.tealium.com/visitor-id-attribute/)をエンリッチするために使用されます。
+CDP では、これらのユーザー識別子を使用して[訪問 ID 属性](https://docs.tealium.com/visitor-id-attribute/)を拡充します。
 
 ## データソースの追加
 
-このセクションでは、HTTP API - 高度なデータソースを追加し、ウェブフックを作成する方法について説明します。
+このセクションでは、HTTP API - Advanced データソースを追加し、Webhook を作成する方法について説明します。
 
-HTTP API - 高度なデータソースを追加してから進め、生成されたエンドポイントを外部システムで使用するためにコピーします。
+続行する前に HTTP API - Advanced データソースを追加し、生成されたエンドポイントをコピーして外部システムで使用します。
 
 
 <blockquote>
-HTTP API - 高度なエンドポイントは、データソースを追加し、プロファイルを公開するまでアクティブになりません。
+HTTP API - Advanced エンドポイントは、データソースを追加してプロファイルをパブリッシュするまで有効になりません。
 </blockquote>
 
 
-関連：[データソースの追加方法](https://docs.tealium.com/about-data-sources/)
+関連項目：[データソースを追加する方法](https://docs.tealium.com/about-data-sources/)
 
 ## レスポンスコード
 
 |レスポンスコード| 説明|
 |---| ---|
 | HTTP 204 | リクエスト成功|
-| HTTP 400 | JSONリクエストの形式が不正|
+| HTTP 400 | 不正な形式の JSON リクエスト|
 | HTTP 404 |
 
 ## 例
 
-HTTP API - 高度なインカミングウェブフックは、JavaScript、bashスクリプト、またはcurlを使用してHTTP API高度な呼び出しを送信したい場合に便利です。
+HTTP API - Advanced Incoming Webhook は、JavaScript、bash スクリプト、または curl を使用して HTTP API Advanced 呼び出しを送信する場合に便利です。
+### ペイロードとしての JSON 配列
 
-### JSON配列をペイロードとして
-
-JSON配列を全体のペイロードとして渡すと、それは複数のイベント（バッチング）として扱われます。
+JSON 配列をペイロード全体として渡すと、複数のイベント（バッチ）として扱われます。
 
 ```json
 [
@@ -204,84 +203,85 @@ JSON配列を全体のペイロードとして渡すと、それは複数のイ�
   }
 ]
 ```
-このペイロードは、いくつかのイベントに変換されます：
+
+このペイロードは、複数のイベントに変換されます。
 
 ```json
-// 最初のイベント
+// First Event
   {
     "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
     "my_string": "12345a",
-    "detail_name":  "イベントA"
+    "detail_name":  "Event A"
   }
 
-  // 二番目のイベント
+  // Second Event
   {
     "tealium_visitor_id": "e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629",
     "my_string": "12345b",
-    "detail_name":  "イベントB"
+    "detail_name":  "Event B"
   }
 ```
 
-### ペイロードのキー値としてのJSON配列
+### ペイロード内のキーと値としての JSON 配列
 
-ペイロードのキーの値として配列を渡すと、その配列は文字列の配列にフラット化されます。
+ペイロード内のキーの値として配列を渡すと、その配列は文字列の配列にフラット化されます。
 
-例えば、以下の配列：
+たとえば、次の配列は、
 
 ```json
 {
    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
    "my_string": "12345a",
-   "detail_name": "イベントA",
+   "detail_name": "Event A",
    "events": [
        {
            "id": "1",
-           "name": "イベントA"
+           "name": "Event A"
        },
        {
            "id": "2",
-           "name": "イベントB"
+           "name": "Event B"
        },
        {
            "id": "3",
-           "name": "イベントC"
+           "name": "Event C"
        }
    ]
 }
 
 ```
 
-は、以下の文字列の配列にフラット化されます：
+次の文字列の配列にフラット化されます。
 
 ```json
 {
    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
    "my_string": "12345a",
-   "detail_name": "イベントA",
+   "detail_name": "Event A",
        "events": [
-        "{\"id\":\"1\",\"name\":\"イベントA\"}",
-        "{\"id\":\"2\",\"name\":\"イベントB\"}",
-        "{\"id\":\"3\",\"name\":\"イベントC\"}"
+        "{\"id\":\"1\",\"name\":\"Event A\"}",
+        "{\"id\":\"2\",\"name\":\"Event B\"}",
+        "{\"id\":\"3\",\"name\":\"Event C\"}"
     ]
 }
 
 ```
 
-複雑なビジネスケースや要件に対しては、HTTP API - Advancedエンドポイントに加えて、または代わりに、[Tealiumイベント変換関数](https://docs.tealium.com/about-data-transformation-functions/)を使用することを検討してください。
+複雑なビジネスユースケースや要件については、HTTP API - Advanced エンドポイントに加えて、またはその代わりに、[Tealium Event Transformation 関数](https://docs.tealium.com/about-data-transformation-functions/)の使用を検討してください。
 
 ## 複雑なオブジェクト
 
-このセクションでは、複雑なオブジェクトの入力コードと結果の（フラット化された）出力の例を提供します。
+このセクションでは、複雑なオブジェクトの入力コードと、その結果生成される（フラット化された）出力の例を示します。
 
 ### フラット化前
 
-以下の購入イベントの例は、複雑なオブジェクトを持つクライアントサイドのeコマースイベントがどのようにフラット化されるかを示しています。
+次の購入イベントの例は、複雑なオブジェクトを含むクライアント側の e コマースイベントがどのようにフラット化されるかを示しています。
 
 ```json
 {
    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
    "my_string": "12345a",
-   "detail_name": "イベントA",
+   "detail_name": "Event A",
   "ecommerce": {
     "event": "purchase",
     "purchase": {
@@ -314,13 +314,13 @@ JSON配列を全体のペイロードとして渡すと、それは複数のイ�
 
 ### フラット化後
 
-フラット化後、購入イベントは次のようになります：
+フラット化すると、購入イベントは次のようになります。
 
 ```json
 {
    "tealium_visitor_id": "503126878d17fcd6bde7df320ff6eb7c278a1c42f",
    "my_string": "12345a",
-   "detail_name": "イベントA",
+   "detail_name": "Event A",
     "ecommerce_event": "purchase",
     "ecommerce_purchase_customer_id": "8237572",
     "ecommerce_purchase_customer_email": "john.smith@example.com",
@@ -343,5 +343,5 @@ JSON配列を全体のペイロードとして渡すと、それは複数のイ�
 
 ## 制限事項
 
-* 最大ペイロードサイズは3.5 MBです。
-* リクエストごとに処理できるレコードの数は、ペイロードサイズによって制限されます。
+* ペイロードの最大サイズは 3.5 MB です。
+* リクエストごとに処理できるレコード数は、ペイロードサイズによって制限されます。

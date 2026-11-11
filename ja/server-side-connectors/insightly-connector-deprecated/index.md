@@ -1,17 +1,17 @@
 ---
-title: Insightlyコネクタ構成ガイド（廃止）
+title: Insightlyコネクタ構成ガイド（非推奨）
 description: この記事では、Customer Data HubアカウントでInsightlyコネクタを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-deprecated/
 ---
 
 <blockquote>
-このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。Insightly CRMコネクタについては、[Insightly CRMコネクタ構成ガイド](https://docs.tealium.com/insightly-crm-connector/)を参照してください。
+このコネクタは非推奨となり、タグマーケットプレイスでは利用できなくなりました。Insightly CRMコネクタについては、[Insightly CRMコネクタ構成ガイド](https://docs.tealium.com/insightly-crm-connector/)を参照してください。
 </blockquote>
 
 
 ## コネクタのアクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
 |連絡先を追加| ✓| ✗|
 |連絡先を更新| ✓| ✗|
@@ -20,18 +20,16 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-depr
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
 * **APIキー**
-  * Insightly APIキーの場所については、次を参照してください：[APIキーの検索またはリセット](https://support.insight.ly/hc/en-us/articles/204864594-Finding-your-Insightly-API-key)
+  * Insightly APIキーの確認場所については、[APIキーの確認またはリセット](https://support.insight.ly/hc/en-us/articles/204864594-Finding-your-Insightly-API-key)を参照してください。
 
 ## アクション構成 - パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでコネクタのアクションを構成します。
-
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+**続行**をクリックして、コネクタのアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
 ### アクション - 連絡先を追加
 
@@ -39,9 +37,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-depr
 
 |**パラメータ**| **説明**|
 |---| ---|
-|名前|  <ul><li>連絡先の名前。</li><li>名前または姓が必要です。</li></ul> |
-|姓|  <ul><li>連絡先の姓。</li><li>名前または姓が必要です。</li></ul> |
-|属性|  <ul><li>連絡先の追加属性。</li><li>これらのパラメータはInsightly内に存在する必要があります。</li><li>利用可能な属性のリストについては、次を参照してください：[Insightlyのドキュメンテーション](https://api.insight.ly/v2.3/Help#!/Contacts/AddContact)。</li></ul> |
+|名|  <ul><li>連絡先の名。</li><li>名または姓のいずれかが必要です。</li></ul> |
+|姓|  <ul><li>連絡先の姓。</li><li>名または姓のいずれかが必要です。</li></ul> |
+|属性|  <ul><li>連絡先の追加属性。</li><li>これらのパラメータはInsightly内に存在している必要があります。</li><li>利用可能な属性のリストについては、[Insightlyのドキュメント](https://api.insight.ly/v2.3/Help#!/Contacts/AddContact)を参照してください。</li></ul> |
 |タグ|  <ul><li>連絡先に割り当てるタグ。</li></ul> |
 
 ### アクション - 連絡先を更新
@@ -51,9 +49,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-depr
 |**パラメータ**| **説明**|
 |---| ---|
 |連絡先ID|  <ul><li>更新する連絡先のID。</li></ul> |
-|名前|  <ul><li>連絡先の名前。</li><li>名前または姓が必要です。</li></ul> |
-|姓|  <ul><li>連絡先の姓。</li><li>名前または姓が必要です。</li></ul> |
-|属性|  <ul><li>更新する追加の属性。</li><li>利用可能な属性のリストについては、次を参照してください：[Insightlyのドキュメンテーション](https://api.insight.ly/v2.3/Help#!/Contacts/UpdateContact)。</li></ul> |
+|名|  <ul><li>連絡先の名。</li><li>名または姓のいずれかが必要です。</li></ul> |
+|姓|  <ul><li>連絡先の姓。</li><li>名または姓のいずれかが必要です。</li></ul> |
+|属性|  <ul><li>更新する追加属性。</li><li>利用可能な属性のリストについては、[Insightlyのドキュメント](https://api.insight.ly/v2.3/Help#!/Contacts/UpdateContact)を参照してください。</li></ul> |
 |タグ|  <ul><li>更新するタグ。</li></ul> |
 
 ### アクション - リードを追加
@@ -63,8 +61,8 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-depr
 |**パラメータ**| **説明**|
 |---| ---|
 |姓|  <ul><li>リードの姓。</li></ul> |
-|名前|  <ul><li>リードの名前。</li></ul> |
-|属性|  <ul><li>リードの追加属性。</li><li>利用可能な属性のリストについては、次を参照してください：[Insightlyのドキュメンテーション](https://api.insight.ly/v2.3/Help#!/Leads/AddLead)。</li></ul> |
+|名|  <ul><li>リードの名。</li></ul> |
+|属性|  <ul><li>リードの追加属性。</li><li>利用可能な属性のリストについては、[Insightlyのドキュメント](https://api.insight.ly/v2.3/Help#!/Leads/AddLead)を参照してください。</li></ul> |
 |タグ|  <ul><li>リードに割り当てるタグ。</li></ul> |
 
 ### アクション - リードを更新
@@ -75,6 +73,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/insightly-connector-depr
 |---| ---|
 |リードID|  <ul><li>更新するリードのID。</li></ul> |
 |姓|  <ul><li>リードの姓。</li></ul> |
-|名前|  <ul><li>リードの名前。</li></ul> |
-|属性|  <ul><li>更新する追加の属性。</li><li>利用可能な属性のリストについては、次を参照してください：[Insightlyのドキュメンテーション](https://api.insight.ly/v2.3/Help#!/Leads/UpdateLead)。</li></ul> |
+|名|  <ul><li>リードの名。</li></ul> |
+|属性|  <ul><li>更新する追加属性。</li><li>利用可能な属性のリストについては、[Insightlyのドキュメント](https://api.insight.ly/v2.3/Help#!/Leads/UpdateLead)を参照してください。</li></ul> |
 |タグ|  <ul><li>更新するタグ。</li></ul> |

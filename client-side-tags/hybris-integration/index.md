@@ -5,14 +5,14 @@ url: https://docs.tealium.com/client-side-tags/hybris-integration/
 ---
 ## Prerequisites
 
-* A Tealium IQ account.
+* A Tag Management account.
 * hybris v5.0.1+ extracted and built, including the B2C Commerce Accelerator.
 
 ## Definitions
 
 * Universal Data Object (UDO) = The Data Layer object of key-value pairs.   
  This object is generated in the page as the global JavaScript object `utag_data`. The Tealium `utag.js` uses `utag_data` as the base Data Layer for your tags.
-* Tealium Account = The account assigned to your purchase of Tealium iQ.
+* Tealium Account = The account assigned to your purchase of Tag Management.
 * Tealium Profile = The specific web property name for your website.
 
 ## Installing Addon
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/client-side-tags/hybris-integration/
   - `DaddonStorefront.yacceleratorstorefront="yacceleratorstorefront"`
 1. Update the following files:  
   * For `${HYBRIS_BIN\}/ext-template/yacceleratorstorefront/web/webroot/WEB-INF/tags/desktop/template/master.tag` by adding:<br>&lt;%@ taglib prefix="tealiumiqaddon" tagdir="/WEB-INF/tags/addons/tealiumiqaddon/shared/analytics" %&gt; at the top of the file.<br>&lt;tealiumiqaddon:sync/&gt; after the &lt;head&gt; tag<br>&lt;tealiumiqaddon:tealium/&gt; after the &lt;body&gt; tag
-  * For `${HYBRIS_BIN}/custom/tealiumiqaddon/project.properties.template` by changing:  <br> **tealiumiqaddon.account**,**tealiumiqaddon.profile**, and **tealiumiqaddon.target** to your Tealium IQ account-specific information.<br>Modify `tealiumiqaddon.utagSyncEnabled = 1` if you want to enable `utag.sync.js` injection into the &lt;head&gt; of your HTML page. This feature is optional and disabled by default.
+  * For `${HYBRIS_BIN}/custom/tealiumiqaddon/project.properties.template` by changing:  <br> **tealiumiqaddon.account**,**tealiumiqaddon.profile**, and **tealiumiqaddon.target** to your Tag Management account-specific information.<br>Modify `tealiumiqaddon.utagSyncEnabled = 1` if you want to enable `utag.sync.js` injection into the &lt;head&gt; of your HTML page. This feature is optional and disabled by default.
 
 ## Adding Custom Data
 

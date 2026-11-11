@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-integrations/about/
 
 以前のバージョンの`utag.js`でサポートを有効にするには、**uTag Loader**テンプレートを編集し、`##UTGEN##`パブリッシュエンジンフラグの下に`##UTCM##`を追加します。
 
-![](https://docs.tealium.com/images/iq-tag-management/utcm-utag-loader-template.png)
+![](https://docs.tealium.com/images/tag-management/utcm-utag-loader-template.png)
 
 **uTag Loader**テンプレートの更新方法について詳しくは、[テンプレートの更新](https://docs.tealium.com/manage-templates/#update-a-template)を参照してください。
 

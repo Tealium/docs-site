@@ -9,7 +9,7 @@ url: https://docs.tealium.com/server-side-connectors/oracle-eloqua-connector/
 * Company name for your Oracle Eloqua account
 * Username for your Oracle Eloqua account
 * Password for your Oracle Eloqua account
-* If the allow list is enabled for Oracle Eloqua, add the [AudienceStream server IP addresses](https://docs.tealium.com/ip-allow-list/) to the Oracle Eloqua allow list.
+* If the allow list is enabled for Oracle Eloqua, add the [Customer Data Platform (CDP) server IP addresses](https://docs.tealium.com/ip-allow-list/) to the Oracle Eloqua allow list.
 
 <blockquote>
 If the IP addresses are not added to the allow list at Oracle Eloqua or the Oracle Eloqua allow list is not disabled, the Import Definition action will fail with a `DD: ELOQUA UNABLE TO RETRIEVE VENDOR ENDPOINT` error.
@@ -18,7 +18,7 @@ If the IP addresses are not added to the allow list at Oracle Eloqua or the Orac
 
 ## Supported actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Update Contact via Bulk API| ✓| ✗|
 |Add Contact to Shared List| ✓| ✗|
@@ -31,7 +31,7 @@ If the IP addresses are not added to the allow list at Oracle Eloqua or the Orac
 |Insert Custom Object Data for Contact| ✓| ✗|
 |Insert or Update Custom Object Data for Contact| ✓| ✗|
 
-## Batch Limits
+## Batch limits
   
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -41,7 +41,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following required settings:
 
@@ -68,9 +68,7 @@ After you create the import definition, Tealium will automatically synchronize t
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Update Contact via Bulk API
 

@@ -83,8 +83,8 @@ Configuring the Adobe Analytics 2.0 Connector requires the Client ID (API Key) a
 
 After you have obtained the Client ID and Client Secret, use the following steps in the interface to configure an Adobe Analytics connector:
 
-1. Go to the **Connector Marketplace** and add the Adobe Analytics connector.  
-For general instructions on how to add a connector, see [Connector Overview](https://docs.tealium.com/about-connectors/).
+1. Go to the connector marketplace and add the Adobe Analytics connector.  
+For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 1. Select an **Audience** and a **Trigger**, then click **Continue**.
 1. Click **Add Connector**.
 1. Enter a **Name** for the connector.
@@ -96,7 +96,7 @@ The next step is [configuring an action]().
 
 ## Actions
 
-| Action Name      | AudienceStream | EventStream |
+| Action Name      | Customer Data Platform (CDP) | Event Streaming |
 |:---------------------|:-------------------|:----------------|
 | Send Analytics Event (Batch) | ✓          | ✓               |
 | Send Analytics Event (Deprecated) | ✓                  | ✓               |
@@ -195,7 +195,7 @@ This field is used to map server-side attributes to [props](https://experiencele
 
 [Events](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en) allow you to measure how frequently a particular event is occurring on your website or in your app. The events variable is a comma-separated string listing all the events that should be counted for a particular analytics event. Both [predefined events](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en) and [custom events](https://experienceleague.adobe.com/docs/analytics/components/metrics/custom-events.html?lang=en) are sent in the same string.
 
-Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in iQ Tag Management, an Enrichment, or directly in your data layer).  
+Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in Tag Management, an Enrichment, or directly in your data layer).  
 
 | Input | Sample Connector Output |
 |------------|----------------------------|
@@ -321,13 +321,13 @@ To migrate from existing Adobe Analytics client-side JavaScript, use the followi
 
 #### Step 1: Configure the Adobe Experience Cloud ID tag
 
-Follow [these instructions](https://docs.tealium.com/adobe-experience-cloud-id-service-tag/) to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.
+Follow [these instructions](https://docs.tealium.com/adobe-experience-cloud-id-service-tag/) to configure the Adobe Experience Cloud ID tag and set up the tag in Tag Management.
 
 #### Step 2: Store the Adobe visitor IDs in a first-party cookie
 
 Storing the Adobe visitor IDs in a first-party cookie ensures that the value is transmitted to the server-side platform on each hit, without needing to re-request the value for the duration of the session.
 
-1. In iQ Tag Management, go to the Data Layer tab, and create two (2) new First Party Cookie variables called `utag_main_adobe_mcid` and `utag_main_aa_vid`.  
+1. In Tag Management, go to the Data Layer tab, and create two (2) new First Party Cookie variables called `utag_main_adobe_mcid` and `utag_main_aa_vid`.  
     
 <blockquote>
 You may rename these variables if you want to, but be sure to retain the `utag_main_` prefix, which will save cookie space by stacking into the `utag_main` cookie. If you rename the variables, you will need to also update the JavaScript snippet below
@@ -376,11 +376,11 @@ You may rename these variables if you want to, but be sure to retain the `utag_m
       ]
       
   
-#### Step 3: Configure server-side for AudienceStream and EventStream 
+#### Step 3: Configure server-side for CDP and Event Streaming 
  
-* **AudienceStream**: If you have AudienceStream, you may store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to `visitorID` and `marketingCloudVisitorID` in the connector configuration.  
-* **EventStream**: If you only have EventStream, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie.  
-    * If you have already published your iQ Tag Management configuration from the previous step to Prod, you will find the new `utag_main_adobe_mcid` and `utag_main_aa_vid` values already present in your event attributes.  
+* **CDP**: If you have CDP, you may store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to `visitorID` and `marketingCloudVisitorID` in the connector configuration.  
+* **Event Streaming**: If you only have Event Streaming, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie.  
+    * If you have already published your Tag Management configuration from the previous step to Prod, you will find the new `utag_main_adobe_mcid` and `utag_main_aa_vid` values already present in your event attributes.  
     * If you have not published to Prod, you may manually add the event attributes, using the **First Party Cookie** string attribute type. After you have defined these attributes, you may now choose them in the Adobe Analytics connector and map them to `marketingCloudVisitorID` and `visitorID` , respectively.
 
 ## Debugging common issues

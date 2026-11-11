@@ -14,15 +14,17 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For more information, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Token**: (Required) Obtain an authentication token specific to a logged-in user and their associated account on the Nextdoor Ads Manager account page.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion | ✗ | ✓ |
 
@@ -114,4 +116,4 @@ The integration requires at least one or a combination of the following paramete
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Automatic Deduplication | When you provide the Tealium iQ Tag ID, the connector automatically looks for the **Event ID** value that Tealium iQ sends. |
+| Automatic Deduplication | When you provide the Tealium iQ Tag ID, the connector automatically looks for the **Event ID** value that Tag Management sends. |

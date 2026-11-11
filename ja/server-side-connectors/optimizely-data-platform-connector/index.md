@@ -1,31 +1,33 @@
 ---
-title: Optimizelyデータプラットフォームコネクタ構成ガイド
-description: この記事では、Optimizelyデータプラットフォームコネクタの構成方法について説明します。
+title: Optimizely Data Platformコネクタ構成ガイド
+description: この記事では、Optimizely Data Platformコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/optimizely-data-platform-connector/
 ---
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
 | ユーザーをオーディエンスに追加 | ✓ | ✗ |
 | ユーザーをオーディエンスから削除 | ✓ | ✗ |
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を行います：
+コネクタを追加した後、次の構成を構成します。
 
 * **ユーザー名**  
-Optimizely内のTealiumアプリのユーザー名。
+OptimizelyでのTealiumアプリのユーザー名。
 * **パスワード**  
-Optimizely内のTealiumアプリのパスワード。
+OptimizelyでのTealiumアプリのパスワード。
 * **URL**  
-Optimizely内のFunction URL。
+
+コネクタを構成したら、**完了**をクリックします。
+Optimizelyでの関数URL。
 
 ## アクション
 
-以下のセクションでは、各アクションでサポートされているパラメータをリストします。
+以下のセクションでは、各アクションでサポートされるパラメータを示します。
 
 ### ユーザーをオーディエンスに追加
 
@@ -33,9 +35,9 @@ Optimizely内のFunction URL。
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| TealiumユーザーID | (必須) TealiumビジターIDまたはユーザーの一意の識別子。Optimizely webの場合、これはあなたがウェブプロジェクトでターゲットにしているIDであるべきです。 |
-| オーディエンス名 | (必須) ユーザーが追加されるオーディエンスの名前。 |
-| オーディエンスID | (必須) オーディエンスの一意のID。 |
+| TealiumユーザーID | （必須）Tealium訪問ID、またはユーザーを識別する一意の識別子。Optimizely Webの場合、Webプロジェクトでターゲティングに使用しているIDを指定してください。 |
+| オーディエンス名 | （必須）ユーザーの追加先となるオーディエンスの名前。 |
+| オーディエンスID | （必須）オーディエンスの一意のID。 |
 
 ### ユーザーをオーディエンスから削除
 
@@ -43,6 +45,6 @@ Optimizely内のFunction URL。
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| TealiumユーザーID | (必須) TealiumビジターIDまたはユーザーの一意の識別子。Optimizely webの場合、これはあなたがウェブプロジェクトでターゲットにしているIDであるべきです。 |
-| オーディエンス名 | (必須) ユーザーが追加されるオーディエンスの名前。 |
-| オーディエンスID | (必須) オーディエンスの一意のID。 |
+| TealiumユーザーID | （必須）Tealium訪問ID、またはユーザーを識別する一意の識別子。Optimizely Webの場合、Webプロジェクトでターゲティングに使用しているIDを指定してください。 |
+| オーディエンス名 | （必須）ユーザーの追加先となるオーディエンスの名前。 |
+| オーディエンスID | （必須）オーディエンスの一意のID。 |

@@ -18,7 +18,7 @@ url: https://docs.tealium.com/server-side-connectors/microsoft-azure-event-hubs-
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -38,9 +38,7 @@ Shared Access Policies can claim three type of permissions: `Send`, `Listen` and
 
 ## Action settings — parameters and options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up actions to trigger.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action — Send Event Data to Event Hub
 

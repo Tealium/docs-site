@@ -23,7 +23,7 @@ We recommend this method because the tag will not block anything else from loadi
 
 ### STEP 2: Add and set up the Optimizely Async Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 Here are the steps to set it up:
 

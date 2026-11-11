@@ -9,7 +9,7 @@ This article provides information about using the latest version of the Pinteres
 </blockquote>
 
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -18,7 +18,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://api.pinterest.com/v5/`
 * Documentation: [Pinterest Audiences](https://developers.pinterest.com/docs/ads/targeting/#Audiences)
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -28,7 +28,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 <blockquote>
 When you add this connector you are prompted to accept the vendor's data platform policy.
@@ -74,7 +74,7 @@ The following section describes how to set up parameters and options for each ac
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Audience | ✓ | ✗ |
 | Remove User from Audience | ✓ | ✗ |

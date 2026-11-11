@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/dmd-connector/
 ---
 DMD, an IQVIA Business, is the only provider of healthcare data that is first-party sourced, 100% opted-in, and privacy and regulatory compliant. This DMD Email Connector allows users to send campaign emails to HCP/HCOs based off of CDP actions.
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -15,14 +15,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Connector Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Trigger Custom Event | ✓ | ✗ |
 | Trigger Email Message | ✓ | ✗ |
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 

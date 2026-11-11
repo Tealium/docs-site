@@ -1,6 +1,6 @@
 ---
 title: Right Media (Yieldmanager) Tag Setup Guide
-description: This article describes how to set up the Right Media (Yieldmanager) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Right Media (Yieldmanager) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/right-media-yieldmanager-tag/
 ---
 ## Specifications
@@ -21,7 +21,7 @@ url: https://docs.tealium.com/client-side-tags/right-media-yieldmanager-tag/
 
 ## Add the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a tag to your profile.
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ## Configure the Tag
 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-analytics-connector/
 ---
 ## How it works
 
-The Adobe Analytics 1.4 Connector in the Tealium Customer Data Hub uses Adobe's [Data Insertion API](https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/index.md) to send analytics data server-side, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.
+The Adobe Analytics 1.4 Connector in the Tealium Customer Data Hub uses Adobe's [Data Insertion API](https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/index.md) to send analytics data server-side, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from Event Streaming or Customer Data Platform (CDP) to Adobe Analytics.
 
 
 <blockquote>
@@ -15,7 +15,7 @@ Adobe Analytics 1.4 APIs and WSSE authentication reached end of life on August 1
 
 ## Connector Actions
 
-| **Action Name**      | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:---------------------|:-------------------|:----------------|
 | Send Analytics Event | ✓                  | ✓               |
 
@@ -23,8 +23,8 @@ Adobe Analytics 1.4 APIs and WSSE authentication reached end of life on August 1
 
 Use the following steps in the interface to configure the Adobe Analytics connector:
 
-1. Go to the **Connector Marketplace** and add the Adobe Analytics connector.  
-Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+1. Go to the connector marketplace and add the Adobe Analytics connector.  
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 1. In the **Title** field, enter a title for the connector.
 1. In the **Data Insertion Domain** field, enter the domain for your Adobe Analytics data collection servers. For example, `namespace.122.2o7.net`.
@@ -43,7 +43,7 @@ You are now on the **Actions** tab.
 | **Group**                                                          | **Description**                                                                                                                                                                                                                                                                                                                                                                                        |
 |:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Event Parameters                                                   | <ul><li>See "General Attributes" below</li></ul>                                                                                                                                                                                                                                                                                                                                                       |
-| Auto-mapping of Lifecycle Event Attributes for Mobile Data-sources | <ul><li>Check this checkbox to automatically map values from the Event Parameters section to Adobe data elements.</li><li>Auto mapping only applies to Mobile EventStream App Lifecycle only.</li><li>For more information see [Adobe Analytics Connector Lifecycle Mappings](https://docs.tealium.com/adobe-analytics-connector/)</li></ul> |
+| Auto-mapping of Lifecycle Event Attributes for Mobile Data-sources | <ul><li>Check this checkbox to automatically map values from the Event Parameters section to Adobe data elements.</li><li>Auto mapping only applies to Mobile Event Streaming App Lifecycle only.</li><li>For more information see [Adobe Analytics Connector Lifecycle Mappings](https://docs.tealium.com/adobe-analytics-connector/)</li></ul> |
 | Context Data                                                       | <ul><li>Specify keys using the dot format.</li><li>For example `my.a`.</li><li>Multiple key-value pairs can be specified.</li></ul>                                                                                                                                                                                                                                                                    |
 | eVars                                                              | <ul><li>Specify the event eVars by mapping an attribute to a number.</li><li>For example: Map `event_count` to `1` for **eVar1**.</li><li>Valid range is `1` through `100`, `250` for Premium Accounts</li></ul>                                                                                                                                                                                       |
 | Hierarchy                                                          | <ul><li>A hierarchy string.</li><li>Select from `1` through `5`.</li></ul>                                                                                                                                                                                                                                                                                                                             |
@@ -75,7 +75,7 @@ For a full reference of all attributes, including details on exactly what each f
 | Customer Data Hub attribute containing a persistent visitor ID, for example, tealium\_visitor\_id      | visitorID\*               | <ul><li>Ensure that this is a visitor-level persistent value.</li><li>Example: Tealium Visitor ID</li></ul>                                                                                                                                                                                                                                                                                   | `<visitorID>01619ea9a91a001af7e29b75797104079005c07101008M</visitorID>`                                                                            |
 | Customer Data Hub attribute containing a page name/title                                               | pageName                  | <ul><li>String value</li></ul>                                                                                                                                                                                                                                                                                                                                                                | `<pageName>Homepage</pageName>`                                                                                                                    |
 | Customer Data Hub attribute containing the current URL (for example, built-in "Current URL" attribute) | pageURL                   | <ul><li>String value</li></ul>                                                                                                                                                                                                                                                                                                                                                                | `<pageURL>[http://www.tealium.com](http://www.tealium.com%5C)</pageURL>`                                                                           |
-| Customer Data Hub attribute containing the Adobe Experience Cloud ID                                   | marketingCloudVisitorID\* | <ul><li>Usually retrieved through the Visitor API JavaScript tag.</li><li>Implemented in iQ Tag Management.</li></ul>                                                                                                                                                                                                                                                                             | `<marketingCloudVisitorID></marketingCloudVisitorID>`                                                                                              |
+| Customer Data Hub attribute containing the Adobe Experience Cloud ID                                   | marketingCloudVisitorID\* | <ul><li>Usually retrieved through the Visitor API JavaScript tag.</li><li>Implemented in Tag Management.</li></ul>                                                                                                                                                                                                                                                                             | `<marketingCloudVisitorID></marketingCloudVisitorID>`                                                                                              |
 | Customer Data Hub attribute containing the link name                                                   | linkName                  | <ul><li>String value.</li><li>Example: tealium\_event</li></ul>                                                                                                                                                                                                                                                                                                                               | `<linkName>Buy Now</linkName>`                                                                                                                     |
 | Customer Data Hub attribute containing the URL of the link clicked                                     | linkURL                   | <ul><li>String value</li></ul>                                                                                                                                                                                                                                                                                                                                                                | `<linkURL>[https://www.tealium.com/products/widgets/buynow\](https://www.tealium.com/products/widgets/buynow%5C)</linkURL>`                        |
 | Customer Data Hub attribute containing the order ID                                                    | purchaseID                | <ul><li>String value.</li><li>E-commerce Order ID</li></ul>                                                                                                                                                                                                                                                                                                                                   | `<purchaseID>ORD12345</purchaseID>`                                                                                                                |
@@ -145,7 +145,7 @@ This field is used to map Customer Data Hub attributes to [props](https://experi
 
 In the Adobe Analytics connector, the following two methods are used to specify events:
 
-* Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in iQ Tag Management, an Enrichment, or directly in your data layer).  
+* Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in Tag Management, an Enrichment, or directly in your data layer).  
 
 | Map From                                                  | Data Type | Example Input                  | Sample Connector Output                           |
 |:----------------------------------------------------------|:----------|:-------------------------------|:--------------------------------------------------|
@@ -176,7 +176,6 @@ Configure event serialization by mapping an attribute that contains the event ID
 ### Lifecycle Events
 
 Adobe Analytics has the ability to track Application Lifecycle events. The Tealium mobile libraries each have an optional module available to support this feature, which automatically generates the required data for Adobe Analytics.
-
 
 | Tealium Attribute  | Adobe Variable | Description | Data Type | Example |
 | --- | --- | --- | --- | --- |
@@ -273,9 +272,9 @@ If you are migrating from a JavaScript-based Adobe Analytics tag to the server-s
 
 Use the following steps to migrate from existing Adobe Analytics client-side JavaScript, as described in this use case:
 
-1. Follow [these instructions](https://docs.tealium.com/adobe-experience-cloud-id-service-tag/) to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.
+1. Follow [these instructions](https://docs.tealium.com/adobe-experience-cloud-id-service-tag/) to configure the Adobe Experience Cloud ID tag and set up the tag in Tag Management.
 1. In this step, you will store the Adobe visitor IDs in a first-party cookie. This cookie ensures that the value is transmitted to the Customer Data Hub on each hit without needing to re-request the value for the duration of the session.  
-    * In iQ Tag Management, go to the Data Layer tab and create two new First-Party Cookie variables called `utag_main_adobe_mcid` and `utag_main_aa_vid`.  
+    * In Tag Management, go to the Data Layer tab and create two new First-Party Cookie variables called `utag_main_adobe_mcid` and `utag_main_aa_vid`.  
         
 <blockquote>
 You may rename these variables if you want to, but be sure to retain the `utag_main_` prefix, which will save cookie space by stacking into the `utag_main` cookie. If you rename the variables, you will need to also update the JavaScript snippet below.
@@ -306,9 +305,9 @@ You may rename these variables if you want to, but be sure to retain the `utag_m
         ```
         This extension creates a callback to the Adobe Visitor ID service which is called when the visitor ID(s) have been successfully retrieved from Adobe's servers, and stores the Visitor ID and Experience Cloud ID in Tealium's own first-party cookie (`utag_main`). The cookie expires at the end of the session in case the Visitor ID gets updated in the future. If you want to make the cookie persistent (non-expiring), set `sessionExpiry` to `""` in the above code.
     * Add a condition to the JavaScript extension "utag\_main\_adobe\_mcid `is not defined` AND utag\_main\_aa\_vid `is not defined`". This prevents the code from running again during this session.
-1. Configure the Customer Data Hub for AudienceStream and EventStream.   
-    * AudienceStream Configuration - If you have AudienceStream, you can store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to `visitorID` and `marketingCloudVisitorID` in the connector configuration.
-    * EventStream Configuration  - If you only have EventStream, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie. If you have already published your iQ Tag Management configuration from the previous step to Prod, you will find the new `utag_main_adobe_mcid` and `utag_main_aa_vid` values already present in your [Event Attributes](https://docs.tealium.com/add-enrichment/).
+1. Configure the Customer Data Hub for CDP and Event Streaming.   
+    * CDP Configuration - If you have CDP, you can store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to `visitorID` and `marketingCloudVisitorID` in the connector configuration.
+    * Event Streaming Configuration  - If you only have Event Streaming, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie. If you have already published your Tag Management configuration from the previous step to Prod, you will find the new `utag_main_adobe_mcid` and `utag_main_aa_vid` values already present in your [Event Attributes](https://docs.tealium.com/add-enrichment/).
     * If you have not published to Prod, you may manually add the event attributes, using the **First Party Cookie** string attribute type. Once you have defined these attributes, you may now choose them in the Adobe Analytics connector and map them to `marketingCloudVisitorID` and `visitorID` , respectively.
 
 ## Debugging Common Issues

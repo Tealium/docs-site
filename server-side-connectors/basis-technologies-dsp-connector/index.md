@@ -3,16 +3,15 @@ title: Basis Technologies DSP Connector Setup Guide
 description: This article describes how to set up the Basis Technologies DSP connector.
 url: https://docs.tealium.com/server-side-connectors/basis-technologies-dsp-connector/
 ---
-
 ## Connector Actions
 
-| **Action Name**              | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:-----------------------------|:-------------------|:----------------|
 | Add User to Audience Segment | ✓                  | ✓               |
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

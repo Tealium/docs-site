@@ -2,9 +2,9 @@
 title: Data Layer Enrichment API objects
 url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/
 ---
-The Data Layer Enrichment API object has the following properties that correspond to AudienceStream attributes:
+The Data Layer Enrichment API object has the following properties that correspond to Customer Data Platform (CDP) attributes:
 
-|Property| AudienceStream attribute | Description|
+|Property| CDP attribute | Description|
 |---| ---|---|
 |`audiences`|  **Audiences**| Object containing key-value pairs for each audience the user is in, where the key is `ACCOUNT_PROFILE_ID` and the value is the name of the audience. Example:<br> ``` audiences: {     "tealium_main_208" : "Mobile User",     "tealium_main_209" : "DV Attendee" } ``` |
 |`badges`|  **Badges**| Object containing key-value pairs for each badge assigned to the user, where the key is `BADGE-ID` and the value is `true`. Example:<br> ``` badges: {     30: true,     128: true,     323: true } ``` |

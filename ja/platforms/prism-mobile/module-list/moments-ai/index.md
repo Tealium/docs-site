@@ -34,7 +34,7 @@ Tealium iQのMoments AIモジュールの**マッピング**セクションで�
 
 ### コマンドトリガー
 
-SDKコマンドにイベント条件をマップします。マップされた条件が満たされると、指定されたコマンドが実行されます。イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+SDKコマンドにイベント条件をマップします。マップされた条件が満たされると、指定されたコマンドが実行されます。イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | コマンド | 説明 |
 | :--- | :--- |

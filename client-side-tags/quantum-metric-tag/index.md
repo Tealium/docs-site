@@ -9,15 +9,15 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 </blockquote>
 
 
-## Tag Tips
+## Tag tips
 
 *  If Tealium Account and Tealium Profile are left blank, they will be automatically populated with your current account and profile. Only applies when using **Send Replay URL**.
 *  The default value for **Time Stamp** is `30days`.
-*  For information about how to integrate this tag with AudienceStream, see [Tealium + Quantum Metric Integration Guide](https://docs.tealium.com/tealium-quantum-metric-integration-guide/).
+*  For information about how to integrate this tag with Customer Data Platform (CDP), see [Tealium + Quantum Metric Integration Guide](https://docs.tealium.com/tealium-quantum-metric-integration-guide/).
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -27,13 +27,13 @@ When adding the tag, configure the following settings:
 * **Tealium Account**: (Optional) Override the `tealium_account` used for server-side requests.
 * **Tealium Profile**: (Optional) Override the `tealium_profile` used for server-side requests.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

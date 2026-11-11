@@ -36,12 +36,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-To add the connector, go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **UET tagID**: You can use your existing tag or provision a new UET tag ID in your Microsoft Advertising account.
 * **Access Token**: The access token for your Microsoft Advertising account.
+
+After you configure the connector, click **Done**.
 
 ### Generate access token
 
@@ -64,7 +66,7 @@ To configure this connector to deduplicate events from the Microsoft Advertising
 microsoft_event_id_{EVENT_NAME}}_{TAG_ID}}
 ```
 
-You can find your tag’s UID in the Tealium iQ Tags table or the tag details screen.
+You can find your tag’s UID in the Tag Management Tags table or the tag details screen.
 
 For example, a purchase event from a tag with a UID of 88 would send the following attribute value:
 
@@ -80,7 +82,7 @@ microsoft_event_id_pageload_88: “028b2ade7478…”
 
 ### Automatic deduplication
 
-When the Automatic Deduplication value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an Event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.
+When the Automatic Deduplication value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an Event ID if this section is populated and you are using Tag Management. However, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector follows this order of operations:
 
@@ -144,11 +146,11 @@ Yes. Send lead form completions, pre-qualification submissions, and call center 
 
 ## Troubleshooting
 
-Use the [Trace tool](https://docs.tealium.com/about-trace/) to monitor event flow in EventStream and AudienceStream. You can also enable the "Test Mode" toggle or send events to a staging instance if configured in your Microsoft Ads account.
+Use the [Trace tool](https://docs.tealium.com/about-trace/) to monitor event flow in Event Streaming and Customer Data Platform (CDP). You can also enable the "Test Mode" toggle or send events to a staging instance if configured in your Microsoft Ads account.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion Event | ✓ | ✓ |
 | Send Conversion Event (Batched) | ✓ | ✓ |
@@ -209,7 +211,6 @@ The following section describes how to set up parameters and options for each ac
 | Value | Revenue value (float) to report variable revenue for goals, if used. The connector automatically maps this parameter when it appears in the event. |
 | Currency | The revenue currency in 3-digit ISO 4217 format, if used. The connector automatically maps this parameter when it appears in the event. |
 
-
 ##### Item Data
 
 | **Parameter** | **Description** |
@@ -254,7 +255,7 @@ If no **Select Vertical Specific Type** is selected, manually map attributes to 
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Tealium iQ Tag ID | When the Tealium iQ tag ID is provided, the connector automatically looks for your event ID value that is sent from Tealium iQ. |
+| Tealium iQ Tag ID | When the Tag Management tag ID is provided, the connector automatically looks for your event ID value that is sent from Tag Management. |
 
 ##### Disable Automapping
 

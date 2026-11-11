@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 ---
 ## コネクタアクション
 
-| **アクション名** | **AudienceStream** | **EventStream** |
+| **アクション名** | **訪問プロファイル** | **イベントデータ** |
 | --- | --- | --- |
 | カスタムオブジェクトに挿入 | ✓ | ✗ |
 | カスタムオブジェクトを更新 | ✓ | ✗ |
@@ -14,10 +14,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 
 コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/ja/server-side/connectors/manage/)の記事を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加したら、次の構成を構成します。
 
 *   **エンドポイントURL**  
-必須：エンドポイントURLを提供します。デフォルトのURLは `https://login.salesforce.com/services/oauth2/authorize` です。
+（必須）エンドポイントURLを指定します。デフォルトのURLは`https://login.salesforce.com/services/oauth2/authorize`です。
 *   **接続の確立**  
 **接続の確立**をクリックして、Salesforceアカウントに接続します。
 
@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 
 **続行**をクリックして、コネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。
 
-次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+以下のセクションでは、各アクションのパラメータとオプションを構成する方法について説明します。
 
 ### アクション — カスタムオブジェクトに挿入
 
@@ -36,7 +36,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 | **パラメータ** | **説明** |
 | --- | --- |
 | カスタムオブジェクト名 | カスタムオブジェクトの名前。 |
-| データマップの挿入 | Salesforceで構成されたデータマップの挿入。 |
+| 挿入データマップ | Salesforceで構成された挿入データマップ。 |
 
 ### アクション — カスタムオブジェクトを更新
 
@@ -45,6 +45,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/veeva-crm-connector/
 | **パラメータ** | **説明** |
 | --- | --- |
 | カスタムオブジェクト名 | カスタムオブジェクトの名前。 |
-| データマップの検索 | カスタムオブジェクトを検索するための属性を選択します。 |
-| データマップの更新 | Salesforceで構成されたデータマップの更新。 |
-
+| ルックアップデータマップ | カスタムオブジェクトの検索に使用する属性を選択します。 |
+| 更新データマップ | Salesforceで構成された更新データマップ。 |

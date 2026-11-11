@@ -1,65 +1,66 @@
 ---
-title: Viantユニバーサルピクセルタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでViantユニバーサルピクセルタグを構成する方法について説明します。
+title: Viant Universal Pixelタグ構成ガイド
+description: この記事では、タグ管理アカウントでViant Universal Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/viant-universal-pixel-tag/
 ---
 ## 概要
 
-Viant Universal Pixelタグは、サイトからAdelphic DSP by Viantにクライアントサイドのコンバージョンおよびエンゲージメントイベントを送信し、測定、最適化、および帰属を行います。
+Viant Universal Pixelタグは、測定、最適化、アトリビューションのために、サイトからクライアント側のコンバージョンイベントとエンゲージメントイベントをViantのAdelphic DSPに送信します。
 
-このタグを使用して、標準的なファネルイベント（ページビュー、カートに追加、チェックアウトの開始、購入、リードなど）を追跡し、豊富なトランザクションの詳細、顧客識別子、および製品データをViantに渡します。
+このタグを使用すると、標準的なファネルイベント（ページビュー、カートへの追加、チェックアウトの開始、購入、リードなど）を追跡し、詳細な取引情報、顧客識別子、商品データをViantに渡すことができます。
 
-Universal Pixel ID（UPID）、顧客ID、収益、通貨、およびカスタムパラメーターのサポートが組み込まれており、Viantの広告プラットフォーム全体でキャンペーンのパフォーマンス、報告の正確性、およびトラブルシューティングを改善します。
+Universal Pixel ID（UPID）、顧客ID、収益、通貨、カスタムパラメータが標準でサポートされているため、Viantの広告プラットフォーム全体でキャンペーンのパフォーマンス、レポートの精度、トラブルシューティングを改善できます。
 
-## タグのヒント
-*   マッピングを使用して：
-    *   標準の構成値を動的に上書き
-    *   E-Commerce拡張の値を動的に上書き
-*   E-Commerce拡張に対応：
-    * 通貨（`_ccur`）
-    * 商品カテゴリ（`_ccat`）
-    * 収益/小計（`_csubtotal`）
+## タグに関するヒント
+*   マッピングを使用すると、以下のことができます。
+    *   標準構成値を動的に上書きする
+    *   Eコマース拡張機能の値を動的に上書きする
+*   Eコマース拡張機能では、以下がサポートされています。  
+    * 通貨（`_ccur`）  
+    * 商品カテゴリー（`_ccat`）  
+    * 収益／小計（`_csubtotal`）  
     * トランザクションID（`_corder`）
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際に、以下の項目を構成します。
 
-* **Universal Pixel ID**：トラッキング用のピクセルのユニークID。Adelphic DSP by Viantによって提供されます。
-* **User ID**：広告主の内部顧客IDをBase64エンコードしたもの。帰属アルゴリズムと監査のトラブルシューティングに使用されます。
-* **Disable Automapping**：E-Commerce拡張の変数をイベントデータに自動マッピングする機能を無効にします。
+* **Universal Pixel ID**：トラッキングに使用するピクセルの一意のIDです。ViantのAdelphic DSPから提供されます。
+* **ユーザーID**：Base64でエンコードされた広告主の内部顧客IDです。アトリビューションアルゴリズムと監査時のトラブルシューティングに使用されます。
+* **自動マッピングを無効化**：Eコマース拡張機能の変数からイベントデータへの自動マッピングを無効にします。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
-### タグ構成
+### タグの構成
 
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 種類／値 | 説明 |
 |:---------|:-----|:------------|
 | `upid` | `String` | Universal Pixel ID |
 | `cuid` | `String` | ユーザーID |
-| `disable_automapping` | `String` | 自動マッピング無効 |
+| `disable_automapping` | `String` | 自動マッピングを無効化 |
+
 
 ### 標準
 
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 種類／値 | 説明 |
 |:---------|:-----|:------------|
 | `upid` | `String` | Universal Pixel ID |
 | `cuid` | `String` | ユーザーID |
 | `cur` | `String` | 通貨 |
 | `cust` | `String` | 顧客タイプ |
-| `itms` | `String` | 商品カテゴリ |
+| `itms` | `String` | 商品カテゴリー |
 | `url` | `String` | ページURL |
-| `ref` | `String` | リファラーURL |
+| `ref` | `String` | 参照元URL |
 | `val` | `String` | 収益 |
 | `tn` | `String` | トランザクションID |
 | `p1` | `String` | カスタムパラメータ1 |
@@ -73,17 +74,19 @@ Universal Pixel ID（UPID）、顧客ID、収益、通貨、およびカスタ�
 | `p9` | `String` | カスタムパラメータ9 |
 | `p10` | `String` | カスタムパラメータ10 |
 
-### E-Commerce
 
-| 変数 | タイプ/値 | 説明 |
+### Eコマース
+
+| 変数 | 種類／値 | 説明 |
 |:---------|:-----|:------------|
 | `cur` | `String` | 通貨（`_ccur`を上書き） |
-| `itms` | `0` | 商品カテゴリ |
+| `itms` | `0` | 商品カテゴリー |
 | `val` | `String` | 収益（`_csubtotal`を上書き） |
-| `tn` | `String` | トランザクションID（`_corder`を上書き） |
+| `tn` | `String` | トランザクション`ID`（`_corder`を上書き） |
+
 
 ### イベント固有のパラメータ
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | イベント | 説明 |
 |:------|:------------|
@@ -91,8 +94,8 @@ Universal Pixel ID（UPID）、顧客ID、収益、通貨、およびカスタ�
 | `url` | ページURL |
 | `cur` | 通貨 |
 | `cust` | 顧客タイプ |
-| `itms` | 商品カテゴリ |
-| `ref` | リファラーURL |
+| `itms` | 商品カテゴリー |
+| `ref` | 参照元URL |
 | `val` | 収益 |
 | `tn` | トランザクションID |
 | `p1` | カスタムパラメータ1 |

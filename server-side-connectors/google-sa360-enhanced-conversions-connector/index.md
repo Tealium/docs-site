@@ -59,7 +59,7 @@ Ensure that you adhere to the following restrictions with PII data when using th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -75,7 +75,7 @@ Click **Done** when you are finished configuring the connector.
 
 ## Actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Send Conversion | ✓ | ✓ |
 
@@ -148,5 +148,5 @@ Potential error messages for this connector are:
 
 |Error Message| Description|
 |---| ---|
-| `NOT_FOUND` | "MatchId `{matchId}` cannot be found." Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the iQ Tag Management tag setup. This can also be a result of the use of the [Google Consent Mode tag](https://docs.tealium.com/google-consent-mode-tag/), where consent was denied for the tag, but the conversion enhancement was sent through the connector. |
+| `NOT_FOUND` | "MatchId `{matchId}` cannot be found." Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the Tag Management tag setup. This can also be a result of the use of the [Google Consent Mode tag](https://docs.tealium.com/google-consent-mode-tag/), where consent was denied for the tag, but the conversion enhancement was sent through the connector. |
 | `NOT_FOUND` | "Specified conversion doesn't exist." The conversion was received from the client-side tag, but has not yet been indexed by Google for enhancing. Tealium will retry these calls up to three times.|

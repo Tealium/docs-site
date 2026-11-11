@@ -11,7 +11,7 @@ If your existing Salesforce connector shows **Tealium-Provided Credentials (Depr
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To use Tealium-managed OAuth credentials instead of your own connected app, see [Salesforce (Tealium-Provided Credentials)](https://docs.tealium.com/salesforce-tealium-provided-credentials-connector/).
 
@@ -35,11 +35,13 @@ After adding the connector, configure the following settings:
 * **Consumer Key (Client ID)**: (Required) Enter the Consumer Key from your Salesforce Connected App or External Client App.
 * **Consumer Secret (Client Secret)**: (Required) Enter the Consumer Secret from your Salesforce Connected App or External Client App. The app may take a few minutes to activate after creation.
 
+After you configure the connector, click **Done**.
+
 Click **Test Connection** to verify the connection.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream|
+| Action name | Visitor profile | Event data |
 |---| ---| ---|
 |Insert into Custom Object| ✓| ✗|
 |Update Custom Object| ✓| ✗|
@@ -56,9 +58,7 @@ Click **Test Connection** to verify the connection.
 | Upsert into Custom Object (non-batched) | ✓ | ✓ |
 | Upsert into Custom Object (batched) | ✓ | ✓ |
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Insert into Custom Object
 
@@ -86,7 +86,7 @@ This section describes how to set up parameters and options for each action.
 |Parameter| Description|
 |---| ---|
 |Insert Data to Set| Select and map Tealium attributes to Salesforce lead fields for record creation.|
-| Append Data Map | <ul><li>(Optional) Use this section to append multiple AudienceStream attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their AudienceStream data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
+| Append Data Map | <ul><li>(Optional) Use this section to append multiple Customer Data Platform (CDP) attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their CDP data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
 |Append Data Map - Entry Label|  <ul><li>(Optional) If provided, this text is appended to the start of the appended columns values.</li><li>Leave empty if not used.</li><li>See "Append Data Map" section for the exact format.</li></ul> |
 |Select Target Assignment Rule|  <ul><li>(Optional) A list that displays available assignment rules for your account that can be used to apply on your target lead.</li><li>Selecting the **Use Default Assignment Rule** enforces Salesforce to use the default rule for rule-based assignment.</li><li>Do not select any values or select **None** to avoid inclusion of assignment rule options in the API call.</li></ul> |
 
@@ -98,7 +98,7 @@ This section describes how to set up parameters and options for each action.
 |---| ---|
 | Lead ID | (Required) Select the Salesforce field used to identify the lead to update.|
 |Update Data to Set| Select and map Tealium attributes to Salesforce lead fields for record update.|
-| Append Data Map | <ul><li>(Optional) Use this section to append multiple AudienceStream attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their AudienceStream data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
+| Append Data Map | <ul><li>(Optional) Use this section to append multiple CDP attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their CDP data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
 |Append Data Map - Entry Label|  <ul><li>(Optional) If provided, this text is appended to the start of the appended columns values.</li><li>Leave empty if not used.</li><li>See "Append Data Map" section for the exact format.</li></ul> |
 |Select Target Assignment Rule|  <ul><li>(Optional) The list displays available assignment rules for your account that can be used to apply on your target lead.</li><li>Selecting **Use Default Assignment Rule** enforces Salesforce to use the default rule for rule-based assignment.</li><li>Do not select any values or select **None** to avoid inclusion of assignment rule options in the API call.</li></ul> |
 
@@ -109,9 +109,9 @@ This section describes how to set up parameters and options for each action.
 |Parameter| Description|
 |---| ---|
 | Update Lookup ID | <ul><li>(Required) Select the Salesforce field used to identify an existing lead.</li><li>The value of this field determines whether the action updates an existing record or inserts a new one.</li></ul> |
-| Update Data to Set | <ul><li>(Required) Map Tealium attributes to Salesforce lead fields to update when existing records are found.</li><li>To append multiple AudienceStream attributes to the same Salesforce field, use the Append Data Map section instead.</li><li>Values mapped here overwrite the existing field values in Salesforce.</li><li>Avoid configuring the same field in both sections. Use either Update Data to Set or Append Data Map, not both.</li></ul>  |
-| Insert Data to Set | <ul><li>(Required) Map Tealium attributes to Salesforce lead fields for creating new records.</li><li>To append multiple AudienceStream attributes to the same Salesforce field, use the Append Data Map section instead.</li><li>Values mapped here populate the specified fields in the newly created lead record.</li><li>Avoid configuring the same field in both sections. Use either Insert Data to Set or Append Data Map, not both.</li></ul>  |
-| Append Data Map | <ul><li>(Optional) Use this section to append multiple AudienceStream attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their AudienceStream data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
+| Update Data to Set | <ul><li>(Required) Map Tealium attributes to Salesforce lead fields to update when existing records are found.</li><li>To append multiple CDP attributes to the same Salesforce field, use the Append Data Map section instead.</li><li>Values mapped here overwrite the existing field values in Salesforce.</li><li>Avoid configuring the same field in both sections. Use either Update Data to Set or Append Data Map, not both.</li></ul>  |
+| Insert Data to Set | <ul><li>(Required) Map Tealium attributes to Salesforce lead fields for creating new records.</li><li>To append multiple CDP attributes to the same Salesforce field, use the Append Data Map section instead.</li><li>Values mapped here populate the specified fields in the newly created lead record.</li><li>Avoid configuring the same field in both sections. Use either Insert Data to Set or Append Data Map, not both.</li></ul>  |
+| Append Data Map | <ul><li>(Optional) Use this section to append multiple CDP attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their CDP data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
 |Append Data Map - Entry Label|  <ul><li>(Optional) If provided, this text is appended to the start of the appended columns values.</li><li>Leave empty if not used.</li><li>See "Append Data Map" section for the exact format.</li></ul> |
 |Select Target Assignment Rule|  <ul><li>(Optional) The list displays available assignment rules for your account that can be used to apply on your target lead.</li><li>Selecting **Use Default Assignment Rule** enforces Salesforce to use the default rule for rule-based assignment.</li><li>Do not select any values or select **None** to avoid inclusion of assignment rule options in the API call.</li></ul> |
 
@@ -150,7 +150,7 @@ This section describes how to set up parameters and options for each action.
 |---| ---|
 | Contact ID | (Required) Select the Salesforce field used to identify the contact to update.|
 |Update Data to Set| Select and map Tealium attributes to Salesforce contact fields for record update.|
-| Append Data Map | <ul><li>(Optional) Use this section to append multiple AudienceStream attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their AudienceStream data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
+| Append Data Map | <ul><li>(Optional) Use this section to append multiple CDP attributes to the same Salesforce text area field.</li><li>Map multiple values to the same Salesforce field key as needed.</li><li>For update and upsert actions, existing field content is preserved and new values are appended in formatted text.</li><li>Only Salesforce fields of type TextArea are supported.</li><li>Ensure the selected field has sufficient length to prevent API errors.</li><li>Appended values are represented in Salesforce according to their CDP data type (for example, Boolean, String, JSON).</li><li>The appended text includes the optional entry label (if provided), current ISO UTC date, and the mapped key-value pairs on separate lines.</li></ul> |
 |Append Data Map - Entry Label|  <ul><li>(Optional) If provided, this text is appended to the start of the appended columns values.</li><li>Leave empty if not used.</li><li>See "Append Data Map" section for the exact format.</li></ul> |
 
 ### Add Contact to Campaign

@@ -4,7 +4,7 @@ description: This article describes how to set up the MediaMath connector.
 url: https://docs.tealium.com/server-side-connectors/mediamath-connector/
 ---## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Custom Data| ✓| ✗|
 
@@ -16,10 +16,9 @@ This connector uses the following vendor API:
 * API Version: v1
 * API Endpoint: `https://ingest-default.prod.octane.mediamath.com`
 
-
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After selecting your audience and trigger, click **Continue** and then **Add Connector**. Enter a name for the connector and configure the following settings:
 
@@ -47,5 +46,5 @@ You can map Tealium attributes to MediaMath custom attributes to pass data as ke
 |**PARAMETER**| **DESCRIPTION**|
 |---| ---|
 |Mapping ID| (Required) The Mapping ID, supplied by MediaMath.|
-|MediaMath User ID| (Required) The MediaMath identifier of the visitor. Implement the [MediaMath Cookie Matching tag](https://docs.tealium.com/mediamath-cookie-matching-service-tag/) to have the MediaMath Unique User ID (UUID) of the visitor sent to Tealium EventStream API Hub as `mediamathid`.|
+|MediaMath User ID| (Required) The MediaMath identifier of the visitor. Implement the [MediaMath Cookie Matching tag](https://docs.tealium.com/mediamath-cookie-matching-service-tag/) to have the MediaMath Unique User ID (UUID) of the visitor sent to Event Streaming API Hub as `mediamathid`.|
 |Pixel ID| (Required) The configured Pixel ID, supplied by MediaMath.|

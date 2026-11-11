@@ -3,7 +3,7 @@ title: Bloomreach Connector Setup Guide
 description: This article describes how to set up the Bloomreach connector.
 url: https://docs.tealium.com/server-side-connectors/bloomreach-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -24,9 +24,11 @@ The API secret.
 * **Project token**  
 Your project token. You can find this in the Engagement web app under **Project settings > Access management > API**.
 * **API Domain**  
+
+After you configure the connector, click **Done**.
 Your Bloomreach API domain. The default value is `https://api-engagement.bloomreach.com`.
 
-## Batch Limits
+## Batch limits
 
 This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -36,7 +38,7 @@ This action uses batched requests to support high-volume data transfers to the v
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Update Customer Properties | ✓ | ✗ |
 | Update Customer Properties Batch | ✓ | ✗ |

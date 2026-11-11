@@ -1,11 +1,11 @@
 ---
 title: Adlucentタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAdlucentタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでAdlucentタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adlucent-tag/
 ---
-## タグのヒント
+## タグ構成のヒント
 
-* E-Commerce拡張機能を使用して以下のパラメーターを構成します：
+* Eコマース拡張機能を使用して、次のパラメータを構成します。
   * 注文ID
   * 顧客ID
   * SKUのリスト
@@ -13,34 +13,34 @@ url: https://docs.tealium.com/ja/client-side-tags/adlucent-tag/
   * 価格のリスト
   * カテゴリのリスト
 
-* マッピングを使用して：
-  * 標準の構成値を動的に上書きします
-  * E-Commerce拡張機能の値を動的に上書きします
-  * 顧客タイプの値を構成します
+* マッピングを使用して、次の操作を行います。
+  * 標準構成値を動的に上書きする
+  * Eコマース拡張機能の値を動的に上書きする
+  * 顧客タイプの値を構成する
 
 ## タグの構成
 
-まず、タグマーケットプレイスに移動し、Adlucentタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳しくは、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際に、次の構成を行います。
 
-* **リテーラーID**：あなたのAdlucentリテーラーID。
+* **小売業者ID**：Adlucentの小売業者ID。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳しくは、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
-| 変数                            | 説明             |
-|:--------------------------------|:-----------------|
-| リテーラーID                     | (`retailer`)     |
-| 顧客ID                          | (`customerID`)   |
-| 顧客タイプ                      | (`customerType`) |
-| 注文ID                          | (`orderKey`)     |
-| SKUのリスト (`sku`)             | [配列]           |
-| 数量のリスト (`qty`)            | [配列]           |
-| 価格のリスト (`price`)          | [配列]           |
-| カテゴリのリスト (`category`)   | [配列]           |
+| 変数                              | 説明             |
+|:----------------------------------|:-----------------|
+| 小売業者ID                        | (`retailer`)     |
+| 顧客ID                            | (`customerID`)   |
+| 顧客タイプ                        | (`customerType`) |
+| 注文ID                            | (`orderKey`)     |
+| SKUのリスト (`sku`)               | [配列]           |
+| 数量のリスト (`qty`)              | [配列]           |
+| 価格のリスト (`price`)            | [配列]           |
+| カテゴリのリスト (`category`)     | [配列]           |

@@ -3,7 +3,7 @@ title: Amplitude Identify Connector Setup Guide
 description: This article describes how to set up the Amplitude Identify connector.
 url: https://docs.tealium.com/server-side-connectors/amplitude-identify-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,10 +12,9 @@ This connector uses the following vendor API:
 * API Endpoint: `https://api2.amplitude.com/identify`
 * Documentation: [Amplitude Identify API](https://amplitude.com/docs/apis/analytics/identify)
 
-
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -26,9 +25,11 @@ After adding the connector, configure the following settings:
   * EU Residency Server: `https://api.eu.amplitude.com/identify`.
   * If not provided, Standard Server endpoint should be used by default.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Update User Properties | ✓ | ✓ |
 

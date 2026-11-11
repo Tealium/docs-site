@@ -53,7 +53,7 @@ var allDecisionsOnThisPage = window.tealiumConsentRegister.decisions
 
 In this example, we start in the opt-in model (implicit decision), then opt in and opt out for illustration.
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-integrations.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-integrations.png)
 
 ### Monitor consent changes
 
@@ -74,7 +74,7 @@ window.addEventListener('consent_updated', (event) => {
 
 **Consent manager example of a European user opting in on initial landing**
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-manager.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-manager.png)
 
 
 <blockquote>
@@ -152,7 +152,7 @@ if (!u.consent_callback_initialized) {
 
 A simplified overview of the flows to illustrate the new events and listeners.
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-flow.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-flow.png)
 
 ## Suppress the consent register
 

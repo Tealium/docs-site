@@ -1,9 +1,9 @@
 ---
 title: Snowplow Tag Setup Guide
-description: This article describes how to set up the Snowplow tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Snowplow tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/snowplow-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Supports the E-Commerce extension
 * Use mapping to:
@@ -14,11 +14,11 @@ url: https://docs.tealium.com/client-side-tags/snowplow-tag/
 
 * Structured and Unstructured Event tracking is triggered when the Structured/Unstructured Event Action is defined with mappings.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Snowplow tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Code Version**
   * Select a tag version (**2.18.2**, **3.1.2**, or **3.23.0**)
@@ -73,15 +73,15 @@ After adding the tag, configure the following settings:
 * **Advanced Settings**
   * Descriptive notes about this tag and how it is used within your organization.
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Snowplow tag are built into its **Data Mapping** tab. Available categories are:
 

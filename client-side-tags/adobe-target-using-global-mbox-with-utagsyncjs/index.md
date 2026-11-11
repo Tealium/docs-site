@@ -1,6 +1,6 @@
 ---
 title: Adobe Target Using Global mbox with utag.sync.js
-description: This article describes how to set up Adobe Target Using Global mbox with utag.sync.js in your Tealium iQ Tag Management account.
+description: This article describes how to set up Adobe Target Using Global mbox with utag.sync.js in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adobe-target-using-global-mbox-with-utagsyncjs/
 ---
 ## Before You Begin

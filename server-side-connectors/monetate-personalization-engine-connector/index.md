@@ -11,13 +11,15 @@ url: https://docs.tealium.com/server-side-connectors/monetate-personalization-en
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Username**: (Required) Enter your API username, which can be found under **Settings > Sites > API Keys** of your account.
 * **Private Key**: (Required) Provide your private key matching the registered public key in your account. The private key must be generated with the RSA algorithm and transformed to PEM PKCS #8 format. For more information, see: [Monetate: API Keys Overview](https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview) and [Generating API Keys](#generate-api-keys).
 * **Client ID**: (Required) Provide your client ID, which can be found under **Settings > API Documentation > Monetate Data API > Base URL** of your account. For example, if the URL is `https://api.monetate.net/api/data/v1/abc/production/`, then the client ID is `abc`.
+
+After you configure the connector, click **Done**.
 
 Click **Test Connection** to verify API connectivity with the provided credentials.
 
@@ -39,14 +41,12 @@ Once generated, open the files in a text editor and copy the keys and values acc
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Create or Update Data Record (Real-Time) | ✓ | ✓ |
 | Create or Update Data Record (Batched) | ✓ | ✓ |
 
-Click **Next** or go to the **Actions** tab.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Update Data Record (Real-Time)
 

@@ -3,7 +3,7 @@ title: Taboola Audiences Connector Setup Guide
 description: This article describes how to set up the Taboola Audiences connector.
 url: https://docs.tealium.com/server-side-connectors/taboola-audiences-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,7 +12,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://backstage.taboola.com/backstage/api/1.0`
 * Documentation: [Taboola API](https://developers.taboola.com/backstage-api/reference/add-or-remove-users)
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -22,14 +22,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Audience (Batched) | ✓ | ✓ |
 | Remove User from Audience (Batched) | ✓ | ✓ |
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -43,7 +43,7 @@ After adding the connector, configure the following settings:
 
 ## Action parameters
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 The following section describes how to set up parameters and options for each action.
 

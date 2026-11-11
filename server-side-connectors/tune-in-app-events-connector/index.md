@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/tune-in-app-events-connecto
 ---
 ## Connector Actions
 
-| **Action Name**       | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:----------------------|:-------------------|:----------------|
 | Send Predefined Event | ✓                  | ✓               |
 | Send Custom Event     | ✓                  | ✓               |
@@ -21,7 +21,7 @@ To obtain the listed keys, you must send a request to TUNE Support from the emai
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -36,9 +36,7 @@ After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Predefined Event
 
@@ -148,7 +146,7 @@ This section describes how to set up parameters and options for each action.
 | Custom attribute 1         | <ul><li>Custom attribute 1 (Login event).</li></ul>                                                                                                                                                     |
 | Name                       | <ul><li>Name or ID or SKU of an item.</li></ul>                                                                                                                                                         |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [TUNE Measurement API in Action](https://developers.tune.com/measurement-docs/api-in-action/)
 * [Measuring Pre-Defined Events](https://developers.tune.com/measurement-docs/measuring-pre-defined-events/)

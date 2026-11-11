@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/connectors/delayed-actions/
 ---
 ## How it works
 
-A delayed action is an AudienceStream connector action that is delayed based on a set of conditions or time criteria. A delayed action can be configured for an AudienceStream connector when the trigger is set to **In Audience at the end of visit**, as shown in the following example:
+A delayed action is a Customer Data Platform (CDP) connector action that is delayed based on a set of conditions or time criteria. A delayed action can be configured for a CDP connector when the trigger is set to **In Audience at the end of visit**, as shown in the following example:
 
 ![](https://docs.tealium.com/images/server-side/001.png) 
 

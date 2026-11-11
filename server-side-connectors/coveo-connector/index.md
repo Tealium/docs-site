@@ -3,7 +3,7 @@ title: Coveo Connector Setup Guide
 description: This article describes how to set up the Coveo connector.
 url: https://docs.tealium.com/server-side-connectors/coveo-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Log View Event via POST| ✗| ✓|
 |Log Search Event via POST| ✗| ✓|
@@ -24,7 +24,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

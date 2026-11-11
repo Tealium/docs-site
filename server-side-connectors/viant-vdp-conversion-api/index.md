@@ -3,7 +3,7 @@ title: Viant VDP Conversion API Connector Setup Guide
 description: This article describes how to set up the Viant VDP Conversion API connector.
 url: https://docs.tealium.com/server-side-connectors/viant-vdp-conversion-api/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -23,9 +23,11 @@ After adding the connector, configure the following settings:
 * **Account ID**: Required. Viant account ID.
 * **Advertiser ID**: Required. Viant advertiser ID.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion Event | ✓ | ✓ |
 | Send Healthcare Conversion Event | ✓ | ✓ |

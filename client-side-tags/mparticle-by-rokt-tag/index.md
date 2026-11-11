@@ -34,11 +34,11 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
-### Tag Configuration
+### Tag configuration
 
 | Variable | Type/Values | Description |
 |:---------|:-----|:------------|

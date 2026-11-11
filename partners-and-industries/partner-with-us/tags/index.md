@@ -25,7 +25,7 @@ The load rule determines when the tag should load on a page or event. Load rule 
 [Learn more about load rules](https://docs.tealium.com/about-load-rules/).
 * **Data Mappings**  
 Data mappings determine which dynamic values the tag needs from the data layer and the corresponding variable name used by the vendor. Mappings also determine how to track in-page events.
-[Learn more about data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+[Learn more about data mappings](https://docs.tealium.com/tag-management/data-mappings/manage/).
 
 ### Loading in the Browser
 

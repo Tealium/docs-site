@@ -1,24 +1,24 @@
 ---
 title: BlueKai Tag Setup Guide
-description: This article describes how to set up the BlueKai tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the BlueKai tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/bluekai-tag/
 ---
-## Tag Tips
+## Tag tips
 
 Use mapping to override the standard configuration values or to pass additional parameters.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following variables:
+When adding the tag, configure the following settings:
 
 * **Site ID**: Unique number that identifies a pixel as belonging to a certain DMP Partner.
 * **Limit**: Maximum number of media partner segment pixels that will be fired by BlueKai.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The following variables are available for the BlueKai tag:
 

@@ -1,15 +1,15 @@
 ---
 title: Import data using Visitor Data Enrichment (/vdata)
-description: Send real-time data updates to EventStream from any external system.
+description: Send real-time data updates to Event Streaming from any external system.
 url: https://docs.tealium.com/server-side/data-sources/vdata-endpoint/
 ---## Introduction
 
-You are likely familiar with the following two standard methods of ingesting data into EventStream:
+You are likely familiar with the following two standard methods of ingesting data into Event Streaming:
 
-* The [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) that manages triggering website event data to EventStream. This tag is configured within Tealium iQ.
-* [File Import Data Source](https://docs.tealium.com/about-file-import/) manages the process of bulk importing visitor data into EventStream.
+* The [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) that manages triggering website event data to Event Streaming. This tag is configured within Tag Management.
+* [File Import Data Source](https://docs.tealium.com/about-file-import/) manages the process of bulk importing visitor data into Event Streaming.
 
-Did you know there is a third method for EventStream to receive data? This additional method is called Visitor Data Enrichment and can be used to send real-time data updates to EventStream from any external system. The following sections provide details and examples.
+Did you know there is a third method for Event Streaming to receive data? This additional method is called Visitor Data Enrichment and can be used to send real-time data updates to Event Streaming from any external system. The following sections provide details and examples.
 
 ### What is /vdata/i.gif ?
 
@@ -30,14 +30,14 @@ For example, use `collect-eu-central-1.tealiumiq.com` for data collection only i
 
 The following list describes potential uses of Visitor Data Enrichment.
 
-* Send data to vendors through EventStream  
-Mobile apps have the ability to trigger data directly from the application to EventStream, skipping the webview, using Tealium `/vdata/i.gif`.
+* Send data to vendors through Event Streaming  
+Mobile apps have the ability to trigger data directly from the application to Event Streaming, skipping the webview, using Tealium `/vdata/i.gif`.
 * Use as an endpoint for cookie sync services  
-This allows a tag vendor to redirect to the `/vdata/i.gif` location and send their visitor ID to EventStream
+This allows a tag vendor to redirect to the `/vdata/i.gif` location and send their visitor ID to Event Streaming
 * Impression Tracking  
 Display advertisements are typically loaded in an iFrame. The Visitor Data Enrichment can help track which ads have been displayed to a visitor.
-* A CMS/CRM/BI/etc system can POST a JSON object of data to EventStream  
-This method can be used if your system generates sensitive data that you do not want to be fed through the browser, but EventStream needs the data in real-time to take action on the visitor.
+* A CMS/CRM/BI/etc system can POST a JSON object of data to Event Streaming  
+This method can be used if your system generates sensitive data that you do not want to be fed through the browser, but Event Streaming needs the data in real-time to take action on the visitor.
 
 ### Required Parameters for the Tealium REST Endpoint
 
@@ -45,8 +45,8 @@ The following table describes required parameters for the Tealium REST endpoint:
 
 |Parameter| Description|
 |---| ---|
-|`tealium_account`| The account name for EventStream/Tealium iQ|
-|`tealium_profile`| The profile name where you have EventStream configured|
+|`tealium_account`| The account name for Event Streaming/Tag Management|
+|`tealium_profile`| The profile name where you have Event Streaming configured|
 |`tealium_vid`| The unique Visitor ID or Secondary ID, such as encoded Email Address or Device ID, from which the tracking request originates|
 |`tealium_trace_id`| (Optional) Required only for testing with Trace feature|
 
@@ -66,7 +66,7 @@ Using the `/vdata/i.gif` is the most common method for using the Visitor Data En
 
 ### Sample GET Request using JavaScript
 
-The following example shows how to code a display ad to send the impression tracking information to EventStream.
+The following example shows how to code a display ad to send the impression tracking information to Event Streaming.
 
 ```
 //build your object of data
@@ -126,7 +126,7 @@ if (json_string!="") {
 
 ### Sample POST Request using cURL
 
-The following example shows how to POST data to EventStream from a Command Line Interface (CLI) or terminal for Mac. This example would likely only be used for testing.
+The following example shows how to POST data to Event Streaming from a Command Line Interface (CLI) or terminal for Mac. This example would likely only be used for testing.
 
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"data":{"event_name":"myEvent","customer_id":"user1@tealium.com","cp.trace_id":"12345"},"event":"view"}' https://collect.tealiumiq.com/account/profile/2/i.gif

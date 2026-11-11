@@ -1,39 +1,39 @@
 ---
 title: Quicklizardタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでQuicklizardタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでQuicklizardタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/quicklizard-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* 必要なマッピング：
+* 必須のマッピング：
   * 商品IDのリスト
   * 価格のリスト
 
-* 以下のE-Commerce拡張値をサポート：
+* 次のEコマース拡張機能の値をサポートしています：
   * 注文ID
   * 商品IDのリスト
-  * 名前のリスト
+  * 商品名のリスト
   * ブランドのリスト
-  * カテゴリのリスト
+  * カテゴリーのリスト
   * 価格のリスト
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Quicklizardタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際は、次の構成を構成します：
 
 * **クライアントキー**  
-Quicklizardから提供されるキー。
+Quicklizardから提供されたキー。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです：
 
 ### カスタム
 
-|変数| 説明|
-|---| ---|
-|カスタム|  <ul><li>カスタム宛先を追加</li></ul> |
+|変数|説明|
+|---|---|
+|カスタム|<ul><li>カスタム送信先を追加</li></ul>|

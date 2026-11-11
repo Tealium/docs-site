@@ -1,52 +1,52 @@
 ---
-title: IntercomからのWebhook構成ガイド
-description: この記事では、Intercomデータソースを使用してIntercomアカウントにWebhookを作成し、アクション可能なイベントをTealiumに送信する方法について説明します。
+title: Intercom 受信 Webhook セットアップガイド
+description: この記事では、Intercom データソースを使用して Intercom アカウントに Webhook を作成し、実行可能なイベントを Tealium に送信する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/intercom/
 ---
 ## 前提条件
 
-* [Intercomアカウント](https://app.intercom.com/admins/sign_in)
-* EventStream/AudienceStreamアカウント
+* [Intercom アカウント](https://app.intercom.com/admins/sign_in)
+* Event Streaming および Customer Data Platform（CDP）アカウント
 
 ## 仕組み
 
-Intercomは、指定したエンドポイントに対して送信リクエストを送る[Webhook API](https://developers.intercom.com/building-apps/docs/setting-up-webhooks)を提供しています。これらのリクエストは、Intercomアカウントで何が起こったかについてEventStreamに通知するようなプッシュ通知のように機能します。Customer Data Hub (CDH)にIntercomデータソースを追加すると、ユニークなエンドポイントが生成されます。このエンドポイントは、IntercomのWebhookを構成するために使用されます。構成が完了すると、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受け取ってユースケースを自動化し、情報を得て、生産性を向上させることができます。
+Intercom は、指定したエンドポイントに送信リクエストを送る [Webhook API](https://developers.intercom.com/building-apps/docs/setting-up-webhooks) を提供しています。これらのリクエストは Event Streaming へのプッシュ通知として機能し、Intercom アカウントで発生した事象を通知します。Customer Data Hub（CDH）に Intercom データソースを追加すると、一意のエンドポイントが生成されます。このエンドポイントを使用して Intercom Webhook を構成します。構成後は、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受信することで、ユースケースの自動化、最新情報の把握、生産性の向上を実現できます。
 
-## Intercomデータソース
+## Intercom データソース
 
-Intercomデータソースは、Intercom構成のHTTP POST URLとして使用するためのユニークなURLを生成します。URLは次の形式で生成されます：
+Intercom データソースは、Intercom の構成で HTTP POST URL として使用する一意の URL を生成します。URL は次の形式で生成されます。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-Tealium CDHプロファイルにIntercomデータソースを追加する方法については、[Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加し、接続した後は、プロファイルを保存して公開します。
+Intercom データソースを Tealium CDH プロファイルに追加する方法については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加して接続した後、プロファイルを保存してパブリッシュします。
 
-## Intercomの構成
+## Intercom のセットアップ
 
-データソースエンドポイントを生成した後、以下の手順を使用してIntercomアカウントに移動し、Webhookを作成します。
+データソースのエンドポイントを生成したら、次の手順に従って Intercom アカウントに移動し、Webhook を作成します。
 
-1. [Intercomアカウント](https://app.intercom.io/a/apps/_/developer-hub)にログインします。
+1. [Intercom アカウント](https://app.intercom.io/a/apps/_/developer-hub)にログインします。
 1. アプリケーションに移動します。
-1. 構成したいアプリケーションを選択します。
-1. **構成 > Webhooks**に移動します。
-1. Intercomデータソースに対して、前のセクションで説明したようにTealiumによって生成されたリクエストエンドポイントURLを指定します。
-1. 通知を受け取りたいトピックを選択します。
+1. 構成するアプリケーションを選択します。
+1. **Configure > Webhooks** に移動します。
+1. Intercom データソースに、前のセクションで説明した Tealium によって生成されたリクエストエンドポイント URL を指定します。
+1. 通知を受け取るトピックを選択します。
 
 ## イベントと属性
 
-すべての受信Intercomイベント属性は自動的に`intercom_`でプレフィックスされます。例えば、Intercomは`data.item.conversation_message.type`属性をTealiumに送信し、それは`intercom_data_item_conversation_message_type`（すべて小文字）に変換されます。
+受信するすべての Intercom イベント属性には、`intercom_` というプレフィックスが自動的にエンリッチメントされます。たとえば、Intercom は `data.item.conversation_message.type` 属性を Tealium に送信し、この属性は `intercom_data_item_conversation_message_type`（すべて小文字）に変換されます。
 
-Intercomによって生成されるWebhookイベントと属性の完全なリストについては、[Intercom - Webhook Models](https://developers.intercom.com/building-apps/docs/webhook-model)を参照してください。
+Intercom が生成する Webhook イベントと属性の完全な一覧については、[Intercom - Webhook モデル](https://developers.intercom.com/building-apps/docs/webhook-model)を参照してください。
 
-|**イベント属性**| **タイプ**| **例**|
+|**イベント属性**| **型**| **例**|
 |---| ---| ---|
 |`intercom_type`| 文字列| "notification_event"|
 |`intercom_id`| 文字列| "notif_4e3504a3-ba3f-46dc-ab48-8e4d5bdfdf4e"|
 |`intercom_created_at`| 数値| "1571080403"|
 |`intercom_topic`| 文字列| "conversation.admin.closed"|
 |`intercom_data_type`| 文字列| "notification_event_data"|
-|`intercom_data_item_type`| 文字列| 以下のいずれか: <ul><li>"conversation"</li><li>"user"</li><li>"contact"</li><li>"usertag"</li><li>"ead"</li><li>"contacttag"</li><li>"visitor"</li><li>"event"</li><li>"ping"</li></ul> |
+|`intercom_data_item_type`| 文字列| 次のいずれか：<ul><li>"conversation"</li><li>"user"</li><li>"contact"</li><li>"usertag"</li><li>"ead"</li><li>"contacttag"</li><li>"visitor"</li><li>"event"</li><li>"ping"</li></ul> |
 |`intercom_data_item_id`| 文字列| "24098479713"|
 |`intercom_data_item_user_type`| 文字列| "user"|
 |`intercom_data_item_user_email`| 文字列| "wz1996@gmail.com"|
@@ -64,13 +64,12 @@ Intercomによって生成されるWebhookイベントと属性の完全なリ�
 |`intercom_data_item_company_id`| 文字列| "6"|
 |`intercom_data_item_event_name`| 文字列| "invited-friend"|
 
-## ベンダーのドキュメンテーション
+## ベンダーのドキュメント
 
-以下のドキュメンテーションを表示するには、[Intercomにログイン](https://app.intercom.com/admins/sign_in)します：
+次のドキュメントを表示するには、[Intercom にログイン](https://app.intercom.com/admins/sign_in)してください。
 
 * [Intercom Developer Hub](https://app.intercom.io/a/apps/_/developer-hub)
-* [Intercom: Webhooks概要](https://developers.intercom.com/building-apps/docs/webhooks)
-* [Intercom: Webhooksの構成](https://developers.intercom.com/building-apps/docs/setting-up-webhooks)
-* [Intercom: Authの構成 - 権限とスコープ](https://developers.intercom.com/building-apps/docs/setting-up-oauth#section-permissions)
-* [Intercom: Webhook Models](https://developers.intercom.com/building-apps/docs/webhook-model)
-
+* [Intercom：Webhook の概要](https://developers.intercom.com/building-apps/docs/webhooks)
+* [Intercom：Webhook のセットアップ](https://developers.intercom.com/building-apps/docs/setting-up-webhooks)
+* [Intercom：認証のセットアップ - 権限とスコープ](https://developers.intercom.com/building-apps/docs/setting-up-oauth#section-permissions)
+* [Intercom：Webhook モデル](https://developers.intercom.com/building-apps/docs/webhook-model)

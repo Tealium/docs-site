@@ -1,6 +1,6 @@
 ---
 title: Adition Cookie Matching Tag Setup Guide
-description: This article describes how to set up the Adition Cookie Matching tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Adition Cookie Matching tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adition-cookie-matching-tag/
 ---
 
@@ -9,32 +9,32 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 </blockquote>
 
 
-## Tag Tips
+## Tag tips
 
 * This is the Cookie Matching version of Adition, allowing you to synchronize Visitor ID information between Tealium and Adition.
 * This tag is used in conjunction with another Adition tag.
 * Sends the following server-side attribute back to Tealium:
   * `adition_user_id`
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Adition Cookie Matching tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tealium Account**
   * Name of your Tealium account.
   * Required to redirect to the correct vdata endpoint.
-  * Defaults to your Tealium iQ account name.
+  * Defaults to your Tag Management account name.
 
 * **Tealium Profile**
   * Name of your Tealium profile.
   * Required to redirect to the correct vdata endpoint.
-  * Defaults to your Tealium iQ profile name.
+  * Defaults to your Tag Management profile name.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

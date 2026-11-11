@@ -3,82 +3,79 @@ title: SendGridコネクタ構成ガイド
 description: この記事では、SendGridコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/sendgrid-connector/
 ---
-## コネクタのアクション
+## コネクタアクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-|Upsert Contact| ✓| ✗|
-|Remove Contact| ✓| ✗|
-|Send Email| ✓| ✗|
+|連絡先の作成または更新| ✓| ✗|
+|連絡先の削除| ✓| ✗|
+|メールの送信| ✓| ✗|
 
-## 構成の構成
+## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタ概要](https://docs.tealium.com/ja/server-side/connectors/manage/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタの概要](https://docs.tealium.com/ja/server-side/connectors/manage/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
 * **APIキー**  
-SendGridコネクタが使用するAPIキー。このコネクタはAPIキーに対して以下の権限が必要です：
+SendGridコネクタで使用するAPIキー。このコネクタでは、APIキーに次の権限が必要です。
 
-  * **マーケティングキャンペーン:** フルアクセス
-  * **メール送信:** フルアクセス
-  * **テンプレートエンジン:** 読み取りアクセス
+  * **マーケティングキャンペーン：** フルアクセス
+  * **メール送信：** フルアクセス
+  * **テンプレートエンジン：** 読み取りアクセス
 
-SendGrid APIキーに関する詳細情報は、次のドキュメンテーションを参照してください：[SendGrid APIキー](https://docs.sendgrid.com/ui/account-and-settings/api-keys)。
+SendGrid APIキーの詳細については、次のドキュメントを参照してください：[SendGrid APIキー](https://docs.sendgrid.com/ui/account-and-settings/api-keys)。
 
 ## アクション構成 - パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでコネクタアクションを構成します。
+**続行**をクリックして、コネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
-
-### アクション - Upsert Contact
+### アクション - 連絡先の作成または更新
 
 #### パラメータ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Address Line 1|
-|Address Line 2|
-|Alternate Emails|
-|City|
-|Country|
-|Email| (必須)|
-|First Name|
-|Last Name|
-|Postal Code|
-|State Province Region|
-|Contact List Ids| 任意: リストID。このコンタクトが追加されるリストIDの文字列の配列。|
+|住所1|
+|住所2|
+|代替メールアドレス|
+|市区町村|
+|国|
+|メールアドレス|（必須）|
+|名|
+|姓|
+|郵便番号|
+|都道府県／州／地域|
+|連絡先リストID|（任意）リストID。この連絡先の追加先となるリストID文字列の配列。|
 
-### アクション - Remove Contact
-
-#### パラメータ
-
-|**パラメータ**| **説明**|
-|---| ---|
-|Contact Id|
-|Email|
-
-### アクション - Send Email
+### アクション - 連絡先の削除
 
 #### パラメータ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Name| (必須)|
-|Send At|
-|Send To All|
-|Custom Unsubscribe Url|
-|Editor|
-|Generate Plain Content|
-|HTML Content|
-|Ip Pool|
-|Plain Content|
-|Subject|
-|Categories| 任意: カテゴリ。このSingle Sendに関連付けるカテゴリ。最大アイテム数10。|
-|Contact List Ids| 任意: コンタクトリストID。Single Sendを受け取る受信者リストID。最大アイテム数10。|
-|Segments| 任意: セグメント。Single Sendを受け取る受信者セグメントID。最大アイテム数10。|
-|Design Id| 任意: デザインID。**Html Content**、**Plain Content**、および/または**subject**の代わりにデザインIDを使用できます。|
-|Sender Id| 任意: 送信者ID。確認済みの送信者のID。|
-|Suppression Group Id| 任意: 抑制グループID。受信者が退会するための抑制グループのID — これまたは**Custom Unsubscribe Url**を提供する必要があります。|
+|連絡先ID|
+|メールアドレス|
 
+### アクション - メールの送信
+
+#### パラメータ
+
+|**パラメータ**| **説明**|
+|---| ---|
+|名前|（必須）|
+|送信日時|
+|すべてに送信|
+|カスタム配信停止URL|
+|エディター|
+|プレーンコンテンツを生成|
+|HTMLコンテンツ|
+|IPプール|
+|プレーンコンテンツ|
+|件名|
+|カテゴリー|（任意）カテゴリー。この一括送信に関連付けるカテゴリー。最大10項目。|
+|連絡先リストID|（任意）連絡先リストID。一括送信を受信する宛先リストのID。最大10項目。|
+|セグメント|（任意）セグメント。一括送信を受信する宛先セグメントのID。最大10項目。|
+|デザインID|（任意）デザインID。デザインIDは、**HTMLコンテンツ**、**プレーンコンテンツ**、**件名**のいずれか、または複数の代わりに使用できます。|
+|送信者ID|（任意）送信者ID。確認済み送信者のID。|
+|サプレッショングループID|（任意）サプレッショングループID。受信者が配信停止できるようにするサプレッショングループのID。これを指定するか、**カスタム配信停止URL**を指定する必要があります。|

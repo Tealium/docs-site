@@ -1,39 +1,38 @@
 ---
 title: Wootricタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでWootricタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでWootricタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/wootric-tag/
----Wootricは、NPSから最大の利益を得るための支援をします—顧客のロイヤルティを測定し、製品を最適化し、顧客を維持し、ブランドの支持者の軍団を構築します。
+---Wootricは、NPSを最大限に活用し、顧客ロイヤルティの測定、製品の最適化、顧客維持、ブランド支持者の育成を支援します。
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加するときは、次の構成を行います。
 
-* **アカウントトークン**：あなたのアカウントを識別する一意のID。Wootricから提供されます。
+* **アカウントトークン**：Wootricから提供される、アカウントを識別する一意のID
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。ロードルールの詳細については、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-Wootricタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは次のとおりです：
+Wootricタグの宛先変数は、データマッピングタブに組み込まれています。利用可能なカテゴリは次のとおりです。
 
 ### 標準
 
 |**宛先名**| **説明**|
 |---| ---|
-|Email (email)| 現在ログインしているユーザーのメールアドレス|
-|User ID (external\_id)| 現在ログインしているユーザーのカスタムID|
-|Created At (created\_at)| 現在ログインしているユーザーのサインアップ日。10桁のUNIXタイムスタンプ（秒）である必要があります|
-|Product Name (product\_name)| トラッキングされている製品またはサービスの名前|
-|Account Token (account\_token)| あなたのアカウントの一意のID。タグ構成のデフォルトを上書きするために使用します|
+|メールアドレス (email)| 現在ログインしているユーザーのメールアドレス|
+|ユーザーID (external\_id)| 現在ログインしているユーザーのカスタムID|
+|作成日時 (created\_at)| 現在ログインしているユーザーの登録日。秒単位の10桁のUNIXタイムスタンプである必要があります|
+|製品名 (product\_name)| トラッキング対象の製品またはサービスの名前|
+|アカウントトークン (account\_token)| アカウントの一意のID。タグ構成のデフォルト値を上書きする場合に使用します|
 
-## ベンダードキュメンテーション
+## ベンダーのドキュメント
 
-* [Wootric Docs](http://docs.wootric.com/)
-* [Knowledge Base](http://help.wootric.com/help_center)
-
+* [Wootricドキュメント](http://docs.wootric.com/)
+* [ナレッジベース](http://help.wootric.com/help_center)

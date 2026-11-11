@@ -112,7 +112,7 @@ The following credentials are required for this connector:
     * Client secret 
     * Organization ID
 1. Note your credentials and return to Tealium to complete the connector configuration.
-1. In Tealium, navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+1. In Tealium, go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 1. After adding the connector, configure the following settings using the credentials that you generated in the previous steps:
     * **Client ID**  
     (Required) The Client ID.
@@ -125,7 +125,7 @@ The following credentials are required for this connector:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event | ✓ | ✓ |
 | Send Event (Batched) | ✓ | ✓ |
@@ -490,7 +490,6 @@ To configure the connector to send data to Adobe Target, complete the steps in t
 The following image shows example mappings in Tealium:
 
 ![](https://docs.tealium.com/images/server-side-connectors/adobe-target-tealium-setup.png)
-
 
 ### Send profiling data to Adobe Identity Service
 

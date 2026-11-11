@@ -1,110 +1,98 @@
 ---
-title: AudienceDBデータガイド
-description: この記事では、Tealium DataAccess AudienceDB内で利用可能なデータについて説明します。
+title: AudienceDB データガイド
+description: この記事では、Tealium DataAccess AudienceDB で利用できるデータについて説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencedb-eventdb/audiencedb-data-guide/
 ---
-## 動作原理
+## 仕組み
 
-AudienceDBは、訪問レベルと訪問レベルのデータをAmazon Redshift™のPostgres風データベースに保存し、お好みのSQLクライアントやビジネスインテリジェンス（BI）ツールを使用してデータを直接クエリして分析することができます。
+AudienceDB は、訪問レベルと訪問レベルの両方のデータを、Amazon Redshift™ 内の Postgres に似たデータベースに保存します。任意の SQL クライアントまたはビジネスインテリジェンス（BI）ツールを使用して、データを直接クエリおよび分析できます。
 
-AudienceDBがアクティブになると、AudienceStreamデータを保存するためのデータベースがAmazon Redshift™に作成されます。新しいデータベースには、保存可能な各データタイプのテーブルが含まれています。訪問レベルのデータに関連するデータは、`visit_`で始まるテーブルに保存され、訪問レベルのデータに関連するデータは、`visitor_`で始まるテーブルに保存されます。テーブルに加えて、クエリの作成を容易にするためにいくつかのビューも作成されます。
+AudienceDB を有効にすると、Customer Data Platform（CDP）データを保存するためのデータベースが Amazon Redshift™ に作成されます。新しいデータベースには、保存可能な各データタイプに対応するテーブルが含まれます。訪問レベルのデータに関連するデータは、接頭辞 `visit_` が付いたテーブルに保存されます。訪問レベルのデータに関連するデータは、接頭辞 `visitor_` が付いたテーブルに保存されます。また、クエリを簡単に作成できるように、テーブルに加えて複数のビューも作成されます。
 
-AudienceDBが初めての方は、[AudienceDBとEventDBの操作](https://docs.tealium.com/audiencedb-and-eventdb/)の基本を確認してください。
+AudienceDB を初めて使用する場合は、[AudienceDB と EventDB の操作](https://docs.tealium.com/audiencedb-and-eventdb/)で基本事項を確認してください。
 
-## EventDBとAudienceDBの図
+## EventDB と AudienceDB の図
 
-イベント、訪問、訪問属性はEventDBとAudienceDBで連携して動作します。以下の図は、EventDBとAudienceDBの属性間の関係を示しています。これらの関係は、特定の訪問または訪問のイベントデータを返すクエリを書く際に重要です。
+イベント、訪問、訪問の各属性は、EventDB と AudienceDB で連携して機能します。次の図は、EventDB と AudienceDB の属性間の関係を示しています。これらの関係は、特定の訪問または訪問に関するイベントデータを返すクエリを作成する際に重要です。
 
 ![](https://docs.tealium.com/images/server-side/eventdb-and-audiencedb-diagram.jpg)
 
 ## 属性と列名
 
-AudienceDBで有効になっている各訪問および訪問属性は、データベーステーブルの一つ以上の列として表示されます。
+AudienceDB で有効になっている各訪問属性および訪問属性は、1 つ以上のデータベーステーブルに列として表示されます。
 
-以下は、属性データタイプと対応する列名の命名規則のリストです。「###」は属性IDを表します。表に示されている例は訪問属性を示しています。訪問属性は「visitor」の代わりに「visit」という単語を使用します。
+次に、属性のデータタイプと対応する列の命名規則を示します。「###」は属性 ID を表します。表に示す例は訪問属性です。訪問属性では、「visitor」の代わりに「visit」を使用します。
 
-|属性データタイプ| テーブル列名|
+|属性のデータタイプ|テーブルの列名|
 |---| ---|
-|配列|  <ul><li>**テーブル**: `array_###`</li><li>**ビュー**: `visitor array - array_name (###)`</li><li>**正規化**: `visitor array - array_name`</li></ul> |
-|オーディエンス<br> `t`は真、`f`は偽を示し、オーディエンスに存在するかを示します。|  <ul><li>**テーブル**: `audience_account_profile_###`</li><li>**ビュー**: `visitor - audience - audience_name (account_profile_###)`</li><li>**正規化**: `visitor - audience - audience_name`</li></ul> |
-|バッジ<br> `t`は真、`f`は偽を示し、バッジの存在を示します。|  <ul><li>**テーブル**: `badge_###`</li><li>**ビュー**: `visitor - badge - badge_name (###)`</li><li>**正規化**: `visitor - badge - badge_name`</li></ul> |
-|ブール値|  <ul><li>**テーブル**: `flag_###`</li><li>**ビュー**: `visitor - flag - boolean_name (###)`</li><li>**正規化**: `visitor - flag - boolean_name`</li></ul> |
-|日付|  <ul><li>**テーブル**: `date_###`</li></ul> <ul><li>**ビュー**: `visitor - date - date_name (###)`</li><li>**正規化**: `visitor - date - date_name`</li></ul> |
-|数値|  <ul><li>**テーブル**: `metric_###`</li><li>**ビュー**: `visitor - metric - metric_name (###)`</li><li>**正規化**: `visitor - metric - metric_name`</li></ul> |
-|文字列のセット|  <ul><li>**テーブル**: `list_###`</li><li>**ビュー**: `visitor list - set_name (###)`</li><li>**正規化**: `visitor list - set_name`</li></ul> |
-|文字列|  <ul><li>**テーブル**: `property_###`</li><li>**ビュー**: `visitor - property - property_name (###)`</li><li>**正規化**: `visitor - property - property_name`</li></ul> |
-|集計|  <ul><li>**テーブル**: `visitor_tally_###_key` `visitor_tally_###_value`</li><li>**ビュー**: `visitor tally - tally_name (###) - key` "visitor tally - tally_name (###) - value"</li><li>**正規化**: `visitor tally - tally_name - key` "visitor tally - tally_name - value"</li></ul> |
+|配列|<ul><li>**テーブル**: `array_###`</li><li>**ビュー**: `visitor array - array_name (###)`</li><li>**正規化**: `visitor array - array_name`</li></ul> |
+|オーディエンス<br> true を表す値 `t` と false を表す値 `f` は、オーディエンスに属しているかどうかを示します。|<ul><li>**テーブル**: `audience_account_profile_###`</li><li>**ビュー**: `visitor - audience - audience_name (account_profile_###)`</li><li>**正規化**: `visitor - audience - audience_name`</li></ul> |
+|バッジ<br> true を表す値 `t` と false を表す値 `f` は、バッジの有無を示します。|<ul><li>**テーブル**: `badge_###`</li><li>**ビュー**: `visitor - badge - badge_name (###)`</li><li>**正規化**: `visitor - badge - badge_name`</li></ul> |
+|ブール値|<ul><li>**テーブル**: `flag_###`</li><li>**ビュー**: `visitor - flag - boolean_name (###)`</li><li>**正規化**: `visitor - flag - boolean_name`</li></ul> |
+|日付|<ul><li>**テーブル**: `date_###`</li></ul> <ul><li>**ビュー**: `visitor - date - date_name (###)`</li><li>**正規化**: `visitor - date - date_name`</li></ul> |
+|数値|<ul><li>**テーブル**: `metric_###`</li><li>**ビュー**: `visitor - metric - metric_name (###)`</li><li>**正規化**: `visitor - metric - metric_name`</li></ul> |
+|文字列セット|<ul><li>**テーブル**: `list_###`</li><li>**ビュー**: `visitor list - set_name (###)`</li><li>**正規化**: `visitor list - set_name`</li></ul> |
+|文字列|<ul><li>**テーブル**: `property_###`</li><li>**ビュー**: `visitor - property - property_name (###)`</li><li>**正規化**: `visitor - property - property_name`</li></ul> |
+|集計|<ul><li>**テーブル**: `visitor_tally_###_key` `visitor_tally_###_value`</li><li>**ビュー**: `visitor tally - tally_name (###) - key` "visitor tally - tally_name (###) - value"</li><li>**正規化**: `visitor tally - tally_name - key` "visitor tally - tally_name - value"</li></ul> |
 
-## AudienceDBテーブル
+## AudienceDB テーブル
 
-以下の表は、オーディエンスデータに使用されるAudienceDBテーブルタイプと、対応する「ビュー」と「正規化」テーブルの名前を説明しています：
+次の表では、オーディエンスデータに使用される AudienceDB テーブルのタイプと、対応する「ビュー」および「正規化」テーブルの名前について説明します。
 
-|データタイプと説明| テーブル/ビュー/正規化名|
+|データタイプと説明|テーブル／ビュー／正規化の名前|
 |---| ---|
-|**配列**<br> 配列の各アイテムは、`index`という名前の追加列を持つテーブルの行です。| `visit_arrays`<br> `visit_arrays_view`<br> `visitor_arrays`<br> `visitor_arrays_view`<br> `visitor_arrays_view_normalized`|
-|**文字列のセット**<br> セットの各アイテムはテーブルの行です。| `visit_lists`<br> `visit_lists_view`<br> `visitor_lists`<br> `visitor_lists_view`<br> `visitor_lists_view_normalized`|
-|**集計**<br> 集計の各アイテムは、キー（接尾辞 `_key`）と値（接尾辞 `_value`）の1つの列を持つテーブルの行です。| `visit_tallies`<br> `visit_tallies_view`<br> `visitor_tallies`<br> `visitor_tallies_view`<br> `visitor_tallies_view_normalized`|
-|**ステッチされた訪問**<br> プロファイルの一部としてステッチされた訪問ID。| `visitor_replaces`<br> `visitor_replaces_view`|
-|**訪問**<br> 現在の訪問属性と所属するオーディエンス。| `visits`<br> `visits_view`|
-|**訪問**<br> 訪問属性と所属するオーディエンス。| `visitors`<br> `visitors_view`<br> `visitors_view_normalized`|
-|**訪問バッチ** | 内部使用のみ|
+|**配列**<br>配列内の各項目はテーブル内の 1 行となり、ゼロから始まる配列位置を示す `index` という名前の列が追加されます。| `visit_arrays`<br> `visit_arrays_view`<br> `visitor_arrays`<br> `visitor_arrays_view`<br> `visitor_arrays_view_normalized`|
+|**文字列セット**<br>セット内の各項目は、テーブル内の 1 行になります。| `visit_lists`<br> `visit_lists_view`<br> `visitor_lists`<br> `visitor_lists_view`<br> `visitor_lists_view_normalized`|
+|**集計**<br>集計内の各項目はテーブル内の 1 行となり、キー用の列（接尾辞 `_key`）と値用の列（接尾辞 `_value`）がそれぞれ 1 つずつ含まれます。| `visit_tallies`<br> `visit_tallies_view`<br> `visitor_tallies`<br> `visitor_tallies_view`<br> `visitor_tallies_view_normalized`|
+|**統合された訪問**<br>[訪問の統合]()の一環として、プロファイル内で統合された訪問 ID。| `visitor_replaces`<br> `visitor_replaces_view`|
+|**訪問**<br>現在の訪問属性と、その訪問が属するオーディエンス。| `visits`<br> `visits_view`|
+|**訪問**<br>訪問属性と、その訪問が属するオーディエンス。| `visitors`<br> `visitors_view`<br> `visitors_view_normalized`|
+|**訪問バッチ**|内部使用のみ|
 
-### 訪問テーブル、ビュー、および正規化ビュー
+### 訪問テーブル、ビュー、正規化ビュー
 
-AudienceDBは訪問データをテーブル、ビュー、および正規化ビューとして公開します。それぞれは異なる目的を持っています。
+AudienceDB は、訪問データをテーブル、ビュー、正規化ビューとして公開します。それぞれ異なる目的で使用されます。
 
-| テーブル/ビュー名 | 説明 |
+|テーブル／ビュー名|説明|
 |---|---|
-| `visitors` (テーブル) | 各訪問のすべての履歴行を含み、すべての状態変更を含みます。列名は属性IDを使用します（例：`badge_30`, `flag_5052`）。このテーブルは監査および時間経過による変更のクエリに使用します。 |
-| `visitors_view` (ビュー) | 最新の状態のみを含みます（訪問ごとに1行）。列名は属性IDと名前を使用します（例：`visitor - badge - VIP (13)`）。このビューは現在の状態のレポートに使用します。 |
-| `visitors_view_normalized` (正規化ビュー) | `visitors_view`と同じ行を含みますが、列名は属性IDを省略します（例：`visitor - badge - VIP`）。このビューはBIツールや、列名が一貫している必要がある安定したダッシュボードに使用します。 |
-| `visitor_replaces` (テーブル) | ステッチされた訪問IDマッピングのすべてのバージョンを含み、置換されたIDも含みます。このテーブルは完全なステッチ履歴に使用します。 |
-| `visitor_replaces_view` (ビュー) | 最新の、置換されていない訪問IDのみを含みます。このビューは訪問IDを現在のプロファイルに解決するために使用します。 |
+| `visitors`（テーブル） | 各訪問のすべての履歴行が含まれ、すべての状態変更が記録されます。列名には属性 ID（例：`badge_30`、`flag_5052`）が使用されます。このテーブルは、監査および経時的な変更を確認するクエリに使用します。 |
+| `visitors_view`（ビュー） | 最新の状態のみが含まれます（訪問ごとに 1 行）。列名には属性 ID と属性名（例：`visitor - badge - VIP (13)`）が使用されます。このビューは、現在の状態に関するレポートに使用します。 |
+| `visitors_view_normalized`（正規化ビュー） | `visitors_view` と同じ行が含まれますが、列名から属性 ID が省略されます（例：`visitor - badge - VIP`）。このビューは、BI ツール、および列名を一定に保つ必要がある安定したダッシュボードで使用します。 |
+| `visitor_replaces`（テーブル） | 置き換えられた ID を含む、統合された訪問 ID マッピングのすべてのバージョンが含まれます。このテーブルは、統合の完全な履歴を確認するために使用します。 |
+| `visitor_replaces_view`（ビュー） | 置き換えられていない最新の訪問 ID のみが含まれます。このビューは、訪問 ID を現在のプロファイルに解決するために使用します。 |
 
-### 訪問テーブル、ビュー、および正規化ビュー
+## データベース構造の例
 
-AudienceDBは訪問データをテーブル、ビュー、および正規化ビューとして公開します。それぞれは異なる目的を持っています。
-
-| テーブル/ビュー名 | 説明 |
-|---|---|
-| `visitors` (テーブル) | 各訪問のすべての履歴行を含み、すべての状態変更を含みます。列名は属性IDを使用します（例：`badge_30`, `flag_5052`）。このテーブルは監査および時間経過による変更のクエリに使用します。 |
-| `visitors_view` (ビュー) | 最新の状態のみを含みます（訪問ごとに1行）。列名は属性IDと名前を使用します（例：`visitor - badge - VIP (13)`）。このビューは現在の状態のレポートに使用します。 |
-| `visitors_view_normalized` (正規化ビュー) | `visitors_view`と同じ行を含みますが、列名は属性IDを省略します（例：`visitor - badge - VIP`）。このビューはBIツールや、列名が一貫している必要がある安定したダッシュボードに使用します。 |
-| `visitor_replaces` (テーブル) | ステッチされた訪問IDマッピングのすべてのバージョンを含み、置換されたIDも含みます。このテーブルは完全なステッチ履歴に使用します。 |
-| `visitor_replaces_view` (ビュー) | 置換されていない最新の訪問IDのみを含みます。このビューは訪問IDを現在のプロファイルに解決するために使用します。 |
-
-## サンプルデータベース構造
-
-以下のセクションでは、各ビューのサンプル構造例を提供し、各ビューが何がユニークであり、他のビューとどのように異なるかを判断するのに役立ちます。
+次のセクションでは、各ビューに固有の特徴と、他のビューとの違いを判断する際に役立つ、各ビューの構造例を示します。
 
 ### 訪問配列
 
-以下の例は、`visit_arrays`テーブルの基本的なフォーマットを示しています：
+次の例は、`visit_arrays` テーブルの基本的な形式を示しています。
 
 ```nohl
  visit_id                          | index | updated                 | visit_array_421
  ----------------------------------+--------------------------------------------------------------------------
- 13e1a63890793caa346f90607a76c1c98 | 0     | 2018-05-17 01:03:30.344 | スマートフォン
- 13e1a63890793caa346f90607a76c1c98 | 1     | 2018-05-17 01:03:30.344 | フォンチャージャー
- 13e1a63890793caa346f90607a76c1c98 | 2     | 2018-05-17 01:03:30.344 | スマートフォンケース
+ 13e1a63890793caa346f90607a76c1c98 | 0     | 2018-05-17 01:03:30.344 | Smartphone
+ 13e1a63890793caa346f90607a76c1c98 | 1     | 2018-05-17 01:03:30.344 | Phone Charger
+ 13e1a63890793caa346f90607a76c1c98 | 2     | 2018-05-17 01:03:30.344 | Smartphone Case
 ```
 
 ### 訪問リスト
 
-以下の例は、`visit_lists`テーブルの基本的なフォーマットを示しています：
+次の例は、`visit_lists` テーブルの基本的な形式を示しています。
 
 ```nohl
 myexample=# select visit_id, updated, visit_list_284 from visit_lists;
 
  visit_id                          | updated                 | visit_list_284
  ----------------------------------+-------------------------------------------------------------------------
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | 携帯電話 & アクセサリ
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | コンピュータとタブレット
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | オフィス用品
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Cell Phones & Accessories
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Computers and Tablets
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Office Supplies
 ```
-### 訪問数の集計
+### 訪問集計
 
-以下の例は、`visitor_tallies` テーブルの基本的なフォーマットを示しています：
+次の例は、`visitor_tallies` テーブルの基本的な形式を示しています。
 
 ```nohl
 myexample=# select visit_id, updated, visit_tally_5144_key, visit_tally_5144_value from visit_tallies;
@@ -121,7 +109,7 @@ e1e5dd5e58bc97056f8340e242205e1ec2ab0a88c94c890563399f55828638f7 | 2017-09-09 14
 
 ### 訪問配列ビュー
 
-以下の例は、`visitor_arrays_view` テーブルの基本的なフォーマットを示しています：
+次の例は、`visitor_arrays_view` テーブルの基本的な形式を示しています。
 
 ```nohl
 myexample=# select "visitor - id", "index", "updated", "visitor array - cart product name (421)" from visitor_arrays_view;
@@ -136,7 +124,7 @@ myexample=# select "visitor - id", "index", "updated", "visitor array - cart pro
 
 ### 訪問リスト
 
-以下の例は、`visitor_lists` テーブルの基本的なフォーマットを示しています：
+次の例は、`visitor_lists` テーブルの基本的な形式を示しています。
 
 ```nohl
 myexample=# select visitor_id, updated, visitor_list_5168 from visitor_lists;
@@ -151,7 +139,7 @@ myexample=# select visitor_id, updated, visitor_list_5168 from visitor_lists;
 
 ### 訪問置換
 
-以下の例は、`visitor_replaces` テーブルの基本的なフォーマットを示しています：
+次の例は、`visitor_replaces` テーブルの基本的な形式を示しています。
 
 ```nohl
 myexample=# select visitor_replaces_id, visitor_id, updated from visitor_replaces where updated is not null;
@@ -165,11 +153,57 @@ myexample=# select visitor_replaces_id, visitor_id, updated from visitor_replace
 015e3b903e48000c7944f6af4b8e00087016907f0049e | myexample_main__5216_username@cox.net           | 2018-01-28 03:59:45.031
 (5 rows)
 ```
-## スティッチされた訪問の理解
 
-AudienceDBでは、スティッチされた訪問に対して訪問テーブルには1つの訪問プロファイルのみが保持されます。スティッチされた訪問のプロファイルは1つとして見られますが、異なるIDを持っています。`visitor_replaces`テーブルは、この目的を達成するために置き換えられた`visitor_ids`を見るためのルックアップ方法を提供します。
+### 訪問集計
 
-Visitor Replacesテーブルの例：
+次の例は、`visitor_tallies` テーブルの基本的な形式を示しています。
+
+```nohl
+myexample=# select visitor_id, updated, visitor_tally_57_key, visitor_tally_57_value from visitor_tallies;
+
+                 visitor_id                   |         updated         | visitor_tally_57_key | visitor_tally_57_value
+----------------------------------------------+-------------------------+----------------------+------------------------
+015dcd068996007c1f95a24aa47002075008d06d0093c | 2017-09-01 03:14:18.519 | Safari               |                      8
+015e40b27e55004ec842e2b9d0f800090001c08800408 | 2017-09-02 13:35:40.834 | Chrome               |                      2
+015e34c9fd270014a6799597769a00088008808000408 | 2017-08-31 05:44:14.013 | Chrome               |                      1
+(5 rows)
+```
+
+### 訪問ビュー
+
+次の例は、`visitors_view` テーブルの基本的な形式を示しています。
+
+```nohl
+select "visitor - id", "visitor - created", "updated", "visitor - audience - bedroom shoppers (myexample_main_102)" from visitors_view limit 1;
+
+                 visitor - id                  |  visitor - created  |        updated         | visitor - audience - bedroom shoppers (myexample_main_102)
+-----------------------------------------------+---------------------+------------------------+---------------------------------------------------------------
+ 015de32cbb1e00265733c8c3c5bc00080001c07800976 | 2017-08-14 23:55:46 | 2017-08-20 15:27:48.75 | f
+(1 rows)
+
+```
+
+### 訪問テーブル
+
+次の例は、`visits` テーブルの基本的な形式を示しています。
+
+```nohl
+myexample=# select visit_id, visitor_id, start_time, last_event_time, updated, property_5300, flag_5432 from visits limit 5;
+
+                       visit_id                                  | visitor_id                                    |     start_time      | last_event_time     | updated                 | property_5300 | flag_5432
+-----------------------------------------------------------------+-----------------------------------------------+---------------------+---------------------+-------------------------+---------------+-----------
+4af5f070998b6e471d05a809d55c62811784c57ee196c39a599c0a352e925e01 | 015c9e257f220048ebb26bfdb68405072001c06a00bd0 | 2017-07-18 17:04:31 | 2017-07-18 17:39:27 | 2017-07-18 18:09:28.994 |               |
+42fd5d3067b5472a57aa7fe6e8cf12d5d60ea2a9399d54de01bfb0b06e33bd73 | 015cc166a9b100028f7070a6e51d01049003e00d00bd0 | 2017-07-18 21:10:21 | 2017-07-18 21:13:32 | 2017-07-18 21:43:32.948 |               |
+9729e709ec80bc476dc6c36c6bf33f998f92c3f2e3af5509078c6402ceff29bf | 015d56a5ec3d00128011a73f446404079001c07100838 | 2017-07-19 18:28:26 | 2017-07-19 18:28:26 | 2017-07-19 18:38:27.903 |               |
+6d1c801fb894234347d27a61b9b0f82ac918bfdc36a0510ab3be8ea6a72b9038 | 015c662062aa00474d60cc4f7b4005072001c06a00bd0 | 2017-07-19 19:30:08 | 2017-07-19 19:30:08 | 2017-07-19 19:40:12.802 |               |
+c97a0a0c9dfc4cb58e23dbfdb98528cddc8a989c9d65f0e6fd89ffdc5e82c727 | 015c662062aa00474d60cc4f7b4005072001c06a00bd0 | 2017-07-19 21:33:00 | 2017-07-19 21:33:00 | 2017-07-19 21:43:02.803 |               |
+(5 rows)
+```
+## ステッチされた訪問について
+
+AudienceDB では、ステッチされた訪問については、訪問テーブル内で1つの訪問プロファイルのみが維持されます。ステッチされた訪問の訪問プロファイルは、ID は異なるものの、1つのプロファイルとして扱われます。これを実現するため、`visitor_replaces` テーブルでは、置き換えられた `visitor_ids` を参照する方法が提供されています。
+
+Visitor Replaces テーブルの例：
 
 |`visitor_replaces_id`| `visitor_id`|
 |---| ---|
@@ -178,17 +212,17 @@ Visitor Replacesテーブルの例：
 |4| 6|
 |5| 6|
 
-このテーブルでは：
+このテーブルでは、次のようになります。
 
-* Visitor1とVisitor2はVisitor3にスティッチされます。
-* Visitor4とVisitor5はVisitor6にスティッチされます。
+* Visitor1 と Visitor2 は Visitor3 にステッチされています。
+* Visitor4 と Visitor5 は Visitor6 にステッチされています。
 
-上記の情報は、必要に応じて`visitors`テーブルを`visits`テーブルまたはEventDBのテーブルと結合するために使用できます。
+必要に応じて、上記の情報を使用して `visitors` テーブルを `visits` テーブルまたは EventDB テーブルに結合できます。
 
-EventDBのイベントをAudienceDBに結合するには：
+EventDB のイベントを AudienceDB に結合するには、次のようにします。
 
-* スティッチされていない訪問については、`events_x`を`visitors`テーブルに直接結合し、
-* スティッチされた訪問については、次の例に示すように`visitor_replaces`テーブルを介して結合します：
+* ステッチされていない訪問については、`events_x` を `visitors` テーブルに直接結合します。
+* ステッチされた訪問については、次の例に示すように、`visitor_replaces` テーブルを介して結合します。
 
 ```sql
 SELECT e."event - id", v."visitor - id"
@@ -198,14 +232,14 @@ JOIN account__profile.visitors_view_normalized v ON (v."visitor - id" = r."visit
 limit 1000;
 ```
 
-* この例では、`events_all_events`の訪問IDが`visitors`または`visitor_replaces`にあることを考慮しています。
+* この例では、`events_all_events` 内の訪問 ID が `visitors` または `visitor_replaces` のいずれかに存在する場合を考慮しています。  
 
 <blockquote>
-単一のイベントセッションに帰属する訪問は訪問テーブルには保存されません。
+単一イベントのセッションに関連付けられた訪問は、訪問テーブルには保存されません。
 </blockquote>
 
 
-## 追加のリソース
+## その他のリソース
 
 * [(Amazon Redshift™) クエリ設計のベストプラクティス](https://docs.aws.amazon.com/redshift/latest/dg/c_designing-queries-best-practices.html)
 * [(Amazon Redshift™) クエリパフォーマンスのチューニング](https://docs.aws.amazon.com/redshift/latest/dg/c-optimizing-query-performance.html)

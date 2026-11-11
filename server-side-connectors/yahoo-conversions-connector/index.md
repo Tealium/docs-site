@@ -5,13 +5,13 @@ url: https://docs.tealium.com/server-side-connectors/yahoo-conversions-connector
 ---
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Conversion| ✓| ✓|
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 Click **Done** when you are finished configuring the connector.
 

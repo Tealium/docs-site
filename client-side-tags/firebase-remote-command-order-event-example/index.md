@@ -9,7 +9,7 @@ url: https://docs.tealium.com/client-side-tags/firebase-remote-command-order-eve
 
 The Custom Command tag is a special tag that contains an implementation of the API required to trigger custom native code blocks you have registered with the Tealium mobile libraries.
 
-[Learn more](https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) about setting up the Firebase Mobile Remote Command Tag in your Tealium iQ Tag Management (https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) account.
+[Learn more](https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) about setting up the Firebase Mobile Remote Command Tag in your Tag Management (https://docs.tealium.com/client-side-tags/firebase-remote-command-tag/) account.
 
 Extensions may be needed to update the data coming from the app through a tracking call. For example, you might be tracking a screen view using the Tealium SDK on the "Order Confirmation" screen, which you want to also log in the Firebase SDK.
 
@@ -21,7 +21,7 @@ The following is an example of the tracking call in Tealium for iOS (Swift):
 `
 ```
 
-In the Firebase SDK, you may want to log this as an event using the `logEvent` API call, and also set a user property called `user_id`. In Tealium iQ, this is done in several different ways.
+In the Firebase SDK, you may want to log this as an event using the `logEvent` API call, and also set a user property called `user_id`. In Tag Management, this is done in several different ways.
 
 The value for the `command_name` variable is set to a comma-separated string of commands to execute. The 5 possible values that it may contains are:
 
@@ -31,9 +31,9 @@ The value for the `command_name` variable is set to a comma-separated string of 
 * `setUserProperty`
 * `logEvent`.
 
-For this example, it is important to understand the order of operations in Tealium iQ. Extensions with the same "scope" are guaranteed to execute in order, from top to bottom as you see them in the Extensions tab. Therefore, logic is easily split into different extensions, but keep writing to a variable that was defined in an earlier extension.
+For this example, it is important to understand the order of operations in Tag Management. Extensions with the same "scope" are guaranteed to execute in order, from top to bottom as you see them in the Extensions tab. Therefore, logic is easily split into different extensions, but keep writing to a variable that was defined in an earlier extension.
 
-1. Create a new data layer variable called `firebase_command_name` in your Tealium iQ profile.
+1. Create a new data layer variable called `firebase_command_name` in your Tag Management profile.
 
 1. Create a **Set Data Values** extension, select the new variable `firebase_command_name` from the dropdown list, and leave the data entry field blank. This initializes the variable to an empty string.
 
@@ -41,7 +41,7 @@ For this example, it is important to understand the order of operations in Teali
 
 #### config
 
-Execute this configuration only once per session. The following lists the Tealium iQ configuration variables:
+Execute this configuration only once per session. The following lists the Tag Management configuration variables:
 
 |TiQ Variable Name| Type| Example| Notes|
 |---| ---| ---| ---|

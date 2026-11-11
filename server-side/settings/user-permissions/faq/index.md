@@ -27,8 +27,8 @@ Yes. A server-side admin user's access is granted by the **Manage Account** perm
 Access control to the [Omichannel File Status API](https://docs.tealium.com/about-omnichannel-file-status-api/) will change upon final release of the server-side permissions feature. In addition to the standard requirement of needing [an API key to authenticate with the API](https://docs.tealium.com/api-keys/), users must have read access to the relevant Customer Data Hub account. Users using the [v1 API](https://docs.tealium.com/omnichannel-file-status-objects-v1/) only need read access to the Customer Data Hub account.
 
 #### Can a server-side admin add new users to an account?
-No. The **Manage Account** permission does not grant access to add new users or delete users from an account. While they can remove access to profiles, only users who have the **Manage Users** permission assigned in the iQ Tag Management workflow can invite a new user to an account or completely delete a user from an account.
+No. The **Manage Account** permission does not grant access to add new users or delete users from an account. While they can remove access to profiles, only users who have the **Manage Users** permission assigned in the Tag Management workflow can invite a new user to an account or completely delete a user from an account.
 
 #### Does this feature change the way user management access is granted or controlled within TiQ?
-No. The **Manage Users** permission in iQ Tag Management remains the permission that grants a user access to add or remove users from a business account. Users with only the **Manage Users** permission do not have access to manage permissions on the server-side.
+No. The **Manage Users** permission in Tag Management remains the permission that grants a user access to add or remove users from a business account. Users with only the **Manage Users** permission do not have access to manage permissions on the server-side.
 

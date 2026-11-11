@@ -26,7 +26,7 @@ Arrays can contain duplicate values.
 
 Arrays are limited to 30,000 entries. The size of each boolean and number entry is not limited, but string entries are limited as follows:
 
-* EventStream string attributes have a maximum length of 1,500 characters. Strings are truncated to 1,500 characters if they exceed this limit.
-* AudienceStream string attributes values have a maximum length of 1,000 characters. If an enrichment results in a string larger than 1,000 characters, the value is not saved.
+* Event Streaming string attributes have a maximum length of 1,500 characters. Strings are truncated to 1,500 characters if they exceed this limit.
+* Customer Data Platform (CDP) string attributes values have a maximum length of 1,000 characters. If an enrichment results in a string larger than 1,000 characters, the value is not saved.
 
 These attributes are limited by the maximum size of the profile after encryption and compression (400 KB).

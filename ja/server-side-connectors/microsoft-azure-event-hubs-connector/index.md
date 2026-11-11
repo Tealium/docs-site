@@ -1,61 +1,59 @@
 ---
 title: Microsoft Azure Event Hubs コネクタ構成ガイド
-description: Microsoft Azure Event Hubsは、大量のイベントを受信・処理するためのクラウドサービスです。この記事では、お客様のCustomer Data Hubプロファイルでサービスを構成する方法について説明します。
+description: Microsoft Azure Event Hubs は、大量のイベントを受信および処理するためのクラウドサービスです。この記事では、Customer Data Hub プロファイルでこのサービスを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/microsoft-azure-event-hubs-connector/
 ---## コネクタアクション
 
-|**アクション名**| **オーディエンスに対するトリガー**| **ストリームに対するトリガー**|
+|**アクション名**| **オーディエンスでトリガー**| **ストリームでトリガー**|
 |---| ---| ---|
-|イベントデータをEvent Hubに送信| ✗| ✓|
-|訪問データをEvent Hubに送信| ✓| ✗|
-|カスタマイズデータをEvent Hubに送信| ✓| ✓|
+|イベントデータを Event Hub に送信| ✗| ✓|
+|訪問データを Event Hub に送信| ✓| ✗|
+|カスタマイズしたデータを Event Hub に送信| ✓| ✓|
 
-## 必要条件
+## 要件
 
-* Microsoft Azureアカウント
-* Service Bus共有アクセスポリシーの認証情報
-* データを送信するEvent Hubの名前
+* Microsoft Azure アカウント
+* Service Bus 共有アクセスポリシーの認証情報
+* データの送信先となる Event Hub の名前
 
 ## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-ベンダーを構成するには、以下の手順に従います：
+ベンダーを構成するには、次の手順に従います。
 
-1. **構成**タブでコネクタインスタンスのタイトルを入力します。
+1. **Configure** タブで、コネクタインスタンスのタイトルを入力します。
 
-1. Azureポータルにサインインし、Event Hubs名前空間、共有アクセスポリシー名とキーを作成します。次に、Event Hubを作成します。詳細については、[Azureポータルを使用してEvent Hubs名前空間とイベントハブを作成する](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)を参照してください。
+1. Azure Portal にサインインし、Event Hubs 名前空間、共有アクセスポリシー名、およびキーを作成します。次に、Event Hub を作成します。詳細については、[Azure Portal を使用して Event Hubs 名前空間と Event Hub を作成する](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)を参照してください。
 
-1. Event Hub名前空間、共有アクセスポリシー、共有アクセスキーを使用してコネクタを構成します。
+1. Event Hub 名前空間、共有アクセスポリシー、および共有アクセスキーを使用してコネクタを構成します。
 
-1. **接続テスト**をクリックして、提供された認証情報でAPI接続性を確認します。
+1. **Test Connection** をクリックし、指定した認証情報を使用して API に接続できることを確認します。
 
 
 <blockquote>
-共有アクセスポリシーは`Send`、`Listen`、`Manage`の3種類の権限を主張できます。提供されたポリシーは少なくとも`Send`権限を主張する必要があります。
+共有アクセスポリシーには、`Send`、`Listen`、`Manage` の3種類の権限を付与できます。指定するポリシーには、少なくとも `Send` 権限が必要です。
 </blockquote>
 
 
 ## アクション構成 — パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに進みます。ここでアクションのトリガーを構成します。
+**Continue** をクリックして、コネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
-
-### アクション — イベントデータをEvent Hubに送信
+### アクション — イベントデータを Event Hub に送信
 
 #### パラメータ
 
 | パラメータ | 説明 |
 |---|---|
-| Event Hub | (必須): このリストからイベントハブを選択します。これらのオプションは、構成されたポリシーに**Manage**権限が付与されている場合にのみ利用可能です。権限が付与されていない場合は、カスタム値としてイベントハブを手動で入力する必要があります。 |
-| ユーザープロパティ | **To**ドロップダウンでメッセージユーザープロパティに属性をマッピングします（カスタム値として入力）。 |
-| ブローカープロパティ | **To**ドロップダウンで選択したメッセージブローカープロパティに属性をマッピングします。以下のオプションを参照してください。 |
-| 属性名の表示 | このボックスをチェックすると、メッセージペイロード内の各イベントデータ属性の名前が表示されます。 |
+| Event Hub | （必須）このリストから Event Hub を選択します。構成したポリシーに **Manage** 権限が付与されている場合にのみ、これらのオプションを使用できます。権限が付与されていない場合は、カスタム値として Event Hub を手動で入力する必要があります。 |
+| ユーザープロパティ | 属性を、**To** ドロップダウンでメッセージのユーザープロパティにマッピングします（カスタム値として入力）。 |
+| ブローカープロパティ | 属性を、**To** ドロップダウンで任意のメッセージブローカープロパティにマッピングします。使用可能なオプションについては、以下を参照してください。 |
+| 属性名を出力 | このチェックボックスをオンにすると、メッセージペイロード内の各イベントデータ属性の名前が表示されます。 |
 
 
 <blockquote>
-すべてのアクションはメッセージユーザーおよびブローカープロパティをサポートしています。これらはキーと値のペアを使用してメッセージに関する便利で有用な情報を提供しますが、HTTPヘッダーとして構成され、メッセージ本体内には存在しません。詳細については、[メッセージユーザーおよびブローカープロパティ](https://docs.microsoft.com/en-us/rest/api/servicebus/message-headers-and-properties)を参照してください。
+すべてのアクションで、メッセージのユーザープロパティとブローカープロパティがサポートされています。これらのプロパティは、キーと値のペアを使用して、メッセージに関する有用な情報を簡単に提供します。ただし、これらは HTTP ヘッダーとして構成され、メッセージ本文には含まれません。詳細については、[メッセージのユーザープロパティとブローカープロパティ](https://docs.microsoft.com/en-us/rest/api/servicebus/message-headers-and-properties)を参照してください。
 </blockquote>
 
 
@@ -63,56 +61,56 @@ url: https://docs.tealium.com/ja/server-side-connectors/microsoft-azure-event-hu
 
 |**オプション**| **説明**|
 |---| ---|
-|Content Type| メッセージ消費者のためのHTTPヘッダー`Content-Type`を構成します|
-|Correlation ID| 相関関係の一意の識別子|
-|Session ID| 特定の消費者にメッセージをパーティション分割してルーティングするために使用できます|
-|Message ID| デフォルトの自動生成メッセージIDを上書きします|
-|Label| アプリケーションラベル|
-|Reply To| メッセージ消費者に対してレスポンスを送信する場所を指定するために使用できます|
-|Time to Live in Seconds| X秒数後にメッセージを期限切れにします（Event Hubレベルを上書き）|
-|To| 送信先アドレス|
-|Scheduled Enqueued Time| メッセージがエンキューされる予定の日時|
-|Reply to Session ID| Reply Toと似ていますが、レスポンスの対象となるセッションをターゲットにします|
-|Partition Key| パーティション分割されたイベントハブの一意の識別子|
+|コンテンツタイプ|メッセージコンシューマー向けの HTTP ヘッダー `Content-Type` を構成します|
+|相関 ID|相関を一意に識別する ID です|
+|セッション ID|メッセージを分割し、特定のコンシューマーにルーティングするために使用できます|
+|メッセージ ID|自動生成されるデフォルトのメッセージ ID を上書きします|
+|ラベル|アプリケーションラベルです|
+|返信先|メッセージコンシューマーの応答の送信先を指定するために使用できます|
+|有効期間（秒）|指定した秒数が経過した後にメッセージを期限切れにします（Event Hub レベルの構成を上書きします）|
+|送信先|送信先アドレスです|
+|スケジュールされたエンキュー時刻|メッセージをエンキューする予定の日時です|
+|返信先セッション ID|返信先と同様ですが、応答先としてセッションを指定します|
+|パーティションキー|パーティション分割された Event Hub の一意の識別子です|
 
-### アクション – 訪問データをEvent Hubに送信
+### アクション – 訪問データを Event Hub に送信
 
 #### パラメータ
 
 | パラメータ | 説明 |
 |---|---|
-| Event Hub | (必須): このリストからイベントハブを選択します。これらのオプションは、構成されたポリシーに**Manage**権限が付与されている場合にのみ利用可能です。権限が付与されていない場合は、カスタム値としてイベントハブを手動で入力する必要があります。 |
-| ユーザープロパティ | **To**ドロップダウンでメッセージユーザープロパティに属性をマッピングします（カスタム値として入力）。 |
-| ブローカープロパティ | **To**ドロップダウンで選択したメッセージブローカープロパティに属性をマッピングします。利用可能な[ブローカープロパティ](#options---broker-properties)オプションを参照してください。 |
-| 現在の訪問データを訪問データに含める | ペイロードに現在の訪問データを追加します。これには、現在の訪問イベントデータが除外されていない場合、イベント訪問データが含まれます。 |
+| Event Hub | （必須）このリストから Event Hub を選択します。構成したポリシーに **Manage** 権限が付与されている場合にのみ、これらのオプションを使用できます。権限が付与されていない場合は、カスタム値として Event Hub を手動で入力する必要があります。 |
+| ユーザープロパティ | 属性を、**To** ドロップダウンでメッセージのユーザープロパティにマッピングします（カスタム値として入力）。 |
+| ブローカープロパティ | 属性を、**To** ドロップダウンで任意のメッセージブローカープロパティにマッピングします。使用可能な[ブローカープロパティ](#options---broker-properties)のオプションを参照してください。 |
+| 訪問データに現在の訪問データを含める | 現在の訪問データをペイロードに追加します。「現在の訪問イベントデータを除外」が選択されていない場合は、イベントの訪問データも含まれます。 |
 | 現在の訪問イベントデータを除外 | 現在の訪問データからイベントデータを除外します。 |
-| 属性名の表示 | このボックスをチェックすると、メッセージペイロード内の各訪問データ属性の名前が表示されます。 |
+| 属性名を出力 | このチェックボックスをオンにすると、メッセージペイロード内の各訪問データ属性の名前が表示されます。 |
 
-### アクション — カスタマイズデータをEvent Hubに送信 (高度)
+### アクション — カスタマイズしたデータを Event Hub に送信（詳細構成）
 
 #### パラメータ
 
 | パラメータ | 説明 |
 |---|---|
-| Event Hub | (必須): このリストからイベントハブを選択します。これらのオプションは、構成されたポリシーに**Manage**権限が付与されている場合にのみ利用可能です。権限が付与されていない場合は、カスタム値としてイベントハブを手動で入力する必要があります。 |
-| ユーザープロパティ | **To**ドロップダウンでメッセージユーザープロパティに属性をマッピングします（カスタム値として入力）。 |
-| ブローカープロパティ | **To**ドロップダウンで選択したメッセージブローカープロパティに属性をマッピングします。利用可能な[ブローカープロパティ](#options---broker-properties)オプションを参照してください。 |
-| メッセージデータ | (必須): カスタムメッセージ本体を構築します。属性を単一レベルのJSON形式の名前にマッピングするか、テンプレート名（二重中括弧で囲まれている）を参照し、**カスタムメッセージ定義**オプションを選択します。 |
-| テンプレート変数 | 属性をテンプレート変数名にマッピングします。テンプレート変数は、すべてのテンプレートの置換およびレンダリングに利用可能です。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
-| テンプレート | 一つ以上のテンプレートを提供します。通常、メッセージデータを構築するために単一のテンプレートが使用されます。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。|
+| Event Hub |（必須）このリストから Event Hub を選択します。構成したポリシーに **Manage** 権限が付与されている場合にのみ、これらのオプションを使用できます。権限が付与されていない場合は、カスタム値として Event Hub を手動で入力する必要があります。 |
+| ユーザープロパティ | 属性を、**To** ドロップダウンでメッセージのユーザープロパティにマッピングします（カスタム値として入力）。 |
+| ブローカープロパティ | 属性を、**To** ドロップダウンで任意のメッセージブローカープロパティにマッピングします。使用可能な[ブローカープロパティ](#options---broker-properties)のオプションを参照してください。 |
+| メッセージデータ | （必須）カスタムメッセージ本文を作成します。単純な1階層の JSON 形式では属性を名前にマッピングします。または、二重中括弧で囲んだテンプレート名を参照し、**Custom Message Definition** オプションを選択します。 |
+| テンプレート変数 | 属性をテンプレート変数名にマッピングします。テンプレート変数は、すべてのテンプレートの置換とレンダリングに使用できます。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| テンプレート | レンダリングする1つ以上のテンプレートを指定します。通常、メッセージデータの作成には単一のテンプレートを使用します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。|
 
 
 <blockquote>
-必要に応じて、テンプレートはユーザーおよびブローカープロパティに参照され、注入することもできます。
+必要に応じて、ユーザープロパティやブローカープロパティ内でテンプレートを参照し、挿入することもできます。
 </blockquote>
 
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-* [Azure Event Hubsとは何か？](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs)
-* [Azureポータルを使用してEvent Hubs名前空間とイベントハブを作成する](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)
-* [SASトークンの生成](https://docs.microsoft.com/en-us/rest/api/eventhub/generate-sas-token)
-* [共通パラメータとヘッダー](https://docs.microsoft.com/en-us/rest/api/eventhub/event-hubs-runtime-rest)
-* [メッセージユーザーとブローカープロパティ](https://docs.microsoft.com/en-us/rest/api/servicebus/message-headers-and-properties)
-* [Event Hubsのリスト](https://docs.microsoft.com/en-us/rest/api/eventhub/list-event-hubs)
-* [Event Hubsにイベントを送信する](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event)
+* [Azure Event Hubs とは](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs)
+* [Azure Portal を使用して Event Hubs 名前空間と Event Hub を作成する](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)
+* [SAS トークンを生成する](https://docs.microsoft.com/en-us/rest/api/eventhub/generate-sas-token)
+* [共通のパラメータとヘッダー](https://docs.microsoft.com/en-us/rest/api/eventhub/event-hubs-runtime-rest)
+* [メッセージのユーザープロパティとブローカープロパティ](https://docs.microsoft.com/en-us/rest/api/servicebus/message-headers-and-properties)
+* [Event Hub の一覧を取得する](https://docs.microsoft.com/en-us/rest/api/eventhub/list-event-hubs)
+* [Event Hubs にイベントを送信する](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event)

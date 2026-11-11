@@ -1,40 +1,40 @@
 ---
-title: ネイバータグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでネイバータグを構成する方法について説明します。
+title: Naverタグ構成ガイド
+description: この記事では、タグ管理アカウントでNaverタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/naver-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
 * マッピングを使用して、標準の構成値を動的に上書きします。
-* 次のEコマース変数を使用します
+* 次のEコマース変数を使用します。
   * `_ctotal`
-* **ページタイプ**には次のオプションがあります
+* **ページタイプ**には、次のオプションがあります。
   * なし - 0
   * チェックアウト - 1
   * サインアップ - 2
   * ショッピングカート - 3
-  * 予約/登録 - 4
+  * 予約／登録 - 4
   * その他 - 5
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加するときは、次の項目を構成します。
 
-* **アカウントID**：ネイバーのアカウントID。
+* **アカウントID**：NaverのアカウントID。
 * **ページタイプ**：このパラメータは非推奨です。
-* **サブドメイン**：ネイバーが指定する場合のみ、このパラメータを構成します。
+* **サブドメイン**：Naverから指定された場合にのみ、このパラメータを構成します。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
@@ -46,22 +46,22 @@ url: https://docs.tealium.com/ja/client-side-tags/naver-tag/
 
 ### Eコマース
 
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
-| `order_total` | `Number` | 注文合計（`_ctotal`を上書き）。 |
-| `type` | `String` | 変換イベントのタイプ。 |
-| `id` | `String` | 変換IDまたは顧客のアクションID。 |
-| `value` | `String` | 注文内のすべての製品およびサービスの送料を除く合計価格。 |
-| `item_id` | `Array` | アイテムID（`_cprod`を上書き）。 |
-| `name` | `Array` | アイテム名（`_cprodname`を上書き）。 |
-| `category` | `Array` | アイテムカテゴリ（`_ccat`を上書き）。 |
-| `quantity` | `Array` | アイテム数量（`_cquan`を上書き）。 |
-| `payAmount` | `Array` | 特定のアイテムに対して支払われた合計金額。これは単価ではありません。 |
-| `option` | `Array` | アイテムの製品オプション（例：`color:red, size:240`）。 |
+| `order_total` | `Number` | 注文合計（`_ctotal`を上書きします）。 |
+| `type` | `String` | コンバージョンイベントのタイプ。 |
+| `id` | `String` | コンバージョンIDまたは顧客のアクションID。 |
+| `value` | `String` | 注文内のすべての商品およびサービスについて、配送料を除いた合計価格。 |
+| `item_id` | `Array` | 商品ID（`_cprod`を上書きします）。 |
+| `name` | `Array` | 商品名（`_cprodname`を上書きします）。 |
+| `category` | `Array` | 商品カテゴリー（`_ccat`を上書きします）。 |
+| `quantity` | `Array` | 商品数量（`_cquan`を上書きします）。 |
+| `payAmount` | `Array` | 特定の商品に対して支払われた合計金額。単価ではありません。 |
+| `option` | `Array` | 色やサイズなどの商品オプション（例：`color:red, size:240`）。 |
 
 ### イベントトリガー
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | イベント | 説明 |
 |:------|:------------|
@@ -70,63 +70,63 @@ url: https://docs.tealium.com/ja/client-side-tags/naver-tag/
 | `sign_up` | サインアップ。 |
 | `add_to_cart` | カートに追加。 |
 | `schedule` | 予約完了。 |
-| `save_store` | 店舗を追加/保存。 |
-| `add_to_wishlist` | お気に入りリストに追加/保存。 |
-| `inquiry` | 問い合わせ/お問い合わせ。 |
-| `call` | 電話通話。 |
+| `save_store` | 店舗を追加／保存。 |
+| `add_to_wishlist` | 欲しいものリストに追加／保存。 |
+| `inquiry` | 問い合わせ／連絡。 |
+| `call` | 電話。 |
 | `lead` | リード生成。 |
-| `view_product` | 製品詳細の表示。 |
-| `view_content` | コンテンツの表示。 |
+| `view_product` | 商品詳細を表示。 |
+| `view_content` | コンテンツを表示。 |
 | `search` | 検索。 |
 | `share` | 共有。 |
-| `clip_coupon` | クーポンの発行。 |
-| `view_item_list` | リストの表示。 |
-| `about_us` | 会社情報ページの表示。 |
-| `staff` | サービススタッフの表示。 |
-| `location` | 事業所の場所の表示/道順の取得。 |
-| `promotion` | イベント/プロモーションへの登録。 |
-| `add_contact_method` | 通信チャンネルの追加。 |
-| `opt_in_marketing` | マーケティングコミュニケーションの受信。 |
-| `subscribe` | 登録。 |
-| `review` | レビューの作成。 |
+| `clip_coupon` | クーポンを発行。 |
+| `view_item_list` | リストを表示。 |
+| `about_us` | 会社概要ページを表示。 |
+| `staff` | サービススタッフを表示。 |
+| `location` | 事業所の所在地を表示／道順を取得。 |
+| `promotion` | イベント／プロモーションに登録。 |
+| `add_contact_method` | 連絡チャネルを追加。 |
+| `opt_in_marketing` | マーケティング情報の受信を許可。 |
+| `subscribe` | 購読。 |
+| `review` | レビューを投稿。 |
 
 ### イベント固有のパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | イベント | 説明 |
 |:------|:------------|
-| `order_total` | 注文合計（`_ctotal`を上書き）。 |
-| `type` | 変換イベントのタイプ。 |
-| `id` | 変換IDまたは顧客のアクションID。 |
-| `value` | 複数の製品またはサービスの合計金額。 |
-| `item_id` | アイテムID（`_cprod`を上書き）。 |
-| `name` | アイテム名（`_cprodname`を上書き）。 |
-| `category` | アイテムカテゴリ（`_ccat`を上書き）。 |
-| `quantity` | アイテム数量（`_cquan`を上書き）。 |
-| `payAmount` | 特定のアイテムに対して支払われた合計金額。これは単価ではありません。 |
-| `option` | アイテムの製品オプション（例：`color:red, size:240`）。 |
+| `order_total` | 注文合計（`_ctotal`を上書きします）。 |
+| `type` | コンバージョンイベントのタイプ。 |
+| `id` | コンバージョンIDまたは顧客のアクションID。 |
+| `value` | 複数の商品またはサービスの合計金額。 |
+| `item_id` | 商品ID（`_cprod`を上書きします）。 |
+| `name` | 商品名（`_cprodname`を上書きします）。 |
+| `category` | 商品カテゴリー（`_ccat`を上書きします）。 |
+| `quantity` | 商品数量（`_cquan`を上書きします）。 |
+| `payAmount` | 特定の商品に対して支払われた合計金額。単価ではありません。 |
+| `option` | 色やサイズなどの商品オプション（例：`color:red, size:240`）。 |
 | `purchase` | 購入完了。 |
 | `begin_checkout` | チェックアウト開始。 |
 | `sign_up` | サインアップ。 |
 | `add_to_cart` | カートに追加。 |
 | `schedule` | 予約完了。 |
-| `save_store` | 店舗を追加/保存。 |
-| `add_to_wishlist` | お気に入りリストに追加/保存。 |
-| `inquiry` | 問い合わせ/お問い合わせ。 |
-| `call` | 電話通話。 |
+| `save_store` | 店舗を追加／保存。 |
+| `add_to_wishlist` | 欲しいものリストに追加／保存。 |
+| `inquiry` | 問い合わせ／連絡。 |
+| `call` | 電話。 |
 | `lead` | リード生成。 |
-| `view_product` | 製品詳細の表示。 |
-| `view_content` | コンテンツの表示。 |
+| `view_product` | 商品詳細を表示。 |
+| `view_content` | コンテンツを表示。 |
 | `search` | 検索。 |
 | `share` | 共有。 |
-| `clip_coupon` | クーポンの発行。 |
-| `view_item_list` | リストの表示。 |
-| `about_us` | 会社情報ページの表示。 |
-| `staff` | サービススタッフの表示。 |
-| `location` | 事業所の場所の表示/道順の取得。 |
-| `promotion` | イベント/プロモーションへの登録。 |
-| `add_contact_method` | 通信チャンネルの追加。 |
-| `opt_in_marketing` | マーケティングコミュニケーションの受信。 |
-| `subscribe` | 登録。 |
-| `review` | レビューの作成。 |
+| `clip_coupon` | クーポンを発行。 |
+| `view_item_list` | リストを表示。 |
+| `about_us` | 会社概要ページを表示。 |
+| `staff` | サービススタッフを表示。 |
+| `location` | 事業所の所在地を表示／道順を取得。 |
+| `promotion` | イベント／プロモーションに登録。 |
+| `add_contact_method` | 連絡チャネルを追加。 |
+| `opt_in_marketing` | マーケティング情報の受信を許可。 |
+| `subscribe` | 購読。 |
+| `review` | レビューを投稿。 |

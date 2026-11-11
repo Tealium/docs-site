@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/data-storage/audiencedb-eventdb/audien
 
 AudienceDB stores both visit-level and visitor-level data to a Postgres-like database in Amazon Redshift™ where you can query and analyze the data directly using your preferred SQL client or Business Intelligence (BI) tool.
 
-When AudienceDB is activated, a database is created in Amazon Redshift™ to store your AudienceStream data. The new database contains a table for each data type that it can store. Data associated with visit-level data is stored in tables prefixed with `visit_`. Data associated with visitor-level data is stored in tables prefixed with `visitor_`. In addition to the tables, several views are also created to make it easier to write queries.
+When AudienceDB is activated, a database is created in Amazon Redshift™ to store your Customer Data Platform (CDP) data. The new database contains a table for each data type that it can store. Data associated with visit-level data is stored in tables prefixed with `visit_`. Data associated with visitor-level data is stored in tables prefixed with `visitor_`. In addition to the tables, several views are also created to make it easier to write queries.
 
 If you are new to AudienceDB, review the basics in [Working with AudienceDB and EventDB](https://docs.tealium.com/audiencedb-and-eventdb/).
 

@@ -132,7 +132,7 @@ aws s3 cp s3://dataaccess-<region>.tealiumiq.com/<account>/<profile>/audiences/{
 
 ### Synchronize local and remote folders
 
-The `sync` method takes a remote folder on Amazon S3 and synchronizes it with a local folder on your desktop or server. The following example synchronizes a specific remote EventStream or AudienceStream folder to a local folder on the desktop.
+The `sync` method takes a remote folder on Amazon S3 and synchronizes it with a local folder on your desktop or server. The following example synchronizes a specific remote Event Streaming or Customer Data Platform (CDP) folder to a local folder on the desktop.
 
 
 <blockquote>

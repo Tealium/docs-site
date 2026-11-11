@@ -1,68 +1,66 @@
 ---
-title: Adobe Campaign Classic コネクタ構成ガイド
-description: この記事では、Customer Data Hub アカウントで Adobe Campaign Classic コネクタを構成する方法について説明します。
+title: Adobe Campaign Classicコネクタ構成ガイド
+description: この記事では、Customer Data HubアカウントでAdobe Campaign Classicコネクタを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/adobe-campaign-classic-connector/
 ---
 ## コネクタアクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| カスタムSOAPリクエスト送信（バッチ処理） | ✓ | ✓ |
-|カスタムSOAPリクエスト送信| ✓| ✓ |
+| カスタムSOAPリクエストを送信（バッチ） | ✓ | ✓ |
+|カスタムSOAPリクエストを送信| ✓| ✓ |
 
-## 構成の構成
+## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/) の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、以下の項目を構成します。
 
 * **サーバーホスト**
   * サーバーホストまたはサーバーアドレスのいずれかが必要です。
-  * 例：ドメイン "serverURL" の場合、次の例のURLから `serverURL` をコピーして貼り付けます：`<https://serverURL/nl/jsp/soaprouter.jsp>`
-  * 認証には、SOAPリクエストボディプレフィックスの一部としてユーザー名とパスワードを提供します。
-  * 詳細については、Adobe Campaign Classic アクセス管理ヘルプドキュメントの [アクセス管理](https://experienceleague.adobe.com/docs/campaign-classic/using/configuring-campaign-classic/api/web-service-calls.html?lang=en#connectivity) を参照してください。
+  * 例：ドメインについては、次のURL例から「serverURL」をコピーして貼り付けます：`<https://serverURL/nl/jsp/soaprouter.jsp>`
+  * 認証については、SOAPリクエストボディのプレフィックスの一部としてユーザー名とパスワードを指定します。
+  * 詳細については、Adobe Campaign Classicのアクセス管理ヘルプドキュメントにある[アクセス管理](https://experienceleague.adobe.com/docs/campaign-classic/using/configuring-campaign-classic/api/web-service-calls.html?lang=en#connectivity)を参照してください。
 
 * **サーバーアドレス**
-  * Adobe Campaign サーバーへの完全なURLを指定します。
+  * Adobe Campaignサーバーの完全なURLを指定します。
   * サーバーホストまたはサーバーアドレスのいずれかが必要です。
-  * アドレスが提供された場合、ホストは無視されます。
+  * アドレスを指定した場合、ホストは無視されます。
 
-## アクション構成 - パラメータとオプション
+## アクション構成 - パラメーターとオプション
 
-**次へ** をクリックするか、**アクション** タブに移動します。ここでコネクタアクションを構成します。
+**続行**をクリックしてコネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+### カスタムSOAPリクエストを送信（バッチ）
 
-### カスタムSOAPリクエスト送信（バッチ処理）
+#### バッチの制限
 
-#### バッチ制限
+このアクションでは、ベンダーへの大量データ転送に対応するため、バッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。以下のいずれかのしきい値に達するか、プロファイルがパブリッシュされるまで、リクエストはキューに格納されます。
 
-このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、[バッチ処理アクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
-
-* 最大リクエスト数：200
-* 最古のリクエストからの最大時間：10分
+* リクエストの最大数：200
+* 最も古いリクエストからの最大経過時間：10分
 * リクエストの最大サイズ：1 MB
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| SOAPアクション | 例：`xtk:session#Logon`。<br>この値はSOAPAction HTTPヘッダーに割り当てられます。 |
-|SOAPリクエストテンプレート変数|  <ul><li>SOAPリクエストボディプレフィックス、SOAPリクエストボディデータ、SOAPリクエストボディサフィックスのデータ入力用にテンプレート変数を提供します。詳細については [connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
-|SOAPリクエストボディプレフィックス|  <ul><li>SOAPリクエストの開始部分のテンプレートを提供します。</li><li>例：``` <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xtk:session"><soapenv:Header/><soapenv:Body><urn:Logon><urn:strLogin>USERNAME</urn:strLogin><urn:strPassword>PASSWORD</urn:strPassword><urn:elemParameters> ``` </li></ul> <ul><li>`USERNAME` と `PASSWORD` の場所にあなたのAdobeユーザー名とパスワードを使用します。</li><li>**SOAPリクエストボディプレフィックス** でテンプレート変数を使用します。</li><li>詳細については [about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。</li></ul> |
-|SOAPリクエストボディデータ|  <ul><li>送信されるSOAPリクエストバッチアイテムのテンプレートを提供します。</li><li>SOAPリクエストボディデータでテンプレート変数を使用します。</li></ul> |
-|SOAPリクエストボディジョイナー|  <ul><li>バッチ処理時にボディアイテム間で使用する文字または文字列。</li><li>指定されていない場合、空文字列が使用されます。</li></ul> |
-|SOAPリクエストボディサフィックス|  <ul><li>SOAPリクエストの終了部分のテンプレートを提供します。</li><li>例：``` </urn:elemParameters></urn:Logon></soapenv:Body></soapenv:Envelope> ``` </li><li>SOAPリクエストボディサフィックスでテンプレート変数を使用します。</li></ul> |
-|SOAPレスポンスエラー識別子|  <ul><li>レスポンスに指定されたエラー文字列のいずれか（OR条件）が含まれている場合、それは失敗としてマークされます。</li><li>デフォルトでは、200-299の範囲外のHTTPレスポンスステータスも失敗としてマークされます。</li></ul> |
-| 任意のフォルトコードとフォルト文字列レスポンスに対してエラーを投げる | このチェックボックスを選択して、任意のフォルトコードとフォルト文字列レスポンスに対してエラーを投げます。|
+| SOAPアクション | SOAPアクション（例：`xtk:session#Logon`）。<br>この値はSOAPAction HTTPヘッダーに割り当てられます。 |
+|SOAPリクエストテンプレート変数| <ul><li>SOAPリクエストボディのプレフィックス、SOAPリクエストボディのデータ、およびSOAPリクエストボディのサフィックスへのデータ入力として、テンプレート変数を指定します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数にはドット表記で名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は、通常、データレイヤーのリスト属性から構築されます。</li></ul> |
+|SOAPリクエストボディのプレフィックス| <ul><li>SOAPリクエストの開始部分のテンプレートを指定します。</li><li>例：``` <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xtk:session"><soapenv:Header/><soapenv:Body><urn:Logon><urn:strLogin>USERNAME</urn:strLogin><urn:strPassword>PASSWORD</urn:strPassword><urn:elemParameters> ``` </li></ul> <ul><li>`USERNAME`と`PASSWORD`をAdobeのユーザー名とパスワードに置き換えてください。</li><li>**SOAPリクエストボディのプレフィックス**でテンプレート変数を使用します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li></ul> |
+|SOAPリクエストボディのデータ| <ul><li>送信するSOAPリクエストのバッチ項目のテンプレートを指定します。</li><li>SOAPリクエストボディのデータでテンプレート変数を使用します。</li></ul> |
+|SOAPリクエストボディの結合文字列| <ul><li>バッチ処理時にボディ項目間で使用する文字または文字列です。</li><li>指定しない場合は、空文字列が使用されます。</li></ul> |
+|SOAPリクエストボディのサフィックス| <ul><li>SOAPリクエストの終了部分のテンプレートを指定します。</li><li>例：``` </urn:elemParameters></urn:Logon></soapenv:Body></soapenv:Envelope> ``` </li><li>SOAPリクエストボディのサフィックスでテンプレート変数を使用します。</li></ul> |
+|SOAPレスポンスエラー識別子| <ul><li>レスポンスに、以下で指定したエラー文字列のいずれか（OR条件）が含まれている場合、失敗としてマークされます。</li><li>デフォルトでは、200～299の範囲外のHTTPレスポンスステータスも失敗としてマークされます。</li></ul> |
+| Fault CodeおよびFault Stringレスポンスに対してエラーをスロー | Fault CodeまたはFault Stringレスポンスが返されたときにエラーをスローするには、このチェックボックスを選択します。|
 
-### アクション - カスタムSOAPリクエスト送信
+### アクション - カスタムSOAPリクエストを送信
 
-#### パラメータ
+#### パラメーター
 
-|**パラメータ**| **説明**|
+|**パラメーター**| **説明**|
 |---| ---|
-| SOAPアクションヘッダー値 | このパラメータは必須です<br>例：`xtk:workflow#PostEvent`。 |
-| SOAPリクエストテンプレート変数|  <ul><li>SOAPリクエストボディプレフィックス、SOAPリクエストボディデータ、SOAPリクエストボディサフィックスのデータ入力用にテンプレート変数を提供します。詳細については [connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
-| SOAPリクエストボディテンプレート | このパラメータは必須です<br>送信されるSOAPリクエストボディテンプレートを提供します。詳細については [about-connector-templates](https://docs.tealium.com/about-connector-templates/) を参照してください。<br>テンプレートは、対応するフィールドに名前で注入されます。例：`{{SomeTemplateName}}`。<br>注：Adobe Campaign APIコールにはセッショントークンが必要です。適切な場所にこのトークンを含めることを確認してください。予約されたテンプレートキーワード `{{sessionToken}}` を使用して、このトークンが自動的にテンプレートに含まれるようにします。 |
-|SOAPレスポンスエラー識別子|  <ul><li>レスポンスに指定されたエラー文字列のいずれか（OR条件）が含まれている場合、それは失敗としてマークされます。</li><li>デフォルトでは、200-299の範囲外のHTTPレスポンスステータスも失敗としてマークされます。</li></ul> |
+| SOAPアクションヘッダー値 | このパラメーターは必須です。<br>例：`xtk:workflow#PostEvent`。 |
+| SOAPリクエストテンプレート変数| <ul><li>SOAPリクエストボディのプレフィックス、SOAPリクエストボディのデータ、およびSOAPリクエストボディのサフィックスへのデータ入力として、テンプレート変数を指定します。詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数にはドット表記で名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は、通常、データレイヤーのリスト属性から構築されます。</li></ul> |
+| SOAPリクエストボディテンプレート | このパラメーターは必須です。<br>送信するSOAPリクエストボディテンプレートを指定します。詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。<br>テンプレートは、サポート対象フィールドに二重波括弧を使用して名前で挿入されます。例：`{{SomeTemplateName}}`。<br>注：Adobe Campaign APIの呼び出しにはセッショントークンが必要です。必要に応じて、テンプレートにセッショントークンを含めてください。事前定義され、自動的に値が構成される予約済みテンプレートキーワード`{{sessionToken}}`を使用すると、このトークンをテンプレートに含めることができます。 |
+|SOAPレスポンスエラー識別子| <ul><li>レスポンスに、以下で指定したエラー文字列のいずれか（OR条件）が含まれている場合、失敗としてマークされます。</li><li>デフォルトでは、200～299の範囲外のHTTPレスポンスステータスも失敗としてマークされます。</li></ul> |

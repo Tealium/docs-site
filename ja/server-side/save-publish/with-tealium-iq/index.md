@@ -1,23 +1,23 @@
 ---
-title: Tealium iQとの統合
-description: この記事では、Tealiumプラットフォームのサーバーサイドでの公開プロセスについて説明します。
+title: タグ管理との統合
+description: この記事では、Tealiumプラットフォームのサーバー側でパブリッシュする手順について説明します。
 url: https://docs.tealium.com/ja/server-side/save-publish/with-tealium-iq/
 ---
 ## データレイヤー変数のインポート
 
-Customer Data HubはTealium iQの変数を使用できます。これを行うには、Tealium iQプロファイルをProd環境に公開して、これらの変数がCustomer Data Hub内の属性として表示されるようにする必要があります。
+Customer Data Hubでは、タグ管理の変数を利用できます。これらの変数をCustomer Data Hub内の属性として表示するには、タグ管理プロファイルを本番環境にパブリッシュする必要があります。
 
-## データレイヤーのエンリッチメント
+## データレイヤーエンリッチメント
 
-Tealium iQは、[データレイヤーエンリッチメント](https://docs.tealium.com/about-data-layer-enrichment/)という機能を通じてAudienceStreamの属性を利用できます。Tealium iQで訪問の属性を利用可能にするためには、サーバーサイドの構成を公開する必要があります。これらの属性は他のデータレイヤー変数と同様に使用できます。
+タグ管理では、[データレイヤーエンリッチメント](https://docs.tealium.com/about-data-layer-enrichment/)と呼ばれる機能を通じて、顧客データプラットフォーム（CDP）の属性を利用できます。訪問属性をタグ管理で使用できるようにするには、サーバー側の構成をパブリッシュする必要があります。その後、これらの属性を他のデータレイヤー変数と同様に使用できます。
 
-デフォルトでは、Tealium iQプロファイルは対応するサーバーサイドプロファイルから訪問の属性をインポートしようとします。例えば、Tealium iQプロファイル `tealium/main` はサーバーサイドプロファイル `tealium/main` から読み取ります。
+デフォルトでは、タグ管理プロファイルは、対応するサーバー側プロファイルから訪問属性をインポートしようとします。たとえば、タグ管理プロファイル`tealium/main`は、サーバー側プロファイル`tealium/main`から読み取ります。
 
-しかし、異なるサーバーサイドプロファイルから訪問の属性をインポートすることも可能です。
+ただし、別のサーバー側プロファイルから訪問属性をインポートすることもできます。
 
-異なるサーバーサイドプロファイルから訪問の属性をインポートするには：
+別のサーバー側プロファイルから訪問属性をインポートするには、次の手順を実行します。
 
-1. 管理メニューで **Configure Publish Settings** をクリックします。**Publish Configuration** ダイアログが表示されます。
-* **Implementation** セクションで、**Data Layer Enrichment Profile** リストからサーバーサイドプロファイルを選択します。
+1. 管理メニューで、**パブリッシュ構成を構成**をクリックします。**パブリッシュ構成**ダイアログが表示されます。
+* **実装**セクションで、**データレイヤーエンリッチメントプロファイル**リストからサーバー側プロファイルを選択します。
 
 ![](https://docs.tealium.com/images/server-side/no-title-1711i6d0b9fae5a4e3679.png)

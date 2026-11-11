@@ -21,7 +21,7 @@ Tealiumのドキュメントは、AIエージェントおよび大規模言語�
 
 各ドキュメントエリアには、そのエリア内のページの完全なインデックスを含む独自のllms.txtファイルがあります：
 
-* [タグ管理](https://docs.tealium.com/ja/iq-tag-management/llms.txt): クライアントサイドのタグ管理ドキュメント。
+* [タグ管理](https://docs.tealium.com/ja/tag-management/llms.txt): クライアントサイドのタグ管理ドキュメント。
 * [サーバーサイド](https://docs.tealium.com/ja/server-side/llms.txt): イベント、オーディエンス、機能、データソース、インサイトを含むサーバーサイドのドキュメント。
 * [API](https://docs.tealium.com/ja/api/llms.txt): 開発者APIのドキュメントとリファレンスガイド。
 * [Webインストール](https://docs.tealium.com/ja/platforms/web-install/llms.txt): JavaScriptライブラリとタグマネージャー統合を含むWebプラットフォームのインストールガイド。
@@ -51,8 +51,8 @@ Tealiumのドキュメントは、AIエージェントおよび大規模言語�
 
 例：
 
-* HTMLバージョン: [/iq-tag-management/getting-started/what-is-tealium-iq/](https://docs.tealium.com/ja/iq-tag-management/getting-started/what-is-tealium-iq/)
-* マークダウンバージョン: [/iq-tag-management/getting-started/what-is-tealium-iq/index.md](https://docs.tealium.com/ja/iq-tag-management/getting-started/what-is-tealium-iq/index.md)
+* HTMLバージョン: [/tag-management/getting-started/what-is-tealium-tag-management/](https://docs.tealium.com/ja/tag-management/getting-started/what-is-tealium-tag-management/)
+* マークダウンバージョン: [/tag-management/getting-started/what-is-tealium-tag-management/index.md](https://docs.tealium.com/ja/tag-management/getting-started/what-is-tealium-tag-management/index.md)
 
 ## 言語サポート
 

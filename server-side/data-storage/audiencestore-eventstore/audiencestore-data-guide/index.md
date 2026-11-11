@@ -3,7 +3,7 @@ title: AudienceStore data guide
 description: This article is a summary of the visitor-level attributes that are made available through AudienceStore.
 url: https://docs.tealium.com/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/
 ---
-AudienceStore provides the most efficient way for collecting and exporting visitor-level data from AudienceStream. Visitor data is compressed into a flattened JSON file and made available for download from Tealium’s Amazon S3 bucket. Each file contains multiple JSON objects representing each visitor record in the audience.
+AudienceStore provides the most efficient way for collecting and exporting visitor-level data from Customer Data Platform (CDP). Visitor data is compressed into a flattened JSON file and made available for download from Tealium’s Amazon S3 bucket. Each file contains multiple JSON objects representing each visitor record in the audience.
 
 ## Create, update, and delete operations on visitor records
 
@@ -18,7 +18,7 @@ Visitor records are deleted based on the retention period specified in your cont
 
 ## Data sent to AudienceStore
                                  
-The AudienceStore connector, which sends visitor data to AudienceStore, has a **Send Visitor Data** action, which is used to send visitor record data. If the **Include Current Visit Data** option is selected for this action, the `events` array in the `current_visit` object only includes event attributes that are also defined in AudienceStream (as an attribute or an enrichment).
+The AudienceStore connector, which sends visitor data to AudienceStore, has a **Send Visitor Data** action, which is used to send visitor record data. If the **Include Current Visit Data** option is selected for this action, the `events` array in the `current_visit` object only includes event attributes that are also defined in CDP (as an attribute or an enrichment).
 
 The following event data attributes are always included in the `events` array:
 

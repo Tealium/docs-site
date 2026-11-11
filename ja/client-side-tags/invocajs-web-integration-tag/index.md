@@ -1,34 +1,34 @@
 ---
-title: InvocaJS Web統合タグ構成ガイド
-description: この記事では、TealiumアカウントでInvocaJS Web統合タグを構成する方法について説明します。
+title: InvocaJS Web Integrationタグ構成ガイド
+description: この記事では、TealiumアカウントでInvocaJS Web Integrationタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/invocajs-web-integration-tag/
----## タグのヒント
+---## タグに関するヒント
 
-* Invoca Network IDとTag IDは厳密に数値です。
-* カスタムマーケティングデータを維持するためにマッピングを使用します。
-* タグに変数をマッピングした後、Invocaユーザーインターフェースに対応するマーケティングデータフィールドを追加します：
-  * マーケティングデータフィールドを追加するために、Invocaの担当者に連絡してください。
-  * マーケティングデータフィールド名はデータマッピングと一致する必要はありません。
-  * データソースタイプは次のようになります：**JavaScriptデータレイヤー**
-  * データソース名は次のようになります：`localStorage.getItem("inv_TEALIUM_MAPPING")`  
+* Invoca Network IDとTag IDには、数値のみを使用できます。
+* カスタムマーケティングデータを保持するには、マッピングを使用します。
+* 変数をタグにマッピングした後、Invocaユーザーインターフェイスで対応するMarketing dataフィールドを追加します。
+  * Marketing dataフィールドの追加については、Invocaの担当者にお問い合わせください。
+  * Marketing dataフィールド名は、データマッピングと一致している必要はありません。
+  * Data Source Typeは**JavaScript Data Layer**に構成します。
+  * Data Source Nameは`localStorage.getItem("inv_TEALIUM_MAPPING")`に構成します。  
 
 <blockquote>
-`TEALIUM_MAPPING`はあなたのカスタムデータマッピングの名前と一致する必要があります。
+`TEALIUM_MAPPING` must match the name of your custom data mapping.
 </blockquote>
 
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際、以下の構成を構成します：
+タグを追加する際は、次の構成を行います。
 
 * **Invoca Network ID**
-  * Invoca Network IDは、あなたのInvocaネットワーク（アカウント）に割り当てられたユニークなIDです。
+  * Invoca Network IDは、Invocaネットワーク（アカウント）に割り当てられる一意のIDです。
 * **Invoca Tag ID**
-  * Invoca Tag IDは、あなたのInvocaネットワーク内で作成する各タグに割り当てられたユニークなIDです。
-* **データセンター**：データセンターリージョンは、どのInvocaコンテンツ配信ネットワーク（CDN）がタグを提供するかを決定します。
+  * Invoca Tag IDは、Invoca Network内で作成した各タグに割り当てられる一意のIDです。
+* **データセンター**：データセンターのリージョンによって、タグを配信するInvocaコンテンツ配信ネットワーク（CDN）が決まります。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。

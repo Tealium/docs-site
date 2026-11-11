@@ -7,7 +7,7 @@ Google Analytics lets you do more than measure sales and conversions. It also gi
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Analytics Event Data| ✓| ✓|
 |Send Analytics Event Data (Mobile Optimized)| ✓| ✓|
@@ -40,7 +40,7 @@ To assist in parsing client IDs, use the [Google Analytics Cookie Matching Servi
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
@@ -49,7 +49,7 @@ After adding the connector, configure the following settings:
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up Actions and trigger them.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 This section describes how to set up Parameters and Options for each Action.
 

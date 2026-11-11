@@ -3,7 +3,7 @@ title: Yandex Metrica Connector Setup Guide
 description: This article describes how to set up the Yandex Metrica connector.
 url: https://docs.tealium.com/server-side-connectors/yandex-metrica-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,7 +12,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://api-metrika.yandex.net/cdp/api/v1`
 * Documentation: [Yandex API](https://yandex.com/dev/metrika/doc/api2/concept/about.html)
 
-## Batch Limits
+## Batch limits
   
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -22,7 +22,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Order Event | ✗ | ✓ |
 | Send Order Event Batch | ✗ | ✓ |
@@ -35,7 +35,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -46,6 +46,8 @@ After adding the connector, configure the following settings:
    * The token is valid for one year.
 * **Counter ID**:
     The Counter ID for the configuration.
+
+After you configure the connector, click **Done**.
 
 ## Actions
 

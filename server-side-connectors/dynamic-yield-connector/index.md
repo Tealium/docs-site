@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/dynamic-yield-connector/
 ---
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Record pageview | ✗ | ✓ |
 | Send event | ✓ | ✓ |
@@ -17,7 +17,7 @@ url: https://docs.tealium.com/server-side-connectors/dynamic-yield-connector/
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -26,6 +26,8 @@ After adding the connector, configure the following settings:
     * To point to the EU-based API endpoints, use **https://dy-api.eu**. To point to the US-based API endpoints, use **https://dy-api.com**.
 * **API KEY**  
     * (Required) The Dynamic Yield API key.
+
+After you configure the connector, click **Done**.
 
 ## Actions
 
@@ -103,7 +105,6 @@ This action uses batched requests to support high-volume data transfers to the v
 * Max number of requests: 10
 * Max time since oldest request: 5 minutes
 * Max size of requests: 1 MB
-
 
 #### Parameters
 

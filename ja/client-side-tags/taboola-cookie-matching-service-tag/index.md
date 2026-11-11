@@ -1,39 +1,39 @@
 ---
 title: Taboola Cookie Matching Service タグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで Taboola Cookie Matching Service タグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントで Taboola Cookie Matching Service タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/taboola-cookie-matching-service-tag/
 ---
 
 <blockquote>
-このタグを `utag` バージョン 4.50 以降で使用する場合、`utag.js` の [`always_set_v_id` 構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id) を `true` に構成する必要があります。この構成により、訪問 ID が Cookie 同期のために利用可能になります。詳細については、[utag 4.50 リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later) および [utag 4.50+ へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-) を参照してください。
+このタグを `utag` バージョン 4.50 以降で使用する場合は、`utag.js` の [`always_set_v_id` 構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を `true` に構成する必要があります。この構成により、Cookie の同期に訪問 ID を使用できるようになります。詳細については、[utag 4.50 リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および [utag 4.50 以降へのアップグレード時の tealium_visitor_id に関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
 </blockquote>
 
 
-## タグのヒント
+## タグに関するヒント
 
-* このタグはデフォルトでサーバーサイド属性 `taboola_id` に Taboola ID を送信しますが、これはカスタマイズ可能です。
+* デフォルトでは、このタグは Taboola ID をサーバーサイド属性 `taboola_id` に送信しますが、これはカスタマイズできます。
 * ファーストパーティドメインをサポートします。
-* このタグはセッションごとに一度だけ発火します。
+* このタグはセッションごとに 1 回配信されます。
 
-EventStream での Cookie マッチングについての詳細は、[EventStream での永続的な Cookie マッチングについての理解](https://docs.tealium.com/about-persistent-cookie-matching/) を参照してください。
+Event Streaming での Cookie マッチングの詳細については、[Event Streaming での永続的 Cookie マッチングについて](https://docs.tealium.com/about-persistent-cookie-matching/)を参照してください。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/) の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際に、以下の構成を構成します：
+タグを追加する際は、次の項目を構成します。
 
 * **Tealium アカウント**
-    * Tealium Collect エンドポイントで使用されるアカウント。
-    * Cookie 同期リクエストを別のアカウントに送る必要がある場合にこの値を構成します。
-    * デフォルト：このタグが公開されているアカウント。
+    * Tealium Collect エンドポイントで使用するアカウント。
+    * Cookie 同期リクエストを別のアカウントに送信する場合に、この値を構成します。
+    * デフォルト：このタグがパブリッシュされているアカウント。
 * **Tealium プロファイル**
-    * Tealium Collect エンドポイントで使用されるプロファイル。
-    * 複数のクライアントサイドプロファイルが単一のサーバーサイドプロファイルにデータを送信する場合にこの値を構成します。
-    * デフォルト：このタグが公開されているプロファイル。
+    * Tealium Collect エンドポイントで使用するプロファイル。
+    * 複数のクライアントサイドプロファイルから単一のサーバーサイドプロファイルへデータを送信する場合に、この値を構成します。
+    * デフォルト：このタグがパブリッシュされているプロファイル。
 * **Tealium Collect エンドポイント**
-    * Tealium との Cookie 同期に使用されるエンドポイント。
-    * デフォルト値を上書きするためにカスタムドメインを入力します。この値は通常、`collect.yourdomain.com/event` のようなファーストパーティドメインに構成されます。
+    * Tealium と Cookie を同期するために使用するエンドポイント。
+    * デフォルト値を上書きするには、カスタムドメインを入力します。この値には通常、`collect.yourdomain.com/event` などのファーストパーティドメインを構成します。
     * デフォルト：`collect.tealiumiq.com/event`
 * **Taboola ID 属性名**
     * Taboola ID を含むサーバーサイド属性のカスタム名を構成します。
@@ -41,13 +41,13 @@ EventStream での Cookie マッチングについての詳細は、[EventStream
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/) を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。ロードルールの詳細については、[ロードルール](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-データマッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信プロセスです。変数をタグ宛先にマッピングする方法についての指示は、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/) を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグの対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 

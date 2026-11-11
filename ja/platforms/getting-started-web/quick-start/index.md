@@ -56,7 +56,7 @@ Universal Tagは、サイトにタグ管理構成を読み込むために必要�
 1. 次のいずれかの方法で、テキストボックスに表示されているコードを選択します。
     * クリックしてドラッグし、すべてのコードを選択します。
     * コードにマウスポインターを合わせると表示される**Select All**ボタンをクリックします。  
-        ![](https://docs.tealium.com/images/iq-tag-management/iq-code-center-select-all.png)
+        ![](https://docs.tealium.com/images/tag-management/iq-code-center-select-all.png)
 1. コードをコピーします。
 1. サイト作成ツールまたはバックエンドシステムにコードを貼り付けます。
 
@@ -271,5 +271,5 @@ Live Eventsを使用するには、タグ管理構成にTealium Collectタグを
 詳細：
 
 * [Live Eventsとフィード](https://docs.tealium.com/about-live-events/)
-* [タグ管理のデータソース](https://docs.tealium.com/data-sources-for-iq-tag-management/)
+* [タグ管理のデータソース](https://docs.tealium.com/data-sources-for-tag-management/)
 * [Tealium Collectタグ構成ガイド](https://docs.tealium.com/tealium-collect-tag/)

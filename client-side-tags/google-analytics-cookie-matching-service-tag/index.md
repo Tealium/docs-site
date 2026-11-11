@@ -1,6 +1,6 @@
 ---
 title: Google Analytics Cookie Matching Service Tag Setup Guide
-description: This article describes how to set up the Google Analytics Cookie Matching Service tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Google Analytics Cookie Matching Service tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/google-analytics-cookie-matching-service-tag/
 ---
 
@@ -19,7 +19,7 @@ The Google Analytics Cookie Matching Service tag lets you associate a visitor wi
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ## Load rules
 

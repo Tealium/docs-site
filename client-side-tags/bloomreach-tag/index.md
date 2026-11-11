@@ -1,13 +1,13 @@
 ---
 title: BloomReach Tag Setup Guide
-description: This article describes how to set up the BloomReach tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the BloomReach tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/bloomreach-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the BloomReach tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 * Account ID: Your BloomReach account ID.
 * View ID: This BloomReach-provided ID is only required if you have multiple sites with unique product catalog characteristics using the same account ID.
@@ -15,15 +15,15 @@ After adding the tag, configure the below settings:
 * Track TMS: Toggle tracking of Tealium as your Tag Management System (TMS). Only toggle to `Yes` when migrating your BloomReach implementation from another platform to Tealium, and you're still loading BloomReach on both platforms. The default is `No`. This allows BloomReach to distinguish the tracking calls from each platform.
 * Clear `br_data` on Page View: Toggle whether to clear out the `br_data` object with each page view, or to allow persisted values to remain. This is often set to `Yes` for Single-page or AJAX applications. The default is `No`.
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the BloomReach tag are built into its **Data Mapping** tab. Available categories are:
 

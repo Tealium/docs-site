@@ -14,14 +14,14 @@ This connector uses the following vendor API:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add Member to Segment | ✓ | ✗ |
 | Remove Member from Segment | ✓ | ✗ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -36,6 +36,8 @@ After adding the connector, configure the following settings:
 * **Segment Description**  
 The segment description provided in LaunchDarkly.
 * **URL Override**  
+
+After you configure the connector, click **Done**.
 (For testing purposes only) Lets you override the URL of the actions.
 
 ## Actions

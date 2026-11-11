@@ -3,95 +3,95 @@ title: Extoleタグ構成ガイド
 description: この記事では、Extoleタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/extole-tag/
 ---
-Extoleのプラットフォームは、世界最大のブランドのためのエンリッチされた、クロスチャネルの紹介プログラムを提供します。大規模な友人紹介をマーケティング、測定、最適化するすべての機能を備えたExtoleプラットフォームは、マーケターが既存の顧客がブランドに対して持っている愛情を新たな顧客に変えるのを助けます。
+Extoleのプラットフォームは、世界最大級のブランド向けに、豊富な機能を備えたクロスチャネルの紹介プログラムを提供します。大規模な友人紹介施策のマーケティング、測定、最適化に必要な機能をすべて備えたExtoleプラットフォームにより、マーケターは既存顧客のブランドへの愛着を新規顧客の獲得につなげることができます。
 
-## タグのヒント
+## タグに関するヒント
 
-* CTAが配置される場所を識別するための方法を選択します。
-  * **要素ID**の場合：ハッシュ (`#`) 文字なしで要素IDを提供します。
-  * **HTML要素**の場合：クエリするための要素セレクタを提供します。このオプションは、ページ上でjQueryをロードする必要があります。
-* イベントマッピングを使用して登録イベントをトリガーします。注文IDが検出されると、コンバージョンイベントは自動的に発火します。
+* CTAの配置場所を識別するために使用する方法を選択します。
+  * **Element ID**の場合：ハッシュ（`#`）文字を付けずに要素IDを指定します。
+  * **HTML Element**の場合：クエリ対象の要素セレクターを指定します。このオプションを使用するには、ページ上でjQueryを読み込む必要があります。
+* イベントマッピングを使用して、登録イベントをトリガーします。注文IDが検出されると、コンバージョンイベントが自動的に発生します。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、以下の構成を構成します。
 
-* **クライアント名**：あなたのユニークなExtoleクライアント名。
-* **ターゲットコンテンツ方法**：CTA配置を識別するために使用される方法を選択します。
+* **Client Name**：一意のExtoleクライアント名。
+* **Target Content Method**：CTAの配置を識別するために使用する方法を選択します。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `client_name` | クライアント名  |
-| `registration.custom` | 登録カスタムデータ  |
-| `conversion.custom` | コンバージョンカスタムデータ  | 
+| `client_name` | クライアント名 |
+| `registration.custom` | 登録カスタムデータ |
+| `conversion.custom` | コンバージョンカスタムデータ |
 
 
 <blockquote>
-`custom`をあなたの変数名に置き換えてください、例えば`registration.date`。
+`custom`を使用する変数名（例：`registration.date`）に置き換えてください。
 </blockquote>
 
 
-### E-コマース
+### Eコマース
 
-Extoleタグはeコマース対応しているため、デフォルトのE-Commerce Extensionマッピングを自動的に使用します。このカテゴリで手動でマッピングする必要は通常ありませんが、以下の場合は必要です：
+ExtoleタグではEコマースが有効になっているため、デフォルトのEコマース拡張機能のマッピングが自動的に使用されます。通常、次の場合を除き、このカテゴリーで手動マッピングを行う必要はありません。
 
-* Extensionマッピングを上書きしたい場合。
-* あなたのユースケースに必要なeコマース変数がextensionに存在しない場合。
-
-| 変数 | 説明 |
-|:---------|:------------|
-| `order_id` (`_corder`を上書き) |注文ID  |
-| `order_total` (`_ctotal`を上書き) | 注文合計  |
-| `customer_id` (`_ccustid`を上書き) | 顧客ID  |
-| `cart_value` (`_ctotal`を上書き) | カートの価値  | 
-| `coupon_code` (`_cpromo`を上書き) | クーポンコード  | 
-
-### Calls-To-Action
+* 拡張機能のマッピングを上書きする場合。
+* ユースケースに必要なEコマース変数が拡張機能で使用できない場合。
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `email` | メール  |
-|  `first_name` | 名前  |
-|  `last_name` | 姓  |
-|  `locale` | ロケール  |
-|  `cta.global_header.id` | グローバルヘッダー  |
-|  `cta.global_footer.id` | グローバルフッター  |
-|  `cta.product.id` | 商品  |
-|  `cta.product.data.content.custom` | 商品カスタムデータ  |
-|  `cta.confirmation.id` | 確認  |
-|  `cta.referral_page.id` | 紹介ページ  |
-|  `cta.my_account.id` | アカウントページ  |
-|  `cta.custom.id` | カスタムCTA名 |
-|  `cta.CTAname.data.first_name` | CTA名を追加  |
-|  `cta.CTAname.data.last_name` | CTA姓を追加  |
-|  `cta.CTAname.data.partner_user_id` | CTAパートナーユーザーIDを追加  |
-|  `cta.CTAname.data.email` | CTAメールを追加  |
-|  `cta.CTAname.data.locale` | CTAロケールを追加  |
-|  `cta.CTAname.data.custom` | CTAカスタムデータを追加  |
-|  `cta.overlay` | オーバーレイ  |
-|  `cta.mobile_menu` | モバイルメニュー  |
+| `order_id`（`_corder`を上書き） | 注文ID |
+| `order_total`（`_ctotal`を上書き） | 注文合計 |
+| `customer_id`（`_ccustid`を上書き） | 顧客ID |
+| `cart_value`（`_ctotal`を上書き） | カートの値 |
+| `coupon_code`（`_cpromo`を上書き） | クーポンコード |
+
+### CTA
+
+| 変数 | 説明 |
+|:---------|:------------|
+| `email` | メールアドレス |
+| `first_name` | 名 |
+| `last_name` | 姓 |
+| `locale` | ロケール |
+| `cta.global_header.id` | グローバルヘッダー |
+| `cta.global_footer.id` | グローバルフッター |
+| `cta.product.id` | 製品 |
+| `cta.product.data.content.custom` | 製品カスタムデータ |
+| `cta.confirmation.id` | 確認 |
+| `cta.referral_page.id` | 紹介ページ |
+| `cta.my_account.id` | アカウントページ |
+| `cta.custom.id` | カスタムCTA名 |
+| `cta.CTAname.data.first_name` | CTAの名を追加 |
+| `cta.CTAname.data.last_name` | CTAの姓を追加 |
+| `cta.CTAname.data.partner_user_id` | CTAのパートナーユーザーIDを追加 |
+| `cta.CTAname.data.email` | CTAのメールアドレスを追加 |
+| `cta.CTAname.data.locale` | CTAのロケールを追加 |
+| `cta.CTAname.data.custom` | CTAのカスタムデータを追加 |
+| `cta.overlay` | オーバーレイ |
+| `cta.mobile_menu` | モバイルメニュー |
 
 
 <blockquote>
-要素IDまたはセレクタをマッピングしていない場合、文字列`n/a`をマッピングします。
+要素IDまたはセレクターをマッピングしない場合は、文字列`n/a`をマッピングしてください。
 </blockquote>
 
 
-#### スタンダードCTA名
+#### 標準CTA名
 
 |**CTA名**| **値**|
 |---| ---|
@@ -101,25 +101,24 @@ Extoleタグはeコマース対応しているため、デフォルトのE-Comme
 |紹介ページ | `referral_page` |
 |アカウントページ | `my_account` |
 
-紹介CTAの日付を送信したい場合は、**紹介ページ**宛先にマッピングします。次に、**CTAカスタムデータを追加**宛先に次のようにマッピングします：`cta.referral_page.data.date`。
+紹介CTAの日付を送信する場合は、**Referral Page**の送信先にマッピングします。次に、**Add CTA custom data**の送信先に`cta.referral_page.data.date`としてマッピングします。
 
 ### イベントトリガー
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
 
-ページ上で特定のイベントをトリガーするために、以下の宛先にマッピングします。イベントをトリガーするには：
+ページ上で特定のイベントをトリガーするには、以下の送信先にマッピングします。イベントをトリガーするには、次の手順を実行します。
 
-1. **トリガー**ドロップダウンからイベントを選択します。
-1. **マッピング値**フィールドに、マッピングする変数の値を入力します。
-1. **追加**をクリックします。
+1. **Trigger**ドロップダウンからイベントを選択します。
+1. **Mapped Value**フィールドに、マッピングする変数の値を入力します。
+1. **Add**をクリックします。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| 登録 | 登録イベントを発火します。 |
-| コンバージョン | コンバージョンイベントを発火します。 |
-| 確認 | 要素IDなしで確認イベントを発火します。 |
+| Registration | 登録イベントを発生させます。 |
+| Conversion | コンバージョンイベントを発生させます。 |
+| Confirmation | 要素IDなしで確認イベントを発生させます。 |
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-[Extole Asyc文書](https://dev.extole.com/docs/tealium)
-
+[Extole Asycドキュメント](https://dev.extole.com/docs/tealium)

@@ -1,13 +1,13 @@
 ---
 title: Braze Currents data source setup guide
-description: This article describes how to use Braze as a data source to send actionable events to Tealium EventStream API Hub and Tealium AudienceStream CDP using Braze Currents.
+description: This article describes how to use Braze as a data source to send actionable events to Event Streaming API Hub and CDP using Braze Currents.
 url: https://docs.tealium.com/server-side/data-sources/webhooks/braze-currents/
 ---
 For additional information about Partner Integrations and Tealium Server-Side data sources, see [Data Sources](https://docs.tealium.com/partners/data-sources/#api).
 
 ## Prerequisites
 
-* Tealium EventStream and/or Tealium AudienceStream
+* Event Streaming and/or Customer Data Platform (CDP)
 * Braze account with Currents enabled
 
 
@@ -18,7 +18,7 @@ A Currents connector is already included in many Braze pro- and enterprise-level
 
 ## How it works
 
-The Braze platform tracks a variety of event data from your Braze integration for analysis, retargeting, and other use-cases within your systems. To connect Braze with Tealium EventStream or Tealium AudienceStream, use [Braze Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/) to send Braze data source to your Tealium account.
+The Braze platform tracks a variety of event data from your Braze integration for analysis, retargeting, and other use-cases within your systems. To connect Braze with Event Streaming or CDP, use [Braze Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/) to send Braze data source to your Tealium account.
 
 After you configure Braze Currents, you can create subscriptions based on topics and receive related push notifications to automate use cases, stay informed, and increase productivity.
 
@@ -77,7 +77,7 @@ users.messages.email.Delivery
 }
 ```
 
-All incoming Braze event attributes are automatically prefixed with `braze_`. For example, when Currents sends `id`, the matching EventStream event attribute is `braze_id` (all lowercase). The Tealium Braze data source flattens the events as custom JSON objects as shown in the following example:
+All incoming Braze event attributes are automatically prefixed with `braze_`. For example, when Currents sends `id`, the matching Event Streaming event attribute is `braze_id` (all lowercase). The Tealium Braze data source flattens the events as custom JSON objects as shown in the following example:
 
 ```json
 {

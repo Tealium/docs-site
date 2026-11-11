@@ -1,35 +1,34 @@
 ---
 title: Foreseeタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでForeseeタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでForeseeタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/foresee-tag/
 ---
-## タグ構成
+## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
-* **タイトル**：デフォルトは "Foresee" です。これを選択したカスタム名に置き換えることができます。
-* **ファイルパス**：Foreseeのファイル/構成がホストされているURL。   
- 例えば、`//gateway.foresee.com/sites/XXX/XXX/gateway.min.js`
+* **タイトル**：デフォルトは「Foresee」です。任意のカスタム名に変更できます。
+* **ファイルパス**：Foreseeのファイルや構成がホストされているURL。   
+ 例：`//gateway.foresee.com/sites/XXX/XXX/gateway.min.js`
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。読み込みルールの詳細については、[読み込みルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-Foreseeタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは次のとおりです：
+Foreseeタグの宛先変数は、その「データマッピング」タブに組み込まれています。利用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
-|タグ宛先| 説明|
-|---| ---|
-|ファイルパス| ForeseeスニペットがホストされているURL|
+|タグの宛先|説明|
+|---|---|
+|ファイルパス|ForeseeスニペットがホストされているURL|
 
-## ベンダードキュメンテーション
+## ベンダーのドキュメント
 
-[Foresee Developer Portal](https://developer.foresee.com/v1.0/)
-
+[Foresee開発者ポータル](https://developer.foresee.com/v1.0/)

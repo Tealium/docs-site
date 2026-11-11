@@ -110,7 +110,7 @@ For example, set Last Purchase Amount to the value of `order_total` whenever the
 * **Result**: `43.19`
 
 ### Set difference between two dates
-(AudienceStream only)
+(Customer Data Platform (CDP) only)
 
 Calculates the elapsed time between two events. Elapsed time can be expressed as one of the following:
 
@@ -139,7 +139,7 @@ Current Visit Date: `"2019/11/01"`
 * **Result**: `367`
 
 ### Set rolling average based on timeline
-(AudienceStream only)
+(CDP only)
 
 The rolling average is the arithmetic mean of numerical values captured over time. These values come from number and [tally]() attributes that are collected as entries in a [timeline](). The timeline's expiration determines which entries can be factored into the final average. If there is not an expiration date, it is a simple average solution.
 
@@ -150,7 +150,7 @@ The rolling average is the arithmetic mean of numerical values captured over tim
 * **Result**: `35.00`
 
 ### Set rolling sum based on timeline
-(AudienceStream only)
+(CDP only)
 
 A rolling sum is the aggregate of numerical values in a number or [tally](https://docs.tealium.com/tally-attribute/) attribute that are captured as entries in a [timeline](https://docs.tealium.com/timeline-attribute/). The timeline's expiration determines which entries can be factored in during the aggregation.
 
@@ -171,7 +171,7 @@ Set the number to the number of entries in a timeline.
 * **Result**: `5.00`
 
 ### Set number to tally value
-(AudienceStream only)
+(CDP only)
 
 Set the number to a specific value within the tally. Specify the tally attribute and the name of the entry in the tally. For example, a tally for Site Category Views might have an entry for "Shoes".
 
@@ -182,7 +182,7 @@ Set the number to a specific value within the tally. Specify the tally attribute
 * **Result**: `42`
 
 ### Set number to the count of items in tally
-(AudienceStream only)
+(CDP only)
 
 Set the attribute to the number of entries in a tally. For example, a tally for Site Category Views might have three entries in it.
 
@@ -200,7 +200,7 @@ Set the attribute to the number of entries in a tally. For example, a tally for 
 * **Result**: `3.00`
 
 ### Set number to the count of items in set of strings
-(AudienceStream only)
+(CDP only)
 
 Set the number to the count of items in a set of strings. For example, a set of strings Active Browser Types might have three entries.
 
@@ -211,7 +211,7 @@ Set the number to the count of items in a set of strings. For example, a set of 
 * **Result**: `3.00`
 
 ### Set number to tally's rolling max based on a timeline
-(AudienceStream only)
+(CDP only)
 
 Set the number to the rolling maximum of another number in a tally captured within a timeline.
 
@@ -222,7 +222,7 @@ Set the number to the rolling maximum of another number in a tally captured with
 * **Result**: `50.00`
 
 ### Set number to change in number
-(AudienceStream only)
+(CDP only)
 
 Set this attribute to the difference between it and another attribute since the last event. For example, use this enrichment to capture the difference between a previous order amount and the current order amount. To set an attribute named Change in Order Value, set it to the change in `order_subtotal` since the previous order.
 
@@ -233,7 +233,7 @@ Set this attribute to the difference between it and another attribute since the 
 * **Result**: `12.00`
 
 ### Set number to change in date
-(AudienceStream only)
+(CDP only)
 
 Set this attribute to the change in value of the selected value between this event and the last event. For example, use this enrichment to capture the change in months of the Last Purchase Date date attribute each time a purchase occurs.
 
@@ -254,7 +254,7 @@ Last Purchase Date (this event): `"12/31/2019"`
 * **Result**: 2 (months)
 
 ### Set To Number Based On Average of An Array of Numbers
-(EventStream only)
+(Event Streaming only)
 
 Set this attribute to the average of an array of numbers.
 
@@ -265,7 +265,7 @@ Set this attribute to the average of an array of numbers.
 * **Result**: `30.00`
 
 ### Set To Number Based On Max of An Array of Numbers
-(EventStream only)
+(Event Streaming only)
 
 Set this attribute to the maximum value within an array of numbers.
 
@@ -276,7 +276,7 @@ Set this attribute to the maximum value within an array of numbers.
 * **Result**: `40.00`
 
 ### Set To Number Based On Min of An Array of Numbers
-(EventStream only)
+(Event Streaming only)
 
 Set this attribute to the minimum value within an array of numbers.
 

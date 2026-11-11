@@ -1,11 +1,12 @@
 ---
 title: Exactagタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでExactagタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでExactagタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/exactag-tag/
 ---
-## タグのヒント
 
-* E-Commerce拡張に対応しています:
+## タグに関するヒント
+
+* 次のEコマース拡張機能をサポートしています。
   * 注文ID
   * 注文小計
   * 注文合計
@@ -13,57 +14,57 @@ url: https://docs.tealium.com/ja/client-side-tags/exactag-tag/
   * 顧客ID
   * 商品ID
   * 商品名
-  * 商品カテゴリ
+  * 商品カテゴリー
   * 商品数量
   * 商品単価
 
-* 注文IDが存在する場合、自動的にコンバージョンデータが追加されます。コンバージョンデータは、**Is Conversion Flag**を`true`に構成することで手動でトリガーできます
-* **UI Add Custom Destination**オプションを通じて追加のデータポイントを追加できます
+* 注文IDが存在する場合、コンバージョンデータが自動的に追加されます。**コンバージョンフラグ**を`true`に構成すると、コンバージョンデータを手動でトリガーできます
+* **UIでカスタム送信先を追加**オプションを使用すると、追加のデータポイントを追加できます
 
-### タグ構成
+### タグの構成
 
-まず、タグマーケットプレイスに移動し、Exactagタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います:
+タグを追加する際に、次の構成を構成します。
 
 * **キャンペーンコード**  
 ブランド固有のキャンペーンコード
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです:
+使用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
-| 変数               | 説明             |
+| 変数                 | 説明              |
 |:-------------------|:------------------|
-| キャンペーンコード | (`campaign`)      |
-| リファラーURL      | (`referrer`)      |
-| ホストドメイン     | (`host`)          |
-| サイトパス         | (`site`)          |
-| 検索パラメータ     | (`search`)        |
-| サイトグループ     | (`sitegroup`)     |
-| クロスデバイスID   | (`crossid`)       |
-| Subid              | (`subid`)         |
-| コンバージョンフラグ | (`is_conversion`) |
+| キャンペーンコード      | (`campaign`)      |
+| リファラーURL          | (`referrer`)      |
+| ホストドメイン          | (`host`)          |
+| サイトパス             | (`site`)          |
+| 検索パラメーター        | (`search`)        |
+| サイトグループ          | (`sitegroup`)     |
+| クロスデバイスID        | (`crossid`)       |
+| サブID                 | (`subid`)         |
+| コンバージョンフラグ     | (`is_conversion`) |
 
-### E-Commerce
+### Eコマース
 
-| 変数                                                       | 説明                                      |
-|:-----------------------------------------------------------|:-------------------------------------------|
-| レベル値                                                   | (`level`)                                  |
-| 顧客性別                                                   | (`customer_gender`)                         |
-| 顧客タイプ                                                 | (`customer_type`)                           |
-| 注文ID                                                     | (`order_id`) (Overrides `_corder`)           |
-| 収益/注文合計                                              | (`order_total`) (Overrides `_ctotal`)        |
-| 合計価格/小計                                              | (`order_subtotal`) (Overrides `_csubtotal`)  |
-| プロモーションコード                                       | (`order_coupon_code`) (Overrides `_cpromo`) |
-| カートまたは注文タイプ                                     | (`order_type`) (Overrides `_ctype`)          |
-| 顧客ID                                                     | (`customer_id`) (Overrides `_ccustid`)       |
-| 商品IDのリスト (`product_id`) (Overrides `_cprod`)           | [配列]                                      |
-| 名前のリスト (`product_name`) (Overrides `_cprodname`)       | [配列]                                      |
-| カテゴリのリスト (`product_category`) (Overrides `_ccat`)     | [配列]                                      |
-| 数量のリスト (`product_quantity`) (Overrides `_cquan`)       | [配列]                                      |
-| 価格のリスト (`product_unit_price`) (Overrides `_cprice`)   | [配列]                                      |
+| 変数                                                           | 説明                                        |
+|:-------------------------------------------------------------|:-------------------------------------------|
+| レベル値                                                        | (`level`)                                  |
+| 顧客の性別                                                       | (`customer_gender`)                        |
+| 顧客タイプ                                                       | (`customer_type`)                          |
+| 注文ID                                                          | (`order_id`)（`_corder`を上書き）             |
+| 売上／注文合計                                                    | (`order_total`)（`_ctotal`を上書き）           |
+| 合計価格／小計                                                    | (`order_subtotal`)（`_csubtotal`を上書き）      |
+| プロモーションコード                                               | (`order_coupon_code`)（`_cpromo`を上書き）     |
+| カートまたは注文タイプ                                             | (`order_type`)（`_ctype`を上書き）              |
+| 顧客ID                                                          | (`customer_id`)（`_ccustid`を上書き）           |
+| 商品IDのリスト（`product_id`）（`_cprod`を上書き）                    | ［配列］                                      |
+| 商品名のリスト（`product_name`）（`_cprodname`を上書き）              | ［配列］                                      |
+| カテゴリーのリスト（`product_category`）（`_ccat`を上書き）            | ［配列］                                      |
+| 数量のリスト（`product_quantity`）（`_cquan`を上書き）                 | ［配列］                                      |
+| 価格のリスト（`product_unit_price`）（`_cprice`を上書き）              | ［配列］                                      |

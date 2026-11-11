@@ -1,13 +1,13 @@
 ---
 title: Coveo Usage Analytics Tag Setup Guide
-description: This article describes how to set up the Coveo Usage Analytics (Coveo UA) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Coveo Usage Analytics (Coveo UA) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/coveo-usage-analytics-tag/
 ---
 Coveo for Commerce is a data-driven platform that offers recommendations, search, and the ability to manage relevance. The Coveo Usage Analytics JavaScript is used to send events occurring in and out of Coveo-powered pages.
 
 For more information about Coveo UA Javascript, see the Coveo [Collect Commerce Events](https://docs.coveo.com/en/3188/coveo-for-commerce/collect-commerce-events) documentation.
 
-## Tag Tips
+## Tag tips
 
 Use mappings to:
 
@@ -16,22 +16,22 @@ Use mappings to:
 * Send additional data values
 * Event trigger
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Coveo API Key**: Coveo API Key for Analytics created for your catalog.
 * **Alternate Endpoints**: Specify the Coveo endpoint for your region.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

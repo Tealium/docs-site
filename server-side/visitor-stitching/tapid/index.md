@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/visitor-stitching/tapid/
 ---
 ## How it works
 
-TAPID is an HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the [anonymous ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id) that Tealium’s server-side products use, such as AudienceStream.
+TAPID is a HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the [anonymous ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id) that Tealium’s server-side products use, such as Customer Data Platform (CDP).
 
 
 <blockquote>
@@ -38,23 +38,23 @@ To find the account and profile values for a TAPID cookie on a web page, perform
 
 ## Identity resolution
 
-AudienceStream determines the visitor profile ID based on the following order:
+CDP determines the visitor profile ID based on the following order:
 
 1. The TAPID cookie, also called `tealium_thirdparty_visitor_id`.
 1. The `tealium_visitor_id` event attribute.
 1. The `utag_main v_id cookie`, also called `tealium_firstparty_visitor_id`.
 
-AudienceStream always uses the TAPID identifier as the primary identifier if it is present in an incoming request. If a user is tracked across two domains, AudienceStream does not use the second domain's first party cookie to identify the user. Therefore, you cannot look up the user based on the second domain's first party cookie in AudienceStream.
+CDP always uses the TAPID identifier as the primary identifier if it is present in an incoming request. If a user is tracked across two domains, CDP does not use the second domain's first party cookie to identify the user. Therefore, you cannot look up the user based on the second domain's first party cookie in CDP.
 
 ### Visitor stitching issues
 
-A visitor's profile data can be contaminated if multiple visitors use a device, such as a shared smart television or a public kiosk. If a second user logs in to that device with an anonymous cookie, AudienceStream continues to log activity to the first user. Traffic from all the anonymous users on a device are logged to the first user in the TAPID cookie.
+A visitor's profile data can be contaminated if multiple visitors use a device, such as a shared smart television or a public kiosk. If a second user logs in to that device with an anonymous cookie, CDP continues to log activity to the first user. Traffic from all the anonymous users on a device are logged to the first user in the TAPID cookie.
 
 For more information, see [Visitor Switching](https://docs.tealium.com/platforms/http-api/endpoint/#visitor-switching).
 
 ### Browser support
 
-As browser support for third-party cookies continues to decline, the ability to track users anonymously across domains is becoming more difficult. With [Visitor Stitching](), AudienceStream can resolve a user across two or more domains when that user identifies themselves in the data layer.
+As browser support for third-party cookies continues to decline, the ability to track users anonymously across domains is becoming more difficult. With [Visitor Stitching](), CDP can resolve a user across two or more domains when that user identifies themselves in the data layer.
 
 ## First-party domains and TAPID  
 
@@ -84,9 +84,9 @@ The `/event` endpoint can read TAPID values if they are previously set, but it c
 
 | Parameter | Type | Actions | Notes | 
 |--------|--------|--------|--------|
-| `tealium_override_tapid`  | String  | <ul><li>Make AudienceStream and server-side products use the provided value as the visitor ID on this event.</li><li>For `i.gif` and `vdata`, but not `/event`, change the `Set-Cookie` response header to use the value you pass to change the TAPID.</li></ul> |This parameter enables visitor switching based on the last known user, while retaining a TAPID for cross-domain tracking. |
-| `tealium_delete_3rd_party_vid_cookies`  | Boolean |  <ul><li>Make AudienceStream and server-side products ignore the incoming request value of the TAPID cookie when looking at its order of priority for the visitor profile ID for this event.</li><li>For `i.gif` and `vdata`, but not `/event`, change the `Set-Cookie` response header to remove the TAPID for the current account and profile.</li></ul> | |
-| `tealium_skip_3rd_party_vid_cookies`  | Boolean | AudienceStream and server-side products ignores the TAPID values for this event. | |
+| `tealium_override_tapid`  | String  | <ul><li>Make CDP and server-side products use the provided value as the visitor ID on this event.</li><li>For `i.gif` and `vdata`, but not `/event`, change the `Set-Cookie` response header to use the value you pass to change the TAPID.</li></ul> |This parameter enables visitor switching based on the last known user, while retaining a TAPID for cross-domain tracking. |
+| `tealium_delete_3rd_party_vid_cookies`  | Boolean |  <ul><li>Make CDP and server-side products ignore the incoming request value of the TAPID cookie when looking at its order of priority for the visitor profile ID for this event.</li><li>For `i.gif` and `vdata`, but not `/event`, change the `Set-Cookie` response header to remove the TAPID for the current account and profile.</li></ul> | |
+| `tealium_skip_3rd_party_vid_cookies`  | Boolean | CDP and server-side products ignores the TAPID values for this event. | |
 
 The parameters affect only the current event. For example, if you pass the `skip` parameter on one event and not the next, the next event does not skip the TAPID cookie. However, you can set the `override` parameter once and the TAPID changes to the value you specify.
 

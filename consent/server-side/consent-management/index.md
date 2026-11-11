@@ -53,7 +53,7 @@ The Facebook Connector is governed by the **Analytics**, **Display Ads**, and **
 
 You have two connectors configured, one for **Analytics** and one for **Personalization**. A visitor grants partial consent in the preference form by allowing **Analytics** tracking but not allowing **Personalization**.
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-server-side-categories-example.png)
+![](https://docs.tealium.com/images/tag-management/consent-server-side-categories-example.png)
 
 Only connector actions in the **Analytics** category are triggered. Any connector action in the **Personalization** category is suppressed.
 

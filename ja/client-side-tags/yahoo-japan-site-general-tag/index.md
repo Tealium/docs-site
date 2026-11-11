@@ -1,190 +1,188 @@
 ---
-title: Yahoo! Japanサイト一般タグセットアップガイド
-description: この記事では、Tealium Tag ManagementアカウントでYahoo! Japanサイト一般タグを構成する方法について説明します。
+title: Yahoo! JAPAN サイトジェネラルタグ構成ガイド
+description: この記事では、タグ管理アカウントで Yahoo! JAPAN サイトジェネラルタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/yahoo-japan-site-general-tag/
 ---
-## タグのヒント
 
-* **重要:** 特定のタグをトリガーするには、マッピングツールボックスの**タグタイプ**タブでトリガー条件を構成してください。それ以外の場合、タグはトリガーされません。
-* マッピングを使用して標準の構成を上書きします。
-* 複数のIDまたはラベルをカンマ区切りのリストで入力できます。1つのIDと複数のラベルを入力する場合、同じIDを使用して各ラベルごとに1つのコールがトリガーされます。複数のIDと単一のラベルを入力する場合、各IDごとにコールがトリガーされ、同じラベルが使用されます。単一のタグタイプに複数のIDとラベルを入力する場合は、IDとラベルの数が一致していることを確認してください。
-* 以下のEコマース拡張値に対応しています：
-  * 注文ID（`_corder`）
+## タグに関するヒント
+
+* **重要:** 特定のタグをトリガーするには、マッピングツールボックスの **Tag Types** タブでトリガー条件を構成します。構成しない場合、タグはトリガーされません。
+* 標準構成を上書きするには、マッピングを使用します。
+* ID またはラベルは、カンマ区切りのリストとして複数入力できます。1 つの ID と複数のラベルを入力すると、同じ ID を使用して、ラベルごとに 1 回ずつ呼び出しがトリガーされます。複数の ID と 1 つのラベルを入力すると、同じラベルを使用して、ID ごとに 1 回ずつ呼び出しがトリガーされます。1 つのタグタイプに対して複数の ID とラベルを入力する場合は、ID とラベルの数が一致していることを確認してください。
+* 次の E コマース拡張値をサポートしています。
+  * 注文 ID（`_corder`）
   * 注文小計（`_csubtotal`）
-  * 製品IDのリスト（`_cprod`）
-  * 製品カテゴリのリスト（`_ccat`）
-  * 製品数量のリスト（`_cquan`）
-  * 製品価格のリスト（`_cprice`）
+  * 商品 ID のリスト（`_cprod`）
+  * 商品カテゴリーのリスト（`_ccat`）
+  * 商品数量のリスト（`_cquan`）
+  * 商品価格のリスト（`_cprice`）
 
 ## タグの構成
 
-新しいタグを追加するために、タグマーケットプレースに移動します。タグを追加する方法の一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際に、次の構成を構成します：
+タグを追加する際に、次の構成を行います。
 
-* **自動タグ付け**: 自動タグ付けを有効または無効にします。この構成を有効にすると、タグの読み込み後に`ytag({"type":"ycl_cookie"});`コールが実行されます。
-* **ディスプレイネットワークコンバージョンIO**: Yahoo! Japanディスプレイネットワーク（YDN）のコンバージョンIOを入力します。
-* **ディスプレイネットワークコンバージョンラベル**: Yahoo! Japanディスプレイネットワーク（YDN）のコンバージョンラベルを入力します。
-* **ディスプレイネットワークリターゲティングID**: Yahoo! Japanディスプレイネットワーク（YDN）のリターゲティングIDを入力します。
-* **ディスプレイネットワークリターゲティングラベル**: Yahoo! Japanディスプレイネットワーク（YDN）のリターゲティングラベルを入力します。
-* **スポンサードサーチコンバージョンID**: Yahoo! Japanスポンサードサーチ（YSS）のコンバージョンIDを入力します。
-* **スポンサードサーチコンバージョンラベル**: Yahoo! Japanスポンサードサーチ（YSS）のコンバージョンラベルを入力します。
-* **スポンサードサーチリターゲティングID**: Yahoo! Japanスポンサードサーチ（YSS）のリターゲティングIDを入力します。
+* **Auto Tagging**: 自動タグ付けを有効または無効にします。この構成を有効にすると、タグの読み込み後に `ytag({"type":"ycl_cookie"});` が呼び出されます。
+* **Display Network Conversion IO**: Yahoo! JAPAN ディスプレイ広告（YDN）のコンバージョン IO を入力します。
+* **Display Network Conversion Label**: Yahoo! JAPAN ディスプレイ広告（YDN）のコンバージョンラベルを入力します。
+* **Display Network Retargeting ID**: Yahoo! JAPAN ディスプレイ広告（YDN）のリターゲティング ID を入力します。
+* **Display Network Retargeting Label**: Yahoo! JAPAN ディスプレイ広告（YDN）のリターゲティングラベルを入力します。
+* **Sponsored Search Conversion ID**: Yahoo! JAPAN 検索広告（YSS）のコンバージョン ID を入力します。
+* **Sponsored Search Conversion Label**: Yahoo! JAPAN 検索広告（YSS）のコンバージョンラベルを入力します。
+* **Sponsored Search Retargeting ID**: Yahoo! JAPAN 検索広告（YSS）のリターゲティング ID を入力します。
 
 ## データマッピング
 
-マッピングは、[データレイヤ変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法の詳細については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
 
 <blockquote>
-タグをトリガーするには、**タグタイプ**カテゴリでトリガー条件を構成する必要があります。
+タグを配信するには、**Tag Type** カテゴリーでトリガー条件を構成する必要があります。
 </blockquote>
 
 
-利用可能なカテゴリは次のとおりです：
+使用可能なカテゴリーは次のとおりです。
 
-### ディスプレイネットワーク（YDN）コンバージョン
+### ディスプレイ広告（YDN）コンバージョン
 
-|変数| 説明|
-|---| ---|
-|コンバージョンIO（`yahoo_ydn_conv_io`）| [文字列]|
-|コンバージョンラベル（`yahoo_ydn_conv_label`）| [文字列]|
-|コンバージョントランザクションID（`yahoo_ydn_conv_transaction_id`）| [文字列]|
-|コンバージョン値（`yahoo_ydn_conv_value`）| [文字列]|
+|変数|説明|
+|---|---|
+|コンバージョン IO（`yahoo_ydn_conv_io`）|［文字列］|
+|コンバージョンラベル（`yahoo_ydn_conv_label`）|［文字列］|
+|コンバージョントランザクション ID（`yahoo_ydn_conv_transaction_id`）|［文字列］|
+|コンバージョン値（`yahoo_ydn_conv_value`）|［文字列］|
 
-### ディスプレイネットワーク（YDN）リターゲティング
+### ディスプレイ広告（YDN）リターゲティング
 
-|変数| 説明|
-|---| ---|
-|リターゲティングID（`yahoo_retargeting_id`）| [文字列]|
-|リターゲティングラベル（`yahoo_retargeting_label`）| [文字列]|
-|リターゲティングページタイプ（`yahoo_retargeting_page_type`）| [文字列]|
-|リターゲティングアイテム（`yahoo_retargeting_items`）| [配列]|
-|カテゴリID（`category_id`）（`_ccat`を上書き）| [配列]|
-|アイテムID（`item_id`）（`_cprod`を上書き）| [配列]|
-|価格（`price`）（`_cprice`を上書き）| [配列]|
-|数量（`quantity`）（`_cquan`を上書き）| [配列]|
+|変数|説明|
+|---|---|
+|リターゲティング ID（`yahoo_retargeting_id`）|［文字列］|
+|リターゲティングラベル（`yahoo_retargeting_label`）|［文字列］|
+|リターゲティングページタイプ（`yahoo_retargeting_page_type`）|［文字列］|
+|リターゲティングアイテム（`yahoo_retargeting_items`）|［配列］|
+|カテゴリー ID（`category_id`）（`_ccat` を上書き）|［配列］|
+|アイテム ID（`item_id`）（`_cprod` を上書き）|［配列］|
+|価格（`price`）（`_cprice` を上書き）|［配列］|
+|数量（`quantity`）（`_cquan` を上書き）|［配列］|
 
-### スポンサードサーチ（YSS）コンバージョン
+### 検索広告（YSS）コンバージョン
 
-|変数| 説明|
-|---| ---|
-|コンバージョンID（`yahoo_conversion_id`）| [文字列]|
-|コンバージョンラベル（`yahoo_conversion_label`）| [文字列]|
-|コンバージョン値（`yahoo_conversion_value`）| [文字列]|
+|変数|説明|
+|---|---|
+|コンバージョン ID（`yahoo_conversion_id`）|［文字列］|
+|コンバージョンラベル（`yahoo_conversion_label`）|［文字列］|
+|コンバージョン値（`yahoo_conversion_value`）|［文字列］|
 
-### スポンサードサーチ（YSS）リターゲティング
+### 検索広告（YSS）リターゲティング
 
-|変数| 説明|
-|---| ---|
-|リターゲティングID（`yahoo_ss_retargeting_id`）| [文字列]|
-|カスタムパラメータ（`yahoo_sstag_custom_params`）| [文字列]|
+|変数|説明|
+|---|---|
+|リターゲティング ID（`yahoo_ss_retargeting_id`）|［文字列］|
+|カスタムパラメーター|（`yahoo_sstag_custom_params`）|
 
-### Eコマース
+### E コマース
 
-|変数| 説明|
-|---| ---|
-|注文ID（`order_id`）（`_corder`を上書き）| [文字列]|
-|小計（`order_subtotal`）（`_csubtotal`を上書き）| [文字列]|
-|製品カテゴリのリスト（`product_category`）（`_ccat`を上書き）| [配列]|
-|製品IDのリスト（`product_id`）（`_cprod`を上書き）| [配列]|
-|製品数量のリスト（`product_quantity`）（`_cquan`を上書き）| [配列]|
-|製品価格のリスト（`product_unit_price`）（`_cprice`を上書き）| [配列]|
+|変数|説明|
+|---|---|
+|注文 ID（`order_id`）（`_corder` を上書き）|［文字列］|
+|小計（`order_subtotal`）（`_csubtotal` を上書き）|［文字列］|
+|商品カテゴリーのリスト（`product_category`）（`_ccat` を上書き）|［配列］|
+|商品 ID のリスト（`product_id`）（`_cprod` を上書き）|［配列］|
+|商品数量のリスト（`product_quantity`）（`_cquan` を上書き）|［配列］|
+|商品価格のリスト（`product_unit_price`）（`_cprice` を上書き）|［配列］|
 
 ### タグタイプ
 
-|変数| 説明|
-|---| ---|
-|ディスプレイネットワークコンバージョン| `yjad_conversion`|
-|ディスプレイネットワークリターゲティング| `yjad_retargeting`|
-|スポンサードサーチコンバージョン| `yss_conversion`|
-|スポンサードサーチリターゲティング| `yss_retargeting`|
-|カスタム| カスタム|
+|変数|説明|
+|---|---|
+|ディスプレイ広告コンバージョン|`yjad_conversion`|
+|ディスプレイ広告リターゲティング|`yjad_retargeting`|
+|検索広告コンバージョン|`yss_conversion`|
+|検索広告リターゲティング|`yss_retargeting`|
+|カスタム|カスタム|
 
-### タイプ固有のパラメータ
+### タイプ固有のパラメーター
 
-|変数| 説明|
-|---| ---|
-|コンバージョンIO（`yahoo_ydn_conv_io`）| `yahoo_ydn_conv_io`|
-|コンバージョンラベル（`yahoo_ydn_conv_label`）| `yahoo_ydn_conv_label`|
-|コンバージョントランザクションID（`yahoo_ydn_conv_transaction_id`）| `yahoo_ydn_conv_transaction_id`|
-|コンバージョン値（`yahoo_ydn_conv_value`）| `yahoo_ydn_conv_value`|
-|リターゲティングID（`yahoo_retargeting_id`）| `yahoo_retargeting_id`|
-|リターゲティングラベル（`yahoo_retargeting_label`）| `yahoo_retargeting_label`|
-|リターゲティングページタイプ（`yahoo_retargeting_page_type`）| `yahoo_retargeting_page_type`|
-|リターゲティングアイテム（`yahoo_retargeting_items`）| `yahoo_retargeting_items`|
-|アイテムID（`item_id`）| `item_id`|
-|カテゴリID（`category_id`）| `category_id`|
-|価格（`price`）| `price`|
-|数量（`quantity`）| `quantity`|
-|コンバージョンID（`yahoo_conversion_id`）| `yahoo_conversion_id`|
-|コンバージョンラベル（`yahoo_conversion_label`）| `yahoo_conversion_label`|
-|コンバージョン値（`yahoo_conversion_value`）| `yahoo_conversion_value`|
-|リターゲティングID（`yahoo_ss_retargeting_id`）| `yahoo_ss_retargeting_id`|
-|カスタムパラメータ（`yahoo_sstag_custom_params`）| `yahoo_sstag_custom_params`|
-|カスタムパラメータ| `カスタムパラメータ`|
-|ディスプレイネットワーク（YDN）コンバージョン| `yjad_conversion`|
-|ディスプレイネットワーク（YDN）リターゲティング| `yjad_retargeting`|
-|スポンサードサーチ（YSS）コンバージョン| `yss_conversion`|
-|スポンサードサーチ（YSS）リターゲティング| `yss_retargeting`|
-|カスタムタグタイプ| `カスタムタイプ`|
+|変数|説明|
+|---|---|
+|コンバージョン IO（`yahoo_ydn_conv_io`）|`yahoo_ydn_conv_io`|
+|コンバージョンラベル（`yahoo_ydn_conv_label`）|`yahoo_ydn_conv_label`|
+|コンバージョントランザクション ID（`yahoo_ydn_conv_transaction_id`）|`yahoo_ydn_conv_transaction_id`|
+|コンバージョン値（`yahoo_ydn_conv_value`）|`yahoo_ydn_conv_value`|
+|リターゲティング ID（`yahoo_retargeting_id`）|`yahoo_retargeting_id`|
+|リターゲティングラベル（`yahoo_retargeting_label`）|`yahoo_retargeting_label`|
+|リターゲティングページタイプ（`yahoo_retargeting_page_type`）|`yahoo_retargeting_page_type`|
+|リターゲティングアイテム（`yahoo_retargeting_items`）|`yahoo_retargeting_items`|
+|アイテム ID（`item_id`）|`item_id`|
+|カテゴリー ID（`category_id`）|`category_id`|
+|価格（`price`）|`price`|
+|数量（`quantity`）|`quantity`|
+|コンバージョン ID（`yahoo_conversion_id`）|`yahoo_conversion_id`|
+|コンバージョンラベル（`yahoo_conversion_label`）|`yahoo_conversion_label`|
+|コンバージョン値（`yahoo_conversion_value`）|`yahoo_conversion_value`|
+|リターゲティング ID（`yahoo_ss_retargeting_id`）|`yahoo_ss_retargeting_id`|
+|カスタムパラメーター（`yahoo_sstag_custom_params`）|`yahoo_sstag_custom_params`|
+|カスタムパラメーター|`Custom_Parameter`|
+|ディスプレイ広告（YDN）コンバージョン|`yjad_conversion`|
+|ディスプレイ広告（YDN）リターゲティング|`yjad_retargeting`|
+|検索広告（YSS）コンバージョン|`yss_conversion`|
+|検索広告（YSS）リターゲティング|`yss_retargeting`|
+|カスタムタグタイプ|`Custom_Type`|
 
 ## ユースケース
 
-### ロードルールに一致するすべてのページでYDNリターゲティングをトリガーする
+### 読み込みルールに一致するすべてのページで YDN リターゲティングをトリガーする
 
-ロードルールに基づいてすべてのページでタグをトリガーするためのタグを構成するには：
+読み込みルールに従ってすべてのページで配信されるタグを構成するには、次の手順を実行します。
 
-1. **タグの構成**タブで、**ディスプレイネットワークリターゲティングID**ボックスに適切な値を入力します。
-1. **自動タグ付け**を**True**に構成します。これにより、`ytag({"type":"ycl_cookie"});`コールがトリガーされます。
-1. 必要に応じてロードルールを構成します。
-1. **データマッピング**タブの**変数**ドロップダウンで**カスタム値を使用**をクリックします。
-1. ダイアログの左上のセクションに、ボックスに**true**を入力します。
-1. **カテゴリ**セクションで**タグタイプ**を選択します。
-1. **マッピングされた変数が等しい場合**ボックスに**true**を入力します。
-1. **トリガータグタイプ**ドロップダウンで**ディスプレイネットワークリターゲティング**を選択します。
-1. **+追加**をクリックします。
-1. **完了**をクリックします。
-1. **適用**をクリックします。
+1. **Tag Configuration** タブで、**Display Network Retargeting ID** ボックスに適切な値を入力します。
+1. **Auto Tagging** を **True** に構成します。これにより、`ytag({"type":"ycl_cookie"});` の呼び出しがトリガーされます。
+1. 必要に応じて読み込みルールを構成します。
+1. **Data Mappings** タブの **Variables** ドロップダウンで、**Use Custom Value** をクリックします。
+1. ダイアログの左上のセクションにあるボックスに **true** と入力します。
+1. **Category** セクションで、**Tag Types** を選択します。
+1. **When mapped variables equals** ボックスに **true** と入力します。
+1. **Trigger tag type** ドロップダウンで、**Display Network Retargeting** を選択します。
+1. **+Add** をクリックします。
+1. **Done** をクリックします。
+1. **Apply** をクリックします。
 
 ![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.35.19.png)
+### 購入イベントで YDB コンバージョンをトリガーし、その他のページでリターゲティングを実行する
 
-### 購入イベントでYDNコンバージョンをトリガーし、他のページでリターゲティングを行う
+`tealium_event` 変数の値が `purchase` であるページで配信される YDN コンバージョンタグと、ロードルールに従ってその他のすべてのページで配信されるリターゲティングタグを構成するには、次の手順を実行します。
 
-`tealium_event`変数の値が`purchase`であるページでYDNコンバージョンタグをトリガーし、ロードルールに基づいて他のすべてのページでリターゲティングタグを構成するには：
-
-1. 上記の「ロードルールに一致するすべてのページでYDNリターゲティングをトリガーする」セクションに記載されているように、リターゲティングタグを構成します。
-1. **タグの構成**タブで、**ディスプレイネットワークコンバージョンIO**および**コンバージョンラベル**ボックスに適切な値を入力します。
-1. **データマッピング**タブの**変数**ドロップダウンで`tealium_event`を選択します。
+1. 上記の「ロードルールに一致するすべてのページで YDN リターゲティングをトリガーする」セクションの説明に従って、リターゲティングタグを構成します。
+1. **タグ構成**タブで、**ディスプレイネットワークコンバージョン IO** と **コンバージョンラベル**の各ボックスに適切な値を入力します。
+1. **データマッピング**タブの**変数**ドロップダウンで、`tealium_event` を選択します。
 1. **+宛先を選択**をクリックします。
-1. **カテゴリ**セクションで**タグタイプ**を選択します。
-1. **マッピングされた変数が等しい場合**ボックスに`purchase`を入力します。
-1. **トリガータグタイプ**ドロップダウンで**ディスプレイネットワークコンバージョン**を選択します。
+1. **カテゴリ**セクションで、**タグタイプ**を選択します。
+1. **マッピングされた変数が次と等しい場合**ボックスに、`purchase` と入力します。
+1. **トリガーするタグタイプ**ドロップダウンで、**ディスプレイネットワークコンバージョン**を選択します。
 1. **+追加**をクリックします。
-1. 類似のマッピング（例：**コンバージョントランザクションID**および**コンバージョン値**）についても、**カテゴリ**セクションから**ディスプレイネットワーク（YDN）コンバージョン**を選択して、ステップ3から8を繰り返します。
-1. 複数のページでコンバージョンをトリガーするには、これらのステップを繰り返すか、拡張機能を介して動的に割り当てることができるベンダー固有の変数（例：`yahoo_conversion_value`）を作成します。
+1. **カテゴリ**セクションで**ディスプレイネットワーク（YDN）コンバージョン**を選択し、**コンバージョントランザクション ID**や**コンバージョン値**などの同様のマッピングについて、手順3～8を繰り返します。
+1. 複数のページでコンバージョンを配信するには、これらの手順を繰り返すか、拡張機能によって動的に値を割り当てられるベンダー固有の変数（例：`yahoo_conversion_value`）を作成します。
 1. **完了**をクリックします。
 1. **適用**をクリックします。
 
 ![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.42.31.png)
 
-特定のページのURLでYDNコンバージョンをトリガーし、他のページでリターゲティングを行う
+特定ページの URL で YDB コンバージョンをトリガーし、その他のページでリターゲティングを実行する
 
-特定のページのURL（例：`/cart/thankyou`）でYDNコンバージョンタグをトリガーし、ロードルールに基づいて他のすべてのページでリターゲティングタグを構成するには：
+特定ページの URL（例：`/cart/thankyou`）で配信される YDN コンバージョンタグと、ロードルールに従ってその他のすべてのページで配信されるリターゲティングタグを構成するには、次の手順を実行します。
 
-1. 上記の「ロードルールに一致するすべてのページでYDNリターゲティングをトリガーする」セクションに記載されているように、リターゲティングタグを構成します。
-1. **タグの構成**タブで、**ディスプレイネットワークコンバージョンIO**および**コンバージョンラベル**ボックスに適切な値を入力します。
-1. **データマッピング**タブの**変数**ドロップダウンで**カスタム値**を選択します。
+1. 上記の「ロードルールに一致するすべてのページで YDN リターゲティングをトリガーする」セクションの説明に従って、リターゲティングタグを構成します。
+1. **タグ構成**タブで、**ディスプレイネットワークコンバージョン IO** と **コンバージョンラベル**の各ボックスに適切な値を入力します。
+1. **データマッピング**タブの**変数**ドロップダウンで、**カスタム値**を選択します。
 1. **+宛先を選択**をクリックします。
-1. **カテゴリ**セクションで**タグタイプ**を選択します。
-1. **マッピングされた変数が等しい場合**ボックスにトリガーするバージョンのページへのパス（例：`/cart/thankyou`）を入力します。
-1. **トリガータグタイプ**ドロップダウンで**ディスプレイネットワークコンバージョン**を選択します。
+1. **カテゴリ**セクションで、**タグタイプ**を選択します。
+1. **マッピングされた変数が次と等しい場合**ボックスに、コンバージョンをトリガーするページへのパス（例：`/cart/thankyou`）を入力します。
+1. **トリガーするタグタイプ**ドロップダウンで、**ディスプレイネットワークコンバージョン**を選択します。
 1. **+追加**をクリックします。
-1. 類似のマッピング（例：**コンバージョントランザクションID**および**コンバージョン値**）についても、**カテゴリ**セクションから**ディスプレイネットワーク（YDN）コンバージョン**を選択して、ステップ3から8を繰り返します。
-1. 複数のページでコンバージョンをトリガーするには、これらのステップを繰り返すか、拡張機能を介して動的に割り当てることができるベンダー固有の変数（例：`yahoo_conversion_value`）を作成します。
+1. **カテゴリ**セクションで**ディスプレイネットワーク（YDN）コンバージョン**を選択し、**コンバージョントランザクション ID**や**コンバージョン値**などの同様のマッピングについて、手順3～8を繰り返します。
+1. 複数のページでコンバージョンを配信するには、これらの手順を繰り返すか、拡張機能によって動的に値を割り当てられるベンダー固有の変数（例：`yahoo_conversion_value`）を作成します。
 1. **完了**をクリックします。
 1. **適用**をクリックします。
 
 ![](https://docs.tealium.com/images/client-side-tags/screen-shot-2022-07-06-at-13.43.38.png)
-
-

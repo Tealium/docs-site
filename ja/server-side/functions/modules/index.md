@@ -1,9 +1,9 @@
 ---
-title: 関数用のAPIとライブラリ
-description: この記事では、関数用のAPIとライブラリについての情報を提供します。
+title: 関数向けの API とライブラリ
+description: この記事では、関数で利用できる API とライブラリについて説明します。
 url: https://docs.tealium.com/ja/server-side/functions/modules/
 ---
-関数では、以下のAPIとライブラリを使用できます：
+関数では、次の API とライブラリを使用できます。
 
 * Crypto
 * Crypto-ES.js
@@ -12,13 +12,13 @@ url: https://docs.tealium.com/ja/server-side/functions/modules/
 
 ## Crypto
 
-この機能は、Tealium Functions用の高性能な暗号化およびハッシュライブラリをJavaで実装しています。既存のJavaScriptベースのCrypto-ESライブラリの直接的な代替品として提供され、同じインターフェースを提供します。
+この機能では、Java で実装された、Tealium Functions 向けの高性能な暗号化およびハッシュライブラリが導入されています。既存の JavaScript ベースの Crypto-ES ライブラリを直接置き換えることができ、同じインターフェイスを提供します。
 
-詳細については、[NPM: Crypto-ES](https://www.npmjs.com/package/crypto-es/v/1.2.7)を参照してください。
+詳しくは、[NPM: Crypto-ES](https://www.npmjs.com/package/crypto-es/v/1.2.7)を参照してください。
 
 ### ライブラリのインポート
 
-Tealiumの暗号ライブラリをインポートするには、コードに次の行を追加します：
+Tealium 暗号化ライブラリをインポートするには、コードに次の行を追加します。
 
 ```js
 import C from "tealium/crypto";
@@ -26,9 +26,9 @@ import C from "tealium/crypto";
 
 ### モジュールのインポート
 
-Tealium Cryptoライブラリは、特定の暗号機能を提供する個別のクラスを持つモジュールに組織されています。必要なモジュールのみをインポートすることで、関数のパフォーマンスを最適化できます。
+Tealium Crypto ライブラリは複数のモジュールで構成されており、各モジュールは特定の暗号化機能を備えた個別のクラスを提供します。必要なモジュールだけをインポートできるため、関数のパフォーマンスを最適化できます。
 
-利用可能なモジュールのリスト：
+利用可能なモジュールは次のとおりです。
 
 ```js
 import { SHA384Algo } from 'tealium/crypto/lib/sha384.js';
@@ -89,9 +89,9 @@ import { CRC32 } from 'tealium/crypto/lib/crc32.js';
 
 ### 例
 
-#### ハッシュ化とモード
+#### ハッシュとモード
 
-Galois/CounterモードはCTRGladmanモードの代わりに提供されます。AES暗号で`C.mode.GCM`を使用します：
+CTRGladman モードの代わりに Galois/Counter モードが提供されます。AES 暗号では `C.mode.GCM` を使用します。
 
 ```js
 import C from "tealium/crypto";
@@ -103,7 +103,7 @@ const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad
 const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding });
 ```
 
-追加認証データとタグ長はパラメータとして渡すことができます：
+追加認証データとタグの長さをパラメータとして渡すことができます。
 
 ```js
 import C from "tealium/crypto";
@@ -112,12 +112,12 @@ const key = C.enc.Hex.parse(
 "0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
 const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
 const aad = C.enc.Utf8.parse("additional authentication data");
-const tagLength = 128; // ビット
+const tagLength = 128; // bits
 const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
 const decrypted = C.AES.decrypt(encrypted, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
 ```
 
-`GCM.mac`メソッドは提供されていませんが、暗号化された出力にはハッシュと連結されたタグも含まれます：
+`GCM.mac` メソッドは提供されませんが、暗号化された出力には、ハッシュと連結されたタグも含まれます。
 
 ```js
 import C from "tealium/crypto";
@@ -125,14 +125,14 @@ const msg = "message";
 const key = C.enc.Hex.parse(
 "0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
 const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
-const tagLength = 128; // ビット
+const tagLength = 128; // bits
 const encrypted = C.AES.encrypt(msg, key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, tagLength });
 const sEncrypted = encrypted.ciphertext.toString();
 const tag = sEncrypted.slice(sEncrypted.length - tagLength / 8 * 2, sEncrypted.length);
 const hash = sEncrypted.slice(0, sEncrypted.length - tag.length);
 ```
 
-メッセージを復号するには、ハッシュとタグを連結する必要があります：
+メッセージを復号するには、ハッシュとタグを連結する必要があります。
 
 ```js
 import C from "tealium/crypto";
@@ -142,103 +142,213 @@ const key = C.enc.Hex.parse("0123456789ABCDEF11113333555577770123456789ABCDEF111
 const iv = C.enc.Hex.parse("0102030405060708090A0B0C");
 const aad = C.enc.Utf8.parse("additional authentication data");
 const tagLength = 120;
-// third-partyで暗号化
+// encrypt with third-party
 const encrypted = CryptoES.AES.encrypt(msg, key, { iv, mode: CryptoES.mode.GCM, padding: CryptoES.pad.NoPadding });
 const tag = CryptoES.mode.GCM.mac(CryptoES.algo.AES, key, encrypted.iv, aad, encrypted.ciphertext, tagLength / 8);
-// tealium/cryptoで復号
+// decrypt with tealium/crypto
 const decrypted = C.AES.decrypt(C.lib.CipherParams.create({ ciphertext: C.enc.Hex.parse(encrypted.ciphertext.toString() + tag) }), key, { iv, mode: C.mode.GCM, padding: C.pad.NoPadding, aad, tagLength });
 ```
 #### CRC32
 
-CRC32は`crypto-es`の拡張機能として追加され、`index.js`または名前付きインポートで利用可能です：
+CRC32 は `crypto-es` の拡張として追加されており、`index.js` または名前付きインポートから利用できます。
 
 ```js
 import C from "tealium/crypto"; // C.CRC32
 import { CRC32 } from "tealium/crypto/lib/crc32.js";
 ```
 
-どちらの場合も、関数はデータを表す引数を取ります：
+どちらの場合も、関数はデータを表す引数を受け取ります。
 
-* `CRC32.buf(byte array)`: 8ビット符号なし整数のシーケンス（Uint8Arrayまたはバイトの配列）を期待します。
-* `CRC32.bstr(binary string)`: バイナリ文字列を期待し、バイトiはUCS-2文字の下位バイトです：`str.charCodeAt(i) & 0xFF`
-* `CRC32.str(string)`: 標準的なJavaScript文字列を期待し、UTF-8エンコーディングのハッシュを計算します。
-* `CRC32.reset()`: インスタンスは状態を持っており、ハッシュ計算後に手動でリセットが必要です。
-* `CRC32.valueOf()`: 状態の32ビット符号付き整数表現を返します。
+* `CRC32.buf(byte array)`: 8 ビット符号なし整数のシーケンス（Uint8Array またはバイト配列）を受け取ります。
+* `CRC32.bstr(binary string)`: バイト i が UCS-2 文字の下位バイトであるバイナリ文字列を受け取ります：`str.charCodeAt(i) & 0xFF`
+* `CRC32.str(string)`: 標準の JavaScript 文字列を受け取り、その UTF-8 エンコーディングのハッシュを計算します。
+* `CRC32.reset()`: インスタンスは状態を保持するため、ハッシュ計算後に手動でリセットする必要があります。
+* `CRC32.valueOf()`: 状態を表す 32 ビット符号付き整数を返します。
 
-使用法：
+使用方法：
 
 ```js
 import { CRC32 } from "tealium/crypto/lib/crc32.js";
-// 単一の反復
+// single iteration
 const hash1 = CRC32.str("input").valueOf();
 CRC32.reset();
-// 複数
+// multiple
 const hash2 = CRC32
     .buf([11, 111, 88])
     .str("try")
     .bstr("more")
     .valueOf();
 CRC32.reset();
-// 符号なしに変換
+// convert to unsigned
 const uHash1 = hash1 >>> 0;
-// 16進数に変換
+// convert to hex
 const hHash1 = (hash1 >>> 0).toString(16);
 ```
 
 ### エラーメッセージ
 
-Tealiumの暗号ライブラリは`crypto-es`よりも入力データに対して厳格なため、無効な使用の場合に以下のエラーが発生する可能性があります：
+Tealium 暗号化ライブラリは、入力データに関して `crypto-es` より厳密であるため、不正な使用方法の場合には次のエラーが発生する可能性があります。
 
 | エラー | 説明 |
 |-------|-------------|
-| `Invalid AES key length`| AES暗号のキーサイズは32バイトでなければなりません。 |
-| `Wrong key size`| DES暗号のキーサイズは8バイト、TripleDESの場合は16バイトでなければなりません。 |
-| `Wrong IV length`| 一部の暗号とモードではIVサイズが厳格です（DES、TripleDES、OFB）正しく指定する必要があります。 |
-| `Input length not multiple of 16 bytes`| `NoPadding`パッドが使用され、入力は正しくパディングされている必要があります。 |
-| `Parameters missing`| その構成オブジェクトは有効ではありません。たとえば、必須IVモード（OFB、CFB）の`iv`パラメータが欠けています。 |
-| `No IV set when one expected`| BouncyCastleで実装されたモードで必須のIV（CTR）の構成オブジェクトに`iv`パラメータが欠けています。 |
+| `Invalid AES key length`| AES 暗号のキーサイズは 32 バイトである必要があります。 |
+| `Wrong key size`| DES 暗号のキーサイズは 8 バイト、TripleDES のキーサイズは 16 バイトである必要があります。 |
+| `Wrong IV length`| 一部の暗号およびモード（DES、TripleDES、OFB）では IV サイズが厳密に定められているため、正しく指定する必要があります。 |
+| `Input length not multiple of 16 bytes`| `NoPadding` パディングが使用されているため、入力を正しくパディングする必要があります。 |
+| `Parameters missing`| 構成オブジェクトが無効です。たとえば、IV が必須のモード（OFB、CFB）で `iv` パラメータが指定されていません。 |
+| `No IV set when one expected`| BouncyCastle で実装された、IV が必須のモード（CTR）の構成オブジェクトに `iv` パラメータがありません。 |
 
-### Crypto-ESからTealium暗号ライブラリへの移行
+### Crypto-ES から Tealium 暗号化ライブラリへの移行
 
-`tealium/crypto`ライブラリは`crypto-es`と同じインターフェースを提供し、直接の置き換えとして使用できます。本番環境で予期しない動作のリスクを最小限に抑えるために、以下のアプローチのいずれかを使用して移行をテストしてください：
+`tealium/crypto` ライブラリは `crypto-es` と同じインターフェイスを提供しており、直接置き換えて使用できます。移行時に本番環境で予期しない動作が発生するリスクを最小限に抑えるため、次のいずれかの方法で移行をテストしてください。
 
-* **`tealium/crypto`ライブラリを使用したサンドボックス環境（推奨）**  
-サンドボックス環境で関数を複製し、インポートを`tealium/crypto`を使用するように更新します。テストオーディエンスまたはフィードに限定して呼び出しを行い、ライブトラフィックに影響を与えることなく関数が期待通りに動作することを確認します。
+* **サンドボックス環境で `tealium/crypto` ライブラリを使用する（推奨）**  
+サンドボックス環境で関数を複製し、インポートを更新して `tealium/crypto` を使用します。呼び出し対象をテスト用のオーディエンスまたはフィードに限定し、ライブトラフィックに影響を与えずに関数が期待どおりに動作することを確認します。
 
-* **既存の関数と並行して`tealium/crypto`バージョンを実行する**  
-関数のコピーを作成し、インポートを`tealium/crypto`を使用するように更新します。トラフィックの一部をそれにルーティングして、実際の条件下での直接比較を行います。このアプローチは1対1の出力とパフォーマンスの検証を可能にしますが、リソース使用とコストが増加する可能性があります。テスト後は不要なシステム負荷を避けるために重複をオフにします。
+* **既存の関数と並行して `tealium/crypto` バージョンを実行する**  
+関数のコピーを作成し、インポートを更新して `tealium/crypto` を使用します。実環境の条件下で直接比較するために、トラフィックの一部をこの関数にルーティングします。この方法では、出力とパフォーマンスを 1 対 1 で検証できますが、リソース使用量とコストが増加する可能性があります。不要なシステム負荷を避けるため、テスト後は複製した関数を無効にしてください。
 
-テストペイロードを使用した**テスト**タブは、本番負荷をシミュレートせず、信頼性のあるパフォーマンスの洞察を提供しないため、使用を避けてください。
+テスト用ペイロードを使用する **Test** タブは、本番環境の負荷をシミュレートできず、信頼できるパフォーマンス情報も得られないため、使用しないでください。
 
-検証後、完全に移行し、`crypto-es`の以前のバージョンをオフにするか削除してください。
-### コンソールAPIの出力
+検証後、完全に移行し、`crypto-es` を使用している以前のバージョンを無効化または削除できます。
 
-ほとんどのコンソール関数の出力は、**ログ**表示の**メッセージ**セクションに表示されます。例えば：
+## Crypto-ES.js（レガシー）
+
+
+<blockquote>
+これは暗号化ライブラリのレガシーバージョンです。新しいユースケースには、同じインターフェイスに加えてパフォーマンスの向上とモジュール単位のインポートを提供する [Tealium 暗号化ライブラリ](#crypto)を参照してください。
+</blockquote>
+
+
+Crypto-ES.js は、ハッシュ、エンコーディング、および暗号化アルゴリズムを提供する暗号化アルゴリズムライブラリです。詳細については、[NPM: Crypto-ES](https://www.npmjs.com/package/crypto-es/v/1.2.7)を参照してください。
+
+次の例は、テキストを暗号化および復号する方法を示しています。
+
+```js
+import CryptoES from 'crypto-es';
+
+var encrypted = CryptoES.AES.encrypt("Message", "Secret Passphrase");
+console.log(encrypted);
+var decrypted = CryptoES.AES.decrypt(encrypted, "Secret Passphrase");
+console.log(CryptoES.enc.Utf8.stringify(decrypted));
+```
+
+### AES 暗号化の GCM モード
+
+Crypto-ES ライブラリは、AES 暗号化の GCM モードをサポートしています。次の例は、AES GCM モードを使用してテキストを暗号化および復号する方法を示しています。
+
+```js
+// import as part of crypto-es lib
+import CryptoES from "crypto-es";
+// import as named export to safe computing resources (doesn't work if whole library is imported as above)
+import { GCM } from "crypto-es/lib/mode-gcm.js";
+
+// Encrypt
+const msg = "Original Message";
+const key = CryptoES.enc.Hex.parse("0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777");
+const iv = CryptoES.enc.Hex.parse("0102030405060708090A0B0C");
+const authData = CryptoES.enc.Utf8.parse("Additional authentication data");
+const encrypted = CryptoES.AES.encrypt(msg, key, { iv, mode: CryptoES.mode.GCM });
+const authTag = CryptoES.mode.GCM.mac(CryptoES.algo.AES, key, encrypted.iv,  authData, encrypted.ciphertext, 16);
+const enveloped = encrypted.iv.toString() + encrypted.ciphertext.toString() + authTag.toString();
+console.log("encrypted: ", encrypted);
+console.log("authTag: ", authTag);
+console.log("enveloped: ", enveloped);
+
+// Decrypt
+const decrypted = CryptoES.AES.decrypt(encrypted, key, { iv, mode: CryptoES.mode.GCM });
+console.log("decrypted: ", decrypted.toString(CryptoES.enc.Utf8));
+```
+
+### SHA3 アルゴリズム
+
+Crypto-ES ライブラリは、オリジナルの SHA3 アルゴリズムを提供します。次の例は、SHA3 アルゴリズムの使用方法を示しています。
+
+```js
+import { SHA3 } from "crypto-es/lib/sha3-original.js";
+
+const hash = SHA3("Original Message", { outputLength: 256 });
+console.log("hash: ", hash);
+```
+
+### CRC32 アルゴリズム
+
+Crypto-ES ライブラリは、CRC32 アルゴリズムを提供します。各 CRC32 関数は、データを表す引数と、開始シード（ローリング CRC 用）を表す省略可能な第 2 引数を受け取ります。戻り値は 32 ビット符号付き整数です。サポートされている関数は次のとおりです。
+
+* `CRC32.buf(byte array[, seed])` &ndash; 第 1 引数は、8 ビット符号なし整数のシーケンス（`Uint8Array` またはバイト配列）です。
+* `CRC32.bstr(binary string[, seed])` &ndash; 第 1 引数は、バイト `i` が UCS-2 文字の下位バイトであるバイナリ文字列です：`str.charCodeAt(i) & 0xFF`
+* `CRC32.str(string[, seed])` &ndash; 第 1 引数は標準の JS 文字列で、その UTF-8 エンコーディングのハッシュを計算します。
+
+次の例は、CRC32 アルゴリズムの使用方法を示しています。
+
+```js
+import CRC32 from "crypto-es/lib/crc32.js";
+
+const hash = CRC32.str("Original Message");
+console.log("hex value: ", (hash >>> 0).toString(16));
+```
+
+## TweetNaCl.js
+
+TweetNaCl は、秘密鍵による認証付き暗号化、公開鍵による認証付き暗号化、ハッシュ、および公開鍵署名を実装する暗号化ライブラリです。TweetNaCl ライブラリは、イベント関数と訪問関数でのみ使用できます。
+
+次のように、TweetNaCl.js モジュールをイベント関数または訪問関数にインポートします。
+
+`import nacl from 'tweetnacl';`
+
+詳細については、[NPM TweetNaCl.js](https://www.npmjs.com/package/tweetnacl)を参照してください。
+
+## JavaScript コンソール API
+
+JavaScript コンソール関数を使用して、メッセージとエラーをログに書き込みます。
+
+`console.log()`、`console.info(),`、および `console.debug()` のログメッセージは、情報出力ストリームに送られます。`console.warn()` および `console.error()` のログメッセージは、エラー出力ストリームに送られます。
+
+
+<blockquote>
+情報出力ストリームとエラー出力ストリームは、それぞれ関数呼び出しごとに 10 KB のデータに制限されています。ログメッセージがこの上限を超える場合、ログファイルには最初の 10 KB のデータが記録され、末尾に次のメッセージが表示されます：<br>
+`Output was too large and has been truncated.`
+</blockquote>
+
+
+コンソールオブジェクトには、関数でサポートされるその他のメソッドも用意されています。詳細については、コンソールオブジェクトに関する JavaScript の[仕様](https://developer.mozilla.org/en-US/docs/Web/API/Console "https://developer.mozilla.org/en-US/docs/Web/API/Console")を参照してください。次の追加コンソールメソッドがサポートされています。
+
+* `assert()`
+* `count()`
+* `countReset()`
+* `group()`
+* `groupEnd()`
+* `time()`
+* `timeEnd()`
+* `timeLog()`
+### Console API の出力
+
+ほとんどのコンソール関数からの出力は、**Logs** 表示の **Messages** セクションに表示されます。例：
 
 ```
-メッセージ：
+Messages:
 
-関数開始
+Function Start
 ```
 
-`console.warn()` と `console.error()` の出力は、以下のように **メッセージ** 出力の下にある **エラー** セクションに表示されます：
+`console.warn()` および `console.error()` からの出力は、次のように **Messages** の出力の下にある **Errors** セクションに表示されます。
 
 ```
-エラー：
+Errors:
 
-警告 - ページが見つかりません
-エラー - 変数が定義されていません
+Warning - page not found
+Error - variable not defined
 ```
 
 ### console.assert()
 
-EventStreamで関数がトリガーされ、次のように `console.assert()` が呼び出された場合：
+Event Streaming で関数がトリガーされ、次のように `console.assert()` が呼び出された場合：
 
 ```
 console.assert(visitor, "visitor not defined");
 ```
 
-`visitor` オブジェクトはトリガーがAudienceStreamの場合にのみ定義されるため、アサーションは偽となり、出力は次のようになります：
+`visitor` オブジェクトは、トリガーが Customer Data Platform（CDP）の場合にのみ定義されるため、アサーションは失敗し、出力は次のようになります。
 
 ```
 Assertion failed: visitor not defined
@@ -246,9 +356,9 @@ Assertion failed: visitor not defined
 
 ### console.group() と console.groupEnd()
 
-`console.group()` と `console.groupEnd()` は、ログの関連メッセージを整形するために使用できます。`console.group()` の後に続く `console.log()` メッセージはログでインデントされます。インデントは `console.groupEnd()` が呼び出された後に終了します。
+`console.group()` と `console.groupEnd() ` を使用すると、ログ内の関連するメッセージを書式構成できます。`console.group()` の後に続く `console.log()` メッセージは、ログ内でインデントされます。`console.groupEnd()` が呼び出されると、インデントは終了します。
 
-関数コードに次のようなものが含まれている場合：
+関数コードに次の内容が含まれている場合：
 
 ```js
 console.group("Event info:");
@@ -257,31 +367,31 @@ console.log("Visitor ID: ", event.visitor_id);
 console.groupEnd();
 ```
 
-出力は次のようになります：
+出力は次のようになります。
 
 ```
-イベント情報：
-  アカウント： Acme Mfg
-  ビジターID： 017407a1d9e50019633c3cea732703079011607100bd6
+Event info:
+  Account:  Acme Mfg
+  Visitor ID:  017407a1d9e50019633c3cea732703079011607100bd6
 ```
 
 ### console.time() と console.timeLog()
 
-関数が `console.time()` を呼び出すと、出力はありません。その文字列で `console.time()` が呼び出された時間が記録されます。同じ文字列で `console.timeLog()` が呼び出されると、指定された文字列に続いて `console.time()` が呼び出されてからの経過時間が出力されます：
+関数が `console.time()` を呼び出しても、出力はありません。その文字列を指定して `console.time()` が呼び出された時刻が記録されます。同じ文字列（この例では `"Current Time: "`）を指定して `console.timeLog()` が呼び出されると、指定した文字列に続いて、`console.time()` が呼び出されてからの経過時間が出力されます。
 
 ```
-現在の時間：：1ms
+Current Time: : 1ms
 ```
 
-関数が `console.timeEnd()` を呼び出した後、`console.time()` が再び呼び出されるまで `console.timeLog()` を呼び出すことはできません。
+関数が `console.timeEnd()` を呼び出した後は、`console.time()` が再度呼び出されるまで `console.timeLog()` を呼び出すことはできません。
 
 ### console.count() と console.countReset()
 
-同じ文字列で `console.count()` が呼び出されるたびに、カウントが増加します。`console.count()` の出力は、文字列に続いてカウントです。`console.count("現在のカウント：");` が2回呼び出された場合、出力は次のようになります：
+同じ文字列を指定して `console.count()` が呼び出されるたびに、カウントが増加します。`console.count()` の出力は、文字列の後にカウントが続きます。`console.count("Current count: "); ` が2回呼び出された場合、出力は次のようになります。
 
 ```
-現在のカウント：：1
-現在のカウント：：2
+Current count: : 1
+Current count: : 2
 ```
 
-`console.countReset()` は、指定された文字列のカウントをゼロにリセットします。
+`console.countReset()` は、指定した文字列のカウントをゼロにリセットします。

@@ -23,7 +23,7 @@ Use the following articles to get started uploading and managing your files:
 
 ## Usage reports
 
-After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see [Understanding the usage report](https://docs.tealium.com/understanding-the-usage-report/).
+After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into Customer Data Platform (CDP). For more information, see [Understanding the usage report](https://docs.tealium.com/understanding-the-usage-report/).
 
 ## File upload errors
 
@@ -36,5 +36,5 @@ When a file process failure occurs, the file is ignored. The system does not att
 
 
 <blockquote>
-If AudienceStream fails to copy a file using the file transfer service, it will retry in 10 minutes.
+If CDP fails to copy a file using the file transfer service, it will retry in 10 minutes.
 </blockquote>

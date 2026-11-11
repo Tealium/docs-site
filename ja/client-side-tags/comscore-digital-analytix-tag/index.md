@@ -3,12 +3,12 @@ title: comScore Digital Analytixタグ構成ガイド
 description: この記事では、comScore Digital Analytixタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* comScoreは現在、GDPRに準拠しています。訪問の同意を示すには、`cs_ucfr`パラメータを0（同意なし）または1（同意）に構成します。デフォルトでは`cs_ucfrパラメータ`は0に構成されています。このパラメータはマッピングを通じて構成できます。この機能を利用するためには、このタグのテンプレートを更新する必要があるかもしれません。
-* 追加の`c-parameters`を追加するためにマッピングを使用します。
-* 注文IDがE-Commerce拡張機能を介して構成されると、注文追跡が自動的にトリガーされます。
-* 次のE-Commerce拡張機能の値をサポートしています：
+* comScoreは現在、GDPRに準拠しています。`cs_ucfr`パラメータを0（同意なし）または1（同意あり）に構成することで、訪問の同意を示すことができます。デフォルトでは、`cs_ucfr parameter`は0に構成されています。このパラメータはマッピングを使用して構成できます。この機能を利用するには、このタグのテンプレートを更新する必要がある場合があります。
+* マッピングを使用して、追加の`c-parameters`を指定します。
+* Eコマース拡張機能によって注文IDが構成されると、注文トラッキングが自動的にトリガーされます。
+* 以下のEコマース拡張機能の値をサポートしています。
     * 注文ID
     * 送料
     * 顧客ID
@@ -21,25 +21,25 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳しくは、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-以下の構成を行います：
+以下の構成を行います。
 
-* **クライアントID**：あなたのcomScoreクライアントID（c2）
-* **Stream Senseビデオトラッキング**： 
-* **フォーム識別子**：フォームの測定を有効にするためにフォームIDまたは名前を入力します。すべてのフォームを測定するには*を入力します。隠しフォームフィールドの測定にはマッピングを使用します。フォームトラッキングを無効にするには、このフィールドを空白にします。
+* **クライアントID**：comScoreのクライアントID（c2）
+* **Stream Sense動画トラッキング**：
+* **フォーム識別子**：フォーム測定を有効にするには、フォームIDまたは名前を入力します。すべてのフォームを測定するには、*を入力します。非表示のフォームフィールドを測定するには、マッピングを使用します。フォームトラッキングを無効にするには、このフィールドを空白のままにします。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳しくは、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングでは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳しくは、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -48,13 +48,13 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 | `ns_type` | <ul><li>NSタイプ</li><li>文字列</li></ul> |
 | `form` | <ul><li>フォーム識別子</li></ul> |
 | `form_normal`  | <ul><li>通常のフォームフィールド</li><li>配列</li></ul> |
-| `form_hidden`  | <ul><li>隠しフォームフィールド</li><li> 配列</li></ul> |
-| `form_submit`  | <ul><li>送信イベントを報告</li><li> ブール値</li></ul> |
-| `form_abandon`  | <ul><li>放棄イベントを報告</li><li>ブール値</li></ul> |
-| `form_failure`  | <ul><li>失敗イベントを報告</li><li>ブール値</li></ul> |
+| `form_hidden`  | <ul><li>非表示のフォームフィールド</li><li>配列</li></ul> |
+| `form_submit`  | <ul><li>送信イベントをレポート</li><li>ブール値</li></ul> |
+| `form_abandon`  | <ul><li>離脱イベントをレポート</li><li>ブール値</li></ul> |
+| `form_failure`  | <ul><li>失敗イベントをレポート</li><li>ブール値</li></ul> |
 | `cs_ucfr`  | <ul><li>同意状態</li><li>[0/1]</li></ul> |
 
-### E-Commerce
+### Eコマース
 
 | 変数 | 説明 |
 |:---------|:------------|
@@ -66,6 +66,4 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-digital-analytix-tag/
 | `product_category` | <ul><li>カテゴリのリスト</li><li>配列</li><li>`_ccat`を上書き</li></ul> |
 | `product_subcategory` | <ul><li>サブカテゴリのリスト</li><li>配列</li><li>`_ccat`を上書き</li></ul> |
 | `product_quantity` | <ul><li>数量のリスト</li><li>配列</li><li>`_cquan`を上書き</li></ul> |
-| `product_unit_price` | <ul><li>価格のリスト</li><li>配列</li><li>`_cprice`を上書き</li></ul> |   
-
-
+| `product_unit_price` | <ul><li>価格のリスト</li><li>配列</li><li>`_cprice`を上書き</li></ul> |

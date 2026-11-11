@@ -15,7 +15,7 @@ Consent integrations requires `utag.js` version 4.49 or later.
 
 To enable support in earlier versions of `utag.js`, edit the **uTag Loader** template and add `##UTCM##` under the `##UTGEN##` publish engine flag.
 
-![](https://docs.tealium.com/images/iq-tag-management/utcm-utag-loader-template.png)
+![](https://docs.tealium.com/images/tag-management/utcm-utag-loader-template.png)
 
 For more information about how to update the **uTag Loader** template, see [Update a template](https://docs.tealium.com/manage-templates/#update-a-template).
 

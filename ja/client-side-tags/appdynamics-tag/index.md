@@ -1,68 +1,67 @@
 ---
 title: AppDynamicsタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAppDynamicsタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでAppDynamicsタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/appdynamics-tag/
 ---
-AppDynamicsは、ソフトウェアからインフラストラクチャ、ビジネスジャーニーまで、ビジネスパフォーマンスを理解し最適化するためのアプリケーションパフォーマンス管理（APM）プラットフォームです。
+AppDynamicsは、ソフトウェアからインフラストラクチャ、ビジネスジャーニーに至るまで、ビジネスパフォーマンスの把握と最適化を支援するアプリケーションパフォーマンス管理（APM）プラットフォームです。
 
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して、標準の構成値を動的に上書きします。
+* マッピングを使用すると、標準の構成値を動的に上書きできます。
 
-## タグ構成
+## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の項目を構成します。
 
-* **App Key**: AppDynamicsアカウントからのEUMアプリキー。
+* **App Key**：AppDynamicsアカウントのEUMアプリキー。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
-### タグ構成
+### タグの構成
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-| App Key   | String | AppDynamicsアカウントからのEUMアプリキー（タグ構成を上書きします）。 |
+| App Key   | 文字列 | AppDynamicsアカウントのEUMアプリキー（タグ構成を上書きします）。 |
 
 ### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `xhr_url`  | String | あなたのXHR URL |
-|  `error_msg`  | String | エラーメッセージ | 
-|  `error_line`  | Number | エラーが発生したソースコードの行番号。 |
-|  `error_stack`  | String | エラーが発生したときのスタックトレース。 |
+|  `xhr_url`  | 文字列 | XHR URL |
+|  `error_msg`  | 文字列 | エラーメッセージ | 
+|  `error_line`  | 数値 | エラーが発生したソースコード内の行番号。 |
+|  `error_stack`  | 文字列 | エラー発生時のスタックトレース。 |
 
 ### イベント
 
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `VPageView`  |仮想ページビューの段階を追跡します。 |
+| `VPageView`  |仮想ページビューの各段階を追跡します。 |
 | `Ajax`| Ajaxリクエストを追跡します。 |
 | `Error` | エラーを追跡します。 |
 
 ### イベント固有のパラメータ
 
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `xhr_url` | あなたのXHR URL。  |
+| `xhr_url` | XHR URL。 |
 | `error_msg` | エラーメッセージ。 |
-| `error_line` | エラーが発生したソースコードの行番号。 |
-| `error_stack` | エラーが発生したときのスタックトレース。 |  |
-| `VPageView` | 仮想ページビューの段階を追跡します。 |
+| `error_line` | エラーが発生したソースコード内の行番号。 |
+| `error_stack` | エラー発生時のスタックトレース。 |  |
+| `VPageView` | 仮想ページビューの各段階を追跡します。 |
 | `Ajax` | Ajaxリクエストを追跡します。 |
 | `Error`| エラーを追跡します。 |
-

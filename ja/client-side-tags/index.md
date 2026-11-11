@@ -1,14 +1,14 @@
 ---
 title: クライアントサイドタグ
-description: Tealiumは数百のクライアントサイドタグと統合しています。お好みのベンダーを見つけて、より良い顧客体験を構築し始めましょう。
+description: Tealium は、数百種類のクライアントサイドタグと連携します。ご希望のベンダーを見つけ、より優れた顧客体験の構築を始めましょう。
 url: https://docs.tealium.com/ja/client-side-tags/
 ---
 
 ![](https://docs.tealium.com/images/icons/icon-forward.svg)
 
-#### スタートガイド
+#### はじめに
 
-クライアントサイドベンダータグの管理方法を学びます。
+クライアントサイドのベンダータグを管理する方法について説明します。
 
 
 
@@ -16,18 +16,18 @@ url: https://docs.tealium.com/ja/client-side-tags/
 
 #### データマッピング
 
-データレイヤー変数とイベントのマッピング方法を学びます。
+データレイヤー変数とイベントをマッピングする方法について説明します。
 
 
 
 ![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
-#### 最近のタグ
+#### 最近更新されたタグ
 
-最近更新されたクライアントサイドの統合を確認します。
+最近更新されたクライアントサイド連携を確認できます。
 
 
-## Tealiumタグ
+## Tealium タグ
 
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
@@ -38,19 +38,19 @@ Tealium Collect
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
-Tealiumカスタムコンテナ
+Tealium Custom Container
 
 
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
-Tealiumジェネリックタグ
+Tealium Generic Tag
 
 
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
 
-Tealiumピクセルコンテナ
+Tealium Pixel Container
 
 
 ## 人気のタグ
@@ -113,4 +113,3 @@ Floodlight (gtag.js)
 ![](https://docs.tealium.com/images/integrations/thetradedesk-icon.jpg)
 
 The Trade Desk Universal Pixel
-

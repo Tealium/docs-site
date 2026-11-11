@@ -5,11 +5,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/iterable/
 ---## Prerequisites
 
 * [Iterable account](https://app.iterable.com/login)
-* Tealium EventStream or Tealium AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 
 ## How it works
 
-Iterable offers a [Webhook API](https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks) that sends outgoing requests to an endpoint that you specify. These requests inform Tealium EventStream about activity in your Iterable account. When you add the Iterable data source a unique endpoint is generated. This endpoint is used to configure the Iterable webhook.
+Iterable offers a [Webhook API](https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks) that sends outgoing requests to an endpoint that you specify. These requests inform Event Streaming about activity in your Iterable account. When you add the Iterable data source a unique endpoint is generated. This endpoint is used to configure the Iterable webhook.
 
 ## Iterable data source
 

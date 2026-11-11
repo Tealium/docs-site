@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/rtb-house-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **RTB House Partner Key**  
@@ -15,9 +15,11 @@ After adding the connector, configure the following settings:
 * **RTB House Region**  
   * The regional subdomain your RTB House account is associated with. This ensures proper routing of events and requests. If you're unsure of your region, contact your RTB House account manager.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event | ✗ | ✓ |
 

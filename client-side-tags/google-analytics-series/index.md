@@ -1,6 +1,6 @@
 ---
 title: Google Analytics (Series)
-description: A series of posts about setting up Google Analytics in Tealium iQ Tag Management.
+description: A series of posts about setting up Google Analytics in Tag Management.
 url: https://docs.tealium.com/client-side-tags/google-analytics-series/
 ---
 

@@ -3,17 +3,17 @@ title: Install options for web
 description: This article describes the installation options for Tealium visitor profile management.
 url: https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/install/
 ---
-This article is for customers that want to install Tealium, but do not already use Tealium iQ Tag Management or Tealium event data activation.
+This article is for customers that want to install Tealium, but do not already use Tag Management or Tealium event data activation.
 
 ## Option 1: Tealium Universal Tag + Tealium Collect
 
-If you are not already using a tag manager, we recommend using a basic setup of Tealium iQ Tag Management and the Tealium Collect tag to send data to the platform.
+If you are not already using a tag manager, we recommend using a basic setup of Tag Management and the Tealium Collect tag to send data to the platform.
 
-Tealium iQ requires an installation of the Universal Tag (`utag.js`) on all pages of your site and the Tealium Collect tag, which is easily added with a few clicks from the tag marketplace. Additional benefits of this option include access to the [extension marketplace](https://docs.tealium.com/extensions-list/), for preparing and transforming your data before it's sent to the platform, and the use of [Web Companion](https://docs.tealium.com/web-companion/) and [Tealium Tools](https://docs.tealium.com/tealium-tools-browser-extension/) to validate and extend your installation.
+Tag Management requires an installation of the Universal Tag (`utag.js`) on all pages of your site and the Tealium Collect tag, which is easily added with a few clicks from the tag marketplace. Additional benefits of this option include access to the [extension marketplace](https://docs.tealium.com/extensions-list/), for preparing and transforming your data before it's sent to the platform, and the use of [Web Companion](https://docs.tealium.com/web-companion/) and [Tealium Tools](https://docs.tealium.com/tealium-tools-browser-extension/) to validate and extend your installation.
 
 Installation components:
 
-* [Tealium iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
+* [Tag Management](https://docs.tealium.com/what-is-tealium-tag-management/)
 * [Tealium Universal Tag (`utag.js`)](https://docs.tealium.com/platforms/javascript/install/)
 * [Tealium Collect Tag](https://docs.tealium.com/tealium-collect-tag/)
 
@@ -27,13 +27,13 @@ Installation components:
 
 ## Option 3: Google Tag Manager + Tealium Universal Tag
 
-If you prefer (or are required) to deploy vendors using Google Tag Manager, we recommend deploying the Tealium Universal Tag as a Custom HTML Tag in Google Tag Manager. This approach is also recommended if your Google Tag Manager implementation is not tracking behaviors and data points that are critical to your business, such as conversion funnel activity or ecommerce checkout steps. By deploying the Tealium Universal Tag you can take advantage of the full benefits of iQ Tag Management to fully implement advanced event tracking and supplemental data layer variables.
+If you prefer (or are required) to deploy vendors using Google Tag Manager, we recommend deploying the Tealium Universal Tag as a Custom HTML Tag in Google Tag Manager. This approach is also recommended if your Google Tag Manager implementation is not tracking behaviors and data points that are critical to your business, such as conversion funnel activity or ecommerce checkout steps. By deploying the Tealium Universal Tag you can take advantage of the full benefits of Tag Management to fully implement advanced event tracking and supplemental data layer variables.
 
-This approach provides the advantages of deploying iQ Tag Management, as well as the ability to utilize existing event tracking in Google Tag Manager to expedite the installation.
+This approach provides the advantages of deploying Tag Management, as well as the ability to utilize existing event tracking in Google Tag Manager to expedite the installation.
 
 Installation components:
 
-* [Tealium iQ Tag Management](https://docs.tealium.com/what-is-tealium-iq/)
+* [Tag Management](https://docs.tealium.com/what-is-tealium-tag-management/)
 * [Custom HTML Tag in Google Tag Manager](https://support.google.com/tagmanager/answer/6107167?hl=en)
 
 ## Learn more

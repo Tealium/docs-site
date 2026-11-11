@@ -1,5 +1,5 @@
 ---
-title: データレコード機能
-description: CloudStreamプロファイル内の関数を使用して他のシステムからデータを取得し、データを増強するか、他のエンドポイントにデータを送信します。
+title: データレコード関数
+description: Data Cloud Activationプロファイル内で関数を使用して、他のシステムからデータを取得したり、データを拡張したり、他のエンドポイントにデータを送信したりします。
 url: https://docs.tealium.com/ja/server-side/functions/data-record-functions/
 ---

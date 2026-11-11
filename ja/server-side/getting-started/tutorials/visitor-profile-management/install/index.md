@@ -1,49 +1,49 @@
 ---
-title: Web用インストールオプション
-description: この記事では、Tealium AudienceStream CDPのインストールオプションについて説明します。
+title: Web向けのインストールオプション
+description: この記事では、Tealiumの訪問プロファイル管理のインストールオプションについて説明します。
 url: https://docs.tealium.com/ja/server-side/getting-started/tutorials/visitor-profile-management/install/
 ---
-この記事は、Tealium iQタグ管理やTealium EventStream APIハブをまだ使用していないお客様がTealium AudienceStreamをインストールしたい場合のためのものです。
+この記事は、Tealiumをインストールしたいものの、タグ管理またはTealiumイベントデータアクティベーションをまだ使用していないお客様を対象としています。
 
-## オプション1: Tealium Universal Tag + Tealium Collect
+## オプション1：Tealium Universal Tag + Tealium Collect
 
-タグマネージャーをまだ使用していない場合は、Tealium iQタグ管理とTealium Collectタグを使用した基本的なセットアップをお勧めします。これにより、データをAudienceStreamに送信できます。
+タグマネージャーをまだ使用していない場合は、タグ管理の基本構成とTealium Collectタグを使用して、プラットフォームにデータを送信することをお勧めします。
 
-Tealium iQは、サイトのすべてのページにUniversal Tag（`utag.js`）をインストールし、タグマーケットプレイスから数クリックで簡単に追加できるTealium Collectタグが必要です。このオプションの追加利点には、[拡張マーケットプレイス](https://docs.tealium.com/extensions-list/)へのアクセスが含まれ、AudienceStreamに送信する前にデータの準備や変換を行うことができます。また、[Web Companion](https://docs.tealium.com/web-companion/)や[Tealium Tools](https://docs.tealium.com/tealium-tools-browser-extension/)を使用してインストールを検証し、拡張することもできます。
+タグ管理を使用するには、サイトのすべてのページにUniversal Tag（`utag.js`）をインストールし、タグマーケットプレイスから数回クリックするだけで簡単に追加できるTealium Collectタグを導入する必要があります。このオプションには、プラットフォームへ送信する前にデータを準備および変換するための[拡張機能マーケットプレイス](https://docs.tealium.com/extensions-list/)へのアクセスや、インストールの検証と拡張に使用できる[Web Companion](https://docs.tealium.com/web-companion/)および[Tealium Tools](https://docs.tealium.com/tealium-tools-browser-extension/)などの利点もあります。
 
-インストールコンポーネント:
+インストールコンポーネント：
 
-* [Tealium iQタグ管理](https://docs.tealium.com/what-is-tealium-iq/)
-* [Tealium Universal Tag (`utag.js`)](https://docs.tealium.com/ja/platforms/javascript/install/)
+* [タグ管理](https://docs.tealium.com/what-is-tealium-tag-management/)
+* [Tealium Universal Tag（`utag.js`）](https://docs.tealium.com/ja/platforms/javascript/install/)
 * [Tealium Collectタグ](https://docs.tealium.com/tealium-collect-tag/)
 
-## オプション2: Google Tag Manager + Tealium Collect
+## オプション2：Google Tag Manager + Tealium Collect
 
-Google Tag Managerを使用しており、データレイヤーとイベントトラッキングに満足している場合は、Google Tag Manager用Tealium Collectタグのデプロイをお勧めします。Tealium Collectタグは、Google Tag Managerによって処理されたすべてのデータ、`dataLayer`オブジェクト全体を直接AudienceStreamに送信します。
+Google Tag Managerを使用しており、現在のデータレイヤーとイベントトラッキングに満足している場合は、Google Tag Manager向けTealium Collectタグをデプロイすることをお勧めします。Tealium Collectタグは、完全な`dataLayer`オブジェクトを含め、Google Tag Managerによって処理されたすべてのデータをプラットフォームへ直接送信します。
 
-インストールコンポーネント:
+インストールコンポーネント：
 
-* [Google Tag Manager用Tealium Collect](https://docs.tealium.com/ja/platforms/google-tag-manager/)
+* [Google Tag Manager向けTealium Collect](https://docs.tealium.com/ja/platforms/google-tag-manager/)
 
-## オプション3: Google Tag Manager + Tealium Universal Tag
+## オプション3：Google Tag Manager + Tealium Universal Tag
 
-Google Tag Managerを使用してベンダーをデプロイすることを好む場合（または必要とされる場合）、Google Tag ManagerでCustom HTMLタグとしてTealium Universal Tagをデプロイすることをお勧めします。このアプローチは、Google Tag Managerの実装がビジネスにとって重要な行動やデータポイント（例えば、コンバージョンファネルの活動やeコマースのチェックアウトステップなど）を追跡していない場合にも推奨されます。Tealium Universal Tagをデプロイすることで、iQタグ管理の完全な利点を活用し、高度なイベントトラッキングと補足的なデータレイヤー変数を完全に実装することができます。
+Google Tag Managerを使用してベンダーをデプロイすることを希望する場合（またはそうする必要がある場合）は、Google Tag ManagerでTealium Universal TagをカスタムHTMLタグとしてデプロイすることをお勧めします。また、Google Tag Managerの実装で、コンバージョンファネルのアクティビティやEコマースのチェックアウト手順など、ビジネスに不可欠な行動やデータポイントをトラッキングしていない場合にも、この方法をお勧めします。Tealium Universal Tagをデプロイすると、タグ管理の利点を最大限に活用して、高度なイベントトラッキングと補足的なデータレイヤー変数を完全に実装できます。
 
-このアプローチは、iQタグ管理をデプロイする利点と、Google Tag Managerの既存のイベントトラッキングを利用してインストールを迅速化する能力を提供します。
+この方法では、タグ管理をデプロイする利点に加え、Google Tag Managerの既存のイベントトラッキングを利用してインストールを迅速化できます。
 
-インストールコンポーネント:
+インストールコンポーネント：
 
-* [Tealium iQタグ管理](https://docs.tealium.com/what-is-tealium-iq/)
-* [Google Tag ManagerのCustom HTMLタグ](https://support.google.com/tagmanager/answer/6107167?hl=en)
+* [タグ管理](https://docs.tealium.com/what-is-tealium-tag-management/)
+* [Google Tag ManagerのカスタムHTMLタグ](https://support.google.com/tagmanager/answer/6107167?hl=en)
 
-## 詳細を学ぶ
+## 詳細情報
 
-以下のリソースを利用して、実装体験を続けることができます:
+実装を引き続き進めるために、以下のリソースを利用できます。
 
-### ライブイベント
+### Live Events
 
-インストールオプションに関わらず、Tealium [Live Events]()を使用してAudienceStreamに流れ込むデータを検証します。**ライブイベント**はリアルタイムで受信データを表示するため、追跡されたイベントと収集されたデータ属性を評価することができます。
+どのインストールオプションを選択した場合でも、Tealiumの[Live Events]()を使用して、プラットフォームに流入するデータを検証します。**Live Events**では受信データがリアルタイムで表示されるため、トラッキング対象のイベントと収集したデータ属性を評価できます。
 
-### Tealium教育
+### Tealium Education
 
-[education.tealium.com](https://education.tealium.com/)でTealiumの充実したオンデマンド学習を探索し、[AudienceStream Basic eLearning course](https://education.tealium.com/learn/course/en-as-bsc-elrn)を含むコースを利用して、Tealiumの知識とスキルを向上させることができます。
+[education.tealium.com](https://education.tealium.com/)でTealiumの充実したオンデマンド学習コンテンツをご覧ください。[訪問プロファイル管理コース](https://education.tealium.com/learn/course/en-as-bsc-elrn)などのコースを活用して、Tealiumに関する知識とスキルを向上できます。

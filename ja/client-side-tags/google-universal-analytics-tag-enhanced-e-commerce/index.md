@@ -1,39 +1,39 @@
 ---
-title: Google Universal Analytics タグ拡張 E-コマース
-description: この記事は、Tealium iQ タグ管理で Google Universal Analytics タグの拡張 E コマース トラッキングを構成する概要です。
+title: Google Universal Analyticsタグの拡張eコマース
+description: この記事では、タグ管理でGoogle Universal Analyticsタグの拡張eコマーストラッキングを構成する方法の概要を説明します。
 url: https://docs.tealium.com/ja/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/
 ---
 
 <blockquote>
-2023年7月1日より、Google Universal Analytics プロパティはヒットの処理を停止しました。このタグは非推奨となり、タグマーケットプレイスではもはや利用できません。現在のタグについては、[Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)をご覧ください。
+2023年7月1日をもって、Google Universal Analyticsプロパティではヒットの処理が停止されました。このタグは非推奨となり、タグマーケットプレイスでも利用できなくなりました。現在のタグについては、[Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)を参照してください。
 </blockquote>
 
 
 ## 概要
 
-拡張 E コマースは、[Google Universal Analytics を使用した E コマース トラッキングのための高度なプラグイン](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)で、ウェブサイト上の製品とのユーザーのインタラクションを追跡します。これには、製品の印象、製品のクリック、製品詳細の表示、ショッピングカートへの製品の追加、チェックアウトプロセスの開始、トランザクション、および払い戻しが含まれます。
+拡張eコマースは、[Google Universal Analyticsを使用するeコマーストラッキングの高度なプラグイン](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)です。商品インプレッション、商品のクリック、商品詳細の表示、ショッピングカートへの商品の追加、決済プロセスの開始、トランザクション、払い戻しなど、Webサイト上の商品に対するユーザーの操作を追跡できます。
 
-## 動作方法
+## 仕組み
 
-拡張 E コマース トラッキングは、[E-コマース拡張機能](https://docs.tealium.com/e-commerce-extension/)と[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を組み合わせて[Google Universal Analytics タグ](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/)で動作します。E-コマース拡張機能は、最も一般的な E コマース データを処理し、より高度なデータはタグ構成でのデータマッピングを使用して送信されます。拡張 E コマースのアクションもタグ内でイベントとしてマッピングされます。
+拡張eコマーストラッキングは、[Google Universal Analyticsタグ](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/)で[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)と[データマッピング](https://docs.tealium.com/ja/tag-management/data-mappings/manage/)を組み合わせて動作します。Eコマース拡張機能は一般的なeコマースデータを処理し、より高度なデータはタグ構成のデータマッピングを使用して送信されます。拡張eコマースのアクションも、タグ内でイベントとしてマッピングされます。
 
-## 拡張 E コマース データとアクション
+## 拡張eコマースのデータとアクション
 
-E-コマース拡張構成は、新しい拡張 E コマース機能の多くをカバーしています。しかし、ユニバーサルデータオブジェクト (UDO) が[拡張 E コマースに必要なデータ](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data)を収容していない場合は、ウェブサイトのデータレイヤーに変数を追加する必要があります。
+Eコマース拡張機能の構成では、拡張eコマースの新機能の多くがカバーされています。ただし、Universal Data Object（UDO）が[拡張eコマースに必要なデータ](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data)に対応していない場合は、Webサイトのデータレイヤーに変数を追加する必要があります。
 
-以下は、データレイヤー変数を追加するための推奨リストと、拡張 E コマースでのそれに対応する変数です。
+以下は、追加を推奨するデータレイヤー変数と、それに対応する拡張eコマースの変数の一覧です。
 
 
 <blockquote>
-変数が E-コマース拡張列で「n/a」とマークされている場合は、タグにデータマッピングとして追加する必要があります。
+Eコマース拡張機能列で変数が「n/a」と記載されている場合、その変数をデータマッピングとしてタグに追加する必要があります。
 </blockquote>
 
 
-## 印象データ
+## インプレッションデータ
 
-印象データが UDO にマッピングされ、入力されると、`ec:addImpression` コマンドを使用して Google Analytics に渡されます。
+インプレッションデータがマッピングされ、UDOに値が構成されると、`ec:addImpression`コマンドを使用してGoogle Analyticsに渡されます。
 
-|データレイヤー変数| Google キー| E-コマース<br> 拡張|
+|データレイヤー変数| Googleキー| Eコマース<br>拡張機能|
 |---| ---| ---|
 |product\_impression\_id| id| n/a|
 |product\_impression\_name| name| n/a|
@@ -44,11 +44,11 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 |product\_impression\_position| position| n/a|
 |product\_impression\_price| price| n/a|
 
-## 製品データ
+## 商品データ
 
-製品変数は、製品データを期待するイベントで使用されます。拡張 E コマースに必要な製品データは、E-コマース拡張機能を通じて自動的にマッピングされます（下記の表を参照）。製品変数は、`ec:addProduct` コマンドを使用して Google Analytics に渡されます。
+商品変数は、商品データを必要とするすべてのイベントで使用されます。拡張eコマースで必要となる商品データは、Eコマース拡張機能によって自動的にマッピングされます（以下の表を参照）。商品変数は、`ec:addProduct`コマンドを使用してGoogle Analyticsに渡されます。
 
-|データレイヤー変数| Google キー| E-コマース<br> 拡張|
+|データレイヤー変数| Googleキー| Eコマース<br>拡張機能|
 |---| ---| ---|
 |product\_id| id| \_cprod|
 |product\_name| name| \_cprodname|
@@ -62,9 +62,9 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 ## プロモーションデータ
 
-プロモーションデータが UDO にマッピングされ、入力されると、`ec:addPromo` コマンドを使用して Google Analytics に渡されます。
+プロモーションデータがマッピングされ、UDOに値が構成されると、`ec:addPromo`コマンドを使用してGoogle Analyticsに渡されます。
 
-|データレイヤー変数| Google キー| E-コマース<br> 拡張|
+|データレイヤー変数| Googleキー| Eコマース<br>拡張機能|
 |---| ---| ---|
 |promotion\_id| id| n/a|
 |promotion\_name| name| n/a|
@@ -73,9 +73,9 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 ## アクションデータ
 
-アクション変数は、注文データを期待するイベントで入力されます。拡張 E コマースに必要な注文データは、E-コマース拡張機能を通じて自動的にマッピングされます（下記の表を参照）。アクション変数は、`ec:setAction` コマンドを使用して Google Analytics に渡されます。
+アクション変数は、注文データを必要とするすべてのイベントで値が構成されます。拡張eコマースで必要となる注文データは、Eコマース拡張機能によって自動的にマッピングされます（以下の表を参照）。アクション変数は、`ec:setAction`コマンドを使用してGoogle Analyticsに渡されます。
 
-|データレイヤー変数| Google キー| E-コマース<br> 拡張|
+|データレイヤー変数| Googleキー| Eコマース<br>拡張機能|
 |---| ---| ---|
 |order\_id| id| \_corder|
 |order\_store| affiliation| \_cstore|
@@ -84,17 +84,17 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 |order\_shipping\_amount| shipping| \_cship|
 |order\_promo\_code| coupon| \_cpromo|
 |checkout\_step| step| n/a |
-|shipping\_method,<br> shipping\_carrier,<br> payment\_method,<br> etc. <br> (various checkout options) | option| n/a |
+|shipping\_method、<br> shipping\_carrier、<br> payment\_method、<br> など <br>（各種決済オプション）| option| n/a |
 
 ## データマッピング
 
-拡張 E コマースのアクションは、データマッピングを使用してトリガーされます。イベントの変数の値が対応する拡張 E コマースアクションにマッチするデータマッピングで、Google Analytics で `ec:setAction` コマンドをトリガーします。
+拡張eコマースのアクションは、データマッピングを使用してトリガーされます。イベントのデータマッピングでは、イベント変数の値を対応する拡張eコマースのアクションに一致させます。これらのマッピングによって、Google Analyticsの`ec:setAction`コマンドがトリガーされます。
 
-データレイヤーにおける典型的なイベント変数は、`tealium_event`, `page_type`, または `event_name` です。
+データレイヤーで一般的に使用されるイベント変数は、`tealium_event`、`page_type`、`event_name`などです。
 
-以下は、期待される拡張 E コマースアクションにマッピングされる Tealium イベントの提案です：
+以下は、想定される拡張eコマースのアクションにマッピングするTealiumイベントの推奨例です。
 
-|Tealium イベント/ページタイプ| Google アクション<br> (enh\_action)|
+|Tealiumイベント／ページタイプ| Googleアクション<br>（enh\_action）|
 |---| ---|
 |product\_click| click|
 |product\_view| detail|
@@ -108,23 +108,23 @@ E-コマース拡張構成は、新しい拡張 E コマース機能の多くを
 
 ## 例
 
-拡張 E コマースアクションをトリガーするために、イベント変数をデータマッピングのイベントにマッピングします。
+拡張eコマースのアクションをトリガーするには、データマッピングでイベント変数をイベントにマッピングします。
 
-### 製品印象
+### 商品インプレッション
 
-製品印象アクションで以下のデータを送信できます：
+商品インプレッションアクションでは、以下のデータを送信できます。
 
 * IDのリスト（必須）
 * 名前のリスト
 * ブランドのリスト
 * カテゴリのリスト
-* バリアントのリスト
-* 製品リスト名
+* バリエーションのリスト
+* 商品リスト名
 
-このイベントはページロード時に `utag_data` を使用するか、`utag.view()` を使用してトリガーされ、配列内の各アイテムに対して Google Analytics で `ec:addImpression` コマンドをトリガーします。
+このイベントは、`utag_data`または`utag.view()`を使用してページ読み込み時に発生し、配列内の各項目についてGoogle Analyticsの`ec:addImpression`コマンドをトリガーします。
 
 ```js
-// 例：製品詳細ページビュー
+// EXAMPLE CODE: Product Detail Page View
 var utag_data = {
  "product_impression_id"       : ['P12345', 'P67890'],
  "product_impression_name"     : ['DV T-Shirt', 'DV Water Bottle'],
@@ -136,21 +136,21 @@ var utag_data = {
 };
 ```
 
-### 製品クリック
+### 商品のクリック
 
-製品 `click` アクションで以下のデータを送信します：
+商品の`click`アクションでは、以下のデータを送信します。
 
 * IDのリスト（必須）
 * 名前のリスト
 * ブランドのリスト
 * カテゴリのリスト
-* バリアントのリスト
-* 製品位置
+* バリエーションのリスト
+* 商品の位置
 
-このイベントは `utag.link()` を使用して追跡され、Google Analytics で `ec:addProduct` および `ec:setAction` (click) コマンドをトリガーします。
+このイベントは`utag.link()`を使用して追跡され、Google Analyticsの`ec:addProduct`コマンドと`ec:setAction`（click）コマンドをトリガーします。
 
 ```js
-// 例：製品クリック
+// EXAMPLE CODE: Product Click
 utag.link({
   "tealium_event"    : "product_click",
   "product_id"       : ['P12345'],
@@ -163,20 +163,20 @@ utag.link({
 
 ```
 
-### 製品ビュー/詳細
+### 商品の表示／詳細
 
-製品 `detail` アクションで以下のデータを送信できます：
+商品の`detail`アクションでは、以下のデータを送信できます。
 
 * IDのリスト（必須）
 * 名前のリスト
 * ブランドのリスト
 * カテゴリのリスト
-* バリアントのリスト
+* バリエーションのリスト
 
-このイベントはページロード時に `utag_data` を使用するか、`utag.view()` を使用して追跡され、Google Analytics で `ec:addProduct` および `ec:setAction` (detail) コマンドをトリガーします。
+このイベントは、`utag_data`または`utag.view()`を使用してページ読み込み時に追跡され、Google Analyticsの`ec:addProduct`コマンドと`ec:setAction`（detail）コマンドをトリガーします。
 
 ```js
-// 例：製品詳細ページビュー
+// EXAMPLE CODE: Product Detail Page View
 var utag_data = {
   "tealium_event"    : "product_view",
   "product_id"       : ['P12345'],
@@ -187,9 +187,9 @@ var utag_data = {
 };
 
 ```
-### カート追加
+### カートへの追加
 
-カートの `add` アクションで以下のデータを送信できます：
+カートの `add` アクションでは、次のデータを送信できます。
 
 * IDのリスト
 * 名前のリスト
@@ -198,13 +198,13 @@ var utag_data = {
 * 数量のリスト
 * 価格のリスト
 * 割引のリスト
-* バリアントのリスト
-* 商品位置
+* バリエーションのリスト
+* 商品の位置
 
-このイベントは `utag.link()` を使用して追跡され、Google Analyticsで `ec:addProduct` および `ec:setAction` (add) コマンドをトリガーします。
+このイベントは `utag.link()` を使用してトラッキングされ、Google Analyticsで `ec:addProduct` コマンドと `ec:setAction`（add）コマンドをトリガーします。
 
 ```js
-// 例：商品追加
+// EXAMPLE CODE: Product Add
 utag.link({
   "tealium_event"    : 'cart_add',
   "product_id"       : ['P12345'],
@@ -218,9 +218,9 @@ utag.link({
 
 ```
 
-### カート削除
+### カートからの削除
 
-カートの `remove` アクションで以下のデータを送信できます：
+カートの `remove` アクションでは、次のデータを送信できます。
 
 * IDのリスト
 * 名前のリスト
@@ -229,12 +229,12 @@ utag.link({
 * 数量のリスト
 * 価格のリスト
 * 割引のリスト
-* バリアントのリスト
+* バリエーションのリスト
 
-このイベントは `utag.link()` を使用して追跡され、Google Analyticsで `ec:addProduct` および `ec:setAction` (remove) コマンドをトリガーします。
+このイベントは `utag.link()` を使用してトラッキングされ、Google Analyticsで `ec:addProduct` コマンドと `ec:setAction`（remove）コマンドをトリガーします。
 
 ```js
-// 例：商品カート削除
+// EXAMPLE CODE: Product Cart Removal
 utag.link({
   "tealium_event"    : 'cart_remove',
   "product_id"       : ['P12345'],
@@ -250,7 +250,7 @@ utag.link({
 
 ### チェックアウト
 
-`checkout` アクションで以下のデータを送信できます：
+`checkout` アクションでは、次のデータを送信できます。
 
 * IDのリスト
 * 名前のリスト
@@ -261,13 +261,13 @@ utag.link({
 * 割引のリスト
 * チェックアウトステップ
 * チェックアウトオプション
-* バリアントのリスト
-* 商品位置
+* バリエーションのリスト
+* 商品の位置
 
-このイベントはページロード時に `utag_data` または `utag.view()` を使用して追跡され、Google Analyticsで `ec:addProduct` および `ec:setAction` (checkout) コマンドをトリガーします。
+このイベントは、ページ読み込み時に `utag_data` または `utag.view()` を使用してトラッキングされ、Google Analyticsで `ec:addProduct` コマンドと `ec:setAction`（checkout）コマンドをトリガーします。
 
 ```js
-// 例：チェックアウト
+// EXAMPLE CODE: Checkout
 var utag_data = {
   "tealium_event"    : 'checkout',
   "product_id"       : ['P1235', 'P67890'],
@@ -286,23 +286,23 @@ var utag_data = {
 
 
 <blockquote>
-Google Analyticsアカウント内の[チェックアウトファネル構成](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-funnel)を使用して、チェックアウトステップにより詳細な名前を割り当てることができます。
+Checkout steps can be assigned more descriptive names using the [Checkout Funnel Configuration](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-funnel) within your Google Analytics account.
 </blockquote>
 
 
 ### チェックアウトオプション
 
-チェックアウトオプションアクションでは、初期ページビュー後に訪問がサイトと対話している状態に関する情報をキャプチャできます。
+チェックアウトオプションアクションを使用すると、最初のページビュー後、訪問がサイトを操作しているときのチェックアウト状態に関する情報を取得できます。
 
-チェックアウトオプションアクションで以下のデータを送信できます：
+チェックアウトオプションアクションでは、次のデータを送信できます。
 
 * チェックアウトステップ
 * チェックアウトオプション
 
-このイベントは `utag.link()` を使用して追跡され、Google Analyticsで `ec:setAction` (checkout\_option) コマンドをトリガーします。
+このイベントは `utag.link()` を使用してトラッキングされ、Google Analyticsで `ec:setAction`（checkout\_option）コマンドをトリガーします。
 
 ```js
-// 例：チェックアウトオプション
+// EXAMPLE CODE: Checkout Option
 utag.link({
   "tealium_event"    : "checkout_option",
   "checkout_step"    : "2",
@@ -312,12 +312,12 @@ utag.link({
 
 ### 購入
 
-`purchase` アクションで以下のデータを送信できます：
+`purchase` アクションでは、次のデータを送信できます。
 
 * 注文ID
-* 収益
-* 税金
-* 配送料
+* 売上
+* 税額
+* 送料
 * プロモーションコード
 * IDのリスト
 * 名前のリスト
@@ -326,13 +326,13 @@ utag.link({
 * 数量のリスト
 * 価格のリスト
 * 割引のリスト
-* バリアントのリスト
+* バリエーションのリスト
 
-このイベントはページロード時に `utag_data` または `utag.view()` を使用して追跡され、Google Analyticsで `purchase` コマンドをトリガーします。
+このイベントは、ページ読み込み時に `utag_data` または `utag.view()` を使用してトラッキングされ、Google Analyticsで `purchase` コマンドをトリガーします。
 
 ```js
-// 例：購入
-// ページロード時にデータオブジェクトに以下の情報が含まれるべきです
+// EXAMPLE CODE: Checkout
+// The following information should be in the data object on page load
 var utag_data = {
   "tealium_event"         : 'purchase',
   "order_id"              : 'O1234567',
@@ -353,17 +353,17 @@ var utag_data = {
 
 ### プロモーションクリック
 
-プロモクリックアクションでは、以下のデータを送信できます：
+プロモーションクリックアクションでは、次のデータを送信できます。
 
 * プロモーションID
 * プロモーション名
-* プロモーションクリエイティブ
-* プロモーション位置
+* プロモーションのクリエイティブ
+* プロモーションの位置
 
-このイベントは `utag.link()` を使用して追跡され、Google Analyticsで `ec:addPromo` および `ec:setAction` (promo\_click) コマンドをトリガーします。
+このイベントは `utag.link()` を使用してトラッキングされ、Google Analyticsで `ec:addPromo` コマンドと `ec:setAction`（promo\_click）コマンドをトリガーします。
 
 ```js
-// 例：プロモーションクリック
+// EXAMPLE CODE: Promotion Click
 utag.link({
   "tealium_event"      : "promo_click",
   "promotion_id"       : ['DV18-EARLY-REG'],
@@ -376,17 +376,17 @@ utag.link({
 
 ### 払い戻し
 
-払い戻しアクションを発火するには、払い戻される取引の注文IDが必要です。部分払い戻しの場合は、払い戻される商品の商品IDも必要です。
+払い戻しアクションを実行するには、払い戻し対象トランザクションの注文IDが必要です。一部払い戻しの場合は、払い戻し対象商品の商品IDも必要です。
 
 * 注文ID
-* 商品IDのリスト（部分払い戻しの場合のみ）
+* 商品IDのリスト（一部払い戻しの場合のみ）
 
 * 数量のリスト
 
-このイベントはページロード時に `utag_data` または `utag.view()` を使用して追跡され、Google Analyticsで `ec:addProduct` および `ec:setAction` (refund) コマンドをトリガーします。
+このイベントは、ページ読み込み時に `utag_data` または `utag.view()` を使用してトラッキングされ、Google Analyticsで `ec:addProduct` コマンドと `ec:setAction`（refund）コマンドをトリガーします。
 
 ```js
-// 例：払い戻し
+// EXAMPLE CODE: Refund
 var utag_data = {
   "tealium_event"    : "refund",
   "order_id"         : 'O123456',
@@ -395,7 +395,7 @@ var utag_data = {
 };
 ```
 
-## 追加リソース
+## その他のリソース
 
-* [拡張Eコマースについて](https://support.google.com/analytics/answer/6014841?hl=ja) (Google Analytics)
-* [analytics.jsを使用して拡張Eコマースデータを収集する方法](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) (Google Analytics)
+* [拡張eコマースについて](https://support.google.com/analytics/answer/6014841?hl=en)（Google Analytics）
+* [analytics.jsを使用して拡張eコマースデータを収集する方法](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)（Google Analytics）

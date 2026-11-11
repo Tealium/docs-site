@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/criteo-connector/
 ---
 ## Connector Actions
 
-|**Action Name**| **AudienceStream**| **EventStream**|
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Send Event | ✓ | ✓ |
 | Send Event (First-party ID) | ✓ | ✓ |
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -21,9 +21,7 @@ After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Automatic Deduplication
 
@@ -37,13 +35,13 @@ For example, a page view event from a tag with UID of `171` would send the follo
 criteo_page_view_id_171
 ```
 
-You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/criteo-onetag-uid.png)
 
 To configure automatic deduplication, in the **Automatic Deduplication** section, select **Add Mapping**. In the mapping, provide the Criteo OneTag tag ID and map it to the **Tealium iQ Tag ID**. 
 
-After you configure automatic deduplication, Tealium automatically looks for the Criteo page view ID being sent from Tealium iQ and adds it to the event payload for deduplication.
+After you configure automatic deduplication, Tealium automatically looks for the Criteo page view ID being sent from Tag Management and adds it to the event payload for deduplication.
 
 ### Action - Send Event
 
@@ -112,7 +110,7 @@ Criteo recommends mapping both a Mapped User ID and email where possible. Provid
 
 #### Automatic Deduplication
 
-When the Tealium iQ tag UID is provided, we will automatically look for the Event ID value that is sent from Tealium iQ.
+When the Tag Management tag UID is provided, we will automatically look for the Event ID value that is sent from Tag Management.
 
 ### Send Event (First-party ID)
 

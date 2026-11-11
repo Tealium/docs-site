@@ -20,7 +20,7 @@ The [Webhook (JDBC) connector](https://docs.tealium.com/webhook-jdbc/) connects 
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -59,6 +59,8 @@ Tealium requires a connection to an AWS Redshift instance to display a list of c
 
 * [Provide an Access Key and Access Secret](#access-key-and-secret-credentials).
 * [Provide STS credentials](#sts-credentials).
+
+After you configure the connector, click **Done**.
 
 #### Access Key and Secret credentials
 
@@ -200,7 +202,7 @@ To attach the policies:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Entire Event Data (Micro-batch) | ✗ | ✓ |
 | Send Entire Event Data (Batch) | ✗ | ✓ |

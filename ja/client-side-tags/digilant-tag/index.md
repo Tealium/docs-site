@@ -3,30 +3,29 @@ title: Digilantタグ構成ガイド
 description: この記事では、Digilantタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/digilant-tag/
 ---
-## タグのヒント
+## タグ構成のヒント
 
-* 標準構成でPixel IDを指定します。
-* マッピングを通じて標準構成のPixel IDを上書きします。
-* ライブラリを同期的にロードする必要がある場合は、**Advanced Settings**で**Synchronous Load Type**を構成します。
+* 標準構成でピクセルIDを指定します。
+* マッピングを使用して、標準構成のピクセルIDを上書きします。
+* ライブラリを同期的に読み込む必要がある場合は、**詳細構成**で**同期読み込みタイプ**を構成します。
 
-## タグ構成
+## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Digilantタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を行います：
+タグを追加する際は、次の項目を構成します。
 
 * **タグバージョン**
-* **Pixel ID**：
+* **ピクセルID**：
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`id`| Pixel ID|
-
+|変数|説明|
+|---|---|
+|`id`|ピクセルID|

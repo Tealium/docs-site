@@ -27,7 +27,7 @@ Optimizelyプラットフォームには、フィーチャーフラグ、大規�
 
 * [OptimizelyイベントAPI：はじめに](https://docs.developers.optimizely.com/web/docs/getting-started-event-api)
 * [Optimizely：ダイナミックカスタマープロファイルを使用したオーディエンスの作成](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)
-* [OptimizelyとTealium AudienceStreamの統合](https://docs.tealium.com/optimizely-integration-with-audiencestream/)
-* [AudienceStreamとOptimizely Full Stackの統合](https://docs.tealium.com/integrating-audiencestream-and-optimizely-full-stack/)
+* [OptimizelyとTealium AudienceStreamの統合](https://docs.tealium.com/optimizely-integration-with-customer-data-platform/)
+* [AudienceStreamとOptimizely Full Stackの統合](https://docs.tealium.com/integrating-customer-data-platform-and-optimizely-full-stack/)
 * [Tealiumツール：Optimizelyヘルパー](https://docs.tealium.com/optimizely-helper/)
 

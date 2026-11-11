@@ -1,19 +1,19 @@
 ---
 title: SMARTASSISTANT 1.1 Tag Setup Guide
-description: This article describes how to set up the SMARTASSISTANT 1.1 tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the SMARTASSISTANT 1.1 tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/smartassistant-11-tag/
 ---
 With SMARTASSISTANT, businesses can create Guided Selling solutions to share their expert advice much quicker and shoppers can receive helpful and immediate support to make more confident and smarter purchase decisions.
 
-## Tag Tips
+## Tag tips
 
 Use mapping to dynamically override the standard config values.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the SMARTASSISTANT 1.1 tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Advisor Code**: Your SMARTASSISTANT supplied Advisor Code.
 * **Subdomain**: The first part of your advisor context path.  
@@ -21,9 +21,9 @@ For example: `//{subdomain}.smartassistant.com/advisor-fe-web`
 * **Div ID**: This is the Div ID on your page where the `advisor-container` div will be added.
 * **Advisor Container Div ID**: This is the integration container on your page where your advisor will go.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

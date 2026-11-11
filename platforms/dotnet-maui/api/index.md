@@ -403,7 +403,7 @@ The following summarizes the properties of the `TealiumConfig` class.
 | `dispatchers`| `Dispatchers[]`| (Required) Sets the list of [`Dispatchers`](#dispatchers) to initialize the Tealium library with| `[Dispatchers.Collect]`|
 | `customVisitorId`| `String`| Sets a custom Visitor ID| `"ALK2398LSDKJ3289SLKJ3298SLKJ3"`|
 | `memoryReportingEnabled`       | `Boolean`| Enables or disables memory reporting in the DeviceData module (default: disabled).| `true`|
-| `overrideCollectDomain`           | `String`| Overrides the domain of the Tealium Collect URL. For use with [first-party domains](https://docs.tealium.com/iq-tag-management/administration/first-party-domains/manage/). | `"your-domain.com"`|
+| `overrideCollectDomain`           | `String`| Overrides the domain of the Tealium Collect URL. For use with [first-party domains](https://docs.tealium.com/tag-management/administration/first-party-domains/manage/). | `"your-domain.com"`|
 | `overrideCollectProfile`           | `String`| Overrides the Tealium Collect profile to send data to a different Tealium profile. | `"custom-profile"`|
 | `overrideCollectURL`           | `String`| Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the `overrideCollectBatchURL` property.| `"https://custom-domain.com/event"`|
 | `overrideCollectBatchURL`      | `String`| Overrides the Tealium Collect batch URL to send data to a different endpoint.| `"https://custom-domain.com/batch-event"`|

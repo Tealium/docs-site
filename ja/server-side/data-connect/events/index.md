@@ -1,13 +1,13 @@
 ---
-title: データコネクトイベント
-description: この記事では、データコネクトイベントの形式について説明します。
+title: Data Connectイベント
+description: この記事では、Data Connectイベントの形式について説明します。
 url: https://docs.tealium.com/ja/server-side/data-connect/events/
 ---
-データコネクトは、Workatoの統合からリアルタイムの更新をキャプチャします。Workatoのレシピを使用してイベントトリガーを構成し、Tealium Eventsアプリを使用して統合データをTealiumイベント属性にマッピングします。
+Data Connectは、Workatoインテグレーションからリアルタイムの更新を取得します。Workatoレシピを使用してイベントトリガーを構成し、Tealium Eventsアプリを使用してインテグレーションデータをTealiumのイベント属性にマッピングします。
 
-データコネクトは、レシピで構成したデータマッピングを使用して、JSON形式のイベントをTealiumに送信します。例えば、Salesforceの統合を構成して、コンタクトオブジェクトが更新されるたびに`customerStatusTypeID`という顧客フィールドをキャプチャし、その値をAudienceStreamの訪問属性として送信することができます。Tealium Event統合を使用して、Salesforceのフィールド`customerID`と`customerStatusTypeID`をTealiumのイベント属性`customer_id`と`customer_status`にそれぞれマッピングすることができます。
+Data Connectは、レシピで構成したデータマッピングを使用し、JSON形式でイベントをTealiumに送信します。たとえば、連絡先オブジェクトが更新されるたびに顧客フィールド`customerStatusTypeID`を取得し、その値を訪問属性としてCustomer Data Platform（CDP）に送信するよう、Salesforceインテグレーションを構成できます。Tealium Eventインテグレーションを使用すると、Salesforceフィールド`customerID`と`customerStatusTypeID`を、それぞれTealiumイベント属性`customer_id`と`customer_status`にマッピングできます。
 
-Salesforceが顧客フィールド`customerStatusTypeID`をキャプチャすると、Workatoのレシピがイベントをトリガーし、以下のイベントデータをTealiumに送信します：
+Salesforceが顧客フィールド`customerStatusTypeID`を取得すると、Workatoレシピによってイベントがトリガーされ、次のイベントデータがTealiumに送信されます。
 
 ```json
 {
@@ -17,6 +17,6 @@ Salesforceが顧客フィールド`customerStatusTypeID`をキャプチャする
 }
 ```
 
-tealium_eventの名前`offline_account_update`は、各統合ごとにカスタマイズすることができます。
+tealium_event名`offline_account_update`は、インテグレーションごとにカスタマイズできます。
 
-このイベントをTealium AudienceStreamでキャプチャするには、このイベントが発生するたびに`customer_status`を保存する訪問属性とエンリッチメントを作成します。
+このイベントをCustomer Data Platform（CDP）で取得するには、このイベントが発生するたびに`customer_status`を保存する訪問属性とエンリッチメントを作成します。

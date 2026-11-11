@@ -59,7 +59,6 @@ Key points:
 
 The **Manager Customer ID** override and other Google Ads API-specific sections are not used by Data Manager API actions. Data Manager configuration is handled through the product link and the selected list and identifiers.
 
-
 ## Before you migrate
 
 Before using the Google Data Manager API actions, create a product link between your Google Ads account and Tealium.

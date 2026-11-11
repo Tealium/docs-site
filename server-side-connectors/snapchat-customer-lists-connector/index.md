@@ -15,7 +15,7 @@ This step may take up to 3 working days for approval. You can confirm whether th
 
 For additional information, see: [Manage Members and Roles](https://businesshelp.snapchat.com/s/topic/0TO0y000000YVcVGAW/manage-members-and-roles).
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -25,14 +25,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Connector Actions
 
-| **Action Name**          | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:-------------------------|:-------------------|:----------------|
 | Add User to Segment      | ✓                  | ✓               |
 | Remove User from Segment | ✓                  | ✓               |
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -42,9 +42,7 @@ After adding the connector, configure the following settings:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add User to Segment
 

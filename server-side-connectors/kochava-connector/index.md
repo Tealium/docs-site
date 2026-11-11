@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/kochava-connector/
 ---
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Install Event| ✗| ✓|
 |Send Post-Install Event| ✗| ✓|
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 ## Action Settings — Parameters and Options
 

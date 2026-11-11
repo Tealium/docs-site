@@ -13,7 +13,7 @@ Previously, this connector required that you request for Google to add your acco
 </blockquote>
 
 
-## API Information
+## API information
 
 This connector uses the following vendor APIs:
 
@@ -37,7 +37,7 @@ For more information, see [Tips for using third-party audience lists](https://su
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -56,9 +56,11 @@ After adding the connector, configure the following settings:
   * If you use the Google-hosted version of the Google Cookie Matching tag, enter your Google Network ID.
   * If you use the Tealium-hosted version of the Google Cookie Matching tag, leave this blank.
 
+After you configure the connector, click **Done**.
+
 ### Create a New Segment
 
-Use the following steps to create a new segment in AudienceStream:
+Use the following steps to create a new segment in Customer Data Platform (CDP):
 
 1. Click **Create a New Segment** from the top of the **Actions** selection drop-down list.
 2. Complete the following fields:
@@ -83,7 +85,7 @@ Allow 3 to 4 hours before using new audiences within an action when you create a
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ----------- | :------------: | :---------: |
 | Add Visitor to User-List or Segment | ✓ | ✓ |
 | Remove Visitor from User-List or Segment | ✓ | ✓ |
@@ -101,7 +103,7 @@ You must use one of the following ID parameters: **Partner Provided ID (already 
 | Parameter | Description |
 |---| ---|
 | Select the Target User-list/Segment | (Required) User map identifier. Specifies the user that this operation applies to. This is the target User-list/Segment where the user will be added to. |
-| Partner Provided ID (already MD5 hashed) | This parameter is sent to Google by the Tealium iQ cookie matching service tag. The default cookie match tag implementation sends the Tealium Visitor ID as an MD5 hash. If you are using this ID as the default, map this attribute to the MD5 hash option. |
+| Partner Provided ID (already MD5 hashed) | This parameter is sent to Google by the Tag Management cookie matching service tag. The default cookie match tag implementation sends the Tealium Visitor ID as a MD5 hash. If you are using this ID as the default, map this attribute to the MD5 hash option. |
 | Partner Provided ID (apply MD5 hash) | This parameter is similar to **Partner Provided ID (already MD5 hashed)**, except that it will MD5 hash the value for you. |
 | Google User ID | Google User ID. Provided by the ADX cookie-matching service. |
 | iOS Advertising ID | iOS Advertising ID. |

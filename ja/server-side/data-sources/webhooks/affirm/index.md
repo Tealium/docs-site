@@ -1,47 +1,47 @@
 ---
-title: Affirm受信Webhook構成ガイド
-description: この記事では、Affirmデータソースを使用してAffirmアカウントにWebhookを作成し、Tealiumに対して実行可能なイベントを送信する方法について説明します。
+title: Affirm 受信 Webhook 構成ガイド
+description: この記事では、Affirm データソースを使用して Affirm アカウントに Webhook を作成し、実用的なイベントを Tealium に送信する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/affirm/
 ---## 前提条件
 
-* [Affirmアカウント](https://docs.affirm.com/affirm-developers/docs/dashboard)
-* Tealium EventStreamまたはTealium AudienceStream
+* [Affirm アカウント](https://docs.affirm.com/affirm-developers/docs/dashboard)
+* Event Streaming または Customer Data Platform（CDP）
 
 ## 仕組み
 
-Affirmは、指定したエンドポイントに対して送信リクエストを送る[Webhook API](https://docs.affirm.com/affirm-developers/docs/development-webhooks)を提供しています。これらのリクエストは、Affirmアカウントからの顧客活動についてTealium EventStreamとAudienceStreamに通知します。
+Affirm は、指定したエンドポイントに送信リクエストを送る [Webhook API](https://docs.affirm.com/affirm-developers/docs/development-webhooks) を提供しています。これらのリクエストにより、Affirm アカウントでの顧客アクティビティが Event Streaming と Customer Data Platform（CDP）に通知されます。
 
-* TealiumアカウントにAffirmデータソースを追加すると、ユニークなエンドポイントが生成されます。
-* このエンドポイントは、Affirmアカウント内でWebhookを構成するために使用されます。
-* 構成が完了すると、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受け取ってユースケースを自動化し、情報を得て、生産性を向上させることができます。
+* Tealium アカウントに Affirm データソースを追加すると、一意のエンドポイントが生成されます。
+* このエンドポイントは、Affirm アカウントで Webhook を構成するために使用されます。
+* 構成後は、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受信することで、ユースケースの自動化、最新情報の把握、生産性の向上を実現できます。
 
-## Affirmデータソース
+## Affirm データソース
 
-Affirmデータソースは、AffirmのWebhook構成で使用するためのユニークなURLを生成します。生成されたURLは以下の形式になります：
+Affirm データソースは、Affirm Webhook の構成で使用する一意の URL を生成します。生成される URL の形式は次のとおりです。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-Affirmデータソースを追加した後、生成されたエンドポイントをAffirmのクライアント成功マネージャーに提供してください。
+続行する前に Affirm データソースを追加し、生成されたエンドポイントを Affirm Client Success Manager に提供してください。
 
-関連：[データソースの追加方法]()
+関連項目：[データソースを追加する方法]()
 
-## Affirmの構成
+## Affirm の構成
 
-データソースのエンドポイントを取得したら、以下の手順を使用してAffirmアカウントに移動し、Webhookを作成します。
+データソースのエンドポイントを取得したら、次の手順に従って Affirm アカウントに移動し、Webhook を作成します。
 
-1. Affirmアカウントにログインします。
-1. Webhookを作成します。
-1. Webhookを有効にし、保存します。
+1. Affirm アカウントにログインします。
+1. Webhook を作成します。
+1. Webhook を有効にして保存します。
 
 ## イベントと属性
 
-すべての受信Affirmイベント属性は自動的に`affirm_`でプレフィックスされます。例えば、Affirmは`smtp_id`属性をTealiumに送信し、それが`affirm_smtp_id`（すべて小文字）に変換されます。
+受信するすべての Affirm イベント属性には、自動的に `affirm_` というプレフィックスがエンリッチメントされます。たとえば、Affirm から Tealium に送信される `smtp_id` 属性は、`affirm_smtp_id`（すべて小文字）に変換されます。
 
-Affirmによって生成されるWebhookイベントと属性の完全なリストについては、[Affirm Webhookドキュメンテーション](https://docs.affirm.com/affirm-developers/docs/development-webhooks)を参照してください。
+Affirm が生成する Webhook イベントと属性の完全な一覧については、[Affirm Webhook ドキュメント](https://docs.affirm.com/affirm-developers/docs/development-webhooks)を参照してください。
 
-|**イベント属性**| **タイプ**| **例**|
+|**イベント属性**| **型**| **例**|
 |---| ---| ---|
 |`affirm_approved_amount`| 数値| 50000\.0|
 |`affirm_checkout_token`| 文字列| "5I97HK0EREM38YHK3"|
@@ -64,10 +64,9 @@ Affirmによって生成されるWebhookイベントと属性の完全なリス�
 |`affirm_total`| 数値| 5000|
 |`affirm_webhook_session_id`| 文字列| fal"A1b2C3"|
 
-## ベンダードキュメンテーション
+## ベンダーのドキュメント
 
-以下のドキュメンテーションを表示するには、Affirmにログインしている必要があります。そうでない場合は、Affirmのドキュメンテーションのメインページにリダイレクトされます。
+次のドキュメントを表示するには、Affirm にログインしている必要があります。ログインしていない場合は、Affirm ドキュメントのメインページにリダイレクトされます。
 
-* [Affirm Prequal Status Visibility Webhook Documentation](https://docs.affirm.com/Partners/Marketing_Messaging_Integration/Prequal_Status_Visibility_(Detailed))
-* [Affirm Status Visibility Webhook Documentation](https://docs.affirm.com/Integrate_Affirm/Status_Visibility_(Detailed))
-
+* [Affirm Prequal Status Visibility Webhook ドキュメント](https://docs.affirm.com/Partners/Marketing_Messaging_Integration/Prequal_Status_Visibility_(Detailed))
+* [Affirm Status Visibility Webhook ドキュメント](https://docs.affirm.com/Integrate_Affirm/Status_Visibility_(Detailed))

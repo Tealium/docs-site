@@ -21,7 +21,7 @@ The main llms.txt file is a top-level directory of all documentation areas. It l
 
 Each documentation area has its own llms.txt file containing a full index of pages within that area:
 
-* [Tag Management](https://docs.tealium.com/iq-tag-management/llms.txt): Client-side tag management documentation.
+* [Tag Management](https://docs.tealium.com/tag-management/llms.txt): Client-side tag management documentation.
 * [Server-Side](https://docs.tealium.com/server-side/llms.txt): Server-side documentation including events, audiences, functions, data sources, and insights.
 * [APIs](https://docs.tealium.com/api/llms.txt): Developer API documentation and reference guides.
 * [Web Install](https://docs.tealium.com/platforms/web-install/llms.txt): Web platform installation guides including JavaScript library and tag manager integrations.
@@ -51,8 +51,8 @@ To access the markdown version of any documentation page, append `/index.md` to 
 
 Example:
 
-* HTML version: [/iq-tag-management/getting-started/what-is-tealium-iq/](https://docs.tealium.com/iq-tag-management/getting-started/what-is-tealium-iq/)
-* Markdown version: [/iq-tag-management/getting-started/what-is-tealium-iq/index.md](https://docs.tealium.com/iq-tag-management/getting-started/what-is-tealium-iq/index.md)
+* HTML version: [/tag-management/getting-started/what-is-tealium-tag-management/](https://docs.tealium.com/tag-management/getting-started/what-is-tealium-tag-management/)
+* Markdown version: [/tag-management/getting-started/what-is-tealium-tag-management/index.md](https://docs.tealium.com/tag-management/getting-started/what-is-tealium-tag-management/index.md)
 
 ## Language support
 

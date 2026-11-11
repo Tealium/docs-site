@@ -13,6 +13,6 @@ When two or more enrichments have a dependency on the same attribute, they becom
 
 ## Size limits 
 
-Some enrichments, such as the Join Attributes enrichment, can increase the size of an attribute. Most attributes for EventStream and AudienceStream have storage capacity limits and specific behaviors for when those limits are exceeded. Also, the entire visit or visitor profile has a limit of 400 KB compressed and encrypted.
+Some enrichments, such as the Join Attributes enrichment, can increase the size of an attribute. Most attributes for Event Streaming and Customer Data Platform (CDP) have storage capacity limits and specific behaviors for when those limits are exceeded. Also, the entire visit or visitor profile has a limit of 400 KB compressed and encrypted.
 
 For more information, see[About attributes](https://docs.tealium.com/about-attributes/#size-limits).

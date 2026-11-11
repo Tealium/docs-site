@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/campaigner-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -13,9 +13,11 @@ After adding the connector, configure the following settings:
 * **Integration Key**  
   * The Campaigner integration key. Required for the Upsert contact action.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Upsert contact | ✓ | ✗ |
 | Add a subscriber | ✓ | ✗ |

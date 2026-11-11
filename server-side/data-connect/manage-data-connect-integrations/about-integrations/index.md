@@ -30,7 +30,7 @@ Creating any recipe in Data Connect follows the same basic workflow:
 
 1. [Set up a Tealium Connect data source](https://docs.tealium.com/tealium-connect-data-source/).
 1. [Create an event specification](https://docs.tealium.com/tealium-connect-event-spec/).
-1. [Set up enrichments for visitor ID attributes in AudienceStream](https://docs.tealium.com/tealium-connect-visitor-id-attr-enrichment/).
+1. [Set up enrichments for visitor ID attributes in Customer Data Platform (CDP)](https://docs.tealium.com/tealium-connect-visitor-id-attr-enrichment/).
 1. [Create a recipe](https://docs.tealium.com/create-recipe-data-connect/).
 1. [Select a trigger](https://docs.tealium.com/create-recipe-data-connect/#step-1-select-a-trigger).
 1. [Configure an action](https://docs.tealium.com/create-recipe-data-connect/#step-2-configure-an-action).

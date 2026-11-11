@@ -14,19 +14,21 @@ This connector uses the following vendor API:
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Create or Update User | ✓ | ✓ |
 | Delete User | ✓ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Key**
   * (Required) The HTTP API requires an API key that you can generate from the FullStory app. The API key must have Admin or Architect level permissions. For more information, see [FullStory: Where can I find my API key](https://help.fullstory.com/hc/en-us/articles/360020624834).
+
+After you configure the connector, click **Done**.
 
 ## Actions
 

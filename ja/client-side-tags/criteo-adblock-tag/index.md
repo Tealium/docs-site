@@ -5,41 +5,41 @@ url: https://docs.tealium.com/ja/client-side-tags/criteo-adblock-tag/
 ---
 ## 前提条件
 
-* Criteoアカウントでの完全な構成: PassbackとCPMの構成が行われていることを確認してください。
-* Criteo ZoneID
+* Criteoアカウントでの構成を完了していること：PassbackとCPMが構成されていることを確認してください。
+* Criteo Zone ID
 
-## タグ構成
+## タグの構成
 
-まず、タグマーケットプレイスに移動し、Criteo Adblockタグをプロファイルに追加します([タグの追加方法](https://docs.tealium.com/manage-tags/))。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を行います:
+タグを追加する際に、次の構成を行います。
 
-1. Criteo Zone ID: Criteoから提供される一意のID。
-1. Container ID: コンテナのHTML Element ID。
-1. CPM: 自動最適化を選択するか、Criteoアカウントで構成したCPMに従うかを選択します。
-1. Enable Passback: Criteo Passbackを有効にするかどうかを選択します。これはCriteoで選択したものと一致していなければなりません。
+1. Criteo Zone ID：Criteoから提供される一意のID。
+1. Container ID：コンテナのHTML要素ID。
+1. CPM：自動最適化するか、Criteoアカウントで構成されているCPMに従うかを選択します。
+1. Enable Passback：Criteo Passbackを有効にするかどうかを選択します。この構成は、Criteoで行った選択と一致している必要があります。
 
 ## ロードルール
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグをサイト上のどこで、いつロードするかを決定します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)では、サイト上でこのタグのインスタンスをいつ、どこに読み込むかを指定します。
 
-推奨されるロードルール: **すべてのページでロード**。
+推奨されるロードルール：**すべてのページで読み込む**。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-Criteo Adblockタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは以下の通りです:
+Criteo Adblockタグの宛先変数は、［データマッピング］タブに組み込まれています。使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-| **宛先名** | **説明**                                                                           |
-|:---------------------|:------------------------------------------------------------------------------------------|
-| Zone ID              | ユニークID                                                                                 |
-| Container ID         | コンテナのHTML Element ID                                                              |
-| CPM                  | Criteoアカウントで構成したCPM。可能な文字列値は`auto`または`abide`です。 |
-| Enable Passback      | Criteoアカウントで構成したPassbackフラグ。可能な文字列値は`yes`または`no`です。    |
+| **宛先名**      | **説明**                                                                                  |
+|:----------------|:------------------------------------------------------------------------------------------|
+| Zone ID         | 一意のID                                                                                  |
+| Container ID    | コンテナのHTML要素ID                                                                      |
+| CPM             | Criteoアカウントで構成されているCPM構成。指定可能な文字列値は`auto`または`abide`です。     |
+| Enable Passback | Criteoアカウントで構成されているPassbackフラグ。指定可能な文字列値は`yes`または`no`です。 |
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-* [Criteo Publisher Support](https://support.criteo.com/hc/en-us/categories/200849245)
+* [Criteoパブリッシャーサポート](https://support.criteo.com/hc/en-us/categories/200849245)

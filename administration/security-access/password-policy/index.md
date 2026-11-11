@@ -60,7 +60,7 @@ Managing the password policy requires the [Manage Accounts]() permission. Only a
 
 Use the following steps to manage the password policy for your account:
 
-1. Log in to iQ Tag Management.
+1. Log in to Tag Management.
 1. In the admin menu, click **Manage Password Policy**.
 1. Modify the password settings and click on **Update Password Settings**.
 

@@ -1,25 +1,26 @@
 ---
-title: DataAccessについて
-description: この記事では、Tealium DataAccessの機能と異なるデータ形式について説明します。
+title: DataAccess について
+description: この記事では、Tealium DataAccess、その機能、およびさまざまなデータ形式について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/about/
 ---
 
 <blockquote>
-アカウントとプロファイルでDataAccessを有効にするには、アカウントマネージャーに連絡してください。
+アカウントとプロファイルで DataAccess を有効にするには、アカウントマネージャーにお問い合わせください。
 </blockquote>
 
 
 ## 前提条件
 
-DataAccessを使用するには、ユーザーはData Warehouse Adminの役割が割り当てられている必要があります。詳細については、[サーバーサイドのアカウント構成]()を参照してください。
+DataAccess を使用するには、ユーザーに Data Warehouse Admin ロールが割り当てられている必要があります。詳細については、[サーバーサイドのアカウント構成]()を参照してください。
 
 ## 仕組み
 
-Tealium DataAccessは、[Tealium iQタグ管理](https://docs.tealium.com/ja/iq-tag-management/)、[Tealium AudienceStream CDP](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)、および[Tealium EventStream API Hub](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)の機能を拡張し、ウェブやモバイルの接点、オンラインおよびオフラインのチャネル、リアルタイムのオーディエンスから収集されたデータの長期保存を提供するエンタープライズデータハブソリューションです。
+Tealium DataAccess は、Web およびモバイルのタッチポイント、オンラインおよびオフラインチャネル、リアルタイムオーディエンスから収集されたデータを長期保存することで、[タグ管理](https://docs.tealium.com/ja/tag-management/)、[顧客データプラットフォーム（CDP）](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/)、および[イベントストリーミング API ハブ](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/)の機能を拡張する、エンタープライズデータハブソリューションです。
 
-DataAccessは、イベントデータを保存するためにEventStreamフィードと連携し、訪問プロファイルデータを保存するためにAudienceStreamオーディエンスと連携します。
+DataAccess は、イベントストリーミングフィードと連携してイベントデータを保存し、顧客データプラットフォーム（CDP）のオーディエンスと連携して訪問プロファイルデータを保存します。
 
-DataAccessは以下の製品で構成されています：
+DataAccess は、以下の製品で構成されています。
+
 * [Tealium EventStore]()
 * [Tealium AudienceStore]()
 * [Tealium EventDB]()
@@ -27,67 +28,67 @@ DataAccessは以下の製品で構成されています：
 
 ### データ形式
 
-Amazon RedshiftおよびAmazon S3というエンタープライズクラスのソリューションを基盤として、DataAccessは構造化データと半構造化データの2つの形式での保存を提供します。
+エンタープライズクラスのソリューションである Amazon Redshift と Amazon S3 を基盤とする DataAccess は、構造化データと半構造化データの 2 つの保存形式を提供します。
 
 #### 構造化データ
 
-構造化データはAmazon Redshiftに保存されます。データには固定されたフィールドがあり、高度に組織されているため、アップロード、抽出、ロード、保存、クエリ、およびデータ分析が容易です。構造化データは、サードパーティのビジネスインテリジェンスツールを使用してアクセスできます。
+構造化データは Amazon Redshift に保存されます。このデータには固定フィールドがあり、高度に整理されているため、データのアップロード、抽出、読み込み、保存、クエリ、分析を容易に行えます。構造化データには、サードパーティーのビジネスインテリジェンスツールを使用してアクセスできます。
 
-構造化データは以下の製品で使用されます：
+構造化データは、以下の製品で使用されます。
 
 * [Tealium EventDB]()
 * [Tealium AudienceDB]()
 
 #### 半構造化データ
 
-半構造化データは原始形式でAmazon S3に保存されます。データはインターフェースから直接JSONファイルとしてダウンロードできます。半構造化データには組織が欠けているため、構造を実現するのが難しいです。データを使用するには、Hadoopなどのシステムへの抽出、変換、およびロード（ETL）が必要です。
+半構造化データは、Amazon S3 に保存される未加工の形式です。データは、インターフェイスから JSON ファイルとして直接ダウンロードできます。半構造化データは整理されていないため、構造化がより困難です。データを使用するには、Hadoop などのシステムへの抽出、変換、読み込み（ETL）が必要です。
 
-半構造化データは以下の製品で使用されます：
+半構造化データは、以下の製品で使用されます。
 
 * [Tealium EventStore]()
 * [Tealium AudienceStore]()
 
-## 製品の機能
+## 製品機能
 
-|提供名| データの保存| データの抽出| データのクエリ| データの分析| データの可視化|
+|製品名|データの保存|データの抽出|データのクエリ|データの分析|データの可視化|
 |:-:| :-:| :-:| :-:| :-:| :-:|
 |EventStore| ✔| ✔| | ✔| |
 |EventDB| ✔| ✔| ✔| ✔| ✔|
 |AudienceStore| ✔| ✔| | ✔| |
 |AudienceDB| ✔| ✔| ✔| ✔| ✔|
 |EventDirect| | ✔| | | |
-|Webhook (Event/Audience)| | ✔| | | |
+|Webhook（イベント／オーディエンス）| | ✔| | | |
 
-## 製品説明
+## 製品の説明
 
-|提供名| 説明| 構造タイプ| 使用技術|
+|製品名|説明|構造タイプ|使用テクノロジー|
 |---| ---| ---| ---|
-|EventStore|  <ul><li>EventStoreは、ウェブ、モバイル、IoT、オフラインチャネルからの生のイベントデータを収集します。</li><li>データは[JavaScript Object Notation (JSON)](http://www.json.org/)の半構造化データ形式でAmazon Simple Storage Service S3バケットに保存されます。</li></ul> | 半構造化| Amazon S3|
-|EventDB|  <ul><li>EventDBはEventStoreの機能を拡張し、生のイベントデータを構造化されたAmazon Redshiftデータベースインスタンスに整理します。</li><li>このデータには、Postgres対応プラットフォームからアクセスでき、ユーザーはデータベースに直接SQLを実行できます。</li><li>構造化データは、ビジネスインテリジェンス（BI）およびデータ可視化ツールによって使用されることができます。</li></ul> | 構造化| Amazon Redshift|
-|EventDirect|  <ul><li>EventDirectは、以下のイベントデータをお客様の選択したエンタープライズデータウェアハウス（EDW）に直接送信します：<ul><li>メタデータ</li><li>クエリ文字列パラメータ</li><li>ウェブクッキーデータ</li><li>コンテンツ内イベント</li><li>JavaScript変数</li><li>マーケティングソース</li><li>URLパラメータ</li><li>データ操作 / Tealium iQ拡張データ - プライバシー、ルックアップテーブル、帰属)</li></ul> </li></ul> <ul><li>データはHTTP POST形式で送信されます。</li></ul> | お客様の選択| お客様のホスト|
-|AudienceStore|  <ul><li>AudienceStoreは、AudienceStreamから収集されたオーディエンスデータと属性の生の保存を提供します。</li><li>EventStoreと同様に、データはAmazon S3インスタンス上の半構造化形式で保存されます。</li><li>[JavaScript Object Notation (JSON](http://www.json.org/))またはカンマ区切り値(.csv)がこのファイルの作成に使用されます。</li><li>データはAmazon S3バケットを通じてダウンロード可能です。</li></ul> | 半構造化| Amazon S3|
-|AudienceDB|  <ul><li>AudienceDBはAudienceStoreの機能を拡張し、AudienceStreamから収集されたオーディエンスデータと属性を構造化形式で保存します。</li><li>このデータには、Postgres対応プラットフォームからアクセスでき、ユーザーはデータベースに直接SQLを実行できます。</li><li>構造化データは、後日の歴史的分析や可視化にビジネスインテリジェンス（BI）およびデータ可視化ツールによって利用されることができます。</li></ul> | 構造化| Amazon Redshift|
-|Webhook (Event/Audience)|  <ul><li>Webhook (Event/Audience)は、オーディエンスデータ（属性/プロファイル、バッジ、オムニチャネル/オフラインデータ）をお客様の選択したEDWに直接送信します。</li></ul> | お客様の選択| お客様のホスト|
+|EventStore|  <ul><li>EventStore は、Web、モバイル、モノのインターネット（IoT）、およびオフラインチャネルから未加工のイベントデータを収集します。</li><li>データは、Amazon Simple Storage Service（S3）バケット上に、[JavaScript Object Notation（JSON）](http://www.json.org/)による半構造化データ形式で保存されます。</li></ul> | 半構造化| Amazon S3|
+|EventDB|  <ul><li>EventDB は、未加工のイベントデータを構造化された Amazon Redshift データベースインスタンスに整理することで、EventStore の機能を拡張します。</li><li>Postgres 対応のプラットフォームからこのデータにアクセスでき、ユーザーはデータベースに対して SQL を直接実行できます。</li><li>構造化データは、ビジネスインテリジェンス（BI）ツールおよびデータ可視化ツールで使用できます。</li></ul> | 構造化| Amazon Redshift|
+|EventDirect|  <ul><li>EventDirect は、以下のようなイベントデータを、選択したエンタープライズデータウェアハウス（EDW）に直接送信します。<ul><li>メタデータ</li><li>クエリ文字列パラメータ</li><li>Web Cookie データ</li><li>コンテンツ内イベント</li><li>JavaScript 変数</li><li>マーケティングソース</li><li>URL パラメータ</li><li>データ操作／タグ管理拡張機能のデータ（プライバシー、ルックアップテーブル、アトリビューション）</li></ul> </li></ul> <ul><li>データは HTTP POST 形式で送信されます。</li></ul> | 顧客による選択| 顧客のホスト|
+|AudienceStore|  <ul><li>AudienceStore は、CDP から収集されたオーディエンスデータと属性を未加工のまま保存します。</li><li>EventStore と同様に、データは Amazon S3 インスタンス上に半構造化形式で保存されます。</li><li>このファイルの作成には、[JavaScript Object Notation（JSON）](http://www.json.org/)またはカンマ区切り値（.csv）が使用されます。</li><li>データは、Amazon S3 バケットを通じてダウンロードできます。</li></ul> | 半構造化| Amazon S3|
+|AudienceDB|  <ul><li>EventDB と同様に、AudienceDB は AudienceStore の機能を拡張し、CDP から収集されたオーディエンスデータと属性を構造化形式で保存します。</li><li>Postgres 対応のプラットフォームからこのデータにアクセスでき、ユーザーはデータベースに対して SQL を直接実行できます。</li><li>構造化データは、後からビジネスインテリジェンス（BI）ツールやデータ可視化ツールで利用し、履歴分析や可視化に使用できます。</li></ul> | 構造化| Amazon Redshift|
+|Webhook（イベント／オーディエンス）|  <ul><li>Webhook（イベント／オーディエンス）は、オーディエンスデータ（属性／プロファイル、バッジ、オムニチャネル／オフラインデータ）を、選択した EDW に直接送信します。</li></ul> | 顧客による選択| 顧客のホスト|
 
 
 <blockquote>
-DataAccess製品は有効になっている間のみデータを収集します。
+DataAccess 製品は、有効になっている間のみデータを収集します。
 </blockquote>
 
 
 ## ロギング
 
-DataAccessへのすべてのクエリはログに記録され、**DataAccessクエリ履歴**データセットに保存されます。
+DataAccess に対するすべてのクエリはログに記録され、**DataAccess クエリ履歴**データセットに保存されます。
 
-このデータセットは、すべてのDataAccess顧客に対して読み取り専用モードで利用可能です。次の方法でアクセスできます：
+このデータセットは、すべての DataAccess ユーザーが読み取り専用モードで利用できます。以下の方法でアクセスできます。
 
-* **DataAccessテーブル**：認証資格情報が必要です。詳細については、[connect-to-databases](https://docs.tealium.com/connect-to-databases/)を参照してください。
-* **インサイトダッシュボード**：**分析 > インサイト > ダッシュボード > 分析**の下で利用可能です。詳細については、[manage-analyses](https://docs.tealium.com/manage-analyses/)を参照してください。
+* **DataAccess テーブル**：認証資格情報が必要です。詳細については、[connect-to-databases](https://docs.tealium.com/connect-to-databases/)を参照してください。  
+* **Insights ダッシュボード**：**Analyze > Insights > Dashboards > Analyses** から利用できます。詳細については、[manage-analyses](https://docs.tealium.com/manage-analyses/)を参照してください。
 
-クエリ履歴データセットを使用して、次のことができます：
+クエリ履歴データセットは、以下の目的で使用できます。
 
-* 不正アクセスや通常と異なるクエリパターンを特定し、セキュリティ脅威を示す可能性があります。
-* 規制要件をサポートするためにユーザーアクティビティの監査証跡を維持します。
-* DataAccessのパフォーマンスに影響を与える可能性のある非効率的なクエリを検出します。
+* セキュリティ上の脅威を示す可能性のある、不正アクセスや通常とは異なるクエリパターンを特定する。
+* 規制要件への対応を支援するため、ユーザーアクティビティの監査証跡を維持する。
+* DataAccess のパフォーマンスに影響を与える可能性のある非効率なクエリを検出する。
 
 ![](https://docs.tealium.com/images/server-side/data-access/data-access-queries-history.png)

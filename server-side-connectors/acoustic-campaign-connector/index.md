@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/acoustic-campaign-connector
 ---
 ## Configuration
 
-Navigate to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -24,7 +24,7 @@ Click **Done** when you are finished configuring the connector.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Upsert Contact in Database| ✓| ✗|
 |Insert Contact into Contact List| ✓| ✗|

@@ -3,7 +3,7 @@ title: Facebook Buttons Tag Setup Guide
 description: This article describes how to set up the Facebook Buttons tag.
 url: https://docs.tealium.com/client-side-tags/facebook-buttons-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Some configuration parameters only apply to **Like** box, such as border color and height.
 * If you do not already have one, use the **Content Modification** extension to insert a new `DIV` in your page.
@@ -16,11 +16,11 @@ url: https://docs.tealium.com/client-side-tags/facebook-buttons-tag/
 * Kid Directed
   * Must be set to true if your web site or online service, or a portion of your service, is directed to children under 13.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Facebook Buttons tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Action**
 * **Div ID**
@@ -45,9 +45,9 @@ After adding the tag, configure the following settings:
 * **Size**
 * **Width**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

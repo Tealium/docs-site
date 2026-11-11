@@ -1,66 +1,66 @@
 ---
-title: データレコード機能について
-description: この記事では、CloudStreamのデータレコード機能の概要について説明します。
+title: データレコード関数について
+description: この記事では、Data Cloud Activation のデータレコード関数の概要について説明します。
 url: https://docs.tealium.com/ja/server-side/functions/data-record-functions/data-record-functions/
 ---
 
 <blockquote>
-CloudStream機能を有効にするには、**管理メニュー** > **サーバーサイド構成** > **CloudStreamコネクタ**に移動し、**CloudStreamコネクタを有効にする**を`On`に構成し、**保存**をクリックします。
+Data Cloud Activation 関数を有効にするには、**管理メニュー** > **サーバーサイド構成** > **CloudStream コネクタ**に移動し、**CloudStream コネクタを有効化**を `On` に構成して、**保存**をクリックします。
 </blockquote>
 
 
-## 動作原理
+## 仕組み
 
-CloudStreamの機能はCloudStreamデータパイプライン内で実行され、クラウドデータソースから照会されたデータレコードにアクセスできます。CloudStreamプロファイル内の機能を使用して、他のシステムからデータを取得したり、データを増強したり、データを他のエンドポイントに送信したりします。
+Data Cloud Activation の関数は、Data Cloud Activation データパイプライン内で実行され、クラウドデータソースからクエリされたデータレコードにアクセスできます。Data Cloud Activation プロファイル内で関数を使用して、他のシステムからデータを取得したり、データを拡充したり、他のエンドポイントへデータを送信したりできます。
 
-CloudStream機能の追加と管理は、他の機能の管理と同じですが、以下の例外があります：
+Data Cloud Activation 関数の追加と管理は、以下の点を除き、他の関数の管理と同じです。
 
-* カスタムアクション機能を作成する場合、対象者やイベントを選択する代わりに、[クラウドデータソース](https://docs.tealium.com/about-cloud-data-sources/)と[セグメント](https://docs.tealium.com/manage-cloudstream-segments/)を選択します。
-* 各CloudStream機能は1つのデータソースからのデータのみを使用できます。追加のデータソースからデータをアクティブにする場合は、それぞれに対して別の機能を構成します。
-* セグメントに複数のデータソースからマッピングされた属性が含まれている場合、選択したデータソースの属性のみが機能で利用可能です。
+* カスタムアクション関数を作成するときは、オーディエンスやイベントを選択する代わりに、[クラウドデータソース](https://docs.tealium.com/about-cloud-data-sources/)と[セグメント](https://docs.tealium.com/manage-data-cloud-activation-segments/)を選択します。
+* 各 Data Cloud Activation 関数では、1 つのデータソースのデータのみを使用できます。追加のデータソースからデータをアクティベートする場合は、データソースごとに個別の関数を構成します。
+* セグメントに複数のデータソースからマッピングされた属性が含まれている場合、関数で使用できるのは選択したデータソースの属性のみです。
 
 ## トリガー
 
-データレコード機能は、データレコードが処理される前後に実行されます。
+データレコード関数は、データレコードが処理される前と後に実行されます。
 
 ### 変換
 
-変換機能は、データレコードが処理される前に実行されます。以下のデータパイプライン図に示されています：
+変換関数は、次のデータパイプライン図に示すように、データレコードが処理される前に実行されます。
 
 ![](https://docs.tealium.com/images/server-side/transformations-data-record-pipeline.png)
 
-このパイプラインの時点で機能を使用して、処理される前に[データレコードオブジェクト](#data-record-object)とその値を変換します。
+パイプラインのこの時点で関数を使用し、処理前に[データレコードオブジェクト](#data-record-object)とその値を変換します。
 
 詳細については、[about-data-transformation-functions](https://docs.tealium.com/about-data-transformation-functions/)を参照してください。
 
 ### カスタムアクション
 
-カスタムアクション機能は、データレコードが処理された後に実行されます。以下のデータパイプライン図に示されています：
+カスタムアクション関数は、次のデータパイプライン図に示すように、データレコードが処理された後に実行されます。
 
 ![](https://docs.tealium.com/images/server-side/functions-data-record-pipeline.png)
 
-このパイプラインの時点で機能を使用して、データレコードを他のシステムに送信します。
+パイプラインのこの時点で関数をアクティベーションとして使用し、データレコードを他のシステムへ送信します。
 
 
 <blockquote>
-このデータパイプラインの時点での`dataRecord`オブジェクトの変更は、システムの他の部分には影響しません。
+データパイプラインのこの時点では、`dataRecord` オブジェクトを変更してもシステムの他の部分には影響しません。
 </blockquote>
 
 
 ## ランタイムバージョン
 
-データレコード変換機能のランタイムバージョンはイベントデータと同じですが、以下の変更が含まれます：
+データレコード変換関数のランタイムバージョンはイベントデータ用のものと同じですが、以下の変更が含まれています。
 
-* `crypto-es`ライブラリが削除され、[`tealium/crypto`](https://docs.tealium.com/function-modules/#crypto)に置き換えられます。
+* `crypto-es` ライブラリが削除され、[`tealium/crypto`](https://docs.tealium.com/function-modules/#crypto)に置き換えられています。
 
-カスタムアクションのランタイムバージョンは[イベントおよび訪問機能V3](https://docs.tealium.com/event-visitor-functions-v3/)と同じですが、以下の変更が含まれます：
+カスタムアクションのランタイムバージョンは、[イベント関数および訪問関数 V3](https://docs.tealium.com/event-visitor-functions-v3/)と同じですが、以下の変更が含まれています。
 
-* `track`ライブラリが削除されました。
-* データレコードは新しいイベントとしてTealiumに送り返すことはできません。
+* `track` ライブラリが削除されています。
+* データレコードを新しいイベントとして Tealium に送り返すことはできません。
 
-## transform()関数
+## transform() 関数
 
-変換データレコード機能を作成する場合、トリガールールの条件として`$.dataSourceId`フィールドを使用する必要があります。この条件を使用して、クラウドデータソースからデータソースキーを参照します。
+変換データレコード関数を作成するときは、`$.dataSourceId` フィールドをトリガールールの条件として使用する必要があります。この条件を使用して、クラウドデータソースのデータソースキーを参照します。
 
 例：
 
@@ -75,25 +75,25 @@ CloudStream機能の追加と管理は、他の機能の管理と同じですが
 ]
 
 
-クラウドデータソースを選択し、トリガールールを構成した後、関数コードエディタの**コード**タブに次のデフォルトコードが表示されます：
+クラウドデータソースを選択してトリガールールを構成すると、関数コードエディターの**コード**タブに次のデフォルトコードが表示されます。
 
 ```js
 import flatten from "tealium/util/flatten/v2";
 
-// "transform"関数を使用してデータレコードにアクセスし、変更を適用します
+// "transform" function allows you to access data record and apply changes
 transform((dataRecord) => {
-    // 元のレコードの変更を通じて変更が適用されます
+    // change are applied via the mutation of the original record
     console.log(JSON.stringify(flatten(dataRecord), null, 2));
 })
 ```
 
-## activate()関数
+## activate() 関数
 
-カスタムアクションデータレコード機能を作成する場合、デフォルトのコードが関数コードエディタの**コード**タブに表示されます：
+カスタムアクションのデータレコード関数を作成すると、関数コードエディターの**コード**タブにデフォルトコードが表示されます。
 
 ![](https://docs.tealium.com/images/early-access/cloudstream/cloudstream_function_details.png)
 
-このコードには`activate()`関数とその入力パラメータが含まれています。
+このコードには、`activate()` 関数とその入力パラメータが含まれています。
 
 ```js
 activate(async ({ dataRecord, helper }) => {
@@ -101,13 +101,13 @@ activate(async ({ dataRecord, helper }) => {
 });
 ```
 
-データレコード機能には[`dataRecordオブジェクト`](#data-record-object)と`helper`オブジェクトがあります。
+データレコード関数には、[`dataRecord` オブジェクト](#data-record-object)と `helper` オブジェクトがあります。
 
-`helper`パラメータは`helper.getAuth()`と`helper.getGlobalVariable()`を提供して、認証を取得し、グローバル変数を取得します。詳細については、を参照してください。
+`helper` パラメータには、認証情報の取得とグローバル変数の取得に使用する `helper.getAuth()` および `helper.getGlobalVariable()` が用意されています。詳細については、を参照してください。
 
 
 <blockquote>
-認証トークンはHTTPリクエスト内の関数によってのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。
+認証トークンは、HTTP リクエスト内の関数からのみ参照できます。HTTP リクエスト外でトークンを参照しようとすると、そのトークンは UUID プレースホルダーに置き換えられます。
 </blockquote>
 
 
@@ -115,20 +115,20 @@ activate(async ({ dataRecord, helper }) => {
 
 
 <blockquote>
-Tealium Collectで使用される変換機能については、[イベントパラメータ](https://docs.tealium.com/transforms-event-parameter/)を参照してください。
+Tealium Collect で使用する変換関数については、[イベントパラメータ](https://docs.tealium.com/transforms-event-parameter/)を参照してください。
 </blockquote>
 
 
-`dataRecord`オブジェクトはCloudStream機能とクラウドデータソースで利用可能で、次のプロパティを含んでいます：
+`dataRecord` オブジェクトは、Data Cloud Activation 関数およびクラウドデータソースで使用でき、次のプロパティを含みます。
 
-| プロパティ | データタイプ | 説明 |
+| プロパティ | データ型 | 説明 |
 | -------- | --------- | ----------- |
-| `account` | 文字列 | Tealiumアカウント名。 |
-| `data` | オブジェクト | クラウドデータソースから照会されたデータレコード、`dataRecord.data.udo`で参照されます。 |
-| `event_id` | 文字列 | TealiumイベントID。 |
-| `post_time` | 数値 | データレコードが照会された時刻を示すタイムスタンプ。 |
-| `profile` | 文字列 | Tealiumプロファイル名。 |
-| `dataSourceId` | 文字列 | データソースのID。|
+| `account` | string | Tealium アカウント名。 |
+| `data` | object | クラウドデータソースからクエリされたデータレコード。`dataRecord.data.udo` で参照されます。 |
+| `event_id` | string | Tealium イベント ID。 |
+| `post_time` | number | データレコードがクエリされた時刻を示すタイムスタンプ。 |
+| `profile` | string | Tealium プロファイル名。 |
+| `dataSourceId` | string | データソースの ID。|
 
 データレコードオブジェクトの例：
 
@@ -154,7 +154,7 @@ Tealium Collectで使用される変換機能については、[イベントパ�
 
 ## 例
 
-これは、データレコードからメールアドレス属性（`CDW_Column3_EmailAddress`）をハッシュ化し、その後データレコードをウェブフックに送信するTealium Cryptoライブラリを使用するデータレコード機能の例です。
+次のデータレコード関数の例では、Tealium Crypto ライブラリを使用してデータレコードのメールアドレス属性（`CDW_Column3_EmailAddress`）をハッシュ化し、そのデータレコードを Webhook に送信します。
 
 ```javascript
 import C from "tealium/crypto";

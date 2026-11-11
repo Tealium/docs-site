@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side/settings/user-permissions/about/
 Server-side user permissions provide control over the degree of access users have for each profile by creating a separation of access between the Tealium client-side interface and the server-side interface. From the server-side **Manage Users** screen, you can do the following:
 
 * **Grant Access to New Users**  
-New users are added to accounts in Tealium iQ Tag Management. After new users are added, the new users appear in the server-side user permissions list where server-side access can be granted, by profile. To add new users to an account, you must have the **Manage Users** permission. To assign roles on the server-side, you you must have the **Manage Account** permission.
+New users are added to accounts in Tag Management. After new users are added, the new users appear in the server-side user permissions list where server-side access can be granted, by profile. To add new users to an account, you must have the **Manage Users** permission. To assign roles on the server-side, you you must have the **Manage Account** permission.
 * **Specify Access**  
 Account administrators can grant access to users only for the areas that they intend to work on. They can also grant Save and Publish permissions for client-side products for a profile that do not carry over to server-side products for that profile.
 * **Set Permissions for Future Profiles**  
@@ -26,7 +26,7 @@ To be an admin on the server-side, you must have the **Manage Account** permissi
 </blockquote>
 
 
-Only the **Manage Users** permission on the client-side grants the ability to add users to the account. To learn more about managing user permission in Tealium iQ Tag Management, see [Managing User Permissions in iQ Tag Management](https://docs.tealium.com/about-user-permissions/).
+Only the **Manage Users** permission on the client-side grants the ability to add users to the account. To learn more about managing user permission in Tag Management, see [Managing User Permissions in Tag Management](https://docs.tealium.com/about-user-permissions/).
 
 ## Server-side permission roles
 

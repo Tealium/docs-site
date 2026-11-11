@@ -1,27 +1,27 @@
 ---
-title: AdRoll Smart Pixelタグ設定ガイド（廃止）
-description: この記事では、Tealium iQタグ管理アカウントでAdRoll Smart Pixelタグを設定する方法について説明します。
+title: AdRoll Smart Pixelタグ構成ガイド（非推奨）
+description: この記事では、タグ管理アカウントでAdRoll Smart Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 ---
 
 <blockquote>
-このコネクタは現在廃止され、タグマーケットプレイスでは利用できなくなりました。現在のコネクタについては、[Adroll Pixelタグ設定ガイド](https://docs.tealium.com/adroll-pixel-tag/)をご覧ください。
+このコネクタは現在非推奨となっており、タグマーケットプレイスでは利用できません。現在のコネクタについては、[Adroll Pixelタグ構成ガイド](https://docs.tealium.com/adroll-pixel-tag/)を参照してください。
 </blockquote>
 
 
-## タグのヒント
+## タグに関するヒント
 
-* 初回のページロード後、`adroll_record_user`オブジェクトのマッピングからデータを取得した`adroll_record_user`関数によって、続けて呼び出しが行われます。
-* `name=param`を追加するには、マッピングツールボックスを使用して`adroll_segments`に値をマップします。サンプル値は`checkout`または`orderconfirm`です。
-* `_corder`を`adroll_custom_data.ORDER_ID`にマップするなど、マッピングを使用して`adroll_custom_data`の値を設定します。
-* `adroll_conversion_value`はE-Commerce Extensionから`_csubtototal`に自動的にマップされます。
-* `adroll_conversion_value`パラメータは、Order IDが設定されている場合にのみ設定されます。
+* 最初のページ読み込み後、以降の呼び出しは、マッピング内の`adroll_record_user`オブジェクトのデータを使用して`adroll_record_user`関数によって行われます。
+* `name=param`を追加するには、マッピングツールボックスを使用して値を`adroll_segments`にマッピングします。値の例には`checkout`や`orderconfirm`があります。
+* マッピングを使用して`adroll_custom_data`の値を構成します。たとえば、`_corder`を`adroll_custom_data.ORDER_ID`にマッピングします。
+* `adroll_conversion_value`は、E-Commerce Extensionの`_csubtototal`に自動的にマッピングされます。
+* `adroll_conversion_value`パラメータは、注文IDが構成されている場合にのみ構成されます。
 
-## タグの設定
+## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、AdRoll Smart Pixelタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の設定を行います：
+タグを追加する際は、次の構成を構成します。
 
 * **広告主ID**
   * 通常は22文字の英数字です。
@@ -31,23 +31,23 @@ url: https://docs.tealium.com/ja/client-side-tags/adroll-smart-pixel-tag/
 
 ## データマッピング
 
-マッピングとは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+利用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
 |変数| 説明|
 |---| ---|
 |`adroll_custom_data.myvar`|  <ul><li>カスタムデータ</li></ul> |
-|`adroll_record_user.myvar`|  <ul><li>カスタムレコードユーザーデータ</li></ul> |
+|`adroll_record_user.myvar`|  <ul><li>カスタムユーザーレコードデータ</li></ul> |
 |`adroll_conversion_value`|  <ul><li>コンバージョン値</li></ul> |
 |`adroll_currency`|  <ul><li>通貨</li></ul> |
 |`adroll_segments`|  <ul><li>セグメント</li></ul> |
-|`adroll_email`|  <ul><li>メール</li></ul> |
-|`adroll_custom_data.product_id`|  <ul><li>製品ID</li></ul> |
-|`adroll_custom_data.product_group`|  <ul><li>製品グループ</li></ul> |
-|`adroll_custom_data.product_action`|  <ul><li>製品アクション</li></ul> |
-|`adroll_custom_data.product_category_id`|  <ul><li>製品カテゴリ</li></ul> |
-|`adroll_adv_id`|  <ul><li>Adv Id</li></ul> |
-|`adroll_pix_id`|  <ul><li>Pix Id</li></ul> |
+|`adroll_email`|  <ul><li>メールアドレス</li></ul> |
+|`adroll_custom_data.product_id`|  <ul><li>商品ID</li></ul> |
+|`adroll_custom_data.product_group`|  <ul><li>商品グループ</li></ul> |
+|`adroll_custom_data.product_action`|  <ul><li>商品アクション</li></ul> |
+|`adroll_custom_data.product_category_id`|  <ul><li>商品カテゴリ</li></ul> |
+|`adroll_adv_id`|  <ul><li>広告主ID</li></ul> |
+|`adroll_pix_id`|  <ul><li>ピクセルID</li></ul> |

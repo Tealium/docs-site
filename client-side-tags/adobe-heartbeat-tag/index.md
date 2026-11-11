@@ -1,6 +1,6 @@
 ---
 title: Adobe Heartbeat Tag Setup Guide
-description: This article describes how to set up the Adobe Heartbeat Tag tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Adobe Heartbeat Tag tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/adobe-heartbeat-tag/
 ---
 ## How it Works
@@ -10,7 +10,7 @@ The Adobe Heartbeat tag lets you collect extensive data on how visitors interact
 ## Prerequisites
 
 * **jQuery**  
-Ensure that your site has jQuery installed on it. If you are not using jQuery, you can add and configure a new jQuery tag from the Tealium iQ tag Marketplace.
+Ensure that your site has jQuery installed on it. If you are not using jQuery, you can add and configure a new jQuery tag from the Tag Management tag Marketplace.
 * **Adobe Enterprise Cloud ID Service Tag**  
 [The Adobe Cloud Service](https://experienceleague.adobe.com/en/docs/id-service/using/intro/overview) generates a unique ID for every visitor on your site and persists the ID across all their Enterprise Cloud Solutions, thus preventing duplicate counts. Add and configure the tag in your profile, if you have not already done and enable the bundle flag setting for the tag so that it can be bundled into `utag.js` on all pages.
 * [**AppMeasurement JavaScript Tag**](https://docs.tealium.com/client-side-tags/adobe-appmeasurement-for-js-tag/)  
@@ -27,17 +27,17 @@ In the Tags tab, ensure that the bundled Enterprise Cloud ID tag is placed above
 * Adobe Heartbeat v1.6.7
 * Adobe Heartbeat v1.6.7 with Nielsen v5.0 integration
 
-## Tag Tips
+## Tag tips
 
 * Heartbeat requires the Adobe Experience Cloud ID Service as well as AppMeasurement for JS to be loaded first, preferably bundled.
 * This tag is fired with "utag.track('video', data);" which should be implemented in your video event handlers.
 * jQuery is required by Adobe Heartbeat.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Adobe Heartbeat tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 |FIELD NAME| FIELD VALUE|
 |---| ---|
@@ -71,9 +71,9 @@ Best Practice: Create and apply custom rules to load this tag on any pages where
 </blockquote>
 
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The following sections provide detailed tables for each available category.
 
@@ -250,7 +250,7 @@ Once configured, the tag fires continuously every second to keep the video data 
 
 
 <blockquote>
-An easy way to set both the Heartbeat and Nielsen debug flags is by adding a querystring parameter to the URL of the video page. For For example, `adobe_debug=1&Nielsen=1` <br>You can then add the Query parameter variables to your data layer in Tealium iQ and map them accordingly.<br>Mapping destinations for both the Heartbeat and Nielsen debug flags are available under the Standard category. See "Adobe Heartbeat Debug Logging Flag" and "Nielsen SDK Debug Flag".<br>When complete, you can run the following Tealium debug command in your browser console. <br>
+An easy way to set both the Heartbeat and Nielsen debug flags is by adding a querystring parameter to the URL of the video page. For For example, `adobe_debug=1&Nielsen=1` <br>You can then add the Query parameter variables to your data layer in Tag Management and map them accordingly.<br>Mapping destinations for both the Heartbeat and Nielsen debug flags are available under the Standard category. See "Adobe Heartbeat Debug Logging Flag" and "Nielsen SDK Debug Flag".<br>When complete, you can run the following Tealium debug command in your browser console. <br>
 `document.cookie = "utagdb=true";`
 </blockquote>
 

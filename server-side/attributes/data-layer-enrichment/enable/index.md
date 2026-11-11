@@ -10,11 +10,11 @@ Data layer enrichment provides access to visitor data through two public, unauth
 * The [Data Layer Enrichment API](https://docs.tealium.com/get-data-layer-enrichment-api/), which returns the full visitor profile without filtering.
 * The [Profile Definition API](https://docs.tealium.com/get-profile-definition-api/), which returns badge and audience definitions for your profile.
 
-This setting is separate from the [Data Layer Enrichment configuration in Tealium iQ](https://docs.tealium.com/configure-data-layer-enrichment-iq/). The Tealium iQ configuration determines which AudienceStream profile provides attributes to the data layer. It does not control access to the Data Layer Enrichment APIs.
+This setting is separate from the [Data Layer Enrichment configuration in Tag Management](https://docs.tealium.com/configure-data-layer-enrichment-iq/). The Tag Management configuration determines which Customer Data Platform (CDP) profile provides attributes to the data layer. It does not control access to the Data Layer Enrichment APIs.
 
 When data layer enrichment is enabled, both APIs are available and return data for valid requests.
 
-When data layer enrichment is disabled, both the Data Layer Enrichment API and the Profile Definition API return a `200` response with an empty JSON object. Existing integrations that rely on these APIs stop receiving data from them. The Tealium Collect tag also uses this endpoint to retrieve visitor attributes, so disabling data layer enrichment also stops client-side attribute sync in Tealium iQ.
+When data layer enrichment is disabled, both the Data Layer Enrichment API and the Profile Definition API return a `200` response with an empty JSON object. Existing integrations that rely on these APIs stop receiving data from them. The Tealium Collect tag also uses this endpoint to retrieve visitor attributes, so disabling data layer enrichment also stops client-side attribute sync in Tag Management.
 
 Data layer enrichment is enabled by default on existing profiles and disabled by default on new profiles. If you are setting up data layer enrichment on a new profile, enable this setting before using the APIs.
 

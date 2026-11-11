@@ -290,7 +290,7 @@ The following steps are all required and use the same logic as step 2.
 
 #### Funnel fallout
 
-Knowing where a user dropped from the funnel is an important piece to many marketing campaigns, and AudienceStream can tell you the last step completed.
+Knowing where a user dropped from the funnel is an important piece to many marketing campaigns, and Customer Data Platform (CDP) can tell you the last step completed.
 
 First, several rules must be created for each step of the funnel. For example the rule **Conversion Funnel - Step 1 Complete** checks if **Step 1 - Product** has been completed.
 

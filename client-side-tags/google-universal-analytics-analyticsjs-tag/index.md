@@ -1,6 +1,6 @@
 ---
 title: Google Universal Analytics (analytics.js) Tag Setup Guide
-description: This article describes how to configure the Google Universal Analytics tag in your iQ Tag Management account.
+description: This article describes how to configure the Google Universal Analytics tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-analyticsjs-tag/
 ---
 
@@ -20,7 +20,7 @@ Google Analytics (analytics.js) introduces a set of features that change the way
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -71,7 +71,7 @@ When adding the tag, configure the following settings:
     * `promo_click`
     * `refund`
   * For more information, see the Google [Enhanced E-Commerce](http://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) documentation.
-  * For more information about how to setup enhanced E-Commerce actions through Tealium iQ Tag Management, see [Google Universal Analytics Tag: Enhanced E-Commerce](https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/).
+  * For more information about how to setup enhanced E-Commerce actions through Tag Management, see [Google Universal Analytics Tag: Enhanced E-Commerce](https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/).
 * **Enhanced Link Attribution**
   * (Optional) When enabled, a request will be made for `linkid.js` on each page.
   * Use the default (**false**) if you are not sure.
@@ -125,7 +125,7 @@ Analytics tags such as Google Universal Analytics are intended to be loaded on a
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 * If you are tracking e-commerce data, then we recommend that you add and configure the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/). Mapping to e-commerce destinations in the mapping toolbox overrides the e-commerce extension's mappings.
 * For Google Analytics, additional mapping is not required for basic page tracking. The tag automatically tracks basic page data. Event tracking, campaign tracking, social interaction measurement, content groups, and custom variables are not automatically sent; you must map these manually.

@@ -13,7 +13,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -23,7 +23,7 @@ After adding the connector, configure the following settings:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Segment | ✓ | ✓ |
 | Remove User from Segment | ✓ | ✓ |

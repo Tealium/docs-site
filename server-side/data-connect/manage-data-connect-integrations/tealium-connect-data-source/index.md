@@ -3,7 +3,7 @@ title: Set up a Tealium Connect data source
 description: This article describes how to set up a Tealium Connect data source.
 url: https://docs.tealium.com/server-side/data-connect/manage-data-connect-integrations/tealium-connect-data-source/
 ---
-To send events to Tealium Collect and identify Data Connect events, use a Tealium Connect data source for each integration. Having a dedicated data source for each Data Connect integration makes it easy to see the related events in [Live Events](https://docs.tealium.com/about-live-events/). You can also configure connectors in Tealium EventStream or AudienceStream that process only Data Connect events.
+To send events to Tealium Collect and identify Data Connect events, use a Tealium Connect data source for each integration. Having a dedicated data source for each Data Connect integration makes it easy to see the related events in [Live Events](https://docs.tealium.com/about-live-events/). You can also configure connectors in Event Streaming or Customer Data Platform (CDP) that process only Data Connect events.
 
 For more information about data sources in Tealium, see [About Data Sources](https://docs.tealium.com/about-data-sources/).
 

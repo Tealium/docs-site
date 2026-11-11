@@ -1,13 +1,13 @@
 ---
-title: RTB House オーディエンスコネクタ構成ガイド
-description: RTB House管理のGoogle Cloud Storageバケットにオーディエンスメンバーシップの変更をJSONL形式で配信するためのRTB Houseオーディエンスコネクタを使用します。
+title: RTB House Audiencesコネクタ構成ガイド
+description: RTB House Audiencesコネクタを使用して、オーディエンスメンバーシップの変更をJSONL形式でRTB House管理のGoogle Cloud Storageバケットに配信します。
 url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-connector/
 ---
 
 
 ## API情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは、次のベンダーAPIを使用します。
 
 * API名：Google Cloud Storage API
 * APIバージョン：v1
@@ -15,17 +15,17 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 ## 構成
 
-コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
 
 <blockquote>
-このコネクタはTealium管理のGoogle Cloudサービスアカウントを認証に使用します。RTB Houseはこのアカウントに対象バケットへのアクセスを許可するため、ここでの認証構成は必要ありません。
+このコネクタは、認証にTealium管理のGoogle Cloudサービスアカウントを使用します。RTB Houseがこのアカウントに宛先バケットへのアクセス権を付与するため、ここで認証を構成する必要はありません。
 </blockquote>
 
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | ビジタープロファイル | イベントデータ |
 | --- | :---: | :---: |
 | RTB Houseセグメントにユーザーを追加 | ✓ | ✗ |
 | RTB Houseセグメントからユーザーを削除 | ✓ | ✗ |
@@ -34,10 +34,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションでは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかのしきい値に達するか、プロファイルがパブリッシュされるまで、リクエストはキューに格納されます。
 
 * リクエストの最大数：100,000
-* 最古のリクエストからの最大時間：60分
+* 最も古いリクエストからの最大経過時間：60分
 * リクエストの最大サイズ：100 MB
 
 #### パラメータ
@@ -48,23 +48,23 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### ユーザー識別子
 
-アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされている必要があります。
+アクションがトリガーされたときに、次のユーザー識別子のうち少なくとも1つがマッピングされ、値が構成されている必要があります。
 
 | パラメータ | 説明 |
 | --- | --- |
 | AAID | Androidデバイスの広告ID。 |
 | IDFA | iOSデバイスの広告ID。 |
-| UID | サイトピクセルから同期されたRTB HouseのユーザーID。 |
-| AID | ハッシュ化されたメールや内部IDなどの代替ユーザーID。 |
+| UID | サイトピクセルから取得したRTB House同期済みユーザーID。 |
+| AID | ハッシュ化されたメールアドレスや内部IDなどの代替ユーザーID。 |
 
 ### RTB Houseセグメントからユーザーを削除
 
 #### バッチ制限
 
-このアクションはバッチリクエストを使用して、ベンダーへの大量データ転送をサポートします。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：
+このアクションでは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかのしきい値に達するか、プロファイルがパブリッシュされるまで、リクエストはキューに格納されます。
 
 * リクエストの最大数：100,000
-* 最古のリクエストからの最大時間：60分
+* 最も古いリクエストからの最大経過時間：60分
 * リクエストの最大サイズ：100 MB
 
 #### パラメータ
@@ -75,11 +75,11 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 
 #### ユーザー識別子
 
-アクションがトリガーされたときに、以下のいずれかのユーザー識別子がマッピングされている必要があります。
+アクションがトリガーされたときに、次のユーザー識別子のうち少なくとも1つがマッピングされ、値が構成されている必要があります。
 
 
 <blockquote>
-このアクションは、ユーザーが現在セグメントにいない場合でも正常に完了します。コネクタは現在のセグメントメンバーシップを確認せずに削除レコードを書き込みます。
+ユーザーが現在そのセグメントに属していない場合でも、このアクションは正常に完了します。コネクタは、現在のセグメントメンバーシップを確認せずに削除レコードを書き込みます。
 </blockquote>
 
 
@@ -87,5 +87,5 @@ url: https://docs.tealium.com/ja/server-side-connectors/rtb-house-audiences-conn
 | --- | --- |
 | AAID | Androidデバイスの広告ID。 |
 | IDFA | iOSデバイスの広告ID。 |
-| UID | サイトピクセルから同期されたRTB HouseのユーザーID。 |
-| AID | ハッシュ化されたメールや内部IDなどの代替ユーザーID。 |
+| UID | サイトピクセルから取得したRTB House同期済みユーザーID。 |
+| AID | ハッシュ化されたメールアドレスや内部IDなどの代替ユーザーID。 |

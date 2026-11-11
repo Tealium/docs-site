@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/slack-connector/
 ---
 ### Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Post Channel Message| ✓| ✓|
 |Post Enhanced Message in Channel| ✓| ✓|
 
 ### Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, there are no settings to configure. Click **Done** to proceed to the next step.
 

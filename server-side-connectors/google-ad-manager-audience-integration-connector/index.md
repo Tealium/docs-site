@@ -11,7 +11,7 @@ The Google Ad Manager Audience Integration connector lets publishers add visitor
 * Generate and send a PPID client-side for logged-in users using [Google Ad Manager 360 Audience Pixel tag](https://docs.tealium.com/google-ad-manager-360-audience-pixel-tag/) or [Google Publisher tag](https://docs.tealium.com/google-publisher-tag/).
 * Set up the PPID as a Tealium attribute for use in the connector.
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -21,18 +21,20 @@ This connector uses the following vendor API:
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add to Audience List | ✓ | ✓ |
 | Remove from Audience List | ✓ | ✓ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Customer ID**. 
+
+After you configure the connector, click **Done**.
 (Required) Customer ID for the account linked to Tealium in the Ad Manager UI. In Ad Manager, go to **Tools and Settings > Linked Accounts** to create a link to Tealium.
 
 ## Actions

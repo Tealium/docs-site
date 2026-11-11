@@ -7,7 +7,7 @@ The Google Analytics 4 Measurement Protocol is intended to augment existing even
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -72,9 +72,11 @@ For more information and a list of available events, see [Events](https://develo
 * `view_promotion`
 * `view_search_results`
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event (gtag.js) | ✓ | ✓ |
 | Send Firebase Event | ✓ | ✓ |

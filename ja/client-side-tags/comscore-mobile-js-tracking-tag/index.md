@@ -1,46 +1,46 @@
 ---
-title: comScore Mobile JS トラッキングタグ構成ガイド
-description: この記事では、comScore Mobile JS トラッキングタグの構成方法について説明します。
+title: comScore Mobile JSトラッキングタグ構成ガイド
+description: この記事では、comScore Mobile JSトラッキングタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/comscore-mobile-js-tracking-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* このタグはネイティブモバイルアプリ内での使用を目的としています。モバイルウェブサイトの実装で使用することは意図されていません。
-* 追加のパラメータを構成したり、標準の構成値を上書きするためにマッピングを使用します。
+* このタグは、ネイティブモバイルアプリ内で使用するためのものです。モバイルWebサイトへの実装を目的としたものではありません。
+* マッピングを使用して追加のパラメータを構成し、標準の構成値を上書きします。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、以下の項目を構成します。
 
 * **クライアントID**
-* **パブリッシャーシークレットキー**
-* **自動更新を有効にする**
+* **パブリッシャー秘密鍵**
+* **自動更新を有効化**
 * **キープアライブイベント**
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは以下のとおりです。
 
 ### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `clientID` | クライアントID  |
-| `pub_key` | パブリッシャーキー  |
-| `appName` | アプリ名  |
-| `appVersion` | アプリバージョン |
-| `keepAliveEnabled` | キープアライブ有効、真/偽、デフォルトは真。 |
-| `enableAutoUpdate` | 自動更新を有効にする、真/偽、デフォルトは偽。 |
-| `update_interval` | 更新間隔 |
-| `update_foregroundOnly` | フォアグラウンドのみ更新 |
+| `clientID` | clientID |
+| `pub_key` | pub_key |
+| `appName` | appName |
+| `appVersion` | appVersion |
+| `keepAliveEnabled` | keepAliveEnabled。true/false。デフォルトはtrueです。 |
+| `enableAutoUpdate` | enableAutoUpdate。true/false。デフォルトはfalseです。 |
+| `update_interval` | update_interval |
+| `update_foregroundOnly` | update_foregroundOnly |
 | `view_name` | ページビュー名 |
 
 ### ラベル
@@ -52,35 +52,35 @@ url: https://docs.tealium.com/ja/client-side-tags/comscore-mobile-js-tracking-ta
 | `autoStartLabels.####` | 自動開始ラベル |
 
 ### イベント
-イベントをマップするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+
+イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
 | `active` | アクティブ |
-| `aggregate` | 集計 |
-| `close` | 閉じる |
+| `aggregate` | 集約 |
+| `close` | 終了 |
 | `inactive` | 非アクティブ |
-| `hidden` | 隠す |
+| `hidden` | 非表示 |
 | `launch` | 起動 |
 | `sleep` | スリープ |
 | `view` | ビュー |
-| `wake` | 起きる |
+| `wake` | ウェイク |
 
 ### プラットフォーム
 
 | 変数 | 説明 |
 |:---------|:------------|
 | `plat.appName` | アプリ名 |
-| `plat.appVersion` | アプリバージョン |
-| `plat.visitorId` | 訪問ID、`_ccustid`を上書き |
+| `plat.appVersion` | アプリのバージョン |
+| `plat.visitorId` | 訪問ID。`_ccustid`を上書きします |
 | `plat.deviceName` | デバイス名 |
-| `plat.version` | プラットフォームバージョン |
+| `plat.version` | プラットフォームのバージョン |
 | `plat.name` | プラットフォーム名 |
-| `plat.runtime` | ランタイムバージョン |
-| `plat.os_version` | OSバージョン  |
-| `plat.dev_resolution` | デバイス解像度 |
-| `plat.dev_language` | デバイス言語 |
+| `plat.runtime` | ランタイムのバージョン |
+| `plat.os_version` | OSのバージョン |
+| `plat.dev_resolution` | デバイスの解像度 |
+| `plat.dev_language` | デバイスの言語 |
 | `plat.app_rdns` | パッケージ名 |
 | `plat.connection_type` | 接続タイプ |
-| `plat.visitorIDSuffix` | 訪問IDサフィックス |
-
+| `plat.visitorIDSuffix` | 訪問IDのサフィックス |

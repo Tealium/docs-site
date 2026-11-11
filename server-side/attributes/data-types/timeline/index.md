@@ -44,7 +44,7 @@ Timelines are limited to 100 entries. Like any attributes, they contribute to th
 To use timeline attributes efficiently, we recommend the following:
 
 * Do not store information in the timeline longer than required. Set an expiration date for timeline entries.
-* Do not store other attributes in a timeline unless you have a specialized use case, such as sending the timeline entries to AudienceStore or another connector. You can store most attribute types in a timeline, but only numbers and tallies can be enriched onto other AudienceStream attributes from a timeline. For example, you can get the sum of a number from entries in the timeline, or aggregate a tally from entries in a timeline. Although you can store other attribute types, there are no enrichments to aggregate the values you store. 
+* Do not store other attributes in a timeline unless you have a specialized use case, such as sending the timeline entries to AudienceStore or another connector. You can store most attribute types in a timeline, but only numbers and tallies can be enriched onto other Customer Data Platform (CDP) attributes from a timeline. For example, you can get the sum of a number from entries in the timeline, or aggregate a tally from entries in a timeline. Although you can store other attribute types, there are no enrichments to aggregate the values you store. 
 <blockquote>
 Storing other attributes in a timeline entry increases the visitor profile size.
 </blockquote>

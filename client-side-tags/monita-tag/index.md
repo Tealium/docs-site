@@ -1,13 +1,13 @@
 ---
 title: Monita Tag Setup Guide
-description: This article describes how to set up the Monita tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Monita tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/monita-tag/
 ---
 Monita is a tag monitoring platform. It provides real-time dashboards that show what tags and pixels are airing and what data they are sending. Monita can also send real-time alerts when your business conditions are breached or PII (Personally Identifiable Information) is detected.
 
 Monita’s tag code is designed to be loaded as a library before the page loads. So, instead of using the Tealium tag marketplace to install this tag, use the [JavaScript Extension](https://docs.tealium.com/javascript-code-extension/).
 
-## Tag Configuration
+## Tag configuration
 
 ### Monita monitor configuration
 

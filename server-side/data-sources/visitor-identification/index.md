@@ -29,7 +29,7 @@ The following example shows how the `tealium_visitor_id` for each row/event is c
 With the following parameters:
 * `acme` - The account name.
 * `main` - The Tealium Customer Data Hub profile name.
-* `1234` - The numeric ID of the visitor ID attribute in AudienceStream.
+* `1234` - The numeric ID of the visitor ID attribute in Customer Data Platform (CDP).
 * `100120394` - The value from the CSV file that is being set to the visitor ID attribute.
 
 For more information about visitor IDs, see [Anonymous IDs, User Identifiers, and Visitor ID Attributes](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
@@ -38,8 +38,8 @@ For more information about visitor IDs, see [Anonymous IDs, User Identifiers, an
 
 There are specific use cases when you do not need to have Visitor ID Mapping in AudienceStream enabled during your file import or Snowflake data source configurations:
 
-* The Tealium profile does not have AudienceStream enabled.
-* You are importing data that is based on the same anonymous visitor ID that AudienceStream has used to identify a user on the web or in an app. In this case, disable Visitor ID Mapping in AudienceStream and instead map the column containing this visitor ID directly to the event attribute `tealium_visitor_id`.
+* The Tealium profile does not have CDP enabled.
+* You are importing data that is based on the same anonymous visitor ID that CDP has used to identify a user on the web or in an app. In this case, disable Visitor ID Mapping in AudienceStream and instead map the column containing this visitor ID directly to the event attribute `tealium_visitor_id`.
 
 ## When to use attribute enrichment (File Import only)
 

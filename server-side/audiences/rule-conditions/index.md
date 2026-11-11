@@ -31,8 +31,8 @@ Some operators apply only to specific attribute types, as indicated in the **App
 |greater than or equal to| Attribute value either exceeds or equals the value you specify.|  Number<br> Date |
 |is assigned|  Attribute exists, but may or may not have a value. <br><br>**True**<br> `"Shirts"` is assigned <br>`["iOS", "Android"]` is assigned<br> `[]` is assigned <br>`""` is assigned is assigned <br>`Is VIP` is assigned |  Number<br> Timeline<br> List<br> Badge<br> String<br> Tally<br> Visitor ID<br> Date |
 |is not assigned| Attribute does not exist.|  Number<br> Timeline<br> List<br> Badge<br> String<br> Tally<br> Date<br> Visitor ID |
-|is empty|  Tealium iQ variable does not contain any value (for example, value is undefined, null, or blank string). <br><br>**True**<br> `{ page_name : undefined }`<br> `{ page_name : null }`<br> `{ page_name : "" }`<br> `{ product_id : [] }` |  Imported from Tealium iQ Tag Management |
-|is not empty|  Tealium iQ variable contains any value. For example, a string containing one or more characters, a number with a value (including `0`), or an array with one or more items. <br><br>**True**<br> `{ page_name : "Title" }`<br> `{ page_num : 1 }`<br> `{ product_id : ["WidgetXYZ"] }` |  Imported from Tealium iQ Tag Management |
+|is empty|  Tealium iQ variable does not contain any value (for example, value is undefined, null, or blank string). <br><br>**True**<br> `{ page_name : undefined }`<br> `{ page_name : null }`<br> `{ page_name : "" }`<br> `{ product_id : [] }` |  Imported from Tag Management |
+|is not empty|  Tealium iQ variable contains any value. For example, a string containing one or more characters, a number with a value (including `0`), or an array with one or more items. <br><br>**True**<br> `{ page_name : "Title" }`<br> `{ page_num : 1 }`<br> `{ product_id : ["WidgetXYZ"] }` |  Imported from Tag Management |
 |is true| Boolean value equals **True**.|  Boolean |
 |is false| Boolean value equals **False**.|  Boolean |
 |occurred less than| Date value is not yet past the number of minutes/hours/days/weeks/months you specify.|  Date |
@@ -41,7 +41,7 @@ Some operators apply only to specific attribute types, as indicated in the **App
 |is completed| Funnel has ended for the visitor/visit.|  Funnel |
 |step completed| Step is successfully completed for the visitor/visit.|  Funnel |
 |step not completed| Step is not completed for the visitor/visit.|  Funnel |
-|is executed| Tag has successfully fired on the page.| Tags in your Tealium iQ Tag Management profile|
+|is executed| Tag has successfully fired on the page.| Tags in your Tag Management profile|
 |matches regex|  Lets you use regular expressions (regex) in rules, enrichments, and audiences. For more information, see [Regular expressions](#regular-expressions)  |  String |
 
 ## Unassigned attributes in Excluding conditions

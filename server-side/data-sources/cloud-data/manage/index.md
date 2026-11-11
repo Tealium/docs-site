@@ -152,7 +152,7 @@ For each column label, select the corresponding event attribute from the list.
 
 ## Map a visitor ID
 
-To use your cloud data source with AudienceStream, map a column to a visitor ID attribute. Select a column that represents a visitor ID and map it to the corresponding visitor ID attribute.
+To use your cloud data source with Customer Data Platform (CDP), map a column to a visitor ID attribute. Select a column that represents a visitor ID and map it to the corresponding visitor ID attribute.
 
 
 <blockquote>

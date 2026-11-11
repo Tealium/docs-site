@@ -21,11 +21,11 @@ url: https://docs.tealium.com/client-side-tags/crazy-egg-tag/
 
 * Account
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### Add the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a tag to your profile.
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configure the Tag
 
@@ -46,7 +46,7 @@ Here's a list of tag configurations essential to load the Crazy Egg Tag:
 
 [Mapping](https://docs.tealium.com/about-data-mappings/) is the process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag.
 
-For Crazy Egg, mappings are not supported in Tealium iQ. By default Crazy Egg's library captures data and sends it to your Crazy Egg report. To use custom User Vars 1 through 5, you must pass the following method definition into a callback function:
+For Crazy Egg, mappings are not supported in Tag Management. By default Crazy Egg's library captures data and sends it to your Crazy Egg report. To use custom User Vars 1 through 5, you must pass the following method definition into a callback function:
 
 ```
 window.CE_READY = function CE_READY() {

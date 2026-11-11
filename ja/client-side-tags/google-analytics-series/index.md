@@ -1,18 +1,18 @@
 ---
-title: Google Analytics（シリーズ）
-description: Tealium iQタグ管理でGoogle Analyticsを構成する一連の投稿について。
+title: Google アナリティクス（シリーズ）
+description: タグ管理で Google アナリティクスを構成する方法についての一連の記事です。
 url: https://docs.tealium.com/ja/client-side-tags/google-analytics-series/
 ---
 
 <blockquote>
-2023年7月1日以降、Google Universal Analyticsのプロパティはヒットの処理を停止しました。このタグは廃止され、タグマーケットプレイスではもう利用できません。現在のタグについては、[Google Analytics 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)をご覧ください。
+2023 年 7 月 1 日をもって、Google ユニバーサル アナリティクスのプロパティではヒットの処理が停止されました。このタグは非推奨となり、タグマーケットプレイスでは利用できなくなりました。現在のタグについては、[Google アナリティクス 4](https://docs.tealium.com/google-analytics-4-ga4-tag/)を参照してください。
 </blockquote>
 
 
-## Google Analytics (analytics.js)
+## Google アナリティクス（analytics.js）
 
-*   [Google Universal Analytics (analytics.js) タグ構成ガイド](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/)
-*   [Google Universal Analytics: イベントトラッキング](https://docs.tealium.com/google-universal-analytics-event-tracking/)
-*   [Google Universal Analyticsタグ: 高度なマッピング](https://docs.tealium.com/google-universal-analytics-tag-advanced-mapping/)
-*   [Google Universal Analyticsクロスドメイントラッキングの構成](https://docs.tealium.com/google-universal-analytics-cross-domain-tracking/)
-*   [Google Universal Analyticsタグ: エンリッチメントEコマース](https://docs.tealium.com/google-universal-analytics-tag-enhanced-e-commerce/)
+*   [Google ユニバーサル アナリティクス（analytics.js）タグ構成ガイド](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/)
+*   [Google ユニバーサル アナリティクス：イベントトラッキング](https://docs.tealium.com/google-universal-analytics-event-tracking/)
+*   [Google ユニバーサル アナリティクスタグ：高度なマッピング](https://docs.tealium.com/google-universal-analytics-tag-advanced-mapping/)
+*   [Google ユニバーサル アナリティクスのクロスドメイントラッキングの構成](https://docs.tealium.com/google-universal-analytics-cross-domain-tracking/)
+*   [Google ユニバーサル アナリティクスタグ：拡張 e コマース](https://docs.tealium.com/google-universal-analytics-tag-enhanced-e-commerce/)

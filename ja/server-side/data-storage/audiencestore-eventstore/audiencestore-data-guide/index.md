@@ -1,26 +1,26 @@
 ---
-title: AudienceStore データガイド
-description: この記事は、AudienceStoreを通じて提供される訪問レベルの属性の概要です。
+title: AudienceStoreデータガイド
+description: この記事では、AudienceStoreを通じて利用できる訪問レベルの属性について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/
 ---
-AudienceStoreは、AudienceStreamから訪問レベルのデータを収集し、エクスポートするための最も効率的な方法を提供します。訪問データはフラットなJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。各ファイルには、オーディエンス内の各訪問レコードを表す複数のJSONオブジェクトが含まれています。
+AudienceStoreは、顧客データプラットフォーム（CDP）から訪問レベルのデータを収集し、エクスポートするための最も効率的な方法を提供します。訪問データはフラット化されたJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。各ファイルには、オーディエンス内の各訪問レコードを表す複数のJSONオブジェクトが含まれます。
 
 ## 訪問レコードの作成、更新、削除操作
 
 * **訪問レコードの作成**  
-訪問レコードはセッションが終了した後に作成されます。レコードがDataAccessに表示されるまでには約1時間かかります。
+訪問レコードは、セッションの終了後に作成されます。レコードがDataAccessに表示されるまでには約1時間かかります。
 
 * **訪問レコードの更新**  
-訪問がサイトを再訪した場合、セッションの終了時に訪問レコードが更新されます。訪問レコードに対して[訪問スティッチング]()が開始された場合、既存のプロファイルは一時的に削除され、ステッチされたプロファイルが再挿入されます。
+訪問がサイトを再訪すると、セッション終了時に訪問レコードが更新されます。訪問レコードに対して[訪問のスティッチング]()が開始されると、既存のプロファイルが一時的に削除され、スティッチングされたプロファイルが再挿入されます。
 
 * **訪問レコードの削除**  
-訪問レコードは、契約で指定された保持期間に基づいて削除されます。保持期間内に更新されていない訪問レコードは削除され、回復することはできません。例えば、保持期間が30日の場合、過去30日間に更新されていないすべての訪問レコードが削除されます。
+訪問レコードは、契約で指定された保持期間に基づいて削除されます。保持期間内に更新されなかった訪問レコードは削除され、復元できません。たとえば、保持期間が30日間の場合、過去30日間に更新されなかったすべての訪問レコードが削除されます。
 
-## AudienceStoreへ送信されるデータ
-                                 
-AudienceStoreコネクタは訪問データをAudienceStoreに送信するために**訪問データの送信**アクションを使用します。このアクションで**現在の訪問データを含む**オプションが選択されている場合、`current_visit`オブジェクトの`events`配列には、AudienceStreamで定義されているイベント属性のみが含まれます（属性またはエンリッチメントとして定義されています）。
+## AudienceStoreに送信されるデータ
 
-以下のイベントデータ属性は常に`events`配列に含まれます：
+訪問データをAudienceStoreに送信するAudienceStoreコネクタには、訪問レコードデータの送信に使用する**訪問データを送信**アクションがあります。このアクションで**現在の訪問データを含める**オプションを選択した場合、`current_visit`オブジェクトの`events`配列には、CDPでも定義されているイベント属性（属性またはエンリッチメントとして定義されたもの）のみが含まれます。
+
+以下のイベントデータ属性は、常に`events`配列に含まれます。
 
 ```
 _dc_ttl_
@@ -47,43 +47,43 @@ visitor_id
 
 ## 訪問レコードの形式
 
-訪問レコード（プロファイル）は、以下のフィールドを含むJSONオブジェクトとして保存されます：
+訪問レコード（プロファイル）は、以下のフィールドを含むJSONオブジェクトとして保存されます。
 
-|オブジェクト名| タイプ| 説明|
-|---| ---| ---|
-| メインオブジェクト | object|  各属性データタイプのサブオブジェクトを持つ訪問オブジェクト：<ul><li>ステッチされた訪問ID: `replaces : [ ]`</li><li>数字/数字の配列: `"metrics" : { }, "metric_lists" : { }`</li><li>文字列/文字列の配列/文字列のセット: `"properties" : { }, "property_lists" : { }, "property_sets" : { }`</li><li>ブール値/ブール値の配列: `"flags" : { }, "flag_lists" : { }`</li><li>日付: `"dates" : { }`</li><li>バッジ: `"badges" : { }`</li><li>集計: `"metric_sets" : { }`</li><li>タイムライン: `"sequences" : { }`</li><li>ファネル: `"funnels" : { }`</li></ul> |
-| `current_visit` | オブジェクト|  <ul><li>最後のイベント `last_event: { }`</li><li>イベント `events: [ {}, {}, ...]`</li></ul> |
-## JSONファイルテンプレート
+|オブジェクト名|型|説明|
+|---|---|---|
+| メインオブジェクト | オブジェクト | 各属性データ型のサブオブジェクトを含む訪問オブジェクト：<ul><li>スティッチングされた訪問ID：`replaces : [ ]`</li><li>数値／数値の配列：`"metrics" : { }, "metric_lists" : { }`</li><li>文字列／文字列の配列／文字列のセット：`"properties" : { }, "property_lists" : { }, "property_sets" : { }`</li><li>ブール値／ブール値の配列：`"flags" : { }, "flag_lists" : { }`</li><li>日付：`"dates" : { }`</li><li>バッジ：`"badges" : { }`</li><li>集計：`"metric_sets" : { }`</li><li>タイムライン：`"sequences" : { }`</li><li>ファネル：`"funnels" : { }`</li></ul> |
+| `current_visit` | オブジェクト | <ul><li>最後のイベント `last_event: { }`</li><li>イベント `events: [ {}, {}, ...]`</li></ul> |
+## JSON ファイルテンプレート
 
 ```json
-// 訪問記録
+// Visitor Record
 {
-    // 数値属性（訪問スコープ）
+    // Number attributes (Visitor Scope)
     "metrics": {
         "ATTRIBUTE_NAME": NUMERIC_VALUE,
         ...
     },
 
-    // 日付属性（訪問スコープ）
+    // Date attributes (Visitor Scope)
     "dates": {
         "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
         "audience_ACCOUNT_PROFILE_ID_count_ts": UNIX_TIMESTAMP,
         ...
     },
 
-    // 文字列属性（訪問スコープ）
+    // String attributes (Visitor Scope)
     "properties": {
         "ATTRIBUTE_NAME": "STRING_VALUE",
         ...
     },
 
-    // 文字列の配列属性（訪問スコープ）
+    // Array of Strings attributes (Visitor Scope)
     "property_lists": {
         "ATTRIBUTE_NAME": ["STRING_VALUE", ...],
         ...
     },
 
-    // 文字列のセット属性（訪問スコープ）
+    // Set of Strings attributes (Visitor Scope)
     "property_sets": {
         "ATTRIBUTE_NAME": {
             "STRING_VALUE": 1,
@@ -92,30 +92,30 @@ visitor_id
         ...
     },
 
-    // ブール属性（訪問スコープ）
+    // Boolean attributes (Visitor Scope)
     "flags": {
         "ATTRIBUTE_NAME": true|false,
         ...
     },
 
-    // 訪問スティッチング
+    // Visitor Stitching
     "replaces": ["45-CHAR-ALPHANUMERIC", "__ACCOUNT_PROFILE__ATTRIBUTE_ID_VALUE__", ...],
 
-    // オーディエンス
+    // Audiences
     "audiences": ["AUDIENCE_NAME", ...],
 
-    // バッジ
+    // Badges
     "badges": ["BADGE_NAME", ...],
 
     "preloaded": false,
 
-    // 数値の配列
+    // Array of Numbers
     "metric_lists": {
         "ATTRIBUTE_NAME": [VALUE, ...],
         ...
     },
 
-    // 集計（訪問スコープ）
+    // Tallies (Visitor Scope)
     "metric_sets": {
         "ATTRIBUTE_NAME": {
             "ENTRY_NAME": VALUE,
@@ -128,7 +128,7 @@ visitor_id
     "_partition": NUMBER,
     "shard_token": NUMBER,
 
-    // タイムライン（訪問スコープ）
+    // Timelines (Visitor Scope)
     "sequences": {
         "ATTRIBUTE_NAME": [
             {
@@ -141,7 +141,7 @@ visitor_id
         ]
     },
 
-    // ファネル（訪問スコープ）
+    // Funnels (Visitor Scope)
     "funnels": {
         "ATTRIBUTE_NAME": {
             "completed": true|false,
@@ -160,34 +160,34 @@ visitor_id
         }
     },
 
-    // 現在の訪問記録
+    // Current Visit Record
     "current_visit": {
-        // 数値属性（訪問スコープ）
+        // Number attributes (Visit scope)
         "metrics": {
             "ATTRIBUTE_NAME": NUMERIC_VALUE,
             ...
         },
 
-        // 日付属性（訪問スコープ）
+        // Date attributes (Visit scope)
         "dates": {
             "ATTRIBUTE_NAME": UNIX_TIMESTAMP,
             ...
             "last_event_ts": UNIX_TIMESTAMP
         },
 
-        // 文字列属性（訪問スコープ）
+        // String attributes (Visit scope)
         "properties": {
             "ATTRIBUTE_NAME": "STRING_VALUE",
             ...
         },
 
-        // ブール属性（訪問スコープ）
+        // Boolean attributes (Visitor Scope)
         "flags": {
             "ATTRIBUTE_NAME": true|false,
             ...
         },
 
-        // 現在の訪問からのイベント
+        // Events From Current Visit
         "events": [{
             "account": "ACCOUNT",
             "profile": "PROFILE",
@@ -202,7 +202,7 @@ visitor_id
                 ...
             }
             "data": {
-                // 組み込みDOM変数
+                // Built-In DOM Variables
                 "dom": {
                     "viewport_height": 976,
                     "referrer": "https://www.google.com/",
@@ -215,7 +215,7 @@ visitor_id
                     "pathname": "/"
                 },
 
-                // ユニバーサルデータオブジェクト変数
+                // Universal Data Object variables
                 "udo": {
                     "UDO_VARIABLE_NAME" : "VALUE",
                     ...
@@ -235,20 +235,20 @@ visitor_id
                     "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
 
-                // JavaScriptページ変数
+                // Javascript Page Variables
                 "js": {
                     "VARIABLE_NAME": VALUE,
                     ...
                 },
 
-                // クッキー
+                // Cookies
                 "firstparty_tealium_cookies": {
                     "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
                     "COOKIE_NAME" : VALUE,
                     ...
                 },
 
-                // メタデータ変数
+                // Meta Data Variables
                 "meta": {
                     "META_TAG_NAME": VALUE,
                     ...
@@ -277,7 +277,7 @@ visitor_id
             "new_visitor": true|false
         }],
 
-        // 文字列のセット
+        // Sets of Strings
         "property_sets": {
             "SET_NAME": ["VALUE", ...],
             ...
@@ -299,7 +299,7 @@ visitor_id
                 ...
             },
             "data": {
-                // 組み込みDOM変数
+                // Built-In DOM Variables
                 "dom": {
                     "viewport_height": 976,
                     "referrer": "https://www.google.com/",
@@ -311,7 +311,7 @@ visitor_id
                     "url": "FULL_URL",
                     "pathname": "/"
                 },
-                // ユニバーサルデータオブジェクト変数
+                // Universal Data Object variables
                 "udo": {
                     "UDO_VARIABLE_NAME" : "VALUE",
                     ...
@@ -330,64 +330,18 @@ visitor_id
                     "tealium_timestamp_utc": "2017-10-29T23:10:24.363Z",
                     "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
                 },
-
-                // JavaScriptページ変数
+                // Javascript Page Variables
                 "js": {
                     "VARIABLE_NAME": VALUE,
                     ...
                 },
-
-                // クッキー
+                // Cookies
                 "firstparty_tealium_cookies": {
                     "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
                     "COOKIE_NAME" : VALUE,
                     ...
                 },
-
-                // メタデータ変数
-                "meta": {
-                    "META_TAG_NAME": VALUE,
-                    ...
-                }
-            },
-            "type": "LIVE",
-            "enrichmentOnly": false,
-            "event_id": "GUID",
-            "visitor_id": "45-CHAR-ALPHANUMERIC",
-            "post_time": UNIX_TIMESTAMP,
-            "page_url": {
-                "full_url": "URL",
-                "scheme": "https",
-                "domain": "example.com",
-                "path": "/"
-            },
-            "referrer_url": {
-                "full_url": "FULL_URL",
-                "scheme": "https",
-                "domain": "example.com",
-                "path": "/"
-            },
-            "useragent": "USER_AGENT",
-            "client_ip": "IP_ADDRESS",
-            "_dctrace": ["COLLECTION_SERVER", ...],
-            "new_visitor": true|false
-        }],
-
-```
-                    "tealium_visitor_id": "45-CHAR-ALPHANUMERIC"
-                },
-                // Javascriptページ変数
-                "js": {
-                    "VARIABLE_NAME": VALUE,
-                    ...
-                },
-                // クッキー
-                "firstparty_tealium_cookies": {
-                    "utag_main_v_id": "45-CHAR-ALPHANUMERIC",
-                    "COOKIE_NAME" : VALUE,
-                    ...
-                },
-                // メタデータ変数
+                // Meta Data Variables
                 "meta": {
                     "META_TAG_NAME": VALUE,
                     ...
@@ -429,6 +383,6 @@ visitor_id
     },
     "last_visit_id": "GUID"
 },
-// 追加の訪問記録
+// Additional Visitor Records
 ...
 ```

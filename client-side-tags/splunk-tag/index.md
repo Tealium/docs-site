@@ -1,11 +1,11 @@
 ---
 title: Splunk Tag
-description: This article will guide you in configuring the Splunk tag in Tealium iQ and configuring the Tealium Digital Analytics App within the Splunk interface.
+description: This article will guide you in configuring the Splunk tag in Tag Management and configuring the Tealium Digital Analytics App within the Splunk interface.
 url: https://docs.tealium.com/client-side-tags/splunk-tag/
 ---
 ## Add the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of tags. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag).
+The Tag Management tag marketplace offers a wide variety of tags. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag).
 
 
 <blockquote>

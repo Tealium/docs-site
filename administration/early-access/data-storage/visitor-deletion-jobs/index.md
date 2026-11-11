@@ -15,7 +15,7 @@ A visitor deletion job is an automated process to delete multiple visitor record
 
 When a visitor deletion job is enabled, it checks the S3 bucket every hour for a new CSV file. When a new file is found, the job processes the CSV file and for each visitor ID, deletes the visitor profile data from the following areas in Customer Data Hub:
 
-* Tealium AudienceStream
+* Customer Data Platform (CDP)
 * Tealium AudienceStore
 * Tealium AudienceDB
 * Tealium EventStore

@@ -1,5 +1,5 @@
 ---
-title: Localytics Connector Setup Guide for AudienceStream
+title: Localytics Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the Localytics connector.
 url: https://docs.tealium.com/server-side-connectors/localytics-connector/
 ---
@@ -19,7 +19,7 @@ You can find your org’s API Key/Secret by navigating to the **API Keys** secti
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Localytics Connector. Read the [Connector Overview]Localytics article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new Localytics Connector. Read the [Connector Overview]Localytics article for general instructions on how to add a connector.
 
 To configure your vendor, follow these steps:
 
@@ -29,9 +29,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Event
 
@@ -50,6 +48,6 @@ This section describes how to set up parameters and options for each action.
 | LTV Change             | Incremental change in user’s lifetime value associated with this event.                                                                                                | `2.99`                                                         |
 | UUID                   | Randomly generated UUID to uniquely identify the event request. This is required to mitigate networking problems and ensure that each event is processed exactly once. | `fabfec96-7aff-40cc-a37d-972c4b4265de`                         |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Events API](https://docs.localytics.com/dev/events-api.html#events-api-intro)

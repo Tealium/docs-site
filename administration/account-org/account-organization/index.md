@@ -32,7 +32,7 @@ User 2 exists in Account 1 and Account 2, and its primary account is Account 1.
 
 A profile contains configuration sets and data for a website, a mobile application, a region, or a brand. A profile can exist on either the client-side or the server-side:
 
-* **Client-side** profiles manage tags and configurations in iQ Tag Management for a website or app.
+* **Client-side** profiles manage tags and configurations in Tag Management for a website or app.
 * **Server-side** profiles collect data from all your sites and apps into your Customer Data Hub to build a comprehensive view of your customers and visitors, and then action that data through vendor integrations.
 
 ![](https://docs.tealium.com/images/administration/account-organization/profiles.png)

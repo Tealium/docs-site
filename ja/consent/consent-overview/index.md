@@ -35,7 +35,7 @@ AudienceStreamのアクティベーションにはまだ同意を強制してい
 
 ## 同意機能についてとそれを使用するタイミング
 
-![](https://docs.tealium.com/images/iq-tag-management/tealium-consent-levels.png)
+![](https://docs.tealium.com/images/tag-management/tealium-consent-levels.png)
 
 |**機能**| **使用するタイミング**|
 |---| ---|

@@ -1,28 +1,26 @@
 ---
-title: Yext変換タグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでYext変換タグを構成する方法について説明します。
+title: Yextコンバージョンタグ構成ガイド
+description: この記事では、タグ管理アカウントでYextコンバージョンタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/yext-conversion-tag/
----## タグのヒント
+---## タグに関するヒント
 
 * マッピングを使用して、標準の構成値を上書きします。
-* IDマッピングが入力されている場合、変換が発生します。
+* IDマッピングに値が構成されている場合、コンバージョンが発生します。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
-
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+利用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`optin`|  <ul><li>オプトイン</li></ul> |
-|`cid`|  <ul><li>顧客識別番号（CID）</li></ul> |
-|`value`|  <ul><li>値</li></ul> |
-
+|変数|説明|
+|---|---|
+|`optin`| <ul><li>オプトイン</li></ul> |
+|`cid`| <ul><li>顧客識別番号（CID）</li></ul> |
+|`value`| <ul><li>値</li></ul> |

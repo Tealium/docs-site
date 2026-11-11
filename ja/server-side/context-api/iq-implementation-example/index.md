@@ -1,29 +1,29 @@
 ---
-title: Context APIとiQタグ管理の実装例ガイド
-description: Context APIをTealium iQタグ管理インストールに統合する例を見てください。
+title: Context API とタグ管理の実装例ガイド
+description: Context API をタグ管理環境に統合するソリューション例を紹介します。
 url: https://docs.tealium.com/ja/server-side/context-api/iq-implementation-example/
 ---
 ## 仕組み
 
-Context APIは、ウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。
+Context API は、Web サイトやアプリケーションに統合できる一意のエンドポイントを作成します。
 
-以下のステップに従って、[Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/)を使用してTealiumワークフローにContext APIを実装します。次の例では、訪問のデータをContext APIからリクエストするためにFetch APIを使用していますが、`XMLHttpRequest`などの他のJavaScriptオプションもサポートされています。
+[タグ管理の Advanced JavaScript Code 拡張機能](https://docs.tealium.com/advanced-javascript-code-extension/)を使用して Context API を Tealium ワークフローに実装するには、以下の手順を実行します。次の例では、Fetch API を使用して Context API から訪問のデータをリクエストしていますが、`XMLHttpRequest` など、その他の JavaScript オプションもサポートされています。
 
-## ステップ1: 訪問IDの取得
+## 手順 1：訪問 ID を取得する
 
-Tealiumの`utag_main`クッキーから`v_id`を解析します。
+Tealium の `utag_main` Cookie から `v_id` を解析します。
 
-拡張機能に次のコードをコピーしてください。
+使用している `utag.js` のバージョンに応じて、以下のコードを拡張機能にコピーします。
 
-* **タイトル**: utag.jsクッキーから識別子を解析 [Context API]
-* **スコープ**: プリローダー
-* **タイプ**: アドバンスドJavaScript
+* **タイトル**：utag.js Cookie から識別子を解析 [Context API]
+* **スコープ**：Pre Loader
+* **タイプ**：Advanced JavaScript
 
-### `utag.js` 4.50+ 
+### `utag.js` 4.50 以降
 
 
 <blockquote>
-`split_cookie=false`オプションを使用する場合は、[`utag.js` 4.49以下](#utag-js-4-49-and-below)のコード例を使用してください。
+If you use the `split_cookie=false` option, use the [`utag.js` 4.49 and below](#utag-js-4-49-and-below) code examples.
 </blockquote>
 
 
@@ -45,11 +45,11 @@ read_utag_cookies = function() {
   }, {});
 }
 var utag_cookies = read_utag_cookies();
-//メモリにTealium訪問IDを保存
+//save the Tealium Visitor ID in memory
 var moments_identifier = utag_cookies["v_id"] || null
 ```
 
-### `utag.js` 4.49以下 {#utag-js-4-49-and-below}
+### `utag.js` 4.49 以前 {#utag-js-4-49-and-below}
 
 ```js
 function getCookie(cname) {
@@ -68,59 +68,59 @@ function getCookie(cname) {
     return "";
 }
 
-// utag_mainクッキーから訪問IDを抽出
+// Extracting the visitor ID from the utag_main cookie
 var utag_cookie = getCookie("utag_main");
 
-//メモリにTealium訪問IDを保存
+//save the Tealium Visitor ID in memory
 
 var moments_identifier = utag_cookie.split("v_id:")[1].split("$")[0] || "";
 ```
 
-## ステップ2: Context APIを呼び出す
+## 手順 2：Context API を呼び出す
 
-Context APIエンドポイントをリクエストし、レスポンスデータをローカル保存に保存して、オンサイトのマーケティング活動やパーソナライゼーションに使用します。
+Context API エンドポイントにリクエストを送信し、レスポンスデータをローカル保存に保存して、サイト内マーケティング活動やパーソナライゼーションに使用します。
 
-別のアドバンスドJavaScript拡張機能に次のテンプレートコードを追加し、アカウントとターゲットエンジンに応じて更新してください。このコードは、前の拡張機能で割り当てられた`moments_identifier`変数をAPIのURLエンドポイントの識別子パラメータにマッピングします。
+以下のテンプレートコードを別の Advanced JavaScript 拡張機能に追加し、アカウントと対象エンジンに応じて更新します。このコードは、前の拡張機能で割り当てた `moments_identifier` 変数を、API の URL エンドポイントの識別子パラメーターにマッピングします。
 
 
 <blockquote>
-このコードが前のJavaScript拡張機能の後にロードされるようにしてください。[操作の順序](https://docs.tealium.com/order-of-operations/)を参照してください。
+Ensure this code loads after the previous JavaScript extension according to the [Order of Operations](https://docs.tealium.com/order-of-operations/).
 </blockquote>
 
 
-* **タイトル**: [Context API]
-* **スコープ**: プリローダー
-* **タイプ**: アドバンスドJavaScript
+* **タイトル**：[Context API]
+* **スコープ**：Pre Loader
+* **タイプ**：Advanced JavaScript
 
 ```js
-// リクエストしたいエンジンIDを割り当てます
+// Assign the engine ID you want to request 
 var engine_id = "your_engine_id"; 
 
 
-// suppressNotFoundはオプションのパラメータです
+// suppressNotFound is an optional parameter 
 
-// 訪問が見つからない場合はHTTP 404に構成します
+// Set to false for HTTP 404 when visitor is not found 
 // var suppressNotFound = true;
 
-// API URLを構築します
-// この例にはオプションのパラメータは含まれていません
-// 必要に応じてオプションのパラメータを追加してください
+// Construct the API URL
+// This example does not include optional parameters
+// Add optional parameters, if required
 
 var apiUrl = "CONTEXT_API_ENDPOINT_URL" + moments_identifier;
 
-// 例: "https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/" + "0123456789"
+// Example: "https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/" + "0123456789"
 
-// Context APIレスポンスをlocalStorageに書き込む関数を追加します
+// Add function for writing the Context API response to localStorage
 function writeToLocalStorage(obj, engineId) {
-    // localStorageキーのプレフィックス
+    // Prefix for localStorage keys
     const prefix = 'moments_' + engineId + '_';
 
-    // オブジェクトのプロパティをlocalStorageに保存する関数
+    // Function to save an object property to localStorage
     const saveToLocalStorage = (key, value) => {
         localStorage.setItem(prefix + key, JSON.stringify(value));
     };
 
-    // オブジェクトの各トップレベルプロパティをループ処理します
+    // Loop through each top-level property in the object
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             saveToLocalStorage(key, obj[key]);
@@ -129,7 +129,7 @@ function writeToLocalStorage(obj, engineId) {
 }
 
 
-// APIをフェッチします
+// Fetch the API
 
 fetch(apiUrl)
     .then(response => {
@@ -139,9 +139,9 @@ fetch(apiUrl)
         return response.json();
     })
     .then(data => {
-        // レスポンスデータを処理します
+        // Handle the response data
         if (data) {
-        // データをlocalStorageに保存します。例えば、属性、バッジ、オーディエンスなどのグループに分類します。
+        // set the data to localStorage, categorised by grouping. For example, attributes, badges, and audiences.
         writeToLocalStorage(data, engine_id) 
             
         }
@@ -151,12 +151,11 @@ fetch(apiUrl)
 
 ```
 
-## ステップ3: ワークフローに統合する
+## 手順 3：ワークフローに統合する
 
-データをオンサイトのパフォーマンスやパーソナライゼーションベンダーと統合します。
+ユースケースに応じて、サイト内パフォーマンスまたはパーソナライゼーションのベンダーとデータを統合します。
 
 
 <blockquote>
-DNSリクエストプロセスを最適化するために、DNSプリフェッチングを検討してください。詳細については、[The Chromium Projects > DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/)を参照してください。
+To optimize the DNS request process, consider using DNS prefetching. For more information, see [The Chromium Projects > DNS Prefetching](https://www.chromium.org/developers/design-documents/dns-prefetching/).
 </blockquote>
- 

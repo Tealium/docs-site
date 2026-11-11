@@ -87,7 +87,7 @@ The **Set date** enrichment sets the attribute to the value of another attribute
 * **Enriched with String**: `01/04/2019`
 * **Using Format**: `dd/MM/yyyy` (This format specifies the day, month, and year order for parsing the string.)
 
-When you use the **Set date** enrichment to set an EventStream date from another date attribute (EventStream or AudienceStream), you can use a placeholder for the format string. For example, in the **Set Date** enrichment, set the following:
+When you use the **Set date** enrichment to set an Event Streaming date from another date attribute (Event Streaming or Customer Data Platform (CDP)), you can use a placeholder for the format string. For example, in the **Set Date** enrichment, set the following:
 * **Set date to**: The date attribute you want to set the value to. In this example,`date_of_birth`.
 * **with date format**: Enter any placeholder, for example, `x`.
 

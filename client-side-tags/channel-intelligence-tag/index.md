@@ -20,11 +20,11 @@ url: https://docs.tealium.com/client-side-tags/channel-intelligence-tag/
 * Vendor ID
 * Production Domain
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### Adding the Tag
 
-Tealium iQ's Tag marketplace offers a wide variety of Tags. Click [here](https://docs.tealium.com/manage-tags/) to learn how to add a Tag to your profile.
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configuring the Tag
 

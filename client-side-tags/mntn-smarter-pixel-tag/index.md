@@ -1,10 +1,10 @@
 ---
 title: MNTN Smarter Pixel Tag Setup Guide
-description: This article describes how to set up the MNTN (formerly Steelhouse) Smarter Pixel tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the MNTN (formerly Steelhouse) Smarter Pixel tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/mntn-smarter-pixel-tag/
 ---
 
-## Tag Tips
+## Tag tips
 
 * Use mapping to dynamically override the Account ID or to pass data into the `additional` parameter.
 * Conversion tag fires when the Order ID is set.
@@ -15,18 +15,18 @@ url: https://docs.tealium.com/client-side-tags/mntn-smarter-pixel-tag/
   * List of Quantities (`_cquan`)
   * List of Prices (`_cprice`)
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the MNTN Smarter Pixel tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Account ID**
   * For example, `12345`
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

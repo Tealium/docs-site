@@ -1,6 +1,6 @@
 ---
 title: Google Universal Analytics Tag Enhanced E-Commerce
-description: This article is an overview of setting up Enhanced Ecommerce tracking forthe Google Universal Analytics tag in Tealium iQ Tag Management.
+description: This article is an overview of setting up Enhanced Ecommerce tracking forthe Google Universal Analytics tag in Tag Management.
 url: https://docs.tealium.com/client-side-tags/google-universal-analytics-tag-enhanced-e-commerce/
 ---
 
@@ -15,7 +15,7 @@ Enhanced Ecommerce is an [advanced plugin for ecommerce tracking using Google Un
 
 ## How it works
 
-Enhanced Ecommerce tracking works with a combination of the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) and [data mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) in the [Google Universal Analytics tag](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/). The E-Commerce extension handles the most common ecommerce data, while the more advanced data is sent using data mappings in the tag configuration. Enhanced Ecommerce actions are also mapped in the tag as events.
+Enhanced Ecommerce tracking works with a combination of the [E-Commerce extension](https://docs.tealium.com/e-commerce-extension/) and [data mapping](https://docs.tealium.com/tag-management/data-mappings/manage/) in the [Google Universal Analytics tag](https://docs.tealium.com/google-universal-analytics-analyticsjs-tag/). The E-Commerce extension handles the most common ecommerce data, while the more advanced data is sent using data mappings in the tag configuration. Enhanced Ecommerce actions are also mapped in the tag as events.
 
 ## Enhanced E-commerce data and actions
 

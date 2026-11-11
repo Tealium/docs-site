@@ -3,7 +3,6 @@ title: AudienceStore Connector Setup Guide
 description: With the AudienceStore Connector, you can send visitor profile data to Tealium's Amazon S3 bucket. A visitor profile contains data pertinent to the visitor and their visit (excluding events), typically captured by the Tealium Collect Tag. Rather than exporting one visitor profile at a time, the AudienceStore connector selects visitor profiles that share common behaviors to send to AudienceStore.
 url: https://docs.tealium.com/server-side-connectors/audiencestore-connector/
 ---
-
 ## Requirements
 
 * AudienceStore must be enabled for your account. Contact your Tealium Account Manager for more information.
@@ -12,14 +11,14 @@ url: https://docs.tealium.com/server-side-connectors/audiencestore-connector/
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Visitor Data to Bucket (All Attributes) | ✓ | ✗ |
 | Send Visitor Data to Bucket (Selected Attributes) | ✓ | ✗ |
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -40,7 +39,7 @@ The following section describes how to set up parameters and options for each ac
 | **Parameter** | **Description** |
 | --- | --- |
 | Include Current Visit Data | All event data for the most recent visit by the visitor is included. |
-| Send By Attribute ID | By default, the Visitor Data JSON property keys are based on AudienceStream attribute names. Select this option to send data keyed by AudienceStream attribute ID. |
+| Send By Attribute ID | By default, the Visitor Data JSON property keys are based on Customer Data Platform (CDP) attribute names. Select this option to send data keyed by CDP attribute ID. |
 | Record Count Maximum | The amount of records for the connector to collect before sending a batch to the `audiences` folder. Enter a value between 1,000 and 100,000 records. |
 | Time to Live | The amount of time for the connector to wait before sending a batch to the `audiences` folder. Enter a value between 20 and 180 minutes. |
 | Payload Size Maximum | The size of the payload for the connector to collect before sending a batch to the `audiences` folder. Enter a value between 1MB and 100MB. |

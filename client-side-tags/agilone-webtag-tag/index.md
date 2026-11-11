@@ -1,6 +1,6 @@
 ---
 title: AgilOne Webtag Setup Guide
-description: This article describes how to set up the AgilOne tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the AgilOne tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/agilone-webtag-tag/
 ---
 ## Prerequisites
@@ -8,7 +8,7 @@ url: https://docs.tealium.com/client-side-tags/agilone-webtag-tag/
 * Authentication Key (Required for authenticating API calls to AgilOne)
 * Tealium Event Extension (Optional, but highly recommended)
 
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the AgilOne Web Tag Tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
@@ -16,15 +16,15 @@ After adding the Tag, configure the below settings:
 
 * Tenant ID: (Required) The tenant ID you received from AgilOne. You may specify the ID in this field or set it dynamically using [Data Mappings](#data-mappings).
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this Tag on your site.
 
 Recommended Load Rule: **Load on all pages**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see Data Mappings.
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the AgilOne Web Tag Tag are built into its Data Mapping tab. Available categories are:
 

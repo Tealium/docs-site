@@ -8,26 +8,26 @@ url: https://docs.tealium.com/client-side-tags/criteo-adblock-tag/
 * Complete setup in your Criteo account: Make sure Passback and CPM settings are configured.
 * Criteo ZoneID
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Criteo Adblock Tag to your profile ([how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 1. Criteo Zone ID: A unique ID provided by Criteo.
 1. Container ID: The HTML Element ID of a container.
 1. CPM: Select whether to auto-optimize or abide by the CPM as set in your Criteo account.
 1. Enable Passback: Select whether or not to enable Criteo Passback. This must match the selection you made in Criteo.
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **Load on all pages**.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Criteo Adblock Tag are built into its Data Mapping tab. Available categories are:
 

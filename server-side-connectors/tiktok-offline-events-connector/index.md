@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -23,7 +23,7 @@ After adding the connector, configure the following settings:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Offline Events (Real-Time) | ✗ | ✓ |
 | Send Offline Events (Batched) | ✗ | ✓ |
@@ -40,7 +40,7 @@ Provide data type attributes for **Content Name**, **Content Type**, **Content C
 
 Single value attributes can be used and will apply to each item.
 
-If you set **Tealium iQ Tag ID**, the connector uses the **Event ID** value that is sent from Tealium iQ Tag Management.
+If you set **Tealium iQ Tag ID**, the connector uses the **Event ID** value that is sent from Tag Management.
 
 #### Parameters
 
@@ -66,7 +66,7 @@ If you set **Tealium iQ Tag ID**, the connector uses the **Event ID** value that
 | Content ID | Product or content identifier. |
 | Quantity | Number of items. |
 | Price | Price of the product or content. |
-| Tealium iQ Tag ID | Uses the event ID from Tealium iQ. |
+| Tealium iQ Tag ID | Uses the event ID from Tag Management. |
 
 ### Send Offline Events (Batched)
 
@@ -76,7 +76,7 @@ Provide data type attributes for **Content Name**, **Content Type**, **Content C
 
 Single value attributes can be used and will apply to each item.
 
-If you set **Tealium iQ Tag ID**, the connector uses the **Event ID** value that is sent from Tealium iQ Tag Management.
+If you set **Tealium iQ Tag ID**, the connector uses the **Event ID** value that is sent from Tag Management.
 
 #### Batch Limits
 
@@ -110,6 +110,6 @@ This action uses batched requests to support high-volume data transfers to the v
 | Content ID | Product or content identifier. |
 | Quantity | Number of items. |
 | Price | Price of the product or content. |
-| Tealium iQ Tag ID | Uses the event ID from Tealium iQ. |
+| Tealium iQ Tag ID | Uses the event ID from Tag Management. |
 
     

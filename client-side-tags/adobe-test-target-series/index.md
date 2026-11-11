@@ -1,6 +1,6 @@
 ---
 title: Adobe Test & Target (Series)
-description: A series of posts about setting up Adobe Test & Target in Tealium iQ Tag Management.
+description: A series of posts about setting up Adobe Test & Target in Tag Management.
 url: https://docs.tealium.com/client-side-tags/adobe-test-target-series/
 ---
 

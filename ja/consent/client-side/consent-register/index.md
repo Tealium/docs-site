@@ -52,7 +52,7 @@ var allDecisionsOnThisPage = window.tealiumConsentRegister.decisions
 
 この例では、オプトインモデル（暗黙の決定）で開始し、説明のためにオプトインおよびオプトアウトを行います。
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-integrations.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-integrations.png)
 
 ### 同意変更の監視
 
@@ -73,7 +73,7 @@ window.addEventListener('consent_updated', (event) => {
 
 **初回訪問時にオプトインするヨーロッパのユーザーのConsent Manager例**
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-and-consent-manager.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-and-consent-manager.png)
 
 
 <blockquote>
@@ -150,7 +150,7 @@ if (!u.consent_callback_initialized) {
 
 新しいイベントとリスナーを説明するためのフローの簡略化された概要です。
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-register-flow.png)
+![](https://docs.tealium.com/images/tag-management/consent-register-flow.png)
 
 ## Tealium 同意レジスタの抑制
 

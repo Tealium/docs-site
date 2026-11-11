@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/liveperson-liveengage-tag/
 ---
 Deliver a personalized user experience throughout your customer’s life cycle by proactively engaging visitors with real time solutions for chat, voice and content, plus a full range of open APIs.
 
-## Tag Tips
+## Tag tips
 
 Use mapping to override the standard configurations values dynamically.
 
@@ -41,11 +41,11 @@ Use mapping to override the standard configurations values dynamically.
   * `8`-Removed
   * `9`-Assigned
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Site ID**: The site value (for example, `23954343`)
 * **Section**: Comma-separated list of section values
@@ -56,9 +56,9 @@ After adding the tag, configure the following settings:
   * `True` - Use E-Comm extension for basis of all mappings  
   * `False` - Does not use the E-Comm Extension as the data base
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -74,7 +74,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 |Variable| Description|
 |---| ---|

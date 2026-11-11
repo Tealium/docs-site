@@ -20,7 +20,7 @@ The web interface is intended for loading small numbers of files (up to 50 MB). 
 The following items are required to connect your DataAccess data from the Tealium-issued Amazon S3 bucket:
 
 * Tealium DataAccess with AudienceStore and EventStore enabled  
-You must configure the AudienceStore connector within AudienceStream in order for data to be delivered to your DataAccess bucket. For additional information about AudienceStream configuration, see the Tealium [AudienceStore Setup Guide](https://docs.tealium.com/audiencestore-and-eventstore/).
+You must configure the AudienceStore connector within Customer Data Platform (CDP) in order for data to be delivered to your DataAccess bucket. For additional information about CDP configuration, see the Tealium [AudienceStore Setup Guide](https://docs.tealium.com/audiencestore-and-eventstore/).
 * Valid Tealium DataAccess credentials for either EventStore and/or AudienceStore.
 
 ## Getting started

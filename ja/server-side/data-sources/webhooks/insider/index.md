@@ -1,37 +1,37 @@
 ---
-title: インサイダーデータソース構成ガイド
-description: この記事では、Insiderをデータソースとして使用して、Tealiumに対して実行可能なイベントを送信する方法について説明します。
+title: Insiderデータソース構成ガイド
+description: この記事では、Insiderをデータソースとして使用し、実用的なイベントをTealiumに送信する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/insider/
 ---
 ## 前提条件
 
-* Tealium EventStream API Hub および/または Tealium AudienceStream CDP 
+* Event Streaming API HubおよびCustomer Data Platform（CDP）のいずれか、または両方
 * Insiderアカウント
 
 
 ## 仕組み
 
-InsiderをTealium EventStreamまたはTealium AudienceStreamに接続するには、[Insider Webhook API](https://academy.useinsider.com/docs/webhooks-vs-apis)を使用して、Tealiumアカウント内のカスタムInsiderデータソースエンドポイントに対して送信リクエストを送信します。
+InsiderをEvent StreamingまたはCustomer Data Platform（CDP）に接続するには、[Insider Webhook API](https://academy.useinsider.com/docs/webhooks-vs-apis)を使用して、Tealiumアカウント内のカスタムInsiderデータソースエンドポイントに送信リクエストを送ります。
 
-Webhookを構成した後、チャネルのインタラクションやリード収集イベントの自動イベント更新を受け取ることができます。
+Webhookを構成すると、チャネルインタラクションおよびリード収集イベントに関するイベント更新を自動的に受信できます。
 
 ## Insiderデータソース
 
-Tealium Customer Data HubプロファイルにInsiderデータソースを追加すると、Webhook構成で使用するためのユニークなURLが生成されます。その形式は次のとおりです：
+InsiderデータソースをTealium Customer Data Hubプロファイルに追加すると、Webhook構成で使用する次の形式の一意のURLが生成されます。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-Tealium Customer Data HubプロファイルにInsiderデータソースを追加する方法については、[Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加し、接続した後は、プロファイルを保存して公開します。
+InsiderデータソースをTealium Customer Data Hubプロファイルに追加する方法については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加して接続した後、プロファイルを保存してパブリッシュします。
 
 ## Insiderの構成
 
-Tealium Customer Data HubプロファイルにInsiderを接続した後、次の手順でWebhookを構成します：
+InsiderをTealium Customer Data Hubプロファイルに接続した後、次の手順でWebhookを構成します。
 
-1. Insiderのアカウントマネージャーに、Insiderチャネルイベントを収集するために[Tealium Collect API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を構成したい旨を通知します。
-1. InsiderチームがInsider内でTealiumデータソースを構成します。
-1. Tealiumで、InsiderデータソースをTealiumプロファイルに追加したときに作成されたカスタムエンドポイントURLを入力します。例えば、
+1. Insiderチャネルイベントを収集するために[Tealium Collect API](https://docs.tealium.com/ja/platforms/http-api/endpoint/)を構成したい旨を、Insiderのアカウントマネージャーに伝えます。
+1. Insiderチームが、Insider内でTealiumデータソースを構成します。
+1. Tealiumで、InsiderデータソースをTealiumプロファイルに追加したときに作成されたカスタムエンドポイントURLを入力します。例：
 
 ```
 https://collect-us-east-1.tealiumiq.com/integration/event/{account}/{profile}/{data_source_key}
@@ -39,13 +39,13 @@ https://collect-us-east-1.tealiumiq.com/integration/event/{account}/{profile}/{d
 
 ## イベントと属性
 
-Insiderイベントパラメータは、エンゲージメント行動または顧客行動イベントに基づいて事前に定義されています。すべての受信Insiderイベント属性は`insider_`で始まります。例えば、Insiderは`campaign_id`属性をTealiumに送信し、それが`insider_campaign_id`（すべて小文字）に変換されます。
+Insiderのイベントパラメータは、エンゲージメント行動または顧客行動イベントに基づいて事前定義されています。受信するすべてのInsiderイベント属性には、接頭辞`insider_`がエンリッチメントされます。たとえば、InsiderからTealiumに送信された`campaign_id`属性は、`insider_campaign_id`（すべて小文字）に変換されます。
 
 ### チャネルイベント
 
-以下の表は、一般的なInsiderイベント属性と、特定のチャネル固有イベントに対してTealiumが受け取る例を説明しています。このリストは完全なものではありません。Insiderのデフォルトイベントのすべてのリストについては、Insiderのドキュメンテーション内の[Default Events](https://academy.useinsider.com/docs/default-events#mobile-app-%20events)を参照してください。
+次の表は、一般的なInsiderイベント属性と、特定のチャネル固有イベントについてTealiumが受信するデータの例を示しています。このリストはすべてを網羅するものではありません。Insiderのデフォルトイベントの完全なリストについては、Insiderのドキュメントの[デフォルトイベント](https://academy.useinsider.com/docs/default-events#mobile-app-%20events)を参照してください。
 
-| イベント属性 | タイプ | 例 |
+| イベント属性 | 型 | 例 |
 |---|---|---|
 | `insider_event_group_id` | 文字列 | `ORDER123` |
 | `insider_product_id` | 文字列 | `AGH210070 `|
@@ -88,9 +88,8 @@ Insiderイベントパラメータは、エンゲージメント行動または�
 | `insider_insider_id` | 文字列 | `a00d8092-0ba7-41f5-b07d-7ae64231dac3d` |
 
 
-## ベンダーのドキュメンテーション
+## ベンダーのドキュメント
 
-* [Webhooks vs APIs ](https://academy.useinsider.com/docs/webhooks-vs-apis)
-* [Webhooks for email events](https://academy.useinsider.com/docs/api-reference-email-webhooks-for-email-events)
-* [Webhooks for transactional SMS](https://academy.useinsider.com/docs/webhooks-for-transactional-sms)
-
+* [WebhookとAPIの比較](https://academy.useinsider.com/docs/webhooks-vs-apis)
+* [メールイベント用Webhook](https://academy.useinsider.com/docs/api-reference-email-webhooks-for-email-events)
+* [トランザクションSMS用Webhook](https://academy.useinsider.com/docs/webhooks-for-transactional-sms)

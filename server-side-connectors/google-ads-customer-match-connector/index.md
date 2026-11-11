@@ -19,7 +19,7 @@ For more information, see the [Google Data Manager API migration guide](https://
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -31,6 +31,8 @@ After adding the connector, configure the following settings:
 
 * **Customer ID**: (Required) Provide the Ads account customer ID to manage.
 * **Manager Customer ID**: (Optional) If you're accessing a client customer, the Manager Customer ID must be set and have full access to the Ads account.
+
+After you configure the connector, click **Done**.
 
 ### Create user list
 
@@ -85,7 +87,7 @@ The target Google Ads account must also have the required permissions, and the t
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ------------| :------------: | :---------: |
 | Add User to List (Data Manager API) | ✓ | ✓ |
 | Remove User from List (Data Manager API) | ✓ | ✓ |
@@ -200,7 +202,7 @@ This connector uses the following vendor API:
 | Remarketing List | Select a remarketing user list. For more information, see [Google Ads: Remarketing and Audience Targeting](https://developers.google.com/google-ads/api/docs/remarketing/overview). Available options contain only user lists of first-party CRM data type. To create a user list, see [Create user list](#create-user-list).|
 | Customer ID Override | (Optional) Provide a customer ID to override the customer ID in the connector configuration. If using this option, you must also enter a **User List ID Override**. |
 | Manager Customer ID Override | (Optional) Provide a Manager Customer ID if using a **Customer ID Override** and accessing a client customer. |
-| User List ID Override | (Optional) Provide a user list resource name (list ID and type) to override the user list. This field lets you use EventStream variables to populate the user list ID. This field is required if using a **Customer ID Override**. The value must be in the following format: `ID:TYPE`, for example `123456:CONTACT_INFO`. |
+| User List ID Override | (Optional) Provide a user list resource name (list ID and type) to override the user list. This field lets you use Event Streaming variables to populate the user list ID. This field is required if using a **Customer ID Override**. The value must be in the following format: `ID:TYPE`, for example `123456:CONTACT_INFO`. |
 
 #### Consent
 

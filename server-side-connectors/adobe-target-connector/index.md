@@ -3,7 +3,7 @@ title: Adobe Target Connector Setup Guide
 description: This article describes how to set up the Adobe Target connector.
 url: https://docs.tealium.com/server-side-connectors/adobe-target-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,11 +13,13 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Authentication Token**: (Optional) Provide your authentication token if **Require Authentication** is enabled in the Profile API settings. The token expiration date appears in the Profile API settings. For more information, see [Adobe Target: Profile API settings](https://experienceleague.adobe.com/docs/target/using/implement-target/before-implement/methods/profile-api-settings.html).
+
+After you configure the connector, click **Done**.
 
 
 <blockquote>
@@ -27,7 +29,7 @@ We recommend that you set the trigger to **In Audience at End of Visit** or use 
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Single Profile Update | ✓ | ✗ |
 

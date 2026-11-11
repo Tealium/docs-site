@@ -3,47 +3,47 @@ title: Catchpoint リアルユーザーモニタリング（RUM）タグ構成�
 description: この記事では、Catchpoint リアルユーザーモニタリングタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/catchpoint-real-user-monitoring-rum-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* ページグループ、バリエーション、インサイトインジケーター、トレースポイントを構成するためにマッピングを使用します。
-* インサイトインジケーターとトレースポイントの値とトークンは、このデータをキャプチャするために変数が入力された状態でマッピングする必要があります。
-* 注文IDが存在する場合、自動的にコンバージョンが発生します。
-* 次のEコマース拡張パラメータをサポートします：
-  * 注文ID（`_corder`）
+* マッピングを使用して、ページグループ、バリエーション、インサイトインジケーター、およびトレースポイントを構成します。
+* インサイトインジケーターとトレースポイントのデータを取得するには、値とトークンの両方を、値が構成された変数にマッピングする必要があります。
+* 注文 ID が存在する場合、コンバージョンが自動的に発生します。
+* 次の E コマース拡張パラメータをサポートしています。
+  * 注文 ID（`_corder`）
   * 小計（`_csubtotal`）
-  * 数量リスト（`_cquan`）
+  * 数量のリスト（`_cquan`）
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスし、Catchpoint リアルユーザーモニタリング（RUM）タグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を構成します：
+タグを追加する際は、次の構成を構成します。
 
 * **REST URL**
-  * タグスニペットで提供されるURL。
+  * タグスニペットで提供される URL。
   * 例：`g.3gl.net/jp/xxx/v3/M`
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-| `pageGroup_token` |  <ul><li>ページグループトークン。</li></ul> |
-| `variation_token` |  <ul><li>バリエーションタグトークン。</li></ul> |
-| `indicator_token` |  <ul><li>インジケータータグトークン。</li></ul> |
-| `indicator_value` |  <ul><li>インジケーター値。</li></ul> |
-| `tracepoint_token` |  <ul><li>トレースポイントトークン。</li></ul> |
-|`tracepoint_value`|  <ul><li>トレースポイント値。</li></ul> |
+|変数|説明|
+|---|---|
+| `pageGroup_token` | <ul><li>ページグループトークン。</li></ul> |
+| `variation_token` | <ul><li>バリエーションタグトークン。</li></ul> |
+| `indicator_token` | <ul><li>インジケータータグトークン。</li></ul> |
+| `indicator_value` | <ul><li>インジケーター値。</li></ul> |
+| `tracepoint_token` | <ul><li>トレースポイントトークン。</li></ul> |
+|`tracepoint_value`| <ul><li>トレースポイント値。</li></ul> |
 
-### Eコマース
+### E コマース
 
-|変数| 説明|
-|---| ---|
-| `order_id` |  <ul><li>注文ID。</li><li>`_corder`を上書き。</li></ul> |
-|`order_subtotal`|  <ul><li>小計。</li><li>`_csubtotal`を上書き。</li></ul> |
-|`product_quantity`|  <ul><li>配列。</li><li>数量リスト。</li><li>`_cquan`を上書き。</li></ul> |
+|変数|説明|
+|---|---|
+| `order_id` | <ul><li>注文 ID。</li><li>`_corder`を上書きします。</li></ul> |
+|`order_subtotal`| <ul><li>小計。</li><li>`_csubtotal`を上書きします。</li></ul> |
+|`product_quantity`| <ul><li>配列。</li><li>数量のリスト。</li><li>`_cquan`を上書きします。</li></ul> |

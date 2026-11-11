@@ -19,7 +19,7 @@ Use the following steps to access the global consent resources:
 
 1. In the admin menu, click **Global Consent Customization** from the drop-down menu. The **Global Consent Customization** dialog appears.
 1. Select the tab for the feature you want to manage, **Explicit Consent Prompt** or **Consent Preferences Dialog**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-global-consent-customization.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-global-consent-customization.jpg)
 
 ### Setting parameter values
 
@@ -52,7 +52,7 @@ As a best practice, avoid putting translatable text directly in the HTML or Java
 Use the following steps to add a custom parameter:
 
 1. Scroll down to the **Custom Parameters** section and click **+ Add Parameter**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-custom-parameters.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-custom-parameters.jpg)  
 The **Custom Parameter** dialog appears.
 1. Enter a name for the parameter.
 1. Click **Apply**.  
@@ -74,7 +74,7 @@ The new language displays under English (en) in the **Language** side panel.
 1. Click the new language to configure the content for that language.
 1. Enter the translated values in the parameter fields.
 1. If the new language will be the default language, check the **Make Default Language** checkbox.  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-manager-make-default-language-checkbox.jpg)
+    ![](https://docs.tealium.com/images/tag-management/consent-manager-make-default-language-checkbox.jpg)
 1. Click **Finish**.
 
 ### Save/Publish workflow

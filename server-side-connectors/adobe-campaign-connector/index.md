@@ -1,5 +1,5 @@
 ---
-title: Adobe Campaign Connector Setup Guide for AudienceStream
+title: Adobe Campaign Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the Adobe Campaign connector in your Customer Data Hub account.
 url: https://docs.tealium.com/server-side-connectors/adobe-campaign-connector/
 ---## Requirements
@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-campaign-connector/
 * Adobe Campaign Account
 * SOAP API Credentials  
 Contact your Adobe representative for your credentials.
-* Whitelist the [IP addresses](https://docs.tealium.com/ip-allow-list/) of the AudienceStream servers  
+* Whitelist the [IP addresses](https://docs.tealium.com/ip-allow-list/) of the CDP servers  
 
 <blockquote>
 If the IP addresses are not whitelisted by Adobe, the trace feature displays the following error: `Action Failure: Error: received non-successful http response status = 403`
@@ -16,13 +16,13 @@ If the IP addresses are not whitelisted by Adobe, the trace feature displays the
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Custom SOAP Request| ✓| ✗|
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -41,9 +41,7 @@ Example: If the server path is `<http://example.com/nl/jsp/soaprouter.jsp>`, onl
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Send Custom SOAP Request
 
@@ -77,7 +75,6 @@ Refer to [Adobe Campaign v6.1 Configuration Guide](https://docs.campaign.adobe.c
   * To name nested template variables, use the dot notation, for example `items.name`.
   * Nested template variables are typically built from data layer list Attributes.
   * For more information, see [connector-template-variables](https://docs.tealium.com/connector-template-variables/).
-
 
 ## Usage example
 

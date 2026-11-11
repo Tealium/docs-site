@@ -1,30 +1,30 @@
 ---
-title: Adobe Experience Platform コネクタ構成ガイド
-description: この記事では、Adobe Experience Platform コネクタの構成方法について説明します。
+title: Adobe Experience Platformコネクタ構成ガイド
+description: この記事では、Adobe Experience Platformコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/adobe-aep-connector/
 ---
-Adobe Experience Platform Edge Networkは、Adobe Experience CloudまたはAdobe Experience Platform Edgeサービスとのやり取りを最適化する方法を提供します。
+Adobe Experience Platform Edge Networkは、Adobe Experience CloudまたはAdobe Experience Platform Edgeの各種サービスを利用する顧客に、最適化された連携方法を提供します。
 
-APIはライブラリのロードに依存しないため、Adobe Experience Platform Edge Networkおよびサポートされるソリューション（Adobe Analytics、Adobe Audience Manager、Adobe Targetなど）とのやり取りを非常に高速に行うことができます。
+このAPIはライブラリの読み込みに依存しないため、Adobe Experience Platform Edge Networkや、Adobe Analytics、Adobe Audience Manager、Adobe Targetなどの対応ソリューションと非常に高速に連携できます。
 
-## 動作原理
+## 仕組み
 
-Adobe Experience Platform コネクタは、Adobe Experience Platform サービスとのやり取りを最適化する方法を提供します。このコネクタはイベントデータをAdobe Experience Platformを通じてAdobe Experience Cloudサービス（Adobe Analytics、Adobe Audience Manager、Adobe Target、Adobe CDPなど）に送信します。
+Adobe Experience Platformコネクタは、Adobe Experience Platformの各種サービスと連携するための最適化された方法を提供します。このコネクタは、Adobe Experience Platformを介して、Adobe Analytics、Adobe Audience Manager、Adobe Target、Adobe CDPなどのAdobe Experience Cloudサービスにイベントデータを送信します。
 
-### データタイプ
+### データ型
 
-Adobe Experience Platform コネクタは、Tealiumのすべてのデータタイプをサポートしていますが、配列とマップはコネクタ内で変換され、データがAdobeに送信される前に変換されます。
+Adobe Experience PlatformコネクタはTealiumのすべてのデータ型をサポートしていますが、配列とマップは、データがAdobeに送信される前にコネクタ内で変換されます。
 
-#### オブジェクトの配列のマッピング
+#### オブジェクト配列のマッピング
 
-動的な長さのオブジェクトの配列をマッピングするために、コネクタはオブジェクト属性ごとに1つの配列を受け入れます。その後、これらのプロパティを適切に形成されたJSONオブジェクトの配列にマージします。
+長さが動的に変化するオブジェクト配列をマッピングするために、コネクタはオブジェクトの属性ごとに配列を受け取ります。その後、コネクタはこれらのプロパティを、適切に構成されたJSONオブジェクト配列に統合します。
 
-たとえば、Adobe Analyticsのリストを送信したい場合、このコネクタを使用してデータをオブジェクトの配列として送信できます。コネクタは次のようにリストをマッピングします：
+たとえば、Adobe Analyticsのリストを送信する場合、このコネクタを使用してデータをオブジェクト配列として送信できます。コネクタは、次のようにリストをマッピングします。
 
-* `_experience.analytics.customDimensions.lists.list1.list.key` を `['productCategories','productCategories','productCategories']` に
-* `_experience.analytics.customDimensions.lists.list1.list.value` を `['clothing','shoes','accessories']` に
+* `_experience.analytics.customDimensions.lists.list1.list.key`から`['productCategories','productCategories','productCategories']`
+* `_experience.analytics.customDimensions.lists.list1.list.value`から`['clothing','shoes','accessories']`
 
-コネクタはこれらの配列を次のJSON形式にマージします：
+コネクタは、これらの配列を次のJSON形式に統合します。
 
 ```json
 "xdm": {
@@ -55,15 +55,15 @@ Adobe Experience Platform コネクタは、Tealiumのすべてのデータタ�
 }
 ```
 
-オプショナルな配列値を空でコネクタに渡すと、コネクタは対応するオブジェクトの属性で空の値を渡します。たとえば、`experience.analytics.customDimensions.lists.list1.list.key` を `['clothing','','accessories']` にマッピングした場合、リスト配列の2番目のオブジェクトには属性キーが存在しません。
+空のオプション配列値をコネクタに渡すと、コネクタは対応するオブジェクトの属性に空の値を渡します。たとえば、`experience.analytics.customDimensions.lists.list1.list.key`を`['clothing','','accessories']`にマッピングした場合、リスト配列内の2番目のオブジェクトにはkey属性が含まれません。
 
-スキーマが属性を必要としており、配列に含まれていない場合、そのオブジェクト全体はAdobeに送信される配列に含まれません。
+スキーマで属性が必須とされているにもかかわらず、その属性が配列に含まれていない場合、そのオブジェクト全体がAdobeに送信される配列から除外されます。
 
 #### マップ属性の送信
 
-コネクタ構成では、ID名前空間を持つマップ属性が必要になる場合があります。このデータをAdobeに送信するには、文字列、数字、および文字列の配列属性を使用します。数値には文字列または文字列の配列を使用することをお勧めします。なぜなら、数字の配列にはnull値や空の値を含めることができないからです。
+コネクタの構成で、ID名前空間を含むマップ属性が必要になる場合があります。このデータをAdobeに送信するには、文字列、数値、および文字列配列の属性を使用します。数値配列にはnull値や空の値を含められないため、数値には文字列または文字列配列を使用することをお勧めします。
 
-たとえば、次の `segmentMembership` の値をAdobeに送信したい場合：
+たとえば、次の`segmentMembership`値をAdobeに送信する場合を考えます。
 
 ```json
 "segmentMembership":{
@@ -81,214 +81,213 @@ Adobe Experience Platform コネクタは、Tealiumのすべてのデータタ�
    }
 }
 ```
-コネクタで次の配列をマッピングする必要があります：
+
+コネクタで次の配列をマッピングする必要があります。
 
 * `segmentMembership.Email`: `["a@example.com","b@example.com","c@example.com"]`
-* `segmentMembership.Email.version`: `["1", "", "3"]` (2番目のメールのために空の値を含む文字列の配列)
-* `segmentMembership.Email.status`: `['', 'exited', 'in']` (最初のメールのために空の値を含む)
+* `segmentMembership.Email.version`: `["1", "", "3"]`（2番目のメールアドレスに対応する空の値を含む文字列配列。）
+* `segmentMembership.Email.status`: `['', 'exited', 'in']`（1番目のメールアドレスに対応する空の値を含みます。）
 * `segmentMembership.Email.validUntil`: `null`
 
 ## API情報
 
-このコネクタは次のベンダーAPIを使用します：
+このコネクタは、次のベンダーAPIを使用します。
 
-* API名: Adobe Experience Platform API
-* APIバージョン: v2.0
-* APIエンドポイント: `https://server.adobedc.net/ee/v2/interact`
-* ドキュメント: [Adobe Experience Platform API](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/data-collection/interactive-data-collection.html?lang=en)
+* API名：Adobe Experience Platform API
+* APIバージョン：v2.0
+* APIエンドポイント：`https://server.adobedc.net/ee/v2/interact`
+* ドキュメント：[Adobe Experience Platform API](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/data-collection/interactive-data-collection.html?lang=en)
 
 ## 構成
 
-TealiumでAdobe Experience Platformコネクタを構成する前に、Adobe Developer Consoleで認証情報を生成するために次のステップを完了する必要があります。
+TealiumでAdobe Experience Platformコネクタを構成する前に、Adobe Developer Consoleで認証情報を生成するため、次の手順を完了する必要があります。
 
-1. 新しいAdobe Developer Consoleプロジェクトを作成するか、既存のプロジェクトを使用します。[プロジェクト概要](https://developer.adobe.com/developer-console/docs/guides/projects/)を参照してください。
-1. プロジェクト認証情報に関連付けたいサービスをプロジェクトに追加します。[サービス概要](https://developer.adobe.com/developer-console/docs/guides/services/)を参照してください。このコネクタには次のAdobeサービスが必要です：
+1. 新しいAdobe Developer Consoleプロジェクトを作成するか、既存のプロジェクトを使用します。[プロジェクトの概要](https://developer.adobe.com/developer-console/docs/guides/projects/)を参照してください。
+1. プロジェクトの認証情報に関連付けるサービスをプロジェクトに追加します。[サービスの概要](https://developer.adobe.com/developer-console/docs/guides/services/)を参照してください。  
+このコネクタとの統合には、次のAdobeサービスが必要です。
     * Experience Platform API
     * I/O Events
-1. サービスをプロジェクトに追加した後、プロジェクト認証情報にアクセスできます。[認証情報](https://developer.adobe.com/developer-console/docs/guides/credentials/)を参照してください。プロジェクト概要に移動し、**Credentials** セクションで **OAuth Server-to-Server** を選択します。
-このコネクタに必要な認証情報は次のとおりです：
-    * クライアントID（APIキー）
-    * クライアントシークレット
-    * 組織ID
-1. 認証情報をメモして、コネクタ構成を完了するためにTealiumに戻ります。
-1. Tealiumで、Connector Marketplaceに移動し、新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
-1. コネクタを追加した後、前のステップで生成した認証情報を使用して次の構成を構成します：
-    * **クライアントID**  
-    （必須）クライアントID。
-    * **クライアントシークレット**  
-    （必須）クライアントシークレット。
-    * **組織ID**  
-    （必須）組織ID。
+1. プロジェクトにサービスを追加すると、プロジェクトの認証情報にアクセスできるようになります。[認証情報](https://developer.adobe.com/developer-console/docs/guides/credentials/)を参照してください。プロジェクトの概要に移動し、**Credentials**セクションで**OAuth Server-to-Server**を選択します。  
+このコネクタには、次の認証情報が必要です。
+    * Client ID（API Key）
+    * Client secret
+    * Organization ID
+1. 認証情報を記録し、Tealiumに戻ってコネクタの構成を完了します。
+1. Tealiumでコネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
+1. コネクタを追加したら、前の手順で生成した認証情報を使用して、次の項目を構成します。
+    * **Client ID**  
+    （必須）Client ID。
+    * **Client Secret**  
+    （必須）Client Secret。
+    * **Organization ID**  
+    （必須）Organization ID。
     * **Sandbox**  
-    （オプション）API呼び出しがデフォルトの環境（prod）以外の環境を参照する場合は、このフィールドに指定します。
+    （任意）API呼び出しでデフォルト環境（prod）とは異なる環境を参照する場合は、このフィールドで指定します。
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| イベント送信 | ✓ | ✓ |
-| イベント送信（バッチ処理） | ✓ | ✓ |
-| レコードデータストリーミング | ✓ | ✓ |
-| レコードデータストリーミング（バッチ処理） | ✓ | ✓ |
+| イベントを送信 | ✓ | ✓ |
+| イベントを送信（バッチ） | ✓ | ✓ |
+| レコードデータをストリーミング | ✓ | ✓ |
+| レコードデータをストリーミング（バッチ） | ✓ | ✓ |
 
-### イベント送信
+### イベントを送信
+#### パラメーター
 
-
-#### パラメータ
-
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| Datastream ID | このアクションに使用するAdobeサーバーサイドのDatastream構成です。 |
-| XDM スキーマ | データストリームを通じてデータを送信するために使用されるエクスペリエンスデータモデル（XDM）スキーマ。使用するデータストリームにXDMスキーマが関連付けられていることを確認してください。XDMスキーマをデータストリームに関連付ける方法の詳細については、[データストリーム識別子の生成](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier)を参照してください。 |
-| Identity Namespaces | メールアドレスや数値CRM IDなど、アイデンティティが関連するものを示します。プロファイルフラグメント間でレコードデータを照合する際、Adobe Experience Platformはアイデンティティ値とネームスペースを使用してプロファイルデータをマージします。<br>選択した**XDMスキーマ**にマップ属性の種類が含まれている場合、マッピングで使用するアイデンティティネームスペースをこのパラメータで選択してください。 |
-| XDM スキーマパラメータ | XDMスキーマに関連するパラメータ。必須属性はロックアイコンが隣に表示され、読み取り専用です。左側のドロップダウンリストで有効なマッピングを提供する必要があります。<br>注：`identityMap`属性は、そのネームスペースの少なくとも1つに`primary`が`true`と構成されている必要があります。パラメータにアイデンティティネームスペースが含まれていない場合は、ダッシュ（`-`）を入力してください。 |
-| XDM スキーマテンプレート | XDMスキーマのJSONテンプレートを提供してください。テンプレートはXDMスキーマの構造に一致する必要があり、JSON構造内でテンプレート変数を使用できます。このフィールドに値が提供されると、上記のXDMスキーマパラメータは無視されます。<br>詳細については、[Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/)を参照してください。 |
-| データ | 既存のJSONデータレイヤーオブジェクトをXDMスキーマにマッピングするためにこのフィールドを使用します。データオブジェクトのサブプロパティは、キャプチャしたいデータレイヤープロパティにマッピングする方法で構築できます。この属性は完全にカスタマイズ可能です。 |
-| テンプレート変数 | テンプレートにデータ入力としてテンプレート変数を提供します。ドット表記を使用してネストされたテンプレート変数を名前付けします。例えば、`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| テンプレート | データセクションで参照されるテンプレートを提供します。テンプレートは名前で識別され、サポートされるフィールドに二重中括弧で挿入されます。例えば、`{{SomeTemplateName}}`。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| Referer | イベントが発生したページまたはリソースの完全なURLを識別します。AEPが正しい参照コンテキストとのインタラクションを関連付けるために使用されます。デフォルト値は、利用可能な場合はブラウザのRefererヘッダー、または対応するデータレイヤープロパティです。 |
-| X-Forwarded-For | Tealiumまたは他のプロキシを通じて接続するクライアントの元のIPアドレスを含みます。AEPによる地理位置情報と帰属のために使用されます。デフォルト値は、受信リクエストで提供されたIPアドレスまたは訪問のIPアドレスを表すTealiumシステム変数から取得されます。 |
-| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTPまたはHTTPS）を指定します。プロキシを介してルーティングされた場合に元のリクエストスキームをAEPが解釈するのに役立ちます。デフォルト値は`HTTPS`です。 |
-| X-Forwarded-Host | クライアントによって要求された元のホストを識別します。例えば、`www.clientsite.com`。AEPによる正確なホスト帰属を維持するために必要です。 |
-| User-Agent | クライアントのブラウザ、オペレーティングシステム、およびレンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEPによるデバイスおよびブラウザ検出のために使用されます。 |
-| Sec-CH-UA | (必須) ブラウザのブランドとバージョンをリストする低エントロピーのクライアントヒントヘッダー。 |
-| Sec-CH-UA-Mobile | (必須) クライアントがモバイルデバイス上にあるかどうかを示します。AEPによるモバイル分類のために必要です。 |
-| Sec-CH-UA-Platform | ブラウザが実行されているプラットフォームを識別します（例：`Windows`、`macOS`、`Android`）。 |
-| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性の帰属のために使用されます。 |
-| Sec-CH-UA-Arch | クライアントデバイスのCPUアーキテクチャを指定します（例：`x86`、`arm`）。 |
-| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイス用です。 |
-| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数を示します（例：`64`）。 |
-| Sec-CH-UA-WoW64 | クライアントが64ビットのWindowsシステム上で32ビットプロセスを実行しているかどうかを示します。 |
-| Custom Header Key CSV | リクエストと共に送信するカスタムヘッダーキーを提供してください。 |
-| Custom Header Value CSV | リクエストと共に送信するカスタムヘッダー値を提供してください。この値はカスタムヘッダーキーのシーケンスに対応します。 |
+| Datastream ID | このアクションで使用する Adobe サーバーサイドの Datastream 構成。 |
+| XDM Schema | Datastream を介してデータを送信するために使用する Experience Data Model（XDM）スキーマ。XDM スキーマが、使用する Datastream に関連付けられていることを確認してください。XDM スキーマと Datastream の関連付けについて詳しくは、[Datastream 識別子の生成](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier)を参照してください。 |
+| Identity Namespaces | メールアドレスや数値の CRM ID など、ID が何に関連するかを示します。プロファイルフラグメント間でレコードデータを照合する際、Adobe Experience Platform は ID 値と名前空間を使用してプロファイルデータを統合します。<br>選択した **XDM Schema** に何らかのマップ属性が含まれている場合は、このパラメーターを使用して、マッピングで使用する ID 名前空間を選択します。 |
+| XDM Schema Parameters | XDM スキーマに関連付けられたパラメーター。必須属性はロックアイコンの横に表示され、読み取り専用です。左側のドロップダウンリストで有効なマッピングを指定する必要があります。<br>注：`identityMap` 属性では、少なくとも 1 つの名前空間でプロパティ `primary` が `true` に構成されている必要があります。パラメーターに ID 名前空間が含まれていない場合は、ダッシュ（`-`）を入力してください。 |
+| XDM Schema Template | XDM スキーマの JSON テンプレートを指定します。テンプレートは XDM スキーマの構造と一致している必要があり、JSON 構造内でテンプレート変数を使用できます。このフィールドに値を指定すると、上記の XDM Schema Parameters は無視されます。<br>詳しくは、[Adobe Developer：Interact エンドポイント](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/)を参照してください。 |
+| Data | 既存の JSON データレイヤーオブジェクトを XDM スキーマにマッピングするには、このフィールドを使用します。データオブジェクトのサブプロパティは、取得するデータレイヤープロパティにマッピングできるように構成できます。この属性は完全にカスタマイズ可能です。 |
+| Template Variables | Templates のデータ入力としてテンプレート変数を指定します。ネストされたテンプレート変数にはドット表記で名前を付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。<br>詳しい情報と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
+| Templates | Data セクションで参照するテンプレートを指定します。サポート対象のフィールドには、名前を二重中括弧で囲んでテンプレートを挿入します。例：`{{SomeTemplateName}}`。<br>詳しい情報と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
+| Referer | イベントの発生元となったページまたはリソースの完全な URL を示します。AEP がインタラクションを正しい参照元コンテキストに関連付けるために使用します。デフォルト値は、利用可能な場合はブラウザーの Referer ヘッダー、それ以外の場合は対応するデータレイヤープロパティです。 |
+| X-Forwarded-For | Tealium または別のプロキシを介して接続しているクライアントの送信元 IP アドレスが含まれます。AEP が位置情報の特定とアトリビューションに使用します。デフォルト値は、受信リクエストで提供された IP アドレス、または訪問の IP アドレスを表す Tealium システム変数から取得されます。 |
+| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTP または HTTPS）を指定します。プロキシ経由でルーティングされた場合に、AEP が元のリクエストスキームを解釈する際に役立ちます。デフォルト値は `HTTPS` です。 |
+| X-Forwarded-Host | `www.clientsite.com` など、クライアントが最初にリクエストしたホストを示します。AEP が正確なホストアトリビューションを維持するために必要です。 |
+| User-Agent | クライアントのブラウザー、オペレーティングシステム、レンダリングエンジンを識別する完全なユーザーエージェント文字列を指定します。AEP がデバイスとブラウザーを検出するために使用します。 |
+| Sec-CH-UA | （必須）ブラウザーのブランドとバージョンを列挙する、低エントロピーの Client Hint ヘッダー。 |
+| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイス上にあるかどうかを示します。AEP によるモバイル分類に必要です。 |
+| Sec-CH-UA-Platform | ブラウザーが実行されているプラットフォーム（例：`Windows`、`macOS`、`Android`）を示します。 |
+| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを指定します。高度なデバイスおよび互換性のアトリビューションに使用します。 |
+| Sec-CH-UA-Arch | クライアントデバイスの CPU アーキテクチャ（例：`x86`、`arm`）を指定します。 |
+| Sec-CH-UA-Model | デバイスモデルを示します。主にモバイルデバイスで使用されます。 |
+| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数（例：`64`）を示します。 |
+| Sec-CH-UA-WoW64 | クライアントが 64 ビット版 Windows システム上で 32 ビットプロセスを実行しているかどうかを示します。 |
+| Custom Header Key CSV | リクエストとともに送信するカスタムヘッダーキーを指定します。 |
+| Custom Header Value CSV | リクエストとともに送信するカスタムヘッダー値を指定します。この値は、カスタムヘッダーキーの順序に対応します。 |
 
-### イベント送信（バッチ処理）
+### イベントの送信（バッチ）
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチ処理アクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：
+このアクションでは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する場合があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳しくは、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかのしきい値に達するか、プロファイルが公開されるまでキューに保持されます。
 
-* 最大リクエスト数：6,000
-* 最古のリクエストからの最大時間：15分
+* リクエストの最大数：6,000
+* 最も古いリクエストからの最大経過時間：15 分
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| データストリームID | このアクションに使用するAdobeサーバーサイドのデータストリーム構成です。 |
-| XDMスキーマ | データストリームを通じてデータを送信するために使用されるエクスペリエンスデータモデル（XDM）スキーマ。使用するデータストリームにXDMスキーマが関連付けられていることを確認してください。XDMスキーマをデータストリームに関連付ける方法の詳細については、[データストリーム識別子の生成](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier)を参照してください。 |
-| アイデンティティ名前空間 | 電子メールアドレスや数値CRM IDなど、アイデンティティが関連するものを示します。プロファイルフラグメント間でレコードデータを照合する際、Adobe Experience Platformはアイデンティティ値と名前空間を使用してプロファイルデータをマージします。<br>選択した**XDMスキーマ**にマップタイプの属性が含まれている場合、マッピングで使用するアイデンティティ名前空間をこのパラメータで選択してください。<br>アイデンティティ名前空間が含まれていない場合は、ダッシュ（`-`）を入力してください。 |
-| XDMスキーマパラメータ | XDMスキーマに関連するパラメータ。必須属性はロックアイコンが表示され、読み取り専用です。左側のドロップダウンリストで有効なマッピングを提供する必要があります。<br>注：`identityMap`属性は、その名前空間の少なくとも一つに`primary`が`true`に構成されている必要があります。 |
-| XDMスキーマテンプレート | XDMスキーマのJSONテンプレートを提供してください。テンプレートはXDMスキーマの構造に一致している必要があり、JSON構造内でテンプレート変数を使用できます。このフィールドに値が提供された場合、上記のXDMスキーマパラメータは無視されます。<br>詳細については、[Adobe Developer: Interact Endpoint](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/)を参照してください。 |
-| データ | 既存のJSONデータレイヤーオブジェクトをXDMスキーマにマッピングするためにこのフィールドを使用します。データオブジェクトのサブプロパティは、キャプチャしたいデータレイヤープロパティにマッピングする方法で構築できます。この属性は完全にカスタマイズ可能です。 |
-| テンプレート変数 | テンプレートにデータ入力としてテンプレート変数を提供します。ドット表記を使用してネストされたテンプレート変数を名前付けします。例えば、`items.name`。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| テンプレート | データセクションで参照されるテンプレートを提供します。テンプレートは名前で識別され、サポートされるフィールドに二重中括弧で注入されます。例えば、`{{SomeTemplateName}}`。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| リファラー | イベントが発生したページまたはリソースの完全なURLを識別します。AEPが正しい参照コンテキストとの関連付けを行うために使用されます。デフォルト値は、利用可能な場合はブラウザのリファラーヘッダー、または対応するデータレイヤープロパティです。 |
-| X-Forwarded-For | Tealiumまたは他のプロキシを通じて接続するクライアントの元のIPアドレスを含みます。AEPによる地理位置情報と帰属のために使用されます。デフォルト値は、受信リクエストで提供されたIPアドレスまたは訪問のIPアドレスを表すTealiumシステム変数から取得されます。 |
-| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTPまたはHTTPS）を指定します。プロキシを通じてルーティングされた場合に元のリクエストスキームをAEPが解釈するのに役立ちます。デフォルト値は`HTTPS`です。 |
-| X-Forwarded-Host | クライアントによって要求された元のホストを識別します。例えば、`www.clientsite.com`。AEPによる正確なホスト帰属の維持に必要です。 |
-| ユーザーエージェント | クライアントのブラウザ、オペレーティングシステム、およびレンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEPによるデバイスおよびブラウザ検出に使用されます。 |
-| Sec-CH-UA | (必須) ブラウザのブランドとバージョンをリストする低エントロピーのクライアントヒントヘッダーです。 |
-| Sec-CH-UA-Mobile | (必須) クライアントがモバイルデバイス上にあるかどうかを示します。AEPによるモバイル分類のために必要です。 |
-| Sec-CH-UA-Platform | ブラウザが実行されているプラットフォームを識別します（例：`Windows`、`macOS`、`Android`）。 |
-| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性の帰属に使用されます。 |
-| Sec-CH-UA-Arch | クライアントデバイスのCPUアーキテクチャを指定します（例：`x86`、`arm`）。 |
-| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイス用です。 |
-| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数を示します（例：`64`）。 |
-| Sec-CH-UA-WoW64 | クライアントが64ビットのWindowsシステム上で32ビットプロセスを実行しているかどうかを示します。 |
-| カスタムヘッダーキーCSV | リクエストと共に送信するカスタムヘッダーキーを提供してください。 |
-| カスタムヘッダー値CSV | リクエストと共に送信するカスタムヘッダー値を提供してください。この値はカスタムヘッダーキーのシーケンスに対応します。 |
+| データストリーム ID | このアクションで使用する Adobe サーバーサイドのデータストリーム構成。 |
+| XDM スキーマ | データストリームを介したデータ送信に使用する Experience Data Model（XDM）スキーマ。XDM スキーマが、使用するデータストリームに関連付けられていることを確認してください。XDM スキーマとデータストリームの関連付けについて詳しくは、[データストリーム識別子の生成](https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier)を参照してください。 |
+| ID 名前空間 | メールアドレスや数値形式の CRM ID など、ID が何に関連するかを示します。Adobe Experience Platform は、プロファイルフラグメント間でレコードデータを照合する際に、ID 値と名前空間を使用してプロファイルデータを統合します。<br>選択した **XDM スキーマ**に何らかのマップ型属性が含まれている場合は、このパラメータを使用して、マッピングに使用する ID 名前空間を選択します。<br>パラメータに ID 名前空間が含まれていない場合は、ダッシュ（`-`）を入力します。 |
+| XDM スキーマパラメータ | XDM スキーマに関連付けられたパラメータ。必須属性は鍵アイコンの横に表示され、読み取り専用です。左側のドロップダウンリストで有効なマッピングを指定する必要があります。<br>注：`identityMap` 属性では、その名前空間のうち少なくとも 1 つで、プロパティ `primary` が `true` に構成されている必要があります。 |
+| XDM スキーマテンプレート | XDM スキーマの JSON テンプレートを指定します。テンプレートは XDM スキーマの構造と一致している必要があり、JSON 構造内でテンプレート変数を使用できます。このフィールドに値を指定すると、上記の XDM スキーマパラメータは無視されます。<br>詳しくは、[Adobe Developer：Interact エンドポイント](https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/)を参照してください。 |
+| データ | このフィールドを使用して、既存の JSON データレイヤーオブジェクトを XDM スキーマにマッピングします。データオブジェクトのサブプロパティは、取得するデータレイヤープロパティにマッピングできるように構成できます。この属性は全面的にカスタマイズできます。 |
+| テンプレート変数 | テンプレートのデータ入力としてテンプレート変数を指定します。ネストされたテンプレート変数にはドット表記で名前を付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。<br>詳しい情報と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| テンプレート | 「データ」セクションで参照するテンプレートを指定します。テンプレートは、サポートされているフィールドに二重波括弧を使用して名前で挿入されます。例：`{{SomeTemplateName}}`。<br>詳しい情報と使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| リファラー | イベントの発生元となったページまたはリソースの完全な URL を識別します。AEP がインタラクションを正しい参照元コンテキストに関連付けるために使用します。デフォルト値は、利用可能な場合はブラウザーの Referer ヘッダー、または対応するデータレイヤープロパティです。 |
+| X-Forwarded-For | Tealium または別のプロキシを介して接続しているクライアントの送信元 IP アドレスが含まれます。AEP が位置情報の特定とアトリビューションに使用します。デフォルト値は、受信リクエストで提供された IP アドレス、または訪問の IP アドレスを表す Tealium システム変数から取得されます。 |
+| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTP または HTTPS）を指定します。プロキシを介してルーティングされる場合に、AEP が元のリクエストスキームを解釈するのに役立ちます。デフォルト値は `HTTPS` です。 |
+| X-Forwarded-Host | `www.clientsite.com` など、クライアントが最初にリクエストしたホストを識別します。正確なホストアトリビューションを維持するために AEP で必須です。 |
+| User-Agent | クライアントのブラウザー、オペレーティングシステム、レンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEP がデバイスとブラウザーの検出に使用します。 |
+| Sec-CH-UA | （必須）ブラウザーブランドとバージョンを一覧表示する、低エントロピーの Client Hint ヘッダー。 |
+| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイスを使用しているかどうかを示します。AEP がモバイルとして分類するために必須です。 |
+| Sec-CH-UA-Platform | ブラウザーが実行されているプラットフォーム（例：`Windows`、`macOS`、`Android`）を識別します。 |
+| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性のアトリビューションに使用されます。 |
+| Sec-CH-UA-Arch | クライアントデバイスの CPU アーキテクチャ（例：`x86`、`arm`）を指定します。 |
+| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイスで使用されます。 |
+| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数（例：`64`）を示します。 |
+| Sec-CH-UA-WoW64 | クライアントが 64 ビット Windows システム上で 32 ビットプロセスを実行しているかどうかを示します。 |
+| カスタムヘッダーキー CSV | リクエストとともに送信するカスタムヘッダーキーを指定します。 |
+| カスタムヘッダー値 CSV | リクエストとともに送信するカスタムヘッダー値を指定します。この値は、カスタムヘッダーキーの順序に対応します。 |
 
-### ストリームレコードデータ
-
+### レコードデータのストリーミング
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
 | データセット | レコードデータのソースデータセットを選択します。 |
-| 接続 | 接続IDです。<br>新しい接続IDの場合：<ol><li>**作成**をクリックします。</li><li>**接続作成**画面で、接続IDの名前を入力し、**完了**をクリックします。</li><li>Adobe AEPエンドポイントへの接続を完了するために**接続**をクリックします。</li></ol>既存の接続IDの場合：<ol><li>Adobe AEPエンドポイントへの接続を作成するために**接続**をクリックします。</li></ol>接続が正常に確立されると、**接続完了**メッセージが表示されます。 |
-| IDネームスペース | IDが関連するものを示します。例えば、メールアドレスや数値CRM IDなどです。プロファイルフラグメント間でレコードデータをマッチングする際、Adobe Experience PlatformはID値とネームスペースを使用してプロファイルデータをマージします。<br>選択した**XDMスキーマ**にマップ属性が含まれている場合、マッピングで使用するIDネームスペースをこのパラメータで選択します。パラメータにIDネームスペースが含まれていない場合は、ダッシュ（`-`）を入力します。 |
-| ボディパラメータ | XDMスキーマに関連するパラメータです。必須属性はロックアイコンが隣に表示され、読み取り専用です。ドロップダウンリストで有効なマッピングを提供してください。<br>注：`identityMap`属性は、そのネームスペースの少なくとも一つに`primary`が`true`に構成されている必要があります。 |
-| 作成日時 | 接続の作成時刻を記録するタイムスタンプです。 |
-| ソース名 | （オプション）ソースの名前です。この値が欠けている場合、ストリーミングメッセージは自動的にストリーミング接続定義からソースIDを追加します。 |
-| リファラー | イベントが発生したページまたはリソースの完全なURLを識別します。AEPは、正しい参照コンテキストとのインタラクションを関連付けるために使用します。デフォルト値は、利用可能な場合はブラウザのリファラーヘッダー、または対応するデータレイヤープロパティです。 |
-| X-Forwarded-For | Tealiumまたは他のプロキシを通じて接続するクライアントの元のIPアドレスを含みます。AEPは、地理位置情報と帰属を目的として使用します。デフォルト値は、受信リクエストで提供されたIPアドレスまたは訪問のIPアドレスを表すTealiumシステム変数から取得されます。 |
-| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTPまたはHTTPS）を指定します。プロキシを通じてルーティングされた場合に元のリクエストスキームをAEPが解釈するのに役立ちます。デフォルト値は`HTTPS`です。 |
-| X-Forwarded-Host | クライアントによって要求された元のホストを識別します。例えば`www.clientsite.com`です。AEPが正確なホスト帰属を維持するために必要です。 |
-| User-Agent | クライアントのブラウザ、オペレーティングシステム、レンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEPは、デバイスおよびブラウザの検出に使用します。 |
-| Sec-CH-UA | （必須）ブラウザのブランドとバージョンをリストする低エントロピーのクライアントヒントヘッダーです。 |
-| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイス上にあるかどうかを示します。AEPによるモバイル分類に必要です。 |
-| Sec-CH-UA-Platform | ブラウザが実行されているプラットフォームを識別します（例：`Windows`, `macOS`, `Android`）。 |
-| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性の帰属に使用されます。 |
-| Sec-CH-UA-Arch | クライアントデバイスのCPUアーキテクチャを指定します（例：`x86`, `arm`）。 |
-| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイスに使用されます。 |
-| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数を示します（例：`64`）。 |
-| Sec-CH-UA-WoW64 | クライアントが64ビットのWindowsシステム上で32ビットプロセスを実行しているかどうかを示します。 |
-| カスタムヘッダーキーCSV | リクエストと共に送信するカスタムヘッダーキーを提供します。 |
-| カスタムヘッダーバリューCSV | リクエストと共に送信するカスタムヘッダー値を提供します。この値はカスタムヘッダーキーのシーケンスに対応します。 |
-| テンプレート変数 | テンプレートのデータ入力としてテンプレート変数を提供します。ドット表記でネストされたテンプレート変数を名前付けします。例えば、`items.name`です。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| テンプレート | ボディパラメータセクションで参照されるテンプレートを提供します。テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例えば、`{{SomeTemplateName}}`です。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
+| 接続 | 接続 ID。<br>新しい接続 ID の場合：<ol><li>**作成**をクリックします。</li><li>**接続を作成**画面で接続 ID の名前を入力し、**完了**をクリックします。</li><li>**接続**をクリックして、Adobe AEP エンドポイントへの接続の作成を完了します。</li></ol>既存の接続 ID の場合：<ol><li>**接続**をクリックして、Adobe AEP エンドポイントへの接続を作成します。</li></ol>接続が正常に確立されると、**接続完了**メッセージが表示されます。 |
+| ID 名前空間 | メールアドレスや数値形式の CRM ID など、ID が何に関連するかを示します。プロファイルフラグメント間でレコードデータを照合する際、Adobe Experience Platform は ID 値と名前空間を使用してプロファイルデータを統合します。<br>選択した **XDM スキーマ**にマップ属性が含まれている場合は、このパラメータを使用して、マッピングで使用する ID 名前空間を選択します。このパラメータに ID 名前空間が含まれていない場合は、ダッシュ（`-`）を入力します。 |
+| 本文パラメータ | XDM スキーマに関連付けられたパラメータ。必須属性はロックアイコンの横に表示され、読み取り専用です。ドロップダウンリストで有効なマッピングを指定します。<br>注：`identityMap` 属性では、少なくとも 1 つの名前空間の `primary` プロパティが `true` に構成されている必要があります。 |
+| 作成日時 | 接続が作成された日時を示すタイムスタンプ。 |
+| ソース名 | （任意）ソースの名前。この値がない場合、ストリーミングメッセージによって、ストリーミング接続定義のソース ID が自動的に追加されます。 |
+| リファラー | イベントの発生元となったページまたはリソースの完全な URL を識別します。AEP がインタラクションを適切な参照元コンテキストに関連付けるために使用します。デフォルト値は、使用可能な場合はブラウザーの Referer ヘッダー、または対応するデータレイヤープロパティです。 |
+| X-Forwarded-For | Tealium または別のプロキシを経由して接続するクライアントの送信元 IP アドレスを含みます。AEP が位置情報の特定とアトリビューションに使用します。デフォルト値は、受信リクエストで提供された IP アドレス、または訪問の IP アドレスを表す Tealium システム変数から取得されます。 |
+| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTP または HTTPS）を指定します。プロキシ経由でルーティングされたときに、AEP が元のリクエストスキームを解釈するために役立ちます。デフォルト値は `HTTPS` です。 |
+| X-Forwarded-Host | `www.clientsite.com` など、クライアントがリクエストした元のホストを識別します。AEP が正確なホストアトリビューションを維持するために必要です。 |
+| User-Agent | クライアントのブラウザー、オペレーティングシステム、レンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEP がデバイスとブラウザーを検出するために使用します。 |
+| Sec-CH-UA | （必須）ブラウザーのブランドとバージョンを列挙する、低エントロピーの Client Hint ヘッダー。 |
+| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイスを使用しているかどうかを示します。AEP がモバイルデバイスとして分類するために必要です。 |
+| Sec-CH-UA-Platform | ブラウザーが動作しているプラットフォーム（例：`Windows`、`macOS`、`Android`）を識別します。 |
+| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性のアトリビューションに使用します。 |
+| Sec-CH-UA-Arch | クライアントデバイスの CPU アーキテクチャ（例：`x86`、`arm`）を指定します。 |
+| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイスで使用します。 |
+| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数（例：`64`）を示します。 |
+| Sec-CH-UA-WoW64 | クライアントが 64 ビット Windows システム上で 32 ビットプロセスを実行しているかどうかを示します。 |
+| カスタムヘッダーキー CSV | リクエストとともに送信するカスタムヘッダーキーを指定します。 |
+| カスタムヘッダー値 CSV | リクエストとともに送信するカスタムヘッダー値を指定します。この値は、カスタムヘッダーキーの順序に対応します。 |
+| テンプレート変数 | テンプレートのデータ入力として使用するテンプレート変数を指定します。ネストされたテンプレート変数にはドット表記で名前を付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーのリスト属性から構築されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| テンプレート | 「本文パラメータ」セクションで参照するテンプレートを指定します。テンプレートは、サポートされているフィールドに二重中括弧で囲んだ名前を使用して挿入します。例：`{{SomeTemplateName}}`。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
 
-### ストリームレコードデータ（バッチ処理）
+### レコードデータのストリーミング（バッチ処理）
 
 #### バッチ制限
 
-このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチ処理アクション](https://docs.tealium.com/batched-actions/)を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：
+このアクションは、ベンダーへの大容量データ転送をサポートするために、バッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する場合があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、次のいずれかのしきい値に達するか、プロファイルが公開されるまでキューに保持されます。
 
-* 最大リクエスト数：6,000
-* 最古のリクエストからの最大時間：60分
+* リクエストの最大数：6,000
+* 最も古いリクエストからの最大経過時間：60 分
 * リクエストの最大サイズ：1 MB
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| データセット | レコードデータを取り込むデータセットを選択します。 |
-| 接続 | 接続IDです。<br>新しい接続IDの場合：<ol><li>**作成**をクリックします。</li><li>**接続作成**画面で、接続IDの名前を入力し、**完了**をクリックします。</li><li>Adobe AEPエンドポイントへの接続を完了するために**接続**をクリックします。</li></ol>既存の接続IDの場合：<ol><li>Adobe AEPエンドポイントへの接続を作成するために**接続**をクリックします。</li></ol>接続が正常に確立されると、**接続完了**メッセージが表示されます。 |
-| アイデンティティ名前空間 | このパラメータは、アイデンティティが関連するコンテキストを示し、電子メールアドレスや数値CRM IDなど、異なるタイプのアイデンティティ値を区別します。プロファイルデータをマージする際、Adobe Experience Platformはアイデンティティ値と名前空間を使用します。マッピングしたい名前空間を選択します。<br>アイデンティティ名前空間が含まれていない場合は、ダッシュ（`-`）を入力します。 |
-| ボディパラメータ | XDMスキーマに関連するパラメータです。必須属性はロックアイコンが表示され、読み取り専用です。ドロップダウンリストで有効なマッピングを提供します。<br>注：`identityMap`属性は、その名前空間の少なくとも1つに`primary`が`true`に構成されている必要があります。 |
-| 作成日時 | 接続の作成時刻を示すタイムスタンプです。 |
-| ソース名 | （オプション）ソースの名前です。この値が欠けている場合、ストリーミングメッセージは自動的にストリーミング接続定義からソースIDを追加します。 |
-| リファラー | イベントが発生したページまたはリソースの完全なURLを識別します。AEPが正しい参照コンテキストとのインタラクションを関連付けるために使用されます。デフォルト値は、利用可能な場合はブラウザのリファラーヘッダー、または対応するデータレイヤープロパティです。 |
-| X-Forwarded-For | Tealiumまたは他のプロキシを介して接続するクライアントの元のIPアドレスを含みます。AEPによる地理位置情報と帰属のために使用されます。デフォルト値は、受信リクエストで提供されたIPアドレスまたは訪問のIPアドレスを表すTealiumシステム変数から取得されます。 |
-| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTPまたはHTTPS）を指定します。プロキシを介してルーティングされた場合に元のリクエストスキームをAEPが解釈するのに役立ちます。デフォルト値は`HTTPS`です。 |
-| X-Forwarded-Host | クライアントによって要求された元のホストを識別します。例えば、`www.clientsite.com`です。AEPによる正確なホスト帰属を維持するために必要です。 |
-| User-Agent | クライアントのブラウザ、オペレーティングシステム、およびレンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEPによるデバイスおよびブラウザ検出のために使用されます。 |
-| Sec-CH-UA | （必須）ブラウザのブランドとバージョンをリストする低エントロピーのクライアントヒントヘッダーです。 |
-| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイス上にあるかどうかを示します。AEPによるモバイル分類のために必要です。 |
-| Sec-CH-UA-Platform | ブラウザが実行されているプラットフォームを識別します（例：`Windows`、`macOS`、`Android`）。 |
-| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性の帰属のために使用されます。 |
-| Sec-CH-UA-Arch | クライアントデバイスのCPUアーキテクチャを指定します（例：`x86`、`arm`）。 |
-| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイス用です。 |
-| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数を示します（例：`64`）。 |
-| Sec-CH-UA-WoW64 | クライアントが64ビットのWindowsシステム上で32ビットプロセスを実行しているかどうかを示します。 |
-| カスタムヘッダーキーCSV | リクエストと共に送信するカスタムヘッダーキーを提供します。 |
-| カスタムヘッダー値CSV | リクエストと共に送信するカスタムヘッダー値を提供します。この値はカスタムヘッダーキーのシーケンスに関連します。 |
-| テンプレート変数 | テンプレートのデータ入力としてテンプレート変数を提供します。ドット表記を使用してネストされたテンプレート変数に名前を付けます。例えば、`items.name`です。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
-| テンプレート | ボディパラメータセクションで参照されるテンプレートを提供します。テンプレートは、サポートされるフィールドに名前で二重中括弧で挿入されます。例えば、`{{SomeTemplateName}}`です。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。|
+| データセット | レコードデータの取り込み先となるデータセットを選択します。 |
+| 接続 | 接続 ID。<br>新しい接続 ID の場合：<ol><li>**Create** をクリックします。</li><li>**Create Connection** 画面で接続 ID の名前を入力し、**Done** をクリックします。</li><li>**Connect** をクリックして、Adobe AEP エンドポイントへの接続の作成を完了します。</li></ol>既存の接続 ID の場合：<ol><li>**Connect** をクリックして、Adobe AEP エンドポイントへの接続を作成します。</li></ol>接続が正常に確立されると、**Connection Done** メッセージが表示されます。 |
+| ID 名前空間 | このパラメータは、ID が関連付けられるコンテキストを示し、メールアドレスや数値の CRM ID など、さまざまな種類の ID 値を区別します。Adobe Experience Platform は、複数のプロファイルフラグメントにわたってレコードデータを照合する際に、ID 値と名前空間を使用してプロファイルデータを統合します。マッピングする名前空間を選択します。<br>このパラメータに ID 名前空間が含まれていない場合は、ダッシュ（`-`）を入力します。 |
+| Body パラメータ | XDM スキーマに関連付けられたパラメータ。必須属性は鍵アイコンの横に表示され、読み取り専用です。ドロップダウンリストで有効なマッピングを指定します。<br>注：`identityMap` 属性では、少なくとも 1 つの名前空間の `primary` プロパティを `true` に構成する必要があります。 |
+| 作成日時 | 接続の作成日時を示すタイムスタンプ。 |
+| ソース名 | （任意）ソースの名前。この値がない場合、ストリーミングメッセージによって、ストリーミング接続の定義にあるソース ID が自動的に追加されます。 |
+| Referer | イベントの発生元となったページまたはリソースの完全な URL を識別します。AEP がインタラクションを正しい参照元コンテキストに関連付けるために使用します。デフォルト値は、利用可能な場合はブラウザーの Referer ヘッダー、または対応するデータレイヤープロパティです。 |
+| X-Forwarded-For | Tealium または別のプロキシを介して接続するクライアントの送信元 IP アドレスを格納します。AEP が位置情報の特定とアトリビューションに使用します。デフォルト値は、受信リクエストで提供された IP アドレス、または訪問の IP アドレスを表す Tealium システム変数から取得されます。 |
+| X-Forwarded-Proto | クライアントが接続に使用したプロトコル（HTTP または HTTPS）を指定します。プロキシ経由でルーティングされた場合に、AEP が元のリクエストスキームを解釈するために役立ちます。デフォルト値は `HTTPS` です。 |
+| X-Forwarded-Host | `www.clientsite.com` など、クライアントがリクエストした元のホストを識別します。AEP が正確なホストアトリビューションを維持するために必要です。 |
+| User-Agent | クライアントのブラウザー、オペレーティングシステム、レンダリングエンジンを識別する完全なユーザーエージェント文字列を提供します。AEP がデバイスとブラウザーを検出するために使用します。 |
+| Sec-CH-UA | （必須）ブラウザーのブランドとバージョンを列挙する、低エントロピーの Client Hint ヘッダー。 |
+| Sec-CH-UA-Mobile | （必須）クライアントがモバイルデバイスであるかどうかを示します。AEP がモバイルデバイスを分類するために必要です。 |
+| Sec-CH-UA-Platform | ブラウザーが動作しているプラットフォーム（`Windows`、`macOS`、`Android` など）を識別します。 |
+| Sec-CH-UA-Platform-Version | オペレーティングシステムプラットフォームのバージョンを提供します。高度なデバイスおよび互換性のアトリビューションに使用します。 |
+| Sec-CH-UA-Arch | クライアントデバイスの CPU アーキテクチャ（`x86`、`arm` など）を指定します。 |
+| Sec-CH-UA-Model | デバイスモデルを識別します。主にモバイルデバイスで使用されます。 |
+| Sec-CH-UA-Bitness | クライアントアーキテクチャのビット数（`64` など）を示します。 |
+| Sec-CH-UA-WoW64 | クライアントが 64 ビット Windows システム上で 32 ビットプロセスを実行しているかどうかを示します。 |
+| カスタムヘッダーキー CSV | リクエストとともに送信するカスタムヘッダーキーを指定します。 |
+| カスタムヘッダー値 CSV | リクエストとともに送信するカスタムヘッダー値を指定します。この値は、カスタムヘッダーキーの順序に対応します。 |
+| テンプレート変数 | テンプレートへのデータ入力としてテンプレート変数を指定します。ネストされたテンプレート変数にはドット表記で名前を付けます。例：`items.name`。ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
+| テンプレート | Body パラメータセクションで参照するテンプレートを指定します。サポートされているフィールドには、テンプレート名を二重波括弧で囲んで挿入します。例：`{{SomeTemplateName}}`。<br>詳細および使用例については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。 |
 
-## 使用例
+## ユースケース
 
-### Adobe Analyticsにアナリティクスデータを送信
+### Adobe Analytics に分析データを送信する
 
-Adobe Experience Platformコネクタを使用してAdobe Analyticsにアナリティクスデータを送信するには、まずAdobe Experience PlatformでXDMスキーマ、データストリーム、およびサービスを構成する必要があります。Adobeの構成を完了した後、Tealiumでコネクタを構成できます。
+Adobe Experience Platform コネクタを使用して分析データを Adobe Analytics に送信するには、まず Adobe Experience Platform で XDM スキーマ、データストリーム、サービスを構成する必要があります。Adobe 側の構成が完了したら、Tealium でコネクタを構成できます。
 
-#### XDMスキーマ
+#### XDM スキーマ
 
-Adobe Experience Edgeにデータを送信する際は、Adobe XDMスキーマに準拠していることを確認する必要があります。Adobe Analyticsがイベントを受信すると、ページビューやリンクイベントなど、より構造化されたデータに変換され、簡単に管理できるようになります。XDMデータとAdobe Analyticsについての詳細は、[Implement Adobe Analytics with Adobe Experience Platform Edge](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/overview.html?lang=en)を参照してください。
+Adobe Experience Edge にデータを送信する際は、そのデータが Adobe XDM スキーマに準拠していることを確認する必要があります。Adobe Analytics がイベントを受信すると、イベントはページビューやリンクイベントなど、管理しやすい、より構造化されたデータに変換されます。XDM データと Adobe Analytics の詳細については、[Adobe Experience Platform Edge を使用した Adobe Analytics の実装](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/overview.html?lang=en)を参照してください。
 
-ページビューやリンクイベントが適切に処理されるように、AdobeはデータがAdobe Experience Edgeネットワークに送信される前に特定のロジックを適用します。このロジックは、データが適切にフォーマットされ、必要な変換や集約が適用され、XDMスキーマに準拠していることを保証します。その後、データは処理および分析のためにAdobe Analyticsに転送されます。
+ページビューとリンクイベントが適切に処理されるように、Adobe はデータを Adobe Experience Edge ネットワークに送信する前に、そのデータに特定のロジックを適用します。このロジックにより、データが適切にフォーマットされ、必要な変換や集計が適用され、XDM スキーマに準拠していることが保証されます。その後、データは処理および分析のために Adobe Analytics に転送されます。
 
-以下の表は、XDMペイロードのデータ例と、スキーマに基づいてAdobe Analyticsがデータをどのように解釈するかを示しています：
+次の表に、XDM ペイロード内のデータ例と、スキーマに基づく Adobe Analytics でのデータの解釈方法を示します。
 
-| **XDMペイロードデータ** | **Adobe Analyticsの解釈** |
+| **XDM ペイロードデータ** | **Adobe Analytics での解釈** |
 | --- | --- |
-| `web.webPageDetails.name` または<br> `web.webPageDetails.URL` および<br> `web.webInteraction.type` がない場合 | ペイロードはページビューとみなされます。|
-|`web.webInteraction.type` および<br> (`web.webInteraction.name` または `web.webInteraction.url`) | ペイロードはリンクイベントとみなされます。|
-|`web.webInteraction.type` および<br> (`web.webPageDetails.name` または `web.webPageDetails.url`)| ペイロードはリンクイベントとみなされます。`web.webPageDetails.name` および `web.webPageDetails.URL` は `null` に構成されます。|
-|`web.webInteraction.type` がなく、<br> (`webPageDetails.name` および `web.webPageDetails.URL` がない場合) | ペイロードは破棄され、データは無視されます。|
+| `web.webPageDetails.name`、または<br> `web.webPageDetails.URL` があり、<br>`web.webInteraction.type` がない | ペイロードはページビューと見なされます。 |
+| `web.webInteraction.type` と<br>（`web.webInteraction.name` または `web.webInteraction.url`） | ペイロードはリンクイベントと見なされます。 |
+| `web.webInteraction.type` と<br>（`web.webPageDetails.name` または `web.webPageDetails.url`） | ペイロードはリンクイベントと見なされます。`web.webPageDetails.name` と `web.webPageDetails.URL` は `null` に構成されます。 |
+| `web.webInteraction.type` がなく、<br>（`webPageDetails.name` も `web.webPageDetails.URL` もない） | ペイロードは破棄され、データは無視されます。 |
 
-Adobe Analyticsにデータを送信するために使用できるさまざまな変数の完全なリストについては、[Analytics variable mapping in Adobe Experience Edge](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/variable-mapping.html?lang=en)を参照してください。
+Adobe Analytics へのデータ送信に使用できる各種変数の完全な一覧については、[Adobe Experience Edge での Analytics 変数のマッピング](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/variable-mapping.html?lang=en)を参照してください。
 
-以下の例は、変数 `web.webPageDetails.name` および `experience` データがAdobe Analyticsに送信される際のフォーマットを示しています：
+次の例は、変数 `web.webPageDetails.name` のデータと `experience` データが Adobe Analytics への送信時にどのようにフォーマットされるかを示しています。
 
 ```json
 "xdm": {
@@ -311,50 +310,50 @@ Adobe Analyticsにデータを送信するために使用できるさまざま�
   }
 }
 ```
-#### Adobe Experience Platformの構成
+#### Adobe Experience Platform を構成する
 
-1. Adobe Experience Platformで、**データ管理 > スキーマ**に移動し、**スキーマの作成**をクリックします。
-1. **スキーマの詳細**セクションで、**エクスペリエンスイベント**オプションを選択し、**次へ**をクリックします。
-1. スキーマの名前を入力し、**完了**をクリックします。
-1. **データ管理 > スキーマ**で、作成したばかりのスキーマを選択します。
-1. スキーマの詳細画面で、**フィールドグループ**セクションに移動し、**追加**をクリックします。**Adobe Analytics ExperienceEventテンプレート**を選択し、**保存**をクリックします。![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-schemas.png)
-1. **データ収集 > データストリーム**に移動し、データストリーミングに使用するデータストリームを選択し、画面右側の**編集**ボタンをクリックします。まだデータストリームが構成されていない場合は、新しいものを作成できます。
-1. データストリームの**構成**画面で、作成したばかりの**イベントスキーマ**を選択し、**保存**をクリックします。![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-datastreams.png)
-1. **データストリーム**画面で、**サービスの追加**をクリックし、ドロップダウンリストから**Adobe Analytics**オプションを選択し、**レポートスイートの追加**をクリックします。
-1. Adobe Analyticsから**レポートスイートID**を入力し、**保存**をクリックします。レポートスイートIDは、**Adobe Analytics > 管理 > レポートスイート**に移動することで見つけることができます。
+1. Adobe Experience Platform で、**データ管理（Data Management）> スキーマ（Schemas）**に移動し、**スキーマを作成（Create Schema）**をクリックします。
+1. **スキーマの詳細（Schema Details）**セクションで、**エクスペリエンスイベント（Experience Event）**オプションを選択し、**次へ（Next）**をクリックします。
+1. スキーマの名前を入力し、**完了（Finish）**をクリックします。
+1. **データ管理（Data Management）> スキーマ（Schemas）**で、作成したスキーマを選択します。
+1. スキーマの詳細画面で、**フィールドグループ（Field groups）**セクションに移動して**追加（Add）**をクリックします。**Adobe Analytics ExperienceEvent Template**を選択し、**保存（Save）**をクリックします。![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-schemas.png)
+1. **データ収集（Data Collection）> データストリーム（Datastreams）**に移動し、データストリーミングに使用するデータストリームを選択して、画面右側の**編集（Edit）**ボタンをクリックします。データストリームをまだ構成していない場合は、新しく作成できます。
+1. データストリームの**構成（Configure）**画面で、作成した**イベントスキーマ（Event Schema）**を選択し、**保存（Save）**をクリックします。![](https://docs.tealium.com/images/client-side-tags/adobe-experience-platform-datastreams.png)
+1. **データストリーム（Datastreams）**画面で、**サービスを追加（Add Service）**をクリックし、ドロップダウンリストから**Adobe Analytics**オプションを選択して、**レポートスイートを追加（Add Report Suite）**をクリックします。
+1. Adobe Analytics の**レポートスイート ID（Report Suite ID）**を入力し、**保存（Save）**をクリックします。レポートスイート ID は、**Adobe Analytics > 管理者（Admin）> レポートスイート（Report Suites）**に移動すると確認できます。
 
-Adobe Experience Platform Datastream、サービス、およびスキーマの構成に関する詳細は、Adobeのドキュメントの以下の記事を参照してください：
+Adobe Experience Platform のデータストリーム、サービス、およびスキーマの構成について詳しくは、Adobe ドキュメントの次の記事を参照してください。
 
 * [データストリームの構成](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en)
-* [UIでスキーマを作成および編集する](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
-* [Adobe Analyticsの構成](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en#analytics)
-* [Analyticsフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/analytics.html?lang=en)
+* [UI でのスキーマの作成と編集](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
+* [Adobe Analytics の構成](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en#analytics)
+* [Analytics フィールドのマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/analytics.html?lang=en)
 
-#### TealiumでAdobe Experience Platformコネクタを構成する
+#### Tealium で Adobe Experience Platform コネクタを構成する
 
-1. [構成の構成](#configure-settings)セクションのAdobe Experience Platformコネクタの構成手順を完了します。
-1. **アクション**ステップで、使用するアクションを選択します。
-1. 次のパラメーターでアクションを構成します：
-    * **Datastream ID**: 以前に作成したデータストリームIDを選択します。
-    * **XDMスキーマ**: 対応するデータストリームのXDMスキーマを選択します。Adobe Experience Platformでは、データストリームはすでに単一のXDMスキーマにリンクされている必要があります。このスキーマはドロップダウンリストで確認できるはずです。
-    * **Identity Namespaces**: マップする名前空間を選択します。プロファイルフラグメント間でレコードデータを照合する際、Adobe Experience Platformはアイデンティティ値と名前空間を使用してプロファイルデータをマージします。XDMスキーマに`identityMap`のようなマップオブジェクトが含まれている場合、名前空間を選択する必要があります。
-    * **XDMスキーマパラメーター**: XDMスキーマパラメーターに関連付ける属性を選択します。
-        * `_id`: イベントを識別するランダムな一意のIDです。このIDにマップする特定の属性がない場合は、`tealium_random`を使用します。
-        * `timestamp`: イベントが発生した瞬間を表すUTCタイムスタンプです。予想される形式は`YYYY-MM-DDTHH:MM:SSZ`です。
-        * マップする必要がある追加の属性を追加します。Adobe Analyticsにデータを送信するために使用できるさまざまな変数の完全なリストについては、[Adobe Experience EdgeでのAnalytics変数マッピング](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/variable-mapping.html?lang=en)を参照してください。
-1. **完了**をクリックします。
+1. [構成の構成](#configure-settings)セクションに記載されている、Adobe Experience Platform コネクタの構成手順を完了します。
+1. **アクション（Action）**ステップで、使用するアクションを選択します。
+1. 次のパラメータを使用してアクションを構成します。
+    * **データストリーム ID（Datastream ID）**：先ほど作成したデータストリーム ID を選択します。
+    * **XDM スキーマ（XDM Schema）**：対応するデータストリームの XDM スキーマを選択します。Adobe Experience Platform では、データストリームがすでに単一の XDM スキーマにリンクされている必要があります。このスキーマはドロップダウンリストに表示されます。
+    * **ID 名前空間（Identity Namespaces）**：マッピングする名前空間を選択します。Adobe Experience Platform は、プロファイルフラグメント間でレコードデータを照合する際に、ID 値と名前空間を使用してプロファイルデータを結合します。XDM スキーマに `identityMap` などのマップオブジェクトが含まれている場合は、名前空間を選択する必要があります。
+    * **XDM スキーマパラメータ（XDM Schema Parameters）**：XDM スキーマパラメータに関連付ける属性を選択します。
+        * `_id`：イベントを識別するランダムな一意の ID。この ID にマッピングする特定の属性がまだない場合は、`tealium_random` を使用します。
+        * `timestamp`：イベントが発生した時点を表す UTC タイムスタンプ。想定される形式は `YYYY-MM-DDTHH:MM:SSZ` です。
+        * マッピングが必要なその他の属性を追加します。Adobe Analytics へのデータ送信に使用できる各種変数の完全なリストについては、[Adobe Experience Edge での Analytics 変数のマッピング](https://experienceleague.adobe.com/docs/analytics/implementation/aep-edge/variable-mapping.html?lang=en)を参照してください。
+1. **完了（Finish）**をクリックします。
 
-次の画像はTealiumでの例示的なマッピングを示しています：
+次の画像は、Tealium でのマッピング例を示しています。
 
 ![](https://docs.tealium.com/images/server-side-connectors/adobe-analytics-tealium-setup.png)
 
-### Adobe Audience Managerにオーディエンスデータを送信する
+### オーディエンスデータを Adobe Audience Manager に送信する
 
-Adobe Experience Platformコネクタを使用してAdobe Audience Managerにオーディエンスデータを送信するには、まずAdobe Experience PlatformでXDMスキーマの詳細を構成する必要があります。Adobeの構成を完了した後、Tealiumでコネクタを構成できます。
+Adobe Experience Platform コネクタを使用してオーディエンスデータを Adobe Audience Manager に送信するには、まず Adobe Experience Platform で XDM スキーマの詳細を構成する必要があります。Adobe 側の構成が完了したら、Tealium でコネクタを構成できます。
 
-Adobe Audience ManagerおよびXDMフィールドマッピングの完全なリストについては、Adobeのドキュメントの[Audience Managerフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)を参照してください。
+Adobe Audience Manager と XDM のフィールドマッピングの完全なリストについては、Adobe ドキュメントの[Audience Manager のフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)を参照してください。
 
-次の例は、Adobe Audience Managerに送信された際にオーディエンスデータがXDMスキーマにどのようにマッピングされるかを示しています。
+次の例は、Adobe Audience Manager に送信する際に、オーディエンスデータが XDM スキーマへどのようにマッピングされるかを示しています。
 
 ```json
   "xdm": {
@@ -386,38 +385,39 @@ Adobe Audience ManagerおよびXDMフィールドマッピングの完全なリ�
       }
   }
 ```
-#### Adobe Experience Platformの構成
 
-Adobe Audience Managerは、Experience EventおよびIndividual Profileスキーマを使用してリアルタイムデータとプロファイルデータの両方を受け入れます。リアルタイムデータセットアップの場合はExperience Eventオプションを選択し、次の手順を完了します。Individual Profileを使用する場合は、ステップ2でIndividual Profileオプションを選択してください。
+#### Adobe Experience Platform を構成する
 
-1. Adobe Experience Platformで、**データ管理 > スキーマ**に移動し、**スキーマの作成**をクリックします。
-1. **スキーマの詳細**セクションで、**エクスペリエンスイベント**オプションを選択し、**次へ**をクリックします。
-1. スキーマの名前を入力し、**完了**をクリックします。
-1. **データ管理 > スキーマ**で、作成したばかりのスキーマを選択します。
-1. スキーマの詳細画面で、**フィールドグループ**セクションに移動し、**Adobe Audience Managerテンプレート**を選択し、**保存**をクリックします。![](https://docs.tealium.com/images/server-side-connectors/adobe-audience-manager-schema.png)
-1. **データ収集 > データストリーム**に移動し、データストリーミングに使用するデータストリームを選択し、画面右側の**編集**ボタンをクリックします。まだデータストリームが構成されていない場合は、新しいものを作成できます。
-1. データストリームの**構成**画面で、作成したばかりの**イベントスキーマ**を選択し、**保存**をクリックします。
-1. **データストリーム**画面で、**サービスの追加**をクリックし、ドロップダウンリストから**Adobe Audience Manager**オプションを選択し、**保存**をクリックします。
+Adobe Audience Manager は、エクスペリエンスイベントスキーマと個人プロファイルスキーマを使用して、リアルタイムデータとプロファイルデータという 2 種類のデータを受け入れます。次の例は、エクスペリエンスイベントのユースケース向けに Adobe Experience Platform を構成する方法を示しています。個人プロファイルを使用する場合は、次の手順を実行しますが、手順 2 では「個人プロファイル」オプションを選択してください。
 
-Adobe Experience Platform Datastream、サービス、およびスキーマの構成に関する詳細は、Adobeのドキュメントの以下の記事を参照してください：
+1. Adobe Experience Platform で、**データ管理（Data Management）> スキーマ（Schemas）**に移動し、**スキーマを作成（Create Schema）**をクリックします。
+1. **スキーマの詳細（Schema Details）**セクションで、リアルタイムデータを構成するための**エクスペリエンスイベント（Experience Event）**オプションを選択し、**次へ（Next）**をクリックします。
+1. スキーマの名前を入力し、**完了（Finish）**をクリックします。
+1. **データ管理（Data Management）> スキーマ（Schemas）**で、作成したスキーマを選択します。
+1. スキーマの詳細画面で、**フィールドグループ（Field groups）**セクションに移動し、**Adobe Audience Manager Template**を選択して、**保存（Save）**をクリックします。![](https://docs.tealium.com/images/server-side-connectors/adobe-audience-manager-schema.png)
+1. **データ収集（Data Collection）> データストリーム（Datastreams）**に移動し、データストリーミングに使用するデータストリームを選択して、画面右側の**編集（Edit）**ボタンをクリックします。データストリームをまだ構成していない場合は、新しく作成できます。
+1. データストリームの**構成（Configure）**画面で、作成した**イベントスキーマ（Event Schema）**を選択し、**保存（Save）**をクリックします。
+1. **データストリーム（Datastreams）**画面で、**サービスを追加（Add Service）**をクリックし、ドロップダウンリストから**Adobe Audience Manager**オプションを選択して、**保存（Save）**をクリックします。
+
+Adobe Experience Platform のデータストリーム、サービス、およびスキーマの構成について詳しくは、Adobe ドキュメントの次の記事を参照してください。
 
 * [データストリームの構成](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en)
-* [UIでスキーマを作成および編集する](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
+* [UI でのスキーマの作成と編集](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
 * [Adobe Audience Manager](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/audience-manager.html?lang=en)
-* [Adobe Audience Managerフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)
-#### TealiumでAdobe Experience Platformコネクタを構成する
+* [Adobe Audience Manager のフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)
+#### Tealium で Adobe Experience Platform コネクタを構成する
 
-Adobe Audience Managerにデータを送信するには、[TealiumでAdobe Experience Platformコネクタを構成する](#configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を完了してください。
+Adobe Audience Manager にデータを送信するようコネクタを構成するには、[Tealium で Adobe Experience Platform コネクタを構成する](#configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を完了します。
 
-Adobe Audience Managerで利用可能なデータマッピングとそれに対応するXDMフィールドについての詳細は、Adobeのドキュメントにある[Audience Managerフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)を参照してください。
+Adobe Audience Manager で利用可能なデータマッピングと、それに対応する XDM フィールドの詳細については、Adobe ドキュメントの[Audience Manager のフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en)を参照してください。
 
-### Adobe Targetにデータを送信する
+### Adobe Target にデータを送信する
 
-Adobe Experience Platformコネクタを使用してAdobe Targetにオーディエンスデータを送信するには、まずAdobe Experience PlatformでXDMスキーマの詳細を構成する必要があります。Adobeの構成を完了した後、Tealiumでコネクタを構成できます。
+Adobe Experience Platform コネクタを使用してオーディエンスデータを Adobe Target に送信するには、最初に Adobe Experience Platform で XDM スキーマの詳細を構成する必要があります。Adobe での構成が完了したら、Tealium でコネクタを構成できます。
 
-Adobe TargetとXDMフィールドマッピングの完全なリストについては、Adobeのドキュメントにある[Audience Targetフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/target.html?lang=en)を参照してください。
+Adobe Target と XDM のフィールドマッピングの完全な一覧については、Adobe ドキュメントの[Audience Target のフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/target.html?lang=en)を参照してください。
 
-次の例は、Adobe Targetに送信されたデータがXDMスキーマにどのようにマッピングされるかを示しています。
+次の例は、Adobe Target に送信する際にデータが XDM スキーマへどのようにマッピングされるかを示しています。
 
 ```json
 "xdm": {
@@ -459,55 +459,56 @@ Adobe TargetとXDMフィールドマッピングの完全なリストについ�
             }
         }
     }
+}
 ```
-#### Adobe Experience Platformを構成する
 
-1. Adobe Experience Platformで**Data Management > Schemas**に移動し、**Create Schema**をクリックします。
-1. **Schema Details**セクションで**Experience Event**オプションを選択し、**Next**をクリックします。
-1. スキーマの名前を入力し、**Finish**をクリックします。
-1. **Data Management > Schemas**で作成したばかりのスキーマを選択します。
-1. スキーマの詳細画面で**Field groups**セクションに移動し、**Add**をクリックします。**Adobe Target ExperienceEvent Template**を選択し、**Save**をクリックします。![](https://docs.tealium.com/images/server-side-connectors/adobe-target-schema.png)
-1. **Data Collection > Datastreams**に移動し、データストリーミングに使用するデータストリームを選択し、画面右側の**Edit**ボタンをクリックします。まだデータストリームが構成されていない場合は、新しいものを作成できます。
-1. データストリームの**Configure**画面で、作成したばかりの**Event Schema**を選択し、**Save**をクリックします。
-1. **Datastreams**画面で**Add Service**をクリックし、ドロップダウンリストから**Adobe Target**オプションを選択し、**Save**をクリックします。
+#### Adobe Experience Platform を構成する
 
-Adobe Experience Platformのデータストリーム、サービス、スキーマの構成についての詳細は、Adobeのドキュメントの次の記事を参照してください：
+1. Adobe Experience Platform で、**Data Management > Schemas** に移動し、**Create Schema** をクリックします。
+1. **Schema Details** セクションで **Experience Event** オプションを選択し、**Next** をクリックします。
+1. スキーマの名前を入力し、**Finish** をクリックします。
+1. **Data Management > Schemas** で、作成したスキーマを選択します。
+1. スキーマの詳細画面で **Field groups** セクションに移動し、**Add** をクリックします。**Adobe Target ExperienceEvent Template** を選択し、**Save** をクリックします。![](https://docs.tealium.com/images/server-side-connectors/adobe-target-schema.png)
+1. **Data Collection > Datastreams** に移動し、データストリーミングに使用するデータストリームを選択して、画面右側の **Edit** ボタンをクリックします。データストリームをまだ構成していない場合は、新しく作成できます。
+1. データストリームの **Configure** 画面で、作成した **Event Schema** を選択し、**Save** をクリックします。
+1. **Datastreams** 画面で **Add Service** をクリックし、ドロップダウンリストから **Adobe Target** オプションを選択して、**Save** をクリックします。
 
-* [データストリームを構成する](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en)
-* [UIでスキーマを作成および編集する](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
+Adobe Experience Platform のデータストリーム、サービス、およびスキーマの構成について詳しくは、Adobe ドキュメントの次の記事を参照してください。
+
+* [データストリームの構成](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en)
+* [UI でのスキーマの作成と編集](https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en)
 * [Adobe Target](https://experienceleague.adobe.com/docs/target.html?lang=en)
-* [Adobe Targetフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/target.html?lang=en)
+* [Adobe Target のフィールドマッピング](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/target.html?lang=en)
 
-#### TealiumでAdobe Experience Platformコネクタを構成する
+#### Tealium で Adobe Experience Platform コネクタを構成する
 
-Adobe Targetにデータを送信するためにコネクタを構成するには、[TealiumでAdobe Experience Platformコネクタを構成する](##configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を完了してください。
+Adobe Target にデータを送信するようコネクタを構成するには、[Tealium で Adobe Experience Platform コネクタを構成する](##configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を完了します。
 
-次の画像はTealiumでの例示的なマッピングを示しています：
+次の画像は、Tealium でのマッピング例を示しています。
 
 ![](https://docs.tealium.com/images/server-side-connectors/adobe-target-tealium-setup.png)
 
+### Adobe Identity Service にプロファイリングデータを送信する
 
-### Adobe Identity Serviceにプロファイリングデータを送信する
+Adobe Experience Platform コネクタを使用してプロファイリングデータを Adobe Identity Service に送信するには、最初に Adobe Experience Platform で XDM スキーマの詳細を構成する必要があります。Adobe での構成が完了したら、Tealium でコネクタを構成できます。
 
-Adobe Experience Platformコネクタを使用してAdobe Identity Serviceにプロファイリングデータを送信するには、まずAdobe Experience PlatformでXDMスキーマの詳細を構成する必要があります。Adobeの構成を完了した後、Tealiumでコネクタを構成できます。
+以下の概念は、Adobe Experience Platform 内で Identity Service の使用を開始する際に役立ちます。
 
-Identity Serviceを使用するための次の概念が役立ちます：
+* **ID**：ログイン ID、ECID、ロイヤルティ ID など、通常は個人であるエンティティに固有のデータです。
+* **ID 名前空間**：ID のコンテキストまたは種類を区別します。たとえば、ID により、`name@email.com` はメールアドレス、`443522` は数値の CRM ID として区別されます。ID 名前空間は、個々の ID の検索や、ID 値にコンテキストを付与するために使用されます。これにより、異なるプライマリ ID を含んでいても、メール ID 名前空間で同じ値を共有する 2 つのプロファイルフラグメントが同一人物のものであると判断できます。
+* **ID グラフ**：異なる ID 間の関係を表すマップです。どの顧客 ID が結合されているか、またそれらがどのように結合されているかを視覚化し、より深く理解できます。このグラフは Identity Service によって自動的に作成され、異なる ID 名前空間をマッピングすることで、顧客がさまざまなチャネルを通じてブランドとどのようにやり取りしているかを視覚的に表します。
+* **Experience Cloud ID（ECID）**：Adobe Experience Platform と Adobe Experience Cloud アプリケーション全体で使用される共有 ID 名前空間です。ECID は顧客 ID の基盤となり、デバイスのプライマリ ID および ID グラフのベースノードとして使用されます。
+#### 結合ポリシー
 
-* **Identity**: 個体、通常は個人に固有のデータで、ログインID、ECID、またはロイヤルティIDなどがあります。
-* **Identity namespaces**: アイデンティティのコンテキストまたはタイプを区別します。たとえば、アイデンティティは`name@email.com`をメールアドレスとして区別したり、`443522`を数値のCRM IDとして区別します。Identity namespacesは個々のアイデンティティを検索し、アイデンティティ値のコンテキストを提供するために使用されます。これにより、異なる主要IDを持つが、同じメールアイデンティティ名前空間の値を共有する2つのプロファイルフラグメントが同じ個人であると判断できます。
-* **Identity Graph**: 異なるアイデンティティ間の関係のマップで、顧客のアイデンティティがどのように繋がっているか、そしてどのように理解できるかを視覚化し、よりよく理解することができます。グラフはIdentity Serviceによって自動的に作成され、異なるアイデンティティ名前空間をマッピングし、異なるチャンネルを通じてブランドとの顧客のやり取りを視覚的に表現します。
-* **Experience Cloud ID (ECID)**: Adobe Experience PlatformおよびAdobe Experience Cloudアプリケーション全体で使用される共有アイデンティティ名前空間です。ECIDは顧客アイデンティティの基盤として使用され、デバイスの主要IDおよびアイデンティティグラフの基本ノードとして使用されます。
-#### マージポリシー
+Adobe Experience Platform では、複数のソースからデータフラグメントを収集して結合し、個々の顧客の全体像を把握できます。結合ポリシーとは、Adobe Experience Platform がデータの優先順位を構成し、顧客の統合ビューを作成するためにどのデータを結合するかを決定する一連のルールです。
 
-Adobe Experience Platformでは、複数のソースからデータフラグメントを集めて統合し、個々の顧客の完全なビューを作成することができます。マージポリシーは、Adobe Experience Platformがデータを優先する方法と、顧客の統一されたビューを作成するためにどのデータを組み合わせるかを決定するルールのセットです。
+各プロファイルフラグメントには、個人に存在する可能性があるすべての ID のうち、1 つの ID に関する情報のみが含まれます。それらのデータを結合して顧客プロファイルを作成する際に情報が競合する可能性があるため、優先順位を指定する必要があります。
 
-各プロファイルフラグメントには、個人に存在可能なアイデンティティの総数のうちの1つのアイデンティティに関する情報のみが含まれています。そのデータをマージして顧客プロファイルを形成する際には、情報が競合する可能性があり、優先順位を指定する必要があります。
+結合方法を選択すると、データセット間で結合の競合が発生した場合に、どのデータセット属性を優先するかを指定できます。結合方法には、「データセットの優先順位」と「タイムスタンプ順」の 2 つがあります。「データセットの優先順位」ではデータセットに基づいてフラグメントが優先され、「タイムスタンプ順」では最新のフラグメントが優先されます。
 
-マージ方法を選択することで、データセット間でマージ競合が発生した場合に優先するデータセット属性を指定できます。マージ方法には「データセット優先」と「タイムスタンプ順」の2つがあります。データセット優先はデータセットに基づいてフラグメントを優先し、タイムスタンプ順は最新のフラグメントを優先します。
+ID ステッチとは、データフラグメントを識別して結合し、完全なプロファイルレコードを作成するプロセスです。ID ステッチ用にプロファイルを結合する方法には、「なし」と「プライベートグラフ」の 2 つがあります。**なし**を選択すると、1 人の顧客が異なるオーディエンスの条件を満たす複数のプロファイルを持つ可能性があり、その結果、複数のマーケティングメッセージが送信されます。**プライベートグラフ**を選択すると、同一人物に関連する複数の ID が結合され、1 つのプロファイルと 1 つのマーケティングメッセージにまとめられます。
 
-アイデンティティスティッチングは、データフラグメントを識別し、それらを組み合わせて完全なプロファイルレコードを形成するプロセスです。アイデンティティスティッチングのためのプロファイルをマージする方法には、「なし」と「プライベートグラフ」の2つがあります。**なし**を選択すると、1人の顧客が複数のプロファイルを持つことがあり、異なるオーディエンスに適格であるため、複数のマーケティングメッセージが発生します。**プライベートグラフ**を選択すると、同一個人に関連する複数のアイデンティティが繋がり、1つのプロファイルと1つのマーケティングメッセージが生成されます。
-
-次の例は、アイデンティティデータがAdobe Identity Serviceに送信されたときにXDMスキーマにどのようにマッピングされるかを示しています。Adobe Identity Serviceは、`myemail@example.com`のメールアドレスを持つプロファイルを検索します。一致するプロファイルが見つかった場合、`myNEWemail@example.com`のメールアドレスと`77828292900000`の電話番号を追加します。Identity Serviceが一致するものを見つけられない場合、両方のメールアドレスと電話番号を持つ新しいプロファイルを作成します。
+次の例は、Adobe Identity Service に送信される際に、ID データが XDM スキーマにどのようにマッピングされるかを示しています。Adobe Identity Service は、メールアドレスが `myemail@example.com` のプロファイルを検索します。一致するプロファイルが見つかると、メールアドレス `myNEWemail@example.com` と電話番号 `77828292900000` が追加されます。Identity Service で一致するプロファイルが見つからない場合は、両方のメールアドレスと電話番号を含む新しいプロファイルが作成されます。
 
 ```json
 {
@@ -531,61 +532,61 @@ Adobe Experience Platformでは、複数のソースからデータフラグメ�
 }
 ```
 
-Adobe Experience PlatformのIdentity Serviceの構成に関する詳細は、Adobeのドキュメントの以下の記事を参照してください：
+Adobe Experience Platform での Identity Service の構成について詳しくは、Adobe ドキュメントの次の記事を参照してください。
 
-* [Identity Service Overview](https://experienceleague.adobe.com/docs/experience-platform/identity/home.html?lang=en)
-* [Identity Namespace Overview](https://experienceleague.adobe.com/docs/experience-platform/identity/namespaces.html?lang=en)
-* [Merge Policies Overview](https://experienceleague.adobe.com/docs/experience-platform/profile/merge-policies/overview.html?lang=en) 
+* [Identity Service の概要](https://experienceleague.adobe.com/docs/experience-platform/identity/home.html?lang=en)
+* [ID 名前空間の概要](https://experienceleague.adobe.com/docs/experience-platform/identity/namespaces.html?lang=en)
+* [結合ポリシーの概要](https://experienceleague.adobe.com/docs/experience-platform/profile/merge-policies/overview.html?lang=en)
 * [Adobe Data Collection](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/data-collection.html?lang=en)
 
-#### Adobe Experience Platformの構成
+#### Adobe Experience Platform の構成
 
 
 <blockquote>
-Adobe Experience Platformで顧客データを更新するには、Adobe製品全体からデータをスティッチングする必要がある場合があります。たとえば、Adobe Journey Optimizerで実行されるメールキャンペーンのためにプロファイルが作成され、その後、Interactive Data Collectionエンドポイントを通じて送信される異なるイベントで更新されることがあります。
+Adobe Experience Platform で顧客データを更新するには、複数の Adobe 製品にまたがるデータのステッチが必要になる場合があります。たとえば、Adobe Journey Optimizer で実行されているメールキャンペーン用にプロファイルを作成した後、Interactive Data Collection エンドポイントを介して送信された別のイベントでそのプロファイルを更新できます。
 </blockquote>
 
 
-1. Adobe Experience Platformで**Data Management > Schemas**に移動し、使用したいスキーマを選択するか、**Create Schema**をクリックして新しいスキーマを作成します。
+1. Adobe Experience Platform で、**Data Management > Schemas**に移動し、使用するスキーマを選択するか、**Create Schema**をクリックして新しいスキーマを作成します。
     * 新しいスキーマ
         1. **Schema Details**セクションで、**Experience Event**または**Individual Profile**オプションを選択し、**Next**をクリックします。
         1. スキーマの名前を入力し、**Finish**をクリックします。
     * 既存のスキーマ
-        1. スキーマの詳細画面で、**Field groups**セクションに移動し、**Personal Contact Details**を選択して**Save**をクリックします。
-        1. このスキーマを使用する際に更新したいプロファイル属性を追加します。たとえば、メールアドレスと電話番号を追加するには：
-            * **personalEmail**プロパティを展開し、**address**をクリックし、スキーマ画面の右側にある**Field Properties**セクションで**Identity**チェックボックスをクリックします。
-            * **mobilePhone**プロパティを展開し、**number**をクリックし、スキーマ画面の右側にある**Field Properties**セクションで**Identity**チェックボックスをクリックします。
+        1. スキーマの詳細画面で、**Field groups**セクションに移動し、**Personal Contact Details**を選択して、**Save**をクリックします。
+        1. このスキーマを使用するときに更新するプロファイル属性を追加します。たとえば、メールアドレスと電話番号を追加するには、次の手順を実行します。
+            * **personalEmail**プロパティを展開して**address**をクリックし、スキーマ画面の右側にある**Field Properties**セクションで**Identity**チェックボックスをオンにします。
+            * **mobilePhone**プロパティを展開して**number**をクリックし、スキーマ画面の右側にある**Field Properties**セクションで**Identity**チェックボックスをオンにします。
 1. **Save**をクリックします。![](https://docs.tealium.com/images/server-side-connectors/adobe-identity-schema.png)
 1. **Data Management > Datasets**に移動し、**Create Dataset**をクリックします。
-1. **Create Dataset from Schema**をクリックし、リストからスキーマを選択して**Next**をクリックします。
+1. **Create Dataset from Schema**をクリックし、リストからスキーマを選択して、**Next**をクリックします。
 1. データセットの名前を入力し、**Finish**をクリックします。
-1. **Customer > Profiles**に移動し、**Merge Policies**タブをクリックして**Create merge policy**をクリックします。
-1. スキーマ名を入力します。スキーマクラスを**XDM Individual Profile**として、IDスティッチングを**Private Graph**として残し、**Save**をクリックします。
-1. **Connection > Sources**に移動し、**Adobe Data Collection**を検索して**Set Up**をクリックします。
+1. **Customer > Profiles**に移動し、**Merge Policies**タブを選択して、**Create merge policy**をクリックします。
+1. スキーマ名を入力します。スキーマクラスは**XDM Individual Profile**、ID ステッチは**Private Graph**のままにします。**Save**をクリックします。
+1. **Connection > Sources**に移動し、**Adobe Data Collection**を検索して、**Set Up**をクリックします。
 
-詳細については、[Adobe Data Collection](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/data-collection.html?lang=en)を参照してください。
+詳しくは、[Adobe Data Collection](https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/data-collection.html?lang=en)を参照してください。
 
-#### TealiumでAdobe Experience Platformコネクタを構成する
+#### Tealium での Adobe Experience Platform コネクタの構成
 
-Adobe Identity Serviceにデータを送信するためにコネクタを構成するには、[TealiumでAdobe Experience Platformコネクタを構成する](#configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を完了してください。
+Identity Service にデータを送信するようにコネクタを構成するには、[Tealium での Adobe Experience Platform コネクタの構成](#configure-the-adobe-experience-platform-connector-in-tealium)セクションの手順を実行します。
 
-Event Experienceスキーマを使用している場合は、**Send Event**アクションを作成します。Individual Profileスキーマを使用している場合は、**Stream Record Data**アクションを作成する必要があります。
+Event Experience スキーマを使用している場合は、**Send Event**アクションを作成します。Individual Profile スキーマを使用している場合は、**Stream Record Data**アクションを作成する必要があります。
 
-次の画像はTealiumでの例示的なマッピングを示しています：
+次の画像は、Tealium でのマッピング例を示しています。
 
 ![](https://docs.tealium.com/images/server-side-connectors/adobe-identity-service-tealium-setup.png)
 
-#### Adobe Experience Platformでプロファイル更新を確認する
+#### Adobe Experience Platform でのプロファイル更新の確認
 
-Adobe Experience Platformで更新されたプロファイルを確認するには、**Customer > Profiles**に移動します。すべてのプロファイル属性を表示するには、**Attributes**タブをクリックします。
+Adobe Experience Platform で更新されたプロファイルを確認するには、**Customer > Profiles**に移動します。すべてのプロファイル属性を表示するには、**Attributes**タブをクリックします。
 
-## Adobe Experience Platformでイベントコールをデバッグする
+## Adobe Experience Platform でのイベント呼び出しのデバッグ
 
-イベントコールをデバッグするには、**Connection > Sources**に移動し、**Dataflows**タブをクリックします。
+イベント呼び出しをデバッグするには、**Connection > Sources**に移動し、**Dataflows**タブをクリックします。
 
-データストリーム用に自動的に作成されたデータフローをクリックし、レコードが失敗しているかどうかを確認します。イベントが処理されていない場合は、まだデータフローが表示されないかもしれません。
+データストリーム用に自動作成されたデータフローをクリックし、失敗したレコードがあるかどうかを確認します。イベントがまだ処理されていない場合は、データフローが表示されないことがあります。
 
-エラーが見つかった場合は、エラーの詳細を表示するために**Dataflow Run Start**値をクリックします。
+エラーが見つかった場合は、**Dataflow Run Start**の値をクリックしてエラーの詳細を表示します。
 ![](https://docs.tealium.com/images/server-side-connectors/adobe-dataflows-tab.png)
 
 この例では、タイムスタンプの形式が正しくないため、イベントが処理されていません。

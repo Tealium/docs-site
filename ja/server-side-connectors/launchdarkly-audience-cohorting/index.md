@@ -3,68 +3,70 @@ title: LaunchDarkly オーディエンスコホーティングコネクタ構成
 description: この記事では、LaunchDarkly オーディエンスコホーティングコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/launchdarkly-audience-cohorting/
 ---
-## API情報
+## API 情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは、次のベンダー API を使用します。
 
-* API名：LaunchDarkly API
-* APIバージョン：20240415
-* APIエンドポイント：`https://app.launchdarkly.com`
-* ドキュメント：[LaunchDarkly API](https://docs.launchdarkly.com/)
+* API 名: LaunchDarkly API
+* API バージョン: 20240415
+* API エンドポイント: `https://app.launchdarkly.com`
+* ドキュメント: [LaunchDarkly API](https://docs.launchdarkly.com/)
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| セグメントへのメンバー追加 | ✓ | ✗ |
-| セグメントからのメンバー削除 | ✓ | ✗ |
+| セグメントにメンバーを追加 | ✓ | ✗ |
+| セグメントからメンバーを削除 | ✓ | ✗ |
 
 ## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加したら、次の項目を構成します。
 
-* **クライアントサイドID**  
-（必須）メトリックイベント環境のクライアントサイドID。クライアントサイドIDは、[LaunchDarklyアカウント構成ページ](https://app.launchdarkly.com/settings/members)の**環境**タブで見つけることができます。
+* **クライアント側 ID**  
+（必須）メトリクスイベント環境のクライアント側 ID。[LaunchDarkly アカウント構成ページ](https://app.launchdarkly.com/settings/members)の **Projects** タブにある **Environments** で確認できます。
 * **アクセストークン**  
-（必須）`importEventData`アクションを許可するロールが必要です。LaunchDarklyは、この権限を持つ専用のアクセストークンの使用を強く推奨します。詳細については、LaunchDarklyのドキュメントの[個人APIアクセストークンのスコープ構成](https://docs.launchdarkly.com/home/account-security/api-access-tokens#scoping-personal-api-access-tokens)および[環境](https://docs.launchdarkly.com/home/organize/environments?q=environment)を参照してください。
+（必須）アクセストークンには、`importEventData` アクションを許可するロールが必要です。LaunchDarkly では、この権限を持つ専用のアクセストークンを使用することを強く推奨しています。詳細については、LaunchDarkly ドキュメントの[個人用 API アクセストークンのスコープ構成](https://docs.launchdarkly.com/home/account-security/api-access-tokens#scoping-personal-api-access-tokens)および[環境](https://docs.launchdarkly.com/home/organize/environments?q=environment)を参照してください。
 * **セグメント名**  
-（必須）データを送信したいLaunchDarklyのセグメント名。
-* **セグメントID**  
-（必須）LaunchDarkly内のセグメントの一意の識別子。
-* **セグメント説明**  
-LaunchDarklyで提供されるセグメントの説明。
-* **URLオーバーライド**  
-（テスト目的のみ）アクションのURLをオーバーライドすることができます。
+（必須）データの送信先となる LaunchDarkly のセグメント名。
+* **セグメント ID**  
+（必須）LaunchDarkly のセグメントを一意に識別する ID。
+* **セグメントの説明**  
+LaunchDarkly で指定されたセグメントの説明。
+* **URL のオーバーライド**  
+
+コネクタを構成したら、**Done** をクリックします。
+（テスト目的のみ）アクションの URL をオーバーライドできます。
 
 ## アクション
 
-以下のセクションでは、各アクションのサポートされるパラメータをリストします。
+次のセクションでは、各アクションでサポートされているパラメーターについて説明します。
 
-### セグメントへのメンバー追加
+### セグメントにメンバーを追加
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| メンバーID | 訪問のLaunchDarkly ID。 |
-| HTTPリクエストセッションID | セッションIDを送信する場合はこのオプションを選択します。デフォルトではセッションIDは送信されません。 |
+| メンバー ID | 訪問の LaunchDarkly ID。 |
+| HTTP リクエストセッション ID | セッション ID を送信する場合は、このオプションを選択します。デフォルトでは、セッション ID は送信されません。 |
 
-#### メンバーパラメータ
+#### メンバーパラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
 | 姓 | 訪問の姓。 |
 | 名 | 訪問の名。 |
-| メール | 訪問のメールアドレス。 |
+| メールアドレス | 訪問のメールアドレス。 |
 | 電話番号 | 訪問の電話番号。 |
 
-### セグメントからのメンバー削除
+### セグメントからメンバーを削除
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| メンバーID | 訪問のLaunchDarkly ID。|
-| HTTPリクエストセッションID | セッションIDを送信する場合はこのオプションを選択します。デフォルトではセッションIDは送信されません。 |
+| メンバー ID | 訪問の LaunchDarkly ID。|
+| HTTP リクエストセッション ID | セッション ID を送信する場合は、このオプションを選択します。デフォルトでは、セッション ID は送信されません。 |

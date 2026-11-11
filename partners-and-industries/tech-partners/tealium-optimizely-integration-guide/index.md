@@ -27,6 +27,6 @@ The following table lists descriptions and prerequisites for the server-side Opt
 
 * [Optimizely Event API: Getting Started](https://docs.developers.optimizely.com/web/docs/getting-started-event-api)
 * [Optimizely: Create Audiences with Dynamic Customer Profiles](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)
-* [Optimizely Integration with Tealium AudienceStream](https://docs.tealium.com/optimizely-integration-with-audiencestream/)
-* [Integrating AudienceStream and Optimizely Full Stack](https://docs.tealium.com/integrating-audiencestream-and-optimizely-full-stack/)
+* [Optimizely Integration with Tealium AudienceStream](https://docs.tealium.com/optimizely-integration-with-customer-data-platform/)
+* [Integrating AudienceStream and Optimizely Full Stack](https://docs.tealium.com/integrating-customer-data-platform-and-optimizely-full-stack/)
 * [Tealium Tool: Optimizely Helper](https://docs.tealium.com/optimizely-helper/)

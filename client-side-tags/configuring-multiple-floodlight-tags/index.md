@@ -1,6 +1,6 @@
 ---
 title: Configuring Multiple Floodlight Tags
-description: This articles describes how to set up multiple Floodlight tags in your Tealium iQ Tag Management account.
+description: This articles describes how to set up multiple Floodlight tags in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/configuring-multiple-floodlight-tags/
 ---If you have many Floodlight tags, all with a slightly different configuration, but based on the same load criteria, for example, different paths in the URL, rather than setting up several similar instances of the Floodlight tag, each with different load rules and configuration values, you can combine them into one instance of the Floodlight tag using some additional configuration.
 

@@ -3,7 +3,7 @@ title: CDK CRM Connector Setup Guide
 description: This article describes how to set up the CDK CRM connector.
 url: https://docs.tealium.com/server-side-connectors/cdk-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -30,9 +30,11 @@ After adding the connector, configure the following settings:
 * **Endpoint**  
   * Select the endpoint. The default endpoint is **Prod**.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Lead | ✗ | ✓ |
 

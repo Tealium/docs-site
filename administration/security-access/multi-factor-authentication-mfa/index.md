@@ -36,10 +36,10 @@ Use the following steps to enable MFA for your account:
 1. Navigate to [https://my.tealiumiq.com/](https://my.tealiumiq.com/).
 1. In the admin menu, click **Manage Password Policy**.
 1. Click **Enable MFA for this Account**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/tiq-manage-password-policy-dialog.jpg)
+    ![](https://docs.tealium.com/images/tag-management/tiq-manage-password-policy-dialog.jpg)
 1. From the confirmation screen, click **Enable Multi-Factor Authentication**.  
 The status changes to **Enabled**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/tiq-confirm-enable-mfa.jpg)
+    ![](https://docs.tealium.com/images/tag-management/tiq-confirm-enable-mfa.jpg)
 1. Click **Update Password Settings and Logout** to confirm.  
 After you log out, you will automatically be logged back in.
 1. Log in to your account and follow the [instructions to sync it up with the authenticator app](#setting-up-your-authenticator-application).
@@ -80,13 +80,13 @@ This step will vary depending on your smartphone platform.
 
 A success message appears when complete.
 
-![](https://docs.tealium.com/images/iq-tag-management/scan-barcode-sample-do-not-use.jpg)
+![](https://docs.tealium.com/images/tag-management/scan-barcode-sample-do-not-use.jpg)
 
 ## Signing into an MFA-enabled account
 
 Prior to signing in, the authenticator app should already be installed and synced with your account. Use the following steps to sign in to your MFA-enabled account:
 
-1. Navigate to [Tealium iQ Tag Management](https://my.tealiumiq.com/).  
+1. Navigate to [Tag Management](https://my.tealiumiq.com/).  
 1. Enter your username and password.
 1. Open your authenticator app to receive the token.
 1. Cut and paste or enter your token in the **MFA TOKEN** field.  
@@ -104,7 +104,7 @@ If you recently switched to a new device or a new authenticator app, your existi
 1. In the **User Manager** window, click the checkbox to select the user for whom the token is being reset.
 1. Click **Edit/View User Settings**.
 1. In left panel, click **MFA Settings** and then click **Reset MFA Code**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/no-title-253i1283b0c0ea68a93e.png)
+    ![](https://docs.tealium.com/images/tag-management/no-title-253i1283b0c0ea68a93e.png)
 1. Close the window.
 
 Next, notify the user to log in to their account to re-sync the app.
@@ -127,16 +127,16 @@ This section describes how to use Multi-Factor Authentication (MFA) without a sm
 Use the following steps to install and configure the Authenticator Chrome extension:
 
 1. Navigate to the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) and add the [Authenticator Chrome Extension](https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai).  
-    ![](https://docs.tealium.com/images/iq-tag-management/add-authenticator-chrome-extension.jpg)
+    ![](https://docs.tealium.com/images/tag-management/add-authenticator-chrome-extension.jpg)
 1. When complete, move to the next section.
 
 ### Log in to Tealium and configure the Authenticator
 
-Use the following steps to log in to Tealium iQ and configure your Authenticator:
+Use the following steps to log in to Tag Management and configure your Authenticator:
 
-1. Log into [Tealium iQ Tag Management](https://my.tealiumiq.com/).  
+1. Log into [Tag Management](https://my.tealiumiq.com/).  
 The **MFA setup** screen appears.  
-    ![](https://docs.tealium.com/images/iq-tag-management/google-authenticator-setup-android.jpg)
+    ![](https://docs.tealium.com/images/tag-management/google-authenticator-setup-android.jpg)
 
 1. Select **Android** and then click **Next**.  
     
@@ -145,11 +145,11 @@ Android is the option that is compatible with the Authenticator Chrome extension
 </blockquote>
 
 1. The **QR Code** screen appears.  
-    ![](https://docs.tealium.com/images/iq-tag-management/google-authenticator-setup-scan-qr-code.jpg)
+    ![](https://docs.tealium.com/images/tag-management/google-authenticator-setup-scan-qr-code.jpg)
 1. Click the Authenticator icon to launch the Authenticator extension and click the pencil to add a new QR code.  
-    ![](https://docs.tealium.com/images/iq-tag-management/launch-authenticator.jpg)
+    ![](https://docs.tealium.com/images/tag-management/launch-authenticator.jpg)
 1. Click the **+** button to scan a new code.  
-    ![](https://docs.tealium.com/images/iq-tag-management/launch-authenticator-and-add-new.jpg)
+    ![](https://docs.tealium.com/images/tag-management/launch-authenticator-and-add-new.jpg)
 1. Click **Scan QR Code**.
 1. Go back to the login screen and click and drag using your mouse to draw a square over the QR Code in the page.
 1. Once completed, go back to Authenticator.  
@@ -157,7 +157,7 @@ A new entry for Tealium appears.
 1. From the login screen, enter your email and password and click **Continue**.  
 The MFA code screen appears.
 1. Enter the 6-digit code from Authenticator in the MFA code field and click **Login**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/enter-mfa-code-to-log-in.jpg)
+    ![](https://docs.tealium.com/images/tag-management/enter-mfa-code-to-log-in.jpg)
     That's it! You are now ready to log into Tealium using MFA without a smartphone.
 1. The next time the Tealium login screen prompts you for your MFA code, return to Authenticator to retrieve a newly generated code.
 
@@ -165,14 +165,14 @@ The MFA code screen appears.
 
 If you cannot access your authenticator, use the following steps to receive a temporary MFA code by email:
 
-1. Log into [Tealium iQ Tag Management](https://my.tealiumiq.com/).
+1. Log into [Tag Management](https://my.tealiumiq.com/).
 1. From the login screen, enter your email and password and click **Continue**.  
 The MFA code screen appears.
 1. Click **Click Here** to receive a temporary one.  
 A message displays that a temporary MFA has been sent to your email.  
-    ![](https://docs.tealium.com/images/iq-tag-management/enter-mfa-code-to-log-in.jpg)
+    ![](https://docs.tealium.com/images/tag-management/enter-mfa-code-to-log-in.jpg)
 1. Go to your email and open the new email from support titled **Tealium Temporary MFA Code**.  
-    ![](https://docs.tealium.com/images/iq-tag-management/temporary-mfa-code-email.jpg)
+    ![](https://docs.tealium.com/images/tag-management/temporary-mfa-code-email.jpg)
 1. Get the recovery code and return to the login page.
 1. Enter the code and click **Login**.  
 Once you are logged in, we recommend that you go to your account and click **Edit/View User Settings > MFA Settings** and reset your MFA password.

@@ -21,14 +21,14 @@ In Tealium, the profile configuration is referred to as a version. You can find 
 
 ## Retention scope
 
-Tealium retains the following configuration versions for both Tealium iQ (Client-Side) and Server-Side by default:
+Tealium retains the following configuration versions for both Tag Management (Client-Side) and Server-Side by default:
 
 * The currently published version, regardless of when it was published.
 * The previous published version, regardless of when it was published.
 * Any other versions saved or published within the past 13 months.
 * The original version from which the branch was created from for any of the previously mentioned versions.
 
-In addition, Tealium retains the following additional items for Tealium iQ (Client-Side):
+In addition, Tealium retains the following additional items for Tag Management (Client-Side):
 
 * All libraries
 * 13 months of publish history

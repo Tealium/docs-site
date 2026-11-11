@@ -5,8 +5,8 @@ url: https://docs.tealium.com/server-side/data-sources/file-import/about/
 ---
 ## Prerequisites 
 
-* Tealium AudienceStream CDP **OR**
-* Tealium EventStream API Hub
+* CDP **OR**
+* Event Streaming API Hub
 
 
 <blockquote>
@@ -31,14 +31,14 @@ For real-time processing of large volumes of event data, use any of the followin
 
 In the default Tealium [data collection order of operations](https://docs.tealium.com/server-side-order-of-operations/), events from a file import data source are processed before the _Event received_ step and do not change the order of operations.
 
-File import events are sent to EventStream and AudienceStream in the same way as events from other data sources with the following important exceptions:
+File import events are sent to Event Streaming and Customer Data Platform (CDP) in the same way as events from other data sources with the following important exceptions:
 
 * **Browser-specific attributes**: Browser-specific attributes, such as user agent, are not populated.
-* **Enrichments**: Enrichments on pre-loaded attributes in AudienceStream are not run, except the **First Visit** pre-loaded attribute.
+* **Enrichments**: Enrichments on pre-loaded attributes in CDP are not run, except the **First Visit** pre-loaded attribute.
 * **Functions**: Data transformation functions are not run.
-* **Single-page visits**: Incoming events are exempt from the single-page visit/visitors criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information about single-page visits/visitors, see [How are single-page visits processed in AudienceStream?](https://docs.tealium.com/single-event-visitor/) (requires Tealium login).
+* **Single-page visits**: Incoming events are exempt from the single-page visit/visitors criteria. Single-page visits and visitors from other data sources are not persisted in CDP. For more information about single-page visits/visitors, see [How are single-page visits processed in CDP?](https://docs.tealium.com/single-event-visitor/) (requires Tealium login).
 * **Visit length**: A visit started by a file import event lasts for 60 seconds.
-* **Visitor ID mapping**: If you map an AudienceStream visitor ID attribute in your file import data source configuration, the visitor ID is set directly to the value of the column you choose.
+* **Visitor ID mapping**: If you map a CDP visitor ID attribute in your file import data source configuration, the visitor ID is set directly to the value of the column you choose.
 
 Additionally, you can use the following event attributes with incoming data from a file import data source:
 
@@ -79,7 +79,7 @@ If you select a custom event mapping, specify the event attribute that correspon
 
 #### Visitor ID mapping
 
-To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in a file import source file has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
+To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in a file import source file has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in CDP). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
 
 For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources](https://docs.tealium.com/visitor-identification-data-sources/).
 
@@ -113,7 +113,7 @@ When a new file is detected, it is copied from the file transfer location and pr
 The prefix of the filename is used to identify which file import data source to use when importing the data in the file.
 1. **Process files**  
 The header line is read to identify the attributes being imported. After reading the header line, the following processing is performed:
-    1. **Visitor lookup** — The visitor ID is used to look up the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. 
+    1. **Visitor lookup** — The visitor ID is used to look up the visitor record in CDP. If an existing visitor record is not found, a new one is created. 
 <blockquote>
 Grouping rows with the same visitor ID decreases the import time.
 </blockquote>

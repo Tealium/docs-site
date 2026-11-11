@@ -9,7 +9,7 @@ Data Connect is an add-on feature for Tealium customers. If you are already a Te
 </blockquote>
 
 
-Tealium Data Connect provides a fast, efficient, and scalable architecture to import valuable data from your SaaS applications, CRMs, and data warehouses to Tealium. Use Data Connect to integrate data from your enterprise systems into Tealium AudienceStream CDP or EventStream API Hub for enrichment and real-time personalization and activation.
+Tealium Data Connect provides a fast, efficient, and scalable architecture to import valuable data from your SaaS applications, CRMs, and data warehouses to Tealium. Use Data Connect to integrate data from your enterprise systems into Customer Data Platform (CDP) or Event Streaming API Hub for enrichment and real-time personalization and activation.
 
 With Data Connect, you can automate, schedule, and enhance your data workflows to leverage your data in new ways, such as:
 
@@ -20,7 +20,7 @@ With Data Connect, you can automate, schedule, and enhance your data workflows t
 
 ## Requirements
 
-* Tealium EventStream or AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 
 
 <blockquote>
@@ -36,7 +36,7 @@ The following figure shows the flow of data from your internal systems to Tealiu
 
 ![](https://docs.tealium.com/images/server-side/dc-events-workflow.png)
 
-Begin by selecting the app you want to connect to Tealium. By using the Data Connect Workato solution, you can then customize how and when you send event data to Tealium. To receive data from Workato, Data Connect uses the Tealium Connect data source with advanced Tealium Collect HTTP API logic specifically designed for Data Connect. You can then use these events in attribute enrichments or connectors in Tealium EventStream, AudienceStream, and Functions.
+Begin by selecting the app you want to connect to Tealium. By using the Data Connect Workato solution, you can then customize how and when you send event data to Tealium. To receive data from Workato, Data Connect uses the Tealium Connect data source with advanced Tealium Collect HTTP API logic specifically designed for Data Connect. You can then use these events in attribute enrichments or connectors in Event Streaming, CDP, and Functions.
 
 For more information about Workato integrations, see [About Data Connect integrations](https://docs.tealium.com/about-data-connect-integrations/).
 

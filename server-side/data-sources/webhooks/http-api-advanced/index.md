@@ -21,7 +21,7 @@ Use this data source type when you need to send data in real-time and cannot mod
 
 ### Requirements
 
-* Tealium EventStream or Tealium AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 
 ### Batched events
 
@@ -65,14 +65,14 @@ To find your data source key, navigate to the **Data Sources** dashboard, click 
 
 ## Visitor identifiers
 
-AudienceStream tracks visitors using a combination of:
+Visitor tracking uses a combination of:
 
 * **Anonymous ID**: An ID usually used to track the visitor anonymously (for example, from a device or browser). In the case of a [known visitor](#known-visitors-server-to-server), you can use a value based on a user identifier.
 * **User Identifier**: Sent after the visitor is known. Based on a value that identifies the user instead of a particular device.
 
 ### Anonymous ID
 
-The Anonymous ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor. This value must also be unique to each server-side profile.
+The Anonymous ID is an anonymous identifier used by Customer Data Platform (CDP) to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor. This value must also be unique to each server-side profile.
 
 The key name of the anonymous ID is `tealium_visitor_id`.
 
@@ -80,11 +80,11 @@ Depending on your business case, you can use anonymous values or values based on
 
 #### Anonymous values
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
+If you are using Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from utag.js, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
 
 <blockquote>
@@ -94,7 +94,7 @@ If you are using Adobe Launch or Google Tag Manager, then the value needs to mat
 
 #### Known-visitors server-to-server
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | Recommended |
 
@@ -125,7 +125,7 @@ tealium_visitor_id":"__my-account_main__7688_45653454__"
 
 
 <blockquote>
-Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in CDP and may not track properly.
 </blockquote>
 
 
@@ -150,11 +150,11 @@ Whether you use anonymous visitors or known visitors, if your API calls do not c
 
 ### User Identifiers
 
-When using AudienceStream, you can pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
+When using CDP, you can pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
 
-A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
+A user identifier is also needed if you are using Event Streaming and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
+In CDP, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ## Adding the data source
 

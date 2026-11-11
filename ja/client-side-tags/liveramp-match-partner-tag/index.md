@@ -1,54 +1,54 @@
 ---
-title: LiveRamp Match Partner タグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで LiveRamp Match Partner タグを構成する方法について説明します。
+title: LiveRamp Match Partnerタグ構成ガイド
+description: この記事では、タグ管理アカウントでLiveRamp Match Partnerタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/liveramp-match-partner-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* Email タグタイプに必要なパラメーター:
-  * タグ ID
-  * Email（マッピングされた）
-* Customer ID タグタイプに必要なパラメーター:
-  * タグ ID
-  * アカウント ID
-  * Customer ID（E-Commerce 拡張機能またはマッピングされた）
-* マッピングを使用して:
-  * 標準構成値を動的に上書きします。
-  * Email の値を渡します。
-  * Customer ID の E-Commerce 拡張機能値を動的に上書きします。
-* Email の値に `@` 記号が含まれている場合、メールアドレスはすべて小文字に変換され、すべての空白が削除され、SHA-1 を使用してハッシュ化されます。
-* 次の E-Commerce 拡張機能値をサポート:
-  * Customer ID
-* E-Commerce 拡張機能を使用しており、Customer ID を使用するように構成されている場合、このタグの Customer ID にデータマッピングは必要ありません。
+* Emailタグタイプの必須パラメータ：
+  * タグID
+  * メールアドレス（マッピング済み）
+* Customer IDタグタイプの必須パラメータ：
+  * タグID
+  * アカウントID
+  * 顧客ID（E-Commerce拡張機能またはマッピング済み）
+* マッピングは、次の目的で使用します：
+  * 標準構成値を動的に上書きする。
+  * メールアドレスの値を渡す。
+  * 顧客IDのE-Commerce拡張機能の値を動的に上書きする。
+* メールアドレスの値に`@`記号が含まれている場合、メールアドレスはすべて小文字に変換され、すべての空白文字が削除された後、SHA-1を使用してハッシュ化されます。
+* 次のE-Commerce拡張機能の値をサポートしています：
+  * 顧客ID
+* E-Commerce拡張機能を使用し、顧客IDを使用するように構成している場合、このタグの顧客IDにデータマッピングを構成する必要はありません。
 
-## タグの構成
+## タグ構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際に、以下の構成を構成します:
+タグを追加するときに、次の構成を行います：
 
-* **タグタイプ**: タグタイプを選択します: **Email** または **Customer ID**。
-* **タグ ID**: あなたの LiveRamp タグ ID。
-* **アカウント ID**: あなたの LiveRamp アカウント ID（**Customer ID** タグタイプのみ）。
+* **タグタイプ**：タグタイプとして**Email**または**Customer ID**を選択します。
+* **タグID**：LiveRampのタグID。
+* **アカウントID**：LiveRampのアカウントID（**Customer ID**タグタイプのみ）。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです:
+使用可能なカテゴリーは次のとおりです：
 
-### Email タグ
+### Emailタグ
 
-| 変数    | 説明  |
-|:--------|:------|
-| `email` | Email |
+| 変数 | 説明 |
+|:---------|:-------------|
+| `email`  | メールアドレス。 |
 
-### Customer ID タグ
+### Customer IDタグ
 
-| 変数          | 説明        |
-|:--------------|:------------|
-| `customer_id` | Customer ID |
+| 変数 | 説明 |
+|:--------------|:-------------|
+| `customer_id` | 顧客ID。 |

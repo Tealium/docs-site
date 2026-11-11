@@ -1,86 +1,95 @@
 ---
-title: AudienceDBとEventDBの構成
-description: この記事では、EventDBとAudienceDBに保存する属性を構成する方法について説明します。
+title: AudienceDB と EventDB の構成
+description: この記事では、EventDB と AudienceDB に保存する属性の構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/audiencedb-eventdb/configure/
 ---
 ## 要件
 
-* EventDBにデータを送信するには、イベントフィードを構成し、EventStoreを有効にする必要があります。
-* AudienceDBにデータを送信するには、AudienceStoreを有効にする必要があります。
+* EventDB にデータを送信するには、イベントフィードを構成し、EventStore を有効にする必要があります。
+* AudienceDB にデータを送信するには、AudienceStore を有効にする必要があります。
 
 
 <blockquote>
-EventDBとAudienceDBをアカウントとプロファイルで有効にするには、アカウントマネージャーに連絡してください。
+アカウントとプロファイルで EventDB および AudienceDB を有効にするには、アカウントマネージャーにお問い合わせください。
 </blockquote>
 
 
-## 動作方法
+## 仕組み
  
-データストレージは属性レベルで制御されます。イベント属性、訪問属性、訪問属性を作成するときに、属性をEventDBまたはAudienceDBに送信するオプションを選択できます。
+データ保存は属性レベルで制御されます。イベント属性、訪問属性、または訪問属性を作成する際に、その属性を EventDB または AudienceDB に送信するオプションを選択できます。
 ![](https://docs.tealium.com/images/server-side/data-access/eventdb-attribute-checkbox.png)
 
-### 訪問と訪問の属性
+次の図に示す **EventDB/AudienceDB** 画面でも、EventDB と AudienceDB に送信する属性を構成できます。
+![](https://docs.tealium.com/images/server-side/data-access/eventdb-audiencedb-config-screen.png)
 
-アカウント内のすべてのオーディエンスはデフォルトでAudienceDBに送信されます。**AudienceDB**画面でAudienceDBに送信するオーディエンスと属性を選択できます。詳細については、[AudienceDB属性の構成](#configure-audiencedb-attributes)を参照してください。
+
+<blockquote>
+すべてのプリロード済み属性（Tealium によって定義され、すべてのアカウントで利用できる属性）は、デフォルトで EventDB と AudienceDB に対して選択されています。この動作は変更できません。
+</blockquote>
+
+
+### 訪問属性と訪問属性
+
+デフォルトでは、アカウント内のすべてのオーディエンスが AudienceDB に送信されます。AudienceDB に送信するオーディエンスと属性は、**EventDB/AudienceDB** 画面の **AudienceDB** タブで選択できます。詳細については、[AudienceDB 属性の構成](#configure-audiencedb-attributes)を参照してください。
 
 ### イベント属性
 
-すべてのプリロードされた属性（Tealiumによって定義され、すべてのアカウントで利用可能な属性）はデフォルトでEventDBに送信されます。**EventDB属性**画面でカスタム属性を選択してEventDBに送信できます。
-
-プリロードされた属性は**EventDB属性**画面で変更できません。**DataAccessコンソール**を使用して、EventDBに保存されるプリロードされた属性を調整します。詳細については、[EventDB属性の構成](#configure-eventdb-attributes)を参照してください。
-
-DOM属性（例えば、URL、ドメイン、リファラ、ユーザーエージェント）は常に送信され、EventDBから除外することはできません。また、Tealiumのイベント属性、例えば`tealium_account`、`tealium_profile`、`tealium_event`も常に送信され、除外することはできません。
+DOM 属性（URL、ドメイン、リファラー、ユーザーエージェントなど）は常に送信され、EventDB から除外することはできません。また、`tealium_account`、`tealium_profile`、`tealium_event` などの Tealium イベント属性も常に送信され、除外することはできません。その他の属性は、**EventDB/AudienceDB** 画面の **EventDB** タブで選択または選択解除できます。詳細については、[EventDB 属性の構成](#configure-eventdb-attributes)を参照してください。
 
 
 <blockquote>
-データ量が非常に大きくなる可能性があるため、必要な特定のイベントフィードのみにEventDBを有効にすることをお勧めします。詳細については、[ライブイベントとフィード](https://docs.tealium.com/about-event-feeds/)を参照してください。
+データ量によっては非常に大量のデータが生成される可能性があるため、必要な特定のイベントフィードに対してのみ EventDB を有効にすることをお勧めします。詳しくは、[ライブイベントとフィード](https://docs.tealium.com/about-event-feeds/)を参照してください。
 </blockquote>
 
 
-属性についての詳細は、[属性の使用](https://docs.tealium.com/about-attributes/)を参照してください。
+#### Tealium Collect タグからのイベントデータ
 
-## AudienceDB属性の構成
+Tealium Collect タグからデータを収集するフィードには、イベント中に発火した各タグについて、追加のブール属性が含まれます。たとえば、タグ管理アカウントに Tealium Collect タグとともに Google Analytics が構成されている場合、イベントフィードには `Google Analytics` という名前のブール属性が含まれ、各イベントで Google Analytics が発火したかどうかを示します。
 
-デフォルトでは、すべてのオーディエンスがAudienceDBに選択されています。AudienceDBからオーディエンスを削除するためにオーディエンスの選択を解除できます。また、必要に応じて訪問と訪問の属性を選択または選択解除できます。
+属性について詳しくは、[属性の使用](https://docs.tealium.com/about-attributes/)を参照してください。
 
-AudienceDBに保存される属性とオーディエンスを構成するには、次の手順を使用します：
+## AudienceDB 属性の構成
 
-1. **Store > AudienceDB**に移動します。  
-アカウントで利用可能なオーディエンスと属性のリストが表示されます。以下に示すように。  
-![](https://docs.tealium.com/images/server-side/data-access/audiencedb-screen.png)  
-**Scope**、**Type**、または**Data Type**で属性のリストをフィルタリングできます。
-1. 必要に応じてオーディエンスの選択を解除して、AudienceDBから削除します。 
-1. AudienceDBに追加または削除するために属性を選択または選択解除します。  
-1. 保存して公開します。
+デフォルトでは、すべてのオーディエンスが AudienceDB に対して選択されています。オーディエンスの選択を解除すると、AudienceDB から削除できます。また、必要に応じて訪問属性と訪問属性を選択または選択解除できます。
 
-## EventDB属性の構成
+AudienceDB に保存する属性とオーディエンスを構成するには、次の手順を実行します。
 
-デフォルトでは、イベントストリームにはアカウントで定義されたすべてのイベント属性が含まれています。Tealium Collectタグからデータを収集するストリームでは、イベント中に発火する各タグに対して追加のブール属性が含まれています。例えば、Tealium iQタグ管理アカウントにGoogle AnalyticsとTealium Collectタグがある場合、イベントストリームには、各イベントで発火したかどうかを示すブール属性`Google Analytics`が含まれます。
-
-EventDBに保存される属性を構成するには、次の手順を実行します：
-
-1. **Store > EventDB**に移動します。
-1. **Show EventDB Attributes**をクリックします。  
-アカウントで利用可能なイベント属性のリストが表示されます。  
-      
+1. **DataAccess** > **EventDB/AudienceDB** に移動します。
+1. **AudienceDB** タブをクリックします。  
+アカウントで利用できるオーディエンスと属性の一覧が表示されます。  
+属性の一覧は、**データ型**、**属性タイプ**（プリロード済みまたはカスタム）、**AudienceDB**（有効または無効）、**タイプ**（オーディエンスまたは属性）でフィルタリングできます。
+1. 属性を選択または選択解除して、AudienceDB に追加するか、AudienceDB から削除します。  
+    
 <blockquote>
-Restricted Dataとマークされた属性はデフォルトで除外されますが、チェックボックスをチェックして含めることができます。
+Restricted Data としてマークされた属性は常に AudienceDB に送信されます。この動作は変更できません。
 </blockquote>
 
-1. 必要に応じてEventDBから属性を追加または削除します。  
-すべてのプリロードされたEventDB属性はデフォルトで追加されます。 
-      ![](https://docs.tealium.com/images/server-side/data-access/eventdb-attr-select.png)
-1. **Save**をクリックします。
-1. 保存して公開します。
+1. 保存してパブリッシュします。
+
+## EventDB 属性の構成
+
+デフォルトでは、イベントフィードにアカウントで定義されているすべてのイベント属性が含まれます。
+
+EventDB に保存する属性を構成するには、次の手順を実行します。
+
+1. **DataAccess** > **EventDB/AudienceDB** に移動します。  
+アカウントで利用できるイベント属性の一覧が表示されます。属性の一覧は、**データ型**、**属性タイプ**（プリロード済みまたはカスタム）、**EventDB**（有効または無効）でフィルタリングできます。  
+    
+<blockquote>
+Restricted Data としてマークされた属性は、デフォルトでイベントフィードから除外されます。この動作は、各フィードの構成で変更できます。
+</blockquote>
+
+1. 属性を選択または選択解除して、EventDB に追加するか、EventDB から削除します。
+1. 保存してパブリッシュします。
 
 
 <blockquote>
-EventDB属性を構成し、変更を公開した後、データがデータベースに表示されるまでに最大1時間かかる場合があります。
+EventDB 属性を構成して変更をパブリッシュした後、データベースへのデータの格納が開始されるまでに最大 1 時間かかることがあります。
 </blockquote>
 
 
-## 保存された属性の変更
+## 保存済み属性の変更
 
-EventDBまたはAudienceDBの保存に以前に追加された属性を削除し、変更を公開すると、その属性はEventDBまたはAudienceDBから削除されます。
+以前に EventDB または AudienceDB の保存に追加した属性を削除して変更をパブリッシュすると、その属性は EventDB または AudienceDB から削除されます。
 
-属性を削除し、その後再度追加して変更を公開すると、削除されたEventDBまたはAudienceDBのデータは復元できません。
+属性を削除した後、その属性を再度追加して変更をパブリッシュしても、EventDB または AudienceDB から削除されたデータを復元することはできません。

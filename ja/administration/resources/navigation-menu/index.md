@@ -1,34 +1,34 @@
 ---
 title: ナビゲーションメニュー
-description: ユーザーワークフローの効率化、アクセシビリティの向上、および製品拡張のサポートを目的とした、一新された統一ナビゲーションメニューを導入しました。
+description: ユーザーのワークフローを効率化し、アクセシビリティを向上させ、将来の製品拡張に対応できるよう、刷新・統合されたナビゲーションメニューを導入しました。
 url: https://docs.tealium.com/ja/administration/resources/navigation-menu/
 ---
 ## 概要
 
-ナビゲーションメニューは、製品名ではなくアクションに基づいて整理されています。カテゴリーは、異なるユーザーロールにわたる共通のジョブによってグループ化されています。
+ナビゲーションメニューは、製品名ではなくアクション別に構成されています。カテゴリーは、さまざまなユーザーロールに共通する作業ごとにグループ化されています。
 
 ![](https://docs.tealium.com/images/administration/navigation-menu-after.png) 
 
 * **タグ管理**  
-クライアントサイドのタグ、ルール、イベント、および同意を管理します。
+クライアント側のタグ、ルール、イベント、同意を管理します。
 * **接続**  
-データ収集とコネクタを含む、インバウンドおよびアウトバウンドのデータ統合を管理します。
-* **統治**  
-データの品質、プライバシー、および同意を管理します。これには、同意のオーケストレーションと訪問検索が含まれます。
+データ収集やコネクターなど、受信および送信データの統合を管理します。
+* **ガバナンス**  
+同意オーケストレーションや訪問検索など、データ品質、プライバシー、同意を管理します。
 * **変換**  
 データ属性を管理し、ルール、関数、予測スコアリングなどのエンリッチメントを使用してデータアセットを作成します。
-* **活性化**  
-データの活性化を管理します。これには、オーディエンスの作成、オーディエンスジョブ、およびContext APIを通じた訪問プロファイルの活性化が含まれます。
+* **アクティベート**  
+オーディエンスの作成、オーディエンスジョブ、Context APIを使用した訪問プロファイルのアクティベーションなど、データのアクティベーションを管理します。
 * **検証**  
-トレース、ライブイベント、ライブ訪問（以前は「訪問プロファイルサンプラー」と呼ばれていた）、およびイベント仕様などのツールを使用して、本番環境でのユースケースをテストおよび検証します。
+トレース、ライブイベント、ライブ訪問（旧称「訪問プロファイルサンプラー」）、イベント仕様などのツールを使用して、本番環境でユースケースをテストおよび検証します。
 * **保存**  
-データベース保存製品を一か所で管理します。以前はDataAccessの一部だった機能がここに含まれています。
+データベース保存製品を一元管理します。以前はDataAccessに含まれていた機能が、こちらに追加されました。
 * **分析**  
-データとオーディエンス全体でパフォーマンスを監視し、洞察を生成し、結果を測定するためのレポートおよび分析ツールを使用します。
+レポートおよび分析ツールを使用して、パフォーマンスの監視、インサイトの生成、データとオーディエンス全体の結果測定を行います。
 
-### フィードバックを提供する
+### フィードバックの提供
 
-新しいナビゲーション体験を共有してください。**リソースセンター > 新しいナビゲーションフィードバック**にアクセスしてフィードバックを残してください。
+新しいナビゲーションの使用感をお聞かせください。フィードバックを送信するには、**リソースセンター > 新しいナビゲーションに関するフィードバック**に移動します。
 
 ## 新機能
 
@@ -41,57 +41,57 @@ url: https://docs.tealium.com/ja/administration/resources/navigation-menu/
 
 ### 名前が変更された項目
 
-古いナビゲーションメニューから名前が変更された項目です。古い名前に基づいてアイテムを探すためにこの表を使用してください。
+以前のナビゲーションメニューにあった次の項目は、名前が変更されました。以前の名前を基に目的の項目を探すには、この表を使用してください。
 
-| 古い項目 | 新しい項目 |
+| 以前の項目 | 新しい項目 |
 | -------- | -------- |
-| iQタグ管理 | タグ管理 |
-| サーバーサイドツール > ルール管理 | 変換 > ルール |
-| サーバーサイドツール > 訪問プロファイルサンプラー | 検証 > ライブ訪問 |
-| サーバーサイドツール > 訪問検索 | 統治 > 訪問検索 |
-| データサプライチェーン > 使用レポート | 分析 > 使用 |
-| インサイト > ユーザー管理 | 分析 > インサイト > QuickSightユーザー |
+| タグ管理 | タグ管理 |
+| サーバー側ツール > ルールを管理 | 変換 > ルール |
+| サーバー側ツール > 訪問プロファイルサンプラー | 検証 > ライブ訪問 |
+| サーバー側ツール > 訪問検索 | ガバナンス > 訪問検索 |
+| データサプライチェーン > 使用状況レポート | 分析 > 使用状況 |
+| インサイト > ユーザーを管理 | 分析 > インサイト > QuickSightユーザー |
 
-### 新しいナビゲーションメニュー階層
+### 新しいナビゲーションメニューの階層
 
-ナビゲーションメニュー項目の完全なリストです。
+ナビゲーションメニュー項目の完全な一覧です。
 
-* [タグ管理](https://docs.tealium.com/iq-tag-management/) 
+* [タグ管理](https://docs.tealium.com/tag-management/) 
   * ダッシュボード 
   * [データレイヤー](https://docs.tealium.com/about-the-data-layer/) 
-  * [ロードルール](https://docs.tealium.com/about-load-rules/) 
+  * [読み込みルール](https://docs.tealium.com/about-load-rules/) 
   * [イベント](https://docs.tealium.com/about-events/) 
   * [タグ](https://docs.tealium.com/about-tags/) 
-  * [エクステンション](https://docs.tealium.com/about-extensions/) 
+  * [拡張機能](https://docs.tealium.com/about-extensions/) 
   * [同意統合](https://docs.tealium.com/about-consent-integrations/) 
-  * クライアントサイドツール
-    * [ブラウザツール](https://docs.tealium.com/ja/tools/tealium-tools/) 
+  * クライアント側ツール
+    * [ブラウザーツール](https://docs.tealium.com/ja/tools/tealium-tools/) 
     * [タグレポート](https://docs.tealium.com/tag-reporting/) 
     * [同意管理](https://docs.tealium.com/about-consent-management/) 
-  * [クライアントサイドバージョン](https://docs.tealium.com/client-side-versions/) 
+  * [クライアント側バージョン](https://docs.tealium.com/client-side-versions/) 
 * 接続 
   * [データサプライチェーン](https://docs.tealium.com/data-supply-chain-dashboard/) 
   * [データソース](https://docs.tealium.com/about-data-sources/) 
-  * [コネクタ](https://docs.tealium.com/about-connectors/) 
-  * イベントコネクタ 
-  * オーディエンスコネクタ 
+  * [コネクター](https://docs.tealium.com/about-connectors/) 
+  * イベントコネクター 
+  * オーディエンスコネクター 
   * マーケットプレイス 
-  * [データコネクト](https://docs.tealium.com/about-data-connect/) 
+  * [Data Connect](https://docs.tealium.com/about-data-connect/) 
     * [統合](https://docs.tealium.com/about-data-connect-integrations/) 
     * [ダッシュボード](https://docs.tealium.com/data-connect-dashboard/) 
-* 統治 
+* ガバナンス 
   * [同意オーケストレーション](https://docs.tealium.com/about-consent-orchestration/) 
   * [訪問検索](https://docs.tealium.com/visitor-search/) 
 * 変換 
   * [イベント属性](https://docs.tealium.com/about-attributes/) 
-  * [訪問/訪問属性](https://docs.tealium.com/about-attributes/) 
+  * [訪問／訪問属性](https://docs.tealium.com/about-attributes/) 
   * [ルール](https://docs.tealium.com/rule-condition-definitions/) 
   * [関数](https://docs.tealium.com/about-functions/) 
-  * [予測](https://docs.tealium.com/about-predict/) 
-* 活性化 
+  * [Predict](https://docs.tealium.com/about-predict/) 
+* アクティベート 
   * [オーディエンス](https://docs.tealium.com/about-audiences/) 
   * オーディエンスジョブ 
-  * [発見](https://docs.tealium.com/audience-discovery/) 
+  * [Discover](https://docs.tealium.com/audience-discovery/) 
   * [Context API](https://docs.tealium.com/about-context-api/) 
 * 検証 
   * [トレース](https://docs.tealium.com/about-trace/) 
@@ -104,75 +104,75 @@ url: https://docs.tealium.com/ja/administration/resources/navigation-menu/
   * [EventDB / AudienceDB](https://docs.tealium.com/audiencedb-and-eventdb/) 
   * [EventStore Legacy](https://docs.tealium.com/audiencedb-and-eventdb/) 
 * 分析 
-  * [使用](https://docs.tealium.com/understanding-the-usage-report/) 
-  * [オーディエンスダッシュボード](https://docs.tealium.com/audiencestream-dashboard/) 
+  * [使用状況](https://docs.tealium.com/understanding-the-usage-report/) 
+  * [オーディエンスダッシュボード](https://docs.tealium.com/cdp-dashboard/) 
   * [インサイト](https://docs.tealium.com/about-data-insights/)
     * [ダッシュボード](https://docs.tealium.com/manage-dashboards/) 
     * [テンプレート](https://docs.tealium.com/data-insights-templates/) 
     * [QuickSightユーザー](https://docs.tealium.com/about-data-insights/)
 
-## 機能マッピング
+## 機能の対応関係
 
-古典的なナビゲーションから新しいナビゲーションにある機能を見つけるためにこの表を使用してください。
+従来のナビゲーションにあった機能が、新しいナビゲーションのどこに配置されているかを確認するには、この表を使用してください。
 
-### iQタグ管理
+### タグ管理
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| iQタグ管理 > ダッシュボード | タグ管理 > ダッシュボード |
-| iQタグ管理 > データレイヤー | タグ管理 > データレイヤー |
-| iQタグ管理 > ロードルール | タグ管理 > ロードルール |
-| iQタグ管理 > イベント | タグ管理 > イベント |
-| iQタグ管理 > タグ | タグ管理 > タグ |
-| iQタグ管理 > エクステンション | タグ管理 > エクステンション |
-| iQタグ管理 > 同意統合 | タグ管理 > 同意統合 |
-| iQタグ管理 > クライアントサイドツール > ブラウザツール | クライアントサイドツール > ブラウザツール |
-| iQタグ管理 > クライアントサイドツール > タグレポート | クライアントサイドツール > タグレポート |
-| iQタグ管理 > クライアントサイドツール > 同意管理 | クライアントサイドツール > 同意管理 |
-| iQタグ管理 > クライアントサイドツール > クライアントサイドバージョン | クライアントサイドバージョン |
+| タグ管理 > ダッシュボード | タグ管理 > ダッシュボード |
+| タグ管理 > データレイヤー | タグ管理 > データレイヤー |
+| タグ管理 > 読み込みルール | タグ管理 > 読み込みルール |
+| タグ管理 > イベント | タグ管理 > イベント |
+| タグ管理 > タグ | タグ管理 > タグ |
+| タグ管理 > 拡張機能 | タグ管理 > 拡張機能 |
+| タグ管理 > 同意統合 | タグ管理 > 同意統合 |
+| タグ管理 > クライアント側ツール > ブラウザーツール | クライアント側ツール > ブラウザーツール |
+| タグ管理 > クライアント側ツール > タグレポート | クライアント側ツール > タグレポート |
+| タグ管理 > クライアント側ツール > 同意管理 | クライアント側ツール > 同意管理 |
+| タグ管理 > クライアント側ツール > クライアント側バージョン | クライアント側バージョン |
 
 ### データサプライチェーン
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
 | データサプライチェーン > 概要 | 接続 > データサプライチェーン |
-| データサプライチェーン > 使用レポート | 分析 > 使用 |
+| データサプライチェーン > 使用状況レポート | 分析 > 使用状況 |
 
 ### ソース
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
 | ソース > データソース | 接続 > データソース |
 
-### EventStream
+### イベントストリーミング
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| EventStream > ライブイベント | 検証 > ライブイベント |
-| EventStream > イベント仕様 | 検証 > イベント仕様 |
-| EventStream > イベント属性 | 変換 > イベント属性 |
+| イベントストリーミング > ライブイベント | 検証 > ライブイベント |
+| イベントストリーミング > イベント仕様 | 検証 > イベント仕様 |
+| イベントストリーミング > イベント属性 | 変換 > イベント属性 |
 
-### AudienceStream
+### カスタマーデータプラットフォーム（CDP）
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| AudienceStream > ダッシュボード | 分析 > オーディエンスダッシュボード |
-| AudienceStream > 発見 | 活性化 > 発見 |
-| AudienceStream > 訪問/訪問属性 | 変換 > 訪問/訪問属性 |
-| AudienceStream > オーディエンス | 活性化 > オーディエンス |
-| AudienceStream > オーディエンスジョブ | 活性化 > オーディエンスジョブ |
-| AudienceStream > Context API（以前はMoments APIと呼ばれていた） | 活性化 > Context API |
+| CDP > ダッシュボード | 分析 > オーディエンスダッシュボード |
+| CDP > Discover | アクティベート > Discover |
+| CDP > 訪問／訪問属性 | 変換 > 訪問／訪問属性 |
+| CDP > オーディエンス | アクティベート > オーディエンス |
+| CDP > オーディエンスジョブ | アクティベート > オーディエンスジョブ |
+| CDP > Context API（旧称Moments API） | アクティベート > Context API |
 
-### コネクタ
+### コネクター
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| コネクタ > 概要 | 接続 > コネクタ |
-| コネクタ > マーケットプレイス | 接続 > マーケットプレイス |
+| コネクター > 概要 | 接続 > コネクター |
+| コネクター > マーケットプレイス | 接続 > マーケットプレイス |
 
 ### DataAccess
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
 | DataAccess > EventStore | 保存 > EventStore |
 | DataAccess > AudienceStore | 保存 > AudienceStore |
@@ -180,54 +180,52 @@ url: https://docs.tealium.com/ja/administration/resources/navigation-menu/
 
 ### インサイト
 
-| 古い場所 | 新しい場所 |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
 | インサイト > ダッシュボード | 分析 > インサイト > ダッシュボード |
-| インサイト > ユーザー管理 | 分析 > インサイト > QuickSightユーザー |
+| インサイト > ユーザーを管理 | 分析 > インサイト > QuickSightユーザー |
 | インサイト > テンプレート | 分析 > インサイト > テンプレート |
+### Data Connect
 
-
-### データコネクト
-
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| データコネクト > インテグレーション | 接続 > データコネクト > インテグレーション |
-| データコネクト > ダッシュボード | 接続 > データコネクト > ダッシュボード |
+| Data Connect > Integrations | Connect > Data Connect > Integrations |
+| Data Connect > Dashboard | Connect > Data Connect > Dashboard |
 
-### 予測
+### Predict
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| 予測 | 変換 > 予測 |
+| Predict | Transform > Predict |
 
-### 関数
+### Functions
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| 関数 > 概要 | 変換 > 関数 |
+| Functions > Overview | Transform > Functions |
 
-### 同意調整
+### Consent Orchestration
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| 同意調整 | 管理 > 同意調整 |
+| Consent Orchestration | Govern > Consent Orchestration |
 
-### トレース
+### Trace
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| トレース | 検証 > トレース |
+| Trace | Validate > Trace |
 
 ### サーバーサイドツール
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| サーバーサイドツール > 訪問プロファイルサンプラー | 検証 > ライブ訪問 |
-| サーバーサイドツール > ルール管理 | 変換 > ルール |
-| サーバーサイドツール > 訪問検索 | 管理 > 訪問検索 |
+| Server-Side Tools > Visitor Profile Sampler | Validate > Live Visitors |
+| Server-Side Tools > Manage Rules | Transform > Rules |
+| Server-Side Tools > Visitor Lookup | Govern > Visitor Search |
 
 ### サーバーサイドバージョン
 
-| 旧ロケーション | 新ロケーション |
+| 以前の場所 | 新しい場所 |
 | ------------ | ------------ |
-| サーバーサイドバージョン | サーバーサイドバージョン |
+| Server-Side Versions | Server-Side Versions |

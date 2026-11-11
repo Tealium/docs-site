@@ -5,13 +5,13 @@ url: https://docs.tealium.com/client-side-tags/genesys-web-messaging-tag/
 ---
 Genesys Web Messaging is a feature that enables customers to converse with a bot or an agent on your website. It offers several advantages over web chat, including asynchronous conversations, inbound and outbound image attachments, and unified agent and supervisor experience across all Genesys Cloud messaging channels.
 
-## Tag Tips
+## Tag tips
 
 * Use mappings to dynamically override the standard configuration values.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -20,13 +20,13 @@ Genesys identifier, as provided by the user.
 * **Environment**:  
 The environment where the tag is being deployed.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -119,7 +119,7 @@ The available categories are:
 
 ### Event Specific Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|

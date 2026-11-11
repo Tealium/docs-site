@@ -1,104 +1,104 @@
 ---
-title: TAPIDクッキーについて
-description: このドキュメントでは、TAPIDクッキーとは何か、Tealiumプラットフォームがそれをどのように使用するかについて説明します。
+title: TAPID Cookie について
+description: このドキュメントでは、TAPID Cookie の概要と Tealium プラットフォームでの使用方法について説明します。
 url: https://docs.tealium.com/ja/server-side/visitor-stitching/tapid/
 ---
 ## 仕組み
 
-TAPIDはHTTP専用のブラウザクッキーです。元々はクロスドメイン識別を容易にするために設計され、Tealiumのサーバーサイド製品（例：AudienceStream）が使用する[匿名ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id)を保存します。
+TAPID は HTTP-only のブラウザー Cookie です。元々はクロスドメインでの識別を容易にするために設計されたもので、Customer Data Platform（CDP）など、Tealium のサーバーサイド製品で使用される[匿名 ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id) を保存します。
 
 
 <blockquote>
-訪問のコンピュータに[Collect Tag]()のターゲットドメインに構成されたTAPIDクッキーがまだない場合、そのドメインはCollect Tagのペイロードに基づいて一つを生成します。
+訪問のコンピューターに、[Collect タグ]()のターゲットドメインで構成された TAPID Cookie がまだ存在しない場合、そのドメインは Collect タグのペイロードに基づいて Cookie を生成します。
 </blockquote>
 
 
-TAPIDクッキーの値はそのユーザーの訪問IDに構成されます。この値は通常、クライアントデバイスから来ます。TAPIDは、ユーザーのデバイスが訪れたアカウントとプロファイルの値の連結リストに値を保存します。以下の形式を使用します：
+TAPID Cookie の値には、そのユーザーの訪問 ID が構成されます。この値は通常、クライアントデバイスから取得されます。TAPID は、ユーザーのデバイスが訪問したアカウントとプロファイルの値を、次の形式で連結したリストとして保存します。
 
 ```
 account-1/profile-1>visitor_id_value-1|account-2/profile-2>visitor_id_value-2
 ```
 
-TAPIDは通常、サードパーティのクッキーですが、[ファーストパーティドメイン]()を使用すると、ファーストパーティのクッキーになることもあります。
+TAPID は通常サードパーティ Cookie ですが、[ファーストパーティドメイン]()を使用すると、ファーストパーティ Cookie にできます。
 
-一度構成されると、クッキー内の`visitor_id_value`は通常変更されません。
+一度構成されると、Cookie 内の `visitor_id_value` は通常変更されません。
 
-### TAPIDのアカウントとプロファイルの値
+### TAPID 内のアカウントとプロファイルの値
 
-ウェブページ上のTAPIDクッキーのアカウントとプロファイルの値を見つけるには、以下の手順を実行します：
+Web ページ上の TAPID Cookie に含まれるアカウントとプロファイルの値を確認するには、次の手順を実行します。
 
-1. ブラウザでTealium Collectタグを読み込むウェブページを開きます。
-1. ブラウザの開発者コンソールを開きます。
-1. `teal`で**Network**リクエストをフィルタリングします。
+1. ブラウザーで、Tealium Collect タグを読み込む Web ページを開きます。
+1. ブラウザーの開発者コンソールを開きます。
+1. **Network** リクエストを `teal` でフィルタリングします。
 1. ページを更新します。
-1. collectタグの参照（`i.gif`または`/event`）を見つけます。
-1. リクエストヘッダーを調べて、ターゲットアカウントとプロファイルを決定します。
-1. TAPIDクッキーの値を確認するためにレスポンスを調べます。
-1. アカウントとプロファイルに関連するTAPIDクッキーの部分を抽出します。
+1. Collect タグの参照（`i.gif` または `/event`）を見つけます。
+1. リクエストヘッダーを確認し、ターゲットのアカウントとプロファイルを特定します。
+1. レスポンスを確認して、TAPID Cookie の値を表示します。
+1. TAPID Cookie から、対象のアカウントとプロファイルに関連する部分を抽出します。
 
-## アイデンティティ解決
+## ID 解決
 
-AudienceStreamは、以下の順序に基づいて訪問プロファイルIDを決定します：
+CDP は、次の優先順位に基づいて訪問プロファイル ID を決定します。
 
-1. TAPIDクッキー、別名`tealium_thirdparty_visitor_id`。
-1. `tealium_visitor_id`イベント属性。
-1. `utag_main v_id cookie`、別名`tealium_firstparty_visitor_id`。
+1. TAPID Cookie（`tealium_thirdparty_visitor_id` とも呼ばれます）。
+1. `tealium_visitor_id` イベント属性。
+1. `utag_main v_id cookie`（`tealium_firstparty_visitor_id` とも呼ばれます）。
 
-AudienceStreamは、入力リクエストに存在する場合、常にTAPID識別子を主要な識別子として使用します。ユーザーが2つのドメイン間で追跡されている場合、AudienceStreamは2つ目のドメインのファーストパーティクッキーを使用してユーザーを識別しません。したがって、AudienceStreamでは、2つ目のドメインのファーストパーティクッキーに基づいてユーザーを検索することはできません。
+受信リクエストに TAPID 識別子が含まれている場合、CDP は常にこれをプライマリ識別子として使用します。ユーザーが 2 つのドメインにまたがって追跡される場合、CDP はユーザーの識別に 2 つ目のドメインのファーストパーティ Cookie を使用しません。そのため、CDP では、2 つ目のドメインのファーストパーティ Cookie に基づいてユーザーを検索できません。
 
-### 訪問のスティッチング問題
+### 訪問スティッチングの問題
 
-複数の訪問がデバイス（共有スマートテレビや公共のキオスクなど）を使用すると、訪問のプロファイルデータが汚染される可能性があります。2番目のユーザーが匿名クッキーでそのデバイスにログインすると、AudienceStreamは最初のユーザーの活動を続けて記録します。デバイス上のすべての匿名ユーザーからのトラフィックは、TAPIDクッキーの最初のユーザーに記録されます。
+共有スマートテレビや公共のキオスク端末など、複数の訪問が 1 台のデバイスを使用すると、訪問のプロファイルデータが混在する可能性があります。2 人目のユーザーが匿名 Cookie を使用してそのデバイスにログインしても、CDP は引き続き最初のユーザーのアクティビティとして記録します。デバイス上のすべての匿名ユーザーからのトラフィックが、TAPID Cookie 内の最初のユーザーに記録されます。
 
 詳細については、[訪問の切り替え](https://docs.tealium.com/ja/platforms/http-api/endpoint/#visitor-switching)を参照してください。
 
-### ブラウザのサポート
+### ブラウザーのサポート
 
-サードパーティクッキーに対するブラウザのサポートが減少し続ける中で、ドメイン間でユーザーを匿名で追跡する能力はますます困難になっています。[訪問のスティッチング]()を使用すると、AudienceStreamはデータレイヤーで自分自身を識別するユーザーを2つ以上のドメイン間で解決することができます。
+サードパーティ Cookie に対するブラウザーのサポートが減少し続ける中、ドメインをまたいでユーザーを匿名で追跡することは難しくなっています。[訪問スティッチング]()を使用すると、ユーザーがデータレイヤーで自身を識別した際に、CDP は 2 つ以上のドメインにまたがってそのユーザーを解決できます。
 
-## ファーストパーティドメインとTAPID  
+## ファーストパーティドメインと TAPID
 
-ファーストパーティドメインを使用すると、Tealiumのサービスはファーストパーティリクエストを使用でき、これにより広告ブロッカーや同様の技術によるデータ損失を減らすことができます。
+ファーストパーティドメインを使用すると、Tealium のサービスでファーストパーティリクエストを使用できるため、広告ブロッカーや同様のテクノロジーによって生じるデータ損失を軽減できます。
 
-ファーストパーティドメインとは、ユーザーが訪れているウェブサイトをホストするドメインのことです。サードパーティドメインとは、現在のウェブサイトのドメインと一致しない任意のドメインを指します。
+ファーストパーティドメインとは、ユーザーが訪問している Web サイトをホストするドメインです。サードパーティドメインとは、現在の Web サイトのドメインと一致しないドメインを指します。
 
-ファーストパーティドメインを使用すると、TAPIDクッキーは引き続きHTTP専用のブラウザクッキーとなりますが、Tealiumのサードパーティドメインではなく、ウェブサイトをホストするファーストパーティドメインに割り当てられます。したがって、ファーストパーティドメインはTAPIDクッキーがクロスドメイン追跡機能を失う原因となります。
+ファーストパーティドメインを使用しても、TAPID Cookie は引き続き HTTP-only のブラウザー Cookie ですが、Tealium のサードパーティドメインではなく、Web サイトをホストするファーストパーティドメインに割り当てられます。そのため、ファーストパーティドメインを使用すると、TAPID Cookie のクロスドメイン追跡機能は失われます。
 
 詳細については、[ファーストパーティドメインについて](https://docs.tealium.com/about-first-party-domains/)を参照してください。
 
-## TAPIDクッキーデータの変更
+## TAPID Cookie データの変更
 
-APIリクエストには、TAPIDクッキーの値を変更するための3つのパラメータが含まれています。これらのパラメータは、現在の入力リクエストに関連するTAPIDのアカウントとプロファイルの値のみに影響を与えます。それ以外のアカウントとプロファイルの値は変更されません。
+API リクエストには、TAPID Cookie の値を変更できる 3 つのパラメータがあります。これらのパラメータは、現在の受信リクエストに関連する TAPID 内のアカウントとプロファイルの値にのみ影響します。その他のアカウントとプロファイルの値は変更されません。
 
-パラメータは以下のエンドポイントをサポートします：
+これらのパラメータは、次のエンドポイントでサポートされています。
 
-* `i.gif` - [Tealium Collect tag]()
-* `vdata` - [Visitor Data Enrichment]()
+* `i.gif` - [Tealium Collect タグ]()
+* `vdata` - [訪問データエンリッチメント]()
 * `/event` - [HTTP API](https://docs.tealium.com/ja/platforms/http-api/endpoint/#visitor-switching)
 
 
 <blockquote>
-`/event`エンドポイントは、事前に構成されたTAPIDの値を読み取ることができますが、TAPIDクッキー内の値を変更することはできません。
+`/event` エンドポイントは、以前に構成されている TAPID 値を読み取ることはできますが、TAPID Cookie 内の値を変更することはできません。
 </blockquote>
 
 
-| パラメータ | タイプ | アクション | ノート | 
+| パラメータ | 型 | アクション | 備考 |
 |--------|--------|--------|--------|
-| `tealium_override_tapid`  | String  | <ul><li>このイベントの訪問IDとして提供された値をAudienceStreamとサーバーサイド製品が使用するようにします。</li><li>`i.gif`と`vdata`では、しかし`/event`ではなく、`Set-Cookie`レスポンスヘッダーを変更して、TAPIDを変更するために渡す値を使用します。</li></ul> |このパラメータは、クロスドメイン追跡のためのTAPIDを保持しながら、最後に知られているユーザーに基づいて訪問の切り替えを可能にします。 |
-| `tealium_delete_3rd_party_vid_cookies`  | Boolean |  <ul><li>このイベントの訪問プロファイルIDの優先順位を見るときに、AudienceStreamとサーバーサイド製品がTAPIDクッキーの入力リクエスト値を無視します。</li><li>`i.gif`と`vdata`では、しかし`/event`ではなく、現在のアカウントとプロファイルのTAPIDを削除するために`Set-Cookie`レスポンスヘッダーを変更します。</li></ul> | |
-| `tealium_skip_3rd_party_vid_cookies`  | Boolean | このイベントのTAPID値をAudienceStreamとサーバーサイド製品が無視します。 | |
+| `tealium_override_tapid` | 文字列 | <ul><li>CDP およびサーバーサイド製品で、指定された値をこのイベントの訪問 ID として使用します。</li><li>`i.gif` と `vdata` では（`/event` を除く）、`Set-Cookie` レスポンスヘッダーを変更し、渡された値を使用して TAPID を変更します。</li></ul> | このパラメータを使用すると、クロスドメイン追跡用の TAPID を維持しながら、最後に認識されたユーザーに基づいて訪問を切り替えることができます。 |
+| `tealium_delete_3rd_party_vid_cookies` | ブール値 | <ul><li>CDP およびサーバーサイド製品で、このイベントの訪問プロファイル ID の優先順位を確認する際に、受信リクエスト内の TAPID Cookie の値を無視します。</li><li>`i.gif` と `vdata` では（`/event` を除く）、`Set-Cookie` レスポンスヘッダーを変更し、現在のアカウントとプロファイルの TAPID を削除します。</li></ul> | |
+| `tealium_skip_3rd_party_vid_cookies` | ブール値 | CDP およびサーバーサイド製品で、このイベントの TAPID 値を無視します。 | |
 
-パラメータは現在のイベントのみに影響します。例えば、一つのイベントで`skip`パラメータを渡し、次のイベントでは渡さない場合、次のイベントはTAPIDクッキーをスキップしません。しかし、`override`パラメータを一度構成すると、TAPIDは指定した値に変更されます。
+これらのパラメータは、現在のイベントにのみ影響します。たとえば、あるイベントでは `skip` パラメータを渡し、次のイベントでは渡さなかった場合、次のイベントでは TAPID Cookie はスキップされません。ただし、`override` パラメータを一度構成すると、TAPID は指定した値に変更されます。
 
 ### 例
 
-以下の例は、3つのパラメータがTAPIDデータをどのように変更するかを示しています。
+次の例は、3 つのパラメータによって TAPID データがどのように変更されるかを示しています。
 
-#### オーバーライド
+#### 上書き
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -109,7 +109,7 @@ APIリクエストには、TAPIDクッキーの値を変更するための3つ�
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -117,7 +117,7 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-Set Cookie (オーバーライド):  `i.gif`と`vdata`のみ、`/event`ではない
+Cookie の構成（上書き）：`i.gif` と `vdata` のみ。`/event` は対象外
 
 ```
 TAPID=tealium/alt>user|tealium/main>12345|;
@@ -127,9 +127,9 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 
 ```
 {
-  "visitorId": "user", // オーバーライド
+  "visitorId": "user", // Overridden
   "firstPartyCookieId": "user@tealium.com",
-  "thirdPartyCookieId": "user" // オーバーライド
+  "thirdPartyCookieId": "user" // Overridden
 }
 ```
 
@@ -137,7 +137,7 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -148,7 +148,7 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -156,7 +156,7 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-Set Cookie:  `i.gif`と`vdata`のみ、`/event`ではない
+Cookie の構成：`i.gif` と `vdata` のみ。`/event` は対象外
 
 ```
 TAPID=tealium/alt>67890|tealium/main>12345|;
@@ -166,7 +166,7 @@ TAPID=tealium/alt>67890|tealium/main>12345|;
 
 ```
 {
-  "visitorId": "user@tealium.com", // TAPIDスキップ
+  "visitorId": "user@tealium.com", // TAPID skipped
   "firstPartyCookieId": "user@tealium.com",
   "thirdPartyCookieId": "67890"
 }
@@ -176,7 +176,7 @@ TAPID=tealium/alt>67890|tealium/main>12345|;
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -187,7 +187,7 @@ TAPID=tealium/alt>67890|tealium/main>12345|;
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -195,13 +195,13 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-Set Cookie (リセット):  `i.gif`と`vdata`のみ、`/event`ではない
+Cookie の構成（リセット）：`i.gif` と `vdata` のみ。`/event` は対象外
 
 ```
 TAPID=tealium/main>12345|;
 ```
 
-TAPIDが`account/profile`部分のTAPIDを削除した後に空になる場合、`set-cookie maxAge=0`がクライアントからクッキーを完全に削除するために返されます。`i.gif`と`vdata`のみ、`/event`ではない
+TAPID から `account/profile` 部分を削除した後に TAPID が空になった場合は、クライアントから Cookie を完全に削除するために `set-cookie maxAge=0` が返されます。これは `i.gif` と `vdata` のみが対象で、`/event` は対象外です。
 
 ##### イベント
 
@@ -212,23 +212,22 @@ TAPIDが`account/profile`部分のTAPIDを削除した後に空になる場合�
 }
 ```
 
-#### オーバーライド & スキップ
-
+#### 上書きとスキップ
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
   "tealium_account": "tealium",
   "tealium_profile": "alt",
-"tealium_visitor_id": "user@tealium.com",
+  "tealium_visitor_id": "user@tealium.com",
   "tealium_override_tapid": "user",
   "tealium_skip_3rd_party_vid_cookies": true
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -236,7 +235,7 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-クッキー構成（上書き）:  `i.gif`と`vdata`のみ、`/event`は除く
+Cookie を構成（上書き）：`i.gif` と `vdata` のみ。`/event` は対象外です。
 
 ```
 TAPID=tealium/alt>user|tealium/main>12345|;
@@ -246,17 +245,17 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 
 ```
 {
-  "visitorId": "user@tealium.com", // TAPIDはスキップされます
+  "visitorId": "user@tealium.com", // TAPID Skipped
   "firstPartyCookieId": "user@tealium.com",
-  "thirdPartyCookieId": "user" // 上書きされます
+  "thirdPartyCookieId": "user" // Overridden
 }
 ```
 
-#### 上書き & 削除
+#### 上書きと削除
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -268,7 +267,7 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -276,13 +275,13 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-クッキー構成:  `i.gif`と`vdata`のみ、`/event`は除く
+Cookie を構成：`i.gif` と `vdata` のみ。`/event` は対象外です。
 
 ```
 TAPID=tealium/alt>user|tealium/main>12345|;
 ```
 
-`tealium_override_tapid`は`tealium_delete_3rd_party_vid_cookies`より優先されます
+`tealium_override_tapid` は `tealium_delete_3rd_party_vid_cookies` より優先されます。
 
 ##### イベント
 
@@ -290,15 +289,15 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 {
   "visitorId": "user", 
   "firstPartyCookieId": "user@tealium.com",
-  "thirdPartyCookieId": "user" // 上書きされます
+  "thirdPartyCookieId": "user" // Overridden
 }
 ```
 
-#### スキップ & 削除
+#### スキップと削除
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -310,7 +309,7 @@ TAPID=tealium/alt>user|tealium/main>12345|;
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -318,28 +317,28 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-クッキー構成（リセット）:  `i.gif`と`vdata`のみ、`/event`は除く
+Cookie を構成（リセット）：`i.gif` と `vdata` のみ。`/event` は対象外です。
 
 ```
 TAPID=tealium/main>12345|;
 ```
 
-TAPIDが`account/profile`部分のTAPIDを削除した後に空になる場合、クライアントからクッキーを完全に削除するために`set-cookie maxAge=0`が返されます。`i.gif`と`vdata`のみ、`/event`は除く
+TAPID から `account/profile` の部分を削除した後に TAPID が空になった場合、クライアントから Cookie を完全に削除するために `set-cookie maxAge=0` が返されます。`i.gif` と `vdata` のみが対象で、`/event` は対象外です。
 
 ##### イベント
 
 ```
 {
-  "visitorId": "user@tealium.com", // TAPIDは削除され、とにかくスキップされます
+  "visitorId": "user@tealium.com", // TAPID deleted and anyway skipped
   "firstPartyCookieId": "user@tealium.com"
 }
 ```
 
-#### 上書き、スキップ、& 削除
+#### 上書き、スキップ、削除
 
 ##### リクエスト
 
-**ボディ:**
+**本文：**
 
 ```
 {
@@ -352,7 +351,7 @@ TAPIDが`account/profile`部分のTAPIDを削除した後に空になる場合�
 }
 ```
 
-**クッキー:**
+**Cookie：**
 
 ```
 TAPID=tealium/main>12345|tealium/alt>67890|;
@@ -360,22 +359,22 @@ TAPID=tealium/main>12345|tealium/alt>67890|;
 
 ##### レスポンス
 
-クッキー構成:  `i.gif`と`vdata`のみ、`/event`は除く
+Cookie を構成：`i.gif` と `vdata` のみ。`/event` は対象外です。
 
 
 ```
 TAPID=tealium/alt>user|tealium/main>12345|;
 ```
 
-`tealium_override_tapid`は`tealium_delete_3rd_party_vid_cookies`より優先されます
+`tealium_override_tapid` は `tealium_delete_3rd_party_vid_cookies` より優先されます。
 
 
 ##### イベント
 
 ```
 {
-  "visitorId": "user@tealium.com", // TAPIDはスキップされます
+  "visitorId": "user@tealium.com", // TAPID Skipped
   "firstPartyCookieId": "user@tealium.com",
-  "thirdPartyCookieId": "user" // 上書きされます
+  "thirdPartyCookieId": "user" // Overridden
 }
 ```

@@ -18,7 +18,7 @@ A _Data Scientist_ is an analytical expert that utilizes skills in technology an
 
 ### Deployed Model
 
-A _deployed model_ refers to a model that has been "trained" and then deployed to populate prediction values into your customer profiles in Tealium AudienceStream.
+A _deployed model_ refers to a model that has been "trained" and then deployed to populate prediction values into your customer profiles in Customer Data Platform (CDP).
 
 ### Machine Learning
 
@@ -26,7 +26,7 @@ _Machine learning_ refers to a subfield of artificial intelligence that focuses 
 
 ### Model
 
-In Tealium Predict, a _model_ represents the behavior you are predicting within a specific timeframe, such as a purchase, conversion, or any customer behavior tracked in AudienceStream. Models are created using an algorithm and the results are used to explain patterns and predict future outcomes.
+In Tealium Predict, a _model_ represents the behavior you are predicting within a specific timeframe, such as a purchase, conversion, or any customer behavior tracked in Customer Data Platform (CDP). Models are created using an algorithm and the results are used to explain patterns and predict future outcomes.
 
 ### Model Explorer
 
@@ -66,7 +66,7 @@ The model strength score provides ratings that grade the quality of each version
 
 ### Target Attribute
 
-The target attribute is AudienceStream attribute selected to define your model and represent the user action being predicted. These attributes are visit or visitor-level booleans selected to signal that an action has been performed. For example, a boolean visit attribute named "Has Purchased" signals that a purchase event has occurred during a visit.
+The target attribute is CDP attribute selected to define your model and represent the user action being predicted. These attributes are visit or visitor-level booleans selected to signal that an action has been performed. For example, a boolean visit attribute named "Has Purchased" signals that a purchase event has occurred during a visit.
 
 ### Training
 

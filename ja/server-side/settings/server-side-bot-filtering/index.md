@@ -1,32 +1,138 @@
 ---
-title: サーバーサイドボットフィルタリング
-description: この記事では、Tealiumがサーバーサイド環境でボットトラフィックをどのようにフィルタリングするかについて説明します。
+title: サーバーサイドのボットフィルタリング
+description: この記事では、Tealiumがサーバーサイド環境でボットトラフィックを除外する仕組みについて説明します。
 url: https://docs.tealium.com/ja/server-side/settings/server-side-bot-filtering/
 ---
-サーバーサイドボットフィルタリングは、Tealiumのサーバーサイド製品を通じて収集されたデータの精度を維持するために不可欠です。
+サーバーサイドのボットフィルタリングは、Tealiumのサーバーサイド製品を通じて収集されるデータの正確性を維持するために不可欠です。
 
-この記事では、サーバーサイドボットフィルタリングに焦点を当てています。クライアントサイドボットフィルタリングの詳細については、[client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/)を参照してください。
+この記事では、サーバーサイドのボットフィルタリングについて説明します。クライアントサイドのボットフィルタリングについて詳しくは、[client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/)を参照してください。
 
 ## 仕組み
 
-ボットトラフィックとは、非人間によるサイトやアプリへの訪問を指します。Tealiumのサーバーサイド製品は、各イベントのユーザーエージェントを既知のボットのリストと比較することで自動的にボットトラフィックをフィルタリングします。フィルタリングされたイベントは処理されず、使用量にはカウントされません。
+ボットトラフィックとは、サイトまたはアプリへの人間以外によるアクセスを指します。Tealiumのサーバーサイド製品は、各イベントのユーザーエージェントを既知のボットのリストと比較し、ボットトラフィックを自動的に除外します。除外されたイベントは処理されず、使用量にもカウントされません。
 
-## ボットと認識されるユーザーエージェント
+## ボットとして認識されるユーザーエージェント
 
-Tealiumは、ユーザーエージェントを既知のパターンのリストと照合することでボットを認識します。ユーザーエージェントが以下の用語（大文字小文字を区別しない）を含む場合、それはボットと見なされます：
+Tealiumは、ユーザーエージェントを既知のパターンのリストと照合してボットを識別します。ユーザーエージェントに以下のいずれかの語句が含まれている場合（大文字と小文字は区別されません）、ボットと見なされます。
 
 ```
-（上記のボットリストはそのまま）
+robot
+spider
+200PleaseBot
+360Spider
+4seohuntBot
+80legs
+AdsBot
+AhrefsBot
+AlertSite
+Alexibot
+Applebot
+atSpider
+autoemailspider
+Baiduspider
+BecomeBot
+Bingbot
+BingPreview
+Black.Hole
+Black Hole
+BLEXBot
+BlowFish
+Bullseye
+CatchBot
+Catchpoint
+CCBot
+Cheesebot
+citeseerxbot
+ContactBot
+ContentSmartz
+crawler4j
+DataCha0s
+datagnionbot
+DBrowse
+DotBot
+DuckDuckBot
+EmailSiphon
+EmailSpider
+envolk
+Exabot
+Facebot
+facebookexternalhit
+FAST-WebCrawler
+FAST Enterprise Crawler
+Feedfetcher-Google
+Genieo
+Gid_Synthetic
+gigablast
+Gigabot
+GingerCrawler
+Girafabot
+GomezAgent
+Googlebot
+ia_archiver
+ips-agent
+Keynote
+KHTE
+KXTN
+linkdexbot
+LinkedInBot
+Mediapartners-Google
+MetaJobBot
+Microsearch
+MJ12bot
+Mnogosearch
+msnbot
+MSRBot
+NaverBot
+oBot
+PagePeeker
+Pingdom
+proximic
+purebot
+Psbot
+redditbot
+RU_bot
+Scanbot
+ScoutJet
+Scrapy
+SeznamBot
+SimpleCrawler
+SimplePie
+Site24x7
+SiteLockSpider
+Slackbot
+Slurp
+Sosospider
+Sougou
+spbot
+Speedy Spider
+SPEng
+Twiceler
+Twitterbot
+UnwindFetchor
+Veoozbot
+Voilabot
+voyager
+WebDataCentreBot
+Webmetrics
+WhatsApp
+Yandex
+yanga
+Yodaobot
+YottaaMonitor
+Youdao
+zibber
+ZyBorg
 ```
 
-## サーバーサイドボットフィルタリングのカスタマイズ
+## サーバーサイドのボットフィルタリングのカスタマイズ
 
-内部トラフィックやボットトラフィックにより特定のイベントがサーバーサイドに送信されるのを防ぐ必要がある場合、次のことができます：
+内部トラフィックまたはボットトラフィックが原因で、特定のイベントがサーバーサイドに送信されないようにする必要がある場合は、次の方法を使用できます。
 
-* [Collect tag](https://docs.tealium.com/tealium-collect-tag/)に[load rules](https://docs.tealium.com/manage-load-rules/)を追加して、それがロードされるタイミングを制限します。
-* ユーザーエージェントに基づいてCollectタグのロードを停止するクライアントサイドの方法を使用します。
-クライアントサイドボットフィルタリングの詳細については、[client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/)を参照してください。
+* [Collectタグ](https://docs.tealium.com/tealium-collect-tag/)に[ロードルール](https://docs.tealium.com/manage-load-rules/)を追加し、タグが読み込まれる条件を制限します。
+* ユーザーエージェントに基づいてCollectタグの読み込みを停止するクライアントサイドの方法を使用します。
 
-## AudienceStreamでのサーバーサイドフィルタリングの有効化
+クライアントサイドのボットフィルタリングについて詳しくは、[client-side-bot-filtering](https://docs.tealium.com/client-side-bot-filtering/)を参照してください。
 
-特定のユーザーエージェントパターンやIPアドレスを除外するなど、より高度なフィルタリングが必要な場合、AudienceStreamでサーバーサイドフィルタリングを有効にすることができます。これを構成するには、[サポートにお問い合わせ](https://docs.tealium.com/support/)してガイダンスを得てください。
+## Customer Data Platform（CDP）でのサーバーサイドフィルタリングの有効化
+
+特定のユーザーエージェントパターンやIPアドレスの除外など、より高度なフィルタリングを行うには、CDPでサーバーサイドフィルタリングを有効にできます。構成方法については、[サポートにお問い合わせください](https://docs.tealium.com/support/)。

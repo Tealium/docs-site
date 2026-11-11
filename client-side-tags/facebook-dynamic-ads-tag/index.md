@@ -1,5 +1,5 @@
 ---
-title: How to Set up Facebook Dynamic Ads in Tealium iQ
+title: How to Set up Facebook Dynamic Ads in Tag Management
 description: Dynamic Ads are a retargeting service that provides product recommendations to your visitors based on the products that they have interacted with.
 url: https://docs.tealium.com/client-side-tags/facebook-dynamic-ads-tag/
 ---
@@ -9,7 +9,7 @@ This article describes how to provide Facebook with data about the products a vi
 
 The steps describes in this article assume that you already have a Facebook account and that you have set up your Product Catalog in the Facebook Business Manager. This step allows Facebook to accurately retarget events based on the products a visitor has shown interest in. ([Learn more](https://business.facebook.com)).
 
-## Set up Facebook Pixel in Tealium iQ
+## Set up Facebook Pixel in Tag Management
 
 First, you will need to add the [Facebook tag](https://docs.tealium.com/facebook-pixel-legacy/) in TiQ.
 

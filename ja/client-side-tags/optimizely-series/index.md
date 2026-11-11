@@ -1,9 +1,9 @@
 ---
-title: Optimizely (シリーズ)
-description: Tealium iQタグ管理でOptimizelyを構成する一連の投稿について。
+title: Optimizely（シリーズ）
+description: タグ管理で Optimizely を構成する方法についての一連の記事です。
 url: https://docs.tealium.com/ja/client-side-tags/optimizely-series/
 ---
-* [Optimizelyタグ構成ガイド](https://docs.tealium.com/ja/client-side-tags/optimizely-sync-tag/)  
-* [Optimizely 非同期実装](https://docs.tealium.com/ja/client-side-tags/optimizely-asynchronous-tag/)  
-* [Optimizely 同期実装](https://docs.tealium.com/ja/client-side-tags/optimizely-synchronous-implementation/)  
-* [Tealiumツール Optimizelyヘルパー](https://docs.tealium.com/optimizely-helper/)  
+* [Optimizely タグ構成ガイド](https://docs.tealium.com/ja/client-side-tags/optimizely-sync-tag/)  
+* [Optimizely の非同期実装](https://docs.tealium.com/ja/client-side-tags/optimizely-asynchronous-tag/)  
+* [Optimizely の同期実装](https://docs.tealium.com/ja/client-side-tags/optimizely-synchronous-implementation/)  
+* [Tealium ツール：Optimizely Helper](https://docs.tealium.com/optimizely-helper/)

@@ -1,29 +1,29 @@
 ---
 title: Lucky Orange Tag Setup Guide
-description: This article describes how to set up the Lucky Orange Tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Lucky Orange Tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/lucky-orange-tag/
 ---
-## Tag Tips
+## Tag tips
 
 *   Use mappings to override and dynamically set the tag configuration.
 *   Use Custom event to enter the name of the event you need.
 *   You can use as many custom parameters as you need.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Site ID**: (Required) The unique identifier for the client’s site.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -40,7 +40,7 @@ The available categories are:
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event | Description |
 |:------|:------------|

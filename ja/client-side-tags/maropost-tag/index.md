@@ -3,32 +3,32 @@ title: Maropostタグ構成ガイド
 description: この記事では、Maropostタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/maropost-tag/
 ---
-## タグ構成
+## タグの構成
 
-まず、タグマーケットに移動し、Maropost Web Trackingタグをプロフィールに追加します（[タグを追加する](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
+まず、タグマーケットプレイスに移動し、Maropost Web Trackingタグをプロファイルに追加します（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際は、以下の項目を構成します。
 
-* アカウントID：MaropostアカウントIDに対応する整数
-* ウェブサイトID：追跡されている特定のウェブサイトに対応する整数
-* トラッキングスクリプトファイル名：ウェブトラッキングJavascript関数のファイル名の安全なスクランブル。各アカウントと各ウェブサイトで一意です。ファイル名にはスクリプトのバージョンが含まれています。
+* Account ID：MaropostアカウントIDに対応する整数
+* Website ID：トラッキング対象の特定のWebサイトに対応する整数
+* Tracking Script File Name：Webトラッキング用JavaScript関数のファイル名を安全に難読化した文字列。アカウントおよびWebサイトごとに一意です。ファイル名にはスクリプトのバージョンが埋め込まれています。
 
-## ロードルール
+## 読み込みルール
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをサイトのどこに、いつロードするかを決定します。
+[読み込みルール](https://docs.tealium.com/about-load-rules/)では、サイト上でこのタグのインスタンスをいつ、どこで読み込むかを指定します。
 
-推奨されるロードルール：**すべてのページ**
+推奨される読み込みルール：**すべてのページ**
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-Maropost Web Trackingタグの宛先変数は、その**データマッピング**タブに組み込まれています。利用可能なカテゴリーは次のとおりです：
+Maropost Web Trackingタグの宛先変数は、**Data Mapping**タブに組み込まれています。使用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
 |**宛先名**| **説明**|
 |---| ---|
-|アカウントID| あなたのMaropostアカウントID。これを使用して構成値を上書きします。|
-|ウェブサイトID| あなたのウェブサイトのID。これを使用してベンダー構成値を動的に上書きします。|
-|トラッキングスクリプトファイル名| あなたのウェブトラッキング機能のファイル名のための安全なスクランブル。これを使用して構成値を動的に上書きします。|
+|Account ID| MaropostアカウントID。構成値を上書きする場合に使用します。|
+|Website ID| WebサイトのID。ベンダー構成値を動的に上書きする場合に使用します。|
+|Tracking Script File Name| Webトラッキング関数のファイル名を安全に難読化した文字列。構成値を動的に上書きする場合に使用します。|

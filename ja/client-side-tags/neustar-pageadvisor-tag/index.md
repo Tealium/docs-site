@@ -1,31 +1,31 @@
 ---
-title: Neustar PageAdvisorタグ構成ガイド
-description: この記事では、Neustar PageAdvisorタグの構成方法について説明します。
+title: Neustar PageAdvisor タグ構成ガイド
+description: この記事では、Neustar PageAdvisor タグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/neustar-pageadvisor-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して、標準の構成値を動的に上書きします。
+* マッピングを使用して、標準構成値を動的に上書きします。
 * カスタム変数を使用して、動的な値を割り当てます。
 
-## タグの構成
+## タグ構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
-* **サービスID (sid)**: Neustarがクライアントを識別するための10桁の数値（例：`9876543210`）。
-* **ページ参照 (page)**: クライアントがユーザーがどのページにいるかを示すために使用する参照（例：`http://www.neustar.biz`）。
+* **サービスID（sid）**：Neustarがクライアントを識別するための10桁の数値（例：`9876543210`）。
+* **ページ参照（page）**：ユーザーがどのページを閲覧しているかをクライアントが示すために使用する参照（例：`http://www.neustar.biz`）。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
@@ -34,4 +34,3 @@ url: https://docs.tealium.com/ja/client-side-tags/neustar-pageadvisor-tag/
 |   `service_id` | サービスID |
 |   `page_ref` | ページ参照 |
 |   `cv1` | カスタム変数 |
-

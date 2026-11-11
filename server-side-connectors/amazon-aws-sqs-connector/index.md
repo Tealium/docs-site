@@ -14,7 +14,7 @@ Amazon SQS provides fully managed message queues for micro-services, distributed
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Event Data to Queue| ✗| ✓|
 |Send Event Data to Queue (Batch)| ✗| ✓|
@@ -25,7 +25,7 @@ Amazon SQS provides fully managed message queues for micro-services, distributed
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -53,7 +53,7 @@ For example: `arn:aws:iam::222222222222:role/myrole`
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 The following sections describe how to set up parameters and options for each action.
 
@@ -92,7 +92,6 @@ The Send Visitor Data to Queue (Batch) action uses batched requests to support h
 * Maximum time since oldest request: 5 minutes
 * Maximum size of requests: 1 MB
 
-
 #### Parameters
 
 |**Parameter**| **Description**|
@@ -114,7 +113,6 @@ The Send Customized Data to Queue (Advanced Batch) action uses batched requests 
 * Maximum time since oldest request: 5 minutes
 * Maximum size of requests: 1 MB
 
-
 #### Parameters
 
 |**Parameter**| **Description**|
@@ -134,7 +132,7 @@ See [Using Amazon SQS Message Attributes](http://docs.aws.amazon.com/AWSSimpleQu
 </blockquote>
 
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Access Control for Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
 * [Switching to an IAM Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html)

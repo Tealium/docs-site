@@ -28,7 +28,7 @@ If you use the **Databricks OAuth** authentication type, grant the following per
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Entire Event Data | ✗ | ✓ |
 | Send Custom Event Data | ✗ | ✓ |
@@ -40,7 +40,6 @@ If you use the **Databricks OAuth** authentication type, grant the following per
 | Send Custom Visitor Data (Batch) | ✓ | ✗ |
 | Send Log Event | ✗ | ✓ |
 | Send Entire Log Event | ✗ | ✓ |
-
 
 ## How it works
 
@@ -314,7 +313,7 @@ To integrate Google Cloud Storage with Databricks, you first need to set up a se
 
 After setting up the storage credentials, you must define an external location in Google Cloud Storage, specifying the bucket and permissions necessary for Databricks to interact with the data. For more information, see [Databricks: Create an external location to connect cloud storage to Databricks](https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/external-locations).
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -324,7 +323,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings. The connector and each action have separate enabled switches.
 
@@ -385,7 +384,15 @@ If you expect more than 1000 events per minute, use the batch actions.
         * **Storage account name**: The unique name of your Azure Storage account.
 * **API version**: The API version compatible with your Azure Storage instance.
 
+After you configure the connector, click **Done**.
+
 ## Create a notebook
+
+
+<blockquote>
+Notebooks, jobs, and pipelines that you create from the connector are created in your Databricks workspace and are not managed by Tealium. To remove them, delete them in Databricks.
+</blockquote>
+
 
 Notebooks in Databricks are documents that contain executable code, visualizations, and narrative text. They are used for data exploration, visualization, and collaboration. In the connector configuration, you have the option to create a new notebook while you create a new connector by clicking **Create Notebook** in the configuration step.
 
@@ -458,13 +465,13 @@ To use a notebook or a job that already exists, create the notebook and the job 
 
 The connector honors only the first notebook and the first job. Creating a second notebook or job on the same connector has no effect on where the data lands. To write to more than one Databricks table, create one connector for each table and follow these rules:
 
-1. Give each connector its own subdirectory under the volume in the **Files path** field. Two connectors that share a path produce duplicate records in both tables.
+1. Give each connector its own subdirectory under the volume in the **File Path** field. Two connectors that share a path produce duplicate records in both tables.
 1. Give each connector its own data source, event specification, or event feed, so that a single event cannot reach two connectors.
 1. Create one notebook and one job for each connector.
 
 The following example shows a two-connector setup:
 
-| Connector | Action | Files path | Target table |
+| Connector | Action | File Path | Target table |
 | --- | --- | --- | --- |
 | Full payload | Send Entire Event Data | `/Volumes/CATALOG/SCHEMA/VOLUME/purchase_events_full_payload` | `CATALOG.SCHEMA.purchase_events_raw` |
 | Flattened | Send Custom Event Data | `/Volumes/CATALOG/SCHEMA/VOLUME/purchase_events_flattened` | `CATALOG.SCHEMA.purchase_events_flattened_raw` |
@@ -502,7 +509,8 @@ The following section lists the supported parameters for each action.
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Column to record the payload | Select the `STRING` column to record the payload. The connector writes the payload as a serialized JSON string, so the Delta column must be `STRING`. If you declare the column as `VARIANT`, the load fails with `DELTA_MERGE_INCOMPATIBLE_DATATYPE`. To query individual fields, use `PARSE_JSON(column_name):field_name::TYPE`. |
 | Column to record the Timestamp | Select the column to record the timestamp. |
 | Timestamp Attribute | The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp. |
@@ -516,7 +524,8 @@ The following section lists the supported parameters for each action.
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Event Parameters | Map event attributes to the columns of the Databricks table. You must map at least one event attribute. |
 
 
@@ -534,7 +543,8 @@ This action does not add `event_timestamp` automatically. To record the event ti
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Column to record the visitor data | Select the `STRING` column to record the visitor data. The connector writes the visitor data as a serialized JSON string, so the Delta column must be `STRING`. If you declare the column as `VARIANT`, the load fails with `DELTA_MERGE_INCOMPATIBLE_DATATYPE`. To query individual fields, use `PARSE_JSON(column_name):field_name::TYPE`. |
 | Column to record the Timestamp | Select the column to record the timestamp. |
 | Timestamp Attribute | The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp. |
@@ -549,7 +559,8 @@ This action does not add `event_timestamp` automatically. To record the event ti
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Visitor Parameters | Map visitor attributes to the columns of the Databricks table. You must map at least one visitor attribute. |
 
 ### Send Entire Event Data (Batch)
@@ -569,7 +580,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Column to record the payload | Select the `STRING` column to record the payload. The connector writes the payload as a serialized JSON string, so the Delta column must be `STRING`. If you declare the column as `VARIANT`, the load fails with `DELTA_MERGE_INCOMPATIBLE_DATATYPE`. To query individual fields, use `PARSE_JSON(column_name):field_name::TYPE`. |
 | Column to record the Timestamp | Select the column to record the timestamp. |
 | Timestamp Attribute | The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
@@ -592,7 +604,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Event Parameters | Map the parameters to the columns of the table. You must map at least one parameter. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
@@ -613,7 +626,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Column to record the visitor data | Select the `STRING` column to record the visitor data. The connector writes the visitor data as a serialized JSON string, so the Delta column must be `STRING`. If you declare the column as `VARIANT`, the load fails with `DELTA_MERGE_INCOMPATIBLE_DATATYPE`. To query individual fields, use `PARSE_JSON(column_name):field_name::TYPE`. |
 | Column to record the Timestamp | Select the column to record the timestamp. |
 | Timestamp Attribute | The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp. |
@@ -637,7 +651,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Visitor Parameters | Map the parameters to the columns of the table. You must map at least one parameter. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
@@ -650,7 +665,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Cloud bucket | Select the cloud bucket or container from which Databricks pulls the data. |
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Event Parameters | Map the parameters to the columns of the table. You must map at least one parameter. |
 | Batch Time To Live | Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between `1` and `60` minutes. The default value is `10` minutes. |
 
@@ -664,8 +680,8 @@ This action uses batched requests to support high-volume data transfers to the v
 | Databricks Catalog | Select the Databricks catalog or provide a custom value. |
 | Databricks Schema | Select the Databricks schema or provide a custom value. |
 | Volume | The Databricks Unity Catalog volume where the connector writes the output files. |
-| Files path | Path where the connector exports the files. Enter a unique subdirectory for each connector, for example `/Volumes/CATALOG/SCHEMA/VOLUME/my_connector`. Avoid pointing directly to the root folder of the volume, because Auto Loader creates the `_auto_loader_checkpoints` and `_auto_loader_schema` folders there, and two connectors that share a path produce duplicate records. |
-| Databricks Table | Select the Databricks table or provide a custom value. |
+| File Path | (Optional) Folder the action writes its files to. Leave blank to keep the default location. For Databricks OAuth, provide a path inside the volume. Avoid pointing directly to the root folder of the volume to prevent conflicts with the `_auto_loader_schema` and `_auto_loader_checkpoints` folders. For cloud storage, provide a folder inside the cloud bucket. Files are written to `bucket/folder/account/profile/`, or to `bucket/account/profile/` when blank. Several actions can share the same path. |
+| Databricks Table (column lookup) | Used to look up column names. This field does not route data. The action writes files to the cloud bucket or volume path, and whatever reads that path decides the destination table. This table is not the same as the one selected in the **Create Notebook** admin task, which decides which columns the generated notebook parses. |
 | Column to record the payload | Select the `STRING` column to record the payload. The connector writes the payload as a serialized JSON string, so the Delta column must be `STRING`. If you declare the column as `VARIANT`, the load fails with `DELTA_MERGE_INCOMPATIBLE_DATATYPE`. To query individual fields, use `PARSE_JSON(column_name):field_name::TYPE`. |
 | Column to record the Timestamp | Select the column to record the timestamp. |
 | Timestamp Attribute | The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we send the current timestamp. |

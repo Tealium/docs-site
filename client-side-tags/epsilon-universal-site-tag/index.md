@@ -1,13 +1,13 @@
 ---
 title: Epsilon Site Tag Setup Guide
-description: This article describes how to set up the Epsilon Site Tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Epsilon Site Tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/epsilon-universal-site-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
 Go to the tag marketplace and add the Epsilon Site Tag. For more information about adding a tag, see [manage-tags](https://docs.tealium.com/manage-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Domain and Tag Path**: The domain used within the tag. Refer to the tagging document provided by Epsilon.
 * **Reverse Proxy Directory Path**: If you are using a reverse proxy, enter its path (for example `/tag_path`, or the custom path you have set up as the root of your reverse proxy).
@@ -17,13 +17,13 @@ After adding the tag, configure the following settings:
 * **Integration Type**: The available settings are `Default` or `Limited`. Limited integrations should only be used if specified by Epsilon.
 * **SPA Support**: When enabled, the `dtm_clear_tag=all` query string parameter is included on all requests.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
-### Tag Configuration
+### Tag configuration
 
 |Variable| Type | Description|
 |---| ---|---|

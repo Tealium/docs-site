@@ -1,47 +1,47 @@
 ---
-title: Cortex Search Abandon タグ構成ガイド
-description: この記事では、Cortex Search Abandon タグの構成方法について説明します。
+title: Cortex Search Abandonタグ構成ガイド
+description: この記事では、Cortex Search Abandonタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/cortex-search-abandon-tag/
 ---
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスし、プロファイルにCortex Search Abandonタグを追加してください（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
+まず、タグマーケットプレイスに移動し、Cortex Search Abandonタグをプロファイルに追加します（[タグを追加する](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
-タグを追加した後、以下の構成を行ってください：
+タグを追加したら、以下の構成を構成します。
 
-* **サイトID：** Cortexから受け取ったユニークなサイト識別子を入力します。
+* **サイトID：** Cortexから提供された一意のサイト識別子を入力します。
 
-## ロードルール
+## 読み込みルール
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、サイト上のどの場所でこのタグのインスタンスをロードするかを決定します。
+[読み込みルール](https://docs.tealium.com/about-load-rules/)では、サイト上でこのタグのインスタンスを読み込むタイミングと場所を指定します。
 
-推奨ロードルール：検索活動を追跡したい特定のページでこのタグをロードするカスタムルールを構成します。
+推奨される読み込みルール：検索アクティビティを追跡する特定のページでこのタグを読み込むように、カスタムルールを構成します。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-Cortex Search Abandonタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリは以下の通りです：
+Cortex Search Abandonタグの送信先変数は、［データマッピング］タブに組み込まれています。使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|**宛先名**| **説明**|
+|**送信先名**| **説明**|
 |---| ---|
-|サイトID| Cortexによって提供されるサイト識別子|
-|ユーザーのメール| 訪問のメール|
-|検索語| 訪問が使用した検索キーワード|
+|サイトID| Cortexから提供されたサイト識別子|
+|ユーザーのメールアドレス| 訪問のメールアドレス|
+|検索語句| 訪問が使用した検索キーワード|
 
-### E-コマース
+### Eコマース
 
-Cortex Search AbandonタグはEコマース対応であり、デフォルトの[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)のマッピングを自動的に使用します。以下の場合を除き、このカテゴリでの手動マッピングは通常必要ありません：
+Cortex Search AbandonタグはEコマースに対応しているため、デフォルトの[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)のマッピングを自動的に使用します。通常、以下の場合を除き、このカテゴリーで手動によるマッピングを行う必要はありません。
 
-* 拡張機能のマッピングを上書きしたい場合
-* 拡張機能で提供されていないEコマース変数が必要な場合
+* 拡張機能のマッピングを上書きする場合
+* 必要なEコマース変数が拡張機能で提供されていない場合
 
-|**宛先名**| **説明**|
+|**送信先名**| **説明**|
 |---| ---|
-|ユーザーID| 訪問のユニークな識別子|
+|ユーザーID| 一意の訪問識別子|
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-* [Cortex ヘルプ文書](http://help.retentionscience.com/hc/en-us/articles/115000423328-Search-Abandon)
+* [Cortexヘルプドキュメント](http://help.retentionscience.com/hc/en-us/articles/115000423328-Search-Abandon)

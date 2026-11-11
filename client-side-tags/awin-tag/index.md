@@ -1,9 +1,9 @@
 ---
 title: Awin Tag Setup Guide
-description: This article describes how to set up the Awin tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Awin tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/awin-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see [Awin Conversions Connector](https://docs.tealium.com/awin-conversions-connector/).
 * Use mapping to:  
@@ -25,19 +25,19 @@ url: https://docs.tealium.com/client-side-tags/awin-tag/
 * An order is recorded if the Order ID value is set.
 * The default value for the commission group is `DEFAULT`.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Awin tag. For more information, see [Manage tags](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Advertiser ID**: Your Awin-provided advertiser ID.
 * **Add Product Level Data**: Add the product-level data to the data payload.
 * **Is Test**: Select this option to test the tag.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

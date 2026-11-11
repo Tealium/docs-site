@@ -3,7 +3,7 @@ title: X Custom Audiences Connector Setup Guide
 description: This article describes how to set up the X Custom Audiences connector.
 url: https://docs.tealium.com/server-side-connectors/x-custom-audiences-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,7 +12,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://ads-api.x.com/`
 * Documentation: [X Custom Audiences API](https://developer.x.com/en/docs/x-ads-api/audiences/api-reference)
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -38,7 +38,7 @@ X Custom Audiences gives you control over who sees your X Ads. X Ads gives you p
 
 Audiences is a tool in your [X Ads](http://ads.x.com) account that lets you review and manage your audiences. You can access it by navigating to **Tools > Audiences**.
 
-From there, you can use Custom Audiences in campaign targeting to directly reach the users you care about. Tealium provides the ability to create an X Custom Audience through the user interface within AudienceStream and leverage your audience data to populate the Audience lists. Additionally, Audience lists can be created in your X Ads account and populated into AudienceStream to add or remove users. Examples of audiences that you can re-target include: previous customers, web visitors who haven't yet converted, and/or high-value customers.
+From there, you can use Custom Audiences in campaign targeting to directly reach the users you care about. Tealium provides the ability to create a X Custom Audience through the user interface within Customer Data Platform (CDP) and leverage your audience data to populate the Audience lists. Additionally, Audience lists can be created in your X Ads account and populated into CDP to add or remove users. Examples of audiences that you can re-target include: previous customers, web visitors who haven't yet converted, and/or high-value customers.
 
 Tealium provides a list of hashed identifiers that can be sent to X to add or remove a user from the custom audience list, and X performs a match and produces segments that are made available against media buying on X. Your lists are matched with @handles on X so that you can directly target them in your campaigns, making your marketing highly relevant.
 
@@ -50,16 +50,16 @@ Tealium provides a list of hashed identifiers that can be sent to X to add or re
 * If the "User Identifier is already hashed" checkbox is unchecked, the connector action normalizes and hashes the mapped value.
 * When you create a Custom Audience, there's an initial processing period where the users on the Custom Audience are "matched" by the X systems to their X @handle. This will then enable ad serving with the Promoted Ads to their account.
   * It's possible that not all of the users on your Custom Audience are active X users, which is why you might see a final Custom Audience size that is smaller than the connector actions firing volume.
-  * All Custom Audiences appear in AudienceStream, but only those in `Ready` serving status will properly target users in your campaign. This is viewable within your **X Ads account &gt; Audiences** section.
+  * All Custom Audiences appear in CDP, but only those in `Ready` serving status will properly target users in your campaign. This is viewable within your **X Ads account &gt; Audiences** section.
 
 * An audience can only be targeted if it matches at least 100 users active within the past 90 days on X-owned and -operated clients.
 * Generally speaking, audience changes are processed in batches that run every 6-8 hours. While an audience change is processing the existing audience to be updated is unaffected.
-* Audience lists created through AudienceStream are added as the "List" Type within the Ads Campaign manager.
+* Audience lists created through CDP are added as the "List" Type within the Ads Campaign manager.
 * It is recommended to not use X data to derive or infer potentially sensitive characteristics about X users. A listing of these characteristics can be found at [More About Restricted uses of the X APIs](https://developer.x.com/en/developer-terms/more-on-restricted-use-cases).
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -76,7 +76,7 @@ The `list_type` parameter was previously used to identify the user identifier ty
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User To Custom Audience | ✓ | ✓ |
 | Add User to Custom Audience (multiple identifiers) | ✓ | ✓ |
@@ -164,7 +164,6 @@ You must provide at least one of the following parameters:
 |Custom Audience|  <ul><li>(Required) Select audience from list. This value is retrieved from the X Ads account. You can create a custom audience on the **Configuration** screen.</li><li>For more information, see [X: Custom Audiences](https://developer.x.com/en/docs/ads/audiences/overview).</li></ul> |
 |Effective At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul> |
 |Expired At|  <ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of **Effective At**.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of **Effective At**.</li></ul> |
-
 
 ### Remove User from Custom Audience (multiple identifiers)
 

@@ -141,7 +141,7 @@ Tealium Configuration MCP supports the following profile objects.
 
 **Data sources**
 
-* Tealium iQ, Android, iOS, HTTP API, HTTP API - Advanced, file import
+* Tag Management, Android, iOS, HTTP API, HTTP API - Advanced, file import
 
 **Events**
 
@@ -169,9 +169,9 @@ To make an audience editable, open it in **Activate > Audiences**, make no chang
 
 The following are not supported in Tealium Configuration MCP:
 
-* Cloud data sources, CloudStream, segments, audiences with segments, fill an audience, audience discovery, audience sizing, audience jobs
+* Cloud data sources, Data Cloud Activation, segments, audiences with segments, fill an audience, audience discovery, audience sizing, audience jobs
 * Tealium Insights, Context API, Functions, DataAccess, Data Connect, Predict
-* Tealium iQ (client-side), consent orchestration
+* Tag Management (client-side), consent orchestration
 
 ## Limitations
 

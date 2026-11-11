@@ -344,13 +344,13 @@ Error - variable not defined
 
 ### console.assert()
 
-If a function is triggered on EventStream and `console.assert()` is called as follows:
+If a function is triggered on Event Streaming and `console.assert()` is called as follows:
 
 ```
 console.assert(visitor, "visitor not defined");
 ```
 
-The `visitor` object is only defined when the trigger is AudienceStream, so the assertion is false and the output is as follows:
+The `visitor` object is only defined when the trigger is Customer Data Platform (CDP), so the assertion is false and the output is as follows:
 
 ```
 Assertion failed: visitor not defined

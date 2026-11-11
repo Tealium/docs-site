@@ -26,7 +26,7 @@ The following figure shows an example of the visualizations and data shown in th
 ![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-example.png)
 
 <blockquote>
-This screenshot shows the previous product name "Moments API". It will be updated when the product UI is updated.
+This screenshot shows the previous product name "Context API". It will be updated when the product UI is updated.
 </blockquote>
 
 
@@ -47,7 +47,7 @@ The default **Date Range** for the data and visualizations is **Last 30 days**. 
 ![](https://docs.tealium.com/images/server-side/moments-api-insights-tab-control-bar.png)
 
 <blockquote>
-This screenshot shows the previous product name "Moments API". It will be updated when the product UI is updated.
+This screenshot shows the previous product name "Context API". It will be updated when the product UI is updated.
 </blockquote>
 
 1. Click the current **Date range**.

@@ -44,7 +44,7 @@ We recommend that you only enable EventDB for the specific event feeds that you 
 
 #### Event data from the Tealium Collect tag
 
-For feeds collecting data from the Tealium Collect tag, additional Boolean attributes are included for each tag that fires during an event. For example, if you have Google Analytics in your Tealium iQ Tag Management account along with the Tealium Collect tag, your event feeds include a Boolean attribute named `Google Analytics` indicating whether or not it fired for each event.
+For feeds collecting data from the Tealium Collect tag, additional Boolean attributes are included for each tag that fires during an event. For example, if you have Google Analytics in your Tag Management account along with the Tealium Collect tag, your event feeds include a Boolean attribute named `Google Analytics` indicating whether or not it fired for each event.
 
 For more information on attributes, see [Using Attributes](https://docs.tealium.com/about-attributes/).
 

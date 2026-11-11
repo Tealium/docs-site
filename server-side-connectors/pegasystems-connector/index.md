@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/pegasystems-connector/
 ---
 ## Prerequisites
 
-*   Tealium EventStream or AudienceStream
+*   Event Streaming or Customer Data Platform (CDP)
 *   Pega Customer Decision Hub access to the following:
     * Client ID, Client Secret, Access Token URL
     * Implement the [Tealium Customer Data Connector](https://docs.pega.com/bundle/components/page/customer-decision-hub/components/tealium-integration-component.html) component
@@ -19,13 +19,13 @@ The Pegasystems connector connects valuable customer data in two ways:
 1.  Tealium and Pega share consolidated customer information based on a 360-degree view of the customer, aggregating all cross-channel signals in a standardized customer profile.
 1.  Tealium streams customer interactions across web, app, call-center and other channels in real-time to Pega to provide in-the-moment context for decision making.
 
-The Pegasystems connector supports both EventStream and AudienceStream actions and lets you track page views/interactions through EventStream. Using a customer identifier or cookie ID, you can configure and map differing page types to send interaction history to Pega.
+The Pegasystems connector supports both Event Streaming and CDP actions and lets you track page views/interactions through Event Streaming. Using a customer identifier or cookie ID, you can configure and map differing page types to send interaction history to Pega.
 
 Additionally, trigger next best actions within the Pega Customer Decision Hub by sending audience segments and statuses to Pega along with a customer identifier.
 
 ## Connector actions
 
-| **Action Name** | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Update Segment Membership Data (Real-Time) | ✓ | ✗ |
 | Update Segment Membership Data (Batched) | ✓ | ✗ |
@@ -42,7 +42,7 @@ While Tealium supports batched actions to Pega, we recommend that you discuss yo
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/manage-connectors/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/manage-connectors/) article.
 
 After adding the connector, configure the following settings:
 
@@ -113,7 +113,7 @@ While Tealium can support batched actions to Pega, we recommend that you discuss
 
 ### Action — Send Custom Event Data (Real-Time)
 
-Use this EventStream action to send real-time event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.
+Use this Event Streaming action to send real-time event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.
 
 #### Parameters
 
@@ -139,7 +139,7 @@ This action uses batched requests to support high-volume data transfers to the v
 * Max time since oldest request: 60 minutes
 * Max size of requests: 100 MB
 
-Use this EventStream action to send batched event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.
+Use this Event Streaming action to send batched event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.
 
 
 <blockquote>
@@ -170,9 +170,9 @@ Use this action to merge customer behavioral information to produce more accurat
 We recommend the following Pegasystems connector configuration:
 
 1. Create the following attributes:
-    * **Pega Customer ID**: (EventStream string) Inherited from the data layer.
-    * **Pega Customer IDs**: (AudienceStream array of strings) The **Pega Customer ID**s stitched together by Tealium.
-    * **Pega Customer IDs count**: (AudienceStream number) The length of the **Pega Customer IDs** set of strings.
+    * **Pega Customer ID**: (Event Streaming string) Inherited from the data layer.
+    * **Pega Customer IDs**: (CDP array of strings) The **Pega Customer ID**s stitched together by Tealium.
+    * **Pega Customer IDs count**: (CDP number) The length of the **Pega Customer IDs** set of strings.
 1. Create an audience with the name **Pega match check**, where the condition is `Pega Customer IDs count > 1`.
 1. Add a **Merge customer behavioral data** action to the existing Pega connector, where:
     * **Trigger**: `In Audience at end of visit`.

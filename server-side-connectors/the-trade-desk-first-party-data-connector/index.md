@@ -5,15 +5,17 @@ url: https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Agency Secret Key**: The secret key provided to you by The Trade Desk.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send First Party Advertiser Data | ✓ | ✓ |
 

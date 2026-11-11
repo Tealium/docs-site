@@ -53,7 +53,7 @@ Facebookコネクタは、**アナリティクス**、**ディスプレイ広告
 
 **アナリティクス**と**パーソナライゼーション**のために2つのコネクタが構成されています。訪問が構成フォームで**アナリティクス**のトラッキングを許可し、**パーソナライゼーション**を許可しない部分的な同意を与えます。
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-server-side-categories-example.png)
+![](https://docs.tealium.com/images/tag-management/consent-server-side-categories-example.png)
 
 **アナリティクス**カテゴリのコネクタアクションのみがトリガーされます。**パーソナライゼーション**カテゴリの任意のコネクタアクションは抑制されます。
 

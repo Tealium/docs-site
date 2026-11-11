@@ -18,15 +18,15 @@ A visitor is considered a single event visitor if all the following are true:
 * **Not from file import**  
   The event is not generated from a file import.
 
-## AudienceStream
+## Customer Data Platform (CDP)
 
-Single event visitors are persisted in AudienceStream, passed to AudienceStore, and stored in AudienceDB.
+Single event visitors are persisted in CDP, passed to AudienceStore, and stored in AudienceDB.
 
 If the visitor returns in a new session, they are recognized as a returning visitor.
 
 
 <blockquote>
-Prior to April 29, 2026, AudienceStream did not persist single event visitor records.
+Prior to April 29, 2026, CDP did not persist single event visitor records.
 </blockquote>
 
 

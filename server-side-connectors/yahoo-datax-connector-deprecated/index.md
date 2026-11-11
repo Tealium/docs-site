@@ -9,7 +9,7 @@ This connector is now deprecated and no longer available in the connector market
 </blockquote>
 
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -18,7 +18,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://datax.yahooapis.com`
 * Documentation: [Yahoo API](https://developer.yahooinc.com/datax/guide)
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -28,14 +28,14 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add User to Segment| ✓| ✗|
 |Opt Out| ✓| ✗|
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 When configuring the Yahoo DataX connector, you will be prompted with an End User Licensing Agreement (EULA) that must be accepted before continuing with the configuration. At the bottom of the window, you can download the agreement for legal review. Redlines are not accepted on the EULA.
 

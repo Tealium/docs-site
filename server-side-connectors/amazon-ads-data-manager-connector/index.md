@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-ads-data-manager-con
 ---
 
 
-## Batch Limits
+## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
@@ -15,7 +15,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About: Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Base URL**  
@@ -25,6 +25,8 @@ After adding the connector, configure the following settings:
 * **Amazon Ads Account ID**  
   * Your ADM Account ID. Use if you do not have a manager account. Non-manager accounts cannot create datasets.
 
+After you configure the connector, click **Done**.
+
 
 <blockquote>
 Do not set both the Amazon Ads Manager Account ID and the Amazon Ads Account ID.
@@ -33,7 +35,7 @@ Do not set both the Amazon Ads Manager Account ID and the Amazon Ads Account ID.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add Visitor to Audience | ✓ | ✓ |
 | Remove Visitor from Audience | ✓ | ✓ |
@@ -56,7 +58,6 @@ The following section describes how to set up parameters and options for each ac
 | --- | --- |
 | External ID | This is an external user identifier defined by data providers. |
 | External ID (apply SHA256 hash) | Use this parameter if you’d like the connector to hash the external ID value before sending to Amazon. |
-
 
 #### User Identifiers
 

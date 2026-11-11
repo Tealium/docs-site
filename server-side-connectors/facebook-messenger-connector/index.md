@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -22,9 +22,11 @@ After adding the connector, configure the following settings:
   * This token is used to make Messenger API calls.
   * For more information, see: [Facebook: Page Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens#pagetokens).
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Text-Only Message | ✓ | ✗ |
 | Send Media Message | ✓ | ✗ |
@@ -95,7 +97,7 @@ The following section describes how to set up parameters and options for each ac
 | Notification Type | Type of push notification. <ul><li>**Regular:** Sound/vibration (will be used if not set).</li><li>**Silent Push:** On-screen notification only.</li><li>**No Push:** No notification</li></ul>. |
 | Message Tag | Used if **Messaging Type** is set to `Message Tag`. For a complete list of all message tags, refer to the [Facebook: Message Tag documentation](https://developers.facebook.com/docs/messenger-platform/send-messages/message-tags) |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Page Access Token](https://developers.facebook.com/docs/facebook-login/access-tokens#pagetokens)
 * [Messaging Types](https://developers.facebook.com/docs/messenger-platform/send-messages/#messaging_types)

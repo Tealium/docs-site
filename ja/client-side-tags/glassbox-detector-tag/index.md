@@ -1,26 +1,25 @@
 ---
 title: Glassbox Detectorタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでGlassbox Detectorタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでGlassbox Detectorタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/glassbox-detector-tag/
----## タグのヒント
+---## タグに関するヒント
 
-* マッピングを使用してタグの構成を上書きするか、動的に構成します。
+* マッピングを使用して、タグ構成を上書きまたは動的に構成します。
 
 ## タグ構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+利用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`src_link`|  <ul><li>ソースリンク</li><li>Glassbox JavaScriptへのリンク</li></ul> |
-|`data-clsconfig`|  <ul><li>`data-clsconfig`は`reportURI`を含む必要があります。</li><li>追加のオプションパラメータも含めることができます。</li></ul> |
-
+|変数|説明|
+|---|---|
+|`src_link`| <ul><li>ソースリンク</li><li>Glassbox JavaScriptへのリンク</li></ul> |
+|`data-clsconfig`| <ul><li>`data-clsconfig`には`reportURI`を含める必要があります。</li><li>追加のオプションパラメーターを含めることもできます。</li></ul> |

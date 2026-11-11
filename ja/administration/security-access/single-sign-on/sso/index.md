@@ -33,7 +33,7 @@ Tealiumは、上記に記載されていないIdPプラットフォームへのS
 
 ## Tealium SSOのログインプロセス
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration1.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration1.png)
 
 Tealium SSOのログインプロセスは以下の手順に従います：
 
@@ -67,7 +67,7 @@ Tealium SSOを4つのステップで構成します：
 
 1. **管理メニュー > SSO（シングルサインオン）**に移動します。
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration2.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration2.png)
 
 2. **新しいSAMLシングルサインオン（SSO）接続 > IdPの構成**画面で、Tealiumのメタデータファイルをコンピュータにダウンロードし、このファイルをあなたのIdPにインポートします。
 3. あなたのIdPで新しいTealiumアプリケーションを作成し、あなたのIdPのメタデータファイルをダウンロードします。各IdPは、新しいSSO接続を作成するためのメタデータファイルにアクセスしてダウンロードするための異なる構成を必要とします。  
@@ -111,7 +111,7 @@ Tealium SSOを4つのステップで構成します：
 
 1. **IdPへの接続**画面で、あなたのIdPからダウンロードしたSAMLメタデータファイルをアップロードします。接続が確立されると、**Identity Provider**フィールドはあなたのIdPの名前で自動的に入力されます。
 
-![](https://docs.tealium.com/images/iq-tag-management/administration/security/sso-configuration3.png)
+![](https://docs.tealium.com/images/tag-management/administration/security/sso-configuration3.png)
 2. **IdP管理者メール**フィールドに、IdPアカウントの管理者のメールアドレスを入力します。
 3. （オプション）IdPが別の署名証明書を提供している場合は、そのファイルを**IdP SAML 2.0署名証明書**の下にアップロードします。
 4. **接続を確立**をクリックします。

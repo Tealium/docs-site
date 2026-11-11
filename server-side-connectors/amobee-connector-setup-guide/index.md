@@ -3,19 +3,18 @@ title: Amobee Connector Setup Guide
 description: This article describes how to set up the Amobee connector.
 url: https://docs.tealium.com/server-side-connectors/amobee-connector-setup-guide/
 ---
-
 Amobee is a global digital marketing technology company and a wholly-owned subsidiary of Singtel.
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add user to category| ✓| ✗|
 |Remove user from category| ✓| ✗|
 
 ## How it works
 
-Amobee unifies audiences to drive customers’ growth for brands, agencies, and media companies so they can optimize results across all TV, connected TV, and digital and social media. This integration relies on ID syncing to ingest data into the Amobee DMP from Tealium with a server-to-server format. The Amobee Cookie Matching Service tag available within the Tealium iQ platform makes this happen.
+Amobee unifies audiences to drive customers’ growth for brands, agencies, and media companies so they can optimize results across all TV, connected TV, and digital and social media. This integration relies on ID syncing to ingest data into the Amobee DMP from Tealium with a server-to-server format. The Amobee Cookie Matching Service tag available within the Tag Management platform makes this happen.
 
 For more information, please see how to configure the [Amobee Cookie Matching Service tag](https://docs.tealium.com/amobee-cookie-matching-service-tag/).
 
@@ -25,7 +24,7 @@ The Amobee taxonomy file is an Excel document (`.xls/xlsx` format) that helps to
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

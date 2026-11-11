@@ -1,6 +1,6 @@
 ---
 title: Piwik PRO Tag Setup Guide
-description: This article describes how to set up the Piwik PRO tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Piwik PRO tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/piwik-pro-tag/
 ---
 ## Tag tips
@@ -28,9 +28,9 @@ url: https://docs.tealium.com/client-side-tags/piwik-pro-tag/
 
 ## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Piwik PRO tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **App ID**
   * PPAS application identifier (previously website ID, site ID or idSite).
@@ -67,9 +67,9 @@ To track content, it has to have the data-track-content attribute or `piwikTrack
 * **Send Page View**
   * Page View events are automatically recorded your site. If you don’t want the snippet to send a Page View event, set the this option to `false`.
 
-### Data Mappings
+### Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

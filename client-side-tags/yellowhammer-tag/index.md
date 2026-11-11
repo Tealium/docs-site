@@ -1,25 +1,25 @@
 ---
 title: YellowHammer Tag Setup Guide
-description: This article describes how to configure YellowHammer in your Tealium iQ Tag Management account.
+description: This article describes how to configure YellowHammer in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/yellowhammer-tag/
 ---YellowHammer Media Group is an ad-serving service provider that focuses on high-impact online display performance solutions for the entire Direct Response spectrum—including brands and agencies.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * Path (tr): Path is part of the image pixel just after jump.omnitarget.com. For example, `tr123456` in <http://jump.omnitarget.com/tr123456>?.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the YellowHammer (Omnitarget) tag are built into its **Data Mapping** tab. Available categories are:
 

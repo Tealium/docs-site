@@ -1,28 +1,28 @@
 ---
 title: Epsilon Partner Sync Web Service Tag Setup Guide
-description: This article describes how to set up the Epsilon Partner Sync Web Service Tag tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Epsilon Partner Sync Web Service Tag tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/epsilon-partner-sync-web-service-tag/
 ---
 
 Epsilon is the leader in outcome-based marketing with a rich, 50-year heritage in helping marketers anticipate, activate, and prove measurable business outcomes.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Epsilon Partner Sync Web Service tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Advertiser Identifier**: `dtm_cid`
 * **Secondary Advertiser Identifier**: `dtm_cmagic`
 * **Page Visit Form ID**: `dtm_fid`
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
-### Tag Configuration
+### Tag configuration
 
 | Variable | Data Type| Description |
 |---|---|---|

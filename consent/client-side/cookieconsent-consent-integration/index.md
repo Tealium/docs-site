@@ -8,7 +8,7 @@ CookieConsent is a flexible, open source consent management tool that can be enf
 * A/B testing for consent banners.
 * Robust enforcement and [queue system](https://docs.tealium.com/consent-integrations-decision-flow/) to ensure no un-consented data is tracked.
 * Better accessibility support.
-* A block-by-default framework to help prevent issues caused by user errors. For more information, see [iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict](https://docs.tealium.com/iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict/).
+* A block-by-default framework to help prevent issues caused by user errors. For more information, see [tag-management/consent/consent-integrations/enforcement-conditions-conflict](https://docs.tealium.com/tag-management/consent/consent-integrations/enforcement-conditions-conflict/).
 * Collect (and similar tags) can be set to [refire](https://docs.tealium.com/about-consent-integrations/#tag-refire), triggering both "necessary" and "targeting" tracking on the server-side with clearly marked events to avoid duplicate tracking.
 
 ## Comparing CookieConsent with CMP integrations

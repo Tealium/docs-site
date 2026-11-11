@@ -1,13 +1,13 @@
 ---
 title: SkyGlue tag setup guide
-description: This article describes how to set up the SkyGlue tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the SkyGlue tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/skyglue/
 ---
 SkyGlue is the simplest and most powerful online visitor behavior tracking tool that complements Google Analytics. You can receive immediate visitor insights and and understand which changes increase conversion rates.
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 

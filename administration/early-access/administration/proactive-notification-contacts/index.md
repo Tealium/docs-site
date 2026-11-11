@@ -39,9 +39,9 @@ Account admins are responsible for ensuring the following:
 
 To access proactive notification contacts, you must be an account admin.
 
-You can access contact information from either Tealium iQ Tag Management or from Server-side profiles.
+You can access contact information from either Tag Management or from Server-side profiles.
 
-**Tealium iQ Tag Management**
+**Tag Management**
 
 1. Click your user initial in the upper-right corner.
 1. Under **Manage Platform**, click **Contact Information**.

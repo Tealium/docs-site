@@ -1,17 +1,17 @@
 ---
 title: Microsoft Clarity Tag Setup Guide
-description: This article describes how to set up the Microsoft Clarity tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Microsoft Clarity tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/microsoft-clarity-tag/
 ---
 Microsoft Clarity is a free-to-use analytics product built to help website managers improve their website experiences by better understanding site visitor behavior.
 
-## Tag Tips
+## Tag tips
 *   Use mapping to dynamically override the project ID value
 *   For more information, see [Bing: Microsoft Clarity is now Generally Available](https://blogs.bing.com/webmaster/october-2020/Microsoft-Clarity-is-now-Generally-Available)
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -59,13 +59,13 @@ b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? '
 
 If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the `ad_storage` parameter to attributes for your specific case.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -80,7 +80,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|

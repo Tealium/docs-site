@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/data-sources/cloud-data/about/
 
 This feature requires the following:
 
-* Tealium EventStream, Tealium AudienceStream, or Tealium CloudStream
+* Event Streaming, Customer Data Platform (CDP), or Data Cloud Activation
 
 ## Supported vendors
 
@@ -33,7 +33,7 @@ A cloud data source connects your cloud data warehouse or database to Tealium, s
 * **Column mapping**:  
   Map the columns from your cloud database to Tealium event attributes. This ensures that data from your source is correctly assigned to the appropriate attributes in Tealium.
 * **Visitor ID mapping**:  
-  To unify data across sources, map a column from your data source to a visitor ID attribute in AudienceStream. This enables accurate visitor stitching and profile enrichment.
+  To unify data across sources, map a column from your data source to a visitor ID attribute in Customer Data Platform (CDP). This enables accurate visitor stitching and profile enrichment.
 
 Each imported row is processed as an event in Tealium, which lets you bring in bulk data from your cloud systems and use it alongside other event data for real-time processing, segmentation, and activation.
 
@@ -49,13 +49,13 @@ Each imported row is processed as an event with columns mapped to event attribut
 
 In the default Tealium [data collection order of operations](https://docs.tealium.com/server-side-order-of-operations/), events from a cloud data source are processed before the **Event received** step and do not change the order of operations.
 
-Cloud data source rows are processed in EventStream and AudienceStream in the same way as events from other data sources, but with the following important exceptions:
+Cloud data source rows are processed in Event Streaming and CDP in the same way as events from other data sources, but with the following important exceptions:
 
 * **Browser-specific attributes**: Browser-specific attributes, such as `User agent`, are not set.
-* **Enrichments**: AudienceStream enriches only the `First visit` preloaded attribute. All other enrichments for preloaded attributes are skipped.
-* **Single-page visits**: Incoming events are exempt from the single-page visit  criteria. Single-page visits and visitors from other data sources are not persisted in AudienceStream. For more information, see [How are single-page visits processed in AudienceStream?](https://docs.tealium.com/single-event-visitor/)
+* **Enrichments**: CDP enriches only the `First visit` preloaded attribute. All other enrichments for preloaded attributes are skipped.
+* **Single-page visits**: Incoming events are exempt from the single-page visit  criteria. Single-page visits and visitors from other data sources are not persisted in CDP. For more information, see [How are single-page visits processed in CDP?](https://docs.tealium.com/single-event-visitor/)
 * **Visit length**: A visit started by a cloud data source event lasts for 60 seconds.
-* **Visitor ID mapping**: If you map an AudienceStream visitor ID attribute in your cloud data source configuration, the visitor ID is set directly to the value of the column you choose without the need for an enrichment.
+* **Visitor ID mapping**: If you map a CDP visitor ID attribute in your cloud data source configuration, the visitor ID is set directly to the value of the column you choose without the need for an enrichment.
 
 ### Scheduling
 
@@ -323,7 +323,7 @@ For vendor-specific data types, see the following:
 
 To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in the table has a column with a unique visitor ID.
 
-Map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
+Map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in CDP). The value in the mapped event attribute is assigned to the `tealium_visitor_id` attribute and matched directly to any existing visitor profiles.
 
 For more information about Visitor ID Mapping in AudienceStream, see [Visitor Identification using Tealium Data Sources](https://docs.tealium.com/visitor-identification-data-sources/).
 

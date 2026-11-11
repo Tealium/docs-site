@@ -19,7 +19,7 @@ We recommend a hybrid setup using both a tag and a connector. This configuration
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -35,7 +35,7 @@ To configure this connector to deduplicate events from the Amazon Ads Server tag
 amazon_event_id_{EVENT_NAME}_{TAG_UID}
 ```
 
-You can find your tag's UID in the Tealium iQ **Tags** table or the tag details screen:
+You can find your tag's UID in the Tag Management **Tags** table or the tag details screen:
 
 ![](https://docs.tealium.com/images/server-side-connectors/amazon-ad-server-tag-uid.png)
 
@@ -64,7 +64,7 @@ Use a separate action for each type of event. Map the event-specific event ID at
 
 ### Automatic deduplication
 
-When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an `Event ID` if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.
+When the **Automatic Deduplication** value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an `Event ID` if this section is populated and you are using Tag Management. However, the following approach may still be needed when using Event Streaming without Tag Management.
 
 The connector follows this order of operations:
 
@@ -73,7 +73,7 @@ The connector follows this order of operations:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion | ✓ | ✓ |
 | Send Conversion (deprecated) | ✓ | ✓ |
@@ -121,7 +121,6 @@ Do not map the `Name` field to high-cardinality or dynamic data such as page nam
 | Dedupe ID | A unique identifier used to deduplicate conversion events sent from both the tag and the connector. Set the same value in both to prevent duplicate conversion reporting. |
 | User Agent | Browser or application user agent associated with the conversion event. The connector sends this value un-hashed. |
 | Amazon Referral Measurement Tokens | Amazon referral token from an Amazon Attribution link. Provide as one or more pipe-separated `token.timestamp` pairs, where the token is 10 alphanumeric characters and the timestamp is a 13-digit UTC epoch-millisecond value. For example: `abc1234567.1786393292000`. |
-
 
 #### User Data
 
@@ -177,7 +176,7 @@ We recommend mapping multiple identifier types with email as the priority (for e
 
 | Parameter | Description |
 | --- | --- |
-| Automatic Deduplication | Enter the **Tealium iQ Tag ID** and Tealium automatically looks for this Event ID sent from Tealium iQ. |
+| Automatic Deduplication | Enter the **Tealium iQ Tag ID** and Tealium automatically looks for this Event ID sent from Tag Management. |
 
 #### Mapping Overrides
 
@@ -281,7 +280,7 @@ We recommend mapping multiple identifier types with email as the priority (for e
 
 | Parameter | Description |
 | --- | --- |
-| Automatic Deduplication | Enter the **Tealium iQ Tag ID** and Tealium automatically looks for this Event ID sent from Tealium iQ. |
+| Automatic Deduplication | Enter the **Tealium iQ Tag ID** and Tealium automatically looks for this Event ID sent from Tag Management. |
 | Tag Conversion Type | When enabling Automatic Deduplication, select one of the following conversion types sent with the tag data: `ADD_TO_SHOPPING_CART`, `APPLICATION`, `CHECKOUT`, `CONTACT`, `LEAD`, `OFF_AMAZON_PURCHASES`, `PAGE_VIEW`, `SEARCH`, `SIGN_UP`, `SUBSCRIBE`, or `OTHER`. |
 
 #### Mapping Overrides

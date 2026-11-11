@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-eventbridge-connecto
 ---
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Event Data to Event Source| ✗| ✓|
 |Send Visitor Data to Event Source| ✓| ✗|
@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/amazon-eventbridge-connecto
 
 ## Configure Settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 

@@ -1,25 +1,25 @@
 ---
 title: Awinタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAwinタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでAwinタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/awin-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* タグとコネクターを使用したハイブリッド構成をお勧めします。この構成により、データの耐久性が最大化され、サーバーサイドのシグナルとのイベントマッチングが改善され、リアルタイムのクライアントサイドシグナルを保持しながらデータフローの連続性が維持されます。詳細については、[Awin Conversions Connector](https://docs.tealium.com/awin-conversions-connector/)を参照してください。
-* マッピングを使用して：
-  * 標準の構成値を上書きします。
-  * E-Commerce拡張の値を上書きします。
-  * カスタムパラメータを渡します。
-  * イベントトリガーを構成します。
-* 次のE-Commerce拡張の値をサポートします：
+* タグとコネクターの両方を使用するハイブリッド構成を推奨します。この構成により、データの耐障害性を最大限に高め、サーバー側のシグナルとのイベント照合を改善し、リアルタイムのクライアント側シグナルを維持しながらデータフローの継続性を確保できます。詳細については、[Awinコンバージョンコネクター](https://docs.tealium.com/awin-conversions-connector/)を参照してください。
+* マッピングを使用すると、以下を実行できます。  
+  * 標準構成値を上書きする。
+  * Eコマース拡張機能の値を上書きする。
+  * カスタムパラメータを渡す。
+  * イベントトリガーを構成する。
+* 以下のEコマース拡張機能の値をサポートしています。  
   * 注文ID。
   * 注文合計。
   * 注文小計。
-  * 注文送料。
-  * 注文税金。
+  * 注文の送料。
+  * 注文の税額。
   * 注文通貨。
-  * 製品IDのリスト。
-  * カテゴリのリスト。
+  * 商品IDのリスト。
+  * カテゴリーのリスト。
   * 数量のリスト。
   * 価格のリスト。
 * 注文IDの値が構成されている場合、注文が記録されます。
@@ -27,55 +27,55 @@ url: https://docs.tealium.com/ja/client-side-tags/awin-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスにアクセスして、Awinタグを追加します。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、次の構成を構成します：
+タグを追加するときに、以下の構成を構成します。
 
-* **広告主ID**：Awinから提供される広告主ID。
-* **製品レベルデータを追加**：データペイロードに製品レベルのデータを追加します。
-* **テストする**：このオプションを選択してタグをテストします。
+* **広告主ID**：Awinから提供された広告主ID。
+* **商品レベルデータを追加**：商品レベルのデータをデータペイロードに追加します。
+* **テスト**：タグをテストするには、このオプションを選択します。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+使用可能なカテゴリーは以下のとおりです。
 
 ### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:-------------|:---------|:---------|
 | `advertiser_id`    | 文字列  | 広告主ID。          |
-| `add_products`     | ブール値 | 製品レベルのデータを追加。 |
+| `add_products`     | ブール値 | 商品レベルのデータを追加します。 |
 | `channel`          | 文字列  | チャネル。                |
-| `commission_group` | 文字列  | コミッショングループ        |
-| `is_test`          | ブール値 | テスト中。                |
+| `commission_group` | 文字列  | コミッショングループ。        |
+| `is_test`          | ブール値 | テストかどうか。                |
 | `custom`           | 配列   | カスタム値の配列。    |
-| `custom.#`         | 文字列  | 最大255個のカスタムパラメータをマッピングできます。各パラメータは`custom.#`という命名規則に従います。ここで`#`は`11`から`255`の数字です。例：`custom.1`, `custom.2`など。       |
+| `custom.#`         | 文字列  | 最大255個のカスタムパラメータをマッピングできます。各パラメータは`custom.#`という命名規則に従います。ここで、`#`は`11`から`255`までの数値です。例：`custom.1`、`custom.2`など。       |
 
-#### E-Commerce
+#### Eコマース
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:-------------|:---------|:---------|
-| `order_id` (Overrides `_corder`)          | 文字列 | 注文ID。 |
-| `order_subtotal` (Overrides `_csubtotal`) | 数値 | 小計/合計金額。 |
-| `order_currency` (Overrides `_ccurrency`) | 文字列 | 通貨。 |
-| `order_coupon_code` (Overrides `_cpromo`) | 文字列 | プロモコード。  |
-| `product_id` (Overrides `_cprod`)         | 配列  | 製品IDのリスト。 |
-| `product_name` (Overrides `_cprodname`)   | 配列  | 名称のリスト。    |
-| `product_sku` (Overrides `_csku`)         | 配列  | SKUのリスト。 |
-| `product_category` (Overrides `_ccat`)    | 配列  | カテゴリのリスト。 |
-| `product_quantity` (Overrides `_cquan`)   | 配列  | 数量のリスト。 |
-| `product_unit_price` (Overrides `_cprice`)| 配列  | 価格のリスト。  |
+| `order_id`（`_corder`を上書き）          | 文字列 | 注文ID。 |
+| `order_subtotal`（`_csubtotal`を上書き） | 数値 | 小計／合計金額。 |
+| `order_currency`（`_ccurrency`を上書き） | 文字列 | 通貨。 |
+| `order_coupon_code`（`_cpromo`を上書き） | 文字列 | プロモーションコード。  |
+| `product_id`（`_cprod`を上書き）         | 配列  | 商品IDのリスト。 |
+| `product_name`（`_cprodname`を上書き）   | 配列  | 商品名のリスト。    |
+| `product_sku`（`_csku`を上書き）         | 配列  | SKUのリスト。 |
+| `product_category`（`_ccat`を上書き）    | 配列  | カテゴリーのリスト。 |
+| `product_quantity`（`_cquan`を上書き）   | 配列  | 数量のリスト。 |
+| `product_unit_price`（`_cprice`を上書き）| 配列  | 価格のリスト。  |
 | `product_commission`                      | 配列  | コミッショングループのリスト。 |
 
 #### イベントトリガー
 
-| 変数   | タイプ | 説明  |
+| 変数   | 型 | 説明  |
 |:-----------|:-------------|:-------------|
 | `conversion` | 文字列 | コンバージョン。 |
 
-### ベンダー文書
+### ベンダーのドキュメント
 
-* [Awin: なぜハイブリッドトラッキングがあなたのアフィリエイトプログラムに不可欠なのか](https://advertiser-success.awin.com/s/article/Why-hybrid-tracking-is-essential-for-your-affiliate-programme-here-s-what-you-need-to-know)
-* [Awin: 広告主マスタータグ](https://developer.awin.com/docs/advertiser-mastertag)
+* [Awin：アフィリエイトプログラムにハイブリッドトラッキングが不可欠な理由](https://advertiser-success.awin.com/s/article/Why-hybrid-tracking-is-essential-for-your-affiliate-programme-here-s-what-you-need-to-know)
+* [Awin：広告主向けMastertag](https://developer.awin.com/docs/advertiser-mastertag)

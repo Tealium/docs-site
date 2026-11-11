@@ -8,66 +8,64 @@ url: https://docs.tealium.com/ja/client-side-tags/linkshare-tag/
 ### 仕様
 
 * **名前**: LinkShare
-* **ベンダー**: 楽天
+* **ベンダー**: Rakuten
 * **タイプ**: アフィリエイトマーケティング
 
-### 必要なもの
+### 必要条件
 
-**サービス**: LinkShare Network Account
+**サービス**: LinkShareネットワークアカウント
 
 **構成**:
 
 * マーチャントID
 
-## Tealium iQでのタグ構成
+## タグの構成
 
 ### タグの追加
 
-Tealium iQのタグマーケットプレイスは、さまざまなタグを提供しています。詳細については、[タグの管理](https://docs.tealium.com/manage-tags/#add-a-tag)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 ### タグの構成
 
-1. **タイトル** (必須): タグインスタンスを識別するための記述的なタイトルを入力します。
-1. **マーチャントID** (必須): LinkShareによって割り当てられた広告主のユニークIDを入力します。
+1. **タイトル**:（必須）タグインスタンスを識別するための分かりやすいタイトルを入力します。
+1. **マーチャントID**:（必須）LinkShareによって広告主に割り当てられた一意のIDを入力します。
 
-#### ロードルールの適用
+#### 読み込みルールの適用
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをいつ、どこでロードするかを決定します。**すべてのページでロード**ルールは、デフォルトのロードルールです。サイトの特定のページでこのタグをロードするには、関連する条件を持つ新しいロードルールを作成します。
+[読み込みルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをいつ、どこで読み込むかを決定します。デフォルトの読み込みルールは、**すべてのページで読み込む**ルールです。サイト内の特定のページでこのタグを読み込むには、該当する条件を指定した新しい読み込みルールを作成します。
 
-**ベストプラクティス**: 以下のベストプラクティスは、このタグに強く推奨されています。
+**ベストプラクティス**: このタグには、以下のベストプラクティスを強く推奨します。
 
-* このタグをコンバージョンページ（注文確認/チェックアウト）およびコンバージョン後のページ（レシート/サンキュー）でロードします。
-* 最適なパフォーマンスのため、コンバージョンページごとにタグを一度だけロードします。
+* このタグをコンバージョンページ（注文確認／チェックアウト）と、コンバージョン後のページ（領収書／サンキューページ）で読み込みます。
+* パフォーマンスを最適化するため、コンバージョンページごとにタグを1回だけ読み込みます。
 
 #### マッピングの構成
 
-[マッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)は、データレイヤーのデータソースからベンダータグの対応する宛先変数にデータを送信するシンプルなプロセスです。このタグの宛先変数は、マッピングツールキットで利用できます。使いやすさのために、変数は異なるカテゴリにグループ化されています。
+[マッピング](https://docs.tealium.com/ja/tag-management/data-mappings/manage/)とは、データレイヤー内のデータソースから、ベンダータグの対応する宛先変数へデータを送信する簡単なプロセスです。このタグの宛先変数は、マッピングツールキットで使用できます。使いやすいように、変数は複数のカテゴリにグループ化されています。
 
 
 <blockquote>
-このタグのために[E-commerce Extension](https://docs.tealium.com/e-commerce-extension/)を構成することを忘れないでください。
+このタグ用に[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)を必ず構成してください。
 </blockquote>
 
 
-[E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/)を適切に追加および構成していれば、タグ構成で何もマップする必要はありません。E-Commerce Extensionがそれを処理します。ただし、特定のE-commerce変数を上書きしたい場合や、E-Commerce Extensionを使用していない場合は、以下の宛先変数にマップします。
+[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)を正しく追加して構成していれば、タグ構成でマッピングを行う必要はありません。Eコマース拡張機能が自動的に処理します。ただし、特定のEコマース変数を上書きする場合や、Eコマース拡張機能を使用していない場合は、以下の宛先変数にマッピングしてください。
 
-* **ord**: 注文/トランザクションのユニークIDを送信するためにこの変数にマップします。
-* **cur**: アルファベット3文字の通貨値を送信するためにこの変数にマップします。   
+* **ord**: 注文／トランザクションの一意のIDを送信するには、この変数にマッピングします。
+* **cur**: 3文字の英数字通貨コードを送信するには、この変数にマッピングします。   
  `"cur"=USD`
-* **skulist**: アイテムSKUのリストを送信するためにこの変数にマップします。リスト内の各SKUはアイテムに固有でなければなりません。   
+* **skulist**: 商品SKUのリストを送信するには、この変数にマッピングします。リスト内の各SKUは、商品ごとに一意である必要があります。   
  `"skulist"=sku1|sku2|sku3`
-* **qlist**: アイテムの数量のリストをこの変数にマップします。数量は、対応するSKUと同じ順序でリストされていなければなりません。   
+* **qlist**: 商品数量のリストをこの変数にマッピングします。数量は、対応するSKUと同じ順序で指定する必要があります。   
  `"qlist"=2|4|8`
-* **amtlist**: アイテムの小計のリストをこの変数にマップします。小計は、対応するSKUと同じ順序でリストされ、`price*quantity*100`としてフォーマットされていなければなりません。   
+* **amtlist**: 商品小計のリストをこの変数にマッピングします。小計は、対応するSKUと同じ順序で指定し、`price*quantity*100`の形式にする必要があります。   
  `"amtlist"=1000|2000|4000`
-* **namelist**: アイテム名のリストをこの変数にマップします。アイテム名は、対応するSKUと同じ順序でリストされていなければなりません。  
+* **namelist**: 商品名のリストをこの変数にマッピングします。商品名は、対応するSKUと同じ順序で指定する必要があります。  
  `"namelist"=XXX|YYY|ZZZ`
 
-### ベンダーのドキュメンテーション
+### ベンダーのドキュメント
 
-* [楽天LinkShareについて](http://www.linkshare.com/about/)
+* [Rakuten LinkShareについて](http://www.linkshare.com/about/)
 * [用語集](http://helpcenter.linkshare.com/publisher/glossary.php)
-* [アフィリエイトマーケティング追跡技術：ビデオチュートリアル](https://rakutenlinkshare.zendesk.com/hc/en-us/articles/200694358-Understanding-Affiliate-Marketing-Tracking-Technology-VIDEO-)
-* [アフィリエイトマーケティングリソース](http://www.linkshare.com/campus/performance_marketing_resources/) (記事とビデオの閲覧にはログインが必要です)
-
-
+* [アフィリエイトマーケティングのトラッキング技術：動画チュートリアル](https://rakutenlinkshare.zendesk.com/hc/en-us/articles/200694358-Understanding-Affiliate-Marketing-Tracking-Technology-VIDEO-)
+* [アフィリエイトマーケティングのリソース](http://www.linkshare.com/campus/performance_marketing_resources/)（記事や動画の閲覧にはログインが必要です）

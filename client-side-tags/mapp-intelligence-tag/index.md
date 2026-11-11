@@ -1,20 +1,20 @@
 ---
 title: Mapp Intelligence (Legacy Pixel) Tag Setup Guide
-description: This article describes how to set up the Mapp Intelligence (Legacy Pixel) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Mapp Intelligence (Legacy Pixel) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/mapp-intelligence-tag/
 ---
 Mapp Intelligence offers analysts and marketers in depth analyses and valuable insights of website usage and a deeper understanding of their customers. It provides the necessary information to target audiences with the right message at the right time and in the right channel.
 
-## Tag Tips
+## Tag tips
 
 * Values added to data mapping will be inserted into the Webtrekk (`wt`) object. For example, use data mappings to set `wt_config.contentId` or `internalSearch` ).
 * The Mapp Intelligence tag triggers `formTrackInstall()` automatically by setting a value to **Form HTML ID** (`formTrackInstall`).
 * Event tracking can be done with a function call using `utag.link()`.
 * The E-Commerce extension is required to automatically set order values.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -40,13 +40,13 @@ When adding the tag, configure the following settings:
 * **Request Queue**: Select **on** or **off**.
 * **Server to Server Tracking**: Select **on** or **off**.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

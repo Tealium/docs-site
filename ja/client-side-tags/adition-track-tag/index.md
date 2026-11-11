@@ -1,19 +1,19 @@
 ---
-title: Adition (Track) タグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAdition (Track)タグを構成する方法について説明します。
+title: Adition（Track）タグ構成ガイド
+description: この記事では、タグ管理アカウントで Adition（Track）タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* これはAditionのトラックバージョンです。
-* Aditionとの契約に従ってドメインを構成します。
+* これは Adition の Track バージョンです。
+* Adition との契約に従ってドメインを構成します。
 
-  * デフォルト値: `adfarm1.adition.com`
-  * AdfarmID: `ad<id>.adfarm1.adition.com`
-  * カスタム: `<subdomain>.<domain>.<tld>`
+  * デフォルト値：`adfarm1.adition.com`
+  * AdfarmID：`ad<id>.adfarm1.adition.com`
+  * カスタム：`<subdomain>.<domain>.<tld>`
 
-* デフォルトの戻りタイプは `img` です。
-* 次のE-コマース変数を使用します
+* デフォルトの戻り値の型は `img` です。
+* 次の E コマース変数を使用します。
 
   * `_cprod`
   * `_cquan`
@@ -22,42 +22,39 @@ url: https://docs.tealium.com/ja/client-side-tags/adition-track-tag/
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、Adition (Track)タグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、次の構成を行います：
+タグを追加する際は、次の構成を構成します。
 
 * **ドメイン**
-  * Aditionから提供されるドメイン。
+  * Adition から提供されたドメイン。
   * デフォルトのドメインは `adfarm1.adition.com` です。
 
 * **TID**
-  * 必須。
-  * Aditionの広告配信システム内のランディングページを表します。
+  * （必須）Adition 広告配信システム内のランディングページを表します。
 
 * **SID**
-  * 必須。
-  * Aditionの広告配信システム内のトラッキングスポットを表します。
+  * （必須）Adition 広告配信システム内のトラッキングスポットを表します。
 
-* **タグタイプ**:
+* **タグタイプ**：
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは次のとおりです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|タグタイプ|  <ul><li>タグタイプ</li></ul> |
-|ドメイン|  <ul><li>ドメイン</li></ul> |
-| `tid` |  <ul><li>ランディングページID</li></ul> |
-| `sid` |  <ul><li>トラッキングスポットID</li></ul> |
-|`orderid`|  <ul><li>注文ID</li><li>`_corder` を上書きします。</li></ul> |
-|`descr`|  <ul><li>配列</li><li>アイテムの説明。</li><li>`_cprod` を上書きします。</li></ul> |
-| `quantity` |  <ul><li>配列</li><li>アイテムの数量。</li><li>`_cquan` を上書きします。</li></ul> |
-|`price`|  <ul><li>配列</li><li>アイテムの価格。</li><li>`_cprice` を上書きします。</li></ul> |
-|`total`|  <ul><li>配列</li><li>合計価格。</li></ul> |
-|`param`|  <ul><li>パラメータ</li><li>値は1 - 20です。</li></ul> |
-
+|変数|説明|
+|---|---|
+|タグタイプ|<ul><li>タグタイプ</li></ul>|
+|ドメイン|<ul><li>ドメイン</li></ul>|
+| `tid` |<ul><li>ランディングページ ID</li></ul>|
+| `sid` |<ul><li>トラッキングスポット ID</li></ul>|
+|`orderid`|<ul><li>注文 ID</li><li> `_corder` を上書きします。</li></ul>|
+|`descr`|<ul><li>配列</li><li>商品の説明。</li><li> `_cprod` を上書きします。</li></ul>|
+| `quantity` |<ul><li>配列</li><li>商品の数量。</li><li> `_cquan` を上書きします。</li></ul>|
+|`price`|<ul><li>配列</li><li>商品の価格。</li><li> `_cprice` を上書きします。</li></ul>|
+|`total`|<ul><li>配列</li><li>合計価格。</li></ul>|
+|`param`|<ul><li>パラメーター</li><li>値の範囲は 1～20 です。</li></ul>|

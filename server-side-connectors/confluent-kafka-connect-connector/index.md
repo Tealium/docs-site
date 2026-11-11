@@ -3,7 +3,7 @@ title: Confluent Kafka Connect Connector Setup Guide
 description: This article describes how to set up the Confluent Kafka Connect connector.
 url: https://docs.tealium.com/server-side-connectors/confluent-kafka-connect-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,7 +13,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -26,9 +26,11 @@ For more information on these settings, see:
 * [Confluent Cloud: Use API Keys to Authenticate to Confluent Cloud](https://docs.confluent.io/cloud/current/security/authenticate/workload-identities/service-accounts/api-keys/overview.html)
 * [Confluent Cloud Clusters: How do I view cluster details with Cloud Console?](https://docs.confluent.io/cloud/current/clusters/cluster-faq.html#how-do-i-view-cluster-details-with-ccloud-console-short)
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Entire Event Data | ✗ | ✓ |
 | Send Custom Event Data | ✗ | ✓ |

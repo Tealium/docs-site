@@ -11,7 +11,7 @@ url: https://docs.tealium.com/server-side-connectors/braze-connector/
 
 ## Settings
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -26,15 +26,13 @@ For additional information see Braze Documentation [Braze Technology Partners: T
 
 ## Actions
 
-This section describes how to set up parameters and options for each action.
-
 
 <blockquote>
-The **Track User** action contains the same functionality for both AudienceStream and EventStream. As a best practice, set the user attribute mappings for the AudienceStream action and the event and purchase mappings for the EventStream action.
+The **Track User** action contains the same functionality for both Customer Data Platform (CDP) and Event Streaming. As a best practice, set the user attribute mappings for the CDP action and the event and purchase mappings for the Event Streaming action.
 </blockquote>
 
 
-| **Action Name**                                   | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:--------------------------------------------------|:-------------------|:----------------|
 | Track User (Batch)                                | ✓                  | ✓               |
 | Track User (Non-Batch)                            | ✓                  | ✓               |

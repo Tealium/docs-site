@@ -1,6 +1,6 @@
 ---
 title: Fathom Analytics Tag Setup Guide
-description: This article describes how to set up the Fathom Analytics tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Fathom Analytics tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/fathom-analytics-tag/
 ---
 This tag adds the Fathom Analytics script to your site. The script tracks page views, sessions, bounce rate, and other metrics without using cookies or collecting personal data. The script can be customized with various options, such as changing the site ID, ignoring canonical URLs, honoring do-not-track requests, and more.
@@ -11,7 +11,7 @@ This tag adds the Fathom Analytics script to your site. The script tracks page v
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -23,7 +23,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -56,7 +56,7 @@ For more information
 
 ### Events
 
-For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|
@@ -64,7 +64,7 @@ For more information on mapping events, see [Create an Event Mapping](https://do
 |  `trackGoal` | Track Goal |
 
 ### Event-specific Parameters
-For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information on mapping events, see [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|

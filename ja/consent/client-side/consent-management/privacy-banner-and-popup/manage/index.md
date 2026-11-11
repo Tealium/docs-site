@@ -17,11 +17,11 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-
 
 * **バナーとポップアップ（推奨）** 
 このオプションは、ページにクッキーバナーを表示します。メッセージとリンクを構成し、同意マネージャーが構成に基づいてページにバナーを表示します。バナーには、ユーザーが **販売しない** 構成を行うポップアップを開くリンクが含まれています。
-    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-banner-popup.png)
+    ![](https://docs.tealium.com/images/tag-management/ccpa-banner-popup.png)
 
 * **ポップアップのみ**  
 サイトに既にクッキーバナーを表示している場合は、このオプションを選択します。このオプションは、バナー内のリンクに追加するJavaScriptメソッドを使用してポップアップを利用可能にします。
-    ![](https://docs.tealium.com/images/iq-tag-management/ccpa-popup.png)
+    ![](https://docs.tealium.com/images/tag-management/ccpa-popup.png)
 
 ### コンテンツ
 
@@ -138,7 +138,7 @@ window.utag_cfg_ovrd.gdprDLRef = utag_data.site_language;
 デフォルト言語は、ユーザーの検出されたブラウザ言語に対応する言語が構成されていない場合に同意マネージャーを表示するために使用されます。
 
 デフォルト言語を構成するには、言語タイトルバーにある **デフォルト言語に構成** チェックボックスを選択します。  
-    ![](https://docs.tealium.com/images/iq-tag-management/consent-prompt-content-make-default.png)
+    ![](https://docs.tealium.com/images/tag-management/consent-prompt-content-make-default.png)
 
 ### カスタマイズ（CSS、HTML、JavaScript）
 

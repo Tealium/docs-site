@@ -5,26 +5,26 @@ url: https://docs.tealium.com/client-side-tags/selligent-webtracker-tag/
 ---
 With Selligent cross-channel campaign management, marketers manage interaction from a single solution.
 
-## Tag Tips
+## Tag tips
 
 Use mapping and override `taxtags` to pass in taxonomy tags.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
 * **Account ID**: Your account ID provided by Selligent.
 * **DLL Domain**: Your `.dll` domain. For example: `example.domain.com` in `https://example.domain.com/optiext/webtracker.dll`.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

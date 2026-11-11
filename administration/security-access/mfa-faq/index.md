@@ -9,10 +9,10 @@ url: https://docs.tealium.com/administration/security-access/mfa-faq/
 
 Information about your primary account can be found in the **User Preferences** settings.
 
-1. In Tealium iQ, click your name/email in the top right corner to display the **Account** Admin drop-down menu.
+1. In Tag Management, click your name/email in the top right corner to display the **Account** Admin drop-down menu.
 1. Under User Preferences, click **Edit/View user Settings**.
 1. Your primary account appears in the right panel.
-    ![](https://docs.tealium.com/images/iq-tag-management/display-primary-account-name.jpg)
+    ![](https://docs.tealium.com/images/tag-management/display-primary-account-name.jpg)
 
 #### Who can enable/disable MFA in my account?
 
@@ -22,9 +22,9 @@ Only an account admin is permitted to manage the setting. However, any user can 
 
 Yes, but it is not recommended. Disabling MFA will remove the extra layer of protection that keeps your implementation safe from unauthorized users.
 
-#### Besides Tealium iQ, which other Tealium products support MFA?
+#### Besides Tag Management, which other Tealium products support MFA?
 
-Tealium supports MFA for AudienceStream, EventStream, DataAccess, Web Companion, and Tealium Tools.
+Tealium supports MFA for Customer Data Platform (CDP), Event Streaming, DataAccess, Web Companion, and Tealium Tools.
 
 #### My account has multiple profiles. Does MFA apply to all of them?
 
@@ -62,13 +62,13 @@ Ensure that the app you use is designed to scan generic barcodes only – not th
 
 If you encounter this error, the easiest thing to do is to start over. Go back to the login page, sign in with your username and password, and then proceed with the application setup steps.
 
-![](https://docs.tealium.com/images/iq-tag-management/invalid-mfa-token.jpg)
+![](https://docs.tealium.com/images/tag-management/invalid-mfa-token.jpg)
 
 #### My authenticator application has multiple entries of my synced accounts
 
 This happens when the same barcode is scanned multiple times and does not introduce any problems. To correct, simply delete the unwanted entries and proceed to [re-sync the app with your account](#setup).
 
-![](https://docs.tealium.com/images/iq-tag-management/duplicate-entries.png)
+![](https://docs.tealium.com/images/tag-management/duplicate-entries.png)
 
 #### The token expired before I could enter it
 

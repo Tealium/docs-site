@@ -3,7 +3,7 @@ title: Nine Audience Match Connector Setup Guide
 description: This article describes how to set up the Nine Audience Match connector.
 url: https://docs.tealium.com/server-side-connectors/nine-audience-match-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Segment | ✓ | ✗ |
 | Remove User from Segment | ✓ | ✗ |
@@ -22,11 +22,13 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Private Key**  
+
+After you configure the connector, click **Done**.
  
 Please enter your private key for the Google Pub/Sub connection.
 

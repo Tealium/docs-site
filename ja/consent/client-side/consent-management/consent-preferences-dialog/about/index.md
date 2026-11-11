@@ -23,7 +23,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/consent-
 
 構成ポップアップの例：
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-preferences-prompt.png)
+![](https://docs.tealium.com/images/tag-management/consent-preferences-prompt.png)
 
 iQタグ管理の同意構成マネージャーは、既存のインストールを使用してウェブサイトにトラッキング構成プロンプトの作成と展開を簡素化します。公開後、ページコードに単純なJavaScript関数呼び出しを追加してポップアップをトリガーします。
 
@@ -68,7 +68,7 @@ if (!checkForLoadedConsent()) {
 
 同意構成の変更は、Tealium EventStreamコネクタによっても尊重されます。コネクタアクションの同意カテゴリは、**Action**構成画面に表示されます：
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-categories-connector-action.png)
+![](https://docs.tealium.com/images/tag-management/consent-categories-connector-action.png)
 
 顧客が同意カテゴリ構成を行うと、それらは後続のサーバーサイドリクエストに含まれます。顧客がオプトインしたカテゴリのコネクタアクションのみがトリガーされます。
 
@@ -76,7 +76,7 @@ if (!checkForLoadedConsent()) {
 
 `Analytics`と`Personalization`の2つのコネクタが構成されているとします。顧客が構成フォームで部分的な同意を与え、`Analytics`のトラッキングは許可するが`Personalization`は許可しないとします。
 
-![](https://docs.tealium.com/images/iq-tag-management/consent-server-side-categories-example.png)
+![](https://docs.tealium.com/images/tag-management/consent-server-side-categories-example.png)
 
 `Analytics`カテゴリのコネクタアクションのみがトリガーされます。`Personalization`に分類されるコネクタアクションは抑制されます。
 

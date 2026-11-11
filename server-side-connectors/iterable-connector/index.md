@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/iterable-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For more information, see [About connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -14,11 +14,13 @@ After adding the connector, configure the following settings:
     * For US-based API endpoints, select **https://app.iterable.com**.
 * **API Key**: Enter your Iterable API key.
 
+After you configure the connector, click **Done**.
+
 To find your API Key, on the Iterable site, go to **Integrations > API Keys** in the **Iterable Connector** menu.
 
 ## Actions
 
-|Action Name| AudienceStream| EventStream|
+|Action Name| Visitor profile| Event data|
 |---| ---| ---|
 |Track Event (Batched)| ✗| ✓|
 |Upsert User (Batched)| ✓| ✓|
@@ -35,7 +37,7 @@ To find your API Key, on the Iterable site, go to **Integrations > API Keys** in
 |Track Purchase| ✓| ✓|
 |Merge Customer Data | ✓ | ✓ |
 
-Click **Next** or go to the **Actions** tab.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 The following section describes how to set up parameters and options for each action.
 

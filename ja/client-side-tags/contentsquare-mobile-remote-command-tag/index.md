@@ -1,92 +1,92 @@
 ---
-title: ContentSquareモバイルリモートコマンドタグ
-description: この記事では、Tealium iQタグ管理アカウントでContentSquareモバイルリモートコマンドタグを構成する方法について説明します。
+title: ContentSquare モバイルリモートコマンドタグ
+description: この記事では、タグ管理アカウントで ContentSquare モバイルリモートコマンドタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/contentsquare-mobile-remote-command-tag/
 ---
-ContentSquareは、デジタルチーム全体の顧客洞察を解き放ちます。マーケターからプロダクトマネージャー、ITまで、あらゆるデジタル役割に十分なパワーを持つプラットフォームです。
+ContentSquare は、デジタルチーム全体が顧客に関するインサイトを得られるようにします。マーケターからプロダクトマネージャー、IT 担当者まで、あらゆるデジタル分野の担当者が活用できる強力な統合プラットフォームです。
 
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して:   
-  * 構成データを動的にオーバーライド   
-  * Eコマース拡張の値を動的にオーバーライド   
-  * 追加のデータ値を送信   
+* マッピングは、次の目的で使用します。   
+  * 構成データを動的に上書きする   
+  * E コマース拡張機能の値を動的に上書きする   
+  * 追加のデータ値を送信する   
   * イベント固有のパラメータ   
   * イベントトリガー
 
-* 次のEコマース拡張の値をサポート:   
-  * 注文ID   
+* 次の E コマース拡張機能の値をサポートしています。   
+  * 注文 ID   
   * 商品価格   
   * 通貨
 
-* これはネイティブモバイルアプリSDKのモバイルリモートコマンドコンパニオンタグです。
+* これは、ネイティブモバイルアプリ SDK 用のモバイルリモートコマンドコンパニオンタグです。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 構成
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `screen_name`   |  String | (必須) スクリーン名 |
-|   `dynamic_var` |  | (必須) ダイナミック変数 |
+| `screen_name` | 文字列 | （必須）画面名 |
+| `dynamic_var` |  | （必須）動的変数 |
 
-### Eコマース
+### E コマース
 
-| 変数 | タイプ |説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `purchase.price` (`_ctotal`を上書き)  | Array | (必須) 価格 |
-|  `purchase.currency` (`_ccurrency`を上書き)  | String | (必須) 通貨 |
-|  `purchase.transaction_id` (`_corder`を上書き)  | String | トランザクションID |
+| `purchase.price`（`_ctotal` を上書き） | 配列 | （必須）価格 |
+| `purchase.currency`（`_ccurrency` を上書き） | 文字列 | （必須）通貨 |
+| `purchase.transaction_id`（`_corder` を上書き） | 文字列 | トランザクション ID |
 
 ### カスタム変数
 
-カスタム変数は、画面表示と共に送信されるページ、ユーザー、またはセッションに関する追加情報です。
+カスタム変数は、画面表示とともに送信される、ページ、ユーザー、またはセッションに関する追加情報です。
 
-| 変数 | タイプ |説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  Index  | Number | カスタム変数のインデックス位置。`1`から`20`の値を選択します。 |
-|  Name  | String | カスタム変数の名前。 |
+| インデックス | 数値 | カスタム変数のインデックス位置。`1`～`20` の値を選択します。 |
+| 名前 | 文字列 | カスタム変数の名前。 |
 
 ### イベント
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `sendscreenview` | スクリーンビューを送信 |
-|  `sendtransaction` | トランザクションを送信 |
-|  `senddynamicvar` | ダイナミック変数を送信 |
-|  `stoptracking` | トラッキングを停止 |
-|  `resumeTracking` | トラッキングを再開 |
-|  `forgetme` | 忘れる |
-|  `optin` | オプトイン |
-|  `optout` | オプトアウト |
-|  `custom` | カスタム |
+| `sendscreenview` | 画面表示を送信 |
+| `sendtransaction` | トランザクションを送信 |
+| `senddynamicvar` | 動的変数を送信 |
+| `stoptracking` | トラッキングを停止 |
+| `resumeTracking` | トラッキングを再開 |
+| `forgetme` | 自分に関するデータを消去 |
+| `optin` | オプトイン |
+| `optout` | オプトアウト |
+| `custom` | カスタム |
 
 ### イベントパラメータ
 
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `sendscreenview` | スクリーンビューを送信 |
-|  `sendtransaction` | トランザクションを送信 |
-|  `senddynamicvar` | ダイナミック変数を送信 |
-|  `stoptracking` | トラッキングを停止 |
-|  `resumeTracking` | トラッキングを再開 |
-|  `forgetme` | 忘れる |
-|  `optin` | オプトイン |
-|  `optout` | オプトアウト |
-|  `custom` | カスタム |
+| `sendscreenview` | 画面表示を送信 |
+| `sendtransaction` | トランザクションを送信 |
+| `senddynamicvar` | 動的変数を送信 |
+| `stoptracking` | トラッキングを停止 |
+| `resumeTracking` | トラッキングを再開 |
+| `forgetme` | 自分に関するデータを消去 |
+| `optin` | オプトイン |
+| `optout` | オプトアウト |
+| `custom` | カスタム |

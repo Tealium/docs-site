@@ -1,62 +1,36 @@
 ---
 title: Top.Mail.ruタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでTop.Mail.ruタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでTop.Mail.ruタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/topmailru-tag/
 ---
-## タグ構成
+## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、以下の構成を行います。
 
-* **カウンターID**：（必須）あなたのTop Mail.ruカウンターID。
+* **カウンターID**：（必須）Top.Mail.ruのカウンターID。
 
-## ロードルール
+## 読み込みルール
 
-タグをすべてのページにロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+利用可能なカテゴリーは以下のとおりです。
 
-### スタンダード
+### 標準
 
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
-|  `base_url`  | 文字列 | ベースURL |
-|  `id`  | 文字列 | カウンターID |
+| `base_url` | 文字列 | ベースURL |
+| `id` | 文字列 | カウンターID |
 
-### E-commerce
+### Eコマース
 
-| 変数 | タイプ | 説明 |
-|:---------|:------------|:------------|
-|  `productid`  | 文字列 | 商品ID |
-|  `value`  | 文字列 | 値 |
-|  `pagetype`  | 文字列 | ページタイプ |
-|  `list`  | 文字列 | リスト |
-|  `userid`  | 文字列 | ユーザーID |
-|  `totalvalue`  | 数値または文字列 | 合計値 |
-
-### イベント
-
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
-
-| 変数 | タイプ | 説明 |
-|:---------|:------------|:------------|
-| `pageView` | 文字列 | ページビュー |
-| `viewProduct` | 文字列 | 商品表示 |
-| `addToCart` | 文字列 | カートに追加 |
-| `purchase` | 文字列 | 購入 |
-| `itemView` | 文字列 | アイテム表示 |
-| `custom` | 文字列 | カスタム |
-
-### イベント固有のパラメータ
-
-イベントをマッピングするには、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
-
-| 変数 | タイプ | 説明 |
+| 変数 | 型 | 説明 |
 |:---------|:------------|:------------|
 | `productid` | 文字列 | 商品ID |
 | `value` | 文字列 | 値 |
@@ -64,10 +38,35 @@ url: https://docs.tealium.com/ja/client-side-tags/topmailru-tag/
 | `list` | 文字列 | リスト |
 | `userid` | 文字列 | ユーザーID |
 | `totalvalue` | 数値または文字列 | 合計値 |
-| `custom_parameter` | 文字列 | カスタムパラメータ |
+
+### イベント
+
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
+
+| 変数 | 型 | 説明 |
+|:---------|:------------|:------------|
 | `pageView` | 文字列 | ページビュー |
-| `viewProduct` | 文字列 | 商品表示 |
+| `viewProduct` | 文字列 | 商品の表示 |
+| `addToCart` | 文字列 | カートに追加 |
+| `purchase` | 文字列 | 購入 |
+| `itemView` | 文字列 | アイテムの表示 |
+| `custom` | 文字列 | カスタム |
+
+### イベント固有のパラメーター
+
+イベントをマッピングする方法については、[イベントマッピングの作成](https://docs.tealium.com/manage-data-mappings/#add-an-event-mapping)を参照してください。
+
+| 変数 | 型 | 説明 |
+|:---------|:------------|:------------|
+| `productid` | 文字列 | 商品ID |
+| `value` | 文字列 | 値 |
+| `pagetype` | 文字列 | ページタイプ |
+| `list` | 文字列 | リスト |
+| `userid` | 文字列 | ユーザーID |
+| `totalvalue` | 数値または文字列 | 合計値 |
+| `custom_parameter` | 文字列 | カスタムパラメーター |
+| `pageView` | 文字列 | ページビュー |
+| `viewProduct` | 文字列 | 商品の表示 |
 | `addToCart` | 文字列 | カートに追加 |
 | `purchase` | 文字列 | 購入 |
 | `custom_event` | 文字列 | カスタムイベント |
-

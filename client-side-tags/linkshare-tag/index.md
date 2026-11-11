@@ -19,11 +19,11 @@ url: https://docs.tealium.com/client-side-tags/linkshare-tag/
 
 * Merchant ID
 
-## Tag Configuration in Tealium iQ
+## Tag configuration
 
 ### Adding the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configuring the Tag
 
@@ -41,7 +41,7 @@ Go to the tag marketplace to add a new tag. For more information about how to ad
 
 #### Setting up Mappings
 
-[Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The destination variables for this tag are available in the Mapping toolkit. For ease of use, the variables are grouped into different categories.
+[Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor tag. The destination variables for this tag are available in the Mapping toolkit. For ease of use, the variables are grouped into different categories.
 
 
 <blockquote>

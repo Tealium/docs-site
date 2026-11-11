@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/sendgrid-connector/
 ---
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Upsert Contact| ✓| ✗|
 |Remove Contact| ✓| ✗|
@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/sendgrid-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. See the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. See the [Connector Overview](https://docs.tealium.com/server-side/connectors/manage/) for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
@@ -28,9 +28,7 @@ For more information on SendGrid API Keys please view the following documentatio
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Upsert Contact
 

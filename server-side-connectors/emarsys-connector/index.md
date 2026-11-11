@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/emarsys-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -21,11 +21,13 @@ Required for WSSE authentication type. Username with permissions to access Emars
 * **Password**:  
 Required for WSSE authentication type. Password for provided username.
 * **Environment**:  
+
+After you configure the connector, click **Done**.
 Environment to make API calls against.
 
 ## Actions
 
-|**Action Name**| **AudienceStream**| **EventStream**|
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Add Contact to Contact List (Real-Time) | ✓ | ✗ |
 | Add Contact to Contact List (Batched) | ✓ | ✗ |

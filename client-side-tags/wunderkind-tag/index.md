@@ -1,6 +1,6 @@
 ---
 title: Wunderkind Tag Setup Guide
-description: This article describes how to set up the Wunderkind tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Wunderkind tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/wunderkind-tag/
 ---
 ## Tag tips
@@ -40,7 +40,7 @@ If you are using the E-Commerce extension and have it configured to use the valu
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -52,7 +52,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

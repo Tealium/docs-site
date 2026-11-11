@@ -49,7 +49,7 @@ For more information about dynamic remarketing events and item parameters, see [
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -71,7 +71,7 @@ When adding the tag, configure the following settings:
 * **Enable Enhanced Conversions**
   * Only enable this option if you are sending PII (Personally Identifiable Information) through the tag. 
   * If you are using the server-side **Enhanced Conversions for Web** connector to supplement this client-side tag, map a unique value, such as `tealium_random`, to **Transaction ID** for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set **Implementation Type** to `API`.
-  * For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in EventStream, see [Tealium + Google Enhanced Conversions Integration Guide](https://docs.tealium.com/tealium-google-enhanced-conversions-integration-guide/).
+  * For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in Event Streaming, see [Tealium + Google Enhanced Conversions Integration Guide](https://docs.tealium.com/tealium-google-enhanced-conversions-integration-guide/).
 * **Enable Event Matching for Server-side Enhanced Conversions**
   * Enable event matching to use Automatic Transaction ID in the [Google Ads Enhanced Conversions for Web connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/).
 
@@ -81,7 +81,7 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -247,7 +247,7 @@ The available categories are:
 
 ### IAB Transparency and Consent Framework v2
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

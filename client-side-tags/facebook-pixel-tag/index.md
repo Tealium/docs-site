@@ -1,6 +1,6 @@
 ---
 title: Facebook Pixel Tag Setup Guide
-description: This article describes how to set up the Facebook Pixel tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Facebook Pixel tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/facebook-pixel-tag/
 ---
 
@@ -47,7 +47,7 @@ This feature requires an active [Tealium Collect tag](https://docs.tealium.com/t
 </blockquote>
 
 
-To support Facebook Conversions API for Web, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Facebook Conversions connector and passes it to the Facebook Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
+To support Facebook Conversions API for Web, set **Generate Event ID** to `true`.  When **Generate Event ID** is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Event Streaming for use in the Facebook Conversions connector and passes it to the Facebook Pixel in the `event_id` parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration. 
 
 The tag sends event IDs using generated event attributes using the following naming convention:
 
@@ -89,9 +89,9 @@ The latest version of the Facebook Pixel tag supports multiple Facebook tags fir
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Pixel ID**
   * Your Facebook Pixel ID.
@@ -141,7 +141,7 @@ Test the mappings by using the [Facebook Pixel Helper](https://developers.facebo
 
 Data mappings follow a hierarchy in which specific mappings, such as Event-Specific Parameters, take precedence over more general mappings. For example, if you map a variable to the **Currency** destination in the **Standard Tracking Parameters** tab and to the **Currency** destination for the **ViewContent** event, the **ViewContent** mapping takes precedence over the general mapping, but only for the **ViewContent** event. For all other events, the Standard Tracking mapping is used.
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

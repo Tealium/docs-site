@@ -1,6 +1,6 @@
 ---
 title: Zeta Global Events Connector Setup Guide
-description: Set up the Zeta Global Events connector to send behavioral events from Tealium EventStream to Zeta's Track Event REST API.
+description: Set up the Zeta Global Events connector to send behavioral events from Event Streaming to Zeta's Track Event REST API.
 url: https://docs.tealium.com/server-side-connectors/zeta-global-events-connector/
 ---
 ## API information
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, select an authentication mode and configure the settings for that mode.
 
@@ -22,9 +22,11 @@ After adding the connector, select an authentication mode and configure the sett
 * **Access Token**: (Basic authentication) Your ZMP Access Token. The connector sends this value as the password of the HTTP Basic Authorization header. The username is fixed to `api`. Existing Basic authentication configurations continue to work.
 * **Site ID**: Your ZMP Site ID. The connector uses this value in API request paths, for example `https://api.zetaglobal.net/ver2/{site_id}/activities`.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Track Event | ✗ | ✓ |
 | Track Events (Batch) | ✗ | ✓ |

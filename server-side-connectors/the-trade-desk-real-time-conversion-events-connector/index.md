@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side-connectors/the-trade-desk-real-time-co
 
 The Trade Desk (TTD) Real-Time Conversion Events server-side connector sends conversion event data from Tealium into your TTD instance to track attribution and assist in retargeting.
 
-Enhance this connector with other integrations from the Tealium and The Trade Desk partnership. Use the Unified ID 2.0 (UID2) or European Unified ID (EUID) Function to generate and assign universal user identifiers before sending the event data. Optionally, implement the TTD Universal Pixel in Tealium iQ Tag Management to capture a comprehensive view of the user’s behavior in real time.
+Enhance this connector with other integrations from the Tealium and The Trade Desk partnership. Use the Unified ID 2.0 (UID2) or European Unified ID (EUID) Function to generate and assign universal user identifiers before sending the event data. Optionally, implement the TTD Universal Pixel in Tag Management to capture a comprehensive view of the user’s behavior in real time.
 
 
 <blockquote>
@@ -26,7 +26,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 The Trade Desk Real-Time Conversion connector supports Event Mapping and URL Mapping tracking. When configuring the connector, set the following parameters depending on your approach:
 
@@ -46,6 +46,8 @@ Required, if **Advertiser ID** is not provided. Your `merchantId` will be provid
 * **Pixel ID**  
 Required, if **Event Tracker ID** is not provided. The universal pixel ID for the event.
 * **Event Tracker ID**  
+
+After you configure the connector, click **Done**.
 Required, if **Pixel ID** is not provided. The platform ID of the event tracker.
 
 
@@ -57,7 +59,7 @@ We also recommend that you avoid populating every parameter in the **Configurati
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Conversion Event | ✗ | ✓ |
 

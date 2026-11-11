@@ -1,39 +1,37 @@
 ---
-title: Experianマーケティングスイートコネクタ構成ガイド
-description: この記事では、お客様のカスタマーデータハブアカウントでExperianマーケティングスイートを構成する方法について説明します。
+title: Experian Marketing Suiteコネクタ構成ガイド
+description: この記事では、Customer Data HubアカウントでExperian Marketing Suiteを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite-connector/
----Experianマーケティングスイートのクロスチャネルマーケティングプラットフォームは、ブランドが単一のシステム内で、リアルタイムですべての顧客との対話を管理・実行することを可能にし、複数の異なるプラットフォームや個々のチャネルベンダーの必要性をなくします。
+---Experian Marketing Suiteのクロスチャネルマーケティングプラットフォームを使用すると、ブランドはすべての顧客インタラクションを単一のシステム内でリアルタイムに管理および実行できるため、複数の異なるプラットフォームやチャネルごとのベンダーが不要になります。
 
 ## 要件
 
-* Experianマーケティングサービスアカウント
-* コンシューマーキー（API ACCESS画面で確認できます）
-* コンシューマーシークレット（API ACCESS画面で確認できます）
+* Experian Marketing Servicesアカウント
+* Consumer Key（API ACCESS画面に表示）
+* Consumer Secret（API ACCESS画面に表示）
 
-## サポートされるアクション
+## サポートされているアクション
 
-|**アクション名**| **オーディエンスに対するトリガー**| **ストリームに対するトリガー**|
+|**アクション名**| **オーディエンスでトリガー**| **ストリームでトリガー**|
 |---| ---| ---|
 |テーブルへのデータ挿入| ✓| ✓|
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-ベンダーを構成するには、以下の手順に従います：
+ベンダーを構成するには、次の手順に従います。
 
-1. **構成**タブで、コネクタインスタンスのタイトルを入力します。
-1. （オプション）Experianから受け取ったクライアントIDを入力します。
-1. ExperianのAPI ACCESS画面で受け取ったコンシューマーキーを入力します。
-1. ExperianのAPI ACCESS画面で受け取ったコンシューマーシークレットを入力します。
-1. 実装についての追加ノートを提供します。
-1. **接続テスト**をクリックしてキーを検証します。
+1. **Configure**タブで、コネクタインスタンスのタイトルを指定します。
+1. （任意）Experianから受け取ったClient IDを入力します。
+1. ExperianのAPI ACCESS画面で取得したConsumer Keyを入力します。
+1. ExperianのAPI ACCESS画面で取得したConsumer Secretを入力します。
+1. 実装に関する追加のメモを入力します。
+1. **Test Connection**をクリックして、キーを検証します。
 
 ## アクション構成 - パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでアクションを構成し、トリガーを行います。
-
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+**Continue**をクリックして、コネクタのアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
 ### アクション：テーブルへのデータ挿入
 
@@ -41,15 +39,15 @@ url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite
 
 | パラメータ | 説明 |
 |---|---|
-| テーブル | (必須) 更新するテーブルを指定します。 |
-| テーブルエントリーデータ | (必須) 値をテーブルの列に合わせます。 |
-| 上位関係 | このテーブルエントリを他のテーブルにリンクします。 |
-| 日付形式 | 特定の形式を使用して受信データをフォーマットします。 |
-| インポートオプション | データ挿入のための追加オプションを指定します。 |
+| Table | （必須）更新するテーブルを指定します。 |
+| Table Entry Data | （必須）値をテーブル内の列にマッピングします。 |
+| Upward Relations | このテーブルエントリを他のテーブルにリンクします。 |
+| Date Formats | 特定の形式を使用して受信データをフォーマットします。 |
+| Import Options | データ挿入に関する追加オプションを指定します。 |
 
-#### オプション：上位関係
+#### オプション：Upward Relations
 
-上位関係を使用すると、テーブルデータをリンクできます。例えば、`order_item`と`order`の2つのテーブルがあります：
+Upward Relationsを使用すると、テーブルデータ同士をリンクできます。たとえば、`order_item`と`order`という2つのテーブルがあるとします。
 
 |**order_item**| **order**|
 |---| ---|
@@ -57,20 +55,20 @@ url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite
 |quantity| date|
 |order|
 
-**Order_item**の`item_id`と`quantity`はテーブルエントリーデータセクションでマッピングされます。**Order_item**の`order`と**order**の`item_id`,`quantity`は上位関係セクションでマッピングする必要があります。結果として得られるマッピングは次のようになります：
+**Order_item**の`item_id`と`quantity`は、Table Entry Dataセクションでマッピングします。**Order_item**の`order`と、**order**の`item_id`および`quantity`は、Upward Relationsセクションでマッピングする必要があります。マッピング結果は次のようになります。
 
 |**属性**| **パス**|
 |---| ---|
 |event_order_id| `order/id`|
 |event_timestamp| `order/date`|
 
-ここで、「event_order_id」と「event_timestamp」は単一エントリイベント/オーディエンス配列属性であり、複数の上位関係を指定できます。
+ここで「eventorder_id」と「event_timestamp」は、単一エントリのイベント／オーディエンス配列属性であり、複数のUpward Relationsを指定できます。
 
-#### オプション：日付形式
+#### オプション：Date Formats
 
-テーブルフィールドごとの日付形式を指定します（上位関係パスにも適用されます）。形式は[Javaのテンプレート標準](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html)に従う必要があります。
+テーブルフィールドごとに日付形式を指定します（Upward Relationのパスにも適用されます）。形式は[Javaのテンプレート標準](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html)に従う必要があります。
 
-いくつかの人気のある形式は次のとおりです：
+一般的な形式には、次のものがあります。
 
 |**形式**| **結果**|
 |---| ---|
@@ -79,12 +77,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/experian-marketing-suite
 |yyyy/MM/dd HH:mm:ss| 1977/05/25 19:15:37|
 |yyyy/MM/dd HH:mm:ss x| 1977/05/25 19:15:37 +0000|
 
-カスタム/受信日は、1970年1月1日UTC（エポック）以来のミリ秒として想定されます。
+カスタム日付または受信した日付は、1970年1月1日UTC（エポック）からの経過ミリ秒として扱われます。
 
-#### オプション：インポートオプション
+#### オプション：Import Options
 
 |**オプション**| **値**| **説明**|
 |---| ---| ---|
-|既存の更新なし| `true` または `false`| `true` は一致するレコードを更新する代わりに新しいレコードを挿入します|
+|Do Not Update Existing| `true`または`false`| 一致するレコードを更新する代わりに新しいレコードを挿入する場合は`true`|
 
-上記に記載されていないインポートオプションには、カスタム値を指定できます。
+上記に記載されていないインポートオプションについては、CustomValueを指定できます。

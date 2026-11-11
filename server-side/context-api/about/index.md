@@ -9,7 +9,7 @@ Contact your account manager to enable Context API for your account.
 </blockquote>
 
 
-Context API is a composable AudienceStream API that retrieves a fast, targeted slice of live visitor context. Instead of returning a full visitor profile, it returns only the audiences, badges, and attributes your app, service workflow, or AI system needs for a specific decision or experience. Integrate Context API into your Tealium client-side applications, wherever `utag.js` is installed, in Tealium for Mobile, or into any agentic AI framework such as LangChain via the [managed MCP server](#mcp-server).
+Context API is a composable Customer Data Platform (CDP) API that retrieves a fast, targeted slice of live visitor context. Instead of returning a full visitor profile, it returns only the audiences, badges, and attributes your app, service workflow, or AI system needs for a specific decision or experience. Integrate Context API into your Tealium client-side applications, wherever `utag.js` is installed, in Tealium for Mobile, or into any agentic AI framework such as LangChain via the [managed MCP server](#mcp-server).
 
 ## How it works
 
@@ -83,7 +83,7 @@ Context API creates a unique endpoint for each engine. Visitor data is returned 
 
 Tealium has benchmarked the average Context API endpoint performance at 60 ms for payload sizes of 1 kB and smaller. 
 
-To retrieve visitor data, configure a [Tealium iQ Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) to make a request to the [Context API endpoint](https://docs.tealium.com/context-api-endpoint/). 
+To retrieve visitor data, configure a [Tag Management Advanced JavaScript Code Extension](https://docs.tealium.com/advanced-javascript-code-extension/) to make a request to the [Context API endpoint](https://docs.tealium.com/context-api-endpoint/). 
 
 
 <blockquote>
@@ -104,7 +104,7 @@ For more information, see [context-api-mcp-server](https://docs.tealium.com/cont
 Context API endpoints support GET requests that use both the Tealium anonymous ID and a visitor ID attribute to retrieve visitor data. 
 
 * **Anonymous ID**: A unique and anonymous value assigned to a visitor on each visit to a site or each use of an app. The anonymous ID tracks a visitor over multiple visits from the same browser or app, but not across different browsers or devices.
-* **Visitor ID attribute**: A special attribute type in AudienceStream that gets its value from a user identifier and is used in visitor stitching. 
+* **Visitor ID attribute**: A special attribute type in CDP that gets its value from a user identifier and is used in visitor stitching. 
 
 For more information, see [Anonymous IDs, user identifiers, and visitor ID attributes](https://docs.tealium.com/anonymous-user-visitor-id-attributes/).
 
@@ -153,7 +153,7 @@ The following examples describe situations in which you may want to purge data f
 * Removing an audience, badge, or attribute from an engine configuration.
 * Turning off **Allow PII** on an engine. Restricted attributes are removed from future responses immediately, but previously stored data remains in the engine until you purge. Purging makes that data inaccessible.
 
-If an audience, badge, or attribute used in an engine is deleted from AudienceStream or the engine configuration, that item is no longer populated in the endpoint moving forward. Engine data that contains the removed attributes are unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data. 
+If an audience, badge, or attribute used in an engine is deleted from CDP or the engine configuration, that item is no longer populated in the endpoint moving forward. Engine data that contains the removed attributes are unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data. 
 
 
 <blockquote>

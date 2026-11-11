@@ -14,7 +14,7 @@ Learn how to manage client-side vendor tags.
 
 ![](https://docs.tealium.com/images/icons/icon-cubes.svg)
 
-#### Data Mappings
+#### Data mappings
 
 Learn how to map data layer variables and events.
 

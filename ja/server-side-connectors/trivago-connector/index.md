@@ -1,110 +1,111 @@
 ---
-title: Trivagoコネクタ構成ガイド
-description: この記事では、Trivagoコネクタの構成方法について説明します。
+title: Trivagoコネクター構成ガイド
+description: この記事では、Trivagoコネクターの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/trivago-connector/
 ---
 ## API情報
 
-このコネクタは、以下のベンダーAPIを使用します：
+このコネクターは、次のベンダーAPIを使用します。
 
 * API名：Trivago API
 * APIエンドポイント：`https://secde.trivago.com/`
-* ドキュメンテーション：[Trivago API](https://developer.trivago.com/conversiontracking/conversion-api.html)
+* ドキュメント：[Trivago API](https://developer.trivago.com/conversiontracking/conversion-api.html)
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクターマーケットプレイスに移動し、新しいコネクターを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を行います：
+コネクターを追加した後、次の項目を構成します。
 * **X-Trv-Ana-Key**  
-  *   ユニバーサルにユニークな識別子。詳細については、Trivagoのテクニカルアカウントマネージャーにお問い合わせください。
+  *   汎用一意識別子。詳細については、Trivagoのテクニカルアカウントマネージャーにお問い合わせください。
+
+コネクターを構成したら、**完了**をクリックします。
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| 予約確認の送信 | ✗ | ✓ |
-| 予約確認の更新 | ✗ | ✓ |
-| 予約確認の削除 | ✗ | ✓ |
+| 予約確認を送信 | ✗ | ✓ |
+| 予約確認を更新 | ✗ | ✓ |
+| 予約確認を削除 | ✗ | ✓ |
 
 アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。
 
-次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+以下のセクションでは、各アクションのパラメーターとオプションを構成する方法について説明します。
 
-### 予約確認の送信
+### 予約確認を送信
 
-#### パラメータ
+#### パラメーター
 
-必須パラメータ：
+必須パラメーター：
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| TRV Reference | URLの末尾で提供されるユニークなトラッキングパラメータ。 |
-| Advertiser ID | Trivagoから広告主に通知される広告主のユニークなID。この値は、一つの広告主に対して常に同じです。 |
-| Hotel | 予約されたホテルの広告主のユニークなホテルID。インベントリフィードで使用されるIDと同一でなければなりません。 |
-| Arrival | 到着日（UNIXタイムスタンプ）。 |
-| Departure | 出発日（UNIXタイムスタンプ）。 |
-| Booking Date | 予約提出日（UNIXタイムスタンプ）。 |
-| Volume | ステイごとの総予約価格（全ての部屋、全ての夜を含む）。総価格は、ネットレートプラス予約手数料、プラスVATです。 |
-| Currency | `ISO 4217`コードの通貨。 |
-| Booking ID | 広告主の予約参照。 |
-| Locale | ユーザーが広告主のサイトにリダイレクトされる前にクリックしたTrivago `POS`を含みます。詳細については、[Trivago > Supported locales and languages](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。識別子をURLに追加する必要がある場合は、テクニカルアカウントマネージャーにお問い合わせください。 |
-| Number of Rooms | 同じ**Booking ID**で予約された部屋の総数。 |
-| Date Format | 到着日と出発日をUNIXタイムスタンプ形式で提供できない場合に必要です。例：`20181025`はYYYYMMDD形式です。推奨される形式はYYYYMMDDですが、[accepted formats](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従ってセパレータを必要に応じて調整できます。可能な場合は、日付をUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**Booking Date**と**Booking Date Format**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
-| Booking Date Format | **Booking Date**をUNIXタイムスタンプ形式で提供できない場合に必要です。予約の時間（秒）も必要です。例：`20201025173002`。推奨される形式はYmdHisですが、[accepted formats](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従ってセパレータを必要に応じて調整できます。可能な場合は、日付をUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**Booking Date**と**Booking Date Format**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
-| Margin | 予約金額の一部として受け取る手数料の割合。例：`15.8`。 |
-| Margin Absolute | マージンをパーセンテージで提供できない場合、絶対値として提供することもできます（例：`60.30 USD`）。**Margin Absolute**の通貨は、ボリュームの通貨と一致している必要があります。 |
-
-### 予約確認の更新
-
-#### パラメータ
-
-必須パラメータ：
-
-| **パラメータ** | **説明** |
-| --- | --- |
-| TRV Reference | URLの末尾で提供されるユニークなトラッキングパラメータ。 |
-| Advertiser ID | Trivagoから広告主に通知される広告主のユニークなID。この値は、一つの広告主に対して常に同じです。 |
-| Hotel | 予約されたホテルの広告主のユニークなホテルID。インベントリフィードで使用されるIDと同一でなければなりません。 |
-| Arrival | 到着日（UNIXタイムスタンプ）。 |
-| Departure | 出発日（UNIXタイムスタンプ）。 |
-| Booking Date | 予約提出日（UNIXタイムスタンプ）。 |
-| Volume | ステイごとの総予約価格（全ての部屋、全ての夜を含む）。総価格は、ネットレートプラス予約手数料、プラスVATです。 |
-| Currency | ISO 4217コードの通貨。 |
-| Booking ID | 広告主の予約参照。 |
-| Locale | ユーザーが広告主のサイトにリダイレクトされる前にクリックしたTrivago `POS`を含みます。詳細については、[Trivago > Supported locales and languages](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。識別子をURLに追加する必要がある場合は、テクニカルアカウントマネージャーにお問い合わせください。 |
-| Number of Rooms | 同じ**Booking ID**で予約された部屋の総数。 |
-| Date Format | 到着日と出発日をUNIXタイムスタンプ形式で提供できない場合に必要です。これらの日付は別の形式で提供することができます。例：`20181025`はYYYMMDD形式です。推奨される形式はYYMMDDですが、[accepted formats](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従ってセパレータを必要に応じて調整できます。可能な場合は、日付をUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**Booking Date**と**Booking Date Format**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
-| Booking Date Format | **Booking Date**をUNIXタイムスタンプ形式で提供できない場合に必要です。予約の時間（秒）も必要です。例：`20201025173002`。推奨される形式はYmdHisですが、[accepted formats](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従ってセパレータを必要に応じて調整できます。可能な場合は、日付をUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**Booking Date**と**Booking Date Format**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
-| Margin | 予約金額の一部として受け取る手数料の割合。例：`15.8`。 |
-| Margin Absolute | マージンをパーセンテージで提供できない場合、絶対値として提供することもできます（例：`60.30 USD`）。**Margin Absolute**の通貨は、ボリュームの通貨と一致している必要があります。 |
-| Update Date | 予約更新日。 |
-| Update Date Format | **Update Date**をUNIXタイムスタンプ形式で提供できない場合に必要です。キャンセルの時間（秒）も必要です（例：`20201025173002`）。推奨される形式はYmdHisですが、[accepted formats](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従ってセパレータを必要に応じて調整できます。可能な場合は、日付をUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**Update Date**と**Update Date Format**の両方に含める必要があります（例：`update_date_format`:"YmdHisP", `update_date`:"`20200929123015+07:00`"）。 |
-| Update Origin | PUTコールがユーザーの更新か広告主の更新に基づいているかを説明します。可能な値は`advertiser`または`user`です。 |
-
-### 予約確認の削除
-
-#### パラメータ
-必須パラメータ：
-
-| **パラメータ** | **説明** |
-| --- | --- |
-| TRV Reference | URLの末尾で提供されるユニークなトラッキングパラメータ。 |
-| Advertiser ID | Trivagoが定義し、広告主に通知するTrivago Advertiser ID。この値は、一つの広告主に対して常に同じです。 |
-| ホテル | 予約されたホテルの広告主固有のホテルID。在庫フィードで使用されるIDと同一でなければなりません。 |
-| 到着 | 到着日（UNIXタイムスタンプ）。 |
-| 出発 | 出発日（UNIXタイムスタンプ）。 |
-| 予約日 | 予約提出日（UNIXタイムスタンプ）。 |
-| ボリューム | 合計の総予約価格（全ての部屋、全ての夜を含む）。総価格は、ネットレートプラス予約料、プラスVATです。 |
-| 通貨 | ISO 4217コードの通貨。 |
-| 予約ID | 広告主の予約参照。 |
-| ロケール | ユーザーが広告主のサイトにリダイレクトされる前にクリックしたTrivagoの`POS`を含みます。詳細は、[Trivago > サポートされるロケールと言語](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。URLに識別子を追加する必要がある場合は、テクニカルアカウントマネージャーに連絡してください。 |
+| TRV参照 | URLの末尾に指定される一意のトラッキングパラメーター。 |
+| 広告主ID | Trivagoから広告主に通知される、広告主固有のID。この値は、1つの広告主に対して常に同じです。 |
+| ホテル | 予約されたホテルに対する広告主固有のホテルID。在庫フィードで使用されるIDと同一である必要があります。 |
+| 到着日 | 到着日（UNIXタイムスタンプ）。 |
+| 出発日 | 出発日（UNIXタイムスタンプ）。 |
+| 予約日 | 予約送信日（UNIXタイムスタンプ）。 |
+| 金額 | 1回の滞在に対する予約の合計総額（すべての部屋、すべての宿泊日を含む）。総額は、正味料金に予約手数料とVATを加えた金額です。 |
+| 通貨 | `ISO 4217`コードの通貨。 |
+| 予約ID | 広告主の予約参照番号。 |
+| ロケール | 広告主のサイトにリダイレクトされる前に、ユーザーがクリックしたTrivagoの`POS`が含まれます。詳細については、[Trivago > サポートされているロケールと言語](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。URLに識別子を追加する必要がある場合は、テクニカルアカウントマネージャーにお問い合わせください。 |
 | 部屋数 | 同じ**予約ID**で予約された部屋の合計数。 |
-| 日付形式 | 到着日と出発日をUNIXタイムスタンプ形式で提供できない場合に必要です。例：`20181025`はYYYYMMDD形式です。推奨される形式はYYYYMMDDですが、[受け入れられる形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、セパレータは必要に応じて調整できます。可能な場合は、日付はUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
-| 予約日形式 | **予約日**をUNIXタイムスタンプ形式で提供できない場合に必要です。予約の時間（秒）も必要です（例：`20201025173002`）。推奨される形式はYmdHisですが、[受け入れられる形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、セパレータは必要に応じて調整できます。可能な場合は、日付はUTC形式で共有する必要があります。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015`+07:`00`"。 |
-| マージン | 予約金額の一部として受け取る手数料の割合。例：`15.8`。 |
-| マージン絶対値 | マージンをパーセンテージで提供できない場合、代わりに絶対値として提供できます。例：`60.30 USD`。**マージン絶対値**の通貨は、ボリュームの通貨と一致する必要があります。 |
-| 払い戻し額 | 合計払い戻し額（全ての部屋、全ての夜、全ての料金を含む）。このパラメータは、**払い戻し比率**が提供されていても、`DELETE`コールに必要です。 |
-| 払い戻し比率 | 払い戻されるボリュームのどのくらいを指定します。4桁の小数点以下で共有する必要があります。例：1.0000 = 100%, 0.0000 = 0.00%, 0.5052 = 50.52%。 |
-| キャンセル日 | キャンセル提出日。 |
-| キャンセル日形式 | **キャンセル日**をUNIXタイムスタンプ形式で提供できない場合に必要です。キャンセルの時間（秒）も必要です（例：`20201025173002`）。推奨される形式はYmdHisですが、[受け入れられる形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、セパレータは必要に応じて調整できます。日付はUTCで共有する必要があります。それが不可能な場合は、UTCベースのタイムスタンプを**キャンセル日**と**キャンセル日形式**の両方に含める必要があります。例：`cancellation_date_format`:"YmdHisP", `cancellation_date`:"`20200929123015+07:00`"。 |
+| 日付形式 | 到着日と出発日をUNIXタイムスタンプ形式で指定できない場合に必要です。例：YYYYMMDD形式の`20181025`。推奨形式はYYYYMMDDですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を調整できます。可能な場合は、日付をUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**パラメーターと**予約日形式**パラメーターの両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
+| 予約日形式 | **予約日**をUNIXタイムスタンプ形式で指定できない場合に必要です。秒単位の予約時刻も必要です。例：`20201025173002`。推奨形式はYmdHisですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を調整できます。可能な場合は、日付をUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
+| マージン | 予約のコミッションとして受け取る予約金額の割合。例：`15.8`。 |
+| マージン絶対額 | マージンを割合で指定できない場合は、代わりに絶対額で指定できます（例：`60.30 USD`）。**マージン絶対額**の通貨は、金額に指定した通貨と一致する必要があります。 |
+
+### 予約確認を更新
+
+#### パラメーター
+
+必須パラメーター：
+
+| **パラメーター** | **説明** |
+| --- | --- |
+| TRV参照 | URLの末尾に指定される一意のトラッキングパラメーター。 |
+| 広告主ID | Trivagoから広告主に通知されるTrivago広告主ID。この値は、1つの広告主に対して常に同じです。 |
+| ホテル | 予約されたホテルに対する広告主固有のホテルID。在庫フィードで使用されるIDと同一である必要があります。 |
+| 到着日 | 到着日（UNIXタイムスタンプ）。 |
+| 出発日 | 出発日（UNIXタイムスタンプ）。 |
+| 予約日 | 予約送信日（UNIXタイムスタンプ）。 |
+| 金額 | 1回の滞在に対する予約の合計総額（すべての部屋、すべての宿泊日を含む）。総額は、正味料金に予約手数料とVATを加えた金額です。 |
+| 通貨 | ISO 4217コードの通貨。 |
+| 予約ID | 広告主の予約参照番号。 |
+| ロケール | 広告主のサイトにリダイレクトされる前に、ユーザーがクリックしたTrivagoの`POS`が含まれます。詳細については、[Trivago > サポートされているロケールと言語](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。URLに識別子を追加する必要がある場合は、テクニカルアカウントマネージャーにお問い合わせください。 |
+| 部屋数 | 同じ**予約ID**で予約された部屋の合計数。 |
+| 日付形式 | 到着日と出発日をUNIXタイムスタンプ形式で指定できない場合に必要です。これらの日付は別の形式で指定できます。例：YYYMMDD形式の`20181025`。推奨形式はYYMMDDですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を調整できます。可能な場合は、日付をUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
+| 予約日形式 | **予約日**をUNIXタイムスタンプ形式で指定できない場合に必要です。秒単位の予約時刻も必要です。例：`20201025173002`。推奨形式はYmdHisですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を調整できます。可能な場合は、日付をUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"）。 |
+| マージン | 予約のコミッションとして受け取る予約金額の割合。例：`15.8`）。 |
+| マージン絶対額 | マージンを割合で指定できない場合は、代わりに絶対額で指定できます。例：`60.30 USD`。**マージン絶対額**の通貨は、金額に指定した通貨と一致する必要があります。 |
+| 更新日 | 予約の更新日。 |
+| 更新日形式 | **更新日**をUNIXタイムスタンプ形式で指定できない場合に必要です。秒単位のキャンセル時刻（例：`20201025173002`）も必要です。推奨形式はYmdHisですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を調整できます。可能な場合は、日付をUTC形式で送信してください。UTCベースのタイムスタンプを**更新日**と**更新日形式**の両方に含める必要があります（例：`update_date_format`:"YmdHisP", `update_date`:"`20200929123015+07:00`"）。 |
+| 更新元 | PUT呼び出しが、指定された予約確認データに対するユーザーまたは広告主による更新のどちらに基づくかを示します。指定可能な値は`advertiser`または`user`です。 |
+
+### 予約確認を削除
+#### パラメーター
+必須パラメーター：
+
+| **パラメーター** | **説明** |
+| --- | --- |
+| TRVリファレンス | URLの末尾に指定される一意のトラッキングパラメーター。 |
+| 広告主ID | Trivagoによって定義され、広告主に通知されるTrivago広告主ID。この値は、1つの広告主に対して常に同じです。 |
+| ホテル | 予約されたホテルに対する広告主固有のホテルID。在庫フィードで使用されるIDと同一である必要があります。 |
+| 到着日 | 到着日（UNIXタイムスタンプ）。 |
+| 出発日 | 出発日（UNIXタイムスタンプ）。 |
+| 予約日 | 予約の送信日時（UNIXタイムスタンプ）。 |
+| 予約金額 | 1滞在あたりの予約総額（すべての客室、すべての宿泊日を含む）。総額は、正味料金に予約手数料とVATを加えた金額です。 |
+| 通貨 | ISO 4217コードで表した通貨。 |
+| 予約ID | 広告主の予約参照番号。 |
+| ロケール | 広告主のサイトにリダイレクトされる前に、ユーザーがクリックしたTrivagoの`POS`が含まれます。詳細については、[Trivago > サポートされているロケールと言語](https://developer.trivago.com/fastconnect/supported-locales.html)を参照してください。識別子をURLに追加する必要がある場合は、担当のテクニカルアカウントマネージャーにお問い合わせください。 |
+| 客室数 | 同じ**予約ID**で予約された客室の合計数。 |
+| 日付形式 | 到着日と出発日をUNIXタイムスタンプ形式で指定できない場合に必須です。例：YYYYMMDD形式の`20181025`。推奨形式はYYYYMMDDですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を変更できます。可能な場合、日付はUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015+07:00`"。 |
+| 予約日形式 | **予約日**をUNIXタイムスタンプ形式で指定できない場合に必須です。秒単位の予約時刻（例：`20201025173002`）も必須です。推奨形式はYmdHisですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を変更できます。可能な場合、日付はUTC形式で送信してください。それ以外の場合は、UTCベースのタイムスタンプを**予約日**と**予約日形式**の両方に含める必要があります。例：`booking_date_format`:"YmdHisP", `booking_date`:"`20200929123015`+07:`00`"。 |
+| マージン | 予約のコミッションとして受け取る予約金額の割合。例：`15.8`。 |
+| 絶対マージン | マージンを割合で指定できない場合は、代わりに絶対値で指定できます。例：`60.30 USD`。**絶対マージン**の通貨は、予約金額に指定した通貨と一致する必要があります。 |
+| 返金額 | 1滞在あたりの返金総額（すべての客室、すべての宿泊日、すべての手数料を含む）。**返金率**が指定されている場合でも、`DELETE`呼び出しではこのパラメーターが必須です。 |
+| 返金率 | 指定された予約金額のうち、返金される割合を示します。小数点以下4桁で送信する必要があります。例：1.0000 = 100%、0.0000 = 0.00%、0.5052 = 50.52%。 |
+| キャンセル日 | キャンセルの送信日時。 |
+| キャンセル日形式 | **キャンセル日**をUNIXタイムスタンプ形式で指定できない場合に必須です。秒単位のキャンセル時刻（例：`20201025173002`）も必須です。推奨形式はYmdHisですが、[使用可能な形式](https://developer.trivago.com/conversiontracking/conversion-api.html#dateformat)に従って、必要に応じて区切り文字を変更できます。日付はUTC形式で送信してください。これが不可能な場合は、UTCベースのタイムスタンプを**キャンセル日**と**キャンセル日形式**の両方に含める必要があります。例：`cancellation_date_format`:"YmdHisP", `cancellation_date`:"`20200929123015+07:00`"。 |

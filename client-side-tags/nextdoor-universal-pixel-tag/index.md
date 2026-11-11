@@ -5,13 +5,13 @@ url: https://docs.tealium.com/client-side-tags/nextdoor-universal-pixel-tag/
 ---
 The Nextdoor Universal Tracking Pixel enables standardized event-based tracking across your website, supporting Nextdoor’s updated attribution and optimization models.
 
-## Tag Tips
+## Tag tips
 
 * Use mappings to override Standard parameters.
 * Supports E-Commerce extension parameters.
 * Restricted data usage gives advertisers control over how your data is used in Nextdoor’s systems and better supports your compliance efforts with various US state privacy regulations. When advertisers enable restricted data usage, Nextdoor limits how it uses personal data from people in certain states, as required by state-specific terms. This may reduce campaign performance and limit retargeting and measurement features.
 
-## Tag Configuration
+## Tag configuration
 
 Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
@@ -22,13 +22,13 @@ When adding the tag, configure the following settings:
 * **Auto Purchase Event**: Automatically create a trigger for purchase events.
 * **Auto Generate Event ID**: Automatically generate an Event ID for every Nextdoor tracking event.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag loads. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -88,7 +88,7 @@ The available categories are:
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|

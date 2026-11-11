@@ -1,17 +1,17 @@
 ---
-title: Integrate with Tealium iQ
+title: Integrate with Tag Management
 description: This article describes the process of publishing on the server side of the Tealium platform.
 url: https://docs.tealium.com/server-side/save-publish/with-tealium-iq/
 ---
 ## Import data layer variables
 
-Customer Data Hub can make use of the variables from Tealium iQ. To do so the Tealium iQ profile must be published to the Prod environment to make these variables appear as attributes within Customer Data Hub.
+Customer Data Hub can make use of the variables from Tag Management. To do so the Tag Management profile must be published to the Prod environment to make these variables appear as attributes within Customer Data Hub.
 
 ## Data layer enrichment
 
-Tealium iQ can make use of AudienceStream attributes through a feature called [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/). To make your visitor attributes available in Tealium iQ, your server-side configuration must be published. These attributes can then be used like any other data layer variable.
+Tag Management can make use of Customer Data Platform (CDP) attributes through a feature called [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/). To make your visitor attributes available in Tag Management, your server-side configuration must be published. These attributes can then be used like any other data layer variable.
 
-By default, a Tealium iQ profile will attempt to import visitor attributes from the corresponding server-side profile. For example, the Tealium iQ profile `tealium/main` will read from the server-side profile `tealium/main`.
+By default, a Tag Management profile will attempt to import visitor attributes from the corresponding server-side profile. For example, the Tag Management profile `tealium/main` will read from the server-side profile `tealium/main`.
 
 However, it's possible to import visitor attributes from a different server-side profile.
 

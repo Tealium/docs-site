@@ -1,156 +1,156 @@
 ---
-title: UserWayタグの構成
-description: この記事では、Tealium iQタグ管理アカウントでUserWayタグを構成する方法について説明します。
+title: UserWay タグの構成
+description: この記事では、タグ管理アカウントでUserWayタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/userway-tag/
 ---
-UserWayは、ウェブサイトの既存のコードをリファクタリングすることなくADA準拠を確保するための高度なウェブサイトアクセシビリティソリューションを作成します。UserWayのRaaS™とTealiumを使用すると、ユーザーはWCAG 2.1、ADA、ATAG 2.0、EN 301-549、およびセクション508の規制に簡単に準拠することができます。これらは、米国および国際的な政府機関および規制機関が必要とするものです。
 
-## タグのヒント
+UserWayは、既存のWebサイトコードをリファクタリングすることなく、ADAへの準拠を支援する高度なWebサイトアクセシビリティソリューションを提供します。UserWayのRaaS™とTealiumを組み合わせることで、米国および各国の政府機関・規制機関が定めるWCAG 2.1、ADA、ATAG 2.0、EN 301-549、Section 508の各規制への準拠を容易にエンリッチメントできます。
 
-* マッピングを使用してタグの構成を上書きまたは動的に構成します。
+## タグに関するヒント
+
+* マッピングを使用して、タグ構成を上書きまたは動的に構成します。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加するときに、次の構成を構成します。
 
-* **Data-account**: シングルテキストフィールド
+* **Data-account**：単一テキストフィールド
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。ロードルールの詳細については、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### 共通
 
-|変数| 説明|
-|---| ---|
-|UserWay APIバージョンを取得。| `(getVersion)`|
-|UserWayアクセシビリティメニューアイコンを表示。| `(iconVisibilityOn)`|
-|UserWayアクセシビリティメニューアイコンを非表示。| `(iconVisibilityOff)`|
-|UserWayアクセシビリティアイコンの表示を切り替え。| `(iconVisibilityToggle)`|
+|変数|説明|
+|---|---|
+|UserWay APIのバージョンを取得します。| `(getVersion)`|
+|UserWayアクセシビリティメニューアイコンを表示します。| `(iconVisibilityOn)`|
+|UserWayアクセシビリティメニューアイコンを非表示にします。| `(iconVisibilityOff)`|
+|UserWayアクセシビリティアイコンの表示と非表示を切り替えます。| `(iconVisibilityToggle)`|
 
 ### ウィジェットメソッド
 
-|変数| 説明|
-|---| ---|
-|ウィジェットメニューを開くか閉じる。| `(widgetToggle)`|
-|ウィジェットメニューを開く。| `(widgetOpen)`|
-|ウィジェットメニューを閉じる。| `(widgetClose)`|
-|すべてのウィジェット機能をリセット。| `(resetAll)`|
+|変数|説明|
+|---|---|
+|ウィジェットメニューを開閉します。| `(widgetToggle)`|
+|ウィジェットメニューを開きます。| `(widgetOpen)`|
+|ウィジェットメニューを閉じます。| `(widgetClose)`|
+|ウィジェットのすべての機能をリセットします。| `(resetAll)`|
 
 ### キーボードナビゲーション
 
-|変数| 説明|
-|---| ---|
-|キーボードナビゲーションを有効または無効にする。| `(keyboardNavToggle)`|
-|キーボードナビゲーションを有効にする。| `(keyboardNavEnable)`|
-|キーボードナビゲーションを無効にする。| `(keyboardNavDisable)`|
+|変数|説明|
+|---|---|
+|キーボードナビゲーションを有効または無効にします。| `(keyboardNavToggle)`|
+|キーボードナビゲーションを有効にします。| `(keyboardNavEnable)`|
+|キーボードナビゲーションを無効にします。| `(keyboardNavDisable)`|
 
-### ビッグカーソル
+### 大きなカーソル
 
-|変数| 説明|
-|---| ---|
-|ビッグカーソルを有効または無効にする。| `(bigCursorToggle)`|
-|ビッグカーソルを有効にする。| `(bigCursorEnable)`|
-|ビッグカーソルを無効にする。| `(bigCursorDisable)`|
+|変数|説明|
+|---|---|
+|大きなカーソルを有効または無効にします。| `(bigCursorToggle)`|
+|大きなカーソルを有効にします。| `(bigCursorEnable)`|
+|大きなカーソルを無効にします。| `(bigCursorDisable)`|
 
 ### リーディングガイド
 
-|変数| 説明|
-|---| ---|
-|リーディングガイドを有効または無効にする。| `(readingGuideToggle)`|
-|リーディングガイドを有効にする。| `(readingGuideEnable)`|
-|リーディングガイドを無効にする。| `(readingGuideDisable)`|
+|変数|説明|
+|---|---|
+|リーディングガイドを有効または無効にします。| `(readingGuideToggle)`|
+|リーディングガイドを有効にします。| `(readingGuideEnable)`|
+|リーディングガイドを無効にします。| `(readingGuideDisable)`|
 
 ### コントラスト機能
 
-|変数| 説明|
-|---| ---|
-|コントラスト機能を有効または無効にする。| `(contrastToggle)`|
-|コントラスト機能を有効にする、整数値は `1` から `4` または空。| `(contrastEnable)`|
-|コントラスト機能を無効にする。| `(contrastDisable)`|
+|変数|説明|
+|---|---|
+|コントラスト機能を有効または無効にします。| `(contrastToggle)`|
+|コントラスト機能を有効にします。`1`から`4`までの整数値または空の値を指定します。| `(contrastEnable)`|
+|コントラスト機能を無効にします。| `(contrastDisable)`|
 
-### ビッグテキスト
+### 大きなテキスト
 
-|変数| 説明|
-|---| ---|
-|ビッグテキスト機能を有効または無効にする。| `(bigTextToggle)`|
-|ビッグテキスト機能を有効にする、整数値は `1` から `4` または空。| `(bigTextEnable)`|
-|ビッグテキスト機能を無効にする。| `(bigTextDisable)`|
+|変数|説明|
+|---|---|
+|大きなテキスト機能を有効または無効にします。| `(bigTextToggle)`|
+|大きなテキスト機能を有効にします。`1`から`4`までの整数値または空の値を指定します。| `(bigTextEnable)`|
+|大きなテキスト機能を無効にします。| `(bigTextDisable)`|
 
 ### ハイライト機能
 
-|変数| 説明|
-|---| ---|
-|ハイライト機能を有効または無効にする。| `(highlightToggle)`|
-|ハイライト機能を有効にする。| `(highlightEnable)`|
-|ハイライト機能を無効にする。| `(highlightDisable)`|
+|変数|説明|
+|---|---|
+|ハイライト機能を有効または無効にします。| `(highlightToggle)`|
+|ハイライト機能を有効にします。| `(highlightEnable)`|
+|ハイライト機能を無効にします。| `(highlightDisable)`|
 
 ### 読みやすいフォント
 
-|変数| 説明|
-|---| ---|
-|読みやすいフォント機能を有効または無効にする。| `(legibleFontsToggle)`|
-|読みやすいフォント機能を有効にする。| `(legibleFontsEnable)`|
-|読みやすいフォント機能を無効にする。| `(legibleFontsDisable)`|
+|変数|説明|
+|---|---|
+|読みやすいフォント機能を有効または無効にします。| `(legibleFontsToggle)`|
+|読みやすいフォント機能を有効にします。| `(legibleFontsEnable)`|
+|読みやすいフォント機能を無効にします。| `(legibleFontsDisable)`|
 
 ### テキスト間隔
 
-|変数| 説明|
-|---| ---|
-|テキスト間隔機能を有効または無効にする。| `(textSpacingToggle)`|
-|テキスト間隔機能を有効にする、整数値は `1` から `3` または空。| `(textSpacingEnable)`|
-|テキスト間隔機能を無効にする。| `(textSpacingDisable)`|
+|変数|説明|
+|---|---|
+|テキスト間隔機能を有効または無効にします。| `(textSpacingToggle)`|
+|テキスト間隔機能を有効にします。`1`から`3`までの整数値または空の値を指定します。| `(textSpacingEnable)`|
+|テキスト間隔機能を無効にします。| `(textSpacingDisable)`|
 
-### ReadPage
+### ページ読み上げ
 
-|変数| 説明|
-|---| ---|
-|**Read Page** 機能の読み上げ速度を有効化、無効化、または変更する。| `(readPageToggle)`|
-|Read Page機能を有効にする。| `(readPageEnable)`|
-|Read Page機能を無効にする。| `(readPageDisable)`|
+|変数|説明|
+|---|---|
+|**ページ読み上げ**機能を有効化、無効化、または読み上げ速度を変更します。| `(readPageToggle)`|
+|ページ読み上げ機能を有効にします。| `(readPageEnable)`|
+|ページ読み上げ機能を無効にします。| `(readPageDisable)`|
 
-### PageStructure
+### ページ構造
 
-|変数| 説明|
-|---| ---|
-|事前定義された **headers** タブを持つページ構造ビューを有効にする。| `(pageStructureHeaders)`|
-|事前定義された **landmarks** タブを持つページ構造ビューを有効にする。| `(pageStructureLandmarks)`|
-|事前定義された **links** タブを持つページ構造ビューを有効にする。| `(pageStructureLinks)`|
-|ページ構造機能を無効にする。| `(pageStructureDisable)`|
+|変数|説明|
+|---|---|
+|あらかじめ**見出し**タブを選択した状態でページ構造ビューを有効にします。| `(pageStructureHeaders)`|
+|あらかじめ**ランドマーク**タブを選択した状態でページ構造ビューを有効にします。| `(pageStructureLandmarks)`|
+|あらかじめ**リンク**タブを選択した状態でページ構造ビューを有効にします。| `(pageStructureLinks)`|
+|ページ構造機能を無効にします。| `(pageStructureDisable)`|
 
 ### ツールチップ
 
-|変数| 説明|
-|---| ---|
-|ツールチップ機能を有効または無効にする。| `(tooltipsToggle)`|
-|ツールチップ機能を有効にする。| `(tooltipsEnable)`|
-|ツールチップ機能を無効にする。| `(tooltipsDisable)`|
+|変数|説明|
+|---|---|
+|ツールチップ機能を有効または無効にします。| `(tooltipsToggle)`|
+|ツールチップ機能を有効にします。| `(tooltipsEnable)`|
+|ツールチップ機能を無効にします。| `(tooltipsDisable)`|
 
 ### アニメーションの停止
 
-|変数| 説明|
-|---| ---|
-|アニメーション停止機能を有効または無効にする。| `(stopAnimationToggle)`|
-|アニメーション停止機能を有効にする。| `(stopAnimationEnable)`|
-|アニメーション停止機能を無効にする。| `(stopAnimationDisable)`|
+|変数|説明|
+|---|---|
+|アニメーション停止機能を有効または無効にします。| `(stopAnimationToggle)`|
+|アニメーション停止機能を有効にします。| `(stopAnimationEnable)`|
+|アニメーション停止機能を無効にします。| `(stopAnimationDisable)`|
 
 ### クイックアクセシビリティメニュー
 
-|変数| 説明|
-|---| ---|
-|クイックアクセシビリティメニューを開く。| `(openQuickAccessibilityMenu)`|
+|変数|説明|
+|---|---|
+|クイックアクセシビリティメニューを開きます。| `(openQuickAccessibilityMenu)`|
 
 ### ウィジェット構成
 
-|変数| 説明|
-|---| ---|
-|ウィジェットの言語を動的に更新。ページのリフレッシュは必要ありません。| `(changeWidgetLanguage)`|
-
+|変数|説明|
+|---|---|
+|ウィジェットの言語を動的に更新します。ページを再読み込みする必要はありません。| `(changeWidgetLanguage)`|

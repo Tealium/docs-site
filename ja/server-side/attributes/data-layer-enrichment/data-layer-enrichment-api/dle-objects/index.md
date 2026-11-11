@@ -2,25 +2,25 @@
 title: データレイヤーエンリッチメントAPIオブジェクト
 url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/
 ---
-データレイヤーエンリッチメントAPIオブジェクトには、AudienceStream属性に対応する以下のプロパティがあります：
+データレイヤーエンリッチメントAPIオブジェクトには、顧客データプラットフォーム（CDP）の属性に対応する次のプロパティがあります。
 
-|プロパティ| AudienceStream属性 | 説明|
+|プロパティ| CDP属性 | 説明|
 |---| ---|---|
-|`audiences`|  **Audiences**| ユーザーが所属する各オーディエンスのキーと値のペアを含むオブジェクトで、キーは `ACCOUNT_PROFILE_ID` で、値はオーディエンスの名前です。例：<br> ``` audiences: {     "tealium_main_208" : "Mobile User",     "tealium_main_209" : "DV Attendee" } ``` |
-|`badges`|  **Badges**| ユーザーに割り当てられた各バッジのキーと値のペアを含むオブジェクトで、キーは `BADGE-ID` で、値は `true` です。例：<br> ``` badges: {     30: true,     128: true,     323: true } ``` |
-|`current_visit`|  **Visit Attributes**| 関連する訪問スコープの属性をすべて含むオブジェクト。例：<br>``` current_visit: {     dates: { ... },     flags: { ... }, // boolean attributes     metrics: { ... }, // number attributes     properties: { ... }, // string attributes     property_sets: { ... } // set of string attributes } ``` |
-|`dates`|  **Dates**| キーがデータ属性の属性IDまたは `audience_account_profile_id_count_ts` 形式のオーディエンスIDで、値がUnixタイムスタンプであるキーと値のペアを含むオブジェクト。例：<br> ``` dates: {     9356: 1491233145706,     audience_tealium_main_103_count_ts: 1532722471000 } ``` |
-|`flags`|  **Booleans**| 各ブール属性のキーと値のペアを含むオブジェクトで、キーは`BOOLEAN-ID`で、値は `true` または `false` です。例: <br>``` flags: {     530: true,     6128: false } ``` |
-|`flag_lists`|  **Arrays of Booleans**| キーと値のペアを含むオブジェクトで、キーは`BOOLEAN-ID`で、値はブール値（`true` または `false`）の配列です。例:<br> ``` flag_lists: {      620: [true, false, false],     718: [false, true] } ``` |
-|`metrics`|  **Numbers**| 各数値属性のキーと値のペアを含むオブジェクトで、キーは属性IDで、値は数値です。例:<br> ``` "metrics": {     "5388": 132,     "5390": 113,     "5482": 1,     "5492": 104,     "5500": 1 } ``` |
-|`metric_lists`|  **Arrays of Numbers**| 各数値属性のキーと値のペアを含むオブジェクトで、キーは属性IDで、値は数値の配列です。例: <br> ``` `metric_lists: {      432: [15, 248],     519: [61, 47, 962],    674: [9, 16, 21, 53]    },` ``` |
-|`metric_sets`|  **Tallies**| キーが属性のIDで、値が集計の内容を持つオブジェクトであるサブオブジェクトを含むオブジェクト。例: ``` metric_sets: {     57: {         Chrome: 2470,         Firefox: 9,         Safari: 10     } } ``` |
-|`properties`|  **Strings**| キーが文字列属性のIDで、値が保存された値であるキーと値のペアを含むオブジェクト。例:<br> ``` properties: {     9921: "United States",     9923: "tealium.com" } ``` |
-|`property_lists`|  **Arrays of Strings**| 各文字列属性のキーと値のペアを含むオブジェクトで、キーは属性IDで、値は文字列の配列です。例:<br> ``` property_lists: {      954: ["North American", "EMEA"],     973: ["Email", "Customer ID", "Phone"] } ``` |
-|`property_sets`|  **Sets of Strings**| キーが属性のIDで、値が保存された一意の値の配列であるキーと値のペアを含むオブジェクト。例:<br> ``` property_sets: {     7604: ["Social", "Display", "DMP", "CRM"],     7606: ["Personalization", "Analytics", "Email"] } ``` |
+|`audiences`| **オーディエンス**| ユーザーが属する各オーディエンスのキーと値のペアを含むオブジェクトです。キーは`ACCOUNT_PROFILE_ID`、値はオーディエンス名です。例：<br> ``` audiences: {     "tealium_main_208" : "Mobile User",     "tealium_main_209" : "DV Attendee" } ``` |
+|`badges`| **バッジ**| ユーザーに割り当てられた各バッジのキーと値のペアを含むオブジェクトです。キーは`BADGE-ID`、値は`true`です。例：<br> ``` badges: {     30: true,     128: true,     323: true } ``` |
+|`current_visit`| **訪問属性**| 関連するすべての訪問スコープ属性を含むオブジェクトです。例：<br>``` current_visit: {     dates: { ... },     flags: { ... }, // boolean attributes     metrics: { ... }, // number attributes     properties: { ... }, // string attributes     property_sets: { ... } // set of string attributes } ``` |
+|`dates`| **日付**| キーと値のペアを含むオブジェクトです。キーはデータ属性の属性ID、または`audience_account_profile_id_count_ts`形式のオーディエンスIDで、値はUnixタイムスタンプです。例：<br> ``` dates: {     9356: 1491233145706,     audience_tealium_main_103_count_ts: 1532722471000 } ``` |
+|`flags`| **ブール値**| 各ブール属性のキーと値のペアを含むオブジェクトです。キーは`BOOLEAN-ID`、値は`true`または`false`です。例：<br>``` flags: {     530: true,     6128: false } ``` |
+|`flag_lists`| **ブール値の配列**| キーと値のペアを含むオブジェクトです。キーは`BOOLEAN-ID`、値はブール値（`true`または`false`）の配列です。例：<br> ``` flag_lists: {      620: [true, false, false],     718: [false, true] } ``` |
+|`metrics`| **数値**| 各数値属性のキーと値のペアを含むオブジェクトです。キーは属性ID、値は数値です。例：<br> ``` "metrics": {     "5388": 132,     "5390": 113,     "5482": 1,     "5492": 104,     "5500": 1 } ``` |
+|`metric_lists`| **数値の配列**| 各数値属性のキーと値のペアを含むオブジェクトです。キーは属性ID、値は数値の配列です。例：<br> ``` `metric_lists: {      432: [15, 248],     519: [61, 47, 962],    674: [9, 16, 21, 53]    },` ``` |
+|`metric_sets`| **集計**| 集計属性を表すサブオブジェクトを含むオブジェクトです。キーは属性ID、値は集計の内容を持つオブジェクトです。例： ``` metric_sets: {     57: {         Chrome: 2470,         Firefox: 9,         Safari: 10     } } ``` |
+|`properties`| **文字列**| キーと値のペアを含むオブジェクトです。キーは文字列属性のID、値は保存されている値です。例：<br> ``` properties: {     9921: "United States",     9923: "tealium.com" } ``` |
+|`property_lists`| **文字列の配列**| 各文字列属性のキーと値のペアを含むオブジェクトです。キーは属性ID、値は文字列の配列です。例：<br> ``` property_lists: {      954: ["North American", "EMEA"],     973: ["Email", "Customer ID", "Phone"] } ``` |
+|`property_sets`| **文字列のセット**| キーと値のペアを含むオブジェクトです。キーは属性ID、値は保存されている一意の値の配列です。例：<br> ``` property_sets: {     7604: ["Social", "Display", "DMP", "CRM"],     7606: ["Personalization", "Analytics", "Email"] } ``` |
 
 
-## 例のレスポンス
+## レスポンスの例
 
 ```json
 {

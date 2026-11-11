@@ -5,9 +5,9 @@ url: https://docs.tealium.com/server-side/attributes/data-layer-enrichment/data-
 ---
 ## How it works
 
-After a visitor triggers an event on your site, you can use the Data Layer Enrichment API to retrieve the visitor profile. API visitor data is available for two minutes after the last activity within a visit is received as an AudienceStream event.
+After a visitor triggers an event on your site, you can use the Data Layer Enrichment API to retrieve the visitor profile. API visitor data is available for two minutes after the last activity within a visit is received as a Customer Data Platform (CDP) event.
 
-The returned AudienceStream visitor profile differs from the typical visitor profile in the following ways:
+The returned CDP visitor profile differs from the typical visitor profile in the following ways:
 
 * Badges and audiences are returned as objects
 * Timelines and funnels have been removed

@@ -15,7 +15,7 @@ This is the legacy version of the tag and will soon be deprecated and replaced w
 * Upgraded Facebook Pixel (or legacy Custom Audiences pixel)
 * Conversion Pixel (legacy)
 
-## Tag Configuration
+## Tag configuration
 
 First, go to the Tealium tag marketplace and add the Facebook Pixel tag to your profile. For more information, see [Manage Tags](https://docs.tealium.com/manage-tags/#add-a-tag).
 
@@ -25,7 +25,7 @@ The best practice is to configure a single tag instance per pixel ID for standar
 </blockquote>
 
 
-After adding the tag, configure the settings described in the following table:
+When adding the tag, configure the following settings:
 
 | Setting    | Description    |
 |:------|:-----------------|
@@ -39,7 +39,7 @@ After adding the tag, configure the settings described in the following table:
 | Enable trackSingle | <ul><li>Enables the use of trackSingle and trackSingleCustom for Facebook event tracking calls.</li><li>These trigger tracking calls only for the pixel IDs configured in this tag in scenarios where multiple Facebook pixels are loaded.</li><li>Default value is `True`</li><li>Example: `fbq('trackSingle', 'FB_PIXEL_ID', 'Purchase', customData )` <br> - OR - <br> `fbq('trackSingleCustom', 'FB_PIXEL')` </li></ul>    |
 | Enable trackCustom | <ul><li>Enables the use of `trackCustom` for Facebook event tracking calls.</li><li>You can track custom events by calling the `fbq('trackCustom')` pixel function, with your custom event name and (optionally) a JSON object as its parameters.</li><li>Example: To track visitors who share a promotion to get a discount, you could track them using the custom shown in the following example: `fbq('trackCustom','ShareDiscount',{promotion:'share_discount_10%'});` </li></ul> |
 
-## Load Rules
+## Load rules
 
 [Load rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
@@ -48,9 +48,9 @@ Recommended Load Rule:
 * For tracking standard PageView and events, use the default **All Pages** rule
 * For tracking legacy Conversion Pixel, apply custom rule conditions to load the tag on specific conversion pages.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag.The destination variables for the Facebook Pixel tag are built into the Data Mapping tab. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).The following sections describe available categories:
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 ### **Standard**
 
@@ -62,7 +62,7 @@ Use these mappings to override the tag configuration settings. This can be usefu
 | Conversion Pixel ID | `conv_pixel` | Numeric identifier of the legacy conversion pixel   |
 | Allow Init Page View [`true`/`false`]   | `page_view`  | 'init' track call   |
 | List of Events to fire  | `evt_list`   | Events listed either as comma-separated values or an array in your variable     |
-| Enable trackSingle [`true`/false]   | `track_single`   | <ul><li>Enables use of `trackSingle` and `trackSingleCustom` for event tracking.</li><li>Restricts event tracking to the pixel ID(s) added to the Facebook Pixel configuration in Tealium iQ in situations where multiple Facebook pixels are loaded.</li></ul> |
+| Enable trackSingle [`true`/false]   | `track_single`   | <ul><li>Enables use of `trackSingle` and `trackSingleCustom` for event tracking.</li><li>Restricts event tracking to the pixel ID(s) added to the Facebook Pixel configuration in Tag Management in situations where multiple Facebook pixels are loaded.</li></ul> |
 | Enable trackCustom<br> [`true`/`false`] | `track_custom`   | <ul><li>Enables the use of `trackCustom` for Facebook event tracking calls.</li></ul> <ul><li>Custom event names must be strings, and cannot exceed 50 characters in length.</li></ul>  |
 
 ### **Advanced Matching**
@@ -350,7 +350,7 @@ The following use cases represent scenarios that can be used for multiple pixels
 * **Individual Event Tracking**
   * If you are loading more than one Facebook Pixel on a single page, and you want to keep the tracking events from being recorded for all of the pixels on that page, then make sure the **Enable trackSingle** setting is `true`.
   * This setting will fire event tracking only for the pixel IDs added for that tag.
-  * If your Facebook Pixel in Tealium iQ was added before March of 2018, you may not be able to take advantage of the trackSingle feature.
+  * If your Facebook Pixel in Tag Management was added before March of 2018, you may not be able to take advantage of the trackSingle feature.
     * In this case, [update your Facebook tag template](https://docs.tealium.com/about-templates/) to the latest version. Note that the trackSingle setting is set to `true` as default.
     * You must map to `track_single` and set the value to `false` to override and disable this feature.
 
@@ -383,9 +383,9 @@ In this scenario, the URL of the hidden image pixel can be configured as follows
 1. Set the load rules and data mappings you want.
 1. Click **Apply**.
 
-## Facebook Dynamic Ads for Tealium iQ
+## Facebook Dynamic Ads for Tag Management
 
-For additional information about how to set up Facebook Dynamic Ads in Tealium iQ, see the TLC article [How to Set up Facebook Dynamic Ads in Tealium iQ](https://docs.tealium.com/client-side-tags/facebook-dynamic-ads-tag/).
+For additional information about how to set up Facebook Dynamic Ads in Tag Management, see the TLC article [How to Set up Facebook Dynamic Ads in Tag Management](https://docs.tealium.com/client-side-tags/facebook-dynamic-ads-tag/).
 
 ## Vendor Documentation
 

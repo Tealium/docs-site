@@ -5,63 +5,61 @@ url: https://docs.tealium.com/ja/client-side-tags/dun-amp-bradstreet-web-visitor
 ---
 
 <blockquote>
-このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細は、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)と[utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+このタグを`utag`バージョン4.50以降で使用する場合は、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、Cookieの同期に訪問IDを使用できるようになります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50以降へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
 </blockquote>
 
 
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して標準の構成値を動的に上書きします。
-* JavaScript Code拡張を使用して返されたデータを構成します。  
+* マッピングを使用して、標準の構成値を動的に上書きします。
+* JavaScriptコード拡張機能を使用して、返されたデータを構成します。  
 例：  
 ```javascript
 window.tealium_dnbwvid = function(dnb_Data)
 {
- // ここにデータを構成します。例：visitor_duns = dnb_Data.duns;
+ // Set data here, ex: visitor_duns = dnb_Data.duns;
 }
 ```
 
-* Dun & Bradstreetのデータをサーバーサイドの属性として利用可能にする（セッションごとに一度）：
+* Dun & Bradstreetのデータをサーバーサイド属性として使用できるようにするには（セッションごとに1回）：
 
-  * **Tealiumに送信（サーバーサイド）**を`true`に構成します
-  * 空白の場合、Tealium AccountとTealium Profileは現在のアカウントとプロファイルで自動的に入力されます。
+  * **Tealiumに送信（サーバーサイド）**を`true`に構成します。
+  * 空欄のままにすると、現在のアカウントとプロファイルがTealiumアカウントおよびTealiumプロファイルに自動的に入力されます。
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに移動し、D&B Web Visitor IDタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加したら、以下の構成を行います：
+タグを追加する際は、次の構成を構成します。
 
 * **APIキー**
-  * Dun & Bradstreetから提供されるAPIキー。
+  * Dun & Bradstreetから提供されたAPIキー。
   * 例：`//API_KEY_HERE.d41.co/sync/`
 
 * **データキー**
-  * getData呼び出しで提供されるAPIキー。
-  * APIキーを使用する場合は空白にします。
+  * getData呼び出しで指定するAPIキー。
+  * APIキーを使用する場合は空欄のままにします。
   * 例：`dnbvid.getData('DATA_KEY_HERE','json','T'... )`
 
 * **Tealiumに送信（サーバーサイド）**
 * **Tealiumアカウント**
-  * 任意。
-  * サーバーサイドリクエストで使用される`tealium_account`を上書きします。
+  * （任意）サーバーサイドリクエストに使用する`tealium_account`を上書きします。
 
 * **Tealiumプロファイル**
-  * 任意。
-  * サーバーサイドリクエストで使用される`tealium_profile`を上書きします。
+  * （任意）サーバーサイドリクエストに使用する`tealium_profile`を上書きします。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは次のとおりです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
+|変数|説明|
 |---| ---|
-|`api_key`|  <ul><li>Dun & Bradstreetから提供されるAPIキー。</li><li>例：`//API_KEY_HERE.d41.co/sync/`</li></ul> |
-|`data_key`|  <ul><li>getData呼び出しで提供されるAPIキー。</li><li>APIキーを使用する場合は空白にします。</li><li>例：`dnbvid.getData('DATA_KEY_HERE','json','T'... )`</li></ul> |
-|`send_to_tealium`|  <ul><li>Tealiumに送信</li><li>Dun & Bradstreetから受け取ったデータがTealiumサーバーサイドに利用可能になります。</li></ul> |
-|`tealium_account`|  <ul><li>Tealiumアカウント</li><li>任意。</li><li>サーバーサイドリクエストで使用される`tealium_account`を上書きします。</li></ul> |
-|`tealium_profile`|  <ul><li>Tealiumプロファイル</li><li>任意。</li><li>サーバーサイドリクエストで使用される`tealium_profile`を上書きします。</li></ul> |
+|`api_key`|  <ul><li>Dun & Bradstreetから提供されたAPIキー。</li><li>例：`//API_KEY_HERE.d41.co/sync/`</li></ul> |
+|`data_key`|  <ul><li>getData呼び出しで指定するAPIキー。</li><li>APIキーを使用する場合は空欄のままにします。</li><li>例：`dnbvid.getData('DATA_KEY_HERE','json','T'... )`</li></ul> |
+|`send_to_tealium`|  <ul><li>Tealiumに送信</li><li>Dun & Bradstreetから受信したデータをTealiumのサーバーサイドで使用できるようにします。</li></ul> |
+|`tealium_account`|  <ul><li>（任意）Tealiumアカウント</li><li>サーバーサイドリクエストに使用する`tealium_account`を上書きします。</li></ul> |
+|`tealium_profile`|  <ul><li>（任意）Tealiumプロファイル</li><li>サーバーサイドリクエストに使用する`tealium_profile`を上書きします。</li></ul> |

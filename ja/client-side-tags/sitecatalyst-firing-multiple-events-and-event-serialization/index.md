@@ -1,12 +1,12 @@
 ---
-title: SiteCatalystで複数のイベントを発火させるとイベントのシリアライズ
-description: 以下は、2015年9月2日にリリースされたSiteCatalystテンプレートで利用可能な変更を説明しています。タグ名は「SiteCatalyst」と「SiteCatalyst AppMeasurement for JS」です。
+title: SiteCatalyst での複数イベントの発火とイベントシリアル化
+description: 以下では、2015 年 9 月 2 日にリリースされた SiteCatalyst テンプレートで利用可能になった変更について説明します。タグ名は「SiteCatalyst」および「SiteCatalyst AppMeasurement for JS」です。
 url: https://docs.tealium.com/ja/client-side-tags/sitecatalyst-firing-multiple-events-and-event-serialization/
 ---
 
-## この機能を持つ最新のテンプレートを持っているかどうかはどうやって知るのですか？
+## この機能を含む最新のテンプレートを使用しているか確認するにはどうすればよいですか？
 
-テンプレートの上部には、テンプレートIDと日付（タイムスタンプ）があり、フォーマットは`YYYYMMDD`です。この機能は`20150827`のテンプレートに追加されました。
+テンプレートの先頭には、テンプレート ID と `YYYYMMDD` 形式の日付で始まる日付（タイムスタンプ）があります。この機能は `20150827` テンプレートで追加されました。
 
 ```
 //~~tv:19004.h27.20150827
@@ -14,40 +14,40 @@ url: https://docs.tealium.com/ja/client-side-tags/sitecatalyst-firing-multiple-e
 
 
 <blockquote>
-このタイムスタンプは、タグテンプレートの更新日付であり（これは、このテンプレートが本番環境で利用可能になる日付よりも早いです）。<br><br>
-また、この機能は後のテンプレート（例えば、`20150929`）でも期待できます。
+このタイムスタンプはタグテンプレートの更新日です（このテンプレートが本番環境で利用可能になる日付よりも前になります）。<br><br>
+この機能は、それ以降のテンプレート（例：`20150929`）でも利用できます。
 </blockquote>
 
 
-## イベントのシリアライズ
+## イベントシリアル化
 
-データレイヤーに`myevent`があり、これがマッピングツールボックスで`click:event5`にマッピングされている場合、次のようにするとシリアライズ番号`12345`で`event5`がトリガーされます。
+データレイヤーに `myevent` があり、マッピングツールボックスでこれが `click:event5` にマッピングされている場合、以下を実行すると、シリアル番号 `12345` を使用して `event5` が発火します。
 
 `utag.view( \{ myevent : "click:12345" \} );`
 
-## 複数のイベントの発火
+## 複数イベントの発火
 
-更新されたテンプレートでは、別のマッピングを追加し、データレイヤーの文字列リストを使用して2つ以上のイベントを許可します。以下の例では、マッピングに"product-view:prodView"があり、データレイヤー変数"myevent"の値リストに"product-view"文字列を追加しています。
+更新されたテンプレートでは、別のマッピングを追加し、データレイヤーでカンマ区切りの文字列リストを使用することで、2 つ以上のイベントを発火できます。以下の例では、マッピングに「product-view:prodView」を構成し、データレイヤー変数「myevent」の値リストにも「product-view」文字列を追加しています。
 
 `utag.view( \{ myevent : "product-view,click:12345" \} );`
 
-JavaScriptが配列を文字列に変換し、その過程でカンマを追加するので、次の配列は文字列内のカンマ区切りリストと同じように動作します：
+JavaScript は配列を文字列に変換し、その際にカンマを追加するため、以下の配列は文字列内のカンマ区切りリストと同様に機能します。
 
 `utag.view( \{ myevent : ["product-view", "click:12345"] \} );`
 
-### 注意
+### 注記
 
-* マッピング変数にスペースが含まれることを想定している場合は、Extensionを使用して値をクリーンアップします。テンプレートは変数値の操作（例えば、文字列のクリーンアップ）を行いません。
+* マッピングされた変数にスペースが含まれる可能性がある場合は、Extension を使用して値をクリーンアップしてください。テンプレートでは変数値の操作（文字列のクリーンアップなど）は行われません。
 
-* 値のリストとマッピングの複数のマッチがある場合、イベントは一度だけ発火します（例えば、`s.events`に一度だけ追加されます）。
+* 値のリストがあり、マッピングで複数の一致が見つかった場合でも、イベントは 1 回だけ発火します（たとえば、`s.events` には 1 回だけ追加されます）。
 
-* 下記のブログリンクでは、Adobeがサーバーサイドでイベントのシリアライズを行う別の方法を持っているようです。この機能は実装で不要になり、AdobeのUIでのレポート構成で行うことができます。
-
+* 以下のブログリンクによると、Adobe ではサーバー側でイベントをシリアル化する別の方法も提供しているようです。この機能は実装では不要になっており、Adobe の UI でレポート構成を使用して実現できます。
+ 
 ## ベンダー情報
 
-このタイムスタンプは、タグテンプレートの更新日付であり（これは、このテンプレートが本番環境で利用可能になる日付よりも早いです）。<br><br>
-また、この機能は後のテンプレート（例えば、`20150929`）でも期待できます。
+このタイムスタンプはタグテンプレートの更新日です（このテンプレートが本番環境で利用可能になる日付よりも前になります）。<br><br>
+この機能は、それ以降のテンプレート（例：`20150929`）でも利用できます。
 
-* [Omniture Sitecatalyst内のイベントシリアライゼーション](https://blogs.adobe.com/digitalmarketing/analytics/event-serialization-inside-omniture-sitecatalyst/)
-* [イベントシリアライゼーション](https://helpx.adobe.com/analytics/using/event-serialization.html)
-* [Adobe Analyticsのオンデマンドメトリクスにこんにちは](http://blogs.adobe.com/digitalmarketing/analytics/say-hello-to-on-demand-metrics-in-adobe-analytics/)
+* [Omniture SiteCatalyst 内でのイベントシリアル化](https://blogs.adobe.com/digitalmarketing/analytics/event-serialization-inside-omniture-sitecatalyst/)
+* [イベントシリアル化](https://helpx.adobe.com/analytics/using/event-serialization.html)
+* [Adobe Analytics のオンデマンド指標のご紹介](http://blogs.adobe.com/digitalmarketing/analytics/say-hello-to-on-demand-metrics-in-adobe-analytics/)

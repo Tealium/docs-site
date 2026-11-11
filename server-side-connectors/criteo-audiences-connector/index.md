@@ -11,7 +11,7 @@ We reccomend that you use the [Criteo Audiences (OAuth) connector](https://docs.
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add User to Audience| ✓| ✓|
 |Remove User from Audience| ✓| ✓|
@@ -53,7 +53,7 @@ The **Criteo Consent Portal** appears.
 
 ### Add Connector and Configure Settings
 
-Go to the Connector Marketplace and add the Criteo Audiences connector to your profile. For general instructions on how to add a connector, see [Connector Overview](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -62,9 +62,7 @@ Configure the **Advertiser ID** associated with an integration in your Criteo ac
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add User to Audience
 
@@ -74,7 +72,7 @@ This section describes how to set up parameters and options for each action.
 |---| ---|
 |Audience|  Select an audience or enter the Audience ID to add the user to. |
 | Identifier | Map a user identifier value. <ul><li>**Email**: Send email value as-is without applying built-in hashing. Select this option if the value requires no hashing or is already hashed.</li><li>**Email (apply MD5 hash)**: Hash email value with MD5 before sending.</li><li>**Email (apply MD5 SHA256 hash)**: Hash email value with MD5 and then SHA256 before sending.</li><li>**Mobile ID**: IDFA mobile ID for Apple, ADID mobile ID for Android.</li><li>**Identity Link**: Identity Link</li><li>**Gum ID**: Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request.</li></ul> |
-| Gum Caller ID | Gum Caller `ID` - Value used by Criteo for `GUM` (Generative Unified Media) salting. If using the Tealium iQ Criteo Cookie Matching Service tag, leave this unmapped. |
+| Gum Caller ID | Gum Caller `ID` - Value used by Criteo for `GUM` (Generative Unified Media) salting. If using the Tag Management Criteo Cookie Matching Service tag, leave this unmapped. |
 
 ### Action - Remove User from Audience
 
@@ -84,4 +82,4 @@ This section describes how to set up parameters and options for each action.
 |---| ---|
 |Audience|  Select an audience or enter the Audience ID to remove the user from. |
 | Identifier | Map a user identifier value. <ul><li>**Email**: Send email value as-is without applying built-in hashing. Select this option if the value requires no hashing or is already hashed.</li><li>**Email (apply MD5 hash)**: Hash email value with MD5 before sending.</li><li>**Email (apply MD5 SHA256 hash)**: Hash email value with MD5 and then SHA256 before sending.</li><li>**Mobile ID**: IDFA mobile ID for Apple, ADID mobile ID for Android.</li><li>**Identity Link**: Identity Link</li><li>**Gum ID**: Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request.</li></ul> |
-| Gum Caller ID | Gum Caller `ID` - Value used by Criteo for `GUM` salting. If using the Tealium iQ Criteo Cookie Matching Service tag, leave this unmapped. |
+| Gum Caller ID | Gum Caller `ID` - Value used by Criteo for `GUM` salting. If using the Tag Management Criteo Cookie Matching Service tag, leave this unmapped. |

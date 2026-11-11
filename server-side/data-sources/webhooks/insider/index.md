@@ -5,13 +5,13 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/insider/
 ---
 ## Prerequisites
 
-* Tealium EventStream API Hub and/or Tealium AudienceStream CDP 
+* Event Streaming API Hub and/or Customer Data Platform (CDP)
 * Insider account
 
 
 ## How it works
 
-To connect Insider with Tealium EventStream or Tealium AudienceStream, use the [Insider Webhook API](https://academy.useinsider.com/docs/webhooks-vs-apis) to send outgoing requests to the custom Insider data source endpoint in your Tealium account.
+To connect Insider with Event Streaming or Customer Data Platform (CDP), use the [Insider Webhook API](https://academy.useinsider.com/docs/webhooks-vs-apis) to send outgoing requests to the custom Insider data source endpoint in your Tealium account.
 
 After you configure the webhook, you can receive automatic event updates for channel interactions and lead collection events.
 

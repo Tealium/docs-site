@@ -1,5 +1,5 @@
 ---
-title: intealliAd Connector Setup Guide for AudienceStream
+title: intealliAd Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the intealliAd connector.
 url: https://docs.tealium.com/server-side-connectors/intelliad-connector/
 ---
@@ -15,7 +15,7 @@ Client ID (provided to you by the intelliAd CSM team)
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new intealliAd Connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a Connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -27,9 +27,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
-
-This section describes how to set up parameters and options for the action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add User to Segment
 

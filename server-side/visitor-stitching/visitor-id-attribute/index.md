@@ -9,7 +9,7 @@ Before you begin, familiarize yourself with the following:
 * [Using Enrichments]()
 * [About Visitor Stitching]()
 
-A visitor ID attribute is configured in AudienceStream to uniquely identify visitors. When you create a visitor ID attribute, you add an enrichment to set the value to a user identifier, which is an event attribute, such as `email_address_hash` or `customer_id`. For visitor stitching to work properly, you must choose a unique user identifier, create a rule to determine when to identify a visitor, and verify that the chosen attribute is unique for each visitor. For more information about selecting a user identifier, see [Best practices for selecting user identifiers]().
+A visitor ID attribute is configured in Customer Data Platform (CDP) to uniquely identify visitors. When you create a visitor ID attribute, you add an enrichment to set the value to a user identifier, which is an event attribute, such as `email_address_hash` or `customer_id`. For visitor stitching to work properly, you must choose a unique user identifier, create a rule to determine when to identify a visitor, and verify that the chosen attribute is unique for each visitor. For more information about selecting a user identifier, see [Best practices for selecting user identifiers]().
 
 
 <blockquote>
@@ -46,7 +46,7 @@ A visitor ID attribute should follow these best practices:
     * **Strong identifiers** - Only use values that could be associated with a single visitor and are not likely to change, such as a hashed email address or customer ID.
     * **Weak identifiers** - Avoid values that cannot be guaranteed to be unique for each visitor or that have a high likelihood of changing over time, such as first and last name, username, or phone number.
 
-* **Case Sensitive** - Values are case sensitive, so convert them to lower-case. For example, a single email address can be written with case variations such as `FirstLast@example.com` and `firstlast@example.com`, which would be treated as two different IDs in AudienceStream.
+* **Case Sensitive** - Values are case sensitive, so convert them to lower-case. For example, a single email address can be written with case variations such as `FirstLast@example.com` and `firstlast@example.com`, which would be treated as two different IDs in CDP.
 * **Verifying the Value** - If you are using an email address, you may want to verify that the address contains the `@` symbol. You may also want to check the string for other values such as, `undefined`, `unknown`, or `not set` or any text that would not be a valid value for a visitor ID attribute.
 
 

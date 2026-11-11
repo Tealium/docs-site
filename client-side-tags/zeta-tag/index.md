@@ -1,6 +1,6 @@
 ---
 title: Zeta (Zync) Tag Setup Guide
-description: This article describes how to set up the Zeta (Zync) Tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Zeta (Zync) Tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/zeta-tag/
 ---
 The Zeta Marketing Platform (ZMP) combines 2.4 billion unique data identities with industry-leading AI to create personalized, omnichannel experiences that exceed expectations and drive superior marketing results. Zeta can predict intent and engagement across every channel allowing you to give consumers the personalized experience they’re looking for and drive better performance for your brand.
@@ -23,7 +23,7 @@ The Zeta Marketing Platform (ZMP) combines 2.4 billion unique data identities wi
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -38,7 +38,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 The available categories are:
 
 ### Standard Parameters

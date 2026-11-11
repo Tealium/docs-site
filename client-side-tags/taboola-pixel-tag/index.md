@@ -3,24 +3,24 @@ title: Taboola Pixel Tag Setup Guide
 description: This article describes how to set up the Taboola Pixel tag.
 url: https://docs.tealium.com/client-side-tags/taboola-pixel-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * This tag uses event triggers and parameters to send data.
 * When you use multiple Taboola IDs, identical data is sent to each ID.
 * Use mappings to override or set parameter values and send custom data.
 * Check with Taboola Support before adding custom variables.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Taboola Pixel tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Taboola ID(s)**: This is a numeric value. Separate multiple IDs by commas.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -54,7 +54,7 @@ The available categories are:
 
 ### Event Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 |Variable| Description|
 |---| ---|
@@ -81,7 +81,7 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 
 ### E-commerce Event Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Event | Description |
 |:------|:------------|

@@ -1,13 +1,13 @@
 ---
 title: Salsify Tag Setup Guide
-description: This article describes how to set up the Salsify tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Salsify tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/salsify-tag/
 ---
 Salsify Enhanced Content offers a unified solution for brands to build and publish authentic, engaging below-the-fold brand experiences that increase conversion rates. With Enhanced Content you can receive images, videos, comparison charts, and interactive product tours from any Salsify supplier or brand leveraging the Enhanced Content offering.
 
 Enhanced Content can be served through a JavaScript tag or NPM integration provided by Salsify.
 
-## Tag Tips
+## Tag tips
 
 * Supports the following E-Commerce extension values:
   * Product ID
@@ -16,17 +16,17 @@ Enhanced Content can be served through a JavaScript tag or NPM integration provi
   * Product Brand
   * Product Price
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Client ID**: Your Salsify Experiences SDK Client ID.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For information about mapping a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available destination categories are:
 

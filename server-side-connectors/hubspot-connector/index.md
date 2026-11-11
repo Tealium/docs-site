@@ -5,15 +5,17 @@ url: https://docs.tealium.com/server-side-connectors/hubspot-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Private App Access Token**: (Required) Provide your Private App Access Token. This value must be entered correctly in for the action parameter fields to populate HubSpot data, or an error appears. For more information, see [HubSpot: Private Apps](https://developers.hubspot.com/docs/api/private-apps).
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Create Contact (Real-Time) | ✓ | ✗ |
 | Create Contact (Batched) | ✓ | ✗ |

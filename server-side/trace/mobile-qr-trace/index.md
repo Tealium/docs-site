@@ -66,9 +66,9 @@ To leave a trace:
 1. Scan the QR code again with your device's camera
 1. Click the link for your device to no longer participate in the trace session
 
-### End of Visit (AudienceStream)
+### End of Visit (Customer Data Platform (CDP))
 
-Testing "End of Visit" actions in Tealium AudienceStream requires a signal to immediately end the visitor's session, otherwise it is necessary to wait for the session to expire normally.
+Testing "End of Visit" actions in Customer Data Platform (CDP) requires a signal to immediately end the visitor's session, otherwise it is necessary to wait for the session to expire normally.
 
 In the Mobile Trace Tool, end the session immediately by selecting the **Kill Visitor Session** checkbox, which adds a parameter to the QR code that makes the SDK send a `kill_visitor_session` event.
 

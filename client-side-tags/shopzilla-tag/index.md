@@ -1,6 +1,6 @@
 ---
 title: Shopzilla Tag Setup Guide
-description: This article describes how to set up the Shopzilla tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Shopzilla tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/shopzilla-tag/
 ---
 ## Tag Specifications
@@ -16,7 +16,7 @@ url: https://docs.tealium.com/client-side-tags/shopzilla-tag/
 
 ## Add the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ## Configure the Tag
 

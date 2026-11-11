@@ -3,11 +3,11 @@ title: Decide what to predict
 description: This article describes attributes to target, exclude, and output in Tealium Predict ML.
 url: https://docs.tealium.com/server-side/predict/strategy/decide-what-to-predict/
 ---
-When defining a model, each attribute in your Tealium AudienceStream CDP profile is reviewed. This process automatically determines the top attributes that have a predictive relationship for the action you want to predict.
+When defining a model, each attribute in your Customer Data Platform (CDP) profile is reviewed. This process automatically determines the top attributes that have a predictive relationship for the action you want to predict.
 
 ## Target attributes
 
-A target attribute is an AudienceStream attribute that represents the visitor behavior that you want to predict with any Tealium Predict model. For example, for the boolean visit attribute `Has Purchased`, a value of `true` indicates that a purchase event has occurred during a visit while a value of `false` means a purchase event did not occur during a visit.
+A target attribute is a Customer Data Platform (CDP) attribute that represents the visitor behavior that you want to predict with any Tealium Predict model. For example, for the boolean visit attribute `Has Purchased`, a value of `true` indicates that a purchase event has occurred during a visit while a value of `false` means a purchase event did not occur during a visit.
 
 The target attribute must be either a boolean or a badge attribute, and be visit or visitor-scoped.
   

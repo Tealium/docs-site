@@ -18,63 +18,66 @@ If the Microsoft user you use to authenticate to Tealium is new to the business 
 1. Sign in to Microsoft Ads with that user.
 1. Create an audience manually once to trigger acceptance of the Microsoft Customer Match Terms and Conditions.
 
-Until these terms are accepted, the API rejects audience creation requests originating from Tealium.
+Until these terms are accepted, the API may reject audience creation or membership update requests unless the **Accept Customer Match Terms** checkbox is enabled in the action configuration.
 
 ## API information
 
 This connector uses the following vendor API:
 
-* API Name: Bulk API
+* API Name: Campaign Management API
 * API Version: v13
-* API Endpoint: `https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/BulkService.svc`
-* Documentation: [Microsoft: Bulk API](https://learn.microsoft.com/en-us/advertising/bulk-service/bulk-service-reference?view=bingads-13)
+* API Endpoint: `https://campaign.api.bingads.microsoft.com/CampaignManagement/v13/`
+* Documentation: [Microsoft: Campaign Management API](https://learn.microsoft.com/en-us/advertising/campaign-management-service/campaign-management-service-reference?view=bingads-13)
 
 ## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
 
-* Max number of requests: 100000
+* Max number of requests: 1,000
 * Max time since oldest request: 60 minutes
-* Max size of requests: 100 MB
+* Max size of requests: 5 MB
+
+Microsoft's Campaign Management REST API accepts up to 1,000 `CustomerListItems` per request, which determines these batch thresholds.
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Account ID**: (Required) The identifier of the ad account that owns or is associated with the entities in the request. It can be found in the URL (for example, `AID=`) when the advertiser logs into Microsoft Ads UI.
 * **Customer ID**: (Required) The identifier of the manager account (customer) the user is accessing or operating from. It can be found in the URL (for example, `CID=`) when the advertiser logs into Microsoft Ads UI.
 
+After you configure the connector, click **Done**.
+
 After setting **Account ID** and **Customer ID**, click **Establish Connection** to connect to Microsoft's servers.
 
 ### Create customer match list
 
-Use this option to create customer match lists to add subscribers to target with advertising. The resulting **Request ID** value can be used to determine if the list creation process has completed. 
+Use this option to create customer match lists to add subscribers to target with advertising. The task calls the Campaign Management REST `Audiences` endpoint and returns the new list's **Audience ID** synchronously.
 
-After you click the **Create** button, wait until you receive a confirmation message. If the customer list has successfully uploaded, the interface will display the upload's **Request ID**. You can copy the **Request ID** and use it to check the upload status.
+After you click **Create**, wait for the confirmation message. If the customer list is successfully created, the interface displays the **Audience ID**. Copy the **Audience ID** and paste it into the **Customer Match List ID** field in the action configuration.
 
-| Field |  Description |
-| --- |--- |
-| Name |(Required) The name of the customer list. This field can contain a maximum of 128 characters. |
+| Field | Description |
+| --- | --- |
+| Name | (Required) The name of the customer list. This field can contain a maximum of 128 characters. |
 | Description | (Optional) The description of the customer list. Use a description to help you remember what audience you are targeting with this customer list. This field can contain a maximum of 1,024 characters. |
-| Parent ID | (Optional) The Microsoft Advertising identifier of the customer that contains the customer list. |
-| Client ID | (Optional) Used to associate records in the bulk upload file with records in the results file. This field can be any valid string with a maximum of 100 characters. |
-| Membership Duration | (Optional) When you create a customer list, you can specify how far back in time Microsoft Advertising should look for actions that match your customer list definition to add people to your list.<ul><li>The minimum duration is `1` day and the maximum duration allowed is `180` days.</li><li>If membership duration is `-1`, there is no expiration.</li><li>If membership duration is null, the default duration (30 days) is used.</li></ul> |
+| Scope | (Optional) The level at which the customer list is created.<ul><li>**Account**: The list is created under the Account ID from the connector configuration and can only be associated with ad groups within this account.</li><li>**Customer**: The list is created under the Customer ID from the connector configuration and can be associated with ad groups across all of the customer's accounts.</li><li>If no scope is selected, **Customer** is used.</li></ul> |
+| Membership Duration | (Optional) When you create a customer list, you can specify how far back in time Microsoft Advertising should look for actions that match your customer list definition to add people to your list.<ul><li>The minimum duration is `1` day and the maximum duration allowed is `390` days.</li><li>If membership duration is `-1`, there is no expiration.</li><li>If membership duration is null, the default duration (30 days) is used.</li></ul> |
 
-### Check upload status
+### Check customer match list
 
-Use this option to check the status of your list creation and upload status. This lets you confirm that customers are being subscribed to the proper lists. 
+Use this option to look up a customer match list and view its metadata. The task calls the Campaign Management REST `Audiences/QueryByIds` endpoint and displays the list name, ID, scope, and size.
 
 
 <blockquote>
-If the upload status is `Completed` or `CompletedWithErrors`, the URL of the results file will appear. Use this URL to download the results file. The URL expires five minutes after the Check the Status operation displays the upload status. If you do not start the download within this period of time, you will need to check the status again to get a new URL.
+The size value may show as "still building" for up to 48 hours after a list is created or after audience members are added.
 </blockquote>
 
 
 | Field | Description |
-| --- |--- |
-| Request ID | The identifier of the upload request. | 
+| --- | --- |
+| Customer Match List ID | (Required) The identifier of the customer match list to check. |
 
 ## Use cases
 
@@ -114,7 +117,7 @@ Bridge offline and online interactions by syncing hashed first-party identifiers
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Audience | ✓ | ✗ |
 | Remove User from Audience | ✓ | ✗ |
@@ -129,9 +132,10 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Customer Match List ID | Enter the customer match list ID.<br>To find your customer match list ID: log into [Microsoft Advertising UI](https://ui.ads.microsoft.com/) and select **Tools**, then click the **Audiences** tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br> |
+| Customer Match List ID | Enter the customer match list ID.<br>To find your customer match list ID: log into [Microsoft Advertising UI](https://ui.ads.microsoft.com/) and select **Tools**, then click the **Audiences** tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI, or by selecting the **Accept Customer Match Terms** checkbox below. |
 | Email Address (already SHA256 hashed) | Provide an email address which has been already SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address, and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
+| Accept Customer Match Terms | (Optional) Select this checkbox to programmatically accept the [Microsoft Customer Match Terms](https://go.microsoft.com/fwlink/?linkid=2106709) on behalf of the advertiser with this request. If this checkbox is cleared, you must accept the terms manually in the Microsoft Ads UI before uploading customer list data. For more information, see [Accept Microsoft Terms of Service](#accept-microsoft-terms-of-service). |
 
 ### Remove User from Audience
 
@@ -139,6 +143,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Customer Match List ID | Enter the customer match list ID.<br>To find your customer match list ID: log into [Microsoft Advertising UI](https://ui.ads.microsoft.com/) and select **Tools**, then click the **Audiences** tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br> |
+| Customer Match List ID | Enter the customer match list ID.<br>To find your customer match list ID: log into [Microsoft Advertising UI](https://ui.ads.microsoft.com/) and select **Tools**, then click the **Audiences** tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI, or by selecting the **Accept Customer Match Terms** checkbox below. |
 | Email Address (already SHA256 hashed) | Provide an email address which has been already SHA256 hashed. |
 | Email Address (apply SHA256 hash) | Provide a plain text email address, and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
+| Accept Customer Match Terms | (Optional) Select this checkbox to programmatically accept the [Microsoft Customer Match Terms](https://go.microsoft.com/fwlink/?linkid=2106709) on behalf of the advertiser with this request. If this checkbox is cleared, you must accept the terms manually in the Microsoft Ads UI before uploading customer list data. For more information, see [Accept Microsoft Terms of Service](#accept-microsoft-terms-of-service). |

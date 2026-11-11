@@ -66,7 +66,7 @@ For more information, see [AI audience recommendations](https://docs.tealium.com
 
 ### AI Note Generation
 
-The AI Note Generation feature (also known as NoteGen Agent) automatically generates clear, contextually relevant notes for supported configuration components, such as Tealium iQ variables and AudienceStream audiences. This makes it easier for users to quickly understand a component's configuration and purpose.
+The AI Note Generation feature (also known as NoteGen Agent) automatically generates clear, contextually relevant notes for supported configuration components, such as Tag Management variables and Customer Data Platform (CDP) audiences. This makes it easier for users to quickly understand a component's configuration and purpose.
 
 ![](https://docs.tealium.com/images/administration/notegen.png)
 
@@ -78,8 +78,8 @@ Click **Accept** to use that note.
 
 AI Note Generation is currently available for the following configuration components:
 
-* Tealium iQ variables
-* AudienceStream audiences
+* Tag Management variables
+* CDP audiences
 
 AI Note Generation for additional configuration components will be added in the future.
 

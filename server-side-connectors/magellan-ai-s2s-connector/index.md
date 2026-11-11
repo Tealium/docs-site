@@ -3,7 +3,7 @@ title: Magellan AI S2S Connector Setup Guide
 description: This article describes how to set up the Magellan AI S2S connector.
 url: https://docs.tealium.com/server-side-connectors/magellan-ai-s2s-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,15 +12,17 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Navigate to the connector marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Magellan Pixel Token**: Your Magellan AI pixel token. Links all events to your Magellan account. Find this value in your Magellan AI dashboard.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ----------- | :------------: | :---------: |
 | Send Event | ✓ | ✓ |
 

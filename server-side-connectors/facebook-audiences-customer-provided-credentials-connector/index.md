@@ -35,13 +35,15 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **App ID**: (Required) The Facebook App ID you want to connect. 
 * **App Secret**: (Required) The App Secret of the Facebook App you want to connect.
 * **Ad Account ID**: (Required) The Facebook Ads Account ID you want to manage. For more information about your Facebook ad account ID, see [Facebook: Find your Facebook ad account ID number](https://www.facebook.com/help/1492627900875762)
+
+After you configure the connector, click **Done**.
 
 This connection will generally expire within 60 days, causing unpredictable results for all Facebook Ad actions.
 
@@ -55,7 +57,7 @@ Before clicking the **Establish Connection** button, ensure that you are signed 
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Custom Audience | ✓ | ✗ |
 | Remove User from Custom Audience | ✓ | ✗ |
@@ -91,7 +93,7 @@ Four types of identifiers are supported: emails, phone numbers, user or app IDs,
 |Month of Birth|  <ul><li>Birth month for user.</li><li>`MM` format.</li><li>Values from `01` to `12`.</li></ul> |
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
-| Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use AudienceStream variables to populate the Audience ID. |
+| Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use Customer Data Platform (CDP) variables to populate the Audience ID. |
 |Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
 |Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
 |Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
@@ -147,7 +149,7 @@ Four types of identifiers are supported: emails, phone numbers, user or app IDs,
 |Month of Birth|  <ul><li>Birth month for user.</li><li>`MM` format.</li><li>Values from `01` to `12`.</li></ul> |
 |Gender|  <ul><li>Gender of user.</li><li>`M` for male, `F` for female</li></ul> |
 |Lookalike Value|  <ul><li>An arbitrary, numeric value for each user set when you create a seed custom audience from CRM data.</li><li>Facebook uses this to determine which users in audience are worth the most to you, in a quantifiable way.</li></ul> |
-| Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use AudienceStream variables to populate the Audience ID. |
+| Custom Audience Override | (Optional) Provide a Custom Audience ID to override the value in the Required Section. This field lets you use CDP variables to populate the Audience ID. |
 |Email Already SHA256 Hashed|  <ul><li>Email address already whitespace-trimmed, lowercased, and SHA256 hashed. Accepts a string or array of strings.</li></ul> |
 |Email Apply SHA256 Hash|  <ul><li>Plain-text email address. The connector trims whitespace, lowercases, and hashes the value using SHA256 before sending. Accepts a string or array of strings.</li></ul> |
 |Phone Already SHA256 Hashed|  <ul><li>Phone number already whitespace-trimmed and SHA256 hashed. Include only digits with country code, area code, and number, with leading zeros removed. For example, `16505551212`.</li></ul> |
@@ -262,7 +264,7 @@ Use the following steps to get your Facebook Audiences account ID:
 
 1. Log in to your Facebook Audiences account.
 1. Click an ad account, campaign, ad set, or ad in [Ads Manager](https://www.facebook.com/ads/manage).
-1. Copy the `account_id` parameter value from the URL in your browser then return to the connector in AudienceStream.  
+1. Copy the `account_id` parameter value from the URL in your browser then return to the connector in CDP.  
 ![](https://docs.tealium.com/images/server-side-connectors/facebook-account-id.png)
 
 1. In the **Configure** window, add your title and any relevant notes and your Ad Account ID (copied from above).
@@ -320,9 +322,9 @@ The most effective testing method is to run a [Trace](https://docs.tealium.com/a
 
 ## FAQ
 
-### Why can't I see my audiences in the AudienceStream drop-down list?
+### Why can't I see my audiences in the CDP drop-down list?
 
-If you have more than 2,000 audiences in Facebook, they are not all selectable in the drop-down list from an AudienceStream connector.
+If you have more than 2,000 audiences in Facebook, they are not all selectable in the drop-down list from a CDP connector.
 
 Use the following steps in Facebook to view all audiences and select the identifier for a specific audience:
 
@@ -336,5 +338,5 @@ If the Audience ID does not display, you can modify your table column view to in
   
 
     ![](https://docs.tealium.com/images/server-side-connectors/facebook-ads-find-audience-id.png)
-1. Return to AudienceStream and enter the Audience ID as custom value for your AudienceStream connector.
+1. Return to CDP and enter the Audience ID as custom value for your CDP connector.
 

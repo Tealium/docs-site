@@ -1,86 +1,86 @@
 ---
 title: Airship Web Notifyタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでAirship Web Notifyタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでAirship Web Notifyタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
----Webプッシュ通知を使用すると、ユーザーがオンラインである場所で関連性のある、パーソナライズされた、その瞬間のメッセージを配信することができます。AirshipのWeb Notifyは、新しいWeb訪問に強力なエンゲージメント戦略でアプローチし、再訪問を促し、コンバージョンを促進するための必要なツールを提供します。
+---Webプッシュ通知を使用すると、ユーザーがオンライン上のどこにいても、その場に応じた関連性の高いパーソナライズされたメッセージを配信できます。AirshipのWeb Notifyは、強力なエンゲージメント戦略によって新しいWeb訪問にアプローチし、再訪問を促してコンバージョンを向上させるために必要なツールを提供します。
 
-## タグのヒント
+## タグに関するヒント
 
-* タグの構成はすべてマッピングを介して動的に構成できます。
-* `secureIframeUrl`は、Airship Web Notifyが非セキュアページでロードされる場合にのみ必要です。
-* Safariのサポートは、[あなたのAirshipダッシュボード](https://docs.urbanairship.com/tutorials/getting-started/channels/web-notify/#safari)内で追加の構成が必要です。
-* Safariの構成後は、新しいキーとトークンが含まれた新しいSDKバンドルをダウンロードすることを確認してください。
-* 以下のE-Commerce拡張パラメータをサポートしています：
-  * 注文ID (\_corder)
-  * 注文小計 (\_csubtotal)
-  * 製品IDのリスト (\_cprod)
-  * ブランドのリスト (\_cbrand)
-  * カテゴリのリスト (\_ccat)
+* すべてのタグ構成は、マッピングを使用して動的に構成できます。
+* `secureIframeUrl`は、Airship Web Notifyをセキュアでないページに読み込む場合にのみ必要です。
+* Safariをサポートするには、[Airshipダッシュボード](https://docs.urbanairship.com/tutorials/getting-started/channels/web-notify/#safari)で追加構成が必要です。
+* Safariの構成後、新しいキーとトークンを含む新しいSDKバンドルをダウンロードしてください。
+* 次のEコマース拡張パラメータをサポートしています。
+  * 注文ID（\_corder）
+  * 注文小計（\_csubtotal）
+  * 商品IDのリスト（\_cprod）
+  * ブランドのリスト（\_cbrand）
+  * カテゴリのリスト（\_ccat）
 
-## タグ構成
+## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を参照してください。
+タグマーケットプレイスに移動し、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
-* **appKey**: Airshipが提供するappKey。これにより、このウェブサイトがどのAirshipプロジェクトに接続されているかが識別されます。
-* **Token**: Airshipが提供するトークン。これは、JS SDKがUrban AirshipのプラットフォームAPIに対して行うアクションを認証するベアラートークンです。
-* **vapidPublicKey**: Airshipが提供する`vapidPublicKey`。これは、ブラウザとブラウザベンダが通知の登録と送信時に使用する暗号化キーペアの公開側です。
-* **secureIframeUrl**: Airshipが非HTTPSページで使用するiframeのURLで、SDKが親ウィンドウにメッセージを投稿できるようにします。これは非セキュアドメインでのみ使用されます。
-* **Auto Prompt Enabled**: trueを選択すると、ユーザーに自動的にプッシュ通知の登録を促すプロンプトが表示され、push-worker.jsファイルが訪問に対するプロンプトの頻度を処理します。falseを選択した場合、プロンプトを手動でトリガーする必要があります。
+* **appKey**：Airshipから提供されたappKeyです。このWebサイトが接続されているAirshipプロジェクトを識別します。
+* **Token**：Airshipから提供されたトークンです。これは、Urban AirshipのプラットフォームAPIに対してJS SDKが実行するアクションを認証するためのBearerトークンです。
+* **vapidPublicKey**：Airshipから提供された`vapidPublicKey`です。これは、通知の登録および送信時にブラウザとブラウザベンダーが使用する暗号鍵ペアの公開鍵です。
+* **secureIframeUrl**：SDKが親ウィンドウにメッセージを送信できるように、AirshipがHTTPSではないページで使用するiframeのURLです。セキュアでないドメインでのみ使用されます。
+* **Auto Prompt Enabled**：プッシュ通知への登録をユーザーに自動的に求めるには、trueを選択します。これにより、訪問にプロンプトを表示する頻度がpush-worker.jsファイルによって処理されます。falseを選択した場合は、プロンプトを手動でトリガーする必要があります。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### タグ構成
 
 |変数| 説明|
 |---| ---|
-|appKey (app\_key)| [文字列]|
-|vapidPublicKey (vapid\_public\_key)| [文字列]|
-|Token (token)| [文字列]|
-|secureIframeUrl (secure\_iframe\_url)| [文字列]|
-|Auto Prompt Flag (auto\_prompt)| ["true"/"false"]|
+|appKey (app\_key)| [string]|
+|vapidPublicKey (vapid\_public\_key)| [string]|
+|Token (token)| [string]|
+|secureIframeUrl (secure\_iframe\_url)| [string]|
+|自動プロンプトフラグ (auto\_prompt)| ["true"/"false"]|
 
-### E-Commerce
+### Eコマース
 
 |変数| 説明|
 |---| ---|
-|Is New Item (is\_new\_item)| ["true"/"false"]|
-|List of Product Brands (product\_brand) (Overrides \_cbrand)| [配列]|
-|List of Product Categories (product\_category) (Overrides \_ccat)| [配列]|
-|List of Product Descriptions (product\_description)| [配列]|
-|List of Product IDs (product\_id) (Overrides \_cprod)| [配列]|
-|Transaction/Order ID (transaction\_id) (Overrides \_corder)| [文字列]|
-|Value/Order Subtotal (value) (Overrides \_csubtotal)| [文字列]|
+|新規アイテムかどうか (is\_new\_item)| ["true"/"false"]|
+|商品ブランドのリスト (product\_brand)（\_cbrandを上書き）| [Array]|
+|商品カテゴリのリスト (product\_category)（\_ccatを上書き）| [Array]|
+|商品説明のリスト (product\_description)| [Array]|
+|商品IDのリスト (product\_id)（\_cprodを上書き）| [Array]|
+|トランザクション／注文ID (transaction\_id)（\_corderを上書き）| [String]|
+|金額／注文小計 (value)（\_csubtotalを上書き）| [String]|
 
 ### メディア
 
 |変数| 説明|
 |---| ---|
-|Author (media\_author)| [文字列]|
-|Category (media\_category)| [文字列]|
-|Description (media\_description)| [文字列]|
-|Feature (media\_feature)| ["true"/"false"]|
-|Identifier (media\_identifier)| [文字列]|
-|Published Date (media\_published\_date)| [文字列]|
-|Type (media\_type)| [文字列]|
+|作成者 (media\_author)| [String]|
+|カテゴリ (media\_category)| [String]|
+|説明 (media\_description)| [String]|
+|注目コンテンツ (media\_feature)| ["true"/"false"]|
+|識別子 (media\_identifier)| [String]|
+|公開日 (media\_published\_date)| [String]|
+|タイプ (media\_type)| [String]|
 
 ### ソーシャルメディア
 
 |変数| 説明|
 |---| ---|
-|Source (source)| [文字列]|
-|Medium (medium)| [文字列]|
+|ソース (source)| [String]|
+|メディア (medium)| [String]|
 
 ### アカウント
 
 |変数| 説明|
 |---| ---|
-|Category (account\_category)| [文字列]|
+|カテゴリ (account\_category)| [String]|
 
 ### イベント
 
@@ -98,5 +98,3 @@ url: https://docs.tealium.com/ja/client-side-tags/airship-web-notify-tag/
 |StarredProductEvent| StarredProductEvent|
 |RegisterEvent| RegisterEvent|
 |Custom| Custom|
-
-

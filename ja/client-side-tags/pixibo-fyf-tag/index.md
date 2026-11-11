@@ -1,17 +1,17 @@
 ---
 title: Pixibo FYFタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントで"Find your Fit" pixibo.fyfタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントで「Find your Fit」pixibo.fyfタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/pixibo-fyf-tag/
----## タグのヒント
+---## タグに関するヒント
 
-* マッピングを使用して、標準の構成値を動的に上書きします。
-* タグを発火させるためには、マッピングのSKU IDが必要です。
+* マッピングを使用すると、標準構成値を動的に上書きできます。
+* タグを発火させるには、マッピング内のSKU IDが必須です。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の項目を構成します。
 
 * **クライアント名**
 * **クライアントID**
@@ -19,22 +19,21 @@ url: https://docs.tealium.com/ja/client-side-tags/pixibo-fyf-tag/
   * スクリプトの環境を指定するために使用します。
 * **言語**
   * 任意
-  * ウィジェットを読み込む言語。
+  * ウィジェットを読み込む際の言語です。
   * デフォルト値は英語（`en`）です。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+利用可能なカテゴリーは次のとおりです。
 
 ### 標準
 
-|変数| 説明|
-|---| ---|
-|`clientName`|  <ul><li>クライアント名</li></ul> |
-|`clientId`|  <ul><li>クライアントID</li></ul> |
-|`environment`|  <ul><li>環境</li></ul> |
-|`skuId`|  <ul><li>SKU ID</li></ul> |
-|`lang`|  <ul><li>言語</li></ul> |
-
+|変数|説明|
+|---|---|
+|`clientName`| <ul><li>クライアント名</li></ul> |
+|`clientId`| <ul><li>クライアントID</li></ul> |
+|`environment`| <ul><li>環境</li></ul> |
+|`skuId`| <ul><li>SKU ID</li></ul> |
+|`lang`| <ul><li>言語</li></ul> |

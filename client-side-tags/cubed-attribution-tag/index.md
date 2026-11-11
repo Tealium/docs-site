@@ -3,24 +3,24 @@ title: CUBED Attribution Tag Setup Guide
 description: This article describes how to set up the CUBED Attribution tag.
 url: https://docs.tealium.com/client-side-tags/cubed-attribution-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the CUBED tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 * **Account Token**: Your unique token provided by CUBED
 * **Send Event Details**: Choose whether details about products are sent with your events. Default is **false**
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the CUBED tag are built into its data mapping tab. Available categories are:
 

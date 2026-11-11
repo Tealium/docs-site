@@ -1,77 +1,76 @@
 ---
-title: Decibel Insightタグ設定ガイド
-description: この記事では、Decibel Insightタグの設定方法について説明します。
+title: Decibel Insightタグ構成ガイド
+description: この記事では、Decibel Insightタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/decibel-insight-tag.md/
 ---
-## タグのヒント
+## タグに関するヒント
 
-マッピングを使用して、アカウントIDの値を動的に上書きしたり、追加のパラメータを設定したりします。
+マッピングを使用すると、アカウントIDの値を動的に上書きしたり、追加のパラメータを構成したりできます。
 
-## タグの設定
+## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の設定を行います：
+タグを追加する際に、次の構成を行います。
 
-* **アカウントID**： DecibelのアカウントID。
-* **プロパティID**： (オプション) 選択したウェブサイトの一意のプロパティID。
+* **アカウントID**：DecibelのアカウントID。
+* **プロパティID**：（任意）選択したWebサイトの一意のプロパティID。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を設定します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
 | 変数 | 説明 |
 |:---------|:------------|
-|  `da_accountId` |アカウントID  |
-|  `da_propertyId` |プロパティID  |
-|  `collectionRemember` |コレクションリメンバー  |
-|  `collectionStatus` |コレクションステータス  |
-|  `customer_id` |カスタマーID  |
-|  `order_currency` |注文通貨  |
-|  `errorMessage` |エラーメッセージ  |
-| `errorMessageCssSelector` |エラーメッセージCSSセレクタ  | 
-| `goalName` |ゴール名  | 
-|  `goalValue` |ゴール値  |
-|  `httpErrorCode` |HTTPエラーコード  |
-|  `pageRole` |ページロール  |
-|  `retentionStatus` |リテンションステータス  |
-| `retentionRemember` |リテンションリメンバー  | 
+| `da_accountId` | アカウントID |
+| `da_propertyId` | プロパティID |
+| `collectionRemember` | コレクションの記憶 |
+| `collectionStatus` | コレクションのステータス |
+| `customer_id` | 顧客ID |
+| `order_currency` | 注文通貨 |
+| `errorMessage` | エラーメッセージ |
+| `errorMessageCssSelector` | エラーメッセージのCSSセレクター |
+| `goalName` | 目標名 |
+| `goalValue` | 目標値 |
+| `httpErrorCode` | HTTPエラーコード |
+| `pageRole` | ページの役割 |
+| `retentionStatus` | リテンションのステータス |
+| `retentionRemember` | リテンションの記憶 |
 
 ### ページビュー
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `pageName` | ページ名| 
-| `pageViewParams.title` | タイトル| 
-| `pageViewParams.queryString` | クエリストリング| 
-| `pageViewParams.fragment` | フラグメント| 
-| `pageViewParams.waitTime` | 待ち時間| 
+| `pageName` | ページ名 |
+| `pageViewParams.title` | タイトル |
+| `pageViewParams.queryString` | クエリ文字列 |
+| `pageViewParams.fragment` | フラグメント |
+| `pageViewParams.waitTime` | 待機時間 |
 
 ### イベント
 
-イベントマッピングの作成についての詳細は、[イベントマッピングの作成](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
+イベントのマッピングの詳細については、[イベントマッピングの作成](https://docs.tealium.com/ja/tag-management/data-mappings/manage/#add-an-event-mapping)を参照してください。
 
 | 変数 | 説明 |
 |:---------|:------------|
-| `sendApplicationError` | アプリケーションエラーの送信 |
-| `sendGoal` | ゴールの送信 |
-| `sendHTTPError` | HTTPエラーの送信 |
-| `setCollection` | コレクションの設定 |
-| `setRetention` | リテンションの設定 |
-| `trackPageView` | ページビューの追跡 |
-| `updateUserId` | ユーザーIDの更新 |
+| `sendApplicationError` | アプリケーションエラーを送信 |
+| `sendGoal` | 目標を送信 |
+| `sendHTTPError` | HTTPエラーを送信 |
+| `setCollection` | コレクションを構成 |
+| `setRetention` | リテンションを構成 |
+| `trackPageView` | ページビューを追跡 |
+| `updateUserId` | ユーザーIDを更新 |
 
-### E-コマース
+### Eコマース
 
-|  変数 |説明 |
+| 変数 | 説明 |
 |:---------|:------------|
-|  `customer_id` (Overrides `_ccustid`) |カスタマーID  |
-
+| `customer_id`（`_ccustid`を上書き） | 顧客ID |

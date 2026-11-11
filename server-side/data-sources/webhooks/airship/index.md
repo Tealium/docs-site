@@ -6,12 +6,12 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/airship/
 
 ## Prerequisites
 
-* Tealium EventStream and/or Tealium AudienceStream
+* Event Streaming and/or Customer Data Platform (CDP)
 * Airship account
 
 ## How it works
 
-To connect Airship with Tealium EventStream or Tealium AudienceStream, use the [Airship Webhook API](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/) to send outgoing requests to the custom Airship data source endpoint in your Tealium account.
+To connect Airship with Event Streaming or CDP, use the [Airship Webhook API](https://docs.airship.com/guides/messaging/user-guide/data/data-streaming/data-streaming/) to send outgoing requests to the custom Airship data source endpoint in your Tealium account.
 
 After you configure the webhook, you can create subscriptions based on topics and receive related push notifications to automate use cases, stay informed, and increase productivity.
 

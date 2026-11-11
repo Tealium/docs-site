@@ -1,6 +1,6 @@
 ---
 title: Salesforce Marketing Cloud (ExactTarget) tag setup guide
-description: This article describes how to set up the Salesforce Marketing Cloud (ExactTarget) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Salesforce Marketing Cloud (ExactTarget) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/salesforce-marketing-cloud-exacttarget/
 ---
 Salesforce Marketing Cloud (formerly ExactTarget) is the platform for 1:1 customer journeys, connecting companies with customers in whole new ways.
@@ -17,7 +17,7 @@ Salesforce Marketing Cloud (formerly ExactTarget) is the platform for 1:1 custom
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -33,7 +33,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

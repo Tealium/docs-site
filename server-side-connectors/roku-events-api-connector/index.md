@@ -3,7 +3,7 @@ title: Roku Events API Connector Setup Guide
 description: This article describes how to set up the Roku Events API connector.
 url: https://docs.tealium.com/server-side-connectors/roku-events-api-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -12,7 +12,7 @@ This connector uses the following vendor API:
 * API Endpoint: `https://events.ads.rokuapi.net`
 * Documentation: [Roku API](https://help.ads.roku.com/en/articles/8880744-events-api)
 
-## Batch Limits
+## Batch limits
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:
 
 * Max number of requests: 1,000
@@ -21,7 +21,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**  
@@ -29,9 +29,11 @@ After adding the connector, configure the following settings:
 * **Event Group ID**  
   * An event group is used to represent one online property such as a website or an app or channel. For more information about creating an event group ID, see [Roku: Event Groups](https://help.ads.roku.com/en/articles/9451133-event-groups).
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event | ✓ | ✓ |
 
@@ -99,4 +101,4 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Tealium iQ Tag ID | When the Tealium iQ Tag ID is provided, the connector automatically looks for your Event ID value sent from Tealium iQ and sends this value to Roku.  |
+| Tealium iQ Tag ID | When the Tealium iQ Tag ID is provided, the connector automatically looks for your Event ID value sent from Tag Management and sends this value to Roku.  |

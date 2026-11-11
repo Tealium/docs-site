@@ -1,6 +1,6 @@
 ---
 title: Rakuten Advertising Tag Setup Guide
-description: This article describes how to set up the Rakuten Advertising tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Rakuten Advertising tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/rakuten-advertising-tag/
 ---
 ## Tag tips
@@ -22,9 +22,9 @@ url: https://docs.tealium.com/client-side-tags/rakuten-advertising-tag/
 
 ### Tag configuration
 
-First, go to Tealium's tag marketplace and add the Rakuten Marketing tag . For more information, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tracking Key**: Your site-specific tracking key issued by your Rakuten Marketing integration contact.
 * **Rakuten Affiliate Merchant ID**: A 4 or 5-digit merchant ID.
@@ -35,7 +35,7 @@ After adding the tag, configure the following settings:
 
 ### Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

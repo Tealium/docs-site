@@ -3,7 +3,7 @@ title: Manychat Connector Setup Guide
 description: This article describes how to set up the Manychat connector.
 url: https://docs.tealium.com/server-side-connectors/manychat-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,16 +13,18 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **API Key**  
   *   Manychat provides an API Key to use with the Account Public API.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add Tag by Name | ✓ | ✗ |
 | Remove Tag by Name | ✓ | ✗ |

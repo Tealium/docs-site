@@ -5,14 +5,14 @@ url: https://docs.tealium.com/server-side-connectors/optimizely-data-platform-co
 ---
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Add User to Audience | ✓ | ✗ |
 | Remove User from Audience | ✓ | ✗ |
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -21,6 +21,8 @@ Tealium app username in Optimizely.
 * **Password**  
 Tealium app password in Optimizely.
 * **URL**  
+
+After you configure the connector, click **Done**.
 Function URL in Optimizely.
 
 ## Actions

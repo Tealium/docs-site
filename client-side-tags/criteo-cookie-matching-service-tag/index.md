@@ -1,6 +1,6 @@
 ---
 title: Criteo Cookie Matching Service Tag Setup Guide
-description: This article describes how to set up the Criteo Cookie Matching Service tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Criteo Cookie Matching Service tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/criteo-cookie-matching-service-tag/
 ---
 
@@ -11,17 +11,17 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 
 Criteo Cookie Matching Service enables a buyer to associate the cookie that identifies a Tealium visitor, and the cookie that identifies the user for Criteo.
 
-## Tag Tips
+## Tag tips
 
 * If left blank, Tealium Account and Profile will be automatically populated.
 * Sends the following server-side attribute back to Tealium:
   * `criteo_user_id`
 
-For more information about cookie matching in EventStream, see: [Understanding Persistent Cookie Matching in EventStream](https://docs.tealium.com/about-persistent-cookie-matching/).
+For more information about cookie matching in Event Streaming, see: [Understanding Persistent Cookie Matching in Event Streaming](https://docs.tealium.com/about-persistent-cookie-matching/).
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -31,13 +31,13 @@ When adding the tag, configure the following settings:
 * **Data Source Key**: (Optional) The data source key from your server-side configuration.
 * **Use `/event` endpoint**: Send data to the `/event` endpoint.
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the [Load Rules](https://docs.tealium.com/about-load-rules/) documentation.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

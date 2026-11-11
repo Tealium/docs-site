@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/marketo-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -14,9 +14,11 @@ After adding the connector, configure the following settings:
 * **REST API Endpoint URL**: (Required) REST API Endpoint found in **Marketo > Admin > Web Service**. For example, `https://123-ABC-123.mktorest.com/rest`.
 * **REST API Identity URL**: (Required) REST API Identity found in **Marketo > Admin > Web Service**. For example, `https://123-ABC-123.mktorest.com/identity`.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-|**Action Name**| **AudienceStream**| **EventStream**|
+| **Action Name** | **Visitor profile** | **Event data** |
 | --- | --- | --- |
 | Add Lead to a List | ✓ | ✓ |
 | Add Lead to a List (Batched) | ✓ | ✓ |

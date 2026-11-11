@@ -3,7 +3,7 @@ title: Dynamic Yield Tag Setup Guide
 description: This article describes how to set up the Dynamic Yield tag.
 url: https://docs.tealium.com/client-side-tags/dynamic-yield-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * You can set the name and properties.
 * Map parameters of a custom event in the Custom Event Data tab in the mappings toolbox.
@@ -17,19 +17,21 @@ url: https://docs.tealium.com/client-side-tags/dynamic-yield-tag/
   * List of Names `_cprodname`)
   * List of Quantities (`_cquan`)
   * List of Prices (`_cprice`)
+* If the product lists contain more than one product, AddToCart and RemoveFromCart require the changed product. Map it to Product ID (`productId`) in the Parameters tab. Otherwise, the event is not sent.
+* The hashed email value must be a SHA-256 hash. The tag sends it to Dynamic Yield as a customer ID of type `he`.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Dynamic Yield tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Site ID**: Your Dynamic Yield-supplied Site ID or Site ID (`scsec`).
 * **Dynamic Yield data center**: Select your Dynamic Yield data center.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -42,6 +44,8 @@ The available categories are:
 |  `evt_list`  | [CSV/Array] | List of Events to fire | 
 |   `context.type` | String | Context type | 
 |  `context.data`  | Array | Context data | 
+|  `context.lng`  | String | Context language, for example `en_GB` | 
+|  `spa_mode`  | String | Set to `legacy` only for Dynamic Yield sections that use page-load or SPA-event detection | 
 
 ### E-Commerce
 
@@ -65,6 +69,15 @@ The available categories are:
 | `Search`         | Search         |
 | `EmailSignup`    | EmailSignup    |
 | `VideoWatch`     | VideoWatch     |
+| `SyncCart`       | SyncCart       |
+| `AddToWishlist`  | AddToWishlist  |
+| `PromoCode`      | PromoCode      |
+| `ChangeAttribute` | ChangeAttribute |
+| `FilterItems`    | FilterItems    |
+| `SortItems`      | SortItems      |
+| `Login`          | Login          |
+| `Signup`         | Signup         |
+| `IdentifyUser`   | IdentifyUser   |
 | `Custom`         | Custom         |
 
 ### Parameters
@@ -73,7 +86,25 @@ The available categories are:
 |:-----------------------------|:-------------------------|
 | Size (`size`)                | `properties.size`        |
 | Search Keywords (`keywords`) | `properties.keywords`    |
+| Search Keywords (`searchKeywords`) | `properties.searchKeywords` |
 | Hashed Email (`hashedEmail`) | `properties.hashedEmail` |
+| Customer ID (`cuid`) | `properties.cuid` |
+| Customer ID Type (`cuidType`) | `properties.cuidType` |
+| Secondary Identifiers (`secondaryIdentifiers`) [Array] | `properties.secondaryIdentifiers` |
+| Product ID (`productId`) | `properties.productId` |
+| Quantity (`quantity`) | `properties.quantity` |
+| Item Price (`itemPrice`) | `properties.itemPrice` |
+| Value (`value`) | `properties.value` |
+| Currency (`currency`) | `properties.currency` |
+| Transaction ID (`uniqueTransactionId`) | `properties.uniqueTransactionId` |
+| Promo Code (`code`) | `properties.code` |
+| Attribute Type (`attributeType`) | `properties.attributeType` |
+| Attribute Value (`attributeValue`) | `properties.attributeValue` |
+| Filter Type (`filterType`) | `properties.filterType` |
+| Filter Numeric Value (`filterNumericValue`) | `properties.filterNumericValue` |
+| Filter String Value (`filterStringValue`) | `properties.filterStringValue` |
+| Sort By (`sortBy`) | `properties.sortBy` |
+| Sort Order (`sortOrder`) [`ASC`/`DESC`] | `properties.sortOrder` |
 | Custom                       | Custom                   |
 
 ### Video Parameters

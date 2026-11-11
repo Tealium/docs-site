@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/aws-firehose-tealium-provid
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -109,9 +109,11 @@ If you need Tealium to send to multiple delivery streams, do one of the followin
 * Add additional ARNs as an array to `Resource` under `AllowWritingToSpecificDeliveryStream`.
 * Use a pattern-based ARN (for example, all Tealium streams prefixed `tealium-`) if that fits the naming convention.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event Data to Delivery Stream | ✗ | ✓ |
 | Send Customized Data to Delivery Stream (Advanced) | ✓ | ✓ |
@@ -180,7 +182,6 @@ The following section describes how to set up parameters and options for each ac
 | Delivery Stream | <ul><li>Select the delivery stream to send data to.</li><li>To see available streams, the `firehose:ListDeliveryStreams` permission must be granted.</li><li>For more information, see [AWS: Amazon Data Firehose Quota](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).</ul></li> |
 
 #### Message Data
-
 
 | **Parameter** | **Description** |
 | --- | --- |

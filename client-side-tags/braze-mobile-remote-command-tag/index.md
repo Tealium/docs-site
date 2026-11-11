@@ -3,16 +3,16 @@ title: Braze Mobile Remote Command Tag Setup Guide
 description: This article describes how to set up the Braze Mobile Remote Command tag.
 url: https://docs.tealium.com/client-side-tags/braze-mobile-remote-command-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Use mappings to override standard config values and set custom parameters.
 * This is a Mobile Remote Command companion tag for the native mobile app SDK.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Braze Mobile Remote Command tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **API Key**: Your application's API Key from the Braze Dashboard
 * **Auto Initialize**: Automatically send the Initialize command.
@@ -27,9 +27,9 @@ After adding the tag, configure the following settings:
 * **Notification Background Color** (For example, `0xFFf33e3e`)
 * **Interval (in seconds) Between Triggers**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

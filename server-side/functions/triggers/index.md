@@ -32,7 +32,7 @@ For more information, see [About Data Transformation Functions]().
 
 <!-->
 
-[CloudStream data record functions]() functions are invoked after the data record has been processed, as shown in the following data pipeline diagram:
+[Data Cloud Activation data record functions]() functions are invoked after the data record has been processed, as shown in the following data pipeline diagram:
 
 ![](https://docs.tealium.com/images/server-side/functions-data-record-pipeline.png)
 

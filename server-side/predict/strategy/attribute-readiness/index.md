@@ -3,7 +3,7 @@ title: Attribute readiness
 description: This article describes how to select the right target attribute to use in your models.
 url: https://docs.tealium.com/server-side/predict/strategy/attribute-readiness/
 ---
-When you create a model using Tealium Predict, you can choose from a list of potential target attributes from your AudienceStream dataset. Each attribute is given a rating of **Ready** or **Not Ready** to signify whether the attribute is ready for training. The readiness of an attribute displays next to each attribute in the drop-down list of available attributes when you click **+ New Model**. This feature helps you determine, in advance, whether an attribute candidate is a **Ready** or **Not Ready** to use as a target output attribute, as shown in the following example.
+When you create a model using Tealium Predict, you can choose from a list of potential target attributes from your Customer Data Platform (CDP) dataset. Each attribute is given a rating of **Ready** or **Not Ready** to signify whether the attribute is ready for training. The readiness of an attribute displays next to each attribute in the drop-down list of available attributes when you click **+ New Model**. This feature helps you determine, in advance, whether an attribute candidate is a **Ready** or **Not Ready** to use as a target output attribute, as shown in the following example.
 
 ![](https://docs.tealium.com/images/predict/predict-v2-target-attr-ready.png)
 
@@ -21,5 +21,5 @@ A rating of **Not Ready** does not mean that the attribute is problematic in oth
 If the target attribute you want to use is labeled as **Not Ready,** try one of the following solutions:
 
 * Wait for more data to accumulate. The problem often solves itself over a longer time period.
-* Identify ways to drive additional traffic to the AudienceStream data source.
-* Add additional data sources to your AudienceStream profile so that the volume of daily data increases for this target.
+* Identify ways to drive additional traffic to the CDP data source.
+* Add additional data sources to your CDP profile so that the volume of daily data increases for this target.

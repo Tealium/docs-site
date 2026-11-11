@@ -15,8 +15,8 @@ Companies can be matched on company name, company domain, company website, or th
 
 ### Considerations
 
-* AudienceStream will display the DMP Segment status in the dropdown population when a segment is retrieved. For more information about the meaning of Audience segment status messages, see [DMP Segment State Transition flow for a DMP Segment](https://docs.microsoft.com/en-us/linkedin/marketing/integrations/matched-audiences/matched-audiences?view=li-lms-2022-08).
-* AudienceStream will only display Tealium-created Audience segments.
+* Customer Data Platform (CDP) will display the DMP Segment status in the dropdown population when a segment is retrieved. For more information about the meaning of Audience segment status messages, see [DMP Segment State Transition flow for a DMP Segment](https://docs.microsoft.com/en-us/linkedin/marketing/integrations/matched-audiences/matched-audiences?view=li-lms-2022-08).
+* CDP will only display Tealium-created Audience segments.
 * The minimum audience size that can be used in a campaign is 300 members.
 * After you create a DMP segment, you must wait 5 seconds for the segment to be available to add users or companies.
 * While you may be able to subscribe a user or a company to a DMP Audience that is not in `READY` status, Segments with `EXPIRED`, `FAILED`, or `ERROR` status are not allowed to be included in or excluded from a campaign's targeting.
@@ -83,7 +83,7 @@ You will need a DMP Segment (or an adSegment for website retargeting cases) in `
 
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -94,7 +94,7 @@ Click **Done** when you are finished configuring the connector.
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add User to DMP Segment| ✓| ✗|
 |Remove User from DMP Segment| ✓| ✗|

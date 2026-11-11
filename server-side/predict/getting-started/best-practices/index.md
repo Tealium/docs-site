@@ -9,7 +9,7 @@ url: https://docs.tealium.com/server-side/predict/getting-started/best-practices
 
 ## Work with your data
 
-* Ensure that your AudienceStream profile has high-quality attributes to signal target behaviors, such as badges or booleans. If none are present, create the attributes as soon as possible to allow more time for data to accumulate.
+* Ensure that your Customer Data Platform (CDP) profile has high-quality attributes to signal target behaviors, such as badges or booleans. If none are present, create the attributes as soon as possible to allow more time for data to accumulate.
 * Establish best practices regarding collecting and cleaning your data before you begin. For more information on preparing your data before creating a model, see [Prepare your data]().
 * During your data readiness stage, join siloed datasets and consider other characteristics of your organization's data that can be refined.
 

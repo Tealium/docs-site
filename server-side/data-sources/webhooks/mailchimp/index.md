@@ -5,11 +5,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/mailchimp/
 ---## Prerequisites
 
 * Mailchimp account
-* Tealium AudienceStream account
+* Customer Data Platform (CDP) account
 
 ## How it works
 
-Mailchimp offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests inform Tealium AudienceStream about activity in your Mailchimp account. When you add the Mailchimp data source a unique endpoint will be generated that you will use to configure the Mailchimp webhook.
+Mailchimp offers a webhook API that sends outgoing requests to an endpoint that you specify. These requests inform CDP about activity in your Mailchimp account. When you add the Mailchimp data source a unique endpoint will be generated that you will use to configure the Mailchimp webhook.
 
 ## Mailchimp data source
 

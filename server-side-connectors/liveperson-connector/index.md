@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/liveperson-connector/
 ---
 This article describes how to set up the LivePerson connector.
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,11 +14,9 @@ This connector uses the following vendor API:
 * API Endpoint: `https://proactive-messaging.z1.fs.liveperson.com`
 * Documentation: [LivePerson API](https://developers.liveperson.com/proactive-messaging-api.html)
 
-
 ## Configuration
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
-
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **Account ID**: LivePerson site ID
@@ -26,9 +24,11 @@ After adding the connector, configure the following settings:
 * **Client Secret**: Provide your Client Secret
 * **API domain**: API domain for authentication (Host)
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send outbound message | ✓ | ✓ |
 | Send outbound message batched | ✓ | ✓ |
@@ -52,7 +52,6 @@ Required parameters:
 
 #### Consumer Content
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Consumer Content WA | The WhatsApp phone number of the consumer. |
@@ -62,13 +61,11 @@ Required parameters:
 
 #### Consumer Variables
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Variables from 1 to 20 | Variable number to be used in the template for `consumers.variables.1` to `consumers.variables.20`. |
 
 #### Consumer Header Variables
-
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -77,7 +74,6 @@ Required parameters:
 | Document | The document `URL` for the header. |
 
 #### Consumer Info
-
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -97,7 +93,6 @@ Required parameters:
 
 #### Consumer Personal Info
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Firstname | The customer first name. |
@@ -108,7 +103,6 @@ Required parameters:
 | Company | The customer company. |
 
 #### Consumer Contacts
-
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -140,7 +134,6 @@ Required parameters:
 
 #### Consumer Content
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Consumer Content WA | The WhatsApp phone number of the consumer. |
@@ -150,13 +143,11 @@ Required parameters:
 
 #### Consumer Variables
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Variables from 1 to 20 | Variable number to be used in the template for `consumers.variables.1` to `consumers.variables.20`. |
 
 #### Consumer Header Variables
-
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -165,7 +156,6 @@ Required parameters:
 | Document | The document `URL` for the header. |
 
 #### Consumer Info
-
 
 | **Parameter** | **Description** |
 | --- | --- |
@@ -185,7 +175,6 @@ Required parameters:
 
 #### Consumer Personal Info
 
-
 | **Parameter** | **Description** |
 | --- | --- |
 | Firstname | The customer first name. |
@@ -196,7 +185,6 @@ Required parameters:
 | Company | The customer company. |
 
 #### Consumer Contacts
-
 
 | **Parameter** | **Description** |
 | --- | --- |

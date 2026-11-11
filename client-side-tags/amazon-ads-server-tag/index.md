@@ -1,13 +1,13 @@
 ---
 title: Amazon Ads Server Tag Setup Guide
-description: This article describes how to set up the Amazon Ads Server tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Amazon Ads Server tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/amazon-ads-server-tag/
 ---
 ## How it works
 
 Amazon Ads Server is a single and secure tool to deploy, manage, and update digital marketing tags on a site without having to continuously update your website code.
 
-## Tag Tips
+## Tag tips
 
 * Supports the following E-Commerce extension values:
   * Order ID
@@ -29,18 +29,18 @@ Amazon Ads Server is a single and secure tool to deploy, manage, and update digi
   * Dynamic Pages and Events
     * Set a value for url (overrides `url`)
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Amazon Ads Server tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **AAS Tag Manager ID**
   * Example: `123`
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

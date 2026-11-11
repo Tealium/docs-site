@@ -1,93 +1,91 @@
 ---
-title: Adobe Campaign Standard コネクタ構成ガイド
-description: この記事では、Customer Data Hub アカウントで Adobe Campaign Standard コネクタを構成する方法について説明します。
+title: Adobe Campaign Standardコネクタ構成ガイド
+description: この記事では、Customer Data HubアカウントでAdobe Campaign Standardコネクタを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/adobe-campaign-standard-connector/
 ---
 ## コネクタアクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-|トランザクショナルイベントを送信| ✓| ✗|
+|トランザクションイベントを送信| ✓| ✗|
 |シグナルアクティビティをトリガー| ✓| ✗|
-|プロファイルの作成または更新| ✓| ✗|
+|プロファイルを作成または更新| ✓| ✗|
 
 ## 構成の構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/) の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
 * **テクニカルアカウントID**
-  * テクニカルアカウントIDは [Adobe I/O コンソール](https://console.adobe.io/) で見つけることができます。
-  * 詳細については、[Adobe Experience Platform API への認証とアクセス](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md#login-to-adobe-io-console) を参照してください。
+  * テクニカルアカウントIDは、[Adobe I/O Console](https://console.adobe.io/)で確認できます。
+  * 詳細については、[Adobe Experience Platform APIの認証とアクセス](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md#login-to-adobe-io-console)を参照してください。
 
 * **組織ID**
-  * 組織IDは [Adobe I/O コンソール](https://console.adobe.io/) で見つけることができます。
+  * 組織IDは、[Adobe I/O Console](https://console.adobe.io/)で確認できます。
 
 * **テナントID**
-  * テナントIDは、Adobe Marketing Cloud URL で見つけることができます。
+  * テナントIDは、Adobe Marketing CloudのURLで確認できます。
   * 例：<https://yourtenantid.experiencecloud.adobe.com/campaign.html>
 
 * **APIキー**
-  * APIキー（クライアントID）は [Adobe I/O コンソール](https://console.adobe.io/) で見つけることができます。
+  * APIキー（クライアントID）は、[Adobe I/O Console](https://console.adobe.io/)で確認できます。
 
 * **シークレットキー**
-  * クライアントシークレットは [Adobe I/O コンソール](https://console.adobe.io/) で見つけることができます。
+  * クライアントシークレットは、[Adobe I/O Console](https://console.adobe.io/)で確認できます。
 
-* **プライベートキー**
-  * プライベートキーは、Adobe コンソールでインテグレーションを作成する際に生成されます。
-  * 詳細については、[Adobe Experience Platform API への認証とアクセス](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md#create-integration) を参照してください。
+* **秘密鍵**
+  * 秘密鍵は、Adobe Consoleでインテグレーションを作成する際に生成されます。
+  * 詳細については、[Adobe Experience Platform APIの認証とアクセス](https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md#create-integration)を参照してください。
 
 ## アクション構成 - パラメータとオプション
 
-**次へ** をクリックするか、**アクション** タブに移動します。ここでコネクタアクションを構成します。
+**続行**をクリックして、コネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+### アクション - トランザクションイベントを送信
 
-### アクション - トランザクショナルイベントを送信
+トランザクションイベントを送信するには、最初にイベントを作成して構成する必要があります。詳細については、[トランザクションイベントの構成](https://experienceleague.adobe.com/docs/campaign-standard/using/communication-channels/transactional-messaging/event-configuration/configuring-transactional-event.html)および[トランザクションメッセージの管理](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-transactional-messages.html)を参照してください。
 
-トランザクショナルイベントを送信するには、まずイベントを作成して構成する必要があります。詳細については、[トランザクショナルイベントの構成](https://experienceleague.adobe.com/docs/campaign-standard/using/communication-channels/transactional-messaging/event-configuration/configuring-transactional-event.html) および [トランザクショナルメッセージの管理](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-transactional-messages.html) を参照してください。
-
-トランザクショナルイベントを送信するために使用する API エンドポイントは、構成によって異なります。
+トランザクションイベントの送信に使用されるAPIエンドポイントは、構成によって異なります。
 
 #### パラメータ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Email|  <ul><li>必須。</li><li>受信者のメールアドレス。</li></ul> |
-|Event ID|  <ul><li>必須。</li><li>送信したいイベントのタイプ。</li><li>このIDはイベント定義を作成する際に生成されます。</li><li>追加情報については、[Adobe Campaign ドキュメント](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html) を参照してください。</li></ul> |
-|Expiration Date|  <ul><li>オプション。</li><li>この日付後にトランザクショナルイベントの送信がキャンセルされます。</li></ul> |
-|Scheduled Send Date|  <ul><li>オプション。</li><li>この日付にトランザクショナルイベントが処理され、トランザクショナルメッセージが送信されます。</li></ul> |
-|Template Name|  <ul><li>データを渡すためにテンプレートを使用する場合、「Transactional Message Content Template」と入力し、メインテンプレートの名前を入力します。</li><li>名前に二重中括弧を含めないでください。例えば、`SomeTemplateName` を使用し、`{{SomeTemplateName}}` は使用しないでください。</li></ul> |
-|Template Variables|  <ul><li>「Transactional Message Content Template」のデータ入力用にテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/) を参照してください。</li><li>ドット表記でネストされたテンプレート変数の名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul> |
-|Transactional Message Content Template|  <ul><li>エンリッチされたトランザクショナルメッセージコンテンツを記述するテンプレート。</li><li>テンプレートは、サポートされているフィールドに名前で二重中括弧を使用して挿入されます。</li><li>例：`{{SomeTemplateName}}`。</li><li>エンリッチされたメッセージコンテンツの使用についての追加情報は、Adobeの [Campaign ドキュメント](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html) を参照してください。</li></ul> |
-| Transactional API Endpoint |  <ul><li>オプション。</li><li>デフォルト値 "`mc`" に続くコネクタ構成からのテナントIDを上書きするために指定します。</li><li>これは通常、ステージインスタンスで作業する場合に適用されます。</li><li>例：ステージテナントIDが "`geometrixx-mkt-stage3`" の場合、Transactional API Endpoint を "`geometrixx`" に上書きします。</li></ul> |
+|メールアドレス|  <ul><li>（必須）受信者のメールアドレス。</li></ul> |
+|イベントID|  <ul><li>（必須）送信するイベントのタイプ。</li><li>このIDは、イベント定義の作成時に生成されます。</li><li>詳細については、[Adobe Campaignドキュメント](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html)を参照してください。</li></ul> |
+|有効期限|  <ul><li>（任意）この日付を過ぎると、トランザクションイベントの送信がキャンセルされます。</li></ul> |
+|送信予定日時|  <ul><li>（任意）この日時にトランザクションイベントが処理され、トランザクションメッセージが送信されます。</li></ul> |
+|テンプレート名|  <ul><li>テンプレートを使用してデータを渡す場合は、「トランザクションメッセージコンテンツテンプレート」に入力し、メインテンプレートの名前を指定します。</li><li>名前に二重波括弧を含めないでください。たとえば、`{{SomeTemplateName}}`ではなく`SomeTemplateName`を使用します。</li></ul> |
+|テンプレート変数|  <ul><li>「トランザクションメッセージコンテンツテンプレート」のデータ入力としてテンプレート変数を指定します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数には、ドット記法で名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は、通常、データレイヤーのリスト属性から作成されます。</li></ul> |
+|トランザクションメッセージコンテンツテンプレート|  <ul><li>拡張されたトランザクションメッセージのコンテンツを記述するテンプレート。</li><li>テンプレートは、サポートされているフィールドに二重波括弧で囲んだ名前を使用して挿入されます。</li><li>例：`{{SomeTemplateName}}`。</li><li>拡張メッセージコンテンツの使用に関する詳細については、Adobeの[Campaignドキュメント](https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html)を参照してください。</li></ul> |
+| トランザクションAPIエンドポイント |  <ul><li>（任意）コネクタ構成のテナントIDの前に「`mc`」を付けたデフォルト値を上書きする場合に指定します。</li><li>これは通常、ステージインスタンスで作業する場合に適用されます。</li><li>例：ステージのテナントIDが「`geometrixx-mkt-stage3`」の場合、トランザクションAPIエンドポイントを「`geometrixx`」に上書きします。</li></ul> |
 
 ### アクション - シグナルアクティビティをトリガー
 
-詳細については、Adobeのドキュメントの [シグナルアクティビティのトリガー](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-workflows/triggering-a-signal-activity.html) を参照してください。
+詳細については、Adobeドキュメントの[シグナルアクティビティのトリガー](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-workflows/triggering-a-signal-activity.html)を参照してください。
 
-シグナルアクティビティをトリガーするには、RESTワークフロー/実行APIが使用されます。
+シグナルアクティビティをトリガーするには、RESTワークフロー／実行APIを使用します。
 
 #### パラメータ
 
 |**パラメータ**| **説明**|
 |---| ---|
-|Workflow ID|  <ul><li>Adobeコンソールで構成されたワークフローのID。</li></ul> |
-|Source|  <ul><li>トリガーリクエストのソースを示すために使用されます。</li></ul> |
-|Parameter Map|  <ul><li>パラメータを使用してワークフローを呼び出すことが可能です。</li><li>パラメータの値をその名前にマップします。</li><li>String、Number、Boolean、および Date/Time タイプがサポートされています。</li></ul> |
+|ワークフローID|  <ul><li>Adobe Consoleで構成されたワークフローのID。</li></ul> |
+|ソース|  <ul><li>トリガーリクエストの送信元を示すために使用します。</li></ul> |
+|パラメータマップ|  <ul><li>パラメータを指定してワークフローを呼び出すことができます。</li><li>パラメータの値をその名前にマッピングします。</li><li>文字列、数値、ブール値、および日付／時刻の各タイプがサポートされています。</li></ul> |
 
-### アクション - プロファイルの作成または更新
+### アクション - プロファイルを作成または更新
 
-プロファイルを取得、作成、または更新するためには、Adobe ProfileAndServices APIにリクエストが送信されます。
+プロファイルを取得、作成、または更新するため、Adobe ProfileAndServices APIにリクエストが送信されます。
 
-詳細については、[APIを使用したプロファイルの作成](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/creating-profiles-api.html)、[APIを使用したプロファイルの更新](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/updating-profiles.html)、および [APIを使用したプロファイルの取得](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/retrieving-profiles.html?lang=en) を参照してください。
-##### パラメータ
+詳細については、[APIを使用したプロファイルの作成](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/creating-profiles-api.html)、[APIを使用したプロファイルの更新](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/updating-profiles.html)、および[APIを使用したプロファイルの取得](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/managing-profiles/retrieving-profiles.html?lang=en)を参照してください。
+##### パラメーター
 
-|**パラメータ**| **説明**|
+|**パラメーター**| **説明**|
 |---| ---|
-|更新戦略|  <ul><li>必須</li><li>適用可能な更新戦略を選択します。<ul><li>**新規作成のみ** — 既存のプロファイルを検索し、見つからない場合は新しいプロファイルを作成します。</li><li>**更新のみ** — 既存のプロファイルを検索して更新します。</li><li>**新規作成または更新** — 既存のプロファイルを検索し、見つかった場合は更新し、そうでない場合は新しいプロファイルを作成します。</li></ul> </li></ul> |
-|フィルタ|  <ul><li>更新戦略が **新規作成または更新** または **更新のみ** の場合は必須です。</li><li>一意の結果を返すフィルタを選択することを強く推奨します。</li><li>詳細については、こちらを参照してください：[複合識別キー](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en)。</li><li>検索結果が複数のプロファイルを返した場合、最初のプロファイルのみが更新されます。</li></ul> |
-|カスタムフィルタ|  <ul><li>[カスタムフィルタについて](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters)を参照してください。</li></ul> |
-|テンプレート変数|  <ul><li>データ入力としてテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記でネストされたテンプレート変数に名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーのリスト属性から構築されます。</li></ul> |
-|テンプレート|  <ul><li>本文データで参照されるテンプレートを提供します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは名前で指定され、サポートされるフィールドに二重波括弧で注入されます。</li><li>例：`{{SomeTemplateName}}`。</li></ul> |
+|更新方法| <ul><li>（必須）適用する更新方法を選択します。<ul><li>**作成のみ** — 既存のプロファイルを検索し、見つからない場合は新しいプロファイルを作成します。</li><li>**更新のみ** — 既存のプロファイルを検索して更新します。</li><li>**作成または更新** — 既存のプロファイルを検索し、見つかった場合は更新し、それ以外の場合は新しいプロファイルを作成します。</li></ul></li></ul> |
+|フィルター| <ul><li>更新方法が**作成または更新**または**更新のみ**の場合は必須です。</li><li>一意の結果を返すフィルターを選択することを強く推奨します。</li><li>詳細については、[複合識別キー](https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en)を参照してください。</li><li>検索結果で複数のプロファイルが返された場合、最初のプロファイルのみが更新されます。</li></ul> |
+|カスタムフィルターかどうか| <ul><li>[カスタムフィルターについて](https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters)を参照してください。</li></ul> |
+|テンプレート変数| <ul><li>テンプレート変数をデータ入力として指定します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数にはドット記法で名前を付けます。</li><li>例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。</li></ul> |
+|テンプレート| <ul><li>本文データで参照するテンプレートを指定します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされているフィールドに二重波括弧を使用して名前で挿入されます。</li><li>例：`{{SomeTemplateName}}`</li></ul> |

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/innovidxp-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -19,9 +19,11 @@ After adding the connector, configure the following settings:
   * A static value supplied by InnovidXP.
   * For example, `TV1234-1`.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Track Event| ✓| ✓|
 

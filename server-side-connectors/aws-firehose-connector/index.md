@@ -12,7 +12,7 @@ url: https://docs.tealium.com/server-side-connectors/aws-firehose-connector/
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -31,7 +31,7 @@ The policy statement attached to your IAM user instance must include the **fireh
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ----------- | :------------: | :---------: |
 | Send Event Data to Delivery Stream | ✗ | ✓ |
 | Send Visitor Data to Delivery Stream | ✓ | ✗ |

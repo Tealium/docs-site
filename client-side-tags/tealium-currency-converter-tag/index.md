@@ -1,6 +1,6 @@
 ---
 title: Tealium Currency Converter Tag
-description: This article describes how to set up the Tealium Currency Converter tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Tealium Currency Converter tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/tealium-currency-converter-tag/
 ---
 ## How it works
@@ -32,7 +32,7 @@ This extension makes it easy to configure the currency conversion to store a con
 
 Use the following steps to add the Tealium Currency Converter tag:
 
-1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+1. Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 1. Using the Tag wizard, give the Tag a specific title, enter any notes, and proceed to the load rules tab.
 1. Select any load rules you want to apply, then click **Finish**.![](https://docs.tealium.com/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
 

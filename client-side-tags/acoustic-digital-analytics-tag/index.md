@@ -1,19 +1,19 @@
 ---
 title: Acoustic Digital Analytics Tag Setup Guide
-description: This article describes how to set up the Acoustic Digital Analytics tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Acoustic Digital Analytics tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/acoustic-digital-analytics-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * You can map values to override values set in E-Commerce Extension (not recommended)
 * Mapping toolbox shows 10 custom attributes for each event. Acoustic Digital Analytics supports 50 attributes. To map to a value beyond 10, edit the number in the toolbox directly
 * To use Manual Page View tag, map value to Manual Page View Destination URL (other values picked up from standard Page View mappings)
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the Acoustic Digital Analytics tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Tag Version**: Use the External (default) option to load eluminate.js from the Acoustic-hosted CDN. This ensures you always have the latest library code from Acoustic.
 * **Client ID**: First parameter to the cmSetClientID function (for example, `89999999`&#124;`SiteID`). This value can also be set with mapping.
@@ -245,7 +245,7 @@ This tab does not correspond to any Data Tag function. Instead, you can use it t
 
 ## Data Mapping Reference
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

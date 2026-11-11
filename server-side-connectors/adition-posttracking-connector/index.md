@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/adition-posttracking-connec
 ---
 This article describes how to set up the Adition PostTracking connector.
 
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -25,9 +25,11 @@ After adding the connector, configure the following settings:
 * **Adition instance**  
   * (Optional). Specify the Adition server farm you are running on. This will be added as a prefix to the base URL: `https://{adition_instance}.adfarm1.adition.com.`
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Track event | ✗ | ✓ |
 

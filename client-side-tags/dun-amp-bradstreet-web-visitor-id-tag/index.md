@@ -9,7 +9,7 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 </blockquote>
 
 
-## Tag Tips
+## Tag tips
 
 * Use mapping to dynamically override standard configuration values.
 * Use the JavaScript Code extension to set returned data.  
@@ -26,11 +26,11 @@ window.tealium_dnbwvid = function(dnb_Data)
   * Set **Send to Tealium (server-side)** to `true`
   * If left blank, Tealium Account and Tealium Profile will be automatically populated with your current account and profile.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to Tealium's tag marketplace and add the D&B Web Visitor ID tag (Learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **API Key**
   * Your API key supplied by Dun & Bradstreet.
@@ -48,9 +48,9 @@ After adding the tag, configure the following settings:
 * **Tealium Profile**
   * (Optional) Override the `tealium_profile` used for server-side requests.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

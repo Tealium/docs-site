@@ -15,7 +15,7 @@ Tealium's tag marketplace offers two versions of the Optimizely Tag, one that lo
 
 ### Adding the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 ### Configuring the Tag
 
@@ -32,7 +32,7 @@ Go to the tag marketplace to add a new tag. For more information about how to ad
 
 ### Setting up Mappings
 
-[Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
+[Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/) is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag.
 
 NOTE: If you plan to track E-Commerce data with the Optimizely Tag, we recommend that you use the [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/) to automatically map that data.
 
@@ -51,4 +51,4 @@ Map the data source that identifies the value of the event.
 ### Vendor Documentation
 
 * [Optimizely documentation](http://developers.optimizely.com/)
-* [Implementing Optimizely with Tealium iQ](https://help.optimizely.com/hc/en-us/articles/206420397-Implementing-Optimizely-with-Tealium-iQ-or-Ensighten)
+* [Implementing Optimizely with Tag Management](https://help.optimizely.com/hc/en-us/articles/206420397-Implementing-Optimizely-with-Tealium-iQ-or-Ensighten)

@@ -37,7 +37,7 @@ If a user grants partial consent to specific categories, then the following appl
 * All JSON remote commands are triggered. 
 * Remote command tags are only triggered if they are assigned to one of the categories that the user has consented to, or if the tag has been omitted from consent.
 
-Learn more about [consent categories](https://docs.tealium.com/iq-tag-management/consent-management/consent-preferences-dialog/manage/) and the [consent event specifications](https://docs.tealium.com/consent-change-event-specifications/).
+Learn more about [consent categories](https://docs.tealium.com/consent/client-side/consent-management/consent-preferences-dialog/manage/) and the [consent event specifications](https://docs.tealium.com/consent-change-event-specifications/).
 
 ## Remote API Call
 

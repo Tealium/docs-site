@@ -1,56 +1,56 @@
 ---
-title: Braze Currents データソース構成ガイド
-description: この記事では、Brazeをデータソースとして使用し、Braze Currentsを使用してTealium EventStream API HubとTealium AudienceStream CDPにアクション可能なイベントを送信する方法について説明します。
+title: Braze Currentsデータソース構成ガイド
+description: この記事では、Braze Currentsを使用して、実用的なイベントをEvent Streaming API HubおよびCDPに送信するために、Brazeをデータソースとして使用する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/webhooks/braze-currents/
 ---
-パートナー統合やTealium Server-Sideデータソースに関する追加情報については、[Data Sources](https://docs.tealium.com/ja/partners-and-industries/partner-with-us/data-sources/#api)を参照してください。
+パートナー統合およびTealiumサーバーサイドデータソースの詳細については、[データソース](https://docs.tealium.com/partners/data-sources/#api)を参照してください。
 
 ## 前提条件
 
-* Tealium EventStream および/または Tealium AudienceStream
-* Currentsが有効化されたBrazeアカウント
+* Event StreamingまたはCustomer Data Platform（CDP）、あるいはその両方
+* Currentsが有効になっているBrazeアカウント
 
 
 <blockquote>
-Currentsコネクタは、多くのBraze pro-およびエンタープライズレベルのパッケージにすでに含まれています。まだCurrentsへのアクセスがない場合は、Brazeアカウントマネージャーに連絡してください。
+Currentsコネクタは、多くのBraze ProおよびEnterpriseレベルのパッケージにすでに含まれています。Currentsへのアクセス権がない場合は、Brazeのアカウントマネージャーにお問い合わせください。
 </blockquote>
 
 
 ## 仕組み
 
-Brazeプラットフォームは、分析、リターゲティング、およびシステム内の他のユースケースのために、Braze統合からさまざまなイベントデータを追跡します。BrazeをTealium EventStreamまたはTealium AudienceStreamに接続するには、[Braze Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/)を使用してBrazeデータソースをTealiumアカウントに送信します。
+Brazeプラットフォームは、分析、リターゲティング、およびシステム内のその他のユースケースに使用するため、Braze統合からさまざまなイベントデータを追跡します。BrazeをEvent StreamingまたはCDPに接続するには、[Braze Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/)を使用して、BrazeデータソースをTealiumアカウントに送信します。
 
-Braze Currentsを構成した後、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受け取ることで、ユースケースを自動化し、情報を得て、生産性を向上させることができます。
+Braze Currentsを構成すると、トピックに基づいてサブスクリプションを作成し、関連するプッシュ通知を受信することで、ユースケースの自動化、最新情報の把握、生産性の向上が可能になります。
 
 ### Braze Currentsデータソース
 
-Tealium Customer Data HubプロファイルにBrazeデータソースを追加すると、Currents構成で使用するためのユニークなURLが生成されます。その形式は次のとおりです：
+BrazeデータソースをTealium Customer Data Hubプロファイルに追加すると、Currents構成で使用する一意のURLが次の形式で生成されます。
 
 ```
 https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
 ```
 
-BrazeデータソースをTealium Customer Data Hubプロファイルに追加する方法については、[Data Sources](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加し、接続した後は、プロファイルを保存して公開します。
+BrazeデータソースをTealium Customer Data Hubプロファイルに追加する方法については、[データソース](https://docs.tealium.com/about-data-sources/)を参照してください。データソースを追加して接続した後、プロファイルを保存してパブリッシュします。
 
 ### Braze Currentsの構成
 
-Tealium Customer Data HubプロファイルにBrazeを接続した後、以下の手順でBraze Currentsを構成します：
+BrazeをTealium Customer Data Hubプロファイルに接続した後、次の手順でBraze Currentsを構成します。
 
-1. Brazeアカウントにログインし、Brazeダッシュボードの**Integrations**セクションの**Currents**ページに移動します。
-1. **Create Current**メニューから、**Currents connector**または**Partner**として**Tealium**を選択します。
-1. TealiumプロファイルにBrazeデータソースを追加して作成されたカスタムエンドポイントURLを入力します。例えば、   
+1. Brazeアカウントにログインし、Brazeダッシュボードの**統合**セクションにある**Currents**ページに移動します。
+1. **Currentを作成**メニューで、**Currentsコネクタ**または**パートナー**として**Tealium**を選択します。
+1. BrazeデータソースをTealiumプロファイルに追加したときに作成されたカスタムエンドポイントURLを入力します。例：   
       ```
       https://collect-us-east-1.tealiumiq.com/integration/event/{account}/{profile}/{data_source_key}
       ```
 
-1. [Message Engagement Events](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/message_engagement_events/)、[Customer Behavior](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)、および[User Events](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)をTealiumに送信するよう選択します。
-1. Currentを有効化し、保存します。
+1. Tealiumに送信する[メッセージエンゲージメントイベント](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/message_engagement_events/)、[顧客行動](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)、および[ユーザーイベント](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)を選択します。
+1. Currentを有効にして保存します。
 
 ### イベントと属性
 
-Brazeイベントパラメータは、Currents構成で選択したエンゲージメント行動または顧客行動イベントに基づいて事前に定義されています。イベントはグループ化され、すべてのイベントを含むJSON配列としてカスタムエンドポイントに送信されます。例えば、`{"events": [event1, event2, event3, etc...]}`、配列内の各要素は単一のイベントを表すJSONオブジェクトです。
+Brazeイベントパラメータは、Currents構成で選択したエンゲージメント行動イベントまたは顧客行動イベントに基づいて事前定義されています。イベントはグループ化され、すべてのイベントを含むJSON配列としてカスタムエンドポイントに送信されます。たとえば、`{"events": [event1, event2, event3, etc...]}`のようになります。配列内の各要素は、1つのイベントを表すJSONオブジェクトです。
 
-例えば、Braze Canvasのメールがエンドユーザーの受信トレイに正常に届いたとき、Brazeは次のJSONイベントオブジェクトを生成します：
+たとえば、Braze Canvasのメールがエンドユーザーの受信トレイに正常に配信されると、Brazeは次のJSONイベントオブジェクトを生成します。
 
 ```json
 users.messages.email.Delivery
@@ -77,7 +77,7 @@ users.messages.email.Delivery
 }
 ```
 
-すべての着信Brazeイベント属性は自動的に`braze_`でプレフィックスされます。例えば、Currentsが`id`を送信すると、対応するEventStreamイベント属性は`braze_id`（すべて小文字）となります。Tealium Brazeデータソースは、次の例に示すように、イベントをカスタムJSONオブジェクトとしてフラット化します：
+受信するすべてのBrazeイベント属性には、`braze_`というプレフィックスが自動的にエンリッチメントされます。たとえば、Currentsが`id`を送信すると、対応するEvent Streamingイベント属性は`braze_id`（すべて小文字）になります。TealiumのBrazeデータソースは、次の例に示すように、イベントをカスタムJSONオブジェクトとしてフラット化します。
 
 ```json
 {
@@ -100,17 +100,17 @@ users.messages.email.Delivery
 }
 ```
 
-`tealium_event`属性は、Currentsからの`event_type`パラメータの値を継承します。
+`tealium_event`属性は、Currentsの`event_type`パラメータの値を継承します。
 
-以下の画像は、Tealium Live Eventsツールへの着信イベントの例であり、メール配信イベントによって渡されたパラメータを含んでいます：
+次の画像は、Tealium Live Eventsツールに受信されたイベントの例で、メール配信イベントによって渡されたパラメータが含まれています。
 
 ![](https://docs.tealium.com/images/server-side/braze-currents-event-tealium-live-events-email-delivery.png)
 
-サポートされるイベントの完全なリストについては、[Braze Currents documentation](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/)のCurrents Event Glossaryを参照してください。
+サポートされているイベントの完全な一覧については、[Braze Currentsドキュメント](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/)のCurrentsイベント用語集を参照してください。
 
-## **ベンダーのドキュメンテーション**
+## **ベンダーのドキュメント**
 
-* [Setting up Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/setting_up_currents/)
+* [Currentsの構成](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/setting_up_currents/)
 * [Braze Currents](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/)
-* [Customer Behavior Events](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)
-* [Message Engagement Events](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/message_engagement_events/)
+* [顧客行動イベント](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/customer_behavior_events/)
+* [メッセージエンゲージメントイベント](https://www.braze.com/docs/user_guide/data_and_analytics/braze_currents/event_glossary/message_engagement_events/)

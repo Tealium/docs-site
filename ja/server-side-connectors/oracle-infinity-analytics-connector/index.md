@@ -1,49 +1,47 @@
 ---
 title: Oracle Infinity Analytics コネクタ構成ガイド
-description: この記事では、Oracle Infinity Analyticsコネクタの構成方法について説明します。
+description: この記事では、Oracle Infinity Analytics コネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/oracle-infinity-analytics-connector/
 ---
-## API情報
+## API 情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは、次のベンダー API を使用します。
 
-* API名：Oracle Infinity Analytics Data Collection API
-* APIバージョン：v3
-* APIエンドポイント：`https://dc.oracleinfinity.io`
-* ドキュメンテーション：[Oracle Infinity Analytics Data Collection API](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/data_collection/dcapi.htm)
+* API 名：Oracle Infinity Analytics Data Collection API
+* API バージョン：v3
+* API エンドポイント：`https://dc.oracleinfinity.io`
+* ドキュメント：[Oracle Infinity Analytics Data Collection API](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/data_collection/dcapi.htm)
 
 ### コネクタアクション
 
-| **アクション名** | **AudienceStream** | **EventStream** |
+| **アクション名** | **訪問プロファイル** | **イベントデータ** |
 |:----------------|:-------------------|:----------------|
-| イベント送信      | ✓                  | ✓               |
+| イベントを送信      | ✓                  | ✓               |
 
 ### 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、[コネクタ概要](https://docs.tealium.com/about-connectors/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を構成します：
+コネクタを追加した後、次の構成を構成します。
 
-* **アカウントGUID**
-  * **Oracle Infinity**ユーザーインターフェースに表示されるアカウントGUID。
-  * 詳細については、[Oracle Infinity Analytics Data collection API documentation](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/data_collection/dcapi.htm)を参照してください。
+* **アカウント GUID**
+  * **Oracle Infinity** ユーザーインターフェイスに表示されるアカウント GUID。
+  * 詳細については、[Oracle Infinity Analytics Data Collection API ドキュメント](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/data_collection/dcapi.htm)を参照してください。
 
-### アクション構成 - パラメータとオプション
+### アクション構成 — パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでコネクタアクションを構成します。
+**続行**をクリックして、コネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
-
-#### アクション - イベント送信
+#### アクション — イベントを送信
 
 ##### パラメータ
 
 | **パラメータ**                | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |:-----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| URI Stem                     | <ul><li>必須</li><li>URLのホストとポートの後、クエリストリングの前に表示されるURIステム。</li><li>通常はユーザーがアクセスした要求ファイルやページ。</li></ul>                                                                                                                                                                                                                              |
-| イベントの種類                | <ul><li>必須</li><li>追跡するイベントの種類を示す数値識別子を指定します。これはイベントレベルのフィルタリングとレポートに使用されます。</li></ul>                                                                                                                                                                                                                                                                                           |
-| ビジターID                   | <ul><li>必須</li><li>ビジターIDとして使用され、ファーストパーティクッキーに保存されるランダムな値。</li></ul>                                                                                                                                                                                                                                                                                                                                           |
-| Unix Time Stamp              | <ul><li>ビジターIDとして使用され、ファーストパーティクッキーに保存されるランダムな値。</li></ul>                                                                                                                                                                                                                                                                                                                                                            |
-| 訪問したドメイン               | <ul><li>ウェブサイトから送信された場合は必須。</li><li>訪問したドメイン、例えば `http://www.example.com`。</li></ul>                                                                                                                                                                                                                                                                                                                                   |
-| カスタムビジターID            | <ul><li>他のシステムで訪問に割り当てることができる一意のカスタムビジターIDを識別します。</li><li>これはOracle Infinityタグによって送信される自動生成されたビジターIDパラメータとは別のものです。</li><li>カスタム値を送信しない場合、このパラメータは"ヒット"に存在しません。</li></ul>                                                                                                     |
-| カスタムイベントデータ（アドバンス） | <ul><li>データ収集に渡すことができる可能性のあるパラメータの説明については、[parameter reference](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/parameters/reference.htm)を参照してください。</li><li>送信されるイベントに追加するキー値ペアを指定します。</li><li>キー値ペアはチェックやフォーマットなしで"そのまま"追加されます。</li><li>配列要素はセミコロン(`;`)で結合されます。</li></ul> |
+| URI ステム                     | <ul><li>（必須）URI ステムは、URL のホストとポートの後、クエリ文字列の前にある部分です。</li><li>通常は、ユーザーがアクセスしたファイルまたはページです。</li></ul>                                                                                                                                                                                                                              |
+| イベントの種類                | <ul><li>（必須）追跡するイベントの種類を表す数値識別子を指定します。この識別子は、イベントレベルのフィルタリングとレポートに使用されます。</li></ul>                                                                                                                                                                                                                                                                                           |
+| 訪問 ID                   | <ul><li>（必須）訪問 ID として使用され、ファーストパーティ Cookie に保存されるランダムな値です。</li></ul>                                                                                                                                                                                                                                                                                                                                           |
+| Unix タイムスタンプ              | <ul><li>訪問 ID として使用され、ファーストパーティ Cookie に保存されるランダムな値です。</li></ul>                                                                                                                                                                                                                                                                                                                                                            |
+| 訪問先ドメイン               | <ul><li>Web サイトから送信する場合は必須です。</li><li>`http://www.example.com` などの訪問先ドメインです。</li></ul>                                                                                                                                                                                                                                                                                                                                   |
+| カスタム訪問 ID            | <ul><li>他のシステムで訪問に割り当てることができる、オプションの一意なカスタム訪問 ID を識別します。</li><li>これは、Oracle Infinity タグによって送信される、自動生成された訪問 ID パラメータとは別のものです。</li><li>カスタム値を送信しない場合、このパラメータは「ヒット」に含まれません。</li></ul>                                                                                                     |
+| カスタムイベントデータ（詳細構成） | <ul><li>データ収集に渡すことができるパラメータの説明については、[パラメータリファレンス](https://docs.oracle.com/en/cloud/saas/marketing/infinity-user/Help/parameters/reference.htm)を参照してください。</li><li>送信するイベントに追加するキーと値のペアを指定します。</li><li>キーと値のペアは、チェックや書式構成を行わず「そのまま」追加されます。</li><li>配列要素はセミコロン（`;`）区切りで結合されます。</li></ul> |

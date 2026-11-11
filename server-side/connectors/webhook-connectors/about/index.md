@@ -5,8 +5,8 @@ url: https://docs.tealium.com/server-side/connectors/webhook-connectors/about/
 ---
 ## Requirements
 
-* Tealium account enabled for EventStream (for event data)
-* Tealium account enabled for AudienceStream (for visitor data)
+* Tealium account enabled for Event Streaming (for event data)
+* Tealium account enabled for Customer Data Platform (CDP) (for visitor data)
 
 ## How it works
 

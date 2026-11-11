@@ -1,6 +1,6 @@
 ---
 title: X Pixel Tag Setup Guide
-description: This article describes how to set up the X Pixel tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the X Pixel tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/x-pixel-tag/
 ---
 The X Pixel helps you measure your return on investment by tracking the actions users take after viewing or engaging with your ads on X. X conversion tracking lets you attribute conversions beyond last link clicked, to include actions driven by all types of ad engagements, such as link clicks, posts, likes, and impressions.
@@ -23,7 +23,7 @@ The X Pixel helps you measure your return on investment by tracking the actions 
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -36,7 +36,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The **Events** category is used to configure an event to trigger the pixel. The **Event-specific Parameters** category can be used to map other variables when the trigger event occurs.
 

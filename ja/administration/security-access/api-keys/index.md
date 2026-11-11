@@ -53,7 +53,7 @@ APIキーの生成を承認された任意のユーザーは以下のことが�
 1. **Edit/View User Settings**をクリックします。
 1. 左側のパネルで、**API Key**をクリックします。
 1. **Authorize Generation**をクリックします。  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg)  
     APIキーの承認メールが送信されたことを示すメッセージが表示されます。
 1. ウィンドウを閉じるために**Close**をクリックします。
 
@@ -83,7 +83,7 @@ APIキーは一度だけ表示され、後で表示することはできませ�
 **User Manager**ダイアログが表示されます。
 1. APIキーを管理したいユーザーの隣にあるチェックボックスをクリックします。
 1. **Edit/View User Settings**をクリックします。  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-user-manager-editview-user-settings.jpg)
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-user-manager-editview-user-settings.jpg)
 1. 左側のパネルで、**API Key**をクリックします。
 1. 次のアクションのいずれかを選択します：
       * **Authorize Generation**  
@@ -103,7 +103,7 @@ APIキーを一括で管理するための手順は以下の通りです：
 1. 管理メニューで、ドロップダウンリストから**Manage Users**をクリックします。**User Manager**ダイアログが表示されます。
 1. APIキーを管理したい各ユーザーの隣にあるチェックボックスをクリックします。
 1. **More**ドロップダウンリストをクリックし、**Manage API Keys**を選択します。  
-    ![](https://docs.tealium.com/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-admin-select-users.jpg)  
+    ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-managing-and-generating-api-keys-admin-select-users.jpg)  
     選択したユーザーが左パネルに表示されます。
 1. 次のアクションのいずれかを選択します：
     * **Authorize / Reset Keys**  

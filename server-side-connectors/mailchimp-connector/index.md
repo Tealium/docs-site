@@ -1,5 +1,5 @@
 ---
-title: Mailchimp Connector Setup Guide for AudienceStream
+title: Mailchimp Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the Mailchimp connector.
 url: https://docs.tealium.com/server-side-connectors/mailchimp-connector/
 ---
@@ -19,7 +19,7 @@ url: https://docs.tealium.com/server-side-connectors/mailchimp-connector/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Mailchimp connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor,
 
@@ -29,7 +29,7 @@ To configure your vendor,
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them. This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Subscribe Visitor to List
 
@@ -195,7 +195,7 @@ For the following Options, choose an Attribute from the **Map** dropdown and an 
 
 So far, we learned how to set up a new Mailchimp Connector. Next, we'll look at an example scenario on how to add a specific visitor segment, let's say shoe lovers, to a subscription list. Refer to the [Usage Example article](https://support.tealiumiq.com/en/support/solutions/articles/36000363504-mailchimp-connector-usage-example) for more.
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Lists](http://kb.mailchimp.com/lists)
 * [Managing Subscribers and Unsubscribers](http://kb.mailchimp.com/managing-subscribers)
@@ -212,7 +212,7 @@ We have made changes to the following actions to support Mailchimp's most recent
 
 
 <blockquote>
-According to Mailchimp, [prior versions will NOT be supported after 2016](https://apidocs.mailchimp.com/api/changelog.php). Hence, we strongly recommend you doublecheck all existing Mailchimp Actions in your AudienceStream profile and reconfigure them as necessary.
+According to Mailchimp, [prior versions will NOT be supported after 2016](https://apidocs.mailchimp.com/api/changelog.php). Hence, we strongly recommend you doublecheck all existing Mailchimp Actions in your CDP profile and reconfigure them as necessary.
 </blockquote>
 
 

@@ -1,29 +1,29 @@
 ---
 title: SalesViewerタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでSalesViewerタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでSalesViewerタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/salesviewer-tag/
 ---
-## タグのヒント
+## タグ構成のヒント
 
 * マッピングを使用して、SalesViewer IDを動的に構成できます。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際は、以下の項目を構成します。
 
-* **SalesViewer ID**: SalesViewerから提供されたID。
+* **SalesViewer ID**：SalesViewerから提供されたID。
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです：
+使用可能なカテゴリは以下のとおりです。
 
 ### 標準
 

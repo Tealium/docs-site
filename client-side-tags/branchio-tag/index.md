@@ -1,22 +1,22 @@
 ---
 title: Branch.io Tag
-description: This article describes how to set up the Branch.io tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Branch.io tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/branchio-tag/
 ---
 
 Branch provides the leading mobile linking platform, with solutions that unify user experience and measurement across different devices, platforms, and channels.
 
-## Tag Configuration
+## Tag configuration
 
-First, go to the tag marketplace and add the Branch.io tag (learn more about [how to add a tag](https://docs.tealium.com/manage-tags/)).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Branch key**: Your Branch live key, or (deprecated) your app ID.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

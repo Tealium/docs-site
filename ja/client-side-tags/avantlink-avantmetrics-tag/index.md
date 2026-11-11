@@ -1,41 +1,41 @@
 ---
-title: AvantLink AvantMetrics タグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで AvantLink AvantMetrics タグを構成する方法について説明します。
+title: AvantLink AvantMetricsタグ構成ガイド
+description: この記事では、タグ管理アカウントでAvantLink AvantMetricsタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/avantlink-avantmetrics-tag/
 ---
-この記事では、AvantLink AvantMetrics タグの構成方法について説明します。
+この記事では、AvantLink AvantMetricsタグを構成する方法について説明します。
 
 ## タグの構成
 
-タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[about-tags](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を構成します：
+タグを追加する際に、以下の構成を構成します。
 
-* **サイト ID**: マーチャントサイトのID。
+* **サイトID**：マーチャントのサイトID。
+ 
+## 読み込みルール
 
-## ロードルール
-
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[読み込みルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリーは以下の通りです：
+利用可能なカテゴリーは以下のとおりです。
 
 ### 標準
 
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
 | `site_id` | 文字列 | サイトID。 |
-| `new_customer` | ブール | 新規顧客かどうか。 |
+| `new_customer` | ブール値 | 新規顧客かどうか。 |
 
-### E-コマース
+### Eコマース
 
-| 変数 | タイプ/値 | 説明 |
+| 変数 | 型／値 | 説明 |
 |:---------|:-----|:------------|
 | `order_id` | 文字列 | 注文ID（`_corder`を上書き）。 |
-| `amount` | 数値 | 注文の小計額（`_csubtotal`を上書き）。 |
+| `amount` | 数値 | 注文の小計金額（`_csubtotal`を上書き）。 |
 | `currency` | 文字列 | 通貨（`_ccurrency`を上書き）。 |
 | `state` | 文字列 | 州（`_cstate`を上書き）。 |
 | `country` | 文字列 | 国（`_ccountry`を上書き）。 |

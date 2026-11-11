@@ -11,57 +11,56 @@ url: https://docs.tealium.com/ja/client-side-tags/channeladvisor-tag/
 * **ベンダー**: ChannelAdvisor
 * **タイプ**: コンバージョントラッキング
 
-### 必要条件
+### 必須要件
 
-**サービス**: ChannelAdvisorプラットフォーム
+**サービス**: ChannelAdvisor Platform
 
 **構成**:
 
 * ChannelAdvisorアカウントID
 
-## Tealium iQでのタグ構成
+## タグの構成
 
 ### タグの追加
 
-Tealium iQのタグマーケットプレイスは、さまざまなタグを提供しています。プロファイルにタグを追加する方法については、[こちら](https://docs.tealium.com/manage-tags/)をクリックしてください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
 ### タグの構成
 
-1. **タイトル** (必須): タグインスタンスを識別するための記述的なタイトルを入力します。
-1. **アカウントID** (オプション): ChannelAdvisorアカウントに関連付けられた数値IDを入力します。例: `10055350`   
+1. **タイトル**: （必須）タグインスタンスを識別するためのわかりやすいタイトルを入力します。
+1. **アカウントID**: （任意）ChannelAdvisorアカウントに関連付けられている数値IDを入力します。例: `10055350`
 
 
 <blockquote>
-`pid`パラメータにマッピングすることで、アカウントID（プロファイルIDとも呼ばれます）フィールドを動的に構成することを選択できます。
+`pid`パラメータにマッピングすることで、アカウントID（プロファイルIDとも呼ばれます）フィールドに動的に値を構成できます。
 </blockquote>
 
 
 
 ### ロードルールの適用
 
-[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをいつ、どこでロードするかを決定します。**すべてのページでロード**ルールは、デフォルトのロードルールです。このタグを特定のページでロードするには、関連する条件を持つ新しいロードルールを作成します。
+[ロードルール](https://docs.tealium.com/about-load-rules/)は、このタグのインスタンスをいつ、どこで読み込むかを決定します。デフォルトのロードルールは、**すべてのページで読み込む**ルールです。このタグを特定のページで読み込むには、該当する条件を指定して新しいロードルールを作成します。
 
-**ベストプラクティス**: このタグをサイトの注文確認ページでロードするようにロードルールの条件を構成します。これにより、タグはコンバージョン後の注文情報をキャプチャできます。
+**ベストプラクティス**: サイトの注文確認ページでこのタグを読み込むように、ロードルールの条件を構成します。これにより、タグはコンバージョン後の注文情報を取得できます。
 
 ### マッピングの構成
 
-[マッピング](https://docs.tealium.com/about-data-mappings/)は、データレイヤーのデータソースからベンダータグの対応する宛先変数にデータを送信するシンプルなプロセスです。このタグの宛先変数は、マッピングツールボックスで利用可能です。
+[マッピング](https://docs.tealium.com/about-data-mappings/)とは、データレイヤー内のデータソースから、ベンダータグの対応する宛先変数にデータを送信するシンプルなプロセスです。このタグの宛先変数は、マッピングツールボックスで使用できます。
 
-* **pid**: この変数にマッピングして、ChannelAdvisorアカウントの数値IDを動的に構成します。
+* **pid**: ChannelAdvisorアカウントの数値IDを動的に構成するには、この変数にマッピングします。
 
-**注意**: [E-Commerce Extension](https://docs.tealium.com/e-commerce-extension/)が注文と製品変数を自動的にマップするように構成されていることを確認してください。ただし、ツールキットに記載されている対応する宛先変数でE-Commerce Extensionのマッピングを上書きすることができます。
+**注**: 注文変数と製品変数が自動的にマッピングされるように、[Eコマース拡張機能](https://docs.tealium.com/e-commerce-extension/)が構成されていることを確認してください。ただし、ツールキットに記載されている対応する宛先変数を使用して、Eコマース拡張機能のマッピングを上書きできます。
 
-* **orderId**: Extensionの`_corder`変数がこの宛先にマップします。このデータポイントは注文識別子を示します。
-* **revenue**: Extensionの`_csubtotal`変数がこの宛先にマップします。このデータポイントは注文の小計を識別します。
-* **currency**: Extensionの`_ccurrency`変数がこの宛先にマップします。このデータポイントは通貨コードを識別します。
-* **sku**: Extensionの`_cprod`変数（製品IDのリスト）がこの宛先にマップします。このデータポイントは製品SKUのリストを識別し、各SKUは注文内の行項目に固有です。
-* **price**: Extensionの`_cprice`変数がこの宛先にマップします。このデータポイントは注文内のアイテムに関連する単価のリストを識別します。
-* **quan**: Extensionの`_cquan`変数がこの宛先にマップします。このデータポイントは注文内の各アイテムの数量のリストを識別します。
+* **orderId**: 拡張機能の`_corder`変数が、この宛先にマッピングされます。このデータポイントは注文IDを示します。
+* **revenue**: 拡張機能の`_csubtotal`変数が、この宛先にマッピングされます。このデータポイントは注文の小計を示します。
+* **currency**: 拡張機能の`_ccurrency`変数が、この宛先にマッピングされます。このデータポイントは通貨コードを示します。
+* **sku**: 拡張機能の`_cprod`変数（製品IDのリスト）が、この宛先にマッピングされます。このデータポイントは製品SKUのリストを示します。各SKUは、注文内の各明細項目に固有です。
+* **price**: 拡張機能の`_cprice`変数が、この宛先にマッピングされます。このデータポイントは、注文内の各商品に関連付けられた単価のリストを示します。
+* **quan**: 拡張機能の`_cquan`変数が、この宛先にマッピングされます。このデータポイントは、注文内の各商品の数量のリストを示します。
 
-## ベンダー文書
+## ベンダーのドキュメント
 
 * [注文トラッキングピクセルの実装方法](http://ssc.channeladvisor.com/howto/my-account/account-settings/tracking-pixel#Order)
 * [Tealiumを使用したトラッキングピクセルの実装方法](http://ssc.channeladvisor.com/howto/implementing-tracking-pixels-tealium)
-* [Channel Advisorプラットフォームについて](http://ssc.channeladvisor.com/howto)
-* [ChannelAdvisor戦略とサポートセンター](http://ssc.channeladvisor.com/)
-
+* [ChannelAdvisor Platformについて](http://ssc.channeladvisor.com/howto)
+* [ChannelAdvisor戦略およびサポートセンター](http://ssc.channeladvisor.com/)

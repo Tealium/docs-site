@@ -9,7 +9,7 @@ url: https://docs.tealium.com/server-side/getting-started/order-of-operations/
 
 ## Order of operations overview
 
-Tealium AudienceStream is integrated tightly with Tealium EventStream, so this overview starts at the point that events are received.
+Customer Data Platform (CDP) is integrated tightly with Event Streaming, so this overview starts at the point that events are received.
 
 The default order of operations:
 
@@ -28,7 +28,7 @@ The default order of operations:
 
 Enrichments are evaluated in two ways: the timing and the condition.
 
-The enrichment timing determines when to evaluate the condition. This appears in the interface as the **WHEN** setting and is limited to the following options offered in AudienceStream:
+The enrichment timing determines when to evaluate the condition. This appears in the interface as the **WHEN** setting and is limited to the following options offered in Customer Data Platform (CDP):
 
 * **New Visitor**: The first visit for a visitor.
 * **New Visit**: A return visit by an existing visitor.
@@ -82,11 +82,11 @@ If an enriched visitor ID attribute matches multiple visitor profiles, they are 
 
 ### Audiences Evaluated
 
-AudienceStream evaluates the visitor profile to determine which audiences it should join or leave. The visitor joins an audience if the audience rule is `true` or leaves an audience if the audience rule is `false`. The transition of a visitor profile into or out of an audience triggers connector actions.
+CDP evaluates the visitor profile to determine which audiences it should join or leave. The visitor joins an audience if the audience rule is `true` or leaves an audience if the audience rule is `false`. The transition of a visitor profile into or out of an audience triggers connector actions.
 
 ### Connectors Triggered
 
-AudienceStream evaluates triggers to determine which connector actions to initiate. Connector actions are initiated when the trigger condition is met. A connector condition can be one of the following:
+CDP evaluates triggers to determine which connector actions to initiate. Connector actions are initiated when the trigger condition is met. A connector condition can be one of the following:
 
 * **Joined Audience**: The visitor joined the audience during this visit.
 * **Left Audience**: The visitor left the audience during this visit. This action does not occur when a visitor is deleted. For more information, see [Deleting a visitor](https://docs.tealium.com/visitor-search/#deleting-a-visitor).

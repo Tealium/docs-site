@@ -3,7 +3,7 @@ title: Yahoo! JAPAN Ads API Connector Setup Guide
 description: This article describes how to set up the Yahoo! JAPAN Ads API connector.
 url: https://docs.tealium.com/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the **Connector Marketplace** and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
+Go to the connector marketplace and add a new connector. For general instructions on how to add a connector, see the [About connectors](https://docs.tealium.com/server-side/connectors/manage/) article.
 
 After adding the connector, configure the following settings:
 
@@ -33,7 +33,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Actions
 
-|Action Name| AudienceStream| EventStream|
+|Action Name| Visitor profile| Event data|
 |---| ---| ---|
 | Add User List | ✓ | ✗ |
 

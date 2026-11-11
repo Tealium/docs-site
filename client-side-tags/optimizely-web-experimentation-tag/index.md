@@ -1,6 +1,6 @@
 ---
 title: Optimizely Web Experimentation Tag Setup Guide
-description: This article describes how to set up the Optimizely Web Experimentation tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the Optimizely Web Experimentation tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/optimizely-web-experimentation-tag/
 ---
 ## Tag tips
@@ -21,7 +21,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -33,7 +33,7 @@ The available categories are:
 
 ### Event-Specific Tags
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Event    | Description          |
 |:---------|:---------------------|

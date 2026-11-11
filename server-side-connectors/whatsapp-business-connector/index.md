@@ -3,7 +3,7 @@ title: WhatsApp Business Connector Setup Guide
 description: This article describes how to set up the WhatsApp Business connector.
 url: https://docs.tealium.com/server-side-connectors/whatsapp-business-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -38,7 +38,7 @@ Use Template Messages when initiating a conversation or sending notifications ou
 
 Before sending a template message, you need to create a template. For more information, see [WhatsApp: Create Message Templates for Your WhatsApp Business Account](https://www.facebook.com/business/help/2055875911147364).
 
-|Action Name| AudienceStream| EventStream|
+|Action Name| Visitor profile| Event data|
 |---| ---| ---|
 |Send Text Message| ✓| ✓|
 |Send Message Template| ✓| ✓|

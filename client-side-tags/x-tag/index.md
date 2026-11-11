@@ -1,17 +1,17 @@
 ---
 title: X (formerly Twitter) Tag Setup Guide
-description: This article describes how to set up the X (formerly Twitter) tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the X (formerly Twitter) tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/x-tag/
 ---
 X is a real-time information network that connects you to the latest stories, ideas, opinions, and news about what you find interesting.
 
-## Tag Tips
+## Tag tips
 *   Use the Content Modification Extension to add a new div if necessary
 *   The contents of the Div ID specified will be overwritten with the X button (button is just a link)
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -26,13 +26,13 @@ When adding the tag, configure the following settings:
 * **Share URL**: Leave blank to use current URL. For example: http://www.tealium.com
 * **Add Query String**: (Optional) Added to query string after `/share?`. For example: utm_source=website in http://x.com/share?utm_source=website
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

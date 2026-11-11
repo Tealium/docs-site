@@ -21,11 +21,11 @@ url: https://docs.tealium.com/client-side-tags/adobe-test-target-tag/
 * Timeout
 * Global mbox Name (synchronous version)
 
-## Tag Configuration in Tealium iQ Tag Management
+## Tag configuration
 
 ### Step 1. Add the Tag
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 Tealium supports both asynchronous and synchronous versions of the Test & Target Tag. Each version is a separate tag in the tag marketplace. However, we recommend that you use the asynchronous version. If you have concerns about flicker, check out our [Flicker-Free Test & Target](https://docs.tealium.com/flicker-free-test-and-target/) solution, which allows you load the Test & Target Tag asynchronously and avoid the appearance of flicker.
 

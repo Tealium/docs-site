@@ -1,26 +1,26 @@
 ---
-title: AWS Firehose（Tealium提供の資格情報）コネクタ構成ガイド
-description: この記事では、AWS Firehose（Tealium提供の資格情報）コネクタの構成方法について説明します。
+title: AWS Firehose（Tealium 提供の認証情報）コネクタ構成ガイド
+description: この記事では、AWS Firehose（Tealium 提供の認証情報）コネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/
 ---
 ## 構成
 
-コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を行います：
+コネクタを追加した後、次の構成を構成します。
 
 * **リージョン**：（必須）リージョンを選択します。
-* **Assume Role: ARN**：（必須）引き受けるロールのAmazonリソースネーム（ARN）を提供します。例：`arn:aws:iam::222222222222:role/myrole`。
-    * 信頼ポリシーがTealiumのルートアカウント（`arn:aws:iam::757913464184:root`）を外部ID条件付きで許可していることを確認してください。
-    * IAMロール名に`TealiumFirehose`をプレフィックスとして含めることを推奨します。
-    * 詳細については、[AWS: IAMロールへの切り替え](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html)を参照してください。
-* **Assume Role: セッション名**：引き受けるロールのセッション名を提供します。
-* **Assume Role: 外部ID**：（オプション）外部識別子を提供します。
-    * 詳細については、[AWS: 第三者が所有するAWSアカウントへのアクセス](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)を参照してください。
+* **引き受けるロール：ARN**：（必須）引き受けるロールの Amazon リソースネーム（ARN）を指定します。例：`arn:aws:iam::222222222222:role/myrole`
+    * 信頼ポリシーで、External ID 条件を使用して Tealium ルートアカウント（`arn:aws:iam::757913464184:root`）が許可されていることを確認します。
+    * IAM ロール名のプレフィックスに `TealiumFirehose` を含めることをお勧めします。
+    * 詳細については、[AWS：IAM ロールへの切り替え](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html)を参照してください。
+* **引き受けるロール：セッション名**：引き受けるロールのセッション名を指定します。
+* **引き受けるロール：External ID**：（任意）外部識別子を指定します。
+    * 詳細については、[AWS：第三者が所有する AWS アカウントへのアクセス](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)を参照してください。
 
-### AWSアカウントにTealiumロールを追加
+### AWS アカウントへの Tealium ロールの追加
 
-TealiumのメインAWSアカウントID `757913464184` をプリンシパルとして使用し、外部ID条件を要求します。以下は、AWSアカウントのIAMロールの**信頼**関係タブに追加する信頼ポリシーの例です。**Assume Role: 外部ID**で構成する値と`EXTERNAL_ID`を正確に置き換えてください。
+Tealium のメイン AWS アカウント ID `757913464184` をプリンシパルとして使用し、External ID 条件を必須にします。以下は、AWS アカウント内の IAM ロールの **信頼関係** タブに追加する信頼ポリシーの例です。`EXTERNAL_ID` を、**引き受けるロール：External ID** で構成した正確な値に置き換えます。
 
 ```json
 {
@@ -44,7 +44,7 @@ TealiumのメインAWSアカウントID `757913464184` をプリンシパルと�
 
 #### プライベートクラウドの信頼ポリシー
 
-プライベートクラウドのお客様の場合、Tealiumは異なるAWSアカウントID `111879511226` を使用します。以下は、AWSアカウントのIAMロールの**信頼**関係タブに追加する信頼ポリシーの例です。**Assume Role: 外部ID**で構成する値と`EXTERNAL_ID`を正確に置き換えてください。
+プライベートクラウドのお客様の場合、Tealium は別の AWS アカウント ID `111879511226` を使用します。以下は、AWS アカウント内の IAM ロールの **信頼関係** タブに追加する信頼ポリシーの例です。`EXTERNAL_ID` を、**引き受けるロール：External ID** で構成した正確な値に置き換えます。
 
 ```json
 {
@@ -66,15 +66,15 @@ TealiumのメインAWSアカウントID `757913464184` をプリンシパルと�
 }
 ```
 
-### IAM権限ポリシー
+### IAM アクセス許可ポリシー
 
-以下は、前述の信頼ポリシーと連携する最小権限の単一ストリーム権限ポリシーです。
+以下は、前述の信頼ポリシーで使用できる、単一ストリーム向けの最小権限アクセス許可ポリシーです。
 
-`Resource`フィールドでは、次のプレースホルダーを置き換えます：
+`Resource` フィールドで、次のプレースホルダーを置き換えます。
 
-* `REGION`：あなたのAWSリージョン（例：`us-west-2`）。
-* `ACCOUNT_ID`：あなたのAWSアカウントID。
-* `MY_FIREHOSE_STREAM`：Tealiumが書き込むFirehose配信ストリーム名。
+* `REGION`：AWS リージョン（例：`us-west-2`）。
+* `ACCOUNT_ID`：AWS アカウント ID。
+* `MY_FIREHOSE_STREAM`：Tealium に書き込みを許可する Firehose 配信ストリームの名前。
 
 ```json
 {
@@ -102,99 +102,98 @@ TealiumのメインAWSアカウントID `757913464184` をプリンシパルと�
 }
 ```
 
-このポリシーを、外部IDでTealiumアカウントを信頼する構成のIAMロールに添付します（プライベートクラウドの場合：`arn:aws:iam::111879511226:root`、その他の場合は`arn:aws:iam::757913464184:root`）。
+このポリシーを、External ID を使用して Tealium アカウントを信頼するように信頼ポリシーが構成されている同じ IAM ロールにアタッチします（プライベートクラウドの場合：`arn:aws:iam::111879511226:root`、その他すべての場合：`arn:aws:iam::757913464184:root`）。
 
-Tealiumが複数の配信ストリームに送信する必要がある場合は、次のいずれかを行います：
+Tealium から複数の配信ストリームに送信する必要がある場合は、次のいずれかを実行します。
 
-* `AllowWritingToSpecificDeliveryStream`の`Resource`に追加のARNを配列として追加します。
-* 命名規則に合わせてパターンベースのARNを使用します（例：すべてのTealiumストリームに`tealium-`をプレフィックスとして付ける場合）。
+* `AllowWritingToSpecificDeliveryStream` の `Resource` に、追加の ARN を配列として追加します。
+* 命名規則に合う場合は、パターンベースの ARN（例：`tealium-` というプレフィックスが付いたすべての Tealium ストリーム）を使用します。
+
+コネクタを構成したら、**完了**をクリックします。
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-| 配信ストリームへのイベントデータ送信 | ✗ | ✓ |
-| 配信ストリームへのカスタマイズデータ送信（高度） | ✓ | ✓ |
-| 配信ストリームへのログイベント送信 | ✗ | ✓ |
-| 配信ストリームへの訪問データ送信 | ✓ | ✗ |
-| 配信ストリームへのカスタマイズデータ送信（バッチ処理） | ✓ | ✓ |
-| 配信ストリームへのイベントデータ送信（バッチ処理） | ✗ | ✓ |
+| イベントデータを配信ストリームに送信 | ✗ | ✓ |
+| カスタマイズしたデータを配信ストリームに送信（詳細） | ✓ | ✓ |
+| ログイベントを配信ストリームに送信 | ✗ | ✓ |
+| 訪問データを配信ストリームに送信 | ✓ | ✗ |
+| カスタマイズしたデータを配信ストリームに送信（バッチ） | ✓ | ✓ |
+| イベントデータを配信ストリームに送信（バッチ） | ✗ | ✓ |
 
 アクションの名前を入力し、アクションタイプを選択します。
 
-次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
+次のセクションでは、各アクションのパラメータとオプションを構成する方法について説明します。
 
-### 配信ストリームへのイベントデータ送信
-
-#### パラメータ
-
-| **パラメータ** | **説明** |
-| --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを確認するには、`firehose:ListDeliveryStreams`の権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehoseの制限](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
-| レコードの接尾辞 | <ul><li>各レコードの末尾に追加される接尾辞で、区切り文字として使用されます。</li><li>デフォルトは`Newline`です。</ul></li> |
-| 属性名の印刷 | 属性名が更新された場合、ペイロード内の名前が更新を反映します。 |
-
-### 配信ストリームへのカスタマイズデータ送信（高度）
+### イベントデータを配信ストリームに送信
 
 #### パラメータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを確認するには、`firehose:ListDeliveryStreams`の権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehoseの制限](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` アクセス許可を付与する必要があります。</li><li>詳細については、[AWS：Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として使用するために、各レコードの末尾に追加されるサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
+| 属性名を出力 | 属性名が更新された場合、ペイロード内の名前に更新内容が反映されます。 |
+
+### カスタマイズしたデータを配信ストリームに送信（詳細）
+
+#### パラメータ
+
+| **パラメータ** | **説明** |
+| --- | --- |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` アクセス許可を付与する必要があります。</li><li>詳細については、[AWS：Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
 
 #### メッセージデータ
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| レコードの接尾辞 | <ul><li>各レコードの末尾に追加する接尾辞で、区切り文字として使用されます。</li><li>デフォルトは`Newline`です。</ul></li> |
-| メッセージテンプレート変数 | <ul><li>（オプション）テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>例えば、`items.name`のようにドット表記でネストされたテンプレート変数を名前付けします。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li> |
-| メッセージテンプレート | <ul><li>（オプション）`URL`、`URL`パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。</li><li>例：`{{SomeTemplateName}}`。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として各レコードの末尾に追加するサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
+| メッセージテンプレート変数 | <ul><li>（任意）テンプレートへのデータ入力としてテンプレート変数を指定します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数にはドット表記で名前を付けます。例：`items.name`</li><li>ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。</ul></li> |
+| メッセージテンプレート | <ul><li>（任意）`URL`、`URL` パラメータ、ヘッダー、または本文データで参照するテンプレートを指定します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされているフィールドに二重波括弧で名前を指定して挿入します。</li><li>例：`{{SomeTemplateName}}`</ul></li> |
 
-### 配信ストリームへのログイベント送信
+### ログイベントを配信ストリームに送信
 
 #### パラメータ
 
 | パラメータ | 説明 |
 | --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを確認するには、`firehose:ListDeliveryStreams`の権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehoseの制限](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
-| レコードの接尾辞 | <ul><li>各レコードの末尾に追加される接尾辞で、区切り文字として使用されます。</li><li>デフォルトは`Newline`です。</ul></li> |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` アクセス許可を付与する必要があります。</li><li>詳細については、[AWS：Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として使用するために、各レコードの末尾に追加されるサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
 
-### 配信ストリームへの訪問データ送信
+### 訪問データを配信ストリームに送信
+#### パラメーター
 
-
-#### パラメータ
-
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehose クォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
-| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは `Newline` です。</ul></li> |
-| 現在の訪問データを含む | 現在の訪問データをペイロードに追加します。これには、現在の訪問イベントデータの除外が選択されていない場合のイベント訪問データが含まれます。 |
-| 現在の訪問イベントデータを除外 | 現在の訪問データからイベントデータを除外します。 |
-| 属性名を印刷 | 属性名が更新された場合、ペイロードの名前が更新を反映します。 |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が付与されている必要があります。</li><li>詳細については、[AWS: Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として各レコードの末尾に追加するサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
+| 現在の訪問データを含める | 現在の訪問データをペイロードに追加します。「現在の訪問のイベントデータを除外」が選択されていない場合は、イベントの訪問データも含まれます。 |
+| 現在の訪問のイベントデータを除外 | 現在の訪問データからイベントデータを除外します。 |
+| 属性名を出力 | 属性名が更新された場合、ペイロード内の名前に更新内容が反映されます。 |
 
-### 配信ストリームへのカスタマイズデータの送信（バッチ処理）
+### カスタマイズしたデータを配信ストリームに送信（バッチ処理）
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehose クォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が付与されている必要があります。</li><li>詳細については、[AWS: Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
 
 #### メッセージデータ
 
-
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは `Newline` です。</ul></li> |
-| メッセージテンプレート変数 | <ul><li>（オプション）テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例えば、`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li> |
-| メッセージテンプレート | <ul><li>（オプション）`URL`、`URL` パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。</li><li>例えば、`{{SomeTemplateName}}`。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として各レコードの末尾に追加するサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
+| メッセージテンプレート変数 | <ul><li>（任意）テンプレートのデータ入力としてテンプレート変数を指定します。</li><li>詳細については、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。</li><li>ネストされたテンプレート変数には、ドット表記を使用して名前を付けます。例：`items.name`。</li><li>ネストされたテンプレート変数は通常、データレイヤーのリスト属性から作成されます。</ul></li> |
+| メッセージテンプレート | <ul><li>（任意）`URL`、`URL` パラメーター、ヘッダー、または本文データで参照するテンプレートを指定します。</li><li>詳細については、[about-connector-templates](https://docs.tealium.com/about-connector-templates/)を参照してください。</li><li>テンプレートは、サポートされているフィールドに二重波括弧で囲んだ名前を使用して挿入します。</li><li>例：`{{SomeTemplateName}}`。</ul></li> |
 
-### 配信ストリームへのイベントデータの送信（バッチ処理）
+### イベントデータを配信ストリームに送信（バッチ処理）
 
-#### パラメータ
+#### パラメーター
 
-| **パラメータ** | **説明** |
+| **パラメーター** | **説明** |
 | --- | --- |
-| 配信ストリーム | <ul><li>データを送信する配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が必要です。</li><li>詳細については、[AWS: Amazon Data Firehose クォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
-| レコードサフィックス | <ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは `Newline` です。</ul></li> |
-| 属性名を印刷 | 属性名が更新された場合、ペイロードの名前が更新を反映します。 |
+| 配信ストリーム | <ul><li>データの送信先となる配信ストリームを選択します。</li><li>利用可能なストリームを表示するには、`firehose:ListDeliveryStreams` 権限が付与されている必要があります。</li><li>詳細については、[AWS: Amazon Data Firehose のクォータ](https://docs.aws.amazon.com/firehose/latest/dev/limits.html)を参照してください。</ul></li> |
+| レコードサフィックス | <ul><li>区切り文字として各レコードの末尾に追加するサフィックスです。</li><li>デフォルトは `Newline` です。</ul></li> |
+| 属性名を出力 | 属性名が更新された場合、ペイロード内の名前に更新内容が反映されます。 |

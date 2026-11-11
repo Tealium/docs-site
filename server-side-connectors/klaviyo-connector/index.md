@@ -3,7 +3,7 @@ title: Klaviyo Connector Setup Guide
 description: This article describes how to set up the Klaviyo connector.
 url: https://docs.tealium.com/server-side-connectors/klaviyo-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -32,7 +32,7 @@ If you do not already have a list at Klaviyo or you need to create a new one, us
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Update User Attributes | ✓ | ✗ |
 | Add User to List (Real-Time) | ✓ | ✗ |

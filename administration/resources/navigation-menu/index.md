@@ -45,7 +45,7 @@ The following items from the old navigation menu have been renamed. Use this tab
 
 | Old item | New item |
 | -------- | -------- |
-| iQ Tag Management | Tag Management |
+| Tag Management | Tag Management |
 | Server-Side Tools > Manage Rules | Transform > Rules |
 | Server-Side Tools > Visitor Profile Sampler | Validate > Live Visitors |
 | Server-Side Tools > Visitor Lookup | Govern > Visitor Search |
@@ -56,7 +56,7 @@ The following items from the old navigation menu have been renamed. Use this tab
 
 The full list of navigation menu items.
 
-* [Tag Management](https://docs.tealium.com/iq-tag-management/) 
+* [Tag Management](https://docs.tealium.com/tag-management/) 
   * Dashboard 
   * [Data Layer](https://docs.tealium.com/about-the-data-layer/) 
   * [Load Rules](https://docs.tealium.com/about-load-rules/) 
@@ -105,7 +105,7 @@ The full list of navigation menu items.
   * [EventStore Legacy](https://docs.tealium.com/audiencedb-and-eventdb/) 
 * Analyze 
   * [Usage](https://docs.tealium.com/understanding-the-usage-report/) 
-  * [Audience Dashboard](https://docs.tealium.com/audiencestream-dashboard/) 
+  * [Audience Dashboard](https://docs.tealium.com/cdp-dashboard/) 
   * [Insights](https://docs.tealium.com/about-data-insights/)
     * [Dashboards](https://docs.tealium.com/manage-dashboards/) 
     * [Templates](https://docs.tealium.com/data-insights-templates/) 
@@ -115,21 +115,21 @@ The full list of navigation menu items.
 
 Use this table to find where a feature from the classic navigation is located in the new navigation.
 
-### iQ Tag Management
+### Tag Management
 
 | Old location | New location |
 | ------------ | ------------ |
-| iQ Tag Management > Dashboard | Tag Management > Dashboard |
-| iQ Tag Management > Data Layer | Tag Management > Data Layer |
-| iQ Tag Management > Load Rules | Tag Management > Load Rules |
-| iQ Tag Management > Events | Tag Management > Events |
-| iQ Tag Management > Tags | Tag Management > Tags |
-| iQ Tag Management > Extensions | Tag Management > Extensions |
-| iQ Tag Management > Consent Integrations | Tag Management > Consent Integrations |
-| iQ Tag Management > Client-Side Tools > Browser Tools | Client-Side Tools > Browser Tools |
-| iQ Tag Management > Client-Side Tools > Tag Reporting | Client-Side Tools > Tag Reporting |
-| iQ Tag Management > Client-Side Tools > Consent Management | Client-Side Tools > Consent Management |
-| iQ Tag Management > Client-Side Tools > Client-Side Versions | Client-Side Versions |
+| Tag Management > Dashboard | Tag Management > Dashboard |
+| Tag Management > Data Layer | Tag Management > Data Layer |
+| Tag Management > Load Rules | Tag Management > Load Rules |
+| Tag Management > Events | Tag Management > Events |
+| Tag Management > Tags | Tag Management > Tags |
+| Tag Management > Extensions | Tag Management > Extensions |
+| Tag Management > Consent Integrations | Tag Management > Consent Integrations |
+| Tag Management > Client-Side Tools > Browser Tools | Client-Side Tools > Browser Tools |
+| Tag Management > Client-Side Tools > Tag Reporting | Client-Side Tools > Tag Reporting |
+| Tag Management > Client-Side Tools > Consent Management | Client-Side Tools > Consent Management |
+| Tag Management > Client-Side Tools > Client-Side Versions | Client-Side Versions |
 
 ### Data Supply Chain
 
@@ -144,24 +144,24 @@ Use this table to find where a feature from the classic navigation is located in
 | ------------ | ------------ |
 | Sources > Data Sources | Connect > Data Sources |
 
-### EventStream
+### Event Streaming
 
 | Old location | New location |
 | ------------ | ------------ |
-| EventStream > Live Events | Validate > Live Events |
-| EventStream > Event Specs | Validate > Event Specs |
-| EventStream > Event Attributes | Transform > Event Attributes |
+| Event Streaming > Live Events | Validate > Live Events |
+| Event Streaming > Event Specs | Validate > Event Specs |
+| Event Streaming > Event Attributes | Transform > Event Attributes |
 
-### AudienceStream
+### Customer Data Platform (CDP)
 
 | Old location | New location |
 | ------------ | ------------ |
-| AudienceStream > Dashboard | Analyze > Audience Dashboard |
-| AudienceStream > Discover | Activate > Discover |
-| AudienceStream > Visitor / Visit Attributes | Transform > Visitor / Visit Attributes |
-| AudienceStream > Audiences | Activate > Audiences |
-| AudienceStream > Audience Jobs | Activate > Audience Jobs |
-| AudienceStream > Context API (formerly Moments API) | Activate > Context API |
+| CDP > Dashboard | Analyze > Audience Dashboard |
+| CDP > Discover | Activate > Discover |
+| CDP > Visitor / Visit Attributes | Transform > Visitor / Visit Attributes |
+| CDP > Audiences | Activate > Audiences |
+| CDP > Audience Jobs | Activate > Audience Jobs |
+| CDP > Context API (formerly Moments API) | Activate > Context API |
 
 ### Connectors
 

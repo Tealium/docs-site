@@ -251,7 +251,7 @@ This migration guide uses the following example data mappings in the Adobe Analy
 
 ![](https://docs.tealium.com/images/client-side-tags/adobe-analytics-migration-example2.png)
 
-1. Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+1. Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 1. Configure the following tag settings in Tealium:
     * **Org ID**: Your Adobe-assigned Experience Cloud organization ID. For example, `XXX@AdobeOrg`.
     * **Datastream ID**: Your Adobe-assigned datastream ID, which links the SDK to the appropriate accounts and configuration. Also referred to as the `edgeConfigId`.
@@ -286,7 +286,7 @@ For more information about configuring Adobe Experience Platform Datastream, ser
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -306,7 +306,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

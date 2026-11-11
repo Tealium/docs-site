@@ -1,36 +1,36 @@
 ---
-title: ObservePointデータレイヤーバリデータタグ構成ガイド
-description: この記事では、iQタグ管理（TiQ）アカウントでObservePointデータレイヤーバリデータタグを構成する方法について説明します。
+title: ObservePoint Data Layer Validatorタグ構成ガイド
+description: この記事では、タグ管理アカウントでObservePoint Data Layer Validatorタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/observepoint-data-layer-validator-tag/
 ---
 ## 仕組み
 
-ObservePoint Mobile Data Layerを使用して、ObservePoint内のデータレイヤーを検証します。これにより、ObservePointのモバイルアプリテストが、データレイヤーのレビューにおけるウェブテストの機能と一致するようにエンリッチメントされます。
+ObservePoint Mobile Data Layerを使用して、ObservePoint内でデータレイヤーを検証します。これにより、ObservePointモバイルアプリのテスト機能がエンリッチメントされ、データレイヤーの確認においてWebテストと同等の機能を利用できるようになります。
 
-## タグのヒント
+## タグに関するヒント
 
-* このタグは本番環境で実行すべきではありません
-* ObservePointオブジェクト名はデフォルトで`utagdata`という値になります。
-* データレイヤーオブジェクトはデフォルトで`b`という値になります。
+* このタグは本番環境で実行しないでください。
+* ObservePointオブジェクト名のデフォルト値は`utagdata`です。
+* Data Layerオブジェクトのデフォルト値は`b`です。
 
 ## タグの構成
 
-まず、Tealiumのタグマーケットプレイスに行き、ObservePoint Data Layer Validatorタグを追加します（[タグの追加方法](https://docs.tealium.com/manage-tags/)について詳しくはこちら）。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を行います：
+タグを追加する際は、次の構成を行います。
 
 * **ObservePointオブジェクト名**  
-これはObservePointユーザーインターフェースに表示される名前です。
+ObservePointのユーザーインターフェイスに表示される名前です。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
-### スタンダード
+### 標準
 
-|変数| 説明|
-|---| ---|
+|変数|説明|
+|---|---|
 | `op_object_name` | ObservePointオブジェクト名|
-| `op_object` | データレイヤーオブジェクト|
+| `op_object` | Data Layerオブジェクト|

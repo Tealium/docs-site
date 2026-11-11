@@ -1,49 +1,47 @@
 ---
-title: Adobe Audience Manager DCSコネクタ構成ガイド
-description: Adobeのデータ収集サーバー（DCS）は、サーバー間APIを提供して、Adobe Audience Managerで管理されるオーディエンスユーザーデータを収集します。この記事では、お客様のCustomer Data Hubプロファイルでサービスを構成する方法について説明します。
+title: Adobe Audience Manager DCS コネクタ構成ガイド
+description: Adobe のデータ収集サーバー（DCS）は、Adobe Audience Manager で管理するオーディエンスユーザーデータを収集するためのサーバー間 API を提供します。この記事では、Customer Data Hub プロファイルでサービスを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/adobe-audience-manager-dcs-connector/
----## 必要条件
+---## 要件
 
-* Adobe Audience Managerによって割り当てられたドメインエイリアス
+* Adobe Audience Manager によって割り当てられたドメインエイリアス
 
-## サポートされるアクション
+## サポートされているアクション
 
-|**アクション名**| **オーディエンスに対するトリガー**| **ストリームに対するトリガー**|
+|**アクション名**| **オーディエンスでトリガー**| **ストリームでトリガー**|
 |---| ---| ---|
-|データ収集イベントの送信| ✓| ✓|
+|データ収集イベントを送信| ✓| ✓|
 
-## 構成の構成
+## 構成
 
-コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、[コネクタについて](https://docs.tealium.com/about-connectors/)の記事を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-ベンダーを構成するには、次の手順に従います：
+ベンダーを構成するには、次の手順に従います。
 
-* **構成**タブで、コネクタインスタンスのタイトルを提供します。
+* **Configure** タブで、コネクタインスタンスのタイトルを入力します。
 
-## アクション構成 - パラメータとオプション
+## アクション構成 — パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでコネクタアクションを構成します。
+**Continue** をクリックして、コネクタのアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。
-
-### アクション - データ収集イベントの送信
+### アクション — データ収集イベントを送信
 
 #### パラメータ
 
-1. **ドメインエイリアス**: (必須) Audience Managerによって割り当てられたドメインエイリアスを提供します。
-1. **リージョンID**: (必須) イベントを送信するユーザーに割り当てられたリージョンIDを提供します。詳細は[ユーザーIDとリージョンの取得](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)および[リージョンとホスト名](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-regions)を参照してください。
-1. **イベントデータ**: (必須) 属性をイベントパラメータにマッピングします（参照：[サポートされるイベントパラメータ](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)）。オプションの`Data Provider ID`と`Data Provider User ID`/`Integration Code`は、それぞれ`d_cid`および`d_cid_ic`パラメータに`%01`セパレータで自動的に組み合わされます（参照：[CIDとCID_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid)）
+1. **ドメインエイリアス**：（必須）Audience Manager によって割り当てられたドメインエイリアスを指定します。
+1. **リージョン ID**：（必須）イベントを送信するユーザーに割り当てられたリージョン ID を指定します。詳細については、[ユーザー ID とリージョンの取得](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)および[リージョンとホスト名](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-regions)を参照してください。
+1. **イベントデータ**：（必須）属性をイベントパラメータにマッピングします（[サポートされているイベントパラメータ](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)を参照）。オプションの `Data Provider ID ` と `Data Provider User ID`／`Integration Code` は、それぞれ `d_cid` パラメータと `d_cid_ic` パラメータ用に、区切り文字 `%01` を使用して自動的に結合されます（[CID と CID_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid)を参照）。
 
 
 <blockquote>
-詳細については、[イベントAPIコールの作成](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)を参照してください。
+詳細については、[イベント API 呼び出しの実行](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)を参照してください。
 </blockquote>
 
 
-## ベンダー文書
+## ベンダーのドキュメント
 
-* [イベントAPIコールの作成](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)
-* [ユーザーIDとリージョンの取得](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)
+* [イベント API 呼び出しの実行](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-event-calls)
+* [ユーザー ID とリージョンの取得](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-event-calls/dcs-url-receive)
 * [リージョンとホスト名](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-regions)
-* [サポートされるイベントパラメータ](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)
-* [CIDとCID\_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid)
+* [サポートされているイベントパラメータ](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/api-and-sdk-code/dcs/dcs-api-reference/dcs-keys)
+* [CID と CID\_IC](https://experienceleague.adobe.com/en/docs/audience-manager/user-guide/reference/cid)

@@ -8,7 +8,7 @@ CookieConsentは、クライアント側の[同意統合](https://docs.tealium.c
 * 同意バナーのA/Bテスト。
 * 同意されていないデータが追跡されないようにするための堅牢な強制と[キューシステム](https://docs.tealium.com/consent-integrations-decision-flow/)。
 * より良いアクセシビリティサポート。
-* ユーザーエラーによって引き起こされる問題を防ぐためのデフォルトでブロックするフレームワーク。詳細については、[iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict](https://docs.tealium.com/iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict/)を参照してください。
+* ユーザーエラーによって引き起こされる問題を防ぐためのデフォルトでブロックするフレームワーク。詳細については、[tag-management/consent/consent-integrations/enforcement-conditions-conflict](https://docs.tealium.com/tag-management/consent/consent-integrations/enforcement-conditions-conflict/)を参照してください。
 * Collect（および類似のタグ）は[再発火](https://docs.tealium.com/about-consent-integrations/#tag-refire)に構成でき、サーバーサイドで「必要」と「ターゲティング」の追跡をトリガーし、重複追跡を避けるために明確にマークされたイベントを使用します。
 
 ## CookieConsentとCMP統合の比較

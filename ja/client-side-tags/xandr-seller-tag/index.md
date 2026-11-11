@@ -1,114 +1,113 @@
 ---
-title: Xandrセラータグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでXandrセラータグを構成する方法について説明します。
+title: Xandr Sellerタグ構成ガイド
+description: この記事では、タグ管理アカウントでXandr Sellerタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/xandr-seller-tag/
----Xandr Seller Tag (AST)は、ページごとに複数の配置を処理し、さまざまな広告形式をサポートする単一のタグです。
+---Xandr Seller Tag（AST）は、ページごとに複数のプレースメントを処理し、さまざまな広告フォーマットをサポートする単一のタグです。
 
-## タグのヒント
+## タグに関するヒント
 
-* マッピングツールボックスを使用して広告サイズをマップし、div idとインベントリーコードをターゲットにします。
-* Content Modification拡張機能を使用して新しいAd Target Divを追加します。
-* 広告サイズの形式の例: **[[300,250],[728,90]]**
+* マッピングツールボックスを使用して、広告サイズをマッピングし、div IDとインベントリコードをターゲットに構成します。
+* Content Modification拡張機能を使用して、新しい広告ターゲットdivを追加します。
+* 広告サイズのフォーマット例：**[[300,250],[728,90]]**
 
 ## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法については、[Tag Overview](https://docs.tealium.com/about-tags/)の記事を参照してください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際に、次の構成を構成します。
 
 * **Member ID**  
-Xandrから提供されるメンバーID。
+Xandrから提供されたメンバーID。
 * **endpoint**  
-広告リクエストが行われるImpression Busエンドポイント。
+広告リクエストの送信先となるImpression Busエンドポイント。
 
 ## データマッピング
 
-マッピングは、[data layer variable](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[Data Mappings](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリーは次のとおりです。
 
 ### ページレベルのオプション
 
-|変数| 説明|
-|---| ---|
-|Member ID (setPageOpts.member)| [Number]|
-|keywords (setPageOpts.keywords)| [Object]|
-|keywords custom (setPageOpts.keywords.custom)| [String]|
-|disablePsa (setPageOpts.disablePsa)| [Boolean]|
-|enableSafeFrame (setPageOpts.enableSafeFrame)| [Boolean]|
-|user (setPageOpts.user)| [Object]|
-|age (setPageOpts.user.age)| [Number]|
-|externalUid (setPageOpts.user.externalUid)| [String]|
-|segments (setPageOpts.user.segments)| [Array of Numbers]|
-|gender (setPageOpts.user.gender)| [String]|
-|dnt (setPageOpts.user.dnt)| [Boolean]|
-|language (setPageOpts.user.language)| [String]|
+|変数|説明|
+|---|---|
+|Member ID (setPageOpts.member)|[数値]|
+|keywords (setPageOpts.keywords)|[オブジェクト]|
+|keywords custom (setPageOpts.keywords.custom)|[文字列]|
+|disablePsa (setPageOpts.disablePsa)|[ブール値]|
+|enableSafeFrame (setPageOpts.enableSafeFrame)|[ブール値]|
+|user (setPageOpts.user)|[オブジェクト]|
+|age (setPageOpts.user.age)|[数値]|
+|externalUid (setPageOpts.user.externalUid)|[文字列]|
+|segments (setPageOpts.user.segments)|[数値の配列]|
+|gender (setPageOpts.user.gender)|[文字列]|
+|dnt (setPageOpts.user.dnt)|[ブール値]|
+|language (setPageOpts.user.language)|[文字列]|
 
 ### タグの定義
 
-|変数| 説明|
-|---| ---|
-|tagId [Number]| tagId|
-|sizes [Array of Numbers]| sizes|
-|sizeMapping [Array of Objects]| sizeMapping|
-|targetId [String]| targetId|
-|forceCreativeId [Number]| forceCreativeId|
-|allowSmallerSizes [Boolean]| allowSmallerSizes|
-|allowedFormats [Array of Strings]| allowedFormats|
-|position [String]| position|
-|disablePsa [Boolean]| disablePsa|
-|nobidIfUnsold [Boolean]| nobidIfUnsold|
-|keywords [Object]| keywords|
-|keywords.custom [string]| keywords.custom|
-|trafficSourceCode [String]| trafficSourceCode|
-|privateSizes [Array of Numbers]| privateSizes|
-|supplyType [String]| supplyType|
-|pubClick [String]| pubClick|
-|reserve [Number]| reserve|
-|extInvCode [String]| extInvCode|
-|native [Object]| native|
-|externalImpId [String]| externalImpId|
-|enableSafeFrame [Boolean]| enableSafeFrame|
-|Member ID (Override) [Number]| member|
-|allowExpansionByPush [Boolean]| setSafeFrameConfig.allowExpansionByPush|
-|allowExpansionByOverlay [Boolean]| setSafeFrameConfig.allowExpansionByOverlay|
-|rendererOptions [Object]| rendererOptions|
-|- playerTechnology [Array]| rendererOptions.playerTechnology|
-|- adText [String]| rendererOptions.adText|
-|- showMute [Boolean]| rendererOptions.showMute|
-|- showVolume [Boolean]| rendererOptions.showVolume|
-|- showProgressBar [Boolean]| rendererOptions.showProgressBar|
-|- allowFullscreen [Boolean]| rendererOptions.allowFullscreen|
-|- skippable [Object]| rendererOptions.skippable|
-|- videoThreshold [Number]| rendererOptions.skippable.videoThreshold|
-|- videoOffset [Number]| rendererOptions.skippable.videoOffset|
-|- skipLocation [String]| rendererOptions.skippable.skipLocation|
-|- skipText [String]| rendererOptions.skippable.skipText|
-|- skipButtonText [String]| rendererOptions.skippable.skipButtonText|
+|変数|説明|
+|---|---|
+|tagId [数値]|tagId|
+|sizes [数値の配列]|sizes|
+|sizeMapping [オブジェクトの配列]|sizeMapping|
+|targetId [文字列]|targetId|
+|forceCreativeId [数値]|forceCreativeId|
+|allowSmallerSizes [ブール値]|allowSmallerSizes|
+|allowedFormats [文字列の配列]|allowedFormats|
+|position [文字列]|position|
+|disablePsa [ブール値]|disablePsa|
+|nobidIfUnsold [ブール値]|nobidIfUnsold|
+|keywords [オブジェクト]|keywords|
+|keywords.custom [文字列]|keywords.custom|
+|trafficSourceCode [文字列]|trafficSourceCode|
+|privateSizes [数値の配列]|privateSizes|
+|supplyType [文字列]|supplyType|
+|pubClick [文字列]|pubClick|
+|reserve [数値]|reserve|
+|extInvCode [文字列]|extInvCode|
+|native [オブジェクト]|native|
+|externalImpId [文字列]|externalImpId|
+|enableSafeFrame [ブール値]|enableSafeFrame|
+|Member ID (Override) [数値]|member|
+|allowExpansionByPush [ブール値]|setSafeFrameConfig.allowExpansionByPush|
+|allowExpansionByOverlay [ブール値]|setSafeFrameConfig.allowExpansionByOverlay|
+|rendererOptions [オブジェクト]|rendererOptions|
+|- playerTechnology [配列]|rendererOptions.playerTechnology|
+|- adText [文字列]|rendererOptions.adText|
+|- showMute [ブール値]|rendererOptions.showMute|
+|- showVolume [ブール値]|rendererOptions.showVolume|
+|- showProgressBar [ブール値]|rendererOptions.showProgressBar|
+|- allowFullscreen [ブール値]|rendererOptions.allowFullscreen|
+|- skippable [オブジェクト]|rendererOptions.skippable|
+|- videoThreshold [数値]|rendererOptions.skippable.videoThreshold|
+|- videoOffset [数値]|rendererOptions.skippable.videoOffset|
+|- skipLocation [文字列]|rendererOptions.skippable.skipLocation|
+|- skipText [文字列]|rendererOptions.skippable.skipText|
+|- skipButtonText [文字列]|rendererOptions.skippable.skipButtonText|
 
 ### デバイスオプション
 
-|変数| 説明|
-|---| ---|
-|appid (setPageOpts.app.appid)| [Object]|
-|device (setPageOpts.device)| [Object]|
-|deviceId (setPageOpts.device.deviceId)| [Object]|
-|idfa (setPageOpts.device.deviceId.idfa)| [String]|
-|aaid (setPageOpts.device.deviceId.aaid)| [String]|
-|md5udid (setPageOpts.device.deviceId.md5udid)| [String]|
-|sha1udid (setPageOpts.device.deviceId.sha1udid)| [String]|
-|windowsadid (setPageOpts.device.deviceId.windowsadid)| [String]|
-|deviceType (setPageOpts.device.deviceType)| [String]|
-|useragent (setPageOpts.device.useragent)| [String]|
-|geo (setPageOpts.device.geo)| [Object]|
-|ip (setPageOpts.device.ip)| [String]|
-|make (setPageOpts.device.make)| [String]|
-|model (setPageOpts.device.model)| [String]|
-|os (setPageOpts.device.os)| [String]|
-|osVersion (setPageOpts.device.osVersion)| [String]|
-|carrier (setPageOpts.device.carrier)| [String]|
-|connectionType (setPageOpts.device.connectionType)| [Number]|
-|mcc (setPageOpts.device.mcc)| [String]|
-|mnc (setPageOpts.device.mnc)| [String]|
-|devTime (setPageOpts.device.devTime)| [Number]|
-
+|変数|説明|
+|---|---|
+|appid (setPageOpts.app.appid)|[オブジェクト]|
+|device (setPageOpts.device)|[オブジェクト]|
+|deviceId (setPageOpts.device.deviceId)|[オブジェクト]|
+|idfa (setPageOpts.device.deviceId.idfa)|[文字列]|
+|aaid (setPageOpts.device.deviceId.aaid)|[文字列]|
+|md5udid (setPageOpts.device.deviceId.md5udid)|[文字列]|
+|sha1udid (setPageOpts.device.deviceId.sha1udid)|[文字列]|
+|windowsadid (setPageOpts.device.deviceId.windowsadid)|[文字列]|
+|deviceType (setPageOpts.device.deviceType)|[文字列]|
+|useragent (setPageOpts.device.useragent)|[文字列]|
+|geo (setPageOpts.device.geo)|[オブジェクト]|
+|ip (setPageOpts.device.ip)|[文字列]|
+|make (setPageOpts.device.make)|[文字列]|
+|model (setPageOpts.device.model)|[文字列]|
+|os (setPageOpts.device.os)|[文字列]|
+|osVersion (setPageOpts.device.osVersion)|[文字列]|
+|carrier (setPageOpts.device.carrier)|[文字列]|
+|connectionType (setPageOpts.device.connectionType)|[数値]|
+|mcc (setPageOpts.device.mcc)|[文字列]|
+|mnc (setPageOpts.device.mnc)|[文字列]|
+|devTime (setPageOpts.device.devTime)|[数値]|

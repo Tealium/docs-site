@@ -3,7 +3,7 @@ title: Qualtrics XM Directory Connector Setup Guide
 description: This article describes how to set up the Qualtrics XM Directory connector.
 url: https://docs.tealium.com/server-side-connectors/qualtrics-xm-directory-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -14,14 +14,14 @@ This connector uses the following vendor API:
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Create or Update Directory Contact| ✓| ✓|
 |Create Contact Transaction| ✓| ✓|
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -44,9 +44,7 @@ When creating your application within Qualtrics, configure the redirect URLs to 
 
 ## Action settings - parameters and options
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - create or update directory contact
 

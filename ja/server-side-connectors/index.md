@@ -1,6 +1,6 @@
 ---
 title: サーバーサイドコネクタ
-description: Tealiumは数百のサーバーサイドコネクタと統合しています。お好みのベンダーを見つけて、より良い顧客体験を構築しましょう。
+description: Tealium は、数百ものサーバーサイドコネクタと連携できます。目的のベンダーを見つけ、より優れた顧客体験の構築を始めましょう。
 url: https://docs.tealium.com/ja/server-side-connectors/
 ---
 
@@ -8,24 +8,23 @@ url: https://docs.tealium.com/ja/server-side-connectors/
 
 #### コネクタ
 
-サーバーサイドのベンダー統合について学ぶ。
+サーバーサイドのベンダー連携について説明します。
 
 
 
 ![](https://docs.tealium.com/images/icons/icon-code.svg)
 
-#### Webhookの構築
+#### Webhook の構築
 
-Webhookコネクタを使用してカスタム統合を構築する。
+Webhook コネクタを使用してカスタム連携を構築します。
 
 
 
 ![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
-#### 最近のコネクタ
+#### 最近更新されたコネクタ
 
-最近更新されたサーバーサイド統合を見る。
-
+最近更新されたサーバーサイド連携を確認できます。
 
 
 ### 人気のコネクタ
@@ -33,19 +32,19 @@ Webhookコネクタを使用してカスタム統合を構築する。
 
 ![](https://docs.tealium.com/images/integrations/pinterest.png)
 
-Pinterestオーディエンス
+Pinterest Audiences
 
 
 
 ![](https://docs.tealium.com/images/integrations/facebook.png)
 
-Facebookコンバージョン
+Facebook Conversions
 
 
 
 ![](https://docs.tealium.com/images/integrations/snowflake.svg)
 
-Snowflakeストリーミング
+Snowflake Streaming
 
 
 
@@ -57,29 +56,28 @@ Databricks
 
 ![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
-Google Adsコンバージョン
+Google Ads Conversions
 
 
 
 ![](https://docs.tealium.com/images/integrations/reddit.svg)
 
-Redditコンバージョン
+Reddit Conversions
 
 
 
 ![](https://docs.tealium.com/images/integrations/snapchat.svg)
 
-Snapchatコンバージョン
+Snapchat Conversions
 
 
 
 ![](https://docs.tealium.com/images/integrations/google-ads-conversion.png)
 
-Google Analytics 4 測定プロトコル
+Google Analytics 4 Measurement Protocol
 
 
 
 ![](https://docs.tealium.com/images/integrations/tiktok.png)
 
-TikTokイベント
-
+TikTok Events

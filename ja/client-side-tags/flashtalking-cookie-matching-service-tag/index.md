@@ -1,48 +1,48 @@
 ---
 title: Flashtalking Cookie Matching Serviceタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでFlashtalking Cookie Matching Serviceタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでFlashtalking Cookie Matching Serviceタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/flashtalking-cookie-matching-service-tag/
 ---
 
 <blockquote>
-このタグを`utag`バージョン4.50以降で使用する場合、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50+へのアップグレード時のtealium_visitor_idの考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+このタグを`utag`バージョン4.50以降で使用する場合は、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、Cookieの同期に訪問IDを使用できるようになります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50以降へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
 </blockquote>
 
 
-## タグのヒント
+## タグに関するヒント
 
-* 標準の構成値を上書きするためにマッピングを使用します。
-* カスタムマッピングはTealiumへのクッキー同期リクエストに含まれます。
-* このタグはセッションごとに一度だけ実行され、その実行は`utag_main_flashtalking_cms_<tag UID>`クッキーで制御されます。
-* 以下のサーバーサイド属性をTealiumに戻します：
+* マッピングを使用して、標準の構成値を上書きします。
+* カスタムマッピングは、TealiumへのCookie同期リクエストに含まれます。
+* このタグはセッションごとに1回だけ実行されます。その実行の制御には`utag_main_flashtalking_cms_<tag UID>` Cookieが使用されます。
+* 次のサーバーサイド属性をTealiumに送信します。
   * `flashtalking_id`
 
-## タグ構成
+## タグの構成
 
-タグマーケットプレイスに移動して新しいタグを追加します。タグの追加方法の一般的な指示については、[タグ概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際に、次の構成を行います。
 
-* **Flashtalking Key**
-  * あなたのFlashtalking Key。
-* **Tealium Account**:
+* **Flashtalkingキー**
+  * Flashtalkingキー。
+* **Tealiumアカウント**：
   * 任意
-  * サーバーサイドリクエストに使用される`tealium_account`を上書きします。
-* **Tealium Profile**:
+  * サーバーサイドリクエストで使用される`tealium_account`を上書きします。
+* **Tealiumプロファイル**：
   * 任意
-  * サーバーサイドリクエストに使用される`tealium_profile`を上書きします。
+  * サーバーサイドリクエストで使用される`tealium_profile`を上書きします。
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグの対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
 |変数| 説明|
 |---| ---|
-|`key`|  <ul><li>Flashtalking Key</li></ul> |
-|`tealium_account`|  <ul><li>Tealium Account</li></ul> |
-|`tealium_profile`|  <ul><li>Tealium Profile</li></ul> |
-|`tealium_event`|  <ul><li>Tealium Event</li></ul> |
+|`key`|  <ul><li>Flashtalkingキー</li></ul> |
+|`tealium_account`|  <ul><li>Tealiumアカウント</li></ul> |
+|`tealium_profile`|  <ul><li>Tealiumプロファイル</li></ul> |
+|`tealium_event`|  <ul><li>Tealiumイベント</li></ul> |

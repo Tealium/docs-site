@@ -1,46 +1,46 @@
 ---
 title: Merkle Merkuryタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでMerkle Merkuryタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでMerkle Merkuryタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/merkle-merkury-tag/
 ---
-## タグのヒント
+## タグに関するヒント
 
-* Adobe MediaSDKは、Adobe Experience Cloud ID ServiceとAppMeasurement for JSを最初にロードすることを必要とします。できればバンドルされていることが望ましいです。
-* このタグは`utag.track('video', data);`を通じて発火されます。これはあなたのビデオイベントハンドラに実装されるべきです。
+* Adobe MediaSDKを使用するには、Adobe Experience Cloud ID ServiceおよびAppMeasurement for JSを先に読み込む必要があります。これらはバンドルすることを推奨します。
+* このタグは`utag.track('video', data);`を通じて発火します。このコードを動画イベントハンドラーに実装してください。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに行きます。タグを追加する一般的な手順については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際は、次の構成を構成します。
 
 * **CID**  
-Merkuryチームから生成されたクライアント固有の数値アカウント番号。
+Merkuryチームによって生成される、クライアント固有の数値アカウント番号。
 * **ドメイン**  
-クライアントのウェブサイトのドメイン。例：`merkleinc.com`。
-* **Merkury Identityイベントの送信**  
-`merkury_identity`イベントを生成するかどうか。このイベントには以下の情報が含まれます：
+クライアントWebサイトのドメイン。例：`merkleinc.com`。
+* **Merkury Identityイベントを送信**  
+次の情報を含む`merkury_identity`イベントを生成するかどうかを指定します。
   * `event`
   * `merkury_email_sha256`
   * `merkury_hmid`
   * `merkury_confidence_score`
 
-## ロードルール
+## 読み込みルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。読み込みルールの詳細については、[読み込みルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
 | 説明|変数|
 |---| ---|
 | `sv_cid`|CID|
-| `sv_origin`| ドメイン |
+| `sv_origin`| ドメイン
 | `uID`| クライアントID |
 | `em`|メールアドレス|
 | `eme`|MD5メールハッシュ|

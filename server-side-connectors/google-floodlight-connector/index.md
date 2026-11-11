@@ -43,18 +43,20 @@ Actions are delayed for 30 minutes to accommodate uploading offline conversions,
 
 
 <blockquote>
-Actions are not delayed when using [trace](https://docs.tealium.com/about-trace/) in EventSream or AudienceStream.
+Actions are not delayed when using [trace](https://docs.tealium.com/about-trace/) in EventSream or Customer Data Platform (CDP).
 </blockquote>
 
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
 * **Floodlight Profile ID**  
   * The Floodlight Profile ID that is given to you by Campaign Manager 360, after adding the `api@tealium.com` user to your Campaign Manager 360 account.
+
+After you configure the connector, click **Done**.
 
 
 <blockquote>
@@ -64,13 +66,11 @@ When you add this connector, you are be prompted to accept the vendor's data pla
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Track Floodlight Conversion| ✓| ✓|
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Track Floodlight Conversion
 

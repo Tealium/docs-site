@@ -401,7 +401,7 @@ tealium.Track(new TealiumEvent("cart_add", new Dictionary<string, object> {
 | `dispatchers`| `Dispatchers[]`| （必須）Tealiumライブラリの初期化に使用する[`Dispatchers`](#dispatchers)のリストを構成します | `[Dispatchers.Collect]`|
 | `customVisitorId`| `String`| カスタム訪問IDを構成します | `"ALK2398LSDKJ3289SLKJ3298SLKJ3"`|
 | `memoryReportingEnabled` | `Boolean`| DeviceDataモジュールのメモリレポートを有効または無効にします（デフォルト：無効）。 | `true`|
-| `overrideCollectDomain` | `String`| Tealium Collect URLのドメインを上書きします。[ファーストパーティドメイン](https://docs.tealium.com/ja/iq-tag-management/administration/first-party-domains/manage/)で使用します。 | `"your-domain.com"`|
+| `overrideCollectDomain` | `String`| Tealium Collect URLのドメインを上書きします。[ファーストパーティドメイン](https://docs.tealium.com/ja/tag-management/administration/first-party-domains/manage/)で使用します。 | `"your-domain.com"`|
 | `overrideCollectProfile` | `String`| データを別のTealiumプロファイルに送信するため、Tealium Collectプロファイルを上書きします。 | `"custom-profile"`|
 | `overrideCollectURL` | `String`| データを別のエンドポイントに送信するため、Tealium Collect URLを上書きします。イベントバッチ処理機能を使用する場合は、`overrideCollectBatchURL`プロパティも上書きしてください。 | `"https://custom-domain.com/event"`|
 | `overrideCollectBatchURL` | `String`| データを別のエンドポイントに送信するため、Tealium CollectのバッチURLを上書きします。 | `"https://custom-domain.com/batch-event"`|

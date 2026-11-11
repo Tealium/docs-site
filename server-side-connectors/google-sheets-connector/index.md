@@ -16,19 +16,17 @@ This connector has a daily rate limit of 100 total requests for all actions in y
 
 ## Supported actions
 
-|Action Name| AudienceStream| EventStream|
+|Action Name| Visitor profile| Event data|
 |---| ---| ---|
 |Add or Update Row| ✓| ✓|
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 ## Actions
 
-Click **Next** or go to the **Actions** tab. This is where you configure connector actions.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 #### Batch limits
 
@@ -66,6 +64,6 @@ Updates to the action dynamic drop-down lists are not live and do not display in
 
 To view the most recent data, you can click the **Refresh** icon on the connectors page or deselect the spreadsheet and select it again. Using either of these methods refreshes the drop-down lists to reflect your most recent updates.
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Google Sheets API](https://developers.google.com/sheets/api/)

@@ -7,14 +7,14 @@ Make sure you have the latest version of Tealium Tools installed. This Google Ch
 
 ### Connecting Your Optimizely Account
 
-After you have installed Tealium Tools, use these steps, along with the API Token and the Project ID from Optimizely, to connect AudienceStream and Optimizely:
+After you have installed Tealium Tools, use these steps, along with the API Token and the Project ID from Optimizely, to connect Customer Data Platform (CDP) and Optimizely:
 
 1. In Optimizely, navigate to **Account Settings** and click **View Tokens** under the API Tokens section.
 1. Create a new API Token and copy the new token to your clipboard.
 1. Open **Tealium Tools** by clicking the Tealium icon in the top-right corner of Google Chrome.
 1. Select **Optimizely Helper**.
 1. Paste the API Token into the **Token** field.
-1. Navigate to the project in which you'd like to map AudienceStream audiences and copy the Project ID. The Project ID is available from the **Project Code** drop-down menu in the top-right corner of the Project page.  
+1. Navigate to the project in which you'd like to map CDP audiences and copy the Project ID. The Project ID is available from the **Project Code** drop-down menu in the top-right corner of the Project page.  
     ![](https://docs.tealium.com/images/server-side/optimizely-helper-project-id.png)
 1. In the Optimizely Helper, paste the Project ID into the **Project ID** field.
 1. Enter the name of the Tealium account and profile you would like to associate with this Optimizely project.
@@ -24,8 +24,8 @@ The Optimizely Helper now contains a list of audiences and badges that you can m
 
 ### Mapping Audiences to an Optimizely Project
 
-1. In the Optimizely Helper, select the AudienceStream audience or badge to add to Optimizely.
-1. On the Optimizely Audience drop-down menu, select an existing Optimizely Audience or create a new one. If you create a new Optimizely Audience, the name is the same as the name of the AudienceStream badge or audience you selected.
+1. In the Optimizely Helper, select the CDP audience or badge to add to Optimizely.
+1. On the Optimizely Audience drop-down menu, select an existing Optimizely Audience or create a new one. If you create a new Optimizely Audience, the name is the same as the name of the CDP badge or audience you selected.
 1. Click **Create Audience** to confirm.
 1. To create additional audience mappings, repeat the steps above.
 
@@ -36,10 +36,10 @@ To add the code to the utag.sync.js template, click **Copy Code Snippet to Clipb
 
 ### Create Audience-based Experiments
 
-Your project now has the mapped AudienceStream badges and audiences available for targeting. To select a new target audience:
+Your project now has the mapped CDP badges and audiences available for targeting. To select a new target audience:
 
 1. Create a new experiment or edit an existing experiment and click **Audience Targeting**.
-1. Click **Add a Saved Audience** and select an AudienceStream badge or audience.
+1. Click **Add a Saved Audience** and select a CDP badge or audience.
     ![](https://docs.tealium.com/images/server-side/audiencebasedexperiments.png)
 1. Save your experiment.
 

@@ -13,7 +13,7 @@ The Amazon Ads API enables Amazon advertisers and members of the Amazon Advertis
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Add Hashed Record| ✓| ✗|
 |Add to Audience| ✓| ✗|
@@ -21,7 +21,7 @@ The Amazon Ads API enables Amazon advertisers and members of the Amazon Advertis
 
 ## Configure settings
 
-Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 
 <blockquote>
@@ -122,7 +122,7 @@ When using the **Add to Audience** action, the connector sends `GRANTED` for all
 
 ### Action — Remove from Audience
 
-This action is used to remove a visitor from an audience within Amazon DSP. For example, you can remove a visitor from a specific Amazon DSP audience when they leave an AudienceStream audience so they are not retargeted.
+This action is used to remove a visitor from an audience within Amazon DSP. For example, you can remove a visitor from a specific Amazon DSP audience when they leave a Customer Data Platform (CDP) audience so they are not retargeted.
 
 #### Batch limits
 

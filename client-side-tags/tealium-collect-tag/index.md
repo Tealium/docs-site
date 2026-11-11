@@ -1,6 +1,6 @@
 ---
 title: Tealium Collect Tag Setup Guide
-description: The Tealium Collect tag is the primary data collection tag for Tealium EventStream and AudienceStream. This article explains how to add and configure the Tealium Collect tag in your iQ Tag Management profile.
+description: The Tealium Collect tag is the primary data collection tag for Event Streaming and Customer Data Platform (CDP). This article explains how to add and configure the Tealium Collect tag in your Tag Management profile.
 url: https://docs.tealium.com/client-side-tags/tealium-collect-tag/
 ---
 ## Requirements
@@ -17,14 +17,14 @@ To see the incoming data from the Tealium Collect tag, see [Live Events](https:/
 
 Use the Tealium Collect tag with the following features:
 
-* **Reduce pixel requests with EventStream**  
-Use this tag with EventStream and event feeds to transition client-side tags to server-side connectors, such as the [Webhook connector](https://docs.tealium.com/about-webhook-connectors/).
-* **AudienceStream**  
-Use this tag with AudienceStream to identify and action your visitors.
+* **Reduce pixel requests with Event Streaming**  
+Use this tag with Event Streaming and event feeds to transition client-side tags to server-side connectors, such as the [Webhook connector](https://docs.tealium.com/about-webhook-connectors/).
+* **CDP**  
+Use this tag with CDP to identify and action your visitors.
 * **DataAccess**  
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.
 * **Enrich your data layer**  
-Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.  
+Use the data enrichment setting to add visit and visitor attributes from CDP to your data layer.  
 For more information, see [configure-data-layer-enrichment-iq](https://docs.tealium.com/configure-data-layer-enrichment-iq/).
 
 ## Tag tips
@@ -43,9 +43,9 @@ Apply the following best practices in your implementation:
 
 ## Tag configuration
 
-First, go to the tag marketplace and add the Tealium Collect tag. For more information, see [Manage tags](https://docs.tealium.com/manage-tags/#add-a-tag).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Title**
   * Enter a title for this tag.
@@ -55,14 +55,14 @@ After adding the tag, configure the following settings:
   * Custom URLs entered into this field automatically default to HTTPS unless otherwise specified.
   * Default: Not set.
 * **Data Layer Enrichment Frequency**  
-  * Enables AudienceStream data layer enrichment.
-  * Choose the frequency for enriching your data layer with AudienceStream data.  
+  * Enables CDP data layer enrichment.
+  * Choose the frequency for enriching your data layer with CDP data.  
     * **None**: (default) Enrichment does not occur.
     * **Infrequent**: (Recommended) enrichment occurs once per session.
     * **Frequent**: Enrichment occurs on every page load.
 * **Tealium Collect Profile** (Optional)  
-  * Use to override the existing data collection endpoint, such as the AudienceStream profile that receives data from your site.
-  * Specify a value in this field only when the **Tealium Collect Endpoint** field is blank and your data collection profile for AudienceStream is different from the current profile.
+  * Use to override the existing data collection endpoint, such as the CDP profile that receives data from your site.
+  * Specify a value in this field only when the **Tealium Collect Endpoint** field is blank and your data collection profile for CDP is different from the current profile.
   * Default: Not set.
 * **Tealium Data Source Key**  
   * (Optional) The unique identifier of the data source you are tracking through the Customer Data Hub.
@@ -83,7 +83,7 @@ After adding the tag, configure the following settings:
   * Set to true to use the [HTTP API endpoint](https://docs.tealium.com/platforms/http-api/endpoint-spec/) instead of the Tealium Collect endpoint.
   * Default: `false`.
 * **Visitor Service Override**
-  * Specifies the domain used to retrieve visitor profile data from Tealium AudienceStream for data layer enrichment.
+  * Specifies the domain used to retrieve visitor profile data from Tealium CDP for data layer enrichment.
   * Enter a custom domain to override the default value.
   * This value is usually set to a first-party domain, such as `visitor-service.yourdomain.com`.
 * **Tealium Cookie Domain** (Optional)
@@ -142,7 +142,7 @@ The Tealium Collect tag creates the following cookies:
     * The cookie's value is not already set.  
     For more information about this cookie, see [`utag.js` Release Notes version 4.50](https://docs.tealium.com/platforms/javascript/version-4-50/).
 * `utag_main_dc_group`: a random number to use with the **Sample Size** setting.
-* `utag_main_dc_region`: the AudienceStream region where the visit session is stored. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/).
+* `utag_main_dc_region`: the CDP region where the visit session is stored. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/).
 
 ### Legacy cookies
 

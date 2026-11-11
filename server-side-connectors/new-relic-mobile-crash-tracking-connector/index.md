@@ -24,7 +24,7 @@ In the event of a system crash, incoming data from live events is captured. Cras
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new New Relic Mobile Crash connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -36,9 +36,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings: Parameters and Options
 
-Click **Next** or go to the **Actions** tab. It's where you'll set up actions and trigger them.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action: Send Android Crash Event
 

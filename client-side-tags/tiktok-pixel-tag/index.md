@@ -1,6 +1,6 @@
 ---
 title: TikTok Pixel Tag Setup Guide
-description: This article describes how to set up the TikTok Pixel tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the TikTok Pixel tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/tiktok-pixel-tag/
 ---
 ## Tag tips
@@ -24,7 +24,7 @@ Custom or non-standard parameters are not processed by TikTok. Advertisers can r
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -43,11 +43,11 @@ Load the tag on all pages or set conditions for when your tag loads. For more in
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
-### Tag Configuration
+### Tag configuration
 
 | Variable | Type | Description |
 |:---------|:------------|:------------|
@@ -88,7 +88,7 @@ The available categories are:
 
 ### Events
 
-For more information about mapping events, see [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping).
+For more information about mapping events, see [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping).
 
 | Variable | Description |
 |:---------|:------------|

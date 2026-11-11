@@ -59,7 +59,7 @@ If the column contains a date/time value, select the corresponding attribute and
 
 ## 4. Map visitor ID attributes 
 
-To use your file data with AudienceStream, map your data to visitor ID attributes. Select the mapped event attribute that represents a visitor ID and map it to the corresponding visitor ID attribute. 
+To use your file data with Customer Data Platform (CDP), map your data to visitor ID attributes. Select the mapped event attribute that represents a visitor ID and map it to the corresponding visitor ID attribute. 
 
 
 <blockquote>

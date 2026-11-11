@@ -32,7 +32,7 @@ Create a temporary string attribute to use for verification in Audience Discover
 
 Use the following steps to create a string attribute:
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes**.
+1. Go to **Customer Data Platform (CDP) &gt; Visitor/Visit Attributes**.
 1. Click **+ Add Attribute**.
 1. In the Add Attribute dialog, select **Visitor** for scope, then click **Continue**.
 1. For **Choose a data type**, select **String**, then click **Continue**.  
@@ -47,7 +47,7 @@ Use the following steps to create a string attribute:
 
 ## Step 3: Publish to production
 
-Save and publish the rule and attribute to production so that AudienceStream can start collecting the data. The number of users on the website and the type of data being collected will determine how long to wait before you can verify the data in AudienceStream. If you are using a first-party cookie that is available for every visitor, data should appear within 15 minutes.
+Save and publish the rule and attribute to production so that CDP can start collecting the data. The number of users on the website and the type of data being collected will determine how long to wait before you can verify the data in CDP. If you are using a first-party cookie that is available for every visitor, data should appear within 15 minutes.
 
 ## Step 4: Verify data
 
@@ -77,4 +77,4 @@ After the configuration is live, an example of stitching occurs as follows:
 
 1. A visitor logs into the website on their computer. Visitor profile A is created and captures the visitor ID attribute. Eventually the session ends.
 1. The same visitor later logs into the website from a mobile device. Visitor profile B is created and captures the visitor ID attribute.
-1. AudienceStream determines that profile A and profile B share the same value for the visitor ID attribute, and both profiles are stitched and merged into Profile C.
+1. CDP determines that profile An and profile B share the same value for the visitor ID attribute, and both profiles are stitched and merged into Profile C.

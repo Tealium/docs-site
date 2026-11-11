@@ -1,157 +1,157 @@
 ---
 title: Snowflakeへの接続
-description: この記事では、Snowflake Webインターフェースを使用してTealiumデータをSnowflakeにロードする方法について説明します。
+description: この記事では、SnowflakeのWebインターフェイスを使用してTealiumデータをSnowflakeに読み込む方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-storage/data-viz-tools/connecting-snowflake/
 ---
 
 <blockquote>
-この記事はSnowflake Webインターフェースとデータロードウィザードに焦点を当てており、Snowflakeコマンドラインツールの概要を提供します。Snowflakeの使用に関する詳細情報については、[Snowflakeドキュメント](https://docs.snowflake.net/manuals/index.html)を参照してください。
+この記事では、SnowflakeのWebインターフェイスとData Loadウィザードを中心に説明し、Snowflakeのコマンドラインツールの概要も紹介します。Snowflakeの使用方法の詳細については、[Snowflakeドキュメント](https://docs.snowflake.net/manuals/index.html)を参照してください。
 </blockquote>
 
 
-## 動作原理
+## 仕組み
 
-Tealium DataAccessの顧客は、Snowflake Webインターフェースを使用して、データを外部ソリューションに接続し、高度なクエリとデータ分析を行うことができます。Webインターフェースは直感的なウィザードを提供し、限られた量のデータを小さなフラットファイルのセットからテーブルにロードすることができます。このプロセスでは、PUTおよびCOPYコマンドを使用してデータをロードし、ステージングファイルとデータロードフェーズを一つの操作に統合することで、データロードプロセスを簡素化します。
+Tealium DataAccessをご利用のお客様は、SnowflakeのWebインターフェイスを使用してデータを外部ソリューションに接続し、高度なクエリやデータ分析を行うことができます。Webインターフェイスには直感的に操作できるウィザードが用意されており、少数のフラットファイルから限られた量のデータをテーブルに読み込めます。このウィザードでは、PUTコマンドとCOPYコマンドを使用してデータを読み込み、ステージングファイルの作成とデータの読み込みを1つの操作にまとめることで、データ読み込みプロセスを簡素化します。
 
-Webインターフェースは、ファイルの数が少ない（最大50 MB）場合に適しています。この制限は、ハードウェア、ブラウザの種類、およびブラウザのバージョンによってブラウザのパフォーマンスが異なるため、最適なパフォーマンスを保証するためです。
+Webインターフェイスは、少数のファイル（最大50 MB）を読み込むことを目的としています。ブラウザーのパフォーマンスは、ハードウェア、ブラウザーの種類、ブラウザーのバージョンによって異なるため、この制限によって最適なパフォーマンスが確保されます。
 
 ## 前提条件
 
-Tealiumが発行したAmazon S3バケットからDataAccessデータを接続するためには、以下の項目が必要です：
+Tealiumから提供されたAmazon S3バケット内のDataAccessデータに接続するには、以下が必要です。
 
-* AudienceStoreおよびEventStoreが有効になっているTealium DataAccess  
-データがDataAccessバケットに配信されるように、AudienceStream内でAudienceStoreコネクタを構成する必要があります。AudienceStreamの構成についての詳細は、Tealiumの[AudienceStore構成ガイド](https://docs.tealium.com/audiencestore-and-eventstore/)を参照してください。
-* EventStoreおよび/またはAudienceStore用の有効なTealium DataAccess認証情報。
+* AudienceStoreとEventStoreが有効になっているTealium DataAccess  
+データをDataAccessバケットに配信するには、Customer Data Platform（CDP）内でAudienceStoreコネクタを構成する必要があります。CDP構成の詳細については、Tealiumの[AudienceStore構成ガイド](https://docs.tealium.com/audiencestore-and-eventstore/)を参照してください。
+* EventStoreまたはAudienceStore、あるいはその両方に対する有効なTealium DataAccess認証情報。
 
 ## はじめに
 
-次のセクションでは、SnowflakeデータロードWebインターフェースを使用してソースファイルを選択し、TealiumデータをSnowflakeにロードする手順を案内します。
+以降のセクションでは、Snowflake Data LoadのWebインターフェイスを使用してソースファイルを選択し、TealiumデータをSnowflakeに読み込むために必要な手順を説明します。
 
 
 <blockquote>
-DataAccessデータをJSONファイルの半構造化の性質に対応し、スキーマ要件を強制しないバリアントデータ型のテーブルにロードすることをお勧めします。データがロードされた後の解析に関する追加情報とヒントについては、このドキュメントのベストプラクティスセクションを参照してください。
+DataAccessデータは、バリアントデータ型のテーブルに読み込むことをお勧めします。バリアントデータ型は、スキーマ要件を強制することなく、JSONファイルの半構造化された特性に対応できます。データ読み込み後の解析に関する詳細とヒントについては、このドキュメントの「ベストプラクティス」セクションを参照してください。
 </blockquote>
 
 
-### データロードウィザードを開く
+### Data Loadウィザードを開く
 
-データロードウィザードを開くには、次の手順に従います：
+次の手順に従って、Snowflake Data Loadウィザードを開きます。
 
 1. Snowflakeアカウントにログインします。
 1. **Databases > Tables**をクリックします。
-1. 次のいずれかを行います：  
-      * テーブル行をクリックして選択し、**Load Data**ボタンをクリックします。
+1. 次のいずれかを実行します。  
+      * テーブルの行をクリックして選択し、**Load Data**ボタンをクリックします。
       * テーブル名をクリックしてテーブルの詳細ページを開き、**Load Table**ボタンをクリックします。
 
-1. ロードデータウィザードが表示されます。
-1. 次のセクションに進み、DataAccessからソースファイルを選択して、選択したテーブルにデータのロードを開始します。
+1. Load Dataウィザードが表示されます。
+1. 次のセクションに進み、DataAccessからソースファイルを選択します。これにより、選択したテーブルへのデータの読み込みを開始できます。
 
 ### DataAccessからソースファイルを選択する
 
-ソースファイルを選択するように求められた場合、AWS S3にあるTealium DataAccessデータ用に新しいステージを作成します。
+ソースファイルを選択するよう求められたら、AWS S3に保存されているTealium DataAccessデータ用の新しいステージを作成します。
 
-Tealium DataAccessからソースファイルを選択するには、次の手順に従います：
+次の手順に従って、Tealium DataAccessからソースファイルを選択します。
 
 1. **Existing Amazon S3 Location**を選択します。
 1. **Next**をクリックします。  
       ![](https://docs.tealium.com/images/server-side/snowflake-create-stage.jpg)
-1. 次のセクションに進み、DataAccess認証情報を入力します。
+1. 次のセクションに進み、DataAccessの認証情報を入力します。
 
-### DataAccess認証情報を入力する
+### DataAccessの認証情報を入力する
 
-DataAccess認証情報を入力するには、次の手順に従います：
+次の手順に従って、DataAccessの認証情報を入力します。
 
-1. まだ行っていない場合は、EventStoreまたはAudienceStoreのDataAccess認証情報を取得します。  
-認証情報はEventStoreとAudienceStoreの両方で同じです。  
+1. EventStoreまたはAudienceStoreのDataAccess認証情報をまだ取得していない場合は、取得します。  
+認証情報は、EventStoreとAudienceStoreの両方で共通です。  
       
 <blockquote>
-認証情報がすでに生成されている場合、Secret Access Keyは表示されません。既存のキーを取得するか、新しいキーを再生成する必要があるかを同僚と協議してください。
+認証情報がすでに生成されている場合、シークレットアクセスキーは表示されません。既存のキーを取得するか、新しいキーを再生成する必要があるかを判断するには、同僚に確認してください。
 </blockquote>
 
 
-1. 有効な認証情報を取得したら、次のフィールドに入力します：  
+1. 有効な認証情報を取得したら、以下のフィールドに入力します。  
     * **Access Key**  
-    Tealiumが提供するAccess Key IDを入力します。例：`AKIA****************`
+    Tealiumから提供されたアクセスキーIDを入力します。例：`AKIA****************`
     * **Secret Key**  
-    Tealiumが提供するSecret Access Keyを入力します。
+    Tealiumから提供されたシークレットアクセスキーを入力します。
     * **Bucket**  
-    Tealiumのパスフィールドの最初の値のみを入力します。例：  
-    Tealium Pathが：`/dataaccess-us-east-1.tealiumiq.com/myaccount/main`の場合  
-    入力する値：`dataaccess-us-east-1.tealiumiq.com`（スラッシュなし）。
+    Tealiumのパスフィールドにある最初の値のみを入力します。例：  
+    Tealiumのパスが `/dataaccess-us-east-1.tealiumiq.com/myaccount/main` の場合  
+    `dataaccess-us-east-1.tealiumiq.com` と入力します（スラッシュは含めません）。
     * **Prefix**  
-    Tealiumのパスフィールドから、アカウント名で始まりスラッシュ(/)で終わる残りの部分を入力します。  
+    Tealiumのパスフィールドの残りの部分を、アカウント名から始め、末尾にスラッシュ（/）を付けて入力します。  
     例：`myaccount/main/`
     * **Region**  
-    バケット名に示されているリージョンを選択します。例：**us-east-1**.
+    バケット名で示されているリージョンを選択します。例：**us-east-1**
 
 1. 次のセクションに進み、ファイル形式を作成します。
 
 ### ファイル形式を作成する
 
-ファイル形式を作成するには、次の手順に従います：
+次の手順に従って、ファイル形式を作成します。
 
-1. ドロップダウンリストの隣にあるプラス（**+**）記号をクリックします。  
-ファイル形式作成ダイアログが表示されます。  
+1. ドロップダウンリストの横にあるプラス（**+**）記号をクリックします。  
+Create File Formatダイアログが表示されます。  
       ![](https://docs.tealium.com/images/server-side/snowflake-create-file-format.jpg)
-1. 次の情報を入力します：
-    * 名前フィールドには、DataAccessデータ用に使用するファイル形式の名前を入力します。例：`TEALIUM_JSON`。  
-    これは必須フィールドです。
-    * ドロップダウンリストからスキーマ名のタイプを選択します。例：**Public**。
-    * ドロップダウンリストから形式タイプを選択します。例：**JSON**。
-    * ドロップダウンリストから圧縮方法を選択します。例：**Gzip**。
-    * 次のいずれかのチェックボックスを選択します：
-        * 8進数を有効にする
-        * 重複を許可する
-        * 外側の配列を削除する
-        * Null値を削除する
-        * UTF-8エラーを無視する
-    * コメントフィールドに、このファイル形式についての説明コメントを入力します。  
-    例：TealiumはGzip圧縮ファイルにJSONデータを保存します。
+1. 以下の情報を入力します。
+    * Nameフィールドに、DataAccessデータで使用するファイル形式の名前を入力します。例：`TEALIUM_JSON`  
+    このフィールドは必須です。
+    * ドロップダウンリストからSchema Nameの種類を選択します。例：**Public**
+    * ドロップダウンリストからFormat Typeを選択します。例：**JSON**
+    * ドロップダウンリストからCompression Methodを選択します。例：**Gzip**
+    * 次のチェックボックスを1つ以上選択します。
+        * Enable Octal
+        * Allow Duplicate
+        * Strip Outer Array
+        * Strip Null Values
+        * Ignore UTF-8 Errors
+    * Commentフィールドに、このファイル形式に関する説明を入力します。  
+    例：TealiumはJSONデータをGzip圧縮ファイルに保存します。
 
 1. **Finish**をクリックします。
-1. 次のセクションに進み、データをロードします。
+1. 次のセクションに進み、データを読み込みます。
 
-### データをロードする
+### データを読み込む
 
-Webインターフェースを使用して手動でデータをロードするには、以下の手順を続けてください。コマンドラインからデータをロードする方法を選択する場合は、コマンドラインを使用してロードするセクションにスキップしてください。
+Webインターフェイスを使用して手動でデータを読み込むには、以下の手順を続行します。必要に応じて、コマンドラインからデータを読み込むこともできます。この方法を選択する場合は、「コマンドラインを使用した読み込み」セクションに進んでください。
 
-1. ドロップダウンリストから以前に名前を付けたファイル形式を選択します。  
+1. 先ほど名前を付けたファイル形式をドロップダウンリストから選択します。  
       ![](https://docs.tealium.com/images/server-side/snowflake-manually-load-data-via-web-interface.jpg)
-1. **Load**をクリックしてすぐにデータをロードするか、**Next**をクリックして追加のロードオプションを構成します。  
+1. データをすぐに読み込むには**Load**をクリックし、追加の読み込みオプションを構成するには**Next**をクリックします。  
 
 <blockquote>
-倉庫が現在稼働していない場合、倉庫を再開するのに最大5分かかることがあります。これにはロードに必要な時間も含まれます。
+ウェアハウスが現在稼働していない場合、読み込みに必要な時間に加えて、ウェアハウスの再開に最大5分かかることがあります。
 </blockquote>
 
-### コマンドラインを使用したロード（オプション）
+### コマンドラインを使用して読み込む（任意）
 
-コマンドラインからデータをロードするには、以下の手順に従ってください：
+コマンドラインからデータを読み込むには、次の手順に従います。
 
-1. **SnowSQLのインストール**  
-コマンドラインからデータをロードする前に、マシンにSnowSQLをインストールする必要があります。[SnowSQLのインストールについての詳細はこちら](https://docs.snowflake.com/en/user-guide/snowsql-install-config.html)。
-1. **SnowSQLの構成**  
-SnowSQLのインストールが完了したら、Snowflakeインスタンスに接続できるように構成ファイルを編集する必要があります。
-    1. 次のディレクトリにある構成ファイルを開きます：  
-        * Linux/Mac OSの場合：`~/.snowsql/`
-        * Windowsの場合：`%USERPROFILE%\.snowsql\`
-    1. 接続セクションを編集して、認証情報を入力します。  
+1. **SnowSQL をインストールする**  
+コマンドラインからデータを読み込むには、事前に SnowSQL をマシンへインストールする必要があります。詳しくは、[SnowSQL のインストール](https://docs.snowflake.com/en/user-guide/snowsql-install-config.html)を参照してください。
+1. **SnowSQL を構成する**  
+SnowSQL のインストールが完了したら、Snowflake インスタンスに接続できるように、認証情報を構成ファイルへ追加する必要があります。
+    1. 次のディレクトリにある構成ファイルを開きます。  
+        * Linux/Mac OS の場合：`~/.snowsql/`
+        * Windows の場合：`%USERPROFILE%\.snowsql\`
+    1. ファイルの connections セクションを編集し、認証情報を入力します。  
     例：  
           ```bash
           [connections.tealium_example]
-          #SnowSqlでtealium_exampleとして接続できます
+          #Can be used in SnowSql as connect tealium_example
           accountname = MY_ACCOUNT_NAME
           username = MYUSER
           password = ********************
           ```
-    1. 好みに応じてオプションや変数のセクションを変更します。詳細はこちら：[SnowSQLの構成](https://docs.snowflake.com/en/user-guide/snowsql-config.html)。
+    1. 必要に応じて、options セクションまたは variables セクションを変更します。詳しくは、[SnowSQL の構成](https://docs.snowflake.com/en/user-guide/snowsql-config.html)を参照してください。
 
-1. **SnowSQLを通じて接続**  
-構成ファイルに接続詳細が保存されたら、シェルコマンドを使用してSnowSQLに接続します。接続名`tealium_example`をあなたのものに置き換えてください：  
+1. **SnowSQL 経由で接続する**  
+接続情報を構成ファイルに保存したら、シェルコマンドを使用して SnowSQL に接続します。`tealium_example` を実際の接続名に置き換えてください。  
 `$ snowsql -c tealium_example`  
-詳細はこちら：[SnowSQLを通じた接続](https://docs.snowflake.com/en/user-guide/snowsql-start.html)。
-1. **COPY INTOコマンドを使用してデータをロード**  
-接続されたら、`COPY INTO <table>`コマンドを実行してデータをターゲットテーブルにロードします。以下の例では、前の手順で作成された名前付きステージ`my_dataaccess_stage`のファイルからデータをロードします。  
-パスを追加することで、ステートメントはイベントサブディレクトリにあるファイルのみをロードします：
+詳しくは、[SnowSQL 経由での接続](https://docs.snowflake.com/en/user-guide/snowsql-start.html)を参照してください。
+1. **COPY INTO コマンドを使用してデータを読み込む**  
+接続したら、`COPY INTO <table>` コマンドを実行して、ターゲットテーブルにデータを読み込みます。次の例では、前の手順で作成した名前付きステージ `my_dataaccess_stage` 内のファイルからデータを読み込みます。  
+パスを追加することで、このステートメントは events サブディレクトリにあるファイルのみを読み込みます。
       ```
       COPY INTO mytable
       FROM ‘@my_dataaccess_stage/events/’
@@ -160,13 +160,13 @@ SnowSQLのインストールが完了したら、Snowflakeインスタンスに�
 
 ## ベストプラクティス
 
-このセクションでは、データがロードされた後のデータ解析に関する有益な情報を提供します。
+このセクションでは、データの読み込み後にデータを解析する際のベストプラクティスについて説明します。
 
-### EventStoreデータの解析
+### EventStore データを解析する
 
-EventStoreはフラット化されたJSONファイルでフォーマットされています。このドキュメントで説明されているデータロード手順に従った場合、EventStoreデータはバリアントタイプの列に構造化されているはずです。データをクエリにより使いやすい構造にフォーマットするためには、JSONを解析する必要があります。
+EventStore は、フラット化された JSON ファイルとしてフォーマットされています。このドキュメントに記載されているデータ読み込み手順に従った場合、EventStore データは variant 型の列に格納されているはずです。クエリで利用しやすい構造にデータを整形するには、JSON を解析する必要があります。
 
-以下のサンプルクエリは、すべてのデフォルトのEventStore属性列をデータベースビューの専用列に定義します：
+次のサンプルクエリでは、デフォルトのすべての EventStore 属性を、データベースビュー内の専用列として定義します。
 
 ```sql
 CREATE OR REPLACE VIEW TEALIUM_STD_EVENTS AS
@@ -229,12 +229,12 @@ CREATE OR REPLACE VIEW TEALIUM_STD_EVENTS AS
   FROM EVENTSTORE_SAMPLE;
 ```
 
-これらのフィールドに関する詳細情報は、[EventStoreデータガイド](https://docs.tealium.com/eventstore-data-guide/)を参照してください。
-### AudienceStore データの解析
+これらのフィールドについて詳しくは、[EventStore データガイド](https://docs.tealium.com/eventstore-data-guide/)を参照してください。
+### AudienceStore データを解析する
 
-AudienceStore データには、コネクタアクションの構成に応じていくつかのバリエーションがあります。前の構成ステップで、Snowflake ステージのファイル形式を JSON として定義しました。
+AudienceStore データには、コネクタアクションの構成に応じて複数のバリエーションがあります。前の構成手順では、Snowflake ステージのファイル形式として JSON を定義しました。
 
-以下のサンプルクエリを使用して、すべてのデフォルト訪問バッジ、日付、文字列、数値、ブール値を含むビューを作成できます。
+次のサンプルクエリを使用すると、デフォルトのすべての訪問バッジ、日付、文字列、数値、およびブール値を含むビューを作成できます。
 
 ```sql
 CREATE OR REPLACE VIEW TEALIUM_STD_VISITORS AS
@@ -266,13 +266,13 @@ FROM AUDIENCESTORE_SAMPLE;
 
 ```
 
-訪問プロファイルオブジェクトのより高度な解析については、[Snowflake 半構造化データ](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html)のドキュメントを参照してください。
+訪問プロファイルオブジェクトのより高度な解析については、[Snowflake の半構造化データ](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html)のドキュメントを参照してください。
 
 ## 関連トピック
 
-追加情報については、以下のリソースを参照してください：
+詳細については、次のリソースを参照してください。
 
-* [AudienceStore および EventStore の操作 - Tealium ](https://docs.tealium.com/audiencestore-and-eventstore/)
+* [AudienceStore と EventStore の使用方法 - Tealium](https://docs.tealium.com/audiencestore-and-eventstore/)
 * [EventStore データガイド - Tealium](https://docs.tealium.com/eventstore-data-guide/)
-* [データのロード準備 - Snowflake](https://docs.snowflake.com/en/user-guide/data-load-prepare.html)
-* [データロードの考慮事項 - Snowflake](https://docs.snowflake.com/en/user-guide/data-load-considerations.html)
+* [データ読み込みの準備 - Snowflake](https://docs.snowflake.com/en/user-guide/data-load-prepare.html)
+* [データ読み込みに関する考慮事項 - Snowflake](https://docs.snowflake.com/en/user-guide/data-load-considerations.html)

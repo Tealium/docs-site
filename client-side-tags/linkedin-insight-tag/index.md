@@ -1,9 +1,9 @@
 ---
 title: LinkedIn Insight Tag Setup Guide
-description: This article describes how to set up the LinkedIn Insight tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the LinkedIn Insight tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/linkedin-insight-tag/
 ---
-## Tag Tips
+## Tag tips
 
 * Override standard configurations through mapping.
 * For multiple Partner IDs, enter a comma-separated list in the **Partner ID** field.
@@ -13,18 +13,18 @@ url: https://docs.tealium.com/client-side-tags/linkedin-insight-tag/
     * Order Currency (`_ccurrency`)
     * Customer ID (`_ccustid`)
 
-## Tag Configuration
+## Tag configuration
  
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Partner ID**: The partner ID for the LinkedIn account.
 * **Generate Event ID**: Automatically generate an event ID for every LinkedIn tracking event. The default value is `true`.
 
 ### Conversions API for Web
 
-To support the LinkedIn Conversions API for Web, the tag generates a unique event ID for each event tracked and sends it to Tealium EventStream for use in the LinkedIn Conversions connector. The event ID may be mapped in the connector to synchronize the web-based on server-based integrations. This feature requires an active [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
+To support the LinkedIn Conversions API for Web, the tag generates a unique event ID for each event tracked and sends it to Event Streaming for use in the LinkedIn Conversions connector. The event ID may be mapped in the connector to synchronize the web-based on server-based integrations. This feature requires an active [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 The tag emits new event attributes using the following naming convention:
 
@@ -36,9 +36,9 @@ For example: `window.lintrk('track', { conversion_id: 11563522 });`
 
 See the [LinkedIn Conversions Connector Setup Guide](https://docs.tealium.com/linkedin-conversions-connector/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

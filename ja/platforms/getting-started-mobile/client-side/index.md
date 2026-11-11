@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/client-side/
 
 タグ管理は、ベンダータグの構成とビジネスロジックを `utag.js` という静的なJavaScriptファイルに保存するクライアントサイドソリューションです。訪問がサイトを閲覧すると、このファイルがブラウザ（クライアントサイド）で読み込まれて実行され、読み込むベンダータグとそのデータの送信方法が決定されます。これらのファイルは、ブラウザによって取得された後、以降のページビューでキャッシュされ、ネットワークトラフィックとページパフォーマンスが最適化されます。
 
-詳しくは、[タグ管理の仕組み](https://docs.tealium.com/how-tealium-iq-works/)を参照してください。
+詳しくは、[タグ管理の仕組み](https://docs.tealium.com/how-tag-management-works/)を参照してください。
 
 
 ## モバイル

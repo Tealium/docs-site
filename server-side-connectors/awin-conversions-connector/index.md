@@ -3,7 +3,7 @@ title: Awin Conversions Connector Setup Guide
 description: This article describes how to set up the Awin Conversions connector.
 url: https://docs.tealium.com/server-side-connectors/awin-conversions-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -25,7 +25,7 @@ Because Awin no longer supports the use of pixel-only implementations due to var
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -53,7 +53,7 @@ Populating that parameter with the winning channel code allows Tealium to handle
 
 ## Actions
 
-| **Action Name**          | **AudienceStream** | **EventStream** |
+| **Action Name** | **Visitor profile** | **Event data** |
 |:-------------------------|:-------------------|:----------------|
 | Send Conversion          | ✓                  | ✓               |
 | Product Level Conversion | ✓                  | ✓               |

@@ -1,11 +1,11 @@
 ---
 title: ContentSquare Mobile Remote Command Tag
-description: This article describes how to set up the ContentSquare Mobile Remote Command tag in your Tealium iQ Tag Management account.
+description: This article describes how to set up the ContentSquare Mobile Remote Command tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/contentsquare-mobile-remote-command-tag/
 ---
 ContentSquare unlocks customer insights for your entire digital team. It's one platform that is powerful enough for every digital role, from marketers to product managers to IT.
 
-## Tag Tips
+## Tag tips
 
 * Use mappings to:   
   * Dynamically override config data   
@@ -21,7 +21,7 @@ ContentSquare unlocks customer insights for your entire digital team. It's one p
 
 * This is a Mobile Remote Command companion tag for the native mobile app SDK.
 
-## Tag Configuration
+## Tag configuration
 
 Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
@@ -31,7 +31,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -61,7 +61,7 @@ Custom variables are additional information about the page, user, or session sen
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -77,7 +77,7 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 
 ### Event Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|

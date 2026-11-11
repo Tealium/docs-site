@@ -1,16 +1,16 @@
 ---
-title: The Trade Desk ユニバーサルピクセルタグ構成ガイド
-description: この記事では、Tealium iQ タグ管理アカウントで The Trade Desk ユニバーサルピクセルタグを構成する方法について説明します。
+title: The Trade Desk Universal Pixelタグ構成ガイド
+description: この記事では、タグ管理アカウントでThe Trade Desk Universal Pixelタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/the-trade-desk-universal-pixel-tag/
 ---
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスし、プロファイルに The Trade Desk ユニバーサルピクセルタグを追加します（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
+まず、タグマーケットプレイスに移動し、The Trade Desk Universal Pixelタグをプロファイルに追加します（[タグの追加](https://docs.tealium.com/manage-tags/#add-a-tag)を参照）。
 
-タグを追加した後、以下の構成を構成します：
+タグを追加する際は、次の構成を構成します。
 
-1. **広告主 ID**: Trade Desk から提供された広告主 ID を入力します。これはユニバーサルピクセルタグに含まれています。
-1. **ピクセル ID**: Trade Desk から提供されたピクセル ID を入力します。これはユニバーサルピクセルタグに含まれています。
+1. **広告主ID**：Trade Deskから提供された広告主IDを入力します。このIDはUniversal Pixelタグに含まれています。
+1. **ピクセルID**：Trade Deskから提供されたピクセルIDを入力します。このIDはUniversal Pixelタグに含まれています。
 
 
 <blockquote>
@@ -20,54 +20,54 @@ url: https://docs.tealium.com/ja/client-side-tags/the-trade-desk-universal-pixel
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
+すべてのページでタグを読み込むか、タグを読み込む条件を構成します。詳細については、[ロードルールについて](https://docs.tealium.com/about-load-rules/)を参照してください。
 
-推奨されるロードルール：**すべてのページでロード**。
+推奨ロードルール：**すべてのページで読み込む**。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-The Trade Desk ユニバーサルピクセルタグの宛先変数は、そのデータマッピングタブに組み込まれています。
+The Trade Desk Universal Pixelタグの宛先変数は、タグの「データマッピング」タブに組み込まれています。
 
-利用可能なカテゴリーは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
 ### 標準
 
 |**宛先名**| **説明**|
 |---| ---|
-|広告主 ID| Trade Desk から提供された一意の広告主識別子|
-|ピクセル ID| Trade Desk から提供された一意のピクセル識別子|
-| `td1`| カスタマーパラメーター #1   |
-| `td2`| カスタマーパラメーター #2   |
-| `td3`| カスタマーパラメーター #3   |
-| `td4`| カスタマーパラメーター #4   |
-| `td5`| カスタマーパラメーター #5   |
-| `td6`| カスタマーパラメーター #6   |
-| `td7`| カスタマーパラメーター #7   |
-| `td8`| カスタマーパラメーター #8   |
-| `td9`| カスタマーパラメーター #9   |
-| `td10`| カスタマーパラメーター #10   |
+|広告主ID|Trade Deskから提供された広告主の一意の識別子|
+|ピクセルID|Trade Deskから提供されたピクセルの一意の識別子|
+| `td1`| カスタマーパラメータ#1 |
+| `td2`| カスタマーパラメータ#2 |
+| `td3`| カスタマーパラメータ#3 |
+| `td4`| カスタマーパラメータ#4 |
+| `td5`| カスタマーパラメータ#5 |
+| `td6`| カスタマーパラメータ#6 |
+| `td7`| カスタマーパラメータ#7 |
+| `td8`| カスタマーパラメータ#8 |
+| `td9`| カスタマーパラメータ#9 |
+| `td10`| カスタマーパラメータ#10 |
 
 ### 同意（GDPR）
 
-同意パラメーターは、URLベースのサービスに対するIAB仕様に従います。
+同意パラメータは、URLベースのサービスに関するIAB仕様に準拠しています。
 
-参照：[IAB GDPR Consent Passing for URL-Based Services](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/URL-based%20Consent%20Passing_%20Framework%20Guidance.md)
+参照：[URLベースのサービスにおけるIAB GDPR同意情報の受け渡し](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/URL-based%20Consent%20Passing_%20Framework%20Guidance.md)
 
 
 <blockquote>
-URLの作成者は、これらのパラメーターが一度だけ追加され、それを期待して適切に処理できるサービスに渡されることを確認する必要があります。
+URLの作成者は、これらのパラメータが一度だけ追加され、それらを想定し適切に処理できるサービスに渡されるようにする必要があります。
 </blockquote>
 
 
 |宛先名| **値**| **説明**|
 |---| ---| ---|
-|`gdpr`| `0` / `1`| GDPRがユーザーに適用されるかどうかを決定します。`1`の値は`はい`を意味し、デフォルト値の`0`は`いいえ`を意味します。 |
-|`gdpr_consent`| URLセーフなbase64エンコードされたGDPR同意文字列| `gdpr`が`1`の値を持ち、`gdpr_consent`が空の文字列でない場合にのみ、このパラメーターを渡すべきです。|
-|`gdpr_pd`| `0` / `1`| このパラメーターはオプションで、個人データが含まれているかどうかを決定します。`1`の値は`はい`を意味し、デフォルト値の`0`は`いいえ`を意味します。 |
+|`gdpr`| `0` / `1`| ユーザーにGDPRを適用するかどうかを決定します。値が`1`の場合は「はい」を意味し、デフォルト値の`0`は「いいえ」を意味します。|
+|`gdpr_consent`| URLセーフなBase64でエンコードされたGDPR同意文字列| このパラメータは、`gdpr`の値が`1`であり、`gdpr_consent`が空文字列でない場合にのみ渡す必要があります。|
+|`gdpr_pd`| `0` / `1`| このパラメータは任意であり、個人データが含まれるかどうかを決定します。値が`1`の場合は「はい」を意味し、デフォルト値の`0`は「いいえ」を意味します。|
 
 
 <blockquote>
-IPアドレスやトラッキングピクセルクッキーなどの他の個人データがリクエストの一部として渡される場合があります。`gdpr`および`gdpr_consent`パラメーターは、識別クッキーまたは他の個人データが構成および/または使用されるかどうかを判断するために呼び出し先によって使用されるべきです。
+IPアドレスやトラッキングピクセルCookieなど、その他の個人データがリクエストの一部として渡される場合があります。呼び出し先は、識別子Cookieまたはその他の個人データを構成または使用できるかどうかを判断するために、`gdpr`および`gdpr_consent`パラメータを使用する必要があります。
 </blockquote>

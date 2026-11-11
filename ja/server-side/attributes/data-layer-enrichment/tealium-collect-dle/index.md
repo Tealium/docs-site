@@ -1,13 +1,13 @@
 ---
 title: Tealium Collectタグの追加と構成
-description: この記事では、データレイヤーのエンリッチメントを有効にするためにTealium Collectタグを構成する方法について説明します。
+description: この記事では、データレイヤーエンリッチメントを有効にするためのTealium Collectタグの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/tealium-collect-dle/
 ---
-詳細な手順については、[Tealium Collectタグ構成ガイド](https://docs.tealium.com/tealium-collect-tag/)を参照してください。
+詳しい手順については、[Tealium Collectタグ構成ガイド](https://docs.tealium.com/tealium-collect-tag/)を参照してください。
 
 
 <blockquote>
-この構成はTealium iQでクライアントサイド属性同期を有効にします。データレイヤーエンリッチメントAPIおよびプロファイル定義APIは、別のサーバーサイド構成によって制御されます。詳細については、[サーバーサイドデータレイヤーエンリッチメントを有効にする](https://docs.tealium.com/enable-data-layer-enrichment/)を参照してください。
+この構成により、タグ管理でクライアント側の属性同期が有効になります。Data Layer Enrichment APIとProfile Definition APIは、別のサーバー側構成によって制御されます。詳細については、[サーバー側のデータレイヤーエンリッチメントの有効化](https://docs.tealium.com/enable-data-layer-enrichment/)を参照してください。
 </blockquote>
 
 
@@ -15,34 +15,34 @@ url: https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/te
 
 ## データエンリッチメントの頻度
 
-Tealium Collectタグを構成してデータレイヤーエンリッチメントを有効にするには、属性情報でデータレイヤーをどのくらいの頻度で更新するかを決定する必要があります。こちらがオプションです：
+データレイヤーエンリッチメントを有効にするようTealium Collectタグを構成するには、属性情報でデータレイヤーを更新する頻度を決定する必要があります。次のオプションがあります。
 
 * **なし**（デフォルト）
-  * データレイヤーエンリッチメントは行われません。
-* **まれ**
-  * データレイヤーエンリッチメントは訪問（セッション）ごとに1回行われます。
-  * 取得した顧客データはローカル保存に保存され、セッション中の後続のトラッキングコールで使用されます。
-* **頻繁**（推奨）
-  * データレイヤーエンリッチメントはすべてのトラッキングコールで行われます。セッション中に変更された顧客データは、リアルタイムでユニバーサルデータオブジェクト（UDO）に反映されます。  
+  * データレイヤーエンリッチメントは実行されません。
+* **低頻度**
+  * データレイヤーエンリッチメントは、訪問（セッション）ごとに1回実行されます。
+  * 取得した顧客データはローカル保存に保存され、セッション中の後続のトラッキング呼び出しで使用されます。
+* **高頻度**（推奨）
+  * データレイヤーエンリッチメントは、トラッキング呼び出しごとに実行されます。セッション中に変更された顧客データは、Universal Data Object（UDO）にリアルタイムで反映されます。  
   
 <blockquote>
-このオプションはページごとに追加のHTTPリクエストを発生させます。
+このオプションを選択すると、ページごとに追加のHTTPリクエストが発生します。
 </blockquote>
 
 
 ## ロードルールの選択
 
-Tealium Collectタグについては、デフォルトの**すべてのページでロード**ルールを選択したままにすることをお勧めします。データレイヤーに必要な属性が含まれるように、最も関連性の高いデータでそれを満たしてください。
+Tealium Collectタグでは、デフォルトの**すべてのページで読み込む**ロードルールを選択したままにすることをお勧めします。データレイヤーに必要な属性が含まれるようにするため、最も関連性の高いデータを構成してください。
 
-### Tealium iQでAudienceStream属性を使用する
+### タグ管理でのCustomer Data Platform（CDP）属性の使用
 
-AudienceStream属性はTealium iQでインポートされた変数として扱われます。これらの変数は編集または削除することはできません。AudienceStream属性を削除または変更するには、AudienceStreamプロファイルで変更を行います。属性は[プロファイルライブラリ](https://docs.tealium.com/about-profile-libraries/)にはインポートできず、通常のプロファイルにのみインポートできます。
+タグ管理では、CDP属性はインポートされた変数として扱われます。これらの変数は編集または削除できません。CDP属性を削除または変更するには、CDPプロファイルで変更してください。属性を[プロファイルライブラリ](https://docs.tealium.com/about-profile-libraries/)にインポートすることはできず、通常のプロファイルにのみインポートできます。
 
 ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png)
 
-### どのAudienceStream属性タイプがインポートされますか？
+### インポートされるCDP属性タイプ
 
-以下の属性タイプがTealium iQにインポートされ、データレイヤーで利用可能になります：
+次の属性タイプがタグ管理にインポートされ、データレイヤーで使用できるようになります。
 
 * バッジ
 * 数値
@@ -52,35 +52,35 @@ AudienceStream属性はTealium iQでインポートされた変数として扱�
 
 
 <blockquote>
-日付属性はデータレイヤーにインポートされ、UDOで表示されますが、ロードルールやタグマッピングで使用することはできません。
+日付属性はデータレイヤーにインポートされ、UDOに表示されます。ただし、ロードルールやタグマッピングでは使用できません。
 </blockquote>
 
 
-## ロードルールの構築
+## ロードルールの作成
 
-サポートされている属性を使用してロードルールを作成できます。以下のルール演算子がバッジのロードルールで利用可能です。
+サポートされている属性を使用して、ロードルールを作成できます。ロードルール内のバッジでは、次のルール演算子を使用できます。
 
 * **バッジが割り当てられている**  
-訪問にバッジ属性が割り当てられている場合は`True`です。  
+バッジ属性が訪問に割り当てられている場合は`True`です。  
       ![](https://docs.tealium.com/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png)
 * **バッジが割り当てられていない**  
-訪問にバッジ属性が割り当てられていない場合は`False`です。
+バッジ属性が訪問に割り当てられていない場合は`False`です。
 
 
 <blockquote>
-AudienceStreamから属性を削除すると、Tealium iQのデータレイヤースクリーンから自動的に削除されます。ただし、削除された属性を参照するロードルールは自動的に更新されません。削除された属性をまだ参照しているロードルールを手動で更新する必要があります。
+CDPから属性を削除すると、タグ管理のデータレイヤー画面からも自動的に削除されます。ただし、削除された属性を参照するロードルールは自動的には更新されません。削除された属性を引き続き参照しているロードルールは、手動で更新する必要があります。
 </blockquote>
 
 
 ## コールバック関数
 
-データレイヤーエンリッチメントリクエストは、レスポンスに基づいてコードを実行することができるコールバックメソッド`window.tealium_enrichment()`を提供します。
+データレイヤーエンリッチメントリクエストには、レスポンスに基づいてコードを実行できるコールバックメソッド`window.tealium_enrichment()`が用意されています。
 
-コールバック関数を使用するには、次のコードを含む[JavaScript Code extension](https://docs.tealium.com/advanced-javascript-code-extension/)をPre Loaderにスコープする必要があります：
+コールバック関数を使用するには、次のコードを使用して、スコープをPre Loaderに構成した[JavaScriptコード拡張機能](https://docs.tealium.com/advanced-javascript-code-extension/)を作成します。
 
 ```js
 window.tealium_enrichment = function(data) {
     console.log("Data Layer Enrichment Callback");
-    // ここにコードを記述...
+    // Your code here...
 };
 ```

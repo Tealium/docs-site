@@ -1,6 +1,6 @@
 ---
 title: Visitor ID attribute enrichment for Tealium Connect
-description: This article describes how to map and enrich a visitor ID attribute in AudienceStream for use in Data Connect.
+description: This article describes how to map and enrich a visitor ID attribute in Customer Data Platform (CDP) for use in Data Connect.
 url: https://docs.tealium.com/server-side/data-connect/manage-data-connect-integrations/tealium-connect-visitor-id-attr-enrichment/
 ---
 To enrich a visitor ID attribute for use with Tealium Connect, complete the following steps:
@@ -22,7 +22,7 @@ To enrich a visitor ID attribute for use with Tealium Connect, complete the foll
 
 
 <blockquote>
-To ensure visitors from Tealium Connect persist in AudienceStream, assign a badge whenever a Data Connect event occurs, using the same rule, if such a badge does not already exist.
+To ensure visitors from Tealium Connect persist in Customer Data Platform (CDP), assign a badge whenever a Data Connect event occurs, using the same rule, if such a badge does not already exist.
 </blockquote>
 
 

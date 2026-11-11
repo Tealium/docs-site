@@ -3,11 +3,12 @@ title: Snowflake Streaming Connector Setup Guide
 description: This article describes how to set up the Snowflake Streaming connector.
 url: https://docs.tealium.com/server-side-connectors/snowflake-streaming-connector/
 ---
-## API information 
+## API information
 
-This connector uses the following vendor SDK:
+This connector uses the following vendor SDKs:
 
-* Snowflake Ingest SDK Version: 4.4.2
+* Current actions (HPA): `com.snowflake:snowpipe-streaming` version 1.8.1
+* Classic actions: Snowflake Ingest SDK version 4.4.2
 
 ## How it works
 
@@ -22,9 +23,22 @@ The Snowflake Streaming connector unlocks a number of use cases, including:
 * AI: Inform and activate AI initiatives with a real-time data layer.
 * Consent: Ensure insights and activation always respect customer privacy and preferences.
 
+### Architectures
+
+The connector supports two Snowpipe Streaming architectures:
+
+* **High-performance architecture (HPA)**: Pipe-based. HPA is the current architecture and the default for new action configurations.
+* **Classic**: Table-based. Classic actions are preserved for existing configurations and are labeled **(Legacy)** in the connector. Snowflake is deprecating the Classic architecture. For more information, see [Snowflake: Snowpipe Streaming Classic architecture overview](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/snowpipe-streaming-classic-overview).
+
+A channel is a streaming connection that appends rows to a Snowflake target. HPA uses Snowflake Elastic Channels: Snowflake creates one implicit channel per pipe, and multiple writers can append to that channel in parallel. Elastic Channels do not guarantee ordered ingestion or deduplication. For more information, see [Snowflake: Elastic Channels limitations](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/snowpipe-streaming-elastic-channels-limitations).
+
+Classic actions open a separate channel per connector action instead of using Elastic Channels. The [Drop classic architecture channels](#drop-classic-architecture-channels) admin task removes those channels.
+
+HPA reports row-level errors asynchronously. The connector reports a successful send after Snowflake durably accepts the batch. If Snowflake later rejects a row (for example, an invalid timestamp or a type mismatch), Trace and the action still show a successful send and the row is not written. To review rejected rows, check the row-level error reporting in Snowflake. For more information, see [Snowflake: Elastic Channels row-level error handling](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/snowpipe-streaming-elastic-channels-error-handling#row-level-errors). Classic actions fail synchronously in these cases.
+
 ### Staging tables
 
-The staging table in Snowflake that is intended to receive data from Tealium must contain specific columns depending on the selected connector action.
+The staging table in Snowflake that receives data from Tealium must contain specific columns depending on the selected connector action. For HPA actions, the staging table is the pipe's target table, and the connector reads the column list from that target table.
 
 When using either **Send Entire Event Data** or **Send Entire Visitor Data** actions, the staging table must have a `VARIANT` column to receive the dataset and a column to receive the timestamp. The timestamp column must support the timestamp data format that is sent.
 
@@ -70,16 +84,20 @@ You must add the `us-west-1` and the server-side profile region addresses to you
 
 ## Best practices
 
-We recommend the following Snowflake table configurations for the Snowflake Streaming connector:
+For Classic actions, we recommend the following Snowflake table configurations:
 
 * 1 event feed per table
 * 1 audience per table
 
 
 <blockquote>
-Concurrent writing of tables by more than one feed or audience may result in performance errors.
+For Classic actions, concurrent writing to the same table by more than one feed or audience may result in performance errors.
 </blockquote>
 
+
+Current (HPA) actions use Snowflake Elastic Channels, which support concurrent writers to the same pipe. The per-table concurrency recommendation does not apply to HPA actions.
+
+HPA delivery can result in duplicate rows. If Snowflake does not confirm a batch within 10 seconds, the connector retries the batch. If Snowflake later commits the original attempt, the rows land twice. We recommend that you deduplicate downstream on an event ID.
 
 ## Snowflake native app
 
@@ -97,7 +115,7 @@ The Tealium Snowflake App currently transforms visitor payload data only. Event 
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -129,7 +147,7 @@ If the private key is encrypted, you must provide the Private Key Passphrase.
         1. Execute the following query on your Snowflake instance:   
         ```ALTER USER [your username] SET RSA_PUBLIC_KEY = [your public key from the file].```
         1. Click **Done** to create the new connection.
-* **Enable Snowpipe Streaming for Iceberg Tables**: Enable this option if your target table in Snowflake is a managed Iceberg table.
+* **Enable Snowpipe Streaming for Iceberg Tables**: Enable this option if your target table in Snowflake is a managed Iceberg table. This connection-level option applies to both current (HPA) and Classic actions.
 
 
 <blockquote>
@@ -139,7 +157,13 @@ Snowflake supports public and private key rotations. For more information, see [
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+The connector exposes current (HPA) actions for new configurations and Classic actions for backward compatibility.
+
+### Current actions (HPA)
+
+Each current action uses the Snowflake Snowpipe Streaming high-performance architecture (HPA) with Elastic Channels and streams data into the selected pipe.
+
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Custom Event Data | ✗ | ✓ |
 | Send Entire Event Data | ✗ | ✓ |
@@ -148,7 +172,24 @@ Snowflake supports public and private key rotations. For more information, see [
 | Send Entire Log Event | ✗ | ✓ |
 | Send Log Event | ✗ | ✓ |
 
-The following section lists the supported parameters for each action.
+### Classic actions
+
+The following actions use the Classic (table-based) architecture and are deprecated. Existing configurations continue to work. For new configurations, use the current (HPA) action.
+
+| Action name | Visitor profile | Event data |
+| --- | :---: | :---: |
+| Send Custom Event Data (Legacy) | ✗ | ✓ |
+| Send Entire Event Data (Legacy) | ✗ | ✓ |
+| Send Custom Visitor Data (Legacy) | ✓ | ✗ |
+| Send Entire Visitor Data (Legacy) | ✓ | ✗ |
+| Send Entire Log Event (Legacy) | ✗ | ✓ |
+| Send Log Event (Legacy) | ✗ | ✓ |
+
+### Choose an action
+
+For new configurations, use the current (HPA) action. Existing Classic configurations continue to work on the Classic action. For a comparison of the two architectures, see [Architectures](#architectures).
+
+The following sections list the supported parameters for each action.
 
 ### Send Custom Event Data
 
@@ -158,8 +199,8 @@ The following section lists the supported parameters for each action.
 | --- | --- |
 | Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name | The name of the table you want to insert data into.|
-|Event Parameters | Map the event parameters to the columns in the Snowflake table.|
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
+| Event Parameters | <ul><li>Map the event parameters to the columns of the table. You must map at least one parameter.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
 
 ### Send Entire Event Data
 
@@ -167,13 +208,13 @@ The following section lists the supported parameters for each action.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Database Name | The Snowflake database that contains the required table.  |
+| Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name | The name of the table you want to insert data into.|
-| Column to record the payload | Choose the **VARIANT** column to record the event data.|
-| Timestamp | Select the column to send the timestamp variable to.|
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
+| Column to record the payload | Choose the **VARIANT** column to record the event data. |
+| Timestamp | Select the column to send the timestamp variable to. |
 | Timestamp Attribute | (Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see [Snowflake: Supported Java data types](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types). If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
-| Additional Event Data | The following parameters are only available when using Tealium iQ and EventStream.<ul><li>**First-party Cookies** - Include first-party cookie information captured with the event.</li><li>**DOM** - Include DOM data captured with the event.</li><li>**Meta** - Include Meta data captured with the event.</li></ul> |
+| Additional Event Data | The following parameters are only available when using Tag Management and Event Streaming.<ul><li>**First-party Cookies** - Include first-party cookie information captured with the event.</li><li>**DOM** - Include DOM data captured with the event.</li><li>**Meta** - Include Meta data captured with the event.</li></ul> |
 
 ### Send Custom Visitor Data
 
@@ -183,8 +224,8 @@ The following section lists the supported parameters for each action.
 | --- | --- |
 | Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name |The name of the table you want to insert data into. |
-|Visitor Parameters | Map the visitor parameters to the columns in the Snowflake table.|
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
+| Visitor Parameters | <ul><li>Map the visitor parameters to the columns of the table. You must map at least one parameter.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
 
 ### Send Entire Visitor Data
 
@@ -194,10 +235,10 @@ The following section lists the supported parameters for each action.
 | --- | --- |
 | Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name | The name of the table you want to insert data into. |
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
 | Column to record the visitor data | Choose the **VARIANT** column to record the visitor data. |
 | Include Current Visit Data | Selecting this option includes both visitor data and current visit data in the data sent to Snowflake. |
-| Timestamp | Select the column to send the timestamp variable to.|
+| Timestamp | Select the column to send the timestamp variable to. |
 | Timestamp Attribute | (Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see [Snowflake: Supported Java data types](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types). If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
 | Include Current Visit Data with Visitor Data | Select to include the current visit data with visitor data. |
 
@@ -209,7 +250,7 @@ The following section lists the supported parameters for each action.
 | --- | --- |
 | Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name | The name of the Snowflake table that the data will be inserted into. |
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
 | Column to record the payload | Choose the column to record the payload. |
 | Column to record the Timestamp | Choose the column to record the Timestamp. |
 
@@ -221,13 +262,217 @@ The following section lists the supported parameters for each action.
 | --- | --- |
 | Database Name | The Snowflake database that contains the required table. |
 | Schema Name | The name of the schema used in the table. |
-| Table Name | The name of the Snowflake table that the data will be inserted into. |
+| Pipe Name | Select or enter the Snowflake pipe to stream data into. To stream directly into a table without creating a pipe, enter the table's default pipe: `<TABLE_NAME>-STREAMING`. Snowflake creates the default pipe on demand during the first ingestion. To create a named pipe before streaming, use the [Create Pipe](#create-pipe) admin task. |
+| Log event resource attributes | <ul><li>These fields capture information about the entity for which telemetry is recorded.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
+| Log event HTTP attributes | <ul><li>These fields log the HTTP requests and responses within the logging system.</li><li>To map the entire `http` array to a single column, map the `http` attribute. If the target column is of type **VARIANT**, the raw array is sent. Otherwise, it is converted to a string.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
+| Log event result attributes | <ul><li>These fields log the outcome of the operation, detailing whether it was successful or if it encountered errors.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
+| Log event other attributes | <ul><li>These fields provide additional metadata about the logged events.</li><li>Values are converted to the type of the mapped column. Text values mapped to **VARIANT** columns must be valid JSON. Otherwise, the event fails. Single values mapped to **ARRAY** columns are sent as a one-item array, and text values that start with `[` must be a valid JSON array. Otherwise, the event fails.</li></ul> |
+
+### Send Custom Event Data (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Custom Event Data](#send-custom-event-data).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the table you want to insert data into. |
+| Event Parameters | Map the event parameters to the columns in the Snowflake table. |
+
+### Send Entire Event Data (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Entire Event Data](#send-entire-event-data).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the table you want to insert data into. |
+| Column to record the payload | Choose the **VARIANT** column to record the event data. |
+| Timestamp | Select the column to send the timestamp variable to. |
+| Timestamp Attribute | (Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see [Snowflake: Supported Java data types](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types). If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
+| Additional Event Data | The following parameters are only available when using Tag Management and Event Streaming.<ul><li>**First-party Cookies** - Include first-party cookie information captured with the event.</li><li>**DOM** - Include DOM data captured with the event.</li><li>**Meta** - Include Meta data captured with the event.</li></ul> |
+
+### Send Custom Visitor Data (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Custom Visitor Data](#send-custom-visitor-data).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the table you want to insert data into. |
+| Visitor Parameters | Map the visitor parameters to the columns in the Snowflake table. |
+
+### Send Entire Visitor Data (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Entire Visitor Data](#send-entire-visitor-data).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the table you want to insert data into. |
+| Column to record the visitor data | Choose the **VARIANT** column to record the visitor data. |
+| Include Current Visit Data | Selecting this option includes both visitor data and current visit data in the data sent to Snowflake. |
+| Timestamp | Select the column to send the timestamp variable to. |
+| Timestamp Attribute | (Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see [Snowflake: Supported Java data types](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types). If an attribute is assigned and produces an empty value, the connector sends the current timestamp. |
+| Include Current Visit Data with Visitor Data | Select to include the current visit data with visitor data. |
+
+### Send Entire Log Event (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Entire Log Event](#send-entire-log-event).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the Snowflake table that the data is inserted into. |
+| Column to record the payload | Choose the column to record the payload. |
+| Column to record the Timestamp | Choose the column to record the Timestamp. |
+
+### Send Log Event (Legacy)
+
+
+<blockquote>
+This action is deprecated. For the current action, see [Send Log Event](#send-log-event).
+</blockquote>
+
+
+#### Parameters
+
+| **Parameter** | **Description** |
+| --- | --- |
+| Database Name | The Snowflake database that contains the required table. |
+| Schema Name | The name of the schema used in the table. |
+| Table Name | The name of the Snowflake table that the data is inserted into. |
 | Log event resource attributes | These fields capture information about the entity for which telemetry is recorded. |
-| Log event HTTP attributes | These fields log the HTTP requests and responses within the logging system. To map the entire `http` array to a single column, map the `http` attribute. If the target column is of type **VARIANT**, the raw array is sent; otherwise, it is converted to a string. |
+| Log event HTTP attributes | These fields log the HTTP requests and responses within the logging system. To map the entire `http` array to a single column, map the `http` attribute. If the target column is of type **VARIANT**, the raw array is sent. Otherwise, it is converted to a string. |
 | Log event result attributes | These fields log the outcome of the operation, detailing whether it was successful or if it encountered errors. |
 | Log event other attributes | These fields provide additional metadata about the logged events. |
 
-## Drop channels
+## Migrate a Classic action to HPA
+
+To move an existing Classic action to the current (HPA) version:
+
+1. Create the pipe for the HPA action, or plan to use the default `<TABLE_NAME>-STREAMING` pipe. For privileges, see [Required Snowflake privileges](#required-snowflake-privileges). To create a named pipe, see [Create a pipe](#create-a-pipe).
+1. Add the current (HPA) action to the connector with the same mappings as the Classic action.
+1. In the same save, disable or remove the Classic action.
+1. After new data begins arriving through the HPA action, use [Drop classic architecture channels](#drop-classic-architecture-channels) to remove the leftover channels that the Classic action created.
+
+
+<blockquote>
+Do not run the current (HPA) action and the Classic action against the same target table at the same time. Every event is written twice for as long as both actions overlap. To test the HPA action first, point it at a different target table.
+</blockquote>
+
+
+The connector only sends events that are processed after the action is saved. The migration does not replay data, and there is no backfill mechanism.
+
+When you publish the save that removes the Classic action, the connector flushes any buffered or retrying batches to Snowflake before the action stops. Those rows are preserved.
+
+For tables with VARIANT or ARRAY columns, the HPA action writes the same values as the Classic action, so the migration preserves existing data.
+
+## Admin tasks
+
+### Create Pipe
+
+Use the **Create Pipe** admin task to create a Snowflake pipe for an HPA action. The task is available from the **Pipe Name** field in any current (HPA) action, or under **Remote Configuration** on the connector.
+
+#### Required Snowflake privileges
+
+The role used by the connector owns the pipe it creates, and Snowflake loads data using the owning role's privileges.
+
+To create a pipe, grant the following privileges to the role:
+
+```sql
+GRANT USAGE ON DATABASE <database_name> TO ROLE <role>;
+GRANT USAGE ON SCHEMA <database_name>.<schema_name> TO ROLE <role>;
+GRANT CREATE PIPE ON SCHEMA <database_name>.<schema_name> TO ROLE <role>;
+GRANT INSERT ON TABLE <database_name>.<schema_name>.<target_table> TO ROLE <role>;
+```
+
+To stream data into an existing pipe (created by another role), grant the following privileges to the role:
+
+```sql
+GRANT USAGE ON DATABASE <database_name> TO ROLE <role>;
+GRANT USAGE ON SCHEMA <database_name>.<schema_name> TO ROLE <role>;
+GRANT OPERATE ON PIPE <database_name>.<schema_name>.<pipe_name> TO ROLE <role>;
+GRANT INSERT ON TABLE <database_name>.<schema_name>.<target_table> TO ROLE <role>;
+```
+
+The **Pipe Name** field uses `SHOW PIPES` to populate the dropdown, which only lists pipes the role owns or holds `MONITOR` or `OPERATE` on. The column list for mapping uses `DESCRIBE PIPE` and `DESCRIBE TABLE`, so the role also needs `MONITOR` on the pipe and `SELECT` on the target table. If the connector's role created the pipe, pipe ownership covers the pipe-side requirements.
+
+For the default `<TABLE_NAME>-STREAMING` pipe that Snowflake auto-provisions, `INSERT` on the target table is sufficient. Table ownership is not required.
+
+#### Create a pipe
+
+1. Go to **Connect > Event Connectors** or to **Connect > Audience Connectors**.
+1. Select a Snowflake connector.
+1. Under **Remote Configuration**, click **Create Pipe**.
+1. Enter the following information:
+    * **Database Name**  
+        (Required) The Snowflake database that contains the target table.
+    * **Schema Name**  
+        (Required) The name of the schema used in the target table.
+    * **Pipe Name**  
+        (Required) The name of the pipe to create.
+    * **Target table**  
+        (Required) The name of the Snowflake table that the pipe writes to.
+1. Click **Create**.
+
+The task runs the following statement in Snowflake, which maps columns by name, case-insensitively, to all columns of the target table:
+
+```sql
+CREATE PIPE "<database_name>"."<schema_name>"."<pipe_name>"
+AS
+COPY INTO "<database_name>"."<schema_name>"."<target_table>"
+FROM TABLE(DATA_SOURCE(TYPE=>'STREAMING'))
+MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
+```
+
+
+<blockquote>
+The statement is `CREATE PIPE`, not `CREATE OR REPLACE PIPE`. If a pipe with the specified name already exists in the schema, Snowflake returns an error and the admin task surfaces that error.
+</blockquote>
+
+
+### Drop classic architecture channels
+
+
+<blockquote>
+This admin task applies only to Classic actions. Current (HPA) actions use Snowflake Elastic Channels, which do not create per-connector channels and do not require a drop task.
+</blockquote>
+
 
 To drop channels that Tealium has created, provide a list of channels in CSV format. You can retrieve the list of channels by running **SHOW CHANNELS** in your Snowflake instance. To drop all channels created by Tealium, leave the list blank.
 
@@ -235,8 +480,8 @@ To configure channels to drop, use the following steps:
 
 1. Go to **Connect > Event Connectors** or to **Connect > Audience Connectors**.
 1. Select a Snowflake connector.
-1. Under **Remote Configuration**, click **Drop Channel**.
-1. Enter the following information:  
+1. Under **Remote Configuration**, click **Drop classic architecture channels**.
+1. Enter the following information:
     * **Database Name**  
         (Required) The Snowflake database name for the table.
     * **Schema Name**  
@@ -244,7 +489,7 @@ To configure channels to drop, use the following steps:
     * **Table Name**  
         (Required) The name of the Snowflake table.
     * **Channel Name**  
-        The names of the Snowflake channels to drop, in CSV format. If no channel name is provided, all channels are dropped.
+        The names of the Snowflake channels to drop, in CSV format. **Channel Name** is required for Iceberg tables. If no channel name is provided, all channels are dropped.
 1. Click **Drop**.
 
 If your list of tables is large and the deletion takes longer than 30 seconds, a false error stating that channels were not deleted may occur. We recommend that you validate that channels were successfully deleted by running **SHOW CHANNELS** in your Snowflake instance.

@@ -3,7 +3,7 @@ title: X Conversions Connector Setup Guide
 description: This article describes how to set up the X Conversions connector.
 url: https://docs.tealium.com/server-side-connectors/x-conversions-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -52,7 +52,7 @@ For a conversion event to be passed in the X Conversion API, there needs to be a
 
 To successfully setup conversion events to be passed to the X Conversion API, we recommend the following configurations:
 
-* Always parse the `twclid` value when it is present in the URL query parameters to be passed to Tealium EventStream API Hub.
+* Always parse the `twclid` value when it is present in the URL query parameters to be passed to Event Streaming API Hub.
 * Store the data alongside relevant form fields or conversion event information.
 
 #### Deduplication
@@ -65,7 +65,7 @@ Manage event duplication using the `conversion_id` event parameter, which can be
 
 X Conversions requires allowlisting on your X account. For assistance with allowlisting, contact your X representative.
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -86,7 +86,7 @@ The Universal Website Tag (UWT) ID for an ad account. This represents the base36
 
 ## Connector Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 |Send Conversion Event| ✓| ✓|
 

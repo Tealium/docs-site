@@ -3,26 +3,26 @@ title: BazaarVoice Pixel Tag Setup Guide
 description: Bazaarvoice is a network that connects brands and retailers to the authentic voices of people where they shop.
 url: https://docs.tealium.com/client-side-tags/bazaarvoice-pixel-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the Bazaarvoice Pixel tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 * Client Name: The client name provided by Bazaarvoice
 * Site ID: The Site ID is found in the Conversations configuration hub in the Bazaarvoice workbench under deployment zone. Default `main_site`
 * Environment: The deployment environment where you want to implement the BV Pixel. Choose from production or staging
 * Locale: The locale used by the BV Pixel implementation. Default `en_US`
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended load rule: All Pages
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Bazaarvoice Pixel tag are built into its **Data Mapping** tab. Available categories are:
 

@@ -3,7 +3,7 @@ title: Podscribe S2S Connector Setup Guide
 description: Set up the Podscribe S2S connector to send server-side conversion events to Podscribe for attribution.
 url: https://docs.tealium.com/server-side-connectors/podscribe-s2s-connector/
 ---
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -13,16 +13,18 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 * **API Key**: (Required) Podscribe S2S API key used to authorize requests.
 * **Advertiser ID**: (Required) Unique advertiser ID assigned by the platform.
 * **User ID**: (Required) User identifier sent with every event request.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Event | ✓ | ✓ |
 

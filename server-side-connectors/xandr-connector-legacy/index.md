@@ -1,5 +1,5 @@
 ---
-title: Xandr (formerly AppNexus) Connector Setup Guide for AudienceStream
+title: Xandr (formerly AppNexus) Connector Setup Guide for Customer Data Platform (CDP)
 description: This article describes how to set up the Xandr (formerly AppNexus) connector.
 url: https://docs.tealium.com/server-side-connectors/xandr-connector-legacy/
 ---
@@ -15,7 +15,7 @@ url: https://docs.tealium.com/server-side-connectors/xandr-connector-legacy/
 
 ## Configure Settings
 
-Go to the Connector Marketplace and add a new Segment Connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a Connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 To configure your vendor, follow these steps:
 
@@ -24,9 +24,7 @@ To configure your vendor, follow these steps:
 
 ## Action Settings - Parameters and Options
 
-Click **Next** or go to the **Actions** tab. This is where you will set up actions and trigger them.
-
-This section describes how to set up parameters and options for each action.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 ### Action - Add User to or Remove from Segment
 
@@ -40,7 +38,7 @@ This section describes how to set up parameters and options for each action.
 
 | **Option**         | **Description**                                                                                                                                          |
 |:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `uuid2` (Required) | <ul><li>Use the Xandr Cookie Match tag in Tealium iQ to obtain the Xandr `uuid2` value from the visitor's browser</li></ul>                              |
+| `uuid2` (Required) | <ul><li>Use the Xandr Cookie Match tag in Tag Management to obtain the Xandr `uuid2` value from the visitor's browser</li></ul>                              |
 | `sess`             | <ul><li>Automatically sets `sess=1` and sends to Xandr along with `uuid2` value in Cookie Header. Map `sess` to `0` to override the default.</li></ul>   |
 | `add`              | <ul><li>Comma-separated segments to add for the user</li></ul>                                                                                           |
 | `add_code`         | <ul><li>Comma-separated list of segment codes to add for the user.</li><li>The the `member` parameter is required when using codes.</li></ul>            |
@@ -51,6 +49,6 @@ This section describes how to set up parameters and options for each action.
 | `redir`            | <ul><li>A redirect URL used to piggyback another pixel</li></ul>                                                                                         |
 | `external_uid`     | <ul><li>A string that corresponds to an external user ID for this user</li></ul>                                                                         |
 
-## Vendor Documentation
+## Vendor documentation
 
 * [Segment Service](https://learn.microsoft.com/en-us/xandr/digital-platform-api/segment-service)

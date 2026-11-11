@@ -1,50 +1,52 @@
 ---
-title: Tealium 通貨コンバータータグ
-description: この記事では、Tealium iQ タグ管理アカウントで Tealium 通貨コンバータータグを構成する方法について説明します。
+title: Tealium通貨コンバータータグ
+description: この記事では、タグ管理アカウントでTealium通貨コンバータータグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/tealium-currency-converter-tag/
 ---
-## 動作原理
+## 仕組み
 
-通貨変換を実装するには、以下の2つのコンポーネントが関連しています：
+通貨換算の実装には、次の2つのコンポーネントが関係します。
 
-* Tealium 通貨コンバータータグ
+* Tealium通貨コンバータータグ
 * 通貨コンバーター拡張機能（[詳細はこちら](https://docs.tealium.com/currency-converter-extension/)）
 
-## Tealium 通貨コンバータータグ
+## Tealium通貨コンバータータグ
 
-毎日一度、[Open Exchange Rates](https://openexchangerates.org) からの為替レートが Tealium に同期されます。通貨コンバータータグがサイト上で実行されると、Tealium から為替レート情報を取得し、拡張機能で利用できるようにします。また、コード内で手動で変換を行うためのユーティリティJavaScript関数も定義します。
+[Open Exchange Rates](https://openexchangerates.org)の為替レートは、1日1回Tealiumに同期されます。サイト上で通貨コンバータータグが実行されると、Tealiumから為替レート情報を取得し、拡張機能で利用できるようにします。また、コード内で手動で換算できるように、ユーティリティJavaScript関数も定義します。
 
-為替レートは以下のファイルに保存されます：
+為替レートは次のファイルに保存されています。
 
 `https://tags.tiqcdn.com/utag/tiqapp/utag.currency.js`
 
 
 <blockquote>
-これはブロッキングタグなので、非同期でロードされるものの、ロードされるまで他の Tealium タグのロードを阻止します。
+これはブロッキングタグです。非同期で読み込まれますが、読み込みが完了するまで他のTealiumタグの読み込みを停止します。
 </blockquote>
 
 
 ## 通貨コンバーター拡張機能
 
-この拡張機能を使用すると、データレイヤー変数に変換された値を保存する通貨変換を簡単に構成できます。[通貨コンバーター拡張機能](https://docs.tealium.com/currency-converter-extension/)についてもっと学びましょう。
+この拡張機能を使用すると、換算後の値をデータレイヤー変数に保存する通貨換算を簡単に構成できます。詳しくは、[通貨コンバーター拡張機能](https://docs.tealium.com/currency-converter-extension/)を参照してください。
 
 ## タグの追加
 
-1. タグマーケットプレイスに移動し、Tealium 通貨コンバータータグを追加します。
-1. タグウィザードを使用して、タグに具体的なタイトルを付け、任意のメモを入力し、ロードルールタブに進みます。
-1. 適用したいロードルールを選択し、**完了**をクリックします。![](https://docs.tealium.com/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
+次の手順でTealium通貨コンバータータグを追加します。
 
-## 通貨変換機能
+1. タグマーケットプレイスに移動し、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
+1. タグウィザードを使用してタグに具体的なタイトルを付け、必要に応じてメモを入力してから、ロードルールタブに進みます。
+1. 適用するロードルールを選択し、**完了**をクリックします。![](https://docs.tealium.com/images/client-side-tags/no-title-1602i561ebcf8f19811c5.png)
 
-通貨コンバータータグがページ上でロードされると、以下のユーティリティ関数が使用できます：
+## 通貨換算関数
+
+通貨コンバータータグがページに読み込まれると、次のユーティリティ関数を使用できます。
 
 `tealiumiq_currency.convert(amount, source_currency, converted_currency)`
 
-|パラメータ| 説明|
-|---| ---|
-|`amount`| 変換する通貨額。文字列/数値または値の配列として指定します。例：`100` または `[100, 200, 300]`|
-|`source_currency`| 金額の通貨を表す3文字の通貨コード。例：`USD`|
-|`converted_currency`| 金額を変換する3文字の通貨コード。例：`GBP`|
+|パラメータ|説明|
+|---|---|
+|`amount`|換算する通貨金額。文字列、数値、または値の配列として指定します。例：`100`または`[100, 200, 300]`|
+|`source_currency`|amountの値の通貨を表す3文字の通貨コード。例：`USD`|
+|`converted_currency`|amountの換算先を表す3文字の通貨コード。例：`GBP`|
 
 例：
 

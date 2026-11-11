@@ -18,7 +18,7 @@ New connectors are deactivated by default. For information about activating a co
 </blockquote>
 
 
-To add an EventStream or AudienceStream connector, use the following steps:
+To add an Event Streaming or Customer Data Platform (CDP) connector, use the following steps:
 
 1. Go to **Connect > Connectors > Marketplace**.  
 You can also go to **Connect > Connectors > Overview**, and click **+ New Connector**.  
@@ -85,7 +85,7 @@ New actions are deactivated by default.
 
 
 <blockquote>
-If you use a **Send Visitor Data** action with the **Include Current Visit Data** option selected, the `events` array in the visitor data only includes event attributes that are also defined in AudienceStream (as an attribute or an enrichment). It is a best practice to only select the **Include Current Visit Data** option when the connector needs the visit data. For more information, see the [AudienceStore Data Guide]().
+If you use a **Send Visitor Data** action with the **Include Current Visit Data** option selected, the `events` array in the visitor data only includes event attributes that are also defined in CDP (as an attribute or an enrichment). It is a best practice to only select the **Include Current Visit Data** option when the connector needs the visit data. For more information, see the [AudienceStore Data Guide]().
 </blockquote>
 
 

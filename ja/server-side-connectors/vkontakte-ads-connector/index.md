@@ -5,24 +5,24 @@ url: https://docs.tealium.com/ja/server-side-connectors/vkontakte-ads-connector/
 ---
 ## API情報
 
-このコネクタは、以下のベンダーAPIを使用します：
+このコネクタは、以下のベンダーAPIを使用します。
 
-* API名：VKontakte広告API
+* API名：VKontakte Ads API
 * APIバージョン：v5.199
 * APIエンドポイント：`https://ads.vk.com/api`
-* ドキュメンテーション：[VKontakte広告API](https://ads.vk.com/doc/api/resource/RemarketingUsersLists#POST)
+* ドキュメント：[VKontakte Ads API](https://ads.vk.com/doc/api/resource/RemarketingUsersLists#POST)
 
 ## バッチ制限
   
-このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：
+このコネクタでは、ベンダーへの大量のデータ転送をサポートするために、リクエストをバッチ処理します。詳細については、[バッチアクション](https://docs.tealium.com/batched-actions/)を参照してください。以下のいずれかのしきい値に達するか、プロファイルがパブリッシュされるまで、リクエストはキューに保持されます。
 
 * リクエストの最大数：4,999,990
-* 最古のリクエストからの最大時間：1440分
+* 最も古いリクエストからの最大経過時間：1440分
 * リクエストの最大サイズ：128 MB
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
 | イベントを送信 | ✗ | ✓ |
 | ユーザーをオーディエンスに追加（バッチ） | ✓ | ✗ |
@@ -30,18 +30,20 @@ url: https://docs.tealium.com/ja/server-side-connectors/vkontakte-ads-connector/
 
 ## 構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[コネクタについて](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の構成を行います：
+コネクタを追加した後、以下の構成を行います。
 
 * **クライアントID**  
-あなたのVKontakteアプリケーションID。
+VKontakteアプリケーションID。
 * **クライアントシークレット**  
-あなたのVKontakteアプリケーションの秘密鍵。
+
+コネクタを構成したら、**完了**をクリックします。
+VKontakteアプリケーションのシークレットキー。
 
 ## アクション
 
-以下のセクションでは、各アクションでサポートされているパラメータをリストします。
+以下のセクションでは、各アクションでサポートされているパラメータを示します。
 
 ### イベントを送信
 
@@ -55,9 +57,9 @@ url: https://docs.tealium.com/ja/server-side-connectors/vkontakte-ads-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| ID | (必須) VKontakteピクセルID。 |
+| ID | （必須）VKontakteピクセルID。 |
 | クリックID | クリックID。 |
-| ユーザーID | ユニークなユーザーID。 |
+| ユーザーID | 一意のユーザーID。 |
 
 #### ヘッダー
 
@@ -73,10 +75,10 @@ url: https://docs.tealium.com/ja/server-side-connectors/vkontakte-ads-connector/
 
 | **パラメータ** | **説明** |
 | --- | --- |
-| ユーザーID | オーディエンスに含めるユーザーID。 |
-| オーディエンス | ドロップダウンメニューからユーザーを追加したいオーディエンスを選択します。 |
-| DMP ID | パートナーDMPコード。**オーディエンス**が`dmp_id`に構成されている場合のみ必要で、それ以外の場合は**DMP ID**は無視されます。 |
-| MD5ハッシュ値 | ユーザーID属性をMD5ハッシュ化する場合は選択します。 |
+| ユーザーID | オーディエンスに追加するユーザーID。 |
+| オーディエンス | ユーザーを追加するオーディエンスをドロップダウンメニューから選択します。 |
+| DMP ID | パートナーDMPコード。**オーディエンス**が`dmp_id`に構成されている場合にのみ必須です。それ以外の場合、**DMP ID**は無視されます。 |
+| MD5ハッシュ値 | ユーザーID属性をMD5でハッシュ化する場合に選択します。 |
 
 ### ユーザーをオーディエンスから削除（バッチ）
 
@@ -85,6 +87,6 @@ url: https://docs.tealium.com/ja/server-side-connectors/vkontakte-ads-connector/
 | **パラメータ** | **説明** |
 | --- | --- |
 | ユーザーID | オーディエンスから除外するユーザーID。 |
-| オーディエンス | ドロップダウンメニューからユーザーを削除したいオーディエンスを選択します。 |
-| DMP ID | パートナーDMPコード。**オーディエンス**が`dmp_id`に構成されている場合のみ必要で、それ以外の場合は**DMP ID**は無視されます。 |
-| MD5ハッシュ値 | ユーザーID属性をMD5ハッシュ化する場合は選択します。 |
+| オーディエンス | ユーザーを削除するオーディエンスをドロップダウンメニューから選択します。 |
+| DMP ID | パートナーDMPコード。**オーディエンス**が`dmp_id`に構成されている場合にのみ必須です。それ以外の場合、**DMP ID**は無視されます。 |
+| MD5ハッシュ値 | ユーザーID属性をMD5でハッシュ化する場合に選択します。 |

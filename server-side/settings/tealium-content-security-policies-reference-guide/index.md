@@ -16,7 +16,7 @@ Content-Security-Policy: default-src 'self'; script-src 'self' tealium.com;
 * `default-src` instructs the visitor's browser to only load resources from the same origin as the document unless additional directives set different policies for specific resource types.
 * `script-src` instructs the visitor’s browser to load scripts only from the same origin as the document. It also allows scripts from `tealium.com`.
 
-For each Tealium product or service you use, add its data center domains to your CSP. This ensures that your site visitors can load the necessary scripts. Also, add the domains of any vendors loaded through Tealium iQ Tag Management.
+For each Tealium product or service you use, add its data center domains to your CSP. This ensures that your site visitors can load the necessary scripts. Also, add the domains of any vendors loaded through Tag Management.
 
 
 <blockquote>
@@ -26,9 +26,9 @@ Each list includes all data center domains that may be used in the future.
 
 For more information about CSP, see [MDN: Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
-## Tealium iQ Tag Management
+## Tag Management
 
-Add the following iQ Tag Management data center domains to your CSP:
+Add the following Tag Management data center domains to your CSP:
 
 ```
 tags.tiqcdn.com
@@ -36,9 +36,9 @@ tags.tiqcdn.cn
 tags-eu.tiqcdn.com
 ```
 
-## Tealium Collect Tag, AudienceStream and EventStream
+## Tealium Collect Tag, Customer Data Platform (CDP) and Event Streaming
 
-Add the following Tealium Collect Tag, Tealium AudienceStream and Tealium EventStream data center domains to your CSP:
+Add the following Tealium Collect Tag, Customer Data Platform (CDP), and Event Streaming data center domains to your CSP:
 
 ```
 collect-ap-east-1.tealiumiq.com 

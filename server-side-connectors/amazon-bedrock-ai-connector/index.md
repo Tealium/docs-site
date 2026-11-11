@@ -185,7 +185,7 @@ To enter and attach the policies:
 
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -199,6 +199,7 @@ After adding the connector, configure the following settings:
         * **STS - Assume Role: External ID**: (Optional) A unique identifier used by third parties when assuming roles in their customers' accounts. For more information, see: [AWS: Access to AWS accounts owned by third parties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html).
 * **Region**: (Required) Select a region.
 
+After you configure the connector, click **Done**.
 
 ## Prompt information
 
@@ -421,12 +422,11 @@ export const handler = async (event) => {
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Send Prompt to Bedrock AI Model | ✓ | ✓ |
 | Send Data to Bedrock AI Managed Prompt | ✓ | ✓ |
 | Send Data to Bedrock AI Workflow | ✓ | ✓ |
-
 
 ### Send Prompt to Bedrock AI Model
 

@@ -1,45 +1,45 @@
 ---
-title: Pega Webhook コネクタ構成ガイド
-description: この記事では、Pega API用にカスタムリクエストアクションを送信するための高度なWebhookを構成する方法について説明します。
+title: Pega Webhookコネクタ構成ガイド
+description: この記事では、テンプレート変数を使用してPega APIにカスタムリクエストアクションを送信する、高度なWebhookの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/pega-webhook-connector/
 ---
 ## 前提条件
 
-* [Pega Customer Decision Hub](https://docs.pega.com/pega-customer-decision-hub-implementation-guide/87/pega-customer-decision-hub-implementation-guide)の構成
-* Tealium EventStream API HubまたはTealium AudienceStream CDP
+* [Pega Customer Decision Hub](https://docs.pega.com/pega-customer-decision-hub-implementation-guide/87/pega-customer-decision-hub-implementation-guide)を構成する
+* Event Streaming API HubまたはCustomer Data Platform（CDP）
 
-## 動作原理
+## 仕組み
 
-PegaのアウトゴーイングWebhookは、PegaのCustomer Decision Hub、Next-Best-Actionsデザイナー、およびCustomer Profileデザイナーとの統合を可能にします。TealiumとPegaを一緒に使用することで、セキュリティ規制を遵守し、リアルタイムデータ収集を活用してより迅速に対応し、Next-Bestエクスペリエンスメッセージで個々の顧客を特定してターゲットにすることができます。Pegaとの統合により、TealiumのデータがPegaを通じてニュースレタープロモーションやプロモーションコードの提供など、カスタム顧客インタラクションをトリガーすることができ、カスタマージャーニーをパーソナライズするのに役立ちます。はじめに、Pegaにファーストパーティのパーソナライズデータを送信するHTTPリクエストを送信してください。
+Pegaの送信Webhookを使用すると、PegaのCustomer Decision Hub、Next-Best-Actionsデザイナー、およびCustomer Profileデザイナーと連携できます。TealiumとPegaを併用することで、セキュリティ規制への準拠、リアルタイムデータ収集を活用した迅速な対応、Next-Best-Experienceメッセージによる個々の顧客の識別とターゲティングが可能になります。Pegaと連携すると、Tealiumのデータをトリガーとして、ニュースレターによるプロモーションやPegaを通じたプロモーションコードの提供など、カスタムの顧客インタラクションを実行でき、カスタマージャーニーのパーソナライズに役立ちます。開始するには、HTTPリクエストを送信して、パーソナライズされたファーストパーティデータをPegaに送信します。
 
 ## ベンダー要件
 
 ### リクエストURL
 
-PegaのDesigner Studioを使用して、PegaでカスタムリクエストURLを作成できます。リクエストURLは、Pegaの実装とPegaアカウントのサービスパッケージに基づいています。リクエストURLを作成する際には、特定のパスパラメータを含める必要があります。カスタムURLの変数とパスパラメータを指定するために、RESTサービスを構成するには、Pegaのドキュメントにある[Creating a Service REST rule](https://docs.pega.com/data-management-and-integration/87/creating-service-rest-rule)を参照してください。Service RESTルールを作成した後、[configuring the resources and processing details](https://docs.pega.com/data-management-and-integration/87/defining-resource-and-processing-details-service-rest-rule)でRESTルールの構成を完了してください。
+PegaのDesigner Studioを使用して、カスタムリクエストURLを作成できます。リクエストURLは、使用しているPegaの実装とPegaアカウント内のサービスパッケージに基づきます。リクエストURLを作成する際は、特定のパスパラメータを含める必要があります。カスタムURLの変数とパスパラメータの指定を含むRESTサービスの構成方法については、Pegaドキュメントの[Service RESTルールの作成](https://docs.pega.com/data-management-and-integration/87/creating-service-rest-rule)を参照してください。Service RESTルールを作成したら、そのルールの[リソースと処理の詳細を構成](https://docs.pega.com/data-management-and-integration/87/defining-resource-and-processing-details-service-rest-rule)して、RESTルールの構成を完了します。
 
 
 <blockquote>
-PegaのAPI、APIのベストプラクティス、およびREST統合の作成に関する詳細情報については、Pegaのドキュメントにある[Pega APIs and services](https://docs.pega.com/data-management-and-integration/84/pega-apis-and-services)を参照してください。
+PegaのすべてのAPI、APIのベストプラクティス、およびREST連携の作成方法について詳しくは、Pegaドキュメントの[PegaのAPIとサービス](https://docs.pega.com/data-management-and-integration/84/pega-apis-and-services)を参照してください。
 </blockquote>
 
 
 ### メソッドフィールド
 
-サービスRESTルールで使用できるメソッドについての詳細は、Pegaのドキュメントにある[Service REST methods](https://docs.pega.com/data-management-and-integration/87/service-rest-methods)を参照してください。
+Service RESTルールで使用できるメソッドについて詳しくは、Pegaドキュメントの[Service RESTのメソッド](https://docs.pega.com/data-management-and-integration/87/service-rest-methods)を参照してください。
 
-## Webhook例
+## Webhookの例
 
-リクエスト本体は、カスタマイズ可能な本体テンプレートを持つJSONメッセージです。PegaはネストされたJSONまたはフラットJSONのいずれかを受け入れます。JSONリクエストの構造は、Designer Studioで指定されたPegaの実装とデータポイントに依存します。
+リクエストボディは、カスタマイズ可能なボディテンプレートを持つJSONメッセージです。Pegaは、ネストされたJSONとフラットなJSONのいずれも受け付けます。JSONリクエストの構造は、Pegaの実装とDesigner Studioで指定したデータポイントによって異なります。
 
-Webhookコネクタの構成方法についての詳細は、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。
+Webhookコネクタの構成について詳しくは、[connector-template-variables](https://docs.tealium.com/connector-template-variables/)を参照してください。
 
-この例では、Webhookがユーザーを識別するパラメータを持つ`PageView`リクエストを送信します。
+この例では、Webhookはユーザーを識別するためのパラメータを含む`PageView`リクエストを送信します。
 
 * **メソッド**: `POST`
 * **URL**: `https://<host>:<port>/prweb/PRRestService/<servicepackage>/<serviceclass>/<servicemethod>`
-* **本体コンテンツタイプ**: `application/json`
-* **本体データ**: ``Map `{{data}}` To Body``
+* **ボディのコンテンツタイプ**: `application/json`
+* **ボディデータ**: ``Map `{{data}}` To Body``
 * **テンプレート変数:**
   * `Map "PageView" To Intent`
   * `Map customer_id to ID`

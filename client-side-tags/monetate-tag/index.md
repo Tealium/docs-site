@@ -1,27 +1,27 @@
 ---
 title: Monetate Tag Setup Guide
-description: This article describes how to configure the Monetate tag in your iQ Tag Management (TiQ) account.
+description: This article describes how to configure the Monetate tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/monetate-tag/
 ---
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
-After adding the tag, configure the below settings:
+When adding the tag, configure the following settings:
 
 * **Library loaded on page**: Set to True if you will be loading Monetate on your page instead of through Tealium
 * **Monetate HTTPS URL**: The URL provided to you by Monetate in your tracking code snippet
 * **Use addCartRows on all pages**: Allow the cart data to be sent with all page types automatically
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **All Pages**
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Monetate tag are built into its **Data Mapping** tab. Available categories are:
 

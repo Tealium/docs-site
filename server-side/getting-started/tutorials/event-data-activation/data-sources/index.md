@@ -7,7 +7,7 @@ Data sources are platform-specific and provide the necessary code and instructio
 
 Example types of data sources:
 
-* JavaScript for Web (Tealium iQ Tag Management)
+* JavaScript for Web (Tag Management)
 * iOS (Swift)
 * Android
 * Apple TV

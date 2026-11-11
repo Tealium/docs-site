@@ -28,7 +28,7 @@ Scope refers to how long an attribute persists in real-time. The following table
 
 ### Session length
 
-Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit  length of 24 hours, regardless of event activity.
+Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and end-of-visit processing runs. The next event from the visitor starts a new visit. The maximum visit length is of 24 hours, regardless of event activity.
 
 For more information, see [Server-side session length](https://docs.tealium.com/server-side-session-length/).
 
@@ -88,13 +88,13 @@ You can find the attribute ID next to the attribute name in the attribute list o
 
 ## Size limits
 
-Most attributes for EventStream and AudienceStream have storage capacity limits and specific behaviors for when those limits are exceeded. Note that the entire visitor profile has a limit of 400 KB compressed and encrypted.
+Most attributes for Event Streaming and Customer Data Platform (CDP) have storage capacity limits and specific behaviors for when those limits are exceeded. Note that the entire visitor profile has a limit of 400 KB compressed and encrypted.
 
 ## Event limits
 
-To protect both the Tealium platform and individual customer accounts, AudienceStream has a limit of 10,000 events per visit.
+To protect both the Tealium platform and individual customer accounts, CDP has a limit of 10,000 events per visit.
 
-If a visitor reaches 10,000 events in a single visit, the visitor is permanently banned. When a visitor is banned, the visitor profile is deleted and all future events for the visitor ID, or any IDs that stitch to it, are ignored in both AudienceStream and EventStream. In addition, log messages are written that include the account, profile, visitor ID, and an indication that a ban occurred.
+If a visitor reaches 10,000 events in a single visit, the visitor is permanently banned. When a visitor is banned, the visitor profile is deleted and all future events for the visitor ID, or any IDs that stitch to it, are ignored in both CDP and Event Streaming. In addition, log messages are written that include the account, profile, visitor ID, and an indication that a ban occurred.
 
 The ban is permanent, or until maintenance is performed by the Tealium Operations team to purge the banned visitors collection. If you believe a visitor has been banned incorrectly, or you have a visitor that needs to be removed from the banned list, contact Tealium Support.
 
@@ -131,13 +131,13 @@ If a permanent visitor ban is removed and the visitor again exceeds the 10,000 e
 
 ## Connect client-side and server-side
 
-### Import attributes from iQ Tag Management
+### Import attributes from Tag Management
 
-An imported attribute is a variable that was originally created in the corresponding Tealium iQ profile. Tealium iQ variables are automatically exported to the server-side profile of the same name as event-scoped attributes. These attributes use the **Any** data type. When you modify a variable in Tealium iQ (and publish to **prod**), the changes are instantly applied to the matching attribute in EventStream.
+An imported attribute is a variable that was originally created in the corresponding Tag Management profile. Tag Management variables are automatically exported to the server-side profile of the same name as event-scoped attributes. These attributes use the **Any** data type. When you modify a variable in Tag Management (and publish to **prod**), the changes are instantly applied to the matching attribute in Event Streaming.
 
 
 <blockquote>
-Imported attributes are not editable. You must use Tealium iQ to manage them.
+Imported attributes are not editable. You must use Tag Management to manage them.
 </blockquote>
 
 
@@ -150,11 +150,11 @@ You cannot enrich imported attributes directly. However, you can duplicate the i
 
 #### Troubleshooting
 
-If variables from Tealium iQ do not appear in EventStream, verify that the Tealium iQ variables are in the Tealium iQ profile that corresponds to the server-side profile and that the variables have been saved and published. Make sure you refresh the EventStream page in the browser after publishing variable changes. If you need assistance with making Tealium iQ variables available in server-side, contact Tealium Support.
+If variables from Tag Management do not appear in Event Streaming, verify that the Tag Management variables are in the Tag Management profile that corresponds to the server-side profile and that the variables have been saved and published. Make sure you refresh the Event Streaming page in the browser after publishing variable changes. If you need assistance with making Tag Management variables available in server-side, contact Tealium Support.
 
-### Export attributes to iQ Tag Management
+### Export attributes to Tag Management
 
-To make server-side attributes available as iQ Tag Management variables, use Data Layer Enrichment.
+To make server-side attributes available as Tag Management variables, use Data Layer Enrichment.
 
 For more information, see [about-data-layer-enrichment](https://docs.tealium.com/about-data-layer-enrichment/).
 
@@ -178,7 +178,7 @@ Creating a new rule through the enrichments dialog box automatically applies it 
 
 ## Preloaded attributes
 
-AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes that are preconfigured with statistical information to help you determine useful information about each visitor, visit, or event.
+CDP and Event Streaming contain a set of preloaded event, visit, and visitor attributes that are preconfigured with statistical information to help you determine useful information about each visitor, visit, or event.
 
 ![](https://docs.tealium.com/images/server-side/attributes/preloaded-attribute-filter.png)
 

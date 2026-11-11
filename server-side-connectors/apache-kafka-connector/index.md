@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/apache-kafka-connector/
 ---
 ## Configuration
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see [About Connectors](https://docs.tealium.com/about-connectors/).
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -67,9 +67,11 @@ After adding the connector, configure the following settings:
   * The time, in milliseconds, to wait between retry attempts for the same record.
   * Defaults to `100` milliseconds.
 
+After you configure the connector, click **Done**.
+
 ## Actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | ----------- | :------------: | :---------: |
 | Send Entire Event Data | ✗ | ✓ |
 | Send Entire Visitor Data | ✓ | ✗ |
@@ -78,7 +80,7 @@ After adding the connector, configure the following settings:
 | Send Entire Log Event | ✗ | ✓ |
 | Send Log Event | ✗ | ✓ |
 
-Click **Next** or go to the **Actions** tab to configure connector actions.
+Click **Continue** to configure the connector actions. Enter a name for the action and select the action type from the list.
 
 The following sections describe how to set up parameters and options for each action.
 

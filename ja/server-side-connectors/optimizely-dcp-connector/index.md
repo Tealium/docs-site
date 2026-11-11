@@ -1,44 +1,42 @@
 ---
-title: Optimizely DCP コネクタ設定ガイド
-description: この記事では、Optimizely Dynamic Customer Profilesコネクタの設定方法について説明します。
+title: Optimizely DCP コネクタ構成ガイド
+description: この記事では、Optimizely Dynamic Customer Profiles コネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/optimizely-dcp-connector/
 ---
-## API情報
+## API 情報
 
-このコネクタは以下のベンダーAPIを使用します：
+このコネクタは、次のベンダー API を使用します。
 
-* API名：Optimizely Dynamic Customer Profiles API
-* APIバージョン：v2
-* APIエンドポイント：`https://vis.optimizely.com/api/customer_profile`
-* ドキュメンテーション：[Optimizely Dynamic Customer Profiles API](https://docs.developers.optimizely.com/web-experimentation/docs/dcp#write-customer-profile)
+* API 名: Optimizely Dynamic Customer Profiles API
+* API バージョン: v2
+* API エンドポイント: `https://vis.optimizely.com/api/customer_profile`
+* ドキュメント: [Optimizely Dynamic Customer Profiles API](https://docs.developers.optimizely.com/web-experimentation/docs/dcp#write-customer-profile)
 
 ## アクション
 
-| アクション名 | AudienceStream | EventStream |
+| アクション名 | 訪問プロファイル | イベントデータ |
 | --- | :---: | :---: |
-|顧客プロファイルの更新| ✓| ✓|
+|顧客プロファイルを更新| ✓| ✓|
 
-## 設定の構成
+## 構成の構成
 
-コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、[About Connectors](https://docs.tealium.com/about-connectors/)を参照してください。
+コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
-コネクタを追加した後、以下の設定を構成します：
+コネクタを追加した後、次の構成を構成します。
 
-* **APIキー**：[Optimizely Tokens API](http://app.optimizely.com/tokens)にアクセスしてAPIキーを生成するか、[Optimizely documentation](http://developers.optimizely.com/classic/token)を参照して詳細情報を得てください。
+* **API キー**: API キーを生成するには、[Optimizely Tokens API](http://app.optimizely.com/tokens) にアクセスしてください。詳細については、[Optimizely のドキュメント](http://developers.optimizely.com/classic/token)を参照してください。
 
-## アクション設定 - パラメータとオプション
+## アクション構成 - パラメータとオプション
 
-**次へ**をクリックするか、**アクション**タブに移動します。ここでコネクタアクションを構成します。
+**続行**をクリックして、コネクタのアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。
 
-このセクションでは、各アクションのパラメータとオプションの設定方法について説明します。
-
-### アクション - 顧客プロファイルの更新
+### アクション - 顧客プロファイルを更新
 
 #### パラメータ
 
 |**パラメータ**| **説明**|
 |---| ---|
-| DCPサービスID | DCPサービスIDについての詳細は、[Optimizely: Create Audiences with Dynamic Customer Profiles](https://support.optimizely.com/hc/en-us/articles/4410289305357-Create-audiences-with-Dynamic-Customer-Profiles)を参照してください。 |
-| DCPデータソースID | DCPデータソースIDについての詳細は、[Optimizely: Create Audiences with Dynamic Customer Profiles](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)を参照してください。 |
-| Optimizely顧客ID | Optimizely顧客IDについての詳細は、[Optimizely: Create Audiences with Dynamic Customer Profiles](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)を参照してください。OptimizelyエンドユーザーIDを第一パーティクッキーから使用することを推奨します。 |
-| 顧客プロファイル属性 | 顧客プロファイル属性は、データソース内の顧客プロファイルの一部を説明します。指定された属性値は、以前に指定された既存の値を上書きします。キーが登録された属性名に対応していない場合や、値が属性のデータ型/形式を尊重していない場合、書き込みは失敗します。 |
+| DCP サービス ID | DCP サービス ID の詳細については、[Optimizely：Dynamic Customer Profiles を使用したオーディエンスの作成](https://support.optimizely.com/hc/en-us/articles/4410289305357-Create-audiences-with-Dynamic-Customer-Profiles)を参照してください。 |
+| DCP データソース ID | DCP データソース ID の詳細については、[Optimizely：Dynamic Customer Profiles を使用したオーディエンスの作成](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)を参照してください。 |
+| Optimizely 顧客 ID | Optimizely 顧客 ID の詳細については、[Optimizely：Dynamic Customer Profiles を使用したオーディエンスの作成](https://help.optimizely.com/Target_Your_Visitors/Personalization%3A_Create_Audiences_with_Dynamic_Customer_Profiles)を参照してください。ファーストパーティ Cookie に含まれる Optimizely エンドユーザー ID を使用することをお勧めします。 |
+| 顧客プロファイル属性 | 顧客プロファイル属性は、データソース内における顧客プロファイルの一要素を表します。指定した属性値は、以前に指定された既存の値を上書きします。キーが登録済みの属性名に対応していない場合、または値が属性のデータ型や形式に準拠していない場合、書き込みは失敗します。 |

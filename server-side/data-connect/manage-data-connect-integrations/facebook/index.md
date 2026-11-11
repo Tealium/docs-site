@@ -9,7 +9,7 @@ Send conversion lead ads using the **Send Lead Event** in Data Connect. To set u
 
 ## Requirements
 
-* Tealium EventStream or AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 * Tealium Data Connect
 * Tealium DataAccess (for EventStore or EventDB)
 * Lead ID

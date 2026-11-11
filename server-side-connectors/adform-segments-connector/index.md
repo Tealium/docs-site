@@ -3,8 +3,7 @@ title: Adform Segments Connector Setup Guide
 description: This article describes how to set up the Adform Segments connector.
 url: https://docs.tealium.com/server-side-connectors/adform-segments-connector/
 ---
-
-## API Information
+## API information
 
 This connector uses the following vendor API:
 
@@ -15,7 +14,7 @@ This connector uses the following vendor API:
 
 ## Configuration
 
-Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview](https://docs.tealium.com/about-connectors/) article for general instructions on how to add a connector.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -26,6 +25,8 @@ After adding the connector, configure the following settings:
   * **Advertiser Level**: uses the Adform Audience Manager with an Adform Advertiser ID.
 * **Adform Partner ID**: (Required for Partner Level) Enter your Adform Partner ID.
 * **Adform Advertiser ID**: (Required for Advertiser Level) Select your Adform Advertiser ID from the list or enter it manually. The list shows only active advertisers.
+
+After you configure the connector, click **Done**.
 
 ## Manage audience segments
 
@@ -81,7 +82,7 @@ To create an advertiser-level audience for Audience Manager global accounts, cli
 
 ## Actions
 
-| Action Name | AudienceStream | EventStream | Authentication Type |
+| Action name | Visitor profile | Event data | Authentication Type |
 | --- | :---: | :---: | --- |
 |Add User to Audience Segment| ✓| ✓| Partner Level |
 |Remove User from Audience Segment| ✓| ✓| Partner Level |

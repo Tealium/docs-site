@@ -21,4 +21,4 @@ If EventStore is disabled for a profile, EventStore is disabled for all event fe
 </blockquote>
 
 
-After enabling an event feed, go to **Store > EventStore** to view and download JSON files. Each JSON file contains a list of events from EventStream. You can also use third-party tools to view the files. For more information, see [View files]().
+After enabling an event feed, go to **Store > EventStore** to view and download JSON files. Each JSON file contains a list of events from Event Streaming. You can also use third-party tools to view the files. For more information, see [View files]().

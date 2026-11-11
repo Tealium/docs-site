@@ -5,7 +5,7 @@ url: https://docs.tealium.com/client-side-tags/cj-universal-tag/
 ---
 The CJ Universal Tag provides complete tracking protection and maintains program integrity across browsers with tracking restrictions, including Chrome, Safari, and Firefox. This next-generation tag helps you succeed in the CJ network by enabling advanced tracking features, such as Vertical Attributes for Situational Commissioning and transaction-level insights. The Universal Tag also serves as the foundation for future enhancements, including Affiliate Incrementality and Cross-Channel Customer Journey reporting.
 
-## Tag Tips
+## Tag tips
 
 * Conversion Tag is present when Order ID is set.
 * CJ's Client Integration Team recommends this tag not be bundled.
@@ -20,9 +20,9 @@ The CJ Universal Tag provides complete tracking protection and maintains program
     * List of Discounts (`_cpdisc`)
 * Use mappings to override or dynamically set the tag configurations.
 
-## Tag Configuration
+## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -38,13 +38,13 @@ Static value provided by CJ’s Client Integration team.
 * **Enable Page Visits**:  
 Enables the CJ page visit tag on all pages except the conversion page. 
 
-## Load Rules
+## Load rules
 
 Load the tag on all pages or set conditions for when your tag will load. For more information, see [About load rules](https://docs.tealium.com/about-load-rules/).
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 

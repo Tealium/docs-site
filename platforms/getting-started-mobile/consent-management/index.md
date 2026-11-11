@@ -30,7 +30,7 @@ Tag Management supports the California Consumer Privacy Act (CCPA) policy.
 | :-- | :-- |
 | **Not Set** (default)| Tracking calls are sent.<br>The [`do_not_sell`](#data-layer) flag is set to `false`.<br>Tags are unaffected. |
 | **Consent** | Tracking calls are sent.<br>The [`do_not_sell`](#data-layer) flag set to `false`.<br>Tags are  unaffected. |
-| **Declined**  | Tracking calls are sent.<br>The [`do_not_sell`](#data-layer) flag is set to `true`.<br>Tags configured in the "Affected Tags" section of the [CCPA consent manager](https://docs.tealium.com/iq-tag-management/consent-management/privacy-banner-and-popup/manage/) are not triggered. |
+| **Declined**  | Tracking calls are sent.<br>The [`do_not_sell`](#data-layer) flag is set to `true`.<br>Tags configured in the "Affected Tags" section of the [CCPA consent manager](https://docs.tealium.com/consent/client-side/consent-management/privacy-banner-and-popup/manage/) are not triggered. |
 
 ## Available Actions
 

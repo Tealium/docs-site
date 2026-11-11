@@ -15,7 +15,7 @@ The Authenticom integration with Tealium Data Connect lets you import the follow
 
 ## Requirements
 
-* Tealium EventStream or AudienceStream 
+* Event Streaming or Customer Data Platform (CDP) 
 * Tealium Data Connect 
 * Tealium DataAccess (for EventStore or EventDB)
 * Authenticom API access

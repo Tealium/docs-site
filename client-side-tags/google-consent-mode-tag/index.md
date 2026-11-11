@@ -1,6 +1,6 @@
 ---
 title: Google Consent Mode Tag Setup Guide
-description: Learn how to set up the Google consent mode tag in your Tealium iQ Tag Management account.
+description: Learn how to set up the Google consent mode tag in your Tag Management account.
 url: https://docs.tealium.com/client-side-tags/google-consent-mode-tag/
 ---
 Google consent mode communicates user consent status to Google tags, enabling them to adjust their data collection and measurement behavior according to the specified consent preferences.
@@ -23,7 +23,7 @@ For more information, see [Google Analytics Help: Consent mode pings](https://su
 
 This approach aims to collect maximum data for analytics and ad conversions, using personally identifiable information (PII) selectively when consented.
 
-## Tips
+## Tag tips
 
 This section provides general information regarding tag configuration and mapping options. For details on how to integrate Google consent mode with Tealium consent register (a feature of client-side [consent integrations](https://docs.tealium.com/about-consent-integrations/) and [consent manager](https://docs.tealium.com/about-consent-management/)), refer to [Tealium consent register](https://docs.tealium.com/consent-register/). This is the recommended implementation approach.
 
@@ -38,7 +38,7 @@ To allow the Google Consent Mode tag to dynamically adapt to user consent status
 
 ## Tag configuration
 
-Go to the tag marketplace to add a new tag. For more information about how to add a tag, see [Manage tags](https://docs.tealium.com/manage-tags/).
+Go to the tag marketplace to add a new tag. For more information, see [About tags](https://docs.tealium.com/about-tags/).
 
 When adding the tag, configure the following settings:
 
@@ -59,7 +59,7 @@ Load the tag on all pages or set conditions for when your tag will load. For mor
 
 ## Data mappings
 
-Mapping is the process of sending data from a [data layer variable](https://docs.tealium.com/data-layer-variables/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [data mappings](https://docs.tealium.com/iq-tag-management/data-mappings/manage/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The available categories are:
 
@@ -79,7 +79,7 @@ The available categories are:
 
 ### Events
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Description |
 |:---------|:------------|
@@ -87,7 +87,7 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-ta
 
 ### Event-specific Parameters
 
-To map events, refer to [Create an Event Mapping](https://docs.tealium.com/iq-tag-management/data-mappings/manage/#add-an-event-mapping)
+To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
 | Variable | Type | Description |
 |:---------|:------------|:------------|

@@ -14,7 +14,7 @@ A Google Ads conversion occurs when a user performs a specified action after cli
 
 ## Connector actions
 
-| Action Name | AudienceStream | EventStream |
+| Action name | Visitor profile | Event data |
 | --- | :---: | :---: |
 | Upload Call Conversion - Legacy | ✓ | ✓ |
 | Upload Click Conversion - Legacy | ✓ | ✓ |
@@ -46,17 +46,17 @@ Actions are delayed for 30 minutes to accommodate uploading offline conversions,
 
 
 <blockquote>
-Actions are not delayed when using [trace](https://docs.tealium.com/manage-traces/) in EventStream or AudienceStream.
+Actions are not delayed when using [trace](https://docs.tealium.com/manage-traces/) in Event Streaming or Customer Data Platform (CDP).
 </blockquote>
 
 
 ### Consent
 
-The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant EventStream attribute to `Ad User Data Consent` and/or `Ad Personalization Consent` with a value of `DENIED`.
+The connector sends the value of `GRANTED` for `adUserData` and `adPersonalization` consent by default. To override the default, map a relevant Event Streaming attribute to `Ad User Data Consent` and/or `Ad Personalization Consent` with a value of `DENIED`.
 
 ## Configure settings
 
-Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the [About Connectors](https://docs.tealium.com/about-connectors/) article.
+Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
 
@@ -94,7 +94,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 | Custom Variables | The custom variables associated with this conversion. For more information, see [Google: Custom Variable](https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable). |
 |Ad User Data Consent | Consent for ad user data. The default value is `GRANTED`. Valid values are `GRANTED` and `DENIED`. |
 
@@ -137,7 +137,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. You can use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. You can use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 | Custom Variables | The custom variables associated with this conversion. For more information, see [Google: Custom Variable](https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable). |
 |Ad User Data Consent | Consent for ad user data. The default value is `GRANTED`. Valid values are `GRANTED` and `DENIED`. |
 
@@ -159,7 +159,7 @@ The following section describes how to set up parameters and options for each ac
 
 |**Parameter**| **Description**|
 |---| ---|
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 | Customer ID Override | (Optional) Provide a customer ID to override the **Customer ID** in the connector configuration. If you use this option, you must also use the Conversion Action Override. |
 | Manager Customer ID Override | (Optional) Provide a Manager Customer ID if you are using the Customer ID Override and accessing a client customer. |
 
@@ -174,7 +174,7 @@ The following section describes how to set up parameters and options for each ac
 |Order ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
 |Google Click ID|  Either **Order ID** or **Google Click ID** with **Conversion Date Time** must be provided. If the conversion was reported with an order ID specified, that order ID must be used. |
 |Conversion Date Time| This parameter must be in the format **yyyy-mm-dd hh:mm:ss+&#124;-hh:mm**. Date attributes will be converted to the format Google expects. |
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. You can use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. You can use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 | Customer ID Override | (Optional) Provide a customer ID to override the **Customer ID** in the connector configuration. If you use this option, you must also use the Conversion Action Override. |
 | Manager Customer ID Override | (Optional) If you are using the Customer ID Override and accessing a client customer, provide a Manager Customer ID. |
 
@@ -201,7 +201,7 @@ The following section describes how to set up parameters and options for each ac
 |**Parameter**| **Description**|
 |---| ---|
 | Custom Variables | The custom variables associated with this conversion. For more information, see [Google: Custom Variable](https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable). |
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 |Ad User Data Consent | Consent for ad user data. The default value is `GRANTED`. Valid values are `GRANTED` and `DENIED`. |
 |Customer ID Override | (Required) Select the customer account ID. Available options reflect accessible customer accounts for authenticated user. |
 | Manager Customer ID Override | (Optional) If you are using the Customer ID Override and accessing a client customer, provide a Manager Customer ID. |
@@ -229,7 +229,6 @@ The following section describes how to set up parameters and options for each ac
 | gbraid | (Required) Click identifier for clicks associated with app conversions and originating from iOS devices, starting with iOS14. Value can be the Google Click ID, `gbraid`, or `wbraid`.  |
 | wbraid |  (Required) Click identifier for clicks associated with web conversions and originating from iOS devices, starting with iOS14. Value can be the Google Click ID, `gbraid`, or `wbraid`.  |
 
-
 #### Cart Data parameters
 
 |**Parameter**| **Description**|
@@ -248,6 +247,6 @@ The following section describes how to set up parameters and options for each ac
 |---| ---|
 | Custom Variables | The custom variables associated with this conversion. For more information, see [Google: Custom Variable](https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable). |
 |Ad User Data Consent | Consent for ad user data. The default value is `GRANTED`. Valid values are `GRANTED` and `DENIED`. |
-| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use EventStream variables to populate the **Conversion Action ID** parameter. |
+| Conversion Action Override | Provide a conversion action ID to override the **Conversion Action** parameter. This field lets you use Event Streaming variables to populate the **Conversion Action ID** parameter. |
 |Customer ID Override | (Required) Select the customer account ID. Available options reflect accessible customer accounts for authenticated user. |
 | Manager Customer ID Override | (Optional) If you are using the Customer ID Override and accessing a client customer, provide a Manager Customer ID. |

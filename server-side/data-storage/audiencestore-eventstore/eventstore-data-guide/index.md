@@ -80,8 +80,8 @@ Ignore legacy values prefixed by `_t` in your data log files.
 
 | Variable | Description |
 |---| ---|
-|`ut.account`| Tealium iQ account.|
-|`ut.profile`| Tealium iQ profile.|
+|`ut.account`| Tag Management account.|
+|`ut.profile`| Tag Management profile.|
 |`ut.env`| The publish environment associated with the `utag.js` file.|
 
 ### Tealium built-in variables
@@ -110,7 +110,7 @@ A full list of Tealium built-in variables is provided in the [Built-In Data Laye
 |`_dc_group`|  A random number to use with the **Sample Size** setting in the Tealium Collect tag to determine which events are sampled. |
 |`_dc_visit`|  The number of sessions for which the Collect tag has fired. Starts at `1` for the first visit. |
 |`_dc_event`|  The number of events for which the Collect tag has fired. Starts at `1` for the first page view of a visit. |
-|`_dc_region`|  The AudienceStream region where the visit session is stored, collected from the HTTP response header. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/). |
+|`_dc_region`|  The Customer Data Platform (CDP) region where the visit session is stored, collected from the HTTP response header. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/). |
 
 ### Additional variables
 
@@ -201,7 +201,7 @@ For detailed information about individual utag versions, see the [utag.js Releas
     "js_page.is_mobile": "false",
     "js_page.is_tablet": "false",
     "device_type": "desktop",
-    "udo_page_name": "AudienceStream | Real-time Data Action Engine | Tealium",
+    "udo_page_name": "CDP | Real-time Data Action Engine | Tealium",
     "udo_site_name": "Tealium",
     "udo_site_description": "Tag Management and Audience Segmentation",
     "udo_page_type": "page",

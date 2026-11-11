@@ -14,7 +14,7 @@ url: https://docs.tealium.com/ja/consent/client-side/consent-management/explicit
 
 明示的同意プロンプトの例：
 
-![](https://docs.tealium.com/images/iq-tag-management/example-consent-prompt.png)
+![](https://docs.tealium.com/images/tag-management/example-consent-prompt.png)
 
 iQタグ管理の明示的同意プロンプトマネージャーは、既存のインストールを使用してウェブサイトに同意プロンプトを作成および展開するのを簡単にします。この機能は、[同意構成ダイアログ]()と共に使用することで、顧客がどのように追跡されるかについてより詳細な制御を提供できます。
 
@@ -26,7 +26,7 @@ iQタグ管理の明示的同意プロンプトマネージャーは、既存の
 
 
 <blockquote>
-同意プロンプトは、[JavaScriptヘルパー関数を使用して](https://docs.tealium.com/ja/iq-tag-management/consent-management/explicit-consent-prompt/manage/#javascript-helper-functions)プログラム的に表示することができます。
+同意プロンプトは、[JavaScriptヘルパー関数を使用して](https://docs.tealium.com/ja/consent/client-side/consent-management/explicit-consent-prompt/manage/#javascript-helper-functions)プログラム的に表示することができます。
 </blockquote>
 
 

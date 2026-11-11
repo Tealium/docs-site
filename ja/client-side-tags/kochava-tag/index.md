@@ -1,28 +1,28 @@
 ---
 title: Kochavaタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでKochavaタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでKochavaタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/kochava-tag/
 ---
-Kochavaは、人物ベースのマーケターがユーザーのアイデンティティを確立および豊かにし、オーディエンスをセグメント化してアクティブ化し、すべての接続されたデバイスでキャンペーンを測定および最適化することを可能にします。
+Kochavaを使用すると、ピープルベースのマーケティング担当者は、ユーザーIDの確立と拡充、オーディエンスのセグメント化とアクティベーション、および接続されているすべてのデバイスを横断したキャンペーンの測定と最適化を行うことができます。
 
-## タグのヒント
+## タグに関するヒント
 
-* マッピングを使用して：
-  * 標準の構成値を上書きし、カスタムパラメータを構成します。
-  * 標準およびカスタムイベントをトリガーします。
+* マッピングを使用して、以下を行います。
+  * 標準の構成値を上書きし、カスタムパラメータを構成する。
+  * 標準イベントとカスタムイベントをトリガーする。
 
-* Autopage — `true`に構成すると、ページの読み込みごとに自動的にページイベントが送信されます。`false`に構成すると、ページ関数への手動呼び出し時にのみページ読み込みが送信されます。
-* Cache — `true`に構成すると、ブラウザがSDKコードをキャッシュすることを許可します。`false`に構成すると、ページの読み込みごとにSDKコードがロードされるように強制します。
-* Verbose — `true`に構成すると、コンソールに詳細なログが出力されます。`false`に構成すると、すべてのログが抑制されます。
-* Cookie Collection — `true`に構成すると、サブドメイン間でデバイスを追跡するためにウェブサイトにCookieを設置します。`false`に構成すると、Cookieを設置せず、追跡にはローカル保存のみを依存します。
+* Autopage — ページが読み込まれるたびにページイベントを自動送信するには、`true`に構成します。page関数を手動で呼び出した場合にのみページ読み込みを送信するには、`false`に構成します。
+* Cache — ブラウザによるSDKコードのキャッシュを許可するには、`true`に構成します。ページが読み込まれるたびにSDKコードを強制的に読み込むには、`false`に構成します。
+* Verbose — コンソールへの詳細ログ出力を有効にするには、`true`に構成します。すべてのログ出力を抑制するには、`false`に構成します。
+* Cookie Collection — サブドメインをまたいでデバイスを追跡するために、WebサイトにCookieを保存するには、`true`に構成します。Cookieを保存せず、ローカル保存のみを使用して追跡するには、`false`に構成します。
 
 ## タグの構成
 
-まず、タグマーケットプレイスにアクセスしてKochavaタグを追加します（[タグの追加方法についてはこちら](https://docs.tealium.com/manage-tags/)を参照）。
+新しいタグを追加するには、タグマーケットプレイスに移動します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加した後、以下の構成を構成します：
+タグを追加する際に、以下の構成を構成します。
 
-* **KochavaアプリGUID**
+* **Kochava App GUID**
 * **Autopage**
 * **Cache**
 * **Verbose**
@@ -30,28 +30,28 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 
 ## データマッピング
 
-マッピングは、[データレイヤー変数](https://docs.tealium.com/data-layer-variables/)からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは以下のとおりです。
 
 ### 構成パラメータ
 
-|変数| 説明|
-|---| ---|
+|変数|説明|
+|---|---|
 |アプリID| (`app_guid`)|
-|アプリ追跡透明性有効 (`app_tracking_transparency_enabled`)| [`true`/`false`]|
-|アイデンティティリンクID| (`identity_link_ids`)|
+|アプリトラッキングの透明性が有効 (`app_tracking_transparency_enabled`)| [`true`/`false`]|
+|IDリンクID| (`identity_link_ids`)|
 |ログレベル| (`log_level`)|
 
 ### イベント
 
-|変数| 説明|
-|---| ---|
-|広告クリック| `adclick`|
-|広告表示| `adview`|
+|変数|説明|
+|---|---|
+|広告のクリック| `adclick`|
+|広告の表示| `adview`|
 |カートに追加| `addtocart`|
 |ウィッシュリストに追加| `addtowishlist`|
-|成果| `achievement`|
+|実績| `achievement`|
 |チェックアウト開始| `checkoutstart`|
 |チュートリアル完了| `tutorialcomplete`|
 |レベル完了| `levelcomplete`|
@@ -62,8 +62,8 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 |トライアル開始| `starttrial`|
 |購読| `subscribe`|
 |表示| `view`|
-|QSS. (品質ストリーミングセッション&gt;5分)| `qss`|
-|初ビデオ視聴| `first_video_view`|
+|QSS（高品質ストリーミングセッション &gt; 5分）| `qss`|
+|初回動画視聴| `first_video_view`|
 |友人と共有| `share_with_friend`|
 |認証成功| `authentication_success`|
 |後で見る| `watch_later`|
@@ -71,8 +71,8 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 
 ### すべてのパラメータ
 
-|変数| 説明|
-|---| ---|
+|変数|説明|
+|---|---|
 |アクション| (`action`)|
 |バックグラウンド| (`background`)|
 |ゲストとしてチェックアウト| (`checkout_as_guest`)|
@@ -85,33 +85,33 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 |目的地| (`destination`)|
 |期間| (`duration`)|
 |終了日| (`end_date`)|
-|アイテム追加元| (`item_added_from`)|
+|アイテムの追加元| (`item_added_from`)|
 |レベル| (`level`)|
 |広告キャンペーンID| (`ad_campaign_id`)|
 |広告キャンペーン名| (`ad_campaign_name`)|
 |広告グループID| (`ad_group_id`)|
 |広告グループ名| (`ad_group_name`)|
-|広告仲介名| (`ad_mediation_name`)|
+|広告メディエーション名| (`ad_mediation_name`)|
 |広告ネットワーク名| (`ad_network_name`)|
-|配置| (`placement`)|
+|プレースメント| (`placement`)|
 |広告サイズ| (`ad_size`)|
 |広告タイプ| (`ad_type`)|
 |最大評価値| (`max_rating_value`)|
 |名前| (`name`)|
 |注文ID| (`order_id`)|
-|起源| (`origin`)|
+|発生元| (`origin`)|
 |価格| (`price`)|
 |数量| (`quantity`)|
 |評価値| (`rating_value`)|
-|領収書ID| (`receipt_id`)|
-|紹介元| (`referral_from`)|
+|レシートID| (`receipt_id`)|
+|参照元| (`referral_from`)|
 |登録方法| (`registration_method`)|
 |結果| (`results`)|
 |スコア| (`score`)|
-|検索語| (`search_term`)|
-|空間X| (`spatial_x`)|
-|空間Y| (`spatial_y`)|
-|空間Z| (`spatial_z`)|
+|検索語句| (`search_term`)|
+|空間座標X| (`spatial_x`)|
+|空間座標Y| (`spatial_y`)|
+|空間座標Z| (`spatial_z`)|
 |開始日| (`start_date`)|
 |成功| (`success`)|
 |ユーザーID| (`user_id`)|
@@ -121,13 +121,13 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 
 ### イベントパラメータ
 
-|変数| 説明|
-|---| ---|
-|広告クリック| `adclick`|
-|広告表示| `adview`|
+|変数|説明|
+|---|---|
+|広告のクリック| `adclick`|
+|広告の表示| `adview`|
 |カートに追加| `addtocart`|
 |ウィッシュリストに追加| `addtowishlist`|
-|成果| `achievement`|
+|実績| `achievement`|
 |チェックアウト開始| `checkoutstart`|
 |チュートリアル完了| `tutorialcomplete`|
 |レベル完了| `levelcomplete`|
@@ -138,8 +138,8 @@ Kochavaは、人物ベースのマーケターがユーザーのアイデンテ�
 |トライアル開始| `starttrial`|
 |購読| `subscribe`|
 |表示| `view`|
-|QSS. (品質ストリーミングセッション&gt;5分)| `qss`|
-|初ビデオ視聴| `first_video_view`|
+|QSS（高品質ストリーミングセッション &gt; 5分）| `qss`|
+|初回動画視聴| `first_video_view`|
 |友人と共有| `share_with_friend`|
 |認証成功| `authentication_success`|
 |後で見る| `watch_later`|

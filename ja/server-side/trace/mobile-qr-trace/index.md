@@ -1,75 +1,75 @@
 ---
-title: Tealium Tools モバイルQRトレース
-description: モバイルトレースツールは、TealiumモバイルSDKからのイベントを迅速に表示できるQRコードを提供することで、トレース機能をエンリッチメントします。
+title: Tealium Tools モバイル QR トレース
+description: モバイルトレースツールは、デバイスでスキャンできる QR コードを提供することでトレース機能をエンリッチメントし、Tealium Mobile SDK から送信されるイベントをすばやく確認できるようにします。
 url: https://docs.tealium.com/ja/server-side/trace/mobile-qr-trace/
----## 動作原理
+---## 仕組み
 
-ツールで**トレース開始**をクリックすると、Customer Data Hubセッションごとに1回、新しいトレースを開始するたびにメインブラウザウィンドウに自動的にQRコードが挿入されます。
+ツールで **Start Trace** をクリックすると、Customer Data Hub のセッションごとに一度、以降新しいトレースを開始するたびに、メインブラウザーウィンドウへ QR コードが自動的に挿入されます。
 
-QRコードは各プラットフォーム（[Android](https://docs.tealium.com/platforms/android-kotlin/)または[iOS](https://docs.tealium.com/platforms/ios-swift/)）ごとに生成されます。適切なQRコードを適切なモバイルデバイスのカメラでスキャンした後、QRコードのリンクをクリックしてアプリを起動し、トレースパラメータをTealium SDKに渡します。Tealium SDKはトレースID（その他のパラメータと共に）を受け取り、現在のセッションのデータレイヤーにトレースIDを挿入します。
+QR コードは、各プラットフォーム（[Android](https://docs.tealium.com/platforms/android-kotlin/) または [iOS](https://docs.tealium.com/platforms/ios-swift/)）用に生成されます。対応するモバイルデバイスのカメラで適切な QR コードをスキャンした後、QR コードから取得したリンクをクリックすると、アプリが起動し、トレースパラメータが Tealium SDK に渡されます。Tealium SDK はトレース ID をほかのパラメータとともに受信し、現在のセッションのデータレイヤーに挿入します。
 
-その後のすべてのイベントは、セッションを終了するかトレースを離れるまでトレースセッションに記録されます。
+それ以降のすべてのイベントは、セッションを終了するかトレースから離脱するまで、トレースセッションに記録されます。
 
-次の図は、その動作を示しています: ![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.23.40-pm.png)
+次の図は、その仕組みを示しています。![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.23.40-pm.png)
 
 ## インストール
 
-このツールを使用するには、まずTealium Tools拡張機能を使用してChromeブラウザに追加する必要があります。この拡張機能をインストールするには、[Tealium Toolsブラウザ拡張機能](https://docs.tealium.com/tealium-tools-browser-extension/)を参照してください。
+このツールを使用するには、まず Tealium Tools 拡張機能を使用して Chrome ブラウザーに追加する必要があります。この拡張機能のインストールについては、[Tealium Tools ブラウザー拡張機能](https://docs.tealium.com/tealium-tools-browser-extension/)を参照してください。
 
-**URLを追加**テキストフィールドに次のURLを貼り付けます: `https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json`
+**Add by URL** テキストフィールドに、次の URL を貼り付けます：`https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json`
 
-インストールが完了したら、Tealium Tools拡張機能からモバイルトレースツールアイコンを起動します。
+インストールが完了したら、Tealium Tools 拡張機能から Mobile Trace Tool アイコンを起動します。
 
-## URLスキーム
+## URL スキーム
 
-モバイルトレースツールを使用するには、AndroidおよびiOSアプリが処理するURLを特定し、URLスキームを構成する必要があります。
+Mobile Trace Tool を使用するには、Android および iOS アプリが処理する URL を確認し、URL スキームを構成します。
 
-QRコードトレース機能は、URLからアプリを起動し、特定のクエリパラメータをリッスンします。URLから直接アプリを起動するには、アプリが特定のドメインを処理するように登録されている必要があります。
+QR コードトレース機能は URL からアプリを起動し、特定のクエリパラメータを待ち受けます。URL からアプリを直接起動するには、特定のドメインを処理するようにアプリが登録されている必要があります。
 
-通常、ほとんどのアプリはすでに特定のURLを処理しています。たとえば、ウェブサイトのドメインが `https://mycompany.com` の場合、アプリはこのドメインのハンドラとして自身を登録し、ユーザーのデバイスにアプリがインストールされている場合、ユーザーはブラウザ内ではなくアプリでリンクを起動するように促されます。
+通常、ほとんどのアプリはすでに特定の URL を処理するように構成されています。たとえば、Web サイトのドメインが `https://mycompany.com` の場合、アプリはこのドメインのハンドラーとして自身を登録します。ユーザーのデバイスにアプリがインストールされている場合、ブラウザー内ではなくアプリでリンクを開くよう促すメッセージがユーザーに表示されます。
 
 
 <blockquote>
-一部のアプリは `http` や `https` の代わりにカスタムURLスキームを登録します。たとえば `mycompanyapp://` などです。これらもモバイルトレースツールで機能します。
+一部のアプリは、`http` や `https` の代わりに、`mycompanyapp://` などのカスタム URL スキームを登録しています。これらも Mobile Trace Tool で使用できます。
 </blockquote>
 
 
-アプリを起動するURLスキームを確立したら、それらをモバイルトレースツールの入力フィールドに入力します。必要に応じてAndroidとiOSで異なるスキームをサポートすることができますが、一般的には両プラットフォームで同じです。
+アプリを起動する URL スキームを確認したら、Mobile Trace Tool の入力フィールドに入力します。このツールでは、必要に応じて Android と iOS に異なるスキームを指定できますが、通常は両方のプラットフォームで同じスキームを使用します。
 
 ![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.41.58-pm.png)
 
-各URLスキームの横にある**保存**をクリックして、構成をブラウザのlocalStorageに保存します。URLスキームを必要に応じて編集するには、青い鉛筆アイコンをクリックします。
+各 URL スキームの横にある **Save** をクリックすると、構成がブラウザーの localStorage に保存されます。必要に応じて URL スキームを編集するには、青い鉛筆アイコンをクリックします。
 
 ## トレース
 
-以下は、モバイルトレースツールを使用してトレースを開始および離脱する方法について説明します。
+以下では、Mobile Trace Tool を使用してトレースを開始および離脱する方法について説明します。
 
-### トレース開始
+### トレースの開始
 
-トレースを開始する前に、サーバーサイドのCustomer Data Hubにいることを確認します。モバイルトレースツールで**トレース開始**をクリックすると、新しいトレースが開始され、トレースウィンドウにモバイルトレースQRコードが追加されます。
+トレースを開始する前に、サーバーサイドの Customer Data Hub を表示していることを確認します。Mobile Trace Tool で **Start Trace** をクリックすると、新しいトレースが開始され、Mobile Trace の QR コードがトレースウィンドウに追加されます。
 
 ![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.46.20-pm.png)
 
-Tealium Tools UIから一度トレースを開始した後は、Tealium Tools UIを閉じて、セッションの残りの間は使用する必要はありません。
+Tealium Tools UI から一度トレースを開始した後は、Tealium Tools UI を閉じることができます。そのセッションの残りの期間では、Tealium Tools UI を使用する必要はありません。
 
-その後のトレースはCustomer Data Hubから直接開始され、新しいトレースが開始されるたびにQRコードが自動的に更新されます。デバイスのカメラでQRコードをスキャンし、リンクをクリックしてアプリを起動し、自動的にトレースを開始します。トレースに参加した後にアプリが生成するTealiumイベントは、トレースセッションに記録されます。
+以降のトレースは Customer Data Hub から直接開始でき、新しいトレースを開始するたびに QR コードが自動的に更新されます。デバイスのカメラで QR コードをスキャンし、リンクをクリックしてアプリを起動すると、トレースが自動的に開始されます。トレースに参加した後にアプリによって生成された Tealium イベントは、すべてトレースセッションに記録されます。
 
 ![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.48.06-pm.png)
 
-### トレース離脱
+### トレースからの離脱
 
-トレースセッションを終了せずに離脱する場合、別のデバイスから同じトレースに再参加することができ、そのトレースセッションの履歴を失うことはありません。
+トレースセッションを終了せずに離脱した場合、そのトレースセッションの履歴を失うことなく、別のデバイスから同じトレースに再参加できます。
 
-トレースを離脱するには：
+トレースから離脱するには、次の手順を実行します。
 
-1. トレースUIで**トレース離脱**チェックボックスを選択します
-1. デバイスのカメラで再度QRコードをスキャンします
-1. デバイスがトレースセッションに参加しないようにリンクをクリックします
+1. トレース UI で **Leave Trace** チェックボックスを選択します
+1. デバイスのカメラでもう一度 QR コードをスキャンします
+1. リンクをクリックして、そのデバイスをトレースセッションから離脱させます
 
-### 訪問終了（AudienceStream）
+### 訪問の終了（Customer Data Platform（CDP））
 
-Tealium AudienceStreamで「訪問終了」アクションをテストするには、訪問のセッションを即座に終了するシグナルが必要です。そうでなければ、通常セッションが期限切れになるのを待つ必要があります。
+Customer Data Platform（CDP）で「End of Visit」アクションをテストするには、訪問のセッションを直ちに終了させるシグナルが必要です。それ以外の場合は、セッションが通常どおり期限切れになるまで待つ必要があります。
 
-モバイルトレースツールでは、**訪問セッション終了**チェックボックスを選択することで、SDKが`kill_visitor_session`イベントを送信するようにQRコードにパラメータを追加し、セッションを即座に終了します。
+Mobile Trace Tool でセッションを直ちに終了するには、**Kill Visitor Session** チェックボックスを選択します。これにより、SDK が `kill_visitor_session` イベントを送信するためのパラメータが QR コードに追加されます。
 
 ![](https://docs.tealium.com/images/server-side/screen-shot-2020-09-11-at-3.50.27-pm.png)

@@ -69,7 +69,7 @@ The following example shows the results when `utag.gdpr.getCategories()` returns
 
 Returns an `Object` with the category name and description in the active language. The language of the category is the language returned by the `getLanguage()` function.
 
-For more information on categories, see [Manage consent preferences](https://docs.tealium.com/iq-tag-management/consent-management/consent-preferences-dialog/manage#categories).
+For more information on categories, see [Manage consent preferences](https://docs.tealium.com/tag-management/consent-management/consent-preferences-dialog/manage#categories).
 
 ```js
 utag.gdpr.getCategoryLanguage(category)

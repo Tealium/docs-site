@@ -1,52 +1,52 @@
 ---
 title: Criteo Cookie Matching Serviceタグ構成ガイド
-description: この記事では、Tealium iQタグ管理アカウントでCriteo Cookie Matching Serviceタグを構成する方法について説明します。
+description: この記事では、タグ管理アカウントでCriteo Cookie Matching Serviceタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/criteo-cookie-matching-service-tag/
 ---
 
 <blockquote>
-このタグを `utag` バージョン4.50以降で使用する場合、`utag.js` の [`always_set_v_id` 構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を `true`に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)と[utag 4.50+へのアップグレード時のtealium_visitor_idの考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
+このタグを`utag`バージョン4.50以降で使用する場合は、`utag.js`の[`always_set_v_id`構成](https://docs.tealium.com/platforms/javascript/settings/#always_set_v_id)を`true`に構成する必要があります。この構成により、Cookieの同期に必要な訪問IDが使用可能になります。詳細については、[utag 4.50リリースノート](https://docs.tealium.com/platforms/javascript/version-4-50/#updating-to-version-450-or-later)および[utag 4.50以降へのアップグレード時のtealium_visitor_idに関する考慮事項](https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-)を参照してください。
 </blockquote>
 
 
-Criteo Cookie Matching Serviceは、Tealiumの訪問を識別するクッキーと、Criteoのユーザーを識別するクッキーを関連付けることを可能にします。
+Criteo Cookie Matching Serviceを使用すると、購入者はTealium訪問を識別するCookieと、Criteoでユーザーを識別するCookieを関連付けることができます。
 
-## タグのヒント
+## タグに関するヒント
 
-* 空白の場合、Tealiumアカウントとプロファイルは自動的に入力されます。
-* 以下のサーバーサイド属性をTealiumに戻します：
+* 空白のままにすると、Tealiumアカウントとプロファイルが自動的に入力されます。
+* 次のサーバーサイド属性をTealiumに送り返します。
   * `criteo_user_id`
 
-EventStreamでのクッキーマッチングについての詳細は、[EventStreamでのPersistent Cookie Matchingの理解](https://docs.tealium.com/about-persistent-cookie-matching/)を参照してください。
+Event StreamingでのCookieマッチングの詳細については、[Event Streamingにおける永続的Cookieマッチングについて](https://docs.tealium.com/about-persistent-cookie-matching/)を参照してください。
 
 ## タグの構成
 
-新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法についての一般的な指示については、[タグの概要](https://docs.tealium.com/about-tags/)の記事を読んでください。
+タグマーケットプレイスに移動して、新しいタグを追加します。詳細については、[タグについて](https://docs.tealium.com/about-tags/)を参照してください。
 
-タグを追加する際には、以下の構成を行います：
+タグを追加する際に、次の構成を構成します。
 
-* **Tealiumアカウント**：（オプション）あなたのTealiumアカウント。
-* **Tealiumプロファイル**：（オプション）あなたのTealiumプロファイル。
-* **同期間隔**：（オプション）IDを再確認する頻度。この値はデフォルトで7日間に構成されています。
-* **データソースキー**：（オプション）サーバーサイド構成からのデータソースキー。
-* **`/event`エンドポイントを使用**：`/event`エンドポイントにデータを送信します。
+* **Tealiumアカウント**：（任意）Tealiumアカウント。
+* **Tealiumプロファイル**：（任意）Tealiumプロファイル。
+* **同期間隔（日数）**：（任意）IDを再確認する頻度。この値のデフォルトは7日です。
+* **データソースキー**：（任意）サーバーサイド構成のデータソースキー。
+* **`/event`エンドポイントを使用**：データを`/event`エンドポイントに送信します。
 
 ## ロードルール
 
-すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメンテーションを参照してください。
+すべてのページでタグをロードするか、タグをロードする条件を構成します。ロードルールの詳細については、[ロードルール](https://docs.tealium.com/about-load-rules/)のドキュメントを参照してください。
 
 ## データマッピング
 
-マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、[データマッピング](https://docs.tealium.com/ja/iq-tag-management/data-mappings/manage/)を参照してください。
+データマッピングは、データレイヤー変数の値をベンダータグ内の対応する変数に送信します。詳細については、[データマッピングについて](https://docs.tealium.com/about-data-mappings/)を参照してください。
 
-利用可能なカテゴリは以下の通りです：
+使用可能なカテゴリは次のとおりです。
 
-### スタンダード
+### 標準
 
-|変数| 説明|
-|---| ---|
-|Tealiumアカウント (`tealium_account`)| [文字列]|
-|Tealiumプロファイル (`tealium_profile`)| [文字列]|
-|同期間隔 (`days_between_syncs`)| [数値]|
-|データソースキー (`tealium_datasource`)| [文字列]|
-|`/event`エンドポイントを使用 (`use_event_endpoint`)| [ブール値]|
+|変数|説明|
+|---|---|
+|Tealiumアカウント（`tealium_account`）|［文字列］|
+|Tealiumプロファイル（`tealium_profile`）|［文字列］|
+|同期間隔（日数）（`days_between_syncs`）|［数値］|
+|データソースキー（`tealium_datasource`）|［文字列］|
+|`/event`エンドポイントを使用（`use_event_endpoint`）|［ブール値］|

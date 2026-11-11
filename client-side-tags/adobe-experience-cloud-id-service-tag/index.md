@@ -1,6 +1,6 @@
 ---
 title: Adobe Experience Cloud ID Service Tag Setup Guide
-description: Adobe's Experience Cloud ID Service tag generates unique identifiers, called Cloud ID, for your site visitors. A Cloud ID makes it possible to share and track data for a visitor across your Experience Cloud Solutions. This article describes how to configure the tag in your iQ Tag Management (TiQ) profile.
+description: Adobe's Experience Cloud ID Service tag generates unique identifiers, called Cloud ID, for your site visitors. A Cloud ID makes it possible to share and track data for a visitor across your Experience Cloud Solutions. This article describes how to configure the tag in your Tag Management profile.
 url: https://docs.tealium.com/client-side-tags/adobe-experience-cloud-id-service-tag/
 ---
 
@@ -26,11 +26,11 @@ Adobe Analytics introduced the Opt-in module in Web SDK version 4.0.0. The Opt-i
 
 If you are using version 4.0 or newer of the Experience Cloud ID Service tag, the Opt-in module must be enabled after you have configured the tag, otherwise event data will not be sent to Tealium. For more information, see [Enable the Adobe Web SDK Opt-in module]().
 
-## Tag Configuration
+## Tag configuration
 
 First, go to the tag marketplace and add the Experience Cloud ID Service tag to your profile (See [Add a tag](https://docs.tealium.com/manage-tags/#add-a-tag)).
 
-After adding the tag, configure the following settings:
+When adding the tag, configure the following settings:
 
 * **Adobe Org ID**
   * (Required) Enter the alphanumeric Experience Cloud ID assigned to your organization.
@@ -55,15 +55,15 @@ Use Data Mappings (see below) if you prefer to configure the tag settings dynami
 </blockquote>
 
 
-## Load Rules
+## Load rules
 
 [Load Rules](https://docs.tealium.com/about-load-rules/) determine when and where to load an instance of this tag on your site.
 
 Recommended Load Rule: **Load on all pages**.
 
-## Data Mappings
+## Data mappings
 
-Mapping is the process of sending data from a [Data Layer Variable](https://docs.tealium.com/manage-data-mappings/) to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see [Data Mappings](https://docs.tealium.com/manage-data-mappings/).
+Data mappings send values from data layer variables to the corresponding variables in the vendor tag. For more information, see [About data mappings](https://docs.tealium.com/about-data-mappings/).
 
 The destination variables for the Cloud ID Service tag are built into its Data Mapping tab. Available categories are:
 

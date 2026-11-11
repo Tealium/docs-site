@@ -5,11 +5,11 @@ url: https://docs.tealium.com/server-side/data-sources/webhooks/affirm/
 ---## Prerequisites
 
 * [Affirm account](https://docs.affirm.com/affirm-developers/docs/dashboard)
-* Tealium EventStream or Tealium AudienceStream
+* Event Streaming or Customer Data Platform (CDP)
 
 ## How it works
 
-Affirm offers a [Webhook API](https://docs.affirm.com/affirm-developers/docs/development-webhooks) that sends outgoing requests to an endpoint that you specify. These requests inform Tealium EventStream and AudienceStream about customer activity from your Affirm account.
+Affirm offers a [Webhook API](https://docs.affirm.com/affirm-developers/docs/development-webhooks) that sends outgoing requests to an endpoint that you specify. These requests inform Event Streaming and Customer Data Platform (CDP) about customer activity from your Affirm account.
 
 * When you add the Affirm data source in your Tealium account a unique endpoint is generated.
 * This endpoint is used to configure a webhook in your Affirm account.
