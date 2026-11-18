@@ -48,7 +48,7 @@ Any user can apply a version label to a version.
 
 To apply a label:
 
-1. In Tealium iQ, navigate to the **Versions** tab.
+1. In Tag Management, navigate to the **Versions** tab.
 1. Click the version you want to apply the label to. The version detail view will expand.
 1. Click **Add Label**.
 1. Select the labels you want to apply or, if you want to create a new label, enter the name of your new label and click **Enter**.

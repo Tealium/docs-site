@@ -1,7 +1,7 @@
 ---
 title: Cheetah Digital by Marigoldコネクタ構成ガイド
 description: この記事では、Cheetah Digital by Marigoldコネクタの構成方法について説明します。
-url: https://docs.tealium.com/ja/server-side-connectors/cheetah-digital-by-marigold-connector/
+url: https://docs.tealium.com/ja/server-side-connectors/cheetah-digital-connector/
 ---
 ## コネクタアクション
 

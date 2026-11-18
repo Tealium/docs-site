@@ -379,4 +379,3 @@ If using a custom parameter, enter a name with which to identify it.
 
 * [Microsoft Bing: Tracking sales and other conversions](http://help.bingads.microsoft.com/#apex/3/en/n5012/2)
 * [Microsoft Bing: What is UET and how can it help me?](https://help.bingads.microsoft.com/#apex/3/en/56681/0)
-* [Microsoft Bing: FAQs](http://help.bingads.microsoft.com/apex/index/3/en-us/53056)

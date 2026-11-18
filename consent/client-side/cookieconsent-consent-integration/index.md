@@ -1,9 +1,9 @@
 ---
 title: CookieConsent consent integration
-description: This guide provides detailed steps for integrating the CookieConsent open-source consent management tool with Tealium iQ.
+description: This guide provides detailed steps for integrating the CookieConsent open-source consent management tool with Tag Management.
 url: https://docs.tealium.com/consent/client-side/cookieconsent-consent-integration/
 ---
-CookieConsent is a flexible, open source consent management tool that can be enforced with client-side [consent integrations](https://docs.tealium.com/about-consent-integrations/). This guide outlines how to configure CookieConsent using consent integrations in Tealium iQ. Combined with consent integrations, CookieConsent offers a better experience and additional features not found in the [Tealium consent manager](https://docs.tealium.com/about-consent-management/), including:
+CookieConsent is a flexible, open source consent management tool that can be enforced with client-side [consent integrations](https://docs.tealium.com/about-consent-integrations/). This guide outlines how to configure CookieConsent using consent integrations in Tag Management. Combined with consent integrations, CookieConsent offers a better experience and additional features not found in the [Tealium consent manager](https://docs.tealium.com/about-consent-management/), including:
 
 * A/B testing for consent banners.
 * Robust enforcement and [queue system](https://docs.tealium.com/consent-integrations-decision-flow/) to ensure no un-consented data is tracked.
@@ -13,11 +13,11 @@ CookieConsent is a flexible, open source consent management tool that can be enf
 
 ## Comparing CookieConsent with CMP integrations
 
-CookieConsent offers flexibility and control without introducing a new vendor. However, it does not support IAB TCF or provide legal guidance. Use the summary below to help you compare CookieConsent (with Tealium) to commercial consent management platforms (CMPs) integrated into Tealium iQ.
+CookieConsent offers flexibility and control without introducing a new vendor. However, it does not support IAB TCF or provide legal guidance. Use the summary below to help you compare CookieConsent (with Tealium) to commercial consent management platforms (CMPs) integrated into Tag Management.
 
 | Capability | CookieConsent | CMP Integration |
 |---------|---------------|-----------------|
-| Easy to enforce with Tealium iQ | ✓ | ✓ |
+| Easy to enforce with Tag Management | ✓ | ✓ |
 | Tealium consent register makes consent decisions accessible and updates easy to subscribe to | ✓ | ✓ |
 | Offers consent logging and storage | ✓ | ✓ |
 | Easy to customize for your company’s design requirements | ✓ | ? |
@@ -48,7 +48,7 @@ If you need a customizable and developer-friendly tool that seamlessly integrate
 
 Creating a CookieConsent consent integration requires the following:
 
-* Tealium iQ Tag Management
+* Tag Management
 * Client-side consent integrations
 
 ### Why use it?
@@ -78,13 +78,13 @@ If services are defined within a category, the category itself is no longer avai
 
 ## Integration steps
 
-Complete the following steps to set up the CookieConsent integration in Tealium iQ:
+Complete the following steps to set up the CookieConsent integration in Tag Management:
 
 1. [Load the CookieConsent library](#step-1-load-the-cookieconsent-library).
 1. [Implement consent logging](#step-2-implement-consent-logging).
 1. [Create a CookieConsent v3 integration and enforcement rule](#step-3-create-a-cookieconsent-v3-integration-and-enforcement-rule).
 1. [Create purpose group](#step-4-create-purpose-group).
-1. [Save and publish Tealium iQ profile](#step-5-save-and-publish-tealium-iq-profile).
+1. [Save and publish Tag Management profile](#step-5-save-and-publish-tealium-iq-profile).
 1. [Test and troubleshoot](#test-and-troubleshoot).
 
 ### Step 1: Load the CookieConsent library
@@ -93,7 +93,7 @@ Load the CookieConsent library on your site and configure it to display the cons
 
 Load the library and configuration in one of the following ways:
 
-* Use the CookieConsent v3 Loader extension in Tealium iQ to load the library and apply your configuration. For information on how to configure the extension, see [CookieConsent v3 Loader extension](https://docs.tealium.com/cookieconsent-v3-loader-extension/).
+* Use the CookieConsent v3 Loader extension in Tag Management to load the library and apply your configuration. For information on how to configure the extension, see [CookieConsent v3 Loader extension](https://docs.tealium.com/cookieconsent-v3-loader-extension/).
 * Embed the CookieConsent v3 loader script and configuration code directly on your site.
 
 ### Step 2: Implement consent logging
@@ -102,12 +102,12 @@ Capture and record consent preferences and decisions for reporting or compliance
 
 Implement consent logging in one of the following ways:
 
-* Use the CookieConsent v3 Logging extension in Tealium iQ. This extension listens for consent updates from the CookieConsent banner and sends the decision details as a JSON payload to your specified endpoint. Configure the destination by updating the extension configuration code. For information on how to configure the extension, see [CookieConsent v3 Logging extension](https://docs.tealium.com/cookieconsent-v3-logging-extension/).
+* Use the CookieConsent v3 Logging extension in Tag Management. This extension listens for consent updates from the CookieConsent banner and sends the decision details as a JSON payload to your specified endpoint. Configure the destination by updating the extension configuration code. For information on how to configure the extension, see [CookieConsent v3 Logging extension](https://docs.tealium.com/cookieconsent-v3-logging-extension/).
 * Embed the CookieConsent v3 logging extension code directly on your site.
 
 ### Step 3: Create a CookieConsent v3 integration and enforcement rule
 
-Set up the CookieConsent v3 consent integration and define rules to enforce consent. This step links CookieConsent to your consent logic in Tealium iQ, ensuring that tags fire only when the user has given appropriate consent.
+Set up the CookieConsent v3 consent integration and define rules to enforce consent. This step links CookieConsent to your consent logic in Tag Management, ensuring that tags fire only when the user has given appropriate consent.
 
 1. Go to the **Tag Management > Consent Integrations** section.
 1. Click **Add Integration**.
@@ -125,7 +125,7 @@ Avoid overlapping enforcement rules with other integrations or exemptions to pre
 
 ### Step 4: Create purpose group
 
-If one doesn't already exist, create a purpose group to define and map consent categories and services captured by CookieConsent to tags in Tealium iQ.
+If one doesn't already exist, create a purpose group to define and map consent categories and services captured by CookieConsent to tags in Tag Management.
 
 1. Select **+ New Purpose Group** from the purpose group drop-down list.
 1. Click **Create Purpose Group**.
@@ -134,18 +134,18 @@ If one doesn't already exist, create a purpose group to define and map consent c
 1. Create purposes:
     * From your `ccConfig.categories` in the [CookieConsent v3 Loader extension](#step-1-configure-the-cookieconsent-v3-loader-extension) configuration code, add a purpose for each service or vendor. Only add a category-level purpose if no services or vendors exist in that category.
     * For each purpose, use the service key within the category such as `necessary-necessary_vendor1` to map consent decisions in the purpose group. Only use a category key such as `necessary` if no services are defined in that category.
-1. Click the **Tealium iQ Purpose** tab.
-1. To ensure Tealium iQ always loads, assign Tealium iQ to a purpose that users cannot opt out of, such as **Strictly Necessary**.
+1. Click the **Tag Management Purpose** tab.
+1. To ensure Tag Management always loads, assign Tag Management to a purpose that users cannot opt out of, such as **Strictly Necessary**.
 1. Click the **Map Tags** tab.
 1. Assign each tag to an appropriate purpose.
 1. Enable tag refiring if you want tags, such as the Tealium Collect tag, to refire when consent is updated in the same event.
 1. Click **Save** to save the purpose group.
 1. Click **Save** to save your consent integration.
-1. Save and publish the Tealium iQ profile to generate the template for your new integration.
+1. Save and publish the Tag Management profile to generate the template for your new integration.
 
-### Step 5: Save and publish Tealium iQ profile
+### Step 5: Save and publish Tag Management profile
 
-Save and publish the Tealium iQ profile to the **Dev** environment and test before publishing to the **Prod** environment. You have now successfully configured CookieConsent with client-side consent integrations.
+Save and publish the Tag Management profile to the **Dev** environment and test before publishing to the **Prod** environment. You have now successfully configured CookieConsent with client-side consent integrations.
 
 ## Test and troubleshoot
 
@@ -170,7 +170,7 @@ For more information about validating enforcement and debugging issues, see [Val
 
 ### Tests
 
-For a suite of end-to-end integration tests for CookieConsent and consent integrations, see [CookieConsent + Tealium iQ - End-to-end integration tests](https://solutions.tealium.net/hosted/cookieconsent/integration-test-report/summary.html).
+For a suite of end-to-end integration tests for CookieConsent and consent integrations, see [CookieConsent + Tag Management - End-to-end integration tests](https://solutions.tealium.net/hosted/cookieconsent/integration-test-report/summary.html).
 
 ## Integrate Global Privacy Control (GPC)
  

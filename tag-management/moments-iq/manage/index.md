@@ -5,7 +5,7 @@ url: https://docs.tealium.com/tag-management/moments-iq/manage/
 ---
 ## Requirements
 
-* Moments iQ experiences can only be created on Tealium iQ profiles. They cannot be created on profile libraries.
+* Moments iQ experiences can only be created on Tag Management profiles. They cannot be created on profile libraries.
 * If you have enabled [tag marketplace policy](https://docs.tealium.com/tag-marketplace-policy/) on your account, you also need to add the Moments iQ Experience tag to the **Show** list, otherwise the tag does not appear in the tag marketplace.
 
 ## How it works
@@ -109,7 +109,7 @@ You can use variables to create dynamic text for **Header Text**, **Main Text**,
 The variables can use the following data:
 * `utag.data` (for example, `{{utag.data.customer_name}}`)
 * B object (for example, `{{b.customer_alias}}`)
-* AudienceStream attributes, through the B object (for example, `{{b.variable_name}}`)
+* Customer Data Platform (CDP) attributes, through the B object (for example, `{{b.variable_name}}`)
 
 You can set a fallback value that appears when no data is available to insert. Fallback values appear after a pair of pipe characters (for example, `{{VARIABLENAME || FALLBACK}}`).
 
@@ -437,7 +437,7 @@ For more information, see [Persist data value extension](https://docs.tealium.co
 
 ## Server-side integration
 
-If you plan to integrate Moments iQ with server-side products such as AudienceStream or EventStream, you need to collect the data through the Tealium Collect tag and link Tealium iQ to an AudienceStream profile.
+If you plan to integrate Moments iQ with server-side products such as CDP or Event Streaming, you need to collect the data through the Tealium Collect tag and link Tag Management to a CDP profile.
 
 To enrich server-side attributes, create a rule to ensure that `momentsiq_answer1` contains an answer and that `momentsiq_id` matches the UID of the experience you created.
 
@@ -445,7 +445,7 @@ Example:
 
 ![](https://docs.tealium.com/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png)
 
-Also, if you plan to leverage AudienceStream variables in Moments iQ rules, you need to enable data layer enrichment.
+Also, if you plan to leverage CDP variables in Moments iQ rules, you need to enable data layer enrichment.
 
 For more information, see [About data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/) and [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 

@@ -29,6 +29,8 @@ Learn about the order of operations for server-side data collection.
 Learn how to install Tealium Collect to get started collecting data from websites, mobile apps, and server applications.
 
 
+
+
 ## Collect
 
 

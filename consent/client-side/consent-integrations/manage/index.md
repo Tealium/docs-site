@@ -3,7 +3,7 @@ title: Manage consent integrations and purpose groups
 description: This article explains how to manage client-side consent integrations and purpose groups.
 url: https://docs.tealium.com/consent/client-side/consent-integrations/manage/
 ---
-In the Tealium iQ Tag Management dashboard, the consent integrations screen provides the ability to add and configure consent integrations.
+In the Tag Management dashboard, the consent integrations screen provides the ability to add and configure consent integrations.
 
 ## Add an integration
 
@@ -64,7 +64,7 @@ If you are using default vendor categories for the first time, after creating yo
 
 ## Manage purpose groups
 
-To manage your purpose groups, go to **iQ Tag Management > Consent Integrations > Purpose Groups** tab.
+To manage your purpose groups, go to **Tag Management > Consent Integrations > Purpose Groups** tab.
 
 ### Add a purpose group
 
@@ -84,9 +84,9 @@ Follow the steps below to add a purpose group:
 1. You can create multiple purposes in a purpose group. To add more purposes to your purpose group, click **+ Add Purpose**.
 1. Click **Next**.
 
-#### Step 3: Tealium iQ purpose
+#### Step 3: Tag Management purpose
 
-1. Select a purpose to map to Tealium iQ from the **Tealium Tag Purpose**. Tealium iQ controls all tag operations and must be mapped to a purpose for any tags to function.
+1. Select a purpose to map to Tag Management from the **Tealium Tag Purpose**. Tag Management controls all tag operations and must be mapped to a purpose for any tags to function.
 1. Click **Next**.
 
 #### Step 4: Map tags
@@ -106,4 +106,4 @@ Follow the steps below to edit a purpose group:
 1. Click the tab for the section you want to edit. To map tags to a new default purpose group, click **Map Tags**.
 1. Click **Save** to save your changes.
 
-For a step-by-step example of how to set up a supported vendor integration with Tealium iQ tag management, see [consent integration guide](https://docs.tealium.com/supported-consent-integration/).
+For a step-by-step example of how to set up a supported vendor integration with Tag Management tag management, see [consent integration guide](https://docs.tealium.com/supported-consent-integration/).

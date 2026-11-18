@@ -1,7 +1,7 @@
 ---
-title: Selligent by Marigold Connector Setup Guide
-description: This article describes how to set up the Selligentby Marigold connector.
-url: https://docs.tealium.com/server-side-connectors/selligent-by-marigold-connector/
+title: Selligent Connector Setup Guide
+description: This article describes how to set up the Selligent connector.
+url: https://docs.tealium.com/server-side-connectors/selligent-connector/
 ---
 For more information about the Selligent APIs, see the [Selligent Marketing Cloud API Explorer.](https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/)
 

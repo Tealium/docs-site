@@ -1,11 +1,11 @@
 ---
 title: About templates
-description: This document introduces basic concepts about iQ Tag Management templates.
+description: This document introduces basic concepts about Tag Management templates.
 url: https://docs.tealium.com/tag-management/templates/about/
 ---
 ## How it works
 
-Templates are JavaScript code that provide the core logic for a feature, tag, or functional component of iQ Tag Management. Templates are used to assemble your configuration from Tealium iQ into the JavaScript files that run on your site or app. For a list of templates by component, see [Template Types](#template-types).
+Templates are JavaScript code that provide the core logic for a feature, tag, or functional component of Tag Management. Templates are used to assemble your configuration from Tag Management into the JavaScript files that run on your site or app. For a list of templates by component, see [Template Types](#template-types).
 
 Users can run the [Template Status Checker](https://docs.tealium.com/template-status-checker/) to ensure that their templates are up-to-date. Advanced users will find directly editing templates useful for the following cases:
 
@@ -52,7 +52,7 @@ These templates are used in the consent management features. For more informatio
 
 These templates are used in the consent integrations. For more information, see [About consent integrations](https://docs.tealium.com/about-consent-integrations/).
 
-* Framework (`utcm_framework`): The consent enforcement framework for Tealium iQ.
+* Framework (`utcm_framework`): The consent enforcement framework for Tag Management.
 * Integration templates : All integration templates are identified by the integration name (as it appears in the consent integrations dashboard), the template name (such as OneTrust, Usercentrics, Custom, etc.), and the internal Tealium ID for your instance of that template. For example: `Consent Integrations - Test Integration (onetrust) UID:utcm_e9582a8f-40fd-49ae-9819-fb2721f5547e`
   * Didomi
   * OneTrust

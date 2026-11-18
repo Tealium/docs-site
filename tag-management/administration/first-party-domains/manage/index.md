@@ -69,7 +69,7 @@ When the domain status in the **First-Party Domains Overview** changes to **Issu
 
 Validation must occur within 72 hours. If the validation period expires, request a new certificate for the same subdomain. The DNS validation records are the same for subsequent requests of the same subdomain.
 
-After the domain status changes to **Issued**, you must update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see [Update endpoint configurations]().
+After the domain status changes to **Issued**, you must update your endpoint configuration to use first-party domains with Tag Management. For more information, see [Update endpoint configurations]().
 
 ### Validation failure
 

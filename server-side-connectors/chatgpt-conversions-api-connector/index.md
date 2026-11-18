@@ -110,6 +110,14 @@ The **External ID (raw)**, hashed **Country**, hashed **City**, and hashed **Zip
 </blockquote>
 
 
+Identifier normalization rules:
+
+* **Email**: the connector trims the value, lowercases it, and preserves dots and plus tags before hashing.
+* **Phone**: the connector hashes the E.164 number as digits only, without a leading `+`. For example, `+1 (415) 555-2671` is hashed as `14155552671`.
+* **External ID**: the connector preserves the original casing before hashing.
+
+If you pre-hash values before mapping them, apply the same normalization rules to keep match rates consistent with values the connector hashes.
+
 | Parameter | Description |
 | --- | --- |
 | Email address list (apply SHA256 hash) | Provide a lowercase plain text email address, or a list attribute of up to 3 email addresses, and the connector normalizes and hashes each value before sending it to `emails_sha256`. Empty or null values are ignored. |

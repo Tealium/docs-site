@@ -1,11 +1,11 @@
 ---
 title: Tags
-description: Learn how to integrate your browser-based tag with Tealium iQ Tag Management.
+description: Learn how to integrate your browser-based tag with Tag Management.
 url: https://docs.tealium.com/partners-and-industries/partner-with-us/tags/
 ---
 
 
-Do you want your JavaScript tag offered in the Tealium tag marketplace? Do you want your users to seamlessly add your tag to their site without a lengthy release cycle? If so, this guide explains how tags work and the additional benefits of having an official integration with Tealium iQ Tag Management.
+Do you want your JavaScript tag offered in the Tealium tag marketplace? Do you want your users to seamlessly add your tag to their site without a lengthy release cycle? If so, this guide explains how tags work and the additional benefits of having an official integration with Tag Management.
 
 ## How Tags Work
 
@@ -29,7 +29,7 @@ Data mappings determine which dynamic values the tag needs from the data layer a
 
 ### Loading in the Browser
 
-Vendor tags are loaded by the Tealium Universal Tag (utag.js), a wrapper tag that contains the configuration logic from the iQ Tag Management account. Subsequent vendor tags are loaded using asynchronous JavaScript and run identically to how they run outside of a tag manager.
+Vendor tags are loaded by the Tealium Universal Tag (utag.js), a wrapper tag that contains the configuration logic from the Tag Management account. Subsequent vendor tags are loaded using asynchronous JavaScript and run identically to how they run outside of a tag manager.
 
 As a vendor, you can expect to see your same tag library or image pixel in the DOM of the page. At Tealium, we make every effort to load your tag exactly to your specifications. In rare cases where we must alter the code, we will ensure that the final tracking beacon matches your requirements.
 
@@ -91,7 +91,7 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&tealium_visitor_id=abx
 
 ### Server-Side Enabled
 
-Server-side enabled tags have the added ability to send events directly to Tealium EventStream and AudienceStream. For example, a user experience vendor inferring user sentiment by tracking mouse movements could trigger specific events directly to Tealium Collect. This type of integration _is included with your standard tag_.
+Server-side enabled tags have the added ability to send events directly to Event Streaming and Customer Data Platform (CDP). For example, a user experience vendor inferring user sentiment by tracking mouse movements could trigger specific events directly to Tealium Collect. This type of integration _is included with your standard tag_.
 
 The following example function sends data to the Tealium event endpoint:  
 ```javascript

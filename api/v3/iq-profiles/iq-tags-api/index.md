@@ -1,6 +1,6 @@
 ---
 title: iQ Tags API
-description: The iQ Tags API lets you programmatically create, update, and delete tag configurations in an iQ Tag Management profile.
+description: The iQ Tags API lets you programmatically create, update, and delete tag configurations in a Tag Management profile.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-tags-api/
 ---
 To learn more about this API and available object fields, see [iQ Profiles API](https://docs.tealium.com/iq-profiles-v3-api/) and [iQ Profiles Objects](https://docs.tealium.com/iq-profiles-api-objects/).
@@ -55,7 +55,7 @@ Profile tags are JSON objects that contain the following possible fields:
 | `value.configuration` |Map &lt;String, Object&gt; |Optional | A String and Object Map of tag configurations made available by the vendor. Configurations are specific to each tag. For more information, see the documentation for your tag.|
 |`value.advancedConfiguration`| Object |Optional |  A set of advanced configurations corresponding to the tag configuration settings. <br>`advConfigBundle` — **True** or **False**<br> `advConfigLoadType` — **True** or **False**<br> `advConfigOptOut` — **True**<br> `advConfigSend`— **True** or **False** <br> `advConfigSrc` — Text field<br> `tagTiming` — **DOM Ready** or **Prioritized** |
 |`value.rules`| Object |Optional | The load rules to apply or exclude from the tag.|
-|`value.dataMappings`| Map &lt;String, String&gt; |Optional | An object that contains the Tealium IQ variable and its corresponding mapped destination, the variable name, and the data type. You can verify the specific format for the mapped variable triggers in the **Data Mappings** screen in your tag configuration.|
+|`value.dataMappings`| Map &lt;String, String&gt; |Optional | An object that contains the Tag Management variable and its corresponding mapped destination, the variable name, and the data type. You can verify the specific format for the mapped variable triggers in the **Data Mappings** screen in your tag configuration.|
 |`value.dataMappings.variable`| String |Optional | The name of the variable to be mapped.|
 |`value.dataMappings.type`| String |Optional | The data type of the variable to be mapped. This field supports the following variable types:<br>`ls` - Local storage<br>`ss` - Session storage<br>`udo` - Universal Data Object<br>`qp` - Query string parameter<br>`cp` - Cookie<br>`js_page` - JavaScript  variable<br>`dom` - DOM variable<br>`meta` - Meta data element<br>`static.text` - Static text<br>`static.js` - JavaScript code|
 |`value.dataMappings.mappings`| String or Array of Strings |Optional | The mapped destination for the variable.|

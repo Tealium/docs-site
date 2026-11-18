@@ -5,7 +5,7 @@ url: https://docs.tealium.com/tag-management/save-publish/merging-changes-betwee
 ---
 In a **locked** profile, only one user is allowed to modify a version at any given time. But in the case of an **unlocked** profile, several users are able to make changes in the same version at the same time. In the event that one of them saves or publishes their version first, the remaining concurrent users are alerted to the new change.
 
-In this event, the remaining users have the opportunity to salvage any changes they made in that version before it was overwritten. This is made possible by **Merge Changes**, a feature built into Tealium iQ for resolving concurrent user situations. This feature is automatically invoked the instant it detects a combination of saved and unsaved changes inside the same version. It then allows concurrent users to merge their unsaved changes with the saved changes to keep from losing their efforts.
+In this event, the remaining users have the opportunity to salvage any changes they made in that version before it was overwritten. This is made possible by **Merge Changes**, a feature for resolving concurrent user situations. This feature is automatically invoked the instant it detects a combination of saved and unsaved changes inside the same version. It then allows concurrent users to merge their unsaved changes with the saved changes to keep from losing their efforts.
 
 ### How Merge Changes works
 
@@ -49,7 +49,7 @@ If you decide to keep only your changes and discard the other user's changes, pe
 
 ### Resolve conflicts before merge
 
-Conflicts arise when you to attempt to merge the saved and unsaved instances of the same Tealium iQ element. This is typically the case when the element is modified by several users at the same time. For example, a certain load rule condition with a date range will conflict and collide with same load rule condition without a date range. Merging the two load rules is not possible unless you accept one instance and discard the other.
+Conflicts arise when you attempt to merge the saved and unsaved instances of the same element. This is typically the case when the element is modified by several users at the same time. For example, a certain load rule condition with a date range will conflict and collide with same load rule condition without a date range. Merging the two load rules is not possible unless you accept one instance and discard the other.
 
 To resolve a conflict from the **Merge Changes** window:
 

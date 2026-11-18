@@ -1,6 +1,6 @@
 ---
 title: About profiles
-description: This article describes profiles in your iQ Tag Management account.
+description: This article describes profiles in your Tag Management account.
 url: https://docs.tealium.com/tag-management/profiles/about/
 ---
 ## How it works

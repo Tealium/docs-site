@@ -11,7 +11,7 @@ The [Navigation Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Nav
 1. Set the sampling rate for the percentage of traffic you'd like to gather information.
     
 <blockquote>
-The sampling rate is exclusive to the event data being collected, meaning if sampling is set to 5% Tealium will still trigger 100% of event data to AudienceStream, EventStore, and/or EventDB (Tealium Collect).
+The sampling rate is exclusive to the event data being collected, meaning if sampling is set to 5% Tealium will still trigger 100% of event data to Customer Data Platform (CDP), EventStore, and/or EventDB (Tealium Collect).
 </blockquote>
 
 1. Save/Publish the update.

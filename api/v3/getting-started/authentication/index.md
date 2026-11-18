@@ -5,7 +5,7 @@ url: https://docs.tealium.com/api/v3/getting-started/authentication/
 ---
 ## Authentication
 
-Authentication (login) requires an API key from Tealium iQ Tag Management. To learn more about Tealium API keys, see [Managing and Generating API Keys](https://docs.tealium.com/api-keys/).
+Authentication (login) requires an API key from Tag Management. To learn more about Tealium API keys, see [Managing and Generating API Keys](https://docs.tealium.com/api-keys/).
 
 The authentication call has two parameters: username and the API key. The API key is used in place of a password to log into the API. After a successful login to the API, the authentication call returns a JWT, referred to as a bearer token. The bearer token, which is valid for 30 minutes, is the value that must be used to authenticate subsequent API calls.
 

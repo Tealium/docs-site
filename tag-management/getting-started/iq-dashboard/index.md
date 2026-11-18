@@ -1,6 +1,6 @@
 ---
-title: Tag management dashboard
-description: The tag management dashboard provides an overview of your account's configuration, CDN server usage, and published changes.
+title: Tag Management dashboard
+description: The Tag Management dashboard provides an overview of your account's configuration, CDN server usage, and published changes.
 url: https://docs.tealium.com/tag-management/getting-started/iq-dashboard/
 ---
 ## How it works

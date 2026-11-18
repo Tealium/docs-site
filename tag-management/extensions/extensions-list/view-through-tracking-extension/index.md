@@ -6,12 +6,12 @@ url: https://docs.tealium.com/tag-management/extensions/extensions-list/view-thr
 ## Requirements
 
 * utag v4.38 or later. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
-* iQ Tag Management account
+* Tag Management account
 * Manage Account permissions
 
 **Optional**:
 
-* Tealium Collect tag (for EventStream tracking)
+* Tealium Collect tag (for Event Streaming tracking)
 * Manage JavaScript Code permission (for customized data handling)
 
 ## How it works
@@ -24,12 +24,12 @@ A user is reading an article on a news site. An ad appears for a certain watch, 
 
 By the end of the customer's session, more is known about the customer and what they are looking for, such as watch type or feature preferences, potential price range, and whether or not the customer visited blogs or knowledge bases to learn more about a specific model.
 
-The View-Through Tracking solution uses the following two simple components to allow the sharing of data between your display ads and your iQ Tag Management account.
+The View-Through Tracking solution uses the following two simple components to allow the sharing of data between your display ads and your Tag Management account.
 
 * **Display Ad Image Pixel**  
 Used to send the relevant data to the Tealium View-Through tracking service. This is a standard URL containing query string parameters for the ad data to collect.
 * **Custom JavaScript Code Extension**  
-An extension is created in your iQ Tag Management account to extract the view-through data collected during the visitor's journey to your site.
+An extension is created in your Tag Management account to extract the view-through data collected during the visitor's journey to your site.
 
 ### Workflow
 
@@ -157,7 +157,7 @@ Companies looking for ways to better measure how display influences the customer
 
 | Ad Server Only | With Impression Tracking |
 |:---------------|:-------------------------|
-| <ul><li>Campaign, creative, and impression data siloed.</li><li>Difficult to understand insights at the customer level and unable to quickly personalize the customer experience based on campaigns viewed.</li><li>Difficult to relate campaign experience to a customer profile.</li></ul> | <ul><li>Enables companies to bring impression, campaign, and creative insights out of the ad server and into the data layer to more efficiently analyze campaign or creative effectiveness.</li><li>The ability to act on trusted data in real time.</li><li>The ability to personalize data.</li><li>Enables users to track impression data and act on it immediately when the customer returns to the site, regardless of whether or not the customer clicks on an ad.</li><li>Track customer insights and act in real time. For example, total impressions served to a customer, a list of campaigns the customer has been exposed to, domains a user viewed the ads on, and specific creatives that they have viewed. This is done in real time and with your own data, resulting in reduced ad spending as you better understand which campaigns and creatives are most effective and which to suppress.</li><li>Does not need to be used specifically for conversions, though it may be used to measure View-Through conversions.</li><li>Build more complete customer profile attributes and audiences in your Customer Data Platform (CDP).</li><li>Provides the ability to send data to EventStream and AudienceStream.</li></ul> |
+| <ul><li>Campaign, creative, and impression data siloed.</li><li>Difficult to understand insights at the customer level and unable to quickly personalize the customer experience based on campaigns viewed.</li><li>Difficult to relate campaign experience to a customer profile.</li></ul> | <ul><li>Enables companies to bring impression, campaign, and creative insights out of the ad server and into the data layer to more efficiently analyze campaign or creative effectiveness.</li><li>The ability to act on trusted data in real time.</li><li>The ability to personalize data.</li><li>Enables users to track impression data and act on it immediately when the customer returns to the site, regardless of whether or not the customer clicks on an ad.</li><li>Track customer insights and act in real time. For example, total impressions served to a customer, a list of campaigns the customer has been exposed to, domains a user viewed the ads on, and specific creatives that they have viewed. This is done in real time and with your own data, resulting in reduced ad spending as you better understand which campaigns and creatives are most effective and which to suppress.</li><li>Does not need to be used specifically for conversions, though it may be used to measure View-Through conversions.</li><li>Build more complete customer profile attributes and audiences in your Customer Data Platform (CDP).</li><li>Provides the ability to send data to Event Streaming and Customer Data Platform (CDP).</li></ul> |
 
 #### What is a DataBridge?
 
@@ -181,7 +181,7 @@ Yes, they both work at the same time.. This method is particularly helpful when 
 
 #### How are usage and billing tracked?
 
-This feature is free for up to 120 million track impressions per year, after which overage charges are incurred. Usage and billing is tracked in iQ Tag Management. Your Account Manager applies automation to monitor your usage and notify you when you are approaching the 120M mark.
+This feature is free for up to 120 million track impressions per year, after which overage charges are incurred. Usage and billing is tracked in Tag Management. Your Account Manager applies automation to monitor your usage and notify you when you are approaching the 120M mark.
 
 * To monitor overall usage, check the Customer Data Hub usage reports.
 * To monitor usage of the free tier, use the reporting widget in the View-Through extension.

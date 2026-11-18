@@ -158,7 +158,7 @@ Refine your data by removing irrelevant values (such as booked destinations or e
 Pair set of strings with badges, numbers, or booleans to create advanced audience logic and time-sensitive campaigns.
 
 * **Use in real-time personalization**  
-Use set of strings in Functions or pass them through EventStream to enrich event data and trigger real-time personalization on your website, mobile app, or other channels.
+Use set of strings in Functions or pass them through Event Streaming to enrich event data and trigger real-time personalization on your website, mobile app, or other channels.
 
 ## Additional Resources
 

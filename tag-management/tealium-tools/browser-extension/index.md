@@ -75,8 +75,8 @@ Return to **Login** settings and click **SSO Log In** to log in with Single Sign
 
 The following is a list of Tealium Tools that are built into the extension:
 
-* [**Tealium iQ**](https://my.tealiumiq.com)  
-A bookmark link to the iQ Tag Management interface.
+* [**Tag Management**](https://my.tealiumiq.com)  
+A bookmark link to the Tag Management interface.
 * [**Web Companion**](https://docs.tealium.com/web-companion/)  
 A browser tool used to audit your tag configuration, inspect data on your site, and create and test new configurations quickly and easily.
 * [**Tealium University**](https://university.tealium.com/)  
@@ -84,7 +84,7 @@ A bookmark link to Tealium online learning portal, which includes self-paced cou
 * [**AudienceStream Trace**](https://docs.tealium.com/about-trace/)  
 Trace provides the necessary tools to put your Universal Data Hub configuration to the test. With Trace, you can observe every detail of a defined workflow, ensure attributes update correctly, rules are dialed in, and actions fire as expected. Trace works in real-time, so you know immediately what works and what needs adjusting.
 * [**Optimizely Helper**](https://docs.tealium.com/optimizely-helper/)  
-Tealium AudienceStream enables marketers to discover audiences, enrich visitor profiles and stitch together customer interactions across digital touch points. Using both AudienceStream and Optimizely, users can leverage the audiences created in AudienceStream and build targeted experiments in Optimizely.
+Customer Data Platform (CDP) lets marketers discover audiences, enrich visitor profiles, and stitch together customer interactions across digital touch points. Using both Customer Data Platform (CDP) and Optimizely, users can leverage the audiences created in CDP and build targeted experiments in Optimizely.
 * [**Environment Switcher**](https://docs.tealium.com/environment-switcher/)  
 The environment switcher is a powerful testing tool that lets you change the Tealium files (utag.js, utag.sync.js) that are loaded on a page by specifying an environment (Dev, QA, Prod, Custom) and/or an account and profile.
 * [**Tealium Docs**](/)
@@ -95,7 +95,7 @@ A bookmark link to Tealium Knowledge base, where you can search and find support
 ## Community tools
 
 * **Account Stats Report**
-Export client-side (iQ) and server-side (CDH) usage statistics to a CSV file.  
+Export client-side (Tag Management) and server-side (CDH) usage statistics to a CSV file.  
 * **Bulk Edit Assets (Client-Side)**
 Manage multiple variables, load rules, tags, or extensions at once by toggling their active state or deleting them in bulk.  
 * **Connector Action Export**
@@ -109,7 +109,7 @@ Identify the shortest jQuery selector that uniquely matches a single element on 
 * **File Import Logs Download**
 Download logs for File Import and Omnichannel processes.  
 * **Profile Copy/Paste (Client-Side)**
-Copy an entire TiQ profile from one account to another. Note: Individual elements cannot be selected.  
+Copy an entire Tag Management profile from one account to another. Note: Individual elements cannot be selected.  
 * **Profile Exporter**
 Export profile data, such as the data layer, tags, and rules, to a CSV file.  
 * **Tag Mappings Export (Client-Side)**

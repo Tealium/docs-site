@@ -32,7 +32,7 @@ After the visitors have been identified, you can take action on them through a s
 This use case requires the following: 
 
 * Tracked events: 
-* Tealium AudienceStream
+* Customer Data Platform (CDP)
 
 In general, the following event attributes will be helpful in tracking purchase activity to assess customer spending levels. Your actual attribute names might differ.
 
@@ -52,7 +52,7 @@ In general, the following event attributes will be helpful in tracking purchase 
 
 For more information about the data layer definition for retail, see [retail](https://docs.tealium.com/retail/).
 
-### Required AudienceStream Attributes
+### Required Customer Data Platform (CDP) Attributes
 
 | Attribute Name | Type   | Scope   | Description                                                                                   |
 |----------------|--------|---------|-----------------------------------------------------------------------------------------------|

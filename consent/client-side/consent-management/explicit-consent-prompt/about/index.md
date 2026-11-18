@@ -16,7 +16,7 @@ Explicit Consent Prompt example:
 
 ![](https://docs.tealium.com/images/tag-management/example-consent-prompt.png)
 
-The Explicit Consent Prompt Manager in iQ Tag Management makes it easy to create and deploy a consent prompt to your website using your existing installation. This feature can be used with the [Consent Preferences Manager]() to offer your customers more granular control over how they are tracked.
+The Explicit Consent Prompt Manager in Tag Management makes it easy to create and deploy a consent prompt to your website using your existing installation. This feature can be used with the [Consent Preferences Manager]() to offer your customers more granular control over how they are tracked.
 
 The Explicit Consent Prompt satisfies a requirement of the General Data Protection Regulation that a data subject (EU residents) must give explicit consent before activity can be tracked.
 
@@ -32,14 +32,14 @@ The consent prompt can be displayed programmatically [using the JavaScript helpe
 
 ## Features
 
-The Explicit Consent Prompt in Tealium iQ offers the following features:
+The Explicit Consent Prompt in Tag Management offers the following features:
 
 * Display Templates
 * Customizable Style and Layout
 * Multi-Language Support
 * Configurable Display Condition
 * Global Settings for Enterprise Rollout
-* Consent Logging (requires DataAccess or EventStream)
+* Consent Logging (requires DataAccess or Event Streaming)
 
 This feature does not require additional code on your site. All of the configuration is bundled with your existing installation of our JavaScript library (`utag.js`).
 
@@ -62,7 +62,7 @@ Use your data layer to create a load rule that determines when to display the co
 * **Options**
 Adjust additional options, such as logging consent changes using DataAccess or marking non-tracking tags that are not governed by consent management, such as chat widget.
 * **Default Consent Categories (JavaScript Code Extension when Consent Preferences is disabled)**  
-If you do not use the **Consent Preferences Dialog** and have a server-side product enabled (EventStream, AudienceStream, or DataAccess), then this JavaScript Code extension is required to set the default consent categories.  
+If you do not use the **Consent Preferences Dialog** and have a server-side product enabled (Event Streaming, Customer Data Platform (CDP), or DataAccess), then this JavaScript Code extension is required to set the default consent categories.  
 
 <blockquote>
 If you skip this step, incoming events might be ignored.

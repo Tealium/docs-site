@@ -12,9 +12,9 @@ A _connector_ is an integration between Tealium and a vendor for transmitting da
 
 ### Event and Customer Data
 
-Connectors that send _event data_, such as web analytics, are used in [Tealium EventStream](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/).
+Connectors that send _event data_, such as web analytics, are used in [Event Streaming](https://docs.tealium.com/server-side/getting-started/tutorials/event-data-activation/introduction/).
 
-Connectors that send _customer data_, such as email subscription status, are used in [Tealium AudienceStream](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/).
+Connectors that send _customer data_, such as email subscription status, are used in [Customer Data Platform (CDP)](https://docs.tealium.com/server-side/getting-started/tutorials/visitor-profile-management/introduction/).
 
 ### Configuration
 

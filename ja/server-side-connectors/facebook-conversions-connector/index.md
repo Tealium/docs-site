@@ -40,7 +40,7 @@ Facebook Pixel タグはユーザーデータを自動的にハッシュ化し�
 * **Pixel / Dataset ID**
   * Facebook Pixel ID。
   * Facebook Pixel が正しく動作するように、[前提条件]()に記載されている手順に従って、Facebook Pixel のパートナー連携を有効にしてください。
-  * 詳細については、[Meta Pixel の構成とインストール方法](https://www.facebook.com/business/m/pixel-set-up-step-1#step-1)を参照してください。
+  * 詳細については、[Meta Pixel の構成とインストール方法](https://www.facebook.com/business/help/952192354843755?id=1205376682832142)を参照してください。
 
 コネクタを構成したら、**完了**をクリックします。
 

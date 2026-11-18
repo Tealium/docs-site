@@ -53,7 +53,7 @@ The following video tutorial demonstrates how to merge changes between versions:
 
 ## Resolving merge conflicts
 
-Conflicts arise if the versions contain two distinct instances of the same Tealium iQ element. For example, a certain load rule condition with a date range in the incoming version will conflict and collide with same load rule condition without a date range in the current version. Merging them is not possible unless you accept one instance of the element and discard the other.
+Conflicts arise if the versions contain two distinct instances of the same element. For example, a certain load rule condition with a date range in the incoming version will conflict and collide with same load rule condition without a date range in the current version. Merging them is not possible unless you accept one instance of the element and discard the other.
 
 To resolve a conflict from the **Merge Changes** window,
 

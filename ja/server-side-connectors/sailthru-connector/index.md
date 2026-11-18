@@ -1,7 +1,7 @@
 ---
 title: Marigold Engage by Sailthruコネクタ構成ガイド
 description: この記事では、Sailthruコネクタの構成方法について説明します。
-url: https://docs.tealium.com/ja/server-side-connectors/marigold-engage-by-sailthru-connector/
+url: https://docs.tealium.com/ja/server-side-connectors/sailthru-connector/
 ---
 ## コネクタアクション
 

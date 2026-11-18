@@ -35,15 +35,15 @@ The following consent categories are currently available:
 
 The Tealium Collect tag sets the `consent_categories` array to events. If the `consent_categories` array is defined on an incoming event, the categories in the array will be enforced as detailed below. If that array is not set, then a consent policy cannot be enforced and all server-side products are enabled.
 
-### EventStream connector actions
+### Event Streaming connector actions
 
-Consent preferences are enforced by Tealium EventStream connectors. The consent category of a connector action is displayed on the action configuration screen in the **Details**:
+Consent preferences are enforced by Event Streaming connectors. The consent category of a connector action is displayed on the action configuration screen in the **Details**:
 
 ![](https://docs.tealium.com/images/server-side/6f9b6ee0-8de8-4bc9-84cf-6afed53b5679-1-201-a.jpeg)
 
-#### EventStream connector actions consent categories
+#### Event Streaming connector actions consent categories
 
-Each connector action in EventStream has at least one consent category assigned. This consent category cannot be changed. When the `consent_categories` array is defined, an action fires only if all of the relevant categories are present, with the exception of [consent change events](https://docs.tealium.com/consent-change-event-specifications/#consent-change-events). These events (`decline_consent`, `grant_full_consent`, and `grant_partial_consent`) will be sent/stored, regardless of the contents of the `consent_categories` array.
+Each connector action in Event Streaming has at least one consent category assigned. This consent category cannot be changed. When the `consent_categories` array is defined, an action fires only if all of the relevant categories are present, with the exception of [consent change events](https://docs.tealium.com/consent-change-event-specifications/#consent-change-events). These events (`decline_consent`, `grant_full_consent`, and `grant_partial_consent`) will be sent/stored, regardless of the contents of the `consent_categories` array.
 
 **Example 1**
 
@@ -57,19 +57,19 @@ You have two connectors configured, one for **Analytics** and one for **Personal
 
 Only connector actions in the **Analytics** category are triggered. Any connector action in the **Personalization** category is suppressed.
 
-### AudienceStream processing
+### CDP processing
 
-Tealium AudienceStream is categorized in the **CDP** consent category. To allow attributes and connectors to be processed in AudienceStream, the visitor must opt in to the **CDP** category. However, for events like `decline_consent`, `grant_full_consent`, and `grant_partial_consent`, AudienceStream will process data even if **CDP** consent isn't given. Bypassing **CDP** consent allows for specific actions, such as triggering a Leave Audience connector action to remove a visitor from a remarketing list or other third party systems. For more information, see [consent event specifications](https://docs.tealium.com/consent-change-event-specifications/).
+CDP is the consent category for Customer Data Platform. To allow attributes and connectors to be processed in Customer Data Platform (CDP), the visitor must opt in to the **CDP** category. However, for events like `decline_consent`, `grant_full_consent`, and `grant_partial_consent`, CDP will process data even if **CDP** consent isn't given. Bypassing **CDP** consent allows for specific actions, such as triggering a Leave Audience connector action to remove a visitor from a remarketing list or other third party systems. For more information, see [consent event specifications](https://docs.tealium.com/consent-change-event-specifications/).
 
 
 <blockquote>
-The consent category assigned to AudienceStream cannot be changed.
+The consent category assigned to CDP cannot be changed.
 </blockquote>
 
 
-### AudienceStream connector actions
+### CDP connector actions
 
-Audience connectors do not support consent category enforcement at the connector action level. To customize consent enforcement in your AudienceStream connectors you must add consent conditions to the audience rules.
+Audience connectors do not support consent category enforcement at the connector action level. To customize consent enforcement in your CDP connectors you must add consent conditions to the audience rules.
 
 ### DataAccess
 

@@ -7,17 +7,17 @@ url: https://docs.tealium.com/tag-management/moments-iq/about/
 
 Moments iQ requires the following product:
 
-* Tealium iQ Tag Management
+* Tag Management
 
 To integrate Moments iQ with server-side products, you need the following:
 
-* Tealium AudienceStream or Tealium EventStream
+* Customer Data Platform (CDP) or Event Streaming
 * The most recent version of the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/)
 
-To use AudienceStream variables in Moments iQ rules and dynamic text in Moments iQ experiences, you need one of the following:
+To use Customer Data Platform (CDP) variables in Moments iQ rules and dynamic text in Moments iQ experiences, you need one of the following:
 
 * [Data Layer Enrichment](https://docs.tealium.com/data-layer-enrichment/) enabled
-* Moments API
+* Context API
 
 ## About Moments iQ
 
@@ -44,7 +44,7 @@ Supports radio buttons, checkboxes, and text box answers.
 * **Privacy by design**  
 Data is collected, transformed, and sent appropriately through built-in tracking calls based on the visitor’s consent preferences.
 * **Seamless integration**  
-Send the event data to AudienceStream to enhance visitor profiles, assign badges, or update audience membership to trigger connectors.
+Send the event data to CDP to enhance visitor profiles, assign badges, or update audience membership to trigger connectors.
 
 ## Steps
 

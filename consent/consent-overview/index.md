@@ -23,13 +23,13 @@ On the server-side, [consent orchestration](https://docs.tealium.com/about-conse
 
 Consent orchestration applies event-level enforcement across:
 
-* EventStream connector actions
+* Event Streaming connector actions
 * Functions (event-level activations)
 * EventStore
 * EventDB
-* AudienceStream profile processing
+* Customer Data Platform (CDP) profile processing
 
-It does not yet enforce consent on AudienceStream activations. Use [manual enforcements](https://docs.tealium.com/manual-enforcement/) for AudienceStream until support is available.
+It does not yet enforce consent on CDP activations. Use [manual enforcements](https://docs.tealium.com/manual-enforcement/) for CDP until support is available.
 
 Together, these components give you scalable, centralized, and consistent consent enforcement across your data stack, without tying enforcement to business logic or requiring additional custom development.
 
@@ -42,9 +42,9 @@ Together, these components give you scalable, centralized, and consistent consen
 | [Consent integrations](#consent-integrations) | <ul><li>You use a commercial consent management platform (CMP) like OneTrust, TrustArc, Didomi, or Usercentrics to capture consent and want to enforce those decisions reliably through Tealium without custom development.</li><li>You need Tealium to respect and enforce consent decisions from your CMP while enabling purpose-based enforcement and tag mapping.</li></ul> |
 | [CookieConsent consent integration](#cookieconsent-consent-integration) | <ul><li>You want to capture and enforce user consent without relying on a commercial CMP.</li><li>You need a customizable, accessible consent banner that aligns with your site’s design and compliance needs.</li><li>You’re moving away from Tealium consent manager and need a modern, scalable alternative that works within Tealium.</li></ul> |
 | [Custom consent integration](#custom-consent-integration) | <ul><li>You use a CMP or consent tool that is not supported by a prebuilt integration.</li><li>You built your own internal CMP or custom consent capture solution and need to connect it to Tealium.</li><li>You have a supported CMP but have customized it in ways that the standard prebuilt integration doesn't support.</li></ul> |
-| [Consent orchestration](#consent-orchestration) | <ul><li>You need centralized, server-side enforcement of user consent at the event level across EventStream, EventStore, EventDB, AudienceStream profile processing, and server-side connectors.</li><li>You want to define and manage purpose-based consent policies centrally to ensure compliance with privacy laws.</li><li>You need to exempt specific data sources or regions that don’t require consent, while enforcing consent elsewhere.</li></ul> |
+| [Consent orchestration](#consent-orchestration) | <ul><li>You need centralized, server-side enforcement of user consent at the event level across Event Streaming, EventStore, EventDB, CDP profile processing, and server-side connectors.</li><li>You want to define and manage purpose-based consent policies centrally to ensure compliance with privacy laws.</li><li>You need to exempt specific data sources or regions that don’t require consent, while enforcing consent elsewhere.</li></ul> |
 | [Consent manager](#consent-manager) | <ul><li>You have a consent manager setup and are planning to migrate to the CookieConsent consent integration.</li></ul> |
-| [Manual consent conditions](#manual-consent-conditions) | <ul><li>You need to enforce visitor-level consent conditions inside AudienceStream audiences, not yet supported by consent orchestration.</li><li>You use manual conditions in EventStream and have not yet migrated to consent orchestration.</li></ul> |
+| [Manual consent conditions](#manual-consent-conditions) | <ul><li>You need to enforce visitor-level consent conditions inside CDP audiences, not yet supported by consent orchestration.</li><li>You use manual conditions in Event Streaming and have not yet migrated to consent orchestration.</li></ul> |
 
 ### Consent integrations
 
@@ -71,7 +71,7 @@ If your CMP isn’t supported by a prebuilt integration, you can use a [custom c
 
 ### CookieConsent consent integration
 
-CookieConsent is a flexible, open source, WCAG-compliant consent management tool that integrates with Tealium iQ. It provides a customizable interface for capturing consent decisions. When combined with consent integrations, CookieConsent enforces those decisions so tags only fire when consent is granted. [CookieConsent consent integration](https://docs.tealium.com/cookieconsent-consent-integration/) is the recommended replacement for the [client-side consent manager](https://docs.tealium.com/about-consent-management/).
+CookieConsent is a flexible, open source, WCAG-compliant consent management tool that integrates with Tag Management. It provides a customizable interface for capturing consent decisions. When combined with consent integrations, CookieConsent enforces those decisions so tags only fire when consent is granted. [CookieConsent consent integration](https://docs.tealium.com/cookieconsent-consent-integration/) is the recommended replacement for the [client-side consent manager](https://docs.tealium.com/about-consent-management/).
 
 #### Key features
 
@@ -130,8 +130,8 @@ Use a custom consent integration if you have a CMP or consent capture solution t
 
 * Define and manage consent rules in one place to ensure consistent enforcement across all server-side events.
 * Enforce consent decisions at the event level before processing to prevent unauthorized data collection or processing.
-* Integrate seamlessly with EventStream connector actions, event functions, EventStore, and EventDB.
-* Controls where an event continues in AudienceStream processing (does not apply to AudienceStream activations).
+* Integrate seamlessly with Event Streaming connector actions, event functions, EventStore, and EventDB.
+* Controls where an event continues in CDP processing (does not apply to CDP activations).
 * Enforce consent based on defined categories for granular control over data processing activities.
 
 #### When to use consent orchestration
@@ -140,13 +140,13 @@ Use consent orchestration if you need centralized, rule-based consent enforcemen
 
 #### Considerations
 
-* Consent orchestration does not yet enforce AudienceStream activations or support visitor-level consent conditions (such as consent-based badges) in Audiences. Until support is added, use manual consent conditions in AudienceStream as described in [Server-side consent management](https://docs.tealium.com/server-side-consent-management/).
+* Consent orchestration does not yet enforce CDP activations or support visitor-level consent conditions (such as consent-based badges) in Audiences. Until support is added, use manual consent conditions in CDP as described in [Server-side consent management](https://docs.tealium.com/server-side-consent-management/).
 * Ensure that your server-side profiles are configured correctly to use consent orchestration.
 * Server-side customers using the consent manager still need to implement [manual enforcements](https://docs.tealium.com/manual-enforcement/) until migration to consent orchestration is possible.
 
 ### Consent manager
 
-The [consent manager](https://docs.tealium.com/about-consent-management/) is an older client-side solution for capturing and enforcing user consent. It includes a simple, built-in user interface to collect consent choices and applies enforcement using load rules and tag configurations in Tealium iQ Tag Management.
+The [consent manager](https://docs.tealium.com/about-consent-management/) is an older client-side solution for capturing and enforcing user consent. It includes a simple, built-in user interface to collect consent choices and applies enforcement using load rules and tag configurations in Tag Management.
 
 The consent manager remains supported for existing implementations. However, for new projects, we recommend using the [CookieConsent consent integration](https://docs.tealium.com/cookieconsent-consent-integration/), which provides better flexibility, accessibility, and alignment with modern privacy standards.
 
@@ -172,13 +172,13 @@ For all new implementations, use CookieConsent consent integration instead of th
 
 ### Manual consent conditions
 
-Manual consent conditions are custom logic configured in EventStream or AudienceStream to enforce user consent directly using processing rules. This approach was commonly used before consent orchestration and is still used in some existing or transitional setups.
+Manual consent conditions are custom logic configured in Event Streaming or CDP to enforce user consent directly using processing rules. This approach was commonly used before consent orchestration and is still used in some existing or transitional setups.
 
 Instead of relying on centralized enforcement like the consent enforcement framework or consent orchestration, this method lets you define consent logic manually with rule-based conditions in your processing workflows.
 
 #### When to use it
 
-Use manual consent conditions if you are still transitioning from the consent manager to consent orchestration, or if you need to enforce consent in AudienceStream, which is not yet supported by consent orchestration.
+Use manual consent conditions if you are still transitioning from the consent manager to consent orchestration, or if you need to enforce consent in CDP, which is not yet supported by consent orchestration.
 You are still transitioning from consent manager to consent orchestration.
 
 #### Limitations
@@ -196,7 +196,7 @@ We plan to replace the consent manager with [CookieConsent consent integration](
 
 **Does the new open source tool CookieConsent support consent logging?**
 
-Not directly. However, Tealium provides a [logging extension](https://docs.tealium.com/cookieconsent-v3-logging-extension/) that listens for consent decisions and sends them as a JSON payload to Tealium Collect (with EventDB or EventStream) or any other endpoint you configure. The extension can be lightly customized to match your system’s requirements.
+Not directly. However, Tealium provides a [logging extension](https://docs.tealium.com/cookieconsent-v3-logging-extension/) that listens for consent decisions and sends them as a JSON payload to Tealium Collect (with EventDB or Event Streaming) or any other endpoint you configure. The extension can be lightly customized to match your system’s requirements.
 
 **Is Tealium part of the IAB’s Transparency and Consent Framework (TCF)?**
 

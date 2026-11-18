@@ -42,7 +42,7 @@ This connector uses batched requests to support high-volume data transfers to th
 
 ## Delayed actions
 
-Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see Google's [Best practices for uploading offline conversions](https://support.google.com/searchads/answer/6074338?hl=en) documentation.
+Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see Google's [Best practices for uploading offline conversions](https://support.google.com/google-ads/answer/15081888?hl=en) documentation.
 
 
 <blockquote>

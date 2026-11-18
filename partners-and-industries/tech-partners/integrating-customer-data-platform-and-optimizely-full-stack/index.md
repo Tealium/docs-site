@@ -1,6 +1,6 @@
 ---
-title: Integrating AudienceStream and Optimizely Full Stack
-description: This article describes best practices used to integrate Tealium AudienceStream and Optimizely Full Stack.
+title: Integrating Customer Data Platform (CDP) and Optimizely Full Stack
+description: This article describes best practices used to integrate Customer Data Platform (CDP) and Optimizely Full Stack.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/integrating-customer-data-platform-and-optimizely-full-stack/
 ---## Prerequisites
 
@@ -9,7 +9,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/integrating-
 
 ## How it works
 
-Leveraging Tealium AudienceStream audiences and badges within Optimizely Full Stack lets you target specific features or experiments to a subset of your users.
+Leveraging CDP audiences and badges within Optimizely Full Stack lets you target specific features or experiments to a subset of your users.
 
 
 ## Limitations and considerations

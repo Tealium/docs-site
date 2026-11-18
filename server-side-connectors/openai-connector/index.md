@@ -58,7 +58,7 @@ This connector uses the following vendor API:
 Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
 After adding the connector, configure the following settings:
-* **API Key**: The OpenAI API key used to authenticate requests. The key must have permission to create responses (model inference) with either **All** or **Restricted** permission. It cannot have **Read Only** permission. For more information, see [OpenAI: Assign API Key Permissions](https://help.openai.com/en/articles/8867743-assign-api-key-permissions).
+* **API Key**: The OpenAI API key used to authenticate requests. The key must have permission to create responses (model inference) with either **All** or **Restricted** permission. It cannot have **Read Only** permission. For more information, see [OpenAI: Managing Admin keys in Admin Console](https://help.openai.com/en/articles/20001407-managing-admin-keys-in-admin-console).
 
 After you configure the connector, click **Done**.
 

@@ -1,6 +1,6 @@
 ---
-title: What is tag management?
-description: If you're new to Tealium, this overview will prepare you to start working with tag management.
+title: What is Tag Management?
+description: If you're new to Tealium and tag management, this overview will prepare you to start working with Tag Management.
 url: https://docs.tealium.com/tag-management/getting-started/what-is-tealium-tag-management/
 ---
 Before you begin, here is a quick video overview of tag management:
@@ -15,7 +15,7 @@ A tag is a term used in the web technology and analytics industry to describe a 
 
 ## What is tag management?
 
-Tag Management is a system for managing the configuration, testing, and release of third-party vendor tags to a digital property. This approach replaces the hard-coded tags on your site with a single container tag. Once this tag is in place, you have full control over adding, removing, and updating the tags on your site directly from the tag management interface.
+Tag Management is a system for managing the configuration, testing, and release of third-party vendor tags to a digital property. This approach replaces the hard-coded tags on your site with a single container tag. Once this tag is in place, you have full control over adding, removing, and updating the tags on your site directly from the Tag Management interface.
 
 ![](https://docs.tealium.com/images/tag-management/what-is-tag-management.png)
 

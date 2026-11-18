@@ -11,7 +11,7 @@ The Omnichannel File Status API returns a File Status that details when the file
 To use the Omnichannel File Status API, you will need the following:
 
 * A configured [file import data source](https://docs.tealium.com/about-file-import/)
-* An API key from Tealium iQ Tag Management
+* An API key from Tag Management
 
 ## Authentication
 

@@ -1,6 +1,6 @@
 ---
 title: Tealium + Invoca Integration Guide
-description: This article describes how to get the most out of Tealium and Invoca by setting up the Invoca tag in Tealium iQ Tag Management and then enabling the bi-directional integration in Tealium AudienceStream.
+description: This article describes how to get the most out of Tealium and Invoca by setting up the Invoca tag in Tag Management and then enabling the bi-directional integration in Customer Data Platform (CDP).
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-invoca-integration-guide/
 ---
 With bi-directional integration, Tealium and Invoca help organizations use Invoca call interaction data and cross-channel customer profiles. This integration powers intelligent customer engagements and provides accurate insights.
@@ -8,8 +8,8 @@ With bi-directional integration, Tealium and Invoca help organizations use Invoc
 ## Requirements
 
 Tealium
-  * (Required) iQ Tag Management
-  * (Recommended) AudienceStream to achieve the most value out of the bi-directional integration.
+  * (Required) Tag Management
+  * (Recommended) Customer Data Platform (CDP) to achieve the most value out of the bi-directional integration.
 
 Invoca
   * (Required) A network account. This integration is only available for network Invoca accounts. For more information, see [Invoca: Platform Organization and Account Types](https://community.invoca.com/t5/invoca-overview/platform-organization-and-account-types/m-p/466#U466).
@@ -24,7 +24,7 @@ Invoca helps marketers optimize for the most important step in the customer jour
 
 See the [Tealium + Invoca Technology Partnership Overview](https://tealium.com/technology-partner/invoca/) for more information.
 
-## Section 1: Manage your Invoca tag using Tealium iQ
+## Section 1: Manage your Invoca tag using Tag Management
 
 Use the following steps to add an Invoca tag:
 
@@ -121,7 +121,7 @@ If the Invoca tag consistently runs before the Tealium script that sets the iden
 
 To set up your Tealium account to send visitor profile data back to Invoca, use the following steps:
 
-1. Log in to your Tealium iQ account and go to your Invoca tag.
+1. Log in to your Tag Management account and go to your Invoca tag.
 1. Create a custom data mapping for each parameter in your Tealium account that you want to send to Invoca. You can send as many of these variables as you want to Invoca, limited only by the number of custom marketing data fields available in your Invoca account.
 1. Name the destination of each data mapping according to the variable you’ve selected. For example, use the name `invoca_leadscore` for a lead score variable.
 1. Save a list of all your destination names in a note.
@@ -143,7 +143,7 @@ To set up your Tealium account to send visitor profile data back to Invoca, use 
 
 ## Section 4: Validate your integration using Tealium Live Events and add Event Specifications
 
-Using event specifications in Tealium EventStream, you can view the following to validate and troubleshoot your Invoca for Tealium integration:
+Using event specifications in Event Streaming, you can view the following to validate and troubleshoot your Invoca for Tealium integration:
 
 * Live events.
 * A record of your Invoca Tag firing.
@@ -151,7 +151,7 @@ Using event specifications in Tealium EventStream, you can view the following to
 
 To create event specifications for your Invoca + Tealium integration:
 
-1. Log in to your Tealium account and go to EventStream.
+1. Log in to your Tealium account and go to Event Streaming.
 1. Go to **Data Sources** and scroll down to the **Invoca Post-Call Webhook** data source.
 1. Click **View in Live Events**.
 1. From the **Live Events** menu, find and select an event sent by an Invoca webhook. You will see all of the data sent to Tealium from one phone call.

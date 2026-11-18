@@ -3,7 +3,7 @@ title: iQ Revisions objects
 description: Revisions are returned as JSON objects.
 url: https://docs.tealium.com/api-v1/iq-revisions/data-objects/
 ---
-This is an older version of the [current Tealium iQ Revisions API](https://docs.tealium.com/about-iq-revisions/).
+This is an older version of the [current Tag Management Revisions API](https://docs.tealium.com/about-iq-revisions/).
 
 Revisions are returned as JSON objects containing the following fields:
 

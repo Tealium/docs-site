@@ -1,5 +1,5 @@
 ---
-title: How tag management works
+title: How Tag Management works
 url: https://docs.tealium.com/tag-management/getting-started/how-tag-management-works/
 ---
 
@@ -9,9 +9,9 @@ url: https://docs.tealium.com/tag-management/getting-started/how-tag-management-
 
 ## Client-side approach
 
-Tealium Tag Management distinguishes itself from other solutions as being a client-side solution. Most tag managers rely on an application server to facilitate the execution of tags in their system. An application server determines which tags to load and how to run them, then sends this configuration back to the browser on every page load. A more scalable and optimized approach is to bypass the application server and provide all the tag configuration logic from a static JavaScript file that can be processed solely by the browser.
+Tag Management distinguishes itself from other solutions as being a client-side solution. Most tag managers rely on an application server to facilitate the execution of tags in their system. An application server determines which tags to load and how to run them, then sends this configuration back to the browser on every page load. A more scalable and optimized approach is to bypass the application server and provide all the tag configuration logic from a static JavaScript file that can be processed solely by the browser.
 
-In Tag Management, your vendor tag configuration and business logic is represented in JavaScript code that resides inside the main client-side library called `utag.js`. As visitors browse your site, this file is loaded and, within the browser itself (the client-side), determines which additional vendor tags to load and how to send their data. Once these files have been retrieved by the browser, they are cached for subsequent page views to optimize network traffic and page performance.
+Your vendor tag configuration and business logic is represented in JavaScript code that resides inside the main client-side library called `utag.js`. As visitors browse your site, this file is loaded and, within the browser itself (the client-side), determines which additional vendor tags to load and how to send their data. Once these files have been retrieved by the browser, they are cached for subsequent page views to optimize network traffic and page performance.
 
 ## Content delivery network (CDN)
 

@@ -16,7 +16,7 @@ In most cases where the Custom Container tag might be used, the [Tealium Generic
 
 ## How it works
 
-The Tealium Custom Container tag uses the same code template as official integrations found in the tag marketplace. Tags built with the Custom Container can leverage native functionality of iQ such as built-in E-Commerce extension variables, data mappings, event tracking, and other extensions.
+The Tealium Custom Container tag uses the same code template as official integrations found in the tag marketplace. Tags built with the Custom Container can leverage native functionality of Tag Management such as built-in E-Commerce extension variables, data mappings, event tracking, and other extensions.
 
 While it is best practice to use a pre-built tag from the [tag marketplace](), if the tag you want is not available then you have a few options for adding the tag. The majority of tags can be implemented using either the [Tealium Generic Tag]() or the [Tealium Pixel Container tag]().
 
@@ -47,7 +47,7 @@ The following table lists the different sections of code, each of which begins w
 |**Template Code**| **Description**| **Notes**|
 |-----------------| ---------------| ---------|
 |Tag Library Code| Experienced users may add static library functions, or a third-party URL to instantiate and load library code.| Lines 21-22. This section is empty by default.|
-|Tag-Scoped Extensions Code| `##UTGEN##` is a placeholder area where the publish engine later inserts the code for Tealium iQ extensions, scoped to the tag.| Lines 56-59. Do not edit this section.|
+|Tag-Scoped Extensions Code| `##UTGEN##` is a placeholder area where the publish engine later inserts the code for Tag Management extensions, scoped to the tag.| Lines 56-59. Do not edit this section.|
 |Mapping Code| This section makes a one-to-one mapping between the selected values and items that have been mapped into the template as part of the `u.data` object.|  Lines 62-71. The default code works for majority of use cases. Test any changes thoroughly. |
 |Tag Sending Code|  The vendor's tag requires specific data to be processed or formatted first before the vendor URL is called. | Lines 74-78. Changes typically include URL modifications, changing a datapoint value to meet vendor specifications, formatting data into query string parameters, etc.|
 |Loader Callback Function|  Some tags may require data be sent after their JavaScript file has been loaded, these data changes should be done within the loader callback to ensure proper timing. If the tag requires any changes or formatting for the data this can also be done in the loader callback function. The same `u.data` values available before a file is loaded will be available in the callback. | Lines 81-93.  Uncomment the `// ` comments to enable use of the loader callback function, which lets you load external JavaScript files. Within the loader callback function, insert the JavaScript code to run after the external JavaScript file has loaded. The line `u.initialized=true;` prevents the JavaScript file from being loaded a second time if there is a `utag.view` or `utag.link` call, as most tags requiring an external JavaScript files should not have it loaded again. |
@@ -70,13 +70,13 @@ The following table describes the variables found in the custom container templa
 |`utag.ut.loader`| A function that is referenced for use by the template. If the loader function is undefined, doesn’t see a legitimate match (as determined above), or the second substring of the match is less than the number specified, the template’s definition of the loader function is used. This function is responsible for making the necessary image, iframe, or script request. The exact resource is configured later in the template when the function is invoked. If, for some reason, the loader function comes in undefined, a definition is provided as a fallback.|
 |`utag.ut.typeOf`| A function, with a similar check to `utag.ut.loader`, that provides similar functionality to the `typeOf` operator, but does not return ‘object’ for `null`, and returns a more descriptive value for various data types, both basic and abstract, using the `toString()` function.|
 |`u.ev`| This object is created, containing a lookup of which Tealium events ( `view` or `link`) the template will respond to. This check occurs at the beginning of the `u.send` function.|
-|`##UTGEN##`| The first publish engine marker, where the publish engine inserts the code for Tealium iQ extensions scoped to the tag.|
+|`##UTGEN##`| The first publish engine marker, where the publish engine inserts the code for Tag Management extensions scoped to the tag.|
 |`u.map`| Object containing the look ups for the parameter and events mappings.|
 |`u.extend`| Array containing the extension function definitions. Occasionally an extension is added with the purpose of returning false as a way to stop the tag from executing fully.|
 |`u.callBack`| The callback made by the script/image/iframe request, and will in turn invoke `u.loader_cb`|
 |`u.loader_cb`| Callback function invoked by `u.callBack`.|
 |`u.send`|  Function that accepts two arguments, `a` and `b`, with various `u.send`-specific parameters defined: <ul><li>`a` - The type of event string such as `view` or `link`.</li><li>`b` - The data layer (copy) passed to the template file.</li><li>`c` - The `for` loop counter that executes extensions.</li><li>`d` - The `u.map` object key iterator for the `for…in` loop.</li><li>`e` - The array that contains the split on `,` of a particular mapping. This allows checking against multiple mappings</li><li>`f` - The `for` loop iterator of the `e` array that sets mapped values into the `u.data` object.</li><li>`g` - (reserved/do not use)</li><li>`h` - The array that contains the split on `:` for event mapping.</li></ul> |
-|`u.data`| Object populated with configurations from Tealium iQ. `##UTVARconfig_<UI configuration>##` is the marker for the publish engine to insert those values. The `<UI configuration>` corresponds to the ID of the object in the `configFields` array in `utui.config.before-min.js/utui.config.js`|
+|`u.data`| Object populated with configurations from Tag Management. `##UTVARconfig_<UI configuration>##` is the marker for the publish engine to insert those values. The `<UI configuration>` corresponds to the ID of the object in the `configFields` array in `utui.config.before-min.js/utui.config.js`|
 |`u.data.base_url`| The base URL variable. This is the URL to load the vendor file without dynamic values or the fully dynamic URL.|
 |`utag.DB`| Debug statements to indicate execution of the tag.|
 

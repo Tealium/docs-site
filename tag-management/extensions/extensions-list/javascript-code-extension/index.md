@@ -1,6 +1,6 @@
 ---
 title: JavaScript Code Extension
-description: The JavaScript Code extension is designed for implementing custom JavaScript ES5 code through Tealium iQ Tag Management. It comes with a built-in code editor and configuration options for when and where to run the code.
+description: The JavaScript Code extension is designed for implementing custom JavaScript ES5 code through Tag Management. It comes with a built-in code editor and configuration options for when and where to run the code.
 url: https://docs.tealium.com/tag-management/extensions/extensions-list/javascript-code-extension/
 ---
 ## Prerequisites
@@ -108,7 +108,7 @@ Use the following steps to configure the JavaScript code extension:
 
 #### Why can't I edit the code in the editor?
 
-You do not have the [Manage JS Code Extension permission]() in your Tealium iQ account. Contact your Tealium account administrator to obtain the permission.
+You do not have the [Manage JS Code Extension permission]() in your Tag Management account. Contact your Tealium account administrator to obtain the permission.
 
 #### Why can't I set the scope to **Pre Loader**?
 

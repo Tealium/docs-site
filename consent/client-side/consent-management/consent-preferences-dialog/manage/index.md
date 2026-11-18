@@ -155,7 +155,7 @@ The default state for categories determines if tags should fire.
 
 ### Tag to omit
 
-Not all tags deployed by iQ Tag Management are for tracking or data collection. Tags and extensions are also used to serve site functionality, such as popup modals, product feedback, site support, or chat clients. Use the Tags to Omit setting to create a list of tags to be exempted from the consent preferences popup.
+Not all tags deployed by Tag Management are for tracking or data collection. Tags and extensions are also used to serve site functionality, such as popup modals, product feedback, site support, or chat clients. Use the Tags to Omit setting to create a list of tags to be exempted from the consent preferences popup.
 
 ## JavaScript code
 

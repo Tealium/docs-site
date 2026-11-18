@@ -19,7 +19,7 @@ This connector requires the following:
 
 ### Permissions
 
-* To upload conversions from any source (such as bulksheets, the Search Ads 360 API, or the Campaign Manager 360 API), you need edit access to the sub-manager account where you upload conversions. For details, see [Google: About user permissions by assigning roles](https://support.google.com/searchads/answer/1409946).
+* To upload conversions from any source (such as bulksheets, the Search Ads 360 API, or the Campaign Manager 360 API), you need edit access to the sub-manager account where you upload conversions. For details, see [Google: About user permissions by assigning roles](https://support.google.com/sa360/answer/12362595?hl=en&sjid=16169757433379193352-NC).
 * In a shared Floodlight setup, you need edit access to each child sub-manager account where you upload conversions. You do not need access to the parent sub-manager or to child sub-managers where you are not uploading conversions. For more information, see [Google: Edit a Floodlight instruction](https://support.google.com/sa360/answer/13400844).
 * If you use click IDs to track conversions, you need edit access to the sub-manager that generated the click ID. If you use a click ID from a sub-manager you cannot edit, the upload fails. For more information, see [Google: Edit the downloaded bulksheet](https://support.google.com/sa360/answer/13607450).
 

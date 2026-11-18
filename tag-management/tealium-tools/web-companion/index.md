@@ -5,18 +5,18 @@ url: https://docs.tealium.com/tag-management/tealium-tools/web-companion/
 ---
 ## Install Web Companion
 
-Web Companion can be installed from your iQ Tag Management account or directly from the Tealium Tools browser plugin.
+Web Companion can be installed from your Tag Management account or directly from the Tealium Tools browser plugin.
 
 ### From Tealium Tools
 
 1. Install the [Tealium Tools browser plugin](https://docs.tealium.com/tealium-tools-browser-extension/).
 1. In the **Home** tab, click **Web Companion**.
 
-### Using iQ Tag Management
+### Using Tag Management
 
 Use the following steps to install Web Companion:
 
-1. Click your name in the upper-right corner of TiQ console.
+1. Click your name in the upper-right corner of the Tag Management console.
 1. Under **Account Admin** settings, select **Web Companion** from the drop-down list.  
 A pop-up window containing instructions to install Web Companion displays.
 1. Drag the **Tealium Web Companion** link from the message box on to your browser's bookmark bar.  
@@ -113,7 +113,7 @@ Use this tool to assist in the configuration of the Adobe Target tag in your acc
 
 
 <blockquote>
-An extension or load rule added to your account with Web Companion is not active until you return to iQ Tag Management to enable and publish them.
+An extension or load rule added to your account with Web Companion is not active until you return to Tag Management to enable and publish them.
 </blockquote>
 
 

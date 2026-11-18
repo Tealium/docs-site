@@ -5,14 +5,14 @@ url: https://docs.tealium.com/api/v3/iq-profiles/about/
 ---
 ## How it works
 
-iQ Profiles is an API endpoint that makes your iQ Tag Management configuration available programmatically. Use this endpoint to retrieve specific configuration components, such as tags, extensions, load rules, events, and variables, and to add, edit, and delete a limited subset of components.
+iQ Profiles is an API endpoint that makes your Tag Management configuration available programmatically. Use this endpoint to retrieve specific configuration components, such as tags, extensions, load rules, events, and variables, and to add, edit, and delete a limited subset of components.
 
 Use this API to access the versions and change history of your profiles and integrate your own SDLC.
 
 iQ Profiles supports three requests:
 
 * **GET**  
-Returns specific content about iQ Tag Management account profiles, including: load rules, tags, tag templates, events, extensions, variables, and version IDs.
+Returns specific content about Tag Management account profiles, including: load rules, tags, tag templates, events, extensions, variables, and version IDs.
 * **PATCH**  
 Perform create, update, and delete operations on a limited subset of configuration components. Using this method results in new saved versions of your profile.
 * **POST (publish)**  

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/adobe-analytics-2-connec
 ---
 ## 仕組み
 
-Adobe Analytics 2.0 コネクタは、Web ページやモバイルアプリで JavaScript ビーコンを使用する代わりに、[Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) を使用して分析データを送信します。これにより、クライアント側から送信されるデータ量を削減できるほか、オーディエンスデータと訪問データを Adobe Analytics に渡せるという利点もあります。
+Adobe Analytics 2.0 コネクタは、Web ページやモバイルアプリで JavaScript ビーコンを使用する代わりに、[Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-collection-apis/methods/bulk-data-insertion/) を使用して分析データを送信します。これにより、クライアント側から送信されるデータ量を削減できるほか、オーディエンスデータと訪問データを Adobe Analytics に渡せるという利点もあります。
 
 ## Adobe Analytics 2.0 コネクタの相違点
 
@@ -280,8 +280,6 @@ Product Category: ["Footwear", "Apparel"] Product ID: ["Running Shoes", "T-Shirt
 ### カスタムID値
 
 Adobeでは、Adobe Experience Cloud Identity Serviceで使用される識別子の生成プロセスを簡素化する方法を提供しています。Adobeは、[setCustomerIDs](https://experienceleague.adobe.com/en/docs/id-service/using/id-service-api/methods/setcustomerids)メソッドの顧客IDのいずれかをシードとして使用し、Adobe Experience Cloud訪問IDを生成できます。
-
-詳細については、[Adobe Analytics 2.0 API](https://github.com/AdobeDocs/analytics-2.0-apis/blob/main/src/pages/guides/endpoints/bulk-data-insertion/mcseed.md)を参照してください。
 
 #### フィールド
 

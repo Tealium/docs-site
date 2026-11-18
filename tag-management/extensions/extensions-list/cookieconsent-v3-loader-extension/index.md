@@ -3,7 +3,7 @@ title: CookieConsent v3 Loader
 description: Use the CookieConsent v3 Loader extension to load and configure the open source CookieConsent consent management tool on your site.
 url: https://docs.tealium.com/tag-management/extensions/extensions-list/cookieconsent-v3-loader-extension/
 ---
-The CookieConsent v3 Loader extension lets you implement [CookieConsent: CookieConsent v3](https://cookieconsent.orestbida.com/) through Tealium iQ instead of directly on your site, enabling better control and versioning. It loads the required JavaScript and CSS files and runs your custom configuration to render the consent banner and modal.
+The CookieConsent v3 Loader extension lets you implement [CookieConsent: CookieConsent v3](https://cookieconsent.orestbida.com/) through Tag Management instead of directly on your site, enabling better control and versioning. It loads the required JavaScript and CSS files and runs your custom configuration to render the consent banner and modal.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ When the page loads, the extension:
 
 ## How to configure
 
-1. In Tealium iQ, go to **Extensions** and click **Add Extension**.
+1. In Tag Management, go to **Extensions** and click **Add Extension**.
 1. Click the **Privacy** tab.
 1. Click **+ Add** next to the **CookieConsent v3 Loader** extension.
 1. Enter a **Title** for the extension.

@@ -3,7 +3,7 @@ title: About consent integrations
 description: This article provides an overview of client-side consent integrations.
 url: https://docs.tealium.com/consent/client-side/consent-integrations/about/
 ---
-The Consent Enforcement Framework is a core feature of client-side consent integrations that enforces consent signals captured outside Tealium iQ Tag Management. This feature blocks tracking when customer consent is not given or is ambiguous.
+The Consent Enforcement Framework is a core feature of client-side consent integrations that enforces consent signals captured outside Tag Management. This feature blocks tracking when customer consent is not given or is ambiguous.
 
 Consent integrations supports both opt-in (GDPR-style) and opt-out (CCPA-style) enforcement patterns for supported consent management platforms (CMPs). Integrations can use templates to support most CMPs or custom solutions.
 
@@ -40,11 +40,11 @@ Each consent integration instructs the underlying framework how to communicate w
 
 
 <blockquote>
-Tags that inject CMPs into the page are incompatible with consent integrations. Integrations require a signal from the CMP before tags load. To integrate your CMP with consent integrations, use a Pre Loader or DOM Ready extension, or add the CMP to the page outside Tealium iQ.
+Tags that inject CMPs into the page are incompatible with consent integrations. Integrations require a signal from the CMP before tags load. To integrate your CMP with consent integrations, use a Pre Loader or DOM Ready extension, or add the CMP to the page outside Tag Management.
 </blockquote>
 
 
-You can set up an integration with a supported CMP in the Tealium iQ dashboard, or create a custom integration by editing the **Custom template**.
+You can set up an integration with a supported CMP in the Tag Management dashboard, or create a custom integration by editing the **Custom template**.
 
 ## Supported integrations
 

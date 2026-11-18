@@ -335,4 +335,4 @@ For more information, see [connector-template-helper-functions](https://docs.tea
 
 Connector templates are built on Trimou, a Java templating engine based on Mustache.
 
-* [Trimou 2.3.0 Documentation](http://trimou.org/doc/2.3.0.Final/trimou-doc.html)
+* [Trimou 2.3.0 Documentation](https://github.com/trimou/trimou/blob/master/doc/src/asciidoc/trimou-doc.asciidoc)

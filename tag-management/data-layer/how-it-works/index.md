@@ -29,7 +29,7 @@ The following graphic shows how individual variables come together to create you
 
 When you install Tealium on a web page, the data layer object behaves as follows:
 
-1. All variables defined in Tealium iQ Tag Management are identified.
+1. All variables defined in Tag Management are identified.
 1. Variables are combined into `utag.data`.
 1. `utag.data` is copied to the locally scoped `b` object as needed.
 1. Extensions run, which might modify the `b` object.

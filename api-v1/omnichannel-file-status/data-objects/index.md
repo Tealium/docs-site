@@ -10,7 +10,7 @@ The API returns a _File Status_ that details when the files imported and how the
 
 |Name| Type| Description|
 |---| ---| ---|
-|account| string| Name of the AudienceStream account|
+|account| string| Name of the Customer Data Platform (CDP) account|
 |profile| string| Name of the profile (in the account) where your files are uploaded and processed |
 |created at| UTC timestamp| date and time when the file status was created (expressed in [UTC format with the designator 'Z'](https://www.w3.org/TR/NOTE-datetime))|
 |file.name| string| Name of the file in question|

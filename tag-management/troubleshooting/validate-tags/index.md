@@ -1,6 +1,6 @@
 ---
 title: Validate and troubleshoot tags
-description: This guide explains how to validate client-side tags that have been implemented in Tealium iQ. It will cover several methods to ensure that tags are loading and that data is being sent.
+description: This guide explains how to validate client-side tags that have been implemented in Tag Management. It will cover several methods to ensure that tags are loading and that data is being sent.
 url: https://docs.tealium.com/tag-management/troubleshooting/validate-tags/
 ---
 ## Getting started
@@ -122,7 +122,7 @@ Use the following steps to validate using Chrome Developer tools:
 This example uses Google Analytics, but you can use any tag.  
     ![](https://docs.tealium.com/images/tag-management/section-page-2017-12-28-13-12-38.png)
 
-1. In Tealium iQ, find the **Tracking ID** in the configuration portion of the tag and copy the ID number.  
+1. In Tag Management, find the **Tracking ID** in the configuration portion of the tag and copy the ID number.  
     ![](https://docs.tealium.com/images/tag-management/tiq---services-christina-2017-12-28-13-13-14.png)
 
 1. Navigate back to your site where the Network tab is still open and paste the ID number in the **Filter** box.  

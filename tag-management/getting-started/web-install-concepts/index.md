@@ -13,7 +13,7 @@ Learn more about the [data layer variables](https://docs.tealium.com/platforms/j
 
 ## Event names
 
-Event names use the reserved variable `tealium_event` to uniquely identify each type of interaction to be tracked. This variable is referenced throughout Tealium to configure load rules, extensions, and data mappings. Use additional variables names of your choosing for all other event data.
+Event names use the reserved variable `tealium_event` to uniquely identify each type of interaction to be tracked. This variable is referenced throughout Tag Management to configure load rules, extensions, and data mappings. Use additional variables names of your choosing for all other event data.
 
 Learn more about [tracking events and event names](https://docs.tealium.com/platforms/javascript/track/).
 

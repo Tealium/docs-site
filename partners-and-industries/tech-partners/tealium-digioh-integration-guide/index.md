@@ -6,7 +6,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-digi
 ## Prerequisites
 
 * [Digioh Account](https://digioh.com/login)
-* Tealium EventStream API Hub or Tealium AudienceStream CDP account
+* Event Streaming API Hub or Customer Data Platform (CDP) account
 
 ## How it works
 

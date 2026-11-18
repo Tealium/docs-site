@@ -1,6 +1,6 @@
 ---
 title: Order of operations
-description: This article describes the order of operations for the Universal Tag (utag.js) and how it relates to your configuration in iQ Tag Management.
+description: This article describes the order of operations for the Universal Tag (utag.js) and how it relates to your configuration in Tag Management.
 url: https://docs.tealium.com/tag-management/getting-started/order-of-operations/
 ---
 For information about managing the load order of your configuration see the [Load Order Manager]().
@@ -60,7 +60,7 @@ After Pre Loader extensions are complete, and if you have the consent manager en
 
 #### Process data layer
 
-After Pre Loader extensions are complete, the Universal Tag is initialized and the data layer is processed. During this step the Universal Data Object (`utag_data`) is combined with data from the rest of the web page such as, first-party cookies, meta tags, query string parameters, and global JavaScript variables, to form the final data layer object, `utag.data`. The data from this object can be used in your iQ configuration.
+After Pre Loader extensions are complete, the Universal Tag is initialized and the data layer is processed. During this step the Universal Data Object (`utag_data`) is combined with data from the rest of the web page such as, first-party cookies, meta tags, query string parameters, and global JavaScript variables, to form the final data layer object, `utag.data`. The data from this object can be used in your Tag Management configuration.
 
 ### Before load rules
 

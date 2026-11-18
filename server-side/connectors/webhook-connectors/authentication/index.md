@@ -75,7 +75,7 @@ Use the following settings for OAuth2 (2-legged) with mTLS authentication:
 
 | Setting | Description |
 |---------|-------------|
-| Key Algorithm | The algorithm used to generate the client certificate. Select **RSA-2048**, **RSA-3072**, or **RSA-4096** based on your security requirements. |
+| Key Algorithm | The algorithm used to generate the client certificate. Select **RSA-2048**, **RSA-3072**, or **RSA-4096** based on your security requirements. Tealium sets the certificate subject automatically and you cannot customize it. |
 | Apply mTLS encryption on second leg | (Optional) When enabled, the client certificate is also presented during the TLS handshake of every delivery request, in addition to the OAuth2 token request. The OAuth2 Authorization header is still sent on every delivery request. Token acquisition is unchanged in both modes. When disabled (default), only the token request presents the client certificate. Delivery requests use the standard platform HTTP client. Enable this setting when your API requires the client certificate to be validated on the business API call, not only on the token endpoint. Changing this setting starts a new batch buffer. Records already queued are delivered under the previous setting. |
 
 To configure OAuth2 (2-legged) with mTLS authentication for the webhook connector:
@@ -107,6 +107,7 @@ Use the following settings for mTLS authentication:
 * **Key Algorithm**: (Required) Select an algorithm to generate the key pair and the public certificate signed by DigiCert.
   * The generated key pair and certificate are presented as the client certificate during the TLS handshake on every delivery request.
   * The private key is stored in PKCS#1 format (`-----BEGIN RSA PRIVATE KEY-----`). PKCS#8 keys (`-----BEGIN PRIVATE KEY-----`) are not supported.
+  * Tealium sets the certificate subject automatically and you cannot customize it.
 * **Test Endpoint URL**: (Optional) An HTTPS endpoint used only by Test Connection to verify the mTLS handshake.
   * This field is not the delivery URL. Delivery URLs are configured per action.
   * Test Connection always validates the format and expiry of the certificate and private key. If you leave this field blank, Test Connection does not exercise the mTLS handshake.

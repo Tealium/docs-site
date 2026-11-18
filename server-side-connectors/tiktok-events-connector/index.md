@@ -92,7 +92,7 @@ The following section describes how to set up parameters and options for each ac
 | Pixel ID Override  | The pixel ID in **TikTok Events Manager**. This setting overrides **Pixel ID** used in the **Configuration** section. |
 | Access Token Override | A custom access token to override the value in the configuration. |
 | Event ID  | Any hashed ID that can identify a unique user or session. For example, `SessionID_RandomNumber`. If you set [Generate Event ID in the TikTok Pixel tag](https://docs.tealium.com/tiktok-pixel-tag/) to `true`, this ID is automatically generated for every TikTok tracking event. |
-| Limited Data Use | This field is only supported when the Event Source is `WEB` or `APP`. Limited data processing setting. To learn more about the Limited Data Use Feature, see [TikTok: Limited Data Use](https://business-api.tiktok.com/portal/docs?id=1771101204435970). |
+| Limited Data Use | This field is only supported when the Event Source is `WEB` or `APP`. Limited data processing setting. |
 | Test Event Code | Send test events to exclude them from production data in TikTok Events Manager (TTEM). Retrieve the `test_event_code` in the **Test Events** tab of TTEM. |
 
 #### Ad Data

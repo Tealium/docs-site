@@ -10,7 +10,7 @@ The opt-out consent manager notifies your users of your policy for processing pe
 
 The banner informs your users about your policy and provides a link to your **Do Not Sell My Information** page required opt-out models such as CCPA. The popup is triggered from the banner and allows a visitor to opt-out of the sale of personal information or set preferences for the sale of their personal information.
 
-This feature is integrated with your Tealium iQ Tag Management account to make it easy to configure and categorize vendor tags that might be governed by CCPA. The tags that you identify as selling information can be categorized as **Dot Not Sell** and presented to your users in the popup.
+This feature is integrated with your Tag Management account to make it easy to configure and categorize vendor tags that might be governed by CCPA. The tags that you identify as selling information can be categorized as **Dot Not Sell** and presented to your users in the popup.
 
 ## Visitor experience
 

@@ -16,7 +16,12 @@ The Reddit Pixel tag tracks post-ad interactions and supports conversion measure
 * Purchase event fires when **Order ID** is set.
 * To make Reddit Pixel event IDs available as server-side attributes, set **Generate Event ID** to `true` and use the latest version of the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 * We recommend using the [Reddit Conversions connector](https://docs.tealium.com/reddit-conversions-connector/) conversion ID configuration only if you are implementing both the Reddit Pixel tag and the Reddit Conversions connector. Using the conversion ID configuration prevents the same conversion event from being counted twice if it is sent across both sources. If this value is passed improperly, it impacts attribution and campaign performance.
+* The tag sends `conversionId` on every event using the following precedence: event-specific override (`<Event>.conversionId`) > Standard Conversion ID > Standard Event ID > generated ID (when **Generate Event ID** is on). If **Generate Event ID** is on and Standard Conversion ID is also mapped, the mapped value takes precedence on every event.
+* The tag converts numeric values mapped to `conversionId` or `transactionId` to strings before sending them to Reddit.
+* When Transaction ID is not mapped, Purchase `transactionId` falls back to the E-Commerce `_corder` variable.
+* Lead and SignUp events support products data. Events with no product data send no `products` key.
 * We recommend using advanced matching for the most accurate conversion tracking and reporting from Reddit. Pass email addresses and phone numbers as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.
+* The tag sends advanced matching keys (`email`, `phoneNumber`, `externalId`, `idfa`, `aaid`) on every event, so values captured after the first tag fire still reach Reddit.
 * Map only parameters you intend to use and confirm support in Reddit documentation.
 * Use event-specific parameters for fine-grained control when different events require different metadata.
 * For revenue events, send both event-level `value` and `itemCount`, and product-level `quantity` and `itemPrice`. Sending only one set of fields can limit reporting or optimization in Reddit Ads.
@@ -149,21 +154,18 @@ Enter the value of the mapped variable needed to trigger the selected event.
 
 To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-management/data-mappings/manage/#add-an-event-mapping)
 
-| Variable        | Description               |
-|:----------------|:--------------------------|
-| `currency`      | Currency.                 |
-| `category`      | Product category.         |
-| `name`          | Product name.             |
-| `id`            | Product ID.               |
-| `quantity`      | Product quantity.         |
-| `itemPrice`     | Product item price.       |
-| `content_type`  | Content type.             |
-| `contents`      | Contents.                 |
-| `predicted_ltv` | Predicted lifetime value. |
-| `search_string` | Search string.            |
-| `status`        | Status.                   |
-| `itemCount`     | Item count.               |
-| `value`         | Value.                    |
+| Variable        | Description         |
+|:----------------|:--------------------|
+| `conversionId`  | Conversion ID.      |
+| `currency`      | Currency.           |
+| `category`      | Product category.   |
+| `name`          | Product name.       |
+| `id`            | Product ID.         |
+| `quantity`      | Product quantity.   |
+| `itemPrice`     | Product item price. |
+| `itemCount`     | Item count.         |
+| `value`         | Value.              |
+| `transactionId` | Transaction ID.     |
 
 ### Advanced matching
 

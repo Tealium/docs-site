@@ -29,7 +29,7 @@ A cloud data source connects your cloud data warehouse or database to Tealium, s
 * **Processing**:  
   Configure the data processing frequency and batch size. 
 * **Query configuration**: 
-  Select from a Basic or Advanced query configuration. Basic lets you select the columns to import from your default schema and refine that data using a SQL `WHERE` clause. Advanced lets you join multiple tables and use advanced SQL commands to have full control over your data processing. In either configuration, use the query modes to control how new or updated rows are detected—using a timestamp column, an incrementing column, or both.
+  Select from a Basic or Advanced query configuration. Basic lets you select the columns to import from your default schema and refine that data using a SQL `WHERE` clause. Advanced lets you join multiple tables and use advanced SQL commands to have full control over your data processing. In either configuration, use the query modes to control how new or updated rows are detected—using a timestamp column, an incrementing column, or both or reimport the full query result on every scheduled run.
 * **Column mapping**:  
   Map the columns from your cloud database to Tealium event attributes. This ensures that data from your source is correctly assigned to the appropriate attributes in Tealium.
 * **Visitor ID mapping**:  
@@ -130,13 +130,14 @@ For more vendor-specific data types, see:
 
 ### Query modes
 
-The cloud data source supports the following three query modes to control how data is imported from your table or view:
+The cloud data source supports the following four query modes to control how data is imported from your table or view:
 
 * Timestamp + Incrementing
 * Timestamp
 * Incrementing
+* Full Resync
 
-Each mode uses a timestamp column, an increment column, or both to determine which rows to import.
+The watermark-based modes (Timestamp + Incrementing, Timestamp, and Incrementing) use a timestamp column, an incrementing column, or both to determine which rows to import. Full Resync imports the full query result on every scheduled run.
 
 #### Requirements for columns
 
@@ -186,6 +187,20 @@ Use this mode if your table does not have a timestamp column.
 
 If you maintain your own increment column, as opposed to using an auto-increment column, ensure that the values always increase. 
 
+#### Full Resync
+
+This mode imports all rows from the configured query on every scheduled run, ignoring any previous watermarks and offsets.
+
+Use this mode for curated snapshot tables, or for queries that compute a current-state result set where a watermarked incremental import would miss rows that need to be re-evaluated on each run. For example, a query that imports every row where `birthday = current_month()` returns a different set of rows each month, and Full Resync reimports the complete set on each run.
+
+Full Resync has the following requirements and restrictions:
+
+* Query frequency must be **Hourly** or **Daily**. Full Resync is not available for Near Real-Time or Weekly.
+* You must specify a **Timestamp Column**, an **Incrementing Column**, or both. The selected columns order rows during import.
+* After you save a data source with Full Resync, you cannot change the query frequency.
+* Full Resync is supported for [Amazon Redshift](https://docs.tealium.com/amazon-redshift-cloud-data-source/), [Databricks](https://docs.tealium.com/databricks-cloud-data-source/), [Google BigQuery](https://docs.tealium.com/google-bigquery-cloud-data-source/), and [Snowflake](https://docs.tealium.com/about-snowflake-cloud-data-source/).
+* Start-point management is not available for Full Resync. For more information, see .
+
 #### Query mode batch processing behavior
 
 Each query mode determines what boundary values the system records at the end of a batch. The next batch uses these recorded values to determine which rows to fetch.
@@ -195,12 +210,19 @@ Each query mode determines what boundary values the system records at the end of
 | Timestamp + Incrementing | Last timestamp value and last increment value |
 | Timestamp | Last timestamp value only |
 | Incrementing | Last increment value only |
+| Full Resync | None. Every scheduled run issues the configured query in full. |
 
 The following example shows how these batch boundaries affect which rows are imported in the next batch.
 
 In this example, a cloud data source fetches data in serial batches of 1,000 rows per scheduled run and continues until no records are returned. Depending on which query mode you use, row 1001 may or may not be imported.
 
 In the following table, `modification_time` is the timestamp column, `customer_id` is the incrementing column, and Batch indicates the batch that the rows are processed in.
+
+
+<blockquote>
+In the following examples, `NOW()` appears only as a batch upper-bound filter in the `WHERE` clause. Do not use `NOW()` or any other dynamic or calculated value as the timestamp or incrementing column. Calculated values are re-evaluated on each batch fetch and can cause skipped rows or ingestion loops. For more information, see [SQL query best practices](https://docs.tealium.com/manage-cloud-data-source/#sql-query-best-practices).
+</blockquote>
+
 
 | `customer_id` | `modification_time` | `customer_segment` | Batch |
 |---------------|---------------------|--------------------|-------|
@@ -304,6 +326,10 @@ The system skips row 1001 because it has the same timestamp value as the previou
 When thousands of records share the same timestamp at a batch boundary, entire batches can be skipped. Records sharing the same timestamp is a common problem for bulk imports into the source data warehouse where many records are inserted or updated simultaneously.
 </blockquote>
 
+
+#### Full Resync (no batch boundary)
+
+Full Resync does not record boundary values. Each scheduled run issues the configured query in full. For details, see the [Full Resync](#full-resync) mode description.
 
 ## Column mapping
 

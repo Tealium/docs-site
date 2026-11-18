@@ -58,7 +58,7 @@ This method uses a regular expression (regex) pattern to detect bots and prevent
 
 Update the source code above with the following:
 
-1. Replace `<account>/<profile>/<environment>` in the `utag.js` directory path with your Tealium iQ account information. For more details, see [code-center](https://docs.tealium.com/code-center/).
+1. Replace `<account>/<profile>/<environment>` in the `utag.js` directory path with your account information. For more details, see [code-center](https://docs.tealium.com/code-center/).
 1. Replace the bot list pattern value under `utag_cfg_ovrd.botList` with either the [bot list pattern below](#bot-list-pattern) or any other regex patterns that can be used to match user agent values.
 1. Replace the existing `utag.js` script loader tag on your site with the updated version. Ensure that only one `utag.js` is initiated on the page to avoid any issues or duplication of the Tealium instance. For more information on the `utag.js` loader script, see [Universal Tag (utag.js)](https://docs.tealium.com/platforms/javascript/install#universal-tag-utagjs)
 

@@ -3,6 +3,12 @@ title: File Transfer Protocol (SFTP, FTPS) Connector Setup Guide
 description: This article describes how to set up the File Transfer Protocol connector.
 url: https://docs.tealium.com/server-side-connectors/ftp-connector/
 ---
+
+<blockquote>
+**Behavior change for existing configurations**: As of November 2026, **Compress File** also applies when **Overwrite Existing File** is disabled. The connector appends each delivery as a gzip block to `<fileName>.gz`. Connectors that previously had **Compress File** enabled in append mode wrote to `<fileName>` and now write to `<fileName>.gz`. Update any downstream systems that poll the uncompressed filename.
+</blockquote>
+
+
 ## Batch limits
 
 This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions](https://docs.tealium.com/batched-actions/). Requests are queued until one of the following thresholds is met or the profile is published:
@@ -49,13 +55,13 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 | File Path Suffix | Map a value to dynamically add a suffix to the file path. If multiple suffix values are provided, they are separated by an underscore character. |
 | Overwrite Existing File | If the file already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single JSON object or CSV line containing the payload with the data sent from Tealium. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |
 
 #### Batch Configuration
 
@@ -71,7 +77,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 
@@ -83,7 +89,7 @@ The following section describes how to set up parameters and options for each ac
 | File Path Suffix | Map a value to dynamically add a suffix to the file path. If multiple suffix values are provided, they are separated by an underscore character. |
 | Overwrite Existing File | If the file already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single JSON object or CSV line containing the payload with the data sent from Tealium. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |
 
 #### Batch Configuration
 
@@ -100,13 +106,13 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 | File Path Suffix | Map a value to dynamically add a suffix to the file path. If multiple suffix values are provided, they are separated by an underscore character. |
 | Overwrite Existing File | If the file already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single JSON object or CSV line containing the payload with the data sent from Tealium. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |
 
 #### Batch Configuration
 
@@ -123,7 +129,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 
@@ -134,7 +140,7 @@ The following section describes how to set up parameters and options for each ac
 | File Path Suffix | Map a value to dynamically add a suffix to the file path. If multiple suffix values are provided, they are separated by an underscore character. |
 | Overwrite Existing File | If the file already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single JSON object or CSV line containing the payload with the data sent from Tealium. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |
 
 #### Batch Configuration
 
@@ -151,7 +157,7 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 
@@ -163,7 +169,7 @@ The following section describes how to set up parameters and options for each ac
 | File Path Suffix | Map a value to dynamically add a suffix to the file path. If multiple suffix values are provided, they are separated by an underscore character. |
 | Overwrite Existing File | If the file already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single JSON object or CSV line containing the payload with the data sent from Tealium. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |
 
 ### Send Entire Log Event 
 
@@ -171,8 +177,8 @@ The following section describes how to set up parameters and options for each ac
 
 | **Parameter** | **Description** |
 | --- | --- |
-| File Type | Specify the file type. Possible values: `CSV` or `JSON`. |
+| File Type | Specify the file type. Possible values: `CSV`, `JSON`, or `TSV`. TSV uses a tab delimiter with a header row. In append mode, new rows are reordered to match the existing header, the same as CSV. |
 | File Path | Specify the path to the file where data is appended. |
 | Generate File Name at Delivery | When enabled, the file name is generated at delivery (flush) time using a processing timestamp and partition identifier, ensuring unique file names without breaking batching. Date-type file path suffix entries are excluded from the file name to keep the batch buffer key stable. Use this option when you need batched output delivered as a small number of large files instead of many small files. |
 | Record Suffix | Suffix added to the end of each record to be used as a delimiter. Default: Newline (`\n`). Applicable only for files with JSON format. |
-| Compress File | Set this to compress files using gzip. This option is ignored if **Overwrite existing file** is set to `false`. |
+| Compress File | Set this to compress files using gzip. When appending, each delivery is added to the `.gz` file as a separate gzip block. To keep concurrent deliveries from corrupting the file, enable **Generate File Name at Delivery**. |

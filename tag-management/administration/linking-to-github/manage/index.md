@@ -11,7 +11,7 @@ If you do not use GitHub or do not have a public GitHub repository, we recommend
 
 ## Link a GitHub account
 
-To link a GitHub account hosted at `github.com`, you need your GitHub username and a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). For GitHub Enterprise Server, use a fine-grained personal access token authorized by your organization. Linking your GitHub account creates a secure connection to your iQ Tag Management account that allows repository files to be referenced in your iQ Tag Management configuration.
+To link a GitHub account hosted at `github.com`, you need your GitHub username and a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). For GitHub Enterprise Server, use a fine-grained personal access token authorized by your organization. Linking your GitHub account creates a secure connection to your Tag Management account that allows repository files to be referenced in your Tag Management configuration.
 
 
 <blockquote>
@@ -27,7 +27,7 @@ You must have a personal access token to link your GitHub account. This token is
 
 To link to your GitHub account:
 
-1. Log in to your Tealium iQ Tag Management account.
+1. Log in to your Tag Management account.
 1. In the admin menu, click **Manage GitHub Account**.
 1. Enter your **GitHub Username**.  
 This is the username or email address you use to sign in to GitHub.
@@ -60,7 +60,7 @@ Remove access to the GitHub account by removing the link. When you remove the li
 
 To unlink your GitHub account:
 
-1. Log in to your Tealium iQ Tag Management account.
+1. Log in to your Tag Management account.
 1. In the admin menu, click **Manage GitHub Account**.
 1. Click **Unlink Account**.
 

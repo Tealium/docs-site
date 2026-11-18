@@ -3,7 +3,7 @@ title: Update endpoint configurations
 description: This article describes how to update your endpoint configurations after you have configured first-party domains.
 url: https://docs.tealium.com/tag-management/administration/first-party-domains/update-endpoints/
 ---
-After you have configured first-party domains and validation has been completed, you need to update your endpoint configurations to use first-party domains with Tealium iQ Tag Management and [Tealium Collect]().
+After you have configured first-party domains and validation has been completed, you need to update your endpoint configurations to use first-party domains with Tag Management and [Tealium Collect]().
 
 
 <blockquote>
@@ -11,9 +11,9 @@ The information in this article applies only to CNAME and A records that were cr
 </blockquote>
 
 
-## Tag management
+## Tag Management
 
-To use your first-party domain with Tealium iQ Tag Management you must also make the following changes:
+To use your first-party domain with Tag Management you must also make the following changes:
 
 * Update the Universal Tag (`utag.js`) code snippet wherever it is installed.
 * Set the publishing URLs.
@@ -92,7 +92,7 @@ For more information, see [Settings](https://docs.tealium.com/platforms/javascri
 
 ## Update Tealium Collect endpoint
 
-To use your first-party domain with Tealium EventStream API Hub or Tealium AudienceStream CDP, you need to update the data collection URL in your installation of Tealium Collect. For websites, this requires setting the **Tealium Collect Endpoint** field for the [Tealium Collect tag](). To use the visitor service, you also need to provide a Visitor Service Override.
+To use your first-party domain with Event Streaming API Hub or Tealium CDP, you need to update the data collection URL in your installation of Tealium Collect. For websites, this requires setting the **Tealium Collect Endpoint** field for the [Tealium Collect tag](). To use the visitor service, you also need to provide a Visitor Service Override.
 
 To update the Tealium Collect tag, use the following steps:
 

@@ -14,17 +14,11 @@ Learn about server-side vendor integrations.
 
 ![](https://docs.tealium.com/images/icons/icon-code.svg)
 
-#### Build Webhooks
+#### Build webhooks
 
 Build a custom integration using the webhook connector.
 
 
-
-![](https://docs.tealium.com/images/icons/icon-timer.svg)
-
-#### Recent Connectors
-
-See the most recently updated server-side integrations.
 
 
 ### Popular connectors 

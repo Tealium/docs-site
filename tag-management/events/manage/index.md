@@ -109,7 +109,7 @@ Deleting an event listener removes all instances of it from the `utag.js` file.
 
 
 <blockquote>
-If you deactivate an event listener that is subscribed to a tag, Tealium iQ Tag Management removes the deactivated event listener logic from the tag logic. We recommend that you check the tag logic before and after you deactivate an event listener to ensure that any subscribed tags function and load properly.
+If you deactivate an event listener that is subscribed to a tag, Tag Management removes the deactivated event listener logic from the tag logic. We recommend that you check the tag logic before and after you deactivate an event listener to ensure that any subscribed tags function and load properly.
 </blockquote>
 
 

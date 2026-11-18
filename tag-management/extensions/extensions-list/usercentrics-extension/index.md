@@ -5,7 +5,7 @@ url: https://docs.tealium.com/tag-management/extensions/extensions-list/usercent
 ---
 ## How it works
 
-The Tealium iQ Tag Management Usercentrics extension is used to ensure that your CMP policy is enforced at the source level, thus blocking or firing tags according to the user's consent preferences.
+The Tag Management Usercentrics extension is used to ensure that your CMP policy is enforced at the source level, thus blocking or firing tags according to the user's consent preferences.
 
 Simple bookmarklet functionality is used to import the Data Processing Services JSON object text to a bookmark in your browser, which is then used to create a mapping table.
 
@@ -19,22 +19,22 @@ To prevent privacy risk exposure in instances where a tag is added without being
 You must have knowledge of the current or planned version of your Usercentrics implementation. To obtain all of the Data Processing Services in your Consent Management Platform (CMP), follow the instructions outlined in the [Usercentrics Direct Implementation Guide](https://docs.usercentrics.com/#/direct-implementation-guide).
 * **Use a Test Environment for your First Implementation**  
 We recommend using a testing environment for your first implementation to fully access the CMP to create the mapping table within the extension. Using a testing environment ensures that no end-user data is processed prior to applying the extension in your development environment.  
-Once you have completed the mapping of all data processing services to their corresponding tags, you can release it to production and Tealium iQ Tag Management will handle the enforcement of end-user privacy preferences (consent).
+Once you have completed the mapping of all data processing services to their corresponding tags, you can release it to production and Tag Management will handle the enforcement of end-user privacy preferences (consent).
 
 ## Requirements
 
 * Tealium Universal Tag (`utag.js`), Version 4.48. For more information about updating the `utag.js` template, see our knowledge base article [Best Practices for Updating to the Latest Version of utag.js](https://support.tealiumiq.com/en/support/solutions/articles/36000363470).
-* The Usercentrics CMP must load before Tealium iQ Tag Management. For this reason, you must do one of the following:
+* The Usercentrics CMP must load before Tag Management. For this reason, you must do one of the following:
     * Implement the Usercentrics Script (tag) directly within the HTML code of your website.  
     **- OR -**
-    * Go to the Implement the Usercentrics Tag section below and follow the instructions to implement the tag within Tealium iQ Tag Management.
+    * Go to the Implement the Usercentrics Tag section below and follow the instructions to implement the tag within Tag Management.
 
-* Create a Data Processing Service for Tealium iQ Tag Management in your Usercentrics CMP setup.  
+* Create a Data Processing Service for Tag Management in your Usercentrics CMP setup.  
 To learn more, see the Usercentrics documentation, [Assign a data attribute](https://docs.usercentrics.com/#/direct-implementation-guide?id=assign-a-data-attribute). Know the name of your Data Processing Service before you begin, as it is required in the configuration steps.
 
 ## Implement the Usercentrics tag
 
-Use the following steps to implement the Usercentrics tag within Tealium iQ Tag Management using the JavaScript Code extension:
+Use the following steps to implement the Usercentrics tag within Tag Management using the JavaScript Code extension:
 
 1. Go to **Tag Management > Extensions > Add Extension** and select the **JavaScript Code** extension to add the script for Usercentrics V1 or Usercentrics V2.
 1. Add the **JavaScript Code** extension.  
@@ -84,12 +84,12 @@ If you have not previously used the JavaScript Code extension and need to learn 
 
 You must create a Tealium Data Processing Service in your Usercentrics account to ensure that user consent preferences are enforced and third parties can only process data if allowed to do so.
 
-Use the following steps to create a Data Processing Service for Tealium iQ Tag Management in your Usercentrics CMP account:
+Use the following steps to create a Data Processing Service for Tag Management in your Usercentrics CMP account:
 
 1. Go to your **Usercentrics** account.
 1. Select the most recent Data Processing template for **Tealium iQ Tag Management**.
 1. Mark the template as **Required** to ensure that it cannot be opted out.  
-If you customized the Tealium iQ Tag Management service name, it will not be automatically detected by the CMP extension.  
+If you customized the Tag Management service name, it will not be automatically detected by the CMP extension.  
 
 <blockquote>
 In the Configuration section of this document, you will manually add the custom service name using the Service Name input field.
@@ -139,12 +139,12 @@ Use the following steps to copy and import your data processing services to crea
 1. Open another browser tab and navigate to the Usercentrics test environment where your CMP is implemented and click the **Usercentrics Service Mapper** bookmarklet to launch.  
 A pop-up window displays the text for your Data Processing Services JSON object.
 1. Copy the entire text from this window.
-1. Navigate back to the Usercentrics configuration dialog in **iQ Tag Management** and click the **Import** button.  
+1. Navigate back to the Usercentrics configuration dialog in **Tag Management** and click the **Import** button.  
 The **Import Services** dialog appears.
 1. Paste the copied JSON text into the window, as shown in the following example.  
     ![](https://docs.tealium.com/images/tag-management/code-usercentrics-import-sample-pasted.png)
 1. Click **Create Mapping Table**.  
-Your Usercentrics Settings ID and Tealium iQ Service Name are now automatically populated and the Service Mappings to your data processing services appear in a mapping table.  
+Your Usercentrics Settings ID and Tag Management Service Name are now automatically populated and the Service Mappings to your data processing services appear in a mapping table.  
 
 <blockquote>
 The mapping table must be updated each time a new tag is introduced or when your Data Processing Services with the Usercentrics configuration changes, as described in the Update the Mapping Table section of this document.
@@ -187,4 +187,4 @@ Use the following steps to enable console logging:
 
 #### Can this extension be used in mobile installations?
 
-No. Mobile installations, such as iOS and Android, do not support the Tealium iQ Tag Management Usercentrics extension.
+No. Mobile installations, such as iOS and Android, do not support the Tag Management Usercentrics extension.

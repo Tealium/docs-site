@@ -89,5 +89,5 @@ The following list and diagram summarizes how the hosted data layer extension pr
 ![](https://docs.tealium.com/images/tag-management/hosted-data-layer-diagram.jpg)
 
 1. The hosted data layer API is used to upload JSON data files to Tealium.
-1. The hosted data layer extension is configured with identified lookup variables in Tealium iQ Tag Management.
+1. The hosted data layer extension is configured with identified lookup variables in Tag Management.
 1. The utag.js script combines the on-page data layer with the fetched hosted data layer objects and calls utag.view().

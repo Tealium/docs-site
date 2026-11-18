@@ -1,7 +1,7 @@
 ---
-title: Marigold Engage by Sailthru Connector Setup Guide
+title: Sailthru Connector Setup Guide
 description: This article describes how to set up the Sailthru connector.
-url: https://docs.tealium.com/server-side-connectors/marigold-engage-by-sailthru-connector/
+url: https://docs.tealium.com/server-side-connectors/sailthru-connector/
 ---
 ## Connector Actions
 

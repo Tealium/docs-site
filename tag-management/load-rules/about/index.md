@@ -88,7 +88,7 @@ Each rule condition uses a comparison operator and a variable from the data laye
 
 While it is possible to add consent conditions into existing load rules, your use case may require you to use consent integrations for more reliable consent enforcement.
 
-Consent integrations is a Tealium iQ Management feature that allows organizations to easily incorporate consent enforcement into their client-side data activation processes. Unlike load rules, which control when tags fire based on conditions such as page views or user interactions, consent integrations focus exclusively on ensuring user consent is respected during data collection and processing activities. For more information, see [consent integrations](https://docs.tealium.com/about-consent-integrations/).
+Consent integrations is a Tag Management feature that allows organizations to easily incorporate consent enforcement into their client-side data activation processes. Unlike load rules, which control when tags fire based on conditions such as page views or user interactions, consent integrations focus exclusively on ensuring user consent is respected during data collection and processing activities. For more information, see [consent integrations](https://docs.tealium.com/about-consent-integrations/).
 
 Using load rules for consent enforcement may result in the following issues:
 

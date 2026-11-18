@@ -1,6 +1,6 @@
 ---
 title: Tealium + Quantum Metric Integration Guide
-description: This article describes how to get the most out of Tealium and Quantum Metric by setting up the Quantum Metric tag in Tealium iQ Tag Management and enabling the Quantum Metric Tag to send Session Replay URLs to Tealium AudienceStream.
+description: This article describes how to get the most out of Tealium and Quantum Metric by setting up the Quantum Metric tag in Tag Management and enabling the Quantum Metric Tag to send Session Replay URLs to Customer Data Platform (CDP).
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-quantum-metric-integration-guide/
 ---The bi-directional integration between Tealium and Quantum Metric gives you deeper insights into how your key customer segments experience your digital products.
 
@@ -13,8 +13,8 @@ When using this tag with `utag` version 4.50 or later, you must set the `utag.js
 ## Prerequisites
 
 * **Tealium**
-    * iQ Tag Management (Required)
-    * AudienceStream (Recommended)  
+    * Tag Management (Required)
+    * Customer Data Platform (CDP) (Recommended)  
 To achieve the most value out of the bi-directional integration.
 * **Quantum Metric**
     * Platform for Native or Web (Required)
@@ -27,17 +27,17 @@ See the [Tealium and Quantum Metric Partnership Overview](https://tealium.com/te
 
 ## Tag configuration
 
-Before you enable Tealium AudienceStream to receive Quantum Metric Replay URLs, you must first add and configure the Quantum Metric tag.
+Before you enable CDP to receive Quantum Metric Replay URLs, you must first add and configure the Quantum Metric tag.
 
 For more information, see [Quantum Metric tag](https://docs.tealium.com/quantum-metric-tag/).  
 
-### Enable AudienceStream
+### Enable CDP
 
-Before enabling Quantum Metric Replay URLs to be sent to AudienceStream, consult with your Quantum Metric Client Service Manager to determine the target behaviors and experiences you want to send from Quantum Metric to Tealium.
+Before enabling Quantum Metric Replay URLs to be sent to CDP, consult with your Quantum Metric Client Service Manager to determine the target behaviors and experiences you want to send from Quantum Metric to Tealium.
 
-Enable AudienceStream to receive data from Quantum Metric:
+Enable CDP to receive data from Quantum Metric:
 
-1. Go to your Quantum Metric tag in iQ Tag Management.
+1. Go to your Quantum Metric tag in Tag Management.
 1. Expand the details and click **Edit**.
 1. Set the Send Replay URL field to **True**.  
       ![](https://docs.tealium.com/images/tech-partners/quantum-metric-tag-configuration.jpg)
@@ -50,11 +50,11 @@ Enable AudienceStream to receive data from Quantum Metric:
 
 ### View in Live Events
 
-After the Quantum Metric tag is configured and sending Replay URLs to AudienceStream is enabled, you can view activity in the Live Events feed.
+After the Quantum Metric tag is configured and sending Replay URLs to CDP is enabled, you can view activity in the Live Events feed.
 
 Use the following steps to view in Live Events:
 
 1. In the Customer Data Hub left sidebar, click **Event Stream &gt; Live Events**.
 1. Scroll down to find the events from Quantum Metric by filtering for events containing the event attribute `quantum_metric_replay_url` or `quantum_metric_user_id`.  
     ![](https://docs.tealium.com/images/tech-partners/quantummetric-live-events.png)
-1. Use these event attributes to enrich the profile with other [AudienceStream attributes](https://docs.tealium.com/about-attributes/).
+1. Use these event attributes to enrich the profile with other [CDP attributes](https://docs.tealium.com/about-attributes/).

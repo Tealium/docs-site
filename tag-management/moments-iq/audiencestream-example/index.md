@@ -1,5 +1,5 @@
 ---
-title: Moments iQ Expertise with AudienceStream example
+title: Moments iQ Expertise with Customer Data Platform (CDP) example
 description: This article provides an example of a Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
 url: https://docs.tealium.com/tag-management/moments-iq/audiencestream-example/
 ---
@@ -10,7 +10,7 @@ In the following example, we embed an experience on an electronics site to ask t
 This example requires the following:
 
 * Moments iQ.
-* Tealium AudienceStream.
+* Customer Data Platform (CDP).
 * The most recent version of the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
 ## Step 1: Create tag
@@ -49,9 +49,9 @@ To load the experience only on the home page, create the following rule:
 
 
 
-## Step 2: Create AudienceStream attributes
+## Step 2: Create CDP attributes
 
-To configure AudienceStream to enrich attributes with the values from the experiences, use the following steps:
+To configure CDP to enrich attributes with the values from the experiences, use the following steps:
 
 1. If they do not exist already, create the following attributes:
     * **Customer_Expertise** as a string visit attribute that has a rule that stores the value of `momentsiq_answer1`.

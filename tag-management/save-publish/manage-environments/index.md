@@ -44,7 +44,7 @@ The **Edit Environment** screen is displayed.
 
 ### Code Snippet
 
-The Universal Tag is a small piece of JavaScript code called `utag.js` that contains all of the generated code necessary to load third-party tags onto your site. It enables Tealium iQ Tag Management to fire tags by inserting the following code into the page:
+The Universal Tag is a small piece of JavaScript code called `utag.js` that contains all of the generated code necessary to load third-party tags onto your site. It fires tags by inserting the following code into the page:
 
 <!-- Tealium Universal Tag -->
 <script type="text/javascript">

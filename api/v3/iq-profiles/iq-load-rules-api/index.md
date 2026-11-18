@@ -1,6 +1,6 @@
 ---
 title: iQ Load Rules API
-description: The iQ Load Rules API lets you programmatically create, update, and delete load rules in an iQ Tag Management profile.
+description: The iQ Load Rules API lets you programmatically create, update, and delete load rules in a Tag Management profile.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-load-rules-api/
 ---
 To learn more about this API and available object fields, see [iQ Profiles API](https://docs.tealium.com/iq-profiles-v3-api/) and [iQ Profiles Objects](https://docs.tealium.com/iq-profiles-api-objects/).

@@ -1,6 +1,6 @@
 ---
 title: About user permissions
-description: This article describes how user permissions work in Tealium iQ Tag Management.
+description: This article describes how user permissions work in Tag Management.
 url: https://docs.tealium.com/tag-management/administration/user-permissions/about/
 ---
 For server-side permissions, see [Managing Server-Side User Permissions](https://docs.tealium.com/server-side/settings/user-permissions/manage/).

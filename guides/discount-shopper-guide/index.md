@@ -34,7 +34,7 @@ This use case requires the following:
 * Tracked events:
   * 
   * 
-* Tealium AudienceStream and EventStream
+* Customer Data Platform (CDP) and Event Streaming
 
 In general, the following event attributes will be helpful in tracking discount shopping activity. Your actual attribute names might differ.
 
@@ -58,7 +58,7 @@ This example shows how to track visitors who visit the discount product category
 
 Before you configure anything in Tealium, you need to compile a list of all product categories on your site that contain discounted products. For example, Sale, Top Deals, and Clearance. The following example uses the product category of `Discount`.
 
-## Required EventStream Attributes
+## Required Event Streaming Attributes
 
 | Data Objective       | Example |
 |----------------------|---------|
@@ -67,7 +67,7 @@ Before you configure anything in Tealium, you need to compile a list of all prod
 
 For more information about the data layer definition for retail, see [Retail](https://docs.tealium.com/retail/).
 
-## Required AudienceStream attributes
+## Required Customer Data Platform (CDP) attributes
 
 | Attribute Name | Type   | Scope   | Description      |
 |----------------|--------|---------|-------------------------|

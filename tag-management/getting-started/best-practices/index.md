@@ -1,6 +1,6 @@
 ---
 title: Best practices for Tag Management
-description: A guide to best practices for implementing Tealium Tag Management.
+description: A guide to best practices for implementing Tag Management.
 url: https://docs.tealium.com/tag-management/getting-started/best-practices/
 ---
 ## Organization
@@ -106,7 +106,7 @@ For more information, see [Update a template](https://docs.tealium.com/manage-te
 
 ### Combine multiple vendor tags
 
-When you combine multiple tags from one vendor into a single instance of the tag, the page performance improves because fewer `utag.#.js` files are loaded on the page. This approach also makes it easier to maintain the configuration for the vendor tag in Tealium.
+When you combine multiple tags from one vendor into a single instance of the tag, the page performance improves because fewer `utag.#.js` files are loaded on the page. This approach also makes it easier to maintain the configuration for the vendor tag in Tag Management.
 
 For more information, see [Configuring Multiple Floodlight Tags](https://docs.tealium.com/configuring-multiple-floodlight-tags/)
 

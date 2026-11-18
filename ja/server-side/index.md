@@ -29,6 +29,8 @@ url: https://docs.tealium.com/ja/server-side/
 Webサイト、モバイルアプリ、サーバーアプリケーションからデータ収集を開始するために、Tealium Collectをインストールする方法について説明します。
 
 
+
+
 ## 収集
 
 

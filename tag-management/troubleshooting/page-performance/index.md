@@ -14,7 +14,7 @@ As you begin to evaluate page performance, one thing becomes clear: there are a 
 * Fonts
 * Inline JavaScript
 
-Tagging (loading JavaScript files) is just one of the factors of this complex process and will be the focus of this article. More specifically, we will explore the contributing factors to perceived page performance and what controls can be used within the iQ Tag Management console. Specifically, the focus is on two concepts that are most relevant to tagging and performance:
+Tagging (loading JavaScript files) is just one of the factors of this complex process and will be the focus of this article. More specifically, we will explore the contributing factors to perceived page performance and what controls can be used within the Tag Management console. Specifically, the focus is on two concepts that are most relevant to tagging and performance:
 
 * Asynchronous JavaScript
 * DOM-Ready Event
@@ -27,13 +27,13 @@ This topic of what to measure is quite technical and has been researched by indu
 
 
 <blockquote>
-The iQ Tag Management JavaScript library (`utag.js`) is designed to have little or no impact on the perceived load time of a page.
+The Tag Management JavaScript library (`utag.js`) is designed to have little or no impact on the perceived load time of a page.
 </blockquote>
 
 
 ## Tealium files vs. third-party files
 
-At the foundation of the Tealium solution is our file serving framework. This global and real-time solution ensures that Tealium's files are delivered to your visitors' browser at the quickest speed possible. The JavaScript loader (or wrapper) files contain the logic and configuration from your iQ Tag Management account and can be identified in your browser's network console by the names `utag.js` and `utag.#.js`. These are the files served by Tealium from the `tags.tiqcdn.com` domain.
+At the foundation of the Tealium solution is our file serving framework. This global and real-time solution ensures that Tealium's files are delivered to your visitors' browser at the quickest speed possible. The JavaScript loader (or wrapper) files contain the logic and configuration from your Tag Management account and can be identified in your browser's network console by the names `utag.js` and `utag.#.js`. These are the files served by Tealium from the `tags.tiqcdn.com` domain.
 
 Example browser network log of Tealium files:
 
@@ -59,7 +59,7 @@ Asynchronous JavaScript is a method for delaying the loading of non-essential el
 
 All modern tag vendors have switched to the asynchronous method, which is one of the most common ways to improve page load speed.
 
-In iQ Tag Management, the `utag.js` loader file and all subsequently loaded tag files use the asynchronous method.
+In Tag Management, the `utag.js` loader file and all subsequently loaded tag files use the asynchronous method.
 
 For more information, read: 
 
@@ -70,16 +70,16 @@ For more information, read:
 
 The DOM-ready event, also known as `DOMContentLoaded`, is the browser's way of indicating when it has completed the loading of the main content in the page. This event is commonly used as the trigger for loading non-essential elements of the page to ensure that the page renders as quickly as possible, which improves the perceived load time.
 
-In iQ Tag Management, vendor tracking is delayed until the DOM-Ready event to minimize the impact on page rendering.
+In Tag Management, vendor tracking is delayed until the DOM-Ready event to minimize the impact on page rendering.
 
 For more information, see: 
 
 * [Understanding Order of Operations]()
 * [DOMContentLoaded - Event reference | Mozilla Developer Network]()
 
-## iQ Tag Management settings and best practices
+## Tag Management settings and best practices
 
-There are several options in iQ Tag Management to help you control how JavaScript is loaded on your pages. Every website is different, so there isn't a single optimal solution for everyone. The default settings in iQ are balanced to have minimal impact on perceived load time and provide the greatest compatibility with the largest number of vendor tags.
+There are several options in Tag Management to help you control how JavaScript is loaded on your pages. Every website is different, so there isn't a single optimal solution for everyone. The default settings are balanced to have minimal impact on perceived load time and provide the greatest compatibility with the largest number of vendor tags.
 
 ### Code placement
 
@@ -121,7 +121,7 @@ For more information, see [Minify Tag Templates setting]().
 
 ### Bundling
 
-Bundling allows vendor tag code to be included in the main `utag.js` file to eliminate additional HTTP requests from the page. By default, the vendor tags configured in iQ Tag Management are loaded as separate files (for example, `utag.4.js`) into the page. This is done to minimize the risk of introducing a code error into the main `utag.js` file (for example, an error in one file will not affect the others). However, using separate files increases the number of HTTP requests the page makes to load your tags. And while the delivery of these files is optimized through Tealium's servers and browser caching, if you need to optimize further then bundling is an option to consider.
+Bundling allows vendor tag code to be included in the main `utag.js` file to eliminate additional HTTP requests from the page. By default, the vendor tags configured in Tag Management are loaded as separate files (for example, `utag.4.js`) into the page. This is done to minimize the risk of introducing a code error into the main `utag.js` file (for example, an error in one file will not affect the others). However, using separate files increases the number of HTTP requests the page makes to load your tags. And while the delivery of these files is optimized through Tealium's servers and browser caching, if you need to optimize further then bundling is an option to consider.
 
 Here is a simple example where bundling tags resulted in an 80% improvement in load time for the files coming from Tealium.
 
@@ -151,6 +151,6 @@ For more information, see [Tag timing for tags](https://docs.tealium.com/tag-adv
 
 ### Tag ordering
 
-Your configured tags are loaded into the page in the same order as they appear in the iQ Tag Management console. You can drag and drop tags in the order you want them to load. The Tealium best practice is to put your analytics tag(s) and other high priority tags at the top of the list to ensure they are the first ones loaded.
+Your configured tags are loaded into the page in the same order as they appear in the Tag Management console. You can drag and drop tags in the order you want them to load. The Tealium best practice is to put your analytics tag(s) and other high priority tags at the top of the list to ensure they are the first ones loaded.
 
 For more information, see [Tag ordering](https://docs.tealium.com/manage-tags/#load-order).

@@ -25,7 +25,7 @@ Examples of visitor booleans include:
 
 Badges are visitor-only attributes that represent more complex behavior patterns and are assigned or unassigned when customers take significant actions or reach specific milestones. They are used for compound attributes that represent a combination of conditions or behaviors and only assigned when the specified conditions are met.
 
-Badges are treated specially in the UI, appearing with their custom icons in the **Badge Activity** window of the AudienceStream **Dashboard**, the **Visitor Profile** sampler, and **Audience Discovery**.
+Badges are treated specially in the UI, appearing with their custom icons in the **Badge Activity** window of the Customer Data Platform (CDP) **Dashboard**, the **Visitor Profile** sampler, and **Audience Discovery**.
 
 Examples of badges include:
 
@@ -99,7 +99,7 @@ In AudienceDB, the column heading depends on the type of database table (table, 
 
 The value in the column will be `t` or `f`, depending on the presence of the badge.
 
-The **Badge Activity** window of the AudienceStream **Dashboard** lists all the badges on the profile that have been removed or assigned to visitor profiles:
+The **Badge Activity** window of the CDP **Dashboard** lists all the badges on the profile that have been removed or assigned to visitor profiles:
 
 ![](https://docs.tealium.com/images/server-side/badge-activity-view.png)
 

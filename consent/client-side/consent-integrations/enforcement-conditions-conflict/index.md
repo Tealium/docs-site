@@ -10,7 +10,7 @@ We built consent integrations with strict adherence to privacy by design and pri
 ## How Consent integrations handles conflicts in enforcement conditions
 
 * **When at least one consent integration or exemption is active**: No data processing is allowed without a specific signal from your consent management platform (CMP).
-* **When two or more enforcement rules overlap for integrations**: Tealium iQ does not load, and no tags fire.
+* **When two or more enforcement rules overlap for integrations**: Tag Management does not load, and no tags fire.
 * **When an integration overlaps exemptions**: If a single integration overlaps with any number of exemptions, the integration is enforced and the exemptions are disregarded.
 
 

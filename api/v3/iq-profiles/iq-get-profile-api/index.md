@@ -1,6 +1,6 @@
 ---
 title: iQ GET Profile API
-description: The iQ GET Profile API retrieves an iQ Tag Management account profile, including specific configuration components and version history.
+description: The iQ GET Profile API retrieves a Tag Management account profile, including specific configuration components and version history.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-get-profile-api/
 ---
 ## How it works

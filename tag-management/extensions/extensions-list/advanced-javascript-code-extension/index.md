@@ -152,7 +152,7 @@ The following sections describe how to reference files in a GitHub repository. U
 
 
 <blockquote>
-To work with GitHub files you must link your GitHub account to your iQ Tag Management account. For more information, see [Linking to GitHub]().
+To work with GitHub files you must link your GitHub account to your Tag Management account. For more information, see [Linking to GitHub]().
 </blockquote>
 
 

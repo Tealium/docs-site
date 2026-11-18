@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side-connectors/adobe-analytics-2-connector
 ---
 ## How it works
 
-The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data to Adobe Analytics.
+The Adobe Analytics 2.0 connector uses the [Adobe Bulk Data Insertion API](https://developer.adobe.com/analytics-collection-apis/methods/bulk-data-insertion/) to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data to Adobe Analytics.
 
 ## Adobe Analytics 2.0 connector differences
 
@@ -283,8 +283,6 @@ Page [Hierarchy](https://experienceleague.adobe.com/docs/analytics/implementatio
 ### Custom ID values
 
 Adobe offers a way to simplify the process of generating an identifier used by the Adobe Experience Cloud Identity Service. Adobe can use one of the customer IDs in the [setCustomerIDs](https://experienceleague.adobe.com/en/docs/id-service/using/id-service-api/methods/setcustomerids) method as a seed to generate an Adobe Experience Cloud visitor ID for you.
-
-For more information, refer to [Adobe Analytics 2.0 APIS](https://github.com/AdobeDocs/analytics-2.0-apis/blob/main/src/pages/guides/endpoints/bulk-data-insertion/mcseed.md). 
 
 #### Fields
 

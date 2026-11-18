@@ -40,7 +40,7 @@ Here is a simple example showing how one tag, Google Analytics, is loaded into t
 
 ![](https://docs.tealium.com/images/platforms/javascript/utag-network-files.png)
 
-*   **`utag.js`** (`tags.tiqcdn.com`) - the Tealium Tag Management JavaScript library
+*   **`utag.js`** (`tags.tiqcdn.com`) - the Tag Management JavaScript library
 *   **`utag.1.js`** (`tags.tiqcdn.com`) - the Tealium tag configuration file for Google Analytics
 *   **`analytics.js`** (`www.google-analytics.com`) - the Google Analytics JavaScript library
 

@@ -14,7 +14,7 @@ Tealium’s Identity Partners provide the following services:
 * Integrate with UID2.0, the open source ID framework that will be replacing third-party cookies. For example, The Trade Desk offers UID 2.0, which allows the advertiser to share PII, and they send back a short-term anonymous identifier for ad targeting.
 * Some data providers also provide AdTech and publisher-related features. These direct integrations with publisher platforms can support ad targeting, and others allow analysis of ad campaigns in privacy-compliant environments.
 
-Tealium provides access to a large number of identity partner integrations across the platform: iQ Tag Management, EventStream, Data Source, AudienceStream, and Functions. Because it can be a lot of work pulling information from each of these sources and combining it into a clear vision of your visitor and customer profile, Tealium is here to make the process of integrating identity provider data from multiple sources smoother and easier.
+Tealium provides access to a large number of identity partner integrations across the platform: Tag Management, Event Streaming, Data Source, Customer Data Platform (CDP), and Functions. Because it can be a lot of work pulling information from each of these sources and combining it into a clear vision of your visitor and customer profile, Tealium is here to make the process of integrating identity provider data from multiple sources smoother and easier.
 
 ### Deterministic vs Probabilistic
 
@@ -60,7 +60,7 @@ UID 2.0 cannot be used in the EU due to privacy restrictions.
 As identity and data management solution providers, Acxiom and Merkle perform the following roles:
 
 *   Provide customer data strategies, and additional optional services.
-*   Require access to Functions and Tealium iQ Tag Management.
+*   Require access to Functions and Tag Management.
 *   Cleanse and store first and third party data for businesses, which can group profiles into households, gather demographics, track NCOA (National Change of Address), and more.
 *   Identify visitors through probabalistic methods to "stitch deterministically, enrich probabalistically."
 
@@ -72,9 +72,9 @@ After login or registration with a netID on a website, the user’s netID identi
 
 When the user logs in on a website with netID authentication, their identity is confirmed by the netID authentication API. The identity parameter `tpid` from the API `READ SERVICE` response can be persisted in the Tealium data layer.
 
-* Use netID within Tealium iQ load rules and tag variable mapping for client-side activation to your advertising technologies, where supported.
-* Use netID within Tealium EventStream rules, event feeds, and connector attribute mappings for server-side activation to your advertising technologies, where supported.
-* Use netID to enrich Tealium AudienceStream visitor profiles and to map connector attributes for customer profile-based activation and suppression across your advertising technologies, where supported.
+* Use netID within Tag Management load rules and tag variable mapping for client-side activation to your advertising technologies, where supported.
+* Use netID within Event Streaming rules, event feeds, and connector attribute mappings for server-side activation to your advertising technologies, where supported.
+* Use netID to enrich Customer Data Platform (CDP) visitor profiles and to map connector attributes for customer profile-based activation and suppression across your advertising technologies, where supported.
 
 ## How you can use Identity Providers
 
@@ -106,7 +106,7 @@ The **Identity** category in each of the **Tags**, **Connectors**, and **Data So
 | Criteo               | Tag              | Cookie Matching associates a cookie that identifies a Tealium visitor to the cookie that identifies the user for Criteo.                                                                                        | [Criteo Cookie Matching Service Tag Setup Guide](https://docs.tealium.com/client-side-tags/criteo-cookie-matching-service-tag/)                                             |
 | Criteo               | Connector        | Audience Match is a flexible customer targeting solution.                                                                                                                                                       | [Criteo Audiences Connector Setup Guide](https://docs.tealium.com/server-side-connectors/criteo-audiences-connector/)                                             |
 | Epsilon              | Tag              | Returns a list of partner pixel URLs that, when called by the browser, synchronize IDs with exchanges. This allows users can to be identified and messaged after they leave your site.                          | [Epsilon Partner Sync Web Service Tag Setup Guide](https://docs.tealium.com/client-side-tags/epsilon-partner-sync-web-service-tag/)                                         |
-| The Trade Desk (TDD) | Tag              | The Trade Desk Universal Pixel enables marketers to gain more visibility into user data, and analyze reporting at a more granular level.                                                                        | [Trade Desk Universal Pixel Setup Guide for Tealium iQ](https://docs.tealium.com/client-side-tags/the-trade-desk-universal-pixel-tag/)                               |
+| The Trade Desk (TDD) | Tag              | The Trade Desk Universal Pixel enables marketers to gain more visibility into user data, and analyze reporting at a more granular level.                                                                        | [Trade Desk Universal Pixel Setup Guide for Tag Management](https://docs.tealium.com/client-side-tags/the-trade-desk-universal-pixel-tag/)                               |
 | The Trade Desk (TDD) | Connector        | The Trade Desk Connector can be used for posting enriched Visitor Profiles and Audiences to TDD for more personalized advertising campaigns.                                                                    | [The Trade Desk Cookie Matching Service Tag Setup Guide](https://docs.tealium.com/client-side-tags/the-trade-desk-cookie-matching-service-tag/) (used with UID2.0 Function) |
 | The Trade Desk (TDD) | Function         | UID2.0 is an open source identifier that replaces third-party cookies.                                                                                                                                            | [The Trade Desk Connector Setup Guide](https://docs.tealium.com/server-side-connectors/the-trade-desk-connector/) (used with UID2.0 Function)                               |
 

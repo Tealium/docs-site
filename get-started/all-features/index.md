@@ -130,7 +130,7 @@ Config MCP
 
 ![](https://docs.tealium.com/images/icons/icon-cloud-up.svg)
 
-CloudStream
+Data Cloud Activation
 
 
 

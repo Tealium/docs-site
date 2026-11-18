@@ -1,22 +1,22 @@
 ---
-title: Concurrent users (iQ Tag Management)
+title: Concurrent users (Tag Management)
 url: https://docs.tealium.com/tag-management/save-publish/concurrent-users/
 ---
-In iQ Tag Management, concurrent user functionality offers the following features:
+Concurrent user functionality offers the following features:
 
 * **Profile Level Concurrency**  
-Concurrent user tracking occurs at the Profile level. This means that concurrent users in iQ Tag Management that are editing the same profile will receive invitations to merge each other's changes, even if they are saving to different versions.
+Concurrent user tracking occurs at the Profile level. This means that concurrent users editing the same profile will receive invitations to merge each other's changes, even if they are saving to different versions.
 * **Continuous Merging**  
 You can merge another user's in-progress profile changes multiple times before saving those changes. This lets you better collaborate over a period of time on a single profile update.
 * **Overwrite Protection**  
-To help prevent accidental overwrites, iQ Tag Management prevents concurrent users from saving changes within one minute of each other. If you go to the **Save/Publish** screen less than a minute after a previous save, a time appears that counts down until the next time you can safely save your own changes. The maximum time set is 60 seconds.
+To help prevent accidental overwrites, concurrent users cannot save changes within one minute of each other. If you go to the **Save/Publish** screen less than a minute after a previous save, a time appears that counts down until the next time you can safely save your own changes. The maximum time set is 60 seconds.
 * **Guaranteed Latest Version**  
 As part of overwrite protection, publishing changes to a profile prompts concurrent users to merge the new changes when the publish completes, not when the publish. This prevents situations in which a user may start to edit while a publish is in progress. For example, a user could be making changes to a profile version that is unknowingly outdated by only a few minutes and would lose the original user's changes when they save.
 * **Lock Profile**  
 You can use the **Lock Profile** setting in **General Publishing** to disable concurrent users from editing a profile.  
 For more information, see: [Publish Configuration]().
 
-The following restrictions apply to concurrent user management in iQ Tag Management:
+The following restrictions apply to concurrent user management:
 
 * **Libraries Not Supported**  
 You cannot merge changes to or from a profile version that is linked to a library.  
@@ -30,7 +30,7 @@ For more information, see: [Merging Versions]().
 
 ## Viewing and communicating with concurrent users
 
-When there are multiple users logged in to the same profile, the concurrent users icon appears next to the profile name in Tealium iQ for both users.
+When there are multiple users logged in to the same profile, the concurrent users icon appears next to the profile name for both users.
 
 Use the following steps to view and communicate with other users:
 
@@ -88,7 +88,7 @@ For more information, see: [Publish Configuration]().
 * **Scenario**  
 You visit the **Save/Publish** screen and find that you cannot save your changes immediately.
 * **Result**  
-To prevent accidental overwrites of each other's changes, iQ Tag Management prevents concurrent users from saving changes to a profile within one minute of each other. An informational message with a countdown timer indicates that another user has saved less than a minute ago. Once the save completes, other users can save changes.
+To prevent accidental overwrites of each other's changes, concurrent users cannot save changes to a profile within one minute of each other. An informational message with a countdown timer indicates that another user has saved less than a minute ago. Once the save completes, other users can save changes.
 
 ## Merging Changes
 

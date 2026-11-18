@@ -13,7 +13,7 @@ Contact your Tealium account manager to enable the first-party domains feature f
 
 A first-party domain is the domain that hosts the website that the user is visiting. A third-party domain is any domain that does not match the current website's domain.
 
-The services offered in the Tealium server-side are hosted on Tealium domains by default. For example, JavaScript files for Tealium iQ Tag Management are served from the `tags.tiqcdn.com` subdomain and the data collection endpoint for Tealium EventStream API Hub uses the `collect.tealiumiq.com` subdomain. Both of these Tealium subdomains are considered third-party domains.
+The services offered in the Tealium server-side are hosted on Tealium domains by default. For example, JavaScript files for Tag Management are served from the `tags.tiqcdn.com` subdomain and the data collection endpoint for Event Streaming API Hub uses the `collect.tealiumiq.com` subdomain. Both of these Tealium subdomains are considered third-party domains.
 
 
 <blockquote>
@@ -29,7 +29,7 @@ First-party domains apply to all profiles in your account. Enter a subdomain for
 </blockquote>
 
 
-When you configure first-party domains for the `tags.tiqcdn.com` subdomain, Tealium provides a CNAME record that must be added to your DNS database. A CNAME record is an alias that maps one domain name to another. For example, for the website `www.example.com`, Tealium would provide a CNAME record for `tags.example.com` that points to the Tealium CDN to serve the files for iQ Tag Management.
+When you configure first-party domains for the `tags.tiqcdn.com` subdomain, Tealium provides a CNAME record that must be added to your DNS database. A CNAME record is an alias that maps one domain name to another. For example, for the website `www.example.com`, Tealium would provide a CNAME record for `tags.example.com` that points to the Tealium CDN to serve the files for Tag Management.
 
 For the `collect.tealiumiq.com` subdomain, Tealium provides A records that must be added to your DNS configuration. An A record maps a subdomain name to the IP address for the domain. Two IP addresses for A records are provided for each subdomain configured for first-party domains. These two A records are used for load balancing of DNS servers.
 
@@ -118,7 +118,7 @@ The maximum number of domains per certificate is determined when you sign up for
 
 ## First-party domains and TAPID  
 
-TAPID is an HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the [anonymous ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id) for Tealium AudienceStream.
+TAPID is a HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the [anonymous ID](https://docs.tealium.com/anonymous-user-visitor-id-attributes/#anonymous-id) for Customer Data Platform (CDP).
 
 When you use first-party domains, the TAPID cookie remains an HTTP-only browser cookie, but it is assigned to the first-party domain that hosts your website instead of the Tealium third-party domain. Therefore, first-party domains cause the TAPID cookie to lose its cross-domain tracking functionality.
 

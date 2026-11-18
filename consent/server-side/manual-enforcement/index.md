@@ -9,9 +9,9 @@ If you use manual enforcement for event-level activations, consider transitionin
 </blockquote>
 
 
-Manual enforcement is required when you need to enforce visitor-level consent in AudienceStream, or when you have disabled automatic event-level consent enforcement and are not using consent orchestration. For more about disabling automatic enforcement, see [Disabling automatic enforcement](https://docs.tealium.com/server-side-consent-management/#disabling-automatic-enforcement).
+Manual enforcement is required when you need to enforce visitor-level consent in Customer Data Platform (CDP), or when you have disabled automatic event-level consent enforcement and are not using consent orchestration. For more about disabling automatic enforcement, see [Disabling automatic enforcement](https://docs.tealium.com/server-side-consent-management/#disabling-automatic-enforcement).
 
-## Configure EventStream connector actions, functions, and EventStore
+## Configure Event Streaming connector actions, functions, and EventStore
 
 1. Identify event-level `consent attributes`.
 
@@ -27,7 +27,7 @@ Manual enforcement is required when you need to enforce visitor-level consent in
 
       ![](https://docs.tealium.com/images/server-side/image1.png)
 
-## Configure AudienceStream connectors, functions, and AudienceStore
+## Configure CDP connectors, functions, and AudienceStore
 
 1. Create visitor-level `consent attributes` to reconcile the consent for the visitor profile:
     * These will be based on your event-level `consent attributes`, and should clearly reflect the most recent state of the visitor's reconciled cross-device consent.
@@ -36,11 +36,11 @@ Manual enforcement is required when you need to enforce visitor-level consent in
 1. Include the appropriate visitor-level `consent attributes` in each audience, to ensure only consented data is activated.
     ![](https://docs.tealium.com/images/server-side/image5.png)
 
-### Block AudienceStream profile processing in AudienceDB
+### Block CDP profile processing in AudienceDB
 
 Audience rules won't prevent visitor profiles from being built or written to AudienceDB.
 
-If your policies require blocking the profile under specific conditions, set a separate string attribute for use in the AudienceStream Event Filter. For example, create a new event string attribute called `has_audiencestream_consent` that defaults to `false` and is enriched to `true` when the visitor has provided appropriate consent (based on your event-level `consent attributes`).
+If your policies require blocking the profile under specific conditions, set a separate string attribute for use in the CDP Event Filter. For example, create a new event string attribute called `has_audiencestream_consent` that defaults to `false` and is enriched to `true` when the visitor has provided appropriate consent (based on your event-level `consent attributes`).
 
 ![](https://docs.tealium.com/images/server-side/image2.png)
 

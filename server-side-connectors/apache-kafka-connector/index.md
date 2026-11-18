@@ -7,11 +7,10 @@ url: https://docs.tealium.com/server-side-connectors/apache-kafka-connector/
 
 Go to the connector marketplace and add a new connector. For more information, see [about-connectors](https://docs.tealium.com/about-connectors/).
 
-After adding the connector, configure the following settings:
+After adding the connector, configure the common settings that apply to every authentication type, then configure the fields for the authentication type your broker requires.
 
-* **Authentication type**
-  * **SASL/PLAIN** (default): Uses a username and password for authentication.
-  * **SASL SCRAM-SHA-512**: Uses SCRAM-SHA-512 challenge-response authentication. Before selecting this option, configure your Kafka broker to support the `SCRAM-SHA-512` mechanism.
+### Common settings
+
 * **Bootstrap Server**
   * (Required) The Kafka bootstrap server for the endpoint, for example, a Conduktor Gateway host or Kafka broker: `gateway.customer-domain.com:6969`.
   * The endpoint must be reachable from Tealium, typically through PrivateLink, VPN, or network peering.
@@ -30,12 +29,6 @@ After adding the connector, configure the following settings:
 * **Confluent Schema Registry Password**
   * (Optional) The password or API secret used to authenticate with the Schema Registry using HTTP Basic authentication.
   * Required if the Schema Registry requires authentication.
-* **Service Account Username**
-  * (Required) The Kafka principal used to authenticate with the broker.
-  * For SASL/PLAIN, enter the SASL username. For SASL SCRAM-SHA-512, enter the SCRAM principal.
-* **Service Account Token / Password**
-  * (Required) The credential for the service account principal.
-  * For SASL/PLAIN, enter the JWT token or equivalent credential. For SASL SCRAM-SHA-512, enter the SCRAM password.
 * **Compression Type**
   * The compression algorithm to use for messages sent to Kafka. Reduces bandwidth and storage costs.
   * Defaults to `GZIP`.
@@ -51,7 +44,7 @@ After adding the connector, configure the following settings:
   * Specifies the number of broker acknowledgments required before a message is considered successfully written.
   * **0**: No acknowledgment. Fastest but risks silent data loss.
   * **1**: The partition leader acknowledges the message after writing it locally. Fastest with a delivery guarantee.
-  * **All**: All in-sync replicas must acknowledge, adding 50–100ms latency but eliminating data loss risk.
+  * **All**: All in-sync replicas must acknowledge, adding 50 to 100 ms latency but eliminating data loss risk.
 * **Partitioner Strategy**
   * Controls how the producer assigns messages to partitions when no partition is specified.
   * **Default**: Uses sticky batching for optimal throughput.
@@ -66,6 +59,81 @@ After adding the connector, configure the following settings:
 * **Producer - Retries Backoff**
   * The time, in milliseconds, to wait between retry attempts for the same record.
   * Defaults to `100` milliseconds.
+
+### Authentication type
+
+Select the authentication type the broker requires. The connector shows a different set of fields for each option:
+
+* **SASL PLAIN** (default)
+* **SASL SCRAM-SHA-512**
+* **SASL OAUTHBEARER**
+* **mTLS (DigiCert)**
+* **mTLS (Self-Signed)**
+
+#### SASL PLAIN
+
+* **Service Account Username**
+  * (Required) The Kafka principal used to authenticate with the broker using SASL PLAIN.
+* **Service Account Token / Password**
+  * (Required) The JWT token or equivalent credential for the service account principal.
+
+#### SASL SCRAM-SHA-512
+
+Before selecting this option, configure the Kafka broker to support the `SCRAM-SHA-512` mechanism.
+
+* **Service Account Username**
+  * (Required) The Kafka principal used to authenticate with the broker using SASL SCRAM-SHA-512.
+* **Service Account Token / Password**
+  * (Required) The password for the SCRAM-SHA-512 principal.
+
+#### SASL OAUTHBEARER
+
+Use this authentication type to log in to a Kafka broker using OAuth 2.0 client credentials. Confluent Cloud, and any broker that uses identity pools, requires SASL extensions. For the extension format, see the **Additional OAuth Parameters** field.
+
+* **OAuth Token Endpoint**
+  * (Required) The token endpoint URL for OAUTHBEARER authentication, for example, `https://auth.example.com/oauth2/token`.
+* **OAuth Client ID**
+  * (Required) The OAuth2 client ID.
+* **OAuth Client Secret**
+  * (Required) The OAuth2 client secret.
+* **OAuth Scope**
+  * (Optional) The OAuth2 scope to request, for example, `kafka`.
+* **Additional OAuth Parameters**
+  * (Optional) Additional parameters in the format `param="value"`, separated by spaces.
+  * The connector sends parameters without the `extension_` prefix to the OAuth2 token endpoint, for example, `audience="https://auth.example.com"`.
+  * The connector sends parameters prefixed with `extension_` to the Kafka broker as SASL extensions, with the prefix stripped. Confluent Cloud requires `extension_logicalCluster` and, when the cluster uses identity pools, `extension_identityPoolId`. Example: `extension_logicalCluster="lkc-abc123" extension_identityPoolId="pool-xyz"`.
+  * The connector validates extension names and values against the Kafka client rules at login. Invalid values fail with a clear configuration error. The name `auth` is reserved.
+  * Token request behavior does not change when no `extension_` parameters are configured.
+
+#### mTLS (DigiCert)
+
+Use this authentication type to generate a client certificate through DigiCert for mTLS authentication to the broker.
+
+* **Client Certificate (DigiCert)**
+  * (Required) Generates a client certificate through DigiCert for mTLS authentication.
+* **Key Algorithm**
+  * Select an algorithm to generate the key pair and CSR. After generation, download the CSR file, have it signed by your certificate authority, and upload the signed certificate.
+
+#### mTLS (Self-Signed)
+
+Use this authentication type to supply a client certificate signed by your own certificate authority. The connector collects the CSR subject fields, generates the key pair and CSR, and accepts the signed certificate.
+
+* **Common Name (CN)**
+  * (Required) The Common Name for the certificate signing request, for example, `kafka-client.example.com`.
+* **Organization (O)**
+  * (Required) The organization name for the certificate signing request.
+* **Organizational Unit (OU)**
+  * (Optional) The organizational unit for the certificate signing request.
+* **Locality (L)**
+  * (Optional) The locality (city) for the certificate signing request.
+* **State (ST)**
+  * (Optional) The state or province for the certificate signing request.
+* **Country (C)**
+  * (Optional) The two-letter country code for the certificate signing request, for example, `US`.
+* **Key Algorithm**
+  * Select an algorithm to generate the key pair and CSR. After generation, download the CSR file, have it signed by your certificate authority, and upload the signed certificate.
+* **Client Certificate (PEM)**
+  * (Required) Paste the client certificate in PEM format for mTLS authentication.
 
 After you configure the connector, click **Done**.
 

@@ -1,59 +1,61 @@
 ---
 title: APIリファレンス
-description: Tealium for Nodeで提供されているクラスとメソッドに関するリファレンスガイド。
+description: Node向けにTealiumが提供するクラスとメソッドのリファレンスガイド。
 url: https://docs.tealium.com/ja/platforms/node/api/
 ---
 
 ## クラス：`Tealium`
 
-以下は、Nodeライブラリで一般的に使用される`Tealium`クラスのメソッドをまとめたものです。
+以下に、Nodeライブラリの`Tealium`クラスでよく使用されるメソッドの概要を示します。
 
-| メソッド | 説明|
-| ----- | ------|
-| `addModule()` | モジュールを追加します|
-| `Tealium()`| Tealiumインスタンスを構築するためのコンストラクタ|
-| `track()` | ビューとイベントをトラッキングします|
+| メソッド | 説明 |
+| ----- | ------ |
+| `addModule()` | モジュールを追加します |
+| `Tealium()` | Tealiumインスタンスを作成するコンストラクターです |
+| `track()` | ビューとイベントをトラッキングします |
 
 ### `addModule()`
 
-Tealiumインスタンスにモジュールを追加します
+Tealiumインスタンスにモジュールを追加します。
 
 
 ```javascript
 addModule(module)
 ```
 
-| パラメータ | 型| 説明| 例
+| パラメーター | 型 | 説明 | 例
 |-----------|------| --- | --- |
-| `module` |  `var` |  モジュール名| `tealiumCollect` |
+| `module` | `var` | モジュール名 | `tealiumCollect` |
 
 ### `Tealium()`
-Tealiumインスタンスを構築するためのコンストラクタ
+
+Tealiumインスタンスを作成するコンストラクターです。
 
 ```javascript
 Tealium(config);
 ```
 
-| パラメータ | 型| 説明| 例
+| パラメーター | 型 | 説明 | 例
 |-----------|------| --- | --- |
-| `config` | var| キーと値のペアとしてのTealium構成オブジェクトデータ| `{"account":"ACCOUNT", "profile":"PROFILE", "datasource":"DATASOURCE"};` |
+| `config` | var | キーと値のペアで構成されたTealium構成オブジェクトのデータ | `{"account":"ACCOUNT", "profile":"PROFILE", "datasource":"DATASOURCE"};` |
 
-`config`オブジェクトパラメータには次のキーと値のペアがあります
+`config`オブジェクトのパラメーターには、以下のキーと値のペアがあります。
 
-| パラメータ | 型| 説明| 例
+| パラメーター | 型 | 説明 | 例
 |-----------|------| --- | --- |
-| `account` |  `String` |  Tealiumプロファイルの名前| `"companyXYZ"` |
-| `profile` | `String`| Tealiumプロファイルの名前| `"main"` |
-| `datasource` | `String` | （オプション）データソースキー| `"abc123"` |
+| `account` | `String` | Tealiumプロファイル名 | `"companyXYZ"` |
+| `profile` | `String` | Tealiumプロファイル名 | `"main"` |
+| `datasource` | `String` | （任意）データソースキー | `"abc123"` |
+
 ### `track()`
 
 ビューとイベントをトラッキングします。
 
 ```javascript
-tealium.track(event, data); 
+tealium.track(event, data); 
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- |  ---| --- | --- |
-| `event` | `String` | イベントの名前（`tealium_event`の値を構成）| `"event"` |
-| `data` | `Dictionary` | キーと値のペアとしてのイベントデータを持つオブジェクト| `{"some_key": "some_value"}` |
+| パラメーター | 型 | 説明 | 例 |
+| --- |  --- | --- | --- |
+| `event` | `String` | イベント名（`tealium_event`の値を構成） | `"event"` |
+| `data` | `Dictionary` | キーと値のペアで構成されたイベントデータを含むオブジェクト | `{"some_key": "some_value"}` |

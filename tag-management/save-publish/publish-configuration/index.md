@@ -93,7 +93,7 @@ For profiles created before Nov. 10, 2015, the default is **Off**.
 
 
 * **Prevent Tag Load**  
-Quickly disable all tags managed by Tealium iQ. You must republish the profile after turning this on. Default value is **OFF**.
+Quickly disable all tags. You must republish the profile after turning this on. Default value is **OFF**.
 * **Web Companion**  
 Toggle on or off to enable or disable support for Web Companion Target Environment swtiching.  
 
@@ -103,7 +103,7 @@ Enabling this feature allows your website to set a cookie with any arbitrary val
 
 
 * **Data Layer Enrichment Profile**  
-Specify the AudienceStream profile from which to retrieve visitor data. The on-page data layer will then be enriched with this visitor data. For more information, see [Configure Data Layer Enrichment in Tealium iQ](https://docs.tealium.com/configure-data-layer-enrichment-iq/).
+Specify the Customer Data Platform (CDP) profile from which to retrieve visitor data. The on-page data layer will then be enriched with this visitor data. For more information, see [Configure Data Layer Enrichment in Tag Management](https://docs.tealium.com/configure-data-layer-enrichment-iq/).
 
 ### Publishing URLs
 

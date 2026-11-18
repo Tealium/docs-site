@@ -1,11 +1,11 @@
 ---
 title: CMP Plugins
-description: Learn how to integrate your Consent Management Platform (CMP) with Tealium iQ Tag Management to enforce privacy settings for managed tags.
+description: Learn how to integrate your Consent Management Platform (CMP) with Tag Management to enforce privacy settings for managed tags.
 url: https://docs.tealium.com/partners-and-industries/partner-with-us/cmp-plugins/
 ---
 
 
-CMP plugins are vendor-specific solutions in the Tealium extension marketplace that make it easy to integrate a CMP installation with a Tealium iQ installation. 
+CMP plugins are vendor-specific solutions in the Tealium extension marketplace that make it easy to integrate a CMP installation with a Tag Management installation. 
 
 A CMP plugin offers the following benefits:
 
@@ -15,7 +15,7 @@ A CMP plugin offers the following benefits:
 
 ## How it Works
 
-A CMP plugin creates a mapping between the data processing services configured in the CMP and the tags configured in Tealium iQ. The plugin provides a helper tool, usually a bookmarklet, that makes it easy to import the CMP settings into Tealium iQ and map each service name to one or more tags.
+A CMP plugin creates a mapping between the data processing services configured in the CMP and the tags configured in Tag Management. The plugin provides a helper tool, usually a bookmarklet, that makes it easy to import the CMP settings into Tag Management and map each service name to one or more tags.
 
 Once the mappings are set up and deployed to your site, your managed tags will fire based on the user's interaction with the CMP.
 
@@ -31,7 +31,7 @@ Consent status variables from the CMP are added to the [data layer object](https
 
 ## Requirements
 
-To integrate with Tealium iQ Tag Management, the following consent status information must be available for each data processing service configured in the CMP. These are usually accessed as global JavaScript variables or methods in the page:
+To integrate with Tag Management, the following consent status information must be available for each data processing service configured in the CMP. These are usually accessed as global JavaScript variables or methods in the page:
 
 * **Service Name** - A unique name for the service that consent was applied to.
 * **Consent Status** - The status of the consent for the service, where `true` indicates that consent has been granted and `false` indicates that consent has not been granted.
@@ -42,7 +42,7 @@ To integrate with Tealium iQ Tag Management, the following consent status inform
 
 In addition to collecting and enforcing consent on the client-side, a CMP integration can also distribute consent status to other vendors using server-side connectors.
 
-If your CMP supports webhook callbacks, then you can extend your integration with Tealium by sending updates to the [HTTP API endpoint](https://docs.tealium.com/platforms/http-api/endpoint/). These events will be processed server-side and can be activated across other vendors using Tealium EventStream, AudienceStream, and DataAccess.
+If your CMP supports webhook callbacks, then you can extend your integration with Tealium by sending updates to the [HTTP API endpoint](https://docs.tealium.com/platforms/http-api/endpoint/). These events will be processed server-side and can be activated across other vendors using Event Streaming, Customer Data Platform (CDP), and DataAccess.
 
 If your CMP does not support webhooks, contact Tealium to work with your product and engineering teams to formalize an integration.
 

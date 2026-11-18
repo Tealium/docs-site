@@ -1,6 +1,6 @@
 ---
 title: Tealium + Google Enhanced Conversions Integration Guide
-description: This article describes how to get the most out of Tealium and Google Ads Enhanced Conversion by setting up the Google Ads Conversion Tracking &amp; Remarketing (gtag.js) tag in iQ Tag Management and the Google Ads Enhanced Conversions for Web connector in EventStream API Hub.
+description: This article describes how to get the most out of Tealium and Google Ads Enhanced Conversion by setting up the Google Ads Conversion Tracking &amp; Remarketing (gtag.js) tag in Tag Management and the Google Ads Enhanced Conversions for Web connector in Event Streaming API Hub.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-google-enhanced-conversions-integration-guide/
 ---
 The combination of Tealium and Google Ads Enhanced Conversions for Web preserves and improves advertising conversion by helping you leverage consented first-party data to:
@@ -17,8 +17,8 @@ Successful implementations of this solution have benefited from the following po
 ## Prerequisites
 
 * Tealium
-    * iQ Tag Management: [Google Ads Conversion and Remarketing (gtag.js) tag](https://docs.tealium.com/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/) or [Floodlight (gtag.js) tag](https://docs.tealium.com/floodlight-gtagjs-tag/)
-    * EventStream: [Google Ads Enhanced Conversions for Web connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/)
+    * Tag Management: [Google Ads Conversion and Remarketing (gtag.js) tag](https://docs.tealium.com/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/) or [Floodlight (gtag.js) tag](https://docs.tealium.com/floodlight-gtagjs-tag/)
+    * Event Streaming: [Google Ads Enhanced Conversions for Web connector](https://docs.tealium.com/google-ads-enhanced-conversions-for-web-connector/)
 * Google
     * Google Ads account with an Enhanced Conversions-enabled conversion. For more information, see [About enhanced conversions for web in the Google Ads API](https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&rd=1).
 
@@ -36,7 +36,7 @@ Enhanced conversions only work when one or more of the following customer attrib
 
 ## Customer data
 
-The following customer parameters are required. The client-side tag will normalize these values for you, but you should normalize these values using extensions in iQ or enrichments in EventStream.
+The following customer parameters are required. The client-side tag will normalize these values for you, but you should normalize these values using extensions in iQ or enrichments in Event Streaming.
 
 |Data Field| Description|
 |---| ---|
@@ -73,7 +73,7 @@ The following Google conversion parameters are required for the connector:
 
 ## Client-side website tracking tag
 
-To configure the Google Ads Conversion and Remarketing tag in iQ Tag Management, you need the following:
+To configure the Google Ads Conversion and Remarketing tag in Tag Management, you need the following:
 
 * A load rule to identify the conversion event to track.
 * Your Google Ads conversion settings, specifically your conversion tracking ID and conversion label.
@@ -105,7 +105,7 @@ With the E-Commerce extension in use, the following mappings are automatic:
 
 ## Server-side connector
 
-To configure the Google Ads Enhanced Conversions for Web connector in EventStream, you need the following:
+To configure the Google Ads Enhanced Conversions for Web connector in Event Streaming, you need the following:
 
 * An event feed to identify the conversion events to track.
 * Your Google Ads conversion settings.
@@ -114,7 +114,7 @@ The following steps are available in more detail in the [Google Ads Enhanced Con
 
 ### Add the connector
 
-Go to the connector marketplace and add the EventStream action for the Google Ads Enhanced Conversions for Web connector.
+Go to the connector marketplace and add the Event Streaming action for the Google Ads Enhanced Conversions for Web connector.
 
 
 <blockquote>
@@ -147,7 +147,7 @@ Phone number is an optional value that can be provided with either option.
 
 
 <blockquote>
-The EventStream connector allows for plain-text mapping, and SHA-256 hashing will be applied.
+The Event Streaming connector allows for plain-text mapping, and SHA-256 hashing will be applied.
 </blockquote>
 
 

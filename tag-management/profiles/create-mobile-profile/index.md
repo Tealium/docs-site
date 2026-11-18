@@ -47,7 +47,7 @@ For new mobile installations, we recommend using [Tealium Prism](#for-tealium-pr
 
 To create and activate a profile for use with the Tealium for iOS or Android SDK:
 
-1. Log in to Tealium Tag Management.
+1. Log in to Tag Management.
 1. Go to **Admin Menu > Manage Profiles**.
 1. Enter a profile name and click **Create Profile**.  
     
@@ -78,7 +78,7 @@ This profile can now be referenced in your mobile application by referencing the
 
 Use the following steps to adjust your mobile configuration settings:
 
-1. Log on to Tealium Tag Management and select the account and profile for mobile application.
+1. Log on to Tag Management and select the account and profile for mobile application.
 1. In the admin menu, click **Configure Publish Settings**. The **Publish Configuration** dialog appears.
 1. Click the **Mobile Library Publishing** tab.  
 Mobile publish settings are enabled by default. You can optionally scroll through the mobile publishing settings, as described in the following table, and adjust as needed.
@@ -86,7 +86,7 @@ Mobile publish settings are enabled by default. You can optionally scroll throug
 | Configuration| Description|
 |:------------ |:------------|
 | Tag Management| <ul><li>Enables mobile tag management in your application for client-side event tracking.</li><li>`utag.js` runs in a webview.</li></ul>|
-| Tealium Collect| <ul><li>Enable native mobile tracking for server-side data management (HTTP calls directly to EventStream).</li><li>Set to **OFF** if you enabled Tag Management.</li></ul>|
+| Tealium Collect| <ul><li>Enable native mobile tracking for server-side data management (HTTP calls directly to Event Streaming).</li><li>Set to **OFF** if you enabled Tag Management.</li></ul>|
 | Tealium S2S Legacy| <ul><li>Set to **ON** for events and views to be sent through Tealium S2S legacy protocol.</li></ul>|
 
 #### Batching

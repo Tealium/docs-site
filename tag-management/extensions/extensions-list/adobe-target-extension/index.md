@@ -1,6 +1,6 @@
 ---
 title: Adobe Target Extension
-description: The Adobe Target Extension lets you control your tests loaded by the Adobe Target Tag, all through Tealium iQ. This article describes how to configure the Adobe Target Extension in your Tealium iQ account.
+description: The Adobe Target Extension lets you control your tests loaded by the Adobe Target Tag, all through Tag Management. This article describes how to configure the Adobe Target Extension in your Tag Management account.
 url: https://docs.tealium.com/tag-management/extensions/extensions-list/adobe-target-extension/
 ---
 
@@ -45,7 +45,7 @@ To add more content modification entries, click the plus button in the upper-rig
 
 ### utag.sync.js Requirement
 
-Like many A/B testing tools implemented in Tealium iQ, Adobe Target requires use the synchronous version of `utag.js`, known as `utag.sync.js`. When adding the Adobe Target extension, it will automatically toggle on the **Generate utag.sync.js File** option in your profile's [Publish Configuration](). If you're already using `utag.sync.js` in the `<head>` section of your pages, no further action is required. Otherwise, you'll need to update the utag code generated in your Code Center.
+Like many A/B testing tools implemented in Tag Management, Adobe Target requires use the synchronous version of `utag.js`, known as `utag.sync.js`. When adding the Adobe Target extension, it will automatically toggle on the **Generate utag.sync.js File** option in your profile's [Publish Configuration](). If you're already using `utag.sync.js` in the `<head>` section of your pages, no further action is required. Otherwise, you'll need to update the utag code generated in your Code Center.
 
 For more information, see our articles on [using utag.sync.js]() and [accessing the Code Center]().
 
@@ -55,7 +55,7 @@ For customers using Adobe Enterprise Cloud alongside Adobe Target, be aware that
 
 ## Migrating from Adobe Test and Target
 
-The Adobe Target tag and extension are complete replacements of the Adobe Test & Target solution previously available in Tealium iQ. The following are a list of considerations for migrating to Adobe Target from an existing Adobe Test & Target implementation.
+The Adobe Target tag and extension are complete replacements of the Adobe Test & Target solution previously available in Tag Management. The following are a list of considerations for migrating to Adobe Target from an existing Adobe Test & Target implementation.
 
 ### Compatibility with Adobe Test and Target
 
@@ -65,7 +65,7 @@ Adobe Target and Test & Target tags may coexist on the same profile. However, th
 
 ### Tag
 
-The Adobe Test & Target tag—formerly labeled in the tag marketplace as two variants, "Adobe Target (async)" and "Adobe Target (sync)"— is deprecated by the release of Adobe Target, and has been replaced in the tag marketplace by a single tag simply called **Adobe Target**. Existing Test & Target tags on your Tealium iQ profiles will remain active and continue to function as usual, as long as the Adobe Test & Target extension is also active on those profiles.
+The Adobe Test & Target tag—formerly labeled in the tag marketplace as two variants, "Adobe Target (async)" and "Adobe Target (sync)"— is deprecated by the release of Adobe Target, and has been replaced in the tag marketplace by a single tag simply called **Adobe Target**. Existing Test & Target tags on your profiles will remain active and continue to function as usual, as long as the Adobe Test & Target extension is also active on those profiles.
 
 ### Extension
 
@@ -75,7 +75,7 @@ The Test & Target extension will continue to be offered in the extension marketp
 
 To switch from an Adobe Test & Target to Adobe Target implementation, you must perform the following steps in order:
 
-1. Deactivate the Test & Target extension in your Tealium iQ profile.
+1. Deactivate the Test & Target extension in your profile.
 1. Add the Adobe Target tag from the tag marketplace.
 1. Add the Adobe Target extension and scope it to the new Adobe Target tag.
-1. At this point, you may remove any Adobe Test & Target tags on your Tealium iQ profile, as they will no longer be functional without the Test & Target extension.
+1. At this point, you may remove any Adobe Test & Target tags on your profile, as they will no longer be functional without the Test & Target extension.

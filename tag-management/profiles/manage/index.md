@@ -32,7 +32,7 @@ The following restrictions apply to naming: The names `main` and `all` are reser
     The new profile display in the **Profiles** list.  
     
 <blockquote>
-Creating a profile happens immediately. If there are any required libraries present, they will be linked to the profile automatically. Any variables based on AudienceStream attributes will not be copied upon profile creation. You must manually add attribute-based variables to newly-created profiles.
+Creating a profile happens immediately. If there are any required libraries present, they will be linked to the profile automatically. Any variables based on Customer Data Platform (CDP) attributes will not be copied upon profile creation. You must manually add attribute-based variables to newly-created profiles.
 </blockquote>
 
 

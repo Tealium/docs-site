@@ -97,11 +97,11 @@ Use the following steps to create a custom data mapping:
 
 Repeat the steps to add more custom mappings. When complete, click **Done**. The custom mapping is displayed in the **Data Mappings** tab.
 
-## Mapping an AudienceStream attribute
+## Mapping a Customer Data Platform (CDP) attribute
 
-AudienceStream attributes are enriched attributes about your visitors that are sent back to your website for use with personalization.
+CDP attributes are enriched attributes about your visitors that are sent back to your website for use with personalization.
 
-Your profile must be populated by attributes from the matching AudienceStream profile. Those attributes are made available as data mappings in the variables drop-down menu. They are organized by attribute types and are labeled as AudienceStream variables.
+Your profile must be populated by attributes from the matching CDP profile. Those attributes are made available as data mappings in the variables drop-down menu. They are organized by attribute types and are labeled as CDP variables.
 
 For more information, see [About Data Layer Enrichment](https://docs.tealium.com/about-data-layer-enrichment/).
 

@@ -25,7 +25,7 @@ Preferences popup example:
 
 ![](https://docs.tealium.com/images/tag-management/consent-preferences-prompt.png)
 
-The iQ Tag Management Consent Preferences Manager simplifies the creation and deployment of a tracking preferences prompt to your website using your existing installation. After published, add a simple JavaScript function call to your page code to trigger the popup.
+The Tag Management Consent Preferences Manager simplifies the creation and deployment of a tracking preferences prompt to your website using your existing installation. After published, add a simple JavaScript function call to your page code to trigger the popup.
 
 ## Use the Consent Preferences Manager without showing the Explicit Consent Prompt
 
@@ -64,9 +64,9 @@ if (!checkForLoadedConsent()) {
 }
 ```
 
-## EventStream consent categories
+## Event Streaming consent categories
 
-Changes in consent preferences are also honored by Tealium EventStream connectors. The consent category of a connector action is displayed on the **Action** configuration screen:
+Changes in consent preferences are also honored by Event Streaming connectors. The consent category of a connector action is displayed on the **Action** configuration screen:
 
 ![](https://docs.tealium.com/images/tag-management/consent-categories-connector-action.png)
 
@@ -80,9 +80,9 @@ You have two connectors configured, one for `Analytics` and one for `Personaliza
 
 Only connector actions in the `Analytics` category are triggered. Any connector action categorized as `Personalization` is suppressed.
 
-## AudienceStream consent category
+## Customer Data Platform (CDP) consent category
 
-Tealium AudienceStream is categorized in the `CDP` consent category. In order for attributes and connectors to be processed in AudienceStream, the visitor must be opted into the `CDP` category.
+CDP is the consent category for Customer Data Platform. In order for attributes and connectors to be processed in CDP, the visitor must be opted into the `CDP` category.
 
 ## DataAccess consent category
 

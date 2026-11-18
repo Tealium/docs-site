@@ -119,7 +119,7 @@ After a user has submitted a publish request, all approvers receive an email sim
 
 Use the following steps to approve or decline a publish request:
 
-1. In the sidebar, go to **iQ Tag Management**.
+1. In the sidebar, go to **Tag Management**.
 1. Click the red box next to the **Save/Publish** button, which indicates the number of publish requests awaiting your review.  
 The **Pending Requests** dialog appears.
 1. Click an entry to approve or decline.  

@@ -1,6 +1,6 @@
 ---
 title: Tealium cookies
-description: This article provides an overview of the cookies used by Tealium iQ Tag Management and the various methods by which additional cookies can be created and modified.
+description: This article provides an overview of the cookies used by Tag Management and the various methods by which additional cookies can be created and modified.
 url: https://docs.tealium.com/tag-management/data-layer/cookies/
 ---
 ## Built-in cookies
@@ -53,7 +53,7 @@ Use the [`split_cookie_allowlist`](https://docs.tealium.com/platforms/javascript
 
 ### Persist Data Value
 
-The **Persist Data Value** extension can be used to set cookies from the iQ Tag Management interface. Cookies can be set with or without the `utag_main` prefix.
+The **Persist Data Value** extension can be used to set cookies from the Tag Management interface. Cookies can be set with or without the `utag_main` prefix.
 
 For more information, see the [Persist Data Value extension](https://docs.tealium.com/persist-data-value-extension/).
 
@@ -83,7 +83,7 @@ The Tealium Collect tag generates the following cookies:
 |`utag_main_dc_group`|  A random number to use with the **Sample Size** setting to determine which events are sampled. |
 | `utag_main_dc_visit` | The number of sessions for which the Tealium Collect tag has fired.|
 | `utag_main_dc_event` | The number of events for which the Tealium Collect tag has fired.|
-| `utag_main_dc_region` | The AudienceStream region where the visit session is stored, collected from the HTTP response header. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/). |
+| `utag_main_dc_region` | The Customer Data Platform (CDP) region where the visit session is stored, collected from the HTTP response header. This cookie is used for determining the endpoints for [data layer enrichment](https://docs.tealium.com/data-layer-enrichment/). |
 
 For more information, see [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/).
 
@@ -91,7 +91,7 @@ For more information, see [Tealium Collect tag](https://docs.tealium.com/tealium
 
 Some third-party tags generate cookies that store identifiers or other data.
 
-These cookies are not controlled by Tealium, and are not limited by the [`split_cookie_allowlist`](https://docs.tealium.com/platforms/javascript/settings/#split_cookie_allowlist) setting, or any other feature of Tealium iQ Tag Management.
+These cookies are not controlled by Tealium, and are not limited by the [`split_cookie_allowlist`](https://docs.tealium.com/platforms/javascript/settings/#split_cookie_allowlist) setting, or any other feature of Tag Management.
 
 ## Cookies from the consent manager
 

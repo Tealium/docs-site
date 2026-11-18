@@ -338,7 +338,7 @@ These errors are caused by incorrect column mappings in the [Column Mapping scre
 
 |Error Message| What does it mean| How to resolve|
 |---| ---| ---|
-|Failed to find attribute for column with id| AudienceStream could not generate an Omnichannel Attribute for the column name you mapped.| Replace the offending column header with a fresh instance and re-upload the file|
+|Failed to find attribute for column with id| Customer Data Platform (CDP) could not generate an Omnichannel Attribute for the column name you mapped.| Replace the offending column header with a fresh instance and re-upload the file|
 |Exception thrown while processing file| Unable to parse the value of your mapped column header into the Omnichannel Attribute| Replace the offending column value and re-upload the file.|
 |Secondary visitor ID column= `{column_name_here}` does not exist in the file, unable to continue| The column header you mapped to the Visitor ID field does not exist in your file. This could be due to a typo or the header is not defined.| Make sure the column header you supplied matches what is in the file|
 |`{date_format_here}` could not be parsed as a Date| The date format you specified for the mapped column name does not exist in your file.| Make sure the date format you supplied matches what is in the file|

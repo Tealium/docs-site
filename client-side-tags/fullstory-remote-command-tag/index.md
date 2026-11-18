@@ -31,6 +31,9 @@ The available categories are:
 |  `user_variables.email_str`  | String | Email |
 |  `user_variables.phone_str`  | String | Phone |
 |  `tealium_event`  | String | Tealium Event |
+|  `consent_granted`  | Boolean | Consent Granted |
+|  `log_level`  | String | Log Level |
+|  `log_message`  | String | Log Message |
 
 ### E-Commerce
 
@@ -51,6 +54,12 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-m
 |  `identify` | identify |
 | `setuservariables` | setuservariables |
 | `logevent` | logevent |
+| `shutdown` | Shutdown |
+| `restart` | Restart |
+| `anonymize` | Anonymize |
+| `resetidletimer` | Reset Idle Timer |
+| `consent` | Consent |
+| `log` | Log |
 
 ### Event-specific Parameters
 
@@ -61,3 +70,11 @@ To map events, refer to [Create an Event Mapping](https://docs.tealium.com/tag-m
 |  `identify` | Identify |
 |  `setuservariables` | Set User Variables |
 |  `logevent` | Log Event |
+|  `shutdown` | Shutdown |
+|  `restart` | Restart |
+|  `anonymize` | Anonymize |
+|  `resetidletimer` | Reset Idle Timer |
+|  `consent` | Consent |
+|  `log` | Log |
+
+For details on each command and its parameters, see [Remote Command: FullStory](https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/#supported-methods).

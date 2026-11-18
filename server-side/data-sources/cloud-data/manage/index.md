@@ -118,6 +118,7 @@ The query mode determines how to select new rows, modified rows, or both for imp
 
 * If you select **Timestamp + Incrementing** (recommended) you must select two columns, a timestamp column and a strictly incrementing column. 
 * If you select **Timestamp** or **Incrementing**, you must select a column to use to detect either new and modified rows or new rows only.
+* If you select **Full Resync**, you must select a **Timestamp Column**, an **Incrementing Column**, or both. The selected columns order rows during import. Full Resync is available only for **Hourly** or **Daily** query frequency.
 
 For more information, see .
 

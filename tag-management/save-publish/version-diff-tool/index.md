@@ -3,7 +3,7 @@ title: Version diff tool
 description: The diff tool is built for version control and distro verification. It lets you compare the versions published in your profile and inspect their distro files.
 url: https://docs.tealium.com/tag-management/save-publish/version-diff-tool/
 ---
-By inspecting the code changes, you can find out which Tealium iQ configurations were added, removed, or left untouched between versions.
+By inspecting the code changes, you can find out which configurations were added, removed, or left untouched between versions.
 
 ## How it works
 
@@ -81,7 +81,7 @@ If an extension is modified, the code changes are displayed in the `utag` file o
 
 ## Distro verification
 
-The **Distro Verification** screen displays SHA256 signatures of every file generated for a version. By looking at the signatures, you can quickly compare a file in Tealium iQ with its corresponding instance on the server and spot any differences. This is especially important if you are hosting distro files in a location other than Tealium.
+The **Distro Verification** screen displays SHA256 signatures of every file generated for a version. By looking at the signatures, you can quickly compare a file in Tag Management with its corresponding instance on the server and spot any differences. This is especially important if you are hosting distro files in a location other than Tealium.
 
 Use the following steps to access the Distro Verification screen:
 

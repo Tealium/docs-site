@@ -1,6 +1,6 @@
 ---
 title: Data layer variable types
-description: This article describes how to use the various data layer variable types available in Tealium iQ Tag Management.
+description: This article describes how to use the various data layer variable types available in Tag Management.
 url: https://docs.tealium.com/tag-management/data-layer/data-layer-variables/
 ---
 The data layer screen organizes variables by type. The types are based on the source of the data.
@@ -15,13 +15,13 @@ The supported types are:
 * **DOM Variable**: Built-in DOM variables.
 * **Local Storage Variable**: Data stored locally between sessions.
 * **Session Storage Variable**: Data stored locally that expires between sessions.
-* **AudienceStream Attributes**: Variables imported by [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/) from AudienceStream. This variable type is only available to customers with AudienceStream.
+* **AudienceStream Attributes**: Variables imported by [data layer enrichment](https://docs.tealium.com/about-data-layer-enrichment/) from Customer Data Platform (CDP). This variable type is only available to customers with CDP.
 
 ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-datalayervariables-filter.png)
 
 
 <blockquote>
-These data layer variables are for use in your Tealium iQ configuration. For more information on creating the data layer code for your site, see [Data Layer](https://docs.tealium.com/quick-start-web/#data-layer) and [Universal Data Object]().
+These data layer variables are for use in your Tag Management configuration. For more information on creating the data layer code for your site, see [Data Layer](https://docs.tealium.com/quick-start-web/#data-layer) and [Universal Data Object]().
 </blockquote>
 
 
@@ -54,7 +54,7 @@ The following URL demonstrates how the `sortOrder` variable is defined:
 http://example.com/path/page.html?pg=4&sortOrder=price
 ```
 
-* Variable name in iQ: `sortOrder`  
+* Variable name: `sortOrder`  
 * Referenced in a JavaScript extension: `b["qp.sortOrder"]`
 
 ## First-party cookies
@@ -72,7 +72,7 @@ The following configuration demonstrates how the `_aff` variable is defined in t
 ![](https://docs.tealium.com/images/tag-management/data-layer/data-layer-variables/first-party-third-party-cookies-marked.png)
 
 * Browser cookie name: `_aff`  
-* Variable name in iQ: `_aff`  
+* Variable name: `_aff`  
 * Referenced in a JavaScript extension: `b["cp._aff"]`
 
 
@@ -103,7 +103,7 @@ The following JavaScript snippet demonstrates how the `myApp.page.name` variable
 var myApp = { page : { name : "Home Page" } };
 ```
 
-* Variable name in iQ: `myApp.page.name`  
+* Variable name: `myApp.page.name`  
 * Referenced in a JavaScript extension: `b["js_page.myApp.page.name"]`
 
 ## Meta data elements
@@ -118,7 +118,7 @@ The following meta tag demonstrates how the `author` variable is defined in the 
 <meta name="author" content="Tealium" />
 ```
 
-* Variable name in iQ: `author`  
+* Variable name: `author`  
 * Referenced in a JavaScript extension: `b["meta.author"]`
 
 ## DOM variables

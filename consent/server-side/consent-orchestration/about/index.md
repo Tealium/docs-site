@@ -19,13 +19,13 @@ You can organize consent rules into purpose groups with consent orchestration on
 
 Consent orchestration provides centralized control over consent rules for the following features:
 
-* EventStream connector actions
+* Event Streaming connector actions
 * [Event functions](https://docs.tealium.com/about-event-and-visitor-functions/)
 * EventStore
 * EventDB
-* Events that AudienceStream is allowed to process
+* Events that Customer Data Platform (CDP) is allowed to process
 
-Consent orchestration doesn't control AudienceStream activations. A future release will include support for these activations.
+Consent orchestration doesn't control CDP activations. A future release will include support for these activations.
 
 ### Purpose Groups and Consent Policies
 

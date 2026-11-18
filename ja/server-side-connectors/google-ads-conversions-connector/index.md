@@ -42,7 +42,7 @@ Google Ads コンバージョンは、ユーザーが広告をクリックした
 
 ## 遅延アクション
 
-Google のベストプラクティスに従い、オフラインコンバージョンのアップロードに対応するため、アクションは 30 分間遅延されます。Google Campaign Manager 360 Floodlight コネクタでの遅延アクションについて詳しくは、Google の[オフラインコンバージョンをアップロードするためのベストプラクティス](https://support.google.com/searchads/answer/6074338?hl=en)ドキュメントを参照してください。
+Google のベストプラクティスに従い、オフラインコンバージョンのアップロードに対応するため、アクションは 30 分間遅延されます。Google Campaign Manager 360 Floodlight コネクタでの遅延アクションについて詳しくは、Google の[オフラインコンバージョンをアップロードするためのベストプラクティス](https://support.google.com/google-ads/answer/15081888?hl=en)ドキュメントを参照してください。
 
 
 <blockquote>

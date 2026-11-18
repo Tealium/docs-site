@@ -20,6 +20,6 @@ To use the Adobe Test & Target tool in Web Companion:
 1. Click **New Tag** to add a new instance of the Test and Target Tag.
 1. Click **Add to Queue**.
 1. Navigate to the Queue and click **Save**.
-1. Enter your Tealium iQ login information and click **Login**.
-1. By default, anything added with Web Companion is turned off in Tealium iQ. Log in to Tealium iQ and turn on the tag and/or extension you added.
+1. Enter your Tag Management login information and click **Login**.
+1. By default, anything added with Web Companion is turned off in Tag Management. Log in to Tag Management and turn on the tag and/or extension you added.
 1. Save/Publish the profile.

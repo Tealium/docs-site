@@ -57,7 +57,7 @@ Before you create a function to invoke your AI model, ensure that you have the f
 * **Derived attribute**  
     Calculates a churn risk score from event data. The function sets this value for each event.
 
-* **AudienceStream event filter**  
+* **Customer Data Platform (CDP) event filter**  
     Filters events using the churn risk score. Only high-risk events enrich visitor profiles.
 
 * **Event feed**  
@@ -74,7 +74,7 @@ Before you create a function to invoke your AI model, ensure that you have the f
 To implement this solution, you need:
 
 * Tealium requirements
-    * AudienceStream enabled
+    * CDP enabled
     * Tealium functions enabled
     * A configured data source for receiving `track()` events
     * Enrichments to write prediction attributes to visitor profiles

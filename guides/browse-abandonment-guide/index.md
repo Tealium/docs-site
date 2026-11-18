@@ -33,7 +33,7 @@ This use case requires the following:
   * 
   * 
   * 
-* Tealium AudienceStream
+* Customer Data Platform (CDP)
 
 In general, the following event attributes will be helpful in tracking browse abandonment activity. Your actual attribute names might differ.
 
@@ -51,7 +51,7 @@ In general, the following event attributes will be helpful in tracking browse ab
 
 For more information about the data layer definition for retail, see [retail](https://docs.tealium.com/retail/).
 
-### Required AudienceStream Attributes
+### Required Customer Data Platform (CDP) Attributes
 
 | Attribute Name | Type   | Scope   | Description    |
 |----------------|--------|---------|----------------|

@@ -1,13 +1,13 @@
 ---
 title: Consent integration
-description: This guide describes how to set up a supported vendor integration with Tealium iQ tag management system and verify your set up so that tags fire only when users have given their consent.
+description: This guide describes how to set up a supported vendor integration with Tag Management tag management system and verify your set up so that tags fire only when users have given their consent.
 url: https://docs.tealium.com/guides/supported-consent-integration/
 ---
-In this guide, we use OneTrust consent integration with Tealium iQ tag management system, but this setup can be applied to any of the [supported vendor integrations](https://docs.tealium.com/vendor-specific-configuration/). By the end of this guide, you’ll have successfully integrated OneTrust or any other supported Consent Management Platform (CMP) of your choice and the relevant enforcements in Tealium iQ to ensure your tags respect user preferences.
+In this guide, we use OneTrust consent integration with Tag Management tag management system, but this setup can be applied to any of the [supported vendor integrations](https://docs.tealium.com/vendor-specific-configuration/). By the end of this guide, you’ll have successfully integrated OneTrust or any other supported Consent Management Platform (CMP) of your choice and the relevant enforcements in Tag Management to ensure your tags respect user preferences.
 
 ![](https://docs.tealium.com/images/guides/consent-integration-guide.png)
 
-Complete the following steps to set up OneTrust consent integration in Tealium iQ:
+Complete the following steps to set up OneTrust consent integration in Tag Management:
 
 1. [Load the CMP script](#load-the-cmp-script)
 1. [Configure the integration](#step-1-configure-the-integration)
@@ -15,7 +15,7 @@ Complete the following steps to set up OneTrust consent integration in Tealium i
 1. [Select publish location](#step-3-select-publish-location)
 1. [Create a purpose group](#step-4-create-a-purpose-group)
 1. [Edit purpose group](#step-5-edit-purpose-group)
-1. [Assign Tealium iQ to a purpose](#step-4-assign-tealium-iq-to-a-purpose)
+1. [Assign Tag Management to a purpose](#step-4-assign-tealium-iq-to-a-purpose)
 1. [Map tags to purposes](#step-4-map-tags-to-purposes)
 1. [Publish the configuration](#step-4-publish-the-configuration)
 
@@ -29,7 +29,7 @@ Additionally, we'll verify and troubleshoot our setup with the following steps:
 
 Creating a consent integration requires the following:
 
-* Tealium iQ Tag Management
+* Tag Management
 * Client-side consent integrations
 
 To set up your integration, you’ll need the following vendor-specific information:
@@ -70,7 +70,7 @@ To begin, we’ll inject the OneTrust CMP script into the website using either a
 
 Next, we’ll configure the integration to ensure tags fire only based on the consent users provide.
 
-## Configure OneTrust consent integration in Tealium iQ
+## Configure OneTrust consent integration in Tag Management
 
 ### Step 1: Configure the integration
 
@@ -103,19 +103,19 @@ The **Publish Location** screen lets you choose the environments where the integ
 
 ### Step 5: Edit purpose group
 
-After saving your consent integration, you’ll need to edit your purpose group to assign Tealium iQ to a purpose and map tags to purposes.
+After saving your consent integration, you’ll need to edit your purpose group to assign Tag Management to a purpose and map tags to purposes.
 
 To edit purpose group:
 
 1. In the **Consent Integrations** screen, click the **Purpose Groups** tab.
 1. Select the **OneTrust Default** purpose group created in [step 1](#step-1-configure-the-integration).
 
-### Step 6: Assign Tealium iQ to a purpose
+### Step 6: Assign Tag Management to a purpose
 
-The **Tealium iQ Purpose** screen lets you map Tealium iQ to a specific purpose, which is critical for managing all tag operations. If consent is required and the user does not consent to that purpose, Tealium iQ will not load, and as a result, no tags will function.
+The **Tag Management Purpose** screen lets you map Tag Management to a specific purpose, which is critical for managing all tag operations. If consent is required and the user does not consent to that purpose, Tag Management will not load, and as a result, no tags will function.
 
-1. Click the **Tealium iQ Purpose** tab.
-1. To ensure Tealium iQ always loads, we’ll assign Tealium iQ to the **Strictly Necessary** purpose so that users cannot opt out.
+1. Click the **Tag Management Purpose** tab.
+1. To ensure Tag Management always loads, we’ll assign Tag Management to the **Strictly Necessary** purpose so that users cannot opt out.
 
 ### Step 7: Map tags to purposes
 
@@ -128,17 +128,17 @@ The **Map Tags** screen lets you assign tags to specific purposes, ensuring that
 
 ### Step 8: Publish the configuration
 
-Save and publish the Tealium iQ profile to begin using the consent integration with your CMP.
+Save and publish the Tag Management profile to begin using the consent integration with your CMP.
 
-You have now successfully configured the OneTrust integration within Tealium iQ. This setup ensures that your tags fire only when user consent is granted on all pages and events, in line with the configurations you’ve set up in your CMP. Ensure that the integration is working correctly by testing it in your chosen environment. For more information about how to test, see testing and troubleshooting below.
+You have now successfully configured the OneTrust integration within Tag Management. This setup ensures that your tags fire only when user consent is granted on all pages and events, in line with the configurations you’ve set up in your CMP. Ensure that the integration is working correctly by testing it in your chosen environment. For more information about how to test, see testing and troubleshooting below.
 
 ## Test and troubleshoot 
 
-Now that we've configured the consent integration, let's make sure it's working. In this section, we’ll validate that the OneTrust consent integration in Tealium iQ is functioning correctly. We'll check the data layer for the consent state and use the browser console to validate our setup.
+Now that we've configured the consent integration, let's make sure it's working. In this section, we’ll validate that the OneTrust consent integration in Tag Management is functioning correctly. We'll check the data layer for the consent state and use the browser console to validate our setup.
 
 Before you begin, ensure that:
 
-* Tealium iQ and OneTrust consent integration are up and running on your website.
+* Tag Management and OneTrust consent integration are up and running on your website.
 * You have access to the browser's developer console.
 
 ### Check the data layer
@@ -150,7 +150,7 @@ The consent state is added to the data layer right before tags are fired. To ens
 * `tci.purposes_with_consent_unprocessed`: Contains all unprocessed consented purposes.
 * `tci.purposes_with_consent_processed`: Contains all processed consented purposes.
 
-The unprocessed and processed variables can be used to build logic to ensure EventStream and AudienceStream connectors don't fire multiple times for the same event.
+The unprocessed and processed variables can be used to build logic to ensure Event Streaming and Customer Data Platform (CDP) connectors don't fire multiple times for the same event.
 
 ### Verify your consent integration setup
 
@@ -208,7 +208,7 @@ Here are a few scenarios you might encounter with the debug mode filter.
 #### Scenario 1: Blocking the CMP script
 
 ![](https://docs.tealium.com/images/guides/consent-integration-blocked-cmp-script.png)
-In this scenario, the CMP script is blocked or unavailable. As shown in the debug output, consent integrations has prevented Tealium iQ from loading because there’s an active consent integration in place. The page view event is queued, but no further action occurs until the CMP script loads.
+In this scenario, the CMP script is blocked or unavailable. As shown in the debug output, consent integrations has prevented Tag Management from loading because there’s an active consent integration in place. The page view event is queued, but no further action occurs until the CMP script loads.
 
 #### Scenario 2: CMP in opt-in mode before cookies are accepted
 

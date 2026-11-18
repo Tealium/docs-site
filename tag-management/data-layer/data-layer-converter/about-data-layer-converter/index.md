@@ -1,9 +1,9 @@
 ---
 title: About the data layer converter
-description: The data layer converter lets you keep a nested data layer object and convert it to the flat format expected by iQ Tag Management.
+description: The data layer converter lets you keep a nested data layer object and convert it to the flat format expected by Tag Management.
 url: https://docs.tealium.com/tag-management/data-layer/data-layer-converter/about-data-layer-converter/
 ---
- The data layer converter takes a nested data object, such as `digitalData` (W3C) or `dataLayer` (Google Tag Manager), and flattens it into an object of strings or arrays of strings. There are different ways to implement a data layer on your website, some of which use nested objects and arrays. These formats can be helpful in representing complex data, but do not work well with iQ Tag Management. iQ Tag Management expects the data in `utag_data` to be flat, meaning that it contains only values of type strings, numbers, and arrays of strings or numbers.
+ The data layer converter takes a nested data object, such as `digitalData` (W3C) or `dataLayer` (Google Tag Manager), and flattens it into an object of strings or arrays of strings. There are different ways to implement a data layer on your website, some of which use nested objects and arrays. These formats can be helpful in representing complex data, but do not work well with Tag Management. Tag Management expects the data in `utag_data` to be flat, meaning that it contains only values of type strings, numbers, and arrays of strings or numbers.
 
 ## Example: digitalData
 

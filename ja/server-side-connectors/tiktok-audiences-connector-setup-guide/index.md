@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side-connectors/tiktok-audiences-connect
 * API名：TikTok HTTP API
 * APIバージョン：v1.3
 * APIエンドポイント：`https://business-api.tiktok.com/open_api/v1.3`
-* ドキュメント：[TikTokオーディエンスセグメント](https://ads.tiktok.com/marketing_api/docs?id=1736874036878337)
+* ドキュメント：[TikTokオーディエンスセグメント](https://business-api.tiktok.com/portal/docs/audience-segment/v1.3)
 
 ## バッチ制限
 

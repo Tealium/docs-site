@@ -1,6 +1,6 @@
 ---
 title: About profile libraries
-description: This article describes profile libraries in iQ Tag Management.
+description: This article describes profile libraries in Tag Management.
 url: https://docs.tealium.com/tag-management/profiles/profile-libraries/about/
 ---
 ## How it works

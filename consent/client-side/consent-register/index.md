@@ -36,7 +36,7 @@ For essential background and context, see [Google consent mode](https://docs.tea
 The `window.tealiumConsentRegister.currentDecision` object enables direct access to the current consent decision on the webpage. This streamlines the implementation of custom actions such as:
 
 * Sending opt-out events to vendors to enable removal from audiences and complete downstream deactivation.
-* Adding an extra layer of consent logging on top of what your CMP offers using a Tealium iQ extension.
+* Adding an extra layer of consent logging on top of what your CMP offers using a Tag Management extension.
 * Tracking consent changes, enabling access to the current decision through a JavaScript API call.
 
 For consent integrations and consent manager, the purpose IDs in the array will be different for each specific configuration.
@@ -84,20 +84,20 @@ For transparency, these decisions always includes an `always_on` category, since
 
 ### Check if a tag is allowed to fire
 
-The `isTagAllowed` method lets you check if a specific Tealium iQ tag is permitted to fire based on the current consent settings and user decision. The primary use case for this method is fallback behavior when consent is revoked for a tag previously allowed to fire.
+The `isTagAllowed` method lets you check if a specific Tag Management tag is permitted to fire based on the current consent settings and user decision. The primary use case for this method is fallback behavior when consent is revoked for a tag previously allowed to fire.
 
 ```javascript
 window.tealiumConsentRegister.isTagAllowed(tagId);
 ```
 
-* `tagId` (integer or string): The UID of the tag to check, shown on the tag in Tealium iQ. This method accepts a number or a string that can be converted to a number (for example, "7").
+* `tagId` (integer or string): The UID of the tag to check, shown on the tag in Tag Management. This method accepts a number or a string that can be converted to a number (for example, "7").
 * Returns a boolean: `true` if the tag has the required consent, `false` if the tag is not allowed, doesn’t exist, or consent isn't granted.
   
   If neither condition applies, or if the `tagId` doesn't exist, the method returns `false`.
 
 #### Opt-out handling
 
-You can integrate the `isTagAllowed` method into Tealium iQ tag templates by editing the template or using a tag-scoped extension. Set a callback to handle vendor-specific opt-out actions when consent is revoked. If a tag was previously allowed but later blocked due to a consent change, the callback can:
+You can integrate the `isTagAllowed` method into Tag Management tag templates by editing the template or using a tag-scoped extension. Set a callback to handle vendor-specific opt-out actions when consent is revoked. If a tag was previously allowed but later blocked due to a consent change, the callback can:
 
 * Trigger an opt-out request to the vendor.
 * Remove the vendor’s object from the page to stop further data transmission.

@@ -29,13 +29,13 @@ url: https://docs.tealium.com/ja/client-side-tags/tiktok-pixel-tag/
 タグを追加する際に、次の構成を構成します。
 
 * **Pixel ID**：TikTok Pixel ID。
-* **コンテンツタイプ**：商品カタログの形式に基づいて商品をトラッキングする方法を決定するため、`content_type`を構成します。個々の商品（一般的にはSKU形式）に関連付けられたイベントをトラッキングするには`Product`を選択し、商品グループ（多くの場合、商品IDのプレフィックス）に関連付けられたイベントをトラッキングするには`Product Group`を選択します。詳細については、[TikTok：パラメータについて](https://ads.tiktok.com/help/article/about-parameters?lang=en)を参照してください。
+* **コンテンツタイプ**：商品カタログの形式に基づいて商品をトラッキングする方法を決定するため、`content_type`を構成します。個々の商品（一般的にはSKU形式）に関連付けられたイベントをトラッキングするには`Product`を選択し、商品グループ（多くの場合、商品IDのプレフィックス）に関連付けられたイベントをトラッキングするには`Product Group`を選択します。詳細については、[TikTok：パラメータについて](https://ads.tiktok.com/resources/help/article/about-parameters?lang=en)を参照してください。
 * **イベントIDを生成**：有効にした場合は、[TikTok Eventsコネクタ](https://docs.tealium.com/tiktok-events-connector/)と併用し、コネクタのイベントIDパラメータをマッピングして、Webベースとサーバーベースの統合を同期します。この機能を使用するには、有効なTealium Collectタグが必要です。
 * **自動Pageviewトラッキング**：すべてのページで`Pageview`イベントを自動的にトラッキングします。`auto_page_tracking`をマッピングすることで、この構成を上書きできます。
 * **自動購入トラッキング**：注文IDが検出されたときに、`CompletePayment`イベントを自動的にトラッキングします。`auto_purchase_tracking`をマッピングすることで、この構成を上書きできます。
 * **自動IDトラッキング**：メールアドレス、電話番号、その他の識別子などの顧客情報と、ユーザーがWebサイトで行ったアクションとの照合に役立つTikTok Advanced Matching機能を有効にします。有効にすると、ユーザーデータ（メールアドレスまたは電話番号）が検出されたすべてのイベントで、タグが`ttq.identify()`を呼び出します。詳細については、[TikTok：Web向けAdvanced Matchingについて](https://ads.tiktok.com/help/article/advanced-matching-web)を参照してください。
-* **データ使用の制限**：米国の一部の州のプライバシー法に基づき、個人データの販売および共有をオプトアウトする権利への広告主の準拠を支援する機能です。詳細については、[TikTok：データ使用の制限](https://business-api.tiktok.com/portal/docs?id=1770092377990145)を参照してください。
-* **履歴オブザーバー**：SPAのブラウザー履歴が変更されたときに、TikTokがPageviewイベントを自動的に報告するかどうかを制御します。TikTokによるSPA履歴の自動トラッキングを無効にするには、`false`に構成します。構成しない場合、TikTokのデフォルト動作が維持されます。詳細については、[TikTok：シングルページアプリケーションの操作](https://business-api.tiktok.com/portal/docs?id=1801524003169281)を参照してください。
+* **データ使用の制限**：米国の一部の州のプライバシー法に基づき、個人データの販売および共有をオプトアウトする権利への広告主の準拠を支援する機能です。
+* **履歴オブザーバー**：SPAのブラウザー履歴が変更されたときに、TikTokがPageviewイベントを自動的に報告するかどうかを制御します。TikTokによるSPA履歴の自動トラッキングを無効にするには、`false`に構成します。構成しない場合、TikTokのデフォルト動作が維持されます。詳細については、[TikTok：シングルページアプリケーションの操作](https://ads.tiktok.com/resources/help/article/about-single-page-application-pageview-measurement-for-tiktok-pixel?lang=en)を参照してください。
 
 ## ロードルール
 

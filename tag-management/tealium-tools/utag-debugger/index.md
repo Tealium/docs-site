@@ -87,7 +87,7 @@ The following variable types are available:
 * **JS Page** – JavaScript page variables defined in your data layer (variables other than `utag_data`).
 * **Querystring** – Query string variables found in the URL.
 * **Meta** – All meta data values available in the page.
-* **AudienceStream** – Variables populated by data layer enrichment.
+* **Customer Data Platform (CDP)** – Variables populated by data layer enrichment.
 * **Local storage** – Local storage variables defined in your data layer.
 * **Session storage** – Session storage variables defined in your data layer.
 

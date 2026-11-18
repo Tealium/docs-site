@@ -23,7 +23,7 @@ An API endpoint is documented with a specific HTTP method and path, for example:
 GET /revisions
 ```
 
-Some endpoints show placeholder variables ( `{variable}`) to indicate values that you supply. Most endpoints require the name of the your iQ Tag Management (TiQ) account and profile in the path of the call.
+Some endpoints show placeholder variables ( `{variable}`) to indicate values that you supply. Most endpoints require the name of the your Tag Management (TiQ) account and profile in the path of the call.
 
 Example API endpoint path for TiQ revisions:
 

@@ -62,8 +62,8 @@ Use the following steps to place an environment cookie:
     document.cookie = "utag_env_ACCOUNT_PROFILE=//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENV/utag.js; path=/; domain=YOURSITE.com";
     ```
     In the command line example, replace the variables as follows:
-      * **ACCOUNT** – Replace with your Tealium iQ account name
-      * **PROFILE** – Replace with your Tealium iQ profile name
+      * **ACCOUNT** – Replace with your Tag Management account name
+      * **PROFILE** – Replace with your Tag Management profile name
       * **ENV** – Replace with the environment to load (`dev`, `qa`, or a custom entry)
       * **YOURSITE** – Replace with the domain name for your site
 

@@ -1,7 +1,7 @@
 ---
 title: Selligent by Marigoldコネクタ構成ガイド
 description: この記事では、Selligent by Marigoldコネクタの構成方法について説明します。
-url: https://docs.tealium.com/ja/server-side-connectors/selligent-by-marigold-connector/
+url: https://docs.tealium.com/ja/server-side-connectors/selligent-connector/
 ---
 Selligent APIの詳細については、[Selligent Marketing Cloud API Explorer](https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/)を参照してください。
 

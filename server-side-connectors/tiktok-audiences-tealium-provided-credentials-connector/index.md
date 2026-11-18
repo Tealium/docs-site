@@ -10,7 +10,7 @@ This connector uses the following vendor API:
 * API Name: TikTok HTTP API
 * API Version: v1.3
 * API Endpoint: `https://business-api.tiktok.com/open_api/v1.3`
-* Documentation: [TikTok Audience segment](https://ads.tiktok.com/marketing_api/docs?id=1736874036878337)
+* Documentation: [TikTok Audience segment](https://business-api.tiktok.com/portal/docs/audience-segment/v1.3)
 
 ## Batch limits
 

@@ -92,11 +92,11 @@ Depending on your business case, use anonymous values or values based on known u
 
 #### Anonymous values
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | N/A |
 
-If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from `utag.js`, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
+If you are using Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the `tealium_visitor_id` must match the value in the `utag_main_v_id` cookie. For more information about the built-in variables from `utag.js`, see [JavaScript (Web) > Data Layer](https://docs.tealium.com/platforms/javascript/data-layer/).
 
 
 <blockquote>
@@ -106,7 +106,7 @@ If you are using Adobe Launch or Google Tag Manager, then the value needs to mat
 
 #### Known-visitors server-to-server
 
-|AudienceStream| EventStream|
+|CDP| Event Streaming|
 |---| ---|
 | Required | Recommended |
 
@@ -135,7 +135,7 @@ The concatenated value is:
 
 
 <blockquote>
-Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.
+Ensure that your `tealium_visitor_id` is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in Customer Data Platform (CDP) and may not track properly.
 </blockquote>
 
 
@@ -159,11 +159,11 @@ Whether you use anonymous visitors or known visitors, if your API calls do not c
 
 ### User Identifiers
 
-When using AudienceStream, pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
+When using CDP, pass a known user identifier with a tracking call. For example, `email_address` or `login_id`.
 
-A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.
+A user identifier is also needed if you are using Event Streaming and need to provide an ID to a vendor connector.
 
-In AudienceStream, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
+In CDP, these user identifiers are used to enrich [visitor ID attributes](https://docs.tealium.com/visitor-id-attribute/).
 
 ## Permission requirements
 

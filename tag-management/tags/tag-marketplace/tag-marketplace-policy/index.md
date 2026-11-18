@@ -11,7 +11,7 @@ You can use the policy to restrict and safeguard your account so that only a lim
 
 ## How it works
 
-The tag marketplace contains every vendor integration that Tealium iQ offers. This means that any user with permission to add tags and publish can add one of these tags to your configuration (and to your site).
+The tag marketplace contains every vendor integration that Tag Management offers. This means that any user with permission to add tags and publish can add one of these tags to your configuration (and to your site).
 
 When the tag marketplace policy is enabled, the policy hides all vendors by default. Select the vendors that you want to approve for your site. Limiting the tags available provides an additional security to your account and prevents unapproved tags from being released to your site.
 

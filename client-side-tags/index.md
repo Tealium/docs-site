@@ -20,14 +20,8 @@ Learn how to map data layer variables and events.
 
 
 
-![](https://docs.tealium.com/images/icons/icon-timer.svg)
 
-#### Recent Tags
-
-See the most recently updated client-side integrations.
-
-
-## Tealium Tags
+### Tealium Tags
 
 
 ![](https://docs.tealium.com/images/icons/icon-tag.svg)
@@ -53,7 +47,7 @@ Tealium Generic Tag
 Tealium Pixel Container
 
 
-## Popular Tags
+### Popular Tags
 
 
 ![](https://docs.tealium.com/images/integrations/google-analytics.png)

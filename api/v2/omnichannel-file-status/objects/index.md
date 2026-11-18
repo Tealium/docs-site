@@ -7,7 +7,7 @@ url: https://docs.tealium.com/api/v2/omnichannel-file-status/objects/
 
 | Parameter | Type | Description |
 |---|---|---|
-| `account` | string | The name of the Tealium AudienceStream CDP account. |
+| `account` | string | The name of the Customer Data Platform (CDP) account. |
 | `profile` | string | The name of the profile in the account where your files are uploaded and processed. |
 | `created at` | UTC timestamp | The date and time when the file status was created, expressed in [UTC format with the designator 'Z'](https://www.w3.org/TR/NOTE-datetime). |
 | `file.name` | string | The name of the file. |

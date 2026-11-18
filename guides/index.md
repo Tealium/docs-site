@@ -154,7 +154,7 @@ Sample SQL queries for EventDB and AudienceDB reports.
 
 #### Consent integration
 
-Set up a consent management platform integration with Tealium iQ.
+Set up a consent management platform integration with Tag Management.
 
 
 

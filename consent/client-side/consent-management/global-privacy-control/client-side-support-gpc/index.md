@@ -17,13 +17,13 @@ This article describes Tealium's client-side support for GPC. For information on
 
 Since the GPC signal is a simple boolean, CCPA and similar opt-out type regulations are the most relevant and accepted applications today (see [About Global Privacy Control](https://docs.tealium.com/about-global-privacy-control/) for more detail).
 
-A strict interpretation might lead to a decision that Tealium iQ shouldn't load at all if the GPC signal is set to `true`. If all the tags implemented in Tealium iQ sell or share data, this might be the right choice.
+A strict interpretation might lead to a decision that Tag Management shouldn't load at all if the GPC signal is set to `true`. If all the tags implemented in Tag Management sell or share data, this might be the right choice.
 
 That can be implemented with a Pre Loader JavaScript extension:
 
 ```javascript
 if (navigator.globalPrivacyControl === true) {
-    // Tealium iQ not loaded due to Global Privacy Control opt-out signal
+    // Tag Management not loaded due to Global Privacy Control opt-out signal
     window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
     window.utag_cfg_ovrd.noload = true;
 }
@@ -49,11 +49,11 @@ This integration assumes that a user has opted out when the GPC opt-out signal o
 
 **For customers with an already active Consent Management Platform (CMP) with GPC support who only need enforcement.**
 
-[Client-side consent integrations](https://docs.tealium.com/about-consent-integrations/) provide support for a growing list of CMPs. These CMPs typically provide GPC support as part of their decision capture, which is then enforced by Tealium iQ through the consent integration, with no additional logic or interpretation required. If your CMP isn't supported yet, custom integrations are also available.
+[Client-side consent integrations](https://docs.tealium.com/about-consent-integrations/) provide support for a growing list of CMPs. These CMPs typically provide GPC support as part of their decision capture, which is then enforced by Tag Management through the consent integration, with no additional logic or interpretation required. If your CMP isn't supported yet, custom integrations are also available.
 
 #### Client-side consent management - opt-out privacy banner and popup
 
-**For customers who want to fully implement their consent management in Tealium iQ.**
+**For customers who want to fully implement their consent management in Tag Management.**
 
 As of the release of `cmDoNotSell v1.2.0`, the logical flow from the diagram below is implemented in the [Opt-out Privacy Banner and Popup](https://docs.tealium.com/about-ccpa-privacy-banner-and-popup/).
 

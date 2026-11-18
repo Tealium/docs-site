@@ -20,12 +20,6 @@ url: https://docs.tealium.com/ja/client-side-tags/
 
 
 
-![](https://docs.tealium.com/images/icons/icon-timer.svg)
-
-#### 最近更新されたタグ
-
-最近更新されたクライアントサイド連携を確認できます。
-
 
 ## Tealium タグ
 

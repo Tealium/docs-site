@@ -52,7 +52,7 @@ Test this snippet on [cookiebot.com](https://www.cookiebot.com/) or on your webs
       if (!window.Cookiebot || typeof window.Cookiebot.hasResponse !== 'boolean') return false
       return cmpRawOutput = window.Cookiebot.consent;
     }
-    // Should return a string that helps Tealium iQ confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
+    // Should return a string that helps Tag Management confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
     function cmpFetchCurrentLookupKey() {
         if (!window.Cookiebot || typeof window.Cookiebot.serial !== 'string') return false
         return Cookiebot.serial
@@ -66,7 +66,7 @@ Test this snippet on [cookiebot.com](https://www.cookiebot.com/) or on your webs
       // The only way we can tell if the decision is explicit in this example is to check if an opt-out cookie is set
       return cmpRawOutput.method === 'explicit'? true : false;
     }
-    // Should return an array of consented vendors/purposes - these should match the Purposes in Tealium iQ exactly
+    // Should return an array of consented vendors/purposes - these should match the Purposes in Tag Management exactly
     function cmpConvertResponseToGroupList(cmpRawOutput) {
         var consentDecision = []
         // very simple check for a non-empty opt-out cookie to determine if tags that sell data are allowed
@@ -420,7 +420,7 @@ Test this snippet on [digitalcontrolroom.com](https://www.digitalcontrolroom.com
     output.panels = window._cookiereports.panels;
     return output;
   }
-  // Should return a string that helps Tealium iQ confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
+  // Should return a string that helps Tag Management confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
   function cmpFetchCurrentLookupKey() {
     if (window._cookiereports && window._cookiereports.panels && window._cookiereports.panels.length > 0)
       return window._cookiereports.panels[0].storagekey;
@@ -482,11 +482,11 @@ Test this snippet on https://onetrust.com or on your website by [following the i
 
 
 <blockquote>
-OneTrust provides a test mode to preview settings, activated by adding `-test` to your Vendor ID. To simplify integration, OneTrust consent integrations remove the `-test` suffix from Vendor IDs. For seamless integration, enter your Vendor ID without `-test` in the consent integrations UI when setting up your integration, even if you use the `-test` suffix on your pages. Mismatched Vendor IDs between the Tealium iQ UI and your active integrations prevent Tealium iQ Tag Management from setting cookies or triggering tags on the page.
+OneTrust provides a test mode to preview settings, activated by adding `-test` to your Vendor ID. To simplify integration, OneTrust consent integrations remove the `-test` suffix from Vendor IDs. For seamless integration, enter your Vendor ID without `-test` in the consent integrations UI when setting up your integration, even if you use the `-test` suffix on your pages. Mismatched Vendor IDs between the Tag Management UI and your active integrations prevent Tag Management from setting cookies or triggering tags on the page.
 </blockquote>
 
 
-OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. This callback enables Tealium iQ to receive real-time updates on consent status changes without polling. For more information, see [Monitor and trigger consent updates](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates).
+OneTrust supports callback functions through `cmpAddCallbackToTriggerRecheck`. This callback enables Tag Management to receive real-time updates on consent status changes without polling. For more information, see [Monitor and trigger consent updates](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates).
 
 
 ```js
@@ -686,7 +686,7 @@ The **Purpose Keys** used in the integration and included in the default **Purpo
 
 Test this snippet on your website by following the instructions in the [How it works](#how-it-works) section to check compatibility and get the information needed for integration.
 
-Securiti supports callback functions through `cmpAddCallbackToTriggerRecheck`. This callback enables Tealium iQ to receive real-time updates on consent status changes without polling. For more information, see [Monitor and trigger consent updates](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates).
+Securiti supports callback functions through `cmpAddCallbackToTriggerRecheck`. This callback enables Tag Management to receive real-time updates on consent status changes without polling. For more information, see [Monitor and trigger consent updates](https://docs.tealium.com/custom-cmp-integrations/#monitor-and-trigger-consent-updates).
 
 The **Purpose Keys** in the default **Purpose Group** are:
 

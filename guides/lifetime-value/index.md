@@ -9,7 +9,7 @@ Lifetime value (LTV) refers to the total revenue a customer is expected to gener
 
 Understanding LTV provides insight into the long-term profitability of individual customers. Tracking LTV helps your identify valuable customers, optimize marketing strategies, and increase overall profitability.
 
-In Tealium AudienceStream, LTV serves as a real-time indicator of customer value, offering your actionable insights into purchasing behavior. By leveraging LTV data, you can refine your customer engagement strategies, focus on retention, and drive revenue growth through more precise targeting and personalized experiences.
+In Customer Data Platform (CDP), LTV serves as a real-time indicator of customer value, offering your actionable insights into purchasing behavior. By leveraging LTV data, you can refine your customer engagement strategies, focus on retention, and drive revenue growth through more precise targeting and personalized experiences.
 
 ## Where to use LTV
 
@@ -79,4 +79,4 @@ The following key metrics, logic, and formulas are commonly used to calculate LT
 
 By analyzing these key metrics and applying the respective formulas, you can calculate customer LTV accurately and gain valuable insights into the long-term revenue potential of your customer base.
 
-For a step-by-step example of how to track Customer Lifetime Value in AudienceStream, see [VIP Badge Guide](https://docs.tealium.com/vip-badge-guide/).
+For a step-by-step example of how to track Customer Lifetime Value in Customer Data Platform (CDP), see [VIP Badge Guide](https://docs.tealium.com/vip-badge-guide/).

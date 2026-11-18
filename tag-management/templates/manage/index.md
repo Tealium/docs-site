@@ -1,9 +1,9 @@
 ---
 title: Manage templates
-description: This document explains how to manage iQ Tag Management templates.
+description: This document explains how to manage Tag Management templates.
 url: https://docs.tealium.com/tag-management/templates/manage/
 ---
-A template contains JavaScript code that integrates the vendor code snippet with Tealium iQ Tag Management or a component of the consent manager. Templates can be modified for advanced customization or updated to get the latest version of a tag.
+A template contains JavaScript code that integrates the vendor code snippet with Tag Management or a component of the consent manager. Templates can be modified for advanced customization or updated to get the latest version of a tag.
 
 To get the latest version of a tag, see the [template status checker](https://docs.tealium.com/template-status-checker/).
 

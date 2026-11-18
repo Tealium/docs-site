@@ -25,7 +25,7 @@ In addition, you can decide how and when to measure the key VIP metrics:
 * **Social engagement thresholds**: Interactions with your brand through social media, such as the number of likes on the visitor's posts about your brand.
 * **Feedback and review engagement thresholds**: Visitors who provide positive feedback and reviews.
 
-The great thing about Tealium AudienceStream is that you can create multiple VIP audiences with differing criteria and thresholds, and tailor experiences to each VIP audience.
+The great thing about Customer Data Platform (CDP) is that you can create multiple VIP audiences with differing criteria and thresholds, and tailor experiences to each VIP audience.
 
 ## Requirements
 

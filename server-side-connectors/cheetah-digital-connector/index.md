@@ -1,7 +1,7 @@
 ---
-title: Cheetah Digital by Marigold Connector Setup Guide
-description: This article describes how to set up the Cheetah Digital by Marigold connector.
-url: https://docs.tealium.com/server-side-connectors/cheetah-digital-by-marigold-connector/
+title: Cheetah Digital Connector Setup Guide
+description: This article describes how to set up the Cheetah Digital connector.
+url: https://docs.tealium.com/server-side-connectors/cheetah-digital-connector/
 ---
 ## Connector Actions
 
@@ -16,12 +16,10 @@ Go to the connector marketplace and add a new connector. For more information, s
 After adding the connector, configure the following settings:
 
 * **API Username**
-  * The username for the Cheetah Digital by Marigold API. 
-  * For more information, see [Cheetah Digital by Marigold API](https://help.cheetahces.com/hc/en-us/articles/360007860897-API-Category-Authentication-Service).
+  * Your Consumer Key, found on the API Keys screen of Cheetah Digital.
 
 * **API Password**
-  * The password for the Cheetah Digital by Marigold API.
-  * For more information, see [Cheetah Digital by Marigold API](https://help.cheetahces.com/hc/en-us/articles/360007860897-API-Category-Authentication-Service).
+  * Your Consumer Secret, found on the API Keys screen of Cheetah Digital.
 
 * **API URL**
   * Supports private IP networks, for example `https://trig.{client-domain}.com/`.

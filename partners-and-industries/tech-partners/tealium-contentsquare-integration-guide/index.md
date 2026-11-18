@@ -1,16 +1,16 @@
 ---
 title: Tealium + Contentsquare Integration Guide
-description: This article describes how to get the most out of Tealium and Contentsquare by setting up the Contentsquare UX Analytics tag in your Tealium iQ Tag Management account and enabling the transmission of Tealium audiences and Visitor badges to Contentsquare.
+description: This article describes how to get the most out of Tealium and Contentsquare by setting up the Contentsquare UX Analytics tag in your Tag Management account and enabling the transmission of Tealium audiences and Visitor badges to Contentsquare.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-contentsquare-integration-guide/
 ---
-A working integration of iQ Tag Management with the Contentsquare tag from the Tealium tag marketplace enables customers to execute session replays associated with clickstream data to detect and minimize end customer friction associated with tagged web pages.
+A working integration of Tag Management with the Contentsquare tag from the Tealium tag marketplace enables customers to execute session replays associated with clickstream data to detect and minimize end customer friction associated with tagged web pages.
 
 ## Prerequisites
 
 * **Tealium**
-    * iQ Tag Management
-    * AudienceStream
-    * EventStream (Optional)
+    * Tag Management
+    * Customer Data Platform (CDP)
+    * Event Streaming (Optional)
 * **Contentsquare**
     * Contentsquare Business Edition or higher
 
@@ -39,7 +39,7 @@ Triggers when thresholds are met that identify abnormal and potentially fraudule
 Identifies when or if certain files are blocked, which signifies that an ad blocker is present.
 
 <blockquote>
-You can optionally use signals from your EventStream event specifications and your AudienceStream visitor attributes.
+You can optionally use signals from your Event Streaming event specifications and your CDP visitor attributes.
 </blockquote>
 
 
@@ -78,7 +78,7 @@ You must set `tealium_datasource` in your data layer to allow Contentsquare to s
 1. Add the HTTP API data source
 1. Set the name to "Contentsquare Server-Side Events".
 
-When you finish, note the data source key. In iQ Tag Management, use an extension to assign this value to the variable `tealium_datasource`.
+When you finish, note the data source key. In Tag Management, use an extension to assign this value to the variable `tealium_datasource`.
 
 If you are running the Tealium Universal Tag (utag.js) version 4.41 or older, you must also set the following variables:
 

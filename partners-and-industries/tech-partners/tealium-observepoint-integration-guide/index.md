@@ -1,6 +1,6 @@
 ---
 title: Tealium + ObservePoint Integration Guide
-description: This article describes how to get the most out of Tealium and ObservePoint by setting up the ObservePoint tag in your Tealium iQ Tag Management account and configuring it to send Tealium audiences and badges to ObservePoint.
+description: This article describes how to get the most out of Tealium and ObservePoint by setting up the ObservePoint tag in your Tag Management account and configuring it to send Tealium audiences and badges to ObservePoint.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-observepoint-integration-guide/
 ---
 The Tealium + ObservePoint integration ensures cross-team alignment and data integrity across all of your digital assets — including analytic platforms, personalization tools, and more. This integration allows joint customers to activate automatic ObservePoint scans when updates are made to identify and resolve tracking errors before publishing. With this integration, you can expect to save time, increase agility, and ensure that the data you are using for analysis and personalization is both compliant and consistent.
@@ -9,7 +9,7 @@ The Tealium + ObservePoint integration ensures cross-team alignment and data int
 
 Integrating ObservePoint with Tealium requires the following:
 
-* Tealium iQ Tag Management
+* Tag Management
 * ObservePoint WebAssurance
 * ObservePoint AppAssurance
 
@@ -17,7 +17,7 @@ Integrating ObservePoint with Tealium requires the following:
 
 The Tealium Customer Data Hub (CDH) helps organizations manage the full lifecycle of customer data from collection, to enrichment, and then to activation.
 
-* Beginning with data collection, Tealium iQ Tag Management enables you to manage your ObservePoint deployment and associated data alongside other integrated systems using a standardized, vendor-agnostic data layer.
+* Beginning with data collection, Tag Management enables you to manage your ObservePoint deployment and associated data alongside other integrated systems using a standardized, vendor-agnostic data layer.
 * The Tealium Customer Data Platform (CDP) uses this data collection infrastructure as a data source to create comprehensive customer profiles.
 * These customer profiles are configured with business rules to trigger actions with an integrated vendor.
 

@@ -16,7 +16,7 @@ This permission is required to publish JavaScript extensions.
 
 Before you begin, it is important to learn the differences between synchronous (sync) and asynchronous (async) JavaScript and how it relates to your Tag Management installation. ([Learn more](https://support.tealiumiq.com/en/support/solutions/articles/36000363409-synchronous-vs-asynchronous-javascript-sync-vs-async-)).
 
-The `utag.sync.js` script described in this article is an additional file that you can add to your pages to support A/B and multivariate testing tags, such as Adobe Target or Optimizely. The script is placed in the `<head>` section of your page code and loads synchronously to comply with the most common vendor requirements. The file content is managed in Tag Management.
+The `utag.sync.js` script described in this article is an additional file that you can add to your pages to support A/B and multivariate testing tags, such as Adobe Target or Optimizely. The script is placed in the `<head>` section of your page code and loads synchronously to comply with the most common vendor requirements. The file content is managed in your account.
 
 
 <blockquote>
@@ -26,7 +26,7 @@ This feature is required when using the Tealium Flicker-Free Adobe Target soluti
 
 ## Enable utag.sync.js
 
-By default, the `utag.sync.js` file is not published when you save and publish your Tag Management account/profile. It must first be enabled, saved, and applied at the profile level.
+By default, the `utag.sync.js` file is not published when you save and publish your account/profile. It must first be enabled, saved, and applied at the profile level.
 
 Use the following steps to enable the `utag.sync.js` script:
 
@@ -67,9 +67,9 @@ The `utag.sync.js` script is designed to be placed in the `<head>` section of a 
 The path to the `utag.sync.js` file contains the following parameters:
 
 * **account**  
-The name of your Tag Management account.
+The name of your account.
 * **profile**  
-The name of the profile in your Tag Management account. The default value is **main**.
+The name of the profile in your account. The default value is **main**.
 * **environment (env)**  
 One or more publish environments: **Dev**, **QA**, **Prod**, or **Custom**.
 

@@ -1,6 +1,6 @@
 ---
 title: iQ Variables API
-description: The iQ Variables API lets you programmatically create, update, and delete variables in an iQ Tag Management profile.
+description: The iQ Variables API lets you programmatically create, update, and delete variables in a Tag Management profile.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-variables-api/
 ---
 
@@ -50,7 +50,7 @@ Profile variables are JSON objects that contain the following possible fields:
 |`value.object`| String| Required| The object type being updated: `variable` or `extension`.|
 |`value.name`| String| Required (for add/replace)| The variable title.|
 |`value.alias`| String| Required| The variable name.|
-|`value.type`| String| Required| A prefix representing the variable type.<br> `ls` - Local storage <br> `ss` - Session storage <br> `udo` - Universal Data Object<br> `qp` - Query string parameter<br> `cp` - Cookie<br> `js_page` - JavaScript  variable<br> `meta` - Meta data element<br> `va` - AudienceStream attribute (Read only. This type can be used in other iQ Profile API elements but cannot be created using the API.)|
+|`value.type`| String| Required| A prefix representing the variable type.<br> `ls` - Local storage <br> `ss` - Session storage <br> `udo` - Universal Data Object<br> `qp` - Query string parameter<br> `cp` - Cookie<br> `js_page` - JavaScript  variable<br> `meta` - Meta data element<br> `va` - Customer Data Platform (CDP) attribute (Read only. This type can be used in other iQ Profile API elements but cannot be created using the API.)|
 |`value.notes`| String| Optional| Notes about the variable.|
 
 ### Example request

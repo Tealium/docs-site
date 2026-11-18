@@ -10,7 +10,7 @@ The visitor function does the following:
 *   Requests the additional data from Acxiom.
 *   Sends an event containing the additional data and `tealium_visitor_id` to Tealium Collect.
 
-The EventStream attributes and visitor attributes are enriched by the event sent from the function.
+The Event Streaming attributes and visitor attributes are enriched by the event sent from the function.
 
 ## Prerequisites
 

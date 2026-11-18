@@ -47,7 +47,7 @@ Sending the same conversion using the tag and conversion can result in duplicate
 
 In a typical hybrid setup:
 
-1. The tag fires on the browser, sending a client-side conversion event. In iQ Tag Management, this often uses the Generate Event ID flag in the tag configuration to create a unique identifier per event according to the ad vendor's specifications.
+1. The tag fires on the browser, sending a client-side conversion event. In Tag Management, this often uses the Generate Event ID flag in the tag configuration to create a unique identifier per event according to the ad vendor's specifications.
 1. The conversion API connector sends a corresponding event with the same event identifier. Using Automatic Deduplication, or mapping the identifier, ensures the unique identifier is sent on the event.
 1. The ad platform uses the shared event identifier to deduplicate and keep a single, high-quality conversion record.
 

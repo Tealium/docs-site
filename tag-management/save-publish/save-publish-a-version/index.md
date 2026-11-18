@@ -69,6 +69,6 @@ Compare the timestamp to the version displayed in **Web Companion** once the ver
 
 
 <blockquote>
-The timezone reported in **Tealium iQ** is GMT, while the local timezone is reported within **Web Companion**.
+The timezone reported in **Tag Management** is GMT, while the local timezone is reported within **Web Companion**.
 </blockquote>
 

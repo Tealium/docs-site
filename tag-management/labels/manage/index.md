@@ -72,7 +72,7 @@ The **Filter** list now displays **Filter On**.
 
 ## Search with labels
 
-Use the following steps to search Tealium iQ based on labels:
+Use the following steps to search based on labels:
 
 1. In the search bar at the top of the screen, enter the label you want to search by.  
     ![](https://docs.tealium.com/images/tag-management/whiteui-tiq-lables-searchtiq.png)  

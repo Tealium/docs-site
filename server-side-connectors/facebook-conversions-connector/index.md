@@ -40,7 +40,7 @@ After adding the connector, configure the following settings:
 * **Pixel / Dataset ID**
   * The Facebook Pixel ID.
   * For your Facebook Pixel to work properly, ensure that you have followed the steps outlined in [Prerequisites]() to enable the partner integration for your Facebook Pixel.
-  * For more information, see the [How to set up and install a Meta Pixel](https://www.facebook.com/business/m/pixel-set-up-step-1#step-1).
+  * For more information, see the [How to set up and install a Meta Pixel](https://www.facebook.com/business/help/952192354843755?id=1205376682832142).
 
 After you configure the connector, click **Done**.
 

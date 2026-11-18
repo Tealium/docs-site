@@ -31,7 +31,7 @@ When using variables in EventDB, column names for variables must consist of only
 
 ## Bulk import variables
 
-Adding variables individually can take some time. Tealium iQ provides an easy way to add numerous variables at the same time with the **Bulk Import from CSV** option.
+Adding variables individually can take some time. Tag Management provides an easy way to add numerous variables at the same time with the **Bulk Import from CSV** option.
 
 Use the following steps to add variables using the Bulk Import from CSV option:
 

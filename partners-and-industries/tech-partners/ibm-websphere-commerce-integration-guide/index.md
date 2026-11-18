@@ -1,9 +1,9 @@
 ---
 title: IBM WebSphere Commerce Integration Guide
-description: IBM Websphere Commerce's Tealium Extension is designed to help you integrate Tealium iQ Tag Management within your IBM Websphere solution. Using this extension you can add Tealium's Universal Data Object (UDO) into your site's data layer.
+description: IBM Websphere Commerce's Tealium Extension is designed to help you integrate Tag Management within your IBM Websphere solution. Using this extension you can add Tealium's Universal Data Object (UDO) into your site's data layer.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/ibm-websphere-commerce-integration-guide/
 ---
-This document is for developers who need to integrate Tealium iQ Tag Management within an IBM Websphere-based e-commerce site. Please note that you should be familiar with the IBM Websphere Commerce product core and its e-commerce functionality.
+This document is for developers who need to integrate Tag Management within an IBM Websphere-based e-commerce site. Please note that you should be familiar with the IBM Websphere Commerce product core and its e-commerce functionality.
 
 ## Compatibility notes
 
@@ -30,21 +30,21 @@ To install the Tealium extension:
   ```
 4. Set the `env_includeJSPFExtension` variable to `true` in the `/Stores/WebContent/AuroraStoreFrontAssetStore/Common/EnvironmentSetup.jspf` file
 
-### iQ Tag Management setup
+### Tag Management setup
 
-To pass data from your Tealium Data Layer to analytics tags, you must identify the data points in your Data Layer for iQ Tag Management, as follows:
+To pass data from your Tealium Data Layer to analytics tags, you must identify the data points in your Data Layer for Tag Management, as follows:
 
-1. Log into iQ Tag Management and navigate to the **Data Layer** tab.
+1. Log into Tag Management and navigate to the **Data Layer** tab.
 1. Click the drop-down next to **Add Data Source**, then click **Add Common
 Data Sources**.
 1. Under **Provider Bundles**, select **IBM WebSphere Commerce** and click **Import This Bundle**.![](https://docs.tealium.com/images/tech-partners/ibmwebsphere2.png)
 1. Click **Close**.
-1. **Save/Publish** the changes to your iQ Tag Management profile.
+1. **Save/Publish** the changes to your Tag Management profile.
 
 ### Validation
 
 To validate the implementation, navigate to your site and view the page source. In the page’s source, look for `utag_data` (Tealium’s UDO). You can also see the `Validation.txt` file included in the distribution package for sample values on specific commerce pages.
 
-Use a proxy tool or Chrome developer tools to confirm that the browser is loading the `utag.js` file. After you activate a tag in iQ Tag Management, such as IBM Digital Analytics, you can use Charles Proxy, HTTP Fox, or Chrome Developer Tools to see the data passing to your analytics vendor. ![](https://docs.tealium.com/images/tech-partners/ibmwebsphere3.png)
+Use a proxy tool or Chrome developer tools to confirm that the browser is loading the `utag.js` file. After you activate a tag in Tag Management, such as IBM Digital Analytics, you can use Charles Proxy, HTTP Fox, or Chrome Developer Tools to see the data passing to your analytics vendor. ![](https://docs.tealium.com/images/tech-partners/ibmwebsphere3.png)
 
 The values for `wc.tealium.account` and `wc.tealium.profile` are the Tealium account and profile associated with the site, respectively.

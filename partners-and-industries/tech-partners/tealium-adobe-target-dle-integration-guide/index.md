@@ -39,7 +39,7 @@ DLE fetches the visitor profile asynchronously. On a new visitor's first page vi
 
 ## Add the data provider
 
-The following JavaScript reads `tealium_va` from `localStorage` and registers a data provider. Replace the placeholder attribute IDs with your AudienceStream string attribute IDs. The code must execute before `at.js` loads.
+The following JavaScript reads `tealium_va` from `localStorage` and registers a data provider. Replace the placeholder attribute IDs with your Customer Data Platform (CDP) string attribute IDs. The code must execute before `at.js` loads.
 
 ```javascript
 window.targetGlobalSettings = window.targetGlobalSettings || {};
@@ -95,7 +95,7 @@ Deploy the snippet using one of the following options.
 
 * **Direct page placement**  
 Add the snippet in the `<head>` of the page, above the `<script>` tag that loads `at.js`.
-* **Tealium iQ Pre-Loader extension**  
+* **Tag Management Pre-Loader extension**  
 Create a [JavaScript Code extension](https://docs.tealium.com/javascript-code-extension/) scoped to **Pre Loader**, paste the snippet into the extension editor, and save and publish the changes. This option keeps the code managed inside Tealium.
 
 ## About parameter types

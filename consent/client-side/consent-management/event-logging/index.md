@@ -6,11 +6,11 @@ url: https://docs.tealium.com/consent/client-side/consent-management/event-loggi
 
 ## Requirements
 
-* Tealium EventStream or [Tealium DataAccess](https://docs.tealium.com/about-dataaccess/) (EventStore or EventDB)
+* Event Streaming or [Tealium DataAccess](https://docs.tealium.com/about-dataaccess/) (EventStore or EventDB)
 
 ## How it works
 
-The event logging feature logs every consent action taken by your visitors and works with all the [client-side consent management](https://docs.tealium.com/about-consent-management/) offerings. When client-side consent management is deployed to your site and event logging is enabled, consent actions are sent as an HTTP request to Tealium's server-side CDH, where they can be logged with EventStore or EventDB or streamed with EventStream as needed for auditing and record-keeping purposes.
+The event logging feature logs every consent action taken by your visitors and works with all the [client-side consent management](https://docs.tealium.com/about-consent-management/) offerings. When client-side consent management is deployed to your site and event logging is enabled, consent actions are sent as a HTTP request to Tealium's server-side CDH, where they can be logged with EventStore or EventDB or streamed with Event Streaming as needed for auditing and record-keeping purposes.
 
 The following consent actions are logged:
 
@@ -18,7 +18,7 @@ The following consent actions are logged:
 * Changes to consent preferences
 * Changes to the **Do Not Sell** option
 
-For customers with access to the relevant products, these events can be stored in EventDB and EventStore or streamed with EventStream (consent-based blocking does not apply to these specific events).
+For customers with access to the relevant products, these events can be stored in EventDB and EventStore or streamed with Event Streaming (consent-based blocking does not apply to these specific events).
 
 For customers who prefer to use their own data collection endpoint, a custom URL can be specified.
 

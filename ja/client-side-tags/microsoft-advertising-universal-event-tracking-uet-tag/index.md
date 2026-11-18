@@ -380,4 +380,3 @@ b.microsoft_ad_storage_consent = b.consent_decision.indexOf('C0004') !== -1  ? '
 
 * [Microsoft Bing：売上およびその他のコンバージョンのトラッキング](http://help.bingads.microsoft.com/#apex/3/en/n5012/2)
 * [Microsoft Bing：UET とは何か、どのように役立つのか](https://help.bingads.microsoft.com/#apex/3/en/56681/0)
-* [Microsoft Bing：よくある質問](http://help.bingads.microsoft.com/apex/index/3/en-us/53056)

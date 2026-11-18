@@ -9,13 +9,13 @@ url: https://docs.tealium.com/tag-management/extensions/extensions-list/lookup-t
 
 ## How it works
 
-The Lookup Table extension provides a way to set the value of one data layer variable based on the value of another variable using a list of lookup values. For example, if you need to set category names but the data layer only provides values for category IDs, the Lookup Table extension provides a mapping of category ID to category name. A sample mapping could be category ID `35` mapped to category name `iQ Tag Management` and category ID `38` mapped to category name `Mobile`.
+The Lookup Table extension provides a way to set the value of one data layer variable based on the value of another variable using a list of lookup values. For example, if you need to set category names but the data layer only provides values for category IDs, the Lookup Table extension provides a mapping of category ID to category name. A sample mapping could be category ID `35` mapped to category name `Tag Management` and category ID `38` mapped to category name `Mobile`.
 
 When configuring the Lookup Table extension, set the **Lookup Value In** field to the lookup variable, which is the source variable from the data layer. Then set the **Destination** field to the variable you want to set based on the lookup entry.
 
 The **Variable Type** field specifies the data type of the lookup variable (`String` or `Array`). The lookup variable is compared to the lookup match values based on the **Match Type**. The match type may be set to **Exact** to use an exact, case-sensitive comparison, set to **Contains** to use a substring [contiguous sequence of characters within a string] comparison, or set to a [regular expression](http://w3schools.com/js/js_regexp.asp) pattern (for advanced users).
 
-The lookup table is configured by adding lookup values and output values entries in the **Lookup Match** field and the **Output** field.  From the example above, the lookup value `35` would appear in the **Lookup Match** field, and the output value `iQ Tag Management` would appear in the **Output** field.
+The lookup table is configured by adding lookup values and output values entries in the **Lookup Match** field and the **Output** field.  From the example above, the lookup value `35` would appear in the **Lookup Match** field, and the output value `Tag Management` would appear in the **Output** field.
 
 If the value of the lookup variable matches an entry, then the **Destination** variable is set to the **Output** value.
 
@@ -56,7 +56,7 @@ The following example adds 5 lookup/output values pairs to the mapping:
 
 ```
 38, Mobile, forums
-35, iQ Tag Management, forums
+35, Tag Management, forums
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums
@@ -78,7 +78,7 @@ At least one mapping row must be present to perform a successful export. If the 
 
 ```
 38, Mobile, forums
-35, iQ Tag Management, forums
+35, Tag Management, forums
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums
@@ -101,7 +101,7 @@ The Lookup Table extension lets you match a data layer variable such as `categor
 
 ![](https://docs.tealium.com/images/tag-management/screen-shot-2020-03-12-at-10.23.12-am.png)
 
-When the Lookup Table extension runs, if one of the lookups matches the output value of the `category_id` variable, then the `category_name` variable is populated with the value set in the Output. For example, if `category_id` is `46`, then `category_name` is set to `AudienceStream`.
+When the Lookup Table extension runs, if one of the lookups matches the output value of the `category_id` variable, then the `category_name` variable is populated with the value set in the Output. For example, if `category_id` is `46`, then `category_name` is set to `Customer Data Platform (CDP)`.
 
 ## FAQ
 

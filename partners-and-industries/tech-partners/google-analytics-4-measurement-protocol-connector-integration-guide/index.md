@@ -7,7 +7,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/google-analy
 
 The [Google Analytics 4 Measurement Protocol Connector](https://docs.tealium.com/google-analytics-4-measurement-protocol-connector/) allows developers to make HTTP requests that send events directly to Google Analytics servers. This helps developers measure how users interact with their business from any HTTP-enabled environment, which makes it easy to measure interactions that happen server-to-server.
 
-Tealium EventStream acts as a conduit to enable Google Analytics 4 tracking. It ties together support for Mobile, Internet of Things, and Offline Event and pageview tracking by:
+Event Streaming acts as a conduit to enable Google Analytics 4 tracking. It ties together support for Mobile, Internet of Things, and Offline Event and pageview tracking by:
 
 * Tracking both web applications and apps.
 * Tying online to offline behavior.
@@ -69,15 +69,15 @@ The Tealium Measurement Protocol connector uses this endpoint during Trace, whic
 
 ### Recommendations and configuration details
 
-To mitigate issues around the noted limitations and fully cover all data requirements, implement the [Google Analytics 4 tag](https://docs.tealium.com/google-analytics-4-ga4-tag/) in Tealium iQ Tag Management. Set the tag to load on all pages, with **Send Page View** set to `false`. In addition, add the Google Analytics Cookie Matching Service tag so that the Google `clientId` is automatically added as a `utag_main__ga` cookie value.
+To mitigate issues around the noted limitations and fully cover all data requirements, implement the [Google Analytics 4 tag](https://docs.tealium.com/google-analytics-4-ga4-tag/) in Tag Management. Set the tag to load on all pages, with **Send Page View** set to `false`. In addition, add the Google Analytics Cookie Matching Service tag so that the Google `clientId` is automatically added as a `utag_main__ga` cookie value.
 
-All required events outside of Google’s automatically collected events can then be configured in the Google Analytics connector in Tealium EventStream.
+All required events outside of Google’s automatically collected events can then be configured in the Google Analytics connector in Event Streaming.
 
-The Google Analytics 4 tag automatically triggers a purchase event when `order_id `is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and want to track purchases through EventStream, configure a [Set Data Values](https://docs.tealium.com/set-data-values-extension/) extension scoped to Google Analytics 4 to clear the `_corder` attribute.
+The Google Analytics 4 tag automatically triggers a purchase event when `order_id `is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and want to track purchases through Event Streaming, configure a [Set Data Values](https://docs.tealium.com/set-data-values-extension/) extension scoped to Google Analytics 4 to clear the `_corder` attribute.
 
 ![](https://docs.tealium.com/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png)
 
-Because Tealium can support a client-side implementation to better address web-client integrations, as well as supporting mobile and offline events through Tealium’s EventStream, Tealium can integrate with both solutions and create a combined approach.
+Because Tealium can support a client-side implementation to better address web-client integrations, as well as supporting mobile and offline events through Tealium’s Event Streaming, Tealium can integrate with both solutions and create a combined approach.
 
 For more information for configuration of a client-side tag, see [Google Analytics 4 (GA4) Tag Setup Guide](https://docs.tealium.com/google-analytics-4-ga4-tag/).
 
@@ -86,8 +86,8 @@ For more information for configuration of a client-side tag, see [Google Analyti
 | PRODUCT |  REQUIRED | 
 | --- | --- |
 | Google Analytics 4 account| 	✓| 
-| Tealium EventStream / AudienceStream	| ✓| 
-| Tealium iQ Tag Management	|   Optional, but preferred| 
+| Event Streaming / Customer Data Platform (CDP)	| ✓| 
+| Tag Management	|   Optional, but preferred| 
 
 ### Authentication
 

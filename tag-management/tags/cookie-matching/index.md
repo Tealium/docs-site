@@ -1,6 +1,6 @@
 ---
 title: About persistent cookie matching
-description: Persistent cookie matching works with cookie matching tags in iQ Tag Management to request a third-party vendor user identifier.
+description: Persistent cookie matching works with cookie matching tags in Tag Management to request a third-party vendor user identifier.
 url: https://docs.tealium.com/tag-management/tags/cookie-matching/
 ---
 A cookie matching tag synchronizes visitor identifiers between Tealium and third-party vendors. It requests the vendor’s user identifier and associates it with the visitor in Tealium. The vendor then returns an anonymous identifier, which Tealium stores in a third-party cookie. This synchronization links events across domains to the same visitor, improving tracking and data enrichment.
@@ -13,16 +13,16 @@ The third-party vendor sends an anonymous identifier back to Tealium to be assoc
 
 Here's how it works:
 
-* In iQ Tag Management, a specific vendor cookie matching tag is added. When it runs in the page, it sends a request to the vendor asking for the visitor identifier and providing a return endpoint to which it can be sent.
+* In Tag Management, a specific vendor cookie matching tag is added. When it runs in the page, it sends a request to the vendor asking for the visitor identifier and providing a return endpoint to which it can be sent.
 * The vendor then makes a request back to the Customer Data Hub with the requested identifier (cookie ID).
 * In the Customer Data Hub, the cookie matching request is received and the identifiers is saved to a Tealium third-party cookie.
-* In subsequent EventStream events collected, the third-party cookie values are made available as event attributes. This process continues until the cookie expires.  
+* In subsequent Event Streaming events collected, the third-party cookie values are made available as event attributes. This process continues until the cookie expires.  
 
 <blockquote>
 The Tealium Cookie Sync (TCS) cookie is valid for one (1) year, or when reaching the storage capacity of 4093 bytes.
 </blockquote>
 
- As an example scenario, the interaction between a TiQ cookie matching tag and the vendor might translate into something like this: 
+ As an example scenario, the interaction between a Tag Management cookie matching tag and the vendor might translate into something like this: 
 
 * **Tealium Cookie Matching Tag:**  
 "Hi, I’m Tealium, can you give me the visitor ID so that I can later tell you who this person is and something about them in a way you will understand?"
@@ -49,8 +49,8 @@ The cookie sync redirect received by the customer site is forwarded to the Custo
 The Customer Data Hub redirect back to the customer site sets the third-party cookie containing the synced identifier from the vendor.
 * **Event Collection with Persisted Cookies**  
 The customer site then sends Tealium Collect tag requests that contain the persisted cookie data.__ The collect tag waits for all (or a percentage or preset delay time) cookie sync tags to complete and then fires again with third-party cookie sync data to ensure that actions that rely on visitor identifiers can fire.__ Third-party cookie sync data is attached at this point.
-* **EventStream Actions**  
-In the final step, EventStream events now contain the persisted vendor identifiers as event attributes, which are then available to be mapped in connector actions.
+* **Event Streaming Actions**  
+In the final step, Event Streaming events now contain the persisted vendor identifiers as event attributes, which are then available to be mapped in connector actions.
 
 ## Supported marketplace tags
 
@@ -66,7 +66,7 @@ The following table lists the callback method and callback formatting for Tealiu
 
 Use the following steps to add a cookie matching tag:
 
-1. Log into iQ Tag Management (TiQ).
+1. Log into Tag Management.
 1. In the left sidebar, go to the **Tag Management > Tags**.
 1. Click **+ Add Tag**.
 1. In the left panel, click **Cookie Match**.  

@@ -1,9 +1,9 @@
 ---
 title: Publishing best practices
-description: This article presents a procedure for developing, testing, and publishing updates to a Tealium iQ Tag Management profile.
+description: This article presents a procedure for developing, testing, and publishing updates to a Tag Management profile.
 url: https://docs.tealium.com/tag-management/save-publish/publishing-best-practices/
 ---
-Tealium iQ supports a robust development effort and approval process:
+Tag Management supports a robust development effort and approval process:
 
 * **Multiple concurrent projects**  
   Developers can work on separate versions of a profile and then merge changes from one version into another. When one developer finishes their project, they publish their version to production. Other developers can merge the updates into their own still-in-development version. If multiple developers are working on the same profile, the platform notifies the developers of published changes. Developers can load the new version or merge the new version into their current work so they can keep working.
@@ -24,7 +24,7 @@ Tealium iQ supports a robust development effort and approval process:
 
 * **Development and testing environments**
 
-  By default, Tealium iQ offers Development, QA testing, and Production environments. Developers and testers can switch environments to test site performance, user experience, and data collection. Custom environments can be created as needed to support multiple development projects in progress.
+  By default, development, QA testing, and production environments are available. Developers and testers can switch environments to test site performance, user experience, and data collection. Custom environments can be created as needed to support multiple development projects in progress.
 
   For more information, see [Publish environments](https://docs.tealium.com/about-publishing/#publish-environments).
 * **Testing tools**  
@@ -44,7 +44,7 @@ Tealium iQ supports a robust development effort and approval process:
 
 ![](https://docs.tealium.com/images/tag-management/save-publish/publishingbestpractices2.png)
 
-The following steps summarize a simplified workflow for managing updates to a Tealium IQ profile:
+The following steps summarize a simplified workflow for managing updates to a profile:
 
 1. Configure the publishing environments, permissions, and workflows on the account.
 1. Load the **Prod** version.
@@ -65,7 +65,7 @@ The following steps summarize a simplified workflow for managing updates to a Te
 Before any development begins, the account administrator configures the account's publishing workflow and configuration.
 
 1. Enable and configure **Workflow Management** to control who can submit changes to the **Prod** environment and who can approve those changes for publishing.
-1. Enable **Publish Notify Email** so users and developers know when a new version is published while not logged in to Tealium iQ.
+1. Enable **Publish Notify Email** so users and developers know when a new version is published while not logged in to Tag Management.
 1. If multiple projects are developed and tested concurrently, set up **Custom Publish Environments** so the developers can load extra environments and configurations on websites through the **Web Companion** and **Environment Switcher** tools.
 
 For more information, see:
@@ -77,7 +77,7 @@ For more information, see:
 
 Developer #1 gets a new task: configure a new tag on the profile. The first thing the developer does is create a version as a workspace to make changes. Doing this ensures that they have a clean development environment with the most recent updates from production, and that their work can merge back into production cleanly.
 
-By default, Tealium iQ loads the most current version of a profile, so the developer needs to switch to the version that is currently published as **Prod**:
+By default, the most current version of a profile is loaded, so the developer needs to switch to the version that is currently published as **Prod**:
 
 1. The developer loads the **Prod** version of the profile.
 1. The developer performs a **Save As** a new version, and gives the new version a meaningful **Title** and description in the **Note** field: `New Tag For 2023 1Q`

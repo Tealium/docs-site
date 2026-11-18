@@ -1,16 +1,16 @@
 ---
 title: Tealium + Clicktale Integration Guide
-description: This article describes how to set up the Clicktale tag in your iQ Tag Management account.
+description: This article describes how to set up the Clicktale tag in your Tag Management account.
 url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-clicktale-carmel-integration-guide/
 ---
-A working integration of iQ Tag Management with the Clicktale tag from the Tealium tag marketplace enables customers to seamlessly execute session replays associated with clickstream data to detect and minimize end customer friction associated with tagged web pages.
+A working integration of Tag Management with the Clicktale tag from the Tealium tag marketplace enables customers to seamlessly execute session replays associated with clickstream data to detect and minimize end customer friction associated with tagged web pages.
 
 ## Prerequisites
 
 * **Tealium**
-    * iQ Tag Management
-    * AudienceStream
-    * EventStream (Optional)
+    * Tag Management
+    * Customer Data Platform (CDP)
+    * Event Streaming (Optional)
 * **Clicktale**
     * Clicktale real-time signals are available to all customers with access to the Data Export
 
@@ -32,7 +32,7 @@ Triggers when thresholds are met that identify abnormal and potentially fraudule
 Identifies when or if certain files are blocked, which identifies that an ad-blocker is present.   
 
 <blockquote>
-You can optionally use signals from your EventStream event specifications and your AudienceStream visitor attributes.
+You can optionally use signals from your Event Streaming event specifications and your CDP visitor attributes.
 </blockquote>
 
 

@@ -20,13 +20,13 @@ To track offline purchasers, import offline transaction data into Tealium, wheth
 
 ## Requirements
 
-#### Required EventStream attributes
+#### Required Event Streaming attributes
 
 | Attribute Name | Type| Example| 
 | --- | --- | --- | 
 | `customer_email` |  UDO Variable |  `user@example.com` | 
 
-#### Required AudienceStream attributes
+#### Required Customer Data Platform (CDP) attributes
 
 | Attribute Name | Type   | Scope   | Description    |
 |----------------|--------|---------|----------------|
@@ -53,7 +53,7 @@ Adjust this attribute to include any other events to watch for.
 
 ![](https://docs.tealium.com/images/guides/user_actions_attribute.png)
 
-For more information about adding attributes, see [Manage AudienceStream attributes](https://docs.tealium.com/manage-as-attributes/).
+For more information about adding attributes, see [Manage CDP attributes](https://docs.tealium.com/manage-as-attributes/).
 
 ## Step 2 - Data source configuration
 
@@ -128,6 +128,6 @@ For more information, see .
 
 ## Step 6 - Import the data
 
-Now that you have configured the attributes, badges, and audience, use Tealium’s File Import feature to upload the data. AudienceStream will stitch this data to your visitor profiles, update audiences, and send updates to your remarketing connectors.
+Now that you have configured the attributes, badges, and audience, use Tealium’s File Import feature to upload the data. CDP will stitch this data to your visitor profiles, update audiences, and send updates to your remarketing connectors.
 
 For more information about the upload process, see [About File Import](https://docs.tealium.com/about-file-import/#step-2-upload-your-files-to-a-file-transfer-service).

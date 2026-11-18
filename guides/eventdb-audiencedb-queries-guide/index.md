@@ -16,15 +16,15 @@ Each section includes sample queries that you can adapt to your schema. Scenario
 
 To run these queries, you need:
 
-* Tealium AudienceStream
+* Customer Data Platform (CDP)
 * EventDB and AudienceDB enabled for your account and profile. See [Configure AudienceDB and EventDB](https://docs.tealium.com/enable-audiencedb-eventdb/).
-* The required attributes configured in AudienceStream as listed in the tables below. Default attributes are available in all accounts. Contact your account manager for custom attribute configuration.
+* The required attributes configured in Customer Data Platform (CDP) as listed in the tables below. Default attributes are available in all accounts. Contact your account manager for custom attribute configuration.
 
 In each query, replace `ACCOUNT__PROFILE` with your database name. This value is your Tealium account and profile joined with a double underscore, for example `mycompany__main`.
 
 
 <blockquote>
-Column names in these queries follow AudienceDB and EventDB view naming conventions based on attribute titles. The exact column names in your account depend on how you define attributes in AudienceStream. Verify column names against your schema before running queries.
+Column names in these queries follow AudienceDB and EventDB view naming conventions based on attribute titles. The exact column names in your account depend on how you define attributes in CDP. Verify column names against your schema before running queries.
 </blockquote>
 
 
@@ -153,7 +153,7 @@ For more information about AudienceDB tables and schema, see [AudienceDB data gu
 
 ### Percentage of known visitors
 
-AudienceStream records stitched visitor identities in `visitor_replaces_view`. Run these two queries separately, then apply the formula. For more information, see [Visitor stitching](https://docs.tealium.com/about-visitor-stitching/).
+CDP records stitched visitor identities in `visitor_replaces_view`. Run these two queries separately, then apply the formula. For more information, see [Visitor stitching](https://docs.tealium.com/about-visitor-stitching/).
 
 ```sql
 -- Known visitors

@@ -16,9 +16,9 @@ With Tealium, you can activate and enhance retargeting campaigns by collecting d
 There are three components to the solution:
 
 1. **Track conversion funnel events**  
-Use Tealium EventStream to define the key events across your website, such as searches, product views, cart adds, and checkouts. This data is essential for understanding where visitors drop off and for defining abandonment audiences for retargeting.
+Use Event Streaming to define the key events across your website, such as searches, product views, cart adds, and checkouts. This data is essential for understanding where visitors drop off and for defining abandonment audiences for retargeting.
 1. **Identify visitor segments**  
-Use Tealium AudienceStream to segment visitors based on their behaviors, such as product interest or checkout actions, into audiences. Each audience you create is specific to each retargeting campaign and can be activated in real-time.
+Use Customer Data Platform (CDP) to segment visitors based on their behaviors, such as product interest or checkout actions, into audiences. Each audience you create is specific to each retargeting campaign and can be activated in real-time.
 1. **Activate vendor integrations**  
 Connect Tealium to your retargeting vendors and other marketing tools with server-side connectors. These integrations send your abandonment audiences and campaign data to your vendors for real-time retargeting.
 
@@ -75,7 +75,7 @@ Concerns about delivery time, shipping options, or availability to receive the p
 
 ## Metrics to track
 
-By building attributes and using AudienceStream and AudienceDB, the following metrics can help you identify and resolve the reasons your customers are abandoning the shopping process on your site:
+By building attributes and using Customer Data Platform (CDP) and AudienceDB, the following metrics can help you identify and resolve the reasons your customers are abandoning the shopping process on your site:
 
 * **Cart abandonment rate**  
 The percentage of users who add items to their shopping cart but do not complete the checkout process. This metric indicates the overall effectiveness of your checkout process and can help identify potential barriers to conversion.
@@ -94,7 +94,7 @@ Collect feedback from users through surveys, feedback forms, or user testing ses
 
 
 <blockquote>
-For some of these metrics, you will need both AudienceStream and AudienceDB activated on your account. Also, you will need to add visit and visitor attributes, and then create audiences based on those attributes.
+For some of these metrics, you will need both CDP and AudienceDB activated on your account. Also, you will need to add visit and visitor attributes, and then create audiences based on those attributes.
 </blockquote>
 
 
@@ -103,11 +103,11 @@ These additional metrics, beyond the scope of Tealium, can also help to measure 
 * **Bounce rate**  
 The percentage of users who land on a page and then leave the website without interacting with any other pages. High bounce rates may indicate that visitors are not finding the information or products they expect, leading to abandonment. Bounce rate measurement is typically available from your main analytics provider.
 * **Page load times**  
-Monitor the loading times of key pages and elements on the website, such as product pages, checkout pages, and search results. Slow loading times can frustrate users and contribute to abandonment. This metric requires configuration of Tealium iQ Tag Management on the client-side.
+Monitor the loading times of key pages and elements on the website, such as product pages, checkout pages, and search results. Slow loading times can frustrate users and contribute to abandonment. This metric requires configuration of Tag Management on the client-side.
 * **Error rates**  
-Track the occurrence of errors or technical issues encountered by users during their browsing or checkout process. Common errors such as 404 pages, payment processing errors, or form validation issues can lead to abandonment. This metric requires configuration of Tealium iQ Tag Management on the client-side.
+Track the occurrence of errors or technical issues encountered by users during their browsing or checkout process. Common errors such as 404 pages, payment processing errors, or form validation issues can lead to abandonment. This metric requires configuration of Tag Management on the client-side.
 * **Scroll tracking**  
-Track where viewers engage or abandon your site, or if they read through your site at all. Scroll tracking can help you find the optimal location for calls-to-action (CTA), more engaging content, or modular content sections to allow for easier consumption. This metric requires configuration on the client-side through Tealium iQ Tag Management event listeners.
+Track where viewers engage or abandon your site, or if they read through your site at all. Scroll tracking can help you find the optimal location for calls-to-action (CTA), more engaging content, or modular content sections to allow for easier consumption. This metric requires configuration on the client-side through Tag Management event listeners.
 
 ## Retarget abandoners
 
@@ -122,7 +122,7 @@ As the visitor is leaving the site, send them a popup window that offers a disco
 * **Multi-Channel Marketing**  
 Use multiple methods of contacting the visitor. Combine email, SMS, push notifications, targeted ads, and other methods so they cannot ignore all of them. You can accomplish this by activating an audience or segment with multiple connectors.
 * **Segmentation**  
-People abandon their carts, searches, and sites for various reasons. After you have run your visitors through AudienceStream to build up audience numbers and determine that you have an actionable number of abandoners, you can further segment your abandoners based on their behavior patterns to customize the engagement methods to fit their needs.
+People abandon their carts, searches, and sites for various reasons. After you have run your visitors through CDP to build up audience numbers and determine that you have an actionable number of abandoners, you can further segment your abandoners based on their behavior patterns to customize the engagement methods to fit their needs.
 
 
 <blockquote>

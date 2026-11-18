@@ -8,24 +8,24 @@ First-party data, such as a netID, is crucial for accurate retargeting and perso
 ## Prerequisites
 
 * A request to the netID browser-based JavaScript API
-* Tealium EventStream or AudienceStream 
+* Event Streaming or Customer Data Platform (CDP) 
 
 ## How it works
 
 When integrating netID’s Single Sign-On (SSO) and consent management solutions, netID partners must implement a request to the netID browser-based JavaScript API. The properties returned from the API must be persisted in the browser session as first-party cookies, in `localStorage`, or in `sessionStorage`.
 
-NetID properties like `tpid` can be used with client-side tags in Tealium iQ to integrate with advertising technologies on your webpage.
+NetID properties like `tpid` can be used with client-side tags in Tag Management to integrate with advertising technologies on your webpage.
 
-Additionally, the same netID properties are collected by the Tealium Collect tag and made available as attributes in EventStream and AudienceStream. With netID saved as a visitor attribute, the visitor profiles can then be activated through real-time connectors to advertising vendors.
+Additionally, the same netID properties are collected by the Tealium Collect tag and made available as attributes in Event Streaming and CDP. With netID saved as a visitor attribute, the visitor profiles can then be activated through real-time connectors to advertising vendors.
 
 For more information about the netID browser-based JavaScript API, see the following:
 
 * [netID: The data points returned from the API](https://developerzone.netid.dev/1.6/cmp/browser-based/#response)
 * [netID: Response properties descriptions](https://developerzone.netid.dev/1.6/cmp/browser-based/#response-properties)
 
-## Tealium iQ
+## Tag Management
 
-netID properties that have been stored in the browser can be fetched as part of the data layer (UDO object). This data can then be used in Tealium iQ load rules and tag data mappings where relevant.
+netID properties that have been stored in the browser can be fetched as part of the data layer (UDO object). This data can then be used in Tag Management load rules and tag data mappings where relevant.
 
 For example, if you’ve persisted the netID `tpid` parameter in a first-party cookie, add a new variable of type **First-Party Cookie** in the data layer, and set the value for **Source** to the cookie’s name (for example, `netid_tpid`).
 
@@ -66,7 +66,7 @@ As a netID partner, use one of the following methods to include netID’s proper
   });
   ```
 
-## EventStream API
+## Event Streaming API
 
 After the Tealium Collect Tag captures netID properties from the browser’s data layer, this data is processed as event attributes.
 
@@ -85,7 +85,7 @@ If you use Adform, map the `netid_tpid` event attribute to Adform’s First-Part
 
 ![](https://docs.tealium.com/images//industries/netid-es-attribute-mapping.png)
 
-## AudienceStream CDP
+## CDP
 
 This data is processed as event attributes and can be stored as visitor attributes on the real-time visitor profile.
 

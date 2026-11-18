@@ -6,7 +6,7 @@ url: https://docs.tealium.com/partners-and-industries/tech-partners/tealium-lean
 
 ## Prerequisites 
 
-* **Tealium** - EventStream and/or AudienceStream
+* **Tealium** - Event Streaming and/or Customer Data Platform (CDP)
 * **Leanplum** - Leanplum account
 
 

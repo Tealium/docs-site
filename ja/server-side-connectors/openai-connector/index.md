@@ -58,7 +58,7 @@ OpenAI コネクタを有効化する前に、OpenAI アカウントの制限、
 コネクタマーケットプレイスに移動し、新しいコネクタを追加します。詳細については、[about-connectors](https://docs.tealium.com/about-connectors/)を参照してください。
 
 コネクタを追加した後、次の構成を構成します。
-* **API キー**：リクエストの認証に使用する OpenAI API キーです。このキーには、**All** または **Restricted** のいずれかの権限で応答（モデル推論）を作成する権限が必要です。**Read Only** 権限は使用できません。詳細については、[OpenAI：API キー権限の割り当て](https://help.openai.com/en/articles/8867743-assign-api-key-permissions)を参照してください。
+* **API キー**：リクエストの認証に使用する OpenAI API キーです。このキーには、**All** または **Restricted** のいずれかの権限で応答（モデル推論）を作成する権限が必要です。**Read Only** 権限は使用できません。詳細については、[OpenAI：Admin Console での Admin キーの管理](https://help.openai.com/en/articles/20001407-managing-admin-keys-in-admin-console)を参照してください。
 
 コネクタを構成した後、**完了**をクリックします。
 

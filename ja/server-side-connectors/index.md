@@ -20,12 +20,6 @@ Webhook コネクタを使用してカスタム連携を構築します。
 
 
 
-![](https://docs.tealium.com/images/icons/icon-timer.svg)
-
-#### 最近更新されたコネクタ
-
-最近更新されたサーバーサイド連携を確認できます。
-
 
 ### 人気のコネクタ
 

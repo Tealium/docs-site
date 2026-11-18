@@ -134,7 +134,7 @@ From the **Options** screen, you can enable event logging and tags to omit.
 
 ### Event logging
 
-The event logging option requires DataAccess (EventStore or EventDB) or EventStream and logs every consent action taken by your visitors. These consent actions can then be logged to EventStore, EventDB, or EventStream. Each time a visitor grants or revokes consent using the consent prompt, the action is logged for auditing purposes.
+The event logging option requires DataAccess (EventStore or EventDB) or Event Streaming and logs every consent action taken by your visitors. These consent actions can then be logged to EventStore, EventDB, or Event Streaming. Each time a visitor grants or revokes consent using the consent prompt, the action is logged for auditing purposes.
 
 This option is offered to help you comply with Recital 42 of the GDPR, which requires that proof of consent be available for auditing purposes. In addition, the event logging option provides you with the data needed to enable you to analyze the volumes and percentages of visitors that opt in or opt out of consent and the types of cookies each visitor is opting in or out of as a result of your efforts.
 
@@ -142,7 +142,7 @@ Learn more about [Event logging for consent management]().
 
 ### Tags to omit
 
-Not all tags deployed by iQ Tag Management are for tracking or data collection. Tags and extensions can also be used to serve site functionality, such as pop-up modals, product feedback, site support, or chat clients. Use the **Tags to Omit** setting to create a list of tags to be exempted from the tracking restrictions.
+Not all tags deployed by Tag Management are for tracking or data collection. Tags and extensions can also be used to serve site functionality, such as pop-up modals, product feedback, site support, or chat clients. Use the **Tags to Omit** setting to create a list of tags to be exempted from the tracking restrictions.
 
 ### Consent cookie
 
@@ -168,7 +168,7 @@ For more information, see [Consent management cookie name](https://docs.tealium.
 
 ### Default consent categories (JavaScript Code Extension)
 
-This step is only needed if the Consent Preferences Dialog is disabled and if you have a server-side product (EventStream, AudienceStream, DataAccess) enabled. This step uses the JavaScript Code extension to add the default consent categories to the data layer to ensure that server-side events continue to be processed.
+This step is only needed if the Consent Preferences Dialog is disabled and if you have a server-side product (Event Streaming, Customer Data Platform (CDP), DataAccess) enabled. This step uses the JavaScript Code extension to add the default consent categories to the data layer to ensure that server-side events continue to be processed.
 
 To add the default consent categories:
 

@@ -3,7 +3,7 @@ title: iQ Revisions API endpoints
 description: The GET iQ Revisions API uses JSON objects to retrieve revisions data.
 url: https://docs.tealium.com/api-v1/iq-revisions/endpoints/
 ---
-This is an older version of the [current Tealium iQ Revisions API](https://docs.tealium.com/about-iq-revisions/).
+This is an older version of the [current Tag Management Revisions API](https://docs.tealium.com/about-iq-revisions/).
 
 ## List revisions
 

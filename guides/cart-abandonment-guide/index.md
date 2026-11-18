@@ -3,7 +3,7 @@ title: Cart abandonment guide
 description: This guide shows how to target visitors who added products to the shopping cart but didn't complete a purchase.
 url: https://docs.tealium.com/guides/cart-abandonment-guide/
 ---
-This guide shows how to track basic cart abandonment by combining Tealium iQ Tag Management (Optional), Tealium AudienceStream CDP, and your email marketing connector.
+This guide shows how to track basic cart abandonment by combining Tag Management (Optional), Customer Data Platform (CDP), and your email marketing connector.
 
 ![](https://docs.tealium.com/images/guides/cart-abandonment-flow-diagram.png)
 
@@ -51,7 +51,7 @@ For more information about tracking e-commerce events, see [retail](https://docs
 
 ## Step 1: Track events 
 
-In this step, we use Tealium iQ events to send event and product information when a visitor adds a product to their cart.
+In this step, we use Tag Management events to send event and product information when a visitor adds a product to their cart.
 
 If you already collect `cart_add` events, skip this step.
 

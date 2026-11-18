@@ -3,7 +3,7 @@ title: Tealium Events Extension
 description: The Tealium Events extension defines standard conditions for the most commonly tracked events.
 url: https://docs.tealium.com/tag-management/extensions/extensions-list/tealium-events-extension/
 ---
-This extension adds the `tealium_event` variable to your data layer, where it can help simplify tag mappings, load rules, or other conditions. It can also be passed to Tealium EventStream through the Tealium Collect tag.
+This extension adds the `tealium_event` variable to your data layer, where it can help simplify tag mappings, load rules, or other conditions. It can also be passed to Event Streaming through the Tealium Collect tag.
  
 ## Prerequisites
 
@@ -99,4 +99,4 @@ Load rules use `tealium_event` to simplify their conditions.
 
 #### Customer Data Hub
 
-If you have the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) all the variables in your data layer are passed along to Tealium EventStream, including `tealium_event`. This variable is made available as an [imported event attribute](https://docs.tealium.com/add-enrichment/) to be used in enrichments, rules, and feeds.
+If you have the [Tealium Collect tag](https://docs.tealium.com/tealium-collect-tag/) all the variables in your data layer are passed along to Event Streaming, including `tealium_event`. This variable is made available as an [imported event attribute](https://docs.tealium.com/add-enrichment/) to be used in enrichments, rules, and feeds.

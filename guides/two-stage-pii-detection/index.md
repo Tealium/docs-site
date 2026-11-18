@@ -8,7 +8,7 @@ The two-stage validation pattern provides a scalable way to detect and manage pe
 This guide includes:
 
 * A practical approach for detecting PII in high-throughput data streams.
-* Step-by-step instructions for integrating Tealium EventStream, functions, and AWS services.
+* Step-by-step instructions for integrating Event Streaming, functions, and AWS services.
 * Example implementations for data transformation functions, processed event functions, and AWS Lambda.
 
 ## How it works
@@ -32,7 +32,7 @@ Only events flagged in stage one proceed to stage two, minimizing unnecessary AP
 * **Derived attribute**  
   A boolean event attribute derived from the output of the data transformation function. The function sets it to `true` when it detects PII and adds a flag to the event.
 
-* **AudienceStream event filter**  
+* **Customer Data Platform (CDP) event filter**  
   Filters incoming events based on the derived attribute so that only events without PII enrich visitor profiles.
 
 * **Event feed**  
@@ -65,13 +65,13 @@ Examples include:
 
 The two-stage validation pattern detects and governs sensitive data such as email addresses, phone numbers, and credit card details before it enters visitor profiles, analytics tools, or AI pipelines.
 
-By filtering and validating data as it flows through EventStream, you can meet compliance requirements while preserving the accuracy of customer and behavioral data used across your systems.
+By filtering and validating data as it flows through Event Streaming, you can meet compliance requirements while preserving the accuracy of customer and behavioral data used across your systems.
 
 ## Requirements
 
 To implement this pattern, you need:
 
-* EventStream
+* Event Streaming
 * Functions
 * An AWS account with:
   * Access to AWS Comprehend
@@ -167,9 +167,9 @@ This script does the following:
 1. Go to the **Configuration** tab, set **Status** to **ON**.
 1. Click **Done**, then **Save and Publish**.
 
-### Step 2: Use a derived attribute to filter AudienceStream enrichment
+### Step 2: Use a derived attribute to filter CDP enrichment
 
-After flagging events with potential PII using a data transformation function, use a derived attribute and the AudienceStream event filter to stop those events from enriching visitor profiles.
+After flagging events with potential PII using a data transformation function, use a derived attribute and the CDP event filter to stop those events from enriching visitor profiles.
 
 #### Create a boolean event attribute
 
@@ -209,9 +209,9 @@ This ensures every event has a `true` or `false` value, and only flagged events 
 
 ![](https://docs.tealium.com/images/guides/email-check-attribute.png)
 
-#### Filter out flagged events using an AudienceStream event filter
+#### Filter out flagged events using a CDP event filter
 
-Use the `Email_Check` attribute to prevent flagged events from enriching the real-time visitor profile in AudienceStream.
+Use the `Email_Check` attribute to prevent flagged events from enriching the real-time visitor profile in CDP.
 
 1. Go to **Server-Side Settings > General Settings**.
 1. Under **Enable Customer Data Platform > Customer Data Platform - Event Filter**, set the filter to:
@@ -219,7 +219,7 @@ Use the `Email_Check` attribute to prevent flagged events from enriching the rea
    * **Attribute name**: `Email_Check`
    * **Value**: `false`
 
-Only events where `Email_Check` is `false` are processed by AudienceStream. AudienceStream excludes events flagged as potential PII (`Email_Check: true`).
+Only events where `Email_Check` is `false` are processed by CDP. CDP excludes events flagged as potential PII (`Email_Check: true`).
 
 ![](https://docs.tealium.com/images/guides/audiencestream-event-filter.png)
 
@@ -500,7 +500,7 @@ Use the returned field `pii_analysis.pii_detected` to trigger different processi
 Configure these decisions using one or more of the following:
 
 * **Tealium functions**: Use another transformation or processed event function to act on the results.
-* **AudienceStream**: Create visitor or event-level attributes that reflect the detection status and use them in rules or badges.
+* **CDP**: Create visitor or event-level attributes that reflect the detection status and use them in rules or badges.
 * **Event feeds**: Create new feeds based on the PII analysis result for targeted routing to connectors or data storage (EventStore, EventDB).
 
 ## Resources

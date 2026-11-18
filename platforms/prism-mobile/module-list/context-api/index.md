@@ -189,8 +189,8 @@ For more information, see [`ContextApiSettingsBuilder`](https://docs.tealium.com
 
 | Method | Description |
 |:-------|:------------|
-| `setRegion(region: ContextApiRegion)` | Sets the region for the Moments API engine. Required. |
-| `setReferrer(referrer: String)` | Sets the referrer URL for Moments API requests. |
+| `setRegion(region: ContextApiRegion)` | Sets the region for the Context API engine. Required. |
+| `setReferrer(referrer: String)` | Sets the referrer URL for Context API requests. |
 | `setEnabled(enabled: Boolean)` | Permanently enables or disables the module. |
 | `setOrder(order: Int)` | Sets the order in which the module is initialized. |
 
@@ -199,8 +199,8 @@ For more information, see [`ContextAPISettingsBuilder`](https://docs.tealium.com
 
 | Method | Description |
 |:-------|:------------|
-| `setRegion(_:)` | Sets the region for the Moments API engine. Required. |
-| `setReferrer(_:)` | Sets the referrer URL for Moments API requests. |
+| `setRegion(_:)` | Sets the region for the Context API engine. Required. |
+| `setReferrer(_:)` | Sets the referrer URL for Context API requests. |
 | `setEnabled(_:)` | Permanently enables or disables the module. |
 | `setOrder(_:)` | Sets the order in which the module is initialized. |
 

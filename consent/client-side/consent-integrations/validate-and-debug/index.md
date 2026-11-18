@@ -12,7 +12,7 @@ Templates can be used to [write custom integrations](https://docs.tealium.com/cu
 
 ## Activate debug mode after publishing
 
-The Tealium iQ [debug mode](https://docs.tealium.com/platforms/javascript/debugging/) contains detailed status and error messages from your consent integrations when the feature is active, unless an exemption applies. When exempt, `window.tealiumCmpIntegration` is defined and displays your active exemption in `window.tealiumCmpIntegration.exemptionMap`.
+The Tag Management [debug mode](https://docs.tealium.com/platforms/javascript/debugging/) contains detailed status and error messages from your consent integrations when the feature is active, unless an exemption applies. When exempt, `window.tealiumCmpIntegration` is defined and displays your active exemption in `window.tealiumCmpIntegration.exemptionMap`.
 
 
 <blockquote>

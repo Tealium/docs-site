@@ -1,6 +1,6 @@
 ---
 title: About the data layer
-description: Learn the basics of the data layer for Tealium iQ Tag Management.
+description: Learn the basics of the data layer for Tag Management.
 url: https://docs.tealium.com/tag-management/data-layer/about/
 ---
 ## What is the data layer?
@@ -18,7 +18,7 @@ Before adding your first data layer variable, let's review how it works:
 *   **JavaScript object**  
 Most variables created in the data layer are also added to your page code in a JavaScript object named `utag_data`, also known as the **Universal Data Object (UDO)**.
 *   **Consistent names**  
-The data layer variable names defined in Tealium iQ Tag Management must match the names of the variables populated in your page code. For example, a data layer variable named `page_name` in Tealium iQ is populated in your page code as:  
+The data layer variable names defined in Tag Management must match the names of the variables populated in your page code. For example, a data layer variable named `page_name` in Tag Management is populated in your page code as:  
       ```js
       utag_data = { "page_name" : "My Home Page" };
       ```

@@ -333,4 +333,4 @@ tally属性は反復処理をサポートしています。次の例では、tal
 
 コネクターテンプレートは、MustacheをベースとするJavaテンプレートエンジンのTrimou上に構築されています。
 
-* [Trimou 2.3.0ドキュメント](http://trimou.org/doc/2.3.0.Final/trimou-doc.html)
+* [Trimou 2.3.0ドキュメント](https://github.com/trimou/trimou/blob/master/doc/src/asciidoc/trimou-doc.asciidoc)

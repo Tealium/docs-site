@@ -1,6 +1,6 @@
 ---
 title: iQ Profiles API Objects
-description: This document describes the JSON structure of Tealium iQ profiles, detailing the fields, configurations, and relationships between variables, tags, load rules, extensions, and events within a profile.
+description: This document describes the JSON structure of Tag Management profiles, detailing the fields, configurations, and relationships between variables, tags, load rules, extensions, and events within a profile.
 url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 ---
 
@@ -66,9 +66,9 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`uniqueIdentifier`| String| Variable identifier used to refer to the variable from extension `conditions`, tag `dataMappings`, and load rule `conditions`.|
 |`name`| String| The variable title.|
 |`alias`| String| The variable name.|
-|`type`| String| A prefix representing the variable type.<br>  `ls` - Local storage <br> `ss` - Session storage <br> `udo` - Universal Data Object<br> `qp` - Query string parameter<br> `cp` - Cookie<br> `js` - JavaScript  variable<br> `meta` - Meta data element<br> `va` - AudienceStream attribute |
+|`type`| String| A prefix representing the variable type.<br>  `ls` - Local storage <br> `ss` - Session storage <br> `udo` - Universal Data Object<br> `qp` - Query string parameter<br> `cp` - Cookie<br> `js` - JavaScript  variable<br> `meta` - Meta data element<br> `va` - Customer Data Platform (CDP) attribute |
 |`notes`| String| Notes about the variable.|
-|`context`| Array| The scope for attributes imported from AudienceStream.<br> Values: `current_visit` or `visitor`|
+|`context`| Array| The scope for attributes imported from CDP.<br> Values: `current_visit` or `visitor`|
 |`library`| String| Name of the library from which the variable is inherited.|
 |`imported`| String| The source of an imported variable. This is set to `AudienceStream` for all AudienceStream attributes.|
 |`usedIn`| Object| The list of IDs where this variable is used.|
@@ -83,7 +83,7 @@ url: https://docs.tealium.com/api/v3/iq-profiles/iq-profiles-api-objects/
 |`library`| String| Name of the library from which the tag is inherited.|
 |`status`| String| The on/off status: `active` or `inactive`.|
 |`notes`| String| Notes about the tag.|
-|`dataMappings`| Map &lt;String, String&gt;|  Returns Tealium IQ variable and its corresponding mapped destination. |
+|`dataMappings`| Map &lt;String, String&gt;|  Returns Tag Management variable and its corresponding mapped destination. |
 |`selectedTargets`| Map&lt;String, Boolean&gt;|  An object of environments where the tag is allowed to be published. |
 |`environmentVersions`| Map&lt;String, Boolean&gt;| An array of the environments where this tag was last published.|
 |`advancedConfiguration`| Object|  A set of advanced configurations corresponding to the tag configuration settings.<br> `advConfigBundle` — **True** or **False**<br> `advConfigLoadType` — **True** or **False**<br> `advConfigOptOut` — **True**<br> `advConfigSend`— **True** or **False** `advConfigSrc` — Text field<br> `tagTiming` — **DOM Ready** or **Prioritized** |

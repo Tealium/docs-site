@@ -144,7 +144,7 @@ To set a default language, select the **Make Default Language** checkbox located
 
 The **Customization** screen displays the code behind the banner and popup – the CSS, HTML, and JavaScript. This code can be edited to adjust the look and design of the banner and popup to match your website and customer needs.
 
-The JavaScript code is minified before it is published into the utag.js file. If the minification process fails for any reason (such as a syntax error), the publish process halts and returns a warning message in Tealium iQ. Upon successful publish, when `utag.js` executes on the page, the consent manager JavaScript code is injected into the `<head>` of the page.
+The JavaScript code is minified before it is published into the utag.js file. If the minification process fails for any reason (such as a syntax error), the publish process halts and returns a warning message in Tag Management. Upon successful publish, when `utag.js` executes on the page, the consent manager JavaScript code is injected into the `<head>` of the page.
 
 ### Affected tags
 

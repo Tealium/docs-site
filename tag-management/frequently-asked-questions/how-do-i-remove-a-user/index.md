@@ -12,7 +12,7 @@ If you have a user that should no longer have access to your account, use the [M
 
 If you want to completely remove the user from your account, follow these steps:
 
-1. Log into iQ Tag Management.
+1. Log into Tag Management.
 1. In the admin menu, click **Manage Users**. The **User Manager** dialog displays a list of users.
 1. Select the boxes to the left of the user or users you want to remove.
 1. Click the **More** drop down list and select **Remove User**.

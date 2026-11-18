@@ -7,8 +7,8 @@ url: https://docs.tealium.com/consent/client-side/consent-integrations/custom-cm
 
 Client-side consent integrations consist of two parts:
 
-* A consent enforcement framework for Tealium iQ (the `utcm_framework` template).
-* CMP-specific integration templates that leverage the Tealium iQ consent enforcement framework. These integration templates are designed to be as lightweight as possible.
+* A consent enforcement framework for Tag Management (the `utcm_framework` template).
+* CMP-specific integration templates that leverage the Tag Management consent enforcement framework. These integration templates are designed to be as lightweight as possible.
 
 Our [pre-built integrations](https://docs.tealium.com/vendor-specific-configuration/) supports integration with various consent management platforms (CMPs). However, there are instances where a custom integration is recommended, such as:
 
@@ -21,9 +21,9 @@ In such cases, you can use a custom integration. By using JavaScript functions, 
 To add a new custom integration, use the existing integrations and the provided template as a guide.
 
 The following describes a basic workflow for creating a custom integration:
-1. Develop and debug the integration outside Tealium iQ (website where CMP is implemented).
-1. In Tealium iQ, add a new custom consent integration and purpose group. For more information, see [Manage consent integrations and purpose groups](https://docs.tealium.com/manage-consent-integrations/).
-1. Assign Tealium iQ and the appropriate tags to the purposes within the purpose group.
+1. Develop and debug the integration outside Tag Management (website where CMP is implemented).
+1. In Tag Management, add a new custom consent integration and purpose group. For more information, see [Manage consent integrations and purpose groups](https://docs.tealium.com/manage-consent-integrations/).
+1. Assign Tag Management and the appropriate tags to the purposes within the purpose group.
 1. To create the template, save your profile.
 1. Edit the newly created template. For details, see [manage-templates](https://docs.tealium.com/manage-templates/).
 1. Publish the template to a development or test environment to verify that everything works as expected, and then follow your normal testing and publishing flow.
@@ -46,7 +46,7 @@ The `window.tealiumCmpIntegration` object consists of a name `.cmpName`, version
 
 * `.cmpCheckForWellFormedDecision` - checks if the raw version of the consent decision is well-formed and understandable. Returns a boolean value.
 
-* `.cmpCheckForTiqConsent` - determines whether the raw consent decision contains permission for data processing by Tealium iQ. If false, nothing is executed. Returns a boolean value.
+* `.cmpCheckForTiqConsent` - determines whether the raw consent decision contains permission for data processing by Tag Management. If false, nothing is executed. Returns a boolean value.
 
 * `.cmpCheckForExplicitConsentDecision` - determines whether the raw consent decision is `explicit` or `implicit`. Returns a boolean value.
 
@@ -54,13 +54,13 @@ The `window.tealiumCmpIntegration` object consists of a name `.cmpName`, version
 
 
 <blockquote>
-The purpose keys returned by `cmpConvertResponseToGroupList` must exactly match the purpose names configured in the consent integration. The **Vendor ID** field in the Tealium iQ UI is used by the template to identify the relevant CMP cookie or identifier. Ensure this value matches the cookie name or identifier in your CMP use cases. It is case-sensitive.
+The purpose keys returned by `cmpConvertResponseToGroupList` must exactly match the purpose names configured in the consent integration. The **Vendor ID** field in the Tag Management UI is used by the template to identify the relevant CMP cookie or identifier. Ensure this value matches the cookie name or identifier in your CMP use cases. It is case-sensitive.
 </blockquote>
 
 
 ### Monitor and trigger consent updates
 
-* `.cmpAddCallbackToTriggerRecheck` - registers a callback function to be invoked whenever the CMP's consent status changes. This ensures Tealium iQ is promptly updated with the latest consent decisions without relying on polling.
+* `.cmpAddCallbackToTriggerRecheck` - registers a callback function to be invoked whenever the CMP's consent status changes. This ensures Tag Management is promptly updated with the latest consent decisions without relying on polling.
 
   Ensure that `cmpAddCallbackToTriggerRecheck` is configured to call `triggerRecheck()` whenever the CMP signals a consent status change through callbacks or alternative implementation methods. Call `triggerRecheck()` when the banner pops up for implicit consent or at a similar point in the CMP load. See the comments in the [custom integration template](#custom-integration-template) for more details. For integrations that currently support callbacks, see [vendor-specific-configuration](https://docs.tealium.com/vendor-specific-configuration/).
 
@@ -133,7 +133,7 @@ To create your custom CMP integration, edit the blank template below to meet you
     */
   }
 
-  // Should return a string that helps Tealium iQ confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
+  // Should return a string that helps Tag Management confirm that it's got the right CMP configuration (and not one from some other page / customer of the CMP)
   function cmpFetchCurrentLookupKey () {
     /*
     return optOutCookieName
@@ -156,7 +156,7 @@ To create your custom CMP integration, edit the blank template below to meet you
     */
   }
 
-  // Should return an array of consented vendors/purposes - these should match the Purposes in Tealium iQ exactly
+  // Should return an array of consented vendors/purposes - these should match the Purposes in Tag Management exactly
   function cmpConvertResponseToGroupList (cmpRawOutput) {
     /*
     var consentDecision = ['no-selling'] // tags that don't sell/share data are always allowed
@@ -249,7 +249,7 @@ Complete the following steps to debug during development:
 1. Paste the template into the console of a website running the CMP you want to support.
 1. The debugging code block outputs the consent decision.
 1. Customize your decision and paste the template again to see the newly interpreted consent decision.
-1. When you are satisfied with your template, comment out the debugging block again before pasting and publishing it to Tealium iQ.
+1. When you are satisfied with your template, comment out the debugging block again before pasting and publishing it to Tag Management.
 
 You can also find the debugging snippet by saving your profile and [editing the template](https://docs.tealium.com/manage-templates/).
 

@@ -31,7 +31,7 @@ You can adjust this payload to suit your endpoint or data model.
 
 ## How to configure
 
-1. In Tealium iQ, go to **Extensions** and click **Add Extension**.
+1. In Tag Management, go to **Extensions** and click **Add Extension**.
 1. Click the **Privacy** tab.
 1. Click **+ Add** next to the **CookieConsent v3 Logging** extension.
 1. Enter a **Title** for the extension.

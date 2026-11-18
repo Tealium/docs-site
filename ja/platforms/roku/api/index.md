@@ -1,19 +1,20 @@
 ---
 title: APIリファレンス
-description: Tealium for Rokuで提供されているクラスとメソッドに関するリファレンスガイド。
+description: Roku向けにTealiumが提供するクラスとメソッドのリファレンスガイド。
 url: https://docs.tealium.com/ja/platforms/roku/api/
----以下では、Tealium for Rokuライブラリで提供されている関数を示します。Roku用アプリは、強力なスクリプト言語であるBrightScriptで作成されています。BrightScriptの詳細については、[こちら](https://sdkdocs.roku.com/display/sdkdoc/BrightScript+Language+Reference)を参照してください。
+---
+以下に、Tealium for Rokuライブラリで使用できる関数を示します。Roku向けアプリは、強力なスクリプト言語であるBrightScriptで記述されます。BrightScriptの詳細については、[こちら](https://sdkdocs.roku.com/display/sdkdoc/BrightScript+Language+Reference)を参照してください。
 
 ## クラス：`TealiumBuilder`
 
-以下は、Rokuライブラリで一般的に使用される`TealiumBuilder`クラスのメソッドをまとめたものです。
+以下に、Rokuライブラリの`TealiumBuilder`クラスで一般的に使用されるメソッドの概要を示します。
 
-| メソッド | 説明|
-| ----- | ------|
-| `SetDatasource()` | `Tealium`オブジェクトのデータソースキーを構成します|
-| `SetEnvironment()` | `Tealium`オブジェクトの環境を構成します|
-| `SetLogLevel()` | `Tealium`オブジェクトのログレベルを構成します|
-| `TealiumBuilder()` | `Tealium`オブジェクトの初期化に役立つビルダーコンストラクタ関数|
+| メソッド | 説明 |
+| ----- | ------ |
+| `SetDatasource()` | `Tealium`オブジェクトのデータソースキーを構成します。 |
+| `SetEnvironment()` | `Tealium`オブジェクトの環境を構成します。|
+| `SetLogLevel()` | `Tealium`オブジェクトのログレベルを構成します。|
+| `TealiumBuilder()` | `Tealium`オブジェクトの初期化を支援するビルダーコンストラクター関数です。 |
 
 ### `SetDatasource()`
 
@@ -23,10 +24,9 @@ url: https://docs.tealium.com/ja/platforms/roku/api/
 SetDatasource(datasource)
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `datasource` | `String` | データソースキー| "def456"|
-
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `datasource` | String | データソースキー | `"def456"` |
 
 ### `SetEnvironment()`
 
@@ -36,9 +36,9 @@ SetDatasource(datasource)
 SetEnvironment(environment)
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `environment` | `String` | Tealium環境の名前| [`"dev"`, `"qa"`, `"prod"`]|
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `environment` | String | Tealium環境名 | [`"dev"`, `"qa"`, `"prod"`] |
 
 ### `SetLogLevel()`
 
@@ -48,77 +48,67 @@ SetEnvironment(environment)
 SetLogLevel(logLevel)
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `logLevel`  | 整数| Tealiumログレベル| `1` |
-
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `logLevel`  | Integer | Tealiumのログレベル | `1` |
 
 ### `TealiumBuilder()`
 
-`Tealium`オブジェクトの初期化に役立つビルダー関数。ユーティリティ関数を使って任意のパラメータを構成します。Build()を呼び出してTealiumオブジェクトを作成します。
+`Tealium`オブジェクトの初期化を支援するビルダー関数です。ユーティリティ関数を使用して、任意のパラメータを構成します。`Build()`を呼び出してTealiumオブジェクトを作成します。
 
 ```javascript
 TealiumBuilder(account, profile, logLevel)
 ```
 
-| パラメータ | 型| 説明| 例|
-| --- | ---| --- | --- |
-| `account` | `String` | Tealiumアカウントの名前| `"account123"` |
-| `profile` | `String` | Tealiumプロファイルの名前（デフォルト：`"main"`）| `"main"` |
-| `logLevel` | `String` | ログレベル| `1` |
-
+| パラメータ | 型 | 説明 | 例 |
+| --- | --- | --- | --- |
+| `account` | String | Tealiumアカウント名 | `"account123"` |
+| `profile` | String | Tealiumプロファイル名（デフォルト：`"main"`） | `"main"` |
+| `logLevel` | String | ログレベル | `1` |
 
 ## クラス：`TealiumCore`
 
-以下は、Rokuライブラリで一般的に使用される`TealiumCore`クラスのメソッドをまとめたものです。
+以下に、Rokuライブラリの`TealiumCore`クラスで一般的に使用されるメソッドの概要を示します。
 
-| メソッド | 説明|
-| ----- | ------|
-| `ToStr()` | 現在のTealiumインスタンスの構成の詳細を含む判読可能な文字列を返します|
-| `TrackEvent()` | 関連付けられたデータを含むイベントをトラッキングし、任意でコールバック関数をトリガーします|
-| `ResetSessionId()` | リセットして新しいセッションIDを返します|
+| メソッド | 説明 |
+| ----- | ------ |
+| `ToStr()` | 現在のTealiumインスタンスの構成詳細を含む読み取り可能な文字列を返します。 |
+| `TrackEvent()` | 関連データを伴うイベントをトラッキングし、必要に応じてコールバック関数をトリガーします。 |
+| `ResetSessionId()` | セッションIDをリセットし、新しいセッションIDを返します。 |
 
 ### `ToStr()`
-現在のTealiumインスタンスの構成の詳細を含む判読可能な文字列を返します。
+
+現在のTealiumインスタンスの構成詳細を含む、人間が読み取り可能な文字列を返します。
 
 ```javascript
 ToStr()
 ```
 
-| 戻り値 | 戻り値の型| 例|
-| --- | ---| --- |
-| Readable String containing the configuration details of the current Tealium instance | `String` | `"Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV"` |
-
+| 戻り値 | 戻り値の型 | 例 |
+| --- | --- | --- |
+| 現在のTealiumインスタンスの構成詳細を含む、人間が読み取り可能な文字列。 | String | `"Tealium instance for account: ACCOUNT profile: PROFILE environment: ENV"` |
 
 ### `TrackEvent()`
 
-関連付けられたデータを含むイベントをトラッキングし、任意でコールバック関数をトリガーします。
+関連データを伴うイベントをトラッキングし、必要に応じてコールバック関数をトリガーします。
 
 ```javascript
-trackEvent(eventType, eventName, data, callback)
+trackEvent(eventType, title, data)
 ```
 
-| パラメータ | 型| 説明|
-| --- | ---| --- |
-| `eventType` | `String` | Tealiumのイベントの種類（アクティビティ、コンバージョン、インタラクション、ビュー）|
-| `eventName` | `String` | イベントの名前（Tealium Customer Data Hubの`event_name`属性になります）|
-| `data` | `Object` | コンテクスチュアルイベントデータである、キーと値のペアを含む`roAssociativeArray`オブジェクト|
-| `callback` | `Object` | `roEvent`引数を受け取る"callback"という名前の関数プロパティを持つオブジェクト。このコールバック関数は、TrackEventコールの完了時にトリガーされます。|
-
-コールバック関数は、以下を含む複数の目的で使用されます。
-
-*   コール失敗時のリトライまたはフォールバックシステムの構築
-*   キューイングまたはスロットリングシステムの管理
-*   Loggerのカスタマイズ
-*   アプリケーションロジックのチェーン
+| パラメータ | 型 | 説明 |
+| --- | --- | --- |
+| `eventType` | String | Tealiumイベントタイプ（`activity`、`conversion`、`derived`、`interaction`、または`view`）。 |
+| `eventName` | String | イベント名（Tealium Customer Data Hubでは`event_name`属性になります）。 |
+| `data` | Object | コンテキストイベントデータ。キーと値のペアを含む`roAssociativeArray`オブジェクトです。|
 
 ### `ResetSessionId()`
 
-リセットして新しいセッションIDを返します。このセッションIDは、ウェブサイトセッションと同様に、現在のユーザーセッションを識別しますが、有効期限がありません。`createTealium()`が呼び出されるたびに、新しいセッションIDが作成されます。 
+セッションIDをリセットし、新しいセッションIDを返します。セッションIDは、Webサイトのセッションと同様に現在のユーザーセッションを識別しますが、有効期限はありません。`createTealium()`が呼び出されるたびに、新しいセッションIDが作成されます。
 
 ```javascript
 resetSessionId() as Integer
 ```
-| 戻り値 | 戻り値の型|
-| --- | ---|
-| A new session ID | `Integer` |
+| 戻り値 | 戻り値の型 |
+| --- | --- |
+| 新しいセッションID | Integer |

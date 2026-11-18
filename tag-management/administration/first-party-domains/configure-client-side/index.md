@@ -1,9 +1,9 @@
 ---
 title: Configure client-side delivery
-description: This article describes how to configure first-party domains for Tealium iQ Tag Management client-side delivery.
+description: This article describes how to configure first-party domains for Tag Management client-side delivery.
 url: https://docs.tealium.com/tag-management/administration/first-party-domains/configure-client-side/
 ---
-Use the following steps to configure first-party domains for Tealium iQ Tag Management client-side delivery:
+Use the following steps to configure first-party domains for Tag Management client-side delivery:
 
 1. In the admin menu, click **First-Party Domains**.
 1. Under **Client-Side Delivery Certificate**, click **Configure Certificate** and select one of the following:
@@ -47,7 +47,7 @@ When the domain status in the **First-Party Domains Overview** changes to **Issu
 
 Validation must occur within 72 hours. If the validation period expires, request a new certificate for the same subdomain. The DNS validation records are the same for subsequent requests of the same subdomain.
 
-After the domain status changes to **Issued**, you must update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see [Update endpoint configurations]().
+After the domain status changes to **Issued**, you must update your endpoint configuration to use first-party domains with Tag Management. For more information, see [Update endpoint configurations]().
 
 ## Validation failure
 
